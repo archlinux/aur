@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/semtor/cs"
 license=('MIT')
 makedepends=('cmake' 'git')
-source=("$pkgname-$pkgver::$url/archive/refs/tags/$pkgver.tar.gz")
+source=("$pkgname-$pkgver::$url/archive/refs/heads/main.zip")
 #noextract=("${source[@]##*/}")
 md5sums=('SKIP')
 

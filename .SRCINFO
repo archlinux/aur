@@ -7,7 +7,7 @@ pkgbase = cs
 	license = MIT
 	makedepends = cmake
 	makedepends = git
-	source = cs-0.1.2::https://github.com/semtor/cs/archive/refs/tags/0.1.2.tar.gz
+	source = cs-0.1.2::https://github.com/semtor/cs/archive/refs/heads/main.zip
 	md5sums = SKIP
 
 pkgname = cs
