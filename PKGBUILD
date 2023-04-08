@@ -3,7 +3,7 @@
 _name=pyocd
 pkgname=python-pyocd
 pkgver=0.34.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Programming and debugging Arm Cortex-M microcontrollers"
 arch=(any)
 url="https://github.com/pyocd/pyOCD"
