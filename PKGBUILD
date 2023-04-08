@@ -4,14 +4,14 @@
 
 pkgname=deadbeef
 pkgver=1.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Modular GTK audio player for GNU/Linux"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
 url="https://deadbeef.sourceforge.io/"
 license=(GPL2 LGPL2.1 ZLIB)
 depends=(gtk3 alsa-lib jansson libdispatch)
 makedepends=(libvorbis libmad flac curl imlib2 wavpack libsndfile libcdio libcddb
-             libx11 faad2 zlib intltool pkgconfig libpulse libzip libsamplerate
+             libx11 faad2 zlib intltool libpipewire libpulse libzip libsamplerate
              yasm ffmpeg clang opusfile mpg123)
 optdepends=('alsa-oss: for OSS output plugin'
             'cdparanoia: for cd audio plugin'
@@ -26,6 +26,7 @@ optdepends=('alsa-oss: for OSS output plugin'
             'libice: optional dependency for gtkui session client support'
             'libmad: for mp3 plugin (mpeg1,2 layers1,2,3)'
             'libogg: for ogg vorbis plugin'
+            'libpipewire: for pipewire plugin'
             'libsamplerate: for dsp_libsrc plugin (resampler)'
             'libsidplay: for SID player plugin'
             'libsm: optional dependency for gtkui session client support'
@@ -39,6 +40,7 @@ optdepends=('alsa-oss: for OSS output plugin'
             'wavpack: for wavpack plugin'
             'yasm: required to build assembly portions of ffap plugin'
             'zlib: for Audio Overload plugin (psf, psf2, etc), GME (for vgz)')
+conflicts=(deadbeef-pipewire-plugin-git)
 source=("https://sourceforge.net/projects/deadbeef/files/travis/linux/${pkgver}/deadbeef-${pkgver}.tar.bz2")
 sha512sums=('c7a15f47fd8081a363e5cba732aa4ff4b1c311408728fbc5f7f47cf349bc112274a1d9fe0df8a58f09abf8f7656d914fb1baafa38fdf4dcb38fae7e1f70f682c')
 
