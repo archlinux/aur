@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=onevpl-intel-gpu-git
-pkgver=23.1.2.r28.g9feab43c
+pkgver=23.1.5.r19.ge36fe410
 pkgrel=1
 pkgdesc='oneVPL runtime implementation for Intel GPUs (Tiger Lake and newer) (git version)'
 arch=('x86_64')
@@ -29,11 +29,14 @@ pkgver() {
 }
 
 build() {
+    export CFLAGS+=' -DNDEBUG'
+    export CXXFLAGS+=' -DNDEBUG'
     cmake -B build -S oneVPL-intel-gpu \
         -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DBUILD_TESTS:BOOL='OFF' \
+        -DMFX_ENABLE_AENC:BOOL='ON' \
         -Wno-dev
     cmake --build build
 }
