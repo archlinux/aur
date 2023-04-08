@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=onevpl-cpu-git
-pkgver=2023.1.3.r0.g43f9696
+pkgver=2023.2.0.r0.gee71102
 pkgrel=1
 pkgdesc='oneVPL runtime implementation for CPU (git version)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('onevpl-cpu')
 source=('git+https://github.com/oneapi-src/oneVPL-cpu.git'
         '010-onevpl-cpu-fix-build.patch')
 sha256sums=('SKIP'
-            'ee6b8f15e24a6c03337657c3b38eab0b929cc3ec539a94dd8d1d5f9a9b85b3cb')
+            'e51d5b9bbd6a5f8a80cc444dd71beb57f687f8bcb36a0b263af5517a104cd21c')
 
 prepare() {
     patch -d oneVPL-cpu -Np1 -i "${srcdir}/010-onevpl-cpu-fix-build.patch"
@@ -25,8 +25,8 @@ pkgver() {
 }
 
 build() {
-    export CFLAGS+=' -ffat-lto-objects'
-    export CXXFLAGS+=' -ffat-lto-objects'
+    export CFLAGS+=' -DNDEBUG -ffat-lto-objects'
+    export CXXFLAGS+=' -DNDEBUG -ffat-lto-objects'
     local -x PKG_CONFIG_LIBDIR="${srcdir}/deps-install/lib"
     local -x VPL_CPU_DEPS_BUILD_DIR="${srcdir}/deps-build"
     local -x VPL_BUILD_DEPENDENCIES="${srcdir}/deps-install"

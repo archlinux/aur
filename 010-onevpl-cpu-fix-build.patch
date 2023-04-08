@@ -1,6 +1,6 @@
 --- a/script/bootstrap.py
 +++ b/script/bootstrap.py
-@@ -674,6 +674,7 @@ def build_gpl_x264_encoder(install_dir):
+@@ -678,6 +678,7 @@
              f'--prefix={posix_install_dir}',
              '--enable-static',
              '--enable-pic',
@@ -8,7 +8,7 @@
              shell='bash')
          cmd('make', '-j', CPU_COUNT)
          cmd('make', 'install')
-@@ -798,6 +799,7 @@ def ffmpeg_configure_opts(install_dir, a
+@@ -802,6 +803,7 @@
          '--enable-filter=select',
          '--enable-filter=concat',
          '--enable-filter=ssim',
