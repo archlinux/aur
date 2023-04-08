@@ -3,7 +3,7 @@
 
 pkgname=python-fuzzywuzzy
 pkgver=0.18.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Fuzzy string matching like a boss"
 arch=("any")
 url="https://pypi.python.org/pypi/fuzzywuzzy"
