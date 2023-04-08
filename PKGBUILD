@@ -20,32 +20,32 @@ validpgpkeys=(14638444C9858E2A09B0259C211BCF562939AB8F)
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
-}
-
-
-build() {
-  cd "$srcdir/$pkgname-$pkgver"
-
+	
   # Set temporary folder for lazarus primary config
   rm -fr "$srcdir/config"
   mkdir  "$srcdir/config"
 
   # Don't need Windows doc on Arch
-  # Move desktop stuff out of Docs
+  # Move desktop files
   rm -f "Docs/ReadmeWindows.html"
   rm -fr Desktop
   mkdir  Desktop
   mv "Docs/cevomapgen.svg"   Desktop
   mv "Docs/$pkgname.desktop" Desktop
 
+  # currently cannot build with -pie as the RTL is not built with pie
+  sed -i '/-k-pie/d' fpc.cfg
+}
+
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+ 
   # clean
   rm -fr lib
   rm -f  AI/StdAI/*.o
   rm -f  AI/StdAI/*.ppu
   rm -f  AI/StdAI/*.res
-
-  # currently cannot build with -pie as the RTL is not built with pie
-  sed -i '/-k-pie/d' fpc.cfg
 
   lazbuild -v
   lazbuild --ws=qt5 -B --lazarusdir=/usr/lib/lazarus --pcp="$srcdir/config" CevoMapGen.lpi
