@@ -67,9 +67,9 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=6.1
-_minor=21
+_minor=23
 _rtpatchver=8
-_clr=${_major}.21-87
+_clr=${_major}.22-88
 _gcc_more_v='20230105'
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-clear-preempt-rt
@@ -331,7 +331,7 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('b33cb1b86ae13441db36f7e8099ff9edb10494bfd141b4efb41bc44bf815d93a'
+sha256sums=('7458372e8750afe37fd1ac3e7ab3c22f2c6018f760f8134055a03f54aba3ebeb'
             'SKIP'
             'e13dd514919b5d432de55a1b4753ed7131f07eb9965edd7772c369fdf2e9a3d9'
             'SKIP'
