@@ -11,7 +11,7 @@ pkgbase = unarc-git
 	depends = gcc-libs
 	depends = glibc
 	provides = unarc
-	source = unarc::git+https://github.com/xredor/unarc.git
+	source = unarc-git::git+https://github.com/xredor/unarc.git
 	md5sums = SKIP
 
 pkgname = unarc-git
