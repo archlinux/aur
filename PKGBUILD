@@ -2,7 +2,7 @@
 
 _pkgname=envs
 pkgname=python-envs
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc='Easy access of environment variables from Python.'
 url='https://pypi.org/project/envs'
