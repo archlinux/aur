@@ -1,15 +1,14 @@
 pkgname=ardupilot-mission-planner
-_pkgname=mission-planner
 pkgver=1.3.80
-epoch=1
-pkgrel=1
+epoch=2
+pkgrel=2
 pkgdesc="Mission Planner Ground Control Station"
 arch=('x86_64')
 url="https://github.com/ArduPilot/MissionPlanner"
 license=("GPL3")
 depends=('mono')
 
-source=("https://firmware.ardupilot.org/Tools/MissionPlanner/MissionPlanner-${pkgver}.zip" ${_pkgname}.desktop)
+source=("https://firmware.ardupilot.org/Tools/MissionPlanner/MissionPlanner-${pkgver}.zip" ${pkgname}.desktop)
 
 sha256sums=(
   '8a2be56905ad38c247721991f76168a936a8b0627d17502016db8580313ff6a4'
@@ -17,9 +16,9 @@ sha256sums=(
 )
 
 package() {
-	install -d "${pkgdir}/opt/${_pkgname}"
-	cp -r ${srcdir}/* ${pkgdir}/opt/${_pkgname} -R
+	install -d "${pkgdir}/opt/${pkgname}"
+	cp -r ${srcdir}/* ${pkgdir}/opt/${pkgname} -R
 
 	install -d "${pkgdir}/usr/share/applications"
-	install -m644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+	install -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
