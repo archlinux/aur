@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=python-gps3
 _name=${pkgname#python-}
