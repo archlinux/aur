@@ -48,9 +48,5 @@ build() {
 
 package() {
   cd "$srcdir/cosmic-applets"
-  mkdir -p $pkgdir/usr/share/applications
-  cp cosmic-*/data/*.desktop $pkgdir/usr/share/applications/
-  mkdir -p $pkgdir/usr/bin
-  rm target/release/cosmic-*\.d
-  cp target/release/cosmic-* $pkgdir/usr/bin/
+  just rootdir="$pkgdir" install
 }
