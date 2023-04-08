@@ -5,3 +5,8 @@ post_upgrade() {
 post_install() {
   post_upgrade
 }
+
+post_remove() {
+  rm -f /boot/dtbos/*-fixed.dtb
+  rm -f /boot/dtbos/*-atf.dtb
+}
