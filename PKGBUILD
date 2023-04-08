@@ -12,7 +12,7 @@ source=('git+https://github.com/natesales/q')
 md5sums=('SKIP')
 provides=($_shortpkgname)
 conflicts=($_shortpkgname)
-pkgver=0.9.0.r2.g6029bf3
+pkgver=0.11.1.r9.gcdf34dd
 
 pkgver() {
 	cd q
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
 	cd q
-	go build
+	go build -ldflags="-s -w -X main.version=$(git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g') -X main.commit=$(git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ) -X main.date=$(date --iso-8601=date)"
 }
 
 package() {
