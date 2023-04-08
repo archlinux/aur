@@ -3,18 +3,18 @@
 pkgname=flashbrowser-git
 _reponame=FlashBrowser
 pkgver=0.81.r27.g0d97b17
-pkgrel=3
+pkgrel=4
 pkgdesc="A browser dedicating to supporting adobe flash"
 url="https://flash.pm/browser/"
-arch=(any)
-license=(unknown)
-depends=(nodejs)
+arch=('any')
+license=('unknown')
+depends=('nodejs')
 makedepends=(
-	git
-	npm
-	imagemagick
+	'git'
+	'npm'
+	'imagemagick'
 )
-provides=("flashbrowser-git=${pkgver}")
+provides=('flashbrowser-git')
 conflicts=('flashbrowser-git')
 source=(
 	git+https://github.com/radubirsan/FlashBrowser.git
@@ -41,9 +41,10 @@ build() {
 	cd "$srcdir/$_reponame"
 	npm install --legacy-peer-deps --cache "$srcdir/npm-cache"
 
-	# remove all dotfiles and references to pkgdir
-	find . -type f -name ".*" -delete
-	find . -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+	# remove all dotfiles, git folders and references to pkgdir
+	find . -type f -name '.*' -delete
+	find . -type d -name '.git*' | xargs rm -r
+	find . -name 'package.json' -print0 | xargs -r -0 sed -i '/_where/d'
 }
 
 package() {
@@ -55,19 +56,19 @@ package() {
 	install -Dm755 "$srcdir/$_reponame.sh" "$pkgdir/usr/bin/$_reponame"
 
 	# install icons
-	for dirs in 16 24 32 48 256; do
-		mkdir -p "$pkgdir/usr/share/icons/hicolor/${dirs}x${dirs}/apps"
+	for d in 16 24 32 48 256; do
+		mkdir -p "$pkgdir/usr/share/icons/hicolor/${d}x${d}/apps"
 	done
 
-	for icons in 16 24 32 48 256; do
-		if 	[ $icons = '16' ];	then layer=0;
-		elif 	[ $icons = '24' ];	then layer=1;
-		elif 	[ $icons = '32' ];	then layer=2;
-		elif 	[ $icons = '48' ];	then layer=3;
-		elif 	[ $icons = '256' ];	then layer=4; fi
+	for i in 16 24 32 48 256; do
+		if 	[ $i = '16' ];	then layer=0;
+		elif 	[ $i = '24' ];	then layer=1;
+		elif 	[ $i = '32' ];	then layer=2;
+		elif 	[ $i = '48' ];	then layer=3;
+		elif 	[ $i = '256' ];	then layer=4; fi
 
-	convert "$srcdir/$_reponame"/icon.ico[${layer}] -define icon:auto-resize=${icons} \
-		"$pkgdir/usr/share/icons/hicolor/${icons}x${icons}/apps/${_reponame}.png"
+	convert "$srcdir/$_reponame/icon.ico[${layer}]" -define icon:auto-resize=${i} \
+		"$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/${_reponame}.png"
 	done
 
 	# install desktop entry file
