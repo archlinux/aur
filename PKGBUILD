@@ -2,7 +2,7 @@
 pkgname='lockbook-desktop'
 _pkgname="lockbook-desktop"
 pkgver=0.7.2
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://github.com/lockbook/lockbook"
 pkgdesc="The private, polished note-taking platform."
