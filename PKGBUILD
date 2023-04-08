@@ -3,7 +3,7 @@
 
 pkgname=python-translationstring
 pkgver=1.4
-pkgrel=6
+pkgrel=7
 pkgdesc="Utility library for i18n relied on by various Repoze and Pyramid packages"
 arch=('any')
 license=('BSD')
