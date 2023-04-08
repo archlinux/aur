@@ -5,10 +5,10 @@ pkgbase = x-pixiv-bin
 	url = https://github.com/xiaoxigua-1/XPixiv
 	arch = x86_64
 	license = MIT
-	depends = openssl
+	depends = openssl1.1
 	provides = x-pixiv
 	conflicts = x-pixiv
 	source_x86_64 = https://github.com/xiaoxigua-1/XPixiv/releases/download/v.0.1.6/x-pixiv-0.1.6-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = b63b23138e0a2e8d8da63f9950d1f78c4a55514f5b292f13cc80a768ef31ed8f
+	sha256sums_x86_64 = d6a702cd5da95d08501196450a1ea2077eba74f995f85c0102838adc93dcf6cd
 
 pkgname = x-pixiv-bin
