@@ -3,7 +3,7 @@
 
 pkgname=python-amqp
 pkgver=5.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Low-level AMQP client for Python (fork of amqplib)"
 arch=('any')
 url="https://github.com/celery/py-amqp"
