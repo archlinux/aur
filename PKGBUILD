@@ -9,7 +9,6 @@ url="https://github.com/xredor/unarc"
 license=('unknown')
 depends=('gcc-libs' 'glibc')
 makedepends=('gcc' 'git')
-provides=("unarc")
 
 _gitname="unarc-git"
 source=("$_gitname::git+https://github.com/xredor/unarc.git")
