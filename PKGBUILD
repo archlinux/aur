@@ -1,8 +1,8 @@
 # Maintainer: moonshadow565 <moonshadow565@hotmail.com>
 
 pkgname=wine-lol-staging
-pkgver=8.1
-_winever=8.1
+pkgver=8.2
+_winever=8.2
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (staging branch) with LoL patches(abi.vsyscall32=0 version)'
 arch=('x86_64')
@@ -105,11 +105,12 @@ prepare() {
     # change back to the wine upstream commit that this version of wine-staging is based in
     printf '%s\n' '  -> Changing wine HEAD to the wine-staging base commit...'
     git -C wine config --local advice.detachedHead false
-    git -C wine checkout "$(wine-staging/patches/patchinstall.sh --upstream-commit)"
+    git -C wine checkout wine-${_winever}
 
     # apply all wine-staging patches
     printf '%s\n' '  -> Applying wine-staging patches...'
-    wine-staging/patches/patchinstall.sh DESTDIR="${srcdir}/wine" --all
+    cd "${srcdir}/wine"
+    "${srcdir}/wine-staging/staging/patchinstall.py" --all
 
     cd "${srcdir}/wine"
 
