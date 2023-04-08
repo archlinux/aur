@@ -19,6 +19,8 @@ source=("git+https://github.com/wine-staging/wine-staging.git#tag=v${_winever}"
         "0004-LoL-broken-client-update-fix.patch"
         "0005-LoL-client-slow-start-fix.patch"
         "0006-LoL-abi-vsyscall32-disable-vDSO.patch"
+        "0007-ntdll-stub-NtSetInformationThread-ThreadPriority.patch"
+        "0008-ntdll-nopguard-call_vectored_handlers.patch"
         )
 
 sha256sums=('SKIP'
@@ -28,6 +30,8 @@ sha256sums=('SKIP'
             '7607a84fd357a86bc8fb59d2cf002a3e471bd8ec78ecdb844b0b77b1ae6d11a0'
             '49dfbf7546c00958e2b426a61371eedf0119471e9998b354595d5c0ce6dab48b'
             'fe33c51d492de4685b515781ac157a5d02f8048a528404b4fd8319cfc7f5cf25'
+            'fc4fba4db2f691e3686fa84dd81935f0eb183d7c5c1215aba33a575b42b38cb5'
+            '2075ddc417ddd11954f76be753c88e04db28f0b3937e60508f178630dd5763eb'
             )
 
 depends=(
@@ -130,6 +134,14 @@ prepare() {
     # Disables vDSO in preelink, no need for "sudo sysctl -w abi.vsyscall32=0"
     printf 'Apply 0006-LoL-abi-vsyscall32-disable-vDSO.patch\n'
     patch -Np1 < "${srcdir}/0006-LoL-abi-vsyscall32-disable-vDSO.patch"
+
+    # Properly stub ThreadPriority for NtSetInformationThread
+    printf 'Apply 0007-ntdll-stub-NtSetInformationThread-ThreadPriority.patch\n'
+    patch -Np1 < "${srcdir}/0007-ntdll-stub-NtSetInformationThread-ThreadPriority.patch"
+
+    # Add some nops around exception dispatch for pacman/stub.dll to be able to hook
+    printf 'Apply 0008-ntdll-nopguard-call_vectored_handlers.patch\n'
+    patch -Np1 < "${srcdir}/0008-ntdll-nopguard-call_vectored_handlers.patch"
 }
 
 build() {
