@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Bittly
+Exec=/opt/bittly/bittly.AppImage %U
+Comment=A testing tool for serial port, network, bluetooth, http, websocket...
+Comment[zh_CN]=不止是一个串口调试助手 (～￣▽￣)～
+Terminal=false
+Icon=bittly
+Type=Application
+StartupNotify=true
+StartupWMClass=Bittly
+Categories=Network;Development;Utility;

@@ -1,29 +1,28 @@
-# Maintainer: hr567 <hr567@hr567.me>
-# Maintainer: HaroldLoui <Riven970309@gmail.com>
-pkgname=apifox
-pkgver=2.2.30
-pkgrel=2
-pkgdesc="API 文档、API 调试、API Mock、API 自动化测试"
+# Maintainer: icepie <icepie.dev@gmail.com>
+pkgname=bittly
+pkgver=0.19.1
+pkgrel=1
+pkgdesc="不止是一个串口调试助手 (～￣▽￣)～"
 arch=("x86_64")
-url="https://www.apifox.cn/"
+url="https://bittly.sigechen.com"
 license=('custom')
 depends=('c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libxslt' 'minizip' 'nss' 're2' 'snappy' 'fuse2')
 source=(
-	"${pkgname}-v${pkgver}-${pkgrel}.zip"::"https://cdn.apifox.cn/download/Apifox-linux-latest.zip"
-	"apifox.desktop"
-	"apifox.svg")
+	"${pkgname}-${pkgver}.AppImage"::"https://res.bittly.sigechen.com/download/${pkgver}/bittly-${pkgver}-x64.AppImage"
+	"bittly.desktop"
+	"bittly.svg")
 sha256sums=(
-	'7a4c9992e93db98d7e370ba1c59dfe6f84601629cceae660e1464dec34d5cbf2'
-	'e89d2d53ce221c59436b7f1f9e4e9c0f2ccf6f55597df2fd16c419c8de5360a9'
-	'48dbd5c9727e568c3f19b45d36851eed15fa875a0ca40e83ec35d4e30ecd350d')
+	'4608abc2da4cb74223391faae3b9b3aa3c0715c41fd06c7eb47b4cd1f316c274'
+	'0b9dbfae82faceb33c027d0686a21d14a3c50b04065458799d2ebe9df87edd03'
+	'a39dfb8e7dc3466c184cc564c3c8d341c5f38065fe46533d1c59620c4273ccd9')
 options=(!strip)
 
 package() {
-	install -Dm755 "${srcdir}/Apifox.AppImage" "${pkgdir}/opt/apifox/Apifox.AppImage"
-	install -Dm644 "${srcdir}/apifox.desktop" "${pkgdir}/usr/share/applications/apifox.desktop"
-	# install -Dm644 "${srcdir}/apifox.svg" "${pkgdir}/usr/share/icons/apifox.svg"
-	install -Dm644 "${srcdir}/apifox.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/apifox.svg"
+	install -Dm755 "${srcdir}/bittly-${pkgver}.AppImage" "${pkgdir}/opt/bittly/bittly.AppImage"
+	install -Dm644 "${srcdir}/bittly.desktop" "${pkgdir}/usr/share/applications/bittly.desktop"
+	# install -Dm644 "${srcdir}/bittly.svg" "${pkgdir}/usr/share/icons/bittly.svg"
+	install -Dm644 "${srcdir}/bittly.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/bittly.svg"
 	
 	mkdir -p "${pkgdir}/usr/bin"
-	ln -sf "${pkgdir}/opt/apifox/Apifox.AppImage" "${pkgdir}/usr/bin"
+	ln -sf "${pkgdir}/opt/bittly/bittly.AppImage" "${pkgdir}/usr/bin"
 }
