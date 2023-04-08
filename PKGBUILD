@@ -51,14 +51,12 @@ _uc_ver=$pkgver-1
 source=(${source[@]}
         $pkgname-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz
         ozone-add-va-api-support-to-wayland.patch
-        #vaapi-add-av1-support.patch
-        vaapi-add-av1-hevc-support.patch
+        vaapi-add-av1-support.patch
         remove-main-main10-profile-limit.patch)
 sha256sums=(${sha256sums[@]}
             '9048669535558d2a6cd264539c6588d0218ba2b12950d3ed057ef3ec5fee1baa'
             'e9e8d3a82da818f0a67d4a09be4ecff5680b0534d7f0198befb3654e9fab5b69'
-            #'e742cc5227b6ad6c3e0c2026edd561c6d3151e7bf0afb618578ede181451b307'
-            'dfa5251a649f3e0ab43538a20eefd5747217c2deaf34f8a761af54491356580a'
+            'e742cc5227b6ad6c3e0c2026edd561c6d3151e7bf0afb618578ede181451b307'
             'be8d3475427553feb5bd46665ead3086301ed93c9a41cf6cc2644811c5bda51c')
  
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -135,8 +133,7 @@ prepare() {
   # Custom Patches
   patch -Np1 -i ../ozone-add-va-api-support-to-wayland.patch
   patch -Np1 -i ../remove-main-main10-profile-limit.patch
-  #patch -Np1 -i ../vaapi-add-av1-support.patch
-  patch -Np1 -i ../vaapi-add-av1-hevc-support.patch
+  patch -Np1 -i ../vaapi-add-av1-support.patch
 
   # Ungoogled Chromium changes
   _ungoogled_repo="$srcdir/$pkgname-$_uc_ver"
