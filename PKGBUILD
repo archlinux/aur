@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=nile-git
-pkgver=r38.7b825bd
+pkgver=r42.164b70a
 pkgrel=1
 pkgdesc="Unofficial Amazon Games client"
 arch=('any')
 url="https://github.com/imLinguin/nile"
 license=('GPL3')
-depends=('bash' 'python-protobuf' 'python-pycryptodome' 'python-pyqt5-webengine'
+depends=('bash' 'python-protobuf' 'python-pycryptodome' 'python-protobuf'
          'python-requests' 'python-zstandard')
 makedepends=('git')
 provides=("${pkgname%-git}")
@@ -23,6 +23,10 @@ package() {
   cd "$srcdir/${pkgname%-git}"
   install -d "$pkgdir/opt/${pkgname%-git}"
   cp -r assets bin "${pkgname%-git}" "$pkgdir/opt/${pkgname%-git}/"
+
+  # compile Python bytecode for modules outside of site-packages:
+  python -m compileall -d / "$pkgdir/opt/${pkgname%-git}"
+  python -O -m compileall -d / "$pkgdir/opt/${pkgname%-git}"
 
   install -d "$pkgdir/usr/bin"
   ln -s "/opt/${pkgname%-git}/bin/${pkgname%-git}" "$pkgdir/usr/bin/"
