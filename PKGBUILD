@@ -3,7 +3,7 @@
 _name=jinja2-time
 pkgname=python-jinja-time
 pkgver=0.2.0
-pkgrel=8
+pkgrel=9
 pkgdesc="Jinja2 Extension for Dates and Times"
 arch=(any)
 url="https://github.com/hackebrot/jinja2-time"
