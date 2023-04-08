@@ -2,13 +2,12 @@ pkgbase = mkvalidator
 	pkgdesc = Validator for MKV files
 	pkgver = 0.6.0
 	pkgrel = 1
-	url = http://www.matroska.org/downloads/mkvalidator.html
+	url = https://www.matroska.org/downloads/mkvalidator.html
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
 	depends = glibc
-	source = http://sourceforge.net/projects/matroska/files/mkvalidator/mkvalidator-0.6.0.tar.bz2
+	source = https://sourceforge.net/projects/matroska/files/mkvalidator/mkvalidator-0.6.0.tar.bz2
 	sha256sums = f9eaa2138fade7103e6df999425291d2947c5355294239874041471e3aa243f0
 
 pkgname = mkvalidator
-
