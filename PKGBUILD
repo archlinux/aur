@@ -8,7 +8,7 @@
 
 pkgname=firefox-wayland-hg
 _pkgname=firefox
-pkgver=r684798.b77de0b524d8
+pkgver=r659341.4e0bb3e
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org (mozilla-unified hg, release branding, targeting wayland)"
 arch=(x86_64)
@@ -17,7 +17,7 @@ url="https://www.mozilla.org/firefox/"
 depends=(gtk3 libxt mime-types dbus-glib
          ffmpeg nss-hg ttf-font libpulse xorg-server-xwayland
          libvpx libwebp libjpeg zlib icu libevent pipewire)
-makedepends=(mercurial unzip zip diffutils yasm mesa imake inetutils
+makedepends=(git-cinnabar unzip zip diffutils yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust clang llvm jack nodejs cbindgen nasm
              python-setuptools lld dump_syms
              wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi)
@@ -31,7 +31,7 @@ options=(!emptydirs !makeflags !strip !lto)
 _repo=https://hg.mozilla.org/mozilla-unified
 conflicts=('firefox')
 provides=('firefox')
-source=("hg+$_repo#revision=autoland"
+source=("mozilla-unified::git+hg::$_repo#branch=bookmarks/autoland"
         $_pkgname.desktop $_pkgname-symbolic.svg)
 sha256sums=('SKIP'
             'a9e5264257041c0b968425b5c97436ba48e8d294e1a0f02c59c35461ea245c33'
@@ -51,7 +51,7 @@ _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
 pkgver() {
   cd mozilla-unified
-  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
@@ -131,6 +131,7 @@ build() {
   cd mozilla-unified
 
   export MOZ_SOURCE_REPO="$_repo"
+  export MOZ_SOURCE_CHANGESET="$(cd $SRCDEST/mozilla-unified; git cinnabar git2hg bookmarks/autoland)"
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=none
