@@ -1,25 +1,26 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=sparrow-wifi-git
-pkgver=r179.4b82897
-pkgrel=2
+pkgver=r189.7521e4d
+pkgrel=1
 pkgdesc="Next-Gen GUI-based WiFi and Bluetooth Analyzer for Linux"
 arch=('any')
 url="https://github.com/ghostop14/sparrow-wifi"
 license=('GPL3')
 depends=('aircrack-ng'
          'iw'
-         'tk'
-         'python-matplotlib'
-         'python-qscintilla-qt5'
-         'python-pyqt5-sip'
-         'qt5-declarative'
+         'polkit'
+         'python-dateutil'
          'python-gps3'
          'python-manuf'
-         'python-dateutil'
+         'python-matplotlib'
          'python-numpy'
          'python-pyqt5-chart'
-         'polkit'
+         'python-pyqt5-sip'
+         'python-qscintilla-qt5'
+         'qt5-declarative'
+         'tk'
          'wireless_tools')
 makedepends=('git')
 optdepends=('gpsd: GPS support'
