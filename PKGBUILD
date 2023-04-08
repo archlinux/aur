@@ -1,4 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+
+# Check for new version (currently not working):
+# curl -s https://flavio.tordini.org/sofa-server-ws/release.xml | tr -dc 0-9.
+
 pkgname=sofa-server
 pkgver=1.5
 pkgrel=1
@@ -9,10 +13,6 @@ license=('unknown')
 depends=('avahi' 'gnome-shell' 'libnotify' 'qt5-base' 'qt5-imageformats' 'qt5-websockets' 'systemd')
 source=("$pkgname-$pkgver.deb::https://flavio.tordini.org/files/sofa/$pkgname.deb")
 sha256sums=('a93284b71fdbe987ede0fb32dbf093882a4e8cb254fa0b9392bc3a41d15170ab')
-
-#pkgver() {
-#  echo $(curl -s https://flavio.tordini.org/sofa-server-ws/release.xml | tr -dc 0-9.)
-#}
 
 package() {
   bsdtar xvf "data.tar.xz" -C "$pkgdir/"
