@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=idlersc
-pkgver=r520.ga59120d
+pkgver=r652.gff023c6
 pkgrel=1
 pkgdesc='A fork of IdleRSC for playing on OpenRSC servers'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://gitlab.com/open-runescape-classic/idlersc'
 license=('GPL3')
 depends=('jre-openjdk' 'hicolor-icon-theme')
 makedepends=('git' 'gradle' 'gendesk')
-_commit='a59120dc2a44bc43626969d46c297f8b03e4db63'
+_commit='ff023c65e85e7f96ae38733a721adeee375e7183'
 source=(
   "$pkgname::git+https://gitlab.com/open-runescape-classic/idlersc.git#commit=$_commit"
   'idlersc.sh'
@@ -21,7 +21,7 @@ source=(
   'uranium_icon_128.png'
 )
 b2sums=('SKIP'
-        '60646631c01804a4e4dfa7abd40b960eec642ebbcb0ff8867c07d3f89b57b0035f9d65e7997a378e095175e6b09445f3caf6683328b47652a38c1f879d9f3b15'
+        '4b2fa76edef23dbf368d3bed17b2148adb00bcd562b413880e9b909fcc251c7f7ae18db1eb21a92df6e48355ca4895f664ace26425ce51abdf54342149179986'
         '6e9005bc77036466f2e931adbcd880a704eedc89398ef0c32efc40bb5aebcad72a88479a71303bd9c496c84fce31d4f083464c4faa6df477281c5ad980aa2948'
         '7ac538f0cdde8efb76adbd1c35dd9f4a6e4d6f5a75704d745099f1b43a651a03d0e2b9b8f8f3cb7b6775dbd99c4d886ffb3ad3c1c7223922a1a31681579521d0'
         'e39fdd136683fd1c3124937d76bfebf431b6c7c705b3f08dc9b83248f99a4dbbccd491c77ea7b77ad938ddcb1e53435abb15c6863657356762acedf0d8c7b40d'
@@ -49,33 +49,14 @@ prepare() {
       --pkgname "vet.rsc.IdleRSC.${server}" \
       --pkgdesc "Bot for OpenRSC (${server^})" \
       --name "IdleRSC (${server^})" \
-      --exec "/usr/bin/idlersc ${server}"
-
-    # hash for wrapper script
-    pushd "${server^}Cache"
-    find . \
-      -type f \
-      -exec sha256sum {} + | \
-      LC_ALL=C sort | \
-      sha256sum | \
-      cut -d ' ' -f 1 > "../${server^}Cache.hash"
-    popd
+      --exec "/usr/bin/idlersc --init-cache ${server}"
   done
-
-  # secondary hash for map contents
-  cd Map
-  find . \
-    -type f \
-    -exec sha256sum {} + | \
-    LC_ALL=C sort | \
-    sha256sum | \
-    cut -d ' ' -f 1 > "../Map.hash"
 }
 
 build() {
   cd "$pkgname"
 
-  # build fat jar
+  
   gradle build
 }
 
@@ -86,11 +67,7 @@ package() {
   install -vDm755 "$srcdir/idlersc.sh" "$pkgdir/usr/bin/idlersc"
 
   # jar
-  install -vDm644 -t "$pkgdir/usr/share/java/$pkgname" IdleRSC.jar
-
-  # assets
-  install -vd "$pkgdir/usr/share/$pkgname"
-  cp -vr {Coleslaw,Uranium}Cache{,.hash} Map{,.hash} "$pkgdir/usr/share/$pkgname"
+  install -vDm644 app/build/libs/app.jar "$pkgdir/usr/share/java/$pkgname/IdleRSC.jar"
 
   # desktop files & icons
   for server in coleslaw uranium; do
