@@ -1,11 +1,12 @@
 pkgbase = trick-or-treat
 	pkgdesc = WebSocket-based virtual private network
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lanthora/trick-or-treat
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
+	arch = riscv64
 	license = MIT
 	makedepends = cmake
 	makedepends = make
