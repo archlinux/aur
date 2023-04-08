@@ -1,6 +1,6 @@
 pkgbase = sigtop-git
 	pkgdesc = Export messages from Signal Desktop
-	pkgver = r217.00705d9
+	pkgver = v0.2.0.r0.g8d42ac0
 	pkgrel = 1
 	url = https://github.com/tbvdm/sigtop
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = sigtop-git
 	makedepends = git
 	provides = sigtop
 	conflicts = sigtop
-	source = sigtop::git+https://github.com/tbvdm/sigtop#branch=portable
+	source = sigtop::git+https://github.com/tbvdm/sigtop#branch=master
 	sha256sums = SKIP
 
 pkgname = sigtop-git

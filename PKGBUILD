@@ -3,7 +3,7 @@
 
 _pkgname=sigtop
 pkgname=$_pkgname-git
-pkgver=r217.00705d9
+pkgver=v0.2.0.r0.g8d42ac0
 pkgrel=1
 pkgdesc='Export messages from Signal Desktop'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('ISC')
 makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=("$_pkgname::git+$url#branch=portable")
+source=("$_pkgname::git+$url#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -25,7 +25,11 @@ pkgver() {
 
 build() {
   cd $_pkgname
-  make
+  go build \
+     -gcflags "all=-trimpath=$PWD" \
+     -asmflags "all=-trimpath=$PWD" \
+     -ldflags "-extldflags $LDFLAGS" \
+     -o $_pkgname .
 }
 
 package() {
