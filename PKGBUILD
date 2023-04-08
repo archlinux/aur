@@ -2,7 +2,7 @@
 
 pkgname=python-shippinglabel
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Utilities for handling Python packages'
 arch=('any')
 url='https://shippinglabel.readthedocs.io/'
