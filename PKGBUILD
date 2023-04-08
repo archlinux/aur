@@ -1,8 +1,8 @@
 pkgname=ardupilot-mission-planner
 pkgver=1.3.80
 epoch=2
-pkgrel=3  # Todo: reset to 1 when changing the version!
-pkgdesc="Mission Planner Ground Control Station"
+pkgrel=4  # Todo: reset to 1 when changing the version!
+pkgdesc="Full-featured ground station application for the ArduPilot open source autopilot project"
 arch=('x86_64')
 url="https://github.com/ArduPilot/MissionPlanner"
 license=("GPL3")
