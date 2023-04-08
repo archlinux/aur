@@ -9,7 +9,6 @@ pkgbase = hotshots-git
 	makedepends = qt5-tools
 	depends = qt5-x11extras
 	depends = qt5-multimedia
-	depends = shared-mime-info
 	provides = hotshots
 	conflicts = hotshots
 	source = hotshots::git+https://github.com/obiwankennedy/HotShots.git
