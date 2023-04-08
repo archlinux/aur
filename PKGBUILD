@@ -2,7 +2,7 @@
 
 _pipname=nbclassic
 pkgname=jupyter-$_pipname
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc='Jupyter Notebook as a Jupyter Server Extension'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(python-jupyter-server-terminals jupyter-notebook-shim mathjax2)
 makedepends=(python-build python-installer python-setuptools)
 checkdepends=(python-pytest-tornasync python-pytest-jupyter)
 source=(https://pypi.io/packages/source/${_pipname:0:1}/$_pipname/$_pipname-$pkgver.tar.gz)
-sha256sums=('312b3f7d7ff2e6c261d51799bb12e6493498ab47d3469d3a01015d5533fd4d2b')
+sha256sums=('d2c91adc7909b0270c73e3e253d3687a6704b4f0a94bc156a37c85eba09f4d37')
 
 build() {
   cd $_pipname-$pkgver
