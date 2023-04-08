@@ -5,7 +5,7 @@
 _pkgname=feather
 pkgname="${_pkgname}wallet-appimage"
 pkgver=2.4.5
-pkgrel=2
+pkgrel=1
 pkgdesc="A free Monero desktop wallet"
 arch=('x86_64')
 url="https://featherwallet.org"

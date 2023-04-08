@@ -1,7 +1,7 @@
 pkgbase = featherwallet-appimage
 	pkgdesc = A free Monero desktop wallet
 	pkgver = 2.4.5
-	pkgrel = 2
+	pkgrel = 1
 	url = https://featherwallet.org
 	arch = x86_64
 	license = GPL
