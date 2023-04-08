@@ -1,6 +1,6 @@
 pkgbase = wine-lol-staging
 	pkgdesc = A compatibility layer for running Windows programs (staging branch) with LoL patches(abi.vsyscall32=0 version)
-	pkgver = 8.2
+	pkgver = 8.5
 	pkgrel = 1
 	url = https://www.wine-staging.com/
 	install = wine-lol-staging.install
@@ -111,8 +111,8 @@ pkgbase = wine-lol-staging
 	options = staticlibs
 	options = !lto
 	options = !strip
-	source = git+https://github.com/wine-staging/wine-staging.git#tag=v8.2
-	source = git+https://github.com/wine-mirror/wine.git#tag=wine-8.2
+	source = git+https://github.com/wine-staging/wine-staging.git#tag=v8.5
+	source = git+https://github.com/wine-mirror/wine.git#tag=wine-8.5
 	source = 0004-LoL-broken-client-update-fix.patch
 	source = 0005-LoL-client-slow-start-fix.patch
 	source = 0007-ntdll-stub-NtSetInformationThread-ThreadPriority.patch
