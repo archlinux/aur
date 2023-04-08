@@ -1,7 +1,7 @@
 # Maintainer: David Florness <david at florness dot com>
 pkgname=tallyard
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.6.2
+pkgrel=1
 arch=('x86_64')
 pkgdesc="an authenticated voting system that ensures voter privacy while preventing double-voting"
 url="https://tallyard.xyz"
@@ -9,7 +9,7 @@ license=('MPL2')
 depends=('libolm')
 makedepends=('go>=1.18')
 source=("$pkgname-v$pkgver.tar.gz::https://git.hnitbjorg.xyz/~edwargix/tallyard/archive/v$pkgver.tar.gz")
-sha256sums=('b1914a58717cd692d61798c925a76e44e4400b618381a03481f552c32eb467d6')
+sha256sums=('f073e187b757f0aef353f180c1600da7455e26adde07e955bee6ab687c596285')
 
 build() {
   cd "$srcdir/$pkgname-v$pkgver"
