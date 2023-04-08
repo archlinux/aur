@@ -1,6 +1,6 @@
 pkgbase = cura
 	pkgdesc = A software solution for 3D printing aimed at RepRaps and the Ultimaker.
-	pkgver = 4.13.1
+	pkgver = 5.3.0
 	pkgrel = 1
 	url = https://ultimaker.com/software/ultimaker-cura
 	arch = any
@@ -27,9 +27,9 @@ pkgbase = cura
 	optdepends = python-libcharon: UFPWriter/UFPReader
 	optdepends = cura-binary-data: Binary data (firmwares and such) for cura
 	provides = cura
-	source = cura-4.13.1.tar.gz::https://github.com/Ultimaker/Cura/archive/4.13.1.tar.gz
-	source = cura-4.13.1-no-sentry.patch::https://github.com/Ultimaker/Cura/commit/aad41807c365ccef001b787407d7dc756e11de02.patch
-	sha512sums = 6483fd6312bd2181cc812bce78aadc7e8532ecf292f09c75ce5e7870f7efddd63e84315ab40eb73c775b15c2ed2ce7fc804fcbefb73b3d8aaac77d8b22f0cbd0
+	source = cura-5.3.0.tar.gz::https://github.com/Ultimaker/Cura/archive/5.3.0.tar.gz
+	source = cura-5.3.0-no-sentry.patch::https://github.com/Ultimaker/Cura/commit/aad41807c365ccef001b787407d7dc756e11de02.patch
+	sha512sums = 79421486e89082a0b9f9435e778193f26d067c87fa52dbd277113da5614d5ce340d676aacdc1193bd2ab76de8c9456163bf983181d8d213e96b1af25b4a6b713
 	sha512sums = c602c5e585862d9bab280a8d5bd2289fe1b10d79f54cd76171b76fcf48793b190ff5bf6fca22818d8b65a726ee64098750c79cba67f044e0186a83aeb78e8a14
 
 pkgname = cura
