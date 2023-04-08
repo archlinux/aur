@@ -4,7 +4,7 @@
 _srcname=Odin
 
 pkgname=odin
-pkgver=dev_2023_03
+pkgver=dev_2023_04
 pkgver_actual=${pkgver//_/-}
 pkgrel=1
 pkgdesc="A fast, concise, readable, pragmatic and open sourced programming language."
@@ -16,7 +16,7 @@ makedepends=('git')
 provides=('odin')
 conflicts=('odin')
 source=("https://github.com/odin-lang/Odin/archive/refs/tags/${pkgver_actual}.tar.gz")
-sha256sums=('c33dcd92cb4b27d35c7b975e64a274b5bab14588bec9b335b164ba813c0f8a6f')
+sha256sums=('6b8b79719fb1e4ce613130ee29beee8c84459f8187b122ca74eb7c7b8a2fd094')
 
 build() {
   cd "${srcdir}/Odin-${pkgver_actual}/"
@@ -33,6 +33,7 @@ package() {
 
   cp odin "${pkgdir}/usr/lib/${pkgname}/odin"
   cp -r core "${pkgdir}/usr/lib/${pkgname}/core"
+  cp -r vendor "${pkgdir}/usr/lib/${pkgname}/vendor"
 
   ln -s "/usr/lib/${pkgname}/odin" "${pkgdir}/usr/bin/odin"
 
