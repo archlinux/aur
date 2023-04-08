@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Triss Healy (trissylegs) <th at trissyle dot gs>
 pkgname=libshumate-git
 pkgver=1.0.0.beta.r6.g125757b
