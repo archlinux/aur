@@ -3,7 +3,7 @@
 # Based on https://aur.archlinux.org/packages/monero-feather-git/
 
 pkgname='monero-feather'
-pkgver=2.4.3
+pkgver=2.4.5
 pkgrel=1
 pkgdesc='A free Monero desktop wallet'
 license=('BSD')
@@ -37,6 +37,6 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm755 "${srcdir}/${pkgname}/build/bin/feather" "${pkgdir}/usr/bin/feather"
   install -Dm644 "${srcdir}/${pkgname}/src/assets/feather.desktop" "${pkgdir}/usr/share/applications/feather.desktop"
-  install -Dm644 "${srcdir}/${pkgname}/src/assets/images/feather.png" "${pkgdir}/usr/share/pixmaps/feather.png"
+  install -Dm644 "${srcdir}/${pkgname}/src/assets/images/appicons/256x256.png" "${pkgdir}/usr/share/pixmaps/feather.png"
 }
 
