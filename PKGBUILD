@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: jharch <julian dot hossbach at gmx dot de>
 # Contributor: Joonas Kärkkäinen <group55 at eth1 dot fi>
 pkgname=lexmark-network-scan
