@@ -9,7 +9,7 @@
 
 pkgbase=intel-media-sdk-git
 pkgname=('intel-media-sdk-git' 'libmfx-git')
-pkgver=2023.1.3.r2.gaff8e8fa
+pkgver=2023.1.5.r7.g4c815981
 pkgrel=1
 pkgdesc='Legacy API for hardware video acceleration on Intel GPUs (Broadwell to Rocket Lake) (git version)'
 arch=('x86_64')
@@ -35,6 +35,8 @@ pkgver() {
 }
 
 build() {
+    export CFLAGS+=' -DNDEBUG -ffat-lto-objects'
+    export CXXFLAGS+=' -DNDEBUG -ffat-lto-objects'
     cmake -B build -S MediaSDK \
         -G 'Unix Makefiles' \
         -DBUILD_ALL:BOOL='ON' \
