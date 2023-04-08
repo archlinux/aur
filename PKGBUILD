@@ -3,18 +3,18 @@
 # Ex-Maintainer: end222 <pabloorduna98 at gmail dot com>
 
 pkgname="nautilus-megasync"
-pkgver="3.6.6"
-pkgrel="2"
+pkgver="5.1.0"
+pkgrel="1"
 pkgdesc="Upload your files to your Mega account from nautilus."
-arch=('i686' 'x86_64')
-url="https://mega.co.nz/#sync"
+arch=('x86_64')
+url="https://mega.io/desktop#downloadapps"
 license=('custom:The Clarified Artistic License')
-depends=('libnautilus-extension' 'megasync>=2.9.8')
+# depends=('libnautilus-extension' 'megasync')
 provides=("${pkgname}")
 
-source=("https://mega.nz/linux/MEGAsync/Arch_Extra/x86_64/${pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.xz")
+source=("https://mega.nz/linux/repo/Arch_Extra/x86_64/${pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 
-sha256sums=('SKIP')
+sha256sums=('c0f1f70e39294b675b5ba6285a7d8f22ffb102693cb57c5d34ae1f7eb631fd04')
 
 install="${pkgname}.install"
 
