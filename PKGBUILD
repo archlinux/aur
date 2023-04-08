@@ -3,7 +3,7 @@
 _name=pc-ble-driver-py
 pkgname=python-pc-ble-driver-py
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Serialization library over serial port providing bindings for nrf-ble-driver"
 arch=(x86_64)
 url="https://github.com/NordicSemiconductor/pc-ble-driver-py"
