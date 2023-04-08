@@ -1,6 +1,6 @@
 pkgbase = nextcloud-app-gpxpod
 	pkgdesc = view gpx tracks
-	pkgver = 5.0.6
+	pkgver = 5.0.10
 	pkgrel = 1
 	url = https://github.com/julien-nc/gpxpod
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = nextcloud-app-gpxpod
 	makedepends = yq
 	depends = nextcloud
 	options = !strip
-	source = https://github.com/julien-nc/gpxpod/releases/download/v5.0.6/gpxpod-5.0.6.tar.gz
-	sha256sums = 722c794cb30b992d8c698bb7e725af6494e4dc308bdc8baf34b53f1f89fed303
+	source = https://github.com/julien-nc/gpxpod/releases/download/v5.0.10/gpxpod-5.0.10.tar.gz
+	sha256sums = 625865f6374ec46f907e4e7380d3bc1703ad033ae31874baeb2e7daa6a2b5cf5
 
 pkgname = nextcloud-app-gpxpod
 	depends = nextcloud>=

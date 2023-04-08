@@ -2,7 +2,7 @@
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=nextcloud-app-gpxpod
-pkgver=5.0.6
+pkgver=5.0.10
 _name=gpxpod
 pkgrel=1
 pkgdesc="view gpx tracks"
@@ -13,7 +13,7 @@ depends=('nextcloud')
 makedepends=('nextcloud' 'php' 'ripgrep' 'yq')
 options=('!strip')
 source=("https://github.com/julien-nc/gpxpod/releases/download/v$pkgver/gpxpod-$pkgver.tar.gz")
-sha256sums=('722c794cb30b992d8c698bb7e725af6494e4dc308bdc8baf34b53f1f89fed303')
+sha256sums=('625865f6374ec46f907e4e7380d3bc1703ad033ae31874baeb2e7daa6a2b5cf5')
 
 _get_nextcloud_versions() {
   _app_min_major_version="$(xq '.info.dependencies.nextcloud["@min-version"]' "${_name}/appinfo/info.xml"| sed 's/"//g')"
