@@ -4,14 +4,15 @@
 # Contributor: slact
 
 # BEGIN AUTOMATICALLY UPDATED SECTION
-_tlpui_ver=1.5.0-7-10-ge5f5ae6
+_tlpui_ver=1.5.0-7
 _pkgrel=1
-_sha256=4d62f713b646106ef5a2ace40781ce8589d0ef4d2538fa480edd66f650982cdd
+_sha256=7172f35813a8077a7eb2b49911a9a01d7c4b4e50258f17722616c3cb53b06895
 # END AUTOMATICALLY UPDATED SECTION
 
 pkgname=tlpui
 pkgver="$(tr "-" "." <<< "${_tlpui_ver}")"
 pkgrel=${_pkgrel}
+epoch=1
 pkgdesc="A GTK user interface for TLP written in Python"
 arch=('any')
 url="https://github.com/d4nj1/TLPUI"
