@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=aq
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Like jq, but for JSON, TOML & YAML'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache' 'MIT')
 depends=('jq')
 makedepends=('git' 'rust')
 options=('!lto')
-_commit='6ce8ee7a0eda2f588c17a2952b2e5cc2f2774904'
+_commit='73bc5323fddb079734a90d7e0baa6d5b9aa176c4'
 source=("$pkgname::git+$url#commit=$_commit")
 b2sums=('SKIP')
 
