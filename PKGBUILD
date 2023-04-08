@@ -1,6 +1,6 @@
 pkgname=qcm-git
-pkgver=r25.5d17e9b
-pkgrel=2
+pkgver=r46.c085302
+pkgrel=1
 pkgdesc="Qt client for netease cloud music "
 arch=('x86_64')
 url="https://github.com/hypengw/Qcm"
@@ -41,8 +41,11 @@ function build(){
 
 function package(){
     _info "Copying files"
-    mkdir -p "${pkgdir}"/opt/Qcm
-    mkdir -p "${pkgdir}"/usr/bin
+    for dir in /opt/Qcm /usr/bin /usr/share/icons/hicolor/scalable/apps /usr/share/applications; do
+    mkdir -p "${pkgdir}""${dir}"
+    done
+    cp "${srcdir}"/Qcm/app/assets/Qcm.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps
+    cp "${srcdir}"/Qcm/app/assets/Qcm.desktop "${pkgdir}"/usr/share/applications
     cp "${srcdir}"/Qcm/build/app/Qcm "${pkgdir}"/opt/Qcm
     echo '''#!/bin/bash
 "${pkgdir}"/opt/Qcm/Qcm "$@"
