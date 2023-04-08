@@ -10,7 +10,6 @@ pkgbase = unarc-git
 	makedepends = git
 	depends = gcc-libs
 	depends = glibc
-	provides = unarc
 	source = unarc-git::git+https://github.com/xredor/unarc.git
 	md5sums = SKIP
 
