@@ -27,6 +27,6 @@ build() {
 
 package() {
   install -D -m755 "$srcdir/lockbook/target/release/lockbook-egui" "$pkgdir/usr/bin/lockbook-desktop"
-  install -D -m644 "$srcdir/aur-lockbook-desktop/light-1-tranparent.png" "$pkgdir/usr/share/pixmaps/light-1-tranparent.png"
+  install -D -m644 "$srcdir/aur-lockbook-desktop/light-1-transparent.png" "$pkgdir/usr/share/pixmaps/light-1-transparent.png"
   install -D -m644 "$srcdir/aur-lockbook-desktop/lockbook-desktop.desktop" "$pkgdir/usr/share/applications/lockbook-desktop.desktop"
 }
