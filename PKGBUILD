@@ -8,18 +8,18 @@ arch=('x86_64')
 url="https://github.com/semtor/cs"
 license=('MIT')
 makedepends=('cmake' 'git')
-source=("$pkgname-$pkgver::$url/archive/refs/heads/main.zip")
+source=("$pkgname-main::$url/archive/refs/heads/main.zip")
 #noextract=("${source[@]##*/}")
 md5sums=('SKIP')
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-main"
   mkdir build&&cd build
   cmake -DCMAKE_INSTALL_PREFIX=$pkgdir/usr ..
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-main"
   cd build
   make && make install
 }
