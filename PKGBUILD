@@ -3,7 +3,7 @@
 _name=bincopy
 pkgname=python-bincopy
 pkgver=17.14.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Mangling of various file formats that conveys binary information"
 arch=(any)
 url="https://github.com/eerimoq/bincopy"
