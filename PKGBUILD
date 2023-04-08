@@ -3,8 +3,8 @@
 # https://github.com/eikek/sharry
 
 pkgname=sharry
-pkgver=1.11.0
-pkgrel=4
+pkgver=1.12.0
+pkgrel=1
 pkgdesc='A self-hosted file sharing web application'
 url="https://eikek.github.io/sharry"
 arch=('any')
@@ -23,7 +23,7 @@ source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/eikek/sharry/releases/d
         ${pkgname}.sysusers
         )
         
-sha256sums=('9d7dea1c6a170ae14da93d5e80fdce9485f308d4599ee2752f9f278272fce128'
+sha256sums=('33dbd283e90bb5682401ee7a7bd764d8ecc12f89276fb1ee119c8818fc23d2d3'
             '93f3f13ee65c6dfcbee8075fc6079735bddb46d647a217f7a96b030a4a45a026'
             '3d84fe25c85a95f7dc9100038beeb0a3d6742e29eec516eed1f266bc9d2d7cce')
 
