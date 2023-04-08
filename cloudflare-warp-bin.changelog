@@ -1,3 +1,9 @@
+cloudflare-warp (2023.3.398) unstable; urgency=medium
+  * Added support for millisecond timestamps for use in Digital Experience Monitoring
+  * Fixed an issue with Root CA installation feature
+
+  -- Jeff Hiner <jhiner@cloudflare.com> Thu, 7 Apr 2023 09:51:00 -0700
+
 cloudflare-warp (2023.3.258) unstable; urgency=medium
   * Improve timeouts with broken CNAME records that could result in very long load times for certain apps
   * Fixed issue where systems with significantly out of sync system clocks could fail registration
@@ -20,12 +26,13 @@ cloudflare-warp (2023.3.258) unstable; urgency=medium
   * Modified initial connectivity check behavior to retry on errors
 
  -- Logan Praneis <lpraneis@cloudflare.com>  Wed, 22 Mar 2023 12:33:12 -0500
- 
 
 cloudflare-warp (2023.1.133) unstable; urgency=medium
   * Fixed an issue where clients could lose IPv4 connectivity
   * Fixed an issue where clients would attempt to configure DNS in posture-only or proxy modes.
   * Increased MDM check timeout to improve compatibility with certain management solutions.
+
+  -- Logan Praneis <lpraneis@cloudflare.com> Thu, 18 Jan 2023 00:00:00 -0600
 
 cloudflare-warp (2022.12.542) unstable; urgency=medium
   * Added support for network location aware for Zero Trust organizations
