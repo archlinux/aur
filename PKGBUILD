@@ -2,8 +2,8 @@
 
 _pkgname=pycognito
 pkgname=python-pycognito
-pkgver=2021.03.1
-pkgrel=2
+pkgver=2022.12.0
+pkgrel=1
 pkgdesc='Python library for using AWS Cognito.'
 url='https://pypi.org/project/pycognito'
 arch=('any')
@@ -12,8 +12,8 @@ depends=('python-boto3' 'python-envs' 'python-jose' 'python-six' 'python-request
 makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-pytest-runner' 'python-pytest-mock' 'python-pytest-timeout'
               'python-wheel' 'python-pip' 'python-mock')
-source=("${_pkgname}-${pkgver}.tar.gz"::"https://github.com/pvizeli/pycognito/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('9fdfef44e5ec4a57b48d9cc783fd59f59b2b7c07a30a33d202162b2d2749c6cb')
+source=("${_pkgname}-${pkgver}.tar.gz"::"https://github.com/pvizeli/pycognito/archive/${pkgver}.tar.gz")
+sha256sums=('af97626d9e2b3593e27d145ef225d08786b1f0ee66fdb5411128ee5081d38726')
 
 build() {
   cd ${_pkgname}-${pkgver}
