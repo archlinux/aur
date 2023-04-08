@@ -3,15 +3,15 @@
 # Contributor: Jae Beojkkoch <jae@jae.moe>
 
 pkgname=openrsc-launcher
-pkgver=20230208.r7483.gadc5837a1
-pkgrel=2
+pkgver=20230321.r7573.g1aa78dae7
+pkgrel=1
 pkgdesc='Open-source launcher for various Runescape Classic servers'
 arch=('any')
 url='https://rsc.vet'
 license=('GPL3')
-depends=('jre-openjdk' 'hicolor-icon-theme')
-makedepends=('git' 'ant')
-_commit='adc5837a16c098b08672e6fa97029cece54543e3'
+depends=('java-runtime' 'hicolor-icon-theme')
+makedepends=('git' 'jdk8-openjdk' 'ant')
+_commit='1aa78dae74a63dd25016ae8d07db3bf215561cac'
 source=(
   "$pkgname::git+https://gitlab.com/open-runescape-classic/core.git#commit=$_commit"
   'launcher.sh'
@@ -31,6 +31,10 @@ pkgver() {
 
 build() {
   cd "$pkgname/PC_Launcher"
+
+  # Force the system to build the package using JDK 8
+  export PATH="/usr/lib/jvm/java-8-openjdk/bin/:$PATH"
+  export JAVA_HOME="/usr/lib/jvm/java-8-openjdk"
 
   ant compile
 }
