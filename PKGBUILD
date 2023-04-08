@@ -2,7 +2,7 @@
 
 pkgname=python-pook
 pkgver=1.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Versatile and expressive HTTP traffic mocking and testing made simple in Python"
 url="https://github.com/h2non/pook"
 license=('MIT')
