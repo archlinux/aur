@@ -3,7 +3,7 @@
 pkgname=python-apscheduler
 pkgver=3.10.0
 _commit=a2247473fb0f664ce02f6fb0c584a003df1e952b
-pkgrel=1
+pkgrel=2
 pkgdesc="In-process task scheduler with Cron-like capabilities"
 url="https://github.com/agronholm/apscheduler"
 license=('MIT')
