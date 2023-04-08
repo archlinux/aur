@@ -43,9 +43,7 @@ build() {
  
   # clean
   rm -fr lib
-  rm -f  AI/StdAI/*.o
-  rm -f  AI/StdAI/*.ppu
-  rm -f  AI/StdAI/*.res
+  rm -f *.res
 
   lazbuild -v
   lazbuild --ws=qt5 -B --lazarusdir=/usr/lib/lazarus --pcp="$srcdir/config" CevoMapGen.lpi
