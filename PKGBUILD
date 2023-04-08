@@ -14,8 +14,8 @@ pkgname=()
 [ "$_build_no_opt" -eq 1 ] && pkgname+=(tensorflow-rocm python-tensorflow-rocm)
 [ "$_build_opt" -eq 1 ] && pkgname+=(tensorflow-opt-rocm python-tensorflow-opt-rocm)
 
-pkgver=2.12.0rc1
-_pkgver=2.12.0-rc1
+pkgver=2.12.0
+_pkgver=2.12.0
 pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
@@ -29,14 +29,12 @@ optdepends=('tensorboard: Tensorflow visualization toolkit')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tensorflow/tensorflow/archive/v${_pkgver}.tar.gz"
         tensorflow-2.10-sparse-transpose-op2.patch
         https://github.com/bazelbuild/bazel/releases/download/5.4.0/bazel_nojdk-5.4.0-linux-x86_64
-        fix-c++17-compat.patch
-        fix-cusolver-version.patch)
+        fix-c++17-compat.patch)
 
-sha512sums=('da6da20cc27714efae753bddca5e6cebad62bcf45e7c6d2f4284e3441492c5764fd53c023ad0ecee59ed063f7c4dbb2fe7d9fd56dcdabc1ce1f26607a971167b'
+sha512sums=('9273720b5be08e5d3dc76aafa4af6b27a2d50afd02b181e7632f3d70961995b2e0e5acb13e70c9b704ef475617c23d70047fbe74d5b63b156cf8f2fa8a856b84'
             '45325ef3130aa95d48121d8c39bb4e683bdb5faa936ff29af953a2c359edb441a29e2dc0cae53ec6c08eee0432c0eeeaa7a40fbd063467b7f3c250d0f7f8ffed'
             'e2adb747cd1fe3c90686831703618af3f8bc8197a96d9e1e90e66db38dbc4e7a94d88dac755b25e288002983a87fcffbfb0d7c2e356d979d4635301c3daf9281'
-            'f682368bb47b2b022a51aa77345dfa30f3b0d7911c56515d428b8326ee3751242f375f4e715a37bb723ef20a86916dad9871c3c81b1b58da85e1ca202bc4901e'
-            '6f42455db1db0a5cd58ab5fe5554317e9ff648c046bb81cef9b4c61cce8380da08b681f825544b5388f02da863ff19f642efa9459691cbcf8852a21bd0dc7447')
+            'f682368bb47b2b022a51aa77345dfa30f3b0d7911c56515d428b8326ee3751242f375f4e715a37bb723ef20a86916dad9871c3c81b1b58da85e1ca202bc4901e')
 
 # consolidate common dependencies to prevent mishaps
 _common_py_depends=(python-termcolor python-astor python-gast03 python-numpy python-protobuf
@@ -82,9 +80,6 @@ prepare() {
   # Get rid of hardcoded versions. Not like we ever cared about what upstream
   # thinks about which versions should be used anyway. ;) (FS#68772)
   sed -i -E "s/'([0-9a-z_-]+) .= [0-9].+[0-9]'/'\1'/" tensorflow-${_pkgver}/tensorflow/tools/pip_package/setup.py
-
-  # manually specify cusolver .so version
-  patch -Np1 -i "${srcdir}/fix-cusolver-version.patch" -d tensorflow-${_pkgver}
 
   patch -Np1 -i "${srcdir}/tensorflow-2.10-sparse-transpose-op2.patch" -d tensorflow-${_pkgver}
 
@@ -182,19 +177,21 @@ _package() {
   # install headers first
   install -d "${pkgdir}"/usr/include/tensorflow
   cp -r bazel-bin/tensorflow/include/* "${pkgdir}"/usr/include/tensorflow/
+
   # install python-version to get all extra headers
   WHEEL_PACKAGE=$(find "${srcdir}"/$1 -name "tensor*.whl")
   python -m installer --destdir="$pkgdir" $WHEEL_PACKAGE
+
   # move extra headers to correct location
   local _srch_path="${pkgdir}/usr/lib/python$(get_pyver)"/site-packages/tensorflow/include
   check_dir "${_srch_path}"  # we need to quit on broken search paths
-  find "${_srch_path}" -maxdepth 1 -mindepth 1 -type d -print0 | while read -rd $'\0' _folder; do
-    cp -nr "${_folder}" "${pkgdir}"/usr/include/tensorflow/
-  done
+  cp -rf "${_srch_path}"/* "${pkgdir}"/usr/include/tensorflow/
+
   # clean up unneeded files
   rm -rf "${pkgdir}"/usr/bin
   rm -rf "${pkgdir}"/usr/lib
   rm -rf "${pkgdir}"/usr/share
+
   # make sure no lib objects are outside valid paths
   local _so_srch_path="${pkgdir}/usr/include"
   check_dir "${_so_srch_path}"  # we need to quit on broken search paths
