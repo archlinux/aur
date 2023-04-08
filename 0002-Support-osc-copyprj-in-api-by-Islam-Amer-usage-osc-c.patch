@@ -13,10 +13,10 @@ Subject: [PATCH] Support 'osc copyprj' in api by Islam Amer usage: osc copyprj
  2 files changed, 80 insertions(+)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index c2a7cbf998e58ca1ee51ef47c3b767e3777bf0c3..797e3ffd5f248285507bbafc59350efe675ce607 100644
+index f0c2b367dcc303b8a7f9727d99a0625166e6d764..55a52d949bf20639a7632ace574c6fd77c97adb4 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
-@@ -3407,6 +3407,58 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -3908,6 +3908,58 @@ Please submit there instead, or use --nodevelproject to force direct submission.
              delayed=not opts.no_delay,
              print_to="stdout",
          )
@@ -76,10 +76,10 @@ index c2a7cbf998e58ca1ee51ef47c3b767e3777bf0c3..797e3ffd5f248285507bbafc59350efe
      @cmdln.option('-m', '--message', metavar='TEXT',
                    help='specify message TEXT')
 diff --git a/osc/core.py b/osc/core.py
-index d223caa7e686d9c00b0cbf2fae3ac08d5ada503c..356da278bdae46cbb6639f24e20b3f8b05c5fa5c 100644
+index aa7b36412107eaf716a65846ead0512f25cb9072..5b5f5c10c47d9bf56a290076bc752ff2bb1aea91 100644
 --- a/osc/core.py
 +++ b/osc/core.py
-@@ -6037,6 +6037,34 @@ def copy_pac(
+@@ -6152,6 +6152,34 @@ def copy_pac(
              raise oscerr.APIError('failed to copy: %s' % ', '.join(todo))
          return 'Done.'
  
