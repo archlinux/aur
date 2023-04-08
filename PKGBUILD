@@ -3,7 +3,7 @@
 pkgname=python-prance
 pkgver=0.22.11.04.0
 _openapi_commit=0f9d3ec7c033fef184ec54e1ffc201b2d61ce023
-pkgrel=1
+pkgrel=2
 pkgdesc="Resolving Swagger/OpenAPI 2.0 and 3.0 Parser"
 url="https://github.com/jfinkhaeuser/prance"
 license=('custom:MITNFA')
