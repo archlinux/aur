@@ -1,11 +1,12 @@
 pkgbase = ixwebsocket
 	pkgdesc = websocket and http client and server library, with TLS support and very few dependencies
 	pkgver = 11.4.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/machinezone/IXWebSocket
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
+	arch = riscv64
 	license = BSD-3-Clause
 	depends = openssl
 	source = https://github.com/machinezone/IXWebSocket/archive/refs/tags/v11.4.3.tar.gz
