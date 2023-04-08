@@ -1,6 +1,6 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mousai
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Simple application for identifying songs"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cargo' 'meson')
 checkdepends=('appstream-glib')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/SeaDve/Mousai/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d96a1b5c05f93fa0daa795df15982850bd683ba3c432662abb1f3e0459d5512e')
+sha256sums=('c83fa77e277745a044fb1769b3f153f1be351d297eb7f463ef195acbc311c010')
 
 build() {
   export RUSTUP_TOOLCHAIN=stable
