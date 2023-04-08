@@ -1,5 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
-# Co-Maintainer: librewish <librewish at gmail dot com>
+# Maintainer: librewish <librewish at gmail dot com>
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=qomui-git
 pkgver=0.8.2.r22.23650ab
 pkgrel=3
