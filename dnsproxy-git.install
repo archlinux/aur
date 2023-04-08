@@ -1,0 +1,7 @@
+post_remove() {
+    cat << EOF
+
+==> Edit the /etc/dnsproxy/dnsproxy.yaml file after using or enabling the dnsproxy systemd service.
+
+EOF
+}
