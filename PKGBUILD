@@ -15,6 +15,7 @@ depends=(
 makedepends=(
     'git'
     'cmake'
+    'extra-cmake-modules'
     'ninja')
 provides=("qcm")
 source=('git+https://github.com/hypengw/Qcm.git')
@@ -41,16 +42,9 @@ function build(){
 
 function package(){
     _info "Copying files"
-    for dir in /opt/Qcm /usr/bin /usr/share/icons/hicolor/scalable/apps /usr/share/applications; do
-    mkdir -p "${pkgdir}""${dir}"
-    done
-    cp "${srcdir}"/Qcm/app/assets/Qcm.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps
-    cp "${srcdir}"/Qcm/app/assets/Qcm.desktop "${pkgdir}"/usr/share/applications
-    cp "${srcdir}"/Qcm/build/app/Qcm "${pkgdir}"/opt/Qcm
-    echo '''#!/bin/bash
-"${pkgdir}"/opt/Qcm/Qcm "$@"
-''' >"${pkgdir}"/usr/bin/Qcm
-    chmod +x "${pkgdir}" -R
+    install -Dm644 "${srcdir}/Qcm/app/assets/Qcm.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/io.github.hypengw.Qcm.svg"
+    install -Dm644 "${srcdir}/Qcm/app/assets/Qcm.desktop" "${pkgdir}/usr/share/applications/Qcm.desktop"
+    install -Dm755 "${srcdir}/Qcm/build/app/Qcm" "${pkgdir}/usr/bin/Qcm"
 }
 
 function _info() {
