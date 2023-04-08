@@ -1,17 +1,17 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='luv'
 pkgname="ocaml-$_projectname"
-pkgver='0.5.11'
-pkgrel='5'
+pkgver='0.5.12'
+pkgrel='1'
 pkgdesc='Cross-platform asynchronous I/O and system calls'
 arch=('x86_64' 'i486' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/aantron/$_projectname"
 license=('MIT')
-depends=('libuv' 'ocaml>=4.02.0' 'ocaml-compiler-libs' 'ocaml-ctypes>=0.14.0' 'ocaml-result' 'ocaml-stdlib-shims')
+depends=('libuv' 'ocaml>=4.03.0' 'ocaml-compiler-libs' 'ocaml-ctypes>=0.14.0' 'ocaml-stdlib-shims')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('3034b70935bc1bf1f6c2b7a34b0997ebf91e08e232576c48cc6499c59f2ad611e9c69daf8670f1190d74d2e6956a79ae60aa192e5b9f9041ddd6cc8ff389a903')
+sha512sums=('9d3b54c43e4b55d41576d8639aacfb170f5749d48caf545decfa43aac5c39621a1e9b9bf8709c23edce3cdfe33534f226abdd86543984448483a1679a362ef71')
 
 _sourcedirectory="$_projectname-$pkgver"
 
