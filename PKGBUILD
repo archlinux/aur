@@ -2,7 +2,7 @@
 
 pkgname=python-softlayer-zeep
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern/fast python SOAP client based on lxml / requests"
 url="https://github.com/softlayer/softlayer-zeep"
 license=('MIT')
