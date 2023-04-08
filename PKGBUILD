@@ -2,7 +2,7 @@
 
 pkgname=python-case
 pkgver=1.5.3
-pkgrel=9
+pkgrel=10
 pkgdesc="Python unittest Utilities"
 arch=('any')
 license=('BSD')
