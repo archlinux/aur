@@ -7,7 +7,6 @@ pkgbase = electronic-wechat-uos-bin
 	arch = x86_64
 	license = MIT
 	depends = nss
-	depends = lsb-release
 	depends = xdg-utils
 	depends = libxss
 	depends = electron
