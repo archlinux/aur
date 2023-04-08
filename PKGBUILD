@@ -3,7 +3,7 @@
 _pkgname=requests-hawk
 pkgname=python-requests-hawk
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Hawk authentication strategy for the requests python library'
 arch=('any')
 url='https://github.com/mozilla-services/requests-hawk'
