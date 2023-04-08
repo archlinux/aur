@@ -150,13 +150,14 @@ checksum = "bef38d45163c2f1dde094a7dfd33ccf595c92905c8f8f4fdc18d06fb1037718a"
 
 [[package]]
 name = "bkmr"
-version = "0.4.0"
+version = "0.4.1"
 dependencies = [
  "anyhow",
  "assert_cmd",
  "camino",
  "chrono",
  "clap 4.2.1",
+ "crossterm 0.26.1",
  "ctor",
  "diesel",
  "diesel_migrations",
@@ -424,6 +425,22 @@ name = "crossterm"
 version = "0.25.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e64e6c0fbe2c17357405f7c758c1ef960fce08bdfb2c03d88d2a18d7e09c4b67"
+dependencies = [
+ "bitflags",
+ "crossterm_winapi",
+ "libc",
+ "mio",
+ "parking_lot",
+ "signal-hook",
+ "signal-hook-mio",
+ "winapi",
+]
+
+[[package]]
+name = "crossterm"
+version = "0.26.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a84cda67535339806297f1b331d6dd6320470d2a0fe65381e79ee9e156dd3d13"
 dependencies = [
  "bitflags",
  "crossterm_winapi",
@@ -1147,7 +1164,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f4bf420bd01f298a3ed8f57af9babedb296b4edfc1dbd8b159cee883aa90edaa"
 dependencies = [
  "bitflags",
- "crossterm",
+ "crossterm 0.25.0",
  "dyn-clone",
  "lazy_static",
  "newline-converter",
