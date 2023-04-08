@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=onevpl-git
-pkgver=2023.1.3.r0.g4cdf44c
+pkgver=2023.2.0.r1.g208c0d4
 pkgrel=1
 pkgdesc='oneAPI Video Processing Library (git version)'
 arch=('x86_64')
@@ -20,6 +20,8 @@ pkgver() {
 }
 
 build() {
+    export CFLAGS+=' -DNDEBUG'
+    export CXXFLAGS+=' -DNDEBUG'
     cmake -B build -S oneVPL \
         -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
