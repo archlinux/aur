@@ -1,0 +1,15 @@
+pkgbase = tempus-themes-alacritty-git
+	pkgdesc = Tempus themes for Alacritty
+	pkgver = r1.199e862
+	pkgrel = 1
+	url = https://protesilaos.com/tempus-themes
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = alacritty
+	provides = tempus-themes-alacritty
+	conflicts = tempus-themes-alacritty
+	source = git+https://gitlab.com/protesilaos/tempus-themes-alacritty.git
+	sha256sums = SKIP
+
+pkgname = tempus-themes-alacritty-git
