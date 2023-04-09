@@ -73,8 +73,7 @@ def get_args():
          'kwargs': {'dest': 'X',
                     'action': 'store_true',
                     'default': False,
-                    'help': ('pass an X display to destination '
-                             'user environment')}}
+                    'help': 'run a graphical application'}}
     uid = {'args': ['--uid'],
            'kwargs': {'dest': 'uid',
                       'action': 'store_true',
