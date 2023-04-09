@@ -1,6 +1,6 @@
 # Maintainer: Bert Peters <bert@bertptrs.nl>
 pkgname=pscircle
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="visualizes Linux processes in a form of radial tree"
 arch=(x86_64)
@@ -9,7 +9,7 @@ depends=('cairo')
 makedepends=('meson')
 license=('GPL2')
 source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('29e278e34816be06b3355394b15a8db6b5818ddb305181be7dd408f4cdc43f43')
+sha256sums=('99a4fa1d7e4ca28b067c5c2bb977352b4e6fcb9eb22349c9d33456971f282d7f')
 
 build() {
 	cd "$pkgname-v$pkgver"
