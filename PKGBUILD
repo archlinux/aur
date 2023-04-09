@@ -2,7 +2,7 @@
 
 pkgname=garage
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Garage, an S3-compatible distributed object store for self-hosted deployments"
 url="https://garagehq.deuxfleurs.fr"
 license=('AGPL')
@@ -10,8 +10,8 @@ arch=('x86_64' 'i686' 'arm' 'aarch64')
 depends=('gcc-libs' 'libsodium' 'zstd')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://git.deuxfleurs.fr/Deuxfleurs/garage/archive/v$pkgver.tar.gz")
-sha256sums=('bf5bdc4250f62d4bd9b1a35d8cbdd93b39f4ceb49bf0f44d74df6137b13a8809')
-b2sums=('a21f242fe2752ec0ed7376cb5c7e4560f86187991bb50d2f616a0e86f1078ff60507250215968b28b41ac46a16d4d668c1436f8ae18638eded09578f38799e5a')
+sha256sums=('f39ea1a8bd64ff3b4cf6ab9ab09b2bc71aa0a374d0f11039d08f8e13672a256a')
+b2sums=('e82a3d32e6f2eb56319c866e82281b7538b384c5f2fa91109729f26e1bda344b0207262d4c36f61daf2c1ed6c3d0cb6f6788dc3110ec657526702f05adc3d259')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 
