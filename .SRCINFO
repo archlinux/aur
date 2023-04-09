@@ -1,0 +1,19 @@
+pkgbase = tempus-themes-pygments-git
+	pkgdesc = Tempus themes for Pygments
+	pkgver = r1.dfe76b6
+	pkgrel = 1
+	url = https://protesilaos.com/tempus-themes
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-pygments
+	provides = tempus-themes-pygments
+	conflicts = tempus-themes-pygments
+	source = git+https://gitlab.com/protesilaos/tempus-themes-pygments.git
+	sha256sums = SKIP
+
+pkgname = tempus-themes-pygments-git
