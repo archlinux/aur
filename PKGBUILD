@@ -1,7 +1,7 @@
 # Maintainer: Evgeniy Alekseev
 
 pkgname='ahriman'
-pkgver=2.7.1
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="ArcH linux ReposItory MANager"
 arch=('any')
@@ -14,6 +14,8 @@ optdepends=('breezy: -bzr packages support'
             'mercurial: -hg packages support'
             'python-aioauth-client: web server with OAuth2 authorization'
             'python-aiohttp: web server'
+            'python-aiohttp-apispec>=3.0.0: web server'
+            'python-aiohttp-cors: web server'
             'python-aiohttp-debugtoolbar: web server with enabled debug panel'
             'python-aiohttp-jinja2: web server'
             'python-aiohttp-security: web server with authorization'
@@ -50,6 +52,6 @@ package() {
   install -Dm644 "$srcdir/$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 }
 
-sha512sums=('aad5c561d92fb6949b7cd6c05dd17e827add32277a84b2bd9cba8e4796ad29cc96f13d72a0a068d4df88ef882791c21a9575414be0d7f2b7eca71fe671694f71'
+sha512sums=('112b0d8aac68e5330bbdd2b86a59c8a9af8ab7a7c636489623c8460bb90f1318585851edd2a97a8ce20e2d2ad93b847b522685df707c190aa39d23ab908fa8ef'
             '53d37efec812afebf86281716259f9ea78a307b83897166c72777251c3eebcb587ecee375d907514781fb2a5c808cbb24ef9f3f244f12740155d0603bf213131'
             '62b2eccc352d33853ef243c9cddd63663014aa97b87242f1b5bc5099a7dbd69ff3821f24ffc58e1b7f2387bd4e9e9712cc4c67f661b1724ad99cdf09b3717794')
