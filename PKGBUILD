@@ -1,13 +1,13 @@
 # Maintainer: Strahinya Radich <contact@strahinja.org>
 pkgname=slweb
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Simple static website generator"
 arch=('x86_64')
 url="https://strahinja.srht.site/slweb"
 license=('GPL3')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~strahinja/slweb/archive/v$pkgver.tar.gz")
-md5sums=('a7d5760897d71388a3894b2ce9ba5c78')
+md5sums=('98111b753b37f82baf5120a33b4c27cb')
 
 #build() {
 #	local redo=$(command -v redo || echo ./do -c)
