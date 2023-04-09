@@ -11,11 +11,11 @@ provides=("${pkgname}")
 depends=('electron' 'libvips' 'alsa-lib')
 makedepends=('yarn' 'node-gyp' 'cargo')
 source=("${pkgname}-${pkgver}-prebuilt.tar::https://github.com/Moosync/Moosync/releases/download/v${pkgver}/Moosync-${pkgver}-linux-x64.pacman" "${pkgname}-${pkgver}.tar::https://github.com/Moosync/Moosync/archive/v${pkgver}.tar.gz" moosync moosync.desktop builder-args.sh)
-sha256sums=('0f0a11ca8512bd285c993bee45b611f725df37f0f3dca7acfddc16145abf80ad'
-    '708af19411fc03d18dbd4446d1c099eed80873144238531a45c6cb2d21712b4b'
-    '36867efee6f9a491e64979ed329ce87f2136da2afcce4c9ef5696a9f2538d9ba'
-    '4b63fa17717239db8a87ebeae1fdd96c5318b71d7d851d6c5a4f337793d3fecd'
-    'bb106abfddfa388cdd9953b034e3176f87eac636932d793b2f5293576cc017bb')
+sha256sums=('8d4e38881f22bde242bd7d4651a105c8c360931d91306be21d9602ffbf634684'
+            'a1dcf53c891f5a08fe7b80573cbb75a56154308a6d2d730b67ffd30d8f648df4'
+            '36867efee6f9a491e64979ed329ce87f2136da2afcce4c9ef5696a9f2538d9ba'
+            '4b63fa17717239db8a87ebeae1fdd96c5318b71d7d851d6c5a4f337793d3fecd'
+            'bb106abfddfa388cdd9953b034e3176f87eac636932d793b2f5293576cc017bb')
 _sourcedirectory="Moosync-$pkgver"
 
 build() {
