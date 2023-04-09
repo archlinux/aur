@@ -1,0 +1,15 @@
+pkgbase = miniss
+	pkgdesc = Displays a list of open listening sockets.
+	pkgver = 0.0.2.r0.gdea0ddf
+	pkgrel = 1
+	url = https://github.com/noraj/miniss
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = crystal
+	makedepends = shards
+	source = git+https://github.com/noraj/miniss.git
+	sha512sums = SKIP
+
+pkgname = miniss
