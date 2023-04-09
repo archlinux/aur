@@ -1,8 +1,8 @@
 # Maintainer: Edvin Bryntesson <aur@edvinbryntesson.se>
 _pkgname="anyrun"
 pkgname="${_pkgname}-git"
-pkgver=r29.c74235a
-pkgrel=6
+pkgver=r35.7a7fb55
+pkgrel=2
 pkgdesc="A rust-based wayland native krunner-like runner, made with customizability in mind."
 arch=("x86_64")
 url="github.com/Kirottu/anyrun"
@@ -36,5 +36,5 @@ package() {
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${_pkgname}"
   mkdir -p "$pkgdir/etc/anyrun/plugins"
   printf "Config( \n  width: 800, \n  position: Top, \n hide_icons: false, \n  plugins: [ \n    'libapplications.so', \n    'libsymbols.so', \n    'libshell.so', \n    'libtranslate.so', \n  ], \n)" > "$pkgdir/etc/anyrun/config.ron" 
-  cp "target/release/*.so" "$pkgdir/etc/anyrun/plugins/"
+  cp target/release/*.so "$pkgdir/etc/anyrun/plugins/"
 }
