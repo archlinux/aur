@@ -33,6 +33,7 @@ pkgbase = python-torchaudio-rocm
 	source = flashlight-text::git+https://github.com/flashlight/text.git
 	source = https://downloads.sourceforge.net/project/sox/sox/14.4.2/sox-14.4.2.tar.bz2
 	source = use-system-libs.diff
+	source = LoadHIP.cmake
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
