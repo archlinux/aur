@@ -2,7 +2,7 @@
 
 pkgname=python-cucumber-tag-expressions
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides tag-expression parser for cucumber/behave"
 url="https://github.com/cucumber/tag-expressions"
 license=('MIT')
