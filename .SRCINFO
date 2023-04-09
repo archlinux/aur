@@ -1,16 +1,15 @@
 pkgbase = locale-en_de-git
 	pkgdesc = English language locale for Germany (en_DE)
-	pkgver = r27.95f26de
+	pkgver = r8.8b172dd
 	pkgrel = 1
-	url = https://gitlab.com/Scrumplex/locale-en_de
+	url = https://github.com/leander-j/en_DE
 	install = locale-en_de-git.install
 	arch = any
-	license = GPL
+	license = 
 	depends = glibc
 	provides = locale-en_de
 	conflicts = locale-en_de
-	source = locale-en_de-git::git+https://gitlab.com/Scrumplex/locale-en_de
+	source = locale-en_de-git::git+https://github.com/leander-j/en_DE.git
 	sha512sums = SKIP
 
 pkgname = locale-en_de-git
-
