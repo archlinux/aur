@@ -2,7 +2,7 @@
 
 pkgname=dns-lexicon
 pkgver=3.11.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Manipulate DNS records on various DNS providers in a standardized/agnostic way"
 arch=('any')
 url="https://github.com/AnalogJ/lexicon"
