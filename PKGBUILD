@@ -4,7 +4,7 @@
 
 pkgname=cyberghostvpn
 pkgver=1.4.1
-pkgrel=4
+pkgrel=5
 pkgdesc="CyberGhost VPN"
 url="https://www.cyberghostvpn.com"
 arch=(any)
@@ -32,7 +32,7 @@ package() {
   _installdir=usr/local/cyberghost
   install -Dm 755 openvpn_wrapper "$pkgdir/${_installdir}/wrapper/openvpn_wrapper"
   install -Dm 755 cyberghostvpn_wrapper "$pkgdir/${_installdir}/wrapper/cyberghostvpn_wrapper"
-  ln -s "$pkgdir/${_installdir}/wrapper/openvpn_wrapper" "$pkgdir/${_installdir}/openvpn"
+  ln -s "/${_installdir}/wrapper/openvpn_wrapper" "$pkgdir/${_installdir}/openvpn"
 
   cd "$_archive"
 
