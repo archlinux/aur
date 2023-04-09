@@ -11,7 +11,7 @@ depends=("systemd"
 license=("AGPL3")
 source=("run-as.py"
         "enable-graphical-services.sh")
-sha256sums=("6806472dafc87482d007c694233fb7c1418bf5e900f30170619165ef9db444d9"
+sha256sums=("fdd3ad400570f7e404c5c8482d94c2dd3273df3c1266594ac7c2a7967dd115ac"
             "521921a95ddcc645de77ba2d6714a9d34b01d37633f93a8caee8d42fad9dedcc")
 
 package() {

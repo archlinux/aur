@@ -77,16 +77,23 @@ def resolve_systemd_homed(user):
         if user == _user:
             return True
 
+def xhost(uid):
+    user = getpwuid(uid).pw_name
+    xhost_cmd = ['xhost',
+                 f"+si:localuser:{user}"]
+    xhost = sh(xhost_cmd)
+    xhost_out = xhost.stdout
 
-def run_as(user, command, command_args, X=False):
+def run_as(uid, command, command_args, X=False):
     machinectl_cmd = ['machinectl',
                       'shell',
-                      f"--uid={user}"]
+                      f"--uid={uid}"]
     call_cmd = []
     if X:
         display = environ['DISPLAY']
         machinectl_cmd.append(f"--setenv=DISPLAY={display}")
         call_cmd.append(which("enable-graphical-services"))
+        xhost(uid)
 
     machinectl_cmd.append(".host")
     call_cmd.extend([command, *command_args])
@@ -99,18 +106,18 @@ def run_as(user, command, command_args, X=False):
 
 def get_args():
     parser = ArgumentParser(description=description)
-    version = {'args': ['--version'],
+    version = {'args': ['-V', '--version'],
                'kwargs': {'dest': 'version',
                           'action': 'store_true',
                           'default': False,
                           'help': 'print version'}}
 
-    X = {'args': ['--X'],
+    X = {'args': ['-X', '--graphical'],
          'kwargs': {'dest': 'X',
                     'action': 'store_true',
                     'default': False,
                     'help': 'run a graphical application'}}
-    uid = {'args': ['--uid'],
+    uid = {'args': ['-U', '--uid'],
            'kwargs': {'dest': 'uid',
                       'action': 'store_true',
                       'default': False,
