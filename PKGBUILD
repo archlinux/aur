@@ -1,7 +1,7 @@
 # Maintainer: Maxim Kurnosenko <asusx2@mail.ru>
 
 pkgname=anylogic-ple
-pkgver=8.8.0
+pkgver=8.8.2
 pkgrel=1
 pkgdesc="AnyLogic Personal Learning Edition - for beginners and students"
 arch=(x86_64)
@@ -15,7 +15,7 @@ conflicts=('anylogic')
 options=(!strip)
 source=("https://files.anylogic.com/$pkgname-$pkgver.linux.x86_64.tgz.bin"
         "$pkgname.desktop")
-sha256sums=('bfe6a27ce21e0bc2a90e680079fe4fc764d22eaa56c767b3ea671310c13bbed0'
+sha256sums=('97fdcac86b38d3888341513e29b3a715ded47b2faef18e8707f9066cb0136758'
             'e4ba5ff1344d0a60fa8625739fe442c5b9c995fb51c1cd48839291abf6a8bf55')
 
 prepare() {
