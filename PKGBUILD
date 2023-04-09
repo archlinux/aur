@@ -27,8 +27,6 @@ makedepends=(
 	'fast_float'
 	'ffmpeg'
 	'git'
-	# 'libbacktrace'
-	# 'libxrandr'
 	'sdl2'
 	'soundtouch'
 )
@@ -54,18 +52,20 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
-	# sed -i '/ccache/d' CMakeLists.txt
-	sed -i '/USE_GCC/s/AND CMAKE_INTERPROCEDURAL_OPTIMIZATION//' common/CMakeLists.txt
-	sed -i '/USE_SYSTEM_LIBS/s/OFF/ON/' cmake/BuildParameters.cmake
 	git config submodule.3rdparty/glslang/glslang.url ../glslang
 	git config submodule.3rdparty/libchdr/libchdr.url ../libchdr
 	git config submodule.3rdparty/vulkan-headers.url ../vulkan-headers
 	git -c protocol.file.allow=always submodule update
+	sed -i '/ccache/d' CMakeLists.txt
+	sed -i '/USE_GCC/s/AND CMAKE_INTERPROCEDURAL_OPTIMIZATION//' common/CMakeLists.txt
+	sed -i '/USE_SYSTEM_LIBS/s/OFF/ON/' cmake/BuildParameters.cmake
 }
 
 build() {
 	cmake -S $_pkgname -B build \
 		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
+		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
 		-DLIBRETRO=ON \
 		-Wno-dev
 	cmake --build build
