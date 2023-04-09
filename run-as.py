@@ -24,7 +24,7 @@
 #
 
 from argparse import ArgumentParser
-from os import environ
+from os import environ, stat
 from pwd import getpwall, getpwuid, getpwnam
 from shutil import which
 import subprocess
@@ -39,10 +39,13 @@ def sh(command):
                             text=True)
     return result
 
+def no_access_msg():
+    print("WARNING: you are trying to run an user script")
+
 def not_found_msg(obj_type, user):
     print(f"ERROR: {obj_type} '{user}' not found.")
 
-def resolve(user, uid=False):
+def resolve_user(user, uid=False):
     getuser = getpwnam
     if uid:
         getuser = getpwuid
@@ -50,6 +53,19 @@ def resolve(user, uid=False):
         return getuser(user)
     except KeyError as no_user:
         return False
+
+def resolve_command(command):
+    if not which(command):
+       try:
+           stat(command)
+       except PermissionError as no_access:
+           no_access_msg()
+       except FileNotFoundError as not_found:
+           not_found_msg("command", command)
+           return
+       return command
+    return which(command)
+ 
 
 def resolve_systemd_homed(user):
     homectl_cmd = ['homectl',
@@ -137,18 +153,17 @@ def main():
         exit()
 
     if args.user:
-        user = resolve(args.user, uid=args.uid)
+        user = resolve_user(args.user, uid=args.uid)
         if not user:
             not_found_msg("user", args.user)
             exit()
         uid = user.pw_uid
 
     if args.command:
-        if not which(args.command):
-            not_found_msg("command", args.command)
-            exit()
-        else:
-            command = which(args.command)
+        command = resolve_command(args.command)
+        if not command:
+           not_found_msg("command", args.command)
+           exit()
 
     if not (args.user and args.command):
         parser.print_help(stderr)
