@@ -11,7 +11,7 @@ depends=('kitty')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+https://gitlab.com/protesilaos/${pkgname%-git}.git")
+source=("git+https://gitlab.com/protesilaos/tempus-themes-kitty.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -22,5 +22,5 @@ pkgver() {
 package() {
   cd "$srcdir/${pkgname%-git}"
   install -d "$pkgdir/etc/kitty/tempus-themes"
-  install -Dm644 *.conf "$pkgdir/etc/kitty/tempus-themes"
+  install -Dm644 *.conf -t "$pkgdir/etc/kitty/tempus-themes/"
 }
