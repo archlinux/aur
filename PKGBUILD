@@ -3,7 +3,7 @@
 _pkgname=Flask-Gravatar
 pkgname=python-flask-gravatar
 pkgver=0.5.0
-pkgrel=7
+pkgrel=8
 pkgdesc='Small and simple gravatar usage in Flask'
 url='https://github.com/zzzsochi/Flask-Gravatar/'
 arch=('any')
