@@ -1,6 +1,6 @@
 pkgbase = qxmpp
 	pkgdesc = Cross-platform C++ XMPP client and server library
-	pkgver = 1.5.2
+	pkgver = 1.5.4
 	pkgrel = 1
 	url = https://github.com/qxmpp-project/qxmpp
 	arch = i686
@@ -8,13 +8,31 @@ pkgbase = qxmpp
 	license = LGPL2.1
 	makedepends = cmake
 	makedepends = doxygen
-	depends = qt5-base
 	depends = gstreamer
-	source = https://github.com/qxmpp-project/qxmpp/archive/v1.5.2.tar.gz
-	sha256sums = cc26345428d816bb33e63f92290c52b9a417d9a836bf9fabf295e3477f71e66c
+	depends = glibc
+	depends = gcc-libs
+	depends = glib2
+	source = https://github.com/qxmpp-project/qxmpp/archive/v1.5.4.tar.gz
+	sha256sums = e437fdb91aa52c6fd8ca3f922354eb3221df98146ec99ee92e70e20a82c7ad2d
 
-pkgname = qxmpp
+pkgname = qxmpp-qt5
+	depends = gstreamer
+	depends = glibc
+	depends = gcc-libs
+	depends = glib2
+	depends = qt5-base
+	depends = qca-qt5
+	provides = qxmpp
+	conflicts = qxmpp
 
 pkgname = qxmpp-doc
 	pkgdesc = Cross-platform C++ XMPP client and server library (documentation)
 	arch = any
+
+pkgname = qxmpp-qt6
+	depends = gstreamer
+	depends = glibc
+	depends = gcc-libs
+	depends = glib2
+	depends = qt6-base
+	provides = qxmpp-qt6
