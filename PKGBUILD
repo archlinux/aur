@@ -10,14 +10,14 @@ _mpfr_pkgver="3.1.4"
 _pkgname="gcc"
 pkgname="ps3-${_target_alias}-${_pkgname}"
 pkgver="9.5.0"
-pkgrel=2
+pkgrel=3
 pkgdesc="GCC for cross-compiling to ${_target_alias} (PS3 GameOS)"
 arch=(x86_64 aarch64 powerpc64le powerpc64 powerpc riscv64)
 url='https://gcc.gnu.org/'
 license=(GPL3 LGPL FDL custom)
 makedepends=(patch python)
 checkdepends=(dejagnu expect inetutils python-pytest tcl)
-depends=(ps3-ppu-binutils)
+depends=(ps3-env ps3-ppu-binutils)
 options=(!emptydirs !strip staticlibs !lto)
 source=(
 	"https://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.xz"
@@ -40,12 +40,7 @@ sha256sums=(
 	'd3103a80cdad2407ed581f3618c4bed04e0c92d1cf771a65ead662cc397f7775'
 )
 
-# PS3DEV
-export PS3DEV="/opt/ps3dev"
-export PSL1GHT="${PS3DEV}"
-export PATH="${PATH}:${PS3DEV}/bin"
-export PATH="${PATH}:${PS3DEV}/ppu/bin"
-export PATH="${PATH}:${PS3DEV}/spu/bin"
+source /opt/ps3dev/ps3toolchain.sh
 
 _prefix="${PS3DEV}/${_target_alias}"
 
