@@ -2,10 +2,10 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-purchasing
-_basever=5.15.8
-pkgver=5.15.8
+_basever=5.15.9
+pkgver=5.15.9
 pkgrel=1
-_commit=9dfea35b04dcb52d02d7a2883df88d89ba9999ef
+_commit=5737c10128c6eeb28c10df569c8492bb2e8f4230
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
