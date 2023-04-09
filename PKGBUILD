@@ -11,7 +11,10 @@ depends=(
   "glibc"
   "libdrm"
 )
-makedepends=("cargo")
+makedepends=(
+	"cargo"
+	"git"
+)
 source=("git+${url}")
 conflicts=('amdgpu_top')
 provides=('amdgpu_top')
