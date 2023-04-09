@@ -31,7 +31,7 @@ makedepends=(
 	'soundtouch'
 )
 provides=("$_pkgname=${pkgver#r}")
-conflicts=("$_pkgname" 'libretro-lrps2')
+conflicts=("$_pkgname")
 source=(
 	"$_pkgname::git+$url.git#branch=libretro"
 	'glslang::git+https://github.com/KhronosGroup/glslang.git'
@@ -58,7 +58,7 @@ prepare() {
 	git -c protocol.file.allow=always submodule update
 	sed -i '/ccache/d' CMakeLists.txt
 	sed -i '/USE_GCC/s/AND CMAKE_INTERPROCEDURAL_OPTIMIZATION//' common/CMakeLists.txt
-	sed -i '/USE_SYSTEM_LIBS/s/OFF/ON/' cmake/BuildParameters.cmake
+	sed -i '/USE_SYSTEM_LIBS OFF/d' cmake/BuildParameters.cmake
 }
 
 build() {
@@ -66,7 +66,10 @@ build() {
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
+		-DCMAKE_DISABLE_PRECOMPILE_HEADERS=ON \
+		-DDISABLE_ADVANCE_SIMD=ON \
 		-DLIBRETRO=ON \
+		-DUSE_SYSTEM_LIBS=ON \
 		-Wno-dev
 	cmake --build build
 }

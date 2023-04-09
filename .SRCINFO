@@ -26,7 +26,6 @@ pkgbase = libretro-pcsx2-git
 	depends = zstd
 	provides = libretro-pcsx2=16875.7357bde45
 	conflicts = libretro-pcsx2
-	conflicts = libretro-lrps2
 	source = libretro-pcsx2::git+https://github.com/libretro/pcsx2.git#branch=libretro
 	source = glslang::git+https://github.com/KhronosGroup/glslang.git
 	source = libchdr::git+https://github.com/rtissera/libchdr.git
