@@ -2,7 +2,7 @@
 # Contributor: Maurizio Porrato <maurizio.porrato@gmail.com>
 
 pkgname=janus-gateway-git
-pkgver=1.0.3.r22.g5e77ce5d
+pkgver=1.1.3.r8.g89047c81
 pkgrel=1
 pkgdesc="An open source, general purpose, WebRTC server"
 arch=('x86_64' 'i686')
@@ -18,7 +18,7 @@ depends=('glib2'
          'openssl')
 optdepends=('libwebsockets: WebSockets support for Janus API'
             'librabbitmq-c: RabbitMQ support for the Janus API or events'
-            'paho-mqtt-c-git: MQTT support for the Janus API or events'
+            'paho-mqtt-c: MQTT support for the Janus API or events'
             'nanomsg: Nanomsg support for the Janus API'
             'curl: TURN REST API support, RTSP support in Streaming/Event Handler plugin'
             'sofia-sip: SIP plugin'
@@ -34,7 +34,7 @@ makedepends=('curl'
              'lua'
              'nanomsg'
              'opus'
-             'paho-mqtt-c-git'
+             'paho-mqtt-c'
              'sofia-sip'
              'git')
 provides=("${pkgname%-git}")
