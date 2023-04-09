@@ -1,10 +1,12 @@
 pkgbase = ludusavi
 	pkgdesc = Backup tool for PC game saves
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/mtkennerly/ludusavi
 	arch = x86_64
 	license = MIT
+	checkdepends = appstream-glib
+	checkdepends = desktop-file-utils
 	makedepends = cargo
 	makedepends = git
 	makedepends = libx11
@@ -15,9 +17,9 @@ pkgbase = ludusavi
 	depends = gcc-libs
 	depends = hicolor-icon-theme
 	options = !lto
-	source = ludusavi-0.16.0.tar.gz::https://github.com/mtkennerly/ludusavi/archive/v0.16.0.tar.gz
-	source = https://github.com/mtkennerly/ludusavi/releases/download/v0.16.0/ludusavi-v0.16.0-legal.zip
-	sha256sums = c89a08334e524605c6a38bec94341b286115676f85d7a33b6a38200c00a158dc
-	sha256sums = 432959d9049528cf6ae0a19274426b249fe6944147e388cdedb746be7977a57d
+	source = ludusavi-0.17.0.tar.gz::https://github.com/mtkennerly/ludusavi/archive/v0.17.0.tar.gz
+	source = https://github.com/mtkennerly/ludusavi/releases/download/v0.17.0/ludusavi-v0.17.0-legal.zip
+	sha256sums = e62ec74f3400c6b4ee2ed6cb3f6b0ea1fb7b71ef8937eab68a73895152b41e00
+	sha256sums = 9e94a6c96b3fdde80cb14b10927f5a2e8142a3c925c2d27af1223809cec6259f
 
 pkgname = ludusavi
