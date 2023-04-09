@@ -12,10 +12,10 @@ pkgname=('systemd-selinux'
          'systemd-resolvconf-selinux'
          'systemd-sysvcompat-selinux'
          'systemd-ukify-selinux')
-_tag='199399bb283701b6a4aaf5ace49f56f30f38e9a3' # git rev-parse v${_tag_name}
-_tag_name=253.1
+_tag='54e993e2389ccdf43189f89dd7c5d5ec34f31d6b' # git rev-parse v${_tag_name}
+_tag_name=253.3
 pkgver="${_tag_name/-/}"
-pkgrel=3
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url='https://www.github.com/systemd/systemd'
 groups=('selinux')
@@ -54,7 +54,7 @@ source=("git+https://github.com/systemd/systemd-stable#tag=${_tag}?signed"
 sha512sums=('SKIP'
             'SKIP'
             '3ccf783c28f7a1c857120abac4002ca91ae1f92205dcd5a84aff515d57e706a3f9240d75a0a67cff5085716885e06e62597baa86897f298662ec36a940cf410e'
-            'f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73'
+            '4a6cd0cf6764863985dc5ad774d7c93b574645a05b3295f989342951d43c71696d069641592e37eeadb6d6f0531576de96b6392224452f15cd9f056fae038f8e'
             '12f3c011a0164d28b092722639fff92c663c18b032d421695b0a72dbf123dd0908e3822087766ee922e131c02126f67ba2e1983c5cc244f5c4884dfed8605d00'
             'a8c7e4a2cc9c9987e3c957a1fc3afe8281f2281fffd2e890913dcf00cf704024fb80d86cb75f9314b99b0e03bac275b22de93307bfc226d8be9435497e95b7e6'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
@@ -73,8 +73,6 @@ sha512sums=('SKIP'
             '825b9dd0167c072ba62cabe0677e7cd20f2b4b850328022540f122689d8b25315005fa98ce867cf6e7460b2b26df16b88bb3b5c9ebf721746dce4e2271af7b97')
 
 _backports=(
-  # Revert "hwdb: fix swapped buttons for Logitech Lift left"
-  'ae9f36397f45dff8e2181c6af5f763e51a7c9639'
 )
 
 _reverts=(
@@ -224,9 +222,9 @@ package_systemd-selinux() {
   mv "$pkgdir"/usr/share/man/man3 systemd-libs/man3
 
   # ukify shipped in separate package
-  install -d -m0755 systemd-ufify/{systemd,man1}
-  mv "$pkgdir"/usr/lib/systemd/ukify systemd-ufify/systemd/
-  mv "$pkgdir"/usr/share/man/man1/ukify.1 systemd-ufify/man1/
+  install -d -m0755 systemd-ukify/{systemd,man1}
+  mv "$pkgdir"/usr/lib/systemd/ukify systemd-ukify/systemd/
+  mv "$pkgdir"/usr/share/man/man1/ukify.1 systemd-ukify/man1/
 
   # manpages shipped with systemd-sysvcompat
   rm "$pkgdir"/usr/share/man/man8/{halt,poweroff,reboot,shutdown}.8
@@ -328,8 +326,8 @@ package_systemd-ukify-selinux() {
               'sbsigntools: Sign the embedded kernel')
 
   install -d -m0755 "$pkgdir"/usr/{lib,share/man}
-  mv systemd-ufify/systemd "$pkgdir"/usr/lib/systemd
-  mv systemd-ufify/man1 "$pkgdir"/usr/share/man/man1
+  mv systemd-ukify/systemd "$pkgdir"/usr/lib/systemd
+  mv systemd-ukify/man1 "$pkgdir"/usr/share/man/man1
 }
 
 # vim:ft=sh syn=sh et sw=2:
