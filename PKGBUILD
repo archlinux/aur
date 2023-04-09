@@ -2,7 +2,7 @@
 _pkgname=libretro-pcsx2
 pkgname=$_pkgname-git
 pkgver=r16875.7357bde45
-pkgrel=2
+pkgrel=3
 pkgdesc="Sony PlayStation 2 core"
 arch=('x86_64')
 url="https://github.com/libretro/pcsx2"
@@ -35,6 +35,7 @@ makedepends=(
 )
 provides=("$_pkgname=${pkgver#r}")
 conflicts=("$_pkgname")
+options=('!lto')
 source=(
 	"$_pkgname::git+$url.git#branch=libretro"
 	'glslang::git+https://github.com/KhronosGroup/glslang.git'
@@ -60,7 +61,6 @@ prepare() {
 	git -c protocol.file.allow=always submodule update
 	patch -Np1 < ../use-system-libs.patch
 	sed -i '/ccache/d' CMakeLists.txt
-	sed -i '/USE_GCC/s/AND CMAKE_INTERPROCEDURAL_OPTIMIZATION//' common/CMakeLists.txt
 }
 
 build() {
@@ -71,6 +71,7 @@ build() {
 		-DCMAKE_DISABLE_PRECOMPILE_HEADERS=ON \
 		-DDISABLE_ADVANCE_SIMD=ON \
 		-DLIBRETRO=ON \
+		-DLTO_PCSX2_CORE=ON \
 		-DUSE_SYSTEM_LIBS=ON \
 		-Wno-dev
 	cmake --build build

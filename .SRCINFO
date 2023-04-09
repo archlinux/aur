@@ -1,7 +1,7 @@
 pkgbase = libretro-pcsx2-git
 	pkgdesc = Sony PlayStation 2 core
 	pkgver = r16875.7357bde45
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/libretro/pcsx2
 	arch = x86_64
 	groups = libretro
@@ -29,6 +29,7 @@ pkgbase = libretro-pcsx2-git
 	depends = zstd
 	provides = libretro-pcsx2=16875.7357bde45
 	conflicts = libretro-pcsx2
+	options = !lto
 	source = libretro-pcsx2::git+https://github.com/libretro/pcsx2.git#branch=libretro
 	source = glslang::git+https://github.com/KhronosGroup/glslang.git
 	source = vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
