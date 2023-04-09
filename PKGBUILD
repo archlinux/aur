@@ -1,7 +1,7 @@
 # Maintainer: Paul <p.orzel@gmx.de>
 pkgname=amdgpu_top-git
 _pkgname=amdgpu_top
-pkgver=r87.e80c558
+pkgver=v0.1.4.r3.g81ac9c2
 pkgrel=1
 pkgdesc="Tool that shows AMD GPU utilization"
 arch=("any")
@@ -19,9 +19,13 @@ provides=('amdgpu_top')
 sha256sums=(SKIP)
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_pkgname"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
+
 build() {
 	cd "$srcdir/$_pkgname"
 	cargo build --release
