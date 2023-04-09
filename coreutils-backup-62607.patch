@@ -1,0 +1,39 @@
+From 1a80fab339d52db7e284b4f2f41068d5d8dd7e4e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?P=C3=A1draig=20Brady?= <P@draigBrady.com>
+Date: Mon, 3 Apr 2023 18:12:33 +0100
+Subject: [PATCH] tests: cp: test --backup with subdirectories
+
+* tests/cp/backup-dir.sh: Add a test to ensure
+we rename appropriately when backing up through subdirs.
+* NEWS: Mention the bug fix.
+Addresses https://bugs.gnu.org/62607
+---
+ NEWS                   | 5 +++++
+ tests/cp/backup-dir.sh | 8 +++++++-
+ 2 files changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/tests/cp/backup-dir.sh b/tests/cp/backup-dir.sh
+index 6573d58e0..5c17498cf 100755
+--- a/tests/cp/backup-dir.sh
++++ b/tests/cp/backup-dir.sh
+@@ -1,5 +1,5 @@
+ #!/bin/sh
+-# Ensure that cp -b doesn't back up directories.
++# Ensure that cp -b handles directories appropriately
+ 
+ # Copyright (C) 2006-2023 Free Software Foundation, Inc.
+ 
+@@ -29,4 +29,10 @@ cp -ab x y || fail=1
+ test -d y/x || fail=1
+ test -d y/x~ && fail=1
+ 
++# Bug 62607.
++# This would fail to backup using rename, and thus fail to replace the file
++mkdir -p {src,dst}/foo || framework_failure_
++touch {src,dst}/foo/bar || framework_failure_
++cp --recursive --backup src/* dst || fail=1
++
+ Exit $fail
+-- 
+2.26.2
+
