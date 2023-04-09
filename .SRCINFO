@@ -1,14 +1,14 @@
 pkgbase = catppuccin-kde-theme
 	pkgdesc = Soothing pastel theme for KDE
-	pkgver = 0.2.3
-	pkgrel = 2
+	pkgver = 0.2.4
+	pkgrel = 1
 	url = https://github.com/catppuccin/kde
 	arch = any
 	license = MIT
 	makedepends = kpackage
-	source = catppuccin-kde-theme-0.2.3.tar.gz::https://github.com/catppuccin/kde/archive/refs/tags/v0.2.3.tar.gz
+	source = catppuccin-kde-theme-0.2.4.tar.gz::https://github.com/catppuccin/kde/archive/refs/tags/v0.2.4.tar.gz
 	source = color.sh
-	sha256sums = 30212207db7d44bae080cd5a9c238ec5757c6769adb3babe655acc8b23b240c6
-	sha256sums = 697ded12b7f7093844c5e85cb27a7eeff4725318a6470b84ccab6e900c68718b
+	sha256sums = bbf03f16ecfef6fd45eaa405443cd3de04596caa07361aa6e8c2d190acbb1f6c
+	sha256sums = 0aad253fb7686fd15cee5c47138411ca80eb017fba046d6cb7054212294d4c7b
 
 pkgname = catppuccin-kde-theme
