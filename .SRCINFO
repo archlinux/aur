@@ -1,7 +1,7 @@
 pkgbase = ps3-ppu-binutils
 	pkgdesc = GNU Binutils for cross-compiling to ppu (PS3 GameOS)
 	pkgver = 2.40
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/binutils/
 	arch = x86_64
 	arch = aarch64
@@ -17,6 +17,7 @@ pkgbase = ps3-ppu-binutils
 	checkdepends = debuginfod
 	checkdepends = bc
 	makedepends = patch
+	depends = ps3-env
 	depends = glibc
 	depends = jansson
 	depends = libelf

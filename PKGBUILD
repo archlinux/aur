@@ -5,12 +5,12 @@ _target_alias="ppu"
 _pkgname="binutils"
 pkgname="ps3-${_target_alias}-${_pkgname}"
 pkgver="2.40"
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Binutils for cross-compiling to ${_target_alias} (PS3 GameOS)"
 arch=(x86_64 aarch64 powerpc64le powerpc64 powerpc riscv64)
 url='https://www.gnu.org/software/binutils/'
 license=('GPL3' 'GPL' 'FDL1.3' 'custom:FSFAP')
-depends=(glibc jansson libelf zlib zstd)
+depends=(ps3-env glibc jansson libelf zlib zstd)
 makedepends=(patch)
 checkdepends=(dejagnu debuginfod bc)
 options=(!emptydirs !strip staticlibs !lto)
@@ -27,12 +27,7 @@ sha256sums=(
 	'SKIP'
 )
 
-# PS3DEV
-export PS3DEV="/opt/ps3dev"
-export PSL1GHT="${PS3DEV}"
-export PATH="${PATH}:${PS3DEV}/bin"
-export PATH="${PATH}:${PS3DEV}/ppu/bin"
-export PATH="${PATH}:${PS3DEV}/spu/bin"
+source /opt/ps3dev/ps3toolchain.sh
 
 _prefix="${PS3DEV}/${_target_alias}"
 
