@@ -11,8 +11,8 @@ depends=("systemd"
 license=("AGPL3")
 source=("run-as.py"
         "enable-graphical-services.sh")
-sha256sums=("815f40fb2e3fc048361a5ca6114adcd44e4d63e7e0131fcf6d5ef1a51cf82f07"
-            "eeb723ea96283edb1dc33fe71c412d2687dec132cd691ee77a839f9e7658890b")
+sha256sums=("d91e45ff5855f2ceb90d3e06c2b1a3d986cd0d9636d93d83af9a75a335be3507"
+            "521921a95ddcc645de77ba2d6714a9d34b01d37633f93a8caee8d42fad9dedcc")
 
 package() {
   install -Dm755 "${srcdir}/run-as.py" \
