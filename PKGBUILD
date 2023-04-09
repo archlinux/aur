@@ -4,7 +4,7 @@ pkgname=komikku
 _author=valos
 _gitname=Komikku
 pkgver=1.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Online/Offline Manga reader based on GNOME | PinePhone/Librem 5 Support'
 arch=(any)
 url=https://gitlab.com/valos/Komikku
@@ -30,7 +30,7 @@ depends=(
   python-wheel
   python-rarfile
   webkit2gtk
-  webkit2gtk-5.0
+  webkitgtk-6.0
 )
 makedepends=(
   gobject-introspection
