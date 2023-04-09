@@ -1,0 +1,25 @@
+#%Module1.0
+#
+# Created by Darjan Krijan [https://disc-kuraudo.eu]
+#
+
+set MODULE          "ps3libraries"
+set BASE_DIR        "/opt/ps3dev"
+set VERSION         "20230409"
+set PS3L_ROOT      "${BASE_DIR}"
+set PS3L_TEXT      "Libraries used in the creation of homebrew software for the Sony PlayStation 3 videogame system."
+
+module load ps3toolchain
+
+prepend-path  CPATH            ${PS3L_ROOT}/portlibs/ppu/include
+prepend-path  LIBRARY_PATH     ${PS3L_ROOT}/portlibs/ppu/lib
+prepend-path  PKG_CONFIG_PATH  ${PS3L_ROOT}/portlibs/ppu/lib/pkgconfig
+
+module-whatis  "${PS3L_TEXT} version ${VERSION}"
+
+proc ModulesHelp {} {
+	global PS3L_TEXT
+	puts stderr "This module sets up the environment for ${PS3L_TEXT}"
+	puts stderr "by adapting the following environment variables:"
+	puts stderr "CPATH, LIBRARY_PATH, PKG_CONFIG_PATH"
+}
