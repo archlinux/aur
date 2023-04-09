@@ -3,10 +3,10 @@
 
 pkgbase=pyside2
 pkgname=(shiboken2 python-shiboken2 pyside2 pyside2-tools)
-_qtver=5.15.8
+_qtver=5.15.9
 _clangver=15.0.7
 pkgver=${_qtver/-/}
-pkgrel=6
+pkgrel=1
 arch=(x86_64)
 url='https://www.qt.io'
 license=(LGPL)
@@ -33,7 +33,7 @@ _pkgfqn=pyside-setup-opensource-src-$_qtver
 source=(https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-$pkgver-src/${_pkgfqn}.tar.xz
         fix-build.patch
         limited-api.patch)
-sha256sums=('23436302c8deb5b4cbc769b205d09604e38ba83b40708efccb7bd8c9af6f6b5d'
+sha256sums=('2ea5917652036a9007d66ba4dc0aa75f381a3a25ccf0fa70fa2d9e9c8c9dacae'
             '4f8815840b5df2e1e3b9f201a3402126821b0d9702920cefdc18050639143ad1'
             '9d9b0d74b5159dbafd9e3c4cd794d84b671c299edab3cac1660f094e9a8791ea')
 
