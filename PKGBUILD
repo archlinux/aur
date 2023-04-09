@@ -4,12 +4,12 @@ _target_alias="ppu"
 _pkgname="ffmpeg"
 pkgname="ps3-${_pkgname}-libs"
 pkgver="6.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Complete solution to record, convert and stream audio and video"
 arch=(x86_64 aarch64 powerpc64le powerpc64 powerpc riscv64)
 url="https://www.ffmpeg.org"
 license=(GPL3)
-depends=(ps3-ppu-gcc)
+depends=(ps3-env ps3-ppu-gcc)
 options=(!emptydirs !strip staticlibs)
 source=(
 	"https://www.ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.xz"
@@ -18,12 +18,7 @@ sha256sums=(
 	'SKIP'
 )
 
-# PS3DEV
-export PS3DEV="/opt/ps3dev"
-export PSL1GHT="${PS3DEV}"
-export PATH="${PS3DEV}/bin:${PATH}"
-export PATH="${PS3DEV}/ppu/bin:${PATH}"
-export PATH="${PS3DEV}/spu/bin:${PATH}"
+source /opt/ps3dev/ps3toolchain.sh
 
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"

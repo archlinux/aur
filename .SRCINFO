@@ -1,7 +1,7 @@
 pkgbase = ps3-ffmpeg-libs
 	pkgdesc = Complete solution to record, convert and stream audio and video
 	pkgver = 6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ffmpeg.org
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = ps3-ffmpeg-libs
 	arch = powerpc
 	arch = riscv64
 	license = GPL3
+	depends = ps3-env
 	depends = ps3-ppu-gcc
 	options = !emptydirs
 	options = !strip
