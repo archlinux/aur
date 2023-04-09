@@ -262,7 +262,7 @@ END
   patch -Np1 -i "${_patches_dir}"/custom/add_firedragon_svg.patch
 
   # Update privacy preferences
-  patch -Np1 -i "${_patches_dir}"/ui-patches/privacy-preferences.patch
+  patch -Np1 -i "${_patches_dir}"/custom/privacy-preferences.patch
 
   rm -f "${srcdir}"/common/source_files/mozconfig
   cp -r "${srcdir}"/common/source_files/* ./
