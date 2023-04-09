@@ -1,10 +1,10 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-quicktimeline
-_basever=5.15.8
-pkgver=5.15.8
+_basever=5.15.9
+pkgver=5.15.9
 pkgrel=1
-_commit=4cd0142a30bfa5eef47c720ac24dd73e12764806
+_commit=dd5d4af65890baad8baa85a445a752a877a4f7e3
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
