@@ -1,7 +1,7 @@
 pkgbase = pacpreview
 	pkgdesc = Pacman package info viewer, intended for use with fzf --preview
-	pkgver = 0.2.2
-	pkgrel = 2
+	pkgver = 0.3.1
+	pkgrel = 1
 	url = https://github.com/TheCycoONE/pacpreview
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = pacpreview
 	makedepends = rust
 	makedepends = cargo
 	optdepends = fzf: use as a search tool
-	source = pacpreview-0.2.2.tar.gz::https://github.com/TheCycoONE/pacpreview/archive/0.2.2.tar.gz
-	md5sums = 'c960dc0a22d16ecb9dc4674167769ad5'
+	source = pacpreview-0.3.1.tar.gz::https://github.com/TheCycoONE/pacpreview/archive/0.3.1.tar.gz
+        md5sums = ce6ef414caca0e77371014feaab5c753
 
 pkgname = pacpreview
