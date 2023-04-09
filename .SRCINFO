@@ -1,0 +1,23 @@
+pkgbase = subdownloader
+	pkgdesc = Automatic download/upload of subtitles using fast hashing
+	pkgver = 2.1.0
+	pkgrel = 7
+	url = https://github.com/subdownloader/subdownloader
+	arch = any
+	license = GPL3
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = python-sphinx
+	makedepends = python-sphinx-argparse
+	depends = python-argcomplete
+	depends = python-argparse
+	depends = python-commonmark
+	depends = python-langdetect
+	depends = python-progressbar
+	depends = python-pymediainfo
+	optdepends = python-pyqt5: for the GUI
+	source = subdownloader-2.1.0.tar.gz::https://github.com/subdownloader/subdownloader/archive/2.1.0.tar.gz
+	sha512sums = c61e5eb5c9f1cb452b42a2643e67d9c82550af3dd36940e2d7f4afb8229f8d394a0eafca662f5446c13230b6541dec25e6d33c486a3324d4a5e3c2d7b3a1faa8
+	b2sums = b44ed7c898b63b750f55687783b29c6a0dc6a7c30bc4c65ec737c3498d2dfb77b6d7b11196a3e7179a6c4f727ab1a706be04bd4cedc8afa5a74e59738a467200
+
+pkgname = subdownloader
