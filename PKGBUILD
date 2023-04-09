@@ -1,13 +1,17 @@
-# Maintainer: Epix <epixtm@protonmail.com>
-pkgname=ce-toolchain
-pkgver=9.2.2
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+# Contributor: Epix <epixtm@protonmail.com>
+pkgbase=ce-toolchain
+pkgname=ce-toolchain-bin
+pkgver=11.0
 pkgrel=1
 pkgdesc="Toolchain and libraries for C/C++ programming on the TI-84+ CE calculator series"
+depends=("glibc" "zlib" "gcc-libs")
+options=("!strip" "!staticlibs")
 arch=('i686' 'x86_64')
 url="https://ce-programming.github.io/toolchain/index.html"
 license=('LGPL3')
-source=("https://github.com/CE-Programming/toolchain/releases/download/v${pkgver}/linux_CEdev_v${pkgver}.tar.gz")
-sha256sums=('7d5ce9b5200677357ce1b351fb4c3ba5aa6944d42745b3c504a38bf99db9a17b')
+source=("https://github.com/CE-Programming/toolchain/releases/download/v${pkgver}/CEdev-Linux.tar.gz")
+sha256sums=('db7eee28fc26daa3d60b0b426bcd4d70b573ba705117f8514e4c5d39ee26a105')
 
 package() {
         cd "$srcdir/CEdev"
