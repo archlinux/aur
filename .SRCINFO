@@ -1,7 +1,7 @@
 pkgbase = wxwidgets-light
 	pkgdesc = wxWidgets suite for Base, Qt5 and GTK3 toolkits (GNOME/GStreamer free!)
 	pkgver = 3.2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wxwidgets.org
 	arch = x86_64
 	license = custom:wxWindows
@@ -9,6 +9,7 @@ pkgbase = wxwidgets-light
 	makedepends = cmake
 	makedepends = glu
 	makedepends = webkit2gtk
+	makedepends = gtk3
 	makedepends = libnotify
 	makedepends = qt5-base
 	makedepends = sdl2
