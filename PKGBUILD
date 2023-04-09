@@ -9,8 +9,8 @@ url="https://gitea.com/pipelight/pipelight.git"
 license=('GPL2')
 depends=(deno)
 makedepends=(git make cargo)
-provides=("pipelight-git")
-conflicts=("pipelight")
+provides=("pipelight")
+# conflicts=("pipelight")
 source=(git+$url)
 md5sums=('SKIP') #autofill using updpkgsums
 
