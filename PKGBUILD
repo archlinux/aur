@@ -2,7 +2,7 @@
 pkgname=charles-bin
 pkgver=4.6.4
 pkgrel=1
-pkgdesc="Web debugging proxy application (Built using the deb package)"
+pkgdesc="Web debugging proxy application (Standalone version using bundled Java)"
 arch=('x86_64')
 url="https://www.charlesproxy.com"
 license=('custom')
