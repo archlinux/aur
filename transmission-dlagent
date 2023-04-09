@@ -4,7 +4,7 @@
 #    transmission-dlagent
 #
 #    ----------------------------------------------------------------------
-#    Copyright © 2022  Pellegrino Prevete
+#    Copyright © 2022, 2023  Pellegrino Prevete
 #
 #    All rights reserved
 #    ----------------------------------------------------------------------
@@ -30,6 +30,9 @@ from os.path import join as path_join
 from shutil import move as mv
 from shutil import Error as MoveError
 from subprocess import CalledProcessError, Popen, check_output, run
+
+description = "Parse magnet link in makepkg format for Transmission"
+version = 0.1
 
 def makepkg_to_magnet(link):
     link = link.replace("://", ":?")
@@ -71,9 +74,13 @@ def magnet_makepkg(link, output_path, download_dir=getcwd()):
         print(e)
         return e
 
-def main():
-    parser = ArgumentParser(description="Parse magnet link in makepkg format for Transmission")
-    
+def get_args():
+    parser = ArgumentParser(description=description)
+    version = {'args': ['-V', '--version'],
+               'kwargs': {'dest': 'version',
+                          'action': 'store_true',
+                          'default': False,
+                          'help': 'print version'}}
     magnet_link = {'args': ['magnet_link'],
                    'kwargs': {'nargs': '+',
                               'action': 'store',
@@ -84,18 +91,30 @@ def main():
                               'action': 'store',
                               'default': [""],
                               'help': "output file"}}
- 
     download_dir = {'args': ['--download-dir'],
                     'kwargs': {'nargs': 1,
                                'action': 'store',
                                'default': [getcwd()],
                                'help': "download directory"}}
-    
-    parser.add_argument(*magnet_link['args'], **magnet_link['kwargs'])
-    parser.add_argument(*output_file['args'], **output_file['kwargs'])   
-    parser.add_argument(*download_dir['args'], **download_dir['kwargs'])   
 
-    args = parser.parse_args()
+    args = [version,
+            magnet_link,
+            output_file,
+            download_dir]
+
+    for arg in args:
+        parser.add_argument(*arg['args'],
+                            **arg['kwargs'])
+
+    return parser, parser.parse_args()
+
+
+def main():
+    parser, args = get_args()
+
+    if args.version:
+        print(version)
+        exit()
 
     return magnet_makepkg(args.magnet_link[0],
                           args.output_file[0],
