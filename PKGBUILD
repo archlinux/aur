@@ -3,11 +3,12 @@
 _pkgname="memos"
 _gitauthor="usememos"
 _gitbranch="main"
+_gittag="v0.12.1"
 
 
 pkgname="${_pkgname}-git"
-pkgver=0.12.0.r1.g6ff7cfdd
-pkgrel=2
+pkgver=0.12.1.r0.gef7381f0
+pkgrel=1
 pkgdesc="A lightweight, self-hosted memo hub. Open Source and Free forever."
 url="https://github.com/${_gitauthor}/${_pkgname}"
 arch=("any")
@@ -17,7 +18,7 @@ depends=("glibc")
 provides=("${pkgname}")
 backup=('etc/memos.conf')
 source=(
-  "git+https://github.com/${_gitauthor}/${_pkgname}.git#branch=${_gitbranch}"
+  "git+https://github.com/${_gitauthor}/${_pkgname}.git#tag=${_gittag}"
   "systemd.service"
   "sysusers.conf"
   "memos.conf"
