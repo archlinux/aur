@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Protesilaos Stavrou <info at protesilaos dot com>
 pkgname=tempus-themes-gtksourceview3-git
-pkgver=r28.d4f58c5
+pkgver=0.4.0.r16.gd4f58c5
 pkgrel=1
 pkgdesc="Tempus themes for GTK3 syntax highlighting"
 arch=('any')
@@ -11,16 +11,16 @@ depends=('gtksourceview3')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+https://gitlab.com/protesilaos/${pkgname%-git}.git")
+source=("git+https://gitlab.com/protesilaos/tempus-themes-gtksourceview3.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
   cd "$srcdir/${pkgname%-git}"
   install -d "$pkgdir/usr/share/gtksourceview-3.0/styles"
-  install -Dm644 *.xml "$pkgdir/usr/share/gtksourceview-3.0/styles"
+  install -Dm644 *.xml -t "$pkgdir/usr/share/gtksourceview-3.0/styles/"
 }
