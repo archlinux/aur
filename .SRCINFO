@@ -1,12 +1,12 @@
 pkgbase = spleen-font
 	pkgdesc = Monospaced bitmap fonts for user interface including console (OTB, OTF, PSFU)
 	pkgver = 1.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.cambus.net/spleen-monospaced-bitmap-fonts/
 	arch = any
 	license = BSD
 	conflicts = bdf-spleen
 	source = https://github.com/fcambus/spleen/releases/download/1.9.3/spleen-1.9.3.tar.gz
-	sha256sums = 00e1a01892f27b4620dd04e53593e045db518a6f1ab67f99226f1a3e95278af6
+	sha256sums = b7ad1edb02a5ddad117ca94f026eb8450b51504d2e81bc3a03875e12d4e76b25
 
 pkgname = spleen-font
