@@ -9,7 +9,6 @@ license=("MIT")
 depends=(
   "glibc"
   "libdrm"
-  "ncurses"
 )
 makedepends=("cargo")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Umio-Yasuno/amdgpu_top/archive/refs/tags/v${pkgver}.tar.gz")
