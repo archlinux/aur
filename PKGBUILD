@@ -3,7 +3,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=r23529.10e0f3a4c
+pkgver=r23534.360b12492
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -109,7 +109,7 @@ prepare() {
 build() {
     cd "$srcdir"
     
-    [[ -d build ]] && rm -rf build
+    #[[ -d build ]] && rm -rf build
 
     cmake -S $_pkgname -B build \
       -GNinja \
