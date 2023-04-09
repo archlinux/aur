@@ -9,7 +9,7 @@ __pkgname=firedragon
 pkgname=$__pkgname-unsigned-extensions
 _pkgname=FireDragon
 pkgver=111.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="FireDragon modified to allow installation of unsigned extensions"
 arch=(x86_64 x86_64_v3 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -231,9 +231,6 @@ END
   # Add LibreWolf logo to Debugging Page
   patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/lw-logo-devtools.patch
 
-  # Update privacy preferences
-  patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/privacy-preferences.patch
-
   # Remove firefox references in the urlbar, when suggesting opened tabs.
   patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/remove-branding-urlbar.patch
 
@@ -267,6 +264,9 @@ END
   # Pref pane - custom FireDragon svg
   patch -Np1 -i "${_patches_dir}"/custom/librewolf-pref-pane.patch
   patch -Np1 -i "${_patches_dir}"/custom/add_firedragon_svg.patch
+
+  # Update privacy preferences
+  patch -Np1 -i "${_patches_dir}"/custom/privacy-preferences.patch
 
   rm -f "${srcdir}"/common/source_files/mozconfig
   cp -r "${srcdir}"/common/source_files/* ./
