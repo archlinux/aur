@@ -11,7 +11,7 @@ post_install() {
   echo ""
   echo "============================================================================="
   echo "Please don't report theming issue to upstream, open an issue in the Gradience"
-  echo "repo instead"
+  echo "repo instead (https://github.com/GradienceTeam/Gradience/issues/new/choose)"
   echo "============================================================================="
 }
 
