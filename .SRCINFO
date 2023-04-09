@@ -1,20 +1,20 @@
 pkgbase = textext
-	pkgdesc = An inkscape extension which lets you add LaTeX equations to your drawings
-	pkgver = 1.8.1
+	pkgdesc = Re-editable LaTeX graphics for Inkscape
+	pkgver = 1.8.2
 	pkgrel = 1
-	url = https://github.com/textext/textext
+	url = https://textext.github.io/textext
 	arch = any
-	license = custom:BSD
+	license = custom:BSD-3-clause
 	makedepends = python
-	depends = inkscape>=1.0
+	makedepends = git
+	depends = inkscape
 	depends = texlive-core
-	depends = python
 	depends = pdf2svg
 	depends = python-lxml
 	depends = python-gobject
 	depends = python-cssselect
-	optdepends = imagemagick
-	source = textext-1.8.1.tar.gz::https://github.com/textext/textext/releases/download/1.8.1/TexText-Linux-1.8.1.tar.gz
-	sha256sums = 34c489bd22985731d836a82b379d2948be13e40c860782ec6a4ea765a52f744b
+	source = git+https://github.com/textext/textext.git?signed#tag=1.8.2
+	validpgpkeys = 32746E27876C1E5418BBBF7F7A9964831E98EED5
+	sha512sums = SKIP
 
 pkgname = textext

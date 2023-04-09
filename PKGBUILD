@@ -1,26 +1,23 @@
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Noel Kuntze <noel.kuntze@thermi.consulting>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Joel Schaerer <joel.schaerer@laposte.net>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=textext
-_pkgname=TexText
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
-pkgdesc="An inkscape extension which lets you add LaTeX equations to your drawings"
-arch=('any')
-license=('custom:BSD')
-url="https://github.com/textext/textext"
-makedepends=('python')
-depends=('inkscape>=1.0' 'texlive-core' 'python' 'pdf2svg' 'python-lxml' 'python-gobject' 'python-cssselect')
-optdepends=('imagemagick')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/textext/textext/releases/download/$pkgver/${_pkgname}-Linux-$pkgver.tar.gz")
+pkgdesc="Re-editable LaTeX graphics for Inkscape"
+arch=(any)
+license=('custom:BSD-3-clause')
+url="https://${pkgname}.github.io/${pkgname}"
+makedepends=(python git)
+depends=(inkscape texlive-core pdf2svg python-lxml python-gobject python-cssselect)
+source=("git+https://github.com/${pkgname}/${pkgname}.git?signed#tag=${pkgver}")
+validpgpkeys=('32746E27876C1E5418BBBF7F7A9964831E98EED5') # Jan Winkler <enceladus@posteo.de>
+sha512sums=('SKIP')
 
-sha256sums=('34c489bd22985731d836a82b379d2948be13e40c860782ec6a4ea765a52f744b')
-
-package()
-{
-	cd "$srcdir/$pkgname-$pkgver"
-	python setup.py --inkscape-extensions-path="$pkgdir/usr/share/inkscape/extensions/"
-	install -d "$pkgdir/usr/share/licenses/$pkgname"
-	install "$pkgdir/usr/share/inkscape/extensions/textext/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
-	rm -rf "$pkgdir/usr/share/inkscape/extensions/textext/__pycache__"
+package() {
+  cd ${pkgname}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py --inkscape-extensions-path="${pkgdir}/usr/share/inkscape/extensions/"
+  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
