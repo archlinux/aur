@@ -2,7 +2,7 @@
 
 pkgname=python-mocket
 pkgver=3.10.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Socket Mock Framework - for all kinds of socket animals, web-clients included - with gevent/asyncio/SSL support"
 url="https://github.com/mindflayer/python-mocket"
 license=('BSD')
