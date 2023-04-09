@@ -1,13 +1,13 @@
 pkgbase = nextcloud-app-talk_matterbridge
 	pkgdesc = Nextcloud Talk interface to matterbridge
-	pkgver = 1.25.2
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://github.com/nextcloud/talk_matterbridge
 	arch = any
 	license = AGPL
 	depends = nextcloud-app-spreed
 	options = !strip
-	source = https://github.com/nextcloud/talk_matterbridge/releases/download/v1.25.2/talk_matterbridge.tar.gz
-	sha512sums = a31443d1fdf93597750ba2910793d492d165213a5780b496632a222893c195bfe0cd596c4e2ffcf78d58eb301ebbd9cd98055b6dc182eb2e5018af074f2ed283
+	source = https://github.com/nextcloud/talk_matterbridge/releases/download/v1.26.0/talk_matterbridge.tar.gz
+	sha512sums = 610e90af5069f005a5962f47c9d5ecd1222434d67f00c2f289949f7e917ced0804d1db27d7c24839e335207cbdf5a5a80fe5a877f8ee63bc2f500e7dde2de405
 
 pkgname = nextcloud-app-talk_matterbridge
