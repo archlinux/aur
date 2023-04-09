@@ -1,5 +1,5 @@
 pkgbase = obs-plugin-vertical-canvas-git
-	pkgdesc = OBS Studio plugin to record in vertical canvas bya itum.
+	pkgdesc = OBS Studio plugin to record in vertical canvas by aitum.
 	pkgver = 1.2.1.r4.g392729a
 	pkgrel = 1
 	url = https://github.com/Aitum/obs-vertical-canvas

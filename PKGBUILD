@@ -1,10 +1,10 @@
-# Maintainer: mesmer <ldepaula dot gmail dot com>
+# Maintainer: mesmer <ldepaulaf dot gmail dot com>
 
 pkgname=obs-plugin-vertical-canvas-git
 _pkgname=obs-vertical-canvas
 pkgver=1.2.1.r4.g392729a
 pkgrel=1
-pkgdesc='OBS Studio plugin to record in vertical canvas bya itum.'
+pkgdesc='OBS Studio plugin to record in vertical canvas by aitum.'
 arch=('x86_64')
 url='https://github.com/Aitum/obs-vertical-canvas'
 license=('GPL2')
