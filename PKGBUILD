@@ -10,10 +10,15 @@ arch=('x86_64')
 url="https://github.com/matinlotfali/KDE-Rounded-Corners"
 license=("GPL3")
 provides=(
-  "$_gitname"
+  "$_gitname"{,-git}
   "$_pkgname"
+  "kwin-effect-shapecorners"{,-git}
 )
 conflicts=(${provides[@]})
+replaces=(
+  "$_gitname"{,-git}
+  "kwin-effect-shapecorners"{,-git}
+)
 depends=(
   'kwin'
 )
