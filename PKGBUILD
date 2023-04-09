@@ -21,7 +21,8 @@ source=("git+$url#tag=v${pkgver}"
         "flashlight-text::git+https://github.com/flashlight/text.git"
         # Files downloaded by ExternalProject_Add
         "https://downloads.sourceforge.net/project/sox/sox/$_sox_ver/sox-$_sox_ver.tar.bz2"
-        "use-system-libs.diff")
+        "use-system-libs.diff"
+        "LoadHIP.cmake")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
