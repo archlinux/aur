@@ -1,13 +1,13 @@
 pkgbase = pap
 	pkgdesc = a swiss army knife for minecraft servers
-	pkgver = 0.14.3
+	pkgver = 0.14.4
 	pkgrel = 1
 	url = https://github.com/talwat/pap
 	arch = any
 	license = MIT
 	makedepends = go>=1.18
 	optdepends = java-runtime: running the downloaded jarfiles
-	source = pap-0.14.3.tar.gz::https://github.com/talwat/pap/archive/v0.14.3.tar.gz
-	sha256sums = 9902237abed6a103cfecd5798c108c6ebc0a4f9371ba76b6e464b20829517a57
+	source = pap-0.14.4.tar.gz::https://github.com/talwat/pap/archive/v0.14.4.tar.gz
+	sha256sums = 16fa05c5055656c6696fa74e8009929b9d0abb1687ba135d4102960a183821b4
 
 pkgname = pap
