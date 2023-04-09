@@ -1,0 +1,13 @@
+pkgbase = slow-git
+	pkgdesc = A script to simulate slow network connections
+	pkgver = r15.48c1980
+	pkgrel = 1
+	url = https://github.com/ModusCreateOrg/slow
+	arch = any
+	license = MIT
+	provides = slow
+	conflicts = slow
+	source = git+https://github.com/ModusCreateOrg/slow.git
+	md5sums = SKIP
+
+pkgname = slow-git
