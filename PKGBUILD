@@ -4,7 +4,7 @@ _pkgorg=gitlab.com/mipimipi
 pkgname=repman-git
 _pkgname=repman
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage (remote) custom repositories"
 arch=(
   aarch64
@@ -19,11 +19,15 @@ md5sums=(SKIP)
 depends=(
   binutils
   "pacman>=6.0.0"
-  rsync
 )
 depends_x86_64=(devtools)
 depends_armv7h=(devtools-alarm)
 depends_aarch64=(devtools-alarm)
+optdepends=(
+  "gnupg: in case packages and/or repository DB's should be signed"
+  "rsync: support of SSH-accessible storage locations"
+  "s3cmd: support of AWS S3"
+)
 makedepends=(
   bash
   cargo
@@ -31,7 +35,6 @@ makedepends=(
   make
   asciidoctor
 )
-optdepends=(gnupg)
 provides=(repman)
 conflicts=(repman)
 

@@ -1,7 +1,7 @@
 pkgbase = repman-git
 	pkgdesc = Manage (remote) custom repositories
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/mipimipi/repman
 	arch = aarch64
 	arch = armv7h
@@ -14,8 +14,9 @@ pkgbase = repman-git
 	makedepends = asciidoctor
 	depends = binutils
 	depends = pacman>=6.0.0
-	depends = rsync
-	optdepends = gnupg
+	optdepends = gnupg: in case packages and/or repository DB's should be signed
+	optdepends = rsync: support of SSH-accessible storage locations
+	optdepends = s3cmd: support of AWS S3
 	provides = repman
 	conflicts = repman
 	source = git+https://gitlab.com/mipimipi/repman.git
