@@ -2,7 +2,7 @@
 # Contributor: Protesilaos Stavrou <info at protesilaos dot com>
 pkgname=tempus-themes-gtksourceview4-git
 pkgver=r11.24631b5
-pkgrel=1
+pkgrel=2
 pkgdesc="Tempus themes for GTK4 syntax highlighting"
 arch=('any')
 url="https://protesilaos.com/tempus-themes"
@@ -11,7 +11,7 @@ depends=('gtksourceview4')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+https://gitlab.com/protesilaos/${pkgname%-git}.git")
+source=("git+https://gitlab.com/protesilaos/tempus-themes-gtksourceview4.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -22,5 +22,5 @@ pkgver() {
 package() {
   cd "$srcdir/${pkgname%-git}"
   install -d "$pkgdir/usr/share/gtksourceview-4/styles"
-  install -Dm644 *.xml "$pkgdir/usr/share/gtksourceview-4/styles"
+  install -Dm644 *.xml -t "$pkgdir/usr/share/gtksourceview-4/styles/"
 }
