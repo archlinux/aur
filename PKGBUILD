@@ -1,39 +1,39 @@
-_basename=cosmic-comp
+# Maintainer: soloturn <soloturn@gmail.com>
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-comp-git
-pkgver=r56.5657a77
+pkgver=r449.8f6ad62
 pkgrel=1
-pkgdesc="Pop!_OS Wayland compositor written in Rust"
+pkgdesc="Compositor for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
-url="https://github.com/pop-os/$_basename"
+url="https://github.com/pop-os/cosmic-comp"
 license=('GPL3')
-depends=('wayland')
-makedepends=('cargo')
-source=(git+https://github.com/pop-os/$_basename.git)
+groups=('cosmic')
+depends=('libseat.so' 'libinput' 'libxkbcommon' 'mesa' 'systemd' 'wayland')
+makedepends=('cargo' 'git')
+optdepends=('cosmic-session')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=('git+https://github.com/pop-os/cosmic-comp.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_basename"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  cd "$srcdir/${pkgname%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$_basename"
+  cd "$srcdir/${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd "$_basename"
+  cd "$srcdir/${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  make
+  make all
 }
 
 package() {
-  cd "$_basename"
-  sed -i "s|$_basename-bin \$(BIN)|$_basename-bin $pkgdir/usr/bin/$_basename|g" Makefile
-
-  make BIN="/usr/bin/$_basename" DESTDIR="$pkgdir" install
+  cd "$srcdir/${pkgname%-git}"
+  make DESTDIR="$pkgdir" install
 }
