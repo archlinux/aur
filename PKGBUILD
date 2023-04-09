@@ -1,7 +1,7 @@
 # Maintainer: Sahil Gupte <ovenoboyo@gmail.com>
 
 pkgname=moosync
-pkgver=7.1.0
+pkgver=8.0.0
 pkgrel=1
 pkgdesc='A simple music player'
 arch=('any')
@@ -12,10 +12,10 @@ depends=('electron' 'libvips' 'alsa-lib')
 makedepends=('yarn' 'node-gyp' 'cargo')
 source=("${pkgname}-${pkgver}-prebuilt.tar::https://github.com/Moosync/Moosync/releases/download/v${pkgver}/Moosync-${pkgver}-linux-x64.pacman" "${pkgname}-${pkgver}.tar::https://github.com/Moosync/Moosync/archive/v${pkgver}.tar.gz" moosync moosync.desktop builder-args.sh)
 sha256sums=('0f0a11ca8512bd285c993bee45b611f725df37f0f3dca7acfddc16145abf80ad'
-            '708af19411fc03d18dbd4446d1c099eed80873144238531a45c6cb2d21712b4b'
-            '36867efee6f9a491e64979ed329ce87f2136da2afcce4c9ef5696a9f2538d9ba'
-            '4b63fa17717239db8a87ebeae1fdd96c5318b71d7d851d6c5a4f337793d3fecd'
-            'bb106abfddfa388cdd9953b034e3176f87eac636932d793b2f5293576cc017bb')
+    '708af19411fc03d18dbd4446d1c099eed80873144238531a45c6cb2d21712b4b'
+    '36867efee6f9a491e64979ed329ce87f2136da2afcce4c9ef5696a9f2538d9ba'
+    '4b63fa17717239db8a87ebeae1fdd96c5318b71d7d851d6c5a4f337793d3fecd'
+    'bb106abfddfa388cdd9953b034e3176f87eac636932d793b2f5293576cc017bb')
 _sourcedirectory="Moosync-$pkgver"
 
 build() {
@@ -30,7 +30,7 @@ build() {
     yarn install --ignore-engines || true
 
     . "$srcdir/builder-args.sh"
-    yarn electron:build -- $ELECTRON_BUILDER_ARCH_ARGS --linux --dir 
+    yarn electron:build -- $ELECTRON_BUILDER_ARCH_ARGS --linux --dir
 }
 
 package() {
@@ -46,8 +46,8 @@ package() {
 
     # Install icons
     for _size in 16 32 48 256 512; do
-		install -Dm644 "${srcdir}/${_sourcedirectory}/build/icons/${_size}x${_size}.png" "$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/moosync.png"
-	done
+        install -Dm644 "${srcdir}/${_sourcedirectory}/build/icons/${_size}x${_size}.png" "$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/moosync.png"
+    done
 
     install -d "${pkgdir}/usr/bin"
     install "moosync" "${pkgdir}/usr/bin/moosync"
