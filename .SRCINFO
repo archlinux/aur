@@ -1,24 +1,24 @@
 pkgbase = perl-config-mvp
-	pkgdesc = multivalue-property package-oriented configuration
-	pkgver = 2.200012
+	pkgdesc = Multivalue-property package-oriented configuration
+	pkgver = 2.200013
 	pkgrel = 1
-	url = https://metacpan.org/release/Config-MVP
+	url = https://metacpan.org/dist/Config-MVP
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	checkdepends = perl-test-fatal>=0
-	depends = perl-class-load>=0.17
-	depends = perl-module-pluggable>=0
-	depends = perl-moose>=0.91
-	depends = perl-moosex-oneargnew>=0
-	depends = perl-params-util>=0
-	depends = perl-role-hasmessage>=0
-	depends = perl-role-identifiable>=0
-	depends = perl-throwable>=0
-	depends = perl-tie-ixhash>=0
-	depends = perl-try-tiny>=0
-	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Config-MVP-2.200012.tar.gz
-	md5sums = 93b12dacd4d2bd828d40a1d0e2c260fd
+	checkdepends = perl-test-fatal
+	depends = perl
+	depends = perl-class-load
+	depends = perl-module-pluggable
+	depends = perl-moose
+	depends = perl-moosex-oneargnew
+	depends = perl-params-util
+	depends = perl-role-hasmessage
+	depends = perl-role-identifiable
+	depends = perl-throwable
+	depends = perl-tie-ixhash
+	depends = perl-try-tiny
+	source = https://www.cpan.org/modules/by-module/Config/Config-MVP-2.200013.tar.gz
+	sha512sums = aae4431a559f62332f5d7072d799ad5eaea9baf978a4145228dbfd80617e0131b9a80d2033a65da735a01abb4f40ce599b306e721dd4b3e98d6a56d984b21fd7
 
 pkgname = perl-config-mvp

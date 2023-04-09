@@ -1,57 +1,37 @@
-# Maintainer: Thiago L. A. Miller <thiago_leisrael@hotmail.com>
+# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Contributor: Thiago L. A. Miller <thiago_leisrael@hotmail.com>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-_distname=Config-MVP
+
 pkgname=perl-config-mvp
-pkgver=2.200012
+pkgver=2.200013
 pkgrel=1
-pkgdesc="multivalue-property package-oriented configuration"
+pkgdesc="Multivalue-property package-oriented configuration"
 arch=('any')
-url="https://metacpan.org/release/$_distname"
+url="https://metacpan.org/dist/Config-MVP"
 license=('PerlArtistic' 'GPL')
-depends=('perl-class-load>=0.17'
-         'perl-module-pluggable>=0'
-         'perl-moose>=0.91'
-         'perl-moosex-oneargnew>=0'
-         'perl-params-util>=0'
-         'perl-role-hasmessage>=0'
-         'perl-role-identifiable>=0'
-         'perl-throwable>=0'
-         'perl-tie-ixhash>=0'
-         'perl-try-tiny>=0')
-makedepends=()
-checkdepends=('perl-test-fatal>=0')
-options=('!emptydirs')
-source=("http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/$_distname-$pkgver.tar.gz")
-md5sums=('93b12dacd4d2bd828d40a1d0e2c260fd')
+depends=('perl' 'perl-class-load' 'perl-module-pluggable' 'perl-moose'
+         'perl-moosex-oneargnew' 'perl-params-util' 'perl-role-hasmessage'
+         'perl-role-identifiable' 'perl-throwable' 'perl-tie-ixhash'
+         'perl-try-tiny')
+checkdepends=('perl-test-fatal')
+source=("https://www.cpan.org/modules/by-module/Config/Config-MVP-${pkgver}.tar.gz")
+sha512sums=('aae4431a559f62332f5d7072d799ad5eaea9baf978a4145228dbfd80617e0131b9a80d2033a65da735a01abb4f40ce599b306e721dd4b3e98d6a56d984b21fd7')
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+  cd "${srcdir}/Config-MVP-${pkgver}"
 
-    cd "$_distname-$pkgver"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  perl Makefile.PL NO_PACKLIST=true NO_PERLLOCAL=true
+  make
 }
 
 check() {
-  cd "$_distname-$pkgver"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  cd "${srcdir}/Config-MVP-${pkgver}"
+
+  make test
 }
 
 package() {
-  cd "$_distname-$pkgver"
-  make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
-}
+  cd "${srcdir}/Config-MVP-${pkgver}"
 
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
+  make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
+}
