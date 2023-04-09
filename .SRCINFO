@@ -1,6 +1,6 @@
 pkgbase = hyprland-nvidia-hidpi-git
 	pkgdesc = A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (NVIDIA + HiDPI patch)
-	pkgver = r2551.c4440993
+	pkgver = r2722.e4e653ad
 	pkgrel = 1
 	url = https://github.com/hyprwm/Hyprland
 	arch = any
@@ -41,8 +41,8 @@ pkgbase = hyprland-nvidia-hidpi-git
 	depends = seatd
 	depends = vulkan-icd-loader
 	depends = vulkan-validation-layers
-	depends = xorg-xwayland-hidpi-xprop
-	depends = libdisplay-info
+	depends = xorg-xwayland-lily
+	depends = libdisplay-info-git
 	provides = hyprland
 	conflicts = hyprland
 	options = !makeflags
@@ -59,7 +59,7 @@ pkgbase = hyprland-nvidia-hidpi-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 304aaf12cbd7dc198bf7e418d729b297ea61186d27c035e4a63a337399fcec76
+	sha256sums = 497afb5e99cb069ed96a3c4a735ad23afe0d012ca845067aae3176e45e267ba5
 	sha256sums = e7cf16e39db2bde4dbc9d7ec3b4753f7643b1bf198a3179e6802a9c603437fe9
 	sha256sums = 522b19656d7c1627ec615b6720182590570560e346c1670f9df002015707b340
 
