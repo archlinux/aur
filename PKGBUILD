@@ -12,7 +12,7 @@ pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
 # https://github.com/buildbot/buildbot/releases
 pkgver=3.7.0
 _bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://buildbot.net'
 license=(GPL2)
@@ -32,14 +32,14 @@ makedepends=(python-twisted python-jinja python-msgpack python-zope-interface py
 source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.asc}
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
         "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch"
-        "python310.diff"
-        "05f8bfb2af5f77de2c512254d306bff983fec242.patch")
+        "05f8bfb2af5f77de2c512254d306bff983fec242.patch"
+        "buildbot-py311.patch::https://github.com/buildbot/buildbot/pull/6813.patch")
 sha256sums=('8d8b519dd60374bc327f2f829cdffdaaca415d65c7a89abd9a89435e7b7f81b9'
             'SKIP'
             'SKIP'
             '896eede4c33a8574d7c29ac4a28cebbe3d7e850931a86e945328f8ea358195a9'
-            '79bff19ba26d9ae97a9fffbbd8b83b21dcfba0a933c908176562906cf7432813'
-            '23255ee665043109d3b267d1846e2ae73ff54bf2e7155e99996280a9e918ce69')
+            '23255ee665043109d3b267d1846e2ae73ff54bf2e7155e99996280a9e918ce69'
+            '8665c30408aac249271dc57e65a38e8441e2e75061523b381ea9233a1d2fd200')
 validpgpkeys=(
   '390EB159056ED56F66AB1092AECD456B4D2531FC'  # Pierre Tardy <tardyp@gmail.com> (@tardyp on GitHub)
   'FD0004A26EADFE43A4C3F249C6F7AE200374452D'  # Povilas Kanapickas <povilas@radix.lt> (@p12tic on GitHub)
@@ -67,13 +67,13 @@ prepare() {
   # in upstream CI and introduces extra deprecation warnings
   sed -r -i "s#warnings\\.filterwarnings\\('error'\\)##" master/buildbot/test/__init__.py
 
-  # Fixes for Python 3.10 breakages:
-  # https://github.com/python/cpython/pull/20236
-  patch -Np1 -i ../python310.diff
-
   # www/react: Fix websocket connections on https
-  # Part of https://github.com/buildbot/buildbot/pull/6753 (not merged yet)
+  # Part of https://github.com/buildbot/buildbot/pull/6753 (merged to git master)
   patch -Np1 -i ../05f8bfb2af5f77de2c512254d306bff983fec242.patch
+
+  # Fixes for Python 3.11
+  # https://github.com/buildbot/buildbot/pull/6813 (merged to git master)
+  patch -Np1 -i ../buildbot-py311.patch
 
   cd "$srcdir"/buildbot-contrib
   patch -Np1 -i ../buildbot-contrib-systemd-common.patch
