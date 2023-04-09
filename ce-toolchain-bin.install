@@ -1,0 +1,7 @@
+post_install() {
+cat << EOF
+=============================================================================
+Restart your computer to have the ce-toolchain binaries show up in your \$PATH
+=============================================================================
+EOF
+}
