@@ -46,18 +46,20 @@ def run_as(user, command, command_args, X=False):
     machinectl_cmd = ['machinectl',
                       'shell',
                       f"--uid={user}"]
+    call_cmd = []
     if X:
         display = environ['DISPLAY']
         machinectl_cmd.append(f"--setenv=DISPLAY={display}")
+        call_cmd.append(which("enable-graphical-services"))
 
-    machinectl_cmd.extend([".host", 
-                           command,
-                           *command_args])
-    print("running", machinectl_cmd)
+    machinectl_cmd.append(".host")
+    call_cmd.extend([command, *command_args])
+    machinectl_cmd.extend(call_cmd)
+
     machinectl = sh(machinectl_cmd)
     machinectl_out = machinectl.stdout
 
-    print("output", machinectl_out)
+    return machinectl_out
 
 def get_args():
     parser = ArgumentParser(description=description)
@@ -107,6 +109,7 @@ def get_args():
 
     return parser, parser.parse_args()
 
+
 def main():
     parser, args = get_args()
 
@@ -132,10 +135,12 @@ def main():
         parser.print_help(stderr)
         exit()
 
-    run_as(uid,
-           command,
-           args.command_args,
-           X=args.X)
+    out = run_as(uid,
+                 command,
+                 args.command_args,
+                 X=args.X)
+    
+    print(out)
 
 
 if __name__ == "__main__":

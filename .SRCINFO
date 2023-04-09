@@ -9,7 +9,7 @@ pkgbase = run-as
 	depends = python
 	source = run-as.py
 	source = enable-graphical-services.sh
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 1768c50f35ce3a8761f69281cee16b314b7a14542b558793839c08dd9c880001
+	sha256sums = eeb723ea96283edb1dc33fe71c412d2687dec132cd691ee77a839f9e7658890b
 
 pkgname = run-as
