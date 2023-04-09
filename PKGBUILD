@@ -2,10 +2,10 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-charts
-_basever=5.15.8
-pkgver=5.15.8
+_basever=5.15.9
+pkgver=5.15.9
 pkgrel=1
-_commit=e30be213e483f2d6f3c40af0cbdc11a8e92e2026
+_commit=3d4a84eb6d62ce22a47794f309f9268729ac375f
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3')
