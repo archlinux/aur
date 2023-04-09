@@ -1,3 +1,3 @@
 # aur package quarto-cli-bin-pre-release
 
-Data is fetched using github api
+Version info is fetched using github api and checksums from github releases
