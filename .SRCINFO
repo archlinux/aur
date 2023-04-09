@@ -1,5 +1,5 @@
 pkgbase = modern-theme-git
-	pkgdesc = Small tweaks of standart Adwaita/adw-mod theme, contains color schemes for Qt5/Qt6/KDE
+	pkgdesc = GTK3/GTK4 theme powered by Adwaita technologies, contains color schemes for Qt5/Qt6/KDE and Aurorae (git version)
 	pkgver = v1.02a.r8.g1753235
 	pkgrel = 1
 	url = https://github.com/TerminalHash/Modern

@@ -2,7 +2,7 @@
 pkgname=modern-theme-git
 pkgver=v1.02a.r8.g1753235
 pkgrel=1
-pkgdesc="Small tweaks of standart Adwaita/adw-mod theme, contains color schemes for Qt5/Qt6/KDE"
+pkgdesc="GTK3/GTK4 theme powered by Adwaita technologies, contains color schemes for Qt5/Qt6/KDE and Aurorae  (git version)"
 arch=(any)
 url="https://github.com/TerminalHash/Modern"
 license=('GPL3')
@@ -17,24 +17,25 @@ pkgver() {
 
 package() {
     cd $srcdir/Modern
+	mkdir -p $pkgdir/usr/share/aurorae/themes
 	mkdir -p $pkgdir/usr/share/themes
 	mkdir -p $pkgdir/usr/share/color-schemes
 	mkdir -p $pkgdir/usr/share/qt5ct/colors
 	mkdir -p $pkgdir/usr/share/qt6ct/colors
-	
-	# Copy openbox theme
-	cd 'WM Themes'
-	cp -r openbox-3 ../Dark
-	cp -r openbox-3 ../White
-	cd ..
-	
+
 	# Main process
 	mv Dark $pkgdir/usr/share/themes/Modern-Dark
 	mv White $pkgdir/usr/share/themes/Modern-White
-    
-    cd 'Color schemes'
+
+	# KDE Plasma
+    cd KWin
+    mv Modern $pkgdir/usr/share/aurorae/themes
+
+    cd '../Color schemes'
     cd KDE
     cp Plume.colors $pkgdir/usr/share/color-schemes
+
+    # Common color schemes for Qt
     cd '../Qt Configurator'
     cp * $pkgdir/usr/share/qt5ct/colors
     cp * $pkgdir/usr/share/qt6ct/colors
