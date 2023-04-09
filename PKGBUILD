@@ -4,7 +4,7 @@
 _fontname=spleen
 
 pkgname=spleen-font
-pkgver=1.9.2
+pkgver=1.9.3
 pkgrel=1
 pkgdesc="Monospaced bitmap fonts for user interface including console (OTB, OTF, PSFU)"
 arch=('any')
