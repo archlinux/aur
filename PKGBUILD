@@ -3,13 +3,13 @@
 _name=pytest-html
 pkgname=python-pytest-html
 pkgver=3.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for generating HTML reports for pytest results"
 arch=(any)
 url="https://github.com/pytest-dev/pytest-html"
 license=(MPL2)
 depends=(python-py python-pytest python-pytest-metadata)
-makedepends=(python-build python-installer python-setuptools python-setuptools-scm)
+makedepends=(python-build python-installer python-setuptools python-setuptools-scm python-wheel)
 checkdepends=(python-ansi2html python-pytest-mock python-pytest-rerunfailures
 python-pytest-xdist)
 source=(
