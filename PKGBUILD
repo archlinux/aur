@@ -5,7 +5,7 @@
 # Contributor: Sven Schulz <omee@archlinux.de>
 
 pkgname=ssldump
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc="SSLv3/TLS network protocol analyzer"
 url="https://github.com/adulau/ssldump"
@@ -13,7 +13,7 @@ license=('BSD')
 arch=('x86_64')
 depends=('json-c' 'libnet' 'libpcap' 'openssl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adulau/ssldump/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3a9c0b1ac22b14194342ac961f0a08920a10026c9faadf5b4524b68c73b4830b')
+sha256sums=('f0857a97212898e2c0583d7240b58d6d2fe0ddf0f7a84cf31975ed01820409c3')
 
 build() {
   cd $pkgname-$pkgver
