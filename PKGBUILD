@@ -2,7 +2,7 @@
 
 pkgname=fulcrum
 pkgdesc='A fast & nimble SPV server for Bitcoin Cash'
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 url='https://codeberg.org/Flowee/fulcrum'
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
     "https://codeberg.org/Flowee/fulcrum/archive/v$pkgver.tar.gz"
     "fulcrum.conf"
 )
-sha256sums=('b8018c24bbc91f1e7e8d106f6b3ee8bd126f48c9a8d3306388270aafc40ea28d'
+sha256sums=('94ef6cdaf34ccc2a88afe6a9f9d4366f24dcefa0ddee0a4e7df94e050b620ae1'
     '7af8de6df023a2c06575e675de72af71abc1bdc74be6629c08aded63bf55ac1a'
 )
 
