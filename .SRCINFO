@@ -1,0 +1,15 @@
+pkgbase = tempus-themes-highlight-git
+	pkgdesc = Tempus themes Highlight
+	pkgver = r2.d08082e
+	pkgrel = 1
+	url = https://protesilaos.com/tempus-themes
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = highlight
+	provides = tempus-themes-highlight
+	conflicts = tempus-themes-highlight
+	source = git+https://gitlab.com/protesilaos/tempus-themes-highlight.git
+	sha256sums = SKIP
+
+pkgname = tempus-themes-highlight-git
