@@ -1,0 +1,15 @@
+pkgbase = sigmafetch
+	pkgdesc = a Neofetch-like program written in Rust
+	pkgver = 1.0.r6.076cf2a
+	pkgrel = 1
+	url = https://github.com/JafKc/sigmafetch.git
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = cargo
+	provides = sigmafetch
+	conflicts = sigmafetch
+	source = git+https://github.com/JafKc/sigmafetch.git
+	md5sums = SKIP
+
+pkgname = sigmafetch
