@@ -4,7 +4,7 @@
 
 pkgname=cyberghostvpn
 pkgver=1.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="CyberGhost VPN"
 url="https://www.cyberghostvpn.com"
 arch=(any)
@@ -22,7 +22,7 @@ _variant=ubuntu-20.04
 source=(	"https://download.cyberghostvpn.com/linux/cyberghostvpn-${_variant}-${pkgver}.zip"
 		"cyberghostvpn_wrapper"
 		"openvpn_wrapper")
-sha256sums=(	'c976ed4f19adbf0c4d0a7a7032419b66f19684977dec8c5237ed1b0675141a96'
+sha256sums=(	'b80941fd044cd7ac230743e9dc18e3ff636ac209e7c04fdf2619428f8043fc76'
 		'388e6b86db32e6fb513769257e58efb32392fe5f020cc8bb2f67a506ac59206e'
 		'f26e37ce43385e625b012afd3d27bad9f9279e3d6cb135cd92c412eada36212e')
 
