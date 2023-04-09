@@ -1,7 +1,7 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 pkgname=ifcopenshell
-pkgver=0.7.0a6
-pkgrel=2
+pkgver=0.7.0a8
+pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon."
 arch=('x86_64' 'i686')
 url="http://ifcopenshell.org/"
@@ -103,4 +103,4 @@ package_blender-plugin-bim() {
   chmod -R a+rwX "${pkgdir}/usr/share/blender/${_blender_ver}/scripts/addons/blenderbim/bim/data"
 }
 
-md5sums=('0814f545b57a5f4de0211151de99fcc7' 'SKIP' 'SKIP' '8a1fabbe039bda399ff9cb0f646fca89')
+md5sums=('b0e6f84fc01478d07f66e47f53b52c48' 'SKIP' 'SKIP' '8a1fabbe039bda399ff9cb0f646fca89')
