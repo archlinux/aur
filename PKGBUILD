@@ -16,7 +16,7 @@ depends=('gobject-introspection-runtime' 'libkeybinder3' 'gtk3' 'webkit2gtk' 'li
 makedepends=('git' 'python-setuptools' 'python-distutils-extra')
 optdepends=('libappindicator-gtk3: tray icon')
 install="ulauncher.install"
-source=("https://github.com/Ulauncher/Ulauncher/releases/download/5.15.2/ulauncher_5.15.2.tar.gz")
+source=("https://github.com/Ulauncher/Ulauncher/releases/download/${pkgver}/ulauncher_${pkgver}.tar.gz")
 sha256sums=('b22337ee77485d5da0ff45ee99c8d94e701aba98e0c78a347b5f6a82baca88d7')
 
 build() {
