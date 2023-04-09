@@ -1,3 +1,6 @@
+* Sat Apr 08 2023 Andrew Sachen <webmaster@RealityRipple.com> 1.2.2
+- Fixed integer overflow bug.
+
 * Wed Aug 04 2020 Andrew Sachen <webmaster@RealityRipple.com> 1.2.1
 - Improved textbox Copy functionality
 - Improved Profile selection after deletion
