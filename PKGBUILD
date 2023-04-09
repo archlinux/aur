@@ -10,7 +10,6 @@ license=("MIT")
 depends=(
   "glibc"
   "libdrm"
-  "ncurses"
 )
 makedepends=("cargo")
 source=("git+${url}")
