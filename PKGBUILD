@@ -3,10 +3,10 @@
 
 pkgname=qt5-gamepad
 _qtver=5.15.2
-_basever=5.15.8
-pkgver=5.15.8
+_basever=5.15.9
+pkgver=5.15.9
 pkgrel=1
-_commit=ad63dc64f4bdafb503f7015d04e8849cef5d99b4
+_commit=7c05744e38d44afac687df3349d548c8790837db
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
