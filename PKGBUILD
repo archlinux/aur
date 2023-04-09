@@ -8,6 +8,7 @@ arch=('any')
 license=('MIT')
 url='https://github.com/tholo/pytest-flake8'
 depends=('python-pytest' 'flake8')
+makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tholo/pytest-flake8/archive/$pkgver.tar.gz")
 sha512sums=('7ad9b6da1fdb9f9ac8720820589d1a213b1c1bda8c2579d988d288031fb717916c81d100488200a4d64b880575041f34387c20685416ed789ced51063e814e13')
 
