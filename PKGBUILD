@@ -6,7 +6,7 @@ pkgname=(shiboken2 python-shiboken2 pyside2 pyside2-tools)
 _qtver=5.15.9
 _clangver=15.0.7
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url='https://www.qt.io'
 license=(LGPL)
@@ -32,14 +32,17 @@ optdepends=('qt5-svg: QtSvg bindings'
 _pkgfqn=pyside-setup-opensource-src-$_qtver
 source=(https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-$pkgver-src/${_pkgfqn}.tar.xz
         fix-build.patch
-        limited-api.patch)
+        limited-api.patch
+        python3.11.patch)
 sha256sums=('2ea5917652036a9007d66ba4dc0aa75f381a3a25ccf0fa70fa2d9e9c8c9dacae'
             '4f8815840b5df2e1e3b9f201a3402126821b0d9702920cefdc18050639143ad1'
-            '9d9b0d74b5159dbafd9e3c4cd794d84b671c299edab3cac1660f094e9a8791ea')
+            '9d9b0d74b5159dbafd9e3c4cd794d84b671c299edab3cac1660f094e9a8791ea'
+            'e91549f7d3da412e864af26f604d0023b80233a7165f50fa21e53cbe861db886')
 
 prepare() {
   patch -d $_pkgfqn -p1 < fix-build.patch
   patch -d $_pkgfqn -p1 < limited-api.patch
+  patch -d $_pkgfqn -p1 < python3.11.patch # Fix build with Python 3.11
 }
 
 build() {
