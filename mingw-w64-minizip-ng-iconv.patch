@@ -1,55 +1,35 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 0ed720e..c4fd86d 100644
+index 90bed54..4b025ae 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -559,31 +559,30 @@ if(UNIX)
-     else()
-         list(APPEND MINIZIP_DEF -DMZ_ZIP_NO_CRYPTO)
+@@ -453,7 +453,29 @@ if(WIN32)
      endif()
-+else()
-+    set(MZ_LIBBSD OFF)
-+endif()
  
--    # Iconv is only necessary when it is not already built-in
--    # FindIconv requires cmake 3.11 or higher
--    if (MZ_ICONV)
--        find_package(Iconv QUIET)
--    endif()
--
--    if(Iconv_FOUND)
--        message(STATUS "Using Iconv")
-+# Iconv is only necessary when it is not already built-in
-+# FindIconv requires cmake 3.11 or higher
-+if (MZ_ICONV)
-+    find_package(Iconv QUIET)
-+endif()
- 
--        list(APPEND MINIZIP_DEF -DHAVE_ICONV)
--        list(APPEND MINIZIP_INC ${Iconv_INCLUDE_DIRS})
--        list(APPEND MINIZIP_DEP_PKG Iconv)
--        if(NOT Iconv_IS_BUILT_IN)
--            list(APPEND MINIZIP_LIB ${Iconv_LIBRARIES})
--            list(APPEND MINIZIP_LBD ${Iconv_LIBRARY_DIRS})
--            set(PC_PRIVATE_LIBS "${PC_PRIVATE_LIBS} -liconv")
--        endif()
--    else()
--        message(STATUS "Character encoding support requires iconv")
-+if(Iconv_FOUND)
-+    message(STATUS "Using Iconv")
- 
--        set(MZ_ICONV OFF)
-+    list(APPEND MINIZIP_DEF -DHAVE_ICONV)
-+    list(APPEND MINIZIP_INC ${Iconv_INCLUDE_DIRS})
-+    list(APPEND MINIZIP_DEP_PKG Iconv)
-+    if(NOT Iconv_IS_BUILT_IN)
-+        list(APPEND MINIZIP_LIB ${Iconv_LIBRARIES})
-+        list(APPEND MINIZIP_LBD ${Iconv_LIBRARY_DIRS})
-+        set(PC_PRIVATE_LIBS "${PC_PRIVATE_LIBS} -liconv")
-     endif()
- else()
--    set(MZ_LIBBSD OFF)
-+    message(STATUS "Character encoding support requires iconv")
+     set(MZ_LIBBSD OFF)
+-    set(MZ_ICONV OFF)
++    
++    # Iconv is only necessary when it is not already built-in
++    # FindIconv requires cmake 3.11 or higher
++    if (MZ_ICONV)
++        find_package(Iconv QUIET)
++    endif()
 +
-     set(MZ_ICONV OFF)
- endif()
- 
++    if(Iconv_FOUND)
++        message(STATUS "Using Iconv")
++
++        list(APPEND MINIZIP_DEF -DHAVE_ICONV)
++        list(APPEND MINIZIP_INC ${Iconv_INCLUDE_DIRS})
++        list(APPEND MINIZIP_DEP_PKG Iconv)
++        if(NOT Iconv_IS_BUILT_IN)
++            list(APPEND MINIZIP_LIB ${Iconv_LIBRARIES})
++            list(APPEND MINIZIP_LBD ${Iconv_LIBRARY_DIRS})
++            set(PC_PRIVATE_LIBS "${PC_PRIVATE_LIBS} -liconv")
++        endif()
++    else()
++        message(STATUS "Character encoding support requires iconv")
++
++        set(MZ_ICONV OFF)
++    endif()
+ else()
+     list(APPEND STDLIB_DEF -D_POSIX_C_SOURCE=200809L)
+     list(APPEND MINIZIP_SRC mz_os_posix.c mz_strm_os_posix.c)
