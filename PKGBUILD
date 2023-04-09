@@ -5,8 +5,8 @@ function _ifmod {
 }
 
 pkgname=alvr
-pkgver=19.1.0.r0.g969899c7
-pkgrel=2
+pkgver=19.1.0
+pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
@@ -17,17 +17,14 @@ makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'jack' 'libxra
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 options=('!lto')
-_tag="v19.1.0"
-source=('alvr'::"git+https://github.com/alvr-org/ALVR.git#tag=${_tag}")
-md5sums=('SKIP')
-
-pkgver() {
-	cd "$srcdir/${pkgname}"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
+source=('alvr'::"git+https://github.com/alvr-org/ALVR.git#tag=v$pkgver" alvr.patch)
+md5sums=('SKIP'
+         '0c993ac5242387137a9852fa5918ea43')
 
 prepare() {
 	cd "$srcdir/${pkgname}"
+
+	patch -p1 -i "$srcdir/alvr.patch"
 
 	sed -i 's:../../../lib64/libalvr_vulkan_layer.so:libalvr_vulkan_layer.so:' alvr/vulkan_layer/layer/alvr_x86_64.json
 
