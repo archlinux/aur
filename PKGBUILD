@@ -1,76 +1,77 @@
-# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
-
+# Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-pcsx2
-pkgname=${_pkgname}-git
-provides=($_pkgname)
-conflicts=($_pkgname)
-pkgver=r12920.3a80e0ff0
+pkgname=$_pkgname-git
+pkgver=r16875.7357bde45
 pkgrel=1
-pkgdesc='Sony PlayStation 2 core'
+pkgdesc="Sony PlayStation 2 core"
 arch=('x86_64')
-url='https://github.com/libretro/pcsx2'
-license=(
-	'GPL2'
-	'GPL3'
-	'LGPL2.1'
-	'LGPL3'
-)
+url="https://github.com/libretro/pcsx2"
+license=('GPL3')
+groups=('libretro')
 depends=(
+	'fmt'
 	'gcc-libs'
 	'glibc'
 	'libaio'
-	'glib2'
-	'libglvnd'
+	'libpng'
+	'libretro-core-info'
+	'libzip'
+	'rapidyaml'
+	'systemd-libs'
+	'xz'
 	'zlib'
-	'yaml-cpp'
-	'libchdr'
+	'zstd'
 )
 makedepends=(
 	'cmake'
+	'fast_float'
+	'ffmpeg'
 	'git'
-	'ninja'
-	'systemd'
+	# 'libbacktrace'
+	# 'libxrandr'
+	'sdl2'
+	'soundtouch'
 )
-source=("$_pkgname::git+$url.git")
-b2sums=('SKIP')
-
-_srcdir="$_pkgname"
+provides=("$_pkgname=${pkgver#r}")
+conflicts=("$_pkgname" 'libretro-lrps2')
+source=(
+	"$_pkgname::git+$url.git#branch=libretro"
+	'glslang::git+https://github.com/KhronosGroup/glslang.git'
+	'libchdr::git+https://github.com/rtissera/libchdr.git'
+	'vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git'
+)
+b2sums=(
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+)
 
 pkgver() {
-	cd "$_srcdir"
-	( set -o pipefail
-		git describe --abbrev=8 --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+	cd $_pkgname
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "$_srcdir"
-	
-	sed '/set(CMAKE_C_COMPILER_LAUNCHER ccache)/d; /set(CMAKE_CXX_COMPILER_LAUNCHER ccache)/d' -i 'CMakeLists.txt'
-	
-	# https://github.com/libretro/LRPS2/issues/180
-	echo 'set_source_files_properties(FastJmp.cpp PROPERTIES COMPILE_FLAGS -fno-lto)' >> 'common/src/Utilities/CMakeLists.txt'
-	
-	# unbundle libchdr
-	sed -i '/libchdr/d' 'cmake/SearchForStuff.cmake'
-	sed -i 's/chdr-static/chdr/' 'common/src/Utilities/CMakeLists.txt'
-	
-	# unbundle yaml-cpp
-	sed -i '/yaml-cpp/d' 'cmake/SearchForStuff.cmake'
+	cd $_pkgname
+	# sed -i '/ccache/d' CMakeLists.txt
+	sed -i '/USE_GCC/s/AND CMAKE_INTERPROCEDURAL_OPTIMIZATION//' common/CMakeLists.txt
+	sed -i '/USE_SYSTEM_LIBS/s/OFF/ON/' cmake/BuildParameters.cmake
+	git config submodule.3rdparty/glslang/glslang.url ../glslang
+	git config submodule.3rdparty/libchdr/libchdr.url ../libchdr
+	git config submodule.3rdparty/vulkan-headers.url ../vulkan-headers
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {
-	cmake -S "$_srcdir" -B 'build' -G Ninja \
-		-DCMAKE_BUILD_TYPE='Release' \
-		-DCMAKE_INSTALL_PREFIX='/usr' \
-		-DDISABLE_ADVANCE_SIMD=OFF \
+	cmake -S $_pkgname -B build \
+		-DCMAKE_BUILD_TYPE=Release \
 		-DLIBRETRO=ON \
-		-DUSE_LTO=OFF \
 		-Wno-dev
-	cmake --build 'build'
+	cmake --build build
 }
 
 package() {
-	install -Dm 644 'build/pcsx2/pcsx2_libretro.so' -t "${pkgdir}/usr/lib/libretro/"
+	# shellcheck disable=SC2154
+	install -Dm644 -t "$pkgdir"/usr/lib/libretro build/bin/pcsx2_libretro.so
 }
