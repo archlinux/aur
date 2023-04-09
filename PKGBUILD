@@ -3,12 +3,13 @@
 _pkgname="psl1ght"
 pkgname="ps3-${_pkgname}"
 pkgver="20230214"
-pkgrel=2
+pkgrel=3
 pkgdesc="PSL1GHT lightweight PS3 GameOS SDK"
 arch=(x86_64 aarch64 powerpc64le powerpc64 powerpc riscv64)
 url='https://github.com/ps3dev'
 license=(MIT)
 depends=(
+	ps3-env
 	ps3-ppu-binutils
 	ps3-ppu-gcc
 	ps3-spu-binutils
@@ -22,12 +23,7 @@ sha256sums=(
 	'SKIP'
 )
 
-# PS3DEV
-export PS3DEV="/opt/ps3dev"
-export PSL1GHT="${PS3DEV}"
-export PATH="${PATH}:${PS3DEV}/bin"
-export PATH="${PATH}:${PS3DEV}/ppu/bin"
-export PATH="${PATH}:${PS3DEV}/spu/bin"
+source /opt/ps3dev/ps3toolchain.sh
 
 prepare() {
 	cd "${srcdir}/PSL1GHT"
