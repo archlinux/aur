@@ -3,7 +3,7 @@
 
 pkgname=janus-gateway-git
 pkgver=1.1.3.r8.g89047c81
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source, general purpose, WebRTC server"
 arch=('x86_64' 'i686')
 url='https://janus.conf.meetecho.com'
@@ -15,7 +15,8 @@ depends=('glib2'
          'libnice'
          'libsrtp'
          'libusrsctp'
-         'openssl')
+         'openssl'
+         'zlib')
 optdepends=('libwebsockets: WebSockets support for Janus API'
             'librabbitmq-c: RabbitMQ support for the Janus API or events'
             'paho-mqtt-c: MQTT support for the Janus API or events'
@@ -25,7 +26,8 @@ optdepends=('libwebsockets: WebSockets support for Janus API'
             'opus: Bridge plugin'
             'libogg: Voicemail plugin and/or post-processor'
             'ffmpeg: Post-processor'
-            'lua: Lua plugin')
+            'lua: Lua plugin'
+            'duktape: Duktape plugin')
 makedepends=('curl'
              'ffmpeg'
              'libogg'
@@ -36,7 +38,8 @@ makedepends=('curl'
              'opus'
              'paho-mqtt-c'
              'sofia-sip'
-             'git')
+             'git'
+             'duktape')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/meetecho/janus-gateway.git'
