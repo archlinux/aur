@@ -1,5 +1,5 @@
 pkgbase = charles-beta-bin
-	pkgdesc = Web debugging proxy application (Built using the deb package)
+	pkgdesc = Web debugging proxy application (Version 5 Beta)
 	pkgver = 5.0b7~1
 	pkgrel = 2
 	url = https://www.charlesproxy.com
