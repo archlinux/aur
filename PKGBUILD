@@ -2,8 +2,8 @@
 _pkgname=svp
 pkgname=svp-bin
 pkgver=4.5.210
-_pkgver=${pkgver}-1
-pkgrel=3
+_pkgver=${pkgver}-2
+pkgrel=4
 epoch=
 pkgdesc="SmoothVideo Project 4 (SVP4)"
 arch=('x86_64')
@@ -33,7 +33,7 @@ source=("https://www.svp-team.com/files/svp4-linux.${_pkgver}.tar.bz2")
 # update 2019-10-06: svp-team.com now uses versioned file names.
 # I'll keep rehosting them for now since i don't trust them to actually keep old versions.
 noextract=()
-sha256sums=('940d539ba50e4455fdaebbec07db03870f98f101fbb4ceadda013d1e00c90883')
+sha256sums=('758f6e43d8f34c788dd974a73ab5ed1c3d75208256eadf415331864057d9fb28')
 validpgpkeys=()
 
 prepare() {
