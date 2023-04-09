@@ -1,5 +1,5 @@
 pkgbase = gummy
-	pkgdesc = Screen brightness/temperature manager for Linux/X11
+	pkgdesc = Screen brightness/temperature manager for Linux
 	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/Fushko/gummy

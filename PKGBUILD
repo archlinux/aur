@@ -3,7 +3,7 @@
 pkgname=gummy
 pkgver=0.5.2
 pkgrel=1
-pkgdesc="Screen brightness/temperature manager for Linux/X11"
+pkgdesc="Screen brightness/temperature manager for Linux"
 arch=('x86_64')
 url="https://github.com/Fushko/gummy"
 license=('GPL3')
