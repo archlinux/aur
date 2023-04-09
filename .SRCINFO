@@ -1,6 +1,6 @@
 pkgbase = kwin-effect-rounded-corners-git
 	pkgdesc = Rounds the corners of your windows
-	pkgver = r223.28855e8
+	pkgver = 0.3.0.r6.g28855e8
 	pkgrel = 1
 	url = https://github.com/matinlotfali/KDE-Rounded-Corners
 	arch = x86_64

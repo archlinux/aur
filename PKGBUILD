@@ -3,7 +3,7 @@
 _gitname="kde-rounded-corners"
 _pkgname="kwin-effect-rounded-corners"
 pkgname="$_pkgname-git"
-pkgver=r223.28855e8
+pkgver=0.3.0.r6.g28855e8
 pkgrel=1
 pkgdesc="Rounds the corners of your windows"
 arch=('x86_64')
@@ -39,7 +39,7 @@ sha512sums=(
 
 pkgver() {
   cd "$srcdir/$_gitname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -49,7 +49,7 @@ prepare() {
 build() {
   cd qt5build
   cmake "../$_gitname" \
-    -DCMAKE_INSTALL_PREFIX='/usr/lib/qt/plugins/' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
     -DQT5BUILD=ON
   make
 }
@@ -59,6 +59,9 @@ package() {
   make DESTDIR="$pkgdir" install
 
   # fix file locations
+  mkdir -p "$pkgdir/usr/share/kwin"
+  mv "$pkgdir/kwin/shaders" "$pkgdir/usr/share/kwin/"
+
   mkdir -p "$pkgdir/usr/lib/qt/plugins"
   mv "$pkgdir/kwin" "$pkgdir/usr/lib/qt/plugins/"
 }
