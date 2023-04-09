@@ -7,7 +7,7 @@
 ### PKGBUILD METADATA ###
 
 pkgname=webcord-git
-pkgver=3.9.3.r762.944e97c
+pkgver=4.2.0.r845.66c71e5
 pkgrel=2
 pkgdesc="A Discord and Fosscord client made with the Electron (master branch)."
 arch=("any")
@@ -148,7 +148,7 @@ package() {
 
   # Get supported electron version and add it to the dependencies.
   #  (`-n "$pkgdir"` check also prevents adding it to .SRCINFO)
-  [[ -n "$pkgdir" ]] && depends+=("electron$(_getelectron)")
+  [[ -n "$pkgdir" ]] && depends+=("electron$(_getdep electron)")
 
   # Add changelog file to the package if present
   if [[ -f "${_pkgbuilddir}/${pkgname%-git}.changelog" ]]; then
@@ -256,11 +256,16 @@ _compile() {
   _postcompile
 }
 
-# A function that returns the currently supported Electron major release.
-_getelectron(){
-  local OLDPWD=$PWD;
+# A function that returns the currently supported release of specific dependency.
+_getdep(){
+  local OLDPWD=$PWD TYPE;
+  if [[ "$2" =~ ^-?p ]]; then
+    TYPE="dependencies";
+  else
+    TYPE="devDependencies";
+  fi
   cd "${srcdir:?}/${pkgname%-git}";
-  echo $(($(npm pkg get devDependencies.electron | sed 's~"\([^"]*\)"~\1~g;s~.* <\([0-9]*\).*~\1~')-1));
+  echo $(($(npm pkg get $TYPE."$1" | sed 's~"\([^"]*\)"~\1~g;s~\^\([0-9]*\).*~\1~g;s~.* <\([0-9]*\).*~\1-1~')));
   cd "$OLDPWD";
 }
 
@@ -324,6 +329,6 @@ _postcompile() {
 # system-wide Electron binary.
 _script() {
   mkdir -p "$(dirname "$1")"
-  echo -ne "#!/bin/bash\nelectron$(_getelectron) /usr/share/${pkgname%-git}/app.asar \"\$@\"\nexit \$?">"$1"
+  echo -ne "#!/bin/bash\nelectron$(_getdep electron) /usr/share/${pkgname%-git}/app.asar \"\$@\"\nexit \$?">"$1"
   chmod 755 "$1"
 }
