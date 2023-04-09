@@ -36,5 +36,5 @@ package() {
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${_pkgname}"
   mkdir -p "$pkgdir/etc/anyrun/plugins"
   printf "Config( \n  width: 800, \n  position: Top, \n hide_icons: false, \n  plugins: [ \n    'libapplications.so', \n    'libsymbols.so', \n    'libshell.so', \n    'libtranslate.so', \n  ], \n)" > "$pkgdir/etc/anyrun/config.ron" 
-  cp target/release/*.so "$pkgdir/etc/anyrun/plugins/"
+  cp "target/release/*.so" "$pkgdir/etc/anyrun/plugins/"
 }
