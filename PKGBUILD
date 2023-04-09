@@ -11,7 +11,7 @@ depends=('vim')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+https://gitlab.com/protesilaos/${pkgname%-git}.git")
+source=("git+https://gitlab.com/protesilaos/tempus-themes-vim.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -22,5 +22,5 @@ pkgver() {
 package() {
   cd "$srcdir/${pkgname%-git}"
   install -d "$pkgdir/usr/share/vim/vimfiles/colors"
-  install -Dm644 colors/*.vim "$pkgdir/usr/share/vim/vimfiles/colors"
+  install -Dm644 colors/*.vim -t "$pkgdir/usr/share/vim/vimfiles/colors/"
 }
