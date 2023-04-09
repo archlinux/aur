@@ -2,8 +2,8 @@
 Name=OpenJDK Java @@VER@@ Console
 Comment=OpenJDK Java @@VER@@ Monitoring & Management Console
 Keywords=java;console;monitoring
-Exec=/usr/lib/jvm/liberica-jdk-full/bin/jconsole
+Exec=@@PATH@@/bin/jconsole
 Terminal=false
 Type=Application
-Icon=liberica-jdk-full
+Icon=@@ICON@@
 Categories=Application;System;

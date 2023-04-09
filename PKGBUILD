@@ -5,12 +5,13 @@
 
 # This PKGBUILD adapted from zulu-11-bin
 
-_jdkname=liberica-jdk-17-full
-pkgname="${_jdkname}-bin"
+_pkgbase=liberica-jdk-full
 _java_ver=17
+_jdkname="liberica-jdk-${_java_ver}-full"
+pkgname="${_jdkname}-bin"
 pkgver=${_java_ver}.0.6.u10
 _pkgver=${_java_ver}.0.6+10
-pkgrel=1
+pkgrel=2
 pkgdesc='BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads. Full version includes OpenJFX.'
 arch=(aarch64 armv7h armv8h x86_64)
 url='https://bell-sw.com/'
@@ -55,9 +56,9 @@ source=(freedesktop-java.desktop.in
         ${_jdkname}24.png::https://hg.openjdk.java.net/jdk/jdk/raw-file/ee1d592a9f53/src/java.desktop/unix/classes/sun/awt/X11/java-icon24.png
         ${_jdkname}32.png::https://hg.openjdk.java.net/jdk/jdk/raw-file/ee1d592a9f53/src/java.desktop/unix/classes/sun/awt/X11/java-icon32.png
         ${_jdkname}48.png::https://hg.openjdk.java.net/jdk/jdk/raw-file/ee1d592a9f53/src/java.desktop/unix/classes/sun/awt/X11/java-icon48.png)
-sha1sums=(19873c53aaf234d215b9892450bfd4e95c13ed7c
-          5347a8c12c16a29aada0babdfda5dbef236717c0
-          8a66b7e3c5fa8b2f11ee1dd2b11127f7156cb60b
+sha1sums=(7d79a8c26a125f55f52493df7dca2189c8521b3c
+          80a166acf99b351aa466452782a8faac3eca2d26
+          4b5684dc98370ecbff274195b42c3ce559226596
           36096a57cebd346e08efc68326fe77960d43726f
           b8233f9ff931ce97a265827fac18ed90f4e248c6
           a0da2952bc87a425182c3ac88e88649fbaa7cb65
@@ -78,7 +79,7 @@ _jvmdir="/usr/lib/jvm/${_jdkname}"
 
 prepare() {
   for f in *.desktop.in; do
-    sed "s|@@VER@@|${pkgver/.*}|g" $f >> ${f/.in}
+    sed "s|@@VER@@|${pkgver/.*}|g; s|@@PATH@@|${_jvmdir}|g; s|@@ICON@@|${_jdkname}|g;" $f >> ${f/.in}
   done
 }
 
