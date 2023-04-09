@@ -5,7 +5,7 @@
 
 pkgname=janus-gateway
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source, general purpose, WebRTC server'
 arch=(x86_64 i686)
 url='https://janus.conf.meetecho.com'
@@ -19,6 +19,7 @@ depends=(
   'libsrtp'
   'libusrsctp'
   'openssl'
+  'zlib'
 )
 optdepends=(
   'curl: TURN REST API support, RTSP support in Streaming/Event Handler plugin'
@@ -37,7 +38,6 @@ makedepends=(
   'curl'
   'duktape'
   'ffmpeg'
-  'gengetopt'
   'libogg'
   'librabbitmq-c'
   'libwebsockets'
@@ -67,7 +67,6 @@ backup=(
   'etc/janus/janus.plugin.textroom.jcfg'
   'etc/janus/janus.plugin.videocall.jcfg'
   'etc/janus/janus.plugin.videoroom.jcfg'
-  'etc/janus/janus.plugin.voicemail.jcfg'
   'etc/janus/janus.transport.http.jcfg'
   'etc/janus/janus.transport.mqtt.jcfg'
   'etc/janus/janus.transport.nanomsg.jcfg'
