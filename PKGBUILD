@@ -1,7 +1,7 @@
 pkgname=miniss
-pkgver=0.0.2.r0.gdea0ddf
+pkgver=0.0.2.r1.g7ad0621
 pkgrel=1
-pkgdesc='Displays a list of open listening sockets.'
+pkgdesc='Displays a list of open listening sockets. It is a minimal alternative to ss or netstat.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/noraj/miniss'
 license=('MIT')

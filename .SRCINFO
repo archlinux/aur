@@ -1,6 +1,6 @@
 pkgbase = miniss
-	pkgdesc = Displays a list of open listening sockets.
-	pkgver = 0.0.2.r0.gdea0ddf
+	pkgdesc = Displays a list of open listening sockets. It is a minimal alternative to ss or netstat.
+	pkgver = 0.0.2.r1.g7ad0621
 	pkgrel = 1
 	url = https://github.com/noraj/miniss
 	arch = x86_64
