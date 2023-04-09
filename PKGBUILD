@@ -1,13 +1,13 @@
 # Maintainer: Sebastian Weiss <dl3yc@darc.de>
 
 pkgname=python-pyems-git
-pkgver=f63fcf8
+pkgver=b5cac87
 pkgrel=1
 pkgdesc="High-level python interface to OpenEMS with automatic mesh generation"
 url="https://github.com/matthuszagh/pyems"
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('openems' 'python-csxcad' 'python-openems' 'python-h5py-git')
+depends=('openems' 'python-csxcad' 'python-openems' 'python-h5py')
 provides=('python-pyems')
 conflicts=('python-pyems')
 
