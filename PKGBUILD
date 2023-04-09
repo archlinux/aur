@@ -2,10 +2,10 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-datavis3d
-_basever=5.15.8
-pkgver=5.15.8
+_basever=5.15.9
+pkgver=5.15.9
 pkgrel=1
-_commit=9f0f50ebef04d5ac5ed0ee2a3a71e7748fce3005
+_commit=7636478bb30f0af8afe9af429eb8512d6fbcc11b
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3')
