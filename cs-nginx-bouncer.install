@@ -10,35 +10,32 @@ EOF
 post_install() {
 	command -v cscli > /dev/null
 
-	LAPI_DEFAULT_PORT=8080
-	LAPI_DEFAULT_HOST=127.0.0.1
-
 	if [ "$?" -eq "0" ] ; then
 		SUFFIX=`date +%s`
 		API_KEY=`cscli bouncers add crowdsec-nginx-bouncer-${SUFFIX} -o raw`
 		export API_KEY
 		IFS=: read HOST PORT <<< `sudo cscli config show --key "Config.API.Server.ListenURI"`
 		echo "Bouncer registered to the CrowdSec Local API."
+
+		CROWDSEC_LAPI_URL="http://${HOST:-'127.0.0.1'}:${PORT:-'8080'}"
+		export CROWDSEC_LAPI_URL
+	
+		TMP=$(mktemp -p /tmp/)
+		install -m600 /etc/crowdsec/bouncers/crowdsec-nginx-bouncer.conf "$TMP"
+		envsubst < "$TMP" | tee /etc/crowdsec/bouncers/crowdsec-nginx-bouncer.conf >/dev/null
+		sed -E -i.old "1s:^:${NGINX_LUA_MODULE_PATCH//$'\n'/\\n}\\n:" /etc/nginx/nginx.conf
 	else
 		echo "cscli is not present, unable to register the bouncer to the CrowdSec Local API."
 		return
 	fi
-	CROWDSEC_LAPI_URL="http://${HOST:-$LAPI_DEFAULT_HOST}:${PORT:-$LAPI_DEFAULT_PORT}"
-	export CROWDSEC_LAPI_URL
-
-	TMP=$(mktemp -p /tmp/)
-	install -m600 /etc/crowdsec/bouncers/crowdsec-nginx-bouncer.conf "$TMP"
-	envsubst < "$TMP" | tee /etc/crowdsec/bouncers/crowdsec-nginx-bouncer.conf >/dev/null
-
-	echo installing lua-resty-http using luarocks
+	
+	echo installing lua-resty-http and lua-cjson using luarocks
 	luarocks install lua-resty-http
 	luarocks install lua-cjson
-
-	sed -E -i.old "1s:^:${NGINX_LUA_MODULE_PATCH//$'\n'/\\n}\\n:" /etc/nginx/nginx.conf
 }
 
 post_remove() {
-	echo 'removing lua-resty-http' using luarocks
+	echo 'removing lua-resty-http and lua-cjson' using luarocks
 	luarocks remove lua-resty-http
 	luarocks remove lua-cjson
 
