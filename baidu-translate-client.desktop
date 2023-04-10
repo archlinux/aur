@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=baidu translate
+Name[zh_CN]=百度翻译
+Comment=轻·快的多语种翻译工具
+Comment[zh_CN]=轻·快的多语种翻译工具
+Exec=baidu-translate-client
+Terminal=false
+Icon=baidu-translate-client
+Categories=Development
+Type=Application

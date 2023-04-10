@@ -1,16 +1,22 @@
 pkgbase = baidu-translate-client-bin
 	pkgdesc = baidu translate
-	pkgver = 1.5.3
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://fanyi.baidu.com/
 	arch = x86_64
+	arch = aarch64
 	license = unknown
+	makedepends = p7zip
+	makedepends = icoutils
+	makedepends = imagemagick
 	depends = electron11
 	provides = baidu-translate-client
 	provides = baidu-translate
-	source = baidu-translate-client-1.5.3.deb::https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.baidu.translateclient/com.baidu.translateclient_1.5.3_amd64.deb
+	source = baidu-translate-client-1.6.1.exe::https://fanyiapp.cdn.bcebos.com/fanyi-client/pkg/win/1.6.1/%E7%99%BE%E5%BA%A6%E7%BF%BB%E8%AF%91_Setup_1.6.1.exe
 	source = baidu-translate-client.sh
-	sha512sums = 2943df6829acf43aba537da0cea31d41f94bb7ceb3df88ddbec32199cb102e6f58209e4ee66d5dc2d29719bace94c05536e284c993f49a64ecd3cdf4613b5441
-	sha512sums = fab6f76c73e0dd5e126adc1e74d4cd372cf917f4e0fb708ecfae59d12d5a42080cbae0ed66e9239f94ac87a1e00c41db9ad8562f49f2e579536b917f29efcb22
+	source = baidu-translate-client.desktop
+	sha512sums = f71a122a79e5c08b442545ab41c7090b80afc56267d7f892755768c0ec9e8823dc19a7f58217c0e510f36493503d53acdb9de616a1de253fdac22268d90d4a7b
+	sha512sums = aa355b8f4e9d7be24bd3ec6f25a22d127db6faba0acfd3a36c3e97a74c8ac3f3272cb8b5bc8003a1c686173794b1f12a2a4c9ab28de39e92d927b5b54a919e95
+	sha512sums = e5a812e44922d8ac3cee4c0029d38ea21b610cce00711b82ff8ef6e98e9327292a9ce4d34d265744de048cb76863d12d557f3452fef645e7cb795d474135dd0d
 
 pkgname = baidu-translate-client-bin
