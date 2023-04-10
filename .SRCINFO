@@ -1,6 +1,6 @@
 pkgbase = findutils-git
 	pkgdesc = Basic directory searching utilities of the GNU operating system
-	pkgver = 4.6.0.r235.gf2542a4f
+	pkgver = 4.9.0.r22.gfc47dade
 	pkgrel = 1
 	url = https://www.gnu.org/software/findutils/
 	arch = i686
@@ -11,10 +11,9 @@ pkgbase = findutils-git
 	makedepends = gettext
 	depends = glibc
 	depends = sh
-	provides = findutils
+	provides = findutils=4.9.0.r22.gfc47dade
 	conflicts = findutils
 	source = git+https://git.savannah.gnu.org/git/findutils.git
 	sha256sums = SKIP
 
 pkgname = findutils-git
-

@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=findutils-git
-pkgver=4.6.0.r235.gf2542a4f
+pkgver=4.9.0.r22.gfc47dade
 pkgrel=1
 pkgdesc="Basic directory searching utilities of the GNU operating system"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('glibc' 'sh')
 makedepends=('git' 'gettext')
 checkdepends=('dejagnu')
-provides=('findutils')
+provides=("findutils=$pkgver")
 conflicts=('findutils')
 source=("git+https://git.savannah.gnu.org/git/findutils.git")
 sha256sums=('SKIP')
