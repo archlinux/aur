@@ -1,11 +1,11 @@
 pkgbase = lean4-bin
 	pkgdesc = An interactive theorem prover
 	pkgver = 4.0.0.m5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://leanprover.github.io/
 	arch = x86_64
 	arch = aarch64
-	license = apache
+	license = Apache
 	optdepends = bash
 	provides = lean4=4.0.0.m5
 	conflicts = lean4
