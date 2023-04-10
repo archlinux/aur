@@ -1,8 +1,8 @@
 pkgbase = xmlstarlet-git
 	pkgdesc = Tools to transform, query, validate and edit XML file
 	pkgver = r707.ga722816
-	pkgrel = 1
-	url = http://xmlstar.sourceforge.net/
+	pkgrel = 2
+	url = https://xmlstar.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = xmlstarlet-git
 	depends = glibc
 	depends = libxml2
 	depends = libxslt
-	provides = xmlstarlet
+	provides = xmlstarlet=r707.ga722816
 	conflicts = xmlstarlet
 	source = git+https://git.code.sf.net/p/xmlstar/code
 	sha256sums = SKIP

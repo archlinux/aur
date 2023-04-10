@@ -2,14 +2,14 @@
 
 pkgname=xmlstarlet-git
 pkgver=r707.ga722816
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools to transform, query, validate and edit XML file"
 arch=('i686' 'x86_64')
-url="http://xmlstar.sourceforge.net/"
+url="https://xmlstar.sourceforge.net/"
 license=('MIT')
 depends=('glibc' 'libxml2' 'libxslt')
 makedepends=('git' 'fop' 'ghostscript')
-provides=('xmlstarlet')
+provides=("xmlstarlet=$pkgver")
 conflicts=('xmlstarlet')
 source=("git+https://git.code.sf.net/p/xmlstar/code")
 sha256sums=('SKIP')
