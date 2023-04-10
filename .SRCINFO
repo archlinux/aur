@@ -1,6 +1,6 @@
 pkgbase = libquicktime-git
 	pkgdesc = Library for reading and writing quicktime files
-	pkgver = r971.gfff99cd
+	pkgver = r983.g2729591
 	pkgrel = 1
 	url = http://libquicktime.sourceforge.net/
 	arch = i686
@@ -25,10 +25,9 @@ pkgbase = libquicktime-git
 	depends = libvorbisfile.so
 	depends = libvorbis.so
 	depends = libx264.so
-	provides = libquicktime
+	provides = libquicktime=r983.g2729591
 	conflicts = libquicktime
 	source = git+https://git.code.sf.net/p/libquicktime/git
 	sha256sums = SKIP
 
 pkgname = libquicktime-git
-

@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libquicktime-git
-pkgver=r971.gfff99cd
+pkgver=r983.g2729591
 pkgrel=1
 pkgdesc="Library for reading and writing quicktime files"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('glibc' 'alsa-lib' 'faac' 'faad2' 'gtk2' 'lame' 'libjpeg-turbo' 'libxaw
          'libavcodec.so' 'libswscale.so' 'libvorbisenc.so' 'libvorbisfile.so'
          'libvorbis.so' 'libx264.so')
 makedepends=('git' 'doxygen' 'mesa-libgl')
-provides=('libquicktime')
+provides=("libquicktime=$pkgver")
 conflicts=('libquicktime')
 source=("git+https://git.code.sf.net/p/libquicktime/git")
 sha256sums=('SKIP')
