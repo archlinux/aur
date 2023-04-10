@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=tslib-git
-pkgver=1.13.r0.g50196cb
+pkgver=1.22.r8.gbec90df
 pkgrel=1
 pkgdesc="C library for filtering touchscreen events"
 arch=('i686' 'x86_64')
-url="http://www.tslib.org/"
+url="https://www.tslib.org/"
 license=('LGPL')
 depends=('glibc')
 makedepends=('git')
-provides=('tslib')
+provides=("tslib=$pkgver")
 conflicts=('tslib')
 source=("git+https://github.com/kergoth/tslib.git")
 sha256sums=('SKIP')
@@ -25,7 +25,9 @@ build() {
   cd "tslib"
 
   ./autogen.sh
-  ./configure --prefix="/usr" --sysconfdir="/etc"
+  ./configure \
+    --prefix="/usr" \
+    --sysconfdir="/etc"
   make
 }
 

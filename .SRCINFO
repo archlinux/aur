@@ -1,17 +1,16 @@
 pkgbase = tslib-git
 	pkgdesc = C library for filtering touchscreen events
-	pkgver = 1.13.r0.g50196cb
+	pkgver = 1.22.r8.gbec90df
 	pkgrel = 1
-	url = http://www.tslib.org/
+	url = https://www.tslib.org/
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = git
 	depends = glibc
-	provides = tslib
+	provides = tslib=1.22.r8.gbec90df
 	conflicts = tslib
 	source = git+https://github.com/kergoth/tslib.git
 	sha256sums = SKIP
 
 pkgname = tslib-git
-
