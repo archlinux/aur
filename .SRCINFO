@@ -1,6 +1,6 @@
 pkgbase = python-monty
 	pkgdesc = Monty is the missing complement to Python
-	pkgver = 2022.9.9
+	pkgver = 2023.4.10
 	pkgrel = 1
 	url = https://github.com/materialsvirtuallab/monty
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = python-monty
 	checkdepends = python-tqdm
 	makedepends = python-setuptools
 	depends = python
-	source = monty-2022.9.9.tar.gz::https://github.com/materialsvirtuallab/monty/archive/v2022.9.9.tar.gz
-	sha512sums = 987cce5aacbdaa514a61b766c361775a054b8651e9b3dc2db23b0fe8117574c7eb539228a1b2e2b22e61e6de8348c805f336e8c4f6d4853de81d352273b16eb9
+	source = monty-2023.4.10.tar.gz::https://github.com/materialsvirtuallab/monty/archive/v2023.4.10.tar.gz
+	sha512sums = 530eaf9b73cd92f93e0ac7d04bfd52dae9755badb0eda7bef4021751c89ad1d44b8019fa3e4d076c2cfc7175e9a926df72204082d19f7eeeba5e62db80623a80
 
 pkgname = python-monty

@@ -2,7 +2,7 @@
 _base=monty
 pkgname=python-${_base}
 pkgdesc="Monty is the missing complement to Python"
-pkgver=2022.9.9
+pkgver=2023.4.10
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/materialsvirtuallab/${_base}"
@@ -11,7 +11,7 @@ depends=(python)
 makedepends=(python-setuptools)
 checkdepends=(python-pytest python-bson python-pandas python-pydantic python-ruamel-yaml python-tqdm)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('987cce5aacbdaa514a61b766c361775a054b8651e9b3dc2db23b0fe8117574c7eb539228a1b2e2b22e61e6de8348c805f336e8c4f6d4853de81d352273b16eb9')
+sha512sums=('530eaf9b73cd92f93e0ac7d04bfd52dae9755badb0eda7bef4021751c89ad1d44b8019fa3e4d076c2cfc7175e9a926df72204082d19f7eeeba5e62db80623a80')
 
 build() {
   cd ${_base}-${pkgver}
@@ -20,7 +20,7 @@ build() {
 
 check() {
   cd ${_base}-${pkgver}
-  python -m pytest tests -k 'not io and not zpath'
+  python -m pytest tests -k 'not reverse_readfile_gz and not Path_objects and not zopen and not zpath'
 }
 
 package() {
