@@ -4,7 +4,7 @@ _uuid_de="${_uuid_it}"
 _uuid_es="${_uuid_it}"
 _uuid_fr="${_uuid_it}"
 _uuid_jp="SCPS-10031"
-_uuid=$_uuid_en
+_uuid=$_uuid_it
 _app_id="com.naughtydog.CrashBandicoot"
 _title="Crash Bandicoot"
 _rom_filename_it="${_title} (Europe) (EDC)"
@@ -20,17 +20,19 @@ pkgname=($pkgbase
          $pkgbase-jp)
 pkgver=1.0
 pkgrel=5
-pkgdesc="1996 platform video game developed by Naughty Dog and published by Sony Computer Entertainment for the PlayStation."
+_pkgdesc=("1996 platform video game developed by Naughty Dog"
+          " and published by Sony Computer Entertainment for the PlayStation.")
+pkgdesc="${_pkgdesc[*]}"
 arch=('any')
 url="https://en.wikipedia.org/wiki/Crash_Bandicoot_(video_game)"
 depends=('duckstation')
 license=("custom")
 _dmca_exemption="https://archive.org/about/dmca.php"
 source=("${_uuid_en}.bin::https://archive.org/download/redump.psx/Crash%20Bandicoot%20%28USA%29.zip/Crash%20Bandicoot%20%28USA%29.bin"
-	"${_uuid_en}.cue::https://archive.org/download/redump.psx/Crash%20Bandicoot%20%28USA%29.zip/Crash%20Bandicoot%20%28USA%29.cue"
-	"${_uuid_it}.bin::https://archive.org/download/redump.psx/Crash%20Bandicoot%20%28Europe%29%20%28EDC%29.zip/Crash%20Bandicoot%20%28Europe%29%20%28EDC%29.bin"
-	"${_uuid_it}.cue::https://archive.org/download/redump.psx/Crash%20Bandicoot%20%28Europe%29%20%28EDC%29.zip/Crash%20Bandicoot%20%28Europe%29%20%28EDC%29.cue"
-	"${_uuid_jp}.7z::https://archive.org/download/sonyplaystationasiantscj20151103/Crash%20Bandicoot%20%28Japan%29.7z"
+        "${_uuid_en}.cue::https://archive.org/download/redump.psx/Crash%20Bandicoot%20%28USA%29.zip/Crash%20Bandicoot%20%28USA%29.cue"
+        "${_uuid_it}.bin::https://archive.org/download/redump.psx/Crash%20Bandicoot%20%28Europe%29%20%28EDC%29.zip/Crash%20Bandicoot%20%28Europe%29%20%28EDC%29.bin"
+        "${_uuid_it}.cue::https://archive.org/download/redump.psx/Crash%20Bandicoot%20%28Europe%29%20%28EDC%29.zip/Crash%20Bandicoot%20%28Europe%29%20%28EDC%29.cue"
+        "${_uuid_jp}.7z::https://archive.org/download/sonyplaystationasiantscj20151103/Crash%20Bandicoot%20%28Japan%29.7z"
         "psx-template.desktop"
 	"launcher"
         "${_app_id}.png::https://upload.wikimedia.org/wikipedia/en/4/44/Crash_Bandicoot_Cover.png")
