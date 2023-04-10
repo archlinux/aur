@@ -102,12 +102,12 @@ sha256sums=(
 )
 
 pkgver() {
-  cd "${srcdir}/mythtv/mythtv"
+  cd "$srcdir/mythtv/mythtv"
   printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 build() {
-  cd "${srcdir}/mythtv/mythtv"
+  cd "$srcdir/mythtv/mythtv"
 
   ARCH="${CARCH/_/-}"
   ./configure --prefix=/usr \
@@ -127,15 +127,15 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/mythtv/mythtv"
+  cd "$srcdir/mythtv/mythtv"
   make INSTALL_ROOT="$pkgdir" install
 
   install -D -m644 "$srcdir/mythbackend.service" "$pkgdir/usr/lib/systemd/system/mythbackend.service"
-  install -D -m644 'database/mc.sql' "$pkgdir/usr/share/mythtv/mc.sql"
+  install -D -m644 "$srcdir/mythtv/mythtv/database/mc.sql" "$pkgdir/usr/share/mythtv/mc.sql"
   install -D -m644 "$srcdir/sysusers.d" "$pkgdir/usr/lib/sysusers.d/mythtv.conf"
 
   mkdir -p "$pkgdir/usr/share/mythtv"
-  cp -R 'contrib' "$pkgdir/usr/share/mythtv"
+  cp -R "$srcdir/mythtv/mythtv/contrib" "$pkgdir/usr/share/mythtv"
   mkdir -p "$pkgdir/var/log/mythtv"
 
   # Install udev rules https://www.mythtv.org/wiki/Systemd_mythbackend_Configuration#Delay_starting_the_backend_until_tuners_have_initialized
