@@ -1,8 +1,7 @@
 # Maintainer: LeSnake04 <dev.lesnake@posteo.de>
-_pkgname=webkitty
-pkgname="${_pkgname}-appimage"
-pkgver=3.0.0
-pkgrel=2
+pkgname="webkitty-appimage"
+pkgver=3.1.1
+pkgrel=1
 pkgdesc="Local web development IDE"
 arch=("x86_64")
 url="https://dartfling.com/product?pid=3"
@@ -10,22 +9,22 @@ _githuburl="https://github.com/yikuansun/webkitty"
 license=(MIT)
 depends=(hicolor-icon-theme zlib glibc)
 options=(!strip)
-providers=("${_pkgname}")
-conflit=("${_pkgname}")
+providers=("${pkgname%-appimage}")
+conflit=("${pkgname%-appimage}")
 _install_path="/opt/appimages"
-source=("${_pkgname}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/WebKitty-${pkgver}.AppImage"
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/WebKitty-${pkgver}.AppImage"
         "LICENSE::${_githuburl}/raw/master/LICENSE")
-sha256sums=('7d4cc208478c90e3a82945af7c086952a9c64caa9b60abd0407bf8e543ca58e1'
-            '38149891459513ff7df2dec243d70c880950572bf1f01a1f3402034406b7d886')
+sha256sums=('334f7d1319027a3c7d5a4c99a080840768971c0e40738bfd9318022d52fceeb6'
+            'c46ac74ef8cd13c7541f9de280f3d759319f70292fd32d4d170193041b06300b')
 prepare() {
-    chmod a+x "${_pkgname}-${pkgver}.AppImage"
-    "./${_pkgname}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's/Exec=AppRun/Exec=\/opt\/appimages\/webkitty.AppImage/g;s/Utility/Utility;Development;/g' -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
+    "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed 's|AppRun|/opt/appimages/webkitty.AppImage|g;s|Utility|Utility;Development;|g' -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
 package() {
-    install -Dm755 "${srcdir}/${_pkgname}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${_pkgname}.AppImage"
-    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png" \
-        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
-    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
+    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-appimage}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/${pkgname%-appimage}.png" \
+        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname%-appimage}.png"
+    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

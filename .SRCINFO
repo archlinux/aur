@@ -1,7 +1,7 @@
 pkgbase = webkitty-appimage
 	pkgdesc = Local web development IDE
-	pkgver = 3.0.0
-	pkgrel = 2
+	pkgver = 3.1.1
+	pkgrel = 1
 	url = https://dartfling.com/product?pid=3
 	arch = x86_64
 	license = MIT
@@ -9,9 +9,9 @@ pkgbase = webkitty-appimage
 	depends = zlib
 	depends = glibc
 	options = !strip
-	source = webkitty-3.0.0.AppImage::https://github.com/yikuansun/webkitty/releases/download/v3.0.0/WebKitty-3.0.0.AppImage
+	source = webkitty-3.1.1.AppImage::https://github.com/yikuansun/webkitty/releases/download/v3.1.1/WebKitty-3.1.1.AppImage
 	source = LICENSE::https://github.com/yikuansun/webkitty/raw/master/LICENSE
-	sha256sums = 7d4cc208478c90e3a82945af7c086952a9c64caa9b60abd0407bf8e543ca58e1
-	sha256sums = 38149891459513ff7df2dec243d70c880950572bf1f01a1f3402034406b7d886
+	sha256sums = 334f7d1319027a3c7d5a4c99a080840768971c0e40738bfd9318022d52fceeb6
+	sha256sums = c46ac74ef8cd13c7541f9de280f3d759319f70292fd32d4d170193041b06300b
 
 pkgname = webkitty-appimage
