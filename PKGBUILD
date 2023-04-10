@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=fdkaac-git
-pkgver=1.0.1.r0.gfdf5c2f
+pkgver=1.0.5.r6.gf95566e
 pkgrel=1
 pkgdesc="Command line encoder frontend for libfdk-aac"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/nu774/fdkaac"
 license=('custom')
 depends=('glibc' 'libfdk-aac')
 makedepends=('git')
-provides=('fdkaac')
+provides=("fdkaac=$pkgver")
 conflicts=('fdkaac')
 source=("git+https://github.com/nu774/fdkaac.git")
 sha256sums=('SKIP')
