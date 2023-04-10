@@ -1,6 +1,6 @@
 pkgbase = icu-git
 	pkgdesc = International Components for Unicode library
-	pkgver = r33353.ge8dfea9bb6
+	pkgver = 72.1.r149.g981c182a7f
 	pkgrel = 1
 	url = http://site.icu-project.org/
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = icu-git
 	makedepends = git-lfs
 	depends = glibc
 	depends = sh
-	provides = icu
+	provides = icu=72.1.r149.g981c182a7f
 	provides = libicudata.so
 	provides = libicui18n.so
 	provides = libicuio.so
@@ -20,4 +20,3 @@ pkgbase = icu-git
 	conflicts = icu
 
 pkgname = icu-git
-

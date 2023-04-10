@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=icu-git
-pkgver=r33353.ge8dfea9bb6
+pkgver=72.1.r149.g981c182a7f
 pkgrel=1
 pkgdesc="International Components for Unicode library"
 arch=('i686' 'x86_64')
@@ -9,28 +9,33 @@ url="http://site.icu-project.org/"
 license=('custom:icu')
 depends=('glibc' 'sh')
 makedepends=('git' 'git-lfs')
-provides=('icu' libicu{data,i18n,io,test,tu,uc}.so)
+provides=("icu=$pkgver" libicu{data,i18n,io,test,tu,uc}.so)
 conflicts=('icu')
 _source=("https://github.com/unicode-org/icu.git")
 
 
 prepare() {
   # workaround for `makepkg` failing `git clone` with git-lfs
-  git clone "$_source"
+  if [ ! -d "icu" ]; then
+    git clone "$_source"
+  fi
 }
 
 pkgver() {
   cd "icu"
 
-  _rev=$(git rev-list --count --all)
+  _tag=$(git tag -l --sort -v:refname | grep -E '^release-[0-9-]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "r%s.g%s" "$_rev" "$_hash"
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^release-//;s/-/./g'
 }
 
 build() {
   cd "icu/icu4c/source"
 
-  export CC=gcc CXX=g++
+  export \
+    CC=gcc \
+    CXX=g++
   ./configure \
     --prefix="/usr" \
     --sbindir="/usr/bin" \
