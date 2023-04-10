@@ -3,7 +3,7 @@
 # Contributor: RoiArthurB
 pkgname=gama-platform
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GAMA is a modeling and simulation development environment for building spatially explicit agent-based simulations."
 arch=('x86_64')
 url="https://gama-platform.org"
@@ -20,6 +20,6 @@ sha512sums_x86_64=('9c56425ef024a0c326816ff32cbd76978eaa7a61490ceba9f87433cea4ea
 package(){
 
 	# Extract package data
-	tar -xJ -f data.tar.xz -C "${pkgdir}"
+	tar -xI unzstd -f data.tar.zst -C "${pkgdir}"
 
 }
