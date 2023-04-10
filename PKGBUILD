@@ -9,6 +9,7 @@ url="https://github.com/hashicorp/levant"
 license=('MPL2')
 depends=('glibc')
 provides=('levant')
+conflicts=('levant')
 makedepends=('go')
 changelog=levant.changelog
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
