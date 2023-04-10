@@ -1,6 +1,6 @@
 # Maintainer: Toni Lipponen <toni.lipponen@proton.me>
 pkgname='desktopper'
-pkgver=1
+pkgver=r8.b4830da
 pkgrel=1
 pkgdesc="Application to create desktop entry files"
 arch=('x86_64')

@@ -14,4 +14,4 @@ pkgbase = desktopper-git
 	source = git+https://github.com/tonilipponen/desktopper.git
 	md5sums = SKIP
 
-pkgname = desktopper
+pkgname = desktopper-git
