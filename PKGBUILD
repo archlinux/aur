@@ -6,7 +6,7 @@
 
 _pkgname=asterisk
 pkgname=$_pkgname-cisco
-pkgver=18.16.0
+pkgver=16.11.0
 pkgrel=1
 pkgdesc="A complete PBX solution. Includes the Cisco Presence patch for use with Cisco IP Phones"
 provides=('asterisk')
@@ -36,8 +36,8 @@ optdepends=('dahdi'
             'openr2'
             'postgresql'
             'unixodbc')
-source=("https://downloads.asterisk.org/pub/telephony/asterisk/old-releases/asterisk-${pkgver}.tar.gz" \
-	"https://raw.githubusercontent.com/usecallmanagernz/patches/master/asterisk/cisco-usecallmanager-${pkgver}.patch" \
+source=("https://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-${pkgver}.tar.gz" \
+	"https://raw.githubusercontent.com/usecallmanagernz/patches/master/asterisk/cisco-usecallmanager-$pkgver.patch" \
 	"DialTemplate.xml" \
 	"FeaturePolicy.xml" \
 	"SEPMAC.cnf.xml" \
@@ -47,8 +47,8 @@ source=("https://downloads.asterisk.org/pub/telephony/asterisk/old-releases/aste
 	"asterisk.logrotated" \
 	"asterisk.tmpfile")
 install=$pkgname.install
-sha256sums=('2d280794ae7505ed3dfc58b3190774cb491aa74c339fbde1a11740e6be79b466'
-            '989bacb9096a2f4c0851cd6b49aa094b4a6b1a8349f873b1b2960e845e2114dc'
+sha256sums=('5db58aeee6cbc7604cd7059fe210f5fae0eae8aa1b13e5282984b9b9c12eaf36'
+            '2f354c0fea68294b3ada75ea3d4166e3ff81245cd12d72b8ef1bad5c0f635429'
             '10795bc3b2fb28b79b3ab74bbd8f33b667e3bf4b1c87ccfb2aae168f9b07a17c'
             'da5a87717517b37d0554369235e0bdb86700bd696c1a70db5a47d9f4711b44db'
             'ecff1e7807003beb3198f95859fa3c1b57d618940872d1c8638e65f5a49afce4'
