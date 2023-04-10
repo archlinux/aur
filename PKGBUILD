@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=tunsafe-git
-pkgver=r9.ge116360
+pkgver=1.4.r79.g85a871c
 pkgrel=1
 pkgdesc="High performance and secure VPN client that uses the WireGuard protocol"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://tunsafe.com/"
 license=('AGPL' 'BSD' 'custom: OpenSSL')
 depends=('gcc-libs')
 makedepends=('git')
-provides=('tunsafe')
+provides=("tunsafe=$pkgver")
 conflicts=('tunsafe')
 source=("git+https://github.com/TunSafe/TunSafe.git")
 sha256sums=('SKIP')
@@ -24,9 +24,10 @@ prepare() {
 pkgver() {
   cd "TunSafe"
 
-  _rev=$(git rev-list --count --all)
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "r%s.g%s" "$_rev" "$_hash"
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
@@ -38,6 +39,6 @@ build() {
 package() {
   cd "TunSafe"
 
-  install -Dm755 "tunsafe" "$pkgdir/usr/bin/tunsafe"
-  install -Dm644 "LICENSE.AGPL.TXT" "$pkgdir/usr/share/licenses/tunsafe/LICENSE.AGPL.TXT"
+  install -Dm755 "tunsafe" -t "$pkgdir/usr/bin"
+  install -Dm644 "LICENSE.AGPL.TXT" -t "$pkgdir/usr/share/licenses/tunsafe"
 }
