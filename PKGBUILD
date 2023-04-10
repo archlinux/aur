@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=xvidcore-svn
-pkgver=r2186
+pkgver=r2198
 pkgrel=1
 pkgdesc="High performance and high quality MPEG-4 video codec"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.xvid.com/"
 license=('GPL2')
 depends=('glibc')
 makedepends=('subversion' 'nasm')
-provides=('xvidcore')
+provides=("xvidcore=$pkgver")
 conflicts=('xvidcore')
 options=('staticlibs')
 #source=("svn+http://anonymous:@svn.xvid.org/trunk")
