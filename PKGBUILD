@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libtorrent-rasterbar-1_2-git
-pkgver=r16804.gbf5d475a6
+pkgver=1.2.18.r9.gd22612ca1
 pkgrel=1
 pkgdesc="A feature complete C++ bittorrent library (git branch RC_1_2)"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.libtorrent.org/"
 license=('BSD')
 depends=('boost-libs' 'openssl')
 makedepends=('git' 'boost' 'cmake' 'python' 'python-setuptools')
-provides=('libtorrent-rasterbar')
+provides=("libtorrent-rasterbar=$pkgver")
 conflicts=('libtorrent-rasterbar')
 options=('!strip')
 source=('git+https://github.com/arvidn/libtorrent.git#branch=RC_1_2')
@@ -19,9 +19,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "libtorrent"
 
-  _rev=$(git rev-list --count --all)
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v1\.2[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "r%s.g%s" "$_rev" "$_hash"
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
