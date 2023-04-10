@@ -2,14 +2,14 @@
 
 pkgname=prplmesh-git
 pkgver=4.0.1.r156.g6cd1ed230
-pkgrel=1
+pkgrel=2
 pkgdesc="WFA Multi-AP implementation"
 arch=('i686' 'x86_64')
 url="https://prplfoundation.org/prplmesh/"
 license=('BSD' 'custom')
 depends=('glibc' 'json-c' 'ncurses' 'openssl' 'readline' 'zeromq')
 makedepends=('git' 'cmake' 'libnl' 'python-yaml')
-provides=('prplmesh')
+provides=("prplmesh=$pkgver")
 conflicts=('prplmesh')
 source=("git+https://gitlab.com/prpl-foundation/prplmesh/prplMesh.git")
 sha256sums=('SKIP')
