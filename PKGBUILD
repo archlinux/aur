@@ -2,10 +2,10 @@
 
 pkgname=deheader-git
 pkgver=1.10.r0.gd3d73b1
-pkgrel=1
+pkgrel=2
 pkgdesc="Find and remove unneeded includes in C/C++ sourcefiles"
 arch=('any')
-url="http://www.catb.org/~esr/deheader/"
+url="https://www.catb.org/~esr/deheader/"
 license=('BSD')
 depends=('python')
 makedepends=('git' 'docbook-xml' 'docbook-xsl' 'xmlto')
