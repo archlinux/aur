@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=indent-git
-pkgver=2.2.12.r4.g14313ae
+pkgver=2.2.13.r0.g6cbad4c
 pkgrel=1
 pkgdesc="C language source code formatting program"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.gnu.org/software/indent/"
 license=('GPL3')
 depends=('glibc')
 makedepends=('git' 'gperf' 'texi2html')
-provides=('indent')
+provides=("indent=$pkgver")
 conflicts=('indent')
 source=("git+https://git.savannah.gnu.org/git/indent.git")
 sha256sums=('SKIP')
@@ -40,5 +40,8 @@ check() {
 package() {
   cd "indent"
 
-  make DESTDIR="$pkgdir" docdir="/usr/share/doc/indent" install
+  make \
+    DESTDIR="$pkgdir" \
+    docdir="/usr/share/doc/indent" \
+    install
 }
