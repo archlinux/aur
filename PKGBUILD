@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=rekor-git
-pkgver=1.0.0.r23.g6f7e892
+pkgver=1.1.0.r11.gb0b8ecba
 pkgrel=1
 pkgdesc="Software supply chain transparency log"
 arch=('i686' 'x86_64')
 url="https://github.com/sigstore/rekor"
-license=('apache')
+license=('Apache')
 depends=('glibc')
 makedepends=('git' 'go')
 checkdepends=('openssh')
