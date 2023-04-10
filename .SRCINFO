@@ -1,0 +1,14 @@
+pkgbase = catimporter
+	pkgdesc = Import a category (with its subcategories) across mediawiki instances.
+	pkgver = 1.0
+	pkgrel = 5
+	url = https://github.com/ferdi2005/catimporter
+	arch = any
+	license = MIT
+	depends = ruby-httparty
+	depends = ruby-addressable
+	depends = ruby-mediawiki_api
+	source = catimporter::git+https://github.com/ferdi2005/catimporter
+	sha256sums = SKIP
+
+pkgname = catimporter
