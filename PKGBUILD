@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=cloud-hypervisor-git
-pkgver=30.0.r92.g38a1b4578
+pkgver=31.0.r1.g90dcbc323
 pkgrel=1
 pkgdesc="An open source Virtual Machine Monitor (VMM) that runs on top of KVM"
 arch=('x86_64')
 url="https://github.com/cloud-hypervisor/cloud-hypervisor"
-license=('apache' 'BSD')
+license=('Apache' 'BSD')
 depends=('gcc-libs')
 makedepends=('git' 'rust')
 provides=("cloud-hypervisor=$pkgver")
