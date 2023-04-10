@@ -4,7 +4,7 @@ pkgname=python-pynamodb
 # https://pynamodb.readthedocs.io/en/latest/release_notes.html
 # https://github.com/pynamodb/PynamoDB/releases
 pkgver=5.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A pythonic interface to Amazon's DynamoDB"
 arch=(any)
 url='https://pynamodb.readthedocs.io/'
