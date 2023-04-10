@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=iperf-git
-pkgver=r2057.g029d09f
+pkgver=r2905.g4eaf0d6
 pkgrel=1
 pkgdesc="A tool to measure maximum TCP bandwidth"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://sourceforge.net/projects/iperf2/"
 license=('custom')
 depends=('gcc-libs')
 makedepends=('git')
-provides=('iperf')
+provides=("iperf=$pkgver")
 conflicts=('iperf')
 source=("git+https://git.code.sf.net/p/iperf2/code"
         "iperf-tcp.service::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/iperf/trunk/iperf-tcp.service"
