@@ -1,4 +1,4 @@
-From 5b83c1db098d278544411e5ee79de4976ba4ece2 Mon Sep 17 00:00:00 2001
+From 44db16c1f264182bfaa913240fdbd6713687e538 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:45:08 +0200
 Subject: [PATCH 18/32] Merge shared and static library trees
@@ -204,5 +204,5 @@ index c0ce0972ef..5a2deaf31d 100644
  mkspecs.files -= $$PWD/mkspecs/modules $$PWD/mkspecs/modules-inst
  INSTALLS += mkspecs
 -- 
-2.39.0
+2.40.0
 
