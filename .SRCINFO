@@ -1,7 +1,7 @@
 pkgbase = pospell
 	pkgdesc = Spellcheck .po files containing reStructuredText translations
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AFPy/pospell
 	arch = any
 	license = MIT

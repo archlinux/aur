@@ -1,9 +1,8 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
 #
 pkgname=pospell
-pkgname='pospell'
 pkgver='1.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="Spellcheck .po files containing reStructuredText translations"
 url="https://github.com/AFPy/pospell"
 depends=('python')
