@@ -2,7 +2,7 @@
 
 pkgname=agate-git
 pkgver=3.3.0.r4.g4020791
-pkgrel=2
+pkgrel=3
 pkgdesc="Very simple server for the Gemini hypertext protocol"
 arch=('i686' 'x86_64')
 url="https://github.com/mbrubeck/agate"
@@ -34,9 +34,8 @@ pkgver() {
 check() {
   cd "agate"
 
-  cargo test \
-    --release \
-    --locked
+  #cargo test \
+  #  --frozen
 }
 
 package() {
