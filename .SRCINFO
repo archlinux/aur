@@ -1,0 +1,22 @@
+pkgbase = python-omemo-dr-git
+	pkgdesc = Python port of libsignal-protocol-java originally written by Moxie Marlinspike
+	pkgver = r2.e297eea
+	pkgrel = 1
+	url = https://dev.gajim.org/gajim/omemo-dr
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-cryptography
+	depends = python-protobuf
+	provides = python-omemo-dr=r2.e297eea
+	conflicts = python-omemo-dr
+	source = git+https://dev.gajim.org/gajim/omemo-dr.git
+	sha256sums = SKIP
+
+pkgname = python-omemo-dr-git
