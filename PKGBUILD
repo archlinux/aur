@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=lean4-git
-pkgver=4.0.0.m5.r1551.gd694bf2d09
+pkgver=4.0.0.m5.r1552.g9aeae67708
 pkgrel=1
 pkgdesc="An interactive theorem prover"
 arch=('i686' 'x86_64')
 url="https://leanprover.github.io/"
-license=('apache')
+license=('Apache')
 depends=('glibc' 'gmp')
 makedepends=('git' 'cmake')
 provides=("lean4=$pkgver")
