@@ -1,6 +1,6 @@
 pkgbase = nuclear-player-bin
 pkgdesc = A free, multiplatform music player app that streams from multiple sources.
-pkgver = 202347_7bb0d50d3194e643afc47249be6ec78a
+pkgver = 2023410_8b35280e7b4879ce6083aef5f5487b30
 pkgrel = 2
 url = http://nuclear.js.org
 install = nuclear-player-bin.install
@@ -10,9 +10,9 @@ depends = libnotify
 depends = libappindicator-gtk3
 depends = libxtst
 depends = nss
-source = https://github.com/nukeop/nuclear/releases/download/15c5eb/nuclear-15c5eb.deb
+source = https://github.com/nukeop/nuclear/releases/download/c9cb81/nuclear-c9cb81.deb
 source = nuclear.desktop
-md5sums = 7bb0d50d3194e643afc47249be6ec78a
+md5sums = 8b35280e7b4879ce6083aef5f5487b30
 md5sums = eb5a64f62697098c413c0fa1e1215819
 
 pkgname = nuclear-player-bin
