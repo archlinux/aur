@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=fulcio-git
-pkgver=1.0.0.r26.g67c6e2f
+pkgver=1.2.0.r18.ga660246
 pkgrel=1
 pkgdesc="Sigstore OpenID Connect public key infrastructure"
 arch=('i686' 'x86_64')
 url="https://github.com/sigstore/fulcio"
-license=('apache')
+license=('Apache')
 depends=('glibc')
 makedepends=('git' 'go')
 provides=("fulcio=$pkgver")
