@@ -1,6 +1,6 @@
 pkgbase = gnome-sharp
 	pkgver = 2.24.4
-	pkgrel = 8
+	pkgrel = 9
 	url = http://gtk-sharp.sourceforge.net
 	arch = any
 	license = LGPL
@@ -23,21 +23,25 @@ pkgname = gnome-sharp
 	depends = gconf-sharp-peditors
 	depends = libgnome-sharp
 	depends = gnome-vfs-sharp
+	depends = glade-sharp
 
 pkgname = gnome-vfs-sharp
 	pkgdesc = Mono bindings for GNOME-VFS
 	depends = gtk-sharp-2
 	depends = gnome-vfs
+	depends = glade-sharp
 
 pkgname = gconf-sharp
 	pkgdesc = Mono bindings for GConf
 	depends = gtk-sharp-2
 	depends = gconf
+	depends = glade-sharp
 
 pkgname = art-sharp
 	pkgdesc = Mono bindings for libart
 	depends = gtk-sharp-2
 	depends = libart-lgpl
+	depends = glade-sharp
 
 pkgname = libgnome-sharp
 	pkgdesc = Mono bindings for libgnome
@@ -46,6 +50,7 @@ pkgname = libgnome-sharp
 	depends = art-sharp
 	depends = gnome-vfs-sharp
 	depends = libgnomeui
+	depends = glade-sharp
 
 pkgname = gconf-sharp-peditors
 	pkgdesc = Mono bindings for GConf - Property Editing classes

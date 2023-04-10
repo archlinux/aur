@@ -7,7 +7,7 @@ pkgvermajor=2
 pkgverminor=24
 pkgverpatch=4
 pkgver=${pkgvermajor}.${pkgverminor}.${pkgverpatch}
-pkgrel=8
+pkgrel=9
 arch=(any)
 license=(LGPL)
 url="http://gtk-sharp.sourceforge.net"
@@ -41,12 +41,12 @@ build() {
 
 package_gnome-sharp() {
   pkgdesc="GNOME bindings for C#"
-  depends=('art-sharp' 'gconf-sharp' 'gconf-sharp-peditors' 'libgnome-sharp' 'gnome-vfs-sharp')
+  depends=('art-sharp' 'gconf-sharp' 'gconf-sharp-peditors' 'libgnome-sharp' 'gnome-vfs-sharp' 'glade-sharp')
 }
 
 package_art-sharp() {
   pkgdesc="Mono bindings for libart"
-  depends=('gtk-sharp-2' 'libart-lgpl')
+  depends=('gtk-sharp-2' 'libart-lgpl' 'glade-sharp')
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
   make -C art install DESTDIR="${pkgdir}"
@@ -54,7 +54,7 @@ package_art-sharp() {
 
 package_gconf-sharp() {
   pkgdesc="Mono bindings for GConf"
-  depends=('gtk-sharp-2' 'gconf')
+  depends=('gtk-sharp-2' 'gconf' 'glade-sharp')
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
   make -C gconf/GConf install DESTDIR="${pkgdir}"
@@ -72,7 +72,7 @@ package_gconf-sharp-peditors() {
 package_libgnome-sharp() {
   arch=(i686 x86_64)
   pkgdesc="Mono bindings for libgnome"
-  depends=('art-sharp' 'gnome-vfs-sharp' 'libgnomeui')
+  depends=('art-sharp' 'gnome-vfs-sharp' 'libgnomeui' 'glade-sharp')
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
   make -C gnome install DESTDIR="${pkgdir}"
@@ -80,7 +80,7 @@ package_libgnome-sharp() {
 
 package_gnome-vfs-sharp() {
   pkgdesc="Mono bindings for GNOME-VFS"
-  depends=('gtk-sharp-2' 'gnome-vfs')
+  depends=('gtk-sharp-2' 'gnome-vfs' 'glade-sharp')
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
   make -C gnomevfs install DESTDIR="${pkgdir}"
