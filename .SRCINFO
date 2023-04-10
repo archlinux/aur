@@ -1,8 +1,8 @@
 pkgbase = chewing-editor-git
 	pkgdesc = Cross platform chewing user phrase editor
 	pkgver = 0.1.1.r46.g11841ff
-	pkgrel = 1
-	url = http://chewing.im
+	pkgrel = 2
+	url = https://chewing.im/
 	arch = i686
 	arch = x86_64
 	license = GPL
