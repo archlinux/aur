@@ -1,9 +1,41 @@
+adsklic_ver=$(pacman -Qi adsklicensing | grep -Po '^Version\s*: \K.+(?=-)' 2>/dev/null)
+prod_key="657P1"
+prod_ver="2024.0.0.F"
+maya_cfg="/var/opt/Autodesk/Adlm/Maya2024/MayaConfig.pit"
+
 post_install() {
-	systemctl start adsklicensing.service
-	/opt/Autodesk/AdskLicensing/13.0.0.8122/helper/AdskLicensingInstHelper register --prod_key 657P1 --prod_ver 2024.0.0.F --config_file /var/opt/Autodesk/Adlm/Maya2024/MayaConfig.pit --eula_locale US
+	if [ ! -f "$maya_cfg" ]; then
+		printf "$(tput setaf 3)The Maya licensing config could not be found at $(tput sgr0)\n\n"
+		printf "$maya_cfg\n\n"
+		printf "$(tput setaf 3)Please follow the instructions below to register Maya with the following information:$(tput sgr0)\n\n"
+		printf "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/Failed-to-s-sign-in-into-Maya-Linux-running-from-a-Central-Location-path.html\n\n"
+		printf "- Product Key: $prod_key\n"
+		printf "- Product Version: $prod_ver\n"
+	elif [ -z "$adsklic_ver" ]; then
+		printf "$(tput setaf 3)The adsklicensing package could not be found.$(tput sgr0)\n"
+		printf "$(tput setaf 3)Please follow the instructions below to register Maya with the following information:$(tput sgr0)\n\n"
+		printf "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/Failed-to-s-sign-in-into-Maya-Linux-running-from-a-Central-Location-path.html\n\n"
+		printf "- Product Key: $prod_key\n"
+		printf "- Product Version: $prod_ver\n"
+		printf "- Licensing Config: $maya_cfg\n"
+	else
+		systemctl start adsklicensing.service
+		/opt/Autodesk/AdskLicensing/"$adsklic_ver"/helper/AdskLicensingInstHelper register --prod_key "$prod_key" --prod_ver "$prod_ver" --config_file "$maya_cfg" --eula_locale US
+	fi
+}
+
+post_upgrade() {
+	pre_remove $0
+	post_install $1
 }
 
 pre_remove() {
-	systemctl start adsklicensing.service
-	/opt/Autodesk/AdskLicensing/13.0.0.8122/helper/AdskLicensingInstHelper deregister --prod_key 657P1 --prod_ver 2024.0.0.F
+	if [ -z "$adsklic_ver" ]; then
+		printf "$(tput setaf 3)The adsklicensing package could not be found.$(tput sgr0)\n"
+		printf "$(tput setaf 3)Please deregister Maya using the following template:$(tput sgr0)\n\n"
+		printf "/opt/Autodesk/AdskLicensing/<ADSKLICENSING_VERSION>/helper/AdskLicensingInstHelper deregister --prod_key $prod_key --prod_ver $prod_ver\n"
+	else
+		systemctl start adsklicensing.service
+		/opt/Autodesk/AdskLicensing/"$adsklic_ver"/helper/AdskLicensingInstHelper deregister --prod_key "$prod_key" --prod_ver "$prod_ver"
+	fi
 }
