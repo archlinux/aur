@@ -3,7 +3,7 @@
 pkgname=naikari
 pkgver=0.7.0
 pkgrel=1
-pkgdesc="2-D space trading and mercenary game forked from the Naev project."
+pkgdesc="Freeform 2-D space trading and mercenary game."
 arch=('x86_64')
 url="https://naikari.github.io/"
 license=('GPL3')
