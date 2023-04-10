@@ -9,7 +9,7 @@ pkgdesc='Export messages from Signal Desktop'
 arch=('i686' 'x86_64')
 url="https://github.com/tbvdm/$_pkgname"
 license=('ISC')
-makedepends=('git' 'go-pie')
+makedepends=('git' 'go')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("$_pkgname::git+$url#branch=master")
@@ -25,6 +25,11 @@ pkgver() {
 
 build() {
   cd $_pkgname
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   go build \
      -gcflags "all=-trimpath=$PWD" \
      -asmflags "all=-trimpath=$PWD" \
