@@ -1,7 +1,7 @@
 # Maintainer: Papajoker <papajoke [at] archlinux [dot] info>
 pkgname=pachook
-pkgver=0.1.3.r9.gdf43c34
-pkgrel=1
+pkgver=0.1.4.r9.gdf43c34
+pkgrel=2
 pkgdesc="simple administrator pacman hooks"
 arch=('any')
 url="https://github.com/papajoker/pachook"
@@ -13,7 +13,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
