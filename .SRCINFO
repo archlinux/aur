@@ -1,6 +1,6 @@
 pkgbase = lavacli
 	pkgdesc = Command line interface for LAVA
-	pkgver = 1.6
+	pkgver = 1.7
 	pkgrel = 1
 	url = https://git.lavasoftware.org/lava/lavacli
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = lavacli
 	depends = python-jinja_pluralize
 	depends = python-yaml
 	depends = python-pyzmq
-	source = https://git.lavasoftware.org/lava/lavacli/-/archive/v1.6/lavacli-v1.6.tar.gz
-	sha256sums = 159431c2c976488124c2d1edc5a5a3ff8680b445d295dc9c3db3a91321f869c8
+	source = https://git.lavasoftware.org/lava/lavacli/-/archive/v1.7/lavacli-v1.7.tar.gz
+	sha256sums = b82b6d63c6f7df67b7f67b0577691e09af99ddc5a04ac63231e95de320a3c143
 
 pkgname = lavacli

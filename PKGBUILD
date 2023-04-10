@@ -1,14 +1,15 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
+# Co-Maintainer: Aditya Sirish <aditya [at] saky [dot] in>
 
 pkgname=lavacli
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc="Command line interface for LAVA"
 arch=('any')
 url="https://git.lavasoftware.org/lava/lavacli"
 license=('AGPL3')
 source=("$url/-/archive/v$pkgver/lavacli-v$pkgver.tar.gz")
-sha256sums=('159431c2c976488124c2d1edc5a5a3ff8680b445d295dc9c3db3a91321f869c8')
+sha256sums=('b82b6d63c6f7df67b7f67b0577691e09af99ddc5a04ac63231e95de320a3c143')
 depends=(python python-{aiohttp,jinja_pluralize,yaml,pyzmq})
 makedepends=(python-setuptools python-pip)
 
