@@ -3,13 +3,14 @@
 pkgname=ramfetch-git
 _pkgname=ramfetch
 pkgver=1.0.4.ec9df6a
-pkgrel=1
+pkgrel=2
 pkgdesc="A fetch which displays memory info using /proc/meminfo"
 arch=('x86_64')
 url="https://codeberg.org/jahway603/$_pkgname"
 license=('MIT')
 makedepends=('git')
 conflicts=('ramfetch')
+provides=('ramfetch')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
