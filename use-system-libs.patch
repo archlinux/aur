@@ -1,5 +1,5 @@
 diff --git a/cmake/BuildParameters.cmake b/cmake/BuildParameters.cmake
-index 907d23e52..cbed1bfd4 100644
+index fcd341238..6641a0316 100644
 --- a/cmake/BuildParameters.cmake
 +++ b/cmake/BuildParameters.cmake
 @@ -17,14 +17,12 @@ if(LIBRETRO)
@@ -16,15 +16,15 @@ index 907d23e52..cbed1bfd4 100644
 -optional_system_library(SDL2)
  option(LTO_PCSX2_CORE "Enable LTO/IPO/LTCG on the subset of pcsx2 that benefits most from it but not anything else")
  
- option(USE_VTUNE "Plug VTUNE to profile GS JIT.")
+ 
 diff --git a/cmake/SearchForStuff.cmake b/cmake/SearchForStuff.cmake
-index 35b207f2e..7184675b6 100644
+index f4d88a186..eb0399dc6 100644
 --- a/cmake/SearchForStuff.cmake
 +++ b/cmake/SearchForStuff.cmake
 @@ -76,7 +76,6 @@ else()
  	check_lib(SOUNDTOUCH SoundTouch SoundTouch.h PATH_SUFFIXES soundtouch)
  
- 	if(NOT QT_BUILD AND NOT APPLE)
+ 	if(NOT QT_BUILD)
 -		find_optional_system_library(SDL2 3rdparty/sdl2 2.0.12)
  	endif()
  
@@ -56,10 +56,10 @@ index 35b207f2e..7184675b6 100644
  if(USE_OPENGL)
  	add_subdirectory(3rdparty/glad EXCLUDE_FROM_ALL)
 diff --git a/pcsx2/CMakeLists.txt b/pcsx2/CMakeLists.txt
-index ebca2ebf9..bb1e54ab9 100644
+index b25010517..2dfba1a5e 100644
 --- a/pcsx2/CMakeLists.txt
 +++ b/pcsx2/CMakeLists.txt
-@@ -1221,12 +1221,10 @@ target_link_libraries(PCSX2_FLAGS INTERFACE
+@@ -1165,12 +1165,10 @@ target_link_libraries(PCSX2_FLAGS INTERFACE
  	imgui
  	fmt::fmt
  	ryml

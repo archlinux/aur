@@ -1,8 +1,8 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-pcsx2
 pkgname=$_pkgname-git
-pkgver=r16875.7357bde45
-pkgrel=3
+pkgver=r16920.6ac2ffda5
+pkgrel=1
 pkgdesc="Sony PlayStation 2 core"
 arch=('x86_64')
 url="https://github.com/libretro/pcsx2"
@@ -27,11 +27,8 @@ makedepends=(
 	'cmake'
 	'fast_float'
 	'git'
-	'libgl'
+	'libglvnd'
 	'libpcap'
-	'libx11'
-	'libxcb'
-	'libxrandr'
 )
 provides=("$_pkgname=${pkgver#r}")
 conflicts=("$_pkgname")
@@ -46,7 +43,7 @@ b2sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
-	'e79cd9f3b05ad7de2f0ed366dacd2b230b973704724d77cc8fa72265b783ebb644f798b491f1d84b3923d180e173b8b7ce5fe394ac275c34bc701f182f60e780'
+	'2d003fd7c9dfcacfdd708d199dde44d5c2e2dae95081016cdd25a7bb74ba4a50fb4336e03e63ad3645a53a5ec8beb02bd1196c76e3b0725d5d68b9c45c460b73'
 )
 
 pkgver() {

@@ -1,7 +1,7 @@
 pkgbase = libretro-pcsx2-git
 	pkgdesc = Sony PlayStation 2 core
-	pkgver = r16875.7357bde45
-	pkgrel = 3
+	pkgver = r16920.6ac2ffda5
+	pkgrel = 1
 	url = https://github.com/libretro/pcsx2
 	arch = x86_64
 	groups = libretro
@@ -9,11 +9,8 @@ pkgbase = libretro-pcsx2-git
 	makedepends = cmake
 	makedepends = fast_float
 	makedepends = git
-	makedepends = libgl
+	makedepends = libglvnd
 	makedepends = libpcap
-	makedepends = libx11
-	makedepends = libxcb
-	makedepends = libxrandr
 	depends = fmt
 	depends = gcc-libs
 	depends = glibc
@@ -27,7 +24,7 @@ pkgbase = libretro-pcsx2-git
 	depends = xz
 	depends = zlib
 	depends = zstd
-	provides = libretro-pcsx2=16875.7357bde45
+	provides = libretro-pcsx2=16920.6ac2ffda5
 	conflicts = libretro-pcsx2
 	options = !lto
 	source = libretro-pcsx2::git+https://github.com/libretro/pcsx2.git#branch=libretro
@@ -37,6 +34,6 @@ pkgbase = libretro-pcsx2-git
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = e79cd9f3b05ad7de2f0ed366dacd2b230b973704724d77cc8fa72265b783ebb644f798b491f1d84b3923d180e173b8b7ce5fe394ac275c34bc701f182f60e780
+	b2sums = 2d003fd7c9dfcacfdd708d199dde44d5c2e2dae95081016cdd25a7bb74ba4a50fb4336e03e63ad3645a53a5ec8beb02bd1196c76e3b0725d5d68b9c45c460b73
 
 pkgname = libretro-pcsx2-git
