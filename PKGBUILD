@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=setzer-git
-pkgver=55
+pkgver=55.r0.g405c284
 pkgrel=1
 pkgdesc='LaTeX editor written in Python with Gtk'
 arch=('any')
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd Setzer
-  git describe --tags | cut -c2- | sed 's+-+.r+' | tr - .
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
