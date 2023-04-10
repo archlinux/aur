@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=prplmesh-git
-pkgver=r4893.g96b2d694
+pkgver=4.0.1.r156.g6cd1ed230
 pkgrel=1
 pkgdesc="WFA Multi-AP implementation"
 arch=('i686' 'x86_64')
@@ -11,16 +11,17 @@ depends=('glibc' 'json-c' 'ncurses' 'openssl' 'readline' 'zeromq')
 makedepends=('git' 'cmake' 'libnl' 'python-yaml')
 provides=('prplmesh')
 conflicts=('prplmesh')
-source=("git+https://github.com/prplfoundation/prplMesh.git")
+source=("git+https://gitlab.com/prpl-foundation/prplmesh/prplMesh.git")
 sha256sums=('SKIP')
 
 
 pkgver() {
   cd "prplMesh"
 
-  _rev=$(git rev-list --count --all)
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "r%s.g%s" "$_rev" "$_hash"
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
