@@ -1,14 +1,14 @@
 pkgbase = gpm-git
 	pkgdesc = General purpose mouse daemon
 	pkgver = 1.20.7.r38.ge82d1a6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.nico.schottelius.org/software/gpm/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = glibc
-	provides = gpm
+	provides = gpm=1.20.7.r38.ge82d1a6
 	provides = libgpm.so
 	conflicts = gpm
 	options = staticlibs
@@ -20,4 +20,3 @@ pkgbase = gpm-git
 	sha256sums = SKIP
 
 pkgname = gpm-git
-

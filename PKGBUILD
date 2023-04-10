@@ -2,14 +2,14 @@
 
 pkgname=gpm-git
 pkgver=1.20.7.r38.ge82d1a6
-pkgrel=1
+pkgrel=2
 pkgdesc="General purpose mouse daemon"
 arch=('i686' 'x86_64')
 url="https://www.nico.schottelius.org/software/gpm/"
 license=('GPL')
 depends=('glibc')
 makedepends=('git')
-provides=('gpm' 'libgpm.so')
+provides=("gpm=$pkgver" 'libgpm.so')
 conflicts=('gpm')
 options=('staticlibs')
 source=("git+https://github.com/telmich/gpm.git"
