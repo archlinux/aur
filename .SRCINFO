@@ -1,6 +1,6 @@
 pkgbase = xmlto-git
 	pkgdesc = Convert XML files to various formats
-	pkgver = r85.gb128bdc
+	pkgver = r92.g6fa6a0e
 	pkgrel = 1
 	url = https://pagure.io/xmlto/
 	arch = i686
@@ -10,10 +10,9 @@ pkgbase = xmlto-git
 	makedepends = docbook-xsl
 	depends = glibc
 	depends = libxslt
-	provides = xmlto
+	provides = xmlto=r92.g6fa6a0e
 	conflicts = xmlto
 	source = git+https://pagure.io/xmlto.git
 	sha256sums = SKIP
 
 pkgname = xmlto-git
-

@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=xmlto-git
-pkgver=r85.gb128bdc
+pkgver=r92.g6fa6a0e
 pkgrel=1
 pkgdesc="Convert XML files to various formats"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://pagure.io/xmlto/"
 license=('GPL')
 depends=('glibc' 'libxslt')
 makedepends=('git' 'docbook-xsl')
-provides=('xmlto')
+provides=("xmlto=$pkgver")
 conflicts=('xmlto')
 source=("git+https://pagure.io/xmlto.git")
 sha256sums=('SKIP')
