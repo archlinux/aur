@@ -34,6 +34,8 @@ depends=(
     'libxrandr'
     'libzip'
     'lzo'
+    'python-pyqt5-webengine'
+    'python-requests-cache'
     'qt5-script'
     'soundtouch'
     'taglib'
@@ -83,7 +85,7 @@ optdepends=(
 conflicts=('myththemes' 'mythplugins-mythvideo' 'mythtv')
 replaces=('myththemes' 'mythplugins-mythvideo' 'mythtv')
 source=(
-    "git+https://github.com/MythTV/mythtv#branch=fixes/32"
+    "git+https://github.com/MythTV/mythtv#branch=fixes/33"
     'mythbackend.service'
     'mythtv.desktop'
     'mythtv.png'
@@ -113,7 +115,6 @@ build() {
               --disable-altivec \
               --enable-audio-jack \
               --disable-distcc \
-              --enable-libfftw3 \
               --enable-libmp3lame \
               --enable-libvpx \
               --enable-libx264 \

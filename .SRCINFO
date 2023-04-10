@@ -44,6 +44,8 @@ pkgbase = mythtv-git
 	depends = libxrandr
 	depends = libzip
 	depends = lzo
+	depends = python-pyqt5-webengine
+	depends = python-requests-cache
 	depends = qt5-script
 	depends = soundtouch
 	depends = taglib
@@ -71,7 +73,7 @@ pkgbase = mythtv-git
 	replaces = myththemes
 	replaces = mythplugins-mythvideo
 	replaces = mythtv
-	source = git+https://github.com/MythTV/mythtv#branch=fixes/32
+	source = git+https://github.com/MythTV/mythtv#branch=fixes/33
 	source = mythbackend.service
 	source = mythtv.desktop
 	source = mythtv.png
