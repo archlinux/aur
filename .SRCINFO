@@ -1,6 +1,6 @@
 pkgbase = iptables-git
 	pkgdesc = Userspace command line program used to configure the packet filtering ruleset
-	pkgver = 1.8.7.r37.g9e1fffdf
+	pkgver = 1.8.9.r33.g0c2dcbf9
 	pkgrel = 1
 	url = https://www.netfilter.org/projects/iptables/index.html
 	arch = i686
@@ -12,10 +12,10 @@ pkgbase = iptables-git
 	depends = libmnl
 	depends = libnftnl
 	depends = libpcap
-	provides = arptables
-	provides = ebtables
-	provides = iptables
-	provides = iptables-nft
+	provides = arptables=1.8.9.r33.g0c2dcbf9
+	provides = ebtables=1.8.9.r33.g0c2dcbf9
+	provides = iptables=1.8.9.r33.g0c2dcbf9
+	provides = iptables-nft=1.8.9.r33.g0c2dcbf9
 	conflicts = arptables
 	conflicts = ebtables
 	conflicts = iptables

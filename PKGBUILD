@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=iptables-git
-pkgver=1.8.7.r37.g9e1fffdf
+pkgver=1.8.9.r33.g0c2dcbf9
 pkgrel=1
 pkgdesc="Userspace command line program used to configure the packet filtering ruleset"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.netfilter.org/projects/iptables/index.html"
 license=('GPL2')
 depends=('glibc' 'libmnl' 'libnftnl' 'libpcap')
 makedepends=('git' 'linux-api-headers')
-provides=('arptables' 'ebtables' 'iptables' 'iptables-nft')
+provides=("arptables=$pkgver" "ebtables=$pkgver" "iptables=$pkgver" "iptables-nft=$pkgver")
 conflicts=('arptables' 'ebtables' 'iptables' 'iptables-nft')
 backup=('etc/ethertypes'
         etc/iptables/{ip,ip6}tables.rules)
