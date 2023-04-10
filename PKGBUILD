@@ -4,7 +4,7 @@
 pkgname=python-pg8000
 # https://github.com/tlocke/pg8000#release-notes
 pkgver=1.29.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Pure-Python PostgreSQL database driver, DB-API compatible"
 arch=(any)
 url='https://github.com/tlocke/pg8000'
