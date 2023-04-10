@@ -2,7 +2,7 @@
 _base=tvm
 # pkgname="${_base}"-git
 pkgname="${_base}"
-pkgver=0.8.0
+pkgver=0.13.dev0.5.ge8184e66c4
 pkgrel=1
 # epoch=
 pkgdesc="Apache TVM, a deep learning compiler that enables access to high-performance machine learning anywhere for everyone"
@@ -18,11 +18,12 @@ depends=(
   "mesa"
   "openblas"
   "openmp"
-  # https://tvm.apache.org/docs/install/from_source.html
-  "python38"
+  # https://tvm.apache.org/docs/install/from_source.html,
   "python-numpy"
   "python-decorator"
   "python-attrs"
+  # https://github.com/apache/tvm/issues/8577
+  "python38"
   # ${_base}/python/gen_requirements.py
   "python-cloudpickle"
   "python-scipy"
@@ -49,62 +50,65 @@ conflicts=(tvm-git)
 # replaces=()
 # backup=()
 options=(!staticlibs)
-# install=
+install=tvm.install
 # changelog=
 
-# # cutlass (https://github.com/NVIDIA/cutlass.git)
-# dlpack (https://github.com/dmlc/dlpack.git)
-# dmlc-core (https://github.com/dmlc/dmlc-core.git)
-# rang (https://github.com/agauniyal/rang.git)
-# vta-hw (https://github.com/apache/tvm-vta.git)
-# source=("git+https://github.com/apache/tvm"
-#         # Submodules not in AUR
-#         "git+https://github.com/NVIDIA/cutlass.git"
-#         "git+https://github.com/dmlc/dlpack.git"
-#         "git+https://github.com/dmlc/dmlc-core.git"
-#         "git+https://github.com/agauniyal/rang.git"
-#         "vta-hw::git+https://github.com/apache/tvm-vta.git")
-# sha512sums=('SKIP'
-#             'SKIP'
-#             'SKIP'
-#             'SKIP'
-#             'SKIP'
-#             'SKIP')
-source=("https://dlcdn.apache.org/tvm/tvm-v${pkgver}/apache-tvm-src-v${pkgver}.tar.gz"
-       "enable_features.diff")
-sha512sums=("328b3d5d851ac82f12a0d1402094e608dbfa5a4f6fb8d942a95b41695dc069f1cfcbe915294b3ae71bf2433e792d9e00809c63392d12d20d2f8c27476375d1dc"
-            "8750d292086f030a1e70f201b86538a7e92444b238573c01424d9f933deb5032c1b82f4b74e45289b87b64eb4267765b162eeadd69732eebea659e856f1e247c")
+source=("git+https://github.com/apache/tvm"
+        # Submodules not in AUR
+        "git+https://github.com/NVIDIA/cutlass.git"
+        "git+https://github.com/dmlc/dlpack.git"
+        "git+https://github.com/dmlc/dmlc-core.git"
+        "git+https://github.com/agauniyal/rang.git"
+        "vta-hw::git+https://github.com/apache/tvm-vta.git"
+        "enable_features.diff"
+        "cblas_compilation.diff")
+sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            "ec62e2a15ca5d47f1bc804d12902d21d5f228e73cb458f6c4e5f9e9ce5118c117b8274814e36fde94a1efa0b25b8dc7d59ad79556e34484a1e8fb5d7926c1729"
+            "7499c01fce2facb76ebeb43799435f13b178dd0b2cf29ff0e09dd880ba2951a2e52a487a1fbb8dd392e6d3e8c5d0ac9a8d511034b176ebe395106ca0c4f3682a")
+
+# # For tar-ball
+# source=("https://dlcdn.apache.org/tvm/tvm-v${pkgver}/apache-tvm-src-v${pkgver}.tar.gz"
+#        "enable_features.diff")
+# sha512sums=("328b3d5d851ac82f12a0d1402094e608dbfa5a4f6fb8d942a95b41695dc069f1cfcbe915294b3ae71bf2433e792d9e00809c63392d12d20d2f8c27476375d1dc"
+#             "8750d292086f030a1e70f201b86538a7e92444b238573c01424d9f933deb5032c1b82f4b74e45289b87b64eb4267765b162eeadd69732eebea659e856f1e247c")
 # noextract=()
 
-# pkgver() {
-#   cd "${srcdir}"/"${_base}"
-#   git describe --tags --match '*.*' | tr '-' '.' | sed 's-^v--'
-# }
+pkgver() {
+  cd "${srcdir}"/"${_base}"
+  git describe --tags --match '*.*' | tr '-' '.' | sed 's-^v--'
+}
 
 prepare() {
-  rm "${srcdir}"/apache-"${_base}"-src-v"${pkgver}"*.tar.gz
-  mv "${srcdir}"/apache-"${_base}"-src-v"${pkgver}"* "${srcdir}/${_base}"
+  # # for tar-ball
+  # rm "${srcdir}"/apache-"${_base}"-src-v"${pkgver}"*.tar.gz
+  # mv "${srcdir}"/apache-"${_base}"-src-v"${pkgver}"* "${srcdir}/${_base}"
+
   cd "${srcdir}/${_base}"
 
-  # # * Update submodules
-  # # git submodule update --init --recursive
-  #
-  # # ** Remove submodules for which there are packages
-  # #    (names from .gitmodules)
-  # for submod in cnpy OpenCL-Headers libbacktrace; do
-  #   # https://stackoverflow.com/a/1260982
-  #   git rm 3rdparty/"$submod"
-  # done
-  # git commit -m "Removed submodules"
-  #
-  # # ** Update submodules
-  # #    (from AUR VCS guidelines)
-  # git submodule init
-  # for submod in cutlass dlpack dmlc-core rang vta-hw; do
-  #   git config \
-  #       submodule.3rdparty/"$submod".url "${srcdir}/$submod"
-  # done
-  # git -c protocol.file.allow=always submodule update
+  # * Update submodules
+  # git submodule update --init --recursive
+
+  # ** Remove submodules for which there are packages
+  #    (names from .gitmodules)
+  for submod in cnpy OpenCL-Headers libbacktrace; do
+    # https://stackoverflow.com/a/1260982
+    git rm 3rdparty/"$submod"
+  done
+  git commit -m "Removed submodules"
+
+  # ** Update submodules
+  #    (from AUR VCS guidelines)
+  git submodule init
+  for submod in cutlass dlpack dmlc-core rang vta-hw; do
+    git config \
+        submodule.3rdparty/"$submod".url "${srcdir}/$submod"
+  done
+  git -c protocol.file.allow=always submodule update
 
   # https://tvm.apache.org/docs/install/from_source.html
   _build="${srcdir}"/build
@@ -112,11 +116,13 @@ prepare() {
   patch --forward -i "${srcdir}/enable_features.diff" \
         -o "${_build}"/config.cmake \
         -d "${srcdir}/${_base}/cmake"
+  patch --forward -i "${srcdir}/cblas_compilation.diff" \
+        "${srcdir}/${_base}/CMakeLists.txt"
 
   cd "${_build}"
   python3.8 -m venv env
   source env/bin/activate
-  # gen_requirements.py
+  # From gen_requirements.py
   pip install setuptools numpy decorator attrs\
       cloudpickle psutil tornado scipy synr
   deactivate
@@ -125,6 +131,7 @@ prepare() {
 build() {
   _build="${srcdir}"/build
 
+  CONFOPTS=( -DCMAKE_INSTALL_PREFIX=/usr )
 
   cd "${_build}"
   source env/bin/activate
@@ -163,15 +170,6 @@ package() {
   cd "${srcdir}/${_base}"/python
   # python "$srcdir/${_base}"/python/setup.py build -g --dry-run
   export TVM_LIBRARY_PATH="${pkgdir}/usr/lib"
-  python setup.py install -O2 --prefix=/usr --root="${pkgdir}"
+  python setup.py install -O1 --prefix=/usr --root="${pkgdir}"
   deactivate
-
-  # # To use, do:
-  # # (from python-x-wr-timezone)
-  # python3.8 -m venv --clear --system-site-packages env
-  # source env/bin/activate
-  # pip install numpy decorator attrs cloudpickle psutil tornado scipy
-  # python
-  # >>> import tvm
-  # >>> from tvm import te
 }

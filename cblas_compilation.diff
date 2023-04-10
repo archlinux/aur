@@ -1,0 +1,30 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 818e8b50ad..c939e5147a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -131,8 +131,9 @@ include_directories(SYSTEM ${COMPILER_RT_PATH})
+ include_directories(SYSTEM ${PICOJSON_PATH})
+ 
+ # initial variables
+-set(TVM_LINKER_LIBS "")
+-set(TVM_RUNTIME_LINKER_LIBS "")
++include(FindBLAS)
++set(TVM_LINKER_LIBS "-lcblas")
++set(TVM_RUNTIME_LINKER_LIBS "-lcblas")
+ 
+ 
+ # Check if this is being run on its own or as a subdirectory for another project
+@@ -628,7 +629,12 @@ if(USE_THREADS AND NOT BUILD_FOR_HEXAGON)
+ endif()
+ 
+ target_link_libraries(tvm PRIVATE ${TVM_LINKER_LIBS} ${TVM_RUNTIME_LINKER_LIBS})
+-target_link_libraries(tvm_runtime PRIVATE ${TVM_RUNTIME_LINKER_LIBS})
++# Does this actually do anything?
++# https://stackoverflow.com/a/59848812
++target_link_libraries(tvm_runtime PRIVATE ${TVM_RUNTIME_LINKER_LIBS} ${BLAS_LIBRARIES})
++target_compile_options(tvm_runtime_objs PRIVATE ${BLAS_LINKER_FLAGS})
++target_link_libraries(tvm_runtime_objs ${BLAS_LIBRARIES})
++
+ 
+ if(BUILD_FOR_HEXAGON AND DEFINED USE_HEXAGON_GTEST AND EXISTS ${USE_HEXAGON_GTEST})
+   include(FetchContent)

@@ -1,5 +1,5 @@
---- /home/edgar/Documentos/Linux/Parabola/pkg/tvm/src/tvm/cmake/config.cmake	2021-11-12 22:16:08.000000000 +0100
-+++ /home/edgar/Documentos/Linux/Parabola/pkg/tvm/src/build/config.cmake	2023-04-04 15:30:52.253126256 +0200
+--- tvm/src/tvm/cmake/config.cmake	2021-11-12 22:16:08.000000000 +0100
++++ tvm/src/build/config.cmake	2023-04-04 15:30:52.253126256 +0200
 @@ -68,7 +68,7 @@
  # - ON: enable OpenCL with cmake's auto search
  # - OFF: disable OpenCL
