@@ -1,6 +1,6 @@
 pkgbase = hyperscan-git
 	pkgdesc = High-performance multiple regex matching library
-	pkgver = 5.4.0.r0.g64a995b
+	pkgver = 5.4.1.r2.g5c724f7
 	pkgrel = 1
 	url = https://www.hyperscan.io/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = hyperscan-git
 	makedepends = cmake
 	makedepends = ragel
 	depends = gcc-libs
-	provides = hyperscan
+	provides = hyperscan=5.4.1.r2.g5c724f7
 	conflicts = hyperscan
 	options = staticlibs
 	source = git+https://github.com/intel/hyperscan.git

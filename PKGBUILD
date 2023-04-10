@@ -3,7 +3,7 @@
 # Contributor: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgname=hyperscan-git
-pkgver=5.4.0.r0.g64a995b
+pkgver=5.4.1.r2.g5c724f7
 pkgrel=1
 pkgdesc="High-performance multiple regex matching library"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="https://www.hyperscan.io/"
 license=('BSD')
 depends=('gcc-libs')
 makedepends=('git' 'boost' 'cmake' 'ragel')
-provides=('hyperscan')
+provides=("hyperscan=$pkgver")
 conflicts=('hyperscan')
 options=('staticlibs')
 source=("git+https://github.com/intel/hyperscan.git")
