@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=googletest-git
-pkgver=1.11.0.r45.g2f80c2ba
-pkgrel=2
+pkgver=1.13.0.r100.g057b4e90
+pkgrel=1
 pkgdesc="Google's C++ test framework"
 arch=('i686' 'x86_64')
 url="https://google.github.io/googletest/"
 license=('BSD')
 depends=('gcc-libs' 'sh')
 makedepends=('git' 'cmake')
-provides=('gmock' 'gtest')
+provides=("gmock=$pkgver" "gtest=$pkgver")
 conflicts=('gmock' 'gtest')
 source=("git+https://github.com/google/googletest.git")
 sha256sums=('SKIP')
@@ -18,7 +18,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "googletest"
 
-  git describe --long --tags | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
