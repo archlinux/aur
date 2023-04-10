@@ -1,8 +1,8 @@
 pkgbase = liblouis-git
 	pkgdesc = An open-source braille translator, back-translator and formatter
-	pkgver = 3.24.0.r3.g2ce32bd0
+	pkgver = 3.25.0.r18.g577648e5
 	pkgrel = 1
-	url = http://liblouis.org/
+	url = https://liblouis.io/
 	arch = i686
 	arch = x86_64
 	license = LGPL
@@ -13,7 +13,7 @@ pkgbase = liblouis-git
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = glibc
-	provides = liblouis=3.24.0.r3.g2ce32bd0
+	provides = liblouis=3.25.0.r18.g577648e5
 	conflicts = liblouis
 	options = staticlibs
 	source = git+https://github.com/liblouis/liblouis.git
