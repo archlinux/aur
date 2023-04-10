@@ -88,10 +88,6 @@ source=(
   # a lot of _GLIBCXX17_DEPRECATED line noise during builds
   'ceph-17.2.5-fix-iterator-depreciations.patch'
 
-  # fixes an issue with mgr usage of libradossqlite and temp tables,
-  # backported from the upstream
-  'ceph-18.0.0-mgr-sqlite-pragmas.patch'
-
   # Fixes API changes to boost::beast string_view type def in 1.81
   # https://github.com/boostorg/beast/issues/2594
   'ceph-17.2.5-rgw-client-boost-string-view.patch'
@@ -110,7 +106,6 @@ sha512sums=('10cd3d9eb01c91c148a92f1f7d040bbd78af5bb1ab15d071d93f54b37097dc9e126
             '81f540c8312972887a7cb43b8a4e29bfc6f24d5774787a4a8edfe65cca7d3b08faa08ecd09066d7ea67111769a5aec7385fe9a969546626f58874dd8aff5b664'
             '781a01e622a70d56bf1948bdc0b427ffa95a86cec7dd9d26c6007a9ec024a942a8ca55f2acc3d37344862f1d6bf11cae998d8071754cd841a66bfba4ec9c58bf'
             '2a6f33791760e14543c90077bfc6bf1b6b82ee2996e80b4762eadb887a0d9a67c221b6f10832ddf780dc6abaed246a1e2ee7680c9c861c4ff70e61b752a37b36'
-            'b2e1f495b57f3ed65b466719faded1713d8155e10b6432b704c632501313b6a98a56461164942cf303427770be0d5efe4798572fe8490ee977bf652906166bde'
             '02ca1a9bf15f9cd6f474f264ba2bf66ae725bac990a7cac315dabe377c66935a7afd8117f18a1f82c78bdf9ab2c3e5a2a227f2ffc166974dd7bb99b290f1f233')
 
 # -fno-plt causes linker errors (undefined reference to internal methods)
