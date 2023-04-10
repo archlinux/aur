@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=hse-git
-pkgver=3.1.0.dev.r9.g2161da28
+pkgver=3.1.0.dev.r69.gca2bccd6
 pkgrel=1
 pkgdesc="Heterogeneous-memory storage engine"
 arch=('i686' 'x86_64')
 url="https://hse-project.github.io/"
-license=('apache')
+license=('Apache')
 depends=('glibc' 'cjson' 'curl' 'libbsd' 'libmicrohttpd' 'liburcu' 'libyaml' 'lz4' 'mongo-c-driver' 'pmdk' 'xxhash')
 makedepends=('git' 'cmake' 'meson')
 provides=("hse=$pkgver")
@@ -45,5 +45,7 @@ check() {
 package() {
   cd "hse"
 
-  meson install -C "_build" --destdir "$pkgdir"
+  meson install \
+    -C "_build" \
+    --destdir "$pkgdir"
 }
