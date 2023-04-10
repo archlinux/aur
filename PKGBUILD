@@ -2,11 +2,11 @@
 
 pkgname=pik-git
 pkgver=r115.gbe30e6e
-pkgrel=1
+pkgrel=2
 pkgdesc="A new lossy image format for the internet"
 arch=('i686' 'x86_64')
 url="https://github.com/google/pik"
-license=('apache')
+license=('Apache')
 depends=('glibc' 'libjpeg' 'libpng')
 makedepends=('git')
 provides=("pik=$pkgver")
