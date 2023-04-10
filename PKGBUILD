@@ -2,11 +2,11 @@
 
 pkgname=winchecksec-git
 pkgver=3.1.0.r5.gf8f6727
-pkgrel=2
+pkgrel=3
 pkgdesc="Checksec, but for Windows: static detection of security mitigations in executables"
 arch=('i686' 'x86_64')
 url="https://trailofbits.github.io/winchecksec/"
-license=('apache')
+license=('Apache')
 depends=('gcc-libs' 'openssl' 'pe-parse')
 makedepends=('git' 'cmake' 'uthenticode')
 provides=("winchecksec=$pkgver")
