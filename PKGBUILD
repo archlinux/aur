@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libck-git
-pkgver=0.7.1.r14.g6e8e5be
+pkgver=0.7.1.r25.g50299b7
 pkgrel=1
 pkgdesc="Concurrency primitives, safe memory reclamation mechanisms and non-blocking (including lock-free) data structures"
 arch=('i686' 'x86_64')
 url="http://concurrencykit.org/"
-license=('apache' 'BSD' 'custom')
+license=('Apache' 'BSD' 'custom')
 depends=('glibc')
 makedepends=('git')
 provides=("libck=$pkgver")

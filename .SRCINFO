@@ -1,16 +1,16 @@
 pkgbase = libck-git
 	pkgdesc = Concurrency primitives, safe memory reclamation mechanisms and non-blocking (including lock-free) data structures
-	pkgver = 0.7.1.r14.g6e8e5be
+	pkgver = 0.7.1.r25.g50299b7
 	pkgrel = 1
 	url = http://concurrencykit.org/
 	arch = i686
 	arch = x86_64
-	license = apache
+	license = Apache
 	license = BSD
 	license = custom
 	makedepends = git
 	depends = glibc
-	provides = libck=0.7.1.r14.g6e8e5be
+	provides = libck=0.7.1.r25.g50299b7
 	conflicts = libck
 	options = staticlibs
 	source = git+https://github.com/concurrencykit/ck.git
