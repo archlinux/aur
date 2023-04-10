@@ -10,7 +10,7 @@
 pkgname=mythtv-git
 pkgver=33.1.r10.g0682d4d42d
 pkgrel=1
-pkgdesc="A Homebrew PVR project"
+pkgdesc="A Homebrew PVR project (Stable '-fixes' branch)"
 arch=('x86_64')
 url="https://www.mythtv.org/"
 license=('GPL')
