@@ -2,7 +2,7 @@
 
 pkgname=rtrtr
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An RPKI data proxy"
 arch=('i686' 'x86_64')
 url="https://nlnetlabs.nl/projects/rpki/rtrtr/"
@@ -13,12 +13,20 @@ source=("$pkgname-$pkgver-src.tar.gz::https://github.com/NLnetLabs/rtrtr/archive
 sha256sums=('ef86611b9cb8e5c69f5f7694bc2b8c0359f290ca1a8263c7c3f7c8a15a54aa75')
 
 
+prepare() {
+  cd "rtrtr-$pkgver"
+
+  if [ ! -f "Cargo.lock" ]; then
+    cargo update
+  fi
+  cargo fetch
+}
+
 check() {
   cd "rtrtr-$pkgver"
 
   #cargo test \
-  #  --locked \
-  #  --release
+  #  --frozen
 }
 
 package() {
