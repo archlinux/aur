@@ -11,6 +11,7 @@ pkgbase = levant-bin
 	license = MPL
 	depends = glibc
 	provides = levant
+	conflicts = levant
 	options = !strip
 	source_i686 = https://releases.hashicorp.com/levant/0.3.2/levant_0.3.2_linux_386.zip
 	sha256sums_i686 = ceebb6a29f7f473a0d2b7165a33312309cc8b57031469aa1f7b7b05c87ecff4a

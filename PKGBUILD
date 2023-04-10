@@ -9,6 +9,7 @@ url="https://github.com/hashicorp/levant"
 license=('MPL')
 depends=('glibc')
 provides=('levant')
+conflicts=('levant')
 changelog=levant-bin.changelog
 source_i686=("https://releases.hashicorp.com/levant/${pkgver}/levant_${pkgver}_linux_386.zip")
 source_x86_64=("https://releases.hashicorp.com/levant/${pkgver}/levant_${pkgver}_linux_amd64.zip")
