@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=svgtools
-pkgver=2021
-pkgrel=4
+pkgver=2023
+pkgrel=1
 pkgdesc='Tools for working with SVG files and JessyInk presentations.'
 arch=(any)
 license=(GPL)
@@ -9,16 +9,16 @@ url="https://xyne.dev/projects/svgtools"
 depends=(python3)
 optdepends=('inkscape: required for ji2pdf and jessy_to_slides' 'parallel: GNU Parallel support for ji2pdf' 'phantomjs: required for jessy_to_slides' 'poppler: required for ji2pdf')
 source=(
-  https://xyne.dev/projects/svgtools/src/svgtools-2021.tar.xz
-  https://xyne.dev/projects/svgtools/src/svgtools-2021.tar.xz.sig
+  https://xyne.dev/projects/svgtools/src/svgtools-2023.tar.xz
+  https://xyne.dev/projects/svgtools/src/svgtools-2023.tar.xz.sig
 )
 sha512sums=(
-  c50a8695a8dd9bcb8e7315a1bc408ae5a8fee0e2f89926d9d7609c253183f59bc0ac936184d5ba4b83e5843b6760e356bd2abbdb6815012ea97dc34a2fb220b6
-  33902a6a6890a1790cc7829296e6e83e11c1227c1b22e3d2224e903d49a6c758fe4168cbdfdee882110b030eebc6bac15e9f89f84c87bc52886f2c918622b1ca
+  75c47ee820d54c0fc3b0212ee3a00d412ea5cc4f344cfc8d3b8abd76237138be7111304119f307111c0073e2cdcd4ed8c811e308051817436e88333babb95f30
+  8578d68948b52a3fdf7a5813826289ba27ea2b899a4d97c75496dd5b646f8e839d621c44c75fcf02a259c2f0fcfd20db1f125145a5f628a21feb2259fc31e346
 )
 md5sums=(
-  ef52f777f4a8c590c497de943710a3eb
-  a46365f7b8113ba7b0614b8a386ccaeb
+  9886067d3fc23d3a7ae517fdd3f7e8e1
+  2b18ed6639a4030d945f0b999d45fed1
 )
 validpgpkeys=('D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519')
 
