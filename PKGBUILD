@@ -2,7 +2,7 @@
 
 pkgname=libtorrent-rasterbar-2_0-git
 pkgver=2.0.8.r107.g75136d31a
-pkgrel=1
+pkgrel=2
 pkgdesc="A feature complete C++ bittorrent library (git branch RC_2_0)"
 arch=('i686' 'x86_64')
 url="https://www.libtorrent.org/"
@@ -25,7 +25,7 @@ prepare() {
 pkgver() {
   cd "libtorrent"
 
-  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v2\.0\.[0-9\.]+$' | head -n1)
   _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
