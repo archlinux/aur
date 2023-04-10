@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=hisat2-git
-pkgver=2.2.1.r8.g49aa20c
+pkgver=2.2.1.r55.g5086938
 pkgrel=1
 pkgdesc="A fast and sensitive alignment program for mapping sequencing reads"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('glibc')
 makedepends=('git' 'cmake')
 optdepends=('perl' 'python')
-provides=('hisat2')
+provides=("hisat2=$pkgver")
 conflicts=('hisat2')
 options=('staticlibs')
 source=("git+https://github.com/DaehwanKimLab/hisat2.git")
