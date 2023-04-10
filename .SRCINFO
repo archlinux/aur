@@ -67,12 +67,8 @@ pkgbase = mythtv-git
 	optdepends = python-requests: Python bindings
 	optdepends = python-requests-cache: Python bindings
 	optdepends = python-simplejson: Python bindings
-	conflicts = myththemes
-	conflicts = mythplugins-mythvideo
+	provides = mythtv
 	conflicts = mythtv
-	replaces = myththemes
-	replaces = mythplugins-mythvideo
-	replaces = mythtv
 	source = git+https://github.com/MythTV/mythtv#branch=fixes/33
 	source = mythbackend.service
 	source = mythtv.desktop

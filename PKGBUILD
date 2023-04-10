@@ -82,8 +82,8 @@ optdepends=(
     'python-requests-cache: Python bindings'
     'python-simplejson: Python bindings'
 )
-conflicts=('myththemes' 'mythplugins-mythvideo' 'mythtv')
-replaces=('myththemes' 'mythplugins-mythvideo' 'mythtv')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=(
     "git+https://github.com/MythTV/mythtv#branch=fixes/33"
     'mythbackend.service'
