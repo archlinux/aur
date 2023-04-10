@@ -1,8 +1,8 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=gpu-screen-recorder-git
-pkgver=r253.ce5e016
-pkgrel=4
+pkgver=r254.ce9465b
+pkgrel=1
 pkgdesc='A shadowplay-like screen recorder for Linux. The fastest screen recorder for Linux'
 arch=('x86_64')
 url="https://git.dec05eba.com/gpu-screen-recorder"
@@ -15,11 +15,12 @@ optdepends=(
     'libva-mesa-driver: Required to record your screen on AMD'
     'libva-intel-driver: Required to record your screen on Intel G45 and HD Graphics family'
     'intel-media-driver: Required to record your screen on Intel Broadwell+ iGPUs'
+    'polkit: Required to record your screen on AMD/Intel (kms grab requires root access)'
 )
 provides=('gpu-screen-recorder')
 conflicts=('gpu-screen-recorder')
 source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/gpu-screen-recorder.git.${pkgver}.tar.gz")
-sha512sums=('037e4f69f87ea431176ed7910392fb3afae33fc11899e6bb1221ec32ee4deaa239aa797d0a00597039c491d5176047be05b6339d627c63f51935660dcc16e0d1')
+sha512sums=('1e8f0c30daa90d779d06a0201b15f1c75729b152b5e0a09dfa02d648a450dd44e13d7784cd87b5e65583a5b493d67f24060ad1c6bb3e2cd4a1f753417cd60d19')
 
 build() {
   cd "$srcdir"
