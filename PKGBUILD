@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=git-lfs-git
-pkgver=2.12.0.r43.g68a8f8a4
+pkgver=3.3.0.r104.gbea0287c
 pkgrel=1
 pkgdesc="Git extension for versioning large files"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://git-lfs.github.com/"
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go' 'go-tools' 'ruby-ronn')
-provides=('git-lfs')
+provides=("git-lfs=$pkgver")
 conflicts=('git-lfs')
 source=("git+https://github.com/git-lfs/git-lfs.git")
 sha256sums=('SKIP')
