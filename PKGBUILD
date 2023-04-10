@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=picolibc-git
-pkgver=r25702.gc9296499d
+pkgver=1.8.1.r2.gfb045c07b
 pkgrel=1
 pkgdesc="A C library designed for embedded 32 and 64 bit systems"
 arch=('i686' 'x86_64')
 url="https://keithp.com/picolibc/"
 license=('GPL')
 makedepends=('git' 'glibc' 'meson')
-provides=('picolibc')
+provides=("picolibc=$pkgver")
 conflicts=('picolibc')
 options=('staticlibs')
 source=("git+https://github.com/picolibc/picolibc.git")
@@ -18,9 +18,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "picolibc"
 
-  _rev=$(git rev-list --count --all)
+  _tag=$(git tag -l --sort -creatordate | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "r%s.g%s" "$_rev" "$_hash"
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = picolibc-git
 	pkgdesc = A C library designed for embedded 32 and 64 bit systems
-	pkgver = r25702.gc9296499d
+	pkgver = 1.8.1.r2.gfb045c07b
 	pkgrel = 1
 	url = https://keithp.com/picolibc/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = picolibc-git
 	makedepends = git
 	makedepends = glibc
 	makedepends = meson
-	provides = picolibc
+	provides = picolibc=1.8.1.r2.gfb045c07b
 	conflicts = picolibc
 	options = staticlibs
 	source = git+https://github.com/picolibc/picolibc.git
