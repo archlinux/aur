@@ -2,14 +2,14 @@
 
 pkgname=gengetopt-git
 pkgver=2.23.r0.g0cfa550
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to write command line option parsing code for C programs"
 arch=('i686' 'x86_64')
 url="https://www.gnu.org/software/gengetopt/"
 license=('GPL3')
 depends=('glibc')
 makedepends=('git' 'gengen' 'gengetopt')
-provides=('gengetopt')
+provides=("gengetopt=$pkgver")
 conflicts=('gengetopt')
 source=("git+https://git.savannah.gnu.org/git/gengetopt.git")
 sha256sums=('SKIP')

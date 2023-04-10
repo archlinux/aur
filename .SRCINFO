@@ -1,7 +1,7 @@
 pkgbase = gengetopt-git
 	pkgdesc = A tool to write command line option parsing code for C programs
 	pkgver = 2.23.r0.g0cfa550
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/gengetopt/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = gengetopt-git
 	makedepends = gengen
 	makedepends = gengetopt
 	depends = glibc
-	provides = gengetopt
+	provides = gengetopt=2.23.r0.g0cfa550
 	conflicts = gengetopt
 	source = git+https://git.savannah.gnu.org/git/gengetopt.git
 	sha256sums = SKIP
