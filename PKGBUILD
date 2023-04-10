@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=arti-git
-pkgver=1.1.3.r77.g698ea803
+pkgver=1.1.3.r94.g1af2296c
 pkgrel=1
 pkgdesc="An implementation of Tor in Rust"
 arch=('i686' 'x86_64')
 url="https://gitlab.torproject.org/tpo/core/arti"
-license=('apache' 'MIT')
+license=('Apache' 'MIT')
 depends=('glibc' 'openssl' 'sqlite' 'xz')
 makedepends=('git' 'rust')
 provides=("arti=$pkgver")
