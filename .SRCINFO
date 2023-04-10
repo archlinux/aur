@@ -1,0 +1,15 @@
+pkgbase = python-pospell
+	pkgdesc = Spellcheck .po files containing reStructuredText translations
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/AFPy/pospell
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pospell/pospell-1.1.tar.gz
+	source = https://github.com/AFPy/pospell/commit/c4feb4d25f23c3584959ba861267f669fbfcc98d.diff
+	sha256sums = 622be800caf4b1c5c880d972f5fc91501ffc6194978d9006158e3da182eb5a78
+	sha256sums = 65ebc5bb0383d5f7374c177f3638e346071b8ab9f08aaf58f118cc5cc08aaae2
+
+pkgname = python-pospell
