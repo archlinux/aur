@@ -1,7 +1,7 @@
 # Maintainer: Paul Spruce <paul.spruce@gmail.com>
 _pkgname=cewl
 pkgname=cewl-git
-pkgver=139.ff7e485
+pkgver=146.1c741bb
 pkgrel=1
 pkgdesc='CeWL is a Custom Word List Generator'
 arch=("x86_64")
