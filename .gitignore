@@ -1,0 +1,17 @@
+tvm/
+
+# Submodules
+cutlass/
+dlpack/
+dmlc-core/
+rang/
+tvm-vta/
+vta-hw/
+
+# Tar-balls and package
+*.tar.gz
+*.tar.zst
+
+src/
+env/
+pkg/
