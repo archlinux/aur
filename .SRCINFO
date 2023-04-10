@@ -1,6 +1,6 @@
 pkgbase = gd-git
 	pkgdesc = A library for the dynamic creation of images
-	pkgver = 2.3.2.r234.g1b3f6fbe
+	pkgver = 2.3.2.r464.gd11db230
 	pkgrel = 1
 	url = https://libgd.github.io/
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = gd-git
 	depends = libwebp
 	depends = libxpm
 	optdepends = perl: bdftogd script
-	provides = gd
+	provides = gd=2.3.2.r464.gd11db230
 	conflicts = gd
 	options = staticlibs
 	source = git+https://github.com/libgd/libgd.git
