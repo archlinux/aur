@@ -2,27 +2,29 @@
 pkgname=deepin-wine-adrive
 _pkgname=com.adrive.deepin
 _officalname=aDrive
-pkgver=4.1.2
+pkgver=4.2.0.841
 _deepinver=2.2.6deepin8
 pkgrel=1
 pkgdesc="Aliyun aDrive on Deepin Wine 6"
 arch=("x86_64")
-url="https://www.aliyundrive.com/"
-license=('unknown')
-depends=(deepin-wine6-stable xdg-utils lib32-glibc hicolor-icon-theme lib32-libxext lib32-libx11)
+url="https://www.aliyundrive.com"
+license=('custom')
+depends=('deepin-wine6-stable' 'xdg-utils' 'lib32-glibc' 'hicolor-icon-theme' 'lib32-libxext' 'lib32-libx11' 'sh')
 optdepends=()
 conflicts=()
 install="deepin-wine-adrive.install"
 source=(
     "${_pkgname}_${_deepinver}_i386.deb::https://com-store-packages.uniontech.com/appstore/pool/appstore/c/${_pkgname}/${_pkgname}_${_deepinver}_i386.deb"
-    "${_officalname}-${pkgver}.exe::https://cdn.aliyundrive.net/downloads/apps/desktop/aDrive.exe?spm=aliyundrive.index.0.0.2d836f60Cqzbtc&file=aDrive.exe"
+    "${_officalname}-${pkgver}.exe::https://cdn.aliyundrive.net/downloads/apps/desktop/aDrive.exe"
     "deepin-wine-adrive.install"
     "run.sh"
+    "LICENSE.html::https://terms.alicdn.com/legal-agreement/terms/suit_bu1_alibaba_group/suit_bu1_alibaba_group202102022125_53871.html"
     )
 sha256sums=('9db53833b86b3ad941f23bdefa354170ec432c3b15980621e8011261d5617843'
-            '1987310397ab88ddfa46c601630d36d628db4d39166ca9294f678ec85eb4cec4'
+            '927d33da6695398d9e20592ccccbf7d31b437b7c6a10930b03b1b2c5054be1a5'
             '592a72685f9f3b69015259015d9eaa9701dbca5ef8289e178f89ee4c7311c1f6'
-            '78663cc7aa1bdbe52e3f126812aaf20408d55a8bbd0ae0511a0c9d7efcb999d3')
+            '016b0568f30f55f6749330d60ab5a672109f16056a7f294b19ca6ba6fd263ccd'
+            'b6aa1fd4abf1ded8b208321fbaa73c083cf1376535b385217e3c96f62cbf9a91')
 prepare() {
     bsdtar -xf data.tar.xz -C "${srcdir}"
     mv "${srcdir}/opt/apps/${_pkgname}" "${srcdir}/opt/apps/${pkgname}"
@@ -31,24 +33,22 @@ prepare() {
     bsdtar -xf "${srcdir}/opt/apps/${pkgname}/files/files.7z" -C "${srcdir}/tmp"
        
     msg "Copying latest ${_officalname} files to ${srcdir}/tmp/drive_c/Program Files/${_officalname} ..."
-    rm -r "${srcdir}/tmp/drive_c/Program Files/${_officalname}"
-    mkdir -p "${srcdir}/tmp/drive_c/Program Files/${_officalname}/"
     7z x -aoa "${srcdir}/${_officalname}-${pkgver}.exe" -o"${srcdir}/tmp/drive_c/Program Files/${_officalname}/"
-
+    rm -rf "${srcdir}/tmp/drive_c/Program Files/${_officalname}/\$PLUGINSDIR" \
+        "${srcdir}/tmp/drive_c/Program Files/${_officalname}/\$TEMP"
     msg "Repackaging app archive ..."
-    rm -r "${srcdir}/opt/apps/${pkgname}/files/files.7z"
+    rm -r "${srcdir}/opt/apps/${pkgname}/files/files.7z" "${srcdir}/opt/apps/${pkgname}/info"
     7z a -t7z -r "${srcdir}/opt/apps/${pkgname}/files/files.7z" "${srcdir}/tmp/*"
-    rm -rf "${srcdir}/opt/apps/${pkgname}/info"
-    sed 's/com.adrive.deepin/deepin-wine-adrive/g' -i "${srcdir}/opt/apps/${pkgname}/entries/applications/${_pkgname}.desktop"
-    sed 's/Categories=internet/Categories=Network/g' -i "${srcdir}/opt/apps/${pkgname}/entries/applications/${_pkgname}.desktop"
+    sed 's|com.adrive.deepin|deepin-wine-adrive|g;s|internet|Network|g' -i "${srcdir}/opt/apps/${pkgname}/entries/applications/${_pkgname}.desktop"
 }
 package() {
     cp -r "${srcdir}/opt" "${pkgdir}"
     md5sum "${srcdir}/opt/apps/${pkgname}/files/files.7z" | awk '{ print $1 }' > "${pkgdir}/opt/apps/${pkgname}/files/files.md5sum"
     install -Dm644 "${srcdir}/opt/apps/${pkgname}/entries/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    for i in 24x24 32x32 48x48 64x64;do
-        install -Dm644 "${srcdir}/opt/apps/${pkgname}/entries/icons/hicolor/${i}/apps/${_pkgname}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${i}/apps/${pkgname}.png"
+    for _icons in 24x24 32x32 48x48 64x64;do
+        install -Dm644 "${srcdir}/opt/apps/${pkgname}/entries/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
     done
-    install -Dm755 "${srcdir}/run.sh" "${pkgdir}/opt/apps/${pkgname}/files/"
+    install -Dm755 "${srcdir}/run.sh" -t "${pkgdir}/opt/apps/${pkgname}/files"
+    install -Dm644 "${srcdir}/LICENSE.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
