@@ -7,7 +7,7 @@
 # Contributor: dorphell <dorphell@archlinux.org>
 
 pkgname=mythtv-git
-pkgver=31+fixes.20201012.eb3c84de
+pkgver=31+fixes.20210225.b6ddf202
 pkgrel=1
 pkgdesc="A Homebrew PVR project"
 arch=('x86_64')
@@ -76,8 +76,8 @@ optdepends=(
     'python-requests-cache: Python bindings'
     'python-simplejson: Python bindings'
 )
-conflicts=('myththemes' 'mythplugins-mythvideo' 'mythtv-git')
-replaces=('myththemes' 'mythplugins-mythvideo' 'mythtv-git')
+conflicts=('myththemes' 'mythplugins-mythvideo' 'mythtv')
+replaces=('myththemes' 'mythplugins-mythvideo' 'mythtv')
 source=(
     "git+https://github.com/MythTV/mythtv#branch=fixes/31"
     'mythbackend.service'
@@ -134,7 +134,7 @@ package() {
 
   install -D -m644 "$srcdir/mythbackend.service" "$pkgdir/usr/lib/systemd/system/mythbackend.service"
   install -D -m644 'database/mc.sql' "$pkgdir/usr/share/mythtv/mc.sql"
-  install -D -m644 "$srcdir/sysusers.d" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+  install -D -m644 "$srcdir/sysusers.d" "$pkgdir/usr/lib/sysusers.d/mythtv.conf"
 
   mkdir -p "$pkgdir/usr/share/mythtv"
   cp -R 'contrib' "$pkgdir/usr/share/mythtv"
