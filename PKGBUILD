@@ -2,12 +2,12 @@
 # Previous maintainer: quininer kel <quininer@live.com>
 
 pkgname=watchexec-git
-pkgver=1.22.2.r0.ge8391cd
-pkgrel=2
+pkgver=1.22.2.r1.g8e91d26
+pkgrel=1
 pkgdesc="Executes commands in response to file modifications"
 arch=('i686' 'x86_64')
 url="https://watchexec.github.io/"
-license=('apache')
+license=('Apache')
 depends=('gcc-libs')
 makedepends=('git' 'rust')
 provides=("watchexec=$pkgver")

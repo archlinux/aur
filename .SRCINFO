@@ -1,15 +1,15 @@
 pkgbase = watchexec-git
 	pkgdesc = Executes commands in response to file modifications
-	pkgver = 1.22.2.r0.ge8391cd
-	pkgrel = 2
+	pkgver = 1.22.2.r1.g8e91d26
+	pkgrel = 1
 	url = https://watchexec.github.io/
 	arch = i686
 	arch = x86_64
-	license = apache
+	license = Apache
 	makedepends = git
 	makedepends = rust
 	depends = gcc-libs
-	provides = watchexec=1.22.2.r0.ge8391cd
+	provides = watchexec=1.22.2.r1.g8e91d26
 	conflicts = watchexec
 	source = git+https://github.com/watchexec/watchexec.git
 	sha256sums = SKIP
