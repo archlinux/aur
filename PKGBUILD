@@ -1,4 +1,5 @@
-# Maintainer: James Bunton <jamesbunton@delx.net.au>
+# Maintainer: John Bergqvist <johnlbergqvist@gmail.com>
+# Contributor: James Bunton <jamesbunton@delx.net.au>
 # Contributor: Taijian <taijian@posteo.de>
 # Contributor: Jonathan Conder <jonno.conder@gmail.com>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
