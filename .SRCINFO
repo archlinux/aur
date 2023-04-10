@@ -1,11 +1,11 @@
 pkgbase = agate-git
 	pkgdesc = Very simple server for the Gemini hypertext protocol
 	pkgver = 3.3.0.r4.g4020791
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mbrubeck/agate
 	arch = i686
 	arch = x86_64
-	license = apache
+	license = Apache
 	license = MIT
 	makedepends = git
 	makedepends = rust
