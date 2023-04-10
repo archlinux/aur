@@ -1,4 +1,4 @@
-From a903fff188187e93c49724a797c257e4173fbf0f Mon Sep 17 00:00:00 2001
+From 526d7e1fbdd80578a112c2c67ead312278321769 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 25 Sep 2016 21:44:42 +0200
 Subject: [PATCH] Fix linguist macro
@@ -6,37 +6,39 @@ Subject: [PATCH] Fix linguist macro
 - Prevent CMake appending extra 'Qt5::lupdate'/'Qt5::lrelease' to
   command line when invoking lupdate/lrelease
 - Achieved by resolveing the IMPORTED_LOCATION manually
+
+Change-Id: Ie502d6237f0fed14f377912463f394c8d6ae396d
 ---
- src/linguist/Qt5LinguistToolsMacros.cmake | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ src/linguist/Qt5LinguistToolsMacros.cmake | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
 diff --git a/src/linguist/Qt5LinguistToolsMacros.cmake b/src/linguist/Qt5LinguistToolsMacros.cmake
-index ab1534144..1106633d0 100644
+index 6a45e57be..c034f2749 100644
 --- a/src/linguist/Qt5LinguistToolsMacros.cmake
 +++ b/src/linguist/Qt5LinguistToolsMacros.cmake
-@@ -90,8 +90,10 @@ function(QT5_CREATE_TRANSLATION _qm_files)
- 
+@@ -96,8 +96,9 @@ function(QT5_CREATE_TRANSLATION _qm_files)
            file(WRITE ${_ts_lst_file} "${_lst_file_srcs}")
          endif()
-+
+         set(stamp_file "${stamp_file_dir}/${_ts_name}.stamp")
 +        get_target_property(LUPDATE_LOC ${Qt5_LUPDATE_EXECUTABLE} IMPORTED_LOCATION)
-         add_custom_command(OUTPUT ${_ts_file}
+         add_custom_command(OUTPUT ${stamp_file}
 -            COMMAND ${Qt5_LUPDATE_EXECUTABLE}
 +            COMMAND ${LUPDATE_LOC}
              ARGS ${_lupdate_options} "@${_ts_lst_file}" -ts ${_ts_file}
+             COMMAND ${CMAKE_COMMAND} -E touch "${stamp_file}"
              DEPENDS ${_dependencies}
-             VERBATIM)
-@@ -133,8 +135,9 @@ function(QT5_ADD_TRANSLATION _qm_files)
-             set(qm "${CMAKE_CURRENT_BINARY_DIR}/${FILE_NAME}.qm")
+@@ -146,9 +147,9 @@ function(QT5_ADD_TRANSLATION _qm_files)
+         else()
+             set(qm_dep "${_abs_FILE}")
          endif()
- 
+-
 +        get_target_property(LRELEASE_LOC ${Qt5_LRELEASE_EXECUTABLE} IMPORTED_LOCATION)
          add_custom_command(OUTPUT ${qm}
 -            COMMAND ${Qt5_LRELEASE_EXECUTABLE}
 +            COMMAND ${LRELEASE_LOC}
              ARGS ${_LRELEASE_OPTIONS} ${_abs_FILE} -qm ${qm}
-             DEPENDS ${_abs_FILE} VERBATIM
+             DEPENDS ${qm_dep} VERBATIM
          )
 -- 
-2.39.0
+2.40.0
 
