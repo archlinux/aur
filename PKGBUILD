@@ -1,12 +1,12 @@
 # Maintainer: Łukasz Mariański <lmarianski dot protonmail dot com>
 
-function _ifmod {
-    lsmod | grep "$1" &> /dev/null
+function _nvidia_check {
+    pacman -Qi nvidia &>/dev/null
 }
 
 pkgname=alvr-git
 _pkgname=${pkgname%-git}
-pkgver=r2427.fa2bcea7
+pkgver=r2438.d7c0f725
 pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
@@ -35,7 +35,13 @@ prepare() {
 	echo "[profile.release]
 lto=true" >> Cargo.toml
 
-	cargo update
+#	cargo update
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	if _nvidia_check; then
+		cargo run --frozen -p alvr_xtask -- prepare-deps --platform linux
+	else
+		cargo run --frozen -p alvr_xtask -- prepare-deps --platform linux --no-nvidia
+	fi
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -50,12 +56,6 @@ build() {
 
 	export ALVR_OPENVR_DRIVER_ROOT_DIR=$ALVR_LIBRARIES_DIR/steamvr/alvr/
 	export ALVR_VRCOMPOSITOR_WRAPPER_DIR=$ALVR_LIBRARIES_DIR/alvr/
-
-    if ! _ifmod nvidia_drm; then
-        cargo xtask prepare-deps --platform linux --no-nvidia
-    else
-        cargo xtask prepare-deps --platform linux
-    fi
 
 	cargo build \
 		--frozen \
