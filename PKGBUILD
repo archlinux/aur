@@ -4,8 +4,8 @@
 
 pkgbase='ceph'
 pkgname=('ceph' 'ceph-libs' 'ceph-mgr')
-pkgver=17.2.5
-pkgrel=6
+pkgver=17.2.6
+pkgrel=1
 pkgdesc='Distributed, fault-tolerant storage platform delivering object, block, and file system'
 arch=('x86_64')
 url='https://ceph.com/'
@@ -88,7 +88,7 @@ source=(
   # https://github.com/boostorg/beast/issues/2594
   'ceph-17.2.5-rgw-client-boost-string-view.patch'
 )
-sha512sums=('10cd3d9eb01c91c148a92f1f7d040bbd78af5bb1ab15d071d93f54b37097dc9e1268eed9e788fe32794d137f6af81abd6a2aeaee39cef44d2c45234a15cc6020'
+sha512sums=('dca9aea2ce210c15fcc34cb06a5dc5b4488ffa36d684166d47ebd87e48b54b6fee0882e1c67007a780e1c25754e9bc6e760cc10f60ea1183263f8504ef2dbd9b'
             '4354001c1abd9a0c385ba7bd529e3638fb6660b6a88d4e49706d4ac21c81b8e829303a20fb5445730bdac18c4865efb10bc809c1cd56d743c12aa9a52e160049'
             '41dbc1c395cdf9b3edf5c5d91bbc90f416b4338ad964fa3471f26a4312d3ec2a5dcebbc351a1640dc4b047b4f71aa134ac7486747e5f62980092b0176e7567f5'
             'ea069b75b786c22166c609b127b512802cc5c6e9512d792d7b7b34d276f5b86d57c8c35cfc7b5c855a59c0ba87ba1aabe2ca26da72b26bff46b6ba8410ddb27e'
