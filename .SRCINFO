@@ -1,4 +1,4 @@
-pkgbase = desktopper
+pkgbase = desktopper-git
 	pkgdesc = Application to create desktop entry files
 	pkgver = 1
 	pkgrel = 1
