@@ -3,7 +3,7 @@
 pkgname=gnome-shell-extension-forge
 _pkgname=forge
 _gnomever=43
-pkgver=65
+pkgver=66
 pkgrel=1
 pkgdesc="Tiling window manager for Gnome-Shell"
 arch=('any')
@@ -12,15 +12,15 @@ license=('GPLv3')
 depends=('gnome-shell')
 makedepends=('intltool' 'gettext' 'git' 'sassc')
 source=("https://github.com/jmmaranan/${_pkgname}/archive/refs/tags/v${_gnomever}-${pkgver}.tar.gz")
-sha256sums=("8c2372b4cd756613f49202158322324cf9138095696a12b5e245e82734c5ce31")
+sha256sums=("bed5d5e6caeb1d871df6855fd9f9a12b51070ef477f1b76e577b4b3c250eeb62")
 
 build() {
-	cd ${srcdir}/${_pkgname}-${_gnomever}-${pkgver}/
+	cd "${srcdir}/${_pkgname}-${_gnomever}-${pkgver}/"
 	make build
 }
 
 package() {
-	cd ${srcdir}/${_pkgname}-${_gnomever}-${pkgver}/
+	cd "${srcdir}/${_pkgname}-${_gnomever}-${pkgver}/"
 	local uuid=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
 
 	# Copy files
