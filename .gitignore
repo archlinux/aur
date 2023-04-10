@@ -1,0 +1,5 @@
+jupyterlab_translate-*.tar.gz
+jupyterlab-translate-*pkg.tar*
+*.log
+src/
+pkg/
