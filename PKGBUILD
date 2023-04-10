@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=cython-git
-pkgver=3.0.0a11.r191.g8fcc9896f
+pkgver=3.0.0b2.r40.gd0bbecb7f
 pkgrel=1
 pkgdesc="C-Extensions for Python"
 arch=('i686' 'x86_64')
 url="https://cython.org/"
-license=('apache')
+license=('Apache')
 depends=('python')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 provides=("cython=$pkgver")
