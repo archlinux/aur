@@ -6,7 +6,7 @@
 _pkgname=obs-studio
 pkgname=obs-studio-ftl
 pkgver=29.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open source software for live streaming and recording (with FTL protocol support)"
 arch=('x86_64')
 url="https://obsproject.com"
@@ -25,15 +25,18 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 source=($pkgname-$pkgver.tar.gz::https://github.com/jp9000/obs-studio/archive/$pkgver.tar.gz
         fix_python_binary_loading.patch
-        ignore_unused_submodules.patch)
+        ignore_unused_submodules.patch
+        fix_ffmpeg_flag_deprecation.patch)
 sha256sums=('0e6260800b80c3fc9f67c4c3fb12ffae740ab1dd188e526a55e0fc8949168db2'
             'bdfbd062f080bc925588aec1989bb1df34bf779cc2fc08ac27236679cf612abd'
-            '60b0ee1f78df632e1a8c13cb0a7a5772b2a4b092c4a2a78f23464a7d239557c3')
+            '60b0ee1f78df632e1a8c13cb0a7a5772b2a4b092c4a2a78f23464a7d239557c3'
+            'ae4ec61bfb6076234ab60468625f7d4d701717ae3a18a2e3a96aee20cdbd0bf8')
 
 prepare() {
   cd $_pkgname-$pkgver
   patch -Np1 < "$srcdir"/fix_python_binary_loading.patch
   patch -Np1 < "$srcdir"/ignore_unused_submodules.patch
+  patch -Np1 < "$srcdir"/fix_ffmpeg_flag_deprecation.patch
 }
 
 build() {
