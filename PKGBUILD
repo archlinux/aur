@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=onednn-git
-pkgver=2.0_beta09.r663.gd58524e69
-pkgrel=2
+pkgver=3.1_rc.r510.gde4b31752
+pkgrel=1
 pkgdesc="An open-source performance library for deep learning applications"
 arch=('i686' 'x86_64')
 url="https://01.org/oneDNN"
-license=('apache')
+license=('Apache')
 depends=('gcc-libs')
 makedepends=('git' 'cmake' 'doxygen')
-provides=('onednn')
+provides=("onednn=$pkgver")
 conflicts=('onednn')
 source=("git+https://github.com/oneapi-src/oneDNN.git")
 sha256sums=('SKIP')

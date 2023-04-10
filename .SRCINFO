@@ -1,19 +1,18 @@
 pkgbase = onednn-git
 	pkgdesc = An open-source performance library for deep learning applications
-	pkgver = 2.0_beta09.r663.gd58524e69
-	pkgrel = 2
+	pkgver = 3.1_rc.r510.gde4b31752
+	pkgrel = 1
 	url = https://01.org/oneDNN
 	arch = i686
 	arch = x86_64
-	license = apache
+	license = Apache
 	makedepends = git
 	makedepends = cmake
 	makedepends = doxygen
 	depends = gcc-libs
-	provides = onednn
+	provides = onednn=3.1_rc.r510.gde4b31752
 	conflicts = onednn
 	source = git+https://github.com/oneapi-src/oneDNN.git
 	sha256sums = SKIP
 
 pkgname = onednn-git
-
