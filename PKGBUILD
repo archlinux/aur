@@ -2,14 +2,14 @@
 
 pkgname=hddtemp-git
 pkgver=0.4.3.r1.gccaa1c0
-pkgrel=1
+pkgrel=2
 pkgdesc="Hard disk temperature tool"
 arch=('i686' 'x86_64')
 url="https://github.com/vitlav/hddtemp"
 license=('GPL')
 depends=('glibc')
 makedepends=('git')
-provides=('hddtemp')
+provides=("hddtemp=$pkgver")
 conflicts=('hddtemp')
 source=("git+https://github.com/vitlav/hddtemp.git"
         "hddtemp.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/hddtemp/trunk/service")
