@@ -1,0 +1,14 @@
+pkgbase = localcommand
+	pkgdesc = Run local commands directly from the web
+	pkgver = 0.1.1
+	pkgrel = 0
+	url = https://github.com/bjesus/localcommand
+	arch = x86_64
+	license = MIT
+	optdepends = zenity
+	source = source.tar.zxvf::https://github.com/bjesus/localcommand/releases/download/0.1.1/localcommand-0.1.1-linux-amd64.tar.gz
+	source = https://raw.githubusercontent.com/bjesus/localcommand/main/localcommand.desktop
+	sha512sums = bf9f95abcc6ccfe7b203454b481cc26e6f1880953ff95765ccda32302ecce7f0ddf6d32453f445a617d9aa3476f2ea9deb1bb09d9d9d697029cad18794f90e7c
+	sha512sums = 1b5a7562e7f3855d4f10f2b4bdce19d2950e1d230819c912bf79a39d74388e115f25fda060c44959924b9f546e98ba6ef8e0c536b5d87a6ac33a694d2f48698a
+
+pkgname = localcommand
