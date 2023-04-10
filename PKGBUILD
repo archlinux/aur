@@ -1,7 +1,7 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 # Contributor: mickele <mimocciola[at]yahoo[dot]com>
 pkgname=(ifcopenshell-git blender-plugin-bim-git)
-pkgver=230107.r2.g73d43649a
+pkgver=230410.r7.ge71ee988b
 pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon. GIT version."
 arch=('x86_64' 'i686')
@@ -24,7 +24,8 @@ optdepends=('python-svgwrite: blender bim addon svg support'
       'python-olca-ipc: blender bim addon life cycle analysis support'
       'python-toposort: ifcpatch'
       'python-xsdata: blender bim addon'
-      'python-brickschema: brickschema support')
+      'python-brickschema: brickschema support'
+      'python-shapely>=2.0.1: blender bim addon space generation support')
 makedepends=('cmake' 'boost>=1.58.0' 'swig' 'python-babel')
 provides=('ifcopenshell' 'blender-plugin-bim' 'IfcConvert' 'IfcGeomServer' 'python-ifcpatch' 'python-ifcdiff' 'python-bcf' 'python-bimtester' 'python-ifccsv')
 conflicts=()
@@ -33,7 +34,8 @@ backup=()
 source=("git+https://github.com/IfcOpenShell/IfcOpenShell.git"
         "git+https://github.com/IfcOpenShell/svgfill.git"
         "git+https://github.com/svgpp/svgpp.git"
-        "https://github.com/BrickSchema/Brick/releases/download/nightly/Brick.ttl")
+        "https://github.com/BrickSchema/Brick/releases/download/nightly/Brick.ttl"
+        "git+https://github.com/prochitecture/bpypolyskel.git")
 _blender_ver=$(blender --version | grep -Po 'Blender \K[0-9].[0-9]+')
 _python_ver=$(python --version | grep -Po 'Python \K[0-9].[0-9]+')
 
@@ -45,6 +47,12 @@ prepare() {
   cd "${srcdir}/IfcOpenShell/src/svgfill/"
   git submodule init
   git config submodule.svgpp.url "${srcdir}/IfcOpenShell/src/svgfill/3rdparty/svgpp/"
+  git submodule update
+  cd "${srcdir}/IfcOpenShell/src/blenderbim/blenderbim/libs/site/packages/"
+  mkdir -p "bpypolyskel"
+  cd "bpypolyskel"
+  git submodule init
+  git config submodule.bpypolyskel.url "${srcdir}/IfcOpenShell/src/blenderbim/blenderbim/libs/site/packages/bpypolyskel/"
   git submodule update
   sed -i 's/lib_ext a/lib_ext so/' ${srcdir}/IfcOpenShell/cmake/CMakeLists.txt
   cp "${srcdir}/Brick.ttl" "${srcdir}/IfcOpenShell/src/blenderbim/blenderbim/bim/schema"
@@ -116,4 +124,4 @@ package_blender-plugin-bim-git() {
   chmod -R a+rwX "${pkgdir}/usr/share/blender/${_blender_ver}/scripts/addons/blenderbim/bim/data"
 }
 
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')

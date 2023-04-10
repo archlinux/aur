@@ -1,6 +1,6 @@
 pkgbase = ifcopenshell-git
 	pkgdesc = Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon. GIT version.
-	pkgver = 230107.r2.g73d43649a
+	pkgver = 230410.r7.ge71ee988b
 	pkgrel = 1
 	url = http://ifcopenshell.org/
 	arch = x86_64
@@ -40,6 +40,7 @@ pkgbase = ifcopenshell-git
 	optdepends = python-toposort: ifcpatch
 	optdepends = python-xsdata: blender bim addon
 	optdepends = python-brickschema: brickschema support
+	optdepends = python-shapely>=2.0.1: blender bim addon space generation support
 	provides = ifcopenshell
 	provides = blender-plugin-bim
 	provides = IfcConvert
@@ -53,6 +54,8 @@ pkgbase = ifcopenshell-git
 	source = git+https://github.com/IfcOpenShell/svgfill.git
 	source = git+https://github.com/svgpp/svgpp.git
 	source = https://github.com/BrickSchema/Brick/releases/download/nightly/Brick.ttl
+	source = git+https://github.com/prochitecture/bpypolyskel.git
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
