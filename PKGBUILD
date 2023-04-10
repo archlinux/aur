@@ -2,7 +2,7 @@
 
 pkgbase=gpgme-git
 pkgname=('gpgme-git' 'python-gpgme-git' 'qgpgme-git')
-pkgver=1.13.0.r4.g4a4680f8
+pkgver=1.19.0.r6.g806a5d18
 pkgrel=1
 pkgdesc="GnuPG Made Easy"
 arch=('i686' 'x86_64')
@@ -38,7 +38,7 @@ check() {
 
 package_gpgme-git() {
   depends=('glibc' 'gnupg' 'libgpg-error')
-  provides=('gpgme')
+  provides=("gpgme=$pkgver")
   conflicts=('gpgme')
 
   cd "gpgme"
@@ -53,7 +53,7 @@ package_gpgme-git() {
 package_python-gpgme-git() {
   pkgdesc="Python bindings for GPGme"
   depends=('python' 'gpgme-git')
-  provides=('python-gpgme')
+  provides=("python-gpgme=$pkgver")
   conflicts=('python-gpgme')
 
   cd "gpgme/lang/python"
@@ -64,7 +64,7 @@ package_python-gpgme-git() {
 package_qgpgme-git() {
   pkgdesc="Qt bindings for GPGme"
   depends=('qt5-base' 'gpgme-git')
-  provides=('qgpgme')
+  provides=("qgpgme=$pkgver")
   conflicts=('qgpgme')
 
   cd "gpgme/lang/qt"
