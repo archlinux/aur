@@ -1,8 +1,8 @@
 pkgbase = libquicktime-git
 	pkgdesc = Library for reading and writing quicktime files
 	pkgver = r983.g2729591
-	pkgrel = 1
-	url = http://libquicktime.sourceforge.net/
+	pkgrel = 2
+	url = https://libquicktime.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = LGPL

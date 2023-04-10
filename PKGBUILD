@@ -2,10 +2,10 @@
 
 pkgname=libquicktime-git
 pkgver=r983.g2729591
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for reading and writing quicktime files"
 arch=('i686' 'x86_64')
-url="http://libquicktime.sourceforge.net/"
+url="https://libquicktime.sourceforge.net/"
 license=('LGPL')
 depends=('glibc' 'alsa-lib' 'faac' 'faad2' 'gtk2' 'lame' 'libjpeg-turbo' 'libxaw'
          'libxv' 'schroedinger'
