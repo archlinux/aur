@@ -4,35 +4,34 @@
 # TODO: look for more hidden dependencies
 
 pkgname=python-pyface
-pkgver=7.4.3
-pkgrel=2
+pkgver=8.0.0
+pkgrel=1
 pkgdesc="Traits-capable windowing framework"
 arch=('any')
 url="https://github.com/enthought/pyface"
 license=('BSD')
-depends=('python-traits' 'python-importlib_resources')
-makedepends=('python-setuptools')
-optdepends=('python-pyqt5: for Qt backend (or pyside2)'
-            'python-pyqt5-webengine: for Qt backend'
-            'pyside2: for Qt backend (or python-pyqt5)'
+depends=('python-traits')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+optdepends=('python-pyqt6: for Qt backend (or pyside2)'
+            'python-pyqt6-webengine: for Qt backend'
+            'pyside6: for Qt backend (or python-pyqt5)'
             'python-pygments: for syntax coloring in Qt backend'
-            'python-setuptools: to locate resources inside zip and egg files'
             'ipython: for IPython widget'
             'python-wxpython: for wx backend')
 options=(!emptydirs)
 source=("pyface-${pkgver}.tar.gz::https://github.com/enthought/pyface/archive/${pkgver}.tar.gz")
-sha256sums=('39e4c30be4f678b48bba1dc7b00798de40710de0e68745470d9148b7f2f10109')
+sha256sums=('e34f8fb285517e25bfe41a4b8d1d54860d2636bd5fa5b9bff26ab96c1a098895')
 
 build() {
-  cd "$srcdir"/pyface-$pkgver
+  cd pyface-$pkgver
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir"/pyface-$pkgver
+  cd pyface-$pkgver
 
-  python setup.py install --root="$pkgdir"/ --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -D LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
