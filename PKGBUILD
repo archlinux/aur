@@ -1,15 +1,16 @@
-# Maintainer: bitwave < aur aTt oomlu d0t de>
+# Maintainer: katt <magunasu.b97@gmail.com>
+# Contributor: bitwave < aur aTt oomlu d0t de>
 # Contributor: Peter Hoeg <first name at last name dot com>
 pkgname=jdupes
-pkgver=1.21.3
+pkgver=1.22.0
 pkgrel=1
-pkgdesc="Is a program for identifying duplicate files residing within specified directories"
-arch=('i686' 'x86_64')
-url="https://github.com/jbruchon/jdupes"
-license=('MIT')
-depends=('glibc')
+pkgdesc='A program for identifying duplicate files residing within specified directories'
+arch=(i686 x86_64)
+url=https://github.com/jbruchon/jdupes
+license=(MIT)
+depends=(glibc libjodycode)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('8992d0ff1fe135c685063ce3c9d69d54f1f19f1b32845e84441f888218063cc0')
+sha256sums=('945b69f1570d058b70c40d144c5dfa9d5769f43e9488e8ac4f47bbb9ac973df7')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -21,5 +22,3 @@ package(){
   make PREFIX="/usr" DESTDIR="${pkgdir}" install
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
-
-# vim: set ts=2 sw=2 et:
