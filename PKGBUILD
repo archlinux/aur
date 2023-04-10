@@ -6,7 +6,7 @@ function _nvidia_check {
 
 pkgname=alvr-git
 _pkgname=${pkgname%-git}
-pkgver=r2438.d7c0f725
+pkgver=20.0.0_dev10.r2441.dabacc04
 pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
@@ -24,7 +24,9 @@ md5sums=('SKIP')
 pkgver() {
 	cd "$srcdir/${_pkgname}"
 
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	ver=$(cargo metadata --format-version 1 | jq ".workspace_members[0]" -r | awk '{print $2}')
+
+	printf "%s.r%s.%s" "${ver//-/_}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -36,12 +38,6 @@ prepare() {
 lto=true" >> Cargo.toml
 
 #	cargo update
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-	if _nvidia_check; then
-		cargo run --frozen -p alvr_xtask -- prepare-deps --platform linux
-	else
-		cargo run --frozen -p alvr_xtask -- prepare-deps --platform linux --no-nvidia
-	fi
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -56,6 +52,13 @@ build() {
 
 	export ALVR_OPENVR_DRIVER_ROOT_DIR=$ALVR_LIBRARIES_DIR/steamvr/alvr/
 	export ALVR_VRCOMPOSITOR_WRAPPER_DIR=$ALVR_LIBRARIES_DIR/alvr/
+
+    if _nvidia_check; then
+        cargo run --frozen -p alvr_xtask -- prepare-deps --platform linux
+    else
+        cargo run --frozen -p alvr_xtask -- prepare-deps --platform linux --no-nvidia
+    fi
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 
 	cargo build \
 		--frozen \
