@@ -1,4 +1,4 @@
-pkgbase = python-pospell
+pkgbase = pospell
 	pkgdesc = Spellcheck .po files containing reStructuredText translations
 	pkgver = 1.1
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = python-pospell
 	sha256sums = 622be800caf4b1c5c880d972f5fc91501ffc6194978d9006158e3da182eb5a78
 	sha256sums = 65ebc5bb0383d5f7374c177f3638e346071b8ab9f08aaf58f118cc5cc08aaae2
 
-pkgname = python-pospell
+pkgname = pospell
