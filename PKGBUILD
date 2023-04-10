@@ -2,7 +2,7 @@
 
 pkgname=freekill
 _upper_pkgname=FreeKill
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/Notify-ctrl/FreeKill'
@@ -13,7 +13,7 @@ depends=('qt6-declarative' 'qt6-multimedia' 'qt6-5compat'
   'readline' )
 makedepends=('cmake' 'flex' 'bison' 'qt6-tools' 'swig' 'clang')
 source=("${url}/releases/download/v${pkgver}/FreeKill-${pkgver}-source.tar.gz")
-sha256sums=('df91a57deb9a6876147f7b2a8a3b7ec264c9c4c7ccb9133729b509709d28c17f')
+sha256sums=('450c7f6abc873fb55c51fb69937d619dc79c9300b613334860b74da701c82ed3')
 
 prepare() {
   cd ${srcdir}/${_upper_pkgname}-${pkgver}
@@ -40,7 +40,4 @@ package() {
     ${pkgdir}/usr/share/${_upper_pkgname}
   install -Dm644 image/icon.png ${pkgdir}/usr/share/icons/freekill_logo.png
   install -Dm644 freekill.desktop ${pkgdir}/usr/share/applications/freekill.desktop
-
-  # TODO: remove this
-  rm -r ~/.local/share/FreeKill/lua/lsp
 }
