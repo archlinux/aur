@@ -2,13 +2,13 @@
 
 pkgname=naikari-git
 _pkgname=naikari
-pkgver=0.6.0.r0.g4d42e02e2
+pkgver=0.7.0.r5.ga24f647fa
 pkgrel=1
-pkgdesc="2-D space trading and mercenary game forked from the Naev project. Development branch."
+pkgdesc="Freeform 2-D space trading and mercenary game. Development branch."
 arch=('x86_64')
 url="https://naikari.github.io/"
 license=('GPL3')
-depends=('sdl2_image' 'libxml2' 'freetype2' 'libpng' 'openal' 'libvorbis' 'libgl' 'luajit' 'suitesparse' 'libunibreak' 'physfs' 'glpk')
+depends=('sdl2_image' 'libxml2' 'freetype2' 'libpng' 'openal' 'libvorbis' 'libgl' 'luajit' 'suitesparse' 'libunibreak' 'physfs')
 makedepends=('meson' 'ninja' 'git')
 provides=('naikari')
 conflicts=('naikari')
@@ -25,7 +25,7 @@ pkgver() {
 prepare() {
 	cd ${srcdir}/${_pkgname}
 	git submodule init
-	git config submodule.artwork.url ${srcdir}/naikari-artwork-production
+	git config submodule.artwork.url ${srcdir}/naikari-artwork
 	git config submodule.extras/windows/mingw-bundledlls.update none
 	git -c protocol.file.allow=always submodule update
 }
