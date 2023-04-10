@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=qt6-languageserver-git
-pkgver=6.3.0_beta3.r52.g479a8df
+pkgver=6.5.0_beta3.r27.g2eb066b
 pkgrel=1
 pkgdesc="An implementation of the Language Server Protocol"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('glibc' 'qt6-base')
 makedepends=('git' 'cmake')
 provides=("qt6-languageserver=$pkgver")
 conflicts=('qt6-languageserver')
-source=("git+http://code.qt.io/qt/qtlanguageserver.git")
+source=("git+https://code.qt.io/qt/qtlanguageserver.git")
 sha256sums=('SKIP')
 
 
