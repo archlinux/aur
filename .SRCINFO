@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-imageformats-static
 	pkgdesc = Plugins for additional image formats: TIFF, MNG, TGA, WBMP (mingw-w64)
-	pkgver = 5.15.8+kde+r6
+	pkgver = 5.15.9+kde+r9
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = mingw-w64-qt5-imageformats-static
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://invent.kde.org/qt/qt/qtimageformats#commit=abe44c0f526e499668b1131c5990d9b571f99c46
+	source = git+https://invent.kde.org/qt/qt/qtimageformats#commit=c249f58541afa45955c23b75c1fb88c5e3e4d18b
 	sha256sums = SKIP
 
 pkgname = mingw-w64-qt5-imageformats-static
