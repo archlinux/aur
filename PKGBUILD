@@ -1,14 +1,16 @@
-# Maintainer Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
+# Maintainer: Bart De Vries <bart at mogwai dot be>
+# Contributor: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=kasts-git
-pkgver=22.06.r12.gfbe745d
+pkgver=23.01.0.r114.g761e6762
 pkgrel=1
-arch=('x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
+arch=('x86_64' 'armv7h' 'aarch64')
 pkgdesc="Kirigami-based podcast player"
-url="https://invent.kde.org/plasma-mobile/kasts"
+url="https://invent.kde.org/multimedia/kasts"
 license=('GPL2')
-depends=('qt5-multimedia' 'qt5-quickcontrols2' 'qtkeychain-qt5' 'purpose' 'kirigami2'
-         'ki18n' 'kconfig' 'kcoreaddons' 'ki18n' 'syndication' 'taglib' 'threadweaver')
+depends=('qt5-multimedia' 'qt5-quickcontrols2' 'qtkeychain-qt5' 'kirigami2' 'ki18n'
+         'kconfig' 'kcoreaddons' 'syndication' 'taglib' 'threadweaver' 'vlc'
+         'kirigami-addons')
 makedepends=('extra-cmake-modules' 'git' 'qt5-svg' 'qt5-tools')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
