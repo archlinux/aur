@@ -1,6 +1,6 @@
 pkgbase = pachook
 	pkgdesc = simple administrator pacman hooks
-	pkgver = 0.1.3.r0.g00c985b
+	pkgver = 0.1.4.r9.gdf43c34
 	pkgrel = 1
 	url = https://github.com/papajoker/pachook
 	arch = any
