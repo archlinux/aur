@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=wabt-git
-pkgver=r2087.g5d2123b1
+pkgver=1.0.32.r51.g539c541b
 pkgrel=1
 pkgdesc="The WebAssembly binary toolkit"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/WebAssembly/wabt"
 license=('apache')
 depends=('gcc-libs' 'glibc')
 makedepends=('git' 'clang' 'cmake' 'gcc')
-provides=('wabt')
+provides=("wabt=$pkgver")
 conflicts=('wabt')
 options=('staticlibs')
 source=("git+https://github.com/WebAssembly/wabt.git")
@@ -25,9 +25,10 @@ prepare() {
 pkgver() {
   cd "wabt"
 
-  _rev=$(git rev-list --count --all)
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "r%s.g%s" "$_rev" "$_hash"
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
