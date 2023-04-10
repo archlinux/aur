@@ -1,7 +1,7 @@
 [Unit]
 Description=MythTV Backend
-Wants=network-online.target mysqld.service
-After=network.target mysqld.service
+Wants=network-online.target mysqld.service systemd-udev-settle.service
+After=network.target mysqld.service systemd-udev-settle.service
 
 [Service]
 Type=simple

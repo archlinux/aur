@@ -7,7 +7,7 @@
 # Contributor: dorphell <dorphell@archlinux.org>
 
 pkgname=mythtv-git
-pkgver=31+fixes.20210225.b6ddf202
+pkgver=31+fixes.20210401.563a05b7
 pkgrel=1
 pkgdesc="A Homebrew PVR project"
 arch=('x86_64')
@@ -89,7 +89,7 @@ source=(
 )
 sha256sums=(
     'SKIP'
-    '0588fb34c116521590ff970083bffaf55722e184d06e80cbfe6c5f2b39ee80f1'
+    '3c356d030c8e5fb8cbe7bc01041848c4e8073b0a696c0f34a3e3cc0fd83ecf0b'
     '3fd2018d0d5aaa7d530835305dac80d4ca7d8fc991cdf9e1cebadebd86e25c03'
     '12cb52bf9b084a4f16419c9370fef0450ce6a11308b0c3f7240f4f83df7e2ab6'
     'bc43d38acac43bbc15dd6b27b74ff5a7e7abc16ad80ce6e676b108a2d501660c'
