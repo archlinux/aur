@@ -8,9 +8,6 @@ pkgbase = soapyairspyhf-git
 	license = MIT
 	makedepends = git
 	makedepends = cmake
-	makedepends = make
-	makedepends = gcc
-	makedepends = pkgconfig
 	depends = soapysdr
 	depends = airspyhf
 	provides = soapyairspyhf
@@ -19,4 +16,3 @@ pkgbase = soapyairspyhf-git
 	sha256sums = SKIP
 
 pkgname = soapyairspyhf-git
-
