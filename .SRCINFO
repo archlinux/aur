@@ -1,11 +1,11 @@
 pkgbase = criticality_score-git
 	pkgdesc = Gives criticality score for an open source project
 	pkgver = 2.0.2.r7.ga486176
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ossf/criticality_score
 	arch = i686
 	arch = x86_64
-	license = apache
+	license = Apache
 	makedepends = git
 	makedepends = go
 	depends = glibc
