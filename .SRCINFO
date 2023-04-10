@@ -1,0 +1,15 @@
+pkgbase = dh-dkms-bin
+	pkgdesc = debhelper addon for the Dynamic Kernel Module System (DKMS)
+	pkgver = 3.0.10_9
+	pkgrel = 1
+	url = https://salsa.debian.org/debian/dkms
+	arch = any
+	license = GPL3
+	depends = perl
+	depends = debhelper
+	provides = dh-dkms
+	conflicts = dh-dkms
+	source = http://ftp.debian.org/debian/pool/main/d/dkms/dh-dkms_3.0.10-9_all.deb
+	sha512sums = e2d035c3a4e32606ac075240591d9637f377190db2f1cafac340e5307763416eac61209ceafe82f65aa5e96ec37c531238e4e1b70fddf9d8e9ab301957924ba1
+
+pkgname = dh-dkms-bin
