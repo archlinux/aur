@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=firetools-git
-pkgver=0.9.62.r1.g15a4571
+pkgver=0.9.72.r3.g81ca775
 pkgrel=1
 pkgdesc="Graphical user interface of Firejail"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://firejail.wordpress.com/"
 license=('GPL')
 depends=('firejail' 'qt5-base')
 makedepends=('git')
-provides=('firetools')
+provides=("firetools=$pkgver")
 conflicts=('firetools')
 source=("git+https://github.com/netblue30/firetools.git")
 sha256sums=('SKIP')
