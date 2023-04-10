@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=sget-git
-pkgver=r167.g9f8b528
+pkgver=r266.g99e7b91
 pkgrel=1
 pkgdesc="Program for automatic verification of signatures and integration with Sigstore's binary transparency log"
 arch=('i686' 'x86_64')
 url="https://github.com/sigstore/sget"
-license=('apache')
+license=('Apache')
 depends=('glibc')
 makedepends=('git' 'go')
 provides=("sget=$pkgver")
