@@ -2,10 +2,10 @@
 
 pkgname=icu-git
 pkgver=72.1.r149.g981c182a7f
-pkgrel=1
+pkgrel=2
 pkgdesc="International Components for Unicode library"
 arch=('i686' 'x86_64')
-url="http://site.icu-project.org/"
+url="https://icu.unicode.org/"
 license=('custom:icu')
 depends=('glibc' 'sh')
 makedepends=('git' 'git-lfs')

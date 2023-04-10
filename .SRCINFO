@@ -1,8 +1,8 @@
 pkgbase = icu-git
 	pkgdesc = International Components for Unicode library
 	pkgver = 72.1.r149.g981c182a7f
-	pkgrel = 1
-	url = http://site.icu-project.org/
+	pkgrel = 2
+	url = https://icu.unicode.org/
 	arch = i686
 	arch = x86_64
 	license = custom:icu
