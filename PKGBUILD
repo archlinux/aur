@@ -1,6 +1,6 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=chwall
-pkgver=0.5.12
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A tiny wallpaper changer, written in python"
 arch=("any")
@@ -17,7 +17,7 @@ optdepends=('imagemagick: to extract wallpaper size in nitrogen mode'
             'nitrogen: to apply wallpaper on independant desktop manager'
             'xorg-xrandr: to extract screen config in nitrogen mode')
 source=("https://git.umaneti.net/${pkgname}/snapshot/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('2c921aa0749a77f27075efad96a880a8ea15d7a442e9667dfccca6df88b97401')
+sha256sums=('39b6121a30fce6d44bf638910b25de003b6d7b97ed48c6aad068ecdae2802347')
 
 package() {
   cd "$pkgname-$pkgver"
