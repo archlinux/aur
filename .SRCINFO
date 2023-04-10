@@ -1,20 +1,24 @@
 pkgbase = deepin-wine-cntv-cbox
 	pkgdesc = CGTN CBox on Deepin Wine 6
 	pkgver = 5.1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://app.cctv.com/
 	install = deepin-wine-cntv-cbox.install
 	arch = x86_64
-	license = unknown
+	license = custom:freeware
 	depends = deepin-wine6-stable
 	depends = xdg-utils
-	source = com.cctv.deepin_1.0.0deepin9_i386.deb::https://com-store-packages.uniontech.com/appstore/pool/appstore/c/com.cctv.deepin/com.cctv.deepin_1.0.0deepin9_i386.deb
-	source = CBox-5.1.2.1.exe::https://download.cntv.cn/cbox/v5/ysyy_v5.1.2.1_1001_setup.exe?spm=0.PF8WgFTOZypm.ETms2K8Lsimc.4&file=ysyy_v5.1.2.1_1001_setup.exe
+	depends = hicolor-icon-theme
+	depends = sh
+	source = com.cctv.deepin-1.0.0deepin9.deb::https://com-store-packages.uniontech.com/appstore/pool/appstore/c/com.cctv.deepin/com.cctv.deepin_1.0.0deepin9_i386.deb
+	source = CBox-5.1.2.1.exe::https://download.cntv.cn/cbox/v5/ysyy_v5.1.2.1_1001_setup.exe
 	source = deepin-wine-cntv-cbox.install
 	source = run.sh
+	source = LICENSE.html::https://app.cctv.com/index.shtml#page6
 	sha256sums = 6e6ca3250a3a82dd46b29df450f508eff74f22cebcead9890677210b0610a4bd
 	sha256sums = 2a359eab5b71caf7f214fc84e1763a8ba04f22b81fe072ffed7a6f6864dbe982
 	sha256sums = 935c1e022bb2c524b50dce1c5d4e0a3985e80d1eaf59d7073d2ae425c07fb162
-	sha256sums = 7ed7ce74b60cfa6b25ea8fd67b9118342b239ed6fbbc5f07b28324c448ea6bea
+	sha256sums = d57402d461e4d6625833f15dc25b5d1e190f7c1d632eba78df3a80ead295cd12
+	sha256sums = 17dbaf8452e428d3270e2f6f7978d87e316c3134605cc16a19782558282dcf25
 
 pkgname = deepin-wine-cntv-cbox
