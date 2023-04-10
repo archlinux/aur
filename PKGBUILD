@@ -2,12 +2,12 @@
 # Former maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 pkgname=binaryen-git
-pkgver=112.r106.g1b25a3cb0
+pkgver=112.r115.g0578862dc
 pkgrel=1
 pkgdesc="Compiler infrastructure and toolchain library for WebAssembly"
 arch=('i686' 'x86_64')
 url="https://github.com/WebAssembly/binaryen"
-license=('apache')
+license=('Apache')
 depends=('gcc-libs')
 makedepends=('git' 'cmake')
 #checkdepends=('python')
