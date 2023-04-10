@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="The task switcher for minimalistic window managers or standalone X11 session"
 url="https://github.com/sagb/alttab"
 license=('GPL3')
-arch=('i686' 'x86_64')
+arch=('x86_64' 'i686')
 depends=('libx11' 'libxmu' 'libxft' 'libxrender' 'libxrandr' 'libpng' 'uthash' 'libxpm')
 makedepends=('autoconf' 'automake' 'git')
 source=("git+https://github.com/sagb/alttab.git#tag=${pkgver}")
