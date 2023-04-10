@@ -1,8 +1,8 @@
 # Maintainer: zt <nwowens32@gmail.com>
 pkgname=vencord-desktop-git
 pkgdesc="A standalone Electron app that loads Discord & Vencord"
-pkgver=r41.8b68eef
-pkgrel=3
+pkgver=r67.d1acb04
+pkgrel=2
 
 arch=("x86_64" "aarch64")
 url="https://github.com/Vencord/Desktop"
@@ -18,7 +18,7 @@ optdepends=(
 provides=("vencord")
 conflicts=("vencord")
 
-source=("${pkgname}::git+${url}.git" "vencord.desktop")
+source=("$pkgname::git+$url.git" "vencord.desktop")
 
 sha256sums=('SKIP'
             'cd4d39fb009bfee33709c26c010a8fe70a76ee3c00006e822da2fec692a165d5')
@@ -31,10 +31,12 @@ pkgver() {
 build() {
   cd "$pkgname"
 
-  npm i pnpm
+  rm package.json
+  npm install  --no-package-lock --no-save pnpm
   export PATH="$PWD/node_modules/.bin:$PATH"
+  git restore package.json
   pnpm i
-  pnpm run package:dir
+  pnpm package:dir
 }
 
 package() {
