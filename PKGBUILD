@@ -4,7 +4,7 @@
 # match! rc[0-9]*$
 
 pkgname=nginx-mainline-mod-lua
-pkgver=0.10.23
+pkgver=0.10.24
 pkgrel=1
 epoch=1
 
@@ -19,7 +19,7 @@ license=('BSD')
 
 source=(https://github.com/openresty/$_modname-nginx-module/archive/v$pkgver/$_modname-$pkgver.tar.gz
 	cookie.patch)
-sha256sums=('2d29fa9771c9423b1d5c742d850b2f967948450cb67e26396d71534a6336b54d'
+sha256sums=('c5935ff25557031ab34d960d958a210613c9e6369b97db169b946717eca48fdf'
             '774e46d085ca8bd0d7cd84a36946cf1fd31f284ca9ebc90828b758297614975b')
 
 prepare() {
