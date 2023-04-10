@@ -2,13 +2,13 @@
 
 pkgname=iwlwifi-next
 pkgver=2020.10.09.r0.g3e4ee0ad7
-pkgrel=3
+pkgrel=4
 pkgdesc="Intel wireless chips driver (next kernel release cycle)"
 arch=('i686' 'x86_64')
 url="https://wireless.wiki.kernel.org/en/users/drivers/iwlwifi"
 license=('GPL')
 makedepends=('git' 'linux-headers' 'xz')
-provides=('iwlwifi')
+provides=("iwlwifi=$pkgver")
 conflicts=('iwlwifi')
 #source=('git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/iwlwifi/iwlwifi-next.git')
 #sha256sums=('SKIP')
