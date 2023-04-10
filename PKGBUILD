@@ -3,7 +3,7 @@
 # Contributor: Dmitry Porunov <dmitry@ykkz.de>
 
 pkgname=ttf-apple-emoji
-pkgver=15.4
+pkgver=16.4
 pkgrel=1
 pkgdesc='Apple Color Emoji is a color typeface used by iOS and macOS to display emoji'
 arch=('any')
@@ -20,10 +20,10 @@ conflicts=(
 )
 
 source=(
-    AppleColorEmoji.ttf::$url/releases/download/ios-15.4/AppleColorEmoji.ttf
+    AppleColorEmoji.ttf::$url/releases/download/v16.4/AppleColorEmoji.ttf
 )
 
-sha512sums=('8ecae021ec66ff373a85b69a5a4012f27483507053f754bf0d556c1b71526b2cf6e512188c33f66842f7a74305851f4f894abe21281e8233529f54a9ab56eefa')
+sha512sums=('50922283b9621616c336b40d5f49e42a0ee4e9b9ef9925ef8e23a705f36a747563df07dc09e45c72c0aaa3098b921b56721e797786c61c15e08e1afcb8201df0')
 
 package() {
     install -dm 755 "${pkgdir}/usr/share/fonts/TTF"
