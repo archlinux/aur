@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=google-lyra-git
-pkgver=1.2.0.r0.gc2395ff
+pkgver=1.3.2.r0.g47698da
 pkgrel=1
 pkgdesc="A very low-bitrate codec for speech compression"
 arch=('i686' 'x86_64')
 url="https://github.com/google/lyra"
-license=('apache')
+license=('Apache')
 depends=('gcc-libs')
 makedepends=('git' 'bazel' 'python-numpy')
 provides=("google-lyra=$pkgver")
