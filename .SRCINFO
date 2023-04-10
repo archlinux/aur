@@ -1,11 +1,11 @@
 pkgbase = typos-git
 	pkgdesc = Source code spell checker
 	pkgver = 1.14.5.r0.g66d82e5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/crate-ci/typos
 	arch = i686
 	arch = x86_64
-	license = apache
+	license = Apache
 	license = MIT
 	makedepends = git
 	makedepends = rust

@@ -2,11 +2,11 @@
 
 pkgname=typos-git
 pkgver=1.14.5.r0.g66d82e5
-pkgrel=1
+pkgrel=2
 pkgdesc="Source code spell checker"
 arch=('i686' 'x86_64')
 url="https://github.com/crate-ci/typos"
-license=('apache' 'MIT')
+license=('Apache' 'MIT')
 depends=('gcc-libs')
 makedepends=('git' 'rust')
 provides=("typos=$pkgver")
