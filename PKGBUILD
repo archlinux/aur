@@ -2,8 +2,8 @@
 pkgname=pacnew-chaser
 pkgver=0.9.22
 pkgrel=2
-url="https://www.manjaro.fr/forum/viewtopic.php?f=28&t=10284"
-pkgdesc="manage .pacnew files, compare and merge (qt gui) - dev version"
+url="https://gitlab.com/papajoker/pacnew-chaser"
+pkgdesc="manage .pacnew files, compare and merge (qt gui)"
 arch=('x86_64')
 license=('GPL')
 install=.install
