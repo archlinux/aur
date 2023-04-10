@@ -1,6 +1,6 @@
 pkgbase = irtt-git
 	pkgdesc = Isochronous round-trip tester
-	pkgver = 0.9.1.r0.g02cd26d
+	pkgver = 0.9.1.r4.gf889dde
 	pkgrel = 1
 	url = https://github.com/heistp/irtt
 	arch = i686
@@ -9,10 +9,9 @@ pkgbase = irtt-git
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	provides = irtt
+	provides = irtt=0.9.1.r4.gf889dde
 	conflicts = irtt
 	source = git+https://github.com/heistp/irtt.git
 	sha256sums = SKIP
 
 pkgname = irtt-git
-

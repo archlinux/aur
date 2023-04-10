@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=irtt-git
-pkgver=0.9.1.r0.g02cd26d
+pkgver=0.9.1.r4.gf889dde
 pkgrel=1
 pkgdesc="Isochronous round-trip tester"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/heistp/irtt"
 license=('BSD')
 depends=('glibc')
 makedepends=('git' 'go')
-provides=('irtt')
+provides=("irtt=$pkgver")
 conflicts=('irtt')
 source=("git+https://github.com/heistp/irtt.git")
 sha256sums=('SKIP')
