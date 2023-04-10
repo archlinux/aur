@@ -1,11 +1,11 @@
 pkgbase = bao
 	pkgdesc = A verified streaming tool
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oconnor663/bao
 	arch = i686
 	arch = x86_64
-	license = apache
+	license = Apache
 	license = custom
 	makedepends = rust
 	depends = gcc-libs
