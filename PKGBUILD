@@ -2,14 +2,14 @@
 
 pkgname=gengen-git
 pkgver=1.4.3.r0.g82470d4
-pkgrel=1
+pkgrel=2
 pkgdesc="\"Text generator\" generator"
 arch=('i686' 'x86_64')
 url="https://www.gnu.org/software/gengen/"
 license=('GPL3')
 depends=('gcc-libs')
 makedepends=('git')
-provides=('gengen')
+provides=("gengen=$pkgver")
 conflicts=('gengen')
 source=("git+https://git.savannah.gnu.org/git/gengen.git")
 sha256sums=('SKIP')
