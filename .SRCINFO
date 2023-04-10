@@ -1,7 +1,7 @@
 pkgbase = dhcpcd8
 	pkgdesc = A DHCP and DHCPv6 client (8.x releases)
 	pkgver = 8.1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://roy.marples.name/projects/dhcpcd/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = dhcpcd8
 	depends = sh
 	depends = systemd-libs
 	optdepends = openresolv: resolvconf support
-	provides = dhcpcd
+	provides = dhcpcd=8.1.9
 	conflicts = dhcpcd
 	options = emptydirs
 	backup = etc/dhcpcd.conf

@@ -2,14 +2,14 @@
 
 pkgname=dhcpcd8
 pkgver=8.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A DHCP and DHCPv6 client (8.x releases)"
 arch=('i686' 'x86_64')
 url="https://roy.marples.name/projects/dhcpcd/"
 license=('BSD')
 depends=('glibc' 'sh' 'systemd-libs')
 optdepends=('openresolv: resolvconf support')
-provides=('dhcpcd')
+provides=("dhcpcd=$pkgver")
 conflicts=('dhcpcd')
 backup=('etc/dhcpcd.conf')
 options=('emptydirs')
@@ -49,6 +49,6 @@ package() {
   # Disable ip4vall
   echo "noipv4ll" >> "$pkgdir/etc/dhcpcd.conf"
 
-  install -Dm644 "$srcdir/dhcpcd.service" "$pkgdir/usr/lib/systemd/system/dhcpcd.service"
+  install -Dm644 "$srcdir/dhcpcd.service" -t "$pkgdir/usr/lib/systemd/system"
   install -Dm644 "$srcdir/dhcpcd_.service" "$pkgdir/usr/lib/systemd/system/dhcpcd@.service"
 }
