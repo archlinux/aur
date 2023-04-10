@@ -2,11 +2,11 @@
 
 pkgname=hse
 pkgver=3.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Heterogeneous-memory storage engine"
 arch=('i686' 'x86_64')
 url="https://hse-project.github.io/"
-license=('apache')
+license=('Apache')
 depends=('glibc' 'cjson' 'curl' 'libbsd' 'libmicrohttpd' 'liburcu' 'libyaml' 'lz4' 'mongo-c-driver' 'pmdk' 'xxhash')
 makedepends=('cmake' 'meson')
 options=('staticlibs')
