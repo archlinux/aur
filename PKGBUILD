@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=httperf-git
-pkgver=r194.g00bf5da
+pkgver=r204.gde8cd6a
 pkgrel=1
 pkgdesc="The HTTP load generator"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/httperf/httperf"
 license=('GPL')
 depends=('openssl')
 makedepends=('git')
-provides=('httperf')
+provides=("httperf=$pkgver")
 conflicts=('httperf')
 source=("git+https://github.com/httperf/httperf.git")
 sha256sums=('SKIP')
@@ -27,7 +27,8 @@ build() {
   cd "httperf"
 
   autoreconf -fi
-  ./configure --prefix="/usr"
+  ./configure \
+    --prefix="/usr"
   make
 }
 
