@@ -1,6 +1,6 @@
 pkgbase = glpk-git
 	pkgdesc = GNU Linear Programming Kit: solve LP, MIP and other problems
-	pkgver = r275.g4e03800
+	pkgver = 5.0.r242.g4e03800
 	pkgrel = 1
 	url = https://www.gnu.org/software/glpk/
 	arch = i686
@@ -9,11 +9,10 @@ pkgbase = glpk-git
 	makedepends = git
 	depends = glibc
 	depends = gmp
-	provides = glpk
+	provides = glpk=5.0.r242.g4e03800
 	conflicts = glpk
 	options = staticlibs
 	source = git+https://salsa.debian.org/science-team/glpk.git
 	sha256sums = SKIP
 
 pkgname = glpk-git
-
