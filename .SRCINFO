@@ -1,0 +1,15 @@
+pkgbase = markets-git
+	pkgdesc = Track stocks, currencies and cryptocurrencies
+	pkgver = 0.5.5
+	pkgrel = 1
+	url = https://github.com/tomasz-oponowicz/markets
+	arch = x86_64
+	license = GPL3
+	depends = meson
+	depends = vala
+	depends = libgee
+	source = https://github.com/tomasz-oponowicz/markets/archive/refs/tags/0.5.5.tar.gz
+	sha256sums = 2cae01a79d72623e81b549de122077afc26b3cf580f760ccdd7ffe369f799bb5
+
+pkgname = markets-git
+
