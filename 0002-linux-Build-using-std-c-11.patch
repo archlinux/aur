@@ -1,0 +1,24 @@
+From 885b698ce2de29ac3669013984290a1c76813a2c Mon Sep 17 00:00:00 2001
+From: Konrad Beckmann <konrad.beckmann@gmail.com>
+Date: Wed, 19 May 2021 19:59:57 +0200
+Subject: [PATCH 2/2] linux: Build using -std=c++11
+
+---
+ linux/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/linux/Makefile b/linux/Makefile
+index deef6d9..63be183 100644
+--- a/linux/Makefile
++++ b/linux/Makefile
+@@ -1,6 +1,6 @@
+ # Flags
+ CXX=g++
+-CXXFLAGS=-c -w -O1 -I ../math/ -I ../gdsoglviewer/ -I ../libgdsto3d/
++CXXFLAGS=-std=c++11 -c -w -O1 -I ../math/ -I ../gdsoglviewer/ -I ../libgdsto3d/
+ LDFLAGS=-L/usr/X11R6/lib64/ -lX11 -lGL -static-libgcc -static-libstdc++ -fopenmp
+ # Static linking of stdc++ available starting at GCC 4.5
+ 
+-- 
+2.40.0
+

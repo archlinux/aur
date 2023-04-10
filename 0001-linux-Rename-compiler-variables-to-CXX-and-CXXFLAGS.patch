@@ -1,0 +1,38 @@
+From b97d1be87f75633f73a44dfd1a761b257901ebdc Mon Sep 17 00:00:00 2001
+From: Konrad Beckmann <konrad.beckmann@gmail.com>
+Date: Wed, 19 May 2021 19:57:55 +0200
+Subject: [PATCH 1/2] linux: Rename compiler variables to CXX and CXXFLAGS
+
+---
+ linux/Makefile | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/linux/Makefile b/linux/Makefile
+index f892b53..deef6d9 100644
+--- a/linux/Makefile
++++ b/linux/Makefile
+@@ -1,6 +1,6 @@
+ # Flags
+-CC=g++
+-CFLAGS=-c -w -O1 -I ../math/ -I ../gdsoglviewer/ -I ../libgdsto3d/
++CXX=g++
++CXXFLAGS=-c -w -O1 -I ../math/ -I ../gdsoglviewer/ -I ../libgdsto3d/
+ LDFLAGS=-L/usr/X11R6/lib64/ -lX11 -lGL -static-libgcc -static-libstdc++ -fopenmp
+ # Static linking of stdc++ available starting at GCC 4.5
+ 
+@@ -26,10 +26,10 @@ EXECUTABLE=./GDS3D
+ all: $(SOURCES) $(HEADERS) $(EXECUTABLE)
+ 	
+ $(EXECUTABLE): $(OBJECTS) 
+-	$(CC) $(OBJECTS) -o $@ $(LDFLAGS)
++	$(CXX) $(OBJECTS) -o $@ $(LDFLAGS)
+ 
+ .cpp.o:
+-	$(CC) $(CFLAGS) $< -o $@
++	$(CXX) $(CXXFLAGS) $< -o $@
+ 
+ clean: # Clean object files
+ 	rm -f $(OBJECTS) 
+-- 
+2.40.0
+
