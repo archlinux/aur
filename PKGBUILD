@@ -1,6 +1,5 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-_pkgname=esearch
-pkgname="${_pkgname}-appimage"
+pkgname="esearch-appimage"
 pkgver=1.10.0
 pkgrel=1
 pkgdesc="截屏 离线OCR 搜索翻译 以图搜图 贴图 录屏 滚动截屏 Screenshot OCR search translate search for picture paste the picture on the screen screen recorder"
@@ -8,24 +7,24 @@ arch=("x86_64")
 url="https://esearch-app.netlify.app/"
 _githuburl="https://github.com/xushengfeng/eSearch"
 license=('GPL3')
-depends=(hicolor-icon-theme zlib glibc)
+depends=('hicolor-icon-theme' 'zlib' 'glibc')
 optdepends=()
 options=(!strip)
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+provides=("xushengfeng")
+conflicts=("${pkgname%-appimage}")
 _install_path="/opt/appimages"
-source=("${_pkgname}-${pkgver}.AppImage::${_githuburl}/releases/download/${pkgver}-beta.5/eSearch-${pkgver}-beta.5-linux-x86_64.AppImage")
-sha256sums=('7da637aaa206b7c7dc741475ebe3ce023d812b7a4728d1f547e0bc86ce38a17b')
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/${pkgver}/eSearch-${pkgver}-linux-x86_64.AppImage")
+sha256sums=('4b44b0c9e7a61ffc765a8fabcd1bceceb3359461537b2231adf107c7ebb04292')
 prepare() {
-    chmod a+x "${_pkgname}-${pkgver}.AppImage"
-    "./${_pkgname}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's/Exec=AppRun/Exec=\/opt\/appimages\/esearch.AppImage/g' -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
+    "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed 's|AppRun|/opt/appimages/esearch.AppImage|g' -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
 package() {
-    install -Dm755 "${srcdir}/${_pkgname}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${_pkgname}.AppImage"
+    install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
     for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
-        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png"
+        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-appimage}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-appimage}.png"
     done
-    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-appimage}.desktop"
 }

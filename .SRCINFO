@@ -8,10 +8,10 @@ pkgbase = esearch-appimage
 	depends = hicolor-icon-theme
 	depends = zlib
 	depends = glibc
-	provides = esearch
+	provides = xushengfeng
 	conflicts = esearch
 	options = !strip
-	source = esearch-1.10.0.AppImage::https://github.com/xushengfeng/eSearch/releases/download/1.10.0-beta.5/eSearch-1.10.0-beta.5-linux-x86_64.AppImage
-	sha256sums = 7da637aaa206b7c7dc741475ebe3ce023d812b7a4728d1f547e0bc86ce38a17b
+	source = esearch-1.10.0.AppImage::https://github.com/xushengfeng/eSearch/releases/download/1.10.0/eSearch-1.10.0-linux-x86_64.AppImage
+	sha256sums = 4b44b0c9e7a61ffc765a8fabcd1bceceb3359461537b2231adf107c7ebb04292
 
 pkgname = esearch-appimage
