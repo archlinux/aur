@@ -16,7 +16,7 @@ optdepends=(
 )
 provides=('lib32-mangohud' 'mangohud' 'mangohud-common')
 conflicts=('lib32-mangohud' 'lib32-mangohud-git' 'mangohud' 'mangohud-git' 'mangohud-common' 'mangohud-common-git')
-source=("${pkgbasename}::git+${url}.git" 'mangohud' 'mangohud.conf' 'MangoHud.json')
+source=("${pkgbasename}::git+${url}.git" 'mangohud.sh' 'mangohud.conf' 'MangoHud.json')
 sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
@@ -43,7 +43,7 @@ package() {
     rm -rf build/release/usr/lib/mangohud/{lib64,lib32}
     rm -rf build/release/usr/share/vulkan/implicit_layer.d/*
     cp -ar --no-preserve=ownership "build/release/usr" "$pkgdir/usr")
-    install -Dm755 mangohud "$pkgdir/usr/bin/mangohud"
+    install -Dm755 mangohud.sh "$pkgdir/usr/bin/mangohud"
     install -Dm644 mangohud.conf "$pkgdir/etc/ld.so.conf.d/mangohud.conf"
     install -Dm644 MangoHud.json "$pkgdir/usr/share/vulkan/implicit_layer.d/MangoHud.json"
 }
