@@ -2,11 +2,11 @@
 
 pkgname=cmocka-git
 pkgver=1.1.5.r196.g309ee5e
-pkgrel=1
+pkgrel=2
 pkgdesc="An unit testing framework for C with support for mock objects"
 arch=('i686' 'x86_64')
 url="https://cmocka.org/"
-license=('apache')
+license=('Apache')
 depends=('glibc')
 makedepends=('git' 'cmake')
 provides=("cmocka=$pkgver")
