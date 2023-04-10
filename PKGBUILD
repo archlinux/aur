@@ -1,7 +1,7 @@
 # Maintainer: Paul Hentschel <aur at hpminc dot com>
 
 pkgname=camotics-git
-pkgver=r960.6942bd0
+pkgver=r1012.8a867d3
 pkgrel=1
 pkgdesc="3-axis NC machining simulation software"
 arch=('x86_64')
@@ -27,6 +27,7 @@ source=(
   "${pkgname%-*}::git+https://github.com/CauldronDevelopmentLLC/CAMotics.git#commit=$_commit"
 )
 sha256sums=('SKIP')
+options=('!lto')
 
 pkgver() {
 	cd "${pkgname%-*}"
