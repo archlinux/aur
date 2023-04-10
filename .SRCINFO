@@ -1,6 +1,6 @@
 pkgbase = iperf3-git
 	pkgdesc = The ultimate speed test tool for TCP, UDP and SCTP
-	pkgver = 3.2.r8.g4a45b32
+	pkgver = 3.13.r5.g52b5cd1
 	pkgrel = 1
 	url = https://iperf.fr/
 	arch = i686
@@ -10,11 +10,10 @@ pkgbase = iperf3-git
 	makedepends = git
 	depends = glibc
 	depends = openssl
-	provides = iperf3
+	provides = iperf3=3.13.r5.g52b5cd1
 	conflicts = iperf3
 	options = staticlibs
 	source = git+https://github.com/esnet/iperf.git
 	sha256sums = SKIP
 
 pkgname = iperf3-git
-
