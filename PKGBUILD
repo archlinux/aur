@@ -2,7 +2,7 @@
 
 pkgname=gpu-screen-recorder-git
 pkgver=r253.ce5e016
-pkgrel=3
+pkgrel=4
 pkgdesc='A shadowplay-like screen recorder for Linux. The fastest screen recorder for Linux'
 arch=('x86_64')
 url="https://git.dec05eba.com/gpu-screen-recorder"
@@ -30,5 +30,7 @@ package() {
   cd "$srcdir"
   install -Dm755 "gsr-kms-server" "$pkgdir/usr/bin/gsr-kms-server"
   install -Dm755 "gpu-screen-recorder" "$pkgdir/usr/bin/gpu-screen-recorder"
-  [ -f "/proc/driver/nvidia/version" ] && install -Dm644 "88-gsr-coolbits.conf" "$pkgdir/etc/X11/xorg.conf.d/88-gsr-coolbits.conf"
+  if [ -f "/proc/driver/nvidia/version" ]; then
+      install -Dm644 "88-gsr-coolbits.conf" "$pkgdir/etc/X11/xorg.conf.d/88-gsr-coolbits.conf"
+  fi
 }
