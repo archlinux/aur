@@ -2,11 +2,11 @@
 
 pkgname=wabt-git
 pkgver=1.0.32.r51.g539c541b
-pkgrel=1
+pkgrel=2
 pkgdesc="The WebAssembly binary toolkit"
 arch=('i686' 'x86_64')
 url="https://github.com/WebAssembly/wabt"
-license=('apache')
+license=('Apache')
 depends=('gcc-libs' 'glibc')
 makedepends=('git' 'clang' 'cmake' 'gcc')
 provides=("wabt=$pkgver")
