@@ -1,8 +1,8 @@
 pkgbase = dnsmasq-git
 	pkgdesc = Lightweight, easy to configure DNS forwarder and DHCP server
 	pkgver = 2.89.r27.gb14aa76
-	pkgrel = 1
-	url = http://www.thekelleys.org.uk/dnsmasq/doc.html
+	pkgrel = 2
+	url = https://thekelleys.org.uk/dnsmasq/doc.html
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -16,7 +16,7 @@ pkgbase = dnsmasq-git
 	provides = dnsmasq=2.89.r27.gb14aa76
 	conflicts = dnsmasq
 	backup = etc/dnsmasq.conf
-	source = git://thekelleys.org.uk/dnsmasq.git
+	source = git+https://thekelleys.org.uk/git/dnsmasq.git
 	source = dnsmasq-sysusers.conf::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/dnsmasq/trunk/dnsmasq-sysusers.conf
 	source = dnsmasq.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/dnsmasq/trunk/dnsmasq.service
 	sha256sums = SKIP
