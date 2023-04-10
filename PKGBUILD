@@ -5,7 +5,7 @@
 
 pkgname=python-pyface
 pkgver=8.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Traits-capable windowing framework"
 arch=('any')
 url="https://github.com/enthought/pyface"
