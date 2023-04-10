@@ -35,6 +35,11 @@ pkgver() {
     "$(git -C "${_gitpkgname}" rev-parse --short HEAD)"
 }
 
+prepare() {
+  # https://github.com/pypa/setuptools/issues/1347
+  git -C "${srcdir}/${_gitpkgname}" clean -dfx
+}
+
 build() {
   cd "${srcdir}/${_gitpkgname}"
   python -m build --wheel --no-isolation
