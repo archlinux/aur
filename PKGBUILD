@@ -1,13 +1,13 @@
 # Maintainer: Ryan Farley <ryan.farley@gmx.com>
 pkgname=shoebill
 pkgver=0.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A Macintosh II emulator that runs A/UX"
 arch=('i686' 'x86_64')
 url="https://github.com/pruten/$pkgname"
 license=('BSD')
 depends=('sdl2')
-source=("https://github.com/pruten/shoebill/archive/$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pruten/shoebill/archive/$pkgver.tar.gz"
 	"no_sys_errlist.patch")
 md5sums=('03d24eeee574c06f9baa8c7c921d4682'
          'd8dcf81ea5eb69fc2678cd39294c45ec')
