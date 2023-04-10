@@ -8,11 +8,11 @@ if [ "$#" -eq 0 ]; then
 	exit 1
 fi
 
-MANGOHUD_LIB_NAME="/usr/\$LIB/mangohud/libMangoHud.so"
+MANGOHUD_LIB_NAME="libMangoHud.so"
 
 if [ "$1" = "--dlsym" ]; then
 	MANGOHUD_DLSYM=1
-	MANGOHUD_LIB_NAME="/usr/\$LIB/mangohud/libMangoHud_dlsym.so:${MANGOHUD_LIB_NAME}"
+	MANGOHUD_LIB_NAME="libMangoHud_dlsym.so:${MANGOHUD_LIB_NAME}"
 	shift
 fi
 
