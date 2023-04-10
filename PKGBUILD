@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=guetzli-git
-pkgver=1.0.1.r72.g0b78c7c
+pkgver=1.0.1.r76.g214f2bb
 pkgrel=1
 pkgdesc="Perceptual JPEG encoder"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/google/guetzli"
 license=('Apache')
 depends=('libpng')
 makedepends=('git')
-provides=('guetzli')
+provides=("guetzli=$pkgver")
 conflicts=('guetzli')
 source=("git+https://github.com/google/guetzli.git")
 sha256sums=('SKIP')
@@ -24,12 +24,12 @@ pkgver() {
 build() {
   cd "guetzli"
 
-  make config=release
+  make \
+    config=release
 }
 
 package() {
   cd "guetzli"
 
-  install -d "$pkgdir/usr"
-  install -Dm755 "bin/Release/guetzli" "$pkgdir/usr/bin/guetzli"
+  install -Dm755 "bin/Release/guetzli" -t "$pkgdir/usr/bin"
 }

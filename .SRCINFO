@@ -1,6 +1,6 @@
 pkgbase = guetzli-git
 	pkgdesc = Perceptual JPEG encoder
-	pkgver = 1.0.1.r72.g0b78c7c
+	pkgver = 1.0.1.r76.g214f2bb
 	pkgrel = 1
 	url = https://github.com/google/guetzli
 	arch = i686
@@ -8,10 +8,9 @@ pkgbase = guetzli-git
 	license = Apache
 	makedepends = git
 	depends = libpng
-	provides = guetzli
+	provides = guetzli=1.0.1.r76.g214f2bb
 	conflicts = guetzli
 	source = git+https://github.com/google/guetzli.git
 	sha256sums = SKIP
 
 pkgname = guetzli-git
-
