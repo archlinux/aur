@@ -1,0 +1,17 @@
+pkgbase = desktopper
+	pkgdesc = Application to create desktop entry files
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/tonilipponen/desktopper
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	depends = glibc
+	depends = gtk4
+	depends = libadwaita
+	source = git+https://github.com/tonilipponen/desktopper.git
+	md5sums = SKIP
+
+pkgname = desktopper
