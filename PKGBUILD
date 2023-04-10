@@ -2,7 +2,7 @@
 # Contributor: Holger Schramm <dev@strace.it>
 
 pkgname=mingo
-pkgver=1.11.1
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="A proprietary MongoDB GUI based on electron from developers for developers"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("mingo-$pkgver.tar.gz::https://github.com/mingo-app/mingo/releases/download/v$pkgver/mingo-$pkgver.tar.gz"
         "Mingo.desktop")
-sha256sums=('c91cb2026264b274c1810e358cf4f8249d2caee1484653016bc7ccddb13b8f53'
+sha256sums=('e3066ec42effd9a65a7fa7dda4c5ec98aaeecbbd4b767b35b34196e53478ba00'
             '292ba3da6e1e99e3f7f1fa719dde92d1d12ab81cba8b772612f9a0647472df97')
 
 package() {
