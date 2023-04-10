@@ -1,14 +1,14 @@
 pkgbase = tokei-bin
 	pkgdesc = Display statistics about your code
 	pkgver = 12.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/XAMPPRocky/tokei
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	arch = arm
 	arch = armv7h
-	license = apache
+	license = Apache
 	license = MIT
 	provides = tokei=12.1.2
 	conflicts = tokei
