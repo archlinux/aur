@@ -1,0 +1,13 @@
+pkgbase = minetest-mod-cucina_vegana-git
+	pkgdesc = Farming and Foodmod for Minetest.
+	pkgver = 293.df3d2b4
+	pkgrel = 1
+	url = https://github.com/acmgit/cucina_vegana
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = minetest-mod-cucina_vegana
+	source = minetest-mod-cucina_vegana::git+https://github.com/acmgit/cucina_vegana.git
+	md5sums = SKIP
+
+pkgname = minetest-mod-cucina_vegana-git
