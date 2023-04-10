@@ -6,7 +6,7 @@ _kernel=linux-radxa-rkbsp5
 pkgver=5.10.110
 pkgbase=$_kernel-bin
 pkgname=($pkgbase $pkgbase-headers)
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 url="https://github.com/radxa/kernel"
 _repourl="https://github.com/radxa/apt/raw/gh-pages/bullseye-stable/"
@@ -20,7 +20,7 @@ source=(
     "extract-vmlinux"
     "extlinux.arch.template"
     )
-sha512sums=('f01e7925b262d2874a8a991b1f27d057356a2a384d2012b61be5a631d4e4d7cf87461c8fb9e7f183831f5a829ad204897f1f0545a52df6288a0e04a5c2e31b96'
+sha512sums=('03cdaa19ff754c1b16cbfe8b08d38fed2f21c688a6e00d331ca53c4ef937c1cd3fdcfca2241d136238f220a87f3da04c1e6e192d262b4505f8bff3ddcbc8b9ad'
             'ba6edcd5f56a4c3e865578eabf1e1311b8e5e7babffdb0f84b99971238505ca27eba506f2723638129ef6558eba95f7e4fd2e07b40e5a4de716e5de90d1cbe79'
             'b09481badcc35acc5455b97545e87c706c5cb326e1b80237b2435d821c3c45002b44538095f3c5f3cfc720acf55bc27d97b0290e5cffa5acbdbaf0c2314f2d1b')
 
