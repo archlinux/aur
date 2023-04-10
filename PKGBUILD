@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=ipset-git
-pkgver=7.11.r10.g578462f
+pkgver=7.17.r10.g989d5a5
 pkgrel=1
 pkgdesc="Administration tool for IP sets"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://ipset.netfilter.org/"
 license=('GPL2')
 depends=('glibc' 'libmnl')
 makedepends=('git')
-provides=('ipset')
+provides=("ipset=$pkgver")
 conflicts=('ipset')
 backup=('etc/ipset.conf')
 options=('staticlibs')
