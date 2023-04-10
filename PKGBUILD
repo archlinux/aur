@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=hicolor-icon-theme-git
-pkgver=0.17.r0.gf522d9d
-pkgrel=2
+pkgver=0.17.r1.gb3f1207
+pkgrel=1
 pkgdesc="Freedesktop.org Hicolor icon theme"
 arch=('any')
 url="https://www.freedesktop.org/wiki/Software/icon-theme/"
 license=('GPL')
 makedepends=('git')
-provides=('hicolor-icon-theme')
+provides=("hicolor-icon-theme=$pkgver")
 conflicts=('hicolor-icon-theme')
 source=("git+https://gitlab.freedesktop.org/xdg/default-icon-theme")
 sha256sums=('SKIP')
