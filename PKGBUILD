@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=hunspell-git
-pkgver=1.7.0.r0.g4ddd8ed
+pkgver=1.7.2.r18.g527b67d
 pkgrel=1
 pkgdesc="The most popular spellchecking library"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('LGPL')
 depends=('glibc' 'ncurses' 'readline')
 makedepends=('git')
 optdepends=('perl: for ispellaff2myspell')
-provides=('hunspell')
+provides=("hunspell=$pkgver")
 conflicts=('hunspell')
 options=('staticlibs')
 source=("git+https://github.com/hunspell/hunspell.git")

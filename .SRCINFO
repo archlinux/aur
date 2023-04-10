@@ -1,6 +1,6 @@
 pkgbase = hunspell-git
 	pkgdesc = The most popular spellchecking library
-	pkgver = 1.7.0.r0.g4ddd8ed
+	pkgver = 1.7.2.r18.g527b67d
 	pkgrel = 1
 	url = https://hunspell.github.io/
 	arch = i686
@@ -11,11 +11,10 @@ pkgbase = hunspell-git
 	depends = ncurses
 	depends = readline
 	optdepends = perl: for ispellaff2myspell
-	provides = hunspell
+	provides = hunspell=1.7.2.r18.g527b67d
 	conflicts = hunspell
 	options = staticlibs
 	source = git+https://github.com/hunspell/hunspell.git
 	sha256sums = SKIP
 
 pkgname = hunspell-git
-
