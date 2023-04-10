@@ -1,6 +1,6 @@
 pkgbase = hiredis-git
 	pkgdesc = Minimalistic C client library for Redis
-	pkgver = 0.14.0.r151.g3421ac3
+	pkgver = 1.1.0.r10.g04c1b5b
 	pkgrel = 1
 	url = https://github.com/redis/hiredis/
 	arch = i686
@@ -9,11 +9,10 @@ pkgbase = hiredis-git
 	checkdepends = redis
 	makedepends = git
 	depends = glibc
-	provides = hiredis
+	provides = hiredis=1.1.0.r10.g04c1b5b
 	conflicts = hiredis
 	options = staticlibs
 	source = git+https://github.com/redis/hiredis.git
 	sha256sums = SKIP
 
 pkgname = hiredis-git
-

@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=hiredis-git
-pkgver=0.14.0.r151.g3421ac3
+pkgver=1.1.0.r10.g04c1b5b
 pkgrel=1
 pkgdesc="Minimalistic C client library for Redis"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('glibc')
 makedepends=('git')
 checkdepends=('redis')
-provides=('hiredis')
+provides=("hiredis=$pkgver")
 conflicts=('hiredis')
 options=('staticlibs')
 source=("git+https://github.com/redis/hiredis.git")
