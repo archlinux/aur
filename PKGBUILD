@@ -1,27 +1,19 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=ispc-git
-pkgver=1.14.1.r15.gc4529a3c
-pkgrel=2
+pkgver=1.19.0.r23.gd43e322c
+pkgrel=1
 pkgdesc="Intel SPMD program compiler"
 arch=('i686' 'x86_64')
 url="https://ispc.github.io/"
 license=('BSD')
 depends=('clang' 'llvm-libs' 'zlib')
 makedepends=('git' 'cmake' 'lib32-glibc' 'llvm' 'python')
-provides=('ispc')
+provides=("ispc=$pkgver")
 conflicts=('ispc')
-source=("git+https://github.com/ispc/ispc.git"
-        "https://raw.githubusercontent.com/archlinux/svntogit-community/packages/ispc/trunk/ispc-libclang-cpp.patch")
-sha256sums=('SKIP'
-            'SKIP')
+source=("git+https://github.com/ispc/ispc.git")
+sha256sums=('SKIP')
 
-
-prepare() {
-  cd "ispc"
-
-  patch -Np1 -i "$srcdir/ispc-libclang-cpp.patch"
-}
 
 pkgver() {
   cd "ispc"
