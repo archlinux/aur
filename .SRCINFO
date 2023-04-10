@@ -1,24 +1,28 @@
 pkgbase = deepin-wine-douyin
 	pkgdesc = douyin,record beautify life;抖音，记录美好生活
-	pkgver = 2.0.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://www.douyin.com
 	install = deepin-wine-douyin.install
 	arch = x86_64
 	license = custom
 	depends = deepin-wine6-stable
-	depends = spark-dwine-helper-git
+	depends = spark-dwine-helper
 	depends = xdg-utils
+	depends = hicolor-icon-theme
+	depends = sh
 	optdepends = wqy-microhei
 	optdepends = wqy-zenhei
 	provides = ByteDance
-	source = com.douyin.spark_1.7.1spark2_i386.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/video/com.douyin.spark/com.douyin.spark_1.7.1spark2_i386.deb
-	source = douyin-2.0.0.exe::https://www.douyin.com/download/pc/obj/douyin-pc-client/7044145585217083655/releases/10050860/2.0.0/win32-ia32/douyin-v2.0.0-win32-ia32-douyinDownload1.exe
+	source = com.douyin.spark_2.0.0spark3_i386.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/video/com.douyin.spark/com.douyin.spark_2.0.0spark3_i386.deb
+	source = douyin-2.1.1.exe::https://www.douyin.com/download/pc/obj/douyin-pc-client/7044145585217083655/releases/10199115/2.1.1/win32-ia32/douyin-v2.1.1-win32-ia32-douyinDownload1.exe
 	source = deepin-wine-douyin.install
 	source = run.sh
-	sha256sums = ddb6e863b45e4eddee273119866e73de27b10efa5e57054933153fb442f1ce10
-	sha256sums = 881d38756b7c8be78f0bb4e1ba95b506d1b684934f7de0aff10a9cf413fdf171
+	source = LICENSE.html::https://www.douyin.com/draft/douyin_agreement/douyin_agreement_user.html?id=6773906068725565448
+	sha256sums = 04a6abe0a5a4b4deff00996aaaf4f56367fccd2b2af6631a441daf5e59592961
+	sha256sums = 7f97a1f104f723aa255b70f0abc676bc47d5a4fb9279f3896860333d8a2da59a
 	sha256sums = e476028b1c94fe6a4d1a24e4b603667a39276c21dfbe76433c42cf64a73d16be
-	sha256sums = d5a35c9e693dc1ce627e69f4fa14519476db90c29ae294db2f7abfeee330ebbb
+	sha256sums = 96cc65ef1c499808785a4b41c322fa0887d3d717172bdc9cc0c8f1636cdf761d
+	sha256sums = 66ef6c0a87c002d3fdff731048420b83f023118878bedd784c52ddac659035f6
 
 pkgname = deepin-wine-douyin
