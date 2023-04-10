@@ -1,8 +1,8 @@
 pkgbase = giflib-git
 	pkgdesc = A library and utilities for processing GIFs
 	pkgver = 5.2.1.r2.gadf5a1a
-	pkgrel = 1
-	url = http://giflib.sourceforge.net/
+	pkgrel = 2
+	url = https://giflib.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = giflib-git
 	makedepends = docbook-xsl
 	makedepends = xmlto
 	depends = glibc
-	provides = giflib
+	provides = giflib=5.2.1.r2.gadf5a1a
 	provides = libgif.so
 	conflicts = giflib
 	options = staticlibs
@@ -19,4 +19,3 @@ pkgbase = giflib-git
 	sha256sums = SKIP
 
 pkgname = giflib-git
-

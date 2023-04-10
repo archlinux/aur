@@ -2,14 +2,14 @@
 
 pkgname=giflib-git
 pkgver=5.2.1.r2.gadf5a1a
-pkgrel=1
+pkgrel=2
 pkgdesc="A library and utilities for processing GIFs"
 arch=('i686' 'x86_64')
-url="http://giflib.sourceforge.net/"
+url="https://giflib.sourceforge.net/"
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'docbook-xml' 'docbook-xsl' 'xmlto')
-provides=('giflib' 'libgif.so')
+provides=("giflib=$pkgver" 'libgif.so')
 conflicts=('giflib')
 options=('staticlibs')
 source=("git+https://git.code.sf.net/p/giflib/code")
