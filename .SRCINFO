@@ -1,17 +1,17 @@
 pkgbase = openssl-git
 	pkgdesc = Toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols
-	pkgver = 3.1.0.beta1.r2593.gf06ef1657a
+	pkgver = 3.1.0.beta1.r2594.gf309b3f608
 	pkgrel = 1
 	url = https://www.openssl.org/
 	arch = i686
 	arch = x86_64
-	license = apache
+	license = Apache
 	makedepends = git
 	makedepends = perl
 	depends = glibc
 	optdepends = ca-certificates
 	optdepends = perl
-	provides = openssl=3.1.0.beta1.r2593.gf06ef1657a
+	provides = openssl=3.1.0.beta1.r2594.gf309b3f608
 	provides = libcrypto.so
 	provides = libssl.so
 	conflicts = openssl
