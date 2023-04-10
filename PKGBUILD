@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=gzip-git
-pkgver=1.10.r32.g23a870d
+pkgver=1.12.r42.g156d0e1
 pkgrel=1
 pkgdesc="A data compression program"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.gnu.org/software/gzip/"
 license=('GPL3')
 depends=('glibc')
 makedepends=('git' 'rsync')
-provides=('gzip')
+provides=("gzip=$pkgver")
 conflicts=('gzip')
 source=("git+https://git.savannah.gnu.org/git/gzip.git")
 sha256sums=('SKIP')

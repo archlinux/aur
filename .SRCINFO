@@ -1,6 +1,6 @@
 pkgbase = gzip-git
 	pkgdesc = A data compression program
-	pkgver = 1.10.r32.g23a870d
+	pkgver = 1.12.r42.g156d0e1
 	pkgrel = 1
 	url = https://www.gnu.org/software/gzip/
 	arch = i686
@@ -9,10 +9,9 @@ pkgbase = gzip-git
 	makedepends = git
 	makedepends = rsync
 	depends = glibc
-	provides = gzip
+	provides = gzip=1.12.r42.g156d0e1
 	conflicts = gzip
 	source = git+https://git.savannah.gnu.org/git/gzip.git
 	sha256sums = SKIP
 
 pkgname = gzip-git
-
