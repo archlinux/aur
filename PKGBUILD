@@ -10,7 +10,7 @@ license=('BSD')
 depends=('libusb>=1.0')
 provides=('airspyhf')
 conflicts=('airspyhf')
-makedepends=('git' 'cmake' 'make' 'gcc' 'pkgconfig')
+makedepends=('git' 'cmake')
 source=("git+https://github.com/airspy/airspyhf" "52-airspyhf.rules")
 sha512sums=('SKIP' '9b10bd19efe9862be88e0040f40c72ecd3582e90eebbc189cae230de591e9dc45f5c4d7ab6609ef5d419be6045323c8b5fb7bfabe13916568be2d777939ea381')
 
