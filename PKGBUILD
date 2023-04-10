@@ -1,7 +1,7 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=mimeo
-pkgver=2022.7
-pkgrel=3
+pkgver=2023
+pkgrel=1
 pkgdesc='Open files by MIME-type or file name using regular expressions.'
 arch=(any)
 license=(GPL)
@@ -9,16 +9,16 @@ url="https://xyne.dev/projects/mimeo"
 depends=(file python-pyxdg python3)
 optdepends=('shared-mime-info: for recognizing more MIME-types')
 source=(
-  https://xyne.dev/projects/mimeo/src/mimeo-2022.7.tar.xz
-  https://xyne.dev/projects/mimeo/src/mimeo-2022.7.tar.xz.sig
+  https://xyne.dev/projects/mimeo/src/mimeo-2023.tar.xz
+  https://xyne.dev/projects/mimeo/src/mimeo-2023.tar.xz.sig
 )
 sha512sums=(
-  540eeee349205156d800d12d4de532d50a08d8ee43cb27ff31a6e63a45b552c7594eab07f9a30b4bf8c09bf0596800df60ca1f663d455ce5aee49aa57f8ea0e4
-  21ae130e849f4a72e06fed415c948988b67eecba79a38f8fd9d52e2739b51e81870a28af934fcb66b24f1ae003b4b78993409f77787a0675885e265156a34f13
+  700c0cc79ee4a37aceeaddf1370112b65ea7506f6740c3be7339d53787d419046f3086304bd4f97a13c11e81d0bc0973cd3542ef70ab888f4f6c01808bb00d30
+  373d57b2c0d99f86ab2dfb9640f945a9481a426a7d77368720c6bcd133708fb0893aa15b27be3d621cbdfd84f540bd4c78389dcb4ac50e61f01cec830f94c061
 )
 md5sums=(
-  bc08729fabe44d9de9e065df74baa041
-  1e56ff89ca07027b2c76fe354f294b3b
+  9f35a1902912b9cd0bd9b6ab5a667c2f
+  5a8e3ec4de4470d287f39c0a8ed545af
 )
 validpgpkeys=('D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519')
 
