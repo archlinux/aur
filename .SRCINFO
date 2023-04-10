@@ -1,7 +1,7 @@
 pkgbase = repman-git
 	pkgdesc = Manage (remote) custom repositories
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/mipimipi/repman
 	arch = aarch64
 	arch = armv7h
@@ -19,6 +19,7 @@ pkgbase = repman-git
 	optdepends = s3cmd: support of AWS S3
 	provides = repman
 	conflicts = repman
+	backup = etc/repman.conf
 	source = git+https://gitlab.com/mipimipi/repman.git
 	validpgpkeys = 11ECD6695134183B3E7AF1C2223AAA374A1D59CE
 	md5sums = SKIP

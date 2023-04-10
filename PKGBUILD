@@ -4,7 +4,7 @@ _pkgorg=gitlab.com/mipimipi
 pkgname=repman-git
 _pkgname=repman
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Manage (remote) custom repositories"
 arch=(
   aarch64
@@ -37,6 +37,7 @@ makedepends=(
 )
 provides=(repman)
 conflicts=(repman)
+backup=("etc/repman.conf")
 
 pkgver() {
   cd "$srcdir/$_pkgname" || return
