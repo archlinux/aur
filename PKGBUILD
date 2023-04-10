@@ -10,7 +10,7 @@ license=('GPL')
 depends=('libx11' 'libglvnd')
 provides=('gds3d')
 conflicts=('gds3d')
-makedepends=('git' 'make' 'gcc')
+makedepends=('git')
 source=("git+https://github.com/trilomix/GDS3D#commit=1f646a43075d21be7654c1485e59d7c82272c74e")
 md5sums=('SKIP')
 
