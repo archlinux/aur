@@ -1,6 +1,6 @@
 pkgbase = freeipmi-git
 	pkgdesc = Provides in-band and out-of-band IPMI software
-	pkgver = r11526.gd6e3e4e92
+	pkgver = 1.6.10.r247.gd0a36affc
 	pkgrel = 1
 	url = https://www.gnu.org/software/freeipmi/
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = freeipmi-git
 	depends = glibc
 	depends = libgcrypt
 	optdepends = perl: for contrib scripts
-	provides = freeipmi
+	provides = freeipmi=1.6.10.r247.gd0a36affc
 	conflicts = freeipmi
 	options = staticlibs
 	backup = etc/freeipmi/freeipmi.conf

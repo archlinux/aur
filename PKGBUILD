@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=freeipmi-git
-pkgver=r11526.gd6e3e4e92
+pkgver=1.6.10.r247.gd0a36affc
 pkgrel=1
 pkgdesc="Provides in-band and out-of-band IPMI software"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('glibc' 'libgcrypt')
 makedepends=('git')
 optdepends=('perl: for contrib scripts')
-provides=('freeipmi')
+provides=("freeipmi=$pkgver")
 conflicts=('freeipmi')
 backup=(etc/freeipmi/{freeipmi,freeipmi_interpret_sel,freeipmi_interpret_sensor,ipmidetect,ipmidetectd,ipmiseld,libipmiconsole}.conf)
 options=('staticlibs')
@@ -23,9 +23,10 @@ sha256sums=('SKIP'
 pkgver() {
   cd "freeipmi"
 
-  _rev=$(git rev-list --count --all)
+  _tag=$(git tag -l --sort -v:refname | grep -E '^freeipmi-[0-9-]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "r%s.g%s" "$_rev" "$_hash"
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^freeipmi-//;s/-/./g'
 }
 
 build() {
