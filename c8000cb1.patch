@@ -1,0 +1,76 @@
+From c8000cb16705ac17717fd2b40a979ed5d9792df1 Mon Sep 17 00:00:00 2001
+From: Jan Grulich <jgrulich@redhat.com>
+Date: Tue, 4 Apr 2023 14:39:44 +0200
+Subject: [PATCH] Fix build against Qt 6.5 (#133)
+
+---
+ src/theme/qgnomeplatformtheme.cpp | 13 +++++++++----
+ src/theme/qgnomeplatformtheme.h   |  6 ++++--
+ 2 files changed, 13 insertions(+), 6 deletions(-)
+
+diff --git a/src/theme/qgnomeplatformtheme.cpp b/src/theme/qgnomeplatformtheme.cpp
+index 4fa6003..ef395a1 100644
+--- a/src/theme/qgnomeplatformtheme.cpp
++++ b/src/theme/qgnomeplatformtheme.cpp
+@@ -87,7 +87,7 @@ QGnomePlatformTheme::QGnomePlatformTheme()
+     g_type_ensure(PANGO_TYPE_FONT_FAMILY);
+     g_type_ensure(PANGO_TYPE_FONT_FACE);
+ 
+-#if QT_VERSION > 0x060000
++#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+     // Load QGnomeTheme
+     m_platformTheme = QGenericUnixTheme::createUnixTheme(QLatin1String("gnome"));
+ #endif
+@@ -175,7 +175,7 @@ QPlatformDialogHelper *QGnomePlatformTheme::createPlatformDialogHelper(QPlatform
+     }
+ }
+ 
+-#if QT_VERSION < 0x060000
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+ #ifndef QT_NO_SYSTEMTRAYICON
+ static bool isDBusTrayAvailable()
+ {
+@@ -196,7 +196,7 @@ static bool isDBusTrayAvailable()
+ #ifndef QT_NO_SYSTEMTRAYICON
+ QPlatformSystemTrayIcon *QGnomePlatformTheme::createPlatformSystemTrayIcon() const
+ {
+-#if QT_VERSION < 0x060000
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+     if (isDBusTrayAvailable()) {
+         return new QDBusTrayIcon();
+     }
+@@ -209,7 +209,12 @@ QPlatformSystemTrayIcon *QGnomePlatformTheme::createPlatformSystemTrayIcon() con
+ }
+ #endif
+ 
+-#if QT_VERSION > 0x060300
++#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
++Qt::ColorScheme QGnomePlatformTheme::colorScheme() const
++{
++    return GnomeSettings::getInstance().useGtkThemeDarkVariant() ? Qt::ColorScheme::Dark : Qt::ColorScheme::Light;
++}
++#elif QT_VERSION >= QT_VERSION_CHECK(6, 3, 0)
+ QPlatformTheme::Appearance QGnomePlatformTheme::appearance() const
+ {
+     return GnomeSettings::getInstance().useGtkThemeDarkVariant() ? Appearance::Dark : Appearance::Light;
+diff --git a/src/theme/qgnomeplatformtheme.h b/src/theme/qgnomeplatformtheme.h
+index 342909f..a37475d 100644
+--- a/src/theme/qgnomeplatformtheme.h
++++ b/src/theme/qgnomeplatformtheme.h
+@@ -39,12 +39,14 @@ class QGnomePlatformTheme : public QPlatformTheme
+ #ifndef QT_NO_SYSTEMTRAYICON
+     QPlatformSystemTrayIcon *createPlatformSystemTrayIcon() const Q_DECL_OVERRIDE;
+ #endif
+-#if QT_VERSION > 0x060300
++#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
++    Qt::ColorScheme colorScheme() const Q_DECL_OVERRIDE;
++#elif QT_VERSION >= QT_VERSION_CHECK(6, 3, 0)
+     QPlatformTheme::Appearance appearance() const Q_DECL_OVERRIDE;
+ #endif
+ 
+ private:
+-#if QT_VERSION > 0x060000
++#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+     // Used to load Qt's internall platform theme to get access to
+     // non-public stuff, like QDBusTrayIcon
+     QPlatformTheme *m_platformTheme = nullptr;

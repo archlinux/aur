@@ -1,0 +1,30 @@
+pkgbase = qgnomeplatform-solarized
+	pkgdesc = QPlatformTheme for a better Qt application inclusion in GNOME (solarized)
+	pkgver = 0.9.0
+	pkgrel = 10
+	url = https://github.com/FedoraQt/QGnomePlatform
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = cmake
+	makedepends = gtk3
+	makedepends = qt5-wayland
+	makedepends = qt6-wayland
+	makedepends = adwaita-solarized-qt5
+	makedepends = adwaita-solarized-qt6
+	source = https://github.com/FedoraQt/QGnomePlatform/archive/0.9.0/QGnomePlatform-0.9.0.tar.gz
+	source = https://github.com/FedoraQt/QGnomePlatform/commit/c8000cb1.patch
+	sha256sums = 27c0e238a40b56814418a55ee553438e30e2ca5cce02cfb116703452c21dab17
+	sha256sums = 4ffd956df11213fcb31fdd77957e9a024adc35a96efb9631ccc7530f05c0eabf
+
+pkgname = qgnomeplatform-solarized-qt5
+	pkgdesc = QPlatformTheme for a better Qt5 application inclusion in GNOME (solarized)
+	depends = gtk3
+	depends = qt5-wayland
+	depends = adwaita-solarized-qt5
+	replaces = qgnomeplatform
+
+pkgname = qgnomeplatform-solarized-qt6
+	pkgdesc = QPlatformTheme for a better Qt6 application inclusion in GNOME (solarized)
+	depends = gtk3
+	depends = qt6-wayland
+	depends = adwaita-solarized-qt6
