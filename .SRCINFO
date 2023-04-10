@@ -1,0 +1,18 @@
+pkgbase = xdg-desktop-portal-shana
+	pkgdesc = xdg-desktop-portal-shana
+	pkgver = 0.3.0
+	pkgrel = 1.0
+	arch = x86_64
+	arch = aarch64
+	makedepends = git
+	makedepends = ninja
+	makedepends = meson
+	makedepends = rust
+	depends = xdg-desktop-portal
+	optdepends = xdg-desktop-portal-gnome: provide gnome backend
+	optdepends = xdg-desktop-portal-kde: provide kde backend
+	provides = xdg-desktop-portal-impl
+	source = xdg-desktop-portal-shana-v0.3.0.tar.gz::https://github.com/Decodetalkers/xdg-desktop-portal-shana/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 127e057ec02ba2caad729f367ddf427aa148dd5ca28a5b0200d65f4828b00783
+
+pkgname = xdg-desktop-portal-shana
