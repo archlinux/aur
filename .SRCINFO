@@ -1,0 +1,17 @@
+pkgbase = pocket-station-devkit
+	pkgdesc = A Sony PocketStation development kit.
+	pkgver = v
+	pkgrel = 1
+	url = https://gitlab.com/tallero/psdevkit
+	arch = any
+	license = custom
+	checkdepends = shellcheck
+	makedepends = arm-none-eabi-gcc55
+	makedepends = arm-none-eabi-newlib
+	depends = psx-mc-cli
+	source = psdevkit::git+https://gitlab.com/tallero/psdevkit#commit=09f9caa59bdc257a254824bcdb4065bbfaa864af
+	sha256sums = SKIP
+
+pkgname = pocket-station-tools
+
+pkgname = pocket-station-example-app
