@@ -7,7 +7,7 @@ pkgvermajor=2
 pkgverminor=24
 pkgverpatch=4
 pkgver=${pkgvermajor}.${pkgverminor}.${pkgverpatch}
-pkgrel=7
+pkgrel=8
 arch=(any)
 license=(LGPL)
 url="http://gtk-sharp.sourceforge.net"
@@ -15,20 +15,17 @@ makedepends=('gtk-sharp-2' 'libgnomeui' 'monodoc')
 source=(https://github.com/mono/${pkgbase}/archive/${pkgver}.tar.gz
         06_fix_mono_path.patch
         02_fix_pkg-config_paths.patch
-        04_initialize_dbus_glib_threading.patch
-        remove_glade_dependency.patch)
+        04_initialize_dbus_glib_threading.patch)
 md5sums=('c3da83bfaa81eb8bac39d7b2232e2604'
          '923434786ec049eed71a68a0825a3d60'
          'a8c1bf57a384f5fc20a5890f9f1cef5a'
-         '90cd7ea88aaa3011522376153433d115'
-         '3b2fe30de4265a2cba32a5bd0506b6d8')
+         '90cd7ea88aaa3011522376153433d115')
 
 prepare() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
   patch -Np1 < ../06_fix_mono_path.patch
   patch -Np1 < ../04_initialize_dbus_glib_threading.patch
   patch -Np1 < ../02_fix_pkg-config_paths.patch
-  patch -Np1 < ../remove_glade_dependency.patch
 }
 
 build() {
@@ -66,7 +63,7 @@ package_gconf-sharp() {
 
 package_gconf-sharp-peditors() {
   pkgdesc="Mono bindings for GConf - Property Editing classes"
-  depends=('gconf-sharp' 'libgnome-sharp')
+  depends=('gconf-sharp' 'libgnome-sharp' 'glade-sharp')
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
   make -C gconf/GConf.PropertyEditors install DESTDIR="${pkgdir}"
