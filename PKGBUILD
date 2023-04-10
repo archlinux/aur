@@ -2,11 +2,11 @@
 
 pkgname=winchecksec
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Checksec, but for Windows: static detection of security mitigations in executables"
 arch=('i686' 'x86_64')
 url="https://trailofbits.github.io/winchecksec/"
-license=('apache')
+license=('Apache')
 depends=('gcc-libs' 'openssl' 'pe-parse')
 makedepends=('cmake' 'uthenticode')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/trailofbits/winchecksec/archive/refs/tags/v3.1.0.tar.gz")
