@@ -2,11 +2,11 @@
 
 pkgname=assemblyscript
 pkgver=0.27.1
-pkgrel=1
+pkgrel=2
 pkgdesc="TypeScript to WebAssembly compiler"
 arch=('any')
 url="https://assemblyscript.org/"
-license=('apache')
+license=('Apache')
 depends=('nodejs')
 makedepends=('npm')
 conflicts=('typescript')
