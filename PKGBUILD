@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=typst-lsp-git
-pkgver=0.3.1.r2.g52c8d8f
+pkgver=0.3.2.r0.g387e3f3
 pkgrel=1
 pkgdesc="Language server for Typst"
 arch=('i686' 'x86_64')
 url="https://github.com/nvarner/typst-lsp"
-license=('apache' 'MIT')
+license=('Apache' 'MIT')
 depends=('gcc-libs')
 makedepends=('git' 'rust')
 provides=("typst-lsp=$pkgver")
