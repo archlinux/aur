@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=cosign-git
-pkgver=1.13.1.r29.gca0959a1
+pkgver=2.0.1.r9.ga8f57b66
 pkgrel=1
 pkgdesc="Container Signing, Verification and Storage in an OCI registry"
 arch=('i686' 'x86_64')
 url="https://github.com/sigstore/cosign"
-license=('apache')
+license=('Apache')
 depends=('glibc' 'pcsclite')
 makedepends=('git' 'go')
 provides=("cosign=$pkgver")
