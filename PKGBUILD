@@ -2,7 +2,7 @@
 
 pkgname=fossil-fossil
 pkgver=r15951.1e919d6
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple, high-reliability, distributed software configuration management system"
 arch=('i686' 'x86_64')
 url="https://fossil-scm.org/home/doc/trunk/www/index.wiki"
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('glibc' 'openssl' 'zlib')
 makedepends=('fossil' 'tcl')
 optdepends=('tcl')
-provides=('fossil')
+provides=("fossil=$pkgver")
 conflicts=('fossil')
 backup=('etc/xinetd.d/fossil')
 source=("fossil.fossil::fossil+https://fossil-scm.org/home"
