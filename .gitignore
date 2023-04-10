@@ -1,0 +1,6 @@
+/src
+/pkg
+
+*.pkg*
+*.log
+/ampr-ripd-*.tgz

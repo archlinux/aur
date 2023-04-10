@@ -1,0 +1,5 @@
+[Unit]
+Description=AMPR 44net RIPv2 Listener and Route Injector
+
+[Service]
+ExecStart=/usr/bin/ampr-ripd -s -i ampr0

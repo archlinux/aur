@@ -1,0 +1,28 @@
+# Maintainer: Stephanie Wilde-Hobbs (RX14) <git@stephanie.is>
+
+pkgname=ampr-ripd
+pkgver=2.4.1
+pkgrel=1
+pkgdesc="AMPR 44net RIPv2 Listener and Route Injector"
+arch=("x86_64")
+url="http://www.yo2loj.ro/hamprojects/"
+license=("GPL2")
+source=("http://www.yo2loj.ro/hamprojects/ampr-ripd-${pkgver}.tgz"
+        ampr-ripd.service)
+sha256sums=('b77edc7dd578da3db25c46174423832674990215aeac6f4a4f1995afe6a2c328'
+            'd69e01e43b70734b2a85ddaafc5b881613382c99655b2ebac899a8b0d78f2902')
+
+build() {
+    cd "${pkgname}-${pkgver}"
+
+    make COPT="$CFLAGS" LOPT="$LDFLAGS"
+}
+
+package() {
+    cd "${pkgname}-${pkgver}"
+
+    install -m 755 -d "${pkgdir}/var/lib/ampr-ripd"
+    install -D -m 755 ampr-ripd "${pkgdir}/usr/bin/ampr.ripd"
+    install -D -m 644 ampr-ripd.1 "${pkgdir}/usr/share/man/man1/ampr-ripd.1"
+    install -D -m 644 "${srcdir}/ampr-ripd.service" "${pkgdir}/usr/lib/systemd/system/ampr-ripd.service"
+}
