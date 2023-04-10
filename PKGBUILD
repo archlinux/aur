@@ -45,11 +45,11 @@ package() {
   done
 
   # Set read permissions
-  chmod 644 "${pkgdir}/usr/lib/libwasm-rt-impl.a"
+  chmod 644 "${pkgdir}/usr/lib/libHalide.a"
 
   # For test later
-  # ln -s /usr/lib/libHalide.so ${pkgdir}/usr/lib/libHalide.so.14
-  # ln -s /usr/lib/libHalide.so.14 ${pkgdir}/usr/lib/libHalide.so.14.0.0
+  # ln -s /usr/lib/libHalide.so ${pkgdir}/usr/lib/libHalide.so.15
+  # ln -s /usr/lib/libHalide.so.15 ${pkgdir}/usr/lib/libHalide.so.15.0.1
 
   # Install cmake functions
   for i in lib/cmake/Halide/*.cmake; do
@@ -66,7 +66,7 @@ package() {
   done
 
   # Set execution permissions
-  chmod 755 "${pkgdir}/usr/share/Halide/tools/autotune_loop.sh"
+  chmod 755 "${pkgdir}/usr/share/Halide/tools/adams2019_autotune_loop.sh"
 
   for i in share/doc/Halide/*.md; do
     install -Dvm644 "${i}" -t "${pkgdir}/usr/share/doc/Halide"
