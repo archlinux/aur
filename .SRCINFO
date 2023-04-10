@@ -7,6 +7,7 @@ pkgbase = sigtop-git
 	arch = x86_64
 	license = ISC
 	makedepends = git
+	makedepends = go-pie
 	provides = sigtop
 	conflicts = sigtop
 	source = sigtop::git+https://github.com/tbvdm/sigtop#branch=master

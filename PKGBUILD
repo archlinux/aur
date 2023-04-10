@@ -9,7 +9,7 @@ pkgdesc='Export messages from Signal Desktop'
 arch=('i686' 'x86_64')
 url="https://github.com/tbvdm/$_pkgname"
 license=('ISC')
-makedepends=('git')
+makedepends=('git' 'go-pie')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("$_pkgname::git+$url#branch=master")
