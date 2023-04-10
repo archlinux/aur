@@ -5,9 +5,9 @@
 
 pkgname=emacs-pretest
 _pkgname=emacs
-pkgver=28.3
-_pkgver=28.3-rc1
-pkgrel=0.1
+pkgver=29.0
+_pkgver=29.0.90
+pkgrel=0.90
 pkgdesc="The extensible, customizable, self-documenting real-time display editor -- pretest version."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
@@ -22,12 +22,20 @@ depends=(
 )
 provides=('emacs' 'emacs-nativecomp')
 conflicts=('emacs-nox')
-# PGP keyservers are all but dead. PGP signatures are useless for all practical purpose. Kudos to the EU.
-#source=(https://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$_pkgver.tar.xz{,.sig}) # PGP keyserver are all but dead.
-#validpgpkeys=('28D3BED851FDF3AB57FEF93C233587A47C207910')
-source=(https://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$_pkgver.tar.xz
+#
+# You'll need to grab this key and add it BY HAND to your local keyring.
+# All PGP Keyservers are all but dead thanks to the EU. 
+#
+#    gpg --keyserver hkps://keys.openpgp.org --recv-keys 17E90D521672C04631B1183EE78DAE0F3115E06B
+# 
+validpgpkeys=('17E90D521672C04631B1183EE78DAE0F3115E06B')
+#
+# Hmmm.... As of today. 2023-04-10, the alpha.gnu.org server has no HTTPS service.
+#
+source=(http://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$_pkgver.tar.xz{,.sig}
         nemacs readme_or_weep.txt)
-b2sums=('2d7da4a72cc1256c7b9d1157cd379a5373b6b55c01d94254d6aee25887991a8da694f3239a7f443adef0debbc300043ad4595b5934b6aa383daed10257bcbae0'
+b2sums=('a87f0ad81181cca3737d534702a79df9a50a659126d431a9fa0288297907bddc2d8593689c4f7e127d26498420878b48633c46e6f27945efe763314375ae6bfd'
+        'SKIP'
         '58e028b439d3c7cf03ea0be617b429a2c54e7aa1b8ca32b5ed489214daaa71e22c323de9662761ad2ce4de58e21dbe45ce6ce198f402686828574f8043d053d0'
         '98cb6458eebfa1440eea1318c6974c135d1b9e1a559fb1ca4bca35fb4697cc8cd6d33b19427efead0f3e061556ba19e774eee4f4566673494ac2470da4725b28')
 
@@ -57,11 +65,7 @@ build() {
     --without-gsettings
     --without-gconf
 # Welcome to the JIT new world.
-# To compile all extra site-lisp on demand (repos, AUR, ELPA, MELPA packages),
-# add
-#    (setq comp-deferred-compilation t)
-# to your .emacs file.
-    --with-native-compilation
+    --with-native-compilation=aot
 )
   ./configure "${confopts[@]}"
   make
@@ -69,7 +73,7 @@ build() {
 
 package() {
   cd "$srcdir"/$_pkgname-$_pkgver
-  make DESTDIR="$pkgdir" install FULL_NATIVE_AOT=1
+  make DESTDIR="$pkgdir" install
 
   # remove conflict with ctags package
   mv "$pkgdir"/usr/bin/{ctags,ctags.emacs}
