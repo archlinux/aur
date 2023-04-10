@@ -1,16 +1,16 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=rpi-imager-git
-pkgver=1.7.2.r0.g8d943ce
+pkgver=1.7.4.r23.g23b0bf6
 pkgrel=1
 pkgdesc="Raspberry Pi imaging utility"
 arch=('i686' 'x86_64')
 url="https://github.com/raspberrypi/rpi-imager"
-license=('apache')
+license=('Apache')
 depends=('glibc' 'curl' 'hicolor-icon-theme' 'libarchive' 'openssl' 'qt5-base' 'qt5-declarative' 'qt5-quickcontrols2' 'qt5-svg' 'zlib')
 makedepends=('git' 'cmake' 'qt5-tools')
 optdepends=('dosfstools: SD card bootloader support')
-provides=('rpi-imager')
+provides=("rpi-imager=$pkgver")
 conflicts=('rpi-imager')
 source=("git+https://github.com/raspberrypi/rpi-imager.git")
 sha256sums=('SKIP')
