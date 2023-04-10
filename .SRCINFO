@@ -1,8 +1,8 @@
 pkgbase = opencsg-git
 	pkgdesc = A library that does image-based CSG rendering using OpenGL
-	pkgver = 1.4.2.r7.g80f8f1f
+	pkgver = 1.5.1.r0.g7b24d76
 	pkgrel = 1
-	url = http://www.opencsg.org/
+	url = https://www.opencsg.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -11,7 +11,7 @@ pkgbase = opencsg-git
 	depends = glew
 	depends = glut
 	depends = libgl
-	provides = opencsg
+	provides = opencsg=1.5.1.r0.g7b24d76
 	conflicts = opencsg
 	source = git+https://github.com/floriankirsch/OpenCSG.git
 	sha256sums = SKIP

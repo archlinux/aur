@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=opencsg-git
-pkgver=1.4.2.r7.g80f8f1f
+pkgver=1.5.1.r0.g7b24d76
 pkgrel=1
 pkgdesc="A library that does image-based CSG rendering using OpenGL"
 arch=('i686' 'x86_64')
-url="http://www.opencsg.org/"
+url="https://www.opencsg.org/"
 license=('GPL')
 depends=('glibc' 'glew' 'glut' 'libgl')
 makedepends=('git')
-provides=('opencsg')
+provides=("opencsg=$pkgver")
 conflicts=('opencsg')
 source=("git+https://github.com/floriankirsch/OpenCSG.git")
 sha256sums=('SKIP')
