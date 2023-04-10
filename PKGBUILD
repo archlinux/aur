@@ -2,7 +2,7 @@
 # Previous maintainer: Salamandar <felix at piedallu dot me>
 
 pkgname=git-sizer-git
-pkgver=1.4.0.r12.g0d882b6
+pkgver=1.5.0.r10.g0b6d3a2
 pkgrel=1
 pkgdesc="Compute various size metrics for a Git repository, flagging those that might cause problems"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/github/git-sizer"
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
-provides=('git-sizer')
+provides=("git-sizer=$pkgver")
 conflicts=('git-sizer')
 source=("git+https://github.com/github/git-sizer.git")
 sha256sums=('SKIP')

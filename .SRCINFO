@@ -1,6 +1,6 @@
 pkgbase = git-sizer-git
 	pkgdesc = Compute various size metrics for a Git repository, flagging those that might cause problems
-	pkgver = 1.4.0.r12.g0d882b6
+	pkgver = 1.5.0.r10.g0b6d3a2
 	pkgrel = 1
 	url = https://github.com/github/git-sizer
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = git-sizer-git
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	provides = git-sizer
+	provides = git-sizer=1.5.0.r10.g0b6d3a2
 	conflicts = git-sizer
 	source = git+https://github.com/github/git-sizer.git
 	sha256sums = SKIP
