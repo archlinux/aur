@@ -1,6 +1,6 @@
 #!/bin/sh
 BOTTLENAME="Deepin-PandaOCR.Pro"
-APPVER="4.18.1.1007"
+APPVER="5.47"
 EXEC_PATH="c:/Program Files/PandaOCR.Pro/PandaOCR.Pro.exe"
 START_SHELL_PATH="/opt/deepinwine/tools/run_v4.sh"
   
