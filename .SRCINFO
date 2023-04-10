@@ -1,6 +1,6 @@
 pkgbase = hdf5-git
 	pkgdesc = General purpose library and file format for storing scientific data
-	pkgver = r38283.g66bcfd97a8
+	pkgver = 1.14.0.r95.gfc91e8856f
 	pkgrel = 1
 	url = https://www.hdfgroup.org/solutions/hdf5/
 	arch = i686
@@ -12,11 +12,10 @@ pkgbase = hdf5-git
 	depends = bash
 	depends = libaec
 	depends = zlib
-	provides = hdf5
+	provides = hdf5=1.14.0.r95.gfc91e8856f
 	conflicts = hdf5
 	options = staticlibs
 	source = git+https://github.com/HDFGroup/hdf5.git
 	sha256sums = SKIP
 
 pkgname = hdf5-git
-
