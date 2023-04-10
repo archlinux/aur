@@ -1,0 +1,17 @@
+pkgbase = astyle-git
+	pkgdesc = A free, fast, and small automatic code formatter
+	pkgver = 3.2.1.r1.g2e9fe14
+	pkgrel = 1
+	url = https://astyle.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = gcc-libs
+	provides = astyle=3.2.1.r1.g2e9fe14
+	conflicts = astyle
+	options = staticlibs
+	source = git+https://gitlab.com/saalen/astyle.git
+	sha256sums = SKIP
+
+pkgname = astyle-git
