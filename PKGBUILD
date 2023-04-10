@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=canu-git
-pkgver=r10534.g769108f4b
+pkgver=2.2.r89.g769108f4b
 pkgrel=1
 pkgdesc="A fork of the Celera Assembler designed for high-noise single-molecule sequencing"
 arch=('i686' 'x86_64')
@@ -26,9 +26,10 @@ prepare() {
 pkgver() {
   cd "canu"
 
-  _rev=$(git rev-list --count --all)
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "r%s.g%s" "$_rev" "$_hash"
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
