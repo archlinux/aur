@@ -1,6 +1,6 @@
 pkgbase = gflags-git
 	pkgdesc = C++ Library for commandline flag processing
-	pkgver = 2.2.2.r40.ga386bd0
+	pkgver = 2.2.2.r47.ga738fdf
 	pkgrel = 1
 	url = https://github.com/gflags/gflags
 	arch = i686
@@ -9,11 +9,10 @@ pkgbase = gflags-git
 	makedepends = git
 	makedepends = cmake
 	depends = glibc
-	provides = gflags
+	provides = gflags=2.2.2.r47.ga738fdf
 	conflicts = gflags
 	options = staticlibs
 	source = git+https://github.com/gflags/gflags.git
 	sha256sums = SKIP
 
 pkgname = gflags-git
-

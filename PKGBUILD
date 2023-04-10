@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=gflags-git
-pkgver=2.2.2.r40.ga386bd0
+pkgver=2.2.2.r47.ga738fdf
 pkgrel=1
 pkgdesc="C++ Library for commandline flag processing"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/gflags/gflags"
 license=('BSD')
 depends=('glibc')
 makedepends=('git' 'cmake')
-provides=('gflags')
+provides=("gflags=$pkgver")
 conflicts=('gflags')
 options=('staticlibs')
 source=("git+https://github.com/gflags/gflags.git")
