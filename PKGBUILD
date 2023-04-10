@@ -2,11 +2,11 @@
 
 pkgname=jeff
 
-_tag=44cdad7216fe9a50881a8b21f5d7fb07f6c244e0
+_tag=21360032435f1649d7ca375a4339482f69d5a817
 source=(git+https://github.com/markcda/jeff.git#tag=$_tag)
 
-pkgver=2.3.0.r1.g44cdad7
-pkgrel=3
+pkgver=2.4.1.r3.gb1b0621
+pkgrel=1
 pkgdesc="Extensible chatbot and automation tool"
 arch=("x86_64")
 url="https://github.com/markcda/jeff"
