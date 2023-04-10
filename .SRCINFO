@@ -1,7 +1,7 @@
 pkgbase = kobodeluxe
 	pkgdesc = 3rd person scrolling 2D shooter
 	pkgver = 0.5.1
-	pkgrel = 13
+	pkgrel = 14
 	url = http://www.olofson.net/kobodl/
 	arch = x86_64
 	license = GPL

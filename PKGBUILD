@@ -4,7 +4,7 @@
 
 pkgname=kobodeluxe
 pkgver=0.5.1
-pkgrel=13
+pkgrel=14
 pkgdesc='3rd person scrolling 2D shooter'
 arch=(x86_64)
 url='http://www.olofson.net/kobodl/'
@@ -30,8 +30,20 @@ prepare() {
 
   tar xf icons.tar.gz
 
-  # Fix paths
-  sed -i -e 's:kobo-deluxe:kobodeluxe:' configure{,.in} data/{gfx,sfx}/Makefile.in
+  # Fix paths and file names
+  sed -i -e 's:kobo-deluxe:kobodeluxe:' configure{,.in} data/{gfx,sfx}/Makefile{.in,.am}
+
+  # Fix .desktop file
+  sed -i -e 's:^Exec=kobodl$:Exec=kobodeluxe:' "icons/KDE/kobo-deluxe.desktop"
+  sed -i -e 's:^Categories=Qt;KDE;Game;ArcadeGame$:Categories=Qt;KDE;Game:' "icons/KDE/kobo-deluxe.desktop"
+
+  # Fix scores directory
+  sed -Ei -e 's@^(install-data-hook:)\t\$\(.*\)$@\1\n\tmkdir -p $(DESTDIR)$(kobo_scoredir)@' Makefile.am
+
+  # silence filename warning
+  cp configure.in configure.am
+
+  autoreconf -vfi
 }
 
 build() {
