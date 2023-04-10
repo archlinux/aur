@@ -1,6 +1,6 @@
 pkgbase = gdbm-git
 	pkgdesc = GNU database library
-	pkgver = 1.21.r32.gf505b9c
+	pkgver = 1.23.r17.g3e63a78
 	pkgrel = 1
 	url = https://www.gnu.org.ua/software/gdbm/gdbm.html
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = gdbm-git
 	makedepends = rsync
 	depends = glibc
 	depends = sh
-	provides = gdbm
+	provides = gdbm=1.23.r17.g3e63a78
 	provides = libgdbm.so
 	provides = libgdbm_compat.so
 	conflicts = gdbm

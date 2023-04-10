@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=gdbm-git
-pkgver=1.21.r32.gf505b9c
+pkgver=1.23.r17.g3e63a78
 pkgrel=1
 pkgdesc="GNU database library"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.gnu.org.ua/software/gdbm/gdbm.html"
 license=('GPL3')
 depends=('glibc' 'sh')
 makedepends=('git' 'readline' 'rsync')
-provides=('gdbm' 'libgdbm.so' 'libgdbm_compat.so')
+provides=("gdbm=$pkgver" 'libgdbm.so' 'libgdbm_compat.so')
 conflicts=('gdbm')
 options=('staticlibs')
 source=("git+https://git.gnu.org.ua/gdbm.git")
