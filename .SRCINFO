@@ -1,7 +1,7 @@
 pkgbase = ipmitool-git
 	pkgdesc = Tool for controlling IPMI-enabled systems
-	pkgver = 1.8.18.r192.g956ae2b
-	pkgrel = 2
+	pkgver = 1.8.19.r13.gbe11d94
+	pkgrel = 1
 	url = https://github.com/ipmitool/ipmitool
 	arch = i686
 	arch = x86_64
@@ -9,10 +9,9 @@ pkgbase = ipmitool-git
 	makedepends = git
 	depends = glibc
 	depends = openssl
-	provides = ipmitool
+	provides = ipmitool=1.8.19.r13.gbe11d94
 	conflicts = ipmitool
 	source = git+https://github.com/ipmitool/ipmitool.git
 	sha256sums = SKIP
 
 pkgname = ipmitool-git
-

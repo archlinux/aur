@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=ipmitool-git
-pkgver=1.8.18.r192.g956ae2b
-pkgrel=2
+pkgver=1.8.19.r13.gbe11d94
+pkgrel=1
 pkgdesc="Tool for controlling IPMI-enabled systems"
 arch=('i686' 'x86_64')
 url="https://github.com/ipmitool/ipmitool"
 license=('BSD')
 depends=('glibc' 'openssl')
 makedepends=('git')
-provides=('ipmitool')
+provides=("ipmitool=$pkgver")
 conflicts=('ipmitool')
 source=("git+https://github.com/ipmitool/ipmitool.git")
 sha256sums=('SKIP')
