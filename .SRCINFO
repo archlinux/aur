@@ -8,7 +8,7 @@ pkgbase = catimporter
 	depends = ruby-httparty
 	depends = ruby-addressable
 	depends = ruby-mediawiki_api
-	source = catimporter::git+https://github.com/tallero/catimporter
+	source = catimporter::git+https://github.com/tallero/catimporter#commit=e0860e75df541ab5dcde57a7ca27e4d09d513aac
 	sha256sums = SKIP
 
 pkgname = catimporter

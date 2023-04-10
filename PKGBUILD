@@ -14,7 +14,7 @@ depends=("ruby-httparty"
          "ruby-mediawiki_api")
 license=("MIT")
 _commit="e0860e75df541ab5dcde57a7ca27e4d09d513aac"
-source=("${pkgname}::git+${_url}")
+source=("${pkgname}::git+${_url}#commit=${_commit}")
 sha256sums=("SKIP")
 
 package(){
