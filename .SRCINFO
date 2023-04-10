@@ -1,11 +1,11 @@
 pkgbase = hyperfine-git
 	pkgdesc = A command-line benchmarking tool
 	pkgver = 1.16.1.r4.g2763b41
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sharkdp/hyperfine
 	arch = i686
 	arch = x86_64
-	license = apache
+	license = Apache
 	license = MIT
 	makedepends = git
 	makedepends = rust

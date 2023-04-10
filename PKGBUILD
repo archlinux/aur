@@ -2,11 +2,11 @@
 
 pkgname=hyperfine-git
 pkgver=1.16.1.r4.g2763b41
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line benchmarking tool"
 arch=('i686' 'x86_64')
 url="https://github.com/sharkdp/hyperfine"
-license=('apache' 'MIT')
+license=('Apache' 'MIT')
 depends=('gcc-libs')
 makedepends=('git' 'rust')
 provides=("hyperfine=$pkgver")
