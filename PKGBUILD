@@ -2,7 +2,7 @@
 
 pkgname=arti-git
 pkgver=1.1.3.r94.g1af2296c
-pkgrel=1
+pkgrel=2
 pkgdesc="An implementation of Tor in Rust"
 arch=('i686' 'x86_64')
 url="https://gitlab.torproject.org/tpo/core/arti"
@@ -37,8 +37,7 @@ check() {
   cd "arti"
 
   #cargo test \
-  #  --locked \
-  #  --release
+  #  --frozen
 }
 
 package() {
