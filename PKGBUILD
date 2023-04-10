@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=bzip3-git
-pkgver=1.3.0.r1.g5c3674c
+pkgver=1.3.0.r4.g19ac7d4
 pkgrel=1
 pkgdesc="A better and stronger spiritual successor to BZip2"
 arch=('i686' 'x86_64')
 url="https://github.com/kspalaiologos/bzip3"
-license=('apache' 'LGPL3')
+license=('Apache' 'LGPL3')
 depends=('glibc')
 makedepends=('git' 'clang')
 optdepends=('sh')
