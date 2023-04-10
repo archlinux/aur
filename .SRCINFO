@@ -1,7 +1,7 @@
 pkgbase = browser360-bin
 	pkgdesc = 360 Browser stable version
 	pkgver = 13.2.1031.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://browser.360.cn
 	arch = x86_64
 	license = custom

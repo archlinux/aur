@@ -3,7 +3,7 @@
 pkgname=browser360-bin
 _pkgname=com.360.browser-stable
 pkgver=13.2.1031.17
-pkgrel=1
+pkgrel=2
 pkgdesc="360 Browser stable version"
 arch=("x86_64")
 url="https://browser.360.cn"
@@ -20,8 +20,10 @@ sha256sums=('98236be5a5a228d6901ec77745fd34793e810dd8c0fed48ceb76d3450c39dc37')
 
 package() {
     bsdtar -xf data.tar.xz -C "${pkgdir}"
-    rm -rf "${pkgdir}/apps-data" "${pkgdir}/opt/apps/${_pkgname}/info" "${pkgdir}/opt/apps/com.360.browser-stable/entries/autostart"
-    install -Dm644 "${pkgdir}/opt/apps/${_pkgname}/files/components/professional.qcert" "${pkgdir}/var/lib/browser360/professional.qcert"
+    rm -rf "${pkgdir}/opt/apps/${_pkgname}/info" "${pkgdir}/opt/apps/com.360.browser-stable/entries/autostart"
+    install -Dm644 "${pkgdir}/opt/apps/${_pkgname}/files/components/professional.qcert" -t "${pkgdir}/var/lib/browser360"
+    install -Dm644 "${pkgdir}/opt/apps/${_pkgname}/files/components/professional.qcert" -t "${pkgdir}/apps-data/${_pkgname}"
+    chmod 755 "${pkgdir}/apps-data/private/${_pkgname}"
     for i in 16x16 24x24 32x32 48x48 64x64 128x128; do
     	install -Dm644 "${pkgdir}/opt/apps/${_pkgname}/files/product_logo_${i/x*}.png" \
     		"${pkgdir}/usr/share/icons/hicolor/${i}/apps/${_pkgname}.png"
