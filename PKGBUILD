@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=procmon-git
-pkgver=r21.gb35d4cc
+pkgver=1.0.1.r8.gc75bf1b
 pkgrel=1
 pkgdesc="Trace syscall activity tool"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc' 'clang' 'libedit' 'libelf' 'zlib')
 makedepends=('git' 'cmake' 'llvm' 'sqlite')
 checkdepends=('iperf3' 'netperf')
-provides=('procmon')
+provides=("procmon=$pkgver")
 conflicts=('procmon')
 source=("git+https://github.com/microsoft/ProcMon-for-Linux.git")
 sha256sums=('SKIP')
@@ -19,9 +19,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "ProcMon-for-Linux"
 
-  _rev=$(git rev-list --count --all)
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "r%s.g%s" "$_rev" "$_hash"
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
