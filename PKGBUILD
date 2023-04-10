@@ -2,11 +2,11 @@
 
 pkgname=faac-git
 pkgver=1.30.r6.g11215a2
-pkgrel=1
+pkgrel=2
 pkgdesc="An MPEG-4 and MPEG-2 AAC encoder"
 arch=('i686' 'x86_64')
 url="https://faac.sourceforge.net/"
-license=('GPL' 'BSD' 'Custom')
+license=('GPL' 'BSD' 'custom')
 depends=('glibc')
 makedepends=('git')
 provides=("faac=$pkgver")

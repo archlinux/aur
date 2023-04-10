@@ -1,13 +1,13 @@
 pkgbase = faac-git
 	pkgdesc = An MPEG-4 and MPEG-2 AAC encoder
 	pkgver = 1.30.r6.g11215a2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://faac.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = BSD
-	license = Custom
+	license = custom
 	makedepends = git
 	depends = glibc
 	provides = faac=1.30.r6.g11215a2
