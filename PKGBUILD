@@ -15,6 +15,7 @@ conflicts=($_pkgname)
 source=("$_pkgname::git+$url#branch=master")
 sha256sums=('SKIP')
 
+
 pkgver() {
   cd $_pkgname
   ( set -o pipefail
@@ -30,11 +31,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build \
-     -gcflags "all=-trimpath=$PWD" \
-     -asmflags "all=-trimpath=$PWD" \
-     -ldflags "-extldflags $LDFLAGS" \
-     -o $_pkgname .
+  go build -o $_pkgname .
 }
 
 package() {
