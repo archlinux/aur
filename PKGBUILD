@@ -1,11 +1,11 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libxml2-git
-pkgver=2.10.2.r137.gf2392dc4
+pkgver=2.10.3.r491.gd7d0bc65
 pkgrel=1
 pkgdesc="The XML C parser and toolkit of Gnome"
 arch=('i686' 'x86_64')
-url="http://xmlsoft.org/"
+url="https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home"
 license=('custom')
 depends=('glibc' 'icu' 'sh' 'xz' 'zlib')
 makedepends=('git' 'python')
