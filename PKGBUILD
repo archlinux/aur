@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=nuitka-git
-pkgver=1.3.2.r7.g9a24f7a54
+pkgver=1.5.5.r338.g3c3e8f96d
 pkgrel=1
 pkgdesc="A Python compiler"
 arch=('any')
 url="https://nuitka.net/"
-license=('apache')
+license=('Apache')
 depends=('python')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 optdepends=('chrpath: for building standalone executables')
