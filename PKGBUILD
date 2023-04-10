@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=glog-git
-pkgver=0.4.0.r6.g4cc89c9
+pkgver=0.6.0.r27.g6742834
 pkgrel=1
 pkgdesc="C++ implementation of the Google logging module"
 arch=('i686' 'x86_64')
 url="https://github.com/google/glog"
 license=('BSD')
 makedepends=('git')
-provides=('google-glog')
+provides=("google-glog=$pkgver")
 conflicts=('google-glog')
 options=('staticlibs')
 source=('git+https://github.com/google/glog.git')
