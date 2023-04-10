@@ -1,7 +1,7 @@
 pkgbase = gajim-git
 	pkgdesc = Jabber/XMPP instant messenger client written in Python with GTK+
-	pkgver = r20795.56ad85842
-	pkgrel = 2
+	pkgver = r20895.7a585f20d
+	pkgrel = 1
 	epoch = 1
 	url = https://gajim.org/
 	arch = any
@@ -21,6 +21,7 @@ pkgbase = gajim-git
 	depends = python-css-parser
 	depends = python-precis_i18n
 	depends = python-pillow
+	depends = python-omemo-dr
 	depends = gtksourceview4
 	optdepends = python-dbus: for gajim-remote and zeroconf support
 	optdepends = farstream: for video/voice support
