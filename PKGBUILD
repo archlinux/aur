@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=wasmtime-git
-pkgver=7.0.0.r157.g7eb891409
+pkgver=7.0.0.r173.g2d1dbb17a
 pkgrel=1
 pkgdesc="Standalone JIT-style runtime for WebAssembly"
 arch=('i686' 'x86_64')
 url="https://wasmtime.dev/"
-license=('apache')
+license=('Apache')
 depends=('gcc-libs')
 makedepends=('git' 'rust')
 provides=("wasmtime=$pkgver")

@@ -1,15 +1,15 @@
 pkgbase = wasmtime-git
 	pkgdesc = Standalone JIT-style runtime for WebAssembly
-	pkgver = 7.0.0.r157.g7eb891409
+	pkgver = 7.0.0.r173.g2d1dbb17a
 	pkgrel = 1
 	url = https://wasmtime.dev/
 	arch = i686
 	arch = x86_64
-	license = apache
+	license = Apache
 	makedepends = git
 	makedepends = rust
 	depends = gcc-libs
-	provides = wasmtime=7.0.0.r157.g7eb891409
+	provides = wasmtime=7.0.0.r173.g2d1dbb17a
 	conflicts = wasmtime
 	source = git+https://github.com/bytecodealliance/wasmtime.git
 	sha256sums = SKIP
