@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=ufw-git
-pkgver=r1911.g506546a
+pkgver=0.36.1.r85.g506546a
 pkgrel=1
 pkgdesc="Uncomplicated firewall"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://launchpad.net/ufw"
 license=('GPL3')
 depends=('python' 'iptables')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
-provides=('ufw')
+provides=("ufw=$pkgver")
 conflicts=('ufw')
 backup=('etc/default/ufw'
         'etc/ufw/after.rules'
@@ -42,9 +42,10 @@ prepare() {
 pkgver() {
   cd "ufw"
 
-  _rev=$(git rev-list --count --all)
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "r%s.g%s" "$_rev" "$_hash"
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {

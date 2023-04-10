@@ -1,6 +1,6 @@
 pkgbase = ufw-git
 	pkgdesc = Uncomplicated firewall
-	pkgver = r1911.g506546a
+	pkgver = 0.36.1.r85.g506546a
 	pkgrel = 1
 	url = https://launchpad.net/ufw
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = ufw-git
 	makedepends = python-wheel
 	depends = python
 	depends = iptables
-	provides = ufw
+	provides = ufw=0.36.1.r85.g506546a
 	conflicts = ufw
 	backup = etc/default/ufw
 	backup = etc/ufw/after.rules
