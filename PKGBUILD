@@ -15,7 +15,7 @@ license=('LGPL3')
 depends=('boost' 'cppunit' 'eigen' 'gl2ps' 'petsc' 'python-ffc' 'scotch' 'suitesparse')
 optdepends=('slepc: eigenvalue problem solvers'
   'hdf5-openmpi: for reading/writing hdf5 files')
-makedepends=('cmake' 'doxygen' 'graphviz' 'texlive-latexextra')
+makedepends=('cmake')
 checkdepends=('openssh')
 options=(!emptydirs)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/downloads/${pkgname}-${pkgver}.tar.gz
@@ -60,10 +60,10 @@ build() {
   cmake --build build --target all
   # Build documentation
   # See Doxyfile
-  cd ${pkgname}-${pkgver}/doc
-  doxygen
-  cd latex
-  make
+  # cd ${pkgname}-${pkgver}/doc
+  # doxygen
+  # cd latex
+  # make
 }
 
 check() {
@@ -77,7 +77,7 @@ check() {
 package() {
   DESTDIR="${pkgdir}" cmake --build build --target install
   install -Dm 644 ${pkgname}-${pkgver}/COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -d ${pkgdir}/usr/share/doc/${pkgname}
-  mv ${pkgname}-${pkgver}/doc/html ${pkgdir}/usr/share/doc/${pkgname}
-  install ${pkgname}-${pkgver}/doc/latex/refman.pdf ${pkgdir}/usr/share/doc/${pkgname}
+  # install -d ${pkgdir}/usr/share/doc/${pkgname}
+  # mv ${pkgname}-${pkgver}/doc/html ${pkgdir}/usr/share/doc/${pkgname}
+  # install ${pkgname}-${pkgver}/doc/latex/refman.pdf ${pkgdir}/usr/share/doc/${pkgname}
 }
