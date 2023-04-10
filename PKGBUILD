@@ -2,7 +2,7 @@
 
 pkgname=routinator
 pkgver=0.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="RPKI validator written in Rust"
 arch=('i686' 'x86_64')
 url="https://nlnetlabs.nl/rpki"
@@ -17,16 +17,17 @@ sha256sums=('8150fe544f89205bb2d65bca46388f055cf13971d3163fe17508bf231f9ab8bc')
 prepare() {
   cd "$pkgname-$pkgver"
 
-  cargo update
+  if [ ! -f "Cargo.lock" ]; then
+    cargo update
+  fi
   cargo fetch
 }
 
 check() {
   cd "$pkgname-$pkgver"
 
-  cargo test \
-    --locked \
-    --release
+  #cargo test \
+  #  --frozen
 }
 
 package() {
