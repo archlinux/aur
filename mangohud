@@ -1,0 +1,23 @@
+#!/bin/sh
+
+if [ "$#" -eq 0 ]; then
+	programname=`basename "$0"`
+	echo "ERROR: No program supplied"
+	echo
+	echo "Usage: $programname <program>"
+	exit 1
+fi
+
+MANGOHUD_LIB_NAME="/usr/\$LIB/mangohud/libMangoHud.so"
+
+if [ "$1" = "--dlsym" ]; then
+	MANGOHUD_DLSYM=1
+	MANGOHUD_LIB_NAME="/usr/\$LIB/mangohud/libMangoHud_dlsym.so:${MANGOHUD_LIB_NAME}"
+	shift
+fi
+
+# Preload using the plain filenames of the libs, the dynamic linker will
+# figure out whether the 32 or 64 bit version should be used
+LD_PRELOAD="${LD_PRELOAD:+$LD_PRELOAD:}${MANGOHUD_LIB_NAME}"
+
+exec env MANGOHUD=1 LD_PRELOAD="${LD_PRELOAD}" "$@"
