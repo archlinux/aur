@@ -3,7 +3,7 @@
 # Contributor: RoiArthurB
 pkgname=gama-platform-jdk
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GAMA is a modeling and simulation development environment for building spatially explicit agent-based simulations. JDK embedded version"
 arch=('x86_64')
 url="https://gama-platform.org"
@@ -19,6 +19,6 @@ sha512sums_x86_64=('cbd3cb98cec5d14d9ddf4f0d291f109376332b385a301cc75bd8d8b5e8bd
 package(){
 
 	# Extract package data
-	tar -xJ -f data.tar.xz -C "${pkgdir}"
+	tar -xI unzstd -f data.tar.zst -C "${pkgdir}"
 
 }
