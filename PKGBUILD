@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=fsarchiver-git
-pkgver=0.8.5.r4.g30c9e23
-pkgrel=2
+pkgver=0.8.7.r3.g03089f4
+pkgrel=1
 pkgdesc="Filesystem archiver for Linux"
 arch=('i686' 'x86_64')
 url="https://www.fsarchiver.org/"
 license=('GPL2')
 depends=('glibc' 'bzip2' 'e2fsprogs' 'libgcrypt' 'lz4' 'lzo' 'xz' 'zlib' 'zstd')
 makedepends=('git')
-provides=('fsarchiver')
+provides=("fsarchiver=$pkgver")
 conflicts=('fsarchiver')
 source=("git+https://github.com/fdupoux/fsarchiver.git")
 sha256sums=('SKIP')
