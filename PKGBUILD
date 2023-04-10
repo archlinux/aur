@@ -9,14 +9,14 @@
 
 _qt_module=qtscxml
 pkgname=mingw-w64-qt5-scxml
-pkgver=5.15.8
+pkgver=5.15.9
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Static and runtime integration of SCXML models into Qt code (mingw-w64)"
 depends=('mingw-w64-qt5-declarative')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
-_commit=0c93f94a44e2dce7eed9d17d4976b0c1e14be7bb
+_commit=d30a77111835395828fdcaa89a88110c5d9f6857
 _basever=$pkgver
 makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
