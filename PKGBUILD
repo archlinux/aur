@@ -1,17 +1,17 @@
 # Maintainer: Florian Pritz <bluewind@xinu.at>
 
 pkgname=perl-carp-assert
-pkgver=0.21
-pkgrel=5
+pkgver=0.22
+pkgrel=1
 pkgdesc='executable comments'
 arch=(any)
 license=(PerlArtistic GPL)
 options=(!emptydirs)
 depends=('perl>=5.6')
 url=https://metacpan.org/release/Carp-Assert
-source=("https://cpan.metacpan.org/authors/id/N/NE/NEILB/Carp-Assert-$pkgver.tar.gz")
-md5sums=(72e75c152cc354420719fc9728deec71)
-sha512sums=(9fb96ebaf03a86edcd0262b5216b345839dc99e504738e52f883932e425cac33470fcb0e8e4653488c0d8e63e9904af311056213c63ae40bc3935eec4c0410a0)
+source=("https://cpan.metacpan.org/authors/id/Y/YV/YVES/Carp-Assert-$pkgver.tar.gz")
+md5sums=(34df5befd63bcf66eb881e6c981c7d53)
+sha512sums=(a757dd7bd5799ba98bf30fd2b55add05532af354e21e166ae1164acde71585a1b7783e28341dd8871dcc222de4bf6b78f05163e06d9f22681b7bbd547edc9c0a)
 _ddir="Carp-Assert-$pkgver"
 
 build()
