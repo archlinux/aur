@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libxslt-git
-pkgver=1.1.33.r45.g5b096501
+pkgver=1.1.37.r131.g075b6087
 pkgrel=1
 pkgdesc="XML stylesheet transformation library"
 arch=('i686' 'x86_64')
-url="http://xmlsoft.org/XSLT/"
+url="https://gitlab.gnome.org/GNOME/libxslt/-/wikis/home"
 license=('custom')
 depends=('glibc' 'libgcrypt' 'libxml2')
 makedepends=('git')
-provides=('libxslt')
+provides=("libxslt=$pkgver")
 conflicts=('libxslt')
 options=('staticlibs')
 source=("git+https://gitlab.gnome.org/GNOME/libxslt.git")
