@@ -97,7 +97,7 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('7de856a284e57e23b8744b2708fe49d49aebe3510c3eee2dd6342e3b5e46ecf2'
+sha256sums=('57c562c3cd2753f232549cab05c8ad770ed848ae86401619c7581bdffaeea4fe'
             'SKIP'
             'f9a0027bea53a7160759858c535eb0ba0b3bea34c0130f47f2d5bba75d102170'
             'f1d586e111932890ad5e0df15d092fb9b3f87bae4ea17812aae9b0ec98fe2db0'
