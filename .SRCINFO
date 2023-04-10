@@ -1,7 +1,7 @@
 pkgbase = xterm-git
 	pkgdesc = Terminal emulator for the X Window System
-	pkgver = r1311.gd82f70a
-	pkgrel = 2
+	pkgver = 379i.r0.g8b09b8cd
+	pkgrel = 1
 	url = https://invisible-island.net/xterm/
 	arch = i686
 	arch = x86_64
@@ -15,10 +15,9 @@ pkgbase = xterm-git
 	depends = luit
 	depends = ncurses
 	depends = xbitmaps
-	provides = xterm
+	provides = xterm=379i.r0.g8b09b8cd
 	conflicts = xterm
 	source = git+https://github.com/ThomasDickey/xterm-snapshots.git
 	sha256sums = SKIP
 
 pkgname = xterm-git
-

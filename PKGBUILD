@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=xterm-git
-pkgver=r1311.gd82f70a
-pkgrel=2
+pkgver=379i.r0.g8b09b8cd
+pkgrel=1
 pkgdesc="Terminal emulator for the X Window System"
 arch=('i686' 'x86_64')
 url="https://invisible-island.net/xterm/"
 license=('custom')
 depends=('glibc' 'libutempter' 'libxaw' 'libxft' 'libxkbfile' 'luit' 'ncurses' 'xbitmaps')
 makedepends=('git')
-provides=('xterm')
+provides=("xterm=$pkgver")
 conflicts=('xterm')
 source=("git+https://github.com/ThomasDickey/xterm-snapshots.git")
 sha256sums=('SKIP')
@@ -18,9 +18,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "xterm-snapshots"
 
-  _rev=$(git rev-list --count --all)
+  _tag=$(git tag -l --sort -creatordate | grep -E '^xterm-[0-9\.]+' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "r%s.g%s" "$_rev" "$_hash"
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^xterm-//'
 }
 
 build() {
