@@ -2,11 +2,11 @@
 
 pkgname=ninja-bin
 pkgver=1.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Small build system with a focus on speed"
 arch=('x86_64')
 url="https://ninja-build.org/"
-license=('apache')
+license=('Apache')
 depends=('gcc-libs')
 provides=("ninja=$pkgver")
 conflicts=('ninja')
