@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=gperf-git
-pkgver=3.1.r5.g793a229
+pkgver=3.1.r34.g09844ce
 pkgrel=1
 pkgdesc="A perfect hash function generator"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.gnu.org/software/gperf/"
 license=('GPL')
 depends=('glibc')
 makedepends=('git')
-provides=('gperf')
+provides=("gperf=$pkgver")
 conflicts=('gperf')
 source=("git+https://git.savannah.gnu.org/git/gperf.git")
 sha256sums=('SKIP')
@@ -25,7 +25,8 @@ build() {
   cd "gperf"
 
   ./autogen.sh
-  ./configure --prefix="/usr"
+  ./configure \
+    --prefix="/usr"
   sed -i 's/	cd doc;/#	cd doc;/' "Makefile"  # skip over doc
 
   make
