@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Lyashuk <lyashuk.voxx at gmail dot com>
 pkgname=doom2df-bin
 pkgver=0.667
-pkgrel=6
+pkgrel=9
 pkgdesc="Doom-themed platformer with network play (binaries-only)"
 arch=(x86_64 i686)
 url="https://doom2d.org/"
@@ -37,10 +37,10 @@ md5sums=(
   '191cd29a6994ab257abf6c0b1060b2fd'
   '9da12c0a777cd8a745b2436369776a02'
   '388ca9f19d43ff9b92194db07ddd6a1e'
-  '7cb7286de234ca4e50ea586ec9eca85d'
+  '4f572039f4f17953bfab839326993b80'
   '1e7fc56216ab37431ef6e132bc9af63a'
-  'efb6a46c452a287766164565df484f72'
-  'c1c7e519214550516a8093b1a7729480'
+  'f8b3fc396d03a486a849463ebbba2db2'
+  'ac0301c17791c45220187507025a9a9c'
 )
 options=(
   !strip
