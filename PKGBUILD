@@ -2,22 +2,22 @@
 
 pkgname=fakechroot-git
 pkgver=2.20.1.r7.gb42d1fb
-pkgrel=1
+pkgrel=2
 pkgdesc="Gives a fake chroot environment"
 arch=('i686' 'x86_64')
 url="https://github.com/dex4er/fakechroot"
 license=('LGPL')
 depends=('glibc' 'perl' 'sh')
 makedepends=('git')
-provides=('fakechroot')
+provides=("fakechroot=$pkgver")
 conflicts=('fakechroot')
 options=('staticlibs')
 source=("git+https://github.com/dex4er/fakechroot.git"
         "fix_glibc_2.33_compatibility.patch::https://github.com/lipnitsk/fakechroot/commit/693a3597ea7fccfb62f357503ff177bd3e3d5a89.patch"
         "remove_ver_from_lstat.patch::https://github.com/lipnitsk/fakechroot/commit/75d7e6fa191c11a791faff06a0de86eaa7801d05.patch")
 sha256sums=('SKIP'
-            '959f931e86964058e3ceeae029078140db9070180807ba9118419cede7a19843'
-            '6ad03fcf98a619f550d6145d8b3855a606367de0bcb5f20113ba36f17d182bc9')
+            '4038238c9a3ec67b6a749a55eb206f92fcc75a8e762d27b1cca236bd49fdcd40'
+            '2ca655d046390b2822c0e8fc65c32a3c8851542896452e940b8e16d57f0dd0e5')
 
 
 prepare() {
