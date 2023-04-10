@@ -1,7 +1,7 @@
 pkgbase = rpm-tools-git
 	pkgdesc = RPM Package Manager
-	pkgver = r17189.gf9b90179b
-	pkgrel = 2
+	pkgver = 4.18.1.r463.g589fb0e3a
+	pkgrel = 1
 	url = https://rpm.org/
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = rpm-tools-git
 	depends = nss
 	depends = popt
 	depends = zstd
-	provides = rpm-tools
+	provides = rpm-tools=4.18.1.r463.g589fb0e3a
 	provides = rpmextract
 	conflicts = rpm-tools
 	conflicts = rpmextract
@@ -28,4 +28,3 @@ pkgbase = rpm-tools-git
 	sha256sums = SKIP
 
 pkgname = rpm-tools-git
-

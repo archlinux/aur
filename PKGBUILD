@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=rpm-tools-git
-pkgver=r17189.gf9b90179b
-pkgrel=2
+pkgver=4.18.1.r463.g589fb0e3a
+pkgrel=1
 pkgdesc="RPM Package Manager"
 arch=('i686' 'x86_64')
 url="https://rpm.org/"
 license=('GPL')
 depends=('glibc' 'elfutils' 'file' 'libarchive' 'libcap' 'lmdb' 'lua' 'nss' 'popt' 'zstd')
 makedepends=('git' 'python')
-provides=('rpm-tools' 'rpmextract')
+provides=("rpm-tools=$pkgver" 'rpmextract')
 conflicts=('rpm-tools' 'rpmextract')
 source=("git+https://github.com/rpm-software-management/rpm.git"
         "https://raw.githubusercontent.com/archlinux/svntogit-community/packages/rpm-tools/trunk/rpmextract.sh")
@@ -20,9 +20,10 @@ sha256sums=('SKIP'
 pkgver() {
   cd "rpm"
 
-  _rev=$(git rev-list --count --all)
+  _tag=$(git tag -l --sort -v:refname | grep -E '^rpm-[0-9\.]+-release' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "r%s.g%s" "$_rev" "$_hash"
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^rpm-//;s/-release//'
 }
 
 build() {
