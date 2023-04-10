@@ -9,7 +9,7 @@
 
 _qt_module=qtcharts
 pkgname=mingw-w64-qt5-charts-static
-pkgver=5.15.8
+pkgver=5.15.9
 pkgrel=1
 arch=('any')
 pkgdesc="Provides a set of easy to use chart components (mingw-w64)"
@@ -17,7 +17,7 @@ depends=('mingw-w64-qt5-base-static' 'mingw-w64-pkg-config')
 optdepends=('mingw-w64-qt5-declarative-static: QML bindings')
 makedepends=('mingw-w64-gcc' 'mingw-w64-qt5-declarative-static')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
-_commit=e30be213e483f2d6f3c40af0cbdc11a8e92e2026
+_commit=3d4a84eb6d62ce22a47794f309f9268729ac375f
 _basever=$pkgver
 makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
