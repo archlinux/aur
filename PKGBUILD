@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=apache-git
-pkgver=2.4.57.rc1.candidate.r11191.g4859071fd0
+pkgver=2.4.57.r11194.gabeee9dc35
 pkgrel=1
 pkgdesc="Provides useful functions commonly found on BSD systems"
 arch=('i686' 'x86_64')
 url="https://httpd.apache.org/"
-license=('apache')
+license=('Apache')
 depends=('glibc' 'apr-util' 'libnghttp2' 'openssl' 'pcre' 'zlib')
 makedepends=('git' 'brotli' 'curl' 'jansson' 'libxml2' 'lua')
 optdepends=('brotli: for mod_brotli module'
@@ -94,11 +94,11 @@ package() {
   cd "httpd"
 
   make DESTDIR="$pkgdir" install
-  install -D -m644 "LICENSE" -t "$pkgdir/usr/share/licenses/apache"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/apache"
 
-  install -D -m644 "$srcdir/httpd.logrotate" "$pkgdir/etc/logrotate.d/httpd"
-  install -D -m644 "$srcdir/httpd.service" -t "$pkgdir/usr/lib/systemd/system"
-  install -D -m644 "$srcdir/apache.tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/apache.conf"
+  install -Dm644 "$srcdir/httpd.logrotate" "$pkgdir/etc/logrotate.d/httpd"
+  install -Dm644 "$srcdir/httpd.service" -t "$pkgdir/usr/lib/systemd/system"
+  install -Dm644 "$srcdir/apache.tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/apache.conf"
 
   # set sane defaults
   sed -e 's#/usr/lib/httpd/modules/#modules/#' \
