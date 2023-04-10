@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=faad2-git
-pkgver=2.8.1.r5.g8d04544
+pkgver=2.8.8.r16.gdcb6ce4
 pkgrel=1
 pkgdesc="Freeware Advanced Audio (AAC) Decoder"
 arch=('i686' 'x86_64')
-url="http://faac.sourceforge.net/"
+url="https://faac.sourceforge.net/"
 license=('GPL')
 depends=('glibc')
 makedepends=('git')
-provides=('faad2')
+provides=("faad2=$pkgver")
 conflicts=('faad2')
 source=("git+https://git.code.sf.net/p/faac/faad2")
 sha256sums=('SKIP')
@@ -25,7 +25,8 @@ build() {
   cd "faad2"
 
   ./bootstrap
-  ./configure --prefix="/usr"
+  ./configure \
+    --prefix="/usr"
   make
 }
 
