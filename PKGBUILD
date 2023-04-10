@@ -14,7 +14,9 @@ depends=(
   gstreamer
   gtk4
   libadwaita
-  python
+  python-loguru
+  python-mutagen
+  python-tqdm
 )
 makedepends=(
   git
