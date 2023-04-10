@@ -8,7 +8,7 @@
 # Contributor: dorphell <dorphell@archlinux.org>
 
 pkgname=mythtv-git
-pkgver=32+fixes.20221129.44f88ed4
+pkgver=33.1.r10.g0682d4d
 pkgrel=1
 pkgdesc="A Homebrew PVR project"
 arch=('x86_64')
@@ -103,7 +103,7 @@ sha256sums=(
 
 pkgver() {
   cd "${srcdir}/mythtv/mythtv"
-  echo -n "32+fixes.$(git show -s --format=%cd --date=short | tr -d -).$(git rev-parse --short=8 HEAD)"
+  printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 build() {
