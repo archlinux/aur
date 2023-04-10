@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libmpc-git
-pkgver=1.2.0.r11.g7afb2a7
+pkgver=1.3.1.r3.g488d0b2
 pkgrel=1
 pkgdesc="C library for the arithmetic of complex numbers"
 arch=('i686' 'x86_64')
-url="http://www.multiprecision.org/mpc/"
+url="https://www.multiprecision.org/mpc/"
 license=('LGPL')
 depends=('glibc' 'mpfr')
 makedepends=('git')
-provides=('libmpc')
+provides=("libmpc=$pkgver")
 conflicts=('libmpc')
 options=('staticlibs')
 source=("git+https://gitlab.inria.fr/mpc/mpc.git")

@@ -1,19 +1,18 @@
 pkgbase = libmpc-git
 	pkgdesc = C library for the arithmetic of complex numbers
-	pkgver = 1.2.0.r11.g7afb2a7
+	pkgver = 1.3.1.r3.g488d0b2
 	pkgrel = 1
-	url = http://www.multiprecision.org/mpc/
+	url = https://www.multiprecision.org/mpc/
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = git
 	depends = glibc
 	depends = mpfr
-	provides = libmpc
+	provides = libmpc=1.3.1.r3.g488d0b2
 	conflicts = libmpc
 	options = staticlibs
 	source = git+https://gitlab.inria.fr/mpc/mpc.git
 	sha256sums = SKIP
 
 pkgname = libmpc-git
-
