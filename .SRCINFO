@@ -1,0 +1,14 @@
+pkgbase = ruby-mediawiki_api
+	pkgdesc = Uses adapter-agnostic Faraday gem to talk to MediaWiki API.
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://rubygems.org/gems/mediawiki_api
+	arch = any
+	license = MIT
+	depends = ruby-faraday-cookie_jar
+	depends = ruby-faraday-middleware
+	noextract = mediawiki_api-0.7.1.gem
+	source = https://rubygems.org/downloads/mediawiki_api-0.7.1.gem
+	sha256sums = 6bf9f2e381a29a4b9d8e48b7a500fd5bef4e2e706de7dde5e756ed6f2432728e
+
+pkgname = ruby-mediawiki_api
