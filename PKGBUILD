@@ -1,16 +1,16 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=jemalloc-git
-pkgver=5.0.1.r25.gea91dfa5
+pkgver=5.3.0.r60.g5f64ad60
 pkgrel=1
 pkgdesc="General purpose malloc implementation"
 arch=('i686' 'x86_64')
-url="http://jemalloc.net/"
+url="https://jemalloc.net/"
 license=('BSD')
 depends=('glibc' 'sh')
 makedepends=('git' 'docbook-xsl')
 optdepends=('perl: for running jeprof')
-provides=('jemalloc')
+provides=("jemalloc=$pkgver")
 conflicts=('jemalloc')
 source=("git+https://github.com/jemalloc/jemalloc.git")
 sha256sums=('SKIP')
@@ -26,7 +26,9 @@ build() {
   cd "jemalloc"
 
   _xslroot="/usr/share/xml/docbook/xsl-stylesheets-$(pacman -Q docbook-xsl | cut -d ' ' -f 2 | cut -d '-' -f 1)"
-  ./autogen.sh --prefix="/usr" --with-xslroot="$_xslroot"
+  ./autogen.sh \
+    --prefix="/usr" \
+    --with-xslroot="$_xslroot"
   make
 }
 
@@ -41,7 +43,7 @@ package() {
 
   make dist
   make DESTDIR="$pkgdir" install
-  install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/jemalloc/COPYING"
+  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/jemalloc"
 
   find "$pkgdir" -name \*.a -type f -exec chmod 644 '{}' \;
 }
