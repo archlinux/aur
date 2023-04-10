@@ -2,8 +2,8 @@
 
 
 pkgname=freewb
-pkgver=0.1.3
-pkgrel=4
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Jidian Wubi for Linux"
 arch=("x86_64")
 url="http://www.freewb.org/"
@@ -11,7 +11,7 @@ license=("custom")
 depends=("fcitx" "fcitx-qt5" "fcitx-configtool")
 
 source=("https://d.store.deepinos.org.cn//store/tools/freewb/freewb_${pkgver}_amd64.deb")
-sha256sums=('a7d6663f9c3c2562b86dd8b4227452eee1884392d744b21e0ce9b0beae6bae16')
+sha256sums=('a71912f2ea3bd243a5e93e0b15a981c9862d4f75f0bf123e4bfb5bcc5b009485')
 
 package(){
     cd ${srcdir}
