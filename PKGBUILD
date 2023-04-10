@@ -2,14 +2,14 @@
 
 pkgname=sysfsutils-git
 pkgver=2.1.1.r13.g085bba6
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of utilities for interfacing with system devices"
 arch=('i686' 'x86_64')
-url="http://linux-diag.sourceforge.net/Sysfsutils.html"
+url="https://linux-diag.sourceforge.net/Sysfsutils.html"
 license=('GPL' 'LGPL')
 depends=('glibc')
 makedepends=('git')
-provides=('sysfsutils')
+provides=("sysfsutils=$pkgver")
 conflicts=('sysfsutils')
 options=('staticlibs')
 source=("git+https://github.com/linux-ras/sysfsutils.git")

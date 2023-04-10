@@ -1,15 +1,15 @@
 pkgbase = sysfsutils-git
 	pkgdesc = A set of utilities for interfacing with system devices
 	pkgver = 2.1.1.r13.g085bba6
-	pkgrel = 1
-	url = http://linux-diag.sourceforge.net/Sysfsutils.html
+	pkgrel = 2
+	url = https://linux-diag.sourceforge.net/Sysfsutils.html
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = LGPL
 	makedepends = git
 	depends = glibc
-	provides = sysfsutils
+	provides = sysfsutils=2.1.1.r13.g085bba6
 	conflicts = sysfsutils
 	options = staticlibs
 	source = git+https://github.com/linux-ras/sysfsutils.git
