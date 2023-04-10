@@ -7,7 +7,7 @@ arch=("x86_64" "i686")
 url="https://github.com/nu774/m4acut"
 license=("ZLIB" "BSD")
 depends=("l-smash")
-source=("https://github.com/nu774/m4acut/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/nu774/m4acut/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=("16e4637d278113afd99823c9b34cc62263a7b008c3cd9ef934fc09672de03439")
 
 prepare() {

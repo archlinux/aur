@@ -8,8 +8,7 @@ pkgbase = m4acut
 	license = ZLIB
 	license = BSD
 	depends = l-smash
-	source = https://github.com/nu774/m4acut/archive/v0.1.2.tar.gz
+	source = m4acut-0.1.2.tar.gz::https://github.com/nu774/m4acut/archive/refs/tags/v0.1.2.tar.gz
 	sha256sums = 16e4637d278113afd99823c9b34cc62263a7b008c3cd9ef934fc09672de03439
 
 pkgname = m4acut
-
