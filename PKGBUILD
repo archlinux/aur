@@ -9,7 +9,7 @@ _kernel=linux-radxa-rkbsp5
 pkgbase=$_kernel-git
 pkgname=("${pkgbase}-headers" $pkgbase)
 pkgver=$_pkgver
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 license=('GPL2')
 url="https://github.com/${_user}"
@@ -57,7 +57,7 @@ source=(git+https://github.com/$_user/$_kernelrepo.git#branch=$_kernelbranch
 		'0026-Enable_AV1_decoder_on_3588.patch')
 b2sums=('SKIP'
         'SKIP'
-        'b5ebfe78b703b7d5ea31be16513ff4e91d0ca7f13657c6d09ff92ef4f1566bf501a4b536b7f48791055d0b327724ada23a3f5a34247c5effe3fe2ff7e1acd8eb'
+        'bd296f775df973c6dcb6bd8311ce4d3af9a8d4a67905f17c450cae776aab0229987d473334d38fd102a34ed483a121f67ac58a48fd9e6fab2c714c7079e06613'
         'd8208257c8f2e23a9dbcf2a1bbd11b5a638679cd49dd03d4ea190d1ecd94e2760cccb2cd1cda890816a9c338ce2f38c859961f4ab3a22fca458a453ca0d5f2fc'
         '74b6d76888267785ac99e58bdb852c667865d44353821c01052734d58e1213c16290aabff7ae6c95ac6b24893fe5109897f949d814ccec55cc69af9885fc62f6'
         '461eb48692574f48d37a9a236b3a17992493cf07a39ab72f78fa0ac4f04e3ff9896f16e721c111f865d9aa3d3f0d7b7c082fe2f319eee0e1a6c54db44f0a6e53'
