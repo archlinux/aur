@@ -1,11 +1,11 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=wavpack-git
-pkgver=5.5.0.r0.g89ef99e
+pkgver=5.6.0.r35.g9b33692
 pkgrel=1
 pkgdesc="An open audio compression format providing lossless, high-quality lossy, and a unique hybrid compression mode"
 arch=('i686' 'x86_64')
-url="http://www.wavpack.com/"
+url="https://www.wavpack.com/"
 license=('BSD')
 depends=('glibc')
 makedepends=('git')
