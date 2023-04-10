@@ -1,11 +1,11 @@
 pkgbase = typst-lsp
 	pkgdesc = Language server for Typst
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nvarner/typst-lsp
 	arch = i686
 	arch = x86_64
-	license = apache
+	license = Apache
 	license = MIT
 	makedepends = rust
 	depends = gcc-libs
