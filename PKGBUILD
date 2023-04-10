@@ -2,7 +2,7 @@
 # Maintainer: RoiArthurB
 # Contributor: RoiArthurB
 pkgname=gama-platform-jdk
-pkgver=1.8.2.rc2
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="GAMA is a modeling and simulation development environment for building spatially explicit agent-based simulations. JDK embedded version"
 arch=('x86_64')
@@ -13,8 +13,8 @@ replaces=('gama-platform-jdk')
 conflicts=('gama-platform')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("https://github.com/gama-platform/gama/releases/download/1.8.2-RC2/GAMA_1.8.2-RC2_Linux_with_JDK.deb")
-sha512sums_x86_64=('c5f6c6cac544d195c8cc3cb8af92ccf04f601114455edfb734afdde760617a6f2bcccd3fe401cdf08e270df5581e615880606b00e3061b8335bdbdd4fe173793')
+source_x86_64=("https://github.com/gama-platform/gama/releases/download/1.9.0/GAMA_1.9.0_Linux_with_JDK.deb")
+sha512sums_x86_64=('cbd3cb98cec5d14d9ddf4f0d291f109376332b385a301cc75bd8d8b5e8bdcc9bc301b900746934cc5775511faa51e5aff62c1b8d882eea09dc69742d6e9ba78a')
 
 package(){
 
