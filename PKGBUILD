@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=help2man-git
-pkgver=1.47.13.r0.gfbec3d0
+pkgver=1.49.3.r0.g0503f54
 pkgrel=1
 pkgdesc="Tool for generating manual pages from program output"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.gnu.org/software/help2man/"
 license=('GPL')
 depends=('perl-locale-gettext')
 makedepends=('git' 'gettext' 'po4a')
-provides=('help2man')
+provides=("help2man=$pkgver")
 conflicts=('help2man')
 source=("git+https://salsa.debian.org/bod/help2man.git")
 sha256sums=('SKIP')
