@@ -4,7 +4,7 @@
 
 pkgname=python-ipdb
 pkgver=0.13.12
-pkgrel=2
+pkgrel=3
 pkgdesc="IPython-enabled pdb"
 url="https://pypi.python.org/pypi/ipdb"
 arch=("any")
