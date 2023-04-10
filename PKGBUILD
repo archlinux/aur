@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=bazelisk-git
-pkgver=1.15.0.r2.gb484ae2
+pkgver=1.16.0.r4.gb76d71d
 pkgrel=1
 pkgdesc="A user-friendly launcher for Bazel"
 arch=('i686' 'x86_64')
 url="https://github.com/bazelbuild/bazelisk"
-license=('apache')
+license=('Apache')
 depends=('glibc')
 makedepends=('git' 'go')
 provides=("bazelisk=$pkgver" 'bazel')
