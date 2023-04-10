@@ -1,6 +1,6 @@
 pkgbase = pnpm-bin
 	pkgdesc = Fast, disk space efficient package manager
-	pkgver = 8.1.1
+	pkgver = 8.2.0
 	pkgrel = 1
 	url = https://github.com/pnpm/pnpm
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = pnpm-bin
 	conflicts = pnpm
 	conflicts = pnpm-git
 	options = !strip
-	source = pnpm-8.1.1::https://github.com/pnpm/pnpm/releases/download/v8.1.1/pnpm-linux-x64
-	sha256sums = a670878695179ea6a086371d9126c74488f0ca9b1799940b8d582fe6b80215e1
+	source = pnpm-8.2.0::https://github.com/pnpm/pnpm/releases/download/v8.2.0/pnpm-linux-x64
+	sha256sums = 6a30e5a7db9af9d74eb921c26cf6c5c51497f5e62c8007cce5446655f1bebfed
 
 pkgname = pnpm-bin
