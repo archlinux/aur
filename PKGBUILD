@@ -8,12 +8,13 @@ arch=('any')
 _github="https://github.com"
 _ns="ferdi2005"
 url="${_github}/${_ns}/${pkgname}"
+_url="${_github}/tallero/${pkgname}"
 depends=("ruby-httparty"
          "ruby-addressable"
          "ruby-mediawiki_api")
 license=("MIT")
 _commit="e0860e75df541ab5dcde57a7ca27e4d09d513aac"
-source=("${pkgname}::git+${url}")
+source=("${pkgname}::git+${_url}")
 sha256sums=("SKIP")
 
 package(){
