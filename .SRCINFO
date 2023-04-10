@@ -1,6 +1,6 @@
 pkgbase = confed
 	pkgdesc = Quickly edit configs preset by you
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/al1-ce/confed
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = confed
 	license = MIT
 	makedepends = dub
 	makedepends = dmd
-	source = confed-1.0.0.tar.gz::https://github.com/al1-ce/confed/archive/v1.0.0.tar.gz
+	source = confed-1.0.1.tar.gz::https://github.com/al1-ce/confed/archive/v1.0.1.tar.gz
 	md5sums = SKIP
 
 pkgname = confed
