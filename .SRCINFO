@@ -1,6 +1,6 @@
 pkgbase = libgpg-error-git
 	pkgdesc = Error codes library used by GnuPG et al.
-	pkgver = 1.36.r2.g86cb22a
+	pkgver = 1.47.r3.g9c17795
 	pkgrel = 1
 	url = https://www.gnupg.org/software/libgpg-error/index.html
 	arch = i686
@@ -9,10 +9,9 @@ pkgbase = libgpg-error-git
 	makedepends = git
 	depends = glibc
 	depends = sh
-	provides = libgpg-error
+	provides = libgpg-error=1.47.r3.g9c17795
 	conflicts = libgpg-error
 	source = git+https://dev.gnupg.org/source/libgpg-error.git
 	sha256sums = SKIP
 
 pkgname = libgpg-error-git
-
