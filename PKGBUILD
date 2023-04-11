@@ -1,40 +1,31 @@
-# Maintainer: Nils Czernia <nils [at] czserver.de>
-
+# Maintainer: thorko contact@thorko.de
 pkgname=loki-bin
-_pkgname=loki
-pkgver=1.2.0
-pkgrel=1
-pkgdesc="Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation system inspired by Prometheus"
-url="https://grafana.com/oss/loki/"
-license=("Apache")
-arch=("x86_64" "armv7h" "aarch64")
-backup=("etc/loki/loki.yml")
-source=("loki.service"
-        "loki.sysusers"
-        "https://raw.githubusercontent.com/grafana/loki/v${pkgver}/cmd/loki/loki-local-config.yaml")
+pkgver=
+pkgrel=
+pkgdesc="Loki: like Prometheus, but for logs."
+arch=('x86_64')
+url='https://github.com/grafana/loki'
+license=('AGPL-3.0-only')
+source_x86_64=("https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${pkgver}-linux-x86_64.tar.gz")
+sha256sums_x86_64=('2e22f54f74792726f1ade4311ecca8079bfd6c1f5a7d15670b7e438782ae578d')
 
-source_x86_64=("https://github.com/grafana/loki/releases/download/v${pkgver}/${_pkgname}-linux-amd64.zip")
-source_armv7h=("https://github.com/grafana/loki/releases/download/v${pkgver}/${_pkgname}-linux-arm.zip")
-source_aarch64=("https://github.com/grafana/loki/releases/download/v${pkgver}/${_pkgname}-linux-arm64.zip")
-sha256sums=('d83da3cb1a974d0feced4afebbb8f09a6518a7cab5e42b0d30948d328dac2d85'
-            '1c0eee36cb10f4283913c300986a85d9170282dd0223207ed032cc298e9cb491'
-            '1dbfb2831466979093653ed08237be247cd0fb7a36da6316e5c7bcb3c192aba1')
-sha256sums_x86_64=('f78d432034737e5fde993e5ae6a6e6592e5ced4d2c6d2220f30cbfdea8cfd446')
-sha256sums_armv7h=('f0d01a624ca1f92e928ce43823fb37d0b51305c2da964d17feec0bef704a1e95')
-sha256sums_aarch64=('5dba7fd149142750c1b333a86029b70b150c05b92d51938b1f81ce8557cff981')
+source=(
+  "elasticsearch.service"
+  "sysctl.conf"
+  "users.conf"
+)
 
+sha256sums=(
+  'e42a11bfcacad2d600dad28f88d94553a03e598eba69c58f677a61b2e7ea4e7b'
+  'b3feb1e9c7e7ce6b33cea6c727728ed700332aae942ca475c3bcc1d56b9f113c'
+  'fc9683349457f56bcd044cd8e711bc8efd43d32f9547d5b21a66650c6dfbed73'
+)
 
 package() {
-	case "$CARCH" in
-		"x86_64") ARCH="amd64";;
-		"armv7h") ARCH="arm";;
-		"aarch64") ARCH="arm64";;
-	esac
-
-	cd "${srcdir}"
-	install -D -m0644 "loki.service" "${pkgdir}/usr/lib/systemd/system/loki.service"
-	install -D -m0644 "loki.sysusers" "${pkgdir}/usr/lib/sysusers.d/loki.conf"
-	install -D -m0644 "loki-local-config.yaml" "${pkgdir}/etc/loki/loki.yml"
-	
-	install -D -m0755 "${_pkgname}-linux-$ARCH" "${pkgdir}/usr/bin/loki"
+    mkdir -p "${pkgdir}/opt"
+    cp -R "${srcdir}/elasticsearch-${pkgver}" "${pkgdir}/opt/elasticsearch"
+    install -Dm0644 "elasticsearch.service" "${pkgdir}/etc/systemd/system/elasticsearch.service"
+    install -Dm0644 "sysctl.conf" "${pkgdir}/usr/lib/sysctl.d/elasticsearch.conf"
+    install -Dm0644 "users.conf" "${pkgdir}/usr/lib/sysusers.d/elasticsearch.conf"
+>>>>>>> 00e6e3b (update PKGBUILD)
 }
