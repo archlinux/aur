@@ -2,7 +2,7 @@
 
 _gemname=ruby_version
 pkgname=ruby-${_gemname}
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Adds the RubyVersion pseudo-constant"
 arch=(any)
@@ -13,7 +13,7 @@ checkdepends=(ruby-rspec)
 makedepends=(rubygems ruby-rdoc)
 options=(!emptydirs)
 source=(https://github.com/janlelis/ruby_version/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
-sha256sums=('cabe4c44f73bfad606d0ff4b61ed42270f4b38c03d37da5a9bf30b53e3b7126a')
+sha256sums=('6ca78ef835ee1cd8259bf8cd65687b04d0c76724145888a6465ba29de141410f')
 
 prepare() {
   cd $_gemname-$pkgver
@@ -44,7 +44,7 @@ package() {
   rm -rf "$pkgdir/$_gemdir/cache"
 
   install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm0644 README.rdoc "$pkgdir/usr/share/doc/$pkgname/README.rdoc"
+  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm0644 ChangeLog.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
 }
 
