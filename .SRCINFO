@@ -1,0 +1,17 @@
+pkgbase = jupyter-pythreejs
+	pkgdesc = Interactive 3D graphics for the Jupyter Notebook and JupyterLab, using Three.js and Jupyter Widgets
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = https://github.com/jupyter-widgets/pythreejs
+	arch = x86_64
+	license = custom:BSD-3-clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = jupyterlab
+	makedepends = python-wheel
+	makedepends = npm
+	depends = python-ipydatawidgets
+	source = pythreejs-2.4.1.tar.gz::https://github.com/jupyter-widgets/pythreejs/archive/2.4.1.tar.gz
+	sha512sums = 093498184c9fec09ff77de09c8f20309dea065b2bb23a210997b91bb12ad3464af6af0273852d2c4173a2356c0b6be4cc4732f02c2d00cb0b35580d30a6e740e
+
+pkgname = jupyter-pythreejs
