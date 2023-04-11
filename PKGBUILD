@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libimagequant-git
-pkgver=2.15.1.r11.gb075eb0
+pkgver=4.1.1.r11.gdc3e6d1
 pkgrel=1
 pkgdesc="Palette quantization library"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://pngquant.org/lib/"
 license=('custom')
 depends=('glibc')
 makedepends=('git')
-provides=('libimagequant')
+provides=("libimagequant=$pkgver")
 conflicts=('libimagequant')
 options=('staticlibs')
 source=("git+https://github.com/ImageOptim/libimagequant.git")
@@ -28,7 +28,9 @@ build() {
   ./configure \
     --prefix="/usr" \
     --with-openmp
-  make libimagequant.so static
+  make \
+    libimagequant.so \
+    static
 }
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = libimagequant-git
 	pkgdesc = Palette quantization library
-	pkgver = 2.15.1.r11.gb075eb0
+	pkgver = 4.1.1.r11.gdc3e6d1
 	pkgrel = 1
 	url = https://pngquant.org/lib/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = libimagequant-git
 	license = custom
 	makedepends = git
 	depends = glibc
-	provides = libimagequant
+	provides = libimagequant=4.1.1.r11.gdc3e6d1
 	conflicts = libimagequant
 	options = staticlibs
 	source = git+https://github.com/ImageOptim/libimagequant.git
