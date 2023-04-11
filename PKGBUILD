@@ -2,15 +2,15 @@
 # Previous maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=libarchive-git
-pkgver=3.4.1.r1.gded60625
-pkgrel=2
+pkgver=3.6.2.r19.gaa091636
+pkgrel=1
 pkgdesc="Multi-format archive and compression library"
 arch=('i686' 'x86_64')
 url="https://libarchive.org/"
 license=('BSD' 'custom')
 depends=('glibc' 'acl' 'attr' 'bzip2' 'expat' 'lz4' 'openssl' 'xz' 'zlib' 'zstd')
 makedepends=('git')
-provides=('libarchive')
+provides=("libarchive=$pkgver")
 conflicts=('libarchive')
 options=('staticlibs')
 source=("git+https://github.com/libarchive/libarchive.git")
