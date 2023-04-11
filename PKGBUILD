@@ -1,19 +1,11 @@
 # shellcheck shell=bash disable=SC2034,SC2154
-# Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
-# https://aur.archlinux.org/packages/updaurpkg-git
-# $ updaurpkg --apply
-_repo=Freed-Wu/repl-python-codestats
-_source_type=pypi-releases
-_upstreamver='0.0.3'
-_pkgname=$(tr A-Z a-z <<<${_repo##*/})
-_pypi_package=$_pkgname
-
+_pkgname=repl-python-codestats
 pkgname=python-$_pkgname
-pkgver=${_upstreamver##v}
+pkgver=0.0.3
 pkgrel=1
-pkgdesc=""
+pkgdesc="A codestats plugin for python REPLs"
 arch=(any)
-url=https://github.com/$_repo
+url=https://github.com/Freed-Wu/repl-python-codestats
 depends=(python-repl-python-wakatime)
 makedepends=(python-installer)
 optdepends=(
@@ -24,7 +16,7 @@ optdepends=(
 license=(GPLv3)
 _py=py3
 source=(
-	"https://files.pythonhosted.org/packages/$_py/${_pkgname:0:1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-none-any.whl"
+	"$url/releases/download/$pkgver/${_pkgname//-/_}-$pkgver-py3-none-any.whl"
 )
 sha256sums=('b6fa1f0b76a9a9ba39e59b8d222e54da5c174c5d8ee6818b2f82bc21fa7c4ee9')
 
