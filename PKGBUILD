@@ -12,7 +12,7 @@
 
 _extractedName="google-cloud-sdk"
 pkgname="google-cloud-cli"
-pkgver=424.0.0
+pkgver=426.0.0
 pkgrel=1
 pkgdesc="A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq."
 url="https://cloud.google.com/cli/"
@@ -30,7 +30,7 @@ source=(
   "0001-set-python2-for-dev-appserver-py.patch"
   "0003-add-compdef-to-zsh-completion.patch"
 )
-sha256sums=('c1df4110a2d18a63023064a0aab6924859c473b522da692b64a51944464885e3'
+sha256sums=('2422c36afc153c879fb527d0cf8ceb031bf013d9c9fef58c4ac2b3c40eb2fbc2'
             'e03ffb8a534b175dc497621a0396bcc29884279daa519e2cb90bd98c61d6530a'
             '62ec7f56e09168d375823e9e99fcdcfbf40b0fffdd75f35cf91122c5902c82e9'
             '4694f5191ceea7cf8076861ce5790ba9e809023da278b0f6ed862b9611e5aa93')
