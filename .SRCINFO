@@ -15,6 +15,7 @@ pkgbase = widgie-git
 	makedepends = xcb-util-image
 	makedepends = xorgproto
 	optdepends = ttf-nerd-fonts-symbols-1000-em: (or a nerd font) for icon support
+	provides = widgie
 	conflicts = widgie
 	source = git+https://gitlab.com/manner/widgie
 	sha256sums = SKIP

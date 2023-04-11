@@ -8,6 +8,7 @@ arch=('x86_64' 'aarch64')
 url="https://gitlab.com/manner/widgie"
 license=('GPL3')
 conflicts=('widgie')
+provides=('widgie')
 depends=()
 optdepends=("ttf-nerd-fonts-symbols-1000-em: (or a nerd font) for icon support")
 makedepends=(wayland-protocols wayland libxkbcommon freetype2 libxkbcommon-x11 libxcb xcb-util-image xorgproto)
