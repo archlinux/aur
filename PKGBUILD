@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libopusenc-git
-pkgver=0.2.1.r2.g9cb17c6
+pkgver=0.2.1.r16.ge4285b5
 pkgrel=1
 pkgdesc="High-level API for encoding .opus files"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://opus-codec.org/"
 license=('BSD')
 depends=('glibc' 'opus')
 makedepends=('git')
-provides=('libopusenc')
+provides=("libopusenc=$pkgver")
 conflicts=('libopusenc')
 options=('staticlibs')
 source=("git+https://gitlab.xiph.org/xiph/libopusenc.git")
