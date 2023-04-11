@@ -1,6 +1,6 @@
 pkgbase = wine-lol-bin
 	pkgdesc = A compatibility layer for running Windows programs - GloriousEggroll custom wine build for running League of Legends
-	pkgver = 7.0_5
+	pkgver = 7.0_8
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/GloriousEggroll/wine-ge-custom
@@ -92,9 +92,9 @@ pkgbase = wine-lol-bin
 	options = staticlibs
 	options = !lto
 	options = !strip
-	source = https://github.com/GloriousEggroll/wine-ge-custom/releases/download/7.0-GE-5-LoL/wine-lutris-ge-lol-7.0-5-x86_64.tar.xz
+	source = https://github.com/GloriousEggroll/wine-ge-custom/releases/download/7.0-GE-8-LoL/wine-lutris-ge-lol-7.0.8-x86_64.tar.xz
 	source = 30-win32-aliases.conf
-	sha512sums = 5046c0b498c28204625502dae070d7ed19cd87491ddf5815ed104a92d0d9404df366ff634971c7416e45033b373a3a1e13951f46167937bed294d1dbb61d0dd4
+	sha512sums = 1b161e2e38e12de8bdb7cdd4ea1e81de8b20181901f0b5e01e001e99624ac6bcc9be83e0b6a993c9bb190dd1b1a1f8efb001e795cf1390c0e03427d4a5384265
 	sha512sums = 6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb
 
 pkgname = wine-lol-bin
