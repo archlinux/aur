@@ -4,12 +4,12 @@
 pkgname=repgrep
 _pkgname=rgr
 pkgver=0.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An interactive command line replacer for ripgrep"
 arch=('x86_64')
 url="https://github.com/acheronfail/repgrep"
 license=('MIT' 'Apache' 'Unlicense')
-depends=('gcc-libs')
+depends=('gcc-libs' 'ripgrep')
 makedepends=('cargo' 'asciidoctor')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha512sums=('ef7e8babbeec12256f7b5fcfe354b24e384de5937d6d5a702370241e2d0f62188ddb416925a520a478f2c93b67669e7ee10aa4428506dee129027825ac48dbd9')
