@@ -1,7 +1,7 @@
 pkgbase = rss-glx
 	pkgdesc = The Really Slick Screensavers port to GLX
 	pkgver = 0.9.1
-	pkgrel = 33
+	pkgrel = 34
 	url = http://rss-glx.sourceforge.net/
 	install = rss-glx.install
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = rss-glx
 	depends = libmagick6
 	depends = glu
 	optdepends = xscreensaver: xscreensaver integration
-	source = git://github.com/sirspudd/rss-glx.git
+	source = git+https://github.com/sirspudd/rss-glx.git
 	source = rss-glx-desktops.tar.bz2
 	md5sums = SKIP
 	md5sums = 4211215c9a4918b0dff30a7000647dd9

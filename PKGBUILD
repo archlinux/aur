@@ -5,7 +5,7 @@
 
 pkgname=rss-glx
 pkgver=0.9.1
-pkgrel=33
+pkgrel=34
 pkgdesc="The Really Slick Screensavers port to GLX"
 arch=('x86_64')
 url="http://rss-glx.sourceforge.net/"
@@ -13,7 +13,7 @@ license=('GPL')
 depends=('freealut' 'glew' 'libmagick6' 'glu')
 optdepends=('xscreensaver: xscreensaver integration')
 install=rss-glx.install
-source=(git://github.com/sirspudd/rss-glx.git
+source=(git+https://github.com/sirspudd/rss-glx.git
         rss-glx-desktops.tar.bz2)
 md5sums=('SKIP'
          '4211215c9a4918b0dff30a7000647dd9')
@@ -30,7 +30,7 @@ build() {
     --with-configdir=/usr/share/xscreensaver/config \
     --with-kdessconfigdir=/usr/share/applnk/System/ScreenSavers \
     --enable-shared=yes --enable-static=no
-  make CFLAGS="$CFLAGS -I/usr/include/ImageMagick"
+  make CFLAGS="$CFLAGS -I/usr/include/ImageMagick-6"
 }
 
 package() {
