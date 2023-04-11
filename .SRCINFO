@@ -1,6 +1,6 @@
 pkgbase = katana-git
 	pkgdesc = A next-generation crawling and spidering framework
-	pkgver = 0.0.3.r3.g16b03e9
+	pkgver = 1.0.1.r0.g846693f
 	pkgrel = 1
 	url = https://github.com/projectdiscovery/katana
 	arch = x86_64
