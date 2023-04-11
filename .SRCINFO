@@ -29,6 +29,7 @@ pkgbase = mangohud-lw-git
 	conflicts = mangohud-git
 	conflicts = mangohud-common
 	conflicts = mangohud-common-git
+	options = lto
 	source = mangohud::git+https://github.com/flightlessmango/MangoHud.git
 	source = mangohud.sh
 	source = mangohud.conf
