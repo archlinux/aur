@@ -3,7 +3,7 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname='vapoursynth-editor'
-pkgver=r19_mod_6.1
+pkgver=r19_mod_6.2
 pkgrel=1
 pkgdesc='Cross-platform editor for VapourSynth scripts'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('CCPL' 'LGPL' 'MIT')
 depends=('qt6-5compat' 'qt6-base' 'qt6-websockets' 'vapoursynth>=R58')
 source=("https://github.com/YomikoR/VapourSynth-Editor/archive/refs/tags/${pkgver//_/-}.tar.gz"
         'vsedit.desktop')
-sha256sums=('6b5db673eee98fa0c2f2676bc61a6a6a8aa72c496e414e603a719d3681141636'
+sha256sums=('398447c31758e44beacbf70de527083d8319e2c909a9bf61cdb8386ec9c88734'
             'b6d24441cf5746ea4dc08ecf379c67695bac663deb394db4334ba6aba9474c0f')
 
 build() {
