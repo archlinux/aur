@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=lizard-git
-pkgver=1.0.r3.g6a1ed71
+pkgver=1.0.r9.gaf8518c
 pkgrel=1
 pkgdesc="An efficient compressor with very fast decompression"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/inikep/lizard"
 license=('GPL2' 'BSD')
 depends=('glibc')
 makedepends=('git')
-provides=('lizard')
+provides=("lizard=$pkgver")
 conflicts=('lizard')
 source=("git+https://github.com/inikep/lizard.git")
 sha256sums=('SKIP')
@@ -36,6 +36,9 @@ check() {
 package() {
   cd "lizard"
 
-  make DESTDIR="$pkgdir" PREFIX="/usr" install
-  install -Dm644 "lib/LICENSE" "$pkgdir/usr/share/licenses/lizard/LICENSE"
+  make \
+    DESTDIR="$pkgdir" \
+    PREFIX="/usr" \
+    install
+  install -Dm644 "lib/LICENSE" -t "$pkgdir/usr/share/licenses/lizard"
 }
