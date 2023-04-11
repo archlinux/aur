@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=jansson-git
-pkgver=2.12.r3.gb333f36
+pkgver=2.14.r17.gbde2846
 pkgrel=1
 pkgdesc="C library for encoding, decoding and manipulating JSON data"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://digip.org/jansson/"
 license=('MIT')
 depends=('glibc')
 makedepends=('git')
-provides=('jansson')
+provides=("jansson=$pkgver")
 conflicts=('jansson')
 options=('staticlibs')
 source=("git+https://github.com/akheron/jansson.git")

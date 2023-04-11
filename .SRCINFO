@@ -1,6 +1,6 @@
 pkgbase = jansson-git
 	pkgdesc = C library for encoding, decoding and manipulating JSON data
-	pkgver = 2.12.r3.gb333f36
+	pkgver = 2.14.r17.gbde2846
 	pkgrel = 1
 	url = https://digip.org/jansson/
 	arch = i686
@@ -8,11 +8,10 @@ pkgbase = jansson-git
 	license = MIT
 	makedepends = git
 	depends = glibc
-	provides = jansson
+	provides = jansson=2.14.r17.gbde2846
 	conflicts = jansson
 	options = staticlibs
 	source = git+https://github.com/akheron/jansson.git
 	sha256sums = SKIP
 
 pkgname = jansson-git
-
