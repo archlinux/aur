@@ -5,14 +5,13 @@ pkgver=0.15.2
 pkgrel=1
 pkgdesc='Official GUI for the Netbird client'
 url='https://netbird.io'
-arch=(x86_64 aarch64 armv7h armv7l armv6h)
+arch=(i686 pentium4 x86_64 arm armv7h armv6h aarch64 riscv64)
 license=(BSD)
 
-provides=("$pkgname")
-conflicts=("$pkgname")
+provides=($pkgname)
+conflicts=($pkgname)
 depends=(netbird gtk3 libayatana-appindicator)
-makedepends=(go)
-optdepends=()
+makedepends=('go>=1.19')
 
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v$pkgver.tar.gz"
