@@ -2,7 +2,7 @@
 
 pkgname=('clang-prefixed-release')
 #pkgver=15.0.7
-_pkgver=16.0.0
+_pkgver=16.0.1
 _pkg_suffix=
 _pkgver_suffix=${_pkgver}
 _pkgver_dash_suffix=${_pkgver}
@@ -23,7 +23,7 @@ checkdepends=("python-psutil")
 #source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/llvm-project-${pkgver}.src.tar.xz")
 source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${_pkgver_dash_suffix}/llvm-project-${_pkgver_suffix}.src.tar.xz")
 
-sha512sums=('3f040abc1b03205693824aeff2ee6efb0cff25fe04bd5265141c093f294655a1f3fcda73cab9c57cbed7523c8f186a7e2484afce0792c55e90e3fb80450fabb7')
+sha512sums=('98fc11c0ad90d5e5a2cb123b497b89a1583fe7f91b3ff05c335037801ef66cbfab08f6d2eff539f0da238e9685d4bc7a9fb2578e28864fc9e9357b84129cefaa')
 
 prefix_path="/opt/clang"
 install_path="${prefix_path}/${pkgver}"
@@ -61,11 +61,11 @@ build() {
             -DCMAKE_BUILD_TYPE=Release \
             ${srcdir}/llvm-project-${_pkgver_suffix}.src/llvm
 
-    time ninja -C _build
+    time ninja -C _build > ${pkgname}-build.log
 }
 
 package() {
-    DESTDIR="$pkgdir" ninja -C _build install
+    DESTDIR="$pkgdir" ninja -C _build install > ${pkgname}-install.log
 
     cd ${pkgdir}${prefix_path}
     ln -s ${pkgver} latest
