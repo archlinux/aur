@@ -1,5 +1,6 @@
 pkgbase = python-repl-python-codestats
-	pkgver = 0.0.3
+	pkgdesc = A codestats plugin for python REPLs
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/repl-python-codestats
 	arch = any
@@ -9,7 +10,7 @@ pkgbase = python-repl-python-codestats
 	optdepends = keyring: use keyring to restore API key
 	optdepends = ptpython: support ptpython
 	optdepends = ipython: support ipython
-	source = https://files.pythonhosted.org/packages/py3/r/repl-python-codestats/repl_python_codestats-0.0.3-py3-none-any.whl
-	sha256sums = b6fa1f0b76a9a9ba39e59b8d222e54da5c174c5d8ee6818b2f82bc21fa7c4ee9
+	source = https://github.com/Freed-Wu/repl-python-codestats/releases/download/0.0.6/repl_python_codestats-0.0.6-py3-none-any.whl
+	sha256sums = 838fe8d7fdcbce57c091448432592f135187a166d09107cf8a9b13741ac429a0
 
 pkgname = python-repl-python-codestats
