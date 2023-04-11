@@ -1,7 +1,7 @@
 pkgbase = python-dbx
 	pkgdesc = DataBricks CLI eXtensions - aka dbx is a CLI tool for advanced Databricks jobs management.
 	pkgver = 0.8.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.databricks.com/dev-tools/dbx.html
 	arch = any
 	license = CUSTOM
@@ -25,7 +25,7 @@ pkgbase = python-dbx
 	depends = python-pydantic>=1.9.1
 	depends = python-pydantic<=2.0.0
 	depends = python-cryptography>=3.3.1
-	depends = python-cryptography<40.0.0
+	depends = python-cryptography<41.0.0
 	depends = python-cookiecutter>=1.7.2
 	depends = python-cookiecutter<3.0.0
 	depends = python-jinja>=2.11.2
