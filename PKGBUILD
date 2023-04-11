@@ -4,7 +4,7 @@ _pkgname=epiR
 _pkgver=2.0.60
 pkgname=r-${_pkgname,,}
 pkgver=2.0.60
-pkgrel=1
+pkgrel=3
 pkgdesc='Tools for the Analysis of Epidemiological Data'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -25,14 +25,13 @@ optdepends=(
   r-ggplot2
   r-knitr
   r-mapproj
-  r-maptools
   r-mass
   r-plyr
   r-rcolorbrewer
-  r-rgdal
   r-rgeos
   r-rmarkdown
   r-scales
+  r-sp
   r-spatstat
   r-spdata
   r-tidyr
