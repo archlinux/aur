@@ -1,7 +1,7 @@
 # Maintainer: Marco Pompili <aur@mg.odd.red>
 
 pkgname=libfixbuf
-pkgver=3.0.0.alpha1
+pkgver=3.0.0.alpha2
 pkgrel=1
 pkgdesc="A compliant implementation of the IPFIX Protocol, (RFC 5101)."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=("LGPL")
 groups=("netsa")
 depends=("glib2>=2.6.4")
 source=("http://tools.netsa.cert.org/releases/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('49dfc9de3fc47f62b746b08baadd3acc5c3883f3ee4e4802e159207b77fff302')
+sha256sums=('0ff11bf5fcb48a2e6ea791e800de3cd29e868bb298a734e87335d37f38e1c263')
 
 build () {
   cd "$srcdir/$pkgname-$pkgver"
