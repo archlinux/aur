@@ -33,6 +33,6 @@ check() {
 package() {
   cd "${srcdir}/${pkgname}"
   install -Dm755 bin/fry "${pkgdir}/usr/local/bin/fry"
-  install -Dm644 man/fry.1 "${pkgdir}/usr/local/share/man/man1/fry.1"
+  install -Dm644 man/fry.1 "${pkgdir}/usr/local/man/man1/fry.1"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
