@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=js-beautify-git
-pkgver=1.13.0.r2.g5c00e1d7
+pkgver=1.14.7.r19.g686f8c1b
 pkgrel=1
 pkgdesc="Beautifier for javascript"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://beautifier.io/"
 license=('MIT')
 depends=('nodejs')
 makedepends=('git' 'npm')
-provides=('js-beautify')
+provides=("js-beautify=$pkgver")
 conflicts=('js-beautify')
 source=("git+https://github.com/beautify-web/js-beautify.git")
 sha256sums=('SKIP')

@@ -1,6 +1,6 @@
 pkgbase = js-beautify-git
 	pkgdesc = Beautifier for javascript
-	pkgver = 1.13.0.r2.g5c00e1d7
+	pkgver = 1.14.7.r19.g686f8c1b
 	pkgrel = 1
 	url = https://beautifier.io/
 	arch = any
@@ -8,10 +8,9 @@ pkgbase = js-beautify-git
 	makedepends = git
 	makedepends = npm
 	depends = nodejs
-	provides = js-beautify
+	provides = js-beautify=1.14.7.r19.g686f8c1b
 	conflicts = js-beautify
 	source = git+https://github.com/beautify-web/js-beautify.git
 	sha256sums = SKIP
 
 pkgname = js-beautify-git
-
