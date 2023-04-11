@@ -18,18 +18,18 @@ index fcd341238..6641a0316 100644
  
  
 diff --git a/cmake/SearchForStuff.cmake b/cmake/SearchForStuff.cmake
-index f4d88a186..eb0399dc6 100644
+index 1f986efd2..8aacf7b4f 100644
 --- a/cmake/SearchForStuff.cmake
 +++ b/cmake/SearchForStuff.cmake
-@@ -76,7 +76,6 @@ else()
+@@ -79,7 +79,6 @@ else()
  	check_lib(SOUNDTOUCH SoundTouch SoundTouch.h PATH_SUFFIXES soundtouch)
  
- 	if(NOT QT_BUILD)
+ 	if(NOT QT_BUILD AND NOT APPLE)
 -		find_optional_system_library(SDL2 3rdparty/sdl2 2.0.12)
  	endif()
  
  	if(UNIX AND NOT APPLE)
-@@ -87,7 +86,6 @@ else()
+@@ -90,7 +89,6 @@ else()
  			find_package(Wayland REQUIRED)
  		endif()
  
@@ -37,7 +37,7 @@ index f4d88a186..eb0399dc6 100644
  	endif()
  endif(WIN32)
  
-@@ -173,8 +171,7 @@ if(NOT WIN32 AND QT_BUILD)
+@@ -176,8 +174,7 @@ if(NOT WIN32 AND QT_BUILD)
  	find_package(CURL REQUIRED)
  endif()
  
@@ -47,7 +47,7 @@ index f4d88a186..eb0399dc6 100644
  
  # rapidyaml includes fast_float as a submodule, saves us pulling it in directly.
  # Normally, we'd just pull in the cmake project, and link to it, but... it seems to enable
-@@ -188,7 +185,6 @@ add_subdirectory(3rdparty/jpgd EXCLUDE_FROM_ALL)
+@@ -191,7 +188,6 @@ add_subdirectory(3rdparty/jpgd EXCLUDE_FROM_ALL)
  add_subdirectory(3rdparty/simpleini EXCLUDE_FROM_ALL)
  add_subdirectory(3rdparty/imgui EXCLUDE_FROM_ALL)
  add_subdirectory(3rdparty/cpuinfo EXCLUDE_FROM_ALL)
