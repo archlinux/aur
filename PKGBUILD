@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=jsoncpp-git
-pkgver=1.9.4.r35.g94a6220
+pkgver=1.9.5.r4.g8190e06
 pkgrel=1
 pkgdesc="C++ library for interacting with JSON"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/open-source-parsers/jsoncpp"
 license=('MIT' 'custom')
 depends=('gcc-libs')
 makedepends=('git' 'cmake')
-provides=('jsoncpp' 'libjsoncpp.so')
+provides=("jsoncpp=$pkgver" 'libjsoncpp.so')
 conflicts=('jsoncpp')
 options=('staticlibs')
 source=("git+https://github.com/open-source-parsers/jsoncpp.git")
