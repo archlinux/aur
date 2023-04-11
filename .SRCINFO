@@ -1,6 +1,6 @@
 pkgbase = libseccomp-git
 	pkgdesc = Interface to the Linux Kernel's syscall filtering mechanism
-	pkgver = 2.5.0.r13.g3734fdc
+	pkgver = 2.5.4.r121.g744c9a8
 	pkgrel = 1
 	url = https://github.com/seccomp/libseccomp
 	arch = i686
@@ -9,11 +9,10 @@ pkgbase = libseccomp-git
 	makedepends = git
 	makedepends = gperf
 	depends = glibc
-	provides = libseccomp
+	provides = libseccomp=2.5.4.r121.g744c9a8
 	conflicts = libseccomp
 	options = staticlibs
 	source = git+https://github.com/seccomp/libseccomp.git
 	sha256sums = SKIP
 
 pkgname = libseccomp-git
-

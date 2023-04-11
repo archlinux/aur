@@ -3,7 +3,7 @@
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 
 pkgname=libseccomp-git
-pkgver=2.5.0.r13.g3734fdc
+pkgver=2.5.4.r121.g744c9a8
 pkgrel=1
 pkgdesc="Interface to the Linux Kernel's syscall filtering mechanism"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/seccomp/libseccomp"
 license=('LGPL')
 depends=('glibc')
 makedepends=('git' 'gperf')
-provides=('libseccomp')
+provides=("libseccomp=$pkgver")
 conflicts=('libseccomp')
 options=('staticlibs')
 source=("git+https://github.com/seccomp/libseccomp.git")
