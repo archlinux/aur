@@ -1,0 +1,29 @@
+pkgbase = keyringctl-git
+	pkgdesc = Tool to build, manage and inspect Web-of-Trust keyrings
+	pkgver = r170.da6c4af
+	pkgrel = 1
+	url = https://gitlab.archlinux.org/archlinux/keyringctl.git
+	arch = any
+	license = GPL3
+	checkdepends = python-black
+	checkdepends = flake8
+	checkdepends = python-isort
+	checkdepends = mypy
+	checkdepends = python-coverage
+	checkdepends = python-pytest
+	checkdepends = python-tomli
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-pdm
+	makedepends = python-pdm-pep517
+	depends = python
+	depends = sequoia-sq
+	optdepends = hopenpgp-tools: for verify command
+	optdepends = sequoia-keyring-linter: for verify command
+	optdepends = git: for ci command
+	source = keyringctl::git+https://gitlab.archlinux.org/xexaxo/keyringctl.git#branch=en-route-to-archpkg
+	sha512sums = SKIP
+
+pkgname = keyringctl-git
