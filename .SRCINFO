@@ -1,12 +1,12 @@
 pkgbase = mediawiki-extension-codemirror
 	pkgdesc = An extension for MediaWiki that provides syntax highlighting in the wikitext editor
-	pkgver = 1.39+r856+gfef7e8b2
+	pkgver = 1.39+r864+gced05256
 	pkgrel = 1
 	url = https://www.mediawiki.org/wiki/Extension:CodeMirror
 	arch = any
 	license = GPL
 	makedepends = git
-	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/CodeMirror.git#commit=fef7e8b285aee018c14cfdf7091404b438fbb8dd
+	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/CodeMirror.git#commit=ced052566040bb65d64825e618879c5a184ee642
 	sha512sums = SKIP
 
 pkgname = mediawiki-extension-codemirror
