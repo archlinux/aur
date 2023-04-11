@@ -2,14 +2,14 @@
 
 pkgname=lame-svn
 pkgver=r6507
-pkgrel=1
+pkgrel=2
 pkgdesc="A high quality MPEG Audio Layer III (MP3) encoder"
 arch=('i686' 'x86_64')
 url="https://lame.sourceforge.io/"
 license=('LGPL')
 depends=('glibc' 'mpg123' 'ncurses')
 makedepends=('subversion' 'nasm')
-provides=('lame')
+provides=("lame=$pkgver")
 conflicts=('lame')
 options=('staticlibs')
 source=("svn+https://svn.code.sf.net/p/lame/svn/trunk")

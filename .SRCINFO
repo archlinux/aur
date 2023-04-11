@@ -1,7 +1,7 @@
 pkgbase = lame-svn
 	pkgdesc = A high quality MPEG Audio Layer III (MP3) encoder
 	pkgver = r6507
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lame.sourceforge.io/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = lame-svn
 	depends = glibc
 	depends = mpg123
 	depends = ncurses
-	provides = lame
+	provides = lame=r6507
 	conflicts = lame
 	options = staticlibs
 	source = svn+https://svn.code.sf.net/p/lame/svn/trunk
