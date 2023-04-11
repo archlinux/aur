@@ -1,19 +1,11 @@
 # shellcheck shell=bash disable=SC2034,SC2154
-# Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
-# https://aur.archlinux.org/packages/updaurpkg-git
-# $ updaurpkg --apply
-_repo=Freed-Wu/help2man
-_source_type=pypi-releases
-_upstreamver='0.0.5'
-_pkgname=$(tr A-Z a-z <<<${_repo##*/})
-_pypi_package=$_pkgname
-
+_pkgname=help2man
 pkgname=python-$_pkgname
-pkgver=${_upstreamver##v}
+pkgver='0.0.5'
 pkgrel=1
 pkgdesc="Convert --help and --version to man page."
 arch=(any)
-url=https://github.com/$_repo
+url=https://github.com/Freed-Wu/help2man
 makedepends=(python-installer)
 depends=(python-jinja)
 conflicts=("$_pkgname")
