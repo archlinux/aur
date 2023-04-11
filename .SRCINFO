@@ -1,0 +1,13 @@
+pkgbase = python-mpl-interactions
+	pkgdesc = Matplotlib aware interact functions
+	pkgver = 0.22.2
+	pkgrel = 1
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/m/mpl_interactions/mpl_interactions-0.22.2.tar.gz
+	sha256sums = f7fa1fe07d44817a0a23b2aec48ecf019e57a3aba7a2a8315a37b671f4e9215a
+
+pkgname = python-mpl-interactions
+	depends = python
