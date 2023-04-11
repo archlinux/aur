@@ -9,7 +9,12 @@ pkgver=5.1.0
 pkgrel=1
 pkgdesc='Multi functional app to find duplicates, empty folders, similar images etc.'
 url='https://github.com/qarmin/czkawka'
-arch=('x86_64')
+arch=(
+  aarch64 #ALARM
+  armv7h  #ALARM
+  i686    #Arch Linux32
+  x86_64  #Arch Linux
+)
 license=('MIT')
 makedepends=(
   cargo
