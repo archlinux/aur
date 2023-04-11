@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libexif-git
-pkgver=0.6.22.r24.g977d8ff
+pkgver=0.6.24.r35.g1ce27bb
 pkgrel=1
 pkgdesc="A library for parsing, editing and saving EXIF data"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://libexif.github.io/"
 license=('LGPL')
 depends=('glibc')
 makedepends=('git')
-provides=('libexif' 'libexif.so')
+provides=("libexif=$pkgver" 'libexif.so')
 conflicts=('libexif')
 options=('staticlibs')
 source=("git+https://github.com/libexif/libexif.git")
