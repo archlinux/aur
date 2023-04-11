@@ -11,6 +11,6 @@ post_install() {
 
 post_upgrade() {
     echo -e "\033[1;31m###################################################################\033[0m"
-    echo -e "\n\033[1;31m#               Please redeploy rime to take effect.               #\033[0m"
+    echo -e "\033[1;31m#               Please redeploy rime to take effect.              #\033[0m"
     echo -e "\033[1;31m###################################################################\033[0m"
 }
