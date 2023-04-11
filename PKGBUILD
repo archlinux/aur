@@ -8,6 +8,7 @@ pkgdesc="applets for the COSMIC DE panel."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-applets"
 license=('GPL3')
+groups=('cosmic')
 depends=(
   'gtk4' 'libinput' 'libglvnd' 'libpipewire' 'libpulse'
   'libxkbcommon' 'pop-icon-theme' 'pop-launcher' 'systemd-libs' 'wayland'

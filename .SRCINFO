@@ -5,6 +5,7 @@ pkgbase = cosmic-applets-git
 	url = https://github.com/pop-os/cosmic-applets
 	arch = x86_64
 	arch = aarch64
+	groups = cosmic
 	license = GPL3
 	makedepends = cargo
 	makedepends = clang
