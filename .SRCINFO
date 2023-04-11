@@ -1,7 +1,7 @@
 pkgbase = radium7
 	pkgdesc = A graphical music editor. A next generation tracker.
 	pkgver = 7.1.88
-	pkgrel = 1
+	pkgrel = 2
 	url = https://users.notam02.no/~kjetism/radium
 	install = radium.install
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = radium7
 	depends = glu
 	depends = gsfonts
 	depends = hicolor-icon-theme
-	depends = jack2
+	depends = jack
 	depends = liblo
 	depends = liblrdf
 	depends = libmpc
