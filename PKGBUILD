@@ -1,8 +1,8 @@
 # Maintainer: Yuannan Lin [https://gitlab.com/yuannan] <yuannan@pm.me>
 
 pkgname=yamr
-pkgver=0.0.0.1
-pkgrel=4
+pkgver=0.0.0.2
+pkgrel=0
 pkgdesc='Yet Another Mirror Ranker. The fastest mirror ranker!⁺ A fast mirrorlist in seconds!'
 arch=('any')
 url='https://gitlab.com/yuannan/yamr'
