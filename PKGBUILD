@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libtiff-git
-pkgver=4.2.0.r7.gec8bdded
+pkgver=4.5.0.r66.g17adf430
 pkgrel=1
 pkgdesc="TIFF library and utilities"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('glibc' 'libjpeg' 'xz' 'zlib')
 makedepends=('git' 'freeglut' 'glu' 'jbigkit' 'mesa')
 optdepends=('freeglut: for using tiffgt')
-provides=('libtiff')
+provides=("libtiff=$pkgver")
 conflicts=('libtiff')
 options=('staticlibs')
 source=("git+https://gitlab.com/libtiff/libtiff.git")
