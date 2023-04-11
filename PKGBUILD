@@ -1,3 +1,6 @@
+# Maintainer: Froggo <Froggo8311@proton.me>
+# Contributor: h313 <harry@h313.info>
+
 pkgname=groupme
 pkgver=1.1.2
 pkgrel=1
