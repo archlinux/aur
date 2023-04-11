@@ -1,7 +1,7 @@
 pkgbase = libcorecrypto
 	pkgdesc = Library implementing Apple low-level cryptographic primitives
-	pkgver = 2020
-	pkgrel = 2
+	pkgver = 2021
+	pkgrel = 1
 	url = https://developer.apple.com/security/
 	arch = x86_64
 	arch = armv7h
@@ -13,7 +13,9 @@ pkgbase = libcorecrypto
 	makedepends = unzip
 	source = LICENSE
 	source = corecrypto.zip.sha256
+	source = code-coverage.cmake
 	sha256sums = ffaf28b090b70d896fad024204eb0a84d0fb4d2f32c9861b9ba7f78bc50120e7
-	sha256sums = 217dfea4bda798c67c7b293d03493d3dfd0c6ccd258b00b379d2dbcdd6fb8d3e
+	sha256sums = 0f0ccf24817608571d17beee416ebda10156c4d9cd493624be28da37c43243c9
+	sha256sums = f1f87321815aebb67af9da7f85a1d6d7805fb85ed5ef2cc0559a082a6c8dd5d1
 
 pkgname = libcorecrypto

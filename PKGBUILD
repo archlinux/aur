@@ -1,17 +1,19 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="libcorecrypto"
-pkgver=2020
-pkgrel=2
+pkgver=2021
+pkgrel=1
 pkgdesc="Library implementing Apple low-level cryptographic primitives"
 url="https://developer.apple.com/security/"
 license=("custom")
 arch=("x86_64" "armv7h" "aarch64")
 makedepends=("clang" "cmake" "curl" "unzip")
 source=("LICENSE"
-        "corecrypto.zip.sha256")
+        "corecrypto.zip.sha256"
+        "code-coverage.cmake")
 sha256sums=('ffaf28b090b70d896fad024204eb0a84d0fb4d2f32c9861b9ba7f78bc50120e7'
-            '217dfea4bda798c67c7b293d03493d3dfd0c6ccd258b00b379d2dbcdd6fb8d3e')
+            '0f0ccf24817608571d17beee416ebda10156c4d9cd493624be28da37c43243c9'
+            'f1f87321815aebb67af9da7f85a1d6d7805fb85ed5ef2cc0559a082a6c8dd5d1')
 
 build(){
  # get corecrypto.zip from apple website
@@ -45,6 +47,9 @@ build(){
  echo "[OK] Hash matches"
  unzip -q -o "corecrypto.zip"
  cd "corecrypto"
+ #
+ install -d "scripts"
+ install -D "$srcdir/code-coverage.cmake" "scripts/code-coverage.cmake"
  # https://wiki.archlinux.org/title/CMake_package_guidelines
  # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=cpprestsdk
  CC=clang CXX=clang++ cmake -B "build" -S . \
