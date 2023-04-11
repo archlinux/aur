@@ -1,7 +1,7 @@
 # Maintainer: Jacob Mischka <jacob@mischka.me>
 # Maintainer: Brokenpip3 <brokenpip3[at]gmail[dot]com>
 
-pkgname=notes-git
+pkgname=bash-notes-git
 pkgver=0.5.0.r6.ge3a9eab
 pkgrel=1
 pkgdesc="Simple delightful note taking, with more unix and less lock-in."
@@ -9,8 +9,9 @@ arch=('any')
 url="https://github.com/pimterry/notes"
 license=('MIT')
 depends=('bash')
+conflicts=('notes' 'notes-git' 'bash-notes')
 makedepends=('git')
-provides=('notes')
+provides=('bash-notes')
 source=('git+https://github.com/pimterry/notes.git')
 md5sums=('SKIP')
 

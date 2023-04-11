@@ -1,4 +1,4 @@
-pkgbase = notes-git
+pkgbase = bash-notes-git
 	pkgdesc = Simple delightful note taking, with more unix and less lock-in.
 	pkgver = 0.5.0.r6.ge3a9eab
 	pkgrel = 1
@@ -7,9 +7,11 @@ pkgbase = notes-git
 	license = MIT
 	makedepends = git
 	depends = bash
-	provides = notes
+	provides = bash-notes
+	conflicts = notes
+	conflicts = notes-git
+	conflicts = bash-notes
 	source = git+https://github.com/pimterry/notes.git
 	md5sums = SKIP
 
-pkgname = notes-git
-
+pkgname = bash-notes-git
