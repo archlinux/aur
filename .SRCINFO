@@ -1,18 +1,17 @@
 pkgbase = libmd-git
 	pkgdesc = Message digest functions from BSD systems
-	pkgver = 1.0.3.r12.gd9c4c7f
-	pkgrel = 2
+	pkgver = 1.0.4.r18.g84d269e
+	pkgrel = 1
 	url = https://www.hadrons.org/software/libmd/
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = git
 	depends = glibc
-	provides = libmd
+	provides = libmd=1.0.4.r18.g84d269e
 	conflicts = libmd
 	options = staticlibs
 	source = git+https://git.hadrons.org/git/libmd.git
 	sha256sums = SKIP
 
 pkgname = libmd-git
-

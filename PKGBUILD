@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libmd-git
-pkgver=1.0.3.r12.gd9c4c7f
-pkgrel=2
+pkgver=1.0.4.r18.g84d269e
+pkgrel=1
 pkgdesc="Message digest functions from BSD systems"
 arch=('i686' 'x86_64')
 url="https://www.hadrons.org/software/libmd/"
 license=('custom')
 depends=('glibc')
 makedepends=('git')
-provides=('libmd')
+provides=("libmd=$pkgver")
 conflicts=('libmd')
 options=('staticlibs')
 source=("git+https://git.hadrons.org/git/libmd.git")
