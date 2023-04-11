@@ -1,18 +1,17 @@
 pkgbase = libupnp-git
 	pkgdesc = Portable open source UPnP development kit
-	pkgver = 1.12.1.r3.g0497e61
-	pkgrel = 2
+	pkgver = 1.14.16.r1.ge634b2ce
+	pkgrel = 1
 	url = https://pupnp.sourceforge.io/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	depends = glibc
-	provides = libupnp
+	provides = libupnp=1.14.16.r1.ge634b2ce
 	conflicts = libupnp
 	options = staticlibs
 	source = git+https://github.com/pupnp/pupnp.git
 	sha256sums = SKIP
 
 pkgname = libupnp-git
-

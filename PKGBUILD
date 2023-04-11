@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libupnp-git
-pkgver=1.12.1.r3.g0497e61
-pkgrel=2
+pkgver=1.14.16.r1.ge634b2ce
+pkgrel=1
 pkgdesc="Portable open source UPnP development kit"
 arch=('i686' 'x86_64')
 url="https://pupnp.sourceforge.io/"
 license=('BSD')
 depends=('glibc')
 makedepends=('git')
-provides=('libupnp')
+provides=("libupnp=$pkgver")
 conflicts=('libupnp')
 options=('staticlibs')
 source=("git+https://github.com/pupnp/pupnp.git")
