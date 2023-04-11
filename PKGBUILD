@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libxi-git
-pkgver=1.7.10.r0.ge05da79
+pkgver=1.8.r6.g826215a
 pkgrel=1
 pkgdesc="X11 Input extension library"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.x.org/wiki/"
 license=('custom')
 depends=('glibc' 'libxext' 'xorgproto')
 makedepends=('git' 'libxfixes' 'xorg-util-macros')
-provides=('libxi')
+provides=("libxi=$pkgver")
 conflicts=('libxi')
 options=('staticlibs')
 source=("git+https://gitlab.freedesktop.org/xorg/lib/libxi.git")
