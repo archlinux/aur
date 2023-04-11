@@ -1,24 +1,27 @@
 # Contributor: Vain <aurmaint1 on host: uninformativ dot de>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=lariza
-pkgver=21.06
+pkgver=22.04
 pkgrel=1
 pkgdesc="Simple WebKit2GTK+ Browser"
 arch=('i686' 'x86_64')
 url="https://www.uninformativ.de/git/lariza"
-license=('custom:MIT')
+license=('MIT')
 depends=('webkit2gtk')
+provides=("$pkgname")
+conflicts=(${provides[@]})
 source=("$url/archives/$pkgname-v$pkgver.tar.gz")
-sha256sums=('9faf06a8f4d87b3a63eb3c1e22dcbc7d8361c054357637ae7e870b9212372a13')
+sha256sums=('51842e6dbc4873bc5cb7bcd6ecbc201c54202285d42de5b81273de280b1dd909')
 
 build() {
-  cd $pkgname-v$pkgver
+  cd "$srcdir/$pkgname-v$pkgver"
   make
 }
 
 package() {
-  cd $pkgname-v$pkgver
+  cd "$srcdir/$pkgname-v$pkgver"
   make DESTDIR="$pkgdir" prefix="/usr" install
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
