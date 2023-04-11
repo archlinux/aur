@@ -1,6 +1,6 @@
 pkgbase = bash-notes-git
 	pkgdesc = Simple delightful note taking, with more unix and less lock-in.
-	pkgver = 0.5.0.r6.ge3a9eab
+	pkgver = 1.1.0.r0.gbf2c6ad
 	pkgrel = 1
 	url = https://github.com/pimterry/notes
 	arch = any

@@ -2,7 +2,7 @@
 # Maintainer: Brokenpip3 <brokenpip3[at]gmail[dot]com>
 
 pkgname=bash-notes-git
-pkgver=0.5.0.r6.ge3a9eab
+pkgver=1.1.0.r0.gbf2c6ad
 pkgrel=1
 pkgdesc="Simple delightful note taking, with more unix and less lock-in."
 arch=('any')
