@@ -1,20 +1,19 @@
-pkgbase = groupme
-	pkgdesc = Unofficial GroupMe electron client
-	pkgver = 1.1.2
+pkgbase = groupme-git
+	pkgdesc = Unofficial GroupMe electron client (git version)
+	pkgver = latest
 	pkgrel = 1
 	url = https://github.com/dcrousso/GroupMe
-	arch = x86_64
+	arch = any
 	license = MIT
 	depends = electron
 	depends = tar
 	depends = npm
+	depends = git
+	provides = groupme
+	conflicts = groupme
 	options = !docs
 	options = !emptydirs
-	source = https://github.com/dcrousso/GroupMe/archive/refs/tags/v1.1.2.tar.gz
 	source = groupme.desktop
-	md5sums = 43e1f2e43d646008bb54778981fd5bca
 	md5sums = 82e829e0ad8ed756453569edc6cddeb9
 
-pkgname = groupme
-
-
+pkgname = groupme-git

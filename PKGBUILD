@@ -1,21 +1,24 @@
-pkgname=groupme
-pkgver=1.1.2
-pkgrel=1
-pkgdesc="Unofficial GroupMe electron client"
+# Maintainer: Froggo <Froggo8311@proton.me>
 
-arch=('x86_64')
+pkgname=groupme-git
+pkgver=latest
+pkgrel=1
+pkgdesc='Unofficial GroupMe electron client (git version)'
+
+arch=(any)
 url="https://github.com/dcrousso/GroupMe"
 license=('MIT')
 
-depends=('electron' 'tar' 'npm')
+depends=('electron' 'tar' 'npm' 'git')
 options=('!docs' '!emptydirs')
-source=("https://github.com/dcrousso/GroupMe/archive/refs/tags/v${pkgver}.tar.gz" "groupme.desktop")
-md5sums=('43e1f2e43d646008bb54778981fd5bca' '82e829e0ad8ed756453569edc6cddeb9')
-
+source=("groupme.desktop")
+md5sums=('82e829e0ad8ed756453569edc6cddeb9')
+provides=(groupme)
+conflicts=(groupme)
 
 package() {
   # Open GroupMe tarball, install deps, & compile
-  tar -xf v$pkgver.tar.gz
+  git clone $url GroupMe-$pkgver
   cd GroupMe-$pkgver
   npm install
   npm install electron-packager
