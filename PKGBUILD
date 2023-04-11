@@ -2,7 +2,7 @@
 
 pkgname=yamr
 pkgver=0.0.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Yet Another Mirror Ranker. The fastest mirror ranker!⁺ A fast mirrorlist in seconds!'
 arch=('any')
 url='https://gitlab.com/yuannan/yamr'
