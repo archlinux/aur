@@ -8,11 +8,12 @@ pkgbase = ayatana-indicator-power
 	arch = pentium4
 	license = GPL3
 	makedepends = cmake-extras
-	makedepends = gettext
+	makedepends = intltool
 	depends = glib2
 	depends = systemd
-	depends = libayatana-common>=0.9.5
+	depends = libayatana-common
 	depends = libnotify
+	depends = dconf
 	source = ayatana-indicator-power-22.9.5.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-power/archive/22.9.5.tar.gz
 	md5sums = 09de260a48d3c44c413d0f2aec2a2e46
 
