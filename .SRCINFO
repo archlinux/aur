@@ -1,0 +1,14 @@
+pkgbase = python2-pytesseract024
+	pkgdesc = Python-tesseract is a python wrapper for Google's Tesseract-OCR
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/madmaze/python-tesseract
+	arch = any
+	license = unknown
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://files.pythonhosted.org/packages/source/p/pytesseract/pytesseract-0.2.4.tar.gz
+	sha256sums = 9a9fae6331084f588c0cf2ad9ed50fca47e20429407e63389eb42d4e64460013
+
+pkgname = python2-pytesseract024
+	depends = python2
