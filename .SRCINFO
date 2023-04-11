@@ -1,0 +1,17 @@
+pkgbase = openbor-bin
+	pkgdesc = OpenBOR, a royalty free sprite-based side scrolling gaming engine.
+	pkgver = 3.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	makedepends = unzip
+	depends = unzip
+	depends = sdl2
+	depends = sdl2_gfx
+	depends = libpng
+	depends = libvorbis
+	depends = libvpx
+	source = https://github.com/DCurrent/openbor/releases/download/v6391/OpenBOR.v3.0.Build.6391.7z
+	sha256sums = SKIP
+
+pkgname = openbor-bin
