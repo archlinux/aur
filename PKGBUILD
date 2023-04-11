@@ -10,7 +10,6 @@ license=('GPL3')
 groups=('fatscript')
 depends=('ncurses' 'readline' 'libcurl-compat')
 makedepends=('git' 'gcc' 'bash' 'ncurses' 'readline' 'libcurl-compat')
-
 source=("git+https://gitlab.com/fatscript/fry.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
@@ -34,5 +33,6 @@ check() {
 package() {
   cd "${srcdir}/${pkgname}"
   install -Dm755 bin/fry "${pkgdir}/usr/local/bin/fry"
-  install -Dm644 man/fry.1 "${pkgdir}/usr/local/man/man1/fry.1"
+  install -Dm644 man/fry.1 "${pkgdir}/usr/local/share/man/man1/fry.1"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
