@@ -1,5 +1,17 @@
 [Unit]
 Description=AMPR 44net RIPv2 Listener and Route Injector
+Documentation=man:ampr-ripd(1)
 
 [Service]
-ExecStart=/usr/bin/ampr-ripd -s -i ampr0
+EnvironmentFile=/etc/ampr-ripd.conf
+ExecStart=/usr/bin/ampr-ripd -d $AMPR_RIPD_ARGS
+
+# Sandbox
+DynamicUser=true
+# Emty home directories
+ProtectHome=true
+# Allow network administration
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+# Enable state storage in /var/lib/ampr-ripd
+# Actual directory is located in /var/lib/private/ and managed by systemd
+StateDirectory=ampr-ripd
