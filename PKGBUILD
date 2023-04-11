@@ -1,10 +1,11 @@
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Roman Kyrylych <Roman.Kyrylych@gmail.com>
 # Maintainer: Daniel J Griffiths <ghost1227@archlinux.us>
+# Maintainer : Ivo(sh) Musil <ivoshm@gmail.com>
 
 pkgname=xcursor-pinux
 pkgver=0.3
-pkgrel=13
+pkgrel=14
 pkgdesc="Pinux's Tux Cursors Theme"
 arch=('any')
 url="https://store.kde.org/p/999945/"

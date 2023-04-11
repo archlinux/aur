@@ -1,7 +1,7 @@
 pkgbase = xcursor-pinux
 	pkgdesc = Pinux's Tux Cursors Theme
 	pkgver = 0.3
-	pkgrel = 13
+	pkgrel = 14
 	url = https://store.kde.org/p/999945/
 	arch = any
 	license = GPL
