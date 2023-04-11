@@ -4,7 +4,7 @@
 
 pkgname=unvanquished
 pkgver=0.54.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A team-based, fast-paced, fps/rts hybrid game which pits aliens against humans.'
 arch=('x86_64')
 url='https://www.unvanquished.net'
@@ -55,7 +55,7 @@ md5sums=('6d9430b5b06b93a43a1cb79e14637f0b'
          '8d89d015e13f39f1849dfa40146dbfb6'
          '705d8ad238356cd8fc97f63060f9b2e9'
          'fd69458c8aa7fa8e71cea6a5993fdcbc'
-         '6d0c7f32cb46e2a3a3901f0ad745fa39'
+         'b3c672d4dae710f9049389e422c8ba65'
          'acf733d3389af8806edc54c872212e53'
          '4c0a519922a8bd32d1ccee8f3b6d1300'
          'c59942e4f963ccf45f77b6a1db219569'

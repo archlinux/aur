@@ -5,6 +5,6 @@ Comment=FPS/RTS Game - Aliens vs. Humans
 Icon=unvanquished
 Terminal=false
 Type=Application
-Exec=/usr/bin/unvanquished %U
+Exec=/usr/bin/unvanquished -connect %u
 Categories=Game;ActionGame;StrategyGame;
 MimeType=x-scheme-handler/unv

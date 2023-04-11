@@ -1,7 +1,7 @@
 pkgbase = unvanquished
 	pkgdesc = A team-based, fast-paced, fps/rts hybrid game which pits aliens against humans.
 	pkgver = 0.54.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.unvanquished.net
 	install = unvanquished.install
 	arch = x86_64
@@ -53,7 +53,7 @@ pkgbase = unvanquished
 	md5sums = 8d89d015e13f39f1849dfa40146dbfb6
 	md5sums = 705d8ad238356cd8fc97f63060f9b2e9
 	md5sums = fd69458c8aa7fa8e71cea6a5993fdcbc
-	md5sums = 6d0c7f32cb46e2a3a3901f0ad745fa39
+	md5sums = b3c672d4dae710f9049389e422c8ba65
 	md5sums = acf733d3389af8806edc54c872212e53
 	md5sums = 4c0a519922a8bd32d1ccee8f3b6d1300
 	md5sums = c59942e4f963ccf45f77b6a1db219569
