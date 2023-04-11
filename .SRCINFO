@@ -1,6 +1,6 @@
 pkgbase = unoffical-qwerty-learner-appimage
 	pkgdesc = Unoffical Qwerty-Learner Appimage Client.为键盘工作者设计的单词记忆与英语肌肉记忆锻炼软件/Words learning and English muscle memory training software designed for keyboard workers
-	pkgver = 1.0.8
+	pkgver = 2.0.0alpha
 	pkgrel = 1
 	url = https://qwerty.kaiyi.cool
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = unoffical-qwerty-learner-appimage
 	depends = zlib
 	depends = glibc
 	conflicts = qwerty-learner-pake
-	source = qwerty-1.0.8.AppImage::https://github.com/tw93/Pake/releases/download/V1.0.8/qwerty_x86_64.AppImage
-	sha256sums = 26f05e56709252f3fe6e75610bb08080bbd27c933dc9571d04acf71e3e26300c
+	source = qwerty-2.0.0-alpha.AppImage::https://github.com/tw93/Pake/releases/download/V2.0.0-alpha/qwerty_x86_64.AppImage
+	sha256sums = 30d2d716c230a38b5e8205f6a7fbc4c63a1a420712a5f4afda15bf363400fed1
 
 pkgname = unoffical-qwerty-learner-appimage
