@@ -1,6 +1,6 @@
 pkgbase = libmediainfo-git
 	pkgdesc = Shared library for mediainfo
-	pkgver = 20.08.r64.g3aed02af
+	pkgver = 23.03.r18.gb6025e1a5
 	pkgrel = 1
 	url = https://mediaarea.net/en/MediaInfo
 	arch = i686
@@ -13,10 +13,9 @@ pkgbase = libmediainfo-git
 	depends = libmms
 	depends = libzen
 	depends = zlib
-	provides = libmediainfo
+	provides = libmediainfo=23.03.r18.gb6025e1a5
 	conflicts = libmediainfo
 	source = git+https://github.com/MediaArea/MediaInfoLib.git
 	sha256sums = SKIP
 
 pkgname = libmediainfo-git
-
