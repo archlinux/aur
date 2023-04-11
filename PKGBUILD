@@ -2,14 +2,14 @@
 
 pkgname=liboggz-git
 pkgver=1.1.1.r37.gacf142b
-pkgrel=2
+pkgrel=3
 pkgdesc="Tools to inspect, edit and validate Ogg files"
 arch=('i686' 'x86_64')
 url="https://www.xiph.org/oggz/"
 license=('BSD')
 depends=('glibc' 'libogg' 'sh')
 makedepends=('git')
-provides=('liboggz')
+provides=("liboggz=$pkgver")
 conflicts=('liboggz')
 options=('staticlibs')
 source=("git+https://gitlab.xiph.org/xiph/liboggz.git")
@@ -43,5 +43,5 @@ package() {
   make DESTDIR="$pkgdir" install
   install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/liboggz"
 
-  install -Dm644 "bash-completion/oggz" "$pkgdir/usr/share/bash-completion/completions/oggz"
+  install -Dm644 "bash-completion/oggz" -t "$pkgdir/usr/share/bash-completion/completions"
 }
