@@ -1,0 +1,16 @@
+pkgbase = mfa2
+	pkgdesc = Fan made beat em up Marvel game.
+	pkgver = 2.72.0
+	pkgrel = 1
+	url = https://gamejolt.com/games/marvel-first-alliance-2/18690
+	arch = x86_64
+	license = GPL
+	makedepends = unzip
+	depends = git
+	depends = sdl2
+	depends = sdl2_gfx
+	depends = unzip
+	source = git+https://gitlab.com/openbor-game-archive/mfa2.git
+	sha256sums = SKIP
+
+pkgname = mfa2
