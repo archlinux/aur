@@ -1,5 +1,5 @@
-pkgbase='python2-pycrypto-26'
-pkgname=('python2-pycrypto-26')
+pkgbase='python2-pycrypto26'
+pkgname=('python2-pycrypto26')
 _module='pycrypto'
 pkgver='2.6'
 pkgrel=1
