@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libdnet-git
-pkgver=1.12.r20.g54a0c14
+pkgver=1.16.4.r0.gb2b839d
 pkgrel=1
 pkgdesc="A simplified, portable interface to several low-level networking routines"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/dugsong/libdnet"
 license=('BSD')
 depends=('glibc' 'sh')
 makedepends=('git')
-provides=('libdnet')
+provides=("libdnet=$pkgver")
 conflicts=('libdnet')
 options=('staticlibs')
 source=("git+https://github.com/dugsong/libdnet.git")
@@ -40,5 +40,5 @@ package() {
   cd "libdnet"
 
   make DESTDIR="$pkgdir" install
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/libdnet/LICENSE"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/libdnet"
 }
