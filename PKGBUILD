@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=lsof-git
-pkgver=4.93.2.r96.gdf01ed3
+pkgver=4.98.0.r82.ge934d94
 pkgrel=1
 pkgdesc="List open files running processes"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/lsof-org/lsof"
 license=('custom')
 depends=('glibc' 'libtirpc')
 makedepends=('git')
-provides=('lsof')
+provides=("lsof=$pkgver")
 conflicts=('lsof')
 source=("git+https://github.com/lsof-org/lsof.git")
 sha256sums=('SKIP')
