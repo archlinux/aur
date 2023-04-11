@@ -1,6 +1,6 @@
 # Maintainer: Ricardo M <ricardo@rmeev.net>
 
-pkgname=waybar-hyprland-git
+pkgname=waybar-hyprland-fix
 pkgver=r2491.365e888
 pkgrel=1
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors (Hyprland fix)'
