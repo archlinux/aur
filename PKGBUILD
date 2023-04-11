@@ -15,9 +15,6 @@ sha256sums=('SKIP')
 
 prepare() {
   mv "${srcdir}/fry" "${srcdir}/${pkgname}"
-  cd "${srcdir}/${pkgname}"
-  chmod +x install.sh
-  chmod +x run_tests.sh
 }
 
 build() {
