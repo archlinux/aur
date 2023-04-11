@@ -1,6 +1,6 @@
 pkgbase = libunistring-git
 	pkgdesc = A library provides functions for manipulating Unicode strings and for manipulating C strings
-	pkgver = 0.9.8.r3.g66423d1
+	pkgver = 1.1.r2.g34b971f
 	pkgrel = 1
 	url = https://www.gnu.org/software/libunistring/
 	arch = i686
@@ -10,11 +10,10 @@ pkgbase = libunistring-git
 	makedepends = gperf
 	makedepends = wget
 	depends = glibc
-	provides = libunistring
+	provides = libunistring=1.1.r2.g34b971f
 	conflicts = libunistring
 	options = staticlibs
 	source = git+https://git.savannah.gnu.org/git/libunistring.git
 	sha256sums = SKIP
 
 pkgname = libunistring-git
-
