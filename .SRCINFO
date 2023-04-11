@@ -1,7 +1,7 @@
 pkgbase = r-adehabitatlt
 	pkgdesc = Analysis of Animal Movements
 	pkgver = 0.3.27
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=adehabitatLT
 	arch = x86_64
 	license = GPL
@@ -10,7 +10,6 @@ pkgbase = r-adehabitatlt
 	depends = r-adehabitatma
 	depends = r-circstats
 	depends = r-sp
-	optdepends = r-maptools
 	optdepends = r-mass
 	optdepends = r-tkrplot
 	source = https://cran.r-project.org/src/contrib/adehabitatLT_0.3.27.tar.gz

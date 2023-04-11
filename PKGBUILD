@@ -4,7 +4,7 @@ _pkgname=adehabitatLT
 _pkgver=0.3.27
 pkgname=r-${_pkgname,,}
 pkgver=0.3.27
-pkgrel=1
+pkgrel=3
 pkgdesc='Analysis of Animal Movements'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,6 @@ depends=(
   r-sp
 )
 optdepends=(
-  r-maptools
   r-mass
   r-tkrplot
 )
