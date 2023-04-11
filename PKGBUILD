@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libxpm-git
-pkgver=3.5.13.r2.g83e5427
+pkgver=3.5.15.r12.g8b9c4e4
 pkgrel=1
 pkgdesc="X pixmap (XPM) image file format library"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://xorg.freedesktop.org/wiki/"
 license=('custom')
 depends=('glibc' 'libxext' 'libxt')
 makedepends=('git' 'xorg-util-macros')
-provides=('libxpm')
+provides=("libxpm=$pkgver")
 conflicts=('libxpm')
 options=('staticlibs')
 source=("git+https://gitlab.freedesktop.org/xorg/lib/libxpm.git")
