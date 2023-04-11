@@ -2,7 +2,7 @@
 
 _gemname=mechanize
 pkgname=ruby-$_gemname
-pkgver=2.8.5
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="The Mechanize library is used for automating interaction with websites"
 arch=(any)
