@@ -1,0 +1,24 @@
+pkgbase = trick-or-treat-git
+	pkgdesc = WebSocket-based virtual private network
+	pkgver = 1.5.r0.g1d61076
+	pkgrel = 1
+	url = https://github.com/lanthora/trick-or-treat
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = riscv64
+	license = MIT
+	makedepends = cmake
+	makedepends = make
+	makedepends = pkgconf
+	depends = spdlog
+	depends = openssl
+	depends = libconfig
+	depends = ixwebsocket
+	depends = uriparser
+	conflicts = trick-or-treat
+	backup = etc/candy.conf
+	source = trick-or-treat-git::git+https://github.com/lanthora/trick-or-treat.git
+	sha256sums = SKIP
+
+pkgname = trick-or-treat-git
