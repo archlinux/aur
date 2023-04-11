@@ -1,11 +1,11 @@
 pkgbase = promtail-bin
 	pkgdesc = Loki: like Prometheus, but for logs.
 	pkgver = 2.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/grafana/loki
 	arch = x86_64
 	license = AGPL-3.0-only
 	source_x86_64 = https://github.com/grafana/loki/releases/download/v2.8.0/promtail-linux-amd64.zip
-	sha256sums_x86_64 = 0aa8084bae5cf87ee973fb38b30ae4549f5e2d219148e235cccc0fc0e4938657
+	sha256sums_x86_64 = ff5b819e66706d2b7d5fc3ef425179e8364650093835e8819a90ad828b6d2043
 
 pkgname = promtail-bin
