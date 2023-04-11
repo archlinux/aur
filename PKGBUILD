@@ -1,24 +1,17 @@
 # shellcheck shell=bash disable=SC2034,SC2154
-# Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
-# https://aur.archlinux.org/packages/updaurpkg-git
-# $ updaurpkg --apply
-_repo=Freed-Wu/Reply-Plugin-Prompt
-_source_type=github-releases
-_upstreamver='0.0.12'
-_pkgname=${_repo##*/}
-
-pkgname=perl-$(tr A-Z a-z <<<${_repo##*/})
-pkgver=${_upstreamver##v}
+_pkgname=Reply-Plugin-Prompt
+pkgname=perl-reply-plugin-prompt
+pkgver=0.0.12
 # https://github.com/rwstauner/Git-DescribeVersion/issues/1
 _pkgver="$pkgver.0"
 pkgrel=1
 pkgdesc="Reply plugin for powerlevel10k style prompt"
 arch=(any)
-url=https://github.com/$_repo
+url=https://github.com/Freed-Wu/Reply-Plugin-Prompt
 license=(GPL3)
 depends=(perl-reply)
 optdepends=('perl-file-xdg>=1.00: support configure file')
-source=("https://cpan.metacpan.org/authors/id/F/FR/FREED/$_pkgname-$_pkgver.tar.gz")
+source=("$url/releases/download/$pkgver/$_pkgname-$_pkgver.tar.gz")
 sha256sums=('872640f337c793433a4d2b1a2201395d75644ec4966136b8bce13f481dce26db')
 
 build() {
