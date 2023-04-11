@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libssh2-git
-pkgver=1.9.0.r83.gcfe0bf6
-pkgrel=3
+pkgver=1.10.0.r257.gfe02bd2b
+pkgrel=1
 pkgdesc="Client-side C library implementing the SSH2 protocol"
 arch=('i686' 'x86_64')
 url="https://www.libssh2.org/"
 license=('BSD')
 depends=('glibc' 'openssl' 'zlib')
 makedepends=('git' 'cmake')
-provides=('libssh2' 'libssh2.so')
+provides=("libssh2=$pkgver" 'libssh2.so')
 conflicts=('libssh2')
 source=("git+https://github.com/libssh2/libssh2.git")
 sha256sums=('SKIP')
