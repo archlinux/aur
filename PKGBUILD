@@ -30,9 +30,4 @@ package() {
   # Install .desktop
   mkdir -p $pkgdir/usr/share/applications/
   cp groupme.desktop $pkgdir/usr/share/applications/
-
-  # Make `groupme` command launch GroupMe
-  mkdir -p $pkgdir/usr/bin
-  cd $pkgdir/usr/bin
-  ln -sf ./groupme ../../opt/groupme/GroupMe
 }
