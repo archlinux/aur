@@ -1,7 +1,7 @@
 # Maintainer: OramahMaalhur <oramahmaalhur@gmail.com>
 # Contributor: Pieter Joost van de Sande <pj@born2code.net>
 pkgname=argo
-pkgver=3.4.5
+pkgver=3.4.7
 pkgrel=1
 pkgdesc='Workflow engine for Kubernetes'
 url='https://github.com/argoproj/argo-workflows'
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 makedepends=()
 depends=()
 source=("${url}/releases/download/v${pkgver}/argo-linux-amd64.gz")
-sha256sums=('0528ff0c0aa87a3f150376eee2f1b26e8b41eb96578c43d715c906304627d3a1')
+sha256sums=('a526a0761d6b197a748dd43119a41311f8ef4c33c2d86e7cd2df57da649e5d5b')
 
 build() {
   cd $srcdir
