@@ -4,7 +4,7 @@
 # Maintainer: ahmedmoselhi
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=slimjet
-pkgver=38.0.9.0
+pkgver=38.0.8.0
 pkgrel=1
 _libffmpegverurl="https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases"
 _libffmpegver=0.73.0
