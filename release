@@ -18,7 +18,8 @@ command -v wget >/dev/null || { echo "wget is not installed" 1>&2; exit 127; }
 command -v makepkg >/dev/null || { echo "makepkg was not found" 1>&2; exit 127; }
 command -v git >/dev/null || { echo "git is not installed" 1>&2; exit 127; }
 
-VERSION="$1"
+VERSION="$(echo $1 | sed 's/-/./g')"
+echo "Releasing version: $VERSION"
 
 # update version nr
 sed -r "s/^pkgver=.*$/pkgver=\"$VERSION\"/g" PKGBUILD -i
@@ -36,7 +37,7 @@ makepkg -f && makepkg --printsrcinfo > .SRCINFO
 git --no-pager diff PKGBUILD
 
 # cleanup temp
-rm -r src pkg *.tar.gz *.tar.zst
+rm -r src pkg *.tar.gz *.tar.zst 2>/dev/null
 
 git status
 printf "Commit and push changes? (Y/n): "
