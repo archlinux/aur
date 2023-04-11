@@ -1,7 +1,7 @@
 pkgbase = libsmbios-git
 	pkgdesc = Library for interacting with SMBIOS tables
 	pkgver = 2.4.3.r3.gf01a217
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dell/libsmbios
 	arch = i686
 	arch = x86_64
@@ -12,11 +12,10 @@ pkgbase = libsmbios-git
 	makedepends = python
 	depends = glibc
 	optdepends = python: tools
-	provides = libsmbios
+	provides = libsmbios=2.4.3.r3.gf01a217
 	conflicts = libsmbios
 	options = staticlibs
 	source = git+https://github.com/dell/libsmbios.git
 	sha256sums = SKIP
 
 pkgname = libsmbios-git
-
