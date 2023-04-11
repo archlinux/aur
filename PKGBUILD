@@ -3,13 +3,13 @@
 
 pkgname=repgrep-git
 _pkgname=rgr
-pkgver=0.12.1.r4.g9a6ea57
+pkgver=0.12.1.r10.g3778c5b
 pkgrel=1
 pkgdesc="An interactive command line replacer for ripgrep (git)"
 arch=('x86_64')
 url="https://github.com/acheronfail/repgrep"
 license=('MIT' 'Apache' 'Unlicense')
-depends=('gcc-libs')
+depends=('gcc-libs' 'ripgrep')
 makedepends=('cargo' 'git' 'asciidoctor')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
