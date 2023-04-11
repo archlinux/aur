@@ -1,25 +1,11 @@
 pkgbase = loki-bin
-	pkgdesc = Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation system inspired by Prometheus
-	pkgver = 1.2.0
-	pkgrel = 1
-	url = https://grafana.com/oss/loki/
+	pkgdesc = Loki: like Prometheus, but for logs.
+	pkgver = 2.8.0
+	pkgrel = 0
+	url = https://github.com/grafana/loki
 	arch = x86_64
-	arch = armv7h
-	arch = aarch64
-	license = Apache
-	backup = etc/loki/loki.yml
-	source = loki.service
-	source = loki.sysusers
-	source = https://raw.githubusercontent.com/grafana/loki/v1.2.0/cmd/loki/loki-local-config.yaml
-	sha256sums = d83da3cb1a974d0feced4afebbb8f09a6518a7cab5e42b0d30948d328dac2d85
-	sha256sums = 1c0eee36cb10f4283913c300986a85d9170282dd0223207ed032cc298e9cb491
-	sha256sums = 1dbfb2831466979093653ed08237be247cd0fb7a36da6316e5c7bcb3c192aba1
-	source_x86_64 = https://github.com/grafana/loki/releases/download/v1.2.0/loki-linux-amd64.zip
-	sha256sums_x86_64 = f78d432034737e5fde993e5ae6a6e6592e5ced4d2c6d2220f30cbfdea8cfd446
-	source_armv7h = https://github.com/grafana/loki/releases/download/v1.2.0/loki-linux-arm.zip
-	sha256sums_armv7h = f0d01a624ca1f92e928ce43823fb37d0b51305c2da964d17feec0bef704a1e95
-	source_aarch64 = https://github.com/grafana/loki/releases/download/v1.2.0/loki-linux-arm64.zip
-	sha256sums_aarch64 = 5dba7fd149142750c1b333a86029b70b150c05b92d51938b1f81ce8557cff981
+	license = AGPL-3.0-only
+	source_x86_64 = https://github.com/grafana/loki/releases/download/v2.8.0/loki-linux-amd64.zip
+	sha256sums_x86_64 = 3a0de1d60e2f95476f795899de096842c5ebbc8d26413252fe9c8bb03807076d
 
 pkgname = loki-bin
-
