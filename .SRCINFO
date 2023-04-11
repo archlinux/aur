@@ -1,0 +1,14 @@
+pkgbase = python2-pyttsx
+	pkgdesc = pyttsx - cross platform text-to-speech
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/parente/pyttsx
+	arch = any
+	license = unknown
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://files.pythonhosted.org/packages/source/p/pyttsx/pyttsx-1.1.tar.gz
+	sha256sums = f435937d8c30e30f8fe034030e4ecbd0a69c3eaa4205e7280d5c9e19bf153df6
+
+pkgname = python2-pyttsx
+	depends = python2
