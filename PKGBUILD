@@ -1,7 +1,7 @@
 # Maintainer: Derek J. Clark <derekjohn dot clark at gmail dot com>
 pkgname=steam-removable-media-git
 _gitdir=steam-removable-media
-pkgver=23.04.r37.a0eb855
+pkgver=23.04.r39.cf88759
 pkgrel=1
 pkgdesc="Automounts and imports removable media as a Steam library"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=()
 provides=('steam-removable-media')
 makedepends=('git')
 conflicts=('jupiter-hw-support')
-_tag=a0eb85558ae542ad5d5fe8f8d70c9d1cc928523f
+_tag=cf887594caddacbb7b2ef216011adccb8bb8728c
 source=("${_gitdir}::git+https://github.com/ShadowBlip/${_gitdir}.git#tag=${_tag}")
 sha256sums=('SKIP')
 pkgver() {
