@@ -2,7 +2,7 @@
 
 _gemname=mono_logger
 pkgname=ruby-$_gemname
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A lock-free logger for Ruby"
 arch=(any)
@@ -13,7 +13,7 @@ checkdepends=(ruby-bundler ruby-rake ruby-minitest ruby-logger-application)
 makedepends=(rubygems ruby-rdoc)
 options=(!emptydirs)
 source=(https://github.com/steveklabnik/mono_logger/archive/v${pkgver}.tar.gz)
-sha256sums=('a4a5f652eda4311c74662e0431bd630317b0c0623b46bbd51470b56239fcc3d0')
+sha256sums=('10ed0a82a5c09da29b68ecb121b5de1c9a75cf7fa461ceab1c03b300b2ba3293')
 
 prepare() {
   cd $_gemname-$pkgver
