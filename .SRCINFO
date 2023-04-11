@@ -40,5 +40,6 @@ pkgbase = python-torchaudio-rocm
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = python-torchaudio-rocm
