@@ -1,7 +1,7 @@
 pkgbase = oxen-core
 	pkgdesc = Oxen core containing oxend and oxen cli wallets
 	pkgver = 10.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oxen-io/oxen-core
 	arch = x86_64
 	license = custom
@@ -12,8 +12,6 @@ pkgbase = oxen-core
 	makedepends = sqlite
 	makedepends = libsodium
 	makedepends = curl
-	conflicts = oxen-core-bin
-	conflicts = loki-core-git
 	options = !buildflags
 	source = oxen-core-git::git+https://github.com/oxen-io/oxen-core.git#commit=b309bf8bb65dc28dca8b79f0b0721a4babb1c72a
 	sha512sums = SKIP
