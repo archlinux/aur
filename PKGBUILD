@@ -4,7 +4,7 @@ _pkgname=parameters
 _pkgver=0.20.3
 pkgname=r-${_pkgname,,}
 pkgver=0.20.3
-pkgrel=1
+pkgrel=3
 pkgdesc='Processing of Model Parameters'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -23,6 +23,7 @@ optdepends=(
   r-bayesfm
   r-bbmle
   r-betareg
+  r-bh
   r-biglm
   r-blme
   r-boot
@@ -31,10 +32,12 @@ optdepends=(
   r-broom
   r-caic4
   r-car
+  r-cardata
   r-cgam
   r-classdiscovery
   r-clubsandwich
   r-cluster
+  r-coda
   r-cplm
   r-dbscan
   r-domir
@@ -43,6 +46,7 @@ optdepends=(
   r-effectsize
   r-eganet
   r-emmeans
+  r-estimatr
   r-factoextra
   r-factominer
   r-fastica
@@ -52,6 +56,7 @@ optdepends=(
   r-gamlss
   r-gee
   r-geepack
+  r-ggeffects
   r-ggplot2
   r-glmmadaptive
   r-glmmtmb
@@ -76,6 +81,7 @@ optdepends=(
   r-marginaleffects
   r-mass
   r-matrix
+  r-mclogit
   r-mclust
   r-mcmcglmm
   r-mediation
@@ -121,6 +127,7 @@ optdepends=(
   r-tmb
   r-truncreg
   r-vgam
+  r-withr
   r-wrs2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
