@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libjitterentropy-git
-pkgver=2.1.2.r0.gf5a80c6
+pkgver=3.4.1.r7.g3c3c116
 pkgrel=1
 pkgdesc="Hardware RNG based on CPU timing jitter library"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.chronox.de/jent.html"
 license=('BSD' 'GPL')
 depends=('glibc')
 makedepends=('git')
-provides=('jitterentropy')
+provides=("jitterentropy=$pkgver")
 conflicts=('jitterentropy')
 source=("git+https://github.com/smuellerDD/jitterentropy-library.git")
 sha256sums=('SKIP')
@@ -38,5 +38,5 @@ package() {
 
   install -dm755 "$pkgdir/usr/include"
   make DESTDIR="$pkgdir" PREFIX="/usr" install
-  install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/libjitterentropy/COPYING"
+  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/libjitterentropy"
 }
