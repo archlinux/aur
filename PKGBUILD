@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="jailer"
-pkgver=12.5
+pkgver=14.4.2
 pkgrel=1
 pkgdesc="Database Subsetting and Relational Data Browsing Tool"
 url="https://github.com/Wisser/Jailer"
@@ -9,7 +9,7 @@ license=("Apache")
 arch=("x86_64")
 depends=("java-runtime>=8")
 source=("$pkgname-$pkgver.deb::$url/releases/download/v$pkgver/jailer-database-tools_$pkgver-x64.deb")
-sha256sums=('ccad91814ca5e1366a195fa6ddb018ffefc6cedeb3d32913111d78bda17d6431')
+sha256sums=('a09dbb0f519d5763fb2f8e8299fd1de4b89081856d473819385181af0d166f11')
 
 prepare(){
  tar -xf "data.tar.xz"
