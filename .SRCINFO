@@ -1,0 +1,17 @@
+pkgbase = kdumpst
+	pkgdesc = kdumpst, a tool for collecting pstore/kdump logs.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/gpiccoli/kdumpst
+	install = kdumpst.install
+	arch = any
+	license = LGPL2.1
+	source = https://gitlab.freedesktop.org/gpiccoli/kdumpst/-/archive/v1.0/kdumpst-v1.0.tar.gz
+	sha256sums = 147bbd40be85f8820723328c5fd27796af96a9c5839b2d806d149e76c7bc30f3
+
+pkgname = kdumpst
+	depends = dmidecode
+	depends = kexec-tools
+	depends = makedumpfile
+	depends = zip
+	depends = zstd

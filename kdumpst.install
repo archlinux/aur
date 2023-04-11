@@ -1,0 +1,23 @@
+#  SPDX-License-Identifier: LGPL-2.1-or-later
+#
+#  Copyright (c) 2021 Valve.
+#  Maintainer: Guilherme G. Piccoli <gpiccoli@igalia.com>
+
+post_install() {
+	#  Create the minimal kdump initramfs for the running kernel;
+	#  notice this also installs the initcpio (or dracut) hooks.
+	/usr/lib/kdumpst/kdumpst-load.sh create-initrd
+}
+
+pre_remove() {
+	#  Delete all minimal initramfs images created for kdump
+	/usr/lib/kdumpst/kdumpst-load.sh clear-initrd
+
+	#  Remove the initcpio hooks unconditionally (if they were
+	#  never installed, no biggies).
+	#  TODO: perform the dracut removal as well (a bit harder
+	#  since not hardcoded folders like initcpio).
+
+	rm -f /usr/lib/initcpio/install/kdump
+	rm -f /usr/lib/initcpio/hooks/kdump
+}
