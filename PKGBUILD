@@ -2,7 +2,7 @@
 
 pkgname=texmacs-guile3
 _pkgname=texmacs
-pkgver=2.1.2_r13229.933d62878
+pkgver=2.1.2_r13230.0daf6589b
 pkgrel=1
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG editor and CAS-interface."
 arch=('x86_64')
