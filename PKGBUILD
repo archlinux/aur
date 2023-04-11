@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libcap-ng-git
-pkgver=0.7.9.r14.g360ef9c
+pkgver=0.8.3.r6.g398a149
 pkgrel=1
 pkgdesc="Library for Linux that makes using posix capabilities easy"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://people.redhat.com/sgrubb/libcap-ng/"
 license=('GPL' 'LGPL')
 depends=('glibc')
 makedepends=('git')
-provides=('libcap-ng')
+provides=("libcap-ng=$pkgver")
 conflicts=('libcap-ng')
 options=('staticlibs')
 source=("git+https://github.com/stevegrubb/libcap-ng.git")

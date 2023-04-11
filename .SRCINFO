@@ -1,6 +1,6 @@
 pkgbase = libcap-ng-git
 	pkgdesc = Library for Linux that makes using posix capabilities easy
-	pkgver = 0.7.9.r14.g360ef9c
+	pkgver = 0.8.3.r6.g398a149
 	pkgrel = 1
 	url = https://people.redhat.com/sgrubb/libcap-ng/
 	arch = i686
@@ -9,11 +9,10 @@ pkgbase = libcap-ng-git
 	license = LGPL
 	makedepends = git
 	depends = glibc
-	provides = libcap-ng
+	provides = libcap-ng=0.8.3.r6.g398a149
 	conflicts = libcap-ng
 	options = staticlibs
 	source = git+https://github.com/stevegrubb/libcap-ng.git
 	sha256sums = SKIP
 
 pkgname = libcap-ng-git
-
