@@ -3,7 +3,7 @@
 # Contributor: Lex Black <autumn-wind at web dot de>
 
 pkgname=libscrypt-git
-pkgver=1.21.r13.ga402f41
+pkgver=1.22.r0.g60e585c
 pkgrel=1
 pkgdesc="Linux scrypt shared library"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/technion/libscrypt"
 license=('BSD')
 depends=('glibc')
 makedepends=('git')
-provides=('libscrypt')
+provides=("libscrypt=$pkgver")
 conflicts=('libscrypt')
 source=("git+https://github.com/technion/libscrypt.git")
 sha256sums=('SKIP')
@@ -39,5 +39,5 @@ package() {
   cd "libscrypt"
 
   make DESTDIR="$pkgdir" PREFIX="/usr" install
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/libscrypt/LICENSE"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/libscrypt"
 }

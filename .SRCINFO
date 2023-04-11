@@ -1,6 +1,6 @@
 pkgbase = libscrypt-git
 	pkgdesc = Linux scrypt shared library
-	pkgver = 1.21.r13.ga402f41
+	pkgver = 1.22.r0.g60e585c
 	pkgrel = 1
 	url = https://github.com/technion/libscrypt
 	arch = i686
@@ -8,10 +8,9 @@ pkgbase = libscrypt-git
 	license = BSD
 	makedepends = git
 	depends = glibc
-	provides = libscrypt
+	provides = libscrypt=1.22.r0.g60e585c
 	conflicts = libscrypt
 	source = git+https://github.com/technion/libscrypt.git
 	sha256sums = SKIP
 
 pkgname = libscrypt-git
-
