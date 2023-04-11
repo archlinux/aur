@@ -8,7 +8,7 @@ pkgname=(
   "${_pkgbase}-docs-git"
 )
 pkgver=1.0+139.r327.20230216.850a1c6
-pkgrel=2
+pkgrel=3
 pkgdesc="Software to connect external monitors to your system via Wifi. It is compatible to Miracast. Link-management works, everything else is still being worked on. Replaces openwfd. Built without systemd."
 arch=(
   'i686'
@@ -125,6 +125,19 @@ package_miraclecast-nosystemd-git() {
 
   msg2 "Running make install ..."
   make DESTDIR="${pkgdir}/" install
+
+  msg2 "Installing additional 'binaries' ..."
+  for _bin in miracle-vlc; do
+    install -D -v -m755 "res/${_bin}" "${pkgdir}/usr/bin/${_bin}"
+  done
+
+  msg2 "Installing additional ressources/ helper files ..."
+  for _res in miracle-utils.sh sinkctl.protocol-extension.example wpa.conf; do
+    install -D -v -m644 "res/${_res}" "${pkgdir}/usr/share/doc/miraclecast/ressources/${_res}"
+  done
+  for _resbin in kill-wpa.sh gstplayer normal-wifi.sh show_wpa.sh test-hardware-capabilities.sh test-viewer.sh write-udev-rule.sh; do
+    install -D -v -m755 "res/${_resbin}" "${pkgdir}/usr/share/doc/miraclecast/ressources/${_resbin}"
+  done
 
   msg2 "Installing license files ..."
   install -d -v -m755 "${pkgdir}/usr/share/doc/miraclecast/licenses"
