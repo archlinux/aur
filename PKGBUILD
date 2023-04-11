@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libnetfilter_log-git
-pkgver=1.0.1.r17.gba196a9
+pkgver=1.0.2.r4.gbd26974
 pkgrel=1
 pkgdesc="Userspace library providing interface to packets that have been logged by the kernel packet filter"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://netfilter.org/projects/libnetfilter_log/index.html"
 license=('GPL')
 depends=('libnfnetlink' 'libmnl')
 makedepends=('git')
-provides=('libnetfilter_log')
+provides=("libnetfilter_log=$pkgver")
 conflicts=('libnetfilter_log')
 source=("git://git.netfilter.org/libnetfilter_log")
 sha256sums=('SKIP')
@@ -25,7 +25,8 @@ build() {
   cd "libnetfilter_log"
 
   ./autogen.sh
-  ./configure --prefix="/usr"
+  ./configure \
+    --prefix="/usr"
   make
 }
 
