@@ -1,13 +1,13 @@
 # Maintainer: thorko contact@thorko.de
 pkgname=loki-bin
 pkgver=2.8.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Loki: like Prometheus, but for logs."
 arch=('x86_64')
 url='https://github.com/grafana/loki'
 license=('AGPL-3.0-only')
 source_x86_64=("https://github.com/grafana/loki/releases/download/v${pkgver}/loki-linux-amd64.zip")
-sha256sums_x86_64=('3a0de1d60e2f95476f795899de096842c5ebbc8d26413252fe9c8bb03807076d')
+sha256sums_x86_64=('1e909692cdae344ed73528a4d9e9f8402d052e7edba0ae40ada5f7b8426c72bc')
 
 
 package() {
