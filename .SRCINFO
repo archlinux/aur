@@ -1,14 +1,14 @@
 pkgbase = lmdb-git
 	pkgdesc = Extraordinarily fast, memory-efficient database
-	pkgver = 0.9.28.r22254.ga44706f64
-	pkgrel = 2
+	pkgver = 0.9.30.r22949.gf7e6c71e1
+	pkgrel = 1
 	url = https://symas.com/lmdb/
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = git
 	depends = glibc
-	provides = lmdb
+	provides = lmdb=0.9.30.r22949.gf7e6c71e1
 	conflicts = lmdb
 	options = staticlibs
 	source = git+https://git.openldap.org/openldap/openldap.git
@@ -17,4 +17,3 @@ pkgbase = lmdb-git
 	sha256sums = SKIP
 
 pkgname = lmdb-git
-

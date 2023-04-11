@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=lmdb-git
-pkgver=0.9.28.r22254.ga44706f64
-pkgrel=2
+pkgver=0.9.30.r22949.gf7e6c71e1
+pkgrel=1
 pkgdesc="Extraordinarily fast, memory-efficient database"
 arch=('i686' 'x86_64')
 url="https://symas.com/lmdb/"
 license=('custom')
 depends=('glibc')
 makedepends=('git')
-provides=('lmdb')
+provides=("lmdb=$pkgver")
 conflicts=('lmdb')
 options=('staticlibs')
 source=("git+https://git.openldap.org/openldap/openldap.git"
