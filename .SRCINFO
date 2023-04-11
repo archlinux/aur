@@ -1,5 +1,5 @@
 pkgbase = groupme
-	pkgdesc = Unofficial GroupMe App
+	pkgdesc = Unofficial GroupMe electron client
 	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/dcrousso/GroupMe

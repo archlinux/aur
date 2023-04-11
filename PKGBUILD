@@ -1,7 +1,7 @@
 pkgname=groupme
 pkgver=1.1.2
 pkgrel=1
-pkgdesc="Unofficial GroupMe App"
+pkgdesc="Unofficial GroupMe electron client"
 
 arch=('x86_64')
 url="https://github.com/dcrousso/GroupMe"
