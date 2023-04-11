@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libraw-git
-pkgver=0.19.0_Beta6.r45.g06028d0
+pkgver=0.21.1.r8.gf2998bac
 pkgrel=1
 pkgdesc="A library for reading RAW files from digital cameras"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.libraw.org/"
 license=('CDDL' 'LGPL')
 depends=('glibc' 'jasper' 'lcms2')
 makedepends=('git')
-provides=('libraw')
+provides=("libraw=$pkgver")
 conflicts=('libraw')
 options=('staticlibs')
 source=("git+https://github.com/LibRaw/LibRaw.git")
@@ -29,7 +29,9 @@ build() {
   cd "LibRaw"
 
   autoreconf --install
-  ./configure --prefix="/usr" --disable-examples
+  ./configure \
+    --prefix="/usr" \
+    --disable-examples
   make
 }
 
