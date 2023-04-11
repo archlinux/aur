@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libzen-git
-pkgver=0.4.38.r15.g14b165e
+pkgver=0.4.41.r0.g894980d
 pkgrel=1
 pkgdesc="Shared library for libmediainfo"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/MediaArea/ZenLib"
 license=('BSD')
 depends=('gcc-libs')
 makedepends=('git')
-provides=('libzen')
+provides=("libzen=$pkgver")
 conflicts=('libzen')
 source=("git+https://github.com/MediaArea/ZenLib.git")
 sha256sums=('SKIP')
