@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libmms-git
-pkgver=0.6.4.r6.g03fa0e9
+pkgver=0.6.4.r8.ga9f6923
 pkgrel=1
 pkgdesc="A library for downloading (streaming) media files"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://sourceforge.net/projects/libmms/"
 license=('LGPL')
 depends=('glibc')
 makedepends=('git')
-provides=('libmms')
+provides=("libmms=$pkgver")
 conflicts=('libmms')
 options=('staticlibs')
 source=("git+https://git.code.sf.net/p/libmms/code")
@@ -26,7 +26,8 @@ build() {
   cd "code"
 
   ./autogen.sh
-  ./configure --prefix="/usr"
+  ./configure \
+    --prefix="/usr"
   make
 }
 
