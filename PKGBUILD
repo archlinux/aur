@@ -6,7 +6,7 @@
 _pkgname=my-weather-indicator
 pkgname=my-weather-indicator-git
 epoch=1
-pkgver=0.9.5.0+r137+9cf392b
+pkgver=0.10.0.0+r186+24363b4
 pkgrel=1
 pkgdesc='A simple indicator for the weather'
 arch=('any')
