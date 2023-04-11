@@ -1,12 +1,14 @@
 pkgbase = dbt-core
 	pkgdesc = Tool for data analysts to build analytics the way engineers build applications
 	pkgver = 1.4.5
-	pkgrel = 6
+	pkgrel = 7
 	url = https://getdbt.com/
 	arch = any
 	license = Apache
 	makedepends = python
 	makedepends = python-pytest
+	makedepends = python-pytest-cov
+	makedepends = python-freezegun
 	depends = python-jinja
 	depends = python-agate
 	depends = python-click
@@ -37,6 +39,6 @@ pkgbase = dbt-core
 	md5sums = 8da5228598d2427e4430d70929415bdf
 	md5sums = 2fc3a072a73cc43cd506b845d326fff4
 	md5sums = 2bf8a03955617501a40aaa668b85be85
-	md5sums = f93113b2e7e753414cbc8044f4a4fd18
+	md5sums = e1d1168e702f0538283e43c1f1328dd2
 
 pkgname = dbt-core

@@ -7,12 +7,12 @@
 #
 pkgname='dbt-core'
 pkgver=1.4.5
-pkgrel=6
+pkgrel=7
 pkgdesc="Tool for data analysts to build analytics the way engineers build applications"
 arch=('any')
 url="https://getdbt.com/"
 license=('Apache')
-makedepends=("python" "python-pytest")
+makedepends=("python" "python-pytest" "python-pytest-cov" "python-freezegun")
 depends=(
     "python-jinja" "python-agate" "python-click" "python-colorama" "python-hologram"
     "python-isodate" "python-logbook" "python-mashumaro" 
