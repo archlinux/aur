@@ -1,4 +1,4 @@
-# Maintainer: Shayne Hartford <shayneehartford@gmail.com>
+# Maintainer: Remi Zlatinis <remizlatinis@gmail.com>
 
 pkgname=chromeos-gtk-theme-git
 _pkgname=chromeos-theme
