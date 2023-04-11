@@ -10,7 +10,7 @@ pkgbase = glab-bin
 	replaces = gitlab-glab-git
 	source = https://gitlab.com/gitlab-org/cli/-/releases/v1.27.1/downloads/glab_1.27.1_Linux_x86_64.deb
 	source = https://gitlab.com/gitlab-org/cli/-/releases/v1.27.1/downloads/checksums.txt
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = ea8bd68fac3894bcff33733d818d4575b7f2c2cd3e2ad7181b1449576bc9076f
+	sha256sums = edf9eda915580a2d1d8797a79dca94fc7e3a44c6ddeec208ea715bb54025afa4
 
 pkgname = glab-bin
