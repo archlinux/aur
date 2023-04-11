@@ -1,0 +1,25 @@
+From b79ff144297597b405f510d08ebad60f074cdb39 Mon Sep 17 00:00:00 2001
+From: Jelle van der Waa <jelle@vdwaa.nl>
+Date: Tue, 11 Apr 2023 19:47:27 +0200
+Subject: [PATCH] 1.8+ is not a valid version number
+
+---
+ Gnuplot/__init__.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Gnuplot/__init__.py b/Gnuplot/__init__.py
+index d707af4..758d455 100644
+--- a/Gnuplot/__init__.py
++++ b/Gnuplot/__init__.py
+@@ -155,7 +155,7 @@ Bugs:
+ 
+ """
+ 
+-__version__ = '1.8+'
++__version__ = '1.8'
+ 
+ # Other modules that should be loaded for 'from Gnuplot import *':
+ __all__ = ['utils', 'funcutils', ]
+-- 
+2.40.0
+
