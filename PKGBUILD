@@ -3,8 +3,8 @@
 
 pkgname='stanc'
 pkgdesc="A package for obtaining Bayesian inference using the No-U-Turn sampler, a variant of Hamiltonian Monte Carlo."
-pkgver=2.31.0
-pkgrel=2
+pkgver=2.32.0_rc1
+pkgrel=1
 arch=('i686' 'x86_64')
 url='https://mc-stan.org/'
 license=('BSD')
@@ -17,7 +17,7 @@ makedepends=('texlive-bin' 'texlive-core' 'doxygen'
 )
 provides=("cmdstan")
 source=(https://github.com/stan-dev/cmdstan/releases/download/v${pkgver/_/-}/cmdstan-${pkgver/_/-}.tar.gz)
-sha512sums=('184c39f3eb87f0e0453c49957534579b6d8d8091aa5a6fc8eb8272ddcebd5c41eef4bda49dc18c2b3e599e32d8d5fd8ec9af55c132f10c58745bd08403930f45')
+sha512sums=('6e734ce47561bf9b2d8674bedd0ddd1e22f476d324ac546a368e0ee925ebcb02f1c3da6d8bdc65fcbca15133f2a19c5a4ce46defee1a1b7264b458f76a151a87')
 
 build() {
   cd "${srcdir}/cmdstan-${pkgver/_/-}"
@@ -36,10 +36,14 @@ package() {
   install -Tm755 bin/print         "${pkgdir}/usr/bin/stanprint"
   install -Tm755 bin/stansummary   "${pkgdir}/usr/bin/stansummary"
 
-  install -dm755                  "${pkgdir}/usr/include/stan"
+  install -d                  "${pkgdir}/usr/include/stan"
+  install -d                 "${pkgdir}/usr/include/cmdstan"
   cd "stan/src"
   find . -iregex './stan.*.hpp$' -type f -exec install -DTm644 "{}" "${pkgdir}/usr/include/{}" \;
   cd ../..
+  cd "src"
+  find . -iregex './cmdstan.*.hpp$' -type f -exec install -DTm644 "{}" "${pkgdir}/usr/include/{}" \;
+  cd ..
 
   # Install LICENSE file:
   install -dm755                  "${pkgdir}/usr/share/licenses/stan"
