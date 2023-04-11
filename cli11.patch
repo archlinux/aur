@@ -1,0 +1,32 @@
+diff --git a/src/cmdstan/stansummary.cpp b/src/cmdstan/stansummary.cpp
+index eec4f5b2..a5e0b475 100644
+--- a/src/cmdstan/stansummary.cpp
++++ b/src/cmdstan/stansummary.cpp
+@@ -52,18 +52,21 @@ Options:
+   std::vector<std::string> filenames;
+
+   CLI::App app{"Allowed options"};
+-  app.add_option("--sig_figs,-s", sig_figs, "Significant figures, default 2.",
+-                 true)
++  app.add_option("--sig_figs,-s", sig_figs, "Significant figures, default 2.")
++      ->capture_default_str()
+       ->check(CLI::Range(1, 18));
+   app.add_option("--autocorr,-a", autocorr_idx,
+-                 "Display the chain autocorrelation.", true)
++                 "Display the chain autocorrelation.")
++      ->capture_default_str()
+       ->check(CLI::PositiveNumber);
+   app.add_option("--csv_filename,-c", csv_filename,
+-                 "Write statistics to a csv.", true)
++                 "Write statistics to a csv.")
++      ->capture_default_str()
+       ->check(CLI::NonexistentPath);
+-  app.add_option("--percentiles,-p", percentiles_spec, "Percentiles to report.",
+-                 true);
+-  app.add_option("input_files", filenames, "Sampler csv files.", true)
++  app.add_option("--percentiles,-p", percentiles_spec, "Percentiles to report.")
++      ->capture_default_str();
++  app.add_option("input_files", filenames, "Sampler csv files.")
++      ->capture_default_str()
+       ->required()
+       ->check(CLI::ExistingFile);

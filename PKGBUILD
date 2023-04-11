@@ -4,7 +4,7 @@
 pkgname='stanc'
 pkgdesc="A package for obtaining Bayesian inference using the No-U-Turn sampler, a variant of Hamiltonian Monte Carlo."
 pkgver=2.32.0_rc1
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url='https://mc-stan.org/'
 license=('BSD')
@@ -13,32 +13,29 @@ makedepends=('texlive-bin' 'texlive-core' 'doxygen'
 # needed if compile against system library
 'gtest' 'benchmark' 'sundials' 'boost' 'eigen' 'stanmath'
 'python-cpplint' 'opencl-headers' 'rapidjson'
-# 'cli11'
-# 'tbb': no  <tbb/tbb_stddef.h>
+'cli11' 'tbb'
+'inetutils'
 )
 provides=("cmdstan")
 source=(https://github.com/stan-dev/cmdstan/releases/download/v${pkgver/_/-}/cmdstan-${pkgver/_/-}.tar.gz
 local
+cli11.patch
 )
 sha512sums=('6e734ce47561bf9b2d8674bedd0ddd1e22f476d324ac546a368e0ee925ebcb02f1c3da6d8bdc65fcbca15133f2a19c5a4ce46defee1a1b7264b458f76a151a87'
-            '94f898b78f66e517b61d6ce2295e72a07e0a9154852c8b8607600fcb968bf106870f3dcde94ae32d7d8f6663e69cfaa021cdea9a2dc88a96479e86686e126950')
+            '0e446a71eee57f3e793f6b649b62641634676fc41642f3766157537248ac3595458bd87d6b1f2b3e7be6d8f197336278e16c84626d43a4d240707bd0e871b59d'
+            'fff32eedf0f2044c3ffdd0e6e83927d1b6b535f7d2f960ff20a2f6e84b5b825ec90ea3db5c7bd5cf67f6b2079fe1a7fac2529d5379af931175cefac44681700b')
 
 prepare(){
   cd "${srcdir}/cmdstan-${pkgver/_/-}"
+   patch --strip=1 < ../cli11.patch
   cp ${srcdir}/local make/local
   cp ${srcdir}/local stan/make/local
-  # sed -i 's|CLI11/CLI11.hpp|CLI/CLI.hpp|g' src/cmdstan/stansummary.cpp
+  sed -i 's|CLI11/CLI11.hpp|CLI/CLI.hpp|g' src/cmdstan/stansummary.cpp
 }
 build() {
   cd "${srcdir}/cmdstan-${pkgver/_/-}"
-  cd stan/lib/stan_math/lib/tbb_2020.3/
-  mkdir ${srcdir}/tbb
-  make tbb
-  find build -type f -executable -exec install -DTm644 "{}" "${srcdir}/tbb/{}" \;
-  mv build/*_release/*.so* ${srcdir}/tbb/
-  cd "${srcdir}/cmdstan-${pkgver/_/-}"
-  export LDFLAGS="-L${srcdir}/tbb -ltbb -Wl,-rpath,/usr/lib/stan"
-  export CXXFLAGS="-fPIC -Isrc -Istan/src -I/usr/include/eigen3 -Istan/lib/stan_math/lib/tbb_2020.3/include/ -D_REENTRANT -Ilib/CLI11-1.9.1/"
+  export LDFLAGS="-ltbb"
+  export CXXFLAGS="-fPIC -Isrc -Istan/src -I/usr/include/eigen3 -D_REENTRANT -DTBB_INTERFACE_NEW"
   make build
 }
 
@@ -66,5 +63,4 @@ package() {
   # Install LICENSE file:
   install -dm755                  "${pkgdir}/usr/share/licenses/stan"
   cp -r "stan/licenses/." "${pkgdir}/usr/share/licenses/stan/."
-  install -Dm755 ${srcdir}/tbb/*.so*  -t "${pkgdir}/usr/lib/stan"
 }
