@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-gnome-ui-tune-git
 pkgver=1.7.2.r0.gb720e9c
 pkgrel=1
