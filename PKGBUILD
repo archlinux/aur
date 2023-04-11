@@ -1,7 +1,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 _pkgname=Reply-Plugin-Prompt
 pkgname=perl-reply-plugin-prompt
-pkgver=0.0.12
+pkgver=0.0.16
 pkgrel=1
 pkgdesc="Reply plugin for powerlevel10k style prompt"
 arch=(any)
@@ -10,9 +10,9 @@ license=(GPL3)
 depends=(perl-reply)
 optdepends=('perl-file-xdg>=1.00: support configure file')
 # https://github.com/rwstauner/Git-DescribeVersion/issues/1
-_pkgver="$pkgver.0"
+_pkgver=0.0.16
 source=("$url/releases/download/$pkgver/$_pkgname-$pkgver.0.tar.gz")
-sha256sums=('872640f337c793433a4d2b1a2201395d75644ec4966136b8bce13f481dce26db')
+sha256sums=('af2c98fc70d50330501c69258971995c214b3e5d293d8112c989fe34114b2ea0')
 
 build() {
   cd $_pkgname-$_pkgver || return 1
