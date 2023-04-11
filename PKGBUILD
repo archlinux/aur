@@ -2,7 +2,7 @@
 # Contributor: Carlos José Ruiz-Henestrosa Ruiz <ruizh.cj@gmail.com>
 
 pkgname="python-beancount-import-git"
-pkgver=1.3.5.r20.g59615a5
+pkgver=1.3.5.r44.gf108b59
 pkgrel=1
 pkgdesc="Semi-automatic importer from external data sources into beancount"
 url="https://github.com/jbms/beancount-import"
@@ -21,7 +21,7 @@ depends=("beancount"
          "python-scikit-learn"
          "python-tornado"
          "python-watchdog")
-makedepends=("git" "npm" "python-build" "python-installer" "python-wheel")
+makedepends=("git" "npm" "python-build" "python-installer" "python-wheel" "python-setuptools-scm")
 source=("git+$url")
 sha256sums=("SKIP")
 

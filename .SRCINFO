@@ -1,6 +1,6 @@
 pkgbase = python-beancount-import-git
 	pkgdesc = Semi-automatic importer from external data sources into beancount
-	pkgver = 1.3.5.r20.g59615a5
+	pkgver = 1.3.5.r44.gf108b59
 	pkgrel = 1
 	url = https://github.com/jbms/beancount-import
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = python-beancount-import-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools-scm
 	depends = beancount
 	depends = python
 	depends = python-atomicwrites
