@@ -2,9 +2,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=scs
-_pkgver=3.0-1
+_pkgver=3.2.4
 pkgname=r-${_pkgname,,}
-pkgver=3.0.1
+pkgver=3.2.4
 pkgrel=1
 pkgdesc='Splitting Conic Solver'
 arch=('x86_64')
@@ -15,11 +15,12 @@ depends=(
   r
 )
 optdepends=(
+  r-matrix
   r-slam
-  r-testthat
+  r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d6881eeec7282f8bfbf60847327786e7f90299e4b8c0b084d8bd11fec7705913')
+sha256sums=('c3f39874bf4532fa8c2f2e2c41533ba4fe20b61cf6dfc6314407dc981621298f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

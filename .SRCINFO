@@ -1,15 +1,16 @@
 pkgbase = r-scs
 	pkgdesc = Splitting Conic Solver
-	pkgver = 3.0.1
+	pkgver = 3.2.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=scs
 	arch = x86_64
 	license = GPL
 	makedepends = make
 	depends = r
+	optdepends = r-matrix
 	optdepends = r-slam
-	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/scs_3.0-1.tar.gz
-	sha256sums = d6881eeec7282f8bfbf60847327786e7f90299e4b8c0b084d8bd11fec7705913
+	optdepends = r-tinytest
+	source = https://cran.r-project.org/src/contrib/scs_3.2.4.tar.gz
+	sha256sums = c3f39874bf4532fa8c2f2e2c41533ba4fe20b61cf6dfc6314407dc981621298f
 
 pkgname = r-scs
