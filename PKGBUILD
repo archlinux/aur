@@ -9,16 +9,18 @@ license=('GPL3')
 depends=('qt5-base' 'qt5-quickcontrols2' 'qt5-svg' 'ffmpeg' 'sdl2_ttf' 'hicolor-icon-theme' 'openssl-1.1')
 optdepends=('libva-intel-driver: hardware acceleration for Intel GPUs')
 
-source=("${pkgname%-bin}-$pkgver.AppImage::https://github.com/moonlight-stream/moonlight-qt/releases/download/v${pkgver}/Moonlight-${pkgver}-x86_64.AppImage")
+source=("${pkgname%-bin}-$pkgver.AppImage::https://github.com/moonlight-stream/moonlight-qt/releases/download/v${pkgver}/Moonlight-${pkgver}-x86_64.AppImage"
+"launcher.sh")
 _bin_name="${pkgname%-qt-bin}"
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-sha256sums=('b10c7e4bd692701a837d42e87aca7cf3c138344d44091d8e551e7b201a69a439')
-
+sha256sums=('b10c7e4bd692701a837d42e87aca7cf3c138344d44091d8e551e7b201a69a439'
+            '7dc324b4621067c01c1ea91570dec230fb43735f48f5f9eac91b0e487070a79d')
+options=(!strip)
 prepare() {
     # extract appimage
     chmod +x "${pkgname%-bin}-$pkgver.AppImage"
-    ./"${pkgname%-bin}-$pkgver.AppImage" --appimage-extract
+    ./"${pkgname%-bin}-$pkgver.AppImage" --appimage-extract 1>/dev/null
 
     # Rename file
     mv "squashfs-root/com.moonlight_stream.Moonlight.desktop" "squashfs-root/${pkgname%-bin}.desktop"
@@ -28,10 +30,16 @@ prepare() {
 }
 
 package() {
-    install -Dm755 "squashfs-root/usr/bin/${_bin_name}" -t "$pkgdir/usr/bin/"
+    # install -Dm755 "squashfs-root/usr/bin/${_bin_name}" -t "$pkgdir/usr/bin/"
+    mkdir "${pkgdir}/opt/" -p
+    cp -r squashfs-root "${pkgdir}/opt/${pkgname}"
+    mkdir "${pkgdir}/usr/bin/" -p
+    install -dm644 "${pkgdir}/opt/"
+    install -m755 "${srcdir}/launcher.sh" "${pkgdir}/usr/bin/moonlight"
+    install -m755 "squashfs-root/AppRun" "${pkgdir}/opt/${pkgname}/AppRun"
 
     install -Dm644 "squashfs-root/${pkgname%-bin}.desktop" -t "$pkgdir/usr/share/applications/"
-
+    # install -m644 "squashfs-root/usr"
     install -d "$pkgdir/usr/share/icons/"
     cp -r squashfs-root/usr/share/icons/hicolor/ "$pkgdir/usr/share/icons/"
 }

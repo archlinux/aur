@@ -15,7 +15,10 @@ pkgbase = moonlight-qt-bin
 	optdepends = libva-intel-driver: hardware acceleration for Intel GPUs
 	provides = moonlight-qt
 	conflicts = moonlight-qt
+	options = !strip
 	source = moonlight-qt-4.3.1.AppImage::https://github.com/moonlight-stream/moonlight-qt/releases/download/v4.3.1/Moonlight-4.3.1-x86_64.AppImage
+	source = launcher.sh
 	sha256sums = b10c7e4bd692701a837d42e87aca7cf3c138344d44091d8e551e7b201a69a439
+	sha256sums = 7dc324b4621067c01c1ea91570dec230fb43735f48f5f9eac91b0e487070a79d
 
 pkgname = moonlight-qt-bin
