@@ -2,7 +2,7 @@
 # Former maintainer: fatalis <fatalis@fatalis.pw>
 
 pkgname=lzbench-git
-pkgver=1.7.3.r21.g3d48788
+pkgver=1.8.1.r56.g609d783
 pkgrel=1
 pkgdesc="An in-memory benchmark of open-source compressors"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/inikep/lzbench"
 license=('GPL3')
 depends=('gcc-libs')
 makedepends=('git')
-provides=('lzbench')
+provides=("lzbench=$pkgver")
 conflicts=('lzbench')
 source=("git+https://github.com/inikep/lzbench.git")
 sha256sums=('SKIP')
@@ -37,5 +37,5 @@ build() {
 package() {
   cd "lzbench"
 
-  install -Dm755 "lzbench" "$pkgdir/usr/bin/lzbench"
+  install -Dm755 "lzbench" -t "$pkgdir/usr/bin"
 }
