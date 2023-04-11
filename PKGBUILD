@@ -1,4 +1,5 @@
-# Maintainer: Tim Schumacher <timschumi@gmx.de>
+# Maintainer: HurricanePootis<hurricanepootis@protonmail.com>
+# Contributor: Tim Schumacher <timschumi@gmx.de>
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 # Contributor: ceri
 # Contributor: Imperator Storm <30777770+ImperatorStorm@users.noreply.github.com>
@@ -6,123 +7,138 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r9391.9c6035f25
+pkgver=r9510.2a2ee8bc9
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
 url="https://github.com/citra-emu/citra/"
 license=('GPL2')
-depends=('ffmpeg')
-makedepends=('git' 'cmake' 'sdl2' 'qt5-base' 'shared-mime-info' 'desktop-file-utils' 'qt5-multimedia')
-source=("$_pkgbase::git+https://github.com/citra-emu/citra"
-        "boost::git+https://github.com/citra-emu/ext-boost/"
-        "catch::git+https://github.com/catchorg/Catch2"
-        "cpp-jwt::git+https://github.com/arun11299/cpp-jwt"
-        "cubeb::git+https://github.com/mozilla/cubeb"
-        "discord-rpc::git+https://github.com/discord/discord-rpc"
-        "dynarmic::git+https://github.com/merryhime/dynarmic"
-        "enet::git+https://github.com/lsalzman/enet"
-        "fmt::git+https://github.com/fmtlib/fmt"
-        "libressl::git+https://github.com/citra-emu/ext-libressl-portable"
-        "nihistro::git+https://github.com/neobrain/nihstro"
-        "soundtouch::git+https://github.com/citra-emu/ext-soundtouch"
-        "teakra::git+https://github.com/wwylele/teakra"
-        "xbyak::git+https://github.com/herumi/xbyak"
-        "zstd::git+https://github.com/facebook/zstd"
-        "inih::git+https://github.com/benhoyt/inih"
-        "libusb::git+https://github.com/libusb/libusb"
-        "cryptopp::git+https://github.com/weidai11/cryptopp"
-        "lodepng::git+https://github.com/lvandeve/lodepng"
-        "sanitizers-cmake::git+https://github.com/arsenm/sanitizers-cmake"
-        "googletest::git+https://github.com/google/googletest")
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
-
-# Clang generates weird object files when LTO is enabled, breaking static libraries (.a).
-# Force-disable LTO if we are using clang.
-if [ "$CXX" = "clang++" ]; then
-	options=('!lto')
-fi
+depends=('ffmpeg' 'speexdsp' 'boost-libs' 'mbedtls' 'libusb' 'openssl' 'glibc' 'gcc-libs')
+makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'boost' 'qt5-tools')
+source=("$_pkgbase::git+https://github.com/citra-emu/citra.git"
+        "boost::git+https://github.com/citra-emu/ext-boost.git"
+        "nihstro::git+https://github.com/neobrain/nihstro.git"
+        "soundtouch::git+https://github.com/citra-emu/ext-soundtouch.git"
+        "catch2::git+https://github.com/catchorg/Catch2"
+        "dynarmic::git+https://github.com/merryhime/dynarmic.git"
+        "git+https://github.com/herumi/xbyak.git"
+        "git+https://github.com/fmtlib/fmt.git"
+        "git+https://github.com/lsalzman/enet.git"
+        "git+https://github.com/benhoyt/inih.git"
+        "libressl::git+https://github.com/citra-emu/ext-libressl-portable.git"
+        "git+https://github.com/libusb/libusb.git"
+        "git+https://github.com/mozilla/cubeb"
+        "git+https://github.com/discord/discord-rpc.git"
+        "git+https://github.com/arun11299/cpp-jwt.git"
+        "git+https://github.com/wwylele/teakra.git"
+        "git+https://github.com/lvandeve/lodepng.git"
+        "git+https://github.com/facebook/zstd.git"
+        "git+https://github.com/lemenkov/libyuv.git"
+        "sdl2::git+https://github.com/libsdl-org/SDL"
+        "git+https://github.com/abdes/cryptopp-cmake.git"
+        "git+https://github.com/weidai11/cryptopp.git"
+        # cubeb's submodule
+        "git+https://github.com/google/googletest"
+        "git+https://github.com/arsenm/sanitizers-cmake"
+        #dynarmic's zydis submodule
+        "zycore::git+https://github.com/zyantific/zycore-c"
+        )
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 
 pkgver() {
-	cd "$srcdir/$_pkgbase"
-	echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    cd "$srcdir/$_pkgbase"
+    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "$srcdir/$_pkgbase"
+    cd "$srcdir/$_pkgbase"
+    for submodule in {boost,nihstro,soundtouch,catch2,dynarmic,xbyak,fmt,enet,libressl,cubeb,discord-rpc,cpp-jwt,teakra,zstd,libyuv,cryptopp-cmake,cryptopp,sdl2,lodepng,libusb,inih};
+    do
+    git config --file=.gitmodules submodule.${submodule}.url "$srcdir/${submodule}"
+    done
+    git -c protocol.file.allow=always submodule update --init
 
-	if [[ -d build ]]; then
-		rm -rf build
-	fi
-	mkdir build
+    cd "$srcdir/$_pkgbase/externals/cubeb"
+    git config --file=.gitmodules submodule.googletest.url "$srcdir/googletest"
+    git config --file=.gitmodules submodule."cmake/sanitizers-cmake".url "$srcdir/sanitizers-cmake"
+    git -c protocol.file.allow=always submodule update --init
 
-	git submodule init
-	for external in boost catch cpp-jwt cubeb discord-rpc dynarmic enet fmt libressl nihistro soundtouch teakra xbyak zstd inih libusb cryptopp lodepng; do
-		git config submodule.$external.url "$srcdir/$external"
-	done
-	git -c protocol.file.allow=always submodule update
-
-	# agh, submodule has submodules
-	cd externals/cubeb
-	git submodule init
-	git config submodule.cmake/sanitizers-cmake.url "$srcdir/sanitizers-cmake"
-	git config submodule.googletest.url "$srcdir/googletest"
-	git -c protocol.file.allow=always submodule update
+    cd "$srcdir/$_pkgbase/externals/dynarmic/externals/zydis"
+    git config --file=.gitmodules submodule.dependencies/zycore.url "$srcdir/zycore"
+    git -c protocol.file.allow=always submodule update --init
 }
 
 build() {
-	cd "$srcdir/$_pkgbase/build"
+    cd "$srcdir/"
+    
+    # Trick the compiler into thinking we're building from a continuous
+    # integration tool so the build number is correctly shown in the title
+    #export CI=true
+    #export TRAVIS=true
+    #export TRAVIS_REPO_SLUG=citra-emu/citra-canary
+    #export TRAVIS_TAG=$(git describe --tags)
+    
+    # Fix to help cmake find libusb
+    CXXFLAGS+=" -I/usr/include/libusb-1.0"
+    
+    [[ -d build ]] && rm -rf build
 
-	# Bump the expression nesting limit for clang
-	if [ "$CXX" = "clang++" ]; then
-		CXXFLAGS+=" -fbracket-depth=649"
-	fi
+    cmake -B build -S "$_pkgbase" \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DENABLE_QT_TRANSLATION=ON \
+      -DCITRA_ENABLE_COMPATIBILITY_REPORTING=ON \
+      -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
+      -DUSE_DISCORD_PRESENCE=ON \
+      -DENABLE_FFMPEG_VIDEO_DUMPER=ON \
+      -DENABLE_FFMPEG_AUDIO_DECODER=ON \
+      -DUSE_SYSTEM_BOOST=ON \
+      -DUSE_SYSTEM_SDL2=ON \
+      -Wno-dev
 
-	cmake .. \
-	  -DCMAKE_INSTALL_PREFIX=/usr \
-	  -DCMAKE_BUILD_TYPE=Release \
-	  -DENABLE_FFMPEG_AUDIO_DECODER=ON \
-	  -DUSE_SYSTEM_CURL=ON
-	make
+    cmake --build build   
 }
 
 check() {
-	cd "$srcdir/$_pkgbase/build"
-	make test
+    ctest --test-dir build
 }
 
 package_citra-git() {
-	depends=('sdl2' 'libpng')
+	depends+=('sdl2')
 
-	install -Dm755 "$srcdir/$_pkgbase/build/bin/Release/citra" "$pkgdir/usr/bin/citra"
+	install -Dm755 "$srcdir/build/bin/Release/citra" "$pkgdir/usr/bin/citra"
 }
 
 package_citra-qt-git() {
-	depends=('qt5-base' 'qt5-multimedia' 'sdl2' 'shared-mime-info' 'desktop-file-utils')
+	depends+=('qt5-base' 'qt5-multimedia' 'sdl2' 'hicolor-icon-theme')
 	optdepends=('libxkbcommon-x11: for X11 support'
 	            'qt5-wayland: for Wayland support')
 
-	cd "$srcdir/$_pkgbase/build"
+	cd "$srcdir/build"
 	make DESTDIR="$pkgdir/" install
 	rm "$pkgdir/usr/bin/citra"
 
