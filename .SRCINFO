@@ -1,6 +1,6 @@
 pkgbase = python-help2man
 	pkgdesc = Convert --help and --version to man page.
-	pkgver = 0.0.5
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/help2man
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-help2man
 	makedepends = python-installer
 	depends = python-jinja
 	conflicts = help2man
-	source = https://files.pythonhosted.org/packages/py3/h/help2man/help2man-0.0.5-py3-none-any.whl
-	sha256sums = b333c05ca074878190f88720d0bb9cf9501cb52990a8a5a57c3b95fc55682f6e
+	source = https://github.com/Freed-Wu/help2man/releases/download/0.0.9/help2man-0.0.9-py3-none-any.whl
+	sha256sums = 36f6ec6c8a0130f85c36bd1e5dd2af34f8e60a46e5d4a271f769c9aaab6c6a1d
 
 pkgname = python-help2man
