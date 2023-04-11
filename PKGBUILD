@@ -12,7 +12,7 @@ conflicts=("$_pkgname")
 license=(GPLv3)
 _py=py3
 source=(
-	"https://files.pythonhosted.org/packages/$_py/${_pkgname:0:1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-none-any.whl"
+	"$url/releases/download/$pkgver/help2man-$pkgver-py3-none-any.whl"
 )
 sha256sums=('b333c05ca074878190f88720d0bb9cf9501cb52990a8a5a57c3b95fc55682f6e')
 
