@@ -2,7 +2,7 @@
 # Contributor: Nick Skelsey <nskelsey@gmail.com>
 
 pkgname=zeek
-pkgver=5.2.0
+pkgver=5.2.1
 pkgrel=1
 pkgdesc="A network analysis framework"
 arch=('x86_64')
@@ -15,10 +15,10 @@ optdepends=(
 )
 source=("https://download.zeek.org/zeek-$pkgver.tar.gz"{,.asc}
         zeek.tmpfiles.conf)
-sha256sums=('511047400dd4539177542c84a5e80d7e97ad73d2a9986ffcd6cd85b4cc711fbf'
+sha256sums=('7164c9fcd910cf339fa21d16a18a701e0e1309b8ed489a26b506ab86c485838f'
             'SKIP'
             'af5b7e14caae88122d0e6dd29539ae77ed3388c70a12ea0ed73c9a3f6de16d91')
-b2sums=('c1409ff0b0ebbd94fc7945d2f36cda36e3ef752efa5df86ab1b162aec15115fb9b4293858a2ed9a7ed8eef4f75c21cee2d51dca9a82dd62304f1870a92fa8e03'
+b2sums=('522d57affeafc6568a27826b18b3e08e83bf334528e88b3fffadd8e968677fcba5f86044f0c78389d109d8081add3927bf87fe8fe2d7f643d50fdaf3c042fb56'
         'SKIP'
         'df5e4479c89cc2b0764e26e35bdcbcd7d00b131d7f4cd35c336e734ae334a40a2142285a2c8ea9db8961a34bb4d2799ba89505ab3e3881a16792c7e804ef1d73')
 validpgpkeys=(
@@ -42,11 +42,11 @@ build() {
     -D INSTALL_ZEEK_ARCHIVER=ON \
     -D INSTALL_ZKG=ON
 
-  make -C build
+  cmake --build build
 }
 
 package() {
-  make -C build install DESTDIR="$pkgdir"
+  DESTDIR="$pkgdir" cmake --install build
 
   rm -rf "$pkgdir/usr/var"
 
