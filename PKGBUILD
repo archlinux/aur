@@ -7,23 +7,34 @@
 _pkgbase=gdm
 pkgbase=gdm-plymouth-nox
 pkgname=(gdm-plymouth-nox libgdm-plymouth-nox)
-pkgver=43.0
+pkgver=44.0
 pkgrel=1
-pkgdesc="Display manager and login screen with plymouth support, but without xorg-server"
+pkgdesc="Display manager and login screen, but without xorg-server"
 url="https://wiki.gnome.org/Projects/GDM"
 arch=(x86_64)
 license=(GPL)
-depends=(plymouth gnome-shell gnome-session upower systemd libcanberra)
-makedepends=(yelp-tools gobject-introspection git docbook-xsl meson)
+depends=(
+  gnome-shell
+  gnome-session 
+  upower 
+  systemd 
+  libcanberra
+)
+makedepends=(
+  plymouth
+  yelp-tools
+  gobject-introspection
+  git
+  docbook-xsl
+  meson
+)
 checkdepends=(check)
-options=(debug)
-_commit=afa6f2ef3d34048cd7a3e1a1ec478be2ff464806  # tags/43.0
+_commit=6f137e9b59a0bb4b5a47d4af723c64bce053ea1d  # tags/44.0^0
 source=("git+https://gitlab.gnome.org/GNOME/gdm.git#commit=$_commit"
         0001-Xsession-Don-t-start-ssh-agent-by-default.patch
-        0002-pam-arch-Remove-user_readenv-1-from-pam_env.patch)
+        )
 sha256sums=('SKIP'
-            '39a7e1189d423dd428ace9baac77ba0442c6706a861d3c3db9eb3a6643e223f8'
-            '7e42077a89a6fcf8b02244b01127af7000a10ed55e09e385eb6fac5aef421c07')
+            '39a7e1189d423dd428ace9baac77ba0442c6706a861d3c3db9eb3a6643e223f8')
 
 #pkgver() {
 #  cd $_pkgbase
@@ -33,11 +44,11 @@ sha256sums=('SKIP'
 prepare() {
   cd $_pkgbase
   
+  # https://gitlab.gnome.org/GNOME/gdm/-/issues/730
+  git cherry-pick -n b29510dbc51ccf71a7c0ed656d21634a83766c0c
+
   # Don't start ssh-agent by default
   git apply -3 ../0001-Xsession-Don-t-start-ssh-agent-by-default.patch
-
-  # https://bugs.archlinux.org/task/68945
-  git apply -3 ../0002-pam-arch-Remove-user_readenv-1-from-pam_env.patch
 }
 
 build() {

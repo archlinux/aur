@@ -1,34 +1,30 @@
 pkgbase = gdm-plymouth-nox
-	pkgdesc = Display manager and login screen with plymouth support, but without xorg-server
-	pkgver = 43.0
+	pkgdesc = Display manager and login screen, but without xorg-server
+	pkgver = 44.0
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GDM
 	arch = x86_64
 	license = GPL
 	checkdepends = check
+	makedepends = plymouth
 	makedepends = yelp-tools
 	makedepends = gobject-introspection
 	makedepends = git
 	makedepends = docbook-xsl
 	makedepends = meson
-	depends = plymouth
 	depends = gnome-shell
 	depends = gnome-session
 	depends = upower
 	depends = systemd
 	depends = libcanberra
-	options = debug
-	source = git+https://gitlab.gnome.org/GNOME/gdm.git#commit=afa6f2ef3d34048cd7a3e1a1ec478be2ff464806
+	source = git+https://gitlab.gnome.org/GNOME/gdm.git#commit=6f137e9b59a0bb4b5a47d4af723c64bce053ea1d
 	source = 0001-Xsession-Don-t-start-ssh-agent-by-default.patch
-	source = 0002-pam-arch-Remove-user_readenv-1-from-pam_env.patch
 	sha256sums = SKIP
 	sha256sums = 39a7e1189d423dd428ace9baac77ba0442c6706a861d3c3db9eb3a6643e223f8
-	sha256sums = 7e42077a89a6fcf8b02244b01127af7000a10ed55e09e385eb6fac5aef421c07
 
 pkgname = gdm-plymouth-nox
 	install = gdm.install
 	groups = gnome
-	depends = plymouth
 	depends = gnome-shell
 	depends = gnome-session
 	depends = upower
@@ -49,7 +45,7 @@ pkgname = gdm-plymouth-nox
 	backup = etc/gdm/PreSession/Default
 
 pkgname = libgdm-plymouth-nox
-	pkgdesc = Display manager and login screen with plymouth support, but without xorg-server - support library
+	pkgdesc = Display manager and login screen, but without xorg-server - support library
 	depends = libsystemd.so
 	depends = libglib-2.0.so
 	depends = libgobject-2.0.so
