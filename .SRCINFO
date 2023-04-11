@@ -1,0 +1,25 @@
+pkgbase = flintlock
+	pkgdesc = Service for creating and managing the lifecycle of microVMs on a host machine
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://weaveworks-liquidmetal.github.io/flintlock/docs/intro/
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = MPL2
+	makedepends = git
+	makedepends = go>=1.17
+	depends = containerd
+	depends = firecracker
+	source = flintlock-0.5.0.tar.gz::https://github.com/weaveworks-liquidmetal/flintlock/archive/refs/tags/v0.5.0.tar.gz
+	source = config.yaml
+	source = flintlockd.service
+	sha256sums = a5688c5e3de5c59c9a1c58c7978fb83efe7e476730a358b13665c34423eb6f30
+	sha256sums = 1746bdc94fea8348f2df586e974dddb005b7d4d045a85dfef20ddcd3027541fc
+	sha256sums = e6237646734ea3ad36c84709cc1733e5287d4d046a5fec10c1f0a5d30e0e0e25
+
+pkgname = flintlock

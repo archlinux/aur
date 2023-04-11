@@ -1,0 +1,10 @@
+#---
+# flintlockd run --help
+# use parent-iface for macvlan
+# use bridge-name for lmbr0/tap
+#containerd-socket: "/run/containerd/containerd.sock"
+#grpc-endpoint: localhost:9090
+#verbosity: 9
+#parent-iface: "bond0"
+#bridge-name: "eth0"
+#insecure: true

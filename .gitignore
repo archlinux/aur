@@ -1,0 +1,11 @@
+# ignore everything
+/*
+
+# include the files that matter
+!/.gitignore
+!/PKGBUILD
+!/.SRCINFO
+!/*.install
+!/*.patch
+!/config.yaml
+!/flintlockd.service
