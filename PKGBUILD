@@ -9,6 +9,7 @@ pkgname=(
   ubuntu-backgrounds-hirsute
   ubuntu-backgrounds-impish
   ubuntu-backgrounds-karmic
+  ubuntu-backgrounds-kinetic
   ubuntu-backgrounds-lucid
   ubuntu-backgrounds-maverick
   ubuntu-backgrounds-natty
@@ -23,16 +24,16 @@ pkgname=(
   ubuntu-backgrounds-yakkety
   ubuntu-backgrounds-zesty
 )
-pkgver=0.2.0
-pkgrel=3
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="All backgrounds of Ubuntu"
 license=('Commons Attribution-ShareAlike 3.0 Unported')
 arch=('any')
 url="http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers"
 
-_pkgver=22.04.4
+_pkgver=23.04.1
 source=("${url}/ubuntu-wallpapers_${_pkgver}.orig.tar.gz")
-sha256sums=('83a9469e84c908d29f9fb2484029575a2d05548f9d984dca556740b622c5dd1e')
+sha256sums=('f0731d916ad51162921dfa8e5f2fb028d07099c6c02bcd136ab0ee3fb169ddd3')
 
 package_ubuntu-backgrounds-artful() {
   _pkgname=${pkgname/${pkgbase}-/}
@@ -186,6 +187,24 @@ package_ubuntu-backgrounds-karmic() {
     "TheRainbowisDead.jpg"
     "ThrowingStones.jpg"
     "WhiteOrchid.jpg"
+  )
+
+  package_wallpaper ${_pkgname} ${wallapers[@]}
+}
+
+package_ubuntu-backgrounds-kinetic() {
+  _pkgname=${pkgname/${pkgbase}-/}
+
+  pkgdesc="The backgrounds included in Ubuntu 22.10 ${pkgname/${pkgbase}-/}"
+
+  local wallpapers=(
+    "Kinetic_Kudu_by_Joshua_T_dark.jpg"
+    "Kinetic_Kudu_by_Joshua_T_light.jpg"
+    "Obersee_by_Uday_Nakade.jpg"
+    "Reflection_by_Juliette_Taka.png"
+    "Saffron_by_Rakesh_Yadav.png"
+    "Sunset_Over_Lake_Lugano_by_Alexey_Kulik.jpg"
+    "Twisted_Gradients_by_Gustavo_Brenner.png"
   )
 
   package_wallpaper ${_pkgname} ${wallapers[@]}

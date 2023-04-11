@@ -1,12 +1,12 @@
 pkgbase = ubuntu-backgrounds
 	pkgdesc = All backgrounds of Ubuntu
-	pkgver = 0.2.0
-	pkgrel = 3
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers
 	arch = any
 	license = Commons Attribution-ShareAlike 3.0 Unported
-	source = http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers/ubuntu-wallpapers_22.04.4.orig.tar.gz
-	sha256sums = 83a9469e84c908d29f9fb2484029575a2d05548f9d984dca556740b622c5dd1e
+	source = http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers/ubuntu-wallpapers_23.04.1.orig.tar.gz
+	sha256sums = f0731d916ad51162921dfa8e5f2fb028d07099c6c02bcd136ab0ee3fb169ddd3
 
 pkgname = ubuntu-backgrounds-artful
 	pkgdesc = The backgrounds included in Ubuntu 17.10 artful
@@ -28,6 +28,9 @@ pkgname = ubuntu-backgrounds-impish
 
 pkgname = ubuntu-backgrounds-karmic
 	pkgdesc = The backgrounds included in Ubuntu 9.10 karmic
+
+pkgname = ubuntu-backgrounds-kinetic
+	pkgdesc = The backgrounds included in Ubuntu 22.10 kinetic
 
 pkgname = ubuntu-backgrounds-lucid
 	pkgdesc = The backgrounds included in Ubuntu 10.04 lucid
