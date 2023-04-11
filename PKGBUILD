@@ -2,7 +2,7 @@
 # Maintainer: Carlos Alexandro Becker <carlos@becker.software>
 
 pkgname='timer-bin'
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Timer is like sleep, but reports progress.'
 url='https://github.com/caarlos0/timer'
@@ -11,11 +11,11 @@ license=('MIT')
 provides=('timer')
 conflicts=('timer')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/caarlos0/timer/releases/download/v1.2.0/timer_linux_arm64.tar.gz")
-sha256sums_aarch64=('7a103e9ddc179e9f34b5e0691f1be087372c910ff8f1528efaa9bd51110e71be')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/caarlos0/timer/releases/download/v1.3.0/timer_linux_arm64.tar.gz")
+sha256sums_aarch64=('9525a2d4b7fe72089d04bfeb03c397bbc7e3baacac7f240e17058ca209df58b1')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/caarlos0/timer/releases/download/v1.2.0/timer_linux_amd64.tar.gz")
-sha256sums_x86_64=('c0098453827ae71c1e4a044191bfc69a24ea74ad80b6b0de74180a63eb67d4e2')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/caarlos0/timer/releases/download/v1.3.0/timer_linux_amd64.tar.gz")
+sha256sums_x86_64=('b81591fdded76473dee4cd6b1f2d4debd20f7d94e4b824287a83a6095aa6c966')
 
 package() {
   # bin
