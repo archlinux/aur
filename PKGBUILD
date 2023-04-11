@@ -8,8 +8,8 @@ arch=('x86_64')
 url='https://github.com/fredolx/open-tv'
 license=('GPL2')
 depends=('mpv' 'electron')
-source=("https://github.com/Fredolx/open-tv/releases/download/v0.9.0/linux-generic.tar.gz")
-sha512sums=('11af9e382cae0798abe66754442ba003c637b1610959760ce79bfd3f7a2e0ef7eb5ff7d251501bc64e5c4ad5832d298b7fde81221e71b73fa67213e6c96fcfb5')
+source=("https://github.com/Fredolx/open-tv/releases/download/v0.9.2/linux-generic.tar.gz")
+sha512sums=('6e6d3338e9c6b16a7f250dc65883690e453ef65fdcaa4933b34c8b45d1707e2ee522e7ada5d002d7857bfe78e2ab65338500572d6570a246037b6e4a6f3fe977')
 
 package() {
   tar -xf linux-generic.tar.gz
