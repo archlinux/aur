@@ -1,5 +1,5 @@
 # Maintainer: thorko contact@thorko.de
-pkgname=loki-bin
+pkgname=promtail-bin
 pkgver=2.8.0
 pkgrel=0
 pkgdesc="Loki: like Prometheus, but for logs."
