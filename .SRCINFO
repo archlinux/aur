@@ -1,0 +1,21 @@
+pkgbase = fcitx5-skin-materia-yanli
+	pkgdesc = Materia theme for fcitx5, by Yanli
+	pkgver = 20230412
+	pkgrel = 1
+	url = https://github.com/BeautyyuYanli/Fcitx5-Materia-Yanli.git
+	arch = any
+	license = Apache
+	source = highlight.png
+	source = highlight-EXP.png
+	source = panel.png
+	source = arrow.png
+	source = radio.png
+	source = theme.conf
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = fcitx5-skin-materia-yanli
