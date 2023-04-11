@@ -1,0 +1,25 @@
+pkgbase = yojo-git
+	pkgdesc = A CI bridge from Forgejo/Gitea to SourceHut
+	pkgver = r1.182373bf1f47
+	pkgrel = 1
+	url = https://git.sr.ht/~emersion/yojo
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = sqlite
+	provides = yojo
+	conflicts = yojo
+	backup = etc/yojo/credentials
+	source = git+https://git.sr.ht/~emersion/yojo
+	source = yojo.service
+	source = yojo.sysusers
+	source = yojo.tmpfiles
+	source = credentials
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = yojo-git

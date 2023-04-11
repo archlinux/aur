@@ -1,0 +1,2 @@
+d /var/lib/yojo 0750 yojo yojo -
+d /etc/yojo 0750 yojo yojo -
