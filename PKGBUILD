@@ -1,19 +1,11 @@
 # shellcheck shell=bash disable=SC2034,SC2154
-# Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
-# https://aur.archlinux.org/packages/updaurpkg-git
-# $ updaurpkg --apply
-_repo=Freed-Wu/translate-shell
-_source_type=pypi-releases
-_upstreamver='0.0.22'
-_pkgname=$(tr A-Z a-z <<<${_repo##*/})
-_pypi_package=$_pkgname
-
+_pkgname=translate-shell
 pkgname=python-$_pkgname
-pkgver=${_upstreamver##v}
+pkgver=0.0.22
 pkgrel=1
 pkgdesc="Translate text by google, bing, youdaozhiyun, haici, stardict, etc at same time from CLI, GUI (GNU/Linux, Android, macOS and Windows), REPL, python, shell and vim."
 arch=(any)
-url=https://github.com/$_repo
+url=https://github.com/Freed-Wu/translate-shell
 makedepends=(python-installer)
 optdepends=(
 	'python-repl-python-wakatime: wakatime support'
@@ -31,9 +23,8 @@ optdepends=(
 )
 conflicts=("$_pkgname")
 license=(GPL3)
-_py=py3
 source=(
-	"https://files.pythonhosted.org/packages/$_py/${_pkgname:0:1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-none-any.whl"
+	"$url/releases/download/$pkgver/${_pkgname//-/_}-$pkgver-py3-none-any.whl"
 )
 sha256sums=('f3438ad8cccf96b95c4f471f8878ea10f240306bb60427cc254e7259a5622ab3')
 
