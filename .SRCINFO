@@ -1,6 +1,6 @@
 pkgbase = xdg-desktop-portal-shana
 	pkgdesc = A filechooser portal backend for any desktop environment
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1.0
 	url = https://github.com/Decodetalkers/xdg-desktop-portal-shana
 	arch = x86_64
@@ -13,8 +13,10 @@ pkgbase = xdg-desktop-portal-shana
 	depends = xdg-desktop-portal
 	optdepends = xdg-desktop-portal-gnome: provide gnome backend
 	optdepends = xdg-desktop-portal-kde: provide kde backend
+	optdepends = xdg-desktop-portal-gtk: provide gtk backend
+	optdepends = xdg-desktop-portal-lxqt: provide lxqt backend
 	provides = xdg-desktop-portal-impl
-	source = xdg-desktop-portal-shana-v0.3.0.tar.gz::https://github.com/Decodetalkers/xdg-desktop-portal-shana/archive/refs/tags/v0.3.0.tar.gz
+	source = xdg-desktop-portal-shana-v0.3.1.tar.gz::https://github.com/Decodetalkers/xdg-desktop-portal-shana/archive/refs/tags/v0.3.1.tar.gz
 	sha256sums = 127e057ec02ba2caad729f367ddf427aa148dd5ca28a5b0200d65f4828b00783
 
 pkgname = xdg-desktop-portal-shana
