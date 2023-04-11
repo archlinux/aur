@@ -1,16 +1,16 @@
 pkgbase = betterbird-ja-bin
 	pkgdesc = JAPANESE // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will.
-	pkgver = 102.9.1
+	pkgver = 102.10.0
 	pkgrel = 1
 	url = https://www.betterbird.eu/index.html
 	arch = x86_64
 	license = MPL2
 	depends = dbus-glib
-	provides = betterbird=102.9.1
+	provides = betterbird=102.10.0
 	conflicts = betterbird
-	source = https://www.betterbird.eu/downloads/LinuxArchive/betterbird-102.9.1-bb32.ja.linux-x86_64.tar.bz2
+	source = https://www.betterbird.eu/downloads/LinuxArchive/betterbird-102.10.0-bb33.ja.linux-x86_64.tar.bz2
 	source = betterbird.desktop
-	sha256sums = 71bcf7743ee239db402260715fbec05dd47776abe253466235537d6c6ad326af
+	sha256sums = 6cf2a208e977c54f3552bb281dadff901d704acab0e1851c4f5ba6e60e9b994e
 	sha256sums = 816a97383c4eba202d9993736d14d3f728064d1bea7301adc93ed1248a096ca8
 
 pkgname = betterbird-ja-bin
