@@ -1,6 +1,6 @@
 pkgname='ubdsrv'
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The userspace part of the ublk framework."
 arch=('x86_64' 'i686' 'i486' 'pentium4' 'aarch64' 'armv7h') # Archlinux, Archlinux 32 Bit, Archlinux ARM
 url='https://github.com/ming1/ubdsrv'
