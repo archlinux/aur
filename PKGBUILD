@@ -2,14 +2,14 @@
 
 pkgname=yamr
 pkgver=0.0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Yet Another Mirror Ranker. The fastest mirror ranker!⁺ A fast mirrorlist in seconds!'
 arch=('any')
 url='https://gitlab.com/yuannan/yamr'
 license=('GPL3')
 depends=('geoip')
 conflicts=()
-source=("https://gitlab.com/yuannan/yamr")
+source=("git+https://gitlab.com/yuannan/yamr")
 sha256sums=('SKIP')
 
 build() {

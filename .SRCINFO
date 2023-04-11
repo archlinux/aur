@@ -1,12 +1,12 @@
 pkgbase = yamr
 	pkgdesc = Yet Another Mirror Ranker. The fastest mirror ranker!⁺ A fast mirrorlist in seconds!
 	pkgver = 0.0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/yuannan/yamr
 	arch = any
 	license = GPL3
 	depends = geoip
-	source = https://gitlab.com/yuannan/yamr
+	source = git+https://gitlab.com/yuannan/yamr
 	sha256sums = SKIP
 
 pkgname = yamr
