@@ -1,12 +1,16 @@
-# Maintainer: Frederik Schwan <freswa at archlinux dot org>
+# Maintainer: Pellegrino Prevete <pellegrinoprevete at gmail dot com>
+# Contributor: Frederik Schwan <freswa at archlinux dot org>
 # Contributor: Jonathon Fernyhough <jonathon+m2x+dev>
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 # Contributor:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Daniel Kozak <kozzi11@gmail.com>
 
-pkgbase=gcc11
-pkgname=($pkgbase gcc11-libs gcc11-fortran)
+_pkgbase="gcc"
+pkgbase="${_pkgbase}11"
+pkgname=("${pkgbase}"
+         "${pkgbase}-libs" 
+         "${pkgbase}-fortran")
 pkgver=11.3.0
 _majorver=${pkgver%%.*}
 pkgrel=5
