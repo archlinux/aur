@@ -2,7 +2,7 @@
 
 pkgbase=lapack-git
 pkgname=('lapack-git' 'blas-git' 'lapacke-git')
-pkgver=3.9.0.r106.g122506cd8
+pkgver=3.11.0.r73.ge270bf800
 pkgrel=1
 pkgdesc="Linear Algebra PACKage"
 arch=('i686' 'x86_64')
@@ -40,7 +40,7 @@ build() {
 
 package_lapack-git() {
   depends=('gcc-libs' 'blas')
-  provides=('lapack' 'lapack-manpages')
+  provides=("lapack=$pkgver" 'lapack-manpages')
   conflicts=('lapack' 'lapack-manpages')
 
   cd "lapack"
@@ -61,8 +61,8 @@ package_blas-git() {
   pkgdesc="Basic linear algebra subprograms"
   url="https://www.netlib.org/blas/"
   depends=('gcc-libs')
-  provides=('cblas' 'blas')
-  conflicts=('cblas' 'blas')
+  provides=("blas=$pkgver" "cblas=$pkgver")
+  conflicts=('blas' 'cblas')
 
   cd "lapack"
 
@@ -75,7 +75,7 @@ package_lapacke-git() {
   pkgdesc="C Interface to LAPACK"
   url="https://www.netlib.org/lapack/lapacke.html"
   depends=('glibc' 'lapack')
-  provides=('lapacke')
+  provides=("lapacke=$pkgver")
   conflicts=('lapacke')
 
   cd "lapack"
