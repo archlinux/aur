@@ -3,7 +3,7 @@
 # Contributor: sekret <sekret at posteo.se>
 
 pkgname=libsodium-git
-pkgver=1.0.18.r291.g33b93592
+pkgver=1.0.18.r575.g66a68f09
 pkgrel=1
 pkgdesc="A modern, portable, easy to use crypto library"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="https://libsodium.org/"
 license=('custom:ISC')
 depends=('glibc')
 makedepends=('git')
-provides=('libsodium')
+provides=("libsodium=$pkgver")
 conflicts=('libsodium')
 options=('staticlibs')
 source=("git+https://github.com/jedisct1/libsodium.git")
