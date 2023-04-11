@@ -1,7 +1,7 @@
 pkgbase = wine-lol-staging
 	pkgdesc = A compatibility layer for running Windows programs (staging branch) with LoL patches(abi.vsyscall32=0 version)
 	pkgver = 8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wine-staging.com/
 	install = wine-lol-staging.install
 	arch = x86_64
@@ -108,6 +108,7 @@ pkgbase = wine-lol-staging
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
+	provides = wine-lol
 	options = staticlibs
 	options = !lto
 	options = !strip

@@ -3,11 +3,12 @@
 pkgname=wine-lol-staging
 pkgver=8.5
 _winever=8.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A compatibility layer for running Windows programs (staging branch) with LoL patches(abi.vsyscall32=0 version)'
 arch=('x86_64')
 url='https://www.wine-staging.com/'
 license=('LGPL')
+provides=('wine-lol')
 install=wine-lol-staging.install
 
 options=('staticlibs' '!lto' '!strip')
@@ -96,7 +97,7 @@ prepare() {
     printf '%s\n' '  -> Cleaning wine source code tree...'
     git -C wine reset --hard HEAD  # restore tracked files
     git -C wine clean -xdf         # delete untracked files
-    
+
     # change back to the wine upstream commit that this version of wine-staging is based in
     printf '%s\n' '  -> Changing wine HEAD to the wine-staging base commit...'
     git -C wine config --local advice.detachedHead false
