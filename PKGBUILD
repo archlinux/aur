@@ -1,5 +1,5 @@
 pkgname=mingw-w64-coin-or-coinutils
-pkgver=2.11.6
+pkgver=2.11.8
 pkgrel=1
 pkgdesc="COIN-OR collection of utility classes (mingw-w64)"
 arch=(any)
@@ -10,7 +10,7 @@ makedepends=(mingw-w64-configure)
 options=('!buildflags' '!strip' 'staticlibs')
 groups=(mingw-w64-coin-or)
 source=("https://github.com/coin-or/CoinUtils/archive/refs/tags/releases/${pkgver}.tar.gz")
-sha256sums=('6ea31d5214f7eb27fa3ffb2bdad7ec96499dd2aaaeb4a7d0abd90ef852fc79ca')
+sha256sums=('202e347d1c1d2ccf5355e3c2874a4dc16500226c180b00d6677f464d80be337e')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
