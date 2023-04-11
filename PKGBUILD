@@ -47,4 +47,5 @@ package() {
     install -Dm755 mangohud.sh "$pkgdir/usr/bin/mangohud"
     install -Dm644 mangohud.conf "$pkgdir/etc/ld.so.conf.d/mangohud.conf"
     install -Dm644 MangoHud.json "$pkgdir/usr/share/vulkan/implicit_layer.d/MangoHud.json"
+    install -Dm664 "$srcdir/$pkgbasename/LICENSE" "$pkgdir/usr/share/licenses/$pkgbasename/LICENSE"
 }
