@@ -1,7 +1,7 @@
 # Maintainer: Elias Blume <mail at elias-blu.me>
 pkgname=moonlight-qt-bin
 pkgver=4.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="moonlight-qt bin from appimage"
 arch=('x86_64')
 url="https://moonlight-stream.org"
