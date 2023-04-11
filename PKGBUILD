@@ -17,7 +17,7 @@ source=("git+https://gitlab.com/yuannan/yamr"
 sha256sums=("SKIP"
 			"b3d16cd45b686caf6c583c4b9627fc5c0ff49b15c101b58d5deed8bc86ace835"
 			"ee0e13937fefac4645a10806f22cd632e7b94b56b018c5b6887d2b5ae423c0c7"
-			"cfa7ba87d9f6e50383f535e0af9ac7b5f3b41623559d9d8cb659c26b1f038dd9"
+			"a2c9e85fb81bb90716deb66991370063895ef0db93d8a6c1f648a5b19dd7f808"
 )
 
 build() {
