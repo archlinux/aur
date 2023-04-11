@@ -4,7 +4,7 @@ _pkgname=stars
 _pkgver=0.6-1
 pkgname=r-${_pkgname,,}
 pkgver=0.6.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Spatiotemporal Arrays, Raster and Vector Data Cubes'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -39,12 +39,12 @@ optdepends=(
   r-maps
   r-ncdfgeom
   r-ncmeta
+  r-openstreetmap
   r-pbapply
   r-pcict
   r-plm
   r-randomforest
   r-raster
-  r-rgdal
   r-rmarkdown
   r-rnetcdf
   r-sp

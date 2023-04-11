@@ -1,7 +1,7 @@
 pkgbase = r-stars
 	pkgdesc = Spatiotemporal Arrays, Raster and Vector Data Cubes
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=stars
 	arch = any
 	license = Apache
@@ -32,12 +32,12 @@ pkgbase = r-stars
 	optdepends = r-maps
 	optdepends = r-ncdfgeom
 	optdepends = r-ncmeta
+	optdepends = r-openstreetmap
 	optdepends = r-pbapply
 	optdepends = r-pcict
 	optdepends = r-plm
 	optdepends = r-randomforest
 	optdepends = r-raster
-	optdepends = r-rgdal
 	optdepends = r-rmarkdown
 	optdepends = r-rnetcdf
 	optdepends = r-sp
