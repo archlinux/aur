@@ -8,6 +8,7 @@ pkgdesc="A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load a
 url='https://github.com/flightlessmango/MangoHud'
 license=('MIT')
 arch=('x86_64')
+options=('lto')
 makedepends=('git' 'glslang' 'lib32-libx11' 'libxnvctrl' 'meson' 'nlohmann-json' 'python-mako' 'vulkan-headers')
 depends=('dbus' 'hicolor-icon-theme' 'vulkan-icd-loader' 'lib32-dbus' 'lib32-vulkan-icd-loader')
 optdepends=(
