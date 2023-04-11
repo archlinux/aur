@@ -3,7 +3,7 @@
 pkgname=denaro
 _pkgname=nickvisionmoney
 _pkgid=org.nickvision.money
-pkgver=2023.2.2
+pkgver=2023.4.0
 pkgrel=1
 pkgdesc="A personal finance manager"
 arch=(aarch64 armv7h x86_64 i686)
@@ -14,7 +14,7 @@ makedepends=('dotnet-sdk>=7' cmake git)
 conflicts=(nickvision-money)
 replaces=(nickvision-money)
 source=(git+$url#tag=$pkgver)
-b2sums=(SKIP)
+b2sums=('SKIP')
 
 case "$CARCH" in
 	x86_64) _arch=x64 ;;
