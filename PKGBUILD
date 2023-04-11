@@ -12,7 +12,7 @@ depends=("wofi" "wtype") # thanks to gilbs https://aur.archlinux.org/account/gil
 makedepends=("git" "jq"  "curl")
 provides=(wofi-emoji)
 conflicts=(wofi-emoji-git)
-source=("git+$url#commit=2cb7c05bb04542782120b1c4991c9532eb5974d1")
+source=("git+$url#commit=03ceac06de814c78e8a26bade359c201b303df65")
 sha256sums=('SKIP')
 
 build() {

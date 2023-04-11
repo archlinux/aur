@@ -12,7 +12,7 @@ pkgbase = wofi-emoji
 	depends = wtype
 	provides = wofi-emoji
 	conflicts = wofi-emoji-git
-	source = git+https://github.com/Zeioth/wofi-emoji#commit=2cb7c05bb04542782120b1c4991c9532eb5974d1
+	source = git+https://github.com/Zeioth/wofi-emoji#commit=03ceac06de814c78e8a26bade359c201b303df65
 	sha256sums = SKIP
 
 pkgname = wofi-emoji
