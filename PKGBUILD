@@ -1,6 +1,6 @@
 # Maintainer: Ian Liu Rodrigues <ian dot liu88 at gmail dot com>
 pkgname=aws-asl-languageserver
-pkgver=1.36.0
+pkgver=1.67.0
 pkgrel=1
 pkgdesc="Language server for AWS Step Function's ASL, extracted from aws-toolkit-vscode"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aws/aws-toolkit-vscode/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=(e097589ab77220d4dc576c87cbcbbc06b57098f5dd5503571741ed2906cc8b2f)
+sha256sums=("e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855")
 
 prepare() {
   cd "aws-toolkit-vscode-$pkgver"
