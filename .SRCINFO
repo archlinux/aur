@@ -1,7 +1,7 @@
 pkgbase = r-bayestestr
 	pkgdesc = Understand and Describe Bayesian Models and Posterior Distributions
 	pkgver = 0.13.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=bayestestR
 	arch = any
 	license = GPL
@@ -15,6 +15,7 @@ pkgbase = r-bayestestr
 	optdepends = r-blavaan
 	optdepends = r-bridgesampling
 	optdepends = r-brms
+	optdepends = r-curl
 	optdepends = r-effectsize
 	optdepends = r-emmeans
 	optdepends = r-gamm4
