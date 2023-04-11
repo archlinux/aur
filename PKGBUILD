@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libebur128-git
-pkgver=1.2.4.r43.g68abf1b
-pkgrel=2
+pkgver=1.2.6.r0.g67b33ab
+pkgrel=1
 pkgdesc="A library implementing the EBU R128 loudness standard"
 arch=('i686' 'x86_64')
 url="https://github.com/jiixyj/libebur128"
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'cmake')
-provides=('libebur128')
+provides=("libebur128=$pkgver")
 conflicts=('libebur128')
 options=('staticlibs')
 source=("git+https://github.com/jiixyj/libebur128.git")

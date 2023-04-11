@@ -1,7 +1,7 @@
 pkgbase = libebur128-git
 	pkgdesc = A library implementing the EBU R128 loudness standard
-	pkgver = 1.2.4.r43.g68abf1b
-	pkgrel = 2
+	pkgver = 1.2.6.r0.g67b33ab
+	pkgrel = 1
 	url = https://github.com/jiixyj/libebur128
 	arch = i686
 	arch = x86_64
@@ -9,11 +9,10 @@ pkgbase = libebur128-git
 	makedepends = git
 	makedepends = cmake
 	depends = glibc
-	provides = libebur128
+	provides = libebur128=1.2.6.r0.g67b33ab
 	conflicts = libebur128
 	options = staticlibs
 	source = git+https://github.com/jiixyj/libebur128.git
 	sha256sums = SKIP
 
 pkgname = libebur128-git
-
