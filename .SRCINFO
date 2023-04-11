@@ -13,6 +13,7 @@ pkgbase = ubdsrv-git
 	license = GPL2
 	license = LGPL2.1
 	depends = liburing
+	depends = git
 	conflicts = ubdsrv
 	source = ubdsrv-git::git+https://github.com/ming1/ubdsrv.git
 	b2sums = SKIP
