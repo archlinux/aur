@@ -1,7 +1,7 @@
 pkgbase = wofi-emoji
 	pkgdesc = Emoji picker for Wayland using wofi and wtype
-	pkgver = 1.0
-	pkgrel = 1
+	pkgver = 1.1
+	pkgrel = 2
 	url = https://github.com/Zeioth/wofi-emoji
 	arch = any
 	license = MIT
