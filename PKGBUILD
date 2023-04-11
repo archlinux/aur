@@ -10,7 +10,7 @@ license=('MIT')
 depends=('electron' 'tar' 'npm')
 options=('!docs' '!emptydirs')
 source=("https://github.com/dcrousso/GroupMe/archive/refs/tags/v${pkgver}.tar.gz" "groupme.desktop")
-md5sums=('f9c72829456c3f56341a029488a0c17f' '82e829e0ad8ed756453569edc6cddeb9')
+md5sums=('43e1f2e43d646008bb54778981fd5bca' '82e829e0ad8ed756453569edc6cddeb9')
 
 
 package() {
