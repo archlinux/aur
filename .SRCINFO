@@ -1,0 +1,14 @@
+pkgbase = python2-pycrypto
+	pkgdesc = Cryptographic modules for Python.
+	pkgver = 2.6
+	pkgrel = 1
+	url = http://www.pycrypto.org/
+	arch = any
+	license = custom:Public Domain
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://files.pythonhosted.org/packages/source/p/pycrypto/pycrypto-2.6.tar.gz
+	sha256sums = 7293c9d7e8af2e44a82f86eb9c3b058880f4bcc884bf3ad6c8a34b64986edde8
+
+pkgname = python2-pycrypto
+	depends = python2
