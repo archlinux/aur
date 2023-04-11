@@ -6,6 +6,7 @@ pkgbase = mfa2
 	arch = x86_64
 	license = GPL
 	makedepends = unzip
+	depends = openbor-bin
 	depends = git
 	depends = sdl2
 	depends = sdl2_gfx
