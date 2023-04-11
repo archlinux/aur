@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libuv-git
-pkgver=1.39.0.r100.gdec07238
+pkgver=1.44.2.r110.g5047b344
 pkgrel=1
 pkgdesc="A multi-platform support library with a focus on asynchronous I/O"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://libuv.org/"
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'python-sphinx')
-provides=('libuv')
+provides=("libuv=$pkgver")
 conflicts=('libuv')
 options=('staticlibs')
 source=("git+https://github.com/libuv/libuv.git#branch=master")
