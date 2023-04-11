@@ -1,0 +1,20 @@
+pkgbase = linuxqq-appimage
+	pkgdesc = New Linux QQ based on Electron
+	pkgver = 3.1.1_11223
+	pkgrel = 1
+	url = https://im.qq.com/linuxqq/
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = zlib
+	depends = hicolor-icon-theme
+	provides = qq
+	provides = linuxqq
+	noextract = Linuxqq-3.1.1_11223-x86_64.AppImage
+	options = !strip
+	source_x86_64 = Linuxqq-3.1.1_11223-x86_64.AppImage::https://dldir1.qq.com/qqfile/qq/QQNT/2355235c/linuxqq_3.1.1-11223_x86_64.AppImage
+	sha256sums_x86_64 = 27f15ae01973ef2216d84fa8755e949abc535fce11f5214e2f902c9027baeb0f
+	source_aarch64 = Linuxqq-3.1.1_11223-aarch64.AppImage::https://dldir1.qq.com/qqfile/qq/QQNT/2355235c/linuxqq_3.1.1-11223_arm64.AppImage
+	sha256sums_aarch64 = b2cc69ee832addc697d9dd08730cd97f0aa085060dcc419d4c08b656b19d5703
+
+pkgname = linuxqq-appimage
