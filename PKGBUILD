@@ -2,9 +2,9 @@
 
 pkgname=zaproxy-desktop
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Integrated penetration testing tool for finding vulnerabilities in web applications (desktop icon)'
-arch=('x86_64')
+arch=('any')
 url='https://www.owasp.org/index.php/ZAP'
 license=('Apache')
 depends=('zaproxy')
