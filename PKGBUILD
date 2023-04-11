@@ -2,7 +2,7 @@
  
 _realname=fluidsynth
 pkgname=mingw-w64-fluidsynth
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="A real-time software synthesizer based on the SoundFont 2 specifications (mingw-w64)"
 url="http://www.fluidsynth.org/"
@@ -17,7 +17,7 @@ makedepends=('mingw-w64-cmake'
   'mingw-w64-make')
 options=('staticlibs' '!buildflags' '!strip')
 source=("${_realname}-${pkgver}.tar.gz::https://github.com/FluidSynth/${_realname}/archive/v${pkgver}.tar.gz")
-sha256sums=('d734e4cf488be763cf123e5976f3154f0094815093eecdf71e0e9ae148431883')
+sha256sums=('cd610810f30566e28fb98c36501f00446a06fa6bae3dc562c8cd3868fe1c0fc7')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -27,10 +27,10 @@ build() {
     mkdir -p build-${_arch} && pushd build-${_arch}
     
 	# If you need every feature, use this
-    ${_arch}-cmake -DBUILD_SHARED_LIBS=0 -Denable-portaudio=1 -Denable-dbus=0 ..
+    #${_arch}-cmake -DBUILD_SHARED_LIBS=0 -Denable-portaudio=1 -Denable-dbus=0 ..
 	
 	# If you only need the bare minimum to play with SF2/SF3 soundfonts with SDL2, uncomment this instead
-    #${_arch}-cmake -DBUILD_SHARED_LIBS=0 -Denable-aufile=0 -Denable-dbus=0 -Denable-ipv6=0 -Denable-jack=0 -Denable-ladspa=0 -Denable-midishare=0 -Denable-opensles=0 -Denable-oboe=0 -Denable-oss=0 -Denable-readline=0 -Denable-winmidi=0 -Denable-waveout=0 -Denable-network=0 -Denable-pulseaudio=0 -Denable-dsound=0 -Denable-alsa=0 -Denable-libinstpatch=0 -Denable-portaudio=0 -Denable-wasapi=0 -Denable-openmp=1 -Denable-libsndfile=0 -Denable-sdl2=1 ..
+    ${_arch}-cmake -DBUILD_SHARED_LIBS=0 -Denable-aufile=0 -Denable-dbus=0 -Denable-ipv6=0 -Denable-jack=0 -Denable-ladspa=0 -Denable-midishare=0 -Denable-opensles=0 -Denable-oboe=0 -Denable-oss=0 -Denable-readline=0 -Denable-winmidi=0 -Denable-waveout=0 -Denable-network=0 -Denable-pulseaudio=0 -Denable-dsound=0 -Denable-alsa=0 -Denable-libinstpatch=0 -Denable-portaudio=0 -Denable-wasapi=0 -Denable-openmp=1 -Denable-libsndfile=0 -Denable-sdl2=1 ..
     make
     popd
   done
