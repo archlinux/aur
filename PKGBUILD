@@ -14,6 +14,7 @@ md5sums=('43e1f2e43d646008bb54778981fd5bca' '82e829e0ad8ed756453569edc6cddeb9')
 
 
 package() {
+  # Open GroupMe tarball, install deps, & compile
   tar -xf v$pkgver.tar.gz
   cd GroupMe-$pkgver
   npm install
@@ -21,12 +22,17 @@ package() {
   npm run build-linux
   cd ..
 
+  # Move built program to output directory
   mkdir $pkgdir/opt/
   mv GroupMe-$pkgver/dist/GroupMe-linux-x64 $pkgdir/opt/groupme
   rm -rf GroupMe-$pkgver
 
-  # Link to the binary
+  # Install .desktop
   mkdir -p $pkgdir/usr/share/applications/
   cp groupme.desktop $pkgdir/usr/share/applications/
-  ln -sf /usr/bin/groupme /opt/groupme/GroupMe
+
+  # Make `groupme` command launch GroupMe
+  mkdir -p $pkgdir/usr/bin
+  cd $pkgdir/usr/bin
+  ln -sf ./groupme ../../opt/groupme/GroupMe
 }
