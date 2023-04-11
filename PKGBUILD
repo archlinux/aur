@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=liburcu-git
-pkgver=0.12.1.r3.g4af3e30
+pkgver=0.14.0.r5.g106ed13
 pkgrel=1
 pkgdesc="Userspace RCU implementation"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://liburcu.org/"
 license=('custom')
 depends=('glibc')
 makedepends=('git')
-provides=('liburcu')
+provides=("liburcu=$pkgver")
 conflicts=('liburcu')
 options=('staticlibs')
 source=("git+https://github.com/urcu/userspace-rcu.git")
