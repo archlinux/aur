@@ -1,12 +1,13 @@
 pkgbase = r-quanteda
 	pkgdesc = Quantitative Analysis of Textual Data
-	pkgver = 3.2.4
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=quanteda
 	arch = x86_64
 	license = GPL
 	depends = r
 	depends = r-fastmatch
+	depends = r-jsonlite
 	depends = r-magrittr
 	depends = r-rcpp
 	depends = r-rcpparmadillo
@@ -19,12 +20,10 @@ pkgbase = r-quanteda
 	optdepends = r-dplyr
 	optdepends = r-formatr
 	optdepends = r-ggplot2
-	optdepends = r-jsonlite
 	optdepends = r-knitr
 	optdepends = r-lda
 	optdepends = r-lsa
 	optdepends = r-purrr
-	optdepends = r-quanteda
 	optdepends = r-quanteda.textmodels
 	optdepends = r-quanteda.textplots
 	optdepends = r-quanteda.textstats
@@ -42,7 +41,7 @@ pkgbase = r-quanteda
 	optdepends = r-tokenizers
 	optdepends = r-topicmodels
 	optdepends = r-xtable
-	source = https://cran.r-project.org/src/contrib/quanteda_3.2.4.tar.gz
-	sha256sums = c270762579527bff58e811ff68a04f65a925947ae49e017865d61938d9a3e3f9
+	source = https://cran.r-project.org/src/contrib/quanteda_3.3.0.tar.gz
+	sha256sums = 03256faf63455d16d643349a34b068d0bf69506a0e952b99ab2391e6423663a5
 
 pkgname = r-quanteda
