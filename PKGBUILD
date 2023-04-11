@@ -56,7 +56,7 @@ build() {
             -DLLVM_ENABLE_LTO=Thin \
             -DLLVM_LINK_LLVM_DYLIB=ON \
             -DCLANG_LINK_CLANG_DYLIB=ON \
-            -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;libc;libclc;lld;lldb;openmp;polly;pstl;compiler-rt" \
+            -DLLVM_ENABLE_PROJECTS="bolt;clang;clang-tools-extra;libc;libclc;lld;lldb;openmp;polly;pstl;compiler-rt" \
             -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;libunwind" \
             -DCMAKE_BUILD_TYPE=Release \
             ${srcdir}/llvm-project-${_pkgver_suffix}.src/llvm | tee ${pkgname}-configure.log
