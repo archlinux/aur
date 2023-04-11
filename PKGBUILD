@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libisoburn-git
-pkgver=1.5.4.r13.g60dfe77a
+pkgver=1.5.4.r89.gd0ff0a38
 pkgrel=1
 pkgdesc="Frontend for libburn and libisofs"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('glibc' 'libburn' 'libisofs' 'readline')
 makedepends=('git')
 optdepends=('tk: for xorriso-tcltk frontend'
             'sudo: for use with xorriso-dd-target')
-provides=('libisoburn' 'xorriso' 'xorriso-tcltk')
+provides=("libisoburn=$pkgver" 'xorriso' 'xorriso-tcltk')
 conflicts=('libisoburn')
 options=('staticlibs')
 source=("git+https://dev.lovelyhq.com/libburnia/libisoburn.git")

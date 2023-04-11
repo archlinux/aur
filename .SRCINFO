@@ -1,6 +1,6 @@
 pkgbase = libisoburn-git
 	pkgdesc = Frontend for libburn and libisofs
-	pkgver = 1.5.4.r13.g60dfe77a
+	pkgver = 1.5.4.r89.gd0ff0a38
 	pkgrel = 1
 	url = https://dev.lovelyhq.com/libburnia/web/wiki/Libisoburn
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = libisoburn-git
 	depends = readline
 	optdepends = tk: for xorriso-tcltk frontend
 	optdepends = sudo: for use with xorriso-dd-target
-	provides = libisoburn
+	provides = libisoburn=1.5.4.r89.gd0ff0a38
 	provides = xorriso
 	provides = xorriso-tcltk
 	conflicts = libisoburn
