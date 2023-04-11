@@ -1,0 +1,144 @@
+diff -rU0 miraclecast-systemd/src/ctl/ctl-cli.c miraclecast-elogind/src/ctl/ctl-cli.c
+--- miraclecast-systemd/src/ctl/ctl-cli.c	2023-04-11 13:30:38.679755333 +0200
++++ miraclecast-elogind/src/ctl/ctl-cli.c	2023-04-11 13:34:40.719747762 +0200
+@@ -31 +31 @@
+-#include <systemd/sd-bus.h>
++#include <elogind/systemd/sd-bus.h>
+diff -rU0 miraclecast-systemd/src/ctl/ctl.h miraclecast-elogind/src/ctl/ctl.h
+--- miraclecast-systemd/src/ctl/ctl.h	2023-04-11 13:30:38.679755333 +0200
++++ miraclecast-elogind/src/ctl/ctl.h	2023-04-11 13:34:40.739747762 +0200
+@@ -31 +31 @@
+-#include <systemd/sd-bus.h>
++#include <elogind/systemd/sd-bus.h>
+diff -rU0 miraclecast-systemd/src/ctl/ctl-sink.h miraclecast-elogind/src/ctl/ctl-sink.h
+--- miraclecast-systemd/src/ctl/ctl-sink.h	2023-04-11 13:30:38.679755333 +0200
++++ miraclecast-elogind/src/ctl/ctl-sink.h	2023-04-11 13:34:40.729747762 +0200
+@@ -32 +32 @@
+-#include <systemd/sd-event.h>
++#include <elogind/systemd/sd-event.h>
+diff -rU0 miraclecast-systemd/src/ctl/ctl-wifi.c miraclecast-elogind/src/ctl/ctl-wifi.c
+--- miraclecast-systemd/src/ctl/ctl-wifi.c	2023-04-11 13:30:38.679755333 +0200
++++ miraclecast-elogind/src/ctl/ctl-wifi.c	2023-04-11 13:34:40.739747762 +0200
+@@ -24 +24 @@
+-#include <systemd/sd-bus.h>
++#include <elogind/systemd/sd-bus.h>
+diff -rU0 miraclecast-systemd/src/ctl/sinkctl.c miraclecast-elogind/src/ctl/sinkctl.c
+--- miraclecast-systemd/src/ctl/sinkctl.c	2023-04-11 13:30:38.679755333 +0200
++++ miraclecast-elogind/src/ctl/sinkctl.c	2023-04-11 13:34:40.759747761 +0200
+@@ -33,2 +33,2 @@
+-#include <systemd/sd-bus.h>
+-#include <systemd/sd-event.h>
++#include <elogind/systemd/sd-bus.h>
++#include <elogind/systemd/sd-event.h>
+@@ -37 +37 @@
+-#include <systemd/sd-journal.h>
++#include <elogind/systemd/sd-journal.h>
+diff -rU0 miraclecast-systemd/src/ctl/wifictl.c miraclecast-elogind/src/ctl/wifictl.c
+--- miraclecast-systemd/src/ctl/wifictl.c	2023-04-11 13:30:38.679755333 +0200
++++ miraclecast-elogind/src/ctl/wifictl.c	2023-04-11 13:34:40.759747761 +0200
+@@ -30 +30 @@
+-#include <systemd/sd-bus.h>
++#include <elogind/systemd/sd-bus.h>
+diff -rU0 miraclecast-systemd/src/miracled.c miraclecast-elogind/src/miracled.c
+--- miraclecast-systemd/src/miracled.c	2023-04-11 13:30:38.679755333 +0200
++++ miraclecast-elogind/src/miracled.c	2023-04-11 13:34:40.779747760 +0200
+@@ -28,3 +28,3 @@
+-#include <systemd/sd-bus.h>
+-#include <systemd/sd-daemon.h>
+-#include <systemd/sd-event.h>
++#include <elogind/systemd/sd-bus.h>
++#include <elogind/systemd/sd-daemon.h>
++#include <elogind/systemd/sd-event.h>
+diff -rU0 miraclecast-systemd/src/miracled.h miraclecast-elogind/src/miracled.h
+--- miraclecast-systemd/src/miracled.h	2023-04-11 13:30:38.679755333 +0200
++++ miraclecast-elogind/src/miracled.h	2023-04-11 13:34:40.789747760 +0200
+@@ -24,2 +24,2 @@
+-#include <systemd/sd-bus.h>
+-#include <systemd/sd-event.h>
++#include <elogind/systemd/sd-bus.h>
++#include <elogind/systemd/sd-event.h>
+diff -rU0 miraclecast-systemd/src/shared/rtsp.c miraclecast-elogind/src/shared/rtsp.c
+--- miraclecast-systemd/src/shared/rtsp.c	2023-04-11 13:30:38.679755333 +0200
++++ miraclecast-elogind/src/shared/rtsp.c	2023-04-11 13:34:40.789747760 +0200
+@@ -31 +31 @@
+-#include <systemd/sd-event.h>
++#include <elogind/systemd/sd-event.h>
+diff -rU0 miraclecast-systemd/src/shared/rtsp.h miraclecast-elogind/src/shared/rtsp.h
+--- miraclecast-systemd/src/shared/rtsp.h	2023-04-11 13:30:38.679755333 +0200
++++ miraclecast-elogind/src/shared/rtsp.h	2023-04-11 13:34:40.799747760 +0200
+@@ -27 +27 @@
+-#include <systemd/sd-event.h>
++#include <elogind/systemd/sd-event.h>
+diff -rU0 miraclecast-systemd/src/shared/util.h miraclecast-elogind/src/shared/util.h
+--- miraclecast-systemd/src/shared/util.h	2023-04-11 13:30:38.679755333 +0200
++++ miraclecast-elogind/src/shared/util.h	2023-04-11 13:34:40.799747760 +0200
+@@ -31 +31 @@
+-#include <systemd/sd-bus.h>
++#include <elogind/systemd/sd-bus.h>
+diff -rU0 miraclecast-systemd/src/shared/wpas.c miraclecast-elogind/src/shared/wpas.c
+--- miraclecast-systemd/src/shared/wpas.c	2023-04-11 13:30:38.679755333 +0200
++++ miraclecast-elogind/src/shared/wpas.c	2023-04-11 13:34:40.809747759 +0200
+@@ -33 +33 @@
+-#include <systemd/sd-event.h>
++#include <elogind/systemd/sd-event.h>
+diff -rU0 miraclecast-systemd/src/shared/wpas.h miraclecast-elogind/src/shared/wpas.h
+--- miraclecast-systemd/src/shared/wpas.h	2023-04-11 13:30:38.679755333 +0200
++++ miraclecast-elogind/src/shared/wpas.h	2023-04-11 13:34:40.819747759 +0200
+@@ -27 +27 @@
+-#include <systemd/sd-event.h>
++#include <elogind/systemd/sd-event.h>
+diff -rU0 miraclecast-systemd/src/wifi/wifid.c miraclecast-elogind/src/wifi/wifid.c
+--- miraclecast-systemd/src/wifi/wifid.c	2023-04-11 13:30:38.679755333 +0200
++++ miraclecast-elogind/src/wifi/wifid.c	2023-04-11 13:34:40.869747757 +0200
+@@ -30,3 +30,3 @@
+-#include <systemd/sd-bus.h>
+-#include <systemd/sd-daemon.h>
+-#include <systemd/sd-event.h>
++#include <elogind/systemd/sd-bus.h>
++#include <elogind/systemd/sd-daemon.h>
++#include <elogind/systemd/sd-event.h>
+diff -rU0 miraclecast-systemd/src/wifi/wifid-dbus.c miraclecast-elogind/src/wifi/wifid-dbus.c
+--- miraclecast-systemd/src/wifi/wifid-dbus.c	2023-04-11 13:30:38.679755333 +0200
++++ miraclecast-elogind/src/wifi/wifid-dbus.c	2023-04-11 13:34:40.829747759 +0200
+@@ -25,2 +25,2 @@
+-#include <systemd/sd-bus.h>
+-#include <systemd/sd-event.h>
++#include <elogind/systemd/sd-bus.h>
++#include <elogind/systemd/sd-event.h>
+diff -rU0 miraclecast-systemd/src/wifi/wifid.h miraclecast-elogind/src/wifi/wifid.h
+--- miraclecast-systemd/src/wifi/wifid.h	2023-04-11 13:30:38.679755333 +0200
++++ miraclecast-elogind/src/wifi/wifid.h	2023-04-11 13:34:40.879747757 +0200
+@@ -24,2 +24,2 @@
+-#include <systemd/sd-bus.h>
+-#include <systemd/sd-event.h>
++#include <elogind/systemd/sd-bus.h>
++#include <elogind/systemd/sd-event.h>
+diff -rU0 miraclecast-systemd/src/wifi/wifid-link.c miraclecast-elogind/src/wifi/wifid-link.c
+--- miraclecast-systemd/src/wifi/wifid-link.c	2023-04-11 13:30:38.679755333 +0200
++++ miraclecast-elogind/src/wifi/wifid-link.c	2023-04-11 13:34:40.829747759 +0200
+@@ -25 +25 @@
+-#include <systemd/sd-bus.h>
++#include <elogind/systemd/sd-bus.h>
+diff -rU0 miraclecast-systemd/src/wifi/wifid-peer.c miraclecast-elogind/src/wifi/wifid-peer.c
+--- miraclecast-systemd/src/wifi/wifid-peer.c	2023-04-11 13:30:38.679755333 +0200
++++ miraclecast-elogind/src/wifi/wifid-peer.c	2023-04-11 13:34:40.839747758 +0200
+@@ -25 +25 @@
+-#include <systemd/sd-bus.h>
++#include <elogind/systemd/sd-bus.h>
+diff -rU0 miraclecast-systemd/src/wifi/wifid-supplicant.c miraclecast-elogind/src/wifi/wifid-supplicant.c
+--- miraclecast-systemd/src/wifi/wifid-supplicant.c	2023-04-11 13:30:38.679755333 +0200
++++ miraclecast-elogind/src/wifi/wifid-supplicant.c	2023-04-11 13:34:40.849747758 +0200
+@@ -31 +31 @@
+-#include <systemd/sd-event.h>
++#include <elogind/systemd/sd-event.h>
+@@ -34 +34 @@
+-#include <systemd/sd-journal.h>
++#include <elogind/systemd/sd-journal.h>
+diff -rU0 miraclecast-systemd/test/test_common.h miraclecast-elogind/test/test_common.h
+--- miraclecast-systemd/test/test_common.h	2023-04-11 13:30:38.679755333 +0200
++++ miraclecast-elogind/test/test_common.h	2023-04-11 13:34:40.879747757 +0200
+@@ -46,2 +46,2 @@
+-#include <systemd/sd-bus.h>
+-#include <systemd/sd-event.h>
++#include <elogind/systemd/sd-bus.h>
++#include <elogind/systemd/sd-event.h>
