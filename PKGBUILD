@@ -1,6 +1,6 @@
 # Maintainer: Bobby Rong <admin at bobby285271 dot top>
 pkgname=ppet-bin
-pkgver=1.2.1
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="在你的桌面放一个萌妹子，多一点趣味。"
 arch=("x86_64")
@@ -8,8 +8,8 @@ url="https://github.com/zenghongtu/PPet"
 license=('MIT')
 depends=('electron')
 conflicts=('ppet')
-source=("https://ppet-bin.oss-cn-shenzhen.aliyuncs.com/PPet-${pkgver}.deb")
-md5sums=('b71171c0102a36130ca64b9cfc35a586')
+source=("https://github.com/zenghongtu/PPet/releases/download/v${pkgver}/PPet3-${pkgver}.deb")
+md5sums=('4ccfdff2018c623ee6454ba222024422')
 
 package() {
   install -d "${pkgdir}/usr/bin"
