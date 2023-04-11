@@ -1,0 +1,42 @@
+--- zathura-pdf-mupdf-0.4.0/zathura-pdf-mupdf/index.c	2022-11-27 16:51:05.000000000 +0100
++++ zathura-pdf-mupdf/zathura-pdf-mupdf/index.c	2023-04-11 16:19:41.839932951 +0200
+@@ -2,6 +2,7 @@
+ 
+ #include <girara/datastructures.h>
+ 
++#include "math.h"
+ #include "plugin.h"
+ 
+ static void build_index(fz_context* ctx, fz_document* document, fz_outline*
+@@ -70,8 +71,8 @@
+       type                    = ZATHURA_LINK_GOTO_DEST;
+       target.destination_type = ZATHURA_LINK_DESTINATION_XYZ;
+       target.page_number      = fz_page_number_from_location (ctx, document, location);
+-      target.left  = x;
+-      target.top   = y;
++      if (!isnan(x)) target.left  = x;
++      if (!isnan(y)) target.top   = y;
+       target.zoom  = 0.0;
+     }
+ 
+--- zathura-pdf-mupdf-0.4.0/zathura-pdf-mupdf/links.c	2022-11-27 16:51:05.000000000 +0100
++++ zathura-pdf-mupdf/zathura-pdf-mupdf/links.c	2023-04-11 16:19:41.839932951 +0200
+@@ -3,6 +3,7 @@
+ #include <glib.h>
+ 
+ #include "plugin.h"
++#include "math.h"
+ 
+ girara_list_t*
+ pdf_page_links_get(zathura_page_t* page, void* data, zathura_error_t* error)
+@@ -59,8 +60,8 @@
+       type                    = ZATHURA_LINK_GOTO_DEST;
+       target.destination_type = ZATHURA_LINK_DESTINATION_XYZ;
+       target.page_number      = fz_page_number_from_location (mupdf_document->ctx, mupdf_document->document, location);
+-      target.left  = x;
+-      target.top   = y;
++      if (!isnan(x)) target.left  = x;
++      if (!isnan(y)) target.top   = y;
+       target.zoom  = 0.0;
+     }
+ 

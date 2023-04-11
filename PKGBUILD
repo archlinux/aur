@@ -6,7 +6,7 @@
 
 pkgname=zathura-pdf-mupdf
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 
 pkgdesc="PDF support for Zathura (MuPDF backend) (Supports PDF, ePub, and OpenXPS)"
 url="https://pwmt.org/projects/zathura-pdf-mupdf/"
@@ -19,14 +19,21 @@ depends=('cairo' 'gumbo-parser' 'jbig2dec' 'libjpeg' 'openjpeg2' 'openssl' 'zath
 makedepends=('libmupdf' 'meson' 'ninja' 'git')
 
 source=(zathura-pdf-mupdf-$pkgver.tar.gz::https://pwmt.org/projects/zathura-pdf-mupdf/download/zathura-pdf-mupdf-$pkgver.tar.xz
-        0001-Remove-mupdf-linking-detection.patch)
+        0001-Remove-mupdf-linking-detection.patch
+        resolve_link_destination.patch)
 
 sha256sums=('8c1c575678a1cd45b007bdf12328527f0aef6184103e0965459a4202e9ee925d'
-            '8b51563a782a7dea38711335354bf65e2303b06bfecacf9cc060ecfc7b0851b8')
+            '8b51563a782a7dea38711335354bf65e2303b06bfecacf9cc060ecfc7b0851b8'
+            '322fba688c30b18d80c4d834b53e3cb643d5b77143acf72a36252802e3d03e9d')
 
 prepare() {
   cd zathura-pdf-mupdf-$pkgver
   patch -p1 <"$srcdir"/0001-Remove-mupdf-linking-detection.patch
+  
+  # Temporary fix for the "resolving link destination" issue with mupdf 1.21.X (while waiting for it to be included in a new release)
+  # https://git.pwmt.org/pwmt/zathura-pdf-mupdf/-/issues/33
+  # https://git.pwmt.org/pwmt/zathura-pdf-mupdf/-/merge_requests/9
+  patch -Np1 <"$srcdir"/resolve_link_destination.patch
 }
 
 build() {
