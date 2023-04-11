@@ -1,8 +1,9 @@
 # Maintainer: Revincx <revincx233@gmail.com>
+# Co-Maintainer: Mikata Riko <sanbikappa@qq.com>
 
 pkgname='kikoplay-bin'
 pkgver=0.9.2
-pkgrel=3
+pkgrel=4
 pkgdesc="linux danmaku player"
 arch=('x86_64')
 license=('GPL3')
@@ -24,9 +25,13 @@ package() {
     install -Dm644 kikoplay.png "$pkgdir/usr/share/pixmaps/kikoplay.png"
     install -Dm644 kikoplay.desktop "${pkgdir}/usr/share/applications/kikoplay.desktop"
 
-    rm script/LICENSE script/*.md script/*.png
     mkdir -p "${pkgdir}/usr/share/kikoplay"
+    # lua script module for danmu search
+    rm script/LICENSE script/*.md script/*.png
     cp -r script "${pkgdir}/usr/share/kikoplay"
+
+    # web server module for LANserver function
+    cp -r web "${pkgdir}/usr/share/kikoplay"
 
     ln -sf KikoPlay "$pkgdir/usr/bin/kikoplay"
 }
