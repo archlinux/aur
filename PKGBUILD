@@ -5,14 +5,14 @@
 pkgname=miktex-fix
 _pkgname=miktex
 pkgver=22.10
-pkgrel=1
+pkgrel=2
 pkgdesc="a distribution of the TeX/LaTeX typesetting system(Fix the issue of command not found)"
 arch=('x86_64')
 url="https://miktex.org"
 license=('custom')
 depends=('apr' 'boost-libs' 'apr-util' 'bzip2' 'cairo' 'expat' 'fontconfig' 'freetype2'
          'fribidi' 'gd' 'gmp' 'graphite' 'harfbuzz-icu' 'hunspell' 'icu'
-         'libjpeg' 'log4cxx' 'xz' 'mpfr' 'libmspack' 'openssl' 'pixman' 'libpng'
+         'libjpeg' 'log4cxx<=0.13.0' 'xz' 'mpfr' 'libmspack' 'openssl' 'pixman' 'libpng'
          'poppler' 'popt' 'potrace' 'uriparser' 'hicolor-icon-theme' 'zziplib' 'poppler-qt5' 'qt5-script' 'qt5-declarative')
 makedepends=('cmake' 'coreutils' 'fop' 'sed' 'libxslt' 'qt5-tools' 'boost')
 source=("https://github.com/MiKTeX/miktex/archive/${pkgver}.tar.gz")

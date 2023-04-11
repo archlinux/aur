@@ -1,7 +1,7 @@
 pkgbase = miktex-fix
 	pkgdesc = a distribution of the TeX/LaTeX typesetting system(Fix the issue of command not found)
 	pkgver = 22.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://miktex.org
 	arch = x86_64
 	license = custom
@@ -28,7 +28,7 @@ pkgbase = miktex-fix
 	depends = hunspell
 	depends = icu
 	depends = libjpeg
-	depends = log4cxx
+	depends = log4cxx<=0.13.0
 	depends = xz
 	depends = mpfr
 	depends = libmspack
