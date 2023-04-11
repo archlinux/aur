@@ -4,7 +4,7 @@ _pkgname=TSP
 _pkgver=1.2-4
 pkgname=r-${_pkgname,,}
 pkgver=1.2.4
-pkgrel=1
+pkgrel=3
 pkgdesc='Traveling Salesperson Problem (TSP)'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,8 +16,6 @@ depends=(
 optdepends=(
   r-doparallel
   r-maps
-  r-maptools
-  r-sp
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
