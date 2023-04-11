@@ -1,12 +1,12 @@
 pkgbase = mediawiki-extension-titlekey
 	pkgdesc = An extension for MediaWiki that provides a case-insensitive page title prefix search
-	pkgver = 1.39+r234+g188589a
+	pkgver = 1.39+r235+g42ec705
 	pkgrel = 1
 	url = https://www.mediawiki.org/wiki/Extension:TitleKey
 	arch = any
 	license = GPL
 	makedepends = git
-	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/TitleKey.git#commit=188589ab52a684dc7e7bc3d64090825fbcb57769
+	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/TitleKey.git#commit=42ec7059fd07e7f6de9d2f1bac89a943250b567a
 	sha512sums = SKIP
 
 pkgname = mediawiki-extension-titlekey
