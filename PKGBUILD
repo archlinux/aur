@@ -1,6 +1,6 @@
 # Maintainer: huochenghai <huochenghai@gmail.com>
 pkgname="binggpt-desktop-bin"
-pkgver="0.3.2"
+pkgver="0.3.3"
 pkgrel=1
 pkgdesc="Desktop application of new Bing's AI-powered chat"
 arch=("x86_64")
@@ -15,10 +15,10 @@ provides=("binggpt-desktop=${pkgver}")
 conflicts=('binggpt-desktop')
 license=("Apache")
 source=("https://github.com/dice2o/BingGPT/releases/download/v${pkgver}/BingGPT-${pkgver}-linux-x64.deb")
-sha256sums=('c774ac1da35efc65377da94bfde453761a22eb323a64c98e3f3e1b5265579d04')
+sha256sums=('9211a93f701a0e339f7100cac0d3cb863c04a0f34f3fd06f0d98df1675a2b6ca')
 
 prepare() {
-	ar p BingGPT-${pkgver}-linux-x64.deb data.tar.zst | tar --zstd -x
+	ar p BingGPT-${pkgver}-linux-x64.deb data.tar.xz | tar --zstd -x
 }
 
 package() {
