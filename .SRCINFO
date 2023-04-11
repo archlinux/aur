@@ -1,6 +1,6 @@
 pkgbase = xmenu
 	pkgdesc = A menu utility for X.
-	pkgver = 4.5.5
+	pkgver = 4.6.1
 	pkgrel = 3
 	url = https://github.com/phillbush/xmenu
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = xmenu
 	depends = imlib2
 	depends = libxinerama
 	provides = xmenu
-	source = https://github.com/phillbush/xmenu/archive/v4.5.5.tar.gz
-	md5sums = cb544095915c4e3217766609be6cbafc
+	source = https://github.com/phillbush/xmenu/archive/v4.6.1.tar.gz
+	md5sums = aaea8969edd02d0af202243bef7988e2
 
 pkgname = xmenu
