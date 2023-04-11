@@ -11,6 +11,7 @@ pkgname=(
   ubuntu-backgrounds-karmic
   ubuntu-backgrounds-kinetic
   ubuntu-backgrounds-lucid
+  ubuntu-backgrounds-lunar
   ubuntu-backgrounds-maverick
   ubuntu-backgrounds-natty
   ubuntu-backgrounds-oneiric
@@ -24,7 +25,7 @@ pkgname=(
   ubuntu-backgrounds-yakkety
   ubuntu-backgrounds-zesty
 )
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="All backgrounds of Ubuntu"
 license=('Commons Attribution-ShareAlike 3.0 Unported')
@@ -234,6 +235,25 @@ package_ubuntu-backgrounds-lucid() {
     "Warmlights.jpg"
     "Yellowflower.jpg"
     "SmoothMoment.jpg"
+  )
+
+  package_wallpaper ${_pkgname} ${wallapers[@]}
+}
+
+package_ubuntu-backgrounds-lunar() {
+  _pkgname=${pkgname/${pkgbase}-/}
+
+  pkgdesc="The backgrounds included in Ubuntu 23.04 ${pkgname/${pkgbase}-/}"
+
+  local wallpapers=(
+    "Copper_Mountain_by_Eduardo_Battaglia.jpg"
+    "Flow_by_Emanuele_Santoro.png"
+    "Lunar-lobster-side_by_Gixo-light.png"
+    "LunarCatcher_by_Espio347.png"
+    "Multiverse_by_Emanuele_Santoro.png"
+    "Startrail_by_Hajime_Mizuno.jpg"
+    "Warm_Filament_by_Eduardo_Battaglia.jpg"
+    "winter-is-leaving_by_Gixo-light.png"
   )
 
   package_wallpaper ${_pkgname} ${wallapers[@]}
