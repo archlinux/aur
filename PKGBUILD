@@ -1,11 +1,12 @@
 pkgname=website-stalker
 pkgver=0.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Track changes on websites via git"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/EdJoPaTo/${pkgname}"
 license=('LGPL2.1')
 depends=('gcc-libs' 'zlib')
+optdepends=('git: git commit support')
 makedepends=('cargo')
 provides=("${pkgname}")
 
