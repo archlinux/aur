@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libconfig-git
-pkgver=1.7.2.r54.g6304782
+pkgver=1.7.3.r34.g4f13b7f
 pkgrel=1
 pkgdesc="C/C++ library for processing configuration files"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://hyperrealm.github.io/libconfig/"
 license=('LGPL')
 depends=('gcc-libs')
 makedepends=('git' 'cmake' 'texinfo')
-provides=('libconfig')
+provides=("libconfig=$pkgver")
 conflicts=('libconfig')
 source=("git+https://github.com/hyperrealm/libconfig.git")
 sha256sums=('SKIP')
