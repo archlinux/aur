@@ -1,6 +1,6 @@
 # Maintainer: Sofia Lima <me [at] dzshn [dot] xyz>
 pkgname=vencord-desktop-bin
-pkgver=0.1.4
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="A standalone Electron app that loads Discord & Vencord (official binary version)"
 arch=("x86_64" "aarch64")
@@ -21,7 +21,7 @@ source=("https://github.com/Vencord/Desktop/releases/download/v${pkgver}/Vencord
         "https://github.com/Vencord/Desktop/raw/main/LICENSE"
         "vencord.desktop")
 
-sha256sums=('17ca12fb5557a4c3a82485ccb36bade70b883a403ed49cd2b39babe4a5308176'
+sha256sums=('be10e3d8285260bc67c216b01d72a0e88c81bf30ee29b5ac93fa4001fa3797ab'
             '12d47c6612624b51a597ef6b042d1d03d67bc50247524444aa416666b203f920'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             'cd4d39fb009bfee33709c26c010a8fe70a76ee3c00006e822da2fec692a165d5')
