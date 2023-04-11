@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libnfnetlink-git
-pkgver=1.0.1.r7.g62ca426
+pkgver=1.0.2.r1.g5fec628
 pkgrel=1
 pkgdesc="Low-level library for netfilter related kernel/userspace communication"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://netfilter.org/projects/libnfnetlink/index.html"
 license=('GPL')
 depends=('glibc')
 makedepends=('git')
-provides=('libnfnetlink')
+provides=("libnfnetlink=$pkgver")
 conflicts=('libnfnetlink')
 source=("git://git.netfilter.org/libnfnetlink")
 sha256sums=('SKIP')
@@ -25,7 +25,8 @@ build() {
   cd "libnfnetlink"
 
   ./autogen.sh
-  ./configure --prefix="/usr"
+  ./configure \
+    --prefix="/usr"
   make
 }
 
