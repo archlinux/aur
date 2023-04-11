@@ -1,14 +1,14 @@
 pkgbase = tbls-bin
 	pkgdesc = CI-Friendly tool for documenting a database
-	pkgver = 1.65.2
+	pkgver = 1.65.3
 	pkgrel = 1
 	url = https://github.com/k1LoW/tbls
 	arch = x86_64
 	license = MIT
 	provides = tbls
 	conflicts = tbls
-	noextract = tbls-bin-1.65.2.tar.gz
-	source = tbls-bin-1.65.2.tar.gz::https://github.com/k1LoW/tbls/releases/download/v1.65.2/tbls_v1.65.2_linux_amd64.tar.gz
-	sha256sums = 6470d5303a22afe835a42ee426c33380fc7c326a643677e4dcdd6284c3ccb4b4
+	noextract = tbls-bin-1.65.3.tar.gz
+	source = tbls-bin-1.65.3.tar.gz::https://github.com/k1LoW/tbls/releases/download/v1.65.3/tbls_v1.65.3_linux_amd64.tar.gz
+	sha256sums = bb6fea7895a83cdc835cf91770eb2802f30e002c12d5a7a4896653cd55faf4d7
 
 pkgname = tbls-bin
