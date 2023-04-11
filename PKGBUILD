@@ -4,7 +4,7 @@ _pkgname=ISAnalytics
 _pkgver=1.8.3
 pkgname=r-${_pkgname,,}
 pkgver=1.8.3
-pkgrel=1
+pkgrel=3
 pkgdesc='Analyze gene therapy vector insertion sites data identified from genomics next generation sequencing reads for clonal tracking studies'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -12,7 +12,6 @@ license=('CCPL:by-nc-sa')
 depends=(
   r
   r-bslib
-  r-data.table
   r-datamods
   r-dplyr
   r-dt
@@ -23,10 +22,7 @@ depends=(
   r-glue
   r-lifecycle
   r-lubridate
-  r-magrittr
-  r-psych
   r-purrr
-  r-rcapture
   r-readr
   r-readxl
   r-rlang
@@ -41,8 +37,8 @@ optdepends=(
   r-biocstyle
   r-circlize
   r-covr
+  r-data.table
   r-dofuture
-  r-dt
   r-eulerr
   r-extradistr
   r-flexdashboard
@@ -57,7 +53,9 @@ optdepends=(
   r-pheatmap
   r-plotly
   r-progressr
+  r-psych
   r-r.utils
+  r-rcapture
   r-refmanager
   r-rmarkdown
   r-roxygen2
