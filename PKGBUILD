@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libtheora-git
-pkgver=1.2.0alpha1.r134.ge5d205b
+pkgver=1.2.0alpha1.r148.g7180717
 pkgrel=1
 pkgdesc="An open video codec developed by the Xiph.org"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.theora.org/"
 license=('BSD')
 depends=('glibc' 'libogg')
 makedepends=('git' 'libvorbis')
-provides=('libtheora')
+provides=("libtheora=$pkgver")
 conflicts=('libtheora')
 options=('staticlibs')
 source=("git+https://gitlab.xiph.org/xiph/theora.git")
