@@ -1,18 +1,17 @@
 pkgbase = libyaml-git
 	pkgdesc = C library for parsing and emitting YAML
-	pkgver = 0.1.7.r44.g660242d
-	pkgrel = 2
+	pkgver = 0.2.5.r2.gf8f760f
+	pkgrel = 1
 	url = https://pyyaml.org/wiki/LibYAML
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	depends = glibc
-	provides = libyaml
+	provides = libyaml=0.2.5.r2.gf8f760f
 	conflicts = libyaml
 	options = staticlibs
 	source = git+https://github.com/yaml/libyaml.git
 	sha256sums = SKIP
 
 pkgname = libyaml-git
-
