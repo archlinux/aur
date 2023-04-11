@@ -1,33 +1,50 @@
 # Maintainer: Edward Pacman <edward at edward-p.xyz>
 
-pkgname=broadcom-bt-firmware-git
+_pkgname='broadcom-bt-firmware'
+pkgname="$_pkgname-git"
 pkgdesc="Broadcom bluetooth firmware."
-conflicts=('bcm4335c0-firmware' 'bcm4350c5-firmware' 'bcm4356a2-firmware' 'bcm20702a1-firmware' 'bcm20702b0-firmware' 'bcm20703a1-firmware' 'bcm43142a0-firmware')
-provides=('bcm4335c0-firmware' 'bcm4350c5-firmware' 'bcm4356a2-firmware' 'bcm20702a1-firmware' 'bcm20702b0-firmware' 'bcm20703a1-firmware' 'bcm43142a0-firmware')
-pkgver=12.0.1.1011_p1.r3.gc0bd928
-pkgrel=2
+pkgver=12.0.1.1105_p4.r0.ga0eb480
+pkgrel=1
 arch=('any')
-makedepends=('git')
-url="https://github.com/winterheart/broadcom-bt-firmware"
 license=('custom')
-source=("git+https://github.com/winterheart/broadcom-bt-firmware.git")
-sha256sums=('SKIP')
+url="https://github.com/winterheart/broadcom-bt-firmware"
+
+provides=(
+  "$_pkgname"
+  'bcm20702a1-firmware'
+  'bcm20702b0-firmware'
+  'bcm20703a1-firmware'
+  'bcm43142a0-firmware'
+  'bcm4335c0-firmware'
+  'bcm4350c5-firmware'
+  'bcm4356a2-firmware'
+)
+conflicts=(${provides[@]})
+
+depends=()
+makedepends=('git')
+
+source=(
+  "$_pkgname"::"git+$url"
+)
+sha256sums=(
+  'SKIP'
+)
 
 pkgver() {
-  cd "${srcdir}/broadcom-bt-firmware"
+  cd "$srcdir/$_pkgname"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
+  cd "$srcdir/$_pkgname"
+
   #Install firmwares
-  cd "${srcdir}/broadcom-bt-firmware/brcm"
-  for i in *.hcd; do
-    install -Dm644 "$i" "${pkgdir}/usr/lib/firmware/brcm/$i"
+  for i in brcm/*.hcd; do
+    install -Dm644 "$i" "$pkgdir/usr/lib/firmware/$i"
   done
 
   #Install LICENSE
-  cd ..
-  install -Dm644 LICENSE.MIT.txt "${pkgdir}/usr/license/broadcom-bt-firmware-git/LICENSE.MIT.txt"
-  install -Dm644 LICENSE.broadcom_bcm20702 "${pkgdir}/usr/license/broadcom-bt-firmware-git/LICENSE.broadcom_bcm20702"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "LICENSE.MIT.txt"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "LICENSE.broadcom_bcm20702"
 }
-
