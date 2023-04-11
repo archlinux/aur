@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rms
-_pkgver=6.5-0
+_pkgver=6.6-0
 pkgname=r-${_pkgname,,}
-pkgver=6.5.0
-pkgrel=3
+pkgver=6.6.0
+pkgrel=1
 pkgdesc='Regression Modeling Strategies'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,6 +17,8 @@ depends=(
   r-hmisc
   r-htmltable
   r-htmltools
+  r-kableextra
+  r-knitr
   r-multcomp
   r-polspline
   r-quantreg
@@ -24,7 +26,7 @@ depends=(
 )
 optdepends=(
   r-boot
-  r-knitr
+  r-lattice
   r-mice
   r-nnet
   r-plotly
@@ -36,7 +38,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fd6f819d91d673dc40ce45126ed769d47173cda590147192fd98c2f5e45db185')
+sha256sums=('f3abadb94339f3aedadd27e1aceade069bcb53c94bf246626b0dc94b16b6625c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
