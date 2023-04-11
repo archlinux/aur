@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=lftp-git
-pkgver=4.9.2.r2.g11482e5e
+pkgver=4.9.2.r18.ge0e0ebcd
 pkgrel=1
 pkgdesc="Sophisticated file transfer program"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('expat' 'gnutls' 'hicolor-icon-theme' 'libidn2' 'readline')
 makedepends=('git' 'gperf')
 optdepends=('perl' 'sh')
-provides=('lftp')
+provides=("lftp=$pkgver")
 conflicts=('lftp')
 backup=('etc/lftp.conf')
 source=("git+https://github.com/lavv17/lftp.git")
