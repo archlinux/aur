@@ -1,0 +1,21 @@
+pkgbase = fatscript-fry
+	pkgdesc = fry, the fatscript interpreter
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://fatscript.org/
+	arch = any
+	groups = fatscript
+	license = GPL3
+	makedepends = git
+	makedepends = gcc
+	makedepends = bash
+	makedepends = ncurses
+	makedepends = readline
+	makedepends = libcurl-compat
+	depends = ncurses
+	depends = readline
+	depends = libcurl-compat
+	source = git+https://gitlab.com/fatscript/fry.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = fatscript-fry
