@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=lcms2-git
-pkgver=2.9rc1.r12.g66aeefe
+pkgver=2.15.r34.gbce906a
 pkgrel=1
 pkgdesc="Small-footprint color management engine"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.littlecms.com/"
 license=('MIT')
 depends=('glibc' 'libtiff')
 makedepends=('git')
-provides=('lcms2')
+provides=("lcms2=$pkgver")
 conflicts=('lcms2')
 options=('staticlibs')
 source=("git+https://github.com/mm2/Little-CMS.git")
@@ -26,7 +26,8 @@ build() {
   cd "Little-CMS"
 
   ./autogen.sh
-  ./configure --prefix="/usr"
+  ./configure \
+    --prefix="/usr"
   make
 }
 
@@ -40,5 +41,5 @@ package() {
   cd "Little-CMS"
 
   make DESTDIR="$pkgdir" install
-  install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/lcms2/COPYING"
+  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/lcms2"
 }
