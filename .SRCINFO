@@ -1,6 +1,6 @@
 pkgbase = waybar-hyprland-fix
 	pkgdesc = Highly customizable Wayland bar for Sway and Wlroots based compositors (Hyprland fix)
-	pkgver = r2491.a3816fc
+	pkgver = r2491.365e888
 	pkgrel = 1
 	url = https://github.com/ricardo177m/Waybar/
 	arch = x86_64
