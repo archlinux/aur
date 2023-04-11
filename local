@@ -1,0 +1,11 @@
+MATH = /usr/include/stan/
+BOOST = /usr/include/boost
+EIGEN = /usr/include/eigen3
+OPENCL = /usr/include/CL
+#TBB = /usr/include/tbb
+SUNDIALS = /usr/include/sundials
+BENCHMARK = /usr/include/benchmark
+GTEST = /usr/include/gtest
+CPPLINT = /usr/lib/python3.10/site-packages/
+RAPIDJSON = /usr/include/rapidjson/
+#CLI11 = /usr/include/CLI/
