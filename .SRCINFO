@@ -1,7 +1,7 @@
 pkgbase = hyprpaper-git
 	pkgdesc = A blazing fast wayland wallpaper utility with IPC controls.
 	pkgver = r94.4bcedde
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hyprwm/hyprpaper
 	arch = any
 	license = BSD
@@ -14,7 +14,7 @@ pkgbase = hyprpaper-git
 	makedepends = wayland-protocols
 	makedepends = xorgproto
 	depends = wayland
-	depends = livglvnd
+	depends = libglvnd
 	depends = pango
 	depends = libjpeg
 	depends = libpng
