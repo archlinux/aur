@@ -1,14 +1,14 @@
 pkgbase = ppet-bin
 	pkgdesc = 在你的桌面放一个萌妹子，多一点趣味。
-	pkgver = 1.2.1
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/zenghongtu/PPet
 	arch = x86_64
 	license = MIT
 	depends = electron
 	conflicts = ppet
-	source = https://ppet-bin.oss-cn-shenzhen.aliyuncs.com/PPet-1.2.1.deb
-	md5sums = b71171c0102a36130ca64b9cfc35a586
+	source = https://github.com/zenghongtu/PPet/releases/download/v3.3.0/PPet3-3.3.0.deb
+	md5sums = 4ccfdff2018c623ee6454ba222024422
 
 pkgname = ppet-bin
 
