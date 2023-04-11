@@ -1,5 +1,5 @@
 # Based off of: https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
-# Maintainer: Pieter Verweij <git at pieterv24 dot dev>
+# Maintainer: fengcheng <fengcheng@lidig.com>
 
 _pkgname=linuxqq
 _Pkgname=Linuxqq
