@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libisofs-git
-pkgver=1.5.4.r7.g1c4c04d
+pkgver=1.5.4.r25.gbd41540
 pkgrel=1
 pkgdesc="Library to create an ISO-9660 filesystem"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://dev.lovelyhq.com/libburnia/web/wiki/Libisofs"
 license=('GPL')
 depends=('glibc' 'acl' 'zlib')
 makedepends=('git')
-provides=('libisofs')
+provides=("libisofs=$pkgver")
 conflicts=('libisofs')
 options=('staticlibs')
 source=("git+https://dev.lovelyhq.com/libburnia/libisofs.git")

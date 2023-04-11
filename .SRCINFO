@@ -1,6 +1,6 @@
 pkgbase = libisofs-git
 	pkgdesc = Library to create an ISO-9660 filesystem
-	pkgver = 1.5.4.r7.g1c4c04d
+	pkgver = 1.5.4.r25.gbd41540
 	pkgrel = 1
 	url = https://dev.lovelyhq.com/libburnia/web/wiki/Libisofs
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = libisofs-git
 	depends = glibc
 	depends = acl
 	depends = zlib
-	provides = libisofs
+	provides = libisofs=1.5.4.r25.gbd41540
 	conflicts = libisofs
 	options = staticlibs
 	source = git+https://dev.lovelyhq.com/libburnia/libisofs.git
