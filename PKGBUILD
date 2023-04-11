@@ -2,7 +2,7 @@
 
 pkgname=ampr-ripd
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="AMPR 44net RIPv2 Listener and Route Injector"
 arch=("x86_64")
 url="http://www.yo2loj.ro/hamprojects/"
@@ -22,7 +22,7 @@ package() {
     cd "${pkgname}-${pkgver}"
 
     install -m 755 -d "${pkgdir}/var/lib/ampr-ripd"
-    install -D -m 755 ampr-ripd "${pkgdir}/usr/bin/ampr.ripd"
+    install -D -m 755 ampr-ripd "${pkgdir}/usr/bin/ampr-ripd"
     install -D -m 644 ampr-ripd.1 "${pkgdir}/usr/share/man/man1/ampr-ripd.1"
     install -D -m 644 "${srcdir}/ampr-ripd.service" "${pkgdir}/usr/lib/systemd/system/ampr-ripd.service"
 }

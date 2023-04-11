@@ -1,7 +1,7 @@
 pkgbase = ampr-ripd
 	pkgdesc = AMPR 44net RIPv2 Listener and Route Injector
 	pkgver = 2.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.yo2loj.ro/hamprojects/
 	arch = x86_64
 	license = GPL2
