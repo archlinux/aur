@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libcdio-git
-pkgver=2.0.0.r53.g1be3d348
+pkgver=2.1.0.r60.g5f797b27
 pkgrel=1
 pkgdesc="Library for CD-ROM and CD image access"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.gnu.org/software/libcdio/"
 license=('GPL3')
 depends=('glibc' 'libcddb')
 makedepends=('git' 'help2man')
-provides=('libcdio')
+provides=("libcdio=$pkgver")
 conflicts=('libcdio')
 options=('staticlibs')
 source=("git+https://git.savannah.gnu.org/git/libcdio.git")
