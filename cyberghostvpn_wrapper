@@ -4,4 +4,8 @@
 # to ensure that cyberghost is calling the openvpn wrapper
 export PATH=/usr/local/cyberghost:$PATH
 
+# cyberghostvpn expects wireguard certificate to be located at '../certs/wireguard/ca.crt'
+# cd into /usr/local/cyberghostvpn/certs so that pinned certificate will be found
+cd /usr/local/cyberghost/certs
+
 /usr/local/cyberghost/cyberghostvpn "$@"
