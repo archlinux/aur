@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-shell-extension-gnome-ui-tune-git
-pkgver=1.5.0.r3.g9d75205
-pkgrel=2
+pkgver=1.7.2.r0.gb720e9c
+pkgrel=1
 pkgdesc="Tunes the overview UI of GNOME 40"
 arch=('any')
 url="https://github.com/axxapy/gnome-ui-tune"
 license=('GPL3')
 depends=('gnome-shell')
-makedepends=('git')
+makedepends=('git' 'jq')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/axxapy/gnome-ui-tune.git')
