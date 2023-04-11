@@ -1,0 +1,21 @@
+pkgbase = devilutionx-mpq-tools-git
+	pkgdesc = DevilutionX MPQ minifier tool (git version)
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/diasurgical/devilutionx-mpq-tools
+	arch = armv6h
+	arch = armv7h
+	arch = arm
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = custom:unlicense
+	makedepends = git
+	makedepends = cmake
+	depends = fmt
+	provides = devilutionx-mpq-tools
+	conflicts = devilutionx-mpq-tools
+	source = devilutionx-mpq-tools::git+https://github.com/diasurgical/devilutionx-mpq-tools
+	sha256sums = SKIP
+
+pkgname = devilutionx-mpq-tools-git
