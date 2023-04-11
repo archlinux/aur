@@ -1,0 +1,4 @@
+build.sh
+globalping-cli/
+*.tar.*
+src/
