@@ -1,7 +1,7 @@
 # Maintainer: FLX (Paul Werther) <flx@evait.de>
 pkgname=katana-git
 _pkgname=katana
-pkgver=0.0.3.r3.g16b03e9
+pkgver=1.0.1.r0.g846693f
 pkgrel=1
 pkgdesc='A next-generation crawling and spidering framework'
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
