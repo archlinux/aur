@@ -4,7 +4,7 @@
 pkgname=rancher-desktop
 pkgdesc='Rancher Desktop is an open-source project to bring Kubernetes and container management to the desktop'
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('Apache')
 url='https://rancherdesktop.io/'
@@ -23,7 +23,7 @@ _ensure_local_nvm() {
 
 prepare() {
     _ensure_local_nvm
-    nvm install 16.19.0
+    nvm install 16.20.0
 
 
     cd "${pkgname}-${pkgver}"
@@ -51,6 +51,7 @@ build() {
   rm packaging/linux/flatpak.yaml
   # https://github.com/rancher-sandbox/rancher-desktop#how-to-run
   npm install
+  npm run build
   npm run package
 }
 
