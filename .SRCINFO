@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-addnoise-git
+	pkgdesc = Plugin for Vapoursynth: addnoise (GIT version)
+	pkgver = 3.0.gcd48f73
+	pkgrel = 1
+	url = https://github.com/wwww-wwww/vs-noise
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = vapoursynth
+	provides = vapoursynth-plugin-addnoise
+	conflicts = vapoursynth-plugin-addnoise
+	source = addnoise::git+https://github.com/wwww-wwww/vs-noise.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-addnoise-git
