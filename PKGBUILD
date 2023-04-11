@@ -2,7 +2,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=mockery
 pkgname="golang-${_pkgname}"
-pkgver=2.23.1
+pkgver=2.24.0
 pkgrel=1
 pkgdesc='A mock code autogenerator for golang'
 arch=('aarch64' 'x86_64')
@@ -11,7 +11,7 @@ license=(BSD)
 depends=(glibc)
 makedepends=(go)
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9172cbc0f722047175fc030b61adef9a74ec2d35ca1fc1d9cbc53fb0b4faf27d')
+sha256sums=('b8fcb80796c826db67dcd7a41b322ad736222e21db820272899d9c7693096f2a')
 
 build() {
   cd "${_pkgname}"-"${pkgver}"
@@ -26,9 +26,9 @@ build() {
   #export GOPROXY=https://goproxy.cn
   go build -o "${_pkgname}" -ldflags "-linkmode=external -X github.com/vektra/mockery/v2/pkg/config.SemVer=v${pkgver}" main.go
 
-  for i in bash zsh fish; do
+  for _shell in bash zsh fish; do
     # --config=/dev/null to avoid reading .mockery.yaml
-    ./mockery --config=/dev/null completion "$i" >completion."$i"
+    ./mockery --config=/dev/null completion "${_shell}" >completion."${_shell}"
   done
 }
 
