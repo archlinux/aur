@@ -3,7 +3,7 @@ pkgname=helium-ledger-cli
 pkgdesc='Helium Application for Ledger'
 license=('Apache')
 url='https://github.com/helium/helium-ledger-cli'
-pkgver=2.1.3
+pkgver=2.2.3
 pkgrel=1
 arch=('x86_64')
 makedepends=(
@@ -14,18 +14,25 @@ makedepends=(
     'clang'
 )
 source=("https://github.com/helium/helium-ledger-cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('f715329263b3d7af169637e632a11073c357277c59d5374492907bc49dd59b6be48b4e40c2e37c08f86bf3c4dd2171753c1b8003f2d23c03d1822a4c000f7e57')
+sha512sums=('cc86ed26fad34a46bc9ad67f36f77fdb1da91876c597de81801aaad12d5c9845e40bed6afa31ea2f94d01580ecdfc960306fce7c6c645a80dba9165e7e7c1485')
+
+prepare() {
+    cd ${pkgname}-${pkgver}
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
     cd ${pkgname}-${pkgver}
-    # Update only helium-crypto for v2.1.0 as it breaks on p256 dependency otherwise
-    RUSTUP_TOOLCHAIN=stable cargo update -p helium-crypto
-    RUSTUP_TOOLCHAIN=stable cargo build --release --locked --all-features --target-dir=target
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --all-features
+
 }
 
 check() {
     cd ${pkgname}-${pkgver}
-    RUSTUP_TOOLCHAIN=stable cargo test --locked --target-dir=target
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen --all-features
 }
 
 package() {

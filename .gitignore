@@ -2,3 +2,5 @@
 *.zip
 *.tar.gz
 *.log
+/pkg
+/src
