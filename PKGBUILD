@@ -59,13 +59,13 @@ build() {
             -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;libc;libclc;lld;lldb;openmp;polly;pstl;compiler-rt" \
             -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;libunwind" \
             -DCMAKE_BUILD_TYPE=Release \
-            ${srcdir}/llvm-project-${_pkgver_suffix}.src/llvm
+            ${srcdir}/llvm-project-${_pkgver_suffix}.src/llvm | tee ${pkgname}-configure.log
 
-    time ninja -C _build > ${pkgname}-build.log
+    time ninja -C _build | tee ${pkgname}-build.log
 }
 
 package() {
-    DESTDIR="$pkgdir" ninja -C _build install > ${pkgname}-install.log
+    DESTDIR="$pkgdir" ninja -C _build install | tee ${pkgname}-install.log
 
     cd ${pkgdir}${prefix_path}
     ln -s ${pkgver} latest
