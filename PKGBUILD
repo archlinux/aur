@@ -3,7 +3,7 @@
 
 pkgname=python-kombu
 pkgver=5.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A messaging library for Python'
 arch=('any')
 url="https://kombu.readthedocs.org/"
@@ -30,12 +30,16 @@ makedepends=('python-setuptools')
 checkdepends=('python-boto3' 'python-brotli' 'python-case' 'python-librabbitmq' 'python-msgpack' 'python-pycurl'
               'python-pymongo' 'python-pyro' 'python-pytest' 'python-pytest-sugar' 'python-pytz'
               'python-redis' 'python-sqlalchemy' 'python-yaml')
-source=("https://github.com/celery/kombu/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('8a7bcf3e7f94f7653d6c74a2ea15034c731a27a414d00dde008c31ffa8d292a15e8cc27a44c1f23541f24c863297f0cd11104d2bffaaa512c87526c704be5bcf')
+source=("https://github.com/celery/kombu/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
+	"fix-requirements.patch")
+sha512sums=('8a7bcf3e7f94f7653d6c74a2ea15034c731a27a414d00dde008c31ffa8d292a15e8cc27a44c1f23541f24c863297f0cd11104d2bffaaa512c87526c704be5bcf'
+            '7beefe78a25f305b8c0d6e9812291c78ed6cfc0c4d167092bbcd86423e020263b2f1af74d959a6e571791198851fe559175de8ca8fd6e4eaaf29ca54b61312bc')
 
 prepare() {
   cd kombu-$pkgver
   sed -i "/import azureservicebus/i pytest.importorskip('azure.servicebus')" t/unit/transport/test_azureservicebus.py
+
+  patch -Np1 -i ${srcdir}/fix-requirements.patch
 }
 
 build() {

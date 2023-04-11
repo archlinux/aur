@@ -1,0 +1,9 @@
+diff -aur kombu-5.2.4.old/extra/requirements/test.txt kombu-5.2.4/extra/requirements/test.txt
+--- kombu-5.2.4.old/extra/requirements/test.txt	2023-04-11 20:01:50.461557698 +0200
++++ kombu-5.2.4/extra/requirements/test.txt	2023-04-11 20:04:23.999982238 +0200
+@@ -1,4 +1,4 @@
+-pytz>dev
++pytz
+ pytest~=7.0.1
+ pytest-sugar
+ Pyro4
