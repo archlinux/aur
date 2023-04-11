@@ -4,7 +4,7 @@ _pkgname=performance
 _pkgver=0.10.3
 pkgname=r-${_pkgname,,}
 pkgver=0.10.3
-pkgrel=1
+pkgrel=3
 pkgdesc='Assessment of Regression Models Performance'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -42,13 +42,16 @@ optdepends=(
   r-ics
   r-icsoutlier
   r-islr
+  r-ivreg
   r-lavaan
   r-lme4
   r-lmtest
   r-loo
   r-mass
   r-matrix
+  r-mclogit
   r-mclust
+  r-metadat
   r-metafor
   r-mgcv
   r-mlogit
@@ -59,7 +62,6 @@ optdepends=(
   r-parallel
   r-parameters
   r-patchwork
-  r-poorman
   r-pscl
   r-psych
   r-randomforest
@@ -73,6 +75,7 @@ optdepends=(
   r-testthat
   r-tweedie
   r-vgam
+  r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('d8a8a0ee9d1a8af0adce0f981b88788b86958e3543a1c48b7e33a3f798c99ad0')
