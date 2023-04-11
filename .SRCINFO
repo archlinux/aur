@@ -1,7 +1,7 @@
 pkgbase = r-jfa
 	pkgdesc = Bayesian and Classical Audit Sampling
 	pkgver = 0.6.6
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=jfa
 	arch = x86_64
 	license = GPL
@@ -10,8 +10,6 @@ pkgbase = r-jfa
 	depends = r-bh
 	depends = r-extradistr
 	depends = r-ggplot2
-	depends = r-moments
-	depends = r-philentropy
 	depends = r-rcpp
 	depends = r-rcppeigen
 	depends = r-rcppparallel
