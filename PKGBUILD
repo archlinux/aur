@@ -4,7 +4,7 @@
 # Maintainer: ahmedmoselhi
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=slimjet
-pkgver=38.0.8.0
+pkgver=38.0.9.0
 pkgrel=1
 _libffmpegverurl="https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases"
 _libffmpegver=0.73.0
@@ -13,8 +13,8 @@ arch=('x86_64')
 url="https://www.slimjet.com"
 _downurl="https://www.slimjetbrowser.com"
 license=('custom:freeware')
-depends=(libxcb at-spi2-core libxdamage libxcomposite pango gcc-libs libxkbcommon libxrandr alsa-lib bash \
-        libcups glib2 dbus nspr nss libdrm hicolor-icon-theme libxfixes expat glibc libx11 mesa cairo libxext)
+depends=('libxcb' 'at-spi2-core' 'libxdamage' 'libxcomposite' 'pango' 'gcc-libs' 'libxkbcommon' 'libxrandr' 'alsa-lib' 'sh' 'libxext'\
+        'libcups' 'glib2' 'dbus' 'nspr' 'nss' 'libdrm' 'hicolor-icon-theme' 'libxfixes' 'expat' 'glibc' 'libx11' 'mesa' 'cairo')
 optdepends=('kdialog: needed for file dialogs in KDE' 'ttf-liberation: fix fonts for some PDFs')
 conflicts=("${pkgname}35")
 install="${pkgname}.install"
@@ -33,9 +33,9 @@ package() {
     bsdtar -xf "${srcdir}/libffmpeg-${_libffmpegver}.zip" -C "${pkgdir}/opt/${pkgname}/"
     find "${pkgdir}" -type d -exec chmod 755 {} \;
     install  -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    for i in 16x16 22x22 24x24 32x32 48x48 64x64 128x128 256x256; do
-        install -Dm644 "${pkgdir}"/opt/slimjet/product_logo_${i/x*}.png \
-            "${pkgdir}"/usr/share/icons/hicolor/${i}/apps/flashpeak-slimjet.png
+    for _icons in 16x16 22x22 24x24 32x32 48x48 64x64 128x128 256x256; do
+        install -Dm644 "${pkgdir}"/opt/slimjet/product_logo_${_icons/x*}.png \
+            "${pkgdir}"/usr/share/icons/hicolor/${_icons}/apps/flashpeak-slimjet.png
     done
     chmod 0755 "${pkgdir}/opt/${pkgname}/${pkgname}-sandbox"
 }
