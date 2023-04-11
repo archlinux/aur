@@ -1,0 +1,17 @@
+pkgbase = python-pytest-kwparametrize
+	pkgdesc = Alternate syntax for @pytest.mark.parametrize with test cases as dictionaries and default value fallbacks
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/akaihola/pytest-kwparametrize
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-pytest
+	source = python-pytest-kwparametrize-0.0.3.tar.gz::https://github.com/akaihola/pytest-kwparametrize/releases/download/v0.0.3/pytest_kwparametrize-0.0.3.tar.gz
+	sha512sums = 16b46c93d4e16d155bdea2d80fa984437d81786fcf69a8534129355597b0187540004244985b0a443971cb301ff1c5132920037f39dd63c0cd2b439ca445d5d0
+
+pkgname = python-pytest-kwparametrize
