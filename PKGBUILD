@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libshout-git
-pkgver=2.4.3.r0.g0496602
+pkgver=2.4.6.r0.gd8592a0
 pkgrel=1
 pkgdesc="Library for accessing a shoutcast/icecast server"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://libshout.freedesktop.org/wiki/"
 license=('GPL2')
 depends=('glibc' 'openssl' 'libtheora' 'libvorbis' 'speex' )
 makedepends=('git')
-provides=('libshout')
+provides=("libshout=$pkgver")
 conflicts=('libshout')
 options=('staticlibs')
 source=("git+https://gitlab.xiph.org/xiph/icecast-libshout.git")
