@@ -1,6 +1,6 @@
 pkgbase = casadi
 	pkgdesc = Symbolic framework for automatic differentiation and numeric optimization
-	pkgver = 3.5.5
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://github.com/casadi/casadi
 	arch = i686
@@ -11,15 +11,17 @@ pkgbase = casadi
 	depends = gcc-fortran
 	depends = lapack
 	depends = tinyxml
+	depends = tinyxml2
 	depends = swig
-	depends = sundials
 	depends = ipython
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-matplotlib
 	depends = coin-or-ipopt
-	source = casadi-3.5.5.tar.gz::https://github.com/casadi/casadi/archive/3.5.5.tar.gz
-	sha256sums = 3b26e73ceb48cd9d713e3727e4038afa0e93471f014f8aaccdd77da382e2249a
+	depends = dsdp
+	source = casadi-3.6.0.tar.gz::https://github.com/casadi/casadi/archive/3.6.0.tar.gz
+	source = dont-install-tinyxml-stuff.patch
+	sha256sums = 87ea8c25025b0a479d3fcd20d1851197e699b6440cc8fd5e8c02a7e79f8cd19c
+	sha256sums = 8c292a6e10c56ebf0ae2252a17e06eae18d5eaa618d9a8cad1d7aea1d273ff5f
 
 pkgname = casadi
-
