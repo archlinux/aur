@@ -2,12 +2,12 @@
 # Inspired by PKGBUILD of ucsf-chimera
 pkgname=chimerax
 pkgver=1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="UCSF ChimeraX (or simply ChimeraX) is the next-generation molecular visualization program from the Resource for Biocomputing, Visualization, and Informatics (RBVI), following UCSF Chimera."
 arch=(x86_64)
 url="https://www.cgl.ucsf.edu/chimerax/"
 license=(custom)
-depends=(libffi6)
+depends=(libffi6 libxcrypt-compat)
 options=(!strip)
 source=(LICENSE)
 sha256sums=('4361604379b11e73ad942144ef84aaf479815f80265f98fed9879f3c82e3aa8d')
