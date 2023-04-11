@@ -9,8 +9,8 @@
 ### PKGBUILD METADATA ###
 
 pkgname=webcord-vencord-git
-pkgver=4.1.1.r837.9d291fe
-pkgrel=3
+pkgver=4.2.0.r845.66c71e5
+pkgrel=4
 pkgdesc="A Discord and Fosscord client made with the Electron (master branch with Vencord)."
 arch=("any")
 
@@ -160,7 +160,8 @@ package() {
 
   # Get supported electron version and add it to the dependencies.
   #  (`-n "$pkgdir"` check also prevents adding it to .SRCINFO)
-  [[ -n "$pkgdir" ]] && depends+=("electron$(_getelectron)")
+  #[[ -n "$pkgdir" ]] && depends+=("electron$(_getelectron)")
+  # commented the line above because _getelectron had some error and this does literally nothing afaik, since electron22 still doesn't work
 
   # Add changelog file to the package if present
   if [[ -f "${_pkgbuilddir}/${pkgname%-vencord-git}.changelog" ]]; then
