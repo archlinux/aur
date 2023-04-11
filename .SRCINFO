@@ -1,6 +1,6 @@
 pkgbase = gfxreconstruct
 	pkgdesc = Graphics API Capture and Replay Tools for Reconstructing Graphics Application Behavior
-	pkgver = 0.9.18
+	pkgver = 0.9.19
 	pkgrel = 1
 	url = https://github.com/LunarG/gfxreconstruct
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = gfxreconstruct
 	depends = lib32-zlib
 	depends = lib32-lz4
 	depends = lib32-zstd
-	source = gfxreconstruct::git+https://github.com/LunarG/gfxreconstruct#tag=v0.9.18
+	source = gfxreconstruct::git+https://github.com/LunarG/gfxreconstruct#tag=v0.9.19
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers
 	sha256sums = SKIP
 	sha256sums = SKIP
