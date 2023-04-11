@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libxcrypt-git
-pkgver=4.4.17.r1.gb475497
+pkgver=4.4.33.r8.g90c30b5
 pkgrel=1
 pkgdesc="Library for one-way hashing of passwords"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/besser82/libxcrypt/"
 license=('LGPL')
 depends=('glibc')
 makedepends=('git')
-provides=('libxcrypt' 'libcrypt.so')
+provides=("libxcrypt=$pkgver" 'libcrypt.so')
 conflicts=('libxcrypt')
 options=('staticlibs')
 source=("git+https://github.com/besser82/libxcrypt.git")
