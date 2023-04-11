@@ -2,8 +2,8 @@
 # Co-Maintainer: Mikata Riko <sanbikappa@qq.com>
 
 pkgname='kikoplay-bin'
-pkgver=0.9.2
-pkgrel=4
+pkgver=0.9.3
+pkgrel=1
 pkgdesc="linux danmaku player"
 arch=('x86_64')
 license=('GPL3')
@@ -12,26 +12,35 @@ depends=('mpv' 'lua53' 'qhttpengine')
 conflicts=('kikoplay')
 optdepends=('aria2: for downloading')
 source=(
-   "https://github.com/KikoPlayProject/KikoPlay/releases/download/$pkgver/$pkgver.Linux.7z"
+    "https://github.com/KikoPlayProject/KikoPlay/releases/download/${pkgver}/KikoPlay-x86_64_${pkgver}.AppImage"
+    # download script module manually due to the module was excluded from appimage package
+    "git+https://github.com/KikoPlayProject/KikoPlayScript"
 )
 sha256sums=(
-    "d7167aac6dc11453b99432263c2d6b92eb9751883aec42a25e6d8a23ab881123"
+    "8ca6b77b0f1a7e13f429b3a9b50b0e71361ce031d6850b0ff35499568780c1a9"
+    SKIP
 )
 
 package() {
-    cd "$srcdir/$pkgver(Linux)"
+    chmod 0755 *.AppImage
+    ./*.AppImage --appimage-extract
+    cd "${srcdir}/squashfs-root/usr/bin"
     install -Dm644 KikoPlay使用说明.pdf "$pkgdir/usr/share/doc/kikoplay/help.pdf"
     install -Dm755 KikoPlay "$pkgdir/usr/bin/KikoPlay"
-    install -Dm644 kikoplay.png "$pkgdir/usr/share/pixmaps/kikoplay.png"
+    install -Dm644 "${srcdir}/squashfs-root/kikoplay.png" "$pkgdir/usr/share/pixmaps/kikoplay.png"
     install -Dm644 kikoplay.desktop "${pkgdir}/usr/share/applications/kikoplay.desktop"
 
     mkdir -p "${pkgdir}/usr/share/kikoplay"
     # lua script module for danmu search
-    rm script/LICENSE script/*.md script/*.png
-    cp -r script "${pkgdir}/usr/share/kikoplay"
+    cd "${srcdir}/KikoPlayScript"
+    rm LICENSE *.md *.png
+    install -dm755 "${pkgdir}/usr/share/kikoplay/script"
+    cp -r * "${pkgdir}/usr/share/kikoplay/script"
 
     # web server module for LANserver function
-    cp -r web "${pkgdir}/usr/share/kikoplay"
+    cd "${srcdir}/squashfs-root/usr/bin"
+    install -dm755 "${pkgdir}/usr/share/kikoplay/web"
+    cp -r web/* "${pkgdir}/usr/share/kikoplay/web"
 
-    ln -sf KikoPlay "$pkgdir/usr/bin/kikoplay"
+    ln -sf KikoPlay "${pkgdir}/usr/bin/kikoplay"
 }
