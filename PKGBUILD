@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/dcrousso/GroupMe"
 license=('MIT')
 
-depends=('electron' 'gconf' 'npm')
+depends=('electron' 'tar' 'npm')
 options=('!docs' '!emptydirs')
 source=("https://github.com/dcrousso/GroupMe/archive/refs/tags/v${pkgver}.tar.gz" "groupme.desktop")
 md5sums=('f9c72829456c3f56341a029488a0c17f' '82e829e0ad8ed756453569edc6cddeb9')
