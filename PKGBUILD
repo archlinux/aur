@@ -4,7 +4,7 @@ _pkgname=spacetime
 _pkgver=1.3-0
 pkgname=r-${_pkgname,,}
 pkgver=1.3.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Classes and Methods for Spatio-Temporal Data'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -26,13 +26,10 @@ optdepends=(
   r-knitr
   r-mapdata
   r-maps
-  r-maptools
   r-markdown
   r-plm
   r-raster
   r-rcolorbrewer
-  r-rgdal
-  r-rgeos
   r-rmarkdown
   r-rpostgresql
   r-sf

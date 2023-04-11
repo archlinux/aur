@@ -1,7 +1,7 @@
 pkgbase = r-spacetime
 	pkgdesc = Classes and Methods for Spatio-Temporal Data
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=spacetime
 	arch = any
 	license = GPL
@@ -19,13 +19,10 @@ pkgbase = r-spacetime
 	optdepends = r-knitr
 	optdepends = r-mapdata
 	optdepends = r-maps
-	optdepends = r-maptools
 	optdepends = r-markdown
 	optdepends = r-plm
 	optdepends = r-raster
 	optdepends = r-rcolorbrewer
-	optdepends = r-rgdal
-	optdepends = r-rgeos
 	optdepends = r-rmarkdown
 	optdepends = r-rpostgresql
 	optdepends = r-sf
