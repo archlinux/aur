@@ -4,7 +4,7 @@ _pkgname=gstat
 _pkgver=2.1-1
 pkgname=r-${_pkgname,,}
 pkgver=2.1.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Spatial and Spatio-Temporal Geostatistical Modelling, Prediction and Simulation'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -25,10 +25,7 @@ optdepends=(
   r-future.apply
   r-mapdata
   r-maps
-  r-maptools
   r-raster
-  r-rgdal
-  r-rgeos
   r-xts
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
