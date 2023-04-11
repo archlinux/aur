@@ -1,7 +1,7 @@
 pkgbase = ppet-bin
 	pkgdesc = 在你的桌面放一个萌妹子，多一点趣味。
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zenghongtu/PPet
 	arch = x86_64
 	license = MIT
