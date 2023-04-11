@@ -5,14 +5,14 @@ pkgver=0.15.2
 pkgrel=1
 pkgdesc='A WireGuard-based mesh network that connects your devices into a single private network'
 url='https://netbird.io'
-arch=(x86_64 aarch64 armv7h armv7l armv6h)
+arch=(i686 pentium4 x86_64 arm armv7h armv6h aarch64 riscv64)
 license=(BSD)
 
-provides=("$pkgname")
-conflicts=("$pkgname")
+provides=($pkgname)
+conflicts=($pkgname)
 depends=(glibc)
-makedepends=(go)
-optdepends=()
+makedepends=('go>=1.19')
+optdepends=('resolvconf: Private DNS')
 replaces=(wiretrustee)
 
 _package=github.com/netbirdio/$pkgname
