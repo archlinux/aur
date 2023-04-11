@@ -8,6 +8,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-text-editor"
 license=('GPL3')
 depends=('fontconfig' 'gtk3')
+groups=('cosmic')
 makedepends=('cargo' 'git' 'mold')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

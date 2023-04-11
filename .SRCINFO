@@ -5,6 +5,7 @@ pkgbase = cosmic-text-editor-git
 	url = https://github.com/pop-os/cosmic-text-editor
 	arch = x86_64
 	arch = aarch64
+	groups = cosmic
 	license = GPL3
 	makedepends = cargo
 	makedepends = git
