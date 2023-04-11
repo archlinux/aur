@@ -1,7 +1,7 @@
 pkgbase = yojo-git
 	pkgdesc = A CI bridge from Forgejo/Gitea to SourceHut
 	pkgver = r1.182373bf1f47
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~emersion/yojo
 	arch = x86_64
 	license = MIT

@@ -3,7 +3,7 @@
 pkgname=yojo-git
 _pkgname=yojo
 pkgver=r1.182373bf1f47
-pkgrel=1
+pkgrel=2
 pkgdesc='A CI bridge from Forgejo/Gitea to SourceHut'
 arch=('x86_64')
 url='https://git.sr.ht/~emersion/yojo'
