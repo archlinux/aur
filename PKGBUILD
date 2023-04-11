@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=ldns-git
-pkgver=1.8.1.r11.g552a32db
+pkgver=1.8.3.r20.g0ede9674
 pkgrel=1
 pkgdesc="C library for DNS programming"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('glibc' 'dnssec-anchors' 'openssl')
 optdepends=('libpcap: ldns-dpa tool')
 makedepends=('git' 'libpcap')
-provides=('ldns')
+provides=("ldns=$pkgver")
 conflicts=('ldns')
 options=('staticlibs')
 source=("git+https://github.com/NLnetLabs/ldns.git")
