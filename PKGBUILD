@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libdvbpsi-git
-pkgver=1.3.0.r226.gdfa10ba
-pkgrel=2
+pkgver=1.3.0.r262.gd3792da
+pkgrel=1
 pkgdesc="A library designed for decoding and generation of MPEG TS and DVB PSI tables according to standards ISO/IEC 13818 and ITU-T H.222.0"
 arch=('i686' 'x86_64')
 url="https://www.videolan.org/developers/libdvbpsi.html"
 license=('LGPL2')
 depends=('glibc')
 makedepends=('git')
-provides=('libdvbpsi')
+provides=("libdvbpsi=$pkgver")
 conflicts=('libdvbpsi')
 options=('staticlibs')
 source=("git+https://code.videolan.org/videolan/libdvbpsi.git")
@@ -26,7 +26,9 @@ build() {
   cd "libdvbpsi"
 
   ./bootstrap
-  ./configure --prefix="/usr" --enable-release
+  ./configure \
+    --prefix="/usr" \
+    --enable-release
   make
 }
 
