@@ -1,10 +1,14 @@
 # Maintainer: dreieck (https://aur.archlinux.org/account/dreieck)
 # Contributor: Alberto Fanjul (https://aur.archlinux.org/account/albfan)
 
-pkgname=miraclecast-nosystemd-git
-_pkgname=miraclecast
+_pkgbase=miraclecast
+pkgbase="${_pkgbase}-nosystemd-git"
+pkgname=(
+  "${pkgbase}"
+  "${_pkgbase}-docs-git"
+)
 pkgver=1.0+139.r327.20230216.850a1c6
-pkgrel=1
+pkgrel=2
 pkgdesc="Software to connect external monitors to your system via Wifi. It is compatible to Miracast. Link-management works, everything else is still being worked on. Replaces openwfd. Built without systemd."
 arch=(
   'i686'
@@ -17,46 +21,23 @@ license=(
   'LGPL'
   'GPL2'
 )
-depends=(
-  'bash'
-  'glibc'
-  'glib2'
-  'gstreamer'
-  'gst-plugins-base-libs'
-  'gtk3'
-  'libelogind>=221'
-  'libudev'
-  'python>=3'
-  'python-gobject'
-  'readline'
-  'wpa_supplicant'
-)
 makedepends=(
   'git'
 )
 checkdepends=()
-provides=(
-  "${_pkgname}=${pkgver}"
-  "${_pkgname}-nosystemd=${pkgver}"
-  "${_pkgname}-git=${pkgver}"
-)
-conflicts=(
-  "${_pkgname}"
-)
-backup=(
-  'etc/dbus-1/system.d/org.freedesktop.miracle.conf'
-)
 source=(
-  "${_pkgname}::git+${url}.git"
+  "${_pkgbase}::git+${url}.git"
+  "${_pkgbase}-wiki::git+${url}.wiki.git"
   'miraclecast-use-elogind.patch'
 )
 sha256sums=(
+  'SKIP'
   'SKIP'
   'ad4f15e126d2a461cbfff0dd24971e5bf020a0d22a562ac217b96662b0f18c6d'
 )
 
 prepare() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgbase}"
 
   msg2 "Modifying sources to be 'elogind' compatible ..."
   ### Change sources to be compatible with elogind instead of systemd.
@@ -72,7 +53,7 @@ prepare() {
 }
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgbase}"
 
   _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' | tr '-' '+')"
   _rev="$(git rev-list --count HEAD)"
@@ -88,7 +69,7 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgbase}"
 
   msg2 "Running ./configure ..."
   ./configure \
@@ -101,24 +82,80 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgbase}"
 
   msg2 "Running make check ..."
   make -k check
 }
 
-package() {
-  cd "${srcdir}/${_pkgname}"
+
+package_miraclecast-nosystemd-git() {
+  pkgdesc="Software to connect external monitors to your system via Wifi. It is compatible to Miracast. Link-management works, everything else is still being worked on. Replaces openwfd. Built without systemd."
+  depends=(
+    'bash'
+    'glibc'
+    'glib2'
+    'gstreamer'
+    'gst-plugins-base-libs'
+    'gtk3'
+    'libelogind>=221'
+    'libudev'
+    'python>=3'
+    'python-gobject'
+    'readline'
+    'wpa_supplicant'
+  )
+  optdepends=(
+    "miraclecast-docs: Documentation."
+  )
+  provides=(
+    "miraclecast=${pkgver}"
+    "miraclecast-nosystemd=${pkgver}"
+    "miraclecast-git=${pkgver}"
+  )
+  conflicts=(
+    'miraclecast'
+  )
+  backup=(
+    'etc/dbus-1/system.d/org.freedesktop.miracle.conf'
+  )
+
+
+  cd "${srcdir}/miraclecast"
 
   msg2 "Running make install ..."
   make DESTDIR="${pkgdir}/" install
 
-  for _docfile in NEWS README.md; do
-    install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/$(basename "${_docfile}")"
-  done
-
+  msg2 "Installing license files ..."
+  install -d -v -m755 "${pkgdir}/usr/share/doc/miraclecast/licenses"
   for _licensefile in COPYING* LICENSE*; do
-    install -D -v -m644 "${_licensefile}" "${pkgdir}/usr/share/licenses/${pkgname}/${_licensefile}"
-    ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/${_licensefile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_licensefile}"
+    install -D -v -m644 "${_licensefile}"                                            "${pkgdir}/usr/share/licenses/miraclecast-nosystemd-git/${_licensefile}"
+    ln -svr "${pkgdir}/usr/share/licenses/miraclecast-nosystemd-git/${_licensefile}" "${pkgdir}/usr/share/doc/miraclecast/licenses/${_licensefile}"
+  done
+}
+
+
+package_miraclecast-docs-git() {
+  pkgdesc="Documentation for miraclecast."
+  provides=(
+    "miraclecast-docs=${pkgver}"
+  )
+  conflicts=(
+    "miraclecast-docs"
+  )
+  optdepends=(
+    "miraclecast: To use the software that is documented here."
+  )
+
+
+  msg2 "Installing wiki ..."
+  install -d -v -m755                    "${pkgdir}/usr/share/doc/miraclecast/wiki"
+  cp -rv "${srcdir}/miraclecast-wiki"/*  "${pkgdir}/usr/share/doc/miraclecast/wiki"/
+
+  cd "${srcdir}/miraclecast"
+
+  msg2 "Installing source repository's doc files ..."
+  for _docfile in NEWS README.md; do
+    install -D -v -m644 "${_docfile}"    "${pkgdir}/usr/share/doc/miraclecast/$(basename "${_docfile}")"
   done
 }
