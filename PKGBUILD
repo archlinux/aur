@@ -1,5 +1,5 @@
 pkgname=mingw-w64-hdf5
-pkgver=1.12.2
+pkgver=1.14.0
 pkgrel=1
 arch=('any')
 pkgdesc="General purpose library and file format for storing scientific data (mingw-w64)"
@@ -9,9 +9,14 @@ depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-libaec')
 makedepends=('mingw-w64-cmake' 'mingw-w64-wine')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-${pkgver:0:4}/hdf5-${pkgver/_/-}/src/hdf5-${pkgver/_/-}.tar.bz2")
-sha256sums=('1a88bbe36213a2cea0c8397201a459643e7155c9dc91e062675b3fb07ee38afe')
+sha256sums=('e4e79433450edae2865a4c6328188bb45391b29d74f8c538ee699f0b116c2ba0')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare () {
+  cd "$srcdir/hdf5-${pkgver/_/-}"
+  curl -L https://github.com/HDFGroup/hdf5/pull/2666.patch | patch -p1 || sed -i "s|RUN_OUTPUT_VARIABLE|RUN_OUTPUT_STDOUT_VARIABLE|g" config/cmake/ConfigureChecks.cmake
+}
 
 build() {
   cd "$srcdir/hdf5-${pkgver/_/-}"
