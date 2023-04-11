@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libcerf-git
-pkgver=1.17.r0.g4f2c638
+pkgver=2.3.r1.ga471d91
 pkgrel=1
 pkgdesc="A self-contained numeric library"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://jugit.fz-juelich.de/mlz/libcerf/"
 license=('custom')
 depends=('glibc')
 makedepends=('git' 'cmake')
-provides=('libcerf')
+provides=("libcerf=$pkgver")
 conflicts=('libcerf')
 source=("git+https://jugit.fz-juelich.de/mlz/libcerf.git")
 sha256sums=('SKIP')
