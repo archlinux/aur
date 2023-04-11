@@ -1,7 +1,21 @@
-diff --git i/python/libxml.c w/python/libxml.c
-index e071e824..9d476f4f 100644
---- i/python/libxml.c
-+++ w/python/libxml.c
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Tue, 11 Apr 2023 21:55:36 +0000
+Subject: [PATCH] Fix python3 unicode errors
+
+Patch taken from Fedora at
+https://src.fedoraproject.org/rpms/libxml2/raw/c1fa5c85e9d3a0b7340aaf34d2e5134cf47f5d66/f/libxml2-2.9.8-python3-unicode-errors.patch
+
+Works around https://bugzilla.gnome.org/show_bug.cgi?id=789714
+and https://gitlab.gnome.org/GNOME/libxml2/-/issues/64
+---
+ python/libxml.c | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/python/libxml.c b/python/libxml.c
+index e071e824ca39..9d476f4fcd92 100644
+--- a/python/libxml.c
++++ b/python/libxml.c
 @@ -1621,28 +1621,37 @@ libxml_xmlErrorFuncHandler(ATTRIBUTE_UNUSED void *ctx, const char *msg,
      PyObject *message;
      PyObject *result;

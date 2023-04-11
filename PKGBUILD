@@ -5,9 +5,12 @@
 # Contributor: John Proctor <jproctor@prium.net>
 
 pkgbase=libxml2
-pkgname=(libxml2 libxml2-docs)
-pkgver=2.10.3
-pkgrel=3
+pkgname=(
+  libxml2
+  libxml2-docs
+)
+pkgver=2.10.4
+pkgrel=1
 pkgdesc="XML C parser and toolkit"
 url="https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home"
 arch=(x86_64)
@@ -23,15 +26,17 @@ makedepends=(
   git
   python
 )
-_commit=f507d167f1755b7eaea09fb1a44d29aab828b6d1  # tags/v2.10.3^0
-source=("git+https://gitlab.gnome.org/GNOME/libxml2.git#commit=$_commit"
-        libxml2-2.9.8-python3-unicode-errors.patch
-        no-fuzz.diff
-        https://www.w3.org/XML/Test/xmlts20130923.tar.gz)
-sha256sums=('SKIP'
-            '3d07a50fc0963bda05fc5269dedc51f108260699e25e455bb31f6d80c2a9cada'
-            '3908e7a53b20109bdfde143238f36e22a154dbb7d363b634e54c0a18328f4656'
-            '9b61db9f5dbffa545f4b8d78422167083a8568c59bd1129f94138f936cf6fc1f')
+_commit=223cb03a5d27b1b2393b266a8657443d046139d6  # tags/v2.10.4^0
+source=(
+  "git+https://gitlab.gnome.org/GNOME/libxml2.git#commit=$_commit"
+  0001-Fix-python3-unicode-errors.patch
+  0002-HACK-Don-t-run-fuzzing-tests.patch
+  https://www.w3.org/XML/Test/xmlts20130923.tar.gz
+)
+b2sums=('SKIP'
+        'ec5a0955906c5fdd4bc65248bdb46f315460f4b2208bf37c49f55ef7468585786bdf563aa3e9357370d4f1ff947a6d4467869eeb2ca6b77ca5e40ffa45213a13'
+        'ec247c8caad963307d8f487176fde518cfb087bbff3f10c2a5846b90a04c9909c2f0e6aaf8ded4784f46586eafb16df493caf1debc20ff10014f03b1f1f8241d'
+        '63a47bc69278ef510cd0b3779aed729e1b309e30efa0015d28ed051cc03f9dfddb447ab57b07b3393e8f47393d15473b0e199c34cb1f5f746b15ddfaa55670be')
 
 pkgver() {
   cd libxml2
@@ -44,27 +49,30 @@ prepare() {
   # Use xmlconf from conformance test suite
   ln -s ../xmlconf
 
-  # https://src.fedoraproject.org/rpms/libxml2/tree/rawhide
-  git apply -3 ../libxml2-2.9.8-python3-unicode-errors.patch
+  # https://gitlab.gnome.org/GNOME/libxml2/-/issues/64
+  git apply -3 ../0001-Fix-python3-unicode-errors.patch
 
   # Do not run fuzzing tests
-  git apply -3 ../no-fuzz.diff
+  git apply -3 ../0002-HACK-Don-t-run-fuzzing-tests.patch
 
   NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
+  local configure_options=(
+    --prefix=/usr
+    --sysconfdir=/etc
+    --localstatedir=/var
+    --with-history
+    --with-icu
+    --with-python=/usr/bin/python
+    --with-threads
+    --disable-static
+  )
+
   cd libxml2
 
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
-    --with-threads \
-    --with-history \
-    --with-python=/usr/bin/python \
-    --with-icu \
-    --disable-static
+  ./configure "${configure_options[@]}"
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
