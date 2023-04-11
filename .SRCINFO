@@ -1,6 +1,6 @@
 pkgbase = libffi-git
 	pkgdesc = Portable foreign function interface library
-	pkgver = 3.4.2.r20.g0f2dd36
+	pkgver = 3.4.4.r27.gac598b7f
 	pkgrel = 1
 	url = https://sourceware.org/libffi/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = libffi-git
 	checkdepends = dejagnu
 	makedepends = git
 	depends = glibc
-	provides = libffi
+	provides = libffi=3.4.4.r27.gac598b7f
 	provides = libffi.so
 	conflicts = libffi
 	options = staticlibs

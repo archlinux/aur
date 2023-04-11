@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libffi-git
-pkgver=3.4.2.r20.g0f2dd36
+pkgver=3.4.4.r27.gac598b7f
 pkgrel=1
 pkgdesc="Portable foreign function interface library"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('git')
 checkdepends=('dejagnu')
-provides=('libffi' 'libffi.so')
+provides=("libffi=$pkgver" 'libffi.so')
 conflicts=('libffi')
 options=('staticlibs')
 source=("git+https://github.com/libffi/libffi.git")
