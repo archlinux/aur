@@ -1,0 +1,11 @@
+[Unit]
+Description = Cloudprober daemon
+After = network.target
+AssertPathExists = /etc/cloudprober.textproto
+
+[Service]
+ExecStart = /usr/bin/cloudprober --config_file=/etc/cloudprober.textproto
+Restart = always
+
+[Install]
+WantedBy = multi-user.target
