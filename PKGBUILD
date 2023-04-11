@@ -1,28 +1,27 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-_pkgname=js.design
 pkgname=js-design-appimage
-pkgver=1.0.5
-pkgrel=2
+pkgver=1.0.6
+pkgrel=1
 pkgdesc="即时设计 A professional UI design software tailored for Chinese designers."
 arch=("x86_64")
 url="https://js.design"
 license=(GPL3)
-depends=(hicolor-icon-theme zlib glibc)
+depends=('hicolor-icon-theme' 'zlib' 'glibc')
 options=(!strip)
-conflicts=("${_pkgname}")
+conflicts=("${pkgname%-appimage}")
 _install_path="/opt/appimages"
-source=("${_pkgname}-${pkgver}.AppImage::https://img.js.design/assets/download/%E5%8D%B3%E6%97%B6%E8%AE%BE%E8%AE%A1%20Linux%E7%89%88.AppImage"
+source=("${pkgname%-appimage}-${pkgver}.AppImage::https://img.js.design/assets/download/%E5%8D%B3%E6%97%B6%E8%AE%BE%E8%AE%A1%20Linux%E7%89%88.AppImage"
     "LICENSE::${url}/terms")
-sha256sums=('93b6795fc40a82d2fe6a2231626bda36d8cc4c56ac0c7234e090984e01d58120'
-            '98442aa8cf4da4f76c96be562c6f0b2c9a8369f44517b7fd801a1020a299a9fa')
+sha256sums=('b9a066f187bd5b956643e6ad1439b5293989825ca480ebeed8d1ac1a1b657285'
+            '8094d1200199010016c13c6ba98d493ce5d8777eb0b2b16f2ab6e568c0702234')
 prepare() {
-    chmod a+x "${_pkgname}-${pkgver}.AppImage"
-    "./${_pkgname}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's/Exec=AppRun/Exec=\/opt\/appimages\/js.design.AppImage/g' -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
+    "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed 's|AppRun|/opt/appimages/js.design.AppImage|g;s|Icon=js.design|Icon=js-design|g' -i "${srcdir}/squashfs-root/js.design.desktop"
 }    
 package() {
-    install -Dm755 "${srcdir}/${_pkgname}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${_pkgname}.AppImage"
-    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.png"
-    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
+    install -Dm644 "${srcdir}/squashfs-root/js.design.desktop" "${pkgdir}/usr/share/applications/${pkgname%-appimage}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/js.design.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-appimage}.png"
+    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
