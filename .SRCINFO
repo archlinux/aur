@@ -1,6 +1,6 @@
 pkgbase = libtasn1-git
 	pkgdesc = The ASN.1 library used by GnuTLS, GNU Shishi
-	pkgver = 4.12.r1.gd8d805e
+	pkgver = 4.13.r1.g73fa825
 	pkgrel = 1
 	url = https://www.gnu.org/software/libtasn1/
 	arch = i686
@@ -10,11 +10,10 @@ pkgbase = libtasn1-git
 	makedepends = git
 	makedepends = gtk-doc
 	depends = glibc
-	provides = libtasn1
+	provides = libtasn1=4.13.r1.g73fa825
 	conflicts = libtasn1
 	options = staticlibs
 	source = git+https://git.savannah.gnu.org/git/libtasn1.git
 	sha256sums = SKIP
 
 pkgname = libtasn1-git
-

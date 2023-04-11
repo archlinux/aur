@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libtasn1-git
-pkgver=4.12.r1.gd8d805e
+pkgver=4.13.r1.g73fa825
 pkgrel=1
 pkgdesc="The ASN.1 library used by GnuTLS, GNU Shishi "
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.gnu.org/software/libtasn1/"
 license=('GPL3' 'LGPL')
 depends=('glibc')
 makedepends=('git' 'gtk-doc')
-provides=('libtasn1')
+provides=("libtasn1=$pkgver")
 conflicts=('libtasn1')
 options=('staticlibs')
 source=("git+https://git.savannah.gnu.org/git/libtasn1.git")
@@ -26,7 +26,8 @@ build() {
   cd "libtasn1"
 
   make bootstrap
-  ./configure --prefix="/usr"
+  ./configure \
+    --prefix="/usr"
   make
 }
 
