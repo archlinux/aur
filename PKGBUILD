@@ -2,7 +2,7 @@
 # Contributor: Nicolas Martyanoff <khaelin@gmail.com>
 pkgname=dumpasn1
 pkgver=20230322
-pkgrel=1
+pkgrel=2
 pkgdesc="ASN.1 analyze tool"
 url="http://www.cs.auckland.ac.nz/~pgut001"
 license=('custom')
