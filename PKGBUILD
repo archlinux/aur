@@ -4,7 +4,7 @@ _pkgname=matrixTests
 _pkgver=0.2
 pkgname=r-${_pkgname,,}
 pkgver=0.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Fast Statistical Hypothesis Tests on Rows and Columns of Matrices'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,8 +18,8 @@ optdepends=(
   r-cosinor
   r-cosinor2
   r-moments
+  r-nortest
   r-pmcmrplus
-  r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('81934d78f01e1436aa7b73a10c58f4c88521bed19d2ecb6ef0861d855d80d324')
