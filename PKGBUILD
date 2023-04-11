@@ -2,14 +2,14 @@
 
 pkgname=jbigkit-git
 pkgver=2.1.r15.g7d3c1be
-pkgrel=1
+pkgrel=2
 pkgdesc="Software implementation of the JBIG1 data compression standard (ITU-T T.82)"
 arch=('i686' 'x86_64')
 url="https://www.cl.cam.ac.uk/~mgk25/jbigkit/"
 license=('GPL')
 depends=('glibc')
 makedepends=('git')
-provides=('jbigkit')
+provides=("jbigkit=$pkgver")
 conflicts=('jbigkit')
 options=('staticlibs')
 source=("git+https://www.cl.cam.ac.uk/~mgk25/git/jbigkit")
