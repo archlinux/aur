@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=logrotate-git
-pkgver=3.18.1.r20.gdcb05f6
+pkgver=3.21.0.r17.geb94f32
 pkgrel=1
 pkgdesc="Rotates system logs automatically"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/logrotate/logrotate"
 license=('GPL2')
 depends=('glibc' 'acl' 'gzip' 'popt')
 makedepends=('git')
-provides=('logrotate')
+provides=("logrotate=$pkgver")
 conflicts=('logrotate')
 backup=('etc/logrotate.conf')
 source=("git+https://github.com/logrotate/logrotate.git"

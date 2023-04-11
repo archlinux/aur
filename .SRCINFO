@@ -1,6 +1,6 @@
 pkgbase = logrotate-git
 	pkgdesc = Rotates system logs automatically
-	pkgver = 3.18.1.r20.gdcb05f6
+	pkgver = 3.21.0.r17.geb94f32
 	pkgrel = 1
 	url = https://github.com/logrotate/logrotate
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = logrotate-git
 	depends = acl
 	depends = gzip
 	depends = popt
-	provides = logrotate
+	provides = logrotate=3.21.0.r17.geb94f32
 	conflicts = logrotate
 	backup = etc/logrotate.conf
 	source = git+https://github.com/logrotate/logrotate.git
