@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libx11-git
-pkgver=1.6.10.r1.g93fce3f4
+pkgver=1.8.4.r14.g96cbac89
 pkgrel=1
 pkgdesc="Core X11 protocol client library"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.x.org/wiki/"
 license=('custom')
 depends=('glibc' 'libxcb' 'xorgproto')
 makedepends=('git' 'xorg-util-macros' 'xtrans')
-provides=('libx11')
+provides=("libx11=$pkgver")
 conflicts=('libx11')
 options=('staticlibs')
 source=("git+https://gitlab.freedesktop.org/xorg/lib/libx11.git")

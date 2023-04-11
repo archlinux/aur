@@ -1,6 +1,6 @@
 pkgbase = libx11-git
 	pkgdesc = Core X11 protocol client library
-	pkgver = 1.6.10.r1.g93fce3f4
+	pkgver = 1.8.4.r14.g96cbac89
 	pkgrel = 1
 	url = https://www.x.org/wiki/
 	arch = i686
@@ -12,11 +12,10 @@ pkgbase = libx11-git
 	depends = glibc
 	depends = libxcb
 	depends = xorgproto
-	provides = libx11
+	provides = libx11=1.8.4.r14.g96cbac89
 	conflicts = libx11
 	options = staticlibs
 	source = git+https://gitlab.freedesktop.org/xorg/lib/libx11.git
 	sha256sums = SKIP
 
 pkgname = libx11-git
-
