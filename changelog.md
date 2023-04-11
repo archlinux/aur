@@ -1,3 +1,16 @@
+## GE-Proton7-55
+
+This is a hotfix for EAC. In 7-53 the star citizen hotfix broke EAC compatibility for other games, this has been fixed now.
+
+* wine updated to latest bleeding edge
+* dxvk updated to git
+* vkd3d-proton updated to git
+* nvapi enabled for final fantasy stranger of paradise
+* legacy xactengine winetricks protonfix removed as it's finally no longer needed
+
+Note: If you are using the 0.5.13-beta1 of Lutris, a patch is needed to prevent SteamGameId being overridden:
+[lutris/lutris@6d78eeb](https://github.com/lutris/lutris/commit/6d78eeb9fb18680905572d2e35f2d4666106119c)
+
 ## GE-Proton7-54
 
 * update wine bleeding edge: brings is fall guys eac fix from upstream
