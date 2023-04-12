@@ -1,7 +1,7 @@
-diff -rudp thunar-4.18.3.orig/configure.ac thunar-4.18.3/configure.ac
---- thunar-4.18.3.orig/configure.ac	2023-01-22 13:34:08.000000000 -0500
-+++ thunar-4.18.3/configure.ac	2023-01-22 13:34:57.000000000 -0500
-@@ -131,6 +131,19 @@ AC_ARG_WITH([custom-thunarx-dirs-enabled
+diff -ru thunar-4.18.4.orig/configure.ac thunar-4.18.4/configure.ac
+--- thunar-4.18.4.orig/configure.ac	2023-04-12 23:26:41.000000000 +0100
++++ thunar-4.18.4/configure.ac	2023-04-12 23:26:47.000000000 +0100
+@@ -131,6 +131,19 @@
              [CUSTOM_THUNARX_DIRS_ENABLED="FALSE"])
  AC_SUBST([CUSTOM_THUNARX_DIRS_ENABLED])
  
@@ -21,7 +21,7 @@ diff -rudp thunar-4.18.3.orig/configure.ac thunar-4.18.3/configure.ac
  dnl ***********************************************
  dnl *** Work-around system-specific limitations ***
  dnl ***********************************************
-@@ -201,6 +214,14 @@ dnl **********************************
+@@ -201,6 +214,14 @@
  XDT_CHECK_OPTIONAL_PACKAGE([GIO_UNIX], [gio-unix-2.0],
                             [2.66.0], [gio-unix], [GIO UNIX features])
  
@@ -36,7 +36,7 @@ diff -rudp thunar-4.18.3.orig/configure.ac thunar-4.18.3/configure.ac
  dnl ***************************************************************
  dnl *** Optional support for GUDev (required for thunar-volman) ***
  dnl ***************************************************************
-@@ -294,6 +315,11 @@ echo "* GIO UNIX features:
+@@ -294,6 +315,11 @@
  else
  echo "* GIO UNIX features:                  no"
  fi
@@ -48,10 +48,10 @@ diff -rudp thunar-4.18.3.orig/configure.ac thunar-4.18.3/configure.ac
  if test x"$GUDEV_FOUND" = x"yes"; then
  echo "* GUDev (required for thunar-volman): yes"
  else
-diff -rudp thunar-4.18.3.orig/thunar/Makefile.am thunar-4.18.3/thunar/Makefile.am
---- thunar-4.18.3.orig/thunar/Makefile.am	2023-01-22 13:34:08.000000000 -0500
-+++ thunar-4.18.3/thunar/Makefile.am	2023-01-22 13:34:57.000000000 -0500
-@@ -253,6 +253,14 @@ thunar_LDADD =								\
+diff -ru thunar-4.18.4.orig/thunar/Makefile.am thunar-4.18.4/thunar/Makefile.am
+--- thunar-4.18.4.orig/thunar/Makefile.am	2023-04-12 23:26:41.000000000 +0100
++++ thunar-4.18.4/thunar/Makefile.am	2023-04-12 23:26:47.000000000 +0100
+@@ -253,6 +253,14 @@
  thunar_DEPENDENCIES =							\
  	$(top_builddir)/thunarx/libthunarx-$(THUNARX_VERSION_API).la
  
@@ -66,18 +66,19 @@ diff -rudp thunar-4.18.3.orig/thunar/Makefile.am thunar-4.18.3/thunar/Makefile.a
  if HAVE_GIO_UNIX
  thunar_CFLAGS +=							\
  	$(GIO_UNIX_CFLAGS)
-diff -rudp thunar-4.18.3.orig/thunar/thunar-abstract-icon-view.c thunar-4.18.3/thunar/thunar-abstract-icon-view.c
---- thunar-4.18.3.orig/thunar/thunar-abstract-icon-view.c	2023-01-22 13:34:08.000000000 -0500
-+++ thunar-4.18.3/thunar/thunar-abstract-icon-view.c	2023-01-22 13:34:57.000000000 -0500
-@@ -387,12 +387,18 @@ thunar_abstract_icon_view_button_press_e
+diff -ru thunar-4.18.4.orig/thunar/thunar-abstract-icon-view.c thunar-4.18.4/thunar/thunar-abstract-icon-view.c
+--- thunar-4.18.4.orig/thunar/thunar-abstract-icon-view.c	2023-04-12 23:26:41.000000000 +0100
++++ thunar-4.18.4/thunar/thunar-abstract-icon-view.c	2023-04-12 23:27:45.000000000 +0100
+@@ -387,6 +387,8 @@
                                                GdkEventButton         *event,
                                                ThunarAbstractIconView *abstract_icon_view)
  {
 +  ThunarStandardView *standard_view = THUNAR_STANDARD_VIEW (abstract_icon_view);
 +  GtkWidget *real_view = gtk_bin_get_child (GTK_BIN (standard_view));
    GtkTreePath       *path;
+   GtkWidget         *window;
  
-   abstract_icon_view->priv->button_pressed = TRUE;
+@@ -398,6 +400,10 @@
  
    if (event->type == GDK_BUTTON_PRESS && event->button == 3)
      {
@@ -88,7 +89,7 @@ diff -rudp thunar-4.18.3.orig/thunar/thunar-abstract-icon-view.c thunar-4.18.3/t
        /* open the context menu on right clicks */
        if (exo_icon_view_get_item_at_pos (view, event->x, event->y, &path, NULL))
          {
-@@ -418,12 +424,21 @@ thunar_abstract_icon_view_button_press_e
+@@ -423,12 +429,21 @@
  
            /* open the context menu */
            thunar_standard_view_context_menu (THUNAR_STANDARD_VIEW (abstract_icon_view));
@@ -110,7 +111,7 @@ diff -rudp thunar-4.18.3.orig/thunar/thunar-abstract-icon-view.c thunar-4.18.3/t
        /* unselect all currently selected items */
        exo_icon_view_unselect_all (view);
  
-@@ -436,6 +451,11 @@ thunar_abstract_icon_view_button_press_e
+@@ -441,6 +456,11 @@
            /* try to open the path as new window/tab, if possible */
            _thunar_standard_view_open_on_middle_click (THUNAR_STANDARD_VIEW (abstract_icon_view), path, event->state);
  
@@ -122,7 +123,7 @@ diff -rudp thunar-4.18.3.orig/thunar/thunar-abstract-icon-view.c thunar-4.18.3/t
            /* cleanup */
            gtk_tree_path_free (path);
          }
-@@ -471,6 +491,9 @@ thunar_abstract_icon_view_button_release
+@@ -476,6 +496,9 @@
    const XfceGtkActionEntry *action_entry;
    GtkWidget                *window;
  
@@ -132,7 +133,7 @@ diff -rudp thunar-4.18.3.orig/thunar/thunar-abstract-icon-view.c thunar-4.18.3/t
    _thunar_return_val_if_fail (EXO_IS_ICON_VIEW (view), FALSE);
    _thunar_return_val_if_fail (THUNAR_IS_ABSTRACT_ICON_VIEW (abstract_icon_view), FALSE);
    _thunar_return_val_if_fail (abstract_icon_view->priv->gesture_expose_id > 0, FALSE);
-@@ -499,6 +522,11 @@ thunar_abstract_icon_view_button_release
+@@ -504,6 +527,11 @@
    /* redraw the abstract_icon view */
    gtk_widget_queue_draw (GTK_WIDGET (view));
  
@@ -144,9 +145,9 @@ diff -rudp thunar-4.18.3.orig/thunar/thunar-abstract-icon-view.c thunar-4.18.3/t
    return FALSE;
  }
  
-diff -rudp thunar-4.18.3.orig/thunar/thunar-standard-view.c thunar-4.18.3/thunar/thunar-standard-view.c
---- thunar-4.18.3.orig/thunar/thunar-standard-view.c	2023-01-22 13:34:08.000000000 -0500
-+++ thunar-4.18.3/thunar/thunar-standard-view.c	2023-01-22 13:34:57.000000000 -0500
+diff -ru thunar-4.18.4.orig/thunar/thunar-standard-view.c thunar-4.18.4/thunar/thunar-standard-view.c
+--- thunar-4.18.4.orig/thunar/thunar-standard-view.c	2023-04-12 23:26:41.000000000 +0100
++++ thunar-4.18.4/thunar/thunar-standard-view.c	2023-04-12 23:26:47.000000000 +0100
 @@ -61,6 +61,28 @@
  #include <gdk/gdkx.h>
  #endif
@@ -176,7 +177,7 @@ diff -rudp thunar-4.18.3.orig/thunar/thunar-standard-view.c thunar-4.18.3/thunar
  
  
  /* Property identifiers */
-@@ -261,6 +283,7 @@ static gboolean             thunar_stand
+@@ -261,6 +283,7 @@
  static void                 thunar_standard_view_drag_scroll_timer_destroy  (gpointer                  user_data);
  static gboolean             thunar_standard_view_drag_timer                 (gpointer                  user_data);
  static void                 thunar_standard_view_drag_timer_destroy         (gpointer                  user_data);
@@ -184,7 +185,7 @@ diff -rudp thunar-4.18.3.orig/thunar/thunar-standard-view.c thunar-4.18.3/thunar
  static void                 thunar_standard_view_finished_thumbnailing      (ThunarThumbnailer        *thumbnailer,
                                                                               guint                     request,
                                                                               ThunarStandardView       *standard_view);
-@@ -947,6 +970,15 @@ thunar_standard_view_constructor (GType
+@@ -947,6 +970,15 @@
    /* stay informed about changes to the sort column/order */
    g_signal_connect (G_OBJECT (standard_view->model), "sort-column-changed", G_CALLBACK (thunar_standard_view_sort_column_changed), standard_view);
  
@@ -200,7 +201,7 @@ diff -rudp thunar-4.18.3.orig/thunar/thunar-standard-view.c thunar-4.18.3/thunar
    /* setup support to navigate using a horizontal mouse wheel and the back and forward buttons */
    g_signal_connect (G_OBJECT (view), "scroll-event", G_CALLBACK (thunar_standard_view_scroll_event), object);
  
-@@ -1098,6 +1130,12 @@ thunar_standard_view_finalize (GObject *
+@@ -1098,6 +1130,12 @@
    /* release the scroll_to_files hash table */
    g_hash_table_destroy (standard_view->priv->scroll_to_files);
  
@@ -213,7 +214,7 @@ diff -rudp thunar-4.18.3.orig/thunar/thunar-standard-view.c thunar-4.18.3/thunar
    (*G_OBJECT_CLASS (thunar_standard_view_parent_class)->finalize) (object);
  }
  
-@@ -2725,6 +2763,212 @@ thunar_standard_view_motion_notify_event
+@@ -2729,6 +2767,212 @@
  
  
  
@@ -426,7 +427,7 @@ diff -rudp thunar-4.18.3.orig/thunar/thunar-standard-view.c thunar-4.18.3/thunar
  static gboolean
  thunar_standard_view_scroll_event (GtkWidget          *view,
                                     GdkEventScroll     *event,
-@@ -3778,7 +4022,15 @@ THUNAR_THREADS_LEAVE
+@@ -3782,7 +4026,15 @@
  static void
  thunar_standard_view_drag_scroll_timer_destroy (gpointer user_data)
  {
@@ -443,9 +444,9 @@ diff -rudp thunar-4.18.3.orig/thunar/thunar-standard-view.c thunar-4.18.3/thunar
  }
  
  
-diff -rudp thunar-4.18.3.orig/thunar/thunar-standard-view.h thunar-4.18.3/thunar/thunar-standard-view.h
---- thunar-4.18.3.orig/thunar/thunar-standard-view.h	2023-01-22 13:34:08.000000000 -0500
-+++ thunar-4.18.3/thunar/thunar-standard-view.h	2023-01-22 13:37:07.000000000 -0500
+diff -ru thunar-4.18.4.orig/thunar/thunar-standard-view.h thunar-4.18.4/thunar/thunar-standard-view.h
+--- thunar-4.18.4.orig/thunar/thunar-standard-view.h	2023-04-12 23:26:41.000000000 +0100
++++ thunar-4.18.4/thunar/thunar-standard-view.h	2023-04-12 23:26:47.000000000 +0100
 @@ -27,6 +27,10 @@
  #include <thunar/thunar-preferences.h>
  #include <thunar/thunar-view.h>
@@ -457,7 +458,7 @@ diff -rudp thunar-4.18.3.orig/thunar/thunar-standard-view.h thunar-4.18.3/thunar
  G_BEGIN_DECLS;
  
  /* avoid including libxfce4ui.h */
-@@ -166,6 +170,11 @@ struct _ThunarStandardView
+@@ -166,6 +170,11 @@
    gboolean                   loading;
    GtkAccelGroup             *accel_group;
  
@@ -469,7 +470,7 @@ diff -rudp thunar-4.18.3.orig/thunar/thunar-standard-view.h thunar-4.18.3/thunar
    ThunarStandardViewPrivate *priv;
  };
  
-@@ -188,7 +197,9 @@ GtkWidget          *thunar_standard_view
+@@ -188,7 +197,9 @@
  void                _thunar_standard_view_open_on_middle_click (ThunarStandardView       *standard_view,
                                                                  GtkTreePath              *tree_path,
                                                                  guint                     event_state);

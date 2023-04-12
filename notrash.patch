@@ -1,34 +1,19 @@
-diff -rudp thunar-4.16.10.orig/thunar/thunar-application.c thunar-4.16.10/thunar/thunar-application.c
---- thunar-4.16.10.orig/thunar/thunar-application.c	2021-10-15 22:57:55.000000000 -0400
-+++ thunar-4.16.10/thunar/thunar-application.c	2021-10-15 23:01:06.000000000 -0400
-@@ -2146,9 +2146,16 @@ thunar_application_unlink_files (ThunarA
-   gchar     *message;
+diff -ru thunar-4.18.4.orig/thunar/thunar-application.c thunar-4.18.4/thunar/thunar-application.c
+--- thunar-4.18.4.orig/thunar/thunar-application.c	2023-04-12 23:07:14.000000000 +0100
++++ thunar-4.18.4/thunar/thunar-application.c	2023-04-12 23:14:47.000000000 +0100
+@@ -2370,9 +2370,12 @@
    guint      n_path_list = 0;
    gint       response;
-+  gboolean   isTrashEnabled;
+   gboolean   operation_canceled = FALSE;
++  gboolean   is_trash_enabled = TRUE;
  
-   _thunar_return_if_fail (parent == NULL || GDK_IS_SCREEN (parent) || GTK_IS_WIDGET (parent));
-   _thunar_return_if_fail (THUNAR_IS_APPLICATION (application));
-+  
-+  g_object_get (G_OBJECT (application->preferences), "misc-enable-trash", &isTrashEnabled, NULL);
-+  if (!isTrashEnabled) 
-+    {
-+      permanently = TRUE;
-+    }
+   _thunar_return_val_if_fail (parent == NULL || GDK_IS_SCREEN (parent) || GTK_IS_WIDGET (parent), TRUE);
+   _thunar_return_val_if_fail (THUNAR_IS_APPLICATION (application), TRUE);
++  g_object_get (G_OBJECT (application->preferences), "misc-enable-trash", &is_trash_enabled, NULL);
++  if (!is_trash_enabled) permanently = TRUE;
  
    /* determine the paths for the files */
    for (lp = g_list_last (file_list); lp != NULL; lp = lp->prev, ++n_path_list)
-@@ -2170,8 +2177,8 @@ thunar_application_unlink_files (ThunarA
-   if (G_UNLIKELY (permanently))
-     {
-       /* parse the parent pointer */
--      screen = thunar_util_parse_parent (parent, &window);
--
-+      screen = thunar_util_parse_parent (parent, &window);     
-+       
-       /* generate the question to confirm the delete operation */
-       if (G_LIKELY (n_path_list == 1))
-         {
 diff -rudp thunar-4.16.10.orig/thunar/thunar-preferences.c thunar-4.16.10/thunar/thunar-preferences.c
 --- thunar-4.16.10.orig/thunar/thunar-preferences.c	2021-10-15 22:57:55.000000000 -0400
 +++ thunar-4.16.10/thunar/thunar-preferences.c	2021-10-15 23:06:04.000000000 -0400
@@ -67,7 +52,7 @@ diff -rudp thunar-4.16.10.orig/thunar/thunar-preferences-dialog.c thunar-4.16.10
    gtk_widget_show (combo);
  
 +  button = gtk_check_button_new_with_mnemonic (_("Move items to Trash on _deletion."));
-+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "misc-enable-trash", G_OBJECT (button), "active");
++  g_object_bind_property (G_OBJECT (dialog->preferences), "misc-enable-trash", G_OBJECT (button), "active", G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
 +  gtk_widget_set_tooltip_text (button, _( "By default, items are sent to the Trash on deletion. By disabling this option, items will be removed on deletion and will be lost forever. (DANGEROUS)"));
 +  gtk_grid_attach (GTK_GRID (grid), button, 0, 2, 1, 1);
 +  gtk_widget_show (button);
