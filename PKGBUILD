@@ -14,7 +14,7 @@ sha512sums=("SKIP")
 
 pkgver() {
   cd "${_pkgname}" &&
-    printf | git show --pretty=format:"%cI" | head -1 | awk -F "[+]" '{print $1"Z"}'
+    printf | git show --pretty=format:"%cI" | head -1 | awk -F "[-,=,:,+]" '{print $1"_"$2"_"$3"_"$4"_"$5"Z"}'
 
 }
 
