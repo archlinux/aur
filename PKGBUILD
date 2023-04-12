@@ -2,16 +2,14 @@
 
 _pkgname=vgmtrans
 pkgname=${_pkgname}-git
-# Use the latest commit's date and then the number of revisions using the same command as on line 19.
-pkgver=20230326.r1142.aeea082
+pkgver=1.1.r22.gaeea082
 pkgrel=1
 pkgdesc="Converter for sequenced videogame music"
 arch=("x86_64")
 url="https://github.com/vgmtrans/vgmtrans"
 license=("ZLIB")
-depends=("qt6-base" "fluidsynth" "qt6-svg" "minizip")
-makedepends=("qt6-tools" "cmake" "git")
-optdepends=("qt6-wayland: Wayland support")
+depends=("hicolor-icon-theme" "minizip" "qt6-base" "qt6-svg")
+makedepends=("cmake" "git" "qt6-tools")
 source=("${_pkgname}::git+${url}"
 	fix-header-import.patch)
 sha256sums=("SKIP"
@@ -19,26 +17,34 @@ sha256sums=("SKIP"
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
+	mkdir build || true
 
+	# Add patch to fix compile errors (TODO: upstream this)
 	patch -Np1 -i ../fix-header-import.patch
 }
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	printf "%s.r%s.%s" "$(git show -s --format="%cd" --date=short HEAD)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" | sed 's/-//g'
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
 	cd "${srcdir}/${_pkgname}/build"
 
-	cmake ..
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_RPATH="/usr/lib/${_pkgname}" ..
 	make
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
-	install -Dm755 "build/bin/vgmtrans" "$pkgdir/usr/bin/${_pkgname}"
-	install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 "src/ui/qt/resources/VGMTrans.desktop" "${pkgdir}/usr/share/applications/VGMTrans.desktop"
-	install -Dm644 "src/ui/qt/resources/vgmtrans.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/vgmtrans.png"
+	cd "${srcdir}/${_pkgname}/build"
+
+	make DESTDIR="${pkgdir}" install
+
+	# Install missing CLI binary (and BASS stuff)
+	install -Dm755 "bin/vgmtrans-cli" "${pkgdir}/usr/bin/vgmtrans-cli"
+	install -Dm644 "../lib/bass/libbass.so" "${pkgdir}/usr/lib/${_pkgname}/libbass.so"
+	install -Dm644 "../lib/bass/libbassmidi.so" "${pkgdir}/usr/lib/${_pkgname}/libbassmidi.so"
+
+	# Add (required) ZLIB license
+	install -Dm644 "../LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
