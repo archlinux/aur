@@ -1,7 +1,7 @@
 pkgbase = gamehub-git
 	pkgdesc = Games manager, downloader, library that supports GOG, Steam and Humble Bundle
-	pkgver = 0.16.3.4.dev.r0.g9952b8f
-	pkgrel = 1
+	pkgver = 0.16.3.6.dev.r1.gfaf18ae
+	pkgrel = 2
 	url = https://tkashkin.github.io/projects/gamehub/
 	arch = i686
 	arch = x86_64
@@ -27,6 +27,8 @@ pkgbase = gamehub-git
 	options = !strip
 	options = debug
 	source = git+https://github.com/tkashkin/GameHub.git#branch=dev
+	source = https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/gamehub-protonfix.patch
 	sha256sums = SKIP
+	sha256sums = 26e267dade0b416699707a8612aa4f1c32b60a08889c217127ddf1843b7302ba
 
 pkgname = gamehub-git
