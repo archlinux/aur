@@ -15,3 +15,5 @@ install:
 
 clean:
 	rm alfaview_*.deb
+	rm -rf src/
+	rm -rf pkg/
