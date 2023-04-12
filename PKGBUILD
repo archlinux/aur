@@ -2,14 +2,14 @@
 
 pkgname=mlocate-git
 pkgver=0.26.r14.gc98bf65
-pkgrel=1
+pkgrel=2
 pkgdesc="A locate/updatedb implementation"
 arch=('i686' 'x86_64')
 url="https://pagure.io/mlocate"
 license=('GPL2')
 depends=('glibc')
 makedepends=('git')
-provides=('mlocate')
+provides=("mlocate=$pkgver")
 conflicts=('mlocate')
 backup=('etc/updatedb.conf')
 source=("git+https://pagure.io/mlocate.git"
