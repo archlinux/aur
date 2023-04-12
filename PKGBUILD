@@ -2,11 +2,9 @@
 # Contributor: Fuad Saud <fuadfsaud@gmail.com>
 
 _electron=electron
-_pkgname=pocket-casts-linux
-pkgname=${_pkgname}-git
-provides=("${_pkgname}")
-conflicts=("${_pkgname}" "${_pkgname}-bin")
-pkgver=1.4.0.r0.g3445a77
+pkgname=pocket-casts-linux
+pkgver=1.4.0
+_commit=3445a77e537ddc82e2f87ebaee037acb30812a79
 pkgrel=1
 pkgdesc="Electron wrapper around the Pocket Casts web app with support for MPRIS (media controls)"
 arch=('x86_64')
@@ -14,20 +12,15 @@ license=('MIT')
 url="https://github.com/fuadsaud/pocket-casts-linux"
 depends=("${_electron}" 'sh')
 makedepends=('git' 'nodejs' 'yarn' 'python')
-source=("${_pkgname}::git+${url}.git"
-        "${_pkgname}.sh"
-        "${_pkgname}.desktop")
+source=("${pkgname}::git+${url}.git#commit=${_commit}"
+        "${pkgname}.sh"
+        "${pkgname}.desktop")
 md5sums=('SKIP'
          '303f5119008d56097134fa314c6af06c'
          '5eea4ff9f3214159c8e906d0035f9d80')
 
-pkgver() {
-	cd "${srcdir}/${_pkgname}"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 prepare() {
-	cd "${srcdir}/${_pkgname}"
+	cd "${srcdir}/${pkgname}"
 	export npm_config_cache="${srcdir}/npm_cache"
 	export npm_config_build_from_source=true
 	export YARN_CACHE_FOLDER="${srcdir}/npm_cache"
@@ -38,7 +31,7 @@ prepare() {
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}"
+	cd "${srcdir}/${pkgname}"
 
 	export npm_config_cache="${srcdir}/npm_cache"
 	export npm_config_build_from_source=true
@@ -62,18 +55,18 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
-	install -vDm644 -t "${pkgdir}/usr/lib/${_pkgname}" dist/linux-unpacked/resources/app.asar
-	cp -vr -t "${pkgdir}/usr/lib/${_pkgname}" dist/linux-unpacked/resources/app.asar.unpacked
+	cd "${srcdir}/${pkgname}"
+	install -vDm644 -t "${pkgdir}/usr/lib/${pkgname}" dist/linux-unpacked/resources/app.asar
+	cp -vr -t "${pkgdir}/usr/lib/${pkgname}" dist/linux-unpacked/resources/app.asar.unpacked
 
 	for i in 16 32 48 64 96 128 256 512; do
-		install -vDm644 resources/icon/${i}x${i}.png "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${_pkgname}.png"
+		install -vDm644 resources/icon/${i}x${i}.png "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png"
 	done
-	install -vDm644 resources/icon/src.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
+	install -vDm644 resources/icon/src.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 	install -vDm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 	install -vDm644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
 
-	install -vDm644 "${srcdir}/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-	install -vDm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
-	sed -i "s/@ELECTRON@/${_electron}/" "${pkgdir}/usr/bin/${_pkgname}"
+	install -vDm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+	install -vDm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+	sed -i "s/@ELECTRON@/${_electron}/" "${pkgdir}/usr/bin/${pkgname}"
 }
