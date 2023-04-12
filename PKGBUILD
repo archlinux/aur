@@ -45,12 +45,12 @@ pkgver() {
 
 prepare() {
   mkdir -p qt5build
-  cmake "../$_gitname" \
-    -DCMAKE_INSTALL_PREFIX='/usr'
 }
 
 build() {
   cd qt5build
+  cmake "../$_gitname" \
+    -DCMAKE_INSTALL_PREFIX='/usr'
   make
 }
 
