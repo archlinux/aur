@@ -1,22 +1,46 @@
+# Maintainer: Mario Finelli <mario at finel dot li>
 # Contributor: farawayer <farwayer@gmail.com>
 
 _gemname=tty-screen
 pkgname=ruby-$_gemname
 pkgver=0.8.1
-pkgrel=1
-pkgdesc='Terminal screen size detection which works on Linux, OS X and Windows/Cygwin platforms and supports MRI, JRuby and Rubinius interpreters.'
+pkgrel=2
+pkgdesc="Terminal screen detection"
 arch=(any)
-url='http://peter-murach.github.io/tty/'
+url=https://github.com/piotrmurach/tty-screen
 license=(MIT)
-depends=(ruby)
 options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
-sha1sums=('ebc57ece9329b11498c48af6a5907457173ea79c')
+depends=(ruby)
+checkdepends=(ruby-rake ruby-rspec)
+makedepends=(rubygems ruby-rdoc)
+source=(${url}/archive/v${pkgver}.tar.gz)
+sha256sums=('8b2c80a410d79c597880e9e981b006d2543ae9fd1338b183054392fe42ae06ae')
+
+build() {
+  cd $_gemname-$pkgver
+  gem build ${_gemname}.gemspec
+}
+
+check() {
+  cd $_gemname-$pkgver
+  rake
+}
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  cd $_gemname-$pkgver
+  local _gemdir="$(gem env gemdir)"
+
+  gem install \
+    --ignore-dependencies \
+    --no-user-install \
+    -i "$pkgdir/$_gemdir" \
+    -n "$pkgdir/usr/bin" \
+    $_gemname-$pkgver.gem
+
+  rm -rf "$pkgdir/$_gemdir/cache"
+
+  install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
+
+# vim: set ts=2 sw=2 et:

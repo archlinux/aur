@@ -1,14 +1,17 @@
 pkgbase = ruby-tty-screen
-	pkgdesc = Terminal screen size detection which works on Linux, OS X and Windows/Cygwin platforms and supports MRI, JRuby and Rubinius interpreters.
+	pkgdesc = Terminal screen detection
 	pkgver = 0.8.1
-	pkgrel = 1
-	url = http://peter-murach.github.io/tty/
+	pkgrel = 2
+	url = https://github.com/piotrmurach/tty-screen
 	arch = any
 	license = MIT
+	checkdepends = ruby-rake
+	checkdepends = ruby-rspec
+	makedepends = rubygems
+	makedepends = ruby-rdoc
 	depends = ruby
-	noextract = tty-screen-0.8.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/tty-screen-0.8.1.gem
-	sha1sums = ebc57ece9329b11498c48af6a5907457173ea79c
+	source = https://github.com/piotrmurach/tty-screen/archive/v0.8.1.tar.gz
+	sha256sums = 8b2c80a410d79c597880e9e981b006d2543ae9fd1338b183054392fe42ae06ae
 
 pkgname = ruby-tty-screen
