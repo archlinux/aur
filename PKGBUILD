@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=mediainfo-gui-git
-pkgver=20.08.r25.g687f4b59
+pkgver=23.03.r17.g1a512f2dd
 pkgrel=1
 pkgdesc="GUI utility for displaying technical and tag data for media files"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://mediaarea.net/en/MediaInfo"
 license=('BSD')
 depends=('glibc' 'hicolor-icon-theme' 'libmediainfo' 'qt5-base')
 makedepends=('git')
-provides=('mediainfo-gui')
+provides=("mediainfo-gui=$pkgver")
 conflicts=('mediainfo-gui')
 source=("git+https://github.com/MediaArea/MediaInfo.git")
 sha256sums=('SKIP')
