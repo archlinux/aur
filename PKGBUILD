@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=opusfile-git
-pkgver=0.11.r5.gd2577d7
-pkgrel=2
+pkgver=0.12.r40.g9d71834
+pkgrel=1
 pkgdesc="Stand-alone decoder library for .opus streams"
 arch=('i686' 'x86_64')
 url="https://opus-codec.org/"
 license=('BSD')
 depends=('glibc' 'libogg' 'openssl' 'opus')
 makedepends=('git')
-provides=('opusfile')
+provides=("opusfile=$pkgver")
 conflicts=('opusfile')
 options=('staticlibs')
 source=("git+https://gitlab.xiph.org/xiph/opusfile.git")
