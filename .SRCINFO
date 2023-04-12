@@ -1,6 +1,6 @@
 pkgbase = qt5-graphicaleffects-git
 	pkgdesc = Qt5 graphical effects module
-	pkgver = 5.15.1.r2.gd53af70
+	pkgver = 5.15.9.r0.g06cfcbb
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
@@ -11,10 +11,9 @@ pkgbase = qt5-graphicaleffects-git
 	license = custom
 	makedepends = git
 	depends = qt5-declarative
-	provides = qt5-graphicaleffects
+	provides = qt5-graphicaleffects=5.15.9.r0.g06cfcbb
 	conflicts = qt5-graphicaleffects
 	source = git+https://code.qt.io/qt/qtgraphicaleffects.git#branch=5.15
 	sha256sums = SKIP
 
 pkgname = qt5-graphicaleffects-git
-
