@@ -1,11 +1,11 @@
 pkgbase = protonup-rs-bin
 	pkgdesc = Install and Update Proton-GE, rewritten in Rust
-	pkgver = 0.4.2
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/auyer/Protonup-rs
 	arch = any
 	license = Apache
-	source = https://github.com/auyer/Protonup-rs/releases/download/v0.4.2/protonup-rs-linux-amd64.tar.gz
-	sha256sums = ee533dc735c1c25380ad811b13f20933c2ad009d376150604b4ae5facc9bb090
+	source = https://github.com/auyer/Protonup-rs/releases/download/v0.5.0/protonup-rs-linux-amd64.tar.gz
+	sha256sums = 9df96ffc9a9926aa9d39b1d3798adcc18116297898521812e2de9668a8639461
 
 pkgname = protonup-rs-bin
