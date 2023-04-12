@@ -1,16 +1,19 @@
 pkgbase = ruby-tty-logger
-	pkgdesc = Readable, structured and beautiful terminal logging
-	pkgver = 0.5.0
-	pkgrel = 2
-	url = https://ttytoolkit.org
+	pkgdesc = A readable, structured and beautiful logging for the terminal
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/piotrmurach/tty-logger
 	arch = any
 	license = MIT
+	checkdepends = ruby-bundler
+	checkdepends = ruby-rake
+	checkdepends = ruby-rspec
+	makedepends = rubygems
+	makedepends = ruby-rdoc
 	depends = ruby
-	depends = ruby-pastel>=0.8.0
-	noextract = tty-logger-0.5.0.gem
+	depends = ruby-pastel
 	options = !emptydirs
-	source = https://rubygems.org/downloads/tty-logger-0.5.0.gem
-	sha256sums = 52d30f0e15785e2e0295c4ca027232b846953feec65b41fcc5db5a3d9e748bdc
+	source = https://github.com/piotrmurach/tty-logger/archive/v0.6.0.tar.gz
+	sha256sums = 352285d4fb5516e97e1134072b697c8d0bc058c52c2256d68c2e77278b8286cb
 
 pkgname = ruby-tty-logger
-
