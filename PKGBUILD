@@ -3,7 +3,7 @@
 
 pkgname=pluto
 pkgver=5.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cli tool to help discover deprecated apiVersions in Kubernetes"
 arch=(x86_64)
 url=https://github.com/FairwindsOps/pluto
@@ -52,6 +52,14 @@ package() {
   for doc in advanced.md faq.md quickstart.md; do
     install -Dm0644 docs/$doc "$pkgdir/usr/share/doc/$pkgname/$doc"
   done
+
+  # redirect stderr to supress fairwinds ads during package
+  ./pluto completion bash 2>/dev/null | install -Dm0644 /dev/stdin \
+    "$pkgdir/usr/share/bash-completion/completions/pluto"
+  ./pluto completion zsh 2>/dev/null | install -Dm0644 /dev/stdin \
+    "$pkgdir/usr/share/zsh/site-functions/_pluto"
+  ./pluto completion fish 2>/dev/null | install -Dm0644 /dev/stdin \
+    "$pkgdir/usr/share/fish/vendor_completions.d/pluto.fish"
 }
 
 # vim: set ts=2 sw=2 et:
