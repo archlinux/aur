@@ -1,7 +1,7 @@
 # Maintainer: Bruno Ancona <bruno at powerball253 dot com>
 
 pkgname=eternalmodmanager
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc='Cross-platform mod manager for DOOM Eternal.'
 arch=('x86_64')
