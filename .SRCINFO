@@ -1,7 +1,7 @@
 pkgbase = rss-glx
 	pkgdesc = The Really Slick Screensavers port to GLX
 	pkgver = 0.9.1
-	pkgrel = 34
+	pkgrel = 35
 	url = http://rss-glx.sourceforge.net/
 	install = rss-glx.install
 	arch = x86_64

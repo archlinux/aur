@@ -5,7 +5,7 @@
 
 pkgname=rss-glx
 pkgver=0.9.1
-pkgrel=34
+pkgrel=35
 pkgdesc="The Really Slick Screensavers port to GLX"
 arch=('x86_64')
 url="http://rss-glx.sourceforge.net/"
@@ -23,7 +23,7 @@ build() {
 
   [ "$CARCH" = "x86_64" ] && (sed -i -e 's|@LIBS@|@LIBS@ -fopenmp|g' src/Makefile.in)
 
-  PKG_CONFIG_PATH="/usr/lib/imagemagick6/pkgconfig" \
+  export PKG_CONFIG_PATH="/usr/lib/imagemagick6/pkgconfig"
   ./configure --prefix=/usr \
     --mandir=/usr/share/man \
     --program-transform-name='s/plasma/plasma_rss/' \
