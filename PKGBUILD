@@ -2,7 +2,7 @@
 # Contributor: Carsten Feuls <archlinux at carstenfeuls dot de>
 
 pkgname=gfs2-utils
-pkgver=3.5.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Utilities for managing the global file system (GFS2)"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('python')
 makedepends=('util-linux' 'check')
 source=("https://releases.pagure.org/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
 options=('staticlibs' '!debug')
-sha512sums=('fc5524bdc405e4c7ea40aab624331c38c4af77f3cf733c44189ae7e340acab326ace542b739c257fc82d9217c873dd350aa7bc5d6506269e9eb84ffca93070ad')
+sha512sums=('4b35823a69d4e978dd950bb18dc88aa45e05f13ec216b60065260f0e000cd2e401380c628f4e3a5f3b9d030e3b928922a5e6515efb70618bf09a7a28fa10958b')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
