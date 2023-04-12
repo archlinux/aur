@@ -1,7 +1,8 @@
 # Maintainer: Gennadiy Mykhailiuta <gmykhailiuta@gmail.com>
 # Maintainer: Luna Jernberg <droidbittin@gmail.com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
-
+# Contributor: andreas_baumann
+ 
 pkgname=thunderbird-bin
 _pkgname=thunderbird
 pkgver=102.10.0
