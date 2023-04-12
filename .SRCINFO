@@ -1,6 +1,6 @@
 pkgbase = parrot-git
 	pkgdesc = GUI wrapper in Tauri for the Arch Linux package manager, pacman using the wrapper paru. Designed to be intuitive, powerful and user-friendly
-	pkgver = 1.0.4.67372ba
+	pkgver = 1.0.4.2a66762
 	pkgrel = 1
 	url = https://github.com/dan-online/parrot
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = parrot-git
 	depends = openssl
 	depends = webkit2gtk
 	options = !lto
-	source = parrot-git-1.0.4.67372ba.tar.gz::https://github.com/dan-online/parrot/archive/67372ba7fc301980d0d4869cdd5b3b3ef12e819b.tar.gz
-	sha256sums = de9e6fac25543b5a0a6df9ef3fcd97d1932258153e169fc76881e0e7b67c3371
+	source = parrot-git-1.0.4.2a66762.tar.gz::https://github.com/dan-online/parrot/archive/2a66762fc679d05ea9ff653e4c6e3b7ae7ea727f.tar.gz
+	sha256sums = b5f4ff3b8422fd628c70066d289d14e97ff78ccd8c342a2594e116288447a90d
 
 pkgname = parrot-git
