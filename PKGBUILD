@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=openjpeg-git
-pkgver=2.4.0.r45.g9bb0db7c
+pkgver=2.5.0.r37.g1ee6d115
 pkgrel=1
 pkgdesc="An open-source JPEG 2000 codec written in C language"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/uclouvain/openjpeg"
 license=('BSD')
 depends=('glibc' 'lcms2' 'libpng' 'libtiff' 'zlib')
 makedepends=('git' 'cmake' 'doxygen' 'jbigkit')
-provides=('openjpeg2')
+provides=("openjpeg2=$pkgver")
 conflicts=('openjpeg2')
 options=('staticlibs')
 source=("git+https://github.com/uclouvain/openjpeg.git")
