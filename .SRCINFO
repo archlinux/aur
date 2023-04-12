@@ -32,6 +32,7 @@ pkgbase = waybar-hyprland
 	depends = libsndio.so
 	depends = libxkbcommon
 	depends = wireplumber
+	depends = playerctl
 	optdepends = otf-font-awesome: Icons in the default configuration
 	provides = waybar
 	conflicts = waybar

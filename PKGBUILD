@@ -31,6 +31,7 @@ depends=(
     'libsndio.so'
     'libxkbcommon'
     'wireplumber'
+    'playerctl'
 )
 makedepends=(
     'cmake'
