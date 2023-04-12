@@ -12,6 +12,7 @@ pkgbase = pocket-casts-linux-git
 	depends = electron
 	depends = sh
 	provides = pocket-casts-linux
+	provides = pocket-casts
 	conflicts = pocket-casts-linux
 	conflicts = pocket-casts-linux-bin
 	source = pocket-casts-linux::git+https://github.com/fuadsaud/pocket-casts-linux.git
@@ -19,6 +20,6 @@ pkgbase = pocket-casts-linux-git
 	source = pocket-casts-linux.desktop
 	md5sums = SKIP
 	md5sums = 303f5119008d56097134fa314c6af06c
-	md5sums = 5eea4ff9f3214159c8e906d0035f9d80
+	md5sums = 7afa28814823fc89323c6f417dc62070
 
 pkgname = pocket-casts-linux-git

@@ -4,7 +4,7 @@
 _electron=electron
 _pkgname=pocket-casts-linux
 pkgname=${_pkgname}-git
-provides=("${_pkgname}")
+provides=("${_pkgname}" 'pocket-casts')
 conflicts=("${_pkgname}" "${_pkgname}-bin")
 pkgver=1.4.0.r0.g3445a77
 pkgrel=1
@@ -19,7 +19,7 @@ source=("${_pkgname}::git+${url}.git"
         "${_pkgname}.desktop")
 md5sums=('SKIP'
          '303f5119008d56097134fa314c6af06c'
-         '5eea4ff9f3214159c8e906d0035f9d80')
+         '7afa28814823fc89323c6f417dc62070')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
@@ -74,6 +74,6 @@ package() {
 	install -vDm644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
 
 	install -vDm644 "${srcdir}/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-	install -vDm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
-	sed -i "s/@ELECTRON@/${_electron}/" "${pkgdir}/usr/bin/${_pkgname}"
+	install -vDm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/pocket-casts"
+	sed -i "s/@ELECTRON@/${_electron}/" "${pkgdir}/usr/bin/pocket-casts"
 }
