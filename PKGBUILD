@@ -3,8 +3,8 @@
 
 pkgname='fuc-static-musl-bin'
 pkgver=1.1.7
-pkgrel=1
-pkgdesc='Fast Unix Commands: Modern, performance focused unix commands (statically linked to musl, pre-compiled)'
+pkgrel=2
+pkgdesc='Fast Unix Commands: Modern, performance focused unix commands (pre-compiled, statically linked to musl)'
 arch=('x86_64')
 url='https://github.com/SUPERCILEX/fuc'
 license=('Apache')
