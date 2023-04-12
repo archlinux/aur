@@ -35,14 +35,14 @@ sha256sums=('298bef69cb1e1fa5983698081378ab54c2cb143b29d574928b0c771bc7a309a8')
 prepare() {
   set -u
   cd "${_pkgname}-${pkgver}"
-  export CPPFLAGS="${CPPFLAGS} -O2 -Wno-misleading-indentation -Wno-unused-parameter -Wno-unused-result"
+  export CXXFLAGS="${CXXFLAGS} -O2 -Wno-misleading-indentation -Wno-unused-parameter -Wno-unused-result"
   if [ -f 'autogen.sh' ]; then
     # Postgres wants a config file. Perl won't compile. Python configure claims no but is really yes. db2pdf doesn't work.
     # Configure gives us a Python.h error that needs to be fixed.
     # Python tests error: ImportError: No module named '_rlib'
-    ./autogen.sh --prefix='/usr' --enable-utf8 --enable-python --disable-postgres --disable-perl --disable-doc --disable-php
+    ./autogen.sh --prefix='/usr' --enable-utf8 --disable-python --disable-postgres --disable-perl --disable-doc --disable-php
   else
-    ./configure --prefix='/usr' --enable-utf8 --enable-python --with-pythonver='2.7' --disable-php
+    ./configure --prefix='/usr' --enable-utf8 --disable-python --with-pythonver='2.7' --disable-php
     # From http://sisyphus.ru/en/srpm/Branch5/librlib/spec Version: 1.3.7
     #./configure --disable-static --with-pythonver=%__python_version --disable-postgres --disable-php --disable-perl --disable-python
   fi
