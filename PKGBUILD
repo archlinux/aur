@@ -21,5 +21,5 @@ build() {
 package() {
     cd "$_pkgname-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm644 "$srcdir/COPYING" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+    install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
