@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=miniupnpd-git
-pkgver=2.2.2.r15.g6f848ae
+pkgver=2.3.3.r0.ge439318
 pkgrel=1
 pkgdesc="Lightweight UPnP IGD daemon (git)"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://miniupnp.free.fr"
 license=('BSD')
 depends=('glibc' 'iptables' 'net-tools' 'util-linux' 'sh')
 makedepends=('git' 'lsb-release' 'procps-ng')
-provides=('miniupnpd')
+provides=("miniupnpd=$pkgver")
 conflicts=('miniupnpd')
 backup=('etc/miniupnpd/miniupnpd.conf')
 source=("git+https://github.com/miniupnp/miniupnp.git"
@@ -21,7 +21,10 @@ sha256sums=('SKIP'
 pkgver() {
   cd "miniupnp"
 
-  git describe --long --tags | sed 's/^miniupnpc_//;s/^miniupnpd_//;s/\([^-]*-g\)/r\1/;s/[_-]/./g'
+  _tag=$(git tag -l --sort -v:refname | grep -E '^miniupnpd_[0-9_]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^miniupnpd_//;s/_/./g'
 }
 
 build() {
