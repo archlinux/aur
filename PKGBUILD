@@ -1,7 +1,7 @@
 # Maintainer: Mathieu Clabaut <mathieu@clabaut.net>
 
 pkgname=automattermostatus
-pkgver=0.1.10
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='A mattermost custom status automation tool based on available wifi SSID'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("$pkgname-v$pkgver.tar.gz::$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('c964c59ca5d47f4951f2e1020186fb9b7a0ec32dd101d4819707db739da7dc0a')
+sha256sums=('e0f5cd08a2239c60f431c9f488cbe044ac2baa3f55fefd46e2db042aab90f094')
 
 build() {
   cd $pkgname-v$pkgver
