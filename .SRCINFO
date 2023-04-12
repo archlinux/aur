@@ -1,6 +1,6 @@
 pkgbase = blender-git
 	pkgdesc = A fully integrated 3D graphics creation suite (development)
-	pkgver = 3.6.r122861.g324ba509b53
+	pkgver = 3.6.r123062.g28a8a3c0861
 	pkgrel = 1
 	url = https://blender.org/
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = blender-git
 	makedepends = ninja
 	makedepends = llvm
 	makedepends = clang
-	makedepends = svn
+	makedepends = subversion
 	makedepends = wayland-protocols
 	depends = alembic
 	depends = embree
@@ -72,6 +72,6 @@ pkgbase = blender-git
 	sha256sums = 10cf3652cf16f8042437bb511e2b030035433978f71cf1da8028711f49599074
 	sha256sums = 52da80b721efb6a6d579adf531640becfac1955a88857ca46ca16030a52c3b1c
 	sha256sums = c2db51a83a8d573aa76c760f10e541c84b108d64d05c9647681c4e633b3d0397
-	sha256sums = d587135fd9b815d60e8b7f48976aa835472922fc8f64c256dc397bfcd3c2642a
+	sha256sums = 35d497a415c120ebe2ed8d0d9462ca72af63570e26b3ec112d8bb8e6822b54b3
 
 pkgname = blender-git
