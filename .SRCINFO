@@ -1,6 +1,6 @@
 pkgbase = treq-bin
 	pkgdesc = A Client to make HTTP requests for Vim/Terminal Users
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/talis-fb/TReq
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = treq-bin
 	optdepends = vim
 	provides = treq
 	conflicts = treq
-	source = https://github.com/talis-fb/TReq/releases/download/v0.3.0/treq-0.3.0-x86_64.tar.gz
-	sha256sums = a8fe8073a627d732810795e13c441ba500a79f4f49068f007697c9085d8d11d3
+	source = https://github.com/talis-fb/TReq/releases/download/v0.3.1/treq-0.3.1-x86_64.tar.gz
+	sha256sums = 155dc8969f5dbe6aa6ab9ddd4fca7dec5bd63525757ffe3d191aadbf4c1599d1
 
 pkgname = treq-bin
