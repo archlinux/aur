@@ -4,7 +4,7 @@
 pkgname=forkgram
 _pkgname=frk
 pkgver=4.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Fork of Telegram Desktop messaging app.'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/Forkgram/tdesktop"

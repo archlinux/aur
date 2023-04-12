@@ -1,7 +1,7 @@
 pkgbase = forkgram
 	pkgdesc = Fork of Telegram Desktop messaging app.
 	pkgver = 4.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Forkgram/tdesktop
 	arch = x86_64
 	arch = x86_64_v3
