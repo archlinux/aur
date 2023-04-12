@@ -1,19 +1,19 @@
 pkgbase = clickhouse-bin
 	pkgdesc = ClickHouse is a fast open-source OLAP database management system
-	pkgver = 23.2.4.12
+	pkgver = 23.3.1.2823
 	pkgrel = 1
 	url = https://clickhouse.tech/
 	arch = x86_64
 	license = Apache
 	provides = clickhouse
-	source = https://packages.clickhouse.com/tgz/stable/clickhouse-client-23.2.4.12-amd64.tgz
-	source = https://packages.clickhouse.com/tgz/stable/clickhouse-common-static-23.2.4.12-amd64.tgz
-	source = https://packages.clickhouse.com/tgz/stable/clickhouse-server-23.2.4.12-amd64.tgz
+	source = https://packages.clickhouse.com/tgz/stable/clickhouse-client-23.3.1.2823-amd64.tgz
+	source = https://packages.clickhouse.com/tgz/stable/clickhouse-common-static-23.3.1.2823-amd64.tgz
+	source = https://packages.clickhouse.com/tgz/stable/clickhouse-server-23.3.1.2823-amd64.tgz
 	source = clickhouse.sysusers
 	source = clickhouse-server.service
-	sha512sums = d6d28beb1340bd358823a87c7f57de1c3b942daa9402359c4f81329b3b7b25fdfec7e514871db9dd0a7754ec30fb79adcc47daffbd19f2d97e037937a966ce96
-	sha512sums = fa022a351507de76e07c2310e5a160856b932b2c73f3c419bb83573e8e5edf007d9368d072ebe3df96ac949fc090b9f85a7bb8c394009548b4f1547665fed3d9
-	sha512sums = 7254ed0db9cd66ea823b9ad4abd07a2810b384a9b7b41bb1a98c37b1eb773018685daa0cb07521406619c8f4891f385261c673df6fd81dc9fcd948b3f8da4470
+	sha512sums = b4a712dfe5ba536ad97a2a030f5b123caee6c3e3fa9a65c9c26d7a8c169b6af01381014e711828587f2bfe83c8a58b92d8e1001ad95b40124f7dcf96f135a851
+	sha512sums = 09635632c4b8aaa12da25367635c850c86af4823c344c9299004be5f86dad296fe151550d8f77fe2b442ebc6b8f3f07433a3946dd8b9fcf93383160c10aa285a
+	sha512sums = 84330df62c1c3a1cbfdccc409213b5340bdab0bd127af5d21511a5c2d4411f0d968246a1ec33d9069a1a14fb5569288f4367f4b2de6a70f59af154c980966c36
 	sha512sums = 70af4456ded1a1bb5cf29d2d3b29086aedc7875ef673e8817f389243f0c79eb491c9ce715b94542cbe16eb7489d97411ff0ab4a1a7f6c9b9120c659b87ea25b7
 	sha512sums = 6b22c7e27961c1453f8ce71457085cb24271ed1962033f78ea2483560bb6ad265a117414c5a9627a1733429d4080adf1fea4490073a7e522a002753d4d87d01c
 
