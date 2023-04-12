@@ -1,15 +1,15 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=Finanx-12C
-Comment=HP 12C clone
+Comment=HP 12C Mimic
 GenericName=HP 12C
 Exec=/usr/bin/finanx-12c
 Terminal=false
 Type=Application
-# The icon provided is not provided by the giftedmotion project
+# The icon is provided by the Finanx-12C project
 Icon=finanx-12c
 Categories=Utility;
 StartupWMClass=Finanx-12C
 StartupNotify=true
 
-Name[en_US]=Finanx-12c
+Name[en_US]=Finanx-12C
