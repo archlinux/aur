@@ -3,7 +3,7 @@
 _pkg=abydos
 pkgname=python-${_pkg,,}
 pkgver=0.5.0
-pkgrel=4
+pkgrel=5
 pkgdesc="NLP/IR library for Python"
 arch=(any)
 url="https://github.com/chrislit/abydos"
@@ -25,6 +25,10 @@ sha256sums=('0d46be1a40cfcdcd9ff9d052828c6ea57f5e1e2378373761c963c4a0cfcc5512'
 prepare() {
   cd ${_pkg}-${pkgver}
   patch -Np1 -i ../python310.patch
+  find -name '*.py' -exec sed -e 's|from numpy import float |from numpy import float_ |g' \
+                              -e 's|numpy import int |numpy import int_ |g' \
+                              -e 's|dtype=np\.bool)|dtype=np.bool_)|g' \
+                              -e 's|dtype=np\.float)|dtype=np.float_)|g' -i {} \;
 }
 
 build() {
