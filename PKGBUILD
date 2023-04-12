@@ -1,7 +1,7 @@
 pkgname="systemd-boot-to-windows"
 pkgver="1.0.0"
-pkgrel=1
-pkgdesc="Creates a Application Menu shortcut to boot into Windows using sytemd-boot's autmatic entry"
+pkgrel=2
+pkgdesc="Creates a .desktop application to boot into Windows using sytemd-boot's automatic entry"
 arch=(any)
 license=('Unlicense' 'CCPL:by')
 source=('systemd-boot-to-windows.sh' 
