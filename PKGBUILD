@@ -1,12 +1,14 @@
 # Maintainer: Brad Pitcher <bradpitcher@gmail.com>
+# Contributor: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Jelle van der Waa <jelle@archlinux.org>
 
-pkgname=python-trimesh
-pkgver=3.17.1
+_base=trimesh
+pkgname=python-${_base}
+pkgver=3.21.5
 pkgrel=1
-pkgdesc='Trimesh is a pure Python library for loading and using triangular meshes with an emphasis on watertight surfaces'
+pkgdesc='Python library for loading and using triangular meshes.'
 arch=('any')
-url="https://github.com/mikedh/trimesh"
+url="https://trimsh.org"
 license=('MIT')
 depends=(python python-numpy)
 makedepends=(python-setuptools)
@@ -29,21 +31,21 @@ optdepends=('python-networkx: graph operations'
             'python-svg.path: handle SVG format path strings'
             'python-xxhash: hash ndarrays faster than built-in MD5/CRC'
             'python-collada: parse collada/dae/zae files')
-source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('8cbf0bedd21c0867c5aa307e9bb8b4e4caff2aabee89cfadfa11513293304caa4b6a5ecce21064b7fa157a2453b58d401eb6010d0ea32bbd5a99c3075f38b826')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/mikedh/${_base}/archive/${pkgver}.tar.gz)
+sha512sums=('4bf6879294042aea9bce65a79c1717de1bec92a0a9f6f420ed98dbc4cb5260dba4656ee0074f77d46d37c910838c7a4b7c7dff0249aa38109bb677993f886291')
 
 build() {
-  cd trimesh-${pkgver}
+  cd ${_base}-${pkgver}
   python setup.py build
 }
 
 check() {
-  cd trimesh-${pkgver}
+  cd ${_base}-${pkgver}
   python -m unittest discover tests
 }
 
 package() {
-  cd trimesh-${pkgver}
+  cd ${_base}-${pkgver}
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
   install -D -m644 LICENSE.md "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"

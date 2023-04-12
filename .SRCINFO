@@ -1,8 +1,8 @@
 pkgbase = python-trimesh
-	pkgdesc = Trimesh is a pure Python library for loading and using triangular meshes with an emphasis on watertight surfaces
-	pkgver = 3.17.1
+	pkgdesc = Python library for loading and using triangular meshes.
+	pkgver = 3.21.5
 	pkgrel = 1
-	url = https://github.com/mikedh/trimesh
+	url = https://trimsh.org
 	arch = any
 	license = MIT
 	checkdepends = python-scipy
@@ -38,7 +38,7 @@ pkgbase = python-trimesh
 	optdepends = python-svg.path: handle SVG format path strings
 	optdepends = python-xxhash: hash ndarrays faster than built-in MD5/CRC
 	optdepends = python-collada: parse collada/dae/zae files
-	source = python-trimesh-3.17.1.tar.gz::https://github.com/mikedh/trimesh/archive/3.17.1.tar.gz
-	sha512sums = 8cbf0bedd21c0867c5aa307e9bb8b4e4caff2aabee89cfadfa11513293304caa4b6a5ecce21064b7fa157a2453b58d401eb6010d0ea32bbd5a99c3075f38b826
+	source = python-trimesh-3.21.5.tar.gz::https://github.com/mikedh/trimesh/archive/3.21.5.tar.gz
+	sha512sums = 4bf6879294042aea9bce65a79c1717de1bec92a0a9f6f420ed98dbc4cb5260dba4656ee0074f77d46d37c910838c7a4b7c7dff0249aa38109bb677993f886291
 
 pkgname = python-trimesh
