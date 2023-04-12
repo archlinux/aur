@@ -2,7 +2,7 @@
 # Contributor: eshrh <esrh at gatech dot edu>
 
 pkgname=mpv-mpvacious
-pkgver=0.21
+pkgver=0.22
 pkgrel=1
 pkgdesc="Adds mpv keybindings to create Anki cards from movies and TV shows."
 arch=('any')
@@ -16,13 +16,16 @@ optdepends=(
 	'ffmpeg: using ffmpeg directly to encode media'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('afd10d5574a17981eeb45d2ee5e67634f58d107c72887e9edbb741e1dae78dafddff9bd3f930425a66404ae81c54002d4fad91c8ccebfbe6af28fc0a90949835')
+sha512sums=('74f0820718f7014f70e71899ecbc6fe1fbdd01b1353b85f65ae2ac12435341e15c5ba2317535fae63cfff457b350e4cd1218d1c3b4c5d605c9741daec22214fe')
 install="${pkgname#mpv-}.install"
 
 package() {
 	cd -- "$srcdir/${pkgname#mpv-}-${pkgver}"
 	find . -type f -iname '*.lua' | while read -r file; do
 		install -Dm644 "$file" "${pkgdir}/etc/mpv/scripts/${pkgname#mpv-}/${file}"
+	done
+	find . -type f -iname '*.sh' | while read -r file; do
+		install -Dm755 "$file" "${pkgdir}/etc/mpv/scripts/${pkgname#mpv-}/${file}"
 	done
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 .github/RELEASE/subs2srs.conf "$pkgdir/etc/mpv/script-opts/subs2srs.conf"
