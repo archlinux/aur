@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=pigz-git
-pkgver=2.4.r24.gc3de75b
+pkgver=2.7.r4.ge1ed230
 pkgrel=1
 pkgdesc="A parallel implementation of gzip"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://zlib.net/pigz/"
 license=('zlib')
 depends=('glibc' 'zlib')
 makedepends=('git')
-provides=('pigz')
+provides=("pigz=$pkgver")
 conflicts=('pigz')
 source=("git+https://github.com/madler/pigz.git#branch=develop")
 sha256sums=('SKIP')
