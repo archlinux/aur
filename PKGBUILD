@@ -5,7 +5,7 @@
 _gitname=darling
 pkgbase=$_gitname-git
 pkgname='darling-git'
-pkgver=r3988.34b70f148
+pkgver=r4005.84a6ae50d
 pkgrel=1
 pkgdesc="Darwin/macOS emulation layer for Linux"
 arch=('x86_64')
@@ -118,6 +118,7 @@ source=('darling-libressl-2.2.9'::'git+https://github.com/darlinghq/darling-libr
         'git+https://github.com/darlinghq/darling-mail_cmds.git'
         'git+https://github.com/darlinghq/darling-man.git'
         'git+https://github.com/darlinghq/darling-mDNSResponder.git'
+        'git+https://github.com/darlinghq/darling-metal.git'
         'git+https://github.com/darlinghq/darling-misc_cmds.git'
         'git+https://github.com/darlinghq/darling-MITKerberosShim.git'
         'git+https://github.com/darlinghq/darling-nano.git'
@@ -190,7 +191,7 @@ md5sums=( 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-          'SKIP' 'SKIP')
+          'SKIP' 'SKIP' 'SKIP')
 options=('!buildflags')
 
 pkgver() {
@@ -305,6 +306,7 @@ prepare() {
     git config submodule.src/external/mail_cmds.url "$srcdir/darling-mail_cmds"
     git config submodule.src/external/man.url "$srcdir/darling-man"
     git config submodule.src/external/mDNSResponder.url "$srcdir/darling-mDNSResponder"
+    git config submodule.src/external/metal.url "$srcdir/darling-metal"
     git config submodule.src/external/misc_cmds.url "$srcdir/darling-misc_cmds"
     git config submodule.src/external/MITKerberosShim.url "$srcdir/darling-MITKerberosShim"
     git config submodule.src/external/nano.url "$srcdir/darling-nano"
