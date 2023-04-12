@@ -2,8 +2,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=lexend-fonts-git
-pkgver=r92.2049188
-pkgrel=1
+pkgver=r114.7894f02
+pkgrel=2
 epoch=1
 pkgdesc='Lexend is a variable typeface designed to improve reading fluency'
 url="https://lexend.com"
@@ -20,13 +20,15 @@ pkgver() {
   printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
+# If you want to build the fonts yourself, install gftools from AUR
+# and uncomment the build function. But be aware: gftools is not a cheap makedep.
+
+#build() {
+#  cd $pkgname/sources
+#  . ./build.sh
+#}
+  
 package() {
-  install -Dm644 $pkgname/fonts/deca/ttf/LexendDeca-Regular.ttf "$pkgdir/usr/share/fonts/TTF/LexendDeca-Regular.ttf"
-  install -Dm644 $pkgname/fonts/exa/ttf/LexendExa-Regular.ttf "$pkgdir/usr/share/fonts/TTF/LexendExa-Regular.ttf"
-  install -Dm644 $pkgname/fonts/giga/ttf/LexendGiga-Regular.ttf "$pkgdir/usr/share/fonts/TTF/LexendGiga-Regular.ttf"
-  install -Dm644 $pkgname/fonts/mega/ttf/LexendMega-Regular.ttf "$pkgdir/usr/share/fonts/TTF/LexendMega-Regular.ttf"
-  install -Dm644 $pkgname/fonts/peta/ttf/LexendPeta-Regular.ttf "$pkgdir/usr/share/fonts/TTF/LexendPeta-Regular.ttf"
-  install -Dm644 $pkgname/fonts//tera/ttf/LexendTera-Regular.ttf "$pkgdir/usr/share/fonts/TTF/LexendTera-Regular.ttf"
-  install -Dm644 $pkgname/fonts/zetta/ttf/LexendZetta-Regular.ttf "$pkgdir/usr/share/fonts/TTF/LexendZetta-Regular.ttf"
+  find . -name "*.ttf" | xargs install -Dm644 -t "$pkgdir/usr/share/fonts/TTF" 
   install -Dm644 $pkgname/OFL.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

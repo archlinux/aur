@@ -1,7 +1,7 @@
 pkgbase = lexend-fonts-git
 	pkgdesc = Lexend is a variable typeface designed to improve reading fluency
-	pkgver = r92.2049188
-	pkgrel = 1
+	pkgver = r114.7894f02
+	pkgrel = 2
 	epoch = 1
 	url = https://lexend.com
 	arch = any
