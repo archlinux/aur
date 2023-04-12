@@ -1,0 +1,17 @@
+pkgbase = visualfamilytree-appimage
+	pkgdesc = Create a family tree with extensive information and pictures about the individual family members.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://visualfamilytree.jisco.me
+	arch = x86_64
+	license = custom:freeware
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = glibc
+	options = !strip
+	source = visualfamilytree-1.4.0.AppImage::https://github.com/Jisco/VisualFamilyTree/releases/download/v1.4.0/VisualFamilyTree.1.4.0.AppImage
+	source = LICENSE::https://github.com/Jisco/VisualFamilyTree/raw/master/README.md
+	sha256sums = a087fe43ab9b77db2dbbd10e4172e07f6689916a53eac606120897f858cbb70c
+	sha256sums = 1e28e02b99e91ce1bf896f3c6694dc1475feea02318d69b371181c1fb8b69d97
+
+pkgname = visualfamilytree-appimage
