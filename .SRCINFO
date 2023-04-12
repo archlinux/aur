@@ -1,6 +1,6 @@
 pkgbase = qt5-datavis3d-git
 	pkgdesc = Qt5 data visualization module
-	pkgver = 5.15.1.r1.g6cc736d3
+	pkgver = 5.15.9.r0.g7636478b
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
@@ -8,10 +8,9 @@ pkgbase = qt5-datavis3d-git
 	license = GPL3
 	makedepends = git
 	depends = qt5-declarative
-	provides = qt5-datavis3d
+	provides = qt5-datavis3d=5.15.9.r0.g7636478b
 	conflicts = qt5-datavis3d
 	source = git+https://code.qt.io/qt/qtdatavis3d.git#branch=5.15
 	sha256sums = SKIP
 
 pkgname = qt5-datavis3d-git
-

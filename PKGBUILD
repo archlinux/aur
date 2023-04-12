@@ -2,7 +2,7 @@
 # Previous maintainer: Jonathan Liu <net147@gmail.com>
 
 pkgname=qt5-datavis3d-git
-pkgver=5.15.1.r1.g6cc736d3
+pkgver=5.15.9.r0.g7636478b
 pkgrel=1
 pkgdesc="Qt5 data visualization module"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://www.qt.io/"
 license=('GPL3')
 depends=('qt5-declarative')
 makedepends=('git')
-provides=('qt5-datavis3d')
+provides=("qt5-datavis3d=$pkgver")
 conflicts=('qt5-datavis3d')
 source=("git+https://code.qt.io/qt/qtdatavis3d.git#branch=5.15")
 sha256sums=('SKIP')
@@ -25,10 +25,10 @@ prepare() {
 pkgver() {
   cd "qtdatavis3d"
 
-  _tag=$(git tag -l --sort -v:refname | head -n1)
+  _tag=$(git tag -l --sort -creatordate | grep -E '^v5\.15[0-9\.]+' | head -n1)
   _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//;s/-/_/g'
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//;s/-lts-lgpl//'
 }
 
 build() {
