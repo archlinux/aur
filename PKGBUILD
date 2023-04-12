@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=('gdb-git' 'gdb-common-git')
-pkgver=14.0.50.r114329.8cb6bcc3eed
+pkgver=14.0.50.r114330.4bbb4dfbed1
 pkgrel=1
 epoch=1
 pkgdesc="The GNU Debugger from git"
@@ -58,6 +58,8 @@ package_gdb-git() {
   # install "custom" system gdbinit
   install -dm755 "$pkgdir"/etc/gdb
   touch "$pkgdir"/etc/gdb/gdbinit
+  # comes from gdb-common
+  rm -r "$pkgdir/usr/share/gdb/"
 }
 
 package_gdb-common-git() {
