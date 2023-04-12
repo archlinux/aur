@@ -9,8 +9,9 @@ pkgdesc="Converter for sequenced videogame music"
 arch=("x86_64")
 url="https://github.com/vgmtrans/vgmtrans"
 license=("ZLIB")
-depends=("qt5-base" "fluidsynth" "qt5-svg" "minizip")
-makedepends=("qt5-tools" "cmake" "git")
+depends=("qt6-base" "fluidsynth" "qt6-svg" "minizip")
+makedepends=("qt6-tools" "cmake" "git")
+optdepends=("qt6-wayland: Wayland support")
 source=("${_pkgname}::git+${url}")
 sha256sums=("SKIP")
 
