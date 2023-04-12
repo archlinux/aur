@@ -6,11 +6,11 @@ _lua_name=luaprompt
 
 pkgname=lua-${_lua_name}
 pkgver=0.7
-pkgrel=2
+pkgrel=3
 pkgdesc="An embeddable Lua command prompt as well as a stand-alone interpreter with pretty-printing and autocompletion."
 arch=(i686 x86_64)
 url="https://github.com/dpapavas/luaprompt"
-license=('custom')
+license=('MIT')
 depends=("lua" "lua-argparse")
 source=("${pkgname}-${pkgver}::https://github.com/dpapavas/luaprompt/archive/v${pkgver}.tar.gz")
 md5sums=('eca026f5b6d294c9e6828b67a7c3447f')
