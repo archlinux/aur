@@ -1,7 +1,8 @@
 # Maintainer: Hoream <2175223953@qq.com>
 _pkgname="go-musicfox"
 pkgname="${_pkgname}-git"
-pkgver=4.0.1.r9.gff81a02
+pkgver=4.0.2.r1.gc78f3a7
+_pkgver=4.0.2
 pkgrel=1
 pkgdesc='Command-line Netease Cloud Music written in Go (git version).'
 url='https://github.com/anhoder/go-musicfox'
@@ -30,7 +31,7 @@ build(){
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export GOPATH=${srcdir}
-	go build -o bin/musicfox -ldflags "-s -w -X go-musicfox/pkg/constants.AppVersion=v${pkgver}" cmd/musicfox.go
+	go build -o bin/musicfox -ldflags "-s -w -X go-musicfox/pkg/constants.AppVersion=v${_pkgver}" cmd/musicfox.go
 }
 
 
