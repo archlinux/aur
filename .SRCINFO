@@ -1,0 +1,17 @@
+pkgbase = ruby-shoulda
+	pkgdesc = Makes tests easy on the fingers and the eyes
+	pkgver = 5.0.0.rc1
+	pkgrel = 1
+	url = https://github.com/thoughtbot/shoulda
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-shoulda-context
+	depends = ruby-shoulda-matchers
+	options = !emptydirs
+	source = https://github.com/thoughtbot/shoulda/archive/v5.0.0.rc1.tar.gz
+	sha256sums = af81713778f40e3a3ef7b07a3c29515bfdf7c98f3e068e8491a3b62000a90d9e
+
+pkgname = ruby-shoulda
