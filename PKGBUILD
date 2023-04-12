@@ -1,4 +1,5 @@
 # Maintainer: Charlotte Ausel <ettolrach@disroot.org>
+# Maintainer: Echo J. <aidas957 at gmail dot com>
 
 _pkgname=vgmtrans
 pkgname=${_pkgname}-git

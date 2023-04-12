@@ -1,19 +1,20 @@
 pkgbase = vgmtrans-git
 	pkgdesc = Converter for sequenced videogame music
-	pkgver = 20210708.r966.156e8ae
+	pkgver = 1.1.r22.gaeea082
 	pkgrel = 1
 	url = https://github.com/vgmtrans/vgmtrans
 	arch = x86_64
 	license = ZLIB
-	makedepends = qt5-tools
 	makedepends = cmake
 	makedepends = git
-	depends = qt5-base
-	depends = fluidsynth
-	depends = qt5-svg
+	makedepends = qt6-tools
+	depends = hicolor-icon-theme
 	depends = minizip
-	source = vgmtrans::git+git://github.com/vgmtrans/vgmtrans.git
+	depends = qt6-base
+	depends = qt6-svg
+	source = vgmtrans::git+https://github.com/vgmtrans/vgmtrans
+	source = fix-header-import.patch
 	sha256sums = SKIP
+	sha256sums = 85caf04f1644abc66e87e5f67cb67281a50ee50ace2213efbcf2a80e3fa5ad9d
 
 pkgname = vgmtrans-git
-
