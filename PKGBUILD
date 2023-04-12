@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=nuspell-git
-pkgver=3.1.2.r13.g094b398
+pkgver=5.1.2.r2.g1ae818e
 pkgrel=1
 pkgdesc="Fast and safe spellchecking C++ library"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://nuspell.github.io/"
 license=('GPL3' 'LGPL3')
 depends=('glibc' 'boost-libs' 'icu')
 makedepends=('git' 'cmake' 'boost' 'ruby-ronn')
-provides=('nuspell')
+provides=("nuspell=$pkgver")
 conflicts=('nuspell')
 source=("git+https://github.com/nuspell/nuspell.git")
 sha256sums=('SKIP')
