@@ -6,7 +6,7 @@ _commit=7628200383849c0efc1418c0c1327f7de757355e
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=7.4.0
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -55,7 +55,6 @@ makedepends=(autoconf bison perl flex mingw-w64-gcc
   mesa-libgl            lib32-mesa-libgl
   opencl-icd-loader     lib32-opencl-icd-loader
   libpulse              lib32-libpulse
-  libva                 lib32-libva
   gtk3                  lib32-gtk3
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   vulkan-icd-loader     lib32-vulkan-icd-loader
@@ -77,7 +76,6 @@ optdepends=(
   libxcomposite         lib32-libxcomposite
   libxinerama           lib32-libxinerama
   opencl-icd-loader     lib32-opencl-icd-loader
-  libva                 lib32-libva
   gtk3                  lib32-gtk3
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   vulkan-icd-loader     lib32-vulkan-icd-loader
@@ -379,8 +377,8 @@ sha256sums=('SKIP'
             '08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3'
             '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
             '9249ece664bcf2fecb1308ea1d2542c72923df9fe3df891986f137b2266a9ba3'
-            'ee4952198ff3bb139d23f29fb591825c664c5df690d251a9716555d085e17c99'
-            '697858a2455f05935172113c52ac60fc355d15bcc73270de5f969b3ecb2b2194')
+            '14453d4762ed7906ab69e0e04a748a6421b0a896562352b11926ff3971955bbc'
+            '6e5e1f54f27afcc450dae1c6ad9d1a5e4fc1ddb64cde80669e72871c358bbd62')
 # Optional patches
 sha256sums+=(
 )
