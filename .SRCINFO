@@ -1,6 +1,6 @@
 pkgbase = nodejs-git
 	pkgdesc = JavaScript runtime built on Chrome's V8 JavaScript engine
-	pkgver = 14.14.0.r1864.g6f34498148
+	pkgver = 19.9.0.r1361.g6dcbf8b6166
 	pkgrel = 1
 	url = https://nodejs.org/
 	arch = i686
@@ -17,10 +17,9 @@ pkgbase = nodejs-git
 	depends = openssl
 	depends = zlib
 	optdepends = npm: nodejs package manager
-	provides = nodejs
+	provides = nodejs=19.9.0.r1361.g6dcbf8b6166
 	conflicts = nodejs
 	source = git+https://github.com/nodejs/node.git
 	sha256sums = SKIP
 
 pkgname = nodejs-git
-

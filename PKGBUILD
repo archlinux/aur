@@ -3,7 +3,7 @@
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 
 pkgname=nodejs-git
-pkgver=14.14.0.r1864.g6f34498148
+pkgver=19.9.0.r1361.g6dcbf8b6166
 pkgrel=1
 pkgdesc="JavaScript runtime built on Chrome's V8 JavaScript engine"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('glibc' 'brotli' 'icu' 'libnghttp2' 'libuv' 'openssl' 'zlib')  # c-ares http-parser
 makedepends=('git' 'procps-ng' 'python')
 optdepends=('npm: nodejs package manager')
-provides=('nodejs')
+provides=("nodejs=$pkgver")
 conflicts=('nodejs')
 source=("git+https://github.com/nodejs/node.git")
 sha256sums=('SKIP')
