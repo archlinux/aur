@@ -11,13 +11,16 @@ arch=(any)
 license=(custom:cyberghostvpn)
 depends=(
   bash
-  ca-certificates
   curl
   openvpn
   wireguard-tools
   resolvconf
 )
-makedepends=(zip)
+makedepends=(
+  ca-certificates
+  openssl
+  zip
+)
 
 _variant=ubuntu-20.04
 source=(	"https://download.cyberghostvpn.com/linux/cyberghostvpn-${_variant}-${pkgver}.zip"
