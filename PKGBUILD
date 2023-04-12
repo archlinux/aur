@@ -2,8 +2,8 @@
 
 _pkgbase="breed"
 pkgname="$_pkgbase-git"
-pkgver=0.1.0
-pkgrel=1
+pkgver=r70.2976fb4
+pkgrel=2
 pkgdesc="A small modal editor designed to breed productivity."
 arch=("any")
 url="https://git.tebibyte.media/mars/$_pkgbase"
@@ -15,16 +15,16 @@ provides=("breed")
 sha256sums=("SKIP")
 
 pkgver() {
-  cd $_pkgbase
-  cargo pkgid | cut -d# -f2 | cut -d: -f2
+  cd "$srcdir/$_pkgbase"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
-    cd $srcdir/$_pkgbase
+    cd "$srcdir/$_pkgbase"
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 package() {
-    cd $srcdir/$_pkgbase
+    cd "$srcdir/$_pkgbase"
     cargo install --no-track --all-features --root "$pkgdir/usr/" --path . --target="$CARCH-unknown-linux-gnu"
 }
