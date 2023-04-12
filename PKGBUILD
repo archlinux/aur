@@ -1,6 +1,6 @@
 # Maintainer: Sebastien Duthil <duthils@duthils.net>
 
-_pkg_subver=3641
+_pkg_subver=3682
 _gamepkg=RimWorldIdeology1-4-${_pkg_subver}Linux.tar.gz
 
 pkgname=rimworld-ideology
