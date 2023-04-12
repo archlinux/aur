@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=qrencode-git
-pkgver=4.1.0.r0.g0f6149e
+pkgver=4.1.1.r0.g715e29f
 pkgrel=1
 pkgdesc="A fast and compact QR Code encoding library"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://fukuchi.org/works/qrencode/"
 license=('LGPL')
 depends=('glibc' 'libpng')
 makedepends=('git' 'sdl')
-provides=('qrencode')
+provides=("qrencode=$pkgver")
 conflicts=('qrencode')
 source=("git+https://github.com/fukuchi/libqrencode.git")
 sha256sums=('SKIP')
