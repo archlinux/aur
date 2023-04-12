@@ -1,10 +1,10 @@
-From 5cc6721a31ee563373f28f39ae8f83cd4060275c Mon Sep 17 00:00:00 2001
+From 168d74b20d205333ac482297d5d9db9fb49d3f02 Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Tue, 7 Feb 2023 22:00:48 +0200
 Subject: [PATCH 1/2] AUR Pkgbuild changes
 
 ---
- Makefile.in                    | 75 +++++++++++++++++++++++++++++-----
+ Makefile.in                    | 76 +++++++++++++++++++++++++++++-----
  compatibilitytool.vdf.template |  2 +-
  configure.sh                   |  2 +
  make/rules-autoconf.mk         |  4 +-
@@ -15,10 +15,10 @@ Subject: [PATCH 1/2] AUR Pkgbuild changes
  make/rules-meson.mk            |  3 +-
  make/rules-winemaker.mk        |  2 +-
  proton                         |  6 +--
- 11 files changed, 92 insertions(+), 32 deletions(-)
+ 11 files changed, 93 insertions(+), 32 deletions(-)
 
 diff --git a/Makefile.in b/Makefile.in
-index 528dcf6f..34fefe06 100644
+index 528dcf6f..431cbf56 100644
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -63,7 +63,6 @@ ifeq ($(ENABLE_CCACHE),1)
@@ -161,19 +161,20 @@ index 528dcf6f..34fefe06 100644
  	-Dfbdev=disabled \
  	-Ddecklink=disabled \
  	-Dcurl=disabled \
-@@ -696,7 +731,11 @@ GST_BAD_MESON_ARGS := \
+@@ -696,7 +731,12 @@ GST_BAD_MESON_ARGS := \
  	-Dvoamrwbenc=disabled \
  	-Dnvcodec=disabled \
  	-Dx265=disabled \
 +	-Dopenexr=disabled \
 +	-Dzxing=disabled \
 +	-Dva=disabled \
++	-Dexamples=disabled \
  	-Dtests=disabled \
 +	-Dintrospection=disabled \
  	-Dgobject-cast-checks=disabled \
  	-Dglib-asserts=disabled \
  	-Dglib-checks=disabled \
-@@ -714,6 +753,7 @@ $(eval $(call rules-meson,gst_bad,64))
+@@ -714,6 +754,7 @@ $(eval $(call rules-meson,gst_bad,64))
  ##
  
  GST_UGLY_MESON_ARGS := \
@@ -181,7 +182,7 @@ index 528dcf6f..34fefe06 100644
          -Ddoc='disabled' \
  	-Dtests=disabled \
  	-Dgobject-cast-checks=disabled \
-@@ -889,7 +929,11 @@ WINE_SOURCE_ARGS = \
+@@ -889,7 +930,11 @@ WINE_SOURCE_ARGS = \
    --exclude include/config.h.in \
  
  WINE_CONFIGURE_ARGS = \
@@ -193,7 +194,7 @@ index 528dcf6f..34fefe06 100644
    --disable-tests
  
  WINE_CONFIGURE_ARGS64 = --enable-win64
-@@ -953,6 +997,9 @@ DXVK_MESON_ARGS32 = --bindir=$(DXVK_DST32)/lib/wine/dxvk
+@@ -953,6 +998,9 @@ DXVK_MESON_ARGS32 = --bindir=$(DXVK_DST32)/lib/wine/dxvk
  DXVK_MESON_ARGS64 = --bindir=$(DXVK_DST64)/lib64/wine/dxvk
  DXVK_DEPENDS = glslang
  
@@ -203,7 +204,7 @@ index 528dcf6f..34fefe06 100644
  $(eval $(call rules-source,dxvk,$(SRCDIR)/dxvk))
  $(eval $(call rules-meson,dxvk,32,CROSS))
  $(eval $(call rules-meson,dxvk,64,CROSS))
-@@ -975,6 +1022,9 @@ $(OBJ)/.dxvk-post-build32:
+@@ -975,6 +1023,9 @@ $(OBJ)/.dxvk-post-build32:
  DXVK_NVAPI_MESON_ARGS32 = --bindir=$(DXVK_NVAPI_DST32)/lib/wine/nvapi
  DXVK_NVAPI_MESON_ARGS64 = --bindir=$(DXVK_NVAPI_DST64)/lib64/wine/nvapi
  
@@ -213,7 +214,7 @@ index 528dcf6f..34fefe06 100644
  $(eval $(call rules-source,dxvk-nvapi,$(SRCDIR)/dxvk-nvapi))
  $(eval $(call rules-meson,dxvk-nvapi,32,CROSS))
  $(eval $(call rules-meson,dxvk-nvapi,64,CROSS))
-@@ -1042,6 +1092,9 @@ VKD3D_PROTON_MESON_ARGS32 = --bindir=$(VKD3D_PROTON_DST32)/lib/wine/vkd3d-proton
+@@ -1042,6 +1093,9 @@ VKD3D_PROTON_MESON_ARGS32 = --bindir=$(VKD3D_PROTON_DST32)/lib/wine/vkd3d-proton
  VKD3D_PROTON_MESON_ARGS64 = --bindir=$(VKD3D_PROTON_DST64)/lib64/wine/vkd3d-proton
  VKD3D_PROTON_DEPENDS = glslang
  
@@ -223,7 +224,7 @@ index 528dcf6f..34fefe06 100644
  $(eval $(call rules-source,vkd3d-proton,$(SRCDIR)/vkd3d-proton))
  $(eval $(call rules-meson,vkd3d-proton,32,CROSS))
  $(eval $(call rules-meson,vkd3d-proton,64,CROSS))
-@@ -1284,14 +1337,14 @@ $(FONTS_OBJ)/source-han/%.ttf: $$(%.ttf_CIDFONT) $$(%.ttf_FEATURES) $$(%.ttf_SEQ
+@@ -1284,14 +1338,14 @@ $(FONTS_OBJ)/source-han/%.ttf: $$(%.ttf_CIDFONT) $$(%.ttf_FEATURES) $$(%.ttf_SEQ
  	mkdir -p $(FONTS_OBJ)/source-han
  	# Do not immediately create the target file, so that make is interrupted
  	# it will restart again
@@ -241,7 +242,7 @@ index 528dcf6f..34fefe06 100644
  	mv $@.tmp $@
  
  $(FONTS_OBJ)/ume-gothic/%.ttf: $$(%.ttf_FONT) $$(%.ttf_NAMETABLE_PATCH)
-@@ -1301,10 +1354,10 @@ $(FONTS_OBJ)/ume-gothic/%.ttf: $$(%.ttf_FONT) $$(%.ttf_NAMETABLE_PATCH)
+@@ -1301,10 +1355,10 @@ $(FONTS_OBJ)/ume-gothic/%.ttf: $$(%.ttf_FONT) $$(%.ttf_NAMETABLE_PATCH)
  	ttx -o $@ -m $($(notdir $@)_FONT) $(FONTS_OBJ)/ume-gothic/$(notdir $(basename $($(notdir $@)_NAMETABLE_PATCH))).ttx
  
  $(simsun.ttc): $(simsun.ttf) $(nsimsun.ttf)
