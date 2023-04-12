@@ -1,15 +1,18 @@
 pkgbase = ruby-necromancer
-	pkgdesc = Conversion from one object type to another with a bit of black magic.
-	pkgver = 0.5.1
+	pkgdesc = Conversion from one object type to another with a bit of black magic
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/piotrmurach/necromancer
 	arch = any
 	license = MIT
+	checkdepends = ruby-bundler
+	checkdepends = ruby-rake
+	checkdepends = ruby-rspec
+	makedepends = rubygems
+	makedepends = ruby-rdoc
 	depends = ruby
-	noextract = necromancer-0.5.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/necromancer-0.5.1.gem
-	sha1sums = fd042d91d5b2b2c17504b66faeba6c6c8f1cd43d
+	source = https://github.com/piotrmurach/necromancer/archive/v0.7.0.tar.gz
+	sha256sums = e6695617e5c7784047fb5a1048c4bf2b4042e6ba3dea31e8652ab4a5f57f1ed7
 
 pkgname = ruby-necromancer
-
