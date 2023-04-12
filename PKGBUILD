@@ -67,7 +67,7 @@ build() {
     cd "${srcdir}/${pkgname}"
     rm -rf "${srcdir}/build"
     meson --prefix=/usr "${srcdir}/build"
-    meson configure -Dexperimental=true build # necessary for wlr/workspaces to be loaded
+    meson configure -Dexperimental=true "${srcdir}/build" # necessary for wlr/workspaces to be loaded
     ninja -C "${srcdir}/build"
 }
 
