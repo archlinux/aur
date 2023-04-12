@@ -2,7 +2,7 @@
 
 pkgname=python-django-q
 pkgver=1.3.9
-pkgrel=6
+pkgrel=7
 pkgdesc='A multiprocessing distributed task queue for Django'
 arch=(any)
 url=https://github.com/Koed00/django-q
@@ -44,6 +44,7 @@ b2sums=('SKIP'
 prepare() {
   cd django-q
   patch -Np1 -i ../python-django-q-pep517.patch
+  sed 's/poetry_core>=1.0.0/poetry-core/' -i pyproject.toml
 }
 
 pkgver() {
