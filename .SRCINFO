@@ -1,7 +1,7 @@
 pkgbase = gcc11
 	pkgdesc = The GNU Compiler Collection (11.x.x)
 	pkgver = 11.3.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://gcc.gnu.org
 	arch = x86_64
 	license = GPL
@@ -12,14 +12,13 @@ pkgbase = gcc11
 	checkdepends = inetutils
 	makedepends = binutils
 	makedepends = doxygen
-	makedepends = git
 	makedepends = libmpc
 	makedepends = python
-	makedepends = libisl.so
 	options = !emptydirs
 	options = !lto
-	source = https://sourceware.org/pub/gcc/releases/gcc-11.3.0/gcc-11.3.0.tar.xz
-	source = https://sourceware.org/pub/gcc/releases/gcc-11.3.0/gcc-11.3.0.tar.xz.sig
+	source = https://ftp.gnu.org/gnu/gcc/gcc-11.3.0/gcc-11.3.0.tar.xz
+	source = https://ftp.gnu.org/gnu/gcc/gcc-11.3.0/gcc-11.3.0.tar.xz.sig
+	source = https://gcc.gnu.org/pub/gcc/infrastructure/isl-0.24.tar.bz2
 	source = c89
 	source = c99
 	validpgpkeys = F3691687D867B81B51CE07D9BBE43771487328A9
@@ -28,26 +27,33 @@ pkgbase = gcc11
 	validpgpkeys = D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62
 	b2sums = 7e562d25446ca4ab9fe8cdb714866f66aba3744d78bf84f31bfb097c1a981e4c7f990cb1e6bcfec5ae6671836a4984e2b70eb8fed81dcef5e244f88da8623469
 	b2sums = SKIP
+	b2sums = 88a178dad5fe9c33be5ec5fe4ac9abc0e075a86cff9184f75cedb7c47de67ce3be273bd0db72286ba0382f4016e9d74855ead798ad7bccb015b853931731828e
 	b2sums = 2c64090b879d6faea7f20095eff1b9bd6a09fe3b15b3890783d3715171678ab62d32c91af683b878746fb14441dbe09768474417840f96a561443415f76afb63
 	b2sums = 3cf318835b9833ac7c5d3a6026fff8b4f18b098e18c9649d00e32273688ff06ec3af41f0d0aee9d2261725e0ff08f47a224ccfe5ebb06646aaf318ff8ac9a0d1
 
 pkgname = gcc11
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends (11.x.x)
-	depends = gcc11-libs=11.3.0-5
+	depends = gcc11-libs=11.3.0-6
 	depends = binutils>=2.28
 	depends = libmpc
 	depends = zstd
-	depends = libisl.so
+	provides = gcc
 	options = !emptydirs
 	options = staticlibs
 
 pkgname = gcc11-libs
 	pkgdesc = Runtime libraries shipped by GCC (11.x.x)
 	depends = glibc>=2.27
+	provides = gcc-libs
+	provides = libgfortran.so
+	provides = libubsan.so
+	provides = libasan.so
+	provides = libtsan.so
+	provides = liblsan.so
 	options = !emptydirs
 	options = !strip
 
 pkgname = gcc11-fortran
 	pkgdesc = Fortran front-end for GCC (11.x.x)
-	depends = gcc11=11.3.0-5
-	depends = libisl.so
+	depends = gcc11=11.3.0-6
+	provides = gcc-fortran
