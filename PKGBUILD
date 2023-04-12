@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=openexr-git
-pkgver=3.0.0.beta.r7.ge46ac0a7
+pkgver=3.0.0.beta.r280.gfc7f898e
 pkgrel=1
 pkgdesc="Reference implementation of the EXR format"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'zlib')
 makedepends=('git' 'cmake' 'boost' 'chrpath' 'freeglut' 'python' 'python-numpy')
 optdepends=('boost-libs: python support'
             'python: python support')
-provides=('openexr')
+provides=("openexr=$pkgver")
 conflicts=('openexr' 'ilmbase')
 replaces=('ilmbase')
 source=("git+https://github.com/AcademySoftwareFoundation/openexr.git")

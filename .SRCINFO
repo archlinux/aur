@@ -1,6 +1,6 @@
 pkgbase = openexr-git
 	pkgdesc = Reference implementation of the EXR format
-	pkgver = 3.0.0.beta.r7.ge46ac0a7
+	pkgver = 3.0.0.beta.r280.gfc7f898e
 	pkgrel = 1
 	url = https://www.openexr.com/
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = openexr-git
 	depends = zlib
 	optdepends = boost-libs: python support
 	optdepends = python: python support
-	provides = openexr
+	provides = openexr=3.0.0.beta.r280.gfc7f898e
 	conflicts = openexr
 	conflicts = ilmbase
 	replaces = ilmbase
@@ -26,4 +26,3 @@ pkgbase = openexr-git
 	sha256sums = SKIP
 
 pkgname = openexr-git
-
