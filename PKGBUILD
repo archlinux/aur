@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=nettle-git
-pkgver=3.7.r2.g62dc4ce4
+pkgver=3.8.r111.g76ad2fa6
 pkgrel=1
 pkgdesc="A cryptographic library that is designed to fit easily in any context"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.lysator.liu.se/~nisse/nettle/"
 license=('GPL' 'LGPL')
 depends=('glibc' 'gmp')
 makedepends=('git')
-provides=('nettle' 'libhogweed.so' 'libnettle.so')
+provides=("nettle=$pkgver" 'libhogweed.so' 'libnettle.so')
 conflicts=('nettle')
 source=("git+https://git.lysator.liu.se/nettle/nettle.git")
 sha256sums=('SKIP')
