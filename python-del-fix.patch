@@ -1,0 +1,12 @@
+diff -aur d-feet-0.3.16.old/src/dfeet/bus_watch.py d-feet-0.3.16/src/dfeet/bus_watch.py
+--- d-feet-0.3.16.old/src/dfeet/bus_watch.py	2023-04-12 17:39:11.358506803 +0200
++++ d-feet-0.3.16/src/dfeet/bus_watch.py	2023-04-12 17:47:58.276821099 +0200
+@@ -189,7 +189,7 @@
+             self.box_bus.remove(childs[-1])
+ 
+         try:
+-            del(self.__addr_info)
++            del self.__addr_info
+         except AttributeError:
+             pass
+ 
