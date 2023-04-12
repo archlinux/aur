@@ -1,0 +1,14 @@
+[Unit]
+Description=The simplest possible implementation of a syslog server written in Rust
+Documentation=https://github.com/ogarcia/rlog/blob/master/README.md
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+Restart=always
+LogsDirectory=rlog
+ExecStart=/usr/bin/rlog
+
+[Install]
+WantedBy=multi-user.target

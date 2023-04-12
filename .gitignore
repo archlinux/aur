@@ -1,0 +1,5 @@
+*
+!.gitignore
+!PKGBUILD
+!rlog.service
+!.SRCINFO
