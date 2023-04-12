@@ -1,5 +1,5 @@
 pkgname=mingw-w64-coin-or-cbc
-pkgver=2.10.8
+pkgver=2.10.9
 pkgrel=1
 pkgdesc="COIN-OR branch-and-cut mixed integer programming solver (mingw-w64)"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('mingw-w64-coin-or-cgl' 'mingw-w64-coin-or-asl')
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!buildflags' '!strip')
 source=(https://github.com/coin-or/Cbc/archive/refs/tags/releases/$pkgver.tar.gz)
-sha256sums=('8525abb541ee1b8e6ff03b00411b66e98bbc58f95be1aefd49d2bca571be2eaf')
+sha256sums=('96d02593b01fd1460d421f002734384e4eb1e93ebe1fb3570dc2b7600f20a27e')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
