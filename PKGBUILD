@@ -1,7 +1,7 @@
 # Maintainer: Wisker <TheWisker@protonmail.com>
 pkgname=web-greeter-theme-shikai
 pkgbase=web-greeter-theme-shikai
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=4
 pkgdesc="Modern lightdm webkit2 theme"
 arch=('any')
