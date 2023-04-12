@@ -1,5 +1,5 @@
 _pkgname=rime-ice
-pkgname=rime-ice-git
+pkgname=rime-ice
 pkgver=2023_04_11T15_24_25Z
 pkgrel=1
 pkgdesc="Rime 配置：雾凇拼音 | 长期维护的简体词库"
