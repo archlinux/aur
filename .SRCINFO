@@ -1,7 +1,7 @@
 pkgbase = decoder
 	pkgdesc = Scan and Generate QR Codes
-	pkgver = 0.3.1
-	pkgrel = 3
+	pkgver = 0.3.3
+	pkgrel = 1
 	url = https://gitlab.gnome.org/World/decoder
 	arch = x86_64
 	arch = aarch64
@@ -10,14 +10,14 @@ pkgbase = decoder
 	makedepends = meson
 	makedepends = cargo
 	makedepends = clang
-	depends = libadwaita>=1:1.2.0
+	depends = libadwaita
 	depends = gstreamer
 	depends = gst-plugins-base
 	depends = gst-plugins-bad
 	depends = gst-plugins-good
 	depends = pipewire
 	depends = zbar
-	source = https://gitlab.gnome.org/World/decoder/-/archive/0.3.1/decoder-0.3.1.tar.gz
-	b2sums = d7ff26bd61ced48862ce26955a7989644222c4b2cc101e4ad5f5fec54cffad73c7f34401adc8cd4762eab2b1335985c97e398742c22d222309d24b22c25a9098
+	source = https://gitlab.gnome.org/World/decoder/-/archive/0.3.3/decoder-0.3.3.tar.gz
+	b2sums = f8913bcc95d6e85ece7edbe10d603b7342cebc4277d3e21a1f7e8b346862b5731b0184eb236d0c0919b3a0eb03112742ed955bd2ef66f7433bc52b79c81af4d9
 
 pkgname = decoder

@@ -2,17 +2,17 @@
 # ex-Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=decoder
-pkgver=0.3.1
-pkgrel=3
+pkgver=0.3.3
+pkgrel=1
 pkgdesc='Scan and Generate QR Codes'
 arch=('x86_64' 'aarch64')
 url="https://gitlab.gnome.org/World/decoder"
 license=('GPL3')
-depends=('libadwaita>=1:1.2.0' 'gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gst-plugins-good' 'pipewire' 'zbar')
+depends=('libadwaita' 'gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gst-plugins-good' 'pipewire' 'zbar')
 makedepends=('meson' 'cargo' 'clang')
 checkdepends=('appstream-glib')
 source=($url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('d7ff26bd61ced48862ce26955a7989644222c4b2cc101e4ad5f5fec54cffad73c7f34401adc8cd4762eab2b1335985c97e398742c22d222309d24b22c25a9098')
+b2sums=('f8913bcc95d6e85ece7edbe10d603b7342cebc4277d3e21a1f7e8b346862b5731b0184eb236d0c0919b3a0eb03112742ed955bd2ef66f7433bc52b79c81af4d9')
 
 build() {
   arch-meson --buildtype release "$pkgname-$pkgver" build
