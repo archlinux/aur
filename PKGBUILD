@@ -12,19 +12,26 @@ license=('GPL')
 depends=('ncurses')
 makedepends=('gcc')
 source=("${url}/${pkgname}-${pkgver}.tar.gz")
+md5sums=('d2a21986a4d4a23820ff4862e96d061d')
 sha256sums=('3142dd3ed8b7c75febfe1dab2fb3437e2a41948a4726da0657fb4057450ffd00')
+
+prepare() {
+  set -u
+  cd "${pkgname}-${pkgver}/src"
+  sed -e '/^CCOPTS =/ s:$: -fcommon:g' -i 'Rules.make'
+  set +u
+}
 
 build() {
   set -u
-  cd "${srcdir}/${pkgname}-${pkgver}/src"
-  make -s -j "$(nproc)"
+  cd "${pkgname}-${pkgver}/src"
+  nice make -s
   set +u
 }
 
 package() {
   set -u
-  #install -dm755 "${pkgdir}/usr"/{bin,share/man/{man1,man5}}
-  cd "${srcdir}/${pkgname}-${pkgver}/src"
+  cd "${pkgname}-${pkgver}/src"
 
   # binaries
   install -Dpm755 vche* -t "${pkgdir}/usr/bin/"
