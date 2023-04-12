@@ -1,7 +1,7 @@
 pkgbase = n-m3u8dl-re-git
 	pkgdesc = Cross-Platform, beautiful and powerful stream downloader for DASH/HLS.
-	pkgver = 0.1.5.3.beta.r0.g7014cba
-	pkgrel = 0
+	pkgver = 0.1.6.beta.r0.ge3c1eea
+	pkgrel = 1
 	url = https://github.com/nilaoda/N_m3u8DL-RE
 	arch = x86_64
 	arch = aarch64
