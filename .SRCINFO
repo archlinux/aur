@@ -1,0 +1,14 @@
+pkgbase = semaphore
+	pkgdesc = Accessible, simple and fast web client for Mastodon (pinafore fork)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/NickColley/semaphore
+	arch = any
+	license = GPL3
+	makedepends = yarn
+	makedepends = nodejs
+	options = !emptydirs
+	source = semaphore-1.0.0.tar.gz::https://github.com/NickColley/semaphore/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = e4c616a9d68edb7a9912b6bb523eb1e01fcfb697efa0058b682994cbf66a835d
+
+pkgname = semaphore
