@@ -1,0 +1,17 @@
+pkgbase = atari800-a8cas-custom
+	pkgdesc = An emulator of Atari 800/800XL/130XE/5200 with support for several turbo tape systems from liba8cas library
+	pkgver = 4.2.0
+	pkgrel = 1
+	url = http://www.arus.net.pl/FUJI/a8cas-util
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	depends = libsndfile
+	depends = sdl
+	provides = liba8cas-custom=1.5.3
+	source = http://www.arus.net.pl/FUJI/a8cas-util/uploads/files/liba8cas-custom-1.5.3.tgz
+	source = http://www.arus.net.pl/FUJI/a8cas-util/uploads/files/atari800-a8cas-custom-4.2.0.tgz
+	md5sums = aecf058429f0d3dcbf116c9acad3c6a2
+	md5sums = b42fe6b48f9c371d6e762e2ff161a7fd
+
+pkgname = atari800-a8cas-custom
