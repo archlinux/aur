@@ -2,11 +2,11 @@
 
 _pkgname=gamescope
 pkgname=${_pkgname}-git
-pkgver=3.11.51.r105.gc2e9b5f
-pkgrel=2
+pkgver=3.11.52.beta6.r28.g1310315
+pkgrel=1
 pkgdesc="Micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
-url="https://github.com/Plagman/gamescope"
+url="https://github.com/ValveSoftware/gamescope"
 license=("custom:BSD-2-Clause")
 depends=(
     # gamescope
@@ -20,7 +20,7 @@ makedepends=("git" "meson" "ninja" "patch" "vulkan-headers" "glslang" "wayland-p
 )
 provides=($_pkgname "steamcompmgr")
 conflicts=($_pkgname "steamcompmgr")
-source=("$_pkgname::git+https://github.com/Plagman/gamescope.git"
+source=("$_pkgname::git+https://github.com/ValveSoftware/gamescope.git"
         "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
         "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
         "git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git"
