@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=numactl-git
-pkgver=2.0.12.r6.gbad479d
+pkgver=2.0.16.r21.g693fee1
 pkgrel=1
 pkgdesc="Simple NUMA policy support"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/numactl/numactl"
 license=('GPL' 'LGPL')
 depends=('glibc')
 makedepends=('git')
-provides=('numactl')
+provides=("numactl=$pkgver")
 conflicts=('numactl')
 options=('staticlibs')
 source=("git+https://github.com/numactl/numactl.git")
@@ -26,7 +26,8 @@ build() {
   cd "numactl"
 
   ./autogen.sh
-  ./configure --prefix="/usr"
+  ./configure \
+    --prefix="/usr"
   make
 }
 
