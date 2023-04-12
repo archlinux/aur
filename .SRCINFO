@@ -1,6 +1,6 @@
 pkgbase = mercurial-hg
 	pkgdesc = Distributed source control management tool
-	pkgver = r47463.5fa083a5ff04
+	pkgver = r50391.9fa3cda7449e
 	pkgrel = 1
 	url = https://www.mercurial-scm.org/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = mercurial-hg
 	depends = glibc
 	depends = python
 	optdepends = tk: for the hgk GUI
-	provides = mercurial
+	provides = mercurial=r50391.9fa3cda7449e
 	conflicts = mercurial
 	backup = etc/mercurial/hgrc
 	source = hg+https://www.mercurial-scm.org/repo/hg
