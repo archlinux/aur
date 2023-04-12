@@ -1,0 +1,14 @@
+pkgbase = python2-pillow-5.1.0
+	pkgdesc = Python Imaging Library (Fork)
+	pkgver = 5.1.0
+	pkgrel = 1
+	url = https://python-pillow.org
+	arch = any
+	license = custom:Other/Proprietary License
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://files.pythonhosted.org/packages/source/P/Pillow/Pillow-5.1.0.tar.gz
+	sha256sums = cee9bc75bff455d317b6947081df0824a8f118de2786dc3d74a3503fd631f4ef
+
+pkgname = python2-pillow-5.1.0
+	depends = python2
