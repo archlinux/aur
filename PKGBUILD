@@ -1,6 +1,6 @@
 # Maintainer: DanCodes <dan@dancodes.online>
 pkgname=parrot-git
-pkgver="1.0.4.2a66762"
+pkgver="1.0.4"
 pkgrel=1
 pkgdesc="GUI wrapper in Tauri for the Arch Linux package manager, pacman using the wrapper paru. Designed to be intuitive, powerful and user-friendly"
 arch=('x86_64')
@@ -9,15 +9,20 @@ license=('MIT')
 depends=('gtk3' 'openssl' 'webkit2gtk')
 makedepends=('cargo' 'node-gyp' 'yarn')
 options=('!lto')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/dan-online/parrot/archive/2a66762fc679d05ea9ff653e4c6e3b7ae7ea727f.tar.gz")
-sha256sums=('b5f4ff3b8422fd628c70066d289d14e97ff78ccd8c342a2594e116288447a90d')
+source=("git+https://github.com/dan-online/parrot.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd parrot
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
-  cd "parrot-2a66762fc679d05ea9ff653e4c6e3b7ae7ea727f"
+  cd ${pkgname%-git}
   export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
   yarn install
 
-  sed -i "s/\"productName\": \"Parrot\"/\"productName\": \"Parrot (2a66762)\"/" "./src-tauri/tauri.conf.json"
+  sed -i "s/\"productName\": \"Parrot\"/\"productName\": \"Parrot (1.0.4)\"/" "./src-tauri/tauri.conf.json"
 
   cd src-tauri
   export RUSTUP_TOOLCHAIN=stable
@@ -25,24 +30,27 @@ prepare() {
 }
 
 build() {
-  cd "parrot-2a66762fc679d05ea9ff653e4c6e3b7ae7ea727f"
+  cd ${pkgname%-git}
   export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
   export RUSTUP_TOOLCHAIN=stable
   yarn tauri build
 }
 
 package() {
-  cd "parrot-2a66762fc679d05ea9ff653e4c6e3b7ae7ea727f"
+  cd ${pkgname%-git}
+
+  pkgversion=`sed -n 's/.*"version": "\(.*\)".*/\1/p' package.json`
+  pkgver_dash="${pkgver//./-}"
   
-  install -Dm755 "src-tauri/target/release/parrot-2a66762" -t "$pkgdir/usr/bin/"
+  install -Dm755 "src-tauri/target/release/${pkgname%-git}-${pkgver_dash}" -t "$pkgdir/usr/bin/"
 
   for i in 32x32 128x128 128x128@2x; do
-    install -Dm644 src-tauri/icons/${i}.png       "$pkgdir/usr/share/icons/hicolor/${i}/apps/parrot.png"
+    install -Dm644 src-tauri/icons/${i}.png       "$pkgdir/usr/share/icons/hicolor/${i}/apps/${pkgname%-git}.png"
   done
-  install -Dm644 "src-tauri/target/release/bundle/deb/parrot-2a66762_1.0.4_amd64/data/usr/share/icons/hicolor/256x256@2/apps/parrot-2a66762.png" -t     "$pkgdir/usr/share/icons/hicolor/256x256@2/apps/parrot.png"
-  install -Dm644 src-tauri/icons/icon.png     "$pkgdir/usr/share/icons/hicolor/512x512/apps/parrot.png"
+  install -Dm644 "src-tauri/target/release/bundle/deb/${pkgname%-git}-${pkgver_dash}_${pkgversion}_amd64/data/usr/share/icons/hicolor/256x256@2/apps/${pkgname%-git}-${pkgver_dash}.png" -t     "$pkgdir/usr/share/icons/hicolor/256x256@2/apps/${pkgname%-git}.png"
+  install -Dm644 src-tauri/icons/icon.png     "$pkgdir/usr/share/icons/hicolor/512x512/apps/${pkgname%-git}.png"
 
-  install -Dm644 "src-tauri/target/release/bundle/deb/parrot-2a66762_1.0.4_amd64/data/usr/share/applications/parrot-2a66762.desktop" -t     "$pkgdir/usr/share/applications/"
+  install -Dm644 "src-tauri/target/release/bundle/deb/${pkgname%-git}-${pkgver_dash}_${pkgversion}_amd64/data/usr/share/applications/${pkgname%-git}-${pkgver_dash}.desktop" -t     "$pkgdir/usr/share/applications/"
 
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/parrot-2a66762/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}-${pkgver_dash}/"
 }
