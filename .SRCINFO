@@ -1,6 +1,6 @@
 pkgbase = qt5-serialport-git
 	pkgdesc = Qt5 serial port module
-	pkgver = 5.15.1.r1.gf611325
+	pkgver = 5.15.9.r0.g7fb308e
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
@@ -11,10 +11,9 @@ pkgbase = qt5-serialport-git
 	license = custom
 	makedepends = git
 	depends = qt5-base
-	provides = qt5-serialport
+	provides = qt5-serialport=5.15.9.r0.g7fb308e
 	conflicts = qt5-serialport
 	source = git+https://code.qt.io/qt/qtserialport.git#branch=5.15
 	sha256sums = SKIP
 
 pkgname = qt5-serialport-git
-
