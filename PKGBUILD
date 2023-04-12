@@ -2,7 +2,7 @@
 # Maintained at https://github.com/rixx/pkgbuilds, feel free to submit patches
 
 pkgname=python311
-pkgver=3.11.2
+pkgver=3.11.3
 pkgrel=1
 _pybasever=3.11
 _pymajver=3
@@ -14,7 +14,7 @@ depends=('bzip2' 'expat' 'gdbm' 'libffi' 'libnsl' 'libxcrypt' 'openssl' 'zlib')
 makedepends=('bluez-libs' 'mpdecimal' 'gdb')
 optdepends=('sqlite' 'mpdecimal: for decimal' 'xz: for lzma' 'tk: for tkinter')
 source=(https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz)
-sha256sums=('29e4b8f5f1658542a8c13e2dd277358c9c48f2b2f7318652ef1675e402b9d2af')
+sha256sums=('8a5db99c961a7ecf27c75956189c9602c968751f11dbeae2b900dbff1c085b5e')
 validpgpkeys=(
     '0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D'  # Ned Deily (Python release signing key) <nad@python.org>
     'E3FF2839C048B25C084DEBE9B26995E310250568'  # Łukasz Langa (GPG langa.pl) <lukasz@langa.pl>
