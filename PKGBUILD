@@ -8,8 +8,8 @@ arch=(x86_64)
 url="https://www.khronos.org/vulkan/"
 pkgdesc="Vulkan Utilities and Tools (32-bit)"
 license=('custom')
-depends=('lib32-libx11' 'lib32-wayland' 'libvulkan.so')
-makedepends=('cmake' 'python' 'vulkan-headers' 'lib32-vulkan-icd-loader' 'wayland-protocols' 'glslang' 'spirv-tools')
+depends=('lib32-libx11' 'lib32-wayland' 'lib32-vulkan-icd-loader')
+makedepends=('cmake' 'python' 'vulkan-headers' 'wayland-protocols' 'glslang' 'spirv-tools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/KhronosGroup/Vulkan-Tools/archive/v${pkgver}.tar.gz")
 sha256sums=('1aeefae204d5f750d7d46adba53bbfed5ac5b663fdefdcca57ef1bf2b8b07aef')
 
