@@ -16,7 +16,7 @@
 
 set -u
 pkgname='ghostpdl'
-pkgver='10.0.0'
+pkgver='10.01.1'
 pkgrel='1'
 pkgdesc='Ghostscript RIP for PS, PDF, PCL-5, PCL-XL, SVG and XPS.'
 arch=('i686' 'x86_64')
@@ -28,8 +28,8 @@ depends=('ghostscript' 'glu' 'freeglut' 'libjpeg' 'libxt')
 _giturl="https://github.com/ArtifexSoftware/${pkgname}-downloads"
 _verwatch=("${_giturl}/releases.atom" '\s\+<title>Ghostscript/GhostPDL \([0-9\.]\+\)</title>.*' 'f')
 source=("${_giturl}/releases/download/gs${pkgver//./}/${pkgname}-${pkgver}.tar.xz")
-md5sums=('745160b588456443c0dfc16478c5ec69')
-sha256sums=('8f2b7941f60df694b4f5c029b739007f7c4e0d43858471ae481e319a967d5d8b')
+md5sums=('53ed9b26d99ef4bff3b6c7fd5c59e30b')
+sha256sums=('e6a6c39a36e6b6ffe4960f4e2bfb85420ed157ac14a202ccdd0df4e4e2a7e392')
 
 prepare() {
   set -u
