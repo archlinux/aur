@@ -1,7 +1,7 @@
 pkgbase = swfdec-mozilla-xembed
 	pkgdesc = Simplified version of swfdec-mozilla that works in Chromium
 	pkgver = 0.9.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://swfdec.freedesktop.org
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = swfdec-mozilla-xembed
 	makedepends = nspr
 	depends = swfdec>=0.9.2
 	source = swfdec-mozilla-xembed-0.9.2.tar.bz2
-	md5sums = 7920725656db8c3b1ee713300586724c
+	sha256sums = 10158b51e723585de5c0bcd7a2f339d391cdf60869beb293d891635e41d5581a
 
 pkgname = swfdec-mozilla-xembed
-

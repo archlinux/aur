@@ -2,7 +2,7 @@
 
 pkgname=swfdec-mozilla-xembed
 pkgver=0.9.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Simplified version of swfdec-mozilla that works in Chromium"
 arch=('i686' 'x86_64')
 url="http://swfdec.freedesktop.org"
@@ -13,7 +13,7 @@ source=($pkgname-$pkgver.tar.bz2)
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
-  make
+  CFLAGS="-fPIC" make
 }
 
 package() {
@@ -21,4 +21,4 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 
-md5sums=('7920725656db8c3b1ee713300586724c')
+sha256sums=('10158b51e723585de5c0bcd7a2f339d391cdf60869beb293d891635e41d5581a')
