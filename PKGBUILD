@@ -11,7 +11,7 @@ makedepends=('git' 'premake')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 source=(
-    "git+https://github.com/td512/re3.git"
+    "re3.bundle::https://archive.org/download/github.com-GTAmodding-re3_-_2021-09-06_14-11-00/GTAmodding-re3_-_2021-09-06_14-11-00.bundle"
     "git+https://github.com/aap/librw.git"
     "git+https://github.com/xiph/ogg.git"
     "git+https://github.com/xiph/opus.git"
@@ -20,7 +20,7 @@ source=(
     're3-launcher'
     're3.desktop'
 )
-sha256sums=('SKIP'
+sha256sums=('035cb5f59811ae086510f02bd3817eaf43933c9723e52dba60807f48c4e9d9c3'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -35,6 +35,7 @@ pkgver() {
 }
 
 prepare() {
+  git clone re3.bundle "$srcdir/$_pkgbase"
   cd "$srcdir/$_pkgbase"
   git submodule init
   for submod in librw ogg opus opusfile
