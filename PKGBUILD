@@ -1,7 +1,7 @@
 # Maintainer: Bruno Ancona <bruno at powerball253 dot com>
 
 pkgname=waybar-hyprland
-pkgver=0.9.16
+pkgver=0.9.17
 pkgrel=1
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors, with workspaces support for Hyprland'
 arch=('x86_64')
@@ -49,7 +49,7 @@ optdepends=(
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/Alexays/Waybar/archive/$pkgver.tar.gz"
 )
-sha256sums=('37ebd7b10e32e802afe9236ea9374fabb77b1abb2c203ca6173b27dc03128096')
+sha256sums=('da6f448be343a593ee092486fb4744502aa1e6ad85f4eccc3670d0b84a2a4266')
 
 build() {
     cd "${srcdir}/Waybar-${pkgver}"

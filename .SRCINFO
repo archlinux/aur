@@ -1,6 +1,6 @@
 pkgbase = waybar-hyprland
 	pkgdesc = Highly customizable Wayland bar for Sway and Wlroots based compositors, with workspaces support for Hyprland
-	pkgver = 0.9.16
+	pkgver = 0.9.17
 	pkgrel = 1
 	url = https://github.com/Alexays/Waybar/
 	arch = x86_64
@@ -37,7 +37,7 @@ pkgbase = waybar-hyprland
 	conflicts = waybar
 	backup = etc/xdg/waybar/config
 	backup = etc/xdg/waybar/style.css
-	source = waybar-hyprland-0.9.16.tar.gz::https://github.com/Alexays/Waybar/archive/0.9.16.tar.gz
-	sha256sums = 37ebd7b10e32e802afe9236ea9374fabb77b1abb2c203ca6173b27dc03128096
+	source = waybar-hyprland-0.9.17.tar.gz::https://github.com/Alexays/Waybar/archive/0.9.17.tar.gz
+	sha256sums = da6f448be343a593ee092486fb4744502aa1e6ad85f4eccc3670d0b84a2a4266
 
 pkgname = waybar-hyprland
