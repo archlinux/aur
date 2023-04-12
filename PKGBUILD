@@ -1,15 +1,20 @@
 # Maintainer: thorko contact@thorko.de
 pkgname=promtail-bin
 pkgver=2.8.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Loki: like Prometheus, but for logs."
 arch=('x86_64')
 url='https://github.com/grafana/loki'
 license=('AGPL-3.0-only')
-source_x86_64=("https://github.com/grafana/loki/releases/download/v${pkgver}/promtail-linux-amd64.zip")
-sha256sums_x86_64=('ff5b819e66706d2b7d5fc3ef425179e8364650093835e8819a90ad828b6d2043')
+makedepends=('git' 'go' 'make')
+source=("${pkgname}::git+https://github.com/grafana/loki.git")
+sha256sums=('SKIP')
 
+build() {
+  cd "$srcdir/$pkgname"
+  make PROMTAIL_JOURNAL_ENABLED=true promtail
+}
 
 package() {
-    install -Dm0755 "promtail-linux-amd64" "${pkgdir}/usr/bin/promtail"
+    install -Dm0755 "$srcdir/$pkgname/clients/cmd/promtail/promtail" "${pkgdir}/usr/bin/promtail"
 }
