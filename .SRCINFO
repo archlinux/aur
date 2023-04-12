@@ -1,6 +1,6 @@
 pkgbase = catchme-git
 	pkgdesc = mpc-like cli for mpv with no runtime dependencies
-	pkgver = v1.0.r12.ga00618c
+	pkgver = v1.0.r58.g6bbe98a
 	pkgrel = 1
 	url = https://gitlab.com/kurenaiz/catchme
 	arch = x86_64
