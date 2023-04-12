@@ -1,6 +1,6 @@
 pkgbase = patch-git
 	pkgdesc = A utility to apply patch files to original sources
-	pkgver = 2.7.5.r17.g817d7d1
+	pkgver = 2.7.6.r29.gc835ecc
 	pkgrel = 1
 	url = https://www.gnu.org/software/patch/patch.html
 	arch = i686
@@ -10,10 +10,9 @@ pkgbase = patch-git
 	makedepends = gettext
 	depends = glibc
 	depends = attr
-	provides = patch
+	provides = patch=2.7.6.r29.gc835ecc
 	conflicts = patch
 	source = git+https://git.savannah.gnu.org/git/patch.git
 	sha256sums = SKIP
 
 pkgname = patch-git
-
