@@ -1,0 +1,14 @@
+pkgbase = survivor
+	pkgdesc = tool set for simulating/evaluating structural variations
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/fritzsedlazeck/SURVIVOR
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	source = survivor-1.0.6.tar.gz::https://github.com/fritzsedlazeck/SURVIVOR/archive/refs/tags/v1.0.6.tar.gz
+	sha256sums = 506dab88a18bbf063fbab72097ae4e1be393b5e5dd632c30a247845c602d7c6a
+
+pkgname = survivor
