@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+#
 # Maintainer: David Strawn <isomarcte at gmail dot com>
 # Contributor: Evgeniy Alekseev <arcanis at archlinux dot org>
 # Contributor: Sergej Pupykin <pupykin.s+arch at gmail dot com>
@@ -8,7 +10,7 @@ pkgbase=scala
 pkgname=(scala scala-docs scala-sources)
 pkgver=2.13.10
 # shellcheck disable=SC2034
-pkgrel=1
+pkgrel=2
 pkgdesc='A Java-interoperable language with object-oriented and functional features'
 # shellcheck disable=SC2034
 arch=('any')
@@ -17,7 +19,7 @@ url='https://www.scala-lang.org'
 # shellcheck disable=SC2034
 license=('Apache')
 # shellcheck disable=SC2034
-makedepends=('git' 'sbt')
+makedepends=('git' 'sbt' 'jdk8-openjdk')
 # shellcheck disable=SC2034
 source=("scala-${pkgver}.tar.gz::https://github.com/scala/scala/archive/v${pkgver}.tar.gz"
         "scala-docs-${pkgver}.tar.xz::https://www.scala-lang.org/files/archive/scala-docs-${pkgver}.txz")
@@ -31,11 +33,26 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}" || exit 1
+
+  ORIGINAL_PATH="${PATH:?}"
+  JDK8_BIN_PATH='/usr/lib/jvm/java-8-openjdk/bin'
+
+  if [ -d "${JDK8_BIN_PATH:?}" ]
+  then
+      # Force compilation with jdk8. This is because if it compiles
+      # with a jdk > 8, Scala's type inference on certain calls to
+      # java.nio classes can infer a more specific method type which
+      # doesn't exist in jdk 8.
+      export PATH="${JDK8_BIN_PATH:?}:${PATH:?}"
+  fi
+
   sbt dist/mkPack packageSrc packageDoc
+
+  PATH="${ORIGINAL_PATH:?}"
 }
 
 package_scala() {
-  depends=('java-runtime>=8')
+  depends=('java-environment')
   optdepends=('scala-docs'
               'scala-sources'
               'graphviz: generate diagrams')
