@@ -1,17 +1,16 @@
 pkgbase = openresolv-git
 	pkgdesc = The DNS management framework
-	pkgver = 3.9.0.r7.g133d6b3
+	pkgver = 3.12.0.r5.g24d2882
 	pkgrel = 1
 	url = https://roy.marples.name/projects/openresolv
 	arch = any
 	license = BSD
 	makedepends = git
 	depends = sh
-	provides = openresolv
+	provides = openresolv=3.12.0.r5.g24d2882
 	conflicts = openresolv
 	backup = etc/resolvconf.conf
-	source = git+https://roy.marples.name/git/openresolv.git
+	source = git+https://github.com/NetworkConfiguration/openresolv.git
 	sha256sums = SKIP
 
 pkgname = openresolv-git
-
