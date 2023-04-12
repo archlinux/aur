@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=pugixml-git
-pkgver=1.10.r52.gc4bae8d
+pkgver=1.13.r16.ge383ce5
 pkgrel=1
 pkgdesc="Light-weight, simple and fast XML parser for C++"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://pugixml.org/"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('git' 'cmake')
-provides=('pugixml')
+provides=("pugixml=$pkgver")
 conflicts=('pugixml')
 source=("git+https://github.com/zeux/pugixml.git")
 sha256sums=('SKIP')
