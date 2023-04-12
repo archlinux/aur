@@ -1,0 +1,12 @@
+pkgbase = parrot-bin
+	pkgdesc = null
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = 
+	depends = gtk3
+	depends = webkit2gtk
+	source = https://github.com/dan-online/parrot/releases/download/1.0.0/parrot_1.0.0_amd64.deb
+	sha512sums = SKIP
+
+pkgname = parrot-bin
