@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=minimap2-git
-pkgver=2.17.r46.gc9874e2
+pkgver=2.24.r39.g5e72423
 pkgrel=1
 pkgdesc="Aligner for genomic and spliced nucleotide sequences"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://lh3.github.io/minimap2/"
 license=('MIT')
 depends=('glibc' 'zlib')
 makedepends=('git')
-provides=('minimap2')
+provides=("minimap2=$pkgver")
 conflicts=('minimap2')
 source=("git+https://github.com/lh3/minimap2.git")
 sha256sums=('SKIP')

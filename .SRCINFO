@@ -1,6 +1,6 @@
 pkgbase = minimap2-git
 	pkgdesc = Aligner for genomic and spliced nucleotide sequences
-	pkgver = 2.17.r46.gc9874e2
+	pkgver = 2.24.r39.g5e72423
 	pkgrel = 1
 	url = https://lh3.github.io/minimap2/
 	arch = i686
@@ -9,10 +9,9 @@ pkgbase = minimap2-git
 	makedepends = git
 	depends = glibc
 	depends = zlib
-	provides = minimap2
+	provides = minimap2=2.24.r39.g5e72423
 	conflicts = minimap2
 	source = git+https://github.com/lh3/minimap2.git
 	sha256sums = SKIP
 
 pkgname = minimap2-git
-
