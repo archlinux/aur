@@ -1,4 +1,4 @@
-pkgbase = dmscripts
+pkgbase = dmscripts-git
 	pkgdesc = A collection of dmenu scripts
 	pkgver = 1.0.r485.343ed73
 	pkgrel = 1
@@ -41,4 +41,4 @@ pkgbase = dmscripts
 	source = git+https://gitlab.com/dwt1/dmscripts.git
 	md5sums = SKIP
 
-pkgname = dmscripts
+pkgname = dmscripts-git
