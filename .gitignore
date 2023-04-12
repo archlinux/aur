@@ -1,1 +1,5 @@
-*
+# Ignore makepkg auto-generated stuff
+pkg/
+src/
+vgmtrans/
+*.pkg.tar.zst
