@@ -14,7 +14,8 @@ sha512sums=("SKIP")
 
 pkgver() {
   cd "${_pkgname}" &&
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf | git show --pretty=format:"%cI" | head -1 | awk -F "[+]" '{print $1"Z"}'
+
 }
 
 _default_bak=default_custom.yaml
