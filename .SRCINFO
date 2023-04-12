@@ -11,11 +11,12 @@ pkgbase = pocket-casts-linux
 	makedepends = python
 	depends = electron
 	depends = sh
+	provides = pocket-casts
 	source = pocket-casts-linux::git+https://github.com/fuadsaud/pocket-casts-linux.git#commit=3445a77e537ddc82e2f87ebaee037acb30812a79
 	source = pocket-casts-linux.sh
 	source = pocket-casts-linux.desktop
 	md5sums = SKIP
 	md5sums = 303f5119008d56097134fa314c6af06c
-	md5sums = 5eea4ff9f3214159c8e906d0035f9d80
+	md5sums = 7afa28814823fc89323c6f417dc62070
 
 pkgname = pocket-casts-linux

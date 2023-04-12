@@ -5,6 +5,7 @@ _electron=electron
 pkgname=pocket-casts-linux
 pkgver=1.4.0
 _commit=3445a77e537ddc82e2f87ebaee037acb30812a79
+provides=('pocket-casts')
 pkgrel=1
 pkgdesc="Electron wrapper around the Pocket Casts web app with support for MPRIS (media controls)"
 arch=('x86_64')
@@ -17,7 +18,7 @@ source=("${pkgname}::git+${url}.git#commit=${_commit}"
         "${pkgname}.desktop")
 md5sums=('SKIP'
          '303f5119008d56097134fa314c6af06c'
-         '5eea4ff9f3214159c8e906d0035f9d80')
+         '7afa28814823fc89323c6f417dc62070')
 
 prepare() {
 	cd "${srcdir}/${pkgname}"
@@ -67,6 +68,6 @@ package() {
 	install -vDm644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
 
 	install -vDm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-	install -vDm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-	sed -i "s/@ELECTRON@/${_electron}/" "${pkgdir}/usr/bin/${pkgname}"
+	install -vDm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/pocket-casts"
+	sed -i "s/@ELECTRON@/${_electron}/" "${pkgdir}/usr/bin/pocket-casts"
 }
