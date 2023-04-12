@@ -3,8 +3,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=('gdb-git' 'gdb-common-git')
-pkgver=114034.eb42b9d6f91
+pkgver=14.0.50.r114329.8cb6bcc3eed
 pkgrel=1
+epoch=1
 pkgdesc="The GNU Debugger from git"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/gdb/"
@@ -18,7 +19,11 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/gdb"
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+
+  _ver="$(cat gdb/version.in | cut -dD -f1)"
+  _rev="$(git rev-list --count HEAD)"
+  _hash="$(git rev-parse --short HEAD)"
+  printf '%s' "${_ver}r${_rev}.${_hash}"
 }
 
 build() {
@@ -53,9 +58,6 @@ package_gdb-git() {
   # install "custom" system gdbinit
   install -dm755 "$pkgdir"/etc/gdb
   touch "$pkgdir"/etc/gdb/gdbinit
-  
-  # comes from gdb-common
-  rm -r "$pkgdir/usr/share/gdb/"
 }
 
 package_gdb-common-git() {
