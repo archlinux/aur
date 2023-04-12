@@ -3,7 +3,7 @@
 _pkgname=vgmtrans
 pkgname=${_pkgname}-git
 # Use the latest commit's date and then the number of revisions using the same command as on line 19.
-pkgver=20210708.r966.156e8ae
+pkgver=20230326.r1142.aeea082
 pkgrel=1
 pkgdesc="Converter for sequenced videogame music"
 arch=("x86_64")
@@ -12,12 +12,15 @@ license=("ZLIB")
 depends=("qt6-base" "fluidsynth" "qt6-svg" "minizip")
 makedepends=("qt6-tools" "cmake" "git")
 optdepends=("qt6-wayland: Wayland support")
-source=("${_pkgname}::git+${url}")
-sha256sums=("SKIP")
+source=("${_pkgname}::git+${url}"
+	fix-header-import.patch)
+sha256sums=("SKIP"
+            "85caf04f1644abc66e87e5f67cb67281a50ee50ace2213efbcf2a80e3fa5ad9d")
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
-	rm -rf build && mkdir build
+
+	patch -Np1 -i ../fix-header-import.patch
 }
 
 pkgver() {
