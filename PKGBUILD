@@ -1,5 +1,5 @@
 # Maintainer: Derek Taylor (DistroTube) <derek@distrotube.com>
-pkgname=dmscripts
+pkgname=dmscripts-git
 _pkgname=dmscripts
 pkgver=1.0.r485.343ed73
 pkgrel=1
