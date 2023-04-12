@@ -13,7 +13,7 @@
 pkgbase=mesa-minimal-git
 pkgname=('mesa-minimal-git' 'rusticl-mesa-minimal-git')
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=23.1.0_devel.168557.87efb9c3b33
+pkgver=23.1.0_devel.169698.87978c39334
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'meson' 'ninja' 'libglvnd' 'python-mako' 'xorgproto' 'libxml2' 'libx11'  'libva' 'elfutils' 'libxrandr'
@@ -127,7 +127,7 @@ package_rusticl-mesa-minimal-git() {
     # In repos rusticl is combined with clover under opencl-mesa
     conflicts=(opencl-mesa)
     provides=(opencl-mesa opencl-driver)
-    depends=(libdrm spirv-tools-git libclc-minimal-git mesa-minimal-git=$pkgver-$pkgrel)
+    depends=(libdrm spirv-tools-git libclc-minimal-git llvm-minimal-git mesa-minimal-git=$pkgver-$pkgrel)
     
     cp --preserve --recursive "$srcdir"/rusticl/* "$pkgdir"/
     install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/LICENSE"
