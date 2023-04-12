@@ -3,7 +3,7 @@
 
 pkgname=mp3directcut
 pkgver=2.36
-pkgrel=1
+pkgrel=2
 pkgdesc="fast audio editor and recorder for mp3 with no need to decompress"
 arch=('i686' 'x86_64')
 url="https://mpesch3.de/index.html"
@@ -17,10 +17,10 @@ source=(http://ftp.elf.stuba.sk/pub/pc/sound/mp3dc${pkgver/.}.exe
         mp3directcut
         mp3directcut.desktop
         mp3dcicon.png)
-md5sums=('b962197f84560b5e11bcf28a84bf1e81'
-         '31de44159649baddf5c7b6936b87133f'
-         '910ada5caa9b0ea67a88bfc7ffe9c237'
-         '81a5bbd5789094b4bf5822791826c162')
+sha256sums=('406018fc3e4b3aa13b963706c62ab0a65889ad8d1cfa15c9ceb46d4c27c36f71'
+            'd0aa5b02aa6e99a926238747e4a16aae9a7aab6e25612fed0ee46b4cd949c34d'
+            '99249e0b1e64c670aac164be5cf0fda5ba16878ce58ae7180d284abfa6d9df33'
+            '178d703eb9958990d6b53b0da34e91b21bfed20316ad61a25b94c93f2e09739c')
 
 
 package() {
