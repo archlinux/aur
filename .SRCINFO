@@ -1,6 +1,6 @@
 pkgbase = qt5-quickcontrols2-git
 	pkgdesc = Qt5 Quick Controls 2 module
-	pkgver = 5.15.1.r6.g59aaf903
+	pkgver = 5.15.9.r0.g5e31cdc9d
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
@@ -11,10 +11,9 @@ pkgbase = qt5-quickcontrols2-git
 	makedepends = git
 	depends = qt5-declarative
 	optdepends = qt5-graphicaleffects: for the Material style
-	provides = qt5-quickcontrols2
+	provides = qt5-quickcontrols2=5.15.9.r0.g5e31cdc9d
 	conflicts = qt5-quickcontrols2
 	source = git+https://code.qt.io/qt/qtquickcontrols2.git#branch=5.15
 	sha256sums = SKIP
 
 pkgname = qt5-quickcontrols2-git
-
