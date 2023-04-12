@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=mercurial-stable-hg
-pkgver=r47464.25d36300ba8e
+pkgver=r50390.81c7d04f4722
 pkgrel=1
 pkgdesc="Distributed source control management tool (development stable branch)"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('glibc' 'python')
 makedepends=('mercurial' 'python-docutils' 'rust')
 optdepends=('tk: for the hgk GUI')
-provides=('mercurial')
+provides=("mercurial=$pkgver")
 conflicts=('mercurial')
 backup=('etc/mercurial/hgrc')
 source=("hg+https://www.mercurial-scm.org/repo/hg#branch=stable"
