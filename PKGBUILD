@@ -3,7 +3,7 @@
 
 _pkgname=nomad-driver-podman
 pkgname=${_pkgname}-git
-pkgver=v0.4.0.r21.g39a4a50
+pkgver=0.4.2.r10.gaeed282
 pkgrel=1
 pkgdesc="A nomad taskdriver for podman containers"
 arch=('x86_64')
@@ -11,24 +11,32 @@ url="https://github.com/hashicorp/nomad-driver-podman"
 license=('MPL2')
 depends=('nomad' 'podman')
 makedepends=('go' 'git')
+options=('!lto')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("$pkgname::git+https://github.com/hashicorp/nomad-driver-podman")
+source=("${_pkgname}::git+${url}")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  git describe --long --tags --match'=v[0-9]*' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${_pkgname}"
+
+  git describe --long --tags --match'=v[0-9]*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd "${_pkgname}"
+
+  # create directory for build output
   mkdir -p build
+
+  # download dependencies
+  go mod download
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-  go build \
+  cd "${_pkgname}"
+
+  go build -v \
     -trimpath \
     -buildmode=pie \
     -mod=readonly \
@@ -39,14 +47,14 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "${_pkgname}"
 
   # binary
-  install -vDm755 -t "$pkgdir/usr/lib/nomad/plugins" "build/$_pkgname"
+  install -vDm755 -t "$pkgdir/usr/lib/nomad/plugins" "build/${_pkgname}"
 
   # documentation
-  install -vDm644 -t "$pkgdir/usr/share/doc/$_pkgname" README.md
-  cp -vr examples "$pkgdir/usr/share/doc/$_pkgname"
+  install -vDm644 -t "$pkgdir/usr/share/doc/${_pkgname}" README.md
+  cp -vr examples "$pkgdir/usr/share/doc/${_pkgname}"
   # note: examples/plugins is an empty folder
-  rm -rf "$pkgdir/usr/share/doc/$_pkgname/examples/plugins"
+  rm -rf "$pkgdir/usr/share/doc/${_pkgname}/examples/plugins"
 }
