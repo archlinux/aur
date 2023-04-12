@@ -1,7 +1,7 @@
 # Maintainer: Ricardo M <ricardo@rmeev.net>
 
-pkgname=waybar-git
-pkgver=r2491.a3816fc
+pkgname=waybar-hyprland-fix
+pkgver=r2491.365e888
 pkgrel=1
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors (Hyprland fix)'
 arch=('x86_64')
@@ -14,7 +14,8 @@ depends=(
     'libjsoncpp.so'
     'libsigc++'
     'fmt'
-    'jack' 'libjack.so'
+    'jack'
+    'libjack.so'
     'wayland'
     'libdate-tz.so'
     'libspdlog.so'
