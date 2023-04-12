@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=openlibm-git
-pkgver=0.8.0.r0.ged7aea3
+pkgver=0.8.1.r2.g1d2c5e3
 pkgrel=1
 pkgdesc="A high quality, portable, standalone C mathematical library"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://openlibm.org/"
 license=('custom')
 depends=('glibc')
 makedepends=('git')
-provides=('openlibm')
+provides=("openlibm=$pkgver")
 conflicts=('openlibm')
 options=('staticlibs')
 source=("git+https://github.com/JuliaMath/openlibm.git")
@@ -34,7 +34,8 @@ pkgver() {
 build() {
   cd "openlibm"
 
-  make prefix="/usr"
+  make \
+    prefix="/usr"
 }
 
 check() {
