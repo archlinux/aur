@@ -1,6 +1,6 @@
 pkgbase = openaudible-bin
 	pkgdesc = OpenAudible
-	pkgver = 3.6
+	pkgver = 3.7.4
 	pkgrel = 1
 	url = https://openaudible.org
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = openaudible-bin
 	depends = webkit2gtk
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/openaudible/openaudible/releases/download/v3.6/OpenAudible_3.6_x86_64.deb
+	source = https://github.com/openaudible/openaudible/releases/download/v3.7.4/OpenAudible_3.7.4_x86_64.deb
 	source = openaudible.desktop
-	sha512sums = fc75984700034d96c5875a9061f17fabb25fcda309cf73945e3de8dc4132f18d6687bb2433ce028d9632f630bb75c8c305eabacb7c31ded69a0e400708a743b5
+	sha512sums = dc243b6fb92172e9d3f868eca2acde904143b160ef480f5482d7cff32741f5586d3a9a768aafd189f89d51a0d9aeb6b1442ce291bb78c7157e92f0cebaecdf75
 	sha512sums = fe26bdc5a28f492c60e13f481bd61ae53b299b0b0728311521bb03a73f9592d8de5dda9e8e1ef5e770c74b6335e5b32c22d4b65a38325f8f5f6c1283cdc0c937
 
 pkgname = openaudible-bin
