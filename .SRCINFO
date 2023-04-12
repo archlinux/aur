@@ -1,7 +1,7 @@
 pkgbase = python-gaphor
 	pkgdesc = Simple and easy to use modeling tool for UML using GTK3
 	pkgver = 2.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gaphor/gaphor
 	arch = any
 	license = Apache
@@ -10,7 +10,6 @@ pkgbase = python-gaphor
 	checkdepends = python-pytest-mock
 	checkdepends = python-sphinx
 	checkdepends = python-xdoctest
-	checkdepends = python-pydot
 	checkdepends = python-pytest-archon
 	checkdepends = xorg-server-xvfb
 	makedepends = gendesk
@@ -25,6 +24,7 @@ pkgbase = python-gaphor
 	depends = python-tinycss2
 	depends = python-typing_extensions
 	depends = python-better-exceptions
+	depends = python-pydot
 	source = python-gaphor-2.17.0.tar.gz::https://github.com/gaphor/gaphor/archive/refs/tags/2.17.0.tar.gz
 	sha256sums = c098fabf3fa7ccf6ea2408888667e8caeb34608c40c69ba57ea217020277c787
 

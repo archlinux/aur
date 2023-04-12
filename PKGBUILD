@@ -5,7 +5,7 @@
 _name=gaphor
 pkgname=python-${_name}
 pkgver=2.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and easy to use modeling tool for UML using GTK3"
 arch=('any')
 url="https://github.com/gaphor/${_name}"
@@ -19,6 +19,7 @@ depends=(
 	'python-tinycss2'
 	'python-typing_extensions'
 	'python-better-exceptions'
+	'python-pydot'
 )
 makedepends=(
 	'gendesk'
@@ -32,7 +33,6 @@ checkdepends=(
 	'python-pytest-mock'
 	'python-sphinx'
 	'python-xdoctest'
-	'python-pydot'
 	'python-pytest-archon'
 	'xorg-server-xvfb'
 )
