@@ -4,7 +4,7 @@
 
 _pkgname=todoist-cli
 pkgname=todoist
-pkgver=0.16.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="Todoist CLI Client, written in Golang."
 arch=('x86_64' 'i686')
@@ -15,7 +15,7 @@ optdepends=('peco: for zsh functions script')
 options=('!strip' '!emptydirs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sachaos/todoist/archive/v$pkgver.tar.gz"
         "rename_todoist_to_todoist_cli.patch")
-sha256sums=('9d5a8f5c6b92d3d6df292f9ae96bec46049b4e4b7a482f7232e4e5b9708dfffa'
+sha256sums=('acf91e168abe7d251a68ae87b1943a1f83ef3b7fd89e4f56bd82cb3db51b6ade'
             '2d0f8626b98c6b178d6be15ad03be20a49c18add0cb3ec2a1f06e8e727785564')
 provides=('todoist' 'todoist-cli')
 conflicts=('todoist' 'todoist-cli')
