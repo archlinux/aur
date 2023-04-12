@@ -1,7 +1,7 @@
 pkgbase = systemd-boot-to-windows
-	pkgdesc = Creates a Application Menu shortcut to boot into Windows using sytemd-boot's autmatic entry
+	pkgdesc = Creates a .desktop application to boot into Windows using sytemd-boot's automatic entry
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = Unlicense
 	license = CCPL:by
