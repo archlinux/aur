@@ -1,6 +1,6 @@
 pkgbase = pciutils-git
 	pkgdesc = Programs for inspecting and manipulating configuration of PCI devices
-	pkgver = 3.7.0.r15.ge12bd01
+	pkgver = 3.9.0.r22.g10add64
 	pkgrel = 1
 	url = https://mj.ucw.cz/sw/pciutils/
 	arch = i686
@@ -11,11 +11,10 @@ pkgbase = pciutils-git
 	depends = sh
 	depends = hwids
 	depends = kmod
-	provides = pciutils
+	provides = pciutils=3.9.0.r22.g10add64
 	conflicts = pciutils
 	options = staticlibs
 	source = git+https://git.kernel.org/pub/scm/utils/pciutils/pciutils.git
 	sha256sums = SKIP
 
 pkgname = pciutils-git
-
