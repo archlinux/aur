@@ -215,7 +215,7 @@ build() {
       _cfgopts+=(--disable-libssp)
     fi
     if [ "${_opt_CPP_ONLY}" -eq 0 ]; then
-      _languages+=',fortran,go,lto,objc,obj-c++'
+      _languages+=',fortran,lto,objc,obj-c++'
     fi
 
     local _conf=(
@@ -255,7 +255,7 @@ build() {
     ../configure "${_cfgopts[@]}" "${_conf[@]}"
   fi
 
-  #LD_PRELOAD='/usr/lib/libstdc++.so' \\
+  LD_PRELOAD='/usr/lib/libstdc++.so' \
   nice make -s
 
   set +u; msg 'Compile complete'; set -u
@@ -283,7 +283,7 @@ package() {
   set -u
   cd "${_basedir}/gcc-build"
 
-  #LD_PRELOAD='/usr/lib/libstdc++.so' \\
+  LD_PRELOAD='/usr/lib/libstdc++.so' \
   make -j1 DESTDIR="${pkgdir}" install
 
   ## Lazy way of dealing with conflicting man and info pages and locales...
