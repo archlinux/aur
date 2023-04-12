@@ -1,0 +1,20 @@
+pkgbase = python-pyrseas
+	pkgdesc = Pyrseas, Provides utilities for Postgres database schema versioning.
+	pkgver = 0.10.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/perseas/Pyrseas
+	arch = any
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-psycopg
+	depends = postgresql
+	depends = python-yaml
+	noextract = Pyrseas-0.10.0-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/P/Pyrseas/Pyrseas-0.10.0-py2.py3-none-any.whl
+	sha256sums = 6419c45718fdca1bf5678502824e1ec15618b806a7b66cad4d9d531e36947a9c
+
+pkgname = python-pyrseas
