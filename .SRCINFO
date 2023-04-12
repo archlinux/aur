@@ -1,6 +1,6 @@
 pkgbase = mtools-svn
 	pkgdesc = Collection of utilities to access MS-DOS disks without mounting them
-	pkgver = r511
+	pkgver = r815
 	pkgrel = 1
 	url = https://www.gnu.org/software/mtools/
 	arch = i686
@@ -15,11 +15,10 @@ pkgbase = mtools-svn
 	depends = sh
 	optdepends = libsm: required by floppyd
 	optdepends = libx11: required by floppyd
-	provides = mtools
+	provides = mtools=r815
 	conflicts = mtools
 	backup = etc/mtools.conf
 	source = svn://svn.savannah.gnu.org/mtools/trunk
 	sha256sums = SKIP
 
 pkgname = mtools-svn
-

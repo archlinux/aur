@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=mtools-svn
-pkgver=r511
+pkgver=r815
 pkgrel=1
 pkgdesc="Collection of utilities to access MS-DOS disks without mounting them"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('glibc' 'sh')
 makedepends=('subversion' 'bash' 'libsm' 'libx11' 'texinfo')
 optdepends=('libsm: required by floppyd'
             'libx11: required by floppyd')
-provides=('mtools')
+provides=("mtools=$pkgver")
 conflicts=('mtools')
 backup=('etc/mtools.conf')
 source=("svn://svn.savannah.gnu.org/mtools/trunk")
@@ -47,5 +47,5 @@ package() {
   cd "trunk"
 
   make -j 1 DESTDIR="$pkgdir" install
-  install -Dm644 "mtools.conf" "$pkgdir/etc/mtools.conf"
+  install -Dm644 "mtools.conf" -t "$pkgdir/etc"
 }
