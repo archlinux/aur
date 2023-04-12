@@ -2,15 +2,15 @@
 
 pkgname=pkg-config-git
 pkgver=0.29.2.r1.g2dd2b19
-pkgrel=2
+pkgrel=3
 pkgdesc="A system for managing library compile/link flags"
 arch=('i686' 'x86_64')
 url="https://www.freedesktop.org/wiki/Software/pkg-config/"
 license=('GPL2')
 depends=('glibc' 'glib2')
 makedepends=('git')
-provides=('pkgconfig')
-conflicts=('pkgconfig')
+provides=("pkg-config=$pkgver" 'pkgconfig')
+conflicts=('pkg-config' 'pkgconfig')
 source=("git+https://anongit.freedesktop.org/git/pkg-config.git"
         "0001-Workaround-error-m4_copy.patch")
 sha256sums=('SKIP'
@@ -32,8 +32,10 @@ pkgver() {
 build() {
   cd "pkg-config"
 
-  ./autogen.sh --no-configure
-  ./configure --prefix="/usr"
+  ./autogen.sh \
+    --no-configure
+  ./configure \
+    --prefix="/usr"
   make
 }
 

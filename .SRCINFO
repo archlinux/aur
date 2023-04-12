@@ -1,7 +1,7 @@
 pkgbase = pkg-config-git
 	pkgdesc = A system for managing library compile/link flags
 	pkgver = 0.29.2.r1.g2dd2b19
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.freedesktop.org/wiki/Software/pkg-config/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,9 @@ pkgbase = pkg-config-git
 	makedepends = git
 	depends = glibc
 	depends = glib2
+	provides = pkg-config=0.29.2.r1.g2dd2b19
 	provides = pkgconfig
+	conflicts = pkg-config
 	conflicts = pkgconfig
 	source = git+https://anongit.freedesktop.org/git/pkg-config.git
 	source = 0001-Workaround-error-m4_copy.patch
@@ -17,4 +19,3 @@ pkgbase = pkg-config-git
 	sha256sums = 03e1c1a997590b82c0922fca86c7be5ee85d04181c6f2ce020bdbe53c7f1b47b
 
 pkgname = pkg-config-git
-
