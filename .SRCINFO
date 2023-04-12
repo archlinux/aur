@@ -1,6 +1,6 @@
-pkgbase = dmscripts-git
+pkgbase = dmscripts
 	pkgdesc = A collection of dmenu scripts
-	pkgver = 1.0.r408.5fd2806
+	pkgver = 1.0.r485.343ed73
 	pkgrel = 1
 	url = https://gitlab.com/dwt1/dmscripts.git
 	arch = any
@@ -9,7 +9,6 @@ pkgbase = dmscripts-git
 	makedepends = git
 	depends = dmenu
 	depends = ffmpeg
-	depends = mpv
 	depends = findutils
 	depends = xclip
 	depends = xdotool
@@ -38,8 +37,8 @@ pkgbase = dmscripts-git
 	optdepends = udisks2: used by dm-usbmount
 	optdepends = wl-clipboard: wayland alternative to xclip
 	provides = dmscripts
-	conflicts = dmscripts
+	conflicts = dmscripts-git
 	source = git+https://gitlab.com/dwt1/dmscripts.git
 	md5sums = SKIP
 
-pkgname = dmscripts-git
+pkgname = dmscripts

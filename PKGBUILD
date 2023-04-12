@@ -1,13 +1,13 @@
 # Maintainer: Derek Taylor (DistroTube) <derek@distrotube.com>
-pkgname=dmscripts-git
+pkgname=dmscripts
 _pkgname=dmscripts
-pkgver=1.0.r408.5fd2806
+pkgver=1.0.r485.343ed73
 pkgrel=1
 pkgdesc="A collection of dmenu scripts"
 arch=('any')
 url="https://gitlab.com/dwt1/dmscripts.git"
 license=('GPL3')
-depends=(dmenu ffmpeg mpv findutils xclip xdotool xorg-xrandr bind jq youtube-dl)
+depends=(dmenu ffmpeg findutils xclip xdotool xorg-xrandr bind jq youtube-dl)
 groups=()
 makedepends=(pandoc git)
 checkdepends=()
@@ -32,9 +32,10 @@ optdepends=(
   'swaybg: used by dm-setbg in wayland'
   'udisks2: used by dm-usbmount'
   'wl-clipboard: wayland alternative to xclip'
+
   )
 provides=(dmscripts)
-conflicts=(dmscripts)
+conflicts=(dmscripts-git)
 replaces=()
 backup=()
 options=()
