@@ -15,7 +15,7 @@ optdepends=('adw-gtk3: The theme from libadwaita ported to GTK-3'
             'adw-gtk-theme: LibAdwaita Theme for all GTK3 and GTK4 Apps.')
 install='xdg-config.install'
 source=($url/archive/${pkgver//_/-}.tar.gz)
-b2sums=('bebc9519206e2dc17f7b6dff79e70c3f816140f3bc3a1ac2b36c5c6a51e2419f8bec0c184de1b75b2a3e9be4dca29efe060b0eca8c7c0aa65c8aeaa87422fbb8')
+b2sums=('ca16dacd9c5c4af901a5e289d11aafa0a581f43477ea473d06e92a17582b6e397de60ab2e52036602e4028b0fde688a5511c6b7ba0577c08c03a6ed50e04383d')
 
 build() {
   arch-meson "$_pkgname-${pkgver//_/-}" build
