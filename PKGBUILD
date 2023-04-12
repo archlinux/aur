@@ -17,8 +17,6 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/sachaos/todoist/archive/v$p
         "rename_todoist_to_todoist_cli.patch")
 sha256sums=('acf91e168abe7d251a68ae87b1943a1f83ef3b7fd89e4f56bd82cb3db51b6ade'
             '2d0f8626b98c6b178d6be15ad03be20a49c18add0cb3ec2a1f06e8e727785564')
-provides=('todoist' 'todoist-cli')
-conflicts=('todoist' 'todoist-cli')
 
 prepare() {
  mkdir -p "$srcdir/go/src/github.com/sachaos"
