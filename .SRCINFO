@@ -1,0 +1,15 @@
+pkgbase = systemd-boot-to-windows
+	pkgdesc = Creates a Application Menu shortcut to boot into Windows using sytemd-boot's autmatic entry
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = Unlicense
+	license = CCPL:by
+	source = systemd-boot-to-windows.sh
+	source = systemd-boot-to-windows.desktop
+	source = systemd-boot-to-windows.svg::https://www.iconfinder.com/icons/317717/download/svg/4096
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 7d309f9b56eb574364309297c97df966af67b64293743e856f445c309f1b005b
+
+pkgname = systemd-boot-to-windows

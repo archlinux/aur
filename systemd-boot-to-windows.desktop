@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Boot into Windows
+Comment=Shutdown the system and boot into Windows 
+Exec=/usr/bin/systemd-boot-to-windows
+Icon=/usr/share/pixmaps/systemd-boot-to-windows.svg
+Terminal=false
+Type=Application
+StartupNotify=true
