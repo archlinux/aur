@@ -1,0 +1,48 @@
+pkgbase = gdb-debug-git
+	pkgdesc = The GNU Debugger from git. Compiled with debug information.
+	pkgver = 14.0.50.20230412_git.r114328.0a12bf174dd
+	pkgrel = 1
+	url = http://www.gnu.org/software/gdb/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = source-highlight
+	options = debug
+	options = !libtool
+	options = !strip
+	options = ccache
+	source = gdb::git+https://sourceware.org/git/binutils-gdb.git
+	sha256sums = SKIP
+
+pkgname = gdb-debug-git
+	depends = babeltrace
+	depends = expat
+	depends = gdb-common=14.0.50.20230412_git.r114328.0a12bf174dd
+	depends = guile
+	depends = libbacktrace
+	depends = libelf
+	depends = libipt
+	depends = mpfr
+	depends = ncurses
+	depends = python
+	depends = source-highlight
+	depends = xxhash
+	depends = xxhash
+	depends = xz
+	depends = zlib
+	optdepends = debuginfod: Retrieve debugging information at runtime from specified debuginfod servers.
+	optdepends = insight: For a GUI to GDB.
+	provides = gdb=14.0.50.20230412_git.r114328.0a12bf174dd
+	provides = gdb-debug=14.0.50.20230412_git.r114328.0a12bf174dd
+	provides = gdb-git=14.0.50.20230412_git.r114328.0a12bf174dd
+	conflicts = gdb
+	backup = etc/gdb/gdbinit
+
+pkgname = gdb-debug-common-git
+	depends = python-pygments
+	depends = guile
+	provides = gdb-common=14.0.50.20230412_git.r114328.0a12bf174dd
+	provides = gdb-common-git=14.0.50.20230412_git.r114328.0a12bf174dd
+	provides = gdb-debug-common=14.0.50.20230412_git.r114328.0a12bf174dd
+	conflicts = gdb-common
