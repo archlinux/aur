@@ -1,5 +1,5 @@
 pkgbase = dotnet-preview-bin
-	pkgver = 8.0.0.sdk100+preview.2
+	pkgver = 8.0.0.sdk100+preview.3
 	pkgrel = 1
 	url = https://www.microsoft.com/net/core
 	arch = armv7h
@@ -15,12 +15,12 @@ pkgbase = dotnet-preview-bin
 	sha512sums = 9f977e0bd12abc0dda4d914f369c58fce502b4030cf91d4248b32242d98fe5a2bbd8446502feeb914561f310dfd3c113bb6da19bfd5dfa6233109e62d22fa966
 	sha512sums = 1de3f09b96c44429b026277bb135a019b7577df2dec5f695ce51d18daefe2c1736b3359ab95f2abc46f7320c445b968e5582df92bb2bcad3ac5cfc5a32d3c5b6
 	sha512sums = f2be62d9cce00357b7b18ae83b976841037830b7b9ed1b67445f76e02550c904be5ab023366441199f9bb3dfd602004b0334395ffdde6c313910c1da5c39c4a3
-	source_armv7h = https://download.visualstudio.microsoft.com/download/pr/ba3b846b-fe26-4797-bfb6-3a2a611943af/4f97df1d2f5886b30809dfc3144111f6/dotnet-sdk-8.0.100-preview.2.23157.25-linux-arm.tar.gz
-	sha512sums_armv7h = e66d90ce97bf92ef237d7e25da63955bbf09c952fb498bf04a41728b68d6fb94d24566442f90ebae176bd05aadbb9d2b405691af3c78f79f6ed84d77b88bdebf
-	source_aarch64 = https://download.visualstudio.microsoft.com/download/pr/5ca09c3e-e6c0-4ea2-bc1c-371cc4d0b79a/f05e4e38788662b2e226bf75569e42aa/dotnet-sdk-8.0.100-preview.2.23157.25-linux-arm64.tar.gz
-	sha512sums_aarch64 = 440919e2c0d3e0bfb387e2d0539b39045c6581a41f0237c88566d3642ab2c5e4a8e540f3d9d514997bb4a17b19c64a46b80f38af5f66705da1349373f87448ea
-	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/a042ab5b-f160-4621-ac14-77be759167d7/373e6e8ae9381ffc1ba853bb6542d55c/dotnet-sdk-8.0.100-preview.2.23157.25-linux-x64.tar.gz
-	sha512sums_x86_64 = 97302c3600af7787fb136b226ca7e2a0a22241aa93dcffc70010b475bf6f8c4ff74a363d94949e1b64a91032b57a58a7065d7c6b2177696d8e78504ef4f1280f
+	source_armv7h = https://download.visualstudio.microsoft.com/download/pr/c17b7dd9-41be-4ac1-9eae-a9707049c2ad/9dda015bc0f85cf8ff8bd0858936816c/dotnet-sdk-8.0.100-preview.3.23178.7-linux-arm.tar.gz
+	sha512sums_armv7h = 81d727b1f70854507f6f0e4075f3a2b98914378b1af2f69c8ff74dacd2ba5b4bd4971f4a9a353e14c710c7974ff5e077e259474b3eb1b8d86c516968326e2ad5
+	source_aarch64 = https://download.visualstudio.microsoft.com/download/pr/3b23cbd9-f068-408f-8c3c-551a5432ff08/876e15ab4041bde421e96d21e259b3b9/dotnet-sdk-8.0.100-preview.3.23178.7-linux-arm64.tar.gz
+	sha512sums_aarch64 = c48840b3924196a12cc66b07249af37afb2b0f3b139eb304492a2320e7ae06cfc2391abd1da31e6e58287b8b8e564386f82c55eb9a1b16108f53a4d1d59812f7
+	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/103d5e2c-d5c4-4101-bb6e-b82bc73a7d93/284a5cdccbc995f39806a3ba2dc17b93/dotnet-sdk-8.0.100-preview.3.23178.7-linux-x64.tar.gz
+	sha512sums_x86_64 = 3b5d72979831256b9340a01db23d3b2dca801672546eeed04385949ed5f4363d3c731f31477ec82c7200ce88502dc45e03986c8acc8f2fc611b0343af5f1c488
 
 pkgname = dotnet-host-preview-bin
 	pkgdesc = A generic driver for the .NET Core Command Line Interface (preview, binary)
