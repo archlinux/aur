@@ -7,7 +7,8 @@ pkgbase = parrot-bin
 	license = MIT
 	depends = gtk3
 	depends = webkit2gtk
-	source = https://github.com/dan-online/parrot/releases/download/1.0.3/parrot_1.0.3_amd64.deb
+	depends = openssl-1.1
+	source = https://github.com/dan-online/parrot/releases/download/1.0.4/parrot_1.0.3_amd64.deb
 	sha512sums = SKIP
 
 pkgname = parrot-bin
