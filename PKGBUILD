@@ -1,8 +1,8 @@
 _pkgname=rime-ice
 pkgname=rime-ice
 pkgver=2023_04_11T15_24_25Z
-pkgrel=1
-pkgdesc="Rime 配置：雾凇拼音 | 长期维护的简体词库"
+pkgrel=2
+pkgdesc="Rime 配置：雾凇拼音 | 长期维护的简体词库(自动更改版本号)"
 arch=("any")
 url="https://github.com/iDvel/rime-ice"
 license=("GPL3")
