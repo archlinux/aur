@@ -1,0 +1,15 @@
+pkgbase = xevil-git
+	pkgdesc = Side-view, single or network-multiplayer, fast-action, kill-everything, game.
+	pkgver = r24.e8554ab
+	pkgrel = 1
+	url = https://www.xevil.com/
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = libx11
+	depends = lib32-libxpm
+	depends = xorg-fonts-misc
+	source = git+https://github.com/lvella/xevil.git#branch=master
+	sha256sums = SKIP
+
+pkgname = xevil-git
