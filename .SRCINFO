@@ -1,6 +1,6 @@
 pkgbase = eartag
 	pkgdesc = Simple music tag editor
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://gitlab.gnome.org/knuxify/eartag
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = eartag
 	depends = python-pillow
 	depends = python-mutagen
 	depends = python-magic
-	source = https://gitlab.gnome.org/knuxify/eartag/-/archive/0.3.2/eartag-0.3.2.tar.gz
-	b2sums = 89774c279048e4aab2478cfdf3444dd24583944e12375d044f2424df0f5a95a0ead47641f996824eb7cb5007d29bb8f6605b594c2f710f7be1aaf01109b7a6a7
+	source = https://gitlab.gnome.org/knuxify/eartag/-/archive/0.3.3/eartag-0.3.3.tar.gz
+	b2sums = 624f48206035b44f276b32f252defade930960e97bac3946ca1e1bddad1d77cfb0bffa4d8ea7a643f708d2edb770f905f0d61d26f8497f44e413b0d38b1fb5fd
 
 pkgname = eartag
