@@ -1,23 +1,29 @@
 # Maintainer: malwareslayer <alternate-egoist@protonmail.com>
 
 pkgname=mbuild
-_pypiname=mbuild
-
-pkgver=0.1
-pkgrel=0
-pkgdesc="mbuild is a python-based build system very similar to scons with some philosophical features of make. mbuild exposes the scan and build phases allowing them to be repeated as necessary. Multiple DAGs can be built, one during each scan phase."
-
-url="https://intelxed.github.io/"
-license=("Apache License v.2")
-
-arch=("any")
+pkgver=2022.07.28
+pkgrel=1
+pkgdesc="Python-based build system used for building XED"
+arch=('any')
+url='https://intelxed.github.io/'
+license=('Apache')
 depends=('python')
 makedepends=('python-setuptools')
+source=("https://github.com/intelxed/mbuild/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('d3a2a514cec936036fd203a3ecdb8b60e07fc6ee20670edeb0bc14b1f9a9a51d')
 
-source=('git+https://github.com/intelxed/mbuild')
-sha256sums=('SKIP')
+build() {
+    cd "$srcdir/$pkgname-$pkgver"
+    python setup.py build
+}
 
 package() {
-  cd ${_pypiname}
-  python setup.py install --optimize=1 --root="${pkgdir}" --prefix=/usr
+    cd "$srcdir/$pkgname-$pkgver"
+    python setup.py install \
+        --prefix=/usr \
+        --root="$pkgdir" \
+        --optimize=1 \
+        --skip-build
 }
+
+# vim: set ts=4 sw=4 et :
