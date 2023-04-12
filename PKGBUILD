@@ -2,7 +2,7 @@
 
 set -u
 pkgname='msoffice-crypt-git'
-pkgver=0.0.r49.ge825799
+pkgver=0.0.r61.g89dbedf
 pkgrel=1
 pkgdesc='A tool and lib to encrypt decrypt crack Microsoft Office 2010+ xml Documents Word docx Excel xlsx PowerPoint pptx'
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ url='https://github.com/herumi/msoffice'
 license=('BSD')
 depends=('openssl')
 makedepends=('git')
-checkdepends=('python2')
+#checkdepends=('python2')
 provides=("${pkgname%-git}=${pkgver%%.r*}")
 conflicts=("${pkgname%-git}")
 options=('!strip')
@@ -35,7 +35,7 @@ prepare() {
   rm -r 'bin/64'
   sed -e 's:\r$::g' -i $(grep -Ilr $'\r' *)
   # Test runs in python2
-  sed -e 's:\bpython\b:&2:g' -i 'Makefile'
+  #sed -e 's:\bpython\b:&2:g' -i 'Makefile'
   # Strip in compile isn't getting rid of source references
   sed -e 's:^LDFLAGS = .*$:& -s:g' -i 'common.mk'
   # Change extension so we can delete all .exe files
