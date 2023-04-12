@@ -3,8 +3,8 @@
 pkgname=python-ptflops
 _reponame="flops-counter.pytorch"
 _modulename="ptflops"
-pkgver=0.6.2
-pkgrel=2
+pkgver=0.6.9
+pkgrel=1
 pkgdesc="Flops counter for convolutional networks in pytorch framework"
 url="https://github.com/sovrasov/${_reponame}"
 license=('MIT')
@@ -12,7 +12,7 @@ arch=('any')
 depends=('python-pytorch')
 makedepends=('python-setuptools')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('5abbef678601a4cb7bead99fbbec0265a2a1746718eecf76975d888f0e2d048b')
+sha256sums=('dbd6a23728b0f219ceab84c4116b907310d586c2b3d4d8e5f8ad5e5934893cb8')
 
 build() {
   cd ${srcdir}/${_reponame}-${pkgver}
