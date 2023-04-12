@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=os-prober-git
-pkgver=1.78.r0.g5debc53
+pkgver=1.81.r4.g7875f73
 pkgrel=1
 pkgdesc="Tool to detect other filesystems with operating systems on them"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://tracker.debian.org/pkg/os-prober"
 license=('GPL')
 depends=('glibc' 'sh')
 makedepends=('git')
-provides=('os-prober')
+provides=("os-prober=$pkgver")
 conflicts=('os-prober')
 source=("git+https://salsa.debian.org/installer-team/os-prober.git")
 sha256sums=('SKIP')
