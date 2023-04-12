@@ -1,0 +1,11 @@
+pkgbase = texlive-fonts-emerald
+	pkgdesc = The emerald fonts for use with LaTeX
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.ctan.org/tex-archive/fonts/emerald/
+	arch = any
+	license = GPL
+	source = http://mirrors.ctan.org/fonts/emerald.zip
+	sha256sums = 12ac7047608ecca3f939c4c86f74ec15517ff298984d6372a4a374b2f2a81264
+
+pkgname = texlive-fonts-emerald
