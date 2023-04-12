@@ -37,13 +37,13 @@ _pkgname=artriculate
 pkgname=${_pkgname}-git
 provides=(artriculate)
 conflicts=(artriculate)
-pkgver=0.7.0.r42.g757112b
+pkgver=0.7.1.r15.g201b4fb
 pkgrel=1
 pkgdesc='QML box2d application for displaying artwork'
 arch=('any')
 url='https://github.com/sirspudd/artriculate'
 license=('GPL3')
-source=("git://github.com/sirspudd/${_pkgname}")
+source=("git+https://github.com/sirspudd/${_pkgname}")
 sha256sums=('SKIP')
 options=('!strip')
 
