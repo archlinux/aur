@@ -1,18 +1,20 @@
 pkgbase = ruby-tty-pager
-	pkgdesc = Terminal output paging - cross-platform, major ruby interpreters
-	pkgver = 0.12.1
+	pkgdesc = A cross-platform terminal pager
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/piotrmurach/tty-pager
 	arch = any
 	license = MIT
+	checkdepends = ruby-bundler
+	checkdepends = ruby-rake
+	checkdepends = ruby-rspec
 	makedepends = rubygems
+	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-tty-screen
-	depends = ruby-tty-which
 	depends = ruby-strings
-	noextract = tty-pager-0.12.1.gem
-	source = https://rubygems.org/downloads/tty-pager-0.12.1.gem
-	sha512sums = 078f90fd629acf2c5ee2abda5ba14249118f71b6cc0c6ccde10751bb3922ae2ce19a490d0ecf3639ad3377056b6e57ab86738972e39ede60d141950b8a953509
+	options = !emptydirs
+	source = https://github.com/piotrmurach/tty-pager/archive/v0.14.0.tar.gz
+	sha256sums = 9b1035b79c05a2cb13f73fbc148946cd7a87f04b0311a20355f89e3c14d1570d
 
 pkgname = ruby-tty-pager
-
