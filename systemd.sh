@@ -3,23 +3,29 @@
 CONFIG_FILE=/etc/remoteit/config.json
 PIDDIR=/var/run
 
+# Detection of whether the user executing the shell is root
+SUDO=
+if [ $(id -u) -ne 0 ]; then
+  SUDO=sudo
+fi
+
 r3_start_service() {
   if [ -z $2 ]; then
-    sudo systemctl enable $1
-    sudo systemctl reload-or-restart $1
+    $SUDO systemctl enable $1
+    $SUDO systemctl reload-or-restart $1
   else
-    sudo systemctl enable $1@$2
-    sudo systemctl start $1@$2
+    $SUDO systemctl enable $1@$2
+    $SUDO systemctl start $1@$2
   fi
 }
 
 r3_stop_service() {
   if [ -z $2 ]; then
-    sudo systemctl disable $1
-    sudo systemctl stop $1
+    $SUDO systemctl disable $1
+    $SUDO systemctl stop $1
   else
-    sudo systemctl disable $1@$2
-    sudo systemctl stop $1@$2
+    $SUDO systemctl disable $1@$2
+    $SUDO systemctl stop $1@$2
   fi
 }
 

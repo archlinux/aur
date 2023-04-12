@@ -6,9 +6,13 @@ CONFIG_FILE=/etc/remoteit/config.json
 REGISTRATION=/etc/remoteit/registration
 VERSION=$(cat $REMOTEIT_DIR/version.txt)
 
-# Detect whether this device can use systemd
+# Detect which init software this device is using
 if [ -d /run/systemd/system ]; then
    is_systemd=1
+elif which rc-update; then
+   is_openrc=1
+elif which update-rc.d; then
+   is_sysv=1
 fi
 
 if [ "$is_systemd" = 1 ]; then
@@ -108,9 +112,10 @@ r3_install_agent() {
 
   if [ "$is_systemd" = 1 ]; then
     systemctl enable remoteit-refresh.service
-  fi
-
-  if [ "$is_systemd" != 1 ]; then
+  elif [ "$is_openrc" = 1 ]; then
+    rc-update add remoteit-main default
+    service remoteit-main start 2>/dev/null
+  elif [ "$is_sysv" = 1 ]; then
     update-rc.d remoteit-main defaults 99 1
   fi
 
@@ -135,9 +140,9 @@ r3_remove_agent() {
   if [ "$is_systemd" = 1 ]; then
     systemctl disable remoteit-refresh
     systemctl stop remoteit-refresh
-  fi
-
-  if [ "$is_systemd" != 1 ]; then
+  elif [ "$is_openrc" = 1 ]; then
+    rc-update del remoteit-main default
+  elif [ "$is_sysv" = 1 ]; then
     update-rc.d remoteit-main remove
   fi
 

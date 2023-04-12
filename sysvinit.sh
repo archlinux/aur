@@ -14,10 +14,10 @@ r3_stop_service() {
   echo "Stop Services $1 $2"
   if [ -z $2 ]; then
     /etc/init.d/$1 stop
-    rm $PIDDIR/$1.pid
+    [ -r "$PIDDIR/$1.pid" ] && rm $PIDDIR/$1.pid
   else
     /etc/init.d/$1 stop $2
-    rm $PIDDIR/$1-$2.pid
+    [ -r "$PIDDIR/$1-$2.pid" ] && rm $PIDDIR/$1-$2.pid
   fi
 }
 
@@ -43,13 +43,17 @@ r3_start_services() {
   for id in $unique_ids ; do
     r3_start_service remoteit $(echo $id)
   done
+  return 0
 }
 
 r3_stop_services() {
-  for pidfile in $PIDDIR/remoteit-*.pid ; do
-    chmod 0644 $pidfile 2>/dev/null
-    id=$(echo $pidfile | sed -e 's/\/var\/run\/remoteit-//g;s/.pid//g')
-    r3_stop_service remoteit $id
-  done
+  if ls /var/run/remoteit-*.pid > /dev/null 2>&1; then
+    for pidfile in $PIDDIR/remoteit-*.pid ; do
+      chmod 0644 $pidfile 2>/dev/null
+      id=$(echo $pidfile | sed -e 's/\/var\/run\/remoteit-//g;s/.pid//g')
+      r3_stop_service remoteit $id
+    done
+  fi
   r3_stop_service schannel
+  return 0
 }
