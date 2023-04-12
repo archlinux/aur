@@ -1,34 +1,36 @@
 # Maintainer: Bruno Ancona <bruno at powerball253 dot com>
 
 pkgname=eternalmodmanager
-pkgver=3.0.1
+pkgver=4.0.1
 pkgrel=1
 pkgdesc='Cross-platform mod manager for DOOM Eternal.'
 arch=('x86_64')
-url='https://github.com/PowerBall253/EternalModManager-Avalonia'
+url='https://github.com/PowerBall253/EternalModManager'
 license=('MIT')
-depends=('dotnet-runtime>=7.0.0' 'dotnet-runtime<8.0.0' 'xorg-xprop')
-makedepends=('git' 'dotnet-sdk>=7.0.0' 'dotnet-sdk<8.0.0')
-source=("git+https://github.com/PowerBall253/EternalModManager-Avalonia.git#tag=v${pkgver}"
-        eternalmodmanager)
-sha256sums=('SKIP'
-            '97bfa23542997c5f26e719d1c33cd15f5fb67475f1465e923e94fe51e9da7d29')
+depends=('gtk4' 'libadwaita' 'openssl')
+makedepends=('git' 'cargo')
+source=("git+https://github.com/PowerBall253/EternalModManager.git#tag=v${pkgver}")
+sha256sums=('SKIP')
 
-build() {
-    cd "EternalModManager-Avalonia"
-
-    # Build with dotnet
-    dotnet publish -c Release -r linux-x64 --no-self-contained
+prepare() {
+    cd "EternalModManager"
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
-package() {
-    # Install app's files
-    install -Dm755 -t "${pkgdir}/usr/bin" "$pkgname"
+build() {
+    cd "EternalModManager"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --all-features
+    mv "target/release/eternal_mod_manager" "target/release/$pkgname"
+}
 
-    cd "EternalModManager-Avalonia"
-    install -Dm644 -t "${pkgdir}/usr/share/applications/" "resources/${pkgname}.desktop"
-    install -Dm644 -t "${pkgdir}/usr/share/metainfo/" "resources/${pkgname}.appdata.xml"
-    install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps/" "resources/${pkgname}.png"
-    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-    find "EternalModManager/bin/Release/net7.0/linux-x64/publish/" -type f -exec install -Dm775 -t "${pkgdir}/usr/lib/eternalmodmanager/" "{}" \;
+
+package() {
+    cd "EternalModManager"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+    install -Dm644 -t "${pkgdir}/usr/share/applications/" "resources/com.powerball253.eternalmodmanager.desktop"
+    install -Dm644 -t "${pkgdir}/usr/share/metainfo/" "resources/com.powerball253.eternalmodmanager.appdata.xml"
+    install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps/" "resources/com.powerball253.eternalmodmanager.png"
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/com.powerball253.eternalmodmanager" LICENSE
 }
