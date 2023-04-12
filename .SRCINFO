@@ -1,0 +1,19 @@
+pkgbase = ruby-java-properties
+	pkgdesc = Loader and writer for *.properties files
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/jnbt/java-properties
+	arch = any
+	license = MIT
+	checkdepends = ruby-bundler
+	checkdepends = ruby-rake
+	checkdepends = ruby-minitest
+	checkdepends = ruby-simplecov
+	makedepends = rubygems
+	makedepends = ruby-rdoc
+	depends = ruby
+	options = !emptydirs
+	source = https://github.com/jnbt/java-properties/archive/v0.3.0.tar.gz
+	sha256sums = ebf7247b097ea9b290b8e2c5a619d318647a1c24bc4d86b156e6bf35f7fae5fe
+
+pkgname = ruby-java-properties
