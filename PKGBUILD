@@ -1,5 +1,5 @@
 pkgname=mingw-w64-coin-or-osi
-pkgver=0.108.7
+pkgver=0.108.8
 pkgrel=1
 pkgdesc="COIN-OR Open Solver Interface (mingw-w64)"
 arch=(any)
@@ -10,7 +10,7 @@ depends=(mingw-w64-coin-or-coinutils)
 makedepends=(mingw-w64-configure)
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/coin-or/Osi/archive/refs/tags/releases/$pkgver.tar.gz")
-sha256sums=('f1bc53a498585f508d3f8d74792440a30a83c8bc934d0c8ecf8cd8bc0e486228')
+sha256sums=('8b01a49190cb260d4ce95aa7e3948a56c0917b106f138ec0a8544fadca71cf6a')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
