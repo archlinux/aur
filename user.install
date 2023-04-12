@@ -2,6 +2,10 @@ _vstname=Hive
 _instdir=/opt/$_vstname
 
 post_install() {
-	echo "$_vstname successfully installed; each user who wishes to access the presets must first run the following:"
-	echo "> mkdir -p ~/.local/share/ && cp -R $_instdir/Presets/$_vstname/ ~/.local/share/"
+	echo "$_vstname successfully installed; each user who wishes to use the VST should:"
+	echo "> mkdir -p ~/.u-he/Hive && cp -R $_instdir/u-he/* ~/.u-he/Hive/"
+}
+
+post_upgrade() {
+  post_install
 }

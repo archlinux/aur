@@ -1,3 +1,4 @@
+# Maintainer: Stephanie Wilde-Hobbs <git@stephanie.is>
 # Maintainer: Colin Wallace <wallacoloo@gmail.com>
 # Download links to other u-he VSTs can be found here: http://www.kvraudio.com/forum/viewtopic.php?f=31&t=424953
 # Note: These VSTs require purchase/activation.
@@ -6,18 +7,18 @@ _vstname=Hive
 _vstdir=/usr/lib/vst # Note: these are Linux VSTs (.so files)
 
 pkgname=uhe-hive-vst
-pkgver=4408
+pkgver=12092
 pkgrel=1
 pkgdesc='Commercial virtual-analog synthesizer from u-he'
 arch=('x86_64' 'i686')
-url='http://www.u-he.com/cms/hive'
+url='http://www.u-he.com/products/hive'
 license=('custom')
 depends=('gtk3')
 makedepends=('xxd')
 _untardir=$_vstname-$pkgver
 _tarname=$_untardir.tar.gz
-source=("http://uhedownloads.heckmannaudiogmb.netdna-cdn.com/penguin/release/$pkgver/$_tarname")
-md5sums=('d07779c4a7852aa89550573df25cf15e')
+source=("https://uhe-dl.b-cdn.net/releases/Hive_211_${pkgver}_Linux.tar.xz")
+sha256sums=('d24c2488121556afb63a4989278fe1e246baae80a726f3b802ee29c2a157124f')
 install=user.install
 
 _bits=$(echo "$CARCH" | sed "s/x86_64/64/" | sed "s/i686/32/")
@@ -81,19 +82,6 @@ build() {
     patch_strings_in_file "$_binaryname" "%s/.%s/%s/Modules" "/opt/%3\$s/Modules"
     # This is for accessing the user guide & the dialog binaries
     patch_strings_in_file "$_binaryname" "%s/.%s/%s/" "/opt/%3\$s/"
-
-    # The vst will work OK w/o the presets directory, but it must be manually
-    # created if the user wishes to save his/her presets
-    # NOTE: mixing positional and non-positional printf arguments like this is
-    # against the spec, but doing differently would not meet the length limit
-    patch_strings_in_file "$_binaryname" "%s/.%s/%s/Presets/%s" "%s/.local/share/%3\$s"
-
-    # These other directories need to already exist and also be persistent
-    patch_strings_in_file "$_binaryname" "%s/.%s/%s/Tunefiles" "%s/.local/share"
-    # CCMaps is set via [settings wheel] -> Midi Table
-    patch_strings_in_file "$_binaryname" "%s/.%s/%s/CCMaps" "%s/.local/share"
-    # Support includes logs & license info
-    patch_strings_in_file "$_binaryname" "%s/.%s/%s/Support" "%s/.local/share"
 }
 
 package() {
@@ -105,15 +93,16 @@ package() {
 
     # Install the binary and the correct dialog version
     install -D "$_binaryname" "$pkgdir/$instdir/$_binaryname"
+    install -D "dialog" "$pkgdir/$instdir/dialog"
     install -D "dialog.$_bits" "$pkgdir/$instdir/dialog.$_bits"
+
     # Link the binary onto the path
     mkdir -p "$pkgdir/usr/lib/vst"
     ln -s "$instdir/$_binaryname" "$pkgdir/usr/lib/vst/$_vstname.so"
 
-    # Install all the directories (empty directories are required)
-    find Data/ Modules/ Presets/ -type d -exec install -dm755 {} $pkgdir/$instdir/{} \;
     # Install all the files
-    find Data/ Modules/ Presets/ -type f -exec install -Dm644 {} $pkgdir/$instdir/{} \;
-}
+    find Data/ Modules/ -type f -exec install -Dm644 {} $pkgdir/$instdir/{} \;
+    rm -Rf Data/ Modules/ dialog* *.so *.pdf *.rtf *.txt
 
-# vim: set tabstop=4 shiftwidth=4 expandtab:
+    cp -r "$srcdir/$_untardir/$_vstname" "${pkgdir}/${instdir}/u-he"
+}
