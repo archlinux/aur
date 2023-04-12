@@ -1,13 +1,13 @@
 # Maintainer: DanCodes <dan@dancodes.online>
 pkgname="parrot-bin"
-pkgver="1.0.3"
+pkgver="1.0.4"
 pkgrel=1
 pkgdesc="null"
 arch=('x86_64')
 url="https://github.com/dan-online/parrot"
 license=('MIT')
 depends=('gtk3' 'webkit2gtk' 'openssl-1.1')
-source=('https://github.com/dan-online/parrot/releases/download/1.0.4/parrot_1.0.3_amd64.deb')
+source=('https://github.com/dan-online/parrot/releases/download/1.0.4/parrot_1.0.4_amd64.deb')
 sha512sums=("SKIP")
 
 package(){

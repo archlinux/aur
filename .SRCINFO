@@ -1,6 +1,6 @@
 pkgbase = parrot-bin
 	pkgdesc = null
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/dan-online/parrot
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = parrot-bin
 	depends = gtk3
 	depends = webkit2gtk
 	depends = openssl-1.1
-	source = https://github.com/dan-online/parrot/releases/download/1.0.4/parrot_1.0.3_amd64.deb
+	source = https://github.com/dan-online/parrot/releases/download/1.0.4/parrot_1.0.4_amd64.deb
 	sha512sums = SKIP
 
 pkgname = parrot-bin
