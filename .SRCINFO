@@ -3,6 +3,7 @@ pkgbase = mbdyn-git
 	pkgver = r7415.ebbccab59
 	pkgrel = 1
 	url = www.mbdyn.org
+	install = mbdyn.install
 	arch = any
 	license = GPLv2
 	makedepends = git
@@ -17,6 +18,8 @@ pkgbase = mbdyn-git
 	optdepends = lapack: eigenanalysis support,
 	optdepends = openblas-lapack: eigenanalysis support, openBLAS version
 	source = mbdyn-git::git+https://public.gitlab.polimi.it/DAER/mbdyn.git
+	source = mbdyn-utils-aur.patch
 	sha256sums = SKIP
+	sha256sums = fd547a306e80db6fa298691dc866057554295cc29080e3454903b0526c7ed1c0
 
 pkgname = mbdyn-git
