@@ -1,7 +1,7 @@
 pkgbase = crossover-overlay-bin
 	pkgdesc = Adjustable Crosshair Overlay for any screen (binary release)
 	pkgver = 3.1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lacymorrow/crossover
 	arch = x86_64
 	arch = i686

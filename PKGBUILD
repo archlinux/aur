@@ -3,7 +3,7 @@
 _pkgname=crossover-overlay
 pkgname=$_pkgname-bin
 pkgver=3.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Adjustable Crosshair Overlay for any screen (binary release)"
 arch=('x86_64' 'i686')
 url="https://github.com/lacymorrow/crossover"
@@ -12,6 +12,7 @@ depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libappindicator-gtk3' 'libevent
          'libnotify' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy')
 conflicts=($_pkgname)
 provides=($_pkgname)
+_desktop=crossoverlay.desktop
 source_x86_64=("$url/releases/download/v$pkgver/CrossOver-$pkgver-x86_64.rpm")
 source_i686=("$url/releases/download/v$pkgver/CrossOver-$pkgver-i686.rpm ")
 sha256sums_x86_64=('c38d1d52e9c27cd35117cfe5e278650c3c9b3144523a722681bfb638d3eaf33c')
@@ -21,25 +22,24 @@ prepare() {
   # Edit the shortcut
   cd usr/share/applications
   mkdir -p desktop
-  mv crossover.desktop desktop
+  mv crossover.desktop desktop/$_desktop
   cd desktop
-  chmod 644 crossover.desktop
-  sed -i '3s/.*/Exec=crossover-overlay --no-sandbox %U/' crossover.desktop
-  sed -i '6s/.*/Icon=CrossOver/' crossover.desktop
-  mv crossover.desktop ..
+  chmod 644 $_desktop
+  sed -i '3s/.*/Exec=crossoverlay --no-sandbox %U/' $_desktop
+  sed -i '6s/.*/Icon=crossoverlay/' $_desktop
+  mv $_desktop ..
   cd ..
-  chmod 664 crossover.desktop
+  chmod 664 $_desktop
   rm -dr desktop
 }
 
 package() {
+  # Create folders
   mkdir -p $pkgdir/opt
   mkdir -p $pkgdir/usr/bin
-
-  install -Dm644 usr/share/applications/crossover.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
-  install -Dm644 usr/share/icons/hicolor/0x0/apps/crossover.png "$pkgdir/usr/share/pixmaps/CrossOver.png"
-
+  # Install
+  install -Dm644 usr/share/applications/$_desktop "$pkgdir/usr/share/applications/$_desktop"
+  install -Dm644 usr/share/icons/hicolor/0x0/apps/crossover.png "$pkgdir/usr/share/pixmaps/crossoverlay.png"
   cp -r opt/CrossOver "$pkgdir/opt/CrossOver"
-
-  ln -s /opt/CrossOver/crossover "$pkgdir/usr/bin/$_pkgname"
+  ln -s /opt/CrossOver/crossover "$pkgdir/usr/bin/crossoverlay"
 }
