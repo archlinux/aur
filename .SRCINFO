@@ -1,6 +1,6 @@
 pkgbase = qt5-webview-git
 	pkgdesc = Qt5 WebView module
-	pkgver = 5.15.1.r1.g0233fb6
+	pkgver = 5.15.9.r0.g23d67d0
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
@@ -10,10 +10,9 @@ pkgbase = qt5-webview-git
 	license = LGPL
 	makedepends = git
 	depends = qt5-webengine
-	provides = qt5-webview
+	provides = qt5-webview=5.15.9.r0.g23d67d0
 	conflicts = qt5-webview
 	source = git+https://code.qt.io/qt/qtwebview.git#branch=5.15
 	sha256sums = SKIP
 
 pkgname = qt5-webview-git
-
