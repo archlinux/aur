@@ -16,7 +16,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git' 'spirv-llvm-translator-minimal-git')
-pkgver=17.0.0_r455308.3e2d4e85d347
+pkgver=17.0.0_r457499.33c442118f3e
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -64,8 +64,6 @@ pkgver() {
 
 build() {
     
-    export CFLAGS+=" ${CPPFLAGS}"
-    export CXXFLAGS+=" ${CPPFLAGS}"
     cmake \
         -B _build \
         -S "$srcdir"/llvm-project/llvm  \
@@ -104,7 +102,7 @@ build() {
         -D LLVM_LIT_ARGS="$LITFLAGS"" -sv --ignore-fail" \
         -Wno-dev
 
-    ninja -C _build $NINJAFLAGS 
+    ninja -C _build $NINJAFLAGS
 }
 
 check() {
@@ -162,10 +160,10 @@ package_llvm-minimal-git() {
         install -Dm644 "$srcdir"/llvm-config.h "$pkgdir"/usr/include/llvm/Config/llvm-config.h
     fi
 
-    install -Dm644 "$srcdir"/llvm-project/llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
-    install -Dm644 "$srcdir"/llvm-project/compiler-rt/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-    install -Dm644 "$srcdir"/llvm-project/clang-tools-extra/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-tools-extra-LICENSE
-    install -Dm644 "$srcdir"/llvm-project/clang/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    install -Dm644 "$srcdir"/llvm-project/llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE.TXT
+    install -Dm644 "$srcdir"/llvm-project/compiler-rt/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/compiler-rt-LICENSE.TXT
+    install -Dm644 "$srcdir"/llvm-project/clang-tools-extra/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-tools-extra-LICENSE.TXT
+    install -Dm644 "$srcdir"/llvm-project/clang/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-LICENSE.TXT
   
 }
 
@@ -180,7 +178,7 @@ package_llvm-libs-minimal-git() {
         "$srcdir"/lib{LLVM,LTO,Remarks,clang-cpp}*.so* \
         "$pkgdir"/usr/lib/
 
-    install -Dm644 "$srcdir"/llvm-project/llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    install -Dm644 "$srcdir"/llvm-project/llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.TXT
 }
 
 package_spirv-llvm-translator-minimal-git() {
