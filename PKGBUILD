@@ -1,8 +1,8 @@
 # Maintainer: Ashley Bone <ashley DOT bone AT pm DOT me>
 
 pkgname=healthchecks
-_pkgver=2.7
-pkgver=2.7.0
+_pkgver=2.8.1
+pkgver=2.8.1
 pkgrel=1
 pkgdesc="A cron monitoring service with a web-based dashboard, API, and notification integrations."
 arch=('any')
@@ -15,6 +15,10 @@ optdepends=('python-psycopg2: Add support for postgreSQL.'
 	    'python-apprise: Add support for the Apprise integration.')
 backup=("var/lib/$pkgname/local_settings.py" "etc/uwsgi/$pkgname.ini")
 install="$pkgname.install"
+
+# other ways of specifying source from github:
+# source=("git+$url#tag=v$pkgver")
+# source=('project_name::git+https://project_url#branch=project_branch')
 source=("$url/archive/refs/tags/v$_pkgver.tar.gz"
 	"hc-clean-db"
 	"hc-manage"
@@ -27,7 +31,7 @@ source=("$url/archive/refs/tags/v$_pkgver.tar.gz"
         "$pkgname.tmpfiles"
 	"local_settings.py"
         "settings.patch")
-sha256sums=('8781b00846bc148362d1fe3cb791ec3f4ac2b9b574ab1ff09967c559852679f1'
+sha256sums=('ff851b1e5042e1a1bef9b569a7e55e3d114f1943a612bf3c1a245a92b4646569'
 	    'a7b75bdd35c6952e06e1cd3824450f7c613aff5e3fb1d9f4f57f517b57cefbde'
 	    '355ac237284642e24a3cbe7ddb285bf7dbb802e72ea7fe7c68f0476178ab94fc'
 	    '9d32c4d1404079cac9b7a4ccbc97e01d867735c2536f915220d2ac5dffc333e7'
@@ -72,7 +76,7 @@ package() {
     install -dm755 "$pkgdir/var/lib/$pkgname"
 
     # install healthchecks
-    cp -r {hc,locale,__pycache__,static,static-collected,stuff,templates} "$pkgdir/usr/share/webapps/$pkgname/"
+    cp -r {hc,__pycache__,static,static-collected,stuff,templates} "$pkgdir/usr/share/webapps/$pkgname/"
     install -Dm755 manage.py "$pkgdir/usr/share/webapps/$pkgname/"
     install -Dm644 CHANGELOG.md "$pkgdir/usr/share/webapps/$pkgname/"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/"
