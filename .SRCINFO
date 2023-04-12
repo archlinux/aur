@@ -10,7 +10,6 @@ pkgbase = katrain
 	depends = python-certifi
 	depends = python-chardet
 	depends = cython
-	depends = python-dataclasses
 	depends = python-docutils
 	depends = python-idna
 	depends = python-kivy>=2.0.0
