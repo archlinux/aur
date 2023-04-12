@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Pocket Casts
+Comment=Pocket Casts client with support for MPRIS (media controls)
+Exec=pocket-casts-linux %U
+Terminal=false
+Type=Application
+Icon=pocket-casts-linux
+StartupWMClass=Pocket Casts
+Categories=AudioVideo;Audio;
