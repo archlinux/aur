@@ -1,24 +1,40 @@
-# Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux (a) free.fr>
-pkgname=ruby-net-ldap
-pkgver=0.17.0
-_gemname=${pkgname#ruby-}
+# Maintainer: Mario Finelli <mario at finel dot li>
+# Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux (a) free.fr>
+
+_gemname=net-ldap
+pkgname=ruby-$_gemname
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Pure Ruby LDAP library"
 arch=(any)
-url="https://rubygems.org/gems/${_gemname}"
-license=("GPL")
-depends=('ruby')
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha256sums=('d62474b28b9f18d9108a7c859171bb1b9ebf0e1bc1d218e79170c0f373f729c8')
-noextract=($_gemname-$pkgver.gem)
+url=https://github.com/ruby-ldap/ruby-net-ldap
+license=(MIT)
+options=(!emptydirs)
+depends=(ruby)
+makedepends=(rubygems ruby-rdoc)
+source=(${url}/archive/v${pkgver}.tar.gz)
+sha256sums=('1e379e9d16d96ed510a70deca2f81abe601c626ed1699c2c762a02a227e5a3af')
+
+build() {
+  cd $pkgname-$pkgver
+  gem build ${_gemname}.gemspec
+}
 
 package() {
-  cd "$srcdir"
+  cd $pkgname-$pkgver
+  local _gemdir="$(gem env gemdir)"
 
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  HOME="/tmp" GEM_HOME="$_gemdir" GEM_PATH="$_gemdir" gem install \
-    --no-user-install --ignore-dependencies \
-    -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" "$_gemname-$pkgver.gem"
+  gem install \
+    --ignore-dependencies \
+    --no-user-install \
+    -i "$pkgdir/$_gemdir" \
+    -n "$pkgdir/usr/bin" \
+    $_gemname-$pkgver.gem
 
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  rm -rf "$pkgdir/$_gemdir/cache"
+
+  install -Dm0644 License.rdoc "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0644 README.rdoc "$pkgdir/usr/share/doc/$pkgname/README.rdoc"
 }
+
+# vim: set ts=2 sw=2 et:

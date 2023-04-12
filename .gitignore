@@ -1,4 +1,4 @@
-*.gem
-pkg
-src
-*.xz
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
