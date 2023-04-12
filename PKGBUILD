@@ -1,21 +1,28 @@
 # Maintainer: William Turner <willtur.will@gmail.com>
+
 pkgname=azuredatastudio-bin
 _pkgname=azuredatastudio
-pkgver=1.42.0
+pkgver=1.43.0
 pkgrel=1
-pkgdesc="Azure Data Studio is a data management tool that enables you to work with SQL Server, Azure SQL DB and SQL DW (official prebuilt version)"
+pkgdesc="A data management tool that enables you to work with SQL Server, Azure SQL DB and SQL DW. (official prebuilt version)"
 arch=('x86_64')
 url="https://github.com/Microsoft/azuredatastudio"
 license=('custom: microsoft')
-depends=('curl' 'gcc-libs' 'glibc' 'gnupg' 'gtk3' 'libnotify' 'libsecret' 'libxkbfile' 'libxss' 'lsof' 'nss')
+depends=('gtk3'
+         'libsecret'
+         'libxkbfile'
+         'nss'
+         'nss'
+         'openssl')
 makedepends=('sed')
-optdepends=('krb5: Windows authentication support')
+optdepends=('krb5: Windows authentication support'
+            'xdg-utils: Desktop integration')
 conflicts=('azuredatastudio')
 options=('staticlibs')
 source=("$pkgname-$pkgver.tar.gz::https://azuredatastudio-update.azurewebsites.net/$pkgver/linux-x64/stable"
         "${_pkgname}.desktop")
-sha256sums=('5d2976a30ca0665c2040fed45611d70ddf1611504711c1e390e69dac359873ae'
-            '460ef23631450298409a96c75662428ffc356b666eefbab813e78ef71e346727')
+sha256sums=('dfd1d3dde9780d8c43eff8e5836a5792e03126935b15db0ff67a707c7f6a8cc5'
+            'ff4b8d7d1648e7552017c103308aef2d291509a73b7b4ed6083501ea55a1b541')
 
 package() {
   install -d "${pkgdir}/opt/${_pkgname}"

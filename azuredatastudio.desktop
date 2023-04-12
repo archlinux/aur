@@ -2,17 +2,17 @@
 Name=Azure Data Studio
 Comment=Data Management Tool that enables you to work with SQL Server, Azure SQL DB and SQL DW from Windows, macOS and Linux.
 GenericName=Text Editor
-Exec=/opt/azuredatastudio/bin/azuredatastudio --no-sandbox --unity-launch %F
+Exec=/opt/azuredatastudio/bin/azuredatastudio --unity-launch %F
 Icon=azuredatastudio
 Type=Application
 StartupNotify=false
 StartupWMClass=azuredatastudio
-Categories=Utility;TextEditor;Development;IDE;
-MimeType=text/plain;
+Categories=TextEditor;Development;IDE;
+MimeType=text/plain;application/x-azuredatastudio-workspace;
 Actions=new-empty-window;
 Keywords=azuredatastudio;
 
 [Desktop Action new-empty-window]
 Name=New Empty Window
-Exec=/opt/azuredatastudio/bin/azuredatastudio --no-sandbox --new-window %F
+Exec=/opt/azuredatastudio/bin/azuredatastudio --new-window %F
 Icon=azuredatastudio
