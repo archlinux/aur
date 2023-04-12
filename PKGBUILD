@@ -1,22 +1,49 @@
-# Maintainer: moyiz <8603313+moyiz@users.noreply.github.com>
-pkgname=wander-bin
+# Maintainer: Bao Trinh <qubidt@gmail.com>
+# Contributor: moyiz <8603313+moyiz@users.noreply.github.com>
+
+pkgname=wander
 pkgver=0.9.0
+_commit=f8b0e435696349e4feddd495136c8fd2bd6349e8  # tags/v0.9.0
 pkgrel=1
 pkgdesc="An efficient terminal application/TUI for your HashiCorp Nomad cluster."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/robinovitch61/wander"
 license=('MIT')
 depends=('glibc')
+makedepends=('git' 'go')
 provides=('wander')
+source=("${pkgname}::git+${url}.git#commit=${_commit}")
+sha256sums=('SKIP')
 
-source_i686=("https://github.com/robinovitch61/wander/releases/download/v${pkgver}/wander_${pkgver}_Linux_i386.tar.gz")
-source_x86_64=("https://github.com/robinovitch61/wander/releases/download/v${pkgver}/wander_${pkgver}_Linux_x86_64.tar.gz")
-source_aarch64=("https://github.com/robinovitch61/wander/releases/download/v${pkgver}/wander_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_i686=('ac0e23b90b981aa45bc8b21165a2e866f905d92f29a39ea75d702b74e6012db43')
-sha256sums_x86_64=('aea08e51b85b68a2a899b689f0e8d70cc8b0b54fe3883bd99c768894a7359dc8')
-sha256sums_aarch64=('eec70ccd45ca1a278ed420ee476a86002406812c6a95a32180ac8fa4751a73dd')
+prepare() {
+  cd "${pkgname}"
+
+  # create directory for build output
+  mkdir -p build
+
+  # download dependencies
+  go mod download
+}
+
+build() {
+  cd "${pkgname}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOPATH="${srcdir}"
+  go build \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags="-linkmode=external -compressdwarf=false" \
+    -o build \
+    .
+}
 
 package() {
-    cd $srcdir
-    install -Dm755 wander $pkgdir/usr/bin/wander
+  cd "${pkgname}"
+  install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 }
