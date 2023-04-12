@@ -1,6 +1,6 @@
 pkgbase = pods
 	pkgdesc = A Podman desktop application
-	pkgver = 1.0.5
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/marhkb/pods
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = pods
 	depends = gtksourceview5
 	depends = podman
 	depends = vte4
-	source = pods-1.0.5.tar.gz::https://github.com/marhkb/pods/archive/v1.0.5.tar.gz
-	b2sums = 9b8afaa753fc16e808cc8e74b36d0461333c1c54044ee22b9680329b06b9b13ff0d71aec63424f9b47c34723f9bca5c2e4d39364670774c8668a405f3ce154fd
+	source = pods-1.1.0.tar.gz::https://github.com/marhkb/pods/archive/v1.1.0.tar.gz
+	b2sums = 629717cf94f6e77f6f1184e25fda540cb0ae207cce7600a6565b47a1a288632bd4f5c3104b1d2754e3287b27bc97f0c2ff0fc80d6f4241ccebe2fb11a2d6781c
 
 pkgname = pods
