@@ -5,7 +5,7 @@ cat <<EOF
 To autoload weechat-notify-send on start up, each user will need to symlink the plugin to
 the correct autoload folder:
 
-    \$ ln -s /usr/share/weechat/python/notify_send.py ~/.weechat/python/autoload/
+    \$ ln -s /usr/share/weechat/python/notify_send.py ~/.local/share/weechat/python/autoload/
 
 
 Previous versions of this package recommended creating a symlink in your local
