@@ -21,6 +21,7 @@ pkgbase = goldendict-webengine-git
 	depends = qt5-x11extras
 	depends = qt5-multimedia
 	depends = qt5-webengine
+	depends = qt5-speech
 	provides = goldendict
 	conflicts = goldendict
 	conflicts = goldendict-git
