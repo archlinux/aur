@@ -20,7 +20,7 @@ _fragment="${FRAGMENT:-#branch=main}"
 _CMAKE_FLAGS+=( -DWITH_CYCLES_NETWORK=OFF )
 
 pkgname=blender-git
-pkgver=3.6.r122861.g324ba509b53
+pkgver=3.6.r123062.g28a8a3c0861
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
@@ -40,7 +40,7 @@ optdepends=('cuda: CUDA support in Cycles'
             'intel-compute-runtime: Intel OpenCL FPGA kernels (all four needed)'
             'intel-graphics-compiler: Intel OpenCL FPGA kernels (all four needed)'
             'intel-oneapi-basekit: Intel OpenCL FPGA kernels (all four needed)')
-makedepends=('git' 'cmake' 'boost' 'mesa' 'ninja' 'llvm' 'clang' 'svn')
+makedepends+=('git' 'cmake' 'boost' 'mesa' 'ninja' 'llvm' 'clang' 'subversion')
 makedepends+=('wayland-protocols')
 provides=('blender')
 conflicts=('blender')
@@ -66,7 +66,7 @@ sha256sums=('SKIP'
             '10cf3652cf16f8042437bb511e2b030035433978f71cf1da8028711f49599074'
             '52da80b721efb6a6d579adf531640becfac1955a88857ca46ca16030a52c3b1c'
             'c2db51a83a8d573aa76c760f10e541c84b108d64d05c9647681c4e633b3d0397'
-            'd587135fd9b815d60e8b7f48976aa835472922fc8f64c256dc397bfcd3c2642a')
+            '35d497a415c120ebe2ed8d0d9462ca72af63570e26b3ec112d8bb8e6822b54b3')
 
 pkgver() {
   blender_version=$(grep -Po "BLENDER_VERSION \K[0-9]{3}" "$srcdir"/blender/source/blender/blenkernel/BKE_blender_version.h)
