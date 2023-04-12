@@ -1,18 +1,18 @@
 pkgbase = ttf-adobe-source-fonts
 	pkgdesc = TTF versions of Adobe's Source fonts (includes Source Sans, Source Serif, and Source Code Pro).
-	pkgver = 2023040400
+	pkgver = 2023041200
 	pkgrel = 1
 	url = https://github.com/adobe-fonts
 	arch = any
 	license = custom:SIL
 	conflicts = ttf-sourcesanspro
-	noextract = ttf-adobe-source-fonts-2023040400-source-code-pro.tar.gz
-	noextract = ttf-adobe-source-fonts-2023040400-source-serif.tar.gz
-	noextract = ttf-adobe-source-fonts-2023040400-source-sans.tar.gz
-	source = ttf-adobe-source-fonts-2023040400-source-code-pro.tar.gz::https://github.com/adobe-fonts/source-code-pro/archive/refs/tags/2.040R-u/1.060R-i/1.024R-vf.tar.gz
-	source = ttf-adobe-source-fonts-2023040400-source-serif.tar.gz::https://github.com/adobe-fonts/source-serif/archive/refs/tags/4.005R.tar.gz
-	source = ttf-adobe-source-fonts-2023040400-source-sans.tar.gz::https://github.com/adobe-fonts/source-sans/archive/refs/tags/3.052R.tar.gz
-	sha256sums = f17728d68dc1b0720f503d990f763738b6647d10d5cd63afa4525754f2c04229
+	noextract = ttf-adobe-source-fonts-2023041200-source-code-pro.tar.gz
+	noextract = ttf-adobe-source-fonts-2023041200-source-serif.tar.gz
+	noextract = ttf-adobe-source-fonts-2023041200-source-sans.tar.gz
+	source = ttf-adobe-source-fonts-2023041200-source-code-pro.tar.gz::https://github.com/adobe-fonts/source-code-pro/archive/refs/tags/2.042R-u/1.062R-i/1.026R-vf.tar.gz
+	source = ttf-adobe-source-fonts-2023041200-source-serif.tar.gz::https://github.com/adobe-fonts/source-serif/archive/refs/tags/4.005R.tar.gz
+	source = ttf-adobe-source-fonts-2023041200-source-sans.tar.gz::https://github.com/adobe-fonts/source-sans/archive/refs/tags/3.052R.tar.gz
+	sha256sums = 19d2c07eff0d91927c47a482c38e591ba855664fc65440006fb65d0157841249
 	sha256sums = 92415a067bfa449876cd3f4a4229d18a9140588574299696da81be0e213d69df
 	sha256sums = 21f4e24bbd7b24c31ba13ddb10600db3a61565f20f2ccf2347f4e114e6e34596
 
