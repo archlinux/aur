@@ -10,12 +10,11 @@ license=(GPL3)
 depends=(perl-reply)
 optdepends=('perl-file-xdg>=1.00: support configure file')
 # https://github.com/rwstauner/Git-DescribeVersion/issues/1
-_pkgver=0.0.16
 source=("$url/releases/download/$pkgver/$_pkgname-$pkgver.0.tar.gz")
 sha256sums=('af2c98fc70d50330501c69258971995c214b3e5d293d8112c989fe34114b2ea0')
 
 build() {
-  cd $_pkgname-$_pkgver || return 1
+  cd $_pkgname-$pkgver.0 || return 1
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
   perl Makefile.PL
@@ -23,14 +22,14 @@ build() {
 }
 
 check() {
-  cd $_pkgname-$_pkgver || return 1
+  cd $_pkgname-$pkgver.0 || return 1
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1
   make test
 }
 
 package() {
-  cd $_pkgname-$_pkgver || return 1
+  cd $_pkgname-$pkgver.0 || return 1
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
