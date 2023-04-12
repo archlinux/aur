@@ -1,15 +1,23 @@
 pkgbase = ruby-tty-config
-	pkgdesc = Define, read and write any Ruby app configurations with a penchant for terminal clients.
-	pkgver = 0.4.0
+	pkgdesc = A highly customisable application configuration interface
+	pkgver = 0.5.1
 	pkgrel = 1
-	url = https://ttytoolkit.org
+	url = https://github.com/piotrmurach/tty-config
 	arch = any
 	license = MIT
+	checkdepends = ruby-bundler
+	checkdepends = ruby-rake
+	checkdepends = ruby-rspec
+	checkdepends = ruby-inifile
+	checkdepends = ruby-java-properties
+	checkdepends = ruby-rhcl
+	checkdepends = ruby-toml
+	checkdepends = ruby-xml-simple
+	makedepends = rubygems
+	makedepends = ruby-rdoc
 	depends = ruby
-	noextract = tty-config-0.4.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/tty-config-0.4.0.gem
-	sha256sums = d7122fb848ec764e472b8c9143528dc7a796774f6b5487d5817b528bacabce1c
+	source = https://github.com/piotrmurach/tty-config/archive/v0.5.1.tar.gz
+	sha256sums = 507ddd029750e8fc8bf761984d9fae2aeed95db901569959d6a4f54dd851710f
 
 pkgname = ruby-tty-config
-

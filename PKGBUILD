@@ -1,23 +1,55 @@
-# Maintainer: Michal Kimle <kimle.michal@gmail.com>
+# Maintainer: Mario Finelli <mario at finel dot li>
+# Contributor: Michal Kimle <kimle.michal@gmail.com>
 
 _gemname=tty-config
 pkgname=ruby-$_gemname
-pkgver=0.4.0
+pkgver=0.5.1
 pkgrel=1
-pkgdesc='Define, read and write any Ruby app configurations with a penchant for terminal clients.'
+pkgdesc="A highly customisable application configuration interface"
 arch=(any)
-url='https://ttytoolkit.org'
+url=https://github.com/piotrmurach/tty-config
 license=(MIT)
-depends=(ruby)
 options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
-sha256sums=('d7122fb848ec764e472b8c9143528dc7a796774f6b5487d5817b528bacabce1c')
+depends=(ruby)
+checkdepends=(ruby-bundler ruby-rake ruby-rspec ruby-inifile
+              ruby-java-properties ruby-rhcl ruby-toml ruby-xml-simple)
+makedepends=(rubygems ruby-rdoc)
+source=(${url}/archive/v${pkgver}.tar.gz)
+sha256sums=('507ddd029750e8fc8bf761984d9fae2aeed95db901569959d6a4f54dd851710f')
+
+prepare() {
+  cd $_gemname-$pkgver
+
+  # we don't care about coverage or metrics
+  echo 'source "https://rubygems.org"' > Gemfile
+  echo gemspec >> Gemfile
+}
+
+build() {
+  cd $_gemname-$pkgver
+  gem build ${_gemname}.gemspec
+}
+
+check() {
+  cd $_gemname-$pkgver
+  rake
+}
 
 package() {
-  cd "$srcdir"
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  HOME="/tmp" GEM_HOME="$_gemdir" GEM_PATH="$_gemdir" gem install -N --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  cd $_gemname-$pkgver
+  local _gemdir="$(gem env gemdir)"
+
+  gem install \
+    --ignore-dependencies \
+    --no-user-install \
+    -i "$pkgdir/$_gemdir" \
+    -n "$pkgdir/usr/bin" \
+    $_gemname-$pkgver.gem
+
+  rm -rf "$pkgdir/$_gemdir/cache"
+
+  install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
+
+# vim: set ts=2 sw=2 et:
