@@ -10,7 +10,7 @@ makedepends=()
 conflicts=()
 provides=()
 source=("conservation_mode.service")
-md5sums=('1f0b278b3e3097509340b2d383fee347')
+md5sums=('c2c34c4cc495436bf91d3dfc205afb6d')
 
 package() {
   install -Dm644 "${startdir}/${pkgname}.service" "$pkgdir/usr/lib/systemd/system/${pkgname}.service"
