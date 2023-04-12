@@ -1,30 +1,30 @@
-# Maintainer: solopasha <daron439 at gmail dot com>
+# Contributor: solopasha <daron439 at gmail dot com>
+# Maintainer: asuka minato
+
 pkgname=remnote
-pkgver=1.8.49
+pkgver=1.9.45
 pkgrel=1
 pkgdesc="All-in-one workspace for note-taking, learning, organizing thoughts and growing knowledge"
 arch=('x86_64')
+depends=()
 url="https://www.remnote.com"
 license=('custom:Commercial')
 options=(!strip)
 _appimage="RemNote-${pkgver}.AppImage"
-source=("https://download.remnote.io/${_appimage}"
-	"${pkgname}.sh")
+source=("https://download.remnote.io/remnote-desktop/RemNote-$pkgver.AppImage")
 noextract=("${_appimage}")
-sha256sums=('84b62e408b463fffe6cd1f42795cc9b57a49069ea9e9d61b76a06e187f17a0e5'
-            '25f625c75af753260ed530a759f7adb09fe8cc164ec2f566923a1d229e6a2485')
+sha256sums=('934b1eeed25232f19d7f9db501fc5cc522998483b1997331b643a96303653f5b')
+
 prepare() {
-	chmod a+x $_appimage
+	chmod +x $_appimage
 	./$_appimage --appimage-extract
-	sed -i -e "s|^Exec=.*|Exec=/usr/bin/$pkgname %U|" \
+	sed -i -e "s|^Exec=.*|Exec=/usr/bin/$pkgname|" \
 		-e '/^X-AppImage-Version=.*/d' \
 		-e '/Categories=/s/=/&Office;/' squashfs-root/${pkgname}.desktop
 }
 
 package() {
-	depends=('electron19')
-	install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-	install -Dm644 "squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
+	install -Dm755 "RemNote-$pkgver.AppImage" "${pkgdir}/usr/bin/${pkgname}"
 	install -Dm644 "squashfs-root/remnote.png" -t "${pkgdir}/usr/share/pixmaps"
 	install -Dm644 "squashfs-root/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }

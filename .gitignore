@@ -1,3 +1,6 @@
 *.log
 *.AppImage
 updater.sh
+*.zst
+pkg/
+src/
