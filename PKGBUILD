@@ -42,10 +42,10 @@ build() {
     -DWITH_CLANG=OFF \
     ..
 
-  make
+  cmake --build .
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}/build"
-  make install DESTDIR="${pkgdir}"
+  DESTDIR="${pkgdir}" cmake --install .
 }
