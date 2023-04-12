@@ -3,7 +3,7 @@
 _pkgname=tarsila
 pkgname=${_pkgname}-git
 pkgver=0.1.0.r43.g9212f28
-pkgrel=1
+pkgrel=2
 pkgdesc='Pixel art and spritesheet editor'
 url='https://github.com/yds12/tarsila'
 arch=('x86_64')
@@ -11,6 +11,8 @@ depends=('gcc-libs' 'glibc' 'gtk3' 'alsa-lib')
 makedepends=('cargo' 'pkgconf' 'glib2' 'at-spi2-core' 'gdk-pixbuf2' 'git')
 license=('MIT' 'APACHE')
 source=("${_pkgname}::git+${url}.git")
+conflicts=(${_pkgname})
+provides=(${_pkgname})
 sha512sums=('SKIP')
 
 prepare() {
