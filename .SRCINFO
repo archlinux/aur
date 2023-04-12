@@ -1,15 +1,16 @@
 pkgbase = artriculate-git
 	pkgdesc = QML box2d application for displaying artwork
-	pkgver = 0.7.0.r42.g757112b
-	pkgrel = 1
+	pkgver = 0.7.1.r15.g201b4fb
+	pkgrel = 2
 	url = https://github.com/sirspudd/artriculate
 	arch = any
 	license = GPL3
+	makedepends = qt6-base
+	makedepends = qt6-declarative
 	provides = artriculate
 	conflicts = artriculate
 	options = !strip
-	source = git://github.com/sirspudd/artriculate
+	source = git+https://github.com/sirspudd/artriculate
 	sha256sums = SKIP
 
 pkgname = artriculate-git
-
