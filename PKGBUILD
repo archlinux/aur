@@ -16,7 +16,7 @@ sha256sums=('6a64d4c02b84affb6b6e1f17aaca78a41d319576b7f428b50b55a6ba2ce64b3e'
 
 build() {
   cd MP4Tools-$pkgver
-  ./configure --prefix=/usr --with-wx-config=/usr/bin/wx-config-gtk3
+  ./configure --prefix=/usr --with-wx-config=/usr/bin/wx-config
   make
 }
 
