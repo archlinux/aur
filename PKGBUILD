@@ -2,7 +2,7 @@
 
 pkgname=mesa-rusticl-git
 pkgdesc="An open-source implementation of the OpenGL specification, with Rusticl"
-pkgver=23.1.0_devel.169433.bb495c0c1c3.d41d8cd98f00b204e9800998ecf8427e
+pkgver=23.1.0_devel.169687.3b958f65ca8.d41d8cd98f00b204e9800998ecf8427e
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
@@ -81,6 +81,7 @@ build () {
     export CC="clang"
     export CXX="clang++"
 
+    # Vulkan microsoft-experimental disabled
     meson setup mesa _build \
        --wrap-mode=nofallback \
        -D prefix=/usr \
@@ -90,7 +91,7 @@ build () {
        -D b_lto=true \
        -D platforms=auto \
        -D gallium-drivers=r300,r600,radeonsi,i915,crocus,iris,nouveau,d3d12,zink,svga,virgl,swrast \
-       -D vulkan-drivers=amd,intel_hasvk,intel,microsoft-experimental,virtio-experimental,swrast \
+       -D vulkan-drivers=amd,intel_hasvk,intel,virtio-experimental,swrast \
        -D vulkan-layers=device-select,intel-nullhw,overlay \
        -D dri3=enabled \
        -D egl=enabled \
