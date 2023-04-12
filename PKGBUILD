@@ -7,8 +7,8 @@ pkgbase=mutter-auto-rotation
 pkgname=mutter-auto-rotation
 provides=(libmutter-11.so mutter)
 conflicts=(mutter)
-pkgver=43.3
-pkgrel=3
+pkgver=43.4
+pkgrel=1
 pkgdesc="Window manager and compositor for GNOME, with touch-mode auto-rotation (reverts MR 1710)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -43,7 +43,7 @@ makedepends=(
   xorg-server
   xorg-server-xvfb
 )
-_commit=a63755bdad7d8bffdbbc649178d759c37dacce01  # tags/43.3^0
+_commit=0e7506ff6d8e4940fc6654f2711e5decb23440dc  # tags/43.4^0
 
 source=(
   "git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
@@ -63,9 +63,9 @@ pkgver() {
 prepare() {
   cd mutter
 
-  # Fix broken focus handling with XWayland
-  # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2848
-  # git cherry-pick -n d5e75bccdee7ea0e30cd860ca08ae109dcb311c8
+  # Fix crash on resume from suspend
+  # https://gitlab.gnome.org/GNOME/mutter/-/issues/2570
+  git cherry-pick -n c1ab3f39d73a041b488acf7296456840fa83c0da
 
   git apply ../0001-Revert-backends-native-Disable-touch-mode-with-point.patch
 }

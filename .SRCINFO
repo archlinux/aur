@@ -1,7 +1,7 @@
 pkgbase = mutter-auto-rotation
 	pkgdesc = Window manager and compositor for GNOME, with touch-mode auto-rotation (reverts MR 1710)
-	pkgver = 43.3
-	pkgrel = 3
+	pkgver = 43.4
+	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
 	license = GPL
@@ -34,7 +34,7 @@ pkgbase = mutter-auto-rotation
 	provides = libmutter-11.so
 	provides = mutter
 	conflicts = mutter
-	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=a63755bdad7d8bffdbbc649178d759c37dacce01
+	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=0e7506ff6d8e4940fc6654f2711e5decb23440dc
 	source = 0001-Revert-backends-native-Disable-touch-mode-with-point.patch
 	sha256sums = SKIP
 	sha256sums = b11e3e1c9a14b9d9a3941e4495f7f16cfe84c53c6b8e571df049546840a91a46
