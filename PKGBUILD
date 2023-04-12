@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=net-tools-git
-pkgver=1.60.r366.gaebd88e
+pkgver=2.10.r7.g4030929
 pkgrel=1
 pkgdesc="The collection of base networking utilities for Linux"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://sourceforge.net/projects/net-tools/"
 license=('GPL2')
 depends=('glibc')
 makedepends=('git')
-provides=('net-tools')
+provides=("net-tools=$pkgver")
 conflicts=('net-tools')
 source=("git+https://git.code.sf.net/p/net-tools/code")
 sha256sums=('SKIP')
@@ -31,7 +31,11 @@ build() {
 package() {
   cd "code"
 
-  make DESTDIR="$pkgdir" BINDIR="/usr/bin" SBINDIR="/usr/bin" install
+  make \
+    DESTDIR="$pkgdir" \
+    BINDIR="/usr/bin" \
+    SBINDIR="/usr/bin" \
+    install
 
   # provided by yp-tools
   rm "$pkgdir/usr/bin"/{nis,yp}domainname
