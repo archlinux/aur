@@ -1,56 +1,70 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
-pkgname='netbird-bin'
-_pkgname="${pkgname%-bin}"
-pkgver=0.15.2
+pkgname=netbird-bin
+pkgver=0.15.3
 pkgrel=1
 pkgdesc='A WireGuard-based mesh network that connects your devices into a single private network'
 url='https://netbird.io'
-arch=(x86_64 aarch64 armv6h)
-license=('BSD')
+arch=(i686 x86_64 aarch64 armv6h)
+license=(BSD)
 
-provides=("${_pkgname}" wiretrustee)
-conflicts=("${_pkgname}")
-depends=()
-makedepends=()
-optdepends=()
-replaces=('wiretrustee-bin')
+provides=(netbird wiretrustee)
+conflicts=(netbird)
+depends=(glibc)
+optdepends=('resolvconf: Private DNS')
+replaces=(wiretrustee-bin)
 
 source=(
   'environment'
   'netbird@.service'
-  'wiretrustee@.service'
 )
 sha256sums=('128e36e1f814a12886f3122a1809a404be17f81481275b6624e66937941f5269'
-            'ae5938e98c84a2dd4324208389b0a6cdf9a24cf3b66d1001a0b137e008da33ec'
             'ae5938e98c84a2dd4324208389b0a6cdf9a24cf3b66d1001a0b137e008da33ec')
-sha256sums_x86_64=('41533a9e07a5125689a4b566a7676597922e17e3731e66761830d785715088be')
-sha256sums_aarch64=('7e8e0a35ae93f67bb2b9d1b23f355515e331d15e7ab75667f0446c1eebb0490d')
-sha256sums_armv6h=('a602be5d20337f780f992728429e02067c5cac95870ddf56ba3b21c6b1132509')
+sha256sums_i686=('b4334b0788beae07bcddd8c8b6aeadfe98eb563abe28fc8cb52602a4228de655')
+sha256sums_x86_64=('6a70a6654326526a9ce6333eb57a3a1e2fd2d9cb731db6eb0c18edbb30125ae0')
+sha256sums_aarch64=('c6c0022236d87331ec1ea2de96314c089732f820c126203c59ec111a21e72b77')
+sha256sums_armv6h=('1e6324c6b45ce7ff434998f221ae5e6da144f26070959665bb0bae444e883e9c')
 
-_base_url="https://github.com/netbirdio/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux"
+_base_url="https://github.com/netbirdio/netbird/releases/download/v$pkgver/netbird_${pkgver}_linux"
 
-source_x86_64=("${pkgname}-${pkgver}-amd64.tar.gz::${_base_url}_amd64.tar.gz")
-source_aarch64=("${pkgname}-${pkgver}-arm64.tar.gz::${_base_url}_arm64.tar.gz")
-source_armv6h=("${pkgname}-${pkgver}-armv6.tar.gz::${_base_url}_armv6.tar.gz")
+source_i686=("${_base_url}_386.tar.gz")
+source_x86_64=("${_base_url}_amd64.tar.gz")
+source_aarch64=("${_base_url}_arm64.tar.gz")
+source_armv6h=("${_base_url}_armv6.tar.gz")
+
+prepare() {
+  # try to generate completions if the binary is runnable on current CPU
+  for shell in bash fish zsh; do
+    ./netbird completion $shell >completion.$shell 2>/dev/null || rm -f completion.$shell
+  done
+}
 
 package() {
   # binary
-  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 netbird "$pkgdir/usr/bin/netbird"
 
   # config directory
-  install -Ddm755 -o root -g root "${pkgdir}/etc/${_pkgname}"
+  install -Ddm755 -o root -g root "$pkgdir/etc/netbird"
 
   # environment file
-  install -Dm644 environment "${pkgdir}/etc/default/${_pkgname}"
+  install -Dm644 environment "$pkgdir/etc/default/netbird"
 
   # systemd unit
-  install -Dm644 "${_pkgname}@.service" \
-    "${pkgdir}/usr/lib/systemd/system/${_pkgname}@.service"
-
-  install -Dm644 "wiretrustee@.service" \
-    "$pkgdir/usr/lib/systemd/system/wiretrustee@.service"
+  install -Dm644 netbird@.service \
+    "$pkgdir/usr/lib/systemd/system/netbird@.service"
 
   # license
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/netbird/LICENSE"
+
+  # shell completions
+  if [[ -f completion.bash ]]; then
+    install -Dm644 completion.bash \
+      "$pkgdir/usr/share/bash-completion/completions/netbird"
+
+    install -Dm644 completion.fish \
+      "$pkgdir/usr/share/fish/completions/netbird.fish"
+
+    install -Dm644 completion.zsh \
+      "$pkgdir/usr/share/zsh/site-functions/_netbird"
+  fi
 }
