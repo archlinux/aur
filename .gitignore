@@ -1,0 +1,7 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!finanx-12c
+!finanx-12c.desktop
+!finanx-12c.png

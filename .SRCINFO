@@ -1,0 +1,16 @@
+pkgbase = finanx-12c
+	pkgdesc = Free software that mimics the HP-12C financial calculator. NOT RECOMMENDED for professional calculations.
+	pkgver = 0.2.8
+	pkgrel = 1
+	url = https://sourceforge.net/projects/finanx/
+	arch = x86_64
+	license = GPL3
+	depends = java-runtime<=11
+	source = finanx-12c
+	source = finanx-12c.desktop
+	source = https://sourceforge.net/projects/finanx/files/finanx-12c-0.2.8/finanx-12c-0.2.8.zip
+	sha256sums = 9a28b1ebf7b7607c3c7fe9668fe339938bea8b17fd344e8a1459df09a7982252
+	sha256sums = 7f6ba24714523349a805697992b21e1c60bf7cec1d0f5d763e7f84f217e30956
+	sha256sums = 934bf5dac28914220315bc90a9befb5506a77bd97faab0f880ffbbced260c1ab
+
+pkgname = finanx-12c
