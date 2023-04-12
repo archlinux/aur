@@ -2,7 +2,7 @@
 # Maintainer: Federico Cerutti <aur $at$ ceres-c $dot-Italy-tld$>
 pkgname=owon-vds-tiny
 _gitname='OWON-VDS1022'
-pkgver=1.0.33.cf13
+pkgver=1.1.5.cf19
 pkgrel=1
 pkgdesc="OWON VDS1022(I)/VDS2052 oscilloscope application"
 arch=(x86_64 i386 aarch64)
@@ -53,7 +53,7 @@ package() {
 	install -Dm644 "$srcdir/$_gitname/lib/gson-2.7.0.jar" "${pkgdir}/usr/share/${pkgname}/lib/gson-2.7.0.jar"
 	install -Dm644 "$srcdir/$_gitname/lib/jxl-2.6.6.jar" "${pkgdir}/usr/share/${pkgname}/lib/jxl-2.6.6.jar"
 	install -Dm644 "$srcdir/$_gitname/lib/libusbJava-src.zip" "${pkgdir}/usr/share/${pkgname}/lib/libusbJava-src.zip"
-	install -Dm644 "$srcdir/$_gitname/lib/owon-vds-tiny-1.1.1-cf13.jar" "${pkgdir}/usr/share/${pkgname}/lib/owon-vds-tiny-1.1.1-cf13.jar"
+	install -Dm644 "$srcdir/$_gitname/lib/owon-vds-tiny-1.1.5-cf19.jar" "${pkgdir}/usr/share/${pkgname}/lib/owon-vds-tiny-1.1.5-cf19.jar"
 
 	install -Dm644 "$srcdir/$_gitname/version.txt" "${pkgdir}/usr/share/${pkgname}/version.txt"
 	install -Dm755 "$srcdir/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
