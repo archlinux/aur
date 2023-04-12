@@ -1,0 +1,11 @@
+diff --unified --recursive --text mesa.orig/src/gallium/frontends/rusticl/meson.build mesa.new/src/gallium/frontends/rusticl/meson.build
+--- mesa.orig/src/gallium/frontends/rusticl/meson.build	2023-04-12 23:39:27.492025404 +0200
++++ mesa.new/src/gallium/frontends/rusticl/meson.build	2023-04-12 23:43:42.296191294 +0200
+@@ -92,7 +92,6 @@
+ rusticl_bindgen_args = [
+   '--no-convert-floats',
+   '--use-array-pointers-in-arguments',
+-  '--size_t-is-usize',
+   '--default-enum-style', 'rust',
+   '--with-derive-partialeq',
+   '--with-derive-eq',
