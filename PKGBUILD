@@ -2,18 +2,18 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=intelxed-git
-pkgver=12.0.1.r1.gf7191e2
+pkgver=2022.10.11.r0.g9fc12ab
 pkgrel=1
-pkgdesc="x86 encoder decoder"
+pkgdesc="Intel x86 encoder decoder"
 arch=('x86_64')
 url="https://intelxed.github.io"
 license=('Apache')
 depends=()
-makedepends=('git' 'mbuild')
+makedepends=('git' 'mbuild' 'doxygen')
 provides=('intelxed')
-conflicts=('intelxed')
-source=("$pkgname"::'git+https://github.com/intelxed/xed')
-md5sums=('SKIP')
+conflicts=('intelxed' 'xed')
+source=("$pkgname::git+https://github.com/intelxed/xed")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
@@ -25,23 +25,25 @@ pkgver() {
 }
 
 build() {
-    cd "${srcdir}/${pkgname}"
-    ./mfile.py --static install ${MAKEFLAGS}
-    ./mfile.py --shared install ${MAKEFLAGS}
-    ./mfile.py examples install ${MAKEFLAGS}
+    cd "$srcdir/$pkgname"
+    ./mfile.py --static install $MAKEFLAGS
+    ./mfile.py --shared install $MAKEFLAGS
+    ./mfile.py doc doc-build examples install $MAKEFLAGS
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"/kits/xed-install-base-*-lin-x86-64
-
-    # remove unneeded files
-    rm -rf extlib/ mbuild/ misc/ doc/ examples/
+    cd "$srcdir/$pkgname"/kits/xed-install-base-*-lin-x86-64
 
     # install binaries, headers, and libraries
-    install -Dm 755 -t "${pkgdir}/usr/bin" bin/*
-    install -dm 755 "${pkgdir}/usr/include"
-    cp -r include/* "${pkgdir}/usr/include/"
-    install -Dm 644 -t "${pkgdir}/usr/lib" lib/*
+    install -Dm 755 -t "$pkgdir/usr/bin" bin/*
+    install -dm 755 "$pkgdir/usr/include"
+    cp -r include/* "$pkgdir/usr/include/"
+    install -Dm 644 -t "$pkgdir/usr/lib" lib/*
+
+    # install docs and examples
+    install -dm 755 "$pkgdir/usr/share/doc"
+    cp -r doc/ref-manual/* "$pkgdir/usr/share/doc/"
+    install -Dm 644 -t "$pkgdir/usr/share/$pkgname/examples" examples/*
 }
 
 # vim: set sw=4 ts=4 et:
