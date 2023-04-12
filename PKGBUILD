@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=nfacct-git
-pkgver=1.0.2.r0.g000041e
+pkgver=1.0.2.r1.g430b60d
 pkgrel=1
 pkgdesc="Tool to create/retrieve/delete accounting objects"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://netfilter.org/projects/nfacct/index.html"
 license=('GPL')
 depends=('libmnl' 'libnetfilter_acct')
 makedepends=('git')
-provides=('nfacct')
+provides=("nfacct=$pkgver")
 conflicts=('nfacct')
 source=("git://git.netfilter.org/nfacct")
 sha256sums=('SKIP')
@@ -25,7 +25,9 @@ build() {
   cd "nfacct"
 
   autoreconf -fi
-  ./configure --prefix="/usr" --sbindir="/usr/bin"
+  ./configure \
+    --prefix="/usr" \
+    --sbindir="/usr/bin"
   make
 }
 
