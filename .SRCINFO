@@ -1,6 +1,6 @@
 pkgbase = lmdbal
 	pkgdesc = LMDB Abstraction Layer, qt5 version
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://git.macaw.me/blue/lmdbal
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = lmdbal
 	makedepends = cmake>=3.16
 	depends = lmdb
 	depends = qt5-base
-	source = lmdbal-0.2.0.tar.gz::https://git.macaw.me/blue/lmdbal/archive/0.2.0.tar.gz
-	sha256sums = 9f676ecaa64a5396a0b2fc29d0dd7cd16d374ccd7daf06d286b5c63074934fcd
+	source = lmdbal-0.3.0.tar.gz::https://git.macaw.me/blue/lmdbal/archive/0.3.0.tar.gz
+	sha256sums = df1a9687d81d609d160754285f2613d7e07fc6deb781d0fb0084e4857ea82e95
 
 pkgname = lmdbal
