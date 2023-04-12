@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=litua
-pkgver=1.1.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Read a text document, receive its tree in Lua and manipulate it'
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(gcc-libs)
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('99188b027de0274444e1b7cdf7518dcb153470164f338a2b8c729ef3f3ab60fa')
+sha256sums=('7d3405521ea5b132c731dc69275c2eb6572b0652553f0bf2405fb87264e0c861')
 
 prepare() {
 	cd "$_archive"
