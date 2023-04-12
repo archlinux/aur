@@ -1,6 +1,6 @@
 pkgbase = qt5-virtualkeyboard-git
 	pkgdesc = Qt5 virtual keyboard module
-	pkgver = 5.15.1.r1.ge90249a
+	pkgver = 5.15.9.r0.g4191fd90
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
@@ -10,10 +10,9 @@ pkgbase = qt5-virtualkeyboard-git
 	depends = qt5-declarative
 	depends = qt5-svg
 	depends = hunspell
-	provides = qt5-virtualkeyboard
+	provides = qt5-virtualkeyboard=5.15.9.r0.g4191fd90
 	conflicts = qt5-virtualkeyboard
 	source = git+https://code.qt.io/qt/qtvirtualkeyboard.git#branch=5.15
 	sha256sums = SKIP
 
 pkgname = qt5-virtualkeyboard-git
-
