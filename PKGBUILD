@@ -26,7 +26,7 @@ license=(GPL3)
 source=(
 	"$url/releases/download/$pkgver/${_pkgname//-/_}-$pkgver-py3-none-any.whl"
 )
-sha256sums=('b64b69bba5db6ee4b64be17b045956af191574e38f911c4f14c4ac17fa1fa3be')
+sha256sums=('8b10682a2175c7254ee7f3e3ff99b54b712940f7cebac4052aeb293a77f96463')
 
 package() {
 	cd "$srcdir" || return 1
