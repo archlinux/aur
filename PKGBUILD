@@ -2,7 +2,7 @@
 
 _pkgname=rime-ice
 pkgname=rime-ice-git
-pkgver=r164.1d660e2
+pkgver=r169.49df06e
 pkgrel=1
 pkgdesc="Rime 配置：雾凇拼音 | 长期维护的简体词库"
 arch=("any")
@@ -19,9 +19,10 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+_default_bak=default_custom.yaml
 prepare() {
   cd "${_pkgname}" &&
-    mv ./default.yaml ./default_custom.yaml &&
+    mv ./default.yaml ./${_default_bak} &&
     # Link essentials.
     for _f in $(pacman -Qql rime-prelude | grep -v "/$"); do ln -sf "$_f" .; done
 }
@@ -34,16 +35,14 @@ build() {
 package() {
   cd "${_pkgname}" || return
 
-  find . -type l -delete && rm build/*.txt
+  install -Dm644 ./${_default_bak} "${pkgdir}/usr/share/rime-data/rime_ice_suggestion.yaml"
 
-  install -Dm644 ./default_custom.yaml "${pkgdir}/usr/share/rime-data/rime_ice_suggestion.yaml"
+  rm ./${_default_bak} && find . -type l -delete && rm build/*.txt
 
-  install -Dm644 ./*.{schema,dict}.yaml -t "${pkgdir}/usr/share/rime-data/"
-  install -Dm644 ./*.{lua,gram} -t "${pkgdir}/usr/share/rime-data/"
-  install -Dm644 symbols_custom.yaml -t "${pkgdir}/usr/share/rime-data/"
-
+  install -Dm644 build/*    -t "${pkgdir}/usr/share/rime-data/build"
   install -Dm644 cn_dicts/* -t "${pkgdir}/usr/share/rime-data/cn_dicts"
   install -Dm644 en_dicts/* -t "${pkgdir}/usr/share/rime-data/en_dicts"
-  install -Dm644 opencc/* -t "${pkgdir}/usr/share/rime-data/opencc"
-  install -Dm644 build/* -t "${pkgdir}/usr/share/rime-data/build/"
+  install -Dm644 opencc/*   -t "${pkgdir}/usr/share/rime-data/opencc"
+
+  install -Dm644 ./*.{yaml,lua,gram} -t "${pkgdir}/usr/share/rime-data/"
 }
