@@ -9,7 +9,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aws/aws-toolkit-vscode/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855")
+sha256sums=("a27befb120b7a55318140c683ab5f4f54440d1a037fbf119bd71ffb3b0363581")
 
 prepare() {
   cd "aws-toolkit-vscode-$pkgver"
