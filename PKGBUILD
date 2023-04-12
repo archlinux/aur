@@ -4,8 +4,8 @@
 # Contributor: Faye Jackson <justalittleepsilon ant gmail dot com>
 
 pkgname=akkoma-bin
-pkgver=22.12
-pkgrel=2
+pkgver=2023.03
+pkgrel=1
 pkgdesc='a smallish microblogging platform, aka the cooler pleroma'
 url='https://akkoma.social'
 license=('AGPL' 'CCPL:cc-by-4.0' 'CCPL:cc-by-sa-4.0')
@@ -28,7 +28,7 @@ sha256sums=('0247ee5cc24049ebc37a00634aad8ed9a44d0f9a399a1373284375f5c861a089'
             '20715a673d70c3eafc160de98a325d1f253abc1dc89ff280d121c95ba5e9bb81'
             '44181109808ca6ff3e856c0b9800978f9c9dc28b6d98ac71862c06ed354f98e2'
             '1da9737d28754b51adae10a6391c8e83c40fe052dc4b04438a1dd0587a5c9a41')
-sha256sums_x86_64=('c892ad17914690185196c75a728f94b639f53e00c42a194e60242fbea09e7320')
+sha256sums_x86_64=('ea4f31b88b4de78f4c5bfb72e6969927b509012dc25b42d064c8dbc3be2cacbf')
 
 package() {
     cd "$srcdir"
