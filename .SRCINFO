@@ -1,0 +1,14 @@
+pkgbase = pinfo-git
+	pkgdesc = A hypertext info file viewer
+	pkgver = 0.6.13.r8.g3d76eec
+	pkgrel = 1
+	url = http://pinfo.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	depends = readline
+	conflicts = pinfo
+	source = pinfo-git::git+https://github.com/baszoetekouw/pinfo.git
+	sha256sums = SKIP
+
+pkgname = pinfo-git
