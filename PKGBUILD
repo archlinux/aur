@@ -1,12 +1,12 @@
 # Maintainer: jzbor <zborof at posteo dot de>
 pkgname=marswm-git
-pkgver=0.1.0.r31.g5483f8e
+pkgver=0.4.0.r4.gd0ca669
 pkgrel=1
 pkgdesc="A rusty successor to moonwm"
 arch=('x86_64')
 url="https://github.com/jzbor/marswm"
 license=('custom')
-depends=()
+depends=(libxrandr libx11 libxft libxinerama xmenu)
 makedepends=('cargo')
 provides=(marswm mars-relay)
 conflicts=(marswm mars-relay)
