@@ -12,7 +12,7 @@ install:
 
 # Updates PKGBUILD with the latest version and build the package
 update:
-	sed 's/^pkgver=.*$$/pkgver=$(shell $(MAKE) versions | head -n 1)/' -i PKGBUILD
+	sed 's/^pkgver=.*$$/pkgver=$(shell $(MAKE) -s versions | head -n 1)/' -i PKGBUILD
 	sed 's/^pkgrel=.*$$/pkgrel=1/' -i PKGBUILD
 	$(MAKE)
 
