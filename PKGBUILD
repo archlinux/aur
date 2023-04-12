@@ -26,6 +26,7 @@ makedepends=(
   'cmake'
   'extra-cmake-modules'
   'git'
+  'kdelibs4support'
   'kinit'
   'qt5-tools'
 )
@@ -44,24 +45,16 @@ pkgver() {
 
 prepare() {
   mkdir -p qt5build
+  cmake "../$_gitname" \
+    -DCMAKE_INSTALL_PREFIX='/usr'
 }
 
 build() {
   cd qt5build
-  cmake "../$_gitname" \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DQT5BUILD=ON
   make
 }
 
 package() {
   cd qt5build
   make DESTDIR="$pkgdir" install
-
-  # fix file locations
-  mkdir -p "$pkgdir/usr/share/kwin"
-  mv "$pkgdir/kwin/shaders" "$pkgdir/usr/share/kwin/"
-
-  mkdir -p "$pkgdir/usr/lib/qt/plugins"
-  mv "$pkgdir/kwin" "$pkgdir/usr/lib/qt/plugins/"
 }

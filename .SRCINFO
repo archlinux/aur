@@ -8,6 +8,7 @@ pkgbase = kwin-effect-rounded-corners-git
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = git
+	makedepends = kdelibs4support
 	makedepends = kinit
 	makedepends = qt5-tools
 	depends = kwin
