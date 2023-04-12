@@ -6,15 +6,15 @@ _use_poppler=OFF  # ON or OFF
 _qt_version_major=6  # 5 or 6
 
 pkgname=beamerpresenter-git
-pkgver=0.2.3_801.27ab695
+pkgver=0.2.3_856.2be50e4
 pkgrel=1
 pkgdesc="Modular multi-screen pdf presenter (git)"
 arch=('x86_64')
 url="https://github.com/stiglers-eponym/BeamerPresenter"
 license=('AGPL3' 'GPL3')
 # depends and makedepends will be filled based on the PDF engine.
-depends=("qt${_qt_version_major}-multimedia")
-optdepends=('hicolor-icon-theme: action button icons' "qt${_qt_version_major}-svg: tool button icons")
+depends=("qt${_qt_version_major}-multimedia" "qt${_qt_version_major}-svg")
+optdepends=('hicolor-icon-theme: action button icons')
 makedepends=('cmake' 'git' "qt${_qt_version_major}-tools")
 backup=('etc/xdg/beamerpresenter/beamerpresenter.conf' 'etc/xdg/beamerpresenter/gui.json')
 source=('git+https://github.com/stiglers-eponym/BeamerPresenter.git')
