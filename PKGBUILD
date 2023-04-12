@@ -2,7 +2,7 @@
 
 pkgname=katrain
 pkgver=1.12.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for analyzing and playing go with AI feedback from KataGo."
 arch=('i686' 'x86_64')
 url="https://github.com/sanderland/katrain"
