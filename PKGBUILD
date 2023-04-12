@@ -12,7 +12,7 @@
 
 set -u
 pkgname='turboprint'
-_pkgver='2.53-1'
+_pkgver='2.54-1'
 pkgver="${_pkgver//-/.}"
 pkgrel='1'
 pkgdesc='High-quality printer driver system for Linux'
@@ -44,13 +44,13 @@ source_x86_64=("https://www.zedonet.com/download/tp2/${_srcdir}.x86_64.tgz")
 md5sums=('e3c504b2c1b7deb01d03fde710b117d7'
          '60a1754b2abd30e75e51acd9576cda43'
          '2640e1d95c3579d6cef590d18b4476df')
-md5sums_i686=('6d8bf7476d19fb4c9076444ca33ec56b')
-md5sums_x86_64=('2dad48eb7b93c5f24f747d6849f1233b')
+md5sums_i686=('ccd46f9f3f633c26139803725446ca10')
+md5sums_x86_64=('f33d213202760c4c53ac1064a15f6956')
 sha256sums=('c90e4f71a234dc0638d15305184daeed212ebf1f7efc2f5a2a09895ca09bea6d'
             'de0c92b665150ceaf33c3cfd94b0afb422609194db9416aff59add5123bb8a2f'
             'a6ba2b4bab8d2512e542427dd3473d1764a777ef0493031046dc7282dc05fdad')
-sha256sums_i686=('9e65f049d152e09a1d34e9810ff69635ade8b81da9921d29d9f133f1b849bbbe')
-sha256sums_x86_64=('1f6640630f99d39f06deaf3a04e2978ef0f5eacd08dc6aba7c1b947060c1d087')
+sha256sums_i686=('547cfc6d817a1c8a467f723ddb2216479aaac0b21ba92b21d30aae2985f16dc0')
+sha256sums_x86_64=('d85ecd46a357504b4e80ec8d9584322494019d0d9978e91f9b62ba9dce6103f7')
 
 prepare() {
   set -u
@@ -93,9 +93,10 @@ package() {
   install -Dpm644 "${pkgdir}/usr/lib/turboprint/kde42applet/plasma-applet-turboprint.desktop" -t "${pkgdir}/usr/share/kde4/services/"
   install -Dpm755 "${pkgdir}/usr/lib/turboprint/kde42applet/plasma_applet_turboprint.so" -t "${pkgdir}/usr/lib/kde4/"
 
+  # Missing deps libpanel-applet-2.so.0 libgnomeui-2.so.0 libgnome-2.so.0
   # Install GNOME applet
-  install -Dpm644 "${pkgdir}/usr/lib/turboprint/gnomeapplet/tpmonapplet.server" -t "${pkgdir}/usr/lib/bonobo/servers/"
-  install -Dpm755 "${pkgdir}/usr/lib/turboprint/gnomeapplet/tpgnomeapplet" -t "${pkgdir}/usr/bin/"
+  #install -Dpm644 "${pkgdir}/usr/lib/turboprint/gnomeapplet/tpmonapplet.server" -t "${pkgdir}/usr/lib/bonobo/servers/"
+  #install -Dpm755 "${pkgdir}/usr/lib/turboprint/gnomeapplet/tpgnomeapplet" -t "${pkgdir}/usr/bin/"
 
   # Fix permissions
   chmod 4755 "${pkgdir}/usr/share/turboprint/lib/pipeutility"
