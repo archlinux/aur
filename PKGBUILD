@@ -36,12 +36,16 @@ prepare() {
 build() {
   cd "${_pkgname}"
 
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOPATH="${srcdir}"
   go build -v \
-    -trimpath \
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+    -ldflags "-linkmode=external -compressdwarf=false -extldflags ${LDFLAGS}" \
     -o build \
     .
 }
@@ -53,8 +57,8 @@ package() {
   install -vDm755 -t "$pkgdir/usr/lib/nomad/plugins" "build/${_pkgname}"
 
   # documentation
+  rm "examples/plugins/.gitkeep"
+  rmdir "examples/plugins"
   install -vDm644 -t "$pkgdir/usr/share/doc/${_pkgname}" README.md
   cp -vr examples "$pkgdir/usr/share/doc/${_pkgname}"
-  # note: examples/plugins is an empty folder
-  rm -rf "$pkgdir/usr/share/doc/${_pkgname}/examples/plugins"
 }
