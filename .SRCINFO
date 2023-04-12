@@ -1,0 +1,12 @@
+pkgbase = conservation_mode
+	pkgdesc = enable conservation_mode for lenovo laptop
+	pkgver = 0.1
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = systemd
+	source = conservation_mode.service
+	md5sums = 1f0b278b3e3097509340b2d383fee347
+
+pkgname = conservation_mode

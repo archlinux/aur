@@ -1,0 +1,13 @@
+[Unit]
+Description=Set conservation_mode on for lenovo laptop
+After=multi-user.target
+After=systemd-suspend.service
+After=systemd-hibernate.service
+
+
+[Service]
+ExecStart=/bin/bash -c '/bin/echo 1 > /sys/bus/platform/drivers/ideapad_acpi/VPC2004\:00/conservation_mode'
+ExecStart=/bin/bash -c '/bin/echo 0 > /sys/bus/platform/drivers/ideapad_acpi/VPC2004\:00/conservation_mode'
+
+[Install]
+WantedBy=multi-user.target
