@@ -8,7 +8,6 @@ pkgbase = diod
 	license = GPL2
 	makedepends = git
 	depends = libcap
-	depends = libwrap
 	depends = lua
 	provides = diod
 	conflicts = diod
@@ -22,4 +21,3 @@ pkgbase = diod
 	sha256sums = 0438654256a42125a06182ee4ffa7c49de040f4eb419547de258794f0a9f21dc
 
 pkgname = diod
-
