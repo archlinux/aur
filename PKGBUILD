@@ -1,8 +1,8 @@
 # Maintainer: weitcis <weitcis at pm dot me>
 _pkgname=vector-audio
 pkgname=vector-audio-git
-pkgver=v0.7.0.r0.gafe2045
-pkgrel=2
+pkgver=v0.7.0.r2.g6fe46b1
+pkgrel=1
 pkgdesc="An Audio-For-VATSIM ATC Client for macOS, Linux and Windows"
 arch=(x86_64 aarch64)
 url="https://github.com/pierr3/VectorAudio"
@@ -14,11 +14,9 @@ makedepends=(
     gcc)
 source=(
 	"$_pkgname::git+https://github.com/pierr3/VectorAudio.git#branch=main"
-	"0001-add-linux-convention-config-paths.patch"
 	"vector-audio.desktop"
 )
 sha256sums=('SKIP'
-            'd6375ab3974663f0387dbb0a4379082d3185ec8f44dd2a80f0ba06a49127caf2'
             'ef5c0505a905bb1f1e0a9758aef1e6833c53ec3a06f8ddddfc9035b6d2765d03')
 
 pkgver() {
@@ -30,7 +28,6 @@ prepare() {
   cd "$_pkgname"
   git submodule update --init --recursive
   ./vcpkg/bootstrap-vcpkg.sh -disableMetrics
-  patch -p1 <${srcdir}/0001-add-linux-convention-config-paths.patch
 }
 
 build() {
