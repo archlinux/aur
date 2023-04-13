@@ -1,6 +1,6 @@
-pkgbase = python-cohost-git
+pkgbase = python-cohost
 	pkgdesc = A python library for Cohost.org!
-	pkgver = 0.2.5.r2.ga4aacd1
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/valknight/Cohost.py
 	arch = any
@@ -12,9 +12,7 @@ pkgbase = python-cohost-git
 	makedepends = python-wheel
 	depends = python>3.6
 	depends = python-requests
-	provides = python-cohost
-	conflicts = python-cohost
-	source = python-cohost::git+https://github.com/valknight/cohost.py.git
+	source = python-cohost::git+https://github.com/valknight/Cohost.py.git#commit=f0d0c7838301bd03823196c3ba2d2dee726ed2d5
 	sha256sums = SKIP
 
-pkgname = python-cohost-git
+pkgname = python-cohost
