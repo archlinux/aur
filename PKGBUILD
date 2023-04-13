@@ -1,4 +1,5 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Maintainer: Nicola Revelant <nicolarevelant44@gmail.com>
+# Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Jaroslaw Swierczynski <swiergot@aur.archlinux.org>
 
