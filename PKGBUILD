@@ -3,7 +3,7 @@
 
 _name=breezedark
 pkgname=nextcloud-app-breezedark
-pkgver=25.0.1
+pkgver=25.0.2
 pkgrel=1
 pkgdesc='Breeze Dark Theme for Nextcloud based on the Breeze Dark theme made by the KDE Project'
 arch=('any')
@@ -12,7 +12,7 @@ license=('AGPL3')
 makedepends=('nextcloud' 'yq')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mwalbeck/nextcloud-breeze-dark/releases/download/v${pkgver}/${_name}.tar.gz")
-sha512sums=('9bf39260724c3b6602df341b16ed3acc78571315fce81d49f2156792f20a936467b88d09abbdd535be8f37f75f1aa3a6c4ed530985291981ab9f4ed7e2f592c2')
+sha512sums=('30c8eabc8e0e9a22ece4c99cfd54cc62c745cb15fadfdf821edb6b85355de9a555e70c520fc4c3a3e424fb005e65c533cbd28c15416640356179b45e419794c9')
 
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
