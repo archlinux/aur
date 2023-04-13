@@ -4,7 +4,7 @@
 pkgname=mambaforge
 _pkgrel=0
 pkgver=23.1.0.${_pkgrel}
-pkgrel=1
+pkgrel=2
 pkgdesc="Conda and Mamba package managers configured to use conda-forge"
 arch=('x86_64')
 url="https://github.com/conda-forge/miniforge"
@@ -29,6 +29,9 @@ package() {
 
 	# Stripping $pkgdir
 	sed "s|${pkgdir}||g" -i $(grep "$pkgdir" . -rIl)
+
+	# Set string path to a certificate SSL connection
+	echo "ssl_verify: /opt/${pkgname}/ssl/cacert.pem" >>"${pkgdir}/opt/${pkgname}/.condarc"
 
 	# Installing license
 	install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

@@ -1,7 +1,7 @@
 pkgbase = mambaforge
 	pkgdesc = Conda and Mamba package managers configured to use conda-forge
 	pkgver = 23.1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/conda-forge/miniforge
 	install = mambaforge.install
 	arch = x86_64
