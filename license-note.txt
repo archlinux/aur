@@ -1,0 +1,30 @@
+Blue Byte's "Die Siedler II"/ "The Settlers II" is a computer game from 1996 with proprietary license.
+
+The exact terms and conditions could not be determined.
+
+Assume full copyright to the original authors and/ or distributors of the game.
+
+Although, this package does not install the game files, it just creates symlinks to preinstalled game files.
+
+
+The copyright text on the manual says:
+
+-- %< --
+
+© Copyryight 1996 by Blue Byte Software. All rights reserved.
+Software, manual, text, graphics, music and names are covered by copyright law. No part of the publication may in any form be reproduced, transmitted or translated into any other language without the written permission of Blue Byte Software GMBH.
+
+BLUE BYTE SOFTWARE INC.
+33 South Roselle Road, Suite 201 • Schaumburg, IL 60193 • USA • Tel: (847) 534-7950
+Fax: (847) 534-7951
+http://www.bluebyte.com
+
+BLUE BYTE SOFTWARE GMBH
+Eppinghofer Strasse 150 • 45468 Mühlheim an der Ruhr • Germany • Tel: +49 (0)208 - 450880
+Fax: +49 (0) 208 - 4508899
+
+BLUE BYTE SOFTWARE LTD
+22 Billing Road • Northampton • NN1 5AT • United Kingdom • Tel: +44 (0)1604 - 259090
+Fax: +44 (0)1604- 24553
+
+-- >% --
