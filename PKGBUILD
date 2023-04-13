@@ -2,7 +2,7 @@
 
 pkgname=qrcp-bin
 pkgver=0.10.1
-pkgrel=3
+pkgrel=4
 provides=("${pkgname/-bin/}")
 conflicts=('qrcp' 'qrcp-git')
 pkgdesc="Transfer files over wifi from your computer to your mobile device by scanning a QR code without leaving the terminal."
