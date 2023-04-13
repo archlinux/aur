@@ -1,0 +1,18 @@
+pkgbase = ruby-jekyll-remote-theme
+	pkgdesc = Jekyll plugin for building Jekyll sites with any GitHub-hosted theme
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/benbalter/jekyll-remote-theme
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-addressable
+	depends = ruby-jekyll
+	depends = ruby-jekyll-sass-converter
+	depends = ruby-rubyzip
+	noextract = jekyll-remote-theme-0.4.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/jekyll-remote-theme-0.4.3.gem
+	sha1sums = 24f469300eeb8e2080b495f5cfe7b3963ce70dde
+
+pkgname = ruby-jekyll-remote-theme
