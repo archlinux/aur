@@ -1,0 +1,18 @@
+pkgbase = python-pip-api
+	pkgdesc = An unofficial, importable pip API
+	pkgver = 0.0.30
+	pkgrel = 1
+	url = https://github.com/di/pip-api
+	arch = any
+	license = Apache
+	checkdepends = python-pytest-runner
+	checkdepends = python-pretend
+	checkdepends = python-virtualenv
+	makedepends = python-setuptools
+	depends = python-packaging
+	depends = python-pyparsing
+	depends = python-pip
+	source = python-pip-api-0.0.30.tar.gz::https://github.com/di/pip-api/archive/0.0.30.tar.gz
+	sha512sums = 0fa69d55c919f2985c0acfdc719eff0a89ac065df8eca84d518a5ed0bcfb3a79c559002441041ef3382ca60a4d6c8bd991fd71316cd4e4d1643a3e084ed60f89
+
+pkgname = python-pip-api
