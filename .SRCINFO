@@ -1,11 +1,12 @@
 pkgbase = kstart
 	pkgdesc = Kerberos kinit supporting AFS and ticket refreshing
 	pkgver = 4.3
-	pkgrel = 8
+	pkgrel = 9
 	url = https://www.eyrie.org/~eagle/software/kstart/
 	arch = i686
 	arch = x86_64
 	license = custom
+	depends = keyutils
 	depends = krb5
 	provides = k5start=4.3
 	provides = krenew=4.3
