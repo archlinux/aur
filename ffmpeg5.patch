@@ -1,0 +1,947 @@
+diff --git a/src/AVCompat.cpp b/src/AVCompat.cpp
+index befb3cd9..cf113f03 100644
+--- a/src/AVCompat.cpp
++++ b/src/AVCompat.cpp
+@@ -391,7 +391,7 @@ const char *get_codec_long_name(enum AVCodecID id)
+     if (cd)
+         return cd->long_name;
+     av_log(NULL, AV_LOG_WARNING, "Codec 0x%x is not in the full list.\n", id);
+-    AVCodec *codec = avcodec_find_decoder(id);
++    const AVCodec *codec = avcodec_find_decoder(id);
+     if (codec)
+         return codec->long_name;
+     codec = avcodec_find_encoder(id);
+diff --git a/src/AVDemuxer.cpp b/src/AVDemuxer.cpp
+index 432c4f04..5b46afd3 100644
+--- a/src/AVDemuxer.cpp
++++ b/src/AVDemuxer.cpp
+@@ -290,7 +290,7 @@ public:
+     //copy the info, not parse the file when constructed, then need member vars
+     QString file;
+     QString file_orig;
+-    AVInputFormat *input_format;
++    const AVInputFormat *input_format;
+     QString format_forced;
+     MediaIO *input;
+ 
+@@ -310,7 +310,11 @@ public:
+         // wanted_stream is REQUIRED. e.g. always set -1 to indicate the default stream, -2 to disable
+         int stream, wanted_stream; // -1 default, selected by ff
+         int index, wanted_index; // index in a kind of streams
++#if LIBAVCODEC_VERSION_MAJOR < 59
+         AVCodecContext *avctx;
++#else
++	AVCodecParameters *avctx;
++#endif
+     } StreamInfo;
+     StreamInfo astream, vstream, sstream;
+ 
+@@ -614,12 +618,14 @@ bool AVDemuxer::seek(qint64 pos)
+     if (upos <= startTime()) {
+         qDebug("************seek to beginning. started = false");
+         d->started = false; //???
++#if LIBAVCODEC_VERSION_MAJOR < 59
+         if (d->astream.avctx)
+             d->astream.avctx->frame_number = 0;
+         if (d->vstream.avctx)
+             d->vstream.avctx->frame_number = 0; //TODO: why frame_number not changed after seek?
+         if (d->sstream.avctx)
+             d->sstream.avctx->frame_number = 0;
++#endif
+     }
+     return true;
+ }
+@@ -1062,37 +1068,61 @@ QList<int> AVDemuxer::subtitleStreams() const
+     return d->subtitle_streams;
+ }
+ 
++#if LIBAVCODEC_VERSION_MAJOR < 59
+ AVCodecContext* AVDemuxer::audioCodecContext(int stream) const
++#else
++AVCodecParameters* AVDemuxer::audioCodecContext(int stream) const
++#endif
+ {
+     if (stream < 0)
+         return d->astream.avctx;
+     if (stream > (int)d->format_ctx->nb_streams)
+         return 0;
++#if LIBAVCODEC_VERSION_MAJOR < 59
+     AVCodecContext *avctx = d->format_ctx->streams[stream]->codec;
++#else
++    AVCodecParameters *avctx = d->format_ctx->streams[stream]->codecpar;
++#endif
+     if (avctx->codec_type == AVMEDIA_TYPE_AUDIO)
+         return avctx;
+     return 0;
+ }
+ 
++#if LIBAVCODEC_VERSION_MAJOR < 59
+ AVCodecContext* AVDemuxer::videoCodecContext(int stream) const
++#else
++AVCodecParameters* AVDemuxer::videoCodecContext(int stream) const
++#endif
+ {
+     if (stream < 0)
+         return d->vstream.avctx;
+     if (stream > (int)d->format_ctx->nb_streams)
+         return 0;
++#if LIBAVCODEC_VERSION_MAJOR < 59
+     AVCodecContext *avctx = d->format_ctx->streams[stream]->codec;
++#else
++    AVCodecParameters *avctx = d->format_ctx->streams[stream]->codecpar;
++#endif
+     if (avctx->codec_type == AVMEDIA_TYPE_VIDEO)
+         return avctx;
+     return 0;
+ }
+ 
++#if LIBAVCODEC_VERSION_MAJOR < 59
+ AVCodecContext* AVDemuxer::subtitleCodecContext(int stream) const
++#else
++AVCodecParameters* AVDemuxer::subtitleCodecContext(int stream) const
++#endif
+ {
+     if (stream < 0)
+         return d->sstream.avctx;
+     if (stream > (int)d->format_ctx->nb_streams)
+         return 0;
++#if LIBAVCODEC_VERSION_MAJOR < 59
+     AVCodecContext *avctx = d->format_ctx->streams[stream]->codec;
++#else
++    AVCodecParameters *avctx = d->format_ctx->streams[stream]->codecpar;
++#endif
+     if (avctx->codec_type == AVMEDIA_TYPE_SUBTITLE)
+         return avctx;
+     return 0;
+@@ -1289,7 +1319,11 @@ bool AVDemuxer::Private::setStream(AVDemuxer::StreamType st, int streamValue)
+     // don't touch wanted index
+     si->stream = s;
+     si->wanted_stream = streamValue;
++#if LIBAVCODEC_VERSION_MAJOR < 59
+     si->avctx = format_ctx->streams[s]->codec;
++#else
++    si->avctx = format_ctx->streams[s]->codecpar;
++#endif
+     has_attached_pic = !!(format_ctx->streams[s]->disposition & AV_DISPOSITION_ATTACHED_PIC);
+     return true;
+ }
+@@ -1302,7 +1336,11 @@ bool AVDemuxer::Private::prepareStreams()
+         return false;
+     AVMediaType type = AVMEDIA_TYPE_UNKNOWN;
+     for (unsigned int i = 0; i < format_ctx->nb_streams; ++i) {
++#if LIBAVCODEC_VERSION_MAJOR < 59
+         type = format_ctx->streams[i]->codec->codec_type;
++#else
++        type = format_ctx->streams[i]->codecpar->codec_type;
++#endif
+         if (type == AVMEDIA_TYPE_VIDEO) {
+             video_streams.push_back(i);
+         } else if (type == AVMEDIA_TYPE_AUDIO) {
+diff --git a/src/AVMuxer.cpp b/src/AVMuxer.cpp
+index b601afd8..4ff1463e 100644
+--- a/src/AVMuxer.cpp
++++ b/src/AVMuxer.cpp
+@@ -81,7 +81,7 @@ public:
+     //copy the info, not parse the file when constructed, then need member vars
+     QString file;
+     QString file_orig;
+-    AVOutputFormat *format;
++    const AVOutputFormat *format;
+     QString format_forced;
+     MediaIO *io;
+ 
+@@ -94,7 +94,7 @@ public:
+ 
+ AVStream *AVMuxer::Private::addStream(AVFormatContext* ctx, const QString &codecName, AVCodecID codecId)
+ {
+-    AVCodec *codec = NULL;
++    const AVCodec *codec = NULL;
+     if (!codecName.isEmpty()) {
+         codec = avcodec_find_encoder_by_name(codecName.toUtf8().constData());
+         if (!codec) {
+@@ -120,7 +120,8 @@ AVStream *AVMuxer::Private::addStream(AVFormatContext* ctx, const QString &codec
+     // set by avformat if unset
+     s->id = ctx->nb_streams - 1;
+     s->time_base = kTB;
+-    AVCodecContext *c = s->codec;
++#if LIBAVCODEC_VERSION_MAJOR < 59
++    AVCodec *c = s->codec;
+     c->codec_id = codec->id;
+     // Using codec->time_base is deprecated, but needed for older lavf.
+     c->time_base = s->time_base;
+@@ -129,6 +130,7 @@ AVStream *AVMuxer::Private::addStream(AVFormatContext* ctx, const QString &codec
+         c->flags |= AV_CODEC_FLAG_GLOBAL_HEADER;
+     // expose avctx to encoder and set properties in encoder?
+     // list codecs for a given format in ui
++#endif
+     return s;
+ }
+ 
+@@ -137,16 +139,24 @@ bool AVMuxer::Private::prepareStreams()
+     audio_streams.clear();
+     video_streams.clear();
+     subtitle_streams.clear();
+-    AVOutputFormat* fmt = format_ctx->oformat;
++    const AVOutputFormat* fmt = format_ctx->oformat;
+     if (venc) {
+         AVStream *s = addStream(format_ctx, venc->codecName(), fmt->video_codec);
+         if (s) {
++#if LIBAVCODEC_VERSION_MAJOR < 59
+             AVCodecContext *c = s->codec;
++#else
++            AVCodecParameters *c = s->codecpar;
++#endif
+             c->bit_rate = venc->bitRate();
+             c->width = venc->width();
+             c->height = venc->height();
+             /// MUST set after encoder is open to ensure format is valid and the same
++#if LIBAVCODEC_VERSION_MAJOR < 59
+             c->pix_fmt = (AVPixelFormat)VideoFormat::pixelFormatToFFmpeg(venc->pixelFormat());
++#else
++            c->format = (AVPixelFormat)VideoFormat::pixelFormatToFFmpeg(venc->pixelFormat());
++#endif
+ 
+             // Set avg_frame_rate based on encoder frame_rate
+             s->avg_frame_rate = av_d2q(venc->frameRate(), venc->frameRate()*1001.0+2);
+@@ -157,11 +167,19 @@ bool AVMuxer::Private::prepareStreams()
+     if (aenc) {
+         AVStream *s = addStream(format_ctx, aenc->codecName(), fmt->audio_codec);
+         if (s) {
++#if LIBAVCODEC_VERSION_MAJOR < 59
+             AVCodecContext *c = s->codec;
++#else
++            AVCodecParameters *c = s->codecpar;
++#endif
+             c->bit_rate = aenc->bitRate();
+             /// MUST set after encoder is open to ensure format is valid and the same
+             c->sample_rate = aenc->audioFormat().sampleRate();
++#if LIBAVCODEC_VERSION_MAJOR < 59
+             c->sample_fmt = (AVSampleFormat)aenc->audioFormat().sampleFormatFFmpeg();
++#else
++            c->format = (AVSampleFormat)aenc->audioFormat().sampleFormatFFmpeg();
++#endif
+             c->channel_layout = aenc->audioFormat().channelLayoutFFmpeg();
+             c->channels = aenc->audioFormat().channels();
+             c->bits_per_raw_sample = aenc->audioFormat().bytesPerSample()*8; // need??
+diff --git a/src/AVPlayerPrivate.cpp b/src/AVPlayerPrivate.cpp
+index 84f079ef..d3bf09f1 100644
+--- a/src/AVPlayerPrivate.cpp
++++ b/src/AVPlayerPrivate.cpp
+@@ -55,7 +55,11 @@ int computeNotifyPrecision(qint64 duration, qreal fps)
+ }
+ } // namespace Internal
+ 
++#if LIBAVCODEC_VERSION_MAJOR < 59
+ static bool correct_audio_channels(AVCodecContext *ctx) {
++#else
++static bool correct_audio_channels(AVCodecParameters *ctx) {
++#endif
+     if (ctx->channels <= 0) {
+         if (ctx->channel_layout) {
+             ctx->channels = av_get_channel_layout_nb_channels(ctx->channel_layout);
+@@ -251,7 +255,11 @@ void AVPlayer::Private::initBaseStatistics()
+     updateNotifyInterval();
+ }
+ 
++#if LIBAVCODEC_VERSION_MAJOR < 59
+ void AVPlayer::Private::initCommonStatistics(int s, Statistics::Common *st, AVCodecContext *avctx)
++#else
++void AVPlayer::Private::initCommonStatistics(int s, Statistics::Common *st, AVCodecParameters *avctx)
++#endif
+ {
+     AVFormatContext *fmt_ctx = demuxer.formatContext();
+     if (!fmt_ctx) {
+@@ -288,7 +296,11 @@ void AVPlayer::Private::initCommonStatistics(int s, Statistics::Common *st, AVCo
+ 
+ void AVPlayer::Private::initAudioStatistics(int s)
+ {
++#if LIBAVCODEC_VERSION_MAJOR < 59
+     AVCodecContext *avctx = demuxer.audioCodecContext();
++#else
++    AVCodecParameters *avctx = demuxer.audioCodecContext();
++#endif
+     statistics.audio = Statistics::Common();
+     statistics.audio_only = Statistics::AudioOnly();
+     if (!avctx)
+@@ -306,14 +318,22 @@ void AVPlayer::Private::initAudioStatistics(int s)
+     // nb_channels -1: will use av_get_channel_layout_nb_channels
+     av_get_channel_layout_string(cl, sizeof(cl), avctx->channels, avctx->channel_layout);
+     statistics.audio_only.channel_layout = QLatin1String(cl);
++#if LIBAVCODEC_VERSION_MAJOR < 59
+     statistics.audio_only.sample_fmt = QLatin1String(av_get_sample_fmt_name(avctx->sample_fmt));
++#else
++    statistics.audio_only.sample_fmt = QLatin1String(av_get_sample_fmt_name(static_cast<AVSampleFormat>(avctx->format)));
++#endif
+     statistics.audio_only.frame_size = avctx->frame_size;
+     statistics.audio_only.sample_rate = avctx->sample_rate;
+ }
+ 
+ void AVPlayer::Private::initVideoStatistics(int s)
+ {
++#if LIBAVCODEC_VERSION_MAJOR < 59
+     AVCodecContext *avctx = demuxer.videoCodecContext();
++#else
++    AVCodecParameters *avctx = demuxer.videoCodecContext();
++#endif
+     statistics.video = Statistics::Common();
+     statistics.video_only = Statistics::VideoOnly();
+     if (!avctx)
+@@ -324,10 +344,20 @@ void AVPlayer::Private::initVideoStatistics(int s)
+         statistics.video.decoder = vdec->name();
+         statistics.video.decoder_detail = vdec->description();
+     }
++#if LIBAVCODEC_VERSION_MAJOR < 59
+     statistics.video_only.coded_height = avctx->coded_height;
+     statistics.video_only.coded_width = avctx->coded_width;
+     statistics.video_only.gop_size = avctx->gop_size;
+     statistics.video_only.pix_fmt = QLatin1String(av_get_pix_fmt_name(avctx->pix_fmt));
++#else
++    // FIXME we can't really get coded_height, coded_width and gop_size from Parameters
++    // At some point we should make an effort to get the real codec context; in the mean
++    // time, this should be close enough...
++    statistics.video_only.coded_height = avctx->height;
++    statistics.video_only.coded_width = avctx->width;
++    statistics.video_only.gop_size = 0;
++    statistics.video_only.pix_fmt = QLatin1String(av_get_pix_fmt_name(static_cast<AVPixelFormat>(avctx->format)));
++#endif
+     statistics.video_only.height = avctx->height;
+     statistics.video_only.width = avctx->width;
+     statistics.video_only.rotate = 0;
+@@ -354,7 +384,11 @@ bool AVPlayer::Private::setupAudioThread(AVPlayer *player)
+         athread->setDecoder(0);
+         athread->setOutput(0);
+     }
++#if LIBAVCODEC_VERSION_MAJOR < 59
+     AVCodecContext *avctx = ademuxer->audioCodecContext();
++#else
++    AVCodecParameters *avctx = ademuxer->audioCodecContext();
++#endif
+     if (!avctx) {
+         // TODO: close ao? //TODO: check pulseaudio perapp control if closed
+         return false;
+@@ -384,7 +418,11 @@ bool AVPlayer::Private::setupAudioThread(AVPlayer *player)
+     correct_audio_channels(avctx);
+     AudioFormat af;
+     af.setSampleRate(avctx->sample_rate);
++#if LIBAVCODEC_VERSION_MAJOR < 59
+     af.setSampleFormatFFmpeg(avctx->sample_fmt);
++#else
++    af.setSampleFormatFFmpeg(avctx->format);
++#endif
+     af.setChannelLayoutFFmpeg(avctx->channel_layout);
+     if (!af.isValid()) {
+         qWarning("invalid audio format. audio stream will be disabled");
+@@ -466,7 +504,11 @@ QVariantList AVPlayer::Private::getTracksInfo(AVDemuxer *demuxer, AVDemuxer::Str
+         t[QStringLiteral("stream_index")] = QVariant(s);
+ 
+         AVStream *stream = demuxer->formatContext()->streams[s];
++#if LIBAVCODEC_VERSION_MAJOR < 59
+         AVCodecContext *ctx = stream->codec;
++#else
++        AVCodecParameters *ctx = stream->codecpar;
++#endif
+         if (ctx) {
+             t[QStringLiteral("codec")] = QByteArray(avcodec_descriptor_get(ctx->codec_id)->name);
+             if (ctx->extradata)
+@@ -494,7 +536,11 @@ bool AVPlayer::Private::applySubtitleStream(int n, AVPlayer *player)
+ {
+     if (!demuxer.setStreamIndex(AVDemuxer::SubtitleStream, n))
+         return false;
++#if LIBAVCODEC_VERSION_MAJOR < 59
+     AVCodecContext *ctx = demuxer.subtitleCodecContext();
++#else
++    AVCodecParameters *ctx = demuxer.subtitleCodecContext();
++#endif
+     if (!ctx)
+         return false;
+     // FIXME: AVCodecDescriptor.name and AVCodec.name are different!
+@@ -512,7 +558,11 @@ bool AVPlayer::Private::tryApplyDecoderPriority(AVPlayer *player)
+     // TODO: add an option to apply the new decoder even if not available
+     qint64 pos = player->position();
+     VideoDecoder *vd = NULL;
++#if LIBAVCODEC_VERSION_MAJOR < 59
+     AVCodecContext *avctx = demuxer.videoCodecContext();
++#else
++    AVCodecParameters *avctx = demuxer.videoCodecContext();
++#endif
+     foreach(VideoDecoderId vid, vc_ids) {
+         qDebug("**********trying video decoder: %s...", VideoDecoder::name(vid));
+         vd = VideoDecoder::create(vid);
+@@ -560,7 +610,11 @@ bool AVPlayer::Private::setupVideoThread(AVPlayer *player)
+         vthread->packetQueue()->clear();
+         vthread->setDecoder(0);
+     }
++#if LIBAVCODEC_VERSION_MAJOR < 59
+     AVCodecContext *avctx = demuxer.videoCodecContext();
++#else
++    AVCodecParameters *avctx = demuxer.videoCodecContext();
++#endif
+     if (!avctx) {
+         return false;
+     }
+diff --git a/src/AVPlayerPrivate.h b/src/AVPlayerPrivate.h
+index e404b9bf..f0f90fd1 100644
+--- a/src/AVPlayerPrivate.h
++++ b/src/AVPlayerPrivate.h
+@@ -29,6 +29,10 @@
+ #include "AVDemuxThread.h"
+ #include "utils/Logger.h"
+ 
++extern "C" {
++#include <libavcodec/avcodec.h>
++}
++
+ namespace QtAV {
+ 
+ static const qint64 kInvalidPosition = std::numeric_limits<qint64>::max();
+@@ -43,7 +47,11 @@ public:
+     void applyFrameRate();
+     void initStatistics();
+     void initBaseStatistics();
++#if LIBAVCODEC_VERSION_MAJOR < 59
+     void initCommonStatistics(int s, Statistics::Common* st, AVCodecContext* avctx);
++#else
++    void initCommonStatistics(int s, Statistics::Common* st, AVCodecParameters* avctx);
++#endif
+     void initAudioStatistics(int s);
+     void initVideoStatistics(int s);
+     void initSubtitleStatistics(int s);
+diff --git a/src/QtAV/AVDemuxer.h b/src/QtAV/AVDemuxer.h
+index 3b720f5d..688c82f9 100644
+--- a/src/QtAV/AVDemuxer.h
++++ b/src/QtAV/AVDemuxer.h
+@@ -28,6 +28,10 @@
+ #include <QtCore/QObject>
+ #include <QtCore/QScopedPointer>
+ 
++extern "C" {
++#include <libavcodec/avcodec.h>
++}
++
+ struct AVFormatContext;
+ struct AVCodecContext;
+ QT_BEGIN_NAMESPACE
+@@ -151,9 +155,15 @@ public:
+     int subtitleStream() const;
+     QList<int> subtitleStreams() const;
+     //codec. stream < 0: the stream going to play (or the stream set by setStreamIndex())
++#if LIBAVCODEC_VERSION_MAJOR < 59
+     AVCodecContext* audioCodecContext(int stream = -1) const;
+     AVCodecContext* videoCodecContext(int stream = -1) const;
+     AVCodecContext* subtitleCodecContext(int stream = -1) const;
++#else
++    AVCodecParameters* audioCodecContext(int stream = -1) const;
++    AVCodecParameters* videoCodecContext(int stream = -1) const;
++    AVCodecParameters* subtitleCodecContext(int stream = -1) const;
++#endif
+     /**
+      * @brief getInterruptTimeout return the interrupt timeout
+      */
+diff --git a/src/QtAV/private/AVDecoder_p.h b/src/QtAV/private/AVDecoder_p.h
+index 2382974e..5e952ea8 100644
+--- a/src/QtAV/private/AVDecoder_p.h
++++ b/src/QtAV/private/AVDecoder_p.h
+@@ -78,7 +78,7 @@ class Q_AV_PRIVATE_EXPORT AVDecoderPrivate : public DPtrPrivate<AVDecoder>
+ {
+ public:
+     static const char* getProfileName(AVCodecID id, int profile) {
+-        AVCodec *c = avcodec_find_decoder(id);
++        const AVCodec *c = avcodec_find_decoder(id);
+         if (!c)
+             return "Unknow";
+         return av_get_profile_name(c, profile);
+diff --git a/src/VideoFormat.cpp b/src/VideoFormat.cpp
+index b9c7b4f0..5e7901f1 100644
+--- a/src/VideoFormat.cpp
++++ b/src/VideoFormat.cpp
+@@ -702,7 +702,11 @@ bool VideoFormat::hasPalette() const
+ 
+ bool VideoFormat::isPseudoPaletted() const
+ {
++#if LIBAVCODEC_VERSION_MAJOR < 59
+     return (d->flags() & AV_PIX_FMT_FLAG_PSEUDOPAL) == AV_PIX_FMT_FLAG_PSEUDOPAL;
++#else
++    return hasPalette();
++#endif
+ }
+ 
+ bool VideoFormat::isBitStream() const
+diff --git a/src/VideoFrameExtractor.cpp b/src/VideoFrameExtractor.cpp
+index 8e4a843e..ecaa079e 100644
+--- a/src/VideoFrameExtractor.cpp
++++ b/src/VideoFrameExtractor.cpp
+@@ -192,7 +192,11 @@ public:
+             if (!vd)
+                 continue;
+             decoder.reset(vd);
++#if LIBAVCODEC_VERSION_MAJOR < 59
+             AVCodecContext *cctx = demuxer.videoCodecContext();
++#else
++            AVCodecParameters *cctx = demuxer.videoCodecContext();
++#endif
+             if (cctx) decoder->setCodecContext(demuxer.videoCodecContext());
+             if (!cctx || !decoder->open()) {
+                 decoder.reset(0);
+diff --git a/src/codec/AVDecoder.cpp b/src/codec/AVDecoder.cpp
+index 440504d0..bc9cc278 100644
+--- a/src/codec/AVDecoder.cpp
++++ b/src/codec/AVDecoder.cpp
+@@ -27,7 +27,7 @@
+ 
+ namespace QtAV {
+ 
+-static AVCodec* get_codec(const QString &name, const QString& hwa, AVCodecID cid)
++static const AVCodec* get_codec(const QString &name, const QString& hwa, AVCodecID cid)
+ {
+     QString fullname(name);
+     if (name.isEmpty()) {
+@@ -35,7 +35,7 @@ static AVCodec* get_codec(const QString &name, const QString& hwa, AVCodecID cid
+             return avcodec_find_decoder(cid);
+         fullname = QString("%1_%2").arg(avcodec_get_name(cid)).arg(hwa);
+     }
+-    AVCodec *codec = avcodec_find_decoder_by_name(fullname.toUtf8().constData());
++    const AVCodec *codec = avcodec_find_decoder_by_name(fullname.toUtf8().constData());
+     if (codec)
+         return codec;
+     const AVCodecDescriptor* cd = avcodec_descriptor_get_by_name(fullname.toUtf8().constData());
+@@ -76,7 +76,7 @@ bool AVDecoder::open()
+         return false;
+     }
+     const QString hwa = property("hwaccel").toString();
+-    AVCodec* codec = get_codec(codecName(), hwa, d.codec_ctx->codec_id);
++    const AVCodec* codec = get_codec(codecName(), hwa, d.codec_ctx->codec_id);
+     if (!codec) { // TODO: can be null for none-ffmpeg based decoders
+         QString es(tr("No codec could be found for '%1'"));
+         if (d.codec_name.isEmpty()) {
+@@ -153,6 +153,8 @@ void AVDecoder::flush()
+     avcodec_flush_buffers(d_func().codec_ctx);
+ }
+ 
++static QMap<AVCodecParameters*,AVCodecContext*> ccs;
++
+ /*
+  * do nothing if equal
+  * close the old one. the codec context can not be shared in more than 1 decoder.
+@@ -160,9 +162,17 @@ void AVDecoder::flush()
+ void AVDecoder::setCodecContext(void *codecCtx)
+ {
+     DPTR_D(AVDecoder);
++#if LIBAVCODEC_VERSION_MAJOR < 59
+     AVCodecContext *ctx = (AVCodecContext*)codecCtx;
+-    if (d.codec_ctx == ctx)
++    if (d.codec_ctx == codecCtx)
+         return;
++#else
++    AVCodecParameters *ctx = (AVCodecParameters*)codecCtx;
++    if(ccs.contains(ctx)) {
++        d.codec_ctx = ccs.value(ctx);
++	return;
++    }
++#endif
+     if (isOpen()) {
+         qWarning("Can not copy codec properties when it's open");
+         close(); //
+@@ -180,7 +190,12 @@ void AVDecoder::setCodecContext(void *codecCtx)
+         qWarning("avcodec_alloc_context3 failed");
+         return;
+     }
++    ccs.insert(ctx, d.codec_ctx);
++#if LIBAVCODEC_VERSION_MAJOR < 59
+     AV_ENSURE_OK(avcodec_copy_context(d.codec_ctx, ctx));
++#else
++    AV_ENSURE_OK(avcodec_parameters_to_context(d.codec_ctx, ctx));
++#endif
+ }
+ 
+ //TODO: reset other parameters?
+diff --git a/src/codec/AVEncoder.cpp b/src/codec/AVEncoder.cpp
+index 455539c7..5be64db2 100644
+--- a/src/codec/AVEncoder.cpp
++++ b/src/codec/AVEncoder.cpp
+@@ -146,7 +146,13 @@ void AVEncoder::copyAVCodecContext(void* ctx)
+     AVCodecContext* c = static_cast<AVCodecContext*>(ctx);
+     if (d.avctx) {
+         // dest should be avcodec_alloc_context3(NULL)
++#if LIBAVCODEC_VERSION_MAJOR < 59
+         AV_ENSURE_OK(avcodec_copy_context(d.avctx, c));
++#else
++        AVCodecParameters *par;
++        avcodec_parameters_from_context(par, c);
++        AV_ENSURE_OK(avcodec_parameters_to_context(d.avctx, par));
++#endif
+         d.is_open = false;
+         return;
+     }
+diff --git a/src/codec/audio/AudioDecoderFFmpeg.cpp b/src/codec/audio/AudioDecoderFFmpeg.cpp
+index d783588a..7c5188fc 100644
+--- a/src/codec/audio/AudioDecoderFFmpeg.cpp
++++ b/src/codec/audio/AudioDecoderFFmpeg.cpp
+@@ -100,10 +100,34 @@ bool AudioDecoderFFmpeg::decode(const Packet &packet)
+         av_init_packet(&eofpkt);
+         eofpkt.data = NULL;
+         eofpkt.size = 0;
++#if LIBAVCODEC_VERSION_MAJOR < 59
+         ret = avcodec_decode_audio4(d.codec_ctx, d.frame, &got_frame_ptr, &eofpkt);
++#else
++	ret = avcodec_receive_frame(d.codec_ctx, d.frame);
++	if (ret == AVERROR(EAGAIN))
++            return false;
++	else if (ret < 0) {
++            qWarning("[AudioDecoder] %s", av_err2str(ret));
++            return false;
++	}
++	got_frame_ptr = (ret == 0);
++	ret = avcodec_send_packet(d.codec_ctx, &eofpkt);
++#endif
+     } else {
+     // const AVPacket*: ffmpeg >= 1.0. no libav
++#if LIBAVCODEC_VERSION_MAJOR < 59
+         ret = avcodec_decode_audio4(d.codec_ctx, d.frame, &got_frame_ptr, (AVPacket*)packet.asAVPacket());
++#else
++	ret = avcodec_receive_frame(d.codec_ctx, d.frame);
++	if (ret == AVERROR(EAGAIN))
++            return false;
++	else if (ret < 0) {
++            qWarning("[AudioDecoder] %s", av_err2str(ret));
++            return false;
++	}
++	got_frame_ptr = (ret == 0);
++	ret = avcodec_send_packet(d.codec_ctx, (AVPacket*)packet.asAVPacket());
++#endif
+     }
+     d.undecoded_size = qMin(packet.data.size() - ret, packet.data.size());
+     if (ret == AVERROR(EAGAIN)) {
+@@ -145,7 +169,11 @@ AudioFrame AudioDecoderFFmpeg::frame()
+     f.setBytesPerLine(d.frame->linesize[0], 0); // for correct alignment
+     f.setSamplesPerChannel(d.frame->nb_samples);
+     // TODO: ffplay check AVFrame.pts, pkt_pts, last_pts+nb_samples. move to AudioFrame::from(AVFrame*)
++#if LIBAVCODEC_VERSION_MAJOR < 59
+     f.setTimestamp((double)d.frame->pkt_pts/1000.0);
++#else
++    f.setTimestamp((double)d.frame->pts/1000.0);
++#endif
+     f.setAudioResampler(d.resampler); // TODO: remove. it's not safe if frame is shared. use a pool or detach if ref >1
+     return f;
+ }
+diff --git a/src/codec/audio/AudioEncoderFFmpeg.cpp b/src/codec/audio/AudioEncoderFFmpeg.cpp
+index 3811e11a..c338aae3 100644
+--- a/src/codec/audio/AudioEncoderFFmpeg.cpp
++++ b/src/codec/audio/AudioEncoderFFmpeg.cpp
+@@ -54,7 +54,9 @@ public:
+     AudioEncoderFFmpegPrivate()
+         : AudioEncoderPrivate()
+     {
++#if LIBAVCODEC_VERSION_MAJOR < 59
+         avcodec_register_all();
++#endif
+         // NULL: codec-specific defaults won't be initialized, which may result in suboptimal default settings (this is important mainly for encoders, e.g. libx264).
+         avctx = avcodec_alloc_context3(NULL);
+     }
+@@ -68,11 +70,11 @@ bool AudioEncoderFFmpegPrivate::open()
+ {
+     if (codec_name.isEmpty()) {
+         // copy ctx from muxer by copyAVCodecContext
+-        AVCodec *codec = avcodec_find_encoder(avctx->codec_id);
++        const AVCodec *codec = avcodec_find_encoder(avctx->codec_id);
+         AV_ENSURE_OK(avcodec_open2(avctx, codec, &dict), false);
+         return true;
+     }
+-    AVCodec *codec = avcodec_find_encoder_by_name(codec_name.toUtf8().constData());
++    const AVCodec *codec = avcodec_find_encoder_by_name(codec_name.toUtf8().constData());
+     if (!codec) {
+         const AVCodecDescriptor* cd = avcodec_descriptor_get_by_name(codec_name.toUtf8().constData());
+         if (cd) {
+@@ -204,7 +206,13 @@ bool AudioEncoderFFmpeg::encode(const AudioFrame &frame)
+     pkt.data = (uint8_t*)d.buffer.constData(); //NULL
+     pkt.size = d.buffer.size(); //0
+     int got_packet = 0;
++#if LIBAVCODEC_VERSION_MAJOR < 59
+     int ret = avcodec_encode_audio2(d.avctx, &pkt, f, &got_packet);
++#else
++    int ret = avcodec_send_frame(d.avctx, f);
++    got_packet = (ret == 0);
++    ret = avcodec_receive_packet(d.avctx, &pkt);
++#endif
+     av_frame_free(&f);
+     if (ret < 0) {
+         //qWarning("error avcodec_encode_audio2: %s" ,av_err2str(ret));
+diff --git a/src/codec/video/VideoDecoderCUDA.cpp b/src/codec/video/VideoDecoderCUDA.cpp
+index 844a3ae6..8015b4f9 100644
+--- a/src/codec/video/VideoDecoderCUDA.cpp
++++ b/src/codec/video/VideoDecoderCUDA.cpp
+@@ -46,6 +46,10 @@
+ #include "utils/Logger.h"
+ #include "SurfaceInteropCUDA.h"
+ 
++extern "C" {
++#include <libavcodec/bsf.h>
++}
++
+ //decode error if not floating context
+ 
+ namespace QtAV {
+@@ -184,7 +188,7 @@ public:
+     }
+     ~VideoDecoderCUDAPrivate() {
+         if (bsf)
+-            av_bitstream_filter_close(bsf);
++            av_bsf_free(&bsf);
+         if (!can_load)
+             return;
+         if (!isLoaded()) //cuda_api
+@@ -320,7 +324,7 @@ public:
+     int nb_dec_surface;
+     QString description;
+ 
+-    AVBitStreamFilterContext *bsf; //TODO: rename bsf_ctx
++    AVBSFContext *bsf; //TODO: rename bsf_ctx
+ 
+     VideoDecoderCUDA::CopyMode copy_mode;
+     cuda::InteropResourcePtr interop_res; //may be still used in video frames when decoder is destroyed
+@@ -391,9 +395,7 @@ bool VideoDecoderCUDA::decode(const Packet &packet)
+     if (d.bsf) {
+         // h264_mp4toannexb_filter does not use last parameter 'keyFrame', so just set 0
+         //return: 0: not changed, no outBuf allocated. >0: ok. <0: fail
+-        filtered = av_bitstream_filter_filter(d.bsf, d.codec_ctx, NULL, &outBuf, &outBufSize
+-                                                  , (const uint8_t*)packet.data.constData(), packet.data.size()
+-                                                  , 0);//d.is_keyframe);
++        filtered = av_bsf_receive_packet(d.bsf, (AVPacket*)packet.asAVPacket());//d.is_keyframe);
+         //qDebug("%s @%d filtered=%d outBuf=%p, outBufSize=%d", __FUNCTION__, __LINE__, filtered, outBuf, outBufSize);
+         if (filtered < 0) {
+             qDebug("failed to filter: %s", av_err2str(filtered));
+@@ -780,15 +782,17 @@ void VideoDecoderCUDAPrivate::setBSF(AVCodecID codec)
+ {
+     if (codec == QTAV_CODEC_ID(H264)) {
+         if (!bsf)
+-            bsf = av_bitstream_filter_init("h264_mp4toannexb");
++            av_bsf_alloc(av_bsf_get_by_name("h264_mp4toannexb"), &bsf);
++            av_bsf_init(bsf);
+         Q_ASSERT(bsf && "h264_mp4toannexb bsf not found");
+     } else if (codec == QTAV_CODEC_ID(HEVC)) {
+         if (!bsf)
+-            bsf = av_bitstream_filter_init("hevc_mp4toannexb");
++            av_bsf_alloc(av_bsf_get_by_name("hevc_mp4toannexb"), &bsf);
++            av_bsf_init(bsf);
+         Q_ASSERT(bsf && "hevc_mp4toannexb bsf not found");
+     } else {
+         if (bsf) {
+-            av_bitstream_filter_close(bsf);
++            av_bsf_free(&bsf);
+             bsf = 0;
+         }
+     }
+diff --git a/src/codec/video/VideoDecoderFFmpegBase.cpp b/src/codec/video/VideoDecoderFFmpegBase.cpp
+index e344c5cb..49cebb94 100644
+--- a/src/codec/video/VideoDecoderFFmpegBase.cpp
++++ b/src/codec/video/VideoDecoderFFmpegBase.cpp
+@@ -30,12 +30,21 @@ extern ColorRange colorRangeFromFFmpeg(AVColorRange cr);
+ 
+ static void SetColorDetailsByFFmpeg(VideoFrame *f, AVFrame* frame, AVCodecContext* codec_ctx)
+ {
++#if LIBAVCODEC_VERSION_MAJOR < 59
+     ColorSpace cs = colorSpaceFromFFmpeg(av_frame_get_colorspace(frame));
+     if (cs == ColorSpace_Unknown)
++#else
++    ColorSpace
++#endif
+         cs = colorSpaceFromFFmpeg(codec_ctx->colorspace);
+     f->setColorSpace(cs);
++#if LIBAVCODEC_VERSION_MAJOR < 59
+     ColorRange cr = colorRangeFromFFmpeg(av_frame_get_color_range(frame));
+     if (cr == ColorRange_Unknown) {
++#else
++    ColorRange cr;
++    if (1) {
++#endif
+         // check yuvj format. TODO: deprecated, check only for old ffmpeg?
+         const AVPixelFormat pixfmt = (AVPixelFormat)frame->format;
+         switch (pixfmt) {
+@@ -125,9 +134,21 @@ bool VideoDecoderFFmpegBase::decode(const Packet &packet)
+         av_init_packet(&eofpkt);
+         eofpkt.data = NULL;
+         eofpkt.size = 0;
++#if LIBAVCODEC_VERSION_MAJOR < 59
+         ret = avcodec_decode_video2(d.codec_ctx, d.frame, &got_frame_ptr, &eofpkt);
++#else
++	ret = avcodec_receive_frame(d.codec_ctx, d.frame);
++	got_frame_ptr = (ret == 0);
++	ret = avcodec_send_packet(d.codec_ctx, &eofpkt);
++#endif
+     } else {
++#if LIBAVCODEC_VERSION_MAJOR < 59
+         ret = avcodec_decode_video2(d.codec_ctx, d.frame, &got_frame_ptr, (AVPacket*)packet.asAVPacket());
++#else
++	ret = avcodec_receive_frame(d.codec_ctx, d.frame);
++	got_frame_ptr = (ret == 0);
++	ret = avcodec_send_packet(d.codec_ctx, (AVPacket*)packet.asAVPacket());
++#endif
+     }
+     //qDebug("pic_type=%c", av_get_picture_type_char(d.frame->pict_type));
+     d.undecoded_size = qMin(packet.data.size() - ret, packet.data.size());
+@@ -159,7 +180,11 @@ VideoFrame VideoDecoderFFmpegBase::frame()
+     frame.setBits(d.frame->data);
+     frame.setBytesPerLine(d.frame->linesize);
+     // in s. TODO: what about AVFrame.pts? av_frame_get_best_effort_timestamp? move to VideoFrame::from(AVFrame*)
++#if LIBAVCODEC_VERSION_MAJOR < 59
+     frame.setTimestamp((double)d.frame->pkt_pts/1000.0);
++#else
++    frame.setTimestamp((double)d.frame->pts/1000.0);
++#endif
+     frame.setMetaData(QStringLiteral("avbuf"), QVariant::fromValue(AVFrameBuffersRef(new AVFrameBuffers(d.frame))));
+     d.updateColorDetails(&frame);
+     if (frame.format().hasPalette()) {
+diff --git a/src/codec/video/VideoDecoderFFmpegHW.cpp b/src/codec/video/VideoDecoderFFmpegHW.cpp
+index c17c8b28..17d663e6 100644
+--- a/src/codec/video/VideoDecoderFFmpegHW.cpp
++++ b/src/codec/video/VideoDecoderFFmpegHW.cpp
+@@ -328,7 +328,11 @@ VideoFrame VideoDecoderFFmpegHW::copyToFrame(const VideoFormat& fmt, int surface
+         // TODO: buffer pool and create VideoFrame when needed to avoid copy? also for other va
+         frame = frame.clone();
+     }
++#if LIBAVCODEC_VERSION_MAJOR < 59
+     frame.setTimestamp(double(d.frame->pkt_pts)/1000.0);
++#else
++    frame.setTimestamp(double(d.frame->pts)/1000.0);
++#endif
+     frame.setDisplayAspectRatio(d.getDAR(d.frame));
+     d.updateColorDetails(&frame);
+     return frame;
+diff --git a/src/codec/video/VideoDecoderVAAPI.cpp b/src/codec/video/VideoDecoderVAAPI.cpp
+index a91caf92..0c8ce016 100644
+--- a/src/codec/video/VideoDecoderVAAPI.cpp
++++ b/src/codec/video/VideoDecoderVAAPI.cpp
+@@ -27,9 +27,11 @@
+ #include <QtCore/QMetaEnum>
+ #include <QtCore/QStringList>
+ #include <QtCore/QThread>
++#if LIBAVCODEC_VERSION_MAJOR < 59
+ extern "C" {
+ #include <libavcodec/vaapi.h>
+ }
++#endif
+ #include "QtAV/private/AVCompat.h"
+ #include "QtAV/private/factory.h"
+ #include "vaapi/SurfaceInteropVAAPI.h"
+@@ -84,7 +86,7 @@ FACTORY_REGISTER(VideoDecoder, VAAPI, "VAAPI")
+ 
+ const char* getProfileName(AVCodecID id, int profile)
+ {
+-    AVCodec *c = avcodec_find_decoder(id);
++    const AVCodec *c = avcodec_find_decoder(id);
+     if (!c)
+         return "Unknow";
+     return av_get_profile_name(c, profile);
+diff --git a/src/codec/video/VideoEncoderFFmpeg.cpp b/src/codec/video/VideoEncoderFFmpeg.cpp
+index c0c902cb..a352c533 100644
+--- a/src/codec/video/VideoEncoderFFmpeg.cpp
++++ b/src/codec/video/VideoEncoderFFmpeg.cpp
+@@ -116,11 +116,11 @@ bool VideoEncoderFFmpegPrivate::open()
+     nb_encoded = 0LL;
+     if (codec_name.isEmpty()) {
+         // copy ctx from muxer by copyAVCodecContext
+-        AVCodec *codec = avcodec_find_encoder(avctx->codec_id);
++        const AVCodec *codec = avcodec_find_encoder(avctx->codec_id);
+         AV_ENSURE_OK(avcodec_open2(avctx, codec, &dict), false);
+         return true;
+     }
+-    AVCodec *codec = avcodec_find_encoder_by_name(codec_name.toUtf8().constData());
++    const AVCodec *codec = avcodec_find_encoder_by_name(codec_name.toUtf8().constData());
+     if (!codec) {
+         const AVCodecDescriptor* cd = avcodec_descriptor_get_by_name(codec_name.toUtf8().constData());
+         if (cd) {
+@@ -247,7 +247,7 @@ bool VideoEncoderFFmpegPrivate::open()
+     applyOptionsForContext();
+     AV_ENSURE_OK(avcodec_open2(avctx, codec, &dict), false);
+     // from mpv ao_lavc
+-    const int buffer_size = qMax<int>(qMax<int>(width*height*6+200, AV_INPUT_BUFFER_MIN_SIZE), sizeof(AVPicture));//??
++    const int buffer_size = qMax<int>(qMax<int>(width*height*6+200, AV_INPUT_BUFFER_MIN_SIZE), av_image_get_buffer_size(avctx->pix_fmt, avctx->width, avctx->height, 1));//??
+     buffer.resize(buffer_size);
+     return true;
+ }
+@@ -373,7 +373,13 @@ bool VideoEncoderFFmpeg::encode(const VideoFrame &frame)
+     pkt.data = (uint8_t*)d.buffer.constData();
+     pkt.size = d.buffer.size();
+     int got_packet = 0;
++#if LIBAVCODEC_VERSION_MAJOR < 59
+     int ret = avcodec_encode_video2(d.avctx, &pkt, f.data(), &got_packet);
++#else
++    int ret = avcodec_send_frame(d.avctx, f.data());
++    got_packet = (ret == 0);
++    ret = avcodec_receive_packet(d.avctx, &pkt);
++#endif
+     if (ret < 0) {
+         qWarning("error avcodec_encode_video2: %s" ,av_err2str(ret));
+         return false; //false
+diff --git a/src/filter/LibAVFilter.cpp b/src/filter/LibAVFilter.cpp
+index 8993a91f..d770ddc3 100644
+--- a/src/filter/LibAVFilter.cpp
++++ b/src/filter/LibAVFilter.cpp
+@@ -84,7 +84,9 @@ public:
+         filter_graph = 0;
+         in_filter_ctx = 0;
+         out_filter_ctx = 0;
++#if LIBAVCODEC_VERSION_MAJOR < 59
+         avfilter_register_all();
++#endif
+ #endif //QTAV_HAVE(AVFILTER)
+     }
+     ~Private() {
+@@ -204,7 +206,9 @@ QString LibAVFilter::filterDescription(const QString &filterName)
+ {
+     QString s;
+ #if QTAV_HAVE(AVFILTER)
++#if LIBAVCODEC_VERSION_MAJOR < 59
+     avfilter_register_all();
++#endif
+     const AVFilter *f = avfilter_get_by_name(filterName.toUtf8().constData());
+     if (!f)
+         return s;
+@@ -283,11 +287,18 @@ QStringList LibAVFilter::registeredFilters(int type)
+ {
+     QStringList filters;
+ #if QTAV_HAVE(AVFILTER)
++#if LIBAVCODEC_VERSION_MAJOR < 59
+     avfilter_register_all();
++#endif
+     const AVFilter* f = NULL;
+     AVFilterPad* fp = NULL; // no const in avfilter_pad_get_name() for ffmpeg<=1.2 libav<=9
+ #if AV_MODULE_CHECK(LIBAVFILTER, 3, 8, 0, 53, 100)
++#if LIBAVCODEC_VERSION_MAJOR < 59
+     while ((f = avfilter_next(f))) {
++#else
++    void** ff = NULL;
++    while (f = av_filter_iterate(ff)) {
++#endif
+ #else
+     AVFilter** ff = NULL;
+     while ((ff = av_filter_next(ff)) && *ff) {
+diff --git a/src/subtitle/SubtitleProcessorFFmpeg.cpp b/src/subtitle/SubtitleProcessorFFmpeg.cpp
+index 83e53e7c..50ccc31e 100644
+--- a/src/subtitle/SubtitleProcessorFFmpeg.cpp
++++ b/src/subtitle/SubtitleProcessorFFmpeg.cpp
+@@ -249,7 +249,7 @@ bool SubtitleProcessorFFmpeg::processHeader(const QByteArray &codec, const QByte
+     if (codec_ctx) {
+         avcodec_free_context(&codec_ctx);
+     }
+-    AVCodec *c = avcodec_find_decoder_by_name(codec.constData());
++    const AVCodec *c = avcodec_find_decoder_by_name(codec.constData());
+     if (!c) {
+         qDebug("subtitle avcodec_descriptor_get_by_name %s", codec.constData());
+         const AVCodecDescriptor *desc = avcodec_descriptor_get_by_name(codec.constData());
+@@ -370,8 +370,15 @@ bool SubtitleProcessorFFmpeg::processSubtitle()
+         qWarning("no subtitle stream found");
+         return false;
+     }
++#if LIBAVCODEC_VERSION_MAJOR < 59
+     codec_ctx = m_reader.subtitleCodecContext();
+-    AVCodec *dec = avcodec_find_decoder(codec_ctx->codec_id);
++    const AVCodec *dec = avcodec_find_decoder(codec_ctx->codec_id);
++#else
++    AVCodecParameters *par = m_reader.subtitleCodecContext();
++    const AVCodec *dec = avcodec_find_decoder(par->codec_id);
++    codec_ctx = avcodec_alloc_context3(dec);
++    avcodec_parameters_to_context(codec_ctx, par);
++#endif
+     const AVCodecDescriptor *dec_desc = avcodec_descriptor_get(codec_ctx->codec_id);
+     if (!dec) {
+         if (dec_desc)
