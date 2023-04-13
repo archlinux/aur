@@ -1,20 +1,19 @@
 pkgbase = python-terminaltables
 	pkgdesc = Generate simple tables in terminals from a nested list of strings
 	pkgver = 3.1.0
-	pkgrel = 3
+	pkgrel = 9
 	url = https://github.com/Robpol86/terminaltables
 	arch = any
 	license = MIT
-	makedepends = python
-	makedepends = python2
+	checkdepends = python-pytest
+	checkdepends = python-colorama
+	checkdepends = python-termcolor
+	checkdepends = python-colorclass
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
+	depends = python
 	source = terminaltables-3.1.0.tar.gz::https://github.com/Robpol86/terminaltables/archive/v3.1.0.tar.gz
+	source = python-3.8.patch
 	sha512sums = dc49458652fff8bc6094d316d84c9b8e9fca1a26e3230c0b668bc03ec8528793f4ef024e8032d4a56fbfabfdfd4a1142870f550f0b373ba6a42dd2e3ead3f501
+	sha512sums = 9a33ef51cbd2854bf9acc247e2d966332229446158e7dae9cad25e03335eb9689d50b0a22234285aa56c707e6e93c12f950299efcfbe7e42ed527216090592f2
 
 pkgname = python-terminaltables
-	depends = python
-
-pkgname = python2-terminaltables
-	depends = python2
-
