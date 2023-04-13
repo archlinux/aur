@@ -4,7 +4,7 @@ pkgname=hunspell-ja-git
 conflicts=('hunspell-ja')
 provides=('hunspell-ja')
 pkgver=1.r0.gf7c8e7e
-pkgrel=1
+pkgrel=2
 pkgdesc="Japanese dictionary for Hunspell"
 arch=('any')
 url='https://github.com/Ajatt-Tools/hunspell-ja'
@@ -12,6 +12,7 @@ license=('custom')
 optdepends=('hunspell: the spell checking libraries and apps')
 source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
+makedepends=('git')
 
 _lang=ja_JP
 

@@ -1,10 +1,11 @@
 pkgbase = hunspell-ja-git
 	pkgdesc = Japanese dictionary for Hunspell
 	pkgver = 1.r0.gf7c8e7e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ajatt-Tools/hunspell-ja
 	arch = any
 	license = custom
+	makedepends = git
 	optdepends = hunspell: the spell checking libraries and apps
 	provides = hunspell-ja
 	conflicts = hunspell-ja
