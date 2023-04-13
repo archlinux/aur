@@ -1,6 +1,6 @@
 pkgbase = twitch-tui
 	pkgdesc = Twitch chat in the terminal
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/Xithrius/twitch-tui
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = twitch-tui
 	makedepends = cargo
 	makedepends = git
 	conflicts = twitch-tui-alpha
-	source = twitch-tui-2.1.0.tar.gz::https://github.com/Xithrius/twitch-tui/archive/v2.1.0.tar.gz
-	sha256sums = d16557f6555fa33efb7a73455f2ef6bd59300c28e97ca3330eea39c92572bf42
+	source = twitch-tui-2.2.0.tar.gz::https://github.com/Xithrius/twitch-tui/archive/v2.2.0.tar.gz
+	sha256sums = 930d1569bb635a08a4f887e81ffb1e4df9c314bc34fcb1da0faf1e97b6def104
 
 pkgname = twitch-tui
