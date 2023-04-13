@@ -4,38 +4,53 @@
 _pkgname='cpplint'
 pkgname="python-${_pkgname}"
 pkgver='1.6.1'
-pkgrel=2
+pkgrel=3
 pkgdesc="Command-line tool to check C/C++ files for style issues following Google's C++ style guide."
 arch=('any')
 url='https://github.com/cpplint/cpplint'
 license=('custom:BSD3')
 depends=('python')
-makedepends=('python-build' 'python-installer' 'python-pytest-runner' 'python-wheel')
-checkdepends=('python-pytest-flake8' 'python-pylint' 'python-importlib-metadata' 'python-tox' 'python-testfixtures'
-              'python-pytest' 'python-pytest-cov')
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+checkdepends=(
+  'python-testfixtures'
+  'python-pytest'
+)
 provides=('cpplint' 'cpplint-py3')
 replaces=('cpplint-py3')
 conflicts=('cpplint')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 b2sums=('f3afaba6f8389e8d925e20d94cbcf1451d11b85ca7914b53f966c575a5be7a6b4eb7367f53e549644019ccd1f76eca61415f0c5997842cb5640ab5a7ba00c1de')
 
+prepare() {
+  cd "${_pkgname}-${pkgver}"
+  # drop leagcy sre_compile: https://github.com/cpplint/cpplint/pull/214
+  sed -e '/import sre_compile/d; s/sre_compile/re/g' -i cpplint.py
+  # we are not interested in coverage
+  sed '/addopts/d' -i setup.cfg
+  # pytest-runner is not needed to build
+  sed -e '/pytest-runner/d' -i setup.py
+}
+
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  # for some reason upstream insists on pytest-runner==5.2, remove
-  sed -e 's/pytest-runner==.*/pytest-runner"/' -i setup.py
+  cd "${_pkgname}-${pkgver}"
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  PYTHONPATH=build/lib pytest  
+  cd "${_pkgname}-${pkgver}"
+  PYTHONPATH=build/lib pytest -vv
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${_pkgname}-${pkgver}"
 
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
-  install -Dm644 "README.rst" "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "README.rst" -t "${pkgdir}/usr/share/doc/${pkgname}/"
+  install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
