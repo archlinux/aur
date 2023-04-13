@@ -1,6 +1,6 @@
 pkgbase = soundtouch-git
 	pkgdesc = Audio tempo/pitch control library
-	pkgver = 2.1.1.r0.gb9659b6
+	pkgver = 2.3.1.r13.gca05925
 	pkgrel = 1
 	url = https://www.surina.net/soundtouch/
 	arch = i686
@@ -8,10 +8,9 @@ pkgbase = soundtouch-git
 	license = LGPL
 	makedepends = git
 	depends = gcc-libs
-	provides = soundtouch
+	provides = soundtouch=2.3.1.r13.gca05925
 	conflicts = soundtouch
 	source = git+https://gitlab.com/soundtouch/soundtouch.git
 	sha256sums = SKIP
 
 pkgname = soundtouch-git
-
