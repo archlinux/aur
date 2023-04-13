@@ -3,7 +3,7 @@
 
 pkgname=amass
 pkgver=3.22.2
-pkgrel=1
+pkgrel=2
 pkgdesc="In-depth Attack Surface Mapping and Asset Discovery"
 arch=('any')
 url="https://github.com/OWASP/Amass"

@@ -1,7 +1,7 @@
 pkgbase = amass
 	pkgdesc = In-depth Attack Surface Mapping and Asset Discovery
 	pkgver = 3.22.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OWASP/Amass
 	arch = any
 	license = Apache
