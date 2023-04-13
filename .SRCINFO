@@ -7,6 +7,7 @@ pkgbase = kahlo
 	license = GPL3
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python>=3.8.0
 	depends = yt-dlp
