@@ -7,7 +7,7 @@
 # Contributor: Guillaume ALAUX <guillaume at alaux dot net>
 pkgname=zookeeper
 pkgver=3.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source server which enables highly reliable distributed coordination'
 arch=('any')
 url='https://zookeeper.apache.org/'
