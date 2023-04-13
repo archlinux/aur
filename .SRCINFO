@@ -1,12 +1,12 @@
 pkgbase = bob-bin
 	pkgdesc = A version manager for neovim
-	pkgver = 2.3.1
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://github.com/MordechaiHadad/bob
 	arch = x86_64
 	license = MIT
 	makedepends = unzip
-	source = bob.zip::https://github.com/MordechaiHadad/bob/releases/download/v2.3.1/bob-linux-x86_64.zip
-	sha256sums = 1d0d076850bc1bac0d899970592387981da44ae4b8c9660b99e3d4d0dd488058
+	source = bob.zip::https://github.com/MordechaiHadad/bob/releases/download/v2.3.2/bob-linux-x86_64.zip
+	sha256sums = 6f9bddbcf012531b97438413b29f188bc63112c1fe71d2e45f127dc5cb350f8b
 
 pkgname = bob-bin
