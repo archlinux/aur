@@ -1,13 +1,13 @@
 pkgbase = offline-cheatbreaker
 	pkgdesc = Offline CheatBreaker is a continuation of the original CheatBreaker (which was shutdown in 2018 and was a modpack and FPS booster combined!). In most cases, Offline CheatBreaker more than doubles your normal Minecraft frames!
-	pkgver = 2.3.2
+	pkgver = 2.3.3
 	pkgrel = 1
 	url = https://offlinecheatbreaker.com
 	arch = x86_64
 	depends = fuse
 	depends = xorg-xrandr
 	options = !strip
-	source = https://github.com/Offline-CheatBreaker/Launcher/releases/download/2.3.2/Offline_CheatBreaker.AppImage
-	md5sums = e26866b92339ac9754087ed995a5088c
+	source = https://github.com/Offline-CheatBreaker/Launcher/releases/download/2.3.3/Offline_CheatBreaker.AppImage
+	md5sums = 193c4a8993fa0bee0fa525cf90a462b3
 
 pkgname = offline-cheatbreaker
