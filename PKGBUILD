@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=nodejs-lhci-cli
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="The Lighthouse CI CLI"
 arch=(any)
@@ -11,7 +11,7 @@ depends=(nodejs)
 makedepends=(npm)
 source=(https://registry.npmjs.org/@lhci/cli/-/cli-$pkgver.tgz)
 noextract=(cli-$pkgver.tgz)
-sha256sums=('9a54be58586b67fec4c6d05bbd58389e6d56c96ddd973939ceedf1fab3fd2813')
+sha256sums=('6d9dc119bf6f977c8f05385e81eb67dbc1365ef7945a28275b779e4130dc0144')
 
 package() {
   npm install --global \
