@@ -1,6 +1,6 @@
 pkgbase = makeimg
 	pkgdesc = Declarative way to build Linux system images
-	pkgver = 0.7.3
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://sr.ht/~bitfehler/makeimg
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = makeimg
 	optdepends = patch: for applying patches
 	provides = makeimg
 	conflicts = makeimg-git
-	source = makeimg-0.7.3.tar.gz::https://git.sr.ht/~bitfehler/makeimg/archive/v0.7.3.tar.gz
-	sha512sums = b280c4689ae17ca357661d05250988a959fbcce3680967cf08cd8a63fcc540727ebfa5c941e7e74f470912dd47ecd0bb629bb6de7a209059a7ddbdbb7f9fff61
+	source = makeimg-0.8.0.tar.gz::https://git.sr.ht/~bitfehler/makeimg/archive/v0.8.0.tar.gz
+	sha512sums = 1d4c41937b6fc5fe2b8a13cb7fffc04e96e8f6e418b501bf540efde6472358d20239a45995728a05f5df7595fc2d8c1a948d82489fd65f79cdf3eb3f9d8e8b84
 
 pkgname = makeimg
