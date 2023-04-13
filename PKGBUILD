@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=whois-git
-pkgver=5.5.9.r0.g8aabb41
-pkgrel=2
+pkgver=5.5.16.r0.g41b3435
+pkgrel=1
 pkgdesc="The whois client by Marco d'Itri"
 arch=('i686' 'x86_64')
 url="https://github.com/rfc1036/whois"
 license=('GPL2')
 depends=('glibc' 'libidn2' 'libxcrypt')
 makedepends=('git' 'perl')
-provides=('whois')
+provides=("whois=$pkgver")
 conflicts=('whois')
 backup=('etc/whois.conf')
 source=("git+https://github.com/rfc1036/whois.git#branch=next")

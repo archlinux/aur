@@ -1,7 +1,7 @@
 pkgbase = whois-git
 	pkgdesc = The whois client by Marco d'Itri
-	pkgver = 5.5.9.r0.g8aabb41
-	pkgrel = 2
+	pkgver = 5.5.16.r0.g41b3435
+	pkgrel = 1
 	url = https://github.com/rfc1036/whois
 	arch = i686
 	arch = x86_64
@@ -11,11 +11,10 @@ pkgbase = whois-git
 	depends = glibc
 	depends = libidn2
 	depends = libxcrypt
-	provides = whois
+	provides = whois=5.5.16.r0.g41b3435
 	conflicts = whois
 	backup = etc/whois.conf
 	source = git+https://github.com/rfc1036/whois.git#branch=next
 	sha256sums = SKIP
 
 pkgname = whois-git
-
