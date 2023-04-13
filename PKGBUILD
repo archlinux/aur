@@ -6,12 +6,12 @@
 pkgname=osu-lazer
 _pkgname=osu
 pkgver=2023.403.1
-pkgrel=1
+pkgrel=2
 pkgdesc="rhythm is just a *click* away!"
 arch=('x86_64')
 url="https://osu.ppy.sh/"
 license=('MIT' 'custom:CC-BY-NC-4.0')
-depends=('ffmpeg' 'libgl' 'sdl2' 'dotnet-runtime-6.0-bin')
+depends=('ffmpeg' 'libgl' 'sdl2' 'dotnet-runtime-6.0')
 makedepends=('dotnet-sdk-6.0-bin')
 source=("https://github.com/ppy/osu/archive/$pkgver.tar.gz"
         "https://github.com/ppy/osu-resources/raw/master/LICENCE.md"
