@@ -1,0 +1,57 @@
+--- a/Makefile	2023-04-12 15:51:04.223974910 +0530
++++ b/Makefile	2023-04-12 21:04:32.652039077 +0530
+@@ -1,12 +1,12 @@
+ ##########################################
+ # SET THESE 6 PATHS CORRECTLY TO COMPILE #
+ ##########################################
+-BOOST_INC=
+-BOOST_LIB=
+-RMATH_INC=
+-RMATH_LIB=
+-HTSLD_INC=
+-HTSLD_LIB=
++BOOST_INC=/usr/include
++BOOST_LIB=/usr/lib
++RMATH_INC=/usr/include
++RMATH_LIB=/usr/lib
++HTSLD_INC=/usr/include
++HTSLD_LIB=/usr/lib
+ #########################################################
+ # EXAMPLES:                                             #
+ # BOOST_INC=/usr/include/                               #
+@@ -23,7 +23,7 @@
+ 
+ #INSTALL LOCATIONS
+ #CHANGE prefix TO INSTALL LOCALLY
+-prefix      = /usr/local
++prefix      = /usr
+ exec_prefix = $(prefix)
+ bindir      = $(exec_prefix)/bin
+ datarootdir = $(prefix)/share
+@@ -43,7 +43,7 @@
+ CXX=g++ -std=c++0x
+ 
+ #COMPILER FLAGS
+-CXXFLAG_REL=-O3
++CXXFLAG_REL=-O2
+ CXXFLAG_DBG=-g
+ CXXFLAG_WRN=-Wall -Wextra -Wno-sign-compare -Wno-unused-local-typedefs -Wno-deprecated -Wno-unused-parameter
+ 
+@@ -69,7 +69,7 @@
+ endif
+ 
+ #STATICLY LINKED LIBS
+-LIB_FILES=$(RMATH_LIB)/libRmath.a $(HTSLD_LIB)/libhts.a $(BOOST_LIB)/libboost_iostreams.a $(BOOST_LIB)/libboost_program_options.a
++LIB_FILES=-lRmath -lhts -lboost_iostreams -lboost_program_options
+ #INCLUDE DIRS
+ IFLAG=-Ilib/OTools -isystem lib -I$(RMATH_INC) -I$(HTSLD_INC) -I$(BOOST_INC)
+ 
+@@ -118,7 +118,7 @@
+ 
+ #DEFAULT VERSION (SET UP THE VARIABLES IN THE BEGINING OF THE MAKEFILE)
+ all: CXXFLAG=$(CXXFLAG_REL) $(CXXFLAG_WRN)
+-all: LDFLAG=$(CXXFLAG_REL)
++all: LDFLAG=$(CXXFLAG_REL) -Wl,-z,relro,-z,now
+ all: $(BFILE)
+ 
+ #DEBUG VERSION (SET UP THE VARIABLES IN THE BEGINING OF THE MAKEFILE)
