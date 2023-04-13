@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=gpu-screen-recorder-git
-pkgver=r270.5ea4e7f
+pkgver=r275.45a6431
 pkgrel=1
 pkgdesc='A shadowplay-like screen recorder for Linux. The fastest screen recorder for Linux'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
 provides=('gpu-screen-recorder')
 conflicts=('gpu-screen-recorder')
 source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/gpu-screen-recorder.git.${pkgver}.tar.gz")
-sha512sums=('e265b8cc49c812d5a80355628b80d09954c8277afed0f4d9973a7fdfe976b801826be646cfa97c065b74d5c25ad33534cb379a8d38dfedad8931efd0c862dc75')
+sha512sums=('cf23b3a9c14bb3145d2b9ba6033870ba0783224a04bddb04f273dda2c7df978802822254586b114c6ef0c57a79e7b673c3083aab49ae98f480649db55d2717ad')
 
 build() {
   cd "$srcdir"
