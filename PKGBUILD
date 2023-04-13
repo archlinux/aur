@@ -3,8 +3,8 @@
 pkgname=hunspell-ja-git
 conflicts=('hunspell-ja')
 provides=('hunspell-ja')
-pkgver=1.r0.gf7c8e7e
-pkgrel=2
+pkgver=1.r1.g9854fc6
+pkgrel=1
 pkgdesc="Japanese dictionary for Hunspell"
 arch=('any')
 url='https://github.com/Ajatt-Tools/hunspell-ja'
