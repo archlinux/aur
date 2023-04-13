@@ -5,7 +5,7 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=zeromq-git
-pkgver=4.3.3.r7.g1495ccad
+pkgver=4.3.4.r305.g5a5f90e0
 pkgrel=1
 pkgdesc="Fast messaging system built on sockets. C and C++ bindings. aka 0MQ, ZMQ"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url="https://zeromq.org/"
 license=('GPL' 'LGPL')
 depends=('glibc' 'libpgm' 'libsodium' 'util-linux')
 makedepends=('git' 'asciidoc' 'pkgconf' 'xmlto')
-provides=('zeromq' 'libzmq.so')
+provides=("zeromq=$pkgver" 'libzmq.so')
 conflicts=('zeromq')
 options=('staticlibs')
 source=("git+https://github.com/zeromq/libzmq.git"
