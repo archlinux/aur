@@ -1,0 +1,19 @@
+pkgbase = coltrane
+	pkgdesc = It deals with all sorts of calculations around music theory and allows for graphical representations of it
+	pkgver = 4.1.2
+	pkgrel = 1
+	url = http://github.com/pedrozath/coltrane
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-dry-monads
+	depends = ruby-gambiarra
+	depends = ruby-paint
+	depends = ruby-color
+	depends = ruby-activesupport
+	noextract = coltrane-4.1.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/coltrane-4.1.2.gem
+	sha1sums = 16abaad00364712b1a0d02844385c3607ec6ab81
+
+pkgname = coltrane
