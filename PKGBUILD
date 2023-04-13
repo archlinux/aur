@@ -4,6 +4,7 @@
 
 pkgname=ksysguard
 pkgver=5.22.0
+_dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='Track and control the processes running in your system'
 arch=(x86_64)
