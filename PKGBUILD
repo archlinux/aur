@@ -1,6 +1,6 @@
 pkgname=xdg-desktop-portal-shana
-pkgver=0.3.1
-pkgrel=2.0
+pkgver=0.3.2
+pkgrel=1.0
 pkgdesc='xdg-desktop-portal-shana'
 arch=('x86_64' 'aarch64')
 pkgdesc='A filechooser portal backend for any desktop environment'
@@ -14,7 +14,7 @@ optdepends=("xdg-desktop-portal-gnome: provide gnome backend"
             "xdg-desktop-portal-lxqt: provide lxqt backend")
 makedepends=('git' 'ninja' 'meson' 'rust')
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/Decodetalkers/xdg-desktop-portal-shana/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('685501913a6bd25c1b792502f1d6b73575a74e434f1c7f2753d25354d435b1b3')
+sha256sums=('f58ef9c2185cf40a61240edf5179b3f802f7ec6719f5bc53c68abb665168eed9')
 
 build() {
   cd ${pkgname}-$pkgver
