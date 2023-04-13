@@ -1,6 +1,6 @@
 pkgbase = uget-git
 	pkgdesc = Lightweight yet powerful download manager
-	pkgver = r627.g6ee0ed2
+	pkgver = r628.g0c5b01f
 	pkgrel = 1
 	url = https://ugetdm.com
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = uget-git
 	depends = gtk3
 	depends = libnotify
 	optdepends = aria2: alternative backend
-	provides = uget
+	provides = uget=r628.g0c5b01f
 	conflicts = uget
 	source = git+https://git.code.sf.net/p/urlget/uget2
 	source = uget-gtk.appdata.xml::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/uget/trunk/uget-gtk.appdata.xml
@@ -23,4 +23,3 @@ pkgbase = uget-git
 	sha256sums = SKIP
 
 pkgname = uget-git
-

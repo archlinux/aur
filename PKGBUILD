@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=uget-git
-pkgver=r627.g6ee0ed2
+pkgver=r628.g0c5b01f
 pkgrel=1
 pkgdesc="Lightweight yet powerful download manager"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('LGPL')
 depends=('glibc' 'curl' 'gstreamer' 'gtk3' 'libnotify')
 makedepends=('git' 'bash' 'intltool')
 optdepends=('aria2: alternative backend')
-provides=('uget')
+provides=("uget=$pkgver")
 conflicts=('uget')
 source=("git+https://git.code.sf.net/p/urlget/uget2"
         "uget-gtk.appdata.xml::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/uget/trunk/uget-gtk.appdata.xml")
