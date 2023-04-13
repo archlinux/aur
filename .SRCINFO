@@ -1,6 +1,6 @@
 pkgbase = lib32-gamescope-plus
 	pkgdesc = SteamOS session compositing window manager with added patches (32-bit)
-	pkgver = 3.11.52.beta2.16.gac5fccf
+	pkgver = 3.11.52.beta2.38.g51357e1
 	pkgrel = 1
 	url = https://github.com/Samsagax/gamescope
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = lib32-gamescope-plus
 	depends = lib32-vulkan-icd-loader
 	provides = lib32-gamescope
 	conflicts = lib32-gamescope
-	source = git+https://github.com/Samsagax/gamescope.git#commit=ac5fccf4783be1feed4790bf6e87ccc1d299f93d
+	source = git+https://github.com/Samsagax/gamescope.git#commit=51357e139facb99a2d0d3acd6272edc46f53c411
 	source = git+https://gitlab.freedesktop.org/wlroots/wlroots.git
 	source = git+https://gitlab.freedesktop.org/emersion/libliftoff.git
 	source = git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git
