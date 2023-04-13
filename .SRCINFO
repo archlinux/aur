@@ -1,6 +1,6 @@
 pkgbase = tcsh-git
 	pkgdesc = C shell with file name completion and command line editing
-	pkgver = 6.22.03.r7.gceccc7f
+	pkgver = 6.24.8.r7.g253e085
 	pkgrel = 1
 	url = https://www.tcsh.org/
 	install = tcsh.install
@@ -10,7 +10,7 @@ pkgbase = tcsh-git
 	makedepends = git
 	depends = glibc
 	depends = ncurses
-	provides = tcsh
+	provides = tcsh=6.24.8.r7.g253e085
 	conflicts = tcsh
 	backup = etc/csh.cshrc
 	backup = etc/csh.login
@@ -22,4 +22,3 @@ pkgbase = tcsh-git
 	sha256sums = SKIP
 
 pkgname = tcsh-git
-
