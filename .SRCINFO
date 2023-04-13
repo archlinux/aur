@@ -1,6 +1,6 @@
 pkgbase = python-arch
 	pkgdesc = ARCH models in Python.
-	pkgver = 5.3.1
+	pkgver = 5.4.0
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/arch
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = python-arch
 	depends = python-pandas
 	depends = python-scipy
 	depends = python-statsmodels
-	source = python-arch-5.3.1.tar.gz::https://files.pythonhosted.org/packages/source/a/arch/arch-5.3.1.tar.gz
-	sha256sums = 106f15c8770a34f71239b6c88f8517814e6b7fea3b8f2e009b3a8a23fd7e77c2
+	source = python-arch-5.4.0.tar.gz::https://files.pythonhosted.org/packages/source/a/arch/arch-5.4.0.tar.gz
+	sha256sums = a1e83d4ffc5c09516230e58dc9f9c4af55445e2005507a51896f7ea120d9a5bd
 
 pkgname = python-arch
