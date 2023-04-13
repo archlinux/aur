@@ -2,14 +2,14 @@
 
 pkgname=tftp-hpa-git
 pkgver=5.2.r10.gb2b34ce
-pkgrel=1
+pkgrel=2
 pkgdesc="Official tftp server"
 arch=('i686' 'x86_64')
 url="https://git.kernel.org/pub/scm/network/tftp/tftp-hpa.git"
 license=('BSD')
 depends=('glibc' 'readline>=6.0.00')
 makedepends=('git')
-provides=('tftp-hpa')
+provides=("tftp-hpa=$pkgver")
 conflicts=('tftp-hpa')
 backup=('etc/conf.d/tftpd')
 source=("git+https://git.kernel.org/pub/scm/network/tftp/tftp-hpa.git"
