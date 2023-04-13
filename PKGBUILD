@@ -1,3 +1,5 @@
+# Maintainer: Grafcube <grafcube at disroot dot org>
+
 _pkgname=docopt-ng
 pkgname=python-${_pkgname}
 pkgver=0.8.1
