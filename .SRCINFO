@@ -1,6 +1,6 @@
 pkgbase = socat-git
 	pkgdesc = Multipurpose relay
-	pkgver = 1.7.3.3.r9.g82cf4ae
+	pkgver = 1.7.4.4.r0.ga8b2cb6
 	pkgrel = 1
 	url = http://www.dest-unreach.org/socat/
 	arch = i686
@@ -11,10 +11,9 @@ pkgbase = socat-git
 	depends = glibc
 	depends = openssl
 	depends = readline
-	provides = socat
+	provides = socat=1.7.4.4.r0.ga8b2cb6
 	conflicts = socat
 	source = git+https://repo.or.cz/socat.git
 	sha256sums = SKIP
 
 pkgname = socat-git
-

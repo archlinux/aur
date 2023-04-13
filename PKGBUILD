@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=socat-git
-pkgver=1.7.3.3.r9.g82cf4ae
+pkgver=1.7.4.4.r0.ga8b2cb6
 pkgrel=1
 pkgdesc="Multipurpose relay"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://www.dest-unreach.org/socat/"
 license=('GPL2')
 depends=('glibc' 'openssl' 'readline')
 makedepends=('git' 'yodl')
-provides=('socat')
+provides=("socat=$pkgver")
 conflicts=('socat')
 source=("git+https://repo.or.cz/socat.git")
 sha256sums=('SKIP')
