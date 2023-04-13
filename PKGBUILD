@@ -4,12 +4,12 @@
 _gemname=gambiarra
 pkgname=ruby-$_gemname
 pkgver=0.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='An intuitive framework for CLI applications'
 arch=(any)
 url='https://github.com/pedrozath/gambiarra'
 license=(MIT)
-depends=(ruby ruby-thor ruby-cli-ui-1 ruby-activesupport)
+depends=(ruby ruby-thor-1.1 ruby-cli-ui-1 ruby-activesupport)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)

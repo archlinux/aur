@@ -1,12 +1,12 @@
 pkgbase = ruby-gambiarra
 	pkgdesc = An intuitive framework for CLI applications
 	pkgver = 0.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pedrozath/gambiarra
 	arch = any
 	license = MIT
 	depends = ruby
-	depends = ruby-thor
+	depends = ruby-thor-1.1
 	depends = ruby-cli-ui-1
 	depends = ruby-activesupport
 	noextract = gambiarra-0.0.6.gem
