@@ -1,0 +1,14 @@
+pkgbase = ruby-cli-ui-1
+	pkgdesc = Terminal UI framework
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/shopify/cli-ui
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = cli-ui-1.5.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/cli-ui-1.5.1.gem
+	sha1sums = d76d24ca00b133db409c0c32ed8ffbec3d00d59f
+
+pkgname = ruby-cli-ui-1
