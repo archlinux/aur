@@ -1,6 +1,6 @@
 pkgbase = python-fluids
 	pkgdesc = Fluid dynamics component of Chemical Engineering Design Library
-	pkgver = 1.0.17
+	pkgver = 1.0.21
 	pkgrel = 1
 	url = https://github.com/calebbell/fluids
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-fluids
 	makedepends = python-wheel
 	depends = python-numpy
 	depends = python-scipy
-	source = python-fluids-1.0.17.tar.gz::https://files.pythonhosted.org/packages/source/f/fluids/fluids-1.0.17.tar.gz
-	sha256sums = 4bfe176256d8c8ce3038c802574e0d1931bff93a912ab6998d51210b138cf8dd
+	source = python-fluids-1.0.21.tar.gz::https://files.pythonhosted.org/packages/source/f/fluids/fluids-1.0.21.tar.gz
+	sha256sums = d65b313c3f681a6f0a2c3c17084d3062c210aa7cfdd4116c18c942d67bb8c100
 
 pkgname = python-fluids
