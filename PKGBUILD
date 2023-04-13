@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=yasm-git
-pkgver=1.3.0.r48.g009450c7
-pkgrel=2
+pkgver=1.3.0.r55.g101bca9c
+pkgrel=1
 pkgdesc="A complete rewrite of the NASM assembler under the BSD License"
 arch=('i686' 'x86_64')
 url="https://yasm.tortall.net/"
 license=('BSD')
 depends=('glibc')
 makedepends=('git' 'cmake' 'python')
-provides=('yasm')
+provides=("yasm=$pkgver")
 conflicts=('yasm')
 options=('staticlibs')
 source=("git+https://github.com/yasm/yasm.git")
