@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=tinyssh-git
-pkgver=20210601.r0.gba38215
+pkgver=20230101.r1.g40e0fe7
 pkgrel=1
 pkgdesc="Minimalistic SSH server"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://tinyssh.org/"
 license=('custom:Public Domain')
 depends=('glibc')
 makedepends=('git')
-provides=('tinyssh')
+provides=("tinyssh=$pkgver")
 conflicts=('tinyssh')
 source=("git+https://github.com/janmojzis/tinyssh.git"
         "tinyssh@.service::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/tinyssh/trunk/tinyssh@.service"
@@ -30,7 +30,10 @@ prepare() {
 pkgver() {
   cd "tinyssh"
 
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = tinyssh-git
 	pkgdesc = Minimalistic SSH server
-	pkgver = 20210601.r0.gba38215
+	pkgver = 20230101.r1.g40e0fe7
 	pkgrel = 1
 	url = https://tinyssh.org/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = tinyssh-git
 	license = custom:Public Domain
 	makedepends = git
 	depends = glibc
-	provides = tinyssh
+	provides = tinyssh=20230101.r1.g40e0fe7
 	conflicts = tinyssh
 	source = git+https://github.com/janmojzis/tinyssh.git
 	source = tinyssh@.service::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/tinyssh/trunk/tinyssh@.service
