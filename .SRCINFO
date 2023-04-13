@@ -40,7 +40,7 @@ pkgbase = plasticity-bin
 	optdepends = discord: For communication with the devs
 	optdepends = apparmor: Extra protection
 	optdepends = pulseaudio: For sound
-	source = plasticity_0.5.46_amd64.deb::https://github.com/nkallen/plasticity/releases/download/v0.5.46/plasticity_0.5.46_amd64.deb
-	sha512sums = 60bb3eb9635c73400d08fd19811d295d68b7ecff4eb3f4a630c323c939fc2084fcb67b0f4526a3bc69d1001c7c80cdb351f886b165b5c7cef416748603acfac3
+	source = https://github.com/nkallen/plasticity/releases/download/v1.0.5/plasticity_1.0.5_amd64.deb
+	sha512sums = d87bc39e784bab050908a3c865ce603c2163fd72b2569eb2c8136a6cacbec1d8b9a24259874e7b0d4ef63f693d1e3a2ae2e4fa070758b451e811e9b7c4aa8cf2
 
 pkgname = plasticity-bin
