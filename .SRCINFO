@@ -1,6 +1,6 @@
 pkgbase = v4l-utils-git
 	pkgdesc = Userspace tools and conversion library for Video 4 Linux
-	pkgver = 1.22.1.r46.gd4b70174
+	pkgver = 1.24.1.r32.g399d70f1
 	pkgrel = 1
 	url = https://linuxtv.org/
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = v4l-utils-git
 	depends = hicolor-icon-theme
 	depends = libjpeg-turbo
 	depends = sysfsutils
-	provides = v4l-utils
+	provides = v4l-utils=1.24.1.r32.g399d70f1
 	conflicts = v4l-utils
 	options = staticlibs
 	source = git+https://git.linuxtv.org/v4l-utils.git
