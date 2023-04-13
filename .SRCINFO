@@ -1,0 +1,14 @@
+pkgbase = ruby-color
+	pkgdesc = Color is a Ruby library to provide basic RGB, CMYK, HSL, and other colourspace manipulation support to applications that require it
+	pkgver = 1.8
+	pkgrel = 1
+	url = https://github.com/halostatue/color
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = color-1.8.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/color-1.8.gem
+	sha1sums = 39e1f5b10f1356e7c22e9faffed5e19fe5ec5293
+
+pkgname = ruby-color
