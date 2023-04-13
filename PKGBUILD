@@ -4,22 +4,20 @@
 
 _pkgname='sherlock'
 pkgname="${_pkgname}-git"
-pkgver=r1745.a4c0fb0
+pkgver=r2084.ab2f678
 pkgrel=1
 pkgdesc='Hunt down social media accounts by username across social networks'
 arch=('any')
 url='https://github.com/sherlock-project/sherlock'
 license=('MIT')
 depends=('python'
-        'python-beautifulsoup4'
         'python-certifi'
         'python-colorama'
-        'python-lxml'
+        'python-openpyxl'
         'python-pandas'
         'python-pysocks'
         'python-requests'
         'python-requests-futures'
-        'python-soupsieve'
         'python-stem'
         'python-torrequest')
 makedepends=('git' 'python-setuptools')
