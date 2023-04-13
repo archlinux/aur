@@ -1,7 +1,7 @@
 # Maintainer: Leo <i@setuid0.dev>
 
 pkgname=phpstan
-pkgver=1.10.12
+pkgver=1.10.13
 pkgrel=1
 pkgdesc="PHP Static Analysis Tool"
 url="https://phpstan.org/"
@@ -12,20 +12,11 @@ optdepends=()
 
 source=(
     "${pkgname}-${pkgver}.phar::https://github.com/phpstan/phpstan/releases/download/${pkgver}/phpstan.phar"
-    "${pkgname}-${pkgver}.phar.asc::https://github.com/phpstan/phpstan/releases/download/${pkgver}/phpstan.phar.asc"
     "https://raw.githubusercontent.com/phpstan/phpstan/${pkgver}/LICENSE"
 )
-validpgpkeys=(
-    "D32680D5957DC7116BE29C14CF1A108D0E7AE720"
-)
-
-# Just let makepkg happy.
-# upstream does not release hash,
-# but verify by gpg signatures.
-md5sums=(
-    SKIP
-    SKIP
-    SKIP
+sha256sums=(
+	'c0506ba4c298bfe06af1c4a12e03aafdf391cfbeda06310449a5f303e864dc6f'
+	SKIP
 )
 
 package() {
