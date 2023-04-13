@@ -1,0 +1,15 @@
+pkgbase = ruby-jekyll-avatar
+	pkgdesc = A Jekyll plugin for rendering GitHub avatars
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/jekyll/jekyll-avatar
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-jekyll
+	noextract = jekyll-avatar-0.8.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/jekyll-avatar-0.8.0.gem
+	sha1sums = 9876247d205a4e8c0e16859665e6b19602869a76
+
+pkgname = ruby-jekyll-avatar
