@@ -3,8 +3,8 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=python-ibm-db-sa
-pkgver=0.3.8
-pkgrel=2
+pkgver=0.3.9
+pkgrel=1
 pkgdesc="SQLAlchemy support for IBM Data Servers"
 url="https://pypi.python.org/pypi/ibm_db_sa"
 license=('Apache')
@@ -13,7 +13,7 @@ depends=('python-sqlalchemy')
 makedepends=('python-setuptools')
 checkdepends=('python-nose' 'python-coverage')
 source=("https://pypi.io/packages/source/i/ibm_db_sa/ibm_db_sa-$pkgver.tar.gz")
-sha512sums=('4d5bf9153eb1a3bac299fc84570a9a05253e405bfe62b4fbf31b2589a1d5720bb835cd5002ca331d01ec4edcba50f077b4755f898b9308e674984eb4dd561ef5')
+sha512sums=('f940efb283a2699ec07b22fe4f480d058ade1fde2c9d7486e9661b1dfb821873b87719f36f89113db39a278056307a0c78d5aa6cd213c8099f9710b8c8cd2e89')
 
 build() {
   cd ibm_db_sa-$pkgver
