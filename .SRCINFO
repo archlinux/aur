@@ -1,0 +1,15 @@
+pkgbase = ruby-jekyll-readme-index
+	pkgdesc = A Jekyll plugin to render a project's README as the site's index.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/benbalter/jekyll-readme-index
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-jekyll
+	noextract = jekyll-readme-index-0.3.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/jekyll-readme-index-0.3.0.gem
+	sha1sums = 0f0608a4d5e76c4f2d76842d137a6be9eca819c2
+
+pkgname = ruby-jekyll-readme-index
