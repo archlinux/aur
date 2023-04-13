@@ -1,0 +1,20 @@
+pkgbase = nay
+	pkgdesc = A wrapper for pacman extended to support AUR packages
+	pkgver = 0.1.r5.76f581b
+	pkgrel = 1
+	url = https://github.com/noprobelm/nay.git
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
+	depends = python-rich
+	depends = python-requests
+	depends = pyalpm
+	provides = nay
+	source = nay::git+https://github.com/noprobelm/nay.git
+	md5sums = SKIP
+
+pkgname = nay
