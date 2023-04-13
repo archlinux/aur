@@ -1,6 +1,6 @@
 pkgbase = systemd-swap-git
 	pkgdesc = Script for creating hybrid swap space from zram swaps, swap files and swap partitions
-	pkgver = 4.4.0.r4.g74d882f
+	pkgver = 4.4.0.r39.g6e4fd33
 	pkgrel = 1
 	url = https://github.com/Nefelim4ag/systemd-swap
 	arch = any
@@ -10,11 +10,10 @@ pkgbase = systemd-swap-git
 	depends = python-systemd
 	depends = python-sysv_ipc
 	depends = util-linux
-	provides = systemd-swap
+	provides = systemd-swap=4.4.0.r39.g6e4fd33
 	conflicts = systemd-swap
 	backup = etc/systemd/swap.conf
 	source = git+https://github.com/Nefelim4ag/systemd-swap.git
 	sha256sums = SKIP
 
 pkgname = systemd-swap-git
-
