@@ -7,7 +7,7 @@
 # Contributor: Kevin MacMartin <prurigro at gmail dot com>
 
 pkgname=toxcore-git
-pkgver=0.2.16.r6.g12dbafbd1
+pkgver=0.2.18.r36.g172f279dc
 pkgrel=1
 pkgdesc="Peer to peer (serverless) instant messenger core"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ url="https://tox.chat/"
 license=('GPL3')
 depends=('glibc' 'libconfig' 'libsodium' 'libvpx' 'msgpack-c' 'opus')
 makedepends=('git' 'cmake')
-provides=('toxcore' 'tox')
+provides=("toxcore=$pkgver" 'tox')
 conflicts=('toxcore' 'tox')
 backup=('etc/tox-bootstrapd.conf')
 options=('staticlibs')

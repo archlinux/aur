@@ -1,6 +1,6 @@
 pkgbase = toxcore-git
 	pkgdesc = Peer to peer (serverless) instant messenger core
-	pkgver = 0.2.16.r6.g12dbafbd1
+	pkgver = 0.2.18.r36.g172f279dc
 	pkgrel = 1
 	url = https://tox.chat/
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = toxcore-git
 	depends = libvpx
 	depends = msgpack-c
 	depends = opus
-	provides = toxcore
+	provides = toxcore=0.2.18.r36.g172f279dc
 	provides = tox
 	conflicts = toxcore
 	conflicts = tox
