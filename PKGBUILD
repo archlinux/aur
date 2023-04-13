@@ -30,8 +30,16 @@ makedepends=(
 checkdepends=(dejagnu inetutils)
 options=(!emptydirs !lto)
 _libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
-source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
-        https://gcc.gnu.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2
+_gnu="ftp.gnu.org"
+_sourceware="sourceware.org"
+_gcc_gnu="${_gnu}/gnu/${_pkgbase}"
+_gcc_sourceware="${_sourceware}/pub/${_pkgbase}/releases"
+_gcc_host="${_gcc_gnu}"
+_gcc_url="https://${_gcc_host}/${_pkgbase}-${pkgver}/${_pkgbase}-${pkgver}.tar.xz"
+_isl_host="${_gnu}"
+_isl_url="https://${_isl_host}/pub/gcc/infrastructure/isl-${_islver}.tar.bz2"
+source=("${_gcc_url}"{,.sig}
+        "${_isl_url}"
         c89 c99
 )
 validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
