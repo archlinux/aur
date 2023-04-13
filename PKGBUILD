@@ -7,9 +7,9 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _pkgname=git2r
-_pkgver=0.31.0
+_pkgver=0.32.0
 pkgname=r-${_pkgname,,}
-pkgver=0.31.0
+pkgver=0.32.0
 pkgrel=1
 pkgdesc='Provides Access to Git Repositories'
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
   r-getpass
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f1db9278fa4604600a64beaedcf86dda595d7c8a10cdb1f7300a6635e73cd66d')
+sha256sums=('1b5d254c0c684a56751d26d482823d0006964eb1f55c558f365d037f5e984671')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
