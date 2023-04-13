@@ -1,7 +1,7 @@
 pkgbase = qt-sdk
 	pkgdesc = Qt SDK for both hosts and a variety of targets
 	pkgver = 6.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.chaos-reins.com/qpi/
 	arch = x86_64
 	license = LGPL3

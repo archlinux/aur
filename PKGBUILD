@@ -117,7 +117,7 @@ _pkgvermajmin="6.5"
 _pkgverpatch=".0"
 # {alpha/beta/beta2/rc}
 _dev_suffix=""
-pkgrel=1
+pkgrel=2
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_local_src_tree && pkgver=6.6.6
 if [[ -n ${_dev_suffix} ]]; then
@@ -226,12 +226,14 @@ build() {
   #export CXX=clang++
   #-DCMAKE_BUILD_TYPE=RelWithDebInfo \
   #-DFEATURE_separate_debug_info=ON \
+  #-DFEATURE_opengles3=ON \
 
   # pch are massive running out of space on 22GB drive vs 6GB build
   local _configure_line_fn=configure_line
   local _configure_line="cmake \
                                 -GNinja \
-                                -DFEATURE_optimize_size=ON \
+				-DINPUT_opengl=es2 \
+				-DFEATURE_optimize_full=ON \
                                 -DCMAKE_BUILD_TYPE=RelWithDebInfo \
                                 -DFEATURE_separate_debug_info=ON \
                                 -DBUILD_WITH_PCH=OFF \
@@ -247,9 +249,8 @@ build() {
     "
   echo ${_configure_line} > ${_configure_line_fn}
   set &> configure_env
-  ${_configure_line}
-  time cmake --build . --parallel
-  #cmake --build . --target docs
+  ${_configure_line} | tee ${pkgname}-configure.log
+  time cmake --build . --parallel | tee ${pkgname}-build.log
 }
 
 create_install_script() {
@@ -304,7 +305,7 @@ package() {
 
   cd "${_builddir}"
   echo "Installing to ${pkgdir}"
-  DESTDIR="$pkgdir" cmake --install .
+  DESTDIR="$pkgdir" cmake --install . | tee ${pkgname}-install.log
   #DESTDIR="$pkgdir" cmake --install . --target install_docs
 
 #  find ${_installed_dir} -name '*.debug' -exec cp --parents '{}' ${_libsdebugpkgdir} \; -exec rm '{}' \;
