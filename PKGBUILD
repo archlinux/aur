@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=strace-git
-pkgver=4.19.r9.gd45f2714
+pkgver=6.2.r12.gd3b97fce7
 pkgrel=1
 pkgdesc="A diagnostic, debugging and instructional utility"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('glibc' 'libunwind')
 optdepends=('perl')
 makedepends=('git')
-provides=('strace')
+provides=("strace=$pkgver")
 conflicts=('strace')
 source=("git+https://github.com/strace/strace.git")
 sha256sums=('SKIP')
@@ -26,7 +26,9 @@ build() {
   cd "strace"
 
   ./bootstrap
-  ./configure --prefix="/usr" --with-libunwind
+  ./configure \
+    --prefix="/usr" \
+    --with-libunwind
   make
 }
 
@@ -40,5 +42,5 @@ package() {
   cd "strace"
 
   make DESTDIR="$pkgdir" install
-  install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/strace/COPYING"
+  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/strace"
 }

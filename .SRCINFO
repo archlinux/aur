@@ -1,6 +1,6 @@
 pkgbase = strace-git
 	pkgdesc = A diagnostic, debugging and instructional utility
-	pkgver = 4.19.r9.gd45f2714
+	pkgver = 6.2.r12.gd3b97fce7
 	pkgrel = 1
 	url = https://strace.io/
 	arch = i686
@@ -10,10 +10,9 @@ pkgbase = strace-git
 	depends = glibc
 	depends = libunwind
 	optdepends = perl
-	provides = strace
+	provides = strace=6.2.r12.gd3b97fce7
 	conflicts = strace
 	source = git+https://github.com/strace/strace.git
 	sha256sums = SKIP
 
 pkgname = strace-git
-
