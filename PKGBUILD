@@ -1,24 +1,33 @@
-# Maintainer: Fabio Zanini <fabio.zanini@fastmail.fm>
-pkgname=python-annoy
-_pkgname=annoy
-pkgver=1.17.0
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Fabio Zanini <fabio.zanini@fastmail.fm>
+_base=annoy
+pkgname=python-${_base}
+pkgver=1.17.2
 pkgrel=1
-pkgdesc="Approximate Nearest Neighbors in C++/Python optimized for memory usage and loading/saving to disk."
-url="https://github.com/spotify/annoy"
+pkgdesc="Approximate Nearest Neighbors Oh Yeah"
+url="https://github.com/spotify/${_base}"
 arch=('i686' 'x86_64')
-license=("Apache") 
-depends=('python')
-source=("https://files.pythonhosted.org/packages/a1/5b/1c22129f608b3f438713b91cd880dc681d747a860afe3e8e0af86e921942/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('9891e264041d1dcf3af42f67fbb16cb273c5404bc8c869d0915a3087f71d58dd')
+license=(Apache)
+depends=(python)
+makedepends=(python-build python-installer python-setuptools python-wheel)
+# checkdepends=(python-pytest python-numpy python-h5py)
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha256sums=('ad3518f36bdd5ea54576dfe1c765c93d5c737342f269aada2cd7ff1bc0d0cd93')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
-
-  python setup.py build
+  cd ${_base}-${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
-package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+# check() {
+#   cd ${_base}-${pkgver}
+#   python -m venv --system-site-packages test-env
+#   test-env/bin/python -m installer dist/*.whl
+#   test-env/bin/python -m pytest test
+# }
 
-  python setup.py install --prefix=/usr --root="$pkgdir/"
+package() {
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
