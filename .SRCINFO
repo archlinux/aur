@@ -1,0 +1,15 @@
+pkgbase = ruby-jekyll-default-layout
+	pkgdesc = Silently sets default layouts for Jekyll pages and posts
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/benbalter/jekyll-default-layout
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-jekyll
+	noextract = jekyll-default-layout-0.1.5.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/jekyll-default-layout-0.1.5.gem
+	sha1sums = 52b4c5fc3fb7512333be794fa907ac08102dc0af
+
+pkgname = ruby-jekyll-default-layout
