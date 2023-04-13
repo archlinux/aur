@@ -1,13 +1,13 @@
 pkgbase = python-gdtoolkit
 	pkgdesc = Independent set of tools for working with GDScript - parser, linter and formatter
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Scony/godot-gdscript-toolkit
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	depends = python-docopt
+	depends = python-docopt-ng
 	depends = python-lark-parser
 	depends = python-yaml
 	depends = python-radon

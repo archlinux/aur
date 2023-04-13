@@ -3,12 +3,12 @@
 _pkgname=gdtoolkit
 pkgname=python-${_pkgname}
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Independent set of tools for working with GDScript - parser, linter and formatter'
 arch=(any)
 url='https://github.com/Scony/godot-gdscript-toolkit'
 license=(MIT)
-depends=(python python-docopt python-lark-parser python-yaml python-radon)
+depends=(python python-docopt-ng python-lark-parser python-yaml python-radon)
 makedepends=(python-setuptools)
 provides=()
 conflicts=()
