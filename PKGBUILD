@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=catppuccin-gtk-theme-macchiato
-pkgver=0.4.3
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Soothing pastel theme for GTK3 - Macchiato'
 arch=('any')
@@ -23,20 +23,20 @@ source=("$pkgname-$pkgver-blue.zip::$url/releases/download/v$pkgver/Catppuccin-M
         "$pkgname-$pkgver-teal.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Teal-Dark.zip"
         "$pkgname-$pkgver-yellow.zip::$url/releases/download/v$pkgver/Catppuccin-Macchiato-Standard-Yellow-Dark.zip")
 
-sha256sums=('2c7470618c62ebee56d5cdc765eed3f5991303f5006ee998aae5e7f3adf18934'
-            '0111796a340906f84c982c96c0ccc920f983a71f90263d56c9f198dee1e39764'
-            'ef67919c6fa31959c158765f63b5fa0b1cf80674dad1b857f1cd5b02cd541f16'
-            '51d5de03836ab169e8a74a747d3f63739145d86ce9dcec3800a05279900fe9bf'
-            'c05c149add04fa042f06e0da8d2a97bae01af04fb7b7d5152995e089ee3c960e'
-            '1df0fc902162c5451d26d274c144ff4bb0364e8fe19f4795228645760f947415'
-            '2f82eddae8105bc26b2b56ffe876f11999c9daa0a4f9fc17895ef6cd8523a0b8'
-            'd3ace90f9b1d6b086c96cbd05b87bc38a2879a39fd27e8c86a65e2416beef05a'
-            '1f94b066042480071ef782eb744b68b1ff7caf0675822bb076850700014733e1'
-            '832cdb424dbce6a0c823ecb202ca318791ef5e6bc305955bc8c98971edf9e408'
-            '5b72012950b975fade7e1be8625780a9f312f73029852bddf97a73d4e0f7dbaa'
-            'bb70603c0b3bf600cdc34d14c24f69b3bc9040f86779ff0c16c2b817eb2f60cc'
-            '08a5349996412a0f26cf322ecda652cbd0fe66490197737513007e75ff2699c4'
-            '342cd12b5cc99730113cb07bb82d13d032154fe651c28972787df10b190695ab')
+sha256sums=('8f12461ca5bccbce7e97acbaace00ad8addfd069eca10db56e7a6a7317737a15'
+            '049a45984d7f55c408d9c0eb7ea2de4ece04457fbbfdc8265fad314e8001e5db'
+            '80047c325470b1fa51c518ef78cf3c8789f20c8236ec874bf6c7c69f6894872b'
+            '4d0fec41812221bbd7273c44c785c2c604b4b067f7db26af0f83bd4042c6065a'
+            'cbe2731f24c19cd268c69d0fb43b7172a18c2ca24d8c8cb52d249b74a5a8c09c'
+            '306867de0fa1cc7db0b44ff816fb349d5d0db4fbbcc6c6e2ea57ad44ae913c34'
+            '1371d2f33adf976ed36d8236eb85ac961a45ce3b97fcd4d653ca2cff95eee555'
+            '60d6a4503323f7e1d51ca8a44b137c93e29113fef00a0a797477b8a7ce89fde5'
+            '8a3f706da86f1b1217404522916e9a0fe5db0854dfc4cb61a6d3fa18235109b6'
+            '14e65c4bf45ba8c8dd1373764d2e29a4db2c87f0a4565b429491101e668ec6e0'
+            '3191d4b3d28d09221806df4077a04f02c55e8c2cc67c5eee72864391928627c3'
+            '671cb58b9dcbce240360e6883eac91842d87977ea78e0377a0b9e096a05660d0'
+            '72c228b0bac546442598b680d7868ad89498ca3ecde1bc41cb9898b644d2b9cc'
+            '56132685308c0343aac25b177301e5fbd58342e4c40366396008486c2ca3e84d')
 package() {
   install -d "$pkgdir/usr/share/themes/"
   cp -a --no-preserve=ownership \
