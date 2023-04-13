@@ -1,16 +1,16 @@
 pkgbase = nocloud-bin
 	pkgdesc = NoCloud Platform CLI
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/slntopp/nocloud
 	license = Apache-2.0
 	conflicts = NoCloudCLI
 	provides = NoCloudCLI
 	arch = aarch64
-	source_aarch64 = https://github.com/slntopp/nocloud-cli/releases/download/v0.2.4-r12/nocloud_0.2.4-r12_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 9a28053092b426f46566307b3e4fc1d277177a727b69faa7f1dc7c1de84c30a8
+	source_aarch64 = https://github.com/slntopp/nocloud-cli/releases/download/v0.2.5/nocloud_0.2.5_Linux_arm64.tar.gz
+	sha256sums_aarch64 = e945b648f7aabc15719d7e8c34f29e4c65e070d27f0d507b4e62893dde3a2277
 	arch = x86_64
-	source_x86_64 = https://github.com/slntopp/nocloud-cli/releases/download/v0.2.4-r12/nocloud_0.2.4-r12_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 24265ee389a5b70e0d991422e1b3d84b30e00e99192ff3f46b562ecb5da45430
+	source_x86_64 = https://github.com/slntopp/nocloud-cli/releases/download/v0.2.5/nocloud_0.2.5_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = ed35042707820d17c27c8eb6bd84876cd40027daccea66259e9e2d340923efcc
 	
 pkgname = nocloud-bin
