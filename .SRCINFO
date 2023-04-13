@@ -1,0 +1,13 @@
+pkgbase = odinls
+	pkgdesc = ols: language server for Odin
+	pkgver = 880
+	pkgrel = 1
+	url = https://github.com/DanielGavin/ols
+	arch = x86_64
+	license = MIT
+	depends = odin
+	options = !lto
+	source = git+https://github.com/DanielGavin/ols
+	sha256sums = SKIP
+
+pkgname = odinls
