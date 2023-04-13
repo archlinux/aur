@@ -2,7 +2,7 @@
 
 pkgname=sing-box-beta
 _pkgname=sing-box
-_version="1.3-beta4"
+_version="1.3-beta5"
 pkgver="${_version//-/.}"
 pkgrel=1
 
@@ -14,7 +14,7 @@ license=('GPL3 with name use or association addition')
 makedepends=('go')
 
 source=("$_pkgname-$_version.tar.gz::https://github.com/SagerNet/sing-box/archive/v$_version.tar.gz")
-sha256sums=('40495cd9dd745b6273d382206c6b1df263df1803196eda638787564c082c45af')
+sha256sums=('9a1b62650f0037dc30c77b392ab14084963b4a946c2b7a07ca7dda3df9ff7eb4')
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
