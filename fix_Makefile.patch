@@ -1,31 +1,9 @@
-diff --git a/Makefile b/Makefile
-index 6ae2d1b..79320b0 100644
---- a/Makefile
-+++ b/Makefile
-@@ -4,15 +4,14 @@ DATA_DIR = data
- BUILD_DIR = build
- 
- RM       = rm -f
--CXX      = g++
--CXXFLAGS = -std=c++11 -x c++ -Wall -fPIC
-+CXXFLAGS += -std=c++11 -x c++ -fPIC
- INCLUDES = -Isrc/
- LDD_DIRS =
- LDD_LIBS =
- LDD_FLAG =
- LIB_DLL  = $(BUILD_DIR)/droidcam-obs.so
- STATIC   =
--SRC      = $(shell ls src/*.c src/sys/unix/*.c)
-+#SRC      = $(shell ls src/*.cc src/sys/unix/*.cc)
- 
- ifeq ($(OS),Windows_NT)
- all:
-@@ -49,11 +48,9 @@ ifeq "$(ALLOW_STATIC)" "yes"
- 	STATIC += $(IMOBILEDEV_DIR)/lib/libplist-2.0.a
- 
- else
--	LDD_DIRS += -L$(JPEG_LIB)
--	LDD_DIRS += -L$(IMOBILEDEV_DIR)/lib
+diff --git a/linux/linux.mk b/linux/linux.mk
+index 33e2e7a..58d2d86 100644
+--- a/linux/linux.mk
++++ b/linux/linux.mk
+@@ -23,7 +23,7 @@ else
+ 	LDD_DIRS += -L$(IMOBILEDEV_LIB)
  
  	LDD_LIBS += -lturbojpeg
 -	LDD_LIBS += -limobiledevice
@@ -33,3 +11,10 @@ index 6ae2d1b..79320b0 100644
  endif
  
  INCLUDES += -I$(IMOBILEDEV_DIR)/include
+@@ -33,4 +33,4 @@ INCLUDES += -I/usr/include/obs
+ 
+ LDD_LIBS += -lobs
+ 
+-LDD_FLAG += -shared
+\ No newline at end of file
++LDD_FLAG += $(LDFLAGS) -shared

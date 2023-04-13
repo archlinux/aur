@@ -1,28 +1,23 @@
-# Maintainer : Yamada Hayao <hayao@fascode.net>
+# Maintainer : Greg Aluise <galuise@giantg.net>
+# Contributer : Yamada Hayao <hayao@fascode.net>
 # Contributer: David Mazieres (http://www.scs.stanford.edu/~dm/addr/)
 # Contributer: Aviana Cruz <gwencroft@proton.me>
 
 pkgname="droidcam-obs-plugin"
-pkgver="1.6.0"
+pkgver="2.1.0"
 pkgrel="1"
 pkgdesc="plugin for droidcam obs"
 arch=("x86_64" "i686")
 url="https://dev47apps.com/obs/"
+_tag="76b6cbe8ec16731546589818b97745be471332e4"
 srcurl="https://github.com/dev47apps/droidcam-obs-plugin.git"
 license=('GPL')
-groups=()
-depends=("obs-studio" 'libusbmuxd')
-makedepends=('libjpeg-turbo')
-optdepends=()
+depends=("obs-studio" 'libusbmuxd' 'libjpeg-turbo' 'libimobiledevice')
+makedepends=('git')
 conflicts=("${pkgname}-git")
-replaces=()
-backup=()
-options=()
-install=
 pkgstem=${pkgname%-git}
-source=("${pkgstem}::git+${srcurl}#tag=${pkgver}" "fix_Makefile.patch")
-noextract=()
-sha256sums=('SKIP' 'SKIP')
+source=("${pkgstem}::git+${srcurl}#tag=${_tag}" "fix_Makefile.patch")
+sha256sums=('SKIP' '56d0fc2d61f79422260ea4ebbdb7ca7e59d084416d9ea6c35d94512606d02823')
 
 
 prepare() {
