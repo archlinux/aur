@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=sshpass-svn
-pkgver=r77
-pkgrel=2
+pkgver=r79
+pkgrel=1
 pkgdesc="A tool for non-interactivly performing password authentication"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/sshpass/"
 license=('GPL')
 depends=('glibc' 'openssh')
 makedepends=('subversion')
-provides=('sshpass')
+provides=("sshpass=$pkgver")
 conflicts=('sshpass')
 source=("svn+https://svn.code.sf.net/p/sshpass/code/trunk")
 sha256sums=('SKIP')
