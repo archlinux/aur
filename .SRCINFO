@@ -1,0 +1,14 @@
+pkgbase = linux-intel-undervolt-gui-bin
+	pkgdesc = GUI frontend for undervolting intel CPUs on Linux (binary release)
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/lukechadwick/linux-intel-undervolt-gui
+	arch = x86_64
+	license = MIT
+	depends = python-undervolt
+	provides = linux-intel-undervolt-gui
+	conflicts = linux-intel-undervolt-gui
+	source = https://github.com/lukechadwick/linux-intel-undervolt-gui/releases/download/1.2.0/linux-intel-undervolt-gui-1.2.0.x86_64.rpm
+	sha256sums = bd238a33f0d6e7c19174e4c63585bae5110b9496adb42915118cc95c27862c58
+
+pkgname = linux-intel-undervolt-gui-bin
