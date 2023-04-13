@@ -2,20 +2,26 @@
 # Maintainer: Blacktop <https://github.com/blacktop>
 
 pkgname='ipsw-bin'
-pkgver=3.1.311
+pkgver=3.1.312
 pkgrel=1
 pkgdesc='iOS/macOS Research Swiss Army Knife'
 url='https://github.com/blacktop/ipsw'
-arch=('aarch64' 'x86_64')
+arch=('aarch64' 'aarch64' 'x86_64' 'x86_64')
 license=('MIT')
 provides=('ipsw')
 conflicts=('ipsw')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.311/ipsw_3.1.311_linux_arm64.tar.gz")
-sha256sums_aarch64=('923ca901dfa9ed8aa79e9e4a137687d6d7865b974445800733e87bd19e373192')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.312/ipsw_3.1.312_linux_arm64.tar.gz")
+sha256sums_aarch64=('c3cc5c4808990e00a0a6e0a8390a9382dbeb9a8f11c5d85a836b0660c108b158')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.311/ipsw_3.1.311_linux_x86_64.tar.gz")
-sha256sums_x86_64=('20fb977bbe3052aa12d3569707ed4ab01b0b963c5ab900756b5523570a6ee5d5')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.312/ipsw_3.1.312_linux_arm64_daemon.tar.gz")
+sha256sums_aarch64=('b4dc7d4e893397df31c9820a1355555823d033853cd43b80db8b298f8e39a08f')
+
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.312/ipsw_3.1.312_linux_x86_64.tar.gz")
+sha256sums_x86_64=('b8fbb80c0e6eb95774213eb69c20d3490bb1ab0937b540fc22c8d8e133159ae9')
+
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.312/ipsw_3.1.312_linux_x86_64_daemon.tar.gz")
+sha256sums_x86_64=('22e94b4a96c2b1d654485a202535032383c4d86ec22aad9e4610a6e441edd04c')
 
 package() {
   # bin
@@ -28,9 +34,9 @@ package() {
   mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
   mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
   mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
-  install -Dm644 "./completions/ipsw" "${pkgdir}/usr/share/bash-completion/completions/ipsw"
-  install -Dm644 "./completions/_ipsw" "${pkgdir}/usr/share/zsh/site-functions/_ipsw"
-  install -Dm644 "./completions/ipsw.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/ipsw.fish"
+  install -Dm644 "./completions/ipsw/_bash" "${pkgdir}/usr/share/bash-completion/completions/ipsw"
+  install -Dm644 "./completions/ipsw/_zsh" "${pkgdir}/usr/share/zsh/site-functions/_ipsw"
+  install -Dm644 "./completions/ipsw/_fish" "${pkgdir}/usr/share/fish/vendor_completions.d/ipsw.fish"
 
   # man pages
   install -Dm644 "./manpages/ipsw.1.gz" "${pkgdir}/usr/share/man/man1/ipsw.1.gz"
