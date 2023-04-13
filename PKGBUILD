@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=samtools-git
-pkgver=1.10.r98.gfaab8b0
+pkgver=1.17.r8.gc75edb00
 pkgrel=1
 pkgdesc="Tools for manipulating next-generation sequencing data"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.htslib.org/"
 license=('MIT')
 depends=('glibc' 'htslib' 'ncurses' 'zlib')
 makedepends=('git')
-provides=('samtools')
+provides=("samtools=$pkgver")
 conflicts=('samtools')
 source=("git+https://github.com/samtools/samtools.git")
 sha256sums=('SKIP')
