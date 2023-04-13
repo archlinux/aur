@@ -4,12 +4,12 @@
 _gemname=jekyll-spaceship
 pkgname=ruby-$_gemname
 pkgver=0.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A Jekyll plugin to provide powerful supports for table, mathjax, plantuml, mermaid, emoji, video, audio, youtube, vimeo, dailymotion, spotify, soundcloud, etc.'
 arch=(any)
 url='https://github.com/jeffreytse/jekyll-spaceship'
 license=(MIT)
-depends=(ruby ruby-jekyll ruby-nokogiri ruby-gemoji-3 ruby-rainbow)
+depends=(ruby ruby-jekyll ruby-nokogiri ruby-gemoji ruby-rainbow)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)

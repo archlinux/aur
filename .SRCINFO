@@ -1,14 +1,14 @@
 pkgbase = ruby-jekyll-spaceship
 	pkgdesc = A Jekyll plugin to provide powerful supports for table, mathjax, plantuml, mermaid, emoji, video, audio, youtube, vimeo, dailymotion, spotify, soundcloud, etc.
 	pkgver = 0.10.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jeffreytse/jekyll-spaceship
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-jekyll
 	depends = ruby-nokogiri
-	depends = ruby-gemoji-3
+	depends = ruby-gemoji
 	depends = ruby-rainbow
 	noextract = jekyll-spaceship-0.10.2.gem
 	options = !emptydirs
