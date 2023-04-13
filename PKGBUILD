@@ -2,13 +2,13 @@
 
 pkgname=python-editdistance
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast implementation of the edit distance(Levenshtein distance)"
 arch=('x86_64')
 license=('MIT')
 url="https://github.com/aflc/editdistance"
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'cython')
 checkdepends=('python-nose')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aflc/editdistance/archive/v$pkgver.tar.gz"
         LICENSE)
