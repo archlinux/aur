@@ -1,12 +1,12 @@
 pkgbase = widelands-maps-rttr
 	pkgdesc = Makes the maps installed by the Settlers II-remake 'Return to the Roots' available to play with widelands.
 	pkgver = a
-	pkgrel = 1
+	pkgrel = 2
 	url = http://siedler25.org/
 	arch = any
-	license = GPL2
-	makedepends = return-to-the-roots
-	depends = return-to-the-roots
+	license = GPL3
+	makedepends = return-to-the-roots-maps
+	depends = return-to-the-roots-maps
 	optdepends = widelands: To play the maps with widelands.
 	replaces = widelands-maps-rttr-localver
 	options = emptydirs
