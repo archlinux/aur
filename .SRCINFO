@@ -1,6 +1,6 @@
 pkgbase = twolame-git
 	pkgdesc = An optimised MPEG Audio Layer 2 (MP2) encoder
-	pkgver = 0.4.0.r3.g8c47401
+	pkgver = 0.4.0.r4.g90b694b
 	pkgrel = 1
 	url = https://www.twolame.org/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = twolame-git
 	makedepends = xmlto
 	depends = glibc
 	depends = libsndfile
-	provides = twolame
+	provides = twolame=0.4.0.r4.g90b694b
 	conflicts = twolame
 	options = staticlibs
 	source = git+https://github.com/njh/twolame.git
