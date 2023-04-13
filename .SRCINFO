@@ -1,6 +1,6 @@
 pkgbase = bautista
 	pkgdesc = A domotic butler bot
-	pkgver = 0.0.13
+	pkgver = 0.0.14
 	pkgrel = 1
 	url = https://codeberg.com/ivan.zaera/bautista
 	install = install.sh
@@ -14,7 +14,7 @@ pkgbase = bautista
 	makedepends = shadow
 	depends = nodejs
 	backup = etc/bautista/config.toml
-	source = bautista-0.0.13.tar.gz::https://codeberg.org/ivan.zaera/bautista/archive/0.0.13.tar.gz
-	sha256sums = d6e56a0e89b0e6a477f3ecad1c88ea2d59d8d8f83cc9c2c4bfec9e0a7fa42814
+	source = bautista-0.0.14.tar.gz::https://codeberg.org/ivan.zaera/bautista/archive/0.0.14.tar.gz
+	sha256sums = 237e00e9ff26dfde72e2e355aef8120f1d298f03fc8ca2344f2bc60205f9793b
 
 pkgname = bautista
