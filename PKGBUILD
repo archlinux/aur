@@ -2,14 +2,14 @@
 
 pkgname=tcl-fossil
 pkgver=r29975.d4d7495
-pkgrel=1
+pkgrel=2
 pkgdesc="The Tcl scripting language"
 arch=('i686' 'x86_64')
 url="https://www.tcl.tk/"
 license=('custom')
 depends=('glibc' 'zlib')
 makedepends=('fossil')
-provides=('tcl')
+provides=("tcl=$pkgver")
 conflicts=('tcl')
 options=('staticlibs')
 source=("fossil+https://core.tcl-lang.org/tcl")
