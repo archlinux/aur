@@ -38,8 +38,8 @@ package() {
   install -Dm755 ${srcdir}/${pkgname}/target/release/neovide ${pkgdir}/usr/bin/neovide
   install -Dm644 ${srcdir}/${pkgname}/assets/neovide.desktop ${pkgdir}/usr/share/applications/neovide.desktop
   for px in 16 32 48 256; do
-    install -Dm644 "${srcdir}/${pkgname}/assets/${pkgname}-${px}x${px}.png" \
-      "${pkgdir}/usr/share/icons/hicolor/${px}x${px}/apps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}/assets/neovide-${px}x${px}.png" \
+      "${pkgdir}/usr/share/icons/hicolor/${px}x${px}/apps/neovide.png"
   done
 }
 
