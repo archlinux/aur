@@ -1,0 +1,5 @@
+post_install() {
+  echo '----[NOTICE]-----'
+  echo 'Install the DKMS module with --force option to overrite the original iwlwifi module.'
+  echo 'And run mkinitcpio -P to update initcpio.'
+}

@@ -1,36 +1,45 @@
-# Maintainer : Juraj Matuš <matus.juraj at yandex dot com>
+# Maintainer: Yi Kuo <yi [at] yikuo.dev>
+# Contributor: Jerry Xiao <aur at mail.jerryxiao.cc>
 
-_lang=slk-eng
-pkgname=dict-freedict-${_lang}
-pkgver=0.2
+_pkgbase=iwlwifi-killer-ax1675-51f1
+pkgname=${_pkgbase}-dkms
+pkgver=6.2
 pkgrel=1
-pkgdesc="Slovak -> English dictionary for dictd et al. from Freedict.org"
+pkgdesc="iwlwifi module patched to support Killer AX1765i/s with device id 51F1 for kernel ($pkgver)"
 arch=('any')
-url="https://freedict.org/"
-license=('GPL')
-optdepends=('dictd: dict client and server')
-makedepends=('dictd' 'freedict-tools')
-install=install.sh
-source=("https://download.freedict.org/dictionaries/${_lang}/${pkgver}.${pkgrel}/freedict-${_lang}-${pkgver}.${pkgrel}.src.tar.xz")
-sha512sums=('ba7669020a12f64f7d2e2b6dfa90f1376df4a2fe764273bdb06f1e04998ee6dac9584b47f20f8e14cbaae5bf7271dd221032bcc34bd1ff7c93a93cf9de4429ac')
+url="https://wireless.wiki.kernel.org/en/users/drivers/iwlwifi"
+license=('GPL2')
+depends=('dkms')
+conflicts=("${_pkgbase}")
+install=${_pkgbase}.install
+source=("https://www.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/linux-${pkgver}.tar.xz"
+        "dkms.conf"
+        "0001-killer-ax1675-51f1.patch")
+sha256sums=('74862fa8ab40edae85bb3385c0b71fe103288bce518526d63197800b3cbdecb1'
+            'c9695d054c81b8547f117905bf4f616ad677bf868e8c355425f09cb769c509aa'
+            'cfe120a534638b6e4ce40d97eec35347145828143864d68a43434c65ffd93dda')
+options=(!strip)
 
-build()
-{
-	cd $_lang
-	make FREEDICT_TOOLS=/usr/lib/freedict-tools build-dictd
+prepare() {
+  cd "$srcdir/linux-$pkgver"
+  
+  # Patch
+  patch -p1 -i "${srcdir}"/0001-killer-ax1675-51f1.patch
+
+  # Patch iwlwifi Makefile
+  # Thanks iwlwifi-ax101-dkms by Jerry Xiao
+  sed -i 's|$(srctree)/||' drivers/net/wireless/intel/iwlwifi/{d,m}vm/Makefile
 }
 
-package()
-{
-	install -m 755 -d "${pkgdir}/usr/share/dictd"
-	install -m 644 -t "${pkgdir}/usr/share/dictd/" \
-		${_lang}/build/dictd/${_lang}.{dict.dz,index}
+package() {
+  # Copy dkms.conf
+  install -Dm644 dkms.conf "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
 
-	for file in ${_lang}/{AUTHORS,README,NEWS,ChangeLog}
-	do
-		if test -f ${file}
-		then
-			install -m 644 -Dt "${pkgdir}/usr/share/doc/freedict/${_lang}/" ${file}
-		fi
-	done
+  # Set name and version
+  sed -e "s/@_PKGBASE@/${_pkgbase}/" \
+      -e "s/@PKGVER@/${pkgver}/" \
+      -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
+
+  # Copy sources (including Makefile)
+  cp -rT "linux-${pkgver}/drivers/net/wireless/intel/iwlwifi" "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
 }
