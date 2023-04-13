@@ -1,6 +1,6 @@
 pkgbase = speex-git
 	pkgdesc = An patent-free audio compression format designed for speech
-	pkgver = 1.2.0.r10.g6e04bfa
+	pkgver = 1.2.1.r8.gf39602d
 	pkgrel = 1
 	url = https://www.speex.org/
 	arch = i686
@@ -10,10 +10,9 @@ pkgbase = speex-git
 	depends = glibc
 	depends = libogg
 	depends = speexdsp
-	provides = speex
+	provides = speex=1.2.1.r8.gf39602d
 	conflicts = speex
 	source = git+https://gitlab.xiph.org/xiph/speex.git
 	sha256sums = SKIP
 
 pkgname = speex-git
-
