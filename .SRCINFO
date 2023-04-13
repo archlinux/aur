@@ -14,7 +14,9 @@ pkgbase = qrcp-bin
 	source_x86_64 = qrcp-bin-0.10.1.tar.gz::https://github.com/claudiodangelis/qrcp/releases/download/0.10.1/qrcp_0.10.1_linux_x86_64.tar.gz
 	sha256sums_x86_64 = 27b1f2b9004ecf967a4abe95bd324b99b4f077f0c627ad96ea16e18644dce26e
 	source_i386 = qrcp-bin-0.10.1.tar.gz::https://github.com/claudiodangelis/qrcp/releases/download/0.10.1/qrcp_0.10.1_linux_i386.tar.gz
-	sha256sums_i386 = 27b1f2b9004ecf967a4abe95bd324b99b4f077f0c627ad96ea16e18644dce26e
+	sha256sums_i386 = ce95248a65548ab15f12acba7cd642c83efeb261bb28a92d6d913fa6ed48bb3a
+	source_armv7h = qrcp-bin-0.10.1.tar.gz::https://github.com/claudiodangelis/qrcp/releases/download/0.10.1/qrcp_0.10.1_linux_armv7h.tar.gz
+	sha256sums_armv7h = 0442a9dff291e1188d64fe6e080fd7e5ce4eaf31405410ac37699ac0c4c7149e
 	source_aarch64 = qrcp-bin-0.10.1.tar.gz::https://github.com/claudiodangelis/qrcp/releases/download/0.10.1/qrcp_0.10.1_linux_arm64.tar.gz
 	sha256sums_aarch64 = 27b1f2b9004ecf967a4abe95bd324b99b4f077f0c627ad96ea16e18644dce26e
 
