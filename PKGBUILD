@@ -1,7 +1,7 @@
 # Maintainer: Ren Tatsumoto <tatsu at autistici dot org>
 
 pkgname=impd-git
-pkgver=0.7.r15.g714e6bf
+pkgver=0.7.r18.ga8ca81d
 pkgrel=1
 pkgdesc="Manage passive immersion and create condensed audio."
 arch=(any)
@@ -9,6 +9,7 @@ url="https://github.com/Ajatt-Tools/impd"
 license=("GPL3")
 source=("${pkgname}::git+${url}")
 depends=('bash' 'gawk' 'ffmpeg' 'mpd')
+makedepends=('git')
 optdepends=(
 	'mpc: interaction with mpd'
 	'libnotify: desktop notifications'
