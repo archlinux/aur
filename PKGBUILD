@@ -2,14 +2,14 @@
 
 pkgname=yajl-git
 pkgver=2.1.0.r5.g5e3a785
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast streaming JSON parsing library in C"
 arch=('i686' 'x86_64')
 url="https://lloyd.github.io/yajl/"
 license=('ISC')
 depends=('glibc')
 makedepends=('git' 'cmake')
-provides=('yajl' 'libyajl.so')
+provides=("yajl=$pkgver" 'libyajl.so')
 conflicts=('yajl')
 options=('staticlibs')
 source=("git+https://github.com/lloyd/yajl.git")
