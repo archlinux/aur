@@ -2,7 +2,7 @@
 
 pkgname="qrcp-bin"
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Transfer files over wifi from your computer to your mobile device by scanning a QR code without leaving the terminal."
 url="https://github.com/claudiodangelis/qrcp"
 arch=('x86_64' 'i386')
@@ -25,4 +25,5 @@ package() {
  install -Dm755 qrcp "$pkgdir/usr/bin/qrcp"
  cp -r share/ "$pkgdir/usr"
  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+ install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
