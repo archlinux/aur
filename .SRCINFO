@@ -1,6 +1,6 @@
 pkgbase = sops-git
 	pkgdesc = Simple and flexible tool for managing secrets
-	pkgver = 3.7.1.r1.g2395f0761
+	pkgver = 3.7.3.r0.ge1edc0594
 	pkgrel = 1
 	url = https://github.com/mozilla/sops
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = sops-git
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	provides = sops
+	provides = sops=3.7.3.r0.ge1edc0594
 	conflicts = sops
 	source = git+https://github.com/mozilla/sops.git
 	source = bash_autocomplete::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/sops/trunk/bash_autocomplete
@@ -19,4 +19,3 @@ pkgbase = sops-git
 	sha256sums = SKIP
 
 pkgname = sops-git
-
