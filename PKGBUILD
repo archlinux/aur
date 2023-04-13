@@ -1,7 +1,7 @@
 # Maintainer: Frédéric Lachapelle <frederic.lachapelle7@gmail.com>
 
 pkgname=open-tv-bin
-pkgver=0.9.0
+pkgver=0.9.2
 pkgrel=1
 pkgdesc='Fast & Simple IPTV app'
 arch=('x86_64')
