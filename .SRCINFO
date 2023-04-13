@@ -6,6 +6,6 @@ pkgbase = cnquery
 	arch = x86_64
 	license = MPL 2.0
 	source = https://releases.mondoo.com/cnquery/8.5.2/cnquery_8.5.2_linux_amd64.tar.gz
-	sha256sums = 
+	sha256sums = bbf27b194cf41637737c2b1426101f335cfe0b14013a93d797b0dc29b6387574
 
 pkgname = cnquery
