@@ -3,7 +3,7 @@
 
 pkgname=river-levee
 _pkgname=levee
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Statusbar for the river wayland compositor.'
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('zig' 'git' 'wayland-protocols')
 provides=('levee')
 conflicts=('river-levee-git')
 source=("https://git.sr.ht/~andreafeletto/$_pkgname/refs/download/v$pkgver/$_pkgname-$pkgver.tar.gz")
-sha256sums=('7370451c1532edef147127ee152fd82a129fbe3df885490410971ab67c42d08e')
+sha256sums=('09a89f85beb4766f49186ef017c5757a7d2264858565f1b96b80d9eda3ba2a45')
 
 build() {
 	cd "$srcdir/$_pkgname-$pkgver"
