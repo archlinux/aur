@@ -1,0 +1,11 @@
+pkgbase = ros2-humble-ackermann-msgs
+	pkgdesc = ROS messages for vehicles using front-wheel Ackermann steering. It was defined by the ROS Ackermann steering group.
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://index.ros.org/r/ackermann_msgs/
+	arch = any
+	depends = ros2-humble
+	source = https://github.com/ros-drivers/ackermann_msgs/archive/refs/tags/2.0.2.tar.gz
+	sha256sums = 26321df1bc2855adbcefac0a32091ce843271d93791fceff914a3f4c7b06d269
+
+pkgname = ros2-humble-ackermann-msgs
