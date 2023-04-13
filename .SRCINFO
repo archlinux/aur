@@ -1,7 +1,7 @@
 pkgbase = gnome-meta
 	pkgdesc = Meta package for installing the gnome group
 	pkgver = 43
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.archlinux.org/
 	arch = any
 	license = GPL

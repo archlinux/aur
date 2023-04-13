@@ -3,7 +3,7 @@
 
 pkgname=gnome-meta
 pkgver=43
-pkgrel=1
+pkgrel=2
 pkgdesc='Meta package for installing the gnome group'
 arch=(any)
 url='https://www.archlinux.org/'
