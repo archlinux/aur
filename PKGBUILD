@@ -2,14 +2,14 @@
 
 pkgname=sqlite-fossil
 pkgver=r25088.587a304
-pkgrel=2
+pkgrel=3
 pkgdesc="Self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine"
 arch=('i686' 'x86_64')
 url="https://www.sqlite.org/"
 license=('custom:Public Domain')
 depends=('glibc' 'readline' 'zlib')
 makedepends=('fossil' 'tcl')
-provides=('sqlite')
+provides=("sqlite=$pkgver")
 conflicts=('sqlite')
 options=('staticlibs')
 source=("sqlite.fossil::fossil+https://www.sqlite.org/src")
