@@ -3,7 +3,7 @@
 _pkgbase="breed"
 pkgname="$_pkgbase-git"
 pkgver=r70.2976fb4
-pkgrel=2
+pkgrel=3
 pkgdesc="A small modal editor designed to breed productivity."
 arch=("any")
 url="https://git.tebibyte.media/mars/$_pkgbase"
@@ -26,5 +26,5 @@ prepare() {
 
 package() {
     cd "$srcdir/$_pkgbase"
-    cargo install --no-track --all-features --root "$pkgdir/usr/" --path . --target="$CARCH-unknown-linux-gnu"
+    cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
 }
