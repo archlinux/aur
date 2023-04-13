@@ -1,6 +1,6 @@
 # Maintainer: Iván Zaera Avellón <ivan.zaera@posteo.net>
 pkgname=bautista
-pkgver=0.0.14
+pkgver=0.0.15
 pkgrel=1
 pkgdesc='A domotic butler bot'
 arch=('pentium4' 'x86_64')
@@ -24,7 +24,7 @@ install='install.sh'
 source=(
 	"$pkgname-$pkgver.tar.gz::https://codeberg.org/ivan.zaera/$pkgname/archive/$pkgver.tar.gz"
 )
-sha256sums=("237e00e9ff26dfde72e2e355aef8120f1d298f03fc8ca2344f2bc60205f9793b")
+sha256sums=("1426aa7335f9833a00eac692c5ce2d87cd3a253411a977dc5aa1f6233edc258f")
 
 build() {
 	cd $srcdir/$pkgname
