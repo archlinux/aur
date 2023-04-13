@@ -1,49 +1,92 @@
-# Maintainer: Lennart Braun <lenerd@posteo.de>
-pkgname=onnx
+# Maintainer: entshuld < edgar [ no ] openmail cc>
+# Original maintainer: Lennart Braun <lenerd@posteo.de>
+_base=onnx
+pkgname=onnx-py
 pkgver=1.13.1
 pkgrel=1
-pkgdesc="C++ library for the open standard for machine learning interoperability"
+pkgdesc="C++ library for the open standard for machine learning interoperability (built with Python API)"
 arch=('x86_64')
 url="https://onnx.ai"
 license=('MIT')
-depends=('glibc' 'protobuf')
-makedepends=('cmake' 'git' 'python')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
-b2sums=("e5c93e00ccb73b56e839da48b255132f8c60508a258d136b53a2755caabed5f1b962208d570c71068484b269f016a08b398d6c8f4fc86d3850ad6d5742b760b6")
+depends=('glibc' 'protobuf'
+         "python-protobuf"
+         "python-numpy"
+         "python-six"
+         "python-typing_extensions"
+         "python38")
+makedepends=('cmake' 'git' 'python'
+             "python-setuptools"
+             "python-pip"
+             "gtest")
+source=("${_base}-$pkgver.tar.gz::https://github.com/${_base}/${_base}/archive/v$pkgver.tar.gz")
+sha512sums=('325859f591dece43a083a0945aefe3427bfdb68a98ef5922343bf7ed959528947e7664d6c8e3e3d35c390d6c20ef22d07c672e5311f80c72c199931be6c256c3')
+provides=("onnx" "python-onnx")
+options=(!staticlibs !emptydirs)
+install=onnx.install
+conflicts=("onnx" "python-onnx")
 
 prepare() {
-    cd "$pkgname-$pkgver"
-    # make sure CMake gets the flags
-    export CPPFLAGS
-    export CFLAGS
-    export CXXFLAGS
-    export LDFLAGS
-    export MAKEFLAGS
-    cmake \
-        -DCMAKE_BUILD_TYPE='None' \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DONNX_BUILD_TESTS=On \
-        -DONNX_USE_PROTOBUF_SHARED_LIBS=On \
-        -DCMAKE_POSITION_INDEPENDENT_CODE=On \
-        -Wno-dev \
-        -B build
+    cd "${_base}-${pkgver}"
+    _build="${srcdir}"/build
+    [ ! -d "${_build}" ] && mkdir "${_build}"
+
+    cd "${_build}"
+    python3.8 -m venv --clear env
+    source env/bin/activate
+    pip install protobuf numpy six typing_extensions setuptools
+    deactivate
 }
 
 build() {
-    cd "$pkgname-$pkgver/build"
-    make
+    _build="${srcdir}"/build
+    cd "${_build}"
+
+    source "${_build}"/env/bin/activate
+
+    # make sure CMake gets the flags
+    export CPPFLAGS CFLAGS CXXFLAGS LDFLAGS MAKEFLAGS
+    CONFOPTS=(
+      -DCMAKE_BUILD_TYPE='None'
+      -DCMAKE_INSTALL_PREFIX=/usr
+      -DONNX_BUILD_TESTS=ON
+      -DONNX_USE_PROTOBUF_SHARED_LIBS=ON
+      -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+      -DBUILD_ONNX_PYTHON=ON
+      -Wno-dev)
+    cmake ${CONFOPTS[@]} -B "${_build}" \
+          -S "${srcdir}"/"${_base}-${pkgver}"
+    make -C "${_build}"
+
+    cd "${srcdir}"/"${_base}-${pkgver}"
+    python setup.py build
+
+    deactivate
 }
 
 check() {
-    cd "$pkgname-$pkgver/build"
-    LD_LIBRARY_PATH=. ./onnx_gtests
+    _build="${srcdir}"/build
+    cd "${_build}"
+    source env/bin/activate
+
+    LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH ./onnx_gtests
+
+    deactivate
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    cd build
-    make DESTDIR="$pkgdir/" install
-    find "$pkgdir" -type d -name test -prune -exec rm -r {} \;
-    find "$pkgdir" -type d -empty -delete
+    _build="${srcdir}"/build
+    cd "${_build}"
+    source env/bin/activate
+
+    make DESTDIR="${pkgdir}/" install
+    install -Dm644 "${srcdir}"/"${_base}-${pkgver}"/LICENSE\
+            "${pkgdir}/usr/share/licenses/${_base}/LICENSE"
+
+    cd "${srcdir}"/"${_base}-${pkgver}"
+    python setup.py install -O1 --prefix=/usr\
+           --root="${pkgdir}" --skip-build
+
+    find "${pkgdir}" -type d -name test -prune -exec rm -r {} \;
+
+    deactivate
 }

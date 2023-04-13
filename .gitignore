@@ -1,0 +1,11 @@
+onnx/
+
+# Submodules
+
+# Tar-balls and package
+*.tar.gz
+*.tar.zst
+
+src/
+env/
+pkg/

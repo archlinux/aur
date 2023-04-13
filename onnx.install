@@ -1,0 +1,28 @@
+post_install() {
+# (from python-x-wr-timezone)
+cat << EOF
+# This version of ONNX currently needs- and was compiled with
+# Python 3.8 to be fully used.
+# This may work:
+# (create a virtual environment; =env= is a directory)
+python3.8 -m venv --clear --system-site-packages env
+# (activate virtual environment)
+source env/bin/activate
+# (install dependencies inside the virtual environment)
+pip install protobuf numpy six typing_extensions
+# (test)
+python
+>>> import onnx
+# (deactivate virtual environment; once Python is closed)
+deactivate
+# (Run this every other time)
+source env/bin/activate
+python
+# ---(do what you have to do)---
+deactivate
+EOF
+}
+
+post_update () {
+post_install
+}
