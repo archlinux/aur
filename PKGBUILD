@@ -1,7 +1,7 @@
 # Maintainer: Serhii Hordiienko <phrippy2@gmail.com>
 
 pkgname=glab-bin
-pkgver=1.27.1
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Cli tool to help work seamlessly with Gitlab from the command line'
 arch=(x86_64)
@@ -11,8 +11,8 @@ license=(MIT)
 provides=("glab=$pkgver")
 conflicts=(glab)
 replaces=(gitlab-glab-git)
-sha256sums=('ea8bd68fac3894bcff33733d818d4575b7f2c2cd3e2ad7181b1449576bc9076f'
-            'edf9eda915580a2d1d8797a79dca94fc7e3a44c6ddeec208ea715bb54025afa4')
+sha256sums=('953910f280bdfb3154d528396291f15ffb94df2700313e82cd9a3a1c810d4a14'
+            'b1e98746a0d311c88ff15a8e64314487f7823e405ac2a10d1bb306ce5f7286c5')
 
 check() {
   grep glab_${pkgver}_Linux_${arch}.deb checksums.txt | sha256sum -c
