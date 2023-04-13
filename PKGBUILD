@@ -13,8 +13,9 @@ sha256sums=('9d91bc6536a67e45968f9d83ae1f3054c0a1488491b18ec35187a98c3169c455')
 
 build() {
   cd "$pkgname-$pkgver"
+  export GO111MODULE="auto"
   export GOPATH="$srcdir"
-  go build -ldflags="-X 'main.version=$pkgver'" -o spicetify
+  go build -gccgoflags="-X 'main.version=$pkgver'" -o spicetify
 }
 
 check() {
