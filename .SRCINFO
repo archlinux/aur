@@ -1,7 +1,7 @@
 pkgbase = python-progress
 	pkgdesc = Easy to use progress bars for Python
 	pkgver = 1.6
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/verigak/progress
 	arch = any
 	license = ISC
