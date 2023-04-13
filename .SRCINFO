@@ -1,0 +1,16 @@
+pkgbase = wpunix-bin
+	pkgdesc = WordPerfect for UNIX Character Terminals
+	pkgver = 0.13
+	pkgrel = 1
+	url = https://github.com/taviso/wpunix
+	arch = x86_64
+	license = unknown
+	makedepends = rpmextract
+	depends = lib32-ncurses
+	provides = wpunix
+	conflicts = wpunix
+	options = !strip
+	source = https://github.com/taviso/wpunix/releases/download/v0.13/wordperfect8-0.13-1.fc37.i686.rpm
+	sha512sums = 0c9e86b258ba79a547539ba12a069e2953aa56b50de99958214aacddc12a637fed4b9b0e2f51ee874a1b4c16df3dcc3eadad007b998579b106fd27e428dea5d2
+
+pkgname = wpunix-bin
