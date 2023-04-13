@@ -3,40 +3,40 @@
 ## python-numba requires python-numpy>1.21; ver 0.56 should fix this
 
 pkgname=python-chemicals
-pkgver=1.0.17
+_pkg="${pkgname#python-}"
+pkgver=1.0.21
 pkgrel=1
 pkgdesc="Chemical database of Chemical Engineering Design Library"
 arch=('any')
 url="https://github.com/calebbell/chemicals"
 license=('MIT')
-depends=('python-numpy' 'python-scipy' 'python-pandas' 'python-fluids')
+depends=('python-fluids' 'python-numpy' 'python-pandas' 'python-scipy')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 # checkdepends=(
-# 	'python-pytest'
-# 	'python-sympy'
-# 	'python-matplotlib'
-# 	'python-pint'
 # 	'ipython'
-# 	'python-mpmath'
 # 	'python-fuzzywuzzy'
+# 	'python-matplotlib'
+# 	'python-mpmath'
+# 	'python-numba'
+# 	'python-pint'
+# 	'python-pytest'
 # 	'python-pytz'
-# 	'python-numba')
+# 	'python-sympy')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/c/chemicals/chemicals-$pkgver.tar.gz")
-sha256sums=('5ca049e432c80ec30835612f4a6cac34bc065f15c1d874945b5bdc2f788f4261')
+sha256sums=('59f4ae1e6093f12a3f570458456d587f88ad27278f4abc39781ef0c035653314')
 
 build() {
-	cd "chemicals-$pkgver"
+	cd "$_pkg-$pkgver"
 	python -m build --wheel --no-isolation
 }
 
 # check() {
-# 	cd "chemicals-$pkgver"
+# 	cd "$_pkg-$pkgver"
 # 	pytest -x -k 'not slow or not online or not thermo'
 # }
 
 package() {
-	export PYTHONHASHSEED=0
-	cd "chemicals-$pkgver"
+	cd "$_pkg-$pkgver"
 	python -m installer --destdir="$pkgdir/" dist/*.whl
-	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dvm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
