@@ -6,3 +6,4 @@ Terminal=false
 Icon=logviewer
 StartupNotify=false
 Type=Application
+Categories=System;
