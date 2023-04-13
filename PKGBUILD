@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=catppuccin-gtk-theme-mocha
-pkgver=0.4.3
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Soothing pastel theme for GTK3 - Mocha'
 arch=('any')
@@ -22,20 +22,20 @@ source=("$pkgname-$pkgver-blue.zip::$url/releases/download/v$pkgver/Catppuccin-M
         "$pkgname-$pkgver-sky.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Standard-Sky-Dark.zip"
         "$pkgname-$pkgver-teal.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Standard-Teal-Dark.zip"
         "$pkgname-$pkgver-yellow.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Standard-Yellow-Dark.zip")
-sha256sums=('598f2210b1f744acaea4cda7c80eb8a8162026f801f4f3f02c2d8947de9b6f6e'
-            '2ac5b4921f360b60215765d2c2a3f33d98b2fff99131532c98cb35bce722b4a6'
-            '427ba36002bd75ea2cbe3bafdfd781527cadbe057e7d25e5a06a78956fed622c'
-            '4728a3ed5f51098996fe21b37156c6f4e3ef2f58e46e781e17bc9f093086120a'
-            'a4b00ff7dfd893da4b481e24238eac97dc43d8814be90b9245a14e2d743995cb'
-            '3c822aeba641d1b9c7b4fa67db75b8556eff42c0ab515120412eabc332ed3967'
-            'bd1b5bd9e8dcbd8483efbf97ac4785c3bef6a76de1104dd65af2bef233134d55'
-            '31159a9d30b0697b5055398380546e89ef49250b09c29c73d01fdc978b9bf7b2'
-            '4f4052c86e44ea070eba8b9d2d7525d50ae9aed6919cce7abbff6aa1dbd3acbf'
-            '9c083f4b9c9ea9b0f7241301599547280db29c485d69409b586bdacfe4d0ee57'
-            'e4c59beaeaf854dce927ec7c752438c4086a47ade7bcb7bccd4ea717e5a0c29e'
-            '6a057a2444b58d7db45a9818dede3b9edfeb56168c33cd4e062608200968e41b'
-            '989dbcda385900531cc4c44ef6b073d0dd593e70841050abedb8d9bd81403182'
-            '89f996ca883da12a9c80ae8c966f24914dc34c920d1a7977732e9c652e0809c6')
+sha256sums=('43c3e7c55f3f57ea6c75045818513c2058437360d7eb1b323436e3a631b34cbb'
+            'd4063c493435a21c0975b55a93b09f480955398e5503fb4fc407bcd347df4992'
+            '695c2f4530609607790613a1b7f51ba586663ab43200a1d777086b28a622fa15'
+            '579c36c3e57137820e453c19699467e51facc118f20388a0faefeb55dc025dc8'
+            '62eb910f16f9cb3391552f4a2ea218f46247166de1685cf3ff0ed4de78a66d9f'
+            'c7b0394d3a1e57eb6879fd126f50a73a6fee572c73a82eabc1679dc2d128e90d'
+            '0687f32ec41d9710234d37a62131dedae0213b62a48354e727c918bd22fd00fb'
+            '58781d1780c02b47afe3303f7a0987927efa5eed065c3c2f5d64d4e480bef204'
+            '0dad8a6b158e06b87f9d7a383c06c8a06c0b166db8b177220f1651f812856f87'
+            'ae2991c298adf5ebe92f399b03c3387517d830f9348c845c35cfd3eb209b22da'
+            'e97f216e3d18bbee0db32218309668ed3c8de66eaeedf5a4608a05edf19e89d0'
+            'a566b196fda51967884233054fde064c0621d35af2faf77d8ae0bc76cc5ae853'
+            '19647b7fd014546edc5f453e29eb8adc5cba5c962dff24cff04e09c603866093'
+            'e420e655b0a7706bdb9982c466e2484918881c5e611aaa8a9f14924a138d3bb6')
 
 package() {
 	install -d "$pkgdir/usr/share/themes/"
