@@ -1,0 +1,15 @@
+pkgbase = python-sparqlwrapper
+	pkgdesc = SPARQL Endpoint interface to Python
+	pkgver = 1.8.5
+	pkgrel = 3
+	url = https://rdflib.github.io/sparqlwrapper/
+	arch = any
+	license = W3C
+	checkdepends = python-nose
+	checkdepends = python-rdflib-jsonld
+	makedepends = python-setuptools
+	depends = python
+	source = python-sparqlwrapper-1.8.5.tar.gz::https://github.com/RDFLib/sparqlwrapper/archive/1.8.5.tar.gz
+	sha512sums = 7637989bbf883824be5d277d6b0bd2c2ec8b628ded8a103f6da724b62977a5e9bd13f8ec8d9031de5f5028acfcbd599148dbab5ff3694261c1ec27295c34ee38
+
+pkgname = python-sparqlwrapper
