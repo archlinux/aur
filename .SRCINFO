@@ -1,13 +1,13 @@
 pkgbase = coin-or-symphony
 	pkgdesc = COIN-OR solver for mixed-integer linear programs (MILPs)
-	pkgver = 5.6.19
+	pkgver = 5.7.0
 	pkgrel = 1
 	url = https://github.com/coin-or/SYMPHONY
 	arch = i686
 	arch = x86_64
 	license = EPL
 	depends = coin-or-cgl
-	source = https://github.com/coin-or/SYMPHONY/archive/releases/5.6.19.tar.gz
-	sha512sums = 56ddb754abf903aeb86bec9106f95c790feb3b9bb81bce074f7809b1789150da04fee0d9bf660a31e4047dbb41ffb63e5a8d88ee98f3acaa4e8cff4cbfe55ce8
+	source = SYMPHONY-releases-5.7.0.tar.gz::https://github.com/coin-or/SYMPHONY/archive/releases/5.7.0.tar.gz
+	sha512sums = 9ff99ebba9e58d9b68d2019bd77b67a5b9abc2201fa858fb6a5883fb0421307dbc243cfd9b74b0cececdfc1227ea6a7e8017e45f6fb76a1d4220218c7c8299e3
 
 pkgname = coin-or-symphony

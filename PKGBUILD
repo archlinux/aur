@@ -3,15 +3,15 @@
 # Contributor: Daniel YC Lin <dlin.tw at gmail>
 _base=SYMPHONY
 pkgname=coin-or-${_base,,}
-pkgver=5.6.19
+pkgver=5.7.0
 pkgrel=1
 pkgdesc="COIN-OR solver for mixed-integer linear programs (MILPs)"
 arch=(i686 x86_64)
 url="https://github.com/coin-or/${_base}"
 license=(EPL)
 depends=(coin-or-cgl)
-source=(${url}/archive/releases/${pkgver}.tar.gz)
-sha512sums=('56ddb754abf903aeb86bec9106f95c790feb3b9bb81bce074f7809b1789150da04fee0d9bf660a31e4047dbb41ffb63e5a8d88ee98f3acaa4e8cff4cbfe55ce8')
+source=(${_base}-releases-${pkgver}.tar.gz::${url}/archive/releases/${pkgver}.tar.gz)
+sha512sums=('9ff99ebba9e58d9b68d2019bd77b67a5b9abc2201fa858fb6a5883fb0421307dbc243cfd9b74b0cececdfc1227ea6a7e8017e45f6fb76a1d4220218c7c8299e3')
 
 build() {
   cd ${_base}-releases-${pkgver}/${_base}
