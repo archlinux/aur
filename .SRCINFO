@@ -1,0 +1,16 @@
+pkgbase = chromatic
+	pkgdesc = Fine-tune your instruments
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/nate-xyz/chromatic
+	arch = any
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = cargo
+	makedepends = git
+	makedepends = meson
+	depends = libadwaita
+	source = git+https://github.com/nate-xyz/chromatic.git#commit=fe9d34e3cb30a045b95aa76f8cc4e3193903e262
+	sha256sums = SKIP
+
+pkgname = chromatic
