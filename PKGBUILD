@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=readline-git
-pkgver=8.0.r4.gc5ad6be
+pkgver=8.2.r1.g7274faa
 pkgrel=1
 pkgdesc="GNU readline library"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://tiswww.case.edu/php/chet/readline/rltop.html"
 license=('GPL')
 depends=('glibc' 'libncursesw.so' 'ncurses')
 makedepends=('git')
-provides=('readline' 'libhistory.so' 'libreadline.so')
+provides=("readline=$pkgver" 'libhistory.so' 'libreadline.so')
 conflicts=('readline')
 options=('!emptydirs' 'staticlibs')
 source=("git+https://git.savannah.gnu.org/git/readline.git"

@@ -1,6 +1,6 @@
 pkgbase = readline-git
 	pkgdesc = GNU readline library
-	pkgver = 8.0.r4.gc5ad6be
+	pkgver = 8.2.r1.g7274faa
 	pkgrel = 1
 	url = https://tiswww.case.edu/php/chet/readline/rltop.html
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = readline-git
 	depends = glibc
 	depends = libncursesw.so
 	depends = ncurses
-	provides = readline
+	provides = readline=8.2.r1.g7274faa
 	provides = libhistory.so
 	provides = libreadline.so
 	conflicts = readline
@@ -22,4 +22,3 @@ pkgbase = readline-git
 	sha256sums = SKIP
 
 pkgname = readline-git
-
