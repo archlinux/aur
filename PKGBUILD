@@ -1,6 +1,6 @@
 # Maintainer: noprobelm@protonmail.com
 pkgname=tempy-git
-pkgver=1.0.r59.5bd7a5b
+pkgver=1.0.r63.a5f60a1
 pkgrel=1
 pkgdesc="Render visually pleasing weather reports as rich text to your terminal"
 arch=(any)
@@ -28,12 +28,12 @@ pkgver() {
 
 build() {
     cd tempy-git
-    python -m build --wheel --no-isolation
+    /usr/bin/python3 -m build --wheel --no-isolation
 }
 
 package() {
     cd tempy-git
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    /usr/bin/python3 -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
