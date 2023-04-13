@@ -4,7 +4,7 @@
 
 pkgname=python-ibm-db-sa
 pkgver=0.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="SQLAlchemy support for IBM Data Servers"
 url="https://pypi.python.org/pypi/ibm_db_sa"
 license=('Apache')
