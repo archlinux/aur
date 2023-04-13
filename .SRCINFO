@@ -1,0 +1,19 @@
+pkgbase = damon-git
+	pkgdesc = A terminal UI (TUI) for HashiCorp Nomad
+	pkgver = 0.1.0.r75.411021d
+	pkgrel = 1
+	url = https://github.com/hashicorp/damon
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = MPL2
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = damon
+	conflicts = damon
+	source = damon::git+https://github.com/hashicorp/damon.git
+	md5sums = SKIP
+
+pkgname = damon-git
