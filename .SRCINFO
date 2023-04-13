@@ -1,0 +1,14 @@
+pkgbase = python-docopt-ng
+	pkgdesc = Jazzband-maintained fork of docopt, the humane command line arguments parser.
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/jazzband/docopt-ng
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-regex
+	source = https://files.pythonhosted.org/packages/source/d/docopt-ng/docopt-ng-0.8.1.tar.gz
+	sha256sums = ea6a61a288fc864eee6b22d6fe28aa202d59fc86fad05f16ff5e39cc4ea7f6e3
+
+pkgname = python-docopt-ng
