@@ -1,10 +1,10 @@
 pkgbase = siedler2-data
 	pkgdesc = Game data files and manual of Blue Byte's 'Siedler II'/'Settlers II' to be used with 'Return to the Roots'.
 	pkgver = venividivici_gold
-	pkgrel = 10
+	pkgrel = 11
 	url = http://archive.org/details/die_siedler_2_151
 	arch = any
-	license = unknown: proprietary
+	license = custom: proprietary
 	options = emptydirs
 	source = siedler2-gold.zip::http://archive.org/download/die_siedler_2_151/siedler2.zip
 	source = The_Settlers_II_Manual.pdf::http://archive.org/download/The_Settlers_II_Manual/The_Settlers_II_Manual.pdf
