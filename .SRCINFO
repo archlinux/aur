@@ -1,0 +1,26 @@
+pkgbase = i3lock-powerbtn-fingerprint-git
+	pkgdesc = Improved screenlocker based upon XCB and PAM, with added power button fingerprint verification support
+	pkgver = 2.14.1
+	pkgrel = 1
+	url = https://github.com/YiPrograms/i3lock-powerbtn-fingerprint
+	arch = x86_64
+	groups = i3
+	license = MIT
+	makedepends = meson
+	depends = xcb-util-image
+	depends = xcb-util-xrm
+	depends = libev
+	depends = cairo
+	depends = libxkbcommon-x11
+	depends = pam
+	depends = fprintd
+	provides = i3lock
+	conflicts = i3lock
+	conflicts = i3lock-powerbtn-fingerprint
+	options = docs
+	backup = etc/pam.d/i3lock,
+	backup = etc/pam.d/i3lock_fprint
+	source = git+https://github.com/YiPrograms/i3lock-powerbtn-fingerprint.git
+	sha512sums = SKIP
+
+pkgname = i3lock-powerbtn-fingerprint-git
