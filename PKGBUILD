@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=wireguard-module-git
-pkgver=0.0.20191226.r4.g7481b6a
+pkgver=1.0.20220627.r2.g3d3c92b
 pkgrel=1
 pkgdesc="Fast, modern, secure VPN tunnel (kernel module)"
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ url="https://www.wireguard.com/"
 license=('GPL')
 depends=('linux>=3.10')
 makedepends=('git' 'linux-headers>=3.10')
-provides=('WIREGUARD-MODULE')
-conflicts=('WIREGUARD-MODULE')
+provides=("wireguard-module=$pkgver" 'WIREGUARD-MODULE')
+conflicts=('wireguard-module' 'WIREGUARD-MODULE')
 source=("git+https://git.zx2c4.com/wireguard-linux-compat")
 sha256sums=('SKIP')
 

@@ -1,6 +1,6 @@
 pkgbase = wireguard-module-git
 	pkgdesc = Fast, modern, secure VPN tunnel (kernel module)
-	pkgver = 0.0.20191226.r4.g7481b6a
+	pkgver = 1.0.20220627.r2.g3d3c92b
 	pkgrel = 1
 	url = https://www.wireguard.com/
 	arch = i686
@@ -9,10 +9,11 @@ pkgbase = wireguard-module-git
 	makedepends = git
 	makedepends = linux-headers>=3.10
 	depends = linux>=3.10
+	provides = wireguard-module=1.0.20220627.r2.g3d3c92b
 	provides = WIREGUARD-MODULE
+	conflicts = wireguard-module
 	conflicts = WIREGUARD-MODULE
 	source = git+https://git.zx2c4.com/wireguard-linux-compat
 	sha256sums = SKIP
 
 pkgname = wireguard-module-git
-
