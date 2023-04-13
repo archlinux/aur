@@ -3,7 +3,7 @@
 
 pkgname=wesnoth-devel
 #XXX: when changing major version (i.e. 1.15 to 1.1X) remeber to updated the occurences in build() and package()
-pkgver=1.17.13
+pkgver=1.17.14
 pkgrel=1
 pkgdesc="development version of a turn-based strategy game on a fantasy world"
 arch=('i486' 'i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -38,7 +38,7 @@ source=("https://downloads.sourceforge.net/sourceforge/wesnoth/wesnoth-$pkgver.t
         "wesnothd-devel.service"
         "wesnoth-devel.appdata.xml")
 
-sha256sums=('211865218a57077beb537885e459c0338bacc548f48e58e5c7407d79d9951d8e'
+sha256sums=('9b1ef227dc61dd5579b0906143825a768b06936c05fb955ec8fb717a4d4b0aca'
          '3631b4c1eda6c2099e43272f2a26a8a3e897b9541a395ebeb9a1b8b3753a647d'
          '196cd09c73c6503b9caef7c47bb61d0243c10e9b15daa6b3aff437f7ad03448a'
          '98fbd8bafff165c45d0a1eb23a500108e4ce7c8ed32b9abc9bf1c3179e1d3491'
