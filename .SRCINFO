@@ -1,7 +1,7 @@
 pkgbase = bilibili-electron-bin
-        pkgdesc = A Linux bilibili GUI. Use installed electron.
-        pkgver = 1.9.2
-        pkgrel = 1
+        pkgdesc = A Linux bilibili port. Use installed electron and live build.
+        pkgver = rolling
+        pkgrel = 3
         url = https://github.com/msojocs/bilibili-linux
         arch = any
         license = MIT
