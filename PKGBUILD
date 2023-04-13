@@ -9,7 +9,7 @@ pkgdesc="Game data files and manual of Blue Byte's 'Siedler II'/'Settlers II' to
 url='http://archive.org/details/die_siedler_2_151'
 arch=('any')
 pkgver='venividivici_gold'
-pkgrel=9
+pkgrel=10
 license=('unknown: proprietary')
 options+=('emptydirs')
 
@@ -33,7 +33,11 @@ package_siedler2-data() {
     "widelands-maps-siedler2: To play the maps in the game 'widelands' (some things might not work correctly)."
     "siedler2-doc: The original Blue Byte manual."
   )
-  provides=("settlers2-data=${pkgver}")
+  provides=(
+    "settlers2-data=${pkgver}"
+    "settlers2-maps=${pkgver}"
+    "siedler2-maps=${pkgver}"
+  )
 
   cd "${srcdir}"
   install -v -m 755 -d "${pkgdir}/usr/share/s25rttr/S2"
