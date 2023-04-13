@@ -3,7 +3,7 @@
 
 pkgname=river-levee-git
 _pkgname=levee
-pkgver=0.1.2.r3.g520ceae
+pkgver=0.1.3.r0.g4fa3228
 pkgrel=1
 pkgdesc='Statusbar for the river wayland compositor'
 arch=('x86_64')
@@ -19,10 +19,8 @@ source=(
     'git+https://github.com/ifreund/zig-pixman'
     'git+https://git.sr.ht/~novakane/zig-fcft'
     'git+https://git.sr.ht/~andreafeletto/zig-udev'
-    'git+https://github.com/Hejsil/zig-clap'
 )
 sha256sums=(
-    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
