@@ -1,28 +1,24 @@
 pkgbase = xmrig-donateless
-	pkgdesc = High Perf CryptoNote CPU and GPU (OpenCL, CUDA) miner - No Donate Version
-	pkgver = 6.19.1
+	pkgdesc = RandomX, KawPow, CryptoNight, AstroBWT and GhostRider unified CPU/GPU miner and RandomX benchmark - No Donate Version
+	pkgver = 6.19.2
 	pkgrel = 1
 	url = https://github.com/xmrig/xmrig
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = GPL3
-	makedepends = cmake>=2.8
+	makedepends = cmake
 	depends = libuv
-	depends = libmicrohttpd
 	depends = openssl
 	depends = hwloc
-	optdepends = ocl-icd: AMD GPU mining
-	optdepends = opencl-headers: AMD GPU mining
-	optdepends = cuda: Nvidia GPU mining
-	provides = xmrig=6.19.1
+	provides = xmrig=6.19.2
 	conflicts = xmrig
 	backup = etc/xmrig/xmrig.conf
-	source = xmrig.service
+	source = https://github.com/xmrig/xmrig/archive/v6.19.2/xmrig-6.19.2.tar.gz
+	source = xmrig@.service
 	source = xmrig.sysusers
-	source = xmrig-donateless-6.19.1.tar.gz::https://github.com/xmrig/xmrig/archive/v6.19.1.tar.gz
-	sha256sums = 7add542acd5e91099301ec1f8f4a5d41bd31bd4ba13bfa9e1144c1cd790cfc6a
+	sha256sums = 84b7d1cc0bb818d471d47a5e663839ae8ba8b8a3b641e227b03903125446e12c
+	sha256sums = bbc54b04a7da5ea473eb7d976307eb995fbfd96f0d012f1553b8c487182d9fb3
 	sha256sums = d8f499302fb2b642fe02586c81c410a299e0a6e133aef1cc1c783bcdcb3f44f6
-	sha256sums = 772f947058e5b89ca9bf34128487def47796870b547439a9b0524ddd1899420c
 
 pkgname = xmrig-donateless

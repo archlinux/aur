@@ -4,5 +4,5 @@
 !PKGBUILD
 !*.desktop
 !*.patch
-!xmrig.service
+!xmrig@.service
 !xmrig.sysusers
