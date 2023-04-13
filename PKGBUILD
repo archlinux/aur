@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=vmtouch-git
-pkgver=1.3.1.r8.g3382336
+pkgver=1.3.1.r17.g8f6898e
 pkgrel=1
 pkgdesc="Portable file system cache diagnostics and control"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://hoytech.com/vmtouch/"
 license=('BSD')
 depends=('glibc')
 makedepends=('git' 'perl')
-provides=('vmtouch')
+provides=("vmtouch=$pkgver")
 conflicts=('vmtouch')
 source=("git+https://github.com/hoytech/vmtouch.git")
 sha256sums=('SKIP')
