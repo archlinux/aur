@@ -2,7 +2,7 @@
 
 pkgname=dxvk-mingw
 pkgver=2.1
-_asyncver=v2.1
+_asyncver=2.1-2
 pkgrel=1
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "git+https://github.com/KhronosGroup/Vulkan-Headers.git"
     "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
     "libdisplay-info-dxvk::git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git"
-    "dxvk-async-$_asyncver.patch::https://gitlab.com/Ph42oN/dxvk-gplasync/-/raw/$_asyncver/dxvk-gplasync.patch"
+    "dxvk-async-$_asyncver.patch::https://gitlab.com/Ph42oN/dxvk-gplasync/-/raw/main/dxvk-gplasync-$_asyncver.patch"
     "dxvk-async-conf.patch"
     "dxvk-extraopts.patch"
     "setup_dxvk.sh::https://raw.githubusercontent.com/doitsujin/dxvk/4f90d7bf5f9ad785660507e0cb459a14dab5ac75/setup_dxvk.sh"
@@ -121,7 +121,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'd127372403c16ff525bf9c96894a5f1c72e875a9d64068a526c96d1d60df76c5'
+            '40b6c486dc8936466672e2c013730368a2e19a6a118fca6924df07d60ea9fcbc'
             'c9c2f02bce1e1e93d511aff73484208456835d4d7601a36ab4524939472fc401'
             'bcc15521e4c7f966a0192a1dabb7fb4935b33db39344ab5b861f9d81486f1362'
             '0f688815530ab5e8cc89b9b45d9b1d66cd8cd5a7770fb8249339af555a30dfe7'
