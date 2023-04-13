@@ -16,8 +16,8 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/Numix-Frost"
+  git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 build() {
