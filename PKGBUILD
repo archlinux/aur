@@ -1,8 +1,8 @@
 # Maintainer : nyanmisaka <nst799610810@gmail.com>
 
 pkgname=jellyfin-ffmpeg5
-pkgver=5.1.2
-pkgrel=9
+pkgver=5.1.3
+pkgrel=1
 pkgdesc='FFmpeg5 for Jellyfin'
 arch=('x86_64')
 url='https://github.com/jellyfin/jellyfin-ffmpeg'
@@ -21,6 +21,7 @@ depends=(
     'libdrm'
     'libfreetype.so'
     'libmfx'
+    'libopenmpt.so'
     'libplacebo.so'
     'libtheora'
     'libva.so'
