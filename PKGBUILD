@@ -15,8 +15,6 @@ depends=(
     "libdrm" "libxkbcommon" "libinput" "pixman" "xorg-xwayland" "xcb-util-renderutil" "xcb-util-wm" "xcb-util-errors" "seatd"
 )
 makedepends=("git" "meson" "ninja" "patch" "vulkan-headers" "glslang" "wayland-protocols" "cmake"
-    # libdisplay-info
-    "edid-decode"
 )
 provides=($_pkgname "steamcompmgr")
 conflicts=($_pkgname "steamcompmgr")
