@@ -1,0 +1,13 @@
+pkgbase = tombl-bin
+	pkgdesc = Easily query TOML files from bash
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/snyball/tombl
+	arch = x86_64
+	license = GPL3
+	provides = tombl=0.2.3
+	provides = tombl
+	source = https://github.com/snyball/tombl/releases/download/v0.2.3/tombl-v0.2.3.tar.gz
+	sha256sums = f2533c43493520d0db27b889a8e1c20c92fc36143e0e694ab50645c4518c3d80
+
+pkgname = tombl-bin
