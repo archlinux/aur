@@ -1,17 +1,23 @@
 pkgbase = python-pysmart
 	pkgdesc = Wrapper for smartctl (smartmontools) - FreeNAS fork
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/freenas/py-SMART
 	arch = any
 	license = LGPL2.1
 	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
 	depends = python>=3.7.0
 	depends = python-humanfriendly
 	depends = smartmontools
-	source = python-pysmart-1:1.2.3-1.tar.gz::https://github.com/freenas/py-SMART/archive/v1.2.3.tar.gz
-	sha512sums = 4f0ce9e3f609b940897f6ca80b69ad0af5a62cf3f27d80ff6595073b27c299ff9bc6eaedfca0fef02870c071535490ed72d5bb4ed34386970221fc8d887a93c0
+	source = python-pysmart-1:1.2.4-1.tar.gz::https://github.com/freenas/py-SMART/archive/v1.2.4.tar.gz
+	source = add-missing-interface-package.diff
+	sha512sums = 6355a93962b7d1729e92ec831d82d5437dbb47dd26d4a80000fbdb74370c087c36bb48b6d8f16310e03d4b49d75aae6cce0d5e4c90746115402e654842db2b63
+	sha512sums = 611e01f26021e5cb1e04d37a1c2be7c2d616df6bf2af8067517b1a84bc4bcbac8fcc6c0917184fd0a069b566f6a918963449fff0dba393fd7c6ec41a54155897
 
 pkgname = python-pysmart

@@ -1,0 +1,13 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 4ccf2d9..258f2df 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -19,7 +19,7 @@ requires = ["setuptools", "setuptools-scm[toml]"]
+ build-backend = "setuptools.build_meta"
+ 
+ [tool.setuptools]
+-packages = ['pySMART']
++packages = ['pySMART', 'pySMART.interface']
+ 
+ [tool.setuptools_scm]
+ write_to = "pySMART/version.py"
