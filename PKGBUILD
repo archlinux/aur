@@ -3,7 +3,7 @@
 
 pkgname=amass
 pkgver=3.22.2
-pkgrel=2
+pkgrel=3
 pkgdesc="In-depth Attack Surface Mapping and Asset Discovery"
 arch=('any')
 url="https://github.com/OWASP/Amass"
@@ -23,7 +23,7 @@ build() {
 }
 
 check() {
-  cd "Amass-$pkgver"
+  cd "amass-$pkgver"
 
   go test ./...
 
@@ -32,7 +32,7 @@ check() {
 }
 
 package() {
-  cd "Amass-$pkgver"
+  cd "amass-$pkgver"
 
   install -dm 755 "${pkgdir}/usr/share/${pkgname}"
   install -Dm 755 "bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
