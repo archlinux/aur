@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=sassc-git
-pkgver=3.4.8.r9.g59aec3b
+pkgver=3.6.2.r0.g66f0ef3
 pkgrel=1
 pkgdesc="Libsass command line driver"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/sass/sassc"
 license=('MIT')
 depends=('glibc' 'libsass')
 makedepends=('git')
-provides=('sassc')
+provides=("sassc=$pkgver")
 conflicts=('sassc')
 source=("git+https://github.com/sass/sassc.git")
 sha256sums=('SKIP')
@@ -25,7 +25,8 @@ build() {
   cd "sassc"
 
   autoreconf -fi
-  ./configure --prefix="/usr"
+  ./configure \
+    --prefix="/usr"
   make
 }
 
@@ -33,5 +34,5 @@ package() {
   cd "sassc"
 
   make DESTDIR="$pkgdir" install
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/sassc/LICENSE"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/sassc"
 }
