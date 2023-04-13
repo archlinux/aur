@@ -2,7 +2,7 @@
 
 pkgname=web-ext
 # https://github.com/mozilla/web-ext/releases
-pkgver=7.6.0
+pkgver=7.6.1
 pkgrel=1
 pkgdesc='A command line tool to help build, run, and test web extensions'
 arch=(any)
@@ -18,7 +18,7 @@ conflicts=('nodejs-web-ext')
 options=('!strip')
 # tarball on npmjs lacks scripts for building from sources
 source=("https://github.com/mozilla/web-ext/archive/$pkgver/web-ext-$pkgver.tar.gz")
-sha256sums=('0c2afcb5658dd65a8146a4850ac04a17155feba3902fc0fecbc726d05005dd34')
+sha256sums=('136f08a4fcbb902a9d12507b64346266395aa3e3df107e344286d57cbcf8abc8')
 
 prepare() {
   cd "$srcdir"
