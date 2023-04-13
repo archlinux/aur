@@ -1,0 +1,14 @@
+pkgbase = python-nose-randomly
+	pkgdesc = Nose plugin to randomly order tests and control random.seed.
+	pkgver = 1.2.6
+	pkgrel = 6
+	url = https://github.com/adamchainz/nose-randomly
+	arch = any
+	license = BSD
+	checkdepends = python-numpy
+	makedepends = python-setuptools
+	depends = python-nose
+	source = python-nose-randomly-1.2.6.tar.gz::https://github.com/adamchainz/nose-randomly/archive/1.2.6.tar.gz
+	sha512sums = 61f3b056911a9ebbba81594afa11492b760e98a1d8382c67e35afcf1059422b6589a7c214068fc233d96617dfb37c99ee14e77b92d5ec94a29eeab77a0520603
+
+pkgname = python-nose-randomly
