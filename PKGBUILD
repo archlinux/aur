@@ -1,4 +1,5 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Nicola Revelant <nicolarevelant44@gmail.com>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=papirus-filezilla-themes
 pkgver=20200105
