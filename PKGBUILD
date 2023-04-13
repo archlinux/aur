@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=uci-git
-pkgver=r511.g4c8b4d6
-pkgrel=2
+pkgver=r566.g04d0c46
+pkgrel=1
 pkgdesc="OpenWrt unified configuration interface"
 arch=('i686' 'x86_64')
 url="https://openwrt.org/docs/techref/uci"
 license=('LGPL')
 depends=('glibc' 'libubox' 'lua')
 makedepends=('git' 'cmake')
-provides=('uci')
+provides=("uci=$pkgver")
 conflicts=('uci')
 source=("git+https://git.openwrt.org/project/uci.git")
 sha256sums=('SKIP')
