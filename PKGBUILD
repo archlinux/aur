@@ -5,7 +5,7 @@ pkgname=nbfc
 pkgver=1.6.3
 _pkgver=$(echo $pkgver | sed -r 's/_/-/g')
 _pkgname=nbfc-${_pkgver}
-pkgrel=3
+pkgrel=4
 pkgdesc="Cross-platform fan control service for notebooks (STABLE & BETA releases)"
 url="https://github.com/hirschmann/nbfc"
 arch=('i686' 'x86_64')
@@ -37,8 +37,8 @@ package() {
 	cp -R Linux/bin/Release/* "${pkgdir}/opt/nbfc/"
 
 	# Systemd services:
-	install -D -m644 Linux/nbfc.service "${pkgdir}/etc/systemd/system/nbfc.service"
-	install -D -m644 Linux/nbfc-sleep.service "${pkgdir}/etc/systemd/system/nbfc-sleep.service"
+	install -D -m644 Linux/nbfc.service "${pkgdir}/usr/lib/systemd/system/nbfc.service"
+	install -D -m644 Linux/nbfc-sleep.service "${pkgdir}/usr/lib/systemd/system/nbfc-sleep.service"
 
 	# Executables:
 	install -Dm755 "${srcdir}/nbfc" "${pkgdir}/usr/bin/nbfc"
@@ -48,3 +48,4 @@ package() {
 	mkdir -p "${pkgdir}/usr/share/licenses/nbfc"
 	install -D -m755 LICENSE.md "${pkgdir}/usr/share/licenses/nbfc/LICENSE"
 }
+# vim:set ts=2 sw=2 et:
