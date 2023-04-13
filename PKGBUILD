@@ -3,20 +3,20 @@
 
 _target=i686-elf
 pkgname=$_target-binutils
-pkgver=2.39
+pkgver=2.40
 pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the i686-elf target'
 arch=(i686 x86_64)
-url='http://www.gnu.org/software/binutils/'
-license=(GPL)
+url='https://www.gnu.org/software/binutils/'
+license=('GPL')
 depends=(zlib libelf)
 options=(!emptydirs !docs)
-source=("https://mirrors.kernel.org/gnu/binutils/binutils-$pkgver.tar.xz"
-        "https://mirrors.kernel.org/gnu/binutils/binutils-$pkgver.tar.xz.sig")
-_basedir=binutils-$pkgver
-sha256sums=('645c25f563b8adc0a81dbd6a41cffbf4d37083a382e02d5d3df4f65c09516d00'
+source=(https://mirrors.kernel.org/gnu/binutils/binutils-$pkgver.tar.xz{,.sig})
+sha256sums=('0f8a4c272d7f17f369ded10a4aca28b8e304828e95526da482b0ccc4dfc9d8e1'
             'SKIP')
-validpgpkeys=("3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F")
+validpgpkeys=(3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F) # Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
+_basedir=binutils-$pkgver
+
 prepare() {
   cd $_basedir
 
