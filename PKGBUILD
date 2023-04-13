@@ -13,18 +13,18 @@ source=("$pkgname-$pkgver.tar.gz::https://git.lemonsh.moe/lemon/$pkgname/archive
 sha256sums=('a6b0806d550a288f4f631b8d22185f343ef7b29e6de53bef675cdf596faa83d6')
 
 prepare() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     cargo build --frozen --release --all-features
 }
 
 package() {
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" "$pkgname-$pkgver/LICENSE"
-    install -Dm755 "eureka-$pkgver/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" "$pkgname/LICENSE"
+    install -Dm755 "$pkgname/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
