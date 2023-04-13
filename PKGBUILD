@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 320127 2018-03-24 09:48:28Z arojas $
 # Maintainer: Ronald van Haren <ronald@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
