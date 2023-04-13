@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=wordpress-git
-pkgver=5.5.1.r489.ge4fadc6f4d
+pkgver=6.2.0.r97.gce28deee43
 pkgrel=1
 pkgdesc="Blog tool, publishing platform and CMS"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('git')
 optdepends=('apache: Web server for serving WordPress'
             'mariadb: Database server'
             'nginx: Web server for serving WordPress')
-provides=('wordpress')
+provides=("wordpress=$pkgver")
 conflicts=('wordpress')
 install=wordpress.install
 source=("git://develop.git.wordpress.org/")
