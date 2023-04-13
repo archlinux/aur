@@ -9,21 +9,21 @@ _sysroot=/usr/lib/${_target}
 _pkgname=binutils
 
 pkgname=$_target-${_pkgname}
-pkgver=2.39
+pkgver=2.40
 pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the x86_64-elf target'
 arch=(x86_64)
 url='https://www.gnu.org/software/binutils/'
-license=(GPL)
+license=('GPL')
 depends=(zlib libelf)
 options=(!emptydirs !docs)
-source=("https://mirrors.kernel.org/gnu/binutils/binutils-$pkgver.tar.xz"
-        "https://mirrors.kernel.org/gnu/binutils/binutils-$pkgver.tar.xz.sig")
+source=(https://mirrors.kernel.org/gnu/binutils/binutils-$pkgver.tar.xz{,.sig})
 
-sha256sums=('645c25f563b8adc0a81dbd6a41cffbf4d37083a382e02d5d3df4f65c09516d00'
+sha256sums=('0f8a4c272d7f17f369ded10a4aca28b8e304828e95526da482b0ccc4dfc9d8e1'
             'SKIP')
+validpgpkeys=(3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F) # Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
 _basedir=binutils-$pkgver
-validpgpkeys=("3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F")
+
 prepare() {
     cd ${srcdir}/${_pkgname}-${pkgver}
 
