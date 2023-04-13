@@ -13,12 +13,12 @@ source=("${url}/archive/${pkgver}.tar.gz")
 sha256sums=('28e28c50b6b500b522f78590ce442e2ed93c5c2bd7a169ee1d31ab588af92427')
 
 build() {
-  make -C "${pkgname}-${pkgver}"
+	cd "$pkgname-$pkgver"
+	make
 }
 
 package() {
-  make DESTDIR="${pkgdir}" -C "${pkgname}-${pkgver}" install
-  install -Dm644 "${pkgname}-${pkgver}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	cd "$pkgname-$pkgver"
+	make DESTDIR="${pkgdir}" install
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
-
-# vim: ts=2 sw=2 et:
