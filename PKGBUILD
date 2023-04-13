@@ -13,7 +13,7 @@ source=(Amass-$pkgver.tar.gz::https://github.com/OWASP/Amass/archive/v${pkgver}.
 sha512sums=('35292913cca5648155c6c62304b0d92a724785273022da53102df775d3c7f38ec6644863d9caaed30e23183c92219e4f6478bc426229c176879648c15e86ab30')
 
 build() {
-  cd "Amass-$pkgver"
+  cd "amass-$pkgver"
 
   mkdir bin
   go build \
