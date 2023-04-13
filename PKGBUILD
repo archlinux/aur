@@ -6,14 +6,14 @@ pkgdesc="Makes the maps installed by the Settlers II-remake 'Return to the Roots
 url='http://siedler25.org/'
 arch=('any')
 pkgver=venividivici_gold
-pkgrel=1
+pkgrel=2
 depends=('siedler2-maps')
 makedepends=('siedler2-maps') # Needed for pkgver()
 optdepends=('widelands: To play the maps with widelands.')
 provides=("widelands-maps-settlers2=${pkgver}")
 conflicts=()
 replaces=()
-license=('GPL2')
+license=('custom: proprietary.')
 options+=('emptydirs')
 source=('license-note.txt')
 sha256sums=('f4ffc3714848e023f8d2b2477d03584ef7efa8cae644c9ee7f92372e53c65718')
