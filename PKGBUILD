@@ -3,6 +3,7 @@
 
 pkgname=plasma-meta
 pkgver=5.27
+_dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=3
 pkgdesc='Meta package to install KDE Plasma'
 arch=(any)
