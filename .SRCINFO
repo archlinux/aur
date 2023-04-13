@@ -1,0 +1,17 @@
+pkgbase = hamachi-openrc
+	pkgdesc = A Hamachi service for OpenRC.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitea.it/KhomyaK_HTF/hamachi-openrc
+	arch = any
+	license =
+	depends = logmein-hamachi
+	depends = git
+	depends = pacman
+	depends = openrc
+	depends = networkmanager
+	depends = networkmanager-openrc
+	source = git+https://gitea.it/KhomyaK_HTF/hamachi-openrc
+	md5sums = SKIP
+
+pkgname = hamachi-openrc
