@@ -1,4 +1,5 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete at gmail dot com>
+# Contributor: elliotwutingfeng
 # Contributor: Frederik Schwan <freswa at archlinux dot org>
 # Contributor: Jonathon Fernyhough <jonathon+m2x+dev>
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
@@ -36,7 +37,8 @@ _gcc_gnu="${_gnu}/gnu/${_pkgbase}"
 _gcc_sourceware="${_sourceware}/pub/${_pkgbase}/releases"
 _gcc_host="${_gcc_gnu}"
 _gcc_url="https://${_gcc_host}/${_pkgbase}-${pkgver}/${_pkgbase}-${pkgver}.tar.xz"
-_isl_host="${_gnu}"
+_isl_gnu="gcc.gnu.org"
+_isl_host="${_isl_gnu}"
 _isl_url="https://${_isl_host}/pub/gcc/infrastructure/isl-${_islver}.tar.bz2"
 source=("${_gcc_url}"{,.sig}
         "${_isl_url}"
