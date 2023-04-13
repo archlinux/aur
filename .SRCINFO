@@ -1,7 +1,7 @@
 pkgbase = jellyfin-ffmpeg5-bin
 	pkgdesc = FFmpeg5 binary version for Jellyfin
-	pkgver = 5.1.2
-	pkgrel = 9
+	pkgver = 5.1.3
+	pkgrel = 1
 	url = https://github.com/jellyfin/jellyfin-ffmpeg
 	arch = x86_64
 	arch = aarch64
@@ -18,11 +18,11 @@ pkgbase = jellyfin-ffmpeg5-bin
 	optdepends = vulkan-intel: for Intel ANV Vulkan support
 	conflicts = jellyfin-ffmpeg
 	conflicts = jellyfin-ffmpeg5
-	source_x86_64 = https://repo.jellyfin.org/releases/ffmpeg/5.1.2-9/jellyfin-ffmpeg_5.1.2-9_portable_linux64-gpl.tar.xz
+	source_x86_64 = https://repo.jellyfin.org/releases/ffmpeg/5.1.3-1/jellyfin-ffmpeg_5.1.3-1_portable_linux64-gpl.tar.xz
 	depends_x86_64 = glibc>=2.23
-	sha256sums_x86_64 = 99617f2a60f65629ad2dca93e23680b21adcb46b9648e4bb498facf161c7dbbc
-	source_aarch64 = https://repo.jellyfin.org/releases/ffmpeg/5.1.2-9/jellyfin-ffmpeg_5.1.2-9_portable_linuxarm64-gpl.tar.xz
+	sha256sums_x86_64 = b4ebfc24364d568a79786da60601ede9764a04abd9ee7a47b1f585bb06dbcb9a
+	source_aarch64 = https://repo.jellyfin.org/releases/ffmpeg/5.1.3-1/jellyfin-ffmpeg_5.1.3-1_portable_linuxarm64-gpl.tar.xz
 	depends_aarch64 = glibc>=2.27
-	sha256sums_aarch64 = 99f2372a09bd36fbf8b00e07a75b6767848ab1f936f0a37b00e5e831f6fda5c1
+	sha256sums_aarch64 = 707582513d681a47d6ca9be303b347bf692afdb185019ef0575cf93a82006346
 
 pkgname = jellyfin-ffmpeg5-bin
