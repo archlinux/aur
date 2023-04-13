@@ -1,0 +1,16 @@
+pkgbase = ruby-dry-monads-0.4
+	pkgdesc = Common monads for Ruby.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/dry-rb/dry-monads
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-dry-equalizer
+	depends = ruby-dry-core
+	noextract = dry-monads-0.4.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/dry-monads-0.4.0.gem
+	sha1sums = f26b40f30d57704c40a1668907a7c7b428ecebaa
+
+pkgname = ruby-dry-monads-0.4
