@@ -1,13 +1,13 @@
 pkgbase = php81-imagick
 	pkgdesc = PHP extension for imagick php81
 	pkgver = 3.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pecl.php.net/package/imagick
 	arch = x86_64
 	license = PHP
 	depends = php81
 	depends = imagemagick>=6.5.3
-	backup = etc/php81/conf.d/imagick.ini
+	backup = etc/php81/conf.d/20-imagick.ini
 	source = https://pecl.php.net/get/imagick-3.7.0.tgz
 	md5sums = 0687774a6126467d4e5ede02171e981d
 
