@@ -2,6 +2,7 @@
 
 pkgname=plasma-remotecontrollers
 pkgver=5.27.4
+_dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='Translate various input device events into keyboard and pointer events'
 arch=(x86_64)
@@ -10,7 +11,7 @@ license=(GPL2)
 depends=(plasma-workspace)
 makedepends=(extra-cmake-modules plasma-wayland-protocols libcec)
 optdepends=('libcec: TV remotes support')
-source=(https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz{,.sig})
+source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
 sha256sums=('368c29c42676b0e4d1e17e371d8ce09671081d4e37432e40f7401c1406063651'
             'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
