@@ -1,6 +1,7 @@
-# Maintainer: shad0w73 <shad0w73@vmail.me>
+# Maintainer: Gunnar Bretthauer <taijian@posteo.de>
+# Contributor: shad0w73 <shad0w73@vmail.me>
 pkgname=helden-software
-pkgver=5.5.3
+pkgver=5.5.4.beta
 pkgrel=1
 _debian_pkgver=5.5.2-1
 pkgdesc='Die Heldenverwaltung für das Pen&Paper-Rollenspiel "Das Schwarze Auge" (DSA)'
@@ -9,9 +10,9 @@ url="http://www.helden-software.de"
 license=('custom')
 depends=('java-runtime' 'hicolor-icon-theme' 'bash')
 source=("http://online.helden-software.de/rep/pool/main/h/${pkgname}/${pkgname}_${_debian_pkgver}_all.deb"
-        "http://www.helden-software.de/down/hs5/050503/helden.jar")
+        "https://www.helden-software.de/down/hs5/050504beta/helden.jar")
 sha256sums=('15f129efc99f0ad97cc6d7956be625dc0e1aeb51a157323216f824dfda67c485'
-            '3f46eefaed177f09d79178b822507275b2b5c91a474bc9c379ae0e82ed4fecf6')
+            'cd6eec8b2202aed644a6620af16c1c2cad883eb94f818d6335fe1373aa97571d')
 noextract=('helden.jar')
 
 prepare() {
