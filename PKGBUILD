@@ -97,6 +97,7 @@ build() {
         --enable-libfribidi \
         --enable-libmp3lame \
         --enable-libopus \
+        --enable-libopenmpt \
         --enable-libtheora \
         --enable-libvorbis \
         --enable-libdav1d \
