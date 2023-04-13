@@ -3,26 +3,23 @@
 pkgname=wowup-cf-bin
 _pkgname=wowup-cf
 pkgver=2.9.4beta3
-_pkgver=2.9.4-beta.3
-pkgrel=1
+pkgrel=2
 pkgdesc="WowUp the World of Warcraft addon updater (with CurseForge support)"
 arch=(x86_64)
 url="https://github.com/WowUp/WowUp.CF"
 license=("GPL3")
-depends=(
-  zlib
-)
-provides=($_pkgname)
-conflicts=($_pkgname)
+depends=(zlib)
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 options=(!strip)
 source=(
-  "WowUp-CF-$_pkgver.AppImage::https://github.com/WowUp/WowUp.CF/releases/download/v$_pkgver/WowUp-CF-$_pkgver.AppImage"
+  "WowUp-CF-${pkgver}.AppImage::https://github.com/WowUp/WowUp.CF/releases/download/v${pkgver//beta/-beta.}/WowUp-CF-${pkgver//beta/-beta.}.AppImage"
   "https://raw.githubusercontent.com/WowUp/WowUp.CF/main/wowup-electron/assets/wowup_logo_cf.png"
   "https://raw.githubusercontent.com/WowUp/WowUp.CF/main/LICENSE"
-  "$_pkgname.desktop"
-  "$_pkgname"
+  "${_pkgname}.desktop"
+  "${_pkgname}"
 )
-noextract=("WowUp-CF-$_pkgver.AppImage")
+noextract=("WowUp-CF-${pkgver}.AppImage")
 sha256sums=('c74de0fb1e4f6204f29961e183264a02c2d327c0fc966e76ed69c506615116ba'
             'fa00185ae0733121ca059bb0775486d7029446f9325d1bb666fc041a7ad965be'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
@@ -33,7 +30,7 @@ package() {
   cd "$srcdir"
 
   # Install binary and launch script
-  install -Dm755 "WowUp-CF-$_pkgver.AppImage" "$pkgdir/opt/$_pkgname/$_pkgname.AppImage"
+  install -Dm755 "WowUp-CF-${pkgver}.AppImage" "$pkgdir/opt/$_pkgname/$_pkgname.AppImage"
   install -Dm755 -t "$pkgdir/usr/bin" $_pkgname
 
   # Install pixmap, desktop and license file
@@ -41,3 +38,4 @@ package() {
   install -Dm644 -t "$pkgdir/usr/share/applications" $_pkgname.desktop
   install -Dm644 -t "$pkgdir/usr/share/licenses/$_pkgname" LICENSE
 }
+
