@@ -4,7 +4,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.4328.r0.gada291c0f
+pkgver=1.7.4378.r0.g09394ee4b
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -30,6 +30,7 @@ depends=(
     wayland
     libpng
     hicolor-icon-theme
+    xcb-util-cursor
 )
 makedepends=(
     cmake
