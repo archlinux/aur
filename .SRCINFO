@@ -1,0 +1,39 @@
+pkgbase = widelands-debugconsole-git
+	pkgdesc = An elaborate realtime multiplayer strategy game with emphasis on economy and transport - development version. In the spirit of BlueByte's 'Siedler II/ Settlers 2'. Build with in-game debug/ script console (allows cheating).
+	pkgver = 1.2.r26104.20230413.059c44a
+	pkgrel = 1
+	epoch = 0
+	url = http://widelands.org/
+	arch = armv7h
+	arch = aarch64
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = coreutils
+	makedepends = git
+	makedepends = python
+	depends = asio
+	depends = gettext
+	depends = glbinding
+	depends = hicolor-icon-theme
+	depends = libpng
+	depends = minizip
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = sdl2_ttf
+	depends = zlib
+	provides = widelands=1.2.r26104.20230413.059c44a
+	provides = widelands-debugconsole=1.2.r26104.20230413.059c44a
+	provides = widelands-git=1.2.r26104.20230413.059c44a
+	provides = widelands-data=1.2.r26104.20230413.059c44a
+	conflicts = widelands
+	conflicts = widelands-bzr
+	conflicts = widelands-data
+	replaces = widelands-debugconsole-bzr
+	options = !strip
+	source = widelands::git+https://github.com/widelands/widelands.git
+	sha256sums = SKIP
+
+pkgname = widelands-debugconsole-git
