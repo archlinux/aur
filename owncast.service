@@ -1,0 +1,16 @@
+# systemd service file for owncast
+
+[Unit]
+Description=Owncast streaming service
+
+[Service]
+Type=simple
+User=owncast
+Group=owncast
+WorkingDirectory=/var/lib/owncast
+ExecStart=/usr/bin/owncast -backupdir /var/lib/owncast/backup -database /var/lib/owncast/database
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
