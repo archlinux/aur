@@ -1,7 +1,7 @@
 # Maintainer: chrhasse <hasse dot christopher at gmail dot com>
 pkgname=ranger-sixel-git
 _pkgname=ranger-git
-pkgver=1.9.3.546.g576e4a7f
+pkgver=1.9.3.644.gffa6cf79
 pkgrel=1
 pkgdesc="A simple, vim-like file manager, with PR2466 applied for sixel image previews."
 arch=('any')
@@ -30,6 +30,8 @@ md5sums=('SKIP')
 
 prepare() {
   cd "$srcdir/$_pkgname"
+  export GIT_CONFIG_GLOBAL="/dev/null"
+  export GIT_CONFIG_SYSTEM="/dev/null"
   git config user.name "user"
   git config user.email "user@domain.fake"
   git config pull.rebase false
