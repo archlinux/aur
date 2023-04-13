@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=tcpreplay-git
-pkgver=4.3.2.r2.ga00fd476
+pkgver=4.4.3.r0.gbcb107a7
 pkgrel=1
 pkgdesc="Pcap editing and replaying utilities"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://tcpreplay.appneta.com/"
 license=('GPL3')
 depends=('libdnet' 'libpcap')
 makedepends=('git' 'autogen' 'tcpdump')
-provides=('tcpreplay')
+provides=("tcpreplay=$pkgver")
 conflicts=('tcpreplay')
 source=("git+https://github.com/appneta/tcpreplay.git")
 sha256sums=('SKIP')

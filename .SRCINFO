@@ -1,6 +1,6 @@
 pkgbase = tcpreplay-git
 	pkgdesc = Pcap editing and replaying utilities
-	pkgver = 4.3.2.r2.ga00fd476
+	pkgver = 4.4.3.r0.gbcb107a7
 	pkgrel = 1
 	url = https://tcpreplay.appneta.com/
 	arch = i686
@@ -11,10 +11,9 @@ pkgbase = tcpreplay-git
 	makedepends = tcpdump
 	depends = libdnet
 	depends = libpcap
-	provides = tcpreplay
+	provides = tcpreplay=4.4.3.r0.gbcb107a7
 	conflicts = tcpreplay
 	source = git+https://github.com/appneta/tcpreplay.git
 	sha256sums = SKIP
 
 pkgname = tcpreplay-git
-
