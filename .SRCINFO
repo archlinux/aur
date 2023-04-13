@@ -1,0 +1,16 @@
+pkgbase = ruby-jekyll-github-metadata
+	pkgdesc = The site.github namespace
+	pkgver = 2.16.0
+	pkgrel = 1
+	url = https://github.com/jekyll/github-metadata
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-jekyll
+	depends = ruby-octokit
+	noextract = jekyll-github-metadata-2.16.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/jekyll-github-metadata-2.16.0.gem
+	sha1sums = 7d25806f65be2e5da3b4a64db25b676b711ab2f0
+
+pkgname = ruby-jekyll-github-metadata
