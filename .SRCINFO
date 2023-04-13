@@ -1,6 +1,6 @@
 pkgbase = sudo-hg
 	pkgdesc = Run commands as root or another user
-	pkgver = r13307.c7839328e21f
+	pkgver = r14698.59e0b245c776
 	pkgrel = 1
 	url = https://www.sudo.ws/sudo.html
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = sudo-hg
 	depends = libldap
 	depends = pam
 	depends = zlib
-	provides = sudo
+	provides = sudo=r14698.59e0b245c776
 	conflicts = sudo
 	backup = etc/pam.d/sudo
 	backup = etc/sudo.conf

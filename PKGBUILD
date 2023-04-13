@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=sudo-hg
-pkgver=r13307.c7839328e21f
+pkgver=r14698.59e0b245c776
 pkgrel=1
 pkgdesc="Run commands as root or another user"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.sudo.ws/sudo.html"
 license=('custom')
 depends=('glibc' 'libgcrypt' 'libldap' 'pam' 'zlib')
 makedepends=('mercurial')
-provides=('sudo')
+provides=("sudo=$pkgver")
 conflicts=('sudo')
 backup=('etc/pam.d/sudo'
         'etc/sudo.conf'
