@@ -2,7 +2,7 @@
 
 pkgname=rtl-sdr-exp-git
 pkgrel=1
-pkgver=v2023.2.2.bd46371
+pkgver=v2023.2.2.8e13e24
 pkgdesc="Turns your Realtek RTL2832 based DVB dongle into a SDR receiver. Experimental R820T/R820T2 rtl-sdr tuner driver that tunes down to 13 MHz or lower. (From my experiments up to 3.4 MHz on R820T2)."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/Mr-Precise/rtl-sdr"
@@ -23,7 +23,7 @@ build() {
   cd "${srcdir}/rtl-sdr"
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+  cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX:PATH=/usr \
     -DDETACH_KERNEL_DRIVER=ON \
     -DENABLE_ZEROCOPY=ON -Wno-dev ../
   make
