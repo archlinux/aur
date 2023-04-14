@@ -1,16 +1,16 @@
 # Maintainer: Max Martin <max at maxjmartin dot com>
 
 pkgname=circumflex
-pkgver=2.6
+pkgver=2.8.2
 pkgrel=1
 pkgdesc="A command line tool for browsing Hacker News in your terminal"
-arch=('x86_64')
+arch=('i686' 'pentium4' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/bensadeh/circumflex"
 license=('custom')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('f30e346aa4cd31b46bbba69cdd17d3bf879607bc5d67c3c2940f511458d19645')
+sha256sums=('708f9c26af6b33994ed1f8d194ccd0645f408578eaf4a80eb45d7cf1fd0025c2')
 
 build() {
     cd $pkgname-$pkgver
@@ -28,4 +28,5 @@ package() {
     install -Dm755 clx -t "$pkgdir/usr/bin"
     install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm644 share/man/clx.1 -t "$pkgdir/usr/share/man/man1/"
 }
