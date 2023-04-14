@@ -9,7 +9,7 @@ epoch=1
 _commit=ce29c6bfc3cb200e185b55a24a2e4f37f04fbd03
 pkgdesc="Microsoft Office Suite Online as a native application"
 url="https://www.office.com/"
-depends=('python-jade-application-kit>=3.0.0')
+depends=('jade-application-kit>=3.0.0')
 license=('GPL3' 'CC')
 arch=('any')
 replaces=('microsoft-office-online-jak')

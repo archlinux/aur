@@ -7,7 +7,7 @@ pkgbase = ms-office-online
 	arch = any
 	license = GPL3
 	license = CC
-	depends = python-jade-application-kit>=3.0.0
+	depends = jade-application-kit>=3.0.0
 	conflicts = microsoft-office-online-jak
 	replaces = microsoft-office-online-jak
 	source = https://gitlab.manjaro.org/applications/ms-office-online-launcher/-/archive/ce29c6bfc3cb200e185b55a24a2e4f37f04fbd03/ms-office-online-launcher-ce29c6bfc3cb200e185b55a24a2e4f37f04fbd03.tar.gz
