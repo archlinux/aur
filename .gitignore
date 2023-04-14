@@ -1,0 +1,5 @@
+# Ignore makepkg auto-generated stuff
+pkg/
+src/
+*.pkg.tar.zst
+*.tar.gz
