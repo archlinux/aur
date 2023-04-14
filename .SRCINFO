@@ -1,6 +1,6 @@
 pkgbase = python-globus-sdk
 	pkgdesc = This SDK provides a convenient Pythonic interface to Globus REST APIs, including the Transfer API and the Globus Auth API.
-	pkgver = 3.18.0
+	pkgver = 3.19.0
 	pkgrel = 1
 	url = https://github.com/globus/globus-sdk-python
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-globus-sdk
 	depends = python-requests
 	depends = python-pyjwt
 	depends = python-typing_extensions
-	source = https://files.pythonhosted.org/packages/source/g/globus-sdk/globus-sdk-3.18.0.tar.gz
-	sha256sums = 5eea8de8b21802d655c237b87c4f29668d7d8486745dcc4820e37caaa41bcfc2
+	source = https://files.pythonhosted.org/packages/source/g/globus-sdk/globus-sdk-3.19.0.tar.gz
+	sha256sums = 2113b98ff200633f56922424c90374280afea19052af1618547572534150c70a
 
 pkgname = python-globus-sdk
