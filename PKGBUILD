@@ -1,19 +1,20 @@
 # Maintainer: max.bra <max dot bra at alice dot it>
+# Contributor: agomonos <eugenio89 at gmail dot com>
 
 pkgname=booktab
-pkgver=4.19
-pkgrel=2
+pkgver=4.20
+pkgrel=1
 pkgdesc="MyZanichelli - La piattaforma che ti permette di consultare tutti i tuoi libri scolastici in versione multimediale e interattiva."
 arch=('x86_64')
 url="https://booktab.it/"
 license=('unknown')
 conflicts=('booktab-wine')
-depends=("pcre" "fontconfig" "libxrandr" "libxdamage" "libcups" "nss" "libpng12" "libxcursor" "libxinerama" "libpulse" "qt5-svg" "qt5-multimedia")
+depends=("pcre" "openssl-1.1" "libxss" "qt5-multimedia" "qt5-svg" "qt5-webengine")
 
 _debname=BooktabSetup.deb
 
 source=(https://booktab.it/setup-z/$pkgver/${_debname})
-md5sums=('82a7a06463af8bdb418c7a2760878150')
+md5sums=('d7316f8c392f3522c2f35f48daf05d16')
 
 noextract=(${_debname})
 
@@ -29,20 +30,20 @@ prepare() {
 package() {
   cd "$srcdir"
   install -dm755 "$pkgdir"/usr/share/applications
+  install -dm755 "$pkgdir"/usr/share/duDat
+  install -dm755 "$pkgdir"/usr/share/duDat/BooktabZ
   install -dm755 "$pkgdir"/usr/bin
   install -m644 usr/share/applications/$pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
-  # install -m644 usr/share/applications/"$pkgname"z.desktop "$pkgdir"/usr/share/applications/"$pkgname"z.desktop
   install -m755 usr/bin/booktab "$pkgdir"/usr/bin/booktab
 
-#  install -dm755 "$pkgdir"/usr/lib
-#  install -m644 usr/lib/libPDFNetC.so.6.5.3 "$pkgdir"/usr/lib/libPDFNetC.so.6.5.3
-#  ln -s ./libPDFNetC.so.6.5.3 "$pkgdir"/usr/lib/libPDFNetC.so
-#  install -m644 usr/lib/libbtbanalytics.a "$pkgdir"/usr/lib/libbtbanalytics.a
-#  install -m644 usr/lib/libbtbcore.a "$pkgdir"/usr/lib/libbtbcore.a
-#  install -m644 usr/lib/libbtbgui.a "$pkgdir"/usr/lib/libbtbgui.a
-#  install -m644 usr/lib/libbtbservices.a "$pkgdir"/usr/lib/libbtbservices.a
-
-  # ln -s /usr/lib/libpcre16.so "$pkgdir"/usr/lib/libpcre16.so.3
-
-  cp -dpr --no-preserve=ownership usr/share/duDat "$pkgdir"/usr/share
+  cp -dpr --no-preserve=ownership usr/share/duDat/BooktabZ/webapps "$pkgdir"/usr/share/duDat/BooktabZ/.
+  install -m644 usr/share/duDat/BooktabZ/libPDFNetC.so "$pkgdir"/usr/share/duDat/BooktabZ/libPDFNetC.so
+  install -m644 usr/share/duDat/BooktabZ/booktab_icon_144x144.png "$pkgdir"/usr/share/duDat/BooktabZ/booktab_icon_144x144.png
+  install -m755 usr/share/duDat/BooktabZ/btb "$pkgdir"/usr/share/duDat/BooktabZ/btb
+  install -m644 usr/share/duDat/BooktabZ/extra.rcc "$pkgdir"/usr/share/duDat/BooktabZ/extra.rcc
+  install -m644 usr/share/duDat/BooktabZ/icudtl.dat "$pkgdir"/usr/share/duDat/BooktabZ/icudtl.dat
+  install -m644 usr/share/duDat/BooktabZ/libquazip.so.1.0.0 "$pkgdir"/usr/share/duDat/BooktabZ/libquazip.so.1.0.0
+  ln -s /usr/share/duDat/BooktabZ/libquazip.so.1.0.0 "$pkgdir"/usr/share/duDat/BooktabZ/libquazip.so.1.0
+  ln -s /usr/share/duDat/BooktabZ/libquazip.so.1.0.0 "$pkgdir"/usr/share/duDat/BooktabZ/libquazip.so.1
+  ln -s /usr/share/duDat/BooktabZ/libquazip.so.1.0.0 "$pkgdir"/usr/share/duDat/BooktabZ/libquazip.so
 }
