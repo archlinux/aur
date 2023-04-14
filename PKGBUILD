@@ -8,8 +8,8 @@ pkgdesc="Load root file system to zram during boot with btrfs support"
 arch=('x86_64')
 url="https://github.com/$_gituser/$_gitrepo"
 license=('GPL3')
-conflicts=('liveroot')
-depends=('mkinitcpio')
+conflicts=('liveroot' 'ramroot')
+depends=('mkinitcpio' 'btrfs-progs')
 install=ramroot.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_gitver.tar.gz"
     ramroot.install)
