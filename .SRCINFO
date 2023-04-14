@@ -1,13 +1,13 @@
 pkgbase = parpd
 	pkgdesc = Proxy-ARP daemon
-	pkgver = 1.7
-	pkgrel = 2
+	pkgver = 2.0
+	pkgrel = 1
 	url = https://roy.marples.name/projects/parpd
 	arch = i686
 	arch = x86_64
 	license = BSD
-	source = https://roy.marples.name/downloads/parpd/parpd-1.7.tar.xz
-	sha256sums = f1f2ed753243b86205922ab0ec1cd0f426779e6b8c273206f0568e819a3fe3b4
+	makedepends = git
+	source = git+https://github.com/NetworkConfiguration/parpd#commit=6f26ca2ef205424252bd1313a112ca3f54a08606
+	sha256sums = SKIP
 
 pkgname = parpd
-
