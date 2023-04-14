@@ -1,0 +1,24 @@
+pkgbase = ticker-bin
+	pkgdesc = Terminal stock ticker with live updates and position tracking
+	pkgver = 4.5.6
+	pkgrel = 1
+	url = https://github.com/achannarasappa/ticker
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	depends = glibc
+	source_i686 = ticker-bin-4.5.6-i686.tar.gz::https://github.com/achannarasappa/ticker/releases/download/v4.5.6/ticker-4.5.6-linux-386.tar.gz
+	sha256sums_i686 = 2809489b86ab864d6a00ab33626df2717a37f1e564a062afb07d3e803c17b2f2
+	source_x86_64 = ticker-bin-4.5.6-x86_64.tar.gz::https://github.com/achannarasappa/ticker/releases/download/v4.5.6/ticker-4.5.6-linux-amd64.tar.gz
+	sha256sums_x86_64 = a10a8d12cd9011ac9a1a039a6c938f574488f647a663718ae5ff929efca170d4
+	source_armv6h = ticker-bin-4.5.6-armv6h.tar.gz::https://github.com/achannarasappa/ticker/releases/download/v4.5.6/ticker-4.5.6-linux-armv6.tar.gz
+	sha256sums_armv6h = 0fd22b2f4993977820344908ba62600161108db69f4c6436f1382fd8853b890c
+	source_armv7h = ticker-bin-4.5.6-armv7h.tar.gz::https://github.com/achannarasappa/ticker/releases/download/v4.5.6/ticker-4.5.6-linux-armv6.tar.gz
+	sha256sums_armv7h = 0fd22b2f4993977820344908ba62600161108db69f4c6436f1382fd8853b890c
+	source_aarch64 = ticker-bin-4.5.6-aarch64.tar.gz::https://github.com/achannarasappa/ticker/releases/download/v4.5.6/ticker-4.5.6-linux-arm64.tar.gz
+	sha256sums_aarch64 = dde46023e6a7476f632bbe972610a187b66f1cf46d8cfc7ede86c3cc9ecd9b9e
+
+pkgname = ticker-bin
