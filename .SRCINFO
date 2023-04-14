@@ -1,12 +1,12 @@
 pkgbase = fblog
 	pkgdesc = command-line JSON Log viewer
-	pkgver = 4.2.0
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://github.com/brocode/fblog
 	arch = x86_64
 	license = custom:WTFPL
 	makedepends = cargo
-	source = fblog-4.2.0.tar.gz::https://github.com/brocode/fblog/archive/v4.2.0.tar.gz
-	sha256sums = de7e7e012301eec9df891a4bbc27088e43a7fdbf8066532fc35e85a38edde5f1
+	source = fblog-4.3.0.tar.gz::https://github.com/brocode/fblog/archive/v4.3.0.tar.gz
+	sha256sums = 8c7c74a91fcb53c4d71abc78a3bba9a9fb496481be531a96e526b1bd54ddd41e
 
 pkgname = fblog
