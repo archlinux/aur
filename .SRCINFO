@@ -1,6 +1,6 @@
 pkgbase = hdfview
 	pkgdesc = A visual tool for browsing and editing HDF4 and HDF5 files.
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://portal.hdfgroup.org/display/HDFVIEW/HDFView
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = hdfview
 	depends = hdf5
 	depends = java-runtime
 	optdepends = hdf4
-	source = https://support.hdfgroup.org/ftp/HDF5/releases/HDF-JAVA/hdfview-3.2.0/src/hdfview-3.2.0.tar.gz
-	sha256sums = d3c0deff2cbd959508c4da9c712da72fb204ff6818a3434f00a7071f8e8cf2b8
+	source = https://support.hdfgroup.org/ftp/HDF5/releases/HDF-JAVA/hdfview-3.3.0/src/hdfview-3.3.0.tar.gz
+	sha256sums = 0916161861c21fa8dd354b445b48eff5a53d80a5c0b383e79eb64b7b108e2430
 
 pkgname = hdfview
