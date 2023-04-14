@@ -1,6 +1,6 @@
 pkgbase = python-pytrends
 	pkgdesc = Pseudo API for Google Trends
-	pkgver = 4.9.0
+	pkgver = 4.9.1
 	pkgrel = 1
 	url = https://github.com/dreyco676/pytrends
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-pytrends
 	depends = python-requests
 	depends = python-pandas
 	depends = python-lxml
-	source = https://files.pythonhosted.org/packages/source/p/pytrends/pytrends-4.9.0.tar.gz
-	sha256sums = a54fc1e3171442b3c8f5c080a5e21df807bc4faad7790cc62b7ddb059eb0a94b
+	source = https://files.pythonhosted.org/packages/source/p/pytrends/pytrends-4.9.1.tar.gz
+	sha256sums = 9228055d743b00500b4670c5078c8785436a18d79082b354f7a8e57102ea82d1
 
 pkgname = python-pytrends
