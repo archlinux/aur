@@ -2,8 +2,8 @@
 
 pkgname=blahaj-git
 _pkgname="${pkgname%-git}"
-pkgver=2.0.0.r12.1431f97
-pkgrel=2
+pkgver=2.0.1.r16.8a35b5c
+pkgrel=1
 pkgdesc="Gay sharks at your local terminal - lolcat-like CLI tool (git version)"
 arch=('x86_64')
 url="https://blahaj.queer.software"
@@ -32,7 +32,8 @@ check () {
 
 package() {
 	cd "${_pkgname}"
-	install -Dm 755 "bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+	make PREFIX=/usr DESTDIR="${pkgdir}" install
+
 	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm 644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 }
