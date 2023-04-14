@@ -9,7 +9,7 @@ pkgname="${_pkgname}-debugconsole-git"
 epoch=0
 _pkgver=latest
 pkgver=1.2.r26104.20230413.059c44a
-pkgrel=1
+pkgrel=2
 pkgdesc="An elaborate realtime multiplayer strategy game with emphasis on economy and transport - development version. In the spirit of BlueByte's 'Siedler II/ Settlers 2'. Build with in-game debug/ script console (allows cheating)."
 url="http://widelands.org/"
 arch=(
@@ -39,7 +39,10 @@ makedepends=(
   'git'       # For getting the source
   'python'    # For revision detection
 )
-optdepends=()
+optdepends=(
+  "widelands-maps-rttr: To play the maps from the game 'Return to the Roots' in Widelands."
+  "widelands-maps-siedler2: To play the maps from the game 'Settlers II' in Widelands."
+)
 provides=(
   "${_pkgname}=${pkgver}"
   "${_pkgname}-debugconsole=${pkgver}"
