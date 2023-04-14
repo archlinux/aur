@@ -1,6 +1,6 @@
 pkgbase = reshade-shaders-git
 	pkgdesc = A collection of post-processing shaders written in the ReShade FX shader language, to be used by vkBasalt
-	pkgver = r18.1947b78
+	pkgver = r21.7c48ddc
 	pkgrel = 1
 	url = https://github.com/crosire/reshade-shaders
 	install = reshade-shaders.install
