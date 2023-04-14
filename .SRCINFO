@@ -1,16 +1,15 @@
 pkgbase = picocom-git
 	pkgdesc = Minimal dumb-terminal emulation program, very much like minicom. Development version
-	pkgver = r186.deffd18
+	pkgver = r375.8f2a702
 	pkgrel = 1
-	url = https://github.com/npat-efault/picocom
+	url = https://github.com/wsakernel/picocom
 	arch = x86_64
 	arch = i686
 	license = GPL2
 	makedepends = git
 	provides = picocom
 	conflicts = picocom
-	source = git+https://github.com/npat-efault/picocom.git
+	source = git+https://github.com/wsakernel/picocom.git
 	md5sums = SKIP
 
 pkgname = picocom-git
-
