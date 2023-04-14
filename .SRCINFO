@@ -1,11 +1,14 @@
 pkgbase = monailabel
 	pkgdesc = An intelligent open source image labeling and learning tool
 	pkgver = 0.6.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/Project-MONAI/MONAILabel
+	install = monailabel.install
 	arch = any
 	license = Apache
+	makedepends = gradle
+	makedepends = java-environment=17
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
