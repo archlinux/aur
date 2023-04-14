@@ -1,0 +1,17 @@
+pkgbase = ramroot-btrfs
+	pkgdesc = Load root file system to zram during boot with btrfs support
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/K-arch27/ramroot-btrfs
+	install = ramroot.install
+	arch = x86_64
+	license = GPL3
+	depends = mkinitcpio
+	conflicts = liveroot
+	conflicts = ramroot
+	source = ramroot-btrfs-2.1.tar.gz::https://github.com/K-arch27/ramroot-btrfs/archive/2.1.tar.gz
+	source = ramroot.install
+	md5sums = b11d84c7162a746e1d44e72d73a6d152
+	md5sums = cd9b4ef8c10a6eafead22453f8cf4ec0
+
+pkgname = ramroot-btrfs
