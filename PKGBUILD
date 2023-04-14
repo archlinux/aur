@@ -9,7 +9,7 @@ _pkgname=digikam
 pkgname=digikam-without-akonadi-mediawiki-vkontakte
 _pkgver=8.0.0
 pkgver=${_pkgver//-/} # for beta versions
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced digital photo management application - without akonadi & mariadb'
 arch=(x86_64)
 license=(GPL)
@@ -37,7 +37,8 @@ build() {
     -DENABLE_AKONADICONTACTSUPPORT=OFF \
     -DENABLE_MYSQLSUPPORT=ON \
     -DENABLE_APPSTYLES=ON \
-    -DENABLE_QWEBENGINE=ON
+    -DENABLE_QWEBENGINE=ON \
+    -DSSE4_1_FOUND=OFF
   cmake --build build
 }
 

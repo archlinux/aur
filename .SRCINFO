@@ -1,7 +1,7 @@
 pkgbase = digikam-without-akonadi-mediawiki-vkontakte
 	pkgdesc = An advanced digital photo management application - without akonadi & mariadb
 	pkgver = 8.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.digikam.org/
 	arch = x86_64
 	license = GPL
