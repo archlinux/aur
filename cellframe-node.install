@@ -1,5 +1,5 @@
 post_install() {
-    source /etc/profile
+
     systemctl daemon-reload
     systemctl is-enabled --quiet cellframe-node.service && systemctl start cellframe-node.service
 
@@ -38,6 +38,12 @@ EOF
 
 pre_upgrade() {
     systemctl is-active --quiet cellframe-node.service && systemctl stop cellframe-node.service
+    if [[ $(vercmp $1 5.1.377) > 0 ]]; then
+        for _executables in cellframe-node-cli cellframe-node-tool cellframe-node
+	    do  
+		    unlink "/usr/bin/$_executables" && echo "==> Removing old symlink: ${_executables}"
+	    done
+    fi
 	post_install
 }
 
