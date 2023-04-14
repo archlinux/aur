@@ -1,7 +1,7 @@
 # Maintainer: Dang Mai <contact at dangmai dot net>
 
 pkgname=sfdx-cli
-pkgver="7.194.1"
+pkgver="7.196.7"
 pkgrel=1
 _dirname="${pkgname}-v${pkgver}"
 pkgdesc="a tool for creating and managing Salesforce DX projects from the command line"
@@ -12,8 +12,8 @@ optdepends=('gnome-keyring: saving default credentials')
 provides=('sfdx-cli')
 options=(!strip)
 conflicts=()
-source_x86_64=("https://developer.salesforce.com/media/salesforce-cli/sfdx/versions/7.194.1/faa045e/sfdx-v7.194.1-faa045e-linux-x64.tar.gz")
-source_arm=("https://developer.salesforce.com/media/salesforce-cli/sfdx/versions/7.194.1/faa045e/sfdx-v7.194.1-faa045e-linux-arm.tar.gz")
+source_x86_64=("https://developer.salesforce.com/media/salesforce-cli/sfdx/versions/7.196.7/025f341/sfdx-v7.196.7-025f341-linux-x64.tar.gz")
+source_arm=("https://developer.salesforce.com/media/salesforce-cli/sfdx/versions/7.196.7/025f341/sfdx-v7.196.7-025f341-linux-arm.tar.gz")
 
 package() {
     cd "${srcdir}"
@@ -25,5 +25,5 @@ package() {
     ln -s /opt/sfdx-cli/bin/sfdx "${pkgdir}"/usr/bin/sfdx
     ln -s /opt/sfdx-cli/bin/sf "${pkgdir}"/usr/bin/sf
 }
-sha256sums_x86_64=("fc53962216ba0d42dba7a92caa40f5b70118bb1401004848d9a0c08cb3e7c28c")
-sha256sums_arm=("c90cab8cfe7942d012a5b63d0b0e93e16d61b82f7c15d093bd4ff05d6adbe766")
+sha256sums_x86_64=("db81a9010b49efebc90a3e3cd571a8a59c0e2dd775d0bc5e5c5524cf3d2bb683")
+sha256sums_arm=("8493e0106f1f1e60415aa92ffec57f83a8db53149b0574908390d2400a9e2019")
