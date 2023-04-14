@@ -13,8 +13,8 @@ depends=("zlib" "fuse2" "appimagelauncher" "nss" "atk" "at-spi2-atk" "gtk3" "als
 provides=("steam-rom-manager")
 conflicts=("steam-rom-manager" "steam-rom-manager-git")
 _pkgsrc="Steam-ROM-Manager-${pkgver}.AppImage"
-source=("${_pkgsrc}::${url}/releases/download/v${pkgver}/${_pkgsrc}"
-        "LICENSE::https://raw.githubusercontent.com/SteamGridDB/steam-rom-manager/v${pkgver}/LICENSE")
+source=("${_pkgsrc}::${url}/releases/download/${pkgver}/${_pkgsrc}"
+        "LICENSE::https://raw.githubusercontent.com/SteamGridDB/steam-rom-manager/${pkgver}/LICENSE")
 sha512sums=("a9ea9ca96b178fcf480b24aadc0bb47e07ffe10c3402df0220217610e9439a01023e69ec99c57b856578d201dde896962059799061d7a5a484de3daceb2563f0"
             "552aec8d120c9d931769f6a6b794716fce978d0055715de21746dc0f064f4a0f72b6be42d4828b98a56715b23fa427c1f66fd20aca0ef1751cc384c420db1605")
 
