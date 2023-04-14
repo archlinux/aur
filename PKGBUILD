@@ -3,7 +3,7 @@
 
 _pkgname=vgmtrans
 pkgname=${_pkgname}-git
-pkgver=1.1.r22.gaeea082
+pkgver=1.1.r24.g0c85735
 pkgrel=1
 pkgdesc="Converter for sequenced videogame music"
 arch=("x86_64")
@@ -11,17 +11,12 @@ url="https://github.com/vgmtrans/vgmtrans"
 license=("ZLIB")
 depends=("hicolor-icon-theme" "minizip" "qt6-base" "qt6-svg")
 makedepends=("cmake" "git" "qt6-tools")
-source=("${_pkgname}::git+${url}"
-	fix-header-import.patch)
-sha256sums=("SKIP"
-            "85caf04f1644abc66e87e5f67cb67281a50ee50ace2213efbcf2a80e3fa5ad9d")
+source=("${_pkgname}::git+${url}")
+sha256sums=("SKIP")
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
 	mkdir build || true
-
-	# Add patch to fix compile errors (TODO: upstream this)
-	patch -Np1 -i ../fix-header-import.patch
 }
 
 pkgver() {
