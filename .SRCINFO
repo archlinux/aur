@@ -1,6 +1,6 @@
 pkgbase = zsh-abbr
 	pkgdesc = zsh abbreviations, ported from fish and enhanced
-	pkgver = 5.0.0
+	pkgver = 5.0.1
 	pkgrel = 1
 	url = https://github.com/olets/zsh-abbr
 	changelog = CHANGELOG.md
@@ -8,7 +8,7 @@ pkgbase = zsh-abbr
 	license = custom
 	makedepends = git
 	depends = zsh
-	source = zsh-abbr::git+https://github.com/olets/zsh-abbr#commit=747c076?signed
+	source = zsh-abbr::git+https://github.com/olets/zsh-abbr#commit=03328a1?signed
 	validpgpkeys = 4EC9BDBB2A18353E1EE419B4F451207093085604
 	sha256sums = SKIP
 

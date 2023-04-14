@@ -2,9 +2,9 @@
 # Contributor: Isaac Freund <ifreund@ifreund.xyz>
 
 pkgname=zsh-abbr
-pkgver=5.0.0
+pkgver=5.0.1
 pkgrel=1
-_commit=747c076
+_commit=03328a1
 pkgdesc='zsh abbreviations, ported from fish and enhanced'
 arch=('any')
 url='https://github.com/olets/zsh-abbr'
