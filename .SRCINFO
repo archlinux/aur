@@ -1,6 +1,6 @@
 pkgbase = python-pandas-stubs
 	pkgdesc = Type annotations for Pandas
-	pkgver = 1.5.3.230321
+	pkgver = 2.0.0.230412
 	pkgrel = 1
 	url = https://github.com/pandas-dev/pandas-stubs
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-pandas-stubs
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-poetry
-	source = https://files.pythonhosted.org/packages/source/p/pandas_stubs/pandas_stubs-1.5.3.230321.tar.gz
-	sha256sums = 2fa860df9e6058e9f0d2c09bc711c09abb8f0516eee7f0b9f9950d29b835fc6f
+	source = https://files.pythonhosted.org/packages/source/p/pandas_stubs/pandas_stubs-2.0.0.230412.tar.gz
+	sha256sums = 016f567cb9947edd0067ea2665ab00b77fa47e73a65ce1a097de4f499b3485c0
 
 pkgname = python-pandas-stubs
