@@ -3,7 +3,7 @@
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=libclc-minimal-git
-pkgver=17.0.0_r457465.92d2b9c39800
+pkgver=17.0.0_r457905.5e53e1bbc34f
 pkgrel=1
 pkgdesc="companion package to llvm-minimal-git,  Library requirements of the OpenCL C programming language"
 arch=('any')
@@ -39,16 +39,15 @@ build() {
     cmake \
       -B _build \
       -S "$srcdir"/llvm-project/libclc  \
-      -G Ninja \
-      -DCMAKE_BUILD_TYPE=Release \
+      -D CMAKE_BUILD_TYPE=Release \
       -D CMAKE_INSTALL_PREFIX=/usr \
       -Wno-dev
-  ninja -C _build $NINJAFLAGS 
+  make -C _build
 
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C _build $NINJAFLAGS install
+  make -C _build DESTDIR="$pkgdir" install
   install -Dm644 "$srcdir"/llvm-project/libclc/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.TXT
 }
 
