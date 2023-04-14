@@ -1,0 +1,12 @@
+pkgbase = catppuccinifier-cli-git
+	pkgdesc = An comand line tool to catppuccinifiy your images.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/lighttigerXIV/catppuccinifier
+	arch = x86_64
+	makedepends = git
+	makedepends = cargo
+	source = catppuccinifier-cli-git::git+https://github.com/lighttigerXIV/catppuccinifier
+	md5sums = SKIP
+
+pkgname = catppuccinifier-cli-git
