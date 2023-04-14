@@ -1,8 +1,9 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=spirv-tools-git
-pkgver=2023.2+42.gd5f69dba55
+pkgver=r3643.d5f69db
 pkgrel=1
+epoch=1
 pkgdesc='API and commands for processing SPIR-V modules'
 url='https://github.com/KhronosGroup/SPIRV-Tools'
 arch=('i686' 'x86_64')
@@ -19,9 +20,10 @@ conflicts=('spirv-tools')
 provides=('spirv-tools')
 
 pkgver() {
-
-  git -C SPIRV-Tools describe --tags --match 'v*.*' --abbrev=10 | sed 's/^v//; s/-/+/; s/-/./'
+  cd SPIRV-Tools
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
+
 
 build() {
 
