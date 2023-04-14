@@ -1,6 +1,6 @@
 # Maintainer: DanCodes <dan@dancodes.online>
 pkgname=parrot-git
-pkgver="1.0.5"
+pkgver="1.0.6"
 pkgrel=1
 pkgdesc="GUI wrapper in Tauri for the Arch Linux package manager, pacman using the wrapper paru. Designed to be intuitive, powerful and user-friendly"
 arch=('x86_64')
@@ -22,7 +22,7 @@ prepare() {
   export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
   yarn install
 
-  sed -i "s/\"productName\": \"Parrot\"/\"productName\": \"Parrot (1.0.5)\"/" "./src-tauri/tauri.conf.json"
+  sed -i "s/\"productName\": \"Parrot\"/\"productName\": \"Parrot (1.0.6)\"/" "./src-tauri/tauri.conf.json"
 
   cd src-tauri
   export RUSTUP_TOOLCHAIN=stable
