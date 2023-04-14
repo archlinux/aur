@@ -2,7 +2,7 @@
 _pkgname=spofi
 pkgname=spofi-git
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Control spotify using rofi."
 arch=(x86_64)
 url="https://github.com/davidborzek/spofi"
