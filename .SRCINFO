@@ -1,12 +1,12 @@
 pkgbase = osu-lazer
 	pkgdesc = rhythm is just a *click* away!
 	pkgver = 2023.403.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://osu.ppy.sh/
 	arch = x86_64
 	license = MIT
 	license = custom:CC-BY-NC-4.0
-	makedepends = dotnet-sdk-6.0-bin
+	makedepends = dotnet-sdk>=6.0.8.sdk400
 	depends = ffmpeg
 	depends = libgl
 	depends = sdl2
