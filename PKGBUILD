@@ -29,5 +29,6 @@ package() {
 	mkdir -p ${pkgdir}/etc/${_pkgname}
 	install -Dm644 ${srcdir}/config.toml -t ${pkgdir}/etc/${_pkgname}/ 
 
+	mkdir -p ${pkgdir}/lib/systemd/system
 	install -Dm644 ${_pkgname}.service -t ${pkgdir}/lib/systemd/system/
 }
