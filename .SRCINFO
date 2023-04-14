@@ -6,6 +6,7 @@ pkgbase = curtail-git
 	arch = any
 	license = GPL3
 	checkdepends = appstream-glib
+	makedepends = git
 	makedepends = meson
 	depends = jpegoptim
 	depends = libadwaita
