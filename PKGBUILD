@@ -1,17 +1,20 @@
-pkgname=curtail-git
-pkgver=1.2.1+1+g826f28c
+# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+
+_pkgname=curtail
+pkgname=$_pkgname-git
+pkgdesc="Simple & lossless image compressor"
+pkgver=1.7.0+11+gab0e268
 pkgrel=1
-pkgdesc="Simple & lossless image compressor."
 arch=('any')
 url="https://github.com/Huluti/Curtail"
 license=('GPL3')
-depends=('gtk3' 'jpegoptim' 'libwebp' 'optipng' 'pngquant' 'python-gobject')
+depends=('jpegoptim' 'libadwaita' 'libwebp' 'optipng' 'pngquant' 'python-gobject')
 makedepends=('meson')
 checkdepends=('appstream-glib')
-provides=('curtail')
-conflicts=('curtail' 'imcompressor')
-source=("git+https://github.com/Huluti/Curtail.git")
-b2sums=('SKIP')
+conflicts=($_pkgname imcompressor)
+provides=($_pkgname)
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd Curtail

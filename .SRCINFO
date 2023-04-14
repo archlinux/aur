@@ -1,14 +1,14 @@
 pkgbase = curtail-git
-	pkgdesc = Simple & lossless image compressor.
-	pkgver = 1.2.1+1+g826f28c
+	pkgdesc = Simple & lossless image compressor
+	pkgver = 1.7.0+11+gab0e268
 	pkgrel = 1
 	url = https://github.com/Huluti/Curtail
 	arch = any
 	license = GPL3
 	checkdepends = appstream-glib
 	makedepends = meson
-	depends = gtk3
 	depends = jpegoptim
+	depends = libadwaita
 	depends = libwebp
 	depends = optipng
 	depends = pngquant
@@ -17,6 +17,6 @@ pkgbase = curtail-git
 	conflicts = curtail
 	conflicts = imcompressor
 	source = git+https://github.com/Huluti/Curtail.git
-	b2sums = SKIP
+	sha256sums = SKIP
 
 pkgname = curtail-git
