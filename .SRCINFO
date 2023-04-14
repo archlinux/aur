@@ -1,6 +1,6 @@
 pkgbase = python-ouster-sdk
 	pkgdesc = Ouster Python SDK
-	pkgver = 20230114
+	pkgver = 20230403
 	pkgrel = 1
 	url = https://github.com/ouster-lidar/ouster_example
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-ouster-sdk
 	depends = glew
 	depends = glfw-x11
 	depends = spdlog
-	source = https://github.com/ouster-lidar/ouster_example/archive/refs/tags/20230114.tar.gz
-	sha256sums = cf8507370a7c627dcf83f637255efae320aadca9febb0a7bce00f7c31eaf07db
+	source = https://github.com/ouster-lidar/ouster_example/archive/refs/tags/20230403.tar.gz
+	sha256sums = 414a8118fb5cecfdfd0f8e72b27eca56456b99fc752325c7351dca2846ef0aca
 
 pkgname = python-ouster-sdk
