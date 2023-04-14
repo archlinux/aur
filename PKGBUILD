@@ -3,12 +3,13 @@
 pkgname=zju-connect-bin
 _pkgname=zju-connect
 pkgver=0.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Go client for ZJU RVPN"
 arch=("x86_64")
 url="https://github.com/Mythologyli/zju-connect"
 license=('AGPL-3.0')
 depends=()
+install="${_pkgname}".install
 provides=("zju-connect")
 source=("$pkgname-$pkgver-amd64.zip::https://github.com/Mythologyli/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-linux-amd64.zip"
         "${_pkgname}.service"
