@@ -7,7 +7,7 @@ url='https://github.com/LizardByte/Sunshine'
 source_x86_64=("https://github.com/LizardByte/Sunshine/releases/download/v$pkgver/sunshine.pkg.tar.zst")
 arch=('x86_64')
 license=('GPL3')
-depends=('avahi' 'boost-libs' 'curl' 'libevdev' 'libmfx' 'libpulse' 'libva' 'libvdpau' 'libx11' 'libxcb' 'libxfixes' 'libxrandr' 'libxtst' 'numactl' 'openssl' 'opus' 'udev' 'libappindicator-gtk3')
+depends=('avahi' 'boost-libs' 'curl' 'libappindicator-gtk3' 'libevdev' 'libmfx' 'libpulse' 'libva' 'libvdpau' 'libx11' 'libxcb' 'libxfixes' 'libxrandr' 'libxtst' 'numactl' 'openssl' 'opus' 'udev')
 optdepends=('cuda: NvFBC capture support'
             'libcap'
             'libdrm')
