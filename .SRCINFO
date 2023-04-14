@@ -6,6 +6,8 @@ pkgbase = gat-git
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	provides = gat
+	conflicts = gat
 	source = gat-git::git+https://github.com/koki-develop/gat.git
 	sha256sums = SKIP
 

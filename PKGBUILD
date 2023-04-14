@@ -10,6 +10,8 @@ license=('MIT')
 makedepends=('go')
 source=("$pkgname::git+https://github.com/koki-develop/gat.git")
 sha256sums=('SKIP')
+provides=('gat')
+conflicts=('gat')
 
 pkgver() {
   cd "$pkgname"
