@@ -5,13 +5,13 @@
 # Contributor: Shivam Mehta <sm.cse at gmail dot com>
 
 pkgname=quick-lint-js
-pkgver=2.12.0
+pkgver=2.13.0
 pkgrel=1
 pkgdesc="Find bugs in JavaScript programs"
 arch=(aarch64 arm armv6h armv7h i686 pentium4 x86_64)
 url="https://quick-lint-js.com/"
 license=(Apache Boost GPL3)
-depends=(gcc-libs hicolor-icon-theme)
+depends=(gcc-libs glibc hicolor-icon-theme)
 makedepends=(cmake gcc ninja)
 checkdepends=(icu)
 provides=()
@@ -20,7 +20,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://c.quick-lint-js.com/releases/${pkgver}/source/quick-lint-js-${pkgver}.tar.gz"
   "${pkgname}-${pkgver}.tar.gz.asc::https://c.quick-lint-js.com/releases/${pkgver}/source/quick-lint-js-${pkgver}.tar.gz.asc"
 )
-sha512sums=('4faee74270cab97d69b2a2fbfb1e8d00d587269a47feba9a885f677173667b1dacb06f46f89a90d881205f05ce4211dafcf45af5ad0c80330030c12b5b3eeca8'
+sha512sums=('8f0072e2fbe5adeb004cb3651dd479d68abde37c24987f473aed2b3988f05af4283f6e9966929bd5b9a7cbe572b5d25732ea7ee9f1b7b54eccde95d97bf82b9b'
             'SKIP')
 # Matthew "strager" Glazar <strager.nds@gmail.com>
 validpgpkeys=(A6851D57A65803E98C05DA01C08A7BC89CA2F557)
