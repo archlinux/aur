@@ -26,7 +26,9 @@ pkgver() {
 
 package() {
 	cd "$pkgname"
+	mkdir -p "$HOME/.local/share/catppuccinifier"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
-	cd "src/Linux/binaries-source/catppuccinifier-cli"
-	install -Dm755 "target/release/catppuccinifier-cli" "$pkgdir/usr/bin/catppuccinifier"
+	cd "src/Linux/"
+	cp -p -r "installation-files/flavors/" "$HOME/.local/share/catppuccinifier/flavors/"
+	install -Dm755 "binaries-source/catppuccinifier-cli/target/release/catppuccinifier-cli" "$pkgdir/usr/bin/catppuccinifier"
 }
