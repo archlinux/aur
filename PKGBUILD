@@ -1,6 +1,6 @@
 # Maintainer: VHSgunzo <vhsgunzo.github.io>
 pkgname='lutris-wine-git'
-pkgver='0.76.9.r0.g5827be3'
+pkgver='0.77.1.r0.gadf88e4'
 pkgrel='1'
 pkgdesc='Easy launch of your Windows applications and games with Wine/Proton'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('aria2' 'qt5-tools' 'xterm' 'xorg-fonts-100dpi' 'xorg-fonts-75dpi'
          'xorg-fonts-cyrillic' 'xorg-fonts-type1' 'xorg-fonts-misc' 'cabextract'
          'perl' 'unzip' 'xorg-xmessage' 'zenity' 'yad' 'xkb-switch' 'imagemagick'
-         'icoutils' 'lib32-mangohud' 'lib32-vkbasalt' 'mangohud' 'mangohud-common'
+         'icoutils' 'lib32-vkbasalt' 'mangohud-lw-git'
          'vkbasalt' 'gamemode' 'lib32-gamemode' 'giflib' 'lib32-giflib' 'libpng'
          'lib32-libpng' 'libldap' 'lib32-libldap' 'gnutls' 'lib32-gnutls'
          'mpg123' 'lib32-mpg123' 'openal' 'lib32-openal' 'v4l-utils' 'lib32-v4l-utils'
