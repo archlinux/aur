@@ -3,7 +3,7 @@
 
 pkgname=fblog-git
 pkgver=4.3.0.r0.g93da0f6
-pkgrel=1
+pkgrel=2
 pkgdesc="Small command-line JSON log viewer (git)"
 arch=('x86_64')
 url="https://github.com/brocode/fblog"
