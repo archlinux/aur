@@ -1,12 +1,12 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=kodi-addon-inputstream-adaptive-git
-pkgver=21.0.1.Omega.r0.g6cb48a9
+pkgver=21.1.0.Omega.r27.g65dbb6f
 pkgrel=1
 pkgdesc="InputStream client for adaptive streams for Kodi 20+"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
 url="https://github.com/xbmc/inputstream.adaptive"
 license=('GPL2')
-depends=('kodi' 'expat')
+depends=('kodi' 'expat' 'pugixml')
 makedepends=('kodi-dev' 'cmake' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
