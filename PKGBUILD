@@ -1,7 +1,7 @@
 # Maintainer: Leonidas P. <jpegxguy at outlook dot com>
 
 pkgname=ksmbd-tools
-pkgver=3.4.7
+pkgver=3.4.8
 pkgrel=1
 pkgdesc="Userspace tools for the ksmbd kernel SMB server"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('KSMBD-MODULE' 'libnl')
 provides=('samba')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=("d8bf4ed579bab1cf73865deffede06a6d2ed770347399c2ba8e82ea0c871320b")
+sha256sums=("30a77f89f1dd4ad625b62c7264da216314b52eab2cf1eecacf59731f681a79f0")
 
 build() {
 	cd "${pkgname}-${pkgver}"
