@@ -1,4 +1,5 @@
-# Maintainer: Ronald van Haren <ronald.archlinux.org>
+# Maintainer: Nicola Revelant <nicolarevelant44@gmail.com>
+# Contributor: Ronald van Haren <ronald.archlinux.org>
 # Contributor: James Rayner <james@archlinux.org>
 # Contributor: lucke <lucke at o2 dot pl>
 
