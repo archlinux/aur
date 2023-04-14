@@ -1,0 +1,31 @@
+diff --unified --recursive --text --color a/snmpb-1.0/Makefile b/snmpb-1.0/Makefile
+--- snmpb-1.0/Makefile	2023-04-14 03:38:51.200998752 +0200
++++ snmpb-1.0/Makefile	2023-04-14 03:39:49.397803414 +0200
+@@ -124,17 +124,17 @@
+ install:
+ 	$(INSTALL) -d ${INSTALL_PREFIX}/${BIN_PREFIX} ${INSTALL_PREFIX}/${SHARE}/snmpb/mibs ${INSTALL_PREFIX}/${SHARE}/snmpb/pibs
+ 	$(INSTALL) -m 4755 -D -s ${ROOT_OWNER} app/snmpb ${INSTALL_PREFIX}/${BIN_PREFIX}
+-	$(INSTALL) -m 444 ${ROOT_OWNER} libsmi/mibs/iana/* ${INSTALL_PREFIX}/${SHARE}/snmpb/mibs
+-	$(INSTALL) -m 444 ${ROOT_OWNER} libsmi/mibs/ietf/* ${INSTALL_PREFIX}/${SHARE}/snmpb/mibs
+-	$(INSTALL) -m 444 ${ROOT_OWNER} libsmi/mibs/tubs/* ${INSTALL_PREFIX}/${SHARE}/snmpb/mibs
+-	$(INSTALL) -m 444 ${ROOT_OWNER} libsmi/pibs/ietf/* ${INSTALL_PREFIX}/${SHARE}/snmpb/pibs
+-	$(INSTALL) -m 444 ${ROOT_OWNER} libsmi/pibs/tubs/* ${INSTALL_PREFIX}/${SHARE}/snmpb/pibs
++	$(INSTALL) -m 644 ${ROOT_OWNER} libsmi/mibs/iana/* ${INSTALL_PREFIX}/${SHARE}/snmpb/mibs
++	$(INSTALL) -m 644 ${ROOT_OWNER} libsmi/mibs/ietf/* ${INSTALL_PREFIX}/${SHARE}/snmpb/mibs
++	$(INSTALL) -m 644 ${ROOT_OWNER} libsmi/mibs/tubs/* ${INSTALL_PREFIX}/${SHARE}/snmpb/mibs
++	$(INSTALL) -m 644 ${ROOT_OWNER} libsmi/pibs/ietf/* ${INSTALL_PREFIX}/${SHARE}/snmpb/pibs
++	$(INSTALL) -m 644 ${ROOT_OWNER} libsmi/pibs/tubs/* ${INSTALL_PREFIX}/${SHARE}/snmpb/pibs
+ 	rm -f ${INSTALL_PREFIX}/${SHARE}/snmpb/mibs/Makefile* ${INSTALL_PREFIX}/${SHARE}/snmpb/pibs/Makefile*
+ 	$(INSTALL) -d ${INSTALL_PREFIX}/share/applications ${INSTALL_PREFIX}/share/mime/packages
+-	$(INSTALL) -m 444 ${ROOT_OWNER} app/snmpb.desktop ${INSTALL_PREFIX}/share/applications
+-	$(INSTALL) -m 444 ${ROOT_OWNER} app/snmpb.xml ${INSTALL_PREFIX}/share/mime/packages
++	$(INSTALL) -m 644 ${ROOT_OWNER} app/snmpb.desktop ${INSTALL_PREFIX}/share/applications
++	$(INSTALL) -m 644 ${ROOT_OWNER} app/snmpb.xml ${INSTALL_PREFIX}/share/mime/packages
+ 	$(INSTALL) -d ${INSTALL_PREFIX}/share/icons/hicolor/128x128/apps ${INSTALL_PREFIX}/share/pixmaps ${INSTALL_PREFIX}/share/icons/hicolor/scalable/apps
+-	$(INSTALL) -m 444 ${ROOT_OWNER} app/images/snmpb.png ${INSTALL_PREFIX}/share/icons/hicolor/128x128/apps
+-	$(INSTALL) -m 444 ${ROOT_OWNER} app/images/snmpb.png ${INSTALL_PREFIX}/share/pixmaps
+-	$(INSTALL) -m 444 ${ROOT_OWNER} app/images/snmpb.svg ${INSTALL_PREFIX}/share/icons/hicolor/scalable/apps
++	$(INSTALL) -m 644 ${ROOT_OWNER} app/images/snmpb.png ${INSTALL_PREFIX}/share/icons/hicolor/128x128/apps
++	$(INSTALL) -m 644 ${ROOT_OWNER} app/images/snmpb.png ${INSTALL_PREFIX}/share/pixmaps
++	$(INSTALL) -m 644 ${ROOT_OWNER} app/images/snmpb.svg ${INSTALL_PREFIX}/share/icons/hicolor/scalable/apps
+ 

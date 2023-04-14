@@ -1,0 +1,79 @@
+diff --unified --recursive --text a/snmpb-1.0/qwt/qwtconfig.pri b/snmpb-1.0/qwt/qwtconfig.pri
+--- snmpb-1.0/qwt/qwtconfig.pri	2023-04-12 16:30:45.953187040 +0200
++++ snmpb-1.0/qwt/qwtconfig.pri	2023-04-12 16:31:52.123326863 +0200
+@@ -72,7 +72,7 @@
+ # it will be a static library.
+ ######################################################################
+ 
+-QWT_CONFIG           += QwtDll
++#QWT_CONFIG           += QwtDll
+ 
+ ######################################################################
+ # QwtPlot enables all classes, that are needed to use the QwtPlot
+@@ -86,27 +86,27 @@
+ # classes. It can't be enabled without also enabling QwtPlot
+ ######################################################################
+ 
+-QWT_CONFIG       += QwtPolar
++#QWT_CONFIG       += QwtPolar
+ 
+ ######################################################################
+ # QwtWidgets enables all classes, that are needed to use the all other
+ # widgets (sliders, dials, ...), beside QwtPlot.
+ ######################################################################
+ 
+-QWT_CONFIG     += QwtWidgets
++#QWT_CONFIG     += QwtWidgets
+ 
+ ######################################################################
+ # If you want to display svg images on the plot canvas, or
+ # export a plot to a SVG document
+ ######################################################################
+ 
+-QWT_CONFIG     += QwtSvg
++#QWT_CONFIG     += QwtSvg
+ 
+ ######################################################################
+ # If you want to use a OpenGL plot canvas
+ ######################################################################
+ 
+-QWT_CONFIG     += QwtOpenGL
++#QWT_CONFIG     += QwtOpenGL
+ 
+ ######################################################################
+ # If you want to build the Qwt designer plugin,
+@@ -114,7 +114,7 @@
+ # Otherwise you have to build it from the designer directory.
+ ######################################################################
+ 
+-QWT_CONFIG     += QwtDesigner
++#QWT_CONFIG     += QwtDesigner
+ 
+ ######################################################################
+ # Compile all Qwt classes into the designer plugin instead
+@@ -137,7 +137,7 @@
+ # Otherwise you have to build them from the examples directory.
+ ######################################################################
+ 
+-QWT_CONFIG     += QwtExamples
++#QWT_CONFIG     += QwtExamples
+ 
+ ######################################################################
+ # The playground is primarily intended for the Qwt development
+@@ -148,14 +148,14 @@
+ # Otherwise you have to build them from the playground directory.
+ ######################################################################
+ 
+-QWT_CONFIG     += QwtPlayground
++#QWT_CONFIG     += QwtPlayground
+ 
+ ######################################################################
+ # If you want to auto build the tests, enable the line below
+ # Otherwise you have to build them from the tests directory.
+ ######################################################################
+ 
+-QWT_CONFIG     += QwtTests
++#QWT_CONFIG     += QwtTests
+ 
+ ######################################################################
+ # When Qt has been built as framework qmake wants
