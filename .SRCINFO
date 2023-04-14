@@ -10,7 +10,6 @@ pkgbase = gnome-shell-extension-colorblind-filters-git
 	makedepends = zip
 	makedepends = unzip
 	depends = gnome-shell
-	provides = gnome-colorblind-filters
 	source = gnome-shell-extension-colorblind-filters::git+https://github.com/G-dH/gnome-colorblind-filters
 	sha256sums = SKIP
 

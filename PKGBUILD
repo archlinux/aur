@@ -10,7 +10,6 @@ url="https://github.com/G-dH/gnome-colorblind-filters"
 license=('GPLv3')
 depends=(gnome-shell)
 makedepends=(git make zip unzip)
-provides=(gnome-colorblind-filters)
 source=("${_pkgname}::git+https://github.com/G-dH/gnome-colorblind-filters")
 sha256sums=('SKIP')
 
