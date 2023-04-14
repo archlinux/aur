@@ -1,0 +1,21 @@
+msg_blue() {
+    printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+note() {
+    printf "${blue}==>${yellow} Note:${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+post_install() {
+    note #
+    msg_blue " create ~/.config/xdg-desktop-portal-shana/config.toml to custom which portal to use."
+    msg_blue " for more info: https://github.com/Decodetalkers/xdg-desktop-portal-shana"
+}
+post_upgrade() {
+    post_install
+}
+
