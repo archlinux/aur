@@ -1,0 +1,14 @@
+pkgbase = python-rdflib-jsonld
+	pkgdesc = JSON-LD parser and serializer plugins for RDFLib
+	pkgver = 0.5.0
+	pkgrel = 5
+	url = https://github.com/RDFLib/rdflib-jsonld
+	arch = any
+	license = BSD
+	checkdepends = python-nose
+	makedepends = python-setuptools
+	depends = python-rdflib
+	source = python-rdflib-jsonld-0.5.0.tar.gz::https://github.com/RDFLib/rdflib-jsonld/archive/0.5.0.tar.gz
+	sha512sums = 5fb1409eb201c330d89ee2fbfe9fc4b07754605bad4acc85163643d5faba7b513d52afe02f71f601a31e205f5972430f6fc487d58e7c9a4e6f5f20f0d91f2cbc
+
+pkgname = python-rdflib-jsonld
