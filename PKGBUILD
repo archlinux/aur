@@ -12,7 +12,7 @@ makedepends=('rust')
 backup=("etc/${pkgname}.toml")
 source=("https://gitlab.com/ogarcia/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.bz2"
         "${pkgname}.service")
-b2sums=('9aae34a0c030c8b6ef5c75c0a2d6af1dccff188c7b4a90ce70ae15116337cc1e39e0ad63e092cd3f8488d4472b67d70b88090b01094e020593589a239f6de1ab'
+b2sums=('2379a95a039778c77e91f02bdcb80f25b8a8d43eeef5541354e47968a12e7b5e89a12b25be9f223fb3c600e5dee0e84a05d71751af3cf4d12f9d6b04b6833625'
         '0fa53a8afb3e842cfce314cbc580c3e2a89441f8b1155307df164ca50028e88d30212a29d847c40026105fb4a735e19863ed07fca8aeb86f51d3a8f096d8860a')
 
 build() {
