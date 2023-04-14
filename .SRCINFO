@@ -1,6 +1,6 @@
 pkgbase = newrelic-cli
 	pkgdesc = The New Relic Command Line Interface
-	pkgver = 0.66.2
+	pkgver = 0.67.0
 	pkgrel = 1
 	url = https://github.com/newrelic/newrelic-cli
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = newrelic-cli
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/newrelic/newrelic-cli.git#tag=v0.66.2
+	source = git+https://github.com/newrelic/newrelic-cli.git#tag=v0.67.0
 	sha256sums = SKIP
 
 pkgname = newrelic-cli
