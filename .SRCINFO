@@ -1,5 +1,5 @@
 pkgbase = s25rttr
-	pkgdesc = Return to the Roots is an unofficial extension of (Die Siedler II) ® by BlueByte Software GmbH. Put the files from the original game in the folder (/usr/share/s25rttr/S2/)
+	pkgdesc = Return to the Roots is a reimplementation of Settlers II (Die Siedler II) by BlueByte Software GmbH. Put the files from the original game in the folder (/usr/share/s25rttr/S2/)
 	pkgver = 0.9.5
 	pkgrel = 2
 	url = https://www.siedler25.org/
@@ -18,6 +18,8 @@ pkgbase = s25rttr
 	depends = boost-libs
 	depends = miniupnpc
 	depends = lua51
+	provides = return-to-the-roots=0.9.5
+	conflicts = return-to-the-roots
 	source = s25rttr-0.9.5.tar.gz::https://github.com/Return-To-The-Roots/s25client/releases/download/v0.9.5/s25client_src_v0.9.5.tar.gz
 	sha256sums = c6a9ef5b90943b5f2e81543f1e3290ff773663a45ebbbcc5a786bb5f5495fbec
 
