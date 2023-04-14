@@ -3,7 +3,7 @@
 
 pkgname=gpu-trace
 pkgver=2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="GPU Trace capture tool"
 arch=('any')
 url="https://github.com/lostgoat/gpu-trace"
@@ -12,7 +12,7 @@ depends=('python3' 'trace-cmd')
 provides=('amdgpu-trace')
 conflicts=('amdgpu-trace')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1e451b482644decf09ddfac13651c9c83797f07569533e028c74607d2d30f93e')
+sha256sums=('86c71bfe2c89442c99cec4046f6dbfbb7643cf03be80a8d2d72d8f6dc87483d2')
 
 package() {
     cd "$pkgname-$pkgver"
