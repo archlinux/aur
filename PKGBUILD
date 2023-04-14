@@ -19,7 +19,7 @@ depends=('webkit2gtk'
 source=("${url}/releases/download/v${pkgver}/ctool_tauri_linux.deb")
 sha256sums=('539970c496b116b80333eac5b61f483484ffd81b196d38d8194080818da286a4')
 package() {
-	tar -xpf ${srcdir}/data.tar.gz -C $pkgdir
+	tar -xvpf ${srcdir}/data.tar.gz -C $pkgdir
 	chown root:root -R $pkgdir
 
 }
