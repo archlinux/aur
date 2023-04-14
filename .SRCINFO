@@ -1,17 +1,18 @@
 pkgbase = zju-connect-bin
 	pkgdesc = Go client for ZJU RVPN
 	pkgver = 0.3.0
-	pkgrel = 5
+	pkgrel = 8
 	url = https://github.com/Mythologyli/zju-connect
 	install = zju-connect.install
 	arch = x86_64
 	license = AGPL-3.0
 	provides = zju-connect
+	backup = etc/zju-connect/config.toml
 	source = zju-connect-bin-0.3.0-amd64.zip::https://github.com/Mythologyli/zju-connect/releases/download/v0.3.0/zju-connect-linux-amd64.zip
 	source = zju-connect.service
 	source = config.toml::https://raw.githubusercontent.com/Mythologyli/zju-connect/main/config.toml.example
 	sha256sums = 5a04f66178b9ac0f035a4354bb4425c5953006038204b185ea0ee4fca0c8b817
-	sha256sums = 698f00c5fefe5c6b756c20b1d46a6c8ea0d827092ab8cb65f43cbf45ce0ad197
+	sha256sums = f82ae013579f8d9e43242274ba660ef122e43747a4fc88e6e0dbd8b9c96d6cf4
 	sha256sums = 02d294350d41ab9cc9e979a9447cb4429f4577fc6d85ee3e6685464e65511c2c
 
 pkgname = zju-connect-bin
