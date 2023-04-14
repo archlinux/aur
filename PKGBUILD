@@ -5,7 +5,7 @@ _gitname=monitor
 _auxname=("pantheon-system-${_gitname}")
 pkgname=("${_auxname}-git")
 pkgver=r983.4a555e3
-pkgrel=2
+pkgrel=3
 pkgdesc="Manage processes and monitor system resources. 
         Designed for elementary OS."
 arch=('i686' 'x86_64')
@@ -39,7 +39,7 @@ build() {
     cd live-chart
     git checkout 5f8ddce715f6a9130955bc5f08437050265a317c
     cd ../..
-    meson builddir --prefix=/usr -Dindicator-wingpanel=enabled
+    meson . _build --prefix=/usr -Dindicator-wingpanel=enabled
     ninja -C _build
 }
 
