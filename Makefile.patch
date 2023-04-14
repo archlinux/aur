@@ -1,0 +1,40 @@
+--- a/Makefile	2023-04-14 11:57:06.531957438 +0530
++++ b/Makefile	2023-04-14 12:06:45.853847462 +0530
+@@ -1,5 +1,5 @@
+ CXX = g++
+-CXXFLAGS = -fopenmp -Wall -std=c++11 -O3
++CXXFLAGS = -fopenmp -Wall -std=c++11 -O2
+ CXXFLAGS += -DLINEAR_PROBING
+ 
+ .PHONY: all clean install
+@@ -9,7 +9,7 @@
+ all: $(PROGS)
+ 
+ install: $(PROGS)
+-	cp $(PROGS) "$(KRAKEN2_DIR)/"
++	cp $(PROGS) $(DESTDIR)$(KRAKEN2_DIR)/
+ 
+ clean:
+ 	rm -f *.o $(PROGS)
+@@ -32,16 +32,16 @@
+ lookup_accession_numbers.o: lookup_accession_numbers.cc mmap_file.h utilities.h
+ 
+ build_db: build_db.o mmap_file.o compact_hash.o taxonomy.o seqreader.o mmscanner.o omp_hack.o utilities.o
+-	$(CXX) $(CXXFLAGS) -o $@ $^
++	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
+ 
+ classify: classify.o reports.o hyperloglogplus.o mmap_file.o compact_hash.o taxonomy.o seqreader.o mmscanner.o omp_hack.o aa_translate.o utilities.o
+-	$(CXX) $(CXXFLAGS) -o $@ $^
++	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
+ 
+ estimate_capacity: estimate_capacity.o seqreader.o mmscanner.o omp_hack.o utilities.o
+-	$(CXX) $(CXXFLAGS) -o $@ $^
++	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
+ 
+ dump_table: dump_table.o mmap_file.o compact_hash.o omp_hack.o taxonomy.o reports.o hyperloglogplus.o
+-	$(CXX) $(CXXFLAGS) -o $@ $^
++	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
+ 
+ lookup_accession_numbers: lookup_accession_numbers.o mmap_file.o omp_hack.o utilities.o
+-	$(CXX) $(CXXFLAGS) -o $@ $^
++	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)

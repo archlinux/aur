@@ -1,0 +1,18 @@
+Description: Slighly more robust method to obtain taxid of fasta files to at
+  least enable reading the provided data examples of autopkgtest
+Bug-Debian: https://bugs.debian.org/889623
+Forwarded: https://github.com/DerrickWood/kraken/issues/111
+Author: Andreas Tille <tille@debian.org>
+Last-Update: Wed, 07 Feb 2018 13:41:39 +0100
+
+--- a/scan_fasta_file.pl
++++ b/scan_fasta_file.pl
+@@ -32,6 +32,8 @@ while (<>) {
+   # while (/.../g) needed because non-redundant DBs sometimes have multiple
+   #   sequence IDs in the header; extra sequence IDs are prefixed by
+   #   '\x01' characters (if downloaded in FASTA format from NCBI FTP directly).
++  s/^>gi\|/>/;
++  s/\| .*//;
+   while (/(?:^>|\x01)(\S+)/g) {
+     my $seqid = $1;
+     my $taxid = kraken2lib::check_seqid($seqid);
