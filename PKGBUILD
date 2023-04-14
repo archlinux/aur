@@ -1,37 +1,44 @@
-# Maintainer: alecromski <alecromski@gmail.com>
+# Maintainer: Lordxan <52027483+Lordxan@users.noreply.github.com>
+# Contributor: alecromski <alecromski@gmail.com>
+
 pkgname=asus-touchpad-numpad-driver
-pkgver=3.0
+pkgver=r167.a2bada6
 pkgrel=1
-pkgdesc="asus touchpad numpad toggler"
+pkgdesc="asus touchpad numpad driver"
 arch=('any')
 url="https://github.com/mohamed-badaoui/asus-touchpad-numpad-driver"
 license=('GPL')
-groups=()
-depends=('python>=3.8'
-		'libevdev'
-		'python-libevdev'
-		'i2c-tools'
-		'git')
-makedepends=()
-checkdepends=()
-optdepends=()
+depends=('python>=3.8' 'libevdev' 'python-libevdev' 'i2c-tools')
+makedepends=('git' 'gum')
 provides=(asus-touchpad-numpad-driver)
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://github.com/OppaiWeeb/asus-touchpad-numpad-driver/releases/download/$pkgver/asus-touchpad-numpad-driver.zip")
-noextract=($source)
+source=("git+https://github.com/mohamed-badaoui/asus-touchpad-numpad-driver.git")
 md5sums=(SKIP)
-validpgpkeys=()
 
-prepare() {
-	echo "[!]Prepare install"
+pkgver() {
+	cd "$srcdir/$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	sudo ./install.sh
-}
+	cd "$srcdir/$pkgname"
 
+	echo "Select models keypad layout:"
+	model=$(gum choose gx701 m433ia ux433fa ux581l)
+	
+	echo "What is your keyboard layout?"
+	layout=$(gum choose Qwerty Azerty)
+	if [ $layout = "Qwerty" ]
+	then
+		percentage_key=6 # Number 5
+	else
+		percentage_key=40 # Apostrophe key
+	fi
+
+	cat asus_touchpad.service | LAYOUT=$model PERCENTAGE_KEY=$percentage_key envsubst '$LAYOUT $PERCENTAGE_KEY' > temp.service
+	mkdir -p "$pkgdir/var/log/asus_touchpad_numpad-driver"
+	mkdir -p "$pkgdir/etc/modules-load.d"
+	install -Dm644 temp.service "$pkgdir/etc/systemd/system/asus_touchpad_numpad.service"
+	install -Dm755 asus_touchpad.py "$pkgdir/usr/share/asus_touchpad_numpad-driver/asus_touchpad.py"
+	install -Dm755 numpad_layouts/*.py -t "$pkgdir/usr/share/asus_touchpad_numpad-driver/numpad_layouts"
+	echo "i2c-dev" | tee "$pkgdir/etc/modules-load.d/i2c-dev.conf" > /dev/null
+}
