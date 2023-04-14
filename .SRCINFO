@@ -1,0 +1,24 @@
+pkgbase = networkmanager-openconnect-git
+	pkgdesc = NetworkManager VPN plugin for OpenConnect
+	pkgver = 1.2.9dev+r109+g5a1cdff
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/NetworkManager
+	arch = x86_64
+	license = GPL
+	makedepends = libnma
+	makedepends = libnma-gtk4
+	makedepends = intltool
+	makedepends = python
+	makedepends = git
+	depends = libnm
+	depends = libsecret
+	depends = openconnect
+	depends = libopenconnect.so
+	optdepends = libnma: GUI support (GTK 3)
+	optdepends = libnma-gtk4: GUI support (GTK 4)
+	provides = networkmanager-openconnect
+	conflicts = networkmanager-openconnect
+	source = git+https://gitlab.gnome.org/GNOME/NetworkManager-openconnect.git
+	sha256sums = SKIP
+
+pkgname = networkmanager-openconnect-git
