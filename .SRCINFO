@@ -1,7 +1,7 @@
 pkgbase = seafile
 	pkgdesc = An online file storage and collaboration tool
 	pkgver = 9.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/haiwen/seafile
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,6 @@ pkgbase = seafile
 	makedepends = intltool
 	depends = libsearpc
 	depends = libevent
-	depends = libwebsockets
 	depends = fuse
 	depends = python-future
 	depends = sqlite
