@@ -2,7 +2,7 @@
 # Maintainer: Blacktop <https://github.com/blacktop>
 
 pkgname='ipsw-bin'
-pkgver=3.1.314
+pkgver=3.1.315
 pkgrel=1
 pkgdesc='iOS/macOS Research Swiss Army Knife'
 url='https://github.com/blacktop/ipsw'
@@ -10,18 +10,19 @@ arch=('aarch64' 'aarch64' 'x86_64' 'x86_64')
 license=('MIT')
 provides=('ipsw')
 conflicts=('ipsw')
+backup=('/etc/ipsw.conf')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.314/ipsw_3.1.314_linux_arm64.tar.gz")
-sha256sums_aarch64=('aabdad7b1e644c2132f5f86ed5d0b8baa35b8c774ecf2e75fc453b6e14f1bd54')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.315/ipsw_3.1.315_linux_arm64.tar.gz")
+sha256sums_aarch64=('7726e81180ef0651c054db1ef296e944294756c516381e72145cc0d3c9ba0771')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.314/ipsw_3.1.314_linux_arm64_daemon.tar.gz")
-sha256sums_aarch64=('4609a40a585f0f0c7af0afe618115b53988fbf29a29743adc85b1c6f4fbf47ad')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.315/ipsw_3.1.315_linux_arm64_daemon.tar.gz")
+sha256sums_aarch64=('e0cfb62879361d68b1dc1b5dec2435703c90cdb81bc14ddc3fc24fca0d160a2e')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.314/ipsw_3.1.314_linux_x86_64.tar.gz")
-sha256sums_x86_64=('f34cdfd47d650d157b5b029a1d5801d4fcf0f94d3033735f39553fa40c6e307f')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.315/ipsw_3.1.315_linux_x86_64.tar.gz")
+sha256sums_x86_64=('7015279aeaec70917bc85c9a27a6f6fac76bfd2bf9f7b30484bccfecf2f064d6')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.314/ipsw_3.1.314_linux_x86_64_daemon.tar.gz")
-sha256sums_x86_64=('9c0215c9113eaa9c831d07091d1d82d8733361943418319d34a85581ea20f75b')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.315/ipsw_3.1.315_linux_x86_64_daemon.tar.gz")
+sha256sums_x86_64=('869c65bb31056a3d7f13623502e329a03a50f5153e0b2b76c8c02b9d8b2fdfc5')
 
 package() {
   # bin
@@ -40,4 +41,8 @@ package() {
 
   # man pages
   install -Dm644 "./manpages/ipsw.1.gz" "${pkgdir}/usr/share/man/man1/ipsw.1.gz"
+
+  # config
+  mkdir -p "${pkgdir}/etc"
+  install -Dm644 "./config.example.yml" "${pkgdir}/etc/ipsw.conf"
 }
