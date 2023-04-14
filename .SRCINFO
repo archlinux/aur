@@ -1,7 +1,7 @@
 pkgbase = podman-desktop
 	pkgdesc = Manage Podman and other container engines from a single UI and tray.
-	pkgver = 0.13.0
-	pkgrel = 3
+	pkgver = 0.14.0
+	pkgrel = 1
 	url = https://github.com/containers/podman-desktop
 	arch = x86_64
 	arch = aarch64
@@ -11,6 +11,16 @@ pkgbase = podman-desktop
 	makedepends = python
 	makedepends = npm
 	makedepends = nodejs-lts-gallium
+	optdepends = podman: podman plugin
+	optdepends = crc: crc plugin
+	optdepends = lima: lima plugin
+	optdepends = docker: docker plugin
+	source = git+https://github.com/containers/podman-desktop#tag=v0.14.0
+	source = podman-desktop.desktop
+	sha256sums = SKIP
+	sha256sums = f520d11b747dc29bcc63dd7d75f235e446104f924142be4ecc6f26b23e3a7c1c
+
+pkgname = podman-desktop
 	depends = c-ares
 	depends = gtk3
 	depends = libevent
@@ -47,9 +57,3 @@ pkgbase = podman-desktop
 	optdepends = qt5-base: enable Qt5 with --enable-features=AllowQt
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)
-	source = git+https://github.com/containers/podman-desktop#tag=v0.13.0
-	source = podman-desktop.desktop
-	sha256sums = SKIP
-	sha256sums = f520d11b747dc29bcc63dd7d75f235e446104f924142be4ecc6f26b23e3a7c1c
-
-pkgname = podman-desktop

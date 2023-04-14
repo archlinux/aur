@@ -2,26 +2,19 @@
 # Contributor: Juliette Cordor 
 
 pkgname=("podman-desktop")
-pkgver=0.13.0
-pkgrel=3
+pkgver=0.14.0
+pkgrel=1
 pkgdesc="Manage Podman and other container engines from a single UI and tray."
 arch=('x86_64' 'aarch64')
 url=https://github.com/containers/podman-desktop
 license=('Apache-2.0')
-
+depends=()
 makedepends=('yarn' 'git' 'python' 'npm' 'nodejs-lts-gallium')
 optdepends=(
     "podman: podman plugin"
     "crc: crc plugin"
     "lima: lima plugin"
     "docker: docker plugin"
-    # Electron optional depends
-    "kde-cli-tools: file deletion support (kioclient5)"
-    "libappindicator-gtk3: StatusNotifierItem support"
-    "pipewire: WebRTC desktop sharing under Wayland"
-    "qt5-base: enable Qt5 with --enable-features=AllowQt"
-    "trash-cli: file deletion support (trash-put)"
-    "xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)"
 )
 source=(
     "git+${url}#tag=v${pkgver}"
@@ -36,11 +29,20 @@ build(){
     yarn run compile
 }
 package_podman-desktop(){
-    depends=(
+    depends+=(
         # Electron depends
         "c-ares" "gtk3" "libevent" "nss" "wayland" "fontconfig" "woff2" "aom" "brotli"
         "libjpeg" "icu" "dav1d" "flac" "snappy" "libxml2" "ffmpeg" "libwebp" "minizip"
         "opus" "harfbuzz" "re2" "libavif" "jsoncpp" "libxslt" "libpng" "freetype2"
+    )
+    optdepends+=(
+        # Electron optdepends
+        "kde-cli-tools: file deletion support (kioclient5)"
+        "libappindicator-gtk3: StatusNotifierItem support"
+        "pipewire: WebRTC desktop sharing under Wayland"
+        "qt5-base: enable Qt5 with --enable-features=AllowQt"
+        "trash-cli: file deletion support (trash-put)"
+        "xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)"
     )
     case ${CARCH} in
         x86_64)
