@@ -2,7 +2,7 @@
 
 get_latest_release_tag() {
   # Resolve latest release tag from the GitHub API
-  curl --silent "https://api.github.com/repos/$1/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'
+  curl --silent "https://api.github.com/repos/$1/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/'
 }
 
 sha512sum_first_src_sum() {
@@ -16,7 +16,7 @@ sha512sum_first_src_sum() {
   sed -Ei "s/pkgver=.*\$/pkgver="'"'"$(get_latest_release_tag $pkgbin)"'"'"/g" PKGBUILD
 
   # Calculate sum on first in source()
-  wget "$url/releases/download/$pkgver/$pkgsrc"
+  wget "$url/releases/download/v$pkgver/$pkgsrc"
   local sha=$(sha512sum $pkgsrc | cut -d " " -f1)
   rm $pkgsrc
   echo $sha
