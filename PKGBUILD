@@ -4,7 +4,7 @@
 _electron='electron22'
 
 pkgname="ferdium-electron"
-pkgver=6.2.4
+pkgver=6.2.6
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest release) - System-wide Electron edition'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')

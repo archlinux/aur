@@ -1,6 +1,6 @@
 pkgbase = ferdium-electron
 	pkgdesc = A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest release) - System-wide Electron edition
-	pkgver = 6.2.4
+	pkgver = 6.2.6
 	pkgrel = 1
 	url = https://ferdium.org/
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = ferdium-electron
 	depends = electron22
 	provides = ferdium
 	conflicts = ferdium
-	source = ferdium-electron::git+https://github.com/ferdium/ferdium-app#tag=v6.2.4
+	source = ferdium-electron::git+https://github.com/ferdium/ferdium-app#tag=v6.2.6
 	source = ferdium-recipes::git+https://github.com/ferdium/ferdium-recipes.git#branch=main
 	source = ferdium.desktop
 	sha256sums = SKIP
