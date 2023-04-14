@@ -1,7 +1,7 @@
 pkgbase = r-ggformula
 	pkgdesc = Formula Interface to the Grammar of Graphics
 	pkgver = 0.10.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=ggformula
 	arch = any
 	license = MIT
@@ -22,6 +22,7 @@ pkgbase = r-ggformula
 	optdepends = r-dplyr
 	optdepends = r-ggplot2movies
 	optdepends = r-ggthemes
+	optdepends = r-interp
 	optdepends = r-knitr
 	optdepends = r-lattice
 	optdepends = r-lubridate
@@ -31,6 +32,7 @@ pkgbase = r-ggformula
 	optdepends = r-mosaicdata
 	optdepends = r-palmerpenguins
 	optdepends = r-purrr
+	optdepends = r-quantreg
 	optdepends = r-rgeos
 	optdepends = r-rmarkdown
 	optdepends = r-sf

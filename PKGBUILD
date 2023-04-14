@@ -4,7 +4,7 @@ _pkgname=ggformula
 _pkgver=0.10.4
 pkgname=r-${_pkgname,,}
 pkgver=0.10.4
-pkgrel=1
+pkgrel=3
 pkgdesc='Formula Interface to the Grammar of Graphics'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -29,6 +29,7 @@ optdepends=(
   r-dplyr
   r-ggplot2movies
   r-ggthemes
+  r-interp
   r-knitr
   r-lattice
   r-lubridate
@@ -38,6 +39,7 @@ optdepends=(
   r-mosaicdata
   r-palmerpenguins
   r-purrr
+  r-quantreg
   r-rgeos
   r-rmarkdown
   r-sf
