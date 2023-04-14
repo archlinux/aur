@@ -4,7 +4,7 @@
 _pkgname=skypeforlinux
 pkgname="$_pkgname-preview-bin"
 pkgver=8.96.76.407
-pkgrel=1
+pkgrel=2
 pkgdesc="Skype for Linux - Preview/Insider Version"
 arch=("x86_64")
 url="http://www.skype.com"
@@ -19,17 +19,16 @@ provides=("$_pkgname" "skype")
 replaces=("$_pkgname-bin")
 install="$pkgname-install"
 source=(
-https://repo.skype.com/rpm/unstable/${_pkgname}_${pkgver}-1.x86_64.rpm
+"https://repo.skype.com/deb/pool/main/s/$_pkgname/${_pkgname}_${pkgver}_amd64.deb"
 )
-sha256sums=('ab8b77b13980c6908caa4a4a4373805840211d60a09c3fb43ddab3d46cb201a6')
+sha256sums=('337361ef1b2a1f9b18513b0f7f73df467e8fbe793480fb91b03cf36603438a03')
 
 package() {
-  cd $pkgdir
-  bsdtar -xf $srcdir/${_pkgname}_${pkgver}-1.x86_64.rpm
-  rm -rf "$pkgdir/usr/lib/.build-id"
+  tar --no-same-owner -xC "$pkgdir" -f data.tar.gz
   install -d "$pkgdir/usr/share/licenses/$pkgname"
   mv "$pkgdir/usr/share/$_pkgname/LICENSES.chromium.html" \
-     "$pkgdir/usr/share/licenses/$pkgname/"
+    "$pkgdir/usr/share/licenses/$pkgname/"
+  rm -rf "$pkgdir/opt"
 }
 
 # vim:set ts=2 sw=2 et:
