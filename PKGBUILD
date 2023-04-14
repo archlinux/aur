@@ -61,7 +61,7 @@ local meson_options=(
 
 check() {
   cd "$srcdir/MangoHud"
-  appstreamcli validate --pedantic "data/io.github.flightlessmango.$pkgbase.metainfo.xml"
+  appstreamcli validate --no-net --pedantic "data/io.github.flightlessmango.$pkgbase.metainfo.xml"
 }
 
 package_mangohud() {
