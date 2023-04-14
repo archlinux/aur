@@ -3,7 +3,7 @@
 
 pkgname=booktab-wine
 _pkgname=booktab
-pkgver=4.19
+pkgver=4.20
 pkgrel=1
 pkgdesc="MyZanichelli - La piattaforma che ti permette di consultare tutti i tuoi libri scolastici in versione multimediale e interattiva (wine version)."
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('innoextract' 'icoutils')
 source=("https://booktab.it/setup-z/latest/BooktabSetup64.exe"
         "${_pkgname}.sh"
         "${_pkgname}.desktop")
-sha256sums=('a7f8f7ff71a3c109c1cffc7f8c4fc055945d3639b1611d8d0ea022b5507b7358'
+sha256sums=('1da0e1a8e640475f053b372e306c88305f50add473a5c2dd472d1259c940de93'
             'd86ebb94c4a838db1bc8fc39a64b4f9b1ff0dff32985af357bc68af0a11a06ef'
             'fd991fef15910b4beb0c25869f86178077b651213bc9e3378aa398a169982492')
 
