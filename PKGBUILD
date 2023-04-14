@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034
 
 pkgname=lib32-vulkan-tools
-pkgver=1.3.246
+pkgver=1.3.247
 pkgrel=1
 arch=(x86_64)
 url="https://www.khronos.org/vulkan/"
@@ -11,7 +11,7 @@ license=('custom')
 depends=('lib32-libx11' 'lib32-wayland' 'lib32-vulkan-icd-loader')
 makedepends=('cmake' 'python' 'vulkan-headers' 'wayland-protocols' 'glslang' 'spirv-tools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/KhronosGroup/Vulkan-Tools/archive/v${pkgver}.tar.gz")
-sha256sums=('1aeefae204d5f750d7d46adba53bbfed5ac5b663fdefdcca57ef1bf2b8b07aef')
+sha256sums=('3c7f9d81d599a36871cc122501713cd67882be4777872c8c5e17834e2c2047a1')
 
 prepare() {
   cd "${srcdir}/Vulkan-Tools-${pkgver}"
