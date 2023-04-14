@@ -1,7 +1,7 @@
 pkgbase = kubescape
 	pkgdesc = An open-source Kubernetes security platform for your IDE, CI/CD pipelines, and clusters.
 	pkgver = 2.2.6
-	pkgrel = 0
+	pkgrel = 1
 	epoch = 0
 	url = https://github.com/kubescape/kubescape
 	arch = x86_64
