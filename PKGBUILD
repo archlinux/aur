@@ -16,12 +16,12 @@
 
 pkgbase=llvm-minimal-git
 pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git' 'spirv-llvm-translator-minimal-git')
-pkgver=17.0.0_r457499.33c442118f3e
+pkgver=17.0.0_r457890.293e4da32b1d
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
-makedepends=('git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2'
+makedepends=('git' 'cmake' 'libffi' 'libedit' 'ncurses' 'libxml2'
              'libxcrypt' 'python' 'python-setuptools' 'spirv-headers-git' 'spirv-tools-git')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
                 'local://llvm-config.h'
@@ -39,14 +39,13 @@ sha512sums=('SKIP'
 options=('staticlibs' '!lto')
 # explicitly disable lto to reduce number of build hangs / test failures
 
-# Both ninja & LIT by default use all available cores. this can lead to heavy stress on systems making them unresponsive.
+# LIT by default uses all available cores. this can lead to heavy stress on systems making them unresponsive.
 # It can also happen that the kernel oom killer interferes and kills important tasks.
-# A reasonable value for them to avoid these issues appears to be 75% of available cores.
-# NINJAFLAGS and LITFLAGS are env vars that can be used to achieve this. They should be set on command line or in files read by your shell on login (like .bashrc ) .
+# A reasonable value to avoid these issues appears to be 75% of available cores.
+# LITFLAGS is an env vars that can be used to achieve this. It should be set on command line or in files read by your shell on login (like .bashrc ) .
 # example for systems with 24 cores
-# NINJAFLAGS="-j 18 -l 18"
 # LITFLAGS="-j 18"
-# NOTE: It's your responbility to validate the value of NINJAFLAGS and LITFLAGS. If unsure, don't set it.
+# NOTE: It's your responbility to validate the value of LITFLAGS. If unsure, don't set it.
 
 pkgver() {
     cd llvm-project/llvm
@@ -67,7 +66,6 @@ build() {
     cmake \
         -B _build \
         -S "$srcdir"/llvm-project/llvm  \
-        -G Ninja \
         -D CMAKE_BUILD_TYPE=Release \
         -D CMAKE_INSTALL_PREFIX=/usr \
         -D LLVM_BINUTILS_INCDIR=/usr/include \
@@ -102,14 +100,14 @@ build() {
         -D LLVM_LIT_ARGS="$LITFLAGS"" -sv --ignore-fail" \
         -Wno-dev
 
-    ninja -C _build $NINJAFLAGS
+    make -C _build
 }
 
 check() {
-    ninja -C _build $NINJAFLAGS check-llvm
-    ninja -C _build $NINJAFLAGS check-clang
-    ninja -C _build $NINJAFLAGS check-clang-tools
-    ninja -C _build $NINJAFLAGS check-llvm-spirv
+    make -C _build check-llvm
+    make -C _build check-clang
+    make -C _build check-clang-tools
+    make -C _build check-llvm-spirv
 }
 
 package_llvm-minimal-git() {
@@ -121,7 +119,7 @@ package_llvm-minimal-git() {
                           'python-setuptools: for using lit'
     )
 
-    DESTDIR="$pkgdir" ninja -C _build $NINJAFLAGS install
+    make -C _build DESTDIR="$pkgdir" install
 
     # Include lit for running lit-based tests in other projects
     pushd "$srcdir"/llvm-project/llvm/utils/lit 
