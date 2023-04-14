@@ -10,7 +10,7 @@ url="https://${_name}.github.io"
 license=('MIT')
 provides=("${_name}")
 conflicts=("${_name}")
-source=(LICENSE.md::hhttps://raw.githubusercontent.com/evanw/esbuild/23c40b1b6a76a8626f1d160f89677ed2c73b6090/LICENSE.md)
+source=(LICENSE.md::https://raw.githubusercontent.com/evanw/esbuild/23c40b1b6a76a8626f1d160f89677ed2c73b6090/LICENSE.md)
 _get_source() {
     local npmpkg="linux-$1"
     local archive="${npmpkg}-${pkgver}.tgz"
