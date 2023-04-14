@@ -3,13 +3,13 @@
 _pkgbase="breed"
 pkgname="$_pkgbase-git"
 pkgver=r70.2976fb4
-pkgrel=3
+pkgrel=4
 pkgdesc="A small modal editor designed to breed productivity."
 arch=("any")
 url="https://git.tebibyte.media/mars/$_pkgbase"
 license=("AGPL3")
 source=("git+https://git.tebibyte.media/mars/$_pkgbase")
-makedepends=("rust" "cargo" "git")
+makedepends=("rust" "cargo" "git" "clang")
 provides=("breed")
 
 sha256sums=("SKIP")

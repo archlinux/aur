@@ -1,13 +1,14 @@
 pkgbase = breed-git
 	pkgdesc = A small modal editor designed to breed productivity.
 	pkgver = r70.2976fb4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://git.tebibyte.media/mars/breed
 	arch = any
 	license = AGPL3
 	makedepends = rust
 	makedepends = cargo
 	makedepends = git
+	makedepends = clang
 	provides = breed
 	source = git+https://git.tebibyte.media/mars/breed
 	sha256sums = SKIP
