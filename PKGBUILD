@@ -3,7 +3,7 @@
 pkgname=blahaj-git
 _pkgname="${pkgname%-git}"
 pkgver=2.0.0.r12.1431f97
-pkgrel=1
+pkgrel=2
 pkgdesc="Gay sharks at your local terminal - lolcat-like CLI tool (git version)"
 arch=('x86_64')
 url="https://blahaj.queer.software"
@@ -27,7 +27,7 @@ build () {
 
 check () {
 	cd "${_pkgname}"
-	make test 
+	make test_mt 
 }
 
 package() {

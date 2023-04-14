@@ -1,7 +1,7 @@
 pkgbase = blahaj-git
 	pkgdesc = Gay sharks at your local terminal - lolcat-like CLI tool (git version)
 	pkgver = 2.0.0.r12.1431f97
-	pkgrel = 1
+	pkgrel = 2
 	url = https://blahaj.queer.software
 	arch = x86_64
 	license = BSD
