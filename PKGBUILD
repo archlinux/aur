@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=spirv-tools-git
-pkgver=2023.1+8.gcdc4e528f3
+pkgver=2023.2+42.gd5f69dba55
 pkgrel=1
 pkgdesc='API and commands for processing SPIR-V modules'
 url='https://github.com/KhronosGroup/SPIRV-Tools'
@@ -13,34 +13,36 @@ source=('git+https://github.com/KhronosGroup/SPIRV-Tools'
 sha1sums=('SKIP'
 )
 depends=('gcc-libs' 'sh')
-makedepends=('cmake' 'ninja' 'python' 'git' 'spirv-headers-git')
+makedepends=('cmake' 'python' 'git' 'spirv-headers-git')
 options=('staticlibs')
 conflicts=('spirv-tools')
 provides=('spirv-tools')
 
 pkgver() {
+
   git -C SPIRV-Tools describe --tags --match 'v*.*' --abbrev=10 | sed 's/^v//; s/-/+/; s/-/./'
 }
 
 build() {
+
   cmake \
-    -DCMAKE_BUILD_TYPE=Release \
-    -GNinja \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
+    -D CMAKE_BUILD_TYPE=Release \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -D CMAKE_INSTALL_LIBDIR=lib \
     -D SPIRV-Headers_SOURCE_DIR=/usr/ \
-    -DBUILD_SHARED_LIBS=ON \
-    -DSPIRV_TOOLS_BUILD_STATIC=OFF \
-    -DSPIRV_WERROR=OFF \
+    -D BUILD_SHARED_LIBS=ON \
+    -D SPIRV_TOOLS_BUILD_STATIC=OFF \
+    -D SPIRV_WERROR=OFF \
     -S SPIRV-Tools -B build
-  ninja -C build
+  make -C build
 }
 
 check() {
-  ninja -C build test
+    make -C build test
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+  
+  make -C build DESTDIR="$pkgdir" install
   install -Dm644 "$srcdir"/SPIRV-Tools/LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
