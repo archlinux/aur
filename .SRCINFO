@@ -1,6 +1,6 @@
 pkgbase = pika-backup
 	pkgdesc = Keep your data safe
-	pkgver = 0.5.2
+	pkgver = 0.6.0
 	pkgrel = 1
 	epoch = 1
 	url = https://apps.gnome.org/app/org.gnome.World.PikaBackup
@@ -16,7 +16,7 @@ pkgbase = pika-backup
 	depends = libadwaita
 	depends = libsecret
 	depends = python-llfuse
-	source = git+https://gitlab.gnome.org/World/pika-backup.git#commit=6a670367b6a9e29904f5efaf14c6593d33fe9f74
+	source = git+https://gitlab.gnome.org/World/pika-backup.git#commit=6d0cb5e6c772a78f8b8bef388e58fbe723ee6184
 	sha256sums = SKIP
 
 pkgname = pika-backup
