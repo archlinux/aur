@@ -8,8 +8,10 @@ arch=(i686 x86_64)
 url="https://roy.marples.name/projects/parpd"
 license=(BSD)
 makedepends=(git)
-source=("git+https://github.com/NetworkConfiguration/parpd#commit=$_commit")
-sha256sums=('SKIP')
+source=("git+https://github.com/NetworkConfiguration/parpd#commit=$_commit"
+        "parpd.service")
+sha256sums=('SKIP'
+            'aad7280e84c669e90ae6cc97c9fa71b00d1851a6ae02b80f79488f8d1cc0d3bd')
 
 pkgver() {
   cd "$pkgname"
@@ -31,6 +33,7 @@ build() {
 package() {
   cd "$pkgname"
   make DESTDIR="$pkgdir" install
+  install -Dm644 ../parpd.service "$pkgdir"/usr/lib/systemd/system/parpd.service
 }
 
 # vim: ts=2:sw=2:et

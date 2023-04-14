@@ -1,0 +1,9 @@
+[Unit]
+Description=Proxy ARP Daemon
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/parpd
+
+[Install]
+WantedBy=multi-user.target

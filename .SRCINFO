@@ -8,6 +8,8 @@ pkgbase = parpd
 	license = BSD
 	makedepends = git
 	source = git+https://github.com/NetworkConfiguration/parpd#commit=6f26ca2ef205424252bd1313a112ca3f54a08606
+	source = parpd.service
 	sha256sums = SKIP
+	sha256sums = aad7280e84c669e90ae6cc97c9fa71b00d1851a6ae02b80f79488f8d1cc0d3bd
 
 pkgname = parpd
