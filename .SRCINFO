@@ -1,14 +1,13 @@
 pkgbase = python-pytorch-torchac
 	pkgdesc = Fast Entropy Coding in PyTorch
-	pkgver = 3
+	pkgver = 0.9.3
 	pkgrel = 1
-	url = https://github.com/trougnouf/L3C-PyTorch
+	url = https://github.com/fab-jul/torchac
 	arch = x86_64
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python-pytorch
-	source = git+https://github.com/trougnouf/L3C-PyTorch.git
-	sha256sums = SKIP
+	source = https://github.com/fab-jul/torchac/archive/refs/tags/0.9.3.tar.gz
+	sha256sums = 2f3d11583430a82f71b1b507734f5f841bb51d08e0d7d9d9eaf0b122c82ea905
 
 pkgname = python-pytorch-torchac
-
