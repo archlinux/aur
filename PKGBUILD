@@ -3,7 +3,7 @@
 pkgname=texmacs-appimage
 _appimage=TeXmacs.AppImage
 _install_to=/opt/appimages/TeXmacs.AppImage
-pkgver=20230402
+pkgver=20230410
 pkgrel=1
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG editor and CAS-interface."
 arch=('x86_64')
