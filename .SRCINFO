@@ -1,12 +1,12 @@
 pkgbase = monodevelop-bin
 	pkgdesc = MonoDevelop is a GNOME IDE primarily designed for C# and other CLI (.NET) languages
 	pkgver = 7.8.4.1_0xamarin6_ubuntu1804b1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.monodevelop.com/
 	arch = x86_64
 	license = MIT
 	depends = gtk-sharp-2
-	depends = gtk-sharp-3
+	depends = mono-msbuild
 	optdepends = fsharp: for building fsharp programs
 	provides = monodevelop
 	conflicts = monodevelop

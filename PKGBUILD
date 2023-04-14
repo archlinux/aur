@@ -4,10 +4,10 @@
 pkgname=monodevelop-bin
 _pkgver=7.8.4.1-0xamarin6+ubuntu1804b1
 pkgver=${_pkgver//[+-]/_}
-pkgrel=3
+pkgrel=4
 pkgdesc="MonoDevelop is a GNOME IDE primarily designed for C# and other CLI (.NET) languages"
 arch=('x86_64')
-depends=('gtk-sharp-2' 'gtk-sharp-3')
+depends=('gtk-sharp-2' 'mono-msbuild')
 optdepends=('fsharp: for building fsharp programs')
 provides=('monodevelop')
 conflicts=('monodevelop')
