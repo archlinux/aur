@@ -1,15 +1,16 @@
 pkgbase = dmarc-report-display
 	pkgdesc = Parse and display DMARC reports for human review.
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gist.github.com/nemunaire/c6700e608c6cd462392d
 	arch = any
 	license = GPL3
 	depends = perl
 	depends = perl-file-libmagic
 	depends = perl-xml-libxml
+	optdepends = perl-archive-zip: support for zip archives
+	optdepends = perl-email-mime: support for rfc822
 	source = https://gist.githubusercontent.com/nemunaire/c6700e608c6cd462392d/raw/e62ccec0cb874e8f7a9d476985c5898d76d95964/dmarc-report-display.pl
 	md5sums = 5e19bf14f3a82782fc27011189581dde
 
 pkgname = dmarc-report-display
-
