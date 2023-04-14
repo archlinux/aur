@@ -1,0 +1,17 @@
+pkgbase = gnome-colorblind-filters-git
+	pkgdesc = A GNOME Shell extension for main panel that offers full-screen color filters that should help color-blind users and developers.
+	pkgver = r51.4a0147c
+	pkgrel = 1
+	url = https://github.com/G-dH/gnome-colorblind-filters
+	arch = any
+	license = GPLv3
+	makedepends = git
+	makedepends = make
+	makedepends = zip
+	makedepends = unzip
+	depends = gnome-desktop
+	provides = gnome-colorblind-filters
+	source = gnome-colorblind-filters::git+https://github.com/G-dH/gnome-colorblind-filters
+	sha256sums = SKIP
+
+pkgname = gnome-colorblind-filters-git
