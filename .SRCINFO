@@ -1,6 +1,6 @@
 pkgbase = chromium-no-extras
 	pkgdesc = Chromium without hangout services, widevine, or chromedriver
-	pkgver = 112.0.5615.49
+	pkgver = 112.0.5615.121
 	pkgrel = 1
 	url = https://www.chromium.org/Home
 	arch = x86_64
@@ -57,15 +57,15 @@ pkgbase = chromium-no-extras
 	optdepends = qt5-base: enable Qt5 with --enable-features=AllowQt
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
-	provides = chromium=112.0.5615.49
+	provides = chromium=112.0.5615.121
 	conflicts = chromium
 	options = !lto
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-112.0.5615.49.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-112.0.5615.121.tar.xz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
 	source = sql-relax-constraints-on-VirtualCursor-layout.patch
 	source = disable-GlobalMediaControlsCastStartStop.patch
 	source = use-oauth2-client-switches-as-default.patch
-	sha256sums = ddfd37373c1fa0f433a6ac11f0baa2b1f3fdfb9c7b5867e32a4300f2eb5aff41
+	sha256sums = 9c7227e11b85af2eb828f41c0f83ffa94e17128ed7a368ce4afec9c1357b7ae1
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
 	sha256sums = e66be069d932fe18811e789c57b96249b7250257ff91a3d82d15e2a7283891b7
 	sha256sums = 7f3b1b22d6a271431c1f9fc92b6eb49c6d80b8b3f868bdee07a6a1a16630a302
