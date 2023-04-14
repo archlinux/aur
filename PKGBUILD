@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('gcc-libs' 'openssl')
 makedepends=('rust')
 source=("https://gitlab.com/ogarcia/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-b2sums=('9647a7858fba205937976658a8857520745488d0c83f20de1f6b0428f64c2c7b1d63517efa5f41fe57a4869d6921c5a410d9fb9e88cbd2e0d30bb7f943ea8f0d')
+b2sums=('b494b3f3785762aabd12c093db17609bcd0a86e02536382f2d84f1ecc0e9bb48b069167f8be95b46b59f9ba9860dd8ce4ff7f273b5b6568a4b0591c5820d464d')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
