@@ -1,7 +1,6 @@
 # Maintainer: Fijxu <fijxu <at> zzls <dot> xyz>
 pkgname=dnsproxy-git
-_pkgname=dnsproxy
-pkgver=0.48.3.r751.f8f22ab
+pkgver=0.48.3.r753.5864a87
 pkgrel=1
 pkgdesc="Simple DNS proxy with DoH, DoT, DoQ and DNSCrypt support (git version)"
 arch=('any')
@@ -19,18 +18,18 @@ sha256sums=("SKIP"
 _conf=etc/dnsproxy/dnsproxy.yaml    
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/$pkgname"
     printf "0.48.3.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "$_pkgname"
+    cd "$pkgname"
     go build -mod=vendor -v
 }
 
 # Thanks "5long" for the package(), configuration files and systemd service
 package() {
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/$pkgname"
     install -Dm755 dnsproxy "$pkgdir"/usr/bin/dnsproxy
     install -Dm644 LICENSE "$pkgdir"/usr/share/license/dnsproxy/LICENSE
     install -Dm644 README.md "$pkgdir"/usr/share/doc/dnsproxy/README.md
