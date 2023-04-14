@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=gpu-trace
-pkgver=2.9
+pkgver=2.10
 pkgrel=1
 pkgdesc="GPU Trace capture tool"
 arch=('any')
