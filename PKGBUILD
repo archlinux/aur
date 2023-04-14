@@ -33,15 +33,15 @@ optdepends=(
     'ffmpeg: for transcoding downloaded content'
 )
 provides=(
-    mps-youtube{,-git}
+    mps-youtube{,-hd}{,-git}
     termitube{,-git}
 )
 conflicts=(
-    mps-youtube{,-git}
+    mps-youtube{,-hd}{,-git}
     termitube{,-git}
 )
 replaces=(
-    mps-youtube{,-git}
+    mps-youtube{,-hd}{,-git}
     termitube{,-git}
 )
 install=yewtube.install
