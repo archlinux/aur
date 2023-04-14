@@ -1,7 +1,7 @@
 # Maintainer: Isabel <isabelroseslive@gmail.com>
 pkgname=catppuccinifier-cli-git
 _pkgname=catppuccinifier
-pkgver=r36.bb94471
+pkgver=r37.7cda895
 pkgrel=1
 pkgdesc="An comand line tool to catppuccinifiy your images."
 arch=('x86_64')

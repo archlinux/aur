@@ -1,6 +1,6 @@
 pkgbase = catppuccinifier-cli-git
 	pkgdesc = An comand line tool to catppuccinifiy your images.
-	pkgver = r36.bb94471
+	pkgver = r37.7cda895
 	pkgrel = 1
 	url = https://github.com/lighttigerXIV/catppuccinifier
 	arch = x86_64
