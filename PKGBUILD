@@ -1,12 +1,13 @@
-# Maintainer: Knut Ahlers <knut at ahlers dot me>
+# Maintainer: Christian Heusel <christian@heusel.eu>
+# Contributor: Knut Ahlers <knut at ahlers dot me>
 # Contributor: Det <nimetonmaili g-mail>
-# Contributors: t3ddy, Lex Rivera aka x-demon, ruario
+# Contributor: t3ddy, Lex Rivera aka x-demon, ruario
 
 # Check for new Linux releases in: http://googlechromereleases.blogspot.com/search/label/Beta%20updates
-# or use: $ curl -s https://dl.google.com/linux/chrome/rpm/stable/x86_64/repodata/other.xml.gz | gzip -df | awk -F\" '/pkgid/{ sub(".*-","",$4); print $4": "$10 }'
+# or use: $ curl -s https://dl.google.com/linux/chrome/rpm/stable/x86_64/repodata/other.xml.gz | gzip -df | xq -x "otherdata/package[@name='google-chrome-$_channel']/version/@ver"
 
 pkgname=google-chrome-beta
-pkgver=113.0.5672.24
+pkgver=113.0.5672.37
 pkgrel=1
 pkgdesc="The popular and trusted web browser by Google (Beta Channel)"
 arch=('x86_64')
@@ -35,15 +36,13 @@ _channel=beta
 source=("https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-${_channel}/google-chrome-${_channel}_${pkgver}-1_amd64.deb"
 	'eula_text.html'
 	"google-chrome-$_channel.sh")
-sha512sums=('ef38375651c0800f1df0c8c33a23181429f5e5e2d91f4382b2584af693bf21a94c680ac350b1a2fbf2c87f05651587e250f8635d5d6996626ef38ffb11f954e3'
+sha512sums=('654ab1e49b6d899348291fc6c26e88367dbc77f00f24b10ca4e9adf5746504f4ee130e6c2de599b10b1cc5a0e3951860d581cd4adcf6192fcb4cbead368ad5d4'
             'a225555c06b7c32f9f2657004558e3f996c981481dbb0d3cd79b1d59fa3f05d591af88399422d3ab29d9446c103e98d567aeafe061d9550817ab6e7eb0498396'
             '43344065044b6e8ac12275c49f68b83c1d8208d314bf82d74a9610a2266f0f88d7c2c54d649fb59c66a2edcb7d0b3d7ad816230e2824e1d518f8f4b1e797d4b0')
 
 package() {
-	echo "  -> Extracting the data.tar.xz..."
 	bsdtar -xf data.tar.xz -C "$pkgdir/"
 
-	echo "  -> Moving stuff in place..."
 	# Launcher
 	install -m755 google-chrome-$_channel.sh "$pkgdir"/usr/bin/google-chrome-$_channel
 
@@ -58,13 +57,13 @@ package() {
 	install -Dm644 "$pkgdir"/opt/google/chrome-$_channel/WidevineCdm/LICENSE \
 		"$pkgdir"/usr/share/licenses/google-chrome-$_channel/WidevineCdm-LICENSE.txt
 
-	echo "  -> Fixing Chrome desktop entry..."
+	# Fix the Chrome desktop entry
 	sed -i \
 		-e "/Exec=/i\StartupWMClass=Google-chrome-$_channel" \
 		-e "s/x-scheme-handler\/ftp;\?//g" \
 		"$pkgdir"/usr/share/applications/google-chrome-$_channel.desktop
 
-	echo "  -> Removing Debian Cron job, duplicate product logos and menu directory..."
+	# Remove the Debian Cron job, duplicate product logos and menu directory
 	rm -r \
 		"$pkgdir"/etc/cron.daily/ \
 		"$pkgdir"/opt/google/chrome-$_channel/cron/ \
