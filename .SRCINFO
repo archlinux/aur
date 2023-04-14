@@ -1,16 +1,17 @@
-pkgbase = mermaid-cli
-	pkgdesc = Generation of diagram and flowchart from text in a similar manner as markdown (CLI)
+pkgbase = mermaid-cli-brave
+	pkgdesc = CLI for mermaid, generates diagrams and flowcharts (depends on brave rather then chromium)
 	pkgver = 10.1.0
 	pkgrel = 1
 	url = https://github.com/mermaid-js/mermaid-cli
 	arch = any
 	license = MIT
 	makedepends = npm
-	makedepends = chromium
+	makedepends = brave
 	depends = nodejs
-	depends = chromium
+	depends = brave
+	conflicts = mermaid-cli
 	noextract = mermaid-cli-10.1.0.tgz
 	source = http://registry.npmjs.org/@mermaid-js/mermaid-cli/-/mermaid-cli-10.1.0.tgz
 	sha256sums = 743d724d1d66a40b3c278495b11cf0645dd54b7a12897f7a0f39d5b4ce4305d5
 
-pkgname = mermaid-cli
+pkgname = mermaid-cli-brave
