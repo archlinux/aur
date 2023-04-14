@@ -1,5 +1,5 @@
 # Maintainer: LockRim <lockrim@qq.com>
-# Maintainer: shniubobo <shniubobo at outlook dot com>
+# Contributor: shniubobo <shniubobo at outlook dot com>
 # Contributor: Howard Cheung <mail@h-cheung.cf>
 # Contributor: AlprC <alprcyan@gmail.com>
 
@@ -12,7 +12,7 @@ arch=('any')
 url="https://github.com/outloudvi/mw2fcitx"
 license=('Unlicense' 'cc-by-nc-sa-3.0')
 source=("https://github.com/outloudvi/${_reponame}/releases/download/${pkgver}/moegirl.dict.yaml")
-md5sums=('82b997846ebe0a669f0425bd522e288c')
+sha256sums=('bfead0bdfc9f2f5261475e8b72490c4d5b56ef7b2ce5782ac924306d9a21cf02')
 
 package() {
   install -Dm644 moegirl.dict.yaml -t ${pkgdir}/usr/share/rime-data/
