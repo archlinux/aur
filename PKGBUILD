@@ -1,8 +1,8 @@
 # Maintainer: atrax <***** at prtn dot email where ***** is atrax> 
 
 pkgname=vger
-pkgver=1.06
-pkgrel=3
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="Gemini server written in C"
 arch=('x86_64' 'armv7h')
 url="https://tildegit.org/solene/vger"
@@ -11,7 +11,7 @@ depends=(libbsd)
 optdepends=('xinetd: Network support'
             'stunnel: TLS support')
 source=("https://tildegit.org/solene/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('0d1c9564f509c68cbf8408874b33c4e21cb41c9b7cf71d10d229e4ac2f6de860')
+sha256sums=('bba0f595cf6ded1ee423f1ec5ef078f06faf4bbe1d2b8fb63add7b6ea2f836ed')
 
 prepare() {
   cd "$srcdir"/${pkgname}
