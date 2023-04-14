@@ -11,7 +11,6 @@ depends=(
   python-aiohttp-socks
   python-aiorpcx
   python-bitstring
-  python-btchip
   python-certifi
   python-cryptography
   python-dnspython
@@ -46,5 +45,5 @@ build() {
 package() {
   cd Electrum-LTC-$pkgver
   ./setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 LICENCE -t "$pkgdir"/usr/share/licenses/$pkgname
+  install -D -m 644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENCE
 }

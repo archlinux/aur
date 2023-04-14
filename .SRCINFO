@@ -11,7 +11,6 @@ pkgbase = electrum-ltc
 	depends = python-aiohttp-socks
 	depends = python-aiorpcx
 	depends = python-bitstring
-	depends = python-btchip
 	depends = python-certifi
 	depends = python-cryptography
 	depends = python-dnspython
