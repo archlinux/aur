@@ -1,11 +1,11 @@
 # Maintainer: 7Ji <pugokughin@gmail.com>
 
 _desc="flippy's AArch64-focused fork aiming to increase usability"
-_pkgver_main=6.1.22
+_pkgver_main=6.1.24
 _pkgver_suffix=flippy
 _pkgver_uname="${_pkgver_main}-${_pkgver_suffix}"
 _flippy_repo='linux-6.1.y'
-_flippy_commit='a526f070d00c8c5e7c2977d1ab4e30dfd652806e'
+_flippy_commit='2c936ab9379154a13e759b30916134704072ee3a'
 _srcname="${_flippy_repo}-${_flippy_commit}"
 
 pkgbase=linux-aarch64-flippy
@@ -31,8 +31,8 @@ source=(
   'linux.preset'
 )
 sha256sums=(
-  'fceee60258ec838fc1c5a3ca587fd17027ca3ef17fc17da505ed8aa1b937f9e3'
-  '5484089174a3694018f956a826f265073d786d77fdc7df6b0078693e55ddd947'
+  '028d8c6740eefd0efbce294c0ca5e80d97f89ee146ad41bff3adf958ba10002f'
+  '3cb447597f018e7af120840fbfe9be2900703765817b53a242a4ac6fae517a30'
   'bdcd6cbf19284b60fac6d6772f1e0ec2e2fe03ce7fe3d7d16844dd6d2b5711f3'
 )
 
