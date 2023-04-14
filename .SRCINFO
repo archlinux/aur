@@ -1,6 +1,6 @@
 pkgbase = resonance-git
 	pkgdesc = An intuitive music player application written in Rust & Python, with a clean user interface built using GTK4
-	pkgver = r34.72cc1d2
+	pkgver = r59.147cb39
 	pkgrel = 1
 	url = https://github.com/nate-xyz/resonance
 	arch = x86_64

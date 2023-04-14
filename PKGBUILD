@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=resonance-git
-pkgver=r34.72cc1d2
+pkgver=r59.147cb39
 pkgrel=1
 pkgdesc='An intuitive music player application written in Rust & Python, with a clean user interface built using GTK4'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
