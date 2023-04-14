@@ -3,7 +3,7 @@
 pkgname=tkey-ssh-agent
 _pkgname=tillitis-key1-apps
 pkgver=0.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A ssh-agent for the Tillitis TKey"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/tillitis/tillitis-key1-apps"
@@ -14,8 +14,7 @@ sha256sums=('d15fc7f556548951989abf6973374f71e039028202e8cad4b70f79539da00aff')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  make apps
-  make tkey-ssh-agent
+  make OBJCOPY="llvm-objcopy" apps tkey-ssh-agent
 }
 
 package() {
