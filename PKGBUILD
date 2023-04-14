@@ -2,7 +2,7 @@
 
 pkgname=python-webdriver-manager
 _name=webdriver_manager
-pkgver=3.8.5
+pkgver=3.8.6
 pkgrel=1
 pkgdesc="Simplify management of binary drivers for different browsers in Selenium"
 arch=(any)
@@ -21,9 +21,16 @@ depends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ce46147c9dba0f01ffaa6d9b26a7f66c0f4d17033c5ee10daa747104bb990651')
+sha256sums=('b75ce174081a26a188d536aad487b8ee7b52ccfcdab35b0e4846b95abe42dc41')
 
 _archive="$_name-$pkgver"
+
+prepare() {
+  cd "$_archive"
+
+  rm tests/__init__.py tests_negative/__init__.py tests_xdist/__init__.py
+}
+
 
 build() {
   cd "$_archive"

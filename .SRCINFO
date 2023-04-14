@@ -1,6 +1,6 @@
 pkgbase = python-webdriver-manager
 	pkgdesc = Simplify management of binary drivers for different browsers in Selenium
-	pkgver = 3.8.5
+	pkgver = 3.8.6
 	pkgrel = 1
 	url = https://github.com/SergeyPirogov/webdriver_manager
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-webdriver-manager
 	depends = python-dotenv
 	depends = python-tqdm
 	depends = python-packaging
-	source = python-webdriver-manager-3.8.5.tar.gz::https://github.com/SergeyPirogov/webdriver_manager/archive/refs/tags/v3.8.5.tar.gz
-	sha256sums = ce46147c9dba0f01ffaa6d9b26a7f66c0f4d17033c5ee10daa747104bb990651
+	source = python-webdriver-manager-3.8.6.tar.gz::https://github.com/SergeyPirogov/webdriver_manager/archive/refs/tags/v3.8.6.tar.gz
+	sha256sums = b75ce174081a26a188d536aad487b8ee7b52ccfcdab35b0e4846b95abe42dc41
 
 pkgname = python-webdriver-manager
