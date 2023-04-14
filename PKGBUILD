@@ -2,13 +2,13 @@
 
 pkgname=polypane
 _pkgname=Polypane
-pkgver=13.1.1
+pkgver=13.1.2
 pkgrel=1
 pkgdesc="Browser for building responsive websites and apps."
 arch=('x86_64' 'i686')
 url="https://polypane.app"
 license=('https://polypane.app/legal/')
-sha256sums=('593bc169f442ee02368590ce36afc446768708499f2c8c98840096df1e0842fd')
+sha256sums=('c3066a716fb120a2a9503a142d3ea0062ed06e6ba68bc64dc1df82a50a8ba6b3')
 makedepends=('p7zip' 'curl' 'jq')
 noextract=("$_pkgname-${pkgver}.AppImage")
 options=('!strip')
