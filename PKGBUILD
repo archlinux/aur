@@ -3,7 +3,7 @@
 pkgname=blahaj
 _pkgname=BLAHAJ
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Gay sharks at your local terminal - lolcat-like CLI tool"
 arch=('x86_64')
 url="https://blahaj.queer.software"
@@ -26,5 +26,5 @@ package() {
 	cd "${_pkgname}-${pkgver}"
 	install -Dm 755 "bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
+	install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
