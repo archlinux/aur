@@ -32,4 +32,6 @@ check() {
 
 package() {
   DESTDIR="$pkgdir" meson install -C build
+  install -Dm644 Curtail/README.md -t "$pkgdir/usr/share/doc/$_pkgname"
+  install -Dm644 Curtail/COPYING -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
