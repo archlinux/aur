@@ -2,7 +2,7 @@
 # Project by koki-develop (https://github.com/koki-develop/)
 pkgname=gat-git
 pkgver=r130.3f578d4
-pkgrel=1
+pkgrel=3
 pkgdesc='Cat alternative written in Go.'
 arch=('x86_64')
 url="https://github.com/koki-develop/gat"
