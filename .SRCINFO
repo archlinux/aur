@@ -10,6 +10,7 @@ pkgbase = dnsproxy-git
 	provides = dnsproxy
 	conflicts = dnsproxy-bin
 	conflicts = dnsproxy-adguard
+	backup = etc/dnsproxy/dnsproxy.yaml
 	source = dnsproxy-git::git+https://github.com/AdguardTeam/dnsproxy.git
 	source = dnsproxy.yaml
 	source = dnsproxy.service

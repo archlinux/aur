@@ -9,6 +9,7 @@ license=('Apache')
 makedepends=('git' 'go')
 provides=('dnsproxy')
 conflicts=(dnsproxy-bin dnsproxy-adguard)
+backup=(etc/dnsproxy/dnsproxy.yaml)
 source=("dnsproxy-git::git+https://github.com/AdguardTeam/dnsproxy.git"
         "dnsproxy.yaml"
         "dnsproxy.service")
