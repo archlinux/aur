@@ -3,7 +3,7 @@
 pkgname=zju-connect-bin
 _pkgname=zju-connect
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Go client for ZJU RVPN"
 arch=("x86_64")
 url="https://github.com/Mythologyli/zju-connect"
@@ -29,6 +29,5 @@ package() {
 	mkdir -p ${pkgdir}/etc/${_pkgname}
 	install -Dm644 ${srcdir}/config.toml -t ${pkgdir}/etc/${_pkgname}/ 
 
-	mkdir -p ${pkgdir}/lib/systemd/system
-	install -Dm644 ${_pkgname}.service -t ${pkgdir}/lib/systemd/system/
+	install -Dm644 ${_pkgname}.service -t ${pkgdir}/usr/lib/systemd/system/
 }
