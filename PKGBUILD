@@ -1,6 +1,6 @@
 # Maintainer: Bhanupong Petchlert <bpetlert@gmail.com>
 pkgname=pacman-repo-stats
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Show usage statistics of repositories in pacman.conf"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bpetlert/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('7f30bc4cab3082a1ccfb858f50ce5f4ff243da5c3fccec99ec4a301b609a2879')
+sha256sums=('6ea1e9db493d1dda52254dc1b236e25ea1d5a4aa81728c927adbf5dbecc3cf70')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
