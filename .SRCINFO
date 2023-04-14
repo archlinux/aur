@@ -1,0 +1,18 @@
+pkgbase = spectrum-git
+	pkgdesc = Console-based music player with equalizer written in C++.
+	pkgver = r262.94dafa9
+	pkgrel = 1
+	url = https://github.com/v1nns/spectrum
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = alsa-lib
+	makedepends = ffmpeg
+	makedepends = fftw
+	provides = spectrum
+	conflicts = spectrum
+	source = spectrum::git+https://github.com/v1nns/spectrum
+	md5sums = SKIP
+
+pkgname = spectrum-git
