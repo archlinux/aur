@@ -4,12 +4,14 @@
 pkgname=ticker-bin
 _pkg=ticker
 pkgver=4.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Terminal stock ticker with live updates and position tracking'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/achannarasappa/ticker"
 license=('GPL3')
 depends=('glibc')
+provides=("$_pkg")
+conflicts=("$_pkg")
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkg-$pkgver-linux-amd64.tar.gz")
 source_i686=("$pkgname-$pkgver-i686.tar.gz::$url/releases/download/v$pkgver/$_pkg-$pkgver-linux-386.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkg-$pkgver-linux-arm64.tar.gz")
