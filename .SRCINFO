@@ -1,7 +1,7 @@
 pkgbase = gat-git
 	pkgdesc = Cat alternative written in Go.
 	pkgver = r130.3f578d4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/koki-develop/gat
 	arch = x86_64
 	license = MIT
