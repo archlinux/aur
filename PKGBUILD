@@ -3,7 +3,7 @@
 _pkgname='boost-histogram'
 pkgname="python-${_pkgname}"
 pkgver='1.3.2'
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for Boost's Histogram library."
 arch=('x86_64')
 url='https://github.com/scikit-hep/boost-histogram'
@@ -46,7 +46,7 @@ prepare() {
   git config submodule."extern/assert".url "${srcdir}/${pkgname}"-assert
   git config submodule."extern/variant2".url "${srcdir}/${pkgname}"-variant2
 
-  git submodule update --init --recursive
+  git -c protocol.file.allow=always submodule update --init --recursive
 }
 
 build() {
