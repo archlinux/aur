@@ -18,9 +18,9 @@ pkgbase = cellframe-node
 	options = !buildflags
 	options = !makeflags
 	backup = opt/cellframe-node/etc/cellframe-node.cfg
-	source = git+https://gitlab.demlabs.net/cellframe/cellframe-node.git#commit=7baa046d6264790ef2627039a0f8c56df25cbe62
-	source = git+https://gitlab.demlabs.net/cellframe/cellframe-sdk.git#commit=4207cb36a7c3d34f029209b04e0343f2ba832bc7
-	source = git+https://gitlab.demlabs.net/cellframe/python-cellframe.git#commit=4207cb36a7c3d34f029209b04e0343f2ba832bc7
+	source = git+https://gitlab.demlabs.net/cellframe/cellframe-node.git#commit=61b073a1f20a8e4991e946e84433df659e956556
+	source = git+https://gitlab.demlabs.net/cellframe/cellframe-sdk.git#commit=2db952b9ee4ca56d31f9b68f1277fc19c22b62b6
+	source = git+https://gitlab.demlabs.net/cellframe/python-cellframe.git#commit=a31ba6e2bdd9163033a8031b060b4dcdf9bad413
 	source = cellframe-node.cfg
 	source = Backbone.cfg
 	source = kelvpn-minkowski.cfg
@@ -34,7 +34,7 @@ pkgbase = cellframe-node
 	md5sums = SKIP
 	md5sums = 47f1aa606f2b91d4dfbc22ea263d540a
 	md5sums = 65a864051d256b08d656079d1c6fa7af
-	md5sums = 0b5a872c2ea133a4df0443a415e9f311
+	md5sums = 3509a0da9090e05a8b46087a13d93dcd
 	md5sums = f5bc95f5f8915d074c66398b2acb0907
 	md5sums = be8dc9bddf5354074993df8377da03a4
 	md5sums = f6fa69bc2e3896fda661c84d2a2c3192
