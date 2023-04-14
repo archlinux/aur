@@ -1,7 +1,7 @@
 pkgbase = pantheon-system-monitor-git
 	pkgdesc = Manage processes and monitor system resources. Designed for elementary OS.
 	pkgver = r983.4a555e3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stsdc/monitor
 	arch = i686
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = pantheon-system-monitor-git
 	depends = libwnck3
 	depends = json-glib
 	depends = udisks2
+	depends = wingpanel
 	optdepends = lib32-glib2
 	provides = pantheon-system-monitor
 	conflicts = pantheon-system-monitor
