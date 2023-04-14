@@ -1,5 +1,5 @@
 pkgbase = yewtube-git
-	pkgdesc = Terminal based YouTube jukebox with playlist management - git develop release
+	pkgdesc = Terminal based YouTube player and downloader. No Youtube API key required.
 	pkgver = 2.10.2.r3.g60a526c
 	pkgrel = 2
 	url = https://github.com/mps-youtube/yewtube
