@@ -1,6 +1,6 @@
 pkgbase = minder-git
 	pkgdesc = Mind-mapping application designed for Pantheon
-	pkgver = r1348.919096e
+	pkgver = r1742.67fca66
 	pkgrel = 1
 	url = https://github.com/phase1geo/Minder
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = minder-git
 	depends = discount
 	depends = glib2
 	depends = granite
-	depends = gtksourceview3
+	depends = gtksourceview4
 	depends = libarchive
 	depends = libgee
 	depends = libxml2
@@ -25,4 +25,3 @@ pkgbase = minder-git
 	md5sums = SKIP
 
 pkgname = minder-git
-
