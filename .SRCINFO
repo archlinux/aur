@@ -1,14 +1,15 @@
 pkgbase = ttf-sil-fonts
 	pkgdesc = Metapackage depending on all OFL-licensed font packages from SIL
-	pkgver = 8
-	pkgrel = 3
+	pkgver = 9
+	pkgrel = 1
 	url = https://software.sil.org/fonts
 	arch = any
 	license = OFL
 	depends = gentium-plus-font
-	depends = ttf-charis-sil>=5.000-3
-	depends = ttf-andika>=5.000-4
-	depends = ttf-sil-abyssinica>=2.000-5
+	depends = ttf-charis-sil
+	depends = ttf-andika
+	depends = ttf-scheherazade-new
+	depends = ttf-sil-abyssinica
 	depends = ttf-sil-alkalami
 	depends = ttf-sil-annapurna
 	depends = ttf-sil-apparatus
@@ -18,16 +19,14 @@ pkgbase = ttf-sil-fonts
 	depends = ttf-sil-ezra
 	depends = ttf-sil-galatia
 	depends = ttf-sil-harmattan
-	depends = ttf-sil-lateef>=1.200-7
+	depends = ttf-sil-lateef
 	depends = ttf-sil-mingzat
 	depends = ttf-sil-mondulkiri
 	depends = ttf-sil-namdhinggo
 	depends = ttf-sil-nuosu
 	depends = ttf-sil-padauk
-	depends = ttf-sil-scheherazade
 	depends = ttf-sil-sophia-nubian
 	depends = ttf-sil-tagmukay
 	depends = ttf-sil-tai-heritage-pro
 
 pkgname = ttf-sil-fonts
-
