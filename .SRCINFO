@@ -1,12 +1,19 @@
 pkgbase = ctool-bin
 	pkgdesc = 程序开发常用工具 chrome /edge/firefox /utools/windows /linux/mac
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/baiy/Ctool
 	arch = x86_64
 	license = MIT
 	depends = webkit2gtk
 	depends = gtk3
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	depends = dbus
+	depends = glib2
+	depends = gdk-pixbuf2
+	depends = hicolor-icon-theme
 	source = https://github.com/baiy/Ctool/releases/download/v2.2.0/ctool_tauri_linux.deb
 	sha256sums = 539970c496b116b80333eac5b61f483484ffd81b196d38d8194080818da286a4
 
