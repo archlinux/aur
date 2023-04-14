@@ -1,13 +1,13 @@
 pkgbase = snownews
 	pkgdesc = RSS feed reader for the command-line
-	pkgver = 1.9
+	pkgver = 1.11
 	pkgrel = 1
-	url = https://github.com/msharov/snownews
+	url = https://sourceforge.net/projects/snownews/
 	arch = x86_64
 	license = GPL3
 	depends = curl
 	depends = libxml2
-	source = snownews-1.9.tar.gz::https://github.com/msharov/snownews/archive/refs/tags/v1.9.tar.gz
-	sha256sums = d8ef0c7ef779771e2c8322231bdfa7246d495ba8f24c3c210c96f3b6bd3776a7
+	source = snownews-1.11.tar.gz::https://sourceforge.net/projects/snownews/files/snownews-1.11.tar.gz
+	sha256sums = afd4db7c770f461a49e78bc36e97711f3066097b485319227e313ba253902467
 
 pkgname = snownews
