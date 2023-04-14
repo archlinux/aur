@@ -2,7 +2,7 @@
 # Retrieved from
 # https://gitlab.manjaro.org/packages/community/microsoft-office-online-jak.git
 
-pkgname=('microsoft-office-web-jak')
+pkgname=('ms-office-online')
 pkgver=2.1.2
 pkgrel=1
 epoch=1
