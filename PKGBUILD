@@ -1,6 +1,6 @@
 pkgname=kraken2
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Improved vesion of kraken ultrafast metagenomic sequence classification tool. https://doi.org/10.1186/s13059-019-1891-0"
 arch=('i686' 'x86_64')
 url="https://github.com/DerrickWood/kraken2"
@@ -28,7 +28,6 @@ build() {
     cd ${pkgname}-${pkgver}/src
     export KRAKEN2_DIR=/usr/lib/kraken2
     make
-
 }
 
 package() {
@@ -54,5 +53,4 @@ package() {
     cp $KRAKEN2_DIR/kraken2{,-build,-inspect} ${pkgdir}/usr/bin
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     cp -r data/ ${pkgdir}/usr/share/${pkgname}/
-
 }            

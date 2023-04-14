@@ -1,7 +1,7 @@
 pkgbase = kraken2
 	pkgdesc = Improved vesion of kraken ultrafast metagenomic sequence classification tool. https://doi.org/10.1186/s13059-019-1891-0
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DerrickWood/kraken2
 	arch = i686
 	arch = x86_64
