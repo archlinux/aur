@@ -1,0 +1,19 @@
+pkgbase = trunk-lwt-bin
+	pkgdesc = Language learning application.
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://theiceshelf.itch.io/trunk
+	arch = x86_64
+	license = unknown
+	depends = electron13-bin
+	depends = bash
+	depends = glibc
+	depends = nodejs
+	depends = gcc-libs
+	provides = trunk
+	source = https://github.com/theiceshelf/trunk/releases/download/v0.0.4/Trunk_0.0.4_amd64.deb
+	source = trunk.sh
+	sha256sums = 5f229698d97b688c18b5bb8968d31f2c74232db725ceaa3b39ab6de459238269
+	sha256sums = 469e77db1a61e294e172a294ebdff2888eb88de593be65fce379b06eb4fc9863
+
+pkgname = trunk-lwt-bin
