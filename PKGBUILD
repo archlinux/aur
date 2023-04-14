@@ -3,7 +3,7 @@
 
 pkgname=amazon-workspaces-bin
 pkgver=4.5.0.2006
-pkgrel=3
+pkgrel=4
 _aptdist=focal
 pkgdesc='Amazon Workspace Client'
 arch=('x86_64')
@@ -15,11 +15,8 @@ depends=(
     'icu63'
     'libsoup'
     'graphicsmagick'
-    'hiredis'
+    'hiredis0.14'
     'libva'
-)
-optdepends=(
-    'pcoip-client: Might be required if you have issues connecting to a workspace - please comment on AUR'
 )
 options=('staticlibs')
 makedepends=(
