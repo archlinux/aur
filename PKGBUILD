@@ -1,3 +1,5 @@
+# Maintainer: Viktor Chuchman <norz3nmusic@gmail.com>
+# Project by koki-develop (https://github.com/koki-develop/)
 pkgname=gat-git
 pkgver=r130.3f578d4
 pkgrel=1
