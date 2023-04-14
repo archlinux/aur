@@ -29,7 +29,7 @@ build() {
 }
 
 package() {
-  mkdir -p ~/.local/share/gnome-shell/extensions/$_uuid
-  cd ~/.local/share/gnome-shell/extensions/$_uuid
+  mkdir -p ${pkgdir}/usr/share/gnome-shell/extensions/$_uuid
+  cd ${pkgdir}/usr/share/gnome-shell/extensions/$_uuid 
   unzip "${srcdir}/${_pkgname}/$_uuid.zip"
 }
