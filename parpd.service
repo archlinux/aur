@@ -1,5 +1,8 @@
 [Unit]
 Description=Proxy ARP Daemon
+Documentation=man:parpd(8)
+Documentation=man:parpd.conf(5)
+Documentation=https://github.com/NetworkConfiguration/parpd
 
 [Service]
 Type=forking

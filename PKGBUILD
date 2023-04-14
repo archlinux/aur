@@ -11,7 +11,7 @@ makedepends=(git)
 source=("git+https://github.com/NetworkConfiguration/parpd#commit=$_commit"
         "parpd.service")
 sha256sums=('SKIP'
-            'aad7280e84c669e90ae6cc97c9fa71b00d1851a6ae02b80f79488f8d1cc0d3bd')
+            '5854839e487459500fb36ae6edce28ad99fa4799847688411ec12abf42c81be3')
 
 pkgver() {
   cd "$pkgname"
