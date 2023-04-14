@@ -624,3 +624,10 @@ Fixes:
 - The problem that could cause the location auto-completion field to miss some options has been solved.
 - We fixed an issue impacting event creation in connected Infomaniak calendars after a recent update to their infrastructure.
 
+
+=== Morgen 2.6.9
+Fixes:
+- In this release, we fixed time zone handling for Mexico and made improvements to avoid similar inconsistencies in the future.
+- We also fixed a problem with localization that affected some regions, including Denmark and Japan.
+- Finally, we fixed a problem that affected the updating of all-day recurring events with some CalDAV providers.
+
