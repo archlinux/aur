@@ -1,0 +1,16 @@
+pkgbase = hunspell-multilingual-ru-en
+	pkgdesc = English + Russian bilingual Hunspell dictionary.
+	pkgver = 1.0.3.1webext
+	pkgrel = 0
+	url = https://addons.mozilla.org/ru/firefox/addon/unified-russian-english-spell/
+	arch = any
+	license = LGPL3
+	optdepends = hunspell: the spell checking libraries and apps
+	source = hunspell-multilingual-ru-en.aff::https://github.com/titoBouzout/Dictionaries/raw/607c1f0b7e8fa0c0e917aad1a85a381fabcae440/Russian-English%20Bilingual.aff
+	source = hunspell-multilingual-ru-en.dic::https://github.com/titoBouzout/Dictionaries/raw/607c1f0b7e8fa0c0e917aad1a85a381fabcae440/Russian-English%20Bilingual.dic
+	source = hunspell-multilingual-ru-en-README.txt::https://github.com/titoBouzout/Dictionaries/raw/607c1f0b7e8fa0c0e917aad1a85a381fabcae440/Russian-English%20Bilingual.txt
+	sha256sums = 66b8af900983e354f5561a5f2b97ac3ca21128587b9164cc5651901a10981186
+	sha256sums = 1972265aeb45860e0b96ae838ba4498425041aa18a82117c818ceae80d9ba20b
+	sha256sums = 417ebf6adf8b10974f3c354c9637c10b5893d3a9c22960e52052cabcc2648dbf
+
+pkgname = hunspell-multilingual-ru-en

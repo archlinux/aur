@@ -1,0 +1,9 @@
+# package file
+/*.tar.zst
+
+# downloaded files
+/hunspell-multilingual-ru-en*
+
+# generated files
+/pkg
+/src
