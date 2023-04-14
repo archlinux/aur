@@ -5,7 +5,7 @@
 
 _pkgname="decaf-emu"
 pkgname="$_pkgname-git"
-pkgver=r5216.e8c9af30
+pkgver=r5217.dd0b1be3
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Wii U emulator"
 arch=('x86_64')
@@ -37,7 +37,6 @@ optdepends=(
 )
 source=(
   "$_pkgname"::"git+$url"
-  "skip-check-vk-result.patch"
 
   # decaf-emu submodules
   "addrlib"::"git+https://github.com/decaf-emu/addrlib"
@@ -66,7 +65,6 @@ source=(
   "toml-test"::"git+https://github.com/BurntSushi/toml-test"
 )
 sha256sums=(
-  'SKIP'
   'SKIP'
 
   'SKIP'
@@ -150,6 +148,9 @@ prepare() {
   git submodule sync
   git submodule update --init --recursive
 
+  # Force Qt5
+  sed -Ei -e 's@find_package\(Qt6 COMPONENTS@find_package(Qt5 5.15 COMPONENTS@' CMakeLists.txt
+
   # Apply patches
   for p in "$srcdir"/*.patch ; do
     if [ -f "$p" ] ; then
@@ -167,6 +168,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DDECAF_BUILD_TESTS=OFF \
+    -DQT_DEFAULT_MAJOR_VERSION=5 \
     -DDECAF_FFMPEG=ON \
     -DDECAF_VULKAN=ON \
     -DDECAF_QT=ON
