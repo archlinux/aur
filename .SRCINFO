@@ -1,6 +1,6 @@
 pkgbase = mesa-minimal-git
 	pkgdesc = an open-source implementation of the OpenGL specification, stripped down git version
-	pkgver = 23.1.0_devel.169722.ba73a41a2b9
+	pkgver = 23.2.0_devel.169840.bfce57c7a5b
 	pkgrel = 1
 	url = https://www.mesa3d.org
 	arch = x86_64
@@ -78,8 +78,7 @@ pkgname = rusticl-mesa-minimal-git
 	depends = libdrm
 	depends = spirv-tools-git
 	depends = libclc-minimal-git
-	depends = llvm-minimal-git
-	depends = mesa-minimal-git=23.1.0_devel.169722.ba73a41a2b9-1
+	depends = mesa-minimal-git=23.2.0_devel.169840.bfce57c7a5b-1
 	provides = opencl-mesa
 	provides = opencl-driver
 	conflicts = opencl-mesa
