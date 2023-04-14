@@ -15,7 +15,7 @@ arch=('x86_64')
 url="https://osu.ppy.sh/"
 license=('MIT' 'custom:CC-BY-NC-4.0')
 depends=('ffmpeg' 'libgl' 'sdl2' 'dotnet-runtime-6.0')
-makedepends=('dotnet-sdk-6.0-bin' 'git')
+makedepends=('git' 'dotnet-sdk>=6.0.8.sdk400')
 provides=('osu-lazer')
 conflicts=('osu-lazer')
 source=("git+https://github.com/ppy/osu.git"

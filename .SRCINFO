@@ -6,8 +6,8 @@ pkgbase = osu-lazer-git
 	arch = x86_64
 	license = MIT
 	license = custom:CC-BY-NC-4.0
-	makedepends = dotnet-sdk-6.0-bin
 	makedepends = git
+	makedepends = dotnet-sdk>=6.0.8.sdk400
 	depends = ffmpeg
 	depends = libgl
 	depends = sdl2
