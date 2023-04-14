@@ -5,12 +5,13 @@
 # Contributor: Renato Caldas (github.com/rmsc)
 # Contributor: goekce (github.com/goekce)
 # Contributor: David Castellon (github.com/bobosito000)
+# Contributor: Yannic Wehner <yannic.wehner@gmail.com> (github.com/ElCap1tan)
 # Acknowledgment: This work is hugely based on `ros2-arch-deps` AUR
 # package, maintained by T. Borgert.
 
 pkgname=ros2-humble
-pkgver=2022.11.23
-pkgrel=3
+pkgver=2023.03.08
+pkgrel=1
 pkgdesc="A set of software libraries and tools for building robot applications"
 url="https://docs.ros.org/en/humble/"
 arch=('any')
@@ -20,10 +21,9 @@ depends=(
     'python-pyqt5-sip4'
     'assimp'
     'gmock'
-    'patch'
 )
 source=(
-    "ros2::git+https://github.com/ros2/ros2#tag=release-humble-20221123"
+    "ros2::git+https://github.com/ros2/ros2#tag=release-humble-20230308"
 )
 sha256sums=(
     'SKIP'
