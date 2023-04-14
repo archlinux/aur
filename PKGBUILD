@@ -6,7 +6,7 @@ pkgdesc="ROS - OMPL is a free sampling-based motion planning library."
 url='https://ompl.kavrakilab.org'
 
 pkgname='ros-noetic-ompl'
-pkgver='1.5.2'
+pkgver='1.6.0'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -24,7 +24,7 @@ depends=(${ros_depends[@]}
 
 _dir="ompl-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ompl/ompl/archive/${pkgver}.tar.gz")
-sha256sums=('db1665dd2163697437ef155668fdde6101109e064a2d1a04148e45b3747d5f98')
+sha256sums=('f03daa95d2bbf1c21e91a38786242c245f4740f16aa9e9adbf7c7e0236e3c625')
 
 build() {
   # Use ROS environment variables
