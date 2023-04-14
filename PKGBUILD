@@ -1,6 +1,6 @@
 # Maintainer: Adrià Cabello <adro.cc79 at protonmail dot com>
 pkgname=gaffer-bin
-pkgver=1.2.2.0
+pkgver=1.2.3.0
 pkgrel=1
 pkgdesc="Gaffer is a VFX application that enables look developers, lighters, and compositors to easily build, tweak, iterate, and render scenes."
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python')
 provides=('gaffer')
 source=(https://github.com/GafferHQ/gaffer/releases/download/$pkgver/gaffer-$pkgver-linux.tar.gz)
 noextract=("$provides-$pkgver-linux.tar.gz")
-md5sums=('72d365ad6b25aecc016576c62f1f10ee')
+md5sums=('1e4a4a9559ab95e1fc0230533fc5a870')
 options=('!strip')
 
 prepare() {
