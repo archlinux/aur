@@ -1,0 +1,16 @@
+pkgbase = vinegar-git
+	pkgdesc = A transparent wrapper for Roblox Player and Roblox Studio (Git version)
+	pkgver = 1.0.1.r2.ge817411
+	pkgrel = 1
+	url = https://github.com/vinegarhq/vinegar
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = vinegar
+	source = git+https://github.com/vinegarhq/vinegar
+	sha256sums = SKIP
+
+pkgname = vinegar-git
