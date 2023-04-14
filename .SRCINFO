@@ -1,6 +1,6 @@
 pkgbase = python-finviz
 	pkgdesc = Unofficial API for FinViz.com
-	pkgver = 1.4.5
+	pkgver = 1.4.6
 	pkgrel = 1
 	url = https://pypi.org/project/finviz
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-finviz
 	depends = python-cssselect
 	depends = python-tqdm
 	depends = python-tenacity
-	source = https://files.pythonhosted.org/packages/source/f/finviz/finviz-1.4.5.tar.gz
-	sha256sums = 524a975a1d2c410d33468e63227e79f23199e303b613eb53ca9308477a743634
+	source = https://files.pythonhosted.org/packages/source/f/finviz/finviz-1.4.6.tar.gz
+	sha256sums = 2ce364e6fa8b5f7cb588207a5409cda6c3555b1904de9fa650e2241a65bd490b
 
 pkgname = python-finviz
