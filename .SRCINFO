@@ -1,16 +1,16 @@
 pkgbase = cui
 	pkgdesc = http request/response tui
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/mfinelli/cui
 	arch = x86_64
 	license = GPL3
 	makedepends = go
 	depends = glibc
-	source = https://github.com/mfinelli/cui/releases/download/v0.4.0/cui_v0.4.0.tar.gz
-	source = https://github.com/mfinelli/cui/releases/download/v0.4.0/cui_v0.4.0.tar.gz.asc
+	source = https://github.com/mfinelli/cui/releases/download/v0.5.0/cui_v0.5.0.tar.gz
+	source = https://github.com/mfinelli/cui/releases/download/v0.5.0/cui_v0.5.0.tar.gz.asc
 	validpgpkeys = 7A701FCB0E832A8CDADADA907C3ACA9DD0C33A05
-	sha256sums = 5eba334c68ef5c2578b2620eafb6c7c0a9d21814f317eec4ee5626d18d90e55d
+	sha256sums = d885dd2f869890042346e8df67906068c8e36951dc4a84d59ae56ee82bb7aecb
 	sha256sums = SKIP
 
 pkgname = cui
