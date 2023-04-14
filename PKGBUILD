@@ -2,29 +2,48 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
-pkgname=gnome-contacts-git
-pkgver=3.36.r15.gb6cb216
+_pkgname="gnome-contacts"
+pkgname="$_pkgname-git"
+pkgver=44.0.r5.gdee5b4cc
 pkgrel=1
 pkgdesc="Contacts Manager for GNOME"
-url="https://wiki.gnome.org/Apps/Contacts"
+# https://wiki.gnome.org/Apps/Contacts
+url="https://gitlab.gnome.org/GNOME/gnome-contacts"
 arch=(i686 x86_64 armv7h aarch64)
 license=(GPL2)
-depends=(gtk3 folks gnome-desktop dconf gnome-online-accounts libgee cheese libhandy)
-makedepends=(vala gobject-introspection git meson)
+depends=(
+  evolution-data-server
+  folks
+  gnome-online-accounts
+  gtk4
+  libadwaita
+  libgee
+  libportal-gtk4
+  qrencode
+)
+makedepends=(
+  appstream-glib
+  git
+  gobject-introspection
+  meson
+  vala
+)
 groups=(gnome)
-conflicts=(gnome-contacts)
-provides=(gnome-contacts)
-source=("git+https://gitlab.gnome.org/GNOME/gnome-contacts.git")
+provides=("$_pkgname")
+conflicts=(${provides[@]})
+source=(
+  "$_pkgname"::"git+$url"
+)
 sha256sums=('SKIP')
 
 pkgver() {
-  cd gnome-contacts
+  cd "$srcdir/$_pkgname"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  arch-meson gnome-contacts build -D docs=true
-  ninja -C build
+  arch-meson "$srcdir/$_pkgname" build 
+  meson compile -C build
 }
 
 check() {
@@ -32,5 +51,5 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
