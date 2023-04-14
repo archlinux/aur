@@ -1,6 +1,6 @@
 pkgbase = htscodecs
 	pkgdesc = Custom compression for sequencing formats, e.g. CRAM
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/samtools/htscodecs
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = htscodecs
 	license = BSD
 	depends = bzip2
 	depends = zlib
-	source = htscodecs-1.4.0.tar.gz::https://github.com/samtools/htscodecs/releases/download/v1.4.0/htscodecs-1.4.0.tar.gz
-	sha256sums = e47508d4db2177880cb0df46ac327f88eebd6671f54787b1a18a1c0feb415d2d
+	source = htscodecs-1.5.0.tar.gz::https://github.com/samtools/htscodecs/releases/download/v1.5.0/htscodecs-1.5.0.tar.gz
+	sha256sums = 34def7341d01a374583d61c9012a80f6b40af078b11bfcaacba1a2412e34dab3
 
 pkgname = htscodecs
