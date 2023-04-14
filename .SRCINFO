@@ -1,7 +1,7 @@
 pkgbase = sunshine-bin
 	pkgdesc = A self-hosted GameStream host for Moonlight (prebuilt version).
 	pkgver = 0.19.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/LizardByte/Sunshine
 	arch = x86_64
 	license = GPL3
@@ -22,7 +22,7 @@ pkgbase = sunshine-bin
 	depends = openssl
 	depends = opus
 	depends = udev
-	depends = libappondicator-gtk3
+	depends = libappindicator-gtk3
 	optdepends = cuda: NvFBC capture support
 	optdepends = libcap
 	optdepends = libdrm
