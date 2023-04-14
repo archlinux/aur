@@ -10,7 +10,6 @@ pkgbase = python-sphinx-gallery
 	checkdepends = python-pillow
 	checkdepends = python-sphinx
 	checkdepends = python-absl
-	checkdepends = mayavi
 	makedepends = python-setuptools
 	source = https://files.pythonhosted.org/packages/source/s/sphinx-gallery/sphinx-gallery-0.12.2.tar.gz
 	md5sums = 58a41686155b33abe26648aee8e88c40

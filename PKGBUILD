@@ -21,9 +21,9 @@ checkdepends=('python-pytest-cov'
               'python-matplotlib'
               'python-pillow'
               'python-sphinx'
-              'python-absl'
+              'python-absl')
 #              'python-joblib'
-              'mayavi')
+#             'mayavi')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('58a41686155b33abe26648aee8e88c40')
 
