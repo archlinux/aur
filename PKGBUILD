@@ -1,37 +1,44 @@
 # Maintainer: Bao Trinh <qubidt@gmail.com>
 
-pkgname=unmake
-pkgver=0.0.3
-pkgrel=2
+pkgname=unmake-git
+pkgver=0.0.3.r16.g7826475
+pkgrel=1
 pkgdesc="a makefile linter"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mcandre/unmake"
 license=('BSD')
-makedepends=('cargo')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('21f18f214b94767b2104511a09f47196fb3fac7d27b02529ed0a3bace987014b')
+makedepends=('git' 'cargo')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname%-git}::git+${url}.git")
+sha256sums=('SKIP')
+
+pkgver() {
+	cd "${pkgname%-git}"
+	git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
-	cd "${pkgname}-${pkgver}"
+	cd "${pkgname%-git}"
 	cargo update  # upstream doesn't provide Cargo.lock file
 	cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
 
 build() {
-	cd "${pkgname}-${pkgver}"
+	cd "${pkgname%-git}"
 	cargo build --release --frozen
 }
 
 check() {
-	cd "${pkgname}-${pkgver}"
+	cd "${pkgname%-git}"
 	cargo test --release --frozen
 }
 
 package() {
-	cd "${pkgname}-${pkgver}"
+	cd "${pkgname%-git}"
 	install -vDm755 -t "${pkgdir}/usr/bin" 'target/release/unmake'
-	install -vDm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" 'LICENSE.md'
-	install -vDm644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README.md'
-	install -vd "${pkgdir}/usr/share/doc/${pkgname}"
-	cp -vR -t "${pkgdir}/usr/share/doc/${pkgname}" examples
+	install -vDm644 -t "${pkgdir}/usr/share/licenses/${pkgname%-git}" 'LICENSE.md'
+	install -vDm644 -t "${pkgdir}/usr/share/doc/${pkgname%-git}" 'README.md'
+	install -vd "${pkgdir}/usr/share/doc/${pkgname%-git}"
+	cp -vR -t "${pkgdir}/usr/share/doc/${pkgname%-git}" examples
 }
