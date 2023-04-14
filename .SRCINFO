@@ -1,6 +1,6 @@
 pkgbase = pawxel
 	pkgdesc = Lightweight screenshot tool for designers & developers
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://pawxel.rocks/
 	arch = x86_64
@@ -12,9 +12,7 @@ pkgbase = pawxel
 	depends = libxcb
 	depends = libx11
 	depends = glib2
-	source = git+https://github.com/yeahitsjan/pawxel.git#tag=1eb8d909cc95e9321d37a63d9f09c7996f321eee
-	source = issue-6.patch
+	source = git+https://github.com/yeahitsjan/pawxel.git#tag=299d4500a4796254742d248eff4d4e864261293a
 	sha256sums = SKIP
-	sha256sums = 4465f3dbd5e4c30ae1c236fa6ae56069c72fc094f18c69dd72b87ab39930c4df
 
 pkgname = pawxel
