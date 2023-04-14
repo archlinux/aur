@@ -1,22 +1,21 @@
 pkgbase = ruby-airbrussh
 	pkgdesc = Airbrussh pretties up your SSHKit and Capistrano output
-	pkgver = 1.4.0
-	pkgrel = 5
+	pkgver = 1.4.1
+	pkgrel = 1
 	url = https://github.com/mattbrictson/airbrussh
 	arch = any
 	license = MIT
 	checkdepends = ruby-bundler
-	checkdepends = ruby-rake
 	checkdepends = ruby-minitest
 	checkdepends = ruby-minitest-reporters
 	checkdepends = ruby-mocha
-	makedepends = git
-	makedepends = rubygems
+	checkdepends = ruby-rake
 	makedepends = ruby-rdoc
+	makedepends = rubygems
 	depends = ruby
 	depends = ruby-sshkit
 	options = !emptydirs
-	source = git+https://github.com/mattbrictson/airbrussh.git?tag=v1.4.0
-	sha256sums = SKIP
+	source = https://github.com/mattbrictson/airbrussh/archive/v1.4.1/airbrussh-1.4.1.tar.gz
+	sha256sums = 79252fadaf408d1fb55abf23a6fa2b9f8a3874c95aa2c785952367b01b2ff952
 
 pkgname = ruby-airbrussh
