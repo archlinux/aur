@@ -13,6 +13,7 @@ source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
 build() {
+	export RUSTUP_TOOLCHAIN=stable
 	cd "$pkgname"
 	cargo build --release
 }
