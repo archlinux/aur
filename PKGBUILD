@@ -2,9 +2,9 @@
 
 pkgname=unmake
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="a makefile linter"
-arch=('x86_64' 'i686' 'aarch64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/mcandre/unmake"
 license=('BSD')
 makedepends=('cargo')
@@ -13,7 +13,8 @@ sha256sums=('21f18f214b94767b2104511a09f47196fb3fac7d27b02529ed0a3bace987014b')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
-	cargo fetch --target "${CARCH}-unknown-linux-gnu"
+	cargo update  # upstream doesn't provide Cargo.lock file
+	cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
 
 build() {

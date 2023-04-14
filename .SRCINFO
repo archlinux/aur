@@ -1,10 +1,9 @@
 pkgbase = unmake
 	pkgdesc = a makefile linter
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mcandre/unmake
 	arch = x86_64
-	arch = i686
 	arch = aarch64
 	license = BSD
 	makedepends = cargo
