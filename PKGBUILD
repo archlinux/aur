@@ -5,7 +5,7 @@
 
 pkgname=vte3-git
 
-pkgver=0.69.0.8.9381607
+pkgver=0.73.0.8.b7f34e9
 pkgrel=1
 pkgdesc="Virtual Terminal Emulator widget for use with GTK3"
 arch=('x86_64')
@@ -28,7 +28,7 @@ prepare() {
 }
 
 pkgver() {
-  version=$(grep "\#define VERSION " build/config.h | sed 's/\#define VERSION //' | sed 's/\"//g')
+  version=$(grep "#define VERSION " build/config.h | sed 's/\#define VERSION //' | sed 's/\"//g')
   hash=$(git -C $SRCDEST log --pretty=format:'%h' -n 1)
   revision=$(git -C $SRCDEST  rev-list --count HEAD)
   echo $version.$revision.$hash
