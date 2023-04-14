@@ -1,6 +1,6 @@
 pkgbase = synclounge
 	pkgdesc = Enjoy Plex with your friends. In Sync. Together.
-	pkgver = 5.2.2
+	pkgver = 5.2.5
 	pkgrel = 1
 	url = https://github.com/synclounge/synclounge
 	arch = any
@@ -8,11 +8,11 @@ pkgbase = synclounge
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	noextract = synclounge-5.2.2.tgz
-	source = synclounge-5.2.2.tgz::https://github.com/synclounge/synclounge/archive/refs/tags/v5.2.2.tar.gz
+	noextract = synclounge-5.2.5.tgz
+	source = synclounge-5.2.5.tgz::https://github.com/synclounge/synclounge/archive/refs/tags/v5.2.5.tar.gz
 	source = settings.json
 	source = synclounge.service
-	sha512sums = 79732f7570a4db5ecc8ab98b25c73df9a21d52e37619dae1cf1bc0cf03a94f673d559d056f90ab7ce5a8b5434f5b82b7453161cb3803c9c3a2dcd7e222e1a73c
+	sha512sums = a6eee87631885301097884ca82dcdfd27fb97b5e764578cecab6db8fe834c8492c31b1dad897a264446dea182fd2d71b05bad16c99d8492fd89453c14302fa2f
 	sha512sums = 5c9db47ae688d0d905807ca081a0fac0db159def40fa53c09a2cb2dec4cbbe60382f604a49a9ed65846fcec7489c6f7c24b9839fef0306ec1ca97ed732f0f1af
 	sha512sums = 0b32b104dd940f06b38e10a8f486e0734063d7b0d0a31b7af13c684106e04526de3be3b2bb0a44fe95857f703e932bfac82cf536a8645e5b6fbc12e4dc26f2d5
 
