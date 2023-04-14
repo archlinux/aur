@@ -1,15 +1,15 @@
 pkgbase = flix
 	pkgdesc = Next-generation reliable, safe, concise, and functional-first programming language.
-	pkgver = 0.33.0
+	pkgver = 0.35.0
 	pkgrel = 1
 	url = https://flix.dev
 	arch = any
 	license = Apache
 	depends = java-runtime>=11
 	noextract = flix.jar
-	source = https://github.com/flix/flix/releases/download/v0.33.0/flix.jar
+	source = https://github.com/flix/flix/releases/download/v0.35.0/flix.jar
 	source = run.sh
-	sha256sums = 3309bcc65863d59b839790b95055d685a7f171ddeda6876bdceac378717e8e55
+	sha256sums = 9623ce0107dd01873626551bf815d0e4a8533987b10b5bc1088b8ed274f68e19
 	sha256sums = a51177acf0372c1c45110136341662617a2e2313c78a7fe8eaf9df22cdb17aa5
 
 pkgname = flix
