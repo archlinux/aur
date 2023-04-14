@@ -1,7 +1,7 @@
 # Maintainer: Isabel <isabelroseslive@gmail.com>
 pkgname=catppuccinifier-cli-git
 _pkgname=catppuccinifier
-pkgver=0.1.0
+pkgver=r36.bb94471
 pkgrel=1
 pkgdesc="An comand line tool to catppuccinifiy your images."
 arch=('x86_64')
@@ -18,9 +18,15 @@ build() {
 	cargo build --release
 }
 
+pkgver() {
+	cd "$pkgname"
+
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 package() {
-	cd "$pkgname/src/"
+	cd "$pkgname"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
-	cd "Linux/binaries-source/catppuccinifier-cli"
+	cd "src/Linux/binaries-source/catppuccinifier-cli"
 	install -Dm755 "target/release/catppuccinifier-cli" "$pkgdir/usr/bin/catppuccinifier"
 }
