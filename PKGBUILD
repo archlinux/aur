@@ -5,7 +5,7 @@
 
 pkgbase='gdb-debug-git'
 pkgname=('gdb-debug-git' 'gdb-debug-common-git')
-pkgver=14.0.50.20230412_git.r114328.0a12bf174dd
+pkgver=14.0.50.20230414_git.r114346.acdf60711d4
 pkgrel=1
 pkgdesc="The GNU Debugger from git. Compiled with debug information."
 arch=(
@@ -26,7 +26,7 @@ options=(
 source=('gdb::git+https://sourceware.org/git/binutils-gdb.git')
 sha256sums=('SKIP')
 
-options+=('ccache')
+# options+=('ccache')
 
 pkgver() {
   cd "$srcdir/gdb"
