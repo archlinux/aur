@@ -1,0 +1,12 @@
+pkgbase = gat-git
+	pkgdesc = Cat alternative written in Go.
+	pkgver = r130.3f578d4
+	pkgrel = 1
+	url = https://github.com/koki-develop/gat
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	source = gat-git::git+https://github.com/koki-develop/gat.git
+	sha256sums = SKIP
+
+pkgname = gat-git
