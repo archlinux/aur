@@ -1,6 +1,6 @@
 pkgbase = pkgdu
 	pkgdesc = A tool to display packages disk usage size
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/bpetlert/pkgdu
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = pkgdu
 	depends = pacman
 	provides = pkgdu
 	conflicts = pkgdu
-	source = pkgdu-0.5.0.tar.gz::https://github.com/bpetlert/pkgdu/archive/0.5.0.tar.gz
-	sha256sums = 3382d6e004c277b5d56ff8e84413c8bb09e89e3ee4d562cd9294496441d133ee
+	source = pkgdu-0.6.0.tar.gz::https://github.com/bpetlert/pkgdu/archive/0.6.0.tar.gz
+	sha256sums = 9074b42c071bd06b7be899153f43b18e39351eea3dcf331c37a7fbfa3f045c30
 
 pkgname = pkgdu
