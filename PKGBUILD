@@ -1,7 +1,7 @@
 # Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
 pkgname=python-libclang
 _pkgname=${pkgname:7}
-pkgver=15.0.6.1
+pkgver=16.0.0
 pkgrel=1
 pkgdesc="Clang Python Bindings"
 arch=(x86_64)
