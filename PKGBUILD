@@ -1,7 +1,7 @@
 # Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
 pkgname=python-finnhub-python
 _pkgname=${pkgname:7}
-pkgver=2.4.16
+pkgver=2.4.17
 pkgrel=1
 pkgdesc="Finnhub API"
 arch=('any')
@@ -10,7 +10,7 @@ license=('Apache')
 makedepends=(python-build python-installer python-wheel)
 depends=(python python-requests python-future)
 source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
-sha256sums=('ca951031a5fecdc1815b07f4545cc49ff646a6eb32e2149fceeb368787482bbf')
+sha256sums=('5d50c5fa9b64b7bfe474f593322b3334cc56f9478c81ece915ce454a1771dff7')
 
 build() {
     cd ${srcdir}/${_pkgname}-${pkgver}
