@@ -1,11 +1,11 @@
 # Maintainer: nukeop <nuclear at gumblert dot tech>
 pkgname=nuclear-player-bin
-pkgver=v0.6.18
+pkgver=v0.6.19
 repurl=https://github.com/nukeop/nuclear
 commidfull=$(git ls-remote $repurl.git -tags v$pkgver)
 commid=${commidfull:0:6}
 pkgrel=2
-epoch=1681412546409
+epoch=1681431126952
 pkgdesc="A free, multiplatform music player app that streams from multiple sources."
 arch=('x86_64')
 url="http://nuclear.js.org/"
@@ -13,10 +13,10 @@ install=nuclear-player-bin.install
 license=('GPL3')
 depends=('libnotify' 'libappindicator-gtk3' 'libxtst' 'nss' )
 source=(
-    https://github.com/nukeop/nuclear/releases/download/v0.6.18/nuclear-v0.6.18.deb
+    https://github.com/nukeop/nuclear/releases/download/v0.6.19/nuclear-v0.6.19.deb
     nuclear.desktop
 )
-md5sums=('9fd75ac1361fa8a3e4211d7332262fbc'
+md5sums=('e6af6856e8ef05bfce0c3604c5052031'
          'eb5a64f62697098c413c0fa1e1215819')
 
 package()   {
