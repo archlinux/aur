@@ -1,16 +1,17 @@
 pkgbase = minmon
 	pkgdesc = An opinionated minimal monitoring and alarming tool.
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/flo-at/minmon
 	arch = any
+	license = APACHE
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
 	depends = openssl
 	depends = lm_sensors
 	optdepends = ca-certificates: HTTPS requests
-	source = minmon-0.5.2.tar.gz::https://github.com/flo-at/minmon/archive/v0.5.2.tar.gz
-	sha512sums = de9b1868c81dc1018e504656893388960a2a5820d5ac128538b00e1289d4e44955e4308029bdc4b3843f6afc42ebebdaabd7c959017fe850d323b92687d52c8b
+	source = minmon-0.5.3.tar.gz::https://github.com/flo-at/minmon/archive/v0.5.3.tar.gz
+	sha512sums = 5795a22272b7212299d9e3f5234f4d98733b3bccd27d48bf31fc2f1fce3d47aaf0761eac2694c1e83d7e3ea84064eb7db18d6952995e62e34a2732cd152bc9cf
 
 pkgname = minmon
