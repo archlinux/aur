@@ -7,6 +7,7 @@ pkgbase = ramroot-btrfs
 	arch = x86_64
 	license = GPL3
 	depends = mkinitcpio
+	depends = btrfs-progs
 	conflicts = liveroot
 	conflicts = ramroot
 	source = ramroot-btrfs-2.1.tar.gz::https://github.com/K-arch27/ramroot-btrfs/archive/2.1.tar.gz
