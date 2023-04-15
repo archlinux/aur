@@ -1,0 +1,11 @@
+--- src/class_main.cpp.old	2023-02-03 07:02:16.523174913 +0100
++++ src/class_main.cpp	2023-02-03 07:03:26.899163768 +0100
+@@ -422,7 +422,7 @@
+  */
+ 		if (log == TRUE)
+ 		{
+-			if (!phrq_io->log_open("phreeqc.log"))
++			if (!phrq_io->log_open("/tmp/phreeqc.log"))
+ 			{
+ 				error_msg("Cannot open log file, phreeqc.log.", STOP);
+ 			}
