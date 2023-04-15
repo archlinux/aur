@@ -20,19 +20,18 @@ build() {
 
 pkgver() {
 	cd "$pkgname"
-
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
 	cd "$srcdir"
-	install -d "$pkgdir"/usr/share/"$pkgname"
-	install -Dm644 "$pkgname/src/Linux/README.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
+	install -d "$pkgdir"/usr/share/"$_pkgname"
+	install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname/" "$pkgname/src/Linux/README.md"
 	install -Dm755 "$pkgname/src/Linux/binaries-source/catppuccinifier-gui/target/release/catppuccinifier-gui" "$pkgdir/usr/bin/catppuccinifier-gui"
 	mkdir -p "$HOME/.local/share/catppuccinifier"
 	cp -p -r "$pkgname/src/Linux/installation-files/flavors/" "$HOME/.local/share/catppuccinifier/flavors/"
-	sed -i "s|Icon=.*|Icon=$pkgdir/usr/share/$pkgname/catppuccinifier.png|g" "$pkgname/src/Linux/installation-files/Catppuccinifier.desktop"
+	sed -i "s|Icon=.*|Icon=$pkgdir/usr/share/$_pkgname/catppuccinifier.png|g" "$pkgname/src/Linux/installation-files/Catppuccinifier.desktop"
 	sed -i "s|Exec=.*|Exec=catppuccinifier-gui|g" "$pkgname/src/Linux/installation-files/Catppuccinifier.desktop"
 	install -Dm644 -t "$pkgdir/usr/share/applications/" "$pkgname/src/Linux/installation-files/Catppuccinifier.desktop"
-	install -Dm644 -t "$pkgdir/usr/share/$pkgname/" "$pkgname/src/Linux/installation-files/catppuccinifier.png"
+	install -Dm644 -t "$pkgdir/usr/share/$_pkgname/" "$pkgname/src/Linux/installation-files/catppuccinifier.png"
 }
