@@ -1,6 +1,6 @@
 pkgbase = waterfox-g-kpe
 	pkgdesc = Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions
-	pkgver = 5.1.4
+	pkgver = 5.1.5
 	pkgrel = 0
 	url = https://www.waterfox.net/
 	arch = x86_64
@@ -50,7 +50,7 @@ pkgbase = waterfox-g-kpe
 	options = !makeflags
 	options = zipman
 	options = !lto
-	source = git+https://github.com/MrAlex94/Waterfox.git#tag=G5.1.4
+	source = git+https://github.com/MrAlex94/Waterfox.git#tag=G5.1.5
 	source = waterfox-g.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8b87af25b6c74fa1926f6fe10cb7833e720c88a5/waterfox-g-kpe/waterfox-g.desktop
 	source = distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8b87af25b6c74fa1926f6fe10cb7833e720c88a5/waterfox-g-kpe/distribution.ini
 	source = vendor.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/8b87af25b6c74fa1926f6fe10cb7833e720c88a5/waterfox-g-kpe/vendor.js
@@ -93,4 +93,4 @@ pkgname = waterfox-g-kpe
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
 	optdepends = kwaterfoxhelper: KDE Plasma Integration
-	provides = waterfox-g=5.1.4
+	provides = waterfox-g=5.1.5
