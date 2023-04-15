@@ -7,7 +7,7 @@
 #
 pkgname='dbt-core'
 pkgver=1.4.5
-pkgrel=7
+pkgrel=8
 pkgdesc="Tool for data analysts to build analytics the way engineers build applications"
 arch=('any')
 url="https://getdbt.com/"
@@ -27,12 +27,14 @@ source=(
     "mashumaro.patch"
     "hologram.patch"
     "betterproto.patch"
+    "agate.patch"
     )
 md5sums=('d48661b0bc490829192af3dbac8d40c0'
          '8da5228598d2427e4430d70929415bdf'
          '2fc3a072a73cc43cd506b845d326fff4'
          '2bf8a03955617501a40aaa668b85be85'
-         'e1d1168e702f0538283e43c1f1328dd2')
+         'e1d1168e702f0538283e43c1f1328dd2'
+         '6dafb0c15f871270d1a617aee8b82f05')
 
 prepare() {
     cd $pkgname-$pkgver
@@ -40,6 +42,7 @@ prepare() {
     patch --forward --strip=1 --input="${srcdir}/mashumaro.patch"
     patch --forward --strip=1 --input="${srcdir}/hologram.patch"
     patch --forward --strip=1 --input="${srcdir}/betterproto.patch"
+    patch --forward --strip=1 --input="${srcdir}/agate.patch"
 }
 
 build() {
@@ -63,3 +66,4 @@ package() {
     cd ../plugins/postgres
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
+
