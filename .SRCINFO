@@ -1,0 +1,18 @@
+pkgbase = xkblas
+	pkgdesc = a drop in replacement of blas library for multi-GPUs servers
+	pkgver = 0.4_rc7
+	pkgrel = 1
+	url = https://gitlab.inria.fr/xkblas
+	arch = any
+	license = CeCILL-C
+	makedepends = cmake
+	makedepends = hipify-clang
+	depends = blas
+	depends = hipblas
+	depends = rocm-smi-lib
+	depends = intel-oneapi-mkl
+	depends = cuda
+	source = https://gitlab.inria.fr/xkblas/versions/-/raw/master/xkblas-v0.4-rc7-0-g513c021b.tgz
+	sha256sums = 7079d50518b10c75043aa360d93ecf9c6f0eadb3a7f4b959927674835852e62f
+
+pkgname = xkblas
