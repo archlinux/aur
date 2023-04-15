@@ -51,8 +51,8 @@ package() {
   make DESTDIR="$pkgdir/" install
 
   # icons
-  install -d "$pkgdir"/usr/share/icons
-  install -m644 "$srcdir"/*.png "$pkgdir"/usr/share/icons
+  install -d "$pkgdir"/usr/share/icons/hicolor/48x48/apps
+  install -m644 "$srcdir"/*.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps
 
   # docs
   install -Dm644 README "$pkgdir"/usr/share/doc/alephone/README
