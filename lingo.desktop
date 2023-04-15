@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=__VER__
+Name=Lingo __VER__
+GenericName=Lingo __VER__
+Comment=www.lindo.com
+Exec=lingo
+Terminal=false
+Type=Application
+Icon=lingo
+Path=/usr/share/lingo/samples
+MimeType=application/x-lingo-model

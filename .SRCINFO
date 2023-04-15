@@ -1,0 +1,22 @@
+pkgbase = lingo
+	pkgdesc = Comprehensive modeling language and solvers for linear, non-linear, and integer programming.
+	pkgver = 20.0
+	pkgrel = 1
+	url = https://www.lindo.com
+	arch = x86_64
+	license = unknown
+	makedepends = shared-mime-info
+	makedepends = desktop-file-utils
+	makedepends = imagemagick
+	makedepends = patchelf
+	depends = gcc-libs
+	depends = qt5-base
+	depends = tbb
+	source = lingo-20.0.run::https://www.lindo.com/downloads/Lingo-20.0-linux-x64-installer.run
+	source = runlingo.sh
+	source = lingo.desktop
+	sha256sums = e6ed9b8541e0ee3f13c66739e72e8b5343f796e8204179603bafbc4fedc04fbd
+	sha256sums = eaeefbec47a5ab44176dd1088bf83bb3724d369fe12d033e7c9d62b00aaa1653
+	sha256sums = 8c12e4675d2507d6d91e73b16c10f7b313778cb91e29be14a83f8d73fb1d1b63
+
+pkgname = lingo
