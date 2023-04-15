@@ -1,6 +1,6 @@
 pkgbase = libowfat
 	pkgdesc = GPL reimplementation of libdjb
-	pkgver = 0.32
+	pkgver = 0.33
 	pkgrel = 1
 	url = http://www.fefe.de/libowfat/
 	install = libowfat.install
@@ -10,11 +10,10 @@ pkgbase = libowfat
 	makedepends = dietlibc
 	conflicts = tinycdb
 	options = staticlibs
-	source = http://www.fefe.de/libowfat/libowfat-0.32.tar.xz
-	source = http://www.fefe.de/libowfat/libowfat-0.32.tar.xz.sig
+	source = http://www.fefe.de/libowfat/libowfat-0.33.tar.xz
+	source = http://www.fefe.de/libowfat/libowfat-0.33.tar.xz.sig
 	validpgpkeys = 2DEC330151BB9F7DAD8B0BDCFC32CEECA534A9C6
-	sha256sums = f4b9b3d9922dc25bc93adedf9e9ff8ddbebaf623f14c8e7a5f2301bfef7998c1
+	sha256sums = 311ec8b3f4b72bb442e323fb013a98f956fa745547f2bc9456287b20d027cd7d
 	sha256sums = SKIP
 
 pkgname = libowfat
-
