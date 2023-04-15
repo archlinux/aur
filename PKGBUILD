@@ -2,19 +2,21 @@
 _base=felupe
 pkgname=python-${_base}
 pkgdesc="Finite Element Analysis"
-pkgver=7.0.0
+pkgver=7.1.0
 pkgrel=1
 arch=(any)
 url="https://github.com/adtzlr/${_base}"
 license=(GPL3)
-depends=(python-scipy python-einsumt)
+depends=(python-scipy)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-meshio python-h5py python-matplotlib python-tensortrax)
-optdepends=('python-meshio: for export mesh'
+optdepends=('python-einsumt: for multithreaded numpy.einsum support'
   'python-h5py: for XDMF-export'
+  'python-matplotlib: plotting suport'
+  'python-meshio: for export mesh'
   'python-tensortrax: for automatic differentiation support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('0d23823c51c2c21348e0b6c8a2440fe17685d3457d65b95776b6186bd70c4d899df6c4675221d1c69250b0cae42f9fa72311d1697246c8c33b9c4cac8669d99a')
+sha512sums=('a241036e232ba3fdbb281f685f8722afa214e68c8e14ca09f531e48feac531f4a4d19d8c76b7473296028f74d48580ae8a832df6d4f49a8f1ed03bd02f00cd10')
 
 build() {
   cd ${_base}-${pkgver}

@@ -1,6 +1,6 @@
 pkgbase = python-felupe
 	pkgdesc = Finite Element Analysis
-	pkgver = 7.0.0
+	pkgver = 7.1.0
 	pkgrel = 1
 	url = https://github.com/adtzlr/felupe
 	arch = any
@@ -15,11 +15,12 @@ pkgbase = python-felupe
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-scipy
-	depends = python-einsumt
-	optdepends = python-meshio: for export mesh
+	optdepends = python-einsumt: for multithreaded numpy.einsum support
 	optdepends = python-h5py: for XDMF-export
+	optdepends = python-matplotlib: plotting suport
+	optdepends = python-meshio: for export mesh
 	optdepends = python-tensortrax: for automatic differentiation support
-	source = felupe-7.0.0.tar.gz::https://github.com/adtzlr/felupe/archive/v7.0.0.tar.gz
-	sha512sums = 0d23823c51c2c21348e0b6c8a2440fe17685d3457d65b95776b6186bd70c4d899df6c4675221d1c69250b0cae42f9fa72311d1697246c8c33b9c4cac8669d99a
+	source = felupe-7.1.0.tar.gz::https://github.com/adtzlr/felupe/archive/v7.1.0.tar.gz
+	sha512sums = a241036e232ba3fdbb281f685f8722afa214e68c8e14ca09f531e48feac531f4a4d19d8c76b7473296028f74d48580ae8a832df6d4f49a8f1ed03bd02f00cd10
 
 pkgname = python-felupe
