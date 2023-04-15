@@ -1,8 +1,8 @@
-# Maintainer: Aditya Sirish <aditya@saky.in>
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Aditya Sirish <aditya@saky.in>
 
 pkgname=shiv
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="CLI for building self-contained Python zipapps"
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=(
 	'python-sphinx-click'
 	'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('7d4e87e8d2705d313d69bc3219a2dc334197f44b29641222ba0e3e636dd170d1')
+sha256sums=('3c8e9ed893be7828b2ab1366e6d2cdc70b471fe88f5668b8ac713f8f8fd4fa58')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -27,9 +27,9 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
-	install -Dm644 _build/man/shiv.1 -t "$pkgdir/usr/share/man/man1/"
+	python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dvm644 _build/man/shiv.1 -t "$pkgdir/usr/share/man/man1/"
 	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s "$_site/$pkgname-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -sv "$_site/$pkgname-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
