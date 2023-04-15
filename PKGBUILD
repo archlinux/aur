@@ -14,16 +14,20 @@ makedepends=('git' 'cargo')
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
+pkgver() {
+	cd "$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 build() {
 	export RUSTUP_TOOLCHAIN=stable
 	cd "$pkgname/src/Linux/binaries-source/catppuccinifier-cli"
 	cargo build --release
 }
 
-pkgver() {
-	cd "$pkgname"
-
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+check(){
+  cd "$pkgname/src/Linux/binaries-source/catppuccinifier-cli"
+  cargo test --release
 }
 
 package() {
