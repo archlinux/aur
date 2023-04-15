@@ -1,6 +1,6 @@
 # Maintainer: noprobelm@protonmail.com
 pkgname=nay
-pkgver=0.1.r43.d86643f
+pkgver=0.1.r46.5461087
 pkgrel=1
 pkgdesc="A wrapper for pacman extended to support AUR packages"
 arch=(any)
