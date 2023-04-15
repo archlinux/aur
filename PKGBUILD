@@ -4,7 +4,7 @@ pkgver=0.1.1
 pkgrel=1
 pkgdesc="Fan curve control and temperature monitor for MSI laptops"
 arch=('x86_64')
-url=""
+url="https://gitlab.com/fvtronics/chillspot"
 license=('GPL')
 depends=(
 	'python-gobject'
