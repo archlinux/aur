@@ -2,7 +2,7 @@
 
 pkgname=nodejs-socket-cli-js
 _npmname=@socketsecurity/cli
-pkgver=0.5.4
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="The Socket CLI tool"
 arch=("any")
@@ -12,8 +12,8 @@ depends=("nodejs" "unzip")
 makedepends=("npm")
 source=(https://registry.npmjs.org/$_npmname/-/cli-${pkgver}.tgz)
 noextract=("${pkgname}-${pkgver}.tgz")
-sha1sums=("26e91a805a93438575263f3e264f4048ff5348d7")
-sha256sums=("bcbae04509a310781af44be0389bb2fe42585b05a82025ef1993cecc366e8870")
+sha1sums=("75cf6dd238c9bc257127fef383c1dccf9f21706d")
+sha256sums=("5ffbb47becb083ad4f04baf6266cc62745dcc44a9b585adbad117f98be44aba5")
 
 package() {
   cd $srcdir
