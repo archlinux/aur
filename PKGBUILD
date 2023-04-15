@@ -1,9 +1,9 @@
 # Maintainer: Isabel <isabelroseslive@gmail.com>
 pkgname=catppuccinifier-gui-git
 _pkgname=catppuccinifier-gui
-pkgver=r37.7cda895
+pkgver=r38.bba178a
 pkgrel=1
-pkgdesc="An comand line tool to catppuccinifiy your images."
+pkgdesc="An application to catppuccinifiy your images."
 arch=('x86_64')
 url="https://github.com/lighttigerXIV/catppuccinifier"
 license=()
@@ -27,6 +27,12 @@ pkgver() {
 package() {
 	cd "$pkgname"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
-	cd "src/Linux/binaries-source/catppuccinifier-gui"
-	install -Dm755 "target/release/catppuccinifier-gui" "$pkgdir/usr/bin/catppuccinifier-gui"
+	cd "src/Linux"
+	install -Dm755 "binaries-source/catppuccinifier-gui/target/release/catppuccinifier-gui" "/usr/bin/catppuccinifier-gui"
+	mkdir -p "$HOME/.local/share/catppuccinifier"
+	cp -p -r "installation-files/flavors/" "$HOME/.local/share/catppuccinifier/flavors/"
+	install -Dm644 "installation-files/catppuccinifier.png" "/usr/share/icons/hicolor/512x512/apps/catppuccinifier.png"
+	sed -i "s|Exec=.*|Exec=/usr/bin/catppuccinifier-gui|g" "installation-files/Catppuccinifier.desktop"
+	sed -i "s|Icon=.*|Icon=/usr/share/icons/hicolor/512x512/apps/catppuccinifier.png|g" "installation-files/Catppuccinifier.desktop"
+	install -Dm644 "installation-files/Catppuccinifier.desktop" "/usr/share/applications/catppuccinifier.desktop"
 }
