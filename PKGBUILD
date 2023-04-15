@@ -1,7 +1,7 @@
 # Maintainer: JP-Ellis <josh@jpellis.me>
 pkgname=github-copilot-cli
 _pkgname="@githubnext/$pkgname"
-pkgver=0.1.30
+pkgver=0.1.31
 pkgrel=1
 pkgdesc="A CLI experience for letting GitHub Copilot help you on the command line"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://githubnext.com/projects/copilot-cli/"
 license=('none')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/${_pkgname}/-/$pkgname-$pkgver.tgz")
-sha256sums=('af0b3b24f18cbf9419a18fe811246b49e416713f646fd6e70d8cc91c536c2957')
+sha256sums=('09d1c989893b398e5ce0be0c97fdeda8d74bb7e4e7889b28e2d0c72d1afb7198')
 noextract=("${pkgname}-${pkgver}.tgz")
 
 package() {
