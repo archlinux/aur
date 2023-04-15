@@ -1,0 +1,16 @@
+pkgbase = slock-bgimage-cur
+	pkgdesc = A simple screen locker for X (patched to allow background images, using the latest upstream)
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://git.jaytechlab.com/public/slock-bgimage
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	license = MIT
+	depends = libxext
+	depends = libxrandr
+	conflicts = slock
+	source = slock-bgimage-cur-1.5.tar.gz::https://git.jaytechlab.com/api/v1/repos/public/slock-bgimage/archive/1.5.tar.gz
+	sha256sums = 95ea8411dbc8f9e2a81277cb18b33760d292e9268e4344f3222012a219a6803a
+
+pkgname = slock-bgimage-cur
