@@ -1,6 +1,6 @@
 pkgbase = knime-desktop
 	pkgdesc = A user-friendly graphical workbench for the entire data analysis process
-	pkgver = 4.7.0
+	pkgver = 4.7.2
 	pkgrel = 1
 	url = http://www.knime.org/
 	changelog = ChangeLog
@@ -15,7 +15,7 @@ pkgbase = knime-desktop
 	optdepends = r: Required for R-scriptable nodes
 	optdepends = webkit2gtk: Required for displaying HTML content
 	options = !emptydirs
-	source = https://download.knime.org/analytics-platform/linux/knime_4.7.0.linux.gtk.x86_64.tar.gz
+	source = https://download.knime.org/analytics-platform/linux/knime_4.7.2.linux.gtk.x86_64.tar.gz
 	source = knime.sh
 	source = knime-desktop.desktop
 	source = LICENSE
