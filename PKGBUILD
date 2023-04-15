@@ -1,10 +1,11 @@
-# Maintainer: mrxx <mrxx at cyberhome dot at>
+# Maintainer: Adrian Perez de Castro <aperez@igalia.com>
+# Contributor: mrxx <mrxx at cyberhome dot at>
 # Contributor: Alexander Ulrich <a.ulrich@student.uni-tuebingen.de>
 # Contributor: Henning Mueller <henning@orgizm.net>
 
 pkgname=gatling
-pkgver=0.15
-pkgrel=1
+pkgver=0.16
+pkgrel=2
 pkgdesc='A high performance http and ftp server'
 arch=(i686 x86_64)
 url=https://www.fefe.de/gatling
@@ -16,7 +17,7 @@ source=(
     "$url/$pkgname-$pkgver.tar.xz"
     "${pkgname}.service"
     "${pkgname}-ftp.service")
-sha256sums=('6fa329d0ced0c80deb8dde5460e9d9e984bee94f265043d7fdec0e253dce9aa4'
+sha256sums=('5f96438ee201d7f1f6c2e0849ff273b196bdc7493f29a719ce8ed08c8be6365b'
             'c8a2116962ca0bfd18a056c520e2ad4331235edc620fb58dbc8b24beef876eed'
             '49843648501a3b038af512f0cac98b86aed77efb06cc732a1a58bd0118d98b11')
 
@@ -24,7 +25,7 @@ build() {
   cd $srcdir/$pkgname-$pkgver
 
   sed -i 's|/usr/local/include|/usr/include/libowfat|' GNUmakefile
-  make gatling
+  make gatling CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS"
 }
 
 package() {
