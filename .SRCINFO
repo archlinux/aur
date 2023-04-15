@@ -1,0 +1,16 @@
+pkgbase = ibus-akaza
+	pkgdesc = Yet another Japanese IME for IBus/Linux
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/tokuhirom/akaza
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = ibus
+	depends = python-marisa
+	depends = gtk4
+	optdepends = akaza-default-model: official provided model & dictionary
+	source = https://github.com/tokuhirom/akaza/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 366b4e1d61d0277d9fc6f8e4c38c5b62d9b10d38d33c8c234d46c35f5169cd2c
+
+pkgname = ibus-akaza
