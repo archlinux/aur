@@ -8,7 +8,7 @@ arch=("any")
 url="https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator"
 license=("GPL")
 depends=("gnome-shell")
-conflicts=("gnome-shell-extension-clipboard-indicator-git")
+conflicts=("gnome-shell-extension-clipboard-history")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 md5sums=('3ba29a3f0b86a927aa4c6cf6738ccbe1')
 
