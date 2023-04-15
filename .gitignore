@@ -3,4 +3,5 @@ pkg
 *.tar.xz
 *.tar.gz
 *.log
+*.pkg.tar
 .psci_modules

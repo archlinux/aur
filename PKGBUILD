@@ -1,6 +1,6 @@
 # Maintainer: Tom BH <tom@tombh.co.uk>
 pkgname=rtx-bin
-pkgver=1.27.10
+pkgver=1.28.5
 pkgrel=1
 pkgdesc='Runtime Executor (asdf rust clone)'
 url='https://github.com/jdxcode/rtx'
@@ -9,7 +9,7 @@ arch=('x86_64')
 license=('MIT')
 conflicts=('rtx-git')
 provides=('rtx')
-sha256sums_x86_64=('3585244a1bb60d3185479c0a80d3c586201932db6ffb7050282049f0c21d91ad')
+sha256sums_x86_64=('40d8ec61c896f65f50448bb69c802f1b99fff4e9ed1bad314d0d923871a7a602')
 
 prepare() {
   tar -xzf rtx-v${pkgver}-linux-x64.tar.gz
