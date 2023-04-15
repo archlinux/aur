@@ -1,0 +1,15 @@
+[Desktop Entry]
+Name=MMConneqt
+Name[en_US]=MMConneqt
+GenericName=Modem Manager
+GenericName[en_US]=Modem Manager
+Comment=A simple Qt based gui for ModemManager
+Comment[en_US]=A simple Qt based gui wrapper for ModemManager
+Icon=mmconneqt
+Exec=mmconneqt
+NoDisplay=false
+StartupNotify=true
+Categories=Qt;System;Utility;TelephonyTools;
+Keywords=mmconneqt;modem;manager;sms;
+Terminal=false
+Type=Application
