@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=drill
-pkgver=0.7.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="HTTP load testing application written in Rust inspired by Ansible syntax"
 url="https://github.com/fcsonline/drill"
@@ -10,7 +10,7 @@ makedepends=('cargo')
 arch=('x86_64')
 license=('GPL3')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('cc33f5e214cf8c9c975bd2b912b87541eab2ceb34689fdc1f4882b332ad4ee44')
+sha256sums=('12096bfeb57fa567f9104615c872b5fec787bacf5b9efcc9f14d496c08efe30d')
 
 build() {
   cd "$pkgname-$pkgver"

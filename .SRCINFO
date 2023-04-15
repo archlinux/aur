@@ -1,6 +1,6 @@
 pkgbase = drill
 	pkgdesc = HTTP load testing application written in Rust inspired by Ansible syntax
-	pkgver = 0.7.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/fcsonline/drill
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = drill
 	makedepends = cargo
 	depends = openssl
 	depends = gcc-libs
-	source = drill-0.7.2.tar.gz::https://github.com/fcsonline/drill/archive/0.7.2.tar.gz
-	sha256sums = cc33f5e214cf8c9c975bd2b912b87541eab2ceb34689fdc1f4882b332ad4ee44
+	source = drill-0.8.3.tar.gz::https://github.com/fcsonline/drill/archive/0.8.3.tar.gz
+	sha256sums = 12096bfeb57fa567f9104615c872b5fec787bacf5b9efcc9f14d496c08efe30d
 
 pkgname = drill
