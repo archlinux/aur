@@ -8,7 +8,7 @@ _pkgname=widelands
 pkgname="${_pkgname}-debugconsole-git"
 epoch=0
 _pkgver=latest
-pkgver=1.2.r26104.20230413.059c44a
+pkgver=1.2.r26107.20230415.bc33d62
 pkgrel=2
 pkgdesc="An elaborate realtime multiplayer strategy game with emphasis on economy and transport - development version. In the spirit of BlueByte's 'Siedler II/ Settlers 2'. Build with in-game debug/ script console (allows cheating)."
 url="http://widelands.org/"
@@ -34,10 +34,9 @@ depends=(
   'zlib'
 )
 makedepends=(
-  'cmake'     # For configuring the build
-  'coreutils' # For `nproc`
-  'git'       # For getting the source
-  'python'    # For revision detection
+  'cmake'          # For configuring the build.
+  'git'            # For getting the source.
+  'python'         # For revision detection.
 )
 optdepends=(
   "widelands-maps-rttr: To play the maps from the game 'Return to the Roots' in Widelands."
@@ -63,7 +62,7 @@ source=(
 sha256sums=(
   'SKIP'
 )
-options=('!strip') # Stripping seems not to reduce the size, but takes a long time.
+options=('emptydirs' 'strip') # Stripping seems to reduce the size only by a few MiB, but takes a long time.
 
 
 # The following variable controls if `ccache` should be used for the build -- it switches some variables, also in build().
@@ -208,8 +207,12 @@ build() {
 
   msg2 'Running `make` ...'
   make -j "$(nproc)"
+
   # msg2 'Running `make lang` ...'
   # make lang ## Seems not to be needed; seems to be done already with the general `make`-call.
+
+  # msg2 'Running `make doc` ...'
+  # make -j "$(nproc)" doc ## This builds ca. 2.4 GiB of source code only documentation. For playing the game not useful. So skipped. If this gets enabled, the following packages are needed in `makedepends`: `doxygen`, `python`, `python-sphinx`.
 }
 
 
@@ -227,8 +230,20 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   msg2 'Installing additional documentation files ...'
+  # install -d -v -m644 "${pkgdir}/usr/share/doc/${_pkgname}"
+  # cp -rv doc/sourcecode "${pkgdir}/usr/share/doc/${_pkgname}/doc/sourcecode"
+  install -D -v -m644 "VERSION" "${pkgdir}/usr/share/doc/${_pkgname}/VERSION"
+
   cd "${srcdir}/${_pkgname}"
+  for _docfile in CONTRIBUTING.md COPYING CREDITS NEXT_STABLE_VERSION README.md; do
+    install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/$(basename "${_docfile}")"
+  done
+
   install -D -v -m644 "${srcdir}/${_gitlog}" "${pkgdir}/usr/share/doc/${_pkgname}/git-log.txt"
+
+  msg2 'Installing license file ...'
+  install -d -v -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -svr "${pkgdir}/usr/share/doc/${_pkgname}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 
 ### When re-activating the following, also uncomment the line which sets ${_keep_translations[]}!
 #   msg2 'Removing translations we do not want ...'

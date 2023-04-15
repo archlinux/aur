@@ -1,6 +1,6 @@
 pkgbase = widelands-debugconsole-git
 	pkgdesc = An elaborate realtime multiplayer strategy game with emphasis on economy and transport - development version. In the spirit of BlueByte's 'Siedler II/ Settlers 2'. Build with in-game debug/ script console (allows cheating).
-	pkgver = 1.2.r26104.20230413.059c44a
+	pkgver = 1.2.r26107.20230415.bc33d62
 	pkgrel = 2
 	epoch = 0
 	url = http://widelands.org/
@@ -11,7 +11,6 @@ pkgbase = widelands-debugconsole-git
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
-	makedepends = coreutils
 	makedepends = git
 	makedepends = python
 	depends = asio
@@ -26,15 +25,16 @@ pkgbase = widelands-debugconsole-git
 	depends = zlib
 	optdepends = widelands-maps-rttr: To play the maps from the game 'Return to the Roots' in Widelands.
 	optdepends = widelands-maps-siedler2: To play the maps from the game 'Settlers II' in Widelands.
-	provides = widelands=1.2.r26104.20230413.059c44a
-	provides = widelands-debugconsole=1.2.r26104.20230413.059c44a
-	provides = widelands-git=1.2.r26104.20230413.059c44a
-	provides = widelands-data=1.2.r26104.20230413.059c44a
+	provides = widelands=1.2.r26107.20230415.bc33d62
+	provides = widelands-debugconsole=1.2.r26107.20230415.bc33d62
+	provides = widelands-git=1.2.r26107.20230415.bc33d62
+	provides = widelands-data=1.2.r26107.20230415.bc33d62
 	conflicts = widelands
 	conflicts = widelands-bzr
 	conflicts = widelands-data
 	replaces = widelands-debugconsole-bzr
-	options = !strip
+	options = emptydirs
+	options = strip
 	source = widelands::git+https://github.com/widelands/widelands.git
 	sha256sums = SKIP
 
