@@ -1,0 +1,52 @@
+Author: Steffen Moeller <moeller@debian.org>,
+        Logan Rosen <logan@ubuntu.com>,
+        Juhani Numminen <juhaninumminen0@gmail.com>
+Last-Update: Mon, 11 Jan 2021 15:18:03 +0200
+Forwarded: https://sourceforge.net/p/estscan/bugs/5/
+Bug-Debian: https://bugs.debian.org/916740
+Description: Fix Fortran compiler name,
+ accommodate CFLAGS, CPPFLAGS and FFLAGS as envvars (for hardening),
+ put LDLIBS after .o files because linking with -Wl,--as-needed.
+
+--- a/Makefile
++++ b/Makefile
+@@ -2,10 +2,10 @@
+ # Set the appropriate compilers and options for your system:
+ # Any system with GNU compilers:
+  CC = gcc
+- CFLAGS = -O2
+- F77 = g77
+- FFLAGS = -O2
+- LDFLAGS = -lm
++ CFLAGS ?= -O2
++ F77 = gfortran
++ FFLAGS ?= -O2
++ LDLIBS = -lm
+ 
+ # Linux with Intel compilers:
+ # CC = icc
+@@ -21,19 +21,19 @@
+ 	\rm -f *~ $(PROGS) *.o
+ 
+ maskred: maskred.o
+-	$(CC) $(LDFLAGS) -o $@ $<
++	$(CC) $(LDFLAGS) -o $@ $< $(LDLIBS)
+ 
+ makesmat: makesmat.o
+-	$(CC) $(LDFLAGS) -o $@ $<
++	$(CC) $(LDFLAGS) -o $@ $< $(LDLIBS)
+ 
+ estscan: estscan.o
+-	$(CC) $(LDFLAGS) -o $@ $<
++	$(CC) $(LDFLAGS) -o $@ $< $(LDLIBS)
+ 
+ winsegshuffle: winsegshuffle.o
+-	$(F77) $(LDFLAGS) -o $@ $<
++	$(F77) $(LDFLAGS) -o $@ $< $(LDLIBS)
+ 
+ .c.o:
+-	$(CC) $(CFLAGS) -c $<
++	$(CC) $(CPPFLAGS) $(CFLAGS) -c $<
+ 
+ .f.o:
+ 	$(F77) $(FFLAGS) -c $<

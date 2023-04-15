@@ -1,0 +1,23 @@
+pkgbase = estscan
+	pkgdesc = ORF-independent detector of coding DNA sequences
+	pkgver = 3.0.3
+	pkgrel = 1
+	url = https://estscan.sourceforge.net/
+	arch = x86_64
+	license = custom
+	makedepends = gcc-fortran
+	source = estscan-3.0.3.tar.gz::https://sourceforge.net/projects/estscan/files/estscan/3.0.3/estscan-3.0.3.tar.gz
+	source = Manual.pdf::https://sourceforge.net/projects/estscan/files/documentation/Feb-2007/user_guide_fev_07.pdf
+	source = Makefile.patch
+	sha256sums = 037dc8770681ed12406a789ea292462a4ce5d89b0e906a1a3340aa4debc71e2f
+	sha256sums = 416998f9fc282a53679fd56585b468ccebc4463e61ee5e989d9b426ed6f725fd
+	sha256sums = 262916b33753b64406a926a85d3c8fc807c7acbc4fdcf90955f2bfa6c2dd8a48
+
+pkgname = estscan
+	depends = glibc
+	depends = perl
+	depends = gcc-fortran
+	depends = gcc-libs
+
+pkgname = estscan-doc
+	arch = any
