@@ -39,7 +39,7 @@ diff --unified --recursive --text orig/bin/build-shared-version-info.js patched/
 -  const git_ref =
 -    git_describe + (git_branch === 'master' ? '' : '-' + git_branch)
 -  return git_ref
-+  return "tags/v1.36.1"
++  return "tags/v1.36.2"
  }
  
  async function gatherBuildInfo() {
