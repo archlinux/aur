@@ -1,13 +1,13 @@
 pkgbase = shell2http-bin
 	pkgdesc = HTTP-server to execute shell commands
-	pkgver = 1.14.2
-	pkgrel = 2
+	pkgver = 1.16.0
+	pkgrel = 1
 	url = https://github.com/msoap/shell2http
 	arch = x86_64
 	license = MIT
 	provides = shell2http
 	conflicts = shell2http
-	source = shell2http-bin-1.14.2.tar.gz::https://github.com/msoap/shell2http/releases/download/v1.14.2/shell2http_1.14.2_linux_amd64.tar.gz
-	sha256sums = 4708b1f89599f1bcd7aabd5e6a2843b2ed3580be207673b604f964b5d20cd3b5
+	source = shell2http-bin-1.16.0.tar.gz::https://github.com/msoap/shell2http/releases/download/v1.16.0/shell2http_1.16.0_linux_amd64.tar.gz
+	sha256sums = 82881123f9f027648e67904cef616729e693f12b09c917e41cf9566e9c337a03
 
 pkgname = shell2http-bin
