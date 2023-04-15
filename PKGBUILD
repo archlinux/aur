@@ -19,11 +19,6 @@ sha256sums=("564ebe043de1fa071aeabcf78322791e9c86ac23b9091beb8013885617dee58b")
 build() {
   cd "${pkgname}-${pkgver}"
 
-  # Interesting Go boilerplate (this is my first time packaging Go stuff)
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=vendor -modcacherw"
 
   make VERSION="${pkgver}" DESTDIR="${pkgdir}" PREFIX="/usr" vinegar
