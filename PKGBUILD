@@ -5,7 +5,7 @@
 
 _base=pyodbc
 pkgname=python-${_base}
-pkgver=4.0.38
+pkgver=4.0.39
 pkgrel=1
 pkgdesc="ODBC module for Python"
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=(MIT)
 depends=(python unixodbc)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=(${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('0d9059e5d9a7f9d2984b987fab411d5e411490b7ab4250e874ac156f7a4000ca957331055eae62c4cc6d51dd5b7e6055c575c437659386eed06f2d54669484bf')
+sha512sums=('1f54eedc44acc32844cac22b1689d18c9ef789c1ff8da33eed5063937471a13dd28666f4b96081089b244e379d07bc60a8c5f59a275c440e1556f0206c037b47')
 
 prepare() {
   echo "Version: ${pkgver}.0" >${_base}-${pkgver}/PKG-INFO
