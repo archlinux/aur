@@ -3,17 +3,17 @@
 
 pkgname='icinga2-git'
 _pkgname=icinga2
-pkgver=2.12.0.r414.gcb25be2d1
+pkgver=2.13.0.r681.g8228fae74
 pkgrel=1
 pkgdesc="An open source host, service and network monitoring program"
 license=('GPL')
 arch=('i686' 'x86_64')
-url="http://www.icinga.org"
-depends=('boost-libs' 'libedit' 'libsystemd' 'openssl' 'yajl')
+url='https://github.com/icinga/icinga2'
+depends=('boost-libs' 'libedit' 'libsystemd' 'openssl')
 optdepends=('monitoring-plugins: plugins needed for icinga checks'
             'libmariadbclient: for MySQL support'
             'postgresql-libs: for PostgreSQL support')
-makedepends=('boost' 'cmake' 'git' 'libmariadbclient' 'postgresql-libs' 'systemd' 'wxgtk')
+makedepends=('boost' 'cmake' 'git' 'libmariadbclient' 'postgresql-libs' 'systemd')
 provides=('icinga2' 'icinga2-common')
 conflicts=('icinga2' 'icinga2-common' 'icinga2-common-git')
 replaces=('icinga2-common-git')
@@ -30,12 +30,13 @@ backup=(etc/default/icinga2
         etc/icinga2/features-available/ido-mysql.conf
         etc/icinga2/features-available/ido-pgsql.conf
         etc/icinga2/features-available/influxdb.conf
+        etc/icinga2/features-available/influxdb2.conf
+        etc/icinga2/features-available/journald.conf
         etc/icinga2/features-available/livestatus.conf
         etc/icinga2/features-available/mainlog.conf
         etc/icinga2/features-available/notification.conf
         etc/icinga2/features-available/opentsdb.conf
         etc/icinga2/features-available/perfdata.conf
-        etc/icinga2/features-available/statusdata.conf
         etc/icinga2/features-available/syslog.conf
         etc/icinga2/constants.conf
         etc/icinga2/icinga2.conf
@@ -60,9 +61,6 @@ build() {
   mkdir -p "$srcdir/$_pkgname/build"
   cd "$srcdir/$_pkgname/build"
 
-  # The four lines settings variables regarding boost are a workaround for the
-  # boost version not being detected properly, see also
-  # https://github.com/Icinga/icinga2/issues/7566
   cmake "$srcdir/$_pkgname" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_SYSCONFDIR=/etc \
@@ -73,12 +71,7 @@ build() {
     -DICINGA2_SYSCONFIGFILE=/etc/default/icinga2 \
     -DICINGA2_PLUGINDIR=/usr/lib/monitoring-plugins \
     -DUSE_SYSTEMD=ON \
-    -DLOGROTATE_HAS_SU=OFF \
-    -DBoost_NO_BOOST_CMAKE=TRUE \
-    -DBoost_NO_SYSTEM_PATHS=TRUE \
-    -DBOOST_LIBRARYDIR=/usr/lib \
-    -DBOOST_INCLUDEDIR=/usr/include
-
+    -DLOGROTATE_HAS_SU=OFF
 
   make
 }
