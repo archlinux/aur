@@ -1,7 +1,7 @@
 # Maintainer: yuhldr <yuhldr@qq.com>
 
 pkgname=('python-phonopy')
-pkgver=2.17.2
+pkgver=2.18.0
 pkgrel=1
 pkgdesc="Phonopy is an open source package for phonon calculations at harmonic and quasi-harmonic levels"
 arch=('any')
@@ -11,14 +11,12 @@ depends=("python-numpy" "python-pyaml" "python-matplotlib" "python-spglib" "pyth
 optdepends=()
 makedepends=('python-setuptools' 'python')
 source=("https://github.com/phonopy/phonopy/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1c810e6b2e107d98b729eed7d7f62b0ab41d0c17690844adcd422bc9f5be3a30')
+sha256sums=('e26e6a85b2df2ddf815737681a3ece75650e3beb2ca03bf5d1f705f2b33abc85')
 
 
 
 package() {
   cd "$srcdir"/phonopy-$pkgver
-  # uncomment for openmpi build
-  sed -i "s/with_openmp = False/with_openmp = True/" setup.py
-  python setup.py install --root "$pkgdir" --optimize=1
+  python setup.py install --root "$pkgdir"
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
