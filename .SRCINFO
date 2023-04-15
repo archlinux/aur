@@ -1,6 +1,6 @@
 pkgbase = hoomd-blue
 	pkgdesc = A general-purpose particle simulation toolkit using GPUs with CUDA
-	pkgver = v3.10.0
+	pkgver = v3.11.0
 	pkgrel = 1
 	url = https://glotzerlab.engin.umich.edu/hoomd-blue
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = hoomd-blue
 	depends = eigen
 	optdepends = nvidia: running simulations on GPU
 	provides = hoomd-blue
-	source = hoomd-blue::git+https://github.com/glotzerlab/hoomd-blue#tag=v3.10.0
+	source = hoomd-blue::git+https://github.com/glotzerlab/hoomd-blue#tag=v3.11.0
 	md5sums = SKIP
 
 pkgname = hoomd-blue

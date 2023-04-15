@@ -1,7 +1,7 @@
 # Maintainer: Ayush Shenoy <ayush.shenoy92@gmail.com>
 # Contributor: Asmund Ervik <aaervik@gmail.com>
 pkgname=hoomd-blue
-pkgver=v3.10.0
+pkgver=v3.11.0
 pkgrel=1
 pkgdesc="A general-purpose particle simulation toolkit using GPUs with CUDA"
 arch=("any")
