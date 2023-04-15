@@ -1,6 +1,6 @@
 pkgbase = httpdirfs
 	pkgdesc = A filesystem which allows you to mount HTTP directory listings
-	pkgver = 1.2.4
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://github.com/fangfufu/httpdirfs
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = httpdirfs
 	depends = fuse2
 	depends = curl
 	depends = expat
-	source = httpdirfs-1.2.4.tar.gz::https://github.com/fangfufu/httpdirfs/archive/1.2.4.tar.gz
-	md5sums = f6d1e69f2458c9858cf1f44972a8ebc9
+	source = httpdirfs-1.2.5.tar.gz::https://github.com/fangfufu/httpdirfs/archive/1.2.5.tar.gz
+	md5sums = 77910de057b196ed7b3714f7a0698203
 
 pkgname = httpdirfs
