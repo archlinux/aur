@@ -1,7 +1,7 @@
 pkgbase = estscan
 	pkgdesc = ORF-independent detector of coding DNA sequences
 	pkgver = 3.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://estscan.sourceforge.net/
 	arch = x86_64
 	license = custom
@@ -20,4 +20,5 @@ pkgname = estscan
 	depends = gcc-libs
 
 pkgname = estscan-doc
+	pkgdesc = Documentation for estscan
 	arch = any
