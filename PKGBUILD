@@ -1,28 +1,33 @@
 # Maintainer:  JakobDev<jakobdev at gmx dot de>
 
 pkgname=pip-chill
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A more relaxed pip freeze"
 arch=("any")
 url="https://github.com/rbanffy/pip-chill"
 license=("GPL3")
-depends=("python" "python-setuptools" "python-pip")
-makedepends=("python-sphinx" "gzip")
+depends=("python" "python-setuptools")
+makedepends=("python-build" "python-installer" "python-wheel" "python-sphinx")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rbanffy/pip-chill/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("2deed51f2d04e0eae9cf0ec9de65660ea7cb87dc36fc1c404ab8a70ab9754279")
+sha256sums=("65b9eb12be63c60a08d54ed814d187a0574ce6cfde02e65677f2662de57f092a")
 
 build() {
-      cd "pip-chill-${pkgver}/docs"
-      make man
-      cd "_build/man"
-      gzip -f "pip_chill.1"
-      mv "pip_chill.1.gz" "${pkgname}.1.gz"
+      cd "pip-chill-${pkgver}"
+      python -m build --wheel --no-isolation
+
+      cd docs
+      make html man
 }
 
 package() {
       cd "pip-chill-${pkgver}"
-      python setup.py install --root="$pkgdir/" --optimize=1
-      install -Dm644 "docs/_build/man/${pkgname}.1.gz" -t "${pkgdir}/usr/share/man/man1"
+
+      python -m installer --destdir "$pkgdir" dist/*.whl
+
+      mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
+      cp -r docs/_build/html/* "${pkgdir}/usr/share/doc/${pkgname}"
+      install -Dm644 "docs/_build/man/pip_chill.1" "${pkgdir}/usr/share/man/man1/pip-chill.1"
+
       install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

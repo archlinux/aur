@@ -1,16 +1,17 @@
 pkgbase = pip-chill
 	pkgdesc = A more relaxed pip freeze
-	pkgver = 1.0.1
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/rbanffy/pip-chill
 	arch = any
 	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-sphinx
-	makedepends = gzip
 	depends = python
 	depends = python-setuptools
-	depends = python-pip
-	source = pip-chill-1.0.1.tar.gz::https://github.com/rbanffy/pip-chill/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 2deed51f2d04e0eae9cf0ec9de65660ea7cb87dc36fc1c404ab8a70ab9754279
+	source = pip-chill-1.0.3.tar.gz::https://github.com/rbanffy/pip-chill/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = 65b9eb12be63c60a08d54ed814d187a0574ce6cfde02e65677f2662de57f092a
 
 pkgname = pip-chill
