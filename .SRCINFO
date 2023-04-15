@@ -1,6 +1,6 @@
 pkgbase = python-adafruit-blinka-displayio
 	pkgdesc = displayio for Blinka
-	pkgver = 0.10.3
+	pkgver = 0.10.4
 	pkgrel = 0
 	url = https://github.com/adafruit/Adafruit_Blinka
 	arch = armv6h
@@ -12,7 +12,7 @@ pkgbase = python-adafruit-blinka-displayio
 	depends = python-numpy
 	depends = python-adafruit-blinka
 	depends = python-adafruit-circuitpython-typing
-	source = https://pypi.io/packages/source/a/adafruit-blinka-displayio/adafruit-blinka-displayio-0.10.3.tar.gz
-	sha256sums = fdb64f421070316cd536668961a7345f6ea6f1b6ed17c4ff67bf655d1475370d
+	source = https://pypi.io/packages/source/a/adafruit-blinka-displayio/adafruit-blinka-displayio-0.10.4.tar.gz
+	sha256sums = 04a547465f1754964de5f24a874c4cc327c0787cc06890297961c5d3c3126b64
 
 pkgname = python-adafruit-blinka-displayio
