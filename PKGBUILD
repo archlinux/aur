@@ -1,4 +1,4 @@
-# Maintainer: Paul <p.orzel@gmx.de>
+# Maintainer: Paul <pb.orzel@proton.me>
 pkgname=amdgpu_top-git
 _pkgname=amdgpu_top
 pkgver=v0.1.4.r3.g81ac9c2
