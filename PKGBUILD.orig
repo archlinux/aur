@@ -25,6 +25,11 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
+  # Interesting Go boilerplate (this is my first time packaging Go stuff)
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=vendor -modcacherw"
 
   make VERSION="${pkgver}" DESTDIR="${pkgdir}" PREFIX="/usr" vinegar
