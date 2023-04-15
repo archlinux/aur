@@ -6,20 +6,20 @@
 # Upstream: https://git.metalpunks.info/arch-ports
 
 pkgname=parzip
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="A command line utility to pack and unpack zip archives using multiple threads."
 license=('GPL3')
 arch=('x86_64')
 depends=('xz' 'zlib')
 makedepends=('meson')
 url="https://github.com/jpakkane/parzip"
-source=("https://github.com/jpakkane/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.zip")
-sha256sums=('2497305ce36d3b6225d9517fa5d4c408adef3935f5f736174e218f971caeb7bb')
+source=("https://github.com/jpakkane/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('99cd404e42f6ecfa0e94c0c2d33710e648bd23d1fede7de7232f3e792b2ad8f1')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	meson --prefix=/usr build
+	meson setup --prefix=/usr build
 	ninja -C build
 }
 
