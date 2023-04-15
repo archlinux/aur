@@ -1,6 +1,6 @@
 # Maintainer: Alex Butler <alexheretic@gmail.com>
 pkgname=ab-av1
-pkgver=0.7.6
+pkgver=0.7.7
 pkgrel=1
 pkgdesc="AV1 encoding tool with fast VMAF sampling."
 arch=('x86_64')
@@ -14,11 +14,12 @@ makedepends=('cargo'
              'git'
              'lld')
 source=("https://github.com/alexheretic/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('65d4dbe73691cc3fc559295a3c4f8f44080a1cb381664061ba9224ee528196eb')
+sha256sums=('48fe4b44adcff9f865de916f48bd626ef73d7e029ddab8677a082e6d2f9cc94e')
 
 build() {
   cd "$pkgname-$pkgver"
   RUSTFLAGS='-C link-arg=-fuse-ld=lld' \
+    CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse \
     RUSTUP_TOOLCHAIN=stable \
     cargo build --release --locked
 }
