@@ -1,0 +1,19 @@
+pkgbase = aurum-git
+	pkgdesc = high-level wrapper for aurum with extra features
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/AladW/aurum
+	arch = any
+	license = custom:ISC
+	makedepends = git
+	depends = git
+	depends = aurutils
+	depends = bat
+	depends = git-delta
+	depends = ninja
+	provides = aurum=0.1
+	conflicts = aurum
+	source = git+https://github.com/AladW/aurum
+	sha256sums = SKIP
+
+pkgname = aurum-git
