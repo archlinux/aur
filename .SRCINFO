@@ -1,0 +1,13 @@
+pkgbase = python-parsy-git
+	pkgdesc = Easy and elegant parser combinators for Python. With awesome docs
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/python-parsy/parsy
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = python-parsy-git::git+https://github.com/python-parsy/parsy#branch=master
+	sha512sums = SKIP
+
+pkgname = python-parsy-git
