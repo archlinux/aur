@@ -21,12 +21,12 @@ pkgbase = appimagelauncher
 	depends = qt5-base
 	depends = shared-mime-info
 	source = git+https://github.com/TheAssassin/AppImageLauncher.git#commit=0f918015fa418affec32435d1c61c6ae473f2af5
-	source = git+https://github.com/AppImage/AppImageUpdate.git
-	source = git+https://github.com/AppImage/libappimage.git
+	source = git+https://github.com/AppImageCommunity/AppImageUpdate.git
+	source = git+https://github.com/AppImageCommunity/libappimage.git
 	source = git+https://github.com/TheAssassin/zsync2.git
 	source = git+https://github.com/arsenm/sanitizers-cmake.git
 	source = git+https://github.com/google/googletest.git
-	source = git+https://github.com/AppImage/cpr.git
+	source = git+https://github.com/AppImageCommunity/cpr.git
 	source = git+https://github.com/Taywee/args.git
 	source = appimage-binfmt-remove.hook
 	sha256sums = SKIP

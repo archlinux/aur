@@ -1,5 +1,5 @@
 # Maintainer: Bernhard Landauer <bernhard@manjaro.org>
-# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
 pkgname=appimagelauncher
@@ -12,14 +12,14 @@ license=('MIT')
 depends=('cairo' 'desktop-file-utils' 'hicolor-icon-theme' 'libappimage'
          'libbsd' 'libxpm' 'qt5-base' 'shared-mime-info')
 makedepends=('boost' 'cmake' 'git' 'gtest' 'python' 'qt5-tools')
-_commit=0f918015fa418affec32435d1c61c6ae473f2af5
+_commit=0f918015fa418affec32435d1c61c6ae473f2af5  # tags/v2.2.0^0
 source=("git+https://github.com/TheAssassin/AppImageLauncher.git#commit=$_commit"
-        'git+https://github.com/AppImage/AppImageUpdate.git'
-        'git+https://github.com/AppImage/libappimage.git'
+        'git+https://github.com/AppImageCommunity/AppImageUpdate.git'
+        'git+https://github.com/AppImageCommunity/libappimage.git'
         'git+https://github.com/TheAssassin/zsync2.git'
         'git+https://github.com/arsenm/sanitizers-cmake.git'
         'git+https://github.com/google/googletest.git'
-        'git+https://github.com/AppImage/cpr.git'
+        'git+https://github.com/AppImageCommunity/cpr.git'
         'git+https://github.com/Taywee/args.git'
         'appimage-binfmt-remove.hook'
         )
