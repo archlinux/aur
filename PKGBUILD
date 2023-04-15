@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://github.com/lighttigerXIV/catppuccinifier"
 license=()
 depends=()
+provides=('catppuccinifier')
 makedepends=('git' 'cargo')
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
