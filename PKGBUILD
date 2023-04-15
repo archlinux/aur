@@ -29,7 +29,7 @@ package() {
 for pkg in xgettext msgfmt
 do
   mv $pkgdir/usr/bin/$pkg $pkgdir/usr/bin/$_pkgname-$pkg
-  mv $pkgdir/usr/man/man1/$pkg.1.gz $pkgdir/usr/man/man1/$_pkgname-$pkg.1.gz 
+  mv $pkgdir/usr/man/man1/$pkg.1x $pkgdir/usr/man/man1/$_pkgname-$pkg.1x 
 done
   rm -rf $pkgdir/usr/X11R6
 }
