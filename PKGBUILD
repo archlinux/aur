@@ -13,15 +13,15 @@ pkgname=('mythplugins-mytharchive'
          'mythplugins-mythweather'
          'mythplugins-mythweb'
          'mythplugins-mythzoneminder')
-br=fixes/32
+br=fixes/33
 t="${br#*/}+${br%/[0-9][0-9]}"
-pkgver=32+fixes.20220319.5432d116
+pkgver=33.1.r11.g51cb10a678
 pkgrel=1
 epoch=0
 arch=('any')
 url="http://www.mythtv.org"
 license=('GPL')
-makedepends=('dvdauthor' 'dvd+rw-tools' 'mesa-libgl' "mythtv>=$pkgver"
+makedepends=('dvdauthor' 'dvd+rw-tools' 'mesa-libgl' "mythtv-git>=$pkgver"
              'perl-datetime-format-iso8601' 'perl-date-manip' 'perl-image-size' 'perl-cgi'
              'perl-json' 'perl-libwww' 'perl-soap-lite' 'perl-xml-simple' 'perl-xml-xpath' 'libhdhomerun'
              'python-pillow' 'python-pycurl' 'python-oauthlib' 'gdb' 'mariadb-libs' 'minizip'
@@ -36,7 +36,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/mythtv/$pkgbase"
-  echo -n "$t.$(git show -s --format=%cd --date=short | tr -d -).$(git rev-parse --short=8 HEAD)"
+  printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 prepare() {

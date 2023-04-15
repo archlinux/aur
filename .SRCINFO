@@ -1,5 +1,5 @@
 pkgbase = mythplugins
-	pkgver = 32+fixes.20220319.5432d116
+	pkgver = 33.1.r11.g51cb10a678
 	pkgrel = 1
 	epoch = 0
 	url = http://www.mythtv.org
@@ -8,7 +8,7 @@ pkgbase = mythplugins
 	makedepends = dvdauthor
 	makedepends = dvd+rw-tools
 	makedepends = mesa-libgl
-	makedepends = mythtv>=32+fixes.20220319.5432d116
+	makedepends = mythtv-git>=33.1.r11.g51cb10a678
 	makedepends = perl-datetime-format-iso8601
 	makedepends = perl-date-manip
 	makedepends = perl-image-size
@@ -29,8 +29,8 @@ pkgbase = mythplugins
 	makedepends = perl-xml-xpath
 	makedepends = python-urllib3
 	makedepends = libcdio-paranoia
-	source = git+https://github.com/MythTV/mythweb#branch=fixes/32
-	source = git+https://github.com/MythTV/mythtv#branch=fixes/32
+	source = git+https://github.com/MythTV/mythweb#branch=fixes/33
+	source = git+https://github.com/MythTV/mythtv#branch=fixes/33
 	source = 001-mythnetvision-configure.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
