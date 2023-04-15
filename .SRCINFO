@@ -1,6 +1,6 @@
 pkgbase = firefox-video-speed-setter-git
 	pkgdesc = Firefox extension that gives you a simple control over video playback rate
-	pkgver = 1.5.2.r0.g39405cf
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/zer0-x/video-speed-setter
 	arch = any

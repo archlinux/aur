@@ -3,7 +3,7 @@
 _gecko_id="video_speed_setter@zer0_x.github.io"
 pkgname="firefox-video-speed-setter-git"
 _pkgname=${pkgname%-git}
-pkgver=1.5.2.r0.g39405cf
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Firefox extension that gives you a simple control over video playback rate"
 arch=("any")
@@ -15,9 +15,16 @@ conflicts=(${_pkgname})
 source=("${pkgname}::git+${url}#branch=main")
 sha512sums=("SKIP")
 
+prepare() {
+    cd "${pkgname}"
+
+    git reset --hard "$(git describe --tags --abbrev=0 --match 'v*')"
+}
+
 pkgver() {
     cd "${pkgname}"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+
+    git describe --tags --abbrev=0 --match 'v*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
