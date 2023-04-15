@@ -1,7 +1,7 @@
 pkgbase = erdtree
 	pkgdesc = multi-threaded file-tree visualizer and disk usage analyzer
 	pkgver = 1.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/solidiquis/erdtree
 	arch = x86_64
 	arch = aarch64
