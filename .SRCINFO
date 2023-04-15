@@ -1,0 +1,12 @@
+pkgbase = pipes-rs
+	pkgdesc = An over-engineered rewrite of pipes.sh in Rust
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://github.com/lhvy/pipes-rs
+	arch = any
+	license = BlueOak-1.0.0
+	makedepends = cargo
+	source = https://github.com/lhvy/pipes-rs/archive/refs/tags/v1.6.1.tar.gz
+	sha256sums = 93e2b8e8afb6e8ecde20bf3b4fab6e9dc4abeacbf7d2065929611d2c43cf8638
+
+pkgname = pipes-rs
