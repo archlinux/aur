@@ -1,0 +1,15 @@
+pkgbase = mmconneqt-git
+	pkgdesc = A simple Qt based gui for ModemManager
+	pkgver = v0.1.0.r0.g84d2892
+	pkgrel = 1
+	url = https://gitlab.com/Antiquete/mmconneqt
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	provides = mmconneqt
+	conflicts = mmconneqt
+	source = git+https://gitlab.com/Antiquete/mmconneqt.git
+	sha256sums = SKIP
+
+pkgname = mmconneqt-git
