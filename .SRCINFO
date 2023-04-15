@@ -1,6 +1,6 @@
 pkgbase = gallery-dl
 	pkgdesc = Command-line program to download image-galleries and collections from several image hosting sites
-	pkgver = 1.25.1
+	pkgver = 1.25.2
 	pkgrel = 1
 	url = https://github.com/mikf/gallery-dl
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = gallery-dl
 	optdepends = youtube-dl: Download videos
 	optdepends = python-pysocks: SOCKS support
 	optdepends = python-brotli: for brotli decompression
-	source = git+https://github.com/mikf/gallery-dl.git#tag=88e57bf8bd0c5861619ab1e8c4b185bb138d5aba?signed
+	source = git+https://github.com/mikf/gallery-dl.git#tag=7fde58ce465f344097b3eb99c22cc0cbfd0e73fd?signed
 	validpgpkeys = 3E09F5908333DD83DBDCE7375680CA389D365A88
 	sha512sums = SKIP
 
