@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-beetle-saturn
 pkgname=$_pkgname-git
-pkgver=r494.548fe9c
+pkgver=r536.6625d33
 pkgrel=1
 epoch=2
 pkgdesc="Sega Saturn core"
@@ -9,7 +9,7 @@ arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/libretro/beetle-saturn-libretro"
 license=('GPL2')
 groups=('libretro')
-depends=('gcc-libs' 'libretro-core-info')
+depends=('gcc-libs' 'glibc' 'libretro-core-info')
 makedepends=('git' 'libchdr')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
