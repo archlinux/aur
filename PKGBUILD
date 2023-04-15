@@ -2,7 +2,7 @@
 
 _git_repo_name="Electra-Lang"
 pkgname="electra-git"
-pkgver=1.3.0
+pkgver=2.0.0.1.gc7a8449
 pkgrel=1
 epoch=
 pkgdesc="Electra is an esolang where you code like an electrician"
@@ -28,11 +28,13 @@ validpgpkeys=()
 
 pkgver() {
 	cd "$_git_repo_name"
+	git switch stable
 	git describe --tags | sed 's/-/./g' | cut -c2-99
 }
 
 build() {
 	cd "$_git_repo_name"
+	git switch stable
 	mkdir -p build
 	cd build
 	cmake ..
