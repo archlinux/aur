@@ -13,11 +13,19 @@ install="install.sh"
 source=("http://water.usgs.gov/water-resources/software/PHREEQC/${pkgname}-${pkgver}-${_pkgsvn}.tar.gz"
         install.sh
         phreeqc.el
+<<<<<<< HEAD
        phreeqc_tmp_logfile.patch)
 md5sums=('e820ea246adaa9ad23842d3470c5dde1'
          '8facd6e784cd1985b2c57c092b753002'
          'a35830b02368dba33419d904acfd64b4'
          'd5674ee727b944d4669e88514874fd51')
+=======
+        phreeqc-tmplog.patch)
+md5sums=('e820ea246adaa9ad23842d3470c5dde1'
+         '8facd6e784cd1985b2c57c092b753002'
+         'a35830b02368dba33419d904acfd64b4'
+         '88b218f5687246282a9cca3c3d95118d')
+>>>>>>> 6baa1f5 (update to 3.7.3 and direct phreeqc logs into /tmp)
 
 
 build() {
@@ -31,7 +39,7 @@ package() {
   cd "$srcdir/$pkgname-$pkgver-$_pkgsvn"
 
   make DESTDIR="${pkgdir}" install
-
+  
   # move database and example files into previous location
   mkdir -p ${pkgdir}/usr/share/phreeqc/
   mv ${pkgdir}/usr/share/doc/phreeqc/database ${pkgdir}/usr/share/phreeqc/
