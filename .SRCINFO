@@ -1,7 +1,7 @@
 pkgbase = yuki-iptv-git
 	pkgdesc = IPTV player with EPG support
-	pkgver = 0.0.1
-	pkgrel = 2
+	pkgver = 0.0.3
+	pkgrel = 1
 	url = https://github.com/yuki-iptv/yuki-iptv
 	arch = any
 	license = GPL3
@@ -17,6 +17,7 @@ pkgbase = yuki-iptv-git
 	depends = python-requests
 	depends = python-chardet
 	depends = python-setproctitle
+	depends = python-pydbus
 	depends = ffmpeg
 	optdepends = yt-dlp: YouTube channel support
 	provides = yuki-iptv

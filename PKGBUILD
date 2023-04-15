@@ -1,13 +1,13 @@
 # Maintainer: yukichan
 
 pkgname=yuki-iptv-git
-pkgver=0.0.1
-pkgrel=2
+pkgver=0.0.3
+pkgrel=1
 pkgdesc="IPTV player with EPG support"
 arch=('any')
 url="https://github.com/yuki-iptv/yuki-iptv"
 license=('GPL3')
-depends=('python' 'qt6-base' 'mpv' 'python-pyqt6' 'python-pillow' 'python-gobject' 'python-unidecode' 'python-requests' 'python-chardet' 'python-setproctitle' 'ffmpeg')
+depends=('python' 'qt6-base' 'mpv' 'python-pyqt6' 'python-pillow' 'python-gobject' 'python-unidecode' 'python-requests' 'python-chardet' 'python-setproctitle' 'python-pydbus' 'ffmpeg')
 optdepends=('yt-dlp: YouTube channel support')
 makedepends=('make' 'git')
 provides=('yuki-iptv')
