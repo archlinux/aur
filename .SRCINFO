@@ -1,15 +1,16 @@
 pkgbase = aurum
-	pkgdesc = An AUR helper written in Rust
-	pkgver = 0.1.0
-	pkgrel = 2
-	url = https://gitlab.com/MggMuggins/aurum
-	arch = x86_64
-	license = MIT
-	makedepends = git
-	makedepends = rust
-	depends = openssl
-	source = git+https://gitlab.com/MggMuggins/aurum.git#tag=v0.1.0
-	sha256sums = SKIP
+	pkgdesc = high-level wrapper for aurutils with extra features
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/AladW/aurum
+	changelog = aurum.changelog
+	arch = any
+	license = custom:ISC
+	depends = aurutils
+	depends = bat
+	depends = git-delta
+	depends = ninja
+	source = aurum-0.1.tar.gz::https://github.com/AladW/aurum/archive/refs/tags/0.1.tar.gz
+	sha256sums = 7f9d02b1898d86ff23cc27c4d658fa314caa6896da59767cdd9fb4a6cde80e64
 
 pkgname = aurum
-

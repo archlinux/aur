@@ -1,23 +1,22 @@
-# Maintainer: Wesley Hershberger <mggmugginsmc at gmail>
+# Maintainer: Alad Wenter <https://github.com/AladW>
 pkgname=aurum
-pkgver=0.1.0
-pkgrel=2
-pkgdesc="An AUR helper written in Rust"
-arch=('x86_64')
-url="https://gitlab.com/MggMuggins/aurum"
-license=('MIT')
-depends=('openssl')
-makedepends=('git' 'rust')
-source=("git+https://gitlab.com/MggMuggins/aurum.git#tag=v$pkgver")
-sha256sums=('SKIP')
+pkgver=0.1
+pkgrel=1
+pkgdesc='high-level wrapper for aurutils with extra features'
+url='https://github.com/AladW/aurum'
+arch=('any')
+license=('custom:ISC')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+changelog=aurum.changelog
+depends=('aurutils' 'bat' 'git-delta' 'ninja')
+sha256sums=('7f9d02b1898d86ff23cc27c4d658fa314caa6896da59767cdd9fb4a6cde80e64')
 
 build() {
-    cd "$pkgname"
-    cargo build --release --locked
+    cd "$pkgname-$pkgver"
+    make AURUM_VERSION="$pkgver"
 }
 
 package() {
-    cd "$pkgname"
-    install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
-    install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+    cd "$pkgname-$pkgver"
+    make DESTDIR="$pkgdir" install
 }
