@@ -1,11 +1,11 @@
 pkgbase = icinga-php-library
 	pkgdesc = Bundle for all Icinga PHP libraries
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/Icinga/icinga-php-library
 	arch = any
 	license = MIT
-	source = icinga-php-library-0.11.0.tar.gz::https://github.com/Icinga/icinga-php-library/archive/refs/tags/v0.11.0.tar.gz
-	sha256sums = b3886f8ea55e8853b7b00205ec3ab30a877d704246e3402619474c21150a83db
+	source = icinga-php-library-0.11.1.tar.gz::https://github.com/Icinga/icinga-php-library/archive/refs/tags/v0.11.1.tar.gz
+	sha256sums = a0d38ae2ab669acc72bed41c9761a0951ea738180a9bd3005ec754560fec1961
 
 pkgname = icinga-php-library
