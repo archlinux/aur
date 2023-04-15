@@ -3,7 +3,7 @@ _srcname=LuaFormatter
 _pkgname=lua-format
 pkgname=$_pkgname-git
 pkgver=r126.2c3edd0
-pkgrel=2
+pkgrel=3
 pkgdesc='LuaFormatter - Code formatter for Lua'
 arch=(x86_64 aarch64)
 url=https://github.com/Koihik/LuaFormatter
@@ -24,7 +24,7 @@ prepare() {
 }
 build() {
   cd $_srcname
-  cmake -D BUILD_TESTS=OFF COVERAGE=OFF .
+  cmake -D BUILD_TESTS=OFF -D COVERAGE=OFF .
   make
 }
 package() {
