@@ -1,0 +1,19 @@
+pkgbase = xview-64bit
+	pkgdesc = an OPEN LOOK Toolkit for X Window Files
+	pkgver = 3.2p1.4_25.16
+	pkgrel = 1
+	url = https://sourceforge.net/projects/xview
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	makedepends = unzip
+	makedepends = imake
+	depends = boost-libs
+	depends = libtirpc
+	source = xview-64bit::git+https://github.com/ggodd/xview-64bit.git
+	source = xview-build.patch
+	sha256sums = SKIP
+	sha256sums = 1982468406a86dfab0efebdcb263432252433ecc326c498278d9ebe30186a7e5
+
+pkgname = xview-64bit

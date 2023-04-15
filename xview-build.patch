@@ -1,0 +1,1427 @@
+diff --git a/Build-LinuxXView.bash.amd64 b/Build-LinuxXView.bash.amd64
+old mode 100644
+new mode 100755
+index c545cae..e320635
+--- a/Build-LinuxXView.bash.amd64
++++ b/Build-LinuxXView.bash.amd64
+@@ -17,7 +17,7 @@ if ! [ -d lib/libxview ]; then
+ fi
+ 
+ # Set the directories that will be used for installation
+-[ -z "$OPENWINHOME" ] && OPENWINHOME=/usr/openwin
++[ -z "$OPENWINHOME" ] && OPENWINHOME=/usr
+ [ -z "$X11DIR" ] && X11DIR=/usr/X11R6
+ OWDEST=$DESTDIR$OPENWINHOME
+ X11DEST=$DESTDIR$X11DIR/lib/X11/config
+@@ -36,8 +36,8 @@ cat > imake.append <<EOF
+   XVDESTDIR      = $OWDEST
+   EXTRA_DEFINES  = -DOPENWINHOME_DEFAULT=\"$OPENWINHOME\" -D_DEFAULT_SOURCE -DSYSV_UCONTEXT
+   CONFIGDIR      = $OPENWINHOME/lib/config
+-  INCLUDES      := -I`pwd`/build/include $IMAKE_EXTRA_INCLUDES -I$OWDEST/include \$(INCLUDES)
+-  LOCAL_LDFLAGS := -L`pwd`/lib/libolgx -L`pwd`/lib/libxview $IMAKE_EXTRA_LOCAL_LDFLAGS -L$OWDEST/lib \$(LOCAL_LDFLAGS)
++  INCLUDES      := -I`pwd`/build/include -I/usr/include/tirpc $IMAKE_EXTRA_INCLUDES -I$OWDEST/include \$(INCLUDES)
++  LOCAL_LDFLAGS := -L`pwd`/lib/libolgx -L`pwd`/lib/libxview -ltirpc $IMAKE_EXTRA_LOCAL_LDFLAGS -L$OWDEST/lib \$(LOCAL_LDFLAGS)
+   MAKEOVERRIDES  =
+   CFLAGS        += -g \$(EXTRA_CFLAGS)
+ # End of variable-definitions appended by imake-wrapper
+diff --git a/lib/libxview/misc/i18n_impl.h b/lib/libxview/misc/i18n_impl.h
+index 7b9a67c..fe9e99e 100644
+--- a/lib/libxview/misc/i18n_impl.h
++++ b/lib/libxview/misc/i18n_impl.h
+@@ -48,7 +48,7 @@
+ #define	xv_domain		XV_TEXT_DOMAIN
+ #else  /* XGETTEXT */
+ /* Initial value assigned at xv_init.c */
+-Xv_private_data CONST char	*xv_domain;
++Xv_private_data extern CONST char	*xv_domain;
+ #endif /* XGETTEXT */
+ 
+ #define XV_MSG(s)		(dgettext(xv_domain, s))
+diff --git a/lib/libxview/notify/notify.h b/lib/libxview/notify/notify.h
+index 580eb86..6fac7eb 100644
+--- a/lib/libxview/notify/notify.h
++++ b/lib/libxview/notify/notify.h
+@@ -2,13 +2,13 @@
+ /*      @(#)notify.h 20.35 93/06/28 SMI      */
+ 
+ /*
+- *	(c) Copyright 1989 Sun Microsystems, Inc. Sun design patents 
+- *	pending in the U.S. and foreign countries. See LEGAL_NOTICE 
++ *	(c) Copyright 1989 Sun Microsystems, Inc. Sun design patents
++ *	pending in the U.S. and foreign countries. See LEGAL_NOTICE
+  *	file for terms of the license.
+  */
+ 
+-#ifndef	xview_notify_DEFINED
+-#define	xview_notify_DEFINED
++#ifndef xview_notify_DEFINED
++#define xview_notify_DEFINED
+ 
+ /*
+  ***********************************************************************
+@@ -17,22 +17,22 @@
+  */
+ 
+ #include <stdio.h>
++#include <sys/resource.h>
++#include <sys/signal.h> /* sigset_t */
++#include <sys/time.h>
+ #include <sys/types.h>
+-#include <sys/signal.h>  /* sigset_t */
+ #include <sys/wait.h>
+-#include <sys/time.h>
+-#include <sys/resource.h>
+ #include <xview/base.h>
+ #ifndef __linux__
+-# ifdef SYSV_WAIT
+-#  include <sys/rusage.h>
+-# endif 
++#ifdef SYSV_WAIT
++#include <sys/rusage.h>
++#endif
+ #endif
+ #ifdef SYSV_UCONTEXT
+-# include <sys/ucontext.h>
++#include <sys/ucontext.h>
+ #else
+ typedef int ucontext_t;
+-#endif 
++#endif
+ 
+ /*
+  ***********************************************************************
+@@ -41,48 +41,47 @@ typedef int ucontext_t;
+  */
+ 
+ /*
+- * PUBLIC #defines 
++ * PUBLIC #defines
+  */
+ 
+-#define	NOTIFY_FUNC_NULL	((Notify_func)0)
++#define NOTIFY_FUNC_NULL ((Notify_func)0)
+ 
+ /*      Macros to examine wait3/waitpid results provided for BSD rather
+  *      than adding a lot of #ifdef'ed code in the .c's.  Note that AT&T-
+  *      style macros expect the status value (not a pointer to it).
+  *      Also provide a dummy rusage structure in the non-BSD case.
+  */
+-#if  !(defined WTERMSIG) && !(defined SYSV_WAIT)
+-#define WTERMSIG(status)        ((status).w_termsig)
++#if !(defined WTERMSIG) && !(defined SYSV_WAIT)
++#define WTERMSIG(status) ((status).w_termsig)
+ #endif
+-#if  !(defined WSTOPSIG) && !(defined SYSV_WAIT)
+-#define WSTOPSIG(status)        ((status).w_stopsig)
++#if !(defined WSTOPSIG) && !(defined SYSV_WAIT)
++#define WSTOPSIG(status) ((status).w_stopsig)
+ #endif
+-#if  !(defined WEXITSTATUS) && !(defined SYSV_WAIT)
+-#define WEXITSTATUS(status)     ((status).w_retcode)
++#if !(defined WEXITSTATUS) && !(defined SYSV_WAIT)
++#define WEXITSTATUS(status) ((status).w_retcode)
+ #endif
+-#if  !(defined WCOREDUMP) && !(defined SYSV_WAIT)
+-#define WCOREDUMP(status)       ((status).w_coredump)
++#if !(defined WCOREDUMP) && !(defined SYSV_WAIT)
++#define WCOREDUMP(status) ((status).w_coredump)
+ #endif
+ 
+ #ifdef POLL
+ #define notify_set_fd_func(nclient, func, poll_fd) \
+-                           ndet_set_fd_func(nclient, func, poll_fd, NTFY_FD)
++	ndet_set_fd_func(nclient, func, poll_fd, NTFY_FD)
+ #endif /* POLL */
+ 
+-
+ /*
+- * PRIVATE #defines 
++ * PRIVATE #defines
+  */
+ 
+-#define NOTIFY_CLIENT_NULL	((Notify_client)0)
+-#define	NOTIFY_COPY_NULL	((Notify_copy)0)
+-#define	NOTIFY_RELEASE_NULL	((Notify_release)0)
+-#define	NOTIFY_ARG_NULL		((Notify_arg)0)
++#define NOTIFY_CLIENT_NULL ((Notify_client)0)
++#define NOTIFY_COPY_NULL ((Notify_copy)0)
++#define NOTIFY_RELEASE_NULL ((Notify_release)0)
++#define NOTIFY_ARG_NULL ((Notify_arg)0)
+ 
+ /*
+  * Mask bit generating macros 	(for prioritizer):
+  */
+-#define	SIG_BIT(sig)		(1 << ((sig)-1))
++#define SIG_BIT(sig) (1 << ((sig)-1))
+ 
+ /*
+  ***********************************************************************
+@@ -93,39 +92,39 @@ typedef int ucontext_t;
+ /*
+  * Opaque client handle.
+  */
+-typedef	Xv_opaque Notify_client;
++typedef Xv_opaque Notify_client;
+ 
+-#ifndef _NOTIFY_MIN_SYMBOLS	/* Hack to reduce symbols in libraries. */
++#ifndef _NOTIFY_MIN_SYMBOLS /* Hack to reduce symbols in libraries. */
+ 
+ /*
+  * Opaque client event.
+  */
+-typedef	Xv_opaque Notify_event;
++typedef Xv_opaque Notify_event;
+ 
+ /*
+  * Opaque client event optional argument.
+  */
+-typedef	Xv_opaque Notify_arg;
++typedef Xv_opaque Notify_arg;
+ 
+ /*
+  * A pointer to a function returning a Notify_arg (used for client
+  * event additional argument copying).
+  */
+-typedef	Notify_arg (*Notify_copy)();
++typedef Notify_arg (*Notify_copy)();
+ 
+ /*
+  * A pointer to a function returning void (used for client
+  * event additional argument storage releasing).
+  */
+-typedef	void (*Notify_release)();
++typedef void (*Notify_release)();
+ 
+ /*
+  * For Debugging utility:
+  */
+-typedef	enum notify_dump_type {
+-	NOTIFY_ALL=0,
+-	NOTIFY_DETECT=1,
+-	NOTIFY_DISPATCH=2
++typedef enum notify_dump_type {
++	NOTIFY_ALL = 0,
++	NOTIFY_DETECT = 1,
++	NOTIFY_DISPATCH = 2
+ } Notify_dump_type;
+ 
+ #endif /* ~_NOTIFY_MIN_SYMBOLS */
+@@ -134,18 +133,18 @@ typedef	enum notify_dump_type {
+  * Client notification function return values for notifier to client calls.
+  */
+ typedef enum notify_value {
+-	NOTIFY_DONE		= 0,	/* Handled notification */
+-	NOTIFY_IGNORED		= 1,	/* Did nothing about notification */
+-	NOTIFY_UNEXPECTED	= 2	/* Notification not expected */
++	NOTIFY_DONE = 0,      /* Handled notification */
++	NOTIFY_IGNORED = 1,   /* Did nothing about notification */
++	NOTIFY_UNEXPECTED = 2 /* Notification not expected */
+ } Notify_value;
+ 
+ /*
+  * A pointer to a function returning a Notify_value.
+  */
+ #if defined(__cplusplus) || defined(c_plusplus)
+-typedef	Notify_value (*Notify_func)(...);
++typedef Notify_value (*Notify_func)(...);
+ #else
+-typedef	Notify_value (*Notify_func)();
++typedef Notify_value (*Notify_func)();
+ #endif
+ 
+ /*
+@@ -154,46 +153,45 @@ typedef	Notify_value (*Notify_func)();
+  * indicates error condition).
+  */
+ typedef enum notify_error {
+-	NOTIFY_OK		= 0,	/* Success */
+-	NOTIFY_UNKNOWN_CLIENT	= 1,	/* Client argument unknown to notifier */
+-	NOTIFY_NO_CONDITION	= 2,	/* Client not registered for given 
+-					 * condition 
+-					 */
+-	NOTIFY_BAD_ITIMER	= 3,	/* Itimer type unknown */
+-	NOTIFY_BAD_SIGNAL	= 4,	/* Signal number out of range */
+-	NOTIFY_NOT_STARTED	= 5,	/* Notify_stop called & notifier not 
+-					 * started 
+-					 */
+-	NOTIFY_DESTROY_VETOED	= 6,	/* Some client didn't want to die when 
+-					 * called notify_die(DESTROY_CHECKING)
+-					 */
+-	NOTIFY_INTERNAL_ERROR	= 7,	/* Something wrong in the notifier */
+-	NOTIFY_SRCH		= 8,	/* No such process */
+-	NOTIFY_BADF		= 9,	/* Bad file number */
+-	NOTIFY_NOMEM		= 10,	/* Not enough core */
+-	NOTIFY_INVAL		= 11,	/* Invalid argument */
+-	NOTIFY_FUNC_LIMIT	= 12	/* Too many interposition functions */
++	NOTIFY_OK = 0,		   /* Success */
++	NOTIFY_UNKNOWN_CLIENT = 1, /* Client argument unknown to notifier */
++	NOTIFY_NO_CONDITION = 2,   /* Client not registered for given
++				    * condition
++				    */
++	NOTIFY_BAD_ITIMER = 3,	   /* Itimer type unknown */
++	NOTIFY_BAD_SIGNAL = 4,	   /* Signal number out of range */
++	NOTIFY_NOT_STARTED = 5,	   /* Notify_stop called & notifier not
++				    * started
++				    */
++	NOTIFY_DESTROY_VETOED = 6, /* Some client didn't want to die when
++				    * called notify_die(DESTROY_CHECKING)
++				    */
++	NOTIFY_INTERNAL_ERROR = 7, /* Something wrong in the notifier */
++	NOTIFY_SRCH = 8,	   /* No such process */
++	NOTIFY_BADF = 9,	   /* Bad file number */
++	NOTIFY_NOMEM = 10,	   /* Not enough core */
++	NOTIFY_INVAL = 11,	   /* Invalid argument */
++	NOTIFY_FUNC_LIMIT = 12	   /* Too many interposition functions */
+ } Notify_error;
+ 
+-
+ /*
+  * Argument types
+  */
+ typedef enum notify_signal_mode {
+-	NOTIFY_SYNC		= 0,
+-	NOTIFY_ASYNC		= 1
++	NOTIFY_SYNC = 0,
++	NOTIFY_ASYNC = 1
+ } Notify_signal_mode;
+ 
+ typedef enum notify_event_type {
+-	NOTIFY_SAFE		= 0,
+-	NOTIFY_IMMEDIATE	= 1
++	NOTIFY_SAFE = 0,
++	NOTIFY_IMMEDIATE = 1
+ } Notify_event_type;
+ 
+ typedef enum destroy_status {
+-	DESTROY_PROCESS_DEATH	= 0,
+-	DESTROY_CHECKING	= 1,
+-	DESTROY_CLEANUP		= 2,
+-	DESTROY_SAVE_YOURSELF	= 3
++	DESTROY_PROCESS_DEATH = 0,
++	DESTROY_CHECKING = 1,
++	DESTROY_CLEANUP = 2,
++	DESTROY_SAVE_YOURSELF = 3
+ } Destroy_status;
+ 
+ /*
+@@ -203,166 +201,233 @@ typedef enum destroy_status {
+  */
+ 
+ /*
+- * PUBLIC variables 
++ * PUBLIC variables
+  */
+ 
+-extern	struct itimerval NOTIFY_POLLING_ITIMER;	/* {{0,1},{0,1}} */
++extern struct itimerval NOTIFY_POLLING_ITIMER; /* {{0,1},{0,1}} */
+ 
+ /*
+- * PRIVATE variables 
++ * PRIVATE variables
+  */
+ 
+-extern	Notify_error notify_errno;
++extern Notify_error notify_errno;
+ 
+ #ifndef _NOTIFY_MIN_SYMBOLS
+-extern	struct itimerval NOTIFY_NO_ITIMER;	/* {{0,0},{0,0}} */
+-#endif	/* ~_NOTIFY_MIN_SYMBOLS */
++extern struct itimerval NOTIFY_NO_ITIMER; /* {{0,0},{0,0}} */
++#endif					  /* ~_NOTIFY_MIN_SYMBOLS */
+ 
+ /*
+- * PUBLIC functions 
++ * PUBLIC functions
+  */
+ 
+ #ifndef _NOTIFY_MIN_SYMBOLS
+ 
+ #ifdef SYSV_WAIT
+-EXTERN_FUNCTION (Notify_value   notify_default_wait3, (Notify_client nclient, int pid, int  *status, struct rusage *rusage));
++EXTERN_FUNCTION(Notify_value notify_default_wait3,
++		(Notify_client nclient, int pid, int *status,
++		 struct rusage *rusage));
+ #define notify_default_waitpid notify_default_wait3
+ #else
+-EXTERN_FUNCTION (Notify_value 	notify_default_wait3, (Notify_client nclient, int pid, union wait *status, struct rusage *rusage));
+-#endif 
+-
+-EXTERN_FUNCTION (Notify_error 	notify_dispatch, (void));
+-EXTERN_FUNCTION (Notify_error	notify_do_dispatch, (void));
+-EXTERN_FUNCTION (Notify_error 	notify_itimer_value, (Notify_client nclient, int which, struct itimerval *value));
+-EXTERN_FUNCTION (Notify_value 	notify_next_destroy_func, (Notify_client nclient, Destroy_status status));
+-EXTERN_FUNCTION (Notify_value 	notify_next_event_func, (Notify_client nclient, Notify_event event, Notify_arg arg, Notify_event_type when));
+-EXTERN_FUNCTION (Notify_error 	notify_no_dispatch, (void));
+-EXTERN_FUNCTION (Notify_func 	notify_set_destroy_func, (Notify_client nclient, Notify_func func));
+-EXTERN_FUNCTION (Notify_func 	notify_set_exception_func, (Notify_client nclient, Notify_func func, int fd));
+-EXTERN_FUNCTION (Notify_func 	notify_set_input_func, (Notify_client nclient, Notify_func func, int fd));
+-EXTERN_FUNCTION (Notify_func 	notify_set_itimer_func, (Notify_client nclient, Notify_func func, int which, struct itimerval *value, struct itimerval *ovalue));
+-EXTERN_FUNCTION (Notify_func 	notify_set_output_func, (Notify_client nclient,	 Notify_func func, int fd));
+-EXTERN_FUNCTION (Notify_func 	notify_set_signal_func, (Notify_client nclient,	Notify_func func, int sig, Notify_signal_mode mode));
+-EXTERN_FUNCTION (Notify_func 	notify_set_wait3_func, 	(Notify_client nclient, Notify_func func, int pid));
++EXTERN_FUNCTION(Notify_value notify_default_wait3,
++		(Notify_client nclient, int pid, union wait *status,
++		 struct rusage *rusage));
++#endif
++
++EXTERN_FUNCTION(Notify_error notify_dispatch, (void));
++EXTERN_FUNCTION(Notify_error notify_do_dispatch, (void));
++EXTERN_FUNCTION(Notify_error notify_itimer_value,
++		(Notify_client nclient, int which, struct itimerval *value));
++EXTERN_FUNCTION(Notify_value notify_next_destroy_func,
++		(Notify_client nclient, Destroy_status status));
++EXTERN_FUNCTION(Notify_value notify_next_event_func,
++		(Notify_client nclient, Notify_event event, Notify_arg arg,
++		 Notify_event_type when));
++EXTERN_FUNCTION(Notify_error notify_no_dispatch, (void));
++EXTERN_FUNCTION(Notify_func notify_set_destroy_func,
++		(Notify_client nclient, Notify_func func));
++EXTERN_FUNCTION(Notify_func notify_set_exception_func,
++		(Notify_client nclient, Notify_func func, int fd));
++EXTERN_FUNCTION(Notify_func notify_set_input_func,
++		(Notify_client nclient, Notify_func func, int fd));
++EXTERN_FUNCTION(Notify_func notify_set_itimer_func,
++		(Notify_client nclient, Notify_func func, int which,
++		 struct itimerval *value, struct itimerval *ovalue));
++EXTERN_FUNCTION(Notify_func notify_set_output_func,
++		(Notify_client nclient, Notify_func func, int fd));
++EXTERN_FUNCTION(Notify_func notify_set_signal_func,
++		(Notify_client nclient, Notify_func func, int sig,
++		 Notify_signal_mode mode));
++EXTERN_FUNCTION(Notify_func notify_set_wait3_func,
++		(Notify_client nclient, Notify_func func, int pid));
+ #ifdef SYSV_WAIT
+ #define notify_set_waitpid_func notify_set_wait3_func
+ #endif
+-EXTERN_FUNCTION (Notify_error 	notify_start, (void));
+-EXTERN_FUNCTION (Notify_error 	notify_stop, (void));
+-EXTERN_FUNCTION (Notify_error 	notify_veto_destroy, (Notify_client nclient));
+-EXTERN_FUNCTION (void 		notify_perror, (char *str));
+-EXTERN_FUNCTION (void 		notify_enable_rpc_svc, (int flag));
++EXTERN_FUNCTION(Notify_error notify_start, (void));
++EXTERN_FUNCTION(Notify_error notify_stop, (void));
++EXTERN_FUNCTION(Notify_error notify_veto_destroy, (Notify_client nclient));
++EXTERN_FUNCTION(void notify_perror, (char *str));
++EXTERN_FUNCTION(void notify_enable_rpc_svc, (int flag));
+ 
+-#endif	/* ~_NOTIFY_MIN_SYMBOLS */
++#endif /* ~_NOTIFY_MIN_SYMBOLS */
+ 
+ /*
+- * PRIVATE functions 
++ * PRIVATE functions
+  */
+ 
+-EXTERN_FUNCTION (Notify_func 	notify_set_event_func, (Notify_client nclient, Notify_func func, Notify_event_type when));
+-EXTERN_FUNCTION (Notify_error 	notify_remove, (Notify_client nclient));
++EXTERN_FUNCTION(Notify_func notify_set_event_func,
++		(Notify_client nclient, Notify_func func,
++		 Notify_event_type when));
++EXTERN_FUNCTION(Notify_error notify_remove, (Notify_client nclient));
+ 
+ #ifndef _NOTIFY_MIN_SYMBOLS
+ 
+-EXTERN_FUNCTION (Notify_error 	notify_client, (Notify_client nclient));
+-EXTERN_FUNCTION (Notify_error 	notify_destroy, (Notify_client nclient, Destroy_status status));
+-EXTERN_FUNCTION (Notify_error 	notify_die, (Destroy_status status));
+-EXTERN_FUNCTION (Notify_error 	notify_event, (Notify_client nclient, Notify_event event, Notify_arg arg));
+-EXTERN_FUNCTION (Notify_error 	notify_exception, (Notify_client nclient, int fd));
+-EXTERN_FUNCTION (void 		notify_flush_pending, (Notify_client nclient));
+-EXTERN_FUNCTION (Notify_func 	notify_get_destroy_func, (Notify_client));
+-EXTERN_FUNCTION (Notify_func 	notify_get_event_func, (Notify_client nclient, Notify_event_type when));
+-EXTERN_FUNCTION (Notify_func 	notify_get_exception_func, (Notify_client nclient, int fd));
+-EXTERN_FUNCTION (Notify_func	notify_get_input_func, (Notify_client nclient, int fd));
+-EXTERN_FUNCTION (Notify_func	notify_get_itimer_func,	(Notify_client nclient, int which));
+-EXTERN_FUNCTION (Notify_func 	notify_get_output_func, (Notify_client nclient, int fd));
+-EXTERN_FUNCTION (Notify_func 	notify_get_prioritizer_func, (Notify_client nclient));
+-EXTERN_FUNCTION (Notify_func 	notify_get_scheduler_func, (void));
+-EXTERN_FUNCTION (int 		notify_get_signal_code, (void));
++EXTERN_FUNCTION(Notify_error notify_client, (Notify_client nclient));
++EXTERN_FUNCTION(Notify_error notify_destroy,
++		(Notify_client nclient, Destroy_status status));
++EXTERN_FUNCTION(Notify_error notify_die, (Destroy_status status));
++EXTERN_FUNCTION(Notify_error notify_event,
++		(Notify_client nclient, Notify_event event, Notify_arg arg));
++EXTERN_FUNCTION(Notify_error notify_exception, (Notify_client nclient, int fd));
++EXTERN_FUNCTION(void notify_flush_pending, (Notify_client nclient));
++EXTERN_FUNCTION(Notify_func notify_get_destroy_func, (Notify_client));
++EXTERN_FUNCTION(Notify_func notify_get_event_func,
++		(Notify_client nclient, Notify_event_type when));
++EXTERN_FUNCTION(Notify_func notify_get_exception_func,
++		(Notify_client nclient, int fd));
++EXTERN_FUNCTION(Notify_func notify_get_input_func,
++		(Notify_client nclient, int fd));
++EXTERN_FUNCTION(Notify_func notify_get_itimer_func,
++		(Notify_client nclient, int which));
++EXTERN_FUNCTION(Notify_func notify_get_output_func,
++		(Notify_client nclient, int fd));
++EXTERN_FUNCTION(Notify_func notify_get_prioritizer_func,
++		(Notify_client nclient));
++EXTERN_FUNCTION(Notify_func notify_get_scheduler_func, (void));
++EXTERN_FUNCTION(int notify_get_signal_code, (void));
+ 
+ #ifndef SYSV_UCONTEXT
+-EXTERN_FUNCTION (struct sigcontext *notify_get_signal_context, (void));
++EXTERN_FUNCTION(struct sigcontext *notify_get_signal_context, (void));
+ #else
+-EXTERN_FUNCTION (ucontext_t *notify_get_signal_context, (void));
++EXTERN_FUNCTION(ucontext_t *notify_get_signal_context, (void));
+ #endif
+ 
+-EXTERN_FUNCTION (Notify_func 	notify_get_signal_func, (Notify_client nclient, int signal, Notify_signal_mode mode));
+-EXTERN_FUNCTION (Notify_func 	notify_get_wait3_func, (Notify_client nclient, int pid));
++EXTERN_FUNCTION(Notify_func notify_get_signal_func,
++		(Notify_client nclient, int signal, Notify_signal_mode mode));
++EXTERN_FUNCTION(Notify_func notify_get_wait3_func,
++		(Notify_client nclient, int pid));
+ #ifdef SYSV_WAIT
+ #define notify_get_waitpid_func notify_get_wait3_func
+ #endif
+-EXTERN_FUNCTION (Notify_error	notify_input, (Notify_client nclient, int fd));
+-EXTERN_FUNCTION (Notify_error	notify_interpose_destroy_func, (Notify_client nclient, Notify_func func));
+-EXTERN_FUNCTION (Notify_error 	notify_interpose_event_func, (Notify_client nclient, Notify_func func, Notify_event_type when));
+-EXTERN_FUNCTION (Notify_error	notify_interpose_exception_func, (Notify_client nclient, Notify_func func, int fd));
+-EXTERN_FUNCTION (Notify_error	notify_interpose_input_func, (Notify_client nclient, Notify_func func, int fd));
+-EXTERN_FUNCTION (Notify_error	notify_interpose_itimer_func, (Notify_client nclient, Notify_func func, int which));
+-EXTERN_FUNCTION (Notify_error 	notify_interpose_output_func, (Notify_client nclient, Notify_func func, int fd));
+-EXTERN_FUNCTION (Notify_error 	notify_interpose_signal_func, (Notify_client nclient, Notify_func func, int signal, Notify_signal_mode mode));
+-EXTERN_FUNCTION (Notify_error	notify_interpose_wait3_func, (Notify_client nclient, Notify_func func, int pid));
++EXTERN_FUNCTION(Notify_error notify_input, (Notify_client nclient, int fd));
++EXTERN_FUNCTION(Notify_error notify_interpose_destroy_func,
++		(Notify_client nclient, Notify_func func));
++EXTERN_FUNCTION(Notify_error notify_interpose_event_func,
++		(Notify_client nclient, Notify_func func,
++		 Notify_event_type when));
++EXTERN_FUNCTION(Notify_error notify_interpose_exception_func,
++		(Notify_client nclient, Notify_func func, int fd));
++EXTERN_FUNCTION(Notify_error notify_interpose_input_func,
++		(Notify_client nclient, Notify_func func, int fd));
++EXTERN_FUNCTION(Notify_error notify_interpose_itimer_func,
++		(Notify_client nclient, Notify_func func, int which));
++EXTERN_FUNCTION(Notify_error notify_interpose_output_func,
++		(Notify_client nclient, Notify_func func, int fd));
++EXTERN_FUNCTION(Notify_error notify_interpose_signal_func,
++		(Notify_client nclient, Notify_func func, int signal,
++		 Notify_signal_mode mode));
++EXTERN_FUNCTION(Notify_error notify_interpose_wait3_func,
++		(Notify_client nclient, Notify_func func, int pid));
+ #ifdef SYSV_WAIT
+ #define notify_interpose_waitpid_func notify_interpose_wait3_func
+ #endif
+-EXTERN_FUNCTION (Notify_error 	notify_itimer, 	(Notify_client nclient, int which));
+-EXTERN_FUNCTION (Notify_value 	notify_next_exception_func, (Notify_client nclient, int fd));
+-EXTERN_FUNCTION (Notify_value 	notify_next_input_func, (Notify_client nclient, int fd));
+-EXTERN_FUNCTION (Notify_value 	notify_next_itimer_func, (Notify_client nclient, int which));
+-EXTERN_FUNCTION (Notify_value	notify_next_output_func, (Notify_client nclient, int fd));
+-EXTERN_FUNCTION (Notify_value 	notify_next_signal_func, (Notify_client nclient, int signal, Notify_signal_mode mode));
++EXTERN_FUNCTION(Notify_error notify_itimer, (Notify_client nclient, int which));
++EXTERN_FUNCTION(Notify_value notify_next_exception_func,
++		(Notify_client nclient, int fd));
++EXTERN_FUNCTION(Notify_value notify_next_input_func,
++		(Notify_client nclient, int fd));
++EXTERN_FUNCTION(Notify_value notify_next_itimer_func,
++		(Notify_client nclient, int which));
++EXTERN_FUNCTION(Notify_value notify_next_output_func,
++		(Notify_client nclient, int fd));
++EXTERN_FUNCTION(Notify_value notify_next_signal_func,
++		(Notify_client nclient, int signal, Notify_signal_mode mode));
+ 
+ #ifdef SYSV_WAIT
+-EXTERN_FUNCTION (Notify_value 	notify_next_wait3_func, (Notify_client nclient, int pid, int  *status, struct rusage *rusage));
++EXTERN_FUNCTION(Notify_value notify_next_wait3_func,
++		(Notify_client nclient, int pid, int *status,
++		 struct rusage *rusage));
+ #define notify_next_waitpid_func notify_next_wait3_func
+ #else
+-EXTERN_FUNCTION (Notify_value 	notify_next_wait3_func, (Notify_client nclient, int pid, union wait *status, struct rusage *rusage));
+-#endif 
++EXTERN_FUNCTION(Notify_value notify_next_wait3_func,
++		(Notify_client nclient, int pid, union wait *status,
++		 struct rusage *rusage));
++#endif
+ 
+-EXTERN_FUNCTION (Notify_value	notify_nop, (void));
+-EXTERN_FUNCTION (Notify_error 	notify_output, (Notify_client nclient, int fd));
+-EXTERN_FUNCTION (Notify_error	notify_post_destroy, (Notify_client nclient, Destroy_status status, Notify_event_type type));
+-EXTERN_FUNCTION (Notify_error 	notify_post_event, (Notify_client nclient, Notify_event event, 	Notify_event_type when_hint));
++EXTERN_FUNCTION(Notify_value notify_nop, (void));
++EXTERN_FUNCTION(Notify_error notify_output, (Notify_client nclient, int fd));
++EXTERN_FUNCTION(Notify_error notify_post_destroy,
++		(Notify_client nclient, Destroy_status status,
++		 Notify_event_type type));
++EXTERN_FUNCTION(Notify_error notify_post_event,
++		(Notify_client nclient, Notify_event event,
++		 Notify_event_type when_hint));
+ 
+ /* vmh - 10/15/90: one argument was missing */
+-EXTERN_FUNCTION (Notify_error 	notify_post_event_and_arg, (Notify_client nclient, Notify_event event, Notify_event_type when_hint, Notify_arg arg, Notify_copy copy_func, Notify_release release_func));
+-
+-EXTERN_FUNCTION (Notify_error 	notify_remove_destroy_func, (Notify_client nclient, Notify_func func));
+-EXTERN_FUNCTION (Notify_error 	notify_remove_event_func, (Notify_client nclient, Notify_func func, Notify_event_type when));
+-EXTERN_FUNCTION (Notify_error 	notify_remove_exception_func, (Notify_client nclient, Notify_func func, int fd));
+-EXTERN_FUNCTION (Notify_error	notify_remove_input_func, (Notify_client nclient, Notify_func func, int fd));
+-EXTERN_FUNCTION (Notify_error 	notify_remove_itimer_func, (Notify_client nclient, Notify_func func, int which));
+-EXTERN_FUNCTION (Notify_error	notify_remove_output_func, (Notify_client nclient, Notify_func func, int fd));
+-EXTERN_FUNCTION (Notify_error 	notify_remove_signal_func, (Notify_client nclient, Notify_func func, int signal, Notify_signal_mode mode));
+-EXTERN_FUNCTION (Notify_error 	notify_remove_wait3_func, (Notify_client nclient, Notify_func func, int pid));
++EXTERN_FUNCTION(Notify_error notify_post_event_and_arg,
++		(Notify_client nclient, Notify_event event,
++		 Notify_event_type when_hint, Notify_arg arg,
++		 Notify_copy copy_func, Notify_release release_func));
++
++EXTERN_FUNCTION(Notify_error notify_remove_destroy_func,
++		(Notify_client nclient, Notify_func func));
++EXTERN_FUNCTION(Notify_error notify_remove_event_func,
++		(Notify_client nclient, Notify_func func,
++		 Notify_event_type when));
++EXTERN_FUNCTION(Notify_error notify_remove_exception_func,
++		(Notify_client nclient, Notify_func func, int fd));
++EXTERN_FUNCTION(Notify_error notify_remove_input_func,
++		(Notify_client nclient, Notify_func func, int fd));
++EXTERN_FUNCTION(Notify_error notify_remove_itimer_func,
++		(Notify_client nclient, Notify_func func, int which));
++EXTERN_FUNCTION(Notify_error notify_remove_output_func,
++		(Notify_client nclient, Notify_func func, int fd));
++EXTERN_FUNCTION(Notify_error notify_remove_signal_func,
++		(Notify_client nclient, Notify_func func, int signal,
++		 Notify_signal_mode mode));
++EXTERN_FUNCTION(Notify_error notify_remove_wait3_func,
++		(Notify_client nclient, Notify_func func, int pid));
+ #ifdef SYSV_WAIT
+ #define notify_remove_waitpid_func notify_remove_wait3_func
+ #endif
+-EXTERN_FUNCTION (Notify_func 	notify_set_prioritizer_func, (Notify_client nclient, Notify_func func));
+-EXTERN_FUNCTION (Notify_func 	notify_set_scheduler_func, (Notify_func nclient));
+-EXTERN_FUNCTION (Notify_error 	notify_signal, (Notify_client nclient, int sig));
+-EXTERN_FUNCTION (Notify_error 	notify_wait3, (Notify_client nclient));
++EXTERN_FUNCTION(Notify_func notify_set_prioritizer_func,
++		(Notify_client nclient, Notify_func func));
++EXTERN_FUNCTION(Notify_func notify_set_scheduler_func, (Notify_func nclient));
++EXTERN_FUNCTION(Notify_error notify_signal, (Notify_client nclient, int sig));
++EXTERN_FUNCTION(Notify_error notify_wait3, (Notify_client nclient));
+ #ifdef SYSV_WAIT
+ #define notify_waitpid notify_wait3
+ #endif
+ 
+-extern	Notify_error	notify_errno;
++extern Notify_error notify_errno;
+ 
+ /*
+  * FD manipulation functions
+  */
+ 
+-EXTERN_FUNCTION (int 		ntfy_fd_cmp_and, (fd_set *a, fd_set *b));
+-EXTERN_FUNCTION (int 		ntfy_fd_cmp_or, (fd_set *a, fd_set *b));
+-EXTERN_FUNCTION (int 		ntfy_fd_anyset, (fd_set *a));
+-EXTERN_FUNCTION (fd_set *	ntfy_fd_cpy_or, (fd_set *a, fd_set *b));
+-EXTERN_FUNCTION (fd_set *	ntfy_fd_cpy_and, (fd_set *a, fd_set *b));
+-EXTERN_FUNCTION (fd_set *	ntfy_fd_cpy_xor, (fd_set *a, fd_set *b));
++EXTERN_FUNCTION(int ntfy_fd_cmp_and, (fd_set * a, fd_set *b));
++EXTERN_FUNCTION(int ntfy_fd_cmp_or, (fd_set * a, fd_set *b));
++EXTERN_FUNCTION(int ntfy_fd_anyset, (fd_set * a));
++EXTERN_FUNCTION(fd_set *ntfy_fd_cpy_or, (fd_set * a, fd_set *b));
++EXTERN_FUNCTION(fd_set *ntfy_fd_cpy_and, (fd_set * a, fd_set *b));
++EXTERN_FUNCTION(fd_set *ntfy_fd_cpy_xor, (fd_set * a, fd_set *b));
+ 
+ /*
+- * Debugging Utility 
++ * Debugging Utility
+  */
+ 
+-EXTERN_FUNCTION (void 		notify_dump, (Notify_client nclient, Notify_dump_type type, FILE * file));
++EXTERN_FUNCTION(void notify_dump,
++		(Notify_client nclient, Notify_dump_type type, FILE *file));
+ 
+ #endif /* ~_NOTIFY_MIN_SYMBOLS */
+ 
+-#endif	/* ~xview_notify_DEFINED */
++#endif /* ~xview_notify_DEFINED */
+diff --git a/lib/libxview/textsw/txt_dbx_.h b/lib/libxview/textsw/txt_dbx_.h
+index 114efd3..b949f58 100644
+--- a/lib/libxview/textsw/txt_dbx_.h
++++ b/lib/libxview/textsw/txt_dbx_.h
+@@ -6,27 +6,39 @@
+ 
+ Xv_public Textsw textsw_first(Textsw any);
+ Xv_public Textsw textsw_next(Textsw previous);
+-Pkg_private int textsw_does_index_not_show(Textsw abstract, Es_index index, int *line_index);
++Pkg_private int textsw_does_index_not_show(Textsw abstract, Es_index index,
++					   int *line_index);
+ Xv_public int textsw_screen_line_count(Textsw abstract);
+ Pkg_private int textsw_screen_column_count(Textsw abstract);
+ Pkg_private void textsw_set_start(Textsw abstract, Textsw_index pos);
+-Xv_public void textsw_file_lines_visible(Textsw abstract, int *top, int *bottom);
++Xv_public void textsw_file_lines_visible(Textsw abstract, int *top,
++					 int *bottom);
+ Pkg_private void textsw_view_line_info(Textsw abstract, int *top, int *bottom);
+-Pkg_private int textsw_contains_line(register Textsw abstract, register int line, register Rect *rect);
++Pkg_private int textsw_contains_line(register Textsw abstract,
++				     register int line, register Rect *rect);
+ Pkg_private int textsw_nop_notify(Textsw abstract, Attr_avlist attrs);
+-Textsw abstract;
+-Attr_avlist attrs;
++extern Textsw abstract;
++extern Attr_avlist attrs;
+ #ifdef OW_I18N
+ Xv_public Textsw_index textsw_index_for_file_line_wc(Textsw abstract, int line);
+ #endif
+ Xv_public Textsw_index textsw_index_for_file_line(Textsw abstract, int line);
+-Pkg_private Textsw_index textsw_position_for_physical_line(Textsw abstract, int physical_line);
++Pkg_private Textsw_index textsw_position_for_physical_line(Textsw abstract,
++							   int physical_line);
+ Xv_public void textsw_scroll_lines(Textsw abstract, int count);
+-Pkg_private Textsw_mark textsw_add_glyph(Textsw abstract, Textsw_index pos, Pixrect *pr, int op, int offset_x, int offset_y, int flags);
+-Pkg_private Textsw_mark textsw_add_glyph_on_line(Textsw abstract, int line, struct pixrect *pr, int op, int offset_x, int offset_y, int flags);
+-Pkg_private void textsw_remove_glyph(Textsw abstract, Textsw_mark mark, int flags);
+-Pkg_private void textsw_set_glyph_pr(Textsw abstract,Textsw_mark  mark, struct pixrect *pr);
+-Pkg_private Textsw_index textsw_start_of_display_line(Textsw abstract, Textsw_index pos);
++Pkg_private Textsw_mark textsw_add_glyph(Textsw abstract, Textsw_index pos,
++					 Pixrect *pr, int op, int offset_x,
++					 int offset_y, int flags);
++Pkg_private Textsw_mark textsw_add_glyph_on_line(Textsw abstract, int line,
++						 struct pixrect *pr, int op,
++						 int offset_x, int offset_y,
++						 int flags);
++Pkg_private void textsw_remove_glyph(Textsw abstract, Textsw_mark mark,
++				     int flags);
++Pkg_private void textsw_set_glyph_pr(Textsw abstract, Textsw_mark mark,
++				     struct pixrect *pr);
++Pkg_private Textsw_index textsw_start_of_display_line(Textsw abstract,
++						      Textsw_index pos);
+ 
+ #endif
+ 
+diff --git a/lib/libxview/ttysw/tty_modes.c b/lib/libxview/ttysw/tty_modes.c
+index d63d177..0f94fe4 100644
+--- a/lib/libxview/ttysw/tty_modes.c
++++ b/lib/libxview/ttysw/tty_modes.c
+@@ -1,20 +1,20 @@
+ #ifndef lint
+ #ifdef sccs
+-static char     sccsid[] = "@(#)tty_modes.c 20.54 93/06/28";
++static char sccsid[] = "@(#)tty_modes.c 20.54 93/06/28";
+ #endif
+ #endif
+ 
+ /*
+- *	(c) Copyright 1989 Sun Microsystems, Inc. Sun design patents 
+- *	pending in the U.S. and foreign countries. See LEGAL NOTICE 
++ *	(c) Copyright 1989 Sun Microsystems, Inc. Sun design patents
++ *	pending in the U.S. and foreign countries. See LEGAL NOTICE
+  *	file for terms of the license.
+  */
+ 
+ /*
+  * Manages mode changes between termsw and ttysw.
+- * 
++ *
+  * The modes are as follows:
+- * 
++ *
+  * termsw cooked, echo append_only_log caret must be at the end.  all input is
+  * buffered until a command completion character or interrupt character is
+  * inserted. !append_only_log if caret is at the end, interpret as in
+@@ -30,337 +30,314 @@ static char     sccsid[] = "@(#)tty_modes.c 20.54 93/06/28";
+  * !append_only_log caret anywhere, no interpretation of input.
+  */
+ 
+-#include <xview_private/tty_modes_.h>
+-#include <xview_private/cim_size_.h>
+-#include <xview_private/csr_change_.h>
+-#include <xview_private/defaults_.h>
+-#include <xview_private/term_ntfy_.h>
+-#include <xview_private/ttyansi_.h>
+-#include <xview_private/tty_ntfy_.h>
+-#include <xview_private/txt_disp_.h>
+ #include <errno.h>
+ #include <stdio.h>
+-#include <sys/types.h>
+ #include <sys/file.h>
+ #include <sys/signal.h>
+-
+-#include <xview_private/portable.h>	/* for XV* defines and termios */
+-
++#include <sys/types.h>
+ #include <xview/icon.h>
+-#include <xview/window.h>
+-#include <xview/win_notify.h>
+-#include <xview/ttysw.h>
++#include <xview/server.h>
+ #include <xview/termsw.h>
+ #include <xview/textsw.h>
+-#include <xview/server.h>
++#include <xview/ttysw.h>
++#include <xview/win_notify.h>
++#include <xview/window.h>
++#include <xview_private/cim_size_.h>
++#include <xview_private/csr_change_.h>
++#include <xview_private/defaults_.h>
+ #include <xview_private/i18n_impl.h>
+-#include <xview_private/tty_impl.h>
++#include <xview_private/portable.h> /* for XV* defines and termios */
+ #include <xview_private/term_impl.h>
++#include <xview_private/term_ntfy_.h>
++#include <xview_private/tty_impl.h>
++#include <xview_private/tty_modes_.h>
++#include <xview_private/tty_ntfy_.h>
++#include <xview_private/ttyansi_.h>
++#include <xview_private/txt_disp_.h>
+ #include <xview_private/txt_impl.h>
+ 
+-int             ttysw_waiting_for_pty_input;
++int extern ttysw_waiting_for_pty_input;
+ 
+ extern Xv_Window csr_pixwin;
+-extern CHAR    **image;
+-extern char    **screenmode;
++extern CHAR **image;
++extern char **screenmode;
+ #ifdef SVR4
+ extern int doremote;
+ #endif
+ 
+-
+ /*
+  * sw should currently be a termsw, but need not be if a shelltool has been
+  * started in an environment that has termsw TERM&TERMCAP entries.
+  */
+-Pkg_private int
+-ttysw_be_ttysw(ttysw_view)
++Pkg_private int ttysw_be_ttysw(ttysw_view)
+ /*
+  * This might not be the current view handle, for current view look at
+  * current_view_public in the ttysw folio
+  */
+-    Ttysw_view_handle ttysw_view;
++Ttysw_view_handle ttysw_view;
+ {
+-    Ttysw_folio     ttysw = TTY_FOLIO_FROM_TTY_VIEW_HANDLE(ttysw_view);
+-    Textsw          textsw;
+-    Termsw_folio    termsw;
+-    int             off = 0;
+-    int             fd;
++	Ttysw_folio ttysw = TTY_FOLIO_FROM_TTY_VIEW_HANDLE(ttysw_view);
++	Textsw textsw;
++	Termsw_folio termsw;
++	int off = 0;
++	int fd;
+ #ifdef OW_I18N
+-    Termsw              termsw_public;
+-    int			win_ic_stat;
++	Termsw termsw_public;
++	int win_ic_stat;
+ #endif
+ 
+-    if (!ttysw_getopt(ttysw, TTYOPT_TEXT)) {
+-	/* Already acting as a ttysw. */
+-	return (-1);
+-    }
+-    ttysw_view = TTY_VIEW_PRIVATE_FROM_ANY_VIEW(ttysw->current_view_public);
++	if (!ttysw_getopt(ttysw, TTYOPT_TEXT)) {
++		/* Already acting as a ttysw. */
++		return (-1);
++	}
++	ttysw_view = TTY_VIEW_PRIVATE_FROM_ANY_VIEW(ttysw->current_view_public);
+ 
+-    textsw = ttysw->current_view_public;	/* Textsw really need the
+-						 * public view handle */
+-    termsw = TERMSW_PRIVATE(TTY_PUBLIC(ttysw));
++	textsw = ttysw->current_view_public; /* Textsw really need the
++					      * public view handle */
++	termsw = TERMSW_PRIVATE(TTY_PUBLIC(ttysw));
+ 
+ #ifdef OW_I18N
+-    win_ic_stat = (int) xv_get(textsw,
+-				WIN_IC_ACTIVE,
+-				0);
++	win_ic_stat = (int)xv_get(textsw, WIN_IC_ACTIVE, 0);
+ #endif
+ 
+-    /* If this is invoked by vi, ttysw_ansi_escape() will reset it to false */
+-    termsw->ok_to_enable_scroll = TRUE;
++	/* If this is invoked by vi, ttysw_ansi_escape() will reset it to false
++	 */
++	termsw->ok_to_enable_scroll = TRUE;
++
++	(void)xv_set(textsw, TEXTSW_READ_ONLY, TRUE, 0);
++	(void)xv_set(xv_get(textsw, WIN_VERTICAL_SCROLLBAR), XV_SHOW, FALSE, 0);
++
++	/* Update all of the tty-dependent shadow size state. */
++	csr_pixwin = (Xv_Window)ttysw->current_view_public;
++	csr_resize(ttysw_view);
++	/* Cannot call cim_resize(ttysw), call xv_tty_image*() instead. */
++	xv_tty_free_image_and_mode();
++	xv_tty_imagealloc(ttysw, FALSE); /* Damn globals! */
++
++	if (ttysw->remote) {
++		/*
++		 * Switch the pty out of remote mode.
++		 */
++#if !defined(__linux__) || defined(TIOCREMOTE)
++		if (ioctl(ttysw->ttysw_pty, TIOCREMOTE, &off) < 0)
++			perror("ioctl: TIOCREMOTE");
++		else
++#endif
++			ttysw->remote = ttysw->pending_remote = off;
++	}
+ 
+-    (void) xv_set(textsw,
+-		  TEXTSW_READ_ONLY, TRUE,
+-		  0);
+-    (void) xv_set(xv_get(textsw, WIN_VERTICAL_SCROLLBAR),
+-		  XV_SHOW, FALSE, 0);
++#ifdef XV_USE_SVR4_PTYS
++	/*
++	 * Since we track all tty ioctls as they come up in packetized form
++	 * through the master side pty, there's no need to determine the slave's
++	 * state here.
++	 */
++#else /* XV_USE_SVR4_PTYS */
++	fd = (int)xv_get(textsw, TTY_TTY_FD);
++#ifdef XV_USE_TERMIOS
++	(void)tcgetattr(fd, &ttysw->termios);
++#else				/* XV_USE_TERMIOS */
++	/*
++	 * XXX: This code should be encapsulated into a routine.
++	 */
++	(void)ioctl(fd, TIOCGETP, &ttysw->sgttyb);
++	(void)ioctl(fd, TIOCGETC, &ttysw->tchars);
++	(void)ioctl(fd, TIOCGLTC, &ttysw->ltchars);
++#endif				/* XV_USE_TERMIOS */
++#endif				/* XV_USE_SVR4_PTYS */
++	ttysw_drawCursor(0, 0); /* Ensure cursor at upper-left. */
++
++	if (xv_get(TTY_PUBLIC(ttysw), WIN_KBD_FOCUS)) {
++		ttysw_restore_cursor();
++	}
++	else {
++		ttysw_lighten_cursor();
++	}
+ 
+-    /* Update all of the tty-dependent shadow size state. */
+-    csr_pixwin = (Xv_Window) ttysw->current_view_public;
+-    csr_resize(ttysw_view);
+-    /* Cannot call cim_resize(ttysw), call xv_tty_image*() instead. */
+-    xv_tty_free_image_and_mode();
+-    xv_tty_imagealloc(ttysw, FALSE);	/* Damn globals! */
++	if (!ttysw_waiting_for_pty_input) {
++		(void)notify_set_input_func((Notify_client)(TTY_PUBLIC(ttysw)),
++					    ttysw_pty_input_pending,
++					    ttysw->ttysw_pty);
++		/* Wait for child process to die */
++		ttysw_waiting_for_pty_input = 1;
++	}
++	(void)ttysw_pdisplayscreen(FALSE);
++
++	termsw->ttysw_resized = 0;
++#ifdef OW_I18N
++	termsw_public = TERMSW_PUBLIC(termsw);
++
++	xv_set(termsw_public, WIN_IC_PREEDIT_START,
++	       (XIMProc)ttysw->start_pecb_struct.callback,
++	       (XPointer)ttysw->start_pecb_struct.client_data, NULL);
++
++	xv_set(termsw_public, WIN_IC_PREEDIT_DRAW,
++	       (XIMProc)ttysw->draw_pecb_struct.callback,
++	       (XPointer)ttysw->draw_pecb_struct.client_data, NULL);
++
++	xv_set(termsw_public, WIN_IC_PREEDIT_DONE,
++	       (XIMProc)ttysw->done_pecb_struct.callback,
++	       (XPointer)ttysw->done_pecb_struct.client_data, NULL);
+ 
+-    if (ttysw->remote) {
+ 	/*
+-	 * Switch the pty out of remote mode.
++	 * WIN_IC_ACTIVE is set to FALSE in setting TEXTSW_READ_ONLY
++	 * to TRUE. Now set back to TRUE if it was TRUE.
+ 	 */
+-#if !defined(__linux__) || defined(TIOCREMOTE)
+-	if (ioctl(ttysw->ttysw_pty, TIOCREMOTE, &off) < 0)
+-	    perror("ioctl: TIOCREMOTE");
+-	else
+-#endif
+-	    ttysw->remote = ttysw->pending_remote = off;
+-    }
+-
+-#   ifdef XV_USE_SVR4_PTYS
+-    /*
+-     * Since we track all tty ioctls as they come up in packetized form
+-     * through the master side pty, there's no need to determine the slave's
+-     * state here.
+-     */
+-#   else /* XV_USE_SVR4_PTYS */
+-    fd = (int) xv_get(textsw, TTY_TTY_FD);
+-#   ifdef XV_USE_TERMIOS
+-    (void) tcgetattr(fd, &ttysw->termios);
+-#   else /* XV_USE_TERMIOS */
+-    /*
+-     * XXX: This code should be encapsulated into a routine.
+-     */
+-    (void) ioctl(fd, TIOCGETP, &ttysw->sgttyb);
+-    (void) ioctl(fd, TIOCGETC, &ttysw->tchars);
+-    (void) ioctl(fd, TIOCGLTC, &ttysw->ltchars);
+-#   endif /* XV_USE_TERMIOS */
+-#   endif /* XV_USE_SVR4_PTYS */
+-    ttysw_drawCursor(0, 0);		/* Ensure cursor at upper-left. */
+-
+-    if (xv_get(TTY_PUBLIC(ttysw), WIN_KBD_FOCUS)) {
+-	ttysw_restore_cursor();
+-    } else {
+-	ttysw_lighten_cursor();
+-    }
+-
+-    if (!ttysw_waiting_for_pty_input) {
+-	(void) notify_set_input_func((Notify_client) (TTY_PUBLIC(ttysw)),
+-				 ttysw_pty_input_pending, ttysw->ttysw_pty);
+-	/* Wait for child process to die */
+-	ttysw_waiting_for_pty_input = 1;
+-    }
+-    (void) ttysw_pdisplayscreen(FALSE);
+-
+-    termsw->ttysw_resized = 0;
+-#ifdef OW_I18N
+-    termsw_public = TERMSW_PUBLIC(termsw);
+-
+-    xv_set(termsw_public,
+-		WIN_IC_PREEDIT_START,
+-		(XIMProc)ttysw->start_pecb_struct.callback,
+-		(XPointer)ttysw->start_pecb_struct.client_data,
+-		NULL);
+-
+-    xv_set(termsw_public,
+-		WIN_IC_PREEDIT_DRAW,
+-		(XIMProc)ttysw->draw_pecb_struct.callback,
+-		(XPointer)ttysw->draw_pecb_struct.client_data,
+-		NULL);
+-
+-    xv_set(termsw_public,
+-		WIN_IC_PREEDIT_DONE,
+-		(XIMProc)ttysw->done_pecb_struct.callback,
+-		(XPointer)ttysw->done_pecb_struct.client_data,
+-		NULL);
+-
+-    /*
+-     * WIN_IC_ACTIVE is set to FALSE in setting TEXTSW_READ_ONLY
+-     * to TRUE. Now set back to TRUE if it was TRUE.
+-     */
+-    if ( win_ic_stat )
+-	(void) xv_set(textsw,
+-			WIN_IC_ACTIVE, TRUE,
+-			NULL);
+-
+-    (void) xv_set(textsw,
+-                  WIN_IC, ttysw->ic,
+-                  0);
++	if (win_ic_stat) (void)xv_set(textsw, WIN_IC_ACTIVE, TRUE, NULL);
++
++	(void)xv_set(textsw, WIN_IC, ttysw->ic, 0);
+ #endif
+-    if (xv_get(XV_SERVER_FROM_WINDOW(TTY_PUBLIC(ttysw)), SERVER_JOURNALLING))
+-	xv_set(XV_SERVER_FROM_WINDOW(TTY_PUBLIC(ttysw)),
+-			SERVER_JOURNAL_SYNC_EVENT, 1, NULL);
++	if (xv_get(XV_SERVER_FROM_WINDOW(TTY_PUBLIC(ttysw)),
++		   SERVER_JOURNALLING))
++		xv_set(XV_SERVER_FROM_WINDOW(TTY_PUBLIC(ttysw)),
++		       SERVER_JOURNAL_SYNC_EVENT, 1, NULL);
+ 
+-    if(TTY_IS_TERMSW(ttysw))
+-	ttysw_view_obscured = 
+-		VIEW_PRIVATE(ttysw->current_view_public)->obscured;
++	if (TTY_IS_TERMSW(ttysw))
++		ttysw_view_obscured =
++		    VIEW_PRIVATE(ttysw->current_view_public)->obscured;
+ 
+-    return (0);
++	return (0);
+ }
+ 
+ /*
+  * sw should currently be a ttysw, but need not be if a shelltool has been
+  * started in an environment that has termsw TERM&TERMCAP entries.
+  */
+-Pkg_private int
+-ttysw_be_termsw(ttysw_view)
+-    Ttysw_view_handle ttysw_view;
++Pkg_private int ttysw_be_termsw(ttysw_view)
++Ttysw_view_handle ttysw_view;
+ 
+ {
+-    Ttysw_folio     ttysw = TTY_FOLIO_FROM_TTY_VIEW_HANDLE(ttysw_view);
+-    Textsw          textsw = TEXTSW_FROM_TTY(ttysw);
+-    Textsw_view     textsw_view;
+-    Termsw_folio    termsw;
+-    /*int		    on = 1;*/
++	Ttysw_folio ttysw = TTY_FOLIO_FROM_TTY_VIEW_HANDLE(ttysw_view);
++	Textsw textsw = TEXTSW_FROM_TTY(ttysw);
++	Textsw_view textsw_view;
++	Termsw_folio termsw;
++	/*int		    on = 1;*/
+ #ifdef OW_I18N
+-    Termsw              termsw_public;
+-    Textsw_folio        text_folio;
++	Termsw termsw_public;
++	Textsw_folio text_folio;
+ #endif
+ 
+-    if ((!TTY_IS_TERMSW(ttysw)) || ttysw_getopt(ttysw, TTYOPT_TEXT))
+-	return (-1);
+-
+-    textsw_view = ttysw->current_view_public;	/* Textsw really need the
+-						 * public view handle */
+-    (void) xv_set(textsw_view,
+-		  TEXTSW_READ_ONLY, FALSE,
+-		  NULL);
+-
+-    termsw = TERMSW_PRIVATE(TTY_PUBLIC(ttysw));
+-
+-    (void) notify_set_itimer_func((Notify_client) (ttysw),
+-		  ttysw_itimer_expired, ITIMER_REAL, (struct itimerval *) 0,
+-				  (struct itimerval *) 0);
+-
+-    ttysw_clear(ttysw);
+-
+-    if (termsw->ttysw_resized > 0) {
+-	/* ttysw swallowed resize, but now we need to let textsw_view know */
+-	textsw_do_resize(textsw_view);
+-    }
+-    (void) xv_set(xv_get(textsw_view, WIN_VERTICAL_SCROLLBAR),
+-		  XV_SHOW, TRUE, NULL);
+-#   ifdef XV_USE_SVR4_PTYS
+-    /*
+-     * Since we track all tty ioctls as they come up in packetized form
+-     * through the master side pty, there's no need to determine the slave's
+-     * state here.
+-     */
+-#   else /* XV_USE_SVR4_PTYS */
+-#   ifdef XV_USE_TERMIOS
+-    (void) tcgetattr(ttysw->ttysw_tty, &ttysw->termios);
+-#   else /* XV_USE_TERMIOS */
+-    (void) ioctl(ttysw->ttysw_tty, TIOCGETC, &ttysw->tchars);
+-    (void) ioctl(ttysw->ttysw_tty, TIOCGLTC, &ttysw->ltchars);
+-#   endif /* XV_USE_TERMIOS */
+-#   endif /* XV_USE_SVR4_PTYS */
+-    /*
+-     * Recalculate termsw->cooked_echo and set remote mode accordingly.  We
+-     * actually have to force the proper setting here, because the code that
+-     * normally does the switch doesn't account for transitions between ttysws
+-     * and termsws.
+-     */
+-    ttysw_getp((Ttysw_view_handle) ttysw_view);
+-    ttysw->pending_remote = termsw->cooked_echo;
++	if ((!TTY_IS_TERMSW(ttysw)) || ttysw_getopt(ttysw, TTYOPT_TEXT))
++		return (-1);
++
++	textsw_view = ttysw->current_view_public; /* Textsw really need the
++						   * public view handle */
++	(void)xv_set(textsw_view, TEXTSW_READ_ONLY, FALSE, NULL);
++
++	termsw = TERMSW_PRIVATE(TTY_PUBLIC(ttysw));
++
++	(void)notify_set_itimer_func(
++	    (Notify_client)(ttysw), ttysw_itimer_expired, ITIMER_REAL,
++	    (struct itimerval *)0, (struct itimerval *)0);
++
++	ttysw_clear(ttysw);
++
++	if (termsw->ttysw_resized > 0) {
++		/* ttysw swallowed resize, but now we need to let textsw_view
++		 * know */
++		textsw_do_resize(textsw_view);
++	}
++	(void)xv_set(xv_get(textsw_view, WIN_VERTICAL_SCROLLBAR), XV_SHOW, TRUE,
++		     NULL);
++#ifdef XV_USE_SVR4_PTYS
++	/*
++	 * Since we track all tty ioctls as they come up in packetized form
++	 * through the master side pty, there's no need to determine the slave's
++	 * state here.
++	 */
++#else /* XV_USE_SVR4_PTYS */
++#ifdef XV_USE_TERMIOS
++	(void)tcgetattr(ttysw->ttysw_tty, &ttysw->termios);
++#else  /* XV_USE_TERMIOS */
++	(void)ioctl(ttysw->ttysw_tty, TIOCGETC, &ttysw->tchars);
++	(void)ioctl(ttysw->ttysw_tty, TIOCGLTC, &ttysw->ltchars);
++#endif /* XV_USE_TERMIOS */
++#endif /* XV_USE_SVR4_PTYS */
++	/*
++	 * Recalculate termsw->cooked_echo and set remote mode accordingly.  We
++	 * actually have to force the proper setting here, because the code that
++	 * normally does the switch doesn't account for transitions between
++	 * ttysws and termsws.
++	 */
++	ttysw_getp((Ttysw_view_handle)ttysw_view);
++	ttysw->pending_remote = termsw->cooked_echo;
+ #if !defined(__linux__) || defined(TIOCREMOTE)
+-    if (ioctl(ttysw->ttysw_pty, TIOCREMOTE, &ttysw->pending_remote) < 0)
+-	perror("ioctl: TIOCREMOTE");
+-    else
++	if (ioctl(ttysw->ttysw_pty, TIOCREMOTE, &ttysw->pending_remote) < 0)
++		perror("ioctl: TIOCREMOTE");
++	else
+ #endif
+-	ttysw->remote = ttysw->pending_remote;
+-
+-    if (!ttysw_waiting_for_pty_input) {
+-	(void) notify_set_input_func((Notify_client) (TTY_PUBLIC(ttysw)),
+-				     ttysw_pty_input_pending,
+-				     ttysw->ttysw_pty);
+-	/* Wait for child process to die */
+-	ttysw_waiting_for_pty_input = 1;
+-    }
+-    textsw_display_view(textsw_view, (Rect *) 0);
+-    if (xv_get(textsw, WIN_KBD_FOCUS)) {
+-	win_post_id((Notify_client) textsw_view, KBD_USE, NOTIFY_IMMEDIATE);
+-    } else {
+-	win_post_id((Notify_client) textsw_view, KBD_DONE, NOTIFY_IMMEDIATE);
+-    }
++		ttysw->remote = ttysw->pending_remote;
++
++	if (!ttysw_waiting_for_pty_input) {
++		(void)notify_set_input_func((Notify_client)(TTY_PUBLIC(ttysw)),
++					    ttysw_pty_input_pending,
++					    ttysw->ttysw_pty);
++		/* Wait for child process to die */
++		ttysw_waiting_for_pty_input = 1;
++	}
++	textsw_display_view(textsw_view, (Rect *)0);
++	if (xv_get(textsw, WIN_KBD_FOCUS)) {
++		win_post_id((Notify_client)textsw_view, KBD_USE,
++			    NOTIFY_IMMEDIATE);
++	}
++	else {
++		win_post_id((Notify_client)textsw_view, KBD_DONE,
++			    NOTIFY_IMMEDIATE);
++	}
+ #ifdef OW_I18N
+-    termsw_public = TERMSW_PUBLIC(termsw);
+-    text_folio = (Textsw_folio)TEXTSW_PRIVATE_FROM_TERMSW(termsw_public);
+-
+-    xv_set(termsw_public,
+-		WIN_IC_PREEDIT_START,
+-		(XIMProc)text_folio->start_pecb_struct.callback,
+-		(XPointer)text_folio->start_pecb_struct.client_data,
+-                NULL);
+-
+-    xv_set(termsw_public,
+-		WIN_IC_PREEDIT_DRAW,
+-		(XIMProc)text_folio->draw_pecb_struct.callback,
+-		(XPointer)text_folio->draw_pecb_struct.client_data,
+-                NULL);
+- 
+-    xv_set(termsw_public,
+-		WIN_IC_PREEDIT_DONE,
+-		(XIMProc)text_folio->done_pecb_struct.callback,
+-		(XPointer)text_folio->done_pecb_struct.client_data,
+-                NULL);
+- 
+-    (void) xv_set(textsw_view,
+-                  WIN_IC, text_folio->ic,
+-                  0);
++	termsw_public = TERMSW_PUBLIC(termsw);
++	text_folio = (Textsw_folio)TEXTSW_PRIVATE_FROM_TERMSW(termsw_public);
++
++	xv_set(termsw_public, WIN_IC_PREEDIT_START,
++	       (XIMProc)text_folio->start_pecb_struct.callback,
++	       (XPointer)text_folio->start_pecb_struct.client_data, NULL);
++
++	xv_set(termsw_public, WIN_IC_PREEDIT_DRAW,
++	       (XIMProc)text_folio->draw_pecb_struct.callback,
++	       (XPointer)text_folio->draw_pecb_struct.client_data, NULL);
++
++	xv_set(termsw_public, WIN_IC_PREEDIT_DONE,
++	       (XIMProc)text_folio->done_pecb_struct.callback,
++	       (XPointer)text_folio->done_pecb_struct.client_data, NULL);
++
++	(void)xv_set(textsw_view, WIN_IC, text_folio->ic, 0);
+ #endif
+-    if (xv_get(XV_SERVER_FROM_WINDOW(TTY_PUBLIC(ttysw)), SERVER_JOURNALLING))
+-	xv_set(XV_SERVER_FROM_WINDOW(TTY_PUBLIC(ttysw)),
+-			SERVER_JOURNAL_SYNC_EVENT, 1, NULL);
++	if (xv_get(XV_SERVER_FROM_WINDOW(TTY_PUBLIC(ttysw)),
++		   SERVER_JOURNALLING))
++		xv_set(XV_SERVER_FROM_WINDOW(TTY_PUBLIC(ttysw)),
++		       SERVER_JOURNAL_SYNC_EVENT, 1, NULL);
+ 
+-    VIEW_PRIVATE(textsw_view)->obscured = ttysw_view_obscured;
++	VIEW_PRIVATE(textsw_view)->obscured = ttysw_view_obscured;
+ 
+-    return (0);
++	return (0);
+ }
+ 
+ /*
+  * Inspect the tty's modes and set cooked_echo accordingly.  The ttysw is
+  * known to be a termsw.
+  */
+-Pkg_private void
+-ttysw_getp(ttysw_view)
+-    Ttysw_view_handle ttysw_view;
++Pkg_private void ttysw_getp(ttysw_view) Ttysw_view_handle ttysw_view;
+ {
+-    int             cooked_echo;
+-    Ttysw_folio     ttysw = TTY_FOLIO_FROM_TTY_VIEW_HANDLE(ttysw_view);
+-    Termsw_folio    termsw = TERMSW_FOLIO_FOR_VIEW(TERMSW_VIEW_PRIVATE_FROM_TTY_PRIVATE(ttysw));
++	int cooked_echo;
++	Ttysw_folio ttysw = TTY_FOLIO_FROM_TTY_VIEW_HANDLE(ttysw_view);
++	Termsw_folio termsw =
++	    TERMSW_FOLIO_FOR_VIEW(TERMSW_VIEW_PRIVATE_FROM_TTY_PRIVATE(ttysw));
+ 
+-    cooked_echo = termsw->cooked_echo;
++	cooked_echo = termsw->cooked_echo;
+ 
+ #ifndef XV_USE_SVR4_PTYS
+-    /*
+-     * We can't rely on the stored settings, so grab them afresh.
+-     */
++	/*
++	 * We can't rely on the stored settings, so grab them afresh.
++	 */
+ #ifdef XV_USE_TERMIOS
+-    (void) tcgetattr(ttysw->ttysw_tty, &ttysw->termios);
+-#else /* XV_USE_TERMIOS */
+-    (void) ioctl(ttysw->ttysw_tty, TIOCGETP, &ttysw->sgttyb);
++	(void)tcgetattr(ttysw->ttysw_tty, &ttysw->termios);
++#else  /* XV_USE_TERMIOS */
++	(void)ioctl(ttysw->ttysw_tty, TIOCGETP, &ttysw->sgttyb);
+ #endif /* XV_USE_TERMIOS */
+ #endif /* XV_USE_SVR4_PTYS */
+-    termsw->cooked_echo = (tty_isecho(ttysw) && tty_iscanon(ttysw));
++	termsw->cooked_echo = (tty_isecho(ttysw) && tty_iscanon(ttysw));
+ 
+-    ttysw_cooked_echo(ttysw_view, cooked_echo, termsw->cooked_echo);
++	ttysw_cooked_echo(ttysw_view, cooked_echo, termsw->cooked_echo);
+ }
+ 
+ /*
+@@ -381,72 +358,70 @@ ttysw_getp(ttysw_view)
+ /*
+  * Change cooked_echo mode.
+  */
+-/* static */ void
+-ttysw_cooked_echo(ttysw_view, old_cooked_echo, new_cooked_echo)
+-    Ttysw_view_handle ttysw_view;
+-    int             old_cooked_echo, new_cooked_echo;
++/* static */ void ttysw_cooked_echo(
++    ttysw_view, old_cooked_echo, new_cooked_echo) Ttysw_view_handle ttysw_view;
++int old_cooked_echo, new_cooked_echo;
+ {
+-    Ttysw_folio     ttysw = TTY_FOLIO_FROM_TTY_VIEW_HANDLE(ttysw_view);
+-    Textsw          textsw = TEXTSW_FROM_TTY(ttysw);
+-    Termsw_folio    termsw =
+-	TERMSW_FOLIO_FOR_VIEW(TERMSW_VIEW_PRIVATE_FROM_TEXTSW(textsw));
+-
+-    /*
+-     * If the object is currently acting as a ttysw, there's nothing to do; in
+-     * particular, we don't want to switch into remote mode.
+-     */
+-    if (!ttysw_getopt(ttysw, TTYOPT_TEXT))
+-	return;
+-
+-    /*
+-     * Set desired remote mode state.  If it's different than the current
+-     * state when the next input character arrives, we'll switch it then.
+-     */
+-    ttysw->pending_remote = new_cooked_echo;
+-
+-    /*
+-     * If there's no state transition, there's nothing more to do.
+-     */
+-    if (old_cooked_echo == new_cooked_echo)
+-	return;
+-
+-    if (old_cooked_echo) {
++	Ttysw_folio ttysw = TTY_FOLIO_FROM_TTY_VIEW_HANDLE(ttysw_view);
++	Textsw textsw = TEXTSW_FROM_TTY(ttysw);
++	Termsw_folio termsw =
++	    TERMSW_FOLIO_FOR_VIEW(TERMSW_VIEW_PRIVATE_FROM_TEXTSW(textsw));
++
+ 	/*
+-	 * We can't undo input accumulated while we're not handling
+-	 * canonicalization, so set the history limit down to 0.
++	 * If the object is currently acting as a ttysw, there's nothing to do;
++	 * in particular, we don't want to switch into remote mode.
+ 	 */
+-	termsw->history_limit = (int) xv_get(textsw, TEXTSW_HISTORY_LIMIT);
+-	(void) xv_set(textsw, TEXTSW_HISTORY_LIMIT, 0, 0);
+-    } else if (!old_cooked_echo) {
++	if (!ttysw_getopt(ttysw, TTYOPT_TEXT)) return;
++
+ 	/*
+-	 * We're now handling canonicalization again; restore the history
+-	 * limit to reenable undos.
++	 * Set desired remote mode state.  If it's different than the current
++	 * state when the next input character arrives, we'll switch it then.
+ 	 */
+-	(void) xv_set(textsw,
+-		      TEXTSW_HISTORY_LIMIT, termsw->history_limit,
+-		      0);
++	ttysw->pending_remote = new_cooked_echo;
++
+ 	/*
+-	 * If insertion point == pty insert point, move it to the end, doing
+-	 * whatever is necessary to the read_only_mark.
++	 * If there's no state transition, there's nothing more to do.
+ 	 */
+-	if (textsw_find_mark_i18n(textsw, termsw->pty_mark) ==
+-		(int) xv_get(textsw, TEXTSW_INSERTION_POINT_I18N)) {
+-	    Textsw_index	length;
+-
+-	    if (termsw->append_only_log) {
+-		/* Remove read_only_mark to allow insert */
+-		textsw_remove_mark(textsw, termsw->read_only_mark);
+-	    }
+-            length = (int) xv_get(textsw, TEXTSW_LENGTH_I18N);
+-	    (void) xv_set(textsw,
+-			  TEXTSW_INSERTION_POINT_I18N, length,
+-			  0);
+-	    if (termsw->append_only_log) {
+-		termsw->read_only_mark =
+-		    textsw_add_mark_i18n(textsw, length, TEXTSW_MARK_READ_ONLY);
+-	    }
++	if (old_cooked_echo == new_cooked_echo) return;
++
++	if (old_cooked_echo) {
++		/*
++		 * We can't undo input accumulated while we're not handling
++		 * canonicalization, so set the history limit down to 0.
++		 */
++		termsw->history_limit =
++		    (int)xv_get(textsw, TEXTSW_HISTORY_LIMIT);
++		(void)xv_set(textsw, TEXTSW_HISTORY_LIMIT, 0, 0);
++	}
++	else if (!old_cooked_echo) {
++		/*
++		 * We're now handling canonicalization again; restore the
++		 * history limit to reenable undos.
++		 */
++		(void)xv_set(textsw, TEXTSW_HISTORY_LIMIT,
++			     termsw->history_limit, 0);
++		/*
++		 * If insertion point == pty insert point, move it to the end,
++		 * doing whatever is necessary to the read_only_mark.
++		 */
++		if (textsw_find_mark_i18n(textsw, termsw->pty_mark) ==
++		    (int)xv_get(textsw, TEXTSW_INSERTION_POINT_I18N)) {
++			Textsw_index length;
++
++			if (termsw->append_only_log) {
++				/* Remove read_only_mark to allow insert */
++				textsw_remove_mark(textsw,
++						   termsw->read_only_mark);
++			}
++			length = (int)xv_get(textsw, TEXTSW_LENGTH_I18N);
++			(void)xv_set(textsw, TEXTSW_INSERTION_POINT_I18N,
++				     length, 0);
++			if (termsw->append_only_log) {
++				termsw->read_only_mark = textsw_add_mark_i18n(
++				    textsw, length, TEXTSW_MARK_READ_ONLY);
++			}
++		}
+ 	}
+-    }
+-    if (old_cooked_echo && termsw->cmd_started)
+-	ttysw_scan_for_completed_commands(ttysw_view, -1, 0);
++	if (old_cooked_echo && termsw->cmd_started)
++		ttysw_scan_for_completed_commands(ttysw_view, -1, 0);
+ }
