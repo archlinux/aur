@@ -1,0 +1,22 @@
+pkgbase = latencyflex2-git
+	pkgdesc = Allow you to enable Reflex in compatible games.
+	pkgver = 1.0.r161.ea41590
+	pkgrel = 1
+	url = https://github.com/Zeioth/LatencyFlex2-installer
+	arch = any
+	license = Apache 2.0
+	makedepends = git
+	makedepends = rustup
+	makedepends = wine
+	makedepends = meson
+	makedepends = mingw-w64
+	makedepends = glslang
+	makedepends = python3
+	provides = latencyflex2-git
+	conflicts = latencyflex2
+	conflicts = latencyflex
+	conflicts = latencyflex-git
+	source = git+https://github.com/Zeioth/LatencyFlex2-installer
+	sha256sums = SKIP
+
+pkgname = latencyflex2-git
