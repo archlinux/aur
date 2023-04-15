@@ -1,6 +1,28 @@
 Version history
 ===============
 
+0.10.8
+------
+
+2023-04-15
+
+Don't re-trap the mouse cursor on mere mouseover after the mouse cursor has
+left Lix. To re-trap, you must now click into Lix.
+
+Added one singleplayer level, Cache Lines, in misc/simon/.
+
+Link to the Fedora Lix package by Marcin Zajączkowski on Lix's main readme.
+Thank you for packaging Lix for Fedora!
+
+Switch documentation from HTTP to HTTPS weblinks wherever possible.
+Thanks for the patch, Marcin!
+
+Fixed the new compilation warnings from DMD 2.103.0: Deprecation: alias this
+for classes/interfaces is deprecated. Now, Lix compiles without warnings
+again, even with DMD 2.103.0.
+
+
+
 0.10.7
 ------
 
@@ -686,7 +708,7 @@ with LDC.
 The Windows 64-bit build notes point to LDC's multilib release instead of to
 the pure 64-bit release. You can use LDC's installer or LDC's 7z download. The
 main difference is that LDC's lib/ dir is now called lib64/. Updated
-http://www.lixgame.com/dow/lix-dlls-libs-win64.zip with the new directory name
+https://www.lixgame.com/dow/lix-dlls-libs-win64.zip with the new directory name
 lib64/ instead of lib/.
 
 Documented the level format in doc/formats/level.txt. Documented in the
@@ -1784,7 +1806,7 @@ remaining players started a game. Still needs field testing.
 
 2017-11-18
 
-Music: Download http://www.lixgame.com/dow/lix-music.zip and extract
+Music: Download https://www.lixgame.com/dow/lix-music.zip and extract
 into your Lix root dir. You can create additional subfolders in ./music/
 and put your own tracks inside -- ideally as .ogg, .mod, .xm, .it, or .s3m.
 Lix will play a random track per level.
@@ -2087,7 +2109,7 @@ Right", which is almost too long but still fits well.
 
 Removed lemforum/wip-0.7/ and images/geoo/construction/chain1.png, the
 now-obsolete tile because its size doesn't conform to multiples of 8.
-[url=http://www.lixgame.com/etc/unused-levels-0.7.zip]Download unused levels
+[url=https://www.lixgame.com/etc/unused-levels-0.7.zip]Download unused levels
 and chain1[/url].
 
 Removed simon/wood/ tileset. I've replaced these tiles with Matt's wooden
@@ -2603,7 +2625,7 @@ fitting the level's width or height to screen.
 2017-03-02
 
 Fewer zooms are considered similar. This addresses Nepster's concerns:
-http://www.lemmingsforums.net/index.php?topic=3128.msg63116#msg63116
+https://www.lemmingsforums.net/index.php?topic=3128.msg63116#msg63116
 
 Fix #169: I validate all user files for good UTF-8 before calling Phobos.
 
@@ -3188,7 +3210,7 @@ to mouse clicks on the checkbox itself.
 Physics change: We don't check for physics near the eye, which would have
 depended on the spritesheet. Instead we check at (foot) + (0, y), where
 y is 0, -4, -8, and -12. This check is independent from the current lix job.
-Rationale: http://www.lemmingsforums.net/index.php?topic=2678
+Rationale: https://www.lemmingsforums.net/index.php?topic=2678
 
 0.2.49
 ------

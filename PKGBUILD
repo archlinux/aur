@@ -4,18 +4,18 @@
 # shellcheck disable=2034,2154
 
 pkgname=lix
-pkgver=0.10.7
+pkgver=0.10.8
 pkgrel=1
 changelog=.CHANGELOG
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/SimonN/LixD/archive/v$pkgver.tar.gz"
-        "$pkgname-music-1.zip::http://www.lixgame.com/dow/lix-music.zip")
-sha512sums=('bb2a473d77af74b1b2c30373bf60c5571a5106fbf8906a7970432938d022faa73adbe169488194f75ae667ef19c2d20d334dafe7e8d991e6170b464d6f9da831'
-            '37349c98b739ea43c25137dd03865f1c9c41eec91e5edc109afd9d50ce3871bd0c7f63c3f3599a47bb4ef52f5bfd14e034010de0ac2aec5a9c0c83eaf0b89425')
+        "$pkgname-music-2.zip::https://www.lixgame.com/dow/lix-music.zip")
+sha512sums=('0e95187d4d56d57d661b75e4b8b09ffc3175ae9bbf883c45a4ab99459a0ad30deeb1633d73e2656c3f89f30e1c4ab03ee8b6b1f43bf1ef223ae782d56e08c633'
+            '280fd25a479ac8dd24475b014234270a12ab34edca7fb2f7ce4b768259111b1e7626d3ba37ac13d810f0653d23d7c9f212776e94d2c0b31a0de580864771ce9f')
 
 _gitname=LixD
 pkgdesc="An action-puzzle game inspired by Lemmings"
 arch=('i686' 'x86_64')
-url="http://www.lixgame.com/"
+url="https://www.lixgame.com/"
 license=('custom:CC0')
 depends=('allegro' 'enet' 'hicolor-icon-theme' 'liblphobos')
 makedepends=('git' 'ldc' 'dub')
