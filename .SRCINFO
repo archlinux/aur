@@ -10,7 +10,7 @@ pkgbase = slock-bgimage-cur
 	depends = libxext
 	depends = libxrandr
 	conflicts = slock
-	source = slock-bgimage-cur-1.5.tar.gz::https://git.jaytechlab.com/api/v1/repos/public/slock-bgimage/archive/1.5.tar.gz
+	source = slock-bgimage-1.5.tar.gz::https://git.jaytechlab.com/api/v1/repos/public/slock-bgimage/archive/1.5.tar.gz
 	sha256sums = 95ea8411dbc8f9e2a81277cb18b33760d292e9268e4344f3222012a219a6803a
 
 pkgname = slock-bgimage-cur
