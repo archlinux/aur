@@ -14,15 +14,21 @@ makedepends=('git' 'cargo')
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
+build() {
+	export RUSTUP_TOOLCHAIN=stable
+	cd "$pkgname/src/Linux/binaries-source/catppuccinifier-gui"
+	cargo build --release
+}
+
 pkgver() {
 	cd "$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-	export RUSTUP_TOOLCHAIN=stable
-	cd "$pkgname/src/Linux/binaries-source/catppuccinifier-gui"
-	cargo build --release
+check(){
+  cd "$pkgname"
+  export CARGO_INCREMENTAL=0
+  cargo test --release
 }
 
 package() {
@@ -30,6 +36,7 @@ package() {
 	#desktop file
 	desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "src/Linux/installation-files/Catppuccinifier.desktop"
 	#binary
+	install -d "$pkgdir/usr/bin"
 	install -Dm755 "src/Linux/binaries-source/catppuccinifier-gui/target/release/catppuccinifier-gui" "$pkgdir/usr/bin/catppuccinifier-gui"
 	#docs
 	install -Dm644 "README.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
