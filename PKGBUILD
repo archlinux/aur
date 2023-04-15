@@ -1,4 +1,4 @@
-# Maintainer: Paul <p.orzel@gmx.de>
+# Maintainer: Paul <pb.orzel@proton.me>
 pkgname=amdgpu_top
 pkgver=0.1.4
 pkgrel=1
