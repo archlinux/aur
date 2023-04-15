@@ -1,0 +1,135 @@
+--- a/centrifuge_evaluate.py	2023-04-14 21:26:44.029327465 +0530
++++ b/centrifuge_evaluate.py	2023-04-14 21:53:50.941828413 +0530
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ 
+ import sys, os, subprocess, inspect
+ import platform, multiprocessing
+@@ -25,7 +25,7 @@
+ """
+ def compare_scm(centrifuge_out, true_out, taxonomy_tree, rank):
+     ancestors = set()
+-    for tax_id in taxonomy_tree.keys():
++    for tax_id in list(taxonomy_tree.keys()):
+         if tax_id in ancestors:
+             continue
+         while True:
+@@ -106,7 +106,7 @@
+             unclassified += 1
+ 
+     raw_unique_classified = 0
+-    for value in db_dic.values():
++    for value in list(db_dic.values()):
+         if len(value) == 1:
+             raw_unique_classified += 1
+     return classified, unique_classified, unclassified, len(db_dic), raw_unique_classified
+@@ -152,7 +152,7 @@
+         if tax_id in db_dic:
+             SSR += (abundance - db_dic[tax_id]) ** 2;
+             if debug:
+-                print >> sys.stderr, "\t\t\t\t{:<10}: {:.6} vs. {:.6} (truth vs. centrifuge)".format(tax_id, abundance, db_dic[tax_id])
++                print("\t\t\t\t{:<10}: {:.6} vs. {:.6} (truth vs. centrifuge)".format(tax_id, abundance, db_dic[tax_id]), file=sys.stderr)
+         else:
+             SSR += (abundance) ** 2
+ 
+@@ -179,7 +179,7 @@
+ """
+ def create_sql_db(sql_db):
+     if os.path.exists(sql_db):
+-        print >> sys.stderr, sql_db, "already exists!"
++        print(sql_db, "already exists!", file=sys.stderr)
+         return
+     
+     columns = [
+@@ -316,7 +316,7 @@
+         os.mkdir(index_path)
+     index_fnames = ["%s/%s.%d.cf" % (index_path, index_base, i+1) for i in range(3)]
+     if not check_files(index_fnames):
+-        print >> sys.stderr, "Downloading indexes: %s" % ("index")
++        print("Downloading indexes: %s" % ("index"), file=sys.stderr)
+         os.system("cd %s; wget ftp://ftp.ccb.jhu.edu/pub/infphilo/centrifuge/data/%s.tar.gz; tar xvzf %s.tar.gz; rm %s.tar.gz; ln -s %s/%s* .; cd -" % \
+                       (index_path, index_base, index_base, index_base, index_base, index_base))
+         assert check_files(index_fnames)        
+@@ -356,7 +356,7 @@
+     scm_fname = "%s/%s.scm" % (read_path, read_base)
+     read_fnames = [read1_fname, read2_fname, truth_fname, scm_fname]
+     if not check_files(read_fnames):
+-        print >> sys.stderr, "Simulating reads %s_1.fq %s_2.fq ..." % (read_base, read_base)
++        print("Simulating reads %s_1.fq %s_2.fq ..." % (read_base, read_base), file=sys.stderr)
+         centrifuge_simulate = os.path.join(path_base, "centrifuge_simulate_reads.py")
+         simulate_cmd = [centrifuge_simulate,
+                         "--num-fragment", str(num_fragment)]
+@@ -377,11 +377,11 @@
+     else:
+         base_fname = read_base + "_single"
+ 
+-    print >> sys.stderr, "Database: %s" % (index_base)
++    print("Database: %s" % (index_base), file=sys.stderr)
+     if paired:
+-        print >> sys.stderr, "\t%d million pairs" % (num_fragment / 1000000)
++        print("\t%d million pairs" % (num_fragment / 1000000), file=sys.stderr)
+     else:
+-        print >> sys.stderr, "\t%d million reads" % (num_fragment / 1000000)
++        print("\t%d million reads" % (num_fragment / 1000000), file=sys.stderr)
+ 
+     program_bin_base = "%s/.." % path_base
+     def get_program_version(program, version):
+@@ -428,7 +428,7 @@
+         if version:
+             program_name += ("_%s" % version)
+ 
+-        print >> sys.stderr, "\t%s\t%s" % (program_name, str(datetime.now()))
++        print("\t%s\t%s" % (program_name, str(datetime.now())), file=sys.stderr)
+         if paired:
+             program_dir = program_name + "_paired"
+         else:
+@@ -449,7 +449,7 @@
+         program_cmd = get_program_cmd(program, version, read1_fname, read2_fname, out_fname)
+         start_time = datetime.now()
+         if verbose:
+-            print >> sys.stderr, "\t", start_time, " ".join(program_cmd)
++            print("\t", start_time, " ".join(program_cmd), file=sys.stderr)
+         if program in ["centrifuge"]:
+             proc = subprocess.Popen(program_cmd, stdout=open(out_fname, "w"), stderr=subprocess.PIPE)
+         else:
+@@ -462,7 +462,7 @@
+         if duration < 0.1:
+             duration = 0.1
+         if verbose:
+-            print >> sys.stderr, "\t", finish_time, "finished:", duration            
++            print("\t", finish_time, "finished:", duration, file=sys.stderr)            
+ 
+         results = {"strain"  : [0, 0, 0],
+                    "species" : [0, 0, 0],
+@@ -484,21 +484,21 @@
+             # if rank == "strain":
+             #    assert num_cases == num_fragment
+ 
+-            print >> sys.stderr, "\t\t%s" % rank
+-            print >> sys.stderr, "\t\t\tsensitivity: {:,} / {:,} ({:.2%})".format(classified, num_cases, float(classified) / num_cases)
+-            print >> sys.stderr, "\t\t\tprecision  : {:,} / {:,} ({:.2%})".format(classified, raw_classified, float(classified) / raw_classified)
+-            print >> sys.stderr, "\n\t\t\tfor uniquely classified ",
++            print("\t\t%s" % rank, file=sys.stderr)
++            print("\t\t\tsensitivity: {:,} / {:,} ({:.2%})".format(classified, num_cases, float(classified) / num_cases), file=sys.stderr)
++            print("\t\t\tprecision  : {:,} / {:,} ({:.2%})".format(classified, raw_classified, float(classified) / raw_classified), file=sys.stderr)
++            print("\n\t\t\tfor uniquely classified ", end=' ', file=sys.stderr)
+             if paired:
+-                print >> sys.stderr, "pairs"
++                print("pairs", file=sys.stderr)
+             else:
+-                print >> sys.stderr, "reads"
+-            print >> sys.stderr, "\t\t\t\t\tsensitivity: {:,} / {:,} ({:.2%})".format(unique_classified, num_cases, float(unique_classified) / num_cases)
+-            print >> sys.stderr, "\t\t\t\t\tprecision  : {:,} / {:,} ({:.2%})".format(unique_classified, raw_unique_classified, float(unique_classified) / raw_unique_classified)
++                print("reads", file=sys.stderr)
++            print("\t\t\t\t\tsensitivity: {:,} / {:,} ({:.2%})".format(unique_classified, num_cases, float(unique_classified) / num_cases), file=sys.stderr)
++            print("\t\t\t\t\tprecision  : {:,} / {:,} ({:.2%})".format(unique_classified, raw_unique_classified, float(unique_classified) / raw_unique_classified), file=sys.stderr)
+ 
+             # Calculate sum of squared residuals in abundance
+             if rank == "strain":
+                 abundance_SSR = compare_abundance("centrifuge_report.tsv", truth_fname, taxonomy_tree, debug)
+-                print >> sys.stderr, "\t\t\tsum of squared residuals in abundance: {}".format(abundance_SSR)
++                print("\t\t\tsum of squared residuals in abundance: {}".format(abundance_SSR), file=sys.stderr)
+ 
+         if runtime_only:
+             os.chdir("..")

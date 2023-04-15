@@ -1,0 +1,88 @@
+--- a/Makefile	2021-08-17 00:18:48.000000000 +0530
++++ b/Makefile	2023-04-14 23:02:47.795861027 +0530
+@@ -141,7 +141,7 @@
+ #GIT_VERSION = $(shell command -v git 2>&1 > /dev/null && git describe --long --tags --dirty --always --abbrev=10 || cat VERSION)
+ 
+ # Convert BITS=?? to a -m flag
+-BITS=32
++BITS=
+ ifeq (x86_64,$(shell uname -m))
+ BITS=64
+ endif
+@@ -160,15 +160,15 @@
+ ifeq (64,$(BITS))
+ 	BITS_FLAG = -m64
+ endif
+-SSE_FLAG=-msse2
++SSE_FLAG=
+ 
+ DEBUG_FLAGS    = -O0 -g3 $(BIToS_FLAG) $(SSE_FLAG) -std=c++11
+ DEBUG_DEFS     = -DCOMPILER_OPTIONS="\"$(DEBUG_FLAGS) $(EXTRA_FLAGS)\""
+-RELEASE_FLAGS  = -O3 $(BITS_FLAG) $(SSE_FLAG) -funroll-loops -g3 -std=c++11
++RELEASE_FLAGS  = -O2 $(BITS_FLAG) $(SSE_FLAG) -funroll-loops -g3 -std=c++11
+ RELEASE_DEFS   = -DCOMPILER_OPTIONS="\"$(RELEASE_FLAGS) $(EXTRA_FLAGS)\""
+ NOASSERT_FLAGS = -DNDEBUG
+ FILE_FLAGS     = -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -D_GNU_SOURCE
+-CFLAGS         = 
++#CFLAGS         = 
+ #CFLAGS         = -fdiagnostics-color=always
+ 
+ ifeq (1,$(USE_SRA))
+@@ -255,7 +255,8 @@
+ 	 $(CFLAGS) \
+      $(PREF_DEF) \
+      $(MM_DEF) \
+-     $(SHMEM_DEF)
++     $(SHMEM_DEF) \
++	 $(LDFLAGS)
+ 
+ #
+ # centrifuge targets
+@@ -363,11 +364,11 @@
+ 
+ centrifuge-build.bat:
+ 	echo "@echo off" > centrifuge-build.bat
+-	echo "python %~dp0/centrifuge-build %*" >> centrifuge-build.bat
++	echo "python3 %~dp0/centrifuge-build %*" >> centrifuge-build.bat
+ 
+ centrifuge-inspect.bat:
+ 	echo "@echo off" > centrifuge-inspect.bat
+-	echo "python %~dp0/centrifuge-inspect %*" >> centrifuge-inspect.bat
++	echo "python3 %~dp0/centrifuge-build %*" >> centrifuge-inspect.bat
+ 
+ 
+ .PHONY: centrifuge-src
+@@ -409,24 +410,24 @@
+ MANUAL: MANUAL.markdown
+ 	perl doc/strip_markdown.pl < $^ > $@
+ 
+-prefix=/usr/local
++prefix=/usr/
+ 
+ .PHONY: install
+ install: all
+-	mkdir -p $(prefix)/bin
+-	mkdir -p $(prefix)/share/centrifuge/indices
+-	install -m 0644 indices/Makefile $(prefix)/share/centrifuge/indices
+-	install -d -m 0755 $(prefix)/share/centrifuge/doc
+-	install -m 0644 doc/* $(prefix)/share/centrifuge/doc
++	mkdir -p $(DESTDIR)$(prefix)/bin
++	mkdir -p $(DESTDIR)$(prefix)/share/centrifuge/indices
++	install -m 0644 indices/Makefile $(DESTDIR)$(prefix)/share/centrifuge/indices
++	install -d -m 0755 $(DESTDIR)$(prefix)/share/doc/centrifuge
++	install -m 0644 doc/* $(DESTDIR)$(prefix)/share/doc/centrifuge
+ 	for file in $(CENTRIFUGE_BIN_LIST) $(CENTRIFUGE_SCRIPT_LIST); do \
+-		install -m 0755 $$file $(prefix)/bin ; \
++		install -m 0755 $$file $(DESTDIR)$(prefix)/bin ; \
+ 	done
+ 
+ .PHONY: uninstall
+ uninstall: all
+ 	for file in $(CENTRIFUGE_BIN_LIST) $(CENTRIFUGE_SCRIPT_LIST); do \
+-		rm -v $(prefix)/bin/$$file ; \
+-		rm -v $(prefix)/share/centrifuge; \
++		rm -v $(DESTDIR)$(prefix)/bin/$$file ; \
++		rm -v $(DESTDIR)$(prefix)/share/centrifuge; \
+ 	done
+ 
+ 

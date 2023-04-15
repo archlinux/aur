@@ -1,0 +1,8 @@
+--- a/centrifuge-build	2023-04-14 21:25:00.850209371 +0530
++++ b/centrifuge-build	2023-04-14 21:47:01.335920008 +0530
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ 
+ """
+  Copyright 2014, Daehwan Kim <infphilo@gmail.com>

@@ -1,0 +1,143 @@
+--- a/centrifuge_simulate_reads.py	2023-04-14 21:27:38.630430207 +0530
++++ b/centrifuge_simulate_reads.py	2023-04-14 22:03:27.790914404 +0530
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ 
+ #
+ # Copyright 2015, Daehwan Kim <infphilo@gmail.com>
+@@ -156,7 +156,7 @@
+             transcripts[transcript_id][2].append([left, right])
+ 
+     # Sort exons and merge where separating introns are <=5 bps
+-    for tran, [chr, strand, exons] in transcripts.items():
++    for tran, [chr, strand, exons] in list(transcripts.items()):
+             exons.sort()
+             tmp_exons = [exons[0]]
+             for i in range(1, len(exons)):
+@@ -167,7 +167,7 @@
+             transcripts[tran] = [chr, strand, tmp_exons]
+ 
+     tmp_transcripts = {}
+-    for tran, [chr, strand, exons] in transcripts.items():
++    for tran, [chr, strand, exons] in list(transcripts.items()):
+         exon_lens = [e[1] - e[0] + 1 for e in exons]
+         transcript_len = sum(exon_lens)
+         if transcript_len >= frag_len:
+@@ -444,8 +444,8 @@
+         MD += ("{}".format(MD_match_len))
+ 
+     if len(read_seq) != read_len:
+-        print >> sys.stderr, "read length differs:", len(read_seq), "vs.", read_len
+-        print >> sys.stderr, pos, "".join(cigars), cigar_descs, MD, XM, NM, Zs
++        print("read length differs:", len(read_seq), "vs.", read_len, file=sys.stderr)
++        print(pos, "".join(cigars), cigar_descs, MD, XM, NM, Zs, file=sys.stderr)
+         assert False
+ 
+     return pos, cigars, cigar_descs, MD, XM, NM, Zs, read_seq
+@@ -575,8 +575,8 @@
+         tMD += ("{}".format(match_len))
+ 
+     if tMD != MD or tXM != XM or tNM != NM or XM > max_mismatch or XM != NM:
+-        print >> sys.stderr, chr, pos, cigar, MD, XM, NM, Zs
+-        print >> sys.stderr, tMD, tXM, tNM
++        print(chr, pos, cigar, MD, XM, NM, Zs, file=sys.stderr)
++        print(tMD, tXM, tNM, file=sys.stderr)
+         assert False
+         
+         
+@@ -631,7 +631,7 @@
+     # Read genome sequences into memory
+     genomes_fname = index_fname + ".fa"
+     if not os.path.exists(genomes_fname):
+-        print >> sys.stderr, "Extracting genomes from Centrifuge index to %s, which may take a few hours ..."  % (genomes_fname)
++        print("Extracting genomes from Centrifuge index to %s, which may take a few hours ..."  % (genomes_fname), file=sys.stderr)
+         extract_cmd = [centrifuge_inspect,
+                        index_fname]
+         extract_proc = subprocess.Popen(extract_cmd, stdout=open(genomes_fname, 'w'))
+@@ -660,15 +660,15 @@
+     assert num_frag == sum(expr_profile)
+ 
+     if dna:
+-        genome_ids = genome_seqs.keys()
++        genome_ids = list(genome_seqs.keys())
+     else:
+-        transcript_ids = transcripts.keys()
++        transcript_ids = list(transcripts.keys())
+         random.shuffle(transcript_ids)
+         assert len(transcript_ids) >= len(expr_profile)
+ 
+     # Truth table
+     truth_file = open(base_fname + ".truth", "w")
+-    print >> truth_file, "taxID\tgenomeLen\tnumReads\tabundance\tname"
++    print("taxID\tgenomeLen\tnumReads\tabundance\tname", file=truth_file)
+     truth_list = []
+     normalized_sum = 0.0
+     debug_num_frag = 0
+@@ -695,19 +695,19 @@
+         if can_tax_id in names:
+             name = names[can_tax_id]
+         abundance = raw_abundance / genome_len / normalized_sum
+-        print >> truth_file, "{}\t{}\t{}\t{:.6}\t{}".format(tax_id, genome_len, t_num_frags, abundance, name)
++        print("{}\t{}\t{}\t{:.6}\t{}".format(tax_id, genome_len, t_num_frags, abundance, name), file=truth_file)
+     truth_file.close()
+ 
+     # Sequence Classification Map (SCM) - something I made up ;-)
+     scm_file = open(base_fname + ".scm", "w")
+ 
+     # Write SCM header
+-    print >> scm_file, "@HD\tVN:1.0\tSO:unsorted"
+-    for tax_id in genome_seqs.keys():
++    print("@HD\tVN:1.0\tSO:unsorted", file=scm_file)
++    for tax_id in list(genome_seqs.keys()):
+         name = ""
+         if tax_id in names:
+             name = names[tax_id]
+-        print >> scm_file, "@SQ\tTID:%s\tSN:%s\tLN:%d" % (tax_id, name, len(genome_seqs[tax_id]))
++        print("@SQ\tTID:%s\tSN:%s\tLN:%d" % (tax_id, name, len(genome_seqs[tax_id])), file=scm_file)
+ 
+     read_file = open(base_fname + "_1.fa", "w")
+     if paired_end:
+@@ -718,11 +718,11 @@
+         t_num_frags = expr_profile[t]
+         if dna:
+             tax_id = genome_ids[t]
+-            print >> sys.stderr, "TaxID: %s, num fragments: %d" % (tax_id, t_num_frags)
++            print("TaxID: %s, num fragments: %d" % (tax_id, t_num_frags), file=sys.stderr)
+         else:
+             transcript_id = transcript_ids[t]
+             chr, strand, transcript_len, exons = transcripts[transcript_id]
+-            print >> sys.stderr, transcript_id, t_num_frags
++            print(transcript_id, t_num_frags, file=sys.stderr)
+ 
+         genome_seq = genome_seqs[tax_id]
+         genome_len = len(genome_seq)
+@@ -763,14 +763,14 @@
+                 XS = "\tXS:A:{}".format(strand)
+                 TI = "\tTI:Z:{}".format(transcript_id)                
+ 
+-            print >> read_file, ">{}".format(cur_read_id)
+-            print >> read_file, read_seq
++            print(">{}".format(cur_read_id), file=read_file)
++            print(read_seq, file=read_file)
+             output = "{}\t{}\t{}\t{}\tNM:i:{}\tMD:Z:{}".format(cur_read_id, tax_id, pos + 1, cigar_str, NM, MD)
+             if paired_end:
+-                print >> read2_file, ">{}".format(cur_read_id)
+-                print >> read2_file, reverse_complement(read2_seq)
++                print(">{}".format(cur_read_id), file=read2_file)
++                print(reverse_complement(read2_seq), file=read2_file)
+                 output += "\t{}\t{}\tNM2:i:{}\tMD2:Z:{}".format(pos2 + 1, cigar2_str, NM2, MD2)
+-            print >> scm_file, output
++            print(output, file=scm_file)
+                 
+             cur_read_id += 1
+             
+@@ -865,7 +865,7 @@
+         parser.print_help()
+         exit(1)
+     if not args.dna:
+-        print >> sys.stderr, "Error: --rna is not implemented."
++        print("Error: --rna is not implemented.", file=sys.stderr)
+         exit(1)
+     # if args.dna:
+     #    args.expr_profile = "constant"

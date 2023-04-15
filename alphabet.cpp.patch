@@ -1,0 +1,11 @@
+--- a/alphabet.cpp	2023-04-14 21:35:23.646820868 +0530
++++ b/alphabet.cpp	2023-04-14 22:09:01.836357064 +0530
+@@ -400,7 +400,7 @@
+ 
+ const char *iupacs = "!ACMGRSVTWYHKDBN!acmgrsvtwyhkdbn";
+ 
+-char mask2iupac[16] = {
++signed char mask2iupac[16] = {
+ 	-1,
+ 	'A', // 0001
+ 	'C', // 0010
