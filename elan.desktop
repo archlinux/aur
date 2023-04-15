@@ -7,22 +7,23 @@ Type=Application
 Version=1.0
 
 # The name of the application
-Name=PUCK
+Name=ELAN
 
 # A comment which can/will be used as a tooltip
 Comment=Program for the Use and Computation of Kinship Data
 
 # The path to the folder in which the executable is run
-Path=/opt/puck
+Path=/opt/elan/
 
 # The executable of the application, possibly with arguments.
-Exec=/usr/lib/jvm/java-7-jre/jre/bin/java -Xms368m -Xmx1024m -jar puck.jar
+Exec=/opt/elan/bin/ELAN
 
 # The name of the icon that will be used to display this entry
-Icon=puck
+Icon=elan
 
 # Describes whether this application needs to be run in a terminal or not
 Terminal=false
 
 # Describes the categories in which this entry should be shown
-Categories=Java;
+Categories=Language;Java
+
