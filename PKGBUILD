@@ -2,8 +2,8 @@
 
 pkgname=mmconneqt-git
 _pkgname=${pkgname%-git}
-pkgver=v0.1.1.r1.gface047
-pkgrel=4
+pkgver=v0.1.1.r2.gc61b42a
+pkgrel=1
 pkgdesc="A simple Qt based gui for ModemManager"
 arch=(any)
 url="https://gitlab.com/Antiquete/mmconneqt"
