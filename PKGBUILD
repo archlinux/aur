@@ -2,13 +2,13 @@
 # Contributor: Raziel23 <venom23 at runbox dot com>
 
 pkgname=vcmi-git
-pkgver=1.2.0.204.g59a710538
+pkgver=1.2.0.213.gdf291463d
 pkgrel=1
 pkgdesc="Open-source engine for Heroes of Might and Magic III"
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="http://vcmi.eu"
 license=('GPL2')
-depends=('boost-libs' 'ffmpeg4.4' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'qt5-base' 'libxkbcommon-x11'
+depends=('boost-libs' 'ffmpeg' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'qt5-base' 'libxkbcommon-x11'
          'desktop-file-utils' 'gtk-update-icon-cache' 'hicolor-icon-theme' 'tbb' 'fuzzylite'
          'luajit')
 makedepends=('boost' 'cmake' 'git')
@@ -24,7 +24,6 @@ md5sums=('SKIP')
 pkgver() {
   cd "$pkgname"
   git describe --tags | tr - .
-  # printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -38,9 +37,7 @@ build() {
     -DENABLE_TEST=OFF \
     -DFORCE_BUNDLED_FL=OFF \
     -DCMAKE_BUILD_TYPE='RelWithDebInfo' \
-    -DCMAKE_POLICY_DEFAULT_CMP0074=NEW \
-    -DFFmpeg_ROOT='/usr/lib/ffmpeg4.4/' \
-    -DCMAKE_CXX_FLAGS='-I/usr/include/ffmpeg4.4'
+    -DCMAKE_POLICY_DEFAULT_CMP0074=NEW
   make
 }
 
