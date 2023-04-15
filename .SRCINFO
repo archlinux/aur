@@ -1,11 +1,12 @@
 pkgbase = curlylint-git
 	pkgdesc = Experimental HTML templates linting for Jinja, Nunjucks, Django templates, Twig, Liquid
 	pkgver = 0.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thibaudcolas/curlylint
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
+	makedepends = git
 	makedepends = python-setuptools
 	depends = python-parsy-git
 	depends = python-attrs

@@ -3,16 +3,16 @@
 pkgname="curlylint-git"
 _pkgname=${pkgname%-git}
 pkgver=0.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental HTML templates linting for Jinja, Nunjucks, Django templates, Twig, Liquid"
-arch=('any')
+arch=("any")
 url="https://github.com/thibaudcolas/curlylint"
 license=("MIT")
 depends=("python-parsy-git" "python-attrs" "python-click" "python-toml" "python-pathspec")
-makedepends=('python-setuptools')
+makedepends=("git" "python-setuptools")
 checkdepends=("python-pytest")
 source=("${pkgname}::git+${url}#branch=main")
-sha512sums=('SKIP')
+sha512sums=("SKIP")
 
 prepare() {
     cd "${pkgname}"
