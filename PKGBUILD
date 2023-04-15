@@ -19,12 +19,12 @@
 
 pkgbase=lib32-llvm-minimal-git
 pkgname=('lib32-llvm-minimal-git' 'lib32-llvm-libs-minimal-git')
-pkgver=17.0.0_r455314.0e9523efda8a
+pkgver=17.0.0_r457946.26e164fada37
 pkgrel=1
 arch=('x86_64')
 url="http://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
-makedepends=('git' 'cmake' 'ninja' 'lib32-libffi' 'lib32-zlib' 'python' 'lib32-gcc-libs'
+makedepends=('git' 'cmake' 'lib32-libffi' 'lib32-zlib' 'python' 'lib32-gcc-libs'
              'lib32-libxml2' 'lib32-zstd' 'llvm-minimal-git')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
 )
@@ -66,7 +66,6 @@ build() {
     cmake \
         -B _build \
         -S "$srcdir"/llvm-project/llvm \
-        -G Ninja \
         -D CMAKE_C_FLAGS="$LIB32_CFLAGS" \
         -D CMAKE_CXX_FLAGS="$LIB32_CXXFLAGS" \
         -D CMAKE_BUILD_TYPE=Release \
@@ -95,11 +94,11 @@ build() {
         -D LLVM_LIT_ARGS="$LITFLAGS"" -sv --ignore-fail" \
         -Wno-dev
         
-        ninja -C _build $NINJAFLAGS
+        make -C _build
 }
 
 check() {
-    ninja -C _build $NINJAFLAGS check-llvm
+    make -C _build check-llvm
 }
 package_lib32-llvm-minimal-git() {
     pkgdesc="Collection of modular and reusable compiler and toolchain technologies (32-bit)"
@@ -107,7 +106,7 @@ package_lib32-llvm-minimal-git() {
     provides=('lib32-llvm')
     conflicts=('lib32-llvm')
     
-    DESTDIR="$pkgdir" ninja -C _build $NINJAFLAGS install
+    make -C _build DESTDIR="$pkgdir" install
 
     # Remove files which conflict with lib32-llvm-libs
     rm "$pkgdir"/usr/lib32/{LLVMgold,lib{LLVM,LTO,Remarks}}.so

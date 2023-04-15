@@ -1,12 +1,11 @@
 pkgbase = lib32-llvm-minimal-git
-	pkgver = 17.0.0_r455314.0e9523efda8a
+	pkgver = 17.0.0_r457946.26e164fada37
 	pkgrel = 1
 	url = http://llvm.org/
 	arch = x86_64
 	license = custom:Apache 2.0 with LLVM Exception
 	makedepends = git
 	makedepends = cmake
-	makedepends = ninja
 	makedepends = lib32-libffi
 	makedepends = lib32-zlib
 	makedepends = python
@@ -22,7 +21,7 @@ pkgbase = lib32-llvm-minimal-git
 
 pkgname = lib32-llvm-minimal-git
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (32-bit)
-	depends = lib32-llvm-libs-minimal-git=17.0.0_r455314.0e9523efda8a-1
+	depends = lib32-llvm-libs-minimal-git=17.0.0_r457946.26e164fada37-1
 	depends = llvm-minimal-git
 	provides = lib32-llvm
 	conflicts = lib32-llvm
