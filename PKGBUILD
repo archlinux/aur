@@ -5,7 +5,7 @@
 _gitname=darling
 pkgbase=$_gitname-git
 pkgname='darling-git'
-pkgver=r4005.84a6ae50d
+pkgver=r4007.39b0f38c2
 pkgrel=1
 pkgdesc="Darwin/macOS emulation layer for Linux"
 arch=('x86_64')
@@ -13,10 +13,12 @@ url="https://www.darlinghq.org"
 license=('GPL3')
 groups=('darling-git')
 depends=('xz' 'fuse' 'libxml2' 'icu' 'openssl' 'bzip2' 'zlib' 'libsystemd'
-    'wget' 'curl' 'sqlite' 'ruby' 'sed' 'libarchive' 'file' 'python' 'gawk' 'libunwind' 'ffmpeg')
-_depends_x86_64=('lib32-clang' 'lib32-bzip2' 'lib32-systemd' 'lib32-libxslt' 'libpng' 'cairo' 'libtiff' 'glu' 'libbsd' 'python2')
-makedepends=('git' 'cmake' 'clang' 'bison' 'flex' 'binutils>=2.28' 'libpng' 'cairo' 'libtiff' 'glu' 'libbsd' 'python2' 'ffmpeg' 'git-lfs')
-_make_depends_x86_64=('gcc-multilib')
+         'wget' 'curl' 'sqlite' 'ruby' 'sed' 'libarchive' 'file' 'python' 'gawk' 'libunwind' 'ffmpeg'
+         'libpng' 'cairo' 'libtiff' 'glu' 'libbsd' 'libxrandr' 'libxkbcommon' 'lib32-gcc-libs' 'libxkbfile')
+_depends_x86_64=('lib32-clang' 'lib32-bzip2' 'lib32-systemd' 'lib32-libxslt')
+makedepends=('git' 'cmake' 'clang' 'bison' 'flex' 'binutils>=2.28' 'libpng' 'cairo' 'libtiff' 'glu' 'libbsd' 'python2' 'ffmpeg' 'git-lfs' 'llvm' 'vulkan-headers'
+             'libxrandr' 'libxkbcommon' 'libxkbfile')
+_make_depends_x86_64=('gcc-multilib' 'lib32-gcc-libs')
 conflicts=('darling')
 provides=('darling')
 
@@ -172,6 +174,7 @@ source=('darling-libressl-2.2.9'::'git+https://github.com/darlinghq/darling-libr
         'git+https://github.com/darlinghq/darling.git'
         'git+https://github.com/darlinghq/darlingserver.git'
         'git+https://github.com/darlinghq/fmdb.git'
+	'git+https://github.com/darlinghq/indium.git'
         'git+https://github.com/darlinghq/lzfse.git'
         'git+https://github.com/darlinghq/xcbuild.git')
 
@@ -191,7 +194,7 @@ md5sums=( 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-          'SKIP' 'SKIP' 'SKIP')
+          'SKIP' 'SKIP' 'SKIP' 'SKIP')
 options=('!buildflags')
 
 pkgver() {
@@ -371,6 +374,11 @@ prepare() {
     git submodule init
     git config submodule.IOGraphics.url "$srcdir/darling-IOGraphics"
     git config submodule.IOHIDFamily.url "$srcdir/darling-IOHIDFamily"
+    git -c protocol.file.allow=always submodule update
+
+    cd "$srcdir/$_gitname/src/external/metal"
+    git submodule init
+    git config submodule.deps/indium.url "$srcdir/indium"
     git -c protocol.file.allow=always submodule update
 
     echo "Updating LFS files"
