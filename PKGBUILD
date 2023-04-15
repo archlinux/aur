@@ -4,13 +4,13 @@
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=taisei-git
-pkgver=1.3.r849.g74e02a49
+pkgver=1.3.r1132.ga5678791
 pkgrel=1
 pkgdesc="Open source Touhou clone (development version)"
 arch=('i686' 'x86_64')
 url="https://taisei-project.org/"
 license=('MIT')
-depends=('opengl-driver' 'sdl2' 'cglm' 'freetype2' 'libwebp' 'libzip' 'opusfile' 'hicolor-icon-theme')
+depends=('opengl-driver' 'sdl2' 'cglm' 'freetype2' 'libwebp' 'libzip' 'zstd' 'opusfile' 'hicolor-icon-theme')
 optdepends=('spirv-cross: OpenGL ES backends'
             'shaderc: OpenGL ES backends'
             'gamemode: GameMode integration'
@@ -32,21 +32,22 @@ pkgver() {
 
 prepare() {
     cd taisei
-    git config submodule.gamecontrollerdb.url ../SDL_GameControllerDB
-    git config submodule.external/koishi.url ../koishi
-    git config submodule.external/python-zipfile-zstd.url ../python-zipfile-zstd
-    git config submodule.external/basis_universal.url ../basis_universal
-    git submodule update
+    git submodule init
+    git config submodule.gamecontrollerdb.url "$srcdir/SDL_GameControllerDB"
+    git config submodule.external/koishi.url "$srcdir/koishi"
+    git config submodule.external/python-zipfile-zstd.url "$srcdir/python-zipfile-zstd"
+    git config submodule.external/basis_universal.url "$srcdir/basis_universal"
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
     cd taisei
-    arch-meson build
-    ninja -C build
+    meson setup --prefix /usr --libexecdir lib --sbindir bin --buildtype plain --wrap-mode nodownload -D b_lto=true -D b_pie=true build
+    meson compile -C build
 }
 
 package() {
     cd taisei
-    DESTDIR="$pkgdir/" ninja -C build install
+    DESTDIR="$pkgdir/" meson install -C build
     install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
 }
