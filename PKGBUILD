@@ -15,7 +15,7 @@ checkdepends=(gsfonts ttf-dejavu)
 _relname=ImageMagick-${pkgver%%.*}
 _tarname=${pkgver%.*}-${pkgver##*.}
 _dirname=ImageMagick-$_tarname
-source=(https://github.com/ImageMagick/ImageMagick/archive/refs/tags/$_tarname.tar.gz
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/ImageMagick/ImageMagick/archive/refs/tags/$_tarname.tar.gz
         arch-fonts.diff)
 sha256sums=('6e7af1e182f81e6b7b92b11e78dfdb0e8d50c1674cf2776c13db9c700750ae20'
             'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
