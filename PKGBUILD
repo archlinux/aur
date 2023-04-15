@@ -1,7 +1,7 @@
 # Maintainer: Isabel <isabelroseslive@gmail.com>
 pkgname=catppuccinifier-gui-git
 _pkgname=catppuccinifier-gui
-pkgver=r38.bba178a
+pkgver=r39.4c52782
 pkgrel=1
 pkgdesc="An application to catppuccinifiy your images."
 arch=('x86_64')
@@ -14,20 +14,19 @@ makedepends=('git' 'cargo')
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
+pkgver() {
+	cd "$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 build() {
 	export RUSTUP_TOOLCHAIN=stable
 	cd "$pkgname/src/Linux/binaries-source/catppuccinifier-gui"
 	cargo build --release
 }
 
-pkgver() {
-	cd "$pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 check(){
-  cd "$pkgname"
-  export CARGO_INCREMENTAL=0
+  cd "$pkgname/src/Linux/binaries-source/catppuccinifier-gui"
   cargo test --release
 }
 
@@ -36,7 +35,6 @@ package() {
 	#desktop file
 	desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "src/Linux/installation-files/Catppuccinifier.desktop"
 	#binary
-	install -d "$pkgdir/usr/bin"
 	install -Dm755 "src/Linux/binaries-source/catppuccinifier-gui/target/release/catppuccinifier-gui" "$pkgdir/usr/bin/catppuccinifier-gui"
 	#docs
 	install -Dm644 "README.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
