@@ -27,7 +27,8 @@ build() {
 
 check(){
   cd "$pkgname"
-  env CARGO_INCREMENTAL=0 cargo test --release
+  export CARGO_INCREMENTAL=0
+  cargo test --release
 }
 
 package() {
