@@ -1,4 +1,4 @@
-# Maintainer: Radioactiveman <thomas-lange2@gmx.de>
+# Maintainer: Thomas Lange <thomas-lange2@gmx.de>
 # Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: Lauri Niskanen <ape@ape3000.com>
