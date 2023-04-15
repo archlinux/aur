@@ -1,0 +1,8 @@
+pkgbase = c2rust
+	pkgdesc = Migrate C code to Rust
+	pkgver = v0.17.0
+	pkgrel = 1
+	arch = any
+	depends = llvm
+
+pkgname = c2rust
