@@ -5,7 +5,7 @@
 _pkgname=thorium-browser
 pkgname=${_pkgname}-bin
 pkgver=111.0.5563.111
-pkgrel=1
+pkgrel=2
 pkgdesc="Chromium fork focused on high performance and security."
 arch=('x86_64')
 url="https://github.com/Alex313031/Thorium"
@@ -46,7 +46,7 @@ package() {
 	# Icons
 	for i in 16x16 24x24 32x32 48x48 64x64 128x128 256x256; do
 		install -Dm644 "$pkgdir"/opt/chromium.org/thorium/product_logo_${i/x*/}.png \
-			"$pkgdir"/usr/share/icons/hicolor/$i/apps/thorium-browser-stable.png
+			"$pkgdir"/usr/share/icons/hicolor/$i/apps/thorium-browser.png
 	done
 	install -Dm644 "$pkgdir/opt/chromium.org/thorium/thorium_shell.png" -t \
     "$pkgdir/usr/share/icons/hicolor/256x256/apps/"
