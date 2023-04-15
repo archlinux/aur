@@ -1,0 +1,18 @@
+pkgbase = gopnik2-git
+	pkgdesc = Russian text-based adventure game from 90s
+	pkgver = r128.4c0015c
+	pkgrel = 1
+	url = https://github.com/bolknote/gopnik2
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = WTFPL
+	makedepends = gettext
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	depends = gcc-libs
+	source = gopnik2::git+https://github.com/bolknote/gopnik2.git
+	md5sums = SKIP
+
+pkgname = gopnik2-git
