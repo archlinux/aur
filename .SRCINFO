@@ -1,7 +1,7 @@
 pkgbase = python-adafruit-circuitpython-busdevice
 	pkgdesc = CircuitPython bus device classes to manage bus sharing
-	pkgver = 5.2.3
-	pkgrel = 1
+	pkgver = 5.2.4
+	pkgrel = 0
 	url = https://github.com/adafruit/Adafruit_CircuitPython_BusDevice
 	arch = armv6h
 	arch = armv7h
@@ -13,7 +13,7 @@ pkgbase = python-adafruit-circuitpython-busdevice
 	depends = python
 	depends = python-adafruit-blinka
 	optdepends = python-rpi-gpio
-	source = https://pypi.io/packages/source/a/adafruit-circuitpython-busdevice/adafruit-circuitpython-busdevice-5.2.3.tar.gz
-	sha256sums = faa572b613a0732de938ed008402dfb105d91adb5d0096bf2709f46669a94885
+	source = https://pypi.io/packages/source/a/adafruit-circuitpython-busdevice/adafruit-circuitpython-busdevice-5.2.4.tar.gz
+	sha256sums = 14348957355e8c79929ad63460f6cebc1560d632d3a39d8cfca1684867037574
 
 pkgname = python-adafruit-circuitpython-busdevice
