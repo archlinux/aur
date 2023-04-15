@@ -9,6 +9,7 @@ pkgbase = catppuccinifier-gui-git
 	depends = imagemagick
 	depends = libadwaita
 	provides = catppuccinifier-gui
+	conflicts = catppuccinifier-gui
 	source = catppuccinifier-gui-git::git+https://github.com/lighttigerXIV/catppuccinifier
 	md5sums = SKIP
 
