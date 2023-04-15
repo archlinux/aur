@@ -1,21 +1,22 @@
 pkgbase = python-sphinx-gallery
 	pkgdesc = Sphinx extension to automatically generate an examples gallery
-	pkgver = 0.12.2
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = http://sphinx-gallery.github.io
 	arch = any
 	license = BSD
 	checkdepends = python-pytest-cov
+	checkdepends = python-exceptiongroup
 	checkdepends = python-matplotlib
 	checkdepends = python-pillow
 	checkdepends = python-sphinx
 	checkdepends = python-absl
 	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/s/sphinx-gallery/sphinx-gallery-0.12.2.tar.gz
-	md5sums = 58a41686155b33abe26648aee8e88c40
+	source = https://files.pythonhosted.org/packages/source/s/sphinx-gallery/sphinx-gallery-0.13.0.tar.gz
+	md5sums = 653078ba025b89a99171fe21417088b9
 
 pkgname = python-sphinx-gallery
-	depends = python-sphinx>=3
+	depends = python-sphinx>=4
 	depends = python-pillow
 	depends = python-matplotlib
 	optdepends = python-seaborn
