@@ -1,0 +1,13 @@
+pkgbase = bicep
+	pkgdesc = A declarative language for describing and deploying Azure resources
+	pkgver = 0.16.2
+	pkgrel = 1
+	url = https://github.com/Azure/bicep
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk
+	depends = dotnet-runtime
+	source = bicep-0.16.2.tar.gz::https://github.com/Azure/bicep/archive/refs/tags/v0.16.2.tar.gz
+	sha256sums = b37cdb8f7b86b09e4d56b9a0c7a25dc16de3704f39edda211ca9eb6fddffdc6f
+
+pkgname = bicep
