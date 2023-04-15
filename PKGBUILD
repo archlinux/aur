@@ -25,13 +25,12 @@ pkgver() {
 }
 
 package() {
-	cd "$srcdir"
-	install -Dm644 "$pkgname/README.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
-	install -Dm755 -t "$pkgname/src/Linux/binaries-source/catppuccinifier-gui/target/release/catppuccinifier-gui" "$pkgdir/usr/bin/catppuccinifier-gui"
+	cd "$pkgname"
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
+	cd "src/Linux"
+	install -Dm755 "binaries-source/catppuccinifier-gui/target/release/catppuccinifier-gui" "$pkgdir/usr/bin/catppuccinifier-gui"
 	mkdir -p "$HOME/.local/share/catppuccinifier"
-	cp -p -r "$pkgname/src/Linux/installation-files/flavors/" "$HOME/.local/share/catppuccinifier/flavors/"
-	install -Dm644 "$pkgname/src/Linux/installation-files/catppuccinifier.png" "/usr/share/icons/hicolor/512x512/apps/catppuccinifier.png"
-	sed -i "s|Exec=.*|Exec=catppuccinifier-gui|g" "$pkgname/src/Linux/installation-files/Catppuccinifier.desktop"
-	sed -i "s|Icon=.*|Icon=/usr/share/icons/hicolor/512x512/apps/catppuccinifier.png|g" "$pkgname/src/Linux/installation-files/Catppuccinifier.desktop"
-	install -Dm644 -t "$pkgname/src/Linux/installation-files/Catppuccinifier.desktop" "$pkgdir/usr/share/applications/Catppuccinifier.desktop"
+	cp -p -r "installation-files/flavors/" "$HOME/.local/share/catppuccinifier/flavors/"
+	install -Dm644 "installation-files/catppuccinifier.png" "/usr/share/icons/hicolor/512x512/apps/catppuccinifier.png"
+	install -Dm644 "installation-files/Catppuccinifier.desktop" "/usr/share/applications/Catppuccinifier.desktop"
 }
