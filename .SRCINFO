@@ -1,0 +1,14 @@
+pkgbase = libpam-pwdfile-rs-bin
+	pkgdesc = A simple PAM module to authenticate users against a password file
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Supernovatux/libpam-pwdfile-rs
+	arch = x86_64
+	license = MIT
+	depends = pam
+	provides = libpam-pwdfile-rs
+	conflicts = libpam-pwdfile-rs
+	source = https://github.com/Supernovatux/libpam-pwdfile-rs/releases/download/v0.1.1/libpam-pwdfile-rs-0.1.1-x86_64.tar.gz
+	sha512sums = c1d95bc2bc494ec3bca5fd2538175502b858774d3e9c9b80d79a02da1518ffc1668b75c16b63778941f2688908d13cdfb1ea2605d2d35f4794ba10ade86fde99
+
+pkgname = libpam-pwdfile-rs-bin
