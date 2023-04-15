@@ -7,10 +7,16 @@ pkgdesc="An application to catppuccinifiy your images."
 arch=('x86_64')
 url="https://github.com/lighttigerXIV/catppuccinifier"
 license=()
+provides=('catppuccinifier-gui')
 depends=('imagemagick' 'libadwaita')
 makedepends=('git' 'cargo')
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
+
+pkgver() {
+	cd "$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
 	export RUSTUP_TOOLCHAIN=stable
@@ -18,13 +24,17 @@ build() {
 	cargo build --release
 }
 
-pkgver() {
-	cd "$pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+check(){
+  cd "$pkgname"
+  env CARGO_INCREMENTAL=0 cargo test --release
 }
 
 package() {
 	cd $pkgname
+	#desktop file
+	sed -i "s|Icon=.*|Icon=catppuccinifier|g" "src/Linux/installation-files/Catppuccinifier.desktop"
+	sed -i "s|Exec=.*|Exec=catppuccinifier-gui|g" "src/Linux/installation-files/Catppuccinifier.desktop"
+	desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "src/Linux/installation-files/Catppuccinifier.desktop" 
 	#binary
 	install -Dm755 "src/Linux/binaries-source/catppuccinifier-gui/target/release/catppuccinifier-gui" "$pkgdir/usr/bin/catppuccinifier-gui"
 	#docs
@@ -33,9 +43,5 @@ package() {
 	mkdir -p "$HOME/.local/share/catppuccinifier"
 	cp -p -r "src/Linux/installation-files/flavors/" "$HOME/.local/share/catppuccinifier/flavors/"
 	#icon
-	install -Dm644 "src/Linux/installation-files/catppuccinifier.png" "$pkgdir/usr/share/pixmaps/catppuccinifier.png"
-	#desktop file
-	sed -i "s|Icon=.*|Icon=catppuccinifier|g" "src/Linux/installation-files/Catppuccinifier.desktop"
-	sed -i "s|Exec=.*|Exec=catppuccinifier-gui|g" "src/Linux/installation-files/Catppuccinifier.desktop"
-	desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "src/Linux/installation-files/Catppuccinifier.desktop" 
+	install -Dm644 "src/Linux/installation-files/catppuccinifier.png" "$pkgdir/usr/share/pixmaps/Catppuccinifier.png"
 }
