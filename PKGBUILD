@@ -1,7 +1,7 @@
 pkgname=disneyplus
 _pkgname=DisneyPlus
 pkgver=1.0.3
-pkgrel=2
+pkgrel=4
 pkgdesc="Unnofficial Disney+ desktop application"
 arch=('x86_64')
 url="https://gitlab.com/disneyplusdesktop/application"

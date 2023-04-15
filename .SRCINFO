@@ -1,7 +1,7 @@
 pkgbase = disneyplus
 	pkgdesc = Unnofficial Disney+ desktop application
 	pkgver = 1.0.3
-	pkgrel = 2
+	pkgrel = 4
 	url = https://gitlab.com/disneyplusdesktop/application
 	arch = x86_64
 	license = GPL
@@ -13,7 +13,7 @@ pkgbase = disneyplus
 	depends = git
 	conflicts = disneyplus-git
 	conflicts = disneyplus-bin
-	source = https://gitlab.com/disneyplusdesktop/application/-/archive/1.0.3-2/application-1.0.3-2.tar.bz2
+	source = https://gitlab.com/disneyplusdesktop/application/-/archive/1.0.3-4/application-1.0.3-4.tar.bz2
 	sha256sums = SKIP
 
 pkgname = disneyplus
