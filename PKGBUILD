@@ -18,18 +18,4 @@ package() {
     chmod +x blahaj
     chmod 755 blahaj
     install -D blahaj "${pkgdir}/usr/bin/blahaj"
-    # # Move files to right directories
-    # install -d "$pkgdir"/opt/armcord
-    # cp -a * "$pkgdir"/opt/armcord
-    #
-    # # Set up the executables
-    # install -d "$pkgdir"/usr/bin
-    # ln -s /opt/armcord/armcord "$pkgdir"/usr/bin/armcord
-    #
-    # # Correct permissions
-    # chmod +x -R "$pkgdir"/opt/armcord/*
-    # chmod 755 "$pkgdir"/opt/armcord/armcord
-    #
-    # install -Dm644 "${srcdir}/armcord.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-    # install -Dm644 "${srcdir}/armcord.png" "${pkgdir}/usr/share/pixmaps/armcord.png"
 }
