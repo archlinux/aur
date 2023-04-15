@@ -1,0 +1,17 @@
+pkgbase = lastlog2
+	pkgdesc = Y2038 safe version of lastlog. Includes liblastlog2
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/thkukuk/lastlog2
+	arch = x86_64
+	license = custom:BSD-2-Clause
+	makedepends = meson
+	makedepends = libxslt
+	makedepends = docbook-xsl
+	depends = pam
+	depends = sqlite
+	depends = glibc
+	source = lastlog2-1.1.0.tar.xz::https://github.com/thkukuk/lastlog2/releases/download/v1.1.0/lastlog2-1.1.0.tar.xz
+	sha256sums = 3896fb0db3a13ecf4bc8cfc9ab89dec54383b8c35ec1b5f587de7c040085ce2b
+
+pkgname = lastlog2
