@@ -5,15 +5,15 @@
 
 pkgname=powershell
 _binaryname=pwsh
-pkgver=7.3.3
+pkgver=7.3.4
 _pkgnum=${pkgver:0:1}
-pkgrel=2
+pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (latest release)'
 arch=('x86_64')
 url='https://github.com/PowerShell/PowerShell'
 license=('MIT')
 makedepends=('cmake' 'dotnet-sdk>=7.0.0')
-depends=('krb5' 'gcc-libs' 'glibc' 'lttng-ust' 'zlib' 'openssl>=1.0' 'icu')
+depends=('krb5' 'gcc-libs' 'glibc' 'lttng-ust' 'zlib' 'openssl' 'icu')
 
 _googletest_commit_hash=4e4df226fc197c0dda6e37f5c8c3845ca1e73a49
 _powershell_native_version=7.3.2
@@ -22,13 +22,13 @@ source=("$pkgname-$pkgver::$url/archive/refs/tags/v$pkgver.tar.gz"
         'Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets'
         "googletest-$_googletest_commit_hash.tar.gz::https://github.com/google/googletest/archive/$_googletest_commit_hash.tar.gz"
         'version-from-environment-variable.patch')
-sha256sums=('ad5f4533414b91abe67c46194aec81985313d6b54cf7c0019169cf62c1cb7bbd'
+sha256sums=('9503c21c767b49634aefbe5b48ec3dcde5b56a0703a2196f7d967d091c745d55'
             '1fcf21213a47f9554297f5cf3fc9adc866e037bde9a8d71c1c5889a2f5d79918'
             '8d10afb45883813f805bdf74ec445ae3f2fdbd4d30ab2ce7ce3a55df80693696'
             'eebf7507efcfe7a4dff5d69dcbe52ee090e99548c1407714fe10821ba359bf32'
             '50c7265492cd5cd87d81df29fa737d06dacd97586b0fafb3a0f3af8451b8c052')
 install=powershell.install
-options=(staticlibs !strip)
+options=(staticlibs)
 
 _powershell_native_archive="PowerShell-Native-$_powershell_native_version"
 _powershell_archive="PowerShell-$pkgver"
