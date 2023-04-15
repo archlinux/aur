@@ -1,7 +1,7 @@
 pkgbase = lua-format
 	pkgdesc = LuaFormatter - Code formatter for Lua
 	pkgver = 1.3.6
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/Koihik/LuaFormatter
 	arch = x86_64
 	arch = aarch64
