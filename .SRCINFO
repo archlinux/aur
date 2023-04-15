@@ -1,6 +1,6 @@
 pkgbase = signal-desktop-arm
 	pkgdesc = Signal Private Messenger for Linux - ARM (aarch64)
-	pkgver = 6.12.0
+	pkgver = 6.14.0
 	pkgrel = 1
 	url = https://github.com/signalapp/Signal-Desktop
 	arch = aarch64
@@ -23,11 +23,11 @@ pkgbase = signal-desktop-arm
 	conflicts = signal-desktop
 	conflicts = signal-desktop-beta
 	conflicts = signal-desktop-beta-bin
-	source = signal-desktop-arm-6.12.0.tar.gz::https://github.com/signalapp/Signal-Desktop/archive/v6.12.0.tar.gz
+	source = signal-desktop-arm-6.14.0.tar.gz::https://github.com/signalapp/Signal-Desktop/archive/v6.14.0.tar.gz
 	source = signal-desktop-arm.desktop
-	sha512sums = 84e1e9f40aed65dbe48a98b8f7c863956e8e4922c6a6d7340db19f949e5077067100568ecab8005ee9ffe272b9f3efaf72f40dbb16aab30952aa1df10844904d
+	sha512sums = 218a8d26aa71702d045193ae30750cbe8682697da659337a6d4989a8bdc2637652d46e653c6d4c623e791ebbaac3a08610b8033c8a37786d7818789a2eaab3db
 	sha512sums = ba6887afeb7a135a1042c4708f6f15199840273fcc8a56992cd135ff478c22e3b2bdb7d59cda487ffc6e396d27b843259ffe0ee9597d397ee4362cffb0f6296f
-	b2sums = 600b7911c32f2cbb425714fdd5461d51891b5139b67c1eb88849b52ada8853ccb26a5f6ef0ed2f4ac83948e356cf27762a84e9cb6e44e5814b62e91304b4631f
+	b2sums = 3d126fcfd8adb68b91f7e498e64dfd3b250fbc3046d880a54e88f5e2a28bd85c31be65ecf259d01eaa4d7fc32b360e242878fb6aa9eb5e28aac42272ccf30977
 	b2sums = 3cd41a4addcd4b712ee687b6636e1b370ff14479133ceb53eba3db041e20b56fb78ccbc2b24fe6571c5054e5b352b6ac2bf0864c18d004fb1abbcdf34bc09ff4
 
 pkgname = signal-desktop-arm
