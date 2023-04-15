@@ -59,7 +59,7 @@ prepare() {
   cd mozilla-unified
 
   # See https://github.com/glandium/git-cinnabar/issues/311
-  git config remote.origin.fetch '^refs/cinnabar/*'
+  git config remote.origin.fetch 'bookmarks/autoland'
 
   # EVENT__SIZEOF_TIME_T does not exist on upstream libevent, see event-config.h.cmake
   sed -i '/CHECK_EVENT_SIZEOF(TIME_T, time_t);/d' ipc/chromium/src/base/message_pump_libevent.cc
