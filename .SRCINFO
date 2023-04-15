@@ -1,0 +1,20 @@
+pkgbase = xview
+	pkgdesc = an OPEN LOOK Toolkit for X Window Files
+	pkgver = 3.2p1.4_25.22
+	pkgrel = 1
+	url = https://sourceforge.net/projects/xview
+	arch = i686
+	license = BSD
+	makedepends = boost
+	makedepends = unzip
+	makedepends = imake
+	depends = boost-libs
+	depends = libtirpc
+	depends = lib32-flex
+	depends = lib32-libxpm
+	source = xview-3.2p1.4-25.22.src.rpm::https://sourceforge.net/projects/xview/files/xview/RHEL8/xview-3.2p1.4-25.22/xview-3.2p1.4-25.22.el8.src.rpm/download
+	source = 2023-04-16.diff
+	sha256sums = 4a2d82b1870a3fc45477042ddfbbe0809965af324b368d269b8fd2e16ff2d546
+	sha256sums = be3f728f21d2ca8f7bd72093b8e9242ed8c4fef3c4dc8d9fb8d970c95cb6c92d
+
+pkgname = xview
