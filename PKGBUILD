@@ -3,7 +3,7 @@ _srcname=LuaFormatter
 _pkgname=lua-format
 _patch=(g4)
 pkgname=$_pkgname-ext-git
-pkgver=r263.0ef3575
+pkgver=r293.29afe10
 pkgrel=2
 pkgdesc='LuaFormatter with extended identifiers'
 arch=(x86_64 aarch64)
@@ -36,7 +36,7 @@ prepare() {
 build() {
   cd $_srcname
   java -jar ../antlr4.jar -Dlanguage=Cpp -no-listener -visitor -o generated Lua.g4
-  cmake -D BUILD_TESTS=OFF COVERAGE=OFF .
+  cmake -D BUILD_TESTS=OFF -D COVERAGE=OFF .
   make
 }
 package() {
