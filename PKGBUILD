@@ -13,7 +13,7 @@
 
 pkgname=lib32-mesa-amdonly-gaming-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=23.1.0_devel.167746.399012a911b.d41d8cd98f00b204e9800998ecf8427e
+pkgver=23.2.0_devel.169866.c6906448425.d41d8cd98f00b204e9800998ecf8427e
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -23,8 +23,8 @@ depends=('mesa-amdonly-gaming-git' 'lib32-gcc-libs' 'lib32-libdrm' 'lib32-waylan
          'lib32-libxdamage' 'lib32-libxshmfence' 'lib32-libelf'
          'lib32-lm_sensors' 'glslang' 'lib32-vulkan-icd-loader' 'lib32-zstd' 'lib32-llvm-libs')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=('lib32-mesa' 'lib32-vulkan-radeon' 'lib32-vulkan-mesa-layer' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-mesa-libgl' 'lib32-opengl-driver' 'lib32-vulkan-driver')
-conflicts=('lib32-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-vulkan-mesa-layer' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-mesa-libgl')
+provides=('lib32-mesa' 'lib32-vulkan-radeon' 'lib32-vulkan-mesa-layer' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-mesa-libgl' 'lib32-opengl-driver' 'lib32-vulkan-driver' 'lib32-opencl-mesa')
+conflicts=('lib32-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-vulkan-mesa-layer' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-mesa-libgl' 'lib32-opencl-mesa')
 url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main'
