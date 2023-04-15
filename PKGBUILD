@@ -1,12 +1,13 @@
 _pkgname=vim-pandoc
 pkgname=vim-pandoc-git
-pkgver=2.0.r427.gfcdb70e
+pkgver=2.0.r432.gd4fc6f8
 pkgrel=1
 pkgdesc="plugin for writing and editing documents in Pandoc's extended markdown"
 arch=('any')
 url='https://github.com/vim-pandoc/vim-pandoc'
 license=('MIT')
 depends=('vim')
+makedepends=('git')
 source=('git+https://github.com/vim-pandoc/vim-pandoc.git')
 sha512sums=('SKIP')
 
