@@ -1,7 +1,7 @@
 # Maintainer: Dušan Mitrović <dusan@dusanmitrovic.xyz>
 pkgname=supersonic-desktop
 pkgver=0.1.0_beta
-pkgrel=1
+pkgrel=1.1
 pkgdesc="A lightweight cross-platform desktop client for Subsonic music servers"
 _pkgname="${pkgname//-desktop/}"
 _pkgver="${pkgver//_/-}"
@@ -27,7 +27,7 @@ build() {
 
   cd "$srcdir/${_pkgname}-${_pkgver}"
 
-  go build .
+  go build -mod=readonly -modcacherw .
 }
 
 package() {
