@@ -1,6 +1,7 @@
 # Maintainer: Lucki <https://aur.archlinux.org/account/Lucki>
 # Contributor: Carl Reinke <mindless2112 gmail com>
-# shellcheck disable=SC2034,2154,2148
+# shellcheck shell=bash
+# shellcheck disable=2034,2154
 
 pkgname=lix-git
 _pkgname=${pkgname%-git}
@@ -9,12 +10,12 @@ pkgrel=1
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname::git+https://github.com/SimonN/lix-unstable.git"
-        "$pkgname-music-1.zip::http://www.lixgame.com/dow/lix-music.zip")
+        "$pkgname-music-2.zip::https://www.lixgame.com/dow/lix-music.zip")
 sha512sums=('SKIP'
-            '37349c98b739ea43c25137dd03865f1c9c41eec91e5edc109afd9d50ce3871bd0c7f63c3f3599a47bb4ef52f5bfd14e034010de0ac2aec5a9c0c83eaf0b89425')
+            '280fd25a479ac8dd24475b014234270a12ab34edca7fb2f7ce4b768259111b1e7626d3ba37ac13d810f0653d23d7c9f212776e94d2c0b31a0de580864771ce9f')
 pkgdesc="An action-puzzle game inspired by Lemmings"
 arch=('i686' 'x86_64')
-url="http://www.lixgame.com/"
+url="https://www.lixgame.com/"
 license=('custom:CC0')
 depends=('allegro' 'enet' 'hicolor-icon-theme' 'liblphobos')
 makedepends=('git' 'ldc' 'dub')
