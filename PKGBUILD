@@ -7,8 +7,8 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=111.0.1
-pkgrel=1
+pkgver=112.0
+pkgrel=2
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
 license=(
@@ -79,17 +79,13 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         $pkgname.desktop
         "git+https://github.com/cachyos/cachyos-browser-settings.git"
         "git+https://github.com/cachyos/cachyos-browser-common.git"
-        "match.patch"
-        "https://raw.githubusercontent.com/CachyOS/CachyOS-PKGBUILDS/master/cachy-browser/0002-Bug-1819374-Squashed-ffmpeg-6.0-update.patch"
-        "https://raw.githubusercontent.com/CachyOS/CachyOS-PKGBUILDS/master/cachy-browser/0003-Bug-1820416-Use-correct-FFVPX-headers-from-ffmpeg-6..patch")
-sha256sums=('84a4f3aba62df6e0451cdd28f8f1e59840d77c4062311947b0e59325c2ebdce8'
+        "match.patch")
+sha256sums=('eb19185f7bfa5c3b0c73edaa57160b44bf3bb2139db83539809607486b8075d9'
             'SKIP'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
             'SKIP'
-            '1fbb1971a1d0d4c875b1af0f9681601909cfbe4fe0cc2c2f42c523c84c934499'
-            '9347e45cfe3e915b2293f7467fd61c216ec10823e91c70e5aeb9ca08cc5fcfcf'
-            'be9ba079a931d5e881ce38430d418cc834e8c6b157af6c79ea267998caece806')
+            '1fbb1971a1d0d4c875b1af0f9681601909cfbe4fe0cc2c2f42c523c84c934499')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 prepare() {
@@ -261,16 +257,7 @@ END
     patch -Np1 -i ${_patches_dir}/kde/mozilla-nongnome-proxies.patch
     msg2  "some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)"
     patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
-    msg2  "unified-extensions-dont-show-recommendations.patch"
-    patch -Np1 -i ${_patches_dir}/librewolf/unified-extensions-dont-show-recommendations.patch
 
-    msg2 "Arch patch"
-    # https://bugzilla.mozilla.org/show_bug.cgi?id=1819374
-    patch -Np1 -i ../0002-Bug-1819374-Squashed-ffmpeg-6.0-update.patch
-
-    # https://bugs.archlinux.org/task/77796
-    # https://bugzilla.mozilla.org/show_bug.cgi?id=1820416
-    patch -Np1 -i ../0003-Bug-1820416-Use-correct-FFVPX-headers-from-ffmpeg-6..patch
     # msg2 "Match to system libs"
     # patch -Np1 -i ../match.patch
 
