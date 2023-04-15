@@ -14,19 +14,15 @@ makedepends=('python-setuptools')
 source=("${pkgname}::git+${url}#branch=master")
 sha512sums=('SKIP')
 
-_get_tag() {
-    git tag --list | grep '^v' --color=never | tail -n1
-}
-
 prepare() {
     cd "${pkgname}"
 
-    git reset --hard "$(_get_tag)"
+    git reset --hard "$(git describe --tags --abbrev=0 --match 'v*')"
 }
 
 pkgver() {
     cd "${pkgname}"
-    _get_tag | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --tags --abbrev=0 --match 'v*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
