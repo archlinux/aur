@@ -1,6 +1,6 @@
 pkgbase = python-adafruit-circuitpython-display-text
 	pkgdesc = Displays text using CircuitPython's displayio
-	pkgver = 2.22.10
+	pkgver = 2.28.1
 	pkgrel = 0
 	url = https://github.com/adafruit/Adafruit_CircuitPython_Display_Text
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-adafruit-circuitpython-display-text
 	makedepends = python-setuptools-scm
 	depends = python-adafruit-blinka-displayio
 	depends = python-adafruit-circuitpython-bitmap-font
-	source = https://pypi.io/packages/source/a/adafruit-circuitpython-display-text/adafruit-circuitpython-display-text-2.22.10.tar.gz
-	sha256sums = c7b1029a386bb20fae9c0d8162f01899e018f0b3be93957b703bfb45fd7caed1
+	source = https://pypi.io/packages/source/a/adafruit-circuitpython-display-text/adafruit-circuitpython-display-text-2.28.1.tar.gz
+	sha256sums = f084c45c10a0e468f716cb7d397fbe1bc69cfdc99335c188beb4dde98990914f
 
 pkgname = python-adafruit-circuitpython-display-text
