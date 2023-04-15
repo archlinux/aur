@@ -1,6 +1,6 @@
 pkgbase = linux-xanmod-anbox
 	pkgdesc = Linux Xanmod with ashmem and binder enabled for Anbox - Current Stable (CURRENT)
-	pkgver = 6.2.10
+	pkgver = 6.2.11
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -15,13 +15,13 @@ pkgbase = linux-xanmod-anbox
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.2.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.2.tar.sign
-	source = https://github.com/xanmod/linux/releases/download/6.2.10-xanmod1/patch-6.2.10-xanmod1.xz
+	source = https://github.com/xanmod/linux/releases/download/6.2.11-xanmod1/patch-6.2.11-xanmod1.xz
 	source = choose-gcc-optimization.sh
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 74862fa8ab40edae85bb3385c0b71fe103288bce518526d63197800b3cbdecb1
 	sha256sums = SKIP
-	sha256sums = 30d69962510bb3eb630c2f0c590a0e3187739b82e4d7835c59ab061355c20019
+	sha256sums = 49460fdd0dd0169a8a3b6ac8a99d476bd2cdce059c053916ec780bd7031216b5
 	sha256sums = 5c84bfe7c1971354cff3f6b3f52bf33e7bbeec22f85d5e7bfde383b54c679d30
 
 pkgname = linux-xanmod-anbox
