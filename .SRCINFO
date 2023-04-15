@@ -1,7 +1,7 @@
 pkgbase = python-pytensor
 	pkgdesc = Fork of Aesara -- Library for defining, optimizing, and efficiently evaluating mathematical expressions involving multi-dimensional arrays
 	pkgver = 2.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pymc-devs/pytensor
 	arch = x86_64
 	license = custom
