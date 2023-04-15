@@ -13,7 +13,7 @@ arch=('x86_64')
 url='https://github.com/PowerShell/PowerShell'
 license=('MIT')
 makedepends=('cmake' 'dotnet-sdk>=7.0.0')
-depends=('krb5' 'gcc-libs' 'glibc' 'lttng-ust' 'zlib' 'openssl' 'icu')
+depends=('krb5' 'gcc-libs' 'glibc' 'lttng-ust' 'zlib' 'openssl' 'icu' 'dotnet-runtime')
 
 _googletest_commit_hash=4e4df226fc197c0dda6e37f5c8c3845ca1e73a49
 _powershell_native_version=7.3.2
