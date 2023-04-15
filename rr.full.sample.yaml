@@ -1,0 +1,2059 @@
+######################################################################################
+#                       THIS IS SAMPLE OF THE CONFIGURATION                          #
+# IT'S NOT A DEFAULT CONFIGURATION, IT'S JUST A REFERENCE TO ALL OPTIONS AND PLUGINS #
+#       MORE DOCS CAN BE FOUND HERE: <https://roadrunner.dev/docs/intro-config>      #
+######################################################################################
+
+# Production usage guide: https://roadrunner.dev/docs/app-server-production/2.x/en
+
+# Hint: RR will replace any config options using reference to environment variables,
+# eg.: `option_key: ${ENVIRONMENT_VARIABLE_NAME}`.
+
+# Important: TCP port numbers for each plugin (rpc, http, etc) must be unique!
+
+# RR configuration version
+version: '3'
+
+# Remote Procedures Calling (docs: https://roadrunner.dev/docs/plugins-rpc/2.x/en)
+# Is used for connecting to RoadRunner server from your PHP workers.
+rpc:
+  # TCP address:port for listening.
+  #
+  # Default: "tcp://127.0.0.1:6001"
+  listen: tcp://127.0.0.1:6001
+
+# Application server settings (docs: https://roadrunner.dev/docs/php-worker)
+server:
+  #[SINCE 2.6]
+  on_init:
+    # Command to execute before the main server's command
+    #
+    # This option is required if using on_init
+    command: "any php or script here"
+
+    # Script execute timeout
+    #
+    # Default: 60s [60m, 60h], if used w/o units its means - NANOSECONDS.
+    exec_timeout: 20s
+
+    # Environment variables for the worker processes.
+    #
+    # Default: <empty map>
+    env:
+      - SOME_KEY: "SOME_VALUE"
+      - SOME_KEY2: "SOME_VALUE2"
+  # Worker starting command, with any required arguments.
+  #
+  # This option is required.
+  command: "php psr-worker.php"
+
+  # Username (not UID) for the worker processes. An empty value means to use the RR process user.
+  #
+  # Default: ""
+  user: ""
+
+  # Group name (not GID) for the worker processes. An empty value means to use the RR process group.
+  #
+  # Default: ""
+  group: ""
+
+  # Environment variables for the worker processes.
+  #
+  # Default: <empty map>
+  env:
+    - SOME_KEY: "SOME_VALUE"
+    - SOME_KEY2: "SOME_VALUE2"
+
+  # Worker relay can be: "pipes", TCP (eg.: tcp://127.0.0.1:6002), or socket (eg.: unix:///var/run/rr.sock).
+  #
+  # Default: "pipes"
+  relay: pipes
+
+  # Timeout for relay connection establishing (only for socket and TCP port relay).
+  #
+  # Default: 60s
+  relay_timeout: 60s
+
+# Logging settings (docs: https://roadrunner.dev/docs/plugins-logger/2.x/en)
+logs:
+  # Logging mode can be "development", "production" or "raw". Do not forget to change this value for production environment.
+  #
+  # Development mode (which makes DPanicLevel logs panic), uses a console encoder, writes to standard error, and
+  # disables sampling. Stacktraces are automatically included on logs of WarnLevel and above.
+  #
+  # Default: "development"
+  mode: development
+
+  # Logging level can be "panic", "error", "warn", "info", "debug".
+  #
+  # Default: "debug"
+  level: debug
+
+  # Encoding format can be "console" or "json" (last is preferred for production usage).
+  #
+  # Default: "console"
+  encoding: console
+
+  # Log line ending
+  #
+  # Default: "\n"
+  line_ending: "\n"
+
+  # Output can be file (eg.: "/var/log/rr_errors.log"), "stderr" or "stdout".
+  #
+  # Default: "stderr"
+  output: stderr
+
+  # Errors only output can be file (eg.: "/var/log/rr_errors.log"), "stderr" or "stdout".
+  #
+  # Default: "stderr"
+  err_output: stderr
+
+  # File logger options
+  #
+  # Default: null
+  file_logger_options:
+
+    # Path to the file
+    #
+    # Default: It uses <processname>-lumberjack.log name in the os tempdir if empty.
+    log_output: "/tmp/my.log"
+
+    # Max file size in MB
+    #
+    # Default: 100
+    max_size: 100
+
+    # max_age is the maximum number of days to retain old log files based on the timestamp encoded in their filename.
+    #
+    # Default: 1 (day)
+    max_age: 1
+
+    # max_backups is the maximum number of old log files to retain.
+    #
+    # Default: retain all (if set to 0)
+    max_backups: 5
+
+    # Compress determines if the rotated log files should be compressed using gzip.
+    #
+    # Default: false
+    compress: false
+
+  # You can configure each plugin log messages individually (key is plugin name, and value is logging options in same
+  # format as above).
+  #
+  # Default: <empty map>
+  channels:
+    http:
+      mode: development
+      level: panic
+      encoding: console
+      output: stdout
+      err_output: stderr
+    server:
+      mode: production
+      level: info
+      encoding: json
+      output: stdout
+      err_output: stdout
+    rpc:
+      mode: raw
+      level: debug
+      encoding: console
+      output: stderr
+      err_output: stdout
+
+# Workflow and activity mesh service.
+#
+# Drop this section for temporal feature disabling.
+temporal:
+  # Address of temporal server.
+  #
+  # Default: "127.0.0.1:7233"
+  address: 127.0.0.1:7233
+
+  # Sticky cache size. Sticky workflow execution is the affinity
+  # between workflow tasks of a specific workflow execution to a specific worker. The benefit of sticky execution is that
+  # the workflow does not have to reconstruct state by replaying history from the beginning. The cache is shared between
+  # workers running within same process. This must be called before any worker is started. If not called, the default
+  # size of 10K (which may change) will be used.
+  #
+  # Default: 10_000
+  cache_size: 10000
+
+  # Namespace name for this client to work with
+  #
+  # Default: default
+  namespace: default
+
+  # Temporal metrics
+  #
+  # Optional section
+  metrics:
+
+    # ---- Prometheus
+
+    # Metrics driver to use
+    #
+    # Optional, default: prometheus. Available values: prometheus, statsd
+    driver: prometheus
+    # Server metrics address
+    #
+    # Required for the production. Default: 127.0.0.1:9091, for the metrics 127.0.0.1:9091/metrics
+    address: 127.0.0.1:9091
+    # Metrics type
+    #
+    # Default: "summary". Supported values: summary, histogram
+    type: "summary"
+
+    # Temporal metrics prefix
+    #
+    # Default: (empty)
+    prefix: "foobar"
+
+    # ---- Statsd (uncomment)
+
+    # Metrics driver to use
+    #
+    # Optional, default: prometheus. Available values: prometheus, statsd
+    # driver: statsd
+
+    # Statsd host and port
+    #
+    # Optional, default: 127.0.0.1:8125
+    # host_port: "127.0.0.1:8125"
+
+    # Prefix for the metrics
+    #
+    # Optional, default: empty
+    # prefix: "samples"
+
+    # Flush interval is the maximum interval for sending packets.
+    #
+    # Optional, default: 1s
+    # flush_interval: 1s
+
+    # Flush bytes specifies the maximum udp packet size you wish to send.
+    # If FlushBytes is unspecified, it defaults  to 1432 bytes, which is
+    # considered safe for local traffic
+    #
+    # Optional, default: 1432
+    # flush_bytes: 1432
+
+    # Tags passed to the statsd on init
+    #
+    # Optional, default: empty
+    #tags:
+    #  - foo: bar
+
+  # Temporal TLS configuration
+  #
+  # This section is optional
+  tls:
+    # Path to the key file
+    #
+    # This option is required
+    key: ""
+
+    # Path to the certificate
+    #
+    # This option is required
+    cert: ""
+
+    # Path to the CA certificate, defines the set of root certificate authorities that servers use if required to verify a client certificate. Used with the `client_auth_type` option.
+    #
+    # This option is optional
+    root_ca: ""
+
+    # Client auth type.
+    #
+    # This option is optional. Default value: no_client_certs. Possible values: request_client_cert, require_any_client_cert, verify_client_cert_if_given, require_and_verify_client_cert, no_client_certs
+    client_auth_type: no_client_certs
+
+    # ServerName is used to verify the hostname on the returned
+    # certificates unless InsecureSkipVerify is given. It is also included
+    # in the client's handshake to support virtual hosting unless it is
+    # an IP address.
+    #
+    # Default: hostname
+    server_name: "tls-sample"
+
+  # Activities pool settings.
+  #
+  # Equal to the regular pool options
+  activities:
+    # Debug mode for the pool. In this mode, pool will not pre-allocate the worker. Worker (only 1, num_workers ignored) will be allocated right after the request arrived.
+    #
+    # Default: false
+    debug: false
+
+    # Override server's command
+    #
+    # Default: empty
+    command: "php my-super-app.php"
+
+    # How many worker processes will be started. Zero (or nothing) means the number of logical CPUs.
+    #
+    # Default: 0
+    num_workers: 0
+
+    # Maximal count of worker executions. Zero (or nothing) means no limit.
+    #
+    # Default: 0
+    max_jobs: 0
+
+    # Timeout for worker allocation. Zero means 60s.
+    #
+    # Default: 60s
+    allocate_timeout: 60s
+
+    # Timeout for the reset timeout. Zero means 60s.
+    #
+    # Default: 60s
+    reset_timeout: 60s
+
+    # Timeout for worker destroying before process killing. Zero means 60s.
+    #
+    # Default: 60s
+    destroy_timeout: 60s
+
+    # Supervisor is used to control http workers (previous name was "limit", docs:
+    # https://roadrunner.dev/docs/php-limit). "Soft" limits will not interrupt current request processing. "Hard"
+    # limit on the contrary - interrupts the execution of the request.
+    supervisor:
+      # How often to check the state of the workers.
+      #
+      # Default: 1s
+      watch_tick: 1s
+
+      # Maximum time worker is allowed to live (soft limit). Zero means no limit.
+      #
+      # Default: 0s
+      ttl: 0s
+
+      # How long worker can spend in IDLE mode after first using (soft limit). Zero means no limit.
+      #
+      # Default: 0s
+      idle_ttl: 10s
+
+      # Maximal worker memory usage in megabytes (soft limit). Zero means no limit.
+      #
+      # Default: 0
+      max_worker_memory: 128
+
+      # Maximal job lifetime (hard limit). Zero means no limit.
+      #
+      # Default: 0s
+      exec_ttl: 60s
+
+
+# KV plugin settings. Available drivers: boltdb, redis, memcached, memory.
+#
+# Any number of sections can be defined here.
+kv:
+  # User defined name of the section
+  #
+  # Default: none
+  boltdb-south:
+    # Driver which should be used for the storage
+    #
+    # This option is required.
+    driver: boltdb
+
+    # Local configuration section
+    #
+    # This option is required to use local section, otherwise (boltdb-south) global configuration will be used.
+    config:
+      # File name for the DB
+      #
+      # Default: "rr.db"
+      file: "rr.db"
+      # Access permission for the DB file.
+      #
+      # Default: "0777"
+      permissions: 0777
+      # TTL keys check interval in seconds. It's safe to use 1 second here, but can be a little costly to performance.
+      #
+      # Default: "60" seconds
+      interval: 40
+
+  # User defined name of the section (us-cental-kv used as example)
+  #
+  # Default: none
+  us-central-kv:
+    # Driver which should be used for the storage
+    #
+    # Default: none
+    driver: memcached
+    # Local configuration section
+    #
+    # This option is required to use local section, otherwise (us-central-kv) global configuration will be used.
+    config:
+      # Driver specific section. Address of the memcached node.
+      #
+      # Default: "localhost:11211"
+      addr: [ "localhost:11211" ]
+
+  # User defined name of the section
+  #
+  # Default: none
+  fast-kv-fr:
+    # Driver which should be used for the storage.
+    #
+    # Default: none
+    driver: redis
+    # Redis specific section. If one address provided - single node client will be used.
+    #
+    #
+    # UniversalClient is an abstract client which - based on the provided options -
+    # can connect to either clusters, or sentinel-backed failover instances
+    # or simple single-instance servers. This can be useful for testing
+    # cluster-specific applications locally.
+    # if the number of addrs is 1 and master_name is empty, a single-node redis Client will be returned
+    # if the number of addrs is two or more, a ClusterClient will be returned
+
+    # Local configuration section
+    #
+    # This option is required to use local section, otherwise (fast-kv-fr) global configuration will be used.
+    config:
+      addrs:
+        - "localhost:6379"
+        # if a MasterName is passed a sentinel-backed FailoverClient will be returned
+      master_name: ""
+      username: ""
+      password: ""
+      db: 0
+      sentinel_password: ""
+      route_by_latency: false
+      route_randomly: false
+      dial_timeout: 0s # accepted values [1s, 5m, 3h]
+      max_retries: 1
+      min_retry_backoff: 0s # accepted values [1s, 5m, 3h]
+      max_retry_backoff: 0s # accepted values [1s, 5m, 3h]
+      pool_size: 0
+      min_idle_conns: 0
+      max_conn_age: 0s # accepted values [1s, 5m, 3h]
+      read_timeout: 0s # accepted values [1s, 5m, 3h]
+      write_timeout: 0s # accepted values [1s, 5m, 3h]
+      pool_timeout: 0s # accepted values [1s, 5m, 3h]
+      idle_timeout: 0s # accepted values [1s, 5m, 3h]
+      idle_check_freq: 0s # accepted values [1s, 5m, 3h]
+      read_only: false
+
+  # User defined name of the section
+  #
+  # Default: none
+  local-memory:
+    # In memory driver specific section
+    #
+    # Default: none
+    driver: memory
+    # Local configuration section
+    #
+    # This option is required to use local section, otherwise (local-memory) global configuration will be used.
+    config:
+      # TTL check interval in seconds
+      #
+      # Default: 60 seconds
+      interval: 1
+
+# Service plugin settings
+service:
+
+  # User defined service name
+  #
+  # Default: none, required
+  some_service_1:
+    # Command to execute. Can be any command here which can be executed.
+    #
+    # Default: none, required.
+    command: php tests/plugins/service/test_files/loop.php
+
+    # Env variables for the process
+    #
+    # Default: empty
+    env:
+      foo: "BAR"
+      foo2: "BAR2"
+
+    # Number of copies (processes) to start per command.
+    #
+    # Default: 1
+    process_num: 1
+
+    # Allowed time before stop.
+    #
+    # Default: 0 (infinity), can be 1s, 2m, 2h (seconds, minutes, hours)
+    exec_timeout: 0s
+
+    # Show the name of the service in logs (e.g. service.some_service_1)
+    #
+    # Default: false
+    service_name_in_log: false
+
+    # Remain process after exit. In other words, restart process after exit with any exit code.
+    #
+    # Default: "false"
+    remain_after_exit: true
+
+    # Number of seconds to wait before process restart.
+    #
+    # Default: 30
+    restart_sec: 1
+
+  # User defined service name
+  #
+  # Default: none, required
+  some_service_2:
+    # Command to execute. Can be any command here which can be executed.
+    #
+    # Default: none, required.
+    command: "binary"
+
+    # Env variables for the process
+    #
+    # Default: empty
+    env:
+      foo: "BAR"
+      foo2: "BAR2"
+
+    # Number of copies (processes) to start per command.
+    #
+    # Default: 1
+    process_num: 1
+
+
+    # Show the name of the service in logs (e.g. service.some_service_1)
+    #
+    # Default: false
+    service_name_in_log: false
+
+    # Allowed time before stop.
+    #
+    # Default: 0 (infinity), can be 1s, 2m, 2h (seconds, minutes, hours)
+    exec_timeout: 0s
+
+    # Remain process after exit. In other words, restart process after exit with any exit code.
+    #
+    # Default: "false"
+    remain_after_exit: true
+
+    # Number of seconds to wait before process restart.
+    #
+    # Default: 30
+    restart_sec: 1
+
+otel:
+  # Use insecure endpoint (http) or insecure gRPC
+  #
+  # Default: false
+  insecure: true
+
+  # Use gzip to compress the spans
+  #
+  # Default: false
+  compress: false
+
+  # Client to send the spans
+  #
+  # Default: http. Possible values: `http`, `grpc`
+  client: http
+
+  # Provides functionality to emit telemetry to consumers
+  #
+  # Default: otlp. Possible values: otlp (used for new_relic, datadog), zipkin stderr or stdout
+  exporter: otlp
+
+  # Used for the http client to override the default URL
+  #
+  # Default: empty
+  custom_url: ""
+
+  # User's service name
+  #
+  # Default: RoadRunner
+  service_name: "rr_test"
+
+  # User's service version
+  #
+  # Default: RoadRunner
+  service_version: "1.0.0"
+
+  # Consumer's endpoint
+  #
+  # Default: 127.0.0.1:4318
+  endpoint: "127.0.0.1:4318"
+
+# HTTP plugin settings.
+http:
+  # Host and port to listen on (eg.: `127.0.0.1:8080`).
+  #
+  # This option is required.
+  address: 127.0.0.1:8080
+
+  # override http error code for the internal RR errors
+  #
+  # Default: 500
+  internal_error_code: 505
+
+  # HTTP access logs
+  #
+  # Default: false
+  access_logs: false
+
+  # Maximal incoming request size in megabytes. Zero means no limit.
+  #
+  # Default: 0
+  max_request_size: 256
+
+  # Send raw body (unescaped) to the PHP worker for the application/x-www-form-urlencoded content type
+  #
+  # Optional, default: false
+  raw_body: false
+
+  # Middlewares for the http plugin, order is important. Allowed values is: "headers", "gzip", "static", "sendfile",  [SINCE 2.6] -> "new_relic", [SINCE 2.6] -> "http_metrics", [SINCE 2.7] -> "cache"
+  #
+  # Default value: []
+  middleware: [ "headers", "gzip" ]
+
+  # Allow incoming requests only from the following subnets (https://en.wikipedia.org/wiki/Reserved_IP_addresses).
+  #
+  # Default: ["10.0.0.0/8", "127.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16",  "::1/128", "fc00::/7", "fe80::/10"]
+  trusted_subnets:
+    [
+      "10.0.0.0/8",
+      "127.0.0.0/8",
+      "172.16.0.0/12",
+      "192.168.0.0/16",
+      "::1/128",
+      "fc00::/7",
+      "fe80::/10",
+    ]
+  # RFC 7234 RR Cache middleware
+  #
+  # Link: https://github.com/darkweak/souin
+  cache:
+    api:
+      basepath: /souin-api
+      prometheus:
+        basepath: /anything-for-prometheus-metrics
+      souin:
+        basepath: /anything-for-souin
+    cache_keys:
+      '.*\.css':
+        disable_body: true
+        disable_host: true
+        disable_method: true
+    cdn:
+      api_key: XXXX
+      provider: fastly
+      strategy: soft
+      dynamic: true
+    default_cache:
+      allowed_http_verbs:
+        - GET
+        - POST
+        - HEAD
+      cache_name: Souin
+      distributed: true
+      headers:
+        - Authorization
+      key:
+        disable_body: true
+        disable_host: true
+        disable_method: true
+      etcd:
+        configuration:
+          endpoints:
+            - etcd-1:2379
+            - etcd-2:2379
+            - etcd-3:2379
+      olric:
+        url: 'olric:3320'
+      regex:
+        exclude: 'ARegexHere'
+      stale: 1000s
+      timeout:
+        backend: 10s
+        cache: 20ms
+      ttl: 1000s
+      default_cache_control: no-store
+    log_level: INFO
+    ssl_providers:
+      - traefik
+    urls:
+      'https:\/\/domain.com\/first-.+':
+        ttl: 1000s
+      'https:\/\/domain.com\/second-route':
+        ttl: 10s
+        headers:
+          - Authorization
+      'https?:\/\/mysubdomain\.domain\.com':
+        ttl: 50s
+        headers:
+          - Authorization
+          - 'Content-Type'
+        default_cache_control: public, max-age=86400
+    ykeys:
+      The_First_Test:
+        headers:
+          Content-Type: '.+'
+      The_Second_Test:
+        url: 'the/second/.+'
+      The_Third_Test:
+      The_Fourth_Test:
+    surrogate_keys:
+      The_First_Test:
+        headers:
+          Content-Type: '.+'
+      The_Second_Test:
+        url: 'the/second/.+'
+      The_Third_Test:
+      The_Fourth_Test:
+
+  # File uploading settings.
+  uploads:
+    # Directory for file uploads. Empty value means to use $TEMP based on your OS.
+    #
+    # Default: ""
+    dir: "/tmp"
+
+    # Deny files with the following extensions to upload.
+    #
+    # Default: [".php", ".exe", ".bat"]
+    forbid: [ ".php", ".exe", ".bat", ".sh" ]
+
+    # [SINCE 2.6] Allow files with the following extensions to upload
+    #
+    # Default: empty
+    allow: [ ".html", ".aaa" ]
+
+  # Settings for "headers" middleware (docs: https://roadrunner.dev/docs/middleware-headers/2.x/en).
+  headers:
+    # Allows to control CORS headers. Additional headers "Vary: Origin", "Vary: Access-Control-Request-Method",
+    # "Vary: Access-Control-Request-Headers" will be added to the server responses. Drop this section for this
+    # feature disabling.
+    cors:
+      # Controls "Access-Control-Allow-Origin" header value (docs: https://mzl.la/2OgD4Qf).
+      #
+      # Default: ""
+      allowed_origin: "*"
+
+      # Controls "Access-Control-Allow-Headers" header value (docs: https://mzl.la/2OzDVvk).
+      #
+      # Default: ""
+      allowed_headers: "*"
+
+      # Controls "Access-Control-Allow-Methods" header value (docs: https://mzl.la/3lbwyXf).
+      #
+      # Default: ""
+      allowed_methods: "GET,POST,PUT,DELETE"
+
+      # Controls "Access-Control-Allow-Credentials" header value (docs: https://mzl.la/3ekJGaY).
+      #
+      # Default: false
+      allow_credentials: true
+
+      # Controls "Access-Control-Expose-Headers" header value (docs: https://mzl.la/3qAqgkF).
+      #
+      # Default: ""
+      exposed_headers: "Cache-Control,Content-Language,Content-Type,Expires,Last-Modified,Pragma"
+
+      # Controls "Access-Control-Max-Age" header value in seconds (docs: https://mzl.la/2PCSdvt).
+      #
+      # Default: 0
+      max_age: 600
+
+    # Automatically add headers to every request passed to PHP.
+    #
+    # Default: <empty map>
+    request:
+      input: "custom-header"
+
+    # Automatically add headers to every response.
+    #
+    # Default: <empty map>
+    response:
+      X-Powered-By: "RoadRunner"
+
+  # Settings for "static" middleware (docs: https://roadrunner.dev/docs/middleware-static/2.x/en).
+  static:
+    # Path to the directory to serve
+    #
+    # Default: "." (current)
+    dir: "."
+
+    # File patterns to forbid
+    #
+    # Default: empty
+    forbid: [ "" ]
+
+    # Etag calculation (base on the body CRC32)
+    #
+    # Default: false
+    calculate_etag: false
+
+    # Weak etag calculation (based only on the content-length CRC32)
+    #
+    # Default: false
+    weak: false
+
+    # Patterns to allow
+    #
+    # Default: empty
+    allow: [ ".txt", ".php" ]
+
+    # Request headers
+    #
+    # Default: empty
+    request:
+      input: "custom-header"
+
+    # Response headers
+    #
+    # Default: empty
+    response:
+      output: "output-header"
+
+  # Workers pool settings.
+  pool:
+    # Debug mode for the pool. In this mode, pool will not pre-allocate the worker. Worker (only 1, num_workers ignored) will be allocated right after the request arrived.
+    #
+    # Default: false
+    debug: false
+
+    # Override server's command
+    #
+    # Default: empty
+    command: "php my-super-app.php"
+
+    # How many worker processes will be started. Zero (or nothing) means the number of logical CPUs.
+    #
+    # Default: 0
+    num_workers: 0
+
+    # Maximal count of worker executions. Zero (or nothing) means no limit.
+    #
+    # Default: 0
+    max_jobs: 0
+
+    # Timeout for worker allocation. Zero means 60s.
+    #
+    # Default: 60s
+    allocate_timeout: 60s
+
+    # Timeout for the reset timeout. Zero means 60s.
+    #
+    # Default: 60s
+    reset_timeout: 60s
+
+    # Timeout for worker destroying before process killing. Zero means 60s.
+    #
+    # Default: 60s
+    destroy_timeout: 60s
+
+    # Supervisor is used to control http workers (previous name was "limit", video: https://www.youtube.com/watch?v=NdrlZhyFqyQ).
+    # "Soft" limits will not interrupt current request processing. "Hard"
+    # limit on the contrary - interrupts the execution of the request.
+    supervisor:
+      # How often to check the state of the workers.
+      #
+      # Default: 1s
+      watch_tick: 1s
+
+      # Maximum time worker is allowed to live (soft limit). Zero means no limit.
+      #
+      # Default: 0s
+      ttl: 0s
+
+      # How long worker can spend in IDLE mode after first using (soft limit). Zero means no limit.
+      #
+      # Default: 0s
+      idle_ttl: 10s
+
+      # Maximal worker memory usage in megabytes (soft limit). Zero means no limit.
+      #
+      # Default: 0
+      max_worker_memory: 128
+
+      # Maximal job lifetime (hard limit). Zero means no limit.
+      #
+      # Default: 0s
+      exec_ttl: 60s
+
+  # SSL (Secure Sockets Layer) (TLS) settings (docs: https://roadrunner.dev/docs/app-server-https/2.x/en).
+  ssl:
+    # Host and port to listen on (eg.: `127.0.0.1:443`).
+    #
+    # Default: ":443"
+    address: "127.0.0.1:443"
+
+    # Use ACME certificates provider (Let's encrypt)
+    acme:
+      # Directory to use as a certificate/pk, account info storage
+      #
+      # Optional. Default: rr_cache
+      certs_dir: rr_le_certs
+
+      # User email
+      #
+      # Used to create LE account. Mandatory. Error on empty.
+      email: you-email-here@email
+
+      # Alternate port for the http challenge. Challenge traffic should be redirected to this port if overridden.
+      #
+      # Optional. Default: 80
+      alt_http_port: 80
+
+
+      # Alternate port for the tls-alpn-01 challenge. Challenge traffic should be redirected to this port if overridden.
+      #
+      # Optional. Default: 443.
+      alt_tlsalpn_port: 443
+
+      # Challenge types
+      #
+      # Optional. Default: http-01. Possible values: http-01, tlsalpn-01
+      challenge_type: http-01
+
+      # Use production or staging endpoint. NOTE, try to use staging endpoint to make sure, that everything works correctly.
+      #
+      # Optional, but for production should be set to true. Default: false
+      use_production_endpoint: true
+
+      # List of your domains to obtain certificates
+      #
+      # Mandatory. Error on empty.
+      domains: [
+        "your-cool-domain.here",
+        "your-second-domain.here"
+      ]
+
+    # Automatic redirect from http:// to https:// schema.
+    #
+    # Default: false
+    redirect: true
+
+    # Path to the cert file. This option is required for SSL working.
+    #
+    # This option is required.
+    cert: /ssl/server.crt
+
+    # Path to the cert key file.
+    #
+    # This option is required.
+    key: /ssl/server.key
+
+    # Path to the root certificate authority file.
+    #
+    # This option is optional (required for the mTLS).
+    root_ca: /ssl/root.crt
+
+    # Client auth type (mTLS)
+    #
+    # This option is optional. Default value: no_client_certs. Possible values: request_client_cert, require_any_client_cert, verify_client_cert_if_given, require_and_verify_client_cert, no_client_certs
+    client_auth_type: no_client_certs
+
+  # FastCGI frontend support.
+  fcgi:
+    # FastCGI connection DSN. Supported TCP and Unix sockets. An empty value disables this.
+    #
+    # Default: ""
+    address: tcp://0.0.0.0:7921
+
+  # HTTP/2 settings.
+  http2:
+    # HTTP/2 over non-encrypted TCP connection using H2C.
+    #
+    # Default: false
+    h2c: false
+
+    # Maximal concurrent streams count.
+    #
+    # Default: 128
+    max_concurrent_streams: 128
+
+# Redis section.
+redis:
+  # UniversalClient is an abstract client which - based on the provided options -
+  # can connect to either clusters, or sentinel-backed failover instances
+  # or simple single-instance servers. This can be useful for testing
+  # cluster-specific applications locally.
+  # if the number of addrs is 1 and master_name is empty, a single-node redis Client will be returned
+  # if the number of addrs is two or more, a ClusterClient will be returned
+  addrs:
+    - "localhost:6379"
+    # if a MasterName is passed a sentinel-backed FailoverClient will be returned
+  master_name: ""
+  username: ""
+  password: ""
+  db: 0
+  sentinel_password: ""
+  route_by_latency: false
+  route_randomly: false
+  dial_timeout: 0s # accepted values [1s, 5m, 3h]
+  max_retries: 1
+  min_retry_backoff: 0s # accepted values [1s, 5m, 3h]
+  max_retry_backoff: 0s # accepted values [1s, 5m, 3h]
+  pool_size: 0
+  min_idle_conns: 0
+  max_conn_age: 0s # accepted values [1s, 5m, 3h]
+  read_timeout: 0s # accepted values [1s, 5m, 3h]
+  write_timeout: 0s # accepted values [1s, 5m, 3h]
+  pool_timeout: 0s # accepted values [1s, 5m, 3h]
+  idle_timeout: 0s # accepted values [1s, 5m, 3h]
+  idle_check_freq: 0s # accepted values [1s, 5m, 3h]
+  read_only: false
+
+# Application metrics in Prometheus format (docs: https://roadrunner.dev/docs/plugins-metrics/2.x/en). Drop this section
+# for this feature disabling.
+metrics:
+  # Prometheus client address (path /metrics added automatically).
+  #
+  # Default: "127.0.0.1:2112"
+  address: "127.0.0.1:2112"
+
+  # Application-specific metrics (published using an RPC connection to the server).
+  collect:
+    app_metric:
+      type: histogram
+      help: "Custom application metric"
+      labels: [ "type" ]
+      buckets: [ 0.1, 0.2, 0.3, 1.0 ]
+      # Objectives defines the quantile rank estimates with their respective absolute error (for summary only).
+      objectives:
+        - 1.4: 2.3
+        - 2.0: 1.4
+
+# Health check endpoint (docs: https://roadrunner.dev/docs/app-server-health/2.x/en). If response code is 200 - it means at
+# least one worker ready to serve requests. 500 - there are no workers ready to service requests.
+# Drop this section for this feature disabling.
+status:
+  # Host and port to listen on (eg.: `127.0.0.1:2114`). Use the following URL: http://127.0.0.1:2114/health?plugin=http
+  # Multiple plugins must be separated using "&" - http://127.0.0.1:2114/health?plugin=http&plugin=rpc where "http" and
+  # "rpc" are active (connected) plugins.
+  #
+  # This option is required.
+  address: 127.0.0.1:2114
+
+  # Response status code if a requested plugin not ready to handle requests
+  # Valid for both /health and /ready endpoints
+  #
+  # Default: 503
+  unavailable_status_code: 503
+
+# Automatically detect PHP file changes and reload connected services
+# (docs: https://roadrunner.dev/docs/plugins-reload/2.x/en). Drop this section for this feature disabling.
+reload:
+  # Sync interval.
+  #
+  # Default: "1s"
+  interval: 1s
+
+  # Global patterns to sync.
+  #
+  # Default: [".php"]
+  patterns: [ ".php" ]
+
+  # List of included for sync services (this is a map, where key name is a plugin name).
+  #
+  # Default: <empty map>
+  services:
+    http:
+      # Directories to sync. If recursive is set to true, recursive sync will be applied only to the directories in
+      # "dirs" section. Dot (.) means "current working directory".
+      #
+      # Default: []
+      dirs: [ "." ]
+
+      # Recursive search for file patterns to add.
+      #
+      # Default: false
+      recursive: true
+
+      # Ignored folders.
+      #
+      # Default: []
+      ignore: [ "vendor" ]
+
+      # Service specific file pattens to sync.
+      #
+      # Default: []
+      patterns: [ ".php", ".go", ".md" ]
+
+
+# NATS jobs driver
+#
+# Default: nats://127.0.0.1:4222
+nats:
+  addr: "demo.nats.io"
+
+# AMQP jobs driver
+#
+# This option is required to use AMQP driver
+amqp:
+  # AMQP Uri to connect to the rabbitmq server https://www.rabbitmq.com/uri-spec.html
+  #
+  # This option is required for the production. Default: amqp://guest:guest@127.0.0.1:5672
+  addr: amqp://guest:guest@127.0.0.1:5672/
+
+# Beanstalk jobs driver
+#
+# This option is required to use Beanstalk driver
+beanstalk:
+  # Beanstalk address
+  #
+  # This option is required for the production. Default: tcp://127.0.0.1:11300
+  addr: tcp://127.0.0.1:11300
+
+  # Beanstalk connect timeout.
+  #
+  # Default: 30s
+  timeout: 10s
+
+# SQS jobs driver (https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html)
+#
+# This option is required to use SQS driver
+sqs:
+  # AccessKey ID
+  #
+  # This option is required for the production. Default: empty
+  key: api-key
+
+  # Secret access key
+  #
+  # This option is required for the production. Default: empty
+  secret: api-secret
+
+  # AWS region
+  #
+  # This option is required for the production. Default: empty
+  region: us-west-1
+
+  # AWS session token
+  #
+  # This option is required for the production. Default: empty
+  session_token: test
+
+  # AWS SQS endpoint to connect
+  #
+  # This option is required for the production. Default: http://127.0.0.1:9324
+  endpoint: http://127.0.0.1:9324
+
+# Kafka jobs driver
+#
+# This option is required to use Kafka driver,
+kafka:
+
+  # Kafka brokers addresses
+  #
+  # Required to use Kafka driver
+  brokers: ["127.0.0.1:9092", "127.0.0.1:9002"]
+
+  # SASL authentication options to use for all connections. Depending on the auth type, plain or aws_msk_plain sections might be removed.
+  #
+  # Optional, default: empty
+  sasl:
+
+    # PLAIN auth section -----
+
+    # Mechanism used for the authentication
+    #
+    # Required for the section. Might be: 'aws_msk_iam' or 'plain'
+    mechanism: plain
+
+    # Username to use for authentication.
+    #
+    # Required for the plain auth mechanism.
+    username: foo
+
+    # Password to use for authentication.
+    #
+    # Required for the plain auth mechanism.
+    password: bar
+
+    # Zid is an optional authorization ID to use in authenticating.
+    #
+    # Optional, default: empty.
+    zid: "foo"
+
+    # AWS_MSK_IAM auth section -----
+
+    # AWS Access key ID.
+    #
+    # Required
+    access_key: foo
+
+    # AWS Secret Access Key.
+    #
+    #
+    secret_key: bar
+
+    # SessionToken, if non-empty, is a session / security token to use for authentication.
+    # See the following link for more details:
+    #
+    # https://docs.aws.amazon.com/STS/latest/APIReference/welcome.html
+    session_token: bar
+
+    # UserAgent is the user agent to for the client to use when connecting
+    # to Kafka, overriding the default "franz-go/<runtime.Version()>/<hostname>".
+    # Setting a UserAgent allows authorizing based on the aws:UserAgent
+    # condition key; see the following link for more details:
+    #     https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-useragent
+    user_agent: baz
+
+jobs:
+  # Number of threads which will try to obtain the job from the priority queue
+  #
+  # Default: number of the logical CPU cores
+  num_pollers: 32
+
+  # Size of the internal priority queue
+  #
+  # Default: 1_000_000
+  pipeline_size: 100000
+
+  # worker pool configuration
+  pool:
+    # Debug mode for the pool. In this mode, pool will not pre-allocate the worker. Worker (only 1, num_workers ignored) will be allocated right after the request arrived.
+    #
+    # Default: false
+    debug: false
+
+    # Override server's command
+    #
+    # Default: empty
+    command: "php my-super-app.php"
+
+    # How many worker processes will be started. Zero (or nothing) means the number of logical CPUs.
+    #
+    # Default: 0
+    num_workers: 0
+
+    # Maximal count of worker executions. Zero (or nothing) means no limit.
+    #
+    # Default: 0
+    max_jobs: 0
+
+    # Timeout for worker allocation. Zero means 60s.
+    #
+    # Default: 60s
+    allocate_timeout: 60s
+
+    # Timeout for the reset timeout. Zero means 60s.
+    #
+    # Default: 60s
+    reset_timeout: 60s
+
+    # Timeout for worker destroying before process killing. Zero means 60s.
+    #
+    # Default: 60s
+    destroy_timeout: 60s
+
+  # List of broker pipelines associated with the drivers.
+  #
+  # This option is not required since you can declare pipelines in the runtime. Pipeline driver should exist.
+  pipelines:
+    # Pipeline name
+    #
+    # This option is required when defining pipelines via configuration.
+    test-local:
+
+      # Driver associated with the pipeline
+      #
+      # This option is required. Possible values: amqp, memory, sqs, beanstalk, boltdb
+      driver: memory
+
+      # Driver's configuration
+      #
+      # Should not be empty
+      config:
+        # Pipeline priority
+        #
+        # If the job has priority set to 0, it will inherit the pipeline's priority. Default: 10.
+        priority: 10
+
+        # Number of job to prefetch from the driver until ACK/NACK.
+        #
+        # Default: 100_000.
+        prefetch: 10000
+
+    # Pipeline name
+    #
+    # This option is required when defining pipelines via configuration.
+    test-local-1:
+      # Driver associated with the pipeline
+      #
+      # This option is required. Possible values: amqp, memory, sqs, beanstalk, boltdb
+      driver: boltdb
+
+      # Driver's configuration
+      #
+      # Should not be empty
+      config:
+        # Number of job to prefetch from the driver.
+        #
+        # Default: 100_000.
+        prefetch: 10000
+
+        # Pipeline priority
+        #
+        # If the job has priority set to 0, it will inherit the pipeline's priority. Default: 10.
+        priority: 10
+
+        # BoldDB file to create or DB to use
+        #
+        # Default: "rr.db"
+        file: "path/to/rr.db"
+
+        # Permissions for the boltdb database file
+        #
+        # This option is optional. Default: 0777
+        permissions: 0777
+
+    test-local-2:
+      # Driver name
+      #
+      # This option is required.
+      driver: amqp
+
+      # Driver's configuration
+      #
+      # Should not be empty
+      config:
+
+        # QoS - prefetch.
+        #
+        # Default: 10
+        prefetch: 10
+
+        # Pipeline priority
+        #
+        # If the job has priority set to 0, it will inherit the pipeline's priority. Default: 10.
+        priority: 1
+
+        # Consume any payload type (not only Jobs structured)
+        #
+        # Default: false
+        consume_all: false
+
+        # Durable queue
+        #
+        # Default: false
+        durable: false
+
+        # Durable exchange (rabbitmq option: https://www.rabbitmq.com/tutorials/amqp-concepts.html#exchanges)
+        #
+        # Default: false
+        exchange_durable: false
+
+        # Auto-delete (exchange is deleted when last queue is unbound from it): https://www.rabbitmq.com/tutorials/amqp-concepts.html#exchanges
+        #
+        # Default: false
+        exchange_auto_deleted: false
+
+        # Auto-delete (queue that has had at least one consumer is deleted when last consumer unsubscribes) (rabbitmq option: https://www.rabbitmq.com/queues.html#properties)
+        #
+        # Default: false
+        queue_auto_deleted: false
+
+        # Delete queue when stopping the pipeline
+        #
+        # Default: false
+        delete_queue_on_stop: false
+
+        # Queue name
+        #
+        # Default: default
+        queue: test-1-queue
+
+        # Exchange name
+        #
+        # Default: amqp.default
+        exchange: default
+
+        # Redial timeout (in seconds). How long to try to reconnect to the AMQP server.
+        #
+        # Default: 60
+        redial_timeout: 60
+
+        # Exchange type
+        #
+        # Default: direct.
+        exchange_type: direct
+
+        # Routing key for the queue
+        #
+        # Default: empty.
+        routing_key: test
+
+        # Declare a queue exclusive at the exchange
+        #
+        # Default: false
+        exclusive: false
+
+        # When multiple is true, this delivery and all prior unacknowledged deliveries
+        # on the same channel will be acknowledged.  This is useful for batch processing
+        # of deliveries
+        #
+        # Default: false
+        multiple_ack: false
+
+        # The consumer_id is identified by a string that is unique and scoped for all consumers on this channel.
+        #
+        # Default: "roadrunner" + uuid.
+        consumer_id: "roadrunner-uuid"
+
+        # Use rabbitmq mechanism to requeue the job on fail
+        #
+        # Default: false
+        requeue_on_fail: false
+
+        # Queue headers
+        #
+        # Default: null
+        queue_headers:
+          x-queue-mode: lazy
+
+    test-local-3:
+      # Driver name
+      #
+      # This option is required.
+      driver: beanstalk
+
+      # Driver's configuration
+      #
+      # Should not be empty
+      config:
+
+        # Pipeline priority
+        #
+        # Default
+        priority: 11
+
+        # Beanstalk internal tube priority
+        #
+        # Default: 1
+        tube_priority: 1
+
+        # Consume any payload type (not only Jobs structured)
+        #
+        # Default: false
+        consume_all: false
+
+        # Tube name
+        #
+        # Default: default
+        tube: default-1
+
+        # If no job is available before this timeout has passed, Reserve returns a ConnError recording ErrTimeout.
+        #
+        # Default: 5s
+        reserve_timeout: 10s
+
+    test-local-4:
+      # Driver name
+      #
+      # This option is required.
+      driver: sqs
+
+      # Driver's configuration
+      #
+      # Should not be empty
+      config:
+
+        # Pipeline priority
+        #
+        # If the job has priority set to 0, it will inherit the pipeline's priority. Default: 10.
+        priority: 10
+
+        # Number of jobs to prefetch from the SQS until ACK/NACK.
+        #
+        # Default: 10
+        prefetch: 10
+
+        # Consume any payload type (not only Jobs structured)
+        #
+        # Default: false
+        consume_all: false
+
+        # Get queue URL only
+        #
+        # Default: false
+        skip_queue_declaration: false
+
+        # The duration (in seconds) that the received messages are hidden from subsequent
+        # retrieve requests after being retrieved by a ReceiveMessage request
+        #
+        # Default: 0
+        visibility_timeout: 0
+
+        # The duration (in seconds) for which the call waits for a message to arrive
+        # in the queue before returning. If a message is available, the call returns
+        # sooner than WaitTimeSeconds. If no messages are available and the wait time
+        # expires, the call returns successfully with an empty list of messages.
+        #
+        # Default: 0
+        wait_time_seconds: 0
+
+        # Queue name.
+        #
+        # Default: default
+        queue: default
+
+        # List of the AWS SQS attributes https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SetQueueAttributes.html.
+        attributes:
+          DelaySeconds: 0
+          MaximumMessageSize: 262144
+          MessageRetentionPeriod: 345600
+          ReceiveMessageWaitTimeSeconds: 0
+          VisibilityTimeout: 30
+        # Tags don't have any semantic meaning. Amazon SQS interprets tags as character
+        # strings.
+        tags:
+          test: "tag"
+
+    test-local-5:
+      # Driver name
+      #
+      # This option is required
+      driver: nats
+
+      # Driver's configuration
+      #
+      # Should not be empty
+      config:
+        # Pipeline priority
+        #
+        # If the job has priority set to 0, it will inherit the pipeline's priority. Default: 10.
+        priority: 2
+
+        # NATS prefetch
+        #
+        # Messages to read into the channel
+        prefetch: 100
+
+        # Consume any payload type (not only Jobs structured)
+        #
+        # Default: false
+        consume_all: false
+
+        # NATS subject
+        #
+        # Default: default
+        subject: default
+
+        # NATS stream
+        #
+        # Default: default-stream
+        stream: foo
+
+        # The consumer will only start receiving messages that were created after the consumer was created
+        #
+        # Default: false (deliver all messages from the stream beginning)
+        deliver_new: true
+
+        # Consumer rate-limiter in bytes https://docs.nats.io/jetstream/concepts/consumers#ratelimit
+        #
+        # Default: 1000
+        rate_limit: 100
+
+        # Delete the stream when after pipeline was stopped
+        #
+        # Default: false
+        delete_stream_on_stop: false
+
+        # Delete message from the stream after successful acknowledge
+        #
+        # Default: false
+        delete_after_ack: false
+
+    test-local-6:
+      # Driver name
+      #
+      # This option is required
+      driver: kafka
+
+      # Driver's configuration
+      #
+      # Should not be empty
+      config:
+
+        # Pipeline priority
+        #
+        # If the job has priority set to 0, it will inherit the pipeline's priority. Default: 10.
+        priority: 1
+
+
+        # Auto create topic for the consumer/producer
+        #
+        # Optional, default: false
+        auto_create_topics_enable: false
+
+        # Kafka producer options
+        #
+        # Optional, required only if Push/PushBatch is used.
+        producer_options:
+
+          # disable_idempotent disables idempotent produce requests, opting out of
+          # Kafka server-side deduplication in the face of reissued requests due to
+          # transient network problems.
+          # Idempotent production is strictly a win, but does require the IDEMPOTENT_WRITE permission on CLUSTER
+          # (pre Kafka 3.0), and not all clients can have that permission.
+          #
+          # Optional, defaut: false
+          disable_idempotent: false
+
+          # required_acks sets the required acks for produced records.
+          #
+          # Optional, default: AllISRAcks. Possible values: NoAck, LeaderAck, AllISRAck
+          required_acks: AllISRAck
+
+          # max_message_bytes upper bounds the size of a record batch, overriding the default 1,000,012 bytes.
+          # This mirrors Kafka's max.message.bytes.
+          #
+          # Optional, default: 1000012
+          max_message_bytes: 1000012
+
+          # request_timeout sets how long Kafka broker's are allowed to respond produce requests, overriding the default 10s.
+          # If a broker exceeds this duration, it will reply with a request timeout error.
+          #
+          # Optional, default: 10s. Possible values: 10s, 10m.
+          request_timeout: 10s
+
+          # delivery_timeout sets a rough time of how long a record can sit around in a batch before timing out,
+          # overriding the unlimited default. If idempotency is enabled (as it is by default), this option is only
+          # enforced if it is safe to do so without creating invalid sequence numbers.
+          #
+          # Optional, default: delivery.timeout.ms Kafka option. Possible values: 10s, 10m.
+          delivery_timeout: 100s
+
+          # transaction_timeout sets the allowed for a transaction, overriding the default 40s. It is a good idea to
+          # keep this less than a group's session timeout.
+          #
+          # Optional, default 40s. Possible values: 10s, 10m.
+          transaction_timeout: 100
+
+          # compression_codec sets the compression codec to use for producing records.
+          #
+          # Optional, default is chosen in the order preferred based on broker support. Possible values: gzip, snappy, lz4, zstd.
+          compression_codec: gzip
+
+        # Kafka Consumer options. Needed to consume messages from the Kafka cluster.
+        #
+        # Optional, needed only if `consume` is used.
+        consumer_options:
+
+          # topics: adds topics to use for consuming
+          #
+          # Default: empty (will produce an error), possible to use regexp if `consume_regexp` is set to true.
+          topics: [ "foo", "bar", "^[a-zA-Z0-9._-]+$" ]
+
+          # consume_regexp sets the client to parse all topics passed to `topics` as regular expressions.
+          # When consuming via regex, every metadata request loads *all* topics, so that all topics can be passed to
+          # any regular expressions. Every topic is evaluated only once ever across all regular expressions; either it
+          # permanently is known to match, or is permanently known to not match.
+          #
+          # Optional, default: false.
+          consume_regexp: true
+
+          # max_fetch_message_size sets the maximum amount of bytes a broker will try to send during a fetch, overriding the default 50MiB.
+          # Note that brokers may not obey this limit if it has records larger than this limit.
+          # Also note that this client sends a fetch to each broker concurrently, meaning the client will
+          # buffer up to <brokers * max bytes> worth of memory. This corresponds to the Java fetch.max.bytes setting.
+          #
+          # Optional, default 50000
+          max_fetch_message_size: 50000
+
+          # min_fetch_message_size sets the minimum amount of bytes a broker will try to send during a fetch,
+          # overriding the default 1 byte. With the default of 1, data is sent as soon as it is available.
+          # This corresponds to the Java fetch.min.bytes setting.
+          #
+          # Optional, default: 1.
+          min_fetch_message_size: 1
+
+          # consume_partitions sets partitions to consume from directly and the offsets to start consuming those partitions from.
+          # This option is basically a way to explicitly consume from subsets of partitions in topics, or to consume at exact offsets.
+          #
+          # NOTE: This option is not compatible with group consuming and regex consuming.
+          #
+          # Optional, default: null
+          consume_partitions:
+
+            # Topic for the consume_partitions
+            #
+            # Required at least one topic.
+            foo:
+
+              # Partition for the topic.
+              #
+              # Required at least one partition.
+              0:
+
+                # Partition offset.
+                #
+                # Required if all options is used. No default, error on empty.
+                # Possible values: AtEnd, At, AfterMilli, AtStart, Relative, WithEpoch
+                type: AtStart
+
+                # Value for the: At, AfterMilli, Relative and WithEpoch offsets.
+                #
+                # Optional, default: 0.
+                value: 1
+
+          # consumer_offset sets the offset to start consuming from, or if OffsetOutOfRange is seen while fetching,
+          # to restart consuming from.
+          #
+          # Optional, default: AtStart
+          consumer_offset:
+
+            # Partition offset.
+            #
+            # Optional, default: AtStart. Possible values: AtEnd, At, AfterMilli, AtStart, Relative, WithEpoch
+            type: AtStart
+
+            # Value for the: At, AfterMilli, Relative and WithEpoch offsets.
+            #
+            # Optional, default: 0.
+            value: 1
+
+        # group_options sets the consumer group for the client to join and consume in.
+        # This option is required if using any other group options.
+        #
+        # Default: empty.
+        group_options:
+
+          # group_id sets the group to consume.
+          #
+          # Required if using group consumer.
+          group_id: foo
+
+          # block_rebalance_on_poll switches the client to block rebalances whenever you poll.
+          #
+          # Optional, default: false.
+          block_rebalance_on_poll: true
+
+  # list of pipelines to be consumed by the server automatically at the start, keep empty if you want to start consuming manually
+  consume:
+    [
+      "test-local",
+      "test-local-1",
+      "test-local-2",
+      "test-local-3",
+      "test-local-4",
+      "test-local-5",
+      "test-local-6",
+    ]
+
+grpc:
+  # GRPC address to listen
+  #
+  # This option is required
+  listen: "tcp://127.0.0.1:9001"
+
+  # Proto file to use, multiply files supported [SINCE 2.6]
+  #
+  # This option is required
+  proto:
+    - "first.proto"
+    - "second.proto"
+
+  # GRPC TLS configuration
+  #
+  # This section is optional
+  tls:
+    # Path to the key file
+    #
+    # This option is required
+    key: ""
+
+    # Path to the certificate
+    #
+    # This option is required
+    cert: ""
+
+    # Path to the CA certificate, defines the set of root certificate authorities that servers use if required to verify a client certificate. Used with the `client_auth_type` option.
+    #
+    # This option is optional
+    root_ca: ""
+
+    # Client auth type.
+    #
+    # This option is optional. Default value: no_client_certs. Possible values: request_client_cert, require_any_client_cert, verify_client_cert_if_given, require_and_verify_client_cert, no_client_certs
+    client_auth_type: no_client_certs
+
+  # Maximum send message size
+  #
+  # This option is optional. Default value: 50 (MB)
+  max_send_msg_size: 50
+
+  # Maximum receive message size
+  #
+  # This option is optional. Default value: 50 (MB)
+  max_recv_msg_size: 50
+
+  # MaxConnectionIdle is a duration for the amount of time after which an
+  # idle connection would be closed by sending a GoAway. Idleness duration is
+  # defined since the most recent time the number of outstanding RPCs became
+  # zero or the connection establishment.
+  #
+  # This option is optional. Default value: infinity.
+  max_connection_idle: 0s
+
+  # MaxConnectionAge is a duration for the maximum amount of time a
+  # connection may exist before it will be closed by sending a GoAway. A
+  # random jitter of +/-10% will be added to MaxConnectionAge to spread out
+  # connection storms.
+  #
+  # This option is optional. Default value: infinity.
+  max_connection_age: 0s
+
+  # MaxConnectionAgeGrace is an additive period after MaxConnectionAge after
+  # which the connection will be forcibly closed.
+  max_connection_age_grace: 0s8h
+
+  # MaxConnectionAgeGrace is an additive period after MaxConnectionAge after
+  # which the connection will be forcibly closed.
+  #
+  # This option is optional: Default value: 10
+  max_concurrent_streams: 10
+
+  # After a duration of this time if the server doesn't see any activity it
+  # pings the client to see if the transport is still alive.
+  # If set below 1s, a minimum value of 1s will be used instead.
+  #
+  # This option is optional. Default value: 2h
+  ping_time: 1s
+
+  # After having pinged for keepalive check, the server waits for a duration
+  # of Timeout and if no activity is seen even after that the connection is
+  # closed.
+  #
+  # This option is optional. Default value: 20s
+  timeout: 200s
+
+  # Usual workers pool configuration
+  pool:
+    # Debug mode for the pool. In this mode, pool will not pre-allocate the worker. Worker (only 1, num_workers ignored) will be allocated right after the request arrived.
+    #
+    # Default: false
+    debug: false
+
+    # Override server's command
+    #
+    # Default: empty
+    command: "php my-super-app.php"
+
+    # How many worker processes will be started. Zero (or nothing) means the number of logical CPUs.
+    #
+    # Default: 0
+    num_workers: 0
+
+    # Maximal count of worker executions. Zero (or nothing) means no limit.
+    #
+    # Default: 0
+    max_jobs: 0
+
+    # Timeout for worker allocation. Zero means 60s.
+    #
+    # Default: 60s
+    allocate_timeout: 60s
+
+    # Timeout for the reset timeout. Zero means 60s.
+    #
+    # Default: 60s
+    reset_timeout: 60s
+
+    # Timeout for worker destroying before process killing. Zero means 60s.
+    #
+    # Default: 60s
+    destroy_timeout: 60s
+
+# [SINCE 2.6] TCP plugin
+tcp:
+  # The list of TCP servers to start. There are can be any number of servers you want to allocate.
+  servers:
+
+    # Server name. Can be any string. Will be sent to the worker in the context.
+    #
+    # Default: none.
+    server1:
+
+      # Address to listen.
+      #
+      # Error if empty.
+      addr: 127.0.0.1:7778
+
+      # Data packets delimiter. Every send should end either with EOF or with the delimiter.
+      #
+      # Default: CRLF (\r\n)
+      delimiter: "\r\n"
+
+      # Chunks that RR uses to read the data. In MB. If you expect big payloads on a TCP server, to reduce `read` syscalls, would be a good practice to use a fairly big enough buffer.
+      #
+      # Default: 1MB
+      read_buf_size: 1
+    server2:
+      addr: 127.0.0.1:8811
+      read_buf_size: 10
+    server3:
+      addr: 127.0.0.1:8812
+      delimiter: "\r\n"
+      read_buf_size: 1
+
+  pool:
+    # Debug mode for the pool. In this mode, pool will not pre-allocate the worker. Worker (only 1, num_workers ignored) will be allocated right after the request arrived.
+    #
+    # Default: false
+    debug: false
+
+    # Override server's command
+    #
+    # Default: empty
+    command: "php my-super-app.php"
+
+    # How many worker processes will be started. Zero (or nothing) means the number of logical CPUs.
+    #
+    # Default: 0
+    num_workers: 0
+
+    # Maximal count of worker executions. Zero (or nothing) means no limit.
+    #
+    # Default: 0
+    max_jobs: 0
+
+    # Timeout for worker allocation. Zero means 60s.
+    #
+    # Default: 60s
+    allocate_timeout: 60s
+
+    # Timeout for the reset timeout. Zero means 60s.
+    #
+    # Default: 60s
+    reset_timeout: 60s
+
+    # Timeout for worker destroying before process killing. Zero means 60s.
+    #
+    # Default: 60s
+    destroy_timeout: 60s
+
+# [SINCE 2.6] Fileserver to serve static files.
+fileserver:
+  # File server address
+  #
+  # Error on empty
+  address: 127.0.0.1:10101
+  # Etag calculation. Request body CRC32.
+  #
+  # Default: false
+  calculate_etag: true
+
+  # Weak etag calculation
+  #
+  # Default: false
+  weak: false
+
+  # Enable body streaming for the files more than 4KB
+  #
+  # Default: false
+  stream_request_body: true
+
+  serve:
+    # HTTP prefix
+    #
+    # Error on empty
+    - prefix: "/foo"
+
+      # Directory to serve
+      #
+      # Default: "."
+      root: "../../../tests"
+
+      # When set to true, the server tries minimizing CPU usage by caching compressed files
+      #
+      # Default: false
+      compress: false
+
+      # Expiration duration for inactive file handlers. Units: seconds.
+      #
+      # Default: 10, use a negative value to disable it.
+      cache_duration: 10
+
+      # The value for the Cache-Control HTTP-header. Units: seconds
+      #
+      # Default: 10 seconds
+      max_age: 10
+
+      # Enable range requests
+      # https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests
+      #
+      # Default: false
+      bytes_range: true
+
+    - prefix: "/foo/bar"
+      root: "../../../tests"
+      compress: false
+      cache_duration: 10
+      max_age: 10
+      bytes_range: true
+
+# Centrifugo server plugin
+#
+# Docs: https://centrifugal.dev/
+centrifuge:
+  # Centrifugo server proxy address (docs: https://centrifugal.dev/docs/server/proxy#grpc-proxy)
+  #
+  # Optional, default: tcp://127.0.0.1:30000
+  proxy_address: "tcp://127.0.0.1:30000"
+
+  # gRPC server API address (docs: https://centrifugal.dev/docs/server/server_api#grpc-api)
+  #
+  # Optional, default: tcp://127.0.0.1:30000. Centrifugo: `grpc_api` should be set to true and `grpc_port` should be the same as in the RR's config.
+  grpc_api_address: tcp://127.0.0.1:30000
+
+  # Use gRPC gzip compressor
+  #
+  # Optional, default: false
+  use_compressor: true
+
+  # Your application version
+  #
+  # Optional, default: v1.0.0
+  version: "v1.0.0"
+
+  # Your application name
+  #
+  # Optional, default: roadrunner
+  name: "roadrunner"
+
+  # TLS configuration
+  #
+  # Optional, default: null
+  tls:
+    # TLS key
+    #
+    # Required
+    key: /path/to/key.pem
+
+    # TLS certificate
+    #
+    # Required
+    cert: /path/to/cert.pem
+
+
+## RoadRunner internal container configuration (docs: https://github.com/spiral/endure).
+endure:
+  # How long to wait for stopping.
+  #
+  # Default: 30s
+  grace_period: 30s
+
+  # Print graph in the graphviz format to the stdout (paste here to visualize https://dreampuf.github.io)
+  #
+  # Default: false
+  print_graph: false
+
+  # Logging level. Possible values: "debug", "info", "warn", "error", "panic", "fatal".
+  #
+  # Default: "error"
+  log_level: error
