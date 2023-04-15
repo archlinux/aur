@@ -2,7 +2,7 @@
 
 pkgname=rtl88x2bu-dkms-git
 _pkgbase=rtl88x2bu
-pkgver=5.13.1.r166.3d25a90
+pkgver=5.13.1.r181.2812290
 _pkgver=5.13.1
 pkgrel=1
 pkgdesc="Kernel module for Realtek rtl88x2bu WiFi chipset"
@@ -25,4 +25,6 @@ package() {
     cp -pr * "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
     install -Dm644 dkms.conf "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
     sed -e "s/@PKGVER@/${pkgver}/" -i "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
+    mkdir -p "${pkgdir}/etc/modprobe.d"
+    echo "blacklist rtw88_8822bu" > "${pkgdir}/etc/modprobe.d/rtw8822bu.conf"
 }

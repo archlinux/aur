@@ -1,6 +1,6 @@
 pkgbase = rtl88x2bu-dkms-git
 	pkgdesc = Kernel module for Realtek rtl88x2bu WiFi chipset
-	pkgver = 5.13.1.r166.3d25a90
+	pkgver = 5.13.1.r181.2812290
 	pkgrel = 1
 	url = https://github.com/RinCat/RTL88x2BU-Linux-Driver
 	arch = i686
