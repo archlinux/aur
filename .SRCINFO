@@ -1,7 +1,7 @@
 pkgbase = r2modman-bin
 	pkgdesc = A simple and easy to use mod manager for several games using Thunderstore.
-	pkgver = 3.1.40
-	pkgrel = 2
+	pkgver = 3.1.41
+	pkgrel = 1
 	url = https://github.com/ebkr/r2modmanPlus
 	arch = x86_64
 	license = MIT
@@ -21,9 +21,9 @@ pkgbase = r2modman-bin
 	depends = libappindicator-gtk3
 	provides = r2modman
 	conflicts = r2modman
-	source = https://github.com/ebkr/r2modmanPlus/releases/download/v3.1.40/r2modman-3.1.40.x86_64.rpm
+	source = https://github.com/ebkr/r2modmanPlus/releases/download/v3.1.41/r2modman-3.1.41.x86_64.rpm
 	source = LICENSE
-	md5sums = 5f71c1b7f9e16f30804bcc9422258c3a
+	md5sums = 57700235209075cc515bf4fefa10a4ba
 	md5sums = cdc88d3d1b56736d0dbc702aaa7de854
 
 pkgname = r2modman-bin
