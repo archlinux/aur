@@ -1,15 +1,19 @@
 pkgbase = masterpdfeditor-arm
 	pkgdesc = A complete solution for viewing, creating and editing PDF files (for arm64)
-	pkgver = 5.8.46
-	pkgrel = 2
+	pkgver = 5.9.40
+	pkgrel = 1
 	url = https://code-industry.net/free-pdf-editor/
 	arch = aarch64
 	license = custom
 	makedepends = patchelf
 	conflicts = masterpdfeditor-free
 	conflicts = masterpdfeditor
-	source_aarch64 = https://code-industry.net/public/master-pdf-editor-5.8.46-qt5.arm64.tar.gz
-	sha1sums_aarch64 = ceaa2f83cc54cc32b86b0b2aefe92227c439768d
+	source_aarch64 = https://code-industry.net/public/master-pdf-editor-5.9.40-qt5.arm64.tar.gz
+	source_aarch64 = masterpdfeditor5.desktop
+	source_aarch64 = license.txt
+	sha1sums_aarch64 = 2757dfaa95fd065bcc3504a2c6cf23b2e51c82d6
+	sha1sums_aarch64 = b33e7148123565fd4cc15d41c493f6ab27d37ba4
+	sha1sums_aarch64 = 75ab655977f493aa46fd3aa6cb1cbfcf19b40d97
 
 pkgname = masterpdfeditor-arm
 	depends = libgl

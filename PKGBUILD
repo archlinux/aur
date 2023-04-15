@@ -6,16 +6,20 @@
 # Contributor: Ferik <djferik at gmail dot com>
 
 pkgname=masterpdfeditor-arm
-pkgver=5.8.46
-pkgrel=2
+pkgver=5.9.40
+pkgrel=1
 pkgdesc='A complete solution for viewing, creating and editing PDF files (for arm64)'
 url='https://code-industry.net/free-pdf-editor/'
 arch=(aarch64)
 conflicts=(masterpdfeditor-free masterpdfeditor)
 license=('custom')
 makedepends=(patchelf)
-source_aarch64=("https://code-industry.net/public/master-pdf-editor-${pkgver}-qt5.arm64.tar.gz")
-sha1sums_aarch64=('ceaa2f83cc54cc32b86b0b2aefe92227c439768d')
+source_aarch64=("https://code-industry.net/public/master-pdf-editor-${pkgver}-qt5.arm64.tar.gz"
+                masterpdfeditor5.desktop
+                license.txt)
+sha1sums_aarch64=('2757dfaa95fd065bcc3504a2c6cf23b2e51c82d6'
+                  'b33e7148123565fd4cc15d41c493f6ab27d37ba4'
+                  '75ab655977f493aa46fd3aa6cb1cbfcf19b40d97')
 
 package() {
   depends=('libgl' 'nspr' 'nss' 'qt5-base' 'qt5-svg' 'qt5-declarative' 'sane')
@@ -25,7 +29,7 @@ package() {
 
   cd "$pkgdir/opt/master-pdf-editor-${pkgver%%.*}"
   ln -sr masterpdfeditor${pkgver%%.*} -t "$pkgdir/usr/bin/"
-  install -Dm644 masterpdfeditor${pkgver%%.*}.desktop -t "$pkgdir/usr/share/applications/"
-  install -Dm644 license.txt -t "$pkgdir/usr/share/licenses/masterpdfeditor/"
+  install -Dm644 ${srcdir}/masterpdfeditor${pkgver%%.*}.desktop -t "$pkgdir/usr/share/applications/"
+  install -Dm644 ${srcdir}/license.txt -t "$pkgdir/usr/share/licenses/masterpdfeditor/"
   patchelf --remove-rpath masterpdfeditor${pkgver%%.*}
 }
