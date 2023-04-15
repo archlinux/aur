@@ -1,4 +1,4 @@
-# Maintainer: Radioactiveman <thomas-lange2@gmx.de>
+# Maintainer: Thomas Lange <thomas-lange2@gmx.de>
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Alexander Fehr <pizzapunk gmail com>
