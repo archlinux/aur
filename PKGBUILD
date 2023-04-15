@@ -55,6 +55,7 @@ package() {
   install -m644 "$srcdir"/*.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps
 
   # docs
-  install -Dm644 README "$pkgdir"/usr/share/doc/alephone/README
+  install -d "$pkgdir" "$pkgdir"/usr/share/doc/alephone
+  install -Dm644 docs/*.txt "$pkgdir"/usr/share/doc/alephone
   install -m644 docs/*.html "$pkgdir"/usr/share/doc/alephone
 }
