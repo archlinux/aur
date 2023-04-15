@@ -6,6 +6,6 @@ pkgbase = damon
 	arch = x86_64
 	license = Mozilla Public License 2.0
 	source = https://github.com/hashicorp/damon/releases/download/nightly/damon_0.1.0-dev_linux_amd64.zip
-	md5sums = 1b882aeddcf6b2af6939c9c7970a7424
+	md5sums = 2fc8e60f0bed25e1e2fa45d8bbce35fd
 
 pkgname = damon
