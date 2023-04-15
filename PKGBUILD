@@ -6,8 +6,8 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=111.0.1
-pkgrel=2
+pkgver=112.0
+pkgrel=1
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -44,7 +44,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
   "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git"
   "${_arch_git_blob}/f72ed84a7907d387296811794d75da515525500e/trunk/0001-Bug-1819374-Squashed-ffmpeg-6.0-update.patch"
   "${_arch_git_blob}/f72ed84a7907d387296811794d75da515525500e/trunk/0002-Bug-1820416-Use-correct-FFVPX-headers-from-ffmpeg-6..patch")
-sha256sums=('84a4f3aba62df6e0451cdd28f8f1e59840d77c4062311947b0e59325c2ebdce8'
+sha256sums=('eb19185f7bfa5c3b0c73edaa57160b44bf3bb2139db83539809607486b8075d9'
   'SKIP'
   '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
   'SKIP'
@@ -241,9 +241,6 @@ END
 
   # Update handler links
   patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/handlers.patch
-
-  # Remove unified extensions recommendations
-  patch -Np1 -i "${_librewolf_patches_dir}"/unified-extensions-dont-show-recommendations.patch
 
   # Fix telemetry removal, see https://gitlab.com/librewolf-community/browser/linux/-/merge_requests/17, for example
   patch -Np1 -i "${_librewolf_patches_dir}"/disable-data-reporting-at-compile-time.patch
