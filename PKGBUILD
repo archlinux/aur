@@ -9,6 +9,7 @@ url="https://github.com/lighttigerXIV/catppuccinifier"
 license=()
 depends=()
 provides=('catppuccinifier')
+conflicts=('catppuccinifier')
 makedepends=('git' 'cargo')
 source=("$pkgname::git+$url")
 md5sums=('SKIP')

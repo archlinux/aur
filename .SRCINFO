@@ -7,6 +7,7 @@ pkgbase = catppuccinifier-cli-git
 	makedepends = git
 	makedepends = cargo
 	provides = catppuccinifier
+	conflicts = catppuccinifier
 	source = catppuccinifier-cli-git::git+https://github.com/lighttigerXIV/catppuccinifier
 	md5sums = SKIP
 
