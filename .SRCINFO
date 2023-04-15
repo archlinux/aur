@@ -1,7 +1,7 @@
 pkgbase = gatling
 	pkgdesc = A high performance http and ftp server
 	pkgver = 0.16
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.fefe.de/gatling
 	install = gatling.install
 	arch = i686

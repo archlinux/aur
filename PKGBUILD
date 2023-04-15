@@ -5,7 +5,7 @@
 
 pkgname=gatling
 pkgver=0.16
-pkgrel=2
+pkgrel=3
 pkgdesc='A high performance http and ftp server'
 arch=(i686 x86_64)
 url=https://www.fefe.de/gatling
