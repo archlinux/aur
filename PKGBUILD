@@ -174,21 +174,6 @@ END
   # PGO improvements
   patch -Np1 -i "${_cachyos_patches_dir}"/gentoo/0015-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
 
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1819374
-  # sooooo this will get a bit ugly, but I don't even want to find out if
-  # things would break on Manjaro until they update ffmpeg as well, so let's just
-  # not think tooooo much about it:
-  _ffmpeg_ver=$(pacman -Qi ffmpeg | gawk '/Version/{print $3}')
-  _ffmpeg_ver="${_ffmpeg_ver#*:}"
-  _ffmpeg_ver="${_ffmpeg_ver%.*}"
-  if [ "${_ffmpeg_ver}" -gt 5 ]; then
-    patch -Np1 -i ../0001-Bug-1819374-Squashed-ffmpeg-6.0-update.patch
-
-    # https://bugs.archlinux.org/task/77796
-    # https://bugzilla.mozilla.org/show_bug.cgi?id=1820416
-    patch -Np1 -i ../0002-Bug-1820416-Use-correct-FFVPX-headers-from-ffmpeg-6..patch
-  fi
-
   # Remove some pre-installed addons that might be questionable
   patch -Np1 -i "${_librewolf_patches_dir}"/remove_addons.patch
 
