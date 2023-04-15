@@ -1,5 +1,6 @@
 post_install() {
    echo "An example configuration file is found in /etc/simple_backup/config."
+   echo "Copy it to ~/.simple_backup/simple_backup.config and modify it as needed"
 }
 
 post_upgrade() {
