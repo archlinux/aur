@@ -22,7 +22,7 @@ _clangbuild=
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r62833.d4fd9d47321
+pkgver=r62867.a3e7d1a9b0f
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -36,7 +36,7 @@ makedepends=(
   'pipewire' 'python-pycryptodomex' 'python-pillow' 'python-pybluez'
   'python-simplejson' 'shairplay' 'smbclient' 'sndio' 'spdlog' 'taglib'
   'tinyxml' 'swig' 'upower' 'giflib' 'rapidjson' 'ghostscript' 'meson' 'gtest'
-  'graphviz' 'pcre'
+  'graphviz' 'pcre' 'libdisplay-info'
   # wayland
   'wayland-protocols' 'waylandpp' 'libxkbcommon'
   # gbm
