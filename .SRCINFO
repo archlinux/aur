@@ -1,14 +1,14 @@
 pkgbase = github-copilot-cli
 	pkgdesc = A CLI experience for letting GitHub Copilot help you on the command line
-	pkgver = 0.1.31
+	pkgver = 0.1.32
 	pkgrel = 1
 	url = https://githubnext.com/projects/copilot-cli/
 	arch = any
 	license = none
 	makedepends = npm
 	makedepends = jq
-	noextract = github-copilot-cli-0.1.31.tgz
-	source = https://registry.npmjs.org/@githubnext/github-copilot-cli/-/github-copilot-cli-0.1.31.tgz
-	sha256sums = af0b3b24f18cbf9419a18fe811246b49e416713f646fd6e70d8cc91c536c2957
+	noextract = github-copilot-cli-0.1.32.tgz
+	source = https://registry.npmjs.org/@githubnext/github-copilot-cli/-/github-copilot-cli-0.1.32.tgz
+	sha256sums = 1afaefb3bbbe10edc14afcab9281aa83286dfb55371103a376fe21c5cafc0e90
 
 pkgname = github-copilot-cli
