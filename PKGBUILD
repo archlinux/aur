@@ -1,7 +1,7 @@
 # Maintainer: Julian Brost <julian@0x4a42.net>
 
 pkgname=trac-svn
-pkgver=1.5.4.r17595
+pkgver=1.6.r17694
 pkgrel=1
 pkgdesc='Enhanced wiki and issue tracking system for software development projects, SVN version'
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = trac-svn
 	pkgdesc = Enhanced wiki and issue tracking system for software development projects, SVN version
-	pkgver = 1.5.4.r17595
+	pkgver = 1.6.r17694
 	pkgrel = 1
 	url = https://trac.edgewall.org/
 	arch = any
