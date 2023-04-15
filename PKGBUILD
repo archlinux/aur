@@ -1,7 +1,7 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=csbooks
-pkgver=7.3.1
+pkgver=7.5.0
 pkgrel=1
 pkgdesc='A smart solution to manage all your PDF, EPUB and MOBI files'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('gtk3'
 source=("${pkgname}-${pkgver}.pacman::https://github.com/caesiumstudio/csBooks-updates/releases/download/latest/csBooks-${pkgver}.pacman"
         'LICENSE')
 noextract=("${pkgname}-${pkgver}.pacman")
-sha256sums=('f775891a492e8db4c16fd46a8fc76a982e1a562336f4d8864bf7fcb162101819'
+sha256sums=('b1dfc2d6b137580b7bba60da5d97886369170f6b38b3154ad919847b9eca7afc'
             'c8d3a419a16631576fc8cc9d530311e4b9c4e1fb5331048cfe81a98b9c8b66fb')
 
 package() {
