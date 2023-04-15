@@ -1,0 +1,14 @@
+pkgbase = tlrc
+	pkgdesc = A tldr client written in Rust
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/acuteenvy/tlrc
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	provides = tldr
+	conflicts = tldr
+	source = tlrc-1.0.0.tar.gz::https://github.com/acuteenvy/tlrc/archive/v1.0.0.tar.gz
+	b2sums = 3aa64c29c6d2fe8815c85030d5001af4b8fd2bac6f226ddbf40ef5e07423bdebf94c0725580e3001978f2918152072f05dcb0f4db3d9060303f7b11c54116750
+
+pkgname = tlrc
