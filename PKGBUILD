@@ -9,7 +9,7 @@ pkgdesc="Game data files and manual of Blue Byte's 'Siedler II'/'Settlers II' to
 url='http://archive.org/details/die_siedler_2_151'
 arch=('any')
 pkgver='venividivici_gold'
-pkgrel=11
+pkgrel=12
 license=('custom: proprietary')
 options+=('emptydirs')
 
