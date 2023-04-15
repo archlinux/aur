@@ -4,13 +4,22 @@
 # Contributor: Mark Dixon <mark@markdixon.name>
 
 pkgname=neo4j-community
-pkgver=5.6.0
+_name=neo4j
+pkgver=5.10.0
 pkgrel=1
-pkgdesc='A fully transactional graph database implemented in Java'
+_java=17
+pkgdesc="A fully transactional graph database implemented in Java"
 arch=(any)
-url=https://neo4j.com
-license=(custom)
-depends=(jre17-openjdk-headless)
+url="https://github.com/neo4j/neo4j"
+license=(GPL3)
+depends=(
+  "java-runtime=$_java"
+  "scala"
+)
+makedepends=(
+  "java-environment=$_java"
+  "maven"
+)
 conflicts=(neo4j-enterprise)
 backup=(
   etc/neo4j/neo4j-admin.conf
@@ -18,96 +27,118 @@ backup=(
   etc/neo4j/server-logs.xml
   etc/neo4j/user-logs.xml
 )
-options=(!strip)
-install=neo4j.install
 
 source=(
-  https://dist.neo4j.org/deb/neo4j_${pkgver}_all.deb
-  neo4j
-  neo4j-admin
-  neo4j-tmpfile.conf
-  neo4j.install
+  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
+  "neo4j.executable-template"
+  "neo4j.service"
+  "neo4j.sysusers"
+  "neo4j.tmpfiles"
+  "use-system-scala.patch"
 )
 sha256sums=(
-  '7d5d4061be91fe7b168baf0dd948af923b81b3d057d8497915af92ce1f9be443'
-  '583635b1736267222d429e6b049af70f6ebd4f76388e8f621f369538bced5718'
-  'd3daadb19de811c9d978dba81432c68d78eeff82bc39e11cc493736dadd5660f'
-  'e1311352e05b1e698599b91883141b938ceb418abd7e6bc11cc964854f0a21e1'
-  '86548a74a78e40b7d200d78ae6cf20c8bf05c590d31aa31fb14632df085aeab8'
+  '35c4d828a1a6007947fddde73f06f46e5d1dc6d1fe832bdca969374754d72d2a'
+  '152e35d949fe9090c890e7a213da917c09bc087a060119a1c32541821f91781f'
+  '090e9ced1708e22592f775490360762d973e81061a0170b4150b087b1751e142'
+  'a1d3dd94aecf80289e8d9b6381d4393ed60b7a5dec3cae436e721be676c15f3a'
+  '45033d5009c84340b79f914bfc13b00c67a8c0bf30a5ccf9d016b5e238762f92'
+  'f0ec370a01d479459c44c096730396524a86c7c04b706ff6094120accc17d6de'
 )
 
-_deb_archive="$pkgname-$pkgver-deb"
+_archive="$_name-$pkgver"
 
 prepare() {
-  mkdir -p "$_deb_archive"
-  tar --extract --file data.tar.xz --directory "$_deb_archive"
+  cd "$_archive"
+
+  patch --forward --strip=1 --input="$srcdir/use-system-scala.patch"
+
+  mvn versions:set -DnewVersion="$pkgver"
+
+  mkdir -p bin
+  # shellcheck disable=SC2002
+  {
+    cat "$srcdir/neo4j.executable-template" \
+      | sed "s/%APP_NAME%/neo4j/" \
+      | sed "s/%CLASS_NAME%/org.neo4j.server.startup.Neo4jBoot/" \
+        > bin/neo4j
+    cat "$srcdir/neo4j.executable-template" \
+      | sed "s/%APP_NAME%/neo4j-admin/" \
+      | sed "s/%CLASS_NAME%/org.neo4j.server.startup.Neo4jAdminBoot/" \
+        > bin/neo4j-admin
+    cat "$srcdir/neo4j.executable-template" \
+      | sed "s/%APP_NAME%/cypher-shell/" \
+      | sed "s/%CLASS_NAME%/org.neo4j.shell.startup.CypherShellBoot/" \
+        > bin/cypher-shell
+  }
+}
+
+build() {
+  cd "$_archive"
+
+  export PATH="/usr/lib/jvm/java-$_java-openjdk/bin:$PATH"
+  mvn \
+    -Dmaven.repo.local="$srcdir/repo" \
+    -Dscala.home=/usr/share/scala \
+    package -DskipTests
+}
+
+check() {
+  cd "$_archive"
+
+  # Running all integration tests takes ~1 hour
+  mvn \
+    -Dmaven.repo.local="$srcdir/repo" \
+    -Dscala.home=/usr/share/scala \
+    integration-test --projects community/community-it/community-it/
 }
 
 package() {
-  cd "$_deb_archive"
+  cd "$_archive"
+
+  tar -xf "packaging/standalone/target/neo4j-community-$pkgver-unix.tar.gz"
+  local bin_archive="neo4j-community-$pkgver"
 
   # Config files
-  install -Dm644 etc/neo4j/neo4j-admin.conf $pkgdir/etc/neo4j/neo4j-admin.conf
-  install -Dm644 etc/neo4j/neo4j.conf  $pkgdir/etc/neo4j/neo4j.conf
-  install -Dm644 etc/neo4j/server-logs.xml $pkgdir/etc/neo4j/server-logs.xml
-  install -Dm644 etc/neo4j/user-logs.xml $pkgdir/etc/neo4j/user-logs.xml
+  install -Dm644 "$bin_archive/conf/neo4j-admin.conf" "$pkgdir/etc/neo4j/neo4j-admin.conf"
+  install -Dm644 "$bin_archive/conf/neo4j.conf" "$pkgdir/etc/neo4j/neo4j.conf"
+  install -Dm644 "$bin_archive/conf/server-logs.xml" "$pkgdir/etc/neo4j/server-logs.xml"
+  install -Dm644 "$bin_archive/conf/user-logs.xml" "$pkgdir/etc/neo4j/user-logs.xml"
 
-  sed -i 's:=/usr/share/neo4j/lib:=/usr/share/java/neo4j:' $pkgdir/etc/neo4j/neo4j.conf
+  sed -i 's:=/usr/share/neo4j/lib:=/usr/share/java/neo4j:' "$pkgdir/etc/neo4j/neo4j.conf"
 
   # Bash completion
-  install -Dm644 etc/bash_completion.d/neo4j-admin_completion $pkgdir/usr/share/bash-completion/completions/neo4j-admin
-  install -Dm644 etc/bash_completion.d/neo4j_completion $pkgdir/usr/share/bash-completion/completions/neo4j
+  install -Dm644 "$bin_archive/bin/completion/neo4j-admin_completion" "$pkgdir/usr/share/bash-completion/completions/neo4j-admin"
+  install -Dm644 "$bin_archive/bin/completion/neo4j_completion" "$pkgdir/usr/share/bash-completion/completions/neo4j"
 
   # JARs
-  install -dm755 $pkgdir/usr/share/java/neo4j
-  install -Dm644 usr/share/neo4j/lib/*.jar $pkgdir/usr/share/java/neo4j
+
+  ## Remove Scala JARs
+  rm "$bin_archive/lib/"scala-library-*.jar
+  rm "$bin_archive/lib/"scala-reflect-*.jar
+
+  ## Install JARs
+  install -dm755 "$pkgdir/usr/share/java/neo4j"
+  install -Dm644 "$bin_archive/lib/"*.jar "$pkgdir/usr/share/java/neo4j/"
 
   # Man pages
-  install -Dm644 usr/share/man/man1/neo4j-admin.1.gz $pkgdir/usr/share/man/man1/neo4j-admin.1.gz
-  install -Dm644 usr/share/man/man1/neo4j.1.gz $pkgdir/usr/share/man/man1/neo4j.1.gz
+  install -Dm644 community/cypher-shell/packaging/src/common/manpages/cypher-shell.1 "$pkgdir/usr/share/man/man1/cypher-shell.1"
 
   # Documentation
-  gzip --decompress --force usr/share/doc/neo4j/changelog.gz
-  install -Dm644 usr/share/doc/neo4j/README.txt $pkgdir/usr/share/doc/neo4j/README.txt
-  install -Dm644 usr/share/doc/neo4j/UPGRADE.txt $pkgdir/usr/share/doc/neo4j/UPGRADE.txt
-  install -Dm644 usr/share/doc/neo4j/changelog $pkgdir/usr/share/doc/neo4j/changelog
+  install -Dm644 "$bin_archive/README.txt" "$pkgdir/usr/share/doc/neo4j/README.txt"
+  install -Dm644 "$bin_archive/UPGRADE.txt" "$pkgdir/usr/share/doc/neo4j/UPGRADE.txt"
 
   # License files
-  gzip --decompress --force usr/share/doc/neo4j/LICENSE.txt.gz
-  gzip --decompress --force usr/share/doc/neo4j/LICENSES.txt.gz
-  gzip --decompress --force usr/share/doc/neo4j/NOTICE.txt.gz
-  install -Dm644 usr/share/doc/neo4j/LICENSE.txt $pkgdir/usr/share/licenses/neo4j/LICENSE.txt
-  install -Dm644 usr/share/doc/neo4j/LICENSES.txt $pkgdir/usr/share/licenses/neo4j/LICENSES.txt
-  install -Dm644 usr/share/doc/neo4j/NOTICE.txt $pkgdir/usr/share/licenses/neo4j/NOTICE.txt
-  install -Dm644 usr/share/doc/neo4j/copyright $pkgdir/usr/share/licenses/neo4j/copyright
-
-  # Plugin directory
-  install -Dm644 var/lib/neo4j/plugins/README.txt $pkgdir/var/lib/neo4j/plugins/README.txt
-
-  # Labs directory
-  install -Dm644 var/lib/neo4j/labs/LICENSE $pkgdir/var/lib/neo4j/labs/LICENSE
-  install -Dm644 var/lib/neo4j/labs/README.txt $pkgdir/var/lib/neo4j/labs/README.txt
-  install -Dm644 var/lib/neo4j/labs/apoc-$pkgver-core.jar $pkgdir/var/lib/neo4j/labs/apoc-$pkgver-core.jar
-
-  # Lintian
-  install -Dm644 usr/share/lintian/overrides/neo4j $pkgdir/usr/share/lintian/overrides/neo4j
+  install -Dm644 "$bin_archive/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  install -Dm644 "$bin_archive/LICENSES.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSES.txt"
+  install -Dm644 "$bin_archive/NOTICE.txt" "$pkgdir/usr/share/licenses/$pkgname/NOTICE.txt"
 
   # Executable files
-  install -Dm755 $srcdir/neo4j $pkgdir/usr/bin/neo4j
-  install -Dm755 $srcdir/neo4j-admin $pkgdir/usr/bin/neo4j-admin
+  install -Dm755 "bin/cypher-shell" "$pkgdir/usr/bin/cypher-shell"
+  install -Dm755 "bin/neo4j" "$pkgdir/usr/bin/neo4j"
+  install -Dm755 "bin/neo4j-admin" "$pkgdir/usr/bin/neo4j-admin"
 
-  # Misc directories
-  install -dm755 $pkgdir/var/log/neo4j
-  install -dm755 $pkgdir/var/lib/neo4j/import
-  install -dm755 $pkgdir/var/lib/neo4j/data
-  install -dm755 $pkgdir/var/lib/neo4j/certificates
-  install -dm755 $pkgdir/var/lib/neo4j/licenses
-  install -dm755 $pkgdir/var/lib/neo4j/run
-
-  # Service definition files
-  install -Dm644 lib/systemd/system/neo4j.service $pkgdir/usr/lib/systemd/system/neo4j.service
-  sed -i 's:ExecStart=/usr/share/neo4j/bin/neo4j:ExecStart=/usr/bin/neo4j:' $pkgdir/usr/lib/systemd/system/neo4j.service
-
-  # Runtime files
-  install -Dm644 $srcdir/neo4j-tmpfile.conf $pkgdir/usr/lib/tmpfiles.d/neo4j.conf
+  # Systemd files
+  install -Dm644 "$srcdir/$_name.service" "$pkgdir/usr/lib/systemd/system/$_name.service"
+  install -Dm644 "$srcdir/$_name.sysusers" "$pkgdir/usr/lib/sysusers.d/$_name.conf"
+  install -Dm644 "$srcdir/$_name.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$_name.conf"
 }

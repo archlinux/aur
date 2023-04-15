@@ -1,0 +1,12 @@
+diff --git a/pom.xml b/pom.xml
+index ab410375f7c..625912052f1 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -531,6 +531,7 @@
+           <configuration>
+             <scalaVersion>${scala.version}</scalaVersion>
+             <scalaCompatVersion>${scala.binary.version}</scalaCompatVersion>
++            <scalaHome>${scala.home}</scalaHome>
+             <recompileMode>${scala.plugin.recompileMode}</recompileMode>
+             <args>
+               <arg>-Xlint:_,-missing-interpolator</arg>

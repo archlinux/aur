@@ -1,0 +1,32 @@
+[Unit]
+Description=Neo4j Graph Database
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/neo4j console
+Restart=on-abnormal
+User=neo4j
+Group=neo4j
+Environment="NEO4J_CONF=/etc/neo4j" "NEO4J_HOME=/var/lib/neo4j"
+LimitNOFILE=60000
+TimeoutSec=120
+
+# Hardening
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=full
+NoNewPrivileges=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+PrivateDevices=true
+# RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=true
+RestrictRealtime=true
+SystemCallArchitectures=native
+ReadOnlyPaths=/
+ReadWritePaths=/var/lib/neo4j /var/log/neo4j
+
+[Install]
+WantedBy=multi-user.target

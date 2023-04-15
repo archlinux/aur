@@ -9,13 +9,18 @@ for name in "$BASEDIR"/*.jar ; do
   CLASSPATH=$CLASSPATH:$name
 done
 
+SCALADIR=/usr/share/scala/lib/
+for name in "$SCALADIR"/*.jar ; do
+  CLASSPATH=$CLASSPATH:$name
+done
+
 export PATH="/usr/lib/jvm/java-17-openjdk/bin/:$PATH"
 exec java \
   -classpath "$CLASSPATH" \
-  -Dapp.name="neo4j" \
+  -Dapp.name="%APP_NAME%" \
   -Dapp.pid="$$" \
   -Dapp.repo="$BASEDIR" \
   -Dapp.home="$BASEDIR" \
   -Dbasedir="$BASEDIR" \
-  org.neo4j.server.startup.Neo4jBoot \
+  %CLASS_NAME% \
   "$@"

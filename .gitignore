@@ -2,8 +2,8 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!cypher-shell
-!neo4j
-!neo4j-admin
-!neo4j.install
-!neo4j-tmpfile.conf
+!use-system-scala.patch
+!neo4j.executable-template
+!neo4j.service
+!neo4j.sysusers
+!neo4j.tmpfiles
