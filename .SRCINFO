@@ -1,13 +1,13 @@
 pkgbase = ddosify
 	pkgdesc = High-performance load testing tool
-	pkgver = 0.16.0
+	pkgver = 0.16.1
 	pkgrel = 1
 	url = https://github.com/ddosify/ddosify
 	arch = any
 	license = AGPL3
 	makedepends = go
 	makedepends = git
-	source = ddosify-0.16.0-1.tar.gz::https://github.com/ddosify/ddosify/archive/refs/tags/v0.16.0.tar.gz
-	sha256sums = c55ff4e8f96b0b60ad1ff1ceed2a142ca5539e0d139ced67366725d8f0bcbf57
+	source = ddosify-0.16.1-1.tar.gz::https://github.com/ddosify/ddosify/archive/refs/tags/v0.16.1.tar.gz
+	sha256sums = d1ac3d70a4d3f03af3f0ff1d8813af141ef55cbd65273d21e5255f527f91056b
 
 pkgname = ddosify
