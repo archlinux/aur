@@ -1,0 +1,20 @@
+pkgbase = nody-greeter
+	pkgdesc = LightDM greeter that allows to create wonderful themes with web technologies. Made in Node.js
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = https://github.com/JezerM/nody-greeter
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = nodejs<17
+	makedepends = npm
+	makedepends = python3
+	depends = lightdm
+	depends = gobject-introspection
+	depends = cairo
+	source = nody-greeter-1.5.2::git+https://github.com/JezerM/nody-greeter.git#tag=1.5.2
+	source = package.patch
+	sha256sums = SKIP
+	sha256sums = bbea2e0dbded27707814e5844631a87b4b38a931011a0fa92ad0c3446fdce7c2
+
+pkgname = nody-greeter
