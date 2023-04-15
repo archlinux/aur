@@ -1,0 +1,14 @@
+pkgbase = blahaj-bin
+	pkgdesc = Gay sharks at your local terminal - lolcat-like CLI tool
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/GeopJr/BLAHAJ
+	arch = x86_64
+	license = BSD-2-Clause
+	provides = blahaj
+	conflicts = blahaj
+	conflicts = blahaj-git
+	source = https://github.com/GeopJr/BLAHAJ/releases/download/v2.0.1/blahaj-2.0.1-linux-x86_64-static.zip
+	sha256sums = b544e13db79d40ed31c98c9b26c7ddc21535a908016f23aa3d78d39d9b3a1057
+
+pkgname = blahaj-bin
