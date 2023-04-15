@@ -1,7 +1,7 @@
 # Maintainer: Mattanja D. Heck
 
 pkgname=ziti-edge-tunnel
-pkgver=0.19.11
+pkgver=0.20.9
 pkgrel=1
 pkgdesc="The linux tunneller for your ZITI network."
 arch=( 'x86_64' )
@@ -12,7 +12,7 @@ license=('Apache-2.0')
 install="ziti-edge-tunnel.install"
 
 source=("https://netfoundry.jfrog.io/artifactory/zitipax-openziti-deb-stable/pool/ziti-edge-tunnel/focal/ziti-edge-tunnel-${pkgver}-${pkgrel}.deb")
-sha256sums=('76620c442f36527ae8932059a818dec422e84a783ec86ffba0c41650da41ad43')
+sha256sums=('725a6e7db87ce4dbb1338a947d6878073a6d99abb5b90fdac3caaf5be76845be')
 
 package() {
 	tar xf data.tar.gz -C "${pkgdir}"
