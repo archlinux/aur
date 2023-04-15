@@ -7,13 +7,13 @@ pkgname=powershell
 _binaryname=pwsh
 pkgver=7.3.4
 _pkgnum=${pkgver:0:1}
-pkgrel=2
+pkgrel=3
 pkgdesc='A cross-platform automation and configuration tool/framework (latest release)'
 arch=('x86_64')
 url='https://github.com/PowerShell/PowerShell'
 license=('MIT')
-makedepends=('cmake' 'dotnet-sdk>=7.0.0')
-depends=('krb5' 'gcc-libs' 'glibc' 'lttng-ust' 'zlib' 'openssl' 'icu' 'dotnet-runtime')
+makedepends=('cmake' 'dotnet-sdk' 'patchelf')
+depends=('lttng-ust' 'dotnet-runtime' 'openssl-1.1')
 
 _googletest_commit_hash=4e4df226fc197c0dda6e37f5c8c3845ca1e73a49
 _powershell_native_version=7.3.2
@@ -84,6 +84,10 @@ build() {
 
   ## Build powershell core
   dotnet publish --no-self-contained --configuration Linux "src/powershell-unix/" --output bin --runtime "linux-x64"
+
+  file=src/powershell-unix/bin/Linux/net7.0/linux-x64/libmi.so
+  patchelf --replace-needed libcrypto.so.1.0.0  libcrypto.so.1.1 "$file"
+  patchelf --replace-needed libssl.so.1.0.0  libssl.so.1.1 "$file"
 }
 
 check() {
