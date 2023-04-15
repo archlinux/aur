@@ -1,6 +1,6 @@
 pkgbase = cobib-git
 	pkgdesc = Console Bibliography
-	pkgver = r343.642df0c
+	pkgver = r517.c6d4f59
 	pkgrel = 1
 	url = https://gitlab.com/mrossinek/cobib
 	arch = any
@@ -12,10 +12,13 @@ pkgbase = cobib-git
 	depends = python-ruamel-yaml
 	depends = python-pylatexenc
 	depends = python-requests
+	depends = python-rich
+	depends = python-textual-git
+	depends = python-markdown-it-py
+	depends = python-mdit_py_plugins
 	provides = cobib
 	conflicts = cobib
 	source = cobib::git+https://gitlab.com/mrossinek/cobib.git
 	sha256sums = SKIP
 
 pkgname = cobib-git
-
