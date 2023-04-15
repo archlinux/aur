@@ -7,8 +7,8 @@
 
 pkgname=parzip
 pkgver=1.3.0
-pkgrel=3
-pkgdesc="A command line utility to pack and unpack zip archives using multiple threads"
+pkgrel=2
+pkgdesc="A command line utility to pack and unpack zip archives using multiple threads."
 license=('GPL3')
 arch=('x86_64')
 depends=('xz' 'zlib')
