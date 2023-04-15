@@ -1,7 +1,7 @@
 pkgbase = jeff
 	pkgdesc = Extensible chatbot and automation tool
 	pkgver = 2.4.1.r3.gb1b0621
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/markcda/jeff
 	arch = x86_64
 	license = MIT

@@ -6,7 +6,7 @@ _tag=21360032435f1649d7ca375a4339482f69d5a817
 source=(git+https://github.com/markcda/jeff.git#tag=$_tag)
 
 pkgver=2.4.1.r3.gb1b0621
-pkgrel=1
+pkgrel=2
 pkgdesc="Extensible chatbot and automation tool"
 arch=("x86_64")
 url="https://github.com/markcda/jeff"
@@ -20,7 +20,7 @@ build() {
   cd jeff
   git submodule init
   git submodule update
-  cd jeff-qt
+  cd jeff-desktop
   mkdir target
   cmake -S . -B ./target
   lrelease l10n/jeff_ru.ts -qm l10n/jeff_ru.qm
@@ -42,5 +42,5 @@ package() {
   install -Dm644 packaging/icons/hicolor/256x256/apps/jeff.png "$pkgdir/usr/share/icons/hicolor/256x256/jeff.png"
   install -Dm644 arts/icons/2000/icon.png "$pkgdir/usr/share/pixmaps/jeff.png"
   install -Dm644 arts/jeff.desktop "$pkgdir/usr/share/applications/jeff.desktop"
-  install -Dm755 jeff-qt/target/jeff-qt "$pkgdir/usr/bin/jeff"
+  install -Dm755 jeff-desktop/target/jeff-qt "$pkgdir/usr/bin/jeff"
 }
