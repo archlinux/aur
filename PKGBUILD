@@ -7,7 +7,7 @@ pkgname=powershell
 _binaryname=pwsh
 pkgver=7.3.4
 _pkgnum=${pkgver:0:1}
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform automation and configuration tool/framework (latest release)'
 arch=('x86_64')
 url='https://github.com/PowerShell/PowerShell'
@@ -48,6 +48,8 @@ build() {
   export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
   export DOTNET_CLI_TELEMETRY_OPTOUT=true
 
+  export NUGET_PACKAGES="$srcdir/$_powershell_archive/nuget"
+
   # Mock git describe output that the build expects
   export POWERSHELL_GIT_DESCRIBE_OUTPUT="v$pkgver-0-gxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
@@ -55,6 +57,7 @@ build() {
   dotnet restore src/powershell-unix
   dotnet restore src/ResGen
   dotnet restore src/TypeCatalogGen
+  dotnet restore src/Modules
 
   ## Setup the build target to gather dependency information
   cp "$srcdir/Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets" "src/Microsoft.PowerShell.SDK/obj/Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets"
@@ -80,7 +83,7 @@ build() {
   popd
 
   ## Build powershell core
-  dotnet publish --self-contained --configuration Linux "src/powershell-unix/" --output bin --runtime "linux-x64"
+  dotnet publish --no-self-contained --configuration Linux "src/powershell-unix/" --output bin --runtime "linux-x64"
 }
 
 check() {
@@ -96,6 +99,11 @@ package() {
   cp -ar "$srcdir/$_powershell_archive/src/powershell-unix/bin/Linux/net7.0/linux-x64/." "$pkgdir/opt/microsoft/$pkgname/$_pkgnum/"
 
   install -Dm644 "$srcdir/$_powershell_archive/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  cp -ar "$srcdir/$_powershell_archive/nuget/psreadline/2.2.6/." "$pkgdir/opt/microsoft/$pkgname/$_pkgnum/Modules/PSReadLine"
+  cp -ar "$srcdir/$_powershell_archive/nuget/packagemanagement/1.4.8.1/." "$pkgdir/opt/microsoft/$pkgname/$_pkgnum/Modules/PackageManagement"
+  cp -ar "$srcdir/$_powershell_archive/nuget/powershellget/2.2.5/." "$pkgdir/opt/microsoft/$pkgname/$_pkgnum/Modules/PowerShellGet"
+  cp -ar "$srcdir/$_powershell_archive/nuget/threadjob/2.0.3/." "$pkgdir/opt/microsoft/$pkgname/$_pkgnum/Modules/ThreadJob"
 
   mkdir -p "$pkgdir/usr/bin"
   ln -s "/opt/microsoft/$pkgname/$_pkgnum/$_binaryname" "$pkgdir/usr/bin/$_binaryname"
