@@ -1,6 +1,6 @@
 pkgbase = gpu-screen-recorder-gtk-git
 	pkgdesc = Gtk frontend to gpu-screen-recorder, a shadowplay-like screen recorder for Linux. The fastest screen recorder for Linux
-	pkgver = r116.c21b38b
+	pkgver = r122.e410116
 	pkgrel = 1
 	url = https://git.dec05eba.com/gpu-screen-recorder-gtk
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = gpu-screen-recorder-gtk-git
 	depends = gpu-screen-recorder-git
 	provides = gpu-screen-recorder-gtk
 	conflicts = gpu-screen-recorder-gtk
-	source = gpu-screen-recorder-gtk-git-r116.c21b38b.tar.gz::https://dec05eba.com/snapshot/gpu-screen-recorder-gtk.git.r116.c21b38b.tar.gz
-	sha512sums = a211ee8222b048cdfa7fbdc15ca9d776f25e519d0760f46978faebba8b617ce6c9ebc2a4f489b694ea48d544c6df2b7f311ad629b7108c9f46b4d0832d1bab46
+	source = gpu-screen-recorder-gtk-git-r122.e410116.tar.gz::https://dec05eba.com/snapshot/gpu-screen-recorder-gtk.git.r122.e410116.tar.gz
+	sha512sums = 2b9a6962f51c372e932f47ba7d164659468c12e49ba279ded2d614cc59400cf83f4168d43b83a44a9b7c92d34bacf1b70f1fb02e2cb52a85945190bc942f2a46
 
 pkgname = gpu-screen-recorder-gtk-git
