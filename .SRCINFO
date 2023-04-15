@@ -1,12 +1,11 @@
 pkgbase = stardict-en-cz
 	pkgdesc = GNU/FDL English-Czech dictionary for StarDict
-	pkgver = 20200601
+	pkgver = 20210401
 	pkgrel = 1
-	url = http://slovnik.zcu.cz/
+	url = https://www.svobodneslovniky.cz/
 	arch = any
 	license = FDL
-	source = http://dl.cihar.com/slovnik/stable/stardict-english-czech-20200601.tar.gz
-	md5sums = fffbad9ccba2c6e8171360d72f2c7c02
+	source = http://dl.cihar.com/slovnik/stable/stardict-english-czech-20210401.tar.gz
+	md5sums = ad0ad0460fb74b5d95576efe45becf12
 
 pkgname = stardict-en-cz
-
