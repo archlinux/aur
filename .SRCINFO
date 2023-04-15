@@ -1,6 +1,6 @@
 pkgbase = smartsynchronize
 	pkgdesc = Comparing Directories the Smart Way
-	pkgver = 4.3.1
+	pkgver = 4.4.1
 	pkgrel = 1
 	url = https://www.syntevo.com/smartsynchronize/
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = smartsynchronize
 	depends = java-runtime>=8
 	depends = gtk3
 	depends = gtk-update-icon-cache
-	source = https://www.syntevo.com/downloads/smartsynchronize/smartsynchronize-linux-4_3_1.tar.gz
+	source = https://www.syntevo.com/downloads/smartsynchronize/smartsynchronize-linux-4_4_1.tar.gz
 	source = smartsynchronize.desktop
-	sha256sums = daf4d33540398a68d05e6f658deea0e2c274ebb88fc1abea2de769d1116f3cf3
+	sha256sums = de206f0ec5e739096507c459eb503041089790c4f308bc1a93ed42ed696b1325
 	sha256sums = ee21447d20ef52b65f5becb7a004c10acb925d4219d42f3be2aae61115d9f52f
 
 pkgname = smartsynchronize
