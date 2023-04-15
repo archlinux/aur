@@ -19,22 +19,24 @@ _author="SpacingBat3"
 
 url="https://github.com/${_author}/${_repo}"
 license=('MIT')
-depends=('electron21')
+depends=('electron24')
 optdepends=(
   'xdg-desktop-portal-impl: Screen share UI and other portals under Wayland'
   'pipewire: WebRTC screen sharing under Wayland'
   'org.freedesktop.secrets: Encryption using stored key in the secret service'
 )
-makedepends=('npm' 'git' 'imagemagick' 'typescript' 'asar' 'p7zip')
+makedepends=('npm' 'git' 'imagemagick' 'typescript' 'asar' 'p7zip' 'pnpm')
 provides=("${pkgname%-vencord-git}")
 conflicts=("${pkgname%-vencord-git}")
 source=(
   "${pkgname%-vencord-git}::git+https://github.com/${_author}/${_repo}.git"
   "${pkgname%-vencord-git}.desktop"
+  "vencord::git+https://github.com/vendicated/vencord.git"
 )
 md5sums=(
   'SKIP'
   '6046178af59a8c93835051e698eacf1e'
+  'SKIP'
 )
 
 ### CONFIGURABLE VARIABLES ###
@@ -54,8 +56,6 @@ _LOCAL_PACKAGES=(
   # Uncomment to use system-provided packages instead of bundled NPM ones.
   #marked semver
 )
-
-_VENCORD_CRX_URL='https://clients2.google.com/service/update2/crx?response=redirect&acceptformat=crx2,crx3&prodversion=109.0&x=id%3Dcbghhgpcnddeihccjmnadmkaejncjndb%26installsource%3Dondemand%26uc'
 
 ### TYPE CHECKS ###
 
@@ -89,11 +89,13 @@ prepare() {
     git restore "package-lock.json"
   fi
 
-  curl "$_VENCORD_CRX_URL" -L -o "${srcdir:?}/vencord.crx"
-  mkdir -p "${srcdir:?}/vencord"
-  7z x "${srcdir:?}/vencord.crx" -o"${srcdir:?}/vencord" -y
-  sed -i "361i session.defaultSession.loadExtension(\"/usr/share/webcord/vencord\").then(() => console.log(\"Vencord loaded.\"));" "${srcdir:?}/webcord/sources/code/common/main.ts"
-  sed -i "4i \ \ \ \ \ \ \ \ \"ignoreDeprecations\": \"5.0\"," "${srcdir:?}/webcord/tsconfig.json"
+  cd "${srcdir:?}/vencord"
+  pnpm install
+  pnpm run buildWeb
+
+  cd "${srcdir:?}/${pkgname%-vencord-git}"
+
+  sed -i "361i session.defaultSession.loadExtension(\"/usr/share/webcord/vencord-ext\").then(() => console.log(\"Vencord loaded.\"));" "${srcdir:?}/webcord/sources/code/common/main.ts"
 
   _echo_times "Generating / updating a changelog..."
   _changelog vty > "${_pkgbuilddir:?}/${pkgname%-git}.changelog"
@@ -317,7 +319,10 @@ _pack() {
   _echo_times "Packaging app to ASAR archive..."
   install -dm755 "${1}/${pkgname%-vencord-git}"
   cd "${srcdir:?}"
-  find "./vencord" -type f -exec install -Dm644 "{}" "${1}/${pkgname%-vencord-git}/{}" \;
+
+  cp -r "${srcdir:?}/vencord/dist/extension-unpacked" ./vencord-ext
+  find "./vencord-ext" -type f -exec install -Dm644 "{}" "${1}/${pkgname%-vencord-git}/{}" \;
+
   cd "${srcdir:?}/${pkgname%-vencord-git}"
   asar pack --exclude-hidden . "${1}/${pkgname%-vencord-git}/app.asar" || {
     echo "Failed to package to ASAR!"
@@ -341,6 +346,14 @@ _postcompile() {
 _script() {
   mkdir -p "$(dirname "$1")"
   #echo -ne "#!/bin/bash\nelectron$(_getelectron) /usr/share/${pkgname%-vencord-git}/app.asar \"\$@\"\nexit \$?">"$1"
-  echo -ne "#!/bin/bash\nelectron21 /usr/share/${pkgname%-vencord-git}/app.asar \"\$@\"\nexit \$?">"$1"
+  echo -ne "#!/bin/bash
+    CONFIG=\${XDG_CONFIG_HOME:-~/.config}
+    FLAGS=\"\$CONFIG/webcord-flags.conf\"
+
+    if [ -f \"\$FLAGS\" ]; then
+        USER_FLAGS=\"\$(cat \"\$FLAGS\")\"
+    fi
+
+    electron24 /usr/share/${pkgname%-vencord-git}/app.asar \$USER_FLAGS \"\$@\"\nexit \$?">"$1"
   chmod 755 "$1"
 }
