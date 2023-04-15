@@ -1,6 +1,6 @@
 pkgbase = blackbox-terminal
 	pkgdesc = A beautiful GTK 4 terminal
-	pkgver = 0.13.0
+	pkgver = 0.13.2
 	pkgrel = 1
 	url = https://gitlab.gnome.org/raggesilver/blackbox
 	arch = i686
@@ -13,11 +13,9 @@ pkgbase = blackbox-terminal
 	depends = libgee
 	depends = libmarble-git
 	depends = vte4
-	source = blackbox-terminal-0.13.0.tar.gz::https://gitlab.gnome.org/raggesilver/blackbox/-/archive/v0.13.0/blackbox-v0.13.0.tar.gz
-	source = launch_fix.diff
+	source = blackbox-terminal-0.13.2.tar.gz::https://gitlab.gnome.org/raggesilver/blackbox/-/archive/v0.13.2/blackbox-v0.13.2.tar.gz
 	source = rename_icons.diff
-	sha256sums = 193946a74b4bfd25b2142de52f92a92b446778cc8cea7e5538cc091d466e1a71
-	sha256sums = 6d675227f2e2217e823a12638c9a08eb2d35f25416dd47656135132eddef956c
+	sha256sums = 172154b6d1242c87b38e8513e209aa7621e53581e330896bfeec17a657db2e82
 	sha256sums = b06d407041adfc2ad0f5a382e6503a5115f99a3b284e484cdb07592733ad1cb6
 
 pkgname = blackbox-terminal
