@@ -2,7 +2,8 @@ post_upgrade() {
     cat <<'EOF'
 *** This is an unofficial AUR version of Ship of Harkinian.
 *** Now install any of the OTR packages (ex. soh-otr-gc_nmq_d)
-*** in order for the game to work. (still requires ROM to build)
+*** in order for the game to run properly. You still need
+*** a ROM to build them...
 ***
 *** If the game causes an "INVALID ACCESS TO STORAGE" crash,
 *** rebuild any installed soh-otr packages.

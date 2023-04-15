@@ -1,9 +1,9 @@
 Submodule libultraship contains modified content
 diff --git a/libultraship/src/CMakeLists.txt b/libultraship/src/CMakeLists.txt
-index e21c92e..55102b9 100644
+index d803726..905bdc7 100644
 --- a/libultraship/src/CMakeLists.txt
 +++ b/libultraship/src/CMakeLists.txt
-@@ -86,7 +86,10 @@ target_sources(libultraship PRIVATE ${Source_Files__Controller} ${Source_Files__
+@@ -85,7 +85,10 @@ target_sources(libultraship PRIVATE ${Source_Files__Controller} ${Source_Files__
  
  #=================== Core ===================
  
@@ -14,7 +14,7 @@ index e21c92e..55102b9 100644
      ${CMAKE_CURRENT_SOURCE_DIR}/core/Window.h
      ${CMAKE_CURRENT_SOURCE_DIR}/core/Window.cpp
      ${CMAKE_CURRENT_SOURCE_DIR}/core/ConsoleVariable.h
-@@ -343,7 +346,7 @@ target_sources(libultraship PRIVATE ${Source_Files__Lib__stb})
+@@ -359,7 +362,7 @@ endif()
  #=================== Packages & Includes ===================
  
  target_include_directories(libultraship
@@ -24,10 +24,10 @@ index e21c92e..55102b9 100644
  )
  
 diff --git a/libultraship/src/core/Window.cpp b/libultraship/src/core/Window.cpp
-index e9a8099..d1ebbbd 100644
+index 8060646..d96c215 100644
 --- a/libultraship/src/core/Window.cpp
 +++ b/libultraship/src/core/Window.cpp
-@@ -30,6 +30,7 @@
+@@ -31,6 +31,7 @@
  #elif defined(__WIIU__)
  #include "port/wiiu/WiiUImpl.h"
  #endif
@@ -35,62 +35,83 @@ index e9a8099..d1ebbbd 100644
  
  namespace Ship {
  
-@@ -150,15 +151,39 @@ std::string Window::GetAppDirectoryPath() {
-     char* fpath = std::getenv("SHIP_HOME");
-     if (fpath != NULL)
-         return std::string(fpath);
-+
-+    fpath = SDL_GetPrefPath(NULL, "soh");
-+    if (fpath != NULL) {
-+        std::string ret(fpath);
-+        SDL_free(fpath);
-+        return ret;
-+    }
- #endif
- 
-     return ".";
+@@ -145,7 +146,29 @@ void Window::Close() {
+     mWindowManagerApi->close();
  }
  
-+std::string Window::GetAppBaseDirectoryPath() {
++std::string Window::GetAppBasePath() {
++    std::string path = GetAppBundlePath();
++
++    if (path == ".") {
++        return GetAppDirectoryPath();
++    }
++
++    return path;
++}
++
+ std::string Window::GetAppBundlePath() {
 +#ifdef CMAKE_INSTALL_PREFIX
 +    static const std::string fpath = CMAKE_INSTALL_PREFIX;
 +    static int exists = -1;
++
 +    if (exists == -1) {
 +        exists = fpath.size() > 0 && std::filesystem::is_directory(fpath);
 +    }
-+    return exists ? fpath : GetAppDirectoryPath();
-+#else
-+    return GetAppDirectoryPath();
-+#endif
-+}
 +
- std::string Window::GetPathRelativeToAppDirectory(const char* path) {
-     return GetAppDirectoryPath() + "/" + path;
++    if (exists) {
++        return fpath;
++    }
++#else
+ #ifdef __APPLE__
+     FolderManager folderManager;
+     return folderManager.getMainBundlePath();
+@@ -156,6 +179,7 @@ std::string Window::GetAppBundlePath() {
+     if (fpath != NULL) {
+         return std::string(fpath);
+     }
++#endif
+ #endif
+ 
+     return ".";
+@@ -176,9 +200,20 @@ std::string Window::GetAppDirectoryPath() {
+     }
+ #endif
+ 
++    char *prefpath = SDL_GetPrefPath(NULL, "soh");
++    if (prefpath != NULL) {
++        std::string ret(prefpath);
++        SDL_free(prefpath);
++        return ret;
++    }
++
+     return ".";
  }
  
 +std::string Window::GetPathRelativeToAppBaseDirectory(const char* path) {
-+    return GetAppBaseDirectoryPath() + "/" + path;
++    return GetAppBasePath() + "/" + path;
 +}
 +
- void Window::StartFrame() {
-     gfx_start_frame();
+ std::string Window::GetPathRelativeToAppBundle(const char* path) {
+     return GetAppBundlePath() + "/" + path;
  }
 diff --git a/libultraship/src/core/Window.h b/libultraship/src/core/Window.h
-index 9cbb013..ddb51e4 100644
+index 817b7e6..89ab4ec 100644
 --- a/libultraship/src/core/Window.h
 +++ b/libultraship/src/core/Window.h
-@@ -24,7 +24,9 @@ class Window {
+@@ -24,9 +24,11 @@ class Window {
      static std::shared_ptr<Window> CreateInstance(const std::string name, const std::vector<std::string>& otrFiles = {},
                                                    const std::unordered_set<uint32_t>& validHashes = {});
+     static std::string GetAppBundlePath();
++    static std::string GetAppBasePath();
      static std::string GetAppDirectoryPath();
-+    static std::string GetAppBaseDirectoryPath();
      static std::string GetPathRelativeToAppDirectory(const char* path);
+     static std::string GetPathRelativeToAppBundle(const char* path);
 +    static std::string GetPathRelativeToAppBaseDirectory(const char* path);
  
      Window(std::string Name);
      ~Window();
 diff --git a/libultraship/src/core/libultra/os.cpp b/libultraship/src/core/libultra/os.cpp
-index 6f295f6..9365c47 100644
+index 8ac36e4..390e2be 100644
 --- a/libultraship/src/core/libultra/os.cpp
 +++ b/libultraship/src/core/libultra/os.cpp
 @@ -21,8 +21,8 @@ int32_t osContInit(OSMesgQueue* mq, uint8_t* controllerBits, OSContStatus* statu
@@ -99,12 +120,12 @@ index 6f295f6..9365c47 100644
  #ifndef __SWITCH__
 -    const char* controllerDb = "gamecontrollerdb.txt";
 -    int mappingsAdded = SDL_GameControllerAddMappingsFromFile(controllerDb);
-+    std::string controllerDb = Ship::Window::GetPathRelativeToAppBaseDirectory("gamecontrollerdb.txt");
++    std::string controllerDb = Ship::Window::GetPathRelativeToAppBundle("gamecontrollerdb.txt");
 +    int mappingsAdded = SDL_GameControllerAddMappingsFromFile(controllerDb.c_str());
      if (mappingsAdded >= 0) {
          SPDLOG_INFO("Added SDL game controllers from \"{}\" ({})", controllerDb, mappingsAdded);
      } else {
-@@ -97,4 +97,4 @@ int32_t osRecvMesg(OSMesgQueue* mq, OSMesg* msg, int32_t flag) {
+@@ -90,4 +90,4 @@ int32_t osRecvMesg(OSMesgQueue* mq, OSMesg* msg, int32_t flag) {
      mq->validCount--;
      return 0;
  }

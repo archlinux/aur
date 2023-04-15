@@ -1,8 +1,8 @@
 diff --git a/soh/soh/OTRGlobals.cpp b/soh/soh/OTRGlobals.cpp
-index dc9e3c23..9a3c7187 100644
+index 638cf162..96f3e06f 100644
 --- a/soh/soh/OTRGlobals.cpp
 +++ b/soh/soh/OTRGlobals.cpp
-@@ -82,15 +82,15 @@ ItemTableManager* ItemTableManager::Instance;
+@@ -197,11 +197,11 @@ const char* constCameraStrings[] = {
  
  OTRGlobals::OTRGlobals() {
      std::vector<std::string> OTRFiles;
@@ -15,6 +15,10 @@ index dc9e3c23..9a3c7187 100644
 +    std::string ootPath = Ship::Window::GetPathRelativeToAppBaseDirectory("oot.otr");
      if (std::filesystem::exists(ootPath)) {
          OTRFiles.push_back(ootPath);
+     }
+@@ -209,7 +209,7 @@ OTRGlobals::OTRGlobals() {
+     if (std::filesystem::exists(sohOtrPath)) {
+         OTRFiles.push_back(sohOtrPath);
      }
 -    std::string patchesPath = Ship::Window::GetPathRelativeToAppDirectory("mods");
 +    std::string patchesPath = Ship::Window::GetPathRelativeToAppBaseDirectory("mods");

@@ -3,7 +3,7 @@
 _reponame=Shipwright
 pkgbase=soh-git
 pkgname=(soh-git soh-otr-exporter-git)
-pkgver=6.1.0.r5.g21466192e
+pkgver=6.1.2.r66.g831711a45
 pkgrel=1
 arch=("x86_64" "i686")
 url="https://shipofharkinian.com/"
@@ -20,8 +20,8 @@ source=("git+https://github.com/HarbourMasters/${_reponame}.git"
 sha256sums=('SKIP'
             'SKIP'
             'd93dbc5273eb6ab88aa4d99869a6ba7fce495253a953af269c28ec72c0b00eb6'
-            'a7116d348afda424e3bcabda4a5cd4d6473039494bfe8ef1d81909f86ff0b72d'
-            '3de25d94d28f58daec33539181a8a666a20545204089996acf485325124ff9bc'
+            '119cd67dd82af89fe4abb898f6a004db67fb579073d47a8b65e11af025e58d3f'
+            'bd64e666e6c26d5619235c11c9874dfcab5f9ca545c5b60cc7f08acfe6997031'
             '6e735877e7bba81f9f308f6eabbdfe5354f2c331a9acf9a16ab02a5681f2c25f')
 
 # NOTE: If compiling complains about missing headers, set __generate_headers below to 1
@@ -50,7 +50,7 @@ prepare() {
   git -c protocol.file.allow=always submodule update
 
   # Commit 66b2d2d5fae75ad4d4b2a5106bf70bf8321aa88c permamently adds pregenerated asset headers
-  # so you don't need to activate this one unless told to do so
+  # so you don't need to activate this one unless someone told you to do so
   if [ "$__generate_headers" = 1 ]; then
     # check for any roms in the directory where PKGBUILD resides
     # and copy them to Shipwright/OTRExporter. It doesn't matter
@@ -97,9 +97,23 @@ build() {
     cmake -Bbuild -GNinja -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_INSTALL_PREFIX=$SHIP_PREFIX .
 
   cmake --build build --target ZAPD --config $BUILD_TYPE
-  [ "$__generate_headers" = 1 ] && cmake --build build --target ExtractAssets
-  cmake --build build --target soh --config $BUILD_TYPE
 
+  if [ "$__generate_headers" = 1 ]; then
+    cmake --build build --target ExtractAssetsHeaders
+  else
+    cd OTRExporter
+
+    rm -f soh.otr || true
+    rm -rf Extract || true
+    mkdir Extract
+    cp -r assets Extract/assets
+
+    ../build/ZAPD/ZAPD.out botr -se OTR --norom
+
+    cd ..
+  fi
+
+  cmake --build build --target soh --config $BUILD_TYPE
   cmake --build build --target OTRGui --config $BUILD_TYPE
 }
 
@@ -121,6 +135,8 @@ package_soh-git() {
   ln -s /opt/soh/soh.elf "${pkgdir}/usr/bin/soh"
   install -Dm644 "${srcdir}/soh.desktop" -t "${pkgdir}/usr/share/applications"
   install -Dm644 soh/macosx/sohIcon.png "${pkgdir}/usr/share/pixmaps/soh.png"
+
+  install -Dm644 OTRExporter/soh.otr "${pkgdir}/${SHIP_PREFIX}/soh.otr"
 }
 
 package_soh-otr-exporter-git() {
