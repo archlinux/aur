@@ -1,5 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
-# Co-Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 # Contributor: Eli Schwartz
 pkgname=smile
 pkgver=2.2.0
