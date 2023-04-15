@@ -10,7 +10,7 @@ _majorver=15
 _minorver=0
 _securityver=3
 _updatever=3
-pkgrel=2
+pkgrel=3
 pkgver="${_majorver}.${_minorver}.${_securityver}.u${_updatever}"
 _hg_tag="jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=("https://hg.openjdk.java.net/jdk-updates/jdk${_majorver}u/archive/${_hg_
         "freedesktop-java.desktop"
         "freedesktop-jconsole.desktop"
         "freedesktop-jshell.desktop")
-sha256sums=('4bbd7a73354a2d244c7a075406339aa0ce4c5fc6be91a795af931f6dc95d067c'
+sha256sums=('9d90fc543c092f1bb399e674929088df5969bf7297bb9e607257d4edf6fc91f9'
             '30b38fcbf1fcab6b33aea2e6d82e611f7d0ea974d1d11a87a262f598ba006fd9'
             '971a71d0a80d6e5e47d5ea722b723088e86425a943a5c3615da95417c8f5aca2'
             '77e45ece92bc9b0c638f5468c2050cc1dc4508308ec302e6910e793be97687ac')
