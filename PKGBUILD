@@ -12,6 +12,7 @@ arch=("any")
 url="https://github.com/SUPERCILEX/gnome-clipboard-history"
 license=("MIT")
 depends=("dconf" "gnome-shell")
+conflicts=("gnome-shell-extension-clipboard-indicator")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_gitv}.tar.gz")
 sha256sums=('08e6de8cf61bfce9f258f0f480e2ec0d15f87656f947a06cec2dd66afb8c3919')
 
