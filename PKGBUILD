@@ -1,6 +1,6 @@
 #Maintainer: semtor<semtorcc@gmail.com>
 pkgname=cs
-pkgver=0.1.2
+pkgver=0.2.1
 pkgrel=1
 epoch= 
 pkgdesc="The Ls command with icons implemented in C++"
