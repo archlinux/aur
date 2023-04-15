@@ -3,7 +3,7 @@
 pkgname=mmconneqt-git
 _pkgname=${pkgname%-git}
 pkgver=v0.1.1.r1.gface047
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple Qt based gui for ModemManager"
 arch=(any)
 url="https://gitlab.com/Antiquete/mmconneqt"
@@ -14,7 +14,7 @@ optdepends=()
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=(mmconneqt.desktop "git+$url.git")
-sha256sums=('450d9c141e90acca697baf20aeaad8da8f3142550dc6f98101abbef5e502fc60' 'SKIP')
+sha256sums=('ac2d984d9c86da3a7af523e99b3f31796b8063c60056319d61688fd3cc8c4766' 'SKIP')
 
 pkgver() {
   cd "$_pkgname"
