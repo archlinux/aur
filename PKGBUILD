@@ -31,7 +31,7 @@ check(){
 }
 
 package() {
-	cd $pkgname
+	cd "$pkgname"
 	#desktop file
 	desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "src/Linux/installation-files/Catppuccinifier.desktop"
 	#binary
