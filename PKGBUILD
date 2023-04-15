@@ -8,8 +8,8 @@
 __pkgname=firedragon
 pkgname=$__pkgname-unsigned-extensions
 _pkgname=FireDragon
-pkgver=111.0.1
-pkgrel=2
+pkgver=112.0
+pkgrel=1
 pkgdesc="FireDragon modified to allow installation of unsigned extensions"
 arch=(x86_64 x86_64_v3 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -48,7 +48,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
   "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git"
   "${_arch_git_blob}/f72ed84a7907d387296811794d75da515525500e/trunk/0001-Bug-1819374-Squashed-ffmpeg-6.0-update.patch"
   "${_arch_git_blob}/f72ed84a7907d387296811794d75da515525500e/trunk/0002-Bug-1820416-Use-correct-FFVPX-headers-from-ffmpeg-6..patch")
-sha256sums=('84a4f3aba62df6e0451cdd28f8f1e59840d77c4062311947b0e59325c2ebdce8'
+sha256sums=('eb19185f7bfa5c3b0c73edaa57160b44bf3bb2139db83539809607486b8075d9'
   'SKIP'
   '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
   'SKIP'
@@ -176,22 +176,7 @@ END
 
   # Upstream patches from gentoo
   # PGO improvements
-  patch -Np1 -i "${_cachyos_patches_dir}"/gentoo/0016-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1819374
-  # sooooo this will get a bit ugly, but I don't even want to find out if
-  # things would break on Manjaro until they update ffmpeg as well, so let's just
-  # not think tooooo much about it:
-  _ffmpeg_ver=$(pacman -Qi ffmpeg | gawk '/Version/{print $3}')
-  _ffmpeg_ver="${_ffmpeg_ver#*:}"
-  _ffmpeg_ver="${_ffmpeg_ver%.*}"
-  if [ "${_ffmpeg_ver}" -gt 5 ]; then
-    patch -Np1 -i ../0001-Bug-1819374-Squashed-ffmpeg-6.0-update.patch
-
-    # https://bugs.archlinux.org/task/77796
-    # https://bugzilla.mozilla.org/show_bug.cgi?id=1820416
-    patch -Np1 -i ../0002-Bug-1820416-Use-correct-FFVPX-headers-from-ffmpeg-6..patch
-  fi
+  patch -Np1 -i "${_cachyos_patches_dir}"/gentoo/0015-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
 
   # Remove some pre-installed addons that might be questionable
   patch -Np1 -i "${_librewolf_patches_dir}"/remove_addons.patch
@@ -245,9 +230,6 @@ END
 
   # Update handler links
   patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/handlers.patch
-
-  # Remove unified extensions recommendations
-  patch -Np1 -i "${_librewolf_patches_dir}"/unified-extensions-dont-show-recommendations.patch
 
   # Fix telemetry removal, see https://gitlab.com/librewolf-community/browser/linux/-/merge_requests/17, for example
   patch -Np1 -i "${_librewolf_patches_dir}"/disable-data-reporting-at-compile-time.patch
