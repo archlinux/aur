@@ -1,6 +1,6 @@
 pkgbase = zip-password-finder
 	pkgdesc = Find the password of protected ZIP files
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/agourlay/zip-password-finder
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = zip-password-finder
 	makedepends = cargo
 	depends = bzip2
 	options = !lto
-	source = zip-password-finder-0.6.3.tar.gz::https://github.com/agourlay/zip-password-finder/archive/v0.6.3.tar.gz
-	sha512sums = dc5b7f65f4948b6608d894206c388b97f96a9f3fd640d46296e96de87e961edebecf6d673484c65ebf5ab9f33649a55fe6738c4c6142fed4aec8e165324d9c13
+	source = zip-password-finder-0.6.4.tar.gz::https://github.com/agourlay/zip-password-finder/archive/v0.6.4.tar.gz
+	sha512sums = b3d94b8c86af643cc99718181cd4408e5c11ad8d82f0ab4fe129730c92da57f4b2a8c00ecefb419c4b3c601d5d96852338eb4da1fb9f426e5e1243b50b0e4626
 
 pkgname = zip-password-finder
