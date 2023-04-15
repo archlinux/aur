@@ -1,12 +1,12 @@
 pkgbase = ziti-edge-tunnel
 	pkgdesc = The linux tunneller for your ZITI network.
-	pkgver = 0.19.11
+	pkgver = 0.20.9
 	pkgrel = 1
 	url = https://openziti.github.io/ziti/clients/linux.html
 	install = ziti-edge-tunnel.install
 	arch = x86_64
 	license = Apache-2.0
-	source = https://netfoundry.jfrog.io/artifactory/zitipax-openziti-deb-stable/pool/ziti-edge-tunnel/focal/ziti-edge-tunnel-0.19.11-1.deb
-	sha256sums = 76620c442f36527ae8932059a818dec422e84a783ec86ffba0c41650da41ad43
+	source = https://netfoundry.jfrog.io/artifactory/zitipax-openziti-deb-stable/pool/ziti-edge-tunnel/focal/ziti-edge-tunnel-0.20.9-1.deb
+	sha256sums = 725a6e7db87ce4dbb1338a947d6878073a6d99abb5b90fdac3caaf5be76845be
 
 pkgname = ziti-edge-tunnel
