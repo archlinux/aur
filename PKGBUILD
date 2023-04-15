@@ -1,6 +1,6 @@
 # Maintainer: KoNicks <konicksdev@gmail.com>
 pkgname=koffe
-pkgver=1.3.7
+pkgver=1.3.8
 pkgrel=1
 epoch=
 pkgdesc="simple tool for creating easy to use and offline-friendly arch installers with aur support"
@@ -9,7 +9,7 @@ url="https://github.com/konickss/koffe"
 license=('GPL')
 groups=()
 depends=(bash archiso pacman-contrib libnewt wget git)
-makedepends=(tar)
+makedepends=(git)
 checkdepends=()
 optdepends=()
 provides=()
