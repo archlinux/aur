@@ -1,24 +1,23 @@
 pkgbase = manjaro-zsh-config
-	pkgdesc = Zsh configuration used in Manjaro
-	pkgver = 0.22
+	pkgdesc = Zsh configuration for manjaro
+	pkgver = 0.25
 	pkgrel = 1
 	url = https://github.com/Chrysostomus/manjaro-zsh-config
 	install = manjaro-zsh-config.install
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = zsh-autosuggestions
 	depends = zsh-syntax-highlighting
 	depends = zsh-completions
 	depends = zsh-history-substring-search
 	depends = zsh
 	depends = pkgfile
-	depends = ttf-nerd-fonts-symbols
+	depends = ttf-noto-nerd
 	depends = zsh-theme-powerlevel10k
 	conflicts = grml-zsh-config
-	backup = usr/share/zsh/.zshrc
-	source = manjaro-zsh-config-737fba1290f15e8092b2c92dc78698d82a35c398.tar.gz::https://github.com/Chrysostomus/manjaro-zsh-config/archive/737fba1290f15e8092b2c92dc78698d82a35c398.tar.gz
-	source = fix_install.patch
-	sha256sums = 5e9ecd772cb73d34c2eb798db7007f1f63bdfb7c7c9a99022b735b46ac1adbcc
-	sha256sums = f886a9591e42cebdfc171aa2120cf1a2db9598c3be33631282b5c3fe3bd7a47f
+	backup = root/.zshrc
+	source = git+https://github.com/Chrysostomus/manjaro-zsh-config.git#commit=a09dbc3f6bf22d553def64247b3529d9310c7b1f
+	sha256sums = SKIP
 
 pkgname = manjaro-zsh-config
