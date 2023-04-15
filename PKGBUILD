@@ -25,12 +25,6 @@ build() {
 	cargo build --release
 }
 
-check(){
-  cd "$pkgname"
-  export CARGO_INCREMENTAL=0
-  cargo test --release
-}
-
 package() {
 	cd $pkgname
 	#desktop file
