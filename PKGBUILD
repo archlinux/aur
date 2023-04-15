@@ -31,6 +31,8 @@ package() {
 	install -Dm755 "binaries-source/catppuccinifier-gui/target/release/catppuccinifier-gui" "$pkgdir/usr/bin/catppuccinifier-gui"
 	mkdir -p "$HOME/.local/share/catppuccinifier"
 	cp -p -r "installation-files/flavors/" "$HOME/.local/share/catppuccinifier/flavors/"
-	install -Dm644 "installation-files/catppuccinifier.png" "/usr/share/icons/hicolor/512x512/apps/catppuccinifier.png"
-	install -Dm644 "installation-files/Catppuccinifier.desktop" "/usr/share/applications/Catppuccinifier.desktop"
+	install -Dm644 "installation-files/catppuccinifier.png" "$pkgdir/usr/share/$pkgname/catppuccinifier.png"
+	sed -i "s|Icon=.*|Icon=$_pkgname/usr/share/catppuccinifier.png|g" "installation-files/Catppuccinifier.desktop"
+	sed -i "s|Exec=.*|Exec=catppuccinifier-gui|g" "installation-files/Catppuccinifier.desktop"
+	install -Dm644 "installation-files/Catppuccinifier.desktop" "$pkgdir/usr/share/applications/$_pkgname/Catppuccinifier.desktop"
 }
