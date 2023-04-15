@@ -1,15 +1,15 @@
 # Maintainer: moonshadow565 <moonshadow565@hotmail.com>
+# Maintainer: Kuan-Yen Chou <kuanyenchou@gmail.com>
 
 pkgname=wine-lol-staging
 pkgver=8.5
 _winever=8.5
-pkgrel=2
+pkgrel=3
 pkgdesc='A compatibility layer for running Windows programs (staging branch) with LoL patches(abi.vsyscall32=0 version)'
 arch=('x86_64')
 url='https://www.wine-staging.com/'
 license=('LGPL')
 provides=('wine-lol')
-install=wine-lol-staging.install
 
 options=('staticlibs' '!lto' '!strip')
 
@@ -17,16 +17,16 @@ source=("git+https://github.com/wine-staging/wine-staging.git#tag=v${_winever}"
         "git+https://github.com/wine-mirror/wine.git#tag=wine-${_winever}"
         "0004-LoL-broken-client-update-fix.patch"
         "0005-LoL-client-slow-start-fix.patch"
-        "0007-ntdll-stub-NtSetInformationThread-ThreadPriority.patch"
         "0008-ntdll-nopguard-call_vectored_handlers.patch"
+        "0009-kernel32-dont-create-console-when-not-cui.patch"
         )
 
 sha256sums=('SKIP'
             'SKIP'
             '7607a84fd357a86bc8fb59d2cf002a3e471bd8ec78ecdb844b0b77b1ae6d11a0'
             '49dfbf7546c00958e2b426a61371eedf0119471e9998b354595d5c0ce6dab48b'
-            'fc4fba4db2f691e3686fa84dd81935f0eb183d7c5c1215aba33a575b42b38cb5'
             '2075ddc417ddd11954f76be753c88e04db28f0b3937e60508f178630dd5763eb'
+            'b19443ba1e01014ab478b03ac84797df2d481432798259371d94e4ba2e7b317c'
             )
 
 depends=(
@@ -103,28 +103,28 @@ prepare() {
     git -C wine config --local advice.detachedHead false
     git -C wine checkout wine-${_winever}
 
-    # apply all wine-staging patches
+    # RCS Launcher Optional, not necessary since 64bit update as only thing useful there is missing fonts patch
     printf '%s\n' '  -> Applying wine-staging patches...'
     cd "${srcdir}/wine"
     "${srcdir}/wine-staging/staging/patchinstall.py" --all
 
     cd "${srcdir}/wine"
 
-    # Something with resolving long paths and symlinks, might not be needed if you keep your install in sane place ???
+    # RCS Launcher, Something with resolving long paths and symlinks, needed confirmed 8.5
     printf 'Apply 0004-LoL-broken-client-update-fix\n'
     patch -Np1 < "${srcdir}/0004-LoL-broken-client-update-fix.patch"
 
-    # Hack for league to start in reasonable time
+    # LCU Launcher, Hack for league to start in reasonable time
     printf 'Apply 0005-LoL-client-slow-start-fix.patch\n'
     patch -Np1 < "${srcdir}/0005-LoL-client-slow-start-fix.patch"
 
-    # Properly stub ThreadPriority for NtSetInformationThread
-    printf 'Apply 0007-ntdll-stub-NtSetInformationThread-ThreadPriority.patch\n'
-    patch -Np1 < "${srcdir}/0007-ntdll-stub-NtSetInformationThread-ThreadPriority.patch"
-
-    # Add some nops around exception dispatch for pacman/stub.dll to be able to hook
+    # Game, Add some nops around exception dispatch for pacman/stub.dll to be able to hook
     printf 'Apply 0008-ntdll-nopguard-call_vectored_handlers.patch\n'
     patch -Np1 < "${srcdir}/0008-ntdll-nopguard-call_vectored_handlers.patch"
+
+    # Game Optional, only necessary when starting LoL.exe wine manually (e.g. when running .rofl files)
+    printf 'Apply 0009-kernel32-dont-create-console-when-not-cui.patch\n'
+    patch -Np1 < "${srcdir}/0009-kernel32-dont-create-console-when-not-cui.patch"
 }
 
 build() {

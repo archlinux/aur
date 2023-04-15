@@ -1,0 +1,20 @@
+diff --git a/dlls/kernelbase/console.c b/dlls/kernelbase/console.c
+index fa143857bc2..aa37d92ef70 100644
+--- a/dlls/kernelbase/console.c
++++ b/dlls/kernelbase/console.c
+@@ -2342,6 +2342,13 @@ void init_console( void )
+         if (RtlImageNtHeader( mod )->OptionalHeader.Subsystem == IMAGE_SUBSYSTEM_WINDOWS_CUI)
+             alloc_console( no_window );
+     }
+-    else if (params->ConsoleHandle && params->ConsoleHandle != CONSOLE_HANDLE_SHELL_NO_WINDOW)
+-        create_console_connection( params->ConsoleHandle );
++    else if (params->ConsoleHandle)
++    {
++        HMODULE mod = GetModuleHandleW( NULL );
++        if (params->ConsoleHandle != CONSOLE_HANDLE_SHELL_NO_WINDOW &&
++            RtlImageNtHeader( mod )->OptionalHeader.Subsystem == IMAGE_SUBSYSTEM_WINDOWS_CUI)
++            create_console_connection( params->ConsoleHandle );
++        else
++            params->ConsoleHandle = NULL;
++    }
+ }

@@ -1,9 +1,8 @@
 pkgbase = wine-lol-staging
 	pkgdesc = A compatibility layer for running Windows programs (staging branch) with LoL patches(abi.vsyscall32=0 version)
 	pkgver = 8.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.wine-staging.com/
-	install = wine-lol-staging.install
 	arch = x86_64
 	license = LGPL
 	makedepends = git
@@ -116,13 +115,13 @@ pkgbase = wine-lol-staging
 	source = git+https://github.com/wine-mirror/wine.git#tag=wine-8.5
 	source = 0004-LoL-broken-client-update-fix.patch
 	source = 0005-LoL-client-slow-start-fix.patch
-	source = 0007-ntdll-stub-NtSetInformationThread-ThreadPriority.patch
 	source = 0008-ntdll-nopguard-call_vectored_handlers.patch
+	source = 0009-kernel32-dont-create-console-when-not-cui.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 7607a84fd357a86bc8fb59d2cf002a3e471bd8ec78ecdb844b0b77b1ae6d11a0
 	sha256sums = 49dfbf7546c00958e2b426a61371eedf0119471e9998b354595d5c0ce6dab48b
-	sha256sums = fc4fba4db2f691e3686fa84dd81935f0eb183d7c5c1215aba33a575b42b38cb5
 	sha256sums = 2075ddc417ddd11954f76be753c88e04db28f0b3937e60508f178630dd5763eb
+	sha256sums = b19443ba1e01014ab478b03ac84797df2d481432798259371d94e4ba2e7b317c
 
 pkgname = wine-lol-staging
