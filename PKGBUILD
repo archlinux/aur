@@ -5,7 +5,7 @@
 # Based on emacs from [extra] and emacs-bzr from the AUR
 
 pkgname=emacs-lucid
-pkgver=28.1
+pkgver=28.2
 _pkgver_major=${pkgver/.*}
 pkgrel=1
 pkgdesc="The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)"
@@ -21,7 +21,6 @@ depends=(
   hicolor-icon-theme
   jansson
   lcms2
-  libgccjit
   librsvg
   libxfixes
   libxinerama
@@ -31,12 +30,12 @@ depends=(
 optdepends=(desktop-file-utils)
 conflicts=(emacs)
 provides=("emacs=$_pkgver_major")
-validpgpkeys=('17E90D521672C04631B1183EE78DAE0F3115E06B')
-options=(debug)
+validpgpkeys=('17E90D521672C04631B1183EE78DAE0F3115E06B'  # Eli Zaretskii <eliz@gnu.org>
+              'CEA1DE21AB108493CC9C65742E82323B8F4353EE') # Stefan Kangas <stefankangas@gmail.com>
 _source_url_prefix="ftp://ftp.gnu.org/gnu/emacs"
 source=(${_source_url_prefix}/emacs-$pkgver.tar.xz
         ${_source_url_prefix}/emacs-$pkgver.tar.xz.sig)
-sha256sums=('28b1b3d099037a088f0a4ca251d7e7262eab5ea1677aabffa6c4426961ad75e1'
+sha256sums=('ee21182233ef3232dc97b486af2d86e14042dbb65bbc535df562c3a858232488'
             'SKIP')
 
 build() {
@@ -49,7 +48,7 @@ build() {
  ./configure \
       --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib --localstatedir=/var \
       --with-x-toolkit=lucid --with-xft --without-gconf --without-gsettings \
-      --with-modules --with-native-compilation \
+      --with-modules \
       --program-transform-name='s/^ctags$/ctags.emacs/'
 
   make
