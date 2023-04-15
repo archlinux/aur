@@ -34,5 +34,5 @@ package() {
 	install -Dm644 "installation-files/catppuccinifier.png" "/usr/share/icons/hicolor/512x512/apps/catppuccinifier.png"
 	sed -i "s|Exec=.*|Exec=/usr/bin/catppuccinifier-gui|g" "installation-files/Catppuccinifier.desktop"
 	sed -i "s|Icon=.*|Icon=/usr/share/icons/hicolor/512x512/apps/catppuccinifier.png|g" "installation-files/Catppuccinifier.desktop"
-	install -Dm644 "installation-files/Catppuccinifier.desktop" "/usr/share/applications/catppuccinifier.desktop"
+	cp -p "installation-files/Catppuccinifier.desktop" "/usr/share/applications/catppuccinifier.desktop"
 }
