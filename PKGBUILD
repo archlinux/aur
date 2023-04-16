@@ -24,9 +24,9 @@ source=("License.rtf"
   "post.install"
   "find_matching_sha512.py"
   # GPG signature check
-  "Release::https://repo.teamxlink.co.uk/debian/Release"
-  "Release.sig::https://repo.teamxlink.co.uk/debian/Release.gpg"
-  "Packages::https://repo.teamxlink.co.uk/debian/Packages")
+  "Release::https://dist.teamxlink.co.uk/linux/debian/static/deb/release/Release"
+  "Release.sig::https://dist.teamxlink.co.uk/linux/debian/static/deb/release/Release.gpg"
+  "Packages::https://dist.teamxlink.co.uk/linux/debian/static/deb/release/Packages")
   
 sha512sums=(
   "0cba12b15954a929b9811a211c200aec4bcea2ea864aced78663077ab203665d4c4d2ec5f300d6acc365dc31554ec11c15de633f32271c3dd995ef1c06b4c199"
