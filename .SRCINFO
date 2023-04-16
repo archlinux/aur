@@ -1,7 +1,7 @@
 pkgbase = soloud
 	pkgdesc = Free, easy, portable audio engine for games
 	pkgver = 20200207
-	pkgrel = 1
+	pkgrel = 2
 	url = http://soloud-audio.com/
 	arch = x86_64
 	license = zlib
