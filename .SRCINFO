@@ -12,6 +12,7 @@ pkgbase = libwb-git
 	provides = libwb
 	conflicts = libwb
 	replaces = libwb
+        url = https://github.com/nicholascw/libwb
 	source = libwb::git+https://github.com/nicholascw/libwb#branch=master
 	md5sums = SKIP
 
