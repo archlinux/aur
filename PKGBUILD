@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=simple64
-pkgver=2023.02.3
+pkgver=2023.04.11
 pkgrel=1
 pkgdesc='Nintendo64 emulator based on Mupen64Plus'
 arch=('x86_64')
