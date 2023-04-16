@@ -2,7 +2,7 @@
 
 pkgname=mesa-rusticl-git
 pkgdesc="An open-source implementation of the OpenGL specification, with Rusticl"
-pkgver=23.2.0_devel.169785.8adea15f913.d41d8cd98f00b204e9800998ecf8427e
+pkgver=23.2.0_devel.169786.22a218b1323.d41d8cd98f00b204e9800998ecf8427e
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
