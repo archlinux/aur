@@ -1,6 +1,6 @@
 pkgbase = electra-git
 	pkgdesc = Electra is an esolang where you code like an electrician
-	pkgver = 2.0.0.1.gc7a8449
+	pkgver = 2.0.0.7.gf1134c9
 	pkgrel = 1
 	url = https://github.com/DolphyWind/Electra-Lang.git
 	arch = x86_64
