@@ -16,8 +16,9 @@ sha256sums=('SKIP'
             'ac2d984d9c86da3a7af523e99b3f31796b8063c60056319d61688fd3cc8c4766')
 
 pkgver() {
-  cd "${pkgname%-git}"
-  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 }
 
 package() {
