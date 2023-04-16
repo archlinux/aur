@@ -1,7 +1,7 @@
 # Maintainer: Devin J. Pohly <djpohly+arch@gmail.com>
 pkgname=dwl
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple, hackable dynamic tiling Wayland compositor (dwm for Wayland)"
 arch=('x86_64')
 url="https://github.com/djpohly/dwl"
@@ -21,7 +21,7 @@ prepare() {
 		cp -f "$srcdir/config.h" config.h
 	fi
 	# Uncomment to compile with XWayland support
-	#sed -i -e '/-DXWAYLAND/s/^#//' config.mk
+	#sed -i -e '/-DXWAYLAND\|xcb/s/^#//' config.mk
 }
 
 build() {
