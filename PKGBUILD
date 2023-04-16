@@ -10,7 +10,6 @@ url="https://gitlab.com/Antiquete/mmconneqt"
 license=('GPL3')
 depends=(qt5-base)
 makedepends=(git)
-optdepends=()
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=(mmconneqt.desktop "git+$url.git")
