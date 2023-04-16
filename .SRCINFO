@@ -1,0 +1,15 @@
+pkgbase = torguard-git
+	pkgdesc = TorGuard VPN Software Stay private online with TorGuard's anonymous VPN software and connect to 37+ countries worldwide.
+	pkgver = 4.8.17_build.242.1+gcefc4e9
+	pkgrel = 1
+	url = www.torguard.com
+	install = torguard.install
+	arch = x86_64
+	license = custom
+	depends = iproute2
+	depends = psmisc
+	depends = libxkbcommon-x11
+	source = https://updates.torguard.biz/Software/Linux/torguard-v4.8.17_build.242.1+gcefc4e9-amd64-arch.tar.gz
+	md5sums = cca87d9ccab440c9e7cc5b3d7af09df6
+
+pkgname = torguard-git
