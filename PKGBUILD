@@ -49,7 +49,7 @@ sha512sums_aarch64=('SKIP')
 source_armv7h=("${_repo}/armhf/${pkgname}_${pkgver}_${_commit}_armhf.deb")
 sha512sums_armv7h=('SKIP')
   
-validpgpkeys=("1FDCB4DDF9D85AC5C07C742DB203A80C260BB20F") # Team XLink <crunchbite@teamxlink.co.uk>
+validpgpkeys=("331758B25E06C0D9C7F50089746ED0A3182A4B05") # Team XLink <crunchbite@teamxlink.co.uk>
 
 prepare() {
   ARCH=$CARCH
@@ -79,9 +79,9 @@ prepare() {
   sha512sum -c "Packages.sha512"
 
   # Validate debian package hash from the Packages file
-  ./find_matching_sha512.py $pkgname ${pkgver}-${_commit} $DEBIAN_ARCH Packages  \
-    > "${pkgname}-${pkgver}-${_commit}-$DEBIAN_ARCH.deb.sha512"
-          sha512sum -c "${pkgname}-${pkgver}-${_commit}-$DEBIAN_ARCH.deb.sha512"
+  ./find_matching_sha512.py $pkgname ${pkgver}_${_commit} $DEBIAN_ARCH Packages  \
+    > "${pkgname}-${pkgver}_${_commit}-$DEBIAN_ARCH.deb.sha512"
+          sha512sum -c "${pkgname}-${pkgver}_${_commit}-$DEBIAN_ARCH.deb.sha512"
 }
 
 package() { 
