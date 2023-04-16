@@ -2,7 +2,7 @@
 
 pkgname="git-cm-git"
 _pkgname=${pkgname%-git}
-pkgver="0.2.3.r3.g67cb397"
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Easily create conventional-commits friendly commit messages for git"
 arch=("x86_64")
@@ -17,11 +17,14 @@ sha512sums=("SKIP")
 
 pkgver() {
     cd "${pkgname}"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --tags --abbrev=0 --match 'v*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
     cd "${pkgname}"
+
+    git reset --hard "$(git describe --tags --abbrev=0 --match 'v*')"
+
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 

@@ -1,6 +1,6 @@
 pkgbase = git-cm-git
 	pkgdesc = Easily create conventional-commits friendly commit messages for git
-	pkgver = 0.2.3.r3.g67cb397
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/mainrs/git-cm
 	arch = x86_64
