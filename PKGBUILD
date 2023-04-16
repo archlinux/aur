@@ -1,7 +1,7 @@
 # Maintainer: Samsagax <samsagax at gmail dot com>
 _pkgbase=chimeraos-device-quirks
 pkgname=${_pkgbase}-git
-pkgver=r24.34bf651
+pkgver=r32.c79de54
 pkgrel=1
 pkgdesc="A collection of device specific configuration files"
 arch=('any')
@@ -36,27 +36,32 @@ package() {
 	python -m installer --destdir="$pkgdir" dist/*.whl
 
 	# Install module tweaks
-	install -m644 -D -t "${pkgdir}/usr/lib/modprobe.d/" usr/lib/modprobe.d/*
-	install -m644 -D -t "${pkgdir}/usr/lib/modules-load.d/" usr/lib/modules-load.d/*
+	install -v -m644 -D -t "${pkgdir}/usr/lib/modprobe.d/" usr/lib/modprobe.d/*
+	install -v -m644 -D -t "${pkgdir}/usr/lib/modules-load.d/" usr/lib/modules-load.d/*
 
 	# Install udev tweaks
-	install -m644 -D -t "${pkgdir}/usr/lib/udev/rules.d/" usr/lib/udev/rules.d/*
-	install -m644 -D -t "${pkgdir}/usr/lib/udev/hwdb.d/" usr/lib/udev/hwdb.d/*
+	install -v -m644 -D -t "${pkgdir}/usr/lib/udev/rules.d/" usr/lib/udev/rules.d/*
+	install -v -m644 -D -t "${pkgdir}/usr/lib/udev/hwdb.d/" usr/lib/udev/hwdb.d/*
 
 	# Install systemd units
-	install -m644 -D -t "${pkgdir}/usr/lib/systemd/user/" usr/lib/systemd/user/*
+	install -v -m644 -D -t "${pkgdir}/usr/lib/systemd/user/" usr/lib/systemd/user/*
+	install -v -m644 -D -t "${pkgdir}/usr/lib/systemd/system/" usr/lib/systemd/system/*
+
+	# Install firmware DSDT and EDID
+	install -v -m644 -D -t "${pkgdir}/usr/lib/firmware/dsdt/" usr/lib/firmware/dsdt/*
+	install -v -m644 -D -t "${pkgdir}/usr/lib/firmware/edid/" usr/lib/firmware/edid/*
 
 	# Install sysctl configurations
-	install -m644 -D -t "${pkgdir}/usr/lib/sysctl.d/" usr/lib/sysctl.d/*
+	install -v -m644 -D -t "${pkgdir}/usr/lib/sysctl.d/" usr/lib/sysctl.d/*
 
-	# Install device scripts
-	mkdir -p "${pkgdir}/etc"
-	cp -R "etc/device-quirks/" "${pkgdir}/etc/device-quirks/"
+	# Install sysctl configurations
+	install -v -m644 -D -t "${pkgdir}/usr/lib/sysctl.d/" usr/lib/sysctl.d/*
 
-	# Install firmware files
-	install -m644 -D -t  "${pkgdir}/usr/lib/firmware/dsdt/" usr/lib/firmware/dsdt/*
-	install -m644 -D -t  "${pkgdir}/usr/lib/firmware/edid/" usr/lib/firmware/edid/*
+	# Install bin and scripts
+	install -v -m755 -D -t "${pkgdir}/usr/bin/" usr/local/bin/*
+	mkdir -p "${pkgdir}/etc/device-quirks"
+	cp -rv etc/device-quirks/* "${pkgdir}/etc/device-quirks/."
 
 	# Install license
-	install -m644 -D -t "${pkgdir}/usr/share/licenses/${_pkgbase}/" LICENSE
+	install -v -m644 -D -t "${pkgdir}/usr/share/licenses/${_pkgbase}/" LICENSE
 }
