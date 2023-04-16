@@ -11,6 +11,7 @@ depends=()
 provides=('catppuccinifier')
 conflicts=('catppuccinifier')
 makedepends=('git' 'cargo')
+depends=('imagemagick')
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
