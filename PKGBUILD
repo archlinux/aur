@@ -1,6 +1,6 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-etoile
-pkgver=22.0.1
+pkgver=22.0.2
 pkgrel=1
 pkgdesc='Typeface family designed for coding, terminal use and technical documents.'
 arch=('any')
@@ -8,7 +8,7 @@ url='https://typeof.net/Iosevka/'
 license=('OFL')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/ttf-iosevka-etoile-${pkgver}.zip"
         "${pkgname}-${pkgver}-${pkgrel}-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v${pkgver}/LICENSE.md")
-sha256sums=('67c6f2a60b6fba8d32ae45d0b75ed75ad4f93e15c34a027e5e01165dc56b2589'
+sha256sums=('4b95893be945738a05f0b3e64dea7856e58ac0f88d20f781aaa4939e34e266ac'
             '7484961b97b41985d54c21700e53f7142a7007d72401acbd32c0b9c6a5a0b558')
 
 package() {
