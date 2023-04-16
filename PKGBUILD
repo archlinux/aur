@@ -5,8 +5,7 @@
 
 pkgname=radium7
 pkgver=7.1.89
-_pkgver=7.8.89
-pkgrel=1
+pkgrel=2
 pkgdesc='A graphical music editor. A next generation tracker.'
 arch=(x86_64)
 url=https://users.notam02.no/~kjetism/radium
@@ -71,14 +70,14 @@ optdepends=(
   'vst-plugins: more plugins'
 )
 options=( !strip )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/kmatheussen/radium/archive/$_pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/kmatheussen/radium/archive/$pkgver.tar.gz"
 				add-vstsdk-location-var.patch
 				build_libpds.patch
 				radium.install
 				grep.patch
 				build_linux_common.patch
 )
-sha256sums=('1591275279ea053c768085682ea02a82bb0a38607b476d19686b050d78ec2df5'
+sha256sums=('5db084512812519218e3101c84f24f0f84fda54af9e92c19a20cb224f08a482c'
             'ed456586a1f28eec9acd081a676e61145e13f07c1a6e967c0af1f7d08be4023e' 
             '2f145e84c5940f4f82544ae68e668d5bd02ee7bce559d3354f60d12eaea1a548' 
             'f627730ff7a819e8cc5ac5c2b5f1fb2f2237327db6ea5442c55a23c1ce82ef14'
@@ -88,7 +87,7 @@ sha256sums=('1591275279ea053c768085682ea02a82bb0a38607b476d19686b050d78ec2df5'
 install=radium.install
 
 prepare() {
-  cd radium-$_pkgver
+  cd radium-$pkgver
   #sed "/grep [^\-]*\\\ /s/grep \([^\]*\)\\\ \([^ ]*\)/grep \"\1 \2\"/p" -i check_dependencies.sh
   patch -p0 < "$srcdir/grep.patch"
 
@@ -109,14 +108,14 @@ prepare() {
 }
 
 build() {
-  cd radium-$_pkgver
+  cd radium-$pkgver
 
   RADIUM_QT_VERSION=5 RADIUM_VST2SDK_PATH=/usr/include/vst36 RADIUM_BUILD_LIBXCB=0 make packages
   RADIUM_QT_VERSION=5 RADIUM_VST2SDK_PATH=/usr/include/vst36 BUILDTYPE=RELEASE ./build_linux.sh
 }
 
 package() {
-  cd radium-$_pkgver
+  cd radium-$pkgver
 
   # Install radium and its packages to /opt
   RADIUM_INSTALL_LIBXCB=0 ./install.sh "$pkgdir/opt"
