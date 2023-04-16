@@ -14,7 +14,7 @@ pkgbase = gitwife-git
 	optdepends = nano: default editor for the makefiles
 	provides = gitwife
 	conflicts = gitwife
-	source = git+https://gitlab.com/Teddy-Kun/gitwife/
+	source = git+https://gitlab.com/Teddy-Kun/gitwife.git/
 	sha256sums = SKIP
 
 pkgname = gitwife-git
