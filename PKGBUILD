@@ -8,8 +8,6 @@ pkgver=2.24.33
 pkgrel=3
 pkgdesc="GTK2 patched with ahodesuka's filechooser-icon-view patch"
 url="https://github.com/Dudemanguy/gtk/tree/gtk2-filechooser-icon-view"
-provides=(gtk2=$pkgver libgailutil.so libg{d,t}k-x11-2.0.so)
-conflicts=('gtk2')
 arch=(x86_64)
 depends=(
   atk
@@ -38,9 +36,11 @@ optdepends=(
   'python: gtk-builder-convert'
 )
 provides=(
+  gtk2=$pkgver
   libgailutil.so
   libg{d,t}k-x11-2.0.so
 )
+conflicts=('gtk2')
 license=('LGPL')
 install=gtk2.install
 _commit=68631945733158f164427db84f01301d7e875763  # tags/2.24.33^0

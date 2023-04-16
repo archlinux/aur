@@ -26,6 +26,7 @@ pkgbase = gtk2-patched-filechooser-icon-view
 	optdepends = adwaita-icon-theme: Default icon theme
 	optdepends = gnome-themes-standard: Default widget theme
 	optdepends = python: gtk-builder-convert
+	provides = gtk2=2.24.33
 	provides = libgailutil.so
 	provides = libgdk-x11-2.0.so
 	provides = libgtk-x11-2.0.so
