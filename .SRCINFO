@@ -24,12 +24,12 @@ pkgbase = xlinkkai
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	source_x86_64 = https://repo.teamxlink.co.uk/debian/amd64/xlinkkai_7.4.44-632903458_amd64.deb
+	source_x86_64 = https://dist.teamxlink.co.uk/linux/debian/static/deb/release/amd64/xlinkkai_7.4.44-632903458_amd64.deb
 	sha512sums_x86_64 = SKIP
-	source_i486 = https://repo.teamxlink.co.uk/debian/i386/xlinkkai_7.4.44-632903458_i386.deb
-	source_aarch64 = https://repo.teamxlink.co.uk/debian/aarch64/xlinkkai_7.4.44-632903458_aarch64.deb
+	source_i486 = https://dist.teamxlink.co.uk/linux/debian/static/deb/release/i386/xlinkkai_7.4.44-632903458_i386.deb
+	source_aarch64 = https://dist.teamxlink.co.uk/linux/debian/static/deb/release/aarch64/xlinkkai_7.4.44-632903458_aarch64.deb
 	sha512sums_aarch64 = SKIP
-	source_armv7h = https://repo.teamxlink.co.uk/debian/armhf/xlinkkai_7.4.44-632903458_armhf.deb
+	source_armv7h = https://dist.teamxlink.co.uk/linux/debian/static/deb/release/armhf/xlinkkai_7.4.44-632903458_armhf.deb
 	sha512sums_armv7h = SKIP
 
 pkgname = xlinkkai

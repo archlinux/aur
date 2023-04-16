@@ -9,7 +9,7 @@ pkgdesc='XLink Kai is a global gaming network - that allows you to play system-l
 
 url='https://www.teamxlink.co.uk/'
 
-_repo='https://repo.teamxlink.co.uk/debian'
+_repo='https://dist.teamxlink.co.uk/linux/debian/static/deb/release'
 
 arch=('x86_64' 'i486' 'aarch64' 'armv7h')
 
