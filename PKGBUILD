@@ -2,17 +2,17 @@
 
 pkgname=timeswitch-git
 pkgver=0.1.1.r1.gce836d6
-pkgrel=1
+pkgrel=2
 pkgdesc='Power off, reboot, suspend or send a notification on timer.'
 arch=(any)
 url=https://github.com/fsobolev/${pkgname%-git}
 license=(MIT)
-depends=(gtk4 libadwaita python python-gobject)
+depends=(gsound gtk4 libadwaita python python-gobject)
 makedepends=(git meson)
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("git+$url.git")
-b2sums=('SKIP')
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
+source=(git+$url.git)
+b2sums=(SKIP)
 
 pkgver() {
 	cd ${pkgname%-git}

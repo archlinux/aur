@@ -1,7 +1,7 @@
 pkgbase = timeswitch-git
 	pkgdesc = Power off, reboot, suspend or send a notification on timer.
 	pkgver = 0.1.1.r1.gce836d6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fsobolev/timeswitch
 	arch = any
 	license = MIT
