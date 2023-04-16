@@ -5,7 +5,7 @@
 
 _pkgname=pamac
 pkgname=${_pkgname}-all
-pkgver=10.5.0
+pkgver=10.5.1
 pkgrel=1
 _pkgfixver=$pkgver
 
@@ -21,7 +21,7 @@ provides=("pamac=$pkgver-$pkgrel")
 options=(!emptydirs)
 install='pamac.install'
 source=("pamac-$pkgver.tar.gz::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.gz") 
-sha256sums=('66f724bce7ab37481f1d51e385c9c38c39e2f0426d1ebb121a15317df1b92920')
+sha256sums=('97dd93d2cf56999c7d96f08aeb18ab54b704adb41c7a2c6f856aa9e376986bc9')
 
 _srcdir="$_pkgname-v$pkgver"
 
