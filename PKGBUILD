@@ -3,23 +3,30 @@
 
 pkgname=cmake-lint
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Check for coding style issues in CMake files"
-arch=('any')
+arch=(any)
 url="https://github.com/cmake-lint/cmake-lint"
-license=('Apache')
-depends=('python')
-makedepends=('python-setuptools')
+license=(Apache)
+depends=(
+  python-setuptools
+  python-importlib-metadata
+)
+
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('bf060987c74e07890f7314a4832c2e54ffb9c5c1e6d799387bc438010f918676')
 
+_archive="$pkgname-$pkgver"
+
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$_archive"
+
   python setup.py build
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$_archive"
+
   export PYTHONHASHSEED=0
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
