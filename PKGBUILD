@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=nurl
-pkgver=0.3.10
+pkgver=0.3.11
 pkgrel=1
 pkgdesc='Generate Nix fetcher calls from repository URLs'
 url='https://github.com/nix-community/nurl'
@@ -10,8 +10,8 @@ arch=('x86_64' 'i686' 'arm' 'aarch64')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nix-community/nurl/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('89845457a71557ba0f76209605536eb2f23317bf99567e36f28d2716ecf8dc9c')
-b2sums=('af3a2b43cc4b6f3230053dd318ee9713c38322ab22265513f9cbf8bd23b650866f2acb1b2652eb8d292c01e3473e1425a3ae7b8e7355fc6aeb623f955375f1f3')
+sha256sums=('3f877f1a2dc51060227bf64660e1d9b86c1d441f403551f7069b14375a6e28ef')
+b2sums=('95d1759fe2beb3252292cc599e23370fa249f6abf94bb202908369bfc1400dacb74ab23f95966110eff808f198487e8dafcba3a242eaed66f62c3768bbb11336')
 
 case $CARCH in
   x86_64|i686|aarch64)
@@ -32,6 +32,12 @@ build() {
   CARGO_TARGET_DIR='target' \
     cargo build --frozen --release
 }
+
+# check() {
+#   cd "$pkgname-$pkgver"
+#
+#   cargo test --frozen
+# }
 
 package() {
   cd "$pkgname-$pkgver"
