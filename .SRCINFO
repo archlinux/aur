@@ -1,7 +1,7 @@
 pkgbase = camotics
 	pkgdesc = 3-axis NC machining simulation software
-	pkgver = 1.2.0
-	pkgrel = 4
+	pkgver = 1.3.0
+	pkgrel = 1
 	url = https://camotics.org/
 	arch = x86_64
 	license = GPL2
@@ -9,13 +9,11 @@ pkgbase = camotics
 	makedepends = python-six
 	makedepends = qt5-tools
 	makedepends = cbang
-	depends = v8-3.14
+	depends = v8-r
 	depends = qt5-websockets
 	depends = cairo
 	depends = desktop-file-utils
-	source = camotics-1.2.0.tar.gz::https://github.com/CauldronDevelopmentLLC/camotics/archive/v1.2.0.tar.gz
-	source = 0001_python3_and_scons.patch
-	sha256sums = f5203d2bbd32c4e347a8f79122e57b2deea68e6c5bd4f0be4087c4d62a31c8a4
-	sha256sums = efd61c32d9adffffe73672effbcdcedcedcc14693c797ac4d93574ac4e20c1b9
+	source = camotics-1.3.0.tar.gz::https://github.com/CauldronDevelopmentLLC/camotics/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = d863781be2a5f4af8d9594e95cb6a752a67e034985dc522c7a95ddb4238150be
 
 pkgname = camotics

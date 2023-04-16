@@ -2,14 +2,14 @@
 # Contributor: Justin R. St-Amant <jstamant24 at gmail dot  com>
 
 pkgname=camotics
-pkgver=1.2.0
-pkgrel=4
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="3-axis NC machining simulation software"
 arch=('x86_64')
 url="https://camotics.org/"
 license=('GPL2')
 depends=(
-  'v8-3.14'
+  'v8-r'
   'qt5-websockets'
   'cairo'
   'desktop-file-utils'
@@ -21,25 +21,22 @@ makedepends=(
   'cbang'
 )
 source=(
-  "$pkgname-$pkgver.tar.gz::https://github.com/CauldronDevelopmentLLC/$pkgname/archive/v$pkgver.tar.gz"
-  "0001_python3_and_scons.patch"
+  "$pkgname-$pkgver.tar.gz::https://github.com/CauldronDevelopmentLLC/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('f5203d2bbd32c4e347a8f79122e57b2deea68e6c5bd4f0be4087c4d62a31c8a4'
-            'efd61c32d9adffffe73672effbcdcedcedcc14693c797ac4d93574ac4e20c1b9')
+sha256sums=('d863781be2a5f4af8d9594e95cb6a752a67e034985dc522c7a95ddb4238150be')
 
 prepare() {
   cd "CAMotics-$pkgver"
-	patch -p1 -i "../0001_python3_and_scons.patch"
 }
 
 build() {
   cd "CAMotics-$pkgver"
-  CBANG_HOME=/opt/cbang scons linkflags=$LDFLAGS
+  CBANG_HOME=/opt/cbang scons cxxstd="c++17" linkflags="$LDFLAGS"
 }
 
 package() {
   cd "CAMotics-$pkgver"
-  CBANG_HOME=/opt/cbang scons install install_prefix="$pkgdir/usr"
+  CBANG_HOME=/opt/cbang scons cxxstd="c++17" install install_prefix="$pkgdir/usr"
 
   install -d "$pkgdir/usr/share/$pkgname"/tpl_lib
   cp -a tpl_lib/ "$pkgdir/usr/share/$pkgname"
