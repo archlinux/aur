@@ -7,15 +7,15 @@
 # This PKGBUILD is maintained on github:
 # https://github.com/michaellass/AUR
 
-_majorver=20
-_completever=20
-_updatever=36
+_majorver=18
+_completever=18.0.2.1
+_updatever=1
 pkgrel=1
 pkgver=${_completever}.u${_updatever}
 _tag_ver=${_completever}+${_updatever}
 _versuffix=U
 
-pkgname=jdk-temurin
+pkgname=jdk18-temurin
 pkgdesc="Temurin (OpenJDK ${_majorver} Java binaries by Adoptium, formerly AdoptOpenJDK)"
 arch=('x86_64')
 url='https://adoptium.net/'
@@ -54,17 +54,17 @@ backup=(etc/java-temurin/logging.properties
         etc/java-temurin/security/policy/unlimited/default_local.policy
         etc/java-temurin/security/policy/unlimited/default_US_export.policy
         etc/java-temurin/sound.properties)
-install=install_jdk-temurin.sh
+install=install_jdk18-temurin.sh
 options=(!strip)
 
 source=(https://github.com/adoptium/temurin${_majorver}-binaries/releases/download/jdk-${_tag_ver/+/%2B}/OpenJDK${_majorver}${_versuffix}-jdk_x64_linux_hotspot_${_tag_ver/+/_}.tar.gz
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
-sha256sums=('fb6000faf47fffcda8caf01f60097d582728a6fffb6c1b85c8075c674f0c9281'
-            '82b3b6b982a59738e9a97540672d0867bc5415f929e7f8b9c36840544cfaea32'
-            'a18f6c0eb5adf2da8dffd16b354583a0d351656c9995f0e1b7eca8c3a859f823'
-            '6db0c5a77bef9284af1275720e0cf4c0c4ad952ac8d1e6d5ffeeb28feb4b50a4')
+sha256sums=('7d6beba8cfc0a8347f278f7414351191a95a707d46b6586e9a786f2669af0f8b'
+            'ea75ce65e1393a91fcb83beed3b84759a88bbe9df1ab4efa440062bbd2fe6c1f'
+            '36b2ff191c81ce5eef9e1eed2acc54dba78b2bcdf47532607f0cc9302503a265'
+            'b73453a639017037627d926cf2179d1c7e296d9c0804747848d1c799ca38652c')
 
 _jvmdir=/usr/lib/jvm/java-${_majorver}-temurin
 _jdkdir=jdk-${_tag_ver}
@@ -103,5 +103,4 @@ package() {
       "${srcdir}/freedesktop-${f}.desktop" \
       "${pkgdir}/usr/share/applications/${f}-${pkgname}.desktop"
   done
-
 }

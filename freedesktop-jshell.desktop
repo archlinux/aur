@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=Temurin Java 20 Shell
-Comment=Temurin Java 20 Shell
+Name=Temurin Java 18 Shell
+Comment=Temurin Java 18 Shell
 Keywords=java;shell
-Exec=/usr/lib/jvm/java-20-temurin/bin/jshell
+Exec=/usr/lib/jvm/java-18-temurin/bin/jshell
 Terminal=true
 Type=Application
 Categories=Application;System;

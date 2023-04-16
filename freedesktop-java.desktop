@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=Temurin Java 20 Runtime
-Comment=Temurin Java 20 Runtime
+Name=Temurin Java 18 Runtime
+Comment=Temurin Java 18 Runtime
 Keywords=java;runtime
-Exec=/usr/lib/jvm/java-20-temurin/bin/java -jar
+Exec=/usr/lib/jvm/java-18-temurin/bin/java -jar
 Terminal=false
 Type=Application
 MimeType=application/x-java-archive;application/java-archive;application/x-jar;
