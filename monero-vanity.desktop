@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=monero-vanity
+GenericName=Address Generator
+Comment=Monero Vanity Address Generator GUI/CLI
+Exec=monero-vanity
+Icon=/usr/share/pixmaps/monero-vanity.png
+Type=Application
+Categories=Utility

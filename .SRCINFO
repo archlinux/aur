@@ -1,0 +1,16 @@
+pkgbase = monero-vanity-git
+	pkgdesc = Monero Vanity Address Generator GUI/CLI
+	pkgver = 0.5.0.91ba6b1
+	pkgrel = 1
+	url = https://github.com/hinto-janai/monero-vanity
+	arch = x86_64
+	license = custom
+	makedepends = git
+	provides = monero-vanity
+	conflicts = monero-vanity-bin
+	source = git+https://github.com/hinto-janai/monero-vanity.git
+	source = monero-vanity.desktop
+	sha512sums = SKIP
+	sha512sums = 978594ecf63f305b2162ce0316b8a783dfb0e161dad4fbfaac7425ef0346b55e772defa53eb112f5af99979db22c4082c9b70f0e6766df46330422aa9e2c2884
+
+pkgname = monero-vanity-git
