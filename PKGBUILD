@@ -1,7 +1,7 @@
 # Maintainer: Antiquete <antiquete@proton.me>
 
 pkgname=mmconneqt-git
-pkgver=v0.1.1.r2.gc61b42a
+pkgver=0.1.1.r3.gf569d41
 pkgrel=1
 pkgdesc="A simple qt based wrapper gui for ModemManager"
 arch=('x86_64')
