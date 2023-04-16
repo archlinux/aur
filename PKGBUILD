@@ -1,6 +1,6 @@
 # Maintainer: Minecodes <minecodes at minecodes.de>
 pkgname=shortcuts-bin
-pkgver=v1.0.0
+pkgver=v1.0.1
 pkgrel=2
 pkgdesc="A tool for getting shortcuts & commands for commands"
 arch=('x86_64')
