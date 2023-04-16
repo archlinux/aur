@@ -2,7 +2,7 @@ Author: Florian Müllner <fmuellner@gnome.org>
 Source: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2702
 Editor: Mingi Sung <FiestaLake@protonmail.com>
 Commit: 770a72f4469adae6060922175fe92dc9d7eec5f1
-Last Updated: 2/23/23 (Mutter 43.3+r2+g12ce58dba-1)
+Last Updated: 4/16/23 (Mutter 1:43.4+r3+g951b2a98b-1)
 ---
 
 Since meson 0.57, the gnome module includes a function we can
@@ -17,7 +17,7 @@ index 07460c0f1..29cc1a6d1 100644
 +++ b/meson.build
 @@ -1,6 +1,6 @@
  project('mutter', 'c',
-   version: '43.3',
+   version: '43.4',
 -  meson_version: '>= 0.55.0',
 +  meson_version: '>= 0.58.0',
    license: 'GPLv2+'
