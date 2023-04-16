@@ -11,7 +11,7 @@
 
 pkgname=webcord-vencord-git
 pkgver=4.2.0.r845.66c71e5
-pkgrel=4
+pkgrel=5
 pkgdesc="A Discord and Fosscord client made with the Electron (master branch with Vencord)."
 arch=("any")
 
