@@ -1,0 +1,13 @@
+pkgbase = goddns
+	pkgdesc = A dynamic DNS client written in golang
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/Equationzhao/GodDns
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	backup = etc/goddns/config.conf
+	source = goddns-0.1.8.tar.gz::https://github.com/Equationzhao/GodDns/archive/refs/tags/v0.1.8.tar.gz
+	sha256sums = 8a57489ce99330abbd1424c9f25b2681fd58345c2fd1792262323c7da1d55773
+
+pkgname = goddns
