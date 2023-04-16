@@ -1,0 +1,8 @@
+diff --color --unified --recursive --text package.orig/dependencies.cmake package.new/dependencies.cmake
+--- package.orig/dependencies.cmake	2023-04-16 22:59:17.966418173 +0800
++++ package.new/dependencies.cmake	2023-04-16 23:03:36.365369675 +0800
+@@ -1,2 +1,2 @@
+-set(PLATFORM_LIBS SDL2 usb)
++set(PLATFORM_LIBS SDL2 usb usb-1.0)
+ set(PLATFORM_INCLUDES ${SDL2_INCLUDE_DIRS})
+\ 檔案末沒有 newline 字元
