@@ -1,7 +1,7 @@
 pkgbase = manjaro-zsh-config
 	pkgdesc = Zsh configuration for manjaro
 	pkgver = 0.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Chrysostomus/manjaro-zsh-config
 	install = manjaro-zsh-config.install
 	arch = any
