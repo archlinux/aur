@@ -3,7 +3,7 @@
 pkgname=mmconneqt-git
 pkgver=v0.1.1.r2.gc61b42a
 pkgrel=1
-pkgdesc="A simple Qt based gui for ModemManager"
+pkgdesc="A simple qt based wrapper gui for ModemManager"
 arch=('x86_64')
 url="https://gitlab.com/Antiquete/mmconneqt"
 license=('GPL3')
