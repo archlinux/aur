@@ -2,7 +2,7 @@
 
 pkgname=manjaro-zsh-config
 pkgver=0.25
-pkgrel=2
+pkgrel=3
 pkgdesc="Zsh configuration for manjaro"
 arch=('any')
 url="https://github.com/Chrysostomus/manjaro-zsh-config"
@@ -16,7 +16,6 @@ depends=('zsh-autosuggestions'
 	'ttf-noto-nerd'
 	'zsh-theme-powerlevel10k')
 makedepends=('git')
-backup=('root/.zshrc')
 install="$pkgname.install"
 _commit=a09dbc3f6bf22d553def64247b3529d9310c7b1f
 source=("git+${url}.git#commit=${_commit}")
@@ -31,7 +30,6 @@ package() {
 	install -D -m644 p10k-portable.zsh -t "${pkgdir}/usr/share/zsh/"
 	install -D -m644 command-not-found.zsh -t "${pkgdir}/usr/share/zsh/functions/"
 	install -D -m640 .zshrc -t "${pkgdir}/etc/zsh/zshrc-manjaro"
-	chmod 750 "${pkgdir}/root"
 	install -d "${pkgdir}/usr/share/zsh/scripts"
 	cp -r base16-shell "${pkgdir}/usr/share/zsh/scripts/"
 	chmod a+x "${pkgdir}/usr/share/zsh/scripts/base16-shell/"*

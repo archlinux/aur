@@ -1,5 +1,7 @@
 post_install() {
 	pkgfile -u &>/dev/null &
 	systemctl enable --now pkgfile-update.timer
-	echo "Copy the contents of /etc/zsh/zshrc-manjaro into ~/.zshrc to activate."
+	echo ""
+	echo "Add the content of /etc/zsh/zshrc-manjaro into ~/.zshrc to activate."
+	echo ""
 }
