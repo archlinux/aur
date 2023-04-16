@@ -1,0 +1,20 @@
+pkgbase = ruby-flog
+	pkgdesc = Reports the most tortured code in an easy to read pain report
+	pkgver = 4.6.6
+	pkgrel = 1
+	url = https://github.com/seattlerb/flog
+	arch = any
+	license = MIT
+	checkdepends = ruby-minitest
+	makedepends = ruby-hoe
+	makedepends = ruby-rdoc
+	makedepends = rubygems
+	depends = ruby
+	depends = ruby-path_expander
+	depends = ruby-ruby_parser
+	depends = ruby-sexp_processor
+	options = !emptydirs
+	source = https://github.com/seattlerb/flog/archive/v4.6.6/flog-4.6.6.tar.gz
+	sha256sums = a67ac1754a48e3bc250a384afac58144f92b71befde3340a0bf029dbbde9fc8b
+
+pkgname = ruby-flog
