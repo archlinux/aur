@@ -1,6 +1,6 @@
 pkgbase = i3altlayout
 	pkgdesc = i3wm efficient screen real estate
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/deadc0de6/i3altlayout
@@ -10,7 +10,7 @@ pkgbase = i3altlayout
 	makedepends = tar
 	depends = python-i3ipc
 	depends = python-docopt
-	source = i3altlayout.tar.gz::https://github.com/deadc0de6/i3altlayout/archive/refs/tags/v1.1.1.tar.gz
-	md5sums = SKIP
+	source = i3altlayout-1.1.2.tar.gz::https://github.com/deadc0de6/i3altlayout/archive/refs/tags/v1.1.2.tar.gz
+	sha256sums = 54f695a0502452df482cf8aa8f69ddea1d4cd0420a60044d4e8eb233bc76ae73
 
 pkgname = i3altlayout
