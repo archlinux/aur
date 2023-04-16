@@ -1,11 +1,11 @@
 pkgname=snapshot-git
-pkgver=r217.4d62a98
+pkgver=r249.3025e6c
 pkgrel=1
 pkgdesc='Take pictures and videos'
 arch=('x86_64' 'aarch64')
-url="https://gitlab.gnome.org/msandova/snapshot"
+url="https://gitlab.gnome.org/Incubator/snapshot"
 license=('GPL3')
-depends=('libadwaita>=1:1.2.0' 'gstreamer>=1.20.0' 'gst-plugins-base>=1.20.0' 'gst-plugins-bad>=1.20.0' 'gst-plugins-good>=1.20.0' 'gtk4>=4.9.0' 'glib2>=2.75.0' 'xdg-desktop-portal' 'pipewire' 'gst-plugin-pipewire')
+depends=('libadwaita-git' 'gstreamer>=1.20.0' 'gst-plugins-base>=1.20.0' 'gst-plugins-bad>=1.20.0' 'gst-plugins-good>=1.20.0' 'gtk4>=4.9.0' 'glib2>=2.75.0' 'xdg-desktop-portal' 'pipewire' 'gst-plugin-pipewire')
 makedepends=('git' 'meson' 'cargo' 'clang')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")

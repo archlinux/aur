@@ -1,8 +1,8 @@
 pkgbase = snapshot-git
 	pkgdesc = Take pictures and videos
-	pkgver = r217.4d62a98
+	pkgver = r249.3025e6c
 	pkgrel = 1
-	url = https://gitlab.gnome.org/msandova/snapshot
+	url = https://gitlab.gnome.org/Incubator/snapshot
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = snapshot-git
 	makedepends = meson
 	makedepends = cargo
 	makedepends = clang
-	depends = libadwaita>=1:1.2.0
+	depends = libadwaita-git
 	depends = gstreamer>=1.20.0
 	depends = gst-plugins-base>=1.20.0
 	depends = gst-plugins-bad>=1.20.0
@@ -23,7 +23,7 @@ pkgbase = snapshot-git
 	depends = gst-plugin-pipewire
 	provides = snapshot
 	conflicts = snapshot
-	source = git+https://gitlab.gnome.org/msandova/snapshot.git
+	source = git+https://gitlab.gnome.org/Incubator/snapshot.git
 	b2sums = SKIP
 
 pkgname = snapshot-git
