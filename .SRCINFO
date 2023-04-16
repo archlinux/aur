@@ -1,20 +1,19 @@
 pkgbase = denaro
 	pkgdesc = A personal finance manager
 	pkgver = 2023.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nlogozzo/nickvisionmoney
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	arch = i686
 	license = GPL3
+	makedepends = blueprint-compiler
 	makedepends = dotnet-sdk>=7
-	makedepends = cmake
 	makedepends = git
+	makedepends = just
 	depends = dotnet-runtime>=7
 	depends = libadwaita
-	conflicts = nickvision-money
-	replaces = nickvision-money
 	source = git+https://github.com/nlogozzo/nickvisionmoney#tag=2023.4.0
 	b2sums = SKIP
 
