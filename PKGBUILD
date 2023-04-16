@@ -1,8 +1,8 @@
 # Maintainer: Andrew Scott <aur at andyscott dot me>
 pkgname=tomoyo-tools-s6
 pkgver=20230416
-pkgrel=1
-pkgdesc="s6-rc service scripts for tomoyo-tools"
+pkgrel=2
+pkgdesc="s6 service scripts for tomoyo-tools"
 arch=('any')
 url="https://codeberg.org/andyscott/s6-scripts"
 license=('GPL2')

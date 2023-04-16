@@ -1,7 +1,7 @@
 pkgbase = tomoyo-tools-s6
-	pkgdesc = s6-rc service scripts for tomoyo-tools
+	pkgdesc = s6 service scripts for tomoyo-tools
 	pkgver = 20230416
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/andyscott/s6-scripts
 	arch = any
 	license = GPL2
