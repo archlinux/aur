@@ -1,4 +1,5 @@
-# Maintainer: INhBQfUQO2eFzulN <281587887a at protonmail dot ch>
+# Maintainer: Noppakorn Jiravaranun <noppakorn at noppakorn dot com>
+# Contributor: INhBQfUQO2eFzulN <281587887a at protonmail dot ch>
 _pkgname=oscar
 pkgname=$_pkgname-bin
 pkgver=1.4.0
