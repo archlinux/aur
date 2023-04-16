@@ -5,20 +5,21 @@
 pkgname=proselint
 _name=${pkgname#python-}
 pkgver=0.13.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A linter for prose'
-arch=('any')
+arch=(any)
 url="https://github.com/amperser/proselint"
-license=('BSD')
+license=(BSD)
 makedepends=(
-  python-{build,installer,wheel}
+  python-build
+  python-installer
   python-poetry
+  python-wheel
 )
 checkdepends=(python-pytest)
 depends=(
   python-click
   python-future
-  python-six
 )
 conflicts=(python-proselint)
 replaces=(python-proselint)
@@ -39,7 +40,7 @@ build() {
 check() {
   cd "$_archive"
 
-  pytest
+  python -m pytest
 }
 
 package() {
