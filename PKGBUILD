@@ -27,7 +27,6 @@ package() {
   make
   install -Dm644 "${srcdir}/${pkgname%-git}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname%-git}/COPYING"
   install -Dm755 "${srcdir}/${pkgname%-git}/build/mmconneqt" "${pkgdir}/usr/bin/mmconneqt"
-  install -Dm644 "${srcdir}/${pkgname%-git}/src/icon.png" "${pkgdir}/usr/share/icons/${pkgname%-git}.png"
   install -Dm644 "${srcdir}/${pkgname%-git}/src/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
   install -Dm644 "${srcdir}/mmconneqt.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
 }
