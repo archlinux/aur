@@ -1,16 +1,15 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=texttest
-pkgver=4.2.3
-pkgrel=2
+pkgver=4.3.0
+pkgrel=1
 pkgdesc="A tool for text-based functional testing"
-arch=('any')
+arch=(any)
 url="https://github.com/texttest/texttest"
-license=('LGPL')
+license=(LGPL)
 makedepends=(python-setuptools)
 depends=(
   gtk3
-  libblockdev
   python-boto
   python-certifi
   python-gobject
@@ -19,7 +18,7 @@ depends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('961d8aed65911426630b3fb9e45737065af5eba86467b2b267221c6eb003d4ea')
+sha256sums=('bc027b833cccf9043179accbb7e3fb876649c9eaffd25b62a00a1655c58ff320')
 
 _archive="$pkgname-$pkgver"
 
@@ -28,8 +27,6 @@ build() {
 
   python setup.py build
 }
-
-
 
 package() {
   cd "$_archive"
