@@ -1,0 +1,26 @@
+# Maintainer: Andrew Scott <aur at andyscott dot me>
+pkgname=tomoyo-tools-s6
+pkgver=20230416
+pkgrel=1
+pkgdesc="s6-rc service scripts for tomoyo-tools"
+arch=('any')
+url="https://codeberg.org/andyscott/s6-scripts"
+license=('GPL2')
+provides=('init-tomoyo-tools')
+depends=('s6' 'tomoyo-tools')
+optdepends=('logrotate: audit log rotation support')
+conflicts=('init-tomoyo-tools')
+backup=('etc/s6/config/tomoyo-auditd.conf')
+source=('tomoyo-auditd.conf::https://codeberg.org/andyscott/s6-scripts/raw/branch/main/tomoyo-tools/tomoyo-auditd.conf'
+        'tomoyo-auditd.type::https://codeberg.org/andyscott/s6-scripts/raw/branch/main/tomoyo-tools/type'
+        'tomoyo-auditd.up::https://codeberg.org/andyscott/s6-scripts/raw/branch/main/tomoyo-tools/up')
+b2sums=('8a01334c09c8153a6a71f2013a9483d84102e847aa36d2e985fe13b19e73817a6503ae0439e5c86d8fea29685687d45b39e7773c187ee5e4342109a347447b2a'
+        'cdcdfdfe8033b1b2ac812951b70b09b115c1d7b7de4ed0ea0808072414753faf98ca846a171f22ab788cc9e1564456354f953941d4fba8056bc650f41dcde8dc'
+        '4ff40be818191b648f531dc19ced488cdec2a2b1b923750543b1082afb5b549dfeec876bd6651db3f68a8d8d273a28866bce2c3153bb4c95e439755c3e9db106')
+
+package() { 
+  install -d "$pkgdir/etc/s6/sv/tomoyo-auditd/"
+  install -Dm644 "tomoyo-auditd.conf" -t "$pkgdir/etc/s6/config"
+  install -Dm644 "tomoyo-auditd.type" "$pkgdir/etc/s6/sv/tomoyo-auditd/type"
+  install -Dm644 "tomoyo-auditd.up" "$pkgdir/etc/s6/sv/tomoyo-auditd/up"
+}
