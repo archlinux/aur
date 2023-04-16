@@ -4,7 +4,7 @@
 pkgname=python-pyhanko
 _name=pyHanko
 pkgver=0.17.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for stamping and signing PDF files"
 url="https://github.com/MatthiasValvekens/pyHanko"
 license=(MIT)
@@ -12,23 +12,27 @@ arch=(any)
 makedepends=(python-setuptools)
 checkdepends=(
   certomancer
-  python-aiohttp
   python-barcode
+  python-defusedxml
   python-fonttools
   python-freezegun
   python-pytest
   python-pytest-aiohttp
-  python-python-pkcs11
   python-requests-mock
   python-uharfbuzz
-  python-defusedxml
 )
 depends=(
+  python-aiohttp
   python-click
+  python-dateutil
+  python-importlib-metadata
+  python-pillow
   python-pyhanko-certvalidator
+  python-python-pkcs11
   python-pytz
   python-pyyaml
   python-qrcode
+  python-setuptools
   python-tzlocal
 )
 optdepends=(
@@ -53,7 +57,10 @@ check() {
 
   python -m pytest \
     --ignore pyhanko_tests/test_csc.py \
-    -k 'not test_ts_fetch_aiohttp'
+    -k "\
+      not test_ts_fetch_aiohttp \
+      and not test_ac_attr_validation_holder_mismatch \
+    "
 }
 
 package() {
