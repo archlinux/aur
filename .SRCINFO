@@ -2,7 +2,7 @@ pkgbase = tube-converter
 	pkgdesc = An easy-to-use video downloader
 	pkgver = 2023.4.1
 	pkgrel = 1
-	url = https://github.com/nlogozzo/nickvisiontubeconverter
+	url = https://github.com/NickvisionApps/tubeconverter
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = tube-converter
 	depends = python-pyxattr
 	depends = python-websockets
 	depends = yt-dlp
-	source = git+https://github.com/nlogozzo/nickvisiontubeconverter#tag=2023.4.1
+	source = git+https://github.com/NickvisionApps/tubeconverter#tag=2023.4.1
 	b2sums = SKIP
 
 pkgname = tube-converter
