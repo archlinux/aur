@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-paraview-git
 	pkgdesc = Parallel Visualization Application using VTK (mingw-w64)
-	pkgver = r79410.ed83104c07
+	pkgver = r79815.8a74ec4e9b
 	pkgrel = 1
 	url = https://www.paraview.org
 	arch = any
@@ -13,7 +13,6 @@ pkgbase = mingw-w64-paraview-git
 	makedepends = mingw-w64-wine
 	makedepends = protobuf
 	makedepends = mingw-w64-nlohmann-json
-	makedepends = mingw-w64-fmt
 	makedepends = git
 	depends = mingw-w64-qt5-tools
 	depends = mingw-w64-qt5-svg

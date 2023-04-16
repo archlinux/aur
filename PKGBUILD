@@ -1,12 +1,12 @@
 pkgname=mingw-w64-paraview-git
-pkgver=r79410.ed83104c07
+pkgver=r79815.8a74ec4e9b
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
 url='https://www.paraview.org'
 license=('custom')
 depends=('mingw-w64-qt5-tools' 'mingw-w64-qt5-svg' 'mingw-w64-boost' 'mingw-w64-glew' 'mingw-w64-freetype2' 'mingw-w64-libxml2' 'mingw-w64-libtiff' 'mingw-w64-jsoncpp' 'mingw-w64-hdf5' 'mingw-w64-lz4' 'mingw-w64-proj' 'mingw-w64-cgns' 'mingw-w64-netcdf' 'mingw-w64-double-conversion' 'mingw-w64-protobuf' 'mingw-w64-libtheora' 'mingw-w64-pugixml' 'mingw-w64-gl2ps' 'mingw-w64-libharu' 'mingw-w64-verdict')
-makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-utf8cpp' 'mingw-w64-cli11' 'mingw-w64-exprtk' 'mingw-w64-wine' 'protobuf' 'mingw-w64-nlohmann-json' 'mingw-w64-fmt' 'git')
+makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-utf8cpp' 'mingw-w64-cli11' 'mingw-w64-exprtk' 'mingw-w64-wine' 'protobuf' 'mingw-w64-nlohmann-json' 'git')
 provides=('mingw-w64-paraview')
 conflicts=('mingw-w64-paraview')
 options=('!buildflags' '!strip' 'staticlibs')
@@ -32,6 +32,9 @@ prepare() {
   git config submodule.ThirdParty/IceT/vtkicet.git "$srcdir"/icet
   git config submodule.ThirdParty/QtTesting/vtkqttesting.git "$srcdir"/qttesting
   git -c protocol.file.allow=always submodule update -f --init
+
+  cp /tmp/CMakeLists.txt ThirdParty/QtTesting/vtkqttesting/CMakeLists.txt
+  git diff
 }
 
 build() {
@@ -46,6 +49,7 @@ build() {
       -DPARAVIEW_USE_VTKM=OFF \
       -DPARAVIEW_BUILD_WITH_EXTERNAL=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_ioss=OFF \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_fmt=OFF \
       ..
     WINEPATH="/usr/${_arch}/bin;${PWD}/bin" make
     popd
