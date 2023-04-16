@@ -12,7 +12,7 @@
 ### PACKAGE OPTIONS
 ## MERGE REQUESTS SELECTION
 # Merge Requests List: ('579' '1441' '1880' '2702')
-_merge_requests_to_use=('1441' '1880' '2702')
+_merge_requests_to_use=('1441' '2702')
 
 ## Disable building the DOCS package (Enabled if not set)
 # Remember to unset this variable when producing .SRCINFO
