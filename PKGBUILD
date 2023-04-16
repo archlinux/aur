@@ -11,8 +11,8 @@
 
 ### PACKAGE OPTIONS
 ## MERGE REQUESTS SELECTION
-# Merge Requests List: ('579' '1441' '1880' '2702')
-_merge_requests_to_use=('1441' '2702')
+# Merge Requests List: ('579' '1441' '1880' 'revert_2060' '2702')
+_merge_requests_to_use=('1441' 'revert_2060' '2702')
 
 ## Disable building the DOCS package (Enabled if not set)
 # Remember to unset this variable when producing .SRCINFO
@@ -32,7 +32,7 @@ else
 fi
 epoch=1
 pkgver=43.4+r3+g951b2a98b
-pkgrel=2
+pkgrel=3
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64 aarch64)
@@ -50,11 +50,13 @@ _commit=951b2a98b5c18c258aecbb9c1f853367d0463748  # tags/43.4^3
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch'
         'mr1880.patch'
-        'mr2702.patch')
+        'mr2702.patch'
+        'prio.patch')
 sha256sums=('SKIP'
             'ca6ea6aaa7d8fb2089d110a5ba48906caa29e6f240e1debd19bf62ea3a74c824'
             '37586730b26c476175d508288d537a38e3e828467163c2e7d91f1df76fd12cd2'
-            '7a6b606cfbaae395e8bdad96eaf377f2f00b85fce431df8700017c2518d19059')
+            '7a6b606cfbaae395e8bdad96eaf377f2f00b85fce431df8700017c2518d19059'
+            'b0381879ca6d36f185543553a327c3d115194f17ba817c7dcccd64d9b09b6fdb')
 
 pkgver() {
   cd $pkgname
@@ -93,12 +95,6 @@ prepare() {
 
   git reset --hard
   git cherry-pick --abort || true
-
-  # build: Replace deprecated/custom meson functions
-  pick_mr '2702' 'mr2702.patch' 'patch'
-
-  # Not affected with mr1880 enabled.
-  pick_mr '1880' 76ce6a0ab5975062ffe1f8b885b9be650b60e5a7 'revert'
 
   #git remote add vanvugt https://gitlab.gnome.org/vanvugt/mutter.git || true
   #git remote add verdre https://gitlab.gnome.org/verdre/mutter.git || true
@@ -157,7 +153,19 @@ prepare() {
   # Status: 4
   # Comment: Introduce transactions consisting of state changes for Wayland surfaces.
   #          Fixes: #1162
+  pick_mr '1880' 76ce6a0ab5975062ffe1f8b885b9be650b60e5a7 'revert' # Not affected with mr1880 enabled
   pick_mr '1880' 'mr1880.patch' 'patch'
+
+  # Title: [REVERT] backends/native: Use rtkit to get realtime priority
+  # Author: Carlos Garnacho <carlosg@gnome.org>
+  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2060
+  # Type: 1
+  # Status: 4
+  # Comment: Reverting it to get rt-scheduler working with mr1441.
+  pick_mr 'revert_2060' 'prio.patch' 'patch'
+
+  # build: Replace deprecated/custom meson functions
+  pick_mr '2702' 'mr2702.patch' 'patch'
 
 }
 

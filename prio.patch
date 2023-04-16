@@ -1,0 +1,146 @@
+diff --git a/data/dbus-interfaces/org.freedesktop.RealtimeKit1.xml b/data/dbus-interfaces/org.freedesktop.RealtimeKit1.xml
+deleted file mode 100644
+index 305e767b1..000000000
+--- a/data/dbus-interfaces/org.freedesktop.RealtimeKit1.xml
++++ /dev/null
+@@ -1,42 +0,0 @@
+-<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+-"http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+-<node>
+-        <interface name="org.freedesktop.RealtimeKit1">
+-                <method name="MakeThreadRealtime">
+-                        <arg name="thread" type="t" direction="in"/>
+-                        <arg name="priority" type="u" direction="in"/>
+-                </method>
+-                <method name="MakeThreadRealtimeWithPID">
+-                        <arg name="process" type="t" direction="in"/>
+-                        <arg name="thread" type="t" direction="in"/>
+-                        <arg name="priority" type="u" direction="in"/>
+-                </method>
+-                <method name="MakeThreadHighPriority">
+-                        <arg name="thread" type="t" direction="in"/>
+-                        <arg name="priority" type="i" direction="in"/>
+-                </method>
+-                <method name="MakeThreadHighPriorityWithPID">
+-                        <arg name="process" type="t" direction="in"/>
+-                        <arg name="thread" type="t" direction="in"/>
+-                        <arg name="priority" type="i" direction="in"/>
+-                </method>
+-                <method name="ResetKnown"/>
+-                <method name="ResetAll"/>
+-                <method name="Exit"/>
+-                <property name="RTTimeUSecMax" type="x" access="read"/>
+-                <property name="MaxRealtimePriority" type="i" access="read"/>
+-                <property name="MinNiceLevel" type="i" access="read"/>
+-        </interface>
+-        <interface name="org.freedesktop.DBus.Properties">
+-                <method name="Get">
+-                       <arg name="interface" direction="in" type="s"/>
+-                       <arg name="property" direction="in" type="s"/>
+-                       <arg name="value" direction="out" type="v"/>
+-                </method>
+-        </interface>
+-        <interface name="org.freedesktop.DBus.Introspectable">
+-                <method name="Introspect">
+-                        <arg name="data" type="s" direction="out"/>
+-                </method>
+-        </interface>
+-</node>
+diff --git a/data/org.gnome.mutter.gschema.xml.in b/data/org.gnome.mutter.gschema.xml.in
+index c014b749f..5d3188099 100644
+--- a/data/org.gnome.mutter.gschema.xml.in
++++ b/data/org.gnome.mutter.gschema.xml.in
+@@ -136,7 +136,9 @@
+                                         restart.
+ 
+         • “rt-scheduler”              — makes mutter request a low priority
+-                                        real-time scheduling. Requires a restart.
++                                        real-time scheduling. The executable
++                                        or user must have CAP_SYS_NICE.
++                                        Requires a restart.
+ 
+         • “autoclose-xwayland”        — automatically terminates Xwayland if all
+                                         relevant X11 clients are gone.
+diff --git a/src/backends/native/meta-backend-native.c b/src/backends/native/meta-backend-native.c
+index 8a4dbd730..ad9b4f762 100644
+--- a/src/backends/native/meta-backend-native.c
++++ b/src/backends/native/meta-backend-native.c
+@@ -38,6 +38,7 @@
+ #include "backends/native/meta-backend-native-private.h"
+ #include "backends/native/meta-input-thread.h"
+ 
++#include <sched.h>
+ #include <stdlib.h>
+ 
+ #include "backends/meta-color-manager.h"
+@@ -62,7 +63,6 @@
+ #include "cogl/cogl.h"
+ #include "core/meta-border.h"
+ #include "meta/main.h"
+-#include "meta-dbus-rtkit1.h"
+ 
+ #ifdef HAVE_REMOTE_DESKTOP
+ #include "backends/meta-screen-cast.h"
+@@ -222,36 +222,15 @@ meta_backend_native_post_init (MetaBackend *backend)
+   if (meta_settings_is_experimental_feature_enabled (settings,
+                                                      META_EXPERIMENTAL_FEATURE_RT_SCHEDULER))
+     {
+-      g_autoptr (MetaDbusRealtimeKit1) rtkit_proxy = NULL;
+-      g_autoptr (GError) error = NULL;
+-
+-      rtkit_proxy =
+-        meta_dbus_realtime_kit1_proxy_new_for_bus_sync (G_BUS_TYPE_SYSTEM,
+-                                                        G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES |
+-                                                        G_DBUS_PROXY_FLAGS_DO_NOT_CONNECT_SIGNALS |
+-                                                        G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START,
+-                                                        "org.freedesktop.RealtimeKit1",
+-                                                        "/org/freedesktop/RealtimeKit1",
+-                                                        NULL,
+-                                                        &error);
+-
+-      if (rtkit_proxy)
+-        {
+-          uint32_t priority;
+-
+-          priority = sched_get_priority_min (SCHED_RR);
+-          meta_dbus_realtime_kit1_call_make_thread_realtime_sync (rtkit_proxy,
+-                                                                  gettid (),
+-                                                                  priority,
+-                                                                  NULL,
+-                                                                  &error);
+-        }
++      int retval;
++      struct sched_param sp = {
++        .sched_priority = sched_get_priority_min (SCHED_RR)
++      };
+ 
+-      if (error)
+-        {
+-          g_dbus_error_strip_remote_error (error);
+-          g_message ("Failed to set RT scheduler: %s", error->message);
+-        }
++      retval = sched_setscheduler (0, SCHED_RR | SCHED_RESET_ON_FORK, &sp);
++
++      if (retval != 0)
++        g_warning ("Failed to set RT scheduler: %m");
+     }
+ 
+ #ifdef HAVE_REMOTE_DESKTOP
+diff --git a/src/meson.build b/src/meson.build
+index 6790efa16..cffc408e0 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -930,13 +930,6 @@ if have_remote_desktop
+   mutter_built_sources += dbus_screen_cast_built_sources
+ endif
+ 
+-dbus_rtkit_built_sources = gnome.gdbus_codegen('meta-dbus-rtkit1',
+-    join_paths(dbus_interfaces_dir, 'org.freedesktop.RealtimeKit1.xml'),
+-    interface_prefix: 'org.freedesktop.',
+-    namespace: 'MetaDbus',
+-)
+-mutter_built_sources += dbus_rtkit_built_sources
+-
+ dbus_gsd_color_built_sources = gnome.gdbus_codegen('meta-dbus-gsd-color',
+     join_paths(dbus_interfaces_dir, 'org.gnome.SettingsDaemon.Color.xml'),
+     interface_prefix: 'org.gnome.',
