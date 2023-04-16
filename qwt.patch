@@ -1,56 +1,15 @@
 diff --unified --recursive --text a/snmpb-1.0/qwt/qwtconfig.pri b/snmpb-1.0/qwt/qwtconfig.pri
---- snmpb-1.0/qwt/qwtconfig.pri	2023-04-12 16:30:45.953187040 +0200
-+++ snmpb-1.0/qwt/qwtconfig.pri	2023-04-12 16:31:52.123326863 +0200
-@@ -72,7 +72,7 @@
- # it will be a static library.
- ######################################################################
+--- snmpb-1.0/qwt/qwtconfig.pri	2023-04-15 10:41:31.539210993 +0200
++++ snmpb-1.0/qwt/qwtconfig.pri	2023-04-15 10:44:59.354127527 +0200
+@@ -28,7 +28,7 @@
+     # QWT_INSTALL_PREFIX = C:/Qwt-$$QWT_VERSION-qt-$$QT_VERSION
+ }
  
--QWT_CONFIG           += QwtDll
-+#QWT_CONFIG           += QwtDll
+-QWT_INSTALL_DOCS      = $${QWT_INSTALL_PREFIX}/doc
++#QWT_INSTALL_DOCS      = $${QWT_INSTALL_PREFIX}/doc
+ QWT_INSTALL_HEADERS   = $${QWT_INSTALL_PREFIX}/include
+ QWT_INSTALL_LIBS      = $${QWT_INSTALL_PREFIX}/lib
  
- ######################################################################
- # QwtPlot enables all classes, that are needed to use the QwtPlot
-@@ -86,27 +86,27 @@
- # classes. It can't be enabled without also enabling QwtPlot
- ######################################################################
- 
--QWT_CONFIG       += QwtPolar
-+#QWT_CONFIG       += QwtPolar
- 
- ######################################################################
- # QwtWidgets enables all classes, that are needed to use the all other
- # widgets (sliders, dials, ...), beside QwtPlot.
- ######################################################################
- 
--QWT_CONFIG     += QwtWidgets
-+#QWT_CONFIG     += QwtWidgets
- 
- ######################################################################
- # If you want to display svg images on the plot canvas, or
- # export a plot to a SVG document
- ######################################################################
- 
--QWT_CONFIG     += QwtSvg
-+#QWT_CONFIG     += QwtSvg
- 
- ######################################################################
- # If you want to use a OpenGL plot canvas
- ######################################################################
- 
--QWT_CONFIG     += QwtOpenGL
-+#QWT_CONFIG     += QwtOpenGL
- 
- ######################################################################
- # If you want to build the Qwt designer plugin,
-@@ -114,7 +114,7 @@
- # Otherwise you have to build it from the designer directory.
- ######################################################################
- 
--QWT_CONFIG     += QwtDesigner
-+#QWT_CONFIG     += QwtDesigner
- 
- ######################################################################
- # Compile all Qwt classes into the designer plugin instead
 @@ -137,7 +137,7 @@
  # Otherwise you have to build them from the examples directory.
  ######################################################################

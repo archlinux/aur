@@ -2,7 +2,7 @@
 
 pkgname=snmpb
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SnmpB is a desktop SNMP browser and MIB editor written in Qt."
 arch=(x86_64)
 url="https://sourceforge.net/projects/snmpb/"
@@ -32,7 +32,7 @@ sha256sums=('SKIP'
             'd870fad1e31cb787c85161a8894abb9d7283c2a654a9d3d4c6d45a1eba59952c'
             '3e9632a9be6a883db5c496e42ce74cbbf8da02cc3328faa89e2c43e434a2eb76'
             'af1a270a6f07b90f250be4ac3607c6754c01f0e893e24f939c20a9558a79f338'
-            'c1dbc7c5529336b39942e9bcab9c195f4cf964855e925609ae9b832753df409a'
+            '8c8b8ac9e3abf28a3fee45689584bd0fd86ac2fa1878b03dfc623c158ae76af4'
             '36587fe4eb9fff2d2f96c01db2a1a549f1e76373b3528d063f4d648ec56c3453'
             '8fdf92573d5c351bad9c891bb087ed8186a99fdb24f0e4ecabc0096d260f0486')
 
@@ -59,9 +59,9 @@ prepare() {
         ./configure \
                 --disable-shared \
                 --disable-yang \
-                --with-pathseparator=":" \
+                --with-pathseparator=";" \
                 --with-dirseparator="/" \
-                --with-smipath="/usr/share/apps/snmpb/mibs:/usr/share/apps/snmpb/pibs"
+                --with-smipath="/usr/share/apps/snmpb/mibs;/usr/share/apps/snmpb/pibs"
 
         # remove mibs/ietf/IANA-ITU-ALARM-TC-MIB: redundant with one in iana folder
         rm -f "mibs/ietf/IANA-ITU-ALARM-TC-MIB"
