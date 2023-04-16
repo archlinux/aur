@@ -10,6 +10,6 @@ pkgbase = torguard-git
 	depends = psmisc
 	depends = libxkbcommon-x11
 	source = https://updates.torguard.biz/Software/Linux/torguard-v4.8.17-amd64-arch.tar.gz
-	md5sums = cca87d9ccab440c9e7cc5b3d7af09df6
+	md5sums = SKIP
 
 pkgname = torguard-git
