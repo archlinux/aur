@@ -1,7 +1,7 @@
 pkgbase = gcap
 	pkgdesc = Brazilian physical person income tax (IRPF) auxiliary program for calculation of capital gains
 	pkgver = 2023.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gov.br/pt-br/servicos/apurar-imposto-sobre-ganhos-de-capital
 	arch = any
 	license = custom
@@ -15,7 +15,7 @@ pkgbase = gcap
 	source = LICENSE
 	sha256sums = d4eaa3e3d6c53be95d1694302a514b40592bf10fd4234bf1f0d7c68a3911e0a5
 	sha256sums = 24df966f1dbf8c348b487a1724891271a92b6e795b981fdf0c5b430325722af7
-	sha256sums = 2c50b3d5df01139ce2c41b5be2ee6d34f29313de131defdf8db600d6b58b9129
+	sha256sums = 905b2f02237fadb186e6b13e3412daa921d77b43b5975e7f25bee45f72136f8b
 	sha256sums = a406e102e2c10c202bd7a0ba775b004c0f04440544db73ce6923172a62aacd67
 
 pkgname = gcap
