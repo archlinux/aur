@@ -19,15 +19,29 @@ pkgver() {
   cd "$srcdir/${pkgname%-git}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
+
+prepare() {
+  cd "$srcdir/${pkgname%-git}"
+  mkdir -p build
+}
+
+build() {
+  cd "$srcdir/${pkgname%-git}"
+
+  export QMAKE_CFLAGS="${CFLAGS}"
+  export QMAKE_CXXFLAGS="${CXXFLAGS}"
+  export QMAKE_LFLAGS="${LDFLAGS}"
+
+  pushd build
+  qmake-qt5 CONFIG+='c++11' PREFIX='/usr' ../MMConneqt.pro
+  make
+  popd
 }
 
 package() {
-  cd "${pkgname%-git}"
-  mkdir build && cd build
-  qmake-qt5 PREFIX=/usr QMAKE_CFLAGS="${CFLAGS}" QMAKE_CXXFLAGS="${CXXFLAGS}" QMAKE_LFLAGS="${LDFLAGS}" ../MMConneqt.pro
-  make
-  install -Dm644 "${srcdir}/${pkgname%-git}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname%-git}/COPYING"
-  install -Dm755 "${srcdir}/${pkgname%-git}/build/mmconneqt" "${pkgdir}/usr/bin/mmconneqt"
-  install -Dm644 "${srcdir}/${pkgname%-git}/src/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
-  install -Dm644 "${srcdir}/mmconneqt.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
+  cd "$srcdir/${pkgname%-git}"
+  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+  install -Dm755 "build/${pkgname%-git}" -t "$pkgdir/usr/bin/"
+  install -Dm644 "src/icon.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
+  install -Dm644 "$srcdir/${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications/"
 }
