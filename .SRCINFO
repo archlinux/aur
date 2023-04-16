@@ -1,6 +1,6 @@
 pkgbase = librewolf
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
-	pkgver = 111.0.1
+	pkgver = 112.0
 	pkgrel = 1
 	url = https://librewolf.net/
 	install = librewolf.install
@@ -14,7 +14,6 @@ pkgbase = librewolf
 	makedepends = clang
 	makedepends = diffutils
 	makedepends = dump_syms
-	makedepends = gawk
 	makedepends = git
 	makedepends = imake
 	makedepends = inetutils
@@ -56,24 +55,14 @@ pkgbase = librewolf
 	options = !strip
 	backup = usr/lib/librewolf/librewolf.cfg
 	backup = usr/lib/librewolf/distribution/policies.json
-	source = https://archive.mozilla.org/pub/firefox/releases/111.0.1/source/firefox-111.0.1.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/111.0.1/source/firefox-111.0.1.source.tar.xz.asc
+	source = https://gitlab.com/api/v4/projects/32320088/packages/generic/librewolf-source/112.0-1/librewolf-112.0-1.source.tar.gz
 	source = librewolf.desktop
-	source = git+https://gitlab.com/librewolf-community/browser/source.git#tag=111.0.1-1
-	source = git+https://gitlab.com/librewolf-community/settings.git#commit=1829a6629590e88d5f07eda9fd059ba66b726f25
 	source = default192x192.png
 	source = 0018-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
-	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/f72ed84a7907d387296811794d75da515525500e/trunk/0001-Bug-1819374-Squashed-ffmpeg-6.0-update.patch
-	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/f72ed84a7907d387296811794d75da515525500e/trunk/0002-Bug-1820416-Use-correct-FFVPX-headers-from-ffmpeg-6..patch
-	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = 84a4f3aba62df6e0451cdd28f8f1e59840d77c4062311947b0e59325c2ebdce8
-	sha256sums = SKIP
+	validpgpkeys = 034F7776EF5E0C613D2F7934D29FBD5F93C0CFC3
+	sha256sums = 7a8de1ae8e4960d81a1fd935797a0302330e6d8e1f5670c13320292fa2f9a752
 	sha256sums = 21054a5f41f38a017f3e1050ccc433d8e59304864021bef6b99f0d0642ccbe93
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = 959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1
 	sha256sums = 1d713370fe5a8788aa1723ca291ae2f96635b92bc3cb80aea85d21847c59ed6d
-	sha256sums = 802f9271a5f7c0ab581baae8c46fd5b29598025ee93bb2dac6b456f8e0ae6acc
-	sha256sums = be9ba079a931d5e881ce38430d418cc834e8c6b157af6c79ea267998caece806
 
 pkgname = librewolf
