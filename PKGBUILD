@@ -10,7 +10,7 @@ pkgname='dns_tools'
 pkgdesc='DNS Tools for managing DNSSEC aka easy dnssec'
 _gitname='dns_tools'
 
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 url="https://github.com/gene-git/dns_tools"
 
