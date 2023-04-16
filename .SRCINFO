@@ -1,7 +1,7 @@
 pkgbase = messages
 	pkgdesc = Unnofficial Android messages desktop app
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/androidmessages/application
 	arch = x86_64
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = messages
 	depends = libxss
 	depends = git
 	conflicts = messages-bin
-	source = https://gitlab.com/androidmessages/application/-/archive/1.0.4-1/application-1.0.4-1.tar.bz2
+	source = https://gitlab.com/androidmessages/application/-/archive/1.0.4-2/application-1.0.4-2.tar.bz2
 	sha256sums = SKIP
 
 pkgname = messages
