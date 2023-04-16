@@ -1,6 +1,6 @@
 pkgbase = python-poke-env
 	pkgdesc = A python interface for training Reinforcement Learning bots to battle on pokemon showdown
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/hsahovic/poke-env
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = python-poke-env
 	depends = python-requests
 	depends = python-tabulate
 	depends = python-websockets
-	source = python-poke-env-0.5.0::https://github.com/hsahovic/poke-env/archive/0.5.0.tar.gz
-	sha256sums = 7b66de1505328c07b97d052dec09521f3c96b3252c6b14e2a964a1996df9c1ca
+	source = python-poke-env-0.6.0::https://github.com/hsahovic/poke-env/archive/0.6.0.tar.gz
+	sha256sums = f283901a612fe1e51403ff249fd47e8bb8887eceb0c12e479bb37e14cb5c6c38
 
 pkgname = python-poke-env
