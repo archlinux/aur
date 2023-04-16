@@ -1,7 +1,8 @@
-# Maintainer: Konstantinos Foutzopoulos <mail@konfou.xyz>
+# Contributor: Konstantinos Foutzopoulos <mail@konfou.xyz>
+# Contributor: asuka minato
 
 pkgname=arcpp
-pkgver=0.13.2
+pkgver=0.21
 pkgrel=1
 pkgdesc="An implementation of the Arc programming language."
 arch=('x86_64' 'i686')
@@ -11,7 +12,7 @@ depends=('readline')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("https://github.com/kimtg/${pkgname}/archive/v${pkgver}.zip")
-sha256sums=('bff813b49e801f6eed8dac6ba76b8dcddc1d98385cbd1134aa426d407a06f74c')
+sha256sums=('666f253d01264dbe6d8b3a2c6cff70b3399aee149d0e4ffe89e5ac089c18f89d')
 
 build() {
   cd ${pkgname/a/A}-${pkgver}
