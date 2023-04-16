@@ -1,0 +1,18 @@
+pkgbase = telegraph-git
+	pkgdesc = Write and decode morse
+	pkgver = 0.1.4.r0.gd0fbf7d
+	pkgrel = 1
+	url = https://github.com/fkinoshita/Telegraph
+	arch = any
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	depends = python
+	depends = libadwaita
+	provides = telegraph
+	conflicts = telegraph
+	source = git+https://github.com/fkinoshita/Telegraph.git
+	sha256sums = SKIP
+
+pkgname = telegraph-git
