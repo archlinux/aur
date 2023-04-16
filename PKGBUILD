@@ -1,38 +1,23 @@
 # Maintainer: Daniel Martí <mvdan@mvdan.cc>
 
 pkgname=xurls
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Extract urls from plain text"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/mvdan/${pkgname}"
-license=('BSD')
-makedepends=('git' 'go')
-source=("$pkgname-$pkgver::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8c9850c80eff452eeca2fe0f945a33543302dc31df66c3393ed52f6d8e921702')
-
-prepare(){
-	cd "$pkgname-$pkgver"
-	mkdir -p build/
-}
+license=('BSD-3-Clause')
+makedepends=('go')
+source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('552779a765de29e51ff01fe6c85a7d0389faae1b80d354332e7c69db232ee4ad')
 
 build() {
-	cd "$pkgname-$pkgver"
-	export CGO_CPPFLAGS="${CPPFLAGS}"
-	export CGO_CFLAGS="${CFLAGS}"
-	export CGO_CXXFLAGS="${CXXFLAGS}"
-	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	go build -o build ./cmd/...
-}
-
-check() {
-	cd "$pkgname-$pkgver"
-	go test ./...
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	# disable vcs, otherwise -version picks up the git timestamp from the build env
+	CGO_ENABLED=0 go build -buildvcs=false -trimpath -mod=readonly -modcacherw ./cmd/xurls
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	install -Dm755 -t "${pkgdir}/usr/bin" xurls
 }
