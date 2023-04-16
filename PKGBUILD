@@ -13,5 +13,5 @@ sha256sums=('SKIP')
 package() {
   install -d -m0755 -g 0 "${pkgdir}"/usr/bin
   install -m0755 -g 0 -t "${pkgdir}"/usr/bin/ shortcuts
-  ln -s shortcuts ${pkgdir}/usr/bin/shortcuts
+  #ln -s shortcuts ${pkgdir}/usr/bin/shortcuts
 }
