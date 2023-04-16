@@ -2,7 +2,7 @@
 
 pkgname=wmenu
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Efficient dynamic menu for Wayland"
 arch=('any')
 url="https://git.sr.ht/~adnano/wmenu"
