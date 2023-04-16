@@ -1,7 +1,7 @@
 # Maintainer: INhBQfUQO2eFzulN <281587887a at protonmail dot ch>
 _pkgname=oscar
 pkgname=$_pkgname-bin
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Open Source CPAP Analysis Reporter"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=('GPL')
 conflicts=("oscar-git")
 provides=("$_pkgname")
 source=("https://www.apneaboard.com/OSCAR/${_pkgname}_$pkgver-Debian11_amd64.deb")
-sha256sums=("59596c4beba2c4378217759ce68994d26a241eb50033f93e76bf75e369cfff5e")
+sha256sums=("cbb1549d89ae8b8d6b3293ff7f9cf0220370c02b061986e15cf0c0c2bc93f6f6")
 
 package() {
 	echo $srcdir
