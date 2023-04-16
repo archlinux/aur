@@ -37,16 +37,16 @@ sha512sums=(
   'SKIP')
 
   
-source_x86_64=("${_repo}/amd64/${pkgname}_${pkgver}-${_commit}_amd64.deb")
+source_x86_64=("${_repo}/amd64/${pkgname}_${pkgver}_${_commit}_amd64.deb")
 sha512sums_x86_64=('SKIP')
 
-source_i486=("${_repo}/i386/${pkgname}_${pkgver}-${_commit}_i386.deb")
+source_i486=("${_repo}/i386/${pkgname}_${pkgver}_${_commit}_i386.deb")
 sha512sums_i386=('SKIP')
 
-source_aarch64=("${_repo}/aarch64/${pkgname}_${pkgver}-${_commit}_aarch64.deb")
+source_aarch64=("${_repo}/aarch64/${pkgname}_${pkgver}_${_commit}_aarch64.deb")
 sha512sums_aarch64=('SKIP')
 
-source_armv7h=("${_repo}/armhf/${pkgname}_${pkgver}-${_commit}_armhf.deb")
+source_armv7h=("${_repo}/armhf/${pkgname}_${pkgver}_${_commit}_armhf.deb")
 sha512sums_armv7h=('SKIP')
   
 validpgpkeys=("1FDCB4DDF9D85AC5C07C742DB203A80C260BB20F") # Team XLink <crunchbite@teamxlink.co.uk>
