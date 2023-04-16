@@ -1,11 +1,11 @@
 # Maintainer: Ben DeCamp <ben_decamp@outlook.com>
 pkgname=rymcast
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Sega Mega Drive (Genesis) VGM Player"
 arch=('x86_64')
-url="https://www.mathieudemange.fr/rymcast/"
+url="https://www.inphonik.com/products/rymcast-genesis-vgm-player/"
 license=('Freeware'  )
 groups=()
 depends=()
@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://www.mathieudemange.fr/files/rymcast/rymcast-$pkgver-linux-x64.tar.gz"
+source=("https://www.inphonik.com/files/rymcast/rymcast-$pkgver-linux-x64.tar.gz"
         "$pkgname.png")
 noextract=()
 md5sums=('918f822009d55f555abd8590be8d3698'
