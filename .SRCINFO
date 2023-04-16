@@ -1,6 +1,6 @@
 pkgbase = albion-sr-gog
 	pkgdesc = Linux port of the role-playing game Albion using the GOG version
-	pkgver = 1.7.2
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://github.com/M-HT/SR
 	install = albion-sr-gog.install
@@ -14,14 +14,14 @@ pkgbase = albion-sr-gog
 	depends = lib32-sdl2_mixer
 	depends = lib32-sdl2
 	depends = lib32-libpulse
-	noextract = albion-sr-gog-1.7.2.tar.gz
+	noextract = albion-sr-gog-1.7.3.tar.gz
 	noextract = setup_albion.exe
 	backup = opt/ALBION/Albion.cfg
 	source = setup_albion.exe::gog://setup_albion.exe
-	source = albion-sr-gog-1.7.2.tar.gz::https://github.com/M-HT/SR/releases/download/albion_v1.7.2/Albion-Linux-x86-v1.7.2-sdl2.tar.gz
+	source = albion-sr-gog-1.7.3.tar.gz::https://github.com/M-HT/SR/releases/download/albion_v1.7.3/Albion-Linux-x86-v1.7.3-sdl2.tar.gz
 	source = albion.desktop
-	sha1sums = SKIP
-	sha1sums = 003df68f16cff4359fb655d2924ba6411caa82fb
+	sha1sums = 215de010d70e96a06641809624850c02adcc7ec5
+	sha1sums = a29377b7800022017c0011756cae4abb8560d00f
 	sha1sums = b307af4b606f2510e1664ce96765cdc7f652bb06
 
 pkgname = albion-sr-gog
