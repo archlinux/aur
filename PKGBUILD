@@ -1,8 +1,10 @@
 # Maintainer: everyx <lunt.luo#gmail.com>
 
-_pkgname=rime-ice
-pkgname=rime-ice-git
-pkgver=r170.bfeb35d
+_pkgbase=rime-ice
+_schemas=(rime_ice double_pinyin double_pinyin_flypy double_pinyin_mspy)
+_pkgname=$_pkgbase
+pkgname=$_pkgname-git
+pkgver=r177.8e14678
 pkgrel=1
 pkgdesc="Rime 配置：雾凇拼音 | 长期维护的简体词库"
 arch=("any")
@@ -19,7 +21,7 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-_suggestion=${_pkgname//-/_}_suggestion.yaml
+_suggestion=${_pkgbase//-/_}_suggestion.yaml
 
 prepare() {
   cd "${_pkgname}" &&
@@ -29,16 +31,60 @@ prepare() {
 }
 
 build() {
-  cd "${_pkgname}" &&
-    for _s in *.schema.yaml; do rime_deployer --compile "$_s"; done
+  cd "${_pkgname}" || return
+
+  for _s in "${_schemas[@]}"; do
+    _deps=()
+    mapfile -t _deps <<< "$(grep -A3 'dependencies:' "$_s.schema.yaml" | tail -n3 | sed 's/#.*//g;s/.*- //g;s/ //g')"
+    _schemas=("${_schemas[@]}" "${_deps[@]}")
+  done
+
+  # build current schema and it's depends only
+  for _s in $(printf "%s\n" "${_schemas[@]}" | sort -u); do rime_deployer --compile "$_s.schema.yaml"; done
+
+  # comment ignore schemas
+  _suggestion_schemas=$(grep -A3 'schema_list:' "$_suggestion" | tail -n3 | sed 's/.*schema: //g')
+
+  for _s in $_suggestion_schemas; do [[ ${_schemas[*]} =~ (^|[[:space:]])"$_s"($|[[:space:]]) ]] && sed -i "s/^\s*- schema: $_s/#&/" "$_suggestion" ; done
+
+  find . -type l -delete
 }
 
 package() {
-  cd "${_pkgname}" && find . -type l -delete
+  cd "${_pkgname}" || return
 
-  install -Dm644 ./*.{yaml,lua,gram}  -t "${pkgdir}/usr/share/rime-data/"
-  install -Dm644 ./build/*.{bin,yaml} -t "${pkgdir}/usr/share/rime-data/build/"
-  install -Dm644 ./opencc/*           -t "${pkgdir}/usr/share/rime-data/opencc/"
-  install -Dm644 ./cn_dicts/*         -t "${pkgdir}/usr/share/rime-data/cn_dicts/"
-  install -Dm644 ./en_dicts/*         -t "${pkgdir}/usr/share/rime-data/en_dicts/"
+  _install_base=$pkgdir/usr/share/rime-data
+
+  install -Dm644 "$_suggestion" rime.lua -t "$_install_base/"
+  install -Dm644 ./build/*.{bin,yaml}    -t "$_install_base/build"
+
+  for _f in *.schema.yaml; do
+    if [ -f "build/$_f" ]; then
+      install -Dm644 "$_f" -t "$_install_base/"
+
+      grep -q "opencc_config: emoji.json" "$_f" &&
+        install -Dm644 ./opencc/* -t "$_install_base/opencc/"
+    fi
+  done
+
+  for _f in *.dict.yaml; do
+    if [ -f "build/${_f/.dict.yaml/}.table.bin" ]; then
+      install -Dm644 "$_f" -t "$_install_base/"
+    fi
+  done
+
+  for _f in */*.dict.yaml; do
+    grep -q "\- ${_f/.dict.yaml/}" "$_install_base/"*.dict.yaml &&
+      install -Dm644 "$_f" -t "$_install_base/$(dirname "$_f")"
+  done
+
+  for _f in *.yaml; do
+    grep -q "${_f/.yaml/:}" build/*.schema.yaml &&
+      install -Dm644 "$_f" -t "$_install_base/"
+  done
+
+  for _f in *.gram; do
+    grep -q "${_f/.gram/}" build/*.schema.yaml &&
+      install -Dm644 "$_f" -t "$_install_base/"
+  done
 }
