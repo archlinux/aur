@@ -1,7 +1,7 @@
 pkgbase = owmods-gui-bin
 	pkgdesc = A GUI To Manage Outer Wilds Mods
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Bwc9876/ow-mod-man/owmods_gui
 	arch = x86_64
 	license = GPL3
