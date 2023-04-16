@@ -1,6 +1,6 @@
 pkgbase = tileserver-gl
 	pkgdesc = Server-side rendering of vector and raster maps with GL styles
-	pkgver = 4.4.9
+	pkgver = 4.4.10
 	pkgrel = 1
 	url = https://github.com/maptiler/tileserver-gl
 	arch = x86_64
@@ -13,8 +13,7 @@ pkgbase = tileserver-gl
 	depends = libglvnd
 	depends = libx11
 	depends = icu66
-	noextract = tileserver-gl-4.4.9.tgz
-	source = https://registry.npmjs.org/tileserver-gl/-/tileserver-gl-4.4.9.tgz
-	sha256sums = 00ea2a36d740726abe119b37d6e840509ac55944550b88a588e03d58c2b7ce29
+	source = https://registry.npmjs.org/tileserver-gl/-/tileserver-gl-4.4.10.tgz
+	sha256sums = 4c33d1d2a601e182f9700e324e694b4210ab459bca562072dab006b5cc1645e4
 
 pkgname = tileserver-gl
