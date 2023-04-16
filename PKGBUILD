@@ -3,7 +3,7 @@
 # Contributor: Márcio Sousa Rocha <marciosr10@gmail.com>
 
 pkgname=irpf
-pkgver=2023.1.1
+pkgver=2023.1.2
 pkgrel=1
 pkgdesc='Brazilian physical person income tax (IRPF) program'
 arch=('any')
@@ -15,9 +15,9 @@ source=("https://downloadirpf.receita.fazenda.gov.br/irpf/${pkgver%%.*}/irpf/arq
         'irpf.desktop'
         'irpf.sh'
         'LICENSE')
-sha256sums=('7931112b9a826b3f17745248cfb5c417fc70b52c98553a33aa44fbd7dca555de'
+sha256sums=('d24ae893e0e3e5f680b85b0be5a663053c47af0d8148406732636fdedb8ad65e'
             'b5026060d73cc78e0c50a8cad2536dc1f186ba0202f1d51551e2411131008430'
-            '71b397a128a71ab43591a868f309125193e19632972925f12335f8d5e65f1d08'
+            '38a727fe91acce9192fad3cc0235e6110e14279f32ee8efbc45a008cc03eb81f'
             'a406e102e2c10c202bd7a0ba775b004c0f04440544db73ce6923172a62aacd67')
 
 prepare() {
