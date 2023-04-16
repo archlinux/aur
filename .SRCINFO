@@ -1,0 +1,24 @@
+pkgbase = redeclipse-dev
+	pkgdesc = Developmental version of Redeclipse, a free and open source movement based shooter
+	pkgver = v2.0.0.r1746.ga70a6a3
+	pkgrel = 1
+	url = https://github.com/redeclipse/base.git
+	arch = x86_64
+	license = ZLIB
+	license = CCPL:by-sa
+	license = CCPL:by
+	license = custom
+	makedepends = ed
+	makedepends = sdl2_mixer
+	makedepends = sdl2_image
+	makedepends = enet
+	makedepends = git
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = enet
+	depends = hicolor-icon-theme
+	conflicts = redeclipse
+	source = redeclipse-dev::git+https://github.com/redeclipse/base.git
+	md5sums = SKIP
+
+pkgname = redeclipse-dev
