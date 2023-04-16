@@ -4,16 +4,18 @@ _pkgname="gitwife"
 pkgname="gitwife-git"
 pkgver=r127.d706c6f
 pkgrel=1
-pkgdesc=""
+pkgdesc="Tool to manage your installations from Git Repositories for you"
 arch=(any)
 url="https://gitlab.com/Teddy-Kun/gitwife"
 license=('GPL-3')
 depends=(
-'cargo'
 'libgit2'
 'openssl'
 'gcc-libs'
 'glibc'
+)
+makedepends=(
+'cargo'
 )
 optdepends=(
 'bash: the default_make is a bash script'
