@@ -1,6 +1,6 @@
 # Maintainer: Relwi <theofficialdork@hotmail.com>
 pkgname=twitch-tui
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='Twitch chat in the terminal'
 url='https://github.com/Xithrius/twitch-tui'
@@ -9,7 +9,7 @@ arch=(x86_64 arm aarch64)
 license=(Apache)
 makedepends=(cargo git)
 conflicts=(twitch-tui-alpha)
-sha256sums=('930d1569bb635a08a4f887e81ffb1e4df9c314bc34fcb1da0faf1e97b6def104')
+sha256sums=('360c0d39d8986b1671da0eb2cc3d036087130a7203774557d274b0c0a5c3f87a')
 
 build () {
   cd "$pkgname-$pkgver"
