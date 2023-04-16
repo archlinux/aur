@@ -3,7 +3,7 @@
 # Contributor: Alexandros Theodotou <alex at zrythm dot org>
 
 pkgname=zrythm
-_pkgver=1.0.0-beta.4.6.3
+_pkgver=1.0.0-beta.4.8.1
 pkgver="${_pkgver/-/.}"
 pkgrel=1
 pkgdesc='Highly automated and intuitive digital audio workstation'
@@ -16,7 +16,7 @@ optdepends=('realtime-privileges: allow memory locking')
 options=('debug')
 source=("https://www.zrythm.org/releases/$pkgname-$_pkgver.tar.xz"{,.asc}
         "git+https://github.com/drobilla/zix.git")
-sha256sums=('e329ccebec30cbdd46209ba9fccab885ffc58fe5d56cf7a8f4a5a80f1ecb0761'
+sha256sums=('c981432f793efe1a62f6f4345dee9ef5533f4a628316de5574b745b73dcda777'
             'SKIP'
             'SKIP')
 validpgpkeys=('48132384AD3DF7D86E254B83022EAE42313D70F3') # Alexandros Theodotou <alex@zrythm.org>
