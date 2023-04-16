@@ -2,7 +2,7 @@
 # Maintainer: Justin Kromlinger <hashworks@archlinux.org>
 # Contributor: Wesley Moore <wes@wezm.net>
 pkgname=mdcat
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='Sophisticated Markdown rendering for the terminal'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('asciidoctor'
              'cargo')
 optdepends=('less: for mdless')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver.tar.gz")
-sha256sums=('f3e432df3148f480a073fef97e6e1d1158e6efe89ab745422aa7e2071d198f14')
+sha256sums=('d6da2edaeaeec646eebeda13de6ae8a5185f0257342b48740b3f40c7b20b5c96')
 
 prepare() {
   cd "${pkgname}-${pkgname}-${pkgver}"
