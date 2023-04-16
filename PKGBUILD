@@ -2,7 +2,7 @@
 
 _pkgname="gitwife"
 pkgname="gitwife-git"
-pkgver=r127.d706c6f
+pkgver=0.2.0.r0.ge9dadc2
 pkgrel=1
 pkgdesc="Tool to manage your installations from Git Repositories for you"
 arch=(any)
