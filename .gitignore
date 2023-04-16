@@ -2,4 +2,3 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!0001-Use-different-Python-package-for-ZStandard.patch

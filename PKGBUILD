@@ -4,29 +4,27 @@
 
 pkgname=rpmlint
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for checking common errors in rpm packages"
-arch=('any')
+arch=(any)
 url="https://github.com/rpm-software-management/$pkgname"
-license=('GPL2')
+license=(GPL2)
 depends=(
-  'binutils'
-  'bzip2'
-  'cpio'
-  'gzip'
-  'python'
-  'python-magic'
-  'python-pybeam'
-  'python-pyxdg'
-  'python-tomli-w'
-  'python-zstandard'
-  'rpm-tools'
-  'xz'
-  'zstd'
+  binutils
+  cpio
+  gzip
+  python-importlib-metadata
+  python-magic
+  python-pybeam
+  python-pyxdg
+  python-setuptools
+  python-tomli
+  python-tomli-w
+  python-zstandard
+  rpm-tools
 )
-makedepends=('python-setuptools')
 checkdepends=(
-  'python-pytest'
+  python-pytest
 )
 optdepends=(
   'appstream-glib: for AppData file validation'
@@ -35,23 +33,26 @@ optdepends=(
   'desktop-file-utils: for checking desktop entries'
   'python-pyenchant: for spell checking'
 )
+
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('805d0962d9b3980e85d265db3cfb2625818866faa0b8a534552a8d4035cabc6a')
 
+_archive="$pkgname-$pkgver"
+
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$_archive"
 
   python setup.py build
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "$_archive"
 
   python -m pytest -c /dev/null
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$_archive"
 
   export PYTHONHASHSEED=0
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
