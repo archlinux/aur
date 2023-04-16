@@ -1,0 +1,10 @@
+[Unit]
+Description=Linux Malware Detect signature update service - maldet
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/maldet --update-sigs
+
+[Install]
+WantedBy=multi-user.target

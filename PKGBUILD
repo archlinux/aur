@@ -5,16 +5,17 @@
 # Contributor: Sergey Mamonov <mrqwer88@gmail.com>
 
 pkgname="maldet"
-pkgver=1.6.4
-pkgrel=9
+pkgver=1.6.5
+pkgrel=1
 pkgdesc="Linux malware scanner designed around threats faced in shared host environments"
 url="https://www.rfxn.com/projects/linux-malware-detect/"
 license=("GPL2")
 arch=("any")
 provides=("linux-malware-detect")
-depends=("inetutils" "inotify-tools" "perl")
-depends_x86_64=("lib32-glibc")
-source=("https://github.com/rfxn/linux-malware-detect/archive/$pkgver.tar.gz")
+depends=("inetutils" "inotify-tools" "perl" "systemd")
+source=("https://github.com/rfxn/linux-malware-detect/archive/$pkgver.tar.gz"
+        "maldet-update-signatures.service"
+        "maldet-update-signatures.timer")
 backup=("etc/maldet/hookscan.conf"
         "etc/maldet/ignore_file_ext"
         "etc/maldet/ignore_inotify"
@@ -24,7 +25,9 @@ backup=("etc/maldet/hookscan.conf"
         "etc/maldet/maldet.conf"
         "etc/maldet/monitor_paths"
         )
-sha256sums=('3ad66eebd443d32dd6c811dcf2d264b78678c75ed1d40c15434180d4453e60d2')
+sha256sums=('23c7cf5649b0f1c1d4e2ab78961eb58453ed01aeffb53926fde6f2baa7f61e68'
+            '172486c33905df4032d74dd7f79c6dafce64df2006a037fba3c6aded99eaaba1'
+            '0d6d61dadb72eec8ded0d7e97d4b723fd2e4323e68852add59d372ef3f4e7b00')
 install="maldet.install"
 
 prepare(){
@@ -105,6 +108,8 @@ package(){
  cp -ar "files/"* "$pkgdir/usr/share/maldet"
  # systemd files
  install -D -m 644 "files/service/maldet.service" "$pkgdir/usr/lib/systemd/system/maldet.service"
+ install -D -m 644 "$srcdir/maldet-update-signatures.service" "$pkgdir/usr/lib/systemd/system/maldet-update-signatures.service"
+ install -D -m 644 "$srcdir/maldet-update-signatures.timer" "$pkgdir/usr/lib/systemd/system/maldet-update-signatures.timer"
  # program data
  install -d "$pkgdir/var/lib/maldet/"{internals,quarantine,sess,sigs,clean,tmp,pub}
  install -d "$pkgdir/var/log/maldet"

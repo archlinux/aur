@@ -1,0 +1,10 @@
+[Unit]
+Description=Linux Malware Detect signature update timer - maldet
+
+[Timer]
+OnCalendar=daily
+RandomizedDelaySec=360
+Persistent=true
+
+[Install]
+WantedBy=timers.target
