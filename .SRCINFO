@@ -1,8 +1,8 @@
 pkgbase = gdm-settings-git
 	pkgdesc = A settings app for Gnome's Login Manager, GDM
-	pkgver = 2.0+31+ga314ed2
+	pkgver = 3.1+6+g4f71fd0
 	pkgrel = 1
-	url = https://github.com/realmazharhussain/gdm-settings
+	url = https://gdm-settings.github.io
 	arch = any
 	license = AGPL3
 	checkdepends = appstream
@@ -18,7 +18,7 @@ pkgbase = gdm-settings-git
 	depends = polkit
 	provides = gdm-settings
 	conflicts = gdm-settings
-	source = gdm-settings-git::git+https://github.com/realmazharhussain/gdm-settings
+	source = gdm-settings-git::git+https://github.com/gdm-settings/gdm-settings.git
 	md5sums = SKIP
 
 pkgname = gdm-settings-git
