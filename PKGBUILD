@@ -6,7 +6,7 @@ function _nvidia_check {
 
 pkgname=alvr
 pkgver=19.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
@@ -31,12 +31,9 @@ prepare() {
 	echo "[profile.release]
 lto=true" >> Cargo.toml
 
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-    if _nvidia_check; then
-        cargo run --frozen -p alvr_xtask -- prepare-deps --platform linux
-    else
-        cargo run --frozen -p alvr_xtask -- prepare-deps --platform linux --no-nvidia
-    fi
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -51,6 +48,12 @@ build() {
 
 	export ALVR_OPENVR_DRIVER_ROOT_DIR="$ALVR_LIBRARIES_DIR/steamvr/alvr/"
 	export ALVR_VRCOMPOSITOR_WRAPPER_DIR="$ALVR_LIBRARIES_DIR/alvr/"
+
+    if _nvidia_check; then
+        cargo run --release --frozen -p alvr_xtask -- prepare-deps --platform linux
+    else
+        cargo run --release --frozen -p alvr_xtask -- prepare-deps --platform linux --no-nvidia
+    fi
 
 	cargo build \
 		--frozen \
