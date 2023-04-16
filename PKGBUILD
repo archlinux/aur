@@ -1,8 +1,9 @@
 # Maintainer: Maxim Korotkov <maximkorotkov4@gmail.com>
+# Contributor: Marie Piontek <marie@kaifa.ch>
 
 pkgname=honkers-launcher-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 url="https://github.com/an-anime-team/honkers-launcher"
 provides=("honkers-launcher")
