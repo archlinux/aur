@@ -1,9 +1,10 @@
 pkgname=mingw-w64-wine
 pkgver=1
-pkgrel=9
+pkgrel=10
 arch=('any')
 pkgdesc="Wine wrapper for MinGW (mingw-w64)"
-depends=('wine')
+# https://bugs.archlinux.org/task/77413
+depends=('wine' 'libunwind')
 license=("MIT")
 url="http://fedoraproject.org/wiki/MinGW"
 source=("mingw-wine.sh" "mingw-msiexec.sh" "mingw-winepath.sh")
