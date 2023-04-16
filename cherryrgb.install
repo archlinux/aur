@@ -1,0 +1,8 @@
+post_install() {
+	udevadm control --reload
+	udevadm trigger
+}
+
+post_remove() {
+	udevadm control --reload
+}
