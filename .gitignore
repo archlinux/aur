@@ -1,6 +1,4 @@
-pkg/
-src/
-*.xz
-*.tgz
-*.zst
-*.sig
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO

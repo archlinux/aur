@@ -1,17 +1,20 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
-# Maintainer: Achilleas Pipinellis <axilleas at archlinux dot gr>
+# Contributor: Achilleas Pipinellis <axilleas at archlinux dot gr>
 
 pkgname=markdownlint-cli
 pkgver=0.33.0
-pkgrel=1
+pkgrel=2
 pkgdesc="MarkdownLint Command Line Interface"
-arch=('any')
+arch=(any)
 url="https://github.com/igorshubovych/markdownlint-cli"
-license=('MIT')
-replaces=('nodejs-markdownlint-cli')
-conflicts=('nodejs-markdownlint-cli')
-depends=('nodejs')
-makedepends=('npm' 'jq')
+license=(MIT)
+replaces=(nodejs-markdownlint-cli)
+conflicts=(nodejs-markdownlint-cli)
+makedepends=(
+  npm
+  jq
+)
+depends=(nodejs)
 
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 sha512sums=('ccc2b5a07a636248633bef78fa7800462041ad10c450cce8a031c1007b6610827da1875d77d977721091798da63e579cc07ee07e5429d40a62953a3ea34ce8a5')
