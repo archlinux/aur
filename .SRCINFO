@@ -7,13 +7,14 @@ pkgbase = timeswitch-git
 	license = MIT
 	makedepends = git
 	makedepends = meson
+	depends = gsound
 	depends = gtk4
 	depends = libadwaita
 	depends = python
 	depends = python-gobject
 	provides = timeswitch
 	conflicts = timeswitch
-	source = git+https://github.com/fsobolev/timeswitch.git
+	source = git+https://github.com/fsobolev/timeswitch
 	b2sums = SKIP
 
 pkgname = timeswitch-git
