@@ -1,7 +1,7 @@
 pkgbase = mutter-performance
 	pkgdesc = A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync
 	pkgver = 43.4+r3+g951b2a98b
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
