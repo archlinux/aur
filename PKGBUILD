@@ -2,7 +2,7 @@
 
 _module=browser-cookie3
 pkgname=python-$_module
-pkgver=0.17.0
+pkgver=0.17.1
 pkgrel=1
 pkgdesc="Loads cookies used by your web browser into a cookiejar object"
 url="https://github.com/borisbabic/browser_cookie3"
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('7f2c99ee990d943e8c1f5f92454623534997314b19277aa13aa26b72627f8607')
+sha256sums=('53f7ab92ab13703603cae5674719bc95ffcc6c6d1cd3328dd022fa72a5c25b5e')
 
 build() {
     cd $srcdir/$_module-$pkgver
