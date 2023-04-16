@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=109.0a1+20221117.1+hefbd04cb0748
+pkgver=114.0a1+20230416.1+hc061ec6c908e
 pkgrel=1
 pkgdesc="Development version of the popular Firefox web browser"
 url="https://www.mozilla.org/firefox/channel/#nightly"
@@ -170,6 +170,10 @@ build() {
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZ_ENABLE_FULL_SYMBOLS=1
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
+
+  # --as-needed causes glxtest to be underlinked
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1828315
+  export LDFLAGS="${LDFLAGS/,--as-needed/}"
 
   # LTO needs more open files
   ulimit -n 4096

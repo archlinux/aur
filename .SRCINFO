@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly
 	pkgdesc = Development version of the popular Firefox web browser
-	pkgver = 109.0a1+20221117.1+hefbd04cb0748
+	pkgver = 114.0a1+20230416.1+hc061ec6c908e
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/channel/#nightly
 	arch = x86_64
