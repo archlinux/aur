@@ -1,0 +1,14 @@
+pkgbase = shortcuts-bin
+	pkgdesc = A tool for getting shortcuts & commands for commands
+	pkgver = v1.0.0
+	pkgrel = 2
+	url = https://codeberg.org/Minecodes/shortcuts
+	arch = x86_64
+	license = bsd-4-clause
+	depends = gum
+	depends = glow
+	depends = curl
+	source = shortcuts::https://codeberg.org/Minecodes/shortcuts/raw/branch/main/shortcuts
+	sha256sums = SKIP
+
+pkgname = shortcuts-bin
