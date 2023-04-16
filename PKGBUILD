@@ -22,6 +22,11 @@ build() {
   make
 }
 
+check() {
+  cd "$srcdir/Vol-$pkgver"
+  make test
+}
+
 package() {
   cd "$srcdir/Vol-$pkgver"
   PKG_CONFIG_LIBDIR="${pkgdir}/usr/lib/pkgconfig/" \
