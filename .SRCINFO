@@ -1,7 +1,7 @@
 pkgbase = itgmania-bin
 	pkgdesc = A fork of stepmania 5.1, improved for the post-ITG community
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.itgmania.com/
 	arch = x86_64
 	license = MIT
@@ -17,6 +17,7 @@ pkgbase = itgmania-bin
 	depends = libjpeg-turbo
 	depends = libtiff
 	depends = gtk3
+	depends = libusb-compat
 	provides = itgmania
 	conflicts = itgmania
 	options = !strip

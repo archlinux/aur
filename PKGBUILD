@@ -1,7 +1,7 @@
 # Contributor: xannode <archpkg _at_ xannode.com>
 pkgname=itgmania-bin
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fork of stepmania 5.1, improved for the post-ITG community"
 provides=('itgmania')
 conflicts=('itgmania')
@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://www.itgmania.com/"
 options=(!strip)
 license=('MIT')
-depends=(flac libvorbis mpg123 opusfile icu libxau sqlite libxml2 libpng libjpeg-turbo libtiff gtk3)
+depends=(flac libvorbis mpg123 opusfile icu libxau sqlite libxml2 libpng libjpeg-turbo libtiff gtk3 libusb-compat)
 source=(
 	"https://github.com/itgmania/itgmania/releases/download/v${pkgver}/ITGmania-${pkgver}-Linux.tar.gz"
 	"itgmania.sh"
