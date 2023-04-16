@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-performance
 	pkgdesc = Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync
 	pkgver = 43.4
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://wiki.gnome.org/Projects/GnomeShell
 	arch = x86_64
@@ -51,6 +51,7 @@ pkgbase = gnome-shell-performance
 	sha256sums = SKIP
 
 pkgname = gnome-shell-performance
+	install = gnome-shell.install
 	depends = accountsservice
 	depends = gcr-4
 	depends = gjs

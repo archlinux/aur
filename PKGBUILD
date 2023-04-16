@@ -23,7 +23,7 @@ _merge_requests_to_use=()
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
 pkgver=43.4
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -156,5 +156,6 @@ fi
 
 package() {
   depends+=(libmutter-11.so)
+  install=gnome-shell.install
   meson install -C build --destdir "$pkgdir"
 }
