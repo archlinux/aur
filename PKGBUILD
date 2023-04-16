@@ -1,8 +1,6 @@
 # Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=denaro
-_pkgname=nickvisionmoney
-_pkgid=org.nickvision.money
 pkgver=2023.4.0
 pkgrel=2
 pkgdesc="A personal finance manager"
