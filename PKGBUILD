@@ -10,7 +10,7 @@ license=('MIT')
 depends=('cairo' 'libxkbcommon' 'pango' 'wayland')
 makedepends=('meson' 'ninja' 'scdoc' 'wayland-protocols')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~adnano/wmenu/archive/$pkgver.tar.gz")
-b2sums=('8925049526c46c497b960880140e3c126ea568f21d49032774e72aceab9df2e6f0f29db38b2ed5bd904f5e8fb7d9088a1054acbb009c90c812eb482e4bcf5ea6')
+b2sums=('f05c71a22319465506af48f8dff1d4155bb8d3b0704a24169034e7d05b56cdadf8cc4c78efcc0f840993670d9956d37b1cacf0cd1ffa8a3362a3682b332bf2de')
 
 build() {
 	cd "$pkgname-$pkgver"
