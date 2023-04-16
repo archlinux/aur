@@ -29,6 +29,6 @@ pkgbase = python-vispy
 	optdepends = python-pysdl2: sdl2
 	optdepends = python-wxpython: wx
 	source = python-vispy-0.12.2.tar.gz::https://github.com/vispy/vispy/archive/v0.12.2.tar.gz
-	sha256sums = 73e7c081d01fc3f7e1693d54d265239abc2afdcefd927449f2ef0a74ee9c49d0
+	sha256sums = 0e23eacb8adb0fd37125f1b58e9a1e21ca31f0318793c54d20ce99a7d338273f
 
 pkgname = python-vispy

@@ -24,7 +24,7 @@ optdepends=('ipython: ipython-static'
             'python-wxpython: wx')
 _pkgname=vispy
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/vispy/vispy/archive/v$pkgver.tar.gz")
-sha256sums=('73e7c081d01fc3f7e1693d54d265239abc2afdcefd927449f2ef0a74ee9c49d0')
+sha256sums=('0e23eacb8adb0fd37125f1b58e9a1e21ca31f0318793c54d20ce99a7d338273f')
 
 build() {
     cd "$srcdir/${_pkgname}-${pkgver}"
