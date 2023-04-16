@@ -1,6 +1,6 @@
 pkgbase = openhv
 	pkgdesc = An open-source pixel-art science-fiction real-time-strategy game.
-	pkgver = 20230305
+	pkgver = 20230416
 	pkgrel = 1
 	url = https://www.openhv.net
 	arch = any
@@ -19,13 +19,7 @@ pkgbase = openhv
 	depends = xdg-utils
 	depends = zenity
 	options = !debug
-	source = git+https://github.com/OpenHV/OpenHV.git#tag=20230305
-	source = install.patch
-	source = man.patch
-	source = libs.patch
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
+	source = git+https://github.com/OpenHV/OpenHV.git#tag=20230416
 	sha512sums = SKIP
 
 pkgname = openhv
