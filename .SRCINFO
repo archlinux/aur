@@ -1,0 +1,26 @@
+pkgbase = htop-minimal
+	pkgdesc = Interactive process viewer
+	pkgver = 3.2.2
+	pkgrel = 1
+	url = https://htop.dev/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = lm_sensors
+	depends = libcap
+	depends = libcap.so
+	depends = libnl
+	depends = ncurses
+	depends = libncursesw.so
+	optdepends = lm_sensors: show cpu temperatures
+	optdepends = lsof: show files opened by a process
+	optdepends = strace: attach to a running process
+	options = !emptydirs
+	source = git+https://github.com/htop-dev/htop.git#tag=3.2.2?signed
+	source = disable-process-list.patch
+	validpgpkeys = F7ABE8761E6FE68638E6283AFE0842EE36DD8C0C
+	validpgpkeys = 0D316B6ABE022C7798D0324BF1D35CB9E8E12EAD
+	sha256sums = SKIP
+	sha256sums = 1a2f2ba92076a313a572dc3b151b3f2bb1649c5647613235f092750e99a12352
+
+pkgname = htop-minimal
