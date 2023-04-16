@@ -1,6 +1,6 @@
 pkgbase = mangareader
 	pkgdesc = Manga Reader for local files
-	pkgver = 2.0.4
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/g-fb/mangareader
 	arch = x86_64
@@ -16,7 +16,8 @@ pkgbase = mangareader
 	depends = kxmlgui
 	depends = kio
 	depends = kconfigwidgets
-	source = https://github.com/g-fb/mangareader/archive/refs/tags/2.0.4.tar.gz
-	sha256sums = da9d0323f5862b232a844fc7a46cf2fb84149075172c4da6d10c64ff2711cd28
+	depends = gettext
+	source = https://github.com/g-fb/mangareader/archive/refs/tags/2.1.0.tar.gz
+	sha256sums = b6efda5e3fb9cdd77f483adf0822e85f274cc67201e183a8de51beaa4d805e99
 
 pkgname = mangareader
