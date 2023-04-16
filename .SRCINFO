@@ -13,7 +13,6 @@ pkgbase = mingw-w64-paraview
 	makedepends = mingw-w64-wine
 	makedepends = protobuf
 	makedepends = mingw-w64-nlohmann-json
-	makedepends = mingw-w64-fmt
 	depends = mingw-w64-qt5-tools
 	depends = mingw-w64-qt5-svg
 	depends = mingw-w64-boost
