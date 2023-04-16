@@ -1,7 +1,7 @@
 pkgbase = neovide-git
 	pkgdesc = No Nonsense Neovim Client in Rust
-	pkgver = 0.10.1.r16.gf7ad535
-	pkgrel = 2
+	pkgver = 0.10.4.r2.gdaf5307
+	pkgrel = 1
 	url = https://github.com/Kethku/neovide
 	arch = x86_64
 	license = MIT
