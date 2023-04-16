@@ -1,4 +1,5 @@
 # Maintainer: jacekpoz <jacekpoz@cock.li>
+# Contributor: n3oney <neo@neoney.dev>
 # Contributor: Spacingbat3 <git@spacingbat3.anonaddy.com> (https://github.com/spacingbat3)
 # this is SpacingBat3's webcord-git package modified - if I'm violating any licenses in any way please contact me
 
