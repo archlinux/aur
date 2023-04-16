@@ -4,7 +4,7 @@
 #
 
 pkgname=simple_backup
-pkgver=3.0.0.r2.g3e5e3cb
+pkgver=3.0.1.r0.g92ecc95
 pkgrel=1
 pkgdesc='Simple backup script that uses rsync to copy files'
 arch=('any')
