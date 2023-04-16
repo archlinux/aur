@@ -1,6 +1,6 @@
 pkgbase = consolekit
 	pkgdesc = A framework for defining and tracking users, login sessions, and seats
-	pkgver = 1.2.4
+	pkgver = 1.2.5
 	pkgrel = 4
 	url = https://github.com/ConsoleKit2/ConsoleKit2
 	install = consolekit.install
@@ -17,14 +17,11 @@ pkgbase = consolekit
 	depends = udev
 	depends = zlib
 	depends = python3
-	provides = consolekit2
 	provides = elogind
 	options = libtool
-	source = https://github.com/ConsoleKit2/ConsoleKit2/archive/refs/tags/1.2.4/ConsoleKit2-1.2.4.tar.gz
+	source = https://github.com/ConsoleKit2/ConsoleKit2/archive/refs/tags/1.2.5.tar.gz
 	source = consolekit.tmpfiles.conf
-	source = generic-power-commands.diff
-	sha256sums = 7c5ca07cc7ecb2743446c4ab5a66ae02667acab6214268d76f0fdf73eaf141e8
+	sha256sums = d82eeab0c830acdb720e910b5b7bf59db0d3eb922c4390f15cf19bb035742caa
 	sha256sums = 778552dc12b3c235bde200e476d4262da0c135f3f6f8b3e975a87881d1f154d1
-	sha256sums = SKIP
 
 pkgname = consolekit

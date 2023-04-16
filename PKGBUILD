@@ -5,27 +5,21 @@
 _pkgname=ConsoleKit2
 
 pkgname=consolekit
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=4
 pkgdesc="A framework for defining and tracking users, login sessions, and seats"
 arch=('i686' 'x86_64')
 url="https://github.com/ConsoleKit2/ConsoleKit2"
 license=('GPL')
-provides=('consolekit2' 'elogind')
+provides=('elogind')
 depends=('dbus' 'glib2' 'libx11' 'polkit-consolekit' 'udev' 'zlib' 'python3')
 makedepends=('acl' 'xmlto' 'docbook-xsl')
 options=('libtool')
 install=consolekit.install
-source=("$url/archive/refs/tags/$pkgver/$_pkgname-$pkgver.tar.gz"
-        'consolekit.tmpfiles.conf'
-        'generic-power-commands.diff')
-sha256sums=('7c5ca07cc7ecb2743446c4ab5a66ae02667acab6214268d76f0fdf73eaf141e8'
-            '778552dc12b3c235bde200e476d4262da0c135f3f6f8b3e975a87881d1f154d1'
-            SKIP)
-
-prepare(){
-    patch -d "$srcdir/$_pkgname-$pkgver" -p1 < generic-power-commands.diff
-}
+source=("$url/archive/refs/tags/$pkgver.tar.gz"
+        'consolekit.tmpfiles.conf')
+sha256sums=('d82eeab0c830acdb720e910b5b7bf59db0d3eb922c4390f15cf19bb035742caa'
+            '778552dc12b3c235bde200e476d4262da0c135f3f6f8b3e975a87881d1f154d1')
 
 build(){
 	cd $srcdir/$_pkgname-$pkgver
