@@ -4,7 +4,7 @@ DOC_DIRS=(opt/hydrus/help)
 
 pkgname=hydrus
 _pkgname=hydrus
-pkgver=523
+pkgver=523.1
 pkgrel=1
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
@@ -16,7 +16,7 @@ depends=(python python-opencv python-beautifulsoup4 python-yaml
          'python-lz4>=0.10.1' python-numpy python-twisted python-pillow
          python-pysocks python-psutil python-send2trash python-html5lib
          python-requests python-qtpy emoji-font python-mpv
-         python-service-identity fmt python-pyqt6)
+         python-service-identity fmt pyside6)
 makedepends=(git)
 optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'miniupnpc: automatic port forwarding'
@@ -24,14 +24,14 @@ optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'python-cloudscraper: bypass cloudflare "checking your browser" challenges'
             'python-pyqt6-charts: display bandwidth usage charts'
             'python-pyopenssl: to generate certificates for accessing client API and server via HTTPS')
-source=("${_pkgname}::git+https://github.com/hydrusnetwork/${_pkgname}.git#commit=86db3c1fe8705012058b9a239c0b8b8c2e6c32f4"
+source=("${_pkgname}::git+https://github.com/hydrusnetwork/${_pkgname}.git#commit=245a885eef4a5718fc30fb9c68c31886e7c996a2"
         paths-in-opt.patch
         hydrus-client
         hydrus-server
         hydrus.desktop)
 sha256sums=('SKIP'
             'f34b3cbe1ee548975f98b339200e79c95ab1482c8e96636e9a27db4ee8ade27a'
-            '5da0dd6791436d67b3c1cffb011b44a21987575d507b1b4025c4a3afba3347f0'
+            'd2cb826ce0dd1892ab95fc3b14dbe6bd312210f653d0aea31938eeb7e361fdc5'
             '463841cc16059b516cc327cfbc30d3383e2236b085ba2d503e82f5be39444806'
             '9b8c2603a8040ae80152ff9a718ad3e8803fdc3029a939e3c0e932ea35ded923')
 
