@@ -12,6 +12,7 @@ pkgbase = tube-converter
 	makedepends = dotnet-sdk>=7
 	makedepends = git
 	makedepends = just
+	depends = aria2
 	depends = dotnet-runtime>=7
 	depends = ffmpeg
 	depends = libadwaita
