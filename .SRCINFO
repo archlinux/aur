@@ -1,20 +1,21 @@
 pkgbase = capistrano
 	pkgdesc = A remote server automation and deployment tool written in Ruby
-	pkgver = 3.17.1
+	pkgver = 3.17.2
 	pkgrel = 1
-	url = http://capistranorb.com
+	url = https://capistranorb.com
 	arch = any
 	license = MIT
-	makedepends = git
+	checkdepends = ruby-mocha
+	checkdepends = ruby-rspec
 	makedepends = ruby-rdoc
 	makedepends = rubygems
 	depends = ruby
+	depends = ruby-airbrussh
+	depends = ruby-i18n
 	depends = ruby-rake
 	depends = ruby-sshkit
-	depends = ruby-i18n
-	depends = ruby-airbrussh
 	options = !emptydirs
-	source = git+https://github.com/capistrano/capistrano.git#tag=v3.17.1
-	sha256sums = SKIP
+	source = https://github.com/capistrano/capistrano/archive/v3.17.2/capistrano-3.17.2.tar.gz
+	sha256sums = cf555b47b5051bcaada6c710cd198bc53cf79db02d75901c0c495e6676eb8902
 
 pkgname = capistrano
