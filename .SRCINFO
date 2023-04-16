@@ -1,0 +1,13 @@
+pkgbase = hunspell-ga
+	pkgdesc = Irish (Gaeilge) dictionary for Hunspell
+	pkgver = 5.1
+	pkgrel = 1
+	url = https://github.com/kscanne/gaelspell
+	arch = any
+	license = GPL2
+	license = FDL1.2
+	depends = hunspell
+	source = hunspell-ga-5.1.zip::https://github.com/kscanne/gaelspell/releases/download/v5.1/hunspell-ga-5.1.zip
+	md5sums = 73f4e6c8cb9fac405191633b7f3ae2ec
+
+pkgname = hunspell-ga
