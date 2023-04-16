@@ -1,6 +1,6 @@
 pkgname=cherryrgb
 _pkgname=cherryrgb
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Cherry RGB Keyboard control software'
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
 	"$pkgname.install"
 )
 install=$pkgname.install
-sha256sums=('cda1e2fdc09b032cb28859b18bc6a2af5a3bf66059b50dd0369dfc0fad1b0465'
+sha256sums=('36711619da179887c9ea5f82866fd4ed5e89cab28be4bc70d08794eb7fd5a77d'
             '45eb8463b2750b3721e18f4cc9b4c87252a404a8f934c4e8637900223dc56dd4')
 
 prepare() {

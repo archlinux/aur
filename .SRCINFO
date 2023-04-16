@@ -1,6 +1,6 @@
 pkgbase = cherryrgb
 	pkgdesc = Cherry RGB Keyboard control software
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/skraus-dev/cherryrgb-rs
 	install = cherryrgb.install
@@ -9,9 +9,9 @@ pkgbase = cherryrgb
 	makedepends = cargo
 	provides = cherryrgb
 	conflicts = cherryrgb
-	source = cherryrgb-0.2.2.tar.gz::https://github.com/skraus-dev/cherryrgb-rs/archive/0.2.2.tar.gz
+	source = cherryrgb-0.2.3.tar.gz::https://github.com/skraus-dev/cherryrgb-rs/archive/0.2.3.tar.gz
 	source = cherryrgb.install
-	sha256sums = cda1e2fdc09b032cb28859b18bc6a2af5a3bf66059b50dd0369dfc0fad1b0465
+	sha256sums = 36711619da179887c9ea5f82866fd4ed5e89cab28be4bc70d08794eb7fd5a77d
 	sha256sums = 45eb8463b2750b3721e18f4cc9b4c87252a404a8f934c4e8637900223dc56dd4
 
 pkgname = cherryrgb
