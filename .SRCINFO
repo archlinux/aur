@@ -1,6 +1,6 @@
 pkgbase = discord-electron-openasar
 	pkgdesc = Discord packaged with OpenAsar using system provided electron (v21) for increased security and performance
-	pkgver = 0.0.26+800
+	pkgver = 0.0.26+803
 	pkgrel = 1
 	url = https://discord.com
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = discord-electron-openasar
 	conflicts = discord
 	options = !strip
 	source = https://dl.discordapp.net/apps/linux/0.0.26/discord-0.0.26.tar.gz
-	source = git+https://github.com/goosemod/openasar.git#commit=6705ee9933c48e494ac0350936015796e6d61acc
+	source = git+https://github.com/goosemod/openasar.git#commit=20b5fa3165ca5c83629075a059a050e83130eb89
 	sha512sums = 65477c2c033f30850a699706a6502ff4f4af8838185716d968d641fdab3033555139b04bf91a111a847aca14113e33ba6248d49ba317fd43cbacb099e974117b
 	sha512sums = SKIP
 
