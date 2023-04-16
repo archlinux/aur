@@ -9,7 +9,7 @@ url="www.torguard.com"
 depends=('iproute2' 'psmisc' 'libxkbcommon-x11')
 license=(custom)
 source=("https://updates.torguard.biz/Software/Linux/torguard-v${pkgver}-amd64-arch.tar.gz")
-md5sums=(SKIP)
+md5sums=("SKIP")
 install=torguard.install
 
 package() {
