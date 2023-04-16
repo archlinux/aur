@@ -21,7 +21,7 @@ optdepends=(
 'bash: the default_make is a bash script'
 'nano: default editor for the makefiles'
 )
-source=("git+https://gitlab.com/Teddy-Kun/gitwife/")
+source=("git+https://gitlab.com/Teddy-Kun/gitwife.git/")
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 sha256sums=('SKIP')
