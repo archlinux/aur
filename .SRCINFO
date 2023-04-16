@@ -1,8 +1,8 @@
 pkgbase = denaro-git
 	pkgdesc = A personal finance manager
-	pkgver = 2023.2.2.r31.g98ea94b
+	pkgver = 2023.4.0.r50.g08d65ef
 	pkgrel = 1
-	url = https://github.com/nlogozzo/nickvisionmoney
+	url = https://github.com/NickvisionApps/denaro
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
@@ -16,9 +16,7 @@ pkgbase = denaro-git
 	depends = libadwaita
 	provides = denaro
 	conflicts = denaro
-	conflicts = nickvision-money
-	replaces = nickvision-money-git
-	source = git+https://github.com/nlogozzo/nickvisionmoney
+	source = git+https://github.com/NickvisionApps/denaro
 	b2sums = SKIP
 
 pkgname = denaro-git
