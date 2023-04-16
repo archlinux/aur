@@ -1,6 +1,6 @@
 pkgbase = unvtray
 	pkgdesc = A minimalistic Unvanquished server browser that runs in the system tray.
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/Unvanquished/unvanquished-tray-browser
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = unvtray
 	depends = python-pillow
 	depends = python-pystray
 	optdepends = unvanquished: launch and play the game
-	source = https://github.com/Unvanquished/unvanquished-tray-browser/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 41de33a24ac1996f427c6f5c700bc88252fef563c3ebf5d5851590e16f9c8d38
+	source = https://github.com/Unvanquished/unvanquished-tray-browser/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 8e238efb90937988634e74c5f392ce145bc80b66ba43f94d9b41c8ffc5345aed
 
 pkgname = unvtray
