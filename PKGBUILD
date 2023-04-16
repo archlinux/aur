@@ -2,8 +2,8 @@
 # Maintainer: CrunchBite <crunchbite@teamxlink.com>
 
 pkgname=xlinkkai
-pkgver=7.4.43
-_commit=606669993
+pkgver=7.4.44
+_commit=632903458
 pkgrel=1
 pkgdesc='XLink Kai is a global gaming network - that allows you to play system-link/LAN enabled games online for free.'
 
