@@ -23,16 +23,6 @@ source=("git+${url}.git#commit=${_commit}")
 sha256sums=('SKIP')
 
 package() {
-	cd "${srcdir}/grml-etc-core-${pkgver}"
-	install -D -m644 etc/skel/.zshrc "${pkgdir}/etc/skel/.zshrc"
-	install -D -m644 etc/zsh/keephack "${pkgdir}/etc/zsh/keephack"
-	install -D -m644 etc/zsh/zshrc "${pkgdir}/etc/zsh/zshrc"
-
-	install -D -m644 doc/grmlzshrc.5 "${pkgdir}/usr/share/man/man5/grmlzshrc.5"
-	ln -sf grmlzshrc.5.gz "${pkgdir}/usr/share/man/man5/grml-zsh-config.5.gz"
-}
-
-package() {
 	cd "$srcdir/$pkgname"
 	install -D -m644 "$pkgname" -t "${pkgdir}/usr/share/zsh/"
 	install -D -m644 manjaro-zsh-prompt -t "${pkgdir}/usr/share/zsh"
