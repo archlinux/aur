@@ -1,68 +1,56 @@
-# Maintainer: Marie Piontek <marie@kaifa.ch>
+# Maintainer: Maxim Korotkov <maximkorotkov4@gmail.com>
 
 pkgname=honkers-launcher-bin
-pkgver=1.0.1
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="An Launcher for HI3 that installs and updates the game for you"
+pkgdesc="A launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 url="https://github.com/an-anime-team/honkers-launcher"
-conflicts=("honkers-launcher")
 provides=("honkers-launcher")
 arch=("x86_64")
 license=("GPL3")
 
 depends=(
-    "libayatana-appindicator"
+    "libadwaita"
     "tar"
     "unzip"
-    "samba"
-    "p7zip"
+    "xdelta3"
     "cabextract"
     "git"
-    "curl"
     "iputils"
-    "webkit2gtk"
-    "python"
-    "gstreamer"
-    "gst-plugins-good"
-    "gst-plugins-ugly"
-    "gst-plugins-bad"
-    "gst-plugins-base"
+    "gtk4"
+    "glibc"
 )
 
 optdepends=(
     "mangohud: FPS Hud/GUI"
     "gamemode: Game Optimizations"
-    "vkbasalt: Required to use custom shaders (install this and reshade-shaders-git)"
-    "reshade-shaders-git: Required by vkBasalt config files (install this and vkbasalt)"
+    "gamescope: a tool from Valve that allows for games to run in an isolated Xwayland instance"
 )
 
 source=(
-    "https://github.com/an-anime-team/honkers-launcher/releases/download/${pkgver}/honkers-launcher-${pkgver}.AppImage"
+    "honkers-launcher_${pkgver}::https://github.com/an-anime-team/honkers-launcher/releases/download/${pkgver}/honkers-launcher"
     "icon.png"
     "honkers-launcher.desktop"
-    "honkers-launcher.sh"
 )
 
 md5sums=(
-    '7bfa33090b50d7e3c3389b7423e1f564'
-    '28c2154639e28ca41e8064f409f9df7d'
-    'a1ca3142229aef0e9f1b89f94ce5e5c7'
-    'd3830e6a689ed05aead71519ea3f261d'
+    '68ab734b60896759c0f7295804631649'
+    '26b637e96d0f4382c8b132656a9ce3a5'
+    '739854fbecc047beb55d738dbdfe85d9'
 )
 
 prepare() {
-    chmod +x "${srcdir}/honkers-launcher-${pkgver}.AppImage"
-    "${srcdir}/honkers-launcher-${pkgver}.AppImage" --appimage-extract
+    chmod +x "${srcdir}/honkers-launcher_${pkgver}"
 }
 
 package() {
-    cd "squashfs-root"
     install -dm755 "${pkgdir}/usr/lib/${pkgname}"
-    cp -dr --no-preserve=ownership resources.neu "${pkgdir}/usr/lib/${pkgname}/"
-    cp -dr --no-preserve=ownership honkers-launcher "${pkgdir}/usr/lib/${pkgname}/"
-    cp -dr --no-preserve=ownership public "${pkgdir}/usr/lib/${pkgname}/"
+    install -dm755 "${pkgdir}/usr/bin/"
+    cp honkers-launcher_${pkgver} "${pkgdir}/usr/lib/${pkgname}/"
 
-    install -Dm755 "${srcdir}/honkers-launcher.sh" "${pkgdir}/usr/bin/honkers-launcher"
     install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/honkers-launcher.png"
+    ln -s "/usr/lib/${pkgname}/honkers-launcher_${pkgver}" "${pkgdir}/usr/bin/honkers-launcher"
     install -Dm644 "${srcdir}/honkers-launcher.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/icons/moe.launcher.honkers-launcher.png"
 }
+
