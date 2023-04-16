@@ -1,15 +1,15 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='Wayfire Configuration Manager'
 pkgname=wcm
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.7.5
+pkgrel=1
 arch=(x86_64)
 url=https://wayfire.org
 license=(custom:MIT)
 depends=('wayfire>=0.7' 'wf-shell>=0.7' gtk3)
 makedepends=(wayland-protocols meson ninja glm)
 source=("https://github.com/WayfireWM/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=(924a9682dc2f632bad8b6914a8927ad5dcee4b6698f75e89251f1647ad0beaa7)
+b2sums=(cf0fe0d1c1e1fa2660a28a61cd9d52ac6fa3c9cceab43788b75f4359e1495dd2ddd767cb1f030afec4dadc2b7ef3c260ba83566a70a794dee8d3bb34427754fd)
 
 build ()
 {
