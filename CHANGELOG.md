@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.8.2] - 2023-04-12
+
+### Security
+- Address [CVE-2023-28260] (Windows only) by building with latest version of .net SDK (7.0.203)
+
+### Bug Fixes
+- Fix crash when HOST_LC_ALL contains a `.` character
+- Fix not all startup processes being terminated properly
+- Fix crash when attempting to terminate an already terminated process
+
 ## [0.8.1] - 2023-02-14
 
 ### Bug Fixes
@@ -230,7 +240,8 @@ legendary launch --dry-run 9c203b6ed35846e8a4a9ff1e314f6593 2> >(grep "Launch pa
 
 Initial release
 
-[unreleased]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.8.1...HEAD
+[unreleased]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.8.2...HEAD
+[0.8.2]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.8.1...v0.8.2
 [0.8.1]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.8.0...v0.8.1
 [0.8.0]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.7.5...v0.8.0
 [0.7.5]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.7.4...v0.7.5
@@ -255,5 +266,6 @@ Initial release
 [CVE-2021-31204]: https://github.com/dotnet/announcements/issues/185
 [CVE-2021-31957]: https://github.com/dotnet/announcements/issues/189
 [CVE-2023-21808]: https://github.com/dotnet/announcements/issues/247
+[CVE-2023-28260]: https://github.com/dotnet/announcements/issues/250
 [legendary]: https://github.com/derrod/legendary
 [settings file]: README.md#settings

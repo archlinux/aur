@@ -2,7 +2,7 @@
 
 _pkgname=min-ed-launcher
 pkgname=${_pkgname}-bin
-pkgver=v0.8.1
+pkgver=v0.8.2
 pkgrel=1
 pkgdesc="Minimal Elite Dangerous Launcher"
 arch=('x86_64')
@@ -16,8 +16,8 @@ changelog=CHANGELOG.md
 source=("${url}/releases/download/${pkgver}/${_pkgname}_${pkgver}_linux-x64.tar.gz"
 	"CHANGELOG.md"
 	"${_pkgname}.install")
-sha512sums=('8fc4c03d7bbb530c4a95d37999752fade6b58aae285185193983c5fda525595b44b63a5542d634b0bdafca291aaef589b811a59ef1780afa03ce9683d7d57a8e'
-            '1d75db81fb23f8ee655de0ec028f38799440aa5d36df9244730a85f829656bcba75626b9823161745ccf3f72ccf0832d6e43b348abdd87bef419897eb170f0ec'
+sha512sums=('bbfbe61039b1b6e96965f5e91bb9a315cf1df3e79b4829b2c4dc96154736c7622cf23c612ec09c50a9ba8ad8e2ee844ba43279831cb4efce964dd5cd8cb349ed'
+            '90cfd04551b3677002be9c33ed2b2049b5a4e419351ad7434ef663a54e34f5b0f17e6d800af416d2905909a5114d13b1b30267f30f120202ddd49ae3b8651e60'
             '33d77b3f3511bf97f5166a8a909744954e1047929dc416db2fe76b0bd52425e02ceba8cad0a416df53e004ca48e68f7bbfd1227e015253345c8495e691b07e2f')
 
 package() {
