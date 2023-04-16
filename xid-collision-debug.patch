@@ -1,20 +1,16 @@
- gdk/x11/gdkxid.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ gdk/x11/gdkxid.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git c/gdk/x11/gdkxid.c i/gdk/x11/gdkxid.c
-index 1005f9e40c..71578f8fcf 100644
+index 1005f9e40c..1523fa70b2 100644
 --- c/gdk/x11/gdkxid.c
 +++ i/gdk/x11/gdkxid.c
-@@ -56,10 +56,10 @@ _gdk_xid_table_insert (GdkDisplay *display,
-   if (!display_x11->xid_ht)
-     display_x11->xid_ht = g_hash_table_new ((GHashFunc) gdk_xid_hash,
+@@ -58,7 +58,7 @@ _gdk_xid_table_insert (GdkDisplay *display,
  					    (GEqualFunc) gdk_xid_equal);
--
-+/*
+ 
    if (g_hash_table_lookup (display_x11->xid_ht, xid))
-     g_warning ("XID collision, trouble ahead");
--
-+*/
+-    g_warning ("XID collision, trouble ahead");
++    g_debug ("XID collision, trouble ahead");
+ 
    g_hash_table_insert (display_x11->xid_ht, xid, data);
  }
- 
