@@ -1,0 +1,15 @@
+pkgbase = center-align
+	pkgdesc = Simple utility to align the stdout text (horizontal+vertical) Middle
+	pkgver = r1.f6fce9f
+	pkgrel = 1
+	url = https://github.com/niksingh710/center-align
+	arch = x86_64
+	license = WTFPL
+	makedepends = git
+	optdepends = figlet: for nice text art
+	provides = center-align
+	conflicts = center-align
+	source = git+https://github.com/niksingh710/center-align.git
+	md5sums = SKIP
+
+pkgname = center-align
