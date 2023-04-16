@@ -1,7 +1,7 @@
 # Maintainer: xgjmibzr <xgjmibzr@gmail.com>
 
 pkgname=httm-bin
-pkgver=0.25.9
+pkgver=0.26.0
 pkgrel=1
 pkgdesc="Prints the size, date and locations of available unique versions (deduplicated by modify time and size) of files residing on ZFS, BTRFS, or NILFS snapshots. (binary .deb)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('btrfs-progs: BTRFS support'
             'nilfs-utils: NILFS2 support')
 options=('!strip' '!emptydirs')
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/${pkgver}/httm_${pkgver}_amd64.deb")
-sha512sums=('626fbcd093ae420ecfc4f8000461093d931d153c2d363a1761e18dde7247f3a2b5a2aadd08d6ffb41351b69f9e93c5963a1525cd1d2868dd7df9bcdff1174fe6')
+sha512sums=('e5a835c643da0891803bb2ffc7b21ccd3a0508e1bd45b9fd5abc9c02cf3986aae076c6b5feffc4ac1f8edd8daff7005ac0529ec4519ea834a406cbd9fa5a5bbe')
 
 prepare() {
 	tar -xf data.tar.xz
