@@ -1,6 +1,6 @@
 pkgbase = fish-tide-git
 	pkgdesc = Flexible and asynchronous Fish prompt
-	pkgver = 5.r8.g6495113
+	pkgver = 5
 	pkgrel = 1
 	url = https://github.com/IlanCosman/tide
 	install = fish-tide-git.install

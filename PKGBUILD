@@ -2,7 +2,7 @@
 
 pkgname="fish-tide-git"
 _pkgname=${pkgname%-git}
-pkgver=5.r8.g6495113
+pkgver=5
 pkgrel=1
 pkgdesc="Flexible and asynchronous Fish prompt"
 arch=("any")
@@ -16,9 +16,16 @@ install="${pkgname}.install"
 source=("${pkgname}::git+${url}#branch=main")
 sha512sums=("SKIP")
 
+prepare() {
+    cd "${pkgname}"
+
+    git reset --hard "$(git describe --tags --abbrev=0 --match 'v*')"
+}
+
 pkgver() {
     cd "${pkgname}"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+
+    git describe --tags --abbrev=0 --match 'v*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
