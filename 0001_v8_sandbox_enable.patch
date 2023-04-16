@@ -1,0 +1,10 @@
+diff -ruN a/src/cbang/js/v8/V8.h b/src/cbang/js/v8/V8.h
+--- a/src/cbang/js/v8/V8.h	2023-04-12 13:01:26.846888687 -0400
++++ b/src/cbang/js/v8/V8.h	2023-04-12 13:02:23.030223080 -0400
+@@ -41,5 +41,6 @@
+ #define V8STDINT_H_
+ 
+ #define V8_ENABLE_CHECKS
++#define V8_ENABLE_SANDBOX
+ 
+ #include <v8.h>

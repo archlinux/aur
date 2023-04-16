@@ -2,5 +2,4 @@
 !PKGBUILD
 !.SRCINFO
 !.gitignore
-!0001_python3_fix.patch
-!0002_openssl_test.patch
+!*.patch
