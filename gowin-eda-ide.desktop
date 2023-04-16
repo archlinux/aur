@@ -1,7 +1,8 @@
 [Desktop Entry]
 Comment=Gowin EDA IDE
 Encoding=UTF-8
-Exec=/opt/gowin-eda-ide/bin/gw_ide
+Exec=/opt/gowin-eda-ide/bin/gw_ide %U
 Icon=gowin-eda-ide
 Name=Gowin EDA IDE
 Type=Application
+MimeType=application/x-gowin-eda-ide-project
