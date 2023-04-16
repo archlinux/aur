@@ -16,7 +16,6 @@ depends=('zsh-autosuggestions'
 	'ttf-noto-nerd'
 	'zsh-theme-powerlevel10k')
 makedepends=('git')
-conflicts=('grml-zsh-config')
 backup=('root/.zshrc')
 install="$pkgname.install"
 _commit=a09dbc3f6bf22d553def64247b3529d9310c7b1f
@@ -24,18 +23,28 @@ source=("git+${url}.git#commit=${_commit}")
 sha256sums=('SKIP')
 
 package() {
+	cd "${srcdir}/grml-etc-core-${pkgver}"
+	install -D -m644 etc/skel/.zshrc "${pkgdir}/etc/skel/.zshrc"
+	install -D -m644 etc/zsh/keephack "${pkgdir}/etc/zsh/keephack"
+	install -D -m644 etc/zsh/zshrc "${pkgdir}/etc/zsh/zshrc"
+
+	install -D -m644 doc/grmlzshrc.5 "${pkgdir}/usr/share/man/man5/grmlzshrc.5"
+	ln -sf grmlzshrc.5.gz "${pkgdir}/usr/share/man/man5/grml-zsh-config.5.gz"
+}
+
+package() {
 	cd "$srcdir/$pkgname"
-	install -D -m644 .zshrc -t "${pkgdir}/etc/skel/"
 	install -D -m644 "$pkgname" -t "${pkgdir}/usr/share/zsh/"
 	install -D -m644 manjaro-zsh-prompt -t "${pkgdir}/usr/share/zsh"
 	install -D -m644 zsh-maia-prompt -t "${pkgdir}/usr/share/zsh/"
 	install -D -m644 p10k.zsh -t "${pkgdir}/usr/share/zsh/"
 	install -D -m644 p10k-portable.zsh -t "${pkgdir}/usr/share/zsh/"
 	install -D -m644 command-not-found.zsh -t "${pkgdir}/usr/share/zsh/functions/"
-	install -D -m640 .zshrc -t "${pkgdir}/root/"
+	install -D -m640 .zshrc -t "${pkgdir}/etc/zsh/zshrc-manjaro"
 	chmod 750 "${pkgdir}/root"
 	install -d "${pkgdir}/usr/share/zsh/scripts"
 	cp -r base16-shell "${pkgdir}/usr/share/zsh/scripts/"
 	chmod a+x "${pkgdir}/usr/share/zsh/scripts/base16-shell/"*
 	install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/$pkgname/"
+
 }

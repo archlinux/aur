@@ -15,7 +15,6 @@ pkgbase = manjaro-zsh-config
 	depends = pkgfile
 	depends = ttf-noto-nerd
 	depends = zsh-theme-powerlevel10k
-	conflicts = grml-zsh-config
 	backup = root/.zshrc
 	source = git+https://github.com/Chrysostomus/manjaro-zsh-config.git#commit=a09dbc3f6bf22d553def64247b3529d9310c7b1f
 	sha256sums = SKIP
