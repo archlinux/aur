@@ -1,16 +1,16 @@
 pkgbase = ruby-abstract_type
 	pkgdesc = Module to declare abstract classes and methods
 	pkgver = 0.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dkubb/abstract_type
 	arch = any
 	license = MIT
 	checkdepends = ruby-rspec
-	makedepends = rubygems
 	makedepends = ruby-rdoc
+	makedepends = rubygems
 	depends = ruby
 	options = !emptydirs
-	source = https://github.com/dkubb/abstract_type/archive/v0.0.7.tar.gz
+	source = https://github.com/dkubb/abstract_type/archive/v0.0.7/abstract_type-0.0.7.tar.gz
 	sha256sums = 465958597499600177ad15dbb57ec90c55cb27f82cb3e4b3cc8c58285a6ec82f
 
 pkgname = ruby-abstract_type
