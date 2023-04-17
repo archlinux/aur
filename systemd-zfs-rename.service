@@ -1,0 +1,14 @@
+[Unit]
+Description=Rename/Move ZFS filesystem after patchmgmt
+DefaultDependencies=no
+Requires=zfs-import-scan.service
+After=zfs-import-scan.service
+Before=sysroot.mount
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/lib/mkinitcpio-sd-zfs-rename/systemd-zfs-rename.sh
+
+[Install]
+WantedBy=initrd-root-device.target
