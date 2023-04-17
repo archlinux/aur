@@ -1,5 +1,5 @@
 pkgbase = intel-opencl
-	pkgdesc = Legacy OpenCL(TM) 2.0 Driver for Intel(R) HD, Iris(TM), and Iris(TM) Pro Graphics for Linux (pre-Broadwell)
+	pkgdesc = Legacy OpenCL(TM) driver 1.2 or 2.0, for Intel graphics from Ivy Bridge GPU model (gen 7), to Haswell (gen 7.5) for Linux (pre-Broadwell)
 	pkgver = 5.0.r63503
 	pkgrel = 2
 	url = https://software.intel.com/en-us/articles/legacy-opencl-drivers#latest_linux_driver
@@ -9,8 +9,7 @@ pkgbase = intel-opencl
 	depends = libdrm
 	optdepends = intel-opencl-sdk: Intel SDK for OpenCL Applications
 	provides = opencl-driver
-	source = intel-opencl-5.0.r63503-linux64.zip::http://registrationcenter-download.intel.com/akdlm/irc_nas/11396/SRB5.0_linux64.zip
+	source = intel-opencl-5.0.r63503-linux64.zip::https://web.archive.org/web/20190601000000/http://registrationcenter-download.intel.com/akdlm/irc_nas/11396/SRB5.0_linux64.zip
 	sha256sums = a3989a7a00f216b1a50bad37dc49629c3f7ce65104a2ca665e59d8c699bf7443
 
 pkgname = intel-opencl
-
