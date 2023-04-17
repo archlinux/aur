@@ -18,7 +18,7 @@ _reponame=widgie
 
 pkgver() {
     cd "$srcdir/$_reponame"
-    git describe --tags
+    git describe --tags | sed -e 's,-,.,g'
 }
 
 build() {
