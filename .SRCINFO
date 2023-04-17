@@ -8,6 +8,7 @@ pkgbase = resetti
 	license = GPL3
 	makedepends = go
 	makedepends = git
+	conflicts = resetti
 	source = git+https://www.github.com/woofdoggo/resetti#branch=next
 	md5sums = SKIP
 
