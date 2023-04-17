@@ -1,6 +1,6 @@
 pkgbase = supabase-bin
 	pkgdesc = A CLI for Supabase, an open source Firebase alternative
-	pkgver = 1.45.0
+	pkgver = 1.50.6
 	pkgrel = 1
 	url = https://github.com/supabase/cli
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = supabase-bin
 	optdepends = zsh-completions: for shell auto-completion
 	provides = supabase
 	conflicts = supabase
-	source = supabase-bin-1.45.0.tar.gz::https://github.com/supabase/cli/releases/download/v1.45.0/supabase_linux_amd64.tar.gz
-	sha256sums = e22a7f64af8f0edcd5af0b312ef8fb78e40ebc5420063ef29f703b0d268290c0
+	source = supabase-bin-1.50.6.tar.gz::https://github.com/supabase/cli/releases/download/v1.50.6/supabase_linux_amd64.tar.gz
+	sha256sums = 769697452b04253fb3dd5a19cb8933b70cf480920039875b71ba6c5d65be9fb5
 
 pkgname = supabase-bin
