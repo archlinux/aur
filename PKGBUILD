@@ -15,6 +15,7 @@ sha512sums=('6ce64f554359ae8b4e8b1cdab9908226501bad1d6bcdec9d7968133bbf0b3530842
 prepare() {
   # New pypandoc?
   sed -i "s/'rst')/'rst', format='markdown')/" pytest-plugins-$pkgver/common_setup.py
+  sed -i "s/pypandoc.convert/pypandoc.convert_text/g" pytest-plugins-$pkgver/common_setup.py
 
   # Our /bin is a symlink
   sed -i "s|'/bin'|'/usr/bin'|" pytest-plugins-$pkgver/pytest-shutil/tests/integration/test_cmdline_integration.py
