@@ -6,28 +6,29 @@ pkgver=25
 pkgrel=1
 pkgdesc="External Random Map Generator for C-evo"
 arch=('x86_64' 'aarch64')
-url="https://sourceforge.net/projects/cevomapgen"
+url="https://sourceforge.net/projects/$pkgname"
 license=('GPL')
 depends=('qt5pas' 'glibc' 'libx11' 'hicolor-icon-theme')
 makedepends=('fpc' 'lazarus-qt5')
 
-source=("https://sourceforge.net/projects/${pkgname}/files/Source/${pkgname}_${pkgver}.orig.tar.xz"
-        "https://sourceforge.net/projects/${pkgname}/files/Source/${pkgname}_${pkgver}.orig.tar.xz.asc")
+source=("$url/files/Source/${pkgname}_${pkgver}.orig.tar.xz"
+        "$url/files/Source/${pkgname}_${pkgver}.orig.tar.xz.asc")
 sha256sums=('8a3fa6edd8f8042560dfad070353c8707b7362e9793c55f5079135cda8957159'
             'SKIP')
 validpgpkeys=(14638444C9858E2A09B0259C211BCF562939AB8F)
 
 
 prepare() {
-	cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 	
   # Set temporary folder for lazarus primary config
   rm -fr "$srcdir/config"
   mkdir  "$srcdir/config"
 
-  # Don't need Windows doc on Arch
-  # Move desktop files
+  # Don't need Windows docs on Arch
   rm -f "Docs/ReadmeWindows.html"
+  
+  # Move desktop files  
   rm -fr Desktop
   mkdir  Desktop
   mv "Docs/cevomapgen.svg"   Desktop
