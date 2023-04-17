@@ -12,6 +12,8 @@ pkgbase = kddockwidgets-git
 	makedepends = qt5-tools
 	depends = qt5-base
 	depends = qt5-x11extras
+	provides = kddockwidgets
+	conflicts = kddockwidgets
 	source = kddockwidgets-git::git+https://github.com/KDAB/KDDockWidgets.git
 	sha256sums = SKIP
 
