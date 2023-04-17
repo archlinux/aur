@@ -1,6 +1,6 @@
 pkgbase = cbang-git
 	pkgdesc = A library of cross-platform C++ utilities
-	pkgver = r1427.9b9f3b7d
+	pkgver = r1485.ac8bbdd5
 	pkgrel = 1
 	url = https://github.com/CauldronDevelopmentLLC/cbang
 	arch = x86_64
@@ -21,6 +21,8 @@ pkgbase = cbang-git
 	provides = cbang
 	conflicts = cbang
 	source = git+https://github.com/CauldronDevelopmentLLC/cbang.git
+	source = 0001_v8_sandbox_enable.patch
 	sha256sums = SKIP
+	sha256sums = 75eff0bcd04293990f8dfb0771562356ccac2a7f40a06df0c0ba515fcdf4126a
 
 pkgname = cbang-git

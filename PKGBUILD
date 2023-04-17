@@ -2,7 +2,7 @@
 # Contributor: greyltc
 
 pkgname=cbang-git
-pkgver=r1427.9b9f3b7d
+pkgver=r1485.ac8bbdd5
 pkgrel=1
 pkgdesc="A library of cross-platform C++ utilities"
 arch=('x86_64')
@@ -31,12 +31,19 @@ optdepends=(
 )
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
-source=("git+https://github.com/CauldronDevelopmentLLC/cbang.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/CauldronDevelopmentLLC/cbang.git"
+		"0001_v8_sandbox_enable.patch")
+sha256sums=('SKIP'
+            '75eff0bcd04293990f8dfb0771562356ccac2a7f40a06df0c0ba515fcdf4126a')
 
 pkgver() {
   cd "${pkgname%-git}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "${pkgname%-git}"
+  patch -p1 -i "../0001_v8_sandbox_enable.patch"
 }
 
 build() {
