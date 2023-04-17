@@ -1,6 +1,6 @@
 pkgbase = giada
 	pkgdesc = A free, minimal, hardcore audio tool for DJs, live performers and electronic musicians
-	pkgver = 0.23.2
+	pkgver = 0.24.0
 	pkgrel = 1
 	url = https://www.giadamusic.com/
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = giada
 	provides = giada
 	options = !buildflags
 	options = !makeflags
-	source = giada-0.23.2::git+https://github.com/monocasual/giada/#tag=v0.23.2
+	source = giada-0.24.0::git+https://github.com/monocasual/giada/#tag=v0.24.0
 	source = git+https://github.com/juce-framework/JUCE.git
 	source = git+https://github.com/steinbergmedia/vst3sdk.git
 	source = git+https://github.com/monocasual/rtaudio.git
@@ -40,6 +40,7 @@ pkgbase = giada
 	source = git+https://github.com/monocasual/mcl-audio-buffer.git
 	source = git+https://github.com/monocasual/mcl-atomic-swapper.git
 	source = git+https://github.com/fltk/fltk.git
+	source = fmt-gcc12.patch
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -48,6 +49,8 @@ pkgbase = giada
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
+	sha512sums = SKIP
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP

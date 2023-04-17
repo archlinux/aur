@@ -4,7 +4,7 @@
 # NOTE: can currently not be built using devtools:
 # https://github.com/monocasual/giada/issues/553
 pkgname=giada
-pkgver=0.23.2
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="A free, minimal, hardcore audio tool for DJs, live performers and electronic musicians"
 arch=(x86_64)
@@ -20,9 +20,10 @@ provides=(vst3-host giada)
 source=(
 "$pkgname-$pkgver::git+https://github.com/monocasual/giada/#tag=v$pkgver" "git+https://github.com/juce-framework/JUCE.git"
 "git+https://github.com/steinbergmedia/vst3sdk.git" "git+https://github.com/monocasual/rtaudio.git" "git+https://github.com/monocasual/geompp.git" "git+https://github.com/monocasual/mcl-audio-buffer.git" "git+https://github.com/monocasual/mcl-atomic-swapper.git" "git+https://github.com/fltk/fltk.git"
+"fmt-gcc12.patch"
 )
-sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
-b2sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+b2sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -35,6 +36,8 @@ prepare() {
   git config submodule.externals/vendor/geompp.url "$srcdir/geompp"
   git config submodule.externals/vendor/fltk.url "$srcdir/fltk"
   git -c protocol.file.allow=always submodule update
+
+  patch -p1 -i "../fmt-gcc12.patch"
 }
 
 build() {

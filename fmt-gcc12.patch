@@ -1,0 +1,62 @@
+From 014a269b1cf8d1c7a751e76bb4e3d9a5160b013d Mon Sep 17 00:00:00 2001
+From: Orivej Desh <orivej@gmx.fr>
+Date: Wed, 29 Mar 2023 21:35:51 +0000
+Subject: [PATCH] Fix build with fmt 9, GCC 12
+
+fmt::format requires the non-static format argument to be wrapped with fmt::runtime check.
+
+Fixes #634
+---
+ src/gui/dialogs/about.cpp           | 2 +-
+ src/gui/dialogs/sampleEditor.cpp    | 2 +-
+ src/gui/elems/config/tabPlugins.cpp | 4 ++--
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/gui/dialogs/about.cpp b/src/gui/dialogs/about.cpp
+index c2d77cf65..c7965d20a 100644
+--- a/src/gui/dialogs/about.cpp
++++ b/src/gui/dialogs/about.cpp
+@@ -62,7 +62,7 @@ gdAbout::gdAbout()
+ 
+ 			geBox* text = new geBox();
+ 			text->align(FL_ALIGN_CENTER | FL_ALIGN_INSIDE | FL_ALIGN_TOP);
+-			text->copy_label(fmt::format(g_ui.getI18Text(LangMap::ABOUT_BODY),
++			text->copy_label(fmt::format(fmt::runtime(g_ui.getI18Text(LangMap::ABOUT_BODY)),
+ 			    G_VERSION_STR, debug ? "Debug" : "Release", BUILD_DATE)
+ 			                     .c_str());
+ 
+diff --git a/src/gui/dialogs/sampleEditor.cpp b/src/gui/dialogs/sampleEditor.cpp
+index e66e81cf5..4eddfdf4e 100644
+--- a/src/gui/dialogs/sampleEditor.cpp
++++ b/src/gui/dialogs/sampleEditor.cpp
+@@ -228,7 +228,7 @@ void gdSampleEditor::refresh()
+ 
+ void gdSampleEditor::updateInfo()
+ {
+-	std::string infoText = fmt::format(g_ui.getI18Text(LangMap::SAMPLEEDITOR_INFO),
++	std::string infoText = fmt::format(fmt::runtime(g_ui.getI18Text(LangMap::SAMPLEEDITOR_INFO)),
+ 	    m_data.wavePath, m_data.waveSize, m_data.waveDuration,
+ 	    m_data.waveBits != 0 ? std::to_string(m_data.waveBits) : "?", m_data.waveRate);
+ 
+diff --git a/src/gui/elems/config/tabPlugins.cpp b/src/gui/elems/config/tabPlugins.cpp
+index 1b95dc267..5484b5d08 100644
+--- a/src/gui/elems/config/tabPlugins.cpp
++++ b/src/gui/elems/config/tabPlugins.cpp
+@@ -89,7 +89,7 @@ geTabPlugins::geTabPlugins(geompp::Rect<int> bounds)
+ 
+ 	m_scanButton->onClick = [this]() {
+ 		std::function<void(float)> callback = [this](float progress) {
+-			std::string l = fmt::format(g_ui.getI18Text(LangMap::CONFIG_PLUGINS_SCANNING), static_cast<int>(progress * 100));
++			std::string l = fmt::format(fmt::runtime(g_ui.getI18Text(LangMap::CONFIG_PLUGINS_SCANNING)), static_cast<int>(progress * 100));
+ 			m_info->label(l.c_str());
+ 			Fl::wait();
+ 		};
+@@ -109,7 +109,7 @@ void geTabPlugins::rebuild()
+ {
+ 	m_data = c::config::getPluginData();
+ 
+-	const std::string scanLabel = fmt::format(g_ui.getI18Text(LangMap::CONFIG_PLUGINS_SCAN), m_data.numAvailablePlugins);
++	const std::string scanLabel = fmt::format(fmt::runtime(g_ui.getI18Text(LangMap::CONFIG_PLUGINS_SCAN)), m_data.numAvailablePlugins);
+ 	m_scanButton->copy_label(scanLabel.c_str());
+ 
+ 	m_folderPath->setValue(m_data.pluginPath);
