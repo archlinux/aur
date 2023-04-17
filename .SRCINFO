@@ -1,0 +1,12 @@
+pkgbase = wttrbar
+	pkgdesc = Weather indicator for Waybar
+	pkgver = 0.1
+	pkgrel = 0
+	url = https://github.com/bjesus/wttrbar
+	arch = any
+	license = MIT
+	makedepends = rust
+	source = source.tar.gz::https://github.com/bjesus/wttrbar/archive/refs/tags/0.1.tar.gz
+	sha512sums = b9629adb8f807ad53d5589f0e5526a33d6fe3c4b8566e64347a1bd558b030d6cb4c7d1b457322d5d1b48d9f0b9a00c3d55ffb799e938f37a53dbc577623b720c
+
+pkgname = wttrbar
