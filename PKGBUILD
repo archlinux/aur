@@ -8,9 +8,7 @@ pkgdesc="Open standard for representing rich material and look-development conte
 arch=('x86_64')
 url="https://materialx.org/"
 license=('Apache')
-depends+=('python' 'pybind11' 'openshadinglanguage' 'openimageio' 'pugixml' 'glfw')
-depends+=('libxt') #required by MaterialXRenderHW
-depends+=(libx{inerama,cursor}) #required by NanoGUI
+depends+=(libx{inerama,cursor} 'python' 'pybind11' 'openshadinglanguage' 'openimageio' 'pugixml' 'glfw' 'libxt')
 makedepends=('cmake')
 provides=('materialx')
 source=(git+"https://github.com/AcademySoftwareFoundation/MaterialX.git#tag=v${pkgver}")
@@ -29,6 +27,7 @@ build() {
   cmake $srcdir/MaterialX \
   -DMATERIALX_BUILD_PYTHON=ON\
   -DMATERIALX_BUILD_VIEWER=ON
+  # -DMATERIALX_BUILD_GRAPH_EDITOR=ON
 
   cmake --build . --target install -- -j
 }

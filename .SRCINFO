@@ -6,6 +6,8 @@ pkgbase = materialx
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
+	depends = libxinerama
+	depends = libxcursor
 	depends = python
 	depends = pybind11
 	depends = openshadinglanguage
@@ -13,8 +15,6 @@ pkgbase = materialx
 	depends = pugixml
 	depends = glfw
 	depends = libxt
-	depends = libxinerama
-	depends = libxcursor
 	provides = materialx
 	source = git+https://github.com/AcademySoftwareFoundation/MaterialX.git#tag=v1.38.6
 	md5sums = SKIP
