@@ -2,8 +2,8 @@
 
 projname=flynt
 pkgname=python-$projname
-pkgver=0.77
-pkgrel=1
+pkgver=0.78
+pkgrel=0
 epoch=
 pkgdesc="automatically convert old string literal formatting to f-strings"
 arch=("any")
@@ -24,7 +24,7 @@ changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ikamensh/flynt/archive/refs/tags/$pkgver.tar.gz")
 noextract=()
 validpgpkeys=()
-b2sums=("a02016bf370916744e9666fac2628137a4dfdabeb4843fc717a945ffad3a80762d28cdd791b4da0b9a79577e395cfcd8ae6e6c8f7d66ef5b5bc7ce1499c70a65")
+b2sums=("9e59b7eafee720cc7a4ee07751ea9a892b0c9f5c8ef466dff9725823765442b017a0ebbfa9d98293ee0f92ffedf53dfdf8520245581611e3317a0802a9fa87fc")
 
 build() {
   cd "${srcdir}/${projname}-${pkgver}"
