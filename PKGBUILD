@@ -24,7 +24,7 @@ build() {
   for _arch in ${_architectures}; do 
     mkdir -p build-${_arch} && pushd build-${_arch}
     FFLAGS="-fallow-argument-mismatch" LIBS="-lssp" ${_arch}-configure lt_cv_deplibs_check_method=pass_all ..
-    make
+    make -j1
     popd
   done
 }
