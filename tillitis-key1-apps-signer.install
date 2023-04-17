@@ -1,0 +1,15 @@
+post_install() {
+  pkgver="$1"
+  cat <<EOF
+Add this package to the  IgnorePkg  directive of the pacman
+configuration in  /etc/pacman.conf  in order to freeze its version to
+the current version $pkgver. An (accidential) update of the signer
+device code will cut access to any account that used a previous
+version of the signer.
+
+[options]
+IgnorePkg    = tillitis-key1-apps-signer
+
+EOF
+}
+
