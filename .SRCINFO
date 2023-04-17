@@ -1,4 +1,4 @@
-pkgbase = stort-writer-bin
+pkgbase = story-writer-bin
 	pkgdesc = A very excellent knowledge management software.小书匠是一款非常优秀的知识管理软件.
 	pkgver = 8.12.6
 	pkgrel = 1
@@ -28,8 +28,8 @@ pkgbase = stort-writer-bin
 	depends = glibc
 	depends = libxfixes
 	depends = cairo
-	noextract = stort-writer-8.12.6.zip
-	source = stort-writer-8.12.6.zip::https://github.com/suziwen/markdownxiaoshujiang/releases/download/v8.12.6/Story-writer-linux64.zip
+	noextract = story-writer-8.12.6.zip
+	source = story-writer-8.12.6.zip::https://github.com/suziwen/markdownxiaoshujiang/releases/download/v8.12.6/Story-writer-linux64.zip
 	sha256sums = 1d3b117ee364137d1c85ac299969a0484eb7761f3f2496dd654ae338acb37b24
 
-pkgname = stort-writer-bin
+pkgname = story-writer-bin

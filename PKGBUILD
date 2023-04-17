@@ -1,5 +1,5 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=stort-writer-bin
+pkgname=story-writer-bin
 _pkgname=Story-writer
 pkgver=8.12.6
 pkgrel=1
