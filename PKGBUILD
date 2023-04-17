@@ -2,7 +2,7 @@
 # Removes limitation introduced in: https://gitlab.gnome.org/GNOME/vte/-/commit/caf8a6a7a17a3f70fa5fc611c71ffb27a5cfee75
 
 pkgname=vte3-selectall
-pkgver=0.72.0
+pkgver=0.72.1
 pkgrel=1
 pkgdesc="Virtual Terminal Emulator widget (plus select-all patch)"
 url="https://wiki.gnome.org/Apps/Terminal/VTE"

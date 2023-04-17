@@ -1,6 +1,6 @@
 pkgbase = vte3-selectall
 	pkgdesc = Virtual Terminal Emulator widget (plus select-all patch)
-	pkgver = 0.72.0
+	pkgver = 0.72.1
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Terminal/VTE
 	arch = x86_64
@@ -19,10 +19,10 @@ pkgbase = vte3-selectall
 	depends = systemd
 	depends = vte-common
 	depends = vte-common
-	provides = vte3=0.72.0
+	provides = vte3=0.72.1
 	provides = libvte-2.91.so
 	conflicts = vte3
-	source = git+https://gitlab.gnome.org/GNOME/vte.git#tag=0.72.0
+	source = git+https://gitlab.gnome.org/GNOME/vte.git#tag=0.72.1
 	source = select-all.diff
 	b2sums = SKIP
 	b2sums = 2024149d7f5b33d18aaba2f1984dfef7f42497a0917fecf0dfde4673246ad8fd8cfe3b1798a6cc9a3843dc5157157b02b7616350c62e9105c5485a9af68f1d14
