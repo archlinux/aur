@@ -1,13 +1,15 @@
-# Maintainer: pancho horrillo <pancho at pancho dot name>
+# Maintainer: Bao Trinh <qubidt at gmail dot com>
+# Contributor: pancho horrillo <pancho at pancho dot name>
 # Contributor: Andrea Orru <andrea at orru dot io>
 # Python package author: Steven Myint <UNKNOWN>
-_name=autoflake
+
 pkgname=python-autoflake
-pkgver=2.0.2
+_pkgname="${pkgname#python-}"
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Removes unused imports and unused variables'
 arch=(any)
-url="https://github.com/myint/$_name"
+url="https://github.com/PyCQA/autoflake"
 license=("MIT")
 depends=(
     'python'
@@ -19,24 +21,24 @@ makedepends=(
     'python-build'
     'python-hatchling'
     'python-installer'
-    'python-pytest'
 )
-source=("https://github.com/myint/$_name/archive/v${pkgver}.tar.gz")
-sha256sums=('90fc6f7135047ba523d86d69860b8f63c7fd099f67b369f1d5dce39253ec09b1')
+checkdepends=('python-pytest')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/PyCQA/autoflake/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('f4ae7902d723f226a2c9654e907cc4534e3ca8e9f0ef4f9baa8cc64e6ecca643')
 
 build() {
-  pwd
-  ls -lah
-  cd "$srcdir/$_name-$pkgver"
+  cd "${_pkgname}-${pkgver}"
   python -m build -nw
 }
 
 check() {
-  cd "$srcdir/$_name-$pkgver"
+  cd "${_pkgname}-${pkgver}"
   pytest
 }
 
 package() {
-  cd "$srcdir/$_name-$pkgver"
+  cd "${_pkgname}-${pkgver}"
   python -m installer -d "$pkgdir" dist/*.whl
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" "README.md"
 }
