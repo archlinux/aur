@@ -6,10 +6,10 @@
 
 pkgname=discord-electron-openasar
 _pkgname=discord
-_electron=21
+_electron=22
 pkgver=0.0.26+803
 _pkgver=${pkgver%%+*}
-pkgrel=1
+pkgrel=2
 pkgdesc="Discord packaged with OpenAsar using system provided electron (v${_electron}) for increased security and performance"
 arch=('x86_64')
 provides=("${_pkgname}")
