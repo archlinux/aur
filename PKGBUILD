@@ -1,12 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=deltachat-desktop-bin
 pkgver=1.36.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Email-based instant messaging for Desktop."
 arch=('x86_64')
 url="https://github.com/deltachat/deltachat-desktop"
 license=('GPL3')
-providers=("${pkgname%-desktop-bin}")
+provides=("${pkgname%-desktop-bin}")
 conflits=("${pkgname%-bin}-appimage" "${pkgname%-bin}-git")
 depends=(nss alsa-lib at-spi2-core gtk3 libxext cairo glibc nspr libxrandr libx11 libcups libxcb \
     libxcomposite glib2 dbus expat pango libdrm hicolor-icon-theme libxfixes libxdamage gcc-libs mesa libxkbcommon)
