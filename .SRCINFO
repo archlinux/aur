@@ -1,0 +1,13 @@
+pkgbase = linuxwave-bin
+	pkgdesc = Generate music from the entropy of Linux (binary release)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/orhun/linuxwave
+	arch = x86_64
+	license = MIT
+	provides = linuxwave
+	conflicts = linuxwave
+	source_x86_64 = https://github.com/orhun/linuxwave/releases/download/v0.1.1/linuxwave-0.1.1-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 872f7632275e3fd0df3793c8f75132015d08d48b241844af324d54006da9dcf5
+
+pkgname = linuxwave-bin
