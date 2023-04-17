@@ -1,8 +1,8 @@
 pkgbase = xwaylandvideobridge-bin
 	pkgdesc = A tool to make it easy to stream wayland windows and screens to Xwayland applicatons that don't have native pipewire support.
-	pkgver = j853700
+	pkgver = j888697
 	pkgrel = 1
-	url = https://invent.kde.org/davidedmundson/xwaylandvideobridge
+	url = https://invent.kde.org/system/xwaylandvideobridge
 	arch = x86_64
 	license = GPL2
 	makedepends = git
@@ -23,9 +23,9 @@ pkgbase = xwaylandvideobridge-bin
 	optdepends = pkgconf
 	provides = xwaylandvideobridge
 	provides = pwbypass
-	source = https://invent.kde.org/davidedmundson/xwaylandvideobridge/-/jobs/853700/artifacts/raw/xwaylandvideobridge.flatpak
-	source = pwbypass.sh
-	sha512sums = c6e1a395bf8f8192958a53b88681bf3d3ac24beae4dd780cdcd3a6d85d7510d338fe6f36b2e3ba01b0362ab601a05d1ae5ff2dd556a71da877c256b07b5e2f91
-	sha512sums = bc3b4292c8f31afeefcf56bff33a298476db663d1d725340735d9075722a0fbbd0574b17456c963de1a9e4d03bcda0d7b1654dc8b229d156da14233b296ade04
+	source = https://invent.kde.org/system/xwaylandvideobridge/-/jobs/888697/artifacts/raw/xwaylandvideobridge.flatpak
+	source = xwaylandvideobridge.sh
+	sha512sums = 5e56c52098f9d719b4fda1ff905b7239747ad8250abf1f036659b87c4ecc8c6daaf353b44225a28c6971c453567da91836c185e2f403109bd7cbd20a9733e757
+	sha512sums = 71a5a0abff0ae6d6c8b4ff94ce1f343864b33a8e403d9f7c8d1fd7b07c0981468917f1589af7acf1e6296aa20697eda0a99fc8f2afea86cff06849a166e94d53
 
 pkgname = xwaylandvideobridge-bin
