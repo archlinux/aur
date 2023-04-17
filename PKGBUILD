@@ -1,7 +1,7 @@
 # Maintainer: Soma Yamamoto <soya_daizu[at]proton[dot]me>
 
 pkgname=ttf-udev-gothic
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A composite font of BIZ UD Gothic and JetBrains Mono"
 arch=(any)
@@ -10,8 +10,8 @@ license=(custom:SIL)
 source=("$url/releases/download/v$pkgver/UDEVGothic_v$pkgver.zip"
         "$url/releases/download/v$pkgver/UDEVGothic_NF_v$pkgver.zip"
         "https://raw.githubusercontent.com/yuru7/udev-gothic/v$pkgver/LICENSE")
-sha256sums=("565b021d9268d9f10e88628799b4b4c2637e19605902c74d28689f5fbcdfe64d"
-            "ce74ce77e993d9ce616a4a5a35c7e5e0e06e75c883e98d2cae8d8191008e10c2"
+sha256sums=("27ce8efce29c05142e75684ab1eb62902f920358cfb47638c53ebf41b1f19c30"
+            "5b65e4b0d45ef2f928c2b7a76c2c50aede1f581dbbb9f2f5e9af1533fa939ad0"
             "3e04c747c9c9535224f6163a290caf022877759db5183a00aef6134d3f5643f0")
 
 package() {
