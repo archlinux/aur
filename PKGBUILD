@@ -2,7 +2,7 @@
 # Contributor: Kohei Suzuki <eagletmt@gmail.com>
 
 pkgname=ghq
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Remote repository management made easy"
 arch=('i686' 'x86_64')
@@ -31,4 +31,4 @@ package() {
 
 # vim: set et sw=2 sts=2:
 
-sha512sums=('5c8e395488a8bae915e89f90a158fb840090fc3099c3a6930d08249160fe1c2d241e51de1591ac1cf9b08bb2175edf941049ba2badb09b82be4fd9cd108e0883')
+sha512sums=('7f409511734e3633f6cfbc5f9833ff9e749a07279dff80eb3ea24c4d6e5665d4ffc0637867cc57f9ff23693512a078b2c7ea571ad26e379a5e9ff44e6e515f9a')
