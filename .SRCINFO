@@ -1,7 +1,7 @@
 pkgbase = smfc
-	pkgdesc = Super Micro Fan Control
+	pkgdesc = Supermicro Fan Control
 	pkgver = 2.3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/petersulyok/smfc
 	install = smfc.install
 	arch = any

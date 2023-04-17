@@ -1,8 +1,8 @@
 # Maintainer: Ewout van Mansom <ewout@vanmansom.name>
 pkgname=smfc
 pkgver=2.3.1
-pkgrel=3
-pkgdesc="Super Micro Fan Control"
+pkgrel=4
+pkgdesc="Supermicro Fan Control"
 arch=(any)
 install=smfc.install
 backup=('etc/default/smfc' 'opt/smfc/smfc.conf')
