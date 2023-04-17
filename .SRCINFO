@@ -1,7 +1,7 @@
 pkgbase = python-flynt
 	pkgdesc = automatically convert old string literal formatting to f-strings
 	pkgver = 0.78
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/ikamensh/flynt
 	arch = any
 	license = MIT

@@ -3,7 +3,7 @@
 projname=flynt
 pkgname=python-$projname
 pkgver=0.78
-pkgrel=0
+pkgrel=1
 epoch=
 pkgdesc="automatically convert old string literal formatting to f-strings"
 arch=("any")
