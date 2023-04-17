@@ -4,7 +4,7 @@
 
 _pkgname=lammps
 pkgname=${_pkgname}-git
-pkgver=35378.ff96eb2
+pkgver=35576.e506dd7
 pkgrel=1
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
 url="https://lammps.sandia.gov/"
@@ -60,49 +60,37 @@ build() {
 
   # -D BUILD_SHARED_LIBS=on \
   # -D LAMMPS_EXCEPTIONS=on \
-  # -D PKG_PYTHON=on \
   # -D PKG_PHONON=on \
+  # -D BUILD_DOC=on \
 
   cmake \
     -C ../cmake/presets/basic.cmake \
       -D BUILD_SHARED_LIBS=on \
       -D LAMMPS_EXCEPTIONS=on \
+      -D PKG_MANYBODY=on \
       -D PKG_PHONON=on \
     ../cmake \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
-    -DCMAKE_INSTALL_LIBEXECDIR="$pkgdir/usr/lib"
+    -DCMAKE_INSTALL_LIBEXECDIR="/usr/lib"
 
-  msg2 ""
-  msg2 "*******  All cores will be used to speed up the compilation. During this period, the computer will jam. Please wait...  *******"
-  msg2 "*******  将使用所有核心加快编译，期间电脑将会卡顿，请等待  *******"
-  msg2 "5"
-  sleep 1
-  msg2 "4"
-  sleep 1
-  msg2 "3"
-  sleep 1
-  msg2 "2"
-  sleep 1
-  msg2 "1"
-  sleep 1
+  cmake --build . -j $(($(nproc) - 1))
 
-  cmake --build . -j
-  make install-python
 }
 
 package() {
   cd ${_pkgname}/build
 
-  cmake --install .
+  make DESTDIR="${pkgdir}" install-python
+  make DESTDIR="${pkgdir}" install
 
-  if (( $_INSTALL_EXAMPLES )) ; then
-    mkdir -p "${pkgdir}/usr/share/examples/lammps"
-    cp -r "../examples/." "${pkgdir}/usr/share/examples/lammps/"
-    find "${pkgdir}/usr/share/examples/lammps/" -type f -exec chmod 644 '{}' +
-  fi
+  mkdir -p "${pkgdir}/usr/share/examples/lammps"
+  cp -r "../examples/." "${pkgdir}/usr/share/examples/lammps/"
+  find "${pkgdir}/usr/share/examples/lammps/" -type f -exec chmod 644 '{}' +
 
   install -Dm644 "../tools/vim/lammps.vim" "${pkgdir}/usr/share/vim/vimfiles/syntax/lammps.vim"
   install -Dm644 "../tools/vim/filetype.vim" "${pkgdir}/usr/share/vim/vimfiles/ftdetect/lammps.vim"
+  install -Dm644 "../tools/kate/lammps.xml" "${pkgdir}/usr/share/katepart5/syntax/lammps.xml"
+
 }
