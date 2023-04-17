@@ -29,11 +29,11 @@ md5sums=('SKIP')
 validategpgkeys=()
 
 pkgver(){
-	echo $(cat ${pkgname}/.version)_devel
+	echo $(cat resetti/.version)_devel
 }
 
 build() {
-	cd "$pkgname"
+	cd resetti
 	make build
 }
 
