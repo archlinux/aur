@@ -7,12 +7,12 @@
 
 pkgname=bluez-bccmd
 pkgver=5.55
-pkgrel=1
+pkgrel=2
 pkgdesc="deprecated bccmd tool from bluez-${pkgver}"
 url="http://www.bluez.org/"
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=('bluez')
+depends=('bluez-libs')
 makedepends=('pkgconf')
 source=("https://www.kernel.org/pub/linux/bluetooth/bluez-${pkgver}.tar.xz")
 sha256sums=('8863717113c4897e2ad3271fc808ea245319e6fd95eed2e934fae8e0894e9b88')
