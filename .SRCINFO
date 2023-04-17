@@ -1,7 +1,7 @@
 pkgbase = r-xts
 	pkgdesc = eXtensible Time Series
-	pkgver = 0.13.0
-	pkgrel = 3
+	pkgver = 0.13.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=xts
 	arch = x86_64
 	license = GPL
@@ -13,7 +13,7 @@ pkgbase = r-xts
 	optdepends = r-tinytest
 	optdepends = r-tis
 	optdepends = r-tseries
-	source = https://cran.r-project.org/src/contrib/xts_0.13.0.tar.gz
-	sha256sums = 188e4d1d8c3ec56a544dfb9da002e8aac80b9303d0a5a1f62ff0e960aeef9674
+	source = https://cran.r-project.org/src/contrib/xts_0.13.1.tar.gz
+	sha256sums = 2c3907c6d0162e48d1898647105bbb32cfe0cb005788481a64ee675a941d825d
 
 pkgname = r-xts
