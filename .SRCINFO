@@ -8,6 +8,7 @@ pkgbase = deltachat-desktop-appimage
 	depends = hicolor-icon-theme
 	depends = zlib
 	depends = glibc
+	provides = deltachat
 	source = deltachat-desktop-1.36.2.AppImage::https://github.com/deltachat/deltachat-desktop/releases/download/v1.36.2/DeltaChat-1.36.2.AppImage
 	sha256sums = d2051db5d4bf91f3765e3274dfdca64bd22a59a11e19a2d03553a210fb7a43f6
 
