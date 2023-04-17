@@ -1,11 +1,11 @@
 pkgbase = cozette-otb
 	pkgdesc = A bitmap programming font optimized for coziness
-	pkgver = 1.19.1
+	pkgver = 1.19.2
 	pkgrel = 1
 	url = https://github.com/slavfox/Cozette
 	arch = any
 	license = MIT
-	source = cozette-otb-1.19.1.zip::https://github.com/slavfox/Cozette/releases/download/v.1.19.1/CozetteFonts.zip
-	sha256sums = 34ce2d1f9487ed639b6de914fed0f72d0caf729ba90326fb2c141f33c34fe4fc
+	source = cozette-otb-1.19.2.zip::https://github.com/slavfox/Cozette/releases/download/v.1.19.2/CozetteFonts.zip
+	sha256sums = 1f7b0287ea991b1f7a791491dfad6fbc6d253601a6c259fe54cef102b7a12bf1
 
 pkgname = cozette-otb
