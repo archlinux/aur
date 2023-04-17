@@ -1,14 +1,14 @@
 # Maintainer: Ewout van Mansom <ewout@vanmansom.name>
 pkgname=smfc
 pkgver=2.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Super Micro Fan Control"
 arch=(any)
 install=smfc.install
 backup=('etc/default/smfc' 'opt/smfc/smfc.conf')
 url="https://github.com/petersulyok/smfc"
 license=('GPL3')
-depends=(python syslog-ng)
+depends=(python syslog-ng pacman-hook-reload-modules)
 checkdepends=(flake8 python-coverage python-pylint python-pytest python-pytest-cov)
 source=(
   "${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"

@@ -1,7 +1,7 @@
 pkgbase = smfc
 	pkgdesc = Super Micro Fan Control
 	pkgver = 2.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/petersulyok/smfc
 	install = smfc.install
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = smfc
 	checkdepends = python-pytest-cov
 	depends = python
 	depends = syslog-ng
+	depends = pacman-hook-reload-modules
 	backup = etc/default/smfc
 	backup = opt/smfc/smfc.conf
 	source = smfc-v2.3.1.tar.gz::https://github.com/petersulyok/smfc/archive/refs/tags/v2.3.1.tar.gz
