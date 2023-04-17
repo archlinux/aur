@@ -6,7 +6,7 @@
 # Maintainer: Gene C <arch@sapience.com>
 # Contributor: 
 # 
-pkgname='nginx-passwd'
+pkgname='nginx_passwd'
 pkgdesc='Basic Auth Password File Manager for nginx'
 _gitname='nginx_passwd'
 

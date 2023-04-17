@@ -1,4 +1,4 @@
-pkgbase = nginx-passwd
+pkgbase = nginx_passwd
 	pkgdesc = Basic Auth Password File Manager for nginx
 	pkgver = 0.9.0
 	pkgrel = 1
@@ -16,4 +16,4 @@ pkgbase = nginx-passwd
 	source = git+https://github.com/gene-git/nginx_passwd
 	sha512sums = SKIP
 
-pkgname = nginx-passwd
+pkgname = nginx_passwd
