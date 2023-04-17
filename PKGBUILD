@@ -21,16 +21,11 @@ sha256sums_i686=('57ca54841b1295663324457b55bd57dc681604a98a6f9c88998e3dfc8ddc3d
 prepare() {
   # Edit the shortcut
   cd usr/share/applications
-  mkdir -p desktop
-  mv crossover.desktop desktop/$_desktop
-  cd desktop
+  mv crossover.desktop $_desktop
   chmod 644 $_desktop
   sed -i '3s/.*/Exec=crossoverlay --no-sandbox %U/' $_desktop
   sed -i '6s/.*/Icon=crossoverlay/' $_desktop
-  mv $_desktop ..
-  cd ..
   chmod 664 $_desktop
-  rm -dr desktop
 }
 
 package() {
