@@ -19,7 +19,7 @@ prepare () {
 build() {
   cd "ThirdParty-Mumps-releases-$pkgver"
   FFLAGS="-fallow-argument-mismatch" ./configure --prefix=/usr
-  make
+  make -j1
 }
 
 package() {
