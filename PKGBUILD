@@ -1,4 +1,4 @@
-# Maintainer: Arne Beer <arne@twobeer.de>
+# Maintainer: Jeff Barfield (noprobelm[at]protonmail[dot]org)
 
 _gitname=terminaltables
 pkgname=python-terminaltables-git
