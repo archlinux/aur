@@ -4,7 +4,7 @@
 
 pkgname=python-gspread-git
 _pkgname=gspread
-pkgver=v5.7.2.r0.g642bf46
+pkgver=v5.8.1.r0.g50b910f
 pkgrel=1
 epoch=
 pkgdesc="Google Sheets Python API"
@@ -13,7 +13,7 @@ url="https://github.com/burnash/gspread"
 license=("MIT")
 groups=()
 depends=('python-requests' 'python-google-auth-oauthlib')
-makedepends=('git')
+makedepends=('git' 'python-build' 'python-installer')
 checkdepends=()
 optdepends=()
 provides=('python-gspread')
@@ -30,16 +30,16 @@ b2sums=('SKIP')
 
 pkgver() {
    cd "gspread"
-   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+   git describe --long --tag | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  python3 setup.py build
+  python3 -m build
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  python3 setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+  python3 -m installer --destdir="${pkgdir}/" dist/*.whl
   install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
