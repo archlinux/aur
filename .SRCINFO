@@ -1,7 +1,7 @@
 pkgbase = smfc
 	pkgdesc = Super Micro Fan Control
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/petersulyok/smfc
 	install = smfc.install
 	arch = any
@@ -16,6 +16,8 @@ pkgbase = smfc
 	backup = etc/default/smfc
 	backup = opt/smfc/smfc.conf
 	source = smfc-v2.3.1.tar.gz::https://github.com/petersulyok/smfc/archive/refs/tags/v2.3.1.tar.gz
+	source = modules-load.conf
 	sha256sums = 5578829cb2b329d9f920b9ba2a20b80c541e47dc418e1c81838ec672b32284e7
+	sha256sums = 695a1124cf2922feb6a7d2892e664a1b4fcb11329ff635734dc1b95df1f9dc51
 
 pkgname = smfc
