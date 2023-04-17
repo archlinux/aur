@@ -3,7 +3,7 @@
 _pkgname=hplip
 pkgname="${_pkgname}-lite"
 pkgver=3.23.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Only Print drivers for HP DeskJet, OfficeJet, Photosmart, Business Inkjet and some LaserJet"
 arch=('x86_64')
 url="https://hplipopensource.com"
@@ -29,6 +29,7 @@ build() {
     --disable-doc-build \
     --disable-fax-build \
     --disable-network-build \
+    --disable-imageProcessor-build \
     --disable-scan-build
   make -j $(($(nproc) - 1))
 }

@@ -1,7 +1,7 @@
 pkgbase = hplip-lite
 	pkgdesc = Only Print drivers for HP DeskJet, OfficeJet, Photosmart, Business Inkjet and some LaserJet
 	pkgver = 3.23.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hplipopensource.com
 	arch = x86_64
 	license = GPL2
