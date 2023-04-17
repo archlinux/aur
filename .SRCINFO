@@ -1,19 +1,17 @@
 
 pkgbase = lockbook
 	pkgdesc = The private, polished note-taking platform.
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/lockbook/lockbook
-	arch = x86_64
-	arch = i686
+	arch = any
 	groups = lockbook
 	license = BSD-3-Clause
-	makedepends = rust
 	makedepends = cargo
 	makedepends = git
 	provides = lockbook
 	conflicts = lockbook
-	source = git+https://github.com/lockbook/lockbook.git#tag=v0.7.2
+	source = git+https://github.com/lockbook/lockbook.git#tag=v0.7.3
 	sha256sums = SKIP
 
 pkgname = lockbook

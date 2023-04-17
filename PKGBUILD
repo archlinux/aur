@@ -1,13 +1,13 @@
 
 pkgname='lockbook'
 _pkgname="lockbook"
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
-arch=('x86_64' 'i686')
+arch=('any')
 url="https://github.com/lockbook/lockbook"
 pkgdesc="The private, polished note-taking platform."
 license=('BSD-3-Clause')
-makedepends=('rust' 'cargo' 'git')
+makedepends=('cargo' 'git')
 provides=('lockbook')
 conflicts=('lockbook')
 source=("git+https://github.com/lockbook/lockbook.git#tag=$pkgver")
@@ -16,7 +16,7 @@ groups=('lockbook')
 
 pkgver() {
   cd $srcdir/lockbook/clients/cli
-  echo "0.7.2"
+  echo "0.7.3"
 }
 
 build() {
