@@ -1,15 +1,16 @@
-pkgbase = pkgbase
-	pkgdesc = Slovak -> English dictionary for dictd et al. from Freedict.org
-	pkgver = 0.2
+pkgbase = battery-notify-git
+	pkgdesc = A simple battery notifier for Linux.
+	pkgver = 0.1.0.r1.g5c2f501
 	pkgrel = 1
-	url = https://freedict.org/
-	install = install.sh
-	arch = any
-	license = GPL
-	makedepends = dictd
-	makedepends = freedict-tools
-	optdepends = dictd: dict client and server
-	source = https://download.freedict.org/dictionaries/slk-eng/0.2.1/freedict-slk-eng-0.2.1.src.tar.xz
-	sha512sums = ba7669020a12f64f7d2e2b6dfa90f1376df4a2fe764273bdb06f1e04998ee6dac9584b47f20f8e14cbaae5bf7271dd221032bcc34bd1ff7c93a93cf9de4429ac
+	url = https://github.com/cdown/battery-notify
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	provides = battery-notify=0.1.0.r1.g5c2f501
+	source = battery-notify-git::git+https://github.com/cdown/battery-notify
+	source = battery-notify.service
+	sha256sums = SKIP
+	sha256sums = SKIP
 
-pkgname = dict-freedict-slk-eng
+pkgname = battery-notify-git

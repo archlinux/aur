@@ -1,36 +1,46 @@
-# Maintainer : Juraj Matuš <matus.juraj at yandex dot com>
+# Maintainer: dadav <dadav at protonmail dot com>
 
-_lang=slk-eng
-pkgname=dict-freedict-${_lang}
-pkgver=0.2
+pkgname=battery-notify-git
+pkgver=0.1.0.r1.g5c2f501
 pkgrel=1
-pkgdesc="Slovak -> English dictionary for dictd et al. from Freedict.org"
-arch=('any')
-url="https://freedict.org/"
-license=('GPL')
-optdepends=('dictd: dict client and server')
-makedepends=('dictd' 'freedict-tools')
-install=install.sh
-source=("https://download.freedict.org/dictionaries/${_lang}/${pkgver}.${pkgrel}/freedict-${_lang}-${pkgver}.${pkgrel}.src.tar.xz")
-sha512sums=('ba7669020a12f64f7d2e2b6dfa90f1376df4a2fe764273bdb06f1e04998ee6dac9584b47f20f8e14cbaae5bf7271dd221032bcc34bd1ff7c93a93cf9de4429ac')
+pkgdesc='A simple battery notifier for Linux.'
+arch=('x86_64')
+url='https://github.com/cdown/battery-notify'
+license=('MIT')
+makedepends=('git' 'cargo')
+provides=("battery-notify=$pkgver")
+source=("$pkgname::git+$url" "battery-notify.service")
+sha256sums=('SKIP' 'SKIP')
 
-build()
-{
-	cd $_lang
-	make FREEDICT_TOOLS=/usr/lib/freedict-tools build-dictd
+pkgver() {
+  git -C "$pkgname" describe --long --tags | sed 's/v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-package()
-{
-	install -m 755 -d "${pkgdir}/usr/share/dictd"
-	install -m 644 -t "${pkgdir}/usr/share/dictd/" \
-		${_lang}/build/dictd/${_lang}.{dict.dz,index}
-
-	for file in ${_lang}/{AUTHORS,README,NEWS,ChangeLog}
-	do
-		if test -f ${file}
-		then
-			install -m 644 -Dt "${pkgdir}/usr/share/doc/freedict/${_lang}/" ${file}
-		fi
-	done
+prepare() {
+  cd "$pkgname"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
+
+build() {
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+
+  cd "$pkgname"
+  cargo build --release --frozen --all-features
+}
+
+check() {
+  export RUSTUP_TOOLCHAIN=stable
+
+  cd "$pkgname"
+  cargo test --frozen --all-features
+}
+
+package() {
+  cd "$pkgname"
+  install -D battery-notify.service -t "$pkgdir/$HOME/.config/systemd/user/"
+  install -D target/release/battery-notify -t "$pkgdir/usr/bin/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+}
+
+# vim:set ts=2 sw=2 et:

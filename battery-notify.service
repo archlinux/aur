@@ -1,0 +1,11 @@
+[Unit]
+Description=Notify user on low battery
+
+[Service]
+ExecStart=/usr/bin/battery-notify
+ProtectSystem=strict
+PrivateTmp=yes
+NoNewPrivileges=yes
+
+[Install]
+WantedBy=multi-user.target
