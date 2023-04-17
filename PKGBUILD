@@ -1,4 +1,5 @@
-# Maintainer: David McInnis <dave@dave3.xyz>
+# Maintainer: David McInnis <dave@dave3.xyz>.
+# Disabled help/devhelp: Manuel Schneckenreither <manuel.schnecki Google Mail>
 # Contributor: Andreas Wagner <Andreas dot Wagner at em dot uni-frankfurt dot de>
 
 pkgname=referencer
@@ -10,7 +11,7 @@ url="https://launchpad.net/referencer/"
 license=('GPL2')
 makedepends=(
                 'intltool'
-                'gnome-doc-utils'
+                # 'gnome-doc-utils'
                 'gnome-icon-theme'
                 'boost' )
 depends=(       'libgnome'
@@ -41,9 +42,26 @@ build()
   cd "$pkgname-$pkgver"
 #  autoreconf
   CXXFLAGS="$CXXFLAGS -std=gnu++11"
+
+  # Disable check for gnome-doc-utils
+  sed -i 's/gdu_cv_have_gdu=no/gdu_cv_have_gdu=yes/g' configure
+
+  # Set Automake Version
+  AMVERSION=`aclocal --version | head -n1 | sed 's/^[^1]*//g' | sed 's/\.[^\.]*$//g'`
+  echo $AMVERSION
+  sed -i "s/am__api_version='1.13'/am__api_version='$AMVERSION'/g" configure
+
+  rm -rf devhelp/*
+  rm -rf help/Makefile.in
+  rm -rf gnome-doc-utils.make
+
+  # Create empty targets for help & devhelp and empty gnome-doc-utils.make
+  printf "clean:\n\nall:\n\ninstall:\n\n" > devhelp/Makefile.in
+  printf "clean:\n\nall:\n\ninstall:\n\n" > help/Makefile.in
+  touch gnome-doc-utils.make
+
   ./configure --prefix="/usr" --disable-update-mime-database --enable-python
   sed -i 's|$(MAKE) $(AM_MAKEFLAGS) install-data-hook||' data/Makefile
-  sed -i 's/help devhelp/# help devhelp/g' Makefile*
   make clean
   make
   echo "Patching *.py files to use python2..."
