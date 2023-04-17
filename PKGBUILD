@@ -1,6 +1,6 @@
 # Maintainer: Philip Jones <philj56@gmail.com>
 pkgname=tofi-git
-pkgver=r176.0b83f9a
+pkgver=r240.574eff0
 pkgrel=1
 pkgdesc="Tiny rofi / dmenu replacement for wlroots-based Wayland compositors."
 arch=("x86_64")
@@ -26,7 +26,7 @@ pkgver() {
 
 prepare() {
 	cd "${pkgname}"
-        meson --prefix /usr -Dbuildtype=release build
+        meson setup build --prefix /usr -Dbuildtype=release
 }
 
 build() {

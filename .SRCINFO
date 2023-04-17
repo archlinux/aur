@@ -1,6 +1,6 @@
 pkgbase = tofi-git
 	pkgdesc = Tiny rofi / dmenu replacement for wlroots-based Wayland compositors.
-	pkgver = r176.0b83f9a
+	pkgver = r240.574eff0
 	pkgrel = 1
 	url = https://github.com/philj56/tofi
 	arch = x86_64
