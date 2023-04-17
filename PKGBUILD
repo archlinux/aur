@@ -9,7 +9,7 @@ license=('GPL2')
 depends=(deno)
 makedepends=(git make cargo)
 provides=("pipelight")
-# conflicts=("pipelight-git")
+conflicts=("pipelight-git")
 source=($url)
 md5sums=('SKIP') #autofill using updpkgsums
 
