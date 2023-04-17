@@ -1,7 +1,7 @@
 # Maintainer: Gabriel Guilbert <gabrielpolloguilbert@gmail.com>
 
 pkgname=lttng-modules-dkms-git
-pkgver=2.13.0.rc1.304.g612c99eb
+pkgver=2.13.0.rc1.311.g9f2d2694
 pkgrel=1
 pkgdesc="Kernel Modules for LTTng (DKMS)"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('linux>=2.6.38' 'linux-headers' 'dkms')
 provides=('lttng-modules')
 conflicts=('lttng-modules')
 source=('git://git.lttng.org/lttng-modules.git' 'dkms.conf')
-md5sums=('SKIP' 'dc44e8f62dc7cac60a3e3d63698236ee')
+md5sums=('SKIP' '7da5840fbe926018b05faea01b7df698')
 
 pkgver() {
     cd "${srcdir}/lttng-modules/"
