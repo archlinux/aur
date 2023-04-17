@@ -37,8 +37,9 @@ check() {
 }
 
 package() {
+  install -Dm700 -o $USER battery-notify.service -t "$pkgdir/$HOME/.config/systemd/user/"
+
   cd "$pkgname"
-  install -D battery-notify.service -t "$pkgdir/$HOME/.config/systemd/user/"
   install -D target/release/battery-notify -t "$pkgdir/usr/bin/"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
