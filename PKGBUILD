@@ -8,7 +8,7 @@ arch=(any)
 url='https://jupyter.org/'
 license=(BSD)
 depends=(jupyter-server mathjax2)
-makedepends=(python-build python-installer python-jupyter_packaging)
+makedepends=(python-build python-installer python-jupyter_packaging python-setuptools)
 source=(https://pypi.io/packages/source/j/${pkgname//-/_}/${pkgname//-/_}-$pkgver.tar.gz)
 sha256sums=('bb1e6b6dc0686c1fe386a22b5886163db548893a99c2810c36399e9c4ca23943')
 
