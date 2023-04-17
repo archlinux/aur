@@ -17,7 +17,7 @@ _cachy_config=${_cachy_config-y}
 # 'cfs' - select 'Completely Fair Scheduler'
 # 'tt' - select 'Task Type Scheduler by Hamad Marri'
 # 'hardened' - select 'BORE Scheduler hardened' ## kernel with hardened config and hardening patches with the bore scheduler
-# 'cachyos' - select BORE Scheduler with the EEVDF Algorithm; Latency Nice as default enabled (slightly modified then upstream)
+# 'cachyos' - select 'EEVDF' Scheduler which is a replacement for the CFS Scheduler and introduces a more latency aware algorithm including latency nice
 _cpusched=${_cpusched-cachyos}
 
 ## Apply some suggested sysctl values from the bore developer
@@ -196,7 +196,7 @@ fi
 _major=6.3
 _minor=0
 #_minorc=$((_minor+1))
-_rcver=rc5
+_rcver=rc7
 pkgver=${_major}.${_rcver}
 #_stable=${_major}.${_minor}
 #_stable=${_major}
@@ -231,7 +231,7 @@ source=(
 # ZFS support
 if [ -n "$_build_zfs" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=00e580bca282bf30913fcf5832fc58191cf0ff32")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=ac18dc77f3703940682aecb442f4e58aa2c14f1a")
 fi
 
 ## Latency NICE Support
@@ -838,8 +838,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('3636c390ae838fc6aaddb83d4dc2b7899d75069fe83f99738457a4f05bc662a4'
-            '11fdec8757621edcbd2c8d083595a4bcb965d22be4687a5ad1a1e21d081e604e'
+sha256sums=('65fc1202601a82a96bad2f2f76973898186025f1d104bb5da0316e032926acf3'
+            '2ca68e1b594488ad1a43ee5a9561658262fd44ee5ca2034a579d74e556a830a0'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
-            'ee9e83b0bca25dd41a06f6b39bd1489a3f9e8aa6d9c56d4a81f1d2cecab9da84'
-            'f1c6d5b9b006ce32a0b947c961d76f8a77b3d688df23d7d56726f20f396af4f1')
+            'b0b6791beab5808e97f8220a1f0694da57474583549e60ca730025a6504c7eb3'
+            '600fe991fde111d028a22dae797367c481f8296c84f8bb0df8e19f78c819d99d')
