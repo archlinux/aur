@@ -1,0 +1,18 @@
+pkgbase = tkey-ssh-agent2
+	pkgdesc = An ssh-agent for the Tillitis TKey with separated signer device code
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/tillitis/tillitis-key1-apps
+	install = tkey-ssh-agent.install
+	arch = any
+	license = GPL-2.0-only
+	makedepends = lld
+	makedepends = go
+	depends = tillitis-key1-apps-signer>=0.0.6
+	provides = tkey-ssh-agent
+	source = https://github.com/tillitis/tillitis-key1-apps/archive/refs/tags/v0.0.6.tar.gz
+	source = signer.patch
+	sha512sums = 524635270cb8e89a1a542b33899d972c9f3b7699102ebc76251351a973bda7b4e09710fd1d93b4eeaad725b1517b768469b547e8d6ee02ee7e0963f70de77161
+	sha512sums = c69ac118ff611ad2ac12a4f881f846f6b5d0af32b2fd6b8a5b76dfce44b41e71acd71b1ac352ab31abe34d78578eae36dc3872dd40745a2095ab7ae1ede58ef2
+
+pkgname = tkey-ssh-agent2

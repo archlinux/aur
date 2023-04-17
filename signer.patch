@@ -1,0 +1,14 @@
+9d8
+< 	_ "embed"
+26,31d24
+< // nolint:typecheck // Avoid lint error when the embedding file is missing.
+< // Makefile copies the built app here ./app.bin
+< //
+< //go:embed app.bin
+< var appBinary []byte
+< 
+194a188,191
+>   appBinary,err := os.ReadFile("/usr/share/tillitis/signer.app.bin");
+> 	if err != nil {
+>     return fmt.Errorf("Error loading device code: %w", err)
+> 	}
