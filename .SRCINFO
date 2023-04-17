@@ -1,7 +1,7 @@
 pkgbase = quiche
-	pkgdesc = an implementation of the QUIC transport protocol and HTTP/3 as specified by the IETF
+	pkgdesc = an implementation of the QUIC transport protocol and HTTP/2 as specified by the IETF
 	pkgver = 0.17.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cloudflare/quiche
 	arch = x86_64
 	license = custom:BSD
@@ -11,9 +11,7 @@ pkgbase = quiche
 	makedepends = rust
 	depends = gcc-libs
 	source = https://github.com/cloudflare/quiche/archive/0.17.1.tar.gz
-	source = git+https://boringssl.googlesource.com/boringssl#commit=f1c75347daa2ea81a941e953f2263e0a4d970c8d
 	validpgpkeys = 8657ABB260F056B1E5190839D9C4D26D0E604491
 	sha256sums = 3c427415525da565f726df95021235cdc1c6460aa7d89d1aa3e154cb621d45b4
-	sha256sums = SKIP
 
 pkgname = quiche
