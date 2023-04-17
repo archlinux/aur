@@ -3,16 +3,17 @@
 
 _pkgname=dislocker
 pkgname=$_pkgname-git
-pkgver=0.7.1.r0.g3939a18
+pkgver=0.7.3.r33.g1e92c11
 pkgrel=1
 pkgdesc="FUSE driver to read/write Windows' BitLocker-ed volumes"
 arch=('i686' 'x86_64')
 url="https://github.com/Aorimn/dislocker"
 license=('GPL2')
-depends=('fuse' 'mbedtls' 'ruby')
+depends=('aur-mbedtls' 'fuse' 'ruby')
 makedepends=('git' 'cmake')
 provides=($_pkgname)
 conflicts=($_pkgname)
+optdepends=('ntfs-3g: NTFS file system support')
 source=('git+https://github.com/Aorimn/dislocker.git')
 sha512sums=('SKIP')
 
@@ -23,6 +24,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/${_pkgname}"
+
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -Dlibdir=/usr/lib \
         -D WARN_FLAGS:STRING="-Wall -Wextra" \
