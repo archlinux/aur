@@ -5,7 +5,6 @@
 
 # Maintainer: Sathya Pramodh <sathyapramodh17@gmail.com>
 pkgname=resetti-git
-_destdir="/usr/bin"
 _devbranch="next"
 pkgver=0.4.0_devel
 pkgrel=1
@@ -40,12 +39,12 @@ build() {
 
 package() {
 	cd "$pkgname"
-	cp resetti $_destdir
-	if ![ -d ~/.config/resetti ]
+	install -Dm0755 resetti "{$pkgdir}/usr/bin/${pkgname}"
+	if ! [ -d ~/.config/resetti ]
 	then
 		mkdir -p ~/.config/resetti
 	fi
-	cp -p bench ~/.config/resetti
-	cp -p scene-setup.lua ~/.config/resetti
-	cp -p internal/cfg/default.toml ~/.config/resetti
+	install -Dm0664 bench ~/.config/resetti/bench
+	install -Dm0664 scene-setup.lua ~/.config/resetti/scene-setup.lua
+	install -Dm0664 internal/cfg/default.toml ~/.config/resetti/default.toml
 }
