@@ -2,14 +2,14 @@
 # Contributor: alphRomeo323 <alpharomeo323dev at protonmail dot com>
 # Contributor: William Brown <glowinthedarkcia at horsefucker dot org>
 pkgname=ftba
-pkgver=202302201814_1c8edb0091_release
+pkgver=202304121437_91bb027b9e
 pkgrel=1
 url="https://feed-the-beast.com/app"
 arch=(x86_64)
 pkgdesc="Offers many different styles of Minecraft modpacks to the community."
 source=("https://apps.modpacks.ch/FTBApp/release/${pkgver//_/-}/FTBA_linux_${pkgver//_/-}.deb"
         "ftb-app.desktop")
-sha256sums=("730ea1761b6b162a02e8bb08d7efa3fe55b4c5ba9edb53d4a0cab78fc397bdcc"
+sha256sums=("801407839b4242808f904d86e2f85cbe00bb2107948491e81332a845553884a0"
             "2b50da4dc2811b175e5602e91dfe18e981cba3e2e80deccb8f12b59776d8c530")
 license=("LGPL2.1")
 depends=("java-runtime=17" "alsa-lib" "nss" "gtk3")
@@ -24,8 +24,8 @@ package() {
   mkdir -p usr/{bin,lib,share/applications,share/icons/hicolor/512x512/apps}
   cp "$srcdir/ftb-app.desktop" usr/share/applications
 
-  # remove windows and apple specific files
-  rm -R opt/FTBA/bin/{ftbapp.app,{,**/}*.{exe,dll}}
+  # remove macOS specific files
+  rm -R opt/FTBA/bin/ftbapp.app
 
   # remove bundled jre, java-runtime=17 is dependency.
   rm -R opt/FTBA/jre
