@@ -1,6 +1,6 @@
 pkgbase = python-pyxem
 	pkgdesc = Python library for multi-dimensional diffraction microscopy extending HyperSpy
-	pkgver = 0.14.2
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://pyxem.github.io/pyxem-website/
 	arch = any
@@ -8,22 +8,22 @@ pkgbase = python-pyxem
 	makedepends = python-setuptools
 	depends = python>=3.7
 	depends = python-dask
-	depends = python-diffsims
+	depends = python-diffsims>=0.5
 	depends = python-hyperspy>=1.7.0
 	depends = python-ipywidgets
 	depends = python-lmfit>=0.9.12
-	depends = python-matplotlib>=3.1.1
+	depends = python-matplotlib>=3.3
 	depends = python-numba
 	depends = python-numpy
-	depends = python-orix>=0.3
+	depends = python-orix>=0.9
 	depends = python-psutil
 	depends = python-pyfai
-	depends = python-scikit-image>=0.17.0
+	depends = python-scikit-image>=0.19.0
 	depends = python-scikit-learn>=0.19
 	depends = python-scipy
 	depends = python-transforms3d
 	provides = pyxem
-	source = https://github.com/pyxem/pyxem/archive/v0.14.2.tar.gz
-	md5sums = 8b0b2f286679eba48a58e7712171ba64
+	source = https://github.com/pyxem/pyxem/archive/v0.15.0.tar.gz
+	md5sums = c4cfd02490de1e00517aa3870180f8ec
 
 pkgname = python-pyxem
