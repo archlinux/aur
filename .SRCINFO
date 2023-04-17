@@ -1,7 +1,7 @@
 pkgbase = ezanvakti
 	pkgdesc = Islamic Prayer Times bash script for Turkish users
 	pkgver = 7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/fbostanci/ezanvakti
 	arch = any
 	license = GPL3

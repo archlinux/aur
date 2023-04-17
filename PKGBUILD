@@ -2,7 +2,7 @@
 
 pkgname=ezanvakti
 pkgver=7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Islamic Prayer Times bash script for Turkish users"
 arch=('any')
 url="https://gitlab.com/fbostanci/ezanvakti"
@@ -16,7 +16,7 @@ source=("https://gitlab.com/fbostanci/$pkgname/-/archive/v$pkgver/$pkgname-v$pkg
 md5sums=('d7e13b9647fd12f7c4340baf38930314')
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-v$pkgver"
   make PREFIX=/usr sysconfdir=/etc DESTDIR="${pkgdir}" install
 }
 
