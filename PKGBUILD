@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: Sathya Pramodh <sathyapramodh17@gmail.com>
-pkgname=resetti
+pkgname=resetti-git
 _destdir="/usr/bin"
 _devbranch="next"
 pkgver=0.4.0_devel
