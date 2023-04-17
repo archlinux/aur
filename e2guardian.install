@@ -3,5 +3,5 @@ post_install() {
   echo "      Squid or Tinyproxy or Polipo in order to use"
   echo "      E2Guardian. You'll also have to configure"
   echo "      E2Guardian to use the correct proxy port."
-chown -R nobody.nobody /var/log/e2guardian
+chown -R nobody:nobody /var/log/e2guardian
 }
