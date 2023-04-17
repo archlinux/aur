@@ -2,7 +2,7 @@
 # Contributor: Louis des Landes <aur@psykar.com>
 
 pkgname=deepgit
-pkgver=4.2
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="A tool to investigate the history of source code."
 arch=('any')
@@ -19,7 +19,7 @@ source=(
     "deepgit.sh.patch"
 )
 sha1sums=(
-    d1b0ecf3667af8986f16fb91b9c8622557c40bcc
+    59a966ce8ef2e92999007058f8b3f059e750e0e4
     6ccc4f2b8967ec27621bdc8a730a51da5a6125c6
     126df6100e0e5251abaee147da9c1631d844de68
 )

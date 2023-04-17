@@ -1,16 +1,16 @@
 pkgbase = deepgit
 	pkgdesc = A tool to investigate the history of source code.
-	pkgver = 4.2
+	pkgver = 4.3.1
 	pkgrel = 1
 	url = http://www.syntevo.com/deepgit/
 	arch = any
 	license = custom
 	depends = java-environment>=8
 	depends = hicolor-icon-theme
-	source = https://www.syntevo.com/downloads/deepgit/deepgit-linux-4_2.tar.gz
+	source = https://www.syntevo.com/downloads/deepgit/deepgit-linux-4_3_1.tar.gz
 	source = deepgit.desktop
 	source = deepgit.sh.patch
-	sha1sums = d1b0ecf3667af8986f16fb91b9c8622557c40bcc
+	sha1sums = 59a966ce8ef2e92999007058f8b3f059e750e0e4
 	sha1sums = 6ccc4f2b8967ec27621bdc8a730a51da5a6125c6
 	sha1sums = 126df6100e0e5251abaee147da9c1631d844de68
 
