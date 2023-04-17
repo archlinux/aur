@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-metis
 	pkgdesc = A set of serial programs for partitioning graphs, partitioning finite element meshes, and producing fill reducing orderings for sparse matrices (mingw-w64)
-	pkgver = 5.1.0
+	pkgver = 5.1.0.p11
 	pkgrel = 1
 	url = http://glaros.dtc.umn.edu/gkhome/metis/metis/overview
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = mingw-w64-metis
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz
-	sha256sums = 76faebe03f6c963127dbb73c13eab58c9a3faeae48779f049066a21c087c5db2
+	source = mingw-w64-metis-5.1.0.p11.tar.bz2::https://bitbucket.org/petsc/pkg-metis/get/v5.1.0-p11.tar.bz2
+	sha256sums = c2d5eb5a731335a2d7168eedcf2b683b990492b5ffceab1eedc2acbb7a422ff0
 
 pkgname = mingw-w64-metis
-
