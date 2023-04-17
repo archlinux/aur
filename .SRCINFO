@@ -1,6 +1,6 @@
 pkgbase = python-kikuchipy
 	pkgdesc = Processing and analysis of electron backscatter diffraction (EBSD) patterns.
-	pkgver = 0.8.3
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://kikuchipy.org/
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = python-kikuchipy
 	depends = python-scipy>=1.7
 	optdepends = python-pyvista: visualization
 	provides = kikuchipy
-	source = https://github.com/pyxem/kikuchipy/archive/v0.8.3.tar.gz
-	md5sums = ea0b352a2f15dc2ee3b56c3f220d430c
+	source = https://github.com/pyxem/kikuchipy/archive/v0.8.4.tar.gz
+	md5sums = 9cf09753d0d45c815e1ede6a7245f560
 
 pkgname = python-kikuchipy
