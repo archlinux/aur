@@ -1,6 +1,6 @@
 # Maintainer: Isaac Ruben <isaac at rubenfamily dot com>
 pkgname='pathplanner-bin'
-pkgver="v2023.4.1"
+pkgver="v2023.4.2"
 pkgrel=1
 pkgdesc="A simple yet powerful motion profile generator for FRC robots"
 arch=("x86_64")
@@ -8,7 +8,7 @@ url="https://github.com/mjansen4857/pathplanner"
 license=('MIT')
 provides=("pathplanner")
 source=("$pkgname-$pkgver.zip::https://github.com/mjansen4857/pathplanner/releases/download/$pkgver/PathPlanner-linux.zip")
-sha256sums=('ce437354aed391b8b9a39aa119c3222d73373998c5775a991b47d4229d55499d')
+sha256sums=('024c794d663ec670e78b8c3b25e103e2508e539346fcf9b888e204717fd38625')
 
 prepare() {
 	{
