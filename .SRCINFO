@@ -1,6 +1,6 @@
 pkgbase = tubeup
 	pkgdesc = Youtube (and other video site) to Internet Archive Uploader
-	pkgver = 0.0.27
+	pkgver = 0.0.35
 	pkgrel = 2
 	url = https://pypi.org/project/tubeup
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = tubeup
 	depends = python-docopt
 	depends = python-internetarchive
 	depends = python-backports.csv
-	source = https://files.pythonhosted.org/packages/source/t/tubeup/tubeup-0.0.27.tar.gz
-	md5sums = 533ab8241fc628c7c405aec96c79f634
+	source = https://files.pythonhosted.org/packages/source/t/tubeup/tubeup-0.0.35.tar.gz
+	md5sums = b999e40e3960633e00399dc1dc242723
 
 pkgname = tubeup
