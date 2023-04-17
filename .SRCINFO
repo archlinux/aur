@@ -1,13 +1,13 @@
 pkgbase = mozart-bin
 	pkgdesc = A swiss army knife for everything around the docker compose universe
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://git.y.gy/firstdorsal/mozart
 	arch = x86_64
 	license = AGPL
 	provides = mozart
 	conflicts = mozart
-	source = mozart-1.0.4.tar.gz::https://git.y.gy/api/v4/projects/firstdorsal%2Fmozart/packages/generic/mozart/1.0.4/mozart-1.0.4.tar.gz
-	sha256sums = 5bf1c1debb20751a1c62757368abbb2acf57c935e08f1c812d4bc8db637a92e6
+	source = mozart-1.0.5.tar.gz::https://git.y.gy/api/v4/projects/firstdorsal%2Fmozart/packages/generic/mozart/1.0.5/mozart-1.0.5.tar.gz
+	sha256sums = c5eff4df32bf795fda0f792cb1d472ce840e777e5fd4639d29f35e5b376c43d2
 
 pkgname = mozart-bin
