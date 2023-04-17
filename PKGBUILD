@@ -10,7 +10,7 @@ pkgname='nginx_passwd'
 pkgdesc='Basic Auth Password File Manager for nginx'
 _gitname='nginx_passwd'
 
-pkgver=0.9.0
+pkgver=1.0.0
 pkgrel=1
 url="https://github.com/gene-git/nginx_passwd"
 
