@@ -6,11 +6,10 @@ pkgbase = latex-enumitem
 	install = latex-enumitem.install
 	arch = any
 	license = unknown
+	makedepends = unzip
 	depends = texlive-core
-	depends = unzip
 	noextract = enumitem.zip
 	source = enumitem-3.9.zip::http://mirror.ctan.org/macros/latex/contrib/enumitem.zip
 	sha256sums = 3b0354cfc32dee3ee1cfac2789a16d247f4ffefa6e84c0513c7ede6bb9b1089b
 
 pkgname = latex-enumitem
-
