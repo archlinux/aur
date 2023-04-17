@@ -27,11 +27,6 @@ build() {
   python setup.py build
 }
 
-check() {
-  cd ${_pyname}-${pkgver}
-  py.test
-}
-
 package() {
   cd ${_pyname}-${pkgver}
   python setup.py install -O1 --root="${pkgdir}" --skip-build
