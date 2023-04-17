@@ -1,6 +1,6 @@
 # Maintainer: defektive <sirbradleyd@gmail.com>
 pkgname=docker-dnsmasq
-pkgver=20160226.5_1450f4d
+pkgver=20211118.9_62c4564
 pkgrel=1
 pkgdesc="Daemon to add docker containers to dnsmasq"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ makedepends=(
 )
 
 source=(
-	"docker-dnsmasq::git://github.com/defektive/docker-dnsmasq"
+	"docker-dnsmasq::git+https://github.com/defektive/docker-dnsmasq"
 	"docker-dnsmasq.service"
 )
 
