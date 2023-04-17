@@ -39,7 +39,7 @@ build() {
 
 package() {
 	cd resetti
-	install -Dm0755 resetti "{$pkgdir}/usr/bin/resetti"
+	install -Dm0755 resetti "${pkgdir}/usr/bin/resetti"
 	if ! [ -d ~/.config/resetti ]
 	then
 		mkdir -p ~/.config/resetti
