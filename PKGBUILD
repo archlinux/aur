@@ -3,9 +3,9 @@
 _base=pyamg
 pkgname=python-${_base}
 pkgdesc="Algebraic Multigrid Solvers in Python"
-_gitcommit=1fd1ef6915969ebd24cf16cf6b9532644e0e0e23
-pkgver=4.2.3
-pkgrel=2
+_gitcommit=425f80070eefc7f4fcc6246a3b6f815f5fdbb507
+pkgver=5.0.0
+pkgrel=1
 arch=(x86_64)
 url="https://github.com/${_base}/${_base}"
 license=(MIT)

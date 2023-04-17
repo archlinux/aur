@@ -1,7 +1,7 @@
 pkgbase = python-pyamg
 	pkgdesc = Algebraic Multigrid Solvers in Python
-	pkgver = 4.2.3
-	pkgrel = 2
+	pkgver = 5.0.0
+	pkgrel = 1
 	url = https://github.com/pyamg/pyamg
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = python-pyamg
 	makedepends = git
 	depends = python-scipy
 	depends = python-pytest
-	source = pyamg-4.2.3::git+https://github.com/pyamg/pyamg.git?signed#commit=1fd1ef6915969ebd24cf16cf6b9532644e0e0e23
+	source = pyamg-5.0.0::git+https://github.com/pyamg/pyamg.git?signed#commit=425f80070eefc7f4fcc6246a3b6f815f5fdbb507
 	validpgpkeys = 4DDCC34E24417C71C667DC2850BBE7E24BA62FF7
 	sha512sums = SKIP
 
