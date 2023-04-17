@@ -41,6 +41,10 @@ build() {
 package() {
 	cd "$pkgname"
 	cp resetti $_destdir
+	if ![ -d ~/.config/resetti ]
+	then
+		mkdir -p ~/.config/resetti
+	fi
 	cp -p bench ~/.config/resetti
 	cp -p scene-setup.lua ~/.config/resetti
 	cp -p internal/cfg/default.toml ~/.config/resetti
