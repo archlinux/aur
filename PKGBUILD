@@ -5,7 +5,7 @@
 
 # Maintainer: Sathya Pramodh <sathyapramodh17@gmail.com>
 pkgname=resetti
-_pkgdir="/usr/bin"
+_destdir="/usr/bin"
 _rawurl="https://raw.githubusercontent.com/woofdoggo/resetti/main"
 pkgver="0.4.0"
 pkgrel=1
@@ -25,9 +25,10 @@ replaces=()
 backup=()
 options=()
 source=("$url/releases/download/v$pkgver/resetti"
-	"$_rawurl/.version")
+	"$_rawurl/.version"
+	"$_rawurl/internal/cfg/default.toml")
 noextract=()
-md5sums=('SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP')
 validategpgkeys=()
 
 pkgver(){
@@ -35,5 +36,11 @@ pkgver(){
 }
 
 package() {
-	cp resetti $_pkgdir
+	# TODO: Add bench script and scene-setup.lua export after it is upstreamed.
+	cp resetti $_destdir
+	if ![ -d ~/.config/resetti ]
+	then
+		mkdir -p ~/.config/resetti
+	fi
+	cp -p default.toml ~/.config/resetti
 }

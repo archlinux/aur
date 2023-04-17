@@ -6,9 +6,11 @@ pkgbase = resetti
 	arch = x86_64
 	arch = i686
 	license = GPL3
-	makedepends = go
-	makedepends = git
-	source = git+https://www.github.com/woofdoggo/resetti
+	source = https://www.github.com/woofdoggo/resetti/releases/download/v0.4.0/resetti
+	source = https://raw.githubusercontent.com/woofdoggo/resetti/main/.version
+	source = https://raw.githubusercontent.com/woofdoggo/resetti/main/internal/cfg/default.toml
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = resetti
