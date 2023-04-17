@@ -1,0 +1,18 @@
+pkgbase = ctool-appimage
+	pkgdesc = Common Tools for Program Development.程序开发常用工具.chrome/edge/firefox/utools/windows/inux/mac
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://ctool.dev/
+	arch = x86_64
+	license = MIT
+	depends = hicolor-icon-theme
+	depends = zlib
+	depends = glibc
+	conflicts = ctool
+	options = !strip
+	source = ctool-2.2.0.AppImage::https://github.com/baiy/Ctool/releases/download/v2.2.0/ctool_tauri_linux.AppImage
+	source = LICENSE::https://github.com/baiy/Ctool/raw/master/LICENSE
+	sha256sums = 3c65f12ae30951852d95861aa4d6b0a123cf2d2405b6ea09e992e1583ce8d258
+	sha256sums = 459af2e36090998e7807b1d2a5b8d6a381bf94b69cbd2ec68e7943a09e2ce1e2
+
+pkgname = ctool-appimage
