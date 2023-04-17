@@ -1,8 +1,9 @@
 pkgbase = ranger-sixel-git
-	pkgdesc = A simple, vim-like file manager, with PR2466 applied for sixel image previews.
-	pkgver = 1.9.3.655.g0f1717ec
+	pkgdesc = Sixel has been merged into main, use ranger-git
+	pkgver = 1.9.3.663.g478d5b62
 	pkgrel = 1
 	url = https://github.com/ranger/ranger/pull/2466
+	install = notify.install
 	arch = any
 	license = GPL
 	makedepends = git
@@ -25,6 +26,8 @@ pkgbase = ranger-sixel-git
 	provides = ranger
 	conflicts = ranger
 	source = ranger-git::git+https://github.com/ranger/ranger
+	source = notify.install
 	md5sums = SKIP
+	md5sums = b34d9cd9fde59415ab2debcf4b6c7442
 
 pkgname = ranger-sixel-git

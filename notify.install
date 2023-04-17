@@ -1,0 +1,9 @@
+export RED='\033[0;31m'
+
+post_install() {
+    echo -e "${RED}Sixel has been merged into ranger! Switch to ranger-git!"
+}
+
+post_upgrade() {
+    echo -e "${RED}Sixel has been merged into ranger! Switch to ranger-git!"
+}

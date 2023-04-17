@@ -1,9 +1,9 @@
 # Maintainer: chrhasse <hasse dot christopher at gmail dot com>
 pkgname=ranger-sixel-git
 _pkgname=ranger-git
-pkgver=1.9.3.644.gffa6cf79
+pkgver=1.9.3.663.g478d5b62
 pkgrel=1
-pkgdesc="A simple, vim-like file manager, with PR2466 applied for sixel image previews."
+pkgdesc="Sixel has been merged into main, use ranger-git"
 arch=('any')
 url="https://github.com/ranger/ranger/pull/2466"
 license=('GPL')
@@ -25,18 +25,11 @@ optdepends=('atool: for previews of archives'
             'imagemagick: for sixel image previews')
 provides=('ranger')
 conflicts=('ranger')
-source=("$_pkgname::git+https://github.com/ranger/ranger")
-md5sums=('SKIP')
-
-prepare() {
-  cd "$srcdir/$_pkgname"
-  export GIT_CONFIG_GLOBAL="/dev/null"
-  export GIT_CONFIG_SYSTEM="/dev/null"
-  git config user.name "user"
-  git config user.email "user@domain.fake"
-  git config pull.rebase false
-  git pull -X theirs origin pull/2466/head --no-edit
-}
+source=("$_pkgname::git+https://github.com/ranger/ranger"
+        "notify.install")
+md5sums=('SKIP'
+         'b34d9cd9fde59415ab2debcf4b6c7442')
+install='notify.install'
 
 pkgver() {
   cd "$srcdir/$_pkgname"
