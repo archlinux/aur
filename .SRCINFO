@@ -1,0 +1,14 @@
+pkgbase = termv-rs
+	pkgdesc = Termv. Now blazingly fast
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Roshan-R/termv-rs
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	depends = gcc-libs
+	conflicts = termv
+	source = termv-rs-0.1::https://github.com/Roshan-R/termv-rs/releases/download/v0.1/termv-rs
+	sha256sums = 821bf1a8711895f8b93287bde117a6e686d9f79468dd4a1ae2fe69ca3d04ea6f
+
+pkgname = termv-rs
