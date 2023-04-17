@@ -1,7 +1,7 @@
 pkgbase = nml
 	pkgdesc = OpenTTD NewGRF Meta Language Tools
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OpenTTD/nml
 	arch = any
 	license = GPL

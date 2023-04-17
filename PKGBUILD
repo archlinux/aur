@@ -1,7 +1,7 @@
 # Maintainer: Stefan Ott <stefan@ott.net>
 pkgname=nml
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="OpenTTD NewGRF Meta Language Tools"
 arch=("any")
