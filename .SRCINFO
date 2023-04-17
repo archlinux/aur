@@ -1,0 +1,16 @@
+pkgbase = mingw-w64-coin-or-couenne
+	pkgdesc = Convex Over and Under Envelopes for Nonlinear Estimation (mingw-w64)
+	pkgver = 0.5.8
+	pkgrel = 1
+	url = https://github.com/coin-or/Couenne
+	arch = any
+	license = EPL
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-coin-or-bonmin
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = Couenne-0.5.8.tar.gz::https://github.com/coin-or/Couenne/archive/releases/0.5.8.tar.gz
+	sha256sums = 73b36e7475910f576ca25f8323553b9d5201fcb2656cef0a2c72e69dc0681051
+
+pkgname = mingw-w64-coin-or-couenne
