@@ -1,5 +1,5 @@
 # Maintainer: Adrià Cabello <adro.cc79 at protonmail dot com>
-pkgname=materialx
+pkgname=materialx-git
 _pkgver_major=1.38
 _pkgver_minor=6
 _pkgver_git=g6864251

@@ -1,4 +1,4 @@
-pkgbase = materialx
+pkgbase = materialx-git
 	pkgdesc = Open standard for representing rich material and look-development content in computer graphics
 	pkgver = 1.38.6.g6864251
 	pkgrel = 1
@@ -19,4 +19,4 @@ pkgbase = materialx
 	source = git+https://github.com/AcademySoftwareFoundation/MaterialX.git#branch=main
 	md5sums = SKIP
 
-pkgname = materialx
+pkgname = materialx-git
