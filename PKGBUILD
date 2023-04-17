@@ -6,6 +6,7 @@
 # Maintainer: Sathya Pramodh <sathyapramodh17@gmail.com>
 pkgname=resetti
 _pkgdir="/usr/bin"
+_rawurl="https://raw.githubusercontent.com/woofdoggo/resetti/main"
 pkgver="0.4.0"
 pkgrel=1
 pkgdesc="resetti is a Linux-compatible reset macro for Minecraft speedruns. It supports
@@ -23,23 +24,16 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-source=("git+$url")
+source=("$url/releases/download/v$pkgver/resetti"
+	"$_rawurl/.version")
 noextract=()
-md5sums=('SKIP')
+md5sums=('SKIP' 'SKIP')
 validategpgkeys=()
 
 pkgver(){
-	cat ${pkgname}/.version
-}
-
-build() {
-	cd "$pkgname"
-	make build
+	cat .version
 }
 
 package() {
-	cd "$pkgname"
 	cp resetti $_pkgdir
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
