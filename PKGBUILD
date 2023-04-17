@@ -5,7 +5,7 @@
 
 # Maintainer: Asuka Minato <asukaminato at nyan dot eu dot org>
 pkgname=vtm-bin
-pkgver=0.9.8w
+pkgver=0.9.9
 pkgrel=1
 epoch=
 pkgdesc="Terminal multiplexer with window manager and session sharing"
@@ -25,14 +25,14 @@ options=()
 install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/netxs-group/vtm/releases/download/v$pkgver/vtm_linux_amd64.tar.gz"
-https://raw.githubusercontent.com/netxs-group/vtm/master/LICENSE)
+https://raw.githubusercontent.com/netxs-group/vtm/92dbe4054f0824648a8e33a6320bd6f3946508cf/LICENSE)
 noextract=()
-sha256sums=('130346ec417a50797bba560f4557906437168699445526d18a77b0f0eaff5cec'
+sha256sums=('939427f01a226f1d92cf80b33ad05e69f729bb3c327f8436893af8ac7be929ac'
             '7b7086edfedec1a2d8b40bc3748c2b77688806b4ab1081c3570fd7bb9b2c7842')
 validpgpkeys=()
 
 package() {
-	install -Dm644 LICENSE -t $pkgdir/usr/share/licenses/$pkgname/
+	install -vDm644 LICENSE -t $pkgdir/usr/share/licenses/$pkgname/
 	tar -xvpf vtm_linux_amd64.tar
-	install -Dm755 vtm_linux_amd64/vtm $pkgdir/usr/bin/vtm
+	install -vDm755 vtm_linux_amd64/vtm $pkgdir/usr/bin/vtm
 }
