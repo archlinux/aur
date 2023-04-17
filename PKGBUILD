@@ -5,7 +5,7 @@
 
 # Maintainer: Sathya Pramodh <sathyapramodh17@gmail.com>
 pkgname=resetti
-_pkgdir="/usr/bin"
+_destdir="/usr/bin"
 _devbranch="next"
 pkgver=0.4.0_devel
 pkgrel=1
@@ -20,7 +20,7 @@ makedepends=('go' 'git')
 checkdepends=()
 optdepends=()
 provides=()
-conflicts=()
+conflicts=('resetti')
 replaces=()
 backup=()
 options=()
@@ -40,8 +40,8 @@ build() {
 
 package() {
 	cd "$pkgname"
-	cp resetti $_pkgdir
-	cp -p bench ${pkgdir}/$XDG_CONFIG_HOME/resetti
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	cp resetti $_destdir
+	cp -p bench ~/.config/resetti
+	cp -p scene-setup.lua ~/.config/resetti
+	cp -p internal/cfg/default.toml ~/.config/resetti
 }
