@@ -8,8 +8,8 @@ pkgbase = latex-media9
 	license = LPPL
 	makedepends = unzip
 	depends = texlive-core
-	noextract = media9.tds.zip
-	source = media9-1.25.zip::http://tug.ctan.org/tex-archive/install/macros/latex/contrib/media9.tds.zip
+	noextract = media9.zip
+	source = media9-1.25.zip::http://mirror.ctan.org/macros/latex/contrib/media9.zip
 	sha256sums = 5e728994a011c3ab0164e8ff95403ed8504e03e5ed57a25306b8650176f1f2f4
 
 pkgname = latex-media9
