@@ -1,6 +1,6 @@
 pkgbase = widgie-git
 	pkgdesc = A lightweight widget library for applications which do not need a splashscreen.
-	pkgver = 0.2.0
+	pkgver = 0.2.0.4.geee9dd2
 	pkgrel = 1
 	url = https://gitlab.com/manner/widgie
 	arch = x86_64
