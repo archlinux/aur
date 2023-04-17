@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Honkers Launcher
+Comment=An Launcher for a specific anime game with auto-patching, discord rpc and time tracking
+Icon=honkers-launcher
+Exec=/usr/bin/honkers-launcher
+Type=Application
+Categories=Game
+Terminal=false
