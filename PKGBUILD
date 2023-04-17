@@ -3,7 +3,7 @@
 pkgname=python-terminaltables
 _pyname=terminaltables
 pkgver=3.1.0
-pkgrel=9
+pkgrel=10
 pkgdesc="Generate simple tables in terminals from a nested list of strings"
 arch=('any')
 url="https://github.com/Robpol86/terminaltables"
