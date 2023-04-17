@@ -1,6 +1,6 @@
 pkgbase = php-swoole
 	pkgdesc = Coroutine-based concurrency library for PHP
-	pkgver = 5.0.1
+	pkgver = 5.0.2
 	pkgrel = 1
 	url = https://github.com/swoole/swoole-src
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = php-swoole
 	makedepends = gcc
 	makedepends = make
 	depends = php
-	source = https://github.com/swoole/swoole-src/archive/refs/tags/v5.0.1.tar.gz
+	source = https://github.com/swoole/swoole-src/archive/refs/tags/v5.0.2.tar.gz
 	source = swoole.ini
-	sha256sums = 8db635960f25b8b986f5214b44941f499d61d037867e11e27da108c19dc855c3
+	sha256sums = 14d442d5e945fe67a3e912d332175b2386a50c38a674c4559d2d0211db23362e
 	sha256sums = 58d1d032fe130fee8666238d14013e51c75683d7b806c61d1ada3bb8470adb44
 
 pkgname = php-swoole
