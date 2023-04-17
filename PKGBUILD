@@ -11,7 +11,7 @@ arch=("any")
 depends=('gcc-libs' 'glibc' 'zlib' 'openssl' 'dbus')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('173c0dcd69eeb3028566dcc0b94d5d70459c74891998ba7810d513e00e61f020')
+sha256sums=('de997508dd9b703380dd1f651b0d4699597fda99bba89bce61dfa505a06a9488')
 
 prepare() {
    cd "$pkgname-$pkgver"
