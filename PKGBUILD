@@ -4,7 +4,7 @@
 # Maintainer: ahmedmoselhi
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=slimjet
-pkgver=38.0.8.0
+pkgver=39.0.1.0
 pkgrel=1
 _libffmpegverurl="https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases"
 _libffmpegver=0.73.0
@@ -23,7 +23,7 @@ source=("${pkgname}-${pkgver}_amd64.deb::${_downurl}/release/${pkgname}_amd64.de
     "libffmpeg-${_libffmpegver}.zip::${_libffmpegverurl}/download/${_libffmpegver}/${_libffmpegver}-linux-x64.zip"
     "LICENSE::${url}/en/webhelp/index.htm"
     "${pkgname}.install")
-sha256sums=('1bc5ac7e12acdfff845044b58a60ec916c433c67d8a47f01ed071f5730bbe591'
+sha256sums=('f6d6d0a5adc77d5795d991b6a8bb346cc7dd6c24fc652feaad327645b6ddbc84'
             '8cad02e111745402d411414d8f8d15f1504bbcd884ccf050dfad252a63ad633a'
             '2c9dac1462b349e7c077ea33cdc91ff46563b2ca0457617958772a689b4c8d43'
             '2bfc097100279ec967fe51bd413140dfd10e095ac8005729455f9fef884723c8')
