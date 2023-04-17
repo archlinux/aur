@@ -3,8 +3,8 @@
 
 pkgname=vivaldi-snapshot-ffmpeg-codecs
 pkgver=110.0.5481.100
-_vivaldi_major_version=5.8
-pkgrel=1
+_vivaldi_major_version=6.0
+pkgrel=2
 pkgdesc="additional support for proprietary codecs for vivaldi"
 arch=('x86_64')
 url="https://ffmpeg.org/"
