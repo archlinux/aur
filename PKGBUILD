@@ -3,13 +3,13 @@
 
 pkgname=quiche
 pkgver=0.17.1
-pkgrel=2
+pkgrel=3
 pkgdesc='an implementation of the QUIC transport protocol and HTTP/2 as specified by the IETF'
 arch=('x86_64')
 url='https://github.com/cloudflare/quiche'
 license=('custom:BSD')
 depends=('gcc-libs')
-makedepends=('cmake' 'git' 'go' 'rust')
+makedepends=('cmake' 'rust')
 source=("https://github.com/cloudflare/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('3c427415525da565f726df95021235cdc1c6460aa7d89d1aa3e154cb621d45b4')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491')

@@ -1,13 +1,11 @@
 pkgbase = quiche
 	pkgdesc = an implementation of the QUIC transport protocol and HTTP/2 as specified by the IETF
 	pkgver = 0.17.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cloudflare/quiche
 	arch = x86_64
 	license = custom:BSD
 	makedepends = cmake
-	makedepends = git
-	makedepends = go
 	makedepends = rust
 	depends = gcc-libs
 	source = https://github.com/cloudflare/quiche/archive/0.17.1.tar.gz
