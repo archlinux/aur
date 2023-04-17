@@ -6,6 +6,7 @@ pkgbase = latex-pdfpages
 	install = latex-pdfpages.install
 	arch = any
 	license = unknown
+	makedepends = unzip
 	depends = texlive-core
 	noextract = pdfpages.zip
 	source = pdfpages-0.5x.zip::http://mirror.ctan.org/macros/latex/contrib/pdfpages.zip
