@@ -1,0 +1,23 @@
+pkgbase = circumflex-bin
+	pkgdesc = A command line tool for browsing Hacker News in your terminal. Pre-compiled.
+	pkgver = 2.8.2
+	pkgrel = 1
+	url = https://github.com/bensadeh/circumflex
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = glibc
+	provides = circumflex
+	conflicts = circumflex
+	source_i686 = circumflex-bin-2.8.2.tar.gz::https://github.com/bensadeh/circumflex/releases/download/2.8.2/circumflex_2.8.2_Linux_32-bit.tar.gz
+	sha256sums_i686 = 8e13c29a59b7a3e2fea1ac9ccaa5e5c9ea398f901d3a7762fb92c1e76c615085
+	source_pentium4 = circumflex-bin-2.8.2.tar.gz::https://github.com/bensadeh/circumflex/releases/download/2.8.2/circumflex_2.8.2_Linux_32-bit.tar.gz
+	sha256sums_pentium4 = 8e13c29a59b7a3e2fea1ac9ccaa5e5c9ea398f901d3a7762fb92c1e76c615085
+	source_x86_64 = circumflex-bin-2.8.2.tar.gz::https://github.com/bensadeh/circumflex/releases/download/2.8.2/circumflex_2.8.2_Linux_64-bit.tar.gz
+	sha256sums_x86_64 = 8e13c29a59b7a3e2fea1ac9ccaa5e5c9ea398f901d3a7762fb92c1e76c615085
+	source_aarch64 = circumflex-bin-2.8.2.tar.gz::https://github.com/bensadeh/circumflex/releases/download/2.8.2/circumflex_2.8.2_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 8e13c29a59b7a3e2fea1ac9ccaa5e5c9ea398f901d3a7762fb92c1e76c615085
+
+pkgname = circumflex-bin
