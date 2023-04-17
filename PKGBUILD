@@ -14,7 +14,6 @@ sha256sums=('8a57489ce99330abbd1424c9f25b2681fd58345c2fd1792262323c7da1d55773')
 build() {
     cd "$srcdir/GodDns-$pkgver"
     make build
-    ./GodDns generate
     mv ./build/GodDns .
 }
 
