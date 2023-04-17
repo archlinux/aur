@@ -3,7 +3,7 @@
 _pkgname=flightcore
 pkgname=$_pkgname-bin
 pkgver=1.13.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A Northstar installer, updater, and mod-manager (AppImage release)"
 arch=('x86_64')
 url="https://github.com/R2NorthstarTools/FlightCore"
@@ -39,11 +39,13 @@ prepare() {
   sed -i '1 i\Exec=env APPIMAGELAUNCHER_DISABLE=true flightcore %U' $_desktop
   sed -i '1 i\Name=FlightCore' $_desktop
   sed -i '1 i\[Desktop Entry]' $_desktop
+  mkdir -p desktop
+  mv $_desktop desktop
 }
 
 package() {
   install -Dm644 Square310x310Logo.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
-  install -Dm644 $_desktop "$pkgdir/usr/share/applications/$_desktop"
+  install -Dm644 desktop/$_desktop "$pkgdir/usr/share/applications/$_desktop"
   install -Dm644 DEVELOPMENT.md FAQ.md README.md -t "$pkgdir/usr/share/doc/$_pkgname"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
   install -Dm755 flight-core_${pkgver}_amd64.AppImage "$pkgdir/usr/bin/$_pkgname"
