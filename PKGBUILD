@@ -2,7 +2,7 @@
 
 pkgname=eidklient
 pkgver=4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Slovak eID Client"
 arch=('i686' 'x86_64')
 url="https://www.slovensko.sk/"
@@ -31,7 +31,7 @@ prepare() {
 
 pkgver() {
     # Match version from upstream release notes
-    grep -Pom1 'verzia \K[\d.]+' eID_klient_release_notes.txt
+    grep -Pom1 'verzia \K[0-9.]+' eID_klient_release_notes.txt
 }
 
 package() {
