@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=adwsteamgtk
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A simple Gtk wrapper for Adwaita-for-Steam"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('blueprint-compiler' 'meson')
 checkdepends=('appstream-glib')
 conflicts=('adwaita-for-steam')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ff0d27e0033b6327fb21a79f72a65c9b634079d3c9891a5dc0f99e52e0ad7388')
+sha256sums=('6e76267cf201b5d1ec4db7ca662ab0f11eceaf451186b4946ee97db5b86b61c9')
 
 build() {
   arch-meson "AdwSteamGtk-$pkgver" build
