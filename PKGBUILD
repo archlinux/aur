@@ -37,10 +37,10 @@ pkgver(){
 
 package() {
 	# TODO: Add bench script and scene-setup.lua export after it is upstreamed.
-	cp resetti $_destdir
-	if ![ -d ~/.config/resetti ]
+	install -Dm0755 resetti "${pkgdir}/usr/bin/${pkgname}"
+	if [ ![ -d ~/.config/resetti ] ]
 	then
 		mkdir -p ~/.config/resetti
 	fi
-	cp -p default.toml ~/.config/resetti
+	install -Dm0777 default.toml ~/.config/resetti
 }
