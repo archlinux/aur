@@ -1,16 +1,20 @@
 pkgbase = materialx
 	pkgdesc = Open standard for representing rich material and look-development content in computer graphics
 	pkgver = 1.38.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://materialx.org/
 	arch = x86_64
 	license = Apache
+	makedepends = cmake
 	depends = python
 	depends = pybind11
 	depends = openshadinglanguage
 	depends = openimageio
 	depends = pugixml
 	depends = glfw
+	depends = libxt
+	depends = libxinerama
+	depends = libxcursor
 	provides = materialx
 	source = git+https://github.com/AcademySoftwareFoundation/MaterialX.git#tag=v1.38.6
 	md5sums = SKIP
