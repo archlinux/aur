@@ -8,12 +8,13 @@ arch=(x86_64)
 url="https://textbrowser.github.io/dooble/"
 _githuburl="https://github.com/textbrowser/${pkgname%-bin}"
 license=('BSD')
-depends=('libdrm' 'libcups' 'pango' 'xcb-util-wm' 'qt6-webchannel' 'libxkbcommon' 'gendesk' 'libpng' 'zstd' 'libgpg-error' 'libmd' 'sqlite' 'util-linux-libs' \
+depends=('libdrm' 'libcups' 'pango' 'xcb-util-wm' 'qt6-webchannel' 'libxkbcommon' 'libpng' 'zstd' 'libgpg-error' 'libmd' 'sqlite' 'util-linux-libs' \
     'nspr' 'libxkbcommon-x11' 'krb5' 'xcb-util-keysyms' 'glib2' 'libx11' 'qt6-base' 'expat' 'freetype2' 'xcb-util-cursor' 'libbsd' 'systemd-libs' \
     'libxrandr' 'xcb-util-image' 'libxcb' 'gdk-pixbuf2' 'qt6-positioning' 'qt6-webengine' 'wayland' 'qt6-svg' 'libxrender' 'qt6-multimedia' \
     'gcc-libs' 'libglvnd' 'gtk3' 'libxext' 'unixodbc' 'nss' 'zlib' 'glibc' 'libcap' 'keyutils' 'brotli' 'libgcrypt' 'gstreamer' 'e2fsprogs' \
     'at-spi2-core' 'hicolor-icon-theme' 'sh' 'xcb-util-renderutil' 'qt6-declarative' 'cairo' 'lz4' 'libxdmcp' 'xz' 'libxau' 'gst-plugins-base-libs')
 optdepends=()
+makedenpends=('gendesk')
 providers=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.tar.gz::${_githuburl}/releases/download/${pkgver}/Dooble-${pkgver}.tar.gz"
