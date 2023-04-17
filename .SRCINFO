@@ -10,6 +10,8 @@ pkgbase = rtl-sdr-exp-git
 	license = GPL2
 	makedepends = git
 	makedepends = cmake
+	makedepends = make
+	makedepends = pkgconf
 	depends = libusb>=1.0
 	provides = rtl-sdr
 	provides = rtl-sdr-git

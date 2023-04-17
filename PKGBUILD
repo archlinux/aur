@@ -8,7 +8,7 @@ arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/Mr-Precise/rtl-sdr"
 license=('GPL2')
 depends=('libusb>=1.0')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'make' 'pkgconf')
 provides=('rtl-sdr' 'rtl-sdr-git')
 conflicts=('rtl-sdr' 'rtl-sdr-git')
 options=('staticlibs')
