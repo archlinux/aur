@@ -1,18 +1,17 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-_pkgname=deltachat-desktop
-pkgname="${_pkgname}-bin"
-pkgver=1.34.4
-pkgrel=2
+pkgname=deltachat-desktop-bin
+pkgver=1.36.2
+pkgrel=1
 pkgdesc="Email-based instant messaging for Desktop."
 arch=('x86_64')
 url="https://github.com/deltachat/deltachat-desktop"
 license=('GPL3')
-providers=(deltachat)
-conflits=("${_pkgname}-appimage" "${_pkgname}-git")
-depends=(nss 'python>=3.0' alsa-lib at-spi2-core gtk3 libxext cairo glibc nspr libxrandr libx11 libcups libxcb \
+providers=("${pkgname%-desktop-bin}")
+conflits=("${pkgname%-bin}-appimage" "${pkgname%-bin}-git")
+depends=(nss alsa-lib at-spi2-core gtk3 libxext cairo glibc nspr libxrandr libx11 libcups libxcb \
     libxcomposite glib2 dbus expat pango libdrm hicolor-icon-theme libxfixes libxdamage gcc-libs mesa libxkbcommon)
-source=("${_pkgname}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.pacman")
-sha256sums=('99a77caf7f4e4125463204945ab7a60c277047945ec2bbe78875c6749366ef43')
+source=("${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.pacman")
+sha256sums=('60ac076e20019cc9c078662b87cd6b3541dec6085fb90a7eba7098e6ca15b92d')
 package() {
     cp --parents -a {opt,usr} "${pkgdir}"
 }
