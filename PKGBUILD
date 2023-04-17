@@ -44,7 +44,7 @@ package() {
 	then
 		mkdir -p ~/.config/resetti
 	fi
-	install -Dm0664 bench ~/.config/resetti/bench
+	install -Dm0755 bench ~/.config/resetti/bench
 	install -Dm0664 scene-setup.lua ~/.config/resetti/scene-setup.lua
 	install -Dm0664 internal/cfg/default.toml ~/.config/resetti/default.toml
 }
