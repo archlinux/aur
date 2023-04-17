@@ -3,12 +3,12 @@
 # Contributor: aksr <aksr at t-com dot me>
 # Maintainer: slbtty <shenlebantongying@gmail.com>
 
-pkgname=goldendict-webengine-git
+pkgname=goldendict-ng-git
 pkgver=23.04.03.alpha.230409.c472b2cb.r9.ge32a7a2c
 pkgrel=1
 pkgdesc="A feature-rich dictionary lookup program, supporting multiple dictionary formats."
 arch=('i686' 'x86_64')
-url="https://github.com/xiaoyifang/goldendict"
+url="https://github.com/xiaoyifang/goldendict-ng"
 license=('GPL3')
 depends=('ffmpeg' 'hunspell' 'libvorbis' 'libxtst' 'lzo' 'zlib' 'xz' 'libeb' 'opencc'
 	 'qt5-svg' 'qt5-tools' 'qt5-x11extras' 'qt5-multimedia' 'qt5-webengine' 'qt5-speech')

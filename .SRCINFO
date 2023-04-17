@@ -1,8 +1,8 @@
-pkgbase = goldendict-webengine-git
+pkgbase = goldendict-ng-git
 	pkgdesc = A feature-rich dictionary lookup program, supporting multiple dictionary formats.
-	pkgver = 23.02.07.alpha.230226.656cd373.r34.gfb6d4f9c
+	pkgver = 23.04.03.alpha.230409.c472b2cb.r9.ge32a7a2c
 	pkgrel = 1
-	url = https://github.com/xiaoyifang/goldendict
+	url = https://github.com/xiaoyifang/goldendict-ng
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -29,7 +29,7 @@ pkgbase = goldendict-webengine-git
 	conflicts = goldendict-git-opt
 	replaces = goldendict-svn
 	replaces = goldendict-git-opt
-	source = goldendict-webengine-git::git+https://github.com/xiaoyifang/goldendict.git
+	source = goldendict-ng-git::git+https://github.com/xiaoyifang/goldendict.git
 	md5sums = SKIP
 
-pkgname = goldendict-webengine-git
+pkgname = goldendict-ng-git
