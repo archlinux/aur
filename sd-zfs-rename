@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+build() {
+    add_dir "/usr/lib/systemd/system/initrd-root-device.target.wants"
+    add_file "/usr/lib/systemd/system/sd-zfs-rename.service"
+    add_symlink "/usr/lib/systemd/system/initrd-root-device.target.wants/sd-zfs-rename.service" "/usr/lib/systemd/system/sd-zfs-rename.service"
+
+    add_full_dir "/usr/lib/mkinitcpio-sd-zfs-rename"
+}

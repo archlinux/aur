@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 set -eux
 
-LOG_FILE="/systemd-zfs-rename.log"
+LOG_FILE="/sd-zfs-rename.log"
 
 exec 3>&1 4>&2
 trap 'exec 2>&4 1>&3' 0 1 2 3

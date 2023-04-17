@@ -8,7 +8,7 @@ Before=sysroot.mount
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/usr/lib/mkinitcpio-sd-zfs-rename/systemd-zfs-rename.sh
+ExecStart=/usr/lib/mkinitcpio-sd-zfs-rename/sd-zfs-rename.sh
 
 [Install]
 WantedBy=initrd-root-device.target

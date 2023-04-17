@@ -2,7 +2,7 @@
 
 pkgname=mkinitcpio-sd-zfs-rename
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='This module renames the zfs filesystem declared in (zpool get) bootfs, if the name ends with "_next_boot", by removing the "_next_boot" part from the filesystem name/path'
 arch=('any')
 url='https://aur.archlinux.org/packages/mkinitcpio-sd-zfs-rename'
@@ -17,21 +17,21 @@ conflicts=()
 replaces=()
 options=()
 source=(
-    'systemd-zfs-rename'
-    'systemd-zfs-rename.service'
-    'systemd-zfs-rename.sh'
+    'sd-zfs-rename'
+    'sd-zfs-rename.service'
+    'sd-zfs-rename.sh'
 )
 noextract=()
 sha256sums=(
-    '57679b7b215fdae8295b1d34ad5fa21f5eb310d203bb3d62b8eed2cdb33e6171'
-    'f2dc4b3252e2bb53d82c5cf24bf06b94e95ecc3732d9910bf285f0b468c70840'
-    '374a3eab7284074276433418b87fdb0c166ce7e640c674a9ed215dc3406a7382'
+    '3c9084e898cf131e9863edaeb1c96c24c1157b6dcc3abf555816ce486b682657'
+    '0140033eec7956cf95ea8c803fc5cef00b277206f0cf9a693951d965f42867d6'
+    '82a51a18b24eead51db114fd23e740ab7e8038d6c513ae3c1df3896b46c1afa2'
 )
 
 
 package() {
-    install -Dm644 "systemd-zfs-rename" "${pkgdir}/usr/lib/initcpio/install/systemd-zfs-rename"
-    install -Dm644 "systemd-zfs-rename.service" "${pkgdir}/usr/lib/systemd/system/systemd-zfs-rename.service"
-    install -Dm755 "systemd-zfs-rename.sh" "${pkgdir}/usr/lib/mkinitcpio-sd-zfs-rename/systemd-zfs-rename.sh"
+    install -Dm644 "sd-zfs-rename" "${pkgdir}/usr/lib/initcpio/install/sd-zfs-rename"
+    install -Dm644 "sd-zfs-rename.service" "${pkgdir}/usr/lib/systemd/system/sd-zfs-rename.service"
+    install -Dm755 "sd-zfs-rename.sh" "${pkgdir}/usr/lib/mkinitcpio-sd-zfs-rename/sd-zfs-rename.sh"
 }
 
