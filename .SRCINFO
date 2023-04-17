@@ -6,7 +6,10 @@ pkgbase = python-teslapy
 	arch = any
 	license = MIT
 	depends = python
+	depends = python-requests
+	depends = python-requests-oauthlib
+	depends = python-websocket-client
 	source = https://github.com/tdorssers/TeslaPy/archive/refs/tags/v2.7.0.tar.gz
-	sha256sums = 8914b5a753b98e6eaef671dbb1625eb7439732ebb5be9846bff1e7be5d025973
+	sha256sums = 88af01cdf322198ead081761606e7a75922ac4f7b07771d7515460e48b4f8ca2
 
 pkgname = python-teslapy

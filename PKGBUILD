@@ -10,18 +10,21 @@ pkgrel=1
 url="https://github.com/tdorssers/TeslaPy"
 license=('MIT')
 arch=('any')
-depends=("python")
+depends=("python"
+         "python-requests"
+         "python-requests-oauthlib"
+         "python-websocket-client")
 source=("https://github.com/tdorssers/TeslaPy/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8914b5a753b98e6eaef671dbb1625eb7439732ebb5be9846bff1e7be5d025973')
+sha256sums=('88af01cdf322198ead081761606e7a75922ac4f7b07771d7515460e48b4f8ca2')
 
 build() {
-  cd ulid_transform-$pkgver
+  cd TeslaPy-$pkgver
   python setup.py build
 }
 
 
 package() {
-  cd ulid_transform-$pkgver
+  cd TeslaPy-$pkgver
   python setup.py install --root="$pkgdir" --skip-build --optimize=1
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
