@@ -1,36 +1,44 @@
-# Maintainer : Juraj Matuš <matus.juraj at yandex dot com>
+# Maintainer: syfds <github.com/syfds>
+# Contributor: MvBonin <github.com/MvBonin>
 
-_lang=slk-eng
-pkgname=dict-freedict-${_lang}
-pkgver=0.2
+_pkgname=soundy
+pkgname=$_pkgname-git
+pkgver=r223.6f7aca3
 pkgrel=1
-pkgdesc="Slovak -> English dictionary for dictd et al. from Freedict.org"
-arch=('any')
-url="https://freedict.org/"
-license=('GPL')
-optdepends=('dictd: dict client and server')
-makedepends=('dictd' 'freedict-tools')
-install=install.sh
-source=("https://download.freedict.org/dictionaries/${_lang}/${pkgver}.${pkgrel}/freedict-${_lang}-${pkgver}.${pkgrel}.src.tar.xz")
-sha512sums=('ba7669020a12f64f7d2e2b6dfa90f1376df4a2fe764273bdb06f1e04998ee6dac9584b47f20f8e14cbaae5bf7271dd221032bcc34bd1ff7c93a93cf9de4429ac')
+pkgdesc="Simple GTK client to control your Bose SoundTouch speaker - Development version"
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/syfds/soundy"
+license=('GPL-3.0')
+depends=('gtk3' 'granite' 'glib2' 'libsoup' 'libxml2' 'avahi')
+makedepends=('git' 'meson')
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
+options=('debug')
+source=("git+https://github.com/syfds/$_pkgname.git")
+sha256sums=('SKIP')
 
-build()
-{
-	cd $_lang
-	make FREEDICT_TOOLS=/usr/lib/freedict-tools build-dictd
+pkgver() {
+cd ${srcdir}/${_pkgname}
+echo "r$(git rev-list --count HEAD).$(git describe --always)"
 }
 
-package()
-{
-	install -m 755 -d "${pkgdir}/usr/share/dictd"
-	install -m 644 -t "${pkgdir}/usr/share/dictd/" \
-		${_lang}/build/dictd/${_lang}.{dict.dz,index}
+build() {
+  cd "$_pkgname"
 
-	for file in ${_lang}/{AUTHORS,README,NEWS,ChangeLog}
-	do
-		if test -f ${file}
-		then
-			install -m 644 -Dt "${pkgdir}/usr/share/doc/freedict/${_lang}/" ${file}
-		fi
-	done
+  export CFLAGS="$CFLAGS -fvisibility=hidden"
+
+  rm -rf build
+  meson --prefix=/usr \
+    . build
+
+  ninja -C build
+}
+
+package(){
+  cd "$_pkgname"
+
+  DESTDIR="$pkgdir" ninja -C build install
+
+  install -Dm644 -t"$pkgdir/usr/share/doc/$_pkgname/" README.md
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
