@@ -1,0 +1,12 @@
+pkgbase = pacman-hook-reload-modules
+	pkgdesc = Pacman hook to invoke systemd-modules-load when its configuration is modified.
+	pkgver = 1
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/pacman-hook-reload-modules
+	arch = any
+	license = GPL
+	depends = systemd
+	source = modules-reload.hook
+	md5sums = c60ee68bf22fa7b4d10b7db57d71b854
+
+pkgname = pacman-hook-reload-modules
