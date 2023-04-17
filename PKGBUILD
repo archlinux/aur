@@ -1,7 +1,7 @@
 pkgname=tubi
 _pkgname=Tubi
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 _pkgrel_x86_64=1
 pkgdesc="Unnofficial Tubi desktop application"
 arch=('x86_64')
