@@ -1,0 +1,17 @@
+pkgbase = linuxwave-git
+	pkgdesc = Generate music from the entropy of Linux
+	pkgver = 0.1.1.r0.rga6000ac
+	pkgrel = 1
+	url = https://github.com/orhun/linuxwave
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = zig
+	provides = linuxwave
+	conflicts = linuxwave
+	source = git+https://github.com/orhun/linuxwave.git
+	source = git+https://github.com/Hejsil/zig-clap.git#commit=749c43f1f846adc950a5920ed61b40cbc3ec2c54
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = linuxwave-git
