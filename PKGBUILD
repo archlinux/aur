@@ -5,7 +5,6 @@
 
 # Maintainer: Sathya Pramodh <sathyapramodh17@gmail.com>
 pkgname=resetti
-_destdir="/usr/bin"
 _rawurl="https://raw.githubusercontent.com/woofdoggo/resetti/main"
 pkgver="0.4.0"
 pkgrel=1
