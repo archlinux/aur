@@ -1,5 +1,5 @@
 pkgbase = mdlshit-bin
-	pkgdesc = source engine .mdl v49 -> v53 converter
+	pkgdesc = source engine .mdl v49 -> v53 converter (binary release)
 	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://github.com/headassbtw/mdlshit
