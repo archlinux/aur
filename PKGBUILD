@@ -42,5 +42,5 @@ package() {
 	then
 		mkdir -p ~/.config/resetti
 	fi
-	install -Dm0777 default.toml ~/.config/resetti
+	install -Dm0664 default.toml ~/.config/resetti
 }
