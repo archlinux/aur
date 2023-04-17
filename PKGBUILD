@@ -1,19 +1,18 @@
 # Maintainer: Christoph Sterz <christoph.sterz@kdab.com>
 pkgname=kddockwidgets-git
-pkgver=r1090.899ca6a
+pkgver=1.6.0.r79.gac6ed8e9
 pkgrel=1
 arch=('x86_64')
 pkgdesc="KDAB's Dock Widget Framework for Qt"
 license=("GPL2" "custom:KDAB commercial license")
-depends=('qt5-base')
-makedepends=('cmake' 'ninja' 'qt5-tools')
+depends=(qt5-{base,x11extras})
+makedepends=('cmake' 'git' 'ninja' 'qt5-tools')
 url="https://www.kdab.com/kddockwidgets/"
 source=("${pkgname}::git+https://github.com/KDAB/KDDockWidgets.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git -C "$srcdir/$pkgname" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
