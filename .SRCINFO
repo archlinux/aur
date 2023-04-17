@@ -1,16 +1,15 @@
 pkgbase = ovh-api-client
 	pkgdesc = A bash client for OVH API
 	pkgver = 1.0.0
-	pkgrel = 1
-	url = https://github.com/aureooms/ovh-api-client
+	pkgrel = 2
+	url = https://github.com/make-github-pseudonymous-again/ovh-api-client
 	arch = any
 	makedepends = git
 	depends = bash
 	depends = coreutils
 	depends = curl
 	depends = jq
-	source = https://github.com/aureooms/ovh-api-client/archive/v1.0.0.tar.gz
+	source = https://github.com/make-github-pseudonymous-again/ovh-api-client/archive/v1.0.0.tar.gz
 	md5sums = SKIP
 
 pkgname = ovh-api-client
-
