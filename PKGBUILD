@@ -14,6 +14,7 @@ depends=("python"
          "python-requests"
          "python-requests-oauthlib"
          "python-websocket-client")
+makedepends=("python-setuptools")
 source=("https://github.com/tdorssers/TeslaPy/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('88af01cdf322198ead081761606e7a75922ac4f7b07771d7515460e48b4f8ca2')
 

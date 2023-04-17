@@ -5,6 +5,7 @@ pkgbase = python-teslapy
 	url = https://github.com/tdorssers/TeslaPy
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python
 	depends = python-requests
 	depends = python-requests-oauthlib
