@@ -1,13 +1,13 @@
 pkgbase = bluez-bccmd
 	pkgdesc = deprecated bccmd tool from bluez-5.55
 	pkgver = 5.55
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.bluez.org/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = pkgconf
-	depends = bluez
+	depends = bluez-libs
 	source = https://www.kernel.org/pub/linux/bluetooth/bluez-5.55.tar.xz
 	sha256sums = 8863717113c4897e2ad3271fc808ea245319e6fd95eed2e934fae8e0894e9b88
 
