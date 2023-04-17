@@ -1,6 +1,6 @@
 pkgbase = qps
 	pkgdesc = a visual process manager, an X11 version of 'top' or 'ps'.
-	pkgver = 2.6.0
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://github.com/lxqt/qps
 	arch = i686
@@ -12,9 +12,9 @@ pkgbase = qps
 	depends = qt5-x11extras
 	depends = qt5-tools
 	depends = liblxqt
-	source = qps-2.6.0.tar.xz::https://github.com/QtDesktop/qps/releases/download/2.6.0/qps-2.6.0.tar.xz
+	source = qps-2.7.0.tar.xz::https://github.com/QtDesktop/qps/releases/download/2.7.0/qps-2.7.0.tar.xz
 	source = qps.desktop
-	sha256sums = 394d35a65ad8f2865d4fe09d95bfe83f425b5b22722c392a33a574e67c080dc5
+	sha256sums = fdf51c158ac2cac8752901ce054bcda5261c05033055e604cc9dcb2d939cdf88
 	sha256sums = 5216455ce5ce096b36f1b301325fd44c972ff796aa3b40b60807a06dae0ab3f9
 
 pkgname = qps
