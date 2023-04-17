@@ -1,4 +1,4 @@
-# Maintainer: Equationzhao <equationzhao@foxmail.com>
+# Maintainer: Equationzhao <equationzhao at foxmail dot com>
 pkgname='goddns'
 pkgver=0.1.8
 pkgrel=1
