@@ -1,17 +1,17 @@
 pkgbase = boom
 	pkgdesc = A game inspired by Factor Software's BOOM.Bomberman meets DOOM.
-	pkgver = 1.5
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://silverweed.github.io/lifish/
 	arch = any
 	license = custom
 	makedepends = cmake
-	makedepends = sfml
+	depends = sfml
 	provides = boom
-	source = https://github.com/silverweed/lifish/archive/refs/tags/1.5.tar.gz
+	source = https://github.com/silverweed/lifish/archive/refs/tags/1.6.tar.gz
 	source = boom
 	source = boom.desktop
-	sha256sums = c83d27e03c97c9ec6cdd53506d4026fc9ff35add7dbee799cd1e4eed17da1f42
+	sha256sums = f6c04388d67364bbf044f155731a911d8861576c170bca16dcc8d2e078d9eb2a
 	sha256sums = efc02b4b2da6f08fd392236b6e3b1b30d0a1e4b30a68b80eee6e5be40cfb2c11
 	sha256sums = 80349740c8b281d2110524e38f8cd774e31616ced4ea6fc894b516a7772c474f
 
