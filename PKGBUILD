@@ -13,16 +13,16 @@ conflicts=('ipsw')
 backup=('/etc/ipsw.conf')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.322/ipsw_3.1.322_linux_arm64.tar.gz")
-sha256sums_aarch64=('d09b28ed7312346ff3500e5af59567f30ced2b63275e517d419ab57430bf812f')
+sha256sums_aarch64=('0da850f8816bc04dc2103e06a42651897b210026b183cde290873a14401af7e6')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.322/ipswd_3.1.322_linux_arm64.tar.gz")
-sha256sums_aarch64=('3ce494d3948adbfc0a1e0fc9288b2d32cae11d6c34311f9a2329c69e9f1632f5')
+sha256sums_aarch64=('98881c49709200119f1e84e7c0160afecfb10e6fa6c4e5da29746a7df6d7a902')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.322/ipsw_3.1.322_linux_x86_64.tar.gz")
-sha256sums_x86_64=('124dd6074267d4a8d24e107d60cae7aa124db0fb9450fb9a3acef830e4b569c6')
+sha256sums_x86_64=('5220df9617c58c98062de933e0a180abf733cff2f850e8f4d33bb4889e503ab5')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.322/ipswd_3.1.322_linux_x86_64.tar.gz")
-sha256sums_x86_64=('4daba2d2a4072e67efa9595cd83d22760a86c55c94cd39a666550dd014c11d1e')
+sha256sums_x86_64=('6287e9c4eb5147e922a7492c8e6e5d1c91e2f05cd28749f934e1d7748d6c8119')
 
 package() {
   # bin
