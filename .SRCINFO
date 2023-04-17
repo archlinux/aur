@@ -1,8 +1,8 @@
 pkgbase = ovh-dns
 	pkgdesc = Update a given A/AAAA/... record in your DNS zone, using OVH API
 	pkgver = 1.3.0
-	pkgrel = 1
-	url = https://github.com/aureooms/ovh-dns
+	pkgrel = 2
+	url = https://github.com/make-github-pseudonymous-again/ovh-dns
 	arch = any
 	makedepends = git
 	depends = bash
@@ -12,8 +12,7 @@ pkgbase = ovh-dns
 	depends = ovh-api-client
 	optdepends = myip: ovh-dns-watch support
 	optdepends = xxhash: ovh-dns-watch support
-	source = https://github.com/aureooms/ovh-dns/archive/v1.3.0.tar.gz
+	source = https://github.com/make-github-pseudonymous-again/ovh-dns/archive/v1.3.0.tar.gz
 	md5sums = SKIP
 
 pkgname = ovh-dns
-
