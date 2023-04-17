@@ -1,4 +1,4 @@
-# Maintainer: Jeff Barfield (jeffreybarfield[at]protonmail[dot]org)
+# Maintainer: Jeff Barfield (noprobelm[at]protonmail[dot]org)
 
 pkgname=python-terminaltables
 _pyname=terminaltables
