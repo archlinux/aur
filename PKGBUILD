@@ -3,6 +3,7 @@
 
 _pkgname=soundy
 pkgname=$_pkgname-git
+pkgbase=$pkgname
 pkgver=r223.6f7aca3
 pkgrel=1
 pkgdesc="Simple GTK client to control your Bose SoundTouch speaker - Development version"

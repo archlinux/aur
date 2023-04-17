@@ -1,4 +1,3 @@
-basename=soundy-git
 post_install()
 {}
 
