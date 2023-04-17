@@ -1,6 +1,6 @@
 pkgbase = aurum
 	pkgdesc = high-level wrapper for aurutils with extra features
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/AladW/aurum
 	changelog = aurum.changelog
@@ -10,7 +10,7 @@ pkgbase = aurum
 	depends = bat
 	depends = git-delta
 	depends = ninja
-	source = aurum-0.1.tar.gz::https://github.com/AladW/aurum/archive/refs/tags/0.1.tar.gz
-	sha256sums = 7f9d02b1898d86ff23cc27c4d658fa314caa6896da59767cdd9fb4a6cde80e64
+	source = aurum-0.2.tar.gz::https://github.com/AladW/aurum/archive/refs/tags/0.2.tar.gz
+	sha256sums = 6c7a53a321b078a17cd836295cc12c8396600703f91c57b1826dfe45eed3c9c2
 
 pkgname = aurum
