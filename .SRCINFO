@@ -1,7 +1,7 @@
 pkgbase = drbd-utils-git
 	pkgdesc = Userland tools for Distributed Replicated Block Device
 	pkgver = 9.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.drbd.org
 	arch = x86_64
 	license = GPL2

@@ -1,8 +1,9 @@
+# Maintainer: Gerlof Fokkema <gerlof.fokkema+aur@gmail.com>
 # Maintainer: Rene Peinthor <peinthor@gmail.com>
 
 pkgname=drbd-utils-git
 pkgver=9.3.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='Userland tools for Distributed Replicated Block Device. (Git)'
 url='https://www.drbd.org'
