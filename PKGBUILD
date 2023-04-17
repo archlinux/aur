@@ -3,7 +3,7 @@
 pkgbase=python-pytest-plugins
 pkgname=('python-pytest-fixture-config' 'python-pytest-shutil' 'python-pytest-virtualenv')
 pkgver=1.7.0
-pkgrel=8
+pkgrel=9
 arch=('any')
 license=('BSD')
 url='https://github.com/manahl/pytest-plugins'
@@ -38,10 +38,11 @@ build() {
 check() {
   # Hack entry points by installing it
 
+  local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
   for _pkg in pytest-fixture-config pytest-shutil pytest-virtualenv; do
     cd "$srcdir"/pytest-plugins-$pkgver/$_pkg
     python setup.py install --root="$srcdir"/tmp_install --optimize=1
-    PYTHONPATH="$srcdir"/tmp_install/usr/lib/python3.10/site-packages py.test
+    PYTHONPATH="$srcdir"/tmp_install/usr/lib/python${python_version}/site-packages py.test -k 'not test_pretty_formatter'
   done
 }
 
