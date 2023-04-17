@@ -6,6 +6,7 @@ pkgbase = latex-media9
 	install = latex-media9.install
 	arch = any
 	license = LPPL
+	makedepends = unzip
 	depends = texlive-core
 	noextract = media9.tds.zip
 	source = media9-1.25.zip::http://tug.ctan.org/tex-archive/install/macros/latex/contrib/media9.tds.zip
