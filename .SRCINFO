@@ -11,8 +11,6 @@ pkgbase = tubi
 	depends = gtk3
 	depends = libxss
 	depends = git
-	conflicts = primevideo-git
-	conflicts = primevideo-bin
 	source = https://gitlab.com/tubidesktop/application/-/archive/1.0.0-1/application-1.0.0-1.tar.bz2
 	sha256sums = SKIP
 
