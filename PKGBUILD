@@ -2,19 +2,20 @@
 # Contributor: alphRomeo323 <alpharomeo323dev at protonmail dot com>
 # Contributor: William Brown <glowinthedarkcia at horsefucker dot org>
 pkgname=ftba-electron
-pkgver=202302201814_1c8edb0091_release
+pkgver=202304121437_91bb027b9e
 pkgrel=1
 url="https://feed-the-beast.com/app"
-arch=(any)
+# launcher_*.jar contains native library.
+arch=(x86_64)
 pkgdesc="Offers many different styles of Minecraft modpacks to the community. (Use system Electron)"
 source=("https://apps.modpacks.ch/FTBApp/release/${pkgver//_/-}/FTBA_linux_${pkgver//_/-}.deb"
         "ftb-app.desktop"
         "ftb-app")
-sha256sums=("730ea1761b6b162a02e8bb08d7efa3fe55b4c5ba9edb53d4a0cab78fc397bdcc"
+sha256sums=("801407839b4242808f904d86e2f85cbe00bb2107948491e81332a845553884a0"
             "2b50da4dc2811b175e5602e91dfe18e981cba3e2e80deccb8f12b59776d8c530"
-            "c4a3af22ae74b5398e257763d099e0345dccf37d9652d24557878e1b7053ca6d")
+            "79fd5651f4994d98c6f48a91ccf8eae316c8ee21cd30e02bfe58202cf48aecf3")
 license=("LGPL2.1")
-depends=("java-runtime=17" "electron18")
+depends=("java-runtime=17" "electron22")
 # FTBA will download Adoptium for Minecraft, although system Java can be used too.
 optdepends=("java-runtime=11: For playing some version of Minecraft with system Java."
             "java-runtime=8: For playing some version of Minecraft with system Java.")
