@@ -4,8 +4,8 @@
 
 pkgname=miktex-fix
 _pkgname=miktex
-pkgver=22.10
-pkgrel=2
+pkgver=23.4
+pkgrel=1
 pkgdesc="a distribution of the TeX/LaTeX typesetting system(Fix the issue of command not found)"
 arch=('x86_64')
 url="https://miktex.org"
@@ -18,7 +18,7 @@ makedepends=('cmake' 'coreutils' 'fop' 'sed' 'libxslt' 'qt5-tools' 'boost')
 source=("https://github.com/MiKTeX/miktex/archive/${pkgver}.tar.gz")
 provides=(miktex texlive-bin)
 conflicts=(miktex texlive-bin)
-md5sums=('5b10940889e53e16325aba9f87b6a7f6')
+md5sums=('85010ca98be292b849cb93b73a92ffd0')
 options=('!buildflags')
 
 build() {
