@@ -1,7 +1,7 @@
 pkgbase = damask
 	pkgdesc = DAMASK - The Duesseldorf Advanced Material Simulation Kit
 	pkgver = 3.0.0~alpha7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://damask.mpie.de
 	arch = x86_64
 	license = AGPL3
