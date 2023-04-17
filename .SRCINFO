@@ -1,0 +1,12 @@
+pkgbase = python-teslapy
+	pkgdesc = A Python implementation of the client side interface to the Tesla Motors Owner API
+	pkgver = 2.7.0
+	pkgrel = 1
+	url = https://github.com/tdorssers/TeslaPy
+	arch = any
+	license = MIT
+	depends = python
+	source = https://github.com/tdorssers/TeslaPy/archive/refs/tags/v2.7.0.tar.gz
+	sha256sums = 8914b5a753b98e6eaef671dbb1625eb7439732ebb5be9846bff1e7be5d025973
+
+pkgname = python-teslapy
