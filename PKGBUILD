@@ -1,28 +1,19 @@
-# Maintainer: Michael Schubert <mschu.dev at gmail>
+# Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=latex-mathabx
 _pkgname=${pkgname#latex-}
 pkgver=2005.05.18
 pkgrel=1
 pkgdesc="Mathematical symbols not included in the standard distribution"
-arch=('any')
+arch=(any)
 url="http://www.ctan.org/tex-archive/fonts/mathabx"
-license=('unknown')
-depends=('texlive-core')
-source=("http://mirror.ctan.org/fonts/mathabx.zip")
+license=(LPPL)
+depends=(texlive-core)
+makedepends=(unzip)
+source=($_pkgname-$pkgver.zip::http://mirror.ctan.org/fonts/mathabx.zip)
 install="$pkgname.install"
-md5sums=('82eecbe10d9f5593e01d257523a03c42')
+sha256sums=('f204676a5ea811237cdad10effb5a9d5ea0d520cece30c6f67623b496b8442cf')
 
 package() {
-  TEXMF="/usr/share/texmf"
-
-  cd "$srcdir/$_pkgname"
-
-  mkdir -p "$pkgdir/$TEXMF/fonts/source/public/mathabx" 
-  cp source/*.mf "$pkgdir/$TEXMF/fonts/source/public/mathabx/"
-
-  mkdir -p "$pkgdir/$TEXMF/tex/generic/misc"
-  cp texinputs/* "$pkgdir/$TEXMF/tex/generic/misc/"
-
-  find "$pkgdir" -type d -exec chmod 755 {} \;
-  find "$pkgdir" -type f -exec chmod 644 {} \;
+  install -dm755 "$pkgdir"/usr/share/texmf
+  unzip -d "$pkgdir"/usr/share/texmf/tex $_pkgname-$pkgver.zip
 }
