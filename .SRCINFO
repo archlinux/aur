@@ -1,0 +1,14 @@
+pkgbase = cloudflarespeedtest-bin
+	pkgdesc = 自选优选IP测试Cloudflare CDN延迟和速度,获取最快IP(IPv4/IPv6)!另外也支持其他CDN/网站 IP
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = https://github.com/XIU2/CloudflareSpeedTest
+	arch = x86_64
+	license = GPL3
+	depends = sh
+	conflicts = cloudflarespeedtest
+	noextract = cloudflarespeedtest-bin-2.2.2.tar.gz
+	source = cloudflarespeedtest-bin-2.2.2.tar.gz::https://github.com/XIU2/CloudflareSpeedTest/releases/download/v2.2.2/CloudflareST_linux_amd64.tar.gz
+	sha256sums = 0f7c5188a57ca928d33364c2598abc935b89944b637f92f3511a3c3f262ce38e
+
+pkgname = cloudflarespeedtest-bin
