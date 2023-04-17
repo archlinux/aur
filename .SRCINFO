@@ -1,14 +1,13 @@
 pkgbase = vmd-bin
 	pkgdesc = VMD is a molecular visualization program for displaying, animating, and analyzing large biomolecular systems using 3-D graphics and built-in scripting
-	pkgver = 1.9.3
+	pkgver = 1.9.4a57
 	pkgrel = 1
 	url = https://www.ks.uiuc.edu/Research/vmd/
 	arch = x86_64
 	license = custom
 	makedepends = make
 	provides = vmd
-	source = local://vmd-1.9.3.bin.LINUXAMD64-CUDA8-OptiX4-OSPRay111p1.opengl.tar.gz
-	md5sums = 7f0cefa52e4ac3645018512fed70e474
+	source = local://vmd-1.9.4a57.bin.LINUXAMD64-CUDA102-OptiX650-OSPRay185.opengl.tar.gz
+	md5sums = b38d74429aee73bcb43216f8ac48dbb8
 
 pkgname = vmd-bin
-

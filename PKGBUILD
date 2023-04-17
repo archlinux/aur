@@ -1,6 +1,6 @@
 # Maintainer: Tomasz Zok <tomasz dot zok at gmail dot com>
 pkgname=vmd-bin
-pkgver=1.9.3
+pkgver=1.9.4a57
 pkgrel=1
 pkgdesc="VMD is a molecular visualization program for displaying, animating, and analyzing large biomolecular systems using 3-D graphics and built-in scripting"
 arch=(x86_64)
@@ -10,8 +10,8 @@ depends=()
 makedepends=(make)
 optdepends=()
 provides=(vmd)
-source=("local://vmd-${pkgver}.bin.LINUXAMD64-CUDA8-OptiX4-OSPRay111p1.opengl.tar.gz")
-md5sums=('7f0cefa52e4ac3645018512fed70e474')
+source=("local://vmd-${pkgver}.bin.LINUXAMD64-CUDA102-OptiX650-OSPRay185.opengl.tar.gz")
+md5sums=('b38d74429aee73bcb43216f8ac48dbb8')
 
 build() {
     cd "vmd-${pkgver}"
