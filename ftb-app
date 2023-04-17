@@ -1,2 +1,2 @@
 #!/bin/bash
-exec electron18 /usr/lib/ftb-app/bin/app.asar $@
+exec electron22 /usr/lib/ftb-app/bin/app.asar "$@"

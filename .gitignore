@@ -1,0 +1,5 @@
+src/
+pkg/
+FTBA_linux_*.deb
+ftba-*.pkg.tar*
+*.log

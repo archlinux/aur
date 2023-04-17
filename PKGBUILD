@@ -3,10 +3,10 @@
 # Contributor: William Brown <glowinthedarkcia at horsefucker dot org>
 pkgname=ftba-electron
 pkgver=202304121437_91bb027b9e
-pkgrel=1
+pkgrel=2
 url="https://feed-the-beast.com/app"
-# launcher_*.jar contains native library.
-arch=(x86_64)
+# launcher_*.jar contains libjnidispatch.so for x86, x86_64, s390x, riscv64, ppc64le, ppc, mips64el, arm, armel and aarch64.
+arch=(any)
 pkgdesc="Offers many different styles of Minecraft modpacks to the community. (Use system Electron)"
 source=("https://apps.modpacks.ch/FTBApp/release/${pkgver//_/-}/FTBA_linux_${pkgver//_/-}.deb"
         "ftb-app.desktop"
