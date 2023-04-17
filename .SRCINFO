@@ -1,0 +1,17 @@
+pkgbase = c-evo-dh
+	pkgdesc = C-evo: Distant Horizon, Empire Building Game
+	pkgver = 1.8
+	pkgrel = 1
+	url = https://sourceforge.net/projects/c-evo-eh/
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	license = CCPL
+	makedepends = fpc
+	makedepends = lazarus-gtk2
+	depends = gtk2
+	optdepends = ffmpeg: Needed for sounds
+	source = https://sourceforge.net/projects/c-evo-eh//files/Source/c-evo-dh_1.8.orig.tar.xz
+	sha256sums = 6a948a413ee9e17d80318c0135fe7445ab9fd87495497adb515e81540c841fbe
+
+pkgname = c-evo-dh
