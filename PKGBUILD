@@ -3,7 +3,7 @@
 pkgname=python-kikuchipy
 pkgshort=kikuchipy
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Processing and analysis of electron backscatter diffraction (EBSD) patterns."
 arch=('any')
 url="https://kikuchipy.org/"
@@ -14,7 +14,7 @@ depends=('python'
 	 'python-diffpy.structure>=3'
          'python-diffsims>=0.5'
          'python-hyperspy>=1.7.3'
-	 'python-h5py>=2.10'
+	 'python-h5py-openmpi>=2.10' # openmpi for pyxem/pyfai compatibility
 	 'python-imageio'
          'python-matplotlib>=3.5'
 	 'python-numpy>=1.19'
