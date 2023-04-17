@@ -2,9 +2,9 @@
 # Maintainer: Plaunarome <plaunarome@protonmail.com>
 
 _name="multi-account-containers"
-_l10n_version=837c56a671eadd18a43482e998410d107cb4144c
+_l10n_version=417e6294ed767914b617a5e56ccbe67482df181c
 pkgname=firefox-extension-multi-account-containers
-pkgver=8.0.9
+pkgver=8.1.2
 pkgrel=1
 pkgdesc="Keep parts of your online life separated into color-coded tabs"
 arch=("any")
@@ -17,8 +17,8 @@ source=(
 	"https://github.com/mozilla-l10n/${_name}-l10n/archive/${_l10n_version}.tar.gz"
 )
 sha512sums=(
-	'4ec3cc36ba7d2158c50855b2a065f415ccdbf43bb6185fbe9648b59a19ea3a6d83662e7ff857c91d3874732e2915aeddaeb1248753d7d5bed06dd679523351f1'
-	'c1850e584486758f164e4dbe459a9b39b06dbe5f1ce45804dad39b1bfa7abb8eae649ff75683742bfdbcce6abaf2ea5ef38b4e17690f28b1bb0960477b427622'
+	'6df6ab64140d317ee7f4cb2158f60a3ae27523d624e9aa413ebf81e372d1c9b8b60c6a6491388bd1bf3b7502118175d39cd154e397d4e9ac691b3e2dbef38cfa'
+	'a41d5e8cf691271587dbe224d78b4b97db2f86c76094c6449eb36a72f7b42e9703a990a9ea2429f37d271f03146106270b67b0f5dfa1d1315a414bcb89ae0872'
 )
 
 build() {
@@ -31,7 +31,7 @@ build() {
 	ln -s "../../${_name}-l10n-${_l10n_version}" "_locales"
 
 	rm --force --recursive web-ext-artifacts
-	../node_modules/web-ext/bin/web-ext build --filename extension.zip --overwrite-dest
+	../node_modules/web-ext/bin/web-ext.js build --filename extension.zip --overwrite-dest
 
 	cd web-ext-artifacts
 	unzip extension.zip
