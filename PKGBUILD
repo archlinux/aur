@@ -2,20 +2,17 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=cimfomfa
-pkgver=21.341
+pkgver=21.361
 pkgrel=1
 pkgdesc='C utility library for zoem programming language'
 arch=(x86_64)
 url='https://micans.org/cimfomfa/'
-license=(GPL2)
+license=('GPL2')
 source=("https://micans.org/$pkgname/src/$pkgname-${pkgver/./-}.tar.gz")
-sha256sums=('7c25d8af8a9aa208cc745be3712e486dbf47c0786ec6c00ce68a95497f31fff0')
+sha256sums=('621dd7a689b0ef03e1891bcb05cb8d5d53e3b9b0f0cbd32303d1140ec2c70a86')
 
 build() {
   cd "$pkgname-${pkgver/./-}"
-#  export LDFLAGS="$LDFLAGS -Wl,--allow-multiple-definition"
-#  export CFLAGS="$CFLAGS -march=x86-64 -std=c11 -w"
-#  export CXXFLAGS="$CXXFLAGS -march=x86-64 -std=c++14 -w"
   autoreconf -i
   ./configure --prefix=/usr
   make
