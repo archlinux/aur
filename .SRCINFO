@@ -1,0 +1,21 @@
+pkgbase = xraygui-bin
+	pkgdesc = A small and nimble GUI for XRay
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/AKotov-dev/XRayGUI
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	depends = glib2
+	depends = gtk2
+	depends = gdk-pixbuf2
+	depends = libx11
+	depends = cairo
+	depends = pango
+	depends = at-spi2-core
+	depends = sh
+	conflicts = xraygui
+	source = xraygui-1.3.deb::https://github.com/AKotov-dev/XRayGUI/releases/download/v1.3/xraygui_1.3-0.mrx8_amd64.deb
+	sha256sums = f32a5940f5908f3efe34be1323b6589efa9b0f2c462d3855fb597e56fa011852
+
+pkgname = xraygui-bin
