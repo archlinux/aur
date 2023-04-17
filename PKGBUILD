@@ -1,5 +1,4 @@
-# Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Maintainer: Jeff Barfield (jeffreybarfield[at]protonmail[dot]org)
 
 pkgname=python-terminaltables
 _pyname=terminaltables
