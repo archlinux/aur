@@ -1,6 +1,6 @@
 pkgbase = typioca
 	pkgdesc = Tapioca (/ˌtæpiˈoʊkə/) is a starch extracted from the storage roots of the cassava plant. Pearl tapioca is a common ingredient in Asian desserts...and sweet drinks such as bubble tea.
-	pkgver = 2.0.4
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/bloznelis/typioca
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = typioca
 	makedepends = go
 	makedepends = make
 	provides = typioca
-	source = https://github.com/bloznelis/typioca/archive/refs/tags/2.0.4.tar.gz
-	sha256sums = 5a056e457ca205964d17fdd169a9fc82dbb75fd9f7fc71078eec3b61cd94b34f
+	source = https://github.com/bloznelis/typioca/archive/refs/tags/2.2.0.tar.gz
+	sha256sums = f491e785dd6650a354601f727a9670955a3db9ab5f2be62159c3bf388af421a1
 
 pkgname = typioca
