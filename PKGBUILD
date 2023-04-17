@@ -1,6 +1,6 @@
 # Maintainer: Trevor Brunette <trevorbrunette@gmail.com>
 pkgname='ezasm'
-pkgver='1.4.0_beta'
+pkgver='1.4.1_beta'
 _ver_hyphen="${pkgver//_/-}"
 pkgrel=1
 pkgdesc='An assembly-like programming language for use in education'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('java-runtime=17')
 source=("https://github.com/ezasm-org/EzASM-releases/releases/download/v${_ver_hyphen}/EzASM-${_ver_hyphen}-full.jar")
 noextract=("EzASM-${_ver_hyphen}-full.jar")
-sha256sums=('b2674c58f5ba821fabdf7724844aa4d4365a45f516ef824717360e2b9cf5b23a')
+sha256sums=('048976a007f1d3fa7270458ddaeda20bb2606ad4666158d2140c4d939fdd70e1')
 
 package() {
     mkdir -p "$pkgdir/usr/bin"
