@@ -2,8 +2,8 @@
 
 pkgname=bodo_connect-git
 _pkgname=${pkgname%-git}
-pkgver=v0.6.0.r0.ge5355d6
-pkgrel=1
+pkgver=v0.6.4.r0.g6104c88
+pkgrel=2
 pkgdesc="A library for mapping/connecting to your hosts in the whole world wide web."
 arch=("any")
 url="https://github.com/topongo/bodo_connect"
