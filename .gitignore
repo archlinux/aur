@@ -1,0 +1,4 @@
+install-tl-unx.tar.gz
+pkg/
+src/
+texlive-installer-[0-9][0-9][0-9][0-9]-[0-9]*-any.pkg.tar.xz
