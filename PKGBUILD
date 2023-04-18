@@ -5,7 +5,7 @@
 
 pkgname=radium
 pkgver=7.1.68
-pkgrel=1
+pkgrel=2
 pkgdesc='A graphical music editor. A next generation tracker.'
 arch=(x86_64)
 url=https://users.notam02.no/~kjetism/radium
@@ -31,6 +31,24 @@ depends=(
   ttf-croscore
   ttf-lato
   libatomic_ops
+	libsamplerate
+	tk
+	guile
+	libxkbfile
+	openssl
+	ncurses
+	gmp
+	xcb-util-keysyms
+	mpfr
+	libmpc
+	libogg
+	libvorbis
+	openssl
+	alsa-lib
+	glib2
+	binutils
+	xorg-util-macros
+	qt5-base
 )
 makedepends=(
   boost
@@ -40,9 +58,9 @@ makedepends=(
   libxinerama
   libxkbfile
   libxrandr
-  llvm11
+  llvm
   qt5-tools
-  steinberg-vst36
+  vst2sdk
 )
 optdepends=(
   'new-session-manager: for session management'
@@ -56,17 +74,22 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/kmatheussen/radium/archive/
 				build_libpds.patch
 				crashreporter.patch
 				radium.install
+				grep.patch
 )
 sha256sums=('7054cd218bee78eea01d3c6798350e531795f1e933000a3f13f95cd4cb4a04b4'
             'ed456586a1f28eec9acd081a676e61145e13f07c1a6e967c0af1f7d08be4023e' 
             '2f145e84c5940f4f82544ae68e668d5bd02ee7bce559d3354f60d12eaea1a548' 
             '16b0c6dc95e835fed5c7d4f350780561cd996ef723b392c415db83edba07af94'
 						'f627730ff7a819e8cc5ac5c2b5f1fb2f2237327db6ea5442c55a23c1ce82ef14'
+						'7ccb4eb8c2924a5b6c610b4f35bc9ff22602cb2e131035d285bef87d813460b3'
 					)
 install=radium.install
 
 prepare() {
   cd radium-$pkgver
+
+	#sed "/grep [^\-]*\\\ /s/grep \([^\]*\)\\\ \([^ ]*\)/grep \"\1 \2\"/p" -i check_dependencies.sh
+	patch -p0 < "$srcdir/grep.patch"
 
   # Add VST2SDK env var so we can use VST2 headers from steinberg-vst36 in AUR
   patch -p1 < "$srcdir/add-vstsdk-location-var.patch"
