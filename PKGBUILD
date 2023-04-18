@@ -2,7 +2,7 @@
 
 pkgname=honkers-launcher-git
 _pkgname="${pkgname%-git}"
-pkgver=1.0.0.r1.g80fb522
+pkgver=1.0.1.r2.gfdd21e2
 pkgrel=1
 pkgdesc="A launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 url="https://github.com/an-anime-team/honkers-launcher"
@@ -51,6 +51,7 @@ md5sums=(
 prepare() {
     cd $_pkgname
     git switch next
+    git pull
     git submodule update --init --recursive --single-branch
 }
 

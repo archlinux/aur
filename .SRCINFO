@@ -1,6 +1,6 @@
 pkgbase = honkers-launcher-git
 	pkgdesc = A launcher for a specific anime game with auto-patching, discord rpc and time tracking
-	pkgver = 1.0.0.r1.g80fb522
+	pkgver = 1.0.1.r2.gfdd21e2
 	pkgrel = 1
 	url = https://github.com/an-anime-team/honkers-launcher
 	arch = x86_64
