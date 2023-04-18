@@ -4,16 +4,16 @@ _pkgname=Mosca
 pkgname="${_pkgname,,}"
 pkgver=0.98
 _pkgver="${pkgver//.}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Manual search tool to find bugs like a grep unix command"
 arch=('any')
-url="https://github.com/CoolerVoid/Mosca/"
+url="https://sourceforge.net/projects/mosca/"
 license=('GPL3')
 depends=('pcre')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/CoolerVoid/Mosca/archive/refs/tags/${pkgname}_v${_pkgver}.tar.gz")
-sha256sums=('19b73cdbe2c98b6635396933f5763113e4a6935347896ac404170ef66b96125a')
+source=("${pkgname}-${pkgver}.zip::https://master.dl.sourceforge.net/project/mosca/Mosca-mosca_v${_pkgver}.zip")
+sha256sums=('5098e29ccd40c3d0efbbc380c02a022734091faa5dc085f1d3ff1cbeed7106f6')
 
 build() {
 	cd "${_pkgname}-${pkgname}_v${_pkgver}"
