@@ -20,5 +20,4 @@ pkgname = python-sphinx-gallery
 	depends = python-pillow
 	depends = python-matplotlib
 	optdepends = python-seaborn
-	optdepends = mayavi
 	optdepends = python-pypandoc
