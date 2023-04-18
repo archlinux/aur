@@ -1,15 +1,19 @@
 pkgbase = python-py-slvs
+	pkgdesc = a python binding of the 2D/3D geometry constraint solver from a forked version of SOLVESPACE.
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/realthunder/slvs_py
 	arch = any
+	license = unknown
 	makedepends = python-setuptools
 	makedepends = python-scikit-build
 	makedepends = cmake
 	makedepends = git
 	depends = python
 	depends = swig
-	source = https://github.com/realthunder/slvs_py/archive/refs/tags/v1.0.5.tar.gz
-	md5sums = eab7e36a0ac0ed5147aef7044c0100a6
+	source = python-py-slvs::git+https://github.com/realthunder/slvs_py#tag=v1.0.5
+	source = git+https://github.com/realthunder/solvespace.git
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = python-py-slvs
