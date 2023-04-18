@@ -16,6 +16,8 @@ url="http://www.gnu.org/software/libc/"
 license=(GPL LGPL)
 depends=("${_target}-linux-api-headers>=4.16.1-1")
 makedepends=("${_target}-gcc-stage1>=8.1.0-1")
+provides=(${_target}-glibc)
+conflicts=(${_target}-glibc)
 options=(!buildflags !strip staticlibs)
 source=(https://ftp.gnu.org/gnu/glibc/glibc-$pkgver.tar.xz{,.sig})
 sha256sums=('f3eeb8d57e25ca9fc13c2af3dae97754f9f643bc69229546828e3a240e2af04b'
@@ -62,6 +64,9 @@ build() {
 
   # remove fortify for building libraries
   CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=2/}
+  # build failure
+  CFLAGS=${CFLAGS/-Werror=format-security/}
+  CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
   export BUILD_CC=gcc
   export CC=${_target}-gcc

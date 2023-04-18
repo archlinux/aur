@@ -8,6 +8,8 @@ pkgbase = powerpc64-linux-gnu-glibc-headers
 	license = LGPL
 	makedepends = powerpc64-linux-gnu-gcc-stage1>=8.1.0-1
 	depends = powerpc64-linux-gnu-linux-api-headers>=4.16.1-1
+	provides = powerpc64-linux-gnu-glibc
+	conflicts = powerpc64-linux-gnu-glibc
 	options = !buildflags
 	options = !strip
 	options = staticlibs
@@ -19,4 +21,3 @@ pkgbase = powerpc64-linux-gnu-glibc-headers
 	sha256sums = SKIP
 
 pkgname = powerpc64-linux-gnu-glibc-headers
-
