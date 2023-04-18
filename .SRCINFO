@@ -1,0 +1,13 @@
+pkgbase = emilua-glib
+	pkgdesc = Lua execution engine
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://gitlab.com/emilua/emilua
+	arch = i686
+	arch = x86_64
+	license = boost
+	depends = emilua
+	source = emilua-glib::git+https://gitlab.com/emilua/glib.git#tag=v0.3.0
+	md5sums = SKIP
+
+pkgname = emilua-glib
