@@ -1,6 +1,6 @@
 pkgbase = python-autoflake
 	pkgdesc = Removes unused imports and unused variables
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/PyCQA/autoflake
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-autoflake
 	depends = python
 	depends = python-pyflakes
 	depends = python-tomli
-	source = python-autoflake-2.1.0.tar.gz::https://github.com/PyCQA/autoflake/archive/refs/tags/v2.1.0.tar.gz
-	sha256sums = f4ae7902d723f226a2c9654e907cc4534e3ca8e9f0ef4f9baa8cc64e6ecca643
+	source = python-autoflake-2.1.1.tar.gz::https://github.com/PyCQA/autoflake/archive/refs/tags/v2.1.1.tar.gz
+	sha256sums = 0cf9b50f73cb9e07435ff2c14e3bc918092238f5fecca56bc628301224d350fb
 
 pkgname = python-autoflake

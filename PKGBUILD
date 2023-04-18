@@ -5,7 +5,7 @@
 
 pkgname=python-autoflake
 _pkgname="${pkgname#python-}"
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='Removes unused imports and unused variables'
 arch=(any)
@@ -24,7 +24,7 @@ makedepends=(
 )
 checkdepends=('python-pytest')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/PyCQA/autoflake/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f4ae7902d723f226a2c9654e907cc4534e3ca8e9f0ef4f9baa8cc64e6ecca643')
+sha256sums=('0cf9b50f73cb9e07435ff2c14e3bc918092238f5fecca56bc628301224d350fb')
 
 build() {
   cd "${_pkgname}-${pkgver}"
