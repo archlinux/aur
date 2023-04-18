@@ -1,7 +1,7 @@
 pkgbase = gdb11
 	pkgdesc = GNU debugger (version 11) for compability with clion remote debugging
 	pkgver = 11.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/gdb
 	arch = x86_64
 	license = GPL
@@ -10,6 +10,8 @@ pkgbase = gdb11
 	depends = xz
 	depends = libmpc
 	depends = gdb
+	depends = boost
+	depends = boost-libs
 	conflicts = i686-elf-gdb
 	replaces = i686-elf-gdb
 	source = https://ftp.gnu.org/gnu/gdb/gdb-11.2.tar.xz
