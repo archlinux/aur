@@ -2,7 +2,7 @@
 # Contributor: Marie Piontek <marie@kaifa.ch>
 
 pkgname=honkers-launcher-bin
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 url="https://github.com/an-anime-team/honkers-launcher"
@@ -35,7 +35,7 @@ source=(
 )
 
 md5sums=(
-    '51843a5cda47e276c86988f208adc11c'
+    '935666ce5aab1658c588707d4e38faf0'
     '26b637e96d0f4382c8b132656a9ce3a5'
     '739854fbecc047beb55d738dbdfe85d9'
 )
