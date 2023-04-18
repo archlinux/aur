@@ -45,9 +45,15 @@ build()
     bench new-site --db-name "${pkgname}" --set-default "${pkgname}"
     bench --site "${pkgname}" install-app "${pkgname}"
 
+    # Education (TODO Clone a version.)
+    if [[ "${ERPNEXT_EDUCATION}" == "ON" ]]; then
+        bench get --resolve-deps education https://github.com/frappe/education.git
+        bench --site "${pkgname}" install-app education
+    fi
+
     # Health
     if [[ "${ERPNEXT_HEALTH}" == "ON" ]]; then
-        bench get --branch "${_version_health}" --resolve-deps hrms https://github.com/frappe/health.git
+        bench get --branch "${_version_health}" --resolve-deps health https://github.com/frappe/health.git
         bench --site "${pkgname}" install-app health
     fi
 
