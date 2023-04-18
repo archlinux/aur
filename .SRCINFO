@@ -1,13 +1,13 @@
 pkgbase = trust-dns-util
 	pkgdesc = A CLI interface for the trust-dns-resolver
-	pkgver = 0.21.2
+	pkgver = 0.22.0
 	pkgrel = 1
 	url = https://github.com/bluejekyll/trust-dns/tree/main/util
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	source = https://github.com/bluejekyll/trust-dns/archive/refs/tags/v0.21.2.tar.gz
-	sha512sums = d9897e828fa7dc42f72cc8d008d40cf5c7a22de11f58a6bbfb2b1d3cae772d523e726309783cbde29dd6af075b4995d5aba4f0a229b36278c1a956a325c1252f
+	source = https://github.com/bluejekyll/trust-dns/archive/refs/tags/v0.22.0.tar.gz
+	sha512sums = 8cd97e83583e0772d8a9425dfb2ebfb447d5f9f253c279210d2b00085ba57bfb313ca5e3e9db1cb1ea9c0126313353d79cda7f310fe9404190fd3396c8dd8827
 
 pkgname = trust-dns-util
