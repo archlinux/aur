@@ -11,9 +11,8 @@
 
 pkgname=ungoogled-chromium-xdg
 pkgver=111.0.5563.146
-pkgrel=2
+pkgrel=1
 _launcher_ver=8
-_gcc_patchset=2
 _manual_clone=0
 pkgdesc="A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory"
 arch=('x86_64')
@@ -32,20 +31,16 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
-        https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
         sql-relax-constraints-on-VirtualCursor-layout.patch
         disable-GlobalMediaControlsCastStartStop.patch
-        angle-wayland-include-protocol.patch
         use-oauth2-client-switches-as-default.patch
         xdg-basedir.patch
         no-omnibox-suggestion-autocomplete.patch
         index.html)
-sha256sums=('1e701fa31b55fa0633c307af8537b4dbf67e02d8cad1080c57d845ed8c48b5fe'
+sha256sums=('9c7227e11b85af2eb828f41c0f83ffa94e17128ed7a368ce4afec9c1357b7ae1'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            'a016588340f1559198e4ce61c6e91c48cf863600f415cb5c46322de7e1f77909'
             'e66be069d932fe18811e789c57b96249b7250257ff91a3d82d15e2a7283891b7'
             '7f3b1b22d6a271431c1f9fc92b6eb49c6d80b8b3f868bdee07a6a1a16630a302'
-            'cd0d9d2a1d6a522d47c3c0891dabe4ad72eabbebc0fe5642b9e22efa3d5ee572'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
             'f97e6cd3c4d2e04f5d9a0ea234fe768d6ba0fa9f4ecd5c7b2ca91030a1249078'
             'ff1591fa38e0ede7e883dc7494b813641b7a1a7cb1ded00d9baaee987c1dbea8'
@@ -66,10 +61,10 @@ source=(${source[@]}
         vaapi-add-av1-support.patch
         remove-main-main10-profile-limit.patch)
 sha256sums=(${sha256sums[@]}
-            'df09f3adeb27ac6c619522ea524be0450cfe5324599eb2d5462f1c63e661a2f8'
+            '102f6c9525577e61d208a83775b4d855147f7103d9080f5cb1f8261fbebbe4c3'
             'e9e8d3a82da818f0a67d4a09be4ecff5680b0534d7f0198befb3654e9fab5b69'
             'e742cc5227b6ad6c3e0c2026edd561c6d3151e7bf0afb618578ede181451b307'
-            'fc810e3c495c77ac60b383a27e48cf6a38b4a95b65dd2984baa297c5df83133c')
+            'be8d3475427553feb5bd46665ead3086301ed93c9a41cf6cc2644811c5bda51c')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
