@@ -1,7 +1,7 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
 
 pkgname=sequoia-wot
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="An implementation of OpenPGP's web of trust"
 arch=(x86_64)
@@ -11,16 +11,17 @@ depends=(
   gcc-libs
   glibc
   gmp
+  nettle
+  openssl
+  sqlite
 )
 makedepends=(
   cargo
   clang
-  nettle
-  openssl
 )
 source=($url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
-sha512sums=('14e224ad4bfc751fffededc1cf2b9754f5bfb96a31f45e0c925041fda1bd6ad00f83b5bdb06f2f70994c9e3110b942bd45e294ac146578744fc779294f8f0a35')
-b2sums=('564d969c61b9089d9ada98c01b6a49bae0400bc94a2d623a541b0fe57fce6f0d94e01d38c5c04607c1153e6fec507787f1bdceb19df766a8b611f851d1044ff8')
+sha512sums=('ab9995fe4af44c23ff1af3faa7f079c7852dc5d8418674f2ff1645596d8d4ed0fe0bde0250797ab98291cf8dfaa4ada8d28b8ad2a169b2671e7def0931b611af')
+b2sums=('f5fa09997ab5a4e5d13eb38902080324a0836ab12eccb12d3dbaca04692e22b17410a84c1c9ce997e860bcf37121a5674711934ffab9770a0c548e8452dd190b')
 
 prepare() {
   cd $pkgname-v$pkgver
@@ -41,11 +42,6 @@ check() {
 }
 
 package() {
-  depends+=(
-    nettle libhogweed.so libnettle.so
-    openssl libcrypto.so libssl.so
-  )
-
   cd $pkgname-v$pkgver
   install -vDm 755 target/release/sq-wot -t "$pkgdir/usr/bin/"
   install -vDm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
