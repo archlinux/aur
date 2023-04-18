@@ -1,7 +1,7 @@
 # Maintainer: Light Ning <lightning1141@gmail.com>
 
 pkgname=svgbob
-_pkgver=0.7.0
+_pkgver=0.7.1
 pkgver=$(echo $_pkgver | sed -e "s/\-/\./")
 pkgrel=0
 pkgdesc='Convert your ascii diagram scribbles into happy little SVG'
@@ -12,8 +12,7 @@ depends=('gcc-libs')
 conflicts=('svgbob')
 provides=('svgbob')
 makedepends=('rust' 'git')
-# source=("${pkgname}::git+https://github.com/ivanceras/svgbob.git#tag=${_pkgver}")
-source=("${pkgname}::git+https://github.com/ivanceras/svgbob.git#commit=6b3765c640d3ec306e026e99d1b93bee5f53799c")
+source=("${pkgname}::git+https://github.com/ivanceras/svgbob.git#tag=${_pkgver}")
 sha1sums=('SKIP')
 
 build() {
