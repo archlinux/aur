@@ -1,6 +1,6 @@
 pkgbase = ledger-live-git
 	pkgdesc = Ledger Live - Desktop (git-main)
-	pkgver = 2.54.0.r6.g72cbeef
+	pkgver = 2.57.0.r0.g76dda1b
 	pkgrel = 1
 	url = https://github.com/LedgerHQ/ledger-live
 	arch = x86_64
@@ -11,9 +11,12 @@ pkgbase = ledger-live-git
 	makedepends = fnm
 	makedepends = pnpm
 	depends = ledger-udev
+	depends = electron23
 	provides = ledger-live
 	conflicts = ledger-live
 	source = ledger-live-git::git+https://github.com/LedgerHQ/ledger-live#branch=main
+	source = ledger-live-desktop.sh
 	sha512sums = SKIP
+	sha512sums = 15f6703121d1f2df2dab494efd645ef27830b5cff41184483c75a21545d79b183ababb47bebc8571c7f77e562497efc2453c3e41b59e40ad03be2baacf20148e
 
 pkgname = ledger-live-git
