@@ -1,21 +1,32 @@
-# Maintainer: Mikkel Oscar Lyderik <mikkeloscar at gmail dot com>
+# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
 
 pkgname=python-clickclick
-_pkgname=clickclick
-pkgver=1.0
-pkgrel=1
-pkgdesc="Click command line utilities"
-url="https://github.com/zalando/python-clickclick"
-license=('APACHE')
+pkgver=20.10.2
+pkgrel=5
+pkgdesc='Click command line utilities'
+url='https://codeberg.org/hjacobs/python-clickclick'
+license=('Apache')
 arch=('any')
-makedepends=('python-setuptools')
-depends=('python' 'python-click' 'python-yaml')
-source=("http://pypi.python.org/packages/source/c/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('9429dede90d390fc06a74c002bb9e05c')
+depends=('python-click' 'python-yaml')
+makedepends=('python-setuptools' 'flake8')
+#checkdepends=('python-pytest-runner')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha512sums=('d8954d231bff6945ac0e8350be05775a8a0b852dd0284e3446b3f9c8bc5861870ed1bc058e132c144fe8d543aee87d7a7a54894abdb4006664e5994c8cfb507f')
 
-package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py install --optimize=1 --prefix=/usr --root="${pkgdir}"
+build() {
+  cd $pkgname
+
+  python setup.py build
 }
 
-# vim:set sw=2 sts=2 ft=sh et:
+#check() {
+#  cd $pkgname
+#
+#  python setup.py test
+#}
+
+package() {
+  cd $pkgname
+
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+}
