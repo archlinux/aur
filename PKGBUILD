@@ -4,7 +4,7 @@ _pkgbase=rime-ice
 _schemas=(rime_ice double_pinyin double_pinyin_flypy double_pinyin_mspy)
 _pkgname=$_pkgbase
 pkgname=$_pkgname-git
-pkgver=r177.8e14678
+pkgver=r183.cbd14d0
 pkgrel=1
 pkgdesc="Rime 配置：雾凇拼音 | 长期维护的简体词库"
 arch=("any")
@@ -12,7 +12,7 @@ url="https://github.com/iDvel/rime-ice"
 license=("GPL3")
 makedepends=("librime" "rime-prelude" "coreutils" "grep" "sed")
 provides=("${_pkgname}")
-conflicts=("${_pkgname}" "rime-emoji-git" "rime-emoji")
+conflicts=("rime-emoji" "${_pkgname}" "${_pkgbase}-pinyin" "${_pkgbase}-double-pinyin" "${_pkgbase}-double-pinyin-flypy" "${_pkgbase}-double-pinyin-mspy")
 source=("${_pkgname}::git+${url}.git")
 sha512sums=("SKIP")
 
@@ -33,19 +33,25 @@ prepare() {
 build() {
   cd "${_pkgname}" || return
 
+  _schemas_deps=()
   for _s in "${_schemas[@]}"; do
     _deps=()
     mapfile -t _deps <<< "$(grep -A3 'dependencies:' "$_s.schema.yaml" | tail -n3 | sed 's/#.*//g;s/.*- //g;s/ //g')"
-    _schemas=("${_schemas[@]}" "${_deps[@]}")
+    _schemas_deps=("${_schemas_deps[@]}" "${_deps[@]}")
   done
 
-  # build current schema and it's depends only
-  for _s in $(printf "%s\n" "${_schemas[@]}" | sort -u); do rime_deployer --compile "$_s.schema.yaml"; done
+  mapfile -t _schemas_deps <<< "$(printf "%s\n" "${_schemas_deps[@]}" | sort -u)"
+  # build current schema and it's depends only, sort by length
+  _schemas=("${_schemas_deps[@]}" "${_schemas[@]}")
+
+  for _s in "${_schemas[@]}"; do rime_deployer --compile "$_s.schema.yaml"; done
 
   # comment ignore schemas
   _suggestion_schemas=$(grep -A3 'schema_list:' "$_suggestion" | tail -n3 | sed 's/.*schema: //g')
 
-  for _s in $_suggestion_schemas; do [[ ${_schemas[*]} =~ (^|[[:space:]])"$_s"($|[[:space:]]) ]] && sed -i "s/^\s*- schema: $_s/#&/" "$_suggestion" ; done
+  for _s in $_suggestion_schemas; do
+    [[ ! ${_schemas[*]} =~ (^|[[:space:]])"$_s"($|[[:space:]]) ]] && sed -i "s/^\s*- schema: $_s/#&/" "$_suggestion";
+  done
 
   find . -type l -delete
 }
