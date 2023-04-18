@@ -1,6 +1,6 @@
 pkgbase = blightmud
 	pkgdesc = A terminal mud client written in rust
-	pkgver = 5.1.0
+	pkgver = 5.2.0
 	pkgrel = 1
 	url = https://github.com/blightmud/blightmud
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = blightmud
 	depends = alsa-lib
 	provides = blightmud
 	conflicts = blightmud
-	source = blightmud-5.1.0.tar.gz::https://github.com/Blightmud/Blightmud/archive/v5.1.0.tar.gz
-	md5sums = 68294151136afd3ef188f57a4f2f5d23
+	source = blightmud-5.2.0.tar.gz::https://github.com/Blightmud/Blightmud/archive/v5.2.0.tar.gz
+	md5sums = c52f90376b6e31022c2907c2899756c0
 
 pkgname = blightmud
