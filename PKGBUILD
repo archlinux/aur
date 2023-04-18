@@ -1,6 +1,6 @@
 # Maintainer: Yichao Zhou <broken.zhou@gmail.com>
 pkgname=texlive-installer
-pkgver=2022
+pkgver=2023
 pkgrel=1
 pkgdesc="This packages provides the installer of texlive.  It also tricks Arch into thinking it has its texlive packages installed."
 url="http://www.tug.org/texlive/"
