@@ -1,14 +1,14 @@
 # Maintainer: robertfoster
 
 pkgname=whisper.cpp
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Port of OpenAI's Whisper model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/whisper.cpp"
 license=("MIT")
-depends=('sdl2')
-makedepends=('cmake' 'sdl2')
+depends=('glibc' 'gcc-libs' 'sdl2')
+makedepends=('cmake' 'git')
 
 source=("${url}/archive/v${pkgver}.tar.gz")
 
@@ -35,6 +35,8 @@ package() {
   done
   mv "${pkgdir}/usr/bin/${pkgname}-main" \
     "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 LICENSE \
+    -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
-sha256sums=('69d47fc2ba982c42bd5bade4b7c827d5b3ed74b9c59323991c45a9f0f24eb6ed')
+sha256sums=('ab5627aab32d07ee0185bc833cff7e4ceec41fa5b2d1981e7f224baaa73080c8')
