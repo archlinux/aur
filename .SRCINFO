@@ -11,6 +11,7 @@ pkgbase = jddesktopentryedit
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = qt5-tools
+	makedepends = gettext
 	depends = python-desktop-entry-lib
 	depends = python-pyqt6
 	depends = python-requests
