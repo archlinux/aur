@@ -1,7 +1,7 @@
 pkgbase = relaxator-git
 	pkgdesc = Relax to soothing sounds
-	pkgver = 1.0.8.r0.gf2a7f3a
-	pkgrel = 1
+	pkgver = 1.0.8.f2a7f3a
+	pkgrel = 2
 	url = https://github.com/alexkdeveloper/relaxator
 	arch = x86_64
 	license = GPL-3.0
