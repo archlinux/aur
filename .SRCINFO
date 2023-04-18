@@ -1,7 +1,7 @@
 pkgbase = hqplayer-embedded
 	pkgdesc = Signalyst HQPlayer Embedded HQPlayer - the high-end upsampling multichannel software HD-audio player
-	pkgver = 4.34.2
-	pkgrel = 3
+	pkgver = 4.35.0
+	pkgrel = 1
 	url = http://www.signalyst.com/custom.html
 	install = hqplayer-embedded.install
 	arch = x86_64
@@ -29,11 +29,11 @@ pkgbase = hqplayer-embedded
 	source = hqplayerd_user.service
 	sha256sums = 7a61af6b213a44003545e7dace4bd2b6cd7e7d5caa053a2d887750ab35a5a2e1
 	sha256sums = 5d4194a704979b3ff92482e155769460906745a66e759142eba33a2226f9cb3a
-	source_x86_64 = https://www.signalyst.eu/bins/hqplayerd/jammy/hqplayerd_4.34.2-157avx2_amd64.deb
-	sha256sums_x86_64 = 54ae6039fc553b8cf7a28ccad64a1567e4802366f10449b350922517af84b049
-	source_x86_64_v3 = https://www.signalyst.eu/bins/hqplayerd/jammy/hqplayerd_4.34.2-157avx2_amd64.deb
-	sha256sums_x86_64_v3 = 54ae6039fc553b8cf7a28ccad64a1567e4802366f10449b350922517af84b049
-	source_aarch64 = https://www.signalyst.eu/bins/hqplayerd/bullseye/hqplayerd_4.34.2-156_arm64.deb
-	sha256sums_aarch64 = 52f70ef6aba7bb0c736623202ee11e446f2f5423051b80409305c67a3fc01dd2
+	source_x86_64 = https://www.signalyst.eu/bins/hqplayerd/jammy/hqplayerd_4.35.0-159avx2_amd64.deb
+	sha256sums_x86_64 = 8f5825e00a5c935341df0a9513372ef99bf89ad5c01e48723b20f031bb077d8f
+	source_x86_64_v3 = https://www.signalyst.eu/bins/hqplayerd/jammy/hqplayerd_4.35.0-159avx2_amd64.deb
+	sha256sums_x86_64_v3 = 8f5825e00a5c935341df0a9513372ef99bf89ad5c01e48723b20f031bb077d8f
+	source_aarch64 = https://www.signalyst.eu/bins/hqplayerd/bullseye/hqplayerd_4.35.0-158_arm64.deb
+	sha256sums_aarch64 = 221d93b22fa1c2262038a7af40a08deced6159b8d0b21bbbfc5241f8733f6eb3
 
 pkgname = hqplayer-embedded
