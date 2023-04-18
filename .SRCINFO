@@ -1,13 +1,17 @@
 pkgbase = python-jdcal
 	pkgdesc = Julian dates, from proleptic Gregorian and Julian calendars
 	pkgver = 1.4.1
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/phn/jdcal
 	arch = any
 	license = BSD
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
-	source = https://github.com/phn/jdcal/archive/v1.4.1.tar.gz
-	sha256sums = 6cb87959fb9293bdd577967419af735a1a0aee3ce778c443acb219b2668c6597
+	source = python-jdcal-1.4.1.tar.gz::https://files.pythonhosted.org/packages/source/j/jdcal/jdcal-1.4.1.tar.gz
+	sha256sums = 472872e096eb8df219c23f2689fc336668bdb43d194094b5cc1707e1640acfc8
 
 pkgname = python-jdcal

@@ -1,25 +1,35 @@
-# Maintainer: Andrzej Giniewicz <gginiu@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 # Contributor: Mariusz Szczepańczyk <mszczepanczyk@gmail.com>
 
-pkgname='python-jdcal'
+pkgname=python-jdcal
+_pkg="${pkgname#python-}"
 pkgver=1.4.1
-pkgrel=8
+pkgrel=9
 pkgdesc="Julian dates, from proleptic Gregorian and Julian calendars"
 arch=('any')
 url="https://github.com/phn/jdcal"
 license=('BSD')
 depends=('python')
-makedepends=('python-setuptools')
-source=("https://github.com/phn/jdcal/archive/v${pkgver}.tar.gz")
-sha256sums=('6cb87959fb9293bdd577967419af735a1a0aee3ce778c443acb219b2668c6597')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+checkdepends=('python-pytest')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/j/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('472872e096eb8df219c23f2689fc336668bdb43d194094b5cc1707e1640acfc8')
 
 build() {
-  cd "$srcdir"/jdcal-${pkgver}
-  python setup.py build
+	cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
+}
+
+check() {
+	cd "$_pkg-$pkgver"
+	pytest -x
 }
 
 package() {
-  cd "$srcdir"/jdcal-${pkgver}
-  python setup.py install --skip-build --root="$pkgdir" --optimize=1
-  install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	cd "$_pkg-$pkgver"
+	python -m installer --destdir "$pkgdir" dist/*.whl
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -sv "$_site/$_pkg-$pkgver.dist-info/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
