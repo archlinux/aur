@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='libstoragemgmt'
-pkgver='1.9.7'
+pkgver='1.9.8'
 pkgrel='1'
 pkgdesc='A library for storage management'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ optdepends=('arcconf: support for Microsemi (Adaptec) controllers'
 	    'storcli: support for Broadcom (LSI) controllers')
 source=("${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"
 	"${pkgname}.sysusers")
-sha256sums=('4d14c322f661bb5467454bc97fa921cd6d0004b3831d3e923cdf99b19e26cc8e'
+sha256sums=('4013fbd3b9abfe41550cdb047430884ca9c21079bff370d49b69053e9ac4a52c'
             'ab2ed19a10fd743b815811f0826eebdb53e3a8697eb2225b4af26a8066bac30f')
 
 prepare() {

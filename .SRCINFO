@@ -1,6 +1,6 @@
 pkgbase = libstoragemgmt
 	pkgdesc = A library for storage management
-	pkgver = 1.9.7
+	pkgver = 1.9.8
 	pkgrel = 1
 	url = https://github.com/libstorage/libstoragemgmt
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = libstoragemgmt
 	depends = systemd
 	optdepends = arcconf: support for Microsemi (Adaptec) controllers
 	optdepends = storcli: support for Broadcom (LSI) controllers
-	source = https://github.com/libstorage/libstoragemgmt/releases/download/1.9.7/libstoragemgmt-1.9.7.tar.gz
+	source = https://github.com/libstorage/libstoragemgmt/releases/download/1.9.8/libstoragemgmt-1.9.8.tar.gz
 	source = libstoragemgmt.sysusers
-	sha256sums = 4d14c322f661bb5467454bc97fa921cd6d0004b3831d3e923cdf99b19e26cc8e
+	sha256sums = 4013fbd3b9abfe41550cdb047430884ca9c21079bff370d49b69053e9ac4a52c
 	sha256sums = ab2ed19a10fd743b815811f0826eebdb53e3a8697eb2225b4af26a8066bac30f
 
 pkgname = libstoragemgmt
