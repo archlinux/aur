@@ -45,22 +45,108 @@ build()
     bench new-site --db-name "${pkgname}" --set-default "${pkgname}"
     bench --site "${pkgname}" install-app "${pkgname}"
 
-    # Education (TODO Clone a version.)
+    # Plugins
+    # TODO Clone a version where possible.
+    ## Agriculture
+    if [[ "${ERPNEXT_AGRICULTURE}" == "ON" ]]; then
+        bench get --resolve-deps agriculture https://github.com/frappe/agriculture.git
+        bench --site "${pkgname}" install-app agriculture
+    fi
+
+    ## Education
     if [[ "${ERPNEXT_EDUCATION}" == "ON" ]]; then
         bench get --resolve-deps education https://github.com/frappe/education.git
         bench --site "${pkgname}" install-app education
     fi
 
-    # Health
+    ## ERPNext France
+    if [[ "${ERPNEXT_ERPNEXT_FRANCE}" == "ON" ]]; then
+        bench get --resolve-deps erpnext-france https://github.com/frappe/erpnext_france.git
+        bench --site "${pkgname}" install-app erpnext-france
+    fi
+
+    ## ERPNext Italy
+    if [[ "${ERPNEXT_ERPNEXT_ITALY}" == "ON" ]]; then
+        bench get --resolve-deps erpnext-italy https://github.com/frappe/erpnext_italy.git
+        bench --site "${pkgname}" install-app erpnext-italy
+    fi
+
+    ## ERPNext KSA
+    if [[ "${ERPNEXT_ERPNEXT_KSA}" == "ON" ]]; then
+        bench get --resolve-deps erpnext-ksa https://github.com/frappe/erpnext_ksa.git
+        bench --site "${pkgname}" install-app erpnext-ksa
+    fi
+
+    ## ERPNext shipping
+    if [[ "${ERPNEXT_ERPNEXT_SHIPPING}" == "ON" ]]; then
+        bench get --resolve-deps erpnext-shipping https://github.com/frappe/erpnext-shipping.git
+        bench --site "${pkgname}" install-app erpnext-shipping
+    fi
+
+    ## ERPNext South Africa
+    if [[ "${ERPNEXT_ERPNEXT_SOUTH_AFRICA}" == "ON" ]]; then
+        bench get --resolve-deps erpnext-south-africa https://github.com/frappe/erpnext_south_africa.git
+        bench --site "${pkgname}" install-app erpnext-south-africa
+    fi
+
+    ## ERPNext UAE
+    if [[ "${ERPNEXT_ERPNEXT_UAE}" == "ON" ]]; then
+        bench get --resolve-deps erpnext-uae https://github.com/frappe/erpnext_uae.git
+        bench --site "${pkgname}" install-app erpnext-uae
+    fi
+
+    ## ERPNext USA
+    if [[ "${ERPNEXT_ERPNEXT_USA}" == "ON" ]]; then
+        bench get --resolve-deps erpnext-usa https://github.com/frappe/erpnext_usa.git
+        bench --site "${pkgname}" install-app erpnext-usa
+    fi
+
+    ## Health
+    if [[ "${ERPNEXT_EXOTEL_INTEGRATION}" == "ON" ]]; then
+        bench get --resolve-deps exotel-integration https://github.com/frappe/exotel_integration.git
+        bench --site "${pkgname}" install-app exotel-integation
+    fi
+
+    ## Health
     if [[ "${ERPNEXT_HEALTH}" == "ON" ]]; then
         bench get --branch "${_version_health}" --resolve-deps health https://github.com/frappe/health.git
         bench --site "${pkgname}" install-app health
     fi
 
-    # HRMS
+    ## Hospitality
+    if [[ "${ERPNEXT_HOSPITALITY}" == "ON" ]]; then
+        bench get --resolve-deps hospitality https://github.com/frappe/hospitality.git
+        bench --site "${pkgname}" install-app hospitality
+    fi
+
+    ## HRMS
     if [[ "${ERPNEXT_HRMS}" == "ON" ]]; then
         bench get --branch "${_version_hrms}" --resolve-deps hrms https://github.com/frappe/hrms.git
         bench --site "${pkgname}" install-app hrms
+    fi
+
+    ## Non-profit
+    if [[ "${ERPNEXT_NON_PROFIT}" == "ON" ]]; then
+        bench get --resolve-deps non-profit https://github.com/frappe/non_profit.git
+        bench --site "${pkgname}" install-app non-profit
+    fi
+
+    ## Taxjar integration
+    if [[ "${ERPNEXT_TAXJAR_INTEGRATION}" == "ON" ]]; then
+        bench get --resolve-deps taxjar-integration https://github.com/frappe/taxjar_integration.git
+        bench --site "${pkgname}" install-app taxjar-integration
+    fi
+
+    ## Twilio integration
+    if [[ "${ERPNEXT_TWILIO_INTEGRATION}" == "ON" ]]; then
+        bench get --resolve-deps twilio-integration https://github.com/frappe/twilio-integration.git
+        bench --site "${pkgname}" install-app twilio-integration
+    fi
+
+    ## Webshop
+    if [[ "${ERPNEXT_WEBSHOP}" == "ON" ]]; then
+        bench get --resolve-deps webshop https://github.com/frappe/webshop.git
+        bench --site "${pkgname}" install-app webshop
     fi
 }
 
