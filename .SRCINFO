@@ -1,6 +1,6 @@
 pkgbase = mangohud
 	pkgdesc = A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more.
-	pkgver = 0.6.9
+	pkgver = 0.6.9.1
 	pkgrel = 1
 	url = https://github.com/flightlessmango/MangoHud
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = mangohud
 	makedepends = nlohmann-json
 	makedepends = python-mako
 	makedepends = spdlog
-	source = git+https://github.com/flightlessmango/MangoHud.git#commit=5fa7087f78e39e92ee4306fdf48fd710960c53dc
+	source = git+https://github.com/flightlessmango/MangoHud.git#commit=7f945627f57ecc56afea342c2dc0544d0d43728e
 	source = git+https://github.com/flightlessmango/minhook.git
 	source = https://github.com/ocornut/imgui/archive/refs/tags/v1.81/imgui-1.81.tar.gz
 	source = https://wrapdb.mesonbuild.com/v2/imgui_1.81-1/get_patch#/imgui-1.81-1-wrap.zip
