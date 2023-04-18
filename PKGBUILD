@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-scene-as-transition
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A plugin for OBS Studio that will allow you to use a Scene as a Transition"
 arch=("x86_64" "aarch64")

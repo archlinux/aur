@@ -1,6 +1,6 @@
 pkgbase = obs-scene-as-transition
 	pkgdesc = A plugin for OBS Studio that will allow you to use a Scene as a Transition
-	pkgver = 1.0.3
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://obsproject.com/forum/resources/scene-as-transition.1704/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = obs-scene-as-transition
 	makedepends = cmake
 	makedepends = git
 	depends = obs-studio>=28
-	source = obs-scene-as-transition::git+https://github.com/andilippi/obs-scene-as-transition#tag=v1.0.3
+	source = obs-scene-as-transition::git+https://github.com/andilippi/obs-scene-as-transition#tag=v1.1.0
 	sha256sums = SKIP
 
 pkgname = obs-scene-as-transition
