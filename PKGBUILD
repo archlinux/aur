@@ -14,7 +14,7 @@
 
 pkgname=editix-free
 _pkgname=editix
-pkgver=2022
+pkgver=2023
 pkgrel=1
 epoch=1
 pkgdesc="EditiX is a powerful and easy to use XML editor, Visual Schema Editor, XQuery Editor and XSLT debugger"
@@ -23,7 +23,7 @@ license=('custom')
 depends=('java-runtime')
 url="http://free.editix.com/"
 source=("http://www.editix.com/download/editix$pkgver.zip")
-sha256sums=('a823510beeb098430bd96a5cd83f0a154e59767dae10095da629508ff1d0ab9f')
+sha256sums=('4a91396ba51ae45f6b5767290dec9e715fbb21dc4e217fe174f0700cb0efe21d')
 
 package() {
   # Licenses first, before we move the whole directory to opt
