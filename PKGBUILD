@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-midi-mg
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Allows MIDI devices to interact with OBS Studio"
 arch=("x86_64" "aarch64")

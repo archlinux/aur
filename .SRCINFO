@@ -1,6 +1,6 @@
 pkgbase = obs-midi-mg
 	pkgdesc = Allows MIDI devices to interact with OBS Studio
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://obsproject.com/forum/resources/obs-midi-mg.1570/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = obs-midi-mg
 	depends = obs-studio>=28
 	depends = jack
 	options = debug
-	source = obs-midi-mg::git+https://github.com/nhielost/obs-midi-mg.git#tag=v2.3.0
+	source = obs-midi-mg::git+https://github.com/nhielost/obs-midi-mg.git#tag=v2.3.1
 	source = libremidi::git+https://github.com/jcelerier/libremidi.git
 	sha256sums = SKIP
 	sha256sums = SKIP
