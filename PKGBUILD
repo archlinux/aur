@@ -9,7 +9,7 @@ arch=('x86_64')
 url=https://github.com/Oman395/pipes.js
 depends=('nodejs>=16.0.0')
 source=('https://github.com/Oman395/pipes.js/archive/refs/heads/master.zip')
-sha256sums=('96f371536ae83c7cf2a71b9acb363cbed00cb82bd8dec68470bd8d9f59aee270')
+sha256sums=('90ab692cb2fc81af4649332ff1d9ee58bed6de9ab7d739a508f5db3248b5b84d')
 
 prepare() {
   unzip $srcdir/master.zip
