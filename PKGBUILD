@@ -29,6 +29,7 @@ md5sums=('SKIP')
 validategpgkeys=()
 
 pkgver(){
+    cd resetti
     printf "$(cat resetti/.version)_devel.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
