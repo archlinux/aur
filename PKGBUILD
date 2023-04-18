@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=flightcore
-pkgver=1.13.1
+pkgver=1.13.2
 pkgrel=1
 pkgdesc="A Northstar installer, updater, and mod-manager"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'npm')
 optdepends=('sccache: compiler caching for faster compiling')
 _desktop=flightcore.desktop
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('20a47647f55178e81ad0811e36ff2abfd9751dc044e9f7012065356e99d728b4')
+sha256sums=('fca2dfcb895a5511c4a9d4171fb4b24a71f03418235f329cfbc274ed6c62e7ba')
 
 prepare() {
   # Create a shortcut
