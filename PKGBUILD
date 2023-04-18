@@ -1,7 +1,7 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=git-cinnabar-git
 pkgver=0.5.0.r1739.g63d5747
-pkgrel=1
+pkgrel=2
 pkgdesc="Git remote helper to interact with Mercurial repositories"
 arch=(x86_64)
 url='https://github.com/glandium/git-cinnabar'
@@ -20,6 +20,7 @@ pkgver() {
 
 prepare() {
 	cd git-cinnabar
+	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
