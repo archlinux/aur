@@ -1,7 +1,7 @@
 # Maintainer: Light Ning <lightning1141@gmail.com>
 
 pkgname=cargo-info
-pkgver=0.6.5
+pkgver=0.6.8
 pkgrel=0
 pkgdesc='cargo-info subcommand - show crates info from crates.io'
 arch=(x86_64 aarch64)
@@ -12,7 +12,7 @@ conflicts=('cargo-info')
 provides=('cargo-info')
 makedepends=('rust' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/light4/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b81d8ed495602914b4f3181de0ab67eea46e2d9877b352b832b5e3f50286e6ac')
+sha256sums=('4577dccef01b0774df03650dcb5a51a08f5e454fc2aff4134b0f33193a8db924')
 
 prepare() {
   cd $pkgname-$pkgver
