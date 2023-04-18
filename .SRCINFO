@@ -1,30 +1,24 @@
 pkgbase = powerpc64-linux-gnu-glibc
-	pkgdesc = GNU C Library (powerpc64-linux-gnu)
-	pkgver = 2.29
+	pkgdesc = GNU C Library PPC64 target
+	pkgver = 2.37
 	pkgrel = 1
-	url = http://www.gnu.org/software/libc/
+	url = https://www.gnu.org/software/libc/
 	arch = any
 	license = GPL
 	license = LGPL
-	makedepends = powerpc64-linux-gnu-gcc-stage2>=8.1.0-1
-	makedepends = gperf
-	depends = powerpc64-linux-gnu-linux-api-headers>=4.16.1-1
-	provides = powerpc64-linux-gnu-glibc-headers=2.29
-	provides = powerpc64-linux-gnu-eglibc
+	makedepends = python
+	depends = powerpc64-linux-gnu-gcc
+	depends = powerpc64-linux-gnu-linux-api-headers
+	provides = powerpc64-linux-gnu-glibc-headers
 	conflicts = powerpc64-linux-gnu-glibc-headers
-	conflicts = powerpc64-linux-gnu-eglibc
-	replaces = powerpc64-linux-gnu-glibc-headers
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://ftp.gnu.org/gnu/glibc/glibc-2.29.tar.xz
-	source = https://ftp.gnu.org/gnu/glibc/glibc-2.29.tar.xz.sig
-	source = powerpc-hack.patch
+	source = https://ftp.gnu.org/gnu/libc/glibc-2.37.tar.xz
+	source = https://ftp.gnu.org/gnu/libc/glibc-2.37.tar.xz.sig
 	validpgpkeys = 7273542B39962DF7B299931416792B4EA25340F8
 	validpgpkeys = BC7C7372637EC10C57D7AA6579C43DFBF1CF2187
-	sha256sums = f3eeb8d57e25ca9fc13c2af3dae97754f9f643bc69229546828e3a240e2af04b
-	sha256sums = SKIP
+	sha256sums = 2257eff111a1815d74f46856daaf40b019c1e553156c69d48ba0cbfc1bb91a43
 	sha256sums = SKIP
 
 pkgname = powerpc64-linux-gnu-glibc
-
