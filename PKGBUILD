@@ -2,7 +2,7 @@
 
 _target=powerpc64-linux-gnu
 pkgname=$_target-binutils
-pkgver=2.39
+pkgver=2.40
 pkgrel=2
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the PPC64 target'
 arch=(x86_64)
@@ -10,9 +10,9 @@ url='https://www.gnu.org/software/binutils/'
 license=(GPL)
 depends=(zlib libelf)
 source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.bz2{,.sig})
-sha1sums=('d9028547385694d61d98fb4e2882a2b9c40ce7e9'
+sha1sums=('887d24c3799e9fe02646e04e73b5ac2cc3e7188f'
           'SKIP')
-sha256sums=('da24a84fef220102dd24042df06fdea851c2614a5377f86effa28f33b7b16148'
+sha256sums=('f8298eb153a4b37d112e945aa5cb2850040bcf26a3ea65b5a715c83afe05e48a'
             'SKIP')
 validpgpkeys=('3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F') # Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
 
