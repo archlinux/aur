@@ -1,0 +1,11 @@
+--- build_linux_common.sh.orig	2023-03-10 14:18:55.074248103 +0100
++++ build_linux_common.sh	2023-03-10 14:20:54.617578515 +0100
+@@ -216,7 +216,7 @@
+     if [[ $RADIUM_USE_CLANG == 1 ]] && [ -f "$CLANG_PREFIX/lib/libbfd.a" ]; then
+         export RADIUM_BFD_LDFLAGS="$CLANG_PREFIX/lib/libbfd.a"
+     else
+-        export RADIUM_BFD_LDFLAGS="-Wl,-Bstatic -lbfd -Wl,-Bdynamic"
++        export RADIUM_BFD_LDFLAGS="-Wl,-Bstatic -lbfd -Wl,-Bdynamic -lzstd -lsframe"
+     fi
+ fi
+ 
