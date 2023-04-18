@@ -11,6 +11,8 @@ pkgbase = python-gdtoolkit
 	depends = python-lark-parser
 	depends = python-yaml
 	depends = python-radon
+	depends = python-regex
+	depends = python-six
 	source = https://files.pythonhosted.org/packages/source/g/gdtoolkit/gdtoolkit-4.0.0.tar.gz
 	sha256sums = d521e5bb99a8eab56eb7689a92b0354bd7463160ac10d5ec06f6dff08a070c54
 
