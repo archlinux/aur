@@ -1,0 +1,16 @@
+pkgbase = kvantum-theme-matcha-full-git
+	pkgdesc = All matcha theme for Kvantum
+	pkgver = r31.23a6178
+	pkgrel = 1
+	url = https://github.com/R0CKH0PP3R/kvantum/tree/main/Matcha-azul-dark
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = kvantum-theme-matcha
+	provides = kvantum-theme-matcha-full
+	conflicts = kvantum-theme-matcha-full
+	conflicts = matcha-kde
+	source = git+https://github.com/R0CKH0PP3R/kvantum.git
+	sha256sums = SKIP
+
+pkgname = kvantum-theme-matcha-full-git
