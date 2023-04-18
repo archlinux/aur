@@ -3,7 +3,7 @@
 
 pkgname=blockbench
 _pkgname=Blockbench
-pkgver=4.6.5
+pkgver=4.7.0
 pkgrel=1
 pkgdesc="A low-poly 3D model editor"
 arch=('x86_64')
