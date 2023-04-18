@@ -1,0 +1,17 @@
+pkgbase = amdfand
+	pkgdesc = AMDGPU fan speed management tool
+	pkgver = 1.0.11
+	pkgrel = 1
+	url = https://github.com/Eraden/amdgpud
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = git
+	makedepends = cargo
+	provides = amdfand
+	provides = amdfand-bin
+	conflicts = amdfand-bin
+	source = amdfand::git+https://github.com/Eraden/amdgpud.git#tag=v1.0.11
+	sha512sums = SKIP
+
+pkgname = amdfand
