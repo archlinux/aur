@@ -1,15 +1,17 @@
 pkgbase = pop-launcher
 	pkgver = 1.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pop-os/launcher
 	arch = x86_64
 	arch = aarch64
 	license = MPL2
 	makedepends = cargo
 	makedepends = just
+	depends = dbus
 	depends = fd
 	depends = libqalculate
 	depends = sh
+	depends = xdg-utils
 	options = !lto
 	source = pop-launcher-1.2.1.tar.gz::https://github.com/pop-os/launcher/archive/refs/tags/1.2.1.tar.gz
 	sha256sums = 00f6386851a770d988eab58b367a592a7df3b69c17c99f9daea2bd40a1f69d5a
@@ -20,7 +22,7 @@ pkgname = pop-launcher
 
 pkgname = pop-shell-plugin-system76-power
 	pkgdesc = System76 Power scripts for the launcher
-	depends = gnome-shell-extension-pop-shell
+	depends = gnome-terminal
 	depends = system76-power
 	conflicts = pop-launcher-system76-power
 	replaces = pop-launcher-system76-power
