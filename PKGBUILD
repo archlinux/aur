@@ -26,6 +26,7 @@ depends=(
   libxmlrpc
   libxrandr
   libxv
+  peg
   pixman
   procps-ng
   python-docutils

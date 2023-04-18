@@ -22,6 +22,7 @@ pkgbase = igt-gpu-tools
 	depends = libxmlrpc
 	depends = libxrandr
 	depends = libxv
+	depends = peg
 	depends = pixman
 	depends = procps-ng
 	depends = python-docutils
