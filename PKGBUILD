@@ -12,7 +12,7 @@ url="https://github.com/iDvel/rime-ice"
 license=("GPL3")
 makedepends=("librime" "rime-prelude" "coreutils" "grep" "sed")
 provides=("${_pkgname}")
-conflicts=("rime-emoji" "${_pkgname}" "${_pkgbase}-pinyin" "${_pkgbase}-double-pinyin" "${_pkgbase}-double-pinyin-flypy" "${_pkgbase}-double-pinyin-mspy")
+conflicts=("rime-emoji" "${_pkgname}" "${_pkgbase}" "${_pkgbase}-pinyin" "${_pkgbase}-double-pinyin-flypy" "${_pkgbase}-double-pinyin-mspy")
 source=("${_pkgname}::git+${url}.git")
 sha512sums=("SKIP")
 
