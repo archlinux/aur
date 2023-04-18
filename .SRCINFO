@@ -1,13 +1,13 @@
 pkgbase = hyprland-relative-workspace-bin
 	pkgdesc = A tool to switch Hyprland workspaces relatively to monitor
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/CheesyPhoenix/hyprland-relative-workspace
 	arch = x86_64
 	license = MIT
 	provides = hyprland-relative-workspace
 	conflicts = hyprland-relative-workspace
-	source = https://github.com/CheesyPhoenix/hyprland-relative-workspace/releases/download/v1.1.1/hyprland-relative-workspace-1.1.1-x86_64.tar.gz
+	source = https://github.com/CheesyPhoenix/hyprland-relative-workspace/releases/download/v1.1.2/hyprland-relative-workspace-1.1.2-x86_64.tar.gz
 	sha256sums = 22f32b790f5f7b049571a727fb4cf17f483ff6650e9d95adb539ef0372e9af16
 
 pkgname = hyprland-relative-workspace-bin
