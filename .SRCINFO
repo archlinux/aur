@@ -1,10 +1,12 @@
 pkgbase = python-sutils-git
 	pkgdesc = Sdore's Utils lib
-	pkgver = r83.3d7f497
+	pkgver = r91.7f2eaa7
 	pkgrel = 1
 	url = https://apps.sdore.me/utils
 	arch = any
 	license = LGPL3
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python-regex
 	depends = python-pygments
 	depends = python-typing_inspect

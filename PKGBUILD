@@ -3,13 +3,14 @@
 _pkgbase=python-sutils
 _gitname=utils
 pkgname=${_pkgbase}-git
-pkgver=r84.4829747
+pkgver=r91.7f2eaa7
 pkgrel=1
 pkgdesc="Sdore's Utils lib"
 arch=('any')
 url="https://apps.sdore.me/${_gitname}"
 license=('LGPL3')
 depends=('python-regex' 'python-pygments' 'python-typing_inspect')
+makedepends=('python-build' 'python-installer')
 provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
 source=("git+${url}.git"
