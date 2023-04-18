@@ -1,34 +1,35 @@
-# Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
-
-_pkgname=netease-cloud-music-gtk
-
 pkgname=netease-cloud-music-gtk-bin
-pkgver=2.0.1
+_pkgver=2.2.0-40
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Linux 平台下基于 Rust + GTK 开发的网易云音乐播放器"
 arch=('x86_64')
 url="https://github.com/gmg137/netease-cloud-music-gtk"
 license=('GPL')
-depends=('gstreamer' 'gst-plugins-bad' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-ugly' 'gst-libav' 'libadwaita' 'openssl')
+depends=(
+	'libadwaita'
+	'gst-plugins-base'
+	'gst-plugins-good'
+)
+optdepends=(
+	'gst-plugins-bad: extra media codecs'
+	'gst-plugins-ugly: extra media codecs'
+)
 conflicts=('netease-cloud-music-gtk')
 source=(
-  "https://download.opensuse.org/repositories/openSUSE:/Factory/standard/x86_64/${_pkgname}-${pkgver}-2.1.x86_64.rpm"
-  "${url}/releases/download/${pkgver}/${_pkgname}-lang-${pkgver}-26.1.noarch.rpm"
-  "README-${pkgver}.md::${url}/raw/${pkgver}/README.md"
+  "https://github.com/gmg137/netease-cloud-music-gtk/releases/download/${pkgver}/netease-cloud-music-gtk-${_pkgver}.1.x86_64.rpm"
+  "https://github.com/gmg137/netease-cloud-music-gtk/releases/download/${pkgver}/netease-cloud-music-gtk-lang-${_pkgver}.1.noarch.rpm"
 )
 noextract=(
-  "${_pkgname}-${pkgver}-2.1.x86_64.rpm"
-  "${_pkgname}-lang-${pkgver}-26.1.noarch.rpm"
+  "netease-cloud-music-gtk-${_pkgver}.1.x86_64.rpm"
+  "netease-cloud-music-gtk-lang-${_pkgver}.1.noarch.rpm"
 )
-sha256sums=(
-  '844734eada20a5f336d2cdc56c1cbe882c15f561663a9ad65ccce8740a4d8f83'
-  'b92cad7140a22e6ba792d8d796ad57b0154146f55fe9f09de09ba25ba4411fcb'
-  'c9b60b78cebbc05945f226b5e58b2f6586bf532d836233a8bbc3e17fac90db4a'
+sha256sums=('694c820758044441bab86f177116747c39c5358a058d9e82e8eaea982ea3b8b1'
+            '2a738d661b106c71a5fca46609ff208792e90a85f127dbacb4b3cc5c0bc88d55'
 )
-
 package() {
   cd "${srcdir}"
-  bsdtar -xf "${_pkgname}-${pkgver}-2.1.x86_64.rpm" -C "${pkgdir}/"
-  bsdtar -xf "${_pkgname}-lang-${pkgver}-26.1.noarch.rpm" -C "${pkgdir}/"
-  install -D -m644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  bsdtar -xf "netease-cloud-music-gtk-${_pkgver}.1.x86_64.rpm" -C "${pkgdir}/"
+  bsdtar -xf "netease-cloud-music-gtk-lang-${_pkgver}.1.noarch.rpm" -C "${pkgdir}/"
+  sed -i 's/StartupWMClass=com.gitee.gmg137.NeteaseCloudMusicGtk4/StartupWMClass=netease-cloud-music-gtk4/' ${pkgdir}/usr/share/applications/com.gitee.gmg137.NeteaseCloudMusicGtk4.desktop
 }
