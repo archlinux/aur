@@ -101,7 +101,7 @@ build()
         bench --site "${pkgname}" install-app erpnext-usa
     fi
 
-    ## Health
+    ## Exotel integration
     if [[ "${ERPNEXT_EXOTEL_INTEGRATION}" == "ON" ]]; then
         bench get --resolve-deps exotel-integration https://github.com/frappe/exotel_integration.git
         bench --site "${pkgname}" install-app exotel-integation
