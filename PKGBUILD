@@ -1,9 +1,10 @@
-# Maintainer: Teteros <teteros at teknik dot io>
-# Maintainer: Karol "Kenji Takahashi" Woźniak <kenji.sx>
+# Maintainer: yustin <#archlinux-proaudio@libera.chat>
+# Contributor: Teteros <teteros at teknik dot io>
+# Contributor: Karol "Kenji Takahashi" Woźniak <kenji.sx>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=radium
-pkgver=6.9.96
+pkgver=7.1.68
 pkgrel=1
 pkgdesc='A graphical music editor. A next generation tracker.'
 arch=(x86_64)
@@ -29,6 +30,7 @@ depends=(
   ttf-bitstream-vera
   ttf-croscore
   ttf-lato
+  libatomic_ops
 )
 makedepends=(
   boost
@@ -38,7 +40,7 @@ makedepends=(
   libxinerama
   libxkbfile
   libxrandr
-  llvm
+  llvm11
   qt5-tools
   steinberg-vst36
 )
@@ -50,27 +52,43 @@ optdepends=(
 )
 options=(!strip)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kmatheussen/radium/archive/$pkgver.tar.gz"
-        add-vstsdk-location-var.patch
+				add-vstsdk-location-var.patch
+				build_libpds.patch
+				crashreporter.patch
+				radium.install
 )
-sha256sums=('0060734362c824fe70dfb9d4e0e12f048cbedb0fa7d2abb6043a5970f0c0aeca'
-            '74fd7a84a6aea46778e97a0559c9ffa7d2dc69de534a331d882a0b95d88e30ea')
+sha256sums=('7054cd218bee78eea01d3c6798350e531795f1e933000a3f13f95cd4cb4a04b4'
+            'ed456586a1f28eec9acd081a676e61145e13f07c1a6e967c0af1f7d08be4023e' 
+            '2f145e84c5940f4f82544ae68e668d5bd02ee7bce559d3354f60d12eaea1a548' 
+            '16b0c6dc95e835fed5c7d4f350780561cd996ef723b392c415db83edba07af94'
+						'f627730ff7a819e8cc5ac5c2b5f1fb2f2237327db6ea5442c55a23c1ce82ef14'
+					)
+install=radium.install
 
 prepare() {
   cd radium-$pkgver
 
   # Add VST2SDK env var so we can use VST2 headers from steinberg-vst36 in AUR
   patch -p1 < "$srcdir/add-vstsdk-location-var.patch"
+  
+  # fix crashreporter PTR-error
+  patch -p2 < "$srcdir/crashreporter.patch"
 
   # This tweak edits new file template and demo songs to be compatible with chorus plugin from calf-ladspa package
   # !! NOTE TO LMMS USERS !!
   # !! Comment next line out if you have LMMS installed as it already comes with their own version of Calf plugins !!
   for file in bin/sounds/*.rad; do sed -i -e 's/Calf MultiChorus LADSPA/Calf Multi Chorus LADSPA/g' "$file"; done
   # See comment on calf-ladspa AUR page then on how to let Radium load Calf from LMMS package
+
+  cd bin/packages
+  patch -p0 < "$srcdir/build_libpds.patch"
+  cp faust3.patch faust2.patch
 }
 
 build() {
   cd radium-$pkgver
 
+  #RADIUM_USE_CLANG=1 RADIUM_QT_VERSION=5 RADIUM_VST2SDK_PATH=/usr/include/vst36 RADIUM_BUILD_LIBXCB=0 make packages
   RADIUM_QT_VERSION=5 RADIUM_VST2SDK_PATH=/usr/include/vst36 RADIUM_BUILD_LIBXCB=0 make packages
   RADIUM_QT_VERSION=5 RADIUM_VST2SDK_PATH=/usr/include/vst36 BUILDTYPE=RELEASE ./build_linux.sh
 }
