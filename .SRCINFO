@@ -1,12 +1,14 @@
 pkgbase = cs
 	pkgdesc = The Ls command with icons implemented in C++
-	pkgver = 0.2.1
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/semtor/cs
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = git
+	makedepends = make
+	makedepends = g++
 	source = cs-main::https://github.com/semtor/cs/archive/refs/heads/main.zip
 	md5sums = SKIP
 
