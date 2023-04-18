@@ -5,7 +5,7 @@
 
 pkgname=emby-server-beta
 pkgver=4.8.0.29
-pkgrel=2
+pkgrel=4
 _ffmpeg_ver=2023_03_08
 pkgdesc='Bring together your videos, music, photos, and live television'
 arch=('x86_64')
@@ -63,7 +63,7 @@ install=emby-server.install
 sha256sums=('1f89060d1b31946f04963072e53ac625c6a47c125474e3d837fb6198cc5411be'
             '4db44f783278eaacda5554c6b8b20a0cbcb2f7a07dacab1019fdbee9c9f69f57'
             '0351d6e9118853e3aa275d62b67dce4444b3d85130b05fb889b2069f364f47ca'
-            '497f3e291f1be40eb2108e4b417026f91520a43f6d601648b1c9983865470dd3'
+            '8bd03d803e295bea89e9c7bad17e774218f8dc4be9826af124b1f83bc4b256b6'
             'a7f2e38d2d196984d1c1632c851215aea9072b3af998d10a6b68477ad886ea14'
             'a6d7ea65dcb06392479a85e1a10a7aeb872d803da6f784f6935fcd4ee63008c6')
 
@@ -80,5 +80,8 @@ package() {
   install -Dm 644 license.docx -t "${pkgdir}"/usr/share/licenses/$pkgname/license.docx
 
   install -dm 755 "${pkgdir}/opt/emby-server/bin"
+  install -dm 755 "${pkgdir}/opt/emby-server/lib"
+
   cp -dr --no-preserve='ownership' bin "${pkgdir}/opt/emby-server"
+  cp -dr --no-preserve='ownership' lib "${pkgdir}/opt/emby-server"
 }
