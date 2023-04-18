@@ -2,7 +2,7 @@
 _realname=Sync-my-L2P
 pkgname=sync-my-l2p
 pkgver=2.5.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Sync the Moodle instance of RWTH Aachen University."
 arch=('x86_64')
 url="https://github.com/rwthmoodle/Sync-my-L2P"
@@ -34,7 +34,7 @@ build() {
 }
 
 package() {
-    cd $_realname-$pkgver
+    cd $_realname-${pkgver}a
 
     # Binary
     install -D -m0755 bin/$_realname "$pkgdir"/usr/bin/$_realname
