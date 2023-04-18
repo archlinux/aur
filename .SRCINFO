@@ -8,7 +8,6 @@ pkgbase = cs
 	makedepends = cmake
 	makedepends = git
 	makedepends = make
-	makedepends = g++
 	source = cs-main::https://github.com/semtor/cs/archive/refs/heads/main.zip
 	md5sums = SKIP
 
