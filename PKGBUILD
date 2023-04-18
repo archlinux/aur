@@ -9,7 +9,7 @@ pkgrel=1
 arch=(x86_64)
 url="https://github.com/${_base}/${_base}"
 license=(MIT)
-depends=(python-scipy)
+depends=(python-scipy python-setuptools)
 makedepends=(python-setuptools-scm pybind11 git) # python-matplotlib
 checkdepends=(python-pytest)
 source=("${_base}-${pkgver}::git+${url}.git?signed#commit=${_gitcommit}")
