@@ -3,7 +3,7 @@
 _pkgname=flightcore
 pkgname=$_pkgname-bin
 pkgver=1.13.2
-pkgrel=3
+pkgrel=1
 pkgdesc="A Northstar installer, updater, and mod-manager (AppImage release)"
 arch=('x86_64')
 url="https://github.com/R2NorthstarTools/FlightCore"
