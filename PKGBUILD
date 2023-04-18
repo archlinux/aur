@@ -42,15 +42,15 @@ build() {
 
   mapfile -t _schemas_deps <<< "$(printf "%s\n" "${_schemas_deps[@]}" | sort -u)"
   # build current schema and it's depends only, sort by length
-  _schemas=("${_schemas_deps[@]}" "${_schemas[@]}")
+  _compile_schemas=("${_schemas_deps[@]}" "${_schemas[@]}")
 
-  for _s in "${_schemas[@]}"; do rime_deployer --compile "$_s.schema.yaml"; done
+  for _s in "${_compile_schemas[@]}"; do rime_deployer --compile "$_s.schema.yaml"; done
 
   # comment ignore schemas
   _suggestion_schemas=$(grep -A4 'schema_list:' "$_suggestion" | tail -n4 | sed 's/.*schema: //g')
 
   for _s in $_suggestion_schemas; do
-    [[ ! ${_schemas[*]} =~ (^|[[:space:]])"$_s"($|[[:space:]]) ]] && sed -i "s/^\s*- schema: $_s/#&/" "$_suggestion";
+    [[ ! ${_schemas[*]} =~ (^|[[:space:]])"$_s"($|[[:space:]]) ]] && sed -i "s/^\s*- schema: $_s *$/#&/" "$_suggestion";
   done
 
   find . -type l -delete
