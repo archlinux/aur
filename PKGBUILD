@@ -1,7 +1,7 @@
 pkgname=crunchyroll
 _pkgname=Crunchyroll
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Unnofficial CrunchyRoll desktop application"
 arch=('x86_64')
 url="https://gitlab.com/crunchyroll/application"
