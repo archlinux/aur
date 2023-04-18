@@ -6,7 +6,6 @@ url = https://g.tylerm.dev/tylermurphy534/wig
 arch = x86_64
 arch = i686
 license = GPL3
-makedepends = gcc make
 source = wig-0.0.1.tar.gz::https://f.tylerm.dev/source/brainfucked/wig-0.0.1.tar.gz
 md5sums = SKIP
 

@@ -1,12 +1,12 @@
 # Maintainer: Tyler Murphy <tylerm@tylerm.dev>
 pkgname=wig
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple dns client written in C"
 arch=('x86_64' 'i686')
 url="https://g.tylerm.dev/tylermurphy534/wig"
 license=('GPL3')
-makedepends=('gcc' 'make')
+makedepends=()
 depends=()
 source=("$pkgname-$pkgver.tar.gz::https://f.tylerm.dev/source/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=('SKIP')
