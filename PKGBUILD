@@ -6,10 +6,10 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
 readonly _pkgname="matomo"
-declare -r _tag="6cda388008d6fd7b996939a8d3ef9c6d32fd8500"
+declare -r _tag="7da5cc0c383f3a1727125d3270ef12a03293dc54"
 
 pkgname="matomo-git"
-pkgver="4.14.1"
+pkgver="4.14.2"
 pkgrel="1"
 pkgdesc="A powerful web analytics platform."
 arch=("any")
