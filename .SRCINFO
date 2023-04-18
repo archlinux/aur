@@ -1,6 +1,6 @@
 pkgbase = sby-nightly
 	pkgdesc = Front-end for Yosys-based formal verification flows
-	pkgver = 20230417_yosys_0.28
+	pkgver = 20230418_yosys_0.28
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/YosysHQ/sby
