@@ -1,0 +1,12 @@
+pkgbase = passt
+	pkgdesc = Plug A Simple Socket Transport
+	pkgver = 20230329.b10b983
+	pkgrel = 1
+	url = https://passt.top/passt/about/
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	source = https://passt.top/passt/snapshot/passt-2023_03_29.b10b983.tar.zst
+	sha256sums = SKIP
+
+pkgname = passt
