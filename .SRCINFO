@@ -1,0 +1,20 @@
+pkgbase = rutoken
+	pkgdesc = Support for cryptographic tokens from Aktiv-Soft JSC
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://www.rutoken.ru/support/download/
+	arch = x86_64
+	license = custom
+	depends = glibc
+	depends = gcc-libs
+	depends = pcsclite
+	depends = ccid
+	options = !strip
+	source = https://download.rutoken.ru/Rutoken/Utilites/rtAdmin/2.4/Linux/rtadmin.zip
+	source = https://download.rutoken.ru/Rutoken/PKCS11Lib/2.7.1.0/Linux/x64/librtpkcs11ecp-2.7.1.0-1.x86_64.rpm
+	source = sd-rutoken
+	sha256sums = e1f9673a79212daba215b2421e6003e2ddb36edb247922e0941122e36901832b
+	sha256sums = 221dcf2a183a56b9489b21be5343a0f2a4c87e622b29eeb5325719fa5e83145f
+	sha256sums = SKIP
+
+pkgname = rutoken

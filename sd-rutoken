@@ -1,0 +1,32 @@
+#!/usr/bin/bash
+
+build() {
+    add_file "/etc/libccid_Info.plist"
+    add_file "/usr/lib/pcsc/drivers/ifd-ccid.bundle/Contents/Info.plist"
+    add_binary "/usr/lib/pcsc/drivers/ifd-ccid.bundle/Contents/Linux/libccid.so"
+
+    add_systemd_unit "pcscd.service"
+    add_dir "/usr/lib/systemd/system/pcscd.service.d/"
+    (
+      echo "[Unit]"
+      echo "DefaultDependencies=no"
+    ) > "$BUILDROOT/usr/lib/systemd/system/pcscd.service.d/mkinitcpio.conf"
+
+    add_systemd_unit "pcscd.socket"
+    add_dir "/usr/lib/systemd/system/pcscd.socket.d/"
+    (
+      echo "[Unit]"
+      echo "DefaultDependencies=no"
+    ) > "$BUILDROOT/usr/lib/systemd/system/pcscd.socket.d/mkinitcpio.conf"
+
+    add_symlink "/usr/lib/systemd/system/cryptsetup.target.wants/pcscd.socket" "/usr/lib/systemd/system/pcscd.socket"
+
+    add_binary "/usr/lib/pkcs11/librtpkcs11ecp.so"
+    add_file "/usr/share/p11-kit/modules/rutoken.module"
+}
+
+help() {
+    cat <<HELPEOF
+This hook allows systemd to unlock LUKS2 volumes with the RuToken PKCS#11 module.
+HELPEOF
+}
