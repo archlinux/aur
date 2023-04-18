@@ -64,7 +64,7 @@ pkgdesc="SDK to handle Blackmagic RAW files (.braw)"
 url="https://www.blackmagicdesign.com/products/blackmagicraw"
 license=('custom')
 depends=('hicolor-icon-theme' 'qt5-multimedia' 'libc++')
-makedepends=('rpmextract' 'unrtf')
+makedepends=('unrtf')
 optdepends=('nvidia-utils: CUDA support'
             'ocl-icd: OpenCL support')
 options=('!strip')
@@ -74,7 +74,7 @@ sha512sums=('2eb8741d380cb90aba71067f1a9cd2bdc124fae4f6423881e631f5cc5ef00b05e7f
 prepare(){
   cd "Blackmagic RAW"
 
-  rpmextract.sh blackmagic-raw-${pkgver%_*}.$CARCH.rpm
+  bsdtar -xf blackmagic-raw-${pkgver%_*}.$CARCH.rpm
   unrtf --text "./usr/lib64/blackmagic/BlackmagicRAWPlayer/Third Party Licenses.rtf" > \
                "BlackmagicRAWPlayer-Third Party Licenses.txt"
   unrtf --text "./usr/lib64/blackmagic/BlackmagicRAWSDK/Documents/Third Party Licenses.rtf" > \

@@ -5,7 +5,6 @@ pkgbase = blackmagic-raw-sdk
 	url = https://www.blackmagicdesign.com/products/blackmagicraw
 	arch = x86_64
 	license = custom
-	makedepends = rpmextract
 	makedepends = unrtf
 	depends = hicolor-icon-theme
 	depends = qt5-multimedia
@@ -13,7 +12,7 @@ pkgbase = blackmagic-raw-sdk
 	optdepends = nvidia-utils: CUDA support
 	optdepends = ocl-icd: OpenCL support
 	options = !strip
-	source = Blackmagic_RAW_Linux_3.0.tar.gz::https://sw.blackmagicdesign.com/BlackmagicRAW/v3.0/Blackmagic_RAW_Linux_3.0.tar.gz?Key-Pair-Id=APKAJTKA3ZJMJRQITVEA&Signature=o5FmOiWuyUJRfmRmARvBafzPVCIESm6GaYhcra1gKl7Iq/H3QpRmvVjDAXt/ivndc/kSZf2Z0E4mU/s9+nABURSDUxXYrD/R/iqgKE6elOWpiwyiofenVABl1EXwEsD1XiX1ycOj5fD5nTQpgYqqAM+p8BZsolU51Bwh4gOm0wX169FnPSYoM8LFjwpzM6vGx7ROcMQx7pe+F6EMQQ+mbrnrFr1TOd23hkRcuSQxUePo2mMhqX7bk6wzQwoqXp3ZBuFs3AiacJudyW58qq86KOvZ6NXXvksSKxo0otzFZ+wM6gbv7JS4NLbYfWu90iRC0lIDIgxi9FD9FJ/+FETFdQ==&Expires=1681693663
+	source = Blackmagic_RAW_Linux_3.0.tar.gz::https://sw.blackmagicdesign.com/BlackmagicRAW/v3.0/Blackmagic_RAW_Linux_3.0.tar.gz?Key-Pair-Id=APKAJTKA3ZJMJRQITVEA&Signature=X0x17JAGsiASFeJ7Bu7P36PjD/16CqM6AdK9SgsWl0yGLeOMtsUMhhYFW2f6cGuo03pPc2AFHot/G/tMtPlOax4crCOVfJzPalVmXmeMowqIMeyeBQ32vYkP8CwHpnSoy7xzuNylnQzCyl5nVoAORqltxEQdy32BDHrgKcQnaa75r+14qXdJ/Q4Fbcy74SC/9SIgL7soth79QyR0nI+FxEUUTvotJR3dAtUqPGjlAmb72VGccSisFt9WFKkEDe3MFvXbkQ7Jl/A3w9NeDAjpfMgCddWQ6uRlaDEaHVwOCgJvR0SOajuCr+5+XRkwQljwTAUKvQmKcM5uNSXvdmUmCA==&Expires=1681809986
 	sha512sums = 2eb8741d380cb90aba71067f1a9cd2bdc124fae4f6423881e631f5cc5ef00b05e7f7363e7ff02562bcb71612385230f1c8251e1759fdcbeaf2615d9e82a1cac9
 
 pkgname = blackmagic-raw-sdk
