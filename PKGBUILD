@@ -7,7 +7,7 @@ url="https://github.com/bjesus/wttrbar"
 arch=("any")
 license=("MIT")
 makedepends=('rust')
-source=("source.tar.gz::https://github.com/bjesus/$pkgname/archive/refs/tags/$pkgver.tar.gz")
+source=("source-$pkgver.tar.gz::https://github.com/bjesus/$pkgname/archive/refs/tags/$pkgver.tar.gz")
 sha512sums=("0b640dbf1b7dfb75217f4e8b8081ae05d112ace188a9ae078699f4607660eca52dbe2dd616e47b0538df8dc8a080810531324dfff5ec594d310afafaa0ecfa04")
 
 prepare() {
