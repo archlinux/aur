@@ -1,39 +1,32 @@
 pkgbase = powerpc64-linux-gnu-gcc
-	pkgdesc = The GNU Compiler Collection (powerpc64-linux-gnu)
-	pkgver = 9.1.0
+	pkgdesc = The GNU Compiler Collection - cross compiler for PPC64 target
+	pkgver = 12.2.0
 	pkgrel = 1
-	url = http://gcc.gnu.org
-	arch = i686
+	url = https://gcc.gnu.org/
 	arch = x86_64
 	license = GPL
 	license = LGPL
 	license = FDL
-	license = custom
-	checkdepends = dejagnu
-	checkdepends = inetutils
 	makedepends = gmp
 	makedepends = mpfr
-	depends = powerpc64-linux-gnu-binutils>=2.30-1
-	depends = powerpc64-linux-gnu-glibc>=2.27-1
+	depends = powerpc64-linux-gnu-binutils
+	depends = powerpc64-linux-gnu-glibc
 	depends = libmpc
-	depends = elfutils
 	depends = zlib
-	provides = powerpc64-linux-gnu-gcc-stage1=9.1.0
-	provides = powerpc64-linux-gnu-gcc-stage2=9.1.0
-	conflicts = powerpc64-linux-gnu-gcc-stage1
+	depends = libisl
+	depends = zstd
 	conflicts = powerpc64-linux-gnu-gcc-stage2
-	replaces = powerpc64-linux-gnu-gcc-stage1
-	replaces = powerpc64-linux-gnu-gcc-stage2
+	conflicts = powerpc64-linux-gnu-gcc-stage1
 	options = !emptydirs
-	options = !distcc
 	options = !strip
-	source = https://gcc.gnu.org/pub/gcc/releases/gcc-9.1.0/gcc-9.1.0.tar.xz
-	source = https://gcc.gnu.org/pub/gcc/releases/gcc-9.1.0/gcc-9.1.0.tar.xz.sig
-	source = http://isl.gforge.inria.fr/isl-0.21.tar.bz2
+	options = staticlibs
+	options = !lto
+	source = https://ftp.gnu.org/gnu/gcc/gcc-12.2.0/gcc-12.2.0.tar.xz
+	source = https://ftp.gnu.org/gnu/gcc/gcc-12.2.0/gcc-12.2.0.tar.xz.sig
+	validpgpkeys = D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62
 	validpgpkeys = 33C235A34C46AA3FFB293709A328C3A2C3C45C06
-	sha256sums = 79a66834e96a6050d8fe78db2c3b32fb285b230b855d0a66288235bc04b327a0
+	validpgpkeys = 13975A70E63C361C73AE69EF6EEB81F8981C74C7
+	sha256sums = e549cf9cf3594a00e27b6589d4322d70e0720cdd213f39beb4181e06926230ff
 	sha256sums = SKIP
-	sha256sums = d18ca11f8ad1a39ab6d03d3dcb3365ab416720fcb65b42d69f34f51bf0a0e859
 
 pkgname = powerpc64-linux-gnu-gcc
-
