@@ -8,6 +8,6 @@ pkgbase = hyprland-relative-workspace-bin
 	provides = hyprland-relative-workspace
 	conflicts = hyprland-relative-workspace
 	source = hyprland-relative-workspace-1.1.7.tar.gz::https://static.crates.io/crates/hyprland-relative-workspace/hyprland-relative-workspace-1.1.7.crate
-	sha256sums = 22f32b790f5f7b049571a727fb4cf17f483ff6650e9d95adb539ef0372e9af16
+	sha256sums = 7295772656c8f1c45624add4c1e3f3c9d62a6fc9897b4f72c74ee8c400e5c8a2
 
 pkgname = hyprland-relative-workspace-bin

@@ -18,3 +18,4 @@ package() {
     install -Dm755 hyprland-relative-workspace -t "$pkgdir/usr/bin"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+sha256sums=('7295772656c8f1c45624add4c1e3f3c9d62a6fc9897b4f72c74ee8c400e5c8a2')
