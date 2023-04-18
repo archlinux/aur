@@ -1,10 +1,10 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=this.path
-_pkgver=1.3.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
-pkgver=1.3.0
-pkgrel=3
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="Get Executing Script's Path, from 'RStudio', 'Rgui', 'VSCode', 'Rscript' (Shells Including Windows Command-Line / / Unix Terminal), and 'source'"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -25,7 +25,7 @@ optdepends=(
   r-utils
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('66a67ab8b7089cd1ccc9b02bf20de0ff62ac1d3d340ed7a92107454816247aaf')
+sha256sums=('73899e5551b807b86cd8541bcad32a7f2f850f663a7ef7061eac1f8cc6ab4a85')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
