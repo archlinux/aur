@@ -2,14 +2,14 @@
 # Contributor: baraclese at gmail dot com
 
 pkgname=lwtools
-pkgver=4.19
+pkgver=4.20
 pkgrel=1
 pkgdesc="Cross-development tools for the Motorola 6809 and Hitachi 6309 microprocessors."
 arch=('x86_64')
 url="http://www.lwtools.ca/"
 license=('GPL3')
 source=("http://www.lwtools.ca/releases/lwtools/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('427fec1571c876541895111536f3ccbd9243dd3b3d613f1a9e4b183d031ff681')
+sha256sums=('58ef6d09c5b69885c06f8bc73be3ee739e9ce3b7ceb3422fabdd892fd72917d4')
 
 build() {
   cd "$pkgname-$pkgver"
