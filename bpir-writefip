@@ -44,7 +44,6 @@ fstabstr="PARTLABEL=${target}-${atfdevice}-boot"
 #######################
 # Convert FIP to BOOT #
 #######################
-##### DEZE NOG CHECK!
 if [[ $@ =~ "--fip2boot" ]] && [ -L ${fipdevicel} ]; then
   set -e
   pkfip=$(lsblk -rno pkname ${fipdevicel})
@@ -54,7 +53,7 @@ if [[ $@ =~ "--fip2boot" ]] && [ -L ${fipdevicel} ]; then
   echo "Moving files from /boot to $tmp/boot"
   mv -fT /boot $tmp/boot
   parted -s -- "/dev/$pkfip" name $nrfip ${target}-${atfdevice}-boot
-  mkfs.vfat -F 32 -n "${target^^}-BOOT" ${bootdevicel}
+  mkfs.vfat -v -F 32 -S 512 -s 16 -n "${target^^}-BOOT" ${bootdevicel}
   mkdir /boot
   mount -t vfat ${bootdevicel} /boot
   echo "Copying files from $tmp/boot to /boot"
@@ -69,7 +68,6 @@ fi
 #######################
 # Convert BOOT to FIP #
 #######################
-##### DEZE NOG CHECK!
 if [[ $@ =~ "--boot2fip" ]] && [ -L ${bootdevicel} ]; then
   set -e
   pkfip=$(lsblk -rno pkname ${bootdevicel})
