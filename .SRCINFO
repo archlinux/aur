@@ -1,6 +1,6 @@
 pkgbase = halp-git
 	pkgdesc = A CLI tool to get help with CLI tools (git)
-	pkgver = 0.1.5.r0.gdb4afb7
+	pkgver = 0.1.6.r0.g83fb795
 	pkgrel = 1
 	url = https://github.com/orhun/halp
 	arch = x86_64
