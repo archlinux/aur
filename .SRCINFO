@@ -1,0 +1,13 @@
+pkgbase = python-midiutil
+	pkgdesc = Library to work with MIDI files
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://pypi.org/project/MIDIUtil/
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.org/packages/source/M/MIDIUtil/MIDIUtil-1.2.1.tar.gz
+	sha256sums = 79fa983bd1efc60785f68a8fe78fa8f45b8d7ec5898bf7cb7f3f7f3336d6a90a
+
+pkgname = python-midiutil
