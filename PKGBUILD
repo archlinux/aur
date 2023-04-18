@@ -2,20 +2,43 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgbase=cheese
-pkgname=(cheese libcheese)
-pkgver=43.0
+pkgname=(
+  cheese
+  libcheese
+)
+pkgver=44.0.1
 pkgrel=1
 pkgdesc="Take photos and videos with your webcam, with fun graphical effects"
 url="https://wiki.gnome.org/Apps/Cheese"
 arch=(x86_64)
 license=(GPL)
-depends=(gtk3 gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good clutter-gst clutter-gtk
-         libcanberra librsvg gnome-desktop libgudev dconf gnome-video-effects)
-makedepends=(gobject-introspection vala git appstream-glib meson yelp-tools)
+depends=(
+  clutter-gst
+  clutter-gtk
+  dconf
+  gnome-desktop
+  gnome-video-effects
+  gst-plugins-bad
+  gst-plugins-base
+  gst-plugins-good
+  gstreamer
+  gtk3
+  libcanberra
+  libgudev
+  librsvg
+)
+makedepends=(
+  appstream-glib
+  git
+  gobject-introspection
+  meson
+  vala
+  yelp-tools
+)
 checkdepends=(xorg-server-xvfb)
-_commit=9e89a0da8d6d0da14b0b461051c064c419fc86d5  # tags/43.0^0
+_commit=7dbce9f06de65233ab0bf20e59a85d04850b94a8  # tags/44.0.1^0
 source=("git+https://gitlab.gnome.org/GNOME/cheese.git#commit=$_commit")
-sha256sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd cheese
@@ -64,9 +87,20 @@ package_cheese() {
 
 package_libcheese() {
   pkgdesc="Webcam widget for Clutter and GTK"
-  depends=(clutter clutter-gtk clutter-gst gdk-pixbuf2 glib2 gtk3 libcanberra
-           gstreamer gst-plugins-base-libs gst-plugins-bad-libs)
-  provides=(libcheese.so libcheese-gtk.so)
+  depends=(
+    clutter
+    clutter-gst
+    clutter-gtk
+    gdk-pixbuf2
+    glib2
+    gst-plugins-bad-libs
+    gst-plugins-base-libs
+    gstreamer
+    gtk3
+    libcanberra
+  )
+  provides=(libcheese{,-gtk}.so)
+
   mv libs/* "$pkgdir"
 }
 
