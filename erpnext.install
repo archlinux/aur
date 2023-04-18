@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# This script defines functions for the PKGBUILD.
+
+# Variables
+## Colours
+declare -r clear_colour="\033[0m"
+declare -r green="\033[0;32m"
+
+pre_install()
+{
+    echo -e "${green}Configuration for plugins is available via the setting of environment variables.${clear_colour}"
+}

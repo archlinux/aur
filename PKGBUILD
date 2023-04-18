@@ -5,11 +5,13 @@
 # Maintainer: Matheus <matheusgwdl@protonmail.com>
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
-readonly _version_frappe="v14.32.1"
+readonly _version_frappe="v14.33.0"
+readonly _version_health="v14.0.0"
+readonly _version_hrms="v14.2.2"
 
 pkgname="erpnext"
 pkgver="14.21.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Free and open source Enterprise Resource Planning (ERP)."
 arch=("x86_64")
 url="https://github.com/frappe/${pkgname}"
@@ -21,6 +23,7 @@ optdepends=("apache: HTTP server"
     "mariadb: Database"
     "nginx: HTTP server"
     "postgresql: Database")
+install="${pkgname}.install"
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
     "${pkgname}.sysusers"
@@ -32,12 +35,27 @@ sha512sums=("a2f53269a45e0cc668da59e6b4c759a7f8ecec840597ebdad22508c67c47e8ebfc2
 
 build()
 {
+    # Frappe
     cd "${srcdir}"/ || exit 1
     bench init --frappe-branch "${_version_frappe}" "${pkgname}"
+
+    # ERPNext
     cd "${srcdir}"/"${pkgname}"/ || exit 1
     bench get --branch v"${pkgver}" --resolve-deps "${pkgname}" "${url}.git"
     bench new-site --db-name "${pkgname}" --set-default "${pkgname}"
     bench --site "${pkgname}" install-app "${pkgname}"
+
+    # Health
+    if [[ "${ERPNEXT_HEALTH}" == "ON" ]]; then
+        bench get --branch "${_version_health}" --resolve-deps hrms https://github.com/frappe/health.git
+        bench --site "${pkgname}" install-app health
+    fi
+
+    # HRMS
+    if [[ "${ERPNEXT_HRMS}" == "ON" ]]; then
+        bench get --branch "${_version_hrms}" --resolve-deps hrms https://github.com/frappe/hrms.git
+        bench --site "${pkgname}" install-app hrms
+    fi
 }
 
 package()
