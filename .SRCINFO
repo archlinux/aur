@@ -1,6 +1,6 @@
 pkgbase = firefox-esr-ublock-origin
 	pkgdesc = Efficient blocker add-on for various browsers. Fast, potent, and lean
-	pkgver = 1.48.8
+	pkgver = 1.49.0
 	pkgrel = 1
 	url = https://github.com/gorhill/uBlock
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = firefox-esr-ublock-origin
 	makedepends = strip-nondeterminism
 	makedepends = zip
 	depends = firefox-esr
-	source = git+https://github.com/gorhill/uBlock.git#commit=1.48.8?signed
+	source = git+https://github.com/gorhill/uBlock.git#commit=1.49.0?signed
 	source = git+https://github.com/uBlockOrigin/uAssets.git
 	validpgpkeys = 603B28AA5D6CD687A554347425E1490B761470C2
 	b2sums = SKIP
