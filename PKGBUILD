@@ -13,14 +13,6 @@ conflicts=("pipelight-git")
 source=($url)
 md5sums=('SKIP') #autofill using updpkgsums
 
-package() {
-  cd $pkgname
-  bin="target/release/$pkgname"
-  install -Dm755 $bin -t $pkgdir/usr/bin
-  install -Dm755 $bin-run -t $pkgdir/usr/bin
-  install -Dm755 $bin-trigger -t $pkgdir/usr/bin
-}
-
 url() {
   https://packages.pipelight.dev/$pkgname-$pkgver-$pkgrel-any.pkg.tar.zst
 }
