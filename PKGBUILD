@@ -12,7 +12,7 @@ arch=("x86_64")
 provides=("hyprland-relative-workspace")
 conflicts=("hyprland-relative-workspace")
 source=("https://github.com/CheesyPhoenix/hyprland-relative-workspace/releases/download/v$pkgver/hyprland-relative-workspace-$pkgver-x86_64.tar.gz")
-sha256sums=("b2d29fe182b80c05bd66c89647231f2e1679e77e0dc71166e67f336c0443d3aa")
+sha256sums=("10cd5400d7e81a3ba7f9df65d689591e9d60d0326b7b65f357435d5ab3818708")
 
 package() {
     install -Dm755 hyprland-relative-workspace -t "$pkgdir/usr/bin"
