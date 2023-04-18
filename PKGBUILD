@@ -5,7 +5,7 @@ pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
 _major=6.2
 _minor=11
-_clr=1296
+_clr=1297
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
@@ -16,12 +16,12 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=38800
+_clear_version=38810
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash=4fc6f087476f8f9af3fb9031012dba7beb08e525d1524b02c9564ee435be016a
-_config_hash_clear_version=38800
+_config_hash=e17e4e795528bb022a59e20802509ed5e691c7fb6926e258ac06409072c31bc0
+_config_hash_clear_version=38810
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
@@ -53,6 +53,6 @@ package() {
     mkdir -p $pkgdir/usr/lib
     cp -Pr modules $pkgdir/usr/lib
 }
-b2sums=('e67144030a43603c0c01798acb3ab5fd84fe49183f5ec8eeef91a89c2d6849e5f2436a83e2a5a6d3ad56cd5051cc1d575ba1ac340d9d6685e390ea1ac21777a4'
-        '6093a138f90c6a66c4fc5c6c486d58143a11fe8c272a489496f920a5aec11abb67c0bc64f5f6882efd32aa688d1a15d19c07de2c6cd410e9bf67c052eab122dc'
-        '992d941b90be1db7f1604fd37024af1ce107b3250f36d858183d904e8eb7483585cebb76258a9ed9dc61fe2f38898dffebfe562043fe9a82b28583060798fa51')
+b2sums=('7cf52409c31d4a8b208a96f4c2ef17974fba10ddcc6e8d5f38710667b392bffed5ca487e59dfe4367c8124a159fe32ae76d71ae6d86507aaf9e1afca736c8169'
+        '5bf030d988744410704e670ff63d8d1a8a4ae0c90a31164c0eca9b21cea5ac46996df141cba41e94065a9075b5d1fae046e4176bca12924e22da32e075ccdc11'
+        '9745c0cf8053d5de64adba9000b71237cbe5c8d72016a9d9fd5f0502b425217b937261745f5296c939113bf2940d5ce5af9dcdd4cbe389ca21a06af3a850098b')
