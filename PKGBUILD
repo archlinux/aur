@@ -1,14 +1,14 @@
 # Maintainer: Ktl_XV <aur@ktlxv.com>
 # Contributor: onbjerg <hi@notbjerg.me>
 pkgname=frame-eth
-pkgver="0.6.2"
+pkgver="0.6.3"
 pkgrel=1
 pkgdesc="System-wide Web3"
 arch=('x86_64' 'aarch64')
 url='https://frame.sh'
 license=('GPL3')
 depends=('gtk3' 'nss' 'libxss')
-_node_ver=16
+_node_ver=18
 makedepends=('npm' 'nvm' 'libusb' 'python3' 'git' 'node-gyp')
 provides=('frame')
 conflicts=('frame-eth-dev')

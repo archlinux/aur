@@ -1,6 +1,6 @@
 pkgbase = frame-eth
 	pkgdesc = System-wide Web3
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://frame.sh
 	install = frame-eth.install
@@ -18,7 +18,7 @@ pkgbase = frame-eth
 	depends = libxss
 	provides = frame
 	conflicts = frame-eth-dev
-	source = git+https://github.com/floating/frame.git#tag=v0.6.2
+	source = git+https://github.com/floating/frame.git#tag=v0.6.3
 	source = frame-eth.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
