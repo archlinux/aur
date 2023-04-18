@@ -1,12 +1,11 @@
 pkgbase = brainfucked
 pkgdesc = Brainfuck but with manual memory managment
 pkgver = 0.0.1
-pkgrel = 1
+pkgrel = 2
 url = https://g.tylerm.dev/tylermurphy534/brainfucked
 arch = x86_64
 arch = i686
 license = GPL3
-makedepends = gcc make
 source = brainfucked-0.0.1.tar.gz::https://f.tylerm.dev/source/brainfucked/brainfucked-0.0.1.tar.gz
 md5sums = SKIP
 
