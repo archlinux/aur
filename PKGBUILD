@@ -4,7 +4,7 @@ pkgname='urn-git'
 pkgver=r133.09c0756
 pkgrel=1
 pkgdesc='Split timer for speedrunning'
-url='https://github.com/leflores-fisi/urn'
+url='https://github.com/paoloose/urn'
 arch=('i686' 'x86_64')
 license=('GPL3')
 
