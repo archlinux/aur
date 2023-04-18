@@ -2,7 +2,7 @@
 _realname=Sync-my-L2P
 pkgname=sync-my-l2p
 pkgver=2.5.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Sync the Moodle instance of RWTH Aachen University."
 arch=('x86_64')
 url="https://github.com/rwthmoodle/Sync-my-L2P"
@@ -18,11 +18,11 @@ prepare() {
     chmod +x SyncMyL2P-$pkgver-linux.AppImage
     ./SyncMyL2P-$pkgver-linux.AppImage --appimage-extract usr/bin/$_realname
     client_id=$(strings squashfs-root/usr/bin/$_realname | grep .apps.rwth-aachen.de)
-    sed --in-place "s/\(#define CLIENTID\) .*/\1 \"$client_id\"/g; /#error ERROR: NO CLIENTID IN CLIENTID.H DEFINED/d" $_realname-$pkgver/include/clientId.h
+    sed --in-place "s/\(#define CLIENTID\) .*/\1 \"$client_id\"/g; /#error ERROR: NO CLIENTID IN CLIENTID.H DEFINED/d" $_realname-${pkgver}a/include/clientId.h
 }
 
 build() {
-    cd $_realname-$pkgver
+    cd $_realname-${pkgver}a
 
     qmake-qt5 $_realname.pro \
         PREFIX=/usr \

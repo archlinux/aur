@@ -1,7 +1,7 @@
 pkgbase = sync-my-l2p
 	pkgdesc = Sync the Moodle instance of RWTH Aachen University.
 	pkgver = 2.5.1a
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/rwthmoodle/Sync-my-L2P
 	arch = x86_64
 	license = LGPL3
