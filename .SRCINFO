@@ -1,6 +1,6 @@
 pkgbase = waybar-hyprland-git
 	pkgdesc = Highly customizable Wayland bar for Sway and Wlroots based compositors, with workspaces support for Hyprland (git version)
-	pkgver = 0.9.17.r134.g8aafe817
+	pkgver = 0.9.17.r159.ga9a22234
 	pkgrel = 1
 	url = https://github.com/Alexays/Waybar/
 	arch = x86_64
@@ -44,9 +44,7 @@ pkgbase = waybar-hyprland-git
 	backup = etc/xdg/waybar/style.css
 	source = waybar-hyprland-git::git+https://github.com/Alexays/Waybar
 	source = hyprctl.patch
-	source = cava.patch
 	sha256sums = SKIP
 	sha256sums = b4819ed456b27c355f24c460bcf3ff2fec6dade8c210263b64361c6744a9147c
-	sha256sums = 51fbf6cf8767cebf66e26b8f393e696859ef02c70ad7c88fe55025534e2515ab
 
 pkgname = waybar-hyprland-git
