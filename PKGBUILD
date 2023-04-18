@@ -4,7 +4,7 @@
 # Mantainer: XavRan <leandro.espinozar@protonmail.com>
 
 pkgname=ranger-git
-pkgver=1.9.3.597.g46660c27
+pkgver=1.9.3.663.g478d5b62
 pkgrel=1
 pkgdesc="A simple, vim-like file manager."
 arch=('any')
@@ -14,6 +14,7 @@ depends=('python') #python(>=2.6 or >=3.1)
 makedepends=('git' 'python-setuptools')
 optdepends=('atool: for previews of archives'
             'file: for determining file types'
+	    'imagemagick: convert to auto-rotate images and for image previews'
             'highlight: for syntax highlighting of code'
             'libcaca: for ASCII-art image previews'
             'mediainfo: for viewing information about media files'

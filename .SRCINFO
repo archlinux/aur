@@ -1,6 +1,6 @@
 pkgbase = ranger-git
 	pkgdesc = A simple, vim-like file manager.
-	pkgver = 1.9.3.597.g46660c27
+	pkgver = 1.9.3.663.g478d5b62
 	pkgrel = 1
 	url = https://ranger.github.io/
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = ranger-git
 	depends = python
 	optdepends = atool: for previews of archives
 	optdepends = file: for determining file types
+	optdepends = imagemagick: convert to auto-rotate images and for image previews
 	optdepends = highlight: for syntax highlighting of code
 	optdepends = libcaca: for ASCII-art image previews
 	optdepends = mediainfo: for viewing information about media files
