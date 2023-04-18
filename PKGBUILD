@@ -1,7 +1,7 @@
 # Maintainer: Areskul <areskul@areskul.com>
 pkgname="pipelight"
 pkgrel=1
-pkgver=0.4.26
+pkgver=0.4.27
 pkgdesc="A Rust based quick automation tool"
 arch=("any")
 url=https://packages.pipelight.dev/$pkgname-$pkgver-$pkgrel-any.pkg.tar.zst
