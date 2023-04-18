@@ -8,7 +8,7 @@
 
 _target="powerpc64-linux-gnu"
 pkgname=${_target}-glibc-headers
-pkgver=2.29
+pkgver=2.37
 pkgrel=1
 pkgdesc="GNU C Library headers (${_target})"
 arch=('any')
@@ -20,7 +20,7 @@ provides=(${_target}-glibc)
 conflicts=(${_target}-glibc)
 options=(!buildflags !strip staticlibs)
 source=(https://ftp.gnu.org/gnu/glibc/glibc-$pkgver.tar.xz{,.sig})
-sha256sums=('f3eeb8d57e25ca9fc13c2af3dae97754f9f643bc69229546828e3a240e2af04b'
+sha256sums=('2257eff111a1815d74f46856daaf40b019c1e553156c69d48ba0cbfc1bb91a43'
             'SKIP')
 validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8  # "Carlos O'Donell <carlos@systemhalted.org>"
               BC7C7372637EC10C57D7AA6579C43DFBF1CF2187) # Siddhesh Poyarekar
