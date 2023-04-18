@@ -3,7 +3,7 @@
 pkgname="pipes.js-git"
 license=('DBAD V1.1')
 pkgver=1.0.1
-pkgrel=1.0
+pkgrel=1.1
 pkgdesc="Rewrite of pipes.sh in nodejs. Faster, more config options, and overall better."
 arch=('x86_64')
 url=https://github.com/Oman395/pipes.js
