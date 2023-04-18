@@ -1,8 +1,8 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Co-Maintainer: Ranieri Althoff <ranisalt+aur at gmail dot com>
 pkgname=('lib32-mangohud' 'lib32-mangoapp')
 pkgbase=lib32-mangohud
-pkgver=0.6.9
+pkgver=0.6.9.1
 pkgrel=1
 _imgui_ver=1.81
 _spdlog_ver=1.8.5
@@ -12,7 +12,7 @@ url="https://github.com/flightlessmango/MangoHud"
 license=('MIT')
 makedepends=('git' 'glfw-x11' 'glslang' 'lib32-cmocka' 'lib32-dbus' 'lib32-libglvnd'
              'libxnvctrl' 'meson' 'nlohmann-json' 'python-mako')
-_commit=5fa7087f78e39e92ee4306fdf48fd710960c53dc  # tags/v0.6.9^0
+_commit=7f945627f57ecc56afea342c2dc0544d0d43728e  # tags/v0.6.9-1^0
 source=("git+https://github.com/flightlessmango/MangoHud.git#commit=${_commit}"
         'git+https://github.com/flightlessmango/minhook.git'
         "https://github.com/ocornut/imgui/archive/refs/tags/v${_imgui_ver}/imgui-${_imgui_ver}.tar.gz"
@@ -32,7 +32,8 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/MangoHud"
-  git describe --tags | sed 's/^v//;s/-/+/g'
+#  git describe --tags | sed 's/^v//;s/-/+/g'
+  git describe --tags | sed 's/^v//;s/-/./g'
 }
 
 prepare() {
