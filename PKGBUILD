@@ -3,8 +3,8 @@
 
 pkgname=('python-gtkspellcheck')
 _pkgname='pygtkspellcheck'
-pkgver=5.0.1
-pkgrel=3
+pkgver=5.0.2
+pkgrel=1
 pkgdesc="Spell-checking library written in Python for Gtk based on Enchant"
 arch=('any')
 url="https://github.com/koehlma/pygtkspellcheck"
@@ -13,7 +13,7 @@ makedepends=('python-pyenchant' 'python-gobject' 'git' 'python-build' 'python-in
 depends=('python-pyenchant' 'python-gobject')
 provides=('python-gtkspell')
 source=("https://github.com/koehlma/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('f21cb7b1f38b84ae781bc7895572555769811458303957eafc91806834776d5a56bb6c77f805d2f2f36e428d4aac671734f963710c755c1075deaebe89b3f2d3')
+sha512sums=('2589da0d1e241fdbe028bac92c539ba4aeba92c5f34669830bcb0e408e517e573e4f5bb68ec4628e38bfbe3b9d5b8e23694ee5c75aaaedbd58528bcc017d6797')
 
 build() {
   cd "${_pkgname}-${pkgver}"
