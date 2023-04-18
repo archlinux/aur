@@ -1,6 +1,6 @@
 pkgbase = columnq
 	pkgdesc = Simple CLI to help you query tabular data with support for a rich set of growing formats and data sources.
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 0
 	url = https://github.com/roapi/roapi/tree/main/columnq-cli
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = columnq
 	depends = gcc-libs
 	provides = columnq
 	conflicts = columnq
-	source = git+https://github.com/roapi/roapi.git#tag=columnq-cli-v0.3.0
+	source = git+https://github.com/roapi/roapi.git#tag=columnq-cli-v0.4.0
 	sha1sums = SKIP
 
 pkgname = columnq

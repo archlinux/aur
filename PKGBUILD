@@ -2,7 +2,7 @@
 
 pkgname=columnq
 _pkgname=columnq-cli
-_pkgver=0.3.0
+_pkgver=0.4.0
 pkgver=$(echo $_pkgver | sed -e "s/\-/\./")
 pkgrel=0
 pkgdesc='Simple CLI to help you query tabular data with support for a rich set of growing formats and data sources.'
