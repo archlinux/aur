@@ -1,7 +1,7 @@
 pkgbase = linux-amd-drm-next
 	pkgdesc = Linux kernel next with bleeding edge AMD DRM drivers
-	pkgver = 6.3.2023.02.17
-	pkgrel = 1
+	pkgver = 6.4.2023.04.14
+	pkgrel = 2
 	url = https://kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -20,10 +20,11 @@ pkgbase = linux-amd-drm-next
 	makedepends = texlive-latexextra
 	makedepends = git
 	options = !strip
-	source = linux-amd-drm-next::git+https://gitlab.freedesktop.org/agd5f/linux#tag=amd-drm-next-6.3-2023-02-17
+	options = !debug
+	source = linux-amd-drm-next::git+https://gitlab.freedesktop.org/agd5f/linux#tag=amd-drm-next-6.4-2023-04-14
 	source = config::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/linux/trunk/config
 	sha256sums = SKIP
-	sha256sums = 81a9379fd2eac51bb2dc69d83737d7fbdd41fcaca5af4873e3666d3c706760d1
+	sha256sums = c8b3fbb7664801bebc2d2d1fdf624524865a7817d0021c55c98523cb58dee201
 
 pkgname = linux-amd-drm-next
 	pkgdesc = The Linux kernel next with bleeding edge AMD DRM drivers kernel and modules
