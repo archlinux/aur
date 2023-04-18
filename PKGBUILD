@@ -4,7 +4,7 @@
 _target=mips64-elf
 pkgname=${_target}-newlib
 pkgver=4.3.0.20230120
-pkgrel=1
+pkgrel=2
 pkgdesc="A C library intended for use on embedded systems (${_target})"
 arch=('any')
 url='http://sourceware.org/newlib/'
@@ -43,6 +43,7 @@ package()
 {
   cd build
   make DESTDIR="${pkgdir}" install
+  rm -rf "${pkgdir}/usr/share"
 
   find "$pkgdir"/usr/$_target/lib \( -name "*.a" -or -name "*.o" \) -exec $_target-objcopy -R .comment -R .note -R .debug_info -R .debug_aranges -R .debug_pubnames -R .debug_pubtypes -R .debug_abbrev -R .debug_line -R .debug_str -R .debug_ranges -R .debug_loc '{}' \;
 

@@ -1,7 +1,7 @@
 pkgbase = mips64-elf-newlib
 	pkgdesc = A C library intended for use on embedded systems (mips64-elf)
 	pkgver = 4.3.0.20230120
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceware.org/newlib/
 	arch = any
 	license = BSD
