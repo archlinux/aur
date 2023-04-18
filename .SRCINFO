@@ -1,12 +1,13 @@
 pkgbase = system76-dkms
 	pkgdesc = On newer System76 laptops, this driver controls some of the hotkeys and allows for custom fan control.
-	pkgver = 1.0.13
-	pkgrel = 2
+	pkgver = 1.0.13+2+g78ede46
+	pkgrel = 1
 	url = https://github.com/pop-os/system76-dkms
 	arch = x86_64
 	license = GPL2
+	makedepends = git
 	depends = dkms
-	source = system76-dkms-1.0.13.tar.gz::https://github.com/pop-os/system76-dkms/archive/1.0.13.tar.gz
-	sha256sums = 5d491180786faef804da71da9b08090ab902e1cf6f52070115c65fb7546a3376
+	source = git+https://github.com/pop-os/system76-dkms.git#commit=78ede46c30f3bdb38d6acec5bc3fe982703ade17
+	sha256sums = SKIP
 
 pkgname = system76-dkms
