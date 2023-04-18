@@ -1,6 +1,6 @@
 pkgbase = linhabu
 	pkgdesc = German Accounting Software (and more) for Linux
-	pkgver = 23.0.3
+	pkgver = 23.1
 	pkgrel = 1
 	url = https://www.mcrichter.de/Seiten/Deutsch/Programme/HaBu/Allgemein.html
 	install = linhabu.install
@@ -10,10 +10,11 @@ pkgbase = linhabu
 	depends = gtk3
 	optdepends = postgresql: for using a Postgres SQL Server instead of the builtin sqlite engine
 	optdepends = cups: for direct printing support instead of generating pdf-files
+	options = !strip
 	source = http://mcrichter.de/Media/Programme/LinHaBu.zip
 	source = linhabu.desktop
 	source = linhabu.install
-	sha256sums = 2b152e4c1d27ae8362b9b080224d21064be7b7f7a939cf43042b6531405e2820
+	sha256sums = a389b1bf8e501f757cea5bde91678034aa4d459f1dfb3460ab40fa062561eb42
 	sha256sums = 0121f0accb53a4af4207abfeb3e57d8f4129bc6ed33e4c98b11dbff988fedd36
 	sha256sums = ca3873a5288d9087b271185cf1095a2ea8d094b51126e2d7213e6d7b01987d56
 
