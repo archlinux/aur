@@ -1,7 +1,7 @@
 pkgbase = freetype2-ultimate5
 	pkgdesc = FreeType patched for effect similar to Infinality's ultimate5 preset.
 	pkgver = 2.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freetype.org/
 	install = freetype2-ultimate5.install
 	arch = x86_64

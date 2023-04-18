@@ -17,7 +17,7 @@ __arch_pkg_commit="74eded8ecf7ea281ebb75573989dfc67261ee700"
 
 pkgname=freetype2-ultimate5
 pkgver=2.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="FreeType patched for effect similar to Infinality's ultimate5 preset."
 url="https://www.freetype.org/"
 conflicts=(freetype2)

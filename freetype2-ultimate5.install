@@ -7,6 +7,6 @@ post_install()
     echo "    mkdir -p \$HOME/.config/fontconfig/conf.d"
     echo "    ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf \$HOME/.config/fontconfig/conf.d/"
     echo "You also have to enable subpixel antialiasing in desktop environment, in GNOME:"
-    echo "    gsettings set org.gnome.settings-daemon.plugins.xsettings antialiasing rgba"
+    echo "    gsettings set org.gnome.desktop.interface.font-antialiasing rgba"
     echo
 }
