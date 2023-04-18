@@ -1,14 +1,14 @@
-# Maintainer: hzf <888iagiag888@gmail.com>
+# Maintainer: Alexis Maiquez <aur@almamu.com>
 pkgname=linux-wallpaperengine-git
 _pkgname=linux-wallpaperengine
-pkgver=r334.5e384d9
+pkgver=r355.9a59139
 pkgrel=1
 pkgdesc="use steam's wallpaperengine on linux"
 arch=('x86_64')
 url="https://github.com/Almamu/linux-wallpaperengine"
 license=('GPL3')
-depends=('lz4'  'ffmpeg' 'mpv' 'freeimage' 'xorg-xrandr' 'glfw-x11' 'glew' 'freeglut' )
-makedepends=('git' 'cmake' 'sdl_image' 'sdl_mixer' 'sdl_sound' 'glm')
+depends=('lz4' 'ffmpeg' 'mpv' 'freeimage' 'xorg-xrandr' 'glfw-x11' 'glew' 'freeglut' 'libpulse')
+makedepends=('git' 'cmake' 'sdl2' 'glm')
 source=("${pkgname}::git+https://github.com/Almamu/linux-wallpaperengine.git#branch=main")
 sha512sums=('SKIP')
 
@@ -21,14 +21,13 @@ pkgver() {
 }
 
 build() {
-    cd ${srcdir}/${pkgname}
-    mkdir -p build
-    cd build
-    cmake ${srcdir}/${pkgname}/ 
-    make 
+    cmake -B build -S "$pkgname" \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -Wno-dev
+    cmake --build build
 }
 
 package() {
-    install -Dm755 "${srcdir}/${pkgname}/build/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    DESTDIR="$pkgdir" cmake --install build
 }
