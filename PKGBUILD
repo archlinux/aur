@@ -2,7 +2,7 @@
 _realname=Sync-my-L2P
 pkgname=sync-my-l2p
 pkgver=2.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Sync the Moodle instance of RWTH Aachen University."
 arch=('x86_64')
 url="https://github.com/rwthmoodle/Sync-my-L2P"
