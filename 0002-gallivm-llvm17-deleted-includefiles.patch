@@ -1,0 +1,13 @@
+diff --unified --recursive --text mesa/src/gallium/auxiliary/gallivm/lp_bld_init.c mesa-new/src/gallium/auxiliary/gallivm/lp_bld_init.c
+--- mesa/src/gallium/auxiliary/gallivm/lp_bld_init.c	2023-03-20 12:22:03.861856125 +0100
++++ mesa-new/src/gallium/auxiliary/gallivm/lp_bld_init.c	2023-03-20 13:07:34.218833163 +0100
+@@ -42,8 +42,7 @@
+ 
+ #include <llvm/Config/llvm-config.h>
+ #include <llvm-c/Analysis.h>
+-#include <llvm-c/Transforms/Scalar.h>
+-#if LLVM_VERSION_MAJOR >= 7
++#if LLVM_VERSION_MAJOR >= 7 && LLVM_VERSION_MAJOR <17
+ #include <llvm-c/Transforms/Utils.h>
+ #endif
+ #include <llvm-c/BitWriter.h>
