@@ -4,7 +4,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=radium
-pkgver=7.1.87
+pkgver=7.1.88
 pkgrel=1
 pkgdesc='A graphical music editor. A next generation tracker.'
 arch=(x86_64)
@@ -17,7 +17,7 @@ depends=(
   glu
   gsfonts
   hicolor-icon-theme
-  jack2
+  jack
   liblo
   liblrdf
   libmpc
@@ -69,31 +69,25 @@ optdepends=(
   'ladspa-plugins: package group for plugins normally included in binary releases'
   'vst-plugins: more plugins'
 )
-options=(!strip
-				 !lto )
+options=( !strip )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kmatheussen/radium/archive/$pkgver.tar.gz"
 				add-vstsdk-location-var.patch
 				build_libpds.patch
 				radium.install
 				grep.patch
-				xiinstruments.patch
 				build_linux_common.patch
 )
-sha256sums=('897a6df56aedea417bbe146c85ee45f8b79bf749beac3a7c17568a42b5a9f9d9'
+sha256sums=('5b210984cb2a6cee6ba7e276b8a9ee1c157bfee136a47b79f63027873a7e84f0'
             'ed456586a1f28eec9acd081a676e61145e13f07c1a6e967c0af1f7d08be4023e' 
             '2f145e84c5940f4f82544ae68e668d5bd02ee7bce559d3354f60d12eaea1a548' 
             'f627730ff7a819e8cc5ac5c2b5f1fb2f2237327db6ea5442c55a23c1ce82ef14'
             '7ccb4eb8c2924a5b6c610b4f35bc9ff22602cb2e131035d285bef87d813460b3'
-            'c1937b1d7846c469f477e060a71b6785e7cc24cc5ba6f58374e219fa6504ee5a'
             '0decfc3adcba836004ac34d970a83d4d0b69743334a586f42be53b3de7bdd5a4'
 					)
 install=radium.install
 
 prepare() {
   cd radium-$pkgver
-	#makes all xiinstruments available in local browser
-  patch -p1 < "$srcdir/xiinstruments.patch"
-
   #sed "/grep [^\-]*\\\ /s/grep \([^\]*\)\\\ \([^ ]*\)/grep \"\1 \2\"/p" -i check_dependencies.sh
   patch -p0 < "$srcdir/grep.patch"
 
