@@ -1,10 +1,10 @@
-# Maintainer: Marco Pompili <aur@mg.odd.red>
+# Maintainer: Marco Pompili <aur@odd.red>
 
 DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 
 pkgname=openframeworks
 pkgver=0.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source C++ toolkit for creative coding."
 url="http://openframeworks.cc/"
 arch=('x86_64')
@@ -16,9 +16,11 @@ install=openframeworks.install
 source=(
   "of-make-workspace"
   "https://openframeworks.cc/versions/v${pkgver}/of_v${pkgver}_linux64gcc6_release.tar.gz"
+  "https://gist.githubusercontent.com/kerrickstaley/7f8c65a27a1f4e79a942235b87c1f0c0/raw/28f7d0dd94237076f72b8eaf2e009831d7d61a5d/fix-libsndfile-error.patch"
 )
 sha256sums=('b4fc38288595df566f770018d871970fb13fb2ad4af7e9e5cddc60288f338806'
-            '9907beae6c786751470f5a55f1273280f3c240b4a93ce0c4a32c4a62b401470c')
+            '9907beae6c786751470f5a55f1273280f3c240b4a93ce0c4a32c4a62b401470c'
+            '67693b69e2c36861d14ce9fa57b6855898c48fa4ed90e6aa14d7ce3a779b6110')
 
 _name="of_v${pkgver}_linux64gcc6_release"
 
@@ -45,11 +47,15 @@ prepare() {
   while getopts tj: opt ; do
     case "$opt" in
       t)  # testing, only build Debug
-	BUILD="test" ;;
+	      BUILD="test" ;;
       j)  # make job count for parallel build
-	JOBS="$OPTARG"
+	      JOBS="$OPTARG"
     esac
   done
+
+  msg2 "Apply patch to fix libsndfile error..."
+  cd ${srcdir}/${_name}
+  patch -p1 < ${srcdir}/fix-libsndfile-error.patch
 }
 
 build() {
