@@ -1,7 +1,8 @@
 # Maintainer: shizhiex <shizhiex@gmail.com>
 
 pkgname="orca-slicer"
-pkgver=1.6.1
+pkgver=1.6.2
+_tag='1.6.2-beta'
 pkgrel=1
 pkgdesc="Orca Slicer is a fork of Bambu Studio. It was previously known as BambuStudio-SoftFever"
 arch=('x86_64')
@@ -12,13 +13,13 @@ makedepends=('cmake' 'extra-cmake-modules' 'git' 'm4' 'pkgconf')
 provides=("OrcaSlicer")
 conflicts=("OrcaSlicer")
 source=(
-  "https://github.com/SoftFever/OrcaSlicer/archive/refs/tags/v${pkgver}.tar.gz"
-  "https://raw.githubusercontent.com/SoftFever/OrcaSlicer/v${pkgver}/deps/Boost/0001-Boost-fix.patch"
+  "https://github.com/SoftFever/OrcaSlicer/archive/refs/tags/v${_tag}.tar.gz"
+  "https://raw.githubusercontent.com/SoftFever/OrcaSlicer/v${_tag}/deps/Boost/0001-Boost-fix.patch"
   'CMakeLists.txt.patch'
   'OrcaSlicer.desktop.patch'
   'orca-slicer.sh'
   )
-sha256sums=('4c4f5d5b483ceb2f136f9fd36d39ee9d892bc6996d6f7f7b13b2c9580b254783'
+sha256sums=('e084d402cd16e9a774048c5093c4cba7b95d9f5023dc61fbcde1547386c6f6af'
             'bb2662d0a4c58c43726ec98ef4acf201fcf98719c9bbfd207e2d6cdf695a2093'
             'f2b56d64bc5d80cf726ab0a4931ecf84cdaa938bb6da6134d36e6a05d3a0eee4'
             '030d32a60c7bbecacaf1f3844ed6157c1eb1d67b7009a8132e91b0a07deb77c0'
@@ -27,7 +28,7 @@ sha256sums=('4c4f5d5b483ceb2f136f9fd36d39ee9d892bc6996d6f7f7b13b2c9580b254783'
 
 prepare() {
   # link up directory
-  ln -sf OrcaSlicer-${pkgver} OrcaSlicer
+  ln -sf OrcaSlicer-${_tag} OrcaSlicer
   # fix broken udev install reference
   patch -p0 < "$srcdir/CMakeLists.txt.patch"
   # add missing 0001-Boost-fix.patch
