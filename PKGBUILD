@@ -1,19 +1,24 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
 
 pkgname=virtiofsd
-pkgver=1.5.1
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="Vhost-user virtio-fs device backend written in Rust"
 arch=(x86_64)
 url="https://gitlab.com/virtio-fs/virtiofsd"
 license=(Apache BSD)
-depends=(gcc-libs glibc libcap-ng libseccomp)
+depends=(
+  gcc-libs
+  glibc
+  libcap-ng
+  libseccomp
+)
 makedepends=(cargo)
 provides=(virtiofsd-provider)
 conflicts=(virtiofsd-provider)
 source=($url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
-sha512sums=('a50b3fac6d5eafc691ef4fc8808acb4dc03261f01623f6675a234d457231f96181e9cf6c8ac68b4fe1b1c97257faf56bc6d0c2776142c9dbfe82b4e9bde0e34a')
-b2sums=('52c86ab9d4842ecd496aed3f09a98be96d7ee0eda43a2519eb066be1f648963b155386f9eac1a1c878c12fd05d928f88700c6a7a840c0f34dfa6f86caab15fec')
+sha512sums=('7036df9e576319bb599b4783b799ff0c2a56f8b17485314aec8f1663a659ce06b987362ddcb83b0eb2eb16b156ec547728584a5cc3939194ea23569dbcef77b1')
+b2sums=('212ec1c4a06aaa021b8c42d30a44c855a98ad8add7ddd5a9f5859b3e1e8e47446b9b675f0d6dfcef9ab194b9ad63a2cb84561d2f10766a35206c28fd8bff96c3')
 
 prepare() {
   cd $pkgname-v$pkgver
