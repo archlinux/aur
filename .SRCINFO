@@ -1,0 +1,19 @@
+pkgbase = video2midi-git
+	pkgdesc = Convert Synthesia YouTube videos to MIDI
+	pkgver = 0.4.7.r3.05f2ff1
+	pkgrel = 1
+	url = https://github.com/svsdval/video2midi
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = hdf5
+	depends = python-midiutil
+	depends = python-opencv
+	depends = python-opengl
+	depends = python-pygame
+	provides = video2midi
+	conflicts = video2midi
+	source = video2midi::git+https://github.com/svsdval/video2midi.git
+	sha256sums = SKIP
+
+pkgname = video2midi-git
