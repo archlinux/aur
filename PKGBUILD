@@ -2,11 +2,11 @@
 pkgname=('pop-launcher-git' 'pop-shell-plugin-system76-power-git')
 pkgbase=pop-launcher-git
 pkgver=1.2.1.r47.gce2ba21
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/launcher"
 license=('MPL2')
-depends=('fd' 'libqalculate' 'sh' 'xdg-utils')
+depends=('dbus' 'fd' 'libqalculate' 'sh' 'xdg-utils')
 makedepends=('cargo' 'git' 'just' 'libegl' 'libxkbcommon')
 options=('!lto')
 source=('git+https://github.com/pop-os/launcher.git')
@@ -57,7 +57,7 @@ package_pop-launcher-git() {
 
 package_pop-shell-plugin-system76-power-git() {
   pkgdesc="System76 Power scripts for the launcher"
-  depends=('gnome-shell-extension-pop-shell' 'system76-power')
+  depends=('gnome-terminal' 'system76-power')
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}" 'pop-launcher-system76-power')
   replaces=('pop-launcher-system76-power-git')

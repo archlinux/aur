@@ -1,6 +1,6 @@
 pkgbase = pop-launcher-git
 	pkgver = 1.2.1.r47.gce2ba21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pop-os/launcher
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = pop-launcher-git
 	makedepends = just
 	makedepends = libegl
 	makedepends = libxkbcommon
+	depends = dbus
 	depends = fd
 	depends = libqalculate
 	depends = sh
@@ -26,7 +27,7 @@ pkgname = pop-launcher-git
 
 pkgname = pop-shell-plugin-system76-power-git
 	pkgdesc = System76 Power scripts for the launcher
-	depends = gnome-shell-extension-pop-shell
+	depends = gnome-terminal
 	depends = system76-power
 	provides = pop-shell-plugin-system76-power
 	conflicts = pop-shell-plugin-system76-power
