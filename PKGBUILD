@@ -1,12 +1,12 @@
 # Maintainer: Kat Witten <turtlewit@live.com>
 pkgname=cglm
 pkgver=0.8.9
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenGL Mathematics (glm) for C"
 arch=('x86_64')
 url="https://github.com/recp/cglm"
 license=('MIT')
-depends=('glibc')
+makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/recp/cglm/archive/v$pkgver.tar.gz")
 md5sums=('2efb9281410a3e923db49e433796c393')
 
