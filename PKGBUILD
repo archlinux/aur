@@ -47,7 +47,7 @@ build() {
   for _s in "${_schemas[@]}"; do rime_deployer --compile "$_s.schema.yaml"; done
 
   # comment ignore schemas
-  _suggestion_schemas=$(grep -A3 'schema_list:' "$_suggestion" | tail -n3 | sed 's/.*schema: //g')
+  _suggestion_schemas=$(grep -A4 'schema_list:' "$_suggestion" | tail -n4 | sed 's/.*schema: //g')
 
   for _s in $_suggestion_schemas; do
     [[ ! ${_schemas[*]} =~ (^|[[:space:]])"$_s"($|[[:space:]]) ]] && sed -i "s/^\s*- schema: $_s/#&/" "$_suggestion";
