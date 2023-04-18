@@ -1,13 +1,13 @@
 pkgbase = system76-acpi-dkms
 	pkgdesc = This provides the system76_acpi in-tree driver for systems missing it.
-	pkgver = 1.0.2+7+ga88dcce
+	pkgver = 1.0.2+10+ged01124
 	pkgrel = 1
 	url = https://github.com/pop-os/system76-acpi-dkms
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = dkms
-	source = git+https://github.com/pop-os/system76-acpi-dkms.git#commit=a88dcce08b9b6c3e6db2406152f639a868238f3d
+	source = git+https://github.com/pop-os/system76-acpi-dkms.git#commit=ed0112437f85665b6473dbeb1229b4850c8635ef
 	source = system76-acpi-dkms.conf
 	sha256sums = SKIP
 	sha256sums = ae5fe704761f5ff7d7a4e161044a27c6346854f17e3bd5476e863ad4e1ec8d6b

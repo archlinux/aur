@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=system76-acpi-dkms
-pkgver=1.0.2+7+ga88dcce
+pkgver=1.0.2+10+ged01124
 pkgrel=1
 pkgdesc="This provides the system76_acpi in-tree driver for systems missing it."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/pop-os/system76-acpi-dkms"
 license=('GPL')
 depends=('dkms')
 makedepends=('git')
-_commit=a88dcce08b9b6c3e6db2406152f639a868238f3d
+_commit=ed0112437f85665b6473dbeb1229b4850c8635ef
 source=("git+https://github.com/pop-os/system76-acpi-dkms.git#commit=$_commit"
         "$pkgname.conf")
 sha256sums=('SKIP'
