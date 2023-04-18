@@ -2,7 +2,7 @@
 # Submitter: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.25.14360.b57ab74ee7
+pkgver=0.0.27.14879.999caea021
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=(x86_64)
@@ -49,7 +49,7 @@ conflicts=(rpcs3)
 options=(!emptydirs !lto)
 source=(
   git+https://github.com/RPCS3/rpcs3.git
-  rpcs3-llvm::git+https://github.com/RPCS3/llvm-mirror.git
+  llvm::git+https://github.com/llvm/llvm-project.git
   git+https://github.com/KhronosGroup/glslang.git
 )
 sha256sums=(
@@ -70,9 +70,9 @@ pkgver() {
 prepare() {
   cd rpcs3
   
-  git submodule init 3rdparty/glslang/glslang llvm
+  git submodule init 3rdparty/glslang/glslang 3rdparty/llvm/llvm
   git config submodule.3rdparty/glslang.url ../glslang
-  git config submodule.llvm.url ../rpcs3-llvm
+  git config submodule.3rdparty/llvm/llvm.url ../llvm
   
   SUBMODULES=($(git config --file .gitmodules --get-regexp path | \
     awk '!/ffmpeg/ && !/libpng/ && !/zlib/ && !/curl/ && !/llvm/ && !/glslang/ && !/pugixml/ '))
@@ -90,10 +90,10 @@ prepare() {
     url=$(git config $urlid | awk -F/ '{print $(NF-1)"/"$(NF-0)}')
 
     git config $urlid https://github.com/$url
-    git -c protocol.file.allow=always submodule update --init --depth=1 $path
+    git -c protocol.file.allow=always submodule update --init --filter=tree:0 $path
   done
   
-  git -c protocol.file.allow=always submodule update 3rdparty/glslang/glslang llvm
+  git -c protocol.file.allow=always submodule update 3rdparty/glslang/glslang 3rdparty/llvm/llvm
 }
 
 build() {
@@ -112,6 +112,7 @@ build() {
     -DUSE_SYSTEM_CURL=ON \
     -DUSE_SYSTEM_FLATBUFFERS=OFF \
     -DUSE_SYSTEM_PUGIXML=ON \
+    -DBUILD_LLVM=ON
   
   make -C build
 }
