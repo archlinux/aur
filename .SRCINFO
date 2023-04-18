@@ -1,22 +1,23 @@
 pkgbase = python-trackpy
 	pkgdesc = Python particle tracking tool
-	pkgver = 0.5.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/soft-matter/trackpy
 	arch = any
 	license = BSD
-	checkdepends = python-nose
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	depends = python>=3.6
-	depends = python-numpy>=1.14
-	depends = python-scipy>=1.1
+	makedepends = python-wheel
+	depends = python-numpy
+	depends = python-scipy
 	depends = python-matplotlib
 	depends = python-yaml
 	optdepends = python-pims: simplifies image-reading
 	optdepends = python-pytables: saving results in an HDF5 file
 	optdepends = python-numba: for accelerated feature-finding and linking
 	optdepends = python-pillow: for some display routines
-	source = https://files.pythonhosted.org/packages/source/t/trackpy/trackpy-0.5.0.tar.gz
-	sha256sums = b5e8a40491a4cdc1c8c5f15e75e468b9ee51f677018d330622f9277468d0f297
+	source = python-trackpy-0.6.1.tar.gz::https://files.pythonhosted.org/packages/source/t/trackpy/trackpy-0.6.1.tar.gz
+	sha256sums = 0e14a6752f2aa2febe6116a139bb2d3ee16811512217744eca51b23bff14ee48
 
 pkgname = python-trackpy
