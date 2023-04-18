@@ -37,6 +37,7 @@ build() {
 	/usr/src/nginx/configure \
 		--with-compat \
 		--with-ld-opt='-lpcre -Wl,-E'  \
+		--with-http_ssl_module \
 		--add-dynamic-module=../$_modname-nginx-module-$pkgver
 	make modules
 }
