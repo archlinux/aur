@@ -1,5 +1,5 @@
 pkgname=startwine
-pkgver=370
+pkgver=373
 pkgrel=1
 pkgdesc="Software for playing Microsoft Windows games and launchers"
 arch=('x86_64')

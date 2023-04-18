@@ -1,6 +1,6 @@
 pkgbase = startwine
 	pkgdesc = Software for playing Microsoft Windows games and launchers
-	pkgver = 370
+	pkgver = 373
 	pkgrel = 1
 	url = https://github.com/RusNor/StartWine-Launcher
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = startwine
 	depends = python-numpy
 	depends = python-six
 	depends = wine-staging
-	source = https://github.com/RusNor/StartWine-Launcher/releases/download/StartWine_v370/StartWine_v370
+	source = https://github.com/RusNor/StartWine-Launcher/releases/download/StartWine_v373/StartWine_v373
 	source = StartWine.desktop
 	source = StartWine.png
 	sha256sums = SKIP
