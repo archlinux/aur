@@ -1,6 +1,6 @@
 pkgbase = setzer-git
 	pkgdesc = LaTeX editor written in Python with Gtk
-	pkgver = 55.r0.g405c284
+	pkgver = 55.r10.g35e4639
 	pkgrel = 1
 	url = https://www.cvfosammmm.org/setzer/
 	arch = any
@@ -20,6 +20,7 @@ pkgbase = setzer-git
 	depends = webkit2gtk
 	depends = xdg-utils
 	depends = libhandy
+	depends = python-bibtexparser
 	provides = setzer
 	conflicts = setzer
 	source = git+https://github.com/cvfosammmm/Setzer.git

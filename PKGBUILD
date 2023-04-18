@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=setzer-git
-pkgver=55.r0.g405c284
+pkgver=55.r10.g35e4639
 pkgrel=1
 pkgdesc='LaTeX editor written in Python with Gtk'
 arch=('any')
@@ -11,7 +11,7 @@ url='https://www.cvfosammmm.org/setzer/'
 license=('GPL3')
 depends=('gspell' 'gtk3' 'gtksourceview4' 'poppler-glib' 'python-cairo'
 	 'python-gobject' 'python-pdfminer' 'python-pyxdg' 'texlive-core'
-	 'webkit2gtk' 'xdg-utils' 'libhandy')
+	 'webkit2gtk' 'xdg-utils' 'libhandy' 'python-bibtexparser')
 makedepends=('appstream' 'git' 'meson')
 provides=('setzer')
 conflicts=('setzer')
