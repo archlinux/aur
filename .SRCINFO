@@ -1,6 +1,6 @@
 pkgbase = sdl2pp
 	pkgdesc = C++ bindings/wrapper for SDL2
-	pkgver = 0.18.0
+	pkgver = 0.18.1
 	pkgrel = 1
 	url = https://sdl2pp.amdmi3.ru
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = sdl2pp
 	depends = sdl2_image
 	depends = sdl2_mixer
 	depends = sdl2_ttf
-	source = sdl2pp-0.18.0.tar.gz::https://github.com/libSDL2pp/libSDL2pp/archive/0.18.0.tar.gz
-	b2sums = c706891d968b2625f88a77adf27ebdc8b57cdad85f250563ba90aa7a0addf624eacfc028b4de22fbb36a35f331a681a12db6775235107f8d48d41449ff91f003
+	source = sdl2pp-0.18.1.tar.gz::https://github.com/libSDL2pp/libSDL2pp/archive/0.18.1.tar.gz
+	b2sums = 1aef60284cdc5b69ad3dcbec71453220826fbc686c73730517c9d63f1c11f92236ec53331b2e4455d89171c40e464dcee485aebb9f994a0e0000eefeff4658a6
 
 pkgname = sdl2pp
