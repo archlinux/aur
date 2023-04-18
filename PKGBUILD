@@ -5,7 +5,7 @@
 
 pkgname=nginx-mainline-mod-lua
 pkgver=0.10.24
-pkgrel=1
+pkgrel=2
 epoch=1
 
 _modname="${pkgname#nginx-mainline-mod-}"
@@ -34,11 +34,10 @@ build() {
 	cd build
 	export LUAJIT_INC=$(pkg-config luajit --variable=includedir)
 	export LUAJIT_LIB=$(pkg-config luajit --variable=libdir)
-	/usr/src/nginx/configure \
-		--with-compat \
-		--with-ld-opt='-lpcre -Wl,-E'  \
-		--with-http_ssl_module \
-		--add-dynamic-module=../$_modname-nginx-module-$pkgver
+	nginx -V 2>&1 |
+		grep -o -- '--prefix=.*$' |
+		xargs /usr/src/nginx/configure \
+			--add-dynamic-module=../$_modname-nginx-module-$pkgver
 	make modules
 }
 

@@ -1,7 +1,7 @@
 pkgbase = nginx-mainline-mod-lua
 	pkgdesc = Lua script engine module for mainline nginx
 	pkgver = 0.10.24
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/openresty/lua-nginx-module
 	arch = i686
