@@ -1,35 +1,31 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Maintainer: nemanjan00 <nemanjan00@gmail.com>
 
 pkgname=dsd
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.7.0
+pkgrel=1
 pkgdesc="Decoder for P25, ProVoice, X2-TDMA, DMR/MOTOTRBO, NXDN"
 arch=('i686' 'x86_64')
 url="https://github.com/szechyjs/dsd"
 license=('custom:copyright')
-depends=('mbelib')
-source=("dsd-$pkgver.tgz::https://github.com/szechyjs/dsd/archive/v${pkgver}.tar.gz")
-md5sums=('e1c8faf8b0156215ffefee6a614e07a3')
-
-prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
-    sed -i -e 's/mbe_processAmbe2250Dataf/mbe_processAmbe2450Dataf/' \
-           -e 's/mbe_processAmbe3600x2250Framef/mbe_processAmbe3600x2450Framef/' \
-        dsd_mbe.c
-}
+depends=('mbelib' 'itpp')
+source=("dsd-$pkgver.tgz::https://github.com/szechyjs/dsd/archive/master.tar.gz")
+md5sums=('278705be2e30704cce01b83024c597b9')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-master"
+
+    cmake -DCMAKE_INSTALL_PREFIX:STRING="$pkgdir/usr" . -Wno-dev
 
     # ./configure is baloney
     make DEST_BASE="/usr"
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-master"
 
     install -d "$pkgdir/usr/bin"
-    make install DEST_BIN="$pkgdir/usr/bin"
+    echo "$pkgdir/usr/bin"
+    make install
     install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
-    install -Dm644 README "$pkgdir/usr/share/doc/$pkgname/$pkgname.txt"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/$pkgname.txt"
 }
