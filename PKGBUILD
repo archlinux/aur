@@ -1,5 +1,5 @@
 # Maintainer: Ranieri Althoff <ranisalt+aur at gmail dot com>
-# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=('mangohud' 'mangoapp' 'mangohud-common')
 pkgbase=mangohud
 pkgver=0.6.9.1
