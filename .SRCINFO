@@ -1,0 +1,15 @@
+pkgbase = python-py-slvs
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/realthunder/slvs_py
+	arch = any
+	makedepends = python-setuptools
+	makedepends = python-scikit-build
+	makedepends = cmake
+	makedepends = git
+	depends = python
+	depends = swig
+	source = https://github.com/realthunder/slvs_py/archive/refs/tags/v1.0.5.tar.gz
+	md5sums = eab7e36a0ac0ed5147aef7044c0100a6
+
+pkgname = python-py-slvs
