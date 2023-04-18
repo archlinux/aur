@@ -1,22 +1,29 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
+## GPG Keys: 784DF7A14968C5094E16839C904FC49417B44DCD
+## Get from the Ubuntu keyserver
+## gpg --keyserver keyserver.ubuntu.com --recv-keys 784DF7A14968C5094E16839C904FC49417B44DCD
+
 pkgname=hilbish
-pkgver=2.0.1
+pkgver=2.1.2
 pkgrel=1
+_commit=5541e22
 pkgdesc="The flower shell for Lua users"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/rosettea/hilbish"
 license=('MIT')
 depends=('lua-lunacolors' 'lua-succulent' 'lua-inspect')
-makedepends=('go')
+makedepends=('git' 'go')
 install="$pkgname.install"
 options=('!emptydirs')
 changelog=CHANGELOG.md
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9adb3ed5efd4f4c5719f152379a7fa081bfcb563f2edea3b90162a49f20b32e2')
+# source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("$pkgname::git+$url#commit=$_commit?signed")
+sha256sums=('SKIP')
+validpgpkeys=('784DF7A14968C5094E16839C904FC49417B44DCD') ## sammyette
 
 prepare() {
-	cd "Hilbish-$pkgver"
+	cd "$pkgname"
 	go mod download
 }
 
@@ -27,18 +34,18 @@ build() {
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
-	cd "Hilbish-$pkgver"
+	cd "$pkgname"
 	go build -ldflags "-linkmode=external -X main.dataDir=/usr/share/hilbish"
 }
 
 check() {
-	cd "Hilbish-$pkgver"
+	cd "$pkgname"
 	go test ./...
 }
 
 package() {
 	## do not use the taskfile, install everything manually
-	cd "Hilbish-$pkgver"
+	cd "$pkgname"
 	install -Dv "$pkgname" -t "$pkgdir/usr/bin/"
 	install -dv "$pkgdir/usr/share/hilbish/"
 	cp -av libs docs emmyLuaDocs nature .hilbishrc.lua "$pkgdir/usr/share/hilbish/"

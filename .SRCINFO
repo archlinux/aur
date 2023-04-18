@@ -1,6 +1,6 @@
 pkgbase = hilbish
 	pkgdesc = The flower shell for Lua users
-	pkgver = 2.0.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/rosettea/hilbish
 	install = hilbish.install
@@ -9,12 +9,14 @@ pkgbase = hilbish
 	arch = i686
 	arch = aarch64
 	license = MIT
+	makedepends = git
 	makedepends = go
 	depends = lua-lunacolors
 	depends = lua-succulent
 	depends = lua-inspect
 	options = !emptydirs
-	source = hilbish-2.0.1.tar.gz::https://github.com/rosettea/hilbish/archive/v2.0.1.tar.gz
-	sha256sums = 9adb3ed5efd4f4c5719f152379a7fa081bfcb563f2edea3b90162a49f20b32e2
+	source = hilbish::git+https://github.com/rosettea/hilbish#commit=5541e22?signed
+	validpgpkeys = 784DF7A14968C5094E16839C904FC49417B44DCD
+	sha256sums = SKIP
 
 pkgname = hilbish
