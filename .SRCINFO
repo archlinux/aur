@@ -1,0 +1,21 @@
+pkgbase = emilua-dumb-dbus
+	pkgdesc = Dumb D-Bus bindings for Emilua
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/emilua/dumb-dbus
+	arch = i686
+	arch = x86_64
+	license = boost
+	makedepends = git
+	makedepends = meson
+	makedepends = boost
+	makedepends = gawk
+	makedepends = gperf
+	makedepends = asciidoctor
+	depends = emilua
+	depends = emilua-glib
+	depends = glibmm-2.68
+	source = emilua-dumb-dbus::git+https://gitlab.com/emilua/dumb-dbus.git#tag=v0.1.0
+	md5sums = SKIP
+
+pkgname = emilua-dumb-dbus
