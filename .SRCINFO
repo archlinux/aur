@@ -1,6 +1,6 @@
 pkgbase = opencpn
 	pkgdesc = Open Source Chart Plotting / Marine Navigation
-	pkgver = 5.6.2
+	pkgver = 5.8.0
 	pkgrel = 1
 	url = http://opencpn.org
 	arch = x86_64
@@ -14,12 +14,12 @@ pkgbase = opencpn
 	depends = libsndfile
 	depends = libarchive
 	depends = libexif
+	depends = glew
 	depends = glu
 	depends = webkit2gtk
+	depends = wxsvg
 	optdepends = gpsd: GPS position support
-	source = https://github.com/OpenCPN/OpenCPN/archive/Release_5.6.2.tar.gz
-	source = wx_workaround.patch
-	b2sums = a45e19d293d63262f2bb6bd0bd5d18723cadd0b93af8e64484b55d246cebbe623dccbb6a1d257eccd74fb9111953d9cdd4b44d6f3fb38c3a9f40fa253718f337
-	b2sums = ac80978933a4893aa55b019547025e07e888b689378eba82322d1f36a8db5f64faf150c4084690d621e3d30e7fbbd5c94f47ec8582e6c1e174dcd60d7b79d176
+	source = opencpn-5.8.0.tar.gz::https://github.com/OpenCPN/OpenCPN/archive/Release_5.8.0.tar.gz
+	b2sums = 7a85216526fc9d79995e2d0aabb55c68cd7627106e30e0a755df494cd30345131b7e8e8eb9d71f3c2c2cec0e15664a4ae45fa43f4332568b83b23f3839bf85ac
 
 pkgname = opencpn
