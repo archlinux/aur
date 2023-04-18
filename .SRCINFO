@@ -1,6 +1,6 @@
 pkgbase = viper-bin
 	pkgdesc = Viper is a launcher and updater for Northstar, and not much more than that.
-	pkgver = 1.7.2
+	pkgver = 1.7.3
 	pkgrel = 1
 	epoch = 3
 	url = https://github.com/0neGal/viper
@@ -9,7 +9,7 @@ pkgbase = viper-bin
 	depends = nss
 	depends = alsa-lib
 	depends = gtk3
-	source = https://github.com/0neGal/viper/releases/download/v1.7.2/viper_1.7.2_amd64.deb
-	sha256sums = f060b926c105d7d72060ee80524487189755d03966a950a341e803200098f8e8
+	source = https://github.com/0neGal/viper/releases/download/v1.7.3/viper_1.7.3_amd64.deb
+	sha256sums = d35d21896573881b862fb96f0c9c938d56c4aa841a467928b269d5ccaabefad3
 
 pkgname = viper-bin
