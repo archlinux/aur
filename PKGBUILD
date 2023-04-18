@@ -10,8 +10,8 @@ license=("GPL-3.0")
 source=("git+https://github.com/alexkdeveloper/relaxator")
 url="https://github.com/alexkdeveloper/relaxator"
 
-pkgver=1.0.8.r0.gf2a7f3a
-pkgrel=1
+pkgver=1.0.8.f2a7f3a
+pkgrel=2
 
 depends=("gtk4" "libadwaita" "vala")
 makedepends=("meson" "ninja" "git")
@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$_pkgname"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)//;s/-/./g'
 }
 
 build() {
