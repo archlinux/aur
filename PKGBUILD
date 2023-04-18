@@ -3,11 +3,11 @@
 _pkgname="memos"
 _gitauthor="usememos"
 _gitbranch="main"
-_gittag="v0.12.1"
+_gittag="v0.12.2"
 
 
 pkgname="${_pkgname}-git"
-pkgver=0.12.1.r0.gef7381f0
+pkgver=0.12.2.r0.g73b8d1dd
 pkgrel=1
 pkgdesc="A lightweight, self-hosted memo hub. Open Source and Free forever."
 url="https://github.com/${_gitauthor}/${_pkgname}"
@@ -32,7 +32,6 @@ sha512sums=('SKIP'
 )
 
 prepare () {
-  cd "$srcdir/$_pkgname"
 }
 
 pkgver(){
