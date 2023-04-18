@@ -3,17 +3,18 @@
 # Contributor: Reto Brunner <brunnre8@gmail.com>
 
 pkgname=mkosi-git
-pkgver=14.r248.g16088d236c
+pkgver=14.r348.g4c2037ca89
 pkgrel=1
 pkgdesc='Build Legacy-Free OS Images'
 arch=('any')
 url='https://github.com/systemd/mkosi'
 license=('LGPL2.1')
-depends=('python')
+depends=('python'
+         'bubblewrap')
 makedepends=('python-setuptools'
              'git')
 optdepends=('dnf: build Fedora or Mageia images'
-            'debootstrap: build Debian or Ubuntu images'
+            'apt: build Debian or Ubuntu images'
             'debian-archive-keyring: build Debian images'
             'ubuntu-keyring: build Ubuntu images'
             'arch-install-scripts: build Arch images'
@@ -21,19 +22,22 @@ optdepends=('dnf: build Fedora or Mageia images'
             'gnupg: sign images'
             'xz: compress images with xz'
             'pxz: compress images with xz more efficiently'
+            'zstd: compress images with zstd'
             'btrfs-progs: raw_btrfs and subvolume output formats'
             'dosfstools: build bootable images'
             'squashfs-tools: raw_squashfs output format'
             'e2fsprogs: raw_ext4 output format'
             'xfsprogs: raw_xfs output format'
             'tar: tar output format'
+            'cpio: cpio output format'
             'cryptsetup: add dm-verity partitions'
             'python-cryptography: sign verity data'
             # I don’t understand whether ovmf or edk2-ovmf is needed… let’s point to both for now
             'ovmf: run bootable images in QEMU'
             'edk2-ovmf: run bootable images in QEMU'
             'qemu: run bootable images in QEMU'
-            'sbsigntools: sign EFI binaries for UEFI SecureBoot')
+            'sbsigntools: sign EFI binaries for UEFI SecureBoot'
+            'systemd-ukify')
 provides=('mkosi')
 conflicts=('mkosi')
 source=('git+https://github.com/systemd/mkosi.git#branch=main')
