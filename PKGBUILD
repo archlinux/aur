@@ -1,34 +1,35 @@
-# Maintainer: N Fytilis <n-fit AT live.com>
-_pkgbase=ntfs2btrfs
-pkgname=$_pkgbase-git
-pkgbase=$_pkgbase-git
-pkgver=r220.7664363
+# Maintainer: Manuel Hüsers <aur@huesers.de>
+# Contributor: N Fytilis <n-fit AT live.com>
+
+pkgname=ntfs2btrfs-git
+pkgver=20220812.r10.gb8ae0f8
 pkgrel=1
-epoch=
-pkgdesc="Convertion from ntfs to btrfs keeping NT metadata"
-arch=(any)
-url=""
-license=('GPL')
-depends=(fmt)
-makedepends=(cmake gcc)
-source=("git+https://github.com/maharmstone/ntfs2btrfs")
-md5sums=(SKIP)
+pkgdesc="In-place conversion of Microsoft's NTFS filesystem to the open-source filesystem Btrfs"
+arch=('x86_64')
+url="https://github.com/maharmstone/${pkgname%-git}"
+license=('GPL2')
+depends=('fmt' 'zlib' 'lzo' 'zstd')
+makedepends=('git' 'cmake' 'pkgconf')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgbase"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "${pkgname%-git}"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/release-//g;s/-/./g'
 }
 
 build() {
-  cd "$_pkgbase"
-  mkdir b || true
-  cd b
-  cmake -DCMAKE_INSTALL_PREFIX='/usr' ..
-  make
+	cmake -B build -S "${pkgname%-git}" \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_SBINDIR=bin \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DBUILD_TESTING=OFF
+
+	cmake --build build
 }
 
 package() {
-  cd "$_pkgbase/b"
-  make DESTDIR="$pkgdir/" install
-  mv $pkgdir/usr/sbin $pkgdir/usr/bin
+	DESTDIR="$pkgdir" cmake --install build
 }
