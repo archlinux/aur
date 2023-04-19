@@ -19,26 +19,25 @@ sha256sums=('9dc5e848a7a86cb665a885bc5f0fdf6d09ad60e814d75e78019ae3accb42c217'
             '7690ed298a139b82b763979e59998afdac88b4265d867f746811e317a152f57d')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  # remove on 0.6.14
-  patch -Np1 -i ../gcc10-stringop.diff
-  # Fix build with -Werror=format
-  patch -p1 -i ../ab604fdb.patch
+	cd "$srcdir/$pkgname-$pkgver"
+	# remove on 0.6.14
+	patch -Np1 -i ../gcc10-stringop.diff
+	# Fix build with -Werror=format
+	patch -p1 -i ../ab604fdb.patch
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  CFLAGS+=' -fcommon' # https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
-  unset LDFLAGS
-  [ -x configure ] || ./autogen.sh
-  sed -i 's|nogroup|nobody|' src/pinforc.in src/utils.c
-  [ -f Makefile ] || ./configure --prefix=/usr --sysconfdir=/etc --enable-cursor \
-	--mandir=/usr/share/man --infodir=/usr/share/info
-  make
+	cd "$srcdir/$pkgname-$pkgver"
+	CFLAGS+=' -fcommon' # https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
+	unset LDFLAGS
+	[ -x configure ] || ./autogen.sh
+	sed -i 's|nogroup|nobody|' src/pinforc.in src/utils.c
+	[ -f Makefile ] || ./configure --prefix=/usr --sysconfdir=/etc --enable-cursor --mandir=/usr/share/man --infodir=/usr/share/info
+	make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
-  rm -f "$pkgdir/usr/share/info/dir"
+	cd "$srcdir/$pkgname-$pkgver"
+	make DESTDIR="$pkgdir" install
+	rm -f "$pkgdir/usr/share/info/dir"
 }
