@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Geph
+Comment=Anti-censorship tool
+Exec=gephgui-wry
+Terminal=false
+Icon=gephgui-wry
+Categories=Application
+StartupWMClass=geph

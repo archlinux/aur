@@ -1,0 +1,22 @@
+pkgbase = gephgui-wry-git
+	pkgdesc = Geph connects you with the censorship-free Internet, even when nothing else works
+	pkgver = r104.a13d3e5
+	pkgrel = 1
+	url = https://github.com/geph-official/gephgui-wry
+	arch = x86_64
+	license = custom
+	makedepends = npm
+	makedepends = git
+	makedepends = cargo
+	provides = gephgui-wry
+	conflicts = gephgui-wry
+	source = git+https://github.com/geph-official/gephgui-wry.git
+	source = gephgui-wry.desktop
+	source = pac
+	source = pac-real
+	sha512sums = SKIP
+	sha512sums = 963079a21066ca08f1ded7f2e30205d2690a368493656861da89271a315edc38ea23535b159d222e51d1c1eb95c2714560019fe855332966fd3313acc6af7f56
+	sha512sums = 5482fddc0fa1ed911f8b85893b6f928b2350ca7e42be7dec09183921aa3c463688d833be35fc2768b6b2ca5e6bd0229c37a5ee67b520de6563ae8f242db8160e
+	sha512sums = 57a848b3992e6687d115987f7ae45e479db08bb908a10ae4eeaf0978b48f54a767a4fb401862a37593701f211c0a74969be9814ca43922b49f60a805477368b9
+
+pkgname = gephgui-wry-git
