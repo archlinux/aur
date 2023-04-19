@@ -66,6 +66,7 @@ build() {
           --auto-features=enabled \
           --wrap-mode=nodownload \
           -Dexperimental=true \
+          -Dcava=disabled \
           "${srcdir}/build"
     ninja -C "${srcdir}/build"
 }
