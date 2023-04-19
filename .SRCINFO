@@ -1,0 +1,20 @@
+pkgbase = rymfony-bin
+	pkgdesc = A command-line tool to mimic the behavior of the Symfony CLI binary (binary release)
+	pkgver = 0.4.6
+	pkgrel = 1
+	url = https://github.com/Orbitale/Rymfony
+	arch = x86_64
+	license = AGPL3
+	provides = rymfony
+	conflicts = rymfony
+	conflicts = rymfony-git
+	source = https://github.com/Orbitale/Rymfony/releases/download/v0.4.6/rymfony-ubuntu-v0.4.6
+	source = https://github.com/Orbitale/Rymfony/raw/main/CHANGELOG.md
+	source = https://github.com/Orbitale/Rymfony/raw/main/README.md
+	source = https://github.com/Orbitale/Rymfony/raw/main/LICENSE
+	sha256sums = e832ff6a97bf2d0a39086f36d962e10c27db41b12f67ce48b4a2ff6971a9526f
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = rymfony-bin
