@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A hypertext info file viewer"
 
 arch=('x86_64')
-url="http://pinfo.sourceforge.net/"
+url="https://github.com/baszoetekouw/pinfo"
 license=('GPL')
 depends=('ncurses' 'readline')
 conflicts=('pinfo')
