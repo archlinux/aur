@@ -1,14 +1,14 @@
 pkgbase = plus42
 	pkgdesc = Advanced scientific programmable calculator, based on Free42
-	pkgver = 1.0.17
+	pkgver = 1.0.18
 	pkgrel = 1
 	url = https://thomasokken.com/plus42/
 	arch = x86_64
 	license = GPL
 	depends = gtk3
-	source = http://thomasokken.com/plus42/upstream/plus42-upstream-1.0.17.tgz
+	source = http://thomasokken.com/plus42/upstream/plus42-upstream-1.0.18.tgz
 	source = plus42.desktop
-	md5sums = 386d8ce73cc816d65acbcfb25f85ecfe
+	md5sums = 3345542863e896e79c6856d6ebcc5dcb
 	md5sums = ba6d9ff8d83e9a244b5da63acbfc018e
 
 pkgname = plus42
