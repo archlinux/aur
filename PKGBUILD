@@ -12,7 +12,8 @@ depends=('python' 'networkmanager' 'python-gobject')
 makedepends=('git')
 optdepends=('dmenu: either dmenu or rofi is required'
             'rofi: either dmenu or rofi is required'
-            'network-manager-applet: for the nm-connection-editor GUI')
+            'network-manager-applet: for the nm-connection-editor GUI'
+            'libnotify: any notification platform (dunst, for example)')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+https://github.com/firecat53/$_gitname.git")
