@@ -1,104 +1,160 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
-declare -r _default_grub="/etc/default/grub"
-declare -r _grub_cfg="/boot/grub/grub.cfg"
+# Generate or update the GRUB configuration file with superuser privileges, and
+# provide setup instructions, if this theme is newly installed. Additionally,
+# warn the user if GRUB continues to refer to this theme after it has been
+# uninstalled.
+#
+# Usage:
+#     post_install:
+#         Generate the GRUB configuration file with superuser privileges if this
+#         theme is in use. If this theme is newly installed, provide setup
+#         instructions to the user.
+#
+#         Usage: post_install
+#
+#     post_upgrade:
+#         Generate the GRUB configuration file with superuser privileges if this
+#         theme is in use.
+#
+#         Usage: post_upgrade
+#
+#     post_remove:
+#         Warn the user if GRUB still uses this theme after uninstalling it.
+#
+#         Usage: post_remove
+#
+# Dependencies:
+#     This script depends on the following commands: `grep`, `grub-mkconfig`,
+#     `printf`, `sudo`.
+#
+# Note:
+#     This script assumes that the theme is located at
+#     `/usr/share/grub/themes/grub-theme-vimix-very-dark-blue`.
 
-# Print lines from `$_default_grub` that match this theme.
-_grep_theme_in_default_grub() {
-  declare -r _pattern='^GRUB_THEME="/usr/share/grub/themes/grub-theme-vimix-very-dark-blue/theme.txt"'
-  grep -P -n "$_pattern" "$_default_grub"
-}
+readonly GRUB_THEME_CFG_PATH="/boot/grub/grub.cfg"
+readonly GRUB_THEME_CONFIG_LINE='GRUB_THEME="/usr/share/grub/themes/grub-theme-vimix-very-dark-blue/theme.txt"'
+readonly GRUB_THEME_DEFAULT_PATH="/etc/default/grub"
+readonly GRUB_THEME_INSTALL_PATH="/usr/share/grub/themes/grub-theme-vimix-very-dark-blue"
 
-# Print lines from `$_grub_cfg` that match this theme.
-_grep_theme_in_grub_cfg() {
-  declare -r _pattern="/usr/share/grub/themes/grub-theme-vimix-very-dark-blue"
-  grep -F -n "$_pattern" "$_grub_cfg"
-}
+readonly GRUB_THEME_SEARCH_PATTERN="^$GRUB_THEME_CONFIG_LINE"
 
-# Use the `grub-mkconfig` tool to generate `$_grub_cfg`.
-_grub_mkconfig() {
-  sudo grub-mkconfig -o "$_grub_cfg"
-}
-
-# Use the `grub-mkconfig` tool to generate `$_grub_cfg` only if this theme is
-# used.
-_grub_mkconfig_smart() {
-  if _is_use_theme; then
-    _status "Use the 'grub-mkconfig' tool to generate '$_grub_cfg'"
-    _grub_mkconfig
-  fi
-}
-
-# Return true if `$_default_grub` uses this theme. Otherwise return false.
-_is_default_grub_use_theme() {
-  _grep_theme_in_default_grub 1>/dev/null
-  return $?
-}
-
-# Return true if `$_grub_cfg` uses this theme. Otherwise return false.
-_is_grub_cfg_use_theme() {
-  _grep_theme_in_grub_cfg 1>/dev/null
-  return $?
-}
-
-# Return true if `$_grub_cfg` and `$_default_grub` use this theme. Otherwise
-# return false.
-_is_use_theme() {
-  _is_default_grub_use_theme && _is_grub_cfg_use_theme
-  return $?
-}
-
-# Print status messages. All arguments form one status message.
-_status() {
-  printf 'grub-theme-vimix-very-dark-blue: %s\n' "$*"
-}
-
-# Print status messages to stdout. All arguments form one status message.
-_status_error() {
-  _status "$@" >&2
-}
-
-# Generate `$_grub_cfg` if both `$_grub_cfg` and `$_default_grub` use this
-# theme. This covers the case when uninstalling and reinstalling the package
-# instead of upgrading it. Also greet the user with setup instructions if this
-# theme is not already in use. This mostly applies to first-time users of this
-# theme.
+# Generate the GRUB configuration file with superuser privileges if this theme
+# is in use. If this theme is newly installed, provide setup instructions to the
+# user.
+#
+# Usage: post_install
 post_install() {
-  _grub_mkconfig_smart
+    _grub_mkconfig_smart
 
-  # Greet the user with setup instructions if this theme is not already in use.
-  # This mostly applies to first-time users of this theme.
-  if ! _is_use_theme; then
-    _status "The following instructions setup GRUB to use this theme."
-    _status "Edit the following line in $_default_grub:"
-    _status 'GRUB_THEME="'`
-        `'/usr/share/grub/themes/grub-theme-vimix-very-dark-blue/theme.txt"'
-    _status "Update GRUB by running the following command:"
-    _status "grub-mkconfig -o $_grub_cfg"
-  fi
+    if ! _is_use_theme; then
+        _status \
+            "This GRUB theme is currently installed, but not being used." \
+            ""
+            "To apply this theme, update the 'GRUB_THEME' line in the '$GRUB_THEME_DEFAULT_PATH' file to the following:" \
+            "$GRUB_THEME_CONFIG_LINE" \
+            "" \
+            "Then, generate the GRBU configuration file with superuser privileges by running the following command:" \
+            "sudo grub-mkconfig -o '$GRUB_THEME_CFG_PATH'" \
+            "" \
+            "The system will start using the new theme after the next reboot."
+    fi
 }
 
-# Generate `$_grub_cfg` if both `$_grub_cfg` and `$_default_grub` use this
-# theme.
+# Generate the GRUB configuration file with superuser privileges if this theme
+# is in use.
+#
+# Usage: post_upgrade
 post_upgrade() {
-  _grub_mkconfig_smart
+    _grub_mkconfig_smart
 }
 
-# Warn user in case GRUB still uses this theme after uninstalling it.
+# Warn the user if GRUB continues to refer to this theme after it has been
+# uninstalled.
+#
+# Usage: post_remove
 post_remove() {
-  # Check if `$_grub_cfg` uses this theme.
-  if _is_grub_cfg_use_theme; then
-    _status_error "$_grub_cfg still mentions this theme."
-    _grep_theme_in_grub_cfg
-    _status_error "Make sure to fix this ASAP! Best BEFORE rebooting!"
-  fi
+    if _is_use_theme_grub_cfg; then
+        _status_error "The current GRUB configuration file '$GRUB_THEME_CFG_PATH' still references this theme in the following line(s):"
+        _grep_theme_in_grub_cfg
+        _status_error "Please remove any reference to this theme from the current GRUB configuration file as soon as possible. It is recommended to do this before rebooting!"
+    fi
 
-  # Check if `$_default_grub` uses this theme.
-  if _is_default_grub_use_theme; then
-    _status_error "$_default_grub still mentions this theme."
-    _grep_theme_in_default_grub
-    _status_error "Make sure to either replace this theme or to disable GRUB" \
-        "themes by commenting the line containing 'GRUB_THEME=' in" \
-        "$_default_grub"
-  fi
+    if _is_use_theme_default_grub; then
+        _status_error "The default GRUB configuration file '$GRUB_THEME_DEFAULT_PATH' still references this theme in the following line(s):"
+        _grep_theme_in_default_grub
+        _status_error "Please either replace this theme with another one, or disable custom GRUB themes by commenting out this line."
+    fi
+}
+
+# Print lines from the default GRUB configuration file that match this theme.
+#
+# Usage: _grep_theme_in_default_grub
+_grep_theme_in_default_grub() {
+    grep -P -n "$GRUB_THEME_SEARCH_PATTERN" "$GRUB_THEME_DEFAULT_PATH"
+}
+
+# Print lines from the current GRUB configuration file that match this theme.
+#
+# Usage: _grep_theme_in_grub_cfg
+_grep_theme_in_grub_cfg() {
+    grep -F -n "$GRUB_THEME_INSTALL_PATH" "$GRUB_THEME_CFG_PATH"
+}
+
+# Generate the GRUB configuration file with superuser privileges.
+#
+# Usage: _grub_mkconfig
+_grub_mkconfig() {
+    sudo grub-mkconfig -o "$GRUB_THEME_CFG_PATH"
+}
+
+# Generate the GRUB configuration file with superuser privileges if this theme
+# is in use.
+#
+# Usage: _grub_mkconfig_smart
+_grub_mkconfig_smart() {
+    if _is_use_theme; then
+        _status \
+            "Generating the GRUB configuration file with superuser privileges by running the following command:" \
+            "sudo grub-mkconfig -o $GRUB_THEME_CFG_PATH"
+        _grub_mkconfig
+    fi
+}
+
+# Return true if the default GRUB theme uses this theme, otherwise return false.
+#
+# Usage: _is_use_theme_default_grub
+_is_use_theme_default_grub() {
+    _grep_theme_in_default_grub >/dev/null
+}
+
+# Return true if the current GRUB theme uses this theme, otherwise return false.
+#
+# Usage: _is_use_theme_grub_cfg
+_is_use_theme_grub_cfg() {
+    _grep_theme_in_grub_cfg >/dev/null
+}
+
+# Return true if both the default GRUB configuration file and the current GRUB
+# configuration file use this theme. Otherwise return false.
+#
+# Usage: _is_use_theme
+_is_use_theme() {
+    _is_use_theme_default_grub && _is_use_theme_grub_cfg
+}
+
+# Print each MESSAGE on a new line with the `grub-theme-vimix-very-dark-blue: `
+# prefix.
+#
+# Usage: status [MESSAGE ...]
+_status() {
+    printf 'grub-theme-vimix-very-dark-blue: %s\n' "$@"
+}
+
+# Print each MESSAGE on a new line with the `grub-theme-vimix-very-dark-blue: `
+# prefix to stderr.
+#
+# Usage: status_error [MESSAGE ...]
+_status_error() {
+    _status "$@" >&2
 }
