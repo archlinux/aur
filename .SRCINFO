@@ -1,13 +1,14 @@
 pkgbase = mingw-w64-coin-or-clp
 	pkgdesc = COIN-OR linear programming solver (mingw-w64)
 	pkgver = 1.17.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.coin-or.org/Clp
 	arch = any
 	groups = mingw-w64-coin-or
 	license = EPL
 	makedepends = mingw-w64-configure
 	depends = mingw-w64-coin-or-osi
+	depends = mingw-w64-coin-or-asl
 	options = staticlibs
 	options = !buildflags
 	options = !strip
