@@ -1,7 +1,7 @@
 # Maintainer: Charles Vejnar <first name [dot] last name [at] gmail [dot] com>
 
 pkgname=python-labxpipe
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Genomics pipelines"
 arch=("any")
@@ -17,7 +17,7 @@ makedepends=('python-build'
              'python-setuptools-scm'
              'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~vejnar/LabxPipe/archive/v${pkgver}.tar.gz")
-sha256sums=('02b28fe40752504ce21e4490c85b3906401c6ba742e86c332976db88f0397aa6')
+sha256sums=('76971d910783d88bc76ced9dd26e6bededfd6a44a3706c9a54b1a7e228dd7c90')
 
 build() {
     cd "$srcdir/LabxPipe-v$pkgver"
