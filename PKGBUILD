@@ -2,7 +2,7 @@
 
 pkgname=libjxl-metrics-git
 pkgver=0.8.1.r265.g1c748e86
-pkgrel=1
+pkgrel=2
 pkgdesc="JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 (git version)"
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
@@ -13,7 +13,8 @@ makedepends=(
     'python' 'asciidoc' 'graphviz' 'xdg-utils' 'gflags' 'zlib' 'doxygen'
 )
 provides=(
-    'libjxl' 'libjxl-git' 'libjxl.so' 'libjxl.so=0.8' 'libjxl.so=0.7' 'libjxl_threads.so' 'libjxl-doc'
+    'libjxl' 'libjxl-git' 'libjxl.so' 'libjxl_threads.so' 'libjxl-doc'
+    'libjxl.so=0.8-64' 'libjxl_threads.so=0.8-64' 'libjxl.so=0.7-64' 'libjxl_threads.so=0.7-64'
     'libjxl-doc-git' 'butteraugli' 'butteraugli-git' 'ssimulacra'
     'ssimulacra-git' 'ssimulacra2' 'ssimulacra2-git'
 )
