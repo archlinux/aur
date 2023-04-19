@@ -1,0 +1,14 @@
+pkgbase = markdownlint-cli2
+	pkgdesc = MarkdownLint Command Line Interface
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/DavidAnson/markdownlint-cli2
+	arch = any
+	license = MIT
+	makedepends = jq
+	makedepends = npm
+	depends = nodejs
+	source = https://registry.npmjs.org/markdownlint-cli2/-/markdownlint-cli2-0.6.0.tgz
+	sha512sums = 06fdb4afa58675c1cc5a2f10bc0159dc206e9dfe22e1a62655d4dfa40bd738323fd64ddfd3d0d96748b42dc5fd64c8655718e83b36d50f3d4d5b229ce61c13aa
+
+pkgname = markdownlint-cli2
