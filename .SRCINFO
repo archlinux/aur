@@ -1,12 +1,12 @@
 pkgbase = dezor-appimage
 	pkgdesc = The web browser including VPN & Adblocker
-	pkgver = 1.1.1
+	pkgver = 1.2.9
 	pkgrel = 1
 	url = https://dezor.net
 	arch = x86_64
 	license = unknown
 	options = !strip
-	source = dezor-1.1.1.AppImage::https://cdn.dezor.net/updates/linux/Dezor-v1.1.1-x86_64.AppImage
-	sha256sums = 0b28c4299c31a60525685961bbaebe2ad8cdd91d320bae111a19fb67ed49e723
+	source = dezor-1.2.9.AppImage::https://cdn.dezor.net/updates/linux/Dezor-v1.2.9-x86_64.AppImage
+	sha256sums = b59dd67cf51feb18dc8daff7056ea9c3d72d29d8d0aa3e58a50782fa632cae78
 
 pkgname = dezor-appimage
