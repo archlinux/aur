@@ -2,7 +2,7 @@
 
 pkgname=sweet-theme-git
 _pkgname=Sweet
-pkgver=3.0.r78.g5553b7b
+pkgver=3.0.r83.g670c20d
 pkgrel=1
 pkgdesc="Light and dark colorful Gtk3.20+ theme"
 arch=("any")
