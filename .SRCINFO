@@ -1,16 +1,15 @@
 pkgbase = kvkbd
 	pkgdesc = A virtual keyboard for KDE
-	pkgver = 0.7.2
-	pkgrel = 3
-	url = https://www.linux-apps.com/p/1153489/
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/ctrlcctrlv/kvkbd5
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
-	makedepends = automoc4
 	makedepends = docbook-xsl
-	depends = kdebase-runtime
-	source = https://github.com/KDE/kvkbd/archive/5a2c62ff3f880314ec0f25a0424a23b5e886633b.zip
-	md5sums = 24ca1b311549131922cc73a6de8b9eda
+	depends = qt5-base
+	depends = qt5-x11extras
+	source = https://github.com/ctrlcctrlv/kvkbd5/archive/refs/tags/v0.8.0.zip
+	b2sums = 47b929f4c04a96e3b8c539e29fdbd07e1bebfe4bac20e3863d366b4ef74871d29ddd8a12d0336acf755b7fd96c4ff62e8473ca9d7d625aaaa5e1114903029e7c
 
 pkgname = kvkbd
-
