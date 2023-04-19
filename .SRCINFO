@@ -1,0 +1,13 @@
+pkgbase = hare-madeline
+	pkgdesc = tiny readline-alike with some batteries included
+	pkgver = r136.58698e5
+	pkgrel = 1
+	url = https://git.d2evs.net/~ecs/madeline
+	arch = any
+	license = custom:WTFPL
+	makedepends = git
+	depends = hare
+	source = hare-madeline::git+https://git.d2evs.net/~ecs/madeline#commit=58698e5ccf19a44d49315f76033165a5d903b8b3
+	md5sums = SKIP
+
+pkgname = hare-madeline
