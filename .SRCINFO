@@ -1,6 +1,6 @@
 pkgbase = python-geneabacus
 	pkgdesc = Python IO functions for GeneAbacus
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://git.sr.ht/~vejnar/GeneAbacus-python
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-geneabacus
 	depends = python
 	depends = python-lz4
 	depends = python-numpy
-	source = python-geneabacus-0.2.0.tar.gz::https://git.sr.ht/~vejnar/GeneAbacus-python/archive/v0.2.0.tar.gz
-	sha1sums = 9c24020d60b55e6e9ca5cc4d94d97a558b8680a5
+	source = python-geneabacus-0.2.1.tar.gz::https://git.sr.ht/~vejnar/GeneAbacus-python/archive/v0.2.1.tar.gz
+	sha256sums = 0d12b676f1c804678261699a26cf97e0570f7076b6661d7569652e960f4d12d5
 
 pkgname = python-geneabacus

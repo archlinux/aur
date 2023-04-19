@@ -1,7 +1,7 @@
 # Maintainer: Charles Vejnar <first name [dot] last name [at] gmail [dot] com>
 
 pkgname=python-geneabacus
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Python IO functions for GeneAbacus"
 arch=("any")
@@ -16,7 +16,7 @@ makedepends=('python-build'
              'python-setuptools-scm'
              'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~vejnar/GeneAbacus-python/archive/v${pkgver}.tar.gz")
-sha1sums=('9c24020d60b55e6e9ca5cc4d94d97a558b8680a5')
+sha256sums=('0d12b676f1c804678261699a26cf97e0570f7076b6661d7569652e960f4d12d5')
 
 build() {
     cd "$srcdir/GeneAbacus-python-v$pkgver"
