@@ -17,7 +17,14 @@ license=('custom:intel')
 depends=('zlib' 'libdrm')
 optdepends=('intel-opencl-sdk: Intel SDK for OpenCL Applications')
 provides=('opencl-driver')
-source=('${pkgname}-${pkgver}-linux64.zip::https://web.archive.org/web/20190526190814/https://registrationcenter-download.intel.com/akdlm/irc_nas/11396/SRB5.0_linux64.zip')
+#source=("${pkgname}-${pkgver}-linux64.zip::https://web.archive.org/web/20190526190814if_/https://registrationcenter-download.intel.com/akdlm/irc_nas/11396/SRB5.0_linux64.zip")
+#https://web.archive.org/web/20190526190814if_/https://registrationcenter-download.intel.com/akdlm/irc_nas/11396/SRB5.0_linux64.zip
+#https://registrationcenter-download.intel.com/akdlm/irc_nas/11396/SRB5.0_linux64.zip
+
+source=("${pkgname}-${pkgver}-linux64.zip::https://web.archive.org/web/20190526190814if_/https://registrationcenter-download.intel.com/akdlm/irc_nas/11396/SRB5.0_linux64.zip")
+
+
+#source=("${pkgname}-${pkgver}-linux64.zip::https://registrationcenter-download.intel.com/akdlm/irc_nas/11396/SRB5.0_linux64.zip")
 sha256sums=('a3989a7a00f216b1a50bad37dc49629c3f7ce65104a2ca665e59d8c699bf7443')
 
 _package_internal=("intel-opencl-r${_pkgver}.x86_64.tar.xz"
