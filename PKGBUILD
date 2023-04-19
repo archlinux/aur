@@ -2,20 +2,19 @@
 
 _pkgname=xfconf
 pkgname=${_pkgname}-devel
-pkgver=4.17.2
+pkgver=4.19.0
 pkgrel=1
 pkgdesc="A simple client-server configuration storage and query system"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://docs.xfce.org/xfce/xfconf/start"
 license=('GPL2')
 groups=('xfce4-devel')
-depends=('libxfce4util' 'dbus')
-makedepends=('intltool' 'gtk-doc' 'chrpath' 'vala' 'gobject-introspection' 'python') #for gdbus-codegen
+depends=('libxfce4util')
+makedepends=('gtk-doc' 'vala' 'gobject-introspection')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-options=('!emptydirs')
 source=("https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('e4eefa03cdd3672f928e80bf86f68ba9e9ea3e1ee8208f8d964610c416ee8db0')
+sha256sums=('b7b502f7c8891807d666bb3b5dc33b50df9fdda9fd41e2341bf185b5f2579183')
 
 build() {
   cd "${_pkgname}-${pkgver}"
@@ -33,9 +32,5 @@ build() {
 
 package() {
   cd "${_pkgname}-${pkgver}"
-  make DESTDIR="$pkgdir" install
-
-  # fix insecure rpath, https://bugs.archlinux.org/task/19980
-  find "$pkgdir" -name Xfconf.so -exec chrpath -d {}  \;
+  make DESTDIR="${pkgdir}" install
 }
-
