@@ -1,9 +1,9 @@
 pkgname=fxload-libusb
 _spkgname=libusb
 pkgver=1.0.26
-pkgrel=1
+pkgrel=2
 pkgdesc='fxload from the libusb examples'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url='http://libusb.info/'
 license=('LGPL')
 depends=('libusb')
