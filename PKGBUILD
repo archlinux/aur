@@ -1,7 +1,7 @@
 # Maintainer: Deinara <christiaan.blom at mail dot com>
 
 pkgname=beyondallreason-appimage
-pkgver=1.1913.0
+pkgver=1.2124.0
 pkgrel=1
 pkgdesc="The latest release of BYAR-Chobby, the launcher for Beyond All Reason - An open source RTS game built on top of the Spring RTS Engine"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
   https://github.com/beyond-all-reason/BYAR-Chobby/releases/download/v${pkgver}/Beyond-All-Reason-${pkgver}.AppImage
 )
 sha512sums=(
-  c9fa69a03f28cdb30e6f24f83bc0abe01177de9192c815afd148d050ff54d85ad14152c0fbcb76dac9ea9ab5ca7585c60e8c83eacdaa0a17911f763dec4dae68
+  9055d5b31ea1914086b9dcf0fa49d6531ce5b854abf192e80941505b982afbb30cda44c5b6abbdd0dae8cfd9133e0447f46cd660024c0c65906af2f8966c4da0
 )
 _filename="Beyond-All-Reason-${pkgver}.AppImage"
 _squashfs_desktop_file="beyond-all-reason.desktop"
