@@ -8,6 +8,7 @@ pkgdesc="Powerfull download accelerator and video downloader (binary release)"
 arch=('x86_64')
 url="https://github.com/subhra74/xdm-experimental-binaries"
 license=('GPL3')
+depends=('ffmpeg' 'gtk3>=3.22.0')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-beta-git")
 source=("$url/releases/download/$pkgver-beta/xdman_gtk-$pkgver-1.fc36.x86_64.rpm")

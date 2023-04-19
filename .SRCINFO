@@ -5,6 +5,8 @@ pkgbase = xdman8-bin
 	url = https://github.com/subhra74/xdm-experimental-binaries
 	arch = x86_64
 	license = GPL3
+	depends = ffmpeg
+	depends = gtk3>=3.22.0
 	provides = xdman8
 	conflicts = xdman8
 	conflicts = xdman8-beta-git
