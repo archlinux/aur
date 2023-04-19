@@ -1,13 +1,13 @@
 pkgbase = mirrord-bin
 	pkgdesc = Run your service in the context of your cloud environment.
-	pkgver = 3.37.0
+	pkgver = 3.38.1
 	pkgrel = 1
 	url = https://mirrord.dev/
 	arch = x86_64
 	license = MIT
 	makedepends = coreutils
 	makedepends = grep
-	source = mirrord_3.37.0::https://github.com/metalbear-co/mirrord/releases/download/3.37.0/mirrord_linux_x86_64
-	sha256sums = bbf6becc52ecb8adef3db2ae7ff252fc977161f80e277664087afe1212126dfa
+	source = mirrord_3.38.1::https://github.com/metalbear-co/mirrord/releases/download/3.38.1/mirrord_linux_x86_64
+	sha256sums = 624d99e92ebf1ab02e1e5f6cefe8b452a1fe793b0524cb1ca50729e552158e08
 
 pkgname = mirrord-bin
