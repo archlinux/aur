@@ -2,7 +2,7 @@
 # Contributor: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname=miniserve-bin
-pkgver=0.23.0
+pkgver=0.23.1
 pkgrel=1
 pkgdesc='For when you really just want to serve some files over HTTP right now!'
 provides=('miniserve')
@@ -13,9 +13,9 @@ license=('MIT')
 source_armv7h=("miniserve-$pkgver-armv7h"::"https://github.com/svenstaro/miniserve/releases/download/v${pkgver}/miniserve-${pkgver}-armv7-unknown-linux-musleabihf")
 source_x86_64=("miniserve-$pkgver-x86_64"::"https://github.com/svenstaro/miniserve/releases/download/v${pkgver}/miniserve-${pkgver}-x86_64-unknown-linux-musl")
 source_aarch64=("miniserve-$pkgver-aarch64"::"https://github.com/svenstaro/miniserve/releases/download/v${pkgver}/miniserve-${pkgver}-aarch64-unknown-linux-musl")
-sha256sums_x86_64=('122576cc150d0487d349f19e0b02243823d5d8697ac4d6fdab7e0dfcd81dc34c')
-sha256sums_aarch64=('12285105074004c0ce94589e965c30feed37957d2deea9dc10b7faa3d67acf1f')
-sha256sums_armv7h=('0c3e1a3343932a57b5298f536b85d3eb8520d4ee5cfc159e1e5bc554bdf83931')
+sha256sums_x86_64=('9e29560b206e05ec80cd2bda350e5ad62fb032dd20a9996d5a15d738cd2a5421')
+sha256sums_aarch64=('11dcfaeb5cdab1df8fedfb3b02397901c672dc97901ad354b6bc6dd03b8dd012')
+sha256sums_armv7h=('4fba46f0685e210469353e82c3d267afed10c71b78f2f783ac6355076f5433fd')
 
 package() {
 	install -Dm755 "miniserve-$pkgver-${CARCH}" "$pkgdir/usr/bin/miniserve"
