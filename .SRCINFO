@@ -1,12 +1,13 @@
 pkgbase = himitsu-keyring
 	pkgdesc = Graphical frontend for managing a Himitsu key store
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.sr.ht/~martijnbraam/keyring
 	arch = any
-	license = GPLv3
+	license = GPL3
 	makedepends = meson
 	depends = libhandy
+	depends = python-gobject
 	source = himitsu-keyring-0.2.0::https://git.sr.ht/~martijnbraam/keyring/archive/0.2.0.tar.gz
 	md5sums = 78803817c9e98e05bba124d409176f85
 
