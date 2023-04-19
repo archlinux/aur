@@ -1,0 +1,5 @@
+#!/bin/sh
+
+save_path="${XDG_DATA_HOME:-$HOME/.local/share}/Ib"
+mkdir -p "$save_path"
+easyrpg-player --project-path /usr/lib/Ib --save-path "$save_path" $@
