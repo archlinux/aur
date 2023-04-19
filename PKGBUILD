@@ -2,7 +2,7 @@
 
 _form=420 # To make it easier to clone this PKGBUILD for other forms
 pkgname="canaries-form-${_form}"
-pkgver=8.3.0
+pkgver=8.4.0
 pkgrel=1
 pkgdesc="Helper program for filling out Modelo ${_form} of Agencia Tributaria Canaria"
 arch=('x86_64')
@@ -19,10 +19,10 @@ makedepends=(
   'imagemagick'
 )
 install="${pkgname}.install"
-_year=22
+_year=23
 _zipname="M${_form}V${pkgver//./}E${_year}"
 source=("${pkgname}-${pkgver}.zip::https://www.gobiernodecanarias.org/tributos/atc/estatico/asistencia_contribuyente/modelos/ref_y_propios/igic/mod${_form}/bin/${_zipname}.zip")
-sha256sums=('313efef7d84afeca1386ef79b8d2ee601ff8371df790c6aa50badc16c7a48880')
+sha256sums=('5d0fb49d025c38cb794deb6eeadd8494c606c410531b9da54d569635cb295202')
 
 _innerdir="${_zipname}/I.G.I.C.-Modelo${_form}-(20${_year})"
 _srcjar="${_innerdir}/pa-mod${_form}.jar"
