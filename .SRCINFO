@@ -1,0 +1,17 @@
+pkgbase = py-mailqueued
+	pkgdesc = Queueing daemon for msmtp
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/dcbaker/py-mailqueued
+	arch = any
+	license = GPLv3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-appdirs
+	depends = python-attr
+	depends = python-gbulb
+	depends = python-pydbus
+	source = https://github.com/dcbaker/py-mailqueued/archive/0.3.0.tar.gz
+	sha256sums = 5b17223d4569d0ee0c700f7e74dc846d259e0e7377da7faf3022a82f2732c0b9
+
+pkgname = py-mailqueued
