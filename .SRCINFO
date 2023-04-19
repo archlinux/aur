@@ -1,0 +1,12 @@
+pkgbase = ttf-harmonyos-sans
+	pkgdesc = HarmonyOS Sans 字体。
+	pkgver = 2022.7.4
+	pkgrel = 1
+	url = https://developer.harmonyos.com/cn/design/resource
+	arch = any
+	license = custom
+	conflicts = harmonyos-sans-git
+	source = ttf-harmonyos-sans-2022.7.4.zip::https://developer.harmonyos.com/resource/image/design/resource/download/general/HarmonyOS-Sans.zip
+	sha256sums = fb02c86e358cd9aad8d4dfa957ee502381e7ee2e94499a9133add4324b6ce69a
+
+pkgname = ttf-harmonyos-sans
