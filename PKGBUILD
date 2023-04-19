@@ -17,11 +17,7 @@ conflicts=("haredo")
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-
-	# remove '-Wl,' prefix if present, since it is only required when the
-	# linker is invoked indirectly. Keeping it will cause the linker to
-	# fail.
-	make LDFLAGS=${LDFLAGS#"-Wl,"}
+	make LDLINKFLAGS=${LDFLAGS#"-Wl,"}
 }
 
 package() {
