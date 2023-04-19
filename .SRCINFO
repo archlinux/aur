@@ -1,7 +1,7 @@
 pkgbase = albumartcreator-bin
 	pkgdesc = Create amazing looking Album Art in seconds! (binary release)
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/0neGal/albumArtCreator
 	arch = x86_64
 	license = GPL3

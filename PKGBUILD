@@ -1,9 +1,9 @@
-# Maintainer: begin-theadventure <begin-thecontact.ncncb@dralias.com>
+# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 _pkgname=albumartcreator
 pkgname=$_pkgname-bin
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Create amazing looking Album Art in seconds! (binary release)"
 arch=('x86_64')
 url="https://github.com/0neGal/albumArtCreator"
@@ -37,11 +37,13 @@ prepare() {
 }
 
 package() {
-  mkdir -p ${pkgdir}/opt
-  mkdir -p ${pkgdir}/usr/bin
-  cp -a $_pkgname-linux-x64 $pkgdir/opt/albumArtCreator
-  ln -fs /opt/albumArtCreator/albumartcreator ${pkgdir}/usr/bin/${_pkgname}
-  install -Dm644 icon.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+  # Create folders
+  mkdir -p $pkgdir/opt
+  mkdir -p $pkgdir/usr/bin
+  cp -r $_pkgname-linux-x64 $pkgdir/opt/albumArtCreator
+  ln -s /opt/albumArtCreator/albumartcreator $pkgdir/usr/bin/$_pkgname
+  # Install
+  install -Dm644 icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
   install -Dm644 desktop/$_desktop "$pkgdir/usr/share/applications/$_desktop"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
