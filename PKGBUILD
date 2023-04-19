@@ -2,7 +2,7 @@
 
 _pkgname=linuxwave
 pkgname=$_pkgname-git
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Generate music from the entropy of Linux"
 arch=('any')
