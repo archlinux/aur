@@ -1,11 +1,12 @@
 pkgbase = xfce4-no-sleep-on-battery-lid-closed-git
 	pkgdesc = Don't suspend if you have external display connected when running on laptop's battery in Xfce4 desktop
-	pkgver = r1.g76401cf
+	pkgver = r4.g2001ad0
 	pkgrel = 1
 	url = https://github.com/zaps166/xfce4-no-sleep-on-battery-lid-closed
 	arch = x86_64
 	license = Unlicense
 	makedepends = cmake
+	depends = xfconf
 	source = git+https://github.com/zaps166/xfce4-no-sleep-on-battery-lid-closed.git
 	sha1sums = SKIP
 
