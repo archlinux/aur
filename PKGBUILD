@@ -4,7 +4,7 @@
 # Contributor: j1simon
 pkgname=buttercup-desktop
 _pkgexename=buttercup
-pkgver=2.18.2
+pkgver=2.19.0
 pkgrel=1
 pkgdesc='Javascript Password Vault - Multi-Platform Desktop Application'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
 	buttercup-desktop.desktop
 	arch_fix.patch)
 sha512sums=(
-	'0776a3202c4d866f96e42426978d0f352d86b494736d2602833bb513b51fbf880c9a217dee282305d4e60e8c83765c04fa627513fd914eee1e8ce21497510456'
+	'073f13cce7d6c7f31c46989e8267bc135ffe06ebe385470b57ba297412d5193fa31c51f784a508a199d0f8233fd4249d12f18fedd1fa23c7adb8309b34a73132'
 	SKIP
 	SKIP
 	SKIP)
@@ -50,7 +50,7 @@ package() {
   else
     _distname="linux-unpacked"
   fi
-  mkdir -p "$pkgdir"/{usr/bin,share}
+  mkdir -p "$pkgdir"/usr/{bin,share}
   cp -rf "$srcdir/$pkgname-$pkgver/dist/$_distname" "$pkgdir/usr/share/$pkgname"
   # cp -rf "$srcdir/$pkgname-$pkgver/dev-app-update.yml" "$pkgdir/opt/$pkgname/resources/app-update.yml"
   ln -sf /usr/share/$pkgname/buttercup "$pkgdir/usr/bin/buttercup"
