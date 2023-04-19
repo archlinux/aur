@@ -2,7 +2,7 @@
 # Contributor: AnActualEmerald <emerald at mecha dot garden>
 
 pkgname=papa
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Mod manager CLI for Northstar"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('sccache: compiler caching for faster compiling')
 _commit=ef1cc1ad3dc6d731d8eaafd6d81b2679e74e06bb
 source=("$url/archive/refs/tags/v$pkgver.tar.gz"
         "git+https://github.com/AnActualEmerald/thermite.git#commit=$_commit")
-sha256sums=('02a2cd0af1a601a845e9be97759892ea47148944d657b22b4834f44608b25b72'
+sha256sums=('7ac33e20f6dadc684c94bb834b4a51872ba5af4c0decd72c641052b3039a9682'
             'SKIP')
 
 prepare() {
