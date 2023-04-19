@@ -1,6 +1,6 @@
 # Maintainer: Lili1228 <aur at gramywpsl dot pl>
 pkgname=86box-git
-pkgver=3.11.r607.g7bc213a95
+pkgver=3.11.r619.gbeb1df4f5
 pkgrel=1
 pkgdesc='An emulator for classic IBM PC clones'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
