@@ -2,9 +2,9 @@
 
 pkgname=litemdview
 pkgver=0.0.32
-pkgrel=1
+pkgrel=2
 pkgdesc="Suckless markdown viewer"
-url="https://notabug.org/g0tsu/litemdview"
+url="https://codeberg.org/g0tsu/litemdview"
 arch=('x86_64')
 license=('GPL2')
 depends=('gtkmm3')
