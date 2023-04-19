@@ -1,0 +1,14 @@
+pkgbase = xdman8-bin
+	pkgdesc = Powerfull download accelerator and video downloader (binary release)
+	pkgver = 8.0.25
+	pkgrel = 1
+	url = https://github.com/subhra74/xdm-experimental-binaries
+	arch = x86_64
+	license = GPL3
+	provides = xdman8
+	conflicts = xdman8
+	conflicts = xdman8-beta-git
+	source = https://github.com/subhra74/xdm-experimental-binaries/releases/download/8.0.25-beta/xdman_gtk-8.0.25-1.fc36.x86_64.rpm
+	sha256sums = 803257ce804a465e4831b9db31499117661084b6d8c3a6b41f600f48e49ee45f
+
+pkgname = xdman8-bin
