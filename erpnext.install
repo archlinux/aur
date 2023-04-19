@@ -8,5 +8,5 @@ declare -r green="\033[0;32m"
 
 pre_install()
 {
-    echo -e "${green}Configuration for plugins is available via the setting of environment variables.${clear_colour}"
+    echo -e "${green}Plugins need to be installed manually.${clear_colour}"
 }
