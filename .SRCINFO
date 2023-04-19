@@ -1,6 +1,6 @@
 pkgbase = dangerzone
 	pkgdesc = Take potentially dangerous PDFs, office documents, or images and convert them to a safe PDF
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://dangerzone.rocks/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = dangerzone
 	depends = python-termcolor
 	depends = python-pip
 	depends = podman
-	source = dangerzone-0.4.0.tar.gz::https://github.com/firstlookmedia/dangerzone/archive/v0.4.0.tar.gz
-	sha256sums = 4f2c7382726f8a87a0cc52d2e9a3bb2119067efe589c15d2f66444a5e3058d91
+	source = dangerzone-0.4.1.tar.gz::https://github.com/firstlookmedia/dangerzone/archive/v0.4.1.tar.gz
+	sha256sums = ddc5d793108b4b19c8900c5847540ca72dbe9a4d07cd46007d2173e8e87d11ae
 
 pkgname = dangerzone

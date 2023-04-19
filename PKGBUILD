@@ -2,7 +2,7 @@
 # Contributor: GI_Jack <GI_Jack@hackermail.com>
 
 pkgname=dangerzone
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Take potentially dangerous PDFs, office documents, or images and convert them to a safe PDF"
 url="https://dangerzone.rocks/"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python-appdirs' 'python-click' 'python-pyxdg' 'python-requests' 'pyside2' 'python-termcolor' 'python-pip' 'podman')
 makedepends=('python-setuptools') # 'buildah')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/firstlookmedia/dangerzone/archive/v${pkgver}.tar.gz)
-sha256sums=('4f2c7382726f8a87a0cc52d2e9a3bb2119067efe589c15d2f66444a5e3058d91')
+sha256sums=('ddc5d793108b4b19c8900c5847540ca72dbe9a4d07cd46007d2173e8e87d11ae')
 
 package() {
   cd ${pkgname}-${pkgver}
