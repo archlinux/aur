@@ -1,16 +1,21 @@
 pkgbase = python-llvmlite-git
-	pkgdesc = A lightweight LLVM python binding for writing JIT compilers (Git version)
-	pkgver = 0.38.0dev0.r93.g00320f6
+	pkgdesc = A lightweight LLVM Python binding for writing JIT compilers (Git version)
+	pkgver = 0.41.0dev0.r0.g54e18cb
 	pkgrel = 1
 	url = https://github.com/numba/llvmlite
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
-	makedepends = llvm11
+	makedepends = llvm14
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
-	depends = llvm11-libs
-	provides = python-llvmlite=0.38.0dev0.r93.g00320f6
+	depends = llvm14-libs
+	optdepends = python-graphviz: visualising control-flow graphs
+	provides = python-llvmlite=0.41.0dev0.r0.g54e18cb
 	conflicts = python-llvmlite
 	source = llvmlite::git+https://github.com/numba/llvmlite.git
 	sha256sums = SKIP
