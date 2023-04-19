@@ -2,7 +2,7 @@
 
 pkgname=gotop-git
 _pkgname=${pkgname%-git}
-pkgver=4.2.0.r8.g98771c2
+pkgver=4.2.0.r15.g3e50a67
 pkgrel=1
 pkgdesc='A terminal based graphical activity monitor inspired by gtop and vtop'
 arch=(x86_64)
