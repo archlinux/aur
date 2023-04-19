@@ -2,7 +2,7 @@
 
 _pkgname=garcon
 pkgname=${_pkgname}-devel
-pkgver=4.17.3
+pkgver=4.19.0
 pkgrel=1
 pkgdesc="Implementation of the freedesktop.org menu specification"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -10,15 +10,15 @@ url="https://docs.xfce.org/xfce/tumbler/start"
 license=('LGPL')
 groups=('xfce4-devel')
 depends=('libxfce4ui')
-makedepends=('intltool' 'python' 'gobject-introspection')
+makedepends=('python' 'gobject-introspection')
 replaces=('libxfce4menu')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/garcon/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('8748d3b8a35a3211f6745468d4e5c4a78e807551ced35df4671c302d5e42721e')
+sha256sums=('e692f0d02294984c6b787e810a187c753a16f06ca87c68c0bb3de364ea3f6b0c')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "${_pkgname}-${pkgver}"
 
   ./configure \
     --prefix=/usr \
@@ -31,6 +31,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
+  cd "${_pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
 }
