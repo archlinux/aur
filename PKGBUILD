@@ -12,31 +12,34 @@ _itkver=5.2.1
 _vtkver=9.2.6
 pkgname=itk-snap
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A software application used to segment structures in 3D medical images"
 arch=('x86_64')
 url="https://www.itksnap.org"
 license=('GPL')
 depends=(
+  curl
+  expat
+  gcc-libs
+  gcc-libs
+  glibc
+  hdf5
+  libglvnd
+  libjpeg-turbo
+  libpng
+  libtiff
+  libx11
   qt6-base
   qt6-declarative
+  zlib
 )
 makedepends=(
   cmake
   eigen
-  expat
   fftw
   gendesk
   git
   gtest
-  hdf5
-  libjpeg-turbo
-  libpng
-  libtiff
-  qt6-base
-  qt6-declarative
-  qt6-tools
-  zlib
 )
 source=(
   "vtk-${_vtkver}.tar.gz::https://github.com/Kitware/VTK/archive/refs/tags/v${_vtkver}.tar.gz"
