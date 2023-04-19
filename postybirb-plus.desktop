@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=PostyBirb+
+Exec=postybirb-plus %U
+Terminal=false
+Type=Application
+Icon=postybirb-plus
+StartupWMClass=PostyBirb+
+X-AppImage-Version=3.1.16.109
+Comment=(ClientServer) PostyBirb is an application that helps artists post art and other multimedia to multiple websites more quickly.
+Categories=Network;

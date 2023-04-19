@@ -1,0 +1,21 @@
+pkgbase = postybirb-plus
+	pkgdesc = An application that helps artists post art and other multimedia to multiple websites more quickly. Postybirb plus version (Client/Server).
+	pkgver = 3.1.16
+	pkgrel = 1
+	url = https://www.postybirb.com
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = npm
+	makedepends = nodejs-lts-fermium
+	depends = electron19
+	source = postybirb-plus-v3.1.16.tar.gz::https://github.com/mvdicarlo/postybirb-plus/archive/v3.1.16.tar.gz
+	source = postybirb-plus.desktop
+	source = postybirb-plus.sh
+	sha512sums = 77ef9c8bf5062bfd514c6f705259f031e4342582cb3961fca5255fcc3894e5d145ba998d7e3feafd5a4cc25e43b1faf97266b71e1ba90d60cf8edec020b93fb0
+	sha512sums = f2db5eb5f880e5c2e586ab6f2d6822409d13966af82f20a8a59b6ba967c98af728ca4d2a538c7d31f10b7009b5e1d21f13a76722c88ceb75d65ff42f1b17b142
+	sha512sums = 2ad0d9e6a9248bc616a30895fe40fb164f8175924f45ca17e3bb8631e348c27abb856f86d3a77c363595b169458c61f49cf67f24147b66c09ad25b29cb8a7c7a
+
+pkgname = postybirb-plus
