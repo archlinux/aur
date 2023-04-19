@@ -1,6 +1,6 @@
 pkgbase = hpr-scratcher
 	pkgdesc = Easy scratchpads / drop downs for Hyprland
-	pkgver = r10.b2762da
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/hyprland-community/hpr-scratcher
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = hpr-scratcher
 	depends = python
 	provides = hpr-scratcher
 	conflicts = hpr-scratcher
-	source = git+https://github.com/hyprland-community/hpr-scratcher.git#branch=main
+	source = git+https://github.com/hyprland-community/hpr-scratcher.git#tag=0.5.0
 	md5sums = SKIP
 
 pkgname = hpr-scratcher

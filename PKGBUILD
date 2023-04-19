@@ -1,7 +1,7 @@
 # Maintainer: Fabien Devaux <fdev31@gmail.com>
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=hpr-scratcher
-pkgver=r10.b2762da
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Easy scratchpads / drop downs for Hyprland"
 arch=(any)
@@ -10,19 +10,20 @@ license=('MIT')
 groups=()
 depends=('python')
 makedepends=('git' 'python-pip')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("${pkgname}")
+conflicts=("${pkgname}")
 replaces=()
 backup=()
 options=()
 install=
-source=(git+"https://github.com/hyprland-community/hpr-scratcher.git#branch=main")
+source=(git+"https://github.com/hyprland-community/hpr-scratcher.git#tag=${pkgver}")
 noextract=()
 md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git checkout ${pkgver}
+	printf "%s" "$(git describe --tags)"
 }
 
 package() {
