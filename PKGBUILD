@@ -1,8 +1,8 @@
-# Maintainer: gardenapple <gardenapple at posteo.net>
+# Maintainer: gardenapple <mailbox at appl garden>
 # Contributor: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 
 pkgname=open-hexagon-git
-pkgver=2.0.6.r463.gf42c0404
+pkgver=2.0.6.r467.g27112a56
 _assetsver=1
 pkgrel=1
 epoch=1
@@ -18,8 +18,7 @@ depends=('zenity' # for 'launcher' interface
          'libxcursor'
          'libxrandr'
          'openal')
-makedepends=('rsync' # for merging assets into base game dir
-             'git'
+makedepends=('git'
              'cmake'
              'mesa')
 optdepends=('steam: integration for those who own the game on Steam'
@@ -59,8 +58,8 @@ build() {
 	make
 	mv SSVOpenHexagon ../_RELEASE
 
-	# Merge assets
-	rsync -av --remove-source-files --ignore-existing "$srcdir/$_assetsname/_RELEASE" "$srcdir/$_reponame"
+	# Copy assets without overwriting
+	( yes n | cp -r -i "$srcdir/$_assetsname/_RELEASE/" "$srcdir/$_reponame/" 2> /dev/null ) || echo "Assets merged."
 }
 
 package() {
