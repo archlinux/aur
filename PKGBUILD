@@ -1,7 +1,7 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=git-cinnabar-git
 pkgver=0.5.0.r1739.g63d5747
-pkgrel=2
+pkgrel=3
 pkgdesc="Git remote helper to interact with Mercurial repositories"
 arch=(x86_64)
 url='https://github.com/glandium/git-cinnabar'
@@ -10,6 +10,7 @@ depends=(git mercurial)
 makedepends=(cargo)
 provides=('git-cinnabar')
 conflicts=('git-cinnabar')
+options=('!lto')
 source=('git+https://github.com/glandium/git-cinnabar.git')
 sha256sums=('SKIP')
 
