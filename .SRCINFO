@@ -1,7 +1,7 @@
 pkgbase = r-commonmark
 	pkgdesc = High Performance CommonMark and Github Markdown Rendering in R
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=commonmark
 	arch = i686
 	arch = x86_64
