@@ -1,14 +1,15 @@
 # Maintainer: dadav <dadav at protonmail dot com>
 
 pkgname=battery-notify-git
-pkgver=0.1.0.r1.g5c2f501
+pkgver=master
 pkgrel=1
 pkgdesc='A simple battery notifier for Linux.'
 arch=('x86_64')
 url='https://github.com/cdown/battery-notify'
 license=('MIT')
 makedepends=('git' 'cargo')
-provides=("battery-notify=$pkgver")
+provides=("battery-notify-git=$pkgver")
+conflicts=("battery-notify")
 source=("$pkgname::git+$url" "battery-notify.service")
 sha256sums=('SKIP' 'SKIP')
 
