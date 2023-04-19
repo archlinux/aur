@@ -1,0 +1,14 @@
+pkgbase = cicada-bin
+	pkgdesc = Write CI/CD Pipelines in TypeScript
+	pkgver = 0.1.36
+	pkgrel = 1
+	url = https://cicada.build
+	arch = x86_64
+	license = MIT
+	license = Apache
+	provides = cicada
+	conflicts = cicada
+	source = cicada-bin-0.1.36.tgz::https://github.com/cicadahq/cicada/releases/download/v0.1.36/cicada-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = d4e85ff672a723b56cce9a1c350035b844d079e8271617e20a1471c0aca12bd2
+
+pkgname = cicada-bin
