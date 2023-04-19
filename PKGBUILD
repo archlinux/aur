@@ -1,5 +1,4 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
-# Contributor: AnActualEmerald <emerald at mecha dot garden>
 
 pkgname=papa
 pkgver=3.0.1
@@ -8,7 +7,7 @@ pkgdesc="Mod manager CLI for Northstar"
 arch=('any')
 url="https://github.com/AnActualEmerald/papa"
 license=('MIT')
-makedepends=('cargo' 'openssl' 'git')
+makedepends=('cargo' 'git')
 optdepends=('sccache: compiler caching for faster compiling')
 _commit=ef1cc1ad3dc6d731d8eaafd6d81b2679e74e06bb
 source=("$url/archive/refs/tags/v$pkgver.tar.gz"

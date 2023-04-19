@@ -6,7 +6,6 @@ pkgbase = papa
 	arch = any
 	license = MIT
 	makedepends = cargo
-	makedepends = openssl
 	makedepends = git
 	optdepends = sccache: compiler caching for faster compiling
 	source = https://github.com/AnActualEmerald/papa/archive/refs/tags/v3.0.1.tar.gz
