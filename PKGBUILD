@@ -4,17 +4,28 @@
 # Contributor: Jonathan Thomas <jonathan@openshot.org>
 
 pkgbase=libopenshot-audio
-pkgname=(libopenshot-audio libopenshot-audio-docs)
-pkgver=0.3.0
+pkgname=(
+  libopenshot-audio
+  libopenshot-audio-docs
+)
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A high-quality audio editing and playback library used by libopenshot."
 arch=(x86_64)
-url="https://openshot.org/"
+url="https://github.com/openshot/libopenshot-audio"
 license=(GPL3)
-makedepends=(alsa-lib cmake doxygen freetype2 libx11 python zlib)
-source=($pkgname-$pkgver.tar.gz::https://github.com/OpenShot/$pkgname/archive/refs/tags/v$pkgver.tar.gz)
-sha512sums=('75f4f4170f8e4f442a31834e65b9ab56bfb2e034d81e0015add5d79c9ccaa3dd2806ae78b1ca97fab20eefa4c37990609755d0c07c306ca19f9cdca3884f0163')
-b2sums=('a5cc1eba31ebc9750d69046d0a8963a5b4af5615bf57ca3ecb9989fc0c67ffd525b19162958aaab14d51d0d29ce9643da86f8bd1afd8de8e0483bfe11663c893')
+makedepends=(
+  alsa-lib
+  cmake
+  doxygen
+  freetype2
+  libx11
+  python
+  zlib
+)
+source=($url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
+sha512sums=('e90abadeae72563458621c5c275f113bb033cad5c35a16ffaecc9ed1369a80bfda14d6775f6b855f62808988a21d268aaee590e68b0bd73d6fe2602c61347955')
+b2sums=('101fd487cffc65392e955f2af2fc3047d931c0ac40c05c7977b57360a043fe1b0f3ad48c84a06f4d6ac720d13c30b2f78dcb3df550fd4b56047c6ecb99ee983a')
 
 _pick() {
   local p="$1" f d; shift
@@ -27,12 +38,16 @@ _pick() {
 }
 
 build() {
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=None \
-        -Wno-dev \
-        -B build \
-        -S $pkgname-$pkgver
-  cmake --build build
+  local cmake_options=(
+    -B build
+    -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -S $pkgname-$pkgver
+    -W no-dev
+  )
+
+  cmake "${cmake_options[@]}"
+  cmake --build build --verbose
 }
 
 check() {
@@ -41,7 +56,7 @@ check() {
 
 package_libopenshot-audio() {
   depends=(
-    alsa-lib libasound.so
+    alsa-lib
     gcc-libs
     glibc
     zlib
