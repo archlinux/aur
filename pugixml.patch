@@ -143,8 +143,9 @@ index eb5e59c..3b557d0 100644
 +++ b/es-core/src/InputConfig.cpp
 @@ -1,7 +1,7 @@
  #include "InputConfig.h"
- 
+
  #include "Log.h"
+ #include "utils/StringUtil.h"
 -#include <pugixml/src/pugixml.hpp>
 +#include <pugixml.hpp>
  
