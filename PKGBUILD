@@ -1,4 +1,4 @@
-# Maintainer: nicolarevelant44 <nicolarevelant44@gmail.com>
+# Maintainer: Nicola Revelant <nicolarevelant44@gmail.com>
 
 pkgname=pinfo-git
 pkgver=0.6.13.r8.g3d76eec
