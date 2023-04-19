@@ -1,6 +1,6 @@
 pkgbase = crystal-git
 	pkgdesc = The Crystal Programming Language
-	pkgver = 1.2.2.r114.g08b4e26a0
+	pkgver = 1.8.0.r16.g6d02f3b69
 	pkgrel = 1
 	url = http://crystal-lang.org
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = crystal-git
 	makedepends = llvm
 	makedepends = crystal
 	depends = gc
-	depends = pcre
+	depends = pcre2
 	depends = libevent
 	optdepends = shards: To make the crystal deps command work
 	optdepends = libyaml: For YAML support
