@@ -8,6 +8,7 @@ pkgbase = mingw-w64-coin-or-cbc
 	license = EPL
 	makedepends = mingw-w64-configure
 	depends = mingw-w64-coin-or-cgl
+	depends = mingw-w64-nauty
 	options = staticlibs
 	options = !buildflags
 	options = !strip

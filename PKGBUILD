@@ -6,7 +6,7 @@ arch=('any')
 url="https://projects.coin-or.org/Cbc"
 license=('EPL')
 groups=('mingw-w64-coin-or')
-depends=('mingw-w64-coin-or-cgl')
+depends=('mingw-w64-coin-or-cgl' 'mingw-w64-nauty')
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!buildflags' '!strip')
 source=(https://github.com/coin-or/Cbc/archive/refs/tags/releases/$pkgver.tar.gz)
@@ -34,6 +34,7 @@ build() {
       --with-cgl-incdir="/usr/${_arch}/include/coin/" \
       --with-coinutils-lib="$(${_arch}-pkg-config --libs coinutils)" \
       --with-coinutils-incdir="/usr/${_arch}/include/coin/" \
+      --with-nauty-lib=/usr/${_arch}/lib/nauty.a --with-nauty-incdir=/usr/${_arch}/include/nauty \
       lt_cv_deplibs_check_method=pass_all ..
     make
     popd
