@@ -1,6 +1,6 @@
 # Maintainer: Grzegorz Koperwas <admin@grzegorzkoperwas.site>
 pkgname=swww
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=0
 pkgdesc="Efficient animated wallpaper daemon for wayland, controlled at runtime."
 arch=('x86_64' 'aarch64')
@@ -48,4 +48,4 @@ package() {
     install -Dm644 "$page" "$pkgdir/usr/share/man/man1/$page"
   done
 }
-sha256sums=('bb961577387aefd64b54090b3a7d0db5a393120edc24fe71d149e77fe132025c')
+sha256sums=('874897cb318d5cf269bd8f5915332cc2a76abcfda233cc17924ae4c533499fe7')
