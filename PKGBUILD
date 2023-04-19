@@ -4,14 +4,14 @@
 
 _pkgname=tumbler
 pkgname=${_pkgname}-git
-pkgver=4.17.0+1+gb38db8a
+pkgver=4.19.0+1+g704de37
 pkgrel=1
 pkgdesc="D-Bus service for applications to request thumbnails (git checkout)"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://docs.xfce.org/xfce/tumbler/start"
-license=(GPL2)
+license=('GPL2' 'LGPL')
 groups=('xfce4-git')
-depends=('gdk-pixbuf2' 'libxfce4util>=4.17.1')
+depends=('gdk-pixbuf2' 'libxfce4util')
 makedepends=('ffmpegthumbnailer' 'freetype2' 'libgsf' 'libopenraw' 'poppler-glib'
              'libgepub' 'xfce4-dev-tools' 'git')
 optdepends=('ffmpegthumbnailer: for video thumbnails'
@@ -22,7 +22,7 @@ optdepends=('ffmpegthumbnailer: for video thumbnails'
             'libgepub: for epub thumbnails')
 provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
-source=(${_pkgname}::git+https://gitlab.xfce.org/xfce/tumbler.git)
+source=("${_pkgname}"::git+https://gitlab.xfce.org/xfce/tumbler.git)
 sha256sums=('SKIP')
 
 pkgver() {
@@ -35,9 +35,8 @@ build() {
   ./autogen.sh \
     --prefix=/usr \
     --sysconfdir=/etc \
-    --libexecdir=/usr/lib/xfce4 \
-    --disable-static \
-    --disable-debug
+    --disable-debug \
+    --disable-gstreamer-thumbnailer
   make
 }
 
