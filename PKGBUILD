@@ -13,10 +13,6 @@ conflicts=("battery-notify-git")
 source=("$pkgname::git+$url" "battery-notify.service")
 sha256sums=('SKIP' 'SKIP')
 
-pkgver() {
-  git -C "$pkgname" describe --long --tags | sed 's/v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 prepare() {
   cd "$pkgname"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
