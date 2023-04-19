@@ -4,7 +4,7 @@
 pkgname=kvkbd
 _reponame=kvkbd5
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A virtual keyboard for KDE"
 arch=(x86_64)
 url="https://github.com/ctrlcctrlv/kvkbd5"
@@ -12,7 +12,7 @@ license=(GPL)
 depends=(qt5-base qt5-x11extras)
 makedepends=(cmake docbook-xsl)
 source=("$url/archive/refs/tags/v$pkgver.zip")
-b2sums=('47b929f4c04a96e3b8c539e29fdbd07e1bebfe4bac20e3863d366b4ef74871d29ddd8a12d0336acf755b7fd96c4ff62e8473ca9d7d625aaaa5e1114903029e7c')
+b2sums=('9765461763c63d0d68b2d2102de8388421cc54944eec7894c7ac57282bd4baf1d7a7615bfd362be32b166df08dbd1b30f6683fe3099665bfda46e86a80294a3c')
 
 prepare() {
   cd "$_reponame-$pkgver"
