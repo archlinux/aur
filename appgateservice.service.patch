@@ -13,18 +13,3 @@ index 7a8faf7..f944300 100644
  PrivateDevices=true
  NoNewPrivileges=true
  PrivateTmp=true
-diff --git a/lib/systemd/system/appgateservice@.service b/lib/systemd/system/appgateservice@.service
-index 74faa34..269ffc4 100644
---- a/lib/systemd/system/appgateservice@.service
-+++ b/lib/systemd/system/appgateservice@.service
-@@ -11,8 +11,8 @@ ExecReload=/bin/kill -HUP $MAINPID
- Type=forking
- TimeoutStopSec=30
- Restart=always
--InaccessibleDirectories=/media /boot /srv
--ReadOnlyDirectories=/etc /usr /bin /lib /lib64 /sbin
-+InaccessibleDirectories=-/media -/boot -/srv
-+ReadOnlyDirectories=-/etc -/usr -/bin -/lib -/lib64 -/sbin
- PrivateDevices=true
- NoNewPrivileges=true
- PrivateTmp=true

@@ -1,6 +1,6 @@
 pkgbase = appgate-sdp-headless
 	pkgdesc = Appgate SDP (Software Defined Perimeter) headless client (It does not support 2FA.)
-	pkgver = 6.1.2
+	pkgver = 6.1.3
 	pkgrel = 1
 	url = https://www.appgate.com/support/software-defined-perimeter-support
 	install = appgate-sdp-headless.install
@@ -22,13 +22,13 @@ pkgbase = appgate-sdp-headless
 	options = !emptydirs
 	backup = etc/appgate.conf
 	backup = etc/dbus-1/system.d/appgate.conf
-	source = https://bin.appgate-sdp.com/6.1/client/appgate-sdp-headless_6.1.2_amd64.deb
+	source = https://bin.appgate-sdp.com/6.1/client/appgate-sdp-headless_6.1.3_amd64.deb
 	source = appgatedriver.service.patch
 	source = appgateservice.service.patch
 	source = 10-appgate-tun.network
-	sha256sums = 1ed7aa86a078980ce7cc5849e30b0c3ac3c5096748aba6b421cfc5b93965b38b
-	sha256sums = 2df60df48a8659a77f05ce7270f7315eb0c2e6e1ab453f81caf08cb93fda50cc
-	sha256sums = dbb83be680e6f3f11a04835b68155eb1a0d149b8d950aafd9da6887fc017b99d
+	sha256sums = add74bde926c9842d3679ca4b4eb6749f7e1619153a45998a9893095921cf452
+	sha256sums = d1815de55e7519c3951ed8f8ae1f47dd888317ca632c0e5993b0b1cb1a9afda1
+	sha256sums = 8c2986036f8ca9b8c9bca5861efc98322d9bd1b77951a850059e86b1b84f10c6
 	sha256sums = 2eb0daa10429e67d703cceccd34069da3044d99c5652658ec73c7a01c88b64e9
 
 pkgname = appgate-sdp-headless

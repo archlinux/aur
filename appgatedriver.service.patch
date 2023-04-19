@@ -1,5 +1,5 @@
 diff --git a/lib/systemd/system/appgatedriver.service b/lib/systemd/system/appgatedriver.service
-index 5e98ca8..1f8cb55 100644
+index 8dfd778..dc3f507 100644
 --- a/lib/systemd/system/appgatedriver.service
 +++ b/lib/systemd/system/appgatedriver.service
 @@ -21,7 +21,7 @@ CapabilityBoundingSet=~CAP_SYS_PTRACE
@@ -11,14 +11,3 @@ index 5e98ca8..1f8cb55 100644
  
  [Install]
  WantedBy=multi-user.target
-diff --git a/lib/systemd/system/appgatedriver@.service b/lib/systemd/system/appgatedriver@.service
-index c9f64db..3faf77f 100644
---- a/lib/systemd/system/appgatedriver@.service
-+++ b/lib/systemd/system/appgatedriver@.service
-@@ -25,5 +25,5 @@ CapabilityBoundingSet=~CAP_SYS_PTRACE
- CapabilityBoundingSet=~CAP_SYS_PACCT
- CapabilityBoundingSet=~CAP_SYS_CHROOT
- CapabilityBoundingSet=~CAP_SYS_BOOT
--InaccessiblePaths=/srv /boot /media
-+InaccessiblePaths=-/srv -/boot -/media
- SyslogIdentifier=appgatedriver.%i
