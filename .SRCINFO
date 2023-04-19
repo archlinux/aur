@@ -1,0 +1,24 @@
+pkgbase = firebuild
+	pkgdesc = Automatic build accelerator cache for Linux
+	pkgver = 0.2.12
+	pkgrel = 1
+	url = https://firebuild.com/
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = hopscotch-map
+	makedepends = libconfig
+	makedepends = xxhash
+	makedepends = python
+	makedepends = python-jinja
+	makedepends = libxslt
+	makedepends = docbook-xsl
+	depends = libconfig
+	depends = glibc
+	depends = jemalloc
+	depends = gcc-libs
+	optdepends = graphviz: generating reports
+	source = firebuild-0.2.12.tar.gz::https://github.com/firebuild/firebuild/archive/refs/tags/v0.2.12.tar.gz
+	sha256sums = ec2da5a65949e5f2fbf5a24b1ecb66ee2c81080e6014b253acc32dd084f6abde
+
+pkgname = firebuild
