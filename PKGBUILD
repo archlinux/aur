@@ -13,18 +13,19 @@
 #
 
 # update when available in pytorch
-_CUDA_ARCH_LIST="5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6;8.9;8.9+PTX" #;9.0;9.0+PTX"
-_CUDA_ARCH_LIST_CMAKE="52-real;53-real;60-real;61-real;62-real;70-real;72-real;75-real;80-real;86-real;89-real;89-virtual" #;90-real;90-virtual"
+_CUDA_ARCH_LIST="5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6;8.9;8.9+PTX;9.0;9.0+PTX"
+_CUDA_ARCH_LIST_CMAKE="52-real;53-real;60-real;61-real;62-real;70-real;72-real;75-real;80-real;86-real;89-real;89-virtual;90-real;90-virtual"
 _pkgname=vision
 pkgbase='torchvision'
 pkgname=('torchvision' 'torchvision-cuda' 'python-torchvision' 'python-torchvision-cuda')
 pkgver=0.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Datasets, transforms, and models specific to computer vision'
 arch=('x86_64')
 url='https://github.com/pytorch/vision'
 license=('BSD')
 depends=(
+  numactl
   python-numpy
   python-pillow
   python-requests
@@ -118,10 +119,10 @@ build() {
 
   # build python-torchvision-cuda
   cd "${srcdir}/python-${_pkgname}-cuda-${pkgver}"
-  TORCHVISION_INCLUDE=${srcdir} \
+  TORCHVISION_INCLUDE="${srcdir}" \
   TORCHVISION_LIBRARY=/usr/lib \
   FORCE_CUDA=1 \
-  TORCH_CUDA_ARCH_LIST=${_CUDA_ARCH_LIST} \
+  TORCH_CUDA_ARCH_LIST="${_CUDA_ARCH_LIST}" \
   python setup.py build
 }
 
@@ -153,10 +154,10 @@ package_python-torchvision-cuda() {
   conflicts+=('python-torchvision')
 
   cd "${srcdir}/python-${_pkgname}-cuda-${pkgver}"
-  TORCHVISION_INCLUDE=${srcdir} \
+  TORCHVISION_INCLUDE="${srcdir}" \
   TORCHVISION_LIBRARY=/usr/lib \
   FORCE_CUDA=1 \
-  TORCH_CUDA_ARCH_LIST=${_CUDA_ARCH_LIST} \
+  TORCH_CUDA_ARCH_LIST="${_CUDA_ARCH_LIST}" \
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
