@@ -1,5 +1,5 @@
 pkgname=go-musicfox-bin
-pkgver=3.7.7
+pkgver=4.0.3
 pkgrel=1
 pkgdesc='Command-line Netease Cloud Music written in Go.'
 url='https://github.com/anhoder/go-musicfox'
@@ -20,5 +20,5 @@ package() {
 	install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
-sha256sums=('462e4cfb0bc0c64ca84ab8c72b2236a944a211d97a6de506de33c86556d0a21a'
+sha256sums=('381aec3e68ed9d55e3bd5003fa34c364c7a54ff482f554528e513a7f47d508bd'
             '20535828272932407c2f5172aeb714ac7b374a34e5ecb1825af509f2902cde54')
