@@ -110,7 +110,7 @@ build()
     ## Health
     if [[ "${ERPNEXT_HEALTH}" == "ON" ]]; then
         bench get --branch "${_version_health}" --resolve-deps health https://github.com/frappe/health.git
-        bench --site "${pkgname}" install-app health
+        bench --site "${pkgname}" install-app healthcare
     fi
 
     ## Hospitality
