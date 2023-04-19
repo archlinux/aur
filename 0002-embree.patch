@@ -17,7 +17,7 @@ index bb65a24c4b5..5d1ba7b459a 100644
  
 +FIND_LIBRARY(EMBREE_LIBRARY
 +  NAMES
-+    embree3
++    embree4
 +  HINTS
 +    ${_embree_SEARCH_DIRS}
 +  PATH_SUFFIXES

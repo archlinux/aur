@@ -1,6 +1,6 @@
 pkgbase = blender-git
 	pkgdesc = A fully integrated 3D graphics creation suite (development)
-	pkgver = 3.6.r123062.g28a8a3c0861
+	pkgver = 3.6.r123308.g91a29c9b9af
 	pkgrel = 1
 	url = https://blender.org/
 	arch = i686
@@ -51,6 +51,7 @@ pkgbase = blender-git
 	optdepends = intel-compute-runtime: Intel OpenCL FPGA kernels (all four needed)
 	optdepends = intel-graphics-compiler: Intel OpenCL FPGA kernels (all four needed)
 	optdepends = intel-oneapi-basekit: Intel OpenCL FPGA kernels (all four needed)
+	optdepends = gcc11: Compile CUDA support in Cycles
 	provides = blender
 	conflicts = blender
 	source = blender::git+https://github.com/blender/blender#branch=main
@@ -72,6 +73,6 @@ pkgbase = blender-git
 	sha256sums = 10cf3652cf16f8042437bb511e2b030035433978f71cf1da8028711f49599074
 	sha256sums = 52da80b721efb6a6d579adf531640becfac1955a88857ca46ca16030a52c3b1c
 	sha256sums = c2db51a83a8d573aa76c760f10e541c84b108d64d05c9647681c4e633b3d0397
-	sha256sums = 35d497a415c120ebe2ed8d0d9462ca72af63570e26b3ec112d8bb8e6822b54b3
+	sha256sums = 1d88d87c97e953b21eb551016e8295954997f18cbb4998c230cd1f596a87b6f2
 
 pkgname = blender-git
