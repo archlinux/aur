@@ -1,22 +1,22 @@
 # Maintainer: Daniel Barbosa <dbarbosa0 at gmail dot com>
 
 pkgname=spiceopus
-pkgver=2v33r242
-pkgrel=3
+pkgver=3v0r385
+pkgrel=0
 pkgdesc="Spice Opus is a free general purpose circuit simulator specially suited for optimization loops"
 arch=('x86_64')
 url="http://www.spiceopus.si/"
 license=(GPL3)
-depends=()
+depends=(icu67)
 conflicts=()
-source=(http://www.spiceopus.si/download/spice_opus233r242_linux_amd64.tar.gz)
-sha256sums=('52d70f8f6878d6ce0d0e33cdb09a2501edbd5081e6739e2fc1c1246424578929')
+source=(http://www.spiceopus.si/download/spice_opus3v0r385_linux_x64.tar.gz)
+sha256sums=('7c180412ef6e03b563b6a3ac39720fc21277a6ca830285e1d521c700c1277f70')
 
 OPUSHOME=/opt/$pkgname
 
 package() {
 	
-	cd "$srcdir"/spice_opus233r242_linux_amd64_15.Apr.2021_09.29
+	cd "$srcdir"/spice_opus3v0r385_linux_x64
 	install -d "$pkgdir"$OPUSHOME
 	cp -R * "$pkgdir"$OPUSHOME
 	install -d "$pkgdir"/usr/local/bin/
