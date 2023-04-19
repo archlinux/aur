@@ -1,10 +1,10 @@
 # Maintainer: Bruno Ancona <bruno at powerball253 dot com>
 
 pkgname=waybar-experimental-git
-pkgver=0.9.16.r12.gd2b4076a
+pkgver=0.9.17.r159.ga9a22234
 pkgrel=1
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors, with experimental features enabled (git version)'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/Alexays/Waybar/'
 license=('MIT')
 provides=('waybar')
@@ -31,13 +31,16 @@ depends=(
     'libsndio.so'
     'libxkbcommon'
     'wireplumber'
+    'playerctl'
 )
 makedepends=(
+    'git'
     'cmake'
-    'catch2-git'
+    'catch2'
     'meson'
     'scdoc'
     'wayland-protocols'
+    'curl'
 )
 backup=(
     etc/xdg/waybar/config
@@ -62,8 +65,8 @@ build() {
           --buildtype=plain \
           --auto-features=enabled \
           --wrap-mode=nodownload \
+          -Dexperimental=true \
           "${srcdir}/build"
-    meson configure -Dexperimental=true "${srcdir}/build" # enable experimental features
     ninja -C "${srcdir}/build"
 }
 
