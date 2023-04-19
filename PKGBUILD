@@ -47,6 +47,9 @@ build()
 
     # Plugins
     # TODO Clone a version where possible.
+    ## The installation of some plugins requires running processes.
+    tmux new-session -s erpnext-build "bench start"
+
     ## Agriculture
     if [[ "${ERPNEXT_AGRICULTURE}" == "ON" ]]; then
         bench get --resolve-deps agriculture https://github.com/frappe/agriculture.git
@@ -148,6 +151,9 @@ build()
         bench get --resolve-deps webshop https://github.com/frappe/webshop.git
         bench --site "${pkgname}" install-app webshop
     fi
+
+    ## End the processes.
+    tmux send-keys -t erpnext-build C-c
 }
 
 package()
