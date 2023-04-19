@@ -1,13 +1,13 @@
 # Maintainer: Konsonanz <maximilian.lehmann@protonmail.com>
 pkgname=gpgfrontend
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenPGP crypto tool and gui frontend for modern GnuPG"
 arch=('x86_64')
 url="https://github.com/saturneric/GpgFrontend"
 license=('GPL3')
 depends=('gnupg' 'gpgme' 'libarchive' 'libassuan' 'libconfig' 'libgpg-error' 'qt6-base' 'qt6-5compat')
-makedepends=('cmake' 'ninja' 'git' 'git-lfs' 'boost')
+makedepends=('cmake' 'ninja' 'git' 'boost')
 source=("${pkgname}::git+${url}#tag=v${pkgver}"
         "git+https://git.bktus.com/GpgFrontend/json.git"
         "git+https://git.bktus.com/GpgFrontend/Qt-AES.git"
@@ -16,15 +16,19 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
+_cherry_picks=(
+    # fix: unlfs for github
+    'e60faa7569b3188f59f358a8c94a030ed6ba4272')
 
 prepare() {
     cd "$pkgname"
 
-    git lfs install
-    # Fetch all lfs-objects into git-mirror outside of makepkg workdir
-    git -C "$(git remote get-url origin)" lfs fetch --all
-    # Now sync workdir git lfs with mirror
-    git lfs pull
+    git reset --hard
+    git cherry-pick --abort || true
+
+    for cp in "${_cherry_picks[@]}"; do
+        git cherry-pick --no-commit "$cp"
+    done
 
     git submodule init
     git config submodule.third_party/json.url "$srcdir/json"

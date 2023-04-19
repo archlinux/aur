@@ -1,14 +1,13 @@
 pkgbase = gpgfrontend
 	pkgdesc = OpenPGP crypto tool and gui frontend for modern GnuPG
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/saturneric/GpgFrontend
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = git
-	makedepends = git-lfs
 	makedepends = boost
 	depends = gnupg
 	depends = gpgme
