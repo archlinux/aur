@@ -1,12 +1,12 @@
 pkgbase = modern-theme
-	pkgdesc = GTK3/GTK4 theme powered by Adwaita technologies, contains color schemes for Qt5/Qt6/KDE and Aurorae theme
-	pkgver = 1.31
+	pkgdesc = GTK3/GTK4 theme powered by Adwaita technologies, contains some things for Qt/KDE/Kvantum also
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/TerminalHash/Modern
 	arch = any
 	license = GPL3
 	conflicts = modern-theme-git
 	source = https://github.com/TerminalHash/Modern/releases/download/v1.31/modern-v1.31.tar.bz2
-	md5sums = b75c121b51a8bdbab4a63ab9ac256e8e
+	md5sums = 0e7383d8cd537a505732a02416d68f08
 
 pkgname = modern-theme
