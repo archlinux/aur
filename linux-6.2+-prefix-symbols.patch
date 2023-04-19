@@ -1,0 +1,44 @@
+--- Drivers/Dtu/Source/Linux/Makefile.orig	2023-04-19 11:24:04.879892276 +0100
++++ Drivers/Dtu/Source/Linux/Makefile	2023-04-19 11:24:18.916568751 +0100
+@@ -146,7 +146,7 @@
+ # Default option
+ 
+ all: PREREQ $(DTSAL) $(DTDRVCOMMON)
+-	make MYPWD=$(PWD) -C $(KERNELDIR) M=$(PWD) modules
++	make CONFIG_PREFIX_SYMBOLS=n MYPWD=$(PWD) -C $(KERNELDIR) M=$(PWD) modules
+ 
+ INSTALL_CMD := "/sbin/rmmod $(TARGET) 2>/dev/null || true &&          \
+ 				install -d $(INSTALLDIR) &&     \
+--- Drivers/Dta/Source/Linux/Makefile.orig	2023-04-19 11:38:16.433762971 +0100
++++ Drivers/Dta/Source/Linux/Makefile	2023-04-19 11:37:14.017060112 +0100
+@@ -153,7 +153,7 @@
+ # Default option
+ 
+ all:	PREREQ $(DTSAL) $(DTDRVCOMMON)
+-	make MYPWD=$(PWD) -C $(KERNELDIR) M=$(PWD) modules
++	make CONFIG_PREFIX_SYMBOLS=n MYPWD=$(PWD) -C $(KERNELDIR) M=$(PWD) modules
+ 
+ INSTALL_CMD := "/sbin/rmmod $(TARGET) 2>/dev/null || true &&          \
+ 				install -d $(INSTALLDIR) &&     \
+--- Drivers/DtaNw/Source/Linux/Makefile.orig	2023-04-19 11:42:18.570580924 +0100
++++ Drivers/DtaNw/Source/Linux/Makefile	2023-04-19 11:42:25.747252290 +0100
+@@ -111,7 +111,7 @@
+ 
+ all: PREREQ $(DTA_LINUX)/Module.symvers $(DTSAL)
+ 	cp $(DTA_LINUX)/Module.symvers ./Module.symvers
+-	make MYPWD=$(PWD) -C $(KERNELDIR) M=$(PWD) modules
++	make CONFIG_PREFIX_SYMBOLS=n MYPWD=$(PWD) -C $(KERNELDIR) M=$(PWD) modules
+ 
+ $(DTA_LINUX)/Module.symvers:
+ 	$(MAKE) MYPWD=$(PWD) -C $(DTA_LINUX)
+--- Drivers/DtPcie/Source/Linux/Makefile.orig	2023-04-19 11:49:55.930896322 +0100
++++ Drivers/DtPcie/Source/Linux/Makefile	2023-04-19 11:55:38.194478708 +0100
+@@ -252,7 +252,7 @@
+ # Default option
+ 
+ all:	PREREQ $(DTSAL) $(DTDRVCOMMON)
+-	make MYPWD=$(PWD) -C $(KERNELDIR) M=$(PWD) modules
++	make CONFIG_PREFIX_SYMBOLS=n MYPWD=$(PWD) -C $(KERNELDIR) M=$(PWD) modules
+ 
+ INSTALL_CMD := "/sbin/rmmod $(TARGET) 2>/dev/null || true &&          \
+ 				install -d $(INSTALLDIR) &&     \
