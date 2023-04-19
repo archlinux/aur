@@ -6,7 +6,7 @@ _commit=
 pkgver=8.0.1.4  # pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=7.4.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 url="https://github.com/ValveSoftware/Proton"
@@ -45,8 +45,6 @@ makedepends=(autoconf bison perl flex mingw-w64-gcc
   libxinerama           lib32-libxinerama
   libxcomposite         lib32-libxcomposite
   libxxf86vm            lib32-libxxf86vm
-  libldap               lib32-libldap
-  openal                lib32-openal
   v4l-utils             lib32-v4l-utils
   alsa-lib              lib32-alsa-lib
   libxcomposite         lib32-libxcomposite
@@ -66,9 +64,7 @@ makedepends=(autoconf bison perl flex mingw-w64-gcc
 
 optdepends=(
   giflib                lib32-giflib
-  libldap               lib32-libldap
   gnutls                lib32-gnutls
-  openal                lib32-openal
   v4l-utils             lib32-v4l-utils
   libpulse              lib32-libpulse
   alsa-plugins          lib32-alsa-plugins
