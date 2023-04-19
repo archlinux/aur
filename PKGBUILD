@@ -4,7 +4,7 @@ _pkgname=harmonyvpktool
 pkgname=$_pkgname-bin
 pkgdesc="An electron-based app for unpacking Respawn VPK files (binary release)"
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/harmonytf/HarmonyVPKTool"
 license=('GPL3')
@@ -42,10 +42,10 @@ _fix_permissions() (
 )
 
 prepare() {
+  # Extract the AppImage
   chmod +x "./Harmony.VPK.Tool-$pkgver.AppImage"
   "./Harmony.VPK.Tool-$pkgver.AppImage" --appimage-extract
   chmod 755 squashfs-root
-
   # Edit the shortcut
   cd squashfs-root
   mv harmony_vpk_tool.desktop $_desktop
@@ -68,9 +68,9 @@ package() {
   cp -r squashfs-root "$pkgdir/opt/HarmonyVPKTool"
   cd squashfs-root
   ln -s /opt/HarmonyVPKTool/harmony_vpk_tool $pkgdir/usr/bin/$_pkgname
-  ln -s /opt/HarmonyVPKTool/harmony_vpk_tool.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+  ln -s /opt/HarmonyVPKTool/harmony_vpk_tool.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
   ln -s /opt/HarmonyVPKTool/harmony_vpk_tool.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
-
+  # Fix permissions
   find "$pkgdir" | while read -r target; do
     _fix_permissions "$target"
   done
