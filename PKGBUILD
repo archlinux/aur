@@ -4,13 +4,13 @@
 # Contributer: Arnaud
 
 pkgname=edgetx-companion
-pkgver=2.8.2
+pkgver=2.8.3
 pkgrel=1
 pkgdesc="EEPROM Editor and Simulator for EdgeTX RC radio transmitter firmwares"
 arch=('x86_64')
 url='https://edgetx.org/'
 license=('GPL2')
-depends=('hicolor-icon-theme' 'qt5-multimedia' 'sdl')
+depends=('gcc-libs' 'glibc' 'hicolor-icon-theme'  'qt5-base' 'qt5-multimedia' 'sdl')
 optdepends=('dfu-util: tool for flashing stm32 based radios')
 makedepends=('arm-none-eabi-binutils' 'arm-none-eabi-gcc' 'arm-none-eabi-newlib'
              'avr-gcc' 'avr-libc' 'bc' 'cmake' 'fox' 'gcc' 'git' 'icu' 'python' 'python-lz4'

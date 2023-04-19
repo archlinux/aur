@@ -1,6 +1,6 @@
 pkgbase = edgetx-companion
 	pkgdesc = EEPROM Editor and Simulator for EdgeTX RC radio transmitter firmwares
-	pkgver = 2.8.2
+	pkgver = 2.8.3
 	pkgrel = 1
 	url = https://edgetx.org/
 	arch = x86_64
@@ -25,13 +25,16 @@ pkgbase = edgetx-companion
 	makedepends = qt5-translations
 	makedepends = sed
 	makedepends = xsd
+	depends = gcc-libs
+	depends = glibc
 	depends = hicolor-icon-theme
+	depends = qt5-base
 	depends = qt5-multimedia
 	depends = sdl
 	optdepends = dfu-util: tool for flashing stm32 based radios
 	provides = companion
 	conflicts = companion
-	source = git+https://github.com/EdgeTX/edgetx.git#tag=v2.8.2
+	source = git+https://github.com/EdgeTX/edgetx.git#tag=v2.8.3
 	source = git+https://github.com/jbeder/yaml-cpp.git
 	source = git+https://github.com/raphaelcoeffic/AccessDenied.git
 	source = git+https://github.com/FreeRTOS/FreeRTOS-Kernel.git
