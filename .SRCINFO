@@ -1,6 +1,6 @@
 pkgbase = qalculate-qt5
 	pkgdesc = Qt5 frontend for libqalculate
-	pkgver = 4.6.0
+	pkgver = 4.6.1
 	pkgrel = 1
 	url = https://qalculate.github.io/
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = qalculate-qt5
 	arch = armv7h
 	license = GPL
 	makedepends = qt5-tools
-	depends = libqalculate>=4.6.0
+	depends = libqalculate>=4.6.1
 	depends = qt5-svg
 	depends = hicolor-icon-theme
-	provides = qalculate-qt=4.6.0
+	provides = qalculate-qt=4.6.1
 	conflicts = qalculate-qt
-	source = https://github.com/Qalculate/qalculate-qt/releases/download/v4.6.0/qalculate-qt-4.6.0.tar.gz
-	sha256sums = dc9035cdcf77f8b0ab99a912270925f1851c20fec42ded192a66885413cde0fd
+	source = https://github.com/Qalculate/qalculate-qt/releases/download/v4.6.1/qalculate-qt-4.6.1.tar.gz
+	sha256sums = 33541ed71be9e179760c3e38d65dcb9c2b10940ed8c197428832bc3537e2225d
 
 pkgname = qalculate-qt5
