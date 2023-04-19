@@ -1,11 +1,11 @@
 pkgbase = trilium-cn
 	pkgdesc = Trilium Notes Chinese version
 	pkgver = 0.59.4_20230419
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Nriver/trilium-translation
 	arch = x86_64
 	license = AGPL3
 	source = trilium-cn-0.59.4_20230419.zip::https://github.com/Nriver/trilium-translation/releases/download/v0.59.4_20230419/trilium-cn-linux-x64.zip
-	sha256sums = e4748ed59d67bc46f706756c173c5e6a9ffe6309b71159379f5c10abfeede55e
+	sha256sums = 93e1a6bc26f3057e9930342b1221029bf22a0b10b3a625986388e7ccb7a743c7
 
 pkgname = trilium-cn
