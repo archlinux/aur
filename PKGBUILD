@@ -1,7 +1,7 @@
 # Maintainer: Pranav S <pranav.ppanch@gmail.com>
 
 pkgname=freeciv21
-pkgver=3.0_rc.3
+pkgver=3.0_stable
 pkgrel=1
 pkgdesc="Freeciv for the 21st Century"
 arch=('x86_64')
@@ -9,11 +9,11 @@ url="https://github.com/longturn/freeciv21"
 license=('GPL3')
 depends=( 'lua' 'qt5-base' 'qt5-svg' 'sdl2_mixer' 'karchive' 'libertinus-font')
 makedepends=('cmake' 'ninja' 'python')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/longturn/freeciv21/releases/download/v${pkgver//_/-}/Freeciv21-v${pkgver//_/-}.tar.gz")
-sha256sums=('42b7bdfe018c143672606ae6066996a5c5f8b573e335f17930a56e83918b2da4')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/longturn/freeciv21/releases/download/v3.0/Freeciv21-v3.0.tar.gz")
+sha256sums=('6cd76243b738e07480865d6e60eeb8d544e13ef7bd99497868fe56f8406244af')
 
 build() {
-    cd Freeciv21-v${pkgver//_/-}
+    cd Freeciv21-v3.0
     cmake . -B build  -G Ninja\
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DCMAKE_BUILD_TYPE='None' \
@@ -24,12 +24,12 @@ build() {
 }
 
 check() {
-    cd Freeciv21-v${pkgver//_/-}/build
+    cd Freeciv21-v3.0
     ctest --output-on-failure
 
 }
 
 package() {
-    cd Freeciv21-v${pkgver//_/-}
+    cd Freeciv21-v3.0
     DESTDIR="$pkgdir" cmake --install build
 }
