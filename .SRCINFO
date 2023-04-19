@@ -1,6 +1,6 @@
 pkgbase = authy
 	pkgdesc = Two factor authentication desktop application
-	pkgver = 2.2.3
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://authy.com/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = authy
 	provides = authy
 	conflicts = authy-snap
 	replaces = authy-snap
-	source = https://api.snapcraft.io/api/v1/snaps/download/H8ZpNgIoPyvmkgxOWw5MSzsXK1wRZiHn_18.snap
-	sha256sums = b4f7dcb26e51c9551ed88b88a066eedd906848465288eedd6369983dfd1139bc
+	source = https://api.snapcraft.io/api/v1/snaps/download/H8ZpNgIoPyvmkgxOWw5MSzsXK1wRZiHn_19.snap
+	sha256sums = 58dfef718de47c5fc7419ee8a7221d0debd4e680d80c68ec852ed7554ef2ae3f
 
 pkgname = authy
