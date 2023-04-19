@@ -4,7 +4,7 @@
 pkgname=authy-export-git
 _bin=authy-export
 _gitname=authy
-pkgver=ac5e26a
+pkgver=c4f25fd
 pkgrel=1
 pkgdesc='Export your TOTP secret tokens from Authy.'
 arch=('x86_64')

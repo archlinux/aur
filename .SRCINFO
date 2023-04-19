@@ -1,6 +1,6 @@
 pkgbase = authy-export-git
 	pkgdesc = Export your TOTP secret tokens from Authy.
-	pkgver = ac5e26a
+	pkgver = c4f25fd
 	pkgrel = 1
 	url = https://github.com/alexzorin/authy
 	arch = x86_64
