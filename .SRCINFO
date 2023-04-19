@@ -1,6 +1,6 @@
 pkgbase = libxfce4ui-git
 	pkgdesc = Commonly used Xfce widgets among Xfce applications (git checkout)
-	pkgver = 4.15.3+58+g2bece1f
+	pkgver = 4.19.0+5+ga2c9fac
 	pkgrel = 1
 	epoch = 1
 	url = https://git.xfce.org/xfce/libxfce4ui/tree/README
@@ -9,25 +9,24 @@ pkgbase = libxfce4ui-git
 	arch = armv7h
 	arch = aarch64
 	license = GPL2
-	makedepends = intltool
 	makedepends = gtk-doc
-	makedepends = xfce4-dev-tools
 	makedepends = gobject-introspection
-	makedepends = git
 	makedepends = vala
 	makedepends = glade
-	depends = libxfce4util>=4.13.1
+	makedepends = git
+	makedepends = xfce4-dev-tools
+	depends = libxfce4util
 	depends = gtk3
 	depends = xfconf
 	depends = libsm
-	depends = libgtop
 	depends = startup-notification
+	depends = libgtop
+	depends = libepoxy
 	depends = hicolor-icon-theme
 	optdepends = glade: Glade designer plugin
-	provides = libxfce4ui=4.15.3
+	provides = libxfce4ui=4.19.0
 	conflicts = libxfce4ui
 	source = libxfce4ui::git+https://gitlab.xfce.org/xfce/libxfce4ui
 	sha256sums = SKIP
 
 pkgname = libxfce4ui-git
-
