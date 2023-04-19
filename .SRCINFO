@@ -1,6 +1,6 @@
 pkgbase = qownnotes
 	pkgdesc = Plain-text file markdown note taking with Nextcloud/ownCloud integration. This package is the "official" release of QOwnNotes on AUR.
-	pkgver = 23.4.5
+	pkgver = 23.4.6
 	pkgrel = 1
 	url = https://www.qownnotes.org/
 	arch = i686
