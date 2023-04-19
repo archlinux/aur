@@ -1,7 +1,7 @@
 # Maintainer: ObserverOfTime <chronobserver@disroot.org>
 
 pkgname=owo-cli-git
-pkgver=2.0.0+r286.gcf06572
+pkgver=2.0.0+r290.gd6ffda9
 pkgrel=1
 pkgdesc="A bash based file uploader and URL shortener for owo.whats-th.is (git version)"
 arch=('any')
