@@ -2,16 +2,16 @@
 
 _pkgname=xfce4-power-manager
 pkgname=${_pkgname}-git
-pkgver=1.7.0+70+gf05d5ee0
+pkgver=4.19.0+2+g6c3e56dc
 pkgrel=1
 pkgdesc="Power manager for Xfce desktop"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
-url="https://www.xfce.org/"
+url="https://docs.xfce.org/xfce/xfce4-power-manager/start"
 license=('GPL2')
 groups=('xfce4')
-depends=('libxfce4ui' 'upower' 'libnotify' 'hicolor-icon-theme')
-optdepends=('xfce4-panel: for the Xfce panel plugin')
-makedepends=('intltool' 'xfce4-panel' 'git' 'xfce4-dev-tools')
+depends=('libxfce4ui' 'upower' 'libnotify' 'xfce4-notifyd' 'hicolor-icon-theme' 'networkmanager')
+makedepends=('xfce4-panel' 'git' 'xfce4-dev-tools')
+optdepends=('xfce4-panel: Xfce panel plugin support')
 provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://gitlab.xfce.org/xfce/${_pkgname}")
@@ -29,9 +29,8 @@ build() {
     --prefix=/usr \
     --sysconfdir=/etc \
     --sbindir=/usr/bin \
-    --libexecdir=/usr/lib \
     --localstatedir=/var \
-    --disable-network-manager \
+    --enable-network-manager \
     --enable-polkit \
     --disable-debug
   make

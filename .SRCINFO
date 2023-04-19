@@ -1,27 +1,27 @@
 pkgbase = xfce4-power-manager-git
 	pkgdesc = Power manager for Xfce desktop
-	pkgver = 1.7.0+70+gf05d5ee0
+	pkgver = 4.19.0+2+g6c3e56dc
 	pkgrel = 1
-	url = https://www.xfce.org/
+	url = https://docs.xfce.org/xfce/xfce4-power-manager/start
 	arch = x86_64
 	arch = i686
 	arch = armv7h
 	arch = aarch64
 	groups = xfce4
 	license = GPL2
-	makedepends = intltool
 	makedepends = xfce4-panel
 	makedepends = git
 	makedepends = xfce4-dev-tools
 	depends = libxfce4ui
 	depends = upower
 	depends = libnotify
+	depends = xfce4-notifyd
 	depends = hicolor-icon-theme
-	optdepends = xfce4-panel: for the Xfce panel plugin
-	provides = xfce4-power-manager=1.7.0
+	depends = networkmanager
+	optdepends = xfce4-panel: Xfce panel plugin support
+	provides = xfce4-power-manager=4.19.0
 	conflicts = xfce4-power-manager
 	source = xfce4-power-manager::git+https://gitlab.xfce.org/xfce/xfce4-power-manager
 	sha256sums = SKIP
 
 pkgname = xfce4-power-manager-git
-
