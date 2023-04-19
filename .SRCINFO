@@ -1,0 +1,28 @@
+pkgbase = openfhe-development-git
+	pkgdesc = Open-Source Fully Homomorphic Encryption Library
+	pkgver = 1.0.3.r0.g122f470
+	pkgrel = 1
+	url = https://www.openfhe.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	depends = libtcmalloc_minimal.so
+	depends = ntl
+	depends = openmp
+	provides = openfhe=1.0.3
+	provides = openfhe-development=1.0.3
+	conflicts = openfhe
+	conflicts = openfhe-development
+	conflicts = openfhe-release
+	source = git+https://github.com/openfheorg/openfhe-development.git
+	source = git+https://github.com/openfheorg/cereal.git
+	source = google-test::git+https://github.com/google/googletest.git
+	source = system-tcmalloc.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = f2aa14008e48d8e82fe043be65ee2367d96057a0ac13990623abb81a941fb590
+
+pkgname = openfhe-development-git
