@@ -8,7 +8,7 @@ _tbbmajorver=2019
 _tbbpkgminorver=6
 
 pkgname=usd
-pkgver=23.02
+pkgver=23.05
 pkgrel=1
 pkgdesc='3D VFX pipeline interchange file format'
 arch=(x86_64)
@@ -38,17 +38,14 @@ makedepends=(boost
              python-jinja
              python-pygments)
 options=(!lto)
-#git+$_url.git#tag=v$pkgver
+# git+$_url.git#branch=dev TEST
 source=("git+$_url.git#tag=v$pkgver"
         "https://github.com/oneapi-src/oneTBB/archive/refs/tags/${_tbbmajorver}_U${_tbbpkgminorver}.tar.gz"
-        "2176.patch")
+        )
 sha512sums=('SKIP'
-            '6bcc014ec90cd62293811ac436eab03c7f7c7e3e03109efcab1c42cfed48d8bf83073d03ab381e5e63ee8c905f1792a7fdab272ec7e585df14102bad714ffc15'
-            'SKIP')
+            '6bcc014ec90cd62293811ac436eab03c7f7c7e3e03109efcab1c42cfed48d8bf83073d03ab381e5e63ee8c905f1792a7fdab272ec7e585df14102bad714ffc15')
 
 prepare() {
-  patch --directory=USD --forward --strip=1 --input="${srcdir}/2176.patch"
-
   ############################
   #       TBB 2019.6         #
   ############################
