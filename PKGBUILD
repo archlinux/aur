@@ -1,14 +1,14 @@
 # Maintainer: Dmitry Lyashuk <lyashuk.voxx at gmail dot com>
 pkgname=modern-theme
-pkgver=1.5
+pkgver=1.51
 pkgrel=1
 pkgdesc="GTK3/GTK4 theme powered by Adwaita technologies, contains some things for Qt/KDE/Kvantum also"
 arch=(any)
 url="https://github.com/TerminalHash/Modern"
 license=('GPL3')
 conflicts=(modern-theme-git)
-source=('https://github.com/TerminalHash/Modern/releases/download/v1.31/modern-v1.31.tar.bz2')
-md5sums=('0e7383d8cd537a505732a02416d68f08')
+source=('https://github.com/TerminalHash/Modern/releases/download/v1.51/modern-v-v1.51.tar.bz2')
+md5sums=('af8644bbd66d4a86d4f5e8e5b8bbe108')
 
 package() {
       mkdir -p $pkgdir/usr/share/aurorae/themes
