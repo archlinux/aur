@@ -17,7 +17,7 @@ arch=("x86_64")
 url="https://github.com/frappe/${pkgname}"
 license=("GPL3")
 depends=("frappe-bench" "libmaxminddb" "nodejs" "python" "python-pycups")
-makedepends=("python-build" "python-installer" "python-virtualenv")
+makedepends=("python-build" "python-installer" "python-virtualenv" "tmux")
 optdepends=("apache: HTTP server"
     "certbot: Creates SSL certificates."
     "mariadb: Database"
@@ -48,7 +48,7 @@ build()
     # Plugins
     # TODO Clone a version where possible.
     ## The installation of some plugins requires running processes.
-    tmux new-session -s erpnext-build "bench start"
+    tmux new-session -s erpnext-build "cd ${srcdir}/ && bench start"
 
     ## Agriculture
     if [[ "${ERPNEXT_AGRICULTURE}" == "ON" ]]; then
