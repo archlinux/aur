@@ -1,0 +1,13 @@
+pkgbase = fcitx-table-unicode-latex-git
+	pkgdesc = fcitx table with LaTeX macros to input unicode symbols
+	pkgver = r125.6e9b0af
+	pkgrel = 1
+	url = https://github.com/hubutui/fcitx-table-unicode-latex
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = fcitx
+	source = fcitx-table-unicode-latex::git+https://github.com/hubutui/fcitx-table-unicode-latex.git
+	sha512sums = SKIP
+
+pkgname = fcitx-table-unicode-latex-git
