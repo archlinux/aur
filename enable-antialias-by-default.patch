@@ -1,0 +1,15 @@
+diff -Naur ./xfce4-settings-4.19.0.orig/xfsettingsd/xsettings.xml ./xfce4-settings-4.19.0/xfsettingsd/xsettings.xml
+--- ./xfce4-settings-4.19.0.orig/xfsettingsd/xsettings.xml	2023-04-19 11:06:04.033915733 -0400
++++ ./xfce4-settings-4.19.0/xfsettingsd/xsettings.xml	2023-04-19 11:06:24.075729658 -0400
+@@ -19,9 +19,9 @@
+   </property>
+   <property name="Xft" type="empty">
+     <property name="DPI" type="int" value="-1"/>
+-    <property name="Antialias" type="int" value="-1"/>
++    <property name="Antialias" type="int" value="1"/>
+     <property name="Hinting" type="int" value="-1"/>
+-    <property name="HintStyle" type="string" value="hintnone"/>
++    <property name="HintStyle" type="string" value="hintfull"/>
+     <property name="RGBA" type="string" value="none"/>
+   </property>
+   <property name="Gtk" type="empty">
