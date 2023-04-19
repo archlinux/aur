@@ -4,7 +4,7 @@
 # Contributor: Taylor Venable <taylor@metasyntax.net>
 _projectname='utop'
 pkgname="ocaml-$_projectname"
-pkgver='2.11.0'
+pkgver='2.12.0'
 pkgrel='1'
 pkgdesc='Universal toplevel for OCaml'
 # If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the cppo, ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
@@ -16,7 +16,7 @@ depends=('ocaml>=4.08.0' 'ocaml-findlib>=1.7.2' 'ocaml-lambda-term>=3.1.0' 'ocam
 makedepends=('cppo>=1.1.2' 'dune>=1.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('ebc27219b0345ab1478499221756806874c430f81aa9f40e7d482d0fd948750919d631b6159faec19fef0d23d14e6a115e6b21a5aa724ce1534e000e5d35bdae')
+sha512sums=('3f396f42cda0ac39d01357d9e09eacd5adb5176ffb73855e7775e004c64aa467846780bb0948fca14869f45f5f79b42878b4c3cae9769e9bfc713e5bc3cee753')
 
 _sourcedirectory="$_projectname-$pkgver"
 

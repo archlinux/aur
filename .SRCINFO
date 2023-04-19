@@ -1,6 +1,6 @@
 pkgbase = ocaml-utop
 	pkgdesc = Universal toplevel for OCaml
-	pkgver = 2.11.0
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://github.com/ocaml-community/utop
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = ocaml-utop
 	depends = ocaml-react>=1.0.0
 	depends = ocaml-zed>=3.2.0
 	options = !strip
-	source = ocaml-utop-2.11.0-1.tar.gz::https://github.com/ocaml-community/utop/archive/2.11.0.tar.gz
-	sha512sums = ebc27219b0345ab1478499221756806874c430f81aa9f40e7d482d0fd948750919d631b6159faec19fef0d23d14e6a115e6b21a5aa724ce1534e000e5d35bdae
+	source = ocaml-utop-2.12.0-1.tar.gz::https://github.com/ocaml-community/utop/archive/2.12.0.tar.gz
+	sha512sums = 3f396f42cda0ac39d01357d9e09eacd5adb5176ffb73855e7775e004c64aa467846780bb0948fca14869f45f5f79b42878b4c3cae9769e9bfc713e5bc3cee753
 
 pkgname = ocaml-utop
