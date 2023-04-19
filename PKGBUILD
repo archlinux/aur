@@ -1,16 +1,16 @@
 pkgname=mingw-w64-coin-or-cbc
-pkgver=2.10.9
+pkgver=2.10.10
 pkgrel=1
 pkgdesc="COIN-OR branch-and-cut mixed integer programming solver (mingw-w64)"
 arch=('any')
 url="https://projects.coin-or.org/Cbc"
 license=('EPL')
 groups=('mingw-w64-coin-or')
-depends=('mingw-w64-coin-or-cgl' 'mingw-w64-coin-or-asl')
+depends=('mingw-w64-coin-or-cgl')
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!buildflags' '!strip')
 source=(https://github.com/coin-or/Cbc/archive/refs/tags/releases/$pkgver.tar.gz)
-sha256sums=('96d02593b01fd1460d421f002734384e4eb1e93ebe1fb3570dc2b7600f20a27e')
+sha256sums=('f394efecccc40a51bf79fba2c2af0bc92561f3e6b8b6e4c6e36d5e70986f734f')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -25,7 +25,6 @@ build() {
   cd Cbc-releases-$pkgver
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    COIN_SKIP_PROJECTS="Sample" \
     LIBS="-lssp" ${_arch}-configure \
       --with-osi-lib="$(${_arch}-pkg-config --libs osi)" \
       --with-osi-incdir="/usr/${_arch}/include/coin/" \
