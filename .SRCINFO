@@ -1,0 +1,16 @@
+pkgbase = python2-volatility-git
+	pkgdesc = An advanced memory forensics framework
+	pkgver = 2.6.r293.a438e76
+	pkgrel = 1
+	url = http://volatilityfoundation.org
+	arch = any
+	license = GPL
+	depends = python2
+	depends = python2-pycryptodome
+	depends = python2-distorm
+	provides = python2-volatility
+	conflicts = python2-volatility
+	source = volatility::git+https://github.com/volatilityfoundation/volatility.git
+	md5sums = SKIP
+
+pkgname = python2-volatility-git
