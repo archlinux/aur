@@ -10,7 +10,7 @@ pkgver=4.19.0+5+ga2c9fac
 pkgrel=1
 pkgdesc="Commonly used Xfce widgets among Xfce applications (git checkout)"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
-url="https://git.xfce.org/xfce/libxfce4ui/tree/README"
+url="https://docs.xfce.org/xfce/libxfce4ui/start"
 license=('GPL2')
 depends=('libxfce4util' 'gtk3' 'xfconf' 'libsm' 'startup-notification'
          'libgtop' 'libepoxy' 'hicolor-icon-theme')
