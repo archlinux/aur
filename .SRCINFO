@@ -1,0 +1,12 @@
+pkgbase = py-mailqueued-mta
+	pkgdesc = Uses py-mailqueued as an MTA for msmtp
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = msmtp
+	depends = py-mailqueued
+	provides = smtp-forwarder
+	conflicts = smtp-forwarder
+
+pkgname = py-mailqueued-mta
