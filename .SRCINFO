@@ -1,0 +1,18 @@
+pkgbase = thorium-appimage
+	pkgdesc = A cross platform desktop reading app, based on the Readium Desktop toolkit
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://www.edrlab.org/software/thorium-reader/
+	arch = x86_64
+	license = custom:BSD-3-Clause
+	depends = hicolor-icon-theme
+	depends = zlib
+	depends = glibc
+	conflicts = thorium
+	options = !strip
+	source = thorium-2.2.0.AppImage::https://github.com/edrlab/thorium-reader/releases/download/v2.2.0/Thorium-2.2.0.AppImage
+	source = LICENSE::https://github.com/edrlab/thorium-reader/raw/master/LICENSE
+	sha256sums = aeaa3251bca6d61c50dae68f4baed2895d369c3f0818af47c3a2a49fc03e559a
+	sha256sums = e95e504f42685015445b4a0a80dfdaa86e5b2b2c0e317bca2bcbb51330ec61e5
+
+pkgname = thorium-appimage
