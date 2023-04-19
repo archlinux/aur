@@ -1,6 +1,6 @@
 pkgbase = armitage-git
 	pkgdesc = Metasploit GUI Front ened written in java
-	pkgver = 1.0.0.r1.gcf60646
+	pkgver = 1.0.0.r3.g991244e
 	pkgrel = 1
 	url = http://www.fastandeasyhacking.com/
 	install = armitage.install

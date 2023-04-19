@@ -2,7 +2,7 @@
 
 pkgname=armitage-git
 _pkgname=${pkgname%-git}
-pkgver=1.0.0.r1.gcf60646
+pkgver=1.0.0.r3.g991244e
 pkgrel=1
 pkgdesc="Metasploit GUI Front ened written in java"
 url="http://www.fastandeasyhacking.com/"
@@ -39,8 +39,8 @@ pkgver() {
 prepare() {
     cd "${srcdir}/${pkgname}"
 
-    patch -p1 -i "${srcdir}/added-a-services-column-in-the-host-table-view-with-filter.patch"
-    patch -p1 -i "${srcdir}/ui-change-menu-items-list-from-8-to-24.patch"
+    patch -Np1 -i "${srcdir}/added-a-services-column-in-the-host-table-view-with-filter.patch"
+    patch -Np1 -i "${srcdir}/ui-change-menu-items-list-from-8-to-24.patch"
 }
 
 build() {
