@@ -1,6 +1,6 @@
 pkgbase = legion-fan-utils-linux-git
 	pkgdesc = Systemd service that will apply a given profile (read the systemd section in the repo). Needs LenovoLegionLinux to work
-	pkgver = r01.52bdcab
+	pkgver = r01.86276d8
 	pkgrel = 1
 	url = https://github.com/Petingoso/legion-fan-utils-linux
 	install = legion-fan-utils-linux.install
