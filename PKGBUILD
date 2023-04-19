@@ -3,7 +3,7 @@
 _pkgname=alfae
 pkgname=$_pkgname-bin
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An Itch.io/Epic Games/GOG launcher that works through plugins (binary release)"
 arch=('x86_64')
 url="https://github.com/suchmememanyskill/Alfae"
@@ -38,12 +38,14 @@ prepare() {
 }
 
 package() {
-  mkdir -p ${pkgdir}/opt
-  mkdir -p ${pkgdir}/usr/bin
-  cp -a Release $pkgdir/opt/Alfae
-  ln -fs /opt/Alfae/Alfae ${pkgdir}/usr/bin/${_pkgname}
-  install -Dm644 icon.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
-  install -Dm644 desktop/${_desktop} "$pkgdir/usr/share/applications/$_desktop"
+  # Create folders
+  mkdir -p $pkgdir/opt
+  mkdir -p $pkgdir/usr/bin
+  # Install
+  cp -r Release $pkgdir/opt/Alfae
+  ln -s /opt/Alfae/Alfae $pkgdir/usr/bin/$_pkgname
+  install -Dm644 icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
+  install -Dm644 desktop/$_desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
 }

@@ -1,7 +1,7 @@
 pkgbase = alfae-bin
 	pkgdesc = An Itch.io/Epic Games/GOG launcher that works through plugins (binary release)
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/suchmememanyskill/Alfae
 	arch = x86_64
 	license = GPL3
