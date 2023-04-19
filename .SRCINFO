@@ -1,0 +1,13 @@
+pkgbase = python-attr
+	pkgdesc = Simple decorator to set attributes of target function or class in a DRY way.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/denis-ryzhkov/attr
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/denis-ryzhkov/attr/archive/0.3.2.tar.gz
+	sha256sums = 092be21d22755cd803c184d68e3a9867836727a451aac640840bb81daf4f4e52
+
+pkgname = python-attr
