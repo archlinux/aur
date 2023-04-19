@@ -1,0 +1,14 @@
+pkgbase = copybook-bin
+	pkgdesc = 生成拼音、汉字、汉字字帖
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://github.com/xxNull-lsk/Copybook
+	arch = x86_64
+	license = custom:BSD-3-Clause
+	depends = zlib
+	depends = glibc
+	options = !strip
+	source = copybook-0.2.7.deb::https://github.com/xxNull-lsk/Copybook/releases/download/0.2.7/copy_book_linux_x64_0.2.7.deb
+	sha256sums = 4437b62e0ff774eba5bb9653c64213be610001dc53a9dd100c5e454ca448f1b1
+
+pkgname = copybook-bin
