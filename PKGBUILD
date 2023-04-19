@@ -3,17 +3,17 @@
 # Contributor: David Arroyo <droyo@aqwari.us>
 pkgname=s6-musl
 _pkgname=${pkgname%-musl}
-pkgver=2.11.1.2
+pkgver=2.11.3.2
 pkgrel=1
 pkgdesc="skarnet's small supervision suite."
 arch=('i686' 'x86_64')
 url="http://www.skarnet.org/software/$_pkgname"
 license=('custom:ISC')
-makedepends=('execline-musl>=2.9.0.1' 'skalibs-musl>=2.12.0.0' 'musl')
+makedepends=('execline-musl>=2.9.3.0' 'skalibs-musl>=2.13.1.1' 'musl')
 provides=($_pkgname=$pkgver)
 options=('staticlibs')
 source=("${url}/$_pkgname-$pkgver.tar.gz")
-sha256sums=('6c1474be3e889dac392cee307abe015cd4be0c85c725c84ea7f184f0e34503a2')
+sha256sums=('7c16138ad2f0ffbe0ed2ae8dd0cecada9f7c787edd33a69084d219110693df74')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
