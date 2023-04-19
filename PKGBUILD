@@ -8,13 +8,9 @@ pkgver=0.6.13
 pkgrel=2
 pkgdesc="A hypertext info file viewer"
 arch=('x86_64')
-url="http://pinfo.sourceforge.net/"
-# https://fossies.org/linux/misc/pinfo-0.6.10.tar.gz/
+url="https://github.com/baszoetekouw/pinfo"
 license=('GPL')
 depends=('ncurses' 'readline')
-#source=("https://alioth.debian.org/frs/download.php/file/3351/$pkgname-$pkgver.tar.bz2")
-#source=("https://arch.p5n.pp.ru/~sergej/dl/2014/pinfo-$pkgver.tar.bz2")
-#source=("https://fossies.org/linux/misc/old/pinfo-$pkgver.tar.bz2")
 source=("pinfo-$pkgver.tgz::https://github.com/baszoetekouw/pinfo/archive/v$pkgver.tar.gz"
         gcc10-stringop.diff
         https://github.com/baszoetekouw/pinfo/commit/ab604fdb.patch)
