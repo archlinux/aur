@@ -4,8 +4,8 @@
 # Contributor: Jonathan Thomas <jonathan@openshot.org>
 
 pkgname=libopenshot
-pkgver=0.3.0
-pkgrel=5
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="A video editing, animation, and playback library for C++, Python, and Ruby"
 arch=(x86_64)
 url="https://github.com/openshot/libopenshot"
@@ -32,27 +32,28 @@ makedepends=(
   protobuf
   swig
   unittestpp
+  xorg-server-xvfb
   zeromq
 )
 provides=(libopenshot.so)
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha512sums=('5c72db9c39d2afaecb1c4ebf3192cd8795d4683f2b1210029b99657baf853515b92f392c25b65ea652a71d204a1b172123d264c95f1c3676a612e21f9ca38d2e')
-b2sums=('65cadf634b6b7c6da35af64ba96c92fa32ee075966ba3d7f1711210dc784f7e263b01eecdc0c613e529cc501072b8b4a0ee6b297df62fa323ed1fddfc844f874')
+sha512sums=('8e0f606c76ed88740577e399065aba021d6d8c5a34b66705c9755252d5a5bb9b8361c074b3810fc23927d4e89670d9ba5329fd39425ec1080356e7140239147b')
+b2sums=('b1d35246507b91690d1da5b0d79af4ee26ad62b1683ad8cc20d28abeb16b1b89770553034595b8f936263fa86f4091dc6d6d883a13c2bb92461d3935b8c20238')
 
 build() {
   local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
   local cmake_options=(
     -B build
-    -DCMAKE_BUILD_TYPE=None
-    -DCMAKE_INSTALL_PREFIX=/usr
-    -DENABLE_RUBY=OFF
-    -DMAGICKCORE_HDRI_ENABLE=1
-    -DMAGICKCORE_QUANTUM_DEPTH=16
-    -DPYTHON_INCLUDE_DIRS=/usr/include/python$python_version
-    -DPYTHON_LIBRARIES=/usr/lib/libpython3.so
-    -DUSE_SYSTEM_JSONCPP=ON
+    -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -D ENABLE_RUBY=OFF
+    -D MAGICKCORE_HDRI_ENABLE=1
+    -D MAGICKCORE_QUANTUM_DEPTH=16
+    -D PYTHON_INCLUDE_DIRS=/usr/include/python$python_version
+    -D PYTHON_LIBRARIES=/usr/lib/libpython3.so
+    -D USE_SYSTEM_JSONCPP=ON
     -S $pkgname-$pkgver
-    -Wno-dev
+    -W no-dev
   )
 
   cmake "${cmake_options[@]}"
@@ -60,7 +61,8 @@ build() {
 }
 
 check() {
-  ctest --test-dir build --output-on-failure
+  # disable broken test: https://github.com/OpenShot/libopenshot/issues/922
+  xvfb-run ctest --test-dir build --output-on-failure -E '(Caption:caption effect)'
 }
 
 
