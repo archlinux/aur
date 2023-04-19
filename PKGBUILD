@@ -1,8 +1,9 @@
-# Maintainer: Doug Newgard <scimmia at archlinux dot org>
+# Maintainer: Jose Riha <jose1711 gmail com>
+# Contributor: Doug Newgard <scimmia at archlinux dot org>
 
 pkgname=python2-gdal
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Python2 bindings for GDAL'
 arch=('x86_64')
 url='https://gdal.org/'
