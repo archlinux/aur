@@ -1,6 +1,6 @@
 pkgbase = orbiton-bin
 	pkgdesc = Text editor, IDE and gdb frontend (CLI only)
-	pkgver = 2.60.6
+	pkgver = 2.61.0
 	pkgrel = 1
 	url = https://github.com/xyproto/orbiton
 	arch = aarch64
@@ -55,8 +55,8 @@ pkgbase = orbiton-bin
 	conflicts = o-bin
 	conflicts = orbiton
 	replaces = o-bin
-	source = https://github.com/xyproto/orbiton/releases/download/v2.60.6/orbiton-2.60.6-linux_x86_64_static.tar.xz
-	sha256sums = 681c3b0ef7a30077e4a29aa17ba555570169f953960668b9c33d74d879872995
-	b2sums = 7d84306602466da59cab1578dd02b532745084ce0c95ee4a64484f20b7bb80e7cd61fe66fec8052dc049a0c22a71cb972392bfbce395c348ca3ace98b2c6b757
+	source = https://github.com/xyproto/orbiton/releases/download/v2.61.0/orbiton-2.61.0-linux_x86_64_static.tar.xz
+	sha256sums = 7d7e6903e185b89bca5200c7a64d976363ce607c0223f388938d4311110a168f
+	b2sums = cdad0ad529e9e8037e518d78753ac965a0f59f98839bbba645ed066f66676d2314a5fdc79311a19b9b7daf614320d1018b690aaceee421c41978af36f71c46ab
 
 pkgname = orbiton-bin
