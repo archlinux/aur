@@ -1,8 +1,8 @@
 pkgbase = apifox-bin
 	pkgdesc = Apifox=Postman+Swagger+Mock+JMeter.API 文档、API 调试、API Mock、API 自动化测试
-	pkgver = 2.2.32
+	pkgver = 2.2.33
 	pkgrel = 1
-	url = https://www.apifox.cn/
+	url = https://apifox.com/
 	arch = x86_64
 	license = custom
 	depends = gtk3
@@ -36,7 +36,9 @@ pkgbase = apifox-bin
 	depends = sh
 	conflicts = apifox
 	options = !strip
-	source = apifox-deb-2.2.32.zip::https://cdn.apifox.cn/download/Apifox-linux-deb-latest.zip
-	sha256sums = a886aed8894151367bf13e1f974a23abc29ee5badbb649bbd8409e20ba9e7673
+	source = apifox-deb-2.2.33.zip::https://cdn.apifox.cn/download/Apifox-linux-deb-latest.zip
+	source = LICENSE.html::https://apifox.com//help/app/faq/
+	sha256sums = 8a44c1c1d385edd64defb94c739fe21c518b216cdc32baecef6eb137b7705f21
+	sha256sums = d6411651b59c49d7cfb6cbc3736e669c90a9db7a7c0370dc50039f18a0fcd650
 
 pkgname = apifox-bin
