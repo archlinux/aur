@@ -6,30 +6,28 @@
 
 _pkgname=xfce4-power-manager
 pkgname=${_pkgname}-devel
-pkgver=4.17.1
+pkgver=4.19.0
 pkgrel=1
 pkgdesc="Power manager for Xfce desktop"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
-url="http://www.xfce.org/"
+url="https://docs.xfce.org/xfce/xfce4-power-manager/start"
 license=('GPL2')
 groups=('xfce4-devel')
-depends=('upower' 'libnotify' 'libxfce4ui' 'hicolor-icon-theme' 'networkmanager')
-makedepends=('pkgconfig' 'intltool' 'xfce4-panel' 'polkit')
-optdepends=('xfce4-panel:	    Xfce panel plugin support')
+depends=('libxfce4ui' 'upower' 'libnotify' 'xfce4-notifyd' 'hicolor-icon-theme' 'networkmanager')
+makedepends=('xfce4-panel')
+optdepends=('xfce4-panel: Xfce panel plugin support')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-options=('!libtool')
 source=("https://archive.xfce.org/src/xfce/xfce4-power-manager/${pkgver%.*}/xfce4-power-manager-${pkgver}.tar.bz2")
-sha256sums=('852b34b922b83a26f9e887e8e98b1b7174decb8ed7143ebe5682d93cf8b6c83d')
+sha256sums=('5ce72851bd5aed4465a96419d908fcfe217d7e2e27c7f36fb9e59d16b81dd254')
 
 build() {
-  cd "$srcdir/${_pkgname}-$pkgver"
+  cd "${_pkgname}-${pkgver}"
 
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
     --sbindir=/usr/bin \
-    --libexecdir=/usr/lib \
     --localstatedir=/var \
     --enable-network-manager \
     --enable-polkit \
@@ -38,6 +36,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/${_pkgname}-$pkgver"
-  make DESTDIR="$pkgdir" install
+  cd "${_pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
 }
