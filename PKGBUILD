@@ -60,8 +60,8 @@ package() {
   # Create folders
   mkdir -p $pkgdir/opt
   mkdir -p $pkgdir/usr/bin
-  mkdir -p $pkgdir/usr/share/pixmaps
   mkdir -p $pkgdir/usr/share/applications
+  mkdir -p $pkgdir/usr/share/icons/hicolor/512x512/apps
   # Install
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
