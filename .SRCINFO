@@ -1,6 +1,6 @@
 pkgbase = open-hexagon-git
-	pkgdesc = Challenging music-based arcade game inspired by Super Hexagon
-	pkgver = 2.0.6.r463.gf42c0404
+	pkgdesc = Challenging rhythm-based arcade game inspired by Super Hexagon
+	pkgver = 2.0.6.r467.g27112a56
 	pkgrel = 1
 	epoch = 1
 	url = https://openhexagon.org/
@@ -8,7 +8,6 @@ pkgbase = open-hexagon-git
 	arch = any
 	license = custom:AFL-3.0
 	license = custom:non-free
-	makedepends = rsync
 	makedepends = git
 	makedepends = cmake
 	makedepends = mesa
