@@ -1,6 +1,6 @@
 pkgbase = nvtop-git
 	pkgdesc = GPUs process monitoring for AMD, Intel and NVIDIA
-	pkgver = 3.0.1.r3.g85200b4
+	pkgver = 3.0.1.r31.g92a3e44
 	pkgrel = 1
 	url = https://github.com/Syllo/nvtop
 	arch = x86_64
