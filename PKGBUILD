@@ -2,7 +2,7 @@
 
 _pkgname=xfdesktop
 pkgname=${_pkgname}-git
-pkgver=4.19.0+6+ge31efdf0
+pkgver=4.19.1+138+gbbf702c8
 pkgrel=1
 pkgdesc="A desktop manager for Xfce (git checkout)"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ license=('GPL2')
 groups=('xfce4-git')
 depends=('thunar' 'garcon' 'hicolor-icon-theme' 'libwnck3'
          'libxfce4windowing>=4.19.1' 'gtk-layer-shell')
-makedepends=('intltool' 'git' 'xfce4-dev-tools')
+makedepends=('git' 'xfce4-dev-tools')
 conflicts=('xfce4-menueditor' "${_pkgname}")
 provides=("${_pkgname}=${pkgver%%+*}")
 replaces=('xfce4-menueditor')
@@ -25,14 +25,13 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${_pkgname}"
 
   ./autogen.sh \
     --prefix=/usr \
     --sysconfdir=/etc \
     --libexecdir=/usr/lib \
     --localstatedir=/var \
-    --disable-static \
     --enable-thunarx \
     --enable-notifications \
     --enable-wayland \
@@ -41,6 +40,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  make DESTDIR="$pkgdir" install
+  cd "${_pkgname}"
+  make DESTDIR="${pkgdir}" install
 }
