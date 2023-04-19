@@ -1,6 +1,6 @@
 pkgname="ttf-victor-mono"
 pkgdesc="Unoffical Victor Mono(TTF) AUR package"
-pkgver=1.5.4
+pkgver=1.5.5
 pkgrel=1
 arch=("any")
 sha256sums=("34288e16ca4834efc721aaf0c6f4ef3d86a85a5a791769787b50853ec21afd3b")

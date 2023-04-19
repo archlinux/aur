@@ -1,6 +1,6 @@
 pkgbase = ttf-victor-mono
 	pkgdesc = Unoffical Victor Mono(TTF) AUR package
-	pkgver = 1.5.4
+	pkgver = 1.5.5
 	pkgrel = 1
 	url = https://rubjo.github.io/victor-mono/
 	arch = any
