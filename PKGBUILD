@@ -1,4 +1,4 @@
-# Maintainer: begin-theadventure <begin-thecontact.ncncb@dralias.com>
+# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 _pkgname=alfae
 pkgname=$_pkgname-bin
