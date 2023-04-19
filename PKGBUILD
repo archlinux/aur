@@ -2,7 +2,7 @@
 
 _git_repo_name="Electra-Lang"
 pkgname="electra-git"
-pkgver=2.0.0.7.gf1134c9
+pkgver=2.0.2
 pkgrel=1
 epoch=
 pkgdesc="Electra is an esolang where you code like an electrician"
