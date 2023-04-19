@@ -1,5 +1,5 @@
-pkgbase = emacs-native-comp-git-enhanced
-	pkgdesc = GNU Emacs. Development master branch.
+pkgbase = emacs-git-aot
+	pkgdesc = GNU Emacs with AOT and xwidgets
 	pkgver = 29.0.50.161920
 	pkgrel = 2
 	url = http://www.gnu.org/software/emacs/
@@ -29,4 +29,4 @@ pkgbase = emacs-native-comp-git-enhanced
 	source = emacs-git::git+https://git.savannah.gnu.org/git/emacs.git
 	b2sums = SKIP
 
-pkgname = emacs-native-comp-git-enhanced
+pkgname = emacs-git-aot

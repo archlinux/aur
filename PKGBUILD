@@ -63,7 +63,7 @@ GPM="YES"         # Mouse support in Linux console using gmpd.
 
 NOTKIT=           # Use no toolkit widgets. Like B&W Twm (001d sk00l).
                   # Bitmap fonts only, 1337!
-               
+
 LUCID=            # Use the lucid, a.k.a athena, toolkit. Like XEmacs, sorta.
                   #
                   # Read https://wiki.archlinux.org/index.php/X_resources
@@ -72,20 +72,20 @@ LUCID=            # Use the lucid, a.k.a athena, toolkit. Like XEmacs, sorta.
                   # for some tips on using outline fonts with
                   # Xft, if you choose no toolkit or Lucid.
                   #
-               
+
 ALSA="YES"        # Linux sound support.
 
-NOCAIRO=          # Disable here. 
-               
+NOCAIRO=          # Disable here.
+
 XWIDGETS="YES"    # Use GTK+ widgets pulled from webkit2gtk. Usable.
                   # Thanks to Po Lu, xwidgets supports pgtk now!
-               
+
 PGTK=             # Wayland is awesome!
 
 DOCS_HTML=        # Generate and install html documentation.
-               
+
 DOCS_PDF=         # Generate and install pdf documentation.
-               
+
 NOGZ="YES"        # Don't compress .el files.
 ################################################################################
 
@@ -95,9 +95,9 @@ if [[ $CLI == "YES" ]] ; then
 else
 pkgname="emacs-git-aot"
 fi
-pkgver=30.0.50.165990
+pkgver=30.0.50.165991
 pkgrel=1
-pkgdesc="GNU Emacs. Emacs with AOT and xwidgets"
+pkgdesc="GNU Emacs with AOT and xwidgets"
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL3')
@@ -350,7 +350,7 @@ if [[ $USE_ALL_CPU_CORES == "YES" ]]; then
     mold -run make NATIVE_FULL_AOT=1 -j$(nproc)
   else
     mold -run make -j$(nproc)
-  fi 
+  fi
 else
   if [[ $JIT == "YES" ]] && [[ $AOT == "YES" ]]; then
     mold -run make NATIVE_FULL_AOT=1
