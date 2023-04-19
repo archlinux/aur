@@ -3,14 +3,15 @@
 pkgname=librewolf-bin
 provides=(${pkgname//-bin/""})
 conflicts=(${pkgname//-bin/""})
-pkgver=112.0
-pkgrel=1
+pkgver=112.0.1
+pkgrel=2
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
 url="https://librewolf-community.gitlab.io/"
 depends=(gtk3 libxt startup-notification mime-types dbus-glib
          nss ttf-font libpulse ffmpeg)
+makedepends=(git)
 optdepends=(
   'hunspell-en_US: Spell checking, American English'
   'libnotify: Notification integration'
@@ -37,15 +38,15 @@ source=(
   default192x192.png
   librewolf.desktop
 )
-source_aarch64=("${_uploadpath_aarch64}" "${_uploadpath_sig_aarch64}")
-source_x86_64=("${_uploadpath_x86_64}" "${_uploadpath_sig_x86_64}")
+# source_aarch64=("${_uploadpath_aarch64}" "${_uploadpath_sig_aarch64}")
+# source_x86_64=("${_uploadpath_x86_64}" "${_uploadpath_sig_x86_64}")
+source_aarch64=("https://gitlab.com/librewolf-community/browser/bsys6/-/jobs/4139609098/artifacts/raw/librewolf-112.0.1-2-linux-arm64-package.tar.bz2")
+source_x86_64=("https://gitlab.com/librewolf-community/browser/bsys6/-/jobs/4139609097/artifacts/raw/librewolf-112.0.1-2-linux-x86_64-package.tar.bz2")
 sha256sums=('SKIP'
             '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1'
             '21054a5f41f38a017f3e1050ccc433d8e59304864021bef6b99f0d0642ccbe93')
-sha256sums_x86_64=('3d342c722280f344ec7c1dce61f2bf47c025489839775ea968b76a12872eca26'
-                   'SKIP')
-sha256sums_aarch64=('d2d81ae3ccc2214f62247b1e793838bd3246f01351ffad940189039353f26507'
-                    'SKIP')
+sha256sums_x86_64=('66d7f94c3c5b1db62784e2156b18e9104f2f4c605ba5b29d22d87c87f41ffc68')
+sha256sums_aarch64=('c074aa32f2124c394cbe5dc9adfd39d1185d81634dd5f540f8742858ecc2f7c1')
 
 package() {
   # Yep, that's somewhat redundant. But it works.
