@@ -1,7 +1,7 @@
 # Maintainer: ObserverOfTime <chronobserver@disroot.org>
 
 pkgname=betterdiscord-git
-pkgver=1.8.2.r5.gd2a1a29d
+pkgver=1.9.2.r4.geb814160
 pkgrel=1
 pkgdesc='Discord extension with plugin support, emotes, and more'
 arch=('x86_64')
