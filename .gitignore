@@ -1,0 +1,4 @@
+*.zst
+emacs-git
+src
+pkg
