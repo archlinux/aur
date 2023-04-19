@@ -1,8 +1,8 @@
-# Maintainer: begin-theadventure <begin-thecontact.ncncb@dralias.com>
+# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=alfae
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An Itch.io/Epic Games/GOG launcher that works through plugins"
 arch=('any')
 url="https://github.com/suchmememanyskill/Alfae"
@@ -68,12 +68,14 @@ build() {
 }
 
 package() {
-  mkdir -p ${pkgdir}/opt
-  mkdir -p ${pkgdir}/usr/bin
-  cp -a Alfae-$pkgver/Release $pkgdir/opt/Alfae
-  ln -fs /opt/Alfae/Alfae ${pkgdir}/usr/bin/$pkgname
-  install -Dm644 Alfae-$pkgver/Launcher/Assets/icon.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
-  install -Dm644 desktop/${_desktop} "$pkgdir/usr/share/applications/$_desktop"
+  # Create folders
+  mkdir -p $pkgdir/opt
+  mkdir -p $pkgdir/usr/bin
+  # Install
+  cp -r Alfae-$pkgver/Release $pkgdir/opt/Alfae
+  ln -s /opt/Alfae/Alfae $pkgdir/usr/bin/$_pkgname
+  install -Dm644 Alfae-$pkgver/Launcher/Assets/icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
+  install -Dm644 desktop/$_desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 Alfae-$pkgver/README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm644 Alfae-$pkgver/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
