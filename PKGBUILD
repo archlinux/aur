@@ -2,14 +2,14 @@
 # Contributer: Donn <me@donn.website>
 
 pkgname=cemu-bin
-pkgver=2.0.34
+pkgver=2.0.35
 pkgrel=1
 pkgdesc="Nintendo Wii U Emulator"
 arch=('x86_64')
 url="https://cemu.info"
 license=('MPL2')
-depends=('gcc-libs' 'glib2' 'glibc' 'glu' 'hicolor-icon-theme' 'libglvnd' 'libice' 'libpng' 'libsm' 'libx11'
-         'libxext' 'libxrender' 'wayland')
+depends=('at-spi2-core' 'cairo' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'glu' 'gtk3' 'harfbuzz' 'hicolor-icon-theme'
+         'libglvnd' 'libice' 'libpng' 'libsm' 'libx11' 'libxext' 'libxrender' 'pango' 'wayland')
 makedepends=('patchelf')
 provides=('cemu')
 conflicts=('cemu' 'cemu-git')
@@ -19,7 +19,7 @@ source=("https://github.com/cemu-project/Cemu/releases/download/v$_srcver/cemu-$
         "https://raw.githubusercontent.com/cemu-project/Cemu/main/dist/linux/info.cemu.Cemu.desktop"
         "https://github.com/cemu-project/Cemu/raw/main/dist/linux/info.cemu.Cemu.png"
         "https://raw.githubusercontent.com/cemu-project/Cemu/main/dist/linux/info.cemu.Cemu.metainfo.xml")
-sha256sums=('c5a6f26eb1d5c29c4a2f4c2520f6b794bbd224da378e9eb3ca364671d6c554bd'
+sha256sums=('366aa90388c3fe443c341a09e2587b9151221e6b3a02d9e76570f590de6583cc'
             '3e9380eb47646fede56c0de59ddab872627c00629820ef5f974be0d07e4f3490'
             '6458a99b8bd54e44857efa0f82bfd6035e7e072e7e080e3330e4e2cfe89cbd33'
             '9a281a8c5b9d0dbe826c5ea0d942f5d2c307d6d9e60729352240e82ee24c5bfe')
