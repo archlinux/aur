@@ -3,8 +3,8 @@
 _arch=aarch64
 _target=$_arch-none-elf
 pkgname=$_target-toolchain
-pkgver=20230203
-pkgrel=2
+pkgver=20230420
+pkgrel=1
 pkgdesc="A complete gcc/binutils/newlib toolchain for $_target"
 depends=('zlib' 'bash' 'libmpc' 'libisl')
 url="http://www.gnu.org"
@@ -14,8 +14,8 @@ depends=(libelf)
 makedepends=(git)
 license=('GPL' 'BSD')
 options=('!strip')
-_binutils_commit=ab87a96bab7b216ef1079461ab333e75768525b9
-_gcc_commit=d31bd7138610a883310dce212bb0bdaaa8da7304
+_binutils_commit=594dcc92e8d1f6bb30e3dfa4eb343febcda66f1a
+_gcc_commit=015cf9f84b0b6792f982e505392ca574e04c8d23
 _newlib_commit=ab49db3a8c08e2240e53d8f12d6a14fd285def4e
 
 source=(git+https://sourceware.org/git/binutils-gdb.git#commit=${_binutils_commit}
