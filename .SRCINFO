@@ -1,13 +1,13 @@
 pkgbase = slint-lsp-bin
 	pkgdesc = A language server protocol implementation for slint
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://slint-ui.com
 	arch = x86_64
 	license = GPL3
 	depends = qt5-base
 	provides = slint-lsp
-	source = slint-lsp-1.0.0.tar.gz::https://github.com/slint-ui/slint/releases/download/v1.0.0/slint-lsp-linux.tar.gz
-	md5sums = 1d5f48d3b9cce9a08e6c514c9a3b6620
+	source = slint-lsp-1.0.1.tar.gz::https://github.com/slint-ui/slint/releases/download/v1.0.1/slint-lsp-linux.tar.gz
+	sha256sums = d770cdc014e268660d4d51feef2f2af907f50c249f4c5a51efa5d87a15fb4daf
 
 pkgname = slint-lsp-bin
