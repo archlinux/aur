@@ -13,6 +13,7 @@ pkgname=(
 )
 pkgver=1.14.4.r1397.baa066c7b7
 pkgrel=1
+_ffver=3.0.12
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64)
 url=https://www.ppsspp.org/
@@ -40,7 +41,8 @@ source=(
   git+https://github.com/hrydgard/ppsspp.git
   git+https://github.com/Kingcom/armips.git
   git+https://github.com/discordapp/discord-rpc.git
-  git+https://github.com/hrydgard/ppsspp-ffmpeg.git
+  https://ffmpeg.org/releases/ffmpeg-$_ffver.tar.xz
+  ppsspp-ffmpeg_x86_64.sh::https://raw.githubusercontent.com/hrydgard/ppsspp-ffmpeg/master/linux_x86-64.sh
   armips-filesystem::git+https://github.com/Kingcom/filesystem.git
   git+https://github.com/KhronosGroup/glslang.git
   git+https://github.com/hrydgard/ppsspp-lang.git
@@ -54,7 +56,8 @@ source=(
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
-        'SKIP'
+        'e978c76cdab638d4bf2718e0ec58fb0d4c7c4017d3100de76460fc8b148cb899066dbe92680aad19f7bd60c7c8924d966fcee22a53133be695ac8352a6ed01cc'
+        'd5140fb7d56e3b7873a3174e3b9c96a5188309daa77b534d2e7e6355b6d74db4f672d8dc8daa968f272e824c9832fdac88e74794c93a4ac6b5aec271ddeada13'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -72,7 +75,13 @@ pkgver() {
 
 prepare() {
   cd ppsspp
-  for submodule in assets/lang ext/miniupnp ffmpeg; do
+  if [[ -d ffmpeg ]]; then
+    rm -rf ffmpeg
+  fi
+  cp -r "$srcdir"/ffmpeg-$_ffver ffmpeg
+  cp "$srcdir"/ppsspp-ffmpeg_x86_64.sh ffmpeg/
+  chmod u+x ffmpeg/ppsspp-ffmpeg_x86_64.sh
+  for submodule in assets/lang ext/miniupnp; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../ppsspp-${submodule#*/}
     git -c protocol.file.allow=always submodule update ${submodule}
@@ -95,11 +104,17 @@ build() {
   export CXX=clang++
   # Rebuild ffmpeg locally
   pushd ppsspp/ffmpeg
-  ./linux_x86-64.sh
+  ./ppsspp-ffmpeg_x86_64.sh
   popd
   cmake -S ppsspp -B build-sdl -G Ninja \
     -Wno-dev \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_C_COMPILER=clang \
+    -DCMAKE_CXX_COMPILER=clang++ \
+    -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+    -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+    -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+    -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
     -DCMAKE_SKIP_RPATH=ON \
     -DHEADLESS=ON \
     -DOpenGL_GL_PREFERENCE=GLVND \
@@ -111,6 +126,12 @@ build() {
   cmake -S ppsspp -B build-qt -G Ninja \
     -Wno-dev \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_C_COMPILER=clang \
+    -DCMAKE_CXX_COMPILER=clang++ \
+    -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+    -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+    -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+    -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
     -DCMAKE_SKIP_RPATH=ON \
     -DHEADLESS=OFF \
     -DOpenGL_GL_PREFERENCE=GLVND \
