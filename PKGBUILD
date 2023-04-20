@@ -3,6 +3,7 @@ pkgname=indi-3rdparty-drivers
 pkgver=2.0.1
 pkgrel=1
 pkgdesc="Indi 3rd party drivers"
+pkgdesc="Indi 3rd party drivers - this package includes all the INDI drivers and patches to fxload paths working on ArchLinux (qhy, meade, etc.)"
 arch=(x86_64 aarch64)
 url="https://indilib.org"
 license=('LGPLv2')
