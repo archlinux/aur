@@ -1,0 +1,22 @@
+pkgbase = cpeditor-appimage
+	pkgdesc = The IDE for competitive programming Fetch, Code, Compile, Run, Check, Submit
+	pkgver = 6.10.3
+	pkgrel = 1
+	url = https://cpeditor.org/
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = glibc
+	optdepends = cf-tool: submit to Codeforces
+	optdepends = clang: C++ format and language server
+	optdepends = java-environment: compile Java
+	optdepends = java-runtime: execute Java
+	optdepends = python: execute Python
+	optdepends = wakatime: track coding stats
+	provides = cpeditor
+	conflicts = cpeditor
+	options = !strip
+	source = cpeditor-6.10.3.AppImage::https://github.com/cpeditor/cpeditor/releases/download/6.10.3/cpeditor-6.10.3-linux-x86_64.AppImage
+	sha256sums = 071f54a8d42b891ebebf08fb20c3a792b4b38d62184ad8669fac3dbc4e5b7814
+
+pkgname = cpeditor-appimage
