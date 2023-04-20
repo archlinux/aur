@@ -1,6 +1,6 @@
 pkgbase = py-mailqueued-mta
 	pkgdesc = Uses py-mailqueued as an MTA for msmtp
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	arch = any
 	license = MIT
