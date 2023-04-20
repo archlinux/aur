@@ -1,12 +1,12 @@
 pkgbase = xray-domain-list-community
 	pkgdesc = A list of domains to be used as geosites for routing purpose in Project V
-	pkgver = 20230419102532
+	pkgver = 20230420022955
 	pkgrel = 1
 	url = https://github.com/v2fly/domain-list-community
 	arch = any
 	license = MIT
 	makedepends = go
-	source = xray-domain-list-community-20230419102532.tar.gz::https://github.com/v2fly/domain-list-community/archive/20230419102532.tar.gz
-	sha256sums = 5a55ceeaccafba8d2017b4d6c781b242d171a0c792083acec22b3a37da6a9eae
+	source = xray-domain-list-community-20230420022955.tar.gz::https://github.com/v2fly/domain-list-community/archive/20230420022955.tar.gz
+	sha256sums = 12fefbcf12b0a5533d43c806f7d37f4a98e99aa5624a2ca7698e07af867c9f28
 
 pkgname = xray-domain-list-community
