@@ -2,7 +2,7 @@
 # Contributor: Jan Koppe <post@jankoppe.de>
 
 pkgname=ffmpeg-decklink
-pkgver=5.1.2
+pkgver=6.0
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
@@ -23,12 +23,16 @@ depends=(
   libass.so
   libavc1394
   libbluray.so
+  libbs2b.so
   libdav1d.so
   libdrm
   libfreetype.so
+  libgl
   libiec61883
+  libjxl.so
   libmfx
   libmodplug
+  libopenmpt.so
   libpulse
   librav1e.so
   libraw1394
@@ -44,6 +48,7 @@ depends=(
   libvorbisenc.so
   libvorbis.so
   libvpx.so
+  libvulkan.so
   libwebp
   libx11
   libx264.so
@@ -54,6 +59,7 @@ depends=(
   libxv
   libxvidcore.so
   libzimg.so
+  ocl-icd
   opencore-amr
   openjpeg2
   opus
@@ -71,9 +77,11 @@ makedepends=(
   avisynthplus
   clang
   ffnvcodec-headers
-  git
   ladspa
+  mesa
   nasm
+  opencl-headers
+  vulkan-headers
   decklink-sdk
 )
 optdepends=('avisynthplus: for AviSynthPlus support'
@@ -87,20 +95,17 @@ conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
         '060-ffmpeg-fix-segfault-with-avisynthplus.patch'
-        '070-ffmpeg-fix-v4l2-memory-leak.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/30aa0c3f4873a92c5e3da8ba8cf030de56bf4cf7'
         'LICENSE')
-sha256sums=('619e706d662c8420859832ddc259cd4d4096a48a2ce1eefd052db9e440eef3dc'
+sha256sums=('57be87c22d9b49c112b6d24bc67d42508660e6b718b3db89c44e47e289137082'
             'SKIP'
-            '2df82046908015bf26bc1303275cf52ba01fa380029a54ea6415373e389e423c'
-            'b1d68f626168f2409a4b0987acf5b208e7ced2ddab49b11990a10f458d377e9a'
-            '9e4e290378028cd4474c36d3e3a25f77d4f40424dbd3115632e20c5734b50979'
+            'd1ad786df86354d218a70b306a50961736c0a6e2d2716bf8de3db31d79957df9'
+            'bf563193f450ece58a93db6840c0db33875df945fa81477b9b02fb209d3bf57a'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
 prepare() {
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/060-ffmpeg-fix-segfault-with-avisynthplus.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/070-ffmpeg-fix-v4l2-memory-leak.patch"
 }
 
 build() {
@@ -124,6 +129,7 @@ build() {
         --enable-libaom \
         --enable-libass \
         --enable-libbluray \
+        --enable-libbs2b \
         --enable-libdav1d \
         --enable-libdrm \
         --enable-libfreetype \
@@ -131,12 +137,14 @@ build() {
         --enable-libgsm \
         --enable-libiec61883 \
         --enable-libjack \
+        --enable-libjxl \
         --enable-libmfx \
         --enable-libmodplug \
         --enable-libmp3lame \
         --enable-libopencore_amrnb \
         --enable-libopencore_amrwb \
         --enable-libopenjpeg \
+        --enable-libopenmpt \
         --enable-libopus \
         --enable-libpulse \
         --enable-librav1e \
@@ -161,9 +169,11 @@ build() {
         --enable-libzimg \
         --enable-nvdec \
         --enable-nvenc \
+        --enable-opencl \
+        --enable-opengl \
         --enable-shared \
         --enable-version3 \
-        --enable-nonfree \
+        --enable-vulkan \
         --enable-decklink
     make
     make tools/qt-faststart
