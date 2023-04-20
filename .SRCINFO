@@ -1,4 +1,4 @@
-pkgbase = torguard
+pkgbase = torguard-bin
 	pkgdesc = TorGuard VPN Software Stay private online with TorGuard's anonymous VPN software and connect to 37+ countries worldwide.
 	pkgver = 4.8.17
 	pkgrel = 1
@@ -13,4 +13,4 @@ pkgbase = torguard
 	source = https://updates.torguard.biz/Software/Linux/torguard-v4.8.17-amd64-arch.tar.gz
 	sha256sums = f4b6d999ed0db54739e261d2ab44afdde7bbb87ba84f71670a61baa291cbcfc0
 
-pkgname = torguard
+pkgname = torguard-bin
