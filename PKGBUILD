@@ -1,8 +1,9 @@
 # Maintainer: Ashely Roll <ash at digitalnemesis dot com>
+# Maintainer: Jan Černý <cernyhonza at gmail dot com>
 
 
 pkgname=astrodmx-capture
-pkgver=2.0.2
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="AstroDMx Capture Astronomical Imaging"
 arch=('x86_64')
@@ -12,13 +13,38 @@ url="https://www.astrodmx-capture.org.uk/"
 license=(custom)
 options=(!strip)
 install=$pkgname.install
-depends=('glibc>=2.27' 'libgphoto2' 'glu' 'libtool' 'gtk3' 'at-spi2-core')
+depends=('glibc>=2.27'
+    'libgphoto2'
+    'glu'
+    'libtool'
+    'gtk3'
+    'at-spi2-core'
+    'zlib'
+    'libsm'
+    'expat'
+    'harfbuzz'
+    'glib2'
+    'gcc-libs'
+    'gdk-pixbuf2'
+    'curl'
+    'pango'
+    'libxtst'
+    'libusb'
+    'libglvnd'
+    'systemd-libs'
+    'libx11'
+    'libxxf86vm'
+    'freetype2'
+    'libxml2'
+    'fontconfig'
+    'cairo'
+    'libwebcam-git')
 
 # The Author, Nicola, is now copying new releases into both the `current` and `old` folders so that we
 # can maintain a constant path the file. Hopefully this will allow us to continue installing older versions
 # without breakage after a new version is released. Thanks Nicola!
 source=("https://www.astrodmx-capture.org.uk/downloads/astrodmx/current/x86-64/astrodmx-capture_${pkgver}_x86-64-manual.tar.gz")
-sha256sums=("47c9b2478bd0e6452e43a3ed986d796c3e0a795804864ea08cfb10f70701d8fb")
+sha256sums=("0ef4c62f31e5c59bc6e276aad8b726449221501b9c198e65bc663b9a5c248239")
 
 _instdir="/opt/AstroDMx-Capture"
 _prefix="AstroDMx-${pkgver}-manual"
