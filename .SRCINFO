@@ -1,13 +1,13 @@
 pkgbase = kubecfg-bin
 	pkgdesc = A tool for managing complex enterprise Kubernetes environments as code
-	pkgver = 0.27.0
+	pkgver = 0.29.2
 	pkgrel = 1
 	url = https://github.com/kubecfg/kubecfg
 	arch = x86_64
 	license = Apache
 	makedepends = git
 	makedepends = go
-	source = kubecfg-bin-0.27.0::https://github.com/kubecfg/kubecfg/releases/download/v0.27.0/kubecfg_Linux_X64
+	source = kubecfg-bin-0.29.2::https://github.com/kubecfg/kubecfg/releases/download/v0.29.2/kubecfg_Linux_X64
 	md5sums = SKIP
 
 pkgname = kubecfg-bin
