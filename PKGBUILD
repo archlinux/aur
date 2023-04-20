@@ -2,7 +2,7 @@
 
 pkgname=texmacs-guile3
 _pkgname=texmacs
-pkgver=2.1.2_r13230.0daf6589b
+pkgver=2.1.2_r13234.a57c804b7
 pkgrel=1
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG editor and CAS-interface."
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('transfig: convert images using fig2ps'
             'ghostscript: rendering ps files'
             'imagemagick: convert images'
             'aspell: spell checking')
-makedepends=('ghostscript' 'cmake' 'git')
+makedepends=('ghostscript' 'cmake' 'git' 'gcc')
 source=("${_pkgname}::git+https://github.com/hammerfunctor/texmacs")
 sha256sums=('SKIP')
 options=('!emptydirs' '!strip')
@@ -40,6 +40,8 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
+  #export CC=/usr/bin/clang
+  #export CXX=/usr/bin/clang++
   cmake -Bbuild \
         -DCMAKE_BUILD_TYPE=RELEASE \
         -DCMAKE_INSTALL_PREFIX=/usr \
