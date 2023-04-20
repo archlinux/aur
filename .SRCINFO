@@ -1,0 +1,19 @@
+pkgbase = libcollectc-git
+	pkgdesc = A library of generic data structures.
+	pkgver = r616.2302fff
+	pkgrel = 1
+	url = https://github.com/srdja/Collections-C
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = LGPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = cpputest
+	depends = glibc
+	provides = libcollectc
+	provides = libcollectc.so
+	source = libcollectc-git::git+https://github.com/srdja/Collections-C.git#branch=master
+	sha256sums = SKIP
+
+pkgname = libcollectc-git

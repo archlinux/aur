@@ -1,0 +1,5 @@
+libcollectc-git/
+src/
+pkg/
+*.pkg.*
+*.tar.*
