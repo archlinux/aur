@@ -1,6 +1,6 @@
 pkgbase = oculante
 	pkgdesc = A minimalistic image viewer with analysis and editing tools
-	pkgver = 0.6.62
+	pkgver = 0.6.63
 	pkgrel = 1
 	url = https://github.com/woelper/oculante
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = oculante
 	depends = freetype2
 	depends = gtk3
 	depends = cairo
-	source = oculante-0.6.62.tar.gz::https://github.com/woelper/oculante/archive/refs/tags/0.6.62.tar.gz
+	source = oculante-0.6.63.tar.gz::https://github.com/woelper/oculante/archive/refs/tags/0.6.63.tar.gz
 	sha512sums = SKIP
 
 pkgname = oculante
