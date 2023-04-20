@@ -1,0 +1,21 @@
+pkgbase = masterpdfeditor-bin
+	pkgdesc = 金山文档
+	pkgver = 5.9.40
+	pkgrel = 1
+	url = https://code-industry.net/masterpdfeditor
+	arch = x86_64
+	license = custom
+	depends = hicolor-icon-theme
+	depends = qt5-svg
+	depends = glibc
+	depends = libglvnd
+	depends = qt5-base
+	depends = zlib
+	depends = sane
+	depends = qt5-declarative
+	depends = gcc-libs
+	conflicts = masterpdfeditor
+	source = masterpdfeditor-5.9.40.deb::https://code-industry.net/public/master-pdf-editor-5.9.40-qt5.x86_64.deb
+	sha256sums = 2d6a40fa3921348cf73ad103eb48b3ed329a41bf254ade8f4c437bce5bb2c135
+
+pkgname = masterpdfeditor-bin
