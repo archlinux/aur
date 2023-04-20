@@ -4,7 +4,7 @@
 # Contributor: Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
 
 pkgname=app-icon-preview
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc='Tool for designing applications icons'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('libadwaita')
 makedepends=('git' 'meson' 'cargo')
 checkdepends=('appstream-glib')
-_commit=69bbc2e290584041c49a78b19ea5aa4ac8354266  # tags/3.2.0^0
+_commit=34cd118f83da0ad4f6d050afc0d64fb4bc25cf71  # tags/3.3.0^0
 source=("git+https://gitlab.gnome.org/World/design/app-icon-preview.git#commit=$_commit"
 	"git+https://gitlab.gnome.org/Teams/Design/HIG-app-icons.git")
 b2sums=('SKIP'
