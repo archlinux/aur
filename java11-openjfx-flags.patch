@@ -1,0 +1,217 @@
+diff -aur orig/buildSrc/linux.gradle patched/buildSrc/linux.gradle
+--- orig/buildSrc/linux.gradle	2022-05-25 14:11:20.000000000 +0200
++++ patched/buildSrc/linux.gradle	2022-07-22 12:45:39.164493724 +0200
+@@ -44,8 +44,11 @@
+ def commonFlags = [
+         "-fno-strict-aliasing", "-fPIC", "-fno-omit-frame-pointer", // optimization flags
+         "-fstack-protector",
++        "-Wno-error=cast-function-type",
+         "-Wextra", "-Wall", "-Wformat-security", "-Wno-unused", "-Wno-parentheses", "-Werror=trampolines"] // warning flags
+ 
++commonFlags.addAll(System.getenv("CFLAGS").trim().replaceAll(" +", " ").split(" "))
++
+ if (!IS_64) {
+     commonFlags += "-m32"
+ }
+@@ -72,6 +75,8 @@
+ 
+ def linkFlags = IS_STATIC_BUILD ? staticLinkFlags : dynamicLinkFlags;
+ 
++linkFlags.addAll(System.getenv("LDFLAGS").trim().split(" "))
++
+ if (IS_DEBUG_NATIVE) {
+     linkFlags += "-g"
+ }
+@@ -305,7 +310,7 @@
+ LINUX.iio.compiler = compiler
+ LINUX.iio.ccFlags = [cFlags, "-fvisibility=hidden"].flatten()
+ LINUX.iio.linker = IS_STATIC_BUILD ? "ld" : linker
+-LINUX.iio.linkFlags = [linkFlags].flatten()
++LINUX.iio.linkFlags = [linkFlags, "-ljpeg"].flatten()
+ LINUX.iio.lib = "javafx_iio"
+ 
+ LINUX.prismES2 = [:]
+@@ -353,5 +358,5 @@
+ LINUX.webkit = [:]
+ LINUX.webkit.compiler = compiler
+ LINUX.webkit.linker = linker
+-LINUX.webkit.ccFlags = commonFlags.flatten()
++LINUX.webkit.ccFlags = [commonFlags, "-fno-lto"].flatten()
+ LINUX.webkit.linkFlags = linkFlags.flatten()
+diff -aur orig/modules/javafx.media/src/main/native/gstreamer/projects/linux/avplugin/Makefile patched/modules/javafx.media/src/main/native/gstreamer/projects/linux/avplugin/Makefile
+--- orig/modules/javafx.media/src/main/native/gstreamer/projects/linux/avplugin/Makefile	2022-05-25 14:11:20.000000000 +0200
++++ patched/modules/javafx.media/src/main/native/gstreamer/projects/linux/avplugin/Makefile	2022-07-22 12:45:39.167827045 +0200
+@@ -17,7 +17,7 @@
+ OBJBASE_DIR = $(BUILD_DIR)/obj/plugins/avplugin
+ endif
+ 
+-CFLAGS = -fPIC                   \
++CFLAGS := -fPIC                   \
+          -Wformat                \
+          -Wextra                 \
+          -Wformat-security       \
+@@ -32,13 +32,8 @@
+          -DGSTREAMER_LITE \
+          -DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_48 \
+          -DGLIB_VERSION_MAX_ALLOWED=GLIB_VERSION_2_48 \
+-         -ffunction-sections -fdata-sections
+-
+-ifeq ($(BUILD_TYPE), Release)
+-    CFLAGS += -Os
+-else
+-    CFLAGS += -g -Wall
+-endif
++         -ffunction-sections -fdata-sections \
++         ${CFLAGS}
+ 
+ PACKAGES_INCLUDES := $(shell pkg-config --cflags glib-2.0)
+ PACKAGES_LIBS     := $(shell pkg-config --libs glib-2.0 gobject-2.0)
+@@ -49,11 +44,12 @@
+           -I../../../gstreamer-lite/gstreamer/libs    \
+           $(PACKAGES_INCLUDES)
+ 
+-LDFLAGS = -L$(BUILD_DIR)    \
++LDFLAGS := -L$(BUILD_DIR)    \
+           -lgstreamer-lite  \
+            $(PACKAGES_LIBS) \
+           -z relro          \
+-          -static-libgcc -static-libstdc++ -Wl,--gc-sections
++          -static-libgcc -static-libstdc++ -Wl,--gc-sections \
++          ${LDFLAGS}
+ 
+ ifneq ($(strip $(LIBAV_DIR)),)
+ INCLUDES += -I$(LIBAV_DIR)/include
+Only in patched/modules/javafx.media/src/main/native/gstreamer/projects/linux/avplugin: Makefile.orig
+diff -aur orig/modules/javafx.media/src/main/native/gstreamer/projects/linux/fxplugins/Makefile patched/modules/javafx.media/src/main/native/gstreamer/projects/linux/fxplugins/Makefile
+--- orig/modules/javafx.media/src/main/native/gstreamer/projects/linux/fxplugins/Makefile	2022-05-25 14:11:20.000000000 +0200
++++ patched/modules/javafx.media/src/main/native/gstreamer/projects/linux/fxplugins/Makefile	2022-07-22 12:45:39.167827045 +0200
+@@ -14,7 +14,7 @@
+ 
+ TARGET = $(BUILD_DIR)/lib$(BASE_NAME).so
+ 
+-CFLAGS = -fPIC                   \
++CFLAGS := -fPIC                   \
+          -Wformat                \
+          -Wextra                 \
+          -Wformat-security       \
+@@ -34,14 +34,8 @@
+          -DGSTREAMER_LITE \
+          -DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_48 \
+          -DGLIB_VERSION_MAX_ALLOWED=GLIB_VERSION_2_48 \
+-         -ffunction-sections -fdata-sections
+-
+-ifeq ($(BUILD_TYPE), Release)
+-    CFLAGS += -Os
+-else
+-    CFLAGS += -g -Wall
+-endif
+-
++         -ffunction-sections -fdata-sections \
++         ${CFLAGS}
+ 
+ INCLUDES = -I$(SRCBASE_DIR) \
+ 	   $(addprefix -I$(SRCBASE_DIR)/,$(DIRLIST)) \
+@@ -51,9 +45,10 @@
+ PACKAGES_INCLUDES := $(shell pkg-config --cflags glib-2.0)
+ PACKAGES_LIBS := $(shell pkg-config --libs glib-2.0 gobject-2.0)
+ 
+-LDFLAGS = -L$(BUILD_DIR) -lgstreamer-lite $(PACKAGES_LIBS) \
++LDFLAGS := -L$(BUILD_DIR) -lgstreamer-lite $(PACKAGES_LIBS) \
+           -z relro \
+-          -static-libgcc -static-libstdc++ -Wl,--gc-sections
++          -static-libgcc -static-libstdc++ -Wl,--gc-sections \
++          ${LDFLAGS}
+ 
+ ifeq ($(ARCH), x32)
+     CFLAGS += -m32
+Only in patched/modules/javafx.media/src/main/native/gstreamer/projects/linux/fxplugins: Makefile.orig
+diff -aur orig/modules/javafx.media/src/main/native/gstreamer/projects/linux/gstreamer-lite/Makefile patched/modules/javafx.media/src/main/native/gstreamer/projects/linux/gstreamer-lite/Makefile
+--- orig/modules/javafx.media/src/main/native/gstreamer/projects/linux/gstreamer-lite/Makefile	2022-05-25 14:11:20.000000000 +0200
++++ patched/modules/javafx.media/src/main/native/gstreamer/projects/linux/gstreamer-lite/Makefile	2022-07-22 12:45:39.167827045 +0200
+@@ -37,7 +37,7 @@
+ 
+ TARGET = $(BUILD_DIR)/lib$(BASE_NAME).so
+ 
+-CFLAGS =-fPIC                   \
++CFLAGS :=-fPIC                   \
+         -Wformat                \
+         -Wextra                 \
+         -Wformat-security       \
+@@ -55,13 +55,8 @@
+         -DGST_DISABLE_LOADSAVE  \
+         -DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_48 \
+         -DGLIB_VERSION_MAX_ALLOWED=GLIB_VERSION_2_48 \
+-        -ffunction-sections -fdata-sections
+-
+-ifeq ($(BUILD_TYPE), Release)
+-    CFLAGS += -Os
+-else
+-    CFLAGS += -g -Wall
+-endif
++        -ffunction-sections -fdata-sections \
++        ${CFLAGS}
+ 
+ INCLUDES = -I$(BASE_DIR)/plugins                          \
+ 	   -I$(SRCBASE_DIR)/projects/build/linux/common   \
+@@ -79,9 +74,10 @@
+ PACKAGES_INCLUDES := $(shell pkg-config --cflags alsa glib-2.0)
+ PACKAGES_LIBS := $(shell pkg-config --libs alsa glib-2.0 gobject-2.0 gmodule-2.0 gthread-2.0)
+ 
+-LDFLAGS = -L$(BUILD_DIR) -lm $(PACKAGES_LIBS) \
++LDFLAGS := -L$(BUILD_DIR) -lm $(PACKAGES_LIBS) \
+           -z relro \
+-          -static-libgcc -static-libstdc++ -Wl,--gc-sections
++          -static-libgcc -static-libstdc++ -Wl,--gc-sections \
++          ${LDFLAGS}
+ 
+ ifeq ($(ARCH), x32)
+     CFLAGS += -m32
+Only in patched/modules/javafx.media/src/main/native/gstreamer/projects/linux/gstreamer-lite: Makefile.orig
+diff -aur orig/modules/javafx.media/src/main/native/jfxmedia/projects/linux/Makefile patched/modules/javafx.media/src/main/native/jfxmedia/projects/linux/Makefile
+--- orig/modules/javafx.media/src/main/native/jfxmedia/projects/linux/Makefile	2022-05-25 14:11:20.000000000 +0200
++++ patched/modules/javafx.media/src/main/native/jfxmedia/projects/linux/Makefile	2022-07-22 12:45:39.167827045 +0200
+@@ -42,7 +42,7 @@
+ 
+ TARGET = $(BUILD_DIR)/lib$(BASE_NAME).so
+ 
+-CFLAGS = -DTARGET_OS_LINUX=1     \
++CFLAGS := -DTARGET_OS_LINUX=1     \
+          -D_GNU_SOURCE           \
+          -DGST_REMOVE_DEPRECATED \
+          -DGST_DISABLE_GST_DEBUG \
+@@ -54,7 +54,8 @@
+          -DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_48 \
+          -DGLIB_VERSION_MAX_ALLOWED=GLIB_VERSION_2_48 \
+          -Werror=deprecated-declarations \
+-         -ffunction-sections -fdata-sections
++         -ffunction-sections -fdata-sections \
++         ${CFLAGS}
+ 
+ CPPFLAGS = -fno-rtti -ffunction-sections -fdata-sections
+ 
+@@ -84,21 +85,16 @@
+ 	           -I$(GSTREAMER_LITE_DIR)/gstreamer/libs \
+ 		  $(PACKAGES_INCLUDES)
+ 
+-	LDFLAGS = -Wl,-rpath,\$$ORIGIN -L$(BUILD_DIR) -lgstreamer-lite $(PACKAGES_LIBS) \
++	LDFLAGS := -Wl,-rpath,\$$ORIGIN -L$(BUILD_DIR) -lgstreamer-lite $(PACKAGES_LIBS) \
+             -z relro \
+-            -static-libgcc -static-libstdc++ -Wl,--gc-sections
++            -static-libgcc -static-libstdc++ -Wl,--gc-sections \
++            ${LDFLAGS}
+ else
+ 	CFLAGS += $(EXTRA_CFLAGS)
+ 	INCLUDES = $(BASE_INCLUDES)
+ 	LDFLAGS = -Wl,-rpath,\$$ORIGIN -L$(BUILD_DIR) $(EXTRA_LDFLAGS)
+ endif
+ 
+-ifeq ($(BUILD_TYPE), Release)
+-	CFLAGS += -Os
+-else
+-	CFLAGS += -g -Wall -D_DEBUG
+-endif
+-
+ ifeq ($(ARCH), x32)
+     CFLAGS += -m32
+     LDFLAGS += -m32
+Only in patched/modules/javafx.media/src/main/native/jfxmedia/projects/linux: Makefile.orig

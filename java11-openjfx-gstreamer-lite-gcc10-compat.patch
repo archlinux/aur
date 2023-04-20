@@ -1,0 +1,11 @@
+diff --git a/modules/javafx.media/src/main/native/gstreamer/projects/linux/gstreamer-lite/Makefile b/jfx-14.0.2-0/modules/javafx.media/src/main/native/gstreamer/projects/linux/gstreamer-lite/Makefile
+--- jfx-14.0.2-0/modules/javafx.media/src/main/native/gstreamer/projects/linux/gstreamer-lite/Makefile	2020-05-24 23:46:14.657738704 +0200
++++ src/jfx-14.0.2-0/modules/javafx.media/src/main/native/gstreamer/projects/linux/gstreamer-lite/Makefile	2020-05-24 23:44:33.644120502 +0200
+@@ -53,6 +53,7 @@
+         -DGST_DISABLE_GST_DEBUG \
+         -DGST_DISABLE_LOADSAVE  \
+         -ffunction-sections -fdata-sections \
++        -fcommon \
+         ${CFLAGS}
+ 
+ INCLUDES = -I$(BASE_DIR)/plugins                          \
