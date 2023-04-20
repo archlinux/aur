@@ -1,7 +1,7 @@
 pkgbase = javahelp2
 	pkgdesc = Java based help system
 	pkgver = 2.0.05.r90
-	pkgrel = 6
+	pkgrel = 7
 	url = https://javaee.github.io/javahelp/
 	arch = any
 	license = custom
