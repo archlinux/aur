@@ -3,17 +3,17 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=colord-kde
-pkgver=22.12.3
+pkgver=23.04.0
 pkgrel=1
 pkgdesc="Interfaces and session daemon to colord for KDE"
 arch=(x86_64)
 url='https://userbase.kde.org/Color_Management'
 license=(GPL)
 groups=(kde-applications kde-graphics)
-depends=(colord libxrandr kio)
+depends=(colord libxrandr kitemmodels kdeclarative kirigami-addons)
 makedepends=(extra-cmake-modules kcmutils)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('aeef6ad58d4fe80e4a2515ed819546083be29853b0f34f613f98d4c62994584c'
+sha256sums=('51003a7941d85d5610baf9770bd1e05b631399d0a1a7547f4f69728d8d3c97dc'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
