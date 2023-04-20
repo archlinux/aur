@@ -4,8 +4,8 @@
 # Contributor: Olivier Ramonat <olivier at ramonat dot fr>
 
 pkgname=gource-git
-pkgver=0.53.r1.g3a90a6c
-pkgrel=2
+pkgver=0.54.r1.g5109bb9
+pkgrel=1
 pkgdesc="software version control visualization"
 license=(GPL3)
 arch=(i686 x86_64)
@@ -28,7 +28,7 @@ prepare(){
   cd "${pkgname%-git}"
   git submodule init
   git config submodule.src/core.url "${srcdir}/Core"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   autoreconf -f -i
 }
