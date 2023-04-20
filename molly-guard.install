@@ -1,13 +1,3 @@
-
-post_upgrade() {
-    cat <<EOM
-please run
-    $ source "/etc/profile.d/molly-guard.sh"
-if you want the functionality of this package to be availiable instantly or reboot your system at some point in time!
-The aliases work in combination with the sudo command if you have another alias sudo="sudo " (note the space) because otherwise the alias expansion is only done for sudo!
-EOM
-}
-
 post_install() {
     cat <<EOM
 please run

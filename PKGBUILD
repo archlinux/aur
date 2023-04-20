@@ -12,7 +12,7 @@ depends=('openssh' 'run-parts')
 optdepends=('inetutils: for the FQDN Hostname support')
 install=molly-guard.install
 makedepends=('docbook-xsl')
-source=("http://mirror.unitedcolo.de/debian/pool/main/m/molly-guard/${pkgname}_${pkgver}.tar.xz")
+source=("https://mirror.unitedcolo.de/debian/pool/main/m/molly-guard/${pkgname}_${pkgver}.tar.xz")
 sha256sums=('02158e4e8a8e4b99b329daa6c8e0ff5071a35819a663da47b1da6628d24beb88')
 sha512sums=('4086a7ebc881345dee3120d9a465d5d7f65f5a54d9da9e59b67dc35428d214555f4de0bc08d7cff38e6bc0422aefc3561df1b2230a127973bd2292875fb70fb7')
 
@@ -53,18 +53,18 @@ package() {
   # couldnt get this to work
   # https://github.com/docbook/xslt10-stylesheets/issues/123
   for filename in $(find "$pkgdir"/usr/share/man -type f -name "*.8"); do
-    sed -i '/^$/d' $filename
-    sed -i -e 's/^[ \t]*//' $filename
+    sed -i '/^$/d' "$filename"
+    sed -i -e 's/^[ \t]*//' "$filename"
   done
 
   # replace occurences of pkgdir in scripts
   for filename in $(find "$pkgdir"/usr -type f); do
-    sed -i "s&$pkgdir&&g" $filename
+    sed -i "s&$pkgdir&&g" "$filename"
   done
 
   mkdir -p $pkgdir/etc/profile.d
   for commandname in halt poweroff reboot shutdown; do
-    ln -s $libdir/$pkgname/molly-guard $pkgdir$libdir/$pkgname/$commandname
+    ln -s "$libdir/$pkgname/molly-guard" "$pkgdir$libdir/$pkgname/$commandname"
     echo "alias $commandname=\"$libdir/$pkgname/$commandname\"" >> "$pkgdir/etc/profile.d/molly-guard.sh"
   done
 
