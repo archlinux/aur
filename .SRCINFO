@@ -1,0 +1,14 @@
+pkgbase = openxr-layer-ultraleap
+	pkgdesc = Ultraleap OpenXR Hand Tracking API Layer. Enables Ultraleap hand-tracking on an existing OpenXR runtime
+	pkgver = 1.3.1
+	pkgrel = 1
+	install = openxr-layer-ultraleap.install
+	arch = x86_64
+	license = PROPRIETARY
+	provides = openxr-layer-ultraleap
+	source = https://repo.ultraleap.com/apt/pool/main/o/openxr-layer-ultraleap/openxr-layer-ultraleap_1.3.1_amd64.deb
+	source = openxr-layer-ultraleap.conf
+	md5sums = ee1ba57a1b16711343d591069a5c9a00
+	md5sums = 378b1c86a576dc5ad4a6498e95d6925d
+
+pkgname = openxr-layer-ultraleap
