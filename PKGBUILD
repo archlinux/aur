@@ -1,6 +1,6 @@
 # Maintainer: asukaminato <asukaminato at nyan dot eu dot org>
 pkgname=erdtree-bin
-pkgver=1.6.0
+pkgver=1.8.1
 pkgrel=1
 epoch=
 pkgdesc="A multi-threaded file-tree visualizer and disk usage analyzer."
@@ -8,7 +8,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/solidiquis/erdtree/"
 license=('MIT')
 groups=()
-depends=()
+depends=(glibc gcc-libs)
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -22,8 +22,8 @@ changelog=
 source_x86_64=("$pkgname-x86_64-$pkgver-$pkgrel.tar.gz::https://github.com/solidiquis/erdtree/releases/download/v$pkgver/et-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-aarch64-$pkgver-$pkgrel.tar.gz::https://github.com/solidiquis/erdtree/releases/download/v$pkgver/et-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
 noextract=()
-sha256sums_x86_64=('191713c05a08095a6f85e7828abd2837914a083c6cf6c5a90faabe10ce1cc9c7')
-sha256sums_aarch64=('d2a5e2f37a152c532f2470904d828fef2033e013d9505f211cf21bdab5782fe5')
+sha256sums_x86_64=('d1f9274791f518d19ec30c467d9da37e5d2c677f9359afecaa77e7fbe0dc8056')
+sha256sums_aarch64=('5b3658e548d7d210a96a538888dcb26c343df61eafb546f244e03b1d2cb518e7')
 validpgpkeys=()
 
 package() {
