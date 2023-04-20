@@ -5,7 +5,7 @@
 
 pkgname=aur-mbedtls
 opkgnm=mbedtls
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Portable cryptographic and SSL/TLS library, aka polarssl"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -19,8 +19,8 @@ replaces=('polarssl' 'mbedtls')
 conflicts=('polarssl' 'mbedtls')
 options=('staticlibs')
 source=(https://github.com/Mbed-TLS/mbedtls/archive/refs/tags/${opkgnm}-${pkgver}.tar.gz)
-sha256sums=('a22ff38512697b9cd8472faa2ea2d35e320657f6d268def3a64765548b81c3ec')
-b2sums=('e85e141a78d06482324a966b29a9948ff7e4a83a1940cca1a99839925212d02df724b4843592700c34d675c8e9f49b4e57da7445e77fdcbc1362f76d28fd0d73')
+sha256sums=('a5dac98592b1ac2232de0aed8f4ee62dffaa99e843e6f41dca2958095c737afd')
+b2sums=('2b2c4a3a0089867e3606462d3517c4e9cb71aaea2bd431fa0468552a25e22e637ddc83615983d25963bd433212cfa77a19d45d790bf7a975483be191002a4c3f')
 
 prepare() {
 	cd "$opkgnm-$opkgnm-$pkgver"
