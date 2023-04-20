@@ -5,7 +5,6 @@ pkgbase = openxr-layer-ultraleap
 	install = openxr-layer-ultraleap.install
 	arch = x86_64
 	license = PROPRIETARY
-	provides = openxr-layer-ultraleap
 	source = https://repo.ultraleap.com/apt/pool/main/o/openxr-layer-ultraleap/openxr-layer-ultraleap_1.3.1_amd64.deb
 	source = openxr-layer-ultraleap.conf
 	md5sums = ee1ba57a1b16711343d591069a5c9a00
