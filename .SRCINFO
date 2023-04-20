@@ -1,7 +1,7 @@
 pkgbase = murex
-	pkgdesc = Bash-like shell designed for greater commandline productivity and safer shell scripts
-	pkgver = 3.1.3100
-	pkgrel = 3
+	pkgdesc = A smarter shell designed for greater commandline productivity and safer shell scripts
+	pkgver = 4.0.11110
+	pkgrel = 1
 	url = https://github.com/lmorg/murex
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = murex
 	makedepends = go
 	optdepends = aspell: inline spell checking
 	replaces = murex-git
-	source = https://github.com/lmorg/murex/archive/refs/tags/v3.1.3100.tar.gz
-	sha256sums = c719456e7b6b09cde046fa3e6fcab24fc9ea046ccfbe7028aae923a21db5356a
+	source = https://github.com/lmorg/murex/archive/refs/tags/v4.0.11110.tar.gz
+	sha256sums = d3a048cd938247db7078e3eea8827b5351771f0d45b5b39777ebae279fed88de
 
 pkgname = murex
