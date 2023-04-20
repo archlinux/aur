@@ -4,9 +4,9 @@
 # Maintainer: Andre Klitzing <aklitzing () gmail () com>
 # AUR Category: devel
 pkgname=tortoisehg
-pkgver=6.4rc
+pkgver=6.4.2
 pkgrel=1
-_pkgchangeset=782c0ecf65254899441b496491a4a2d22627938e
+#_pkgchangeset=782c0ecf65254899441b496491a4a2d22627938e
 pkgdesc="Graphical tools for Mercurial"
 url="https://foss.heptapod.net/mercurial/tortoisehg/thg"
 license=("GPL")
@@ -42,4 +42,4 @@ package() {
 	rm -rf python*/site-packages/hgext3rd/__pycache__/
 }
 
-sha256sums=('9cc30c32355e5d1095e07ac62d3170fac879524b27f66b7dc6f87a0610dfd512')
+sha256sums=('89fa54348dcb157a43d20816afff01dc2d32c426f1c0b5aa878b7ac460260cd5')
