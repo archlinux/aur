@@ -48,9 +48,9 @@ pkgname=("bareos-bconsole"
 #         "bareos-vadp-dumper"
 #         "bareos-vmware-vix-disklib"
 
-pkgver=22.0.2
+pkgver=22.0.3
 pkgmajor=${pkgver%%.*}
-pkgrel=3
+pkgrel=1
 arch=(i686 x86_64 armv7h aarch64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving Recovery Open Sourced"
@@ -847,7 +847,7 @@ package_bareos-webui() {
   ; do
     cp_pkgdir "$f" "$srcdir/install"
   done
-  cp ${srcdir}/bootstrap-table-locale-all.min.js ${pkgdir}/usr/share/bareos-webui/public/js/bootstrap-table-locale-all.min.js
+  #cp ${srcdir}/bootstrap-table-locale-all.min.js ${pkgdir}/usr/share/bareos-webui/public/js/bootstrap-table-locale-all.min.js
   install -Dm644 ${srcdir}/bareos/webui/{README.md,LICENSE,doc/README-TRANSLATION.md} "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
