@@ -1,0 +1,12 @@
+pkgbase = pgpkeydump
+	pkgdesc = A tool for dumping PGP keys as JSON
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/woodruffw/pgpkeydump
+	arch = x86_64
+	license = Apache
+	makedepends = cargo
+	source = https://github.com/woodruffw/pgpkeydump/archive/v0.1.4.tar.gz
+	sha256sums = 7dc9b54d3d66309a18fd80a116cd673cfae2223011ee0bcc0cb97b28a94a65f9
+
+pkgname = pgpkeydump
