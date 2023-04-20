@@ -17,7 +17,7 @@
 # The advantage of gnome-search-tool-no-nautilus from AUR over rebuilding with abs is that upgrades will be easier.
 
 pkgname=nautilus-data
-pkgver=43.1
+pkgver=44.0
 pkgrel=1
 pkgdesc="Nautilus data files for gnome-search-tool"
 url="http://www.ubuntuupdates.org/package/core/trusty/main/base/nautilus-data"
@@ -26,8 +26,8 @@ license=('GPL')
 conflicts=('nautilus')
 install=${pkgname}.install
 
-source=(http://security.ubuntu.com/ubuntu/pool/main/n/nautilus/nautilus-data_43.1-1ubuntu2_all.deb)
-md5sums=('8fe9cb343f45a4ff11b6edce38be80dd')
+source=(http://security.ubuntu.com/ubuntu/pool/main/n/nautilus/nautilus-data_43.0-1ubuntu2_all.deb)
+md5sums=('fd9e7b68b4c762971fdec7a441ffab8b')
 
 package() {
   tar xvf data.tar.zst -C "$pkgdir"

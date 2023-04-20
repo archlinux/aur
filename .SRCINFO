@@ -1,13 +1,13 @@
 pkgbase = nautilus-data
 	pkgdesc = Nautilus data files for gnome-search-tool
-	pkgver = 43.1
+	pkgver = 44.0
 	pkgrel = 1
 	url = http://www.ubuntuupdates.org/package/core/trusty/main/base/nautilus-data
 	install = nautilus-data.install
 	arch = any
 	license = GPL
 	conflicts = nautilus
-	source = http://security.ubuntu.com/ubuntu/pool/main/n/nautilus/nautilus-data_43.1-1ubuntu2_all.deb
-	md5sums = 8fe9cb343f45a4ff11b6edce38be80dd
+	source = http://security.ubuntu.com/ubuntu/pool/main/n/nautilus/nautilus-data_43.0-1ubuntu2_all.deb
+	md5sums = fd9e7b68b4c762971fdec7a441ffab8b
 
 pkgname = nautilus-data
