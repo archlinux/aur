@@ -28,8 +28,17 @@ package() {
   cd build
   make DESTDIR="$pkgdir" install
   mkdir -p "$pkgdir"/usr/lib/firmware
+
+  # Move all firmwares to /usr/lib/firmware
   mv "$pkgdir"/lib/firmware/* "$pkgdir"/usr/lib/firmware
+
+  # Move all devrules to /usr/lib/udev/rules.d/
   mv "$pkgdir"/lib/udev/rules.d/* "$pkgdir"/usr/lib/udev/rules.d
+
+  # Replace all occurences of /lib/firmware with /usr/lib/firmware in all devrules
+  sed -e 's|/lib/firmware|/usr/lib/firmware|' -i "$pkgdir"/usr/lib/udev/rules.d/*.rules
+
+  # Remove now all folders where devrules and firmwares were originally stored
   rmdir "$pkgdir/lib/udev/rules.d"
   rmdir "$pkgdir/lib/udev"
   rmdir "$pkgdir/lib/firmware"
