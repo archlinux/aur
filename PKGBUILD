@@ -2,7 +2,7 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds
 
 pkgname=headscale
-pkgver=0.21.0
+pkgver=0.22.1
 pkgrel=1
 pkgdesc="An open source, self-hosted implementation of the Tailscale coordination server."
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -19,12 +19,10 @@ backup=("etc/${pkgname}/config.yaml" "etc/${pkgname}/derp.yaml")
 
 source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/juanfont/headscale/archive/refs/tags/v${pkgver}.tar.gz"
-	'headscale.service'
 	'headscale.sysusers'
 	'headscale.tmpfiles'
 )
-sha256sums=('2afbdc038508cb694be496db9ba6b63bbc611b7038e8299e60eef0f1b227f12f'
-            '3cae7a3bfbb70bfda8dc4323d27cdcde0d841d1b3335c0f10525907eb3f6e650'
+sha256sums=('88f57dd5478320110b219ce66516fa18c1d1a372d5a281daafb5a61265a6819f'
             '059353f4843dec6eb447c567fac890ef63cc9c8acea18840fcfc3f4a76d596db'
             '8a22d7193ceeac0be32725cf8108f963be3a21855e6099de964f810094d0adc7')
 
@@ -36,7 +34,6 @@ build() {
    export CGO_LDFLAGS="${LDFLAGS}"
    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
    go build -v -o headscale -tags="ts2019" -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" -s -w -X github.com/juanfont/headscale/cmd/headscale/cli.Version=${pkgver}" ./cmd/headscale
-   sed -i 's-/var/run/headscale\.sock-/var/run/headscale/headscale\.sock-' config-example.yaml
 }
 
 package() {
@@ -54,5 +51,5 @@ package() {
 
 	install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-	install -D -m644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+	install -D -m644 "docs/packaging/headscale.systemd.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 }

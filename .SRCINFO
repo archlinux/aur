@@ -1,6 +1,6 @@
 pkgbase = headscale
 	pkgdesc = An open source, self-hosted implementation of the Tailscale coordination server.
-	pkgver = 0.21.0
+	pkgver = 0.22.1
 	pkgrel = 1
 	url = https://github.com/juanfont/headscale
 	arch = x86_64
@@ -14,12 +14,10 @@ pkgbase = headscale
 	conflicts = headscale-git
 	backup = etc/headscale/config.yaml
 	backup = etc/headscale/derp.yaml
-	source = headscale-0.21.0.tar.gz::https://github.com/juanfont/headscale/archive/refs/tags/v0.21.0.tar.gz
-	source = headscale.service
+	source = headscale-0.22.1.tar.gz::https://github.com/juanfont/headscale/archive/refs/tags/v0.22.1.tar.gz
 	source = headscale.sysusers
 	source = headscale.tmpfiles
-	sha256sums = 2afbdc038508cb694be496db9ba6b63bbc611b7038e8299e60eef0f1b227f12f
-	sha256sums = 3cae7a3bfbb70bfda8dc4323d27cdcde0d841d1b3335c0f10525907eb3f6e650
+	sha256sums = 88f57dd5478320110b219ce66516fa18c1d1a372d5a281daafb5a61265a6819f
 	sha256sums = 059353f4843dec6eb447c567fac890ef63cc9c8acea18840fcfc3f4a76d596db
 	sha256sums = 8a22d7193ceeac0be32725cf8108f963be3a21855e6099de964f810094d0adc7
 
