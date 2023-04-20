@@ -4,7 +4,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=5.1.r106894.g260d7d5a6c
+pkgver=6.1.r110336.g0dceda12e7
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('x86_64')
@@ -24,12 +24,16 @@ depends=(
   libass.so
   libavc1394
   libbluray.so
+  libbs2b.so
   libdav1d.so
   libdrm
   libfreetype.so
+  libgl
   libiec61883
+  libjxl.so
   libmfx
   libmodplug
+  libopenmpt.so
   libpulse
   librav1e.so
   libraw1394
@@ -45,6 +49,7 @@ depends=(
   libvorbisenc.so
   libvorbis.so
   libvpx.so
+  libvulkan.so
   libwebp
   libx11
   libx264.so
@@ -55,6 +60,7 @@ depends=(
   libxv
   libxvidcore.so
   libzimg.so
+  ocl-icd
   opencore-amr
   openjpeg2
   opus
@@ -74,7 +80,10 @@ makedepends=(
   ffnvcodec-headers
   git
   ladspa
+  mesa
   nasm
+  opencl-headers
+  vulkan-headers
 )
 optdepends=('avisynthplus: for AviSynthPlus support'
             'intel-media-sdk: for Intel Quick Sync Video'
@@ -88,8 +97,8 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
         '060-ffmpeg-fix-segfault-with-avisynthplus.patch')
 sha256sums=('SKIP'
-            '2df82046908015bf26bc1303275cf52ba01fa380029a54ea6415373e389e423c'
-            '0d6b53940a81ebaf4e6b1a2208a178eb8a824d6a3d8e863bf9c4c7e0060d88ec')
+            'd1ad786df86354d218a70b306a50961736c0a6e2d2716bf8de3db31d79957df9'
+            'bf563193f450ece58a93db6840c0db33875df945fa81477b9b02fb209d3bf57a')
 
 prepare() {
     patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
@@ -123,6 +132,7 @@ build() {
         --enable-libaom \
         --enable-libass \
         --enable-libbluray \
+        --enable-libbs2b \
         --enable-libdav1d \
         --enable-libdrm \
         --enable-libfreetype \
@@ -130,12 +140,14 @@ build() {
         --enable-libgsm \
         --enable-libiec61883 \
         --enable-libjack \
+        --enable-libjxl \
         --enable-libmfx \
         --enable-libmodplug \
         --enable-libmp3lame \
         --enable-libopencore_amrnb \
         --enable-libopencore_amrwb \
         --enable-libopenjpeg \
+        --enable-libopenmpt \
         --enable-libopus \
         --enable-libpulse \
         --enable-librav1e \
@@ -160,8 +172,11 @@ build() {
         --enable-libzimg \
         --enable-nvdec \
         --enable-nvenc \
+        --enable-opencl \
+        --enable-opengl \
         --enable-shared \
-        --enable-version3
+        --enable-version3 \
+        --enable-vulkan
     make
     make tools/qt-faststart
 }

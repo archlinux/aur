@@ -1,6 +1,6 @@
 --- a/libavformat/avisynth.c
 +++ b/libavformat/avisynth.c
-@@ -125,7 +125,7 @@ static av_cold void avisynth_atexit_handler(void);
+@@ -141,7 +141,7 @@ static av_cold void avisynth_atexit_handler(void);
  
  static av_cold int avisynth_load_library(void)
  {
