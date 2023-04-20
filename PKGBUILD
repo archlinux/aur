@@ -3,7 +3,7 @@
 pkgname=china-ip-list-git
 pkgver=0.82.28e7ddb
 pkgrel=1
-pkgdesc="Better aggregated chnroutes"
+pkgdesc="IPList for China by IPIP.NET"
 arch=('any')
 url="https://github.com/17mon/china_ip_list"
 license=('custom:CC-BY-NC-SA-4.0') 
