@@ -1,0 +1,16 @@
+pkgbase = apk-editor-studio-appimage
+	pkgdesc = Powerful yet easy to use APK editor for PC and Mac.
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = https://qwertycube.com/apk-editor-studio/
+	arch = x86_64
+	license = GPL3
+	depends = hicolor-icon-theme
+	depends = zlib
+	depends = glibc
+	conflicts = apk-editor-studio
+	options = !strip
+	source = apk-editor-studio-1.7.1.AppImage::https://github.com/kefir500/apk-editor-studio/releases/download/v1.7.1/apk-editor-studio_linux_1.7.1.AppImage
+	sha256sums = 548cdee09e9951b577c0f2b9818ba90dbedef13ca4d57a7e20eab488c5ab1892
+
+pkgname = apk-editor-studio-appimage
