@@ -1,6 +1,6 @@
 pkgbase = chimeraos-device-quirks-git
 	pkgdesc = A collection of device specific configuration files
-	pkgver = r36.037caac
+	pkgver = r38.f3283ea
 	pkgrel = 1
 	url = https://github.com/ChimeraOS/device-quirks
 	arch = any
