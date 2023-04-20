@@ -2,10 +2,23 @@ pkgbase='python-mayavi'
 pkgname=('python-mayavi')
 _module='mayavi'
 pkgver='4.8.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="3D scientific data visualization library and application"
 url="http://docs.enthought.com/mayavi/mayavi/"
-depends=('python' 'vtk' 'python-configobj' 'python-apptools' 'python-envisage' 'verdict' 'openxr' 'mariadb-libs')
+depends=('python'
+         'vtk'
+         'python-configobj'
+         'python-apptools'
+         'python-envisage'
+         'verdict'
+         'openxr'
+         'mariadb-libs'
+         'ospray'
+         'openvr'
+         'liblas'
+         'cgns'
+         'adios2'
+         'libharu')
 makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
