@@ -23,7 +23,7 @@
 #  
 #  3. In terminal, naviagate to the folder you have the PKGBUILD in
 #  
-#  4. Test the modified PKGBUILD file with all of the following commands
+#  4. Test the modified PKGBUILD file with `make test`, or alternatively all of the following commands
 #       ```sh
 #       # remove the possible builds
 #       rm -f flameshot-git-r*.zst
@@ -39,7 +39,7 @@
 #  
 #  5. Fix any possible errors
 #  
-#  6. create a patch with your modifications:
+#  6. create a patch with your modifications by `make patch` or alternatively:
 #       ```sh
 #       git diff --oneline --graph > my.patch
 #       ```
@@ -51,7 +51,7 @@
 
 pkgname=flameshot-git
 _pkgname=flameshot
-pkgver=r1646.1cc5a262
+pkgver=r1867.3ededae5
 pkgrel=1
 pkgdesc="Powerful yet simple to use screenshot software"
 arch=('i686' 'x86_64')
