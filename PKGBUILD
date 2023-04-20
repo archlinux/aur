@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Chain <me@qustavo.cc>
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=notesnook-bin
-pkgver="2.4.7"
+pkgver="2.4.8"
 pkgrel=1
 pkgdesc="Open source zero knowledge private note taking"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=("${pkgname%-bin}")
 depends=('glibc' 'hicolor-icon-theme' 'zlib')
 _appimage="${pkgname%-bin}_linux_x86_64.AppImage"
 source=("${_appimage}::${_githuburl}/releases/download/v${pkgver}/${_appimage}")
-sha256sums=('661f7acf4987e0328159926a15a45e7db52b6292caa8f0c6bcf66d3c7256185d')
+sha256sums=('6868348a75cfdc8605bbdd0ca0e7c3a9ad078b3b0f735fde3973e8c5c344919b')
 
 prepare() {
 	chmod +x "${_appimage}"
