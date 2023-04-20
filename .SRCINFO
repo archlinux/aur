@@ -1,6 +1,6 @@
 pkgbase = amazon-corretto-17
 	pkgdesc = No-cost, multiplatform, production-ready distribution of OpenJDK
-	pkgver = 17.0.6.10.1
+	pkgver = 17.0.7.7.1
 	pkgrel = 1
 	url = https://aws.amazon.com/corretto/
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = amazon-corretto-17
 	provides = java-runtime-headless=17
 	provides = java-runtime=17
 	provides = java-environment=17
-	source = https://corretto.aws/downloads/resources/17.0.6.10.1/amazon-corretto-17.0.6.10.1-linux-x64.tar.gz
-	source = https://corretto.aws/downloads/resources/17.0.6.10.1/amazon-corretto-17.0.6.10.1-linux-x64.tar.gz.sig
+	source = https://corretto.aws/downloads/resources/17.0.7.7.1/amazon-corretto-17.0.7.7.1-linux-x64.tar.gz
+	source = https://corretto.aws/downloads/resources/17.0.7.7.1/amazon-corretto-17.0.7.7.1-linux-x64.tar.gz.sig
 	validpgpkeys = 6DC3636DAE534049C8B94623A122542AB04F24E3
-	md5sums = 50c8e341384a04b95cd1c8b698116dab
-	md5sums = SKIP
+	sha256sums = 8d23e0f1249f2852caa76b7ae8770847e005e4310a70a46b7c1a816c34ff9195
+	sha256sums = SKIP
 
 pkgname = amazon-corretto-17
