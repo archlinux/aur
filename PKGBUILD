@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-network-displays-git
-pkgver=0.90.5.r33.g0e128d2
-pkgrel=7
+pkgver=0.90.5.r40.gebd012f
+pkgrel=1
 pkgdesc="Miracast implementation for GNOME"
 arch=('x86_64')
 url="https://gitlab.gnome.org/GNOME/gnome-network-displays"
@@ -14,10 +14,8 @@ checkdepends=('appstream-glib')
 optdepends=('dnsmasq' 'gst-plugin-pipewire' 'gstreamer-vaapi')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://gitlab.gnome.org/GNOME/gnome-network-displays.git'
-        'https://gitlab.gnome.org/GNOME/gnome-network-displays/-/merge_requests/171.patch')
-sha256sums=('SKIP'
-            '94919524bbd05daa756dd1298b513465d238610e4ecf92cefd44bf76cb4a2d77')
+source=('git+https://gitlab.gnome.org/GNOME/gnome-network-displays.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
@@ -30,9 +28,6 @@ prepare() {
   # https://gitlab.gnome.org/GNOME/gnome-network-displays/-/issues/272
   sed -i -e "s/args: \['validate'/args: \['--nonet', 'validate'/" \
     data/meson.build
-
-  # Add Chromecast support
-  patch -Np1 -i ../171.patch
 }
 
 build() {
