@@ -1,0 +1,23 @@
+pkgbase = ultraleap-hand-tracking-service
+	pkgdesc = Ultraleap Hand Tracking service and SDK for development.
+	pkgver = 5.6.3.0_18a4db52
+	pkgrel = 1
+	install = ultraleap-hand-tracking-service.install
+	arch = x86_64
+	license = PROPRIETARY
+	depends = gcc-libs>=12.2.0-1
+	depends = glibc
+	depends = psmisc>=23.3-1
+	provides = ultraleap-hand-tracking-service
+	source = https://repo.ultraleap.com/apt/pool/main/u/ultraleap-hand-tracking-service/ultraleap-hand-tracking-service_5.6.3.0-18a4db52-1.0_amd64.deb
+	source = analytics_config.json
+	source = ultraleap-hand-tracking-service.conf
+	source = leap.conf
+	source = leap-tmpfiles.conf
+	md5sums = aeb60c2170671000e6f79edd4e8c6b31
+	md5sums = 4366790d2e555633b24c14cc49584e97
+	md5sums = c85e250132a9b3bc32e1c9db449fdbec
+	md5sums = 9045bc8cc05aa0cbeb66621075a88162
+	md5sums = c938d73d2310f1a2f584ea144eda593e
+
+pkgname = ultraleap-hand-tracking-service
