@@ -32,4 +32,8 @@ package() {
   install -Dm755 bin/fry "${pkgdir}/usr/local/bin/fry"
   install -Dm644 man/fry.1 "${pkgdir}/usr/local/man/man1/fry.1"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  
+  if [ -d "/usr/share/nano/" ]; then
+    install -Dm644 extras/fat.nanorc "${pkgdir}/usr/share/nano/fat.nanorc"
+  fi
 }
