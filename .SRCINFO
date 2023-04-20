@@ -1,7 +1,7 @@
 pkgbase = easyrp-bin
 	pkgdesc = Give yourself a Custom Rich Presence in Discord.
 	pkgver = 3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Pizzabelly/EasyRP
 	arch = x86_64
 	license = MIT
