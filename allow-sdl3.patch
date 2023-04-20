@@ -1,0 +1,23 @@
+From a57ec8a61f59c8a37707078b5a0dd285dbef8510 Mon Sep 17 00:00:00 2001
+From: Thomas Staudinger <Staudi.Kaos@gmail.com>
+Date: Thu, 2 Feb 2023 01:40:58 +0100
+Subject: [PATCH] Allow SDL3 lib until it's available in repositories
+
+---
+ src/intercept/main.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/intercept/main.c b/src/intercept/main.c
+index 4dbf871..18ddda3 100644
+--- a/src/intercept/main.c
++++ b/src/intercept/main.c
+@@ -104,6 +104,9 @@ static const char *steam_allowed[] = {
+         /* widevine */
+         "libwidevinecdmadapter.so",
+         "libwidevinecdm.so",
++
++        /* temporary SDL3 fix */
++        "libSDL3.so",
+ };
+ 
+ static const char *wanted_steam_processes[] = {

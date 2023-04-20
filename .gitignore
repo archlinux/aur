@@ -7,3 +7,4 @@
 !.SRCINFO
 !lsi-steam.desktop
 !partially-revert-2877813.patch
+!allow-sdl3.patch
