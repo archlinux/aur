@@ -1,0 +1,24 @@
+pkgbase = fclash-bin
+	pkgdesc = A better open-source clash client written by Flutter.更好的Clash客户端,支持自动设置代理,兼容RULE-SET、TUN特性
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://kingtous.cn/2022/05/09/%E8%87%AA%E5%88%B6fclash%E7%AE%80%E4%BB%8B/
+	arch = x86_64
+	license = GPL3
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = libepoxy
+	depends = libdbusmenu-glib
+	depends = pango
+	depends = gtk3
+	depends = cairo
+	depends = libayatana-appindicator
+	depends = glibc
+	depends = gcc-libs
+	depends = at-spi2-core
+	conflicts = fclash
+	options = !strip
+	source = fclash-1.4.0.pkg.tar.zst::https://github.com/fclash/fclash/releases/download/v1.4.0/fclash-1.4.0-1-x86_64.pkg.tar.zst
+	sha256sums = a6e200fa2f93c921962f8232d49cd64449c967594b50505634a47d55b4bb1a10
+
+pkgname = fclash-bin
