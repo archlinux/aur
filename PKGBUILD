@@ -1,6 +1,6 @@
 pkgname=nginx-totp-auth
 pkgver=r16.09bf6d9
-pkgrel=1
+pkgrel=2
 pkgdesc="totp auth for nginx"
 arch=(x86_64 i686)
 url="https://github.com/davidgfnet/nginx_totp_auth"
@@ -25,6 +25,7 @@ build() {
 package() {
 	cd "$srcdir/nginx_totp_auth"
 	install -Dm0755 server.bin "$pkgdir"/usr/lib/$pkgname/$pkgname.bin
-	install -Dm0644 nginx.config.sample "$pkgdir"/etc/$pkgname.conf
+	install -Dm0644 nginx.config.sample "$pkgdir"/usr/share/doc/$pkgname/nginx.config.sample
+	install -Dm0644 README.md "$pkgdir"/usr/share/doc/$pkgname/README.md
 	install -Dm0644 ../nginx-totp-auth.service "$pkgdir"/usr/lib/systemd/system/nginx-totp-auth.service
 }
