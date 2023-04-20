@@ -1,0 +1,16 @@
+pkgbase = shutter-encoder-appimage
+	pkgdesc = Converter for all formats video|audio|image professionnals codecs and standards - swiss knife tool for Linux
+	pkgver = 17.0
+	pkgrel = 1
+	url = https://www.shutterencoder.com
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = glibc
+	conflicts = shutter-encoder
+	options = !strip
+	source = shutter-encoder-17.0.AppImage::https://www.shutterencoder.com/Shutter%20Encoder%2017.0%20Linux%2064bits.AppImage
+	sha256sums = 4ea6e180f36d9e157bd44e61e810a77714f4fe7850e08da81acf4556d92d50d8
+
+pkgname = shutter-encoder-appimage
