@@ -1,7 +1,7 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
 
 # Before running makepkg, you must do this (as normal user):
-# curl https://getfedora.org/static/fedora.gpg | gpg --import
+# curl https://fedoraproject.org/fedora.gpg | gpg --import
 
 _pkgname=butane
 pkgname=butane-bin
