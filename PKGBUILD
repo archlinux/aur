@@ -20,9 +20,6 @@ pkgver() {
 }
 
 build() {
-  # LTO breaks mesa...
-  export CXXFLAGS="$CXXFLAGS -fno-lto"
-
   arch-meson DirectX-Headers build \
     -Dbuild-test=false
   ninja -C build
