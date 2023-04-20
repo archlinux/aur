@@ -1,6 +1,6 @@
 pkgbase = powershell-preview-bin
 	pkgdesc = A cross-platform automation and configuration tool/framework (binary preview package)
-	pkgver = 7.4.0.preview.2
+	pkgver = 7.4.0.preview.3
 	pkgrel = 1
 	url = https://github.com/Powershell/Powershell
 	install = powershell-preview.install
@@ -15,7 +15,7 @@ pkgbase = powershell-preview-bin
 	provides = powershell
 	options = staticlibs
 	options = !strip
-	source = https://github.com/PowerShell/PowerShell/releases/download/v7.4.0-preview.2/powershell-preview_7.4.0-preview.2-1.deb_amd64.deb
-	sha256sums = 573b9336334b5e4df31df0fc62ce82f186770a569d501fc643e15ee68262740b
+	source = https://github.com/PowerShell/PowerShell/releases/download/v7.4.0-preview.3/powershell-preview_7.4.0-preview.3-1.deb_amd64.deb
+	sha256sums = BE418A526D5FE68F39AA1AB126C6262DBF870AE8501BA44CE8B020A2282C536B
 
 pkgname = powershell-preview-bin
