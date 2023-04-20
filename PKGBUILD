@@ -1,12 +1,14 @@
-# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=darkbar-git
-pkgver=1.0.1.r4.g304b282
+pkgver=1.0.1.r14.g5d94eb8
 pkgrel=1
 pkgdesc="Darken application titlebars based on your preference"
 arch=('x86_64' 'aarch64')
 url="https://github.com/bluesabre/darkbar"
 license=('GPL3')
+conflicts=("${pkgname%-git}")
 depends=('libhandy' 'libwnck3' 'libgee')
 makedepends=('git' 'meson' 'vala')
 source=(git+$url.git)
@@ -31,5 +33,5 @@ check() {
 }
  
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --destdir "${pkgdir}"
 }
