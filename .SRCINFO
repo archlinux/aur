@@ -1,16 +1,17 @@
 pkgbase = libuvc
 	pkgdesc = a cross-platform library for USB video devices
-	pkgver = 0.0.6
-	pkgrel = 2
+	pkgver = 0.0.7
+	pkgrel = 1
 	url = https://int80k.com/libuvc/
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = BSD
 	makedepends = cmake
+	depends = glibc
 	depends = libusb
 	depends = libjpeg
-	source = libuvc-0.0.6.tar.gz::https://github.com/ktossell/libuvc/archive/v0.0.6.tar.gz
-	sha256sums = 42175a53c1c704365fdc782b44233925e40c9344fbb7f942181c1090f06e2873
+	source = libuvc-0.0.7.tar.gz::https://github.com/ktossell/libuvc/archive/v0.0.7.tar.gz
+	sha256sums = 7c6ba79723ad5d0ccdfbe6cadcfbd03f9f75b701d7ba96631eb1fd929a86ee72
 
 pkgname = libuvc
