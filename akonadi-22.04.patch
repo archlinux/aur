@@ -1,0 +1,12 @@
+diff --git a/core/cmake/rules/RulesKDEFramework.cmake b/core/cmake/rules/RulesKDEFramework.cmake
+index 4cb33d2f9e..610033425c 100644
+--- a/core/cmake/rules/RulesKDEFramework.cmake
++++ b/core/cmake/rules/RulesKDEFramework.cmake
+@@ -39,6 +39,7 @@ if(ENABLE_AKONADICONTACTSUPPORT)
+ 
+     find_package(KF5 ${AKONADI_MIN_VERSION} QUIET
+                                             OPTIONAL_COMPONENTS
++                                            Akonadi
+                                             AkonadiContact      # For KDE Mail Contacts support.
+                                             Contacts            # API for contacts/address book data.
+     )
