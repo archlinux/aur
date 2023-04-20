@@ -5,7 +5,7 @@ _vlcver=3.0.18
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=6
+pkgrel=7
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
 arch=('i686' 'x86_64' 'aarch64')
@@ -18,6 +18,7 @@ _libmicrodnsver=0.2
 _libplacebover=4.208
 _libupnpver=1.14
 _libvpxver=1.13
+_livemedia=2023.01.19
 _protobufver=21
 _srtver=1.5
 _x264ver=0.164
@@ -32,7 +33,7 @@ depends=(
   "libupnp>=$_libupnpver" "libplacebo>=$_libplacebover"
 )
 makedepends=(
-  'gst-plugins-base-libs' 'live-media' 'libnotify' 'libbluray'
+  'gst-plugins-base-libs' "live-media>=$_livemedia" 'libnotify' 'libbluray'
   'libdc1394' 'libavc1394' 'libcaca' 'gtk3'
   'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'systemd-libs'
   'libmtp' 'libdvdcss' 'smbclient'
