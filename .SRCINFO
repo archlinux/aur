@@ -1,0 +1,18 @@
+pkgbase = python-sentencepiece
+	pkgdesc = Unsupervised text tokenizer for Neural Network-based text generation
+	pkgver = 0.1.98
+	pkgrel = 1
+	url = https://github.com/google/sentencepiece
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = cmake
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = python-sentencepiece::git+https://github.com/google/sentencepiece.git#tag=518c57c335534d495d40d95d70199e28b4c8ce2a
+	sha512sums = SKIP
+
+pkgname = python-sentencepiece
