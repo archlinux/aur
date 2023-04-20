@@ -2,7 +2,7 @@
 
 pkgname=battery-notify-git
 pkgver=master
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple battery notifier for Linux.'
 arch=('x86_64')
 url='https://github.com/cdown/battery-notify'
