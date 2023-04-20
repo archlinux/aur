@@ -1,9 +1,9 @@
-# Maintainer: Daniel Souza <aur at posix dot dev dot br>
-
+# Maintainer: Jingu <xiuluo dot android at gmail dot com>
+# Contributor: Daniel Souza <aur at posix dot dev dot br>
 _pkgauthor="chainner-org"
 _pkgname="chainner"
 pkgname="${_pkgname}-rpm"
-pkgver=0.18.1
+pkgver=0.18.6
 pkgrel=1
 pkgdesc='Node-based image processing and AI upscaling GUI'
 arch=('x86_64')
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://github.com/${_pkgauthor}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x64-linux-redhat.rpm")
 noextract=()
-sha512sums=('4b32d049bc2468062db574dc4cbcd144e9cd006d59f0e35f267cf077274e5a74bc70d3512d8d17eb93c5b9b0b7f52bce91a355c910ea78934e271dfacfff1338')
+sha512sums=('6cdc564b177191edcf200a4849826cf07d24e70b49e916a63d4a891931bb41fa04d0b835d961329bb2746ec1bb8d69f2b7877be22a1652bccaf36463b7b34777')
 
 # build() {
 # }
