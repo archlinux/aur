@@ -1,3 +1,32 @@
+4.6
+---
+
+ - When passing an existing file (by name) to :py:func:`pyteomics.mgf.write` or :py:func:`pyteomics.fasta.write` and
+   other writing functions, **the file will be opened for writing by default**. Previously, it would be opened for
+   appending with a warning about the upcoming change. Please be aware that existing files will be overwritten
+   if passed by name. The rationale for this is better reproducibility if the same code is run multiple
+   times. You can use the `file_mode` argument of the writing functions to override this behaviour, or pass your own
+   file objects.
+ - Add a special warning when trying to write a single spectrum with :py:func:`pyteomics.mgf.write`.
+   See also: `Writing one or more MGF spectra to a file <https://github.com/levitsky/pyteomics/discussions/109>`_.
+ - In :py:func:`pyteomics.mass.mass.calculate_mass`, the `absolute` parameter is now `True` by default.
+   When calculating *m/z* for negative charges, the returned value will be positive by default.
+ - Fix issue #98 (`#99 <https://github.com/levitsky/pyteomics/pull/99>`_ and
+   `#101 <https://github.com/levitsky/pyteomics/pull/101>`_ by Joshua Klein).
+ - Fix issue #91 (`#92 <https://github.com/levitsky/pyteomics/pull/92>`_ by Joshua Klein).
+ - Fix issue #96.
+ - Update the UniProt header pattern (fix rare parsing errors with
+   :py:class:`pyteomics.fasta.UniProt` and :py:class:`pyteomics.fasta.IndexedUniProt`) in
+   `#93 <https://github.com/levitsky/pyteomics/pull/93>`_.
+ - Update the UniRef header pattern (fix parsing errors with
+   :py:class:`pyteomics.fasta.UniRef` and :py:class:`pyteomics.fasta.IndexedUniRef`) in
+   `#102 <https://github.com/levitsky/pyteomics/pull/102>`_. Some keys are removed from the output.
+ - Fix pickling issues with :py:class:`pyteomics.mgf.IndexedMGF`, :py:class:`pyteomics.ms1.IndexedMS1`,
+   :py:class:`pyteomics.ms2.IndexedMS2` (#108).
+ - Add "charge array" and "resolution array" to the output of MS2 parsers (#108). Add new arguments `read_charges`
+   and `read_resolutions` to disable parsing, and `convert_arrays` to govern the creation of NumPy arrays
+   (and masked arrays).
+
 4.5.6
 -----
 
