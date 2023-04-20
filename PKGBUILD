@@ -3,7 +3,7 @@
 pkgname=fatscript-fry
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="fry, the fatscript interpreter"
+pkgdesc="fry - The FatScript Interpreter"
 arch=('any')
 url="https://fatscript.org/"
 license=('GPL3')
