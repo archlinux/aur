@@ -1,13 +1,13 @@
 # Maintainer: René Wagner <rwagner at rw-net dot de>
 pkgname=art-rawconverter-git
-pkgver=r10253_2e5069c9e
+pkgver=r10297_b8043981b
 pkgrel=1
 pkgdesc="Rawconverter ART including blackfoxx-Theme built from latest sources"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://bitbucket.org/agriggio/art/wiki/Home"
 license=('GPL3')
 depends=('opencolorio' 'lensfun' 'libraw' 'exiv2' 'fftw' 'gtk3' 'glibmm' 'gtkmm3' 'lcms2' 'libcanberra' 'libiptcdata' 'desktop-file-utils' 'mimalloc' 'openmp')
-optdepends=('perl-image-exiftool: metadata support for CR3 images' 'art-rawconverter-imageio: add support for additional image formats' 'lcms2-ff-git: lcms2 with fast-float plugin for improved export speed' )
+optdepends=('perl-image-exiftool: metadata support for CR3 images' 'art-rawconverter-imageio: add support for additional image formats' 'lcms2-ff: lcms2 with fast-float plugin for improved export speed' )
 makedepends=('pkgconf' 'make' 'cmake' 'git' 'gcc' 'hicolor-icon-theme' 'fakeroot')
 conflicts=('art-rawconverter')
 provides=('art-rawconverter')
