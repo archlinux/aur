@@ -4,7 +4,7 @@
 # Contributor: Tobias Manske <aur at rad4day dot de>
 
 pkgname=xp-pen-tablet
-pkgver=3.3.9.230222
+pkgver=3.2.3.230215
 pkgrel=2
 epoch=0
 pkgdesc="XP-Pen (Official) Linux utility (New UI driver)"
