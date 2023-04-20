@@ -1,6 +1,6 @@
 pkgbase = josm-latest
 	pkgdesc = Nightly builds of JOSM, the editor for OpenStreetMap written in Java
-	pkgver = 18703
+	pkgver = 18705
 	pkgrel = 1
 	url = https://josm.openstreetmap.de/
 	arch = any
@@ -14,12 +14,12 @@ pkgbase = josm-latest
 	conflicts = josm
 	conflicts = josm-stable
 	conflicts = josm-svn
-	noextract = josm-snapshot-18703.jar
+	noextract = josm-snapshot-18705.jar
 	backup = etc/conf.d/josm
-	source = https://josm.openstreetmap.de/download/josm-snapshot-18703.jar
+	source = https://josm.openstreetmap.de/download/josm-snapshot-18705.jar
 	source = josm.conf.d
 	source = josm.sh
-	source = josm::svn+https://josm.openstreetmap.de/svn/trunk#revision=18703
+	source = josm::svn+https://josm.openstreetmap.de/svn/trunk#revision=18705
 	sha256sums = SKIP
 	sha256sums = 16bbb378a4e4d02c8ea321f3a3a65ad74007bc439720f44c597432a66d0d1646
 	sha256sums = a30c4824de1570af66e9df2bcbab777b9efea80914a07de498fcfac58789731e
