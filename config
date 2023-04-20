@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm 4.14.302-1 Kernel Configuration
+# Linux/arm 4.14.312-1 Kernel Configuration
 #
 CONFIG_ARM=y
 CONFIG_ARM_HAS_SG_CHAIN=y
@@ -1340,7 +1340,6 @@ CONFIG_DEFAULT_NET_SCH="fq"
 #
 CONFIG_NET_CLS=y
 CONFIG_NET_CLS_BASIC=m
-CONFIG_NET_CLS_TCINDEX=m
 CONFIG_NET_CLS_ROUTE4=m
 CONFIG_NET_CLS_FW=m
 CONFIG_NET_CLS_U32=m
@@ -3733,7 +3732,6 @@ CONFIG_DRM_PARADE_PS8622=y
 # CONFIG_DRM_I2C_ADV7511 is not set
 # CONFIG_DRM_STI is not set
 # CONFIG_DRM_ARCPGU is not set
-# CONFIG_DRM_MXSFB is not set
 # CONFIG_DRM_TINYDRM is not set
 # CONFIG_DRM_PL111 is not set
 # CONFIG_DRM_LEGACY is not set
