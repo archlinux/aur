@@ -32,9 +32,6 @@ prepare() {
   git config submodule.ThirdParty/IceT/vtkicet.git "$srcdir"/icet
   git config submodule.ThirdParty/QtTesting/vtkqttesting.git "$srcdir"/qttesting
   git -c protocol.file.allow=always submodule update -f --init
-
-  cp /tmp/CMakeLists.txt ThirdParty/QtTesting/vtkqttesting/CMakeLists.txt
-  git diff
 }
 
 build() {
