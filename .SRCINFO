@@ -1,6 +1,6 @@
 pkgbase = pawxel-git
 	pkgdesc = Lightweight screenshot tool for designers & developers
-	pkgver = 0.1.2.r24.ge71c769
+	pkgver = 0.1.3.r1.g793918b
 	pkgrel = 1
 	url = https://pawxel.rocks/
 	arch = x86_64
@@ -15,6 +15,20 @@ pkgbase = pawxel-git
 	provides = pawxel
 	conflicts = pawxel
 	source = git+https://github.com/yeahitsjan/pawxel.git
+	source = git+https://github.com/yeahitsjan/phantomstyle.git
+	source = git+https://github.com/yeahitsjan/easyloggingpp.git
+	source = git+https://github.com/yeahitsjan/SingleApplication.git
+	source = git+https://github.com/yeahitsjan/QHotkey.git
+	source = git+https://github.com/yeahitsjan/resizer-item.git
+	source = git+https://github.com/yeahitsjan/FHNotifier.git
+	source = git+https://github.com/yeahitsjan/framelesshelper.git#branch=qmake_mods
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = pawxel-git
