@@ -20,8 +20,8 @@ _build_platforms="x86_64-efi"
 
 _pkgname="grub"
 pkgname="${_pkgname}-improved-luks2-git"
-pkgver=2.06.r456.g65bc45963
-pkgrel=2
+pkgver=2.06.r499.ge67a551a4
+pkgrel=1
 pkgdesc="GNU GRand Unified Bootloader (2) with Argon2 and better LUKS2 support"
 arch=('x86_64')
 url="https://www.gnu.org/software/grub/"
