@@ -1,7 +1,7 @@
 # Maintainer: ABOhiccups <https://twitter.com/ABOhiccups>
 # Contributor: Arch Linux Community
 # Contributor: TorGuard Support <support@torguard.com>
-pkgname=torguard
+pkgname=torguard-bin
 pkgver=4.8.17
 build=build.242.1+gcefc4e9
 pkgrel=1
