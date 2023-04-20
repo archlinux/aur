@@ -2,7 +2,7 @@
 pkgname='python-traittypes'
 _module='traittypes'
 pkgver='0.2.1'
-pkgrel=2
+pkgrel=3
 pkgdesc="Traitlet types for NumPy, SciPy and friends."
 url="https://github.com/jupyter-widgets/traittypes"
 depends=('python'
@@ -29,5 +29,6 @@ package() {
 
 check() {
     cd "${_module}"
+    sed -i -e "s/np.int/int/" traittypes/tests/test_traittypes.py
     PYTHONPATH=. pytest
 }

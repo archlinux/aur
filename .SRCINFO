@@ -1,7 +1,7 @@
 pkgbase = python-traittypes
 	pkgdesc = Traitlet types for NumPy, SciPy and friends.
 	pkgver = 0.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jupyter-widgets/traittypes
 	arch = any
 	license = BSD
