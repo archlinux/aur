@@ -1,5 +1,5 @@
 pkgname='stork-agent'
-pkgver='1.9.0'
+pkgver='1.10.0'
 pkgrel='1'
 pkgdesc="The agent that monitors Kea DHCP and BIND 9 as part of ISC Stork."
 arch=('x86_64')
@@ -11,7 +11,7 @@ backup=('etc/stork')
 _repo='stork'
 _pkg="${_repo}-v${pkgver}"
 source=("https://gitlab.isc.org/isc-projects/${_repo}/-/archive/v${pkgver}/${_pkg}.tar.gz")
-sha512sums=('427c9bc40a930bb6a3134f7cfb7b8462e5f68fa17495c6a973c5b739157fef78d21ec3d4c652d8e55ec64cbbcde66fcb21c468ef58d3c0a3068540f476e4d214')
+sha512sums=('26e53d6831d9466d7f5447c0d2be247f1432dc89f328c7980ccb68e3a38ba45702b7fae0235b0a0a196b0ebf68542cef3cdf21f8b028732bf9825d297b7759aa')
 
 build() {
   tar -xzf "${_pkg}.tar.gz"
