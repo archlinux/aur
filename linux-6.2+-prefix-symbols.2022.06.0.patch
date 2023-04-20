@@ -4,8 +4,8 @@
  # Default option
  
  all: PREREQ $(DTSAL) $(DTDRVCOMMON)
--	$(MAKE) MYPWD=$(PWD) -C $(KERNELDIR) M=$(PWD) modules
-+	$(MAKE) CONFIG_PREFIX_SYMBOLS=n MYPWD=$(PWD) -C $(KERNELDIR) M=$(PWD) modules
+-	make MYPWD=$(PWD) -C $(KERNELDIR) M=$(PWD) modules
++	make CONFIG_PREFIX_SYMBOLS=n MYPWD=$(PWD) -C $(KERNELDIR) M=$(PWD) modules
  
  INSTALL_CMD := "/sbin/rmmod $(TARGET) 2>/dev/null || true &&          \
  				install -d $(INSTALLDIR) &&     \
@@ -15,8 +15,8 @@
  # Default option
  
  all:	PREREQ $(DTSAL) $(DTDRVCOMMON)
--	$(MAKE) MYPWD=$(PWD) -C $(KERNELDIR) M=$(PWD) modules
-+	$(MAKE) CONFIG_PREFIX_SYMBOLS=n MYPWD=$(PWD) -C $(KERNELDIR) M=$(PWD) modules
+-	make MYPWD=$(PWD) -C $(KERNELDIR) M=$(PWD) modules
++	make CONFIG_PREFIX_SYMBOLS=n MYPWD=$(PWD) -C $(KERNELDIR) M=$(PWD) modules
  
  INSTALL_CMD := "/sbin/rmmod $(TARGET) 2>/dev/null || true &&          \
  				install -d $(INSTALLDIR) &&     \
@@ -26,8 +26,8 @@
  
  all: PREREQ $(DTA_LINUX)/Module.symvers $(DTSAL)
  	cp $(DTA_LINUX)/Module.symvers ./Module.symvers
--	$(MAKE) MYPWD=$(PWD) -C $(KERNELDIR) M=$(PWD) modules
-+	$(MAKE) CONFIG_PREFIX_SYMBOLS=n MYPWD=$(PWD) -C $(KERNELDIR) M=$(PWD) modules
+-	make MYPWD=$(PWD) -C $(KERNELDIR) M=$(PWD) modules
++	make CONFIG_PREFIX_SYMBOLS=n MYPWD=$(PWD) -C $(KERNELDIR) M=$(PWD) modules
  
  $(DTA_LINUX)/Module.symvers:
  	$(MAKE) MYPWD=$(PWD) -C $(DTA_LINUX)
@@ -37,8 +37,8 @@
  # Default option
  
  all:	PREREQ $(DTSAL) $(DTDRVCOMMON)
--	$(MAKE) MYPWD=$(PWD) -C $(KERNELDIR) M=$(PWD) modules
-+	$(MAKE) CONFIG_PREFIX_SYMBOLS=n MYPWD=$(PWD) -C $(KERNELDIR) M=$(PWD) modules
+-	make MYPWD=$(PWD) -C $(KERNELDIR) M=$(PWD) modules
++	make CONFIG_PREFIX_SYMBOLS=n MYPWD=$(PWD) -C $(KERNELDIR) M=$(PWD) modules
  
  INSTALL_CMD := "/sbin/rmmod $(TARGET) 2>/dev/null || true &&          \
  				install -d $(INSTALLDIR) &&     \
