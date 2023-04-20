@@ -1,7 +1,7 @@
 pkgbase = battery-notify
 	pkgdesc = A simple battery notifier for Linux.
 	pkgver = 0.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cdown/battery-notify
 	arch = x86_64
 	license = MIT

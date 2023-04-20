@@ -2,7 +2,7 @@
 
 pkgname=battery-notify
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple battery notifier for Linux.'
 arch=('x86_64')
 url='https://github.com/cdown/battery-notify'
@@ -34,7 +34,7 @@ check() {
 }
 
 package() {
-  install -Dm700 -o $USER battery-notify.service -t "$pkgdir/usr/lib/systemd/user/"
+  install -Dm755 battery-notify.service -t "$pkgdir/usr/lib/systemd/user/"
 
   cd "$pkgname"
   install -D target/release/battery-notify -t "$pkgdir/usr/bin/"
