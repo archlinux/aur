@@ -31,7 +31,7 @@ prepare() {
 build() {
   for _arch in ${_architectures}; do
     pushd build-${_arch}
-    ${_arch}-configure --disable-popcnt allow_popcnt=0 enable_popcnt=0 have_popcntll=0 .
+    ${_arch}-configure --enable-generic .
     make
     popd
   done
