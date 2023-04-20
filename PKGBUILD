@@ -1,7 +1,7 @@
 # Maintainer: Samsagax <samsagax at gmail dot com>
 _pkgbase=chimeraos-device-quirks
 pkgname=${_pkgbase}-git
-pkgver=r32.c79de54
+pkgver=r36.037caac
 pkgrel=1
 pkgdesc="A collection of device specific configuration files"
 arch=('any')
@@ -54,11 +54,10 @@ package() {
 	# Install sysctl configurations
 	install -v -m644 -D -t "${pkgdir}/usr/lib/sysctl.d/" usr/lib/sysctl.d/*
 
-	# Install sysctl configurations
-	install -v -m644 -D -t "${pkgdir}/usr/lib/sysctl.d/" usr/lib/sysctl.d/*
-
-	# Install bin and scripts
+	# Install bin
 	install -v -m755 -D -t "${pkgdir}/usr/bin/" usr/local/bin/*
+
+	#Install scripts
 	mkdir -p "${pkgdir}/etc/device-quirks"
 	cp -rv etc/device-quirks/* "${pkgdir}/etc/device-quirks/."
 
