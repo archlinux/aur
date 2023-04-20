@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=cemu
 pkgname=$_pkgname-git
-pkgver=2.0.26.r4.gdaf3ef0
+pkgver=2.0.36.r0.gf48ad6a1
 pkgrel=1
 pkgdesc="Nintendo Wii U emulator"
 arch=('x86_64')
@@ -9,8 +9,14 @@ url="https://cemu.info/"
 license=('MPL2')
 depends=(
 	'discord-rpc'
+	'gcc-libs'
+	'glibc'
+	'hicolor-icon-theme'
+	'libx11'
 	'pugixml'
+	'sdl2'
 	'wxwidgets-gtk3>=3.2'
+	'zlib'
 )
 makedepends=(
 	'boost'
@@ -30,11 +36,9 @@ makedepends=(
 	'nasm'
 	'openssl'
 	'rapidjson'
-	'sdl2'
 	'vulkan-headers>=1:1.3.225'
 	'wayland'
 	'zarchive>=0.1.2'
-	'zlib'
 	'zstd'
 )
 provides=("$_pkgname")
@@ -77,7 +81,6 @@ build() {
 
 package() {
 	depends+=(
-		'libboost_filesystem.so'
 		'libboost_program_options.so'
 		'libcrypto.so'
 		'libcubeb.so'
