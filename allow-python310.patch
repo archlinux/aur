@@ -1,5 +1,5 @@
 diff --git a/pyproject.toml b/pyproject.toml
-index b6a987f..12b3408 100644
+index ebf122d..74a2d75 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
 @@ -1,6 +1,6 @@
@@ -10,12 +10,12 @@ index b6a987f..12b3408 100644
  exclude = '''
  /(
      \.eggs
-@@ -28,7 +28,7 @@ repository = "https://github.com/cdgriffith/FastFlix"
- build = "build.py"
- 
- [tool.poetry.dependencies]
--python = ">=3.11,<3.12"
-+python = ">=3.10,<3.12"
- appdirs = "~=1.4"
- chardet = ">=5.1.0,<5.2.0"
- colorama = ">=0.4,<1.0"
+@@ -21,7 +21,7 @@ authors = [{ name = "Chris Griffith", email = "chris@cdgriffith.com" }]
+ readme = "README.md"
+ #url = "https://fastflix.org"
+ #download_url = "https://github.com/cdgriffith/FastFlix/releases"
+-requires-python = ">=3.11,<3.12"
++requires-python = ">=3.10,<3.12"
+ dynamic = ["version"]
+ dependencies = [
+     "appdirs~=1.4",
