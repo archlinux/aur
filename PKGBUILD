@@ -1,5 +1,5 @@
 pkgname=amazon-corretto-20-bin
-pkgver=20.0.0.36.1
+pkgver=20.0.1.9.1
 pkgrel=1
 pkgdesc='No-cost, multiplatform, production-ready distribution of OpenJDK'
 arch=('x86_64')
@@ -18,6 +18,6 @@ package() {
   cp -a "amazon-corretto-$pkgver-linux-x64" "$pkgdir/usr/lib/jvm/java-20-amazon-corretto"
 }
 
-sha256sums=('7c27bb94823f904d8ebf8c5b0bafcba8b37bf4a6ae9b64653fcc4565a0d5c718'
+sha256sums=('32a6ce43ec641b0bd55d21bc4aa17995407581fb1c5142703805960aea95d2db'
 	    'SKIP')
 
