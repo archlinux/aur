@@ -2,7 +2,7 @@
 pkgname=python-sentencepiece
 pkgver=0.1.98
 pkgrel=1
-pkgdesc="Unsupervised text tokenizer for Neural Network-based text generation"
+pkgdesc="SentencePiece python wrapper"
 arch=('any')
 url="https://github.com/google/sentencepiece"
 license=('Apache')
