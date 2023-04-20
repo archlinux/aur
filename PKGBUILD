@@ -1,4 +1,4 @@
-# Maintainer: Ax333l
+# Maintainer: Ax333l <main [at] axelen [dot] xyz>
 # Contributor: Llewelyn Trahaearn <WoefulDerelict [at] GMail [dot] com>
 # Contributor: Tobias Powalowski <tpowa [at] archlinux [dot] org>
 # Contributor: Ronald van Haren <ronald [at] archlinux [dot] org>
