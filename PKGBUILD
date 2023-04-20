@@ -46,16 +46,14 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
   "librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git"
   "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git"
   "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git")
-sha256sums=('eb19185f7bfa5c3b0c73edaa57160b44bf3bb2139db83539809607486b8075d9'
+sha256sums=('5d2b2886812fe1bc62b7801495d375e3de94ca160a676057d1df92de87efb649'
   'SKIP'
   '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
   'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
-  'SKIP'
-  '802f9271a5f7c0ab581baae8c46fd5b29598025ee93bb2dac6b456f8e0ae6acc'
-  'be9ba079a931d5e881ce38430d418cc834e8c6b157af6c79ea267998caece806')
+  'SKIP')
 # sha256sums_aarch64=()
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
