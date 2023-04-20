@@ -1,6 +1,6 @@
 pkgbase = kickshaw
 	pkgdesc = A menu editor for freedesktop standard menus
-	pkgver = 1.0.94
+	pkgver = 1.0.95
 	pkgrel = 1
 	url = http://download.savannah.gnu.org/releases/obladi
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = kickshaw
 	makedepends = gtk3
 	makedepends = gcc
 	depends = gtk3
-	source = http://download.savannah.gnu.org/releases/obladi/kickshaw_1.0.94_GTK3_source_only.tar.bz2
+	source = http://download.savannah.gnu.org/releases/obladi/kickshaw_1.0.95_GTK3_source_only.tar.bz2
 	sha256sums = SKIP
 
 pkgname = kickshaw
