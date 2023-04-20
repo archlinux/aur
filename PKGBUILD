@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=112.0.5615.121
+pkgver=112.0.5615.165
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -28,7 +28,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         sql-relax-constraints-on-VirtualCursor-layout.patch
         disable-GlobalMediaControlsCastStartStop.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('9c7227e11b85af2eb828f41c0f83ffa94e17128ed7a368ce4afec9c1357b7ae1'
+sha256sums=('168c62fea9f428f99fbf967f36a75ee5da160429e3a5b86bf02188c5fe7c79fd'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'e66be069d932fe18811e789c57b96249b7250257ff91a3d82d15e2a7283891b7'
             '7f3b1b22d6a271431c1f9fc92b6eb49c6d80b8b3f868bdee07a6a1a16630a302'
