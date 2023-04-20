@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=artery-isp-console-bin
-pkgver=3.0.05
-pkgrel=1
+pkgver=3.0.06
+pkgrel=0
 # epoch=1
 pkgdesc="Artery ISP Console 是一款基于 MCU Bootloader 的命令行应用程序。使用该应用程序,用户可以通过 UART 端口或者 USB 端口配置操作 Artery 的 MCU 设备。"
 arch=('x86_64')
@@ -12,27 +12,25 @@ provides=(Artery_ISP_Console)
 conflicts=()
 replaces=()
 depends=('icu' 'qt5-base' 'gcc-libs' 'glibc' 'systemd-libs' 'zlib' 'double-conversion' 'pcre2' 'zstd' 'glib2' 'xz' 'lz4' 'libcap' 'libgcrypt' 'libgpg-error')
-makedepends=('unarchiver')
+makedepends=('unzip')
 backup=()
 options=('!strip')
 install=${pkgname}.install
-_pkg_file_name=Artery_ISP_Console_V${pkgver}.zip
-source=("${_pkg_file_name}::https://www.arterytek.com/download/TOOL/Artery_ISP_Console_Linux_V${pkgver}.zip")
-sha256sums=('55c4275fcc9860b3808c0386bbe04340c229a91e0dac76d283cb294a31a5045e')
+_pkg_file_name=Artery_ISP_Console_Linux-${arch}_V${pkgver}.zip
+source=("${_pkg_file_name}::https://www.arterytek.com/download/TOOL/Artery_ISP_Console_Linux-${arch}_V${pkgver}.zip")
+sha256sums=('1b75e4a284572b1b3c7f5aed0f93b987eed3b42d5c21f42771c75489905686bf')
 noextract=()
 
-build() {
-   unar -e GBK  ${srcdir}/${_pkg_file_name}
-}
-
 package() {
-    cd "${srcdir}/${_pkg_file_name%.zip}/"
+    unzip -O gbk -o "${srcdir}"/${_pkg_file_name} -d "${srcdir}"
+
+    cd "${srcdir}/"
     install -dm0755 "${pkgdir}/opt/artery32/${pkgname%-bin}/" \
                     "${pkgdir}/usr/lib/"
 
     cp -rv Document  "${pkgdir}/opt/artery32/${pkgname%-bin}/Document"
 
-    cd ${_pkg_file_name%_V${pkgver}.zip}_Linux_V${pkgver}/
+    cd ${_pkg_file_name%.zip}
     cp -rv Map  "${pkgdir}/opt/artery32/${pkgname%-bin}/Map"
     install -Dm0755 AT32_ISP_Console  "${pkgdir}/opt/artery32/${pkgname%-bin}/AT32_ISP_Console"
     install -Dm0644 libATBLLIB.so.1.0.0  "${pkgdir}/usr/lib/libATBLLIB.so.1.0.0"
