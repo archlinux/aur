@@ -1,7 +1,7 @@
 # Maintainer: Dedicatus5457 <moe@shinka.top>
 pkgname=uyou-todo-snap
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="This is a todo list with electron  (snap release)"
 arch=('x86_64')
 url="https://github.com/tonylu110/uyou-todo-electron"
