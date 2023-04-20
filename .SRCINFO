@@ -1,0 +1,12 @@
+pkgbase = otf-monero-gothic
+	pkgdesc = Monero Gothic is a modified Centurty Gothic font. This typeface was released by Monotype in 1991. It was based on Futura which was designed by Paul Renner in 1927.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = i
+	arch = any
+	license = CPL
+	provides = otf-monero-gothic
+	source = otf-monero-gothic-1.0.0.zip::https://static.monerooutreach.org/font/MoneroSerif/MoneroGothic_v3.zip
+	sha256sums = 0858e6273d62b9127bb15bfd951a33c023346992778881c5b02e26f3333bbe96
+
+pkgname = otf-monero-gothic
