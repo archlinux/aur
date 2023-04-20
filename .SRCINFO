@@ -1,6 +1,6 @@
 pkgbase = prometheus-mosquitto-exporter-git
 	pkgdesc = a prometheus exporter for the mosquitto mqtt server
-	pkgver = r36.e097dec
+	pkgver = v0.8.0.r1.ge097dec
 	pkgrel = 1
 	url = https://github.com/sapcc/mosquitto-exporter
 	arch = x86_64

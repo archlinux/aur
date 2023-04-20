@@ -1,11 +1,11 @@
 # Maintainer: Christian Heusel <christian@heusel.eu>
 pkgname=prometheus-mosquitto-exporter-git
 _reponame=mosquitto-exporter
-pkgver=r36.e097dec
+pkgver=v0.8.0.r1.ge097dec
 pkgrel=1
 pkgdesc='a prometheus exporter for the mosquitto mqtt server'
 arch=('x86_64')
-url="https://github.com/sapcc/$_reponame"
+url="https://github.com/sapcc/mosquitto-exporter"
 license=('Apache')
 makedepends=('go' 'git')
 provides=("${pkgname%-git}")
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${_reponame}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare(){
