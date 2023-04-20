@@ -21,6 +21,7 @@ pkgbase = ppsspp-git
 	makedepends = sdl2
 	makedepends = snappy
 	makedepends = zlib
+	makedepends = spirv-tools
 	options = !lto
 	source = git+https://github.com/hrydgard/ppsspp.git
 	source = git+https://github.com/Kingcom/armips.git

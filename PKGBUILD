@@ -34,6 +34,7 @@ makedepends=(
   sdl2
   snappy
   zlib
+  spirv-tools
 )
 options=(!lto)
 source=(
@@ -103,6 +104,8 @@ build() {
     -DCMAKE_SKIP_RPATH=ON \
     -DHEADLESS=ON \
     -DOpenGL_GL_PREFERENCE=GLVND \
+    -DUSE_SYSTEM_FFMPEG=OFF \
+    -DUSE_SYSTEM_MINIUPNPC=OFF \
     -DUSE_SYSTEM_LIBZIP=ON \
     -DUSE_SYSTEM_SNAPPY=ON \
     -DUSE_SYSTEM_ZSTD=ON \
@@ -114,6 +117,8 @@ build() {
     -DCMAKE_SKIP_RPATH=ON \
     -DHEADLESS=OFF \
     -DOpenGL_GL_PREFERENCE=GLVND \
+    -DUSE_SYSTEM_FFMPEG=OFF \
+    -DUSE_SYSTEM_MINIUPNPC=OFF \
     -DUSE_SYSTEM_LIBZIP=ON \
     -DUSE_SYSTEM_SNAPPY=ON \
     -DUSE_SYSTEM_ZSTD=ON \
