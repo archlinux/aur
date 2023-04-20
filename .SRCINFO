@@ -1,0 +1,12 @@
+pkgbase = pentablet
+	pkgdesc = XP-Pen official Linux utility for graphic tablets
+	pkgver = 3.2.3.230215
+	pkgrel = 1
+	url = https://www.xp-pen.com/download/index.html
+	arch = x86_64
+	license = LGPL3
+	conflicts = xp-pen-tablet
+	source = XPPen-pentablet-3.2.3.230215-1.x86_64.tar.gz::https://www.xp-pen.com/download/file/id/1936/pid/440/ext/gz.html
+	sha256sums = e890d55c1d12a68647439ce7270e1e4c004d3ff0b901ec5a717145bd4a037722
+
+pkgname = pentablet
