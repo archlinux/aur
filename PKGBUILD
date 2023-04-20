@@ -26,7 +26,7 @@ license=('GPL')
 conflicts=('nautilus')
 install=${pkgname}.install
 
-source=(http://security.ubuntu.com/ubuntu/pool/main/n/nautilus/nautilus-data_43.0-1ubuntu2_all.deb)
+source=(http://security.ubuntu.com/ubuntu/pool/main/n/nautilus/nautilus-data_44.0-1ubuntu2_all.deb)
 md5sums=('fd9e7b68b4c762971fdec7a441ffab8b')
 
 package() {
