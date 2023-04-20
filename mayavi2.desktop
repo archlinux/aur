@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Mayavi2
+Comment=Tool for easy and interactive visualization of data
+GenericName=Scientific data 3-dimensional visualizer
+Exec=mayavi2 %U
+Terminal=false
+Type=Application
+Icon=mayavi2
+Categories=Education;Science;DataVisualization

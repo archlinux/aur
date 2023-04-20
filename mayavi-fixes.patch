@@ -1,0 +1,41 @@
+diff -u -ur mayavi-4.8.1.orig/mayavi/__init__.py mayavi-4.8.1/mayavi/__init__.py
+--- mayavi-4.8.1.orig/mayavi/__init__.py	2022-10-18 11:18:00.000000000 +0200
++++ mayavi-4.8.1/mayavi/__init__.py	2023-04-20 12:44:33.106336172 +0200
+@@ -16,7 +16,6 @@
+     'traits>=6.0.0',
+     'traitsui>=7.0.0',
+     'packaging',
+-    'vtk'
+ ]
+
+ __extras_require__ = {
+diff -u -ur mayavi-4.8.1.orig/mayavi/plugins/mayavi_workbench_application.py mayavi-4.8.1/mayavi/plugins/mayavi_workbench_application.py
+--- mayavi-4.8.1.orig/mayavi/plugins/mayavi_workbench_application.py	2016-08-01 21:02:36.000000000 +0200
++++ mayavi-4.8.1/mayavi/plugins/mayavi_workbench_application.py	2023-04-20 13:08:43.353792226 +0200
+@@ -124,4 +124,3 @@
+             splash_screen = None
+
+         return splash_screen
+-
+diff -u -ur mayavi-4.8.1.orig/mayavi/preferences/preference_manager.py mayavi-4.8.1/mayavi/preferences/preference_manager.py
+--- mayavi-4.8.1.orig/mayavi/preferences/preference_manager.py	2016-08-01 21:02:36.000000000 +0200
++++ mayavi-4.8.1/mayavi/preferences/preference_manager.py	2023-04-20 13:18:20.372051625 +0200
+@@ -20,6 +20,7 @@
+ # License: BSD Style.
+
+ # Standard library imports
++from os import makedirs
+ from os.path import join
+ import pkg_resources
+
+@@ -115,6 +116,10 @@
+         finally:
+             # Set back the application home.
+             ETSConfig.application_home = app_home
++        try:
++            makedirs(path)
++        except OSError:
++            pass
+
+     def _preferences_changed(self, preferences):
+         """Setup the helpers if the preferences trait changes."""
