@@ -28,4 +28,3 @@ package() {
     mkdir -p ${pkgdir}/usr/bin
     install ${srcdir}/${_pkgname}-${CARCH}-unknown-linux-gnu ${pkgdir}/usr/bin/${_pkgname}
 }
-
