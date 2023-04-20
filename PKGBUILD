@@ -14,7 +14,7 @@ provides=()
 
 groups=(zivid-all)
 
-source=(https://zivpublicdownloads.blob.core.windows.net/zividpublicdownloads/releases/2.9.0+4dbba385-1/u18/zivid-genicam_2.9.0+4dbba385-1_amd64.deb)
+source=(https://downloads.zivid.com/sdk/releases/2.9.0+4dbba385-1/u18/zivid-genicam_2.9.0+4dbba385-1_amd64.deb)
 sha256sums=(e50163f0be41f8d0f352de197482f5c716565341793439d9c9c426fb31cd5c8b)
 
 options=(!strip)
