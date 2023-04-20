@@ -1,8 +1,9 @@
-# Maintainer: TimeTrap <zhaoyuanpan at gmail dot com>
+# Maintainer: Jingu <xiuluo dot android at gmail dot com>
+# Contributor: TimeTrap <zhaoyuanpan at gmail dot com>
 pkgname=cursor-bin
 _pkgname=Cursor
-pkgver=0.2.2
-pkgrel=2
+pkgver=0.2.7
+pkgrel=1
 pkgdesc="Write, edit, and chat about your code with GPT-4.(AppImage)"
 arch=('x86_64')
 url="https://cursor.so"
@@ -10,7 +11,7 @@ license=('custom')
 options=('!strip')
 depends=('hicolor-icon-theme' 'zlib')
 source=("${_pkgname}-${pkgver}.AppImage::https://dl.todesktop.com/230313mzl4w4u92/linux/appImage/x64")
-sha256sums=('b30cda8704954a25279480538bde9f7ec32d9e607415deb855185a0e7465bcfb')
+sha256sums=('e8779db0de7d42a9eee8d039cc564a911e50af873068e0df9377b17c2ea063d7')
 _install_path="/opt/appimages"
 
 prepare() {
