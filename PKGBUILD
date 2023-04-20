@@ -59,9 +59,9 @@ url="https://github.com/flameshot-org/flameshot"
 license=('GPL')
 depends=(qt5-base hicolor-icon-theme qt5-svg)
 makedepends=(qt5-tools git cmake kguiaddons)
-optdepends=('xdg-desktop-portal: To make Sway and wlroots work'
-            'xdg-desktop-portal-wlr: To make Sway and wlroots work'
-            'grim: To make Sway and wlroots work')
+optdepends=('xdg-desktop-portal: To make Sway, Hyprland, and wlroots work'
+            'xdg-desktop-portal-wlr: To make Sway, Hyprland, and wlroots work'
+            'grim: To make Sway, Hyprland, and wlroots work')
 provides=(flameshot-git)
 conflicts=(flameshot)
 source=("git+https://github.com/flameshot-org/flameshot.git")
