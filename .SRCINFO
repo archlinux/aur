@@ -1,6 +1,6 @@
 pkgbase = python-ipysheet
 	pkgdesc = Spreadsheet in the jupyter notebook
-	pkgver = 0.5.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/QuantStack/ipysheet
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-ipysheet
 	depends = python-ipywidgets
 	optdepends = python-pandas
 	options = !emptydirs
-	source = python-ipysheet-0.5.0.tar.gz::https://pypi.org/packages/source/i/ipysheet/ipysheet-0.5.0.tar.gz
-	sha256sums = 714804a9e6e7e413ef8e74fce026587239a853c3912060c2fcf5f8dce0b7db6c
+	source = python-ipysheet-0.7.0.tar.gz::https://pypi.org/packages/source/i/ipysheet/ipysheet-0.7.0.tar.gz
+	sha256sums = 34587a02d3bc304724126f9a6dbdf8237a04a6a7aec98a8ffbda16f93fe4ec27
 
 pkgname = python-ipysheet
