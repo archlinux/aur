@@ -1,6 +1,5 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bssenglish-bin
-#_appname=ttmz
 pkgver=2.0
 pkgrel=1
 pkgdesc="白杉树背单词训练软件."
