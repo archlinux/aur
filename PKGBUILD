@@ -1,14 +1,14 @@
 # Maintainer: Alexandre Pujol <alexandre@pujol.io>
 
 pkgname=apparmor.d-git
-pkgver=0.866
-pkgrel=2
+pkgver=0.1203
+pkgrel=1
 pkgdesc="Full set of apparmor profiles"
 arch=("x86_64")
 url="https://github.com/roddhjav/apparmor.d"
 license=('GPL2')
 depends=('apparmor')
-makedepends=('go' 'git' 'rsync' 'lsb-release')
+makedepends=('go' 'git' 'rsync')
 conflicts=('apparmor.d')
 source=("$pkgname::git+https://github.com/roddhjav/apparmor.d.git")
 sha512sums=('SKIP')
@@ -16,11 +16,6 @@ sha512sums=('SKIP')
 pkgver() {
   cd "$srcdir/$pkgname"
   echo "0.$(git rev-list --count HEAD)"
-}
-
-prepare() {
-  cd "$srcdir/$pkgname"
-  ./configure --complain
 }
 
 build() {

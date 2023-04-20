@@ -1,14 +1,13 @@
 pkgbase = apparmor.d-git
 	pkgdesc = Full set of apparmor profiles
-	pkgver = 0.866
-	pkgrel = 2
+	pkgver = 0.1203
+	pkgrel = 1
 	url = https://github.com/roddhjav/apparmor.d
 	arch = x86_64
 	license = GPL2
 	makedepends = go
 	makedepends = git
 	makedepends = rsync
-	makedepends = lsb-release
 	depends = apparmor
 	conflicts = apparmor.d
 	source = apparmor.d-git::git+https://github.com/roddhjav/apparmor.d.git
