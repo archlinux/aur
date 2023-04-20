@@ -2,15 +2,15 @@
 
 pkgname=ecal
 pkgver=5.11.4
-pkgrel=2
+pkgrel=3
 pkgdesc="enhanced Communication Abstraction Layer"
 arch=('x86_64' 'armv7h')
 url="https://github.com/eclipse-ecal/ecal"
 license=('Apache')
 depends=('curl' 'protobuf' 'python' 'python-protobuf' 'qt5-base' 'qwt' 'hdf5' 'yaml-cpp')
-makedepends=('cmake' 'doxygen' 'git' 'graphviz' 'patchelf' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('cmake' 'doxygen' 'git' 'graphviz' 'patchelf' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=()
-source=("https://github.com/eclipse-ecal/ecal/releases/download/v${pkgver}/ecal-fat-source.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/eclipse-ecal/ecal/releases/download/v${pkgver}/ecal-fat-source.tar.gz")
 sha256sums=('48cc5522d64b01bd110cbfb97ed8990169b8a9713a424f78e231c139244b649b')
 backup=('etc/ecal/ecal.ini' 'etc/ecal/ecaltime.ini')
 
