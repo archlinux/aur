@@ -196,7 +196,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.2
-_minor=11
+_minor=12
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -233,7 +233,7 @@ source=(
 # ZFS support
 if [ -n "$_build_zfs" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=00e580bca282bf30913fcf5832fc58191cf0ff32")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=e25f9131d679692704c11dc0c1df6d4585b70c35")
 fi
 
 ## Latency NICE Support
@@ -247,7 +247,8 @@ case "$_cpusched" in
     cachyos) # CachyOS Scheduler (EEVDF)
         source+=("${_patchsource}/sched/0001-EEVDF.patch");;
     pds|bmq) # BMQ/PDS scheduler
-        source+=("${_patchsource}/sched/0001-prjc-cachy.patch");;
+        source+=("${_patchsource}/sched/0001-prjc-cachy.patch"
+                 linux-cachyos-prjc.install);;
     tt) ## TT Scheduler
         source+=("${_patchsource}/sched/0001-tt-cachy.patch");;
     bore) ## BORE Scheduler with latency_nice
@@ -846,8 +847,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('0d236784e60b87c7953535aeb148dd9e773b26495dfa9c6d69615f54fe00dd47'
+sha256sums=('c7e146b52737adfa4c724bfa41bf4721c5ee3cf220c074fbc60eb3ea62b0ccc8'
             '816508270cc1062a9089548a7320922c028431450db4231fc5786d81beedd9ed'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
-            'cef5b2e45c376a0d7a78ba48f9c3c86b883cb50226faf9313958f4c30ef5604b'
+            'df9ad8d111f94c6705de28c692de217e39d76b509309f38a3e4a510a5d36d187'
             '77ebbeac590366f936a9387fc4970f866867ea85cf624b163b34de50d8ef0405')
