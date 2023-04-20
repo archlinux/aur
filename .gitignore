@@ -5,6 +5,3 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!update-to-gtkd-3.10.0.patch
-!nautilus-Don-t-import-a-specific-version.patch
-!nautilus-Add-compatibility-with-Nautilus-43.patch

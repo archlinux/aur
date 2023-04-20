@@ -1,7 +1,7 @@
 pkgbase = tilix-git
 	pkgdesc = A tiling terminal emulator for Linux using GTK+ 3
-	pkgver = 1.9.5.r42.g4173ed42
-	pkgrel = 2
+	pkgver = 1.9.5.r66.g5bbd0fc6
+	pkgrel = 1
 	url = https://gnunn1.github.io/tilix-web
 	arch = x86_64
 	license = MPL2
@@ -22,12 +22,6 @@ pkgbase = tilix-git
 	provides = tilix
 	conflicts = tilix
 	source = git+https://github.com/gnunn1/tilix.git
-	source = update-to-gtkd-3.10.0.patch
-	source = nautilus-Don-t-import-a-specific-version.patch
-	source = nautilus-Add-compatibility-with-Nautilus-43.patch
 	sha256sums = SKIP
-	sha256sums = ee3136dfca40ddc9407b94d79d6ad664abee16aa770f161b5d07ae50293820c6
-	sha256sums = 05c8a4ca4b99aec457eaef7e4437862a111026f445f14148351b28be7b1f3c3e
-	sha256sums = cac3bd721ca089c7526aed97c0fc7dd5da7fcdba965749a487b2a229a0fbe616
 
 pkgname = tilix-git
