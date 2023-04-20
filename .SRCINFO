@@ -5,6 +5,7 @@ pkgbase = easyrp-bin
 	url = https://github.com/Pizzabelly/EasyRP
 	arch = x86_64
 	license = MIT
+	depends = glibc
 	provides = easyrp
 	conflicts = easyrp
 	conflicts = easyrp-git
