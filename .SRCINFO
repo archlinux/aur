@@ -9,7 +9,7 @@ pkgbase = aarch64-binutils
 	depends = libelf
 	depends = jansson
 	depends = perl
-	source = git+https://sourceware.org/git/binutils-gdb.git#commit=2dae374deda43a48d2241779fbf23f0e5fb3d527
+	source = git+https://sourceware.org/git/binutils-gdb.git#commit=594dcc92e8d1f6bb30e3dfa4eb343febcda66f1a
 	validpgpkeys = EAF1C276A747E9ED86210CBAC3126D3B4AE55E93
 	validpgpkeys = 3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F
 	sha256sums = SKIP
