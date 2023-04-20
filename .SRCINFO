@@ -1,7 +1,7 @@
 pkgbase = aarch64-glibc
 	pkgdesc = GNU C Library ARM64 target
 	pkgver = 2.37
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnu.org/software/libc/
 	arch = any
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = aarch64-glibc
 	makedepends = python
 	options = !strip
 	options = staticlibs
-	source = git+https://sourceware.org/git/glibc.git#commit=d8e1a7590d375159fb5aac07ad8111ab4699e994
+	source = git+https://sourceware.org/git/glibc.git#commit=1d63573f81945a489ea169636fa11850bc74716b
 	validpgpkeys = 7273542B39962DF7B299931416792B4EA25340F8
 	validpgpkeys = BC7C7372637EC10C57D7AA6579C43DFBF1CF2187
 	b2sums = SKIP
