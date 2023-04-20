@@ -1,6 +1,6 @@
 pkgbase = yakuake-alca7raz
 	pkgdesc = A drop-down terminal emulator based on KDE konsole technology
-	pkgver = 22.12.3
+	pkgver = 23.04.0
 	pkgrel = 1
 	url = https://apps.kde.org/yakuake/
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = yakuake-alca7raz
 	depends = hicolor-icon-theme
 	provides = yakuake
 	conflicts = yakuake
-	source = https://download.kde.org/stable/release-service/22.12.3/src/yakuake-22.12.3.tar.xz
+	source = https://download.kde.org/stable/release-service/23.04.0/src/yakuake-23.04.0.tar.xz
 	source = alca7raz.patch
-	sha256sums = bd8a4138b818b8569644f815211548d51b5df621037ff801ee2f28d85c8f0ddb
+	sha256sums = 0f769bbb226f44f502d482b415f0403a68c1f95b25fbc255dc8df319ab12c061
 	sha256sums = dc0ffbc6ed3c4f68e59bc1bf074d97e39e9323a95e0275e584fec9dad82312f1
 
 pkgname = yakuake-alca7raz
