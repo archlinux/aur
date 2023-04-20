@@ -34,7 +34,6 @@ makedepends=(
   sdl2
   snappy
   zlib
-  spirv-tools
 )
 options=(!lto)
 source=(
