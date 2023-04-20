@@ -1,13 +1,13 @@
 # Maintainer: Mattia Procopio (astro.matto) <matto.astro at gmail dot com>
+
 pkgname=indi-3rdparty-drivers
 pkgver=2.0.1
-pkgrel=1
-pkgdesc="Indi 3rd party drivers"
+pkgrel=2
 pkgdesc="Indi 3rd party drivers - this package includes all the INDI drivers and patches to fxload paths working on ArchLinux (qhy, meade, etc.)"
 arch=(x86_64 aarch64)
 url="https://indilib.org"
 license=('LGPLv2')
-depends=('indi-3rdparty-libs' 'limesuite' 'libdc1394' 'fxload')
+depends=('indi-3rdparty-libs' 'limesuite' 'libdc1394' 'fxload-libusb')
 makedepends=(cmake)
 source=("https://github.com/indilib/indi-3rdparty/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('be98a84ab6166321fe5aa74fca132cd866ae4e6910ef3b97e3502a44c59d277d')
