@@ -1,5 +1,5 @@
 pkgbase = masterpdfeditor-bin
-	pkgdesc = 金山文档
+	pkgdesc = A complete solution for viewing, creating and editing PDF files
 	pkgver = 5.9.40
 	pkgrel = 1
 	url = https://code-industry.net/masterpdfeditor
