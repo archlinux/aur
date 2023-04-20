@@ -1,0 +1,13 @@
+post_install() {
+    echo "Run 'pomo' command to start pomodoro timer."
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    echo "Removing pomo timer..."
+    rm /usr/bin/pomo
+}
+
