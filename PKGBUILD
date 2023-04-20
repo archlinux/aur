@@ -14,7 +14,7 @@ provides=()
 
 groups=(zivid-all)
 
-source=(https://zivpublicdownloads.blob.core.windows.net/zividpublicdownloads/releases/2.9.0+4dbba385-1/u18/zivid-studio_2.9.0+4dbba385-1_amd64.deb)
+source=(https://downloads.zivid.com/sdk/releases/2.9.0+4dbba385-1/u18/zivid-studio_2.9.0+4dbba385-1_amd64.deb)
 sha256sums=(2329c2500a3c8ec42e1980ac34c34cfab9715b12b48a6dff4af1484881b7f9dd)
 
 options=(!strip)
