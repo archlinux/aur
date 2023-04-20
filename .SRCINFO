@@ -20,6 +20,6 @@ pkgbase = python-translate-shell
 	optdepends = festival: speaker support
 	conflicts = translate-shell
 	source = https://github.com/Freed-Wu/translate-shell/releases/download/0.0.24/translate_shell-0.0.24-py3-none-any.whl
-	sha256sums = 7a3110fb3851563c305c87a83dab0b720d0918fe61082b35703f99e06762eafe
+	sha256sums = 7b8724c2cbdd0ab7809b51b743cef3fc7009539cac6c6dab91b4060d98019abf
 
 pkgname = python-translate-shell
