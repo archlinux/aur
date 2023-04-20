@@ -1,6 +1,7 @@
-# Maintainer: Knut Ahlers <knut at ahlers dot me>
+# Maintainer: Christian Heusel <christian@heusel.eu>
+# Contributor: Knut Ahlers <knut at ahlers dot me>
 # Contributor: Det <nimetonmaili g-mail>
-# Contributors: t3ddy, Lex Rivera aka x-demon, ruario
+# Contributor: t3ddy, Lex Rivera aka x-demon, ruario
 
 # Check for new Linux releases in: http://googlechromereleases.blogspot.com/search/label/Dev%20updates
 # or use: $ curl -s https://dl.google.com/linux/chrome/rpm/stable/x86_64/repodata/other.xml.gz | gzip -df | awk -F\" '/pkgid/{ sub(".*-","",$4); print $4": "$10 }'
@@ -40,10 +41,8 @@ sha512sums=('8774061878609fd957c1d6314410b9c0d0ec384bbd5d52ebca4f0bb1dd4be252605
             '349fc419796bdea83ebcda2c33b262984ce4d37f2a0a13ef7e1c87a9f619fd05eb8ff1d41687f51b907b43b9a2c3b4a33b9b7c3a3b28c12cf9527ffdbd1ddf2e')
 
 package() {
-	echo "  -> Extracting the data.tar.xz..."
 	bsdtar -xf data.tar.xz -C "$pkgdir/"
 
-	echo "  -> Moving stuff in place..."
 	# Launcher
 	install -m755 google-chrome-$_channel.sh "$pkgdir"/usr/bin/google-chrome-$_channel
 
@@ -58,13 +57,13 @@ package() {
 	install -Dm644 "$pkgdir"/opt/google/chrome-$_channel/WidevineCdm/LICENSE \
 		"$pkgdir"/usr/share/licenses/google-chrome-$_channel/WidevineCdm-LICENSE.txt
 
-	echo "  -> Fixing Chrome desktop entry..."
+	# Fix the Chrome desktop entry
 	sed -i \
 		-e "/Exec=/i\StartupWMClass=Google-chrome-$_channel" \
 		-e "s/x-scheme-handler\/ftp;\?//g" \
 		"$pkgdir"/usr/share/applications/google-chrome-$_channel.desktop
 
-	echo "  -> Removing Debian Cron job, duplicate product logos and menu directory..."
+	# Remove the Debian Cron job, duplicate product logos and menu directory
 	rm -r \
 		"$pkgdir"/etc/cron.daily/ \
 		"$pkgdir"/opt/google/chrome-$_channel/cron/ \
