@@ -3,18 +3,18 @@
 # Contributor: Kuba Serafinowski <zizzfizzix(at)gmail(dot)com>
 
 pkgname=kdeconnect
-pkgver=22.12.3
+pkgver=23.04.0
 pkgrel=1
 pkgdesc='Adds communication between KDE and your smartphone'
 url='https://kdeconnect.kde.org/'
 arch=(x86_64)
 license=(GPL)
 groups=(kde-applications kde-network)
-depends=(kcmutils kwayland libfakekey qca-qt5 kpeoplevcard pulseaudio-qt qqc2-desktop-style hicolor-icon-theme)
-makedepends=(extra-cmake-modules kdoctools plasma-wayland-protocols)
+depends=(kcmutils libfakekey qca-qt5 kpeoplevcard pulseaudio-qt qqc2-desktop-style kirigami-addons modemmanager-qt)
+makedepends=(extra-cmake-modules kdoctools wayland-protocols)
 optdepends=('sshfs: remote filesystem browser' 'python-nautilus: Nautilus integration' 'qt5-tools: for some runcommand plugin actions')
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-kde-$pkgver.tar.xz{,.sig})
-sha256sums=('2bdadee8765b01697c8a7190981c3948fbbbf8643fe0cfbc29bc221c29ba8099'
+sha256sums=('80bae0d03fd688ee30b7872e2ea04af690346a6d86ca2db17de9253f781a019d'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
