@@ -20,7 +20,6 @@ build() {
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
 	-DUDEVRULES_INSTALL_DIR=/usr/lib/udev/rules.d \
 	-DFIRMWARE_INSTALL_DIR=/usr/lib/firmware \
-        -DQHY_FIRMWARE_INSTALL_DIR=/usr/lib/firmware \
 	-DWITH_CAUX=Off \
 	-DWITH_AHP_XC=Off \
 	-DWITH_SX=Off \
