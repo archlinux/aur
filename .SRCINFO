@@ -1,6 +1,6 @@
 pkgbase = carvel-tools
 	pkgdesc = Set of Carvel tools: imgpkg kapp kbld kctrl kwt vendir ytt
-	pkgver = 20230415
+	pkgver = 20230420
 	pkgrel = 1
 	url = https://carvel.dev
 	arch = x86_64
