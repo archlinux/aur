@@ -1,7 +1,7 @@
 pkgbase = nginx-totp-auth
 	pkgdesc = totp auth for nginx
 	pkgver = r16.09bf6d9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/davidgfnet/nginx_totp_auth
 	arch = x86_64
 	arch = i686
@@ -14,7 +14,11 @@ pkgbase = nginx-totp-auth
 	depends = openssl
 	source = git+https://github.com/davidgfnet/nginx_totp_auth.git
 	source = nginx-totp-auth.service
+	source = nginx-totp-only-auth.service
+	source = remove-password.patch
 	sha256sums = SKIP
-	sha256sums = cf63954266f7f0baa4d193a574535f5b222395d512c5fb50640267b4c6d9665b
+	sha256sums = cfdf3cbd84be9791800124cd87e1b5ff1d430a7d38309e4b6052e105f51ca245
+	sha256sums = e24859e92386dbb50661063328d3ac66975367a2772def43e075114667ec35d8
+	sha256sums = 814119238c3030f00f408d7f1e42718c1b31351a55ad7cb96579e41f995488bd
 
 pkgname = nginx-totp-auth

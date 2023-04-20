@@ -1,0 +1,9 @@
+[Unit]
+Description=TOTP auth daemon for nginx (TOTP without password)
+
+[Service]
+RuntimeDirectory=totp_auth
+ExecStart=/usr/bin/spawn-fcgi -u http -s /run/totp_auth/sock -M 666 -n /usr/lib/nginx-totp-auth/nginx-totp-only-auth.bin /etc/nginx-totp-auth.conf
+
+[Install]
+WantedBy=multi-user.target

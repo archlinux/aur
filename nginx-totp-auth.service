@@ -2,7 +2,7 @@
 Description=TOTP auth daemon for nginx
 
 [Service]
-RuntimeDir=totp_auth
+RuntimeDirectory=totp_auth
 ExecStart=/usr/bin/spawn-fcgi -u http -s /run/totp_auth/sock -M 666 -n /usr/lib/nginx-totp-auth/nginx-totp-auth.bin /etc/nginx-totp-auth.conf
 
 [Install]
