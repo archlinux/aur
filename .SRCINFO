@@ -1,0 +1,11 @@
+pkgbase = ultraleap-hand-tracking
+	pkgdesc = Combined packages for Ultraleap hand tracking. A collection of Ultraleap's Linux offering for hand tracking. Including: the tracking service and control panel.
+	pkgver = 20220909
+	pkgrel = 1
+	arch = x86_64
+	license = PROPRIETARY
+	depends = ultraleap-hand-tracking-service
+	depends = ultraleap-hand-tracking-control-panel
+	depends = openxr-layer-ultraleap
+
+pkgname = ultraleap-hand-tracking
