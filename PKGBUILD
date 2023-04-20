@@ -1,6 +1,6 @@
 # Maintainer: Maya Matuszczyk <maccraft123mc@gmail.com>
 pkgname=ayaled
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A daemon to manage joystick LEDs on AYANEO devices"
 url="https://github.com/Maccraft123/ayaled"
@@ -8,7 +8,7 @@ arch=('x86_64')
 license=('custom')
 makedepends=('cargo')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/Maccraft123/ayaled/archive/refs/tags/${pkgver}.tar.gz)
-sha256sums=('3f6d30b27ebf69c8b07a7796dee41ee9d1c1d5258194d35ecf9195923bf06a70')
+sha256sums=('b976d3e51e8f8c6fe1d4325be11df05a530832407906f743bc0cce1e298cbbeb')
 
 prepare() {
   cd "$pkgname-$pkgver"
