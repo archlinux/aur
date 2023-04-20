@@ -1,6 +1,6 @@
 # Maintainer: BrainDamage
 pkgname="python-wfdb"
-pkgver=4.1.0
+pkgver=4.1.1
 _basename='wfdb-python'
 _dirname="${_basename}-${pkgver}"
 pkgrel=1
@@ -9,7 +9,7 @@ arch=(any)
 url="https://github.com/MIT-LCP/wfdb-python"
 license=("MIT")
 depends=("python" "python-numpy" "python-scipy" "python-matplotlib" "python-pandas" "python-requests" "python-soundfile")
-sha256sums=('69add8634c8851d25be686d61b62316480fc7826a8715b7f226d1cc6007c73c8')
+sha256sums=('5a8da0d1ddbb0af95f2934420426423c5db6286792450b89cfb09ff7afa09b96')
 source=("https://github.com/MIT-LCP/${_basename}/archive/v${pkgver}.tar.gz")
 
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry' 'python-sphinx')
