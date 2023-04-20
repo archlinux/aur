@@ -1,6 +1,6 @@
 pkgbase = r-batchtools
 	pkgdesc = Tools for Computation on Batch Systems
-	pkgver = 0.9.16
+	pkgver = 0.9.17
 	pkgrel = 1
 	url = https://cran.r-project.org/package=batchtools
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = r-batchtools
 	optdepends = r-snow
 	optdepends = r-testthat
 	optdepends = r-tibble
-	source = https://cran.r-project.org/src/contrib/batchtools_0.9.16.tar.gz
-	sha256sums = 51bfea8e0453982efe223933d7591fbfee17883cce4c09cf9e215d0c965ef5ba
+	source = https://cran.r-project.org/src/contrib/batchtools_0.9.17.tar.gz
+	sha256sums = b6e1dd54e8b70c2bf38d2ad1884f6b60fc74c1100f910f46724aa723c0749be6
 
 pkgname = r-batchtools
