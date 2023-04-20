@@ -1,0 +1,20 @@
+pkgbase = nginx-totp-auth
+	pkgdesc = totp auth for nginx
+	pkgver = r16.09bf6d9
+	pkgrel = 1
+	url = https://github.com/davidgfnet/nginx_totp_auth
+	arch = x86_64
+	arch = i686
+	license = 
+	makedepends = git
+	makedepends = python
+	depends = spawn-fcgi
+	depends = fcgi
+	depends = libconfig
+	depends = openssl
+	source = git+https://github.com/davidgfnet/nginx_totp_auth.git
+	source = nginx-totp-auth.service
+	sha256sums = SKIP
+	sha256sums = cf63954266f7f0baa4d193a574535f5b222395d512c5fb50640267b4c6d9665b
+
+pkgname = nginx-totp-auth
