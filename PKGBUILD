@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=at-link-console-bin
-pkgver=3.0.04
+pkgver=3.0.06
 pkgrel=0
 pkgdesc="Artery AT LINK Console 是一款基于 MCU Bootloader 的命令行应用程序。支持AT32 MCU「在电路编程」Console工具"
 arch=('x86_64')
@@ -11,21 +11,19 @@ provides=(AT-LINK_Console)
 conflicts=()
 replaces=()
 depends=('icu' 'qt5-base' 'gcc-libs' 'glibc' 'systemd-libs' 'zlib' 'double-conversion' 'pcre2' 'zstd' 'glib2' 'xz' 'lz4' 'libcap' 'libgcrypt' 'libgpg-error')
-makedepends=('unarchiver')
+makedepends=('unzip')
 backup=()
 options=('!strip')
 install=${pkgname}.install
 _pkg_file_name=Artery_ATLINK_Console_V${pkgver}.zip
 source=("${_pkg_file_name}::https://www.arterytek.com/download/TOOL/Artery_ATLINK_Console_Linux-${arch}_V${pkgver}.zip")
-sha256sums=('f5b9862f6286eb7ae6c000dbd4e8cdf102b096e6106d3bef5fd72632b1bae10f')
+sha256sums=('6453d5f52ad1c03e97c40fe3b608e327ffdd81b81dccad3150f9ad99fba0beee')
 noextract=(${_pkg_file_name})
 
-build() {
-   unar -e GBK  ${srcdir}/${_pkg_file_name}
-}
-
 package() {
-    cd "${srcdir}/${_pkg_file_name%.zip}/"
+    unzip -O gbk -o "${srcdir}"/${_pkg_file_name} -d "${srcdir}"
+
+    cd "${srcdir}"
 
     install -dm0755 "${pkgdir}/opt/artery32/${pkgname%-bin}/" \
                     "${pkgdir}/usr/lib/"
