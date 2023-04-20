@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=droidrunco
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="Minimalist, functional Android debloat tool in Go"
 arch=('armv6h' 'armv7h' 'arm' 'aarch64' 'i686' 'x86_64')
@@ -26,4 +26,4 @@ package() {
   install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}/GPL3" LICENSE
 }
 
-sha256sums=('768b69074a72009127487f0dd16a5711bf626ca144ade1bcb8a24f478b161ff1')
+sha256sums=('0932295dd458b393043da2c66be25e04ad0a984d77d2d5f99fddb83d5fda6887')
