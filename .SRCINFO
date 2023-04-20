@@ -4,10 +4,12 @@ pkgbase = ultraleap-hand-tracking-service
 	pkgrel = 1
 	install = ultraleap-hand-tracking-service.install
 	arch = x86_64
+	groups = ultraleap-hand-tracking
 	license = PROPRIETARY
 	depends = gcc-libs>=12.2.0-1
 	depends = glibc
 	depends = psmisc>=23.3-1
+	provides = ultraleap-hand-tracking-service
 	source = https://repo.ultraleap.com/apt/pool/main/u/ultraleap-hand-tracking-service/ultraleap-hand-tracking-service_5.6.3.0-18a4db52-1.0_amd64.deb
 	source = analytics_config.json
 	source = ultraleap-hand-tracking-service.conf
