@@ -1,0 +1,15 @@
+pkgbase = oh-mymd-appimage
+	pkgdesc = A markdown editor,support cloud sync
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://www.ohmymd.app/
+	arch = x86_64
+	license = unknown
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = glibc
+	options = !strip
+	source = oh-mymd-0.5.0.AppImage::https://github.com/1oopstudio/support.ohmymd.app/releases/download/0.5.0/Oh.Mymd-0.5.0.AppImage
+	sha256sums = b808475f7971ad0d0617d993be36435271ac88ddcc7a54cfd6ea71ebe3651039
+
+pkgname = oh-mymd-appimage
