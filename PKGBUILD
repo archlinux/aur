@@ -2,13 +2,14 @@
 
 _pkgname=lchat
 pkgname=${_pkgname}-git
-pkgver=r103.6e73830
+pkgver=r114.9778b6
 pkgrel=1
 pkgdesc="line chat is a line oriented front end for ii-like chat programs."
 url="https://libs.suckless.org/lchat/"
 license=("ISC")
 arch=("any")
 makedepends=("git")
+depends=('libgrapheme')
 provides=("lchat")
 conflicts=("lchat")
 source=("git://git.suckless.org/lchat")
