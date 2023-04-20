@@ -1,0 +1,18 @@
+pkgbase = pdmaner-appimage
+	pkgdesc = A multi operating system open source and free desktop version relational database modeling tool.一款多操作系统开源免费的桌面版关系数据库模型建模工具
+	pkgver = 4.5.1
+	pkgrel = 1
+	url = http://www.pdmaner.com
+	arch = x86_64
+	license = custom:MulanPubL-2.0
+	depends = zlib
+	depends = glibc
+	provides = pdmaner
+	conflicts = pdmaner
+	options = !strip
+	source = pdmaner-4.5.1.AppImage::http://www.pdmaner.com/releases/download/v4.5.1/PDManer-linux_v4.5.1.AppImage
+	source = LICENSE::https://gitee.com/robergroup/pdmaner/raw/master/LICENSE
+	sha256sums = 3808d1508b5aa6504a8576e9541d3b68db5da94d615dcc1bb3a4b86bfd259344
+	sha256sums = 05eec509c11d99970dc4ca5bed4aae992960fd7f168e1746089c49643a18f461
+
+pkgname = pdmaner-appimage
