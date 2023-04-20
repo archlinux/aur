@@ -4,10 +4,10 @@
 # Contributor: t3ddy, Lex Rivera aka x-demon, ruario
 
 # Check for new Linux releases in: http://googlechromereleases.blogspot.com/search/label/Dev%20updates
-# or use: $ curl -s https://dl.google.com/linux/chrome/rpm/stable/x86_64/repodata/other.xml.gz | gzip -df | awk -F\" '/pkgid/{ sub(".*-","",$4); print $4": "$10 }'
+# or use: $ curl -s https://dl.google.com/linux/chrome/rpm/stable/x86_64/repodata/other.xml.gz | gzip -df | xq -x "otherdata/package[@name='google-chrome-$_channel']/version/@ver"
 
 pkgname=google-chrome-dev
-pkgver=114.0.5696.0
+pkgver=114.0.5720.4
 pkgrel=1
 pkgdesc="The popular and trusted web browser by Google (Dev Channel)"
 arch=('x86_64')
@@ -36,7 +36,7 @@ _channel=unstable
 source=("https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-${_channel}/google-chrome-${_channel}_${pkgver}-1_amd64.deb"
 	'eula_text.html'
 	"google-chrome-$_channel.sh")
-sha512sums=('8774061878609fd957c1d6314410b9c0d0ec384bbd5d52ebca4f0bb1dd4be252605c7e5fcc1a18b500388e05a1cb1e0c0a1f650732db91feff13fc295819532e'
+sha512sums=('7ed5f6fd423103278bbdfc1baf73dcd2c34eccdf22f96b10b497e385617b30c967055db88f31fbd6ab711605e1d1d6652cf1c014fbd629e4ceece2a0b3beca2b'
             'a225555c06b7c32f9f2657004558e3f996c981481dbb0d3cd79b1d59fa3f05d591af88399422d3ab29d9446c103e98d567aeafe061d9550817ab6e7eb0498396'
             '349fc419796bdea83ebcda2c33b262984ce4d37f2a0a13ef7e1c87a9f619fd05eb8ff1d41687f51b907b43b9a2c3b4a33b9b7c3a3b28c12cf9527ffdbd1ddf2e')
 
