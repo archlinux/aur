@@ -17,7 +17,7 @@ sha256sums=('f4b6d999ed0db54739e261d2ab44afdde7bbb87ba84f71670a61baa291cbcfc0')
 install=torguard.install
 
 package() {
-        bsdtar -xf "${srcdir}/${pkgname}-v${pkgver}-${build}-amd64-arch/torguard-v${pkgver}-${build}-amd64-arch.tar" -C "$pkgdir" -s"/torguard-v${pkgver}-${build}-amd64-arch//"
+        bsdtar -xf "${srcdir}/torguard-v${pkgver}-${build}-amd64-arch/torguard-v${pkgver}-${build}-amd64-arch.tar" -C "$pkgdir" -s"/torguard-v${pkgver}-${build}-amd64-arch//"
 
 	install -d "$pkgdir"/usr/bin/
 	ln -s /opt/torguard/bin/torguard-wrapper "$pkgdir"/usr/bin/torguard
