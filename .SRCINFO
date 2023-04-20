@@ -1,7 +1,7 @@
 pkgbase = m68k-elf-toolchain
 	pkgdesc = A complete gcc/binutils/newlib toolchain for m68k-elf
-	pkgver = 20230203
-	pkgrel = 2
+	pkgver = 20230420
+	pkgrel = 1
 	url = http://www.gnu.org
 	arch = x86_64
 	license = GPL
@@ -13,8 +13,8 @@ pkgbase = m68k-elf-toolchain
 	conflicts = m68k-elf-newlib
 	conflicts = m68k-elf-gdb
 	options = !strip
-	source = git+https://sourceware.org/git/binutils-gdb.git#commit=ab87a96bab7b216ef1079461ab333e75768525b9
-	source = git+https://sourceware.org/git/gcc.git#commit=d31bd7138610a883310dce212bb0bdaaa8da7304
+	source = git+https://sourceware.org/git/binutils-gdb.git#commit=594dcc92e8d1f6bb30e3dfa4eb343febcda66f1a
+	source = git+https://sourceware.org/git/gcc.git#commit=015cf9f84b0b6792f982e505392ca574e04c8d23
 	source = git+https://sourceware.org/git/newlib-cygwin.git#commit=ab49db3a8c08e2240e53d8f12d6a14fd285def4e
 	sha256sums = SKIP
 	sha256sums = SKIP
