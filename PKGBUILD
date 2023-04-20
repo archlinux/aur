@@ -13,7 +13,7 @@ pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
 # https://github.com/buildbot/buildbot/releases
 pkgver=3.8.0
 _bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://buildbot.net'
 license=(GPL2)
