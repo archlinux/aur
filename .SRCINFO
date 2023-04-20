@@ -9,7 +9,7 @@ pkgbase = zivid
 	depends = zivid-telicam-driver
 	depends = opencl-driver
 	options = !strip
-	source = https://zivpublicdownloads.blob.core.windows.net/zividpublicdownloads/releases/2.9.0+4dbba385-1/u18/zivid_2.9.0+4dbba385-1_amd64.deb
+	source = https://downloads.zivid.com/sdk/releases/2.9.0+4dbba385-1/u18/zivid_2.9.0+4dbba385-1_amd64.deb
 	sha256sums = bcd579ad44673597894af928f34c7b270f706f8e906550a4f39cc0b7287f3b6f
 
 pkgname = zivid
