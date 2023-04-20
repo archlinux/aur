@@ -1,7 +1,7 @@
 pkgbase = gcstar
 	pkgdesc = A collection management application
-	pkgver = 1.7.3
-	pkgrel = 6
+	pkgver = 1.8.0
+	pkgrel = 1
 	url = https://gitlab.com/GCstar/GCstar
 	arch = any
 	license = GPL
@@ -30,7 +30,7 @@ pkgbase = gcstar
 	depends = perl-json
 	depends = perl-locale-codes
 	optdepends = perl-image-exiftool: to retrieve data from a mkv file
-	source = https://gitlab.com/GCstar/GCstar/-/archive/v1.7.3/GCstar-v1.7.3.tar.bz2
-	sha256sums = 9b5b1f6b37e73b3401030a0816acc6922c9f65e56d94a279b615e40a1fb5915a
+	source = https://gitlab.com/GCstar/GCstar/-/archive/v1.8.0/GCstar-v1.8.0.tar.bz2
+	sha256sums = 99a381277fa119db1541fed5a214ae28d879b449d44af607892ff4cac177ac66
 
 pkgname = gcstar
