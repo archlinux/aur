@@ -1,6 +1,6 @@
 pkgbase = sticky-notes
 	pkgdesc = A simple sticky notes app
-	pkgver = 0.1.10
+	pkgver = 0.1.11
 	pkgrel = 1
 	url = https://github.com/vixalien/sticky
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = sticky-notes
 	makedepends = yarn
 	depends = gjs
 	depends = libadwaita
-	source = git+https://github.com/vixalien/sticky.git#commit=9b8536aa8ac176721399dfa343e9393a57a4c75f
+	source = git+https://github.com/vixalien/sticky.git#commit=2e5bf52aa6ebd7365aa1fb2439ef90806a56a578
 	source = git+https://gitlab.gnome.org/BrainBlasted/gi-typescript-definitions.git
 	sha256sums = SKIP
 	sha256sums = SKIP
