@@ -7,8 +7,16 @@ pkgdesc="Geph connects you with the censorship-free Internet, even when nothing 
 arch=('x86_64')
 url="https://github.com/geph-official/gephgui-wry"
 license=('custom')
-depends=(webkit2gtk gdk-pixbuf2 libappindicator-gtk3)
-makedepends=(npm git cargo)
+depends=(
+    webkit2gtk
+    gdk-pixbuf2
+    libappindicator-gtk3
+)
+makedepends=(
+    npm
+    git
+    cargo
+)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/geph-official/gephgui-wry.git"
