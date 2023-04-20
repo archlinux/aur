@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Version=1.2.0-alpha
+Version=1.3.0-alpha
 Name=LiveBot
 Comment=Be Inside a Discord Bot
 Exec=livebot
