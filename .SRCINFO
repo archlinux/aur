@@ -7,7 +7,6 @@ pkgbase = firebuild
 	license = custom
 	makedepends = cmake
 	makedepends = hopscotch-map
-	makedepends = libconfig
 	makedepends = xxhash
 	makedepends = python
 	makedepends = python-jinja
