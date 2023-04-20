@@ -2,13 +2,13 @@
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=onetagger
-pkgver=1.5.1
-pkgrel=3
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="Cross-platform music tagger with Beatport, Discogs, Musicbrainz, Spotify, Traxsource and many other services support."
 arch=('aarch64' 'x86_64')
 url="https://onetagger.github.io/"
 license=('GPL3')
-depends=('alsa-lib' 'libsndfile' 'webkit2gtk')
+depends=('alsa-lib' 'webkit2gtk')
 makedepends=('cargo' 'pnpm')
 options=('!lto')
 source=(
@@ -55,5 +55,5 @@ package() {
     "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
 
-sha256sums=('a7a1a44d4b1160cb29096c3c065fed42f507926c4e566584d0e5c9db9e5460f6'
-  '4e6cba3f230f422f61ef42bfe0f21b2f6016987199cdfc79bccc5b1b8d6a1655')
+sha256sums=('68612bf5f4674ae752850b85c30b2591cca5a73460bb256cd95a1b66e989b116'
+            '4e6cba3f230f422f61ef42bfe0f21b2f6016987199cdfc79bccc5b1b8d6a1655')
