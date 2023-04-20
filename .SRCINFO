@@ -1,0 +1,15 @@
+pkgbase = awk-language-server
+	pkgdesc = Language server for the AWK programming language
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/Beaglefoot/awk-language-server
+	arch = any
+	license = MIT
+	makedepends = jq
+	makedepends = yarn
+	makedepends = typescript
+	depends = nodejs
+	source = awk-language-server-0.10.0.tar.gz::https://github.com/Beaglefoot/awk-language-server/archive/refs/tags/server-0.10.0.tar.gz
+	sha256sums = e61b5e6af5cda2959b5927a5ae5adad890df24337a6d869efe4922f500a842ea
+
+pkgname = awk-language-server
