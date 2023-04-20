@@ -1,5 +1,5 @@
 # Maintainer: Dedicatus5457 <moe@shinka.top>
-pkgname=uyoutodo-snap
+pkgname=uyou-todo-snap
 pkgver=1.2.4
 pkgrel=1
 pkgdesc="This is a todo list with electron  (snap release)"

@@ -1,4 +1,4 @@
-pkgbase = uyoutodo-snap
+pkgbase = uyou-todo-snap
 	pkgdesc = This is a todo list with electron (snap release)
 	pkgver = 1.2.4
 	pkgrel = 1
@@ -15,4 +15,4 @@ pkgbase = uyoutodo-snap
 	source = https://github.com/tonylu110/uyou-todo-electron/releases/download/1.2.4/uyoutodo_1.2.4_amd64.snap
 	sha256sums = 9943af91076490b3dc3d45e4a947ac4a8da05ae47c9173c067c4a71423e634fa
 
-pkgname = uyoutodo-snap
+pkgname = uyou-todo-snap
