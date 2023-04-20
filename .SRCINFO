@@ -1,6 +1,6 @@
 pkgbase = kubectl-gke-stable-bin
 	pkgdesc = Kubernetes.io client binary, compatible with the GKE version from the stable channel
-	pkgver = v1.21.14
+	pkgver = v1.24.13
 	pkgrel = 1
 	url = https://github.com/kubernetes/kubectl
 	arch = i686
@@ -10,20 +10,20 @@ pkgbase = kubectl-gke-stable-bin
 	arch = armv7h
 	arch = aarch64
 	license = Apache-2.0
-	provides = kubectl=v1.21.14
+	provides = kubectl=v1.24.13
 	conflicts = kubectl
 	conflicts = kubectl-bin
-	source_i686 = kubectl-v1.21.14::https://storage.googleapis.com/kubernetes-release/release/v1.21.14/bin/linux/386/kubectl
-	sha256sums_i686 = 233560c7ea56d490bbe086990884250f391604ef54c178e8edfeefb27c932403
-	source_x86_64 = kubectl-v1.21.14::https://storage.googleapis.com/kubernetes-release/release/v1.21.14/bin/linux/amd64/kubectl
-	sha256sums_x86_64 = 0c1682493c2abd7bc5fe4ddcdb0b6e5d417aa7e067994ffeca964163a988c6ee
-	source_armv5 = kubectl-v1.21.14::https://storage.googleapis.com/kubernetes-release/release/v1.21.14/bin/linux/arm/kubectl
-	sha256sums_armv5 = 92ec12abb063b6469968d9cbf1a6fb86e4ebf2c8be8dc833a999c79d7226be6f
-	source_armv6h = kubectl-v1.21.14::https://storage.googleapis.com/kubernetes-release/release/v1.21.14/bin/linux/arm/kubectl
-	sha256sums_armv6h = 92ec12abb063b6469968d9cbf1a6fb86e4ebf2c8be8dc833a999c79d7226be6f
-	source_armv7h = kubectl-v1.21.14::https://storage.googleapis.com/kubernetes-release/release/v1.21.14/bin/linux/arm/kubectl
-	sha256sums_armv7h = 92ec12abb063b6469968d9cbf1a6fb86e4ebf2c8be8dc833a999c79d7226be6f
-	source_aarch64 = kubectl-v1.21.14::https://storage.googleapis.com/kubernetes-release/release/v1.21.14/bin/linux/arm64/kubectl
-	sha256sums_aarch64 = a23151bca5d918e9238546e7af416422b51cda597a22abaae5ca50369abfbbaa
+	source_i686 = kubectl-v1.24.13::https://storage.googleapis.com/kubernetes-release/release/v1.24.13/bin/linux/386/kubectl
+	sha256sums_i686 = ea3314a36656d39767e040d0a658270e3c1dd91d896f15d331302c11ffa8c5d6
+	source_x86_64 = kubectl-v1.24.13::https://storage.googleapis.com/kubernetes-release/release/v1.24.13/bin/linux/amd64/kubectl
+	sha256sums_x86_64 = 52455fe485fa11c650ab07fea2e4856b5ea5a3e6ef8a1b3b6121e6361437fff9
+	source_armv5 = kubectl-v1.24.13::https://storage.googleapis.com/kubernetes-release/release/v1.24.13/bin/linux/arm/kubectl
+	sha256sums_armv5 = fca46e3241ab2a275163956b3b6a1d77470c0157f7e589d0de419837bb9b50a7
+	source_armv6h = kubectl-v1.24.13::https://storage.googleapis.com/kubernetes-release/release/v1.24.13/bin/linux/arm/kubectl
+	sha256sums_armv6h = fca46e3241ab2a275163956b3b6a1d77470c0157f7e589d0de419837bb9b50a7
+	source_armv7h = kubectl-v1.24.13::https://storage.googleapis.com/kubernetes-release/release/v1.24.13/bin/linux/arm/kubectl
+	sha256sums_armv7h = fca46e3241ab2a275163956b3b6a1d77470c0157f7e589d0de419837bb9b50a7
+	source_aarch64 = kubectl-v1.24.13::https://storage.googleapis.com/kubernetes-release/release/v1.24.13/bin/linux/arm64/kubectl
+	sha256sums_aarch64 = 750a2ee55b835994cda5f262bfa18debdcdb0d7a450875dca4f83c7cfffda353
 
 pkgname = kubectl-gke-stable-bin
