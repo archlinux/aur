@@ -13,7 +13,7 @@ url='https://www.kernel.org'
 license=(GPL2)
 makedepends=(rsync)
 source=(https://www.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.{xz,sign})
-sha256sums=('d47aa675170904dcc93eeaa7c96db54d476a11c5d3e8cf3d3b96e364e2a0edea'
+sha256sums=('aae6a7e38e33589011f5a5c0d7e087c8a26e3daf8d434432ee975ead90546504'
 	'SKIP')
 
 validpgpkeys=(
