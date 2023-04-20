@@ -17,7 +17,7 @@ pkgbase = aarch64-gcc-bootstrap
 	options = !emptydirs
 	options = !strip
 	options = staticlibs
-	source = git+https://sourceware.org/git/gcc.git#commit=86caa970dddfac124a2bbbfe3e695348d00eb926
+	source = git+https://sourceware.org/git/gcc.git#commit=015cf9f84b0b6792f982e505392ca574e04c8d23
 	validpgpkeys = F3691687D867B81B51CE07D9BBE43771487328A9
 	validpgpkeys = 86CFFCA918CF3AF47147588051E8B148A9999C34
 	validpgpkeys = 13975A70E63C361C73AE69EF6EEB81F8981C74C7

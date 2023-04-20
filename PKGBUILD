@@ -15,7 +15,7 @@ makedepends=($_arch-binutils git)
 provides=($_arch-gcc)
 conflicts=($_arch-gcc)
 options=(!emptydirs !strip staticlibs)
-_commit='86caa970dddfac124a2bbbfe3e695348d00eb926'
+_commit=015cf9f84b0b6792f982e505392ca574e04c8d23
 source=(git+https://sourceware.org/git/gcc.git#commit=${_commit})
 
 sha256sums=('SKIP')
