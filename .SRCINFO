@@ -1,0 +1,14 @@
+pkgbase = dbshell
+	pkgdesc = Multi-Database SQL Command Line Client
+	pkgver = 210311
+	pkgrel = 1
+	url = https://dbschema.com/documentation/dbshell.html
+	arch = any
+	license = Apache
+	makedepends = unzip
+	depends = java-runtime
+	depends = sh
+	source = https://dbschema.com/download/dbshell/dbshell_no_jre.tar.gz
+	sha256sums = 7f843ecc3cc308eef6ee9dac61fcfc35930bd26ca772856a6edc398f813b977b
+
+pkgname = dbshell
