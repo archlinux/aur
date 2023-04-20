@@ -3,7 +3,7 @@
 # Contributor: Nover <novares.x@gmail.com>
 # Contributor: agentcobra <agentcobra@free.fr>
 pkgname=shadow-tech
-pkgver=8.0.10059
+pkgver=8.0.10097
 pkgrel=1
 pkgdesc="Desktop client for Shadow Tech cloud gaming service."
 arch=('x86_64')
@@ -34,7 +34,7 @@ provides=(shadow-tech)
 _urlbase='https://update.shadow.tech/launcher/prod/linux/ubuntu_18.04'
 source=(
     "${pkgname}-meta.yml::${_urlbase}/latest-linux.yml"
-    "${pkgname}.AppImage::${_urlbase}/Shadow.AppImage"
+    "${pkgname}.AppImage::${_urlbase}/ShadowPC.AppImage"
     "shadow.sh"
 )
 sha256sums=(
@@ -107,8 +107,8 @@ package() {
     chmod 755 $(find ${pkgdir} -type d)
     chmod 644 $(find ${pkgdir} -type f)
     chmod 755 "${pkgdir}/opt/${pkgname}/shadow"
-    chmod 755 "${pkgdir}/opt/${pkgname}/resources/app.asar.unpacked/release/native/Shadow"
-    chmod 755 "${pkgdir}/opt/${pkgname}/resources/app.asar.unpacked/release/native/ShadowHelper"
+    chmod 755 "${pkgdir}/opt/${pkgname}/resources/app.asar.unpacked/release/native/ShadowPCDisplay"
+    chmod 755 "${pkgdir}/opt/${pkgname}/resources/app.asar.unpacked/release/native/ShadowPCDisplayHelper"
     chmod 755 $(find ./ -path "*.so*")
 
     # install executable shell script
