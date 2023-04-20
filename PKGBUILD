@@ -2,8 +2,8 @@
 
 pkgname=libcollectc-git
 pkgver=r616.2302fff
-pkgrel=1
-pkgdesc='A library of generic data structures.'
+pkgrel=2
+pkgdesc='Collections C provides generic data structures for the C programming language.'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/srdja/Collections-C'
 license=('LGPL3')

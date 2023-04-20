@@ -1,7 +1,7 @@
 pkgbase = libcollectc-git
-	pkgdesc = A library of generic data structures.
+	pkgdesc = Collections C provides generic data structures for the C programming language.
 	pkgver = r616.2302fff
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/srdja/Collections-C
 	arch = i686
 	arch = x86_64
