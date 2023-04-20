@@ -6,7 +6,6 @@ pkgbase = ultraleap-hand-tracking-control-panel
 	arch = x86_64
 	license = PROPRIETARY
 	depends = ultraleap-hand-tracking-service
-	provides = ultraleap-hand-tracking-control-panel
 	source = https://repo.ultraleap.com/apt/pool/main/u/ultraleap-hand-tracking-control-panel/ultraleap-hand-tracking-control-panel_684937.deb
 	md5sums = a7706c1dff7b335c5a35bfbfc5cb90bb
 
