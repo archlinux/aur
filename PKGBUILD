@@ -8,14 +8,14 @@ arch=('x86_64')
 url="https://github.com/geph-official/gephgui-wry"
 license=('custom')
 depends=(
-    webkit2gtk
-    gdk-pixbuf2
-    libappindicator-gtk3
+  webkit2gtk
+  gdk-pixbuf2
+  libappindicator-gtk3
 )
 makedepends=(
-    npm
-    git
-    cargo
+  npm
+  git
+  cargo
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
