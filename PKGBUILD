@@ -10,7 +10,7 @@ url="https://github.com/odygrd/quill"
 license=("MIT")
 depends=("fmt")
 makedepends=("cmake")
-source=("${pkgname}-${pkgver}::https://github.com/odygrd/quill/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/odygrd/quill/archive/v${pkgver}.tar.gz")
 b2sums=("58bfad354565d256de5ff6f547038e3300ba5f76d3646ed3acc39222bf5ddbc57a01f374f2eebe2c6787079576dae388a183775977ba7fd8c7bfad92a0619154")
 
 build() {
