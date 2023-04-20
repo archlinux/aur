@@ -1,6 +1,6 @@
 pkgbase = apt
 	pkgver = 2.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://salsa.debian.org/apt-team/apt
 	arch = i686
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = apt
 	makedepends = perl-locale-gettext
 	makedepends = perl-yaml-tiny
 	makedepends = perl-syntax-keyword-try
+	makedepends = dpkg
 	makedepends = perl-term-readkey
 	makedepends = perl-sgmls
 	makedepends = perl-module-build
