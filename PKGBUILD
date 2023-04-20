@@ -19,7 +19,7 @@ optdepends=('python-neovim: for Python 3 plugin support (see :help provider-pyth
             'xclip: for X11 clipboard support (or xsel) (see :help provider-clipboard)'
             'xsel: for X11 clipboard support (or xclip) (see :help provider-clipboard)'
             'wl-clipboard: for clipboard support on wayland (see :help clipboard)')
-provides=("$_pkgname=$pkgver" 'vim-plugin-runtime')
+provides=("$_pkgname=${pkgver/\.r*/}" 'vim-plugin-runtime')
 conflicts=("$_pkgname")
 source=("git+https://github.com/neovim/$_pkgname.git"
         "$pkgname-archlinux.vim"

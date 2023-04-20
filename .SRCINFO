@@ -27,7 +27,7 @@ pkgbase = neovim-git
 	optdepends = xclip: for X11 clipboard support (or xsel) (see :help provider-clipboard)
 	optdepends = xsel: for X11 clipboard support (or xclip) (see :help provider-clipboard)
 	optdepends = wl-clipboard: for clipboard support on wayland (see :help clipboard)
-	provides = neovim=0.9.0.r263.gdbcd1985d1
+	provides = neovim=0.9.0
 	provides = vim-plugin-runtime
 	conflicts = neovim
 	options = !strip
