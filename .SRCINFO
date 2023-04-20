@@ -7,5 +7,8 @@ pkgbase = ultraleap-hand-tracking
 	depends = ultraleap-hand-tracking-service
 	depends = ultraleap-hand-tracking-control-panel
 	depends = openxr-layer-ultraleap
+	provides = ultraleap-hand-tracking-service
+	provides = ultraleap-hand-tracking-control-panel
+	provides = openxr-layer-ultraleap
 
 pkgname = ultraleap-hand-tracking
