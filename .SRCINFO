@@ -1,7 +1,7 @@
 pkgbase = realvnc-vnc-server
 	pkgdesc = VNC remote desktop server software by RealVNC
-	pkgver = 7.0.1
-	pkgrel = 2
+	pkgver = 7.1.0
+	pkgrel = 1
 	url = https://www.realvnc.com/
 	install = realvnc-vnc-server.install
 	arch = x86_64
@@ -15,11 +15,11 @@ pkgbase = realvnc-vnc-server
 	conflicts = tightvnc
 	conflicts = tigervnc
 	conflicts = turbovnc
-	source_x86_64 = https://downloads.realvnc.com/download/file/vnc.files/VNC-Server-7.0.1-Linux-x64.deb
-	sha256sums_x86_64 = e875325638a7f26b2c1dbd309aa5abebe038d79729d68e152ff64ec8de0e894c
-	source_armv7h = https://downloads.realvnc.com/download/file/vnc.files/VNC-Server-7.0.1-Linux-ARM.deb
-	sha256sums_armv7h = 9c8d251110c244ad91270be62eac553b4a5c01cb1a72ab37f77478d14e971504
-	source_aarch64 = https://downloads.realvnc.com/download/file/vnc.files/VNC-Server-7.0.1-Linux-ARM64.deb
-	sha256sums_aarch64 = 0e7a265ddc5d3ccf6d63738290de5e82a449d88319c92dcdef32012285b243b7
+	source_x86_64 = https://downloads.realvnc.com/download/file/vnc.files/VNC-Server-7.1.0-Linux-x64.deb
+	sha256sums_x86_64 = 9d51e3d46b85337a304373fa695338b8075c526c2c4c1358f64af14b53370af6
+	source_armv7h = https://downloads.realvnc.com/download/file/vnc.files/VNC-Server-7.1.0-Linux-ARM.deb
+	sha256sums_armv7h = a38c916271ac7b2754a4d82929669dd9274349c047ba10038f1796280bd4307f
+	source_aarch64 = https://downloads.realvnc.com/download/file/vnc.files/VNC-Server-7.1.0-Linux-ARM64.deb
+	sha256sums_aarch64 = 687c87f467875e820d74bb725ecd534866a13fe74220e0973bf68de7eea85677
 
 pkgname = realvnc-vnc-server
