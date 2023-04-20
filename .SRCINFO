@@ -1,6 +1,6 @@
 pkgbase = python-open-clip-torch
 	pkgdesc = Open source implementation of OpenAI's CLIP (Contrastive Language-Image Pre-training).
-	pkgver = 2.9.3
+	pkgver = 2.17.1
 	pkgrel = 1
 	url = https://github.com/mlfoundations/open_clip
 	arch = any
@@ -8,14 +8,14 @@ pkgbase = python-open-clip-torch
 	makedepends = python-setuptools
 	depends = python-protobuf
 	depends = python-huggingface-hub
-	depends = python-sentencepiece-git
+	depends = python-sentencepiece
 	depends = python-pandas
 	depends = python-regex
 	depends = python-torchvision
 	depends = python-tqdm
-	depends = python-webdataset
 	depends = python-ftfy
-	source = https://github.com/mlfoundations/open_clip/archive/refs/tags/v2.9.3.zip
-	sha256sums = f4226f7e2e0e76a0e9ef8c1b24ffbd4d6b0919047c4725340a8b40c195ab1b2c
+	depends = python-timm
+	source = https://github.com/mlfoundations/open_clip/archive/refs/tags/v2.17.1.zip
+	sha256sums = a47fa12a84384e0e99d810a27d6675989712b1468dd3c665dd6e0d9910b85d9e
 
 pkgname = python-open-clip-torch
