@@ -91,7 +91,8 @@ build() {
 
   cmake -S ./ \
       -DCMAKE_INSTALL_PREFIX=/usr \
-      -DUSE_WAYLAND_CLIPBOARD=1
+      -DUSE_WAYLAND_CLIPBOARD=1 \
+      -DUSE_WAYLAND_GRIM=true
 
   make -j$(nproc --ignore 1)
 }
