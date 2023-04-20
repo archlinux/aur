@@ -2,12 +2,12 @@
 
 pkgname=pdf.tocgen
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatically generate table of contents for PDF documents."
 arch=('any')
 url="https://github.com/Krasjet/pdf.tocgen"
 license=('GPL3')
-depends=('python-toml' 'python-pymupdf')
+depends=('python-toml' 'python-pymupdf' 'python-chardet')
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
 pypkgname=pdf_tocgen
 source=("https://files.pythonhosted.org/packages/source/${pypkgname::1}/${pypkgname}/${pypkgname}-${pkgver}.tar.gz")
