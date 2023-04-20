@@ -27,7 +27,7 @@ build() {
 	-DWITH_ATIK=Off \
 	-DWITH_DUINO=Off \
 	../indi-3rdparty-$pkgver
-  make -j$(nproc)
+  make
 }
 
 package() {
