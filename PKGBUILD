@@ -7,7 +7,7 @@
 # Contributor: Angelo Theodorou <encelo@gmail.com>
 
 pkgname=gittyup
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Graphical Git client (GitAhead fork)'
 url="https://murmele.github.io/${pkgname^}"
@@ -87,16 +87,7 @@ package() {
 	install -Dm0644 "${pkgname^}/rsrc/linux/com.github.Murmele.Gittyup.desktop" "$pkgdir/usr/share/applications/gittyup.desktop"
 	DESTDIR="$pkgdir" ninja -C build install
 	pushd "$pkgdir/usr"
-	mkdir -p bin
-	mv ${pkgname^} bin/$pkgname
-	rm -f *.so.*
-	mv indexer relauncher "share/$pkgname"
-	sed -i 's/Exec=Gittyup/Exec=gittyup/' "$pkgdir/usr/share/applications/gittyup.desktop"
-	local _icons="Resources/${pkgname^}.iconset"
-	install -Dm0644 "$_icons/gittyup_logo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/gittyup.svg"
-	for s in 16x16 32x32 64x64 128x128 256x256 512x512; do
-	install -Dm0644 "$_icons/icon_16x16.png" "$pkgdir/usr/share/icons/hicolor/16x16/apps/gittyup.png"
-		install -Dm0644 "$_icons/icon_$s.png" "$pkgdir/usr/share/icons/hicolor/$s/apps/$pkgname.png"
-	done
-	rm -rf {include,lib,Plugins,Resources}
+	rm -f lib/libQt*.so.* lib/*.a
+	rm -rf include lib/{cmake,pkgconfig,Plugins}
+	mv bin/{indexer,relauncher} "share/$pkgname"
 }
