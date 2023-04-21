@@ -6,6 +6,7 @@ pkgbase = python-bqplot
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
+	makedepends = python-jupyter-packaging
 	depends = python
 	depends = python-ipywidgets
 	depends = python-numpy

@@ -10,7 +10,7 @@ depends=('python'
     'python-numpy'
     'python-pandas'
     'python-traitlets')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-jupyter-packaging')
 license=('Apache')
 arch=('any')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
