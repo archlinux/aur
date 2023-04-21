@@ -1,7 +1,7 @@
 pkgbase = wine-stable
 	pkgdesc = A compatibility layer for running Windows programs
-	pkgver = 8.0
-	pkgrel = 2
+	pkgver = 8.0.1
+	pkgrel = 1
 	url = http://www.winehq.com
 	install = wine.install
 	arch = x86_64
@@ -108,16 +108,16 @@ pkgbase = wine-stable
 	optdepends = vulkan-icd-loader
 	optdepends = lib32-vulkan-icd-loader
 	optdepends = wine-stable-mono
-	provides = wine=8.0
+	provides = wine=8.0.1
 	conflicts = wine
 	options = staticlibs
 	options = !lto
-	source = https://dl.winehq.org/wine/source/8.0/wine-8.0.tar.xz
-	source = https://dl.winehq.org/wine/source/8.0/wine-8.0.tar.xz.sign
+	source = https://dl.winehq.org/wine/source/8.0/wine-8.0.1.tar.xz
+	source = https://dl.winehq.org/wine/source/8.0/wine-8.0.1.tar.xz.sign
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
 	validpgpkeys = DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D
-	b2sums = baf8f96b665119c9f38a148a2472dbe8f6ca8d4641d9d09d48cb72cb4de2585c274b8b7981c2fa622ead6da2f087c57652e9b48edc8a17c0cfd6be9a36732f02
+	b2sums = f1e04ddc7531704b4229d1bdb6e742ff20886dfff181b8b44e01e9921574e8c433553aaddb2453532902e89252244080d1cf9f904aa7d14d76709d830116e4b4
 	b2sums = SKIP
 	b2sums = 45db34fb35a679dc191b4119603eba37b8008326bd4f7d6bd422fbbb2a74b675bdbc9f0cc6995ed0c564cf088b7ecd9fbe2d06d42ff8a4464828f3c4f188075b
 	b2sums = e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588
