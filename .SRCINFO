@@ -17,6 +17,6 @@ pkgbase = haruhishot
 	depends = wlroots
 	depends = qt5-base
 	source = haruhishot-v0.3.6.tar.gz::https://github.com/Decodetalkers/haruhishot/archive/refs/tags/v0.3.6.tar.gz
-	sha256sums = df56b6e364c39126242286bc4dd397bc933eb1c8f98a1a398019189382b18085
+	sha256sums = fd52108c4bb177bdc4044ab57606e4750a8154f52ae0503cb48e631a280d6e49
 
 pkgname = haruhishot
