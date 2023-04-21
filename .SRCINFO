@@ -1,6 +1,6 @@
 pkgbase = rvvm-git
 	pkgdesc = The RISC-V Virtual Machine
-	pkgver = 0.5_r831.b632d73
+	pkgver = 0.6_r958.528bfde
 	pkgrel = 1
 	url = https://github.com/LekKit/RVVM/
 	arch = x86_64
