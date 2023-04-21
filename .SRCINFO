@@ -1,6 +1,6 @@
 pkgbase = gamescope-git
 	pkgdesc = Micro-compositor formerly known as steamcompmgr
-	pkgver = 3.11.52.beta6.r28.g1310315
+	pkgver = 3.11.52.beta6.r86.gc6d3ac7
 	pkgrel = 1
 	url = https://github.com/ValveSoftware/gamescope
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = gamescope-git
 	depends = sdl2
 	depends = pipewire
 	depends = libxmu
+	depends = glm
 	depends = libdrm
 	depends = libxkbcommon
 	depends = libinput
