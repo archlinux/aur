@@ -2,7 +2,7 @@
 
 pkgname=alfae
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An Itch.io/Epic Games/GOG launcher that works through plugins"
 arch=('any')
 url="https://github.com/suchmememanyskill/Alfae"
@@ -22,7 +22,7 @@ prepare() {
   sed -i '1 i\Icon=alfae' $_desktop
   sed -i '1 i\Type=Application' $_desktop
   sed -i '1 i\Terminal=false' $_desktop
-  sed -i '1 i\Exec=/opt/Alfae/alfae %U' $_desktop
+  sed -i '1 i\Exec=/opt/Alfae/Alfae %U' $_desktop
   sed -i '1 i\Name=Alfae' $_desktop
   sed -i '1 i\[Desktop Entry]' $_desktop
   mkdir -p desktop
@@ -73,7 +73,7 @@ package() {
   mkdir -p $pkgdir/usr/bin
   # Install
   cp -r Alfae-$pkgver/Release $pkgdir/opt/Alfae
-  ln -s /opt/Alfae/Alfae $pkgdir/usr/bin/$_pkgname
+  ln -s /opt/Alfae/Alfae $pkgdir/usr/bin/$pkgname
   install -Dm644 Alfae-$pkgver/Launcher/Assets/icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
   install -Dm644 desktop/$_desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 Alfae-$pkgver/README.md -t "$pkgdir/usr/share/doc/$pkgname"
