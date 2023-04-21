@@ -1,4 +1,5 @@
-# Maintainer: Radim Sückr <kontakt@radimsuckr.cz>
+# Maintainer: Bart Libert <bart plus aur at libert dot email>
+# Contributor: Radim Sückr <kontakt@radimsuckr.cz>
 
 # This PKGBUILD is based on https://aur.archlinux.org/packages/jdtls, thank you
 
