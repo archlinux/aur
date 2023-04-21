@@ -8,7 +8,6 @@ pkgbase = gamescope-plus
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
-	makedepends = patch
 	makedepends = cmake
 	makedepends = glslang
 	makedepends = vulkan-headers
