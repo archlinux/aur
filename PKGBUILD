@@ -2,7 +2,7 @@
 
 _npmname=bittorrent-tracker
 pkgname=webtorrent-$_npmname
-pkgver=10.0.1
+pkgver=10.0.2
 pkgrel=1
 
 pkgdesc="Simple, robust, BitTorrent tracker (client & server) implementation"
@@ -19,7 +19,7 @@ options=(strip emptydirs zipman)
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
 	"https://raw.githubusercontent.com/webtorrent/bittorrent-tracker/master/LICENSE")
 noextract=("${_npmname}-${pkgver}.tgz")
-b2sums=('e0f79f91c4f884ed2b23e747eddf6e5e47ae82b5553aaebef9f458c95386e6e24c070eab7ec1d6609114a0cb5d634e9443d9cc07def434ab2171c1c2d21fea23'
+b2sums=('742a01879f3598d05c550e0a9954c707e6ddd6c8024010893b6324732c69e4579e42006a7ddbe34c3663d98ab0aaaadc55bc6fe953f35b170c6d45f70d6ed807'
 	'3890a8cd095787f6ab383fe3ca0a0bf0999d80a7ea65627bb1a50f1c2690987f53e0619df5745ba47d6ef46d32e03573b5a52330a7c857220e4db96a33203019')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
@@ -28,7 +28,8 @@ package() {
 	npm install -s -g \
 		--cache "${srcdir}/npm-cache" \
 		--prefix "${pkgdir}/usr" \
-		"${srcdir}/${_npmname}-${pkgver}.tgz"
+		"${srcdir}/${_npmname}-${pkgver}.tgz" \
+		 --loglevel verbose
 
 	# Fix ownership of ALL FILES
 	find "${pkgdir}/usr" -type d -exec chmod 755 {} +
