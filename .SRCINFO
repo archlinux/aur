@@ -1,0 +1,16 @@
+pkgbase = charasay-bin
+	pkgdesc = The future of cowsay 🐮! Colorful characters saying something 🗨️.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/latipun7/charasay
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = charasay
+	conflicts = charasay
+	source_x86_64 = https://github.com/latipun7/charasay/releases/download/v2.0.0/chara-linux-x86_64.zip
+	sha256sums_x86_64 = 0427ee114b986c091a6d718decc5254a68a85ae9a8b64b296f020f99351befee
+	source_aarch64 = https://github.com/latipun7/charasay/releases/download/v2.0.0/chara-linux-aarch64.zip
+	sha256sums_aarch64 = 98b6e76690b131bc818368b4647cdccf9b278d01aa4e01d819fa0052a7543536
+
+pkgname = charasay-bin
