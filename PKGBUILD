@@ -4,7 +4,7 @@ _cranname=magick
 _cranver=2.7.4
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced Graphics and Image-Processing in R"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
