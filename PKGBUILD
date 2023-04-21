@@ -2,11 +2,12 @@
 pkgname=js8call-wx_station
 #pkgver=r18.6f34477
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Upon request, report weather station data over JS8Call"
 arch=('any')
 url="https://github.com/skyl4rk/JS8Call-WX_Station"
 license=('MIT')
+makedepends=(git)
 depends=(python python-requests js8call)
 source=($pkgname::"git+$url.git#commit=6f344775e44430a79c4662ecab2f0e1688a8d6d8")
 sha256sums=('SKIP')
