@@ -1,6 +1,7 @@
 # Maintainer: ml <>
+# Maintainer: vryali@gmail.com
 pkgname=google-chat-linux
-_pkgver='5.15.16-1'
+_pkgver='5.21.19-1'
 pkgver=${_pkgver/-/+}
 pkgrel=1
 pkgdesc='Unofficial electron-based desktop client for Google Chat, electron not included'
@@ -13,7 +14,7 @@ source=("$url/archive/$_pkgver/$pkgname-$_pkgver.tar.gz"
   google-chat-linux.sh
   google-chat-linux.desktop
   sandbox.patch)
-sha256sums=('3bb100010f0847b3208d53c44792ee6eb65b7dc9ef7a5d3deb89430072e7e41c'
+sha256sums=('6e40c88c5022210dcceba7fec2385c7e9c54d853883cf99bfcbfa4bef6d8fcdb'
             '5a458e5d7193784383ceda44faf8852410296f310acb5495d53c16bd0ea50059'
             'c7fdfa74422ce7900563fd1a0f5d76c4d4cd6d153ca3b28ab5a8912a33cba9c7'
             '3f6513ded0c0da0d1b3ccd3fa08537cdd36a7f0281b66ec1021006565732b9c3')
