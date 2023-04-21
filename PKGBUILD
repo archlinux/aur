@@ -1,46 +1,36 @@
+# Maintainer: William Tang <galaxyking0419@gmail.com>
 # Contributor: Lex Black <autumn-wind@web.de>
 # Contributor: jyantis <yantis@yantis.net>
 
 _pkgname=textblob
 pkgname=python-textblob-git
-pkgver=0.15.3.r8.ge6cd979
+pkgver=0.17.1.r1.g9945064
 pkgrel=1
-pkgdesc='library for processing textual data and provides an API for diving into commmon natural language processing (NLP)'
+pkgdesc='Simple, Pythonic, text processing--Sentiment analysis, part-of-speech tagging, noun phrase extraction, translation, and more.'
 arch=('any')
 url='https://github.com/sloria/textblob'
 license=('MIT')
-depends=('python' 'python-nltk' 'nltk-data')
-makedepends=('git' 'python-setuptools')
-optdepends=('python-textblob-aptagger-git: A fast and accurte part-of-speech tagger for TextBlob')
+
 provides=('python-textblob')
 conflicts=('python-textblob')
+depends=('python-nltk' 'nltk-data')
+makedepends=('git' 'python-setuptools')
+
 source=('git+https://github.com/sloria/textblob.git')
 sha256sums=('SKIP')
 
-
 pkgver() {
-  cd "${_pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${_pkgname}"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${_pkgname}"
-  python setup.py build
+    cd "${_pkgname}"
+    python setup.py build
 }
 
 package() {
-  cd "${_pkgname}"
-
-  # We don't need anything related to git in the package
-  rm -rf .git*
-
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-
-  # Install License
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  # Install Documentation
-  install -D -m644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
+    cd "${_pkgname}"
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:

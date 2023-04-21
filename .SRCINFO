@@ -1,20 +1,17 @@
 pkgbase = python-textblob-git
-	pkgdesc = library for processing textual data and provides an API for diving into commmon natural language processing (NLP)
-	pkgver = 0.15.3.r8.ge6cd979
+	pkgdesc = Simple, Pythonic, text processing--Sentiment analysis, part-of-speech tagging, noun phrase extraction, translation, and more.
+	pkgver = 0.17.1.r1.g9945064
 	pkgrel = 1
 	url = https://github.com/sloria/textblob
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
-	depends = python
 	depends = python-nltk
 	depends = nltk-data
-	optdepends = python-textblob-aptagger-git: A fast and accurte part-of-speech tagger for TextBlob
 	provides = python-textblob
 	conflicts = python-textblob
 	source = git+https://github.com/sloria/textblob.git
 	sha256sums = SKIP
 
 pkgname = python-textblob-git
-
