@@ -35,7 +35,6 @@ makedepends=(
   git
   meson
   ninja
-  patch
   cmake
   glslang
   vulkan-headers
