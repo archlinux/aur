@@ -1,7 +1,7 @@
 pkgbase = brother-mfct920dw
 	pkgdesc = Brother MFC-T920DW CUPS driver
 	pkgver = 3.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.brother.com
 	arch = i686
 	arch = x86_64

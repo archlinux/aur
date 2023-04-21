@@ -2,7 +2,7 @@
 
 pkgname=brother-mfct920dw
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Brother MFC-T920DW CUPS driver"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="http://www.brother.com"
@@ -17,7 +17,7 @@ package(){
   cp -R "$srcdir/opt/brother/Printers/mfct920dw/." "${pkgdir}/usr/share/${pkgname}/"
     
   install -d "${pkgdir}/usr/lib/cups/filter/"
-  ln -s "/usr/share/${pkgname}/cupswrapper/brother_lpdwrapper_mfct910dw" "${pkgdir}/usr/lib/cups/filter/brother_lpdwrapper_mfct910dw"
+  ln -s "/usr/share/${pkgname}/cupswrapper/brother_lpdwrapper_mfct910dw" "${pkgdir}/usr/lib/cups/filter/brother_lpdwrapper_mfct920dw"
 
   install -d "$pkgdir/usr/share/cups/model/"
   ln -s "/usr/share/${pkgname}/cupswrapper/brother_mfct920dw_printer_en.ppd" "${pkgdir}/usr/share/cups/model"
