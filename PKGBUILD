@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pika-backup
 pkgver=0.6.1
 pkgrel=1
