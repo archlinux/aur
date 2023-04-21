@@ -1,7 +1,7 @@
 pkgbase = shadowsocks-libev-static
-	pkgdesc = Statically-compiled shadowsocks-libev
+	pkgdesc = Statically-compiled shadowsocks-libev, intended to replace community/shadowsocks-libev
 	pkgver = 3.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shadowsocks/shadowsocks-libev
 	install = shadowsocks-libev.install
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = shadowsocks-libev-static
 	makedepends = xmlto
 	depends = libcap
 	provides = shadowsocks-libev
+	conflicts = shadowsocks-libev
 	options = !lto
 	source = shadowsocks-libev::git+https://github.com/shadowsocks/shadowsocks-libev.git#tag=v3.3.5
 	source = shadowsocks-libev@.service

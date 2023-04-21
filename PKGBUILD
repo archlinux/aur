@@ -3,8 +3,8 @@
 _srcname=shadowsocks-libev
 pkgname=${_srcname}-static
 pkgver=3.3.5
-pkgrel=1
-pkgdesc="Statically-compiled shadowsocks-libev"
+pkgrel=2
+pkgdesc="Statically-compiled shadowsocks-libev, intended to replace community/shadowsocks-libev"
 arch=('x86_64')
 url='https://github.com/shadowsocks/shadowsocks-libev'
 license=('GPL3')
@@ -12,6 +12,7 @@ license=('GPL3')
 depends=('libcap')
 makedepends=('git' 'musl' 'kernel-headers-musl' 'asciidoc' 'xmlto')
 provides=("$_srcname")
+conflicts=("$_srcname")
 options=('!lto')
 install=${_srcname}.install
 
