@@ -2,12 +2,12 @@
 
 pkgname=sparksdr-bin
 pkgver=2.0.33
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross platform sdr application for Hermes Lite and Open HPSDR compatible radios (Red Pitya, Apache labs)."
 arch=('x86_64' 'arm' 'arm64')
 url="https://www.sparksdr.com/download/"
 license=("custom")
-makedepends=('make' 'gcc')
+#makedepends=('git')
 depends=('icu' 'openssl' 'krb5' 'portaudio')
 provides=(sparksdr)
 
