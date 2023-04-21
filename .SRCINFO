@@ -1,0 +1,18 @@
+pkgbase = gitwife
+	pkgdesc = Tool to manage your installations from Git Repositories for you
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://gitlab.com/Teddy-Kun/gitwife
+	arch = any
+	license = GPL-3
+	makedepends = cargo
+	depends = libgit2
+	depends = openssl
+	depends = gcc-libs
+	depends = glibc
+	optdepends = bash: the default_make is a bash script
+	optdepends = nano: default editor for the makefiles
+	source = https://gitlab.com/Teddy-Kun/gitwife/-/archive/v0.2.2/gitwife-v0.2.2.tar.gz
+	sha256sums = 61aa4fa76739b180a273c2068cdd14197b88013efb49619c03a8583867539be4
+
+pkgname = gitwife
