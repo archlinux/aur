@@ -1,8 +1,8 @@
 # Maintainer:  edward-p <edward AT edward-p DOT xyz>
 
 pkgname=lunarvim-git
-pkgver=1.2.0.r57.gb661efb3
-pkgrel=2
+pkgver=1.2.0.r154.g476743d2
+pkgrel=1
 pkgdesc="An IDE layer for Neovim with sane defaults. Completely free and community driven."
 arch=('any')
 url='https://github.com/LunarVim/LunarVim'

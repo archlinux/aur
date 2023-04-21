@@ -10,16 +10,11 @@ yarn global add tree-sitter-cli
 cargo install fd-find
 cargo install ripgrep
 
-echo -e "\033[1;32m==> Installing Packer...\033[0m"
-git clone https://github.com/wbthomason/packer.nvim ~/.local/share/lunarvim/site/pack/packer/start/packer.nvim
+echo -e "\033[1;32m==> Preparing Lazy setup...\033[0m"
+lvim --headless -c 'quitall'
 
-echo -e "\033[1;32m==> PackerInstall...\033[0m"
-lvim --headless +'autocmd User PackerComplete sleep 100m | qall' +PackerInstall
-
-echo -e "\033[1;32m==> PackerSync...\033[0m"
-lvim --headless +'autocmd User PackerComplete sleep 100m | qall' +PackerSync
-rm ~/.config/lvim/config.lua
-cp /usr/share/doc/lunarvim/config.example.lua ~/.config/lvim/config.lua
+[ ! -f "$LUNARVIM_CONFIG_DIR/config.lua" ] \
+  && cp /usr/share/doc/lunarvim/config.example.lua ~/.config/lvim/config.lua
 
 echo -e "\033[1;32m==> Installing treesitter parsers..\033[0m"
 ln -s /usr/share/lunarvim/prebuild/nvim-treesitter/parser/* \
