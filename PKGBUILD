@@ -4,15 +4,15 @@
 # shellcheck shell=bash
 
 pkgname=charasay
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="The future of cowsay 🐮! Colorful characters saying something 🗨️."
-arch=("i686" "pentium4" "x86_64" "arm" "armv7h" "armv6h" "aarch64")
+arch=("any")
 url="https://github.com/latipun7/charasay"
 license=("MIT")
 makedepends=("cargo")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('18ac4c9f9a710be107ff1398288c9f8b9970727941d819950a435e85a272b1c9')
+sha256sums=('54fea04eceb749cf77fcf188ac3c89b0b39f24960236340b52268a762aeb61e8')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver" || exit 1
