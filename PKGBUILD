@@ -2,30 +2,38 @@
 _pkgname=f3d
 _pkgown=f3d-app
 pkgname=${_pkgname}-bin
-pkgver=1.3.1
+pkgver=2.0.0
 pkgrel=1
 epoch=1
 pkgdesc='A fast and minimalist 3D viewer'
 arch=('x86_64')
 url="https://github.com/$_pkgown/$_pkgname"
 license=('BSD')
+depends=('gcc-libs' 'glibc' 'libglvnd' 'libxcb' 'libxau' 'libxdmcp')
 provides=('f3d')
 conflicts=('f3d')
 backup=("etc/$_pkgname/config.json")
-source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-Linux.tar.xz")
-sha256sums=('084e398cad972c673ce46b1ae160a50643fc91789741d696c1f5c7dc73915708')
+_pkgsrc=F3D-$pkgver-Linux-$CARCH
+source=("$url/releases/download/v$pkgver/$_pkgsrc.tar.xz")
+sha256sums=('ff453538361ba3440960e435f9c1ce77dc655ba4b25e2c11ae22f4b133a13382')
 
 package() {
-	install -Dm755 "${srcdir}/bin/${_pkgname}" -t "${pkgdir}/usr/bin"
-	install -Dm755 "${srcdir}/lib/lib${_pkgname}.so" -t "${pkgdir}/usr/lib"
-	install -Dm644 "${srcdir}/share/${_pkgname}/config.json" -t "${pkgdir}/etc/${_pkgname}"
+	install -dm755 "${pkgdir}"/opt/
+	install -dm755 "${pkgdir}"/usr/bin/
+	install -dm755 "${pkgdir}/usr/share/licenses/${_pkgname}"
 
-	install -d "${pkgdir}/usr/share/licenses/${_pkgname}"
-	mv "${srcdir}/share/doc/${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${_pkgname}"
-	mv "${srcdir}/share/doc/${_pkgname}/THIRD_PARTY_LICENSES.md" -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+	cp -a "${srcdir}/${_pkgsrc}" "${pkgdir}/opt/${_pkgname}"
+	ln -s "/opt/${_pkgname}/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-	install -Dm644 ${srcdir}/include/${_pkgname}/* -t "${pkgdir}/usr/include/${_pkgname}"
-	install -Dm644 ${srcdir}/lib/cmake/${_pkgname}/* -t "${pkgdir}/usr/lib/cmake/${_pkgname}"
+	install -Dm755 "${srcdir}/${_pkgsrc}/lib/lib${_pkgname}.so" -t "${pkgdir}/usr/lib"
+	
+	mv "${srcdir}/${_pkgsrc}/share/licenses/${_pkgname}" -t "${pkgdir}/usr/share/licenses"
+	rm -r "${srcdir}/${_pkgsrc}/share/licenses/"
 
-	cp -r "${srcdir}/share" "${pkgdir}/usr/"
+	install -Dm644 "${srcdir}/${_pkgsrc}/include/${_pkgname}"/* -t "${pkgdir}/usr/include/${_pkgname}"
+	install -Dm644 "${srcdir}/${_pkgsrc}/lib/cmake/${_pkgname}"/* -t "${pkgdir}/usr/lib/cmake/${_pkgname}"
+
+	cp -ar "${srcdir}/${_pkgsrc}/share" "${pkgdir}/usr/"
+
+	install -dm755 "${pkgdir}/etc/${_pkgname}/config.d"
 }
