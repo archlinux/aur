@@ -1,11 +1,12 @@
 pkgbase = dotbot
 	pkgdesc = A tool that bootstraps your dotfiles
 	pkgver = 1.19.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/anishathalye/dotbot
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
+	makedepends = python-pip
 	depends = python
 	depends = python-yaml
 	depends = python-setuptools
