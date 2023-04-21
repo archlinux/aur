@@ -30,13 +30,13 @@ build() {
     cd "$srcdir/${pkgname%-git}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
+    cargo build --frozen --release --no-default-features
 }
 
 check() {
     cd "$srcdir/${pkgname%-git}"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
+    cargo test --frozen --no-default-features
 }
 
 package() {
