@@ -1,8 +1,8 @@
 # Maintainer: f4iey <f4iey@f6kgl.ampr.org>
 
 pkgname=easymorse-git
-pkgver=b8748c3
-pkgrel=1
+pkgver=r38.b8748c3
+pkgrel=2
 pkgdesc="Simple crossplatform tool to learn morse code or automatic traffic on CW"
 arch=(x86_64)
 url="https://bitbucket.org/Artemia/easymorse"
