@@ -8,7 +8,6 @@ pkgbase = gamescope-git
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
-	makedepends = patch
 	makedepends = vulkan-headers
 	makedepends = glslang
 	makedepends = wayland-protocols
