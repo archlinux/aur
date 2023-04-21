@@ -1,6 +1,6 @@
 pkgbase = xx-net
 	pkgdesc = XX-Net, a web proxy tool.
-	pkgver = 5.1.1
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://github.com/XX-net/XX-Net
 	install = xx-net.install
@@ -9,7 +9,7 @@ pkgbase = xx-net
 	depends = python
 	depends = python-pycryptodome
 	options = !strip
-	source = https://github.com/XX-net/xx-net/archive/5.1.1.tar.gz
+	source = https://github.com/XX-net/xx-net/archive/6.0.0.tar.gz
 	source = xx-net.service
 	md5sums = SKIP
 	md5sums = c0a4e9d6f4c8fcee0e8a26f3018dfe4f
