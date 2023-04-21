@@ -1,15 +1,15 @@
-# Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
+# Maintainer: Fijxu <fijxu (at) zzls (dot) xyz>
 
 _gitname=Flatseal
 pkgname=flatseal-git
-pkgver=v1.5.3.r1.g6b00d68
+pkgver=v1.8.1.r115.g2ba3c83
 pkgrel=1
 pkgdesc='A permissions manager for Flatpak.'
 url="https://github.com/tchx84/Flatseal/"
 arch=('x86_64')
 license=('GPL3')
-depends=('flatpak' 'gjs')
-makedepends=('git' 'meson' 'flatpak-builder')
+depends=('gjs' 'webkitgtk-6.0' 'appstream-glib')
+makedepends=('git' 'meson')
 source=("git+https://github.com/tchx84/Flatseal.git")
 sha1sums=('SKIP')
 
