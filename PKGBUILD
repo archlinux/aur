@@ -1,8 +1,8 @@
 # Maintainer: krasjet
 
 pkgname=pdf.tocgen
-pkgver=1.3.2
-pkgrel=2
+pkgver=1.3.3
+pkgrel=1
 pkgdesc="Automatically generate table of contents for PDF documents."
 arch=('any')
 url="https://github.com/Krasjet/pdf.tocgen"
@@ -11,7 +11,7 @@ depends=('python-toml' 'python-pymupdf' 'python-chardet')
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
 pypkgname=pdf_tocgen
 source=("https://files.pythonhosted.org/packages/source/${pypkgname::1}/${pypkgname}/${pypkgname}-${pkgver}.tar.gz")
-sha256sums=('b74bfa2c0e13d8bbede5d0e870cd67555222b6222402235a856a4fcd992c03be')
+sha256sums=('a48478133cff71f02f81660a306d2c419e28d6a05a85d8f2a418055675a7dd37')
 
 build() {
   cd "$pypkgname-$pkgver"
