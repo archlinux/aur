@@ -1,11 +1,12 @@
 # Maintainer: f4iey <f4iey@f6kgl.ampr.org>
 pkgname=fate-git
-pkgver=7ed9e57
+pkgver=r12.7ed9e57
 pkgrel=1
 pkgdesc="Minimal CLI JS8 software"
 arch=('any')
 license=('MIT')
 url="https://github.com/rtmrtmrtmrtm/fate"
+makedepends=('git')
 depends=('fftw' 'libsndfile' 'portaudio')
 source=($pkgname::"git+$url.git")
 
