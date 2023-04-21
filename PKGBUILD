@@ -5,7 +5,7 @@
 pkgname=python2-wheel
 _name=${pkgname#python2-}
 pkgver=0.37.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A built-package format for Python, version for Python 2.7"
 arch=(any)
 url="https://github.com/pypa/wheel"
@@ -15,6 +15,11 @@ makedepends=('python2-setuptools')
 checkdepends=('python2-pytest' 'python2-pytest-cov')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('a82516a039e521100ecdef137f9e44249bf6903f9aff7d368e84ac31d60597f5')
+
+prepare() {
+  cd "$srcdir/$_name-$pkgver"
+  sed -i 's/_.name/&.lower()/' src/wheel/wheelfile.py
+}
 
 build() {
   cd "$srcdir/$_name-$pkgver"

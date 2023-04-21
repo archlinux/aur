@@ -1,7 +1,7 @@
 pkgbase = python2-wheel
 	pkgdesc = A built-package format for Python, version for Python 2.7
 	pkgver = 0.37.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/pypa/wheel
 	arch = any
 	license = MIT
