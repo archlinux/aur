@@ -1,6 +1,6 @@
 pkgbase = python-mlflow
 	pkgdesc = An open source platform for the machine learning lifecycle
-	pkgver = 2.2.2
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://mlflow.org
 	arch = x86_64
@@ -51,7 +51,7 @@ pkgbase = python-mlflow
 	optdepends = python-jinja: for mlflow[pipelines]
 	optdepends = python-mlflow-dbstore: for mlflow[sqlserver]
 	optdepends = python-aliyunstoreplugin: for mlflow[aliyun-oss]
-	source = python-mlflow-2.2.2::https://github.com/mlflow/mlflow/archive/v2.2.2.tar.gz
-	sha256sums = ee43f54577d4cec32aebb1198b49fd767bd443098513cdec7b2afde965c0ee16
+	source = python-mlflow-2.3.0::https://github.com/mlflow/mlflow/archive/v2.3.0.tar.gz
+	sha256sums = 1393b66fb26f66a2871afebff8be88b247737a982dd1858698bf2204e166b2e5
 
 pkgname = python-mlflow
