@@ -5,6 +5,7 @@
 # Contributor: said
 # Contributor: Kaurin <milos dot kaurin at gmail>
 # Contributor: Nathan Owe <ndowens04 at gmail>
+# Contributor: Bernhard Bermeitinger <bernhard.bermeitinger at gmail.com>
 
 pkgname=filebot
 pkgver=5.0.2
