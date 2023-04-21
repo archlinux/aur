@@ -1,7 +1,7 @@
 # Maintainer: Paul <pb.orzel@proton.me>
 
 pkgname="gitwife"
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Tool to manage your installations from Git Repositories for you"
 arch=(any)
@@ -21,7 +21,7 @@ optdepends=(
 'nano: default editor for the makefiles'
 )
 source=("https://gitlab.com/Teddy-Kun/gitwife/-/archive/v${pkgver}/gitwife-v${pkgver}.tar.gz")
-sha256sums=('61aa4fa76739b180a273c2068cdd14197b88013efb49619c03a8583867539be4')
+sha256sums=('c424d1ab37083f5f95a09844caefd4b350b687a5f628d82dc93d2fafb6c82d01')
 
 build() {
 	cd "${srcdir}/${pkgname}-v${pkgver}"
