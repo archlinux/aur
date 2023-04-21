@@ -3,7 +3,7 @@
 _pkgname=alfae
 pkgname=$_pkgname-bin
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An Itch.io/Epic Games/GOG launcher that works through plugins (binary release)"
 arch=('x86_64')
 url="https://github.com/suchmememanyskill/Alfae"
@@ -30,7 +30,7 @@ prepare() {
   sed -i '1 i\Icon=alfae' $_desktop
   sed -i '1 i\Type=Application' $_desktop
   sed -i '1 i\Terminal=false' $_desktop
-  sed -i '1 i\Exec=/opt/Alfae/alfae %U' $_desktop
+  sed -i '1 i\Exec=/opt/Alfae/Alfae %U' $_desktop
   sed -i '1 i\Name=Alfae' $_desktop
   sed -i '1 i\[Desktop Entry]' $_desktop
   mkdir -p desktop
