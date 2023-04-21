@@ -1,0 +1,13 @@
+pkgbase = watershot-git
+	pkgdesc = A simple wayland native screenshot tool.
+	pkgver = r51.0874e09
+	pkgrel = 1
+	url = github.com/Kirottu/watershot
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	source = watershot::git+https://github.com/Kirottu/watershot.git
+	sha256sums = SKIP
+
+pkgname = watershot-git
