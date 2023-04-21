@@ -1,0 +1,23 @@
+pkgbase = lua-moonscript
+	pkgdesc = Dynamic scripting language that compiles into Lua
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://moonscript.org
+	arch = any
+	license = MIT
+	makedepends = luarocks
+	makedepends = lua
+	makedepends = lua51
+	makedepends = lua52
+	makedepends = lua53
+	source = lua-moonscript-0.5.0.tar.gz::https://github.com/leafo/moonscript/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 1adb5bb38f9c6f306250f6e90d92796fe100408ee062ac0d14f3c4c22c92e682
+	b2sums = bda1e8fcd0191e8525ed6a7ecaf393712e24f8242b1dba5019b03f539d1e9acaa74faf67a1e3acddbb9b05f5cb570496d9910ff4f3a86986f2a8aa92234b41ef
+
+pkgname = lua-moonscript
+
+pkgname = lua51-moonscript
+
+pkgname = lua52-moonscript
+
+pkgname = lua53-moonscript
