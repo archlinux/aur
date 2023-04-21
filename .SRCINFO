@@ -1,9 +1,10 @@
 pkgbase = nudoku
 	pkgdesc = ncurses based sudoku game
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://jubalh.github.io/nudoku
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = autoconf
 	depends = ncurses

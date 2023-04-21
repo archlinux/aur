@@ -1,9 +1,9 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 pkgname=nudoku
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="ncurses based sudoku game"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://jubalh.github.io/nudoku"
 license=('GPL3')
 depends=('ncurses' 'cairo')
