@@ -9,6 +9,6 @@ pkgbase = x-pixiv-bin
 	provides = x-pixiv
 	conflicts = x-pixiv
 	source_x86_64 = https://github.com/xiaoxigua-1/XPixiv/releases/download/v.1.0.1/x-pixiv-1.0.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = a60e309030f02ef2b758cf04abc59c707a2ba480220bcaf94fd7607ced617f60
+	sha256sums_x86_64 = 39a413ee7f566eb5651c8eaa222bd57f38218a69a9f07f164c60a4697666bc79
 
 pkgname = x-pixiv-bin
