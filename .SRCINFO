@@ -1,0 +1,16 @@
+pkgbase = php82-apcu
+	pkgdesc = A userland caching module for PHP 8.1
+	pkgver = 5.1.22
+	pkgrel = 1
+	url = https://pecl.php.net/package/APCu
+	arch = x86_64
+	license = PHP
+	makedepends = php82
+	backup = etc/php82/conf.d/apcu.ini
+	source = https://pecl.php.net/get/apcu-5.1.22.tgz
+	source = apcu.ini
+	sha256sums = 010a0d8fd112e1ed7a52a356191da3696a6b76319423f7b0dfdeaeeafcb41a1e
+	sha256sums = 18b2d904848b185bdc7c0c6a5f7c82ec809e9ed3f137cd6d3420160f4756630f
+
+pkgname = php82-apcu
+	depends = php82
