@@ -8,7 +8,7 @@ pkgdesc='An “officially endorsed” bulk download script to download files fro
 url='https://git.sr.ht/~nytpu/commons-downloader'
 
 arch=('any')
-license=('GPL')
+license=('custom:CC0')
 depends=('curl' 'wget' 'jq' 'libxml2')
 makedepends=('git' 'marked-man')
 
