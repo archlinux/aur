@@ -4,34 +4,39 @@
 # Contributor: Leonidas <marek@xivilization.net>
 
 pkgname=factor-git
-_pkgname=factor
-pkgver=0.98.r1821.7b451bb813
+pkgver=0.99.r34513.27b6f73cfb
 pkgrel=1
 pkgdesc="A general purpose, dynamically typed, stack-based programming language"
 arch=(i686 x86_64)
 url="http://factorcode.org"
 license=(BSD)
-provides=(factor)
-conflicts=(factor)
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
+
 depends=(pango cairo glib2 freetype2 mesa libgl gtkglext)
 optdepends=(udis86)
 makedepends=(git gcc)
 options=(!strip)
 source=(
-  'git+https://github.com/factor/factor.git'
-  'factor.desktop'
-  )
+  "factor::git+https://github.com/factor/factor.git"
+  "factor.desktop"
+)
 
 pkgver() {
-  cd "${_pkgname}"
-  git describe --tags --long | sed 's/-/.r/; s/-g/./'
+  cd "factor"
+  printf "%s.r%s.%s" \
+    "$(awk -F '=' '/VERSION/{ gsub(/ +/, "", $2); print $2; exit }' GNUmakefile)" \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
+
+  #git describe --tags --long | sed 's/-/.r/; s/-g/./'
 }
 
 md5sums=('SKIP'
          '59242ddb19a9be927915e489e2bfca27')
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "factor"
 
   if [[ ! -f checksums.txt ]]; then
     # update done by ./build.sh
@@ -47,13 +52,14 @@ build() {
 }
 
 package() {
+  cd "factor"
+
   mkdir -p $pkgdir/usr/bin
   mkdir -p $pkgdir/usr/lib/factor
   mkdir -p $pkgdir/usr/share/doc/$pkgname/
   mkdir -p $pkgdir/usr/share/licenses/$pkgname/
 
   # copy over the stdlib
-  cd "$srcdir/$_pkgname"
   cp -a misc extra core basis factor.image $pkgdir/usr/lib/factor/
   # copy over libs
   cp libfactor.a libfactor-ffi-test.so $pkgdir/usr/lib/factor/
@@ -75,7 +81,7 @@ package() {
   cp LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/COPYING
 
   # add the desktop entry and icon
-  install -D "$srcdir"/factor.desktop "$pkgdir"/usr/share/applications/factor.desktop
-  install -D misc/icons/Factor.svg "$pkgdir"/usr/share/pixmaps/factor.svg
+  install -D $srcdir/factor.desktop $pkgdir/usr/share/applications/factor.desktop
+  install -D misc/icons/Factor.svg $pkgdir/usr/share/pixmaps/factor.svg
 }
 
