@@ -1,6 +1,6 @@
 pkgbase = wenger-crosstool-ng
 	pkgdesc = crosstool-NG aims at building toolchains.
-	pkgver = v1.22.0
+	pkgver = v0.16.0.0
 	pkgrel = 1
 	url = http://crosstool-ng.org/
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = wenger-crosstool-ng
 	provides = crosstool-ng
 	conflicts = crosstool-ng
 	conflicts = crosstool-ng-git
-	source = crosstool-ng-1.22.0.tar.gz::https://github.com/virtualcabinet/crosstool-ng/archive/refs/tags/v1.22.0.tar.gz
+	source = crosstool-ng-0.16.0.0.tar.gz"::https://github.com/virtualcabinet/crosstool-ng/archive/refs/tags/v0.16.0.0.tar.gz
 	b2sums = SKIP
 
 pkgname = wenger-crosstool-ng
