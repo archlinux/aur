@@ -1,6 +1,6 @@
-diff -u -ur mayavi-4.8.1.orig/mayavi/__init__.py mayavi-4.8.1/mayavi/__init__.py
+diff -ur mayavi-4.8.1.orig/mayavi/__init__.py mayavi-4.8.1/mayavi/__init__.py
 --- mayavi-4.8.1.orig/mayavi/__init__.py	2022-10-18 11:18:00.000000000 +0200
-+++ mayavi-4.8.1/mayavi/__init__.py	2023-04-20 12:44:33.106336172 +0200
++++ mayavi-4.8.1/mayavi/__init__.py	2023-04-21 09:32:29.003917103 +0200
 @@ -16,7 +16,6 @@
      'traits>=6.0.0',
      'traitsui>=7.0.0',
@@ -9,33 +9,39 @@ diff -u -ur mayavi-4.8.1.orig/mayavi/__init__.py mayavi-4.8.1/mayavi/__init__.py
  ]
 
  __extras_require__ = {
-diff -u -ur mayavi-4.8.1.orig/mayavi/plugins/mayavi_workbench_application.py mayavi-4.8.1/mayavi/plugins/mayavi_workbench_application.py
---- mayavi-4.8.1.orig/mayavi/plugins/mayavi_workbench_application.py	2016-08-01 21:02:36.000000000 +0200
-+++ mayavi-4.8.1/mayavi/plugins/mayavi_workbench_application.py	2023-04-20 13:08:43.353792226 +0200
-@@ -124,4 +124,3 @@
-             splash_screen = None
+diff -ur mayavi-4.8.1.orig/mayavi/plugins/app.py mayavi-4.8.1/mayavi/plugins/app.py
+--- mayavi-4.8.1.orig/mayavi/plugins/app.py	2020-04-29 21:28:22.000000000 +0200
++++ mayavi-4.8.1/mayavi/plugins/app.py	2023-04-21 10:41:20.952497313 +0200
+@@ -23,6 +23,9 @@
+ # GLOBALS
+ logger = logging.getLogger()
 
-         return splash_screen
--
-diff -u -ur mayavi-4.8.1.orig/mayavi/preferences/preference_manager.py mayavi-4.8.1/mayavi/preferences/preference_manager.py
---- mayavi-4.8.1.orig/mayavi/preferences/preference_manager.py	2016-08-01 21:02:36.000000000 +0200
-+++ mayavi-4.8.1/mayavi/preferences/preference_manager.py	2023-04-20 13:18:20.372051625 +0200
-@@ -20,6 +20,7 @@
- # License: BSD Style.
++# The application ID
++ID = 'mayavi_e3'
++
+ ######################################################################
+ # Useful functions.
+ ######################################################################
+@@ -183,6 +186,11 @@
 
- # Standard library imports
-+from os import makedirs
- from os.path import join
- import pkg_resources
+         plugins += get_custom_plugins()
 
-@@ -115,6 +116,10 @@
-         finally:
-             # Set back the application home.
-             ETSConfig.application_home = app_home
-+        try:
-+            makedirs(path)
-+        except OSError:
-+            pass
++        # Set correct application home and user data
++        path = os.path.join(ETSConfig.application_data, ID)
++        ETSConfig.application_home = path
++        ETSConfig.user_data = path
++
+         # Create the application
+         prefs = preference_manager.preferences
+         app = MayaviWorkbenchApplication(plugins=plugins,
+diff -ur mayavi-4.8.1.orig/mayavi.egg-info/requires.txt mayavi-4.8.1/mayavi.egg-info/requires.txt
+--- mayavi-4.8.1.orig/mayavi.egg-info/requires.txt	2022-10-18 11:49:21.000000000 +0200
++++ mayavi-4.8.1/mayavi.egg-info/requires.txt	2023-04-21 09:32:37.457290549 +0200
+@@ -6,7 +6,6 @@
+ traits>=6.0.0
+ traitsui>=7.0.0
+ packaging
+-vtk
 
-     def _preferences_changed(self, preferences):
-         """Setup the helpers if the preferences trait changes."""
+ [app]
+ envisage

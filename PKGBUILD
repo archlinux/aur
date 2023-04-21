@@ -2,7 +2,7 @@ pkgbase='python-mayavi'
 pkgname=('python-mayavi')
 _module='mayavi'
 pkgver='4.8.1'
-pkgrel=2
+pkgrel=3
 pkgdesc="3D scientific data visualization library and application"
 url="http://docs.enthought.com/mayavi/mayavi/"
 depends=('python'
@@ -27,7 +27,7 @@ source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$
         "mayavi2.desktop"
         "mayavi2.png")
 sha256sums=('9f427ef2ca6c91ae78d92d3689ba6beca24c8460e2706d8a1c9b84289ad3fd9e'
-            '279cba463969f3a2229e12fcbf000af7254a59330041e10902908672b7e5b555'
+            '17f5b2d0cc8df43c045c216f090f9534e5f1766f9bacf4d3e9a6a3e422236fec'
             '560472153bfca1c1ca8fb05f8b6f4a40b9a08f9b0e0bc9763bcaf3058ca8ec56'
             'f54b39793087f3f9806b94ce5b410903e7dc49cd2a89287b6fd59f541f0aa14d')
 
