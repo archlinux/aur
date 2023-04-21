@@ -2,7 +2,7 @@
 
 pkgname=xdman8
 _pkgname=xdman
-pkgver=8.0.18
+pkgver=8.0.25
 pkgrel=2
 pkgdesc="Open source download accelerator and video downloader."
 arch=(x86_64)
@@ -13,7 +13,7 @@ provides=("$pkgname")
 conflicts=("$_pkgname" "xdman8-beta-git")
 replaces=("$_pkgname")
 source=("$pkgname"::"https://github.com/subhra74/xdm-experimental-binaries/releases/download/"$pkgver"-beta/xdman_gtk_"$pkgver"_amd64.deb")
-sha256sums=('b09a99268809f550010eea067a6bf40286d0a440581db59a8af2f2b53c030ef9')
+sha256sums=('a49e65a57c5e9fad8d7e4d56fe783daec68f2887c3b424a32cfac5695315b198')
 
 prepare() {
     bsdtar -xf data.tar.xz

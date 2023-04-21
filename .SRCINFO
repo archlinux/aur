@@ -1,6 +1,6 @@
 pkgbase = xdman8
 	pkgdesc = Open source download accelerator and video downloader.
-	pkgver = 8.0.18
+	pkgver = 8.0.25
 	pkgrel = 2
 	url = https://xtremedownloadmanager.com
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = xdman8
 	conflicts = xdman
 	conflicts = xdman8-beta-git
 	replaces = xdman
-	source = xdman8::https://github.com/subhra74/xdm-experimental-binaries/releases/download/8.0.18-beta/xdman_gtk_8.0.18_amd64.deb
-	sha256sums = b09a99268809f550010eea067a6bf40286d0a440581db59a8af2f2b53c030ef9
+	source = xdman8::https://github.com/subhra74/xdm-experimental-binaries/releases/download/8.0.25-beta/xdman_gtk_8.0.25_amd64.deb
+	sha256sums = a49e65a57c5e9fad8d7e4d56fe783daec68f2887c3b424a32cfac5695315b198
 
 pkgname = xdman8
