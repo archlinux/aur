@@ -1,12 +1,12 @@
 # Maintainer: f4iey <f4iey@f6kgl.ampr.org>
 pkgname=m17client-git
-pkgver=r137.4ceef71
+pkgver=r138.8fe79b0
 pkgrel=1
 pkgdesc="An M17 client designed for use with MMDVM modems and hotspots to allow for use as an M17 radio "
 arch=('any')
 url="https://github.com/g4klx/M17Client"
 license=('GPL-3')
-makedepends=(git make gcc)
+makedepends=(git)
 depends=(alsa-lib libsamplerate wxgtk3)
 optdepends=(hamlib pulseaudio)
 source=($pkgname::git+$url)
