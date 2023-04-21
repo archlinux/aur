@@ -1,0 +1,11 @@
+pkgbase = schbench-git
+	pkgdesc = Simple Scheduler Benchmark
+	pkgver = v1.0.r4.g48aed1d
+	pkgrel = 1
+	arch = any
+	license = GPL2
+	provides = schbench
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/mason/schbench.git
+	sha256sums = SKIP
+
+pkgname = schbench-git
