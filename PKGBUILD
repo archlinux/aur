@@ -1,11 +1,11 @@
 # Maintainer: f4iey <f4iey@f6kgl.ampr.org>
 pkgname=tetra-kit-git
 pkgver=r110.3a18aec
-pkgrel=1
+pkgrel=2
 pkgdesc="TETRA downlink decoder/recorder kit"
 arch=('any')
 license=('GPL3')
-makedepends=('make' 'gcc')
+makedepends=('git')
 depends=('gnuradio-companion' 'gnuradio-osmosdr' 'rapidjson' 'sox' 'zlib' 'ncurses')
 url="https://gitlab.com/larryth/tetra-kit"
 source=($pkgname::"git+$url.git")
