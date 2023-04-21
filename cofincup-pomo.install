@@ -1,6 +1,6 @@
 post_install() {
     echo -e "\033[32mRun 'pomo' command to start pomodoro timer.\033[0m"
-    echo -e "\033[32mNote: You can close she console once the timer stopped.\033[0m"
+    echo -e "\033[32mNote: You can close the console once the timer stopped.\033[0m"
 }
 
 post_upgrade() {
