@@ -2,13 +2,13 @@
 
 pkgname=mmconneqt-git
 pkgver=0.1.1.r3.gf569d41
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple qt based wrapper gui for ModemManager"
 arch=('x86_64')
 url="https://gitlab.com/Antiquete/mmconneqt"
 license=('GPL3')
 depends=('qt5-base' 'modemmanager')
-makedepends=('git')
+makedepends=('git' 'make')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+$url.git" "${pkgname%-git}.desktop")

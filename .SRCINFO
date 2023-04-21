@@ -1,11 +1,12 @@
 pkgbase = mmconneqt-git
 	pkgdesc = A simple qt based wrapper gui for ModemManager
 	pkgver = 0.1.1.r3.gf569d41
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/Antiquete/mmconneqt
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = make
 	depends = qt5-base
 	depends = modemmanager
 	provides = mmconneqt
