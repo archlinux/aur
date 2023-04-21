@@ -7,6 +7,8 @@ arch=('i686' 'x86_64')
 url="https://vitasdk.org/"
 license=('GPL2')
 options=(!strip)
+provides=(psvita-sdk)
+conflicts=(psvita-sdk)
 depends=(
   'pacman>5'
   'git'
@@ -26,21 +28,27 @@ prepare() {
 }
 
 build() {
-  export VITASDK=$pkgdir/opt/vitasdk
-  cd "vdpm"
-  ./bootstrap-vitasdk.sh
+  rm -rf "$srcdir/pkg/opt/vitasdk"
+  export VITASDK=$srcdir/pkg/opt/vitasdk
+  export PATH="$VITASDK/bin:$PATH"
 
-  find -name VITABUILD | while read line; do
-    (
-      cd "$(dirname $line)"
-      "$VITASDK/bin/vita-makepkg" --install
-    )
-  done
+  (
+    cd "vdpm"
+    ./bootstrap-vitasdk.sh
+    ./install-all.sh
+  )
+
+  (
+    cd "vita-packages-extra"
+    find -name VITABUILD | while read line; do
+      (
+        cd "$(dirname $line)"
+        "$VITASDK/bin/vita-makepkg" --install
+      )
+    done
+  )
 }
 
 package() {
-  export VITASDK=$pkgdir/opt/vitasdk
-
-  cd "vdpm"
-  ./install-all.sh
+  mv "$srcdir/pkg/opt" "$pkgdir"
 }
