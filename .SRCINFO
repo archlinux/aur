@@ -1,0 +1,16 @@
+pkgbase = bfc
+	pkgdesc = Fast brainfuck jit interpreter written in cpp
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/Kirisashio2/bfcpp
+	install = bfc.install
+	arch = x86_64
+	license = LGPL
+	depends = cmake
+	depends = glibc
+	depends = gcc-libs
+	depends = asmjit-git
+	source = bfc-1.0.0.tar.gz::https://gitlab.com/Kirisashio2/bfcpp/-/archive/1.0.0/bfcpp-1.0.0.tar.gz
+	sha256sums = 2b6215ae76a50a0b2cff3fd2e8b2c393660b40acce36a3fd71093f685322b471
+
+pkgname = bfc
