@@ -1,12 +1,13 @@
-# Maintainer: Vitaly Ankh <vitalyankh@gmail.com>
+# Maintainer: Vitaly Ankh <vr@vitalyr.com>
 # Maintainer of digital: Ryozuki <ryo@ryozuki.xyz>
+#
 # This is an adapted version of Ryozuki's `digital` AUR package.
 # Thanks to Ryozuki.
 ################################################################
 
 pkgname=digital-git
-pkgver=v0.30.r3.gf8b800a63
-pkgrel=2
+pkgver=v0.30.r6.gaa9c14270
+pkgrel=1
 pkgdesc="A digital logic designer and circuit simulator. Git development version"
 arch=('x86_64')
 url="https://github.com/hneemann/Digital"
