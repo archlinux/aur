@@ -1,14 +1,12 @@
 pkgbase = sparksdr-bin
 	pkgdesc = Cross platform sdr application for Hermes Lite and Open HPSDR compatible radios (Red Pitya, Apache labs).
 	pkgver = 2.0.33
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.sparksdr.com/download/
 	arch = x86_64
 	arch = arm
 	arch = arm64
 	license = custom
-	makedepends = make
-	makedepends = gcc
 	depends = icu
 	depends = openssl
 	depends = krb5
