@@ -1,7 +1,7 @@
 pkgbase = buildbox-run-bubblewrap
 	pkgdesc = An implementation of a runner for BuildGrid/buildbox using Bubblewrap.
 	pkgver = 0.0.64
-	pkgrel = 1
+	pkgrel = 2
 	url = https://buildgrid.build
 	arch = x86_64
 	license = Apache
