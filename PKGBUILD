@@ -3,7 +3,8 @@
 # Mantainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Piero Proietti <piero.proietti_at_gmail.com>
 
-_commit=c2dec814c5b6ff209dd19ccfc028641e6267d693  # v9.4.5
+_commit=8e3e7ca911dcbc3db3cb80772bab97b47cb76e7a  # v9.4.6
+
 pkgname=penguins-eggs
 pkgver=9.4.5
 pkgrel=1
@@ -18,7 +19,7 @@ depends=('arch-install-scripts' 'dosfstools' 'erofs-utils' 'findutils' 'grub'
 optdepends=('bash-completion: eggs autocomplete'
             'zsh-completions: eggs autocomplete'
             'calamares: system installer GUI')
-makedepends=('git' 'pnpm')
+makedepends=('git' 'npm')
 options=('!strip')
 source=("git+https://github.com/pieroproietti/penguins-eggs.git#commit=${_commit}")
 sha256sums=('SKIP')
