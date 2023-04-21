@@ -1,6 +1,6 @@
 pkgbase = duplicacy
 	pkgdesc = A new generation cloud backup tool based on lock-free deduplication
-	pkgver = 3.0.1
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://duplicacy.com/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = duplicacy
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = duplicacy-3.0.1.tar.gz::https://github.com/gilbertchen/duplicacy/archive/v3.0.1.tar.gz
-	sha256sums = d02a598baccf2fa8d679dd29b4d478214e4655a134a880338bb5bf908e87d486
+	source = duplicacy-3.1.0.tar.gz::https://github.com/gilbertchen/duplicacy/archive/v3.1.0.tar.gz
+	sha256sums = 5e5aa45c48b34237329f5f907248d80f5d4418f88f66c35ee527fffd2ea6b024
 
 pkgname = duplicacy
