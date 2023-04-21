@@ -1,6 +1,6 @@
 pkgname=wenger-crosstool-ng
 
-pkgver=v1.22.0
+pkgver=v0.16.0.0
 pkgrel=1
 
 pkgdesc="crosstool-NG aims at building toolchains."
@@ -15,7 +15,8 @@ provides=('crosstool-ng')
 conflicts=('crosstool-ng' 'crosstool-ng-git')
 
 
-source=('crosstool-ng-1.22.0.tar.gz::https://github.com/virtualcabinet/crosstool-ng/archive/refs/tags/v1.22.0.tar.gz')
+source=('crosstool-ng-0.16.0.0.tar.gz"::https://github.com/virtualcabinet/crosstool-ng/archive/refs/tags/v0.16.0.0.tar.gz')
+#source=('crosstool-ng-1.22.0.tar.gz::https://github.com/virtualcabinet/crosstool-ng/archive/refs/tags/v1.22.0.tar.gz')
 
 b2sums=('SKIP')
 
@@ -32,7 +33,7 @@ b2sums=('SKIP')
 
 build () {    
     # Changing Work Directory.
-    cd crosstool-ng-1.22.0
+    cd crosstool-ng-0.16.0.0
     # autoconf
     ./bootstrap
     # configure
@@ -43,7 +44,7 @@ build () {
 
 package () {
     # Changing Work Directory.
-    cd crosstool-ng-1.22.0
+    cd crosstool-ng-0.16.0.0
     # make install
     make DESTDIR="$pkgdir" install
 }

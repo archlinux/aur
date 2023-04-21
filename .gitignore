@@ -1,6 +1,6 @@
 src/**
 pkg/**
 
-crosstool-ng-1.22.0.tar.gz
-wenger-crosstool-ng-v1.22.0-1-x86_64.pkg.tar.zst
+crosstool-ng-*.tar.gz
+wenger-crosstool-ng-*.pkg.tar.zst
 
