@@ -1,7 +1,7 @@
 # Maintainer: Darjan Krijan [https://disc-kuraudo.eu]
 
 pkgname=disc-kuraudo-home
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Disc Kuraudo - The Disc Cloud"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,6 @@ depends=(
 	'ddrescue'
 	'imagemagick'
 	'jq'
-	'libudfread-dk'
 )
 optdepends=(
 	'ffmpeg: Extracting scenes/clips/screenshots/etc. from video discs'
@@ -30,9 +29,9 @@ source=(
 	*.patch # Any (untracked) patches lying around
 )
 if   [ ${CARCH} == "x86_64" ]; then
-	sha256sums=('772fa3878a49b81cc86db5b3b62d7bb4104c6b6042d307fadac48d7f77db4679')
+	sha256sums=('2e6f8c42906d936e9b590f3d621a8873810e675eeefd4aa191ed0b91a3fb67f9')
 elif [ ${CARCH} == "aarch64" ]; then
-	sha256sums=('71e24283e5a7159e12d812a36e8d1e65ebfe9460416d7c89a2db1cde05f52252')
+	sha256sums=('8274f95bb2bc00e2192470aea886fb02c8c9f2c8f75e1ea66a2ab0071e0badd4')
 else
 	echo "Unsupported platform '${CARCH}', aborting."; exit 1
 fi

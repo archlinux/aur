@@ -1,6 +1,6 @@
 pkgbase = disc-kuraudo-home
 	pkgdesc = Disc Kuraudo - The Disc Cloud
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://disc-kuraudo.eu
 	arch = x86_64
@@ -14,15 +14,14 @@ pkgbase = disc-kuraudo-home
 	depends = ddrescue
 	depends = imagemagick
 	depends = jq
-	depends = libudfread-dk
 	optdepends = ffmpeg: Extracting scenes/clips/screenshots/etc. from video discs
 	optdepends = makemkv: Extracting scenes/clips/screenshots/etc. from video discs
 	optdepends = mkvtoolnix-cli: Extracting scenes/clips/etc. from video discs
 	provides = disc-kuraudo
 	conflicts = disc-kuraudo
-	source = https://disc-kuraudo.eu/releases/disc-kuraudo-home-linux-x86_64-0.3.1.tar.xz
+	source = https://disc-kuraudo.eu/releases/disc-kuraudo-home-linux-x86_64-0.3.2.tar.xz
 	source = empty.patch
-	sha256sums = 772fa3878a49b81cc86db5b3b62d7bb4104c6b6042d307fadac48d7f77db4679
+	sha256sums = 2e6f8c42906d936e9b590f3d621a8873810e675eeefd4aa191ed0b91a3fb67f9
 	sha256sums = SKIP
 
 pkgname = disc-kuraudo-home
