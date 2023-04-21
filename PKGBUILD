@@ -34,7 +34,6 @@ langs=(bash beancount bibtex
   ocaml ocaml_interface ocamllex
   perl php pioasm python
   ql
-  Tree-sitterquerylanguage
   r regex rst ruby rust
   scala scss sparql supercollider surface svelte
   teal tlaplus toml tsx turtle typescript
@@ -42,12 +41,12 @@ langs=(bash beancount bibtex
   yaml yang
   zig)
 source=("${pkgname}::git+https://github.com/LunarVim/LunarVim.git#branch=master"
-  "git+https://github.com/nvim-treesitter/nvim-treesitter.git#branch=0.5-compat"
+  "git+https://github.com/nvim-treesitter/nvim-treesitter.git#branch=master"
   "init-lvim.sh"
   "lvim")
 sha256sums=('SKIP'
             'SKIP'
-            '64474d473e462cea404b14cf15d0c9582d2c65be99443c8128a8d9bb0e2b6a41'
+            'e7e1f3fffee92a89cc3091c17d264624d08a67539303ad1fd15d0b38c8206bd8'
             'fe16e9974a8a4ee877d63e15f346c6f886c357e08c08a7e300e29092d5ec732a')
 
 pkgver() {
@@ -61,7 +60,7 @@ build() {
 
   for lang in ${langs[@]}; do
     if [[ ! -e ${runtime}/parser/${lang}.so ]]; then
-      nvim --cmd "set runtimepath+=${runtime}" --headless \
+      nvim --clean --cmd "set runtimepath+=${runtime}" --headless \
         +"TSUpdateSync ${lang}" +qall
     fi
   done
