@@ -1,7 +1,7 @@
 pkgbase = pnket
 	pkgdesc = A download manager
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ablaze-MIRAI/pnket
 	arch = x86_64
 	license = MIT
