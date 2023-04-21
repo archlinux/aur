@@ -2,7 +2,7 @@
 # https://github.com/dnaka91/pkgbuilds
 
 pkgname=wazzup
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Very opinionated Rust WASM project builder"
 arch=('aarch64' 'i686' 'x86_64')
