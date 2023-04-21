@@ -1,6 +1,6 @@
 pkgbase = nodejs-clinic
 	pkgdesc = diagnoses your Node.js performance issues
-	pkgver = 12.0.0
+	pkgver = 12.1.0
 	pkgrel = 1
 	url = https://github.com/clinicjs/node-clinic
 	arch = any
@@ -10,13 +10,13 @@ pkgbase = nodejs-clinic
 	depends = nodejs
 	provides = clinic
 	conflicts = clinic
-	noextract = clinic-12.0.0.tgz
+	noextract = clinic-12.1.0.tgz
 	options = !strip
 	options = emptydirs
 	options = zipman
-	source = https://registry.npmjs.org/clinic/-/clinic-12.0.0.tgz
+	source = https://registry.npmjs.org/clinic/-/clinic-12.1.0.tgz
 	source = https://raw.githubusercontent.com/clinicjs/node-clinic/main/LICENSE
-	b2sums = db41c4e2da5977a7335cba5e08dcf559b6c33c497268a66502883eaa6fc0fbbcf82e9f7001ae97f9f4638a14c43f010d0568e5368660c3ab6de8d58cbfc3fdd9
+	b2sums = 2abfc6d80f362e8664090bb9c765196fc36ffa7305aa24b289f10d5b623feb66cdca86e97389f5a6f3ea06bf36e0d168c4046289892f115c7bec20214abb9de6
 	b2sums = 1f41dbdf32988d8c90a6762c97ff7292bdad10bbd7e900817d50862bf43e4c0c750189da6a4a990beea158b499526d54f208272e41fd18fd39a7d428231dfbb5
 
 pkgname = nodejs-clinic
