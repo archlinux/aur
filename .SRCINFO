@@ -1,6 +1,6 @@
 pkgbase = betterdiscord-installer-bin
 	pkgdesc = A simple standalone program which automates the installation, removal and maintenance of BetterDiscord.
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/BetterDiscord/Installer
 	arch = x86_64
@@ -14,14 +14,14 @@ pkgbase = betterdiscord-installer-bin
 	conflicts = betterdiscord-installer
 	replaces = betterdiscord
 	replaces = betterdiscord-installer
-	noextract = betterdiscord-installer-bin-1.2.0.x86_64.AppImage
+	noextract = betterdiscord-installer-bin-1.2.1.x86_64.AppImage
 	options = strip
 	options = emptydirs
 	options = zipman
-	source = betterdiscord-installer-bin-1.2.0.x86_64.AppImage::https://github.com/BetterDiscord/Installer/releases/download/v1.2.0/BetterDiscord-Linux.AppImage
+	source = betterdiscord-installer-bin-1.2.1.x86_64.AppImage::https://github.com/BetterDiscord/Installer/releases/download/v1.2.1/BetterDiscord-Linux.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/BetterDiscord/Installer/main/LICENSE
 	source = file://usr--SLASH--bin--SLASH--betterdiscord-installer
-	b2sums = c91af361b012f255e04df2dbcdcb1ac5d3f05359a7c342cd0bfb9dfa9ca30b90d91312cdfb450b87bcc7f92b60b73047c532540262dff9a6080a3877371d1146
+	b2sums = 9cb19dd93a62feb8e88af250b6ec9fba138df2e906d5cbb2d40675e7c86028c383ea688e77b761fdfed45e87c2e172ba57a364a3b3bc0988d15ff2e0e489ff05
 	b2sums = 9efca07a8806137067825ffa7e285950d4bbd1ed3c5a252af83d9408d51fc6530f9be7e1a467e28e73374b9057f52646fff419545a9d2fa466412ee2043ac56d
 	b2sums = b31d61be03a20c315a0fbcf2b2a75da5fe442d7de7951a9c75c31e34ed0c91c9f15b585bc82fa9634e913c774b3f932cf3d476b981eacfb8707f6db7503494c7
 
