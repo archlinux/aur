@@ -4,14 +4,16 @@
 _crate="trust-dns"
 pkgname="trust-dns"
 pkgver=0.22.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Trust-DNS is a safe and secure DNS server with DNSEC support. Eventually this...'
 url='http://www.trust-dns.org/index.html'
 license=('Apache' 'MIT')
 
 depends=('gcc-libs')
 makedepends=('cargo')
-conflicts=('bind')
+conflicts=('bind' 'trust-dns-systemd')
+provides=('trust-dns-systemd')
+replaces=('trust-dns-systemd')
 
 source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/trust-dns/0.22.0/download"
         "0001-fix-not-linking-openssl.patch"
@@ -34,7 +36,7 @@ build() {
 	cd "$srcdir/$_crate-$pkgver"
 	cargo build \
 		--offline \
-		--features 'dns-over-tls,dns-over-https-rustls' \
+		--features 'dns-over-rustls,dns-over-https-rustls,dns-over-quic' \
 		--release
 }
 
