@@ -1,13 +1,14 @@
 pkgbase = r-vdiffr
 	pkgdesc = Visual Regression Testing and Graphical Diffing
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=vdiffr
 	arch = i686
 	arch = x86_64
 	license = MIT
 	checkdepends = r-ggplot2
 	makedepends = r-cpp11
+	depends = libpng
 	depends = r-diffobj
 	depends = r-glue
 	depends = r-htmltools
