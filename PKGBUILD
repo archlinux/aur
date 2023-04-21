@@ -7,6 +7,7 @@ pkgdesc="A simple wayland native screenshot tool."
 arch=("x86_64")
 url="github.com/Kirottu/watershot"
 license=('GPL3')
+depends=(grim)
 makedepends=(git cargo)
 source=("${_pkgname}::git+https://$url.git")
 sha256sums=('SKIP')
