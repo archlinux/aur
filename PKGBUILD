@@ -5,7 +5,12 @@ _rockver=0.5.0
 _rockrel=1
 
 pkgbase="lua-$_rockname"
-pkgname=("lua-$_rockname" "lua51-$_rockname" "lua52-$_rockname" "lua53-$_rockname")
+pkgname=(
+  "lua-$_rockname"
+  # "lua51-$_rockname"
+  "lua52-$_rockname"
+  "lua53-$_rockname"
+)
 pkgver=$_rockver
 pkgrel=1
 pkgdesc='Dynamic scripting language that compiles into Lua'
@@ -25,6 +30,7 @@ _package() {
   local lua_version="$1"
   local lua_base="$2"
   depends+=("$lua_base-lpeg" "$lua_base-filesystem" "$lua_base-alt-getopt")
+  pkgdesc="$pkgdesc ($lua_version)"
 
   luarocks --lua-version="$lua_version" --tree="$pkgdir/usr" \
     make --deps-mode=none --no-manifest "$_rockname-dev-$_rockrel.rockspec"

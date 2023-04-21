@@ -16,8 +16,6 @@ pkgbase = lua-moonscript
 
 pkgname = lua-moonscript
 
-pkgname = lua51-moonscript
-
 pkgname = lua52-moonscript
 
 pkgname = lua53-moonscript
