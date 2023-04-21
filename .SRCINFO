@@ -1,0 +1,18 @@
+pkgbase = dirksimple-git
+	pkgdesc = This is a dirt-simple FMV/laserdisc game player.
+	pkgver = r184.9d17b0b
+	pkgrel = 1
+	url = https://github.com/icculus/DirkSimple
+	arch = x86_64
+	license = zlib
+	makedepends = git
+	makedepends = cmake
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_ttf
+	depends = libvorbis
+	provides = dirksimple
+	source = dirksimple::git+https://github.com/icculus/DirkSimple.git
+	md5sums = SKIP
+
+pkgname = dirksimple-git
