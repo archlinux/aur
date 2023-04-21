@@ -2,7 +2,7 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=setzer
-pkgver=0.4.8
+pkgver=55
 pkgrel=1
 pkgdesc='LaTeX editor written in Python with Gtk'
 arch=('any')
@@ -23,7 +23,7 @@ depends=(
 	'xdg-utils')
 makedepends=('appstream' 'meson')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgver.tar.gz")
-sha256sums=('4e347f538a5bf9d0be73de3b91fa79d3601c94ba1faf74f191f1904ec67fa2cf')
+sha256sums=('e0096886627159e61925b1d623c7f419193c4577b1f32acd8f6ea94a89ed0513')
 
 build() {
   arch-meson "Setzer-$pkgver" build
