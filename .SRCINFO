@@ -1,10 +1,11 @@
 pkgbase = yahpt-git
 	pkgdesc = Yet Another HF Propagation Tool
 	pkgver = r10.7f01dd2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/f4iey/yahpt.git
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = python
 	depends = python-requests
 	depends = python-gobject

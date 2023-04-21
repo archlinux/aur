@@ -2,10 +2,11 @@
 # Contributor: f4iqn <f4iqn@f6kgl.ampr.org>
 pkgname=yahpt-git
 pkgver=r10.7f01dd2
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet Another HF Propagation Tool"
 arch=('any')
 license=('GPL3')
+makedepends=('git')
 depends=('python' 'python-requests' 'python-gobject' 'python-pillow')
 url="https://gitlab.com/f4iey/yahpt.git"
 source=($pkgname::"git+$url")
