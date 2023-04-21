@@ -1,11 +1,11 @@
 # Maintainer: f4iey <f4iey@f6kgl.ampr.org>
 pkgname=vlfrx-tools
 pkgver=0.9m
-pkgrel=1
+pkgrel=2
 pkgdesc="A modular software toolkit for timestamped signal processing and storage."
 arch=('any')
 license=('BSD')
-makedepends=('make' 'gcc')
+#makedepends=()
 depends=('fftw' 'alsa-lib' 'libvorbis' 'flac' 'libjpeg' 'xforms' 'libsamplerate' 'ncurses' 'libx11' 'libpng' 'libxpm' 'libshout' 'sox' 'gnuplot' 'texlive-core')
 url="http://abelian.org/vlfrx-tools"
 source=("$url/$pkgname-$pkgver.tgz")

@@ -1,12 +1,10 @@
 pkgbase = vlfrx-tools
 	pkgdesc = A modular software toolkit for timestamped signal processing and storage.
 	pkgver = 0.9m
-	pkgrel = 1
+	pkgrel = 2
 	url = http://abelian.org/vlfrx-tools
 	arch = any
 	license = BSD
-	makedepends = make
-	makedepends = gcc
 	depends = fftw
 	depends = alsa-lib
 	depends = libvorbis
