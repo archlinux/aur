@@ -1,26 +1,26 @@
-## Approved, unofficial repo of [Nordlayer](https://nordlayer.com) VPN package for Linux (esp [ArchLinux](https://archlinux.org/)) 
+# [Nordlayer](https://nordlayer.com) VPN package for Linux (esp [ArchLinux](https://archlinux.org/)) 
+[![AUR version](https://img.shields.io/aur/version/nordlayer)](https://aur.archlinux.org/packages/nordlayer) [![Nordlayer version](https://img.shields.io/badge/nordlayer-2.6.3-green)](https://nordlayer.com/download/linux/)
+### Important
+Original [repository](https://github.com/mearaj/nordlayer) was archived by [mearaj](https://github.com/mearaj) as they are longer a nordlayer user.<br>
+I will be maintaining the package from now on.
 
-## Important! ##
-#### Original repository was archived by mearaj as they are longer a nordlayer user [mearaj/nordlayer](https://github.com/mearaj/nordlayer) ####
-#### I will be trying to maintain this fork [Sidicer/nordlayer](https://github.com/Sidicer/nordlayer) of his original work ####
+If you run into any errors feel free to create an [issue](https://github.com/Sidicer/nordlayer/issues/new) or leave a comment [in AUR](https://aur.archlinux.org/packages/nordlayer)
 
-
-To check if the repo is upto date with the official
-[Nordlayer](https://nordlayer.com), run the following from
-console/terminal.<br>
-Make sure [curl](https://curl.se/) is installed on your system.
-
-```
+To check latest official [nordlayer](https://nordlayer.com) version:
+```sh
 curl https://downloads.nordlayer.com/linux/latest/version -w "\n"
 ```
-For any issues, please create an issue or
-[Add comment here](https://aur.archlinux.org/packages/nordlayer)
+---
+### Installing Nordlayer from AUR:
+```sh
+yay -S nordlayer
+```
 
-For Arch Linux Users,
-* Clone this repo
-* Change to cloned repo ```cd nordlayer``` 
-* MakePkg ```makepkg -si```
-* Install Package ```sudo pacman -U "package_name_pkg.tar.zst"``` where
-<b>package_name_pkg.tar.zst</b> is the name of package generated from <b>makepkg -si</b>
-
-### Thanks! ###
+### Building the package manually:
+```sh
+git clone https://github.com/Sidicer/nordlayer.git
+cd nordlayer
+makepkg -si
+# If 'makepkg -si' fails to install automatically:
+sudo pacman -U nordlayer-2.6.3-0-x86_64.pkg.tar.zst
+```
