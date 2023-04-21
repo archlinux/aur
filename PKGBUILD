@@ -7,37 +7,28 @@ pkgrel=1
 pkgdesc="Simple Desktop RSS Reader made using VueJS"
 url="https://github.com/hello-efficiency-inc/raven-reader"
 license=('MIT')
-makedepends=('yarn')
-depends=("libxss" "libxtst" "libappindicator-gtk2" "gtk2" "libnotify")
+depends=("libxss" "libxtst" "libappindicator-gtk2" "gconf-gtk2" "libnotify")
 provides=("${pkgname}")
-_pkgname="Raven Reader"
+_pkgname="Raven\ Reader"
 arch=('x86_64')
+# source=("https://download.helloefficiency.com/ravenreader/Raven Reader-${pkgver}.AppImage"
 
-source=("git+https://github.com/hello-efficiency-inc/raven-reader#tag=v${pkgver}"
-        "${pkgname}.desktop"
-        "package.json.patch")
-sha512sums=('SKIP'
-            '9fa28be0cfac906f0d6acb6be147f797999660fda207df0b282a132950e587b5db0e77c719a38892bf6bc5e1cd77e5e9e24bf9ba169fd5505abd2dcd71ed27cf'
-            'cfa4d13e9169692343db5f7c0a46c8fdc1780f2db4af6d2c4e5f4ad3adc1dd3e57766732d07f7e96757f133ee09dcfcf84c493740e5d026dca766984c67486df')
-
-prepare(){
-        patch ${srcdir}/${pkgname}/package.json package.json.patch
-}
+source=("https://github.com/hello-efficiency-inc/raven-reader/releases/download/v${pkgver}/Raven-Reader-${pkgver}.AppImage"
+        "${pkgname}.desktop")
+sha512sums=('99d5325b96430200586b3f3edc612d1d246091fc8e7e75d7e122d6532a39529da210ff040311eea44bb744aa3e9ef8fd803d8ae000cb852153e01c1b50244ce9'
+            '9fa28be0cfac906f0d6acb6be147f797999660fda207df0b282a132950e587b5db0e77c719a38892bf6bc5e1cd77e5e9e24bf9ba169fd5505abd2dcd71ed27cf')
 
 build(){
-	export NODE_OPTIONS=--openssl-legacy-provider
-	cd ${srcdir}/${pkgname}
-        yarn
-        yarn electron:build 
-        chmod +x ./dist_electron/"${_pkgname}-${pkgver}.AppImage"
-        ./dist_electron/"${_pkgname}-${pkgver}.AppImage" --appimage-extract
+	cd ${srcdir}
+	chmod +x Raven-Reader-${pkgver}.AppImage
+	./Raven-Reader-${pkgver}.AppImage --appimage-extract
 }
 package() {
 	mkdir -p ${pkgdir}/usr
 	mkdir -p ${pkgdir}/opt/$pkgname
 	mkdir -p ${pkgdir}/usr/share/applications
 
-	cp -pR ${srcdir}/${pkgname}/squashfs-root/* ${pkgdir}/opt/$pkgname/
+	cp -pR ${srcdir}/squashfs-root/* ${pkgdir}/opt/$pkgname/
 	mv -uf ${pkgdir}/opt/$pkgname/usr/share/icons ${pkgdir}/usr/share/
 	cp -Luf $pkgname.desktop ${pkgdir}/usr/share/applications/
 

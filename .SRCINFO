@@ -5,18 +5,15 @@ pkgbase = raven-reader
 	url = https://github.com/hello-efficiency-inc/raven-reader
 	arch = x86_64
 	license = MIT
-	makedepends = yarn
 	depends = libxss
 	depends = libxtst
 	depends = libappindicator-gtk2
-	depends = gtk2
+	depends = gconf-gtk2
 	depends = libnotify
 	provides = raven-reader
-	source = git+https://github.com/hello-efficiency-inc/raven-reader#tag=v1.0.79
+	source = https://github.com/hello-efficiency-inc/raven-reader/releases/download/v1.0.79/Raven-Reader-1.0.79.AppImage
 	source = raven-reader.desktop
-	source = package.json.patch
-	sha512sums = SKIP
+	sha512sums = 99d5325b96430200586b3f3edc612d1d246091fc8e7e75d7e122d6532a39529da210ff040311eea44bb744aa3e9ef8fd803d8ae000cb852153e01c1b50244ce9
 	sha512sums = 9fa28be0cfac906f0d6acb6be147f797999660fda207df0b282a132950e587b5db0e77c719a38892bf6bc5e1cd77e5e9e24bf9ba169fd5505abd2dcd71ed27cf
-	sha512sums = cfa4d13e9169692343db5f7c0a46c8fdc1780f2db4af6d2c4e5f4ad3adc1dd3e57766732d07f7e96757f133ee09dcfcf84c493740e5d026dca766984c67486df
 
 pkgname = raven-reader
