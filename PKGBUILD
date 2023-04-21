@@ -1,4 +1,4 @@
-# Maintainer: Nikarh <nikolajs.arhipovs@gmail.com>
+# Maintainer: Nikarh <n@arhipov.net>
 pkgname=psvita-sdk
 pkgver=1
 pkgrel=1
