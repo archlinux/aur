@@ -1,10 +1,10 @@
 # Maintainer: Code002Lover <admin at ipost dot rocks>
 pkgname="ipass"
 pkgver="1.0.0"
-pkgrel="1"
-pkgdesc="A simple password manager"
+pkgrel="2"
+pkgdesc="A simple password manager GUI"
 arch=('any')
-depends=('rust' 'openssl')
+depends=('rust' 'openssl' 'libsoup' 'webkit2gtk')
 license=('custom')
 source=('https://github.com/002Hub/IPass-GUI/archive/refs/tags/v'$pkgver'.tar.gz')
 sha256sums=('SKIP')

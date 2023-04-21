@@ -1,12 +1,14 @@
 pkgbase = ipass
 	pkgdesc = A simple password manager
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/002Hub/IPass-GUI
 	arch = any
 	license = custom
 	depends = rust
 	depends = openssl
+	depends = libsoup
+	depends = webkit2gtk
 	source = https://github.com/002Hub/IPass-GUI/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = SKIP
 
