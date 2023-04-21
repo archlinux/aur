@@ -1,13 +1,13 @@
 pkgbase = backblaze-b2-bin
 	pkgdesc = Backblaze B2 Command Line Client
-	pkgver = 3.7.0
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://github.com/Backblaze/B2_Command_Line_Tool
 	arch = x86_64
 	license = MIT
 	provides = backblaze-b2
 	conflicts = backblaze-b2
-	source_x86_64 = b2-linux::https://github.com/Backblaze/B2_Command_Line_Tool/releases/download/v3.7.0/b2-linux
-	sha256sums_x86_64 = 846d973ae6a9aed6ef22f48ea2129619d4e65f2da889285f2c30756ccec30ab6
+	source_x86_64 = b2-linux::https://github.com/Backblaze/B2_Command_Line_Tool/releases/download/v3.8.0/b2-linux
+	sha256sums_x86_64 = aef416def8a0cb950b8b790ec342189ee50bd4388b4375a9c5f51fc4c2324514
 
 pkgname = backblaze-b2-bin
