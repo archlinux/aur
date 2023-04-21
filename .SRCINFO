@@ -1,7 +1,7 @@
 pkgbase = wazzup
 	pkgdesc = Very opinionated Rust WASM project builder
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dnaka91/wazzup
 	arch = aarch64
 	arch = i686
