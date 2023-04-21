@@ -1,0 +1,19 @@
+pkgbase = chezmoi_modify_manager-git
+	pkgdesc = Tools for chezmoi to handle mixed settings and state
+	pkgver = v2.0.0.alpha1.r18.538e540
+	pkgrel = 1
+	url = https://github.com/VorpalBlade/chezmoi_modify_manager
+	arch = x86_64
+	arch = i686
+	arch = armv7
+	arch = aarch64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	depends = openssl
+	provides = chezmoi_modify_manager
+	conflicts = chezmoi_modify_manager
+	source = chezmoi_modify_manager::git+https://github.com/VorpalBlade/chezmoi_modify_manager#branch=v2
+	md5sums = SKIP
+
+pkgname = chezmoi_modify_manager-git

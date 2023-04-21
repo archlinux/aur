@@ -1,0 +1,5 @@
+*.tar.gz
+*.tar.zst
+chezmoi_modify_manager/
+pkg/
+src/
