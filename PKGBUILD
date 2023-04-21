@@ -2,7 +2,7 @@
 
 _pkgname="gitwife"
 pkgname="gitwife-git"
-pkgver=0.2.0.r0.ge9dadc2
+pkgver=0.2.0.r52.g29281c4
 pkgrel=1
 pkgdesc="Tool to manage your installations from Git Repositories for you"
 arch=(any)
@@ -35,8 +35,8 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/$_pkgname"
-	cargo b --release
+	cd "${srcdir}/${_pkgname}"
+	cargo b --release --no-default-features
 }
 
 package() {
