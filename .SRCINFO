@@ -1,0 +1,16 @@
+pkgbase = gojq-bin
+	pkgdesc = Pure Go implementation of jq
+	pkgver = 0.12.12
+	pkgrel = 1
+	url = https://github.com/itchyny/gojq
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = gojq
+	conflicts = gojq
+	source_x86_64 = https://github.com/itchyny/gojq/releases/download/v0.12.12/gojq_v0.12.12_linux_amd64.tar.gz
+	sha256sums_x86_64 = f6f20b04dfa55b9588950f8561b5356ed018f10e0056ceabbe6159b5e435396e
+	source_aarch64 = https://github.com/itchyny/gojq/releases/download/v0.12.12/gojq_v0.12.12_linux_arm64.tar.gz
+	sha256sums_aarch64 = c343d3858143883995a6caed2ec1e5b6c8b8e02fd89510bbac0ebbae4fd06225
+
+pkgname = gojq-bin
