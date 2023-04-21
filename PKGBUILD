@@ -1,11 +1,11 @@
 # Maintainer: f4iey <f4iey@f6kgl.ampr.org>
 pkgname=tetra-kit-player-git
 pkgver=r65.ea258fc
-pkgrel=1
+pkgrel=2
 pkgdesc="Web application that streams events and files produced by tetra kit."
 arch=('any')
 license=('CUSTOM')
-makedepends=('npm')
+makedepends=('git' 'npm')
 options=(!strip)
 depends=('tetra-kit-git' 'npm')
 url="https://github.com/sonictruth/tetra-kit-player"
