@@ -1,13 +1,12 @@
 pkgbase = ib-tws
 	pkgdesc = Electronic trading platform from discount brokerage firm Interactive Brokers
 	pkgver = 10.22.1i
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://interactivebrokers.com/
 	arch = any
 	license = custom
-	makedepends = imagemagick
-	makedepends = unzip
+	makedepends = libarchive
 	depends = gtk2
 	optdepends = ffmpeg-compat-55
 	backup = etc/ib-tws.conf

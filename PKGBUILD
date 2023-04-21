@@ -1,9 +1,10 @@
 # Maintainer: Ben Alex <ben.alex@acegi.com.au>
 # Contributor: Jon Wiersma <archaur@jonw.org>
+# Contributor: bgh <aur at bgh dot io>
 
 pkgname=ib-tws
 pkgver=10.22.1i
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Electronic trading platform from discount brokerage firm Interactive Brokers'
 arch=('any')
@@ -12,7 +13,7 @@ license=('custom')
 backup=('etc/ib-tws.conf' 'etc/ib-gw.conf')
 depends=(gtk2)
 optdepends=(ffmpeg-compat-55)
-makedepends=(imagemagick unzip)
+makedepends=(libarchive)
 
 source=('LICENSE'
 	'ib-tws'
@@ -69,17 +70,11 @@ build() {
   mv ${srcdir}/target/jars/*.jar ${srcdir}
   rm -f "${HOME}"/Desktop/Trader\ Workstation*.desktop
 
-  # Thanks to http://finance.groups.yahoo.com/group/TWSAPI/files/RPM%20spec%20file/
-  unzip -o jts4launch-*.jar trader/common/images/ibapp_icon_48x48.gif
-  unzip -o jts4launch-*.jar trader/common/images/quote_details_48x48.jpg
-  convert trader/common/images/ibapp_icon_48x48.gif ${pkgname}.png
-  convert trader/common/images/ibapp_icon_48x48.gif -resize 66.666% ${pkgname}-32x32.png
-  convert trader/common/images/ibapp_icon_48x48.gif -resize 33.333% ${pkgname}-16x16.png
-  convert trader/common/images/ibapp_icon_48x48.gif ${pkgname}-48x48.png
-  convert trader/common/images/quote_details_48x48.jpg ib-gw.png
-  convert trader/common/images/quote_details_48x48.jpg -resize 66.666% ib-gw-32x32.png
-  convert trader/common/images/quote_details_48x48.jpg -resize 33.333% ib-gw-16x16.png
-  convert trader/common/images/quote_details_48x48.jpg ib-gw-48x48.png
+  # icons
+  bsdtar --extract --include trader/common/images/ibkr_icon_w12.32_h24.svg --strip-components=3 \
+    --to-stdout --file jts4launch-*.jar | tee ib-tws.svg ib-gw.svg
+  sed --in-place --expression='s/{fill: #911421;}/{fill: #0d0d0d;}/' \
+    --expression='s/{fill: #d81222;}/{fill: #161616;}/' ib-gw.svg # recolor gw icon to differentiate
 }
 
 package() {
@@ -92,8 +87,8 @@ package() {
   install -Dm644 ib-gw.conf ${pkgdir}/etc/ib-gw.conf
   install -Dm644 ${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
   install -Dm644 ib-gw.desktop ${pkgdir}/usr/share/applications/ib-gw.desktop
-  mkdir -p ${pkgdir}/usr/share/pixmaps/
-  install -Dm644 *.png "${pkgdir}/usr/share/pixmaps/"
+  mkdir -p ${pkgdir}/usr/share/icons/
+  install -Dm644 ib-*.svg "${pkgdir}/usr/share/icons/"
   mkdir -p ${pkgdir}/usr/share/${pkgname}/jre
   cp -R jre ${pkgdir}/usr/share/${pkgname}
   mkdir -p ${pkgdir}/usr/share/${pkgname}/jars
