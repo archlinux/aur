@@ -1,12 +1,12 @@
 # Maintainer: f4iey <f4iey@f6kgl.ampr.org>
 pkgname=radiosonde_auto_rx
-pkgver=1.6.0
-pkgrel=1
+pkgver=1.6.1
+pkgrel=2
 pkgdesc="Automatically Track Radiosonde Launches using RTLSDR"
 arch=('x86_64')
 url="https://github.com/projecthorus/radiosonde_auto_rx"
 license=('GPL-3')
-makedepends=(cmake gcc)
+makedepends=(cmake git)
 depends=(python python-numpy python-setuptools python-crcmod python-requests python-dateutil python-pip python-flask python-flask-socketio python-semver python-simplekml sox git libtool usbutils libusb rng-tools libsamplerate lapack rtl-sdr)
 source=(https://codeload.github.com/projecthorus/$pkgname/tar.gz/refs/tags/v$pkgver)
 sha256sums=('SKIP')

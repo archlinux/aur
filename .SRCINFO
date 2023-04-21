@@ -1,12 +1,12 @@
 pkgbase = radiosonde_auto_rx
 	pkgdesc = Automatically Track Radiosonde Launches using RTLSDR
-	pkgver = 1.6.0
-	pkgrel = 1
+	pkgver = 1.6.1
+	pkgrel = 2
 	url = https://github.com/projecthorus/radiosonde_auto_rx
 	arch = x86_64
 	license = GPL-3
 	makedepends = cmake
-	makedepends = gcc
+	makedepends = git
 	depends = python
 	depends = python-numpy
 	depends = python-setuptools
@@ -27,7 +27,7 @@ pkgbase = radiosonde_auto_rx
 	depends = libsamplerate
 	depends = lapack
 	depends = rtl-sdr
-	source = https://codeload.github.com/projecthorus/radiosonde_auto_rx/tar.gz/refs/tags/v1.6.0
+	source = https://codeload.github.com/projecthorus/radiosonde_auto_rx/tar.gz/refs/tags/v1.6.1
 	sha256sums = SKIP
 
 pkgname = radiosonde_auto_rx
