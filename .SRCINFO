@@ -1,0 +1,19 @@
+pkgbase = hasl-hg
+	pkgdesc = The Hassle-free Authentication and Security Layer client library
+	pkgver = r34.fa548528b5f7
+	pkgrel = 1
+	url = https://keep.imfreedom.org/hasl/hasl/
+	arch = x86_64
+	license = GPL
+	makedepends = meson
+	makedepends = ninja
+	makedepends = mercurial
+	makedepends = gi-docgen
+	makedepends = gobject-introspection
+	depends = glib2
+	depends = glibc
+	provides = hasl
+	source = hg+https://keep.imfreedom.org/hasl/hasl
+	sha256sums = SKIP
+
+pkgname = hasl-hg
