@@ -15,7 +15,6 @@ pkgbase = okular-no-purpose
 	makedepends = kdoctools
 	makedepends = khtml
 	makedepends = chmlib
-	makedepends = wayland-protocols
 	depends = djvulibre
 	depends = libspectre
 	depends = libkexiv2
@@ -46,7 +45,7 @@ pkgbase = okular-no-purpose
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
 	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
-	sha256sums = b63d81b4471bd37526b0da8f283373df3f60c9a5ea7c9cc40d3baa599c76a50c
+	sha256sums = 6c0dff299abf86df88d86e7d31d1dac2633775a2cca801ab3ca5104fafbcd40c
 	sha256sums = SKIP
 
 pkgname = okular-no-purpose
