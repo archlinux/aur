@@ -3,10 +3,10 @@
 
 pkgname=gnome-meta
 pkgver=43
-pkgrel=2
-pkgdesc='Meta package for installing the gnome group'
+pkgrel=3
+pkgdesc='Meta package to install GNOME'
 arch=(any)
-url='https://www.archlinux.org/'
+url='https://www.gnome.org/'
 license=(GPL)
 depends=(
   baobab
@@ -55,11 +55,9 @@ depends=(
   gvfs-nfs
   gvfs-smb
   malcontent
-  mutter
   nautilus
   orca
   rygel
-  simple-scan
   sushi
   totem
   tracker3-miners
