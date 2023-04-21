@@ -3,8 +3,8 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=cosmic-epoch-git
-pkgver=r59.fc733ea
-pkgrel=2
+pkgver=r61.c60c29e
+pkgrel=1
 pkgdesc="desktop environment in Rust, Iced. GNOME inspired, by System76, Pop! OS."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-epoch"
@@ -27,7 +27,6 @@ backup=('etc/cosmic-comp/config.ron'
         'etc/cosmic-panel/config.ron')
 options=('!lto')
 source=('git+https://github.com/pop-os/cosmic-epoch.git'
-        'https://github.com/pop-os/cosmic-epoch/pull/97.patch'
         'git+https://github.com/pop-os/cosmic-applets.git'
         'git+https://github.com/pop-os/cosmic-applibrary.git'
         'git+https://github.com/pop-os/cosmic-bg.git'
@@ -41,7 +40,6 @@ source=('git+https://github.com/pop-os/cosmic-epoch.git'
         'git+https://github.com/pop-os/cosmic-workspaces-epoch.git'
         'git+https://github.com/pop-os/xdg-desktop-portal-cosmic.git')
 sha256sums=('SKIP'
-            '7362de6f355bce6d276b8ff71cdfd12599b61861349b0329b99d3587f56cfe7e'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -77,10 +75,6 @@ _submodules=(
 
 prepare() {
   cd "$srcdir/cosmic-epoch"
-
-  # https://github.com/pop-os/cosmic-epoch/issues/95
-  git apply -3 ../97.patch
-
   for submodule in "${_submodules[@]}"; do
     git submodule init "${submodule#*::}"
     git config submodule."${submodule#*::}".url "$srcdir"/"${submodule%::*}"
