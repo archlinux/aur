@@ -1,7 +1,7 @@
 pkgbase = r-ragg
 	pkgdesc = Graphic Devices Based on AGG
 	pkgver = 1.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=ragg
 	arch = i686
 	arch = x86_64
