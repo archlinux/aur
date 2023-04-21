@@ -1,7 +1,7 @@
 # Maintainer: Vlad Glagolev <scm(at)vaygr(dot)net>
 
 pkgname=rofi-connman
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="menu-driven connman interface"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ optdepends=('dmenu: to use dmenu instead of rofi'
             'mawk: for faster profile processing')
 
 source=($pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('ad2d18bcb33e0df419fc61efa237b009511872bd2bb1e8295bdda2547cce6d82')
+sha256sums=('8a92dbcd090ff3ff01c337baeaf9c126a5ea7dd2ae0252d8ae313d282df263e0')
 
 build() {
   cd "${pkgname}-${pkgver}"

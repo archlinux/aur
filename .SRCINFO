@@ -1,6 +1,6 @@
 pkgbase = rofi-connman
 	pkgdesc = menu-driven connman interface
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/sourcemage/rofi-connman
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = rofi-connman
 	optdepends = dmenu: to use dmenu instead of rofi
 	optdepends = sexpect: to use sexpect instead of empty
 	optdepends = mawk: for faster profile processing
-	source = rofi-connman-0.4.tar.gz::https://github.com/sourcemage/rofi-connman/archive/refs/tags/v0.4.tar.gz
-	sha256sums = ad2d18bcb33e0df419fc61efa237b009511872bd2bb1e8295bdda2547cce6d82
+	source = rofi-connman-0.5.tar.gz::https://github.com/sourcemage/rofi-connman/archive/refs/tags/v0.5.tar.gz
+	sha256sums = 8a92dbcd090ff3ff01c337baeaf9c126a5ea7dd2ae0252d8ae313d282df263e0
 
 pkgname = rofi-connman
