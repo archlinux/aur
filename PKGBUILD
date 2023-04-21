@@ -15,7 +15,7 @@ source=("$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('94f9b547aecb635244d788de3a3a2c317061bf6fff99eaa747f79c067f1825de')
 
 prepare() {
-  # "Create a shortcut"
+  # Create a shortcut
   echo "Categories=Game;" >> $_desktop
   sed -i '1 i\Comment=An Itch.io/Epic Games/GOG launcher that works through plugins' $_desktop
   sed -i '1 i\StartupWMClass=Alfae' $_desktop
