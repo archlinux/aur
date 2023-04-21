@@ -1,7 +1,8 @@
-# Maintainer: Bilal Elmoussaoui <bil.elmoussaoui@gmail.com>
+# Maintainer: Sergii Fesenko <sergii underscore f dot at outlook dot com>
+# Contributor: Bilal Elmoussaoui <bil.elmoussaoui@gmail.com>
 
 pkgname=numix-square-icon-theme-git
-pkgver=0.r3.3773866
+pkgver=23.04.20.r0.a1a1a02f
 pkgrel=1
 pkgdesc='Square icon theme from the Numix project'
 arch=('any')
@@ -17,8 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd numix-square-icon-theme
-
-  echo "0.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe --tags --long | sed 's/-/.r/; s/-g/./'
 }
 
 package() {
