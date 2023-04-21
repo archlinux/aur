@@ -1,6 +1,6 @@
 pkgbase = gtt-bin
 	pkgdesc = Translate TUI in Golang
-	pkgver = 4
+	pkgver = 5
 	pkgrel = 1
 	url = https://github.com/eeeXun/gtt
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = gtt-bin
 	optdepends = xclip: for clipboard support on X11
 	optdepends = wl-clipboard: for clipboard support on Wayland
 	provides = gtt
-	source_x86_64 = gtt-4-linux-amd64.tar.gz::https://github.com/eeeXun/gtt/releases/download/v4/gtt-linux-amd64.tar.gz
-	sha256sums_x86_64 = 2485e7f70c74efc656250f7250c9ee32d9618987fa156814db91110834d7a7f8
+	source_x86_64 = gtt-5-linux-amd64.tar.gz::https://github.com/eeeXun/gtt/releases/download/v5/gtt-linux-amd64.tar.gz
+	sha256sums_x86_64 = d5c9347eeee65868c8f4d1ba4d3199c10e6085b121d9cf1e22cc6d9a5ca981ee
 
 pkgname = gtt-bin
