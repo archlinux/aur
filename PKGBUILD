@@ -29,7 +29,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir"/${_name}
+    cd "$srcdir/${_name}"
     install -Dm 755 "${_name}" "${pkgdir}/usr/bin/${_name}"
     install -Dm 644 "${_name}.1" "${pkgdir}/usr/share/man/man1/${_name}.1"
     install -Dm 644 COPYING "${pkgdir}/usr/share/licenses/${_name}/COPYING"
