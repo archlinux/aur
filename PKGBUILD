@@ -6,7 +6,7 @@
 _commit=8e3e7ca911dcbc3db3cb80772bab97b47cb76e7a  # v9.4.6
 
 pkgname=penguins-eggs
-pkgver=9.4.5
+pkgver=9.4.6
 pkgrel=1
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 arch=('any')
