@@ -1,0 +1,4 @@
+#! /bin/bash
+
+IFS=':'
+find 2>/dev/null $PATH -maxdepth 1 -type f -executable | xargs basename -a | sort -u
