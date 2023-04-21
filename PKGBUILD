@@ -2,14 +2,14 @@
 
 pkgname=widgie-menu-compat
 pkgver=1.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Compatibility layer to use widgie-menu as a replacement of bemenu and dmenu"
 arch=('any')
 url="https://gitlab.com/manner/widgie"
 license=('GPL3')
 depends=('widgie')
-provides=('dmenu' 'bemenu')
-conflicts=('dmenu' 'bemenu' 'bemenu-ncurses' 'bemenu-wayland' 'bemenu-wlroots' 'bemenu-x11')
+provides=('dmenu' 'bemenu' 'sxmo-dmenu' 'bemenu-wayland' 'bemenu-wlroots' 'bemenu-x11')
+conflicts=('dmenu' 'bemenu' 'sxmo-dmenu' 'bemenu-ncurses' 'bemenu-wayland' 'bemenu-wlroots' 'bemenu-x11')
 source=("widgie-menu-path")
 sha256sums=('ce4cfb2c3c858228106de03a35bff4f0260a8a9174e39d307f73a5dc84e1b339')
 
