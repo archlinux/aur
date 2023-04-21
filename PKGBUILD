@@ -5,7 +5,7 @@
 pkgbase=greetd-qtgreet-git
 pkgname=('greetd-qtgreet-qt5-git' 'greetd-qtgreet-qt6-git')
 _pkg="${pkgbase%-git}"
-pkgver=1.0.0.r40.g666603c
+pkgver=1.0.0.r50.gb2c7e7c
 pkgrel=1
 pkgdesc='Qt based greeter for greetd'
 arch=('aarch64' 'x86_64')
@@ -16,6 +16,8 @@ makedepends=(
 	'dfl-applications-qt6'
 	'dfl-ipc'
 	'dfl-ipc-qt6'
+	'dfl-login1-git'
+	'dfl-login1-qt6-git'
 	'dfl-utils'
 	'dfl-utils-qt6'
 	'dfl-wayqt'
@@ -53,6 +55,7 @@ package_greetd-qtgreet-qt5-git() {
 	depends=(
 		'dfl-applications'
 		'dfl-ipc'
+		'dfl-login1'
 		'dfl-utils'
 		'dfl-wayqt'
 		'greetd'
@@ -68,6 +71,7 @@ package_greetd-qtgreet-qt6-git() {
 	depends=(
 		'dfl-applications-qt6'
 		'dfl-ipc-qt6'
+		'dfl-login1-qt6'
 		'dfl-utils-qt6'
 		'dfl-wayqt-qt6'
 		'greetd'
