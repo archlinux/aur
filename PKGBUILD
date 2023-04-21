@@ -26,13 +26,13 @@ build() {
     cd "$pkgname-$_pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
+    cargo build --frozen --release --no-default-features
 }
 
 check() {
     cd "$pkgname-$_pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
+    cargo test --frozen --no-default-features
 }
 
 package() {
