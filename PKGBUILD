@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: hexchain <i@hexchain.org>
 pkgname=python-requirements-parser
 _name=${pkgname#python-}
