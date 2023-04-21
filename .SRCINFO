@@ -1,11 +1,12 @@
 pkgbase = kappanhang
 	pkgdesc = Remotely open audio channels and a serial port to an Icom RS-BA1 server (for ex. Icom IC-705 transceiver).
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nonoo/kappanhang
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = go
 	depends = libpulse
 
