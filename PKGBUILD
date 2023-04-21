@@ -2,9 +2,9 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 _srcname=I.Ming
-_version=
+_version=8.00
 _version_pkg_updates=1
-_gitcommit=
+_gitcommit=f9dfbc201912a27bbe373315c160d275a21ac432
 
 pkgname=ttf-i.ming
 pkgver="${_version}+${_version_pkg_updates}+${_gitcommit::7}"
