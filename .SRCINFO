@@ -1,0 +1,20 @@
+pkgbase = psvita-sdk-extra-packages
+	pkgdesc = PS vita homebrew sdk with gl4es support
+	pkgver = 1
+	pkgrel = 1
+	url = https://vitasdk.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = curl
+	depends = pacman>5
+	depends = git
+	options = !strip
+	source = sudo-fix.patch
+	source = git+https://github.com/vitasdk/vdpm
+	source = git+https://github.com/nikarh/vita-packages-extra
+	md5sums = 1213c1c23d734af92553ac8801443d36
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = psvita-sdk-extra-packages
