@@ -1,12 +1,13 @@
 pkgbase = buildbox-casd
 	pkgdesc = Local cache and proxy for remote CAS servers
 	pkgver = 0.0.63
-	pkgrel = 2
+	pkgrel = 3
 	url = https://buildgrid.build
 	arch = x86_64
 	license = Apache
 	makedepends = benchmark
 	makedepends = buildbox-common
+	makedepends = buildbox-fuse
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
