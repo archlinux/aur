@@ -1,7 +1,7 @@
 # Maintainer: Alisa Lain <al1-ce@null.net>
 
 pkgname='backpack'
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Git based backup tool'
 arch=('i686' 'x86_64')
