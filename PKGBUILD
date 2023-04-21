@@ -2,13 +2,14 @@
 
 pkgname=certomancer
 pkgver=0.9.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Quickly construct, mock & deploy PKI test configurations"
 url="https://github.com/MatthiasValvekens/certomancer"
 license=(MIT)
 arch=(any)
 makedepends=(
   python-pytest-runner
+  python-setuptools
   python-wheel
 )
 checkdepends=(
@@ -25,13 +26,11 @@ depends=(
   python-click
   python-cryptography
   python-dateutil
-  python-importlib-metadata
   python-jinja
   python-oscrypto
   python-python-pkcs11
   python-pyyaml
   python-requests-mock
-  python-setuptools
   python-tzlocal
   python-werkzeug
 )
@@ -49,7 +48,7 @@ build() {
 check() {
   cd "$_archive"
 
-  python -m pytest -k 'not test_validate[setup1]'
+  python -m pytest -k "not test_validate[setup1]"
 }
 
 package() {
