@@ -5,3 +5,6 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+!audiorelay.desktop
+!audiorelay.install
+!audiorelay.sh

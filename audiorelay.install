@@ -1,0 +1,75 @@
+msg_blue() {
+    printf "${blue}==>${bold} $1${all_off}\n"
+}
+note() {
+    printf "${blue}==>${yellow} Note:${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+config_path="/etc/pipewire/pipewire.conf.d"
+config_name="10-audiorelay.conf"
+
+post_install() {
+# https://community.audiorelay.net/t/audio-not-recorded-on-pop-os/1537/2
+if test -d "$config_path"; then
+    note "Detected Pipewire installation, writing config..."
+    msg_blue " Please restart your Pipewire daemon or Re-login."
+    msg_blue " (if you don't want this, delete the follow file)"
+
+cat > "$config_path/$config_name" << EOF
+context.objects = [
+    { factory = adapter
+       args = {
+           factory.name     = support.null-audio-sink
+           node.name        = "audiorelay-virtual-mic-sink"
+           node.description = "AudioRelay Mic&Sink"
+           media.class      = "Audio/Duplex"
+           audio.position   = "FL,FR"
+       }
+    }
+]
+context.modules = [
+    {   name = libpipewire-module-loopback
+        args = {
+            audio.position = [ FL FR ]
+            capture.props = {
+                media.class = Audio/Sink
+                node.name = audiorelay_Speaker
+                node.description = "AudioRelay Speaker"
+                #node.latency = 1024/48000
+                #audio.rate = 44100
+                #audio.channels = 2
+                #audio.position = [ FL FR ]
+                #target.object = ""
+            }
+            playback.props = {
+                #media.class = Audio/Source
+                node.name = audiorelay_source
+                node.description = "Virtual Source"
+                #node.latency = 1024/48000
+                #audio.rate = 44100
+                #audio.channels = 2
+                #audio.position = [ FL FR ]
+                #target.object = ""
+            }
+        }
+    }
+]
+EOF
+
+    msg_blue "   -> file://"$config_path/$config_name""
+fi
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    rm "$config_path/$config_name"
+    msg_blue "Removed "$config_path/$config_name""
+}

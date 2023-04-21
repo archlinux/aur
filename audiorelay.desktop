@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=AudioRelay
+Comment=Stream your PC audio to your phone
+Comment[zh_CN]=将电脑音频流式传输到手机
+Exec=audiorelay
+Icon=audiorelay
+Terminal=false
+Type=Application
+Categories=Audio;AudioVideo;Utility
+MimeType=

@@ -1,8 +1,9 @@
 pkgbase = audiorelay
 	pkgdesc = Stream your PC audio to your phone
 	pkgver = 0.27.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://audiorelay.net
+	install = audiorelay.install
 	arch = x86_64
 	license = unknown
 	depends = alsa-lib
@@ -10,12 +11,18 @@ pkgbase = audiorelay
 	depends = harfbuzz
 	depends = libogg
 	depends = libpulse
+	depends = java-runtime>=17
+	depends = archlinux-java-run
 	depends = libvorbis
 	depends = libxau
 	depends = libxcb
 	depends = systemd-libs
 	depends = xdg-utils
-	source = https://dl.audiorelay.net/setups/linux/audiorelay-0.27.5.deb
-	sha256sums = b4b00d3ba21718df61021a67cb7b3eaab5dfaaa779bef7e3247054a079cd3dee
+	source = https://dl.audiorelay.net/setups/linux/audiorelay-0.27.5.tar.gz
+	source = audiorelay.sh
+	source = audiorelay.desktop
+	sha256sums = c4854139a4bd21e7bf7881a7b6e21ebc4cfe823286783d4fb9ad4bf4edf8e8c7
+	sha256sums = 4b43b63210f545055ff55753aec10705501a13aaa1ac266f9c091f90771a09fe
+	sha256sums = 0350e53e308cbfb4914e434f753e1a61023d78d5c1b6dee27db346af117950ea
 
 pkgname = audiorelay
