@@ -1,6 +1,6 @@
 pkgbase = chezmoi_modify_manager-git
 	pkgdesc = Tools for chezmoi to handle mixed settings and state
-	pkgver = 2.0.0.alpha1.r18.538e540
+	pkgver = 2.0.0.rc1.r1.5d06e45
 	pkgrel = 1
 	url = https://github.com/VorpalBlade/chezmoi_modify_manager
 	arch = x86_64

@@ -1,6 +1,6 @@
 # Maintainer: Arvid Norlander <VorpalBlade@users.noreply.github.com>
 pkgname=chezmoi_modify_manager-git
-pkgver=2.0.0.alpha1.r18.538e540
+pkgver=2.0.0.rc1.r1.5d06e45
 pkgrel=1
 pkgdesc="Tools for chezmoi to handle mixed settings and state"
 arch=(x86_64 i686 armv7 aarch64)
