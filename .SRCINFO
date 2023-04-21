@@ -1,0 +1,15 @@
+pkgbase = python-py2vega
+	pkgdesc = A Python to Vega-expression transpiler
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/bloomberg/py2veg
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python
+	depends = python-gast
+	source = https://files.pythonhosted.org/packages/source/p/py2vega/py2vega-0.6.1.tar.gz
+	sha256sums = ef45cdef92797550267607d26b3a39ee259d752bdc97627cf1feaefb4a20c8b6
+
+pkgname = python-py2vega
