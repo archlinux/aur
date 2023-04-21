@@ -1,7 +1,7 @@
 pkgbase = r-svglite
 	pkgdesc = An 'SVG' Graphics Device
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=svglite
 	arch = i686
 	arch = x86_64
