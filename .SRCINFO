@@ -1,6 +1,6 @@
 pkgbase = linux-xanmod-lts
 	pkgdesc = Linux Xanmod LTS
-	pkgver = 6.1.24
+	pkgver = 6.1.25
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -15,13 +15,13 @@ pkgbase = linux-xanmod-lts
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.tar.sign
-	source = https://github.com/xanmod/linux/releases/download/6.1.24-xanmod1/patch-6.1.24-xanmod1.xz
+	source = https://github.com/xanmod/linux/releases/download/6.1.25-xanmod1/patch-6.1.25-xanmod1.xz
 	source = choose-gcc-optimization.sh
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb
 	sha256sums = SKIP
-	sha256sums = 0f501e73994921b9ce27015481df9172695861f17ea0d1eac3c3059ff761a068
+	sha256sums = bcbf37154e69539498b64272951246fd5922a41166dc4bd30680cb0b71251f36
 	sha256sums = 1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee
 
 pkgname = linux-xanmod-lts
