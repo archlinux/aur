@@ -1,6 +1,6 @@
 pkgbase = journal-viewer
 	pkgdesc = A modern linux desktop application to visualize systemd logs.
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/mingue/journal-viewer
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = journal-viewer
 	depends = webkit2gtk
 	provides = journal-viewer
 	conflicts = journal-viewer
-	source_x86_64 = https://github.com/mingue/journal-viewer/releases/download/v0.2.0/journal-viewer_0.2.0_x86_64.tar.gz
+	source_x86_64 = https://github.com/mingue/journal-viewer/releases/download/v0.3.0/journal-viewer_0.3.0_x86_64.tar.gz
 	source_x86_64 = journal-viewer.desktop
-	sha256sums_x86_64 = fedff8ec3fd4e4fded4e43d110f2abf58085c3ec9bc058aba27c1f358460aa47
- 	sha256sums_x86_64 = 475b19c2d1b971e91a624bb2fb4477e76e39834e70ce64035426b678b9376f0c
+	sha256sums_x86_64 = 26d5d5e96c075e25f242b1ac3c690b0f83a8420712b4efeedfd61968d1524622
+	sha256sums_x86_64 = 475b19c2d1b971e91a624bb2fb4477e76e39834e70ce64035426b678b9376f0c
 
 pkgname = journal-viewer-bin
