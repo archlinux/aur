@@ -1,0 +1,11 @@
+pkgbase = goterm
+	pkgdesc = Play Go/Baduk/Weiqi in your terminal!
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Chewt/goterm
+	arch = x86_64
+	license = GPL3
+	source = https://github.com/Chewt/goterm/archive/refs/tags/v1.0.tar.gz
+	md5sums = SKIP
+
+pkgname = goterm
