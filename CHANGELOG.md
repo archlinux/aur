@@ -1,5 +1,147 @@
 # rollup changelog
 
+## 3.20.7
+
+_2023-04-21_
+
+### Bug Fixes
+
+- Properly track array element mutations when iterating with a for-of loop (#4949)
+- Handle default exporting an anonymous class that extends another class (#4950)
+
+### Pull Requests
+
+- [#4943](https://github.com/rollup/rollup/pull/4943): Add a test for reserved keywords used as import/export specifiers (@Andarist)
+- [#4949](https://github.com/rollup/rollup/pull/4949): Deoptimize right side in for-of loops (@lukastaegert)
+- [#4950](https://github.com/rollup/rollup/pull/4950): Support default exported classes that extend other classes (@lukastaegert)
+
+## 3.20.6
+
+_2023-04-18_
+
+### Bug Fixes
+
+- Revert handling of non-JS import and export names due to regressions (#4914)
+
+### Pull Requests
+
+- [#4914](https://github.com/rollup/rollup/pull/4914): feat: add locales in vitepress config (@iDestin)
+- [#4946](https://github.com/rollup/rollup/pull/4946): Revert #4939 for now (@lukastaegert)
+
+## 3.20.5
+
+_2023-04-18_
+
+### Bug Fixes
+
+- Handle import and export names that are not valid JavaScript identifiers (#4939)
+
+### Pull Requests
+
+- [#4939](https://github.com/rollup/rollup/pull/4939): Fixed imports/exports that are illegal identifiers in the es output (@Andarist)
+- [#4941](https://github.com/rollup/rollup/pull/4941): Reinstate global styles (@lukastaegert)
+
+## 3.20.4
+
+_2023-04-17_
+
+### Bug Fixes
+
+- Do not remove breaks statements after switch statements with conditional breaks (#4937)
+
+### Pull Requests
+
+- [#4937](https://github.com/rollup/rollup/pull/4937): fix: handle conditional breaks in nested switch statement cases (@TrickyPi and @lukastaegert)
+
+## 3.20.3
+
+_2023-04-16_
+
+### Bug Fixes
+
+- Reduce memory consumption for function call parameter analysis (#4938)
+- Fix types for `shouldTransformCachedModule` (#4932)
+
+### Pull Requests
+
+- [#4925](https://github.com/rollup/rollup/pull/4925): chore: repl style add scoped (@btea)
+- [#4926](https://github.com/rollup/rollup/pull/4926): docs: Update the x_google_ignorelist url (@jecfish)
+- [#4932](https://github.com/rollup/rollup/pull/4932): Allow shouldTransformCachedModule to return null (@bluwy)
+- [#4935](https://github.com/rollup/rollup/pull/4935): Bump peter-evans/create-or-update-comment from 2 to 3 (@dependabot[bot])
+- [#4936](https://github.com/rollup/rollup/pull/4936): Disable puppeteer sandbox to fix Vercel deployment (@lukastaegert)
+- [#4938](https://github.com/rollup/rollup/pull/4938): Improve memory usage for parameter deoptimizations (@lukastaegert)
+
+## 3.20.2
+
+_2023-03-24_
+
+### Bug Fixes
+
+- Fix a crash when using a manual chunk entry that is not already included in the module graph (#4921)
+- Fix a crash when reporting a warning with incorrect sourcemap information (#4922)
+
+### Pull Requests
+
+- [#4921](https://github.com/rollup/rollup/pull/4921): Handle manual chunks where the entry is not part of the module graph (@lukastaegert)
+- [#4922](https://github.com/rollup/rollup/pull/4922): Do not fail if the location of a warning is outside the original source (@lukastaegert)
+
+## 3.20.1
+
+_2023-03-23_
+
+### Bug Fixes
+
+- Fix returned file name from this.getFileName when assets are deduplicated (#4919)
+
+### Pull Requests
+
+- [#4919](https://github.com/rollup/rollup/pull/4919): Only set asset names when finalizing (@lukastaegert)
+
+## 3.20.0
+
+_2023-03-20_
+
+### Features
+
+- Allow dynamically imported files to have synthetic named exports when preserving modules (#4913)
+
+### Bug Fixes
+
+- Use deterministic file name when emitting several files with same source (#4912)
+- Fix a crash when dynamically importing a file with synthetic named exports when preserving modules (#4913)
+
+### Pull Requests
+
+- [#4912](https://github.com/rollup/rollup/pull/4912): fix: make file name deterministic in parallel emits (fix #4909) (@sun0day)
+- [#4913](https://github.com/rollup/rollup/pull/4913): Provide synthetic namespace for dynamic imports when perserving modules (@lukastaegert)
+
+## 3.19.1
+
+_2023-03-10_
+
+### Bug Fixes
+
+- Produce valid code when the first statement in aclass static block is tree-shaken (#4898)
+
+### Pull Requests
+
+- [#4898](https://github.com/rollup/rollup/pull/4898): fix: set a correct node location for static blocks (@TrickyPi)
+- [#4900](https://github.com/rollup/rollup/pull/4900): docs: fix table at `output.sanitizeFileName` section (@0x009922)
+
+## 3.19.0
+
+_2023-03-09_
+
+### Features
+
+- Make reassignment tracking of call parameters more specific to no lose information when an object is passed to a function (#4892)
+
+### Pull Requests
+
+- [#4890](https://github.com/rollup/rollup/pull/4890): Fix `npm run dev` (@lukastaegert)
+- [#4892](https://github.com/rollup/rollup/pull/4892): Only selectively deoptimize call parameters (@lukastaegert)
+- [#4897](https://github.com/rollup/rollup/pull/4897): Pre-render mermaid graphs on website (@lukastaegert)
+
 ## 3.18.0
 
 _2023-03-01_
