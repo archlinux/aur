@@ -1,7 +1,7 @@
 pkgbase = houdunren-camera-bin
 	pkgdesc = Desktop camera software that can be used for online live streaming, distance learning, and video conferencing.桌面摄像头软件，可用于在线直播、远程教学、视频会议
 	pkgver = 1.0.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.houdunren.com/
 	arch = x86_64
 	license = MIT
@@ -30,7 +30,7 @@ pkgbase = houdunren-camera-bin
 	depends = libxdamage
 	depends = gtk3
 	depends = pango
-	provides = houdunwang
+	conflicts = houdunren-camera
 	conflicts = houdunren-camera-appimage
 	source = houdunren-camera-1.0.19.tar.gz::https://github.com/houdunwang/camera/archive/refs/tags/v1.0.19.tar.gz
 	sha256sums = 190ea644e67764636096f9003c040c564bae75876d39f18ba582b0eb1119d760
