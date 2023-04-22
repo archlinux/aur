@@ -1,0 +1,16 @@
+pkgbase = python-geoopt
+	pkgdesc = Riemannian Adaptive Optimization Methods with pytorch optim
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/geoopt/geoopt
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-pytorch
+	source = python-geoopt-0.5.1.tar.gz::https://github.com/geoopt/geoopt/archive/refs/tags/v.0.5.1.tar.gz
+	sha256sums = b46bc64c25f366ab9208838c8c61a4747b6c3190312b1b29ddfa42ba9585286b
+
+pkgname = python-geoopt
