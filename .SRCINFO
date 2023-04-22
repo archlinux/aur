@@ -1,11 +1,10 @@
 pkgbase = gridea-appimage
 	pkgdesc = A static blog writing client (一个静态博客写作客户端)
 	pkgver = 0.9.3
-	pkgrel = 2
-	url = open.gridea.dev
+	pkgrel = 3
+	url = https://open.gridea.dev/
 	arch = x86_64
 	license = MIT
-	depends = hicolor-icon-theme
 	depends = zlib
 	depends = glibc
 	provides = gridea
@@ -14,6 +13,6 @@ pkgbase = gridea-appimage
 	source = gridea-0.9.3.AppImage::https://github.com/getgridea/gridea/releases/download/v0.9.3/Gridea-0.9.3.AppImage
 	source = LICENSE::https://github.com/getgridea/gridea/raw/master/LICENSE
 	sha256sums = 9538866b640e44e9fd54bc1b3a957d1625648f1c1dd6b942dcd73d22701ede4e
-	sha256sums = 184d1e6e86b1314f05d7d05c72424818363b477978a3e8b6a84bcba128e64c24
+	sha256sums = d5fd1669066ffaab84a9063cd2792ded7aca1f6f92a972f58ffb5173404b53d2
 
 pkgname = gridea-appimage
