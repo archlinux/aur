@@ -1,7 +1,7 @@
 pkgbase = f3d-bin
 	pkgdesc = A fast and minimalist 3D viewer
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/f3d-app/f3d
 	arch = x86_64
