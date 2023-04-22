@@ -9,13 +9,13 @@ pkgdesc='A fast and minimalist 3D viewer'
 arch=('x86_64')
 url="https://github.com/$_pkgown/$_pkgname"
 license=('BSD')
-depends=('gcc-libs' 'glibc' 'libglvnd' 'libxcb' 'libxau' 'libxdmcp')
+depends=('libglvnd' 'libxcb' 'libxau' 'libxdmcp')
 provides=('f3d')
 conflicts=('f3d')
 backup=("etc/$_pkgname/config.json")
-_pkgsrc=F3D-$pkgver-Linux-$CARCH
+_pkgsrc=F3D-$pkgver-Linux-$CARCH-raytracing
 source=("$url/releases/download/v$pkgver/$_pkgsrc.tar.xz")
-sha256sums=('ff453538361ba3440960e435f9c1ce77dc655ba4b25e2c11ae22f4b133a13382')
+sha256sums=('208a1718d75b8052dd53a764d665b40c3acc9c36d93fef129294f73790350821')
 
 package() {
 	install -dm755 "${pkgdir}"/opt/
@@ -34,6 +34,4 @@ package() {
 	install -Dm644 "${srcdir}/${_pkgsrc}/lib/cmake/${_pkgname}"/* -t "${pkgdir}/usr/lib/cmake/${_pkgname}"
 
 	cp -ar "${srcdir}/${_pkgsrc}/share" "${pkgdir}/usr/"
-
-	install -dm755 "${pkgdir}/etc/${_pkgname}/config.d"
 }
