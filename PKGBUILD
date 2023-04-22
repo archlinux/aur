@@ -1,6 +1,6 @@
 pkgname=mewe
 _pkgname=Mewe
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Unofficial Mewe desktop application."
 arch=('x86_64' 'aarch64')
