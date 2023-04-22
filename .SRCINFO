@@ -1,7 +1,7 @@
 pkgbase = mapeo-desktop-appimage
 	pkgdesc = An offline map editing application for indigenous territory mapping in remote environments.
 	pkgver = 5.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://mapeo.app/
 	arch = x86_64
 	license = GPL3
