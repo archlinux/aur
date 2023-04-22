@@ -1,0 +1,17 @@
+pkgbase = nwg-dock-hyprland-bin
+	pkgdesc = GTK3-based dock for Hyprland Wayland compositor
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/nwg-piotr/nwg-dock-hyprland
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = gtk-layer-shell
+	optdepends = nwg-drawer: default application launcher
+	provides = nwg-dock-hyprland
+	conflicts = nwg-dock-hyprland-git
+	conflicts = nwg-dock-hyprland
+	source = nwg-dock-hyprland-bin-0.0.1.tar.gz::https://github.com/nwg-piotr/nwg-dock-hyprland/releases/download/v0.0.1/nwg-dock-hyprland-v0.0.1_x86_64.tar.gz
+	md5sums = 492fe4a7aceaa4f4b34ab79b489fc274
+
+pkgname = nwg-dock-hyprland-bin
