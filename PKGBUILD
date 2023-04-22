@@ -2,10 +2,10 @@
 
 pkgname="helpaur"
 pkgver=v0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Help maintaining the AUR by listing unmaintained packages"
 arch=('x86_64')
-url="https://sr.ht/~witcher/$pkgname"
+url="https://git.sr.ht/~witcher/$pkgname"
 license=('GPL-3.0-only')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~witcher/${pkgname}/archive/${pkgver}.tar.gz")
