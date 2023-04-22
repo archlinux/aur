@@ -1,6 +1,6 @@
 pkgbase = hyprland-nvidia-hidpi-git
 	pkgdesc = A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (NVIDIA + HiDPI patch)
-	pkgver = r2722.e4e653ad
+	pkgver = r2806.d366fc48
 	pkgrel = 1
 	url = https://github.com/hyprwm/Hyprland
 	arch = any
