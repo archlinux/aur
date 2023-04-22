@@ -1,0 +1,10 @@
+pkgbase = livebook
+	pkgdesc = Livebook - Automate code & data workflows with interactive Elixir notebooks
+	pkgver = 0.7.2
+	pkgrel = 1
+	arch = x86_64
+	depends = openssl
+	depends = erlang
+	depends = elixir
+
+pkgname = livebook
