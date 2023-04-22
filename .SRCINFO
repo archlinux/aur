@@ -1,0 +1,25 @@
+pkgbase = powerpc64-linux-gnu-gdb
+	pkgdesc = The GNU Debugger for the PPC64 target
+	pkgver = 13.1
+	pkgrel = 2
+	url = https://www.gnu.org/software/gdb/
+	arch = x86_64
+	license = GPL3
+	makedepends = boost
+	depends = xz
+	depends = ncurses
+	depends = expat
+	depends = python
+	depends = guile
+	depends = gdb-common
+	depends = mpfr
+	depends = libelf
+	depends = source-highlight
+	options = !emptydirs
+	source = https://ftp.gnu.org/gnu/gdb/gdb-13.1.tar.xz
+	source = https://ftp.gnu.org/gnu/gdb/gdb-13.1.tar.xz.sig
+	validpgpkeys = F40ADB902B24264AA42E50BF92EDB04BFF325CF3
+	sha256sums = 115ad5c18d69a6be2ab15882d365dda2a2211c14f480b3502c6eba576e2e95a0
+	sha256sums = SKIP
+
+pkgname = powerpc64-linux-gnu-gdb
