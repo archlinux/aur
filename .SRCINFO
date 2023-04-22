@@ -1,19 +1,18 @@
 pkgbase = wev
 	pkgdesc = tool for debugging wayland events, similar to xev
 	pkgver = 1.0.0
-	pkgrel = 10
+	pkgrel = 11
 	url = https://git.sr.ht/~sircmpwn/wev
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = git
 	makedepends = scdoc
 	makedepends = wayland-protocols
 	depends = wayland
 	depends = libxkbcommon
 	conflicts = wev-git
-	source = git+https://git.sr.ht/~sircmpwn/wev#tag=1.0.0
+	source = wev-1.0.0.tar.gz::https://git.sr.ht/~sircmpwn/wev/archive/1.0.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = wev
