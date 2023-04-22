@@ -1,4 +1,5 @@
 # Maintainer: zhuangzhuang <xufengyuan20080802@outlook.com>
+# Maintainer: Liuhaoyu <liuhaoyu62@126.com>
 pkgname=piscesys-fishui-git
 _pkgname=fishui
 pkgver=0.9
