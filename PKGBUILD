@@ -30,8 +30,8 @@ build() {
 
 package() {
   cd "$srcdir/Numix-Frost"
-  make DESTDIR="$pkgdir" _install
+  scripts/utils.sh install "$srcdir/Numix-Frost/" "$pkgdir/usr/share/themes"
 
   cd "$srcdir/Numix-Frost-Light"
-  make DESTDIR="$pkgdir" _install
+  scripts/utils.sh "$pkgdir/usr/share/themes/Numix-Frost-Light"
 }
