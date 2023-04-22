@@ -1,7 +1,7 @@
 pkgbase = bilibili-videodownloader-appimage
 	pkgdesc = Cross-platform download bilibili video desktop software, support windows, macOS, Linux
 	pkgver = 3.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/BilibiliVideoDownload/BilibiliVideoDownload
 	arch = x86_64
 	license = MIT
