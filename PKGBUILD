@@ -9,7 +9,7 @@ arch=(x86_64)
 license=(GPL)
 depends=(kontactinterface akonadi akonadi-notes kpimtextedit grantlee)
 makedepends=(extra-cmake-modules kdoctools ktextaddons)
-source=(https://download.kde.org/stable/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz{,.sig})
+source=(https://download.kde.org/stable/$pkgname/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
 sha256sums=('0f10f26aa1967ff99eaf247fdfd890971052e75fe2598eb6384cc89cd4b36092'
             'SKIP')
 validpgpkeys=(D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
