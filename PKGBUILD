@@ -4,7 +4,7 @@ _pkgname=Rpdb
 _pkgver=2.3
 pkgname=r-${_pkgname,,}
 pkgver=2.3
-pkgrel=2
+pkgrel=4
 pkgdesc='Read, Write, Visualize and Manipulate PDB Files'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,7 @@ depends=(
   r
   r-rgl
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('28beafa9cc6626bb1eef102dac45266533f96b2108391e5f62f79a48d771c57f')
 
 build() {
