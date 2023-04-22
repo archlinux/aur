@@ -1,6 +1,6 @@
 pkgbase = matrix-synapse-git
 	pkgdesc = Matrix reference homeserver
-	pkgver = 1.79.0.r0.g8b1af08c6e
+	pkgver = 1.81.0.r0.gc1b7da69cc
 	pkgrel = 1
 	url = https://github.com/matrix-org/synapse
 	install = synapse.install
@@ -24,7 +24,7 @@ pkgbase = matrix-synapse-git
 	makedepends = python-setuptools-rust
 	depends = libwebp
 	depends = python-jsonschema
-	depends = python-frozendict
+	depends = python-immutabledict
 	depends = python-unpaddedbase64
 	depends = python-canonicaljson
 	depends = python-signedjson

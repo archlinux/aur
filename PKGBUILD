@@ -2,7 +2,7 @@
 # Contributor: Johannes Löthberg <johannes@kyriasis.com>
 
 pkgname=matrix-synapse-git
-pkgver=1.79.0.r0.g8b1af08c6e
+pkgver=1.81.0.r0.gc1b7da69cc
 _pkgname=matrix-synapse
 pkgrel=1
 pkgdesc="Matrix reference homeserver"
@@ -12,7 +12,7 @@ license=('Apache')
 depends=(
 	'libwebp'
 	'python-jsonschema'
-	'python-frozendict'
+	'python-immutabledict'
 	'python-unpaddedbase64'
 	'python-canonicaljson'
 	'python-signedjson'
