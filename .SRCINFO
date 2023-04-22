@@ -1,7 +1,7 @@
 pkgbase = sleek-appimage
 	pkgdesc = todo.txt manager for Linux, Windows and MacOS, free and open-source (FOSS)
 	pkgver = 1.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ransome1/sleek
 	arch = x86_64
 	license = MIT
@@ -14,6 +14,6 @@ pkgbase = sleek-appimage
 	source = sleek-1.3.1.AppImage::https://github.com/ransome1/sleek/releases/download/v1.3.1/sleek-1.3.1.AppImage
 	source = LICENSE::https://github.com/ransome1/sleek/raw/master/LICENSE
 	sha256sums = d3796449028e48f5fec5e4c3e4248799e4776a78a9766706d2deb9c8fa7256fb
-	sha256sums = b7bdc23b982a50033c90910e0dbf088e89fed24f37a0d1f86f116639fc94d7d3
+	sha256sums = f963f2758913728f2446d9a0d5fa4e5636c649e8beaffe172e7331023adf2d3d
 
 pkgname = sleek-appimage
