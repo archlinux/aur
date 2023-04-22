@@ -1,6 +1,6 @@
 _pkgname=joplin
 pkgname=$_pkgname-electron
-pkgver=2.10.12
+pkgver=2.10.13
 pkgrel=1
 _electronversion=22
 pkgdesc="Joplin Desktop (Beta) for Linux, using the system Electron package"
@@ -19,7 +19,7 @@ source=(
     "0001-support-enable-wayland-ime.patch"
 )
 sha256sums=(
-    'bbbe06dbfea82d74f2238959fe78ad10f0427ac75ea0738ba38378c24a67d7e5'
+    '0e94c0a2f280bb95d26ce7ba0af5f2668fe0c33be235df34b5910493f130e3e3'
     '9e26cd5f41d08c3c2804cf4f34cb867090371423ccbe250a890fac006d405deb'
     'bd8324d35faaf6815217d1cf31a0b5e4df80692b0312ad17aea20d51f95efd56'
     '88aebf8692468e8b2757bd32b888f620ef5de9f907bbe93a4851530faeb45c1e'
