@@ -2,17 +2,13 @@
 
 _pkgname=xfce4-indicator-plugin
 pkgname=${_pkgname}-git
-pkgver=2.4.1+47+g536586c
+pkgver=2.4.2+1+g9535eec
 pkgrel=1
 pkgdesc="Display indicators in the Xfce4 panel"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
-url="https://goodies.xfce.org/projects/panel-plugins/${_pkgname}"
+url='https://docs.xfce.org/panel-plugins/xfce4-indicator-plugin/start'
 license=('GPL')
-depends=('hicolor-icon-theme'
-         'libindicator-gtk2'
-         'libindicator-gtk3'
-         'xfce4-panel'
-         'xdg-utils')
+depends=('hicolor-icon-theme' 'libayatana-indicator' 'xfce4-panel' 'xdg-utils')
 makedepends=('intltool' 'xfce4-dev-tools' 'git')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver%%+*}")
@@ -30,7 +26,6 @@ build() {
     --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
-    --libexecdir=/usr/lib \
     --disable-static
   make
 }
