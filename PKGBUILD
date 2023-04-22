@@ -1,31 +1,30 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-_pkgname=imagine
-pkgname="${_pkgname}-appimage"
+pkgname="imagine-appimage"
 pkgver=0.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="PNG/JPEG optimization app"
 arch=("x86_64")
 url="https://github.com/meowtec/Imagine"
-license=(MIT)
-depends=(hicolor-icon-theme zlib glibc)
+license=('MIT')
+depends=('zlib' 'glibc')
 options=(!strip)
 provides=(meowtec)
-conflicts=("${_pkgname}")
+conflicts=("${pkgname%-appimage}")
 _install_path="/opt/appimages"
-source=("${_pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Imagine-${pkgver}.AppImage"
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Imagine-${pkgver}.AppImage"
     "LICENSE::${url}/raw/master/LICENSE")
 sha256sums=('9f4cce8ac273c215a77af1762103f2a316e08b0c7d9cbe1e94f6c57249a7a983'
-            'eea4c8424852f64c83336ab2b8b1243defb012422216a20b5d8848328fdd9f6d')
+            'aebee0e853c4db64ce36bd0b235613a9b948036a7f62af387f2e0b406cd657b7')
         
 prepare() {
-    chmod a+x "${_pkgname}-${pkgver}.AppImage"
-    "./${_pkgname}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's/AppRun/\/opt\/appimages\/imagine.AppImage /g' -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
+    "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed 's|AppRun|/opt/appimages/imagine.AppImage|g' -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
 
 package() {
-    install -Dm755 "${srcdir}/${_pkgname}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${_pkgname}.AppImage"
-    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.png"
-    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
+    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-appimage}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

@@ -1,11 +1,10 @@
 pkgbase = imagine-appimage
 	pkgdesc = PNG/JPEG optimization app
 	pkgver = 0.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/meowtec/Imagine
 	arch = x86_64
 	license = MIT
-	depends = hicolor-icon-theme
 	depends = zlib
 	depends = glibc
 	provides = meowtec
@@ -14,6 +13,6 @@ pkgbase = imagine-appimage
 	source = imagine-0.7.4.AppImage::https://github.com/meowtec/Imagine/releases/download/v0.7.4/Imagine-0.7.4.AppImage
 	source = LICENSE::https://github.com/meowtec/Imagine/raw/master/LICENSE
 	sha256sums = 9f4cce8ac273c215a77af1762103f2a316e08b0c7d9cbe1e94f6c57249a7a983
-	sha256sums = eea4c8424852f64c83336ab2b8b1243defb012422216a20b5d8848328fdd9f6d
+	sha256sums = aebee0e853c4db64ce36bd0b235613a9b948036a7f62af387f2e0b406cd657b7
 
 pkgname = imagine-appimage
