@@ -1,17 +1,17 @@
 pkgbase = python-sentencepiece
 	pkgdesc = SentencePiece python wrapper
 	pkgver = 0.1.98
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/sentencepiece
-	arch = any
+	arch = x86_64
 	license = Apache
-	checkdepends = python-pytest
 	makedepends = git
 	makedepends = cmake
-	makedepends = python-build
-	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
+	makedepends = python-installer
 	depends = python
+	depends = python-protobuf
 	source = python-sentencepiece::git+https://github.com/google/sentencepiece.git#tag=518c57c335534d495d40d95d70199e28b4c8ce2a
 	sha512sums = SKIP
 
