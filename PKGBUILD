@@ -1,23 +1,20 @@
-# Maintainer: Braeden Mollot <3mollot at gmail dot com>
+# Contributor: Braeden Mollot <3mollot at gmail dot com>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=min-browser-bin
-pkgver=1.8.0
+pkgver=1.27.0
 pkgrel=1
-pkgdesc="A faster, smarter web browser."
+pkgdesc="A fast, minimal browser that protects your privacy"
 arch=('x86_64')
-url="https://palmeral.github.io/min/"
+url="https://minbrowser.org/"
+_githuburl="https://github.com/minbrowser/min"
 license=('Apache')
-depends=('libxtst' 'libxss' 'nodejs' 'gconf' 'desktop-file-utils' 'nss' 'gnuplot')
-install=$pkgname.install
-source=("https://github.com/minbrowser/min/releases/download/v${pkgver}/Min_${pkgver}_amd64.deb")
-noextract=("Min_${pkgver}_amd64.deb")
-md5sums=('69bd5ef281f38c040f0dfcda28b41658')
-
-prepare() {
-    ar -x "Min_${pkgver}_amd64.deb"
-    tar -xf "data.tar.xz"
-    rm "Min_${pkgver}_amd64.deb" "control.tar.gz" "data.tar.xz" "debian-binary"
-}
+depends=('gtk3' 'libxdamage' 'glibc' 'libxkbcommon' 'hicolor-icon-theme' 'libsecret' 'libdrm' 'libxcomposite' 'alsa-lib' 'expat' 'nodejs' \
+    'libxcb' 'nspr' 'libxext' 'glib2' 'libx11' 'libxfixes' 'mesa' 'nss' 'sh' 'libxrandr' 'cairo' 'libcups' 'dbus' 'at-spi2-core' 'gcc-libs' 'pango')
+install=
+source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-browser-bin}-${pkgver}-amd64.deb")
+noextract=()
+sha256sums=('4c003de3b63b881bbe0b57db51101dc8473f76bfecf124a5f770158e8ee5acd0')
 
 package() {
-    mv usr ${pkgdir}/
+    bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
 }
