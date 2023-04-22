@@ -1,7 +1,7 @@
 pkgbase = r-genomictools
 	pkgdesc = Collection of Tools for Genomic Data Analysis
 	pkgver = 0.2.9.7
-	pkgrel = 4
+	pkgrel = 6
 	url = https://cran.r-project.org/package=GenomicTools
 	arch = x86_64
 	license = GPL
@@ -16,7 +16,7 @@ pkgbase = r-genomictools
 	depends = r-stringr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/GenomicTools_0.2.9.7.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/GenomicTools/GenomicTools_0.2.9.7.tar.gz
 	sha256sums = 15fcf653177f3b9cb822c4da08d7cc5507b9f48d4a6ca58e523c3e965787daa4
 
 pkgname = r-genomictools

@@ -4,7 +4,7 @@ _pkgname=GenomicTools
 _pkgver=0.2.9.7
 pkgname=r-${_pkgname,,}
 pkgver=0.2.9.7
-pkgrel=4
+pkgrel=6
 pkgdesc='Collection of Tools for Genomic Data Analysis'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -24,7 +24,7 @@ optdepends=(
   r-knitr
   r-rmarkdown
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('15fcf653177f3b9cb822c4da08d7cc5507b9f48d4a6ca58e523c3e965787daa4')
 
 build() {
