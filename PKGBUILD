@@ -1,17 +1,17 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-_pkgname=aechoterm
-pkgname="${_pkgname}-bin"
-pkgver=4.0.0
+pkgname="aechoterm-bin"
+pkgver=4.0.0.0.2.7
 pkgrel=2
 pkgdesc="A free, cross-platform terminal and file management tool for accessing remote servers with SSH and SFTP protocols.闪令是一款免费的、跨平台的,以SSH、SFTP协议访问远程服务器的终端、文件管理工具"
 arch=('x86_64')
 url="https://ec.nantian.com.cn/"
 license=('unknown')
-options=()
-conflicts=("${_pkgname}")
-depends=(nodejs-lts-fermium nss lib32-gcc-libs alsa-lib at-spi2-core python gtk3 java-runtime libcups libxext expat mesa pango glibc nspr libxcomposite \
-    gcc-libs libxkbcommon libx11 cairo libdrm dbus libxrandr libxdamage glib2 libxcb libxfixes libxshmfence hicolor-icon-theme gdk-pixbuf2 lib32-glibc)
-source=("${_pkgname}-${pkgver}.deb::https://ec.cnd.nantiangzzx.com/Aechoterm_${pkgver}_amd64.deb")
+options=(!strip)
+conflicts=("${pkgname%-bin}")
+depends=('nodejs' 'nss' 'lib32-gcc-libs' 'alsa-lib' 'at-spi2-core' 'python' 'gtk3' 'java-runtime' 'libcups' 'libxext' 'expat' 'mesa' \
+    'gcc-libs' 'libxkbcommon' 'libx11' 'cairo' 'libdrm' 'dbus' 'libxrandr' 'libxdamage' 'glib2' 'libxcb' 'libxfixes' 'libxshmfence' \
+    'hicolor-icon-theme' 'gdk-pixbuf2' 'lib32-glibc' 'pango' 'glibc' 'nspr' 'libxcomposite' 'sh')
+source=("${pkgname%-bin}-${pkgver}.deb::https://ec.cnd.nantiangzzx.com/Aechoterm_${pkgver%.0.2.7}_amd64.deb")
 sha256sums=('3c1681aae8b3426577fbcab4401ba2af7a9f77152e1836029d9f45748ab58904')
 package() {
     bsdtar -xvf data.tar.xz -C "${pkgdir}"
