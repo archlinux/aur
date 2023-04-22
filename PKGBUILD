@@ -1,7 +1,7 @@
 # Maintainer: Fabien Devaux <fdev31@gmail.com>
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=hpr-scratcher
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Easy scratchpads / drop downs for Hyprland"
 arch=(any)
