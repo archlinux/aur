@@ -3,14 +3,17 @@
 
 pkgname=cmake-lint
 pkgver=1.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Check for coding style issues in CMake files"
 arch=(any)
 url="https://github.com/cmake-lint/cmake-lint"
 license=(Apache)
-depends=(
+makedepends=(
   python-setuptools
-  python-importlib-metadata
+  python-pytest-runner
+)
+depends=(
+  python
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
