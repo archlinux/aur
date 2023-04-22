@@ -4,7 +4,7 @@ _pkgname=BALCONY
 _pkgver=0.2.10
 pkgname=r-${_pkgname,,}
 pkgver=0.2.10
-pkgrel=2
+pkgrel=4
 pkgdesc='Better ALignment CONsensus analYsis'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -19,7 +19,7 @@ depends=(
   r-scales
   r-seqinr
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('9d534d626a6e0f038a27be1948f0cbefa4feb1448d8af4cc95a97dc76b03def1')
 
 build() {
