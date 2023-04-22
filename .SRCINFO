@@ -1,11 +1,10 @@
 pkgbase = rats-search-appimage
 	pkgdesc = BitTorrent P2P multi-platform search engine for Desktop and Web servers with integrated torrent client.
 	pkgver = 1.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/DEgITx/rats-search
 	arch = x86_64
 	license = MIT
-	depends = hicolor-icon-theme
 	depends = zlib
 	depends = glibc
 	conflicts = rats-search
@@ -13,6 +12,6 @@ pkgbase = rats-search-appimage
 	source = rats-search-1.10.0.AppImage::https://github.com/DEgITx/rats-search/releases/download/v1.10.0/rats-search-1.10.0-x86_64.AppImage
 	source = LICENSE::https://github.com/DEgITx/rats-search/raw/master/LICENSE
 	sha256sums = 2658d8ab42e0e4181c66dcbfd34673361c36ec42a20f8b5dea5347e104d5369b
-	sha256sums = a0000d22d150a4a0133bee6c99e4248fa1e9c3aec8fa5a79cd911e605cdd1b5e
+	sha256sums = fa6a25af037d88ee811669579da9674e5694611599600b11e691115054f6fe2f
 
 pkgname = rats-search-appimage
