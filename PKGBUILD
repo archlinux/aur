@@ -34,7 +34,7 @@ package() {
         cd webers
         install -Dm755 ./main.py "$pkgdir/usr/bin/webers" 
         install -Dm755 ./dj2.py "$pkgdir/usr/bin/dj2.py" 
-        if [ -e "$pkgdir/usr/bin/watcher.py" ] ; then
+        if test -f "/usr/bin/watcher.py"; then
             echo "File exists"
         else
             install -Dm755 ./watcher.py "$pkgdir/usr/bin/watcher.py" 
