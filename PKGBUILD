@@ -14,11 +14,6 @@ conflicts=("$_pkgname" "cutefish-cursor-themes-git")
 source=("git+$url.git")
 sha512sums=('SKIP')
 
-pkgver() {
-  cd cursor-themes
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 package() {
   cd cursor-themes
   install -d "$pkgdir/usr/share/icons"
