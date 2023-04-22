@@ -1,13 +1,13 @@
 diff --git a/example-config.yaml b/example-config.yaml
-index d496ae4..7d8346d 100644
+index f7dbb7b..bfb1c32 100644
 --- a/example-config.yaml
 +++ b/example-config.yaml
-@@ -241,7 +241,7 @@ bridge:
- # Logging config.
- logging:
-     # The directory for log files. Will be created if not found.
--    directory: ./logs
-+    directory: /var/log/mautrix-whatsapp
-     # Available variables: .Date for the file date and .Index for different log files on the same day.
-     file_name_format: "{{.Date}}-{{.Index}}.log"
-     # Date format for file names in the Go time format: https://golang.org/pkg/time/#pkg-constants
+@@ -441,7 +441,7 @@ logging:
+       format: pretty-colored
+     - type: file
+       format: json
+-      filename: ./logs/mautrix-whatsapp.log
++      filename: /var/log/mautrix-whatsapp.log
+       max_size: 100
+       max_backups: 10
+       compress: true
