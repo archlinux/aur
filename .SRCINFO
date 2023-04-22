@@ -1,7 +1,7 @@
 pkgbase = flb-music-player-appimage
 	pkgdesc = A beautiful Feature Rich Music Player and Downloader,cross platform
 	pkgver = 1.2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://flbmusic.xyz/
 	arch = x86_64
 	license = GPL3
@@ -9,6 +9,7 @@ pkgbase = flb-music-player-appimage
 	depends = hicolor-icon-theme
 	depends = glibc
 	conflicts = flbmusic
+	conflicts = flb-music-player
 	options = !strip
 	source = flbmusic-1.2.1.AppImage::https://github.com/FLB-Music/FLB-Music-Player/releases/download/v1.2.1/FLB-Music-1.2.1.AppImage
 	sha256sums = 811da0d45dfdbfb863b3a2d285083e419df6d2e03e5015b9ab6d19a6736d0477
