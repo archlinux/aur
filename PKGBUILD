@@ -2,8 +2,8 @@
 
 _npmname=git-split-diffs
 pkgname=nodejs-git-split-diffs
-pkgver=0.10.0
-pkgrel=4
+pkgver=0.14.0
+pkgrel=1
 pkgdesc='GitHub style split diffs with syntax highlighting in your terminal.'
 arch=('any')
 url='https://github.com/banga/git-split-diffs'
@@ -12,7 +12,7 @@ depends=('nodejs')
 makedepends=('npm')
 provides=('git-split-diffs')
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
-sha256sums=('9ccb4b76633e33156cca6084a65dcf02c676ef15aadf5911739910e4a69214af')
+sha256sums=('1d22cae51a2ca02d02dab141a7ebef84a99db46396430370625591f17815d6e9')
 noextract=("${pkgname}-${pkgver}.tgz")
 
 package() {
