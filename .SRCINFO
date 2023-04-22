@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-adwaita-icon-theme
 	pkgdesc = Adwaita icon theme (mingw-w64)
-	pkgver = 43
+	pkgver = 44.0
 	pkgrel = 1
 	url = https://www.gnome.org
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = mingw-w64-adwaita-icon-theme
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.gnome.org/sources/adwaita-icon-theme/43/adwaita-icon-theme-43.tar.xz
-	sha256sums = 2e3ac77d32a6aa5554155df37e8f0a0dd54fc5a65fd721e88d505f970da32ec6
+	source = https://download.gnome.org/sources/adwaita-icon-theme/44/adwaita-icon-theme-44.0.tar.xz
+	sha256sums = 4889c5601bbfecd25d80ba342209d0a936dcf691ee56bd6eca4cde361f1a664c
 
 pkgname = mingw-w64-adwaita-icon-theme
