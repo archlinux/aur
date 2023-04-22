@@ -8,6 +8,7 @@ pkgrel=1
 pkgdesc='Timetable extractor for the computer science degree of Paris 8'
 arch=('x86_64')
 url=https://git.mylloon.fr/Anri/cal8tor
+license=('AGPL3')
 makedepends=('git' 'cargo')
 provides=("$pkgname")
 conflicts=("$pkgname")
