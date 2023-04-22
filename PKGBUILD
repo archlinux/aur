@@ -139,7 +139,7 @@ check() {
 	python -m venv --system-site-packages test-env
 	test-env/bin/python -m installer dist/*.whl
 	( cd build/lib.linux-$CARCH-cpython-${python_version}
-	ln -sv ../../tests .
+	ln -sv ../../tests -ft .
 	PYTHONPATH="$PWD" PATH="../../test-env/bin:$PATH" ../../test-env/bin/python -m twisted.trial -j$(nproc) tests
 	rm -r tests _trial_temp
 	)
