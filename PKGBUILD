@@ -1,5 +1,4 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname%-bin=
 pkgname="houdunren-camera-bin"
 pkgver=1.0.19
 pkgrel=2
