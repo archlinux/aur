@@ -1,7 +1,7 @@
 pkgbase = flawesome-appimage
 	pkgdesc = Flawesome is a modern productivity tool that will help you organise your day-today work and thoughts.
 	pkgver = 0.2.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/ashishBharadwaj/flawesome
 	arch = x86_64
 	license = GPL3
