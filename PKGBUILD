@@ -14,11 +14,6 @@ conflicts=("$_pkgname" "fishui-git")
 source=("git+$url.git")
 sha512sums=('SKIP')
 
-pkgver() {
-    cd $_pkgname
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 build() {
     cd $_pkgname
 
@@ -30,5 +25,5 @@ package() {
     cd $_pkgname
 
     DESTDIR="$pkgdir" 
-    make install
+    sudo make install
 }
