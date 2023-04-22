@@ -5,7 +5,8 @@ pkgbase = ripme
 	url = https://github.com/ripmeapp2/ripme
 	arch = any
 	license = MIT
-	depends = java-runtime
+	makedepends = java-environment>=11
+	depends = java-runtime>=11
 	source = https://github.com/ripmeapp2/ripme/archive/2.1.3.tar.gz
 	source = ripme-gradle.patch
 	sha256sums = bda7ab04dd3e45f7a81e9e9f068aba65a92686a003a0823655240319e8949bd8
