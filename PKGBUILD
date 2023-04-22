@@ -4,7 +4,7 @@
 
 pkgname=rpmlint
 pkgver=2.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for checking common errors in rpm packages"
 arch=(any)
 url="https://github.com/rpm-software-management/$pkgname"
@@ -13,15 +13,16 @@ depends=(
   binutils
   cpio
   gzip
-  python-importlib-metadata
   python-magic
   python-pybeam
   python-pyxdg
-  python-setuptools
   python-tomli
   python-tomli-w
   python-zstandard
   rpm-tools
+)
+makedepends=(
+  python-setuptools
 )
 checkdepends=(
   python-pytest
