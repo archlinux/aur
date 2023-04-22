@@ -1,0 +1,18 @@
+pkgbase = python-cpm-kernels
+	pkgdesc = CPM CUDA kernels
+	pkgver = 1.0.11
+	pkgrel = 1
+	url = https://github.com/OpenBMB/cpm_kernels
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = cuda
+	makedepends = python-wheel
+	makedepends = python-installer
+	depends = python
+	depends = python-setuptools
+	optdepends = python-pytorch
+	source = python-cpm-kernels::git+https://github.com/OpenBMB/cpm_kernels.git#tag=277a0eddd6d264c6b9b9477fa47cc00880d581c0
+	sha512sums = SKIP
+
+pkgname = python-cpm-kernels
