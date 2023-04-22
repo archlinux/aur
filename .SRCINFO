@@ -1,6 +1,6 @@
 pkgbase = moneymanagerex-git
 	pkgdesc = MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest commit.
-	pkgver = v1.5.15.r749.gf2de9b5a9
+	pkgver = v1.6.3.r1461.g355d4cb42
 	pkgrel = 1
 	url = http://www.moneymanagerex.org/
 	arch = x86_64
