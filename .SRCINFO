@@ -1,0 +1,15 @@
+pkgbase = hoptodesk-appimage
+	pkgdesc = A free remote desktop tool that allows users to share their screens and remotely control access to their computers and devices.
+	pkgver = 1.40.4
+	pkgrel = 1
+	url = https://www.hoptodesk.com
+	arch = x86_64
+	license = freeware
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = glibc
+	options = !strip
+	source = hoptodesk-1.40.4.AppImage::https://www.hoptodesk.com/hoptodesk.AppImage
+	sha256sums = 8dd4ce3626bebde0ea5384b57fd5dbab748c3428d793d095886fba053fd24fec
+
+pkgname = hoptodesk-appimage
