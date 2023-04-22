@@ -3,7 +3,7 @@
 
 pkgname='simplex-chat-bin'
 _pkgname="${pkgname%%-bin}"
-pkgver=4.6.1
+pkgver=5.0.0
 pkgrel=1
 pkgdesc='A 100% private-by-design chat platform (pre-compiled)'
 arch=('x86_64')
@@ -62,15 +62,15 @@ package() {
 }
 
 sha256sums=(
-  'e50527c3d2faadca2c2f4129b8c50b5dd96544c5ca4dd78ee15979f48bd479fa'
+  '049178f730ff01c1505d5762c503e5439c59cb4217cf93d2e5d519ef202baf8a'
   'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 )
 sha512sums=(
-  '6679d12908b44165225112c748a5abbc0064cd095c1a3481e0238df8d7bd81a8b5674d1af9266a34c6fe328d2eb61344f903049120dca2471c231c0277de835a'
+  'fa8601efb8cc116650cf2c998b7766f0d75989c9afde375d733eb4bd7fdda404816497af345da11a8da8e41fe9e0ff8821b2091259c4a08a3eb6f93bc1741be1'
   'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 )
 b2sums=(
-  'e4fb7534928367419a7f8625fb2e686205e158fc9ad62afd95fdd4db61d852d0bd2dd953fc060941b70f7611ee1bc5486eb41dc52867e0ee968aeb573db7c25a'
+  '941e3d042dbb3a56b9c9399c915484e18fd95e234546fcf1c29e9bcd45b57189296c8162aec9edb5ffd862a8fbee9baa2ad4a99a5987ca44525c5671f27fb9f9'
   'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 )
 
