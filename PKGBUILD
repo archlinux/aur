@@ -1,4 +1,3 @@
-# Maintainer: Nelson Estevão <nelson@marmelasoft.com>
 pkgname="livebook"
 pkgver="0.7.2"
 pkgrel="1"
@@ -10,8 +9,8 @@ depends=('openssl'  'erlang'  'elixir')
 # sha256sums=("SKIP")
 
 build() {
-  mix do local.rebar --force, local.hex --force
-  mix escript.install hex livebook 0.7.2
+  /usr/bin/mix do local.rebar --force, local.hex --force
+  /usr/bin/mix escript.install hex livebook 0.7.2
 }
 
 package() {
