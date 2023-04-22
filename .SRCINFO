@@ -1,14 +1,14 @@
 pkgbase = directx-headers-git
 	pkgdesc = DirectX headers for using D3D12
-	pkgver = r178.3b0d6f5
+	pkgver = r181.34c9866
 	pkgrel = 1
 	url = https://github.com/microsoft/DirectX-Headers
 	arch = x86_64
 	license = MIT
 	makedepends = meson
+	makedepends = git
 	provides = directx-headers
 	conflicts = directx-headers
-	options = !lto
 	source = DirectX-Headers::git+https://github.com/microsoft/DirectX-Headers.git
 	sha256sums = SKIP
 
