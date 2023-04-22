@@ -6,13 +6,13 @@
 
 pkgname="maldet"
 pkgver=1.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux malware scanner designed around threats faced in shared host environments"
 url="https://www.rfxn.com/projects/linux-malware-detect/"
 license=("GPL2")
 arch=("any")
 provides=("linux-malware-detect")
-depends=("inetutils" "inotify-tools" "perl" "systemd")
+depends=("ed" "inetutils" "inotify-tools" "perl" "systemd")
 source=("https://github.com/rfxn/linux-malware-detect/archive/$pkgver.tar.gz"
         "maldet-update-signatures.service"
         "maldet-update-signatures.timer")
