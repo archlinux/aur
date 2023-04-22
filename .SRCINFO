@@ -1,7 +1,7 @@
 pkgbase = ppet3-appimage
 	pkgdesc = Put a cute girl on your desk for more fun.在你的桌面放一个萌妹子，多一点乐趣
 	pkgver = 3.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/zenghongtu/PPet
 	arch = x86_64
 	license = MIT
