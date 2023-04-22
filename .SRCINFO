@@ -1,14 +1,13 @@
 pkgbase = lisk-desktop-appimage
 	pkgdesc = Lisk graphical user interface for desktop
 	pkgver = 2.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://lisk.com/wallet
 	arch = x86_64
 	license = GPL3
 	depends = hicolor-icon-theme
 	depends = zlib
 	depends = glibc
-	provides = LiskHQ
 	conflicts = lisk-desktop
 	options = !strip
 	source = lisk-desktop-2.3.0.AppImage::https://github.com/LiskHQ/lisk-desktop/releases/download/v2.3.0/lisk-linux-x86_64-2.3.0.AppImage
