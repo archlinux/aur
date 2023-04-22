@@ -1,6 +1,6 @@
-diff '--color=auto' -rupN adduser-debian-3.131.orig/adduser adduser-debian-3.131/adduser
---- adduser-debian-3.131.orig/adduser	2023-02-20 17:15:50.375613060 +1030
-+++ adduser-debian-3.131/adduser	2023-02-20 17:21:43.830834709 +1030
+diff '--color=auto' -rupN adduser-debian-3.132.orig/adduser adduser-debian-3.132/adduser
+--- adduser-debian-3.132.orig/adduser	2023-02-20 17:15:50.375613060 +1030
++++ adduser-debian-3.132/adduser	2023-02-20 17:21:43.830834709 +1030
 @@ -1252,7 +1252,8 @@ your option) any later version.
  This program is distributed in the hope that it will be useful, but
  WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -11,9 +11,9 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/adduser adduser-debian-3.131
  ");
  }
  
-diff '--color=auto' -rupN adduser-debian-3.131.orig/deluser adduser-debian-3.131/deluser
---- adduser-debian-3.131.orig/deluser	2023-02-20 17:15:50.378946505 +1030
-+++ adduser-debian-3.131/deluser	2023-02-20 17:22:56.186603271 +1030
+diff '--color=auto' -rupN adduser-debian-3.132.orig/deluser adduser-debian-3.132/deluser
+--- adduser-debian-3.132.orig/deluser	2023-02-20 17:15:50.378946505 +1030
++++ adduser-debian-3.132/deluser	2023-02-20 17:22:56.186603271 +1030
 @@ -465,7 +465,8 @@ your option) any later version.
  This program is distributed in the hope that it will be useful, but
  WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -24,9 +24,9 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/deluser adduser-debian-3.131
  ");
  }
  
-diff '--color=auto' -rupN adduser-debian-3.131.orig/po/adduser.pot adduser-debian-3.131/po/adduser.pot
---- adduser-debian-3.131.orig/po/adduser.pot	2023-02-20 17:15:50.382279951 +1030
-+++ adduser-debian-3.131/po/adduser.pot	2023-02-20 17:23:11.157107172 +1030
+diff '--color=auto' -rupN adduser-debian-3.132.orig/po/adduser.pot adduser-debian-3.132/po/adduser.pot
+--- adduser-debian-3.132.orig/po/adduser.pot	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.132/po/adduser.pot	2023-02-20 17:23:11.157107172 +1030
 @@ -452,7 +452,8 @@ msgid ""
  "This program is distributed in the hope that it will be useful, but\n"
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -37,9 +37,9 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/po/adduser.pot adduser-debia
  msgstr ""
  
  #: ../adduser:1261
-diff '--color=auto' -rupN adduser-debian-3.131.orig/po/ca.po adduser-debian-3.131/po/ca.po
---- adduser-debian-3.131.orig/po/ca.po	2023-02-20 17:15:50.382279951 +1030
-+++ adduser-debian-3.131/po/ca.po	2023-02-20 17:30:59.979410435 +1030
+diff '--color=auto' -rupN adduser-debian-3.132.orig/po/ca.po adduser-debian-3.132/po/ca.po
+--- adduser-debian-3.132.orig/po/ca.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.132/po/ca.po	2023-02-20 17:30:59.979410435 +1030
 @@ -500,7 +500,8 @@ msgid ""
  "This program is distributed in the hope that it will be useful, but\n"
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -59,9 +59,9 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/po/ca.po adduser-debian-3.13
  
  #: ../adduser:1261
  msgid ""
-diff '--color=auto' -rupN adduser-debian-3.131.orig/po/cs.po adduser-debian-3.131/po/cs.po
---- adduser-debian-3.131.orig/po/cs.po	2023-02-20 17:15:50.382279951 +1030
-+++ adduser-debian-3.131/po/cs.po	2023-02-20 17:31:41.407433593 +1030
+diff '--color=auto' -rupN adduser-debian-3.132.orig/po/cs.po adduser-debian-3.132/po/cs.po
+--- adduser-debian-3.132.orig/po/cs.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.132/po/cs.po	2023-02-20 17:31:41.407433593 +1030
 @@ -488,7 +488,8 @@ msgid ""
  "This program is distributed in the hope that it will be useful, but\n"
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -81,9 +81,9 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/po/cs.po adduser-debian-3.13
  
  #: ../adduser:1261
  msgid ""
-diff '--color=auto' -rupN adduser-debian-3.131.orig/po/da.po adduser-debian-3.131/po/da.po
---- adduser-debian-3.131.orig/po/da.po	2023-02-20 17:15:50.382279951 +1030
-+++ adduser-debian-3.131/po/da.po	2023-02-20 17:33:05.970210379 +1030
+diff '--color=auto' -rupN adduser-debian-3.132.orig/po/da.po adduser-debian-3.132/po/da.po
+--- adduser-debian-3.132.orig/po/da.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.132/po/da.po	2023-02-20 17:33:05.970210379 +1030
 @@ -490,7 +490,8 @@ msgid ""
  "This program is distributed in the hope that it will be useful, but\n"
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -105,9 +105,9 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/po/da.po adduser-debian-3.13
  
  #: ../adduser:1261
  msgid ""
-diff '--color=auto' -rupN adduser-debian-3.131.orig/po/de.po adduser-debian-3.131/po/de.po
---- adduser-debian-3.131.orig/po/de.po	2023-02-20 17:15:50.382279951 +1030
-+++ adduser-debian-3.131/po/de.po	2023-02-20 17:33:49.204967098 +1030
+diff '--color=auto' -rupN adduser-debian-3.132.orig/po/de.po adduser-debian-3.132/po/de.po
+--- adduser-debian-3.132.orig/po/de.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.132/po/de.po	2023-02-20 17:33:49.204967098 +1030
 @@ -507,7 +507,8 @@ msgid ""
  "This program is distributed in the hope that it will be useful, but\n"
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -127,9 +127,9 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/po/de.po adduser-debian-3.13
  
  #: ../adduser:1261
  msgid ""
-diff '--color=auto' -rupN adduser-debian-3.131.orig/po/es.po adduser-debian-3.131/po/es.po
---- adduser-debian-3.131.orig/po/es.po	2023-02-20 17:15:50.382279951 +1030
-+++ adduser-debian-3.131/po/es.po	2023-02-20 17:34:57.527220887 +1030
+diff '--color=auto' -rupN adduser-debian-3.132.orig/po/es.po adduser-debian-3.132/po/es.po
+--- adduser-debian-3.132.orig/po/es.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.132/po/es.po	2023-02-20 17:34:57.527220887 +1030
 @@ -531,7 +531,8 @@ msgid ""
  "This program is distributed in the hope that it will be useful, but\n"
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -151,9 +151,9 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/po/es.po adduser-debian-3.13
  
  #: ../adduser:1261
  msgid ""
-diff '--color=auto' -rupN adduser-debian-3.131.orig/po/eu.po adduser-debian-3.131/po/eu.po
---- adduser-debian-3.131.orig/po/eu.po	2023-02-20 17:15:50.382279951 +1030
-+++ adduser-debian-3.131/po/eu.po	2023-02-20 17:35:35.138463713 +1030
+diff '--color=auto' -rupN adduser-debian-3.132.orig/po/eu.po adduser-debian-3.132/po/eu.po
+--- adduser-debian-3.132.orig/po/eu.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.132/po/eu.po	2023-02-20 17:35:35.138463713 +1030
 @@ -504,7 +504,8 @@ msgid ""
  "This program is distributed in the hope that it will be useful, but\n"
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -164,9 +164,9 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/po/eu.po adduser-debian-3.13
  msgstr ""
  "Programa hau software librea da; birbana eta/edo alda dezakezu\n"
  "Free Software Foundation-ek argitaratutako GNU Lizentzia Publiko\n"
-diff '--color=auto' -rupN adduser-debian-3.131.orig/po/fr.po adduser-debian-3.131/po/fr.po
---- adduser-debian-3.131.orig/po/fr.po	2023-02-20 17:15:50.382279951 +1030
-+++ adduser-debian-3.131/po/fr.po	2023-02-20 17:36:10.522967545 +1030
+diff '--color=auto' -rupN adduser-debian-3.132.orig/po/fr.po adduser-debian-3.132/po/fr.po
+--- adduser-debian-3.132.orig/po/fr.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.132/po/fr.po	2023-02-20 17:36:10.522967545 +1030
 @@ -541,7 +541,8 @@ msgid ""
  "This program is distributed in the hope that it will be useful, but\n"
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -186,9 +186,9 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/po/fr.po adduser-debian-3.13
  
  #: ../adduser:1261
  msgid ""
-diff '--color=auto' -rupN adduser-debian-3.131.orig/po/gl.po adduser-debian-3.131/po/gl.po
---- adduser-debian-3.131.orig/po/gl.po	2023-02-20 17:15:50.382279951 +1030
-+++ adduser-debian-3.131/po/gl.po	2023-02-20 17:37:02.044673851 +1030
+diff '--color=auto' -rupN adduser-debian-3.132.orig/po/gl.po adduser-debian-3.132/po/gl.po
+--- adduser-debian-3.132.orig/po/gl.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.132/po/gl.po	2023-02-20 17:37:02.044673851 +1030
 @@ -510,7 +510,8 @@ msgid ""
  "This program is distributed in the hope that it will be useful, but\n"
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -210,9 +210,9 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/po/gl.po adduser-debian-3.13
  
  #: ../adduser:1261
  msgid ""
-diff '--color=auto' -rupN adduser-debian-3.131.orig/po/hu.po adduser-debian-3.131/po/hu.po
---- adduser-debian-3.131.orig/po/hu.po	2023-02-20 17:15:50.382279951 +1030
-+++ adduser-debian-3.131/po/hu.po	2023-02-20 17:37:36.469148487 +1030
+diff '--color=auto' -rupN adduser-debian-3.132.orig/po/hu.po adduser-debian-3.132/po/hu.po
+--- adduser-debian-3.132.orig/po/hu.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.132/po/hu.po	2023-02-20 17:37:36.469148487 +1030
 @@ -506,7 +506,8 @@ msgid ""
  "This program is distributed in the hope that it will be useful, but\n"
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -233,9 +233,9 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/po/hu.po adduser-debian-3.13
  
  #: ../adduser:1261
  msgid ""
-diff '--color=auto' -rupN adduser-debian-3.131.orig/po/it.po adduser-debian-3.131/po/it.po
---- adduser-debian-3.131.orig/po/it.po	2023-02-20 17:15:50.382279951 +1030
-+++ adduser-debian-3.131/po/it.po	2023-02-20 17:38:11.196967429 +1030
+diff '--color=auto' -rupN adduser-debian-3.132.orig/po/it.po adduser-debian-3.132/po/it.po
+--- adduser-debian-3.132.orig/po/it.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.132/po/it.po	2023-02-20 17:38:11.196967429 +1030
 @@ -498,7 +498,8 @@ msgid ""
  "This program is distributed in the hope that it will be useful, but\n"
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -255,9 +255,9 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/po/it.po adduser-debian-3.13
  
  #: ../adduser:1261
  msgid ""
-diff '--color=auto' -rupN adduser-debian-3.131.orig/po/ja.po adduser-debian-3.131/po/ja.po
---- adduser-debian-3.131.orig/po/ja.po	2023-02-20 17:15:50.382279951 +1030
-+++ adduser-debian-3.131/po/ja.po	2023-02-20 17:38:53.655044029 +1030
+diff '--color=auto' -rupN adduser-debian-3.132.orig/po/ja.po adduser-debian-3.132/po/ja.po
+--- adduser-debian-3.132.orig/po/ja.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.132/po/ja.po	2023-02-20 17:38:53.655044029 +1030
 @@ -506,7 +506,8 @@ msgid ""
  "This program is distributed in the hope that it will be useful, but\n"
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -278,9 +278,9 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/po/ja.po adduser-debian-3.13
  
  #: ../adduser:1261
  msgid ""
-diff '--color=auto' -rupN adduser-debian-3.131.orig/po/ko.po adduser-debian-3.131/po/ko.po
---- adduser-debian-3.131.orig/po/ko.po	2023-02-20 17:15:50.382279951 +1030
-+++ adduser-debian-3.131/po/ko.po	2023-02-20 17:39:16.442467903 +1030
+diff '--color=auto' -rupN adduser-debian-3.132.orig/po/ko.po adduser-debian-3.132/po/ko.po
+--- adduser-debian-3.132.orig/po/ko.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.132/po/ko.po	2023-02-20 17:39:16.442467903 +1030
 @@ -460,7 +460,8 @@ msgid ""
  "This program is distributed in the hope that it will be useful, but\n"
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -291,9 +291,9 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/po/ko.po adduser-debian-3.13
  msgstr ""
  
  #: ../adduser:1261
-diff '--color=auto' -rupN adduser-debian-3.131.orig/po/nb.po adduser-debian-3.131/po/nb.po
---- adduser-debian-3.131.orig/po/nb.po	2023-02-20 17:15:50.382279951 +1030
-+++ adduser-debian-3.131/po/nb.po	2023-02-20 17:39:56.280459132 +1030
+diff '--color=auto' -rupN adduser-debian-3.132.orig/po/nb.po adduser-debian-3.132/po/nb.po
+--- adduser-debian-3.132.orig/po/nb.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.132/po/nb.po	2023-02-20 17:39:56.280459132 +1030
 @@ -498,7 +498,8 @@ msgid ""
  "This program is distributed in the hope that it will be useful, but\n"
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -313,9 +313,9 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/po/nb.po adduser-debian-3.13
  
  #: ../adduser:1261
  msgid ""
-diff '--color=auto' -rupN adduser-debian-3.131.orig/po/nl.po adduser-debian-3.131/po/nl.po
---- adduser-debian-3.131.orig/po/nl.po	2023-02-20 17:15:50.382279951 +1030
-+++ adduser-debian-3.131/po/nl.po	2023-02-20 17:40:29.331558743 +1030
+diff '--color=auto' -rupN adduser-debian-3.132.orig/po/nl.po adduser-debian-3.132/po/nl.po
+--- adduser-debian-3.132.orig/po/nl.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.132/po/nl.po	2023-02-20 17:40:29.331558743 +1030
 @@ -514,7 +514,8 @@ msgid ""
  "This program is distributed in the hope that it will be useful, but\n"
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -336,9 +336,9 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/po/nl.po adduser-debian-3.13
  
  #: ../adduser:1261
  msgid ""
-diff '--color=auto' -rupN adduser-debian-3.131.orig/po/pl.po adduser-debian-3.131/po/pl.po
---- adduser-debian-3.131.orig/po/pl.po	2023-02-20 17:15:50.382279951 +1030
-+++ adduser-debian-3.131/po/pl.po	2023-02-20 17:41:51.924309127 +1030
+diff '--color=auto' -rupN adduser-debian-3.132.orig/po/pl.po adduser-debian-3.132/po/pl.po
+--- adduser-debian-3.132.orig/po/pl.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.132/po/pl.po	2023-02-20 17:41:51.924309127 +1030
 @@ -494,7 +494,8 @@ msgid ""
  "This program is distributed in the hope that it will be useful, but\n"
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -359,9 +359,9 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/po/pl.po adduser-debian-3.13
  
  #: ../adduser:1261
  msgid ""
-diff '--color=auto' -rupN adduser-debian-3.131.orig/po/pt_BR.po adduser-debian-3.131/po/pt_BR.po
---- adduser-debian-3.131.orig/po/pt_BR.po	2023-02-20 17:15:50.382279951 +1030
-+++ adduser-debian-3.131/po/pt_BR.po	2023-02-20 17:42:19.238552762 +1030
+diff '--color=auto' -rupN adduser-debian-3.132.orig/po/pt_BR.po adduser-debian-3.132/po/pt_BR.po
+--- adduser-debian-3.132.orig/po/pt_BR.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.132/po/pt_BR.po	2023-02-20 17:42:19.238552762 +1030
 @@ -512,7 +512,8 @@ msgid ""
  "This program is distributed in the hope that it will be useful, but\n"
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -382,9 +382,9 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/po/pt_BR.po adduser-debian-3
  
  #: ../adduser:1261
  msgid ""
-diff '--color=auto' -rupN adduser-debian-3.131.orig/po/pt.po adduser-debian-3.131/po/pt.po
---- adduser-debian-3.131.orig/po/pt.po	2023-02-20 17:15:50.382279951 +1030
-+++ adduser-debian-3.131/po/pt.po	2023-02-20 17:42:54.403058503 +1030
+diff '--color=auto' -rupN adduser-debian-3.132.orig/po/pt.po adduser-debian-3.132/po/pt.po
+--- adduser-debian-3.132.orig/po/pt.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.132/po/pt.po	2023-02-20 17:42:54.403058503 +1030
 @@ -521,7 +521,8 @@ msgid ""
  "This program is distributed in the hope that it will be useful, but\n"
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -404,9 +404,9 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/po/pt.po adduser-debian-3.13
  
  #: ../adduser:1261
  msgid ""
-diff '--color=auto' -rupN adduser-debian-3.131.orig/po/ru.po adduser-debian-3.131/po/ru.po
---- adduser-debian-3.131.orig/po/ru.po	2023-02-20 17:15:50.382279951 +1030
-+++ adduser-debian-3.131/po/ru.po	2023-02-20 17:43:19.077214796 +1030
+diff '--color=auto' -rupN adduser-debian-3.132.orig/po/ru.po adduser-debian-3.132/po/ru.po
+--- adduser-debian-3.132.orig/po/ru.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.132/po/ru.po	2023-02-20 17:43:19.077214796 +1030
 @@ -498,7 +498,8 @@ msgid ""
  "This program is distributed in the hope that it will be useful, but\n"
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -427,9 +427,9 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/po/ru.po adduser-debian-3.13
  
  #: ../adduser:1261
  msgid ""
-diff '--color=auto' -rupN adduser-debian-3.131.orig/po/sk.po adduser-debian-3.131/po/sk.po
---- adduser-debian-3.131.orig/po/sk.po	2023-02-20 17:15:50.382279951 +1030
-+++ adduser-debian-3.131/po/sk.po	2023-02-20 17:43:40.344590985 +1030
+diff '--color=auto' -rupN adduser-debian-3.132.orig/po/sk.po adduser-debian-3.132/po/sk.po
+--- adduser-debian-3.132.orig/po/sk.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.132/po/sk.po	2023-02-20 17:43:40.344590985 +1030
 @@ -493,7 +493,8 @@ msgid ""
  "This program is distributed in the hope that it will be useful, but\n"
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -440,9 +440,9 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/po/sk.po adduser-debian-3.13
  msgstr ""
  "Tento program je slobodný softvér; môžete ho šíriť a/alebo meniť\n"
  "za podmienok GNU General Public License (GNU GPL), ktorú publikovala\n"
-diff '--color=auto' -rupN adduser-debian-3.131.orig/po/sv.po adduser-debian-3.131/po/sv.po
---- adduser-debian-3.131.orig/po/sv.po	2023-02-20 17:15:50.382279951 +1030
-+++ adduser-debian-3.131/po/sv.po	2023-02-20 17:44:15.082416936 +1030
+diff '--color=auto' -rupN adduser-debian-3.132.orig/po/sv.po adduser-debian-3.132/po/sv.po
+--- adduser-debian-3.132.orig/po/sv.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.132/po/sv.po	2023-02-20 17:44:15.082416936 +1030
 @@ -501,7 +501,8 @@ msgid ""
  "This program is distributed in the hope that it will be useful, but\n"
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -464,9 +464,9 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/po/sv.po adduser-debian-3.13
  
  #: ../adduser:1261
  msgid ""
-diff '--color=auto' -rupN adduser-debian-3.131.orig/po/uk.po adduser-debian-3.131/po/uk.po
---- adduser-debian-3.131.orig/po/uk.po	2023-02-20 17:15:50.382279951 +1030
-+++ adduser-debian-3.131/po/uk.po	2023-02-20 17:45:01.610637021 +1030
+diff '--color=auto' -rupN adduser-debian-3.132.orig/po/uk.po adduser-debian-3.132/po/uk.po
+--- adduser-debian-3.132.orig/po/uk.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.132/po/uk.po	2023-02-20 17:45:01.610637021 +1030
 @@ -490,7 +490,8 @@ msgid ""
  "This program is distributed in the hope that it will be useful, but\n"
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -486,9 +486,9 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/po/uk.po adduser-debian-3.13
  
  #: ../adduser:1261
  msgid ""
-diff '--color=auto' -rupN adduser-debian-3.131.orig/po/vi.po adduser-debian-3.131/po/vi.po
---- adduser-debian-3.131.orig/po/vi.po	2023-02-20 17:15:50.382279951 +1030
-+++ adduser-debian-3.131/po/vi.po	2023-02-20 17:46:00.562606214 +1030
+diff '--color=auto' -rupN adduser-debian-3.132.orig/po/vi.po adduser-debian-3.132/po/vi.po
+--- adduser-debian-3.132.orig/po/vi.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.132/po/vi.po	2023-02-20 17:46:00.562606214 +1030
 @@ -503,7 +503,8 @@ msgid ""
  "This program is distributed in the hope that it will be useful, but\n"
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -510,9 +510,9 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/po/vi.po adduser-debian-3.13
  
  #: ../adduser:1261
  msgid ""
-diff '--color=auto' -rupN adduser-debian-3.131.orig/po/zh_CN.po adduser-debian-3.131/po/zh_CN.po
---- adduser-debian-3.131.orig/po/zh_CN.po	2023-02-20 17:15:50.382279951 +1030
-+++ adduser-debian-3.131/po/zh_CN.po	2023-02-20 17:47:04.898089689 +1030
+diff '--color=auto' -rupN adduser-debian-3.132.orig/po/zh_CN.po adduser-debian-3.132/po/zh_CN.po
+--- adduser-debian-3.132.orig/po/zh_CN.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.132/po/zh_CN.po	2023-02-20 17:47:04.898089689 +1030
 @@ -479,14 +479,15 @@ msgid ""
  "This program is distributed in the hope that it will be useful, but\n"
  "WITHOUT ANY WARRANTY; without even the implied warranty of\n"

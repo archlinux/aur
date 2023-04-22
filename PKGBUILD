@@ -7,8 +7,8 @@
 # `conflicts` directives. Neither scenario is ideal, so just use the old name.
 pkgname=adduser-deb
 _pkgname=adduser-debian
-pkgver=3.131
-pkgrel=2
+pkgver=3.132
+pkgrel=1
 pkgdesc="Debian's 'adduser' and 'deluser' commands for creating and removing users"
 arch=("any")
 url="https://salsa.debian.org/debian/adduser"
@@ -43,10 +43,10 @@ source=("https://salsa.debian.org/debian/adduser/-/archive/debian/${pkgver}/${_p
         "arch-finger.patch"
         "arch-license-path.patch"
         "arch-policy.patch")
-sha256sums=('3ce6de32bce048d12429d9431b36d8437c1934266475b6a9f5235b3dff54f918'
-            '917d0f4733610e0fef9210728d1a11ac47574293c5c4c5e37d654e78f84dff85'
-            '2bb01846f0f3206796a817aacc65bef7d216ef7e0a89132661abb4182f0ba7d6'
-            '245e1fcd5baa0e85471ef92778bd429dedc094e02743d1a832217e116be3ccb1')
+sha256sums=('dfeb96647b7f4e84eb26f78ae60da1a64b2d8f0071bbf9ba00c513db20a1bcef'
+            '0acd60ff4efb100b3f15042c3d31c447a387140240d72b81be25b6afdf952e02'
+            '7c6bbbb2cd59127b698977db8a9ffbe77815b4e1e2761f353a7946516147129e'
+            '320d34f3e08a4546c1737370c17c091810a364ab184638fbcf2759fef8e0a1ea')
 
 prepare() {
   # Arch's UID/GID policy differs a little from Debian's. I've included a patch

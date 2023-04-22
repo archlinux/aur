@@ -1,6 +1,6 @@
-diff '--color=auto' -rupN adduser-debian-3.131.orig/AdduserCommon.pm adduser-debian-3.131/AdduserCommon.pm
---- adduser-debian-3.131.orig/AdduserCommon.pm	2023-03-07 18:08:25.694341050 +1030
-+++ adduser-debian-3.131/AdduserCommon.pm	2023-03-07 18:11:00.172778792 +1030
+diff '--color=auto' -rupN adduser-debian-3.132.orig/AdduserCommon.pm adduser-debian-3.132/AdduserCommon.pm
+--- adduser-debian-3.132.orig/AdduserCommon.pm	2023-03-07 18:08:25.694341050 +1030
++++ adduser-debian-3.132/AdduserCommon.pm	2023-03-07 18:11:00.172778792 +1030
 @@ -286,18 +286,18 @@ sub preseed_config {
          backup => 0,
          backup_to => ".",
@@ -36,9 +36,9 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/AdduserCommon.pm adduser-deb
          exclude_fstypes => "(proc|sysfs|usbfs|devpts|devtmpfs|devfs|afs)",
          skel_ignore_regex => "\.(dpkg|ucf)-(old|new|dist)\$",
          extra_groups => "users",
-diff '--color=auto' -rupN adduser-debian-3.131.orig/adduser.conf adduser-debian-3.131/adduser.conf
---- adduser-debian-3.131.orig/adduser.conf	2023-03-07 18:08:25.694341050 +1030
-+++ adduser-debian-3.131/adduser.conf	2023-03-07 18:12:36.269287490 +1030
+diff '--color=auto' -rupN adduser-debian-3.132.orig/adduser.conf adduser-debian-3.132/adduser.conf
+--- adduser-debian-3.132.orig/adduser.conf	2023-03-07 18:08:25.694341050 +1030
++++ adduser-debian-3.132/adduser.conf	2023-03-07 18:12:36.269287490 +1030
 @@ -21,21 +21,21 @@
  # Specify inclusive ranges of UIDs and GIDs from which UIDs and GIDs
  # for system users, system groups, non-system users and non-system groups
@@ -97,9 +97,9 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/adduser.conf adduser-debian-
  
  # When populating the newly created home directory of a non-system user,
  # files in SKEL matching this regex are not copied.
-diff '--color=auto' -rupN adduser-debian-3.131.orig/doc/adduser.conf.5 adduser-debian-3.131/doc/adduser.conf.5
---- adduser-debian-3.131.orig/doc/adduser.conf.5	2023-03-07 18:08:25.697674494 +1030
-+++ adduser-debian-3.131/doc/adduser.conf.5	2023-03-07 18:10:36.715337017 +1030
+diff '--color=auto' -rupN adduser-debian-3.132.orig/doc/adduser.conf.5 adduser-debian-3.132/doc/adduser.conf.5
+--- adduser-debian-3.132.orig/doc/adduser.conf.5	2023-03-07 18:08:25.697674494 +1030
++++ adduser-debian-3.132/doc/adduser.conf.5	2023-03-07 18:10:36.715337017 +1030
 @@ -62,17 +62,17 @@ Defaults to \fIusers\fP.
  .B FIRST_SYSTEM_GID " and " LAST_SYSTEM_GID
  specify an inclusive range of GIDs from which GIDs
