@@ -1,7 +1,7 @@
 pkgbase = clashr-auto-bin
 	pkgdesc = use clash.meta & speedtest & easy to use
 	pkgver = 2.4.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://clashr-auto.gitbook.io/
 	arch = x86_64
 	license = unknown
