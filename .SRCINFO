@@ -1,7 +1,7 @@
 pkgbase = tockler-appimage
 	pkgdesc = An application that tracks your time by monitoring your active window title and idle time.
 	pkgver = 3.21.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tockler.io/
 	arch = x86_64
 	license = GPL2
