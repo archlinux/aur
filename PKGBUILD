@@ -1,7 +1,7 @@
 # Maintainer: Sashanoraa <sasha@noraa.gay>
 
 pkgname=ant-dracula-kde-theme
-pkgver=3.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Ant Dracula theme for KDE Plasma"
 license=('GPL3')
@@ -13,10 +13,10 @@ optdepends=("ant-dracula-gtk-theme: Matching GTK theme"
               "ant-dracula-kvantum-theme: Ant Dracula theme for Kvantum Qt style (recommended)")
 
 source=("https://github.com/dracula/gtk/archive/v$pkgver.tar.gz")
-sha256sums=('c28527129c7a5020d5225ef105e4b2369f156970876d7a427db11f90d71395c6')
+sha256sums=('462f397f957d8443cfef7cddf5e6b92878c5aeef1af9f581307d43257279eb4c')
 
 package(){
-	cd "$srcdir/gtk-3.0/kde"
+	cd "$srcdir/gtk-4.0.0/kde"
 
     mkdir -p "${pkgdir}/usr/share/aurorae/themes" "${pkgdir}/usr/share/sddm/themes"
 
