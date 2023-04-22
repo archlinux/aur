@@ -3,7 +3,7 @@
 _pkgname=esearch
 pkgname="${_pkgname}-electron-bin"
 pkgver=1.10.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Screenshot OCR search translate search for picture paste the picture on the screen screen recorder (with system electron)
             截屏 离线OCR 搜索翻译 以图搜图 贴图 录屏 滚动截屏"
 arch=("x86_64")
@@ -18,9 +18,9 @@ optdepends=()
 provides=("${_pkgname}")
 conflicts=("${_pkgname}-appimage" "${_pkgname}-bin")
 options=(!strip)
-source=("${_pkgname}-${pkgver}.tar.gz::${_githuburl}/releases/download/${pkgver}-beta.${pkgrel}/eSearch-${pkgver}-beta.${pkgrel}-linux-X64.tar.gz"
+source=("${_pkgname}-${pkgver}.tar.gz::${_githuburl}/releases/download/${pkgver}/eSearch-${pkgver}-linux-X64.tar.gz"
         "e-search.sh")
-sha256sums=('789d0b83136adf60442934d0a895ef2f4e16ae0008f6903a80873f2533d8a811'
+sha256sums=('70e6e10062db2650f5576001eac0c75c45415081912a40b8cea04cb385dbc0bf'
             '60a603296c1457df85ef51f5f530461243c07fedbd63af8844666f5400c318f3')
 
 package() {
@@ -29,7 +29,7 @@ package() {
     install -dm755 "${pkgdir}/usr/lib/"
     install -dm755 "${pkgdir}/usr/share/applications"
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-    cd "${srcdir}/eSearch-${pkgver}-beta.${pkgrel}-linux-x64"
+    cd "${srcdir}/eSearch-${pkgver}-linux-x64"
     ln -s "/usr/lib/esearch/assets/e-search.desktop" "${pkgdir}/usr/share/applications/"
     cp --no-preserve=mode,ownership "resources/app/assets/icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/e-search.svg"
     cp -r --no-preserve=ownership "resources/app" "${pkgdir}/usr/lib/esearch"

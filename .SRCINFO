@@ -1,7 +1,7 @@
 pkgbase = esearch-electron-bin
 	pkgdesc = Screenshot OCR search translate search for picture paste the picture on the screen screen recorder (with system electron) 截屏 离线OCR 搜索翻译 以图搜图 贴图 录屏 滚动截屏
 	pkgver = 1.10.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://esearch-app.netlify.app/
 	arch = x86_64
 	license = GPL3
@@ -47,9 +47,9 @@ pkgbase = esearch-electron-bin
 	conflicts = esearch-appimage
 	conflicts = esearch-bin
 	options = !strip
-	source = esearch-1.10.0.tar.gz::https://github.com/xushengfeng/eSearch/releases/download/1.10.0-beta.6/eSearch-1.10.0-beta.6-linux-X64.tar.gz
+	source = esearch-1.10.0.tar.gz::https://github.com/xushengfeng/eSearch/releases/download/1.10.0/eSearch-1.10.0-linux-X64.tar.gz
 	source = e-search.sh
-	sha256sums = 789d0b83136adf60442934d0a895ef2f4e16ae0008f6903a80873f2533d8a811
+	sha256sums = 70e6e10062db2650f5576001eac0c75c45415081912a40b8cea04cb385dbc0bf
 	sha256sums = 60a603296c1457df85ef51f5f530461243c07fedbd63af8844666f5400c318f3
 
 pkgname = esearch-electron-bin
