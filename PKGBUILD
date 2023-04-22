@@ -6,7 +6,7 @@
 pkgname=plymouth-git
 _pkgname=plymouth
 pkgver=22.02.122.r170.ge8e19371
-pkgrel=2
+pkgrel=3
 pkgdesc='Graphical boot splash screen (git version)'
 arch=('i686' 'x86_64')
 url='https://www.freedesktop.org/wiki/Software/Plymouth/'
@@ -71,6 +71,6 @@ package() {
   install -Dm644 $srcdir/plymouth.initcpio_install "$pkgdir/usr/lib/initcpio/install/$_pkgname"
   
   # Install logo for the spinner theme
-  install -Dm644 $srcdir/archlinux-logo-text-dark.png "$pkgdir/usr/share/$pkgname/themes/spinner/watermark.png"
-  install -Dm644 "$pkgdir/usr/share/plymouth/plymouthd.defaults" "$pkgdir/etc/plymouth/plymouthd.conf"
+  install -Dm644 $srcdir/archlinux-logo-text-dark.png "$pkgdir/usr/share/$_pkgname/themes/spinner/watermark.png"
+  install -Dm644 "$pkgdir/usr/share/$_pkgname/plymouthd.defaults" "$pkgdir/etc/$_pkgname/plymouthd.conf"
 }
