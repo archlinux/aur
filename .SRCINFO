@@ -1,23 +1,23 @@
 pkgbase = rdiff-backup
-	pkgdesc = A utility for local/remote mirroring and incremental backups.
-	pkgver = 2.0.5
-	pkgrel = 3
-	url = https://www.nongnu.org/rdiff-backup/
+	pkgdesc = Reverse differential backup tool, over a network or locally
+	pkgver = 2.2.4
+	pkgrel = 1
+	url = https://github.com/rdiff-backup/rdiff-backup
 	arch = x86_64
 	license = GPL
 	checkdepends = python-pylibacl
 	checkdepends = python-pyxattr
-	makedepends = git
+	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
-	depends = python-setuptools
+	makedepends = asciidoctor
 	depends = librsync
+	depends = python-psutil
+	depends = python-yaml
 	optdepends = python-pylibacl: access control list support
 	optdepends = python-pyxattr: extended attribute support
-	source = git+https://github.com/rdiff-backup/rdiff-backup.git#commit=040f122a5b181d7e1894f1fda632a4742e0c87bb?signed
-	source = git+https://github.com/rdiff-backup/rdiff-backup-filesrepo.git
-	validpgpkeys = B572DE9BC6537B9D5A4735B114C2601BDCA52872
-	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
-	sha512sums = SKIP
-	sha512sums = SKIP
+	source = rdiff-backup-2.2.4.tar.gz::https://github.com/rdiff-backup/rdiff-backup/archive/refs/tags/v2.2.4.tar.gz
+	source = rdiff-backup-filesrepo-6139d14cd60e62ded4281a30e1d64b66d8a42797.tar.gz::https://github.com/rdiff-backup/rdiff-backup-filesrepo/archive/6139d14cd60e62ded4281a30e1d64b66d8a42797.tar.gz
+	sha256sums = a8e5aab01fc6c70dc6cd8d94510e0ac7b542bb0e1632324039d37d70e1cd2a5e
+	sha256sums = 96395a278b0b2b23a2005449ab50a771cdd168683e5942bfcfa3d04f5980c9f2
 
 pkgname = rdiff-backup

@@ -1,69 +1,129 @@
-# Maintainer: Lukas Fleischer <lfleischer@archlinux.org>
+# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: Aaron Schaefer <aaron@elasticdog.com>
 # Contributor: Erwin Van de Velde <erwin.vandevelde@gmail.com>
 
 pkgname=rdiff-backup
-pkgver=2.0.5
-_commit=040f122a5b181d7e1894f1fda632a4742e0c87bb
-pkgrel=3
-pkgdesc='A utility for local/remote mirroring and incremental backups.'
-arch=('x86_64')
-url='https://www.nongnu.org/rdiff-backup/'
-license=('GPL')
-depends=('python-setuptools' 'librsync')
-makedepends=('git' 'python-setuptools-scm')
-checkdepends=('python-pylibacl' 'python-pyxattr')
-optdepends=('python-pylibacl: access control list support'
-            'python-pyxattr: extended attribute support')
-source=("git+https://github.com/rdiff-backup/rdiff-backup.git#commit=$_commit?signed"
-        git+https://github.com/rdiff-backup/rdiff-backup-filesrepo.git)
-sha512sums=('SKIP'
-            'SKIP')
-validpgpkeys=('B572DE9BC6537B9D5A4735B114C2601BDCA52872'  # Andrew Ferguson
-              '5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23') # GitHub
+pkgver=2.2.4
+pkgrel=1
+pkgdesc="Reverse differential backup tool, over a network or locally"
+arch=(x86_64)
+url="https://github.com/rdiff-backup/rdiff-backup"
+license=(GPL)
+depends=(
+  librsync
+  python-psutil
+  python-yaml
+)
+makedepends=(
+  python-setuptools
+  python-setuptools-scm
+  asciidoctor
+)
+checkdepends=(
+  python-pylibacl
+  python-pyxattr
+)
+optdepends=(
+  'python-pylibacl: access control list support'
+  'python-pyxattr: extended attribute support'
+)
+
+_rdiff_backup_filesrepo_hash=6139d14cd60e62ded4281a30e1d64b66d8a42797
+
+source=(
+  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+  "rdiff-backup-filesrepo-$_rdiff_backup_filesrepo_hash.tar.gz::https://github.com/rdiff-backup/rdiff-backup-filesrepo/archive/$_rdiff_backup_filesrepo_hash.tar.gz"
+)
+sha256sums=(
+  'a8e5aab01fc6c70dc6cd8d94510e0ac7b542bb0e1632324039d37d70e1cd2a5e'
+  '96395a278b0b2b23a2005449ab50a771cdd168683e5942bfcfa3d04f5980c9f2'
+)
+
+_archive="$pkgname-$pkgver"
+
+prepare() {
+  cd "$_archive"
+
+  {
+    echo "node: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    echo "node-date: xxxxxxxxxxxxxxxxxxxxxxxxx"
+    echo "describe-name: v$pkgver"
+    echo "ref-names: HEAD -> master, tag: v$pkgver, origin/master, master/HEAD"
+  } > .git_archival.txt
+}
 
 build() {
-  cd $pkgname
+  cd "$_archive"
+
   python setup.py build
 }
 
 check() {
-  fakeroot tar xf rdiff-backup-filesrepo/rdiff-backup_testfiles.tar
-  cd $pkgname
-  export PATH="$PWD/build/scripts-3.10:$PATH"
-  export PYTHONPATH="$PWD/build/lib.linux-x86_64-3.10"
+  cd "$_archive"
+
+  fakeroot tar --extract \
+    --file "$srcdir/rdiff-backup-filesrepo-$_rdiff_backup_filesrepo_hash/rdiff-backup_testfiles.tar" \
+    --directory "$srcdir"
+
+  python setup.py install --root=test-install --optimize=1 --skip-build
+  export PATH="$PWD/test-install/usr/bin:$PATH"
+  export PYTHONPATH="$PWD/test-install/usr/lib/python3.10/site-packages"
+
+  # Must be the first command to setup the test environment
   python testing/commontest.py
-  python testing/ctest.py
-  python testing/timetest.py
-  python testing/librsynctest.py || :  # https://github.com/rdiff-backup/rdiff-backup/issues/304
-  python testing/statisticstest.py
-  python testing/user_grouptest.py || :  # Missing user/group
-  python testing/setconnectionstest.py
-  python testing/iterfiletest.py
-  python testing/longnametest.py
-  python testing/robusttest.py
-  python testing/connectiontest.py
-  python testing/incrementtest.py
-  python testing/hardlinktest.py
-  python testing/eas_aclstest.py || :  # https://github.com/rdiff-backup/rdiff-backup/issues/370
-  python testing/FilenameMappingtest.py
-  python testing/fs_abilitiestest.py
-  python testing/hashtest.py
-  python testing/selectiontest.py || :  # Missing mknod'ed test files
-  python testing/metadatatest.py
-  python testing/rpathtest.py || :  # Permission difference
-  python testing/rorpitertest.py
-  python testing/rdifftest.py
-  python testing/securitytest.py
-  python testing/killtest.py
-  python testing/backuptest.py
-  python testing/comparetest.py
-  python testing/regresstest.py
-  python testing/restoretest.py
-  python testing/cmdlinetest.py
+
+  python testing/action_backuprestore_test.py --verbose --buffer
+  python testing/action_calculate_test.py --verbose --buffer
+  python testing/action_compare_test.py --verbose --buffer
+  python testing/action_complete_test.py --verbose --buffer
+  python testing/action_list_test.py --verbose --buffer
+  python testing/action_regress_test.py --verbose --buffer
+  python testing/action_remove_test.py --verbose --buffer
+  python testing/action_test_test.py --verbose --buffer
+  python testing/action_verify_test.py --verbose --buffer
+  # # sh ./testing/verbosity_actions_test.sh 9 --verbose --buffer  # Requires coverage
+  python testing/readonly_actions_test.py --verbose --buffer
+  python testing/api_test.py --verbose --buffer
+  python testing/location_map_filenames_test.py --verbose --buffer
+  python testing/location_map_hardlinks_test.py --verbose --buffer
+  python testing/location_lock_test.py --verbose --buffer
+  python testing/utils_simpleps_test.py --verbose --buffer
+  python testing/ctest.py --verbose --buffer
+  python testing/timetest.py --verbose --buffer
+  python testing/librsynctest.py --verbose --buffer
+  python testing/statisticstest.py --verbose --buffer
+  # python testing/user_grouptest.py --verbose --buffer  # Missing user/group
+  python testing/setconnectionstest.py --verbose --buffer
+  python testing/iterfiletest.py --verbose --buffer
+  python testing/longnametest.py --verbose --buffer
+  python testing/robusttest.py --verbose --buffer
+  python testing/connectiontest.py --verbose --buffer
+  python testing/incrementtest.py --verbose --buffer
+  python testing/hardlinktest.py --verbose --buffer
+  python testing/eas_aclstest.py --verbose --buffer
+  python testing/FilenameMappingtest.py --verbose --buffer
+  python testing/fs_abilitiestest.py --verbose --buffer
+  python testing/hashtest.py --verbose --buffer
+  # python testing/selectiontest.py --verbose --buffer  # Missing mknod'ed test files
+  python testing/metadatatest.py --verbose --buffer
+  # python testing/rpathtest.py --verbose --buffer  # Permission difference
+  python testing/rorpitertest.py --verbose --buffer
+  python testing/rdifftest.py --verbose --buffer
+  python testing/securitytest.py --verbose --buffer
+  python testing/killtest.py --verbose --buffer
+  python testing/backuptest.py --verbose --buffer
+  python testing/comparetest.py --verbose --buffer
+  python testing/regresstest.py --verbose --buffer
+  python testing/restoretest.py --verbose --buffer
+  python testing/cmdlinetest.py --verbose --buffer
+  python testing/rdiffbackupdeletetest.py --verbose --buffer
+  python testing/errorsrecovertest.py --verbose --buffer
+  python testing/rdb_arguments.py --verbose --buffer
 }
 
 package() {
-  cd $pkgname
-  python setup.py install --root="$pkgdir" -O1
+  cd "$_archive"
+
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
