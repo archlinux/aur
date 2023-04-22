@@ -1,7 +1,7 @@
 pkgbase = flawesome-bin
 	pkgdesc = Flawesome is a modern productivity tool that will help you organise your day-today work and thoughts.
 	pkgver = 0.2.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/ashishBharadwaj/flawesome
 	arch = x86_64
 	license = GPL3
@@ -33,7 +33,9 @@ pkgbase = flawesome-bin
 	depends = libxtst
 	depends = dbus
 	provides = flawesome
+	conflicts = flawesome
 	conflicts = flawesome-appimage
+	options = !strip
 	source = flawesome-0.2.3.deb::https://github.com/ashishBharadwaj/flawesome/releases/download/v0.2.3/flawesome_0.2.3_amd64.deb
 	sha256sums = 1cb04d7b3bb6c57b269c4214b46d7619b6480697b7ac73acd209448711ea4252
 
