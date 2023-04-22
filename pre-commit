@@ -2,5 +2,5 @@
 #
 # Hook to automatically create/update .SRCINFO file and add it to every commit
 # To activate, copy into .git/hooks
-make -C .. srcinfo
+make srcinfo
 git add .SRCINFO
