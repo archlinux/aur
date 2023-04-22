@@ -1,9 +1,9 @@
 # Maintainer: Twann <tw4nn at disroot.org>
 
 pkgname=tblock-gui
-pkgver=1.3.0.beta
+pkgver=1.3.1.beta
 pkgrel=1
-_bin_ver=1.3.0
+_bin_ver=1.3.1
 _build_type=beta
 provides=("$pkgname")
 pkgdesc="Official graphical user interface for the TBlock content blocker"
@@ -30,7 +30,7 @@ source=(
         "${pkgname}-${pkgver}.tar.gz::https://codeberg.org/tblock/tblock-gui/archive/${_bin_ver}-${_build_type}.tar.gz"
 )
 sha512sums=(
-        "df6d6dd962a919c6f59870a5d8db6f2d796261a87d637204030aa3054b402c0ebd1a7dd76b78f11a81c3f96bf036723ddd379295629d2f2fb25cdc99fc6de3e5"
+        "fec262ee6c60d340925e89a89169888e6160a35f75d9415726edd8822578127992007fb97b1c678d15b28e4ab1459403259a9d7c0872149aae9fbfca965f956a"
 )
 
 build()
