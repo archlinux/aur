@@ -1,6 +1,6 @@
 pkgbase = lceda-pro-bin
 	pkgdesc = 免费、专业、强大的国产PCB设计工具
-	pkgver = 2.0.17
+	pkgver = 2.0.21
 	pkgrel = 1
 	url = https://pro.lceda.cn/
 	install = lceda-pro-bin.install
@@ -18,11 +18,11 @@ pkgbase = lceda-pro-bin
 	source = lceda-pro-bin.install
 	sha256sums = e1c6b9641b73a56d5bffe42d8db2107af8f2c51aa5cd11c79aa998321a5e0190
 	sha256sums = f8c3c7f65443801b8a70e40de7cdceade5dcd75974945695dd5a1bfb1f862e1a
-	source_x86_64 = lceda-pro-x86_64-2.0.17.zip::https://image.lceda.cn/files/lceda-pro-linux-x64-2.0.17.zip
-	sha256sums_x86_64 = 22a23cf3a59ddf988f789d9a4e6d993ba501998b347a5c1f56821fb8a152e5fd
-	source_aarch64 = lceda-pro-aarch64-2.0.17.zip::https://image.lceda.cn/files/lceda-pro-linux-arm64-2.0.17.zip
-	sha256sums_aarch64 = 099d78c24f1b483207ad869e51daf1435a94504f9d01e23bd1ef7c32d12d0bb3
-	source_loong64 = lceda-pro-loong64-2.0.17.zip::https://image.lceda.cn/files/lceda-pro-linux-loong64-2.0.17.zip
-	sha256sums_loong64 = d6e2f8e256a5bcccd3b38097f008b7f3d02cf007ff0247e3d5e9f2d46a164a34
+	source_x86_64 = lceda-pro-x86_64-2.0.21.zip::https://image.lceda.cn/files/lceda-pro-linux-x64-2.0.21.zip
+	sha256sums_x86_64 = 64a3e9595fe54f6467bb015b5bc3a5ae73109f0e39fc7b91fcb1536d1fdc8a52
+	source_aarch64 = lceda-pro-aarch64-2.0.21.zip::https://image.lceda.cn/files/lceda-pro-linux-arm64-2.0.21.zip
+	sha256sums_aarch64 = 3ee36eb676b2e9a8cc0e1a46403d976c7948fa790f820960eca2087656c2c40c
+	source_loong64 = lceda-pro-loong64-2.0.21.zip::https://image.lceda.cn/files/lceda-pro-linux-loong64-2.0.21.zip
+	sha256sums_loong64 = e4b054ad52708bb9350e88c9eb09e16a06fb7a67117df7ac47cefd76be8166f5
 
 pkgname = lceda-pro-bin
