@@ -6,14 +6,15 @@
 _pkgname=slic3r
 pkgname="${_pkgname}-bin"
 pkgver=1.3.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Open Source toolpath generator for 3D printers"
 arch=('x86_64')
 url="http://www.slic3r.org"
 _githuburl="https://github.com/slic3r/Slic3r"
 conflicts=("${_pkgname}" "${_pkgname}-git" "${_pkgname}-appimage")
-depends=(freeglut glu libpng12 perl libxcrypt-compat gtk2 cairo libglvnd zlib gcc-libs xz libxi libjpeg-turbo glibc libxxf86vm \
-    pango gdk-pixbuf2 expat libx11 sh glib2 libsm openssl-1.0 hicolor-icon-theme)
+depends=('freeglut' 'glu' 'libpng12' 'perl' 'libxcrypt-compat' 'gtk2' 'cairo' 'libglvnd' 'zlib' 'gcc-libs' 'xz' 'libxi' 'libjpeg-turbo'  \
+    'pango' 'gdk-pixbuf2' 'expat' 'libx11' 'sh' 'glib2' 'libsm' 'openssl-1.0' 'hicolor-icon-theme' 'glibc' 'libxxf86vm')
+makedepends=('gendesk')
 provides=("${_pkgname}")
 license=(AGPL3)
 source=("${_pkgname}-${pkgver}.tar.bz2::${_githuburl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-x64.tar.bz2")
