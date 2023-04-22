@@ -3,7 +3,7 @@
 
 pkgname=heroic-games-launcher-electron
 _pkgbase=HeroicGamesLauncher
-pkgver=2.6.2
+pkgver=2.7.0
 pkgrel=1
 _electronversion=22
 pkgdesc="HGL, a Native alternative Linux Launcher for Epic Games"
@@ -16,32 +16,20 @@ provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 _launcher_ver=8
 source=("https://github.com/Heroic-Games-Launcher/$_pkgbase/archive/refs/tags/v$pkgver.tar.gz"
-        "https://github.com/foutrelis/chromium-launcher/archive/refs/tags/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz"
         electron-is-dev-env.patch
-        chromium-launcher-electron-app.patch)
-sha256sums=('87986d4e2d6edfe608af351988d36ef5eab32de6bbc397b53014cdd902792955'
-            '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
+        "${pkgname%-*}.sh.in")
+sha256sums=('19e14343e656bd62306c1928eaab482a0f108d3353cd86102b4781216dc8a639'
             'f8890a3c25036d8f75135cf57c9ea850077b1167a80e93cde5df3889370087f5'
-            '9235485adc4acbfaf303605f4428a6995a7b0b3b5a95181b185afbcb9f1f6ae5')
+            '01840a1e45da355cea9205eb1724615d27ea0b9c8115b9ee811ff545cac5bbfc')
 
 prepare() {
-  cd chromium-launcher-$_launcher_ver
-  patch -Np1 < ../chromium-launcher-electron-app.patch
-
-  cd ../"$_pkgbase-$pkgver"
+  cd "$_pkgbase-$pkgver"
   patch -Np1 < ../electron-is-dev-env.patch
   jq 'del(.scripts.prepare)' package.json > tmp.json
   mv {tmp,package}.json
 }
 
 build() {
-  make \
-    CHROMIUM_APP="Heroic Games Launcher" \
-    CHROMIUM_ARGS="/usr/lib/${pkgname%-*}/resources/app.asar" \
-    CHROMIUM_BINARY="/usr/lib/electron$_electronversion/electron" \
-    CHROMIUM_NAME=heroic \
-    -C chromium-launcher-$_launcher_ver
-
   cd "$_pkgbase-$pkgver"
   electronDist="/usr/lib/electron$_electronversion"
   electronVer="$(sed s/^v// $electronDist/version)"
@@ -51,14 +39,7 @@ build() {
 }
 
 package() {
-  cd chromium-launcher-$_launcher_ver
-  make PREFIX=/usr DESTDIR="$pkgdir" CHROMIUM_NAME=heroic install
-  ln -s heroic "$pkgdir/usr/bin/heroic-run"
-
-  install -Dm644 LICENSE \
-    "$pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE.launcher"
-
-  cd ../"$_pkgbase-$pkgver"
+  cd "$_pkgbase-$pkgver"
 
   _reversed_domain=com.heroicgameslauncher.hgl
 
@@ -71,6 +52,9 @@ package() {
   ln -s build \
     "$pkgdir/usr/lib/${pkgname%-*}/resources/app.asar.unpacked/public"
 
+  sed "s/@@VERSION@@/$_electronversion/" "$srcdir/${pkgname%-*}.sh.in" > "${pkgname%-*}.sh"
+  install -Dm755 "${pkgname%-*}.sh" "$pkgdir/usr/bin/heroic"
+  ln -s heroic "$pkgdir/usr/bin/heroic-run"
   install -Dm644 "flatpak/$_reversed_domain.desktop" -t "$pkgdir/usr/share/applications/"
 
   install -Dm644 build/icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_reversed_domain.png"
