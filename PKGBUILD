@@ -2,7 +2,7 @@
 pkgname=jetbrains-idea-pj
 pkgver=2021.1.3
 pkgrel=1
-pkgdesc="An intelligent IDE for Java, Groovy and other programming languages with advanced refactoring features intensely focused on developer productivity."
+pkgdesc="An intelligent IDE for Java, Groovy and other programming languages with advanced refactoring features intensely focused on developer productivity. - fix fcitx cursor bug"
 _ideaver=2021-1-3
 _buildver=211.7628.21
 arch=('x86_64')
