@@ -1,10 +1,10 @@
 pkgbase = nteract-appimage
 	pkgdesc = An open-source organization committed to creating fantastic interactive computing experiences that allow people to collaborate with ease.
 	pkgver = 0.28.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://nteract.io/
 	arch = x86_64
-	license = BSD 3-Clause
+	license = BSD3-Clause
 	depends = hicolor-icon-theme
 	depends = zlib
 	depends = glibc
