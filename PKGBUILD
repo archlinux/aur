@@ -1,30 +1,29 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-_pkgname=diffuse
-pkgname="${_pkgname}-player-appimage"
+pkgname="diffuse-player-appimage"
 pkgver=3.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A music player that connects to your cloud/distributed storage."
 arch=('x86_64')
 url="https://diffuse.sh/"
 _githuburl="https://github.com/icidasset/diffuse"
 license=(custom)
-depends=(hicolor-icon-theme zlib glibc)
+depends=('zlib' 'glibc')
 options=(!strip)
 provides=(icidasset)
-conflicts=("${_pkgname}-player")
+conflicts=("${pkgname%-appimage}")
 _install_path="/opt/appimages"
-source=("${_pkgname}-${pkgver}.AppImage::${_githuburl}/releases/download/${pkgver}/${_pkgname}-linux-amd64.AppImage"
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/${pkgver}/${pkgname%-player-appimage}-linux-amd64.AppImage"
     "LICENSE::${_githuburl}/raw/main/LICENSE")
 sha256sums=('2daf98d617d871968a33b0f8f78b40247de4c20dc612e8d507af96a314cdb988'
-            '0a21c689228ea59b37ff87f23146184df79a56822674db6b2be9e976748d3833')
+            '22f6e9359127b271eba050bc6e87abc699982ace7a6b386c1c346c7f3154eda8')
 prepare() {
-    chmod a+x "${_pkgname}-${pkgver}.AppImage"
-    "./${_pkgname}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's/Exec=diffuse/Exec=\/opt\/appimages\/diffuse.AppImage/g' -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
-} 
+    chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
+    "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed 's|Exec=diffuse|Exec=/opt/appimages/diffuse-player.AppImage|g' -i "${srcdir}/squashfs-root/${pkgname%-player-appimage}.desktop"
+}
 package() {
-    install -Dm755 "${srcdir}/${_pkgname}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${_pkgname}.AppImage"
-    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/1716x1716/apps/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/1716x1716/apps/${_pkgname}.png"
-    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
+    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-player-appimage}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/1716x1716/apps/${pkgname%-player-appimage}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
