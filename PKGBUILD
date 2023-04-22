@@ -31,9 +31,18 @@ package() {
 	cd "$srcdir"
 	install -d "$pkgdir"/usr/share/games/"$_pkgname"
 	install -Dm755 "$srcdir/$_pkgname/$pkgname"/dirksimple "$pkgdir"/usr/share/games/"$_pkgname"/
-	install -d "$pkgdir"/usr/share/games/"$_pkgname"/data
-	install -m644 "$srcdir/$_pkgname/$pkgname"/data/*.* "$pkgdir"/usr/share/games/"$_pkgname"/data/
-	install -Dm644 "$srcdir/$_pkgname"/LICENSE.txt "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE.txt
+	install -Dm644 "$srcdir/$_pkgname/$pkgname"/*.* "$pkgdir"/usr/share/games/"$_pkgname"/
+	install -d "$pkgdir"/usr/share/games/"$_pkgname"/{data,data/games,data/games/lair,data/games/cliff}
+	install -m644 "$srcdir/$_pkgname"/data/*.* "$pkgdir"/usr/share/games/"$_pkgname"/data/
+	install -m644 "$srcdir/$_pkgname"/data/games/lair/*.* "$pkgdir"/usr/share/games/"$_pkgname"/data/games/lair/
+	install -m644 "$srcdir/$_pkgname"/data/games/cliff/*.* "$pkgdir"/usr/share/games/"$_pkgname"/data/games/cliff/
+	install -d "$pkgdir"/usr/share/games/"$_pkgname"/{misc,misc/disassembled_games}
+	install -m644 "$srcdir/$_pkgname"/misc/*.* "$pkgdir"/usr/share/games/"$_pkgname"/misc/
+	install -m644 "$srcdir/$_pkgname"/misc/disassembled_games/*.* "$pkgdir"/usr/share/games/"$_pkgname"/misc/disassembled_games/
+	install -Dm644 "$srcdir/$_pkgname"/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
 	install -d "$pkgdir"/usr/share/doc/"$_pkgname"/
 	install -m644 "$srcdir/$_pkgname"/README.md "$pkgdir"/usr/share/doc/"$_pkgname"/
+	install -d "$pkgdir"/usr/bin/
+        ln -s "$pkgdir"/usr/share/games/"$_pkgname"/dirksimple "$pkgdir"/usr/bin/
 }
+ 
