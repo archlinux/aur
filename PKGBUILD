@@ -1,7 +1,7 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname='wasmer-bin'
-pkgver='3.2.0'
+pkgver='3.2.1'
 _shortver="${pkgver%.*}"
 _majorver="${_shortver%.*}"
 pkgrel='2'
