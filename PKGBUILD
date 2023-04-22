@@ -30,8 +30,8 @@ build() {
 
 package() {
   cd "$srcdir/Numix-Frost"
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" _install
 
   cd "$srcdir/Numix-Frost-Light"
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" _install
 }
