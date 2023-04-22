@@ -1,7 +1,7 @@
 # Maintainer: Henry-ZHR <henry-zhr@qq.com>
 pkgname=python-cpm-kernels
 pkgver=1.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="CPM CUDA kernels"
 arch=('any')
 url="https://github.com/OpenBMB/cpm_kernels"
@@ -21,7 +21,8 @@ build() {
   cd "${pkgname}"
 
   pushd cuda
-  make all copy
+  make all
+  make copy
   popd
 
   python setup.py bdist_wheel

@@ -1,7 +1,7 @@
 pkgbase = python-cpm-kernels
 	pkgdesc = CPM CUDA kernels
 	pkgver = 1.0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OpenBMB/cpm_kernels
 	arch = any
 	license = Apache
