@@ -1,6 +1,6 @@
 pkgbase = mozc-ut
 	pkgdesc = The Open Source edition of Google Japanese Input bundled with the UT dictionary
-	pkgver = 2.28.5029.102.20230305
+	pkgver = 2.28.5080.102.20230422
 	pkgrel = 1
 	url = https://github.com/google/mozc
 	arch = x86_64
@@ -22,20 +22,22 @@ pkgbase = mozc-ut
 	optdepends = fcitx-mozc-ut: Fcitx integration
 	optdepends = ibus-mozc: IBus integration
 	optdepends = emacs-mozc: Emacs integration
-	provides = mozc=2.28.5029.102
+	provides = mozc=2.28.5080.102
 	conflicts = mozc
+	noextract = jawiki-20230420-all-titles-in-ns0.gz
 	options = !distcc
 	options = !ccache
-	source = mozc-ut-git::git+https://github.com/google/mozc.git#commit=961949a1561348031fe03f72de46d480695734d2
-	source = git+https://github.com/utuhiro78/merge-ut-dictionaries.git#commit=ffaf40e56c3a7b317a6b432bf167415fcfb9077b
+	source = mozc-ut-git::git+https://github.com/google/mozc.git#commit=7925e776f7964edb82846e54252bcedf82341d17
+	source = git+https://github.com/utuhiro78/merge-ut-dictionaries.git#commit=e081fbb6ab46007325b3040ddc4f19f02891c2ac
 	source = git+https://github.com/utuhiro78/mozcdic-ut-alt-cannadic.git#commit=f59287e569db3e226378380a34e71275654b46d0
-	source = git+https://github.com/utuhiro78/mozcdic-ut-edict2.git#commit=58648b11f2134a08cc52ccdfced7f53d7c790bfa
-	source = git+https://github.com/utuhiro78/mozcdic-ut-jawiki.git#commit=c6738c3e23c0b6a0a2e1c1a7014e8b2e2ba598c4
-	source = git+https://github.com/utuhiro78/mozcdic-ut-neologd.git#commit=f881c1c55c73a53341f9a970487e9a7546070333
-	source = git+https://github.com/utuhiro78/mozcdic-ut-personal-names.git#commit=cff76d954b8bbac2ca8a52b5b0bb3249e7e3aa57
-	source = git+https://github.com/utuhiro78/mozcdic-ut-place-names.git#commit=a601c4f1d35de16c7617b6f59223b9ae62f1b8d4
-	source = git+https://github.com/utuhiro78/mozcdic-ut-skk-jisyo.git#commit=2cbf5b4652ab0f253880258af4aeaf3dd9d7ae09
-	source = git+https://github.com/utuhiro78/mozcdic-ut-sudachidict.git#commit=18b1a7710f2e819129c9f5c86a471c881725e26a
+	source = git+https://github.com/utuhiro78/mozcdic-ut-edict2.git#commit=a8e4249a718632d41c727ad242fe705658dba35f
+	source = git+https://github.com/utuhiro78/mozcdic-ut-jawiki.git#commit=62b611e53e9cc69f23ea38019533fb2eef9368ad
+	source = git+https://github.com/utuhiro78/mozcdic-ut-neologd.git#commit=90e59c7707a5fe250c992c10c6ceb08a7ce7e652
+	source = git+https://github.com/utuhiro78/mozcdic-ut-personal-names.git#commit=4b976fe9e45363b5745ba786e8305efb478ce34d
+	source = git+https://github.com/utuhiro78/mozcdic-ut-place-names.git#commit=a36b61923b7fc1d6e5bd5a0caac9c0cace8d838d
+	source = git+https://github.com/utuhiro78/mozcdic-ut-skk-jisyo.git#commit=43518e6ea033681580a515281668c85eb74a5b14
+	source = git+https://github.com/utuhiro78/mozcdic-ut-sudachidict.git#commit=d09ff222f1562cce5c1f83b2d80c2d93097bf01e
+	source = https://dumps.wikimedia.org/jawiki/20230420/jawiki-20230420-all-titles-in-ns0.gz
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -46,5 +48,6 @@ pkgbase = mozc-ut
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 2b0398f093056a0b1c4c49861b1358011cc4126dd383c2e12600509abd20b58d
 
 pkgname = mozc-ut

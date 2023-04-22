@@ -5,20 +5,20 @@
 
 #NOTE: The UT dictionary's project page: http://linuxplayers.g1.xrea.com/mozc-ut.html
 
-### Uncomment the third-party dictionaries you want to be included:
-DICTIONARIES=(
-#alt-cannadic
-#edict2
-jawiki
-neologd
-personal-names
-place-names
-#skk-jisyo
-#sudachidict
+### Uncomment the dictionaries you want to include
+ENABLED_DICTIONARIES=(
+#'alt-cannadic'
+#'edict2'
+'jawiki'
+'neologd'
+'personal-names'
+'place-names'
+#'skk-jisyo'
+#'sudachidict'
 )
 
 pkgname='mozc-ut'
-pkgver=2.28.5029.102.20230305
+pkgver=2.28.5080.102.20230422
 pkgrel=1
 pkgdesc='The Open Source edition of Google Japanese Input bundled with the UT dictionary'
 arch=('x86_64')
@@ -30,19 +30,21 @@ optdepends=('fcitx5-mozc-ut: Fcitx5 integration'
             'fcitx-mozc-ut: Fcitx integration'
             'ibus-mozc: IBus integration'
             'emacs-mozc: Emacs integration')
-provides=('mozc=2.28.5029.102')
+provides=('mozc=2.28.5080.102')
 conflicts=('mozc')
 options=(!distcc !ccache)
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=961949a1561348031fe03f72de46d480695734d2"
-        'git+https://github.com/utuhiro78/merge-ut-dictionaries.git#commit=ffaf40e56c3a7b317a6b432bf167415fcfb9077b'
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=7925e776f7964edb82846e54252bcedf82341d17"
+        'git+https://github.com/utuhiro78/merge-ut-dictionaries.git#commit=e081fbb6ab46007325b3040ddc4f19f02891c2ac'
         'git+https://github.com/utuhiro78/mozcdic-ut-alt-cannadic.git#commit=f59287e569db3e226378380a34e71275654b46d0'
-        'git+https://github.com/utuhiro78/mozcdic-ut-edict2.git#commit=58648b11f2134a08cc52ccdfced7f53d7c790bfa'
-        'git+https://github.com/utuhiro78/mozcdic-ut-jawiki.git#commit=c6738c3e23c0b6a0a2e1c1a7014e8b2e2ba598c4'
-        'git+https://github.com/utuhiro78/mozcdic-ut-neologd.git#commit=f881c1c55c73a53341f9a970487e9a7546070333'
-        'git+https://github.com/utuhiro78/mozcdic-ut-personal-names.git#commit=cff76d954b8bbac2ca8a52b5b0bb3249e7e3aa57'
-        'git+https://github.com/utuhiro78/mozcdic-ut-place-names.git#commit=a601c4f1d35de16c7617b6f59223b9ae62f1b8d4'
-        'git+https://github.com/utuhiro78/mozcdic-ut-skk-jisyo.git#commit=2cbf5b4652ab0f253880258af4aeaf3dd9d7ae09'
-        'git+https://github.com/utuhiro78/mozcdic-ut-sudachidict.git#commit=18b1a7710f2e819129c9f5c86a471c881725e26a')
+        'git+https://github.com/utuhiro78/mozcdic-ut-edict2.git#commit=a8e4249a718632d41c727ad242fe705658dba35f'
+        'git+https://github.com/utuhiro78/mozcdic-ut-jawiki.git#commit=62b611e53e9cc69f23ea38019533fb2eef9368ad'
+        'git+https://github.com/utuhiro78/mozcdic-ut-neologd.git#commit=90e59c7707a5fe250c992c10c6ceb08a7ce7e652'
+        'git+https://github.com/utuhiro78/mozcdic-ut-personal-names.git#commit=4b976fe9e45363b5745ba786e8305efb478ce34d'
+        'git+https://github.com/utuhiro78/mozcdic-ut-place-names.git#commit=a36b61923b7fc1d6e5bd5a0caac9c0cace8d838d'
+        'git+https://github.com/utuhiro78/mozcdic-ut-skk-jisyo.git#commit=43518e6ea033681580a515281668c85eb74a5b14'
+        'git+https://github.com/utuhiro78/mozcdic-ut-sudachidict.git#commit=d09ff222f1562cce5c1f83b2d80c2d93097bf01e'
+        'https://dumps.wikimedia.org/jawiki/20230420/jawiki-20230420-all-titles-in-ns0.gz')
+noextract=('jawiki-20230420-all-titles-in-ns0.gz')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -52,34 +54,45 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '2b0398f093056a0b1c4c49861b1358011cc4126dd383c2e12600509abd20b58d')
 
 prepare() {
-    cd ${pkgname}-git/src
+    cd "${pkgname}"-git/src
 
     git submodule update --init --recursive
 
-    # Generate the UT dictionary
-    cd ${srcdir}/merge-ut-dictionaries/src/
+    cd "${srcdir}"/merge-ut-dictionaries/src/
 
-    sed -i -e 's|^\([a-z_]*\)="true"|#\1="true"|g' make.sh
-    sed -i -e 's|edict=|edict2=|g' make.sh
+    # Use our local copy of the Mozc repo
+    sed -i -e "s|https://raw.githubusercontent.com/google/mozc/master/src|${srcdir}/${pkgname}-git/src|" remove_duplicate_ut_entries.rb
 
-    for dict in "${DICTIONARIES[@]}"
+    # Use a dated snapshot for the JAWiki dump data
+    sed -i -e '/wget/d' count_word_hits.rb
+    sed -i -e "s|filename = \"jawiki-|filename = \"${srcdir}/jawiki-|g" count_word_hits.rb
+    sed -i -e 's|jawiki-[a-z0-9]\{6,8\}|jawiki-20230420|g' count_word_hits.rb apply_word_hits.rb
+
+    # Compile the UT dictionary
+    printf '\nCompiling the UT dictionary...\n\n'
+
+    [[ -e mozcdic-ut.txt ]] && rm mozcdic-ut.txt
+
+    for dict in "${ENABLED_DICTIONARIES[@]}"
     do
-        sed -i -e "s|#${dict//-/_}=\"true\"|${dict//-/_}=\"true\"|g" make.sh
-        cp ${srcdir}/mozcdic-ut-${dict}/mozcdic-ut-${dict}.txt.tar.bz2 .
-        tar -xf mozcdic-ut-${dict}.txt.tar.bz2
+        tar -xf "${srcdir}"/mozcdic-ut-"${dict}"/mozcdic-ut-"${dict}".txt.tar.bz2
+        cat mozcdic-ut-"${dict}".txt >> mozcdic-ut.txt
     done
 
-    bash ./make.sh
+    ruby remove_duplicate_ut_entries.rb mozcdic-ut.txt
+    ruby count_word_hits.rb
+    ruby apply_word_hits.rb mozcdic-ut.txt
 
     # Append the UT dictionary
-    cat ${srcdir}/merge-ut-dictionaries/src/mozcdic-ut.txt >> ${srcdir}/${pkgname}-git/src/data/dictionary_oss/dictionary00.txt
+    cat mozcdic-ut.txt >> "${srcdir}"/"${pkgname}"-git/src/data/dictionary_oss/dictionary00.txt
 }
 
 build() {
-    cd ${pkgname}-git/src
+    cd "${pkgname}"-git/src
 
     unset ANDROID_NDK_HOME
     export JAVA_HOME='/usr/lib/jvm/java-11-openjdk/'
@@ -87,11 +100,11 @@ build() {
 }
 
 package() {
-    cd ${pkgname}-git/src
+    cd "${pkgname}"-git/src
 
-    install -Dm644 ../LICENSE                                   ${pkgdir}/usr/share/licenses/mozc/LICENSE
-    install -Dm644 data/installer/credits_en.html               ${pkgdir}/usr/share/licenses/mozc/Submodules
+    install -Dm644 ../LICENSE                                   "${pkgdir}"/usr/share/licenses/mozc/LICENSE
+    install -Dm644 data/installer/credits_en.html               "${pkgdir}"/usr/share/licenses/mozc/Submodules
 
-    install -Dm755 bazel-bin/server/mozc_server                 ${pkgdir}/usr/lib/mozc/mozc_server
-    install -Dm755 bazel-bin/gui/tool/mozc_tool                 ${pkgdir}/usr/lib/mozc/mozc_tool
+    install -Dm755 bazel-bin/server/mozc_server                 "${pkgdir}"/usr/lib/mozc/mozc_server
+    install -Dm755 bazel-bin/gui/tool/mozc_tool                 "${pkgdir}"/usr/lib/mozc/mozc_tool
 }
