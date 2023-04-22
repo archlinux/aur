@@ -1,6 +1,6 @@
 pkgname=scantailor-advanced-git
 pkgver=v1.0.18.r16.gdc6f160
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive post-processing tool for scanned pages that merges the features of the ScanTailor Featured and ScanTailor Enhanced versions, brings new ones and fixes. "
 arch=("x86_64")
 #url="https://github.com/4lex4/scantailor-advanced"
@@ -43,8 +43,8 @@ build() {
     # https://aur.archlinux.org/packages/scantailor-advanced-git/#comment-831404
     mkdir build && cd build
     cmake -G "Unix Makefiles" ..
-    cmake --build . --parallel ${nproc}
-    make -j${nproc}
+    cmake --build .
+    make
 }
 
 package() {
