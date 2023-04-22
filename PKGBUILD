@@ -1,34 +1,23 @@
+# Maintainer: Deltara <boided420 at gmail dot com>
 pkgname="techmino-client"
-pkgver=0.17.9
+pkgver=0.17.13
 pkgrel=1
-pkgdesc="Techmino:方块研究所"
-arch=('x86_64')
-url="http://home.techmino.org"
-license=('(L)GPL')
+pkgdesc="Techmino is fun!"
+arch=("x86_64")
+url="https://github.com/26F-Studio/Techmino"
+license=("(L)GPL")
 depends=(fuse xorg-xrandr)
-makedepends=(curl gawk)
 options=(!strip)
-_pkgname="Techmino_${pkgver}.Appimage"
-_repo="26F-Studio/Techmino"
-source=("${_pkgname}::https://github.com/${_repo}/releases/latest/download/Techmino_Linux.AppImage")
-sha256sums=('SKIP')
-_installdir=/opt/appimages
-_installname=techmino
+source=("https://github.com/26F-Studio/Techmino/releases/download/v${pkgver}/techmino_Linux.deb")
+sha256sums=("6620d6bec142062e2378adccdf1dd974f7addce851bbd7b88a7877105e4c36c9")
 
 prepare() {
-	cd ${srcdir}
-	chmod a+x ${_pkgname}
-	${srcdir}/${_pkgname} --appimage-extract
-    sed -i "s+Exec=app+Exec=env DESKTOPINTEGRATION=no ${_installdir}/${_installname}.AppImage+" "squashfs-root/Techmino.desktop"
-    sed -i "s/[[:space:]]%U$//" "squashfs-root/Techmino.desktop"
+    cd ${srcdir}
+    tar -xf data.tar.xz
 }
 
 package() {
-    install -Dm755 "squashfs-root/icon.png" "${pkgdir}/usr/share/icons/icon.png"
-    install -Dm755 ${_pkgname} "${pkgdir}/${_installdir}/${_installname}.AppImage"
-    install -Dm644 "squashfs-root/Techmino.desktop" "${pkgdir}/usr/share/applications/${_installname}.desktop"
-}
-
-pkgver(){
-     curl "https://api.github.com/repos/${_repo}/releases/latest" | awk -F '[",v]+' '/tag_name/{print $4}'
+    install -Dm755 "usr/share/pixmaps/org.26f-studio.techmino.png" "${pkgdir}/usr/share/pixmaps/org.26f-studio.techmino.png"
+    install -Dm755 "usr/share/techmino/techmino.AppImage" "${pkgdir}/usr/share/techmino/techmino.AppImage"
+    install -Dm644 "usr/share/applications/org.26f-studio.techmino.desktop" "${pkgdir}/usr/share/applications/org.26f-studio.techmino.desktop"
 }
