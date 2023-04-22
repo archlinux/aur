@@ -1,7 +1,7 @@
 pkgbase = museeks-appimage
 	pkgdesc = A simple, clean and cross-platform music player
 	pkgver = 0.13.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://museeks.io/
 	arch = x86_64
 	license = MIT
