@@ -1,7 +1,7 @@
 pkgbase = google-assistant-unofficial-desktop-client-bin
 	pkgdesc = A cross-platform unofficial Google Assistant Client for Desktop (powered by Google Assistant SDK)
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Melvin-Abraham/Google-Assistant-Unofficial-Desktop-Client
 	arch = x86_64
 	license = Apache
@@ -33,7 +33,6 @@ pkgbase = google-assistant-unofficial-desktop-client-bin
 	depends = libxtst
 	depends = libxrender
 	depends = at-spi2-core
-	provides = Melvin-Abraham
 	conflicts = google-assistant-unofficial-desktop-client
 	source = google-assistant-unofficial-desktop-client-bin-1.1.0.deb::https://github.com/Melvin-Abraham/Google-Assistant-Unofficial-Desktop-Client/releases/download/v1.1.0/Google-Assistant-Setup-1.1.0-amd64.deb
 	sha256sums = 97ef51b6950d14ac0bc34aa5705b125b09d67d0f5e5cafa686f7757ff751a510
