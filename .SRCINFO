@@ -1,11 +1,10 @@
 pkgbase = houdunren-camera-appimage
 	pkgdesc = Desktop camera software that can be used for online live streaming, distance learning, and video conferencing.桌面摄像头软件，可用于在线直播、远程教学、视频会议
 	pkgver = 1.0.19
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.houdunren.com/
 	arch = x86_64
 	license = MIT
-	depends = hicolor-icon-theme
 	depends = zlib
 	depends = glibc
 	provides = houdunwang
