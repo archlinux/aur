@@ -1,18 +1,16 @@
 pkgbase = csbooks-appimage
 	pkgdesc = csBooks is the best epub reader, pdf reader, mobi book reader and djvu reader.
 	pkgver = 7.5.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://caesiumstudio.com/csbooks
 	arch = x86_64
-	license = custom
+	license = unknown
 	depends = zlib
 	depends = hicolor-icon-theme
 	depends = glibc
 	conflicts = csbooks
 	options = !strip
 	source = csbooks-7.5.0.AppImage::https://github.com/caesiumstudio/csBooks-updates/releases/download/latest/csBooks-7.5.0.AppImage
-	source = LICENSE::https://caesiumstudio.com/csbooks/privacy-policy
 	sha256sums = cd3f352fede998f933eaa929809e60cb15745968ae01460845bb531d471e57fa
-	sha256sums = 9e45f7627b17b6f7dbfa93c96c98c88e90405629835ffaf3c3acab2243f2ef64
 
 pkgname = csbooks-appimage
