@@ -13,11 +13,6 @@ conflicts=("$_pkgname" "cutefish-dock-git")
 source=("git+$url.git")
 sha512sums=('SKIP')
 
-pkgver() {
-  cd dock
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 build() {
   cd dock
 
