@@ -7,17 +7,17 @@
 
 pkgbase=smuxi
 pkgname=('smuxi-server' 'smuxi')
-pkgver=1.1
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="User-friendly and cross-platform IRC client for sophisticated users for GNOME/GTK+"
 arch=('any')
 url="https://smuxi.im/"
 license=('GPL')
-makedepends=('gtk-sharp-2-git' 'notify-sharp' 'log4net' 'nini' 'gtkspell' 'stfl' 'intltool')
+makedepends=('notify-sharp' 'log4net' 'nini' 'gtkspell' 'stfl' 'intltool')
 options=('!emptydirs')
 source=(https://smuxi.im/jaws/data/files/$pkgbase-$pkgver.tar.gz{,.asc})
 validpgpkeys=('ABE195E150A8DBE7809D3F427127E5ABEEF946C8') # Mirco Bauer
-sha256sums=('7f16f880b0035e503e41958bbc1a98f5ebff5662d202822e1e59930f2348b5bc'
+sha256sums=('cb96475e4ec3479b37b4357178cb00a1a404a67ba24d5fc0f6c4fd3fae5816e5'
             'SKIP')
 
 prepare() {
@@ -52,7 +52,7 @@ package_smuxi-server() {
 
 package_smuxi() {
   pkgdesc+=" (frontend)" 
-  depends=('smuxi-server' 'gtk-sharp-2-git' 'notify-sharp' 'gtkspell')
+  depends=('smuxi-server' 'notify-sharp' 'gtkspell')
 
   cd frontend
   mkdir -p "$pkgdir"/usr/{bin,lib/smuxi,share/man/man1}
