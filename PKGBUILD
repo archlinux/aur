@@ -12,7 +12,7 @@ depends=('hicolor-icon-theme' 'zlib' 'glibc')
 provides=(iongion)
 options=(!strip)
 conflicts=("${pkgname%-appimage}")
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/${pkgver}-${_pkgver}/${pkgname%-appimage}-x86_64-${pkgver}-${_pkgver}.AppImage"
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/${pkgver%rc.28}-${_pkgver}/${pkgname%-appimage}-x86_64-${pkgver%rc.28}-${_pkgver}.AppImage"
     "LICENSE::${_githuburl}/raw/main/LICENSE")
 _install_path="/opt/appimages"
 sha256sums=('ac6f996348ed3a02b64225ea4ead93092f9b721c534f9ba49797a0a1ae56aef9'
