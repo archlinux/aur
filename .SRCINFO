@@ -1,0 +1,12 @@
+pkgbase = helpaur
+	pkgdesc = Help maintaining the AUR by listing unmaintained packages
+	pkgver = v0.1.0
+	pkgrel = 1
+	url = https://sr.ht/~witcher/helpaur
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	source = helpaur-v0.1.0.tar.gz::https://git.sr.ht/~witcher/helpaur/archive/v0.1.0.tar.gz
+	sha256sums = 36f1ecfff1da739f49d63065d52d6c13b66a771c0a45342ee3fd3302d0ae664d
+
+pkgname = helpaur
