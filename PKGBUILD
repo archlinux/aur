@@ -2,11 +2,11 @@
 
 pkgname=not-forking
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The Not-forking Software Reproducibility Tool'
 arch=('any')
 url="https://lumosql.org/src/not-forking"
-license=('GPL' 'PerlArtistic')
+license=('MIT')
 depends=('perl')
 options=('!emptydirs' 'purge')
 source=("${pkgname}-${pkgver}::fossil+${url}#branch=trunk")
