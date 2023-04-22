@@ -14,11 +14,6 @@ conflicts=("$_pkgname" "deepin-kwin" "cutefish-launcher-git")
 source=("git+$url.git")
 sha512sums=('SKIP')
 
-pkgver() {
-  cd launcher
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 build() {
   cd launcher
 
