@@ -1,6 +1,6 @@
 pkgbase = ungoogled-chromium-xdg-bin
 	pkgdesc = A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory (binary version)
-	pkgver = 112.0.5615.121
+	pkgver = 112.0.5615.165
 	pkgrel = 1
 	url = https://github.com/Eloston/ungoogled-chromium
 	arch = x86_64
@@ -49,9 +49,9 @@ pkgbase = ungoogled-chromium-xdg-bin
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
 	provides = chromium
 	conflicts = chromium
-	source = https://github.com/noahvogt/ungoogled-chromium-xdg-aur/releases/download/112.0.5615.121-1/ungoogled-chromium-xdg-112.0.5615.121-1-x86_64.pkg.tar.zst
+	source = https://github.com/noahvogt/ungoogled-chromium-xdg-aur/releases/download/112.0.5615.165-1/ungoogled-chromium-xdg-112.0.5615.165-1-x86_64.pkg.tar.zst
 	source = index.html
-	sha256sums = 55372a4f73f14df911e8960254bd0c86f7c325ec2d4499b48c398985e10fe57e
+	sha256sums = 55d2e47753b910e2de4074ead2ceb412dc97848d1831a77f41d67c871e6faa8a
 	sha256sums = a4cdd2b86f32d5302c2792be841ff40d982b19bb58a4e63df9d77f4c706b8665
 
 pkgname = ungoogled-chromium-xdg-bin
