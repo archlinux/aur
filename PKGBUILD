@@ -16,11 +16,6 @@ conflicts=("$_pkgname" "cutefish-core-git")
 source=("git+$url.git")
 sha512sums=('SKIP')
 
-pkgver() {
-  cd core
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 build() {
   cd core
 
