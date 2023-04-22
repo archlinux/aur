@@ -2,12 +2,13 @@
 _pkgname=help2man
 pkgname=python-$_pkgname
 pkgver=0.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert --help and --version to man page."
 arch=(any)
 url=https://github.com/Freed-Wu/help2man
 makedepends=(python-installer)
 depends=(python-jinja)
+provides=("$_pkgname")
 conflicts=("$_pkgname")
 license=(GPLv3)
 _py=py3

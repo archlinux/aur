@@ -1,12 +1,13 @@
 pkgbase = python-help2man
 	pkgdesc = Convert --help and --version to man page.
 	pkgver = 0.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Freed-Wu/help2man
 	arch = any
 	license = GPLv3
 	makedepends = python-installer
 	depends = python-jinja
+	provides = help2man
 	conflicts = help2man
 	source = https://github.com/Freed-Wu/help2man/releases/download/0.0.9/help2man-0.0.9-py3-none-any.whl
 	sha256sums = 36f6ec6c8a0130f85c36bd1e5dd2af34f8e60a46e5d4a271f769c9aaab6c6a1d
