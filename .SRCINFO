@@ -1,7 +1,7 @@
 pkgbase = notable-appimage
 	pkgdesc = The Markdown-based note-taking app that doesn't suck.
 	pkgver = 1.8.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://notable.app/
 	arch = x86_64
 	license = custom
@@ -9,7 +9,7 @@ pkgbase = notable-appimage
 	depends = zlib
 	depends = glibc
 	provides = notable
-	conflicts = notable-bin
+	conflicts = notable
 	options = !strip
 	source = notable-1.8.4.AppImage::https://github.com/notable/notable/releases/download/v1.8.4/Notable-1.8.4.AppImage
 	source = LICENSE::https://github.com/notable/notable/raw/master/SOURCE_CODE.md
