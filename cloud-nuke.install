@@ -1,0 +1,9 @@
+post_install() {
+	printf ":: As of 0.29.0, cloud-nuke sends performance telemetry back to Gruntwork for bug fixes.\n"
+	printf ":: More info in README.md.\n"
+	printf ":: You can disable the telemetry with the DISABLE_TELEMETRY environment variable.\n"
+}
+
+post_upgrade() {
+	post_install
+}
