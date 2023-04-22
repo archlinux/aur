@@ -1,0 +1,22 @@
+pkgbase = bunnymodxt
+	pkgdesc = Speedrun and TAS tool for Half-Life & friends
+	pkgver = 2023.01.16
+	pkgrel = 1
+	url = https://github.com/YaLTeR/BunnymodXT
+	install = bunnymodxt.install
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = cmake
+	makedepends = lib32-rust
+	makedepends = rust
+	depends = bash
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = lib32-libglvnd
+	source = bunnymodxt-2023.01.16::git+https://github.com/YaLTeR/BunnymodXT#tag=b52e3c84b9bc9b27c7db78d62eb11971ca37f54c
+	source = bunnymodxt.sh
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = bunnymodxt

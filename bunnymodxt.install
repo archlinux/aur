@@ -1,0 +1,18 @@
+post_install() {
+  cat <<EOF
+==>
+==> The library can be used in one of the three ways:
+==>
+==> 1. Through the official launcher:
+==>        https://github.com/YaLTeR/bxt-launcher
+==>
+==> 2. By going into the Half-Life directory, removing hl.sh, symlinking the
+==>    wrapper script in its place, and then running Half-Life as usual:
+==>        $ cd ~/SteamLibrary/steamapps/common/Half-Life
+==>        $ ln -sf /usr/bin/bunnymodxt hl.sh
+==>
+==> 3. Or you can do everything manually. Consult the script for reference.
+==>
+EOF
+
+}
