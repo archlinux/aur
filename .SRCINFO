@@ -1,0 +1,12 @@
+pkgbase = passwdqc
+	pkgdesc = pwqcheck (password strength checker) and pwqgen (random passphrase generator) from passwdqc
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = http://www.openwall.com/passwdqc/
+	arch = any
+	license = BSD
+	license = custom:BSD Revised
+	source = http://www.openwall.com/passwdqc/passwdqc-2.0.2.tar.gz
+	md5sums = b9789cf265c9867f34654e2a683ad057
+
+pkgname = passwdqc
