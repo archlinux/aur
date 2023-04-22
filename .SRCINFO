@@ -1,0 +1,14 @@
+pkgbase = ethr-bin
+	pkgdesc = Comprehensive Network Measurement Tool for TCP, UDP & ICMP
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/microsoft/ethr
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = ethr
+	conflicts = ethr
+	source = https://github.com/microsoft/ethr/releases/download/v1.0.0/ethr_linux.zip
+	sha256sums = 781f48294b6623ef22fd95b432e1c9c113acc4c45cd223d538da2e6976783721
+
+pkgname = ethr-bin
