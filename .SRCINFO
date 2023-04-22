@@ -1,7 +1,7 @@
 pkgbase = r-rmagic
 	pkgdesc = MAGIC - Markov Affinity-Based Graph Imputation of Cells
 	pkgver = 2.0.3
-	pkgrel = 3
+	pkgrel = 5
 	url = https://cran.r-project.org/package=Rmagic
 	arch = any
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = r-rmagic
 	optdepends = r-readr
 	optdepends = r-seurat
 	optdepends = r-viridis
-	source = https://cran.r-project.org/src/contrib/Rmagic_2.0.3.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/Rmagic/Rmagic_2.0.3.tar.gz
 	sha256sums = a13f958cbe34b5b12269575a67e1e211b9b8a5cd0e2af6a5971908b40f424e3c
 
 pkgname = r-rmagic

@@ -4,7 +4,7 @@ _pkgname=Rmagic
 _pkgver=2.0.3
 pkgname=r-${_pkgname,,}
 pkgver=2.0.3
-pkgrel=3
+pkgrel=5
 pkgdesc='MAGIC - Markov Affinity-Based Graph Imputation of Cells'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -20,7 +20,7 @@ optdepends=(
   r-seurat
   r-viridis
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('a13f958cbe34b5b12269575a67e1e211b9b8a5cd0e2af6a5971908b40f424e3c')
 
 build() {
