@@ -1,6 +1,6 @@
 pkgbase = mozc
 	pkgdesc = The Open Source edition of Google Japanese Input
-	pkgver = 2.28.5029.102
+	pkgver = 2.28.5080.102
 	pkgrel = 1
 	url = https://github.com/google/mozc
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = mozc
 	conflicts = mozc-ut
 	options = !distcc
 	options = !ccache
-	source = mozc-git::git+https://github.com/google/mozc.git#commit=961949a1561348031fe03f72de46d480695734d2
+	source = mozc-git::git+https://github.com/google/mozc.git#commit=7925e776f7964edb82846e54252bcedf82341d17
 	sha256sums = SKIP
 
 pkgname = mozc
