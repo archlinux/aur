@@ -1,7 +1,7 @@
 # Maintainer: deadc0de6 <info@deadc0de.ch>
 
 pkgname=dotdrop
-pkgver=1.12.13
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="Save your dotfiles once, deploy them everywhere "
 arch=('any')
@@ -24,5 +24,7 @@ package() {
   install -Dm644 ${srcdir}/${pkgname}/completion/dotdrop-completion.bash "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
   install -Dm644 ${srcdir}/${pkgname}/completion/_dotdrop-completion.zsh "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
   install -Dm644 ${srcdir}/${pkgname}/completion/dotdrop.fish "${pkgdir}/usr/share/fish/completions/${pkgname}.fish"
+  install -Dm644 ${srcdir}/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 ${srcdir}/${pkgname}/README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
 
