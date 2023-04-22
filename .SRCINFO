@@ -1,7 +1,7 @@
 pkgbase = netpad-appimage
 	pkgdesc = A cross-platform C# editor and playground.
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tareqimbasher/NetPad
 	arch = x86_64
 	license = MIT
@@ -12,6 +12,6 @@ pkgbase = netpad-appimage
 	source = netpad-0.1.1.AppImage::https://github.com/tareqimbasher/NetPad/releases/download/v0.1.1/netpad-0.1.1-x86_64.AppImage
 	source = LICENSE::https://github.com/tareqimbasher/NetPad/raw/main/LICENSE
 	sha256sums = 3830437465a56059cf5c7aefa8801d5d9e880e15531fcb0d4e73f5380a011359
-	sha256sums = bf644b3a7e5dc5d7c4ce8b9db8c8df97d41efa3c1bff8e4c7dfe78e668561341
+	sha256sums = 43485534798b716310ae2a0edeebb00e97ff0e42e5fde13ff2994e2bc82348f6
 
 pkgname = netpad-appimage

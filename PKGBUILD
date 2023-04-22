@@ -1,31 +1,31 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-_pkgname=netpad
-pkgname="${_pkgname}-appimage"
+pkgname="netpad-appimage"
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform C# editor and playground."
 arch=('x86_64')
 url="https://github.com/tareqimbasher/NetPad"
-license=(MIT)
+license=('MIT')
 options=(!strip)
 providers=(tareqimbasher)
-conflits=("${_pkgname}")
+conflits=("${pkgname%-appimage}")
 _install_path="/opt/appimages" 
-depends=(zlib hicolor-icon-theme glibc)
-source=("${_pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/netpad-${pkgver}-x86_64.AppImage"
+depends=('zlib' 'hicolor-icon-theme' 'glibc')
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/netpad-${pkgver}-x86_64.AppImage"
     "LICENSE::${url}/raw/main/LICENSE")
 sha256sums=('3830437465a56059cf5c7aefa8801d5d9e880e15531fcb0d4e73f5380a011359'
-            'bf644b3a7e5dc5d7c4ce8b9db8c8df97d41efa3c1bff8e4c7dfe78e668561341')
+            '43485534798b716310ae2a0edeebb00e97ff0e42e5fde13ff2994e2bc82348f6')
 prepare() {
-    chmod a+x "${_pkgname}-${pkgver}.AppImage"
-    "./${_pkgname}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's/AppRun/\/opt\/appimages\/netpad.AppImage/g' -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
+    "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed 's|AppRun|/opt/appimages/netpad.AppImage|g' -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }   
 package() {
-    install -Dm755 "${srcdir}/${_pkgname}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${_pkgname}.AppImage"
+    install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
     for _icons in 32x32 64x64 128x128 256x256;do
-        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png"
+        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-appimage}.png" \
+            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
-    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
