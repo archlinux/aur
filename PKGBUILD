@@ -15,11 +15,6 @@ conflicts=("$_pkgname" "cutefish-filemanager-git")
 source=("git+$url.git")
 sha512sums=('SKIP')
 
-pkgver() {
-  cd filemanager
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 build() {
   cd filemanager
 
