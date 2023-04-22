@@ -15,10 +15,9 @@ optdepends=('amdvlk: Standalone driver for radeon gpus')
 makedepends=('cmake' 'boost' 'vulkan-headers' 'stb')
 
 source=(	"${_pkgname}::git+${url}.git"
-		'0001-Update-GuiKeys.patch'
 )
 sha256sums=(	'SKIP'
-		'SKIP')
+)
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -34,10 +33,16 @@ prepare() {
 
   # Implement all packaged patches and reverts.
   cd "${_srcname}"
+  msg2 "Hard fixes"
+  echo "Forcing stb dir" #Something is up/changed with find stb, had to force the dir location for it to work...
+  sed -i 's/find_package(Stb REQUIRED)/set(Stb_INCLUDE_DIR ${STB_INCLUDE_DIRS})/g' CMakeLists.txt
   msg2 "Implementing custom patches"
   while read patch; do
+   if [ "$patch" == "" ]; then
+     continue
+   fi
    echo "Applying $patch"
-   git apply $patch || exit 2
+   #git apply $patch || exit 2
   done <<< $(ls ../*.patch)
 }
 

@@ -21,8 +21,6 @@ pkgbase = raytracinginvulkan-git
 	provides = raytracinginvulkan=7.r10.g164e530
 	conflicts = raytracinginvulkan
 	source = raytracinginvulkan::git+https://github.com/GPSnoopy/RayTracingInVulkan.git
-	source = 0001-Update-GuiKeys.patch
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = raytracinginvulkan-git
