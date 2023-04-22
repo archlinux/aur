@@ -1,14 +1,14 @@
 pkgbase = burpsuite
 	pkgdesc = An integrated platform for performing security testing of web applications (free edition)
-	pkgver = 2023.3.4
+	pkgver = 2023.3.5
 	pkgrel = 1
 	url = https://portswigger.net/burp/
 	install = burpsuite.install
 	arch = any
 	license = custom
 	depends = java-runtime>=17
-	noextract = burpsuite-2023.3.4.jar
-	source = burpsuite-2023.3.4.jar::https://portswigger.net/burp/releases/download?product=community&version=2023.3.4&type=Jar
+	noextract = burpsuite-2023.3.5.jar
+	source = burpsuite-2023.3.5.jar::https://portswigger.net/burp/releases/download?product=community&version=2023.3.5&type=Jar
 	source = LICENSE
 	source = burpsuite.desktop
 	source = icon64.png
