@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=knit
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='A simple and flexible build too using Lua, similar to make/mk'
 arch=(x86_64)
 url="https://github.com/zyedidia/$pkgname"
@@ -11,7 +11,7 @@ depends=(glibc)
 makedepends=(go)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('18c78e98c4675f765537b332da0dcbb7eac855220c703a81deaa03b2c0e3a092')
+sha256sums=('ab92b240adc1f63502bd1de7f1d3eb64f508aa1e2ca7955d648d0a7351bbf37f')
 
 build() {
 	cd "$_archive"
