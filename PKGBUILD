@@ -1,4 +1,5 @@
-# Maintainer: skrewball <aur at joickle dot com> gitlab.com/skrewball/aur
+# Maintainer: Ewout van Mansom <ewout@vanmansom.name>
+# Contributor: skrewball <aur at joickle dot com> gitlab.com/skrewball/aur
 #
 # # 
 #  See INSTALL.md to setup firefox to use this theme when installed
@@ -7,13 +8,14 @@
 
 _pkgbase=firefox-gnome-theme
 pkgname=${_pkgbase}-git
-pkgver=108.r9.gecfc167
+pkgver=112.r0.g9b88fd9
 pkgrel=1
 pkgdesc='A GNOME theme for Firefox'
 arch=('any')
 url='https://github.com/rafaelmardojai/firefox-gnome-theme'
 license=('Unlicense')
-depends=('firefox')
+optdepends=('firefox: primary compatible browser'
+            'librewolf: alternative compatible browser')
 makedepends=('git')
 install="${_pkgbase}.install"
 source=("${_pkgbase}::git+${url}.git"
