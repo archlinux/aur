@@ -1,7 +1,7 @@
 pkgbase = tilde-podcast-appimage
 	pkgdesc = Podcast client to listen to all you favorite podcasts
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/paologiua/tilde
 	arch = x86_64
 	license = MIT
