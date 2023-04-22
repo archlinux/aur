@@ -1,12 +1,14 @@
 pkgbase = feidao-appimage
 	pkgdesc = 飞稻在线课程设计平台
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.fei-dao.com
 	arch = x86_64
 	license = unknown
 	depends = zlib
 	depends = hicolor-icon-theme
+	depends = glibc
+	conflicts = feidao
 	options = !strip
 	source = feidao-1.0.0.AppImage::https://oss.fei-dao.com/resources/application/linux/feidao_latest.AppImage
 	sha256sums = 2a5f5919ebc8c7ef8ebd232758852c87dd0b165208dc46a501ce3cefdd23ded7
