@@ -1,7 +1,7 @@
 pkgbase = ffuf-bin
 	pkgdesc = Fast web fuzzer written in Go
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ffuf/ffuf
 	arch = x86_64
 	license = MIT
