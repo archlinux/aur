@@ -2,7 +2,7 @@
 
 pkgname=('clang-prefixed-release')
 #pkgver=15.0.7
-_pkgver=16.0.1
+_pkgver=16.0.2
 _pkg_suffix=
 _pkgver_suffix=${_pkgver}
 _pkgver_dash_suffix=${_pkgver}
@@ -11,7 +11,7 @@ if [[ -n ${_pkg_suffix} ]]; then
     _pkgver_dash_suffix=${_pkgver_dash_suffix}-${_pkg_suffix}
 fi
 pkgver=${_pkgver}${_pkg_suffix}
-pkgrel=3
+pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -23,7 +23,7 @@ checkdepends=("python-psutil")
 #source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/llvm-project-${pkgver}.src.tar.xz")
 source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${_pkgver_dash_suffix}/llvm-project-${_pkgver_suffix}.src.tar.xz")
 
-sha512sums=('98fc11c0ad90d5e5a2cb123b497b89a1583fe7f91b3ff05c335037801ef66cbfab08f6d2eff539f0da238e9685d4bc7a9fb2578e28864fc9e9357b84129cefaa')
+sha512sums=('4ca76aaaca8812a06a94071e7444a3213d85dca51ea86f6125f854776f69a3e088a92d0621e3911e526f280b35bfb778fb3742c6010d3ed1eba605c08720377c')
 
 prefix_path="/opt/clang"
 install_path="${prefix_path}/${pkgver}"
@@ -56,7 +56,7 @@ build() {
             -DLLVM_ENABLE_LTO=Thin \
             -DLLVM_LINK_LLVM_DYLIB=ON \
             -DCLANG_LINK_CLANG_DYLIB=ON \
-            -DLLVM_ENABLE_PROJECTS="bolt;clang;clang-tools-extra;libc;libclc;lld;lldb;openmp;polly;pstl;compiler-rt" \
+            -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;libc;libclc;lld;lldb;openmp;polly;pstl;compiler-rt" \
             -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;libunwind" \
             -DCMAKE_BUILD_TYPE=Release \
             ${srcdir}/llvm-project-${_pkgver_suffix}.src/llvm | tee ${pkgname}-configure.log
