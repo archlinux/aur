@@ -1,7 +1,7 @@
 pkgbase = open-ecard-app-bin
 	pkgdesc = Client side implementation of the eCard-API-Framework (BSI TR-03112) and related international standards, such as ISO/IEC 24727.
 	pkgver = 2.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openecard.org/
 	arch = x86_64
 	license = Apache2
