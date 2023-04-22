@@ -1,7 +1,7 @@
 pkgbase = p3x-onenote-appimage
 	pkgdesc = Linux Electron Onenote - A Linux compatible version of OneNote
 	pkgver = 2023.4.117
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.corifeus.com/onenote/
 	arch = x86_64
 	license = MIT
@@ -14,6 +14,6 @@ pkgbase = p3x-onenote-appimage
 	source = p3x-onenote-2023.4.117.AppImage::https://github.com/patrikx3/onenote/releases/download/v2023.4.117/P3X-OneNote-2023.4.117.AppImage
 	source = LICENSE::https://github.com/patrikx3/onenote/raw/master/LICENSE
 	sha256sums = 86bfe63ceae588ff037a3dc3544dbec1891bd49efcf560a4918df17bd11c338e
-	sha256sums = 675c61a66958b9e72afb1bbd2b13111ceec5c516f528d29b5c6a3a9337a45aa4
+	sha256sums = eace4c6ceff7c3e609153ca94c61861aab5ad6ab83cf179ee289a27d5ffcbd9b
 
 pkgname = p3x-onenote-appimage
