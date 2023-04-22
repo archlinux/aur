@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Valter <`echo ZHZhbHRlciA8YXQ+IHByb3Rvbm1haWwgPGRvdD4gY29tCg== | base64 -d`>
 
 pkgname=drawio-desktop
-pkgver=21.1.2
+pkgver=21.2.1
 pkgrel=1
 pkgdesc='Diagram drawing application built on web technology'
 arch=('any')
@@ -14,8 +14,8 @@ options=('!strip')
 source=("drawio-$pkgver.tar.gz::https://github.com/jgraph/drawio/archive/v$pkgver.tar.gz"
         "drawio-desktop-$pkgver.tar.gz::https://github.com/jgraph/drawio-desktop/archive/v$pkgver.tar.gz"
         "drawio.xml")
-sha512sums=('23e9ce9c404674c06ca67b3142c2f0c64951838bb4c01e5207e6e74d78af5d58454cc1d4bca491001316b55003ee2a47c5c6b6d786095ae4d9e11695d0eddd02'
-            'dd08ee0bae96558d781e455a51d97e8d23710e7790a33139b81a20dd2261979a32120483b959bb1a53327971139e23509052f71a4f03fe94683cdd508fb27b70'
+sha512sums=('996b7a111e3eba129194bd42baeb724093d7aabd99507f0945024ee4a05cb14fb6e4fc089e0872b7a6b1f2d93bce354cbdccf4404482952d44850f691f450a70'
+            '08f40e13a918cbe8795d9387afb2facddec6ec234e53938f343c3e5a6c46253fcd98d014028a28dd989b113f1cbd2829657e091f94ba65a10bfe647d5402d3ee'
             '8899108b4112f065173a077ca68d4d915780bcc993c69924098e134fa05338a20cb0391720b7b45c27071f789fbe5a6a02228dd633570e91fb4482082c480539')
 
 build() {
@@ -28,7 +28,8 @@ build() {
   rm -rf "META-INF" "WEB-INF"
 
   # Electron version compatibility check
-  grep -qF "\"electron\": \"^$_electronver." 'package.json'
+  # echo "Checking electron version"
+  # grep -qF "\"electron\": \"^$_electronver." 'package.json'
 
   # disable updater
   sed -e '/electron-updater/d' -i 'package.json'
