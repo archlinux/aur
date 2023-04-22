@@ -2,7 +2,7 @@
 pkgname=jetbrains-clion-pj
 pkgver=2021.1.3
 pkgrel=1
-pkgdesc="A cross-platform IDE for C and C++."
+pkgdesc="A cross-platform IDE for C and C++. - fix fcitx cursor bug"
 _clionver=2021-1-3
 _buildver=211.7628.27
 arch=('x86_64')
