@@ -1,6 +1,6 @@
 pkgbase = musikcube-bin
 	pkgdesc = A terminal-based cross-platform music player, audio engine, metadata indexer, and server
-	pkgver = 0.99.8
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/clangen/musikcube
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = musikcube-bin
 	depends = alsa-lib
 	provides = musikcube
 	conflicts = musikcube
-	source = musikcube-bin-0.99.8.tar.bz2::https://github.com/clangen/musikcube/releases/download/0.99.8/musikcube_linux_x86_64_0.99.8.tar.bz2
+	source = musikcube-bin-3.0.0.tar.bz2::https://github.com/clangen/musikcube/releases/download/3.0.0/musikcube_linux_x86_64_3.0.0.tar.bz2
 	source = LICENSE.txt
-	sha256sums = ea8046a5fd94d1cc36b3c8704626784010450b0f5871901b0555221a612f8d44
+	sha256sums = 795ec71f7bd88559913d852329821ba79c065e128ff05d6436e5d741500e21db
 	sha256sums = 315d1a4485c05a0db8640d0720cac768c7e49224dc3db592ed204a770fee9e36
 
 pkgname = musikcube-bin
