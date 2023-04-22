@@ -10,3 +10,6 @@ srcinfo:
 
 clean:
 	rm -rf pkg src cal8tor/ cal8tor*.tar.*
+
+git-hook:
+	cp pre-commit .git/hooks
