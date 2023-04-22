@@ -4,7 +4,7 @@
 # Contributor: Jonathan Thomas <jonathan@openshot.org>
 
 pkgname=libopenshot
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A video editing, animation, and playback library for C++, Python, and Ruby"
 arch=(x86_64)
@@ -37,8 +37,8 @@ makedepends=(
 )
 provides=(libopenshot.so)
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha512sums=('8e0f606c76ed88740577e399065aba021d6d8c5a34b66705c9755252d5a5bb9b8361c074b3810fc23927d4e89670d9ba5329fd39425ec1080356e7140239147b')
-b2sums=('b1d35246507b91690d1da5b0d79af4ee26ad62b1683ad8cc20d28abeb16b1b89770553034595b8f936263fa86f4091dc6d6d883a13c2bb92461d3935b8c20238')
+sha512sums=('8891077af28a4db6bc3a7cd078ce5570a8f62e0795c13b0fff795eba60c3e977ece70247033ee4017c9785592355b7421655246a5d6807a5790bd18927739795')
+b2sums=('5bc371481ddf69b5de909963cb83d1128066280e1259ae8b23f7ef5450f3da00ef1137dcefe2978e10d1a51931529f104aebdf0601be4b066c7ed371ea43439e')
 
 build() {
   local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
