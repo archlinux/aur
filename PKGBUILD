@@ -7,7 +7,7 @@ pkgdesc="Downloads albums in bulk"
 arch=('any')
 url="https://github.com/ripmeapp2/ripme"
 license=('MIT')
-depends=('java-runtime')
+depends=('java-runtime=>11')
 provides=('ripme')
 conflicts=('ripme')
 source=("https://github.com/ripmeapp2/ripme/releases/download/$pkgver/ripme-$_pkgver.jar")
