@@ -1,7 +1,7 @@
 pkgbase = calmly-writer-bin
 	pkgdesc = Calmly Writer is an editor designed to focus on what you want to tell, with a simple, unobtrusive and ease-to-use user interface.
 	pkgver = 2.0.52
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.calmlywriter.com
 	arch = x86_64
 	license = custom
@@ -35,7 +35,7 @@ pkgbase = calmly-writer-bin
 	depends = sh
 	conflicts = calmly-writer
 	source = calmly-writer_2.0.52.deb::https://www.calmlywriter.com/releases/linux/deb/x64/calmly-writer_2.0.52_amd64.deb
-	source = LICENSE::https://www.calmlywriter.com/eula.htm
+	source = LICENSE.html::https://www.calmlywriter.com/eula.htm
 	sha256sums = 45d223301278c81479e5483372805ce409c53c4c1412975312990ee39e6c031a
 	sha256sums = 57ca9932cc353e0734325a3e0377abc9645021c908a81a44446b2153ee19c6d9
 
