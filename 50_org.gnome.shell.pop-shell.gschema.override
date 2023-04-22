@@ -1,0 +1,7 @@
+[org.gnome.shell.keybindings]
+open-application-menu=@as []
+toggle-message-tray=@as ['<Super>v']
+toggle-overview=@as []
+
+[org.gnome.shell.overrides]
+workspaces-only-on-primary=false

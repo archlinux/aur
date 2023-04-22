@@ -1,19 +1,32 @@
 pkgbase = gnome-shell-extension-pop-shell
-	pkgdesc = Pop Shell - Tiling window management in Gnome (WIP)
-	pkgver = 1.2.0
-	pkgrel = 2
+	pkgdesc = GNOME Shell extension for advanced tiling window management
+	pkgver = 1.2.0+292+g0e09473
+	pkgrel = 1
 	url = https://github.com/pop-os/shell
-	install = pop-shell.install
 	arch = any
-	license = GPLv3
+	license = GPL3
 	makedepends = typescript
 	makedepends = git
+	depends = fd
 	depends = gnome-shell
-	depends = pop-shell-shortcuts-git
-	optdepends = gnome-shell-extensions: native-window extension for improved window placement
-	conflicts = gnome-shell-extension-pop-shell
-	source = shell-1.2.0.tar.gz::https://github.com/pop-os/shell/archive/1.2.0.tar.gz
+	depends = pop-launcher
+	depends = pop-shell-shortcuts
+	depends = xorg-xprop
+	optdepends = gnome-control-center: keybinding categories
+	optdepends = gnome-shell-extensions: for Native Window Placment extension
+	source = git+https://github.com/pop-os/shell.git#commit=0e09473c9d8a1de7476ccf128c028188206c9bb1
+	source = 0001-Remove-schema-handling-from-transpile.sh.patch
+	source = 50_org.gnome.desktop.wm.keybindings.pop-shell.gschema.override
+	source = 50_org.gnome.mutter.pop-shell.gschema.override
+	source = 50_org.gnome.mutter.wayland.pop-shell.gschema.override
+	source = 50_org.gnome.settings-daemon.plugins.media-keys.pop-shell.gschema.override
+	source = 50_org.gnome.shell.pop-shell.gschema.override
 	sha256sums = SKIP
+	sha256sums = cb5d5652fc2d15bd7c60f8cb38f1ed67cd551db36fbed8603b930d6f024de167
+	sha256sums = 3528ecf59d625eeb83a909f3e4cd3775e2f3ef7d27dc85dc1c8dc980317fad99
+	sha256sums = 08f99d7b7721c25a43cd24ce71830e57256daa6995e2500cd9e6cfe219a661e1
+	sha256sums = 16a372347d46f9079047557ba09a7a2335e5e64d3fa40118dbc6b0d53d8e686c
+	sha256sums = cb2f53c3c19ed2123373cd3183c3aad1e85d9a661c9e967c6888b7eae3bb18f0
+	sha256sums = 59cf3799036e22718577d0a89468605b6ca1e253d9d7133a8afd640188e2ea9d
 
 pkgname = gnome-shell-extension-pop-shell
-
