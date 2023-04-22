@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-shell-extension-mullvad-indicator-git
-pkgver=42.r12.g0b929d9
+pkgver=44.r0.g81c3e62
 pkgrel=1
 pkgdesc="GNOME extension to track Mullvad connectivity"
 arch=('any')
@@ -20,8 +20,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-#  make genlocale
-  make zip
+  make
 }
 
 package() {
@@ -29,10 +28,10 @@ package() {
 
   cd "$srcdir/${pkgname%-git}"
   install -d "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
-  bsdtar -xvf $_uuid.zip -C "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
+  bsdtar -xvf $_uuid.zip -C "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/"
 
   install -Dm644 schemas/org.gnome.shell.extensions.MullvadIndicator.gschema.xml -t \
-    "$pkgdir/usr/share/glib-2.0/schemas"
+    "$pkgdir/usr/share/glib-2.0/schemas/"
 
   rm -rf "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/schemas/"
 }
