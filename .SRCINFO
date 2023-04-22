@@ -1,7 +1,7 @@
 pkgbase = diffuse-player-bin
 	pkgdesc = A music player that connects to your cloud/distributed storage.
 	pkgver = 3.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://diffuse.sh/
 	arch = x86_64
 	license = custom
@@ -15,10 +15,11 @@ pkgbase = diffuse-player-bin
 	depends = glib2
 	depends = cairo
 	depends = hicolor-icon-theme
-	conflicts = diffuse-player-appimage
-	source = diffuse-3.3.0.deb::https://github.com/icidasset/diffuse/releases/download/3.3.0/diffuse-linux-amd64.deb
+	conflicts = diffuse-appimage
+	conflicts = diffuse-player
+	source = diffuse-player-3.3.0.deb::https://github.com/icidasset/diffuse/releases/download/3.3.0/diffuse-linux-amd64.deb
 	source = LICENSE::https://github.com/icidasset/diffuse/raw/main/LICENSE
 	sha256sums = 47703b10325b6e4d65960d573b1a6a8b04d992a523ce2b2605aae0ec0522bcd0
-	sha256sums = 0a21c689228ea59b37ff87f23146184df79a56822674db6b2be9e976748d3833
+	sha256sums = 22f6e9359127b271eba050bc6e87abc699982ace7a6b386c1c346c7f3154eda8
 
 pkgname = diffuse-player-bin
