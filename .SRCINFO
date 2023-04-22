@@ -1,14 +1,14 @@
 pkgbase = r-matrix.utils
 	pkgdesc = Data.frame-Like Operations on Sparse and Dense Matrix Objects
 	pkgver = 0.9.8
-	pkgrel = 4
+	pkgrel = 6
 	url = https://cran.r-project.org/package=Matrix.utils
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-grr
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/Matrix.utils_0.9.8.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/Matrix.utils/Matrix.utils_0.9.8.tar.gz
 	sha256sums = ebc59d3ef751775515586ff1f2396e429a1e9d91a10099d804134fcf74c0ae28
 
 pkgname = r-matrix.utils
