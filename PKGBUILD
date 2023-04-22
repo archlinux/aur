@@ -4,12 +4,12 @@
 # Contributor: OK100 <ok100 at lavabit dot com>
 # Contributor: Valère Monseur <valere dot monseur at ymail dot com>
 
-pkgname=picom-simpleanims-next-git
-_gitname=picom
-pkgver=1949__2023.03.04
+pkgname="picom-simpleanims-next-git"
+_gitname="picom"
+pkgver="1949__2023.03.04"
 pkgrel=1
 pkgdesc="The \"next\" branch of picom-simpleanims-git"
-arch=(i686 x86_64)
+arch=("i686" "x86_64")
 url="https://github.com/fdev31/${_gitname}"
 license=('MIT' 'MPL2')
 depends=('libgl' 'libev' 'pcre' 'libx11' 'xcb-util-renderutil' 'libxcb' 'xcb-util-image' 'libxext'
