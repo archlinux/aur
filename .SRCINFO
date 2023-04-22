@@ -1,19 +1,17 @@
 pkgbase = bookmarks-manager-appimage
 	pkgdesc = Edit bookmarks, check url.
 	pkgver = 0.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Hunlongyu/bookmarks-manager
 	arch = x86_64
 	license = MIT
-	depends = hicolor-icon-theme
 	depends = zlib
 	depends = glibc
-	provides = Hunlongyu
 	conflicts = bookmarks-manager
 	options = !strip
 	source = bookmarks-manager-0.1.2.AppImage::https://github.com/Hunlongyu/bookmarks-manager/releases/download/v0.1.2/Bookmark-Manager-0.1.2.AppImage
 	source = LICENSE::https://github.com/Hunlongyu/bookmarks-manager/raw/main/LICENSE
 	sha256sums = 05cc0f7a8c0664d47a5cb90af113729a27b63419b8dd9649caa81a46967a241f
-	sha256sums = 8502d20adac896483b1915ec006146673f7d5f41d78ab3d0fcc74c077e7cf658
+	sha256sums = c796c92731a81fb917e300438a8e5565ac96507ca0f4052fb3d8e2459e7b0f3b
 
 pkgname = bookmarks-manager-appimage
