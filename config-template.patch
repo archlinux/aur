@@ -1,0 +1,20 @@
+--- a/lldap_config.docker_template.toml
++++ b/lldap_config.docker_template.toml
+@@ -85,7 +85,7 @@
+ ##  - "mysql://mysql-user:password@mysql-server/my-database"
+ ##
+ ## This can be overridden with the LLDAP_DATABASE_URL env variable.
+-database_url = "sqlite:///data/users.db?mode=rwc"
++database_url = "sqlite:///var/lib/lldap/data/users.db?mode=rwc"
+ 
+ ## Private key file.
+ ## Contains the secret private key used to store the passwords safely.
+@@ -93,7 +93,7 @@ database_url = "sqlite:///data/users.db?mode=rwc"
+ ## would still have to perform an (expensive) brute force attack to find
+ ## each password.
+ ## Randomly generated on first run if it doesn't exist.
+-key_file = "/data/private_key"
++key_file = "/var/lib/lldap/data/private_key"
+ 
+ ## Ignored attributes.
+ ## Some services will request attributes that are not present in LLDAP. When it

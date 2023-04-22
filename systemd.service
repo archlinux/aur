@@ -1,0 +1,47 @@
+[Unit]
+Description=Light LDAP server
+Documentation=https://github.com/lldap/lldap
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=lldap
+Group=lldap
+WorkingDirectory=/var/lib/lldap
+ExecStart=/usr/bin/lldap run --config-file /etc/lldap.toml
+Restart=always
+RestartSec=1
+
+# Hardening
+ReadWritePaths=/var/lib/lldap
+ReadOnlyPaths=/etc/lldap.toml
+UMask=0027
+NoNewPrivileges=true
+LimitNOFILE=1048576
+ProtectSystem=strict
+ProtectHome=true
+PrivateUsers=yes
+PrivateTmp=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectProc=invisible
+RestrictAddressFamilies=AF_INET AF_INET6
+RestrictNamespaces=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+RemoveIPC=true
+CapabilityBoundingSet=
+AmbientCapabilities=
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target

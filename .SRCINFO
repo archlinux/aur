@@ -1,0 +1,30 @@
+pkgbase = lldap
+	pkgdesc = Light LDAP implementation
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/lldap/lldap
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	makedepends = wasm-pack
+	makedepends = rust-wasm
+	makedepends = wasm-bindgen
+	depends = glibc
+	depends = gcc-libs
+	options = !lto
+	backup = etc/lldap.toml
+	source = lldap::git+https://github.com/lldap/lldap#commit=252132430cdbf22f3c8e549e1826f9c68ae0e6ae
+	source = config-template.patch
+	source = Cargo.lock.patch
+	source = systemd.service
+	source = sysusers.conf
+	source = tmpfiles.conf
+	b2sums = SKIP
+	b2sums = 469c0e188396a25087a81c3c751a6ba17736d177fbf4695125781361212f6b60918d1b082bf0b133ffd1cafb17e101d61819f2a812fb46f354d8ab77bde1e0ad
+	b2sums = e9027e99d2ea2779ece257c8ec5ceb94dd3068959588c9d595cc2f8bedc7387398dbd2f39f1188f9e3484a396e62630d676767bf3156d11243aadc084f92baf8
+	b2sums = a03e0d02f423626e3c5796f2867b7a8f2207949987cb655967c85952db2f283c5fd0a5d1bc869332aec04ede54aa0f9740b507110ac5b604eb5703afe315f43a
+	b2sums = e491337a2ba4ca68ed6afe3a0779a608f718da4107547276562582bc24b7ab21af724b4026adfe3b845ef9e81284bb54da548b8f48b4b1b1bf8525316f990f82
+	b2sums = 1caff6be850db02f3dcd8d4ca12a2f18acf40c2900cb2d0866cf3a3c131bda9c9bf5d32a072f250f1d0700ac7dd3e43f05d4d33dd2e5f21c6a983a57e1c5adcc
+
+pkgname = lldap
