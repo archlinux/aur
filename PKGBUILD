@@ -4,15 +4,15 @@
 _pkgbase=smuxi
 pkgbase=${_pkgbase}-git
 pkgname=('smuxi-server-git' 'smuxi-git')
-pkgver=1.1.r3.g4cf00710
+pkgver=1.2.1.r0.g6692e128
 pkgrel=1
 pkgdesc="free, distributed and user-friendly IRC / Twitter / XMPP / Campfire / JabbR client for GNOME/GTK+"
 arch=('any')
 url="https://www.smuxi.im/"
 license=('GPL')
-makedepends=('intltool' 'git' 'gtk-sharp-2-git' 'notify-sharp' 'log4net' 'nini' 'gtkspell' 'stfl' 'sqlite')
+makedepends=('intltool' 'git' 'notify-sharp' 'log4net' 'nini' 'gtkspell' 'stfl' 'sqlite')
 #options=('!emptydirs')
-source=('git://github.com/meebey/smuxi')
+source=('git+https://gitlab.gnome.org/GNOME/smuxi.git')
 md5sums=('SKIP')
 
 
@@ -68,7 +68,7 @@ package_smuxi-server-git() {
 
 package_smuxi-git() {
   pkgdesc+=" (frontends)"
-  depends=('smuxi-server' 'gtk-sharp-2-git' 'notify-sharp' 'gtkspell' 'stfl' 'desktop-file-utils' 'gtk-update-icon-cache' 'xdg-utils')
+  depends=('smuxi-server' 'notify-sharp' 'gtkspell' 'stfl' 'desktop-file-utils' 'gtk-update-icon-cache' 'xdg-utils')
   conflicts=('smuxi')
   provides=('smuxi=1.1')
 
