@@ -1,6 +1,5 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname%-bin=
 pkgname="ten-hands-bin"
 pkgver=2.10.3
 pkgrel=3
