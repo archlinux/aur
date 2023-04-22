@@ -1,7 +1,7 @@
 pkgbase = droppoint-bin
 	pkgdesc = Make drag-and-drop easier using DropPoint. Drag content without having to open side-by-side windows
 	pkgver = 1.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://droppoint.netlify.app/
 	arch = x86_64
 	license = GPL3
@@ -32,6 +32,7 @@ pkgbase = droppoint-bin
 	depends = libxcomposite
 	depends = dbus
 	conflicts = droppoint
+	conflicts = droppoint-appimage
 	source = droppoint-1.2.1.deb::https://github.com/GameGodS3/DropPoint/releases/download/v1.2.1/droppoint_1.2.1_amd64.deb
 	sha256sums = b272d4415363eb33c54a6bec11aff870c51a1af4cf736ee76190bd4bd71ca5f4
 
