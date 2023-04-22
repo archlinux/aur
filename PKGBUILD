@@ -21,7 +21,7 @@ pkgver() {
 build() {
   cd dock
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr .
   make
 }
 
