@@ -1,0 +1,19 @@
+pkgbase = python-mdtex2html
+	pkgdesc = python3-library to convert Markdown with included LaTeX-Formulas to HTML with MathML
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/polarwinkel/mdtex2html
+	arch = any
+	license = LGPL2.1
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-installer
+	depends = python
+	depends = python-markdown
+	depends = python-latex2mathml
+	source = python-mdtex2html::git+https://github.com/polarwinkel/mdtex2html.git#tag=8e8e67bd4b12fc55c29dbf53cc5dadef838506ea
+	sha512sums = SKIP
+
+pkgname = python-mdtex2html
