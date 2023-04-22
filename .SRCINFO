@@ -11,7 +11,6 @@ pkgbase = stackzy-bin
 	depends = java-runtime
 	depends = libxrender
 	depends = alsa-lib
-	depends = hicolor-icon-theme
 	depends = glibc
 	depends = libxi
 	depends = libxext
