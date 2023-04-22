@@ -1,7 +1,7 @@
 pkgbase = chord-appimage
 	pkgdesc = Chord - A Modern Music Player
 	pkgver = 0.2.40
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/PeterDing/chord
 	arch = x86_64
 	license = MIT
