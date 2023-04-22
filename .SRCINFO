@@ -1,7 +1,7 @@
 pkgbase = p3x-redis-ui-appimage
 	pkgdesc = A very functional handy database GUI and works in your pocket on the responsive web or as a desktop app
-	pkgver = 2022.10.105
-	pkgrel = 2
+	pkgver = 2023.4.102
+	pkgrel = 1
 	url = https://www.corifeus.com/redis-ui
 	arch = x86_64
 	license = MIT
@@ -10,9 +10,9 @@ pkgbase = p3x-redis-ui-appimage
 	depends = glibc
 	conflicts = p3x-redis-ui
 	options = !strip
-	source = p3x-redis-ui-2022.10.105.AppImage::https://github.com/patrikx3/redis-ui/releases/download/v2022.10.105/P3X-Redis-UI-2022.10.105.AppImage
+	source = p3x-redis-ui-2023.4.102.AppImage::https://github.com/patrikx3/redis-ui/releases/download/v2023.4.102/P3X-Redis-UI-2023.4.102.AppImage
 	source = LICENSE::https://github.com/patrikx3/redis-ui/raw/master/LICENSE
-	sha256sums = f319cce94d28969291ac5115ca5dc1fe1b01363cda67839e7e26222ca156d507
-	sha256sums = e6d817ec803c1f81999c72a6fdaf2d7fb0873e4d05320ae6156f52c25ada1c21
+	sha256sums = 976712322b899c80d05b61c50e52ab75fd772253cddd72f8c7b1c76678ef9126
+	sha256sums = 1603d2311d0db46bd4cf9ff5654093339a9864ef3fb2869b7eeb456189aeb60f
 
 pkgname = p3x-redis-ui-appimage
