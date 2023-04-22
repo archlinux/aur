@@ -31,8 +31,8 @@ else
   pkgname=(mutter-performance mutter-performance-docs)
 fi
 epoch=1
-pkgver=43.4+r3+g951b2a98b
-pkgrel=3
+pkgver=43.4+r5+gc35e9f8c0
+pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64 aarch64)
@@ -46,7 +46,7 @@ makedepends=(gobject-introspection git egl-wayland meson xorg-server
 if [ -n "$_enable_check" ]; then
   checkdepends=(xorg-server-xvfb pipewire-session-manager python-dbusmock zenity)
 fi
-_commit=951b2a98b5c18c258aecbb9c1f853367d0463748  # tags/43.4^3
+_commit=c35e9f8c0b3ef329b5b7b38b7760006af566952b  # tags/43.4^5
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch'
         'mr1880.patch'
