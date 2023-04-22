@@ -1,0 +1,12 @@
+pkgbase = ttf-dina-remastered
+	pkgdesc = Dina Font TTF Remastered
+	pkgver = 20201220
+	pkgrel = 1
+	url = https://github.com/zshoals/Dina-Font-TTF-Remastered
+	arch = any
+	license = custom
+	makedepends = git
+	source = git+https://github.com/zshoals/Dina-Font-TTF-Remastered#commit=82b0167371dcac934d89f2f3cba80eab00648ad2
+	sha256sums = SKIP
+
+pkgname = ttf-dina-remastered
