@@ -7,24 +7,13 @@ arch=('any')
 url="https://plasma-bigscreen.org/"
 license=('GPL2')
 groups=()
-depends=('kio' 
-	'kactivities' 
-	'kactivities-stats' 
-	'ki18n' 
-	'kdeconnect' 
-	'plasma-workspace'
-	'kdeclarative' 
-	'plasma-framework' 
-	'kirigami2' 
-	'kcmutils' 
-    'knotifications'
-	'kwayland'
-    'kwayland-integration'
-    'kwindowsystem'
-	'xorg-server-xwayland'  
-	'plasma-wayland-session'
+depends=('kdeconnect' 
+	'plasma-nm' 
+	'plasma-pa' 
+	'plasma-remotecontrollers'
 	'plasma-nano'
-    'plasma-settings')
+    'plasma-settings'
+    'qt5-virtualkeyboard')
 
 makedepends=('cmake' 'extra-cmake-modules-git' 'git') 
 optdepends=('libcec: add USB-CEC support in order to be controled by TV remotes'
