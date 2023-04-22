@@ -1,0 +1,20 @@
+pkgbase = winggifeditor-bin
+	pkgdesc = 基于 QT 编写的 GIF 编辑器，采用 C++ 进行开发
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/Wing-summer/WingGifEditor
+	arch = x86_64
+	license = AGPL3
+	depends = qt5-base
+	depends = qt5-x11extras
+	depends = libglvnd
+	depends = glibc
+	depends = gcc-libs
+	depends = dtkcore
+	depends = dtkgui
+	depends = dtkwidget
+	conflicts = winggifeditor
+	source = winggifeditor-1.1.2.deb::https://github.com/Wing-summer/WingGifEditor/releases/download/V1.1.2/com.wingsummer.winggifeditor_1.1.2_amd64.deb
+	sha256sums = c2e56a4478a7540afa7d52819d37e9d6b30d7afb577002dd3825b928d83125b2
+
+pkgname = winggifeditor-bin
