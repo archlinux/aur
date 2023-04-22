@@ -1,13 +1,13 @@
 # Maintainer: Rick van Lieshout <info@rickvanlieshout.com>
 
 pkgname=tidal-hifi-git
-pkgrel=2
-pkgver=4.4.0.r0.gd0f9a34
+pkgrel=1
+pkgver=5.0.0.r0.g05b422e
 pkgdesc="The web version of listen.tidal.com running in electron with hifi support thanks to widevine. If the install fails use nvm to temporarily downgrade npm"
 arch=(x86_64)
 url="https://github.com/Mastermindzh/tidal-hifi"
 license=("custom:MIT")
-depends=(libxss nss gtk3 libxcrypt-compat)
+depends=(libxss nss gtk3 libxcrypt-compat libnotify)
 makedepends=(git)
 provides=(tidal-hifi)
 conflicts=(tidal-hifi)
