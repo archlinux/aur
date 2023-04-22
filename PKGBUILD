@@ -2,36 +2,31 @@
 
 pkgname=chatterino2-7tv-git
 _pkgname=chatterino7
-pkgver=r3626.a0e87b96
+pkgver=v7.4.2.r71.g53fb0f00
 pkgrel=1
 pkgdesc='A fork of Chatterino2 with built-in support for 7tv emotes'
 arch=('any')
 url=https://github.com/SevenTV/chatterino7
 license=('MIT')
-depends=('qt5-multimedia' 'qt5-base' 'qt5-tools' 'qt5-imageformats' 'boost-libs' 'openssl')
+depends=('qt5-base' 'qt5-tools' 'boost-libs' 'openssl' 'qt5-imageformats' 'qtkeychain-qt5')
 makedepends=('git' 'qt5-svg' 'boost' 'cmake')
 optdepends=('streamlink: For piping streams to video players'
-            'pulseaudio: For audio output'
-            'gst-plugins-good: For audio output')
+            'pulseaudio: For audio output')
 provides=('chatterino')
 conflicts=('chatterino2-git' 'chatterino2-appimage' 'chatterino2-nightly-appimage')
 install=$pkgname.install
 source=("git+https://github.com/SevenTV/chatterino7"
         "git+https://github.com/Chatterino/libcommuni#branch=chatterino-cmake"
-        "git+https://github.com/jiakuan/qBreakpad"
-        "git+https://github.com/mohabouje/WinToast"
+        "git+https://github.com/getsentry/crashpad"
         "git+https://github.com/pajlada/settings"
         "git+https://github.com/pajlada/signals"
         "git+https://github.com/pajlada/serialize"
         "git+https://github.com/Tencent/rapidjson"
-        "git+https://github.com/Chatterino/qtkeychain"
         "git+https://github.com/zaphoyd/websocketpp"
         "git+https://github.com/arsenm/sanitizers-cmake"
         "git+https://github.com/Neargye/magic_enum"
-        "git+https://github.com/google/googletest")
+        "git+https://github.com/mackron/miniaudio")
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -45,41 +40,39 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    ( set -o pipefail
+      git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 prepare () {
     cd "$srcdir/$_pkgname"
     git submodule init
-    git config submodule.libcommuni $srcdir/$_pkgname/lib/libcommuni
-    git config submodule.qBreakpad $srcdir/$_pkgname/lib/qBreakpad
-    git config submodule.WinToast $srcdir/$_pkgname/lib/WinToast
-    git config submodule.settings $srcdir/$_pkgname/lib/settings
-    git config submodule.signals $srcdir/$_pkgname/lib/signals
-    git config submodule.serialize $srcdir/$_pkgname/lib/serialize
-    git config submodule.rapidjson $srcdir/$_pkgname/lib/rapidjson
-    git config submodule.qtkeychain $srcdir/$_pkgname/lib/qtkeychain
-    git config submodule.websocketpp $srcdir/$_pkgname/lib/websocketpp
-    git config submodule.sanitizers-cmake $srcdir/$_pkgname/lib/sanitizers-cmake
-    # We can't set the local directory of this submodule as we have no way of accessing the config name `submodule.magic_enum` because underscores are actually not allowed.
-    #git config submodule.magic_enum $srcdir/$_pkgname/lib/magic_enum
-    git config submodule.googletest $srcdir/$_pkgname/lib/googletest
-    git submodule update
+    git config submodule.cmake/sanitizers-cmake.url "$srcdir/sanitizers-cmake"
+    git config submodule.lib/libcommuni.url "$srcdir/libcommuni"
+    git config submodule.lib/crashpad.url "$srcdir/crashpad"
+    # TODO: crashpad contains its own submodules, this needs to be resolved
+    git config submodule.lib/settings.url "$srcdir/settings"
+    git config submodule.lib/signals.url "$srcdir/signals"
+    git config submodule.lib/serialize.url "$srcdir/serialize"
+    git config submodule.lib/rapidjson.url "$srcdir/rapidjson"
+    git config submodule.lib/websocketpp.url "$srcdir/websocketpp"
+    git config submodule.lib/miniaudio.url "$srcdir/miniaudio"
+    git config submodule.lib/magicenum.url "$srcdir/magicenum"
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
     cd "$srcdir/$_pkgname"
     mkdir -p build
     cd build
-    cmake -DCMAKE_BUILD_TYPE=Release ..
-    if [ -z "$CCACHE_SLOPPINESS" ]; then
-        # We need to set the ccache sloppiness for the chatterino build to use it properly
-        # This is due to our use of precompiled headers
-        # See https://ccache.dev/manual/3.3.5.html#_precompiled_headers
-        CCACHE_SLOPPINESS="pch_defines,time_macros"
-        export CCACHE_SLOPPINESS
-    fi
-    make
+    cmake \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DUSE_SYSTEM_QTKEYCHAIN=ON \
+        -DUSE_PRECOMPILED_HEADERS=OFF \
+        ..
+    cmake --build .
 }
 
 package() {

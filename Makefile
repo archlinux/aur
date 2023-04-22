@@ -1,6 +1,6 @@
 .PHONY: all
 
-all: clean srcinfo rebuild
+all: clean rebuild srcinfo
 
 rebuild:
 	makepkg -s
@@ -12,14 +12,13 @@ clean:
 	rm -rf pkg src chatterino7/ chatterino2-*.pkg.tar.{xz,zst} \
 		libcommuni \
 		humanize \
-		qBreakpad \
-		WinToast \
+		crashpad \
 		settings \
 		signals \
 		serialize \
 		rapidjson \
 		qtkeychain \
-		websocketpp \
 		sanitizers-cmake \
+		websocketpp \
 		magic_enum \
-		googletest
+		miniaudio
