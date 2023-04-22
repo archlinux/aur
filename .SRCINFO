@@ -1,6 +1,6 @@
 pkgbase = latte-dock-git
 	pkgdesc = Latte is a dock based on plasma frameworks that provides an elegant and intuitive experience for your tasks and plasmoids
-	pkgver = r5955.24b1e8fa
+	pkgver = r6036.e1e8c47a
 	pkgrel = 1
 	url = https://invent.kde.org/plasma/latte-dock
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = latte-dock-git
 	makedepends = extra-cmake-modules
 	makedepends = python
 	depends = plasma-framework
+	depends = plasma-workspace
 	depends = kirigami2
 	depends = knewstuff
 	depends = hicolor-icon-theme
