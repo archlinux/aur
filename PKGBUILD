@@ -5,7 +5,7 @@ pkgver=3.2.3.git20160322
 pkgrel=1
 
 pkgdesc="MyGUI - OpenGL backend"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="http://mygui.info/"
 license=('LGPL')
 
