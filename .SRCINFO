@@ -1,6 +1,6 @@
 pkgbase = stilts
 	pkgdesc = Starlink Tables Infrastructure Library Tool Set
-	pkgver = 3.4.7
+	pkgver = 3.4.8
 	pkgrel = 1
 	url = http://www.star.bris.ac.uk/~mbt/stilts/
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = stilts
 	depends = java-runtime
 	depends = sh
 	noextract = stilts.jar
-	source = stilts-3.4.7.jar::http://andromeda.star.bristol.ac.uk/releases/stilts/v3.4-7/stilts.jar
+	source = stilts-3.4.8.jar::https://www.star.bristol.ac.uk/mbt/releases/stilts/v3.4-8/stilts.jar
 	source = stilts
 	source = stilts4.gif
-	md5sums = f928bd0c8e32f06a6ca785409e7d9626
+	md5sums = c8ff372525e5cf35a0242bfcf5a97dc8
 	md5sums = 4f7dd76969e791b934cfd8eb59822bf2
 	md5sums = 574cb973184b3b7562f84c3e171244dd
 
