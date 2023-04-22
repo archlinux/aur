@@ -1,0 +1,16 @@
+pkgbase = shadowsocks-electron-appimage
+	pkgdesc = Shadowsocks GUI application made for Ubuntu/Mac/Win users and powered by Electron.
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/nojsja/shadowsocks-electron
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = glibc
+	conflicts = shadowsocks
+	options = !strip
+	source = shadowsocks-electron-1.2.3.AppImage::https://github.com/nojsja/shadowsocks-electron/releases/download/v1.2.3/Shadowsocks-Electron-1.2.3.AppImage
+	sha256sums = ec860bfe2fd56562246f53a0c1049088cfea2b33e36c5bff0839741653ff170d
+
+pkgname = shadowsocks-electron-appimage
