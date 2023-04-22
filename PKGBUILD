@@ -1,7 +1,7 @@
 # Maintainer: Lex Black <autumn-wind@web.de>
 
 pkgname=wg-cmd
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="TUI for managing WireGuard configuration files "
 arch=(x86_64)
@@ -9,7 +9,7 @@ url="https://github.com/AndrianBdn/wg-cmd"
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AndrianBdn/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('b650c6f488eb81f157bf8b95d76bcc04c5f004f0295c8536782c60f06281ec226e2923dcc2887d0469b38c8ade8f3241bdbe10a2ffd538410ea2564a632e60a4')
+b2sums=('a7883d3805a2fc1595c5745c2e9752f55cc9dc176ca2ebf461e73b939a88673cb26978339dbb80827066821388982499cd04e28637113303558805abbe45a1f2')
 
 
 prepare(){
