@@ -3,10 +3,10 @@
 # Contributor: Aleksandr Grehov <alewmosse@gmail.com>
 
 _pkgname='2048term'
-_patch='0001-ARCHLINUX-conform-Makefile-to-packaging-standards.patch'
+_patch='0001-Makefile-tweak-usage-of-implicit-variables.patch'
 pkgname="${_pkgname}-git"
 pkgver=20220613.bf22f86
-pkgrel=2
+pkgrel=3
 pkgdesc='Console version of the game "2048"'
 url='https://github.com/alewmoose/2048-in-terminal.git'
 arch=('i686' 'x86_64' 'armv7h')
@@ -16,7 +16,7 @@ makedepends=('git')
 source=("${_pkgname}::git+https://github.com/alewmoose/2048-in-terminal.git"
         "${_patch}")
 sha256sums=('SKIP'
-            '913a3c2a535fa514cfa764ed77e1cf52742bdf1810aa71a2fc34585640e1daa5')
+            '76a5244ecb82f4a6928a2cdbc5fae7db1e1f94fb6c270f98cd7cd1a3129b89b2')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")

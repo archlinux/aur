@@ -1,0 +1,61 @@
+From 883fafd5f6c5a702349916ad64dd927cc2e17b63 Mon Sep 17 00:00:00 2001
+From: Joe Baldino <pedanticdm@gmx.us>
+Date: Mon, 3 Apr 2023 22:12:19 -0700
+Subject: [PATCH] Makefile: tweak usage of implicit variables
+
+There are CFLAGS required for correct compilation, so append rather than
+conditionally assign. Remove optimizer and like flags from Makefile-- users can
+pass these in if they like (e.g. from their environment).
+
+Same with LDLIBS-- append instead of conditional assignment.
+
+For the NCURSES_ variables, use make's shell function instead of backticks for
+expansion.
+
+Add CPPFLAGS and LDFLAGS implicit variables to the default target, allowing
+more user flexibility.
+
+Signed-off-by: Joe Baldino <pedanticdm@gmx.us>
+---
+ Makefile | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 2f6e160d53b1..54679a0b98ab 100644
+--- a/Makefile
++++ b/Makefile
+@@ -10,11 +10,11 @@ OBJ=$(SRC:$(SRCDIR)/%.c=$(BUILDDIR)/%.o)
+ DEP=$(SRC:$(SRCDIR)/%.c=$(BUILDDIR)/%.d)
+ 
+ NCURSES_LIB?=ncurses
+-NCURSES_CFLAGS?=`pkg-config --cflags $(NCURSES_LIB)`
+-NCURSES_LDLIBS?=`pkg-config --libs $(NCURSES_LIB)`
++NCURSES_CFLAGS?=$(shell pkg-config --cflags $(NCURSES_LIB))
++NCURSES_LDLIBS?=$(shell pkg-config --libs $(NCURSES_LIB))
+ 
+-CFLAGS?=-Wall -Wextra -pedantic -std=c11 -O2 -march=native -D_GNU_SOURCE $(NCURSES_CFLAGS)
+-LDLIBS?=$(NCURSES_LDLIBS)
++CFLAGS+= -Wall -Wextra -pedantic -std=c11 -D_GNU_SOURCE $(NCURSES_CFLAGS)
++LDLIBS+= $(NCURSES_LDLIBS)
+ 
+ PREFIX?=/usr/local
+ BINDIR?=$(PREFIX)/bin
+@@ -25,13 +25,13 @@ BINDIR?=$(PREFIX)/bin
+ all: $(TARGET)
+ 
+ $(TARGET): $(OBJ)
+-	$(CC) $(CFLAGS) $^ -o $(TARGET) $(LDLIBS)
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) $^ -o $(TARGET) $(LDLIBS)
+ 
+ %.o : %.c
+ 
+ $(BUILDDIR)/%.o: $(SRCDIR)/%.c $(BUILDDIR)/%.d
+ 	$(CC) -MM $< -MQ $(BUILDDIR)/$*.o -MF $(BUILDDIR)/$*.d
+-	$(CC) -c $(CFLAGS) $< -o $@
++	$(CC) -c $(CPPFLAGS) $(CFLAGS) $< -o $@
+ 
+ %.d: ;
+ 
+-- 
+2.40.0
+
