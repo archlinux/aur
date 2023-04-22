@@ -7,13 +7,14 @@
 pkgname=python-tinycss
 _pyname=${pkgname#python-}
 pkgver=0.4
-pkgrel=8
+pkgrel=9
 pkgdesc='A complete yet simple CSS parser for Python'
 url="https://pypi.python.org/pypi/${pkgname#python-}"
 license=(BSD)
 arch=(x86_64)
 depends=(python)
 makedepends=(cython
+             python-{build,installer,wheel}
              python-setuptools)
 checkdepends=(python-pytest)
 _archive="$_pyname-$pkgver"
@@ -29,17 +30,19 @@ prepare() {
 
 build() {
 	cd "$_archive"
-	python setup.py build
+	python -m build -wn
 }
 
 check() {
 	cd "$_archive"
-	pytest build/
-	# find build/ -type f -name \*-PYTEST.pyc -delete
+	local _pyver=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
+	export PYTHONPATH="$PWD/lib.linux-$CARCH-cpython-$_pyver"
+	export TINYCSS_SKIP_SPEEDUPS_TESTS=true
+	pytest
 }
 
 package() {
 	cd "$_archive"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer -d "$pkgdir" dist/*.whl
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
