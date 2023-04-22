@@ -1,7 +1,7 @@
 # Maintainer: Erik Bročko <erik.brocko@letemsvetemapplem.eu>
 
 pkgname=mshv
-pkgver=269
+pkgver=270
 pkgrel=1
 pkgdesc="Amateur radio software by LZ2HV for digital modes MSK, JTMS, FSK, ISCAT, JT6M, FT8/4, JT65, PI4, Q65."
 arch=('any')
@@ -15,11 +15,11 @@ provides=('mshv')
 # This is suboptimal. But pkgver doesn't seem to get updated soon enough to allow sources to properly download.
 _sfrss="$(curl -s -L "https://sourceforge.net/projects/mshv/rss?path=/")"
 _latestver="$(echo "$_sfrss" | \
-	grep -Poi ' url="https://sourceforge.net/projects/mshv/files/MSHV_\K(\d+)_Full_Source_Code\.zip/download" filesize="\d+"><media:hash algo="md5">([a-fA-F\d]{32})</media:hash></media:content>'\
+	grep -Poi ' url="https://sourceforge.net/projects/mshv/files/MSHV_\K(\d+)_Full_Source_Code\.zip/download" filesize="\d+"><media:hash algo="md5">([a-fA-F0-9]{32})</media:hash></media:content>'\
 	| head -n1 \
 	| cut -d '_' -f 1)"
 _latesthash="$(echo "$_sfrss" | \
-	grep -Poi ' url="https://sourceforge.net/projects/mshv/files/MSHV_(\d+)_Full_Source_Code\.zip/download" filesize="\d+"><media:hash algo="md5">\K([a-fA-F\d]{32})</media:hash></media:content>'\
+	grep -Poi ' url="https://sourceforge.net/projects/mshv/files/MSHV_(\d+)_Full_Source_Code\.zip/download" filesize="\d+"><media:hash algo="md5">\K([a-fA-F0-9]{32})</media:hash></media:content>'\
 	| head -n1 \
 	| cut -d '<' -f 1)"
 	
