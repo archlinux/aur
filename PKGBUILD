@@ -1,7 +1,7 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=parpd
-_commit=6f26ca2ef205424252bd1313a112ca3f54a08606
-pkgver=2.0
+_commit=b0c8d28b5f2b49fce8a07c75ec031ed0f657a260
+pkgver=2.1
 pkgrel=1
 pkgdesc="Proxy-ARP daemon"
 arch=(i686 x86_64)
@@ -15,7 +15,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$pkgname"
-  git describe | sed "s/^parpd-//; s/-/.r/; s/-/./"
+  git describe | sed "s/^parpd-//; s/^v//; s/-/.r/; s/-/./"
 }
 
 build() {
