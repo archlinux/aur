@@ -9,8 +9,8 @@ pkgdesc="Downloads albums in bulk"
 arch=('any')
 url="https://github.com/ripmeapp2/ripme"
 license=('MIT')
-depends=('java-runtime')
-makedepends=('git')
+depends=('java-runtime>=11')
+makedepends=('git' 'java-environment>=11')
 provides=('ripme')
 conflicts=('ripme')
 source=("git+https://github.com/ripmeapp2/ripme.git")

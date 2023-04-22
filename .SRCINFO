@@ -6,7 +6,8 @@ pkgbase = ripme-git
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = java-runtime
+	makedepends = java-environment>=11
+	depends = java-runtime>=11
 	provides = ripme
 	conflicts = ripme
 	source = git+https://github.com/ripmeapp2/ripme.git
