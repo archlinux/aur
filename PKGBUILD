@@ -1,6 +1,6 @@
 pkgname="livebook"
-pkgver="0.7.2+alpha"
-pkgrel="1"
+pkgver="0.7.2"
+pkgrel="2"
 pkgdesc="Livebook - Automate code & data workflows with interactive Elixir notebooks"
 arch=("x86_64")
 
