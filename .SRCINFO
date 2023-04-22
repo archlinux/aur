@@ -5,14 +5,13 @@ pkgbase = eudic-appimage
 	url = https://www.eudic.net/v4/en/app/eudic
 	arch = x86_64
 	license = custom
-	depends = hicolor-icon-theme
 	depends = zlib
 	depends = glibc
 	conflicts = eudic
 	options = !strip
-	source = eudic-12.7.1.AppImage::https://static-main.frdic.com/pkg/eudic.AppImage?v=2023-03-16
+	source = eudic-12.7.1.AppImage::https://static-main.frdic.com/pkg/eudic.AppImage?v=2023-04-12
 	source = LICENSE::https://www.eudic.net/v4/home/privacy
 	sha256sums = 7fb7d6dabc1faf46d7c09cb428d7728ad88372bbb690a48b4a140884e787ba1a
-	sha256sums = 5fe3c67d822233995d9694b42fdd1b8c34507b4c70ba06931f7fbb66a2a11876
+	sha256sums = 3781d50b87b64059ea24d8e38b0a95888104eec2d1113b469d623ac87f232ffd
 
 pkgname = eudic-appimage
