@@ -16,7 +16,7 @@ conflicts=(linux${_base}-git linux${_base} ${_base})
 source=(${_base}::git+${url}.git#branch=master
   brew4archlinux.patch::${url}/pull/5926.patch)
 sha512sums=('SKIP'
-  'b104f8de0415fb20c6b6805bfc3d455acecb1935c4206bebe17fb4564cafa4c94aaaa2c103a6ae6c801237a1b1c146529b0d1102fa14293e07c6884144dba664')
+            '5500cd6b43022a2fd90ac24f2189df4b02e96acfe6383d356a0dd4d74e161b53f3b65709624b243dec00c270ab812f84c6e276e6692106d5a50c360055a03c35')
 
 pkgver() {
   if [ -d ${srcdir}/${_base} ]; then
