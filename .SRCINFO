@@ -1,20 +1,42 @@
 pkgbase = libgtkflow-git
-	pkgdesc = Flowgraphs for Gtk+3
 	pkgver = r497.c276040
 	pkgrel = 1
 	url = https://notabug.org/grindhold/libgtkflow
-	arch = i686
 	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = GPL3
 	makedepends = git
 	makedepends = meson
 	makedepends = vala
-	makedepends = valadoc
 	makedepends = gobject-introspection
-	depends = gtk3
+	makedepends = gtk3
+	makedepends = gtk4
 	optdepends = python-gobject: usage from python
 	optdepends = lua-lgi: usage from lua
 	source = git+https://notabug.org/grindhold/libgtkflow.git
 	md5sums = SKIP
 
-pkgname = libgtkflow-git
+pkgname = libgflow-git
+	depends = glib2
+	provides = libgflow
+	conflicts = libgflow
+
+pkgname = libgtkflow3-git
+	pkgdesc = Flowgraphs for GTK 3
+	depends = libgflow-git
+	depends = gtk3
+	provides = libgtkflow
+	provides = libgtkflow-git
+	provides = libgtkflow3
+	conflicts = libgtkflow
+	conflicts = libgtkflow-git
+	conflicts = libgtkflow3
+	replaces = libgtkflow-git
+
+pkgname = libgtkflow4-git
+	pkgdesc = Flowgraphs for GTK 4
+	depends = libgflow-git
+	depends = gtk4
+	provides = libgtkflow4
+	conflicts = libgtkflow4
