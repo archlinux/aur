@@ -2,7 +2,7 @@
 
 pkgname=moneymanagerex
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest tagged version."
 arch=('x86_64')
 url="http://www.moneymanagerex.org/"
@@ -34,9 +34,9 @@ build() {
   # Disable all warnings when building, then configure CMake
   export CXXFLAGS=-w
   
-  cmake -DCMAKE_BUILD_TYPE=Release -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config .
+  cmake -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX='/usr' -Wno-dev -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config .
   
-  cmake --build . --target package
+  cmake --build .
 }
 
 package() {
