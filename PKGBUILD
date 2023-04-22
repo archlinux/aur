@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=114.0a1+20230418.1+hdccf044ce33a
+pkgver=114.0a1+20230421.1+hdf954b717c6c
 pkgrel=1
 pkgdesc="Development version of the popular Firefox web browser"
 url="https://www.mozilla.org/firefox/channel/#nightly"
@@ -69,7 +69,6 @@ source=(
   $pkgname.desktop
   identity-icons-brand.svg
   firefox-install-dir.patch
-  D175709.diff
 )
 validpgpkeys=(
   '14F26682D0916CDD81E37B6D61B7B526D98F0353'  # Mozilla Software Releases <release@mozilla.com>
@@ -77,13 +76,11 @@ validpgpkeys=(
 sha256sums=('SKIP'
             '7d90a9abacb5cc9870a31323ef31e361f620538c56609001d6d9e789b99b5e97'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
-            'c80937969086550237b0e89a02330d438ce17c3764e43cc5d030cb21c2abce5f'
-            'b5e899806b36fbc9c3667d4b73680306f88d33db2c9ad88af028da182f961901')
+            'c80937969086550237b0e89a02330d438ce17c3764e43cc5d030cb21c2abce5f')
 b2sums=('SKIP'
         '3a7c8c5123349ea777ddb8f2f219f6048ce1f213b0a65edaad1fab42380be4e7b5cd27e4667f43786efeb13be827174936c3282607276f167b6eee0fd530af2a'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
-        'f76eb72c326f347991133c004b252ed2e037e72a7a436012fb1495668d2b9194d836765b58b01ba0bd9f5c4b888ee5ee715bdb458823a2a7822f1b299f4d1948'
-        'e7efe39b80383f9d3bc7e81c2bebc0b9c8d3c965465a30bf109c360f205e08a4da7b987d10764ec011d3fa3408fd0a1e0703ecf7ca33c662af29ded7a1245836')
+        'f76eb72c326f347991133c004b252ed2e037e72a7a436012fb1495668d2b9194d836765b58b01ba0bd9f5c4b888ee5ee715bdb458823a2a7822f1b299f4d1948')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -124,9 +121,6 @@ prepare() {
 
   # Change install dir from 'firefox' to 'firefox-nightly'
   patch -Np1 -i ../firefox-install-dir.patch
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1828315
-  patch -Np1 -i ../D175709.diff
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
