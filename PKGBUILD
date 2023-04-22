@@ -3,7 +3,7 @@
 pkgname=teracli-git
 _pkgname=tera-cli
 __pkgname=teracli
-pkgver=0.2.3.r11.gdf68f74
+pkgver=0.2.4.r8.gdf68f74
 pkgrel=1
 pkgdesc='A utility on top of the tera templating engine, takes json|yaml|toml|ENV as input'
 arch=(x86_64)
@@ -20,6 +20,7 @@ sha256sums=('SKIP')
 
 prepare() {
 	cd "$__pkgname"
+	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
