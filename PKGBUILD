@@ -1,31 +1,30 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-_pkgname=houdoku
-pkgname="${_pkgname}-appimage"
-pkgver=2.12.0
+pkgname="houdoku-appimage"
+pkgver=2.12.2
 pkgrel=1
 pkgdesc="Manga reader and library manager for the desktop"
 arch=('x86_64')
 url="https://houdoku.org/"
 _githuburl="https://github.com/xgi/houdoku"
 license=(MIT)
-conflicts=("${_pkgname}")
-depends=(zlib hicolor-icon-theme glibc)
+conflicts=("${pkgname%-appimage}")
+depends=('zlib' 'glibc')
 options=(!strip)
 _install_path="/opt/appimages"
-source=("${_pkgname}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Houdoku-${pkgver}.AppImage"
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Houdoku-${pkgver}.AppImage"
     "LICENSE::${_githuburl}/raw/master/LICENSE.txt")
-sha256sums=('214af183190f3a90455c728f3f034f9dafb78adb33d0d8f8d0cea60b4c7459fb'
-            'a5283630540208779679d02f72dc5351ceb60c13f35ef76a6c1065629aa1f7e5')
+sha256sums=('213521076367b8f195493b6cc966b0801129d49550bdfd927a88b77675c19f7e'
+            'aaa8944d0b38e6aed006c07f2c43e16332f5700f93dc7a00a3490a6d27450a18')
    
 prepare() {
-    chmod a+x "${_pkgname}-${pkgver}.AppImage"
-    "./${_pkgname}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's/AppRun/\/opt\/appimages\/houdoku.AppImage/g;' -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
+    "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed 's|AppRun|/opt/appimages/houdoku.AppImage|g' -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
    
 package() {
-    install -Dm755 "${srcdir}/${_pkgname}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${_pkgname}.AppImage"
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.png"
-    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-appimage}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
