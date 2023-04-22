@@ -1,6 +1,6 @@
 pkgbase = f3d-git
 	pkgdesc = A fast and minimalist 3D viewer
-	pkgver = v1.3.1.g35b7fc2
+	pkgver = nightly.r0.gf9a4778c
 	pkgrel = 1
 	url = https://github.com/f3d-app/f3d
 	arch = x86_64

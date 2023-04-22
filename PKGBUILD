@@ -4,7 +4,7 @@
 export GIT_LFS_SKIP_SMUDGE=1
 _name=f3d
 pkgname=$_name-git
-pkgver=v1.3.1.g35b7fc2
+pkgver=nightly.r0.gf9a4778c
 pkgrel=1
 pkgdesc='A fast and minimalist 3D viewer'
 arch=('x86_64')
@@ -30,10 +30,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DF3D_BINDINGS_JAVA=ON \
         -DF3D_BINDINGS_PYTHON=ON \
-        -DF3D_INSTALL_DEFAULT_CONFIGURATION_FILE=ON \
-        -DF3D_INSTALL_SDK=ON \
         -DF3D_LINUX_GENERATE_MAN=ON \
-        -DF3D_LINUX_INSTALL_THUMBNAILER_FILES=ON \
         -DF3D_MODULE_EXTERNAL_RENDERING=ON \
         -DF3D_MODULE_RAYTRACING=ON \
         -DF3D_PLUGINS_STATIC_BUILD=ON \
@@ -49,4 +46,6 @@ package() {
   cd "$srcdir/$_name/build"
   DESTDIR="$pkgdir" cmake --install .
   DESTDIR="$pkgdir" cmake --install . --component mimetypes
+  DESTDIR="$pkgdir" cmake --install . --component sdk
+  DESTDIR="$pkgdir" cmake --install . --component configuration
 }
