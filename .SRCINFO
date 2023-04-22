@@ -1,7 +1,7 @@
 pkgbase = weektodo-appimage
 	pkgdesc = WeekToDo is a Free and Open Source Weekly Planner. Stop prioritizing what's on your schedule and start scheduling your priorities.
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://weektodo.me/
 	arch = x86_64
 	license = GPL3
