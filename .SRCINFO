@@ -1,0 +1,24 @@
+pkgbase = microdnf
+	pkgdesc = Lightweight implementation of dnf in C
+	pkgver = 3.9.1
+	pkgrel = 1
+	url = https://github.com/rpm-software-management/microdnf
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = meson
+	makedepends = help2man
+	depends = glibc
+	depends = glib2
+	depends = libdnf
+	depends = util-linux-libs
+	depends = libpeas
+	depends = rpm-tools
+	provides = microdnf
+	conflicts = microdnf
+	options = !emptydirs
+	source = microdnf-3.9.1.tar.gz::https://github.com/rpm-software-management/microdnf/archive/refs/tags/3.9.1.tar.gz
+	sha256sums = 912a17f741fc7d1a0f8ffa46bec744dedec46d801d965270b1f77c56eb03c672
+
+pkgname = microdnf
