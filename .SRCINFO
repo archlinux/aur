@@ -1,6 +1,6 @@
 pkgbase = deltachat-desktop-appimage
 	pkgdesc = Email-based instant messaging for Desktop.
-	pkgver = 1.36.2
+	pkgver = 1.36.4
 	pkgrel = 1
 	url = https://github.com/deltachat/deltachat-desktop
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = deltachat-desktop-appimage
 	depends = zlib
 	depends = glibc
 	provides = deltachat
-	source = deltachat-desktop-1.36.2.AppImage::https://github.com/deltachat/deltachat-desktop/releases/download/v1.36.2/DeltaChat-1.36.2.AppImage
-	sha256sums = d2051db5d4bf91f3765e3274dfdca64bd22a59a11e19a2d03553a210fb7a43f6
+	source = deltachat-desktop-1.36.4.AppImage::https://github.com/deltachat/deltachat-desktop/releases/download/v1.36.4/DeltaChat-1.36.4.AppImage
+	sha256sums = 59ad81cb082d868fa9ea00355ada2168f3122dbe3954a3833b24b560a902134e
 
 pkgname = deltachat-desktop-appimage
