@@ -10,7 +10,6 @@ url="https://cemu.info"
 license=('MPL2')
 depends=('at-spi2-core' 'cairo' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'glu' 'gtk3' 'harfbuzz' 'hicolor-icon-theme'
          'libglvnd' 'libice' 'libpng' 'libsm' 'libx11' 'libxext' 'libxrender' 'pango' 'wayland')
-makedepends=('patchelf')
 provides=('cemu')
 conflicts=('cemu' 'cemu-git')
 options=(!strip !docs libtool emptydirs)
@@ -24,19 +23,6 @@ sha256sums=('2f06d12635ef13012523a515e7669e38e53c8f4c11133286bb2e5779fb057b8e'
             '6458a99b8bd54e44857efa0f82bfd6035e7e072e7e080e3330e4e2cfe89cbd33'
             '9a281a8c5b9d0dbe826c5ea0d942f5d2c307d6d9e60729352240e82ee24c5bfe')
             
-prepare() {
-  cd $srcdir/Cemu_$_srcver
-
-  _libs=('libffi.so.7' 'libicuuc.so.71' 'libicui18n.so.71' 'libicudata.so.71')
-  for lib in ${_libs[@]} 
-  do
-    patchelf --replace-needed $lib ${lib%.*} ./Cemu
-  done
-
-  patchelf --remove-needed libsepol.so.1 ./Cemu
-  patchelf --remove-needed libselinux.so.1 ./Cemu
-}
-
 package() {
   cd $srcdir/Cemu_$_srcver
   
