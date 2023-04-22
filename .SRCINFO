@@ -1,0 +1,15 @@
+pkgbase = not-forking
+	pkgdesc = The Not-forking Software Reproducibility Tool
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://lumosql.org/src/not-forking
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = not-forking-1.0::fossil+https://lumosql.org/src/not-forking#branch=trunk
+	sha256sums = SKIP
+
+pkgname = not-forking
