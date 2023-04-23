@@ -1,6 +1,5 @@
 # Maintainer: Score_Under <seejay 11@gmail com>
 options=(!strip)  # Don't strip libs because there aren't any
-DOC_DIRS=(opt/hydrus/help)
 
 pkgname=hydrus
 _pkgname=hydrus
@@ -9,7 +8,6 @@ pkgrel=2
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
 license=(custom)
-conflicts=(hydrus-docs hydrus-sources)
 url=http://hydrusnetwork.github.io/hydrus/
 depends=(python python-opencv python-beautifulsoup4 python-yaml
          'python-lz4>=0.10.1' python-numpy python-twisted python-pillow
@@ -17,7 +15,7 @@ depends=(python python-opencv python-beautifulsoup4 python-yaml
          python-requests python-qtpy emoji-font python-mpv
          python-lxml python-urllib3 python-typing_extensions
          python-service-identity  # required by twisted for https hostname verification
-         pyside6)
+         pyside6 "hydrus-docs>=$pkgver")
 makedepends=(git)
 optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'miniupnpc: automatic port forwarding'
@@ -44,18 +42,6 @@ sha256sums=('SKIP'
             '463841cc16059b516cc327cfbc30d3383e2236b085ba2d503e82f5be39444806'
             '9b8c2603a8040ae80152ff9a718ad3e8803fdc3029a939e3c0e932ea35ded923')
 
-_tweak_package_add_docs() {
-    # Check if the user has skipped doc builds. Added by popular request.
-    # Note: this is called at the end of the PKGBUILD before any other
-    # functions are executed.
-    if check_option docs n; then
-        warning "Skipping $pkgname documentation build; this will break the help menu and report inaccurate --printsrcinfo."
-        return
-    fi
-
-    makedepends+=('mkdocs>=1.3.0' mkdocs-material 'pymdown-extensions>=9.4')
-}
-
 prepare() {
   cd "${srcdir}/${_pkgname}"
   patch -Np1 < ../paths-in-opt.patch
@@ -66,11 +52,6 @@ build() {
 
   msg 'Compiling .py files...'
   python -OO -m compileall -fq .
-
-  if check_option docs y; then
-    msg 'Building documentation...'
-    mkdocs build -d help
-  fi
 }
 
 package() {
@@ -79,9 +60,6 @@ package() {
   # Create /opt/hydrus and copy hydrus files to there
   install -m755 -d "${pkgdir}/opt/hydrus"
   cp -r hydrus static client.pyw server.py "${pkgdir}/opt/hydrus/"
-  if check_option docs y; then
-     cp -r help "${pkgdir}/opt/hydrus/"
-  fi
 
   # Remove unit tests
   rm -rf "${pkgdir}/opt/hydrus/hydrus/test" "${pkgdir}/opt/hydrus/static/testing"
@@ -112,5 +90,3 @@ package() {
 #   cd "${srcdir}/${_pkgname}"
 #   python -m unittest discover -s hydrus/test -p 'Test*.py'
 # }
-
-_tweak_package_add_docs
