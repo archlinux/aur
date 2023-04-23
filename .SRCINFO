@@ -1,7 +1,7 @@
 pkgbase = fcitx5-cn-meta
 	pkgdesc = Meta package to install fcitx5 and Chinese addons
 	pkgver = 5.0.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fcitx/fcitx5
 	arch = x86_64
 	license = GPL
@@ -15,5 +15,6 @@ pkgbase = fcitx5-cn-meta
 	optdepends = fcitx5-material-color
 	optdepends = fcitx5-nord
 	optdepends = fcitx5-pinyin-moegirl
+	optdepends = fcitx5-pinyin-custom-pinyin-dictionary
 
 pkgname = fcitx5-cn-meta
