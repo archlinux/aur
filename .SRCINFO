@@ -1,0 +1,13 @@
+pkgbase = hydrus-docs-dummy
+	pkgdesc = Dummy documentation for hydrus (redirects to online docs)
+	pkgver = 1
+	pkgrel = 1
+	url = https://hydrusnetwork.github.io/hydrus/
+	arch = any
+	license = Unlicense
+	provides = hydrus-docs=1:0
+	conflicts = hydrus-docs
+	source = no_docs.html
+	sha256sums = ad5ae39dccc4a5683217c83e3ef129821f44c5389f51fe88a9f70f2e2b3bfd01
+
+pkgname = hydrus-docs-dummy
