@@ -1,0 +1,18 @@
+pkgbase = bunnymodxt-launcher
+	pkgdesc = GUI launcher for Bunnymod XT
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/YaLTeR/bxt-launcher
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = vala
+	depends = bunnymodxt
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libgtop
+	source = bunnymodxt-launcher-0.2.tar.gz::https://github.com/YaLTeR/bxt-launcher/archive/refs/tags/v0.2.tar.gz
+	b2sums = 0b0ef2f84b2d7bf6dd242fb74dbd377f2c6dfd5bdbde49f00122fb4093fde1fc5a275277e739c0cd7b8975a2111e6c591117209fd71ec5b3b53794559b6f576b
+
+pkgname = bunnymodxt-launcher
