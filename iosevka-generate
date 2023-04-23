@@ -55,14 +55,28 @@ def generate_font_plan(
     print(f"Building font with family name: {family_name}")
 
     with open(iosevka_dir / "private-build-plans.toml", "w") as fp:
-        conf = f"""\
-            [buildPlans.{font_name}]
-            family = "{family_name}"
-            design = [{', '.join(map(lambda style: f'"{style}"', font_styles['common']))}]
-            upright = [{', '.join(map(lambda style: f'"{style}"', font_styles['upright']))}]
-            italic = [{', '.join(map(lambda style: f'"{style}"', font_styles['italic']))}]
-            oblique = [{', '.join(map(lambda style: f'"{style}"', font_styles['oblique']))}]
-        """
+        conf = "\n".join(
+            [
+                f"[buildPlans.{font_name}]",
+                f'serifs = "{" ".join(font_styles["serifs"])}"',
+                f'family = "{font_name}"',
+                "",
+                f"[buildPlans.{font_name}.variants.design]",
+                *font_styles["common"],
+                "",
+                f"[buildPlans.{font_name}.variants.upright]",
+                *font_styles["upright"],
+                "",
+                f"[buildPlans.{font_name}.variants.italic]",
+                *font_styles["italic"],
+                "",
+                f"[buildPlans.{font_name}.variants.oblique]",
+                *font_styles["oblique"],
+                "",
+                f"[buildPlans.{font_name}.ligations]",
+                f'inherits = "{" ".join(font_styles["ligations"])}"',
+            ]
+        )
 
         print(f"Building iosevka conf:\n{conf}", file=sys.stderr)
         fp.write(dedent(conf))
@@ -106,12 +120,12 @@ def parse_config(config_file: Path) -> Tuple[str, Dict[str, Set[str]], Optional[
     )
     config.read_dict({"options": {"name": "myosevka"}})
 
-    sections = {"common", "upright", "italic", "oblique"}
+    sections = {"common", "upright", "italic", "oblique", "ligations", "serifs"}
     config.read_dict({s: {} for s in sections})
     config.read(config_file)
 
     font_styles = {
-        section: {f"v-{char}-{style}" for char, style in config[section].items()}
+        section: {f'{char} = "{style}"' for char, style in config[section].items()}
         for section in sections
     }
 
@@ -121,10 +135,10 @@ def parse_config(config_file: Path) -> Tuple[str, Dict[str, Set[str]], Optional[
             font_name = value
         elif option == "nerdfont":
             nerdfont = value.split(" ")
-        elif not value:
-            font_styles["common"].add(option)
-        else:
-            font_styles["common"].add(f"{option}-{value}")
+        elif option == "ligset":
+            font_styles["ligations"].add(option)
+        elif option == "serifs":
+            font_styles["serifs"].add(option)
 
     return (font_name, font_styles, nerdfont)
 
