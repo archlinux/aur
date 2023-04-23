@@ -1,17 +1,24 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=wcd
-pkgver=6.0.4
+pkgver=6.0.5
 pkgrel=1
 pkgdesc='A command-line program to change directory fast'
 url='https://waterlan.home.xs4all.nl/wcd.html'
 arch=(x86_64 aarch64 armv7h)
 license=(GPL2)
-depends=(ncurses libunistring)
+depends=(glibc ncurses)
 
-source=(https://waterlan.home.xs4all.nl/wcd/wcd-$pkgver.tar.gz wcd.sh)
-sha256sums=('5673645f77505c8d03ca75ffcb32f6a2a86fa1b1e9a8dd9d0a5bd10a202eabf2'
-            '59b19ccded26d9ba356b5e8c435faa6f300d9f36aef1436bb25e2311195aeeed')
+source=(
+  https://waterlan.home.xs4all.nl/wcd/wcd-$pkgver.tar.gz{,.asc}
+  wcd.sh
+)
+validpgpkeys=(
+  'F8F1BEA490496A09CCA328CC38C1F572B12725BE' # Erwin Waterlander (Foute boel) <waterlan@xs4all.nl>
+)
+sha256sums=('f2970e01a52886d330604490fdbedd7373faff0910ff2e14889435677f563763'
+  'SKIP'
+  '59b19ccded26d9ba356b5e8c435faa6f300d9f36aef1436bb25e2311195aeeed')
 
 build() {
   cd wcd-$pkgver/src
