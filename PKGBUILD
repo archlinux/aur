@@ -4,15 +4,15 @@
 # Contributor : mickael9 <mickael9 at gmail dot com>
 pkgname=wapiti
 pkgver=3.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Comprehensive web app vulnerability scanner written in Python'
 arch=('any')
-url="https://${pkgname}-scanner.github.io"
+url="https://wapiti-scanner.github.io"
 _githuburl="https://github.com/wapiti-scanner/wapiti"
 license=('GPL2')
 makedepends=('python-setuptools')
-depends=('python>=3.9' python-cryptography python-soupsieve python-mako python-setuptools python-beautifulsoup4 \
-  python-importlib-metadata python-httpx)
+depends=('python>=3.9' 'python-cryptography' 'python-soupsieve' 'python-mako' 'python-setuptools' \
+  'python-beautifulsoup4' 'python-importlib-metadata' 'python-httpx')
 optdepends=('python-requests-kerberos: Kerberos authentication'
             'python-requests-ntlm: NTLM authentication')
 options=('zipman')

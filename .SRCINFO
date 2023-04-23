@@ -1,7 +1,7 @@
 pkgbase = wapiti
 	pkgdesc = Comprehensive web app vulnerability scanner written in Python
 	pkgver = 3.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wapiti-scanner.github.io
 	arch = any
 	license = GPL2
