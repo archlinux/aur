@@ -1,5 +1,5 @@
 pkgbase = stardict-slovnyk-en-uk-en
-	pkgdesc = Large ukainian-english-ukainian dictionary for Stardict
+	pkgdesc = ukrainian-english-ukrainian dictionary for Stardict
 	pkgver = 2.4.2
 	pkgrel = 3
 	url = http://download.huzheng.org/mova.org/
