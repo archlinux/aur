@@ -15,7 +15,7 @@ depends=('libappindicator-gtk3' 'webkit2gtk' 'gtk3' 'libayatana-appindicator')
 
 source=("${prjname}-${pkgver}-${arch}.deb::https://github.com/Pylogmon/pot/releases/download/${pkgver}/${prjname}_${pkgver}_amd64.deb")
 
-sha512sums=('0bcd316e7e180b5b6e3a1596e117b6d45675c6d53878c5b0cc5849a6d19d3327be2d2111eb1503f01dcd391cc4892927b7af00ac58b5e6904082b2974a2a0fba')
+sha512sums=('a9cc51c6c3f3bf0aaf5ce8408b2a74d7060024534aee47e677783f4e896fe381d878e11a502c516990c19654258bad76249ee6f4ca43b58c943ed5a973860e99')
 
 package() {
     tar xpf data.tar.gz -C ${pkgdir}
