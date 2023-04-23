@@ -1,7 +1,7 @@
 pkgbase = qradiolink-appimage
 	pkgdesc = Multimode SDR transceiver for GNU radio
 	pkgver = 0.8.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://qradiolink.org/
 	arch = x86_64
 	license = GPL3
