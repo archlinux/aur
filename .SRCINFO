@@ -1,6 +1,6 @@
 pkgbase = parallel-hashmap
 	pkgdesc = A family of header-only, very fast and memory-friendly hashmap and btree containers.
-	pkgver = 1.3.9
+	pkgver = 1.3.10
 	pkgrel = 1
 	url = https://greg7mdp.github.io/parallel-hashmap/
 	arch = any
@@ -10,11 +10,11 @@ pkgbase = parallel-hashmap
 	makedepends = git
 	makedepends = gtest
 	optdepends = python: For Conan python package manager.
-	source = parallel-hashmap-1.3.9.tar.gz::https://github.com/greg7mdp/parallel-hashmap/archive/78071573aac62e34e76fe3e1ea1c747046e0a468.tar.gz
+	source = parallel-hashmap-1.3.10.tar.gz::https://github.com/greg7mdp/parallel-hashmap/archive/e4b6668d46183a7656490d279b26145667cff3a3.tar.gz
 	source = 0001-makepkg-Use-system-gtest.patch
-	sha256sums = 86663d7fc7d037eff04c9bd645000ef3b8c33815e03d39477fbae462add6d090
+	sha256sums = a7b351617f21f64775c0077423aefb451c242456907a3f53f20fcf34e8017e02
 	sha256sums = ea86c04fcb31005826500c57672d74234792c1d1a6bbe482758597bbeffc0ceb
-	b2sums = 040980e697a4139a5cdd269afb8ff46585f924c66aed0ceafda25f146d7230a8d5d1d579db34451b453347b1e89150ef558a5053c4ca433c8e942ba767c9d76f
+	b2sums = cac874ac25abc7ebcc2b8189045bbb774cb4df81d0d0264c4b7ed4a3c903e1025dd1d4e955c504295901953856bb78bc038888f95cd5bf9799eeed81ddc8d137
 	b2sums = 29df10b97cfcc8987c4fba3eb747fc3fb8cedc742431de8e59af5ef0e543d6f00458a0f55fe37cb9199051326ce2d95a394daed31e039419b38faaee3cccfa35
 
 pkgname = parallel-hashmap
