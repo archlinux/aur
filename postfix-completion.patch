@@ -115,7 +115,7 @@ index a2d523cd3e92..c50a41a7c7ba 100644
    unsigned Priority;
  
 diff --git a/clang/lib/Sema/SemaCodeComplete.cpp b/clang/lib/Sema/SemaCodeComplete.cpp
-index 2073df030516..b4182c95ea8a 100644
+index 2073df030516..88a77f73ff12 100644
 --- a/clang/lib/Sema/SemaCodeComplete.cpp
 +++ b/clang/lib/Sema/SemaCodeComplete.cpp
 @@ -20,6 +20,7 @@
@@ -642,7 +642,7 @@ index 2073df030516..b4182c95ea8a 100644
 +            (BaseType->isPointerType() || BaseType->isFloatingType() ||
 +             BaseType->isScalarType())) {
 +          B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
-+          B.AddTextChunk("==");
++          B.AddTextChunk("!=");
 +          B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
 +          if (BaseType->isPointerType())
 +            B.AddTextChunk("nullptr");
