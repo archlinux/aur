@@ -13,5 +13,5 @@ source=("http://snarkrans.online:9093/stardict-dictd_www.mova.org_slovnyk_en-uk-
 md5sums=('e4ad45f642d521cae0ab9263bcd1e094')
 arch=(any)
 package() {
-    tar xvf *.tar.zst --directory=/home/$USER/.stardict/
+    tar xvf *.tar.zst --directory=/home/$USER/.stardict/dic
   }
