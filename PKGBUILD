@@ -1,36 +1,37 @@
-# Maintainer: Stephen Gregoratto <dev@sgregoratto.me>
+# Contributor: Stephen Gregoratto <dev@sgregoratto.me>
+
+_pkgname=sfeed
 pkgname=sfeed-git
-pkgver=0.9.16.r9.g785a50c
+pkgver=1.8.r0.gaed4714
 pkgrel=1
 pkgdesc='RSS and Atom parser'
 url='https://codemadness.org/sfeed.html'
 license=('ISC')
 provides=('sfeed')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-depends=('curl')
+conflicts=('sfeed')
+arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
+depends=('sh' 'ncurses')
+optdepends=('curl: sfeed_update script'
+    'xclip: used by sfeed_curses for yanking the URL or enclosure'
+    'xdg-utils: for xdg-open, used by sfeed_curses as a plumber by default'
+    'awk: used by the sfeed_content and sfeed_markread script'
+    'lynx: used by the sfeed_content script to convert HTML content'
+)
 makedepends=('git')
-source=("${pkgname%-git}::git+git://git.codemadness.org/sfeed"
-        "sfeed-git.patch")
-sha256sums=('SKIP'
-            '5f2e89b58dd9bb70dfe27b696e1efaab1d94af443e9119ac79158f2871387f79')
+source=("$_pkgname::git://git.codemadness.org/sfeed")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare(){
-  cd "${pkgname%-git}"
-  patch -Np1 -i "${srcdir}/sfeed-git.patch"
-}
-
 build() {
-  cd "${pkgname%-git}"
-  make
+  # To change the theme for sfeed_curses you can set SFEED_THEME. See the themes directory for the theme names.
+  make SFEED_CPPFLAGS="-D_DEFAULT_SOURCE" SFEED_THEME="mono" -C "${pkgname%-git}"
 }
 
 package() {
-  cd "${pkgname%-git}"
-  make DESTDIR="$pkgdir/" install
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENCE"
+  make DESTDIR="$pkgdir" PREFIX='/usr' MANPREFIX='/usr/share/man' -C "$_pkgname" install
+  install -Dvm644 "$_pkgname/LICENSE" -t "${pkgdir}/usr/share/licenses/$_pkgname"
 }
