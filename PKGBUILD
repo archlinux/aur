@@ -2,7 +2,7 @@
 # Contributor: Anthony Ruhier <anthony.ruhier@gmail.com>
 pkgname=headphones
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Music downloader for usenet and torrents."
 arch=('any')
 url="https://github.com/rembo10/headphones"
@@ -11,7 +11,7 @@ depends=('python>=3' 'sh' 'python-urllib3' 'python-pytz' 'python-requests-toolbe
   'python-pylast' 'python-jaraco.classes' 'python-six' 'python-musicbrainzngs' 'python-cryptography' 'python-jaraco.context' 'python-lxml' \
   'python-certifi' 'python-colorama' 'python-jaraco.text' 'python-yaml' 'python-gobject' 'python-jaraco.functools' 'python-beautifulsoup4' \
   'gobject-introspection-runtime' 'python-setuptools' 'python-pillow' 'python-mutagen' 'python-zipp' 'python-more-itertools' 'python-soupsieve' \
-  'python-chardet' 'python-pygments' 'python-idna' 'gstreamer' 'python-simplejson' 'python-requests' 'python-pyqt5-webkit')
+  'python-chardet' 'python-pygments' 'python-idna' 'gstreamer' 'python-simplejson' 'python-requests' 'python-pyqt5-webkit' 'python-pyxdg')
 optdepends=('sabnzbd: usenet downloader'
             'nzbget: usenet downloader'
             'transmission-cli: torrent downloader (CLI and daemon)'
@@ -20,7 +20,7 @@ optdepends=('sabnzbd: usenet downloader'
             'deluge: torrent downloader'
             'rtorrent: torrent downloader'
             'jackett: torrent indexer proxy')
-conflicts=("${pkgname}-git")
+conflicts=("${pkgname}" "${pkgname}-git")
 options=('!strip')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
