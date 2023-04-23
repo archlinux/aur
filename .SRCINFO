@@ -1,11 +1,10 @@
 pkgbase = usd
 	pkgdesc = 3D VFX pipeline interchange file format
 	pkgver = 23.05
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openusd.org
 	arch = x86_64
 	license = Apache
-	makedepends = boost
 	makedepends = cmake
 	makedepends = cuda
 	makedepends = doxygen
@@ -30,7 +29,9 @@ pkgbase = usd
 	options = !lto
 	source = git+https://github.com/PixarAnimationStudios/USD.git#tag=v23.05
 	source = https://github.com/oneapi-src/oneTBB/archive/refs/tags/2019_U6.tar.gz
+	source = https://boostorg.jfrog.io/artifactory/main/release/1.78.0/source/boost_1_78_0.tar.gz
 	sha512sums = SKIP
 	sha512sums = 6bcc014ec90cd62293811ac436eab03c7f7c7e3e03109efcab1c42cfed48d8bf83073d03ab381e5e63ee8c905f1792a7fdab272ec7e585df14102bad714ffc15
+	sha512sums = 6ab652c77dddc5a69cfc3f09974ba66f1413d699e49734c7ed31c629f5368230e0adaf95f599eafbf9316660d67b0b011b52ac1552d814564cbb2967bd927fdd
 
 pkgname = usd
