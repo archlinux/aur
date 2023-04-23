@@ -5,7 +5,7 @@
 
 _name=pypdf
 pkgname=python-$_name
-pkgver=3.8.0
+pkgver=3.8.1
 pkgrel=1
 pkgdesc='Python library for manipulating pages of PDF files (v3+)'
 arch=(any)
@@ -15,7 +15,7 @@ depends=(python)
 conflicts=("python-pypdf2<1:2.12.1")
 makedepends=(python-setuptools python-build python-installer python-wheel python-flit-core)
 source=($pkgname-$pkgver.tar.gz::"$url/archive/$pkgver.tar.gz")
-sha256sums=('2fb66e1cedece2cc532cf1e6832e49e92d4f76e00c2d504ed97ce611219a1f3d')
+sha256sums=('939a0a1d44779e6f32fd6266f0873ed33832a20aa873e655803e345abf9f9dfa')
 
 build() {
   cd $_name-$pkgver
