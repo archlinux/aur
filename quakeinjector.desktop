@@ -1,6 +1,6 @@
 [Desktop Entry]
 Comment=Load and play Quake maps and engines.
-Exec=java -jar /usr/share/quakeinjector/quakeinjector.jar
+Exec=quakeinjector
 GenericName=Quake Map Loader
 Icon=quakeinjector
 Name=Quake Injector
