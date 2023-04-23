@@ -3,7 +3,7 @@
 pkgname=stardict-slovnyk-en-uk-en
 pkgver=2.4.2
 pkgrel=3
-pkgdesc="Large ukainian-english-ukainian dictionary for Stardict"
+pkgdesc="ukrainian-english-ukrainian dictionary for Stardict"
 license=('GPL')
 optdepends=(
 'stardict: for viewing this dictionary'
