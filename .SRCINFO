@@ -1,6 +1,6 @@
 pkgbase = netlify-application
 	pkgdesc = Unofficial Netlify desktop application
-	pkgver = 1.0.7
+	pkgver = 1.0.8
 	pkgrel = 1
 	arch = x86_64
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = netlify-application
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/netlify-desktop/application/-/archive/1.0.7-1/application-1.0.7-1.tar.bz2
+	source = https://gitlab.com/netlify-desktop/application/-/archive/1.0.8-1/application-1.0.8-1.tar.bz2
 	sha256sums = SKIP
 
 pkgname = netlify-application
