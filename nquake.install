@@ -1,0 +1,44 @@
+post_install() {
+  echo
+  echo '!!! NOTE !!!'
+  echo 'It is *strongly* encouraged to add users to the "users" group (usermod -aG users <username>) if they will be playing ezQuake/nQuake.
+  Trust me. If you hit a bug and you are using a user not in the users group, you are testing bad and you should feel bad.'
+  echo
+  echo "nQuake has been installed. Please copy the retail pak1.pak files (as exactly that filename) to /opt/quake/id1/
+  and do (as root):  chmod 0775 /opt/quake/id1/*.pak ; chgrp users /opt/quake/id1/*.pak'
+  If you do not have the retail pak, copy /usr/share/nquake/gpl_maps.pk3 to /opt/quake/id1/
+  and do (as root): chmod 0775 /opt/quake/id1/{*.pak,*.pk3} ; chgrp users /opt/quake/id1/{*.pak,*.pk3)"
+  echo
+
+  if [ -f "/opt/quake/ezquake/pak.lst" ];
+  then
+    if ! egrep -qE '^nquake_ezquake.pk3' /opt/quake/ezquake/pak.lst;
+    then
+      sed -i.no_nquake -e '1s/^/nquake_ezquake.pk3\r\n/' /opt/quake/ezquake/pak.lst
+      cat -n /opt/quake/ezquake/pak.lst | sort -k2 -k1n  | uniq -f1 | sort -nk1,1 | cut -f2- > /tmp/ezquake.tmp
+      cat /tmp/ezquake.tmp > /opt/quake/ezquake/pak.lst
+      rm /tmp/ezquake.tmp
+    fi
+  else
+    echo "Whoops. You might be doing something naughty, as I can't inject the nquake-provided ezquake.pk3 into the proper pak.lst."
+    echo "Things *might* or *might not* work quite as expected."
+  fi
+}
+
+post_upgrade() {
+
+  # fix group ownerships...
+  find /opt/quake -group games -exec chgrp users '{}' \;
+
+}
+
+post_remove() {
+  # Undo our stupid clever little hack.
+  if [ -f "/opt/quake/ezquake/pak.lst.no_nquake" ];
+  then
+    mv /opt/quake/ezquake/pak.lst.no_nquake /opt/quake/ezquake/pak.lst
+  else
+    echo "Weird; I can't seem to remove our injected entry from the proper pak.lst."
+    echo "You weren't doing something naughty like arbitrarily deleting files from your filesystem, were you?"
+  fi
+}
