@@ -23,7 +23,8 @@ optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'desktop-file-utils: to add Hydrus to your desktop environment menus'
             'python-cloudscraper: bypass cloudflare "checking your browser" challenges'
             'python-pyqt6-charts: display bandwidth usage charts'
-            'python-pyopenssl: to generate certificates for accessing client API and server via HTTPS')
+            'python-pyopenssl: to generate certificates for accessing client API and server via HTTPS'
+            'swftools: to display SWF thumbnails')
 source=("${_pkgname}::git+https://github.com/hydrusnetwork/${_pkgname}.git#commit=43ae2c2593c8e900b40460191b8379229578f52c"
         paths-in-opt.patch
         hydrus-client
@@ -81,6 +82,7 @@ package() {
   install -d -m755 "${pkgdir}/opt/hydrus/bin"
   ln -s /usr/bin/upnpc "${pkgdir}/opt/hydrus/bin/upnpc_linux"
   ln -s /usr/bin/ffmpeg "${pkgdir}/opt/hydrus/bin/ffmpeg"
+  ln -s /usr/bin/swfrender "${pkgdir}/opt/hydrus/bin/swfrender_linux"
 
   # Install hydrus-client and hydrus-server executables
   install -d -m755 "${pkgdir}/usr/bin"
