@@ -1,7 +1,7 @@
 pkgbase = libproidplus-gui
 	pkgdesc = Library for ProID+ SmartCards
 	pkgver = 2.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://proid.cz/
 	arch = x86_64
 	license = custom:EULA

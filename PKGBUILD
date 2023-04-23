@@ -1,7 +1,7 @@
 # Maintainer: a13xie <rostik.medved@gmail.com>
 pkgname=('libproidplus-gui')
 pkgver=2.4.2
-pkgrel=1
+pkgrel=2
 _filename="libproidplus-gui_${pkgver}-0_amd64"
 pkgdesc="Library for ProID+ SmartCards"
 arch=('x86_64')
@@ -14,7 +14,5 @@ package () {
 	mkdir "$srcdir/$pkgname"
 	bsdtar -C "$srcdir/$pkgname" -xf "$srcdir/${_filename}.deb"
 	bsdtar -C "$pkgdir" -xf "$srcdir/$pkgname/data.tar.xz"
-	mv "$pkgdir/usr/lib/x86_64-linux-gnu" "$pkgdir/usr"
-	rmdir "$pkgdir/usr/lib"
-	mv "$pkgdir/usr/x86_64-linux-gnu" "$pkgdir/usr/lib"
+	mv "$pkgdir/usr/lib/x86_64-linux-gnu/pkcs11" "$pkgdir/usr/lib/pkcs11"
 }
