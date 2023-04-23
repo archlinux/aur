@@ -2,7 +2,7 @@
 
 _pkgname=xorgxrdp
 pkgname=xorgxrdp-glamor
-pkgver=0.2.18
+pkgver=0.9.19
 pkgrel=1
 pkgdesc="Xorg drivers for xrdp, with glamor enabled. Only works on Intel and AMD GPUs."
 arch=('i686' 'x86_64')
@@ -13,9 +13,9 @@ conflicts=('xorgxrdp')
 depends=('xorg-server')
 makedepends=('nasm' 'xorg-server-devel' 'xrdp')
 options=('staticlibs')
-source=("https://github.com/neutrinolabs/xorgxrdp/releases/download/v$pkgver/xorgxrdp-$pkgver.tar.gz"{,.asc}
+source=("$url/releases/download/v$pkgver/xorgxrdp-$pkgver.tar.gz"{,.asc}
         'glamor.patch')
-sha256sums=('45df8934dfc39e97a5d8722859b82186d2dfd0a4f80c92a6f7771bd85baed93c'
+sha256sums=('c1cf4c583c28a24ce814c147d387b8f4d255877f2e365372c69c6f076ddb1455'
             'SKIP'
             '10d289d1a11c9a5a8b4c6af534c2f9e7900ae2b4351860a063ba572010d95912')
 validpgpkeys=('61ECEABBF2BB40E3A35DF30A9F72CDBC01BF10EB')  # Koichiro IWAO <meta@vmeta.jp>
@@ -24,7 +24,7 @@ prepare () {
   cd "$_pkgname-$pkgver"
 
   # https://github.com/neutrinolabs/xrdp/issues/1029#issuecomment-724105386
-  patch -p1 -i"${srcdir}/glamor.patch"
+  patch -p1 -i"$srcdir/glamor.patch"
 }
 
 build () {
