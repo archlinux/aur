@@ -1,0 +1,18 @@
+pkgbase = xmachoviewer-bin
+	pkgdesc = Mach-O viewer for Windows, Linux and MacOS
+	pkgver = 0.04
+	pkgrel = 1
+	url = https://horsicq.github.io/#xmachoviewer
+	arch = x86_64
+	license = MIT
+	depends = hicolor-icon-theme
+	depends = glibc
+	depends = gcc-libs
+	depends = qt5-base
+	provides = xmachoviewer
+	source = https://raw.githubusercontent.com/horsicq/XMachOViewer/90b60a259c5cf3ad38d402be2d124947eb92e77b/LICENSE
+	source = https://github.com/horsicq/XMachOViewer/releases/download/0.04/xmachoviewer_0.04_Ubuntu_22.04_amd64.deb
+	sha256sums = 7fe712494db68b85f8288ef86d3faa21ef2fdacaef0f50170d92c014baa9eb79
+	sha256sums = b39f9470d3b85e84b5123349a25e35ad414371c96d2980ac035780b6f69d2a8b
+
+pkgname = xmachoviewer-bin

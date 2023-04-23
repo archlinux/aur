@@ -1,0 +1,6 @@
+pkg
+src
+LIC*
+*.zst
+*.deb
+
