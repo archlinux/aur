@@ -2,13 +2,14 @@
 
 pkgname=not-forking
 pkgver=r114.dc62bca
-pkgrel=1
-pkgdesc='The Not-forking Software Reproducibility Tool'
+pkgrel=2
+pkgdesc='Integrate non-diffable codebases, like patch/sed/diff/cp/mv rolled into one.'
 arch=('any')
 url="https://lumosql.org/src/not-forking"
 license=('MIT' 'custom: cc-by-sa-4.0')
 depends=('perl')
 makedepends=('fossil')
+checkdepends=('perl-text-glob')
 options=('!emptydirs' 'purge')
 source=("${pkgname}::fossil+${url}#commit=dc62bca18c84ddf8")
 sha256sums=(SKIP)
