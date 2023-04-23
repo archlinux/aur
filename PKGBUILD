@@ -2,15 +2,15 @@
 
 pkgname=darkcold
 pkgver=5.0
-pkgrel=0
+pkgrel=1
 pkgdesc="GTK+ dark theme"
 arch=('any')
 url="https://github.com/originalseed/darkcold"
 license=('GPL')
 depends=('gtk2' 'gtk3')
 
-source=("https://github.com/robson-66/DarkCold/archive/refs/tags/v5.0.tar.gz")
-sha256sums=('c24f3e6e4c450d5692fb46529278360650ceb70231c74ed876c2cbff39470a67')
+source=("https://github.com/robson-66/DarkCold/archive/refs/heads/master.zip")
+sha256sums=('SKIP')
 
 package() {
  mkdir -p "$pkgdir"/usr/share/themes/
