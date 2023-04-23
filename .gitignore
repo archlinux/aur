@@ -2,3 +2,5 @@ src/
 pkg/
 Ryujinx/
 *.tar.zst
+*.tar.gz
+*.log
