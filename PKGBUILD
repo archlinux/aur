@@ -1,13 +1,13 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=qdigidoc4
-pkgver=4.2.14.4431
-_rls_tag=v4.2.14
-pkgrel=2
+pkgver=4.3.0.4439
+_rls_tag=v4.3.0
+pkgrel=1
 pkgdesc="DigiDoc4 Client is an application for digitally signing and encrypting documents; the software includes functionality to manage Estonian ID-card - change pin codes, update certificates etc."
 arch=('x86_64' 'i686')
 url="http://www.id.ee/"
 license=('LGPL2.1')
-depends=('qt6-base' 'qt6-svg' 'qt6-5compat' 'libdigidocpp>=3.14.11' 'libldap' 'pcsclite' 'hicolor-icon-theme')
+depends=('qt6-base' 'qt6-svg' 'qt6-5compat' 'libdigidocpp>=3.15.0' 'libldap' 'pcsclite' 'hicolor-icon-theme')
 makedepends=('cmake' 'qt6-tools' 'qt6-translations' 'git')
 optdepends=('opensc: smart card support'
             'ccid: smart card support')
@@ -36,7 +36,6 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname-$pkgver/$pkgname-build"
   export BUILD_NUMBER=${pkgver##*.}
-  export CXXFLAGS=${CXXFLAGS//-Wp,-D_GLIBCXX_ASSERTIONS}
   cmake .. -DCMAKE_C_FLAGS:STRING="${CFLAGS} -ffile-prefix-map=$srcdir=." \
            -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS} -ffile-prefix-map=$srcdir=." \
            -DCMAKE_EXE_LINKER_FLAGS:STRING="${LDFLAGS}" \
