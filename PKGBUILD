@@ -1,6 +1,6 @@
 # Maintainer: Mohammadreza Abdollahzadeh < morealaz at gmail dot com >
 pkgname=firefox-extension-dont-track-me-google
-pkgver=4.26
+pkgver=4.27
 pkgrel=1
 pkgdesc='Firefox extensions to prevent Google from making links ugly.'
 arch=('any')
