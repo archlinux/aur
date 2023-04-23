@@ -9,7 +9,7 @@ pkgdesc="An anti-bikeshedding Kotlin linter with built-in formatter"
 arch=('any')
 url="https://ktlint.github.io/"
 license=('MIT')
-depends=('java-runtime>=1.8')
+depends=('java-runtime>=8')
 # See: https://github.com/pinterest/ktlint#installation
 source=(ktlint-${pkgver}::"git+https://github.com/pinterest/ktlint.git#tag=${pkgver}")
 sha256sums=('SKIP')
