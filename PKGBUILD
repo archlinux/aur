@@ -2,7 +2,7 @@
 
 pkgname=not-forking
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Integrate non-diffable codebases, like patch/sed/diff/cp/mv rolled into one.'
 arch=('any')
 url="https://lumosql.org/src/not-forking"
@@ -11,7 +11,7 @@ depends=('perl')
 makedepends=('fossil')
 checkdepends=('perl-text-glob')
 options=('!emptydirs' 'purge')
-source=("${pkgname}::fossil+${url}#tag=version-0.5")
+source=("${pkgname}::fossil+${url}#tag=version-${pkgver}")
 sha256sums=(SKIP)
 
 build() {
