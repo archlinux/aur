@@ -8,6 +8,8 @@ arch=('x86_64')
 license=('PROPRIETARY')
 groups=('ultraleap-hand-tracking')
 depends=('openxr-layer-ultraleap' 'ultraleap-hand-tracking-service' 'ultraleap-hand-tracking-control-panel')
+install='ultraleap-hand-tracking.install'
+
 
 package() {
   :

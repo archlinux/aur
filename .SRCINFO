@@ -2,6 +2,7 @@ pkgbase = ultraleap-hand-tracking
 	pkgdesc = Combined packages for Ultraleap hand tracking.
 	pkgver = 2022.09.09
 	pkgrel = 1
+	install = ultraleap-hand-tracking.install
 	arch = x86_64
 	groups = ultraleap-hand-tracking
 	license = PROPRIETARY
