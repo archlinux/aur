@@ -2,8 +2,8 @@
 # Maintainer: sukanka <su975853527[AT]gmail.com>
 
 pkgname=matlab-meta
-pkgver=9.13.0.2049777
-pkgrel=2
+pkgver=9.14.0.2239454
+pkgrel=1
 pkgdesc='Meta package for MATLAB dependecies'
 arch=(x86_64)
 license=(None)
@@ -43,6 +43,7 @@ optdepends=(
   'zsh'
   'openal: for Orbisnap'
   'openssl-1.0: needed by MATLAB Client for MATLAB Production Server'
+  'python: needed by MATLAB Client for MATLAB Production Server'
   'python2: needed by MATLAB Client for MATLAB Production Server'
 )
 depends+=(
