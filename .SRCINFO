@@ -1,11 +1,11 @@
 pkgbase = libproidplus-gui
 	pkgdesc = Library for ProID+ SmartCards
-	pkgver = 2.3.3
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://proid.cz/
 	arch = x86_64
 	license = custom:EULA
-	source = local://libproidplus-gui-2.3.3-0.x86_64.rpm.zip
-	sha256sums = df5ba87e1c96be56c25f29351e1de61ea63fe4cf06f53caf32673f5d0dd3a3fe
+	source = local://libproidplus-gui_2.4.2-0_amd64.deb.zip
+	sha256sums = 68b7bb2ad4e28e770e6795a2e4e8a2f47fc4463f619d356cb6018a97ff7f3aad
 
 pkgname = libproidplus-gui

@@ -1,16 +1,20 @@
 # Maintainer: a13xie <rostik.medved@gmail.com>
 pkgname=('libproidplus-gui')
-pkgver=2.3.3
+pkgver=2.4.2
 pkgrel=1
-_filename="libproidplus-gui-${pkgver}-0.x86_64"
+_filename="libproidplus-gui_${pkgver}-0_amd64"
 pkgdesc="Library for ProID+ SmartCards"
 arch=('x86_64')
 url="https://proid.cz/"
 license=('custom:EULA')
-source=("local://${_filename}.rpm.zip")
-sha256sums=('df5ba87e1c96be56c25f29351e1de61ea63fe4cf06f53caf32673f5d0dd3a3fe')
+source=("local://${_filename}.deb.zip")
+sha256sums=('68b7bb2ad4e28e770e6795a2e4e8a2f47fc4463f619d356cb6018a97ff7f3aad')
 
 package () {
-	bsdtar -C "$pkgdir" -xf "$srcdir/${_filename}.rpm"
-	mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib"
+	mkdir "$srcdir/$pkgname"
+	bsdtar -C "$srcdir/$pkgname" -xf "$srcdir/${_filename}.deb"
+	bsdtar -C "$pkgdir" -xf "$srcdir/$pkgname/data.tar.xz"
+	mv "$pkgdir/usr/lib/x86_64-linux-gnu" "$pkgdir/usr"
+	rmdir "$pkgdir/usr/lib"
+	mv "$pkgdir/usr/x86_64-linux-gnu" "$pkgdir/usr/lib"
 }
