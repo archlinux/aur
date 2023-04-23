@@ -3,8 +3,8 @@
 pkgname=mattermost-desktop-git
 _pkgname=mattermost-desktop
 pkgver=5.3.1.r0.g2c3d80f7
-pkgrel=1
-pkgdesc="Mattermost Desktop for Linux (binary)"
+pkgrel=2
+pkgdesc="Mattermost Desktop for Linux (git)"
 arch=('x86_64')
 
 url="https://github.com/mattermost/desktop"
