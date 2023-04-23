@@ -131,6 +131,7 @@ pkgbase = ffmpeg-nonvidia
 	depends = xavs
 	depends = xavs2
 	depends = decklink-sdk
+	depends = librabbitmq-c
 	optdepends = intel-media-sdk: Intel QuickSync support
 	provides = libavcodec.so
 	provides = libavdevice.so

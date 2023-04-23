@@ -131,6 +131,7 @@ depends=(
   xavs
   xavs2
   decklink-sdk
+  librabbitmq-c
 )
 makedepends=(
   amf-headers
