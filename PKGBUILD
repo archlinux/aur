@@ -26,7 +26,7 @@ makedepends=('mercurial' 'avahi' 'tk' "gobject-introspection" 'ca-certificates' 
              'tk' 'ca-certificates' 'intltool' 'networkmanager'
              'startup-notification' 'gtkspell' 'libxss' 'libsm'
              'hicolor-icon-theme' 'dbus-glib' 'json-glib' 'vala'
-             'farstream' 'libsasl' 'gtk-doc''nss' 'cmake'
+             'farstream' 'libsasl' 'gtk-doc' 'nss' 'cmake'
              'libgnome-keyring' 'gi-docgen')
 makedepends+=('libx11' 'meson')
 options=('!libtool')
