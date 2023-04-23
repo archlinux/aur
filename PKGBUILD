@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pwrEWAS
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
-pkgrel=1
+pkgver=1.12.0
+pkgrel=2
 pkgdesc='A user-friendly tool for comprehensive power estimation for epigenome wide association studies (EWAS)'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -33,7 +33,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ceceb9b05d6b8c27e0569bec8b59fbbe263f1ffd526887dbc34164f3b14ecbf5')
+sha256sums=('f392582708f753f8c50bd5b4937b4c6735c86a0b36fdf0668bcb7605a8b713f9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

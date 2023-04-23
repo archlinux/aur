@@ -1,7 +1,7 @@
 pkgbase = r-pwrewas
 	pkgdesc = A user-friendly tool for comprehensive power estimation for epigenome wide association studies (EWAS)
-	pkgver = 1.10.0
-	pkgrel = 1
+	pkgver = 1.12.0
+	pkgrel = 2
 	url = https://bioconductor.org/packages/pwrEWAS
 	arch = any
 	license = Artistic2.0
@@ -24,7 +24,7 @@ pkgbase = r-pwrewas
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/pwrEWAS_1.10.0.tar.gz
-	sha256sums = ceceb9b05d6b8c27e0569bec8b59fbbe263f1ffd526887dbc34164f3b14ecbf5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pwrEWAS_1.12.0.tar.gz
+	sha256sums = f392582708f753f8c50bd5b4937b4c6735c86a0b36fdf0668bcb7605a8b713f9
 
 pkgname = r-pwrewas
