@@ -1,15 +1,18 @@
 pkgbase = libndi-bin
 	pkgdesc = Custom build of ndi-sdk from obs-ndi
-	pkgver = 4.5.1
-	pkgrel = 6
+	pkgver = 5.5.3
+	pkgrel = 1
 	url = https://github.com/Palakis/obs-ndi
 	arch = x86_64
 	license = LGPL2.0
 	provides = libndi
 	conflicts = libndi-git
 	conflicts = ndi-sdk
-	source = https://github.com/Palakis/obs-ndi/releases/download/4.9.0/libndi4_4.5.1-1_amd64.deb
-	sha256sums = 2c65ca3e2bf7d3a03cd730cb111da4396b9512da5b9417bb01d8b6b092245573
+	noextract = a.deb
+	noextract = b.deb
+	source = a.deb::https://github.com/Palakis/obs-ndi/releases/latest/download/libndi5_5.5.3-1_amd64.deb
+	source = b.deb::https://github.com/Palakis/obs-ndi/releases/latest/download/libndi5-dev_5.5.3-1_amd64.deb
+	sha256sums = 3c47dd2386cd2a59df5f86953a7675ffe0ecf326eea784c4f17084f657a6e0ca
+	sha256sums = 9531dbacc56f89a727c4d1ae52dc9641ccd95e9067ac07e16376bf602c92c951
 
 pkgname = libndi-bin
-

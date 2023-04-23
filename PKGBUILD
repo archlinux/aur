@@ -1,26 +1,31 @@
-# Maintainer: Shayne Hartford <shayneehartford@gmail.com>
+# Maintainer: Jat <chat@jat.email>
 
 pkgname=libndi-bin
-_pkgname=obs-ndi
-pkgver=4.5.1
-_pkgver=4.9.0
-pkgrel=6
-_pkgrel=1
+pkgver=5.5.3
+pkgrel=1
 pkgdesc="Custom build of ndi-sdk from obs-ndi"
 arch=('x86_64')
 license=('LGPL2.0')
-url="https://github.com/Palakis/${_pkgname}"
+url="https://github.com/Palakis/obs-ndi"
 provides=('libndi')
 conflicts=('libndi-git' 'ndi-sdk')
-source=("${url}/releases/download/${_pkgver}/libndi4_${pkgver}-${_pkgrel}_amd64.deb")
-sha256sums=('2c65ca3e2bf7d3a03cd730cb111da4396b9512da5b9417bb01d8b6b092245573')
+source=("a.deb::${url}/releases/latest/download/libndi${pkgver%%.*}_${pkgver}-${pkgrel}_amd64.deb"
+        "b.deb::${url}/releases/latest/download/libndi${pkgver%%.*}-dev_${pkgver}-${pkgrel}_amd64.deb")
+sha256sums=('3c47dd2386cd2a59df5f86953a7675ffe0ecf326eea784c4f17084f657a6e0ca'
+            '9531dbacc56f89a727c4d1ae52dc9641ccd95e9067ac07e16376bf602c92c951')
+noextract=('a.deb' 'b.deb')
+
+prepare() {
+    cd "${srcdir}"
+    mkdir a b
+
+    bsdtar -xf a.deb -C a data.tar.zst
+    bsdtar -xf b.deb -C b data.tar.zst
+}
 
 package() {
-	cd "${srcdir}"
+    cd "${srcdir}"
 
-	tar -xJf data.tar.xz -C "${pkgdir}"
-
-	rm "${pkgdir}"/usr/lib/libndi.so.4
-	
-	chmod 755 $(find "${pkgdir}" -type d)
+    tar -xf a/data.tar.zst -C "${pkgdir}"
+    tar -xf b/data.tar.zst -C "${pkgdir}"
 }
