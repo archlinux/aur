@@ -6,15 +6,19 @@ pkgbase = flamenco
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
+	makedepends = npm
 	makedepends = go
 	makedepends = yarn
 	depends = ffmpeg
-	optdepends = blender: for rendering projects
 	options = !lto
 	source = flamenco::git+https://projects.blender.org/studio/flamenco.git#tag=v3.2
+	source = placeholder.sh
 	sha256sums = SKIP
+	sha256sums = 286ee94a44bf49b4d1787d91a0e0bd03451ec59dfbb48c28bd2a33c997a89916
 
 pkgname = flamenco-manager
+	optdepends = blender: for the initial setup
 
 pkgname = flamenco-worker
 	pkgdesc = Worker for the Flamenco render farm system
+	optdepends = blender: for rendering projects
