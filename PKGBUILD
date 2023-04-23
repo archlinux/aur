@@ -1,7 +1,7 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
-pkgver=5.1.386
-pkgrel=2
+pkgver=5.1.387
+pkgrel=1
 pkgdesc="Cellframe blockchain node with a powerful SDK"
 arch=('x86_64' 'aarch64')
 url="https://cellframe.net"
@@ -10,7 +10,7 @@ depends=(python logrotate)
 makedepends=(git cmake python)
 provides=("cellframe-node" "cellframe-node-cli" "cellframe-node-tool")
 options=(!buildflags !makeflags)
-source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=61b073a1f20a8e4991e946e84433df659e956556
+source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=e96323052ff157641f932c1c8d97d321a6eeb8ba
 		git+https://gitlab.demlabs.net/cellframe/cellframe-sdk.git#commit=2db952b9ee4ca56d31f9b68f1277fc19c22b62b6
 		git+https://gitlab.demlabs.net/cellframe/python-cellframe.git#commit=a31ba6e2bdd9163033a8031b060b4dcdf9bad413
 		cellframe-node.cfg
@@ -68,7 +68,7 @@ package() {
 	
 	install -Dm 644 "$srcdir/$pkgname.service" -t "$pkgdir/usr/lib/systemd/system" || return 1
 
-	install -Dm 644 "$srcdir/$pkgname.cfg" -t "$_prefix/etc" || return 1
+	install -Dm 666 "$srcdir/$pkgname.cfg" -t "$_prefix/etc" || return 1
 
 	mkdir -p "$pkgdir/usr/local/bin"
 
@@ -79,6 +79,6 @@ package() {
 
 	for _nets in Backbone.cfg kelvpn-minkowski.cfg mileena.cfg subzero.cfg
 	do
-		install -Dm 644 "$srcdir/$_nets" -t "$_prefix/etc/network" || return 1
+		install -Dm 666 "$srcdir/$_nets" -t "$_prefix/etc/network" || return 1
 	done
 }
