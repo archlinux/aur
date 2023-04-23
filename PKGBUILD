@@ -1,6 +1,6 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail dote com>
 pkgname=passless-boot
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Perform a one-time password-less reboot on a luks encrypted root"
 arch=('any')
@@ -10,7 +10,7 @@ depends=("cryptsetup")
 optdepends=("reboot-guard") # this is in the AUR
 
 source=("https://gitlab.com/Marcool04/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('7ad0ef5bc89cc588417ebfa795f125c3e668c6de59e2fe5989ba341988cd9b78')
+sha256sums=('96e0bb5f4bd505c6dd1e8403257e8f5623318ad1485d5797a13536ca2da811e9')
 
 
 package() {
