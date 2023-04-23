@@ -1,7 +1,7 @@
 # Maintainer: Daniel Goß <developer@flashsystems.de>
 pkgname=ukibak
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Unified Kernel Image backup utitlity"
 arch=('x86_64')
 url="https://github.com/FlashSystems/ukibak"
@@ -42,6 +42,6 @@ package() {
   cd "$pkgname-$pkgver"
 
   install -Dm0750 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
-  install -Dm0755 -t "$pkgdir/usr/lib/systemd/system/" "systemd/ukibak.service"
-  install -Dm0755 -t "$pkgdir/usr/lib/systemd/system/" "systemd/ukibak.timer"
+  install -Dm0644 -t "$pkgdir/usr/lib/systemd/system/" "systemd/ukibak.service"
+  install -Dm0644 -t "$pkgdir/usr/lib/systemd/system/" "systemd/ukibak.timer"
 }

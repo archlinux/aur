@@ -1,7 +1,7 @@
 pkgbase = ukibak
 	pkgdesc = Unified Kernel Image backup utitlity
 	pkgver = 0.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FlashSystems/ukibak
 	arch = x86_64
 	license = MIT
