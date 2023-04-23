@@ -2,7 +2,7 @@
 
 _pkgname=pulseaudio-module-xrdp
 pkgname="${_pkgname}-git"
-pkgver=0.6.r10.g308b6f2
+pkgver=0.7.r0.gf4b5d14
 pkgrel=1
 pkgdesc="PulseAudio modules for xrdp"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ _pulseaudio_ver=$(pulseaudio --version | awk '{print $NF}')
 source=("git+https://github.com/neutrinolabs/${_pkgname}.git#branch=devel"
         "https://freedesktop.org/software/pulseaudio/releases/pulseaudio-${_pulseaudio_ver}.tar.xz")
 sha256sums=('SKIP'
-            $(curl -fs "https://freedesktop.org/software/pulseaudio/releases/pulseaudio-${_pulseaudio_ver}.tar.xz.sha256sum" | awk '{print $1}'))
+            "$(curl -fs "${source[1]}.sha256sum" | awk '{print $1}')")
 
 pkgver() {
     cd "$srcdir/$_pkgname"
