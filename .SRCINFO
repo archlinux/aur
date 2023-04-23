@@ -12,13 +12,13 @@ pkgbase = moodle-dl
 	depends = python>=3.7
 	depends = python-aiodns>=3.0.0
 	depends = python-aiofiles>=22.1.0
-	depends = python-aiohttp>=3.8.4
+	depends = python-aiohttp>=3.8.3
 	depends = python-aioxmpp>=0.12.2
 	depends = python-certifi>=2020.4.5.2
 	depends = python-colorama>=0.4.6
 	depends = python-colorlog>=6.7.0
 	depends = python-html2text>=2020.1.16
-	depends = python-pytz>=2023.3
+	depends = python-pytz>=2022.7
 	depends = python-readchar>=4.0.3
 	depends = python-requests>=2.24.0
 	depends = python-sentry_sdk>=0.13.5
