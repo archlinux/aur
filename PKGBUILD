@@ -1,45 +1,81 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-myst-nb
-_pyname=${pkgbase#python-}
-pkgname=("python-${_pyname}")
-pkgver=0.17.1
+#_pyname=${pkgbase#python-}
+_pname=${pkgbase#python-}
+_pyname=MyST-NB
+pkgname=("python-${_pname}")
+pkgver=0.17.2
 pkgrel=1
 pkgdesc="Parse and execute ipynb files in Sphinx"
 arch=('any')
 url="https://myst-nb.readthedocs.io"
 license=('BSD')
-makedepends=('python-flit-core' 'python-build' 'python-installer')
-#'python-sphinx')
-checkdepends=('python-nose' 'python-myst-parser' 'python-jupyter-cache' 'ipython')
+makedepends=('python-flit-core'
+             'python-build'
+             'python-installer')
+#            'python-sphinx-copybutton'
+#            'python-sphinx_design'
+#            'python-sphinx-book-theme'
+#            'python-myst-parser<0.19'
+#            'python-jupyter-cache'
+#            'ipython'
+#            'jupyter-nbformat')    # needs coconut
+checkdepends=('python-pytest-param-files'
+              'python-pytest-regressions'
+              'python-beautifulsoup4'
+              'python-importlib-metadata'
+              'python-ipywidgets'
+              'python-jupyter-cache'
+              'python-matplotlib'
+              'python-myst-parser<0.19'
+              'python-nbdime'
+              'python-pandas'
+              'python-sphinx'
+              'python-sympy'
+              'jupyter-nbconvert'
+              'python-jupytext')
+#checkdepends=('python-nose' 'python-myst-parser' 'python-jupyter-cache' 'ipython')
 # nbformat importlib-metadata <- jupyter-cache
 #checkdepends=('python-jupyter-sphinx' 'python-jupyter-cache' 'jupyter-nbconvert' 'python-yaml' 'python-sphinx-togglebutton')
-source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('36c3b50a9c7ca03c22bcfb37d6772fbf')
+#source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+source=("https://github.com/executablebooks/MyST-NB/archive/refs/tags/v${pkgver}.tar.gz")
+#       'Makefile')
+md5sums=('eabb0ca11ec2a7e161ebb001ec88439f')
+
+#prepare() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+#    ln -s ${srcdir}/Makefile docs
+#}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
     python -m build --wheel --no-isolation
 
 #   msg "Building Docs"
-#   python setup.py build_sphinx
+#   mkdir -p dist/lib
+#   bsdtar -xpf dist/${_pname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
+#   PYTHONPATH="../dist/lib" make -C docs html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-#   pytest
     mkdir -p dist/lib
-    bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
-    PYTHONPATH="dist/lib:${PYTHONPATH}" nosetests "dist/lib" || warning "Tests failed"
+    bsdtar -xpf dist/${_pname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
+    PYTHONPATH="dist/lib:${PYTHONPATH}" pytest || warning "Tests failed" # -vv --color=yes
+#       --deselect=tests/test_execute.py::test_custom_convert_auto \
+#       --deselect=tests/test_execute.py::test_custom_convert_cache
 }
 
 package_python-myst-nb() {
     depends=('python-importlib-metadata'
              'ipython'
-             'python-jupyter-cache'
-             'python-jupyter-sphinx'
-             'python-myst-parser'
+             'python-jupyter-cache>=0.5'
+#            'python-jupyter-sphinx'
+             'python-myst-parser<0.19'
              'jupyter-nbclient'     # depends on nbformat
+             'python-sphinx'
              'python-yaml'
              'python-typing_extensions'
              'python-ipykernel')
@@ -56,6 +92,7 @@ package_python-myst-nb() {
                 'python-sphinx-book-theme: rtd'
                 'python-sphinx-copybutton: rtd'
                 'python-sphinx-panels: rtd'
+                'python-sphinx_design: rtd'
                 'python-sphinxcontrib-bibtex: rtd'
                 'python-sympy: rtd')
     cd ${srcdir}/${_pyname}-${pkgver}
