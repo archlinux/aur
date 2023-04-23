@@ -58,8 +58,8 @@ def generate_font_plan(
         conf = "\n".join(
             [
                 f"[buildPlans.{font_name}]",
-                f'serifs = "{" ".join(font_styles["serifs"])}"',
                 f'family = "{font_name}"',
+                *font_styles["options"],
                 "",
                 f"[buildPlans.{font_name}.variants.design]",
                 *font_styles["common"],
@@ -120,12 +120,14 @@ def parse_config(config_file: Path) -> Tuple[str, Dict[str, Set[str]], Optional[
     )
     config.read_dict({"options": {"name": "myosevka"}})
 
-    sections = {"common", "upright", "italic", "oblique", "ligations", "serifs"}
+    sections = {"common", "upright", "italic", "oblique", "ligations", "options"}
     config.read_dict({s: {} for s in sections})
     config.read(config_file)
 
     font_styles = {
         section: {f'{char} = "{style}"' for char, style in config[section].items()}
+        if section != "options"
+        else set()
         for section in sections
     }
 
@@ -137,8 +139,8 @@ def parse_config(config_file: Path) -> Tuple[str, Dict[str, Set[str]], Optional[
             nerdfont = value.split(" ")
         elif option == "ligset":
             font_styles["ligations"].add(option)
-        elif option == "serifs":
-            font_styles["serifs"].add(option)
+        else:
+            font_styles["options"].add(f'{option} = "{value}"')
 
     return (font_name, font_styles, nerdfont)
 
