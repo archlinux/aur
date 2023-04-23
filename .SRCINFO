@@ -1,12 +1,12 @@
 pkgbase = qcard
 	pkgdesc = Console-based quick addressbook for CardDAV
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://git.sr.ht/~psic4t/qcard
 	arch = x86_64
 	license = GPL
 	makedepends = go
-	source = qcard-0.7.0.tar.gz::https://git.sr.ht/~psic4t/qcard/archive/0.7.0.tar.gz
-	sha512sums = 083e6f61f48aa143f1f5e9321549873ddb94ffaeb68191c49bbe75da18a0439ad2d1ddf2228b834393f967577ef5b91b425285d4dbdf5cfc57e680fb434f3e60
+	source = qcard-0.7.1.tar.gz::https://git.sr.ht/~psic4t/qcard/archive/0.7.1.tar.gz
+	sha512sums = 38628532bdd8000f089cb17090bc012b4a4ba0163f642e984663b8d6eb523ed212a6f9f4776f0a6a0145395ceae0997bfcf3d0ff2d556fefa5737c285466b3a6
 
 pkgname = qcard

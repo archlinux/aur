@@ -1,7 +1,7 @@
 # Maintainer: Matthias Debus <psic4t at data dot haus>
 
 pkgname=qcard
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='Console-based quick addressbook for CardDAV'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://git.sr.ht/~psic4t/qcard'
 license=('GPL')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~psic4t/qcard/archive/${pkgver}.tar.gz")
-sha512sums=('083e6f61f48aa143f1f5e9321549873ddb94ffaeb68191c49bbe75da18a0439ad2d1ddf2228b834393f967577ef5b91b425285d4dbdf5cfc57e680fb434f3e60')
+sha512sums=('38628532bdd8000f089cb17090bc012b4a4ba0163f642e984663b8d6eb523ed212a6f9f4776f0a6a0145395ceae0997bfcf3d0ff2d556fefa5737c285466b3a6')
 
 build() {
 	cd ${pkgname}-${pkgver}
