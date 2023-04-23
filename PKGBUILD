@@ -1,7 +1,7 @@
 # Maintainer: Voxel <voxel.aur@gmail.com>
 pkgname=deepqt
 _module='DeepQt'
-pkgver='1.1.2'
+pkgver='1.1.6'
 pkgrel=1
 pkgdesc="Harness the power of the DeepL API with this friendly user interface. Translate plain text and epub files."
 url="https://github.com/VoxelCubes/DeepQt"

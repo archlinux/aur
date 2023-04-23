@@ -1,6 +1,6 @@
 pkgbase = deepqt
 	pkgdesc = Harness the power of the DeepL API with this friendly user interface. Translate plain text and epub files.
-	pkgver = 1.1.2
+	pkgver = 1.1.6
 	pkgrel = 1
 	url = https://github.com/VoxelCubes/DeepQt
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = deepqt
 	makedepends = python-pip
 	depends = python>=3.10.0
 	depends = pyside6
-	source = https://github.com/VoxelCubes/DeepQt/archive/refs/tags/v1.1.2.tar.gz
+	source = https://github.com/VoxelCubes/DeepQt/archive/refs/tags/v1.1.6.tar.gz
 	sha256sums = SKIP
 
 pkgname = deepqt
