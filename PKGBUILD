@@ -1,6 +1,6 @@
 # Maintainer: Mohammadreza Abdollahzadeh < morealaz at gmail dot com >
 pkgname=firefox-extension-user-agent-string-switcher
-pkgver=0.4.8
+pkgver=0.4.9
 pkgrel=1
 pkgdesc='Firefox User-Agent spoofer extension that is highly configurable.'
 arch=('any')
