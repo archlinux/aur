@@ -1,5 +1,5 @@
 pkgbase = linux-xanmod-bin
-	pkgdesc = The Linux kernel and modules with Xanmod patches - Prebuilt version
+	pkgdesc = The Linux kernel, modules and headers with Xanmod patches - Prebuilt version
 	pkgver = 6.2.12
 	pkgrel = 1
 	url = http://www.xanmod.org/
