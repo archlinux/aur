@@ -1,6 +1,6 @@
 _pkgname=dolphin
 pkgname="$_pkgname-tabopts"
-pkgver=22.12.3
+pkgver=23.04.0
 pkgrel=1
 pkgdesc='KDE File Manager - with tab options patch'
 arch=(i686 x86_64)
@@ -36,7 +36,7 @@ source=(
   "https://invent.kde.org/system/dolphin/-/merge_requests/269.patch"
 )
 sha256sums=(
-  '1aa7538f013d24fdf36633d413e7ac23dbdfec7a216de8d01865ce4754760b5a'
+  'cd49268a3b0309253587d424fbdffe25b26c951df7e6932a42f48cf34b006c50'
   '5fdc620d687ad0d8a6ca6f5e0457b7130b10da2a87a1e10bf1ef41295f8bf3a7'
 )
 
