@@ -1,4 +1,4 @@
-pkgbase = g
+pkgbase = g-ls
 	pkgdesc = a powerful ls in golang
 	pkgver = 0.2.1
 	pkgrel = 1
@@ -6,8 +6,8 @@ pkgbase = g
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	backup = etc/g/config.conf
-	source = g-0.2.1.tar.gz::https://github.com/Equationzhao/g/archive/refs/tags/v0.2.1.tar.gz
+	backup = etc/g-ls/config.conf
+	source = g-ls-0.2.1.tar.gz::https://github.com/Equationzhao/g/archive/refs/tags/v0.2.1.tar.gz
 	sha256sums = 4355f9dc4881d2f8e21c6385f6537b470a6cddc164ab203754752c94445eae4b
 
-pkgname = g
+pkgname = g-ls

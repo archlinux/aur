@@ -1,5 +1,5 @@
 # Maintainer: Equationzhao <equationzhao at foxmail dot com>
-pkgname='g'
+pkgname='g-ls'
 pkgver=0.2.1
 pkgrel=1
 pkgdesc='a powerful ls in golang'
