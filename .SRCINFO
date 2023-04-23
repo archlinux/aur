@@ -1,7 +1,7 @@
 pkgbase = nquake
 	pkgdesc = The easiest, quickest, and most popular QuakeWorld client.
 	pkgver = latest
-	pkgrel = 13
+	pkgrel = 14
 	url = http://nquake.com/
 	install = nquake.install
 	arch = any
@@ -19,12 +19,12 @@ pkgbase = nquake
 	source = https://github.com/nQuake/distfiles/releases/download/snapshot/addon-fortress.zip
 	source = https://github.com/nQuake/distfiles/releases/download/snapshot/qsw106.zip
 	source = CC0-1.0::https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt
-	sha512sums = 15a426cda1d4dca863f258ad4b7d8c585f82b8dd88df45f29a96416b49052b7e3d7b09f39701bb69b1e681e608237c38470373f22d992b68d44143c05d6b2728
-	sha512sums = 7008e971e609b58fa614baddfc870aa00c7f4c6751b2463c5e86be71ba90ac37f80777afd3355034ae83ee316336db84cfe2b0ab4f23f234ed595263b2c15ef8
-	sha512sums = 9f9310f1d97c5e9bdd910c8a7f96d12f1f44a4b8033e6abc8e71b967bad52b024c1690fc657f6a56247b9abeca945eae41e02cc61b310d394020f5d1495531fc
-	sha512sums = 4a295d5a4c0d815b3cdbdebce8912bf0b2918f9f431418a201ffb6688fb8effa7a6081b547cfdff0f1979ff20b2a51e33170fa77b4337db01fcd3269b1318027
-	sha512sums = 366af1dca4f2f11eb451eef64e6c0c86a539d8d748e15d25b609254383dfb995d79979478fe85d9539b747b50805ee95f1adc952067e9c0a502c834581443ac7
-	sha512sums = e66af960477bfaad2ea3b1dfe95cc76d5cbfbadd9102cb9b5aee4599c91de8512ca6f322321882f0e7e62d55c3a4d066d54eaa7d2b57cd48df43145b06e1bfc6
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 	sha512sums = 1eb4436f8d58766cbe99db97e5e8c0db8a706376afd291c337de1ba7a6b066d3791dc85ad034bdd54ea336bed6e6e8e7a037d8b04b2773c9c7517b9d9921d1fa
 
 pkgname = nquake
