@@ -1,6 +1,6 @@
 pkgbase = helio-workstation
 	pkgdesc = One music sequencer for all major platforms, desktop and mobile
-	pkgver = 3.10
+	pkgver = 3.11
 	pkgrel = 1
 	url = https://helio.fm/
 	arch = x86_64
@@ -17,13 +17,11 @@ pkgbase = helio-workstation
 	depends = libxinerama
 	depends = libglvnd
 	depends = alsa-lib
-	source = git+https://github.com/helio-fm/helio-workstation#tag=3.10
+	source = git+https://github.com/helio-fm/helio-workstation#tag=3.11
 	source = git+https://github.com/peterrudenko/JUCE.git
 	source = git+https://github.com/peterrudenko/hopscotch-map.git
-	source = fixinclude.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 53f509c498f9d53e454e9c662ac1ea38b0c1c8b6e41ed5ab8efb9a704d35038c
 
 pkgname = helio-workstation
