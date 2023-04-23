@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gscreend
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
-pkgrel=1
+pkgver=1.12.0
+pkgrel=2
 pkgdesc='Analysis of pooled genetic screens'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -22,7 +22,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3dd7b55780f3e2d3b479b33fb869e1adc4372985b6a9a18ad812db107492d5b7')
+sha256sums=('bf85edb66d80c786f6c5d214cdfba79189d677f11939d33bf1d0e858c9730e35')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

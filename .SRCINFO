@@ -1,7 +1,7 @@
 pkgbase = r-gscreend
 	pkgdesc = Analysis of pooled genetic screens
-	pkgver = 1.10.0
-	pkgrel = 1
+	pkgver = 1.12.0
+	pkgrel = 2
 	url = https://bioconductor.org/packages/gscreend
 	arch = any
 	license = GPL
@@ -13,7 +13,7 @@ pkgbase = r-gscreend
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/gscreend_1.10.0.tar.gz
-	sha256sums = 3dd7b55780f3e2d3b479b33fb869e1adc4372985b6a9a18ad812db107492d5b7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/gscreend_1.12.0.tar.gz
+	sha256sums = bf85edb66d80c786f6c5d214cdfba79189d677f11939d33bf1d0e858c9730e35
 
 pkgname = r-gscreend
