@@ -1,7 +1,7 @@
 # Maintainer: asamk <asamk@gmx.de>
 
 pkgname=signal-cli
-pkgver=0.11.8
+pkgver=0.11.9.1
 pkgrel=1
 pkgdesc="Provides a commandline and dbus interface for secure Signal messaging."
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('java-environment>=17' 'gradle' 'asciidoc')
 source=("https://github.com/AsamK/${pkgname}/archive/v${pkgver}.tar.gz"
         "https://github.com/AsamK/${pkgname}/releases/download/v${pkgver}/v${pkgver}.tar.gz.asc"
         "${pkgname}.sh")
-sha512sums=('1b7cde358ce8f02c57a9a55b59a84492c1533c435a5d173579839d19f8a0416da97bf600ec05b5b5c2c65f8c2a43308c5be0906fd4483285074b86e01f5d09a0'
+sha512sums=('0be6318ebafa42f20293db723f6dae7f2c19750700b3fb512e78728f536b78055b983c23e2d1c4712ca028fc8a584b3826a2e07ee7a9fe4da90b9718f5b3a211'
             'SKIP'
             'f58d7851c53eae1874692f032a489cb6fb459763a4195afaf93ddd4c65939e1e4e2bbf50438e04800aded466266c3a2a37fcc0f5168f61b8e711fcf03e8e8d12')
 validpgpkeys=('FA10826A74907F9EC6BBB7FC2BA2CD21B5B09570')
