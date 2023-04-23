@@ -1,0 +1,11 @@
+--- a/EukHighConfidenceFilter.in	2023-04-21 10:24:56.668769519 +0530
++++ b/EukHighConfidenceFilter.in	2023-04-21 10:51:58.870350139 +0530
+@@ -13,7 +13,7 @@
+ # --------------------------------------------------------------------
+  
+ use strict;
+-use lib "@libdir@/tRNAscan-SE";
++use lib "@pkgdatadir@";
+ use Getopt::Long;
+ 
+ use tRNAscanSE::tRNA;

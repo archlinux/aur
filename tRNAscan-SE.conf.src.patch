@@ -1,0 +1,11 @@
+--- a/tRNAscan-SE.conf.src	2023-04-21 10:25:27.827758950 +0530
++++ b/tRNAscan-SE.conf.src	2023-04-21 10:52:42.085467328 +0530
+@@ -3,7 +3,7 @@
+ 
+ # default paths
+ bin_dir: @bindir@
+-lib_dir: @libdir@/tRNAscan-SE
++lib_dir: @pkgdatadir@
+ infernal_dir: {bin_dir}
+ 
+ # temporary files

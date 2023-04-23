@@ -1,0 +1,58 @@
+--- a/Makefile.am	2023-04-21 19:13:21.119884090 +0530
++++ b/Makefile.am	2023-04-21 19:10:37.533407100 +0530
+@@ -23,16 +23,17 @@
+ bin_PROGRAMS = bin/eufindtRNA bin/trnascan-1.4 bin/covels-SE bin/coves-SE
+ bin_eufindtRNA_SOURCES = $(SQUIDHDRS) $(SQUIDSRC) $(EUFIND)
+ bin_trnascan_1_4_SOURCES = src/trnascan.c
+-bin_trnascan_1_4_CFLAGS = -DTSCANDIR=\"$(libdir)\/tRNAscan-SE\/models\"  $(AM_CFLAGS)
++bin_trnascan_1_4_CFLAGS = -DTSCANDIR=\"$(pkgdatadir)\/models\"  $(AM_CFLAGS)
+ bin_covels_SE_SOURCES = $(COVESRC) src/scan_main.c
+ bin_coves_SE_SOURCES = $(COVESRC) src/score_main.c
+ 
+ # process scripts
+-# treat tRNAscan-SE.conf as a script since it's just easier
+-dist_bin_SCRIPTS = bin/sstofa bin/fasta2gsi bin/EukHighConfidenceFilter bin/MitoHighConfidenceFilter tRNAscan-SE tRNAscan-SE.conf
++dist_bin_SCRIPTS = bin/sstofa bin/fasta2gsi bin/EukHighConfidenceFilter bin/MitoHighConfidenceFilter tRNAscan-SE
++# config file
++dist_sysconf_DATA = tRNAscan-SE.conf
+ # for a few files, need to substitute perl path, bin directory, and lib directory
+ # first, define a function for it
+-do_subst = sed -e 's,\@bindir\@,$(bindir),g' -e 's,\@libdir\@,$(libdir),g' -e 's,[@]PERL[@],$(PERL),g' -e 's,\@INFERNAL\@,$(INFERNAL),g' 
++do_subst = sed -e 's,\@bindir\@,$(bindir),g' -e 's,\@pkgdatadir\@,$(pkgdatadir),g' -e 's,[@]PERL[@],$(PERL),g' -e 's,\@INFERNAL\@,$(INFERNAL),g' -e 's,\@sysconfdir\@,$(sysconfdir),g' 
+ 
+ # extra steps for cleaning/distribution
+ CLEANFILES = $(dist_bin_SCRIPTS) $(srcdir)/lib/*
+@@ -51,15 +52,15 @@
+ 
+ bin/sstofa: src/sstofa.in Makefile
+ 	$(do_subst) < $(srcdir)/src/sstofa.in > bin/sstofa
+-	chmod +x bin/sstofa
++	if [ -x bin/sstofa ] ; then chmod +x bin/sstofa ; fi
+ 
+ bin/fasta2gsi: src/fasta2gsi.in Makefile
+ 	$(do_subst) < $(srcdir)/src/fasta2gsi.in > bin/fasta2gsi
+-	chmod +x bin/fasta2gsi
++	if [ -x bin/fasta2gsi ] ; then chmod +x bin/fasta2gsi ; fi
+ 
+ bin/EukHighConfidenceFilter: EukHighConfidenceFilter.in Makefile
+ 	$(do_subst) < $(srcdir)/EukHighConfidenceFilter.in > bin/EukHighConfidenceFilter
+-	chmod +x bin/EukHighConfidenceFilter
++	if [ -x bin/EukHighConfidenceFilter ] ; then chmod +x bin/EukHighConfidenceFilter ; fi
+ 
+ bin/MitoHighConfidenceFilter: MitoHighConfidenceFilter.in Makefile
+ 	$(do_subst) < $(srcdir)/MitoHighConfidenceFilter.in > bin/MitoHighConfidenceFilter
+@@ -67,11 +68,9 @@
+ 
+ # copy libraries. We don't have "libraries" in the libgmp.so.4 kind, but we do have data libraries, so we don't have to deal with lib_LTLIBRARIES.
+ install-data-hook:
+-	chmod u+w $(exec_prefix)
+-	test -d $(libdir) || mkdir $(libdir)
+-	chmod u+w $(libdir)
+-	test -d $(libdir)/tRNAscan-SE || mkdir $(libdir)/tRNAscan-SE
+-	cp -rf $(srcdir)/lib/* $(libdir)/tRNAscan-SE 
++	test -d $(DESTDIR)/$(pkgdatadir) || mkdir -p $(DESTDIR)/$(pkgdatadir)
++	chmod u+w $(DESTDIR)/$(pkgdatadir)
++	cp -rf $(srcdir)/lib/* $(DESTDIR)/$(pkgdatadir)
+ 
+ # remove lib/ files during uninstallation. A bit of a hack, since lib files are write-protected by default. Files 
+ uninstall-hook:

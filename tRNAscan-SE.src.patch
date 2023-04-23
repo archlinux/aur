@@ -1,0 +1,20 @@
+--- a/tRNAscan-SE.src	2023-04-21 10:25:14.931510647 +0530
++++ b/tRNAscan-SE.src	2023-04-21 10:51:14.938595131 +0530
+@@ -18,7 +18,7 @@
+ #                           
+ 
+ use strict;
+-use lib "@libdir@/tRNAscan-SE";
++use lib "@pkgdatadir@";
+ use Getopt::Long;
+ use tRNAscanSE::Configuration;
+ use tRNAscanSE::tRNA;
+@@ -44,7 +44,7 @@
+ our $program_id = "tRNAscan-SE-".$version;
+ 
+ # modified by 'make'
+-our $default_conf = "@bindir@/tRNAscan-SE.conf";
++our $default_conf = "@sysconfdir@/tRNAscan-SE.conf";
+ 
+ # Signal handling
+ $SIG{'TERM'} = 'error_handler';
