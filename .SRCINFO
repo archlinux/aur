@@ -7,6 +7,7 @@ pkgbase = chainner-bin
 	license = GPL3
 	depends = libxcrypt-compat
 	provides = chainner
+    conflicts = chainner-rpm
 	options = !emptydirs
 	options = !strip
 	source = https://github.com/chainner-org/chainner/releases/download/v0.18.6/chainner-0.18.6-x64-linux-redhat.rpm
