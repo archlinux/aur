@@ -2,15 +2,15 @@
 
 _name=Ryujinx
 pkgname=ryujinx
-pkgver=1.1.625
-_commit=6bf460e1041b969a453dc40ee6fb83164739bf9c
+pkgver=1.1.726
+_commit=8d9d508dc78eb5225c99cb425fa484999f3c4305
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 arch=(x86_64)
 url="https://github.com/Ryujinx/Ryujinx"
 license=('MIT')
-depends=('dotnet-runtime')
-makedepends=('dotnet-sdk' 'git')
+depends=('dotnet-runtime-bin')
+makedepends=('dotnet-sdk-bin' 'git')
 conflicts=(ryujinx-git)
 options=(!strip)
 source=("git+$url#commit=$_commit")
