@@ -1,0 +1,33 @@
+pkgbase = lumosql
+	pkgdesc = LumoSQL adds privacy, security and performance options to SQLite.
+	pkgver = r339.be5579f
+	pkgrel = 1
+	url = https://lumosql.org/src/lumosql
+	arch = x86_64
+	arch = aarch64
+	license = custom: MIT
+	makedepends = fossil
+	makedepends = not-forking
+	makedepends = tcl
+	makedepends = tclx
+	makedepends = readline
+	makedepends = zlib
+	makedepends = gzip
+	makedepends = tar
+	makedepends = perl
+	makedepends = git
+	makedepends = perl-git-wrapper
+	makedepends = curl
+	makedepends = patch
+	makedepends = perl-text-glob
+	provides = sqlite
+	provides = sqlite3=r339.be5579f
+	provides = libsqlite3.so
+	conflicts = sqlite
+	options = !emptydirs
+	source = lumosql::fossil+https://lumosql.org/src/lumosql#commit=be5579f383
+	source = sqlite-lemon-system-template.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/sqlite/trunk/sqlite-lemon-system-template.patch
+	sha256sums = SKIP
+	sha256sums = 55746d93b0df4b349c4aa4f09535746dac3530f9fd6de241c9f38e2c92e8ee97
+
+pkgname = lumosql
