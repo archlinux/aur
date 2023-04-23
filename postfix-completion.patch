@@ -115,7 +115,7 @@ index a2d523cd3e92..c50a41a7c7ba 100644
    unsigned Priority;
  
 diff --git a/clang/lib/Sema/SemaCodeComplete.cpp b/clang/lib/Sema/SemaCodeComplete.cpp
-index 2073df030516..89ca89536fbf 100644
+index 2073df030516..b4182c95ea8a 100644
 --- a/clang/lib/Sema/SemaCodeComplete.cpp
 +++ b/clang/lib/Sema/SemaCodeComplete.cpp
 @@ -20,6 +20,7 @@
@@ -231,7 +231,7 @@ index 2073df030516..89ca89536fbf 100644
      // Look through protocols.
      for (auto *P : Category->protocols())
        AddObjCProperties(CCContext, P, AllowCategories, AllowNullaryMethods,
-@@ -5609,6 +5613,430 @@ Expr *unwrapParenList(Expr *Base) {
+@@ -5609,6 +5613,435 @@ Expr *unwrapParenList(Expr *Base) {
    return Base;
  }
  
@@ -625,36 +625,41 @@ index 2073df030516..89ca89536fbf 100644
 +  }
 +  if (BaseIsStmt && isConvertibleToBool(Base->getType(), Ctx)) {
 +    const char *VarType = conditionVariableType(Base, Ctx);
-+    AddResult("if", QualType(), [&](CodeCompletionBuilder &B) {
-+      B.AddTextChunk("if");
-+      B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
-+      B.AddChunk(CodeCompletionString::CK_LeftParen);
-+      if (VarType) {
-+        B.AddTextChunk(VarType);
++    auto AddBlock = [&](const char *Name) {
++      AddResult(Name, QualType(), [&](CodeCompletionBuilder &B) {
++        B.AddTextChunk(Name);
 +        B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
-+        B.AddPlaceholderChunk("value");
-+        B.AddChunk(CodeCompletionString::CK_Equal);
-+      }
-+      B.AddTextChunk(ExprCode);
-+      auto BaseType = Base->getType();
-+      if (!VarType && (BaseType->isPointerType() || BaseType->isScalarType() ||
-+                       BaseType->isIntegralType(Ctx))) {
++        B.AddChunk(CodeCompletionString::CK_LeftParen);
++        if (VarType) {
++          B.AddTextChunk(VarType);
++          B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
++          B.AddPlaceholderChunk("value");
++          B.AddChunk(CodeCompletionString::CK_Equal);
++        }
++        B.AddTextChunk(ExprCode);
++        auto BaseType = Base->getType();
++        if (!VarType &&
++            (BaseType->isPointerType() || BaseType->isFloatingType() ||
++             BaseType->isScalarType())) {
++          B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
++          B.AddTextChunk("==");
++          B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
++          if (BaseType->isPointerType())
++            B.AddTextChunk("nullptr");
++          else if (BaseType->isFloatingType())
++            B.AddTextChunk("0.0");
++          else
++            B.AddTextChunk("0");
++        }
++        B.AddChunk(CodeCompletionString::CK_RightParen);
 +        B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
-+        B.AddTextChunk("==");
-+        B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
-+        if (BaseType->isPointerType())
-+          B.AddTextChunk("nullptr");
-+        else if (BaseType->isScalarType())
-+          B.AddTextChunk("0.0");
-+        else
-+          B.AddTextChunk("0");
-+      }
-+      B.AddChunk(CodeCompletionString::CK_RightParen);
-+      B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
-+      B.AddChunk(CodeCompletionString::CK_LeftBrace);
-+      B.AddChunk(CodeCompletionString::CK_VerticalSpace);
-+      B.AddChunk(CodeCompletionString::CK_RightBrace);
-+    });
++        B.AddChunk(CodeCompletionString::CK_LeftBrace);
++        B.AddChunk(CodeCompletionString::CK_VerticalSpace);
++        B.AddChunk(CodeCompletionString::CK_RightBrace);
++      });
++    };
++    AddBlock("if");
++    AddBlock("while");
 +  }
 +  // const cast
 +}
@@ -662,7 +667,7 @@ index 2073df030516..89ca89536fbf 100644
  } // namespace
  
  void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
-@@ -5616,10 +6044,11 @@ void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
+@@ -5616,10 +6049,11 @@ void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
                                             SourceLocation OpLoc, bool IsArrow,
                                             bool IsBaseExprStatement,
                                             QualType PreferredType) {
@@ -676,7 +681,7 @@ index 2073df030516..89ca89536fbf 100644
  
    ExprResult ConvertedBase = PerformMemberExprBaseConversion(Base, IsArrow);
    if (ConvertedBase.isInvalid())
-@@ -5650,6 +6079,10 @@ void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
+@@ -5650,6 +6084,10 @@ void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
                          CodeCompleter->getCodeCompletionTUInfo(), CCContext,
                          &ResultBuilder::IsMember);
  
@@ -687,7 +692,7 @@ index 2073df030516..89ca89536fbf 100644
    auto DoCompletion = [&](Expr *Base, bool IsArrow,
                            std::optional<FixItHint> AccessOpFixIt) -> bool {
      if (!Base)
-@@ -5929,8 +6362,7 @@ void Sema::CodeCompleteCase(Scope *S) {
+@@ -5929,8 +6367,7 @@ void Sema::CodeCompleteCase(Scope *S) {
  
      Expr *CaseVal = Case->getLHS()->IgnoreParenCasts();
      if (auto *DRE = dyn_cast<DeclRefExpr>(CaseVal))
@@ -697,7 +702,7 @@ index 2073df030516..89ca89536fbf 100644
          // We look into the AST of the case statement to determine which
          // enumerator was named. Alternatively, we could compute the value of
          // the integral constant expression, then compare it against the
-@@ -8148,11 +8580,10 @@ void Sema::CodeCompleteObjCInstanceMessage(Scope *S, Expr *Receiver,
+@@ -8148,11 +8585,10 @@ void Sema::CodeCompleteObjCInstanceMessage(Scope *S, Expr *Receiver,
        return;
      RecExpr = Conv.get();
    }
@@ -713,7 +718,7 @@ index 2073df030516..89ca89536fbf 100644
  
    // If we're messaging an expression with type "id" or "Class", check
    // whether we know something special about the receiver that allows
-@@ -9983,8 +10414,7 @@ void Sema::CodeCompleteIncludedFile(llvm::StringRef Dir, bool Angled) {
+@@ -9983,8 +10419,7 @@ void Sema::CodeCompleteIncludedFile(llvm::StringRef Dir, bool Angled) {
    };
  
    // Helper: scans IncludeDir for nice files, and adds results for each.
