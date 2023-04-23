@@ -1,6 +1,6 @@
 # Maintainer: Mohammadreza Abdollahzadeh < morealaz at gmail dot com >
 pkgname=firefox-extension-privacy-pass
-pkgver=3.0.4
+pkgver=3.0.5
 pkgrel=1
 pkgdesc='Firefox extension implements the client-side of the Privacy Pass protocol providing unlinkable cryptographic tokens.'
 arch=('any')

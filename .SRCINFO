@@ -1,13 +1,13 @@
 pkgbase = firefox-extension-privacy-pass
 	pkgdesc = Firefox extension implements the client-side of the Privacy Pass protocol providing unlinkable cryptographic tokens.
-	pkgver = 3.0.4
+	pkgver = 3.0.5
 	pkgrel = 1
 	url = https://addons.mozilla.org/en-US/firefox/addon/privacy-pass/
 	arch = any
 	groups = firefox-addons
 	license = BSD-3
 	depends = firefox
-	source = firefox-extension-privacy-pass-3.0.4.xpi::https://addons.mozilla.org/firefox/downloads/file/4029152/privacy_pass-3.0.4.xpi
+	source = firefox-extension-privacy-pass-3.0.5.xpi::https://addons.mozilla.org/firefox/downloads/file/4029152/privacy_pass-3.0.5.xpi
 	sha256sums = acb6d3001e2af078792bdde7154113dacb9434eb0d55d81e96923b11a0594a9b
 
 pkgname = firefox-extension-privacy-pass
