@@ -1,6 +1,6 @@
 pkgbase = mailctl-bin
 	pkgdesc = Provide OAuth2 renewal and authorization capabilities
-	pkgver = 0.8.6
+	pkgver = 0.8.7
 	pkgrel = 1
 	url = https://sr.ht/~petrus/mailctl
 	install = .INSTALL
@@ -15,7 +15,7 @@ pkgbase = mailctl-bin
 	provides = mailctl
 	conflicts = mailctl
 	conflicts = mailctl-git
-	source = https://git.sr.ht/~petrus/mailctl/refs/download/0.8.6/mailctl-0.8.6.tgz
-	sha256sums = 9d7192a52efb58f03a7991d158141561e7a31b567f07835a7817ba403d31bca1
+	source = https://git.sr.ht/~petrus/mailctl/refs/download/0.8.7/mailctl-0.8.7.tgz
+	sha256sums = f9fd0656c2c9467d44abd8e9e88fc9f85e7d1df9aacc3aa0bc6a49c3960b4ff4
 
 pkgname = mailctl-bin
