@@ -1,12 +1,11 @@
 pkgbase = simplesamlphp
 	pkgdesc = Authentication and federation application supporting several protocols
-	pkgver = 2.0.0beta.4
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://simplesamlphp.org/
 	arch = any
 	license = LGPL2.1
 	depends = composer
-	depends = npm
 	options = !strip
 	backup = etc/webapps/simplesamlphp/config/acl.php
 	backup = etc/webapps/simplesamlphp/config/authsources.php
@@ -14,7 +13,7 @@ pkgbase = simplesamlphp
 	backup = etc/webapps/simplesamlphp/metadata/saml20-idp-hosted.php
 	backup = etc/webapps/simplesamlphp/metadata/saml20-idp-remote.php
 	backup = etc/webapps/simplesamlphp/metadata/saml20-sp-remote.php
-	source = simplesamlphp-2.0.0beta.4.tar.gz::https://github.com/simplesamlphp/simplesamlphp/archive/refs/tags/v2.0.0-beta.4.tar.gz
-	sha256sums = 485559d822b0ae24ba4e98c4ab95d8b7af7da66747a379b13b9c3ec4fca530f5
+	source = simplesamlphp-2.0.3.tar.gz::https://github.com/simplesamlphp/simplesamlphp/archive/refs/tags/v2.0.3.tar.gz
+	sha256sums = e31a9e4333906711672f2ab641c4665332d4a69c5310330556d52042d1d91d7a
 
 pkgname = simplesamlphp
