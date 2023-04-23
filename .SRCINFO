@@ -1,6 +1,6 @@
 pkgbase = kde-servicemenus-imagetools
 	pkgdesc = KDE service menus for image file processing
-	pkgver = 2
+	pkgver = 3
 	pkgrel = 1
 	url = https://github.com/marco-mania/kde-servicemenus-imagetools
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = kde-servicemenus-imagetools
 	depends = imagemagick
 	depends = perl-image-exiftool
 	depends = optipng
-	source = https://github.com/marco-mania/kde-servicemenus-imagetools/archive/refs/tags/v2.tar.gz
-	sha256sums = ad2e1fa77b7335cf72398e22a9cbdc376463a5d6347cc147704861d4c55d7f5d
+	source = https://github.com/marco-mania/kde-servicemenus-imagetools/archive/refs/tags/v3.tar.gz
+	sha256sums = bdedb328e9e3da25cd889ea7d933d11bc5b6b79e9e1107eae84ece3331a0e80d
 
 pkgname = kde-servicemenus-imagetools
