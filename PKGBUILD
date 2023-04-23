@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=nix-init
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Generate Nix packages from URLs with hash prefetching, dependency inference, license detection, and more'
 url='https://github.com/nix-community/nix-init'
@@ -11,9 +11,9 @@ depends=('gcc-libs' 'openssl' 'curl' 'bzip2' 'zlib' 'nurl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate"
         "https://github.com/nix-community/nix-init/raw/f839a45b97f2130b55e97652dce9c82d00d2772d/LICENSE")
-sha256sums=('8cdd4c8e939e7b521c6875ff1aa0abeed4e859198a9bc463e647b73f7725bc8b'
+sha256sums=('c021588c1b7aed29996e17e68c0f3637229eba6d1ebfad82b324594123662773'
             '1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5')
-b2sums=('df6b831451c2c88f1554144f006d8b18eeee1ae8667f25e2a605d161634399b659d34ad85e66f06798a1a676363b6d64164b2a85b0b65ceec8f08ab0c67f6f31'
+b2sums=('01a19a01640153ac356f255b2b12129532e18dff8c3edf05a53bfc5d650a35350f14d6832feb72cadf62b31c4ad1b69867b04488271635b07fb02785de6a5d46'
         '385ec46b62788d2cfed32d1de03728fdf3f36f1b90f726e2412969918ddd2c1859b26b722bd5b3806252620409550da6b9cbc8ab8583c1cb140b3043e8606f8c')
 
 case $CARCH in
