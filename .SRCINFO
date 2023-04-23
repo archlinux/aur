@@ -1,6 +1,6 @@
 pkgbase = web-eid
-	pkgver = 2.2.0.572
-	pkgrel = 2
+	pkgver = 2.3.0.619
+	pkgrel = 1
 	url = https://www.id.ee/
 	arch = x86_64
 	license = MIT
@@ -15,11 +15,12 @@ pkgbase = web-eid
 	depends = pcsclite
 	depends = hicolor-icon-theme
 	conflicts = chrome-token-signing
-	source = web-eid-native::git+https://github.com/web-eid/web-eid-app.git?signed#tag=v2.2.0
+	source = web-eid::git+https://github.com/web-eid/web-eid-app.git?signed#tag=v2.3.0
 	source = web-eid-libelectronic-id::git+https://github.com/web-eid/libelectronic-id.git
 	source = web-eid-libpcsc-cpp::git+https://github.com/web-eid/libpcsc-cpp.git
 	source = web-eid-libpcsc-mock::git+https://github.com/web-eid/libpcsc-mock.git
 	validpgpkeys = 1282B0F8809D0DC632C85A3F86B611CE24492160
+	validpgpkeys = D1EBC666EFCBFBD3CFC2EBAA90C0B5E75C3B195D
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -29,11 +30,11 @@ pkgname = web-eid-native
 	pkgdesc = Web eID native application
 
 pkgname = web-eid-firefox
-	pkgdesc = WEB eID Firefox extension (signed)
+	pkgdesc = Web eID Firefox extension (signed)
 	arch = any
 	depends = web-eid-native
 
 pkgname = web-eid-chrome
-	pkgdesc = WEB eID extension from Chrome Web Store
+	pkgdesc = Web eID extension from Chrome Web Store
 	arch = any
 	depends = web-eid-native

@@ -1,13 +1,13 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgbase=web-eid
 pkgname=("web-eid-native" "web-eid-firefox" "web-eid-chrome")
-pkgver=2.2.0.572
-_rls_tag=v2.2.0
-pkgrel=2
+pkgver=2.3.0.619
+_rls_tag=v2.3.0
+pkgrel=1
 arch=('x86_64')
 url="https://www.id.ee/"
 license=('MIT')
-conflicts=(chrome-token-signing)
+conflicts=('chrome-token-signing')
 depends=('openssl' 'qt6-base' 'qt6-svg' 'pcsclite' 'hicolor-icon-theme')
 makedepends=('git' 'qt6-tools' 'gtest' 'gmock' 'cmake')
 source=("$pkgbase::git+https://github.com/web-eid/web-eid-app.git?signed#tag=$_rls_tag"
@@ -17,6 +17,7 @@ source=("$pkgbase::git+https://github.com/web-eid/web-eid-app.git?signed#tag=$_r
 sha256sums=("SKIP" "SKIP" "SKIP" "SKIP")
 validpgpkeys=(
     '1282B0F8809D0DC632C85A3F86B611CE24492160'  # Mart Somermaa https://github.com/mrts.gpg
+    'D1EBC666EFCBFBD3CFC2EBAA90C0B5E75C3B195D'  # Raul Metsma
 )
 
 prepare() {
@@ -98,4 +99,17 @@ package_web-eid-chrome() {
     ln -sf "/usr/share/google-chrome/extensions/ncibgoaomkmdpilpocfeponihegamlic.json" "$pkgdir/usr/share/chromium/extensions/ncibgoaomkmdpilpocfeponihegamlic.json"
     mkdir -p $pkgdir/etc/chromium/native-messaging-hosts
     ln -sf "/usr/share/web-eid/eu.webeid.json" "$pkgdir/etc/chromium/native-messaging-hosts/eu.webeid.json"
+    # microsoft-edge-stable
+    mkdir -p $pkgdir/etc/opt/edge/native-messaging-hosts
+    ln -sf "/usr/share/web-eid/eu.webeid.json" "$pkgdir/etc/opt/edge/native-messaging-hosts/eu.webeid.json"
+    mkdir -p $pkgdir/opt/microsoft/msedge/extensions
+    ln -sf "/usr/share/google-chrome/extensions/ncibgoaomkmdpilpocfeponihegamlic.json" "$pkgdir/opt/microsoft/msedge/extensions/ncibgoaomkmdpilpocfeponihegamlic.json"
+    # from Microsoft Edge Add-ons Store
+#    cat << EOF > "gnmckgbandlkacikdndelhfghdejfido.json"
+#{
+#    "external_update_url": "https://edge.microsoft.com/extensionwebstorebase/v1/crx"
+#}
+#EOF
+#    install -Dm644 "gnmckgbandlkacikdndelhfghdejfido.json" "$pkgdir/opt/microsoft/msedge/extensions/gnmckgbandlkacikdndelhfghdejfido.json"
+
 }
