@@ -112,7 +112,8 @@ build() {
     --enable-libgcj-multifile \
     --enable-version-specific-runtime-libs \
     --enable-build-warnings \
-    --program-suffix=-${_ver}
+    --program-suffix=-${_ver} \
+    --disable-nls
 
   make
 
