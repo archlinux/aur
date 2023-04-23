@@ -3,7 +3,7 @@
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 
 pkgname=matlab
-pkgrel=2
+pkgrel=3
 pkgver=9.14.0.2239454
 pkgdesc='A high-level language for numerical computation and visualization'
 arch=(x86_64)
@@ -13,14 +13,12 @@ depends=(matlab-meta)
 makedepends=('gendesk')
 provides=('matlab-bin')
 source=('local://matlab.tar' 'local://matlab.fik' 'local://matlab.lic')
-b2sums=('27673470057b05e92c8ba194036f5b94db6fe1c5b294242d502f970d8c46e360a61efd0e9298d5e14e31d182c32792050ac0b7385fa12ae8daae33e8f506a893'
-        'c257e9dbe6190ffb321ee50a9be04108942f20180ca421670f37ef9b524db27e2d7848fc594d79a26e668511085c96f1dbe7a7ea896cd7e11167923e65ed5039'
-        '5897d48abd9cb86b9788d855bfcd33b0443c4e481e672129d1059763b767a315f3127176307589b51ead791dce70c5adfbd1aab35757a985a3f467618ea5545d')
+b2sums=('SKIP' 'SKIP' 'SKIP')
 
 # Example list of products for a partial installation. Leave empty for a full installation.
 _products=(
     'MATLAB'
-    # 'Simulink'
+    'Simulink'
 )
 
 pkgver() {

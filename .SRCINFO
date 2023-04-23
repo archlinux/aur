@@ -1,7 +1,7 @@
 pkgbase = matlab
 	pkgdesc = A high-level language for numerical computation and visualization
 	pkgver = 9.14.0.2239454
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.mathworks.com
 	arch = x86_64
 	license = custom
@@ -11,8 +11,8 @@ pkgbase = matlab
 	source = local://matlab.tar
 	source = local://matlab.fik
 	source = local://matlab.lic
-	b2sums = 27673470057b05e92c8ba194036f5b94db6fe1c5b294242d502f970d8c46e360a61efd0e9298d5e14e31d182c32792050ac0b7385fa12ae8daae33e8f506a893
-	b2sums = c257e9dbe6190ffb321ee50a9be04108942f20180ca421670f37ef9b524db27e2d7848fc594d79a26e668511085c96f1dbe7a7ea896cd7e11167923e65ed5039
-	b2sums = 5897d48abd9cb86b9788d855bfcd33b0443c4e481e672129d1059763b767a315f3127176307589b51ead791dce70c5adfbd1aab35757a985a3f467618ea5545d
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
 
 pkgname = matlab
