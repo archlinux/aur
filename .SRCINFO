@@ -1,0 +1,25 @@
+pkgbase = huenicorn
+	pkgdesc = Free ambilight driver for Philips Hue™ devices
+	pkgver = v1.0.1.r0.gb1567b6
+	pkgrel = 1
+	url = https://gitlab.com/openjowelsofts/huenicorn
+	arch = i686
+	arch = x86_64
+	license = GNU GPLv3
+	makedepends = git
+	makedepends = nlohmann-json
+	makedepends = glm
+	depends = libx11
+	depends = libxext
+	depends = libxrandr
+	depends = opencv
+	depends = curl
+	depends = libcurlpp
+	depends = restbed
+	depends = mbedtls
+	source = git+https://gitlab.com/openjowelsofts/huenicorn.git
+	source = https://huenicorn.org/releases/extra/huenicorn.sh
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = huenicorn
