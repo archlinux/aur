@@ -1,0 +1,522 @@
+diff --git a/clang-tools-extra/clangd/CMakeLists.txt b/clang-tools-extra/clangd/CMakeLists.txt
+index 183a3666ee58..3f76eb6ce196 100644
+--- a/clang-tools-extra/clangd/CMakeLists.txt
++++ b/clang-tools-extra/clangd/CMakeLists.txt
+@@ -68,6 +68,7 @@ add_clang_library(clangDaemon
+   ClangdServer.cpp
+   CodeComplete.cpp
+   CodeCompletionStrings.cpp
++  CodeLens.cpp
+   CollectMacros.cpp
+   CompileCommands.cpp
+   Compiler.cpp
+diff --git a/clang-tools-extra/clangd/ClangdLSPServer.cpp b/clang-tools-extra/clangd/ClangdLSPServer.cpp
+index 6ead59a7ec90..7989c8b3746a 100644
+--- a/clang-tools-extra/clangd/ClangdLSPServer.cpp
++++ b/clang-tools-extra/clangd/ClangdLSPServer.cpp
+@@ -633,6 +633,11 @@ void ClangdLSPServer::onInitialize(const InitializeParams &Params,
+        {"capabilities", std::move(ServerCaps)}}};
+   if (Opts.Encoding)
+     Result["offsetEncoding"] = *Opts.Encoding;
++  if (Opts.CodeLens)
++    Result.getObject("capabilities")
++        ->insert({"codeLensProvider", llvm::json::Object{
++                                          {"resolveProvider", true},
++                                      }});
+   Reply(std::move(Result));
+ 
+   // Apply settings after we're fully initialized.
+@@ -1549,6 +1554,30 @@ void ClangdLSPServer::onMemoryUsage(const NoParams &,
+   Reply(std::move(MT));
+ }
+ 
++void ClangdLSPServer::onCodeLens(const CodeLensParams &Params,
++                                 Callback<std::vector<CodeLens>> Reply) {
++  URIForFile FileURI = Params.textDocument.uri;
++  Server->provideCodeLens(
++      FileURI.file(), Opts.ReferencesLimit,
++      [Reply = std::move(Reply)](
++          llvm::Expected<std::vector<CodeLens>> CodeLens) mutable {
++        if (!CodeLens)
++          return Reply(CodeLens.takeError());
++        return Reply(std::move(*CodeLens));
++      });
++}
++
++void ClangdLSPServer::onCodeLensResolve(const CodeLens &Params,
++                                        Callback<CodeLens> Reply) {
++  Server->resolveCodeLens(
++      Params, Opts.ReferencesLimit,
++      [Reply = std::move(Reply)](llvm::Expected<CodeLens> CodeLens) mutable {
++        if (!CodeLens)
++          return Reply(CodeLens.takeError());
++        return Reply(std::move(*CodeLens));
++      });
++}
++
+ void ClangdLSPServer::onAST(const ASTParams &Params,
+                             Callback<std::optional<ASTNode>> CB) {
+   Server->getAST(Params.textDocument.uri.file(), Params.range, std::move(CB));
+@@ -1624,7 +1653,10 @@ void ClangdLSPServer::bindMethods(LSPBinder &Bind,
+   Bind.method("textDocument/foldingRange", this, &ClangdLSPServer::onFoldingRange);
+   Bind.command(ApplyFixCommand, this, &ClangdLSPServer::onCommandApplyEdit);
+   Bind.command(ApplyTweakCommand, this, &ClangdLSPServer::onCommandApplyTweak);
+-
++  if (Opts.CodeLens) {
++    Bind.method("textDocument/codeLens",this, &ClangdLSPServer::onCodeLens);
++    Bind.method("codeLens/resolve",this, &ClangdLSPServer::onCodeLensResolve);
++  }
+   ApplyWorkspaceEdit = Bind.outgoingMethod("workspace/applyEdit");
+   PublishDiagnostics = Bind.outgoingNotification("textDocument/publishDiagnostics");
+   if (Caps.InactiveRegions)
+diff --git a/clang-tools-extra/clangd/ClangdLSPServer.h b/clang-tools-extra/clangd/ClangdLSPServer.h
+index cd5bb662c393..2f3dbebf20c3 100644
+--- a/clang-tools-extra/clangd/ClangdLSPServer.h
++++ b/clang-tools-extra/clangd/ClangdLSPServer.h
+@@ -175,6 +175,10 @@ private:
+   void onCommandApplyEdit(const WorkspaceEdit &, Callback<llvm::json::Value>);
+   void onCommandApplyTweak(const TweakArgs &, Callback<llvm::json::Value>);
+ 
++  /// CodeLens
++  void onCodeLens(const CodeLensParams &, Callback<std::vector<CodeLens>>);
++  void onCodeLensResolve(const CodeLens &, Callback<CodeLens>);
++
+   /// Outgoing LSP calls.
+   LSPBinder::OutgoingMethod<ApplyWorkspaceEditParams,
+                             ApplyWorkspaceEditResponse>
+diff --git a/clang-tools-extra/clangd/ClangdServer.cpp b/clang-tools-extra/clangd/ClangdServer.cpp
+index 7c5042b8414b..804b36e2b66a 100644
+--- a/clang-tools-extra/clangd/ClangdServer.cpp
++++ b/clang-tools-extra/clangd/ClangdServer.cpp
+@@ -8,6 +8,7 @@
+ 
+ #include "ClangdServer.h"
+ #include "CodeComplete.h"
++#include "CodeLens.h"
+ #include "Config.h"
+ #include "Diagnostics.h"
+ #include "DumpAST.h"
+@@ -1039,6 +1040,31 @@ void ClangdServer::diagnostics(PathRef File, Callback<std::vector<Diag>> CB) {
+   WorkScheduler->runWithAST("Diagnostics", File, std::move(Action));
+ }
+ 
++void ClangdServer::provideCodeLens(PathRef File, uint32_t Limit,
++                                   Callback<std::vector<CodeLens>> CB) {
++  auto Action = [CB = std::move(CB), File = File.str(), Limit,
++                 this](llvm::Expected<InputsAndAST> InpAST) mutable {
++    if (!InpAST)
++      return CB(InpAST.takeError());
++    CB(clangd::getDocumentCodeLens(InpAST->AST, Index, Limit, File));
++  };
++  WorkScheduler->runWithAST("DocumentCodeLens", File, std::move(Action),
++                            TUScheduler::InvalidateOnUpdate);
++}
++
++void ClangdServer::resolveCodeLens(const CodeLens &Params, uint32_t Limit,
++                                   Callback<CodeLens> CB) {
++  auto File = Params.data->uri;
++  auto Action = [CB = std::move(CB), File, Params, Limit,
++                 this](llvm::Expected<InputsAndAST> InpAST) mutable {
++    if (!InpAST)
++      return CB(InpAST.takeError());
++    CB(clangd::resolveCodeLens(InpAST->AST, Params, Limit, Index, File));
++  };
++  WorkScheduler->runWithAST("ResolveCodeLens", File, std::move(Action),
++                            TUScheduler::InvalidateOnUpdate);
++}
++
+ llvm::StringMap<TUScheduler::FileStats> ClangdServer::fileStats() const {
+   return WorkScheduler->fileStats();
+ }
+diff --git a/clang-tools-extra/clangd/ClangdServer.h b/clang-tools-extra/clangd/ClangdServer.h
+index f47216a05176..6c517541b8cd 100644
+--- a/clang-tools-extra/clangd/ClangdServer.h
++++ b/clang-tools-extra/clangd/ClangdServer.h
+@@ -169,6 +169,9 @@ public:
+     // Whether the client supports folding only complete lines.
+     bool LineFoldingOnly = false;
+ 
++    /// Enable preview of CodeLens feature.
++    bool CodeLens = false;
++
+     FeatureModuleSet *FeatureModules = nullptr;
+     /// If true, use the dirty buffer contents when building Preambles.
+     bool UseDirtyHeaders = false;
+@@ -377,6 +380,12 @@ public:
+   void getAST(PathRef File, std::optional<Range> R,
+               Callback<std::optional<ASTNode>> CB);
+ 
++  /// CodeLenses.
++  void provideCodeLens(PathRef File, uint32_t Limit,
++                       Callback<std::vector<CodeLens>> CB);
++  void resolveCodeLens(const CodeLens &Params, uint32_t Limit,
++                       Callback<CodeLens> CB);
++
+   /// Runs an arbitrary action that has access to the AST of the specified file.
+   /// The action will execute on one of ClangdServer's internal threads.
+   /// The AST is only valid for the duration of the callback.
+diff --git a/clang-tools-extra/clangd/CodeLens.cpp b/clang-tools-extra/clangd/CodeLens.cpp
+new file mode 100644
+index 000000000000..a5ef149d920b
+--- /dev/null
++++ b/clang-tools-extra/clangd/CodeLens.cpp
+@@ -0,0 +1,167 @@
++//===--- CodeLens.cpp --------------------------------------------*- C++-*-===//
++//
++// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
++// See https://llvm.org/LICENSE.txt for license information.
++// SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
++//
++//===----------------------------------------------------------------------===//
++
++#include "CodeLens.h"
++#include "AST.h"
++#include "FindSymbols.h"
++#include "XRefs.h"
++#include "support/Logger.h"
++
++namespace clang {
++namespace clangd {
++std::optional<Location> declToLocation(const Decl *D) {
++  ASTContext &Ctx = D->getASTContext();
++  auto &SM = Ctx.getSourceManager();
++  SourceLocation NameLoc = nameLocation(*D, Ctx.getSourceManager());
++  auto FileFieldRef = SM.getFileEntryRefForID(SM.getFileID(NameLoc));
++  if (!FileFieldRef)
++    return std::nullopt;
++  auto FilePath =
++      getCanonicalPath(*FileFieldRef, SM);
++  auto TUFieldRef = SM.getFileEntryRefForID(SM.getFileID(NameLoc));
++  if (!TUFieldRef)
++    return std::nullopt;
++  auto TUPath = getCanonicalPath(*TUFieldRef, SM);
++  if (!FilePath || !TUPath)
++    return std::nullopt; // Not useful without a uri.
++
++  Position NameBegin = sourceLocToPosition(SM, NameLoc);
++  Position NameEnd = sourceLocToPosition(
++      SM, Lexer::getLocForEndOfToken(NameLoc, 0, SM, Ctx.getLangOpts()));
++  return Location{URIForFile::canonicalize(*FilePath, *TUPath),
++                  {NameBegin, NameEnd}};
++}
++
++std::vector<Location> lookupIndex(const SymbolIndex *Index, uint32_t Limit,
++                                  PathRef Path, Decl *D, RelationKind R) {
++  std::vector<Location> Results;
++  if (!Index)
++    return Results;
++  auto ID = getSymbolID(D);
++  if (!ID)
++    return Results;
++  RelationsRequest Req;
++  Req.Subjects.insert(ID);
++  Req.Limit = Limit;
++  Req.Predicate = R;
++  Index->relations(Req, [&](const SymbolID &Subject, const Symbol &Object) {
++    if (auto Loc = indexToLSPLocation(Object.CanonicalDeclaration, Path)) {
++      Results.emplace_back(std::move(*Loc));
++    }
++  });
++  return Results;
++}
++
++void traverseDecl(ParsedAST &AST, const SymbolIndex *Index, uint32_t Limit,
++                  PathRef Path, Decl *D, std::vector<CodeLens> &Results) {
++  auto &SM = AST.getSourceManager();
++  // Skip symbols which do not originate from the main file.
++  if (!isInsideMainFile(D->getLocation(), SM))
++    return;
++  if (D->isImplicit() || !isa<NamedDecl>(D) || D->getLocation().isMacroID())
++    return;
++
++  if (auto *Templ = llvm::dyn_cast<TemplateDecl>(D)) {
++    if (auto *TD = Templ->getTemplatedDecl())
++      D = TD;
++  };
++  auto Location = D->getLocation();
++  Range Range = {
++      sourceLocToPosition(SM, Location),
++      sourceLocToPosition(
++          SM, Lexer::getLocForEndOfToken(Location, 0, SM, AST.getLangOpts()))};
++
++  // Namspaces are not indexed, so it's meaningless to provide codelens.
++  if (!isa<NamespaceDecl, NamespaceAliasDecl>(D)) {
++    CodeLensResolveData Data;
++    Data.uri = std::string(Path);
++    Results.emplace_back(CodeLens{Range, std::nullopt, Data});
++  }
++
++  // handle inheritance codelens directly
++  CodeLensArgument Sub, Super;
++  if (auto *CXXRD = dyn_cast<CXXRecordDecl>(D)) {
++    if (!CXXRD->isEffectivelyFinal()) {
++      Sub.locations = lookupIndex(Index, Limit, Path, D, RelationKind::BaseOf);
++    }
++  } else if (auto *CXXMD = dyn_cast<CXXMethodDecl>(D)) {
++    if (CXXMD->isVirtual()) {
++      Sub.locations =
++          lookupIndex(Index, Limit, Path, D, RelationKind::OverriddenBy);
++    }
++    for (const auto *P : CXXMD->overridden_methods()) {
++      if (auto Loc = declToLocation(P->getCanonicalDecl()))
++        Super.locations.emplace_back(*Loc);
++    }
++  }
++
++  if (auto Count = Super.locations.size()) {
++    Super.position = Range.start;
++    Super.uri = std::string(Path);
++    Command Cmd;
++    Cmd.command = std::string(CodeAction::SHOW_REFERENCES);
++    Cmd.title = std::to_string(Count) + " base(s)";
++    Cmd.argument = std::move(Super);
++    Results.emplace_back(CodeLens{Range, std::move(Cmd), std::nullopt});
++  }
++
++  if (auto Count = Sub.locations.size()) {
++    Sub.position = Range.start;
++    Sub.uri = std::string(Path);
++    Command Cmd;
++    Cmd.command = std::string(CodeAction::SHOW_REFERENCES);
++    Cmd.title = std::to_string(Count) + " derived";
++    Cmd.argument = std::move(Sub);
++    Results.emplace_back(CodeLens{Range, std::move(Cmd), std::nullopt});
++  }
++
++  // Skip symbols inside function body.
++  if (isa<FunctionDecl>(D)) {
++    return;
++  }
++
++  if (auto *Scope = dyn_cast<DeclContext>(D)) {
++    for (auto *C : Scope->decls())
++      traverseDecl(AST, Index, Limit, Path, C, Results);
++  }
++}
++
++llvm::Expected<std::vector<CodeLens>>
++getDocumentCodeLens(ParsedAST &AST, const SymbolIndex *Index, uint32_t Limit,
++                    PathRef Path) {
++  std::vector<CodeLens> Results;
++  Limit = Limit ? Limit : std::numeric_limits<uint32_t>::max();
++  for (auto &TopLevel : AST.getLocalTopLevelDecls())
++    traverseDecl(AST, Index, Limit, Path, TopLevel, Results);
++  return Results;
++}
++
++llvm::Expected<CodeLens> resolveCodeLens(ParsedAST &AST, const CodeLens &Params,
++                                         uint32_t Limit,
++                                         const SymbolIndex *Index,
++                                         PathRef Path) {
++  Command Cmd;
++  Cmd.command = std::string(CodeAction::SHOW_REFERENCES);
++  Position Pos = Params.range.start;
++  if (Params.data) {
++    CodeLensArgument Arg;
++    Arg.uri = std::string(Path);
++    Arg.position = Pos;
++    auto Refs = findReferences(AST, Pos, Limit, Index).References;
++    Arg.locations.reserve(Refs.size());
++    for (auto &Ref : Refs) {
++      Arg.locations.emplace_back(std::move(Ref.Loc));
++    }
++    Cmd.title = std::to_string(Refs.size() - 1) + " ref(s)";
++    Cmd.argument = std::move(Arg);
++    return CodeLens{Params.range, std::move(Cmd), std::nullopt};
++  }
++  return error("failed to resolve codelens");
++}
++} // namespace clangd
++} // namespace clang
+diff --git a/clang-tools-extra/clangd/CodeLens.h b/clang-tools-extra/clangd/CodeLens.h
+new file mode 100644
+index 000000000000..2dbfaf87baed
+--- /dev/null
++++ b/clang-tools-extra/clangd/CodeLens.h
+@@ -0,0 +1,27 @@
++//===--- CodeLens.h ----------------------------------------------*- C++-*-===//
++//
++// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
++// See https://llvm.org/LICENSE.txt for license information.
++// SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
++//
++//===----------------------------------------------------------------------===//
++
++#ifndef LLVM_CLANG_TOOLS_EXTRA_CLANGD_CODELENS_H
++#define LLVM_CLANG_TOOLS_EXTRA_CLANGD_CODELENS_H
++
++#include "ParsedAST.h"
++#include "Protocol.h"
++
++namespace clang {
++namespace clangd {
++llvm::Expected<std::vector<CodeLens>>
++getDocumentCodeLens(ParsedAST &AST, const SymbolIndex *Index, uint32_t Limit,
++                    PathRef Path);
++
++llvm::Expected<CodeLens> resolveCodeLens(ParsedAST &AST, const CodeLens &Params,
++                                         uint32_t Limit,
++                                         const SymbolIndex *Index,
++                                         PathRef Path);
++} // namespace clangd
++} // namespace clang
++#endif
+\ No newline at end of file
+diff --git a/clang-tools-extra/clangd/Protocol.cpp b/clang-tools-extra/clangd/Protocol.cpp
+index 4b2472ad4be0..b62fbb89b413 100644
+--- a/clang-tools-extra/clangd/Protocol.cpp
++++ b/clang-tools-extra/clangd/Protocol.cpp
+@@ -150,6 +150,12 @@ llvm::raw_ostream &operator<<(llvm::raw_ostream &OS, const Range &R) {
+   return OS << R.start << '-' << R.end;
+ }
+ 
++bool fromJSON(const llvm::json::Value &Params, Location &L,
++              llvm::json::Path P) {
++  llvm::json::ObjectMapper O(Params, P);
++  return O && O.map("uri", L.uri) && O.map("range", L.range);
++}
++
+ llvm::json::Value toJSON(const Location &P) {
+   return llvm::json::Object{
+       {"uri", P.uri},
+@@ -826,6 +832,8 @@ llvm::json::Value toJSON(const Command &C) {
+ const llvm::StringLiteral CodeAction::QUICKFIX_KIND = "quickfix";
+ const llvm::StringLiteral CodeAction::REFACTOR_KIND = "refactor";
+ const llvm::StringLiteral CodeAction::INFO_KIND = "info";
++const llvm::StringLiteral CodeAction::SHOW_REFERENCES =
++    "clangd.action.showReferences";
+ 
+ llvm::json::Value toJSON(const CodeAction &CA) {
+   auto CodeAction = llvm::json::Object{{"title", CA.title}};
+@@ -1570,5 +1578,37 @@ bool fromJSON(const llvm::json::Value &E, SymbolID &S, llvm::json::Path P) {
+ }
+ llvm::json::Value toJSON(const SymbolID &S) { return S.str(); }
+ 
++bool fromJSON(const llvm::json::Value &Params, CodeLensResolveData &R,
++              llvm::json::Path P) {
++  llvm::json::ObjectMapper O(Params, P);
++  return O && O.map("uri", R.uri);
++}
++
++llvm::json::Value toJSON(const CodeLensResolveData &P) {
++  llvm::json::Object O{{"uri", P.uri}};
++  return std::move(O);
++}
++
++llvm::json::Value toJSON(const CodeLensArgument &P) {
++  llvm::json::Object O{
++      {"uri", P.uri}, {"position", P.position}, {"locations", P.locations}};
++  return std::move(O);
++}
++
++bool fromJSON(const llvm::json::Value &Params, CodeLens &R,
++              llvm::json::Path P) {
++  llvm::json::ObjectMapper O(Params, P);
++  return O && O.map("range", R.range) && O.map("data", R.data);
++}
++
++llvm::json::Value toJSON(const CodeLens &C) {
++  llvm::json::Object O{{"range", C.range}};
++  if (C.command)
++    O["command"] = *C.command;
++  if (C.data)
++    O["data"] = *C.data;
++  return std::move(O);
++}
++
+ } // namespace clangd
+ } // namespace clang
+diff --git a/clang-tools-extra/clangd/Protocol.h b/clang-tools-extra/clangd/Protocol.h
+index eb271676e651..2a14a7ed6f64 100644
+--- a/clang-tools-extra/clangd/Protocol.h
++++ b/clang-tools-extra/clangd/Protocol.h
+@@ -225,6 +225,7 @@ struct Location {
+     return std::tie(LHS.uri, LHS.range) < std::tie(RHS.uri, RHS.range);
+   }
+ };
++bool fromJSON(const llvm::json::Value &, Location &, llvm::json::Path);
+ llvm::json::Value toJSON(const Location &);
+ llvm::raw_ostream &operator<<(llvm::raw_ostream &, const Location &);
+ 
+@@ -1026,6 +1027,9 @@ struct CodeAction {
+   const static llvm::StringLiteral QUICKFIX_KIND;
+   const static llvm::StringLiteral REFACTOR_KIND;
+   const static llvm::StringLiteral INFO_KIND;
++  /// This action should be implemented by client,
++  /// because we can not call 'editor.action.showReferences' directly.
++  const static llvm::StringLiteral SHOW_REFERENCES;
+ 
+   /// The diagnostics that this code action resolves.
+   std::optional<std::vector<Diagnostic>> diagnostics;
+@@ -1890,6 +1894,33 @@ struct ASTNode {
+ llvm::json::Value toJSON(const ASTNode &);
+ llvm::raw_ostream &operator<<(llvm::raw_ostream &, const ASTNode &);
+ 
++/// https://microsoft.github.io/language-server-protocol/specification#textDocument_codeLens
++struct CodeLensResolveData {
++  std::string uri;
++};
++bool fromJSON(const llvm::json::Value &, CodeLensResolveData &,
++              llvm::json::Path);
++llvm::json::Value toJSON(const CodeLensResolveData &A);
++
++struct CodeLensArgument {
++  std::string uri;
++  Position position;
++  std::vector<Location> locations;
++};
++llvm::json::Value toJSON(const CodeLensArgument &A);
++
++struct CodeLensParams : DocumentSymbolParams {};
++
++struct CodeLens {
++  // CodeLens range.
++  Range range;
++  // CodeLens command.
++  std::optional<Command> command;
++  // CodeLens resolve data.
++  std::optional<CodeLensResolveData> data;
++};
++bool fromJSON(const llvm::json::Value &, CodeLens &, llvm::json::Path);
++llvm::json::Value toJSON(const CodeLens &);
+ } // namespace clangd
+ } // namespace clang
+ 
+diff --git a/clang-tools-extra/clangd/test/initialize-params.test b/clang-tools-extra/clangd/test/initialize-params.test
+index a1fdae9870ab..6f2c2752cb8a 100644
+--- a/clang-tools-extra/clangd/test/initialize-params.test
++++ b/clang-tools-extra/clangd/test/initialize-params.test
+@@ -9,6 +9,9 @@
+ # CHECK-NEXT:      "callHierarchyProvider": true,
+ # CHECK-NEXT:      "clangdInlayHintsProvider": true,
+ # CHECK-NEXT:      "codeActionProvider": true,
++# CHECK-NEXT:      "codeLensProvider": {
++# CHECK-NEXT:        "resolveProvider": true
++# CHECK-NEXT:      },
+ # CHECK-NEXT:      "compilationDatabase": {
+ # CHECK-NEXT:        "automaticReload": true
+ # CHECK-NEXT:      },
+diff --git a/clang-tools-extra/clangd/tool/ClangdMain.cpp b/clang-tools-extra/clangd/tool/ClangdMain.cpp
+index ab5169171e3d..65ed7612b384 100644
+--- a/clang-tools-extra/clangd/tool/ClangdMain.cpp
++++ b/clang-tools-extra/clangd/tool/ClangdMain.cpp
+@@ -350,6 +350,11 @@ list<std::string> TweakList{
+     CommaSeparated,
+ };
+ 
++opt<bool> EnableCodeLens{
++    "code-lens", cat(Features), desc("Enable preview of CodeLens feature"),
++    init(true),  Hidden,
++};
++
+ opt<unsigned> WorkerThreadsCount{
+     "j",
+     cat(Misc),
+@@ -914,6 +919,7 @@ clangd accepts flags on the commandline, and in the CLANGD_FLAGS environment var
+   }
+   Opts.AsyncThreadsCount = WorkerThreadsCount;
+   Opts.MemoryCleanup = getMemoryCleanupFunction();
++  Opts.CodeLens = EnableCodeLens;
+ 
+   Opts.CodeComplete.IncludeIneligibleResults = IncludeIneligibleResults;
+   Opts.CodeComplete.Limit = LimitResults;

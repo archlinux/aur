@@ -1,0 +1,587 @@
+diff --git a/clang-tools-extra/clangd/CodeComplete.cpp b/clang-tools-extra/clangd/CodeComplete.cpp
+index 260c44b2064b..eafdd78dd58b 100644
+--- a/clang-tools-extra/clangd/CodeComplete.cpp
++++ b/clang-tools-extra/clangd/CodeComplete.cpp
+@@ -329,7 +329,12 @@ struct CodeCompletionBuilder {
+     if (C.SemaResult) {
+       assert(ASTCtx);
+       Completion.Origin |= SymbolOrigin::AST;
+-      Completion.Name = std::string(llvm::StringRef(SemaCCS->getTypedText()));
++      if (C.SemaResult->Name) {
++        Completion.Name = C.SemaResult->Name;
++        Completion.AbstractName = true;
++      } else {
++        Completion.Name = std::string(llvm::StringRef(SemaCCS->getTypedText()));
++      }
+       Completion.FilterText = SemaCCS->getAllTypedText();
+       if (Completion.Scope.empty()) {
+         if ((C.SemaResult->Kind == CodeCompletionResult::RK_Declaration) ||
+@@ -438,6 +443,8 @@ struct CodeCompletionBuilder {
+     if (C.SemaResult) {
+       getSignature(*SemaCCS, &S.Signature, &S.SnippetSuffix, C.SemaResult->Kind,
+                    C.SemaResult->CursorKind, &Completion.RequiredQualifier);
++      if (C.SemaResult->Name) // Description is self-contained.
++        S.Signature.clear();
+       if (!C.SemaResult->FunctionCanBeCall)
+         S.SnippetSuffix.clear();
+       S.ReturnType = getReturnType(*SemaCCS);
+@@ -917,6 +924,8 @@ struct CompletionRecorder : public CodeCompleteConsumer {
+   // Returns the filtering/sorting name for Result, which must be from Results.
+   // Returned string is owned by this recorder (or the AST).
+   llvm::StringRef getName(const CodeCompletionResult &Result) {
++    if (Result.Name)
++      return Result.Name;
+     switch (Result.Kind) {
+     case CodeCompletionResult::RK_Declaration:
+       if (auto *ID = Result.Declaration->getIdentifier())
+@@ -2221,9 +2230,17 @@ CompletionItem CodeCompletion::render(const CodeCompleteOptions &Opts) const {
+   const auto *InsertInclude = Includes.empty() ? nullptr : &Includes[0];
+   LSP.label = ((InsertInclude && InsertInclude->Insertion)
+                    ? Opts.IncludeIndicator.Insert
+-                   : Opts.IncludeIndicator.NoInsert) +
+-              (Opts.ShowOrigins ? "[" + llvm::to_string(Origin) + "]" : "") +
+-              RequiredQualifier + Name + Signature;
++               : AbstractName ? Opts.IncludeIndicator.Rewrite
++                              : Opts.IncludeIndicator.NoInsert);
++  if (Opts.ShowOrigins)
++    LSP.label += "[" + llvm::to_string(Origin) + "]";
++  if (AbstractName) {
++    LSP.label += Name;
++  } else {
++    LSP.label += RequiredQualifier;
++    LSP.label += Name;
++    LSP.label += Signature;
++  }
+ 
+   LSP.kind = Kind;
+   LSP.detail = BundleSize > 1
+@@ -2242,7 +2259,8 @@ CompletionItem CodeCompletion::render(const CodeCompleteOptions &Opts) const {
+   }
+   LSP.sortText = sortText(Score.Total, FilterText);
+   LSP.filterText = FilterText;
+-  LSP.textEdit = {CompletionTokenRange, RequiredQualifier + Name};
++  LSP.textEdit = {CompletionTokenRange,
++                  AbstractName ? RequiredQualifier : RequiredQualifier + Name};
+   // Merge continuous additionalTextEdits into main edit. The main motivation
+   // behind this is to help LSP clients, it seems most of them are confused when
+   // they are provided with additionalTextEdits that are consecutive to main
+@@ -2251,7 +2269,7 @@ CompletionItem CodeCompletion::render(const CodeCompleteOptions &Opts) const {
+   // is mainly to help LSP clients again, so that changes do not effect each
+   // other.
+   for (const auto &FixIt : FixIts) {
+-    if (FixIt.range.end == LSP.textEdit->range.start) {
++    if (0 && FixIt.range.end == LSP.textEdit->range.start) {
+       LSP.textEdit->newText = FixIt.newText + LSP.textEdit->newText;
+       LSP.textEdit->range.start = FixIt.range.start;
+     } else {
+diff --git a/clang-tools-extra/clangd/CodeComplete.h b/clang-tools-extra/clangd/CodeComplete.h
+index a7c1ae95dcbf..dc946db5c04b 100644
+--- a/clang-tools-extra/clangd/CodeComplete.h
++++ b/clang-tools-extra/clangd/CodeComplete.h
+@@ -79,6 +79,7 @@ struct CodeCompleteOptions {
+   struct IncludeInsertionIndicator {
+     std::string Insert = "•";
+     std::string NoInsert = " ";
++    std::string Rewrite = "⮞";
+   } IncludeIndicator;
+ 
+   /// Expose origins of completion items in the label (for debugging).
+@@ -205,6 +206,9 @@ struct CodeCompletion {
+   // thse includes may not be accurate for all of them.
+   llvm::SmallVector<IncludeCandidate, 1> Includes;
+ 
++  /// True if the name is a description, rather than text to be inserted.
++  bool AbstractName = false;
++
+   /// Holds information about small corrections that needs to be done. Like
+   /// converting '->' to '.' on member access.
+   std::vector<TextEdit> FixIts;
+diff --git a/clang/include/clang/Sema/CodeCompleteConsumer.h b/clang/include/clang/Sema/CodeCompleteConsumer.h
+index a2d523cd3e92..c50a41a7c7ba 100644
+--- a/clang/include/clang/Sema/CodeCompleteConsumer.h
++++ b/clang/include/clang/Sema/CodeCompleteConsumer.h
+@@ -782,6 +782,13 @@ public:
+     const IdentifierInfo *Macro;
+   };
+ 
++  /// When Kind == RK_Pattern, an optional short name for the pattern.
++  /// Often he pattern combines with a fixit to rewrite surrounding code.
++  ///
++  /// For, example after "foo.", a completion that rewrites to "std::move(foo)"
++  /// could have Name = "move".
++  const char *Name = nullptr;
++
+   /// The priority of this particular code-completion result.
+   unsigned Priority;
+ 
+diff --git a/clang/lib/Sema/SemaCodeComplete.cpp b/clang/lib/Sema/SemaCodeComplete.cpp
+index 2073df030516..3380e1122494 100644
+--- a/clang/lib/Sema/SemaCodeComplete.cpp
++++ b/clang/lib/Sema/SemaCodeComplete.cpp
+@@ -20,6 +20,7 @@
+ #include "clang/AST/ExprConcepts.h"
+ #include "clang/AST/ExprObjC.h"
+ #include "clang/AST/NestedNameSpecifier.h"
++#include "clang/AST/OperationKinds.h"
+ #include "clang/AST/QualTypeNames.h"
+ #include "clang/AST/RecursiveASTVisitor.h"
+ #include "clang/AST/Type.h"
+@@ -2497,15 +2498,19 @@ static void AddOrdinaryNameResults(Sema::ParserCompletionContext CCC, Scope *S,
+       // 'this', if we're in a non-static member function.
+       addThisCompletion(SemaRef, Results);
+ 
+-      // true
+-      Builder.AddResultTypeChunk("bool");
+-      Builder.AddTypedTextChunk("true");
+-      Results.AddResult(Result(Builder.TakeString()));
++      if (Results.getCompletionContext().getPreferredType().isNull() ||
++          Results.getCompletionContext()
++                  .getPreferredType()
++                  .getCanonicalType() == SemaRef.getASTContext().BoolTy) {
++        Builder.AddResultTypeChunk("bool");
++        Builder.AddTypedTextChunk("true");
++        Results.AddResult(Result(Builder.TakeString()));
+ 
+-      // false
+-      Builder.AddResultTypeChunk("bool");
+-      Builder.AddTypedTextChunk("false");
+-      Results.AddResult(Result(Builder.TakeString()));
++        // false
++        Builder.AddResultTypeChunk("bool");
++        Builder.AddTypedTextChunk("false");
++        Results.AddResult(Result(Builder.TakeString()));
++      }
+ 
+       if (SemaRef.getLangOpts().RTTI) {
+         // dynamic_cast < type-id > ( expression )
+@@ -5609,6 +5614,405 @@ Expr *unwrapParenList(Expr *Base) {
+   return Base;
+ }
+ 
++bool isMovable(Expr *E) {
++  if (E->getValueKind() != VK_LValue)
++    return false;
++  return E->getType().getNonReferenceType()->isStructureOrClassType();
++}
++
++QualType pointeeType(QualType T, Sema &S) {
++  T = T.getCanonicalType();
++  if (const auto *PT = dyn_cast<PointerType>(T))
++    return PT->getPointeeType();
++  if (const auto *RT = dyn_cast<RecordType>(T)) {
++    // If RD is complete, look at its operator*.
++    // Unfortunately with templates it's often incomplete, and instantiating is
++    // messy. See fallback cases below.
++    if (auto *RD = RT->getDecl()->getDefinition()) {
++      if (auto *Star =
++              RD->lookup(S.getASTContext().DeclarationNames.getCXXOperatorName(
++                             clang::OO_Star))
++                  .find_first<FunctionDecl>())
++        return Star->getReturnType().getNonReferenceType();
++    } else if (const auto *CTSD =
++                   dyn_cast<ClassTemplateSpecializationDecl>(RT->getDecl())) {
++      // Heuristic: pointee of Iterator<T> is T.
++      // XXX this isn't a good heuristic: in libstdc++ vector<T>::iterator
++      // is __normal_iterator<T*, vector<T>>!
++      const auto &Args = CTSD->getTemplateArgs();
++      if (Args.size() > 0)
++        return Args.get(0).getAsType();
++    } else if (RT->getDecl()->getDeclContext()->getDeclKind() ==
++               Decl::ClassTemplateSpecialization) {
++      // Heuristic: pointee of Container<T>::Iterator is T.
++      const auto &Args =
++          static_cast<ClassTemplateSpecializationDecl *>(RD->getDeclContext())
++              ->getTemplateArgs();
++      if (Args.size() > 0)
++        return Args.get(0).getAsType();
++    }
++  }
++  // Not much point probing into dependent TemplateSpecializationType,
++  // it's very to yield a dependent type we can't analyze.
++  return QualType();
++}
++
++bool isByValue(QualType T, ASTContext &Ctx) {
++  T = T.getCanonicalType().getNonReferenceType();
++  if (T->isLiteralType(Ctx)) {
++    if (auto Size = Ctx.getTypeSizeInCharsIfKnown(T))
++      // Arbitrary threshold. Allows string_view by value.
++      return Size->getQuantity() < 16;
++  }
++  return false;
++}
++
++QualType iteratorType(const RecordDecl *RD, const ASTContext &Ctx) {
++  if (RD && (RD = RD->getDefinition())) {
++    auto Begin = RD->lookup(&Ctx.Idents.get("begin"));
++    if (!Begin.empty() && !RD->lookup(&Ctx.Idents.get("end")).empty()) {
++      if (const auto *FD = Begin.front()->getAsFunction()) {
++        if (FD->getMinRequiredArguments() == 0)
++          return FD->getReturnType();
++      }
++    }
++  }
++  return QualType();
++}
++
++// If T is a valid container for a C++ foreach loop, return its iterator type.
++// If it isn't or we can't tell, return null.
++// If there's ambiguity (e.g. overloaded begin()) return one arbitrarily.
++QualType iteratorType(QualType T, ASTContext &Ctx) {
++  T = T.getCanonicalType().getNonReferenceType();
++  if (const auto *ET = T->getArrayElementTypeNoTypeQual())
++    return Ctx.getPointerType(QualType(ET, 0));
++  if (const auto *RT = T->getAs<RecordType>())
++    return iteratorType(RT->getDecl(), Ctx);
++  if (const auto *TST = T->getAs<TemplateSpecializationType>()) {
++    if (auto *CTD = dyn_cast_or_null<ClassTemplateDecl>(
++            TST->getTemplateName().getAsTemplateDecl()))
++      return iteratorType(CTD->getTemplatedDecl(), Ctx);
++  }
++  return QualType();
++}
++
++const char *iterationVariableType(QualType IteratorType, Sema &S) {
++  if (IteratorType.isNull())
++    return nullptr;
++  QualType Element = pointeeType(IteratorType, S);
++  llvm::errs() << "element type is " << Element.getAsString() << "\n";
++  if (!Element.isNull()) {
++    if (Element->isPointerType())
++      return "const auto*";
++    if (isByValue(Element, S.getASTContext()))
++      return "auto";
++  }
++  return "const auto&";
++}
++
++// Whether E is a simple reference that we shouldn't extract a variable for.
++bool isSyntacticallySimple(const Expr *E) {
++  if (const auto *DRE = llvm::dyn_cast<DeclRefExpr>(E)) {
++    if (!DRE->getQualifier())
++      return true;
++  } else if (const auto *ME = llvm::dyn_cast<MemberExpr>(E)) {
++    if (ME->getBase()->isImplicitCXXThis())
++      return true;
++  }
++  return false;
++}
++
++bool isConvertibleToBool(const RecordDecl *RD) {
++  const auto &Ctx = RD->getParentASTContext();
++  return !RD->lookup(
++                Ctx.DeclarationNames.getCXXConversionFunctionName(Ctx.BoolTy))
++              .empty();
++}
++
++struct Cast {
++  using Set = unsigned;
++  enum : unsigned {
++    Static = 1 << 0,
++    StaticAddRef = 1 << 1,
++    Dynamic = 1 << 2,
++    Reinterpret = 1 << 3,
++    Bit = 1 << 4,
++    Const = 1 << 5,
++    C = 1 << 6,
++  };
++};
++Cast::Set getDowncasts(QualType From, QualType To, ASTContext &Ctx) {
++  assert(From.isCanonical() && To.isCanonical() &&
++         From.getQualifiers() == To.getQualifiers());
++  if (!Ctx.getLangOpts().CPlusPlus)
++    return 0;
++  Cast::Set Result = 0;
++  if (auto *FromRT = dyn_cast<RecordType>(From))
++    if (auto *ToRT = dyn_cast<RecordType>(To)) {
++      if (ToRT->getAsCXXRecordDecl()->isDerivedFrom(
++              FromRT->getAsCXXRecordDecl())) {
++        Result |= Cast::Static;
++        if (FromRT->getAsCXXRecordDecl()->isPolymorphic() &&
++            Ctx.getLangOpts().RTTI)
++          Result |= Cast::Dynamic;
++      }
++    }
++  return Result;
++}
++
++Cast::Set recommendCasts(Expr *FromExpr, QualType To, ASTContext &Ctx) {
++  QualType FromNoRef = FromExpr->getType()
++                           .getCanonicalType()
++                           .getNonReferenceType()
++                           .getUnqualifiedType();
++  QualType ToNoRef =
++      To.getCanonicalType().getNonReferenceType().getUnqualifiedType();
++
++  // Producing a non-const reference has only a few possibilities...
++  if (To->isLValueReferenceType() && !To->getPointeeType().isConstQualified()) {
++    // it must always come from an lvalue
++    if (FromExpr->isLValue()) {
++      // if it's from a const lvalue, const_cast is possible
++      if (FromExpr->getType().isConstQualified())
++        return FromNoRef == ToNoRef ? Cast::Const : 0;
++      // otherwise cast between non-const refs can only be inheritance
++      return getDowncasts(FromNoRef, ToNoRef, Ctx);
++    }
++    return 0;
++  }
++  // From here, we assume we're producing values and mostly ignore refs.
++
++  // Integral casts. Only emit those that can never be implicit.
++  if ((FromNoRef->isScopedEnumeralType() && ToNoRef->isIntegerType()) ||
++      (FromNoRef->isIntegerType() && ToNoRef->isEnumeralType()))
++    return Cast::Static;
++  auto IsIntPointer = [&](QualType T) {
++    return Ctx.getIntPtrType() == T || Ctx.getUIntPtrType() == T;
++  };
++  if ((FromNoRef->isPointerType() && IsIntPointer(ToNoRef)) ||
++      (ToNoRef->isPointerType() && IsIntPointer(FromNoRef)))
++    return Cast::Reinterpret;
++
++  // Downcasts of refs/pointers/values of related class types.
++  if (auto Downcasts = getDowncasts(FromNoRef, ToNoRef, Ctx))
++    return Downcasts;
++  if (FromNoRef->isPointerType() && ToNoRef->isPointerType()) {
++    QualType FromPointee = FromNoRef->getPointeeType();
++    QualType ToPointee = ToNoRef->getPointeeType();
++    if (FromPointee.getQualifiers() == ToPointee.getQualifiers())
++      if (auto Downcasts = getDowncasts(FromPointee, ToPointee, Ctx))
++        return Downcasts;
++  }
++  return 0;
++}
++
++bool isConvertibleToBool(QualType T, ASTContext &Ctx) {
++  T = T.getCanonicalType();
++  if (T->isIntegralOrUnscopedEnumerationType())
++    return true;
++  if (T->isAnyPointerType())
++    return true;
++  if (const auto *RT = dyn_cast<RecordType>(T)) {
++    if (const auto *RD = RT->getDecl()->getDefinition())
++      return isConvertibleToBool(RD);
++    else if (const auto *CTSD =
++                 llvm::dyn_cast<ClassTemplateSpecializationDecl>(RD))
++      return isConvertibleToBool(CTSD->getTemplateInstantiationPattern());
++  }
++  if (const auto *TST = dyn_cast<TemplateSpecializationType>(T)) {
++    if (const auto *TD = dyn_cast_or_null<ClassTemplateDecl>(
++            TST->getTemplateName().getAsTemplateDecl()))
++      return isConvertibleToBool(TD->getTemplatedDecl());
++  }
++  return false;
++}
++
++// The type of the condition variable that can be extracted from an expression.
++// e.g. "auto" or "const auto&". For a simple if (expr), returns nullptr
++// If not convertible to boolean, returns nullptr.
++const char *conditionVariableType(Expr *E, ASTContext &Ctx) {
++  if (!Ctx.getLangOpts().CPlusPlus11)
++    return nullptr;
++  QualType T = E->getType().getCanonicalType().getUnqualifiedType();
++  // No variable extracted if there's nothing extra in it.
++  // Don't extract a variable if we can just use the original as easily.
++  if (T->isBooleanType() || isSyntacticallySimple(E))
++    return nullptr;
++
++  if (T->isPointerType())
++    return "const auto*";
++  if (E->isLValue() && !isByValue(T, Ctx))
++    return "const auto&";
++  return "auto";
++}
++
++void addPseudoMemberCompletions(Expr *Base, SourceRange Replace,
++                                ResultBuilder &Results, bool BaseIsStmt,
++                                QualType PreferredType) {
++  ASTContext &Ctx = Results.getSema().getASTContext();
++  PrintingPolicy Policy = getCompletionPrintingPolicy(Results.getSema());
++  bool Invalid = false;
++  llvm::StringRef ExprRef = Lexer::getSourceText(
++      CharSourceRange::getTokenRange(Base->getSourceRange()),
++      Ctx.getSourceManager(), Ctx.getLangOpts(), &Invalid);
++  if (Invalid)
++    return;
++  const char *ExprCode = Results.getAllocator().CopyString(ExprRef);
++
++  auto TypeString = [&](QualType T) {
++    return Results.getAllocator().CopyString(T.getAsString(Policy));
++  };
++  auto AddResult = [&](const char *Name, QualType Type, auto BuildReplacement) {
++    CodeCompletionBuilder Replacement(Results.getAllocator(),
++                                      Results.getCodeCompletionTUInfo());
++    BuildReplacement(Replacement);
++    if (!Type.isNull())
++      Replacement.AddResultTypeChunk(TypeString(Type));
++    CodeCompletionResult Result(Replacement.TakeString());
++    Result.FixIts = {FixItHint::CreateRemoval(Replace)};
++    Result.Name = Name;
++    Results.AddResult(std::move(Result));
++  };
++  if (Ctx.getLangOpts().CPlusPlus11 && !BaseIsStmt && isMovable(Base)) {
++    AddResult("move",
++              Ctx.getRValueReferenceType(Base->getType().getNonReferenceType()),
++              [&](CodeCompletionBuilder &B) {
++                B.AddTextChunk("std::move");
++                B.AddChunk(CodeCompletionString::CK_LeftParen);
++                B.AddTextChunk(ExprCode);
++                B.AddChunk(CodeCompletionString::CK_RightParen);
++              });
++  }
++  if (Ctx.getLangOpts().CPlusPlus11 && BaseIsStmt) {
++    QualType Iterator = iteratorType(Base->getType(), Ctx);
++    llvm::errs() << "iterator type is " << Iterator.getAsString() << "\n";
++    if (const char *ElementType =
++            iterationVariableType(Iterator, Results.getSema())) {
++      AddResult("foreach", QualType(), [&](CodeCompletionBuilder &B) {
++        B.AddTextChunk("for");
++        B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
++        B.AddChunk(CodeCompletionString::CK_LeftParen);
++        B.AddTextChunk(ElementType);
++        B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
++        B.AddPlaceholderChunk("element");
++        B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
++        B.AddChunk(CodeCompletionString::CK_Colon);
++        B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
++        B.AddTextChunk(ExprCode);
++        B.AddChunk(CodeCompletionString::CK_RightParen);
++        B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
++        B.AddChunk(CodeCompletionString::CK_LeftBrace);
++        B.AddChunk(CodeCompletionString::CK_VerticalSpace);
++        B.AddChunk(CodeCompletionString::CK_Placeholder);
++        B.AddChunk(CodeCompletionString::CK_VerticalSpace);
++        B.AddChunk(CodeCompletionString::CK_RightBrace);
++      });
++    }
++  }
++
++  if (!PreferredType.isNull()) {
++    if (auto Casts = recommendCasts(Base, PreferredType, Ctx)) {
++      const char *PreferredTypeStr = TypeString(PreferredType);
++      auto AddCxxCast = [&](const char *Name) {
++        AddResult(Name, PreferredType, [&](CodeCompletionBuilder &B) {
++          B.AddTextChunk(Name);
++          B.AddChunk(CodeCompletionString::CK_LeftAngle);
++          B.AddTextChunk(PreferredTypeStr);
++          B.AddChunk(CodeCompletionString::CK_RightAngle);
++          B.AddChunk(CodeCompletionString::CK_LeftParen);
++          B.AddTextChunk(ExprCode);
++          B.AddChunk(CodeCompletionString::CK_RightParen);
++        });
++      };
++      auto AddCCast = [&]() {
++        AddResult("cast", PreferredType, [&](CodeCompletionBuilder &B) {
++          B.AddChunk(CodeCompletionString::CK_LeftParen);
++          B.AddTextChunk(PreferredTypeStr);
++          B.AddChunk(CodeCompletionString::CK_RightParen);
++          B.AddTextChunk(ExprCode);
++        });
++      };
++      if (Ctx.getLangOpts().CPlusPlus) {
++        if (Casts & Cast::Static)
++          AddCxxCast("static_cast");
++        if (Casts & Cast::Dynamic)
++          AddCxxCast("dynamic_cast");
++        if (Casts & Cast::Reinterpret)
++          AddCxxCast("reinterpret_cast");
++        if (Casts & Cast::Bit)
++          AddCxxCast("bit_cast");
++        if (Casts & Cast::C)
++          AddCCast();
++      } else {
++        if (Casts & (Cast::Static | Cast::Reinterpret | Cast::C))
++          AddCCast();
++      }
++    }
++  }
++
++  if (Base->getType()->isEnumeralType() && BaseIsStmt) {
++    EnumDecl *ED =
++        Base->getType()->getAs<EnumType>()->getDecl()->getDefinition();
++    const char *Qualifier = nullptr;
++    DeclContext *QualifierDC = ED->isScoped() ? ED : ED->getDeclContext();
++    if (const auto *NNS = getRequiredQualification(
++            Ctx, Results.getSema().CurContext, QualifierDC)) {
++      std::string Str;
++      llvm::raw_string_ostream OS(Str);
++      NNS->print(OS, Policy);
++      Qualifier = Results.getAllocator().CopyString(Str);
++    }
++    if (ED && !ED->enumerators().empty()) {
++      AddResult("switch", QualType(), [&](CodeCompletionBuilder &B) {
++        B.AddTextChunk("switch");
++        B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
++        B.AddChunk(CodeCompletionString::CK_LeftParen);
++        B.AddTextChunk(ExprCode);
++        B.AddChunk(CodeCompletionString::CK_RightParen);
++        B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
++        B.AddChunk(CodeCompletionString::CK_LeftBrace);
++        B.AddChunk(CodeCompletionString::CK_VerticalSpace);
++        for (const auto *ECD : ED->enumerators()) {
++          B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
++          B.AddTextChunk("case");
++          B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
++          if (Qualifier)
++            B.AddTextChunk(Qualifier);
++          B.AddTextChunk(ECD->getIdentifier()->getNameStart());
++          B.AddChunk(CodeCompletionString::CK_Colon);
++          B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
++          B.AddTextChunk("break");
++          B.AddChunk(CodeCompletionString::CK_SemiColon);
++          B.AddChunk(CodeCompletionString::CK_VerticalSpace);
++        }
++        B.AddChunk(CodeCompletionString::CK_RightBrace);
++      });
++    }
++  }
++  if (BaseIsStmt && isConvertibleToBool(Base->getType(), Ctx)) {
++    const char *VarType = conditionVariableType(Base, Ctx);
++    AddResult("if", QualType(), [&](CodeCompletionBuilder &B) {
++      B.AddTextChunk("if");
++      B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
++      B.AddChunk(CodeCompletionString::CK_LeftParen);
++      if (VarType) {
++        B.AddTextChunk(VarType);
++        B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
++        B.AddPlaceholderChunk("value");
++        B.AddChunk(CodeCompletionString::CK_Equal);
++      }
++      B.AddTextChunk(ExprCode);
++      B.AddChunk(CodeCompletionString::CK_RightParen);
++      B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
++      B.AddChunk(CodeCompletionString::CK_LeftBrace);
++      B.AddChunk(CodeCompletionString::CK_VerticalSpace);
++      B.AddChunk(CodeCompletionString::CK_RightBrace);
++    });
++  }
++  // const cast
++}
++
+ } // namespace
+ 
+ void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
+@@ -5616,10 +6020,11 @@ void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
+                                            SourceLocation OpLoc, bool IsArrow,
+                                            bool IsBaseExprStatement,
+                                            QualType PreferredType) {
+-  Base = unwrapParenList(Base);
+-  OtherOpBase = unwrapParenList(OtherOpBase);
+   if (!Base || !CodeCompleter)
+     return;
++  SourceLocation BeginLoc = Base->getBeginLoc();
++  Base = unwrapParenList(Base);
++  OtherOpBase = unwrapParenList(OtherOpBase);
+ 
+   ExprResult ConvertedBase = PerformMemberExprBaseConversion(Base, IsArrow);
+   if (ConvertedBase.isInvalid())
+@@ -5650,6 +6055,10 @@ void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
+                         CodeCompleter->getCodeCompletionTUInfo(), CCContext,
+                         &ResultBuilder::IsMember);
+ 
++  if (CodeCompleter->includeFixIts() && CodeCompleter->includeCodePatterns())
++    addPseudoMemberCompletions(Base, SourceRange(BeginLoc, OpLoc), Results,
++                               IsBaseExprStatement, PreferredType);
++
+   auto DoCompletion = [&](Expr *Base, bool IsArrow,
+                           std::optional<FixItHint> AccessOpFixIt) -> bool {
+     if (!Base)

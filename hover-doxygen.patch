@@ -1,0 +1,1776 @@
+diff --git a/clang-tools-extra/clangd/CMakeLists.txt b/clang-tools-extra/clangd/CMakeLists.txt
+index 183a3666ee58..fd248d65fae2 100644
+--- a/clang-tools-extra/clangd/CMakeLists.txt
++++ b/clang-tools-extra/clangd/CMakeLists.txt
+@@ -107,6 +107,7 @@ add_clang_library(clangDaemon
+   SemanticHighlighting.cpp
+   SemanticSelection.cpp
+   SourceCode.cpp
++  SymbolDocumentation.cpp
+   SystemIncludeExtractor.cpp
+   TidyProvider.cpp
+   TUScheduler.cpp
+diff --git a/clang-tools-extra/clangd/CodeComplete.cpp b/clang-tools-extra/clangd/CodeComplete.cpp
+index 260c44b2064b..6ab9e1ebe093 100644
+--- a/clang-tools-extra/clangd/CodeComplete.cpp
++++ b/clang-tools-extra/clangd/CodeComplete.cpp
+@@ -454,11 +454,11 @@ struct CodeCompletionBuilder {
+         }
+       };
+       if (C.IndexResult) {
+-        SetDoc(C.IndexResult->Documentation);
++        SetDoc(C.IndexResult->Documentation.CommentText);
+       } else if (C.SemaResult) {
+-        const auto DocComment = getDocComment(*ASTCtx, *C.SemaResult,
+-                                              /*CommentsFromHeaders=*/false);
+-        SetDoc(formatDocumentation(*SemaCCS, DocComment));
++        const auto DocComment = getDocumentation(*ASTCtx, *C.SemaResult,
++                                                 /*CommentsFromHeaders=*/false);
++        SetDoc(formatDocumentation(*SemaCCS, DocComment.CommentText));
+       }
+     }
+     if (Completion.Deprecated) {
+@@ -1043,8 +1043,9 @@ public:
+       ScoredSignatures.push_back(processOverloadCandidate(
+           Candidate, *CCS,
+           Candidate.getFunction()
+-              ? getDeclComment(S.getASTContext(), *Candidate.getFunction())
+-              : ""));
++              ? getDeclDocumentation(S.getASTContext(),
++                                     *Candidate.getFunction())
++              : SymbolDocumentationOwned{}));
+     }
+ 
+     // Sema does not load the docs from the preamble, so we need to fetch extra
+@@ -1059,7 +1060,7 @@ public:
+       }
+       Index->lookup(IndexRequest, [&](const Symbol &S) {
+         if (!S.Documentation.empty())
+-          FetchedDocs[S.ID] = std::string(S.Documentation);
++          FetchedDocs[S.ID] = std::string(S.Documentation.CommentText);
+       });
+       vlog("SigHelp: requested docs for {0} symbols from the index, got {1} "
+            "symbols with non-empty docs in the response",
+@@ -1168,15 +1169,17 @@ private:
+ 
+   // FIXME(ioeric): consider moving CodeCompletionString logic here to
+   // CompletionString.h.
+-  ScoredSignature processOverloadCandidate(const OverloadCandidate &Candidate,
+-                                           const CodeCompletionString &CCS,
+-                                           llvm::StringRef DocComment) const {
++  ScoredSignature
++  processOverloadCandidate(const OverloadCandidate &Candidate,
++                           const CodeCompletionString &CCS,
++                           const SymbolDocumentationOwned &DocComment) const {
+     SignatureInformation Signature;
+     SignatureQualitySignals Signal;
+     const char *ReturnType = nullptr;
+ 
+     markup::Document OverloadComment;
+-    parseDocumentation(formatDocumentation(CCS, DocComment), OverloadComment);
++    parseDocumentation(formatDocumentation(CCS, DocComment.CommentText),
++                       OverloadComment);
+     Signature.documentation = renderDoc(OverloadComment, DocumentationFormat);
+     Signal.Kind = Candidate.getKind();
+ 
+diff --git a/clang-tools-extra/clangd/CodeCompletionStrings.cpp b/clang-tools-extra/clangd/CodeCompletionStrings.cpp
+index 26f8e0e602b2..819d7dd14e65 100644
+--- a/clang-tools-extra/clangd/CodeCompletionStrings.cpp
++++ b/clang-tools-extra/clangd/CodeCompletionStrings.cpp
+@@ -79,39 +79,42 @@ bool shouldPatchPlaceholder0(CodeCompletionResult::ResultKind ResultKind,
+ 
+ } // namespace
+ 
+-std::string getDocComment(const ASTContext &Ctx,
+-                          const CodeCompletionResult &Result,
+-                          bool CommentsFromHeaders) {
++SymbolDocumentationOwned getDocumentation(const ASTContext &Ctx,
++                                          const CodeCompletionResult &Result,
++                                          bool CommentsFromHeaders) {
++  // FIXME: CommentsFromHeaders seems to be unused? Is this a bug?
++
+   // FIXME: clang's completion also returns documentation for RK_Pattern if they
+   // contain a pattern for ObjC properties. Unfortunately, there is no API to
+   // get this declaration, so we don't show documentation in that case.
+   if (Result.Kind != CodeCompletionResult::RK_Declaration)
+-    return "";
+-  return Result.getDeclaration() ? getDeclComment(Ctx, *Result.getDeclaration())
+-                                 : "";
++    return {};
++  return Result.getDeclaration()
++             ? getDeclDocumentation(Ctx, *Result.getDeclaration())
++             : SymbolDocumentationOwned{};
+ }
+ 
+-std::string getDeclComment(const ASTContext &Ctx, const NamedDecl &Decl) {
++SymbolDocumentationOwned getDeclDocumentation(const ASTContext &Ctx,
++                                              const NamedDecl &Decl) {
+   if (isa<NamespaceDecl>(Decl)) {
+     // Namespaces often have too many redecls for any particular redecl comment
+     // to be useful. Moreover, we often confuse file headers or generated
+     // comments with namespace comments. Therefore we choose to just ignore
+     // the comments for namespaces.
+-    return "";
++    return {};
+   }
+   const RawComment *RC = getCompletionComment(Ctx, &Decl);
+   if (!RC)
+-    return "";
++    return {};
+   // Sanity check that the comment does not come from the PCH. We choose to not
+   // write them into PCH, because they are racy and slow to load.
+   assert(!Ctx.getSourceManager().isLoadedSourceLocation(RC->getBeginLoc()));
+-  std::string Doc =
+-      RC->getFormattedText(Ctx.getSourceManager(), Ctx.getDiagnostics());
+-  if (!looksLikeDocComment(Doc))
+-    return "";
+-  // Clang requires source to be UTF-8, but doesn't enforce this in comments.
+-  if (!llvm::json::isUTF8(Doc))
+-    Doc = llvm::json::fixUTF8(Doc);
++
++  SymbolDocumentationOwned Doc = parseDoxygenComment(*RC, Ctx, &Decl);
++
++  if (!looksLikeDocComment(Doc.CommentText))
++    return {};
++
+   return Doc;
+ }
+ 
+diff --git a/clang-tools-extra/clangd/CodeCompletionStrings.h b/clang-tools-extra/clangd/CodeCompletionStrings.h
+index 566756ac9c8c..24416b5c9d23 100644
+--- a/clang-tools-extra/clangd/CodeCompletionStrings.h
++++ b/clang-tools-extra/clangd/CodeCompletionStrings.h
+@@ -16,24 +16,25 @@
+ 
+ #include "clang/Sema/CodeCompleteConsumer.h"
+ 
++#include "SymbolDocumentation.h"
++
+ namespace clang {
+ class ASTContext;
+ 
+ namespace clangd {
+ 
+-/// Gets a minimally formatted documentation comment of \p Result, with comment
+-/// markers stripped. See clang::RawComment::getFormattedText() for the detailed
+-/// explanation of how the comment text is transformed.
+-/// Returns empty string when no comment is available.
++/// Gets the parsed doxygen documentation of \p Result.
++/// Returns an empty SymbolDocumentationOwned when no comment is available.
+ /// If \p CommentsFromHeaders parameter is set, only comments from the main
+ /// file will be returned. It is used to workaround crashes when parsing
+ /// comments in the stale headers, coming from completion preamble.
+-std::string getDocComment(const ASTContext &Ctx,
+-                          const CodeCompletionResult &Result,
+-                          bool CommentsFromHeaders);
++SymbolDocumentationOwned getDocumentation(const ASTContext &Ctx,
++                                          const CodeCompletionResult &Result,
++                                          bool CommentsFromHeaders);
+ 
+-/// Similar to getDocComment, but returns the comment for a NamedDecl.
+-std::string getDeclComment(const ASTContext &Ctx, const NamedDecl &D);
++/// Similar to getDocumentation, but returns the comment for a NamedDecl.
++SymbolDocumentationOwned getDeclDocumentation(const ASTContext &Ctx,
++                                              const NamedDecl &D);
+ 
+ /// Formats the signature for an item, as a display string and snippet.
+ /// e.g. for const_reference std::vector<T>::at(size_type) const, this returns:
+diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
+index 3eb090071574..d965fa2928b6 100644
+--- a/clang-tools-extra/clangd/Hover.cpp
++++ b/clang-tools-extra/clangd/Hover.cpp
+@@ -345,7 +345,7 @@ void enhanceFromIndex(HoverInfo &Hover, const NamedDecl &ND,
+   LookupRequest Req;
+   Req.IDs.insert(ID);
+   Index->lookup(Req, [&](const Symbol &S) {
+-    Hover.Documentation = std::string(S.Documentation);
++    Hover.Documentation = S.Documentation.toOwned();
+   });
+ }
+ 
+@@ -604,10 +604,11 @@ HoverInfo getHoverContents(const NamedDecl *D, const PrintingPolicy &PP,
+ 
+   HI.Name = printName(Ctx, *D);
+   const auto *CommentD = getDeclForComment(D);
+-  HI.Documentation = getDeclComment(Ctx, *CommentD);
++  HI.Documentation = getDeclDocumentation(Ctx, *CommentD);
+   enhanceFromIndex(HI, *CommentD, Index);
+   if (HI.Documentation.empty())
+-    HI.Documentation = synthesizeDocumentation(D);
++    HI.Documentation =
++        SymbolDocumentationOwned::descriptionOnly(synthesizeDocumentation(D));
+ 
+   HI.Kind = index::getSymbolInfo(D).Kind;
+ 
+@@ -661,7 +662,8 @@ getPredefinedExprHoverContents(const PredefinedExpr &PE, ASTContext &Ctx,
+   HoverInfo HI;
+   HI.Name = PE.getIdentKindName();
+   HI.Kind = index::SymbolKind::Variable;
+-  HI.Documentation = "Name of the current function (predefined variable)";
++  HI.Documentation = SymbolDocumentationOwned::descriptionOnly(
++      "Name of the current function (predefined variable)");
+   if (const StringLiteral *Name = PE.getFunctionName()) {
+     HI.Value.emplace();
+     llvm::raw_string_ostream OS(*HI.Value);
+@@ -781,7 +783,7 @@ HoverInfo getDeducedTypeHoverContents(QualType QT, const syntax::Token &Tok,
+ 
+     if (const auto *D = QT->getAsTagDecl()) {
+       const auto *CommentD = getDeclForComment(D);
+-      HI.Documentation = getDeclComment(ASTCtx, *CommentD);
++      HI.Documentation = getDeclDocumentation(ASTCtx, *CommentD);
+       enhanceFromIndex(HI, *CommentD, Index);
+     }
+   }
+@@ -881,7 +883,8 @@ std::optional<HoverInfo> getHoverContents(const Attr *A, ParsedAST &AST) {
+     llvm::raw_string_ostream OS(HI.Definition);
+     A->printPretty(OS, AST.getASTContext().getPrintingPolicy());
+   }
+-  HI.Documentation = Attr::getDocumentation(A->getKind()).str();
++  HI.Documentation = SymbolDocumentationOwned::descriptionOnly(
++      Attr::getDocumentation(A->getKind()).str());
+   return HI;
+ }
+ 
+@@ -1344,6 +1347,10 @@ markup::Document HoverInfo::present() const {
+ 
+   // Put a linebreak after header to increase readability.
+   Output.addRuler();
++
++  if (!Documentation.Brief.empty())
++    parseDocumentation(Documentation.Brief, Output);
++
+   // Print Types on their own lines to reduce chances of getting line-wrapped by
+   // editor, as they might be long.
+   if (ReturnType) {
+@@ -1352,15 +1359,44 @@ markup::Document HoverInfo::present() const {
+     // Parameters:
+     // - `bool param1`
+     // - `int param2 = 5`
+-    Output.addParagraph().appendText("→ ").appendCode(
++    auto &P = Output.addParagraph().appendText("→ ").appendCode(
+         llvm::to_string(*ReturnType));
+-  }
+ 
++    if (!Documentation.Returns.empty())
++      P.appendText(": ").appendText(Documentation.Returns);
++  }
+   if (Parameters && !Parameters->empty()) {
+     Output.addParagraph().appendText("Parameters: ");
+     markup::BulletList &L = Output.addBulletList();
+-    for (const auto &Param : *Parameters)
+-      L.addItem().addParagraph().appendCode(llvm::to_string(Param));
++
++    llvm::SmallVector<ParameterDocumentationOwned> ParamDocs =
++        Documentation.Parameters;
++
++    for (const auto &Param : *Parameters) {
++      auto &Paragraph = L.addItem().addParagraph();
++      Paragraph.appendCode(llvm::to_string(Param));
++
++      if (Param.Name.has_value()) {
++        auto ParamDoc = std::find_if(ParamDocs.begin(), ParamDocs.end(),
++                                     [Param](const auto &ParamDoc) {
++                                       return Param.Name == ParamDoc.Name;
++                                     });
++        if (ParamDoc != ParamDocs.end()) {
++          Paragraph.appendText(": ").appendText(ParamDoc->Description);
++          ParamDocs.erase(ParamDoc);
++        }
++      }
++    }
++
++    // We erased all parameters that matched, but some may still be left,
++    // usually typos. Let's also print them here.
++    for (const auto &ParamDoc : ParamDocs) {
++      L.addItem()
++          .addParagraph()
++          .appendCode(ParamDoc.Name)
++          .appendText(": ")
++          .appendText(ParamDoc.Description);
++    }
+   }
+ 
+   // Don't print Type after Parameters or ReturnType as this will just duplicate
+@@ -1406,8 +1442,30 @@ markup::Document HoverInfo::present() const {
+     Output.addParagraph().appendText(OS.str());
+   }
+ 
+-  if (!Documentation.empty())
+-    parseDocumentation(Documentation, Output);
++  if (!Documentation.Description.empty())
++    parseDocumentation(Documentation.Description, Output);
++
++  if (!Documentation.Warnings.empty()) {
++    Output.addRuler();
++    Output.addParagraph()
++        .appendText("Warning")
++        .appendText(Documentation.Warnings.size() > 1 ? "s" : "")
++        .appendText(": ");
++    markup::BulletList &L = Output.addBulletList();
++    for (const auto &Warning : Documentation.Warnings)
++      parseDocumentation(Warning, L.addItem());
++  }
++
++  if (!Documentation.Notes.empty()) {
++    Output.addRuler();
++    Output.addParagraph()
++        .appendText("Note")
++        .appendText(Documentation.Notes.size() > 1 ? "s" : "")
++        .appendText(": ");
++    markup::BulletList &L = Output.addBulletList();
++    for (const auto &Note : Documentation.Notes)
++      parseDocumentation(Note, L.addItem());
++  }
+ 
+   if (!Definition.empty()) {
+     Output.addRuler();
+diff --git a/clang-tools-extra/clangd/Hover.h b/clang-tools-extra/clangd/Hover.h
+index 891a9d9ec554..c3d0a5e4b19a 100644
+--- a/clang-tools-extra/clangd/Hover.h
++++ b/clang-tools-extra/clangd/Hover.h
+@@ -11,6 +11,7 @@
+ 
+ #include "ParsedAST.h"
+ #include "Protocol.h"
++#include "SymbolDocumentation.h"
+ #include "support/Markup.h"
+ #include "clang/Index/IndexSymbol.h"
+ #include <optional>
+@@ -73,7 +74,7 @@ struct HoverInfo {
+   std::string Provider;
+   std::optional<Range> SymRange;
+   index::SymbolKind Kind = index::SymbolKind::Unknown;
+-  std::string Documentation;
++  SymbolDocumentationOwned Documentation;
+   /// Source code containing the definition of the symbol.
+   std::string Definition;
+   const char *DefinitionLanguage = "cpp";
+diff --git a/clang-tools-extra/clangd/SymbolDocumentation.cpp b/clang-tools-extra/clangd/SymbolDocumentation.cpp
+new file mode 100644
+index 000000000000..f99c9dddd4ec
+--- /dev/null
++++ b/clang-tools-extra/clangd/SymbolDocumentation.cpp
+@@ -0,0 +1,212 @@
++//===--- SymbolDocumentation.cpp ==-------------------------------*- C++-*-===//
++//
++// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
++// See https://llvm.org/LICENSE.txt for license information.
++// SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
++//
++//===----------------------------------------------------------------------===//
++
++#include "SymbolDocumentation.h"
++#include "clang/AST/CommentVisitor.h"
++#include "llvm/Support/JSON.h"
++
++namespace clang {
++namespace clangd {
++
++void ensureUTF8(std::string &Str) {
++  if (!llvm::json::isUTF8(Str))
++    Str = llvm::json::fixUTF8(Str);
++}
++
++void ensureUTF8(llvm::MutableArrayRef<std::string> Strings) {
++  for (auto &Str : Strings) {
++    ensureUTF8(Str);
++  }
++}
++
++class BlockCommentToString
++    : public comments::ConstCommentVisitor<BlockCommentToString> {
++public:
++  BlockCommentToString(std::string &Out, const ASTContext &Ctx)
++      : Out(Out), Ctx(Ctx) {}
++
++  void visitParagraphComment(const comments::ParagraphComment *C) {
++    for (const auto *Child = C->child_begin(); Child != C->child_end();
++         ++Child) {
++      visit(*Child);
++    }
++  }
++
++  void visitBlockCommandComment(const comments::BlockCommandComment *B) {
++    Out << (B->getCommandMarker() == (comments::CommandMarkerKind::CMK_At)
++                ? '@'
++                : '\\')
++        << B->getCommandName(Ctx.getCommentCommandTraits());
++
++    visit(B->getParagraph());
++  }
++
++  void visitTextComment(const comments::TextComment *C) {
++    // If this is the very first node, the paragraph has no doxygen command,
++    // so there will be a leading space -> Trim it
++    // Otherwise just trim trailing space
++    if (Out.str().empty())
++      Out << C->getText().trim();
++    else
++      Out << C->getText().rtrim();
++  }
++
++  void visitInlineCommandComment(const comments::InlineCommandComment *C) {
++    const std::string SurroundWith = [C] {
++      switch (C->getRenderKind()) {
++      case comments::InlineCommandComment::RenderKind::RenderMonospaced:
++        return "`";
++      case comments::InlineCommandComment::RenderKind::RenderBold:
++        return "**";
++      case comments::InlineCommandComment::RenderKind::RenderEmphasized:
++        return "*";
++      default:
++        return "";
++      }
++    }();
++
++    Out << " " << SurroundWith;
++    for (unsigned I = 0; I < C->getNumArgs(); ++I) {
++      Out << C->getArgText(I);
++    }
++    Out << SurroundWith;
++  }
++
++private:
++  llvm::raw_string_ostream Out;
++  const ASTContext &Ctx;
++};
++
++class CommentToSymbolDocumentation
++    : public comments::ConstCommentVisitor<CommentToSymbolDocumentation> {
++public:
++  CommentToSymbolDocumentation(const RawComment &RC, const ASTContext &Ctx,
++                               const Decl *D, SymbolDocumentationOwned &Doc)
++      : FullComment(RC.parse(Ctx, nullptr, D)), Output(Doc), Ctx(Ctx) {
++
++    Doc.CommentText =
++        RC.getFormattedText(Ctx.getSourceManager(), Ctx.getDiagnostics());
++
++    for (auto *Block : FullComment->getBlocks()) {
++      visit(Block);
++    }
++  }
++
++  void visitBlockCommandComment(const comments::BlockCommandComment *B) {
++    const llvm::StringRef CommandName =
++        B->getCommandName(Ctx.getCommentCommandTraits());
++
++    // Visit B->getParagraph() for commands that we have special fields for,
++    // so that the command name won't be included in the string.
++    // Otherwise, we want to keep the command name, so visit B itself.
++    if (CommandName == "brief") {
++      BlockCommentToString(Output.Brief, Ctx).visit(B->getParagraph());
++    } else if (CommandName == "return") {
++      BlockCommentToString(Output.Returns, Ctx).visit(B->getParagraph());
++    } else if (CommandName == "warning") {
++      BlockCommentToString(Output.Warnings.emplace_back(), Ctx)
++          .visit(B->getParagraph());
++    } else if (CommandName == "note") {
++      BlockCommentToString(Output.Notes.emplace_back(), Ctx)
++          .visit(B->getParagraph());
++    } else {
++      if (!Output.Description.empty())
++        Output.Description += "\n\n";
++
++      BlockCommentToString(Output.Description, Ctx).visit(B);
++    }
++  }
++
++  void visitParagraphComment(const comments::ParagraphComment *P) {
++    BlockCommentToString(Output.Description, Ctx).visit(P);
++  }
++
++  void visitParamCommandComment(const comments::ParamCommandComment *P) {
++    if (P->hasParamName() && P->hasNonWhitespaceParagraph()) {
++      ParameterDocumentationOwned Doc;
++      Doc.Name = P->getParamNameAsWritten().str();
++      BlockCommentToString(Doc.Description, Ctx).visit(P->getParagraph());
++      Output.Parameters.push_back(std::move(Doc));
++    }
++  }
++
++private:
++  comments::FullComment *FullComment;
++  SymbolDocumentationOwned &Output;
++  const ASTContext &Ctx;
++};
++
++SymbolDocumentationOwned parseDoxygenComment(const RawComment &RC,
++                                             const ASTContext &Ctx,
++                                             const Decl *D) {
++  SymbolDocumentationOwned Doc;
++  CommentToSymbolDocumentation(RC, Ctx, D, Doc);
++
++  // Clang requires source to be UTF-8, but doesn't enforce this in comments.
++  ensureUTF8(Doc.Brief);
++  ensureUTF8(Doc.Returns);
++
++  ensureUTF8(Doc.Notes);
++  ensureUTF8(Doc.Warnings);
++
++  for (auto &Param : Doc.Parameters) {
++    ensureUTF8(Param.Name);
++    ensureUTF8(Param.Description);
++  }
++
++  ensureUTF8(Doc.Description);
++  ensureUTF8(Doc.CommentText);
++
++  return Doc;
++}
++
++template struct ParameterDocumentation<std::string>;
++template struct ParameterDocumentation<llvm::StringRef>;
++
++template <class StrOut, class StrIn>
++SymbolDocumentation<StrOut> convert(const SymbolDocumentation<StrIn> &In) {
++  SymbolDocumentation<StrOut> Doc;
++
++  Doc.Brief = In.Brief;
++  Doc.Returns = In.Returns;
++
++  Doc.Notes.reserve(In.Notes.size());
++  for (const auto &Note : In.Notes) {
++    Doc.Notes.emplace_back(Note);
++  }
++
++  Doc.Warnings.reserve(In.Warnings.size());
++  for (const auto &Warning : In.Warnings) {
++    Doc.Warnings.emplace_back(Warning);
++  }
++
++  Doc.Parameters.reserve(In.Parameters.size());
++  for (const auto &ParamDoc : In.Parameters) {
++    Doc.Parameters.emplace_back(ParameterDocumentation<StrOut>{
++        StrOut(ParamDoc.Name), StrOut(ParamDoc.Description)});
++  }
++
++  Doc.Description = In.Description;
++  Doc.CommentText = In.CommentText;
++
++  return Doc;
++}
++
++template <> SymbolDocumentationRef SymbolDocumentationOwned::toRef() const {
++  return convert<llvm::StringRef>(*this);
++}
++
++template <> SymbolDocumentationOwned SymbolDocumentationRef::toOwned() const {
++  return convert<std::string>(*this);
++}
++
++template class SymbolDocumentation<std::string>;
++template class SymbolDocumentation<llvm::StringRef>;
++
++} // namespace clangd
++} // namespace clang
+diff --git a/clang-tools-extra/clangd/SymbolDocumentation.h b/clang-tools-extra/clangd/SymbolDocumentation.h
+new file mode 100644
+index 000000000000..77bd90927802
+--- /dev/null
++++ b/clang-tools-extra/clangd/SymbolDocumentation.h
+@@ -0,0 +1,101 @@
++//===--- SymbolDocumentation.h ==---------------------------------*- C++-*-===//
++//
++// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
++// See https://llvm.org/LICENSE.txt for license information.
++// SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
++//
++//===----------------------------------------------------------------------===//
++//
++// Class to parse doxygen comments into a flat structure for consumption
++// in e.g. Hover and Code Completion
++//
++//===----------------------------------------------------------------------===//
++
++#ifndef LLVM_CLANG_TOOLS_EXTRA_CLANGD_SYMBOLDOCUMENTATION_H
++#define LLVM_CLANG_TOOLS_EXTRA_CLANGD_SYMBOLDOCUMENTATION_H
++
++#include "clang/AST/ASTContext.h"
++#include "clang/AST/Comment.h"
++#include "clang/AST/CommentVisitor.h"
++
++namespace clang {
++namespace clangd {
++
++template <class String> struct ParameterDocumentation {
++  String Name;
++  String Description;
++
++  ParameterDocumentation<llvm::StringRef> toRef() const;
++  ParameterDocumentation<std::string> toOwned() const;
++};
++
++using ParameterDocumentationRef = ParameterDocumentation<llvm::StringRef>;
++using ParameterDocumentationOwned = ParameterDocumentation<std::string>;
++
++/// @brief Represents a parsed doxygen comment.
++/// @details Currently there's special handling for the "brief", "param"
++/// "returns", "note" and "warning" commands. The content of all other
++/// paragraphs will be appended to the #Description field.
++/// If you're only interested in the full comment, but with comment
++/// markers stripped, use the #CommentText field.
++/// \tparam String When built from a declaration, we're building the strings
++/// by ourselves, so in this case String==std::string.
++/// However, when storing the contents of this class in the index, we need to
++/// use llvm::StringRef. To connvert between std::string and llvm::StringRef
++/// versions of this class, use toRef() and toOwned().
++template <class String> class SymbolDocumentation {
++public:
++  friend class CommentToSymbolDocumentation;
++
++  static SymbolDocumentation<String> descriptionOnly(String &&Description) {
++    SymbolDocumentation<String> Doc;
++    Doc.Description = Description;
++    Doc.CommentText = Description;
++    return Doc;
++  }
++
++  /// Constructs with all fields as empty strings/vectors.
++  SymbolDocumentation() = default;
++
++  SymbolDocumentation<llvm::StringRef> toRef() const;
++  SymbolDocumentation<std::string> toOwned() const;
++
++  bool empty() const { return CommentText.empty(); }
++
++  /// Paragraph of the "brief" command.
++  String Brief;
++
++  /// Paragraph of the "return" command.
++  String Returns;
++
++  /// Paragraph(s) of the "note" command(s)
++  llvm::SmallVector<String, 1> Notes;
++  /// Paragraph(s) of the "warning" command(s)
++  llvm::SmallVector<String, 1> Warnings;
++
++  /// Parsed paragaph(s) of the "param" comamnd(s)
++  llvm::SmallVector<ParameterDocumentation<String>> Parameters;
++
++  /// All the paragraphs we don't have any special handling for,
++  /// e.g. "details".
++  String Description;
++
++  /// The full documentation comment with comment markers stripped.
++  /// See clang::RawComment::getFormattedText() for the detailed
++  /// explanation of how the comment text is transformed.
++  String CommentText;
++};
++
++using SymbolDocumentationOwned = SymbolDocumentation<std::string>;
++using SymbolDocumentationRef = SymbolDocumentation<llvm::StringRef>;
++
++/// @param RC the comment to parse
++/// @param D the declaration that \p RC belongs to
++/// @return parsed doxgen documentation.
++SymbolDocumentationOwned
++parseDoxygenComment(const RawComment &RC, const ASTContext &Ctx, const Decl *D);
++
++} // namespace clangd
++} // namespace clang
++
++#endif // LLVM_CLANG_TOOLS_EXTRA_CLANGD_SYMBOLDOCUMENTATION_H
+diff --git a/clang-tools-extra/clangd/index/Merge.cpp b/clang-tools-extra/clangd/index/Merge.cpp
+index 9687b36252e1..4937f920217c 100644
+--- a/clang-tools-extra/clangd/index/Merge.cpp
++++ b/clang-tools-extra/clangd/index/Merge.cpp
+@@ -227,7 +227,7 @@ Symbol mergeSymbol(const Symbol &L, const Symbol &R) {
+     S.Signature = O.Signature;
+   if (S.CompletionSnippetSuffix == "")
+     S.CompletionSnippetSuffix = O.CompletionSnippetSuffix;
+-  if (S.Documentation == "") {
++  if (S.Documentation.empty()) {
+     // Don't accept documentation from bare forward class declarations, if there
+     // is a definition and it didn't provide one. S is often an undocumented
+     // class, and O is a non-canonical forward decl preceded by an irrelevant
+diff --git a/clang-tools-extra/clangd/index/Serialization.cpp b/clang-tools-extra/clangd/index/Serialization.cpp
+index aaa1d517370f..2ffcf2c14276 100644
+--- a/clang-tools-extra/clangd/index/Serialization.cpp
++++ b/clang-tools-extra/clangd/index/Serialization.cpp
+@@ -283,6 +283,57 @@ SymbolLocation readLocation(Reader &Data,
+   return Loc;
+ }
+ 
++void writeSymbolDocumentation(const SymbolDocumentationRef &Doc,
++                              const StringTableOut &Strings,
++                              llvm::raw_ostream &OS) {
++  writeVar(Strings.index(Doc.Brief), OS);
++  writeVar(Strings.index(Doc.Returns), OS);
++
++  writeVar(Doc.Notes.size(), OS);
++  for (const auto &Note : Doc.Notes)
++    writeVar(Strings.index(Note), OS);
++
++  writeVar(Doc.Warnings.size(), OS);
++  for (const auto &Warning : Doc.Warnings)
++    writeVar(Strings.index(Warning), OS);
++
++  writeVar(Doc.Parameters.size(), OS);
++  for (const auto &ParamDoc : Doc.Parameters) {
++    writeVar(Strings.index(ParamDoc.Name), OS);
++    writeVar(Strings.index(ParamDoc.Description), OS);
++  }
++
++  writeVar(Strings.index(Doc.Description), OS);
++  writeVar(Strings.index(Doc.CommentText), OS);
++}
++
++SymbolDocumentationRef
++readSymbolDocumentation(Reader &Data, llvm::ArrayRef<llvm::StringRef> Strings) {
++  SymbolDocumentationRef Doc;
++  Doc.Brief = Data.consumeString(Strings);
++  Doc.Returns = Data.consumeString(Strings);
++
++  if (!Data.consumeSize(Doc.Notes))
++    return Doc;
++  for (auto &Note : Doc.Notes)
++    Note = Data.consumeString(Strings);
++
++  if (!Data.consumeSize(Doc.Warnings))
++    return Doc;
++  for (auto &Warning : Doc.Warnings)
++    Warning = Data.consumeString(Strings);
++
++  if (!Data.consumeSize(Doc.Parameters))
++    return Doc;
++  for (auto &ParamDoc : Doc.Parameters)
++    ParamDoc = {Data.consumeString(Strings), Data.consumeString(Strings)};
++
++  Doc.Description = Data.consumeString(Strings);
++  Doc.CommentText = Data.consumeString(Strings);
++
++  return Doc;
++}
++
+ IncludeGraphNode readIncludeGraphNode(Reader &Data,
+                                       llvm::ArrayRef<llvm::StringRef> Strings) {
+   IncludeGraphNode IGN;
+@@ -325,7 +376,7 @@ void writeSymbol(const Symbol &Sym, const StringTableOut &Strings,
+   OS.write(static_cast<uint8_t>(Sym.Flags));
+   writeVar(Strings.index(Sym.Signature), OS);
+   writeVar(Strings.index(Sym.CompletionSnippetSuffix), OS);
+-  writeVar(Strings.index(Sym.Documentation), OS);
++  writeSymbolDocumentation(Sym.Documentation, Strings, OS);
+   writeVar(Strings.index(Sym.ReturnType), OS);
+   writeVar(Strings.index(Sym.Type), OS);
+ 
+@@ -354,7 +405,7 @@ Symbol readSymbol(Reader &Data, llvm::ArrayRef<llvm::StringRef> Strings,
+   Sym.Origin = Origin;
+   Sym.Signature = Data.consumeString(Strings);
+   Sym.CompletionSnippetSuffix = Data.consumeString(Strings);
+-  Sym.Documentation = Data.consumeString(Strings);
++  Sym.Documentation = readSymbolDocumentation(Data, Strings);
+   Sym.ReturnType = Data.consumeString(Strings);
+   Sym.Type = Data.consumeString(Strings);
+   if (!Data.consumeSize(Sym.IncludeHeaders))
+diff --git a/clang-tools-extra/clangd/index/Symbol.h b/clang-tools-extra/clangd/index/Symbol.h
+index 1aa526529923..8e13f3a5aa6e 100644
+--- a/clang-tools-extra/clangd/index/Symbol.h
++++ b/clang-tools-extra/clangd/index/Symbol.h
+@@ -9,6 +9,7 @@
+ #ifndef LLVM_CLANG_TOOLS_EXTRA_CLANGD_INDEX_SYMBOL_H
+ #define LLVM_CLANG_TOOLS_EXTRA_CLANGD_INDEX_SYMBOL_H
+ 
++#include "SymbolDocumentation.h"
+ #include "index/SymbolID.h"
+ #include "index/SymbolLocation.h"
+ #include "index/SymbolOrigin.h"
+@@ -76,7 +77,7 @@ struct Symbol {
+   /// Only set when the symbol is indexed for completion.
+   llvm::StringRef CompletionSnippetSuffix;
+   /// Documentation including comment for the symbol declaration.
+-  llvm::StringRef Documentation;
++  SymbolDocumentationRef Documentation;
+   /// Type when this symbol is used in an expression. (Short display form).
+   /// e.g. return type of a function, or type of a variable.
+   /// Only set when the symbol is indexed for completion.
+@@ -172,7 +173,20 @@ template <typename Callback> void visitStrings(Symbol &S, const Callback &CB) {
+   CB(S.TemplateSpecializationArgs);
+   CB(S.Signature);
+   CB(S.CompletionSnippetSuffix);
+-  CB(S.Documentation);
++
++  CB(S.Documentation.Brief);
++  CB(S.Documentation.Returns);
++  for (auto &Note : S.Documentation.Notes)
++    CB(Note);
++  for (auto &Warning : S.Documentation.Warnings)
++    CB(Warning);
++  for (auto &ParamDoc : S.Documentation.Parameters) {
++    CB(ParamDoc.Name);
++    CB(ParamDoc.Description);
++  }
++  CB(S.Documentation.Description);
++  CB(S.Documentation.CommentText);
++
+   CB(S.ReturnType);
+   CB(S.Type);
+   auto RawCharPointerCB = [&CB](const char *&P) {
+diff --git a/clang-tools-extra/clangd/index/SymbolCollector.cpp b/clang-tools-extra/clangd/index/SymbolCollector.cpp
+index 5c8112e60b22..4f9ce1b0480b 100644
+--- a/clang-tools-extra/clangd/index/SymbolCollector.cpp
++++ b/clang-tools-extra/clangd/index/SymbolCollector.cpp
+@@ -922,16 +922,17 @@ const Symbol *SymbolCollector::addDeclaration(const NamedDecl &ND, SymbolID ID,
+       *ASTCtx, *PP, CodeCompletionContext::CCC_Symbol, *CompletionAllocator,
+       *CompletionTUInfo,
+       /*IncludeBriefComments*/ false);
+-  std::string Documentation =
+-      formatDocumentation(*CCS, getDocComment(Ctx, SymbolCompletion,
+-                                              /*CommentsFromHeaders=*/true));
++
++  const SymbolDocumentationOwned Documentation =
++      getDocumentation(Ctx, SymbolCompletion, /*CommentsFromHeaders=*/true);
++
+   if (!(S.Flags & Symbol::IndexedForCodeCompletion)) {
+     if (Opts.StoreAllDocumentation)
+-      S.Documentation = Documentation;
++      S.Documentation = Documentation.toRef();
+     Symbols.insert(S);
+     return Symbols.find(S.ID);
+   }
+-  S.Documentation = Documentation;
++  S.Documentation = Documentation.toRef();
+   std::string Signature;
+   std::string SnippetSuffix;
+   getSignature(*CCS, &Signature, &SnippetSuffix, SymbolCompletion.Kind,
+diff --git a/clang-tools-extra/clangd/index/YAMLSerialization.cpp b/clang-tools-extra/clangd/index/YAMLSerialization.cpp
+index 214a847b5edd..e87c777d8966 100644
+--- a/clang-tools-extra/clangd/index/YAMLSerialization.cpp
++++ b/clang-tools-extra/clangd/index/YAMLSerialization.cpp
+@@ -34,6 +34,7 @@ struct YIncludeHeaderWithReferences;
+ 
+ LLVM_YAML_IS_SEQUENCE_VECTOR(clang::clangd::Symbol::IncludeHeaderWithReferences)
+ LLVM_YAML_IS_SEQUENCE_VECTOR(clang::clangd::Ref)
++LLVM_YAML_IS_SEQUENCE_VECTOR(clang::clangd::ParameterDocumentationRef)
+ LLVM_YAML_IS_SEQUENCE_VECTOR(YIncludeHeaderWithReferences)
+ 
+ namespace {
+@@ -79,11 +80,13 @@ namespace yaml {
+ using clang::clangd::FileDigest;
+ using clang::clangd::IncludeGraph;
+ using clang::clangd::IncludeGraphNode;
++using clang::clangd::ParameterDocumentationRef;
+ using clang::clangd::Ref;
+ using clang::clangd::RefKind;
+ using clang::clangd::Relation;
+ using clang::clangd::RelationKind;
+ using clang::clangd::Symbol;
++using clang::clangd::SymbolDocumentationRef;
+ using clang::clangd::SymbolID;
+ using clang::clangd::SymbolLocation;
+ using clang::index::SymbolInfo;
+@@ -221,6 +224,28 @@ struct NormalizedIncludeHeaders {
+   llvm::SmallVector<YIncludeHeaderWithReferences, 1> Headers;
+ };
+ 
++template <> struct MappingTraits<ParameterDocumentationRef> {
++  static void mapping(IO &IO, ParameterDocumentationRef &P) {
++    IO.mapRequired("Name", P.Name);
++    IO.mapRequired("Description", P.Description);
++  }
++};
++
++template <> struct MappingTraits<SymbolDocumentationRef> {
++  static void mapping(IO &IO, SymbolDocumentationRef &Doc) {
++    IO.mapOptional("Brief", Doc.Brief);
++    IO.mapOptional("Returns", Doc.Returns);
++
++    IO.mapOptional("Notes", Doc.Notes);
++    IO.mapOptional("Warnings", Doc.Warnings);
++
++    IO.mapOptional("Parameters", Doc.Parameters);
++
++    IO.mapOptional("Description", Doc.Description);
++    IO.mapOptional("CommentText", Doc.CommentText);
++  }
++};
++
+ template <> struct MappingTraits<Symbol> {
+   static void mapping(IO &IO, Symbol &Sym) {
+     MappingNormalization<NormalizedSymbolID, SymbolID> NSymbolID(IO, Sym.ID);
+diff --git a/clang-tools-extra/clangd/test/index-serialization/Inputs/sample.cpp b/clang-tools-extra/clangd/test/index-serialization/Inputs/sample.cpp
+index f9f13b930d62..4efbf004cfcc 100644
+--- a/clang-tools-extra/clangd/test/index-serialization/Inputs/sample.cpp
++++ b/clang-tools-extra/clangd/test/index-serialization/Inputs/sample.cpp
+@@ -3,6 +3,11 @@
+ 
+ // This introduces a symbol, a reference and a relation.
+ struct Bar : public Foo {
+-  // This introduces an OverriddenBy relation by implementing Foo::Func.
++  /// \brief This introduces an OverriddenBy relation by implementing Foo::Func.
++  /// \details And it also introduces some doxygen!
++  /// \param foo bar
++  /// \warning !!!
++  /// \note a note
++  /// \return nothing
+   void Func() override {}
+ };
+diff --git a/clang-tools-extra/clangd/unittests/CodeCompleteTests.cpp b/clang-tools-extra/clangd/unittests/CodeCompleteTests.cpp
+index 25d6a7b189ed..a6b454da3bd8 100644
+--- a/clang-tools-extra/clangd/unittests/CodeCompleteTests.cpp
++++ b/clang-tools-extra/clangd/unittests/CodeCompleteTests.cpp
+@@ -2448,9 +2448,9 @@ TEST(SignatureHelpTest, InstantiatedSignatures) {
+ 
+ TEST(SignatureHelpTest, IndexDocumentation) {
+   Symbol Foo0 = sym("foo", index::SymbolKind::Function, "@F@\\0#");
+-  Foo0.Documentation = "doc from the index";
++  Foo0.Documentation.CommentText = "doc from the index";
+   Symbol Foo1 = sym("foo", index::SymbolKind::Function, "@F@\\0#I#");
+-  Foo1.Documentation = "doc from the index";
++  Foo1.Documentation.CommentText = "doc from the index";
+   Symbol Foo2 = sym("foo", index::SymbolKind::Function, "@F@\\0#I#I#");
+ 
+   StringRef Sig0 = R"cpp(
+diff --git a/clang-tools-extra/clangd/unittests/CodeCompletionStringsTests.cpp b/clang-tools-extra/clangd/unittests/CodeCompletionStringsTests.cpp
+index faab6253e283..70f28a4cc90e 100644
+--- a/clang-tools-extra/clangd/unittests/CodeCompletionStringsTests.cpp
++++ b/clang-tools-extra/clangd/unittests/CodeCompletionStringsTests.cpp
+@@ -7,6 +7,7 @@
+ //===----------------------------------------------------------------------===//
+ 
+ #include "CodeCompletionStrings.h"
++#include "SymbolDocumentationMatchers.h"
+ #include "TestTU.h"
+ #include "clang/Sema/CodeCompleteConsumer.h"
+ #include "gmock/gmock.h"
+@@ -59,12 +60,121 @@ TEST_F(CompletionStringTest, DocumentationWithAnnotation) {
+             "Annotation: Ano\n\nIs this brief?");
+ }
+ 
+-TEST_F(CompletionStringTest, GetDeclCommentBadUTF8) {
++TEST_F(CompletionStringTest, GetDeclDocumentationBadUTF8) {
+   // <ff> is not a valid byte here, should be replaced by encoded <U+FFFD>.
+-  auto TU = TestTU::withCode("/*x\xffy*/ struct X;");
++  const std::string Code = llvm::formatv(R"cpp(
++  /// \brief {0}
++  /// \details {0}
++  /// \param {0} {0}
++  /// \warning {0}
++  /// \note {0}
++  /// \return {0}
++  struct X;
++  )cpp",
++                                         "x\xffy");
++
++  auto TU = TestTU::withCode(Code);
+   auto AST = TU.build();
+-  EXPECT_EQ("x\xef\xbf\xbdy",
+-            getDeclComment(AST.getASTContext(), findDecl(AST, "X")));
++
++  const std::string Utf8Replacement = "x\xef\xbf\xbdy";
++  SymbolDocumentationOwned ExpectedDoc;
++  ExpectedDoc.Brief = Utf8Replacement;
++  ExpectedDoc.Returns = Utf8Replacement;
++  ExpectedDoc.Parameters = {{Utf8Replacement, Utf8Replacement}};
++  ExpectedDoc.Notes = {Utf8Replacement};
++  ExpectedDoc.Warnings = {Utf8Replacement};
++  ExpectedDoc.Description = {"\\details " + Utf8Replacement};
++  ExpectedDoc.CommentText = llvm::formatv(R"(\brief {0}
++\details {0}
++\param {0} {0}
++\warning {0}
++\note {0}
++\return {0})", Utf8Replacement);
++
++  EXPECT_THAT(getDeclDocumentation(AST.getASTContext(), findDecl(AST, "X")),
++              matchesDoc(ExpectedDoc));
++}
++
++TEST_F(CompletionStringTest, DoxygenParsing) {
++  struct {
++    const char *const Code;
++    const std::function<void(SymbolDocumentationOwned &)> ExpectedBuilder;
++  } Cases[] = {
++      {R"cpp(
++    // Hello world
++    void foo();
++    )cpp",
++       [](SymbolDocumentationOwned &Doc) { Doc.Description = "Hello world"; }},
++      {R"cpp(
++    /*! 
++     * \brief brief
++     * \details details
++     */
++    void foo();
++    )cpp",
++       [](SymbolDocumentationOwned &Doc) {
++         Doc.Brief = "brief";
++         Doc.Description = "\\details details";
++       }},
++      {R"cpp(
++    /** 
++     * @brief brief
++     * @details details
++     * @see somewhere else
++     */
++    void foo();
++    )cpp",
++       [](SymbolDocumentationOwned &Doc) {
++         Doc.Brief = "brief";
++         Doc.Description = "@details details\n\n@see somewhere else";
++       }},
++      {R"cpp(
++    /*! 
++     * @brief brief
++     * @details details
++     * @param foo foodoc
++     * @throws ball at hoop
++     * @note note1
++     * @warning warning1
++     * @note note2
++     * @warning warning2
++     * @param bar bardoc
++     * @return something
++     */
++    void foo();
++    )cpp",
++       [](SymbolDocumentationOwned &Doc) {
++         Doc.Brief = "brief";
++         Doc.Description = "@details details\n\n@throws ball at hoop";
++         Doc.Parameters = {{"foo", "foodoc"}, {"bar", "bardoc"}};
++         Doc.Warnings = {"warning1", "warning2"};
++         Doc.Notes = {"note1", "note2"};
++         Doc.Returns = "something";
++       }},
++      {R"cpp(
++    /// @brief Here's \b bold \e italic and \p code
++    int foo;
++    )cpp",
++       [](SymbolDocumentationOwned &Doc) {
++         Doc.Brief = "Here's **bold** *italic* and `code`";
++       }}};
++
++  for (const auto &Case : Cases) {
++    SCOPED_TRACE(Case.Code);
++
++    auto TU = TestTU::withCode(Case.Code);
++    auto AST = TU.build();
++    auto &Ctx = AST.getASTContext();
++    const auto &Decl = findDecl(AST, "foo");
++
++    SymbolDocumentationOwned ExpectedDoc;
++    ExpectedDoc.CommentText =
++        getCompletionComment(Ctx, &Decl)
++            ->getFormattedText(Ctx.getSourceManager(), Ctx.getDiagnostics());
++    Case.ExpectedBuilder(ExpectedDoc);
++
++    EXPECT_THAT(getDeclDocumentation(Ctx, Decl), matchesDoc(ExpectedDoc));
++  }
+ }
+ 
+ TEST_F(CompletionStringTest, MultipleAnnotations) {
+diff --git a/clang-tools-extra/clangd/unittests/HoverTests.cpp b/clang-tools-extra/clangd/unittests/HoverTests.cpp
+index 5ad9d69cb0dc..1759d45028a9 100644
+--- a/clang-tools-extra/clangd/unittests/HoverTests.cpp
++++ b/clang-tools-extra/clangd/unittests/HoverTests.cpp
+@@ -10,6 +10,7 @@
+ #include "Annotations.h"
+ #include "Config.h"
+ #include "Hover.h"
++#include "SymbolDocumentationMatchers.h"
+ #include "TestFS.h"
+ #include "TestIndex.h"
+ #include "TestTU.h"
+@@ -48,7 +49,8 @@ TEST(Hover, Structured) {
+          HI.NamespaceScope = "";
+          HI.Name = "foo";
+          HI.Kind = index::SymbolKind::Function;
+-         HI.Documentation = "Best foo ever.";
++         HI.Documentation =
++             SymbolDocumentationOwned::descriptionOnly("Best foo ever.");
+          HI.Definition = "void foo()";
+          HI.ReturnType = "void";
+          HI.Type = "void ()";
+@@ -65,7 +67,8 @@ TEST(Hover, Structured) {
+          HI.NamespaceScope = "ns1::ns2::";
+          HI.Name = "foo";
+          HI.Kind = index::SymbolKind::Function;
+-         HI.Documentation = "Best foo ever.";
++         HI.Documentation =
++             SymbolDocumentationOwned::descriptionOnly("Best foo ever.");
+          HI.Definition = "void foo()";
+          HI.ReturnType = "void";
+          HI.Type = "void ()";
+@@ -153,8 +156,8 @@ TEST(Hover, Structured) {
+        [](HoverInfo &HI) {
+          HI.Name = "__func__";
+          HI.Kind = index::SymbolKind::Variable;
+-         HI.Documentation =
+-             "Name of the current function (predefined variable)";
++         HI.Documentation = SymbolDocumentationOwned::descriptionOnly(
++             "Name of the current function (predefined variable)");
+          HI.Value = "\"foo\"";
+          HI.Type = "const char[4]";
+        }},
+@@ -167,8 +170,8 @@ TEST(Hover, Structured) {
+        [](HoverInfo &HI) {
+          HI.Name = "__func__";
+          HI.Kind = index::SymbolKind::Variable;
+-         HI.Documentation =
+-             "Name of the current function (predefined variable)";
++         HI.Documentation = SymbolDocumentationOwned::descriptionOnly(
++             "Name of the current function (predefined variable)");
+          HI.Type = "const char[]";
+        }},
+       // Anon namespace and local scope.
+@@ -746,7 +749,8 @@ class Foo final {})cpp";
+          HI.Definition = "template <> class Foo<int *>";
+          // FIXME: Maybe force instantiation to make use of real template
+          // pattern.
+-         HI.Documentation = "comment from primary";
++         HI.Documentation =
++             SymbolDocumentationOwned::descriptionOnly("comment from primary");
+        }},
+       {// Template Type Parameter
+        R"cpp(
+@@ -798,7 +802,8 @@ class Foo final {})cpp";
+          HI.NamespaceScope = "";
+          HI.Definition = "float y()";
+          HI.LocalScope = "X::";
+-         HI.Documentation = "Trivial accessor for `Y`.";
++         HI.Documentation = SymbolDocumentationOwned::descriptionOnly(
++             "Trivial accessor for `Y`.");
+          HI.Type = "float ()";
+          HI.ReturnType = "float";
+          HI.Parameters.emplace();
+@@ -814,7 +819,8 @@ class Foo final {})cpp";
+          HI.NamespaceScope = "";
+          HI.Definition = "void setY(float v)";
+          HI.LocalScope = "X::";
+-         HI.Documentation = "Trivial setter for `Y`.";
++         HI.Documentation = SymbolDocumentationOwned::descriptionOnly(
++             "Trivial setter for `Y`.");
+          HI.Type = "void (float)";
+          HI.ReturnType = "void";
+          HI.Parameters.emplace();
+@@ -833,7 +839,8 @@ class Foo final {})cpp";
+          HI.NamespaceScope = "";
+          HI.Definition = "X &setY(float v)";
+          HI.LocalScope = "X::";
+-         HI.Documentation = "Trivial setter for `Y`.";
++         HI.Documentation = SymbolDocumentationOwned::descriptionOnly(
++             "Trivial setter for `Y`.");
+          HI.Type = "X &(float)";
+          HI.ReturnType = "X &";
+          HI.Parameters.emplace();
+@@ -853,7 +860,8 @@ class Foo final {})cpp";
+          HI.NamespaceScope = "";
+          HI.Definition = "void setY(float v)";
+          HI.LocalScope = "X::";
+-         HI.Documentation = "Trivial setter for `Y`.";
++         HI.Documentation = SymbolDocumentationOwned::descriptionOnly(
++             "Trivial setter for `Y`.");
+          HI.Type = "void (float)";
+          HI.ReturnType = "void";
+          HI.Parameters.emplace();
+@@ -1254,7 +1262,7 @@ class Foo final {})cpp";
+     EXPECT_EQ(H->LocalScope, Expected.LocalScope);
+     EXPECT_EQ(H->Name, Expected.Name);
+     EXPECT_EQ(H->Kind, Expected.Kind);
+-    EXPECT_EQ(H->Documentation, Expected.Documentation);
++    ASSERT_THAT(H->Documentation, matchesDoc(Expected.Documentation));
+     EXPECT_EQ(H->Definition, Expected.Definition);
+     EXPECT_EQ(H->Type, Expected.Type);
+     EXPECT_EQ(H->ReturnType, Expected.ReturnType);
+@@ -1540,7 +1548,8 @@ TEST(Hover, All) {
+             HI.NamespaceScope = "";
+             HI.Type = "void (int)";
+             HI.Definition = "void foo(int)";
+-            HI.Documentation = "Function definition via pointer";
++            HI.Documentation = SymbolDocumentationOwned::descriptionOnly(
++                "Function definition via pointer");
+             HI.ReturnType = "void";
+             HI.Parameters = {
+                 {{"int"}, std::nullopt, std::nullopt},
+@@ -1559,7 +1568,8 @@ TEST(Hover, All) {
+             HI.NamespaceScope = "";
+             HI.Type = "int (int)";
+             HI.Definition = "int foo(int)";
+-            HI.Documentation = "Function declaration via call";
++            HI.Documentation = SymbolDocumentationOwned::descriptionOnly(
++                "Function declaration via call");
+             HI.ReturnType = "int";
+             HI.Parameters = {
+                 {{"int"}, std::nullopt, std::nullopt},
+@@ -1707,7 +1717,8 @@ TEST(Hover, All) {
+             HI.NamespaceScope = "";
+             HI.Definition = "typedef int Foo";
+             HI.Type = "int";
+-            HI.Documentation = "Typedef";
++            HI.Documentation =
++                SymbolDocumentationOwned::descriptionOnly("Typedef");
+           }},
+       {
+           R"cpp(// Typedef with embedded definition
+@@ -1722,7 +1733,8 @@ TEST(Hover, All) {
+             HI.NamespaceScope = "";
+             HI.Definition = "typedef struct Bar Foo";
+             HI.Type = "struct Bar";
+-            HI.Documentation = "Typedef with embedded definition";
++            HI.Documentation = SymbolDocumentationOwned::descriptionOnly(
++                "Typedef with embedded definition");
+           }},
+       {
+           R"cpp(// Namespace
+@@ -1769,7 +1781,7 @@ TEST(Hover, All) {
+             HI.NamespaceScope = "ns::";
+             HI.Type = "void ()";
+             HI.Definition = "void foo()";
+-            HI.Documentation = "";
++            HI.Documentation = SymbolDocumentationOwned::descriptionOnly("");
+             HI.ReturnType = "void";
+             HI.Parameters = std::vector<HoverInfo::Param>{};
+           }},
+@@ -1837,10 +1849,18 @@ TEST(Hover, All) {
+             HI.Kind = index::SymbolKind::Class;
+             HI.NamespaceScope = "";
+             HI.Definition = "class Foo {}";
+-            HI.Documentation = "Forward class declaration";
++            HI.Documentation = SymbolDocumentationOwned::descriptionOnly(
++                "Forward class declaration");
+           }},
+       {
+-          R"cpp(// Function declaration
++          R"cpp(
++            /// \brief Function declaration
++            /// \details Some details
++            /// \throws std::runtime_error sometimes
++            /// \param x doc for x
++            /// \warning Watch out!
++            /// \note note1 \note note2
++            /// \return Nothing
+             void foo();
+             void g() { [[f^oo]](); }
+             void foo() {}
+@@ -1851,7 +1871,22 @@ TEST(Hover, All) {
+             HI.NamespaceScope = "";
+             HI.Type = "void ()";
+             HI.Definition = "void foo()";
+-            HI.Documentation = "Function declaration";
++            HI.Documentation.Brief = "Function declaration";
++            HI.Documentation.Description = "\\details Some details\n\n\\throws "
++                                           "std::runtime_error sometimes";
++            HI.Documentation.Parameters = {
++                {"x", "doc for x"},
++            };
++            HI.Documentation.Returns = "Nothing";
++            HI.Documentation.Notes = {"note1", "note2"};
++            HI.Documentation.Warnings = {"Watch out!"};
++            HI.Documentation.CommentText = R"(\brief Function declaration
++\details Some details
++\throws std::runtime_error sometimes
++\param x doc for x
++\warning Watch out!
++\note note1 \note note2
++\return Nothing)";
+             HI.ReturnType = "void";
+             HI.Parameters = std::vector<HoverInfo::Param>{};
+           }},
+@@ -1869,7 +1904,8 @@ TEST(Hover, All) {
+             HI.Kind = index::SymbolKind::Enum;
+             HI.NamespaceScope = "";
+             HI.Definition = "enum Hello {}";
+-            HI.Documentation = "Enum declaration";
++            HI.Documentation =
++                SymbolDocumentationOwned::descriptionOnly("Enum declaration");
+           }},
+       {
+           R"cpp(// Enumerator
+@@ -1940,7 +1976,8 @@ TEST(Hover, All) {
+             HI.NamespaceScope = "";
+             HI.Type = "int";
+             HI.Definition = "static int hey = 10";
+-            HI.Documentation = "Global variable";
++            HI.Documentation =
++                SymbolDocumentationOwned::descriptionOnly("Global variable");
+             // FIXME: Value shouldn't be set in this case
+             HI.Value = "10 (0xa)";
+           }},
+@@ -1992,7 +2029,8 @@ TEST(Hover, All) {
+             HI.NamespaceScope = "";
+             HI.Type = "int ()";
+             HI.Definition = "template <> int foo<int>()";
+-            HI.Documentation = "Templated function";
++            HI.Documentation =
++                SymbolDocumentationOwned::descriptionOnly("Templated function");
+             HI.ReturnType = "int";
+             HI.Parameters = std::vector<HoverInfo::Param>{};
+             // FIXME: We should populate template parameters with arguments in
+@@ -2029,7 +2067,8 @@ TEST(Hover, All) {
+             HI.Definition = "void indexSymbol()";
+             HI.ReturnType = "void";
+             HI.Parameters = std::vector<HoverInfo::Param>{};
+-            HI.Documentation = "comment from index";
++            HI.Documentation =
++                SymbolDocumentationOwned::descriptionOnly("comment from index");
+           }},
+       {
+           R"cpp(// Simple initialization with auto
+@@ -2198,7 +2237,8 @@ TEST(Hover, All) {
+             HI.Name = "auto";
+             HI.Kind = index::SymbolKind::TypeAlias;
+             HI.Definition = "Bar";
+-            HI.Documentation = "auto function return with trailing type";
++            HI.Documentation = SymbolDocumentationOwned::descriptionOnly(
++                "auto function return with trailing type");
+           }},
+       {
+           R"cpp(// trailing return type
+@@ -2211,7 +2251,8 @@ TEST(Hover, All) {
+             HI.Name = "decltype";
+             HI.Kind = index::SymbolKind::TypeAlias;
+             HI.Definition = "Bar";
+-            HI.Documentation = "trailing return type";
++            HI.Documentation = SymbolDocumentationOwned::descriptionOnly(
++                "trailing return type");
+           }},
+       {
+           R"cpp(// auto in function return
+@@ -2224,7 +2265,8 @@ TEST(Hover, All) {
+             HI.Name = "auto";
+             HI.Kind = index::SymbolKind::TypeAlias;
+             HI.Definition = "Bar";
+-            HI.Documentation = "auto in function return";
++            HI.Documentation = SymbolDocumentationOwned::descriptionOnly(
++                "auto in function return");
+           }},
+       {
+           R"cpp(// auto& in function return
+@@ -2238,7 +2280,8 @@ TEST(Hover, All) {
+             HI.Name = "auto";
+             HI.Kind = index::SymbolKind::TypeAlias;
+             HI.Definition = "Bar";
+-            HI.Documentation = "auto& in function return";
++            HI.Documentation = SymbolDocumentationOwned::descriptionOnly(
++                "auto& in function return");
+           }},
+       {
+           R"cpp(// auto* in function return
+@@ -2252,7 +2295,8 @@ TEST(Hover, All) {
+             HI.Name = "auto";
+             HI.Kind = index::SymbolKind::TypeAlias;
+             HI.Definition = "Bar";
+-            HI.Documentation = "auto* in function return";
++            HI.Documentation = SymbolDocumentationOwned::descriptionOnly(
++                "auto* in function return");
+           }},
+       {
+           R"cpp(// const auto& in function return
+@@ -2266,7 +2310,8 @@ TEST(Hover, All) {
+             HI.Name = "auto";
+             HI.Kind = index::SymbolKind::TypeAlias;
+             HI.Definition = "Bar";
+-            HI.Documentation = "const auto& in function return";
++            HI.Documentation = SymbolDocumentationOwned::descriptionOnly(
++                "const auto& in function return");
+           }},
+       {
+           R"cpp(// decltype(auto) in function return
+@@ -2279,7 +2324,8 @@ TEST(Hover, All) {
+             HI.Name = "decltype";
+             HI.Kind = index::SymbolKind::TypeAlias;
+             HI.Definition = "Bar";
+-            HI.Documentation = "decltype(auto) in function return";
++            HI.Documentation = SymbolDocumentationOwned::descriptionOnly(
++                "decltype(auto) in function return");
+           }},
+       {
+           R"cpp(// decltype(auto) reference in function return
+@@ -2369,8 +2415,8 @@ TEST(Hover, All) {
+             HI.Name = "decltype";
+             HI.Kind = index::SymbolKind::TypeAlias;
+             HI.Definition = "Bar";
+-            HI.Documentation =
+-                "decltype of function with trailing return type.";
++            HI.Documentation = SymbolDocumentationOwned::descriptionOnly(
++                "decltype of function with trailing return type.");
+           }},
+       {
+           R"cpp(// decltype of var with decltype.
+@@ -2440,7 +2486,8 @@ TEST(Hover, All) {
+             HI.Name = "auto";
+             HI.Kind = index::SymbolKind::TypeAlias;
+             HI.Definition = "cls_type // aka: cls";
+-            HI.Documentation = "auto on alias";
++            HI.Documentation =
++                SymbolDocumentationOwned::descriptionOnly("auto on alias");
+           }},
+       {
+           R"cpp(// auto on alias
+@@ -2452,7 +2499,8 @@ TEST(Hover, All) {
+             HI.Name = "auto";
+             HI.Kind = index::SymbolKind::TypeAlias;
+             HI.Definition = "templ<int>";
+-            HI.Documentation = "auto on alias";
++            HI.Documentation =
++                SymbolDocumentationOwned::descriptionOnly("auto on alias");
+           }},
+       {
+           R"cpp(// Undeduced auto declaration
+@@ -2543,7 +2591,8 @@ TEST(Hover, All) {
+             HI.Kind = index::SymbolKind::Struct;
+             HI.NamespaceScope = "";
+             HI.Name = "cls<cls<cls<int>>>";
+-            HI.Documentation = "type of nested templates.";
++            HI.Documentation = SymbolDocumentationOwned::descriptionOnly(
++                "type of nested templates.");
+           }},
+       {
+           R"cpp(// type with decltype
+@@ -2838,13 +2887,15 @@ TEST(Hover, All) {
+          HI.Name = "nonnull";
+          HI.Kind = index::SymbolKind::Unknown; // FIXME: no suitable value
+          HI.Definition = "__attribute__((nonnull))";
+-         HI.Documentation = Attr::getDocumentation(attr::NonNull).str();
++         HI.Documentation = SymbolDocumentationOwned::descriptionOnly(
++             Attr::getDocumentation(attr::NonNull).str());
+        }},
+   };
+ 
+   // Create a tiny index, so tests above can verify documentation is fetched.
+   Symbol IndexSym = func("indexSymbol");
+-  IndexSym.Documentation = "comment from index";
++  IndexSym.Documentation =
++      SymbolDocumentationRef::descriptionOnly("comment from index");
+   SymbolSlab::Builder Symbols;
+   Symbols.insert(IndexSym);
+   auto Index =
+@@ -2877,7 +2928,7 @@ TEST(Hover, All) {
+     EXPECT_EQ(H->LocalScope, Expected.LocalScope);
+     EXPECT_EQ(H->Name, Expected.Name);
+     EXPECT_EQ(H->Kind, Expected.Kind);
+-    EXPECT_EQ(H->Documentation, Expected.Documentation);
++    ASSERT_THAT(H->Documentation, matchesDoc(Expected.Documentation));
+     EXPECT_EQ(H->Definition, Expected.Definition);
+     EXPECT_EQ(H->Type, Expected.Type);
+     EXPECT_EQ(H->ReturnType, Expected.ReturnType);
+@@ -3044,7 +3095,8 @@ TEST(Hover, DocsFromIndex) {
+   auto AST = TU.build();
+   Symbol IndexSym;
+   IndexSym.ID = getSymbolID(&findDecl(AST, "X"));
+-  IndexSym.Documentation = "comment from index";
++  IndexSym.Documentation =
++      SymbolDocumentationRef::descriptionOnly("comment from index");
+   SymbolSlab::Builder Symbols;
+   Symbols.insert(IndexSym);
+   auto Index =
+@@ -3053,7 +3105,7 @@ TEST(Hover, DocsFromIndex) {
+   for (const auto &P : T.points()) {
+     auto H = getHover(AST, P, format::getLLVMStyle(), Index.get());
+     ASSERT_TRUE(H);
+-    EXPECT_EQ(H->Documentation, IndexSym.Documentation);
++    ASSERT_THAT(H->Documentation.toRef(), matchesDoc(IndexSym.Documentation));
+   }
+ }
+ 
+@@ -3078,7 +3130,8 @@ TEST(Hover, DocsFromAST) {
+   for (const auto &P : T.points()) {
+     auto H = getHover(AST, P, format::getLLVMStyle(), nullptr);
+     ASSERT_TRUE(H);
+-    EXPECT_EQ(H->Documentation, "doc");
++    ASSERT_THAT(H->Documentation,
++                matchesDoc(SymbolDocumentationOwned::descriptionOnly("doc")));
+   }
+ }
+ 
+@@ -3125,7 +3178,9 @@ TEST(Hover, DocsFromMostSpecial) {
+     for (const auto &P : T.points(Comment)) {
+       auto H = getHover(AST, P, format::getLLVMStyle(), nullptr);
+       ASSERT_TRUE(H);
+-      EXPECT_EQ(H->Documentation, Comment);
++      ASSERT_THAT(
++          H->Documentation,
++          matchesDoc(SymbolDocumentationOwned::descriptionOnly(Comment)));
+     }
+   }
+ }
+@@ -3157,7 +3212,14 @@ TEST(Hover, Present) {
+                 {{"typename"}, std::string("T"), std::nullopt},
+                 {{"typename"}, std::string("C"), std::string("bool")},
+             };
+-            HI.Documentation = "documentation";
++            HI.Documentation.Brief = "brief";
++            HI.Documentation.Description = "details";
++            HI.Documentation.Parameters = {
++                {"Parameters", "should be ignored for classes"}};
++            HI.Documentation.Returns = "Returns should be ignored for classes";
++            HI.Documentation.Notes = {"note1", "note2"};
++            HI.Documentation.Warnings = {"warning1", "warning2"};
++            HI.Documentation.CommentText = "Not used for Hover presentation";
+             HI.Definition =
+                 "template <typename T, typename C = bool> class Foo {}";
+             HI.Name = "foo";
+@@ -3165,8 +3227,17 @@ TEST(Hover, Present) {
+           },
+           R"(class foo
+ 
++brief
+ Size: 10 bytes
+-documentation
++details
++
++Warnings:
++- warning1
++- warning2
++
++Notes:
++- note1
++- note2
+ 
+ template <typename T, typename C = bool> class Foo {})",
+       },
+@@ -3185,17 +3256,37 @@ template <typename T, typename C = bool> class Foo {})",
+             HI.Parameters->push_back(P);
+             P.Default = "default";
+             HI.Parameters->push_back(P);
++            HI.Documentation.Brief = "brief";
++            HI.Documentation.Description = "details";
++            HI.Documentation.Parameters = {
++                {"foo", "param doc"},
++                {"bar", "doc for parameter not in the signature"}};
++            HI.Documentation.Returns = "doc for return";
++            HI.Documentation.Notes = {"note1", "note2"};
++            HI.Documentation.Warnings = {"warning1", "warning2"};
++            HI.Documentation.CommentText = "Not used for Hover presentation";
+             HI.NamespaceScope = "ns::";
+             HI.Definition = "ret_type foo(params) {}";
+           },
+           "function foo\n"
+           "\n"
+-          "→ ret_type (aka can_ret_type)\n"
++          "brief\n"
++          "→ ret_type (aka can_ret_type): doc for return\n"
+           "Parameters:\n"
+           "- \n"
+           "- type (aka can_type)\n"
+-          "- type foo (aka can_type)\n"
++          "- type foo (aka can_type): param doc\n"
+           "- type foo = default (aka can_type)\n"
++          "- bar: doc for parameter not in the signature\n"
++          "details\n"
++          "\n"
++          "Warnings:\n"
++          "- warning1\n"
++          "- warning2\n"
++          "\n"
++          "Notes:\n"
++          "- note1\n"
++          "- note2\n"
+           "\n"
+           "// In namespace ns\n"
+           "ret_type foo(params) {}",
+@@ -3585,7 +3676,7 @@ TEST(Hover, SpaceshipTemplateNoCrash) {
+ 
+   template <typename T>
+   struct S {
+-    // Foo bar baz
++    /// Foo bar baz
+     friend auto operator<=>(S, S) = default;
+   };
+   static_assert(S<void>() =^= S<void>());
+@@ -3595,7 +3686,10 @@ TEST(Hover, SpaceshipTemplateNoCrash) {
+   TU.ExtraArgs.push_back("-std=c++20");
+   auto AST = TU.build();
+   auto HI = getHover(AST, T.point(), format::getLLVMStyle(), nullptr);
+-  EXPECT_EQ(HI->Documentation, "Foo bar baz");
++
++  ASSERT_THAT(
++      HI->Documentation,
++      matchesDoc(SymbolDocumentationOwned::descriptionOnly("Foo bar baz")));
+ }
+ 
+ TEST(Hover, ForwardStructNoCrash) {
+diff --git a/clang-tools-extra/clangd/unittests/IndexTests.cpp b/clang-tools-extra/clangd/unittests/IndexTests.cpp
+index 658b4e200004..107034e3819f 100644
+--- a/clang-tools-extra/clangd/unittests/IndexTests.cpp
++++ b/clang-tools-extra/clangd/unittests/IndexTests.cpp
+@@ -7,6 +7,7 @@
+ //===----------------------------------------------------------------------===//
+ 
+ #include "Annotations.h"
++#include "SymbolDocumentationMatchers.h"
+ #include "SyncAPI.h"
+ #include "TestIndex.h"
+ #include "TestTU.h"
+@@ -391,7 +392,7 @@ TEST(MergeTest, Merge) {
+   R.References = 2;
+   L.Signature = "()";                   // present in left only
+   R.CompletionSnippetSuffix = "{$1:0}"; // present in right only
+-  R.Documentation = "--doc--";
++  R.Documentation = SymbolDocumentationRef::descriptionOnly("--doc--");
+   L.Origin = SymbolOrigin::Preamble;
+   R.Origin = SymbolOrigin::Static;
+   R.Type = "expectedType";
+@@ -402,7 +403,8 @@ TEST(MergeTest, Merge) {
+   EXPECT_EQ(M.References, 3u);
+   EXPECT_EQ(M.Signature, "()");
+   EXPECT_EQ(M.CompletionSnippetSuffix, "{$1:0}");
+-  EXPECT_EQ(M.Documentation, "--doc--");
++  EXPECT_THAT(M.Documentation,
++              matchesDoc(SymbolDocumentationRef::descriptionOnly("--doc--")));
+   EXPECT_EQ(M.Type, "expectedType");
+   EXPECT_EQ(M.Origin, SymbolOrigin::Preamble | SymbolOrigin::Static |
+                           SymbolOrigin::Merge);
+@@ -546,16 +548,18 @@ TEST(MergeIndexTest, NonDocumentation) {
+   Symbol L, R;
+   L.ID = R.ID = SymbolID("x");
+   L.Definition.FileURI = "file:/x.h";
+-  R.Documentation = "Forward declarations because x.h is too big to include";
++  R.Documentation = SymbolDocumentationRef::descriptionOnly(
++      "Forward declarations because x.h is too big to include");
+   for (auto ClassLikeKind :
+        {SymbolKind::Class, SymbolKind::Struct, SymbolKind::Union}) {
+     L.SymInfo.Kind = ClassLikeKind;
+-    EXPECT_EQ(mergeSymbol(L, R).Documentation, "");
++    ASSERT_TRUE(mergeSymbol(L, R).Documentation.empty());
+   }
+ 
+   L.SymInfo.Kind = SymbolKind::Function;
+-  R.Documentation = "Documentation from non-class symbols should be included";
+-  EXPECT_EQ(mergeSymbol(L, R).Documentation, R.Documentation);
++  R.Documentation = SymbolDocumentationRef::descriptionOnly(
++      "Documentation from non-class symbols should be included");
++  EXPECT_THAT(mergeSymbol(L, R).Documentation, matchesDoc(R.Documentation));
+ }
+ 
+ MATCHER_P2(IncludeHeaderWithRef, IncludeHeader, References, "") {
+diff --git a/clang-tools-extra/clangd/unittests/SerializationTests.cpp b/clang-tools-extra/clangd/unittests/SerializationTests.cpp
+index 35a2e2ba77a6..da7b462aa31c 100644
+--- a/clang-tools-extra/clangd/unittests/SerializationTests.cpp
++++ b/clang-tools-extra/clangd/unittests/SerializationTests.cpp
+@@ -8,6 +8,7 @@
+ 
+ #include "Headers.h"
+ #include "RIFF.h"
++#include "SymbolDocumentationMatchers.h"
+ #include "index/Serialization.h"
+ #include "support/Logger.h"
+ #include "clang/Tooling/CompilationDatabase.h"
+@@ -48,7 +49,22 @@ CanonicalDeclaration:
+     Line: 1
+     Column: 1
+ Flags:    129
+-Documentation:    'Foo doc'
++Documentation:
++  Brief:       'Foo brief'
++  Returns:     'Foo returns'
++  Description: 'Foo description'
++  Notes:
++    - 'Foo note 1'
++    - 'Foo note 2'
++  Warnings:
++    - 'Foo warning 1'
++    - 'Foo warning 2'
++  Parameters:
++    - Name: 'param1'
++      Description: 'Foo param 1'
++    - Name: 'param2'
++      Description: 'Foo param 2'
++  CommentText: 'Full text would be here'
+ ReturnType:    'int'
+ IncludeHeaders:
+   - Header:    'include1'
+@@ -152,7 +168,20 @@ TEST(SerializationTest, YAMLConversions) {
+ 
+   EXPECT_THAT(Sym1, qName("clang::Foo1"));
+   EXPECT_EQ(Sym1.Signature, "");
+-  EXPECT_EQ(Sym1.Documentation, "Foo doc");
++
++  SymbolDocumentationRef ExpectedDocumentation;
++  ExpectedDocumentation.Brief = "Foo brief";
++  ExpectedDocumentation.Returns = "Foo returns";
++  ExpectedDocumentation.Description = "Foo description";
++  ExpectedDocumentation.Notes = {"Foo note 1", "Foo note 2"};
++  ExpectedDocumentation.Warnings = {"Foo warning 1", "Foo warning 2"};
++  ExpectedDocumentation.Parameters = {
++      {"param1", "Foo param 1"},
++      {"param2", "Foo param 2"},
++  };
++  ExpectedDocumentation.CommentText = "Full text would be here";
++  EXPECT_THAT(Sym1.Documentation, matchesDoc(ExpectedDocumentation));
++
+   EXPECT_EQ(Sym1.ReturnType, "int");
+   EXPECT_EQ(StringRef(Sym1.CanonicalDeclaration.FileURI), "file:///path/foo.h");
+   EXPECT_EQ(Sym1.Origin, SymbolOrigin::Static);
+diff --git a/clang-tools-extra/clangd/unittests/SymbolCollectorTests.cpp b/clang-tools-extra/clangd/unittests/SymbolCollectorTests.cpp
+index a2bf1c0baf0b..44d653c859fc 100644
+--- a/clang-tools-extra/clangd/unittests/SymbolCollectorTests.cpp
++++ b/clang-tools-extra/clangd/unittests/SymbolCollectorTests.cpp
+@@ -50,7 +50,7 @@ MATCHER_P(labeled, Label, "") {
+   return (arg.Name + arg.Signature).str() == Label;
+ }
+ MATCHER_P(returnType, D, "") { return arg.ReturnType == D; }
+-MATCHER_P(doc, D, "") { return arg.Documentation == D; }
++MATCHER_P(doc, D, "") { return arg.Documentation.CommentText == D; }
+ MATCHER_P(snippet, S, "") {
+   return (arg.Name + arg.CompletionSnippetSuffix).str() == S;
+ }
+diff --git a/clang-tools-extra/clangd/unittests/SymbolDocumentationMatchers.h b/clang-tools-extra/clangd/unittests/SymbolDocumentationMatchers.h
+new file mode 100644
+index 000000000000..12c955c458cc
+--- /dev/null
++++ b/clang-tools-extra/clangd/unittests/SymbolDocumentationMatchers.h
+@@ -0,0 +1,51 @@
++//===-- SymbolDocumentationMatchers.h ---------------------------*- C++ -*-===//
++//
++// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
++// See https://llvm.org/LICENSE.txt for license information.
++// SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
++//
++//===----------------------------------------------------------------------===//
++//
++// GMock matchers for the SymbolDocumentation class
++//
++//===----------------------------------------------------------------------===//
++
++#ifndef LLVM_CLANG_TOOLS_EXTRA_CLANGD_SYMBOLDOCUMENTATION_MATCHERS_H
++#define LLVM_CLANG_TOOLS_EXTRA_CLANGD_SYMBOLDOCUMENTATION_MATCHERS_H
++#include "SymbolDocumentation.h"
++#include "gmock/gmock.h"
++
++namespace clang {
++namespace clangd {
++
++template <class S>
++testing::Matcher<SymbolDocumentation<S>>
++matchesDoc(const SymbolDocumentation<S> &Expected) {
++  using namespace ::testing;
++
++  std::vector<Matcher<ParameterDocumentation<S>>> ParamMatchers;
++  for (const auto &P : Expected.Parameters)
++    ParamMatchers.push_back(
++        AllOf(Field("Name", &ParameterDocumentation<S>::Name, P.Name),
++              Field("Description", &ParameterDocumentation<S>::Description,
++                    P.Description)));
++
++  return AllOf(
++      Field("Brief", &SymbolDocumentation<S>::Brief, Expected.Brief),
++      Field("Returns", &SymbolDocumentation<S>::Returns, Expected.Returns),
++      Field("Notes", &SymbolDocumentation<S>::Notes,
++            ElementsAreArray(Expected.Notes)),
++      Field("Warnings", &SymbolDocumentation<S>::Warnings,
++            ElementsAreArray(Expected.Warnings)),
++      Field("Parameters", &SymbolDocumentation<S>::Parameters,
++            ElementsAreArray(ParamMatchers)),
++      Field("Description", &SymbolDocumentation<S>::Description,
++            Expected.Description),
++      Field("CommentText", &SymbolDocumentation<S>::CommentText,
++            Expected.CommentText));
++}
++
++} // namespace clangd
++} // namespace clang
++
++#endif
+diff --git a/llvm/utils/gn/secondary/clang-tools-extra/clangd/BUILD.gn b/llvm/utils/gn/secondary/clang-tools-extra/clangd/BUILD.gn
+index b64355fded62..d54f67523d27 100644
+--- a/llvm/utils/gn/secondary/clang-tools-extra/clangd/BUILD.gn
++++ b/llvm/utils/gn/secondary/clang-tools-extra/clangd/BUILD.gn
+@@ -124,6 +124,7 @@ static_library("clangd") {
+     "SemanticHighlighting.cpp",
+     "SemanticSelection.cpp",
+     "SourceCode.cpp",
++    "SymbolDocumentation.cpp",
+     "SystemIncludeExtractor.cpp",
+     "TUScheduler.cpp",
+     "TidyProvider.cpp",

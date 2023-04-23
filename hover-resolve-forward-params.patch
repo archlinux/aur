@@ -1,0 +1,54 @@
+diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
+--- a/clang-tools-extra/clangd/Hover.cpp
++++ b/clang-tools-extra/clangd/Hover.cpp
+@@ -369,7 +369,7 @@
+                                const FunctionDecl *FD,
+                                const PrintingPolicy &PP) {
+   HI.Parameters.emplace();
+-  for (const ParmVarDecl *PVD : FD->parameters())
++  for (const ParmVarDecl *PVD : resolveForwardingParameters(FD))
+     HI.Parameters->emplace_back(toHoverInfoParam(PVD, PP));
+ 
+   // We don't want any type info, if name already contains it. This is true for
+@@ -385,7 +385,6 @@
+   if (const VarDecl *VD = llvm::dyn_cast<VarDecl>(D)) // Lambdas
+     QT = VD->getType().getDesugaredType(D->getASTContext());
+   HI.Type = printType(QT, D->getASTContext(), PP);
+-  // FIXME: handle variadics.
+ }
+ 
+ // Non-negative numbers are printed using min digits
+diff --git a/clang-tools-extra/clangd/unittests/HoverTests.cpp b/clang-tools-extra/clangd/unittests/HoverTests.cpp
+--- a/clang-tools-extra/clangd/unittests/HoverTests.cpp
++++ b/clang-tools-extra/clangd/unittests/HoverTests.cpp
+@@ -263,6 +263,29 @@
+              {{"bool"}, std::string("T"), std::string("false")},
+          };
+        }},
++      // Forwarding function decl
++      {R"cpp(
++          void baz(int a);
++          template <typename... Args>
++          void foo(Args... args) {
++            baz(args...);
++          }
++
++          void bar() {
++            [[fo^o]](3);
++          }
++          )cpp",
++       [](HoverInfo &HI) {
++         HI.NamespaceScope = "";
++         HI.Name = "foo";
++         HI.Kind = index::SymbolKind::Function;
++         HI.Definition = "template <> void foo << int >> (int args)";
++         HI.ReturnType = "void";
++         HI.Type = "void (int)";
++         HI.Parameters = {
++             {{"int"}, std::string("a"), llvm::None},
++         };
++       }},
+       // Pointers to lambdas
+       {R"cpp(
+         void foo() {
+

@@ -1,0 +1,222 @@
+diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
+--- a/clang-tools-extra/clangd/Hover.cpp
++++ b/clang-tools-extra/clangd/Hover.cpp
+@@ -463,8 +463,13 @@
+   return Constant.Val.getAsString(Ctx, T);
+ }
+ 
+-std::optional<std::string> printExprValue(const SelectionTree::Node *N,
+-                                          const ASTContext &Ctx) {
++// Visit the SelectionTree's node along N's ancestors. If a node in the path
++// can be converted to an evaluable Expr, CB(Expr) is called to determine if
++// we should stop visiting (true).
++// Returns the first Expr that CB(Expr) returns true.
++const Expr *
++visitExprFromSelectionTree(const SelectionTree::Node *N, const ASTContext &Ctx,
++                           llvm::function_ref<bool(const Expr *)> CB) {
+   for (; N; N = N->Parent) {
+     // Try to evaluate the first evaluatable enclosing expression.
+     if (const Expr *E = N->ASTNode.get<Expr>()) {
+@@ -472,15 +477,25 @@
+       // has nothing to do with our original cursor position.
+       if (!E->getType().isNull() && E->getType()->isVoidType())
+         break;
+-      if (auto Val = printExprValue(E, Ctx))
+-        return Val;
++      if (CB(E))
++        return E;
+     } else if (N->ASTNode.get<Decl>() || N->ASTNode.get<Stmt>()) {
+       // Refuse to cross certain non-exprs. (TypeLoc are OK as part of Exprs).
+       // This tries to ensure we're showing a value related to the cursor.
+       break;
+     }
+   }
+-  return std::nullopt;
++  return nullptr;
++}
++
++std::optional<std::string> printExprValue(const SelectionTree::Node *N,
++                                          const ASTContext &Ctx) {
++  std::optional<std::string> Ret;
++  visitExprFromSelectionTree(N, Ctx, [&](const Expr *E) {
++    Ret = printExprValue(E, Ctx);
++    return Ret.has_value();
++  });
++  return Ret;
+ }
+ 
+ std::optional<StringRef> fieldName(const Expr *E) {
+@@ -710,6 +725,18 @@
+                 .str();
+     }
+   }
++  SelectionTree::createEach(
++      AST.getASTContext(), AST.getTokens(), SM.getFileOffset(Tok.location()),
++      SM.getFileOffset(Tok.endLocation()),
++      [&AST(AST.getASTContext()), &HI](SelectionTree Tree) {
++        return visitExprFromSelectionTree(
++            Tree.commonAncestor(), AST, [&](const Expr *E) {
++              HI.Value = printExprValue(E, AST);
++              HI.Type = printType(E->getType(), AST,
++                                  getPrintingPolicy(AST.getPrintingPolicy()));
++              return HI.Value || HI.Type;
++            });
++      });
+ 
+   if (auto Expansion = AST.getTokens().expansionStartingAt(&Tok)) {
+     // We drop expansion that's longer than the threshold.
+diff --git a/clang-tools-extra/clangd/unittests/HoverTests.cpp b/clang-tools-extra/clangd/unittests/HoverTests.cpp
+--- a/clang-tools-extra/clangd/unittests/HoverTests.cpp
++++ b/clang-tools-extra/clangd/unittests/HoverTests.cpp
+@@ -529,6 +529,8 @@
+        [](HoverInfo &HI) {
+          HI.Name = "MACRO";
+          HI.Kind = index::SymbolKind::Macro;
++         HI.Value = "41 (0x29)";
++         HI.Type = "int";
+          HI.Definition = "#define MACRO 41\n\n"
+                          "// Expands to\n"
+                          "41";
+@@ -1792,6 +1794,8 @@
+           )cpp",
+           [](HoverInfo &HI) {
+             HI.Name = "MACRO";
++            HI.Value = "0";
++            HI.Type = "int";
+             HI.Kind = index::SymbolKind::Macro;
+             HI.Definition = "#define MACRO 0\n\n"
+                             "// Expands to\n"
+@@ -3746,6 +3750,132 @@
+   EXPECT_EQ(H->Type->Type, "int");
+   EXPECT_EQ(H->Definition, "using foo = type<true, int, double>");
+ }
++
++TEST(Hover, EvaluateMacros) {
++  Annotations CXX(R"cpp(
++  #define X 42
++  #define SizeOf sizeof
++  #define AlignOf alignof
++
++  using u64 = unsigned long long;
++  // calculate (a ** b) % p
++  constexpr u64 pow_with_mod(u64 a, u64 b, u64 p) {
++    u64 ret = 1;
++    while (b) {
++      if (b & 1)
++        ret = (ret * a) % p;
++      a = (a * a) % p;
++      b >>= 1;
++    }
++    return ret;
++  }
++  #define last_n_digit(x, y, n)                                                  \
++    pow_with_mod(x, y, pow_with_mod(10, n, 2147483647))
++  #define declare_struct(X, name, value)                                         \
++    struct X {                                                                   \
++      constexpr auto name() { return value; }                                    \
++    }
++  #define gnu_statement_expression(value)                                        \
++    ({                                                                           \
++      declare_struct(Widget, getter, value);                                     \
++      Widget().getter();                                                         \
++    })
++  #define define_lambda_begin(lambda, ...)                                       \
++    [&](__VA_ARGS__) {
++  #define define_lambda_end() }
++
++    void check() {
++      X$1^;
++      Size$2^Of(int);
++      struct Y {
++        int y;
++        double z;
++      };
++      Alig$3^nOf(Y);
++      // 2**32 == 4294967296
++      last_n_di$4^git(2, 32, 6);
++      gnu_statement_exp$5^ression(42);
++
++      constexpr auto value = define_lamb$6^da_begin(lambda, int, char)
++        // Check if the expansion range is right.
++        return $7^last_n_digit(10, 3, 3)$8^;
++      define_lam$9^bda_end();
++    }
++  )cpp");
++
++  Config Cfg;
++  Cfg.Hover.ShowAKA = false;
++  WithContextValue WithCfg(Config::Key, std::move(Cfg));
++
++  auto TU = TestTU::withCode(CXX.code());
++  TU.ExtraArgs.push_back("-std=c++17");
++  auto GetHoverAt = [AST(TU.build()), CXX](llvm::StringRef Point) mutable {
++    return getHover(AST, CXX.point(Point), format::getLLVMStyle(), nullptr);
++  };
++
++  std::optional<HoverInfo> H;
++
++  H = GetHoverAt("1");
++  ASSERT_TRUE(H);
++  EXPECT_EQ(H->Value, "42 (0x2a)");
++  EXPECT_EQ(H->Type, HoverInfo::PrintedType("int"));
++
++  H = GetHoverAt("2");
++  ASSERT_TRUE(H);
++  EXPECT_EQ(H->Value, "4");
++  // Don't validate type of `sizeof` and `alignof` as we're getting different
++  // desugared types on different platforms. Same as below.
++
++  H = GetHoverAt("3");
++  ASSERT_TRUE(H);
++  EXPECT_EQ(H->Value, "8");
++
++  H = GetHoverAt("4");
++  ASSERT_TRUE(H);
++  EXPECT_EQ(H->Value, "967296 (0xec280)");
++  EXPECT_EQ(H->Type, HoverInfo::PrintedType("u64"));
++
++  H = GetHoverAt("5");
++  ASSERT_TRUE(H);
++  EXPECT_EQ(H->Value, "42 (0x2a)");
++  EXPECT_EQ(H->Type, HoverInfo::PrintedType("int"));
++
++  H = GetHoverAt("6");
++  ASSERT_TRUE(H);
++  EXPECT_FALSE(H->Value) << H->Value;
++  EXPECT_EQ(H->Type, HoverInfo::PrintedType("class (lambda)")) << H->Type;
++
++  H = GetHoverAt("7");
++  ASSERT_TRUE(H);
++  EXPECT_EQ(H->Value, "0");
++  EXPECT_EQ(H->Type, HoverInfo::PrintedType("u64"));
++
++  H = GetHoverAt("8");
++  ASSERT_FALSE(H);
++
++  H = GetHoverAt("9");
++  ASSERT_FALSE(H->Value) << H->Value;
++  ASSERT_FALSE(H->Type) << H->Type;
++
++  Annotations C(R"c(
++    #define alignof _Alignof
++    void foo() {
++      al^ignof(struct { int x; char y[10]; });
++    }
++  )c");
++
++  TU = TestTU::withCode(C.code());
++  TU.Filename = "TestTU.c";
++  TU.ExtraArgs = {
++      "-std=c17",
++  };
++  auto AST = TU.build();
++  H = getHover(AST, C.point(), format::getLLVMStyle(), nullptr);
++
++  ASSERT_TRUE(H);
++  EXPECT_EQ(H->Value, "4");
++}
++
+ } // namespace
+ } // namespace clangd
+ } // namespace clang
+
