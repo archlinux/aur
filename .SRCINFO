@@ -1,0 +1,14 @@
+pkgbase = thunderbird-grammalecte
+	pkgdesc = Thunderbird Grammalecte plugin (orthographe et grammaire en langue française)
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://grammalecte.net/
+	arch = any
+	groups = office
+	license = GPL 3
+	depends = thunderbird>=68
+	noextract = -2.1.1.xpi
+	source = thunderbird-grammalecte-2.1.1.xpi::https://addons.thunderbird.net/user-media/addons/_attachments/809689/grammalecte_fr_for_thunderbird-2.1.1-tb.xpi
+	sha256sums = 0a1420ac53e3260d72e2bb05550cb6efacc37daadc9c9cae766e0c1f48f61c31
+
+pkgname = thunderbird-grammalecte
