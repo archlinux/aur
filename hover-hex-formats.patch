@@ -1,0 +1,26 @@
+diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
+index bda0a38abc29..a156b0053c6a 100644
+--- a/clang-tools-extra/clangd/Hover.cpp
++++ b/clang-tools-extra/clangd/Hover.cpp
+@@ -1437,13 +1437,17 @@ markup::Document HoverInfo::present() const {
+     P.appendCode(*Value);
+   }
+ 
+-  if (Offset)
++  if (Offset) {
++    const auto *Format =
++        (*Offset < 10 ? "Offset: {0} byte{1}" : "Offset: {0} ({0:x}) byte{1}");
+     Output.addParagraph().appendText(
+-        llvm::formatv("Offset: {0} byte{1}", *Offset, *Offset == 1 ? "" : "s")
+-            .str());
++        llvm::formatv(Format, *Offset, *Offset == 1 ? "" : "s").str());
++  }
+   if (Size) {
++    const auto *Format =
++        (*Size < 10 ? "Size: {0} byte{1}" : "Size: {0} ({0:x}) byte{1}");
+     auto &P = Output.addParagraph().appendText(
+-        llvm::formatv("Size: {0} byte{1}", *Size, *Size == 1 ? "" : "s").str());
++        llvm::formatv(Format, *Size, *Size == 1 ? "" : "s").str());
+     if (Padding && *Padding != 0)
+       P.appendText(llvm::formatv(" (+{0} padding)", *Padding).str());
+   }
