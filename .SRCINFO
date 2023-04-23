@@ -1,15 +1,17 @@
 pkgbase = neopassmenu
 	pkgdesc = Dmenu front end in POSIX shell for pass with navigation, selection from multi-line files, and support for dmenu equivalents
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://notabug.org/BezierQuadratic/neopassmenu
 	arch = any
 	license = BSD
 	depends = pass
 	depends = dmenu
-	optdepends = xclip: clipboard automation (X11)
-	optdepends = wl-clipboard: clipboard automation (Wayland)
-	source = https://notabug.org/BezierQuadratic/neopassmenu/archive/1.0.2.tar.gz
-	md5sums = e6897b31755fca261fc9a50eb3d727d9
+	optdepends = clipboard: clipboard automation
+	optdepends = xdotool: simulate keypresses (X11)
+	optdepends = ydotool: simulate keypresses (Wayland)
+	optdepends = sharutils: generate passwords
+	source = https://notabug.org/BezierQuadratic/neopassmenu/archive/1.0.3.tar.gz
+	md5sums = 39504dcbb9457020b95eb2b05c450074
 
 pkgname = neopassmenu
