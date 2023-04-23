@@ -1,7 +1,7 @@
 # Maintainer: adrien Prost-Boucle <adrien.prost-boucle.@laposte.net>
 
 pkgname='mygui-gl-arm-git'
-pkgver=3.2.3.git20160322
+pkgver=3.4.2.git
 pkgrel=1
 
 pkgdesc="MyGUI - OpenGL backend"
