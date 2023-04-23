@@ -1,6 +1,6 @@
 pkgbase = dolphin-meld
 	pkgdesc = KDE File Manager, using Meld rather than Kompare
-	pkgver = 22.12.3
+	pkgver = 23.04.0
 	pkgrel = 1
 	url = https://apps.kde.org/dolphin/
 	arch = x86_64
@@ -21,16 +21,17 @@ pkgbase = dolphin-meld
 	optdepends = kdegraphics-thumbnailers: PDF and PS thumbnails
 	optdepends = konsole: terminal panel
 	optdepends = purpose: share context menu
-	provides = dolphin=22.12.3
-	conflicts = dolphin=22.12.3
-	source = https://download.kde.org/stable/release-service/22.12.3/src/dolphin-22.12.3.tar.xz
-	source = https://download.kde.org/stable/release-service/22.12.3/src/dolphin-22.12.3.tar.xz.sig
+	optdepends = kio-admin: for managing files as administrator
+	provides = dolphin=23.04.0
+	conflicts = dolphin=23.04.0
+	source = https://download.kde.org/stable/release-service/23.04.0/src/dolphin-23.04.0.tar.xz
+	source = https://download.kde.org/stable/release-service/23.04.0/src/dolphin-23.04.0.tar.xz.sig
 	source = dolphin-meld.patch
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
 	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
-	sha256sums = 1aa7538f013d24fdf36633d413e7ac23dbdfec7a216de8d01865ce4754760b5a
+	sha256sums = cd49268a3b0309253587d424fbdffe25b26c951df7e6932a42f48cf34b006c50
 	sha256sums = SKIP
-	sha256sums = 9bf8e1d53bb482e3cc2f3a114fb894fc3d0216ad2933d0c6e1f0b7df6d640b7a
+	sha256sums = a69abda1bd78cbaf3eb92ed645637fce1ea04a3528c90e22ab2abbdd809a0b15
 
 pkgname = dolphin-meld

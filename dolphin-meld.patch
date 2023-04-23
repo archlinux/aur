@@ -2,16 +2,16 @@ diff --git a/src/dolphinmainwindow.cpp b/src/dolphinmainwindow.cpp
 index 5741e8943..63253e681 100644
 --- a/src/dolphinmainwindow.cpp
 +++ b/src/dolphinmainwindow.cpp
-@@ -330,7 +330,7 @@ void DolphinMainWindow::slotSelectionChanged(const KFileItemList& selection)
+@@ -365,7 +365,7 @@ void DolphinMainWindow::slotSelectionChanged(const KFileItemList& selection)
      const int selectedUrlsCount = m_tabWidget->currentTabPage()->selectedItemsCount();
  
-     QAction* compareFilesAction = actionCollection()->action(QStringLiteral("compare_files"));
+     QAction *compareFilesAction = actionCollection()->action(QStringLiteral("compare_files"));
 -    if (selectedUrlsCount == 2) {
 +    if (selectedUrlsCount == 2 || selectedUrlsCount == 3) {
          compareFilesAction->setEnabled(isKompareInstalled());
      } else {
          compareFilesAction->setEnabled(false);
-@@ -925,7 +925,7 @@ void DolphinMainWindow::goHomeInNewTab()
+@@ -1058,7 +1058,7 @@ void DolphinMainWindow::goHomeInNewTab()
  void DolphinMainWindow::compareFiles()
  {
      const KFileItemList items = m_tabWidget->currentTabPage()->selectedItems();
@@ -20,7 +20,7 @@ index 5741e8943..63253e681 100644
          // The action is disabled in this case, but it could have been triggered
          // via D-Bus, see https://bugs.kde.org/show_bug.cgi?id=325517
          return;
-@@ -934,14 +934,20 @@ void DolphinMainWindow::compareFiles()
+@@ -1067,14 +1067,20 @@ void DolphinMainWindow::compareFiles()
      QUrl urlA = items.at(0).url();
      QUrl urlB = items.at(1).url();
  
@@ -43,16 +43,16 @@ index 5741e8943..63253e681 100644
      job->start();
  }
  
-@@ -1549,7 +1555,7 @@ void DolphinMainWindow::setupActions()
- 
-     QAction* compareFiles = actionCollection()->addAction(QStringLiteral("compare_files"));
+@@ -1846,7 +1852,7 @@ void DolphinMainWindow::setupActions()
+     // setup 'Tools' menu
+     QAction *compareFiles = actionCollection()->addAction(QStringLiteral("compare_files"));
      compareFiles->setText(i18nc("@action:inmenu Tools", "Compare Files"));
 -    compareFiles->setIcon(QIcon::fromTheme(QStringLiteral("kompare")));
 +    compareFiles->setIcon(QIcon::fromTheme(QStringLiteral("meld")));
      compareFiles->setEnabled(false);
      connect(compareFiles, &QAction::triggered, this, &DolphinMainWindow::compareFiles);
  
-@@ -2151,7 +2157,7 @@ bool DolphinMainWindow::isKompareInstalled() const
+@@ -2433,7 +2439,7 @@ bool DolphinMainWindow::isKompareInstalled() const
      if (!initialized) {
          // TODO: maybe replace this approach later by using a menu
          // plugin like kdiff3plugin.cpp
