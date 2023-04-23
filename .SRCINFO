@@ -1,0 +1,14 @@
+pkgbase = proid
+	pkgdesc = A tool to hide and show windows in X
+	pkgver = r9.e8913fd
+	pkgrel = 1
+	url = https://gitlab.com/rehposuite/proid
+	arch = any
+	license = GPL
+	makedepends = stack
+	depends = xdo
+	provides = proid
+	source = git+https://gitlab.com/rehposuite/proid.git
+	md5sums = SKIP
+
+pkgname = proid
