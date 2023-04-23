@@ -5,7 +5,7 @@
 
 pkgbase=minetest-git
 pkgname=(minetest-git minetest-server-git minetest-common-git)
-pkgver=5.6.0.r71.g5e7ea0664
+pkgver=5.7.0.r36.g0fb6dbab3
 pkgrel=1
 epoch=1
 url=https://www.minetest.net
@@ -30,16 +30,14 @@ pkgver() {
 }
 
 prepare() {
-	rm -rf "${srcdir}/${pkgbase%-git}/lib/irrlichtmt" >/dev/null 2>/dev/null
-	ln -s "${srcdir}/irrlicht" "${srcdir}/${pkgbase%-git}/lib/irrlichtmt"
+	ln -sf "${srcdir}/irrlicht" "${srcdir}/${pkgbase%-git}/lib/irrlichtmt"
 }
 
 build() {
 	cmake -B build-client -S "${pkgbase%-git}" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DBUILD_CLIENT=1 \
-		-DENABLE_GETTEXT=1 \
-		-DENABLE_FREETYPE=1 \
+		-DBUILD_GETTEXT=1 \
 		-DENABLE_LEVELDB=0 \
 		-DENABLE_POSTGRESQL=1 \
 		-DENABLE_SPATIAL=1 \
@@ -93,12 +91,8 @@ package_minetest-common-git() {
 	conflicts=("${pkgname%-git}")
 
 	install -d "${pkgdir}"/usr/share/minetest
-	cp -r -t "${pkgdir}"/usr/share/minetest "${pkgbase%-git}"/{games,builtin,client,fonts,textures} build-client/locale
+	cp -r -t "${pkgdir}"/usr/share/minetest "${pkgbase%-git}"/{games,builtin,client,fonts,textures,doc} build-client/locale
 
 	cp -r "${srcdir}"/minetest_game "${pkgdir}"/usr/share/minetest/games/minetest
 	rm "${pkgdir}"/usr/share/minetest/games/minetest/.gitignore
-
-	for file in "${pkgbase%-git}"/doc/{fst_api,lua_api,menu_lua_api,protocol,world_format}.txt; do
-		install -Dm644 $file "${pkgdir}"/usr/share/minetest/doc/$(basename $file)
-	done
 }
