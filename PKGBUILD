@@ -6,7 +6,7 @@
 _pkgname=coreutils
 _commit=ea268d870b475edd5960dcd55d5378abc9705958
 pkgname=advcpmv
-pkgver=9.1
+pkgver=9.2
 pkgrel=1
 pkgdesc="'cp' and 'mv' utilities with progress bar patches"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=("https://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"{,.sig
 validpgpkeys=('6C37DC12121A5006BC1DB804DF6FD971306037D9') # Pádraig Brady
 sha256sums=('61a1f410d78ba7e7f37a5a4f50e6d1320aca33375484a3255eddf17a38580423'
             'SKIP'
-            '97b91fdafcff85e5b79604fcf720ece5675fcf0dd76dbdd084f19cb7b482aee4')
+            '5dcf0ce663c025b7f2f79d514b2a83c2063bf9f783421efb5fc16fb0ea3f7298')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"

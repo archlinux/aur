@@ -2,3 +2,4 @@
 *patch
 src/
 pkg/
+.directory
