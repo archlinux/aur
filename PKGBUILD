@@ -1,16 +1,16 @@
 # Maintainer: Mark Collins <tera_1225 haat hotmail dot com>
 pkgname=signaldctl
 _basename=signald-go
-pkgver=0.5.2
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="cli interface to signald alternative signal client daemon"
-arch=('x86_64' 'armv7h' 'aarch') # The CI infrastructure builds for these so they are considered tested
+arch=('x86_64' 'armv7h' 'aarch64') # The CI infrastructure builds for these so they are considered tested
 url="https://gitlab.com/signald/${_basename}/-/blob/main/cmd/signaldctl/README.md"
 license=('GPL')
 depends=()
 makedepends=('go')
 source=("https://gitlab.com/signald/${_basename}/-/archive/v${pkgver}/${_basename}-v${pkgver}.tar.gz")
-sha256sums=('366356a841b4887bc90397d953771017d5be8f11e213dda30b9778a5bb5912ab')
+sha256sums=('f1d4206c2b4c3ecebe4305747d829cf4b0d7dec1d5bf1cb1844c423ab52bbcfa')
 
 build() {
 	cd "${_basename}-v$pkgver"

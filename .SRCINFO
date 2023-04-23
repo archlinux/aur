@@ -1,14 +1,14 @@
 pkgbase = signaldctl
 	pkgdesc = cli interface to signald alternative signal client daemon
-	pkgver = 0.5.2
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://gitlab.com/signald/signald-go/-/blob/main/cmd/signaldctl/README.md
 	arch = x86_64
 	arch = armv7h
-	arch = aarch
+	arch = aarch64
 	license = GPL
 	makedepends = go
-	source = https://gitlab.com/signald/signald-go/-/archive/v0.5.2/signald-go-v0.5.2.tar.gz
-	sha256sums = 366356a841b4887bc90397d953771017d5be8f11e213dda30b9778a5bb5912ab
+	source = https://gitlab.com/signald/signald-go/-/archive/v0.6.1/signald-go-v0.6.1.tar.gz
+	sha256sums = f1d4206c2b4c3ecebe4305747d829cf4b0d7dec1d5bf1cb1844c423ab52bbcfa
 
 pkgname = signaldctl
