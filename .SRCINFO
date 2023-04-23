@@ -1,6 +1,6 @@
 pkgbase = astap-bin-qt5
 	pkgdesc = Astrometric (plate) solver, stacking of images, photometry and FITS viewer
-	pkgver = 2023.04.19
+	pkgver = 2023.04.21
 	pkgrel = 1
 	url = https://www.hnsky.org/astap.htm
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = astap-bin-qt5
 	optdepends = h18-star-db-astap: database of stars up to magnitude 18, reliable with 0.25-10° FOV
 	provides = astap
 	conflicts = astap-bin
-	noextract = astap-2023.04.19.tar.gz
-	source = astap-2023.04.19.tar.gz::https://github.com/wrenby/astap-backups/raw/c7ea7d95d9b57bc653ce76f11498e4d7d161be89/astap_amd64_qt5.tar.gz
-	md5sums = 4a0b8e47e6bdd59f72cb475a018d9aff
+	noextract = astap-2023.04.21.tar.gz
+	source = astap-2023.04.21.tar.gz::https://github.com/wrenby/astap-backups/raw/f7271cd67897c2f01320eda9300d95991a8dfe84/astap_amd64_qt5.tar.gz
+	md5sums = 2fd770dbff9f27898edb9926a1dae4eb
 
 pkgname = astap-bin-qt5
