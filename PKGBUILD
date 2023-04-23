@@ -1,5 +1,5 @@
 pkgname=mingw-w64-md4c
-pkgver=0.4.4
+pkgver=0.4.8
 pkgrel=1
 pkgdesc="C Markdown parser (mingw-w64)"
 arch=(any)
@@ -9,7 +9,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/mity/md4c/archive/release-$pkgver.tar.gz")
-sha256sums=('d9545e4380c36fef198205b1efaec002a4dd352e75f104955956ecc560dcebbd')
+sha256sums=('4a457df853425b6bb6e3457aa1d1a13bccec587a04c38c622b1013a0da41439f')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 

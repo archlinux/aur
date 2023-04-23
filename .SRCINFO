@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-md4c
 	pkgdesc = C Markdown parser (mingw-w64)
-	pkgver = 0.4.4
+	pkgver = 0.4.8
 	pkgrel = 1
 	url = https://github.com/mity/md4c
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = mingw-w64-md4c
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://github.com/mity/md4c/archive/release-0.4.4.tar.gz
-	sha256sums = d9545e4380c36fef198205b1efaec002a4dd352e75f104955956ecc560dcebbd
+	source = https://github.com/mity/md4c/archive/release-0.4.8.tar.gz
+	sha256sums = 4a457df853425b6bb6e3457aa1d1a13bccec587a04c38c622b1013a0da41439f
 
 pkgname = mingw-w64-md4c
-
