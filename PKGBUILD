@@ -2,6 +2,11 @@
 #
 # Applying patches controls via enviroment variables:
 #
+# Toggle all below patches
+# CLANGD_DEFAULT_PATCH_STATE:
+#   'n' - disable all patches
+#   'y' - apply all patches
+#
 # Show Doxygen comments in hover (D134130)
 # CLANGD_DOXYGEN:
 #   'n' - do not apply this patch
@@ -34,17 +39,24 @@
 # CLANGD_EXTRACTFUNC:
 #   'n' - do not apply this patch
 #   'y' - apply this patch
+#
+# Add inlay hints for scructure paddings
+# CLANGD_INLAYHINTSPADS:
+#   'n' - do not apply this patch
+#   'y' - apply this patch
 
 
-: ${CLANGD_DOXYGEN:=n}
-: ${CLANGD_MACROEVAL:=n}
-: ${CLANGD_RESOLVEFWDPARAMS:=n}
-: ${CLANGD_CODELENS:=n}
-: ${CLANGD_POSTFIXCOMPLETION:=n}
-: ${CLANGD_EXTRACTFUNC:=n}
+: ${CLANGD_DEFAULT_PATCH_STATE:=n}
+: ${CLANGD_DOXYGEN:=$CLANGD_DEFAULT_PATCH_STATE}
+: ${CLANGD_MACROEVAL:=$CLANGD_DEFAULT_PATCH_STATE}
+: ${CLANGD_RESOLVEFWDPARAMS:=$CLANGD_DEFAULT_PATCH_STATE}
+: ${CLANGD_CODELENS:=$CLANGD_DEFAULT_PATCH_STATE}
+: ${CLANGD_POSTFIXCOMPLETION:=$CLANGD_DEFAULT_PATCH_STATE}
+: ${CLANGD_EXTRACTFUNC:=$CLANGD_DEFAULT_PATCH_STATE}
+: ${CLANGD_INLAYHINTSPADS:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt
-pkgver=17.r9008.g24a8251b0409
+pkgver=17.r9011.gb92839c9548a
 pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
@@ -60,7 +72,8 @@ source=('git+https://github.com/llvm/llvm-project.git'
         'hover-resolve-forward-params.patch'
         'lsp-codelens.patch'
         'postfix-completion.patch'
-        'refactor-extract-function.patch')
+        'refactor-extract-function.patch'
+        'inlay-hints-paddings.patch')
 sha256sums=('SKIP'
             '843bf80065da5929276e070a5e66cd2a8391090bba2ac2f9c48be0a9bb35d315'
             'b00ed1cef0ee45f7db596d268bb1e0af6da986590830ee33c7da7596a3c32fc0'
@@ -68,7 +81,8 @@ sha256sums=('SKIP'
             '9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7'
             '9bb8d1d27e3b5a184af71a5aad310da3971e77279f65d7bf804d619ce907280a'
             '01c5ec4dad2981d39f443312584bf1c81d0f1e10db5b86e5b4f5f466ba229a00'
-            'f719fb52edee98f54ba40786d2ecac6ef63f56797c8f52d4d7ce76a3825966eb')
+            'f719fb52edee98f54ba40786d2ecac6ef63f56797c8f52d4d7ce76a3825966eb'
+            '3b3501c62982851749993a6882cab6812cead6f749832760868fd5771c426b00')
 
 pkgver() {
     cd llvm-project
@@ -105,9 +119,14 @@ prepare() {
         patch -p1 -i ${srcdir}/postfix-completion.patch
     fi
     
-    # Code-completion patches
+    # Refactoring patches
     if [ "$CLANGD_EXTRACTFUNC" != "n" ]; then
         patch -p1 -i ${srcdir}/refactor-extract-function.patch
+    fi
+    
+    # Inlay hints patches
+    if [ "$CLANGD_INLAYHINTSPADS" != "n" ]; then
+        patch -p1 -i ${srcdir}/inlay-hints-paddings.patch
     fi
 }
 

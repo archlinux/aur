@@ -1,0 +1,58 @@
+diff --git a/clang-tools-extra/clangd/InlayHints.cpp b/clang-tools-extra/clangd/InlayHints.cpp
+index 50d4cb374385..0cfe953bed74 100644
+--- a/clang-tools-extra/clangd/InlayHints.cpp
++++ b/clang-tools-extra/clangd/InlayHints.cpp
+@@ -14,6 +14,7 @@
+ #include "clang/AST/Decl.h"
+ #include "clang/AST/DeclarationName.h"
+ #include "clang/AST/ExprCXX.h"
++#include "clang/AST/RecordLayout.h"
+ #include "clang/AST/RecursiveASTVisitor.h"
+ #include "clang/Basic/Builtins.h"
+ #include "clang/Basic/SourceManager.h"
+@@ -293,6 +294,45 @@ public:
+     addTypeHint(Range, D->getReturnType(), /*Prefix=*/"-> ");
+   }
+ 
++  bool VisitFieldDecl(FieldDecl *FD) {
++    const auto &Ctx = FD->getASTContext();
++    const auto *Record = FD->getParent();
++    if (Record)
++      Record = Record->getDefinition();
++
++    if (Record && !Record->isInvalidDecl() && !Record->isDependentType() &&
++        !FD->isBitField()) {
++      const ASTRecordLayout &Layout = Ctx.getASTRecordLayout(Record);
++      auto Offset = Layout.getFieldOffset(FD->getFieldIndex()) / 8;
++      if (auto Size = Ctx.getTypeSizeInCharsIfKnown(FD->getType())) {
++        unsigned EndOfField =
++            Offset + (FD->isZeroSize(Ctx) ? 0 : Size->getQuantity());
++
++        // Calculate padding following the field.
++        uint64_t Padding = 0;
++        if (!Record->isUnion() &&
++            FD->getFieldIndex() + 1 < Layout.getFieldCount()) {
++          // Measure padding up to the next class field.
++          unsigned NextOffset =
++              Layout.getFieldOffset(FD->getFieldIndex() + 1) / 8;
++          if (NextOffset >= EndOfField) // next field could be a bitfield!
++            Padding = NextOffset - EndOfField;
++        } else {
++          // Measure padding up to the end of the object.
++          Padding = Layout.getSize().getQuantity() - EndOfField;
++        }
++
++        if (Padding) {
++          std::string PadString = "+" + std::to_string(Padding) + " padding";
++          if (Cfg.InlayHints.Enabled && Cfg.InlayHints.Designators)
++            addInlayHint(FD->getLocation(), HintSide::Right,
++                         InlayHintKind::Designator, " /* ", PadString, " */");
++        }
++      }
++    }
++    return true;
++  }
++
+   bool VisitVarDecl(VarDecl *D) {
+     // Do not show hints for the aggregate in a structured binding,
+     // but show hints for the individual bindings.
