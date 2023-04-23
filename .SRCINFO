@@ -1,13 +1,12 @@
 pkgbase = matlab
 	pkgdesc = A high-level language for numerical computation and visualization
-	pkgver = 9.13.0.2126072
-	pkgrel = 2
+	pkgver = 9.14.0.2239454
+	pkgrel = 1
 	url = https://www.mathworks.com
 	arch = x86_64
 	license = custom
 	makedepends = gendesk
 	depends = matlab-meta
-	provides = matlab
 	provides = matlab-bin
 	source = local://matlab.tar
 	source = local://matlab.fik

@@ -3,15 +3,15 @@
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 
 pkgname=matlab
-pkgrel=2
-pkgver="9.13.0.2126072"
+pkgrel=1
+pkgver=9.14.0.2239454
 pkgdesc='A high-level language for numerical computation and visualization'
 arch=(x86_64)
 url='https://www.mathworks.com'
 license=(custom)
 depends=(matlab-meta)
 makedepends=('gendesk')
-provides=('matlab' 'matlab-bin')
+provides=('matlab-bin')
 source=('local://matlab.tar' 'local://matlab.fik' 'local://matlab.lic')
 b2sums=(SKIP SKIP SKIP)
 
@@ -49,12 +49,15 @@ build() {
     # -inputFile makes the installation non-interactive.
     "$srcdir/matlab/install" -inputFile "$srcdir/matlab/installer_input.txt"
 
-    if [ -z "$(ls -A build)" ]; then
+    # If "$srcdir/build" does not exist, the installer failed.
+    if [ -z "$(ls -A "$srcdir/build")" ]; then
         echo "==> ERROR: MATLAB installer failed, check install.log"
         exit 1
     fi
 
     echo "  -> Generating desktop files..."
+    _release="$(sed --quiet 's|\s*<release>\(.*\)</release>\s*|\1|p' \
+        "$srcdir/matlab/VersionInfo.xml")"
     gendesk -f -n \
         --pkgname 'matlab' \
         --pkgdesc "$pkgdesc" \
