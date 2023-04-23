@@ -1,7 +1,7 @@
 pkgbase = raytracinginvulkan-git
 	pkgdesc = Implementation of Peter Shirley's Ray Tracing In One Weekend book
-	pkgver = 7.r10.g164e530
-	pkgrel = 2
+	pkgver = 7.r14.g9e4b225
+	pkgrel = 1
 	url = https://github.com/GPSnoopy/RayTracingInVulkan
 	arch = x86_64
 	license = BSD
@@ -18,7 +18,7 @@ pkgbase = raytracinginvulkan-git
 	depends = glslang
 	depends = freetype2
 	optdepends = amdvlk: Standalone driver for radeon gpus
-	provides = raytracinginvulkan=7.r10.g164e530
+	provides = raytracinginvulkan=7.r14.g9e4b225
 	conflicts = raytracinginvulkan
 	source = raytracinginvulkan::git+https://github.com/GPSnoopy/RayTracingInVulkan.git
 	sha256sums = SKIP
