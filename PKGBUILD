@@ -9,7 +9,7 @@ url="https://github.com/ec-/Quake3e"
 license=('GPL')
 arch=('x86_64')
 makedepends=('git' 'libxxf86dga')
-source=('git+http://github.com/ec-/Quake3e.git'
+source=('git+https://github.com/ec-/Quake3e.git'
 'quake3e.desktop'
 'quake3e.png')
 sha256sums=('SKIP'
