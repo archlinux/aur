@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=icon  
-pkgver=9.5.21b
+pkgver=9.5.22e
 pkgrel=1
 epoch=1
 pkgdesc="The Icon programming language"
@@ -11,7 +11,7 @@ depends=('sh' 'libx11')
 makedepends=('libxt')
 license=('custom')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz" LICENSE)
-sha256sums=('5dd46cd4e868c75ff1b50de275f1ec06a09641afcb8c18b072333f97f86d3bcc'
+sha256sums=('e09ab5a7d4f10196be0e7ca12624c011cd749fc93e50ad4ed87bd132d927c983'
             '57b2b71129aa652ca63b07d3c23564bc7a45444a274d12e50856b46e4d088e35')
 
 build() {
