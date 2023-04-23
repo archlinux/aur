@@ -1,9 +1,10 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail.com>
+# based on PKGBUILD of mautrix-whatsapp by: Lorenz Steinert <lorenz@steinerts.de> and  Matthew Murray <matt@compti.me>
 pkgname=mautrix-whatsapp-bin
 provides=('mautrix-whatsapp')
 conflicts=('mautrix-whatsapp')
 pkgver=0.8.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A Matrix-Whatsapp puppeting bridge (binary release)"
 arch=('x86_64' 'armv7h' 'aarch64')
 license=('AGPL')
@@ -21,7 +22,7 @@ source=("${url}/archive/refs/tags/v${pkgver}.zip"
         log-path.diff)
 sha256sums=('75b1432610cb73f301c6ba09655fdf42b98db0b50dc82fd44de202c4d52261f4'
             '409e8fb3e35de1bd1ceebefa0ac275ad62ec66680117648058bcc177ddd2f9a1'
-            '1d7d01d5a09256382a3f8c246048078d7d4934c3f8ac418fcf2d94648e162ab6'
+            '3beb986f7ea686fb5bbbea257cd0cd136dd8ef692f3a9309ba4a0cfcdce09bb5'
             '6e967838a00518c4ad2109ca395b2f14fc03ed6474af977445979ce7a53872b8'
             'dbee2761eda8bdea97e980e8e2ba92130cc80c17f29f7da8566a18182a6a3334')
 sha256sums_x86_64=('c2446cfcbc4f4c9636abdb4c94c704cba1fad626d16045a8f82de9a82e05a494')
