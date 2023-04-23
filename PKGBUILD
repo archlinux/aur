@@ -2,8 +2,8 @@
 
 pkgname=owncast-git
 _pkgname=owncast
-pkgver=0.0.12.8e43b9d
-pkgrel=3
+pkgver=0.0.13.bdd22e2
+pkgrel=1
 pkgdesc="Take control over your live stream video by running it yourself. Streaming + chat out of the box."
 url='https://github.com/owncast/owncast'
 arch=('any')
@@ -28,7 +28,6 @@ sha256sums=('SKIP'
 
 build() {
   cd "${_pkgname}"
-  bash build/admin/bundleAdmin.sh
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -38,7 +37,7 @@ build() {
 
 package() {
   cd "${_pkgname}"
-  find webroot -type f -exec install -Dm 644 "{}" "$pkgdir/usr/share/$_pkgname/{}" \;
+  find web -type f -exec install -Dm 644 "{}" "$pkgdir/usr/share/$_pkgname/{}" \;
   install -Dm755 $_pkgname "$pkgdir"/usr/bin/$_pkgname
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
   install -Dm644 "$srcdir/owncast.service" "$pkgdir/usr/lib/systemd/system/owncast.service"
@@ -48,6 +47,3 @@ package() {
   install -Dm644 "$srcdir/tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/owncast.conf"
 }
 # vim: ft=sh ts=2 sw=2 et
-
-
-
