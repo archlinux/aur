@@ -1,7 +1,7 @@
 pkgbase = stardict-slovnyk-en-uk-en
 	pkgdesc = Large ukainian-english-ukainian dictionary for Stardict
 	pkgver = 2.4.2
-	pkgrel = 1
+	pkgrel = 3
 	url = http://download.huzheng.org/mova.org/
 	arch = any
 	license = GPL
