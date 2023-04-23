@@ -1,7 +1,7 @@
 # Maintainer: Leo <i@setuid0.dev>
 
 pkgname=phpstan
-pkgver=1.10.13
+pkgver=1.10.14
 pkgrel=1
 pkgdesc="PHP Static Analysis Tool"
 url="https://phpstan.org/"
@@ -15,7 +15,7 @@ source=(
     "https://raw.githubusercontent.com/phpstan/phpstan/${pkgver}/LICENSE"
 )
 sha256sums=(
-	'c0506ba4c298bfe06af1c4a12e03aafdf391cfbeda06310449a5f303e864dc6f'
+	'760d07f85180ebc7a2147ab29295d154ca91bfc4bf2c28cb3c869689c391a4b3'
 	SKIP
 )
 
