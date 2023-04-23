@@ -3,8 +3,8 @@
 
 pkgname=python-pyhanko-certvalidator
 _name=certvalidator
-pkgver=0.21.1
-pkgrel=2
+pkgver=0.21.2
+pkgrel=1
 pkgdesc="Validates X.509 certificates and paths"
 url="https://github.com/MatthiasValvekens/certvalidator"
 license=(MIT)
@@ -30,7 +30,7 @@ depends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('1bc7adc687895e94574cfb80873791e32dedf0f3e15b1c95178e72e86c5efeb8')
+sha256sums=('ea3fc94b1b1598f0b35cb0348b8dd4f7eec21b84df2ff48cce89d6a8133235eb')
 
 _archive="$_name-$pkgver"
 
