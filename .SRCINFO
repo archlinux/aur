@@ -1,7 +1,7 @@
 pkgbase = elan-bin
 	pkgdesc = A video and audio annotation tool
 	pkgver = 6.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tla.mpi.nl/tools/tla-tools/elan/
 	arch = any
 	license = GPL3
