@@ -1,0 +1,18 @@
+pkgbase = nauz-file-detector-bin
+	pkgdesc = Linker/Compiler/Tool detector for Windows, Linux and MacOS.
+	pkgver = 0.09
+	pkgrel = 1
+	url = https://github.com/horsicq/Nauz-File-Detector
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = qt5-base
+	provides = nauz-file-detector
+	conflicts = nauz-file-detector-git
+	source = https://raw.githubusercontent.com/horsicq/Nauz-File-Detector/0349d29484d46094a7de551994e13355d9e4ef58/LICENSE
+	source = https://github.com/horsicq/Nauz-File-Detector/releases/download/0.09/nauz-file-detector-0.09-1-x86_64.pkg.tar.zst
+	sha256sums = c83ff8cc9bdc01529005cf34e61fb43b22d907f8bfecee940973f4ae193fbded
+	sha256sums = 131ad834132b3bd3a542c25360ca1c113bf795b745187cb6127fa3c38ae92107
+
+pkgname = nauz-file-detector-bin
