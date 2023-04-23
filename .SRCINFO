@@ -1,6 +1,6 @@
 pkgbase = sic-image-cli
 	pkgdesc = Accessible image processing and conversion from the terminal
-	pkgver = 0.22.0
+	pkgver = 0.22.1
 	pkgrel = 1
 	url = https://github.com/foresterre/sic
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = sic-image-cli
 	depends = gcc-libs
 	conflicts = sic
 	options = !lto
-	source = sic-image-cli-0.22.0.tar.gz::https://github.com/foresterre/sic/archive/v0.22.0.tar.gz
-	sha512sums = 3f00a651f7ea6776477a30e8947550dd112dda5d145b97e044cc64cf7751144b5c31a47d9284919277a7a92d09652011ec0c34861ce0d9c069d3e98209bdc134
+	source = sic-image-cli-0.22.1.tar.gz::https://github.com/foresterre/sic/archive/v0.22.1.tar.gz
+	sha512sums = fcb9caf627f4f49d2655350e9abce9b283002cf4841b0e3787d5ab9b30549ef73633dd3f833cf8c740863b02cae0870813d02ec751ee8dd9cfc47fd64b029b7e
 
 pkgname = sic-image-cli
