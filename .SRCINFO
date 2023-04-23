@@ -1,0 +1,14 @@
+pkgbase = parafly
+	pkgdesc = parallel command processing using OpenMP
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ParaFly/ParaFly
+	arch = x86_64
+	license = BSD-3
+	depends = glibc
+	depends = openmp
+	depends = gcc-libs
+	source = parafly-0.1.0.tar.gz::https://github.com/ParaFly/ParaFly/archive/refs/tags/v0.1.0.tar.gz
+	b2sums = 7f98ea21e9970bee227f4b2525dd1b3c514ac063ff0733ea36f98153d5a58b6a75a5ae3d57ead3fde6f88a2a5874911c607655458f48b1aea94e0bbe78ecddb4
+
+pkgname = parafly
