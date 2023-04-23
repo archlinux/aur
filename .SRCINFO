@@ -1,0 +1,17 @@
+pkgbase = sim-cli
+	pkgdesc = A command line front-end to the SIM platform.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/maleszka/sim-cli
+	arch = x86_64
+	license = GPL3
+	makedepends = meson>=0.60.0
+	makedepends = ninja
+	makedepends = cmake>=3.17.0
+	makedepends = make
+	makedepends = boost
+	depends = curl
+	source = https://gitlab.com/maleszka/sim-cli/-/releases/v0.1.0/downloads/sim-cli-src.tar.gz
+	sha256sums = cf3d48278d1925b2d5a0240ee39ec7aec6af929caed1351a7e760eb59357341b
+
+pkgname = sim-cli
