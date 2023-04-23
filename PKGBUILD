@@ -321,7 +321,7 @@ _pack() {
   install -dm755 "${1}/${pkgname%-vencord-git}"
   cd "${srcdir:?}"
 
-  cp -r "${srcdir:?}/vencord/dist/extension-unpacked" ./vencord-ext
+  cp -r "${srcdir:?}/vencord/dist/chromium-unpacked" ./vencord-ext
   find "./vencord-ext" -type f -exec install -Dm644 "{}" "${1}/${pkgname%-vencord-git}/{}" \;
 
   cd "${srcdir:?}/${pkgname%-vencord-git}"
