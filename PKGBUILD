@@ -9,6 +9,7 @@ url='https://codemadness.org/sfeed.html'
 license=('ISC')
 provides=('sfeed')
 conflicts=('sfeed')
+replaces=('sfeed-curses-git')
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 depends=('sh' 'ncurses')
 optdepends=('curl: sfeed_update script'

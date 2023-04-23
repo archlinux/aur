@@ -21,6 +21,7 @@ pkgbase = sfeed-git
 	optdepends = lynx: used by the sfeed_content script to convert HTML content
 	provides = sfeed
 	conflicts = sfeed
+	replaces = sfeed-curses-git
 	source = sfeed::git://git.codemadness.org/sfeed
 	sha256sums = SKIP
 
