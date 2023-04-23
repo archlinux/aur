@@ -1,6 +1,6 @@
 
 pkgname=webers-git
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 epoch=
 pkgdesc="A python program that allows components in plain html"
