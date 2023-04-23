@@ -3,7 +3,7 @@
 pkgname=xdg-ninja-git
 _pkgname=xdg-ninja
 pkgver=r324.619f172
-pkgrel=1
+pkgrel=2
 pkgdesc='A shell script which checks your $HOME for unwanted files and directories.'
 arch=('any')
 url="https://github.com/b3nj5m1n/${_pkgname}"
@@ -25,8 +25,6 @@ pkgver() {
 
 package() {
     cd "$srcdir/$_pkgname"
-    install -vDm 755 $_pkgname.sh "$pkgdir/usr/bin/$_pkgname"
-    mkdir -p "$pkgdir/usr/share/$_pkgname/"
-    cp -r programs/ "$pkgdir/usr/share/$_pkgname/"
+    DESTDIR="$pkgdir" PREFIX="/usr" make install
 }
 
