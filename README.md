@@ -15,8 +15,7 @@ In your `$XDG_CONFIG_HOME` (or `$HOME/.config`) create `iosevka/my-font.toml` in
 ```ini
 [options]
     name = myosevka
-    sans
-    stress-fw
+    serifs = sans
     ligset = haskell
     nerdfont = fontawesome powerline material octicons
 
