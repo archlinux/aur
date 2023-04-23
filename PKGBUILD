@@ -1,15 +1,15 @@
 # Maintainer: FLX (Paul Werther) <flx@evait.de>
 pkgname=pd-tools
 _pkgname=pdtm
-pkgver=20230128
+pkgver=20230423
 pkgrel=1
-pkgdesc='This package uses pdtm from ProjectDiscovery in order to install all binaries from their projects. The package version is the current day, so on every new build you will get the latest tools'
+pkgdesc='pdtm is a simple and easy-to-use golang based tool for managing open source projects from ProjectDiscovery'
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/projectdiscovery/pdtm'
 license=('MIT')
 makedepends=('go' 'git')
-provides=("nuclei" "pdtm" "katana" "subfinder" "dnsx" "naabu" "httpx" "uncover" "cloudlist" "proxify" "tlsx" "notify" "chaos-client" "shuffledns" "mapcidr" "interactsh-server" "interactsh-client")
-conflicts=("nuclei" "pdtm" "katana" "subfinder" "dnsx" "naabu" "httpx" "uncover" "cloudlist" "proxify" "tlsx" "notify" "chaos-client" "shuffledns" "mapcidr" "interactsh-server" "interactsh-client")
+provides=("aix" "chaos-client" "asnmap" "nuclei" "pdtm" "katana" "subfinder" "dnsx" "naabu" "httpx" "uncover" "cloudlist" "proxify" "tlsx" "notify" "chaos-client" "shuffledns" "mapcidr" "interactsh-server" "interactsh-client")
+conflicts=("aix" "chaos-client" "asnmap" "nuclei" "pdtm" "katana" "subfinder" "dnsx" "naabu" "httpx" "uncover" "cloudlist" "proxify" "tlsx" "notify" "chaos-client" "shuffledns" "mapcidr" "interactsh-server" "interactsh-client")
 depends=('glibc')
 source=("${_pkgname}::git+https://github.com/projectdiscovery/${_pkgname}.git")
 sha256sums=('SKIP')
@@ -39,5 +39,8 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  ./cmd/build/${_pkgname} -install-all -binary-path "${pkgdir}/usr/bin/"
+  ./cmd/build/${_pkgname} -install-all
+  for file in /build/.pdtm/go/bin/*; do
+    install -Dvm755 "$file" -t "${pkgdir}/usr/bin/"
+  done
 }
