@@ -1,5 +1,5 @@
 pkgname=nordvpn-git
-pkgver=r29.a02cd17
+pkgver=r34.9319a81
 pkgrel=1
 pkgdesc="NordVPN client for Linux (Git version)"
 arch=('x86_64' 'arm64')

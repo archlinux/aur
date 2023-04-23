@@ -1,6 +1,6 @@
 pkgbase = nordvpn-git
 	pkgdesc = NordVPN client for Linux (Git version)
-	pkgver = r29.a02cd17
+	pkgver = r34.9319a81
 	pkgrel = 1
 	url = https://github.com/NordSecurity/nordvpn-linux
 	install = nordvpn-git.install
