@@ -1,10 +1,10 @@
 pkgbase = not-forking
 	pkgdesc = Integrate non-diffable codebases, like patch/sed/diff/cp/mv rolled into one.
 	pkgver = r114.dc62bca
-	pkgrel = 2
+	pkgrel = 3
 	url = https://lumosql.org/src/not-forking
 	arch = any
-	license = MIT
+	license = custom: MIT
 	license = custom: cc-by-sa-4.0
 	checkdepends = perl-text-glob
 	makedepends = fossil

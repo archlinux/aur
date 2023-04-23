@@ -2,11 +2,11 @@
 
 pkgname=not-forking
 pkgver=r114.dc62bca
-pkgrel=2
+pkgrel=3
 pkgdesc='Integrate non-diffable codebases, like patch/sed/diff/cp/mv rolled into one.'
 arch=('any')
 url="https://lumosql.org/src/not-forking"
-license=('MIT' 'custom: cc-by-sa-4.0')
+license=('custom: MIT' 'custom: cc-by-sa-4.0')
 depends=('perl')
 makedepends=('fossil')
 checkdepends=('perl-text-glob')
