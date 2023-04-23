@@ -1,6 +1,6 @@
 pkgbase = libcommunist
 	pkgdesc = Library for P2P communications
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/ProfessorNavigator/libcommunist
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = libcommunist
 	depends = libzip
 	provides = libcommunist
 	options = strip
-	source = https://github.com/ProfessorNavigator/libcommunist/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = e4dcd7b99a63d04894b45c33923353f293543712e97e859b8f26ff4a3d474635
+	source = https://github.com/ProfessorNavigator/libcommunist/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = 5949dd37069a7f910a06eb11ed22bd3813d984564d71df444fe0b439e15a242f
 
 pkgname = libcommunist
