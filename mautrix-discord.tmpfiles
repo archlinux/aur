@@ -1,0 +1,6 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /etc/mautrix-discord 0750 root mautrix-discord
+z /etc/mautrix-discord/* 0640 mautrix-discord mautrix-discord -
+d /var/log/mautrix-discord 0700 mautrix-discord mautrix-discord
+d /var/lib/mautrix-discord 0700 mautrix-discord mautrix-discord
+

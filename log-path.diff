@@ -1,0 +1,11 @@
+--- a/example-config.yaml	2023-04-22 10:42:32.216037043 +0200
++++ b/example-config.yaml	2023-04-22 10:43:14.796766004 +0200
+@@ -306,7 +306,7 @@
+       format: pretty-colored
+     - type: file
+       format: json
+-      filename: ./logs/mautrix-discord.log
++      filename: /var/log/mautrix-discord.log
+       max_size: 100
+       max_backups: 10
+       compress: true
