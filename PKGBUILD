@@ -1,8 +1,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=mup
-pkgver=6.8
-_pkgver=68
+pkgver=7.0
+_pkgver=${pkgver//.}
 pkgrel=1
 pkgdesc="Music publisher, creates PostScript printed music or MIDI"
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ url="http://arkkra.com"
 license=('custom')
 depends=('fltk' 'libxpm')
 makedepends=('gendesk')
-source=("ftp://ftp.arkkra.com/pub/unix/$pkgname${_pkgver}src.tar.gz")
-sha256sums=('3e0c6a78e18a49fd4a3c64db97c71bc9996e7073f9ff81965f916544bd2d7b19')
+source=("http://www.arkkra.com/ftp/pub/unix/${pkgname}${_pkgver}src.tar.gz")
+sha256sums=('9903e7c1863fa88b904ccd41a6d5aa466a0d934ba6640e6a15908f7a062a0351')
 
 prepare() {
   cd $pkgname-$pkgver
