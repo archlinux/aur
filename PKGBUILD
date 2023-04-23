@@ -1,5 +1,5 @@
 pkgname=openmodelica
-pkgver=1.20.0
+pkgver=1.21.0
 pkgrel=1
 pkgdesc="Open-source Modelica-based modeling and simulation environment"
 url="https://www.openmodelica.org"
@@ -17,7 +17,6 @@ prepare() {
         cd "${pkgname}"
         git remote set-url origin ${_giturl}
         git submodule update --force --init --recursive
-        cd OMSimulator && git cherry-pick 5ef06e25
 }
 
 build() {
