@@ -2,8 +2,8 @@
 
 pkgname=not-forking
 pkgver=0.5
-pkgrel=2
-pkgdesc='Integrate non-diffable codebases, like patch/sed/diff/cp/mv rolled into one.'
+pkgrel=3
+pkgdesc='Tool for merging multiple upstreams without forking.'
 arch=('any')
 url="https://lumosql.org/src/not-forking"
 license=('custom: MIT' 'custom: cc-by-sa-4.0')
