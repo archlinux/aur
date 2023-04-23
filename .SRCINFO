@@ -1,7 +1,7 @@
 pkgbase = scanpy
 	pkgdesc = Single-Cell Analysis in Python
-	pkgver = 1.9.1
-	pkgrel = 2
+	pkgver = 1.9.3
+	pkgrel = 1
 	url = https://github.com/theislab/scanpy
 	arch = any
 	license = BSD
@@ -28,6 +28,7 @@ pkgbase = scanpy
 	depends = python-umap-learn>=0.3.10
 	depends = python-packaging
 	depends = python-sinfo
+	optdepends = python-igraph: PAGA support (also transitively needed for Louvain/Leiden)
 	optdepends = python-louvain-igraph: Louvain clustering
 	optdepends = python-leidenalg: leiden community detection
 	optdepends = python-bbknn: Batch balanced KNN (batch correction)
@@ -37,9 +38,13 @@ pkgbase = scanpy
 	optdepends = python-harmonypy: Harmony dataset integration algorithm
 	optdepends = python-scanorama: Scanorama dataset integration algorithm
 	optdepends = python-scrublet: Cell doublet detection
+	optdepends = rapids-cudf: NVIDIA RAPIDS acceleration
+	optdepends = rapids-cuml: NVIDIA RAPIDS acceleration
+	optdepends = rapids-cugraph: NVIDIA RAPIDS acceleration
+	optdepends = python-dask: Dask parallelization
 	provides = scanpy
 	provides = python-scanpy
-	source = https://files.pythonhosted.org/packages/source/s/scanpy/scanpy-1.9.1.tar.gz
-	sha256sums = 00c9a83b649da7e0171c91e9a08cff632102faa760614fd05cd4d1dbba4eb541
+	source = https://files.pythonhosted.org/packages/source/s/scanpy/scanpy-1.9.3.tar.gz
+	sha256sums = dfe65f9acd9f4c1740079a099f89fa6a44b6f0ef75ecaf85247ad4af859144d7
 
 pkgname = scanpy
