@@ -4,7 +4,7 @@
 # Contributor: boscowitch <boscowitch@boscowitch.de>
 
 _pkgname=coreutils
-_commit=ea268d870b475edd5960dcd55d5378abc9705958
+_commit=35988dc8d773fcf433ac2d4aa90acd9a713685e3
 pkgname=advcpmv
 pkgver=9.2
 pkgrel=1
