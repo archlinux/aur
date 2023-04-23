@@ -10,13 +10,13 @@ license=('GPL-3.0')
 source=("https://github.com/aandrew-me/tgpt/releases/download/v${pkgver}/tgpt-linux-amd64")
 md5sums=('SKIP')
 
-pkgver() {
-	cd "$srcdir"
-	rm -rf tgpt
-	git clone --no-checkout https://github.com/aandrew-me/tgpt
-	cd tgpt
-	git describe --tags --abbrev=0 | sed 's/^v//'
-}
+#pkgver() {
+#	cd "$srcdir"
+#	rm -rf tgpt
+#	git clone --no-checkout https://github.com/aandrew-me/tgpt
+#	cd tgpt
+#	git describe --tags --abbrev=0 | sed 's/^v//'
+#}
 
 package() {
     cd "$srcdir"
