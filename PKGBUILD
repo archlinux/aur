@@ -1,6 +1,6 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=python-sphinx-favicon
-pkgver=0.2
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A Sphinx extension to add custom favicons."
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/tcmetzger/sphinx-favicon"
 license=('MIT')
 makedepends=(python-build python-installer python-wheel)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5f159df2d84be70c94011c0c22a8ea2ba18b630afa0e3e273bd5dd832685a9ca')
+sha256sums=('6f17726fd8c8fc9e092a2e21244b3ecd4a291a5d5b88cc4d4541732b3cf86c27')
 
 build() {
     cd "${pkgname#python-}-${pkgver}"

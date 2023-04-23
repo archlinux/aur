@@ -1,6 +1,6 @@
 pkgbase = python-sphinx-favicon
 	pkgdesc = A Sphinx extension to add custom favicons.
-	pkgver = 0.2
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/tcmetzger/sphinx-favicon
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-sphinx-favicon
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	source = python-sphinx-favicon-0.2.tar.gz::https://github.com/tcmetzger/sphinx-favicon/archive/refs/tags/v0.2.tar.gz
-	sha256sums = 5f159df2d84be70c94011c0c22a8ea2ba18b630afa0e3e273bd5dd832685a9ca
+	source = python-sphinx-favicon-1.0.1.tar.gz::https://github.com/tcmetzger/sphinx-favicon/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 6f17726fd8c8fc9e092a2e21244b3ecd4a291a5d5b88cc4d4541732b3cf86c27
 
 pkgname = python-sphinx-favicon
