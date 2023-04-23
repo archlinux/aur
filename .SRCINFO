@@ -1,7 +1,7 @@
 pkgbase = xunscore-bin
 	pkgdesc = A music notation software, let you easily create and share sheet music. The editor is called xūn, is hoping it will be a better balance between the Chinese national music
 	pkgver = 1.3.12.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xunscore.cn/
 	arch = x86_64
 	license = custom
@@ -24,7 +24,6 @@ pkgbase = xunscore-bin
 	depends = libxcb
 	depends = alsa-lib
 	depends = libsndfile
-	depends = hicolor-icon-theme
 	provides = xunscore
 	conflicts = xunscore
 	source = xunscore-1.3.12.01.zip::https://gitee.com/xunscore/xunapp/releases/download/v1.3.12.01/xunscore-ubt-1.3.12.01.zip
