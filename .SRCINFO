@@ -1,0 +1,20 @@
+pkgbase = python-catppuccin
+	pkgdesc = Soothing pastel theme for Python
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://catppuccin-website.vercel.app
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	makedepends = python-poetry-dynamic-versioning
+	depends = python
+	optdepends = python-pygments: For pygments integration
+	source = python-catppuccin-1.1.1.tar.gz::https://github.com/catppuccin/python/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = 1c5810c666c7c37aee3dbf325090a57579232d0ae15afee5a5bedb3536958f25
+	b2sums = 6cd80407ef2db5df88d3159351366527d28c0180b069bf06d95708da6f2035a96c2ed0ef8d1aa078e00a5d62d624eaa77d1ecec0db2724faccaee67ae621b8c7
+
+pkgname = python-catppuccin
