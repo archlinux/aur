@@ -1,6 +1,6 @@
 pkgbase = pelican-git
 	pkgdesc = A static site generator written in Python w/ reST/Markdown support.
-	pkgver = 4.8.0.r41.gf015ab89
+	pkgver = 4.8.0.r58.g86f62d0a
 	pkgrel = 1
 	url = http://blog.getpelican.com/
 	arch = any
