@@ -1,28 +1,37 @@
-# Maintainer: MatMoul <matmoul@gmail.com>
+# Maintainer: Jat <chat@jat.email>
 
-pkgname=xorgxrdp-git
-_gitname=xorgxrdp
-pkgver=0.9.19
-pkgrel=1
-pkgdesc="Xorg drivers for xrdp"
-arch=('x86_64')
-url="https://github.com/neutrinolabs/xorgxrdp"
+_pkgname='xorgxrdp'
+pkgname="$_pkgname-git"
+pkgver='0.2.18.r41.ga07c9c8'
+pkgrel='1'
+pkgdesc='Xorg drivers for xrdp. Git version, devel branch.'
+arch=('i686' 'x86_64')
+url='https://github.com/neutrinolabs/xorgxrdp'
 license=('MIT')
-depends=('xrdp')
-makedepends=('nasm' 'xorg-server-devel')
-options=(!emptydirs)
-source=("https://github.com/neutrinolabs/$_gitname/releases/download/v${pkgver}/$_gitname-${pkgver}.tar.gz")
-sha256sums=('c1cf4c583c28a24ce814c147d387b8f4d255877f2e365372c69c6f076ddb1455')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+makedepends=('nasm' 'xorg-server-devel' 'xrdp')
+options=('staticlibs')
+source=("git+$url#branch=devel")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/$_pkgname"
+
+    git describe --long --tags | sed -E 's,^[^0-9]*,,;s,([0-9]*-g),r\1,;s,-,.,g'
+}
 
 build() {
-	cd "${_gitname}-${pkgver}"
-	./bootstrap
-	./configure
-	make
+  cd "$srcdir/$_pkgname"
+
+  ./bootstrap
+  ./configure --prefix="/usr"
+  make
 }
 
 package() {
-	cd "${_gitname}-${pkgver}"
-	make DESTDIR="${pkgdir}" install
-	install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  cd "$srcdir/$_pkgname"
+
+  make DESTDIR="$pkgdir" install
+  install -Dm644 'COPYING' -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
