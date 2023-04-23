@@ -1,6 +1,6 @@
 pkgbase = session-desktop-git
 	pkgdesc = Private messaging from your desktop
-	pkgver = v1.10.7.r0.g9fa95377f
+	pkgver = v1.10.8.r0.g8ee731b2a
 	pkgrel = 1
 	url = https://getsession.org
 	install = session-desktop-git.install
@@ -23,11 +23,9 @@ pkgbase = session-desktop-git
 	options = !strip
 	source = git+https://github.com/loki-project/session-desktop.git
 	source = session-desktop.desktop
-	source = patch.diff.example
 	source = session-desktop-git.install
 	sha256sums = SKIP
 	sha256sums = 18919ed91eddc64269256aaffe9b1abc864fbe2152c76e900e89799c1e9a1e9f
-	sha256sums = ffa91fc8da2b0d82d0117a8f12c1ab63957a2cff43bac87e6b475a5b0a0eabe8
 	sha256sums = 6ec71b91d3f5f92e264bb3ebc1adfb6f75d2b75e2af3ce8db9f1dedc56bfc161
 
 pkgname = session-desktop-git

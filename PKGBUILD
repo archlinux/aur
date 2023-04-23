@@ -2,7 +2,7 @@
 # Maintainer: xXR01I1Xx <xxr01i1xx@tuta.io>
 
 pkgname=session-desktop-git
-pkgver=v1.10.7.r0.g9fa95377f
+pkgver=v1.10.8.r0.g8ee731b2a
 _semver="$(sed -E 's/v([0-9]+\.[0-9]+\.[0-9]+)\..+\.(.+)/\1-\2/g' <<< "$pkgver")"
 pkgrel=1
 pkgdesc="Private messaging from your desktop"
@@ -18,11 +18,9 @@ options=(!strip)
 install=$pkgname.install
 source=('git+https://github.com/loki-project/session-desktop.git'
         'session-desktop.desktop'
-        'patch.diff.example'
         'session-desktop-git.install')
 sha256sums=('SKIP'
             '18919ed91eddc64269256aaffe9b1abc864fbe2152c76e900e89799c1e9a1e9f'
-            'ffa91fc8da2b0d82d0117a8f12c1ab63957a2cff43bac87e6b475a5b0a0eabe8'
             '6ec71b91d3f5f92e264bb3ebc1adfb6f75d2b75e2af3ce8db9f1dedc56bfc161')
 
 pkgver() {
@@ -35,8 +33,7 @@ pkgver() {
 prepare() {
   cd $srcdir/session-desktop
   echo "Applying patch"
-  sed "s/ver_placeholder/$_semver/g" $srcdir/patch.diff.example > $srcdir/patch.diff
-  git apply $srcdir/patch.diff
+  sed -i "s/\"version\": \".*\",/\"version\": \"$_semver\",/" package.json
   source /usr/share/nvm/init-nvm.sh && nvm install 16.13.0
 }
 
