@@ -1,7 +1,7 @@
 pkgbase = jdk17-temurin
 	pkgdesc = Temurin 17 (OpenJDK 17 Java binaries by Adoptium, formerly AdoptOpenJDK)
-	pkgver = 17.0.6.u10
-	pkgrel = 2
+	pkgver = 17.0.7.u7
+	pkgrel = 1
 	url = https://adoptium.net/
 	install = install_jdk17-temurin.sh
 	arch = x86_64
@@ -17,18 +17,18 @@ pkgbase = jdk17-temurin
 	optdepends = gtk3: for the Gtk+ 3 look and feel
 	provides = java-runtime-headless=17
 	provides = java-runtime-headless-openjdk=17
-	provides = jre17-openjdk-headless=17.0.6.u10
-	provides = jre-openjdk-headless=17.0.6.u10
+	provides = jre17-openjdk-headless=17.0.7.u7
+	provides = jre-openjdk-headless=17.0.7.u7
 	provides = java-runtime=17
 	provides = java-runtime-openjdk=17
-	provides = jre17-openjdk=17.0.6.u10
-	provides = jre-openjdk=17.0.6.u10
+	provides = jre17-openjdk=17.0.7.u7
+	provides = jre-openjdk=17.0.7.u7
 	provides = java-environment=17
 	provides = java-environment-openjdk=17
-	provides = jdk17-openjdk=17.0.6.u10
-	provides = jdk-openjdk=17.0.6.u10
-	provides = openjdk17-src=17.0.6.u10
-	provides = openjdk-src=17.0.6.u10
+	provides = jdk17-openjdk=17.0.7.u7
+	provides = jdk-openjdk=17.0.7.u7
+	provides = openjdk17-src=17.0.7.u7
+	provides = openjdk-src=17.0.7.u7
 	options = !strip
 	backup = etc/java-17-temurin/logging.properties
 	backup = etc/java-17-temurin/management/jmxremote.access
@@ -45,11 +45,11 @@ pkgbase = jdk17-temurin
 	backup = etc/java-17-temurin/security/policy/unlimited/default_local.policy
 	backup = etc/java-17-temurin/security/policy/unlimited/default_US_export.policy
 	backup = etc/java-17-temurin/sound.properties
-	source = https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.6%2B10/OpenJDK17U-jdk_x64_linux_hotspot_17.0.6_10.tar.gz
+	source = https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.7%2B7/OpenJDK17U-jdk_x64_linux_hotspot_17.0.7_7.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	sha256sums = a0b1b9dd809d51a438f5fa08918f9aca7b2135721097f0858cf29f77a35d4289
+	sha256sums = e9458b38e97358850902c2936a1bb5f35f6cffc59da9fcd28c63eab8dbbfbc3b
 	sha256sums = ae076317d93a389cc0c893fd9ec6769ae860c2cc01f8c8bed3f4ee476c73e625
 	sha256sums = dc278160ca7df32bcfab0a5420c09eaf6f4602d30f57b6c5bedb0f60062c5228
 	sha256sums = d0913ae3b9f469f8567432b0867222d66f50008c313f5a0882d15994ba19ec01
