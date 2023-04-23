@@ -3,7 +3,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=cosmic-epoch-git
-pkgver=r61.c60c29e
+pkgver=r62.bdf225c
 pkgrel=1
 pkgdesc="desktop environment in Rust, Iced. GNOME inspired, by System76, Pop! OS."
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ url="https://github.com/pop-os/cosmic-epoch"
 license=('GPL3')
 depends=('fontconfig' 'gtk4' 'libinput' 'libglvnd' 'libpipewire' 'libpulse' 'libseat.so'
          'libxkbcommon' 'pop-icon-theme' 'pop-launcher' 'systemd-libs' 'wayland')
-makedepends=('cargo' 'clang' 'desktop-file-utils' 'git' 'just' 'meson' 'mold')
+makedepends=('cargo' 'clang' 'desktop-file-utils' 'git' 'just' 'mold')
 checkdepends=('appstream-glib')
 optdepends=('ksnip: Screenshots' # See https://github.com/pop-os/cosmic-epoch#screenshots
             'qt5-wayland: Screenshots')
