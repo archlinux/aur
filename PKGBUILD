@@ -3,7 +3,7 @@
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 
 pkgname=matlab
-pkgrel=1
+pkgrel=2
 pkgver=9.14.0.2239454
 pkgdesc='A high-level language for numerical computation and visualization'
 arch=(x86_64)
@@ -13,12 +13,14 @@ depends=(matlab-meta)
 makedepends=('gendesk')
 provides=('matlab-bin')
 source=('local://matlab.tar' 'local://matlab.fik' 'local://matlab.lic')
-b2sums=(SKIP SKIP SKIP)
+b2sums=('27673470057b05e92c8ba194036f5b94db6fe1c5b294242d502f970d8c46e360a61efd0e9298d5e14e31d182c32792050ac0b7385fa12ae8daae33e8f506a893'
+        'c257e9dbe6190ffb321ee50a9be04108942f20180ca421670f37ef9b524db27e2d7848fc594d79a26e668511085c96f1dbe7a7ea896cd7e11167923e65ed5039'
+        '5897d48abd9cb86b9788d855bfcd33b0443c4e481e672129d1059763b767a315f3127176307589b51ead791dce70c5adfbd1aab35757a985a3f467618ea5545d')
 
 # Example list of products for a partial installation. Leave empty for a full installation.
 _products=(
     'MATLAB'
-    'Simulink'
+    # 'Simulink'
 )
 
 pkgver() {
@@ -73,9 +75,14 @@ build() {
 package() {
     _release="$(sed --quiet 's|\s*<release>\(.*\)</release>\s*|\1|p' \
         "$srcdir/matlab/VersionInfo.xml")"
+    _matlabdir=opt/MATLAB
     _instdir=opt/MATLAB/$_release
-    install -dm755 "$(dirname "$pkgdir/$_instdir")"
+    install -dm755 "$pkgdir/$_matlabdir"
     install -dm777 "$pkgdir/$_instdir"
+
+    # Needed for programs like python-matlabengine which expect MATLAB to be in /usr/local
+    install -dm755 "$pkgdir/usr/local"
+    ln -s /$_matlabdir "$pkgdir/usr/local/MATLAB"
 
     echo "  -> Moving files from build area to package area directly to save space..."
     mv "$srcdir/build/"* "$pkgdir/$_instdir"
