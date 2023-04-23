@@ -1,5 +1,5 @@
 pkgbase = pulseaudio-module-xrdp-git
-	pkgdesc = PulseAudio modules for xrdp
+	pkgdesc = PulseAudio modules for xrdp. Git version, devel branch.
 	pkgver = 0.7.r0.gf4b5d14
 	pkgrel = 1
 	url = https://github.com/neutrinolabs/pulseaudio-module-xrdp
