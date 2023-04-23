@@ -5,25 +5,33 @@ DOC_DIRS=(opt/hydrus/help)
 pkgname=hydrus
 _pkgname=hydrus
 pkgver=524
-pkgrel=1
+pkgrel=2
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
-license=(WTFPL)
-install=hydrus.install
+license=(custom)
 conflicts=(hydrus-docs hydrus-sources)
 url=http://hydrusnetwork.github.io/hydrus/
 depends=(python python-opencv python-beautifulsoup4 python-yaml
          'python-lz4>=0.10.1' python-numpy python-twisted python-pillow
          python-pysocks python-psutil python-send2trash python-html5lib
          python-requests python-qtpy emoji-font python-mpv
-         python-service-identity fmt pyside6)
+         python-lxml python-urllib3 python-typing_extensions
+         python-service-identity  # required by twisted for https hostname verification
+         pyside6)
 makedepends=(git)
 optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'miniupnpc: automatic port forwarding'
             'desktop-file-utils: to add Hydrus to your desktop environment menus'
+            'python-cbor2: cbor support in client-server communication'
+            'python-chardet: detect text encoding more accurately'
             'python-cloudscraper: bypass cloudflare "checking your browser" challenges'
+            'python-dateutil: improved fuzzy date search'
+            'python-pympler: debug menus to profile memory usage'
             'python-pyqt6-charts: display bandwidth usage charts'
+            'python-cryptography: to generate certificates for accessing client API and server via HTTPS'
             'python-pyopenssl: to generate certificates for accessing client API and server via HTTPS'
+            # 'python-pyparsing: currently unused'
+            # 'speedcopy: may speed up file transfers'
             'swftools: to display SWF thumbnails')
 source=("${_pkgname}::git+https://github.com/hydrusnetwork/${_pkgname}.git#commit=43ae2c2593c8e900b40460191b8379229578f52c"
         paths-in-opt.patch
