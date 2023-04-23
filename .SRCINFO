@@ -1,0 +1,15 @@
+pkgbase = dec
+	pkgdesc = A declarative package manager for Arch Linux
+	pkgver = r29.0f26721
+	pkgrel = 1
+	url = https://gitlab.com/rehposuite/dec
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = paru
+	provides = dec
+	source = git+https://gitlab.com/rehposuite/dec.git
+	md5sums = SKIP
+
+pkgname = dec
