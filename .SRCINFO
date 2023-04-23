@@ -1,13 +1,12 @@
 pkgbase = obs-multi-rtmp
 	pkgdesc = Multiple RTMP outputs plugin
-	pkgver = 0.2.8.1
+	pkgver = 0.3.0.1
 	pkgrel = 1
 	url = https://github.com/sorayuki/obs-multi-rtmp
 	arch = x86_64
 	license = GPL
-	makedepends = cmake
 	depends = obs-studio
-	source = obs-multi-rtmp-0.2.8.1.tar.gz::https://github.com/sorayuki/obs-multi-rtmp/archive/0.2.8.1.tar.gz
-	sha256sums = caaf2fcccf775a15e8c98035b9065449475a4cc95bcbf5cec5c872ee47cf3cf5
+	source = https://github.com/sorayuki/obs-multi-rtmp/releases/download/0.3.0.1/obs-multi-rtmp-0.3.0.1-linux-x86_64.deb
+	sha256sums = 7ee1e37bd00808cd969ad218018b2b01f0039fcb3c581df6cc7e27f8d9315631
 
 pkgname = obs-multi-rtmp
