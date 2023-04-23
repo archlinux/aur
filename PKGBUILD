@@ -2,7 +2,7 @@
 pkgbase=python-sphinx-codeautolink
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.14.1
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Automatic links from code examples to reference documentation"
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=('python-setuptools'
 checkdepends=('python-pytest')    # sphinx, bs4, ipython already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'Makefile')
-md5sums=('0928943ac663508a4608e45f3813fdb4'
+md5sums=('8bc7687a42b720e1d6462d4a4f18abc7'
          'a6aa4bc42b138d75f938065a0994c3e1')
 
 prepare() {
