@@ -1,4 +1,4 @@
-# Maintainer: kballen <ken@kballentine.net>
+# Maintainer: Jat <chat@jat.email>
 
 _pkgname=pulseaudio-module-xrdp
 pkgname="${_pkgname}-git"
