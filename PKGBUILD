@@ -16,7 +16,7 @@ pkgname=(
   java11-openjfx-src
 )
 pkgver=11.0.19.u1
-pkgrel=1
+pkgrel=2
 pkgdesc='Java OpenJFX 11 client application platform (open-source implementation of JavaFX)'
 arch=(x86_64)
 url=https://wiki.openjdk.java.net/display/OpenJFX/Main
@@ -31,7 +31,7 @@ makedepends=(
   gdk-pixbuf2
   glib2
   gperf
-  gradle
+  gradle7
   gtk2
   gtk3
   java-environment-openjdk=11
@@ -73,7 +73,7 @@ build() {
   # build against ffmpeg4.4
   export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
 
-  gradle zips
+  gradle7 zips
 }
 
 package_java11-openjfx() {

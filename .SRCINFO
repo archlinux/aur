@@ -1,7 +1,7 @@
 pkgbase = java11-openjfx
 	pkgdesc = Java OpenJFX 11 client application platform (open-source implementation of JavaFX)
 	pkgver = 11.0.19.u1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.openjdk.java.net/display/OpenJFX/Main
 	arch = x86_64
 	license = custom
@@ -14,7 +14,7 @@ pkgbase = java11-openjfx
 	makedepends = gdk-pixbuf2
 	makedepends = glib2
 	makedepends = gperf
-	makedepends = gradle
+	makedepends = gradle7
 	makedepends = gtk2
 	makedepends = gtk3
 	makedepends = java-environment-openjdk=11
