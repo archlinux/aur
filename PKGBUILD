@@ -4,7 +4,7 @@
 
 pkgname=ib-tws
 pkgver=10.22.1i
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Electronic trading platform from discount brokerage firm Interactive Brokers'
 arch=('any')
@@ -68,7 +68,7 @@ build() {
   # copy the bundled JRE (do not move it as other install4j applications may be sharing it)
   cp -r "${BUNDLED_JRE_LOCATION}"/* ${srcdir}/jre
   mv ${srcdir}/target/jars/*.jar ${srcdir}
-  rm -f "${HOME}"/Desktop/Trader\ Workstation*.desktop
+  rm -f "${HOME}"/Desktop/Trader\ Workstation*.desktop "${HOME}"/.local/share/applications/install4j_*-tws.desktop
 
   # icons
   bsdtar --extract --include trader/common/images/ibkr_icon_w12.32_h24.svg --strip-components=3 \
