@@ -5,7 +5,7 @@
 pkgname=('pidgin-hg') #'libpurple-hg' 'finch-hg')
 _hgname=pidgin
 pkgver=3.r42206.cfa7c940ed62
-pkgrel=1
+pkgrel=2
 provides=("pidgin" "libpurple" "finch")
 conflicts=("pidgin" "libpurple" "finch")
 pkgdesc="Multi-protocol instant messaging client. Latest mercurial build."
@@ -26,8 +26,8 @@ makedepends=('mercurial' 'avahi' 'tk' "gobject-introspection" 'ca-certificates' 
              'tk' 'ca-certificates' 'intltool' 'networkmanager'
              'startup-notification' 'gtkspell' 'libxss' 'libsm'
              'hicolor-icon-theme' 'dbus-glib' 'json-glib' 'vala'
-             'farstream' 'libsasl' 'gtk-doc' 'libidn' 'nss' 'cmake'
-             'libgnome-keyring' 'gplugin-hg' 'hasl-hg' 'gi-docgen')
+             'farstream' 'libsasl' 'gtk-doc''nss' 'cmake'
+             'libgnome-keyring' 'gi-docgen')
 makedepends+=('libx11' 'meson')
 options=('!libtool')
 source=('pidgin::hg+https://keep.imfreedom.org/pidgin/pidgin#branch=default')
