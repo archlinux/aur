@@ -1,7 +1,7 @@
 pkgbase = webcord-vencord-git
 	pkgdesc = A Discord and Fosscord client made with the Electron (master branch with Vencord).
 	pkgver = 4.2.0.r845.66c71e5
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/SpacingBat3/WebCord
 	arch = any
 	license = MIT
