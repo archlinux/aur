@@ -1,5 +1,5 @@
 pkgname=revc-git
-pkgver=1.0+r870.a16fcd8d
+pkgver=1.0_r5087.a16fcd8d
 pkgrel=1
 pkgdesc="Grand Theft Auto: Vice City reverse engineered"
 arch=(x86_64 aarch64)
@@ -9,14 +9,14 @@ depends=(librw-git openal mpg123)
 makedepends=(cmake)
 install=revc.install
 source=(
-	git+https://github.com/td512/re3.git#branch=miami
+	git+https://github.com/halpz/re3.git#branch=miami
 	reVC.desktop)
 md5sums=(
 	SKIP
 	a7cd29fced93db056a84486f166f1ecc)
 pkgver(){
 	cd re3
-	git describe --tags|sed 's/.*_//;s/-\(.*\)-g/+r\1./'
+	echo 1.0_r`git rev-list --count HEAD`.`git rev-parse --short HEAD`
 }
 build(){
 	cd re3
