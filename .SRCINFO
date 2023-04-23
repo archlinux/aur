@@ -5,6 +5,7 @@ pkgbase = ktlint
 	url = https://ktlint.github.io/
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = java-runtime>=8
 	source = ktlint-0.49.0::git+https://github.com/pinterest/ktlint.git#tag=0.49.0
 	sha256sums = SKIP

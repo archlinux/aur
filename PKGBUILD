@@ -10,6 +10,7 @@ arch=('any')
 url="https://ktlint.github.io/"
 license=('MIT')
 depends=('java-runtime>=8')
+makedepends=(git)
 # See: https://github.com/pinterest/ktlint#installation
 source=(ktlint-${pkgver}::"git+https://github.com/pinterest/ktlint.git#tag=${pkgver}")
 sha256sums=('SKIP')
