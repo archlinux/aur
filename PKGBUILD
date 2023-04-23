@@ -11,17 +11,17 @@ url="https://ktlint.github.io/"
 license=('MIT')
 depends=('java-runtime>=8')
 makedepends=(git)
-# See: https://github.com/pinterest/ktlint#installation
-source=(ktlint-${pkgver}::"git+https://github.com/pinterest/ktlint.git#tag=${pkgver}")
+validpgpkeys=(ADBC987D1A7B91DB6B0AAA81995EFBF4A3D20BEB)
+source=("git+https://github.com/pinterest/ktlint.git#commit=30e20ecd176c97c1b703d791c8d2bf0aad52e8a2")
 sha256sums=('SKIP')
 
 build() {
-  cd "ktlint-${pkgver}"
+  cd "ktlint"
   ./gradlew --no-configuration-cache --no-scan --no-daemon -Pktlint.publication.signing.enable=false shadowJarExecutable
 }
 
 package() {
-  install -D -m755 "${srcdir}/ktlint-${pkgver}/ktlint-cli/build/run/ktlint" "${pkgdir}/usr/bin/ktlint"
-  install -D -m644 "${srcdir}/ktlint-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/ktlint/LICENSE"
+  install -D -m755 "${srcdir}/ktlint/ktlint-cli/build/run/ktlint" "${pkgdir}/usr/bin/ktlint"
+  install -D -m644 "${srcdir}/ktlint/LICENSE" "${pkgdir}/usr/share/licenses/ktlint/LICENSE"
 }
 

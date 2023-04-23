@@ -7,7 +7,8 @@ pkgbase = ktlint
 	license = MIT
 	makedepends = git
 	depends = java-runtime>=8
-	source = ktlint-0.49.0::git+https://github.com/pinterest/ktlint.git#tag=0.49.0
+	source = git+https://github.com/pinterest/ktlint.git#commit=30e20ecd176c97c1b703d791c8d2bf0aad52e8a2
+	validpgpkeys = ADBC987D1A7B91DB6B0AAA81995EFBF4A3D20BEB
 	sha256sums = SKIP
 
 pkgname = ktlint
