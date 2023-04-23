@@ -1,4 +1,4 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=sfeed
 pkgver=1.8
@@ -17,6 +17,7 @@ optdepends=('curl: sfeed_update script'
 )
 provides=('sfeed-curses')
 conflicts=('sfeed-curses')
+replaces=('sfeed-curses')
 source=("${_url_source}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('173cffaee785110a73c7e02822d7a8de10307e8a2351fca17eebfdb9483ac7b3')
 
