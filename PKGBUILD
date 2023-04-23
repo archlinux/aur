@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=vissE
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
-pkgrel=1
+pkgver=1.6.0
+pkgrel=2
 pkgdesc='Visualising Set Enrichment Analysis Results'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -42,7 +42,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ff8df5f464bff7689b9a2fe3401bb8062d16a5987a13c32101e8db54250bfc05')
+sha256sums=('0821e26061f0bb0f84c834bffabb8bf38c733c67392f5c29958375ac37cecdf1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
