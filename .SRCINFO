@@ -1,6 +1,6 @@
 pkgbase = linux-clear-ltscurrent
 	pkgdesc = Clear Linux ltscurrent
-	pkgver = 6.1.23
+	pkgver = 6.1.25
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux-ltscurrent
 	arch = x86_64
@@ -14,14 +14,14 @@ pkgbase = linux-clear-ltscurrent
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-6.1.23.xz
-	source = linux-clear-ltscurrent::git+https://github.com/clearlinux-pkgs/linux-ltscurrent.git#tag=6.1.22-1281
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-6.1.25.xz
+	source = linux-clear-ltscurrent::git+https://github.com/clearlinux-pkgs/linux-ltscurrent.git#tag=6.1.24-1283
 	source = more-uarches-20230105.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20230105.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb
 	sha256sums = SKIP
-	sha256sums = 9a8aecd42beeb2eae61c16a245b0bcdee1f079ad90b07029d90eb21192d75045
+	sha256sums = 6415c1c25f7614d78bf04dae4c172fc2d460ab152dcc710dd8f46990b7a6cd31
 	sha256sums = SKIP
 	sha256sums = 802946f623c69ae1a636b63697c23ca48af31a099415ed837d2c1e168a272d23
 

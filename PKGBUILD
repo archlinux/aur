@@ -82,9 +82,9 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=6.1
-_minor=23
+_minor=25
 _srcname=linux-${_major}
-_clr=${_major}.22-1281
+_clr=${_major}.24-1283
 _gcc_more_v='20230105'
 pkgbase=linux-clear-ltscurrent
 pkgver=${_major}.${_minor}
@@ -307,7 +307,7 @@ _package() {
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     echo "Installing modules..."
-    make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    make ${BUILD_FLAGS[*]} INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
         DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
     # remove build and source links
@@ -408,7 +408,7 @@ done
 
 sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
             'SKIP'
-            '9a8aecd42beeb2eae61c16a245b0bcdee1f079ad90b07029d90eb21192d75045'
+            '6415c1c25f7614d78bf04dae4c172fc2d460ab152dcc710dd8f46990b7a6cd31'
             'SKIP'
             '802946f623c69ae1a636b63697c23ca48af31a099415ed837d2c1e168a272d23')
 
