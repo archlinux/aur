@@ -33,5 +33,5 @@ build() {
 package() {
 	cd "$_pkgname"
 	install -Dm644 jxl.so "$pkgdir$(pkg-config imlib2 --variable=libdir)/imlib2/loaders/jxl.so"
-	install -Dm644 LICENSE-BSD-{ab,dh} -t "$pkgdir/usr/share/licenses/$pkgname"
+	install -Dm644 LICENSE-BSD-ab -t "$pkgdir/usr/share/licenses/$pkgname"
 }
