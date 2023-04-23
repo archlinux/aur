@@ -1,4 +1,4 @@
-From e1d1dc63524340c59db3628a18cac6ee30f27616 Mon Sep 17 00:00:00 2001
+From bce0edec2ede4b5951914d01e4021d21e7fed225 Mon Sep 17 00:00:00 2001
 From: Julianne H <julianne.hervier@qonfucius.team>
 Date: Fri, 3 Mar 2023 15:24:02 +0100
 Subject: [PATCH] makepkg: Use system gtest
@@ -8,7 +8,7 @@ Subject: [PATCH] makepkg: Use system gtest
  1 file changed, 7 insertions(+), 4 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index b17655c..f4e404b 100644
+index 7b0a6ea..55414de 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -88,16 +88,20 @@ endif()
@@ -35,11 +35,11 @@ index b17655c..f4e404b 100644
          check_target(gtest)
          check_target(gtest_main)
          check_target(gmock)
-@@ -199,4 +203,3 @@ if (PHMAP_BUILD_EXAMPLES)
+@@ -200,4 +204,3 @@ if (PHMAP_BUILD_EXAMPLES)
      target_link_libraries(ex_knucleotide Threads::Threads)
      target_link_libraries(ex_bench Threads::Threads)
  endif()
 -
 -- 
-2.39.2
+2.40.0
 
