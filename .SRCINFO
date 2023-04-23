@@ -1,6 +1,6 @@
 pkgbase = jdk-temurin
 	pkgdesc = Temurin (OpenJDK 20 Java binaries by Adoptium, formerly AdoptOpenJDK)
-	pkgver = 20.u36
+	pkgver = 20.0.1.u9
 	pkgrel = 1
 	url = https://adoptium.net/
 	install = install_jdk-temurin.sh
@@ -17,18 +17,18 @@ pkgbase = jdk-temurin
 	optdepends = gtk3: for the Gtk+ 3 look and feel
 	provides = java-runtime-headless=20
 	provides = java-runtime-headless-openjdk=20
-	provides = jre20-openjdk-headless=20.u36
-	provides = jre-openjdk-headless=20.u36
+	provides = jre20-openjdk-headless=20.0.1.u9
+	provides = jre-openjdk-headless=20.0.1.u9
 	provides = java-runtime=20
 	provides = java-runtime-openjdk=20
-	provides = jre20-openjdk=20.u36
-	provides = jre-openjdk=20.u36
+	provides = jre20-openjdk=20.0.1.u9
+	provides = jre-openjdk=20.0.1.u9
 	provides = java-environment=20
 	provides = java-environment-openjdk=20
-	provides = jdk20-openjdk=20.u36
-	provides = jdk-openjdk=20.u36
-	provides = openjdk20-src=20.u36
-	provides = openjdk-src=20.u36
+	provides = jdk20-openjdk=20.0.1.u9
+	provides = jdk-openjdk=20.0.1.u9
+	provides = openjdk20-src=20.0.1.u9
+	provides = openjdk-src=20.0.1.u9
 	replaces = jdk-adoptopenjdk
 	options = !strip
 	backup = etc/java-temurin/logging.properties
@@ -46,11 +46,11 @@ pkgbase = jdk-temurin
 	backup = etc/java-temurin/security/policy/unlimited/default_local.policy
 	backup = etc/java-temurin/security/policy/unlimited/default_US_export.policy
 	backup = etc/java-temurin/sound.properties
-	source = https://github.com/adoptium/temurin20-binaries/releases/download/jdk-20%2B36/OpenJDK20U-jdk_x64_linux_hotspot_20_36.tar.gz
+	source = https://github.com/adoptium/temurin20-binaries/releases/download/jdk-20.0.1%2B9/OpenJDK20U-jdk_x64_linux_hotspot_20.0.1_9.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	sha256sums = fb6000faf47fffcda8caf01f60097d582728a6fffb6c1b85c8075c674f0c9281
+	sha256sums = 43ad054f135a7894dc87ad5d10ad45d8e82846186515892acdbc17c2c5cd27e4
 	sha256sums = 82b3b6b982a59738e9a97540672d0867bc5415f929e7f8b9c36840544cfaea32
 	sha256sums = a18f6c0eb5adf2da8dffd16b354583a0d351656c9995f0e1b7eca8c3a859f823
 	sha256sums = 6db0c5a77bef9284af1275720e0cf4c0c4ad952ac8d1e6d5ffeeb28feb4b50a4
