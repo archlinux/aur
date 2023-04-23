@@ -1,7 +1,7 @@
 pkgbase = gopeed-bin
 	pkgdesc = High speed downloader that supports all platforms.
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gopeed.com/
 	arch = x86_64
 	license = GPL3
