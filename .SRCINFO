@@ -7,7 +7,6 @@ pkgbase = firefox-grammalecte
 	groups = office
 	license = GPL 3
 	depends = firefox>=57
-	noextract = -2.1.1.xpi
 	source = firefox-grammalecte-2.1.1.xpi::https://addons.mozilla.org/firefox/downloads/file/3730860/grammalecte_fr-2.1.1.xpi
 	sha256sums = 4787e5f58b2c4d7f50f897339be020b2a78821f998ebaf397d42ba4ddbab4abd
 
