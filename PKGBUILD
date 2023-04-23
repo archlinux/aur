@@ -5,7 +5,7 @@
 
 pkgname=radium
 pkgver=7.1.89
-pkgrel=1
+pkgrel=2
 pkgdesc='A graphical music editor. A next generation tracker.'
 arch=(x86_64)
 url=https://users.notam02.no/~kjetism/radium
@@ -76,6 +76,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/kmatheussen/radium/archive/
 				radium.install
 				grep.patch
 				build_linux_common.patch
+				sndfilexprt.patch
 )
 sha256sums=('5db084512812519218e3101c84f24f0f84fda54af9e92c19a20cb224f08a482c'
             'ed456586a1f28eec9acd081a676e61145e13f07c1a6e967c0af1f7d08be4023e' 
@@ -83,6 +84,7 @@ sha256sums=('5db084512812519218e3101c84f24f0f84fda54af9e92c19a20cb224f08a482c'
             'f627730ff7a819e8cc5ac5c2b5f1fb2f2237327db6ea5442c55a23c1ce82ef14'
             '7ccb4eb8c2924a5b6c610b4f35bc9ff22602cb2e131035d285bef87d813460b3'
             '0decfc3adcba836004ac34d970a83d4d0b69743334a586f42be53b3de7bdd5a4'
+						'SKIP'
 					)
 install=radium.install
 
@@ -102,9 +104,13 @@ prepare() {
   # !! Comment next line out if you have LMMS installed as it already comes with their own version of Calf plugins !!
   for file in bin/sounds/*.rad; do sed -i -e 's/Calf MultiChorus LADSPA/Calf Multi Chorus LADSPA/g' "$file"; done
   # See comment on calf-ladspa AUR page then on how to let Radium load Calf from LMMS package
+	
+	# temp fix for soundfileexport
+	patch -p0 < "$srcdir/sndfilexprt.patch"
 
   cd bin/packages
   patch -p0 < "$srcdir/build_libpds.patch"
+  
 }
 
 build() {
