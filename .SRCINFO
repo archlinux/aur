@@ -8,6 +8,7 @@ pkgbase = adwaita-for-steam
 	license = MIT
 	makedepends = git
 	depends = sssm
+	depends = cantarell-fonts
 	optdepends = steam: if you don't use the flatpak version of Steam
 	source = git+https://github.com/tkashkin/adwaita-for-steam#tag=v0.37
 	b2sums = SKIP

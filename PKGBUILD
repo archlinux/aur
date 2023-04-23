@@ -7,7 +7,7 @@ pkgdesc='A skin to make Steam look more like a native GNOME app'
 arch=(any)
 url=https://github.com/tkashkin/$pkgname
 license=(MIT)
-depends=(sssm)
+depends=(sssm cantarell-fonts)
 optdepends=("steam: if you don't use the flatpak version of Steam")
 makedepends=(git)
 source=(git+$url#tag=v$pkgver)
