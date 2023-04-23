@@ -3,14 +3,14 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=font-bh-ttf
-pkgver=1.0.3
-pkgrel=9
+pkgver=1.0.4
+pkgrel=1
 pkgdesc='X.org Luxi Truetype fonts'
 url='https://xorg.freedesktop.org/releases/individual/font/'
 license=('custom')
 arch=('any')
-source=("${url}${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('1b4bea63271b4db0726b5b52c97994c3313b6023510349226908090501abd25f')
+source=("${url}${pkgname}-${pkgver}.tar.gz")
+sha256sums=('bf662d20107d60a964ade831b8ad575a58510e0f2fb9f67e8f064bbbeaae45b4')
 
 build() {
   cd ${pkgname}-${pkgver}

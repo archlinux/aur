@@ -1,11 +1,11 @@
 pkgbase = font-bh-ttf
 	pkgdesc = X.org Luxi Truetype fonts
-	pkgver = 1.0.3
-	pkgrel = 9
+	pkgver = 1.0.4
+	pkgrel = 1
 	url = https://xorg.freedesktop.org/releases/individual/font/
 	arch = any
 	license = custom
-	source = https://xorg.freedesktop.org/releases/individual/font/font-bh-ttf-1.0.3.tar.bz2
-	sha256sums = 1b4bea63271b4db0726b5b52c97994c3313b6023510349226908090501abd25f
+	source = https://xorg.freedesktop.org/releases/individual/font/font-bh-ttf-1.0.4.tar.gz
+	sha256sums = bf662d20107d60a964ade831b8ad575a58510e0f2fb9f67e8f064bbbeaae45b4
 
 pkgname = font-bh-ttf
