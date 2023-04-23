@@ -3,7 +3,7 @@
 pkgname=python-language-tags
 _name=${pkgname#python-}
 _name=${_name//-/_}
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='This Python API offers a way to validate and lookup languages tags.'
 arch=('any')
@@ -13,8 +13,8 @@ depends=('python>=3')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/OnroerendErfgoed/language-tags/master/LICENSE")
-md5sums=('c6343ef05e290184193705c99a5fda23'
-         '1a7fd91902bbb2161822216d652f018e')
+sha256sums=('e934acba3e3dc85f867703eca421847a9ab7b7679b11b5d5cfd096febbf8bde6'
+         'SKIP')
 
 build() {
 	cd "$srcdir/${_name}-$pkgver"

@@ -1,15 +1,15 @@
 pkgbase = python-language-tags
 	pkgdesc = This Python API offers a way to validate and lookup languages tags.
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://pypi.org/project/language-tags
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python>=3
-	source = https://files.pythonhosted.org/packages/source/l/language_tags/language_tags-1.1.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/l/language_tags/language_tags-1.2.0.tar.gz
 	source = https://raw.githubusercontent.com/OnroerendErfgoed/language-tags/master/LICENSE
-	md5sums = c6343ef05e290184193705c99a5fda23
-	md5sums = 1a7fd91902bbb2161822216d652f018e
+	sha256sums = e934acba3e3dc85f867703eca421847a9ab7b7679b11b5d5cfd096febbf8bde6
+	sha256sums = SKIP
 
 pkgname = python-language-tags
