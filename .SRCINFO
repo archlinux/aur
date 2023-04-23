@@ -1,7 +1,7 @@
 pkgbase = ncurses5-compat-libs
 	pkgdesc = System V Release 4.0 curses emulation library, ABI 5
 	pkgver = 6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://invisible-island.net/ncurses/ncurses.html
 	arch = i686
 	arch = x86_64
