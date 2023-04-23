@@ -1,19 +1,27 @@
 # Maintainer: Ewout van Mansom <ewout@vanmansom.name>
 
 pkgname=not-forking
-pkgver=1.0
-pkgrel=2
+pkgver=r114.dc62bca
+pkgrel=1
 pkgdesc='The Not-forking Software Reproducibility Tool'
 arch=('any')
 url="https://lumosql.org/src/not-forking"
-license=('MIT')
+license=('MIT' 'custom: cc-by-sa-4.0')
 depends=('perl')
+makedepends=('fossil')
 options=('!emptydirs' 'purge')
-source=("${pkgname}-${pkgver}::fossil+${url}#branch=trunk")
+source=("${pkgname}::fossil+${url}#commit=dc62bca18c84ddf8")
 sha256sums=(SKIP)
 
+pkgver() {
+  cd "$pkgname"
+  _hash=$(fossil info | sed -n 's/checkout: *\([0-9a-z]*\).*/\1/p' | cut -c 1-7)
+  _revision=$(fossil info | sed -n 's/check-ins: *\(.*\)/\1/p')
+  printf "r%s.%s" "$_revision" "$_hash"
+}
+
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "$pkgname"
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
   /usr/bin/perl Makefile.PL
@@ -21,14 +29,17 @@ build() {
 }
 
 check() {
-  cd "${pkgname}-${pkgver}"
+  cd "$pkgname"
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1
   make test
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "$pkgname"
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+
+  install -Dm644 LICENCES/MIT.txt "${pkgdir}/usr/share/licenses/${pkgname}/MIT.txt"
+  install -Dm644 LICENCES/CC-by-SA-4.0.txt "${pkgdir}/usr/share/licenses/${pkgname}/CC-by-SA-4.0.txt"
 }

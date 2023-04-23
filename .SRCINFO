@@ -1,14 +1,16 @@
 pkgbase = not-forking
 	pkgdesc = The Not-forking Software Reproducibility Tool
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = r114.dc62bca
+	pkgrel = 1
 	url = https://lumosql.org/src/not-forking
 	arch = any
 	license = MIT
+	license = custom: cc-by-sa-4.0
+	makedepends = fossil
 	depends = perl
 	options = !emptydirs
 	options = purge
-	source = not-forking-1.0::fossil+https://lumosql.org/src/not-forking#branch=trunk
+	source = not-forking::fossil+https://lumosql.org/src/not-forking#commit=dc62bca18c84ddf8
 	sha256sums = SKIP
 
 pkgname = not-forking
