@@ -1,6 +1,6 @@
 pkgbase = python-ipympl
 	pkgdesc = Matplotlib Jupyter Extension
-	pkgver = 0.9.2
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://pypi.org/project/ipympl/
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-ipympl
 	depends = python-traitlets<6
 	depends = python-ipywidgets<9
 	depends = python-matplotlib<4
-	source = https://pypi.python.org/packages/source/i/ipympl/ipympl-0.9.2.tar.gz
-	sha256sums = c865c1992248f9966fbe4b6006239ae2959b00fc7e887ae32b0bd389808f0f8b
+	source = https://pypi.python.org/packages/source/i/ipympl/ipympl-0.9.3.tar.gz
+	sha256sums = 49bab75c05673a6881d1aaec5d8ac81d4624f73d292d154c5fb7096f10236a2b
 
 pkgname = python-ipympl

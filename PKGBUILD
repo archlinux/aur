@@ -5,7 +5,7 @@
 
 pkgname=python-ipympl
 _name=${pkgname#python-}
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Matplotlib Jupyter Extension"
 url="https://pypi.org/project/ipympl/"
@@ -27,7 +27,7 @@ makedepends=(
 license=('BSD')
 arch=(any)
 source=("https://pypi.python.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('c865c1992248f9966fbe4b6006239ae2959b00fc7e887ae32b0bd389808f0f8b')
+sha256sums=('49bab75c05673a6881d1aaec5d8ac81d4624f73d292d154c5fb7096f10236a2b')
 
 build() {
   cd $_name-$pkgver
