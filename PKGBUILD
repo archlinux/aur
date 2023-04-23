@@ -2,12 +2,12 @@
 
 pkgname=gr-hpsdr
 pkgver=3.10
-pkgrel=1
+pkgrel=2
 pkgdesc="interface module for HPSDR Hermes / Metis, and Red Pitaya (using OpenHPSDR protocol 1) "
 arch=('x86_64' 'aarch64')
 url="https://github.com/Tom-McDermott/gr-hpsdr"
 license=('GPL2')
-depends=('gnuradio' 'python-construct>=2.9' 'python-requests')
+depends=('gnuradio' 'python-construct>=2.9' 'python-requests' 'boost')
 optdepends=('doxygen: For document generation')
 makedepends=('cmake')
 conflicts=("${pkgname}")
