@@ -4,7 +4,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com
 pkgname=('pidgin-hg') #'libpurple-hg' 'finch-hg')
 _hgname=pidgin
-pkgver=3.r40521.c4269b37a13a
+pkgver=3.r42206.cfa7c940ed62
 pkgrel=1
 provides=("pidgin" "libpurple" "finch")
 conflicts=("pidgin" "libpurple" "finch")
@@ -14,20 +14,20 @@ url="http://pidgin.im/"
 license=('GPL')
 depends=('enchant' 'libgadu' 'gplugin-hg' 'gmime3' 'qt5-base'
   'talkatu-hg' 'libgnt3-hg' 'meanwhile' 'farstream'
-   'libsasl' 'libidn' 'nss' 'kwallet'
+   'libsasl' 'libidn' 'nss' 'kwallet' 'hasl-hg'
    'libgnome-keyring' 'startup-notification' 'gtkspell'
-   'libxss' 'libsm' 'dbus-glib' 'json-glib')
+   'libxss' 'libsm' 'dbus-glib' 'json-glib' 'libadwaita')
 optdepends=('avahi: Bonjour protocol support'
     'ca-certificates: SSL CA certificates'
     'python-dbus: for purple-remote and purple-url-handler'
     'tk: Tcl/Tk scripting support'
     'aspell: for spelling correction')
-makedepends=('mercurial' 'python2' 'avahi' 'tk' "gobject-introspection" 'ca-certificates' 'intltool'
+makedepends=('mercurial' 'avahi' 'tk' "gobject-introspection" 'ca-certificates' 'intltool'
              'tk' 'ca-certificates' 'intltool' 'networkmanager'
              'startup-notification' 'gtkspell' 'libxss' 'libsm'
              'hicolor-icon-theme' 'dbus-glib' 'json-glib' 'vala'
              'farstream' 'libsasl' 'gtk-doc' 'libidn' 'nss' 'cmake'
-             'libgnome-keyring' 'gplugin-hg')
+             'libgnome-keyring' 'gplugin-hg' 'hasl-hg' 'gi-docgen')
 makedepends+=('libx11' 'meson')
 options=('!libtool')
 source=('pidgin::hg+https://keep.imfreedom.org/pidgin/pidgin#branch=default')
@@ -41,10 +41,11 @@ pkgver() {
 
 build() {
    arch-meson pidgin build \
-     -Dsilc=disabled \
+     -Dkwallet=enabled \
      -Ddoc=true \
      -Dunity-integration=disabled \
-     -Dzephyr=disabled
+     -Davahi=enabled \
+     -Dlibgadu=enabled
 
   ninja -C build
 }
