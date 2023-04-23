@@ -1,14 +1,13 @@
 pkgbase = cerebro-appimage
 	pkgdesc = An open-source launcher to improve your productivity and efficiency
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.cerebroapp.com
 	arch = x86_64
 	license = MIT
 	depends = hicolor-icon-theme
 	depends = zlib
 	depends = glibc
-	provides = cerebroapp
 	conflicts = cerebro
 	options = !strip
 	source = cerebro-0.11.0.AppImage::https://github.com/cerebroapp/cerebro/releases/download/v0.11.0/Cerebro-0.11.0.AppImage
