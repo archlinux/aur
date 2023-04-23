@@ -1,6 +1,6 @@
 pkgbase = prysm
 	pkgdesc = Prysm is an Ethereum proof-of-stake client written in Go.
-	pkgver = 4.0.1
+	pkgver = 4.0.3
 	pkgrel = 1
 	url = https://prysmaticlabs.com/
 	arch = x86_64
