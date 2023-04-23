@@ -1,7 +1,7 @@
 pkgbase = gcc6
 	pkgdesc = The GNU Compiler Collection (6.x.x)
 	pkgver = 6.5.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://gcc.gnu.org/gcc-6/
 	arch = x86_64
 	license = GPL
@@ -35,7 +35,7 @@ pkgbase = gcc6
 
 pkgname = gcc6
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends (6.x.x)
-	depends = gcc6-libs=6.5.0-7
+	depends = gcc6-libs=6.5.0-8
 	depends = binutils>=2.28
 	depends = libmpc
 	depends = zlib
@@ -49,13 +49,13 @@ pkgname = gcc6-libs
 
 pkgname = gcc6-fortran
 	pkgdesc = Fortran front-end for GCC
-	depends = gcc6=6.5.0-7
+	depends = gcc6=6.5.0-8
 	depends = zlib
 	depends = libmpc
 
 pkgname = gcc6-gcj
 	pkgdesc = Java front-end for GCC
-	depends = gcc6=6.5.0-7
+	depends = gcc6=6.5.0-8
 	depends = libmpc
 	depends = libxtst
 	depends = gtk2
