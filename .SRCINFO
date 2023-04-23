@@ -1,7 +1,7 @@
 pkgbase = play-in-mpv
 	pkgdesc = Play Bilibili video in mpv player.
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/diannaojiang/Bilibili-Playin-Mpv
 	arch = x86_64
 	license = unknown

@@ -2,7 +2,7 @@
 # Contributor: 	ston <ston dot jia at qq dot com>
 pkgname=play-in-mpv
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Play Bilibili video in mpv player.'
 url='https://github.com/diannaojiang/Bilibili-Playin-Mpv'
 arch=('x86_64')
@@ -19,5 +19,5 @@ package() {
 	install -d "${pkgdir}/usr/bin/"
 	install -d "${pkgdir}/usr/share/applications/"
 	install -Dm755 "${srcdir}/playinmpv" "${pkgdir}/usr/bin/playinmpv"
-	install -Dm644 "${srcdir}/playinmpv.desktop" "${pkgdir}/usr/share/applications/playinmpv.desktop"
+	install -Dm644 "${srcdir}/playinmpv.desktop" -t "${pkgdir}/usr/share/applications"
 }
