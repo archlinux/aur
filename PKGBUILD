@@ -2,8 +2,8 @@
 
 _fname=mada
 pkgbase=$_fname-font
-pkgname=(otf-$_fname-variable ttf-$_fname-variable)
-pkgver=1.4
+pkgname=ttf-$_fname-variable
+pkgver=1.5
 pkgrel=1
 pkgdesc='A geometric, unmodulted Arabic display typeface'
 arch=(any)
@@ -11,22 +11,13 @@ url="https://github.com/aliftype/$_fname"
 license=(OFL)
 provides=("$pkgbase")
 source=("$url/releases/download/v$pkgver/${_fname^}-$pkgver.zip")
-sha256sums=('eec40cc041a59b2bea2a2afdb3fc6caba5cc30b2816435f3ef3274fd3c340971')
-
-package_otf-mada-variable() {
-	cd "${_fname^}-$pkgver"
-	provides=(${pkgname%-variable})
-	replaces=(${pkgname%-variable})
-	install -Dm0644 -t "$pkgdir/usr/share/fonts/OTF/" *.otf
-	install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
-	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" OFL.txt
-}
+sha256sums=('349e87879f6813d12638e0c21f465b25f090b96209ec6627dd2d5574f0a1ea7d')
 
 package_ttf-mada-variable() {
 	cd "${_fname^}-$pkgver"
-	provides=(${pkgname%-variable})
-	replaces=(${pkgname%-variable})
-	install -Dm0644 -t "$pkgdir/usr/share/fonts/TTF/" ttf/*.ttf
+	provides=(${pkgname%-variable} otf-$_fname-variable)
+	replaces=(${pkgname%-variable} otf-$_fname-variable)
+	install -Dm0644 -t "$pkgdir/usr/share/fonts/TTF/" *.ttf
 	install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" OFL.txt
 }

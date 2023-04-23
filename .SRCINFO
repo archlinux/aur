@@ -1,18 +1,16 @@
 pkgbase = mada-font
 	pkgdesc = A geometric, unmodulted Arabic display typeface
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/aliftype/mada
 	arch = any
 	license = OFL
 	provides = mada-font
-	source = https://github.com/aliftype/mada/releases/download/v1.4/Mada-1.4.zip
-	sha256sums = eec40cc041a59b2bea2a2afdb3fc6caba5cc30b2816435f3ef3274fd3c340971
-
-pkgname = otf-mada-variable
-	provides = otf-mada
-	replaces = otf-mada
+	source = https://github.com/aliftype/mada/releases/download/v1.5/Mada-1.5.zip
+	sha256sums = 349e87879f6813d12638e0c21f465b25f090b96209ec6627dd2d5574f0a1ea7d
 
 pkgname = ttf-mada-variable
 	provides = ttf-mada
+	provides = otf-mada-variable
 	replaces = ttf-mada
+	replaces = otf-mada-variable
