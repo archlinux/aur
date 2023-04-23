@@ -1,7 +1,7 @@
 pkgbase = not-forking
 	pkgdesc = Integrate non-diffable codebases, like patch/sed/diff/cp/mv rolled into one.
-	pkgver = r114.dc62bca
-	pkgrel = 3
+	pkgver = 0.5
+	pkgrel = 1
 	url = https://lumosql.org/src/not-forking
 	arch = any
 	license = custom: MIT
@@ -11,7 +11,7 @@ pkgbase = not-forking
 	depends = perl
 	options = !emptydirs
 	options = purge
-	source = not-forking::fossil+https://lumosql.org/src/not-forking#commit=dc62bca18c84ddf8
+	source = not-forking::fossil+https://lumosql.org/src/not-forking#tag=version-0.5
 	sha256sums = SKIP
 
 pkgname = not-forking

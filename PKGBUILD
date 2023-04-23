@@ -1,8 +1,8 @@
 # Maintainer: Ewout van Mansom <ewout@vanmansom.name>
 
 pkgname=not-forking
-pkgver=r114.dc62bca
-pkgrel=3
+pkgver=0.5
+pkgrel=1
 pkgdesc='Integrate non-diffable codebases, like patch/sed/diff/cp/mv rolled into one.'
 arch=('any')
 url="https://lumosql.org/src/not-forking"
@@ -11,15 +11,8 @@ depends=('perl')
 makedepends=('fossil')
 checkdepends=('perl-text-glob')
 options=('!emptydirs' 'purge')
-source=("${pkgname}::fossil+${url}#commit=dc62bca18c84ddf8")
+source=("${pkgname}::fossil+${url}#tag=version-0.5")
 sha256sums=(SKIP)
-
-pkgver() {
-  cd "$pkgname"
-  _hash=$(fossil info | sed -n 's/checkout: *\([0-9a-z]*\).*/\1/p' | cut -c 1-7)
-  _revision=$(fossil info | sed -n 's/check-ins: *\(.*\)/\1/p')
-  printf "r%s.%s" "$_revision" "$_hash"
-}
 
 build() {
   cd "$pkgname"
