@@ -1,0 +1,12 @@
+pkgbase = stardict-slovnyk-en-uk
+	pkgdesc = english-ukrainian dictionary for Stardict
+	pkgver = 2.4.2
+	pkgrel = 3
+	url = http://download.huzheng.org/mova.org/
+	arch = any
+	license = GPL
+	optdepends = stardict: for viewing this dictionary
+	source = http://download.huzheng.org/mova.org/stardict-dictd_www.mova.org_slovnyk_en-uk-2.4.2.tar.bz2
+	md5sums = SKIP
+
+pkgname = stardict-slovnyk-en-uk
