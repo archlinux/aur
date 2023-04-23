@@ -1,39 +1,43 @@
 # Maintainer: Jat <chat@jat.email>
 
-_pkgname=xorgxrdp
-pkgname=xorgxrdp-nvidia
-pkgver=0.2.18
-pkgrel=2
-pkgdesc="Xorg drivers for xrdp, with NVIDIA GPU support."
+_pkgname='xorgxrdp'
+pkgname="$_pkgname-nvidia"
+pkgver='0.2.18.r41.ga07c9c8'
+pkgrel='1'
+pkgdesc='Xorg drivers for xrdp, with NVIDIA GPU support.'
 arch=('i686' 'x86_64')
-url="https://github.com/neutrinolabs/xorgxrdp"
+url='https://github.com/neutrinolabs/xorgxrdp'
 license=('MIT')
-provides=('xorgxrdp')
-conflicts=('xorgxrdp')
-#depends=('NVIDIA-MODULE')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+depends=('NVIDIA-MODULE')
 makedepends=('nasm' 'xorg-server-devel' 'xrdp')
 options=('staticlibs')
-source=("https://github.com/neutrinolabs/xorgxrdp/releases/download/v$pkgver/xorgxrdp-$pkgver.tar.gz"{,.asc}
-        "$pkgver.nvidia.patch::https://github.com/neutrinolabs/xorgxrdp/compare/v$pkgver...jsorg71:nvidia_hack.diff")
-sha256sums=('45df8934dfc39e97a5d8722859b82186d2dfd0a4f80c92a6f7771bd85baed93c'
-            'SKIP'
-            'bae460a41f6652a507ea781c03a55ee17db785eea9bbc1b708d36a90b2aede38')
-validpgpkeys=('61ECEABBF2BB40E3A35DF30A9F72CDBC01BF10EB')  # Koichiro IWAO <meta@vmeta.jp>
+source=("git+$url#branch=devel"
+        "nvidia.patch::$url/pull/220.diff")
+sha256sums=('SKIP'
+            '67b625fad68f952d185bc4dd7fb12b69e4270dae2a5242523498b3ed86c022e6')
 install="$pkgname.install"
 
-prepare() {
-  cd "$_pkgname-$pkgver"
+pkgver() {
+    cd "$srcdir/$_pkgname"
 
-  patch -p1 -i"${srcdir}/$pkgver.nvidia.patch"
+    git describe --long --tags | sed -E 's,^[^0-9]*,,;s,([0-9]*-g),r\1,;s,-,.,g'
+}
+
+prepare() {
+  cd "$srcdir/$_pkgname"
+
+  patch -p1 -i"$srcdir/nvidia.patch"
+
+  perl -i -pe 's/(?<=xrdp >= )[\d.]+/0.9.21/' configure.ac
 
   busid=$(nvidia-xconfig --query-gpu-info | grep -im1 busid | awk '{print $NF}')
-  sed -i 's/Identifier "layout"/Identifier "X11 Server"/
-  /Section "ServerFlags"/a \ \ Option "DefaultServerLayout" "X11 Server"
-  s/BusID "PCI:2:0:0"/BusID "'"$busid"'/' xrdpdev/xorg_nvidia.conf
+  perl -i -pe 's/(?<=BusID ").+(?=")/'"$busid"'/' xrdpdev/xorg_nvidia.conf
 }
 
 build() {
-  cd "$_pkgname-$pkgver"
+  cd "$srcdir/$_pkgname"
 
   ./bootstrap
   ./configure --prefix="/usr"
@@ -41,8 +45,8 @@ build() {
 }
 
 package() {
-  cd "$_pkgname-$pkgver"
+  cd "$srcdir/$_pkgname"
 
   make DESTDIR="$pkgdir" install
-  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/$_pkgname"
+  install -Dm644 'COPYING' -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
