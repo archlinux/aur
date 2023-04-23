@@ -1,6 +1,6 @@
 pkgbase = xdg-ninja-git
 	pkgdesc = A shell script which checks your $HOME for unwanted files and directories.
-	pkgver = r193.8395f1b
+	pkgver = r324.619f172
 	pkgrel = 1
 	url = https://github.com/b3nj5m1n/xdg-ninja
 	arch = any
