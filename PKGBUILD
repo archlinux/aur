@@ -1,13 +1,12 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
-
 pkgname=jdk17-openj9-bin
 _jdkver=17
 _jdkminor=0
-_jdkpatch=5
+_jdkpatch=6
 #_jdksubpatch=1
 _jdkfullver=${_jdkver}.${_jdkminor}.${_jdkpatch}
-_openj9ver=0.35.0
-_buildvershort=8
+_openj9ver=0.36.0
+_buildvershort=10
 _buildver=${_buildvershort}_openj9-${_openj9ver}
 pkgver=${_jdkfullver}b${_buildver//-/_}
 pkgrel=1
@@ -28,7 +27,7 @@ conflicts=("jdk${_jdkver}-openj9-bin" "jdk${_jdkver}-openj9")
 options=(!strip)
 source=("https://github.com/ibmruntimes/semeru${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}%2B${_buildver}/ibm-semeru-open-jdk_x64_linux_${_jdkfullver}_${_buildver}.tar.gz")
 
-sha256sums=('b46de9cd00af8a0223f4b50deb2627ab91fe515a69383a96fd2c12757cef24fe')
+sha256sums=('ce39a4f7c2e08e56083f17f3e44c05e0fbbeba775e670f015a337679c99c54c6')
 
 _jvmdir=usr/lib/jvm/java-${_jdkver}-j9
 
