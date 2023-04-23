@@ -1,7 +1,7 @@
 pkgbase = pritunl-client-electron
 	pkgdesc = Pritunl OpenVPN client
 	pkgver = 1.3.3484.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://client.pritunl.com/
 	arch = x86_64
 	license = custom
