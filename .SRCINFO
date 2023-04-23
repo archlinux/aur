@@ -1,14 +1,14 @@
 pkgbase = gikkon
 	pkgdesc = Backup tool for configs, which uses git as storage
-	pkgver = 0.1.1
-	pkgrel = 3
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/bronvic/gikkon
 	arch = any
 	license = MIT
 	makedepends = python-pip
 	makedepends = python-poetry
-	depends = python>=3.7.0
-	source = gikkon-0.1.1.tar.gz::https://github.com/bronvic/gikkon/archive/refs/tags/0.1.1.tar.gz
-	sha256sums = f37f74083bf3b8d5b7a89dc88edcc03c5ad1e080c38de5de0823645a85b9ad62
+	depends = python>=3.9
+	source = gikkon-0.2.0.tar.gz::https://github.com/bronvic/gikkon/archive/refs/tags/0.2.0.tar.gz
+	sha256sums = 7397177bacfe925b7391713abfc957eea68ec76bc3b0fb5027405b1f298d9f34
 
 pkgname = gikkon
