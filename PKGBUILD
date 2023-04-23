@@ -9,7 +9,7 @@ arch=('i686' 'x86_64' 'aarch64')
 url="http://mygui.info/"
 license=('LGPL')
 
-source=("git://github.com/MyGUI/mygui.git")
+source=("git+https://github.com/MyGUI/mygui.git")
 md5sums=('SKIP')
 
 depends=('boost-libs' 'freetype2' 'sdl2' 'sdl2_image' 'libgl')
