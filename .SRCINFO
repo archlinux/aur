@@ -1,12 +1,11 @@
 pkgbase = astrofox-appimage
 	pkgdesc = A motion graphics program that lets you turn audio into amazing videos.
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://astrofox.io
 	arch = x86_64
 	license = MIT
 	depends = zlib
-	depends = hicolor-icon-theme
 	depends = glibc
 	provides = astrofox
 	conflicts = astrofox
