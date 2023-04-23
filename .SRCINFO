@@ -1,7 +1,7 @@
 pkgbase = lib7zip
 	pkgdesc = A library using 7z.dll/7z.so(from 7-Zip) to handle different archive types.
 	pkgver = 3.0.0_17.04
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/stonewell/lib7zip
 	arch = i686
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = lib7zip
 	makedepends = libtool
 	options = !libtool
 	source = git+https://github.com/stonewell/lib7zip.git
-	source = git+https://github.com/jinfeihan57/p7zip/#tag=v17.04
+	source = https://github.com/p7zip-project/p7zip/archive/refs/tags/v17.04.tar.gz
 	source = fix_build_errs.patch
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = ea029a2e21d2d6ad0a156f6679bd66836204aa78148a4c5e498fe682e77127ef
 	sha256sums = 4c3f39beea4142283d76c2652d01ceaa647717d72359f75b9e7164082ba3a12d
 
 pkgname = lib7zip
