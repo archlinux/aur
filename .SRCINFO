@@ -1,0 +1,18 @@
+pkgbase = rye-git
+	pkgdesc = an experimental alternative to poetry/pip/pipenv/venv/virtualenv/pdm/hatch/…
+	pkgver = r7.4d13663
+	pkgrel = 1
+	url = https://github.com/mitsuhiko/rye
+	arch = any
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = zlib
+	depends = openssl
+	depends = glibc
+	depends = gcc-libs
+	provides = rye
+	source = git+https://github.com/mitsuhiko/rye.git
+	sha256sums = SKIP
+
+pkgname = rye-git
