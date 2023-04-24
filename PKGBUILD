@@ -2,17 +2,18 @@
 # Contributor: Radoslaw Mejer <radmen@radmen.info>
 
 pkgname="git-toolbelt"
-pkgver=1.8.0
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="A suite of useful Git commands that aid with scripting or every day command line usage"
 arch=(any)
 license=('BSD')
 url="https://github.com/nvie/git-toolbelt"
+depends=('cureutils>=9.2' 'git')
 source=(
     "git-toolbelt-$pkgver.zip::https://github.com/nvie/git-toolbelt/archive/v$pkgver.tar.gz"
 )
 sha256sums=(
-    "8c504a66715efe2fa544b54b464881b5575201d94a3ff31c21934b23c16bda31"
+    "a703d964775b978564735471c6d004611915c5cf5bdbd4f49e546aff7fb0c418"
 )
 
 package() {
