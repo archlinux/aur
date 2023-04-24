@@ -9,7 +9,7 @@ pkgbase = vnote-appimage
 	depends = hicolor-icon-theme
 	depends = glibc
 	options = !strip
-	source = vnote-appimage-3.16.0.zip::https://github.com/vnotex/vnote/releases/download/v3.16.0/vnote-appimage-linux-x64_v3.16.0.zip
+	source = vnote-3.16.0.zip::https://github.com/vnotex/vnote/releases/download/v3.16.0/vnote-linux-x64_v3.16.0.zip
 	sha256sums = 99804e841ca73df2021fe2424612025234ebd768c65e1ca111f3134ae10483a8
 
 pkgname = vnote-appimage
