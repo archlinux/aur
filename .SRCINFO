@@ -1,0 +1,18 @@
+pkgbase = guppy
+	pkgdesc = Tool to manage your installations from Git Repositories for you
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://gitlab.com/Teddy-Kun/guppy
+	arch = any
+	license = GPL-3
+	makedepends = cargo
+	depends = libgit2
+	depends = openssl
+	depends = gcc-libs
+	depends = glibc
+	optdepends = bash: the default_make is a bash script
+	optdepends = nano: default editor for the makefiles
+	source = https://gitlab.com/Teddy-Kun/guppy/-/archive/v0.2.5/guppy-v0.2.5.tar.gz
+	sha256sums = 2f7806a536369c934eeefe6ed9f7eaa87054a169307bdd04508b824703a3c0d7
+
+pkgname = guppy
