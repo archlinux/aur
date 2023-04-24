@@ -1,10 +1,10 @@
-# Maintainer: Ehsan Ghorbannezad <ehsan at disroot dot org>
+# Maintainer: koonix <ehsan at disroot dot org>
 _pkgname='mdpdf'
 pkgname="${_pkgname}-git"
 pkgver=r9.1beff75
-pkgrel=4
+pkgrel=5
 pkgdesc='a shell script for converting markdown to pdf using lowdown.'
-url=https://github.com/ghesy/mdpdf
+url=https://github.com/koonix/mdpdf
 arch=('x86_64')
 license=('GPL')
 makedepends=('git')
