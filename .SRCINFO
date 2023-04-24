@@ -1,7 +1,7 @@
 pkgbase = lumosql
 	pkgdesc = Adds privacy, security and performance options to SQLite.
 	pkgver = r339.be5579f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://lumosql.org/src/lumosql
 	arch = x86_64
 	arch = aarch64

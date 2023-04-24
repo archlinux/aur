@@ -4,7 +4,7 @@ pkgname=lumosql
 pkgver=r339.be5579f
 _sqlite_ver=3.37.2
 _lmdb_ver=0.9.29
-pkgrel=2
+pkgrel=3
 pkgdesc='Adds privacy, security and performance options to SQLite.'
 arch=('x86_64' 'aarch64')
 url="https://lumosql.org/src/lumosql"
@@ -61,7 +61,7 @@ package() {
 
   # SQLite3 binary
   install -m755 -d "${pkgdir}/usr/bin"
-  install -m644 sqlite3 "${pkgdir}/usr/bin/"
+  install -m755 sqlite3 "${pkgdir}/usr/bin/"
 
   # SQLite3 shared library
   install -m755 -d "${pkgdir}/usr/lib"
@@ -97,10 +97,10 @@ package() {
   cd "sources/lmdb"
 
   # LMDB binaries
-  install -m644 mdb_copy "${pkgdir}/usr/bin/"
-  install -m644 mdb_dump "${pkgdir}/usr/bin/"
-  install -m644 mdb_load "${pkgdir}/usr/bin/"
-  install -m644 mdb_stat "${pkgdir}/usr/bin/"
+  install -m755 mdb_copy "${pkgdir}/usr/bin/"
+  install -m755 mdb_dump "${pkgdir}/usr/bin/"
+  install -m755 mdb_load "${pkgdir}/usr/bin/"
+  install -m755 mdb_stat "${pkgdir}/usr/bin/"
 
   # LMDB pkgconfig
   install -m644 "${srcdir}/lmdb.pc" -t "${pkgdir}/usr/lib/pkgconfig/"
