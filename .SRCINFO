@@ -1,9 +1,10 @@
 pkgbase = recastnavigation-openmw
 	pkgdesc = Navigation-mesh Toolset for openmw
 	pkgver = 1.5.1.r797.405cc09
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/recastnavigation/recastnavigation
 	arch = x86_64
+	arch = aarch64
 	license = Zlib
 	makedepends = git
 	makedepends = cmake

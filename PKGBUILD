@@ -7,10 +7,10 @@ _pkgname=recastnavigation
 # for latest see https://gitlab.com/OpenMW/openmw/-/commit/35b2292e617bc1fbfe1e5f8351d77d3cd5906bdc
 _pkgver=1.5.1
 pkgver=1.5.1.r797.405cc09
-pkgrel=1
+pkgrel=2
 pkgdesc="Navigation-mesh Toolset for openmw"
 url="https://github.com/recastnavigation/recastnavigation"
-arch=(x86_64)
+arch=('x86_64' 'aarch64')
 license=('Zlib')
 makedepends=(git cmake sdl2 glut)
 source=("git+https://github.com/recastnavigation/recastnavigation.git#commit=405cc095ab3a2df976a298421974a2af83843baf")
