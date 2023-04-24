@@ -4,7 +4,7 @@ pkgname=lurk
 pkgdesc='A pretty (simple) alternative to strace'
 license=('AGPL3')
 url='https://github.com/JakWai01/lurk'
-pkgver=0.0.7
+pkgver=0.2.9
 pkgrel=1
 arch=('x86_64')
 depends=(
@@ -16,7 +16,7 @@ makedepends=(
 source=(
     "https://github.com/JakWai01/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha512sums=('7c1fff95df91ec539da192c0942478bed8c90a9ec4c23310ebddb4c93c58dc23fbfebdad9158f219d3606c5e9a2ea7e8cf75ec85cb68ac158c2905d54321fa10')
+sha512sums=('0dd31847b01e672c28c767f608db48e823fa4e0d15912d05fe4dd7bd241c3a1b4fbeee3f72da07c54c2217cff4a9aeff4fdbb203ea79322783ee8751fa715038')
 
 build() {
     cd ${pkgname}-${pkgver}
