@@ -4,16 +4,19 @@ pkgname="livebook"
 pkgver="0.9.2"
 pkgrel="1"
 pkgdesc="Automate code & data workflows with interactive Elixir notebooks"
-arch=("x86_64")
 url="https://livebook.dev"
-
-depends=('openssl'  'erlang'  'elixir')
+license=("Apache-2.0")
+arch=("x86_64")
+depends=("elixir" "erlang-nox")
+makedepends=('git' 'rebar3')
 
 # sha256sums=("SKIP")
 
 build() {
-    /usr/bin/mix do local.rebar --force, local.hex --force
-    /usr/bin/mix escript.install hex livebook 0.7.2
+    /usr/bin/mix local.hex --force
+    /usr/bin/mix local.rebar --force
+
+    /usr/bin/mix escript.install hex livebook "$pkgver"
 }
 
 check() {
