@@ -25,7 +25,7 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 )
 sha256sums=('SKIP'
             #config.x86_64
-            'c8bc3c4585f302c6d1875ae1bc497b6fc0865aa5adc480ee34b71828bd411d8b'
+            '6a823bffcc83f72fa313d1bd6a2031e10faf77bd9b15fd1bfd517d97e18c2cd3'
             #.preset file
             'e60d58e60c809d5bd6bc2c258bce0e811a818b6a4b9ccb928902e519e90ab6d5'
             #linux install file
