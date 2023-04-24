@@ -1,0 +1,12 @@
+pkgbase = killport
+	pkgdesc = Forcefully kill a process listening on a specified port
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/fayez-nazzal/killport
+	arch = any
+	license = MIT
+	depends = lsof
+	source = killport.sh
+	sha256sums = SKIP
+
+pkgname = killport
