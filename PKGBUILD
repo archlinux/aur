@@ -13,7 +13,7 @@ source=('https://github.com/SabreTools/MPF/releases/download/2.5/MPF.Check_2.5-n
 'https://raw.githubusercontent.com/SabreTools/MPF/master/README.md'
 'https://raw.githubusercontent.com/SabreTools/MPF/master/LICENSE')
 sha256sums=('ab0859c56e218bcf98093f04f0b59cd061033fb715df7c7839a89d86e649ea14'
-'66e008fe4aa76ff16b11c1268c902a314c0bd0594fb20f4b937bd41d92bfe728'
+'cc456b56897ed19adc7e5bd7620e3da7f481ef5b20a12389cebf23eb6994d8e6'
 '98a5caf5628bb719446445c3f76ffffb5b8085031e057a4f685fdd155fb1f305')
 
 package() {
