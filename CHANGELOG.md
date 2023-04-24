@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.3.1 - October 21st, 2022]
+- Fixed: #78 Fix error when the current workspace is null (@fennerm)
+- Not user facing: #79 Fixed a bunch of mypy warnings (@fennerm)
+
+## [2.3.0 - September 12th, 2022]
+- Added: #74 pyproject.toml config (@Artturin)
+- Fixed: #77 Rare race condition when detecting the current workspace (@fennerm)
+- Fixed: #78 Traceback when the current workspace is null (@fennerm)
+- Not user facing:
+    - #74 Misc. code cleanup/ linter fixes (@Artturin)
+    - #75 Fix bug in Dockerfile (@Artturin)
+    - #77 Add github action for running tests and fix some flakey tests (@fennerm)
+    - #76 Add CODEOWNERS file (@fennerm)
+
+## [2.2.5 - July 9th, 2022]
+- Fixed: Relax PyYaml dependency (@Artturin)
+
 ## [2.2.4 - July 30th, 2021]
 - Fixed: Remove pytest from setup.py requirements (as it is not really required).
 
