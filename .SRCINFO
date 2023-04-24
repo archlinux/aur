@@ -1,12 +1,13 @@
 pkgbase = kopia-bin
 	pkgdesc = A cross-platform backup-tool with encryption, deduplication, compression and cloud support.
 	pkgver = 0.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kopia/kopia/
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	license = APACHE
+	optdepends = fuse3: Needed to mount Kopia snapshots on local filesystem
 	provides = kopia
 	conflicts = kopia
 	source_x86_64 = https://github.com/kopia/kopia/releases/download/v0.12.1/kopia_0.12.1_linux_amd64.deb
