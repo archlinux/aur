@@ -15,7 +15,7 @@ makedepends=(
 	"cargo"
 	"git"
 )
-source=("git+${url}")
+source=("git+$url")
 conflicts=('amdgpu_top')
 provides=('amdgpu_top')
 sha256sums=(SKIP)
@@ -41,5 +41,6 @@ build() {
 
 package() {
 	cd "$srcdir/$_pkgname"
-	install -Dm755 target/release/amdgpu_top "${pkgdir}/usr/bin/amdgpu_top"
+	install -Dm755 target/release/amdgpu_top "$pkgdir/usr/bin/amdgpu_top"
+	install -Dm644 assets/amdgpu_top.desktop "$pkgdir/usr/share/applications/amdgpu_top.desktop"
 }
