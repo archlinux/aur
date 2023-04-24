@@ -6,7 +6,7 @@ function _nvidia_check {
 
 pkgname=alvr-git
 _pkgname=${pkgname%-git}
-pkgver=20.0.0_dev11.r2457.8d9b5d61
+pkgver=20.0.0_dev11.r2462.5ca48481
 pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
@@ -24,7 +24,7 @@ md5sums=('SKIP')
 pkgver() {
 	cd "$srcdir/${_pkgname}"
 
-	ver=$(cargo metadata --format-version 1 | jq ".workspace_members[0]" -r | awk '{print $2}')
+	ver=$(cargo metadata --frozen --format-version 1 | jq ".workspace_members[0]" -r | awk '{print $2}')
 
 	printf "%s.r%s.%s" "${ver//-/_}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
@@ -34,7 +34,8 @@ prepare() {
 
 	sed -i 's:../../../lib64/libalvr_vulkan_layer.so:libalvr_vulkan_layer.so:' alvr/vulkan_layer/layer/alvr_x86_64.json
 
-	echo "[profile.release]
+	echo "
+[profile.release]
 lto=true" >> Cargo.toml
 
     export RUSTUP_TOOLCHAIN=stable
