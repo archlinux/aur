@@ -13,8 +13,8 @@ source=('https://github.com/mnadareski/BurnOutSharp/releases/download/2.7.0/Burn
 'https://raw.githubusercontent.com/mnadareski/BurnOutSharp/master/README.md'
 'https://raw.githubusercontent.com/mnadareski/BurnOutSharp/master/LICENSE')
 sha256sums=('6083d7adf0123c3feeb9567e21e3513182a2d4abe23f0f01a7a422a805517dbc'
-'4f67112e37a2f4276835538d3057f78117e481af0f9f55e8f257a2144a10a74a'
-'b198cc92ae8353e9c7661c824bcc9282fae9c8d104e247e6a1f6712d0d75130d')
+'SKIP'
+'SKIP')
 
 package() {
 
