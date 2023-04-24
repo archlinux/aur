@@ -2,7 +2,7 @@
 
 pkgname=snmpb
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="SnmpB is a desktop SNMP browser and MIB editor written in Qt."
 arch=(x86_64)
 url="https://sourceforge.net/projects/snmpb/"
@@ -18,7 +18,7 @@ makedepends=(
 provides=(snmpb)
 conflicts=(snmpb)
 source=(
-        "$pkgname-code::git+git://git.code.sf.net/p/snmpb/code"
+        "$pkgname-code::git+https://git.code.sf.net/p/snmpb/code"
         "libsmi-master.tar.gz::https://gitlab.ibr.cs.tu-bs.de/nm/libsmi/-/archive/master/libsmi-master.tar.gz"
         "libtom-1.18.2.tar.gz::https://github.com/libtom/libtomcrypt/archive/refs/tags/v1.18.2.tar.gz"
         "qwt-6.2.0.zip::https://sourceforge.net/projects/qwt/files/qwt/6.2.0/qwt-6.2.0.zip/download"
