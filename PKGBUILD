@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=spark-dwine-helper
-pkgver=2.0.1
+pkgver=2.3
 pkgrel=1
 pkgdesc="Modify deepin-wine to make it perform better.修改和增强deepin-wine来提升体验."
 arch=(any)
@@ -11,7 +11,7 @@ optdepends=('noto-fonts-cjk: recommended fonts')
 provides=("spark-wine")
 conflicts=("${pkgname}")
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname}_${pkgver}_all.deb")
-sha256sums=('54f4cd69c299bf19b781bd8db5a7d6763b10b11c816e33930790e186b437665c')
+sha256sums=('a81b197be4c609e0bc545ac3f67b86f6a8efe723d037918ea4c0603185473a19')
 package() {
 	bsdtar -xf data.tar.xz -C "${pkgdir}"
 }

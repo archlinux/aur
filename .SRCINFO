@@ -1,6 +1,6 @@
 pkgbase = spark-dwine-helper
 	pkgdesc = Modify deepin-wine to make it perform better.修改和增强deepin-wine来提升体验.
-	pkgver = 2.0.1
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://gitee.com/deepin-community-store/spark-wine
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = spark-dwine-helper
 	optdepends = noto-fonts-cjk: recommended fonts
 	provides = spark-wine
 	conflicts = spark-dwine-helper
-	source = spark-dwine-helper-2.0.1.deb::https://gitee.com/deepin-community-store/spark-wine/releases/download/2.0.1/spark-dwine-helper_2.0.1_all.deb
-	sha256sums = 54f4cd69c299bf19b781bd8db5a7d6763b10b11c816e33930790e186b437665c
+	source = spark-dwine-helper-2.3.deb::https://gitee.com/deepin-community-store/spark-wine/releases/download/2.3/spark-dwine-helper_2.3_all.deb
+	sha256sums = a81b197be4c609e0bc545ac3f67b86f6a8efe723d037918ea4c0603185473a19
 
 pkgname = spark-dwine-helper
