@@ -30,7 +30,7 @@ b2sums=(
 )
 
 prepare() {
-  sed -i -r 's/sh.+(electrum.+)"/\1/' Electrum-LTC-$pkgver/electrum-ltc.desktop
+  sed -i -r 's/(Exec=).*(electrum.+%u).*/\1\2/' Electrum-LTC-$pkgver/electrum-ltc.desktop
 }
 
 build() {
