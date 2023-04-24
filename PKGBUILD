@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Wright <jon@than.io>
 
 pkgname=cilium-cli-bin
-pkgver=0.13.2
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='Network, Service & Security Observability for Kubernetes using eBPF'
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ conflicts=('cilium-cli')
 
 source_x86_64=("${pkgname}-${pkgver}-amd64.tar.gz::https://github.com/cilium/cilium-cli/releases/download/v${pkgver}/cilium-linux-amd64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-arm64.tar.gz::https://github.com/cilium/cilium-cli/releases/download/v${pkgver}/cilium-linux-arm64.tar.gz")
-sha256sums_x86_64=('4025a291864b1fd0087486b0b9ad232a210e4c19cb0324a8d6a76ef842e40fca')
-sha256sums_aarch64=('d0ae083ebc6e5f5416637cec0d31e2b3d9191513e3a6d61f3d1519b4e7797abf')
+sha256sums_x86_64=('73bcbce6fac15c3a62d2a68629f292fa2787440a15998d8c868dae20a6e0e6ed')
+sha256sums_aarch64=('e59bd6a38a9bc42f61e34907698ae5cb53a43d93bdec6e7327613f911cb8f205')
 
 options=("!strip")
 bin=cilium
