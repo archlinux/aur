@@ -1,0 +1,17 @@
+pkgbase = futuresql-git
+	pkgdesc = Non-blocking Qt database framework
+	pkgver = 0.1.0_r52.g4d24ce2
+	pkgrel = 1
+	url = https://invent.kde.org/libraries/futuresql
+	arch = x86_64
+	license = BSD
+	license = LGPL
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = qcoro-qt5
+	provides = futuresql
+	conflicts = futuresql
+	source = git+https://invent.kde.org/libraries/futuresql.git
+	sha256sums = SKIP
+
+pkgname = futuresql-git
