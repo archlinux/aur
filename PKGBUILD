@@ -3,7 +3,7 @@
 
 pkgname=("wezterm-git")
 pkgdesc="A terminal emulator implemented in Rust, using OpenGL ES 2 for rendering."
-pkgver=20230125.180646.f15bb186
+pkgver=20230421.075330.e0a92c73
 pkgrel=1
 arch=("x86_64" "i686")
 url="https://github.com/wez/wezterm"
@@ -34,11 +34,11 @@ sha256sums=("SKIP" "SKIP" "SKIP" "SKIP" "SKIP")
 prepare() {
   cd "$srcdir/wezterm"
   git submodule init
-  git config -f .gitmodules "submodule.harfbuzz/harfbuzz.url" "$srcdir/harfbuzz"
-  git config -f .gitmodules "submodule.freetype/libpng.url" "$srcdir/libpng"
-  git config -f .gitmodules "submodule.deps/freetype/zlib.url" "$srcdir/zlib"
-  git config -f .gitmodules "submodule.freetype2.url" "$srcdir/freetype2"
-  git submodule update
+  git config "submodule.harfbuzz/harfbuzz.url" "$srcdir/harfbuzz"
+  git config "submodule.freetype/libpng.url" "$srcdir/libpng"
+  git config "submodule.deps/freetype/zlib.url" "$srcdir/zlib"
+  git config "submodule.freetype2.url" "$srcdir/freetype2"
+  git -c protocol.file.allow=always submodule update
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
