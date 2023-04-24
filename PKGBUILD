@@ -70,7 +70,8 @@ sha512sums=('39e1abfe4dae8a349449d8a42070a5f1eb9e7556c5857477ef24213710aff09faeb
             '714e7cabbb45b63eddccfe295976a29bc85b577c2040a55903b84a2270fa7b63621cbed50c0bfecf1f17a8a8eb28d98e0a3f7c611ba30a97b62a44ffd6566340')
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver"
+
   # Port to Tracker 3
   patch -Np1 -i ../tracker3.patch
 
