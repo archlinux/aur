@@ -14,7 +14,12 @@ conflicts=('mopidy-spotify')
 provides=('mopidy-spotify')
 depends=(
   'mopidy>=3.4'
+  python-pykka
+  python-requests
   gst-plugins-rs
+)
+makedepends=(
+  python-setuptools
 )
 install=mopidy-spotify.install
 source=(git+https://github.com/mopidy/mopidy-spotify.git)

@@ -6,7 +6,10 @@ pkgbase = mopidy-spotify-git
 	install = mopidy-spotify.install
 	arch = any
 	license = APACHE
+	makedepends = python-setuptools
 	depends = mopidy>=3.4
+	depends = python-pykka
+	depends = python-requests
 	depends = gst-plugins-rs
 	provides = mopidy-spotify
 	conflicts = mopidy-spotify
