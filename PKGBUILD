@@ -1,9 +1,9 @@
 # Maintainer: Adrià Cabello <adro.cc79 at protonmail dot com>
 pkgname=materialx
 _pkgver_major=1.38
-_pkgver_minor=6
+_pkgver_minor=7
 pkgver=${_pkgver_major}.${_pkgver_minor}
-pkgrel=2
+pkgrel=1
 pkgdesc="Open standard for representing rich material and look-development content in computer graphics"
 arch=('x86_64')
 url="https://materialx.org/"
@@ -26,8 +26,8 @@ build() {
 
   cmake $srcdir/MaterialX \
   -DMATERIALX_BUILD_PYTHON=ON\
-  -DMATERIALX_BUILD_VIEWER=ON
-  # -DMATERIALX_BUILD_GRAPH_EDITOR=ON
+  -DMATERIALX_BUILD_VIEWER=ON\
+  -DMATERIALX_BUILD_GRAPH_EDITOR=ON
 
   cmake --build . --target install -- -j
 }
@@ -40,4 +40,5 @@ package() {
   mv build/installed ${pkgdir}/usr/materialx
 
   ln -s /usr/materialx/bin/MaterialXView ${pkgdir}/usr/bin/mtlxview
+  ln -s /usr/materialx/bin/MaterialXGraphEditor ${pkgdir}/usr/bin/mtlxGraphEditor
 }
