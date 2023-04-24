@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=localsend
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='An open source cross-platform alternative to AirDrop.'
 url='https://github.com/localsend/localsend'
@@ -10,16 +10,12 @@ license=('MIT')
 depends=('zenity' 'xdg-user-dirs')
 makedepends=('flutter')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('23d604fddf7b6bbe458ee7a004bde94e81e97e0a59ecf79c919dab8812d77ccf')
+sha256sums=('5b2a3d9cbf77bc75d3cccec2c9672791aae20b4459b751c9d388fe31c1b54f16')
 
 _srcdir="${pkgname}-${pkgver}"
 
 prepare() {
 	cd "${_srcdir}"
-	
-	sed -i -E \
-		"s|collection: 1.16.0|collection: 1.17.0|" \
-		"pubspec.yaml"
 	
 	flutter config --enable-linux-desktop
 	flutter pub get
