@@ -3,12 +3,12 @@
 pkgname=libstumpless
 _projname=stumpless
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='C logging library built for high performance and a rich feature set.'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/goatshriek/stumpless'
-license=('LGPL3')
-depends=('glibc')
+license=('Apache')
+depends=('glibc' 'systemd-libs')
 makedepends=('git' 'cmake')
 checkdepends=('gtest')
 provides=('libstumpless' 'libstumpless.so')
