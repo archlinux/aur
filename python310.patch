@@ -1,0 +1,89 @@
+diff -upr contracts-1.8.14.orig/src/contracts/library/map.py contracts-1.8.14/src/contracts/library/map.py
+--- contracts-1.8.14.orig/src/contracts/library/map.py	2020-04-17 14:41:29.000000000 +0300
++++ contracts-1.8.14/src/contracts/library/map.py	2021-12-04 00:47:16.858650777 +0200
+@@ -13,7 +13,7 @@ class Map(Contract):
+         self.value_c = value_c
+ 
+     def check_contract(self, context, value, silent):
+-        if not isinstance(value, collections.Mapping):
++        if not isinstance(value, collections.abc.Mapping):
+             error = 'Expected a Mapping, got %r.' % value.__class__.__name__
+             raise ContractNotRespected(contract=self, error=error,
+                                        value=value, context=context)
+diff -upr contracts-1.8.14.orig/src/contracts/library/miscellaneous_aliases.py contracts-1.8.14/src/contracts/library/miscellaneous_aliases.py
+--- contracts-1.8.14.orig/src/contracts/library/miscellaneous_aliases.py	2020-04-17 14:41:29.000000000 +0300
++++ contracts-1.8.14/src/contracts/library/miscellaneous_aliases.py	2021-12-04 00:48:06.996550333 +0200
+@@ -14,32 +14,32 @@ def m_new_contract(name, f):
+     from contracts.library.extensions import CheckCallable
+     from contracts.library.extensions import Extension
+     Extension.registrar[name] = CheckCallable(f)
+-    
+ 
+-m_new_contract('Container', ist(collections.Container))
++
++m_new_contract('Container', ist(collections.abc.Container))
+ # todo: Iterable(x)
+-m_new_contract('Iterable', ist(collections.Iterable))
++m_new_contract('Iterable', ist(collections.abc.Iterable))
+ 
+-m_new_contract('Hashable', ist(collections.Hashable))
++m_new_contract('Hashable', ist(collections.abc.Hashable))
+ 
+ 
+ 
+-m_new_contract('Iterator', ist(collections.Iterator))
+-m_new_contract('Sized', ist(collections.Sized))
+-m_new_contract('Callable', ist(collections.Callable))
+-m_new_contract('Sequence', ist(collections.Sequence))
+-m_new_contract('Set', ist(collections.Set))
+-m_new_contract('MutableSequence', ist(collections.MutableSequence))
+-m_new_contract('MutableSet', ist(collections.MutableSet))
+-m_new_contract('Mapping', ist(collections.Mapping))
+-m_new_contract('MutableMapping', ist(collections.MutableMapping))
+-#new_contract('MappingView', ist(collections.MappingView))
+-#new_contract('ItemsView', ist(collections.ItemsView))
+-#new_contract('ValuesView', ist(collections.ValuesView))
++m_new_contract('Iterator', ist(collections.abc.Iterator))
++m_new_contract('Sized', ist(collections.abc.Sized))
++m_new_contract('Callable', ist(collections.abc.Callable))
++m_new_contract('Sequence', ist(collections.abc.Sequence))
++m_new_contract('Set', ist(collections.abc.Set))
++m_new_contract('MutableSequence', ist(collections.abc.MutableSequence))
++m_new_contract('MutableSet', ist(collections.abc.MutableSet))
++m_new_contract('Mapping', ist(collections.abc.Mapping))
++m_new_contract('MutableMapping', ist(collections.abc.MutableMapping))
++#new_contract('MappingView', ist(collections.abc.MappingView))
++#new_contract('ItemsView', ist(collections.abc.ItemsView))
++#new_contract('ValuesView', ist(collections.abc.ValuesView))
+ 
+ 
+ # Not a lambda to have better messages
+-def is_None(x): 
++def is_None(x):
+     return x is None
+ 
+ m_new_contract('None', is_None)
+diff -upr contracts-1.8.14.orig/src/contracts/library/seq.py contracts-1.8.14/src/contracts/library/seq.py
+--- contracts-1.8.14.orig/src/contracts/library/seq.py	2020-04-17 14:41:29.000000000 +0300
++++ contracts-1.8.14/src/contracts/library/seq.py	2021-12-04 00:48:26.113688257 +0200
+@@ -38,7 +38,7 @@ class Seq(Contract):
+ 
+             return
+ 
+-        if not isinstance(value, collections.Sequence):
++        if not isinstance(value, collections.abc.Sequence):
+             error = 'Expected a Sequence, got %r.' % value.__class__.__name__
+             raise ContractNotRespected(self, error, value, context)
+ 
+diff -upr contracts-1.8.14.orig/src/contracts/library/sets.py contracts-1.8.14/src/contracts/library/sets.py
+--- contracts-1.8.14.orig/src/contracts/library/sets.py	2020-04-17 14:41:29.000000000 +0300
++++ contracts-1.8.14/src/contracts/library/sets.py	2021-12-04 00:48:41.190727013 +0200
+@@ -13,7 +13,7 @@ class ASet(Contract):
+         self.elements_contract = elements_contract
+ 
+     def check_contract(self, context, value, silent):
+-        if not isinstance(value, collections.Set):
++        if not isinstance(value, collections.abc.Set):
+             error = 'Expected a set, got %r.' % describe_type(value)
+             raise ContractNotRespected(self, error, value, context)
+ 

@@ -1,0 +1,23 @@
+pkgbase = python-pycontracts
+	pkgdesc = Declare constraints on function parameters and return values
+	pkgver = 1.8.14
+	pkgrel = 6
+	url = https://andreacensi.github.io/contracts
+	arch = any
+	license = GPL
+	checkdepends = python-nose
+	makedepends = python-setuptools
+	makedepends = python-pyparsing
+	makedepends = python-decorator
+	makedepends = python-six
+	makedepends = python-future
+	depends = python-pyparsing
+	depends = python-decorator
+	depends = python-six
+	depends = python-future
+	source = python-pycontracts-1.8.14.tar.gz::https://github.com/AndreaCensi/contracts/archive/v1.8.14.tar.gz
+	source = python310.patch
+	sha512sums = ae2a96f603d5b87efd83eb9bb84bf0ebec2d71b08cfed9505be22f15c310f6428652e40c69075577eaee343a0babf6fce7db06c4ad3605a88646d9242dfd1003
+	sha512sums = e3ff04a69b626e5a91e25e16e66b47480830418e9fe092a8c7fdab7225193fe7d31659bb8292685c6f0640aeabf966c5ed842f05e7773a0d05bcc7448f789432
+
+pkgname = python-pycontracts
