@@ -1,7 +1,9 @@
 # Maintainer: Funami
+# Contributor: Fredrick R. Brennan <copypaste@kittens.ph>
+
 pkgname=aegisub-arch1t3cht-git
-pkgver=3.2.2.r953.21f764fdf
-pkgrel=2
+pkgver=3.2.2.r970.26a5f00c8
+pkgrel=1
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=('x86_64')
 url="https://github.com/arch1t3cht/Aegisub"
@@ -51,6 +53,8 @@ sha256sums=('SKIP'
             '927827c183d01734cc5cfef85e0ff3f5a92ffe6188e0d18e909c5efebf28a0c7'
             'f79f5fd46e09507b3f2e09a51ea6eb20020effe543335f5aee59f30cc8d15805')
 
+AEGISUB_AUR_DEFAULT_AUDIO_OUTPUT=${AEGISUB_AUR_DEFAULT_AUDIO_OUTPUT:=PulseAudio}
+
 pkgver() {
   cd "${pkgname}"
   tag='v3.2.2'
@@ -60,31 +64,58 @@ pkgver() {
 prepare() {
   cd "${pkgname}"
 
-  # Initialize subproject wraps for bestsource
-  ln -s ../../"${pkgname}-bestsource" subprojects/bestsource
+  # If build dir exists (it won't ever if makepkg is passed --cleanbuild) call --reconfigure rather than setup without it which will fail)
+  local MESON_FLAGS=''
+  if [ -d build ]; then
+    MESON_FLAGS='--reconfigure'
+  else
+    # Initialize subproject wraps for bestsource
+    ln -s ../../"${pkgname}-bestsource" subprojects/bestsource
+
+    # Initialize subproject wraps for avisynth
+    mv ../"${pkgname}-avisynth" subprojects/avisynth
+
+    # Initialize subproject wraps for vapoursynth
+    ln -s ../../"${pkgname}-vapoursynth" subprojects/vapoursynth
+
+    # Initialize subproject wraps for luajit
+    ln -s ../../"${pkgname}-luajit" subprojects/luajit
+
+    # Initialize subproject wraps for gtest
+    mkdir subprojects/packagecache
+    ln -s ../../../"${pkgname}-gtest-1.8.1.zip" subprojects/packagecache/gtest-1.8.1.zip
+    ln -s ../../../"${pkgname}-gtest-1.8.1-1-wrap.zip" subprojects/packagecache/gtest-1.8.1-1-wrap.zip
+  fi
+
   meson subprojects packagefiles --apply bestsource
-
-  # Initialize subproject wraps for avisynth
-  mv ../"${pkgname}-avisynth" subprojects/avisynth
   meson subprojects packagefiles --apply avisynth
-
-  # Initialize subproject wraps for vapoursynth
-  ln -s ../../"${pkgname}-vapoursynth" subprojects/vapoursynth
   meson subprojects packagefiles --apply vapoursynth
-
-  # Initialize subproject wraps for luajit
-  ln -s ../../"${pkgname}-luajit" subprojects/luajit
   meson subprojects packagefiles --apply luajit
-
-  # Initialize subproject wraps for gtest
-  mkdir subprojects/packagecache
-  ln -s ../../../"${pkgname}-gtest-1.8.1.zip" subprojects/packagecache/gtest-1.8.1.zip
-  ln -s ../../../"${pkgname}-gtest-1.8.1-1-wrap.zip" subprojects/packagecache/gtest-1.8.1-1-wrap.zip
 
   # Fix boost "undefined reference" error
   sed -i '/BOOST_USE_WINDOWS_H/{n;s/$/\nadd_project_arguments('"'"'-DBOOST_NO_CXX11_SCOPED_ENUMS'"'"', language: '"'"'cpp'"'"')/}' meson.build
 
-  arch-meson --buildtype=release -D default_audio_output=PulseAudio build
+  # check if the OPTIONS array contains "!strip"
+  check_makepkg_options() (
+    source /etc/makepkg.conf
+
+    if [ "$?" -ne 0 ]; then
+      >&2 echo 'Failed to source /etc/makepkg.conf'
+      echo release # use release as fallback buildtype
+      return 1
+    fi
+
+    if [[ " ${OPTIONS[@]} " =~ ' !strip ' ]]; then
+      >&2 echo '!strip found in OPTIONS array'
+      echo debug
+    else
+      >&2 echo '!strip not found in OPTIONS array'
+      echo release
+    fi
+  )
+  local BUILDTYPE="$(check_makepkg_options 2> /dev/null)"
+
+  arch-meson --buildtype="${BUILDTYPE}" -D default_audio_output="${AEGISUB_AUR_DEFAULT_AUDIO_OUTPUT}" ${MESON_FLAGS} build
 }
 
 build() {

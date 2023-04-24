@@ -1,7 +1,7 @@
 pkgbase = aegisub-arch1t3cht-git
 	pkgdesc = A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)
-	pkgver = 3.2.2.r953.21f764fdf
-	pkgrel = 2
+	pkgver = 3.2.2.r970.26a5f00c8
+	pkgrel = 1
 	url = https://github.com/arch1t3cht/Aegisub
 	arch = x86_64
 	license = GPL
