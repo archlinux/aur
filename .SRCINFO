@@ -1,0 +1,24 @@
+pkgbase = music-player-bin
+	pkgdesc = An extensible music server written in Rust
+	pkgver = 0.2.0_alpha.12
+	pkgrel = 1
+	url = https://github.com/tsirysndr/music-player
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = alsa-lib
+	depends = gcc-libs
+	provides = music-player
+	conflicts = music-player
+	source = music-player.service
+	sha256sums = baf06a790cf152622a3f19c707805db724cd6a55a3398df45146feb62ff501f3
+	source_x86_64 = https://github.com/tsirysndr/music-player/releases/download/v0.2.0-alpha.12/music-player_v0.2.0-alpha.12_x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 2c4c1eec31ed53fc6e9ec6e598f89173fc2d1adaf323b9c1f77be5be3e9cee6f
+	source_armv7h = https://github.com/tsirysndr/music-player/releases/download/v0.2.0-alpha.12/music-player_v0.2.0-alpha.12_armv7-unknown-linux-gnueabihf.tar.gz
+	sha256sums_armv7h = 730ab8eafb6e14b0c77e3eab735798496ea849b70a2fb73ac133ff987e220983
+	source_aarch64 = https://github.com/tsirysndr/music-player/releases/download/v0.2.0-alpha.12/music-player_v0.2.0-alpha.12_aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = b9f6a3d0b6820a17e62d61329fb67c04c4736eaebad76b08b34dadb243eb4959
+
+pkgname = music-player-bin
