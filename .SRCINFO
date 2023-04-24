@@ -1,0 +1,15 @@
+pkgbase = one-gpt-appimage
+	pkgdesc = 聚合ChatGPT官方版、ChatGPT免费版、文心一言、Poe、chatchat等多平台,支持自定义导入平台
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/1595901624/gpt-aggregated-edition
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = glibc
+	options = !strip
+	source = one-gpt-0.6.0.AppImage::https://github.com/1595901624/gpt-aggregated-edition/releases/download/v0.6.0/one-gpt_0.6.0_amd64.AppImage
+	sha256sums = 7ee2ce1618e8ecfe45a5e7eddaa3ade0fd588d14707d879b97884ee0ae53103e
+
+pkgname = one-gpt-appimage
