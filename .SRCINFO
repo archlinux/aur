@@ -10,7 +10,7 @@ pkgbase = savage2
 	depends = mesa
 	depends = libxml2
 	depends = glu
-	source = http://masterserver1.talesofnewerth.com/download/Savage2-2.1.1.1-linux-x64-installer.run
+	source = https://savage2.net/downloads/Savage2-2.1.1.1-linux-x64-installer.run
 	source = savage2.launcher
 	source = savage2.desktop
 	source = s2editor.desktop
@@ -24,4 +24,3 @@ pkgbase = savage2
 	md5sums = 4acf06412dbd5ebbec89d1c5f2c99b4f
 
 pkgname = savage2
-
