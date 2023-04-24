@@ -13,8 +13,8 @@ source=('https://github.com/superg/redumper/releases/download/build_119/redumper
 'https://raw.githubusercontent.com/superg/redumper/main/README.md'
 'https://raw.githubusercontent.com/superg/redumper/main/LICENSE')
 sha256sums=('18c9f24ee5f422d01609d7aac6dcf7034032c172758c70260b2392b207cbc458'
-'f9c2f244b4630521f9252e8d2335d51e694359b2ecdf9771f3817afa0123e178'
-'3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
+'SKIP'
+'SKIP')
 
 package() {
 
