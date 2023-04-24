@@ -1,7 +1,7 @@
 pkgbase = r-scatterpie
 	pkgdesc = Scatter Pie Plot
-	pkgver = 0.1.8
-	pkgrel = 3
+	pkgver = 0.1.9
+	pkgrel = 1
 	url = https://cran.r-project.org/package=scatterpie
 	arch = any
 	license = Artistic2.0
@@ -16,7 +16,7 @@ pkgbase = r-scatterpie
 	optdepends = r-prettydoc
 	optdepends = r-rmarkdown
 	optdepends = r-scales
-	source = https://cran.r-project.org/src/contrib/scatterpie_0.1.8.tar.gz
-	sha256sums = a6ccc63a8be63fa113704cf5d4893c1ec1b75d3081ab971bd70e650e708872a0
+	source = https://cran.r-project.org/src/contrib/scatterpie_0.1.9.tar.gz
+	sha256sums = 517fd6cc297aa33f0fbb2643e35ca41dc971166ea2e8ed78460bd4ef7a77a687
 
 pkgname = r-scatterpie
