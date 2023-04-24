@@ -1,10 +1,10 @@
-# Maintainer: Ehsan Ghorbannezad <ehsan at disroot dot org>
+# Maintainer: koonix <ehsan at disroot dot org>
 _pkgname='pulseaudio-subscribe'
 pkgname="${_pkgname}-git"
 pkgver=r9.983b005
-pkgrel=4
+pkgrel=5
 pkgdesc='program to subscribe to pulseaudio events. useful for updating statusbars.'
-url='https://github.com/ghesy/pulseaudio-subscribe'
+url='https://github.com/koonix/pulseaudio-subscribe'
 arch=('x86_64')
 license=('GPL')
 depends=('libpulse')
