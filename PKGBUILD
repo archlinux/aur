@@ -11,6 +11,7 @@ url="https://wiki.gnome.org/Apps/Games"
 license=('GPL3')
 depends=('grilo' 'libarchive' 'libhandy' 'libmanette' 'retro-gtk' 'tracker3')
 makedepends=('meson' 'vala')
+checkdepends=('appstream-glib')
 optdepends=(
   'libretro-beetle-ngp: Support for Neo Geo Pocket and Neo Geo Pocket Color games'
   'libretro-beetle-pce-fast: NEC PC Engine/CD core'
@@ -58,7 +59,6 @@ optdepends=(
   'libretro-stella2014: Support for Atari 2600 games'
   'libretro-yabause: Sega Saturn core'
   'retroarch: Reference frontend for the libretro API')
-checkdepends=('appstream-glib')
 provides=('gnome-games')
 conflicts=('gnome-games')
 replaces=('gnome-games')
