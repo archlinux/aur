@@ -17,6 +17,7 @@ pkgbase = gcc10
 	makedepends = python
 	options = !emptydirs
 	options = !lto
+	options = !buildflags
 	source = https://sourceware.org/pub/gcc/releases/gcc-10.4.0/gcc-10.4.0.tar.xz
 	source = https://sourceware.org/pub/gcc/releases/gcc-10.4.0/gcc-10.4.0.tar.xz.sig
 	source = https://sourceware.org/pub/gcc/infrastructure/isl-0.24.tar.bz2

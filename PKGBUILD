@@ -17,7 +17,7 @@ license=(GPL LGPL FDL custom)
 url='https://gcc.gnu.org'
 makedepends=(binutils doxygen git libmpc python)
 checkdepends=(dejagnu inetutils)
-options=(!emptydirs !lto)
+options=(!emptydirs !lto !buildflags)
 _libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
 source=(https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz{,.sig}
         https://sourceware.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2
@@ -97,10 +97,11 @@ build() {
       --program-suffix=-${_majorver} \
       --enable-version-specific-runtime-libs \
       --disable-multilib
-  make
+  LD_PRELOAD='/usr/lib/libstdc++.so' \
+  make -s
 
   # make documentation
-  make -C $CHOST/libstdc++-v3/doc doc-man-doxygen
+  make -s -C $CHOST/libstdc++-v3/doc doc-man-doxygen
 }
 
 check() {
@@ -121,6 +122,7 @@ package_gcc10-libs() {
   provides=(libgfortran.so libubsan.so libasan.so libtsan.so liblsan.so)
 
   cd gcc-build
+  LD_PRELOAD='/usr/lib/libstdc++.so' \
   make -C $CHOST/libgcc DESTDIR="$pkgdir" install-shared
   mv "${pkgdir}/${_libdir}"/../lib/* "${pkgdir}/${_libdir}"
   rmdir "${pkgdir}/${_libdir}"/../lib
