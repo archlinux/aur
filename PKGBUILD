@@ -1,31 +1,25 @@
 # Maintainer: Marcus Hoffmann <bubu@bubu1.eu>
 
 pkgname=python-cryptg
-pkgver=0.2
+pkgver=0.4
 pkgrel=1
 pkgdesc="Cryptographic utilities for Telegram, designed to use with Telethon."
 url="https://github.com/cher-nov/cryptg"
-depends=('python' 'python-cffi')
-makedepends=('python-setuptools' 'libffi')
+depends=('python')
+makedepends=('python-setuptools' 'python-setuptools-rust' 'python-build' 'python-installer' 'python-wheel')
 license=('CC0')
 arch=('any')
-source=("https://github.com/cher-nov/cryptg/archive/${pkgver}.tar.gz"
-	"https://github.com/cher-nov/tiny-AES-c/archive/f8507b9f226416ba1f5d452ecaaf37a2fae982c3.zip")
+source=("https://github.com/cher-nov/cryptg/archive/v${pkgver}.tar.gz")
 
-sha256sums=('c3050874bfeff2c57c940dafb3dad0b96917e067ff98acad4aa73dd898c30758'
-            'dfb0c7c2977ca018d8eff581319b959c4b72b5f59b2fc706519224edca591094')
-
-prepare() {
-     rmdir ${srcdir}/cryptg-${pkgver}/share/tiny-AES-c
-     mv tiny-AES-c-f8507b9f226416ba1f5d452ecaaf37a2fae982c3/ ${srcdir}/cryptg-${pkgver}/share/tiny-AES-c
-}
+sha256sums=('923a2318ab2e591952794d9b2125eb3f4fa4b5b9462fb2305ee9de8b092c49b3')
 
 build() {
     cd "${srcdir}/cryptg-${pkgver}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "${srcdir}/cryptg-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
