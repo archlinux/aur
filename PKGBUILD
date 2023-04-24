@@ -7,7 +7,6 @@ pkgdesc="A simple file indexing service"
 arch=("x86_64")
 url="github.com/Kirottu/kidex"
 license=('GPL3')
-depends=(grim)
 makedepends=(git cargo)
 source=("${_pkgname}::git+https://$url.git")
 sha256sums=('SKIP')
