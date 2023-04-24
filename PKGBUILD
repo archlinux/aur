@@ -9,7 +9,7 @@ pkgdesc="This is a dirt-simple FMV/laserdisc game player."
 arch=('x86_64')
 url="https://github.com/icculus/DirkSimple"
 license=('zlib')
-depends=('sdl2' 'sdl2_image' 'sdl2_ttf' 'libvorbis')
+depends=('sdl2' 'glibc' 'perl')
 makedepends=('git' 'cmake')
 provides=("$_pkgname")
 source=("$_pkgname::git+$url.git")
@@ -45,4 +45,3 @@ package() {
 	install -d "$pkgdir"/usr/bin/
         ln -s "$pkgdir"/usr/share/games/"$_pkgname"/dirksimple "$pkgdir"/usr/bin/
 }
- 
