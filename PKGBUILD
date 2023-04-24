@@ -10,8 +10,11 @@ url="https://github.com/firecat53/networkmanager-dmenu"
 license=('MIT')
 depends=('python' 'networkmanager' 'python-gobject')
 makedepends=('git')
-optdepends=('dmenu: either dmenu or rofi is required'
-            'rofi: either dmenu or rofi is required'
+optdepends=('dmenu: one of dmenu, rofi, bemenu, wofi, or yofi'
+            'rofi: one of dmenu, rofi, bemenu, wofi, or yofi'
+            'bemenu: one of dmenu, rofi, bemenu, wofi, or yofi'
+            'yofi: one of dmenu, rofi, bemenu, wofi, or yofi'
+            'wofi: one of dmenu, rofi, bemenu, wofi, or yofi'
             'network-manager-applet: for the nm-connection-editor GUI'
             'libnotify: any notification platform (dunst, for example)')
 provides=("$_pkgname")
