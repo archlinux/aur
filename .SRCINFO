@@ -1,7 +1,7 @@
 pkgbase = i3-doubleborders
 	pkgdesc = Improved dynamic tiling window manager
 	pkgver = 4.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://i3wm.org
 	arch = x86_64
 	groups = i3

@@ -7,7 +7,7 @@
 
 pkgname=i3-doubleborders
 pkgver=4.22
-pkgrel=1
+pkgrel=2
 pkgdesc='Improved dynamic tiling window manager'
 arch=('x86_64')
 url=https://i3wm.org
