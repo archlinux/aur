@@ -39,8 +39,6 @@ build() {
 package() {
 	cd "${srcdir}/${_pkgname}"
 	mkdir -p "${pkgdir}/usr/share/guppy"
-	mkdir -p "${pkgdir}/usr/share/licenses/guppy"
 	install -Dm755 target/release/guppy -t "${pkgdir}/usr/bin/"
 	install -Dm755 resources/default_make.guppy -t "${pkgdir}/usr/share/guppy/"
-	install -Dm644 License.txt -t "${pkgdir}/usr/share/licenses/guppy/"
 }
