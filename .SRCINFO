@@ -11,6 +11,6 @@ pkgbase = yank-note-appimage
 	conflicts = yank-note
 	options = !strip
 	source = yank-note-3.52.1.AppImage::https://github.com/purocean/yn/releases/download/v3.52.1/Yank-Note-linux-x86_64-3.52.1.AppImage
-	sha256sums = f5974eb35baaef4b5df98b4bfa397021366d8862fa499d7412a848a0c265971a
+	sha256sums = 4ac0c73adafbc96500f4b22b3ed11b67455e827adc8c21e9860f0fc1d4bf0243
 
 pkgname = yank-note-appimage

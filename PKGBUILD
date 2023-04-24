@@ -13,7 +13,7 @@ conflicts=("${pkgname%-appimage}")
 depends=('hicolor-icon-theme' 'zlib' 'glibc')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Yank-Note-linux-x86_64-${pkgver}.AppImage")
-sha256sums=('f5974eb35baaef4b5df98b4bfa397021366d8862fa499d7412a848a0c265971a')
+sha256sums=('4ac0c73adafbc96500f4b22b3ed11b67455e827adc8c21e9860f0fc1d4bf0243')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
