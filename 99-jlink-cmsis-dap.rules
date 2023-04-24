@@ -9,11 +9,11 @@
 
 ACTION!="add|change", GOTO="cmsis_dap_rules_end"
 
-SUBSYSTEM=="gpio", MODE="0660", GROUP="plugdev", TAG+="uaccess"
+SUBSYSTEM=="gpio", MODE="0660", GROUP="uucp", TAG+="uaccess"
 
 SUBSYSTEM!="usb|tty|hidraw", GOTO="cmsis_dap_rules_end"
 
 # CMSIS-DAP compatible adapters
-ATTRS{product}=="*CMSIS-DAP*", MODE="666", GROUP="plugdev", TAG+="uaccess"
+ATTRS{product}=="*CMSIS-DAP*", MODE="666", GROUP="uucp", TAG+="uaccess"
 
 LABEL="cmsis_dap_rules_end"

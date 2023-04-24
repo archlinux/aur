@@ -1,7 +1,7 @@
 pkgbase = jlink-software-and-documentation
 	pkgdesc = Segger JLink software & documentation pack for Linux
 	pkgver = 7.86h
-	pkgrel = 0
+	pkgrel = 1
 	epoch = 52
 	url = https://www.segger.com/jlink-software.html
 	install = jlink-software-and-documentation.install
@@ -41,7 +41,7 @@ pkgbase = jlink-software-and-documentation
 	source = JTAGLoadExe.desktop
 	source = JFlashSPIExe.desktop
 	md5sums = a57d93b791581c1f36e4c672303bb85d
-	md5sums = 1d90c97860d0da65525f77e80b821613
+	md5sums = 02c4941650a2bd345b03dd958313d4c5
 	md5sums = 83a136d31b296dd8f0e23bc21f9d8e19
 	md5sums = 02e067cd1c420f2085216d76e4866cd4
 	md5sums = 50bced5895a0ec59db0146153a077515
