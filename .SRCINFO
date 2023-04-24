@@ -1,6 +1,6 @@
 pkgbase = evremap-git
 	pkgdesc = Systemwide keyboard input remapper (written by @wez)
-	pkgver = r27.6ac2a1c
+	pkgver = r30.85f10af
 	pkgrel = 1
 	url = https://github.com/wez/evremap
 	arch = x86_64

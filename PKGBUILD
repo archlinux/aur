@@ -2,14 +2,14 @@
 
 _pkgname=evremap
 pkgname="$_pkgname-git"
-pkgver=r27.6ac2a1c
+pkgver=r30.85f10af
 pkgrel=1
 pkgdesc='Systemwide keyboard input remapper (written by @wez)'
-arch=('x86_64')
+arch=(x86_64)
 url="https://github.com/wez/$_pkgname"
-license=('MIT')
-depends=('libevdev')
-makedepends=('cargo' 'git' 'rust')
+license=(MIT)
+depends=(libevdev)
+makedepends=(cargo git rust)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git")
@@ -22,7 +22,6 @@ pkgver() {
 
 prepare() {
 	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target
 
 	cd $_pkgname
 	cargo update
@@ -30,11 +29,16 @@ prepare() {
 }
 
 build() {
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+
 	cd $_pkgname
 	cargo build --frozen --release --all-features
 }
 
 check() {
+	export RUSTUP_TOOLCHAIN=stable
+
 	cd $_pkgname
 	cargo test --frozen --all-features
 }
