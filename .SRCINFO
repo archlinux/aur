@@ -1,6 +1,6 @@
 pkgbase = moosync-appimage
 	pkgdesc = Music player capable of playing local audio or from Youtube, Spotify and many more
-	pkgver = 8.1.0
+	pkgver = 8.1.1
 	pkgrel = 1
 	url = https://moosync.app/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = moosync-appimage
 	provides = moosync
 	conflicts = moosync
 	options = !strip
-	source = moosync-8.1.0.AppImage::https://github.com/Moosync/Moosync/releases/download/v8.1.0/moosync-8.1.0-linux-x86_64.AppImage
-	sha256sums = 98cd034ffbb3bca8220c75dab26682b927df235d36da154b34d043259d097414
+	source = moosync-8.1.1.AppImage::https://github.com/Moosync/Moosync/releases/download/v8.1.1/moosync-8.1.1-linux-x86_64.AppImage
+	sha256sums = f5c739ebc61392bfb75be03bbf3310f7276fc9f655758b5bc6f1c3d83ca108b7
 
 pkgname = moosync-appimage

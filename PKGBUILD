@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="moosync-appimage"
-pkgver=8.1.0
+pkgver=8.1.1
 pkgrel=1
 pkgdesc="Music player capable of playing local audio or from Youtube, Spotify and many more"
 arch=("x86_64")
@@ -13,7 +13,7 @@ provides=("${pkgname%-appimage}")
 conflicts=("${pkgname%-appimage}")
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}-linux-x86_64.AppImage")
-sha256sums=('98cd034ffbb3bca8220c75dab26682b927df235d36da154b34d043259d097414')
+sha256sums=('f5c739ebc61392bfb75be03bbf3310f7276fc9f655758b5bc6f1c3d83ca108b7')
         
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
