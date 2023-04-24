@@ -1,13 +1,13 @@
 pkgbase = mcreator-eap
 	pkgdesc = Make Minecraft Java Edition mods, Bedrock Edition Add-Ons, and data packs using visual graphical programming or integrated IDE (EAP release)
-	pkgver = 2023.1.b08712
+	pkgver = 2023.2.b17118
 	pkgrel = 1
 	url = https://mcreator.net
 	arch = x86_64
 	license = custom
 	conflicts = mcreator
-	noextract = mcreator-2023.1.b08712.tar.gz
-	source = mcreator-2023.1.b08712.tar.gz::https://github.com/mcreator/mcreator/releases/download/2023.1.08712/mcreator.2023.1.Linux.64bit.tar.gz
+	noextract = mcreator-2023.2.b17118.tar.gz
+	source = mcreator-2023.2.b17118.tar.gz::https://github.com/mcreator/mcreator/releases/download/2023.2.17118/mcreator.2023.2.Linux.64bit.tar.gz
 	source = mcreator.desktop
 	b2sums = 0b995fdbbc2853fadbb0635445c1a45d281d1d12ee2a492dfdf6afe2398c49e2f6b07feb10264e2062ca1680f7b1b4c7aeb70fd3ccf2326b53b966e5ee479419
 	b2sums = 8efa7edb9abe7b66a2a9482702e80cbebbcf390f8442daf280f9fd0e05610a831ab54fdedbf4bbe58662f4fdef4b5e7a15547883aaee006c35915a453dafb343
