@@ -1,0 +1,15 @@
+pkgbase = python-rply
+	pkgdesc = A pure Python Lex/Yacc that works with RPython
+	pkgver = 0.7.8
+	pkgrel = 4
+	url = https://rply.readthedocs.org
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = python-appdirs
+	source = python-rply-0.7.8.tar.gz::https://github.com/alex/rply/archive/v0.7.8.tar.gz
+	sha512sums = b43e6425f046561cfca616801d37d7151f015aeb2ea2365abc00f97fd6b41f1a01a17e330aed5a81537065e4b29d49cd0824b5a5cb8b2d11da2ff1f8de952fce
+
+pkgname = python-rply
+	depends = python-appdirs
