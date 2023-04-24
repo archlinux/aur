@@ -1,6 +1,6 @@
 pkgbase = libindi_3rdparty
 	pkgdesc = 3rd party drivers for INDI, a distributed control protocol designed to operate astronomical instrumentation
-	pkgver = 1.9.8
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = http://www.indilib.org/index.php?title=Main_Page
 	arch = i686
@@ -21,11 +21,9 @@ pkgbase = libindi_3rdparty
 	depends = libftdi
 	depends = rtl-sdr
 	provides = libindi_3rdparty
-	source = https://github.com/indilib/indi-3rdparty/archive/v1.9.8.tar.gz
+	source = https://github.com/indilib/indi-3rdparty/archive/v2.0.1.tar.gz
 	source = celestronaux-auxproto.diff
-	source = libfirmata-firmata.diff
-	sha256sums = a222a22ca4edae1816255e3851cfdb91efff557378021a44ca05d672410fc81e
+	sha256sums = be98a84ab6166321fe5aa74fca132cd866ae4e6910ef3b97e3502a44c59d277d
 	sha256sums = fef4fe62933872bbf6424e8ee538363d38288ed12fce0222fd566bcb5a4bf372
-	sha256sums = 525dc01ac3b4f96ee02809806abc309ce753271632cef267495074f74808c2c2
 
 pkgname = libindi_3rdparty
