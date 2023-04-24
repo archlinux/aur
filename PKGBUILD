@@ -1,10 +1,10 @@
-# Maintainer: Ehsan Ghorbannezad <ehsan at disroot dot org>
+# Maintainer: koonix <ehsan at disroot dot org>
 _pkgname='grub-entries'
 pkgname="${_pkgname}-git"
 pkgver='r9.4f939c1'
-pkgrel=3
+pkgrel=4
 pkgdesc="A script to list grub's top-level menu entries."
-url='https://github.com/ghesy/grub-entries'
+url='https://github.com/koonix/grub-entries'
 arch=('x86_64')
 license=('GPL')
 makedepends=('git')
