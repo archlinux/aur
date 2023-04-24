@@ -1,6 +1,6 @@
 pkgbase = opencpn-plugin-weatherfax
 	pkgdesc = Open image files directly, or decode audio faxes to an image. Plugin for OpenCPN.
-	pkgver = 1.3.r220.g48a8f90
+	pkgver = 1.9.56.0
 	pkgrel = 1
 	url = https://opencpn.org/OpenCPN/plugins/weatherfax.html
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = opencpn-plugin-weatherfax
 	makedepends = cmake
 	makedepends = git
 	depends = opencpn
-	source = opencpn-plugin-weatherfax::git+https://github.com/seandepagnier/weatherfax_pi.git
-	sha1sums = SKIP
+	optdepends = rtl-sdr: decode from rtlsdr
+	source = opencpn-plugin-weatherfax-1.9.56.0.tar.gz::https://github.com/rgleason/weatherfax_pi/archive/refs/tags/v1.9.56.0.tar.gz
+	b2sums = 05d5d3bd1557fdc4a407d79e504478fcf8c9a800d181bfd2ac8f9ef988a564cadb18318a69cb61454cf9ddc88f62c247054280d081cb6bc189a558cb73199989
 
 pkgname = opencpn-plugin-weatherfax
-
