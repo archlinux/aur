@@ -1,13 +1,13 @@
 pkgbase = pacycle
 	pkgdesc = Cycle the default audio output device of pulseaudio.
 	pkgver = r1
-	pkgrel = 1
-	url = https://github.com/ghesy/pacycle
+	pkgrel = 2
+	url = https://github.com/koonix/pacycle
 	arch = any
 	license = Unlicense
 	depends = pulseaudio
 	depends = bash
-	source = https://github.com/ghesy/pacycle/archive/refs/tags/r1.tar.gz
+	source = https://github.com/koonix/pacycle/archive/refs/tags/r1.tar.gz
 	sha256sums = 983c51d3e8d55deb3e0359c5f54e50ef76e438f88edd2177294890e6462b0eaa
 
 pkgname = pacycle

@@ -1,10 +1,10 @@
-# Maintainer: Ehsan Ghorbannezad <ehsan at disroot dot org>
+# Maintainer: koonix <ehsan at disroot dot org>
 
 pkgname=pacycle
 pkgver=r1
-pkgrel=1
+pkgrel=2
 pkgdesc='Cycle the default audio output device of pulseaudio.'
-url='https://github.com/ghesy/pacycle'
+url='https://github.com/koonix/pacycle'
 arch=('any')
 license=('Unlicense')
 depends=('pulseaudio' 'bash')
