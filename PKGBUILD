@@ -1,7 +1,7 @@
 # Maintainer: Alisa Lain <al1-ce@null.net>
 
 pkgname='pxv'
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Instant feature rich terminal image viewer'
 arch=('i686' 'x86_64')
