@@ -1,7 +1,7 @@
 # Maintainer: Victor Mingueza <victormingueza at gmail.com>
-pkgname=journal-viewer
+pkgname=journal-viewer-src
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern linux desktop application to visualize systemd logs."
 arch=('x86_64')
 url="https://github.com/mingue/journal-viewer"

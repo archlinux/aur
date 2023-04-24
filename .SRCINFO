@@ -1,7 +1,7 @@
 pkgbase = journal-viewer-src
 	pkgdesc = A modern linux desktop application to visualize systemd logs.
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mingue/journal-viewer
 	arch = x86_64
 	license = GPL3
