@@ -1,13 +1,13 @@
 pkgbase = libqsi
 	pkgdesc = libqsi used by INDI QSI drivers. Please note that for sake of simplicity package version follows libindi versionning.
-	pkgver = 1.9.8
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = http://www.indilib.org/index.php?title=Main_Page
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	source = https://github.com/indilib/indi-3rdparty/archive/v1.9.8.tar.gz
-	sha256sums = a222a22ca4edae1816255e3851cfdb91efff557378021a44ca05d672410fc81e
+	source = https://github.com/indilib/indi-3rdparty/archive/v2.0.1.tar.gz
+	sha256sums = be98a84ab6166321fe5aa74fca132cd866ae4e6910ef3b97e3502a44c59d277d
 
 pkgname = libqsi
