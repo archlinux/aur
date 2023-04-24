@@ -13,7 +13,7 @@ arch=('x86_64')
 url="http://www.lillo.org.ar/phylogeny/tnt/"
 license=('custom')
 makedepends=('unzip')
-depends=('tnt-ncurses5-compat-libs')
+depends=('ncurses5-compat-libs')
 source=("http://www.lillo.org.ar/phylogeny/tnt/tnt-linux.zip")
 sha256sums=('SKIP')
 prepare () {
