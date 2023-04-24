@@ -1,13 +1,14 @@
 pkgbase = python-librespot
 	pkgdesc = Open Source Spotify Client
 	pkgver = 0.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kokarare1212/librespot-python
 	arch = x86_64
 	license = Apache
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
 	depends = python-defusedxml
 	depends = python-protobuf
