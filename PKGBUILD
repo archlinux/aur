@@ -3,7 +3,7 @@
 
 pkgname=pidgin-bud
 pkgver=2.14.12
-pkgrel=5
+pkgrel=6
 pkgdesc="minimal Pidgin (XMPP/IRC), includes input-box-bug fix"
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
@@ -64,6 +64,7 @@ build() {
       --disable-screensaver \
       --disable-tcl \
       --disable-tk \
+      --disable-dbus \
       --disable-vv
       
     make

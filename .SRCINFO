@@ -1,7 +1,7 @@
 pkgbase = pidgin-bud
 	pkgdesc = minimal Pidgin (XMPP/IRC), includes input-box-bug fix
 	pkgver = 2.14.12
-	pkgrel = 5
+	pkgrel = 6
 	url = http://pidgin.im/
 	install = pidgin.install
 	arch = i686
