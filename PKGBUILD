@@ -3,7 +3,7 @@
 _pkgname=MONAILabel
 pkgname=monailabel
 pkgver=0.6.0
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='An intelligent open source image labeling and learning tool'
 arch=('any')
@@ -79,8 +79,7 @@ build() {
   BUILD_OHIF=OFF python -m build --wheel --no-isolation --skip-dependency-check
   cd "plugins/qupath"
   # build with jdk17
-  sed -i "s,version = 11,version = 17," build.gradle
-  gradle clean build -Porg.gradle.java.home=/usr/lib/jvm/default
+  gradle clean build -Porg.gradle.java.home=/usr/lib/jvm/default -Ptoolchain=17
 }
 
 package() {

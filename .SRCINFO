@@ -1,7 +1,7 @@
 pkgbase = monailabel
 	pkgdesc = An intelligent open source image labeling and learning tool
 	pkgver = 0.6.0
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/Project-MONAI/MONAILabel
 	install = monailabel.install
