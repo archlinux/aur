@@ -1,0 +1,18 @@
+pkgbase = brother-dcpl5500dn
+	pkgdesc = Brother DCP-L5500DN lpr driver and CUPS wrapper.
+	pkgver = 3.5.1_1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/downloadend.aspx?c=us&lang=en&prod=dcpl5500dn_us_eu&os=127&dlid=dlf102575_000&flang=4&type3=558
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = custom:brother
+	depends = cups
+	depends = lib32-glibc
+	optdepends = brscan4: scanner support.
+	source = https://download.brother.com/welcome/dlf102575/dcpl5500dnlpr-3.5.1-1.i386.rpm
+	source = https://download.brother.com/welcome/dlf102576/dcpl5500dncupswrapper-3.5.1-1.i386.rpm
+	md5sums = 3bd492e0d9832c89ae327e5303bd6472
+	md5sums = ce72070c23dc3ab57171d8faba31d17f
+
+pkgname = brother-dcpl5500dn
