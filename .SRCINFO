@@ -1,0 +1,19 @@
+pkgbase = notepad---appimage
+	pkgdesc = An excellent text editor with the goal of replacing notepad++,from China.一个优秀的文本编辑器,目标是要替换notepad++.
+	pkgver = 2.3
+	pkgrel = 1
+	url = https://github.com/cxasm/notepad--
+	arch = x86_64
+	license = GPL3
+	makedepends = gendesk
+	depends = zlib
+	depends = glibc
+	provides = notepad--
+	conflicts = notepad--
+	options = !strip
+	source = notepad---2.3.AppImage::https://github.com/cxasm/notepad--/releases/download/notepad-v2.3/subtwo-v2.3-redhat7.4-x86_64.AppImage
+	source = notepad--.png::https://github.com/cxasm/notepad--/raw/main/src/Resources/notepad_main.png
+	sha256sums = ebc50e4ad748f5f18671cb324dceac55f669668de3f98ef2db80f6d12fd15cf5
+	sha256sums = facf091173791725861845a4f18fe3640b6f8613a295ba6f6263f66a188d0cc6
+
+pkgname = notepad---appimage
