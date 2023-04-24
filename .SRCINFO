@@ -1,0 +1,19 @@
+pkgbase = libstumpless
+	pkgdesc = C logging library built for high performance and a rich feature set.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/goatshriek/stumpless
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = LGPL3
+	checkdepends = gtest
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	provides = libstumpless
+	provides = libstumpless.so
+	source = stumpless-2.1.0.tar.gz::https://github.com/goatshriek/stumpless/archive/refs/tags/v2.1.0.tar.gz
+	sha256sums = f3eff944d81fdf82ffe5c0df6a8c692224140c9c322ffc3ba709218a66dc07ec
+
+pkgname = libstumpless
