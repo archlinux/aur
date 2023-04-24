@@ -1,7 +1,7 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=parpd
-_commit=b0c8d28b5f2b49fce8a07c75ec031ed0f657a260
-pkgver=2.1
+_commit=16daa7e690c783b7b440b05b638de17aab50c2ad
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Proxy-ARP daemon"
 arch=(i686 x86_64)
@@ -25,8 +25,6 @@ build() {
     --sbindir=/usr/bin  \
     --rundir=/run       \
     ;
-  # Missing in 2.0.0
-  echo '#define __arraycount(a) (sizeof(a) / sizeof(a[0]))' >> config.h
   make
 }
 
