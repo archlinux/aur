@@ -1,9 +1,9 @@
 # Maintainer: George Woodall <georgewoodall82@gmail.com>
 pkgname=tgpt-bin
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="ChatGPT in terminal without needing API keys"
-arch=("x86_64" "aarch64" "i386")
+arch=("x86_64" "aarch64" "i386" "i686")
 url="https://github.com/aandrew-me/tgpt"
 license=('GPL-3.0')
 #makedepends=('')
@@ -13,7 +13,7 @@ then
 elif [ $CARCH == "aarch64" ]
 then
   	ARCHY=arm64
-elif [ $CARCH == "i386" ]
+elif [ $CARCH == "i386" || $CARCH == "i686" ]
 then
 	ARCHY=i386
 else
