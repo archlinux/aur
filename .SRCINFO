@@ -1,16 +1,16 @@
 pkgbase = fifo-browser-appimage
 	pkgdesc = A modern web browser, built on top of modern web technologies such as Electron and React that is mean't to be secure.
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fifo.snaildos.com/
 	arch = x86_64
 	license = GPL3
-	depends = hicolor-icon-theme
 	depends = zlib
 	depends = glibc
 	conflicts = fifo
+	conflicts = fifo-browser
 	options = !strip
-	source = fifo-1.2.2.AppImage::https://github.com/snaildos/Fifo-Browser/releases/download/v1.2.2/Fifo-1.2.2.AppImage
+	source = fifo-browser-1.2.2.AppImage::https://github.com/snaildos/Fifo-Browser/releases/download/v1.2.2/Fifo-1.2.2.AppImage
 	sha256sums = 9bc6a3e4b31e3d21903e17dc35bc30f86e151e26760641aceac2475c99ea5f58
 
 pkgname = fifo-browser-appimage
