@@ -1,10 +1,11 @@
 pkgbase = python-syncedlyrics
 	pkgdesc = Get an LRC format (synchronized) lyrics for your music
-	pkgver = 0.4.0
-	pkgrel = 2
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://github.com/rtcq/syncedlyrics
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -14,7 +15,7 @@ pkgbase = python-syncedlyrics
 	depends = python-rapidfuzz>=2.13.2
 	depends = python-beautifulsoup4>=4.11.1
 	conflicts = python-syncedlyrics-git
-	source = syncedlyrics-0.4.0.tar.gz::https://github.com/rtcq/syncedlyrics/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = 13672adb05ec6f51c3dafe6efb34b7379c3477f47ffaf9d87d9c1dbf70900956
+	source = syncedlyrics-0.5.0.tar.gz::https://github.com/rtcq/syncedlyrics/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 82d4315d753875c8e483dfad95e9c13bc5136fbd62e06bda6ce7b33b18c1fe26
 
 pkgname = python-syncedlyrics
