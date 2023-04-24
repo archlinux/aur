@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-bin
-	pkgdesc = Java OpenJDK 20 Oracle Build.
-	pkgver = 20.u36
+	pkgdesc = Java OpenJDK 20.0.1 Oracle Build.
+	pkgver = 20.0.1.u9
 	pkgrel = 1
 	url = https://jdk.java.net/20
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = java-openjdk-bin
 	provides = java-runtime-openjdk=20
 	provides = java-runtime-headless=20
 	provides = java-runtime-headless-openjdk=20
-	source = https://download.java.net/java/GA/jdk20/bdc68b4b9cbc4ebcb30745c85038d91d/36/GPL/openjdk-20_linux-x64_bin.tar.gz
-	sha256sums = bb863b2d542976d1ae4b7b81af3e78b1e4247a64644350b552d298d8dc5980dc
+	source = https://download.java.net/java/GA/jdk20.0.1/b4887098932d415489976708ad6d1a4b/9/GPL/openjdk-20.0.1_linux-x64_bin.tar.gz
+	sha256sums = 4248a3af4602dbe2aefdb7010bc9086bf34a4155888e837649c90ff6d8e8cef9
 
 pkgname = java-openjdk-bin
