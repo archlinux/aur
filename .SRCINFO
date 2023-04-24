@@ -1,0 +1,16 @@
+pkgbase = tccalc
+	pkgdesc = A simple chemical thermodynamics calculator.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/calcs1/tccalc
+	arch = any
+	license = ISC
+	depends = bash
+	depends = coreutils
+	depends = sed
+	depends = bc
+	depends = man
+	source = tccalc-1.0.tar.gz::https://gitlab.com/calcs1/tccalc/-/raw/main/src/tccalc-1.0.tar.gz
+	sha256sums = 89e81a27144560499f5f46e1dc9795c40cf7a040309b12d20314634d2fe957db
+
+pkgname = tccalc
