@@ -1,16 +1,14 @@
 pkgbase = opencpn-plugin-route
 	pkgdesc = Route Plotting plugin aka 'Great Circle Route' plugin for OpenCPN.
-	pkgver = 1.2.ov42.r0.g915000c
+	pkgver = 1.2_ov50
 	pkgrel = 1
 	url = https://opencpn.org/OpenCPN/plugins/route.html
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
 	makedepends = cmake
-	makedepends = git
 	depends = opencpn
-	source = opencpn-plugin-route::git+https://github.com/SaltyPaws/route_pi.git
-	sha1sums = SKIP
+	source = opencpn-plugin-route-1.2_ov50.tar.gz::https://github.com/SaltyPaws/route_pi/archive/refs/tags/v1.2-ov50.tar.gz
+	b2sums = 2dac5a8f56bcce469acbda6b4a08d077dc0f8fca223a7576056dd159638456b41c5513c0aedb4e70043c22fbacb08b5fe3d75d99a90355ade2a713ed8c666e7b
 
 pkgname = opencpn-plugin-route
-
