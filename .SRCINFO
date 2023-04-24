@@ -1,7 +1,7 @@
 pkgbase = amdgpu_top
 	pkgdesc = Tool that shows AMD GPU utilization
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Umio-Yasuno/amdgpu_top
 	arch = i686
 	arch = pentium4
