@@ -10,6 +10,7 @@ pkgbase = c-exceptions
 	makedepends = make
 	makedepends = binutils
 	makedepends = coreutils
+	makedepends = nasm-git
 	optdepends = valgrind
 	source = git+https://github.com/alecksandr26/c-exceptions
 	md5sums = SKIP
