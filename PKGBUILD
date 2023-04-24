@@ -1,3 +1,4 @@
+# Maintainer: plokid <wan_shiwen@outlook.com>
 # Contributor: Geoffroy Carrier <geoffroy.carrier@koon.fr>
 # Contributor: Giorgio Lando <patroclo7@gmail.com>
 # Contributor: Leslie P. Polzer <polzer@gnu.org>
@@ -7,7 +8,7 @@
 
 _pkgname=isync
 pkgname=$_pkgname-git
-pkgver=1.4.2
+pkgver=1.4.4.r218.g65cd442
 pkgrel=1
 pkgdesc="IMAP and MailDir mailbox synchronizer"
 url="http://isync.sourceforge.net/"
@@ -22,7 +23,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags --long | sed 's/^v//;s/-/.r/;s/-/./g'
 }
 
 prepare() {
