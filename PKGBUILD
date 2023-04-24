@@ -4,7 +4,7 @@
 # Contributor: Bart Verhoeven <bartverhoeven@live.com>
 
 pkgname=mercury
-pkgver=22.01.3
+pkgver=22.01.5
 pkgrel=1
 pkgdesc="The mercury language compiler."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('GPL')
 depends=('gcc' 'make')
 makedepends=('flex' 'bison')
 source=(http://dl.mercurylang.org/release/mercury-srcdist-${pkgver}.tar.xz)
-sha512sums=('c16b6bb5da94fe93c4021ccb44d127589ccb70cb8419bb5c6a85780d3e79e557c56b23a89a1addb34920e0fab2c99fd14daf03a4fdde419f3a9e00903b5c4be8')
+sha512sums=('0b64eb90b1ddac4199a6077bd7a41c95eae4b388170889ba6f6ddd528f2c0a1cb4206d0a1957537c2b34ce1aeaae476fd505b12c2a00ca9b85bed378541b3e47')
 
 build() {
   cd "$srcdir"/mercury-srcdist-$pkgver
