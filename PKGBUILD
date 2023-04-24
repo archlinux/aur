@@ -4,7 +4,7 @@ _pkgname=parameters
 _pkgver=0.21.0
 pkgname=r-${_pkgname,,}
 pkgver=0.21.0
-pkgrel=1
+pkgrel=4
 pkgdesc='Processing of Model Parameters'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -69,7 +69,6 @@ optdepends=(
   r-ivreg
   r-knitr
   r-lavaan
-  r-lavasearch2
   r-lfe
   r-lm.beta
   r-lme4

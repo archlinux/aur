@@ -1,7 +1,7 @@
 pkgbase = r-parameters
 	pkgdesc = Processing of Model Parameters
 	pkgver = 0.21.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=parameters
 	arch = any
 	license = GPL
@@ -62,7 +62,6 @@ pkgbase = r-parameters
 	optdepends = r-ivreg
 	optdepends = r-knitr
 	optdepends = r-lavaan
-	optdepends = r-lavasearch2
 	optdepends = r-lfe
 	optdepends = r-lm.beta
 	optdepends = r-lme4
