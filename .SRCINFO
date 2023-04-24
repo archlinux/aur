@@ -1,6 +1,6 @@
 pkgbase = vte3-nohang
 	pkgdesc = Virtual Terminal Emulator widget (GTK3) (plus no-hang patch)
-	pkgver = 0.72.0
+	pkgver = 0.72.1
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Terminal/VTE
 	arch = x86_64
@@ -15,15 +15,15 @@ pkgbase = vte3-nohang
 	depends = pcre2
 	depends = systemd-libs
 	depends = vte-common
-	provides = vte3=0.72.0
-	provides = vte3-notification=0.72.0
+	provides = vte3=0.72.1
+	provides = vte3-notification=0.72.1
 	provides = libvte-2.91.so
 	conflicts = vte3
 	options = !lto
-	source = https://gitlab.gnome.org/GNOME/vte/-/archive/0.72.0/vte-0.72.0.tar.bz2
+	source = https://gitlab.gnome.org/GNOME/vte/-/archive/0.72.1/vte-0.72.1.tar.bz2
 	source = fix-exit-regression.patch
 	source = desktop-notification.patch
-	sha256sums = 4af32ce0c12c218caf498bd331c09757123ad9d979a13bbb0f85df5ee64ecb6c
+	sha256sums = 2b081649ce5752004fcb339dfda6e592c9a95c7fe26f723a8f3a8bdfffaa1768
 	sha256sums = f43611e7f8ffdc5f1fe52a6e1fe274cc0b2d421d88abb7c2b0d073cfea61f6eb
 	sha256sums = 905672bd0e2b5685aeddd035e502a7062c4ada16f8a8eae9813cca1974ea0f77
 

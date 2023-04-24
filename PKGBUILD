@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034,SC2154,SC2115
 
 pkgname=vte3-nohang
-pkgver=0.72.0
+pkgver=0.72.1
 pkgrel=1
 pkgdesc='Virtual Terminal Emulator widget (GTK3) (plus no-hang patch)'
 url='https://wiki.gnome.org/Apps/Terminal/VTE'
@@ -15,7 +15,7 @@ options=('!lto')
 source=("https://gitlab.gnome.org/GNOME/vte/-/archive/$pkgver/vte-$pkgver.tar.bz2"
   fix-exit-regression.patch
   desktop-notification.patch)
-sha256sums=('4af32ce0c12c218caf498bd331c09757123ad9d979a13bbb0f85df5ee64ecb6c'
+sha256sums=('2b081649ce5752004fcb339dfda6e592c9a95c7fe26f723a8f3a8bdfffaa1768'
   'f43611e7f8ffdc5f1fe52a6e1fe274cc0b2d421d88abb7c2b0d073cfea61f6eb'
   '905672bd0e2b5685aeddd035e502a7062c4ada16f8a8eae9813cca1974ea0f77')
 
