@@ -1,10 +1,10 @@
-# Maintainer: Ehsan Ghorbannezad <ehsan at disroot dot org>
+# Maintainer: koonix <ehsan at disroot dot org>
 _pkgname='lfutils'
 pkgname="${_pkgname}-git"
 pkgver=r96.8149768
-pkgrel=2
+pkgrel=3
 pkgdesc='Scripts and utilities for the lf file manager.'
-url='https://github.com/ghesy/lfutils'
+url='https://github.com/koonix/lfutils'
 source=("git+${url}.git")
 arch=('x86_64')
 license=('GPL')

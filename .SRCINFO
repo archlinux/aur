@@ -1,8 +1,8 @@
 pkgbase = lfutils-git
 	pkgdesc = Scripts and utilities for the lf file manager.
 	pkgver = r96.8149768
-	pkgrel = 2
-	url = https://github.com/ghesy/lfutils
+	pkgrel = 3
+	url = https://github.com/koonix/lfutils
 	arch = x86_64
 	license = GPL
 	makedepends = git
@@ -25,7 +25,7 @@ pkgbase = lfutils-git
 	optdepends = transmission-cli: previewing .torrent files
 	provides = lfutils
 	conflicts = lfutils
-	source = git+https://github.com/ghesy/lfutils.git
+	source = git+https://github.com/koonix/lfutils.git
 	md5sums = SKIP
 
 pkgname = lfutils-git
