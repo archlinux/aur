@@ -1,11 +1,11 @@
-# Maintainer: Ehsan Ghorbannezad <ehsan@disroot.org>
+# Maintainer: koonix <ehsan@disroot.org>
 _pkgname='sblock'
 pkgname="${_pkgname}-git"
 pkgver=r15.53e3f1f
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple adblocker that creates a hosts file from multiple sources, similar to hblock."
 arch=('any')
-url='https://github.com/ghesy/sblock'
+url='https://github.com/koonix/sblock'
 license=('GPL')
 depends=('aria2')
 makedepends=('git')
