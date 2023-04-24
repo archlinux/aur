@@ -6,7 +6,7 @@ function _nvidia_check {
 
 pkgname=alvr
 pkgver=19.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
@@ -28,7 +28,8 @@ prepare() {
 
 	sed -i 's:../../../lib64/libalvr_vulkan_layer.so:libalvr_vulkan_layer.so:' alvr/vulkan_layer/layer/alvr_x86_64.json
 
-	echo "[profile.release]
+	echo "
+[profile.release]
 lto=true" >> Cargo.toml
 
     export RUSTUP_TOOLCHAIN=stable
