@@ -1,15 +1,15 @@
 pkgbase = libcollectc-git
 	pkgdesc = Collections C provides generic data structures for the C programming language.
 	pkgver = r616.2302fff
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/srdja/Collections-C
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = LGPL3
+	checkdepends = cpputest
 	makedepends = git
 	makedepends = cmake
-	makedepends = cpputest
 	depends = glibc
 	provides = libcollectc
 	provides = libcollectc.so

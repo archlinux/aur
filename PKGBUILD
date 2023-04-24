@@ -2,13 +2,14 @@
 
 pkgname=libcollectc-git
 pkgver=r616.2302fff
-pkgrel=2
+pkgrel=3
 pkgdesc='Collections C provides generic data structures for the C programming language.'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/srdja/Collections-C'
 license=('LGPL3')
 depends=('glibc')
-makedepends=('git' 'cmake' 'cpputest')
+makedepends=('git' 'cmake')
+checkdepends=('cpputest')
 provides=('libcollectc' 'libcollectc.so')
 source=('libcollectc-git::git+https://github.com/srdja/Collections-C.git#branch=master')
 sha256sums=('SKIP')
