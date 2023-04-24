@@ -1,0 +1,13 @@
+# Package Information for pkg-config
+
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: LumoSQL
+Description: SQL database engine
+Version: 0.4
+Libs: -L${libdir} -llumosql
+Libs.private: -lm -lz 
+Cflags: -I${includedir}

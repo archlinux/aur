@@ -1,7 +1,7 @@
 pkgbase = lumosql
 	pkgdesc = Adds privacy, security and performance options to SQLite.
 	pkgver = r339.be5579f
-	pkgrel = 3
+	pkgrel = 4
 	url = https://lumosql.org/src/lumosql
 	arch = x86_64
 	arch = aarch64
@@ -11,7 +11,6 @@ pkgbase = lumosql
 	makedepends = tcl
 	makedepends = tclx
 	makedepends = readline
-	makedepends = zlib
 	makedepends = gzip
 	makedepends = tar
 	makedepends = perl
@@ -20,20 +19,22 @@ pkgbase = lumosql
 	makedepends = curl
 	makedepends = patch
 	makedepends = perl-text-glob
-	provides = sqlite=3.37.2
-	provides = sqlite3=3.37.2
-	provides = libsqlite3.so=0-64
+	depends = glibc
+	depends = libedit
+	depends = lmdb
+	depends = zlib
 	provides = lmdb=0.9.29
-	conflicts = sqlite
 	conflicts = lmdb
 	options = !emptydirs
 	source = lumosql::fossil+https://lumosql.org/src/lumosql#commit=be5579f383
 	source = sqlite-lemon-system-template.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/sqlite/trunk/sqlite-lemon-system-template.patch
 	source = lumo-build-opts.patch
 	source = lmdb.pc
+	source = lumosql.pc
 	sha256sums = SKIP
 	sha256sums = 55746d93b0df4b349c4aa4f09535746dac3530f9fd6de241c9f38e2c92e8ee97
 	sha256sums = 40e151879951d62d819dcc463cddbb10a26eddfdbdf7f27136315bac1b3fee10
 	sha256sums = 6eed8c6fde6f5e2523099462779656f7cb92b3fc7384023d96508a6e73a730da
+	sha256sums = 0b413acb44cf29ad939c831130b655fa6898241617fe29f799c76fb281daec50
 
 pkgname = lumosql

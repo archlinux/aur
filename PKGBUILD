@@ -4,23 +4,26 @@ pkgname=lumosql
 pkgver=r339.be5579f
 _sqlite_ver=3.37.2
 _lmdb_ver=0.9.29
-pkgrel=3
+pkgrel=4
 pkgdesc='Adds privacy, security and performance options to SQLite.'
 arch=('x86_64' 'aarch64')
 url="https://lumosql.org/src/lumosql"
 license=('custom: MIT')
-makedepends=('fossil' 'not-forking' 'tcl' 'tclx' 'readline' 'zlib' 'gzip' 'tar' 'perl' 'git' 'perl-git-wrapper' 'curl' 'patch' 'perl-text-glob')
-provides=("sqlite=${_sqlite_ver}" "sqlite3=${_sqlite_ver}" "libsqlite3.so=0-64" "lmdb=${_lmdb_ver}")
-conflicts=('sqlite' 'lmdb')
+depends=('glibc' 'libedit' 'lmdb' 'zlib')
+makedepends=('fossil' 'not-forking' 'tcl' 'tclx' 'readline' 'gzip' 'tar' 'perl' 'git' 'perl-git-wrapper' 'curl' 'patch' 'perl-text-glob')
+provides=("lmdb=${_lmdb_ver}")
+conflicts=('lmdb')
 options=('!emptydirs')
 source=("${pkgname}::fossil+${url}#commit=be5579f383"
         'sqlite-lemon-system-template.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/sqlite/trunk/sqlite-lemon-system-template.patch'
         'lumo-build-opts.patch'
-        'lmdb.pc')
+        'lmdb.pc'
+        'lumosql.pc')
 sha256sums=(SKIP
             '55746d93b0df4b349c4aa4f09535746dac3530f9fd6de241c9f38e2c92e8ee97'
             '40e151879951d62d819dcc463cddbb10a26eddfdbdf7f27136315bac1b3fee10'
-            '6eed8c6fde6f5e2523099462779656f7cb92b3fc7384023d96508a6e73a730da')
+            '6eed8c6fde6f5e2523099462779656f7cb92b3fc7384023d96508a6e73a730da'
+            '0b413acb44cf29ad939c831130b655fa6898241617fe29f799c76fb281daec50')
 
 pkgver() {
   cd "$pkgname"
@@ -61,13 +64,13 @@ package() {
 
   # SQLite3 binary
   install -m755 -d "${pkgdir}/usr/bin"
-  install -m755 sqlite3 "${pkgdir}/usr/bin/"
+  install -m755 sqlite3 "${pkgdir}/usr/bin/lumosql"
 
   # SQLite3 shared library
   install -m755 -d "${pkgdir}/usr/lib"
-  install -m644 libsqlite3.so "${pkgdir}/usr/lib/"
-  install -m644 libsqlite3.so.0 "${pkgdir}/usr/lib/"
-  install -m644 libsqlite3.so.0.8.6 "${pkgdir}/usr/lib/"
+  install -m644 libsqlite3.so.0.8.6 "${pkgdir}/usr/lib/liblumosql.so.0.8.6"
+  ln -s /usr/lib/liblumosql.so.0.8.6 "${pkgdir}/usr/lib/liblumosql.so.0"
+  ln -s /usr/lib/liblumosql.so.0.8.6 "${pkgdir}/usr/lib/liblumosql.so"
 
   # LMDB shared library
   install -m644 liblmdb.so "${pkgdir}/usr/lib/"
@@ -82,15 +85,15 @@ package() {
 
   # SQLite3 manpage
   install -m755 -d "${pkgdir}/usr/share/man/man1"
-  install -m644 sqlite3.1 "${pkgdir}/usr/share/man/man1/"
+  install -m644 sqlite3.1 "${pkgdir}/usr/share/man/man1/lumosql.1"
 
   # SQLite3 headers
-  install -m644 sqlite3.h "${pkgdir}/usr/include/"
-  install -m644 sqlite3ext.h "${pkgdir}/usr/include/"
+  install -m644 sqlite3.h "${pkgdir}/usr/include/lumosql.h"
+  install -m644 sqlite3ext.h "${pkgdir}/usr/include/lumosqlext.h"
 
   # SQLite3 pkgconfig
   install -m755 -d "${pkgdir}/usr/lib/pkgconfig"
-  install -m644 sqlite3.pc "${pkgdir}/usr/lib/pkgconfig/"
+  install -m644 "${srcdir}/lumosql.pc" "${pkgdir}/usr/lib/pkgconfig/"
 
   cd "../../"
 
