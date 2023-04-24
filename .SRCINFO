@@ -1,6 +1,6 @@
 pkgbase = mongodb-compass-readonly-beta
 	pkgdesc = The official GUI for MongoDB - Readonly Edition - beta version
-	pkgver = 1.36.3.beta.0
+	pkgver = 1.36.4.beta.1
 	pkgrel = 1
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = mongodb-compass-readonly-beta
 	depends = libsecret
 	depends = lsb-release
 	optdepends = org.freedesktop.secrets
-	source = mongodb-compass-readonly-beta-1.36.3.beta.0-1.tar.gz::https://github.com/mongodb-js/compass/archive/v1.36.3-beta.0.tar.gz
+	source = mongodb-compass-readonly-beta-1.36.4.beta.1-1.tar.gz::https://github.com/mongodb-js/compass/archive/v1.36.4-beta.1.tar.gz
 	source = hadron-build.diff
 	source = fix-argv.diff
-	sha512sums = 77ebbcd90b350948670d42236914642599b28b45e812d8604bb44e3d97730cc520f346941e0fd46a29ecc02be00413c5646b6f51800626aab681f826d306d729
+	sha512sums = cad3a30ac1674e6a003f7ec2ecae31ad7017317e4a13e8654664312bb288b1ac48213650fe9eceeed5df7d581bfa44b8115c41a98fc19186d8b70bc8e96682b4
 	sha512sums = 18029ff1479cbacb413f7154d5ca7589855273c559ee15bb5b5006eed65b8edcb58fac64cc8deabd20c36e06f298dc4b7152f61391975d2a3ecb6351b787fae7
 	sha512sums = 1a2345b90196d3c856d0288d9406cfd667d0ebcce400e6886c7eba2825fa52d7813d45f2c375fcaf4e28d116b68107219e6f662b5bdbb12bf0e402ca61194cf7
 
