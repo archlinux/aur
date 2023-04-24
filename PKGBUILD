@@ -1,7 +1,7 @@
 # Maintainer: Tommaso Sardelli <lacapannadelloziotom [AT] gmail [DOT] com>
 pkgname=go-jsonnet
 _basepkgname=jsonnet
-pkgver=0.19.1
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="An implementation of Jsonnet in pure Go"
 arch=("x86_64")
@@ -11,7 +11,7 @@ makedepends=("go")
 conflicts=('jsonnet' 'go-jsonnet-git')
 provides=('jsonnet')
 source=("${pkgname}_v${pkgver}.tar.gz::https://github.com/google/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('48974d179d6ef02f0de616505146df3d307db553d0ca05284825247c7de028c5dd469b8749f184adb1f7d04bc0ce1692ed75d5a50edaf8c768b72e23cf1355b1')
+sha512sums=('0ba06e254a6442764fd016c912968ab373b7fd21044175bbbc465b8fbda42f669bcbbd30d518427279d44f84b9b7678f7152192116c58c4b0bd1642f24136a3c')
 
 prepare() {
     export GOPATH="${srcdir}"
