@@ -3,7 +3,7 @@ pkgname=tgpt-bin
 pkgver=1.2.0
 pkgrel=1
 pkgdesc="ChatGPT in terminal without needing API keys"
-arch=("x86_64")
+arch=("x86_64" "aarch64" "i386")
 url="https://github.com/aandrew-me/tgpt"
 license=('GPL-3.0')
 #makedepends=('')
@@ -20,5 +20,18 @@ md5sums=('SKIP')
 
 package() {
     cd "$srcdir"
-    install -Dm755 tgpt-linux-amd64 "$pkgdir/usr/bin/tgpt"
+    if [ $CARCH == "x86_64" ]
+    then
+    	ARCHY=amd64
+    elif [ $CARCH == "aarch64" ]
+    then
+    	ARCHY=arm64
+    elif [ $CARCH == "i386" ]
+    then
+    	ARCHY=i386
+    else
+    	echo $CARCH is unsupported
+    	exit
+    fi
+    install -Dm755 tgpt-linux-${ARCHY} "$pkgdir/usr/bin/tgpt"
 }
