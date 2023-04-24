@@ -22,19 +22,19 @@ prepare () {
 	unzip tnt_scripts.zip -d ./tnt_scripts
 }
 package_tnt-bio () {
-  depends=('tnt-ncurses5-compat-libs' 'glibc')
+  depends=('ncurses5-compat-libs' 'glibc')
 	cd ${srcdir}/TNT-bin
 	chmod +x tnt
 	install -Dm 755 tnt ${pkgdir}/usr/bin/tnt
 }
 package_tnt-mpi () {
-  depends=('tnt-ncurses5-compat-libs' 'pvm' 'openmpi' 'glibc')
+  depends=('ncurses5-compat-libs' 'pvm' 'openmpi' 'glibc')
 	cd ${srcdir}/TNT-bin
 	chmod +x mpitnt
 	install -Dm 755 mpitnt ${pkgdir}/usr/bin/mpitnt
 }
 package_tnt-gui () {
-  depends=('tnt-ncurses5-compat-libs' 'gtk3' 'glibc')
+  depends=('ncurses5-compat-libs' 'gtk3' 'glibc')
   optdepends=('pvm')
 	cd ${srcdir}/TNT-bin
 	chmod +x gTNT

@@ -11,17 +11,17 @@ pkgbase = tnt-bio
 	sha256sums = SKIP
 
 pkgname = tnt-bio
-	depends = tnt-ncurses5-compat-libs
+	depends = ncurses5-compat-libs
 	depends = glibc
 
 pkgname = tnt-mpi
-	depends = tnt-ncurses5-compat-libs
+	depends = ncurses5-compat-libs
 	depends = pvm
 	depends = openmpi
 	depends = glibc
 
 pkgname = tnt-gui
-	depends = tnt-ncurses5-compat-libs
+	depends = ncurses5-compat-libs
 	depends = gtk3
 	depends = glibc
 	optdepends = pvm
