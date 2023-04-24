@@ -1,10 +1,10 @@
-# Maintainer: Ehsan Ghorbannezad <ehsan at disroot dot org>
+# Maintainer: koonix <ehsan at disroot dot org>
 _pkgname='xkblayout-subscribe'
 pkgname="${_pkgname}-git"
 pkgver=r1.bc13b72
-pkgrel=3
+pkgrel=4
 pkgdesc='Subscribe to X keyboard layout events. useful for updating statusbars.'
-url='https://github.com/ghesy/xkblayout-subscribe'
+url='https://github.com/koonix/xkblayout-subscribe'
 arch=('x86_64')
 license=('GPL')
 depends=('libpulse')
