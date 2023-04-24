@@ -1,0 +1,14 @@
+pkgbase = kidex-git
+	pkgdesc = A simple file indexing service
+	pkgver = r17.f3be639
+	pkgrel = 1
+	url = github.com/Kirottu/kidex
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	depends = grim
+	source = kidex::git+https://github.com/Kirottu/kidex.git
+	sha256sums = SKIP
+
+pkgname = kidex-git
