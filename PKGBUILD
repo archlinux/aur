@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/1595901624/gpt-aggregated-edition"
 license=('GPL3')
 options=(!strip)
-provides=("${pkgname%-bin}")
+provides=()
 conflits=("${pkgname%-bin}" "${pkgname%-bin}-appimage")
 depends=('hicolor-icon-theme' 'glibc' 'openssl-1.1' 'gdk-pixbuf2' 'webkit2gtk' 'cairo' \
     'gcc-libs' 'dbus' 'glib2' 'pango' 'gtk3')
