@@ -1,0 +1,19 @@
+pkgbase = msmtp-git
+	pkgdesc = A mini smtp client
+	pkgver = 1.8.23.r3.gaf851aa
+	pkgrel = 1
+	url = https://marlam.de/msmtp/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = texlive-plainextra
+	makedepends = libsecret
+	makedepends = gsasl
+	depends = libsecret
+	depends = gsasl
+	provides = msmtp=1.8.23.r3.gaf851aa
+	conflicts = msmtp
+	source = msmtp::git+https://git.marlam.de/git/msmtp.git#branch=master
+	sha256sums = SKIP
+
+pkgname = msmtp-git
