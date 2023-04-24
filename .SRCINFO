@@ -1,0 +1,16 @@
+pkgbase = pinstall
+	pkgdesc = Installer Tool for Python Programs
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/bulletmark/pinstall
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.6
+	source = pinstall-1.0.tar.gz::https://github.com/bulletmark/pinstall/archive/1.0.tar.gz
+	sha1sums = 9a23a848b9e3f658bfa8d5758e45136341b4d353
+
+pkgname = pinstall
