@@ -1,7 +1,7 @@
 pkgbase = emacs-ng
 	pkgdesc = A new approach to Emacs - Including TypeScript, Threading, Async I/O, and WebRender
 	pkgver = 30.0.50
-	pkgrel = 10
+	pkgrel = 11
 	url = https://emacs-ng.github.io/emacs-ng
 	arch = x86_64
 	license = GPL3
@@ -35,7 +35,7 @@ pkgbase = emacs-ng
 	depends = libwebp
 	provides = emacs
 	conflicts = emacs
-	source = emacs-ng-b944567.tar.gz::https://github.com/emacs-ng/emacs-ng/archive/refs/tags/v0.0.b944567.tar.gz
-	sha256sums = ca61fcbe12ef759bca8a315de3e7980e5988555fd49ee1da8ae668dd27543bf2
+	source = emacs-ng-0e134f2.tar.gz::https://github.com/emacs-ng/emacs-ng/archive/refs/tags/v0.0.0e134f2.tar.gz
+	sha256sums = 7b02d9a71ad2dd0288c7ef0deda62c5a68697c92486ba2ea3c8d8e4e1e78c006
 
 pkgname = emacs-ng

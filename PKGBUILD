@@ -3,8 +3,8 @@
 
 pkgname=emacs-ng
 pkgver=30.0.50
-_fix_commit=b944567
-pkgrel=10
+_fix_commit=0e134f2
+pkgrel=11
 pkgdesc="A new approach to Emacs - Including TypeScript, Threading, Async I/O, and WebRender"
 arch=('x86_64')
 url="https://emacs-ng.github.io/emacs-ng"
@@ -17,10 +17,8 @@ depends=('jansson' 'ncurses' 'libgccjit' 'librsvg' 'libxcb' 'libxml2' 'gpm'
 	 'gtk3' 'libsm' 'xcb-util' 'libxcb' 'libwebp')
 makedepends=('cargo' 'rustup' 'git' 'python' 'texlive-core')
 source=("$pkgname-$pkgver_${_fix_commit}.tar.gz::https://github.com/emacs-ng/emacs-ng/archive/refs/tags/v0.0.${_fix_commit}.tar.gz")
-sha256sums=('ca61fcbe12ef759bca8a315de3e7980e5988555fd49ee1da8ae668dd27543bf2')
+sha256sums=('7b02d9a71ad2dd0288c7ef0deda62c5a68697c92486ba2ea3c8d8e4e1e78c006')
 
-#source=(git+https://github.com/emacs-ng/emacs-ng)
- 
 prepare() {
   cd ${pkgname}-0.0.${_fix_commit}
   rustup install "$(cat rust-toolchain)"
@@ -50,6 +48,8 @@ build() {
 	      --without-pop \
 	      --with-mailutils \
 	      --with-gsettings \
+	      --with-webrender \
+	      --with-pgtk \
 	      --disable-build-details 
         
   make V=1 PATH="$HOME/.rustup/toolchains/${RUSTUP_TOOLCHAIN}-$(uname -m)-unknown-linux-gnu/bin:$PATH" bootstrap
