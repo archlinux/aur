@@ -1,0 +1,17 @@
+pkgbase = c-exceptions
+	pkgdesc = This module provides a simple macro interface that allows for easy exception handling in C, similar to Python's approach.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/alecksandr26/c-exceptions
+	arch = x86_64
+	license = MIT License
+	makedepends = gcc
+	makedepends = git
+	makedepends = make
+	makedepends = binutils
+	makedepends = coreutils
+	optdepends = valgrind
+	source = git+https://github.com/alecksandr26/c-exceptions
+	md5sums = SKIP
+
+pkgname = c-exceptions
