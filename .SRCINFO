@@ -5,6 +5,7 @@ pkgbase = pokefinder
 	url = https://github.com/Admiral-Fish/PokeFinder
 	arch = x86_64
 	license = GPL3
+	makedepends = patchelf
 	depends = qt6-base
 	source = pokefinder-4.0.1.tar.gz::https://github.com/Admiral-Fish/PokeFinder/releases/download/v4.0.1/PokeFinder-linux.tar.gz
 	sha256sums = f938e2b69f6d6eeecd2448f2f29cdaab0cd208de452dcd7d2c59698b63e4d769
