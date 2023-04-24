@@ -1,8 +1,8 @@
 pkgbase = lfutils-meta
 	pkgdesc = Meta package to install some packages required by lfutils.
 	pkgver = 4
-	pkgrel = 3
-	url = https://github.com/ghesy/lfutils
+	pkgrel = 4
+	url = https://github.com/koonix/lfutils
 	arch = any
 	license = GPL
 	depends = archivemount
