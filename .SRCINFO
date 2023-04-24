@@ -1,0 +1,14 @@
+pkgbase = pacman-venv
+	pkgdesc = A tool to create virtual environments for Pacman
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/jdholtz/pacman-venv
+	arch = x86_64
+	license = MIT
+	depends = bash
+	depends = pacman
+	depends = sudo
+	source = pacman-venv-0.1.tar.gz::https://github.com/jdholtz/pacman-venv/archive/v0.1.tar.gz
+	sha512sums = 0a774a82a0bd6dbb29000533cb325e8c6479b2454f750d691d4e34fcf4cf91b8a196f7eaaccd604c0802cba487eb24645e6c4f899b6d1fe599813cf73d7fe11d
+
+pkgname = pacman-venv
