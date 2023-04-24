@@ -1,10 +1,10 @@
-# Maintainer: Ehsan Ghorbannezad <ehsan at disroot dot org>
+# Maintainer: koonix <ehsan at disroot dot org>
 _pkgname='vimdict'
 pkgname="${_pkgname}-git"
 pkgver=r4.a6e22c1
-pkgrel=3
+pkgrel=4
 pkgdesc='Look up word definitions in vim, using dict. '
-url='https://github.com/ghesy/vimdict'
+url='https://github.com/koonix/vimdict'
 arch=('x86_64')
 license=('GPL')
 makedepends=('git')
