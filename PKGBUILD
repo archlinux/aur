@@ -3,7 +3,7 @@
 _pkgname=QuPath
 pkgname=qupath
 pkgver=0.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Bioimage analysis & digital pathology'
 arch=('x86_64')
 url='https://github.com/qupath/qupath'
@@ -21,6 +21,7 @@ depends=(
 )
 makedepends=(
   'gendesk'
+  'gradle'
   'java-environment=17'
 )
 optdepends=(
@@ -41,7 +42,9 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}"
-  ./gradlew clean jpackage
+  # you could also build it with gradle wrapper
+  # ./gradlew clean jpackage
+  gradle clean jpackage -Porg.gradle.java.home=/usr/lib/jvm/default
 }
 
 package() {

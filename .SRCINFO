@@ -1,11 +1,12 @@
 pkgbase = qupath
 	pkgdesc = Bioimage analysis & digital pathology
 	pkgver = 0.4.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/qupath/qupath
 	arch = x86_64
 	license = GPL
 	makedepends = gendesk
+	makedepends = gradle
 	makedepends = java-environment=17
 	depends = freetype2
 	depends = gcc-libs
