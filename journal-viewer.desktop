@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Journal Viewer
-Comment=Visualize systemd logs
-Exec=journal-viewer
-Terminal=false
-Icon=logviewer
-StartupNotify=false
-Type=Application
-Categories=System;
