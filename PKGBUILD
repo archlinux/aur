@@ -2,7 +2,7 @@
 
 pkgname=not-forking
 pkgver=0.5
-pkgrel=3
+pkgrel=4
 pkgdesc='Tool for merging multiple upstreams without forking.'
 arch=('any')
 url="https://lumosql.org/src/not-forking"
@@ -11,11 +11,11 @@ depends=('perl')
 makedepends=('fossil')
 checkdepends=('perl-text-glob')
 options=('!emptydirs' 'purge')
-source=("${pkgname}::fossil+${url}#tag=version-${pkgver}")
-sha256sums=(SKIP)
+source=("${url}/tarball/version-${pkgver}/${pkgname}-src-${pkgver}.tar.gz")
+sha256sums=('1c929fadd39d9bc80d2770d1dbe6bcba30917cb178e900f3b6ca7f4d70fa0935')
 
 build() {
-  cd "$pkgname"
+  cd "${pkgname}-src-${pkgver}"
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
   /usr/bin/perl Makefile.PL
@@ -23,14 +23,14 @@ build() {
 }
 
 check() {
-  cd "$pkgname"
+  cd "${pkgname}-src-${pkgver}"
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1
   make test
 }
 
 package() {
-  cd "$pkgname"
+  cd "${pkgname}-src-${pkgver}"
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 

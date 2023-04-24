@@ -1,4 +1,4 @@
-not-forking
+not-forking-src-*.tar.gz
 src/
 pkg/
 *.pkg.*

@@ -1,7 +1,7 @@
 pkgbase = not-forking
 	pkgdesc = Tool for merging multiple upstreams without forking.
 	pkgver = 0.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://lumosql.org/src/not-forking
 	arch = any
 	license = custom: MIT
@@ -11,7 +11,7 @@ pkgbase = not-forking
 	depends = perl
 	options = !emptydirs
 	options = purge
-	source = not-forking::fossil+https://lumosql.org/src/not-forking#tag=version-0.5
-	sha256sums = SKIP
+	source = https://lumosql.org/src/not-forking/tarball/version-0.5/not-forking-src-0.5.tar.gz
+	sha256sums = 1c929fadd39d9bc80d2770d1dbe6bcba30917cb178e900f3b6ca7f4d70fa0935
 
 pkgname = not-forking
