@@ -1,11 +1,11 @@
 pkgbase = cinecred
 	pkgdesc = Create beautiful film credits without the pain
-	pkgver = 1.3.1
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://cinecred.com
 	arch = x86_64
 	license = GPL3
-	source = https://repo.loadingbyte.com/repository/maven-public/com/loadingbyte/cinecred/1.3.1/cinecred-1.3.1-linux-x86_64.tar.gz
-	sha256sums = 69c2c2e35053789c4800d238694fdbf95aa1c8fdf0eb0eadd87841e1c717de20
+	source = https://repo.loadingbyte.com/repository/maven-public/com/loadingbyte/cinecred/1.4.0/cinecred-1.4.0-linux-x86_64.tar.gz
+	sha256sums = 132de0ed51b83d96dd4486f2c100f777bb6c16d2af35e14afe9f50333f8dd95c
 
 pkgname = cinecred
