@@ -1,0 +1,13 @@
+pkgbase = maxfetch
+	pkgdesc = A nice fetching program written in sh
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jobcmax/maxfetch
+	arch = any
+	license = GPL
+	depends = bash
+	provides = maxfetch
+	source = maxfetch::https://raw.githubusercontent.com/jobcmax/maxfetch/main/maxfetch
+	sha256sums = SKIP
+
+pkgname = maxfetch
