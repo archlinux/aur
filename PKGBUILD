@@ -1,8 +1,8 @@
 # Maintainer: Felix Kauselmann <licorn at gmail dot com>
 pkgname=(yacreader yacreaderlibraryserver)
 pkgbase=yacreader
-pkgver=9.11.0
-_pkgext=2301073
+pkgver=9.12.0
+_pkgext=2304234
 pkgrel=1
 pkgdesc="Comic reader for cross-platform reading and managing your digital comic collection."
 arch=('i686' 'x86_64')
@@ -12,12 +12,11 @@ depends=('qt5-base' 'qt5-multimedia' 'qt5-quickcontrols2' 'qt5-graphicaleffects'
 makedepends=('qt5-tools')
 optdepends=(
     'qt5-imageformats: Support for extra image formats'
-    'qrencode: YACReaderLibrary server info qr codes'
 )
 conflicts=('yacreader-bin' 'yacreaderlibraryserver-standalone' 'yacreader-git')
 install='yacreader.install'
 source=( "https://github.com/YACReader/yacreader/releases/download/${pkgver}/yacreader-${pkgver}.${_pkgext}-src.tar.xz")
-sha256sums=('49f0481e1337fe34088d347e438b8778dfcd62dc585177c11506006d3d64c0f8')
+sha256sums=('2f0a2c23242869da17cdcb45d4244c0e55a292ee21d805c03d3a15e59aef5c14')
 
 build() {
   cd $srcdir/$pkgbase-$pkgver.${_pkgext}/
