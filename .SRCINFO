@@ -1,15 +1,21 @@
 pkgbase = cfunge
 	pkgdesc = Fast, small and standard conforming Befunge98 interpreter
-	pkgver = 0.9.0
-	pkgrel = 3
-	url = https://github.com/VorpalBlade/cfunge/
+	pkgver = 1,001
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/VorpalBlade/cfunge
 	arch = x86_64
 	arch = i686
-	license = GPL
+	arch = arm7h
+	arch = aarch64
+	license = GPL3
 	makedepends = cmake
 	makedepends = ninja
-	source = cfunge-0.9.0.tar.gz::https://github.com/VorpalBlade/cfunge/archive/0.9.0.tar.gz
-	sha256sums = bc670123064ea8b75acc1fbba1559cfe3f28d62bd56e5455c9e0fe660474d53a
+	makedepends = git
+	depends = libbsd
+	source = cfunge-1,001.tar.gz::https://github.com/VorpalBlade/cfunge/archive/1,001.tar.gz
+	source = mycology::git+https://github.com/Deewiant/Mycology#commit=3787e42c3d4f0b735a09129a205e3e4df848558c
+	sha256sums = 631f61abaeaf03a15a33c01cd98e8c4887087c16360084d45bf65feb60996f89
+	sha256sums = SKIP
 
 pkgname = cfunge
-

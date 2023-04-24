@@ -1,5 +1,5 @@
+/*.tar.gz
+/*.tar.zst
+/mycology/
 /pkg/
 /src/
-/cfunge-*.tar.gz
-/cfunge-*.tar.xz
-/cfunge-*.tar.xz.sig
