@@ -1,10 +1,10 @@
-# Maintainer: Ehsan Ghorbannezad <ehsan at disroot dot org>
+# Maintainer: koonix <ehsan at disroot dot org>
 _pkgname='xkblayout-remember'
 pkgname="${_pkgname}-git"
 pkgver=r23.bf028b1
-pkgrel=4
+pkgrel=5
 pkgdesc='Program to remember the keyboard layout for X11 windows.'
-url='https://github.com/ghesy/xkblayout-remember'
+url='https://github.com/koonix/xkblayout-remember'
 arch=('x86_64')
 license=('GPL')
 depends=('libx11' 'glib2')
