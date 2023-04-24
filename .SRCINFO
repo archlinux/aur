@@ -11,7 +11,7 @@ pkgbase = mpf-check-bin
 	source = https://raw.githubusercontent.com/SabreTools/MPF/master/README.md
 	source = https://raw.githubusercontent.com/SabreTools/MPF/master/LICENSE
 	sha256sums = ab0859c56e218bcf98093f04f0b59cd061033fb715df7c7839a89d86e649ea14
-	sha256sums = cc456b56897ed19adc7e5bd7620e3da7f481ef5b20a12389cebf23eb6994d8e6
-	sha256sums = 98a5caf5628bb719446445c3f76ffffb5b8085031e057a4f685fdd155fb1f305
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = mpf-check-bin
