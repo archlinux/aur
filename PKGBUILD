@@ -2,7 +2,7 @@
 
 pkgname=nali-go-bin
 _pkgname=nali
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc='An offline tool for querying IP geographic information and CDN provider. (Pre-compiled)'
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -18,12 +18,12 @@ source_armv6h=("https://github.com/zu1k/nali/releases/download/v${pkgver}/$_pkgn
 source_armv7h=("https://github.com/zu1k/nali/releases/download/v${pkgver}/$_pkgname-linux-armv7-v$pkgver.gz")
 source_arm=("https://github.com/zu1k/nali/releases/download/v${pkgver}/$_pkgname-linux-armv5-v$pkgver.gz")
 
-sha256sums_i686=('c2f1e0f9cae1bce3dbe704600166fd6061f856b7d114b060546cf907577e366e')
-sha256sums_x86_64=('e3266de5bee00b56d56bb9b3b9f74bc1a841ff0ad1482915e8bc78cf1e2276c2')
-sha256sums_arm=('c7f29ea05507800872ae251496c3ec158ce4e9d4934bad71822a19aeb350d7cf')
-sha256sums_armv7h=('e04ee3e5308a9b5cbe39c005211f2f850953a462678d981d10c8c97dfc977dcf')
-sha256sums_armv6h=('11c2ce92537a3b0211d89b5f708bd26ef823af40c83c3efa6b18f3f2bb304709')
-sha256sums_aarch64=('c141f61be1a612c0237b8c2f6624a0600479b54d1cc17e9e264567c48e6842af')
+sha256sums_i686=('f01f0e17bd75929b0cb49b8faf90323d69e5475effec4ac8e92c7c12c3b4669e')
+sha256sums_x86_64=('8cfcdf507c4f5ce2672e9a3ac31e5c19a0ba3d3ea064c41cf5b81a9972bb72af')
+sha256sums_arm=('bd2cfc930fa5e6758d5d0b6bbe88140a724c855f0f9b57fa90a65e589a49e8a1')
+sha256sums_armv7h=('7bd33c9abc351c6335343cb4c7d9350cdc25a583d83b103287017be6bf7f3d77')
+sha256sums_armv6h=('8f9b51c224e8a209b89befae3aad0baa07d92c15a5c395c96e43adb3a113282d')
+sha256sums_aarch64=('25390225cd7fb8ed4dfe02ff637dc5f3abfa2fe7997af9300de939be3a90bc63')
 
 
 package() {
