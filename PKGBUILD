@@ -1,9 +1,9 @@
 # Maintainer: Paul <pb.orzel@proton.me>
 pkgname=amdgpu_top
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Tool that shows AMD GPU utilization"
-arch=("any")
+arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/Umio-Yasuno/amdgpu_top"
 license=("MIT")
 depends=(
@@ -12,11 +12,17 @@ depends=(
 )
 makedepends=("cargo")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Umio-Yasuno/amdgpu_top/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('bfe896b9abc4964ac9596883b14b1e895ee148a177511bf0f6900b3497005028')
+sha256sums=('06504084e9d9cacdf3306867b7f7fe90955b535fc2debe2e06ccd1cde79653ff')
+
+prepare() {
+    cd "$srcdir/$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	cargo build --release
+	cargo build --locked --release
 }
 
 package() {
