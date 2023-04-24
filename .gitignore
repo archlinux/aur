@@ -3,5 +3,7 @@ archuseriso
 archuseriso-*.tar.gz*
 *.pkg.tar.xz
 *.pkg.tar.zst
+*.pkg.tar.zst.asc
+*.pkg.tar.zst.sha512.asc
 src/*
 pkg/*
