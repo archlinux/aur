@@ -1,0 +1,17 @@
+pkgbase = dnstop-git
+	pkgdesc = displays various tables of DNS traffic on your network
+	pkgver = 20140915.2ec80df
+	pkgrel = 1
+	url = https://github.com/measurement-factory/dnstop
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = libpcap
+	provides = dnstop
+	conflicts = dnstop
+	source = git+https://github.com/measurement-factory/dnstop
+	source = https://raw.githubusercontent.com/measurement-factory/dnstop/master/LICENSE
+	sha256sums = SKIP
+	sha256sums = b4a15b9a1e44ce1ef569572820c9dc7ddda344d809a0d8376fc7955f54a1b896
+
+pkgname = dnstop-git
