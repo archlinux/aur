@@ -4,7 +4,7 @@
 pkgbase=xorg-server-bug865
 pkgname=xorg-server-bug865
 
-pkgver=21.1.7
+pkgver=21.1.8
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -25,7 +25,7 @@ source=(https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-${p
 validpgpkeys=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF'  # Peter Hutterer (Who-T) <office@who-t.net>
               '67DC86F2623FC5FD4BB5225D14706DBE1E4B4540'  # Olivier Fourdan <fourdan@xfce.org>
               'FD0004A26EADFE43A4C3F249C6F7AE200374452D') # Povilas Kanapickas <povilas@radix.lt>
-sha512sums=('e2a093381e28da9b2aa700c6609349fa851f4ca8df23c776f30e4e2733e7a6c1b257576b93f4c4e87fb09df901385bf52528982f6e7a6ad469597aeae8640bb5'
+sha512sums=('6104b3620ed2e1e27d9a8e963388bbe8785a764585b1bc03dbf5d719a92894773dda580d377ca18ceeab353e65a5d23cc947bab84a4012f9dd1eca31cac36937'
             'SKIP'
             '87c79b4a928e74463f96f58d277558783eac9b8ea6ba00d6bbbb67ad84c4d65b3792d960ea2a70089ae18162e82ae572a49ad36df169c974cc99dbaa51f63eb2'
             'de5e2cb3c6825e6cf1f07ca0d52423e17f34d70ec7935e9dd24be5fb9883bf1e03b50ff584931bd3b41095c510ab2aa44d2573fd5feaebdcb59363b65607ff22'
