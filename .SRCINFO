@@ -1,7 +1,7 @@
 pkgbase = python-glumpy
 	pkgdesc = python library for scientific visualization, interfacing numpy and OpenGL
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/glumpy/glumpy
 	arch = any
 	license = BSD
@@ -9,7 +9,7 @@ pkgbase = python-glumpy
 	depends = python-numpy
 	depends = python-triangle
 	depends = python-opengl
-	source = https://files.pythonhosted.org/packages/source/g/glumpy/glumpy-1.2.0.tar.gz
-	sha256sums = 83df6f1a465d5d32332b87cbda89a2664b136e15f252e09e66220a2e43801460
+	source = https://github.com/glumpy/glumpy/archive/refs/heads/master.zip
+	sha256sums = SKIP
 
 pkgname = python-glumpy
