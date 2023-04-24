@@ -5,7 +5,7 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=aide
-pkgver=0.17.4
+pkgver=0.18.2
 pkgrel=3
 pkgdesc='A file integrity checker and intrusion detection program.'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('acl' 'e2fsprogs' 'libelf' 'mhash' 'pcre')
 backup=('etc/aide.conf')
 source=("https://github.com/aide/aide/releases/download/v${pkgver}/aide-${pkgver}.tar.gz"{,.asc} \
         "aide.conf")
-sha256sums=('c81505246f3ffc2e76036d43a77212ae82895b5881d9b9e25c1361b1a9b7a846' # aide-${pkgver}.tar.gz sha256sum
+sha256sums=('758ff586c703930129e0a1e8c292ff5127e116fc10d0ffdbea8bf2c1087ca7e4' # aide-${pkgver}.tar.gz sha256sum
              'SKIP'
              'dd8f40a6e0a298dd0f457e6d814bc29c3fd5e5061cc9007386e2c2c3c7887f1a' # aide.conf chksum
              )
@@ -50,3 +50,4 @@ package() {
 	install -D -m644 $srcdir/aidecheck.timer $pkgdir/usr/lib/systemd/system/aidecheck.timer
 	    mkdir -p $pkgdir/var/{log,lib}/aide/
 }
+

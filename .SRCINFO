@@ -1,7 +1,7 @@
 pkgbase = aide
 	pkgdesc = A file integrity checker and intrusion detection program.
-	pkgver = 0.17.4
-	pkgrel = 2
+	pkgver = 0.18.2
+	pkgrel = 3
 	url = https://aide.github.io/
 	arch = x86_64
 	license = GPL
@@ -11,14 +11,12 @@ pkgbase = aide
 	depends = mhash
 	depends = pcre
 	backup = etc/aide.conf
-	source = https://github.com/aide/aide/releases/download/v0.17.4/aide-0.17.4.tar.gz
-	source = https://github.com/aide/aide/releases/download/v0.17.4/aide-0.17.4.tar.gz.asc
+	source = https://github.com/aide/aide/releases/download/v0.18.2/aide-0.18.2.tar.gz
+	source = https://github.com/aide/aide/releases/download/v0.18.2/aide-0.18.2.tar.gz.asc
 	source = aide.conf
 	validpgpkeys = 2BBBD30FAAB29B3253BCFBA6F6947DAB68E7B931
-	sha256sums = c81505246f3ffc2e76036d43a77212ae82895b5881d9b9e25c1361b1a9b7a846
+	sha256sums = 758ff586c703930129e0a1e8c292ff5127e116fc10d0ffdbea8bf2c1087ca7e4
 	sha256sums = SKIP
 	sha256sums = dd8f40a6e0a298dd0f457e6d814bc29c3fd5e5061cc9007386e2c2c3c7887f1a
-	sha256sums = fc7bd68dccc0e8694bb5a001fb6a80514f1380e41b95742e19d19b3172b22878
-	sha256sums = 818a70166118652c217cbc64d24eee4d8adc8f40dd41edaca543f67e2117b242
 
 pkgname = aide
