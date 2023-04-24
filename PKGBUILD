@@ -3,8 +3,8 @@
 _java=17
 
 pkgname=mandrel-bin
-pkgdesc="Mandrel is a downstream distribution of the GraalVM community edition. Mandrel's main goal is to provide a native-image release specifically to support Quarkus."
-pkgver=22.3.1.0
+pkgdesc='Downstream distribution of the GraalVM CE for the Quarkus web framework'
+pkgver=22.3.2.0
 pkgrel=1
 arch=(x86_64 aarch64)
 url=https://github.com/graalvm/mandrel
@@ -19,8 +19,8 @@ _urlbase="https://github.com/graalvm/mandrel/releases/download/mandrel-$_fullver
 source_x86_64=("$_urlbase-amd64-$_fullver.tar.gz")
 source_aarch64=("$_urlbase-aarch64-$_fullver.tar.gz")
 
-sha256sums_x86_64=('3c31169724c1fa23dc5cf5688d9d7f90d0d7bef9e90c9aea2419db9eb946b62c')
-sha256sums_aarch64=('e1146e100bf97c4adb67814fc7f6b52928eee02b61d5e54a789e1a590ac50fb0')
+sha256sums_x86_64=('39b3ffc79e5ae4adfecdbb1c13cb25b2a305fc6206b4ba3222b0f00a0389fc9f')
+sha256sums_aarch64=('e0d166a8fa9c18a916228a846252fe3510fbc64655ebe080bbda88f3a6e9c19d')
 
 package() {
   local _dest="$pkgdir/usr/lib/jvm/java-${_java}-mandrel/"
