@@ -1,10 +1,10 @@
 pkgbase = mini-music-bin
 	pkgdesc = A simple and beautiful music player.一个简单、美观的音乐播放器
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitee.com/cgper/miniMusic
 	arch = x86_64
-	license = custom
+	license = MulanPSL2
 	depends = gtk3
 	depends = glibc
 	depends = gcc-libs
