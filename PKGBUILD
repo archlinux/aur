@@ -2,7 +2,7 @@
 
 pkgname="guppy"
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to manage your installations from Git Repositories for you"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://gitlab.com/Teddy-Kun/guppy"
@@ -37,8 +37,6 @@ build() {
 package() {
 	cd "$srcdir/$pkgname-v$pkgver"
 	mkdir -p "$pkgdir/usr/share/guppy"
-	mkdir -p "$pkgdir/usr/share/licenses/guppy"
 	install -Dm755 target/release/guppy -t "$pkgdir/usr/bin/"
 	install -Dm755 resources/default_make.guppy -t "$pkgdir/usr/share/guppy/"
-	install -Dm644 License.txt -t "$pkgdir/usr/share/licenses/guppy/"
 }

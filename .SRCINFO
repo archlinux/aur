@@ -1,7 +1,7 @@
 pkgbase = guppy
 	pkgdesc = Tool to manage your installations from Git Repositories for you
 	pkgver = 0.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/Teddy-Kun/guppy
 	arch = i686
 	arch = pentium4
