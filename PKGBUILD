@@ -2,7 +2,7 @@
 
 pkgname=revanced-builder
 pkgver=3.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A NodeJS ReVanced builder"
 arch=("x86_64")
 url="https://github.com/reisxd/revanced-builder"
@@ -37,7 +37,7 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/usr/share/applications"
   mkdir -p "$pkgdir/usr/share/icons/hicolor/64x64/apps"
-  cp -r "$srcdir/$pkgname-$pkgver" "$pkgdir/opt$pkgname"
+  cp -r "$srcdir/$pkgname-$pkgver" "$pkgdir/opt/$pkgname"
   install -Dm755 "$srcdir/revanced-builder.sh" "$pkgdir/usr/bin/revanced-builder"
   install -Dm644 "$srcdir/revanced-builder.desktop" "$pkgdir/usr/share/applications"
   install -Dm644 "$srcdir/revanced.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps"
