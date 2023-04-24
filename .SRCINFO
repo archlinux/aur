@@ -1,6 +1,6 @@
 pkgbase = nodejs-git-split-diffs
 	pkgdesc = GitHub style split diffs with syntax highlighting in your terminal.
-	pkgver = 0.14.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/banga/git-split-diffs
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = nodejs-git-split-diffs
 	makedepends = npm
 	depends = nodejs
 	provides = git-split-diffs
-	noextract = nodejs-git-split-diffs-0.14.0.tgz
-	source = https://registry.npmjs.org/git-split-diffs/-/git-split-diffs-0.14.0.tgz
-	sha256sums = 1d22cae51a2ca02d02dab141a7ebef84a99db46396430370625591f17815d6e9
+	noextract = nodejs-git-split-diffs-0.15.0.tgz
+	source = https://registry.npmjs.org/git-split-diffs/-/git-split-diffs-0.15.0.tgz
+	sha256sums = 25ea11f03d65541ee5c3f315bdd9ce7c6076aead0c695e7d98ff1be19ae45288
 
 pkgname = nodejs-git-split-diffs
