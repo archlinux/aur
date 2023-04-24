@@ -1,0 +1,15 @@
+pkgbase = wewechat++-appimage
+	pkgdesc = Make weweChat great again!!! 美丽的第三方微信PC客户端
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://gitee.com/spark-community-works-collections/wewechat-plus-plus
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = glibc
+	options = !strip
+	source = wewechat++-1.2.5.AppImage::https://gitee.com/spark-community-works-collections/wewechat-plus-plus/releases/download/1.2.5/wewechat-1.2.5-linux-x86_64.AppImage
+	sha256sums = 629b8c300a542f95553222e5171ec0f1641013d2483839834572f59307978f12
+
+pkgname = wewechat++-appimage
