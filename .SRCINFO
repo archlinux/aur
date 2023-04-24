@@ -1,0 +1,22 @@
+pkgbase = cfunge-git
+	pkgdesc = A fast Befunge interpreter in C
+	pkgver = 1,0.r0.80188c4
+	pkgrel = 1
+	url = https://github.com/VorpalBlade/cfunge
+	arch = x86_64
+	arch = i686
+	arch = arm7h
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = libbsd
+	provides = cfunge
+	conflicts = cfunge
+	source = cfunge::git+https://github.com/VorpalBlade/cfunge
+	source = mycology::git+https://github.com/Deewiant/Mycology
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = cfunge-git
