@@ -2,19 +2,19 @@
 
 _pkgname=tunefish4
 pkgname="${_pkgname}-git"
-pkgver=4.3.0.r106.07774d9
-pkgrel=2
+pkgver=4.3.0.r107.7e48ce8
+pkgrel=1
 pkgdesc='An additive wavetable-based synthesizer VST plugin (git version)'
 arch=(x86_64)
-url="http://www.tunefish-synth.com/"
+url="https://www.tunefish-synth.com/"
 # See https://github.com/paynebc/tunefish/blob/master/COPYING
 license=(GPL3)
 groups=(vst-plugins)
 depends=(webkit2gtk)
-makedepends=(git steinberg-vst36)
+makedepends=(git vst2sdk)
 provides=($_pkgname)
 conflicts=($_pkgname "${_pkgname}-vst-bin")
-source=("$_pkgname::git+http://github.com/paynebc/tunefish.git"
+source=("$_pkgname::git+https://github.com/paynebc/tunefish.git"
         'juce-pixel.patch')
 sha256sums=('SKIP'
             'c0b274515dadd14b530c35517d6fb3749b861344cec90c12eef965c9bca3e479')
