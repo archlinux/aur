@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-obs
 	pkgdesc = Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD
 	pkgver = 6.0.r12.ga6dc929
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ffmpeg.org/
 	arch = i686
 	arch = x86_64
@@ -48,7 +48,7 @@ pkgbase = ffmpeg-obs
 	depends = libtheora
 	depends = libva
 	depends = libvdpau
-	depends = vid.stab
+	depends = vid.stab=>1.1.1
 	depends = libvorbis
 	depends = libvpx>=1.13
 	depends = libwebp
