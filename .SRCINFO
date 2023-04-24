@@ -1,7 +1,7 @@
 pkgbase = youdao-dict-bin
 	pkgdesc = YouDao Dictionary
 	pkgver = 6.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cidian.youdao.com/
 	arch = x86_64
 	license = GPL3
