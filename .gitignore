@@ -1,0 +1,5 @@
+lumosql
+src/
+pkg/
+*.pkg.*
+*.tar.*

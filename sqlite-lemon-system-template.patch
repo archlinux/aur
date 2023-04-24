@@ -1,0 +1,13 @@
+diff --git a/tool/lemon.c b/tool/lemon.c
+index 54c8946..ac14a06 100644
+--- a/tool/lemon.c
++++ b/tool/lemon.c
+@@ -3668,6 +3668,8 @@ PRIVATE FILE *tplt_open(struct lemon *lemp)
+     tpltname = buf;
+   }else if( access(templatename,004)==0 ){
+     tpltname = templatename;
++  }else if( access("/usr/share/lemon/lempar.c", R_OK)==0){
++    tpltname = "/usr/share/lemon/lempar.c";
+   }else{
+     toFree = tpltname = pathsearch(lemp->argv0,templatename,0);
+   }

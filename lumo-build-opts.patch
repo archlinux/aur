@@ -1,0 +1,16 @@
+diff --color --unified --recursive --text package.orig/not-fork.d/sqlite3/files/lumo.build package.new/not-fork.d/sqlite3/files/lumo.build
+--- package.orig/not-fork.d/sqlite3/files/lumo.build	2023-04-24 05:02:43.397553728 +0200
++++ package.new/not-fork.d/sqlite3/files/lumo.build	2023-04-24 05:03:36.147279533 +0200
+@@ -14,10 +14,10 @@
+ if {$build_options(DEBUG) eq "on"} {
+     system ./configure --enable-debug
+ } else {
+-    system ./configure
++    system ./configure --prefix=/usr --disable-static --enable-fts3 --enable-fts4 --enable-fts5 --enable-rtree
+ }
+ 
+-system $make_command
++system $make_command all sqlite3.pc
+ 
+ # now move files of interest to lumo/build
+ global lumo_dir
