@@ -1,0 +1,15 @@
+pkgbase = aws-lambda-powertools-python
+	pkgdesc = A developer toolkit to implement Serverless best practices and increase developer velocity
+	pkgver = 2.14.1
+	pkgrel = 1
+	url = https://github.com/awslabs/aws-lambda-powertools-python
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
+	depends = python
+	source = https://github.com/awslabs/aws-lambda-powertools-python/archive/refs/tags/v2.14.1.tar.gz
+	sha256sums = 24c65bc0c9fe046ccf22b96ad0fb6225bc656f0081545c5960bea250289069f1
+
+pkgname = aws-lambda-powertools-python
