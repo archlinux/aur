@@ -61,6 +61,7 @@ pkgbase = highscore-git
 	provides = gnome-games
 	conflicts = highscore
 	conflicts = gnome-games
+	replaces = gnome-games-git
 	source = git+https://gitlab.gnome.org/World/highscore.git
 	sha256sums = SKIP
 
