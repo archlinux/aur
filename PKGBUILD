@@ -14,15 +14,11 @@ depends=(
   python-certifi
   python-cryptography
   python-dnspython
-  python-jsonrpclib-pelix
   python-protobuf
-  python-pyaes
-  python-pycryptodomex
   python-pyqt5
   python-qdarkstyle
   python-qrcode
   python-scrypt
-  python-websocket-client
   zbar
 )
 makedepends=(python-setuptools)
