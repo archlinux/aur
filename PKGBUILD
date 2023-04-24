@@ -2,7 +2,7 @@
 # Contributor: Sebastian Baberowski <sebastian@baberowski.com>
 
 pkgname=libqhy
-pkgver=1.9.8
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="libqhy used by INDI QHY drivers. Please note that for sake of simplicity package version follows libindi versionning."
 url="http://www.indilib.org/index.php?title=Main_Page"
@@ -11,7 +11,7 @@ arch=(i686 x86_64)
 conflicts=(libqhy-git)
 makedepends=(cmake)
 source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz")
-sha256sums=("a222a22ca4edae1816255e3851cfdb91efff557378021a44ca05d672410fc81e")
+sha256sums=("be98a84ab6166321fe5aa74fca132cd866ae4e6910ef3b97e3502a44c59d277d")
 
 prepare() {
   mkdir -p build
