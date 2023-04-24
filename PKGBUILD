@@ -1,6 +1,6 @@
 # Maintainer: Robin H. <robin@blckct.io>
 pkgname=alfaview
-pkgver=8.67.1
+pkgver=8.68.1
 pkgrel=3
 pkgdesc='High quality audio video conferencing for professional online meetings and live classes'
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=("alfaview=${pkgver}")
 install="$pkgname.install"
 source=("https://assets.alfaview.com/stable/linux/deb/${pkgname}_${pkgver}.deb")
 noextract=("${pkgname}_${pkgver}.deb")
-sha256sums=('9acda64e699efaf68c6b5ba1f420dbe20c6dd910a4f4949d1dc79882675cf648')
+sha256sums=('36c8f97843a506300c7231238c5b13ea0c4c032e8598e46c4032b055e745b542')
 
 prepare() {
 	mkdir -p deb-data
