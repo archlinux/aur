@@ -3,7 +3,7 @@
 
 pkgname='dbus-client-gen'
 pkgver=0.4
-pkgrel=7
+pkgrel=8
 pkgdesc='A library for generating some simple classes and functions useful for a Python D-Bus client'
 arch=('any')
 license=('MPL2')
