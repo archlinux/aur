@@ -2,13 +2,13 @@
 
 pkgname=localsend-git
 _pkgname=localsend
-pkgver=v1.8.0.r17.g5319e7c
+pkgver=v1.9.0.r1.gb9002a0
 pkgrel=1
 pkgdesc='An open source cross-platform alternative to AirDrop '
 url=https://github.com/localsend/localsend
 arch=(x86_64)
 license=(MIT)
-depends=(zenity xdg-user-dirs)
+depends=(zenity xdg-user-dirs libayatana-appindicator)
 conflicts=('localsend-bin')
 provides=('localsend')
 makedepends=('flutter' 'git')
@@ -23,12 +23,6 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-
-	# Building with latest flutter w collection 1.16.0 doesn't work
-	# + 1.17.0 is newer and build just fine anyways
-    sed -i -E \
-		"s|collection: 1.16.0|collection: 1.17.0|" \
-		"pubspec.yaml"
 	
 	flutter pub get
 	flutter pub run build_runner build
