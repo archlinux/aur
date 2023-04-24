@@ -4,13 +4,14 @@ _pkgname=scatterpie
 _pkgver=0.1.9
 pkgname=r-${_pkgname,,}
 pkgver=0.1.9
-pkgrel=1
+pkgrel=3
 pkgdesc='Scatter Pie Plot'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('Artistic2.0')
 depends=(
   r
+  r-dplyr
   r-ggforce
   r-ggfun
   r-ggplot2

@@ -1,11 +1,12 @@
 pkgbase = r-scatterpie
 	pkgdesc = Scatter Pie Plot
 	pkgver = 0.1.9
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=scatterpie
 	arch = any
 	license = Artistic2.0
 	depends = r
+	depends = r-dplyr
 	depends = r-ggforce
 	depends = r-ggfun
 	depends = r-ggplot2
