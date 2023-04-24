@@ -1,0 +1,16 @@
+pkgbase = open-video-downloader-appimage
+	pkgdesc = A cross-platform GUI for youtube-dl made in Electron and node.js
+	pkgver = 2.4.10
+	pkgrel = 1
+	url = https://github.com/StefanLobbenmeier/youtube-dl-gui
+	arch = x86_64
+	license = AGPL3
+	depends = zlib
+	depends = glibc
+	conflicts = open-video-downloader
+	conflicts = youtube-dl-gui
+	options = !strip
+	source = open-video-downloader-2.4.10.AppImage::https://github.com/StefanLobbenmeier/youtube-dl-gui/releases/download/v2.4.10/Open-Video-Downloader-2.4.10.AppImage
+	sha256sums = e99cf7780eebbe74a1e45cbac822f965c7e7299193adce39b37240d75d8e2389
+
+pkgname = open-video-downloader-appimage
