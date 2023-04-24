@@ -1,0 +1,15 @@
+pkgbase = python-baron
+	pkgdesc = Full Syntax Tree for python to make writing refactoring code a realist task
+	pkgver = 0.10.1
+	pkgrel = 2
+	url = https://github.com/PyCQA/baron
+	arch = any
+	license = LGPL
+	checkdepends = python-pytest-runner
+	makedepends = python-setuptools
+	makedepends = python-pypandoc
+	depends = python-rply
+	source = python-baron-0.10.1.tar.gz::https://github.com/PyCQA/baron/archive/0.10.1.tar.gz
+	sha512sums = 01c3a69227d1de435dc466bc8e848e9d3d88f182cb404c2614bf868615af92a81c6379c872c36b9f28e63e0cec5757a5a8f6e9bb11eeccb9a75a408199448626
+
+pkgname = python-baron
