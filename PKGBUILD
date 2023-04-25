@@ -2,11 +2,10 @@
 # Contributor: Nabil Freij <nabil.freij@gmail.com>
 
 pkgbase=python-glymur
-#_pyname=${pkgbase#python-}
-_pyname=Glymur
-pkgname=('python-glymur')
-#'python-glymur-doc')
-pkgver=0.12.2
+_pyname=${pkgbase#python-}
+#_pyname=Glymur
+pkgname=('python-glymur' 'python-glymur-doc')
+pkgver=0.12.3
 pkgrel=1
 pkgdesc="Tools for accessing JPEG2000 files"
 arch=('any')
@@ -15,16 +14,17 @@ license=('MIT')
 makedepends=('python-setuptools'
              'python-wheel'
              'python-build'
-             'python-installer')
-#            'python-numpydoc'
-#            'python-sphinx_rtd_theme')
-#checkdepends=('python-pytest'
-#              'python-numpy'
-#              'python-lxml'
-#              'openjpeg2'
-#              'python-scikit-image'
-#              'python-gdal')
-source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+             'python-installer'
+             'python-numpydoc'
+             'python-sphinx_rtd_theme')
+checkdepends=('python-pytest'
+              'python-numpy'
+              'python-lxml'
+#             'openjpeg2'
+              'python-scikit-image'
+              'python-gdal')
+source=("https://github.com/quintusdias/glymur/archive/refs/tags/v${pkgver}.tar.gz")
+#source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       "https://github.com/quintusdias/glymur/raw/master/tests/data/0220000800_uuid.dat"
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/tests/data/issue555.xmp"
 #       "https://github.com/quintusdias/glymur/raw/master/tests/data/issue549.dat"
@@ -35,7 +35,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.10.rst"
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.11.rst"
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.12.rst")
-md5sums=('9ca8f34dd0d2e9ca49c546c43100426c')
+md5sums=('06e0dde8f52f0e4fa964c33e74fe4107')
 #        'SKIP'
 #        'SKIP'
 #        'SKIP'
@@ -67,17 +67,16 @@ build() {
     cd ${srcdir}/${_pyname}-${pkgver}
     python -m build --wheel --no-isolation
 
-#   msg "Building Docs"
-#   cd ${srcdir}/${_pyname}-${pkgver}/docs
-#   mkdir source/_static
-#   PYTHONPATH="../build/lib" make html
+    msg "Building Docs"
+    mkdir -p docs/source/_static
+    PYTHONPATH="../build/lib" make -C docs html
 }
 
-#check() {
-#    cd ${srcdir}/${_pyname}-${pkgver}
-#
-#    pytest || warning "Tests failed" # -vv --color=yes
-#}
+check() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    pytest || warning "Tests failed" # -vv --color=yes
+}
 
 package_python-glymur() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -92,11 +91,11 @@ package_python-glymur() {
     python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 
-#package_python-glymur-doc() {
-#    pkgdesc="Documentation for Python Glymur module"
-#    cd ${srcdir}/${_pyname}-${pkgver}/docs/build
-#
-#    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../LICENSE.txt
-#    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
-#    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
-#}
+package_python-glymur-doc() {
+    pkgdesc="Documentation for Python Glymur module"
+    cd ${srcdir}/${_pyname}-${pkgver}/docs/build
+
+    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../LICENSE.txt
+    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
+    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
+}
