@@ -1,14 +1,15 @@
 pkgbase = beast2
 	pkgdesc = Bayesian Evolutionary Analysis by Sampling Trees. https://doi.org/10.1371/journal.pcbi.1003537
 	pkgver = 2.7.4
-	pkgrel = 2
+	pkgrel = 4
 	url = http://www.beast2.org/
 	arch = any
 	license = LGPL
 	makedepends = ant
 	makedepends = git
-	depends = java-runtime
-	depends = java-openjfx
+	makedepends = java-environment=17
+	depends = java-runtime=17
+	depends = java17-openjfx
 	optdepends = beagle-lib
 	source = beast2-2.7.4.tar.gz::https://github.com/CompEvol/beast2/archive/refs/tags/v2.7.4.tar.gz
 	source = BeastFX-2.7.2.tar.gz::https://github.com/CompEvol/BeastFX/archive/refs/tags/v2.7.2.tar.gz
