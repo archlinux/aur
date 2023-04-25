@@ -1,6 +1,6 @@
 pkgbase = quarto-cli-pre-release
 	pkgdesc = Quarto is an open-source scientific and technical publishing system built on [Pandoc](https://pandoc.org). This package tracks pre-release tags of Quarto.
-	pkgver = 1.3.336
+	pkgver = 1.4.6
 	pkgrel = 1
 	url = https://quarto.org/
 	arch = x86_64
@@ -10,8 +10,7 @@ pkgbase = quarto-cli-pre-release
 	makedepends = npm
 	makedepends = rust
 	depends = nodejs
-	depends = deno>=1.28
-	depends = deno<1.29
+	depends = deno>=1.29
 	depends = dart-sass
 	depends = esbuild
 	depends = pandoc
@@ -21,9 +20,17 @@ pkgbase = quarto-cli-pre-release
 	conflicts = quarto-cli
 	conflicts = quarto-cli-git
 	options = !strip
-	source = quarto-cli-1.3.336.tar.gz::https://github.com/quarto-dev/quarto-cli/archive/refs/tags/v1.3.336.tar.gz
+	source = quarto-cli-1.4.6.tar.gz::https://github.com/quarto-dev/quarto-cli/archive/refs/tags/v1.4.6.tar.gz
 	source = https://github.com/b-fuze/deno-dom/archive/refs/tags/v0.1.35-alpha-artifacts.tar.gz
-	sha256sums = 0957534ea627427d806b241791c061061bcd3ba6a89b40dd303a027652a19401
+	source = https://github.com/c4spar/deno-cliffy/archive/refs/tags/v0.25.7.tar.gz
+	source = https://github.com/denoland/deno_std/archive/refs/tags/0.170.0.tar.gz
+	source = deno_2.31.diff
+	source = deno_2.32.diff
+	sha256sums = f2690ca486c4688815c668f424daaf3fe07738f5d8017ef863ffe26295fcb5ce
 	sha256sums = 14fb042a6912041b9fda91fd643cf278764d075bc9539aa1e107475915cd896c
+	sha256sums = 519709be1dfcf4743930b7f21a513d8fbf3663380020eac8ba629081395f6cc0
+	sha256sums = 369bc68b848532bedcb786a8fce5e52000624b9262f05ceeeb16bc851b6cf752
+	sha256sums = def3b77a009d86ca2c563dab0bce1b9cbb28db1695547c4c8b0b10e2621a7ea4
+	sha256sums = 461dad45c3800418ccdc9deafd44e03f826c31f60eab4004f7393c6d5bebcbff
 
 pkgname = quarto-cli-pre-release

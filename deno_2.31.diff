@@ -1,0 +1,129 @@
+diff -ru quarto-cli-1.3.249/src/core/appdirs.ts quarto-cli-1.3.249.new/src/core/appdirs.ts
+--- quarto-cli-1.3.249/src/core/appdirs.ts	2023-03-08 12:01:13.401218091 +1300
++++ quarto-cli-1.3.249.new/src/core/appdirs.ts	2023-03-08 11:09:20.877881207 +1300
+@@ -35,7 +35,7 @@
+   return fullDir;
+ }
+ 
+-export function userDataDir(appName: string, roaming = false) {
++export function userDataDir(appName: string, roaming = false):string {
+   switch (Deno.build.os) {
+     case "darwin":
+       return darwinUserDataDir(appName);
+@@ -44,9 +44,10 @@
+     case "windows":
+       return windowsUserDataDir(appName, roaming);
+   }
++  return '';
+ }
+ 
+-export function userConfigDir(appName: string, roaming = false) {
++export function userConfigDir(appName: string, roaming = false):string {
+   switch (Deno.build.os) {
+     case "darwin":
+       return darwinUserDataDir(appName);
+@@ -55,9 +56,10 @@
+     case "windows":
+       return windowsUserDataDir(appName, roaming);
+   }
++  return '';
+ }
+ 
+-export function userCacheDir(appName: string) {
++export function userCacheDir(appName: string):string {
+   switch (Deno.build.os) {
+     case "darwin":
+       return darwinUserCacheDir(appName);
+@@ -66,9 +68,10 @@
+     case "windows":
+       return windowsUserDataDir(appName);
+   }
++  return '';
+ }
+ 
+-export function userRuntimeDir(appName: string) {
++export function userRuntimeDir(appName: string):string {
+   switch (Deno.build.os) {
+     case "darwin":
+       return darwinUserCacheDir(appName);
+@@ -77,54 +80,58 @@
+     case "windows":
+       return windowsUserDataDir(appName);
+   }
++  return '';
+ }
+ 
+-function darwinUserDataDir(appName: string) {
++function darwinUserDataDir(appName: string):string {
+   return join(
+     Deno.env.get("HOME") || "",
+     "Library",
+     "Application Support",
+     appName,
+   );
++  return '';
+ }
+ 
+-function darwinUserCacheDir(appName: string) {
++function darwinUserCacheDir(appName: string):string {
+   return join(
+     Deno.env.get("HOME") || "",
+     "Library",
+     "Caches",
+     appName,
+   );
++  return '';
+ }
+ 
+-function xdgUserDataDir(appName: string) {
++function xdgUserDataDir(appName: string):string {
+   const dataHome = Deno.env.get("XDG_DATA_HOME") ||
+     join(Deno.env.get("HOME") || "", ".local", "share");
+   return join(dataHome, appName);
+ }
+ 
+-function xdgUserConfigDir(appName: string) {
++function xdgUserConfigDir(appName: string):string {
+   const configHome = Deno.env.get("XDG_CONFIG_HOME") ||
+     join(Deno.env.get("HOME") || "", ".config");
+   return join(configHome, appName);
+ }
+ 
+-function xdgUserCacheDir(appName: string) {
++function xdgUserCacheDir(appName: string):string {
+   const cacheHome = Deno.env.get("XDG_CACHE_HOME") ||
+     join(Deno.env.get("HOME") || "", ".cache");
+   return join(cacheHome, appName);
+ }
+ 
+-function xdgUserRuntimeDir(appName: string) {
++function xdgUserRuntimeDir(appName: string):string {
+   const runtimeDir = Deno.env.get("XDG_RUNTIME_DIR");
+   if (runtimeDir) {
+     return runtimeDir;
+   } else {
+     return xdgUserDataDir(appName);
+   }
++  return '';
+ }
+ 
+-function windowsUserDataDir(appName: string, roaming = false) {
++function windowsUserDataDir(appName: string, roaming = false):string {
+   const dir =
+     (roaming ? Deno.env.get("APPDATA") : Deno.env.get("LOCALAPPDATA")) || "";
+   return join(dir, appName);
+diff -ru quarto-cli-1.3.249/src/core/shell.ts quarto-cli-1.3.249.new/src/core/shell.ts
+--- quarto-cli-1.3.249/src/core/shell.ts	2023-03-08 12:01:13.407884769 +1300
++++ quarto-cli-1.3.249.new/src/core/shell.ts	2023-03-08 11:58:29.310949278 +1300
+@@ -14,6 +14,11 @@
+     windows: "explorer",
+     darwin: "open",
+     linux: "xdg-open",
++    freebsd: "xdg-open",
++    netbsd: "xdg-open",
++    aix: "defaultbrowser",
++    solaris: "sdtwebclient",
++    illumos: "xdg-open"
+   };
+ 
+   const cmd = shellOpen[Deno.build.os];

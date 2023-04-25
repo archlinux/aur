@@ -1,0 +1,12 @@
+diff -ru quarto-cli-1.3.290.original/src/project/project-shared.ts quarto-cli-1.3.290/src/project/project-shared.ts
+--- quarto-cli-1.3.290.original/src/project/project-shared.ts	2023-03-28 11:11:17.197271351 +1300
++++ quarto-cli-1.3.290/src/project/project-shared.ts	2023-03-28 11:22:50.580128356 +1300
+@@ -146,7 +146,7 @@
+       for (let index = 0; index < collection.length; ++index) {
+         const value = collection[index];
+         if (Array.isArray(value) || value instanceof Object) {
+-          inner(value);
++          inner({...value});
+         } else if (typeof value === "string") {
+           if (value.length > 0 && !isAbsolute(value)) {
+             collection[index] = fixup(value);
