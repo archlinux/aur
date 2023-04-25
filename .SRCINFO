@@ -1,6 +1,6 @@
 pkgbase = easy-installer
 	pkgdesc = The Easy Installer is a desktop application which helps users install Android /e/ (https://doc.e.foundation/what-s-e) on supported devices.
-	pkgver = 0.17
+	pkgver = 0.18
 	pkgrel = 1
 	url = https://gitlab.e.foundation/e/tools/easy-installer
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = easy-installer
 	makedepends = gradle
 	makedepends = java-runtime-common
 	makedepends = ruby-ronn
-	source = easy-installer-0.17::git+https://gitlab.e.foundation/e/tools/easy-installer.git#tag=v0.17
+	source = easy-installer-0.18::git+https://gitlab.e.foundation/e/tools/easy-installer.git#tag=v0.18
 	source = easy-installer.8.md
 	md5sums = SKIP
 	md5sums = bc6e92b53daabcee25e57904b3eb1bb6
