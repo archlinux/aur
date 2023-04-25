@@ -1,11 +1,12 @@
 pkgbase = electron24-bin
 	pkgdesc = Build cross platform desktop apps with web technologies - binary version 24
-	pkgver = 24.0.0.beta.3
-	pkgrel = 2
+	pkgver = 24.1.2
+	pkgrel = 1
 	url = https://electronjs.org/
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	license = custom
 	depends = c-ares
 	depends = gtk3
 	depends = libevent
@@ -17,16 +18,16 @@ pkgbase = electron24-bin
 	optdepends = qt5-base: enable Qt5 with --enable-features=AllowQt
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)
-	provides = electron24=24.0.0.beta.3
-	provides = electron=24.0.0.beta.3
+	provides = electron24=24.1.2
+	provides = electron=24.1.2
 	conflicts = electron24
-	source_x86_64 = electron24-bin-chromedriver-24.0.0.beta.3-x86_64.zip::https://github.com/electron/electron/releases/download/v24.0.0-beta.3/chromedriver-v24.0.0-beta.3-linux-x64.zip
-	source_x86_64 = electron24-bin-24.0.0.beta.3-x86_64.zip::https://github.com/electron/electron/releases/download/v24.0.0-beta.3/electron-v24.0.0-beta.3-linux-x64.zip
-	sha256sums_x86_64 = 3b819379073d8d800146128739286ff26c9de3ca5e249e7ed2bcdaa19ae610a5
-	sha256sums_x86_64 = 05a44179e3acda76e6263d705c9a99031a29ed4e98f94045c4d0d2d9d49a49a8
-	source_aarch64 = electron24-bin-chromedriver-24.0.0.beta.3-aarch64.zip::https://github.com/electron/electron/releases/download/v24.0.0-beta.3/chromedriver-v24.0.0-beta.3-linux-arm64.zip
-	source_aarch64 = electron24-bin-24.0.0.beta.3-aarch64.zip::https://github.com/electron/electron/releases/download/v24.0.0-beta.3/electron-v24.0.0-beta.3-linux-arm64.zip
-	sha256sums_aarch64 = 6699985799b574b3bcdf6ef36a2fff72bc45793d17c74892f983e7d099ae4489
-	sha256sums_aarch64 = e100b280a961c3ac3ce4e1b6aadcd9cf64be1c6408989b75865b900de06b0eb7
+	source_x86_64 = electron24-bin-chromedriver-24.1.2-x86_64.zip::https://github.com/electron/electron/releases/download/v24.1.2/chromedriver-v24.1.2-linux-x64.zip
+	source_x86_64 = electron24-bin-24.1.2-x86_64.zip::https://github.com/electron/electron/releases/download/v24.1.2/electron-v24.1.2-linux-x64.zip
+	sha256sums_x86_64 = e0b5dc9c7b80fad7c0bf11ed9060e1e9317378e5899cf18a55b7cc2f756b1380
+	sha256sums_x86_64 = a5b3c6d9847733e705b3c5cc7694f3bcb4996f7047bb8c02dd443ad27258f7f8
+	source_aarch64 = electron24-bin-chromedriver-24.1.2-aarch64.zip::https://github.com/electron/electron/releases/download/v24.1.2/chromedriver-v24.1.2-linux-arm64.zip
+	source_aarch64 = electron24-bin-24.1.2-aarch64.zip::https://github.com/electron/electron/releases/download/v24.1.2/electron-v24.1.2-linux-arm64.zip
+	sha256sums_aarch64 = d643dc528b6d603e94d6c3e473f953a2fab8354d913dae09e4ffa0d6cbc7cd81
+	sha256sums_aarch64 = a66dc286a43e92ddcb1c03df9019ee8db19a3f27381ac9273bf3996f322fdab7
 
 pkgname = electron24-bin
