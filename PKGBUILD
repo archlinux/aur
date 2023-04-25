@@ -1,13 +1,13 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=pak
-_cranver=0.4.0
+_cranver=0.5.0
 pkgname=r-${_cranname,,}
 pkgdesc="Another Approach to R Package Installation"
 url="https://cran.r-project.org/package=${_cranname}"
 license=("GPL3")
 pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgrel=1
 
 arch=("any")
 depends=(
@@ -31,7 +31,7 @@ optdepends=(
     "r-pkgdepends>=0.4.0"
     "r-pkgsearch>=3.1.0"
     "r-prettyunits"
-    "r-processx>=3.5.2"
+    "r-processx>=3.8.1"
     "r-ps>=1.6.0"
     "r-rprojroot>=2.0.2"
     "r-rstudioapi"
@@ -59,7 +59,7 @@ optdepends=(
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("19d22327bea7f7395e1de8d230514e0e4174ccb60544df0a0a168a368a9448a65b56f1c33eac1dd0087a9ea7cdaa9469da1ac2cd3dd7184fb07569db68f0649b")
+b2sums=("c82a93adf57b6f0838bdcdd6f99dec9fb8aa1c7766bb0868e899494cf2af410c31aad8487d6562460b8da6140494fa100cf339d80331ae7be6d463766656c982")
 
 build() {
     mkdir -p "${srcdir}/build/"
