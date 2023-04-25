@@ -27,7 +27,6 @@ exec meson setup \
   --sharedstatedir /var/lib \
   --buildtype      release \
   --wrap-mode      nofallback \
-  -D               b_lto=true \
   -D               strip=true \
   --cross-file ${CROSS_FILE} \
   --default-library shared \
