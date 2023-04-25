@@ -19,7 +19,7 @@ depends=('alsa-lib' 'libasound.so' 'desktop-file-utils' 'ffmpeg5.1' 'libavcodec.
          'glibc' 'hicolor-icon-theme' 'jack' 'libjack.so' 'lcms2' 'liblcms2.so' 'libarchive'
          'libarchive.so' 'libass' 'libass.so' 'libbluray' 'libbluray.so' 'libcaca' 'libcdio'
          'libcdio-paranoia' 'libdrm' 'libdvdnav' 'libdvdread' 'libegl' 'libgl' 'libglvnd'
-         'libjpeg' 'libjpeg.so' 'libplacebo4208' 'libplacebo.so' 'libpulse' 'libpulse.so'
+         'libjpeg' 'libjpeg.so' 'libplacebo4.208' 'libplacebo.so' 'libpulse' 'libpulse.so'
          'libva' 'libva.so' 'libva-drm.so' 'libva-wayland.so' 'libva-x11.so' 'libvdpau' 'libx11'
          'libxext' 'libxinerama' 'libxkbcommon' 'libxkbcommon.so' 'libxrandr' 'libxss'
          'libxv' 'lua52' 'mesa' 'mujs' 'rubberband' 'librubberband.so' 'shaderc'
@@ -28,8 +28,8 @@ depends=('alsa-lib' 'libasound.so' 'desktop-file-utils' 'ffmpeg5.1' 'libavcodec.
 makedepends=('git' 'python-docutils' 'ladspa' 'wayland-protocols'
              'ffnvcodec-headers' 'vulkan-headers' 'waf')
 optdepends=('youtube-dl: for video-sharing websites playback')
-provides=('libmpv.so' 'mpv')
-conflicts=('mpv')
+provides=('libmpv.so' 'mpv' 'mpv0.34')
+# conflicts=('mpv')
 options=('!emptydirs')
 validpgpkeys=('145077D82501AA20152CACCE8D769208D5E31419') # sfan5 <sfan5@live.de>
 source=("git+https://github.com/mpv-player/mpv.git#tag=${_tag}?signed")
@@ -49,18 +49,29 @@ build() {
                  "-lavformat"
                  "-lavcodec"
                  "-lavswscale"
-                 "-I/usr/include/libplacebo-4.208")
+                 "-I/usr/include/libplacebo-4.208"
+                 "-L/usr/lib/libplacebo-4.208")
   local _ldflags=("-lpostproc")
   export CCXFLAGS="${_cflags[*]}"
   export CFLAGS="${_cflags[*]}"
   export LDFLAGS="${_ldflags[*]}"
   export PKG_CONFIG_PATH="/usr/lib/ffmpeg5.1/pkgconfig:$PKG_CONFIG_PATH"
-
+  export LIBDIR="/usr/lib/${pkgname}"
+  export DATADIR="/usr/share/${pkgname}"
+  export INCLUDEDIR="/usr/include/${pkgname}"
+ 
   CCXFLAGS="${_cflags[*]}" \
   CFLAGS="${_cflags[*]}" \
   LDFLAGS="${_ldflags[*]}" \
+  LIBDIR="/usr/lib/${pkgname}" \
+  DATADIR="/usr/share/${pkgname}" \
+  INCLUDEDIR="/usr/include/${pkgname}" \
   waf configure --prefix=/usr \
-    --confdir=/etc/mpv \
+    --libdir="/usr/lib/${pkgname}" \
+    --includedir="/usr/include/${pkgname}" \
+    --confdir="/etc/${pkgname}" \
+    --docdir="/usr/share/doc/${pkgname}" \
+    --disable-manpage-build \
     --enable-cdda \
     --enable-dvb \
     --enable-dvdnav \
@@ -69,17 +80,35 @@ build() {
     --enable-libmpv-shared \
     --disable-build-date
 
+  LIBDIR="/usr/lib/mpv-caca" \
   CCXFLAGS="${_cflags[*]}" \
   CFLAGS="${_cflags[*]}" \
   LDFLAGS="${_ldflags[*]}" \
+  LIBDIR="/usr/lib/${pkgname}" \
+  DATADIR="/usr/share/${pkgname}" \
+  INCLUDEDIR="/usr/include/${pkgname}" \
   waf build
 }
 
 package() {
   cd ${_pkgname}
+  export LIBDIR="/usr/lib/${pkgname}"
+  export DATADIR="/usr/share/${pkgname}"
+  export INCLUDEDIR="/usr/include/${pkgname}"
+ 
+  LIBDIR="/usr/lib/${pkgname}" \
+  DATADIR="/usr/share/${pkgname}" \
+  INCLUDEDIR="/usr/include/${pkgname}" \
   waf install --destdir="$pkgdir"
-  install -m0644 DOCS/{encoding.rst,tech-overview.txt} \
-    "$pkgdir"/usr/share/doc/mpv
+  rm -rf "${pkgdir}/usr/share/doc/${_pkgname}"
   install -m0644 TOOLS/lua/* \
-    -D -t "$pkgdir"/usr/share/mpv/scripts
+    -D -t "$pkgdir/usr/share/${pkgname}/scripts"
+  cd "${pkgdir}/usr/bin"
+  mv "${_pkgname}" "${pkgname}"
+  cd "${pkgdir}/usr/share"
+  mv "applications/${_pkgname}.desktop" "applications/${pkgname}.desktop"
+  mv "bash-completion/completions/${_pkgname}" \
+     "bash-completion/completions/${pkgname}"
+  rm -rf "icons"
+  mv "zsh/site-functions/_${_pkgname}" "zsh/site-functions/_${pkgname}"
 }

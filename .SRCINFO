@@ -1,7 +1,7 @@
 pkgbase = mpv-caca
 	pkgdesc = a free, open source, and cross-platform media player (libcaca support)
 	pkgver = 0.34.1
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 1
 	url = https://mpv.io/
 	arch = x86_64
@@ -47,7 +47,7 @@ pkgbase = mpv-caca
 	depends = libglvnd
 	depends = libjpeg
 	depends = libjpeg.so
-	depends = libplacebo4208
+	depends = libplacebo4.208
 	depends = libplacebo.so
 	depends = libpulse
 	depends = libpulse.so
@@ -80,7 +80,7 @@ pkgbase = mpv-caca
 	optdepends = youtube-dl: for video-sharing websites playback
 	provides = libmpv.so
 	provides = mpv
-	conflicts = mpv
+	provides = mpv0.34
 	options = !emptydirs
 	source = git+https://github.com/mpv-player/mpv.git#tag=df6d84c1cf4bbc2b998f4d320542c78df674512d?signed
 	validpgpkeys = 145077D82501AA20152CACCE8D769208D5E31419
