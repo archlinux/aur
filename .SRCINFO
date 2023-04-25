@@ -9,7 +9,7 @@ pkgbase = slack-libpurple-git
 	makedepends = git
 	depends = libpurple
 	options = !strip
-	source = slack-libpurple::git+https://github.com/dylex/slack-libpurple.git
+	source = slack-libpurple::git+https://github.com/dylex/slack-libpurple.git#finduserhack
 	sha256sums = SKIP
 
 pkgname = slack-libpurple-git
