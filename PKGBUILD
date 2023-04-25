@@ -2,7 +2,7 @@
 
 pkgname="aria2-pro-core-bin"
 pkgver="1.36.0"
-pkgrel="3"
+pkgrel="4"
 pkgdesc="Aria2 static binaries for GNU/Linux with some powerful feature patches."
 arch=("x86_64" "i686" "aarch64" )
 url="https://github.com/P3TERX/Aria2-Pro-Core"
@@ -25,7 +25,7 @@ sha512sums_x86_64=('3e3f46e46a9d28a39c2f1225932d7a45fffb103c3609e072bd40940bf25f
 sha512sums_i686=('bed721ba23950d8c2dfa2b81c082d51af65227374caf5ff9c7531eacdc142a82d5183009a8b1c05ed5226747d95fc3dea8b237ad4b897a5ac82446d74b3ab2bf')
 sha512sums_aarch64=('bb2e6435489e39ce5b7de97b313fa88618f011d785ee060f7d11f62b5dd6d1922fef2f453795bccb2504d0cb37609b08af43b6236066f660fa2d6dff17792539')
 package() {
-	mkdir -p "${pkgdir}/usr/bin"
+	install -Dm 644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 	cd ${srcdir}
 	install -Dm 755 aria2c ${pkgdir}/usr/bin/aria2c
 }
