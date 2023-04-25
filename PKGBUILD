@@ -3,7 +3,7 @@
 _pkgname=system76-scheduler
 pkgname=${_pkgname}-git
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 epoch=2
 pkgdesc='system76 userspace scheduler'
 arch=(x86_64)
@@ -12,7 +12,7 @@ license=('MPL-2')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 depends=(bcc-tools python-bcc)
-makedepends=(git rust just linux-headers clang pipewire pkgconf)
+makedepends=(git rust just linux-headers pipewire)
 source=("git+$url")
 sha256sums=('SKIP')
 install=install.sh
