@@ -1,16 +1,19 @@
 pkgbase = open-delta
 	pkgdesc = DEscription Language of TAxonomy
-	pkgver = 1.02
+	pkgver = 1.0.3_beta
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/AtlasOfLivingAustralia/open-delta
 	arch = x86_64
 	license = unknown
-	depends = java-runtime
-	source = https://github.com/AtlasOfLivingAustralia/open-delta/files/4686516/open-delta-1.02-bin.zip
-	source = open-delta.desktop
-	source = delta.gif
-	sha256sums = f3e2cd3d6abb572e2e856e624a574b100592da40c7c6639a9dd28abcc5e5c993
-	sha256sums = 1f5b65a87a3778ec40f40643c937ea6be99474aa3185ead67551f8ee83146fe6
-	sha256sums = 583b2666eb51f488aefe27caf870961478fcdd9272304d667d83631fe62e8e0f
+	makedepends = java-environment=8
+	makedepends = maven
+	makedepends = gendesk
+	makedepends = icedtea-web
+	depends = java-runtime=8
+	source = open-delta-1.0.3_beta::https://github.com/AtlasOfLivingAustralia/open-delta/archive/refs/tags/1.0.3-beta.tar.gz
+	source = open-delta.patch::https://patch-diff.githubusercontent.com/raw/AtlasOfLivingAustralia/open-delta/pull/270.patch
+	sha256sums = 794915ca4beb42298ff5d42031b015a6ee2cdb8746a697a24a552abbe5103e0c
+	sha256sums = c5b3974cb7fe1abd54457ff95558d072aa5e6d646c22c7b73843bdf113149e41
 
 pkgname = open-delta
