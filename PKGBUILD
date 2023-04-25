@@ -1,7 +1,7 @@
 # Maintainer: korreckj328 
 
 pkgname='mygui-gl-git'
-pkgver=3.4.2.git
+pkgver=3.4.3.it
 pkgrel=1
 
 pkgdesc="MyGUI - OpenGL backend"
