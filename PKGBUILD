@@ -2,7 +2,7 @@
 
 pkgname="aria2-pro-core-bin"
 pkgver="1.36.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Aria2 static binaries for GNU/Linux with some powerful feature patches."
 arch=("x86_64" "i686" "aarch64" )
 url="https://github.com/P3TERX/Aria2-Pro-Core"
@@ -11,13 +11,13 @@ provides=('aria2')
 conflicts=('aria2')
 source=("LICENSE::https://raw.githubusercontent.com/P3TERX/Aria2-Pro-Core/master/LICENSE")
 source_x86_64=(
-		"${pkgname}-${pkgver}-${pkgrel}.tar.gz::${url}/releases/download/${pkgver}_2021.08.22/aria2-${pkgver}-static-linux-amd64.tar.gz"
+		"${pkgname}-${pkgver}-${arch}-${pkgrel}.tar.gz::${url}/releases/download/${pkgver}_2021.08.22/aria2-${pkgver}-static-linux-amd64.tar.gz"
 		)
 source_i686=(
-		"${pkgname}-${pkgver}-${pkgrel}.tar.gz::${url}/releases/download/${pkgver}_2021.08.22/aria2-${pkgver}-static-linux-i386.tar.gz"
+		"${pkgname}-${pkgver}-${arch}-${pkgrel}.tar.gz::${url}/releases/download/${pkgver}_2021.08.22/aria2-${pkgver}-static-linux-i386.tar.gz"
 		)
 source_aarch64=(
-		"${pkgname}-${pkgver}-${pkgrel}.tar.gz::${url}/releases/download/${pkgver}_2021.08.22/aria2-${pkgver}-static-linux-arm64.tar.gz"
+		"${pkgname}-${pkgver}-${arch}-${pkgrel}.tar.gz::${url}/releases/download/${pkgver}_2021.08.22/aria2-${pkgver}-static-linux-arm64.tar.gz"
 		)
 license=('GPL3')
 sha512sums=('d361e5e8201481c6346ee6a886592c51265112be550d5224f1a7a6e116255c2f1ab8788df579d9b8372ed7bfd19bac4b6e70e00b472642966ab5b319b99a2686')
