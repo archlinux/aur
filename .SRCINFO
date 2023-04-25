@@ -1,0 +1,17 @@
+pkgbase = mkpsxiso126
+	pkgdesc = Faster, cross-platform, modern BUILDCD replacement (legacy version)
+	pkgver = 1.26
+	pkgrel = 1
+	url = https://github.com/Lameguy64/mkpsxiso
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = tinyxml2
+	provides = mkpsxiso
+	source = https://github.com/Lameguy64/mkpsxiso/archive/refs/tags/v1.26.tar.gz
+	source = mkisoxml-posix.patch
+	cksums = 2302826856
+	cksums = 3243613121
+
+pkgname = mkpsxiso126

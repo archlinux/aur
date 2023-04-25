@@ -1,0 +1,39 @@
+--- main-.cpp	2023-03-10 13:52:38.000000000 +0200
++++ main.cpp	2023-03-10 14:00:41.000000000 +0200
+@@ -2,6 +2,7 @@
+ #include <sys/stat.h>
+ #include <dirent.h>
+ #include <string.h>
++#include <unistd.h>
+ #include <tinyxml2.h>
+ 
+ 
+@@ -24,8 +25,8 @@
+ 	}
+ 
+ 	{
+-		char currentDir[MAX_PATH];
+-		getcwd(currentDir, MAX_PATH);
++		char currentDir[PATH_MAX];
++		getcwd(currentDir, PATH_MAX);
+ 		dirElement->SetAttribute("srcdir", currentDir);
+ 	}
+ 
+@@ -81,7 +82,7 @@
+ 
+ }
+ 
+-char oldDir[MAX_PATH];
++char oldDir[PATH_MAX];
+ 
+ int main(int argc, const char* argv[]) {
+ 
+@@ -132,7 +133,7 @@
+ 
+ 	}
+ 
+-	getcwd(oldDir, MAX_PATH);
++	getcwd(oldDir, PATH_MAX);
+ 
+ 	tinyxml2::XMLDocument xmldoc;
+ 
