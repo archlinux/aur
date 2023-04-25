@@ -3,36 +3,25 @@
 
 pkgname=xdao
 pkgrel=1
-pkgver=1.1.0.221120
+pkgver=1.2.0.230425
 pkgdesc="An nmbXD TUI cli written in Python."
 arch=('any')
 url="https://github.com/TransparentLC/xdcmd"
 license=('AGPL-3.0')
 sha256sums=('SKIP')
 depends=(
-  'python>=3.7.0'
-  'python-beautifulsoup4'
-  'python-lxml'
-  'python-prompt_toolkit'
-  'python-requests'
-)
-makedepends=(
-  'git'
-)
-optdepends=(
-  'chafa'
-)
+  'imagemagick'
+  'glib2'
+  )
+makedepends=()
 install=${pkgname}.install
-source=("${pkgname}::git+https://ghproxy.com/https://github.com/TransparentLC/xdcmd.git")
-pkgver() {
-  cd "${srcdir}/xdao"
-  printf "1.0.9.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+source=("https://nightly.link/TransparentLC/xdcmd/workflows/build/master/xdcmd-ubuntu.zip")
+
+
 package() {
   cd "${pkgdir}"
   mkdir -p usr/bin
   mkdir -p usr/share/xdao
-  echo "python /usr/share/xdao/main.py" > usr/bin/xdao
-  mv ${srcdir}/xdao/* usr/share/xdao
-  chmod +x usr/bin/xdao
+  tar -xvJf ${srcdir}/xdcmd-ubuntu.tar.xz -C usr/share/xdao
+  ln -s /usr/share/xdao/xdcmd-ubuntu/xdcmd usr/bin/xdao
 }
