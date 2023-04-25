@@ -18,25 +18,14 @@ pkgver() {
 }
 
 build() {
-	cd "pcapplusplus"
-	mkdir -p "build"
-	cd build
-	cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_INSTALL_LIBDIR='/usr/lib/pcapplusplus' ..
-	make
+  cd "pcapplusplus"
+  mkdir -p "build"
+  cd build
+  cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_INSTALL_LIBDIR='/usr/lib/pcapplusplus' ..
+  make
 }
 
 package() {
   cd "$srcdir/pcapplusplus/build"
   make DESTDIR="$pkgdir" install
 }
-
-
-#package() {
-#	cd "pcapplusplus/Dist" || exit 1
-#	mkdir -p "$pkgdir/usr/bin"
-#	cp examples/* "$pkgdir/usr/bin"
-#	mkdir -p "$pkgdir/usr/include/pcapplusplus"
-#	cp header/*   "$pkgdir/usr/include/pcapplusplus"
-#	mkdir -p "$pkgdir/usr/lib/pcapplusplus"
-#	cp ./*.a      "$pkgdir/usr/lib/pcapplusplus"
-#}
