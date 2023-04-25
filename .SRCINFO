@@ -1,0 +1,13 @@
+pkgbase = mkpsxiso-git
+	pkgdesc = Faster, cross-platform, modern BUILDCD replacement
+	pkgver = 2.02
+	pkgrel = 1
+	url = https://github.com/Lameguy64/mkpsxiso
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	source = git+https://github.com/Lameguy64/mkpsxiso.git
+	cksums = SKIP
+
+pkgname = mkpsxiso-git
