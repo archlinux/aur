@@ -5,7 +5,7 @@ pkgname=scratch3
 conflicts=("scratch3-bin")
 
 pkgver=3.29.1
-pkgrel=2
+pkgrel=3
 _electronDist=electron13
 _electronVersion=13.6.9
 
@@ -17,7 +17,7 @@ depends=("c-ares" "ffmpeg" "gtk3" "libevent" "libxslt" "minizip" "nss" "re2" "sn
 optdepends=("xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)")
 
 ## /!\    bin version of electron   ↓↓↓ (AUR package)  /!\
-makedepends=('npm' "${_electronDist}-bin")
+makedepends=('npm' "${_electronDist}-bin" "nodejs-lts-fermium")
 source=("https://github.com/LLK/scratch-desktop/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.xml"

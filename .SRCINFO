@@ -1,7 +1,7 @@
 pkgbase = scratch3
 	pkgdesc = Scratch 3.0 as a self-contained desktop application
 	pkgver = 3.29.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://scratch.mit.edu
 	arch = x86_64
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = scratch3
 	license = custom:BSD-3-Clause
 	makedepends = npm
 	makedepends = electron13-bin
+	makedepends = nodejs-lts-fermium
 	depends = c-ares
 	depends = ffmpeg
 	depends = gtk3
