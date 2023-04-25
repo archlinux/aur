@@ -1,16 +1,16 @@
 pkgbase = hubble-bin
 	pkgdesc = Network, Service & Security Observability for Kubernetes using eBPF
-	pkgver = 0.11.2
+	pkgver = 0.11.4
 	pkgrel = 1
 	url = https://cilium.io/
 	arch = x86_64
 	arch = aarch64
 	license = Apache
-	provides = hubble=0.11.2
+	provides = hubble=0.11.4
 	options = !strip
-	source_x86_64 = hubble-bin-0.11.2-amd64.tar.gz::https://github.com/cilium/hubble/releases/download/v0.11.2/hubble-linux-amd64.tar.gz
-	sha256sums_x86_64 = fa2b5a1468f17957899063ad2ff1b51c68aae955a2b5d09390174a7b36a80bdb
-	source_aarch64 = hubble-bin-0.11.2-arm64.tar.gz::https://github.com/cilium/hubble/releases/download/v0.11.2/hubble-linux-arm64.tar.gz
-	sha256sums_aarch64 = 7e1496bdc937dcf34de2f282edf62f91edc7ed1435ad78401035dc04e6b66f90
+	source_x86_64 = hubble-bin-0.11.4-amd64.tar.gz::https://github.com/cilium/hubble/releases/download/v0.11.4/hubble-linux-amd64.tar.gz
+	sha256sums_x86_64 = b12f66ec1100d9669112f6e1217c60542287e41e9cdaaee5536880c8801c540d
+	source_aarch64 = hubble-bin-0.11.4-arm64.tar.gz::https://github.com/cilium/hubble/releases/download/v0.11.4/hubble-linux-arm64.tar.gz
+	sha256sums_aarch64 = f4dbfc1cdc2c2ed6cdb97989abbb42ca098404751555d0239a6b184249e9eb60
 
 pkgname = hubble-bin
