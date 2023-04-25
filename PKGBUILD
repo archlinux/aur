@@ -3,10 +3,10 @@
 
 pkgname=tic-80-lovebyte-git
 pkgver=r1532.8da8d42
-pkgrel=2
+pkgrel=3
 pkgdesc='TIC-80 tiny computer emulator'
 arch=('any')
-url="https://tic.computer/"
+url="https://tic80.com/"
 license=('MIT')
 depends=('gtk3' 'glu' 'freeglut>=3.0.0' 'libglvnd' 'lua-sdl2' 'gtk4')
 makedepends=('git' 'cmake')

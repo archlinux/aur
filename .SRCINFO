@@ -1,8 +1,8 @@
 pkgbase = tic-80-lovebyte-git
 	pkgdesc = TIC-80 tiny computer emulator
 	pkgver = r1532.8da8d42
-	pkgrel = 2
-	url = https://tic.computer/
+	pkgrel = 3
+	url = https://tic80.com/
 	arch = any
 	license = MIT
 	makedepends = git
@@ -24,4 +24,3 @@ pkgbase = tic-80-lovebyte-git
 	sha256sums = 471d7e10dc26d08afa90b14e2dbdd4cb123e9b31c1dd73a7503aff71f97252c6
 
 pkgname = tic-80-lovebyte-git
-
