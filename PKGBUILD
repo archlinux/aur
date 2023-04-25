@@ -6,7 +6,7 @@
 # Maintainer: Sathya Pramodh <sathyapramodh17@gmail.com>
 pkgname=resetti-git
 _devbranch="next"
-pkgver=0.4.0_devel.r373.874e15c
+pkgver=0.4.0_devel.r375.201effb
 pkgrel=1
 pkgdesc="resetti is a Linux-compatible reset macro for Minecraft speedruns. It supports
 a variety of different resetting styles, categories, and Minecraft versions."
