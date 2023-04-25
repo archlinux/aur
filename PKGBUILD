@@ -1,27 +1,27 @@
 # Maintainer: Aleksandr Beliaev <trap000d at gmail dot com>
 
 pkgname=quarto-cli
-pkgver=1.2.475
+pkgver=1.3.340
 pkgrel=1
 _pkgbasename=quarto-cli
-_denodomver="0.1.23-alpha-artifacts"
+_denodomver="0.1.35-alpha-artifacts"
 _deno_arch="deno-x86_64-unknown-linux-gnu"
 pkgdesc="Quarto is an open-source scientific and technical publishing system built on [Pandoc](https://pandoc.org)."
 arch=('x86_64' 'i686')
-depends=('nodejs' 'deno<1.26.0' 'dart-sass' 'esbuild' 'pandoc' 'lua-lpeg')
+depends=('nodejs' 'deno>=1.28' 'deno<1.29' 'dart-sass' 'esbuild' 'pandoc' 'lua-lpeg')
 makedepends=('git' 'npm' 'rust')
 url="https://quarto.org/"
 license=('MIT')
 provides=("quarto")
-conflicts=('quarto-cli-bin' 'quarto-cli')
+conflicts=('quarto-cli-bin' 'quarto-cli' 'quarto-cli-git')
 options=(!strip)
 
 source=("${_pkgbasename}-${pkgver}.tar.gz::https://github.com/quarto-dev/quarto-cli/archive/refs/tags/v${pkgver}.tar.gz"
         "https://github.com/b-fuze/deno-dom/archive/refs/tags/v${_denodomver}.tar.gz"
        )
 
-sha256sums=('aedf0318b1fa522f83b200e0616f94a89bd860e4f837056df03ad22088f56c88'
-            '9eeb81df4e674bb5dea1a371b0e1731b42edd81f212c395e0a25071ac16c27cd')
+sha256sums=('22c8b694fd9b8804e7e732035eba2540e71eb31874dd06f1235cf6e63e38f62c'
+            '14fb042a6912041b9fda91fd643cf278764d075bc9539aa1e107475915cd896c')
 
 build() {
 
