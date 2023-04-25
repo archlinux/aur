@@ -1,0 +1,14 @@
+pkgbase = sliver-bin
+	pkgdesc = Sliver is a an opensource C2 framework designed by bishop fox
+	pkgver = 1.5.37
+	pkgrel = 1
+	url = https://github.com/BishopFox/sliver
+	arch = x86_64
+	license = BSD-3-Clause
+	provides = sliver
+	source_x86_64 = https://github.com/BishopFox/sliver/releases/download/v1.5.37/sliver-client_linux
+	source_x86_64 = https://github.com/BishopFox/sliver/releases/download/v1.5.37/sliver-server_linux
+	sha256sums_x86_64 = 5fffcdd337374e2843c7582b798b983785da5ab3afb6e30b78cef4620d248b09
+	sha256sums_x86_64 = 996e7473634a2b894f6e154073d780b12f9ef1b8f1471bb945c7c2cf1c56010a
+
+pkgname = sliver-bin
