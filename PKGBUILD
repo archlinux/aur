@@ -1,5 +1,7 @@
 #
-# PKGBUILD for cone
+# PKGBUILD for cone-simple
+#
+# cone-simple is an stripped package build of cone
 #
 # This version has no dependencies to other courier libraries (other than the minimal courier-unicode).
 #
@@ -10,7 +12,7 @@
 #
 
 pkgname=cone-simple
-pkgver=1.8
+pkgver=1.9
 pkgrel=1
 epoch=
 pkgdesc="Curses text-based mail client - handles multiple POP3, IMAP accounts, and local mail folders. contains a simple newsreader. This version has no dependencies to courier libraries (other than the mandatory courier-unicode)."
@@ -35,7 +37,7 @@ source=(http://sourceforge.net/projects/courier/files/cone/${pkgver}/cone-${pkgv
 
 #noextract=()
 
-sha256sums=('5c8dcf8dc4b457261b3b08c686f4bddc4cee5609ed75b2036e4dcf64eba83610')
+sha256sums=('9671023dd022dfbb3622f5753f827ae1fb44331682728b7bad7e45a5e67a310e')
 
 #
 #

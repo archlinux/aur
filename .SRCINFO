@@ -1,6 +1,6 @@
 pkgbase = cone-simple
 	pkgdesc = Curses text-based mail client - handles multiple POP3, IMAP accounts, and local mail folders. contains a simple newsreader. This version has no dependencies to courier libraries (other than the mandatory courier-unicode).
-	pkgver = 1.8
+	pkgver = 1.9
 	pkgrel = 1
 	url = http://courier-mta.org/cone/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = cone-simple
 	depends = libldap
 	depends = aspell
 	depends = courier-unicode
-	source = http://sourceforge.net/projects/courier/files/cone/1.8/cone-1.8.tar.bz2
-	sha256sums = 5c8dcf8dc4b457261b3b08c686f4bddc4cee5609ed75b2036e4dcf64eba83610
+	source = http://sourceforge.net/projects/courier/files/cone/1.9/cone-1.9.tar.bz2
+	sha256sums = 9671023dd022dfbb3622f5753f827ae1fb44331682728b7bad7e45a5e67a310e
 
 pkgname = cone-simple
