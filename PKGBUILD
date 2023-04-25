@@ -3,10 +3,10 @@
 # Mantainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Piero Proietti <piero.proietti_at_gmail.com>
 
-_commit=8e3e7ca911dcbc3db3cb80772bab97b47cb76e7a  # v9.4.6
+_commit=987b76f422dd950e55df90cf6874c18faadfd07e  # v9.4.7
 
 pkgname=penguins-eggs
-pkgver=9.4.6
+pkgver=9.4.7
 pkgrel=1
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 arch=('any')
@@ -19,7 +19,7 @@ depends=('arch-install-scripts' 'dosfstools' 'erofs-utils' 'findutils' 'grub'
 optdepends=('bash-completion: eggs autocomplete'
             'zsh-completions: eggs autocomplete'
             'calamares: system installer GUI')
-makedepends=('git' 'npm')
+makedepends=('git' 'pnpm')
 options=('!strip')
 source=("git+https://github.com/pieroproietti/penguins-eggs.git#commit=${_commit}")
 sha256sums=('SKIP')
