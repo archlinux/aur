@@ -1,4 +1,4 @@
-src
-pkg
-*.zip
-*.xz
+src/
+*.log
+pkg/
+*.pkg.*

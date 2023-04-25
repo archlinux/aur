@@ -1,10 +1,10 @@
 pkgbase = electron-bin
-	pkgdesc = Build cross platform desktop apps with web technologies — Meta package
-	pkgver = 23
+	pkgdesc = Build cross platform desktop apps with web technologies — Binary meta package
+	pkgver = 24
 	pkgrel = 1
 	url = https://electronjs.org/
 	arch = x86_64
 	arch = aarch64
-	depends = electron23-bin
+	depends = electron24-bin
 
 pkgname = electron-bin
