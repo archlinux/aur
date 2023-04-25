@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=0.1.4
+Name=Evolving Protozoa
+Exec=/usr/bin/evolving-protozoa
+Icon=evolving-protozoa
+Terminal=false
+MimeType=application/x-pyromod+zip;
+Type=Application
+Categories=Game;StrategyGame;
+# Use the most powerful GPU available by default (i.e. a dedicated Nvidia or AMD card instead of the integrated Intel card)
+PrefersNonDefaultGPU=true
+Comment=An interactive environment where protozoa-like entities live, die, and have offspring whose behaviours and morphologies can change.

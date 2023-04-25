@@ -1,0 +1,17 @@
+pkgbase = evolving-protozoa
+	pkgdesc = An interactive environment where protozoa-like entities live, die, and have offspring whose behaviours and morphologies can change.
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/DylanCope/Evolving-Protozoa
+	arch = x86_64
+	license = Unknown
+	makedepends = maven
+	depends = java-runtime
+	source = https://github.com/DylanCope/Evolving-Protozoa/archive/refs/tags/v0.1.4-alpha.tar.gz
+	source = Simulation-user-path.patch
+	source = evolving-protozoa.desktop
+	sha512sums = ac3c91031316d8d98ef153ea92fd8aa1d91b743f3518f0e5ad4e4e22fb686cfd5a5b86b4ad032d051ce27d124530c6edf0bba4307a555d041e80516e7687a6b6
+	sha512sums = 8aeaf6f6fd91c0d30cac5358f41f59c721df4ff11313d8ae20447fdfeab86db491b8e9401504e0d25aed455d3103bf3bfbae9c722366259c1e596acd6cee20b2
+	sha512sums = 01445110b2c6b6331282ab267864e3764611e01c61ea51e041f5a60b464ddab6ace38076b12b24deaef9d0cbe17c1cd414f640818998440ae1e436963be7e1af
+
+pkgname = evolving-protozoa

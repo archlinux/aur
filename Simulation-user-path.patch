@@ -1,0 +1,93 @@
+--- src/src/main/java/protoevo/core/Simulation.java	2023-04-25 15:08:04.659584897 +0000
++++ Simulation.java	2023-04-25 15:04:11.720593453 +0000
+@@ -17,7 +17,8 @@
+ public class Simulation
+ {
+ 
+-	public static String defaultSettingsPath = "config/default_settings.yaml";
++	public static String currentUsersHomeDir = System.getProperty("user.home");
++	public static String defaultSettingsPath = currentUsersHomeDir + "/.local/share/Evolving-Protozoa/config/default_settings.yaml";
+ 	public static String settingsPath = defaultSettingsPath;
+ 
+ 	private final Tank tank;
+@@ -38,9 +39,9 @@
+ 		simulate = true;
+ 		name = generateSimName();
+ 		System.out.println("Created new simulation named: " + name);
+-		genomeFile = "saves/" + name + "/genomes.csv";
+-		historyFile = "saves/" + name + "/history.csv";
+-		settingsPath = "saves/" + name + "/settings.yaml";
++		genomeFile = currentUsersHomeDir + "/.local/share/Evolving-Protozoa/saves/" + name + "/genomes.csv";
++		historyFile = currentUsersHomeDir + "/.local/share/Evolving-Protozoa/saves/" + name + "/history.csv";
++		settingsPath = currentUsersHomeDir + "/.local/share/Evolving-Protozoa/saves/" + name + "/settings.yaml";
+ 		newSaveDir();
+ 		tank = new Tank();
+ 		tank.setGenomeFile(genomeFile);
+@@ -54,9 +55,9 @@
+ 	{
+ 		simulate = true;
+ 		this.name = name;
+-		genomeFile = "saves/" + name + "/genomes.csv";
+-		historyFile = "saves/" + name + "/history.csv";
+-		settingsPath = "saves/" + name + "/settings.yaml";
++		genomeFile = currentUsersHomeDir + "/.local/share/Evolving-Protozoa/saves/" + name + "/genomes.csv";
++		historyFile = currentUsersHomeDir + "/.local/share/Evolving-Protozoa/saves/" + name + "/history.csv";
++		settingsPath = currentUsersHomeDir + "/.local/share/Evolving-Protozoa/saves/" + name + "/settings.yaml";
+ 
+ 		newSaveDir();
+ 		tank = loadMostRecentTank();
+@@ -70,11 +71,11 @@
+ 	{
+ 		simulate = true;
+ 		this.name = name;
+-		genomeFile = "saves/" + name + "/genomes.csv";
+-		historyFile = "saves/" + name + "/history.csv";
++		genomeFile = currentUsersHomeDir + "/.local/share/Evolving-Protozoa/saves/" + name + "/genomes.csv";
++		historyFile = currentUsersHomeDir + "/.local/share/Evolving-Protozoa/saves/" + name + "/history.csv";
+ 
+ 		newSaveDir();
+-		tank = loadTank("saves/" + name + "/tank/" + save);
++		tank = loadTank(currentUsersHomeDir + "/.local/share/Evolving-Protozoa/saves/" + name + "/tank/" + save);
+ 		loadSettings();
+ 		RANDOM = new Random(Settings.simulationSeed);
+ 		repl = new REPL(this);
+@@ -93,10 +94,10 @@
+ 
+ 	private void newSaveDir() {
+ 		try {
+-			Path saveDir = Paths.get("saves/" + name);
++			Path saveDir = Paths.get(currentUsersHomeDir + "/.local/share/Evolving-Protozoa/saves/" + name);
+ 			if (!Files.exists(saveDir)) {
+ 				Files.createDirectories(saveDir);
+-				Files.createDirectories(Paths.get("saves/" + name + "/tank"));
++				Files.createDirectories(Paths.get(currentUsersHomeDir + "/.local/share/Evolving-Protozoa/saves/" + name + "/tank"));
+ 
+ 				File original = new File(defaultSettingsPath);
+ 				File copied = new File(settingsPath);
+@@ -111,7 +112,7 @@
+ 			if (!Files.exists(historyPath))
+ 				Files.createFile(historyPath);
+ 
+-			String seedFile = "saves/" + name + "/seed.txt";
++			String seedFile = currentUsersHomeDir + "/.local/share/Evolving-Protozoa/saves/" + name + "/seed.txt";
+ 			Path seedPath = Paths.get(seedFile);
+ 			if (!Files.exists(seedPath)) {
+ 				try {
+@@ -152,7 +153,7 @@
+ 	}
+ 
+ 	public Tank loadMostRecentTank() {
+-		Path dir = Paths.get("saves/" + name + "/tank");
++		Path dir = Paths.get(currentUsersHomeDir + "/.local/share/Evolving-Protozoa/saves/" + name + "/tank");
+ 		if (Files.exists(dir)) {
+ 			try (Stream<Path> pathStream = Files.list(dir)) {
+ 				Optional<Path> lastFilePath = pathStream
+@@ -235,7 +236,7 @@
+ 
+ 	public void saveTank() {
+ 		String timeStamp = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new java.util.Date());
+-		String fileName = "saves/" + name + "/tank/" + timeStamp;
++		String fileName = currentUsersHomeDir + "/.local/share/Evolving-Protozoa/saves/" + name + "/tank/" + timeStamp;
+ 		FileIO.save(tank, fileName);
+ 	}
+ 

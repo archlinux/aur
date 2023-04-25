@@ -1,0 +1,6 @@
+post_install() {
+	mkdir -p $HOME/.local/Evolving-Protozoa/config
+    cp /etc/evolving-protozoa/default_settings.yaml $HOME/.local/Evolving-Protozoa/config/default_settings.yaml
+    chown $USER:$USER $HOME/.local/Evolving-Protozoa/config/default_settings.yaml
+	mkdir -p $HOME/.local/Evolving-Protozoa/saves
+}
