@@ -1,8 +1,8 @@
 # Maintainer: Filipe Bertelli <filipebertelli@tutanota.com>
 
 pkgname=electron-fiddle-bin
-pkgver=0.32.2
-pkgrel=2
+pkgver=0.32.4
+pkgrel=1
 pkgdesc="The easiest way to get started with Electron"
 arch=('x86_64' 'aarch64' 'armhf')
 provides=("${pkgname%-bin}")
@@ -11,9 +11,9 @@ license=('MIT')
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
 depends=('gtk3' 'alsa-lib' 'nss' 'electron')
 source_x86_64=("https://github.com/electron/fiddle/releases/download/v${pkgver}/electron-fiddle_${pkgver}_amd64.deb")
-sha256sums_x86_64=('ce20ce129066d152e3fa7d7868b86570bf5541352db996aad882f2bda97d70f9')
-sha256sums_aarch64=('445de95173e7962cbd9e0c481daa322a4e4593d8a9ae30338ea03a2568ff47be')
-sha256sums_armhf=('34b391f8a6508adf91766ae3308ad591240e577c31259e08d7abd198465693cf')
+sha256sums_x86_64=('9cad746b995aa1ec8f98bd6ef03983b72171ed584786da2e0a8f1a4db55bafa1')
+sha256sums_aarch64=('cc9545f4ddd4cbc2360a10a1da97a771e9b88807fb81bfd039b262f9f141ff1f')
+sha256sums_armhf=('a56d4f1137f67b336bf85bd8f3be8193e6232dbf0b2159e2626c1a987c339b94')
 source_aarch64=("https://github.com/electron/fiddle/releases/download/v${pkgver}/electron-fiddle_${pkgver}_arm64.deb")
 source_armhf=("https://github.com/electron/fiddle/releases/download/v${pkgver}/electron-fiddle_${pkgver}_armhf.deb")
 
