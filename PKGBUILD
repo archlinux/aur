@@ -1,17 +1,17 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname='perl-html-restrict'
-pkgver='3.0.1'
+pkgver='3.0.2'
 pkgrel='1'
 pkgdesc="Strip unwanted HTML tags and attributes"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-data-dump' 'perl-moo>=1.002000' 'perl-namespace-clean' 'perl-scalar-list-utils>=1.33' 'perl-sub-quote' 'perl-type-tiny>=1.002001' 'perl-uri')
+depends=('perl-data-dump' 'perl-html-parser' 'perl-moo>=1.002000' 'perl-namespace-clean' 'perl-scalar-list-utils>=1.33' 'perl-sub-quote' 'perl-type-tiny>=1.002001' 'perl-uri')
 makedepends=('perl-test-fatal')
 url='https://metacpan.org/pod/HTML::Restrict'
 source=("https://cpan.metacpan.org/authors/id/O/OA/OALDERS/HTML-Restrict-v${pkgver}.tar.gz")
-sha512sums=('ec56aec2d5eedb92ef1a980fa640197d9d26b7f278ce8d45227a53e2e5c015cb7694f1df369022c873b1e590c1f3c966867690c6085c2144ab74b9d70c26d13f')
+sha512sums=('eaa831a00d310ea66dfc7d90e3406285fc0c02b22ed8b676fbe6d0d6a313897b2b7f7c1ea64ee906e5fd539539edc23972e86bdd4482c98c577e19f8519ef78b')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
