@@ -1,57 +1,37 @@
-# Maintainer: nalquas <nalquas.dev@gmail.com>
-
+# Contributor: nalquas <nalquas.dev@gmail.com>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tvtower-bin
-pkgver=0.7.2
+pkgver=0.8.1
 pkgrel=1
-pkgdesc="A remake of MadTV - by fans, for fans."
+pkgdesc="A tribute to Mad TV. Written in BlitzMax, Lua and a bit of C."
 arch=('x86_64')
 url="https://www.tvtower.org/"
+_githuburl="https://github.com/TVTower/TVTower"
 license=('custom')
-depends=('libglvnd' 'freetype2') # dependencies determined using namcap
-provides=('tvtower')
-source=("$pkgname-$pkgver.zip::https://github.com/TVTower/TVTower/releases/download/v0.7.2/TVTower_v0.7.2.zip")
-sha256sums=('577c0585d7508c9e50a17ba12fa43b1c9bcda6ff08126a9faa9b7cee7075bcf2')
+depends=('libglvnd' 'freetype2' 'glibc' 'gcc-libs' 'libxcb')
+makedepends=('gendesk')
+provides=()
+noextract=("${pkgname}-${pkgver}.zip")
+source=("${pkgname%-bin}-${pkgver}.zip::${_githuburl}/releases/download/v${pkgver}/TVTower_v${pkgver}_20230322.zip")
+sha256sums=('a72345b65968d95e425d823a277b47d3fca325b750ad01c4ed8ed8e831056898')
 
 package() {
-	# First, install the liense
-	install -Dm644 LICENCE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	
-	# Then, install the game
-	install -Dm755 TVTower_Linux64 "$pkgdir/usr/share/tvtower/tvtower"
-	install -Dm644 tvtower.png "$pkgdir/usr/share/tvtower/tvtower.png"
-	install -Dm644 config/* -t "$pkgdir/usr/share/tvtower/config"
-	install -Dm644 docs/* -t "$pkgdir/usr/share/tvtower/docs"
-	install -Dm644 Misc/* -t "$pkgdir/usr/share/tvtower/Misc"
-	#install -Dm644 res/* -t "$pkgdir/usr/share/tvtower/res"
-	cp -r res "$pkgdir/usr/share/tvtower/res" # This is a workaround since "install" doesn't allow recursive directory copying
-	
-	# Since TVTower wants to write logs and savegames to its install directory, let's fulfill that wish.
-	# We're doing this by making the logfiles and savegames writable by every user (777).
-	mkdir -p "$pkgdir/usr/share/tvtower/logfiles"
-	mkdir -p "$pkgdir/usr/share/tvtower/savegames"
-	touch "$pkgdir/usr/share/tvtower/logfiles/log.ai1.txt"
-	touch "$pkgdir/usr/share/tvtower/logfiles/log.ai2.txt"
-	touch "$pkgdir/usr/share/tvtower/logfiles/log.ai3.txt"
-	touch "$pkgdir/usr/share/tvtower/logfiles/log.ai4.txt"
-	touch "$pkgdir/usr/share/tvtower/logfiles/log.app.txt"
-	touch "$pkgdir/usr/share/tvtower/logfiles/log.app.error.txt"
-	touch "$pkgdir/usr/share/tvtower/log.profiler.txt"
-	chmod -R 777 "$pkgdir/usr/share/tvtower/logfiles"
-	chmod 777 "$pkgdir/usr/share/tvtower/savegames"
-	chmod 777 "$pkgdir/usr/share/tvtower/log.profiler.txt"
-	
-	# For easier terminal access to the game, create a symlink in /usr/bin
-	mkdir -p "$pkgdir/usr/bin"
-	ln -s /usr/share/tvtower/tvtower "$pkgdir/usr/bin/tvtower"
-	
-	# Finally, create and install a .desktop file
-	touch TVTower.desktop
-	echo """[Desktop Entry]
-Name=TVTower
-Comment=A remake of MadTV - by fans, for fans.
-Exec=/usr/bin/tvtower
-Icon=/usr/share/tvtower/tvtower.png
-Type=Application
-Categories=Game;""" >> TVTower.desktop
-	install -Dm644 TVTower.desktop "$pkgdir/usr/share/applications/TVTower.desktop"
+	install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
+	bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${pkgdir}/opt/${pkgname%-bin}" --gname root --uname root
+	install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/LICENCE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+	install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+	gendesk -f --icon "${pkgname%-bin}" --categories "Game" --name "TVTower" --exec "/opt/${pkgname%-bin}/TVTower_Linux64"
+	install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+	find "${pkgdir}/opt" -type f -exec chmod 644 {} \;
+	find "${pkgdir}/opt" -type d -exec chmod 755 {} \;
+	chmod +x "${pkgdir}/opt/${pkgname%-bin}/TVTower_Linux64"
+	install -Dm777 -d "${pkgdir}/opt/${pkgname%-bin}/logfiles"
+	touch "${pkgdir}/opt/${pkgname%-bin}/logfiles/log.ai1.txt"
+	touch "${pkgdir}/opt/${pkgname%-bin}/logfiles/log.ai2.txt"
+	touch "${pkgdir}/opt/${pkgname%-bin}/logfiles/log.ai3.txt"
+	touch "${pkgdir}/opt/${pkgname%-bin}/logfiles/log.ai4.txt"
+	touch "${pkgdir}/opt/${pkgname%-bin}/logfiles/log.app.txt"
+	touch "${pkgdir}/opt/${pkgname%-bin}/logfiles/log.app.error.txt"
+	touch "${pkgdir}/opt/${pkgname%-bin}/log.profiler.txt"
+	chmod -R 777 "${pkgdir}/opt/${pkgname%-bin}/log.profiler.txt" "${pkgdir}/opt/${pkgname%-bin}/logfiles" "${pkgdir}/opt/${pkgname%-bin}/savegames"
 }

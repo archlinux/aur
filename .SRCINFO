@@ -1,14 +1,18 @@
 pkgbase = tvtower-bin
-	pkgdesc = A remake of MadTV - by fans, for fans.
-	pkgver = 0.7.2
+	pkgdesc = A tribute to Mad TV. Written in BlitzMax, Lua and a bit of C.
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://www.tvtower.org/
 	arch = x86_64
 	license = custom
+	makedepends = gendesk
 	depends = libglvnd
 	depends = freetype2
-	provides = tvtower
-	source = tvtower-bin-0.7.2.zip::https://github.com/TVTower/TVTower/releases/download/v0.7.2/TVTower_v0.7.2.zip
-	sha256sums = 577c0585d7508c9e50a17ba12fa43b1c9bcda6ff08126a9faa9b7cee7075bcf2
+	depends = glibc
+	depends = gcc-libs
+	depends = libxcb
+	noextract = tvtower-bin-0.8.1.zip
+	source = tvtower-0.8.1.zip::https://github.com/TVTower/TVTower/releases/download/v0.8.1/TVTower_v0.8.1_20230322.zip
+	sha256sums = a72345b65968d95e425d823a277b47d3fca325b750ad01c4ed8ed8e831056898
 
 pkgname = tvtower-bin
