@@ -1,7 +1,7 @@
 pkgbase = p7zip-natspec
 	pkgdesc = Command-line file archiver with high compression ratio, based on libnatspec patch from ubuntu zip-i18n PPA (https://launchpad.net/~frol/+archive/zip-i18n).
-	pkgver = 17.04
-	pkgrel = 2
+	pkgver = 17.05
+	pkgrel = 1
 	url = https://github.com/p7zip-project/p7zip
 	arch = x86_64
 	license = LGPL
@@ -11,10 +11,10 @@ pkgbase = p7zip-natspec
 	depends = libnatspec
 	provides = p7zip
 	conflicts = p7zip
-	source = https://github.com/p7zip-project/p7zip/archive/v17.04/p7zip-v17.04.tar.gz
+	source = https://github.com/p7zip-project/p7zip/archive/v17.05/p7zip-v17.05.tar.gz
 	source = natspec.patch
 	source = do-not-gzip-man-pages.patch
-	sha256sums = ea029a2e21d2d6ad0a156f6679bd66836204aa78148a4c5e498fe682e77127ef
+	sha256sums = d2788f892571058c08d27095c22154579dfefb807ebe357d145ab2ddddefb1a6
 	sha256sums = 8412de795faf1abafc5303458699f1621e4900ef854b733c7c409385d78e11ee
 	sha256sums = 2179e67764eb46cb414ce9b5c978a532a6499617a6a685deb323b6da122aba00
 
