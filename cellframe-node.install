@@ -1,8 +1,7 @@
 post_install() {
 
     systemctl daemon-reload
-    systemctl is-enabled --quiet cellframe-node.service && systemctl start cellframe-node.service
-
+    
     cat << EOF
 
     ########################################################################
@@ -32,7 +31,6 @@ post_install() {
     ##                                                                    ##
     ########################################################################
     ########################################################################
-
 EOF
 }
 
@@ -45,6 +43,10 @@ pre_upgrade() {
 	    done
     fi
 	post_install
+}
+
+post_upgrade() {
+    systemctl is-active --quiet cellframe-node.service && systemctl restart cellframe-node.service
 }
 
 pre_remove() {
