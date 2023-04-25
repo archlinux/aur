@@ -1,17 +1,21 @@
 post_install() {
-	dkms build -m rtw88 -v ${1%%-*}
-	dkms install -m rtw88 -v ${1%%-*}
-	local version=${1%%-*}
-}
+  cat<<EOF
 
-pre_upgrade() {
-	pre_remove $2
-}
+Unload and load kernel modules:
 
-post_upgrade() {
-	post_install $1
+  rmmod rtw88_{8{723de,723d,821ce,821c,822be,822b,822ce,822c},core,pci}
+  modprobe rtw_{8{723de,723d,821ce,821c,822be,822b,822ce,822c},core,pci}
+
+EOF
 }
 
 pre_remove() {
-	dkms remove -m rtw88 -v ${1%%-*} --all
+  cat<<EOF
+
+Unload and load kernel modules:
+
+  rmmod rtw_{8{723de,723d,821ce,821c,822be,822b,822ce,822c},core,pci}
+  modprobe rtw88_{8{723de,723d,821ce,821c,822be,822b,822ce,822c},core,pci}
+
+EOF
 }
