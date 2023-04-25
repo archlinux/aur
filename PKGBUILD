@@ -1,7 +1,7 @@
-#Maintainer: Daniel Lehmann <daniellehmann28@outlook.de>
+# Maintainer: RadioLogic
 pkgname=sliver
 pkgver=1.5.37
-pkgrel=1
+pkgrel=2
 pkgdesc="Sliver is a an opensource C2 framework designed by bishop fox"
 url="https://github.com/BishopFox/sliver"
 arch=('any')
@@ -23,4 +23,17 @@ package() {
     mkdir -p "$pkgdir/usr/bin"
     install -m755 "$srcdir/${pkgname}-${pkgver}/${pkgname}-server" "$pkgdir/usr/bin/${pkgname}-server"
     install -m755 "$srcdir/${pkgname}-${pkgver}/${pkgname}-client" "$pkgdir/usr/bin/${pkgname}-client"
+
+    # Making completions
+    mkdir -p "$pkgdir/usr/share/bash-completion/completions/"
+    $srcdir/${pkgname}-${pkgver}/${pkgname}-server completion bash > "$pkgdir/usr/share/bash-completion/completions/${pkgname}-server"
+    $srcdir/${pkgname}-${pkgver}/${pkgname}-client completion bash > "$pkgdir/usr/share/bash-completion/completions/${pkgname}-client"
+
+    mkdir -p "$pkgdir/usr/share/fish/vendor_completions.d/"
+    $srcdir/${pkgname}-${pkgver}/${pkgname}-server completion fish > "$pkgdir/usr/share/fish/vendor_completions.d/${pkgname}-server.fish"
+    $srcdir/${pkgname}-${pkgver}/${pkgname}-client completion fish > "$pkgdir/usr/share/fish/vendor_completions.d/${pkgname}-client.fish"
+
+    mkdir -p "$pkgdir/usr/share/zsh/site-functions/"
+    $srcdir/${pkgname}-${pkgver}/${pkgname}-server completion zsh > "$pkgdir/usr/share/zsh/site-functions/_${pkgname}-server"
+    $srcdir/${pkgname}-${pkgver}/${pkgname}-client completion zsh > "$pkgdir/usr/share/zsh/site-functions/_${pkgname}-client"
 }
