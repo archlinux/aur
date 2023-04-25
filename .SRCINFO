@@ -1,7 +1,7 @@
 pkgbase = amberol
 	pkgdesc = Plays music, and nothing else
-	pkgver = 0.9.2
-	pkgrel = 2
+	pkgver = 0.10.0
+	pkgrel = 1
 	url = https://apps.gnome.org/app/io.bassi.Amberol
 	arch = x86_64
 	arch = aarch64
@@ -18,7 +18,7 @@ pkgbase = amberol
 	depends = gst-plugins-bad
 	depends = gst-plugins-good
 	options = !lto
-	source = git+https://gitlab.gnome.org/World/amberol.git#commit=c23ec2f11fa441c402b80f7a1733ac9aea65c81d
+	source = git+https://gitlab.gnome.org/World/amberol.git#commit=ff8cab6f65a6147b9e65b1e2f0ca229898ee1906
 	b2sums = SKIP
 
 pkgname = amberol
