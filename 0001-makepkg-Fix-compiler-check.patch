@@ -1,17 +1,17 @@
-From be07c244d139a918961e199cb6bccd42aad65e23 Mon Sep 17 00:00:00 2001
+From 935af505d61e4f7e2324cd34833d24e6f789e61a Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Mon, 14 Nov 2022 11:58:59 +0100
-Subject: [PATCH 1/3] makepkg: Fix compiler check
+Subject: [PATCH] makepkg: Fix compiler check
 
 ---
- cmake/build_helpers.cmake | 25 ++++++++++++++-----------
- 1 file changed, 14 insertions(+), 11 deletions(-)
+ cmake/build_helpers.cmake | 23 +++++++++++++----------
+ 1 file changed, 13 insertions(+), 10 deletions(-)
 
 diff --git a/cmake/build_helpers.cmake b/cmake/build_helpers.cmake
-index 511e7865..ec1b670d 100644
+index 0227511b..048e350c 100644
 --- a/cmake/build_helpers.cmake
 +++ b/cmake/build_helpers.cmake
-@@ -257,27 +257,27 @@ macro(createPackage)
+@@ -238,27 +238,27 @@ macro(createPackage)
      elseif(UNIX AND NOT APPLE)
  
          set_target_properties(libimhex PROPERTIES SOVERSION ${IMHEX_VERSION})
@@ -45,7 +45,7 @@ index 511e7865..ec1b670d 100644
          set_target_properties(libimhex PROPERTIES SOVERSION ${IMHEX_VERSION})
  
          set_property(TARGET main PROPERTY MACOSX_BUNDLE_INFO_PLIST ${MACOSX_BUNDLE_INFO_PLIST})
-@@ -290,7 +290,7 @@ macro(createPackage)
+@@ -271,7 +271,7 @@ macro(createPackage)
          add_custom_target(build-time-make-resources-directory ALL COMMAND ${CMAKE_COMMAND} -E make_directory "${IMHEX_BUNDLE_PATH}/Contents/Resources")
  
          downloadImHexPatternsFiles("${IMHEX_BUNDLE_PATH}/Contents/MacOS")
@@ -54,21 +54,21 @@ index 511e7865..ec1b670d 100644
          install(FILES ${IMHEX_ICON} DESTINATION "${IMHEX_BUNDLE_PATH}/Contents/Resources")
          install(TARGETS main BUNDLE DESTINATION ".")
          install(FILES $<TARGET_FILE:main> DESTINATION "${IMHEX_BUNDLE_PATH}")
-@@ -407,8 +407,11 @@ function(downloadImHexPatternsFiles dest)
+@@ -391,8 +391,11 @@ function(downloadImHexPatternsFiles dest)
  endfunction()
  
  macro(setupCompilerWarnings target)
--    set(IMHEX_COMMON_FLAGS "-Wall -Wextra -Werror")
--    set(IMHEX_C_FLAGS "${IMHEX_COMMON_FLAGS} -Wno-restrict -Wno-stringop-overread -Wno-stringop-overflow")
+-    set(IMHEX_COMMON_FLAGS "-Wall -Wextra -Wpedantic -Werror")
+-    set(IMHEX_C_FLAGS "${IMHEX_COMMON_FLAGS} -Wno-restrict -Wno-stringop-overread -Wno-stringop-overflow -Wno-array-bounds")
 +    set(IMHEX_C_FLAGS "")
 +
 +    if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-+        set(IMHEX_C_FLAGS "${IMHEX_C_FLAGS} -Wno-restrict -Wno-stringop-overread -Wno-stringop-overflow")
++        set(IMHEX_C_FLAGS "${IMHEX_C_FLAGS} -Wno-restrict -Wno-stringop-overread -Wno-stringop-overflow -Wno-array-bounds")
 +    endif()
  
      set(CMAKE_C_FLAGS    "${CMAKE_C_FLAGS}    ${IMHEX_C_FLAGS}")
      set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS}  ${IMHEX_C_FLAGS}")
-@@ -422,8 +425,8 @@ macro(setUninstallTarget)
+@@ -406,7 +409,7 @@ macro(setUninstallTarget)
          "${CMAKE_CURRENT_SOURCE_DIR}/cmake/cmake_uninstall.cmake.in"
          "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
          IMMEDIATE @ONLY)
@@ -77,9 +77,6 @@ index 511e7865..ec1b670d 100644
          add_custom_target(uninstall
          COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
      endif()
--endmacro()
-\ No newline at end of file
-+endmacro()
 -- 
-2.38.1
+2.40.0
 

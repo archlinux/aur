@@ -8,7 +8,7 @@
 # NOTE : This PKGBUILD is a copy of https://aur.archlinux.org/packages/imhex (maintained by KokaKiwi) with trivial modifications to fetch the latest commit.
 
 pkgname=imhex-git
-pkgver=1.25.0.r1.g91a4f52f
+pkgver=1.28.0.r73.gb0028b0e
 pkgrel=1
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://imhex.werwolv.net'
@@ -28,31 +28,28 @@ source=("$pkgname::git+https://github.com/WerWolv/ImHex.git"
         "xdgpp::git+https://git.sr.ht/~danyspin97/xdgpp"
         "libromfs::git+https://github.com/WerWolv/libromfs"
         "capstone::git+https://github.com/capstone-engine/capstone#branch=next"
+        "libwolv::git+https://github.com/WerWolv/libwolv"
         "pattern_language::git+https://github.com/WerWolv/PatternLanguage"
         0001-makepkg-Fix-compiler-check.patch
-        0002-fix-Deduplicate-resources-directories.patch
-        pl-0001-Use-C-23-standard.patch
-        pl-0002-makepkg-Remove-extraneous-compiler-flags.patch)
+        pl-0001-Use-C-23-standard.patch)
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'c13f47520affa06b3ab4687d528084ff1f7ecc2cd9600b2e43dae0513727eb5f'
-            'b004f268d18c03e2d225179fb52ca02877e93d81d87b4f08344f19ad4ab6fd31'
-            '2110b942bba25d6d0b0fe4f4ad2b47c9907ad329a0d064ff86bf54b83965f673'
-            '6bf93b82a254f79bdf92aefda4bcf413dcbe26b4b42444f1fd18793ee35cb402')
+            'SKIP'
+            '43bdbbb6edf567201fa52f1c695f77fea9a27dd5c62de615ef74d64a5e676a98'
+            '4c3e667d40eabe2a5ea724125c69f73bcb6774c01db9ad97bc6b633e1c284fc5')
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        '75030d92294ff36642acbae000931ee6b8f03ba6e577b66b5c70a058ca9320f521368fbe225b642df1f4138172c24d966c9ec66fd4eb7f9de24ee896e91363cf'
-        'ad679ef4fde42ebf9adefec9c3bffb9b640e79f2917141940050e285c79b13e1c7ad58f497db01dd22e56750372545ac544fb4b5400c5d5895461f931365a50e'
-        '3c10abfafeb8979924efff0b5d32e543f9ca2fa3eb4216f1c84d8cb5a6ba6c8af4c5b7e3012d4f535d132fe2492c6824473ed309e8ce09d012963de033bf37b5'
-        '2c26d8b28212b98b9bb202f86c5ff84ac4bd44732ee3a30bdca91b576f5a64802c454314baff53621aafa08f761871ae95102b1727ba1f5a5d300103895e07a6')
+        'SKIP'
+        '99e8c5fb5dc0ad07039731c3245bec097de25e675be0f5c52c799738d794ee26df6506adf34fac42663dd39f1c84e7e1675aac5b2f47ef4f2d5ebb903ad4b3a3'
+        'ca3779e974709fa15e55255973eb2ff34fb21251c9f8b00c5b2efcfb175add34b503063984589c8d716b650a9543aa19dc2185b2f531ab8d4363635724114199')
 options=(!lto !strip)
 
 pkgver() {
@@ -64,7 +61,7 @@ prepare() {
   cd "$pkgname"
 
   git submodule init
-  for name in nativefiledialog xdgpp libromfs capstone pattern_language; do
+  for name in nativefiledialog xdgpp libromfs capstone libwolv pattern_language; do
     git config submodule.lib/external/$name.url "$srcdir/$name"
   done
   for name in fmt curl yara/yara; do
@@ -72,13 +69,18 @@ prepare() {
   done
   git -c protocol.file.allow=always submodule update
 
+  for name in libwolv; do
+    git -C lib/external/pattern_language \
+      config submodule.external/$name.url "$srcdir/$name"
+  done
+  git -C lib/external/pattern_language -c protocol.file.allow=always \
+    submodule update
+
   git apply \
-    "$srcdir/0001-makepkg-Fix-compiler-check.patch" \
-    "$srcdir/0002-fix-Deduplicate-resources-directories.patch"
+    "$srcdir/0001-makepkg-Fix-compiler-check.patch"
 
   git -C lib/external/pattern_language apply \
-    "$srcdir/pl-0001-Use-C-23-standard.patch" \
-    "$srcdir/pl-0002-makepkg-Remove-extraneous-compiler-flags.patch"
+    "$srcdir/pl-0001-Use-C-23-standard.patch"
 }
 
 build() {
