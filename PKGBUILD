@@ -6,10 +6,10 @@
 
 pkgbase=java-openjdk-xdg
 pkgname=('jre-openjdk-headless-xdg' 'jre-openjdk-xdg' 'jdk-openjdk-xdg' 'openjdk-src-xdg' 'openjdk-doc-xdg')
-_majorver=19
+_majorver=20
 _minorver=0
-_securityver=2
-_updatever=7
+_securityver=1
+_updatever=9
 pkgrel=1
 pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
 #pkgver=${_majorver}.u${_updatever}
@@ -18,7 +18,7 @@ _git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
 arch=('x86_64')
 url='https://openjdk.java.net/'
 license=('custom')
-makedepends=('java-environment>=11' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx11'
+makedepends=('java-environment>=17' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx11'
              'libxrender' 'libxtst' 'libxt' 'libxext' 'libxrandr' 'alsa-lib' 'pandoc'
              'graphviz' 'freetype2' 'libjpeg-turbo' 'giflib' 'libpng' 'lcms2'
              'libnet' 'bash' 'harfbuzz' 'gcc-libs' 'glibc')
@@ -29,10 +29,10 @@ source=(https://github.com/openjdk/jdk${_majorver}u/archive/${_git_tag}.tar.gz
         freedesktop-jshell.desktop
         xdg-basedir-compliant-fontconfig.patch
         xdg-basedir-compliant-userPrefs.patch)
-sha256sums=('5903efd527dd08e9c235c8822e3d5699c3d18a8618c3e533307e8d6491ffbbf0'
-            '37656108f25ca6943cc89ef09677bd53be0f6aee369f9acb3151803ed2b233f5'
-            '766f83adcd3c7ae70808f3894a1b741681b4e3edc0ff9ee2b229f59bc3fd0a9d'
-            'd4846c8de3dc9056feeb6d0c1d5fc48b639d2e4ae9b94944cb2b1376cb431be6'
+sha256sums=('1b7f42ecedf97a837b1f3499d2b6293b26ffed97627b1bd883452c21cf9f798b'
+            '761d4f1274c7dfb4ff61f6d6cb01504f2f886240229e371647ce227fcf81278e'
+            '2b17178ac414e1d0768c8f482779efa88bfeab17b8b0517df4e66b3c2874131c'
+            '82329d23887df14bce3f8d8f356fe8f4b643831d40ade5fed31a070516f86fd7'
             '25860396475759236e0edf66711b842143b0ddee47eed61e080da158bbc58ce9'
             '48f9e40c4ae8eb79d17fb676893a89b95ac43616827725a9d10de2b1f357642c')
 provides=('jre-openjdk-headless' 'jre-openjdk' 'jdk-openjdk' 'openjdk-src' 'openjdk-doc')
@@ -51,6 +51,11 @@ _nonheadless=(lib/libawt_xawt.so
               lib/libjawt.so
               lib/libjsound.so
               lib/libsplashscreen.so)
+
+_nonjre=(lib/ct.sym
+          lib/libattach.so
+          lib/libsaproc.so
+          lib/src.zip)
 
 prepare() {
   cd ${_jdkdir}
@@ -156,10 +161,17 @@ package_jre-openjdk-headless-xdg() {
 
   cd ${_imgdir}/jre
 
-  install -dm 755 "${pkgdir}${_jvmdir}"
+  install -dm 755 "${pkgdir}${_jvmdir}"/bin
 
-  cp -a bin lib \
-    "${pkgdir}${_jvmdir}"
+  for i in $(ls bin/); do
+    cp ../jdk/bin/$i "${pkgdir}${_jvmdir}/bin/"
+  done
+
+  cp -a ../jdk/lib "${pkgdir}${_jvmdir}"
+
+  for f in "${_nonjre[@]}"; do
+    rm "${pkgdir}${_jvmdir}/${f}"
+  done
 
   for f in "${_nonheadless[@]}"; do
     rm "${pkgdir}${_jvmdir}/${f}"
