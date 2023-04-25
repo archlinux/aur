@@ -1,20 +1,21 @@
-# Maintainer: Emilio Reggi <nag@mailbox.org>
+# Contributor: Emilio Reggi <nag@mailbox.org>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=postsack-bin
-_pkgname=postsack
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
-pkgdesc="A high level visual overview of swaths of email."
+pkgdesc="Visually cluster your emails by sender, domain, and more to identify waste"
 arch=('x86_64')
 url="https://github.com/terhechte/postsack"
 license=('MIT')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=("LICENSE-$pkgver::https://raw.githubusercontent.com/terhechte/postsack/v1.0.0/LICENSE.md")
-source_x86_64=("https://github.com/terhechte/postsack/releases/download/v${pkgver}/postsack_${pkgver}_amd64.deb")
-noextract=("${_pkgname}_${pkgver}_linux_amd64.deb")
-sha256sums_x86_64=("6b318be6f452f51217ed1da28699a441f41d1856a237ce1c469d2075ef503f8f")
-sha256sums=("27a8dc9b024005e4298e225801161df5db47f2ad5f82b03560a3584370c35d61")
+provides=()
+depends=('hicolor-icon-theme' 'gcc-libs' 'glibc' 'libxcb')
+conflicts=("${pkgname%-bin}")
+source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_1.0.0_amd64.deb"
+   "LICENSE::${url}/raw/main/LICENSE.md")
+sha256sums=('c35704da2d6ae3bb6f99b84b37abf40bfa7ec5e4de7e404e62ef5774bfd7d984'
+            '27a8dc9b024005e4298e225801161df5db47f2ad5f82b03560a3584370c35d61')
 
 package() {
-   bsdtar -O -xf "${_pkgname}_${pkgver}_amd64.deb" data.tar.gz | bsdtar -C "${pkgdir}" -xJf -
+   bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}" --gname root --uname root
+   install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
