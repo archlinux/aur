@@ -2,7 +2,7 @@
 
 _pkgname=cros-container-guest-tools
 pkgname=${_pkgname}-git
-pkgver=r394.bb2552b1
+pkgver=r403.0c2dcc71
 pkgrel=1
 pkgdesc="Linux guest tools for the Crostini containers on ChromeOS"
 arch=('any')
@@ -20,7 +20,7 @@ source=("git+${url}"
         'cros-resolved.conf'
         'mimeapps.list')
 sha1sums=('SKIP'
-          'd326cd35dcf150f9f9c8c7d6336425ec08ad2433'
+          'd09816124394214a1f8bb50a70d25eded34c1777'
           '8586cf72dacdcca82022519467065f70fe4a3294'
           '9a68893cadf9190e99cadc4c781ba43e45104b1e'
           '0c21f6c85ecbe8f822c378c7e4d5b3165e56eb3a'
