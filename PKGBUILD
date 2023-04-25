@@ -6,7 +6,7 @@ arch=('x86_64')
 url="https://projects.coin-or.org/Bonmin"
 license=('EPL')
 groups=('coin-or')
-depends=('coin-or-cbc' 'coin-or-ipopt' 'coin-or-bcp')
+depends=('coin-or-cbc' 'coin-or-ipopt')
 makedepends=('nauty')
 source=("https://github.com/coin-or/Bonmin/archive/refs/tags/releases/${pkgver}.tar.gz")
 sha256sums=('8d130430a2776e250e941ee16f51dba301d5f0a00cc288e05f5b985cf1f426cd')
@@ -25,17 +25,18 @@ build() {
               --with-clp-incdir="/usr/include/coin/" \
               --with-cgl-lib="$(pkg-config --libs cgl)" \
               --with-cgl-incdir="/usr/include/coin/" \
-              --with-vol-lib="$(pkg-config --libs vol)" \
-              --with-vol-incdir="/usr/include/coin/" \
               --with-coinutils-lib="$(pkg-config --libs coinutils)" \
               --with-coinutils-incdir="/usr/include/coin/" \
-              --with-bcp-lib="$(pkg-config --libs bcp)" \
-              --with-bcp-incdir="/usr/include/coin/" \
               --with-cbc-lib="$(pkg-config --libs cbc)" \
               --with-cbc-incdir="/usr/include/coin/" \
               --with-ipopt-lib="$(pkg-config --libs ipopt)" \
               --with-ipopt-incdir="/usr/include/coin/"
   make
+}
+
+check() {
+  cd "$srcdir/Bonmin-releases-$pkgver"
+  make test
 }
 
 package() {

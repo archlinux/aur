@@ -9,7 +9,6 @@ pkgbase = coin-or-bonmin
 	makedepends = nauty
 	depends = coin-or-cbc
 	depends = coin-or-ipopt
-	depends = coin-or-bcp
 	source = https://github.com/coin-or/Bonmin/archive/refs/tags/releases/1.8.9.tar.gz
 	sha256sums = 8d130430a2776e250e941ee16f51dba301d5f0a00cc288e05f5b985cf1f426cd
 
