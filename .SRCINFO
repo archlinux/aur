@@ -1,35 +1,33 @@
 pkgbase = electron21-bin
-	pkgdesc = Build cross platform desktop apps with web technologies - binary version 21
-	pkgver = 21.4.3
+	pkgdesc = Build cross platform desktop apps with web technologies - Binary version 21
+	pkgver = 21.4.4
 	pkgrel = 1
 	url = https://electronjs.org/
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	license = custom
 	depends = c-ares
-	depends = ffmpeg
 	depends = gtk3
 	depends = libevent
-	depends = libxslt
-	depends = minizip
 	depends = nss
-	depends = re2
-	depends = snappy
+	depends = wayland
 	optdepends = kde-cli-tools: file deletion support (kioclient5)
 	optdepends = libappindicator-gtk3: StatusNotifierItem support
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
+	optdepends = qt5-base: enable Qt5 with --enable-features=AllowQt
 	optdepends = trash-cli: file deletion support (trash-put)
-	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
-	provides = electron21=21.4.3
-	provides = electron=21.4.3
+	optdepends = xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)
+	provides = electron21=21.4.4
+	provides = electron=21.4.4
 	conflicts = electron21
-	source_x86_64 = electron21-bin-chromedriver-21.4.3-1-x86_64.zip::https://github.com/electron/electron/releases/download/v21.4.3/chromedriver-v21.4.3-linux-x64.zip
-	source_x86_64 = electron21-bin-21.4.3-1-x86_64.zip::https://github.com/electron/electron/releases/download/v21.4.3/electron-v21.4.3-linux-x64.zip
-	sha256sums_x86_64 = 612dcd0a7184927a6dde8e41af672ea6617cca5863b0813eeb2c4b65816be6c5
-	sha256sums_x86_64 = 6c4da2257c66ac118d0874f9a226f3d5b56b6c900d7c7f497a7c606ee1720c32
-	source_aarch64 = electron21-bin-chromedriver-21.4.3-1-aarch64.zip::https://github.com/electron/electron/releases/download/v21.4.3/chromedriver-v21.4.3-linux-arm64.zip
-	source_aarch64 = electron21-bin-21.4.3-1-aarch64.zip::https://github.com/electron/electron/releases/download/v21.4.3/electron-v21.4.3-linux-arm64.zip
-	sha256sums_aarch64 = 21160c465d7cb056e4fb470fd19dd3c3fc6402fb1a4decb2e57a0c74b2ff5a98
-	sha256sums_aarch64 = a1acdda797dc20632a8c8507342d98e9e3e85173884c83327bcf723f99fba396
+	source_x86_64 = electron21-bin-chromedriver-21.4.4-x86_64.zip::https://github.com/electron/electron/releases/download/v21.4.4/chromedriver-v21.4.4-linux-x64.zip
+	source_x86_64 = electron21-bin-21.4.4-x86_64.zip::https://github.com/electron/electron/releases/download/v21.4.4/electron-v21.4.4-linux-x64.zip
+	sha256sums_x86_64 = 9e78201504aee0b132269a9114662ddb477bb55a1458552ac24aeda2f386db0c
+	sha256sums_x86_64 = 9a61c8f0ad986dfc3b45d52814ff60fc1190f47a337156ecddee1d8ec34dc086
+	source_aarch64 = electron21-bin-chromedriver-21.4.4-aarch64.zip::https://github.com/electron/electron/releases/download/v21.4.4/chromedriver-v21.4.4-linux-arm64.zip
+	source_aarch64 = electron21-bin-21.4.4-aarch64.zip::https://github.com/electron/electron/releases/download/v21.4.4/electron-v21.4.4-linux-arm64.zip
+	sha256sums_aarch64 = 1ac8661eb6630e60c2fd002e781c67c20d174a2e76dd939e440a0e4ea116068a
+	sha256sums_aarch64 = b9214c775f4a767d534890d37de4625ace178b7b38ac0c0d56d87ac8e32bb7e5
 
 pkgname = electron21-bin
