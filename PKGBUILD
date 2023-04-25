@@ -3,7 +3,7 @@
 _pkgname=system76-scheduler
 pkgname=${_pkgname}-git
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc='system76 userspace scheduler'
 arch=(x86_64)
@@ -32,5 +32,5 @@ build() {
 
 package() {
   cd ${_pkgname}
-  just rootdir=${pkgdir} install
+  just sysconfdir=/usr/share rootdir=${pkgdir} install
 }
