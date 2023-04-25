@@ -1,4 +1,5 @@
-# Maintainer: IIpho3nix <iipho3nix at gmail dot com>
+# Contributor: IIpho3nix <iipho3nix at gmail dot com>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=goshs-bin
 pkgver=0.3.0
 pkgrel=1
