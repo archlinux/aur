@@ -1,0 +1,25 @@
+pkgbase = python-aiohttp-apispec
+	pkgdesc = Build and document REST APIs with aiohttp and apispec
+	pkgver = 2.2.3
+	pkgrel = 4
+	url = https://github.com/maximdanilchenko/aiohttp-apispec
+	arch = any
+	license = MIT
+	checkdepends = python-pytest-runner
+	checkdepends = python-pytest-aiohttp
+	checkdepends = python-pytest-asyncio
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pip
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-aiohttp
+	depends = python-apispec
+	depends = python-webargs
+	depends = python-jinja
+	source = python-aiohttp-apispec-2.2.3.tar.gz::https://github.com/maximdanilchenko/aiohttp-apispec/archive/v2.2.3.tar.gz
+	source = 3b4d08ea.patch
+	sha512sums = 846c92ce213c2f7165710be0f080fe8fb7c43c3fb4708f80aed3b5cc4c8dc78abf4dc4abbe63edfc8e3f634cdfa0bf7aeabb2a92129a2078d0e2e41680900c73
+	sha512sums = 8f148e0b403e3501b7d78041d1e110a87b7b8bfa574f7030d060605af2d369f86a1cbdbc4880e24faf608d0703c7c7abae787db459bbc05a92ee23385879c4a9
+
+pkgname = python-aiohttp-apispec

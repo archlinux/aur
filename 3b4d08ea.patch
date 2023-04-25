@@ -1,0 +1,44 @@
+From 3b4d08ea694fa799e94397940fb68467f3c4a8a8 Mon Sep 17 00:00:00 2001
+From: Dave <pzhang65@uwo.ca>
+Date: Sun, 29 Aug 2021 15:54:07 -0400
+Subject: [PATCH] update unit tests
+
+---
+ tests/test_documentation.py | 133 ++++++++++++++++++++----------------
+ tests/test_web_app.py       |   6 +-
+ 2 files changed, 76 insertions(+), 63 deletions(-)
+
+diff --git a/tests/test_documentation.py b/tests/test_documentation.py
+index da60fe1..bf3dce6 100644
+--- a/tests/test_documentation.py
++++ b/tests/test_documentation.py
+@@ -132,17 +132,17 @@ async def test_app_swagger_json(aiohttp_app, example_for_request_schema):
+         sort_keys=True,
+     )
+ 
+-async def test_not_register_route_for_none_url():
+-    app = web.Application()
+-    routes_count = len(app.router.routes())
+-    setup_aiohttp_apispec(app=app, url=None)
+-    routes_count_after_setup_apispec = len(app.router.routes())
+-    assert routes_count == routes_count_after_setup_apispec
++# async def test_not_register_route_for_none_url():
++#     app = web.Application()
++#     routes_count = len(app.router.routes())
++#     setup_aiohttp_apispec(app=app, url=None)
++#     routes_count_after_setup_apispec = len(app.router.routes())
++#     assert routes_count == routes_count_after_setup_apispec
+ 
+ 
+-async def test_register_route_for_relative_url():
+-    app = web.Application()
+-    routes_count = len(app.router.routes())
+-    setup_aiohttp_apispec(app=app, url="api/swagger")
+-    routes_count_after_setup_apispec = len(app.router.routes())
+-    assert routes_count == routes_count_after_setup_apispec
++# async def test_register_route_for_relative_url():
++#     app = web.Application()
++#     routes_count = len(app.router.routes())
++#     setup_aiohttp_apispec(app=app, url="api/swagger")
++#     routes_count_after_setup_apispec = len(app.router.routes())
++#     assert routes_count == routes_count_after_setup_apispec
