@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=PPlink
-Exec=pplink %U
-Terminal=false
-Type=Application
-Icon=pplink
-StartupWMClass=pplink
-Comment=帮助电脑、手机、平板等设备建立点到点的安全直连
-Categories=Utility;Network;
