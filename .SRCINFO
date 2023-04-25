@@ -1,6 +1,6 @@
 pkgbase = gocryptfs-git
 	pkgdesc = Encrypted overlay filesystem written in Go
-	pkgver = 20181117
+	pkgver = 20230329
 	pkgrel = 1
 	url = https://github.com/rfjakob/gocryptfs
 	arch = i686
@@ -12,9 +12,7 @@ pkgbase = gocryptfs-git
 	provides = gocryptfs
 	conflicts = gocryptfs
 	source = git+https://github.com/rfjakob/gocryptfs
-	source = gocryptfs.1
 	sha256sums = SKIP
-	sha256sums = 0944535a1bba09d9a56a0abfcf35d00b17338aa10078488aa20116a96bbb4fef
 
 pkgname = gocryptfs-git
 

@@ -1,9 +1,10 @@
-# Maintainer: Michael Duell <mail at akurei ddot me>
+# Contributor: Nasado <hi at nasado dot name>
+# Contributor: Michael Duell <mail at akurei ddot me>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: Peter Reschenhofer <peter.reschenhofer@gmail.com>
 
 pkgname=gocryptfs-git
-pkgver=20181117
+pkgver=20230329
 pkgrel=1
 pkgdesc="Encrypted overlay filesystem written in Go"
 arch=('i686' 'x86_64')
@@ -13,13 +14,11 @@ depends=('fuse')
 # all other cases OpenSSL is much faster and is used instead.
 #
 # https://github.com/rfjakob/gocryptfs#changelog
-makedepends=('git' 'go')
+makedepends=('git' 'go' 'pandoc')
 url="https://github.com/rfjakob/gocryptfs"
 license=('MIT')
-source=(git+https://github.com/rfjakob/gocryptfs
-        "gocryptfs.1")
-sha256sums=('SKIP'
-            '0944535a1bba09d9a56a0abfcf35d00b17338aa10078488aa20116a96bbb4fef')
+source=(git+https://github.com/rfjakob/gocryptfs)
+sha256sums=('SKIP')
 provides=('gocryptfs')
 conflicts=('gocryptfs')
 
@@ -33,6 +32,7 @@ prepare() {
   export GOPATH="$PWD/GO"
   mkdir -p "$GOPATH/src/github.com/rfjakob"
   ln -sf "$PWD/gocryptfs" "$GOPATH/src/github.com/rfjakob/"
+  cd "gocryptfs"
   go get -v -d github.com/rfjakob/gocryptfs
 }
 
@@ -40,6 +40,7 @@ build() {
   msg2 'Building...'
   export GOPATH="$PWD/GO"
   "$GOPATH/src/github.com/rfjakob/gocryptfs/build.bash"
+  "$GOPATH/src/github.com/rfjakob/gocryptfs/Documentation/MANPAGE-render.bash"
 }
 
 package() {
@@ -54,7 +55,9 @@ package() {
           -t "$pkgdir/usr/share/doc/${pkgname%-git}"
 
   msg2 'Installing man pages...'
-  install -Dm 644 "$srcdir/gocryptfs.1" -t "$pkgdir/usr/share/man/man1"
+  install -Dm 644 "$srcdir/gocryptfs/Documentation/gocryptfs.1" -t "$pkgdir/usr/share/man/man1"
+  install -Dm 644 "$srcdir/gocryptfs/Documentation/gocryptfs-xray.1" -t "$pkgdir/usr/share/man/man1"
+  install -Dm 644 "$srcdir/gocryptfs/Documentation/statfs.1" -t "$pkgdir/usr/share/man/man1"
 
   popd
 
