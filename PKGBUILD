@@ -2,30 +2,37 @@
 # Maintainer: swyter <swyterzone+aur@gmail.com>
 pkgname=osxcross-git
 _pkgname=${pkgname%-git}
+_sdkname=MacOSX10.11.sdk # swy: choose your SDK version here
 pkgver=0.15
 pkgrel=1
-pkgdesc="OS X cross toolchain for Linux, FreeBSD and NetBSD"
+pkgdesc="macOS cross-compiling toolchain for Linux, FreeBSD and NetBSD"
 arch=('x86_64')
 url="https://github.com/tpoechtrager/osxcross"
 license=('MIT')
-depends=()
-makedepends=('clang>=3.2' 'patch' 'libxml2' 'bash')
+depends=('clang>=3.2')
+makedepends=('patch' 'libxml2' 'bash')
 optdepends=(
 	'llvm: for Link Time Optimization support and ld64 -bitcode_bundle support'
 	'uuid: for ld64 -random_uuid support'
 	'xar: for ld64 -bitcode_bundle support'
 )
-provides=("$_pkgname" "xar")
-conflicts=("$_pkgname" "xar")
-source=('git+https://github.com/tpoechtrager/osxcross.git' 'https://s3.dockerproject.org/darwin/v2/MacOSX10.11.sdk.tar.xz')
+provides=("$_pkgname" xar)
+conflicts=("$_pkgname" xar apple-darwin-osxcross)
+source=(
+	'git+https://github.com/tpoechtrager/osxcross.git'
+	"https://s3.dockerproject.org/darwin/v2/${_sdkname}.tar.xz"
+)
 md5sums=('SKIP' 'b0d81b95746c7e698c39c7df1e15ca7d')
-noextract=('MacOSX10.11.sdk.tar.xz')
+noextract=("${_sdkname}.tar.xz")
 options=('!strip')
 install="$pkgname.install"
 
+# https://github.com/tpoechtrager/cctools-port/issues/108
+CXXFLAGS="$CXXFLAGS -U_GLIBCXX_ASSERTIONS -Wp,-U_GLIBCXX_ASSERTIONS"
+
 prepare() {
 	cd "$srcdir/$_pkgname"
-	mv ../MacOSX10.11.sdk.tar.xz tarballs/
+	mv "../${_sdkname}.tar.xz" tarballs/
 }
 
 build() {
