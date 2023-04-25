@@ -5,9 +5,9 @@ pkgbase = livebook
 	url = https://livebook.dev
 	arch = x86_64
 	license = Apache-2.0
-	makedepends = git
-	makedepends = rebar3
+	makedepends = elixir
 	depends = elixir
-	depends = erlang-nox
+	provides = livebook
+	conflicts = livebook
 
 pkgname = livebook
