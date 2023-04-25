@@ -1,6 +1,6 @@
 # Maintainer: Mark Collins <tera_1225 [aaht] hotmail ðot com>
 pkgname=noseyparker
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="find secrets and sensitive information in textual data and Git history"
 arch=(any)
@@ -10,7 +10,7 @@ makedepends=('cargo')
 depends=(hyperscan)
 conflicts=(noseyparker-git)
 source=("${url}/archive/refs/tags/v${pkgver}.zip")
-sha256sums=('59b0449c3c0fa7310adcfaf200c06ea76dc2aeb3bb147a03a4528e1a15450b01')
+sha256sums=('e2fb40871d9b2bab200db808c7e25620484be3894ea2612563461c59ebd98cc9')
 
 
 prepare() {
