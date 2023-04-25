@@ -1,7 +1,7 @@
 # Maintainer: Naya Verdier <n at yaverdier dot com>
 pkgname=instater
-pkgver=0.11.0
-pkgrel=4
+pkgver=0.12.0
+pkgrel=1
 pkgdesc='An easy solution for system/dotfile configuration'
 arch=('any')
 url=https://github.com/nayaverdier/instater
@@ -9,8 +9,8 @@ license=('MIT')
 depends=('python' 'python-jinja' 'python-passlib' 'python-rich' 'python-yaml')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/i/instater/instater-$pkgver.tar.gz")
-sha256sums=('0f1543e8d421f882f5e9d97989d21be5739e897fdbc1fd3b53f72040bbd2983e')
-b2sums=('da5fbc88cbc40eed768d974dd1e41722411230330d997b95e1d6eedff843a426088ef2051db6c7e5446fcbf28eb6ab9cd06aaf7c6c47e4af1b2cbb626612a79c')
+sha256sums=('f45b7c5cead57238e032486ca6b80d54f3103da2737c9bb60e06295160ea54b2')
+b2sums=('4390fb5726b02bc98564088204cbec149d9bb46a35ec0533f6a9ea194e6624f88c46728a691be8b2d9e6504e4754d868b95a28dc9429b5267579c0de02dea4cb')
 
 build() {
   cd "instater-$pkgver"
