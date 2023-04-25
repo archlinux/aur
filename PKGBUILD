@@ -5,15 +5,14 @@ _projectname=electron
 _major=22
 _pkgname="${_projectname}${_major}"
 pkgname="${_pkgname}"-bin
-_pkgver="${_major}.3.3"
+_subver="3.6"
+_pkgver="${_major}.${_subver}"
 pkgver="${_pkgver/-/.}"
-pkgrel=2
-pkgdesc="Build cross platform desktop apps with web technologies - binary version ${_major}"
+pkgrel=1
+pkgdesc="Build cross platform desktop apps with web technologies - Binary version ${_major}"
 arch=('x86_64' 'aarch64')
 url=https://electronjs.org/
-license=('MIT')
-provides=("${_pkgname}=${pkgver}" "${_projectname}=${pkgver}")
-conflicts=("${_pkgname}")
+license=('MIT' 'custom')
 depends=('c-ares' 'gtk3' 'libevent' 'nss' 'wayland')
 optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'libappindicator-gtk3: StatusNotifierItem support'
@@ -21,19 +20,21 @@ optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'qt5-base: enable Qt5 with --enable-features=AllowQt'
             'trash-cli: file deletion support (trash-put)'
             'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)')
+provides=("${_pkgname}=${pkgver}" "${_projectname}=${pkgver}")
+conflicts=("${_pkgname}")
 _releaseurl="https://github.com/${_projectname}/${_projectname}/releases/download/v${_pkgver}"
 source_x86_64=(
-    "${pkgname}-chromedriver-${pkgver}-x86_64.zip::${_releaseurl}/chromedriver-v${_pkgver}-linux-x64.zip"
-    "${pkgname}-${pkgver}-x86_64.zip::${_releaseurl}/${_projectname}-v${_pkgver}-linux-x64.zip"
+	"${pkgname}-chromedriver-${pkgver}-x86_64.zip::${_releaseurl}/chromedriver-v${_pkgver}-linux-x64.zip"
+	"${pkgname}-${pkgver}-x86_64.zip::${_releaseurl}/${_projectname}-v${_pkgver}-linux-x64.zip"
 )
 source_aarch64=(
-    "${pkgname}-chromedriver-${pkgver}-aarch64.zip::${_releaseurl}/chromedriver-v${_pkgver}-linux-arm64.zip"
-    "${pkgname}-${pkgver}-aarch64.zip::${_releaseurl}/${_projectname}-v${_pkgver}-linux-arm64.zip"
+	"${pkgname}-chromedriver-${pkgver}-aarch64.zip::${_releaseurl}/chromedriver-v${_pkgver}-linux-arm64.zip"
+	"${pkgname}-${pkgver}-aarch64.zip::${_releaseurl}/${_projectname}-v${_pkgver}-linux-arm64.zip"
 )
-sha256sums_x86_64=('a157d4f2f3faa4854fa4a7bf7014c6c595af3108b5c5e49eee70f50d76be55aa'
-                   'b6acadf9992eade02797077b70c7adfa50de25e4f75fbf3c4eddc427adb16492')
-sha256sums_aarch64=('e68ae0198c5aecabc6ca22b4396d35a7c6b8546146f1e725cbf3add2a7c06272'
-                    '389327654a956730d9fb81f4a0ea143ffdb8d409e04ecc66bacd0d27372b875b')
+sha256sums_x86_64=('f2f46cc1951a3f2142a5f314fda455a4fc2cc0e34a9b602c8d81003730c85c12'
+                   '63c88f21382c65771b214520f8caddaf663ec53945153792d653930dd71ddff8')
+sha256sums_aarch64=('9f742af94f162304882f4bc69e5330c79c5ad993ff8e381cbd335f5516d4005c'
+                    'ffe50eefa4440e7f6168c68901a6cd7dc23ce56c7cc0c1373b9b65add6a0d0ad')
 
 package() {
 	install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"
