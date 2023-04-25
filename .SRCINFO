@@ -1,6 +1,6 @@
 pkgbase = wxbase
 	pkgdesc = wxWidgets base libraries for no X install (3.x branch stable version)
-	pkgver = 3.1.7
+	pkgver = 3.2.2.1
 	pkgrel = 1
 	url = http://wxwidgets.org
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = wxbase
 	provides = wxbase
 	conflicts = wxgtk
 	conflicts = wxwidgets
-	source = https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.7/wxWidgets-3.1.7.tar.bz2
-	sha1sums = 893e7886bc1e9fcf691bd4db0c9e49dc8413f674
+	source = https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.2.1/wxWidgets-3.2.2.1.tar.bz2
+	sha1sums = d645cacbf2678cfc402ae163f2b0e0b05be5d239
 
 pkgname = wxbase

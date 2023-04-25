@@ -1,7 +1,7 @@
 # Maintainer: Ivan Zenin <i.zenin@gmx.com>
 
 pkgname=wxbase
-pkgver=3.1.7
+pkgver=3.2.2.1
 pkgrel=1
 pkgdesc="wxWidgets base libraries for no X install (3.x branch stable version)"
 arch=("i686" "x86_64")
@@ -10,7 +10,7 @@ license=("custom:wxWindows")
 provides=("wxbase")
 conflicts=("wxgtk" "wxwidgets")
 source=("https://github.com/wxWidgets/wxWidgets/releases/download/v${pkgver}/wxWidgets-${pkgver}.tar.bz2")
-sha1sums=("893e7886bc1e9fcf691bd4db0c9e49dc8413f674")
+sha1sums=("d645cacbf2678cfc402ae163f2b0e0b05be5d239")
 
 build() {
   cd "${srcdir}/wxWidgets-${pkgver}"
