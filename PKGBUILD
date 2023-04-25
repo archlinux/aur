@@ -1,6 +1,6 @@
 # Maintainer: water_lift <0xWATERx0@gmail.com>
 pkgname=defold
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 epoch=
 pkgdesc="Defold is a completely free to use game engine for development of desktop, mobile and web games."
@@ -19,17 +19,17 @@ backup=()
 options=()
 install=
 changelog=
-source=("http://d.defold.com/archive/editor-alpha/f5e114aaebe25c5242db5f0066af2f5189c09f99/editor-alpha/editor2/Defold-x86_64-linux.zip"
-	"http://d.defold.com/archive/stable/f5e114aaebe25c5242db5f0066af2f5189c09f99/engine/defoldsdk.zip"
-	"http://d.defold.com/archive/stable/f5e114aaebe25c5242db5f0066af2f5189c09f99/bob/bob.jar"
+source=("http://d.defold.com/archive/editor-alpha/3dbbf1dbebd3a8146f6a917d101882a61f56afdc/editor-alpha/editor2/Defold-x86_64-linux.zip"
+	"http://d.defold.com/archive/stable/3dbbf1dbebd3a8146f6a917d101882a61f56afdc/engine/defoldsdk.zip"
+	"http://d.defold.com/archive/stable/3dbbf1dbebd3a8146f6a917d101882a61f56afdc/bob/bob.jar"
 	"Defold.desktop"
 	"LICENSE"
 	"logo.zip")
 noextract=("bob.jar")
-md5sums=("a722720ca817995913259dd24556f20e"
-	"b33ab143d124b60d25406a73fddd42ec"
-	"0fd941d3de63dc414ac196aec8696d62"
-	"abbb0c03f4c9e7974b63b80e8177ed8b"
+md5sums=("f285f62261165ae369da2182f92baa21"
+	"61df01d87135aedbf1677c754b48c7ba"
+	"442d35a252eeb5a1293df1df5f77868a"
+	"452593425d4cde9b9bba6a3b0325aaf1"
 	"12ddd6bdaaf6397931608af50492f005"
  	"2e220c9bf4a7e2f5aa3b81cfd7b8c8fe")
 validpgpkeys=()
