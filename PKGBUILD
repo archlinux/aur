@@ -1,8 +1,8 @@
 # Maintainer: pryme-svg <edoc.www@gmail.com>
 
 pkgname=resolve-march-native
-pkgver=1.0.0
-pkgrel=3
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="Tool to determine what GCC flags -march=native would resolve into"
 arch=('any')
 url="https://github.com/hartwork/resolve-march-native"
@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hartwork/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('a6d0f16db19d6bc69beca026d43a82d4282e354bf5aaa76e54b0a224a5156946')
+sha256sums=('4d41033a3d5890f42dcf4b42f2363b43e477e2d3386ed7b4afa4392d8a553506')
 
 build() {
 	cd "$srcdir"/$pkgname-$pkgver

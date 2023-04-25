@@ -1,14 +1,14 @@
 pkgbase = resolve-march-native
 	pkgdesc = Tool to determine what GCC flags -march=native would resolve into
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = https://github.com/hartwork/resolve-march-native
 	arch = any
 	license = GPL
 	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python
-	source = resolve-march-native-1.0.0.tar.gz::https://github.com/hartwork/resolve-march-native/archive/1.0.0.tar.gz
-	sha256sums = a6d0f16db19d6bc69beca026d43a82d4282e354bf5aaa76e54b0a224a5156946
+	source = resolve-march-native-2.2.0.tar.gz::https://github.com/hartwork/resolve-march-native/archive/2.2.0.tar.gz
+	sha256sums = 4d41033a3d5890f42dcf4b42f2363b43e477e2d3386ed7b4afa4392d8a553506
 
 pkgname = resolve-march-native
