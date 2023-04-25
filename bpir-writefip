@@ -52,7 +52,8 @@ if [[ $@ =~ "--fip2boot" ]] && [ -L ${fipdevicel} ]; then
   [ -e $tmp/boot ] && rm -rf $tmp/boot
   echo "Moving files from /boot to $tmp/boot"
   mv -fT /boot $tmp/boot
-  parted -s -- "/dev/$pkfip" name $nrfip ${target}-${atfdevice}-boot
+  parted -s -- "/dev/$pkfip" name $nrfip ${target}-${atfdevice}-boot \
+                             set  $nrfip boot on
   mkfs.vfat -v -F 32 -S 512 -s 16 -n "${target^^}-BOOT" ${bootdevicel}
   mkdir /boot
   mount -t vfat ${bootdevicel} /boot
