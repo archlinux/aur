@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Version=1.0
-Name=Solar Wallet
-Comment=Simple and Secure Stellar Wallet
-Exec=/usr/bin/solarwallet %F
-Icon=solarwallet
-Terminal=false
-Categories=Office;Finance;
