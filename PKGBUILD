@@ -1,7 +1,8 @@
-# Maintainer: korreckj328 
+# Maintainer: korreckj328 <korreckj328@gmail.com>
+# Maintainer: adrien Prost-Boucle <adrien.prost-boucle.@laposte.net>
 
 pkgname='mygui-gl-git'
-pkgver=3.4.3.it
+pkgver=3.4.2.git
 pkgrel=1
 
 pkgdesc="MyGUI - OpenGL backend"
@@ -52,7 +53,6 @@ build() {
 		-DMYGUI_INSTALL_TOOLS=TRUE \
 		-DMYGUI_INSTALL_DOCS=FALSE \
 		-DMYGUI_RENDERSYSTEM=4 \
-		-DFREETYPE_INCLUDE_DIR=/usr/include/freetype2/ \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DBUILD_SHARED_LIBS=TRUE
 
