@@ -1,0 +1,14 @@
+pkgbase = yai
+	pkgdesc = Yai - Your AI powered terminal assistant
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/ekkinox/yai
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	source = https://github.com/ekkinox/yai/archive/0.6.0/v0.6.0.tar.gz
+	sha256sums = 16fc15da1157d20b636873d867258c9a0326c52150a02e127a77e505c31351ca
+
+pkgname = yai
