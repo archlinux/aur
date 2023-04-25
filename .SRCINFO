@@ -1,0 +1,13 @@
+pkgbase = libxfce4ui-1-shim
+	pkgdesc = Dummy/ meta package that symlinks the 'libxfce4ui-2' files from the package 'libxfce4ui' to 'libxfce4ui-1', as required by some xfce plugins.
+	pkgver = 4.18.3
+	pkgrel = 1
+	arch = any
+	license = custom: public domain
+	depends = libxfce4ui>=4.18
+	provides = libxfce4ui-1=4.18.3
+	conflicts = libxfce4ui-1
+	source = license-metapackage-pd.txt
+	sha256sums = af68dd29515606a94237214e4c33b0e3f4f2408ed92df3674a043bf2fa2c0078
+
+pkgname = libxfce4ui-1-shim
