@@ -1,0 +1,24 @@
+From a4aff10c8d7d3f5cb4af11456340e06dc2508f45 Mon Sep 17 00:00:00 2001
+From: Philipp Joram <mail@phijor.me>
+Date: Tue, 25 Apr 2023 20:38:56 +0300
+Subject: [PATCH 2/2] Include missing `std::find` from `<algorithm>`
+
+---
+ Source/Core/Gen5/HiddenGrottoArea.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Source/Core/Gen5/HiddenGrottoArea.cpp b/Source/Core/Gen5/HiddenGrottoArea.cpp
+index 0af0c8ae..d9cf554e 100644
+--- a/Source/Core/Gen5/HiddenGrottoArea.cpp
++++ b/Source/Core/Gen5/HiddenGrottoArea.cpp
+@@ -19,6 +19,7 @@
+ 
+ #include "HiddenGrottoArea.hpp"
+ #include <Core/Util/Translator.hpp>
++#include <algorithm>
+ 
+ HiddenGrottoArea::HiddenGrottoArea(u8 location, const std::array<HiddenGrottoSlot, 12> &pokemon, const std::array<u16, 16> &item,
+                                    const std::array<u16, 16> &hiddenItem) :
+-- 
+2.40.0
+

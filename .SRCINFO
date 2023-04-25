@@ -5,9 +5,19 @@ pkgbase = pokefinder
 	url = https://github.com/Admiral-Fish/PokeFinder
 	arch = x86_64
 	license = GPL3
-	makedepends = patchelf
+	makedepends = cmake
 	depends = qt6-base
-	source = pokefinder-4.1.0.tar.gz::https://github.com/Admiral-Fish/PokeFinder/releases/download/v4.1.0/PokeFinder-linux.tar.gz
-	sha256sums = f6d1bd744684c7196404a21d910d6e02a0151a1352299ae7a4063d51a50b790b
+	source = pokefinder-4.1.0::git+https://github.com/Admiral-Fish/PokeFinder.git#tag=v4.1.0
+	source = 0001-Fix-build-failure-by-qualifying-size_t-as-std-size_t.patch
+	source = 0002-Include-missing-std-find-from-algorithm.patch
+	source = git+https://gitlab.com/bzip2/bzip2
+	source = git+https://github.com/ColinDuquesnoy/QDarkStyleSheet
+	source = git+https://github.com/Admiral-Fish/EncounterTableGenerator
+	sha256sums = SKIP
+	sha256sums = 4f3fb9c3826295745417163d8d4ab842b8fc62420f403986b93f4499bc4a0abe
+	sha256sums = 59008b7b7ce02bc4135156ec73aa9aaecde2c6d4556c4aaa35d7f40e2e23a37b
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = pokefinder
