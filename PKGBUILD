@@ -15,7 +15,7 @@ license=('GPL3')
 makedepends=('git')
 options=(!strip)
 depends=('libpurple')
-source=('slack-libpurple::git+https://github.com/dylex/slack-libpurple.git')
+source=('slack-libpurple::git+https://github.com/dylex/slack-libpurple.git#finduserhack')
 sha256sums=('SKIP')
 
 build() {
