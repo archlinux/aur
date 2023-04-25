@@ -2,7 +2,7 @@
 # Contributor: Lukas Grossar <lukas.grossar@gmail.com>
 
 pkgname=dyff
-pkgver=1.5.6
+pkgver=1.5.7
 pkgrel=1
 pkgdesc="Diff tool for YAML files"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0d0aff3e6a39deb5cd274308aa6f0903c9de208cdc45ee1653da47c6853023cf')
+sha256sums=('92a9a61c71e53be7501e11d61cac366039d5fda4b274248b14cf352aed6c507f')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -40,10 +40,10 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -D build/dyff -t "$pkgdir/usr/bin"
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
-	install -Dm644 dyff.bash "$pkgdir/usr/share/bash-completion/completions/dyff"
-	install -Dm644 _dyff -t "$pkgdir/usr/share/zsh/site-functions/"
-	install -Dm644 dyff.fish -t "$pkgdir/usr/share/fish/vendor_completions.d/"
+	install -Dv build/dyff -t "$pkgdir/usr/bin"
+	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dvm644 dyff.bash "$pkgdir/usr/share/bash-completion/completions/dyff"
+	install -Dvm644 _dyff -t "$pkgdir/usr/share/zsh/site-functions/"
+	install -Dvm644 dyff.fish -t "$pkgdir/usr/share/fish/vendor_completions.d/"
 }
