@@ -1,19 +1,15 @@
 # Maintainer: Thayne McCombs <astrothayne at gmail dot com>
 pkgname=wev
 pkgver=1.0.0
-pkgrel=11
+pkgrel=12
 pkgdesc="tool for debugging wayland events, similar to xev"
 url='https://git.sr.ht/~sircmpwn/wev'
 license=(MIT)
 arch=('i686' 'x86_64' 'aarch64')
 depends=('wayland' 'libxkbcommon')
 makedepends=('scdoc' 'wayland-protocols')
-conflicts=('wev-git')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~sircmpwn/wev/archive/$pkgver.tar.gz")
-# The package checksum isn't stable, so skip the checksum
-# since we download from https, the main risk here is if sourcehut changes the
-# contents of the package archive
-sha256sums=('SKIP')
+b2sums=('e777cf1f19a5ad051b81ccd878067ba043c5121f460aed26fa41c999812d9c52e30837cbcb72351de4e532f0427cb2e8f707ca1ddaa09d992cdff3c422638ec2')
 
 build() {
   cd "$pkgname-$pkgver"
