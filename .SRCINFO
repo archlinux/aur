@@ -13,7 +13,7 @@ pkgbase = whitesur-gtk-theme
 	optdepends = whitesur-icon-theme: matching icon theme
 	optdepends = whitesur-cursor-theme: matching cursor theme
 	conflicts = whitesur-gtk-theme-git
-	source = whitesur-gtk-theme-2022-10-27.tar.gz::https://github.com/vinceliuice/WhiteSur-gtk-theme/archive/2023-03-12.tar.gz
+	source = whitesur-gtk-theme-2023-03-12.tar.gz::https://github.com/vinceliuice/WhiteSur-gtk-theme/archive/2023-03-12.tar.gz
 	sha256sums = 64313f5e65976c330bdb0737ddcb2b68b3a4c4e753c3de6873eb9eccf1e5c44c
 
 pkgname = whitesur-gtk-theme
