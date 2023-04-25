@@ -1,6 +1,6 @@
 pkgbase = osxcross-git
 	pkgdesc = macOS cross-compiling toolchain for Linux, FreeBSD and NetBSD
-	pkgver = 0.15
+	pkgver = 0.16
 	pkgrel = 1
 	url = https://github.com/tpoechtrager/osxcross
 	install = osxcross-git.install

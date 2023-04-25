@@ -3,7 +3,7 @@
 pkgname=osxcross-git
 _pkgname=${pkgname%-git}
 _sdkname=MacOSX10.11.sdk # swy: choose your SDK version here
-pkgver=0.15
+pkgver=0.16
 pkgrel=1
 pkgdesc="macOS cross-compiling toolchain for Linux, FreeBSD and NetBSD"
 arch=('x86_64')
@@ -21,6 +21,11 @@ conflicts=("$_pkgname" xar apple-darwin-osxcross)
 source=(
 	'git+https://github.com/tpoechtrager/osxcross.git'
 	"https://s3.dockerproject.org/darwin/v2/${_sdkname}.tar.xz"
+
+	# swy: this repository by an anonymous individual seems to have pre-bundled versions of the other SDKs,
+	#      in case you want to change $_sdkname and use a newer version, comment the URL above and uncomment this one
+	#      or pack your own if you don't trust the unofficial source, which I can understand.
+	#"https://github.com/phracker/MacOSX-SDKs/releases/latest/download/${_sdkname}.tar.xz"
 )
 md5sums=('SKIP' 'b0d81b95746c7e698c39c7df1e15ca7d')
 noextract=("${_sdkname}.tar.xz")
@@ -52,8 +57,11 @@ package() {
 	# swy: copy them over, as we can't seemingly use $pkgdir in build()
 	mv "$srcdir/usr/" "$pkgdir/usr/"
 
+	# swy: as this package conflicts with «xar», make that un/packing tool widely available with a symlink
+	mkdir -p "$pkgdir/usr/bin"; ln -s "$pkgdir/usr/local/osx-ndk-x86/bin/xar" "$pkgdir/usr/bin/xar"
+
 	# swy: make sure the cross-compiled binaries can locate the .so dependencies stored aside in every
 	#      case without having to set funky environment variables or patching every .elf's RUNPATH
-	mkdir -p $pkgdir/etc/ld.so.conf.d/
-	echo '/usr/local/osx-ndk-x86/lib' > $pkgdir/etc/ld.so.conf.d/osxcross.conf
+	mkdir -p "$pkgdir/etc/ld.so.conf.d/"
+	echo '/usr/local/osx-ndk-x86/lib' > "$pkgdir/etc/ld.so.conf.d/osxcross.conf"
 }
