@@ -12,7 +12,7 @@ arch=("x86_64")
 provides=("l1t")
 conflicts=("l1t")
 source=("https://github.com/alex-laycalvert/l1t/releases/download/v$pkgver/l1t-$pkgver-x86_64.tar.gz")
-sha256sums=("8aa10c37dc341aa95cd8476e9a5282aff68bf2dca7dd11dbaea8ffe6a584a01d")
+sha256sums=("178b68fe32c6ae6b1019e5311283ca2ec52f9e0e6e8bcfd487f693cc6e250204")
 
 package() {
     install -Dm755 l1t -t "$pkgdir/usr/bin"
