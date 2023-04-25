@@ -2,8 +2,8 @@
 
 _pkgname=gdtoolkit
 pkgname=python-${_pkgname}
-pkgver=4.0.0
-pkgrel=2
+pkgver=4.0.1
+pkgrel=1
 pkgdesc='Independent set of tools for working with GDScript - parser, linter and formatter'
 arch=(any)
 url='https://github.com/Scony/godot-gdscript-toolkit'
@@ -13,7 +13,7 @@ makedepends=(python-setuptools)
 provides=()
 conflicts=()
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('d521e5bb99a8eab56eb7689a92b0354bd7463160ac10d5ec06f6dff08a070c54')
+sha256sums=('1f7d4811d966c4b8c826836d4905c74e79c1af1eeed13b7f361f87a215f759e4')
 
 build() {
 	cd "$_pkgname-$pkgver"
