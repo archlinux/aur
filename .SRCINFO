@@ -1,12 +1,12 @@
 pkgbase = maqao-bin
 	pkgdesc = MAQAO - Modular Assembly Quality Analyzer and Optimizer
-	pkgver = 2.16.0
+	pkgver = 2.17.0
 	pkgrel = 1
 	url = http://www.maqao.org
 	arch = x86_64
 	license = LGPL3
 	conflicts = maqao
-	source = http://www.maqao.org/release/maqao.intel64.2.16.0.tar.xz
-	sha256sums = 377bfbd2dfcd8f791a41c38c72b65403c5bcdeb33a113350151123a90be504c2
+	source = http://www.maqao.org/maqao_archive/maqao.intel64.2.17.0.tar.xz
+	sha256sums = cdfd752e072ceb934505e495a6fd00ef60c1fe2da34b7fdef65c2590f01acf0a
 
 pkgname = maqao-bin
