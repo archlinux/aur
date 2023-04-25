@@ -1,13 +1,18 @@
 pkgbase = aliview
-	pkgdesc = Software for aligning viewing and editing dna/aminoacid sequences.
-	pkgver = 1.27
-	pkgrel = 1
+	pkgdesc = Software for aligning viewing and editing dna/aminoacid sequences https://doi.org/10.1093/bioinformatics/btu531
+	pkgver = 1.28
+	pkgrel = 2
 	url = http://www.ormbunkar.se/aliview/
 	arch = any
 	license = GPL
-	depends = jre-openjdk
-	source = http://www.ormbunkar.se/aliview/downloads/linux/linux-version-1.27/aliview.tgz
-	sha256sums = c1ae05b949673540cf23cb6ebbcdc16689ae9c00ab528975f0665503440bdcd5
+	makedepends = maven
+	makedepends = java-environment=8
+	depends = java-runtime=8
+	source = aliview.tar.gz::https://github.com/AliView/AliView/archive/refs/tags/v1.28.tar.gz
+	source = aliview.patch::https://patch-diff.githubusercontent.com/raw/AliView/AliView/pull/123.patch
+	source = aliview2.patch::https://github.com/AliView/AliView/pull/125.patch
+	sha256sums = 4af3459c6f29a002d8724c12b17d247673370c6fa10cb47adf55c18f57d9e139
+	sha256sums = 16053c6d6cc9948aed439519d11230fa088a3e8850af63f840fab54f7fec0ed7
+	sha256sums = 0452ddbbc2486c7632bf6f096215190a0bea2aae8c558da3fde8657a14f235bb
 
 pkgname = aliview
-
