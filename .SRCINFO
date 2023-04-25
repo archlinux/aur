@@ -10,7 +10,7 @@ pkgbase = siyuan-appimage
 	provides = siyuan
 	noextract = siyuan-2.8.6-linux.AppImage
 	options = !strip
-	source = https://release.b3log.org/siyuan/siyuan-2.8.6-linux.AppImage
+	source = siyuan/siyuan-2.8.6-linux.AppImage::https://release.b3log.org/siyuan/siyuan-2.8.6-linux.AppImage
 	sha256sums = 640dd262ae681d35b1337bb14d5ae81cfaa4a529f019399e18fb9bfc86cb2ec5
 
 pkgname = siyuan-appimage
