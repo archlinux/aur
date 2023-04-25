@@ -1,7 +1,7 @@
 # Maintainer: David Scholl <djscholl at gmail dot com>
 pkgname=elog
-_pkgver=3.1.4
-_pkgver2=2
+_pkgver=3.1.5
+_pkgver2=1
 pkgver=$_pkgver.$_pkgver2
 pkgrel=1
 pkgdesc="Electronic logbook w/ attached file support, doesn't use a database."
@@ -15,7 +15,7 @@ install=elog.install
 backup=('etc/elog/elogd.cfg')
 source=(https://elog.psi.ch/elog/download/tar/${pkgname}-${_pkgver}-${_pkgver2}.tar.gz
         elogd.service)
-sha256sums=('80f4f82217d3c7e828408e8f4eb7ee3d1473ecb6a8f448f0822eb6a7eeb0fb0a'
+sha256sums=('165fdeec01819c06a1fe14cd1741e9ab284a961053df9ba9f8680f8f7f9e299f'
             'deb0a58546262562ecaa89886e7ec18e4382d76718fb1afdcd9f384e96fb079e')
 
 build() {
