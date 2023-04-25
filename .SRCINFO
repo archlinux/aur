@@ -9,7 +9,6 @@ pkgbase = mingw-w64-coin-or-bonmin
 	makedepends = mingw-w64-configure
 	depends = mingw-w64-coin-or-cbc
 	depends = mingw-w64-coin-or-ipopt
-	depends = mingw-w64-coin-or-bcp
 	options = staticlibs
 	options = !buildflags
 	options = !strip
