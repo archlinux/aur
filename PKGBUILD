@@ -13,7 +13,7 @@ arch=(x86_64)
 url="https://github.com/karelnagel/llama-app/"
 license=('MIT')
 groups=()
-depends=(webkit2gtk gtk3)
+depends=(hicolor-icon-theme cairo gdk-pixbuf2 glib2 webkit2gtk gtk3 glibc gcc-libs openssl-1.1)
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -31,4 +31,5 @@ validpgpkeys=()
 
 package() {
 	tar -xvpf data.tar.gz -C "$pkgdir"
+	chown -R root:root $pkgdir
 }
