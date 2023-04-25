@@ -36,20 +36,24 @@ prepare() {
 }
 
 build() {
-	# swy: use almost all available processor cores, for compiling speed. Leave a spare one.
 	cd "$srcdir/$_pkgname"
+
+	# swy: put all the generated files in there
+	export OSXCROSS_TARGET_DIR="$srcdir/usr/local/osx-ndk-x86"; mkdir -p "$OSXCROSS_TARGET_DIR"
+	sed -i -s "s|export TARGET_DIR\=|export TARGET_DIR\='${OSXCROSS_TARGET_DIR}' #|" "./tools/tools.sh"
+
+	# swy: use almost all available processor cores, for compiling speed. Leave a spare one.
 	JOBS=$(( `nproc` - 1 )) UNATTENDED=yes OSX_VERSION_MIN=10.6  ./build.sh # OCDEBUG=1
 }
 
 package() {
 	cd "$srcdir/$_pkgname"
 
-	# swy: put all the generated files in there
-	mkdir -p $pkgdir/usr/local
-	mv target $pkgdir/usr/local/osx-ndk-x86
+	# swy: copy them over, as we can't seemingly use $pkgdir in build()
+	mv "$srcdir/usr/" "$pkgdir/usr/"
 
 	# swy: make sure the cross-compiled binaries can locate the .so dependencies stored aside in every
-	#      case without having to set funky environment variables or patching the .elf RUNPATH
+	#      case without having to set funky environment variables or patching every .elf's RUNPATH
 	mkdir -p $pkgdir/etc/ld.so.conf.d/
 	echo '/usr/local/osx-ndk-x86/lib' > $pkgdir/etc/ld.so.conf.d/osxcross.conf
 }
