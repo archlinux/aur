@@ -1,6 +1,6 @@
-# Maintainer: adrien Prost-Boucle <adrien.prost-boucle.@laposte.net>
+# Maintainer: korreckj328 
 
-pkgname='mygui-gl-arm-git'
+pkgname='mygui-gl-git'
 pkgver=3.4.2.git
 pkgrel=1
 
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 depends=('boost-libs' 'freetype2' 'sdl2' 'sdl2_image' 'libgl')
 makedepends=('boost' 'cmake')
 optdepends=('mygui-docs: documentation')
-conflicts=('mygui' 'mygui-git' 'mygui-gl-git')
+conflicts=('mygui' 'mygui-git')
 provides=('mygui')
 
 pkgver() {
