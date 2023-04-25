@@ -1,6 +1,5 @@
-/stepmania/
-
-/pkg/
-/src/
-/*.tar.*
-/*.log
+/*
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
+!/*.patch

@@ -1,0 +1,52 @@
+From 6b68a811e441da14aa47d1fe7a884b14c8020e84 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=A9clairevoyant?=
+ <848000+eclairevoyant@users.noreply.github.com>
+Date: Tue, 25 Apr 2023 19:13:42 -0400
+Subject: [PATCH 3/3] fix for ffmpeg 5
+
+---
+ src/CMakeData-arch.cmake                      | 1 +
+ src/arch/MovieTexture/MovieTexture_FFMpeg.cpp | 2 +-
+ src/arch/MovieTexture/MovieTexture_FFMpeg.h   | 1 +
+ 3 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/CMakeData-arch.cmake b/src/CMakeData-arch.cmake
+index 1c330a50bb..6c3a6f2486 100644
+--- a/src/CMakeData-arch.cmake
++++ b/src/CMakeData-arch.cmake
+@@ -105,6 +105,7 @@ else() # Unix
+                 "arch/MovieTexture/MovieTexture_FFMpeg.cpp")
+     list(APPEND SMDATA_ARCH_MOVIE_TEXTURE_HPP
+                 "arch/MovieTexture/MovieTexture_FFMpeg.h")
++    add_compile_definitions(FF_API_NEXT)
+   endif()
+ endif()
+ 
+diff --git a/src/arch/MovieTexture/MovieTexture_FFMpeg.cpp b/src/arch/MovieTexture/MovieTexture_FFMpeg.cpp
+index 7073d931da..3c7a4136d0 100644
+--- a/src/arch/MovieTexture/MovieTexture_FFMpeg.cpp
++++ b/src/arch/MovieTexture/MovieTexture_FFMpeg.cpp
+@@ -508,7 +508,7 @@ RString MovieDecoder_FFMpeg::OpenCodec()
+ 	if( m_pStreamCodec->codec )
+ 		avcodec::avcodec_close( m_pStreamCodec );
+ 
+-	avcodec::AVCodec *pCodec = avcodec::avcodec_find_decoder( m_pStreamCodec->codec_id );
++	const avcodec::AVCodec *pCodec = avcodec::avcodec_find_decoder( m_pStreamCodec->codec_id );
+ 	if( pCodec == nullptr )
+ 		return ssprintf( "Couldn't find decoder %i", m_pStreamCodec->codec_id );
+ 
+diff --git a/src/arch/MovieTexture/MovieTexture_FFMpeg.h b/src/arch/MovieTexture/MovieTexture_FFMpeg.h
+index b105966065..adb71cde75 100644
+--- a/src/arch/MovieTexture/MovieTexture_FFMpeg.h
++++ b/src/arch/MovieTexture/MovieTexture_FFMpeg.h
+@@ -13,6 +13,7 @@ namespace avcodec
+ 		#include <libavformat/avformat.h>
+ 		#include <libswscale/swscale.h>
+ 		#include <libavutil/pixdesc.h>
++		#include <libavcodec/avcodec.h>
+ 
+ 		#if LIBAVCODEC_VERSION_MAJOR >= 58
+ 		#define av_free_packet av_packet_unref
+-- 
+2.39.2
+

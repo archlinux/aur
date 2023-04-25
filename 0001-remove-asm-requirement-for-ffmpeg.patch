@@ -1,14 +1,15 @@
-From b5ba7e1986a8dd921a5f65ce9408157cffe71a63 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Martin=20Kr=C3=B6ning?= <mkroening@posteo.net>
-Date: Sun, 14 Jun 2020 14:03:37 +0200
-Subject: [PATCH 1/2] Don't require assembler for system FFmpeg
+From de94822986eabbf826d624221131768701d21111 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=A9clairevoyant?=
+ <848000+eclairevoyant@users.noreply.github.com>
+Date: Tue, 25 Apr 2023 19:12:33 -0400
+Subject: [PATCH 1/3] remove asm requirement for ffmpeg
 
 ---
  StepmaniaCore.cmake | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/StepmaniaCore.cmake b/StepmaniaCore.cmake
-index dcab93cef0..fdccda5172 100644
+index 99d5a36a92..26a45a0695 100644
 --- a/StepmaniaCore.cmake
 +++ b/StepmaniaCore.cmake
 @@ -443,7 +443,7 @@ elseif(LINUX)
@@ -21,5 +22,5 @@ index dcab93cef0..fdccda5172 100644
        "Neither NASM nor YASM were found. Please install at least one of them if you wish for ffmpeg support."
        )
 -- 
-2.27.0
+2.39.2
 
