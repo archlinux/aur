@@ -1,7 +1,7 @@
 pkgbase = sliver-git
 	pkgdesc = Sliver is a an opensource C2 framework designed by bishop fox
 	pkgver = 1.5.37.r12.gd92aaa9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BishopFox/sliver
 	arch = any
 	license = BSD-3-Clause
