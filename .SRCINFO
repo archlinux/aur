@@ -1,0 +1,14 @@
+pkgbase = python-musicbrainzez
+	pkgdesc = Python bindings for the MusicBrainz web service (WS/2)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/Louson/python-musicbrainzez
+	arch = any
+	license = BSD2
+	depends = python
+	depends = python-authlib
+	depends = python-requests
+	source = https://gitlab.com/Louson/python-musicbrainzez/-/archive/v1.0/python-musicbrainzez-v1.0.tar.bz2
+	md5sums = 49cb93244478d8ecdc2184bf359fbf90
+
+pkgname = python-musicbrainzez
