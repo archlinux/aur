@@ -1,0 +1,15 @@
+pkgbase = parsrs-git
+	pkgdesc = CSV, JSON, XML parsers/generators written in pure POSIX shellscript
+	pkgver = r139.81c3593
+	pkgrel = 1
+	url = https://github.com/ShellShoccar-jpn/Parsrs
+	arch = any
+	groups = shellshoccar-jpn
+	license = Unlicense
+	license = custom:CC0
+	depends = git
+	provides = parsrs
+	source = parsrs-git::git+https://github.com/ShellShoccar-jpn/Parsrs.git
+	md5sums = SKIP
+
+pkgname = parsrs-git
