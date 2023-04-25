@@ -1,6 +1,6 @@
 pkgbase = python-trame
 	pkgdesc = Framework to build applications in plain Python
-	pkgver = 2.3.2
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/Kitware/trame
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = python-trame
 	depends = python-trame-vtk
 	depends = python-trame-simput
 	depends = python-trame-rca
-	source = trame-2.3.2.tar.gz::https://github.com/Kitware/trame/archive/v2.3.2.tar.gz
-	sha512sums = 8ba978fe13e7d4d8626813ff5ebfb1c10a3b94edf7be331636d6329b16fa33c5c9da9f49241abf098b4861fdd9cc89b9c36c163823760ed31bd2dc3ca53f2f63
+	source = trame-2.4.0.tar.gz::https://github.com/Kitware/trame/archive/v2.4.0.tar.gz
+	sha512sums = 9dd35833066acc07ec432dda7480e637a55171511e19e936ed20ce4a04b46fb5015b48f2dc4dfa91a591cbb7546ba0bbda60fd2963081f0da40685855662fb0f
 
 pkgname = python-trame
