@@ -4,4 +4,7 @@ post_install() {
 
     echo "This package builds a bpf module against the linux-headers on your install"
     echo "hopefully these headers are applicable to running kernel(s) you have in play"
+
+    echo "Reference configuration is under /usr/share/system76-scheduler/"
+    echo "rsync -rvl /usr/share/system76-scheduler/ /etc/system76-scheduler/"
 }

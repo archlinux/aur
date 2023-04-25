@@ -24,5 +24,5 @@ build() {
 
 package() {
   cd ${_pkgname}-${pkgver}
-  just rootdir=${pkgdir} install
+  just sysconfdir=/usr/share rootdir=${pkgdir} install
 }
