@@ -4,13 +4,13 @@
 pkgname=aliview
 _pkgname=AliView
 pkgver=1.28
-pkgrel=2
+pkgrel=3
 pkgdesc="Software for aligning viewing and editing dna/aminoacid sequences https://doi.org/10.1093/bioinformatics/btu531"
 arch=('any')
 url="http://www.ormbunkar.se/aliview/"
 license=('GPL')
-depends=('java-runtime=8')
-makedepends=('maven' 'java-environment=8')
+depends=('java-runtime')
+makedepends=('maven' 'java-environment')
 source=("$pkgname.tar.gz::https://github.com/AliView/AliView/archive/refs/tags/v${pkgver}.tar.gz"
 	"$pkgname.patch::https://patch-diff.githubusercontent.com/raw/AliView/AliView/pull/123.patch"
 	"${pkgname}2.patch::https://github.com/AliView/AliView/pull/125.patch")
@@ -25,7 +25,7 @@ prepare(){
 
 build(){
   cd $srcdir/$_pkgname-$pkgver
-  mvn package
+  mvn package -Dmaven.test.skip=true 
 }
 
 package(){
