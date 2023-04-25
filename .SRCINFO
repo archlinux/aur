@@ -1,0 +1,13 @@
+pkgbase = shdotenv
+	pkgdesc = dotenv for shells with support for POSIX-compliant and multiple .env file syntax
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/ko1nksm/shdotenv
+	arch = any
+	license = MIT
+	depends = gawk
+	depends = sh
+	source = shdotenv-0.13.0.sh::https://github.com/ko1nksm/shdotenv/releases/download/v0.13.0/shdotenv
+	sha256sums = 16505e116e39a96719420858a344affec6e031033777f0d6d23cb97709df7537
+
+pkgname = shdotenv

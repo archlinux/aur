@@ -1,0 +1,4 @@
+/pkg/
+/src/
+/shdotenv-*-any.pkg.tar.*
+/shdotenv-*.sh
