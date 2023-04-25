@@ -3,7 +3,7 @@
 _pkgname="libxfce4panel-1"
 pkgname="${_pkgname}-shim"
 pkgver=4.18.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Dummy/ meta package that symlinks the 'libxfce4panel-2' files from the package 'xfce4-panel' to 'libxfce4panel-1', as required by some xfce plugins."
 arch=("any")
 license=('custom: public domain')
@@ -44,7 +44,7 @@ package() {
     _1lib="$(sed -E -e 's|libxfce4panel-2|libxfce4panel-1|' <<<"${_2lib}")"
     ln -svr "${pkgdir}/usr/lib/${_2lib}" "${pkgdir}/usr/lib/${_1lib}"
   done
-  ln -svr "${pkgdir}/usr/lib/pkgconfig/libxfce4panel-2.pc"       "${pkgdir}/usr/lib/pkgconfig/libxfce4panel-1.pc"
+  ln -svr "${pkgdir}/usr/lib/pkgconfig/libxfce4panel-2.0.pc"       "${pkgdir}/usr/lib/pkgconfig/libxfce4panel-1.0.pc"
   ln -svr "${pkgdir}/usr/share/gir-1.0/Libxfce4panel-2.0.gir"    "${pkgdir}/usr/share/gir-1.0/Libxfce4panel-1.0.gir"
   ln -svr "${pkgdir}/usr/share/gtk-doc/html/libxfce4panel-2.0"   "${pkgdir}/usr/share/gtk-doc/html/libxfce4panel-1.0"
   for _lib in /usr/share/vala/vapi/libxfce4panel-2*; do
