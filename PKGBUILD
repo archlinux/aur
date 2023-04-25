@@ -2,7 +2,7 @@
 
 themename="catppuccin"
 pkgname=sddm-theme-${themename}-git
-pkgver=r40.da92da8
+pkgver=r47.bde6932
 pkgrel=1
 pkgdesc="Soothing pastel theme for SDDM"
 arch=('any')
@@ -22,9 +22,17 @@ pkgver() {
 package() {
   cd "${srcdir}"
 
-  install -d "${pkgdir}/usr/share/sddm/themes/"
+  target="${pkgdir}/usr/share/sddm/themes/"
 
-  cp -dr --no-preserve=ownership "${themename}" "${pkgdir}/usr/share/sddm/themes/${themename}"
+  install -d "${target}"
+
+  basepath="${srcdir}/${themename}/src"
+
+  for dir in "${basepath}"/*/; do
+    if [ -d "${dir}" ]; then
+      cp -dr --no-preserve=ownership "${dir}" "${target}/"
+    fi
+  done
 
   rm -rf "${pkgdir}/usr/share/sddm/themes/${themename}/README.md"
 }
