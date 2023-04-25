@@ -1,4 +1,4 @@
-# Maintainer: iTrooz <itrooz+aur@itrooz.proton.me>
+# Maintainer: iTrooz <aur@itrooz.fr>
 # Actual Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 # Contributor: George Rawlinson <george@rawlinson.net.nz>
 
