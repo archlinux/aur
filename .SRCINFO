@@ -1,0 +1,15 @@
+pkgbase = detect-it-easy-bin
+	pkgdesc = Program for determining types of files for Windows, Linux and MacOS.
+	pkgver = 3.07
+	pkgrel = 1
+	url = http://ntinfo.biz/
+	arch = x86_64
+	license = MIT
+	depends = qt5-script
+	depends = qt5-base
+	depends = gcc-libs
+	depends = glibc
+	source = https://github.com/horsicq/DIE-engine/releases/download/3.07/detect-it-easy-3.07-1-x86_64.pkg.tar.zst
+	sha256sums = 1acbda023f2bd42d835cd1d41a980ddede81396cfff510f05178df054285a527
+
+pkgname = detect-it-easy-bin
