@@ -2,7 +2,7 @@
 
 pkgname=firealpaca
 pkgver=2.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and easy digital painting software"
 arch=('i686' 'x86_64')
 url="https://firealpaca.com/download"
@@ -31,6 +31,9 @@ prepare() {
 	--name='FireAlpaca' \
 	--mimetype='image/jpeg;image/bmp;image/x-png;image/gif;image/vnd.adobe.photoshop' \
 	--categories 'Graphics;2DGraphics;RasterGraphics'
+	cd FireAlpaca
+	rm msvcp120.dll
+	rm msvcr120.dll
 }
 
 package() {
