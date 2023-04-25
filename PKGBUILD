@@ -5,15 +5,14 @@ _projectname=electron
 _major=23
 _pkgname="${_projectname}${_major}"
 pkgname="${_pkgname}"-bin
-_pkgver="${_major}.1.4"
+_subver="2.4"
+_pkgver="${_major}.${_subver}"
 pkgver="${_pkgver/-/.}"
-pkgrel=2
-pkgdesc="Build cross platform desktop apps with web technologies - binary version ${_major}"
+pkgrel=1
+pkgdesc="Build cross platform desktop apps with web technologies - Binary version ${_major}"
 arch=('x86_64' 'aarch64')
 url=https://electronjs.org/
-license=('MIT')
-provides=("${_pkgname}=${pkgver}" "${_projectname}=${pkgver}")
-conflicts=("${_pkgname}")
+license=('MIT' 'custom')
 depends=('c-ares' 'gtk3' 'libevent' 'nss' 'wayland')
 optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'libappindicator-gtk3: StatusNotifierItem support'
@@ -21,6 +20,8 @@ optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'qt5-base: enable Qt5 with --enable-features=AllowQt'
             'trash-cli: file deletion support (trash-put)'
             'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)')
+provides=("${_pkgname}=${pkgver}" "${_projectname}=${pkgver}")
+conflicts=("${_pkgname}")
 _releaseurl="https://github.com/${_projectname}/${_projectname}/releases/download/v${_pkgver}"
 source_x86_64=(
 	"${pkgname}-chromedriver-${pkgver}-x86_64.zip::${_releaseurl}/chromedriver-v${_pkgver}-linux-x64.zip"
@@ -30,10 +31,10 @@ source_aarch64=(
 	"${pkgname}-chromedriver-${pkgver}-aarch64.zip::${_releaseurl}/chromedriver-v${_pkgver}-linux-arm64.zip"
 	"${pkgname}-${pkgver}-aarch64.zip::${_releaseurl}/${_projectname}-v${_pkgver}-linux-arm64.zip"
 )
-sha256sums_x86_64=('4b24c4bcb9b2501571d6161c240506f86daca88426be815b1e69b66f187b18cc'
-                   '77fdcb0715cf9b9dace6b5f1afa518528d2b7aa883f9556d5c1de0aaebefa1bd')
-sha256sums_aarch64=('ce80b15f3169d2482bdba393bbd4605e36ffda62c1314364aa93fccbbddb92b1'
-                    'e514ef0a8adeef4ce59e1010d27ef3a2d2cf2fd5a8f8e429dfc12c8ca79b080d')
+sha256sums_x86_64=('9a069175136e59a89de3e0ce9b4a763e420d34f608139f8ae9899e5af861926f'
+                   'c2886b453dddd04ebd08462ce2fa521afd7c7a2df418d5b9d29f1836f5726aa7')
+sha256sums_aarch64=('6495a007e0b7b30056562259ef8ea4a161ab5659d7e99a689b4a155d2e276dfc'
+                    '2dec49bfdff22390ac965f3867384aa8a464f9a13a29c5bb757be328bb734964')
 
 package() {
 	install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"
