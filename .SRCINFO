@@ -1,0 +1,19 @@
+pkgbase = pikture-git
+	pkgdesc = Simple image viewer
+	pkgver = r34.b3c9a12
+	pkgrel = 1
+	url = https://github.com/mistakenelf/pikture
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = libadwaita
+	provides = pikture
+	conflicts = pikture
+	source = git+https://github.com/mistakenelf/pikture.git
+	b2sums = SKIP
+
+pkgname = pikture-git
