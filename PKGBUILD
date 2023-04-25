@@ -5,7 +5,7 @@ name=musicbrainzez
 
 pkgname=$python-$name
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for the MusicBrainz web service (WS/2)"
 url="https://gitlab.com/Louson/python-musicbrainzez"
 license=('BSD2')
