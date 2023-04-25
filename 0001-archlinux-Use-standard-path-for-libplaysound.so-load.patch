@@ -1,4 +1,4 @@
-From 5c56515cab997e316f67d8331502f99eb68b55bb Mon Sep 17 00:00:00 2001
+From 370535f413903330138a2aa5109fb7f51f3cf6a3 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Tue, 13 Sep 2022 19:41:09 +0200
 Subject: [PATCH] archlinux: Use standard path for libplaysound.so loading
@@ -37,5 +37,5 @@ index 92ffc1b..2547925 100644
 -)
 +_playsound = ctypes.cdll.LoadLibrary('/usr/lib/pokete/libplaysound.so')
 -- 
-2.37.3
+2.40.0
 
