@@ -1,4 +1,4 @@
-# Maintainer: Bruce Bertrand <arch-aur@brucebertrand.com>
+# Maintainer: Karl Ljungkvist (k DOT ljungkvist AT gmail DOT com>
 pkgname=snmp++
 pkgver=3.3.9
 pkgrel=1
