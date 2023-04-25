@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mRMRe
-_pkgver=2.1.2
+_pkgver=2.1.2.1
 pkgname=r-${_pkgname,,}
-pkgver=2.1.2
-pkgrel=4
+pkgver=2.1.2.1
+pkgrel=1
 pkgdesc='Parallelized Minimum Redundancy, Maximum Relevance (mRMR)'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -14,7 +14,7 @@ depends=(
   r-igraph
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a59a3cb3cca89f51d9ee6702cd479fd7db8bc2e25b72f45cb6712da983777ca0')
+sha256sums=('d53c392e82a437005b71d0e8b97350d0237608fffafe087700fe7f6770167fd9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
