@@ -1,0 +1,3 @@
+This is a metapackage and it is released unter public domain.
+
+The actual software this metapackage depends on most probably has its own licensing terms.
