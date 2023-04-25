@@ -1,0 +1,12 @@
+pkgbase = turbo-base64
+	pkgdesc = Fastest Base64 SIMD Encoding library
+	pkgver = 2023.04
+	pkgrel = 1
+	url = https://github.com/powturbo/Turbo-Base64
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	source = https://github.com/powturbo/Turbo-Base64/archive/2023.04.tar.gz
+	sha256sums = f6f47d17641bc170b62b37607746b30faf838fe3ad34dd39f201fe6ce734ad92
+
+pkgname = turbo-base64
