@@ -7,13 +7,13 @@ _disname=qq
 
 pkgname="${_pkgname}"-appimage
 pkgver=3.1.1_11223
-pkgrel=1
+pkgrel=2
 pkgdesc="New Linux QQ based on Electron"
 arch=('x86_64' 'aarch64')
 url="https://im.qq.com/linuxqq/"
 license=('custom')
 options=(!strip)
-depends=('zlib' 'hicolor-icon-theme')
+depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 provides=('qq' 'linuxqq')
 
 source_x86_64=("${_Pkgname}-${pkgver}-x86_64.AppImage::https://dldir1.qq.com/qqfile/qq/QQNT/2355235c/${_pkgname}_${pkgver//_/-}_x86_64.AppImage")
