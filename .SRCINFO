@@ -1,8 +1,9 @@
 pkgbase = osxcross-git
 	pkgdesc = OS X cross toolchain for Linux, FreeBSD and NetBSD
-	pkgver = 0.14
+	pkgver = 0.15
 	pkgrel = 1
 	url = https://github.com/tpoechtrager/osxcross
+	install = osxcross-git.install
 	arch = x86_64
 	license = MIT
 	makedepends = clang>=3.2
@@ -13,7 +14,9 @@ pkgbase = osxcross-git
 	optdepends = uuid: for ld64 -random_uuid support
 	optdepends = xar: for ld64 -bitcode_bundle support
 	provides = osxcross
+	provides = xar
 	conflicts = osxcross
+	conflicts = xar
 	noextract = MacOSX10.11.sdk.tar.xz
 	options = !strip
 	source = git+https://github.com/tpoechtrager/osxcross.git

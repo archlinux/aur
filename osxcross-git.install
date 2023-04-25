@@ -1,0 +1,22 @@
+# Maintainer: swyter <swyterzone+aur@gmail.com>
+
+post_install()
+{
+    echo ""
+    echo -e "\e[1mImportant:\e[0m Don't forget to add \x1B[32m/usr/local/osx-ndk-x86/bin\x1B[0m to your PATH variable when trying to use your cross-compiler:"
+    echo -e "           Now you can use \e[3mo32-clang(++)\e[0m and \e[3mo64-clang(++)\e[0m like a normal compiler."
+    echo ""
+    echo -e "\e[1m           Example usage:\e[0m"
+    echo -e "\e[1m             Example 1:\e[0m CC=o32-clang ./configure --host=i386-apple-darwin15"
+    echo -e "\e[1m             Example 2:\e[0m CC=i386-apple-15-clang ./configure --host=i386-apple-darwin15"
+    echo -e "\e[1m             Example 3:\e[0m o64-clang -Wall test.c -o test"
+    echo -e "\e[1m             Example 4:\e[0m x86_64-apple-darwin15-strip -x test"
+    echo -e ""
+
+    # ldconfig
+}
+
+post_upgrade()
+{
+    post_install
+}
