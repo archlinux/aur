@@ -1,21 +1,33 @@
 # Maintainer: Sedeer el-Showk <s.elshowk@netherrealm.net>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 pkgname=fastqc
-pkgver=0.11.9
-pkgrel=1
+_pkgname=FastQC
+pkgver=0.12.1
+pkgrel=2
 pkgdesc='A quality control tool for high throughput sequence data.'
 arch=('any')
 url="http://www.bioinformatics.babraham.ac.uk/projects/fastqc"
 license=('GPL3')
-depends=('perl' 'java-environment>=6' 'ttf-dejavu')
-source=("http://www.bioinformatics.babraham.ac.uk/projects/$pkgname/${pkgname}_v$pkgver.zip")
-md5sums=('ee7901b681bb2762d75d5a56c7ec6958')
-
+depends=('perl' 'java-runtime' 'ttf-dejavu')
+makedepends=('ant' 'java-environment')
+source=("$pkgname-$pkgver::https://github.com/s-andrews/FastQC/archive/refs/tags/v${pkgver}.tar.gz"
+	"$pkgname.patch::https://github.com/s-andrews/FastQC/commit/e73f094ec165882cc71707a5dd5d3dd263a51b83.patch")
+md5sums=('2d22a29649394f589e6f03d8d8c3eec9'
+         '37a54b16eeb73d39a88893e326192e29')
+prepare() {
+  cd $_pkgname-$pkgver
+  patch -p1 < $srcdir/$pkgname.patch
+}
+build() {
+  cd $_pkgname-$pkgver
+  ant
+}
 package() {
-  mkdir $pkgdir/opt/
-  cp -r $srcdir/FastQC/ $pkgdir/opt/
+  mkdir -p $pkgdir/usr/share/$pkgname/
+  cp -r $srcdir/$_pkgname-$pkgver/bin/* $pkgdir/usr/share/$pkgname/
 
   mkdir -p "${pkgdir}/usr/bin/"
-  chmod 755 $pkgdir/opt/FastQC/fastqc
-  ln -s "/opt/FastQC/fastqc" "${pkgdir}/usr/bin/"
+  chmod 755 $pkgdir/usr/share/$pkgname/fastqc
+  ln -s "/usr/share/$pkgname/fastqc" "${pkgdir}/usr/bin/"
 }
