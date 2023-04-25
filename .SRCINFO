@@ -1,13 +1,15 @@
 pkgbase = walc-appimage
-	pkgdesc = An unofficial WhatsApp Desktop client for Linux systems – AppImage binary
-	pkgver = 0.2.2
-	pkgrel = 2
+	pkgdesc = An unofficial WhatsApp Desktop client for linux systems.
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/WAClient/WALC
 	arch = x86_64
 	license = GPL3
 	depends = zlib
+	depends = glibc
+	conflicts = walc
 	options = !strip
-	source = https://github.com/WAClient/WALC/releases/download/v0.2.2/WALC-0.2.2.AppImage
-	sha256sums = 8acf7bc0ef68692417360273c9e63f5f6bf139e63052bc87adafb308520364e9
+	source = walc-0.3.0.AppImage::https://github.com/WAClient/WALC/releases/download/v0.3.0/WALC-0.3.0.AppImage
+	sha256sums = 0fc318afe1d8627c9e9288594612503eb475321712b8c9d31e74d442906be67f
 
 pkgname = walc-appimage
