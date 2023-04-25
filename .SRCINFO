@@ -1,7 +1,7 @@
 pkgbase = rutoken
 	pkgdesc = Support for cryptographic tokens from Aktiv-Soft JSC
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.rutoken.ru/support/download/
 	arch = x86_64
 	license = custom

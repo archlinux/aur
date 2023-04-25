@@ -2,7 +2,7 @@
 
 pkgname=rutoken
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Support for cryptographic tokens from Aktiv-Soft JSC"
 url="https://www.rutoken.ru/support/download/"
 arch=('x86_64')

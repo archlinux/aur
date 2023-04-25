@@ -19,7 +19,10 @@ build() {
       echo "DefaultDependencies=no"
     ) > "$BUILDROOT/usr/lib/systemd/system/pcscd.socket.d/mkinitcpio.conf"
 
-    add_symlink "/usr/lib/systemd/system/cryptsetup.target.wants/pcscd.socket" "/usr/lib/systemd/system/pcscd.socket"
+    # pcscd.socket -> cryptsetup-pre.target -> systemd-cryptsetup@.service -> cryptsetup.target
+    add_systemd_unit "cryptsetup-pre.target"
+    add_symlink "/usr/lib/systemd/system/cryptsetup-pre.target.wants/pcscd.socket" "/usr/lib/systemd/system/pcscd.socket"
+    add_symlink "/usr/lib/systemd/system/cryptsetup.target.wants/cryptsetup-pre.target" "/usr/lib/systemd/system/cryptsetup-pre.target"
 
     add_binary "/usr/lib/pkcs11/librtpkcs11ecp.so"
     add_file "/usr/share/p11-kit/modules/rutoken.module"
