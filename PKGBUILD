@@ -8,8 +8,8 @@ arch=(x86_64)
 url='https://github.com/Ryujinx/release-channel-master'
 license=('MIT')
 depends=('dotnet-runtime')
-provides=(Ryujinx)
-conflicts=(Ryujinx)
+provides=(ryujinx)
+conflicts=(ryujinx Ryujinx)
 options=('!strip')
 source=("${url}/releases/download/${pkgver}/ryujinx-${pkgver}-linux_x64.tar.gz"
         'https://raw.githubusercontent.com/Ryujinx/Ryujinx/master/distribution/linux/Ryujinx.desktop'
