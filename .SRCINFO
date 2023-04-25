@@ -1,7 +1,7 @@
 pkgbase = twitch-tui
 	pkgdesc = Twitch chat in the terminal
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Xithrius/twitch-tui
 	arch = x86_64
 	arch = arm
