@@ -1,13 +1,13 @@
 pkgbase = powerstat
 	pkgdesc = A tool for measuring a laptops power usage via the battery.
-	pkgver = 0.03.02
+	pkgver = 0.03.03
 	pkgrel = 1
 	url = https://github.com/ColinIanKing/powerstat
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = glibc
-	source = powerstat-0.03.02.tar.gz::https://github.com/ColinIanKing/powerstat/archive/refs/tags/V0.03.02.tar.gz
-	sha256sums = f1f3ffb437845613b9b60c015019dd3e587604ea00b3aa2412fc5edeb9a9709b
+	source = powerstat-0.03.03.tar.gz::https://github.com/ColinIanKing/powerstat/archive/refs/tags/V0.03.03.tar.gz
+	sha256sums = 4d57b119896b777adccaacdf53db32b5b45426a3182adac84f96a64b671a79ee
 
 pkgname = powerstat
