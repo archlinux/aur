@@ -1,7 +1,7 @@
 # Maintainer: silverhikari <kerrickethan@gmail.com>
 pkgname=decent-sampler-bin
 pkgver=1.8.9
-pkgrel=2
+pkgrel=3
 pkgdesc="a sampling plugin that allows you to play samples in the Decent Sampler format"
 arch=(x86_64)
 url="https://www.decentsamples.com/product/decent-sampler-plugin/"
