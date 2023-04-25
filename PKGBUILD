@@ -2,8 +2,8 @@
 
 _pkgname=system76-scheduler
 pkgname=${_pkgname}-git
-pkgver=1.2.0.1.gc103229
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 epoch=2
 pkgdesc='system76 userspace scheduler'
 arch=(x86_64)
@@ -12,7 +12,7 @@ license=('MPL-2')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 depends=(bcc-tools python-bcc)
-makedepends=(git rust just linux-headers)
+makedepends=(git rust just linux-headers clang pipewire pkgconf)
 source=("git+$url")
 sha256sums=('SKIP')
 install=install.sh
@@ -27,8 +27,7 @@ pkgver() {
 
 build() {
   cd ${_pkgname}
-  export EXECSNOOP_PATH=/usr/share/bcc/tools/execsnoop
-  just all
+  just execsnoop=/usr/share/bcc/tools/execsnoop build-release
 }
 
 package() {
