@@ -1,0 +1,11 @@
+[Desktop Entry]
+
+Type=Application
+Version=1.0
+Name=Decent Sampler
+Comment=DecentSampler player
+Path=/usr/bin
+Exec=DecentSampler
+Icon=decent-sampler
+Terminal=false
+Categories=Audio;
