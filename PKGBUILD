@@ -21,7 +21,7 @@ build() {
 	cd "pcapplusplus"
 	mkdir -p "build"
 	cd build
-	cmake -DCMAKE_INSTALL_PREFIX='/usr' ..
+	cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_INSTALL_LIBDIR='/usr/lib/pcapplusplus' ..
 	make
 }
 
