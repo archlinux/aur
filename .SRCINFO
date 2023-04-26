@@ -6,7 +6,7 @@ pkgbase = flipt-bin
 	arch = x86_64
 	license = GPL3
 	conflicts = flipt
-	source = flipt-1.20.0.tar.gz::https://github.com/markphelps/flipt/releases/download/v1.20.0/flipt_1.20.0_linux_x86_64.tar.gz
+	source = flipt-1.20.0.tar.gz::https://github.com/flipt-io/flipt/releases/download/v1.20.0/flipt_1.20.0_linux_x86_64.tar.gz
 	sha256sums = 79f6ea788ecb48e09613732b2b64e7b95a4723baab7e79a20c5b64d631818de1
 
 pkgname = flipt-bin
