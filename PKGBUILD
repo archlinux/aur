@@ -10,7 +10,7 @@ pkgname='dual-root'
 pkgdesc='Dual Root Tools for Managing dual esp systems'
 _gitname='dual-root'
 
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 url="https://github.com/gene-git/dual-root"
 
@@ -22,7 +22,7 @@ depends=('python>3.9' 'efibootmgr' 'util-linux' 'rsync' 'inotify-tools' 'python-
 makedepends=('git')
 
 # See mkpkg https://github.com/gene-git/Arch-mkpkg
-_mkpkg_depends=()
+_mkpkg_depends=('python>minor')
 source=("git+https://github.com/gene-git/${_gitname}")
 sha512sums=('SKIP')
 
