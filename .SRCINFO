@@ -1,6 +1,6 @@
 pkgbase = black-magic-debug-git
 	pkgdesc = Plug&Play in application debugger for microcontrollers
-	pkgver = 1.9.0.rc1.r33.g302c8b53
+	pkgver = 1.9.0.r662.gcfbeeb50
 	pkgrel = 1
 	url = https://black-magic.org
 	arch = any

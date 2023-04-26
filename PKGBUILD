@@ -3,7 +3,7 @@
 _pkgbase='black-magic-debug'
 pkgbase="${_pkgbase}-git"
 pkgname=(black-magic-debug-app-git black-magic-debug-udev-git)
-pkgver=1.9.0.rc1.r33.g302c8b53
+pkgver=1.9.0.r662.gcfbeeb50
 pkgrel=1
 pkgdesc='Plug&Play in application debugger for microcontrollers'
 arch=('any')
