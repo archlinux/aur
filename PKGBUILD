@@ -5,20 +5,20 @@
 #
 # Get the Ubuntu tarball from https://developer.codeplay.com/products/computecpp/ce/download
 pkgname=computecpp
-pkgver=2.3.0
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="Accelerates Complex C++ Applications on Heterogeneous Compute 
 Systems using Open Standards"
 arch=('x86_64')
 url="https://www.codeplay.com/products/computesuite/computecpp"
 license=('EULA')
-source=("https://computecpp.codeplay.com/downloads/computecpp-ce/2.3.0/x86_64-linux-gnu.tar.gz")
-sha256sums=('24ed68e537bee10b3a665d8116a8a93ecb57e96b3cd9077b46edb6967157d0f2')
+source=("https://computecpp.codeplay.com/downloads/computecpp-ce/2.11.0/x86_64-linux-gnu.tar.gz")
+sha256sums=('5383b8939fd60c3df4c71c7b8d9321057a27894428ece1437c9d6ab3138ef9ef')
 depends=(ncurses5-compat-libs opencl-driver ocl-icd)
 options=(!strip)
 
 package() {
-    _pkgbasename=ComputeCpp-CE-2.3.0-x86_64-linux-gnu
+    _pkgbasename=ComputeCpp-CE-2.11.0-x86_64-linux-gnu
     cd "$srcdir"
     mkdir -p "$pkgdir/opt"
     mkdir -p "$pkgdir/usr/bin"
