@@ -1,28 +1,24 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
-
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=werckmeister-bin
-pkgver=0.1.55
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="An open source Sheet Music MIDI Compiler"
 arch=('x86_64')
 url="http://werckme.github.io"
+_githuburl="https://github.com/werckme/werckmeister"
 license=('GPL3')
-provides=('werckmeister')
-depends=('lua'
-         'jack'
-         'alsa-lib')
-source=("${pkgname}-${pkgver}.sh::https://github.com/werckme/werckmeister/releases/download/v${pkgver}/werckmeister-${pkgver}-Linux.sh")
-sha256sums=('34adb67a1a35d488084da4afe55a97548ac37add5d7934bcba2b0c21388f92e0')
+provides=()
+depends=('alsa-lib' 'glibc' 'gcc-libs')
+options=(!strip)
+source=("${pkgname%-bin}-${pkgver}.sh::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-Linux.sh")
+sha256sums=('ae262ef4583008c746d93a479cbff18c03bfa49f10d766379e0afbce6a8c493a')
 
 package () {
   install -d "${pkgdir}/usr"
-  chmod 755 ${pkgname}-${pkgver}.sh
-  ./${pkgname}-${pkgver}.sh --prefix="${pkgdir}"/usr --exclude-subdir
-  chmod 755 "${pkgdir}/usr/bin"
-  chmod 755 "${pkgdir}/usr/include"
-  chmod 755 "${pkgdir}/usr/lib"
-  chmod 755 "${pkgdir}/usr/lib/cmake"
-  chmod 755 "${pkgdir}/usr/lib/pkgconfig"
-  chmod 755 "${pkgdir}/usr/share"
+  chmod 755 "${srcdir}/${pkgname%-bin}-${pkgver}.sh"
+  "./${pkgname%-bin}-${pkgver}.sh" --prefix="${pkgdir}/usr" --exclude-subdir --skip-license
+  find "${pkgdir}/usr" -type f -exec chmod 755 * {} \;
   chown root:root -R "${pkgdir}"
+  chmod 444 "${pkgdir}/usr/lib/librtmidi_static.a"
 }
