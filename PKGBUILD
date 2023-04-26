@@ -26,7 +26,7 @@ source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}${_extname}"
         "ffmpeg.patch")
 sha256sums=('SKIP'
             'SKIP'
-            'bc8a8460c967d084e2643431dbb06c03897f1944a0e899318fc78b611f9255e6')
+            'd5fcd4018a665e7a591ab796569777cf0a74fadc7c953f6879f37c949f82e7ae')
 
 prepare() {
     cd "MEGAsync"
