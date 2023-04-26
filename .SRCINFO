@@ -1,6 +1,6 @@
 pkgbase = obs-backgroundremoval-git
 	pkgdesc = Background removal plugin for OBS studio (precompiled onxxruntime, git version, CUDA)
-	pkgver = v0.3.0.beta.r9.0ba4a82
+	pkgver = v0.5.17.r5.0b68535
 	pkgrel = 1
 	url = https://github.com/royshil/obs-backgroundremoval
 	arch = x86_64
@@ -11,10 +11,6 @@ pkgbase = obs-backgroundremoval-git
 	depends = opencv
 	conflicts = obs-backgroundremoval
 	source = git+https://github.com/royshil/obs-backgroundremoval.git
-	source = remove_cuda_provider_include.patch
-	source = https://github.com/microsoft/onnxruntime/releases/download/v1.9.0/onnxruntime-linux-x64-gpu-1.9.0.tgz
 	sha256sums = SKIP
-	sha256sums = 9ed2b9bb22dd3f29644f4386cca5dae6ff7db0b28773b45e659e41a54d2491f5
-	sha256sums = 2fb0e4ed01aec68860cdea372a51db3d0648c21e90432458884db674ea576dd8
 
 pkgname = obs-backgroundremoval-git
