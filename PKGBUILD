@@ -2,7 +2,7 @@
 # ex-Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=warp
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Fast and secure file transfer"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ checkdepends=('appstream-glib')
 conflicts=("$pkgname-share-files")
 replaces=("$pkgname-share-files")
 source=($url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
-b2sums=('84514cbf82fe6765cc81ea6a3bc2ca5b5f29b527ee932b55e6a58bfa65bcca05e3542451fb425be9506fc2237e4fe58bc32d4d72112155d77a0cc2121df17e52')
+b2sums=('cecd8746a7c993655d9c01ed79fbf18779451f50bac2d7d3faf31e7255aa8203798d77f25835b00094914184d0422ead618ded8028ee5503deb277095b358a4c')
 
 prepare() {
   # Temporary solution to the issue: File name conflict
