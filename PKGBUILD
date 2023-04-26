@@ -2,7 +2,7 @@ phpbase=81
 suffix=
 extname=igbinary
 pkgname="php${phpbase}-${extname}${suffix}"
-pkgver=3.2.6
+pkgver=3.2.14
 pkgrel=1
 pkgdesc="php${phpbase} PECL extension igbinary"
 url="http://pecl.php.net/package/${extname}"
@@ -12,7 +12,6 @@ makedepends=("php${phpbase}${suffix}")
 depends=("php${phpbase}${suffix}")
 backup=("etc/php${phpbase}/conf.d/${extname}.ini")
 source=("http://pecl.php.net/get/${extname}-${pkgver}.tgz")
-md5sums=('6970abb34217faff470767c2b84ea2da')
 
 build() {
   cd "$srcdir/$extname-$pkgver"
@@ -34,3 +33,4 @@ package() {
     "${pkgdir}/etc/php${phpbase}${suffix}/conf.d/${extname}.ini"
 }
 
+sha256sums=('6337147a4fb888072566674837bda9928ee06ee7f0114b4338b86c816232925d')
