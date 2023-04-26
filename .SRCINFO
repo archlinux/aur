@@ -1,10 +1,11 @@
 pkgbase = bmputil-git
 	pkgdesc = A tool for flashing Black Magic Probe firmware
-	pkgver = r57.59839df
-	pkgrel = 1
+	pkgver = r59.1c0a816
+	pkgrel = 2
 	url = https://black-magic.org
 	arch = x86_64
 	license = None
+	makedepends = rust
 	makedepends = cargo
 	provides = bmputil
 	conflicts = bmputil
