@@ -1,6 +1,6 @@
 # Maintainer: Vinicius Moura Longaray <vmouralongaray@gmail.com>
 pkgname=spectrum-git
-pkgver=r265.615d7b6
+pkgver=r266.22296f4
 pkgrel=1
 pkgdesc="Console-based music player with equalizer written in C++."
 arch=("any")
@@ -28,6 +28,7 @@ build() {
         -DENABLE_COVERAGE=OFF \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -G Ninja
         ..
 
     cmake --build .
