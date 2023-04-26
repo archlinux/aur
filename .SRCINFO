@@ -1,0 +1,14 @@
+pkgbase = form-bin
+	pkgdesc = The FORM project for symbolic manipulation of very big expressions
+	pkgver = 4.3.1
+	pkgrel = 1
+	url = https://www.nikhef.nl/~form/
+	arch = x86_64
+	license = GPL3
+	provides = form
+	provides = tform
+	conflicts = form-git
+	source = https://github.com/vermaseren/form/releases/download/v4.3.1/form-4.3.1-x86_64-linux.tar.gz
+	sha256sums = 7af2edb16a2bd1a929ee0ccfd9af7e27b8ab7be3ed0f7bf0f9be04dc792ecd17
+
+pkgname = form-bin
