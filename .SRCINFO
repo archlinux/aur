@@ -1,7 +1,7 @@
 pkgbase = parsrs-git
 	pkgdesc = CSV, JSON, XML parsers/generators written in pure POSIX shellscript
 	pkgver = r139.81c3593
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ShellShoccar-jpn/Parsrs
 	arch = any
 	groups = shellshoccar-jpn
