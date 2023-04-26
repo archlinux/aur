@@ -1,17 +1,14 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
+# Maintainer: Porous3247 <pqtb3v7t at jasonyip1 dot anonaddy dot me>
 
-# Maintainer: Asuka Minato <asukaminato at nyan dot eu dot org>
-pkgname=llama-rs-git
-pkgver=r157.a067431
+_pkgname="llama-rs"
+pkgname="${_pkgname}-git"
+pkgver=r342.6e8aa79
 pkgrel=1
 epoch=
 pkgdesc="Run LLaMA inference on CPU, with Rust 🦀🚀🦙"
 arch=(any)
 url="https://github.com/setzer22/llama-rs"
-license=('MIT')
+license=('MIT' 'APACHE')
 groups=()
 depends=(glibc gcc-libs)
 makedepends=(git cargo)
@@ -30,18 +27,19 @@ sha256sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
-  cd $srcdir/llama-rs
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${_pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "llama-rs"
-	cargo build --release
+    cd "${_pkgname}"
+    cat LICENSE-* > LICENSE
+    cargo build --release
 }
 
 package() {
-	cd llama-rs
-	install -Dm755 target/release/llama-cli -t $pkgdir/usr/bin/
-	install -Dm644 LICENSE -t $pkgdir/usr/share/licenses/$pkgname/
-	install -Dm644 README.md -t $pkgdir/usr/share/doc/$pkgname/
+    cd llama-rs
+    install -Dm755 target/release/llama-cli -t "${pkgdir}/usr/bin/"
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
