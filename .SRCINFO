@@ -1,10 +1,11 @@
 pkgbase = mailctl-bin
 	pkgdesc = Provide OAuth2 renewal and authorization capabilities
-	pkgver = 0.8.7
+	pkgver = 0.8.8
 	pkgrel = 1
 	url = https://sr.ht/~petrus/mailctl
 	install = .INSTALL
 	arch = x86_64
+	arch = aarch64
 	license = BSD
 	depends = gnupg
 	optdepends = msmtp: an SMTP client
@@ -15,7 +16,9 @@ pkgbase = mailctl-bin
 	provides = mailctl
 	conflicts = mailctl
 	conflicts = mailctl-git
-	source = https://git.sr.ht/~petrus/mailctl/refs/download/0.8.7/mailctl-0.8.7.tgz
-	sha256sums = f9fd0656c2c9467d44abd8e9e88fc9f85e7d1df9aacc3aa0bc6a49c3960b4ff4
+	source_x86_64 = https://git.sr.ht/~petrus/mailctl/refs/download/0.8.8/mailctl-0.8.8-Linux-x86_64.tgz
+	sha256sums_x86_64 = 0c303bc69c333f60d47a95deb48490a5a57d064190ca0fb227ebd18ac8b7a693
+	source_aarch64 = https://git.sr.ht/~petrus/mailctl/refs/download/0.8.8/mailctl-0.8.8-Linux-aarch64.tgz
+	sha256sums_aarch64 = faa268372f87def03ced6551246b04796018a4362caedc9b2f054bbcd76cf18e
 
 pkgname = mailctl-bin

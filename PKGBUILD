@@ -2,11 +2,10 @@
 
 pkgname=mailctl-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.8.7
-release_bin="${_pkgname}-${pkgver}-Linux-x86_64"
+pkgver=0.8.8
 pkgrel=1
 pkgdesc="Provide OAuth2 renewal and authorization capabilities"
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url="https://sr.ht/~petrus/${_pkgname}"
 #url="https://github.com/pdobsan/${_pkgname}"
 license=('BSD')
@@ -22,14 +21,17 @@ optdepends=(
            )
 provides=(${_pkgname})
 conflicts=(${_pkgname} ${_pkgname}-git)
-source=(https://git.sr.ht/~petrus/mailctl/refs/download/${pkgver}/$_pkgname-$pkgver.tgz)
-sha256sums=('f9fd0656c2c9467d44abd8e9e88fc9f85e7d1df9aacc3aa0bc6a49c3960b4ff4')
+release=$_pkgname-$pkgver-Linux
+source_x86_64=(https://git.sr.ht/~petrus/mailctl/refs/download/${pkgver}/$release-x86_64.tgz)
+source_aarch64=(https://git.sr.ht/~petrus/mailctl/refs/download/${pkgver}/$release-aarch64.tgz)
+sha256sums_x86_64=('0c303bc69c333f60d47a95deb48490a5a57d064190ca0fb227ebd18ac8b7a693')
+sha256sums_aarch64=('faa268372f87def03ced6551246b04796018a4362caedc9b2f054bbcd76cf18e')
 
 install=.INSTALL
 
 package() {
-  cd $_pkgname-$pkgver
-  install -Dm755 ${release_bin} ${pkgdir}/usr/bin/${_pkgname}
+  cd $release-$CARCH
+  install -Dm755 ${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
 
   install -Dm644 LICENSE ${pkgdir}/usr/share/${_pkgname}/LICENSE
   install -Dm644 README.md ${pkgdir}/usr/share/${_pkgname}
@@ -40,4 +42,3 @@ package() {
   install -Dm644 completions/${_pkgname}.fish ${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish
   install -Dm644 completions/${_pkgname}.zsh ${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}
 }
-
