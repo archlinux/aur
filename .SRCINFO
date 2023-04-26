@@ -1,6 +1,6 @@
 pkgbase = rnote-git
 	pkgdesc = A simple drawing application to create handwritten notes
-	pkgver = 0.5.18.r41.g60810c25
+	pkgver = 0.6.0.r4.g13a5c565
 	pkgrel = 1
 	url = https://github.com/flxzt/rnote
 	arch = x86_64
