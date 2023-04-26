@@ -8,7 +8,7 @@ pkgdesc="Tweaker of ibus in gnome-shell for orientation, theme, font and input m
 arch=('any')
 url="https://github.com/tuberry/ibus-tweaker"
 license=('GPL3')
-depends=('gnome-shell>=43.0')
+depends=('gnome-shell>=44.0')
 makedepends=('git' 'gettext' 'glib2' 'meson' 'sassc')
 conflicts=('gnome-shell-extension-ibus-tweaker')
 provides=('gnome-shell-extension-ibus-tweaker')

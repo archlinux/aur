@@ -11,7 +11,7 @@ pkgbase = gnome-shell-extension-ibus-tweaker-git
 	makedepends = glib2
 	makedepends = meson
 	makedepends = sassc
-	depends = gnome-shell>=43.0
+	depends = gnome-shell>=44.0
 	provides = gnome-shell-extension-ibus-tweaker
 	conflicts = gnome-shell-extension-ibus-tweaker
 	source = git+https://github.com/tuberry/ibus-tweaker.git
