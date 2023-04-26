@@ -1,20 +1,21 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
-
+# Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fabio-bin
-pkgver=1.5.14
+pkgver=1.6.3
 pkgrel=1
 pkgdesc='Consul Load-Balancing made simple'
 arch=('x86_64')
 url="https://fabiolb.net"
+_githuburl="https://github.com/fabiolb/fabio"
 license=('MIT')
-provides=('fabio')
-source=("${pkgname}-${pkgver}::https://github.com/fabiolb/fabio/releases/download/v${pkgver}/fabio-${pkgver}-go1.15-linux_amd64"
-    'LICENSE::https://raw.githubusercontent.com/fabiolb/fabio/master/LICENSE')
-sha256sums=('51ce031a2f58f316937a8bb32b5df06955e49219b6676ec456fcb8c4a402fc13'
+provides=()
+conflicts=("${pkgname%-bin}")
+source=("${pkgname%-bin}-${pkgver}::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux_amd64"
+    "LICENSE::${_githuburl}/raw/master/LICENSE")
+sha256sums=('9c899294519ddbe4aaf314ddb2851d8fcf2f3af9e2080878ad7dfe17440e202a'
             '1b96863084c41c1557336dad7193f7b0d4c03042481da83136b53940ea5a3083')
 
 package() {
-  install -Dm755 "${srcdir}"/fabio* "${pkgdir}/usr/bin/fabio"
-  install -Dm644 "${srcdir}"/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm755 "${srcdir}/${pkgname%-bin}-${pkgver}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+  install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-# vim:set ts=2 sw=2 et:
