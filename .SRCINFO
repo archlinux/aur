@@ -1,0 +1,17 @@
+pkgbase = amarakonsdfm
+	pkgdesc = amarakonsdfm is a simple file manager that uses dmenu
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/amarakon/dfm
+	arch = i686
+	arch = x86_64
+	license = AGPL-3
+	depends = dmenu
+	depends = perl
+	depends = xdg-utils
+	optdepends = xclip
+	provides = amarakonsdfm
+	source = https://github.com/amarakon/dfm/archive/refs/tags/1.1.tar.gz
+	sha256sums = 47a88692844ba41d3cb2b649911f3770be7dea62318436be7d12b1b547580288
+
+pkgname = amarakonsdfm
