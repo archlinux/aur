@@ -1,7 +1,7 @@
 pkgbase = paperless-ngx
 	pkgdesc = A supercharged version of paperless: scan, index and archive all your physical documents
 	pkgver = 1.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/paperless-ngx/paperless-ngx
 	install = paperless.install
 	arch = any
@@ -42,6 +42,7 @@ pkgbase = paperless-ngx
 	depends = python-dateparser
 	depends = python-django
 	depends = python-django-celery-results
+	depends = python-django-compression-middleware
 	depends = python-django-cors-headers
 	depends = python-django-extensions
 	depends = python-django-filter

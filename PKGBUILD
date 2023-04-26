@@ -3,7 +3,7 @@
 
 pkgname="paperless-ngx"
 pkgver=1.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A supercharged version of paperless: scan, index and archive all your physical documents"
 url="https://github.com/paperless-ngx/paperless-ngx"
 license=("GPL3")
@@ -46,6 +46,7 @@ depends=("file"
          "python-dateparser"
          "python-django"
          "python-django-celery-results"
+         "python-django-compression-middleware"
          "python-django-cors-headers"
          "python-django-extensions"
          "python-django-filter"
