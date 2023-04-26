@@ -1,6 +1,6 @@
 pkgbase = linode-cli-git
 	pkgdesc = The Linode Command Line Interface (development version)
-	pkgver = 5.31.0.r4.g6d73d04
+	pkgver = 5.34.1.r52.ge1ba992
 	pkgrel = 1
 	url = https://github.com/linode/linode-cli
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = linode-cli-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python-terminaltables
+	depends = python-rich
 	depends = python-requests
 	depends = python-yaml
 	depends = python-setuptools
