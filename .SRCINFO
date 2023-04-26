@@ -1,6 +1,6 @@
 pkgbase = mmv-go
 	pkgdesc = Rename multiple files with editor
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/itchyny/mmv
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = mmv-go
 	conflicts = mmv
 	conflicts = mmv-go-git
 	conflicts = mmv-go-bin-git
-	source = mmv-go-0.1.5.tar.gz::https://github.com/itchyny/mmv/archive/v0.1.5.tar.gz
-	sha256sums = d4499197eaba36fc6c87408286f13e9bb0531c6f4d78c2d16a32616bbc4707cb
+	source = mmv-go-0.1.6.tar.gz::https://github.com/itchyny/mmv/archive/v0.1.6.tar.gz
+	sha256sums = 18d181e6a53437ad18c4409f3c423bc23687152a17b53a605dde13dfffb0d215
 
 pkgname = mmv-go
