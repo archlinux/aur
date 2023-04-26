@@ -1,14 +1,14 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=quickmedia-git
-pkgver=r1320.2b746f7
+pkgver=r1322.26eeff1
 pkgrel=1
 pkgdesc='A rofi inspired native client for web services. Supports youtube, peertube, lbry, soundcloud, nyaa.si, 4chan, matrix, saucenao, hotexamples, anilist, dramacool and several manga sites.'
 arch=('x86_64')
 url="https://git.dec05eba.com/QuickMedia"
 license=('GPL3')
 makedepends=('sibs-git')
-depends=('libglvnd' 'libx11' 'curl' 'mpv' 'libxrandr' 'noto-fonts')
+depends=('libglvnd' 'libx11' 'curl' 'mpv' 'libxrandr' 'noto-fonts' 'yt-dlp')
 optdepends=(
     'libnotify: For showing notifications'
     'automedia: For automatically downloading new chapters of tracked manga'
@@ -27,7 +27,7 @@ source=(
 )
 noextract=("twemoji-1.tar.gz")
 sha512sums=(
-    '37d470872dd6dca8836f76b4f4c40144b3d512e2129b9b49dab94e33afa1dbe527bc0166539e367b931528d5e56c570555fc3fbc3d3a58a15d843632f61160d7'
+    'd90ea6269c0409d7cb522569ce5a8d03d240a5cd1cba416b0216704e2a748cd224ac268a38f4da529a64d8e2d342e0b8d2a6abba395915492f31b3a2db032988'
     'f25bd2ede84dc43278a86b5d234e9c78a102a61dfd796a364e76a135289c29503e97e51dfe49fcd1a72eb714755a45b95c60768811bfb3cdebb23694bc86e7d2'
 )
 
@@ -56,6 +56,7 @@ package() {
 
   install -Dm644 mpv/fonts/Material-Design-Iconic-Font.ttf "$pkgdir/usr/share/quickmedia/mpv/fonts/Material-Design-Iconic-Font.ttf"
   install -Dm644 mpv/scripts/mordenx.lua "$pkgdir/usr/share/quickmedia/mpv/scripts/mordenx.lua"
+  install -Dm644 mpv/scripts/ytdl_hook.lua "$pkgdir/usr/share/quickmedia/mpv/scripts/ytdl_hook.lua"
   install -Dm644 mpv/input.conf "$pkgdir/usr/share/quickmedia/mpv/input.conf"
   install -Dm644 mpv/mpv.conf "$pkgdir/usr/share/quickmedia/mpv/mpv.conf"
 

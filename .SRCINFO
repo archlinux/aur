@@ -1,6 +1,6 @@
 pkgbase = quickmedia-git
 	pkgdesc = A rofi inspired native client for web services. Supports youtube, peertube, lbry, soundcloud, nyaa.si, 4chan, matrix, saucenao, hotexamples, anilist, dramacool and several manga sites.
-	pkgver = r1320.2b746f7
+	pkgver = r1322.26eeff1
 	pkgrel = 1
 	url = https://git.dec05eba.com/QuickMedia
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = quickmedia-git
 	depends = mpv
 	depends = libxrandr
 	depends = noto-fonts
+	depends = yt-dlp
 	optdepends = libnotify: For showing notifications
 	optdepends = automedia: For automatically downloading new chapters of tracked manga
 	optdepends = waifu2x-ncnn-vulkan: For upscaling manga pages when using the --upscale-images option
@@ -27,9 +28,9 @@ pkgbase = quickmedia-git
 	conflicts = quickmedia-video-player
 	noextract = twemoji-1.tar.gz
 	options = !strip
-	source = quickmedia-git-r1320.2b746f7.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.r1320.2b746f7.tar.gz
+	source = quickmedia-git-r1322.26eeff1.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.r1322.26eeff1.tar.gz
 	source = twemoji-1.tar.gz::https://dec05eba.com/files/twemoji.tar.gz
-	sha512sums = 37d470872dd6dca8836f76b4f4c40144b3d512e2129b9b49dab94e33afa1dbe527bc0166539e367b931528d5e56c570555fc3fbc3d3a58a15d843632f61160d7
+	sha512sums = d90ea6269c0409d7cb522569ce5a8d03d240a5cd1cba416b0216704e2a748cd224ac268a38f4da529a64d8e2d342e0b8d2a6abba395915492f31b3a2db032988
 	sha512sums = f25bd2ede84dc43278a86b5d234e9c78a102a61dfd796a364e76a135289c29503e97e51dfe49fcd1a72eb714755a45b95c60768811bfb3cdebb23694bc86e7d2
 
 pkgname = quickmedia-git
