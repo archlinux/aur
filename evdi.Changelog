@@ -1,3 +1,7 @@
+v1.13.1
+- Fix for evdi driver not being signed and loaded when Secure Boot is enabled
+- Added support for kernel 6.2
+
 v1.10.1
 - Fix building on EL8 kernels with drm backports up to 5.12
 - Fix errorneous merge of "CHROMIUM: drm/evdi: Implement pin/unpin GEM o...

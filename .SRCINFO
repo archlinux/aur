@@ -1,6 +1,6 @@
 pkgbase = evdi
 	pkgdesc = A Linux® kernel module that enables management of multiple screens.
-	pkgver = 1.12.0
+	pkgver = 1.13.1
 	pkgrel = 1
 	url = https://github.com/DisplayLink/evdi
 	changelog = evdi.Changelog
@@ -10,7 +10,7 @@ pkgbase = evdi
 	depends = glibc
 	depends = dkms
 	depends = libdrm
-	source = https://github.com/DisplayLink/evdi/archive/v1.12.0/evdi-1.12.0.tar.gz
-	sha256sums = 484b1166ac1eccd14ec2c88ba426089d001401ba33612620d38d5f214a809fef
+	source = https://github.com/DisplayLink/evdi/archive/v1.13.1/evdi-1.13.1.tar.gz
+	sha256sums = e4a64926adef39dfa6ab3e7b1dfa20a3f55f656c11f1a98532562044a31ed5f4
 
 pkgname = evdi
