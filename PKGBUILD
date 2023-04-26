@@ -1,11 +1,7 @@
-# Based on the file created by the Manjaro Team:
-# Maintainer: Philip Müller <philm[AT]manjaro[DOT]org>
-# Contributor: Helmut Stult <helmut[AT]manjaro[DOT]org>
-
 # Maintainer: Steven Seifried <gitlab@canox.net>
 
 pkgname=tuxedo-control-center-bin
-pkgver=2.0.2
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="A tool to help you control performance, energy, fan and comfort settings on TUXEDO laptops. "
 arch=(x86_64)
@@ -19,9 +15,9 @@ options=(!strip)
 install=${pkgname}.install
 
 source=(https://rpm.tuxedocomputers.com/opensuse/15.4/x86_64/tuxedo-control-center_${pkgver}.rpm tuxedo-control-center-bin.install)
-sha256sums=('2741210ea58b0e37c5e79660a25b884978aba0ff4128cfb152d6243635cb0c8e'
+sha256sums=('1cda7b1de13a07dab762d12651a278dfa83891fe7eb173ef444a6c05173f9f19'
             'fef8f708ff4ba19921f167ff9bffd2536cc0c128dfe418a30f7e5e0d04fca6e3')
-sha512sums=('e9c9abfc2c0d0e226038f49d388a31625120f6780558b7606e719be61a4563c698e4c46d6f0d6a3e774179a5f5785dc07ff243901578da474dfa80cf71fe0394'
+sha512sums=('8de57de73ea9afcc4cf648da90e53dcfde6412ab0ff8560982729a2ba7dc9790690d3fbb1cf7380852d2f902c4d25993f770761d00873e2e6771923043ee1698'
             'b70d3412f07c72d6de2cf18e75a184741d8f5db7f144c4d8e8c0dde752e197d831fc8f8b6c095c9b6387ff97b36567f9cf5167dbb23ebc392f7b3cc47a78111a')
 
 package() {
