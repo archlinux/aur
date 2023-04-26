@@ -21,6 +21,6 @@ package() {
   cp -ar "${srcdir}/${pkgname%-bin}-1/"* "${pkgdir}/opt/${pkgname%-bin}"
   convert "${srcdir}/${pkgname%-bin}-1/${pkgname%-bin}.ico" "${pkgname%-bin}.png"
   install -Dm644 "${srcdir}/${pkgname%-bin}-0.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-  sed 's|Exec=fmedia|/opt/fmedia/fmedia|g;s|Icon=~/bin/fmedia-1/fmedia.ico|Icon=fmedia|g' -i "${srcdir}/${pkgname%-bin}-1/${pkgname%-bin}.desktop"
+  sed 's|Exec=fmedia|Exec=/opt/fmedia/fmedia|g;s|Icon=~/bin/fmedia-1/fmedia.ico|Icon=fmedia|g' -i "${srcdir}/${pkgname%-bin}-1/${pkgname%-bin}.desktop"
   install -Dm644 "${srcdir}/${pkgname%-bin}-1/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
