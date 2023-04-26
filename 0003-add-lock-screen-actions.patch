@@ -1,0 +1,9 @@
+diff --git a/data/org.gnome.clocks.desktop.in.in b/data/org.gnome.clocks.desktop.in.in
+index af1651f..6dadbab 100644
+--- a/data/org.gnome.clocks.desktop.in.in
++++ b/data/org.gnome.clocks.desktop.in.in
+@@ -17,3 +17,4 @@ X-GNOME-UsesNotifications=true
+ X-Geoclue-Reason=Allows world clocks to be displayed for your time zone.
+ # Translators: Do NOT translate or transliterate this text (these are enum types)!
+ X-Purism-FormFactor=Workstation;Mobile;
++X-Phosh-Lockscreen-Actions=app.stop-alarm::;app.snooze-alarm::;
