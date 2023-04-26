@@ -8,7 +8,6 @@ pkgbase = lib32-gamescope-plus
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
-	makedepends = patch
 	makedepends = cmake
 	makedepends = vulkan-headers
 	depends = lib32-wayland

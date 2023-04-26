@@ -24,7 +24,6 @@ makedepends=(
   git
   meson
   ninja
-  patch
   cmake
   vulkan-headers
 )
