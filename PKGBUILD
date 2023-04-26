@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=dsp56300-emulator
-pkgver=1.2.29
+pkgver=1.2.30
 pkgrel=1
 pkgdesc='Emulates musical devices that used the Motorola 56300 DSPs'
 arch=('x86_64')
@@ -30,7 +30,7 @@ optdepends=(
   'clap-host: for CLAP plugin'
 )
 install=dsp56300-emulator.install
-_commit='5124f5e4ec9efa0adabb6ce57be2652e35c70b77'
+_commit='14b092463004a6cabe52a8fcc284f891fc7a6868'
 source=(
   "$pkgname::git+$url#commit=$_commit"
   'github.com-dsp56300-dsp56300::git+https://github.com/dsp56300/dsp56300'
@@ -51,7 +51,7 @@ b2sums=('SKIP'
 pkgver() {
   cd "$pkgname"
 
-  git describe --tags | sed 's/^v//'
+  git describe --tags | sed 's/^osirus_//'
 }
 
 prepare() {

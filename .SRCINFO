@@ -1,6 +1,6 @@
 pkgbase = dsp56300-emulator
 	pkgdesc = Emulates musical devices that used the Motorola 56300 DSPs
-	pkgver = 1.2.29
+	pkgver = 1.2.30
 	pkgrel = 1
 	url = https://github.com/dsp56300/gearmulator
 	install = dsp56300-emulator.install
@@ -24,7 +24,7 @@ pkgbase = dsp56300-emulator
 	depends = alsa-lib
 	optdepends = vst3-host: for VST3 plugin
 	optdepends = clap-host: for CLAP plugin
-	source = dsp56300-emulator::git+https://github.com/dsp56300/gearmulator#commit=5124f5e4ec9efa0adabb6ce57be2652e35c70b77
+	source = dsp56300-emulator::git+https://github.com/dsp56300/gearmulator#commit=14b092463004a6cabe52a8fcc284f891fc7a6868
 	source = github.com-dsp56300-dsp56300::git+https://github.com/dsp56300/dsp56300
 	source = github.com-dsp56300-JUCE::git+https://github.com/dsp56300/JUCE
 	source = github.com-asmjit-asmjit::git+https://github.com/asmjit/asmjit
