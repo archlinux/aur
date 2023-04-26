@@ -28,6 +28,7 @@ pkgbase = goldendict-ng-git
 	conflicts = goldendict-git-opt
 	replaces = goldendict-svn
 	replaces = goldendict-git-opt
+	replaces = goldendict-webengine-git
 	source = goldendict-ng-git::git+https://github.com/xiaoyifang/goldendict.git
 	md5sums = SKIP
 
