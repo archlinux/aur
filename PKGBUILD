@@ -24,6 +24,7 @@ build() {
     rm -rf tgpt-$pkgver
     tar xvzf tgpt-$pkgver.tar.gz
     cd tgpt-$pkgver
+    go build
 }
 
 package() {
