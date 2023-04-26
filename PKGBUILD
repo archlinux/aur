@@ -1,7 +1,7 @@
 # Maintainer: Bao Trinh <qubidt@gmail.com>
 
 pkgname=unmake
-pkgver=0.0.4
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="a makefile linter"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/mcandre/unmake"
 license=('BSD')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1c2d9e1a88a7ffc153fb45b18dd452ace40409f658d43ed03c14c9c76e5e45e8')
+sha256sums=('788252ec8b791699c93eb6195a0c18a47cacaeb744391ee15978917acff85bdf')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
@@ -32,6 +32,6 @@ package() {
 	install -vDm755 -t "${pkgdir}/usr/bin" 'target/release/unmake'
 	install -vDm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" 'LICENSE.md'
 	install -vDm644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README.md'
-	install -vd "${pkgdir}/usr/share/doc/${pkgname}"
-	cp -vR -t "${pkgdir}/usr/share/doc/${pkgname}" examples
+	install -vdm755 "${pkgdir}/usr/share/doc/${pkgname}/examples"
+	cp -vR -t "${pkgdir}/usr/share/doc/${pkgname}/examples" fixtures/*
 }
