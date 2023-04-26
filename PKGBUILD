@@ -1,17 +1,17 @@
 pkgname=python-blosc2
 _pkgname=blosc2
-pkgver=2.1.1
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc='Wrapper for the blosc2 compressor'
 arch=('any')
 url='https://github.com/Blosc/python-blosc2'
 license=('BSD')
-depends=('python' 'python-setuptools' 'python-scikit-build' 'python-msgpack' 'python-ndindex' 'python-py-cpuinfo' 'python-rich' 'python-pytest' 'python-scipy' 'python-numpy' 'cmake')
+depends=('python' 'python-setuptools' 'python-scikit-build' 'python-msgpack' 'python-ndindex' 'python-py-cpuinfo' 'python-rich' 'python-pytest' 'python-scipy' 'python-numpy' 'cmake' 'python-ndindex')
 conflicts=('blosc2')
 provides=('blosc2')
 #source=("https://github.com/Blosc/python-blosc2/archive/refs/tags/v$pkgver.tar.gz") # git tarball does not contain required submodules...
-source=("https://files.pythonhosted.org/packages/86/1c/f602ccfae6de9640430054c99a0e4f715134c203d7b54f482b0775289ef5/$_pkgname-$pkgver.tar.gz")
-sha256sums=('b7a1bd416694fec75fcfa8f0fe64f7f0bd034d9323d8f84255ef8d239f5e002d')
+source=("https://files.pythonhosted.org/packages/b6/20/5141526d669b68e7530f417f55771e4bb0bd81fe6e78ccd851d6bae353ba/$_pkgname-$pkgver.tar.gz")
+sha256sums=('4cf3893fe85da4bd899ecf7a457fd09b2212fad256182100108de7a92b88aa87')
 
 build() {
   cd "$_pkgname-$pkgver"
