@@ -1,0 +1,15 @@
+pkgbase = misc-tools-git
+	pkgdesc = ShellShoccar-jpn's miscellaneous tools
+	pkgver = r281.3548ffb
+	pkgrel = 1
+	url = https://github.com/ShellShoccar-jpn/misc-tools
+	arch = any
+	groups = shellshocar-jpn
+	license = custom:CC0
+	makedepends = git
+	provides = misc-tools
+	conflicts = misc-tools
+	source = misc-tools::git+https://github.com/ShellShoccar-jpn/misc-tools
+	md5sums = SKIP
+
+pkgname = misc-tools-git
