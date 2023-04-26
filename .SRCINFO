@@ -1,0 +1,11 @@
+pkgbase = ttf-krutidev
+	pkgdesc = A popular non-unicode Remington Devanagri font for Hindi
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://en.wikipedia.org/wiki/Kruti_Dev
+	arch = any
+	license = custom
+	source = https://hindityping.info/download/assets/Kruti_Dev_Fonts/Kruti-Dev-Fonts.zip
+	md5sums = SKIP
+
+pkgname = ttf-krutidev
