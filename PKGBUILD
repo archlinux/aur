@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 
 pkgname=obs-studio-rc
-_pkgver=29.1.0-beta4
+_pkgver=29.1.0-rc1
 pkgver=${_pkgver//-/_}
 pkgrel=1
 epoch=5
@@ -107,7 +107,7 @@ build() {
   mkdir -p build; cd build
 
   cmake \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DENABLE_RTMPS=ON \
@@ -117,9 +117,9 @@ build() {
     -DENABLE_SNDIO=ON \
     -DENABLE_BROWSER=ON \
     -DCEF_ROOT_DIR=/opt/cef-obs \
-    -DBETA="$_pkgver" ..
+    -DRELEASE_CANDIDATE="$_pkgver" ..
 #    -DOBS_VERSION_OVERRIDE="$_pkgver" ..
-#    -DRELEASE_CANDIDATE="$_pkgver" ..
+#    -DBETA="$_pkgver" .. 
 
   sed -i "s|#define OBS_VERSION |#define OBS_VERSION \"$_pkgver-rc-$pkgrel\" //|" config/obsconfig.h
 
