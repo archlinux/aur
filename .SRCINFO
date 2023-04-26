@@ -1,0 +1,21 @@
+pkgbase = gptfusion-appimage
+	pkgdesc = GPT聚合版是一个聚合了多个GPT聊天机器人的跨平台聊天工具, 支持多个免费GPT镜像, 支持自定义导入镜像, 支持POE,文心一言等多个平台.
+	pkgver = 0.7.0beta
+	pkgrel = 1
+	url = https://github.com/lpdswing/GPTFusion
+	arch = x86_64
+	license = GPL3
+	makedepends = gendesk
+	depends = glib2
+	depends = glibc
+	depends = gdk-pixbuf2
+	depends = webkit2gtk
+	depends = gtk3
+	conflicts = gptfusion
+	options = !strip
+	source = gptfusion-0.7.0-beta.AppImage::https://github.com/lpdswing/GPTFusion/releases/download/v0.7.0-beta/GPTFusion.AppImage
+	source = gptfusion.png::https://github.com/lpdswing/GPTFusion/raw/main/build/appicon.png
+	sha256sums = 561aa8fde32ccc209c22677a85cc1228a5041d4555d6c44574e1fb486f4afaa9
+	sha256sums = 470456008e1b4054229e95b6fee0401321c514d39569fb9c76004a8e8b753034
+
+pkgname = gptfusion-appimage
