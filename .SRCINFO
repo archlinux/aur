@@ -1,7 +1,7 @@
 pkgbase = goxlr-utility
 	pkgdesc = A utility for monitoring and controlling a TC-Helicon GoXLR or GoXLR Mini.
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GoXLR-on-Linux/goxlr-utility
 	install = goxlr-utility.install
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = goxlr-utility
 	depends = libusb
 	depends = bzip2
 	depends = libpulse
-	depends = libspeechd
+	depends = speech-dispatcher
 	source = goxlr-utility-0.11.0.tar.gz::https://github.com/GoXLR-on-Linux/goxlr-utility/archive/refs/tags/v0.11.0.tar.gz
 	sha512sums = 09e7dd106a9cf6b37f0b63e48294e26a41c4d91d225045d1662b840c77bdc5d3c8c3f1aeb225fd5b964f2d1bf588ff59ede3e369ee06711702e933cf4795f70d
 
