@@ -2,7 +2,7 @@
 
 pkgname=parsrs-git
 pkgver=r139.81c3593
-pkgrel=1
+pkgrel=2
 pkgdesc="CSV, JSON, XML parsers/generators written in pure POSIX shellscript"
 arch=('any')
 url="https://github.com/ShellShoccar-jpn/Parsrs"
@@ -49,6 +49,6 @@ package() {
 		MAN/ja/parsrj.sh.txt
 		MAN/ja/parsrx.sh.txt
 		MAN/ja/unescj.sh.txt)
-	install -dm755 "$pkgdir/usr/doc/$_pkgname/MAN/ja/"
-	install -Dm644 ${_mans[@]} "$pkgdir/usr/doc/$_pkgname/MAN/ja/"
+	install -dm755 "$pkgdir/usr/share/doc/$_pkgname/MAN/ja/"
+	install -Dm644 ${_mans[@]} "$pkgdir/usr/share/doc/$_pkgname/MAN/ja/"
 }
