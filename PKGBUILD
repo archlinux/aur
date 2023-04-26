@@ -2,7 +2,7 @@
 # 
 
 pkgname=cevomapgen
-pkgver=25
+pkgver=26
 pkgrel=1
 pkgdesc="External Random Map Generator for C-evo"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('fpc' 'lazarus-qt5')
 
 source=("$url/files/Source/${pkgname}_${pkgver}.orig.tar.xz"
         "$url/files/Source/${pkgname}_${pkgver}.orig.tar.xz.asc")
-sha256sums=('8a3fa6edd8f8042560dfad070353c8707b7362e9793c55f5079135cda8957159'
+sha256sums=('e8942456474b6afaf7196739a85149f36474e51a35cb0e8615580f1d5af0e817'
             'SKIP')
 validpgpkeys=(14638444C9858E2A09B0259C211BCF562939AB8F)
 
