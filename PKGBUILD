@@ -8,6 +8,7 @@ url="https://github.com/aandrew-me/tgpt"
 license=('GPL-3.0')
 makedepends=('go' 'git')
 source=("tgpt-${pkgver}.tar.gz::https://github.com/aandrew-me/tgpt/archive/v${pkgver}.tar.gz")
+conflicts=('tgpt-bin' 'tgpt-git')
 md5sums=('SKIP')
 
 #pkgver() {

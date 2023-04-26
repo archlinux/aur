@@ -10,6 +10,8 @@ pkgbase = tgpt
 	license = GPL-3.0
 	makedepends = go
 	makedepends = git
+	conflicts = tgpt-bin
+	conflicts = tgpt-git
 	source = tgpt-1.2.1.tar.gz::https://github.com/aandrew-me/tgpt/archive/v1.2.1.tar.gz
 	md5sums = SKIP
 
