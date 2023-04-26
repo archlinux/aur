@@ -1,5 +1,5 @@
-# Maintainer: Amar Al-Zubaidi <https://amarakon.github.io>
 # Maintainer: Miguel Rodrigues <miguelangelorodrigues@enta.pt>
+# Author: Amar Al-Zubaidi <https://amarakon.github.io>
 
 pkgname=amarakonsdfm
 pkgver=1.1
