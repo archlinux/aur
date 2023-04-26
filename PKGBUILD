@@ -7,7 +7,7 @@ _commit=987b76f422dd950e55df90cf6874c18faadfd07e  # v9.4.7
 
 pkgname=penguins-eggs
 pkgver=9.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 arch=('any')
 url="https://penguins-eggs.net"
@@ -19,7 +19,8 @@ depends=('arch-install-scripts' 'dosfstools' 'erofs-utils' 'findutils' 'grub'
 optdepends=('bash-completion: eggs autocomplete'
             'zsh-completions: eggs autocomplete'
             'calamares: system installer GUI')
-makedepends=('git' 'pnpm')
+makedepends=('git' 'npm')
+
 options=('!strip')
 source=("git+https://github.com/pieroproietti/penguins-eggs.git#commit=${_commit}")
 sha256sums=('SKIP')
@@ -31,9 +32,12 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  pnpm config set cache-dir "$srcdir/pnpm-cache"
-  pnpm i
-  pnpm build
+  npm set prefix "pnpm-dir"
+  npm install -g pnpm
+  
+  pnpm-dir/bin/pnpm config set cache-dir "$srcdir/pnpm-cache"
+  pnpm-dir/bin/pnpm install
+  pnpm-dir/bin/pnpm build
 }
 
 package() {
