@@ -1,6 +1,6 @@
 pkgbase = buildcache
 	pkgdesc = An advanced compiler accelerator
-	pkgver = 0.28.2
+	pkgver = 0.28.3
 	pkgrel = 1
 	url = https://github.com/mbitsnbites/buildcache
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = buildcache
 	depends = gcc-libs
 	depends = openssl
 	optdepends = lua
-	source = buildcache-0.28.2.tar.gz::https://github.com/mbitsnbites/buildcache/archive/refs/tags/v0.28.2.tar.gz
-	sha256sums = 506007fac0d8754967a4d23a01c4115ad13c498af448d7d215364b499b25588c
+	source = buildcache-0.28.3.tar.gz::https://github.com/mbitsnbites/buildcache/archive/refs/tags/v0.28.3.tar.gz
+	sha256sums = c227b3e42877ae374de27aa329eb4a19e10f1c3f951462fa10a78ea61741ecb9
 
 pkgname = buildcache
