@@ -7,7 +7,7 @@ pkgdesc="Bito AI - AI assistance for programming"
 arch=('x86_64')
 url="https://bito.ai/"
 license=('custom')
-provides=('bito')
+provides=("${_pkgname}=${pkgver}")
 source=("$_pkgname::https://raw.githubusercontent.com/gitbito/CLI/main/version-$pkgver/$_pkgname"
         "LICENSE.md::https://raw.githubusercontent.com/gitbito/CLI/main/LICENSE.md")
 md5sums=('37ffac6517f8dcceee86f9926182721c'
