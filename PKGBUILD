@@ -4,13 +4,13 @@
 pkgname=fastqc
 _pkgname=FastQC
 pkgver=0.12.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A quality control tool for high throughput sequence data.'
 arch=('any')
 url="http://www.bioinformatics.babraham.ac.uk/projects/fastqc"
 license=('GPL3')
-depends=('perl' 'java-runtime' 'ttf-dejavu')
-makedepends=('ant' 'java-environment')
+depends=('perl' 'java-runtime>=11' 'ttf-dejavu')
+makedepends=('ant' 'java-environment>=11')
 source=("$pkgname-$pkgver::https://github.com/s-andrews/FastQC/archive/refs/tags/v${pkgver}.tar.gz"
 	"$pkgname.patch::https://github.com/s-andrews/FastQC/commit/e73f094ec165882cc71707a5dd5d3dd263a51b83.patch")
 md5sums=('2d22a29649394f589e6f03d8d8c3eec9'

@@ -1,14 +1,14 @@
 pkgbase = fastqc
 	pkgdesc = A quality control tool for high throughput sequence data.
 	pkgver = 0.12.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.bioinformatics.babraham.ac.uk/projects/fastqc
 	arch = any
 	license = GPL3
 	makedepends = ant
-	makedepends = java-environment
+	makedepends = java-environment>=11
 	depends = perl
-	depends = java-runtime
+	depends = java-runtime>=11
 	depends = ttf-dejavu
 	source = fastqc-0.12.1::https://github.com/s-andrews/FastQC/archive/refs/tags/v0.12.1.tar.gz
 	source = fastqc.patch::https://github.com/s-andrews/FastQC/commit/e73f094ec165882cc71707a5dd5d3dd263a51b83.patch
