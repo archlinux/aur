@@ -5,7 +5,8 @@ pkgbase = bito-cli
 	url = https://bito.ai/
 	arch = x86_64
 	license = custom
-	provides = bito
+	provides = bito-linux-x86=3.0
+	conflicts = bito-linux-x86
 	source = bito-linux-x86::https://raw.githubusercontent.com/gitbito/CLI/main/version-3.0/bito-linux-x86
 	source = LICENSE.md::https://raw.githubusercontent.com/gitbito/CLI/main/LICENSE.md
 	md5sums = 37ffac6517f8dcceee86f9926182721c
