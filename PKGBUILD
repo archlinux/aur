@@ -1,7 +1,7 @@
 # Maintainer: VHSgunzo <vhsgunzo.github.io>
 pkgname='vkteams-bin'
 pkgbasename='vkteams'
-pkgver=22.10.1.24120
+pkgver=22.12.3.25508
 pkgrel=4
 pkgdesc='Official desktop application for the VK Teams messaging service'
 arch=("x86_64")
