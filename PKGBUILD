@@ -157,13 +157,14 @@ prepare() {
     rm -rf wrappers && mkdir wrappers
     _make_wrappers
 
-    [ ! -d proton/contrib ] && mkdir -p proton/contrib
-    mv wine-gecko-${_geckover}-x86{,_64}.tar.xz proton/contrib/
-    mv wine-mono-${_monover}-x86.tar.xz proton/contrib/
-
     [ ! -d build ] && mkdir build
 
     cd proton
+
+    [ ! -d contrib ] && mkdir -p contrib
+    mv "$srcdir"/wine-gecko-${_geckover}-x86{,_64}.tar.xz contrib/
+    mv "$srcdir"/wine-mono-${_monover}-x86.tar.xz contrib/
+
     _submodules=(
         wine-valve::wine
         dxvk
