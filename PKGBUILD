@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=30.0.50.165790
+pkgver=30.0.50.166064
 pkgrel=1
 pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
@@ -53,7 +53,7 @@ build() {
     --with-gameuser=:games \
     --with-native-compilation \
     --disable-build-details
-    make trampolines
+    make 
     make pdf
 }
 
