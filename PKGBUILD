@@ -10,14 +10,14 @@ pkgname=(
 
 # Follow handbrakes most current stable branch 1.6.x
 # https://github.com/HandBrake/HandBrake/commits/1.6.x
-readonly _commit=bc117062beab6ad17d682d0705458c24687830d7
+readonly _commit=b05c60d9676ffbc523d3e7b977e1eb4fc3f54379
 
 pkgver() {
   git -C HandBrake/ gc --auto --prune=now
   git -C HandBrake/ describe ${_commit} | sed -e 's/^v//g' -e 's/-/.r/' -e 's/-/./'
 }
 
-pkgver=1.6.1.r33.gbc117062b
+pkgver=1.6.1.r37.gb05c60d96
 pkgrel=1
 arch=('x86_64')
 url="https://handbrake.fr/"
@@ -71,6 +71,7 @@ makedepends=(
   'lld'
   'llvm'
   # AMD VCE encoding on Linux requires Vulkan
+  # sudo downgrade vulkan-headers=1:1.3.235
   'vulkan-headers=1:1.3.235'
   "${_commondeps[@]}"
   "${_guideps[@]}"
