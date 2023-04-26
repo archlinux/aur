@@ -6,7 +6,7 @@
 
 pkgname=preload
 pkgver=0.6.4
-pkgrel=8
+pkgrel=9
 arch=(x86_64)
 pkgdesc='Makes applications run faster by prefetching binaries and shared objects'
 url=http://sourceforge.net/projects/preload
