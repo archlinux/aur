@@ -1,6 +1,6 @@
 pkgbase = python-comtool
 	pkgdesc = A cross platform serial debug tools written by python
-	pkgver = 3.1.4
+	pkgver = 3.2.0
 	pkgrel = 0
 	url = https://github.com/Neutree/COMTool
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = python-comtool
 	conflicts = comtool
 	conflicts = python-comtool-git
 	options = !strip
-	source = comtool-3.1.4.tar.gz::https://github.com/Neutree/COMTool/archive/refs/tags/v3.1.4.tar.gz
-	sha256sums = 6056305761b5490e4ca80ba3f60353b50bfc32c1378fc5cbf9f241ee145da87e
+	source = comtool-3.2.0.tar.gz::https://github.com/Neutree/COMTool/archive/refs/tags/v3.2.0.tar.gz
+	sha256sums = cd4dca6766d87fa7be380cb96c352d9b33f32810d17f1724884edded9f52aff3
 
 pkgname = python-comtool
