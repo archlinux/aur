@@ -1,0 +1,12 @@
+Hello!
+I'm the current maintainer of the package, 
+on my machine, aide with mhash capabilities enabled is not compiling 
+due to the mhash pkg-config file (mhash.pc) missing.  
+
+I've contacted with the current mhash maintainer for a fix, 
+if you wish to have mhash compatbility to an unknown extent 
+I've made a provisional mhash.pc file you can drop in "/usr/lib/pkgconfig/".
+You'll have to uncomment the relevant line in the PKGBUILD.
+I'm hoping this can be resolved ASAP, until then here's my "fix"
+Regards,
+John

@@ -23,13 +23,11 @@ sha256sums=('758ff586c703930129e0a1e8c292ff5127e116fc10d0ffdbea8bf2c1087ca7e4' #
 validpgpkeys=('2BBBD30FAAB29B3253BCFBA6F6947DAB68E7B931') # Hannes von Haugwitz <hannes@vonhaugwitz.com>
 
 build() {
-        echo $srcdir
 	cd $srcdir/$pkgname-$pkgver
 	./configure \
         --prefix=/usr \
         --sysconfdir=/etc \
-        --with-mhash \
-        --with-posix-acl \
+	--with-posix-acl \
         --with-prelink \
         --with-xattr \
         --with-zlib \
@@ -39,15 +37,10 @@ build() {
 }
 
 package() {
-    cd ..
-	cp aidecheck.service $srcdir/aidecheck.service
-	cp aidecheck.timer $srcdir/aidecheck.timer
 	cd $srcdir/$pkgname-$pkgver
 	make DESTDIR=$pkgdir install
-	echo $pkgdir
 	install -D -m644 $srcdir/aide.conf $pkgdir/etc/aide.conf
 	install -D -m644 $srcdir/aidecheck.service $pkgdir/usr/lib/systemd/system/aidecheck.service
 	install -D -m644 $srcdir/aidecheck.timer $pkgdir/usr/lib/systemd/system/aidecheck.timer
-	    mkdir -p $pkgdir/var/{log,lib}/aide/
 }
 

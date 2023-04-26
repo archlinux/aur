@@ -1,0 +1,10 @@
+Name: mhash
+Description: A substitution to a probably non-existant mhash.pc
+Version: 0.9.9.9-5
+Cflags: -I${includedir}
+prefix=/usr
+Libs: -l mhash
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
