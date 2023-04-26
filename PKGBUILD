@@ -2,11 +2,10 @@
 pkgname=openaudible-bin
 pkgver=3.7.5
 pkgrel=1
-pkgdesc="OpenAudible"
+pkgdesc="a cross-platform audiobook manager designed for Audible users. Manage all your audiobooks with this easy-to-use desktop application"
 arch=('x86_64')
 url="https://openaudible.org"
 license=('Apache')
-options=('!strip' '!emptydirs')
 depends=("java-runtime-headless" "desktop-file-utils" "webkit2gtk")  
 source=("https://github.com/openaudible/openaudible/releases/download/v"$pkgver"/OpenAudible_"$pkgver"_x86_64.deb"
        "openaudible.desktop")
