@@ -28,7 +28,7 @@ build() {
         -DENABLE_COVERAGE=OFF \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -G Ninja
+        -G Ninja \
         ..
 
     cmake --build .
