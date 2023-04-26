@@ -1,0 +1,21 @@
+pkgbase = killer-vpn
+	pkgdesc = OpenVPN and WireGuard CLI helper
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://codeberg.com/ivan.zaera/killer-vpn
+	install = install.sh
+	arch = pentium4
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = coreutils
+	makedepends = rust
+	makedepends = scdoc
+	depends = openvpn
+	depends = systemd
+	depends = ufw
+	depends = wireguard-tools
+	backup = etc/kvpn/config.toml
+	source = killer-vpn-0.2.0.tar.gz::https://codeberg.org/ivan.zaera/killer-vpn/archive/0.2.0.tar.gz
+	sha256sums = 579779450b9d7ebcf77ca4238f853b0841ab3093bb78311b15d4ccd0d2ba95d8
+
+pkgname = killer-vpn
