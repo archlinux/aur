@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=one-gpt-appimage
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="聚合ChatGPT官方版、ChatGPT免费版、文心一言、Poe、chatchat等多平台,支持自定义导入平台"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=()
 conflits=("${pkgname%-appimage}")
 depends=('zlib' 'hicolor-icon-theme' 'glibc')
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-appimage}_${pkgver}_amd64.AppImage")
-sha256sums=('7ee2ce1618e8ecfe45a5e7eddaa3ade0fd588d14707d879b97884ee0ae53103e')
+sha256sums=('d659a92d02e1272f8200e2536244b34c745a8529cddab7969e621a3f342e28ec')
 _install_path="/opt/appimages"
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
