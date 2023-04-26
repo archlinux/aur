@@ -1,0 +1,11 @@
+pkgbase = airconnect-bin
+	pkgdesc = Use AirPlay to stream to UPnP/Sonos & Chromecast devices
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/philippe44/AirConnect
+	arch = x86_64
+	license = MIT
+	source = https://raw.githubusercontent.com/philippe44/AirConnect/1.1.1/bin/airupnp-linux-x86_64
+	sha256sums = 34a809862f5dffc9a18d3942d635fe95c8af946294cac183a3cfdfefd90bed21
+
+pkgname = airconnect-bin
