@@ -1,0 +1,14 @@
+pkgbase = hyperkeys-appimage
+	pkgdesc = Unleash you keyboard shorcuts
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://hyperkeys.xureilab.com/
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = glibc
+	options = !strip
+	source = hyperkeys-1.3.0.AppImage::https://github.com/xurei/hyperkeys/releases/download/v1.3.0/HyperKeys-1.3.0.AppImage
+	sha256sums = 2884e6025aa4dfee198f1279584e8ec798d8f9519cbe8c6ed1f4648b26e63711
+
+pkgname = hyperkeys-appimage
