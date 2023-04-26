@@ -1,7 +1,7 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
-
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=chyle-bin
-pkgver=1.11.0
+pkgver=1.16.0
 pkgrel=1
 provides=('chyle')
 pkgdesc="Changelog generator: use a git repository and various data sources and publish the result on external services"
@@ -9,12 +9,10 @@ arch=('x86_64')
 url='https://github.com/antham/chyle'
 license=('MIT')
 depends=('glibc')
-source=("${pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/chyle_linux_amd64"
-  'LICENSE::https://raw.githubusercontent.com/antham/chyle/master/LICENSE.txt')
-sha256sums=('eedaac488efe473f8437d412be67dc8eb0b991f791e0faf7df9ee23f6e0724ff'
-            '74d52f9acb64851447fbb6618cdb58a693ca07c9bfec17076e415f752c81cffa')
+source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_amd64.tar.gz")
+sha256sums=('6c4f77112dd1fc4873a36ca07210c23e78dd2aea3c73f5727d90961893172efb')
 
 package() {
-  install -Dm755 "${srcdir}"/${pkgname}-${pkgver} "${pkgdir}/usr/bin/chyle"
-  install -Dm644 "${srcdir}"/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm755 "${srcdir}/${pkgname%-bin}" "${pkgdir}/usr/bin/chyle"
+  install -Dm644 "${srcdir}/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

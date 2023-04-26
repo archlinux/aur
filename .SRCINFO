@@ -1,16 +1,13 @@
 pkgbase = chyle-bin
 	pkgdesc = Changelog generator: use a git repository and various data sources and publish the result on external services
-	pkgver = 1.11.0
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://github.com/antham/chyle
 	arch = x86_64
 	license = MIT
 	depends = glibc
 	provides = chyle
-	source = chyle-bin-1.11.0::https://github.com/antham/chyle/releases/download/v1.11.0/chyle_linux_amd64
-	source = LICENSE::https://raw.githubusercontent.com/antham/chyle/master/LICENSE.txt
-	sha256sums = eedaac488efe473f8437d412be67dc8eb0b991f791e0faf7df9ee23f6e0724ff
-	sha256sums = 74d52f9acb64851447fbb6618cdb58a693ca07c9bfec17076e415f752c81cffa
+	source = chyle-1.16.0.tar.gz::https://github.com/antham/chyle/releases/download/v1.16.0/chyle_1.16.0_linux_amd64.tar.gz
+	sha256sums = 6c4f77112dd1fc4873a36ca07210c23e78dd2aea3c73f5727d90961893172efb
 
 pkgname = chyle-bin
-
