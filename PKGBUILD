@@ -3,7 +3,7 @@
 
 pkgbase=devilutionx-git
 pkgname=("${pkgbase}" "devilutionx-assets-git")
-pkgver=1.4.0.r830.aa65d27e5
+pkgver=1.4.0.r1542.fa0147cfa
 pkgrel=1
 pkgdesc="Diablo devolved for linux (git version)"
 arch=('armv6h' 'armv7h' 'arm' 'aarch64' 'i686' 'x86_64')

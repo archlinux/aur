@@ -1,6 +1,6 @@
 pkgbase = devilutionx-git
 	pkgdesc = Diablo devolved for linux (git version)
-	pkgver = 1.4.0.r830.aa65d27e5
+	pkgver = 1.4.0.r1542.fa0147cfa
 	pkgrel = 1
 	url = https://github.com/diasurgical/devilutionX
 	arch = armv6h
