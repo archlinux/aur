@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=rye-git
-pkgver=r7.4d13663
+pkgver=r52.4103bf3
 pkgrel=1
 epoch=
 pkgdesc="an experimental alternative to poetry/pip/pipenv/venv/virtualenv/pdm/hatch/…"
@@ -13,12 +13,14 @@ arch=(any)
 url="https://github.com/mitsuhiko/rye"
 license=('MIT')
 groups=()
-depends=(zlib openssl glibc gcc-libs)
+depends=(zlib openssl glibc gcc-libs
+         libxcrypt-compat # https://github.com/mitsuhiko/rye/issues/15
+)
 makedepends=(cargo git)
 checkdepends=()
 optdepends=()
 provides=(rye)
-conflicts=()
+conflicts=(rye rye-bin)
 replaces=()
 backup=()
 options=()
@@ -51,7 +53,7 @@ build() {
 check() {
     cd rye
     export RUSTUP_TOOLCHAIN=stable
-    # cargo test --frozen --all-features
+    cargo test --frozen --all-features
 }
 
 package() {
