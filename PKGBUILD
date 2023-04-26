@@ -37,6 +37,7 @@ build() {
       1.*) ;;
       *) java_ver="${java_ver%.*}" ;;
     esac
+    msg2 "Using javac version $java_ver"
     ant -Djavac.source="$java_ver" -Djavac.target="$java_ver" release
 }
 
