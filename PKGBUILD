@@ -8,7 +8,7 @@
 
 _electron=electron21
 pkgname=schildichat-desktop
-pkgver=1.11.26.sc.1
+pkgver=1.11.30.sc.1
 pkgrel=1
 pkgdesc="A Matrix client based on Element with a more traditional instant messaging experience"
 arch=(x86_64)
