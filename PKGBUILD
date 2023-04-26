@@ -24,7 +24,7 @@ pkgver() {
 package() {
   cd "${pkgname%-git}"
   _dest="${pkgdir}/usr/share/arduino/lib/theme"
-  install -dm644 "${_dest}"
+  install -d "${_dest}"
   cd theme/
   bsdtar -a -cf "${_dest}/${_name}.zip" *
 }
