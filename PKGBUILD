@@ -16,18 +16,8 @@ optdepends=(
 makedepends=('git' 'cargo' 'clang' 'cmake' 'pango' 'gdk-pixbuf2' 'at-spi2-core' 'gtk3')
 provides=('asusctl')
 conflicts=('asusctl')
-source=(
-	'git+https://gitlab.com/asus-linux/asusctl.git'
-	'git+https://github.com/flukejones/uhid-virt.git'
-	'0001-Fix-reference-to-packed-field-is-unaligned.patch'
-	'0001-cargo-patch-the-source-to-pull-a-patch.patch'
-)
-md5sums=(
-	'SKIP'
-	'SKIP'
-	'6407424a4f9f698d51564fc4ecf45555'
-	'e60fc2d845d1eb363c664ef20d15adbd'
-)
+source=('git+https://gitlab.com/asus-linux/asusctl.git')
+md5sums=('SKIP')
 _gitdir=${pkgname%"-git"}
 
 pkgver() {
@@ -38,9 +28,7 @@ pkgver() {
 prepare() {
 	cd "$srcdir/$_gitdir"
 	export RUSTUP_TOOLCHAIN=stable
-	patch --directory="$srcdir/uhid-virt" --forward --strip=1 --input="${srcdir}/0001-Fix-reference-to-packed-field-is-unaligned.patch"
-	patch --forward --strip=1 --input="${srcdir}/0001-cargo-patch-the-source-to-pull-a-patch.patch"
-	cargo fetch --target "$CARCH-unknown-linux-gnu"
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
