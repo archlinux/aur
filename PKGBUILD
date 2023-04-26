@@ -15,5 +15,5 @@ sha256sums=('fd08ce1f66be3d1b6226a3c01b7e118c449d2a60250a497be308467f6f54e4de')
 package() {
   chmod 644 "${srcdir}/metadata.json"
   mkdir -p "${pkgdir}/usr/share/gnome-shell/extensions/ibus-tweaker@tuberry.github.com"
-  mv "${srcdir}"/{extension.js,fields.js,locale,metadata.json,prefs.js,schemas,stylesheet.css,ui.js} "${pkgdir}/usr/share/gnome-shell/extensions/ibus-tweaker@tuberry.github.com"
+  mv "${srcdir}"/{extension.js,fields.js,initial.js,locale,metadata.json,prefs.js,schemas,stylesheet.css,ui.js} "${pkgdir}/usr/share/gnome-shell/extensions/ibus-tweaker@tuberry.github.com"
 }
