@@ -1,5 +1,5 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
-
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=grinplusplus-bin
 pkgver=1.2.8
 pkgrel=1
