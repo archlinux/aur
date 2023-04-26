@@ -1,11 +1,11 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-experimental
-_srctag=7.0-20230330
+_srctag=8.0-20230425
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
-_monover=7.4.0
+_monover=7.4.1
 pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, experimental branch"
@@ -45,8 +45,6 @@ makedepends=(autoconf bison perl flex mingw-w64-gcc
   libxinerama           lib32-libxinerama
   libxcomposite         lib32-libxcomposite
   libxxf86vm            lib32-libxxf86vm
-  libldap               lib32-libldap
-  openal                lib32-openal
   v4l-utils             lib32-v4l-utils
   alsa-lib              lib32-alsa-lib
   libxcomposite         lib32-libxcomposite
@@ -66,9 +64,7 @@ makedepends=(autoconf bison perl flex mingw-w64-gcc
 
 optdepends=(
   giflib                lib32-giflib
-  libldap               lib32-libldap
   gnutls                lib32-gnutls
-  openal                lib32-openal
   v4l-utils             lib32-v4l-utils
   libpulse              lib32-libpulse
   alsa-plugins          lib32-alsa-plugins
@@ -90,7 +86,7 @@ install=${pkgname}.install
 source=(
     proton::git+https://github.com/ValveSoftware/Proton.git#tag=experimental-${_srctag}
     wine-valve::git+https://github.com/ValveSoftware/wine.git
-    dxvk::git+https://github.com/doitsujin/dxvk.git
+    dxvk-valve::git+https://github.com/ValveSoftware/dxvk.git
     openvr::git+https://github.com/ValveSoftware/openvr.git
     liberation-fonts::git+https://github.com/liberationfonts/liberation-fonts.git
     gstreamer::git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git
@@ -114,7 +110,6 @@ source=(
     libdisplay-info-dxvk::git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
-    0001-wldap32-25946b48148784e8275c1685f6498ab88f553ca3.patch
     0001-AUR-Pkgbuild-changes.patch
     0002-AUR-Do-not-update-cargo-crates.patch
 )
@@ -163,18 +158,17 @@ prepare() {
     rm -rf wrappers && mkdir wrappers
     _make_wrappers
 
-    [ ! -d gecko ] && mkdir gecko
-    mv wine-gecko-${_geckover}-x86{,_64}.tar.xz gecko/
-
-    [ ! -d mono ] && mkdir mono
-    mv wine-mono-${_monover}-x86.tar.xz mono/
-
     [ ! -d build ] && mkdir build
+
     cd proton
+
+    [ ! -d contrib ] && mkdir -p contrib
+    mv "${srcdir}"/wine-gecko-${_geckover}-x86{,_64}.tar.xz contrib/
+    mv "${srcdir}"/wine-mono-${_monover}-x86.tar.xz contrib/
 
     _submodules=(
         wine-valve::wine
-        dxvk
+        dxvk-valve::dxvk
         openvr
         liberation-fonts::fonts/liberation-fonts
         gstreamer
@@ -230,8 +224,6 @@ prepare() {
         git submodule init external/Vulkan-Headers
         git submodule set-url external/Vulkan-Headers "$srcdir"/Vulkan-Headers
         git -c protocol.file.allow=always submodule update external/Vulkan-Headers
-        # GCC 12 build failure
-        git cherry-pick -n 33bf3c7a6a3dc9e330cd338bf1877b5481c655e3
     popd
 
     for submodule in gst-plugins-rs media-converter; do
@@ -243,15 +235,6 @@ prepare() {
     popd
     done
 
-    pushd wine
-        # From Arch Wine
-        sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
-        # Fix openldap 2.5+ detection
-        sed 's/-lldap_r/-lldap/' -i configure
-        # Fix wldap32 compilation on 32bit
-        patch -p1 -i "$srcdir"/0001-wldap32-25946b48148784e8275c1685f6498ab88f553ca3.patch
-    popd
-
     patch -p1 -i "$srcdir"/0001-AUR-Pkgbuild-changes.patch
     patch -p1 -i "$srcdir"/0002-AUR-Do-not-update-cargo-crates.patch
 
@@ -262,6 +245,7 @@ prepare() {
     rm -rf "$srcdir"/dxil-spirv
     rm -rf "$srcdir"/Vulkan-Headers
     rm -rf "$srcdir"/SPIRV-Headers
+    rm -rf "$srcdir"/libdisplay-info-dxvk
 }
 
 build() {
@@ -272,8 +256,6 @@ build() {
     ../proton/configure.sh \
         --container-engine="none" \
         --proton-sdk-image="" \
-        --steam-runtime=native \
-        --no-proton-sdk \
         --build-name="${pkgname}"
 
     # By default export FLAGS used by proton and ignore makepkg
@@ -312,8 +294,8 @@ package() {
     cd build
 
     local _compatdir="$pkgdir/usr/share/steam/compatibilitytools.d"
-    mkdir -p "$_compatdir"
-    cp -rf --no-dereference --preserve=mode,links dist "$_compatdir/${pkgname}"
+    mkdir -p "$_compatdir/${pkgname}"
+    rsync --delete -arx dist/* "$_compatdir/${pkgname}"
 
     mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"
     mv "$_compatdir/${pkgname}"/LICENSE{,.OFL} \
@@ -372,7 +354,6 @@ sha256sums=('SKIP'
             '08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3'
             '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
             '9249ece664bcf2fecb1308ea1d2542c72923df9fe3df891986f137b2266a9ba3'
-            '11aa65bb6b8da1814557edf18a3cdada80135b021634236feabf93d2a194838b'
             'SKIP'
             'SKIP')
 # Optional patches
