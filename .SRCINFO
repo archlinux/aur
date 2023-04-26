@@ -1,15 +1,15 @@
 pkgbase = graaljs-jdk11-bin
 	pkgdesc = GraalVM-based, polyglot-enabled implementation of JavaScript, Java 11 version
-	pkgver = 22.3.1
+	pkgver = 22.3.2
 	pkgrel = 1
 	url = https://github.com/oracle/graaljs
 	arch = x86_64
 	arch = aarch64
 	license = custom
 	depends = jdk11-graalvm-bin
-	source_x86_64 = https://github.com/oracle/graaljs/releases/download/vm-22.3.1/js-installable-svm-java11-linux-amd64-22.3.1.jar
-	sha256sums_x86_64 = 4bf4a4f21ac02906ae48edee1605f8287ead29df653fc88129336e6b8902086b
-	source_aarch64 = https://github.com/oracle/graaljs/releases/download/vm-22.3.1/js-installable-svm-java11-linux-aarch64-22.3.1.jar
-	sha256sums_aarch64 = b85fede9653f8250ddd9b08b1f9bddbef6144fb99df936a4618814a5a5b41bad
+	source_x86_64 = https://github.com/oracle/graaljs/releases/download/vm-22.3.2/js-installable-svm-java11-linux-amd64-22.3.2.jar
+	sha256sums_x86_64 = 1febca4c31aacae772d09d911598ffd58a6afd3dce6dec78fd37e8b3468d4ce2
+	source_aarch64 = https://github.com/oracle/graaljs/releases/download/vm-22.3.2/js-installable-svm-java11-linux-aarch64-22.3.2.jar
+	sha256sums_aarch64 = 481c91584fb03666e8402167f7c45bbdcf724d822ce82b2d0a141a4ee0e01c8c
 
 pkgname = graaljs-jdk11-bin
