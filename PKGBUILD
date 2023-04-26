@@ -1,18 +1,19 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
-
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=hoverfly-bin
-pkgver=1.3.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Lightweight service virtualization/API simulation tool for developers and testers"
 arch=('x86_64')
 url='https://hoverfly.io'
+_githuburl="https://github.com/SpectoLabs/hoverfly"
 license=('Apache')
-provides=('hoverfly')
-conflicts=('hoverfly' 'hoverfly-git')
-source=("${pkgname}-${pkgver}.zip::https://github.com/SpectoLabs/hoverfly/releases/download/v${pkgver}/hoverfly_bundle_linux_amd64.zip")
-sha256sums=('4c3e6670b9f6a205e2ec3cf6b85362774f70980ee47c51295ff3d3659903ef7e')
+provides=()
+conflicts=("${pkgname%-bin}")
+source=("${pkgname}-${pkgver}.zip::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_bundle_linux_amd64.zip")
+sha256sums=('03d4e205a23f4e5531bf72d5bca7b5582bdfc9a42a88fc6b364082ccbe22100c')
 
 package() {
-  install -Dm755 hoverctl -t "${pkgdir}/usr/bin"
-  install -Dm755 hoverfly -t "${pkgdir}/usr/bin"
+  install -Dm755 "${srcdir}/hoverctl" -t "${pkgdir}/usr/bin"
+  install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
 }
