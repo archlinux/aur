@@ -1,18 +1,16 @@
-pkgbase = android-sdk-build-tools-29.0.2
+pkgbase = android-sdk-build-tools-33.0.2
 	pkgdesc = Build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc)
-	pkgver = r29.0.2
+	pkgver = r33.0.2
 	pkgrel = 1
-	url = http://developer.android.com/sdk/index.html
-	arch = i686
+	url = https://developer.android.com/studio/releases/build-tools
 	arch = x86_64
 	license = custom
+	depends = gcc-libs
+	depends = zlib
+	optdepends = lib32-gcc-libs
+	optdepends = lib32-zlib
 	options = !strip
-	source = https://dl-ssl.google.com/android/repository/build-tools_r29.0.2-linux.zip
-	sha1sums = c0fc7e5c37ac96bfd0c611802e8ab36d0e71b398
-	depends_i686 = gcc-libs
-	depends_i686 = zlib
-	depends_x86_64 = lib32-gcc-libs
-	depends_x86_64 = lib32-zlib
+	source = https://dl-ssl.google.com/android/repository/build-tools_r33.0.2-linux.zip
+	sha256sums = ff19ccbe3a5098b5dd10722063ebcd40218a30d23b50133e386fc39ea5240e79
 
-pkgname = android-sdk-build-tools-29.0.2
-
+pkgname = android-sdk-build-tools-33.0.2
