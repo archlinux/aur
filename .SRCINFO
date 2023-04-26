@@ -22,6 +22,12 @@ pkgbase = asusctl-git
 	provides = asusctl
 	conflicts = asusctl
 	source = git+https://gitlab.com/asus-linux/asusctl.git
+	source = git+https://github.com/flukejones/uhid-virt.git
+	source = 0001-Fix-reference-to-packed-field-is-unaligned.patch
+	source = 0001-cargo-patch-the-source-to-pull-a-patch.patch
 	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 6407424a4f9f698d51564fc4ecf45555
+	md5sums = e60fc2d845d1eb363c664ef20d15adbd
 
 pkgname = asusctl-git
