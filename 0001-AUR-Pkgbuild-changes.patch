@@ -1,4 +1,4 @@
-From 25873128daf808994902e76ab5216b49225cc6c5 Mon Sep 17 00:00:00 2001
+From 3992d030fd6ddf53f0b997b382ff415242ea0c1d Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Wed, 26 Apr 2023 14:22:23 +0300
 Subject: [PATCH 1/2] AUR Pkgbuild changes
@@ -6,6 +6,7 @@ Subject: [PATCH 1/2] AUR Pkgbuild changes
 ---
  Makefile.in                    | 71 ++++++++++++++++++++++++++--------
  compatibilitytool.vdf.template |  2 +-
+ configure.sh                   |  2 +
  make/rules-autoconf.mk         |  4 +-
  make/rules-cargo.mk            |  4 +-
  make/rules-cmake.mk            |  4 +-
@@ -15,7 +16,7 @@ Subject: [PATCH 1/2] AUR Pkgbuild changes
  make/rules-winemaker.mk        |  2 +-
  proton                         |  6 +--
  toolmanifest_runtime.vdf       |  3 --
- 11 files changed, 81 insertions(+), 40 deletions(-)
+ 12 files changed, 83 insertions(+), 40 deletions(-)
 
 diff --git a/Makefile.in b/Makefile.in
 index d2943e34..d66489ac 100644
@@ -254,6 +255,26 @@ index 5ac60e8b..e580cd20 100644
  
        "from_oslist"  "windows"
        "to_oslist"    "linux"
+diff --git a/configure.sh b/configure.sh
+index bc3ccc65..faa4d6e3 100755
+--- a/configure.sh
++++ b/configure.sh
+@@ -128,6 +128,7 @@ function configure() {
+     CONTAINER_MOUNT_OPTS=:Z
+   fi
+ 
++  if [ "$arg_container_engine" != "none" ]; then
+   if [[ -n "$arg_container_engine" ]]; then
+     check_container_engine "$arg_container_engine" "$steamrt_image" || die "Specified container engine \"$arg_container_engine\" doesn't work"
+   else
+@@ -140,6 +141,7 @@ function configure() {
+         die "${arg_container_engine:-Container engine discovery} has failed. Please fix your setup."
+     fi
+   fi
++  fi
+ 
+   stat "Using $arg_container_engine."
+ 
 diff --git a/make/rules-autoconf.mk b/make/rules-autoconf.mk
 index ad04eeb8..53eda5bc 100644
 --- a/make/rules-autoconf.mk
@@ -450,5 +471,5 @@ index beddcbbb..b6f36788 100644
 -  "compatmanager_layer_name" "proton"
  }
 -- 
-2.40.0
+2.40.1
 

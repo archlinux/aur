@@ -351,8 +351,8 @@ sha256sums=('SKIP'
             '08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3'
             '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
             '1286afc67b0a329f5e2d98d9e803ca5906a841ad5486e9b3b1fefa1124b15622'
-            '4b38b10cca5502594b7582596b5173d9d3ca42f31f35ec1d89750b68e3aa14b6'
-            '2b09fee9dedddf24ad96772ca8c98fe99a146d5c4a22d27a56564d24549a7fd8')
+            '1a7304d8e26cfc91cc059f9129f8287ca32ab68f9ec20fd7997021c6602ba723'
+            'fd047f0a441ef3d761c291fedd44fe351c125ada51cabcaf102f85cbffaaed6f')
 # Optional patches
 sha256sums+=(
 )
