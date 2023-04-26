@@ -81,8 +81,6 @@ optdepends=(
 )
 
 makedepends=(${makedepends[@]} ${depends[@]})
-provides=('proton-native')
-conflicts=('proton-native')
 install=${pkgname}.install
 source=(
     proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-${_srctag}
