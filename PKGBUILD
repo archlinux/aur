@@ -14,6 +14,6 @@ sha256sums=('SKIP')
 
 package() {
   mkdir -p "$pkgdir"/usr/bin
-  install -Dm555 "${srcdir}"/wofi-calc/wofi-calc.sh "$pkgdir/usr/bin/hyprshotgun"
+  install -Dm555 "${srcdir}"/hyprshotgun/hyprshotgun "$pkgdir/usr/bin/hyprshotgun"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
