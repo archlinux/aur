@@ -1,0 +1,24 @@
+pkgbase = imaginary-git
+	pkgdesc = Fast, simple, scalable HTTP microservice for high-level image processing
+	pkgver = 1.2.4.r23.gb632dae
+	pkgrel = 1
+	url = https://github.com/h2non/imaginary
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	depends = libvips
+	depends = lcms2
+	depends = openjpeg2
+	depends = poppler-glib
+	depends = openslide
+	depends = libjxl
+	provides = imaginary
+	conflicts = imaginary
+	source = imaginary::git+https://github.com/h2non/imaginary.git
+	source = imaginary.service
+	sha512sums = SKIP
+	sha512sums = a561c34735bed4eca5bcd20e99e8294d7eaef85a0293ce742981eb4152b3caf7c26a1b07d6680028f82585437d2c35bfae52d4e6a161591864d0ccff78d65c39
+
+pkgname = imaginary-git

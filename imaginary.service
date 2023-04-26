@@ -1,0 +1,24 @@
+[Service]
+ExecStart=/usr/bin/imaginary -a localhost
+
+DynamicUser=true
+
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectKernelModules=true
+ProtectKernelTunables=true
+PrivateTmp=true
+LockPersonality=true
+ProtectHostname=true
+ProtectHome=true
+ProtectControlGroups=true
+ProtectKernelLogs=true
+PrivateDevices=true
+RestrictRealtime=true
+CapabilityBoundingSet=
+MemoryDenyWriteExecute=true
+CapabilityBoundingSet=CAP_NET_RAW
+AmbientCapabilities=CAP_NET_RAW
+
+[Install]
+WantedBy=default.target
