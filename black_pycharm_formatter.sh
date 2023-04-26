@@ -13,12 +13,12 @@ case $ext in
 "sh")
 	/usr/bin/shfmt -w $file_path
 	;;
-# "yml")
-# 	/usr/bin/prettier --print-width 88 --write $file_path
-# 	;;
-# "yaml")
-# 	/usr/bin/prettier --print-width 88 --write $file_path
-# 	;;
+"yml")
+	/usr/bin/prettier --print-width 88 --write $file_path
+	;;
+"yaml")
+	/usr/bin/prettier --print-width 88 --write $file_path
+	;;
 "json")
 	/usr/bin/prettier --print-width 88 --write $file_path
 	;;
