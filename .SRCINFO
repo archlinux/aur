@@ -1,7 +1,7 @@
 pkgbase = hyprshotgun
 	pkgdesc = Utility to take screenshots to the cloud (or save them locally)
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/Zeioth/wofi-calc.git
 	arch = any
 	license = GPL

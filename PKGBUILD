@@ -1,7 +1,7 @@
 # Maintainer: Adrian Lopez <zeioth@hotmail.com>
 pkgname=hyprshotgun
 pkgver=1.0
-pkgrel=3
+pkgrel=1
 pkgdesc="Utility to take screenshots to the cloud (or save them locally)"
 arch=(any)
 url="https://github.com/Zeioth/wofi-calc.git"
