@@ -1,6 +1,6 @@
 pkgbase = vmangos-git
 	pkgdesc = World of Warcraft Vanilla server emulator
-	pkgver = r5229.1c90bba03
+	pkgver = r5353.5c195daad
 	pkgrel = 1
 	url = https://github.com/vmangos/
 	install = vmangos-git.install
@@ -10,7 +10,7 @@ pkgbase = vmangos-git
 	makedepends = git
 	makedepends = p7zip
 	depends = ace
-	depends = tbb
+	depends = onetbb
 	depends = mariadb
 	optdepends = vmangos-setupdb: Pacman hook to (insecurely) set up MariaDB
 	provides = vmangos
