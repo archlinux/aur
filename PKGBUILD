@@ -1,13 +1,13 @@
 # Maintainer: Leon Möller <jkhsjdhjs at totally dot rip>
 
 pkgname="jellyfin-web-intro-skipper"
-pkgver=10.8.9
+pkgver=10.8.10
 pkgrel=1
 pkgdesc="Modified jellyfin web client to use with the 'Intro Skipper' plugin"
 arch=('any')
 url="https://github.com/ConfusedPolarBear/jellyfin-web"
 license=('GPL2')
-provides=("${pkgname%-intro-skipper}=10.8.9")
+provides=("${pkgname%-intro-skipper}=$pkgver")
 conflicts=("${pkgname%-intro-skipper}")
 makedepends=('npm')
 source=("git+$url.git")
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 prepare() {
     cd "$srcdir/${pkgname%-intro-skipper}"
-    git reset --hard e8a79f654e4c55008cb3862f2a37dd626a3741ab
+    git reset --hard 4d9c94b8f109435b68ea864bcea3bc41dfceb128
 }
 
 build() {

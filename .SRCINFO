@@ -1,12 +1,12 @@
 pkgbase = jellyfin-web-intro-skipper
 	pkgdesc = Modified jellyfin web client to use with the 'Intro Skipper' plugin
-	pkgver = 10.8.9
+	pkgver = 10.8.10
 	pkgrel = 1
 	url = https://github.com/ConfusedPolarBear/jellyfin-web
 	arch = any
 	license = GPL2
 	makedepends = npm
-	provides = jellyfin-web=10.8.9
+	provides = jellyfin-web=10.8.10
 	conflicts = jellyfin-web
 	source = git+https://github.com/ConfusedPolarBear/jellyfin-web.git
 	sha256sums = SKIP
