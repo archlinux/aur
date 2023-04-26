@@ -1,44 +1,33 @@
-# Maintainer: willemw <willemw12@gmail.com>
-# Contributor: Philipp Klein <philipptheklein@gmail.com>
+# Co-maintainer: scarlettekk <scarlett AT enby DOT site>
+# Co-maintainer: willemw <willemw12@gmail.com>
 
 pkgname=gdrive
-pkgver=2.1.1
-pkgrel=2
-pkgdesc="Google Drive CLI Client"
-arch=('x86_64')
-url="https://github.com/prasmussen/gdrive"
+pkgver=3.9.0
+pkgrel=1
+pkgdesc="Google Drive CLI Client (Rust rewrite)"
+arch=('x86_64' 'aarch64')
+url="https://github.com/glotlabs/$pkgname"
 license=('MIT')
-makedepends=('git' 'go')
-options=('!strip' '!emptydirs')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('SKIP')
-
-_gopkg="${url#https://}"
-_gobuild=build/src/$_gopkg
-
-export CGO_CPPFLAGS="${CPPFLAGS}"
-export CGO_CFLAGS="${CFLAGS}"
-export CGO_CXXFLAGS="${CXXFLAGS}"
-export CGO_LDFLAGS="${LDFLAGS}"
-export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -modcacherw"    # -mod=readonly
+makedepends=('git' 'cargo')
+source=("$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('a4476480f0cf759f6a7ac475e06f819cbebfe6bb6f1e0038deff1c02597a275a')
 
 prepare() {
-  mkdir -p "$(dirname $_gobuild)"
-  cp -a "$srcdir/$pkgname-$pkgver" $_gobuild
-
-  export GOCACHE="$srcdir/cache"
-  export GOPATH="$srcdir/build"
-  go mod init $_gopkg
-  go mod tidy -e
+    cd $pkgname-$pkgver
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  export GOCACHE="$srcdir/cache"
-  export GOPATH="$srcdir/build"
-  go install $_gopkg@$pkgver
+    cd $pkgname-$pkgver
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --all-features
 }
 
 package() {
-  install -Dm755 build/bin/gdrive -t "$pkgdir/usr/bin"
+    cd $pkgname-$pkgver
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
