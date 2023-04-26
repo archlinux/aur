@@ -1,9 +1,10 @@
-# Maintainer: Jules Sam Randolph <jules.sam.randolph@gmail.com>
+# Maintainer: Jeremy Gust <jeremy AT plasticsoup DOT net>
+# Contributor: Jules Sam Randolph <jules.sam.randolph@gmail.com>
 
 pkgname=ttf-meslo-nerd-font-powerlevel10k
-_commit='28dd1bd968b0c9cd4add7a3b80b264acdc53bcc7'
-pkgver=1.000
-pkgrel=3
+_commit='145eb9fbc2f42ee408dacd9b22d8e6e0e553f83d'
+pkgver=2.3.3
+pkgrel=1
 pkgdesc='Meslo Nerd Font patched for Powerlevel10k'
 arch=('any')
 url='https://github.com/romkatv/powerlevel10k-media'
@@ -14,10 +15,10 @@ source=("MesloLGS-NF-Bold-${pkgver}.ttf::https://github.com/romkatv/powerlevel10
     "MesloLGS-NF-Bold-Italic-${pkgver}.ttf::https://github.com/romkatv/powerlevel10k-media/raw/${_commit}/MesloLGS%20NF%20Bold%20Italic.ttf"
     "MesloLGS-NF-Italic-${pkgver}.ttf::https://github.com/romkatv/powerlevel10k-media/raw/${_commit}/MesloLGS%20NF%20Italic.ttf"
     "MesloLGS-NF-Regular-${pkgver}.ttf::https://github.com/romkatv/powerlevel10k-media/raw/${_commit}/MesloLGS%20NF%20Regular.ttf")
-sha256sums=('ebdc86f4dbac57ec81e3b7b6f2e6fa182b4ac74e928f2035d398000404f42b71'
-    '7fed7e876c1a911ebdd83cb861d4d26fc81376da2018ac8d704a99897c35b83c'
-    'ffbb03ec5ae9be0bed5609c423f1846c59d94641c4f6a2ddf94e24f8c7958290'
-    '9192e07bc2e8aa973931b86f2ac6946d727319b07f1fdf1a90756b0da9accdcb')
+sha256sums=('b6c0199cf7c7483c8343ea020658925e6de0aeb318b89908152fcb4d19226003'
+    '56b4131adecec052c4b324efb818dd326d586dbc316fc68f98f1cae2eb8d1220'
+    '6f357bcbe2597704e157a915625928bca38364a89c22a4ac36e7a116dcd392ef'
+    'd97946186e97f8d7c0139e8983abf40a1d2d086924f2c5dbf1c29bd8f2c6e57d')
 
 package() {
     install -dm 755 "${pkgdir}/usr/share/fonts/TTF"
