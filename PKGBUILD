@@ -9,7 +9,7 @@
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
 pkgver=6.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=(x86_64)
@@ -35,6 +35,7 @@ depends=(
   libfreetype.so
   libgl
   libiec61883
+  libjxl.so
   libmfx
   libmodplug
   libopenmpt.so
@@ -157,12 +158,14 @@ build() {
     --enable-libgsm \
     --enable-libiec61883 \
     --enable-libjack \
+    --enable-libjxl \
     --enable-libmfx \
     --enable-libmodplug \
     --enable-libmp3lame \
     --enable-libopencore_amrnb \
     --enable-libopencore_amrwb \
     --enable-libopenjpeg \
+    --enable-libopenmpt \
     --enable-libopus \
     --enable-libpulse \
     --enable-librav1e \
