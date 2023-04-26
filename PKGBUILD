@@ -1,6 +1,5 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="beam-wallet-appimage"
-_appname=Beam-Wallet
 pkgver=7.3.14027.5732
 pkgrel=1
 pkgdesc="Beam Desktop Wallet"
