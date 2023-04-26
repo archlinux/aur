@@ -1,0 +1,14 @@
+pkgbase = bito-cli
+	pkgdesc = Bito AI - AI assistance for programming
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://bito.ai/
+	arch = x86_64
+	license = custom
+	provides = bito
+	source = bito-linux-x86::https://raw.githubusercontent.com/gitbito/CLI/main/version-3.0/bito-linux-x86
+	source = LICENSE.md::https://raw.githubusercontent.com/gitbito/CLI/main/LICENSE.md
+	md5sums = 37ffac6517f8dcceee86f9926182721c
+	md5sums = 218321b50fc8be292c4fe6199f62c46b
+
+pkgname = bito-cli
