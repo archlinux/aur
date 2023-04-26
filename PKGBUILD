@@ -1,18 +1,18 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="icalingua++-appimage"
-pkgver=2.9.5
+pkgver=2.9.6
 pkgrel=1
 pkgdesc="A branch of deleted Icalingua, with limited support"
 arch=("x86_64")
 url="https://github.com/Icalingua-plus-plus/Icalingua-plus-plus"
 license=(AGPL3)
-depends=('hicolor-icon-theme' 'zlib' 'glibc')
+depends=('zlib' 'glibc')
 options=(!strip)
 provides=()
 conflicts=("${pkgname%-appimage}")
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Icalingua++-${pkgver}.AppImage")
-sha256sums=('26e9417e99fc3a5c99e17142f82abedc9b3ba67603ac95b1fad66f0fcc70c2fb')
+sha256sums=('630fd4d81dff93c2e16459a726f58dd5f00d2568ebbd457f40904cfce36e8980')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
