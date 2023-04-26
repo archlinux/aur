@@ -4,12 +4,14 @@
 # https://github.com/michaellass/AUR
 
 pkgname=qt-dab
-pkgver=4.4.2
-_prefix= # name of tarball and contents change from release to release
-_pkgver=4.4.2    # official versioning not necessarily compatible with pacman
-_binary=${pkgname}-${_pkgver}
+pkgver=4.6
+_prefix=qt-dab- # name of tarball and contents change from release to release
+_pkgver=4.6-5.3 # tag names may combine v4 and v5
+_fullname=${pkgname}-4
+_fullname_s=${pkgname}-s4
+_binary=${pkgname}-${pkgver}
 pkgrel=1
-pkgdesc="Software DAB decoder for use with various SDR devices"
+pkgdesc="Software DAB decoder for use with various SDR devices (version 4, formerly dab-maxi)"
 arch=(x86_64)
 url="https://www.sdr-j.tk/"
 license=('GPL2')
@@ -21,37 +23,34 @@ optdepends=('airspy: Support for Airspy'
             'rtl-sdr: Support for RTL-SDR'
             'libsdrplay: Support for SDRplay')
 source=("https://github.com/JvanKatwijk/${pkgname}/archive/refs/tags/${_prefix}${_pkgver}.tar.gz")
-sha256sums=('a19413f4d2d1adb30169462744c6b2f4eec357ac26c563688f147a73396d552b')
+sha256sums=('c4b52260bb8b6f6fe8af57e808b95d88cf35e1f297f0fdfdb7dcdbe701beaa0b')
 
 prepare() {
 	cd "${_prefix}${pkgname}-${_pkgver}"
 
 	# The program is officially called Qt-DAB.
-	sed -i 's/Qt_DAB/Qt-DAB/g' dab-maxi/${pkgname}.desktop
+	sed -i 's/Qt_DAB/Qt-DAB/g' ${_fullname_s}/${_fullname}.desktop
 }
 
 build() {
-	mkdir -p build-maxi; cd build-maxi
+	mkdir -p build; cd build
 
 	cmake \
 		-Wno-dev \
-		-DTRY_EPG=ON \
-		-DRTLSDR=ON \
 		-DRTL_TCP=ON \
 		-DAIRSPY=ON \
-		-DSDRPLAY_V3=ON \
 		-DLIMESDR=ON \
 		-DHACKRF=ON \
 		-DPLUTO=ON \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		../${_prefix}${pkgname}-${_pkgver}/dab-maxi
+		../${_prefix}${pkgname}-${_pkgver}/${_fullname_s}
 
 	make
 }
 
 package() {
-	install -Dm 755 build-maxi/${_binary} "${pkgdir}"/usr/bin/${pkgname}
-	install -Dm 644 ${_prefix}${pkgname}-${_pkgver}/dab-maxi/${pkgname}.desktop "${pkgdir}"/usr/share/applications/${pkgname}.desktop
-	install -Dm 644 ${_prefix}${pkgname}-${_pkgver}/dab-maxi/${pkgname}.png "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/${pkgname}.png
-	install -Dm 644 ${_prefix}${pkgname}-${_pkgver}/docs/manual.pdf "${pkgdir}"/usr/share/doc/${pkgname}/manual.pdf
+	install -Dm 755 build/${_binary} "${pkgdir}"/usr/bin/${_fullname}
+	install -Dm 644 ${_prefix}${pkgname}-${_pkgver}/${_fullname_s}/${_fullname}.desktop "${pkgdir}"/usr/share/applications/${_fullname}.desktop
+	install -Dm 644 ${_prefix}${pkgname}-${_pkgver}/${_fullname_s}/${_fullname}.png "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/${_fullname}.png
+	install -Dm 644 ${_prefix}${pkgname}-${_pkgver}/qt-dab.pdf "${pkgdir}"/usr/share/doc/${pkgname}/manual.pdf
 }
