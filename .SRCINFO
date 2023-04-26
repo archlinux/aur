@@ -1,13 +1,13 @@
 pkgbase = python-cronsim
 	pkgdesc = A python cron expression parser and evaluator.
-	pkgver = 2.3
+	pkgver = 2.4
 	pkgrel = 1
 	url = https://github.com/cuu508/cronsim
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/cuu508/cronsim/archive/refs/tags/2.3.tar.gz
-	sha256sums = ba3cb5bb7659c7fb7a747454f1e86eefcec95e5108c5129891a8c9b38bc7d93d
+	source = https://github.com/cuu508/cronsim/archive/refs/tags/2.4.tar.gz
+	sha256sums = cde496613d91f286e2c8e220baf6ba3a9c52590c021cdcb58bbb4bdd0e067c4e
 
 pkgname = python-cronsim
