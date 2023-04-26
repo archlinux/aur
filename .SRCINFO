@@ -1,6 +1,6 @@
 pkgbase = ligo-bin
 	pkgdesc = High Level Smart Contract Language for Tezos (binary)
-	pkgver = 0.64.0
+	pkgver = 0.64.1
 	pkgrel = 2
 	url = https://gitlab.com/ligolang/ligo
 	arch = x86_64
