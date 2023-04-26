@@ -1,0 +1,18 @@
+pkgbase = shellshoccar-jpn-tukubai-git
+	pkgdesc = ShellShoccar-Jpn's fork of Open usp Tukubai implemented in shellscript
+	pkgver = r402.403f5f1
+	pkgrel = 1
+	url = https://github.com/ShellShoccar-jpn/Open-usp-Tukubai
+	arch = any
+	groups = shellshoccar-jpn
+	license = custom:CC0
+	makedepends = git
+	provides = shellshoccar-jpn-tukubai
+	provides = open-usp-tukubai
+	conflicts = shellshoccar-jpn-tukubai
+	conflicts = open-usp-tukubai
+	conflicts = gsm
+	source = shellshoccar-jpn-tukubai::git+https://github.com/ShellShoccar-jpn/Open-usp-Tukubai.git
+	md5sums = SKIP
+
+pkgname = shellshoccar-jpn-tukubai-git
