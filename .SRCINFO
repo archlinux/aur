@@ -1,0 +1,17 @@
+pkgbase = hyprshotgun
+	pkgdesc = Utility to take screenshots to the cloud (or save them locally)
+	pkgver = 1.0
+	pkgrel = 3
+	url = https://github.com/Zeioth/wofi-calc.git
+	arch = any
+	license = GPL
+	depends = wl-clipboard
+	depends = libnotify
+	depends = imagemagick
+	depends = grimblast
+	provides = hyprshotgun
+	conflicts = hyprshotgun-git
+	source = git+https://github.com/Zeioth/wofi-calc.git
+	sha256sums = SKIP
+
+pkgname = hyprshotgun
