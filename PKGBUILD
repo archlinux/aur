@@ -2,7 +2,7 @@
 
 pkgname=vmangos-git
 pkgver=r5353.5c195daad
-pkgrel=1
+pkgrel=2
 pkgdesc="World of Warcraft Vanilla server emulator"
 arch=('x86_64')
 url="https://github.com/vmangos/"
@@ -75,9 +75,9 @@ package() {
     mv ${pkgdir}/etc/vmangos/mangosd.conf.dist ${pkgdir}/etc/vmangos/mangosd.conf
 
     # Edit default directories in conf files
-    sed -i 's/^\(DataDir.*=\)/\1 "\/var\/lib\/vmangos"/' ${pkgdir}/etc/vmangos/mangosd.conf
-    sed -i 's/^\(LogsDir.*=\)/\1 "\/var\/log\/vmangos"/' ${pkgdir}/etc/vmangos/mangosd.conf
-    sed -i 's/^\(LogsDir.*=\)/\1 "\/var\/log\/vmangos"/' ${pkgdir}/etc/vmangos/realmd.conf
+    sed -i 's/^DataDir.*/DataDir = "\/var\/lib\/vmangos"/' ${pkgdir}/etc/vmangos/mangosd.conf
+    sed -i 's/^LogsDir.*/LogsDir = "\/var\/log\/vmangos"/' ${pkgdir}/etc/vmangos/mangosd.conf
+    sed -i 's/^LogsDir.*/LogsDir = "\/var\/log\/vmangos"/' ${pkgdir}/etc/vmangos/realmd.conf
 
     # Install vmangos sysuser and systemd service
     install -Dm644 ${srcdir}/user.conf ${pkgdir}/usr/lib/sysusers.d/vmangos.conf
