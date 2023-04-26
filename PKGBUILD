@@ -4,14 +4,14 @@
 # Maintainer: slbtty <shenlebantongying@gmail.com>
 
 pkgname=goldendict-ng-git
-pkgver=23.04.03.alpha.230409.c472b2cb.r9.ge32a7a2c
+pkgver=23.04.03.alpha.230425.a82ce2a8.r4.g12d9ae3d
 pkgrel=1
 pkgdesc="A feature-rich dictionary lookup program, supporting multiple dictionary formats."
 arch=('i686' 'x86_64')
 url="https://github.com/xiaoyifang/goldendict-ng"
 license=('GPL3')
 depends=('ffmpeg' 'hunspell' 'libvorbis' 'libxtst' 'lzo' 'zlib' 'xz' 'libeb' 'opencc'
-	 'qt5-svg' 'qt5-tools' 'qt5-x11extras' 'qt5-multimedia' 'qt5-webengine' 'qt5-speech')
+	 'qt6-svg' 'qt6-tools' 'qt6-multimedia' 'qt6-webengine' 'qt6-speech')
 makedepends=('git')
 conflicts=('goldendict' 'goldendict-git' 'goldendict-svn' 'goldendict-git-opt')
 provides=('goldendict')
@@ -34,7 +34,7 @@ prepare() {
 
 build(){
 	cd "$srcdir/$pkgname"
-	qmake-qt5 "CONFIG+=release" "CONFIG+=zim_support" "CONFIG+=chinese_conversion_support" PREFIX="/usr" goldendict.pro
+	qmake6 "CONFIG+=release" "CONFIG+=zim_support" "CONFIG+=chinese_conversion_support" PREFIX="/usr" goldendict.pro
 	make
 }
 
