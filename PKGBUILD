@@ -11,7 +11,7 @@ license=('MPL-2')
 depends=(bcc-tools python-bcc)
 makedepends=(git rust just linux-headers pipewire)
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/pop-os/system76-scheduler/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('4eababf6649882363b6e5766e068420052cfbed7156a4df4a43af3bc8187242a')
+sha256sums=('fe198bcd81f1c75177286f9fb1deb678e66dc718ea25463cb26d0f842231e524')
 install=install.sh
 backup=(
   'etc/system76-scheduler/assignments/default.ron'
