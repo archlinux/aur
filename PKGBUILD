@@ -2,7 +2,7 @@
 
 _pkgname=catppuccin
 pkgname="python-$_pkgname"
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Soothing pastel theme for Python"
 arch=('any')
@@ -18,8 +18,8 @@ optdepends=(
   'python-pygments: For pygments integration'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/catppuccin/python/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1c5810c666c7c37aee3dbf325090a57579232d0ae15afee5a5bedb3536958f25')
-b2sums=('6cd80407ef2db5df88d3159351366527d28c0180b069bf06d95708da6f2035a96c2ed0ef8d1aa078e00a5d62d624eaa77d1ecec0db2724faccaee67ae621b8c7')
+sha256sums=('d74c1f4d31c259dbc30f8320d092aedf7cf1fafff215567b8226aefebc9eb2a1')
+b2sums=('2c9da7e7f1a5cfbe3c79bbdac1efc51641d3c0ffb13ddf4b7629b62f06c6eeb8a02837d9e9adc5e9dbc725bc42920b8ad3627aac79ba10852e0bcd8ee1513673')
 
 build() {
   cd "python-$pkgver"
