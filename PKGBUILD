@@ -1,7 +1,7 @@
 # Maintainer: Adrian Lopez <zeioth@hotmail.com>
 pkgname=hyprshotgun
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Utility to take screenshots to the cloud (or save them locally)"
 arch=(any)
 url="https://github.com/Zeioth/hyprshotgun.git"
@@ -15,5 +15,5 @@ sha256sums=('SKIP')
 package() {
   mkdir -p "$pkgdir"/usr/bin
   install -Dm555 "${srcdir}"/hyprshotgun/hyprshotgun "$pkgdir/usr/bin/hyprshotgun"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "${srcdir}"/hyprshotgun/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
