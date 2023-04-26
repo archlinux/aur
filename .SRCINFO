@@ -1,13 +1,11 @@
 pkgbase = s5cmd-bin
 	pkgdesc = Parallel S3 and local filesystem execution tool
-	pkgver = 1.2.0
+	pkgver = 2.1.0beta.1
 	pkgrel = 1
 	url = https://github.com/peak/s5cmd
 	arch = x86_64
 	license = MIT
-	provides = s5cmd
-	source = s5cmd-bin-1.2.0.tar.gz::https://github.com/peak/s5cmd/releases/download/v1.2.0/s5cmd_1.2.0_Linux-64bit.tar.gz
-	sha256sums = ae6f16aa76a3bbb4203fe4533d866d15555905c415e82841f1394ea55770b9dc
+	source = s5cmd-2.1.0beta.1.tar.gz::https://github.com/peak/s5cmd/releases/download/v2.1.0-beta.1/s5cmd_2.1.0-beta.1_Linux-64bit.tar.gz
+	sha256sums = de5efa37941ef83e892662aefc936603a1a8acbc5a6a9e003a71721a7140b610
 
 pkgname = s5cmd-bin
-
