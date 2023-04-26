@@ -1,6 +1,6 @@
 pkgbase = graal-nodejs-jdk11-bin
 	pkgdesc = GraalVM-based, ployglot-enabled implementation of Node.js, Java 11 version
-	pkgver = 22.3.1
+	pkgver = 22.3.2
 	pkgrel = 1
 	url = https://github.com/oracle/graaljs
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = graal-nodejs-jdk11-bin
 	license = custom
 	depends = jdk11-graalvm-bin
 	optdepends = graaljs-jdk11-bin: JavaScript support for non-native mode (with --jvm)
-	source_x86_64 = https://github.com/oracle/graaljs/releases/download/vm-22.3.1/nodejs-installable-svm-java11-linux-amd64-22.3.1.jar
-	sha256sums_x86_64 = c644d80f23d3e9574162c3152c53901fef64dbf178175ae772c24f4a96283edc
-	source_aarch64 = https://github.com/oracle/graaljs/releases/download/vm-22.3.1/nodejs-installable-svm-java11-linux-aarch64-22.3.1.jar
-	sha256sums_aarch64 = 97a184e529a496192191c29b5d0f769925e833ba6d41c052358a28deebda9f6a
+	source_x86_64 = https://github.com/oracle/graaljs/releases/download/vm-22.3.2/nodejs-installable-svm-java11-linux-amd64-22.3.2.jar
+	sha256sums_x86_64 = 98c94ce3238f92614dfc04260e4942f0d6f1313995f8df661e4374cfcf0fd998
+	source_aarch64 = https://github.com/oracle/graaljs/releases/download/vm-22.3.2/nodejs-installable-svm-java11-linux-aarch64-22.3.2.jar
+	sha256sums_aarch64 = 13640f16c17ef8e0b0dc9210b513cabcb94118a514634e1b7a1cf7517913f5cc
 
 pkgname = graal-nodejs-jdk11-bin
