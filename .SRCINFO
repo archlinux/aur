@@ -12,9 +12,9 @@ pkgbase = terminal-headers
 	source = https://concise.cc/pkg/terminal-headers-1.3-1-x86_64.pkg.tar.zst
 	source = https://concise.cc/pkg/terminal-headers-1.3-1-x86_64.pkg.tar.zst.sig
 	validpgpkeys = 81BACEEBC3EA26E127166E4A819BB92A9A48160E
-	md5sums = 8ac7060b0fcacfb5ce9c49163f7cbfc1
-	md5sums = 7e1797258f0bb26ff0916eded6a02547
-	sha512sums = f82d0513718515d494dfc229f669268c81cd94b83295f88092a09a38563ea034d8b95af48375c492cefeb2489dd90bec1d547bf94a2a75e1fca354b3b35c7307
-	sha512sums = aac95dfbd35ea16fb96d6612a0b898f9ca786cb69ae4fd794069dc93dcd3402c9d1529f8a726ee0928bdcc3552592f216eaa13e6bec611649de7b01fc7ec9bcf
+	md5sums = 2e433297a3e3357450d30a55ee005e6c
+	md5sums = 0df3e6533bbafde65130c9fe5636abdd
+	sha512sums = a9cc74100be6d481e73adb06370f3d2cd807a1ea79bc5494d7b719fcacba2001bf90ab9d68e6e825b3dd17f00bd7e167428bc49fe592fc53641b73787e7ca69c
+	sha512sums = ea9fb87094da0b7a7a146fca0cec4dbf0399e60bf1123988426406cadfa19b9cd6a6ba006f714f6fc89c72aec399c07060676ee8b453acc0945f20332d22a084
 
 pkgname = terminal-headers
