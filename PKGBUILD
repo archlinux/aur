@@ -5,7 +5,7 @@
 pkgname=('flutter-light-common' 'flutter-light-android-arm' 'flutter-light-android-arm64' 'flutter-light-android-x86' 'flutter-light-android-x64' 'flutter-light-web' 'flutter-light-linux')
 pkgbase=flutter-light
 _pkgname=flutter
-pkgver=3.7.9
+pkgver=3.7.12
 pkgrel=1
 makedepends=("python")
 optdepends=("android-sdk" "android-studio" "intellij-idea-community-edition" "intellij-idea-ultimate-edition" "ninja" "perl" "python")
@@ -23,8 +23,8 @@ sha256sums=('1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a'
             '7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f')
 
 prepare() {
-  rm -rf $srcdir/_pkgname
-  git clone https://github.com/flutter/flutter.git --depth 1 -b $pkgver
+  rm -rf $srcdir/$_pkgname
+  git clone https://github.com/flutter/flutter.git --depth 1 -b $pkgver $_pkgname
   cd $srcdir/$_pkgname
   rm -rf bin/cache .pub-cache
   #sed -i "s/\$FLUTTER_ROOT\/bin\/cache\/dart-sdk/\/opt\/dart-sdk/g" "${srcdir}/${_pkgname}/bin/internal/shared.sh"

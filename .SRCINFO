@@ -1,5 +1,5 @@
 pkgbase = flutter-light
-	pkgver = 3.7.9
+	pkgver = 3.7.12
 	pkgrel = 1
 	url = https://flutter.dev
 	arch = x86_64
