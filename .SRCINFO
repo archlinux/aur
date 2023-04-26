@@ -19,6 +19,6 @@ pkgbase = imhex-bin
 	provides = imhex
 	conflicts = imhex
 	source = https://github.com/WerWolv/ImHex/releases/download/v1.28.0/imhex-1.28.0-ArchLinux-x86_64.pkg.tar.zst
-	md5sums = 7672edd0dcc4094692129bb90588d52d
+	md5sums = c1c089842cbca5534e54cb08e05fd005
 
 pkgname = imhex-bin
