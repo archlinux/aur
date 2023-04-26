@@ -1,7 +1,7 @@
 pkgbase = iridium-rpm
 	pkgdesc = Iridium browser - rhel/centos build altered for arch
 	pkgver = 112.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://iridiumbrowser.de/
 	arch = x86_64
 	license = BSD
