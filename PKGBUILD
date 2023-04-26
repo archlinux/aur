@@ -25,7 +25,6 @@ makedepends=(
   supergfxctl
   systemd
 )
-conflicts=(asusctl-git)
 _commit=bee5508099b8043563b3528ed0a55ed2fa62ef85 # tags/4.6.1^0
 source=("git+${url}.git#commit=$_commit")
 sha256sums=('SKIP')

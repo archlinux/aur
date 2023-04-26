@@ -16,7 +16,6 @@ pkgbase = asusctl
 	makedepends = rust
 	makedepends = supergfxctl
 	makedepends = systemd
-	conflicts = asusctl-git
 	source = git+https://gitlab.com/asus-linux/asusctl.git#commit=bee5508099b8043563b3528ed0a55ed2fa62ef85
 	sha256sums = SKIP
 
