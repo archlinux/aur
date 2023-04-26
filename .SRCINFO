@@ -1,6 +1,6 @@
 pkgbase = php81-redis
 	pkgdesc = PHP extension for interfacing with Redis
-	pkgver = 5.3.4
+	pkgver = 5.3.7
 	pkgrel = 1
 	url = http://pecl.php.net/package/redis
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = php81-redis
 	makedepends = php81
 	depends = php81
 	backup = etc/php81/conf.d/redis.ini
-	source = http://pecl.php.net/get/redis-5.3.4.tgz
-	sha256sums = 4b39056f3356f135255e059efd76398d1c7607c86bd52513e6341bb07a3fb4cc
+	source = http://pecl.php.net/get/redis-5.3.7.tgz
+	sha256sums = b958166ccda4f40bd17c6998f9e2239021ae644467cd8ad5c15def420aad65b0
 
 pkgname = php81-redis
