@@ -3,7 +3,7 @@
 _pkgbase='rapiddisk'
 pkgname="$_pkgbase-dkms"
 _vermajor=9
-_verminor=0
+_verminor=1
 _verrevision=0
 pkgver=${_vermajor}.${_verminor}.${_verrevision}
 pkgrel=1
@@ -17,7 +17,7 @@ depends=('dkms'
          'libmicrohttpd')
 makedeps=('jansson')
 install=${pkgname}.install
-_gitcommit=bde4d2b
+_gitcommit=cbc7c7c
 source=("git+https://github.com/pkoutoupis/rapiddisk#commit=${_gitcommit}")
 
 md5sums=('SKIP')
