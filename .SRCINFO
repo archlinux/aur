@@ -1,0 +1,14 @@
+pkgbase = sesame
+	pkgdesc = An xdg-open alternative.
+	pkgver = 0.1.0.r7.b533865
+	pkgrel = 1
+	url = https://github.com/green7ea/sesame
+	arch = any
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	provides = sesame
+	source = git+https://github.com/green7ea/sesame.git
+	sha256sums = SKIP
+
+pkgname = sesame
