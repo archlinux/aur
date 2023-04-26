@@ -1,10 +1,11 @@
 pkgbase = llama-rs-git
 	pkgdesc = Run LLaMA inference on CPU, with Rust 🦀🚀🦙
-	pkgver = r157.a067431
+	pkgver = r342.6e8aa79
 	pkgrel = 1
 	url = https://github.com/setzer22/llama-rs
 	arch = any
 	license = MIT
+	license = APACHE
 	makedepends = git
 	makedepends = cargo
 	depends = glibc
