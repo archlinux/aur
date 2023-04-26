@@ -13,7 +13,7 @@ pkgname=('pipewire-git'
          'pipewire-roc-git'
          'pipewire-x11-bell-git'
          )
-pkgver=0.3.66.13.g0b69f37a7
+pkgver=0.3.70.25.g815501cc1
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -51,7 +51,6 @@ makedepends=('git'
              'sbc'
              'sdl2'
              'systemd'
-             'tinycompress'
              'valgrind'
              'vulkan-headers'
              'vulkan-icd-loader'
@@ -121,12 +120,12 @@ package_pipewire-git() {
            "libpipewire-${_ver}.so"
            'libcamera-base.so'
            'libcamera.so'
+           'libcrypto.so'
            'libdbus-1.so'
            'libglib-2.0.so'
            'libncursesw.so'
            'libreadline.so'
            'libsystemd.so'
-           'libudev.so'
            'libvulkan.so'
            )
   optdepends=('pipewire-docs-git: Documentation'
@@ -244,7 +243,9 @@ package_pipewire-git() {
 
 package_libpipewire-git() {
   pkgdesc+=" - client library (GIT Version)"
-  depends=('gcc-libs')
+  depends=('gcc-libs'
+           'glibc'
+           )
   provides=("libpipewire=${pkgver}"
             "libpipewire-${_ver}.so"
             )
@@ -270,16 +271,24 @@ package_pipewire-audio-git() {
   pkgdesc+=" - Audio support (GIT Version)"
   depends=("pipewire-git=${pkgver}"
            "libpipewire-${_ver}.so"
+           'gcc-libs'
+           'glibc'
            'alsa-card-profiles'
            'libasound.so'
+           'libavahi-client.so'
+           'libavahi-common.so'
            'libavcodec.so'
            'libavformat.so'
            'libavutil.so'
-           'libswresample.so'
            'libbluetooth.so'
+           'libdbus-1.so'
            'libfdk-aac.so'
            'libfreeaptx.so'
+           'libgio-2.0.so'
+           'libglib-2.0.so=0-64'
+           'libgobject-2.0.so'
            'liblc3.so'
+           'libldacBT_abr.so'
            'libldacBT_enc.so'
            'liblilv-0.so'
            'libmysofa.so'
@@ -312,10 +321,10 @@ package_pipewire-alsa-git() {
   pkgdesc+=" - ALSA configuration (GIT version)"
   depends=("pipewire-git=${pkgver}"
            "pipewire-audio-git=${pkgver}"
-           "libpipewire-${_ver}.so"
            'pipewire-session-manager'
+           'glibc'
            'libasound.so'
-           'libtinycompress.so'
+           'libudev.so'
            )
   backup=('usr/share/alsa/alsa.conf.d/50-pipewire.conf'
           'usr/share/alsa/alsa.conf.d/99-pipewire-default.conf'
@@ -345,11 +354,12 @@ package_pipewire-jack-git() {
            "libpipewire-${_ver}.so"
            "pipewire-audio-git=${pkgver}"
            'pipewire-session-manager'
+           'glibc'
            'sh'
            )
   optdepends=('jack-example-tools: for official JACK example-clients and tools')
   provides=("pipewire-jack=${pkgver}"
-            'jack'
+            'jack2'
             'libjack.so'
             'libjackserver.so'
             'libjacknet.so'
@@ -376,10 +386,16 @@ package_pipewire-pulse-git() {
            "libpipewire-${_ver}.so"
            "pipewire-audio-git=${pkgver}"
            'pipewire-session-manager'
+           'gcc-libs'
+           'glibc'
            'libavahi-client.so'
            'libavahi-common.so'
+           'libdbus-1.so'
+           'libgio-2.0.so'
            'libglib-2.0.so'
+           'libgobject-2.0.so'
            'libpulse.so'
+           'libsystemd.so'
            )
   backup=('usr/share/pipewire/pipewire-pulse.conf')
   provides=("pipewire-pulse=${pkgver}"
@@ -412,7 +428,7 @@ package_pipewire-roc-git() {
   depends=("pipewire-git=${pkgver}"
            "libpipewire-${_ver}.so"
            "pipewire-audio-git=${pkgver}"
-           'roc-toolkit'
+           'glibc'
            'libroc.so'
            )
   provides=("pipewire-roc=${pkgver}")
@@ -430,9 +446,9 @@ package_pipewire-zeroconf-git() {
   pkgdesc+=" - Zeroconf support (GIT version)"
   depends=("pipewire-git=${pkgver}"
            "libpipewire-${_ver}.so"
+           'glibc'
            'libavahi-client.so'
            'libavahi-common.so'
-           'openssl'
            )
   provides=("pipewire-zeroconf=${pkgver}")
   conflicts=('pipewire-zeroconf')
@@ -450,6 +466,8 @@ package_pipewire-v4l2-git() {
   depends=("pipewire-git=${pkgver}"
            "libpipewire-${_ver}.so"
            'pipewire-session-manager'
+           'glibc'
+           'libudev.so'
            'sh'
            )
   provides=("pipewire-v4l2=${pkgver}")
@@ -465,9 +483,10 @@ package_pipewire-x11-bell-git() {
   depends=("pipewire-git=${pkgver}"
            "libpipewire-${_ver}.so"
            "pipewire-audio-git=${pkgver}"
+           'glibc'
            'libcanberra.so'
-           'libxfixes'
            'libx11'
+           'libxfixes'
            )
   provides=("pipewire-x11-bell=${pkgver}")
   conflicts=('pipewire-x11-bell')
