@@ -1,0 +1,15 @@
+pkgbase = python-xmpppy
+	pkgdesc = Python 2/3 implementation of XMPP (RFC3920, RFC3921).
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/xmpppy/xmpppy
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://github.com/xmpppy/xmpppy/archive/refs/tags/0.7.1.tar.gz
+	b2sums = 483b287fa02898394272ae643536ff9eb16375b665d4e32d82912c0f1aacf30b90ef8cabedaabd9e15608b456e8b0354e365a346e7e674f68f28b58b21a82288
+
+pkgname = python-xmpppy
