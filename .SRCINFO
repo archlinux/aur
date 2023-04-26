@@ -1,0 +1,14 @@
+pkgbase = ruby-jekyll-regex-replace
+	pkgdesc = Simple module to allow using regular expression replacing via liquid filters
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://rubygems.org/gems/jekyll-regex-replace
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = jekyll
+	noextract = jekyll-paginate-v2-1.1.0.gem
+	source = https://rubygems.org/downloads/jekyll-regex-replace-1.1.0.gem
+	sha256sums = 3738e6a0aa07dd3f9b7369e6e38e5d245c623bbd70c31b21e7838c654377a00c
+
+pkgname = ruby-jekyll-regex-replace
