@@ -1,5 +1,5 @@
-# Co-maintainer: scarlettekk <scarlett AT enby DOT site>
-# Co-maintainer: willemw <willemw12@gmail.com>
+# Maintainer: scarlettekk <scarlett AT enby DOT site>
+# Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=gdrive
 pkgver=3.9.0
