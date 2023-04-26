@@ -1,19 +1,13 @@
 pkgbase = chaos-client-bin
 	pkgdesc = Client to communicate with Chaos DNS API
-	pkgver = 0.1.6
+	pkgver = 0.5.1
 	pkgrel = 1
-	url = https://github.com/projectdiscovery/chaos-client
+	url = https://chaos.projectdiscovery.io/
 	arch = x86_64
-	arch = armv6h
-	arch = aarch64
 	license = MIT
-	provides = chaos
-	source_x86_64 = chaos-0.1.6.tar.gz::https://github.com/projectdiscovery/chaos-client/releases/download/v0.1.6/chaos-client_0.1.6_linux_amd64.tar.gz
-	sha256sums_x86_64 = 7d0d30718517a64edf88ce5ab50aea7cdd2027652815bfeb06f294445e0853c6
-	source_armv6h = chaos-0.1.6.tar.gz::https://github.com/projectdiscovery/chaos-client/releases/download/v0.1.6/chaos-client_0.1.6_linux_armv6.tar.gz
-	sha256sums_armv6h = 2dd51671a127b1b9af936111838a505f47b4dfe98e63ade7529ae34feb469cfc
-	source_aarch64 = chaos-0.1.6.tar.gz::https://github.com/projectdiscovery/chaos-client/releases/download/v0.1.6/chaos-client_0.1.6_linux_arm64.tar.gz
-	sha256sums_aarch64 = b1deda446b8d32740a6e2c174ab367a448102d5cfbf34d1bd47517e026d1882d
+	conflicts = chaos-client
+	options = !strip
+	source = chaos-client-0.5.1.zip::https://github.com/projectdiscovery/chaos-client/releases/download/v0.5.1/chaos-client_0.5.1_linux_amd64.zip
+	sha256sums = dc20ec21367051ca0608491703e564203ad2f59f85c4991370c1df70bd3ecc4a
 
 pkgname = chaos-client-bin
-

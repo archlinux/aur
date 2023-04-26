@@ -1,27 +1,21 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
-
-_pkgname='chaos'
-pkgname="${_pkgname}-client-bin"
-pkgver=0.1.6
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
+pkgname="chaos-client-bin"
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Client to communicate with Chaos DNS API'
-arch=('x86_64' 'armv6h' 'aarch64')
-url='https://github.com/projectdiscovery/chaos-client'
+arch=('x86_64')
+url="https://chaos.projectdiscovery.io/"
+_githuburl='https://github.com/projectdiscovery/chaos-client'
 license=('MIT')
-provides=("${_pkgname}")
-
-source_x86_64=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-client_${pkgver}_linux_amd64.tar.gz")
-source_armv6h=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-client_${pkgver}_linux_armv6.tar.gz")
-source_aarch64=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-client_${pkgver}_linux_arm64.tar.gz")
-
-sha256sums_x86_64=('7d0d30718517a64edf88ce5ab50aea7cdd2027652815bfeb06f294445e0853c6')
-sha256sums_armv6h=('2dd51671a127b1b9af936111838a505f47b4dfe98e63ade7529ae34feb469cfc')
-sha256sums_aarch64=('b1deda446b8d32740a6e2c174ab367a448102d5cfbf34d1bd47517e026d1882d')
+provides=()
+conflicts=("${pkgname%-bin}")
+options=(!strip)
+source=("${pkgname%-bin}-${pkgver}.zip::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_amd64.zip")
+sha256sums=('dc20ec21367051ca0608491703e564203ad2f59f85c4991370c1df70bd3ecc4a')
 
 package() {
-  install -Dm755 -t "${pkgdir}/usr/bin" "${_pkgname}"
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" 'README.md'
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" 'LICENSE'
+  install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/usr/bin" 
+  install -Dm644 "${srcdir}/README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 "${srcdir}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-# vim: ts=2 sw=2 et:
