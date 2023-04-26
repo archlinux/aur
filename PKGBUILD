@@ -1,7 +1,7 @@
 # Contributor: taotieren <admin@taotieren.com>
 
 pkgname=cloudflarespeedtest-git
-pkgver=2.2.0
+pkgver=2.2.3.3.g1800c2e
 pkgrel=1
 pkgdesc="「自选优选 IP / 过滤假墙」测试 Cloudflare CDN 延迟和速度，获取最快 IP (IPv4+IPv6)！ "
 arch=('any')
@@ -16,12 +16,12 @@ makedepends=('git')
 backup=()
 options=('!strip')
 #install=${pkgname}.install
-source=("${pkgname%-git}::git+https://ghproxy.com/${url}.git")
+source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
-    git describe --tags | sed 's/^v//;s/-/+/g'
+    git describe --tags | sed 's/^v//;s/-/./g'
 }
 
 prepare() {
