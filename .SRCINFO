@@ -1,12 +1,13 @@
 pkgbase = java-flexdock
 	pkgdesc = Docking framework for Swing
 	pkgver = 1.2.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.com/scilab/forge/flexdock
 	arch = any
 	license = MIT
 	makedepends = ant
 	depends = java-runtime
+	provides = flexdock
 	conflicts = flexdock
 	source = java-flexdock-1.2.4.tar.gz::https://gitlab.com/scilab/forge/flexdock/-/archive/f12705f1934ea347b59f5f2befee156d29b0ea44/flexdock-f12705f1934ea347b59f5f2befee156d29b0ea44.tar.gz
 	source = build.xml.patch
