@@ -3,7 +3,7 @@ PRELOAD_STATE=/var/lib/preload/preload.state
 # arg 1:  the new package version
 # arg 2:  the old package version
 pre_upgrade() {
-  if [ `vercmp $2 0.6.3-2` -lt 0 ]; then
+  if [ "$(vercmp "$2" 0.6.3-2)" -lt 0 ]; then
     echo "Backing up your state file..."
     cp -af ${PRELOAD_STATE} ${PRELOAD_STATE}.backup
   fi
@@ -12,7 +12,7 @@ pre_upgrade() {
 # arg 1:  the new package version
 # arg 2:  the old package version
 post_upgrade() {
-  if [ `vercmp $2 0.6.3-2` -lt 0 -a -f ${PRELOAD_STATE}.backup ]; then
+  if [ "$(vercmp "$2" 0.6.3-2)" -lt 0 ] && [ -f ${PRELOAD_STATE}.backup ]; then
     echo "Restoring the state file..."
     mv -f ${PRELOAD_STATE}.backup ${PRELOAD_STATE}
   fi
