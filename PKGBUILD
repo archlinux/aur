@@ -4,7 +4,7 @@ _pkgname=bigrquery
 _pkgver=1.4.2
 pkgname=r-${_pkgname,,}
 pkgver=1.4.2
-pkgrel=1
+pkgrel=4
 pkgdesc="An Interface to Google's 'BigQuery' 'API'"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -14,6 +14,7 @@ depends=(
   r-assertthat
   r-bit64
   r-brio
+  r-cli
   r-curl
   r-dbi
   r-gargle
@@ -27,6 +28,7 @@ depends=(
   r-rcpp
   r-rlang
   r-tibble
+  r-withr
 )
 optdepends=(
   r-blob
@@ -38,7 +40,6 @@ optdepends=(
   r-readr
   r-sodium
   r-testthat
-  r-withr
   r-wk
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
