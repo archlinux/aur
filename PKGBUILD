@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-ibus-tweaker
 pkgver=40
-pkgrel=1
+pkgrel=2
 pkgdesc="Tweaker of IBus for orientation, theme, font and ascii mode auto-switch"
 arch=('any')
 url="https://github.com/tuberry/ibus-tweaker"
