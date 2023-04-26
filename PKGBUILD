@@ -1,6 +1,6 @@
 # Maintainer: farwayer <farwayer@gmail.com>
 
-_ver=33.0.2
+_ver=33
 _android=android-13
 pkgname=android-sdk-build-tools-$_ver
 pkgver=r$_ver
@@ -13,7 +13,7 @@ depends=('gcc-libs' 'zlib')
 optdepends=('lib32-gcc-libs' 'lib32-zlib')
 
 source=("https://dl-ssl.google.com/android/repository/build-tools_${pkgver}-linux.zip")
-sha256sums=('ff19ccbe3a5098b5dd10722063ebcd40218a30d23b50133e386fc39ea5240e79')
+sha256sums=('e05d68c15b67b0f2d32263234ea3a7a228c2e6ce3d3345b9371b5c5f5292f66e')
 options=('!strip')
 
 package() {
