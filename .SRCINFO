@@ -1,7 +1,7 @@
 pkgbase = python-yahooquery
-	pkgdesc = New time-based UUID formats which are suited for use as a database key
+	pkgdesc = Python wrapper for an unofficial Yahoo Finance API
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dpguthrie/yahooquery/
 	arch = any
 	license = MIT
