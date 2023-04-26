@@ -1,6 +1,6 @@
 pkgbase = azure-cli
 	pkgdesc = Command-line tools for Azure.
-	pkgver = 2.47.0
+	pkgver = 2.48.1
 	pkgrel = 1
 	url = https://github.com/Azure/azure-cli
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = azure-cli
 	depends = python
 	conflicts = python-azure-cli
 	options = !strip
-	source = install-2.47.0.py::https://azurecliprod.blob.core.windows.net/install.py
+	source = install-2.48.1.py::https://azurecliprod.blob.core.windows.net/install.py
 	source = install.response
 	source = az
 	sha256sums = 7869d3c46992852525b8f9e4c63e34edd2d29cafed9e16fd94d5356665eefdfd
