@@ -4,7 +4,7 @@
 pkgname=gdrive-git
 pkgver=3.9.0.r2.g57e5ea6
 pkgrel=1
-pkgdesc="Google Drive CLI Client (Version 3)"
+pkgdesc="Google Drive CLI Client (Rust rewrite, git version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/glotlabs/gdrive"
 license=('MIT')
