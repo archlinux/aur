@@ -13,8 +13,8 @@ if __name__ == "__main__":
         # cmd = 'jupytext ' + file_path + ' --pipe "black -l 88 -S -C {}"'
     elif file_ext == 'sh':
         cmd = '/usr/bin/shfmt -w ' + file_path
-    elif file_ext in ['json', 'yaml', 'yml']:
-        cmd = '/usr/bin/prettier --print-width 88 --write ' + file_path
+    # elif file_ext in ['json', 'yaml', 'yml']:
+    #     cmd = '/usr/bin/prettier --print-width 88 --write ' + file_path
     else:
-        sys.exit()
+        cmd = 'xte "keydown Control_L" "keydown Alt_L" "keydown Shift_L" "key O" "keyup Control_L" "keyup Alt_L" "keyup Shift_L"'
     os.system(cmd)

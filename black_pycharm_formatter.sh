@@ -13,13 +13,16 @@ case $ext in
 "sh")
 	/usr/bin/shfmt -w $file_path
 	;;
-"yml")
-	/usr/bin/prettier --print-width 88 --write $file_path
-	;;
-"yaml")
-	/usr/bin/prettier --print-width 88 --write $file_path
-	;;
+# "yml")
+# 	/usr/bin/prettier --print-width 88 --write $file_path
+# 	;;
+# "yaml")
+# 	/usr/bin/prettier --print-width 88 --write $file_path
+# 	;;
 "json")
 	/usr/bin/prettier --print-width 88 --write $file_path
+	;;
+*)
+	xte "keydown Control_L" "keydown Alt_L" "keydown Shift_L" "key O" "keyup Control_L" "keyup Alt_L" "keyup Shift_L"
 	;;
 esac
