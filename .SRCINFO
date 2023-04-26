@@ -1,6 +1,6 @@
 pkgbase = asusctl-git
 	pkgdesc = Asus laptop control utilities
-	pkgver = 4.6.0.r26.gfdc7d88
+	pkgver = 4.6.1.r0.gbee5508
 	pkgrel = 1
 	url = https://gitlab.com/asus-linux/asusctl
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Static_Rocket
 
 pkgname=asusctl-git
-pkgver=4.6.0.r26.gfdc7d88
+pkgver=4.6.1.r0.gbee5508
 pkgrel=1
 pkgdesc="Asus laptop control utilities"
 arch=('x86_64')
