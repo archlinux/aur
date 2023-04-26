@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=terminal-headers
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc='Color scripts providing a fun greeting when opening a terminal or reloading your shell'
 install=terminal-headers.install
@@ -14,14 +14,14 @@ source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
   )
 sha512sums=(
-  'b444bda1fb5d80a6e56699cbc7f3dbff50c71973e20450434dede94f2f898bf0b00e7b080333d9e97a48bac8ea8938fc9ac839511f3d4c89c39899b9ef6bc6a5'
-  '7286c709531b74d459d21ec795f4b27d895bd10ca07cc0363dceff2d226453eb623823278759f2424c4605d8f8a9252d4338bc7d0cdc1df2d9fb76ea540dc021'
+  'f82d0513718515d494dfc229f669268c81cd94b83295f88092a09a38563ea034d8b95af48375c492cefeb2489dd90bec1d547bf94a2a75e1fca354b3b35c7307'
+  'aac95dfbd35ea16fb96d6612a0b898f9ca786cb69ae4fd794069dc93dcd3402c9d1529f8a726ee0928bdcc3552592f216eaa13e6bec611649de7b01fc7ec9bcf'
   )
 md5sums=(
-  '50c9931abe529ce41b2f71f7bb057561'
-  '7160a00137a62e1a6bf7edc265670735'
+  '8ac7060b0fcacfb5ce9c49163f7cbfc1'
+  '7e1797258f0bb26ff0916eded6a02547'
   )
-validpgpkeys=('9A1F3F41DDA55A60331CB8DD3714CB0967D15980')
+validpgpkeys=('81BACEEBC3EA26E127166E4A819BB92A9A48160E')
 
 package() {
   install -Dm755 opt/${pkgname}/* -t "${pkgdir}/opt/${pkgname}"
