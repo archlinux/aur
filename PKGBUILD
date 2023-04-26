@@ -1,4 +1,4 @@
-# Maintainer: Ankit R Gadiya <arch@argp.in>
+# Maintainer: Philipp Seiler <p.seiler@linuxmail.org>
 
 pkgname=ruby-jekyll-paginate-v2
 pkgver=3.0.0
