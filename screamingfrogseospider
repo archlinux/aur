@@ -3,8 +3,12 @@
 JAR="/usr/share/screamingfrogseospider/ScreamingFrogSEOSpider.jar"
 if [ -f /usr/share/screamingfrogseospider/jre/bin/java ]; then
     JAVA_PATH="/usr/share/screamingfrogseospider/jre/bin/java"
+elif [ -f /usr/lib/jvm/java-20-openjdk/bin/java ]; then
+    JAVA_PATH="/usr/lib/jvm/java-20-openjdk/bin/java"
 elif [ -f /usr/lib/jvm/java-19-openjdk/bin/java ]; then
     JAVA_PATH="/usr/lib/jvm/java-19-openjdk/bin/java"
+elif [ -f /usr/lib/jvm/java-18-openjdk/bin/java ]; then
+    JAVA_PATH="/usr/lib/jvm/java-18-openjdk/bin/java"
 elif [ -f /usr/lib/jvm/java-17-openjdk/bin/java ]; then
     JAVA_PATH="/usr/lib/jvm/java-17-openjdk/bin/java"
 else
