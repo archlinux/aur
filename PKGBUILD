@@ -1,7 +1,7 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 # Contributor: Bader <Bad3r@pm.me>
 pkgname=logseq-desktop-git
-pkgver=0.8.18.r79.7a905583c
+pkgver=0.9.4.r7.abcc6c5bc
 pkgrel=1
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
 arch=("x86_64")
@@ -62,13 +62,14 @@ build() {
 package() {
 
     # change the folder permision
-    chmod a+rx "${srcdir}/${pkgname}/static/out/Logseq-linux-x64"
+    chmod 755 "${srcdir}/${pkgname}/static/out/Logseq-linux-x64"
 
     # important files are under static/out/Logseq-linux-x64 
     cd "${srcdir}/${pkgname}/static/out/Logseq-linux-x64"
 
     # create destination folder and copy files
     mkdir -p "${pkgdir}/opt/${pkgname}"
+    chmod 755 "${pkgdir}/opt/${pkgname}"
     cp -a -r -u --verbose ./ "${pkgdir}/opt/${pkgname}"
 
     # create a soft link to the executable
