@@ -1,0 +1,18 @@
+pkgbase = tgpt-git
+	pkgdesc = ChatGPT in terminal without needing API keys
+	pkgver = 1.2.1.r4.g017a9e4
+	pkgrel = 1
+	url = https://github.com/aandrew-me/tgpt
+	arch = x86_64
+	arch = aarch64
+	arch = i386
+	arch = i686
+	license = GPL-3.0
+	makedepends = go
+	makedepends = git
+	conflicts = tgpt-bin
+	conflicts = tgpt
+	source = tgpt::git+https://github.com/aandrew-me/tgpt.git
+	md5sums = SKIP
+
+pkgname = tgpt-git
