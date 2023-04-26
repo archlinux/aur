@@ -6,6 +6,7 @@ pkgdesc="ChatGPT in terminal without needing API keys"
 arch=("x86_64" "aarch64" "i386" "i686")
 url="https://github.com/aandrew-me/tgpt"
 license=('GPL-3.0')
+conflicts=('tgpt' 'tgpt-git')
 #makedepends=('')
 if [ $CARCH == "x86_64" ]
 then

@@ -8,6 +8,8 @@ pkgbase = tgpt-bin
 	arch = i386
 	arch = i686
 	license = GPL-3.0
+	conflicts = tgpt
+	conflicts = tgpt-git
 	source = https://github.com/aandrew-me/tgpt/releases/download/v1.2.0/tgpt-linux-amd64
 	md5sums = SKIP
 
