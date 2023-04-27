@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=calm
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='Covariate Assisted Large-scale Multiple testing'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8656b5285235a2c4d814fbd57e2829519d3f635fbeb8cce995a3a6e93a044b99')
+sha256sums=('77c9e7dc3b4c10bdb866881c9e16125553972046b6b7bb3405be06c4af76961f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
