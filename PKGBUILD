@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=openPrimeRui
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
-pkgrel=3
+pkgver=1.22.0
+pkgrel=1
 pkgdesc='Shiny Application for Multiplex PCR Primer Design and Analysis'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -22,7 +22,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ec976066ee70342b27861506b126c5d64e2b675f2b9e301d067a11b42ec72855')
+sha256sums=('6e3a6ab6c90ea72a9e9dfc315af18ca5cb6cf29f551df72f857006cd50a6adab')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
