@@ -1,6 +1,6 @@
 pkgbase = r-ccpromise
 	pkgdesc = PROMISE analysis with Canonical Correlation for Two Forms of High Dimensional Genetic Data
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CCPROMISE
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-ccpromise
 	depends = r-ccp
 	depends = r-gseabase
 	depends = r-promise
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CCPROMISE_1.24.0.tar.gz
-	sha256sums = efe7bfbebbf318e2d9a86b1bfb1cb7edc20c971cb3cbfe1e0ec412330faf9bc7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CCPROMISE_1.26.0.tar.gz
+	sha256sums = 443cc775990d34b58d4e1b0d1cc25e2b599dcc0c0c44c8c921fa5aecc51b11e2
 
 pkgname = r-ccpromise
