@@ -1,6 +1,6 @@
 pkgbase = r-edaseq
 	pkgdesc = Exploratory Data Analysis and Normalization for RNA-Seq
-	pkgver = 2.32.0
+	pkgver = 2.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/EDASeq
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-edaseq
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-yeastrnaseq
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/EDASeq_2.32.0.tar.gz
-	sha256sums = f76318eb954c42af642895823d2e9ae07ab9bb129b195d3e646dd3313455a443
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/EDASeq_2.34.0.tar.gz
+	sha256sums = 305692a36291de14141bff356b06bfb4b1ef5fd2d0bc9bcbcbdce3b20498c43d
 
 pkgname = r-edaseq
