@@ -1,6 +1,6 @@
 pkgbase = r-basespacer
 	pkgdesc = R SDK for BaseSpace RESTful API
-	pkgver = 1.42.0
+	pkgver = 1.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BaseSpaceR
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-basespacer
 	optdepends = r-iranges
 	optdepends = r-rsamtools
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BaseSpaceR_1.42.0.tar.gz
-	sha256sums = 079655c2cffb0e274cf8dce265c89c5727f637dc56e962d8567d313e25d0f81e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BaseSpaceR_1.44.0.tar.gz
+	sha256sums = 756f34853c33ab2a7771016254947f3b600ad3062710b12d7b86be50b4705895
 
 pkgname = r-basespacer
