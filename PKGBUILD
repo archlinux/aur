@@ -1,30 +1,24 @@
-# Maintainer: Dennis Stengele <dennis@schuppentier.org>
 # Maintainer:zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor:schorschii https://georg-sieber.de
 pkgname=confluence-companion-app-for-linux
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Unoffical Atlassian Companion App for Linux."
 arch=(any)
 url="https://github.com/zxp19821005/Companion4Linux"
 license=('GPL')
-depends=(python-websockets python-pyinotify python-wxpython libblockdev )
-optdepends=(python-requests xapp libgexiv2 gst-python gedit)
-conflicts=(confluence-companion-linux)
-provides=(confluence-companion)
-install=confluence-companion-app-for-linux.install
-source=("$pkgname-$pkgver.tar.gz::https://github.com/zxp19821005/Companion4Linux/archive/refs/tags/v${pkgver}.tar.gz"
-        "confluence-companion-app-for-linux.service"
-        "confluence-companion-app-for-linux.install")
-sha256sums=('2dfbf5ca459d0c316365986c92661bec9f1a625909c8ec638ebb1f2380742bd5'
-            '16d28748e74766ace4dc95045744dc5e53d750529ca48e6fbe2971a207dbbe16'
+depends=('python' 'python-websockets' 'python-pyinotify' 'python-wxpython' 'python-requests' 'libnotify' 'python-gobject')
+optdepends=('xapp' 'libgexiv2' 'gst-python')
+conflicts=("confluence-companion-linux")
+provides=()
+install="${pkgname}.install"
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+    "${pkgname}.install")
+sha256sums=('3303c59aaa85a46f59c0588cbb507b5136cea681696b06360a592b33bdf595a7'
             '65ac8817093a1af0efe66f58129a79989c18e57f47cfa07c3b8ac02a0660d489')
 
 package() {
-    cd Companion4Linux-1.0
-    install -Dm755 companion.py "$pkgdir/usr/bin/companion.py"
-    install -Dm755 companion2.py "$pkgdir/usr/bin/companion2.py"
-
-    install -Dm755 companion-protocol-handler.desktop "$pkgdir/usr/share/applications/companion-protocol-handler.desktop"
-
-    install -Dm644 "$srcdir/confluence-companion-app-for-linux.service" "$pkgdir/usr/lib/systemd/user/confluence-companion-app-for-linux.service"
+    install -Dm755 "${srcdir}/Companion4Linux-${pkgver}/"*.py -t "${pkgdir}/usr/bin"
+    install -Dm644 "${srcdir}/Companion4Linux-${pkgver}/"*.desktop -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/Companion4Linux-${pkgver}/${pkgname}.service" -t "${pkgdir}/usr/lib/systemd/user"
 }
