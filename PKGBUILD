@@ -7,7 +7,7 @@ pkgdesc='A static site generator for audio producers'
 arch=('x86_64')
 license=('AGPL3')
 depends=('ffmpeg' 'libvips>=8.13.3' 'opus')
-makedepends=('git' 'rust')
+makedepends=('cmake' 'git' 'rust')
 url='https://simonrepp.com/faircamp'
 conflicts=('faircamp')
 provides=('faircamp')

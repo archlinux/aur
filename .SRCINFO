@@ -1,10 +1,11 @@
 pkgbase = faircamp-git
 	pkgdesc = A static site generator for audio producers
-	pkgver = 0.1.0
+	pkgver = r425.7870267
 	pkgrel = 1
 	url = https://simonrepp.com/faircamp
 	arch = x86_64
 	license = AGPL3
+	makedepends = cmake
 	makedepends = git
 	makedepends = rust
 	depends = ffmpeg
