@@ -1,26 +1,27 @@
-# Maintainer: proudzhu <proudzhu.fdu at gmail.com>
+# Maintainer: JustKidding <jk@vin.ovh>
+# Contributor: proudzhu <proudzhu.fdu at gmail.com>
 
 pkgname=libvips-git
 _pkgname=libvips
-pkgver=8.0.beta.r23.g045678d
+pkgver=8.14.2.r72.g0c81f5a36
 pkgrel=1
-pkgdesc="A fast image processing library with low memory needs."
+pkgdesc="A fast image processing library with low memory needs"
 arch=('i686' 'x86_64')
-url="http://www.vips.ecs.soton.ac.uk"
-license=('LGPL 2.1+')
-depends=('glib2' 'libxml2' 'libjpeg' 'libpng')
-makedepends=('git' 'gobject-introspection' 'gtk-doc' 'swig' 'libexif'
-             'libtiff' 'fftw' 'lcms2' 'libwebp' 'openexr')
-optdepends=('gobject-introspection: for vips8 python binding'
-            'libexif: for EXIF metadata support'
-            'fftw: for fourier transforms support'
-            'lcms2: transforming images with ICC profiles'
-            'libwebp: for WebP image support'
-            'openexr: for OpenEXR image support(only read)')
+license=('LGPL')
+url="https://libvips.github.io/libvips/"
+depends=('cfitsio' 'fftw' 'libexif' 'libgsf' 'libimagequant' 'librsvg' 'libwebp' 'libxml2' 'openexr'
+         'orc' 'pango' 'libcgif')
+makedepends=('gobject-introspection' 'libheif' 'libjxl' 'imagemagick' 'openslide'
+             'poppler-glib' 'meson' 'gtk-doc')
+optdepends=('libheif: for heif module'
+            'imagemagick: for magick module'
+            'openslide: for openslide module'
+            'poppler-glib: for poppler module'
+            'libjxl: for jxl module')
 provides=('libvips')
 conflicts=('libvips')
-source=("$_pkgname::git+https://github.com/jcupitt/libvips.git")
-md5sums=('SKIP') #generate with 'makepkg -g'
+source=("$_pkgname::git+https://github.com/libvips/libvips.git")
+sha512sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
@@ -28,15 +29,16 @@ pkgver() {
 }
 
 build() {
-  cd "$_pkgname"
-  ./autogen.sh
-  ./configure --prefix=/usr
-  make
+  meson setup build libvips \
+    --prefix=/usr \
+    -Dgtk_doc=true \
+    -Ddeprecated=false \
+    --buildtype release
+  meson compile -C build
 }
 
 package() {
-  cd "$_pkgname"
-  make DESTDIR="$pkgdir" install
+  meson install -C build --destdir="$pkgdir"
 }
 
 # vim:set ts=2 sw=2 et:
