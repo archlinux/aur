@@ -1,13 +1,13 @@
 pkgbase = r-quantsmooth
 	pkgdesc = Quantile smoothing and genomic visualization of array data
-	pkgver = 1.64.0
+	pkgver = 1.66.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/quantsmooth
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-quantreg
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/quantsmooth_1.64.0.tar.gz
-	sha256sums = f7c68e30ab169fe2a13928b7fb06f3714e859abdb1456f1e6901acbc86e6bca9
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/quantsmooth_1.66.0.tar.gz
+	sha256sums = 7d9f10d3e69fd08bd111e837d0e267dba4d243830ea335de614f961f37509216
 
 pkgname = r-quantsmooth
