@@ -1,6 +1,6 @@
 pkgbase = r-mai
 	pkgdesc = Mechanism-Aware Imputation
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MAI
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-mai
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MAI_1.4.0.tar.gz
-	sha256sums = a86655004268819fee5af5bf70f2d718063857157a194cf24759cdfe798c9705
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MAI_1.6.0.tar.gz
+	sha256sums = d2d07d34c7f4042474b9ab06f3a3c0e7157d302bd08e4f73224d5ea57b7b9f3c
 
 pkgname = r-mai
