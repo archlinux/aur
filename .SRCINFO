@@ -1,12 +1,14 @@
 pkgbase = alibabasans-kr-fonts
 	pkgdesc = A typeface for creating alibaba sans kr in text.阿里巴巴普惠体韩文,3字重
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fonts.alibabagroup.com/#/font
 	arch = any
 	license = custom
 	source = alibabasans-kr-fonts-1.0.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlibabaSansKR.zip
-	sha512sums = 1abefc4d779c1d79a079f114cfa066d0b38e97c853b6a770bcd4ac96ea057a4e43a257a7caa4c1308d41ed90ffaf852decdec5fd1aae01f5b7d145440d6d99e8
+	source = license.txt
+	sha256sums = 24934e108778badeda0962432527bdc8f3d81397424145effca6d10fab9c4d4e
+	sha256sums = 059e73dc0745c057bdd0654a98166f96e07bb6bd3a350459aa8f479c733f12ba
 
 pkgname = ttf-alibabasans-kr-fonts
 
