@@ -1,6 +1,6 @@
 pkgbase = r-ecolitk
 	pkgdesc = Meta-data and tools for E. coli
-	pkgver = 1.70.0
+	pkgver = 1.72.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ecolitk
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-ecolitk
 	optdepends = r-ecolileucine
 	optdepends = r-graph
 	optdepends = r-multtest
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ecolitk_1.70.0.tar.gz
-	sha256sums = 7181f4fbc63f9611c3ab7154ad70ab44b09ab35fe153e5f01e45050396c37477
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ecolitk_1.72.0.tar.gz
+	sha256sums = 5f3a8f7eedb008427cd439322aae19550bee4c9076898cf011692387187ed323
 
 pkgname = r-ecolitk
