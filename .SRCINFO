@@ -1,13 +1,13 @@
 pkgbase = r-arrmnormalization
 	pkgdesc = Adaptive Robust Regression normalization for Illumina methylation data
-	pkgver = 1.38.0
+	pkgver = 1.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ARRmNormalization
 	arch = any
 	license = Artistic2.0
 	depends = r
 	depends = r-arrmdata
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ARRmNormalization_1.38.0.tar.gz
-	sha256sums = 8c176e0b596114d86c2a1a79031c1dd2d96a66e3b87de4ba5097b3e3b574ae92
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ARRmNormalization_1.40.0.tar.gz
+	sha256sums = f7fb62d6ad348300078b5a1fa1e565fa3e2e790e6bd9ba05492fdf020ce53600
 
 pkgname = r-arrmnormalization
