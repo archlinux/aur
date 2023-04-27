@@ -1,6 +1,6 @@
 pkgbase = r-tissueenrich
 	pkgdesc = Tissue-specific gene enrichment analysis
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/TissueEnrich
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-tissueenrich
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/TissueEnrich_1.18.0.tar.gz
-	sha256sums = db7e37584c1cec487f7c66fddf54f37c1f35e2c51d42afecd1d8d77b589d7d56
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TissueEnrich_1.20.0.tar.gz
+	sha256sums = 77536443f05efdca21dcf9892eb97285805ff9314232a57800d2ab7166c2bc59
 
 pkgname = r-tissueenrich
