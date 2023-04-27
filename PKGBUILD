@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=seqcombo
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
-pkgrel=3
+pkgver=1.22.0
+pkgrel=1
 pkgdesc='Visualization Tool for Sequence Recombination and Reassortment'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -23,7 +23,7 @@ optdepends=(
   r-tibble
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b5e033b858dab846f4f663012e1ccc984ab88900c1c73ae8f9f6653038731ee0')
+sha256sums=('7ebca1baf886f92c17da23ccaa2f6207ed7a0bf046f7e9dc6b07012620ad6fe4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
