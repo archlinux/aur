@@ -1,6 +1,6 @@
 pkgbase = r-immunespacer
 	pkgdesc = A Thin Wrapper around the ImmuneSpace Database
-	pkgver = 1.26.1
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ImmuneSpaceR
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = r-immunespacer
 	optdepends = r-knitr
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ImmuneSpaceR_1.26.1.tar.gz
-	sha256sums = 16bdba0529d8b8d5cb69ef28442e1a0e2a56348bcb55ceb12cce5bc258f97aa3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ImmuneSpaceR_1.28.0.tar.gz
+	sha256sums = 8a7f92892495e48bf9711b7a48460f518956d5302b7ea64d263f089e7d299450
 
 pkgname = r-immunespacer
