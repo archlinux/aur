@@ -1,6 +1,6 @@
 pkgbase = r-autonomics
 	pkgdesc = Generifying and intuifying cross-platform omics analysis
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/autonomics
 	arch = any
@@ -56,7 +56,7 @@ pkgbase = r-autonomics
 	optdepends = r-seqinr
 	optdepends = r-statmod
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/autonomics_1.6.0.tar.gz
-	sha256sums = 38e716e6ce84d8a27c6935cf0e3b63e007da833eb5b8a66e13caaa31aeb86ed9
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/autonomics_1.8.0.tar.gz
+	sha256sums = 9be54a4a41e28ea923fea8280ab3729e24e99ad30b4f1b0177f78935ff9aacbe
 
 pkgname = r-autonomics
