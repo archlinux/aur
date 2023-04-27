@@ -1,6 +1,6 @@
 pkgbase = r-dir.expiry
 	pkgdesc = Managing Expiration for Cache Directories
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/dir.expiry
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-dir.expiry
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/dir.expiry_1.6.0.tar.gz
-	sha256sums = c8157d9ea86ad244923b344fe39bd73931fe2399e46ba0ae08af8de8980ca3c7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/dir.expiry_1.8.0.tar.gz
+	sha256sums = 9cd636e13523c62babfaf36d8cfb3823ae9f09fe291e76cffc47937190c08ced
 
 pkgname = r-dir.expiry
