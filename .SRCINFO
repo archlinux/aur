@@ -6,8 +6,6 @@ pkgbase = nvidia-525xx-utils
 	arch = x86_64
 	license = custom
 	makedepends = patchelf
-	makedepends = dkms
-	makedepends = nvidia-utils=525.89.02
 	options = !strip
 	source = nvidia-drm-outputclass.conf
 	source = nvidia-utils.sysusers
