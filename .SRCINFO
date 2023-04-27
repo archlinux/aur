@@ -1,6 +1,6 @@
 pkgbase = r-timeomics
 	pkgdesc = Time-Course Multi-Omics data integration
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/timeOmics
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-timeomics
 	optdepends = r-snow
 	optdepends = r-testthat
 	optdepends = r-tidyverse
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/timeOmics_1.10.0.tar.gz
-	sha256sums = 29acabafc6deee11a33b6c0e6851361c70a193690319e70f5447b997446bf0eb
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/timeOmics_1.12.0.tar.gz
+	sha256sums = f3d47095832e2793bdc4e40f8e3a8a96f9d7955bd08da0ee7320d1b4100480be
 
 pkgname = r-timeomics

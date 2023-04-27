@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=timeOmics
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Time-Course Multi-Omics data integration'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('29acabafc6deee11a33b6c0e6851361c70a193690319e70f5447b997446bf0eb')
+sha256sums=('f3d47095832e2793bdc4e40f8e3a8a96f9d7955bd08da0ee7320d1b4100480be')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
