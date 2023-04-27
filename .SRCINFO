@@ -1,6 +1,6 @@
 pkgbase = r-annotate
 	pkgdesc = Annotation for microarrays
-	pkgver = 1.76.0
+	pkgver = 1.78.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/annotate
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-annotate
 	optdepends = r-rgraphviz
 	optdepends = r-runit
 	optdepends = r-tkwidgets
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/annotate_1.76.0.tar.gz
-	sha256sums = 6ad0db66b81c9f998852b18df0cea0847eff3409b71abd03bdc60e6fc6b6551a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/annotate_1.78.0.tar.gz
+	sha256sums = 7e27007dc61ebc140ad722b5c9bb886e39499120b8f6240652df0edfa4c90484
 
 pkgname = r-annotate
