@@ -1,6 +1,6 @@
 pkgbase = r-ribosomeprofilingqc
 	pkgdesc = Ribosome Profiling Quality Control
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ribosomeProfilingQC
 	arch = any
@@ -35,7 +35,7 @@ pkgbase = r-ribosomeprofilingqc
 	optdepends = r-rmarkdown
 	optdepends = r-runit
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ribosomeProfilingQC_1.10.0.tar.gz
-	sha256sums = 36ff1549f5d03e4cfd71eb5bb65d96a94af8da312e94216c89a998ea24b42013
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ribosomeProfilingQC_1.12.0.tar.gz
+	sha256sums = d64ebbf2e95b3c93752808aefdc468873a909d35a6a1ebdfaff02c2578a02e60
 
 pkgname = r-ribosomeprofilingqc
