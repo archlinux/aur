@@ -1,6 +1,6 @@
 pkgbase = r-pak
 	pkgdesc = Another Approach to R Package Installation
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=pak
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = r-pak
 	optdepends = r-rprojroot>=2.0.2
 	optdepends = r-rstudioapi
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/pak_0.5.0.tar.gz
-	b2sums = c82a93adf57b6f0838bdcdd6f99dec9fb8aa1c7766bb0868e899494cf2af410c31aad8487d6562460b8da6140494fa100cf339d80331ae7be6d463766656c982
+	source = https://cran.r-project.org/src/contrib/pak_0.5.1.tar.gz
+	b2sums = dc69422ea3d3b1612b5564ed8aee3f17f6f35f57c53055b47e3a307d07d63de19313955f1f0957796ad147cc05671a5f6c71e0a1a4b6085bee84188b81ecbf3f
 
 pkgname = r-pak
