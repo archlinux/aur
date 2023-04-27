@@ -73,8 +73,8 @@ def generate_font_plan(
                 f"[buildPlans.{font_name}.variants.oblique]",
                 *font_styles["oblique"],
                 "",
-                f"[buildPlans.{font_name}.ligations]",
-                f'inherits = "{" ".join(font_styles["ligations"])}"',
+                f"  [buildPlans.{font_name}.ligations]",
+                f'  inherits = "{" ".join(font_styles["ligations"])}"',
             ]
         )
 
