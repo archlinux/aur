@@ -1,21 +1,21 @@
 diff --git a/nitter.conf b/nitter.conf
-index 93526b4..c11e819 100644
+index 0d4deb7..8ea2797 100644
 --- a/nitter.conf
 +++ b/nitter.conf
 @@ -1,11 +1,11 @@
  [Server]
+-hostname = "nitter.net"  # for generating links, change this to your own domain/ip
+-title = "nitter"
 -address = "0.0.0.0"
 -port = 8080
++hostname = "nitter.net"  # Change this
++title = "nitter"  # Change this?
 +address = "localhost"  # Change this?
 +port = 13500  # Change this?
  https = false  # disable to enable cookies when not using https
  httpMaxConnections = 100
 -staticDir = "./public"
--title = "nitter"
--hostname = "nitter.net"
 +staticDir = "/usr/share/nitter/public"
-+title = "nitter"  # Change this?
-+hostname = "nitter.net"  # Change this
  
  [Cache]
  listMinutes = 240  # how long to cache list info (not the tweets, so keep it high)
@@ -28,9 +28,9 @@ index 93526b4..c11e819 100644
 +hmacKey = "43179cf305cda132874f7a4d3fa4831a01528e516780157bebd564b0ca0297c2"  # Regenerate e.g. `head -c 25 </dev/urandom | sha256sum`
 +base64Media = true  # use base64 encoding for proxied media urls
  enableRSS = true  # set this to false to disable RSS feeds
- enableDebug = false # enable request logs and debug endpoints
- proxy = "" # proxy type http/https
-@@ -34,10 +34,10 @@ tokenCount = 10
+ enableDebug = false  # enable request logs and debug endpoints (/.tokens)
+ proxy = ""  # http/https url, SOCKS proxies are not supported
+@@ -35,10 +35,10 @@ tokenCount = 10
  
  # Change default preferences here, see src/prefs_impl.nim for a complete list
  [Preferences]

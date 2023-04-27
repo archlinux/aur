@@ -20,7 +20,7 @@ source=("$pkgname::git+$url.git#branch=master"
     "nitter.service"
     "nitter.install")
 sha256sums=('SKIP'
-            'ee9c0b188dbdec4c1b4daa531e1b17dd718762bce8390f4301a1a956510695ad'
+            'e685045353f85d890527b16991f8b195b1a6c6e467bc482be7a449d466d425da'
             '620e38c7bb978a64d276b499d097ec4967fe8bda16852fe0c416ed61744b6526'
             '79469c5cfeacf38c7469a2240ba5c19670ddaf757e6d1b5286206a18a0718487'
             '560d98833c56979cb6b5d187a827788dbbdff95871f957225604b58b15c1c219'
