@@ -1,6 +1,6 @@
 pkgbase = r-getdee2
 	pkgdesc = Programmatic access to the DEE2 RNA expression dataset
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/getDEE2
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-getdee2
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/getDEE2_1.8.0.tar.gz
-	sha256sums = f73e1fa0c08b71b8abca570d25a3e81d16f35d9b021bf6ca5a4d3a686ca394f9
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/getDEE2_1.10.0.tar.gz
+	sha256sums = 36488221c2bea47a37b4caad33e5d5fa0b36b83ecb03e4884efdaa90e36db504
 
 pkgname = r-getdee2
