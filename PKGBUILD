@@ -2,7 +2,7 @@
 
 pkgbase=xguipro
 pkgname=(xguipro-gtk3)
-pkgver=0.6.4
+pkgver=0.7.0
 pkgrel=0
 pkgdesc="xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit."
 arch=('x86_64' 'aarch64' 'mips64' 'powerpc' 'powerpc64le')
@@ -39,9 +39,9 @@ backup=()
 options=()
 install=
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/ver-${pkgver}.tar.gz"
-        "001-fix.patch::https://github.com/HVML/xGUI-Pro/commit/a6e4022fa599e5e98d92d8d2feb56fe689e16f1a.patch")
-sha256sums=('a1b004f9ec67a24ed8e6017575e3c3e425cff708d1efb76d0fc029e7cf826742'
-            'e8f91ed115d08495020052cf75f6141e60c55703d7305322b4de2dddf37df54e')
+#         "001-fix.patch::https://github.com/HVML/xGUI-Pro/commit/a6e4022fa599e5e98d92d8d2feb56fe689e16f1a.patch"
+        )
+sha256sums=('bfeb9af05e57b3b53112ab840f73ff78572047dd75e919e68431fe10b85906af')
 
 prepare() {
     install -Dm644 /dev/stdin ${srcdir}/xguipro.csh <<EOF
@@ -61,8 +61,8 @@ if [ -z "\$WEBKIT_WEBEXT_DIR" ]; then
 fi
 EOF
 
-    cd "${srcdir}/xGUI-Pro-ver-${pkgver}/"
-    patch -p1 < ${srcdir}/001-fix.patch
+#     cd "${srcdir}/xGUI-Pro-ver-${pkgver}/"
+#     patch -p1 < ${srcdir}/001-fix.patch
 }
 
 package_xguipro-gtk3() {
