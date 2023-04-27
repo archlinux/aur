@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=fishpond
-_pkgver=2.4.1
+_pkgver=2.6.0
 pkgname=r-${_pkgname,,}
-pkgver=2.4.1
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='Fishpond: differential transcript and gene expression with inferential replicates'
 arch=('any')
@@ -47,7 +47,7 @@ optdepends=(
   r-tximportdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b4a6d337c10a6405c55b679b2540090298dadf61b0dbe83222e5cf01f0ef814d')
+sha256sums=('5ae72b1cf455e2ecf4267592a0e89349ba9b696a09945082247082730273ea52')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
