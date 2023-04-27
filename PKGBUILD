@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flowSpecs
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
-pkgrel=3
+pkgver=1.14.0
+pkgrel=1
 pkgdesc='Tools for processing of high-dimensional cytometry data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('990138f6d398aef695014b142a51bc40dc174b3b834e58203b366ba093abc0f5')
+sha256sums=('32220d09c52c09598cc3d1920853d4ccaaf2664918d65816f510ed8311a0ce6f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

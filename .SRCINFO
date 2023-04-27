@@ -1,7 +1,7 @@
 pkgbase = r-flowspecs
 	pkgdesc = Tools for processing of high-dimensional cytometry data
-	pkgver = 1.12.0
-	pkgrel = 3
+	pkgver = 1.14.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/flowSpecs
 	arch = any
 	license = MIT
@@ -18,7 +18,7 @@ pkgbase = r-flowspecs
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowSpecs_1.12.0.tar.gz
-	sha256sums = 990138f6d398aef695014b142a51bc40dc174b3b834e58203b366ba093abc0f5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowSpecs_1.14.0.tar.gz
+	sha256sums = 32220d09c52c09598cc3d1920853d4ccaaf2664918d65816f510ed8311a0ce6f
 
 pkgname = r-flowspecs
