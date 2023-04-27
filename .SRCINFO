@@ -1,6 +1,6 @@
 pkgbase = r-trendy
 	pkgdesc = Breakpoint analysis of time-course expression data
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Trendy
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-trendy
 	optdepends = r-devtools
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Trendy_1.20.0.tar.gz
-	sha256sums = 4bf806a9542764e6d857412998ac42a26f769437797be673f853b18c1555c072
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Trendy_1.22.0.tar.gz
+	sha256sums = 3a3a05257ccbb9cd69d6a69c7ab5b362eb627b3f233a01e2bbe2a33fc5f411ba
 
 pkgname = r-trendy
