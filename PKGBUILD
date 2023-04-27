@@ -3,7 +3,7 @@
 
 pkgname="paperless-ngx"
 pkgver=1.14.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A supercharged version of paperless: scan, index and archive all your physical documents"
 url="https://github.com/paperless-ngx/paperless-ngx"
 license=("GPL3")
@@ -107,6 +107,7 @@ depends=("file"
          "python-watchgod"
          "python-wcwidth"
          "python-websockets"
+         "python-wheel"
          "python-whitenoise"
          "python-whoosh"
          "python-yaml"
