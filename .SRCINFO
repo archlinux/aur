@@ -1,6 +1,6 @@
 pkgbase = r-dialignr
 	pkgdesc = Dynamic Programming Based Alignment of MS2 Chromatograms
-	pkgver = 2.6.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DIAlignR
 	arch = x86_64
@@ -36,7 +36,7 @@ pkgbase = r-dialignr
 	optdepends = r-rmarkdown
 	optdepends = r-scales
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DIAlignR_2.6.0.tar.gz
-	sha256sums = 65ffc53e9518236d6f7b391eab6fcb99e3ae5f587ad0ae3fee790288966a7712
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DIAlignR_2.8.0.tar.gz
+	sha256sums = de217f5796a61361f28381c48a634a39a648f15bff83811bc4613fc8b317baba
 
 pkgname = r-dialignr
