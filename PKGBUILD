@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ddPCRclust
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Clustering algorithm for ddPCR data'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-biocstyle
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c27706a922d11d49a0a4f269df9de6882d81140eecf8a726220cd52b6db8372c')
+sha256sums=('20a181c7fca9f63cbc2d7ec0b43a31628bb91474fa9aabf59eb76ce124ea4b52')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
