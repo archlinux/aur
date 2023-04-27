@@ -1,6 +1,6 @@
 pkgbase = r-glad
 	pkgdesc = Gain and Loss Analysis of DNA
-	pkgver = 2.62.0
+	pkgver = 2.64.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GLAD
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = r-glad
 	depends = r
 	depends = r-aws
 	depends = gsl
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GLAD_2.62.0.tar.gz
-	sha256sums = 46e293b3599afd7e7bd5349cfd24846bd6b5d9262754eb457dd39a5c5814653d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GLAD_2.64.0.tar.gz
+	sha256sums = c58f6df389655ae6026bc218cf6686dfd0e5066c84f2c791e78b44052ce7273a
 
 pkgname = r-glad
