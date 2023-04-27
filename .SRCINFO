@@ -10,6 +10,7 @@ pkgbase = mlpack
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = python-pytest-runner
+	makedepends = python-pip
 	depends = armadillo
 	depends = cereal
 	depends = boost
