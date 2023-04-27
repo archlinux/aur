@@ -1,12 +1,14 @@
 pkgbase = alibabasans-viet-fonts
 	pkgdesc = A typeface for creating alibaba sans viet in text.阿里巴巴普惠体越南文,3字重
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fonts.alibabagroup.com/#/font
 	arch = any
 	license = custom
 	source = alibabasans-viet-fonts-1.0.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlibabaSansViet.zip
-	sha512sums = 140f7e5b728a6f6864d99cb173e18c08cf2e860c0c6d7393e98ac9198537e4c82d65102d52e86271dd8fb1291b680f876210ee2a8b65aaaa6782e65572756a0a
+	source = license.txt
+	sha256sums = 1cd7e0fdcc6f1400ae0d927c83031f4aec87280cdac54023c5f468f43c278d3a
+	sha256sums = 059e73dc0745c057bdd0654a98166f96e07bb6bd3a350459aa8f479c733f12ba
 
 pkgname = ttf-alibabasans-viet-fonts
 
