@@ -1,6 +1,6 @@
 pkgbase = r-prebs
 	pkgdesc = Probe region expression estimation for RNA-seq data for improved microarray comparability
-	pkgver = 1.38.0
+	pkgver = 1.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/prebs
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-prebs
 	optdepends = r-hgu133plus2cdf
 	optdepends = r-hgu133plus2probe
 	optdepends = r-prebsdata
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/prebs_1.38.0.tar.gz
-	sha256sums = 6f681db481b0fe67428985ca3f8b261c498fca577cf54d7e82628d621b8a0c68
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/prebs_1.40.0.tar.gz
+	sha256sums = 51aa2d32d5acc3b5a2246322624c6ca03570075c9a340a4b629fc5ce311f8569
 
 pkgname = r-prebs
