@@ -1,6 +1,6 @@
 pkgbase = r-precisetad
 	pkgdesc = preciseTAD: A machine learning framework for precise TAD boundary prediction
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/preciseTAD
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-precisetad
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/preciseTAD_1.8.0.tar.gz
-	sha256sums = 28ba31a246809171a6154014d7d661902f47f456f105189cb28b2c4a97b55700
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/preciseTAD_1.10.0.tar.gz
+	sha256sums = 271210e98118ff0bb1fbdd6a60907f956160d88dd169627443d01405e7ca7e91
 
 pkgname = r-precisetad
