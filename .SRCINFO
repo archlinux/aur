@@ -1,6 +1,6 @@
 pkgbase = r-brgenomics
 	pkgdesc = Tools for the Efficient Analysis of High-Resolution Genomics Data
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BRGenomics
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-brgenomics
 	optdepends = r-reshape2
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BRGenomics_1.10.0.tar.gz
-	sha256sums = 32dff02d2ba233065b53d91ac59787a1ecb880664945961d0f752373c446aed5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BRGenomics_1.12.0.tar.gz
+	sha256sums = f681046ca940648d14a7a77988b96d75d4b6debf947ec4a045ea23ce9ba027f5
 
 pkgname = r-brgenomics
