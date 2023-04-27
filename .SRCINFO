@@ -1,4 +1,4 @@
-pkgbase = worky-git
+pkgbase = worky
 	pkgdesc = Worky is a tool that helps to define and load project workspaces.
 	pkgver = 0.1.7
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = worky-git
 	source = git+https://github.com/ZappaBoy/worky
 	md5sums = SKIP
 
-pkgname = worky-git
+pkgname = worky
