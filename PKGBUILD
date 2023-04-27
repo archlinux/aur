@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=seqbias
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
-pkgrel=3
+pkgver=1.48.0
+pkgrel=1
 pkgdesc='Estimation of per-position bias in high-throughput sequencing data'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -22,7 +22,7 @@ optdepends=(
   r-rsamtools
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ca3dc5903e5e02c5cdc069c828bbab676ce860c0613e432c1a01b2b9cfa68655')
+sha256sums=('1224e066b4928d47db5586e2e71fdbd60cb198cfd859c373d1c6415107a057eb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

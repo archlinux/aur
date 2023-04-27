@@ -1,7 +1,7 @@
 pkgbase = r-seqbias
 	pkgdesc = Estimation of per-position bias in high-throughput sequencing data
-	pkgver = 1.46.0
-	pkgrel = 3
+	pkgver = 1.48.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/seqbias
 	arch = x86_64
 	license = LGPL
@@ -12,7 +12,7 @@ pkgbase = r-seqbias
 	depends = r-zlibbioc
 	optdepends = r-ggplot2
 	optdepends = r-rsamtools
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/seqbias_1.46.0.tar.gz
-	sha256sums = ca3dc5903e5e02c5cdc069c828bbab676ce860c0613e432c1a01b2b9cfa68655
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/seqbias_1.48.0.tar.gz
+	sha256sums = 1224e066b4928d47db5586e2e71fdbd60cb198cfd859c373d1c6415107a057eb
 
 pkgname = r-seqbias
