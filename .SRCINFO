@@ -1,6 +1,6 @@
 pkgbase = r-tcseq
 	pkgdesc = Time course sequencing data analysis
-	pkgver = 1.22.6
+	pkgver = 1.23.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/TCseq
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-tcseq
 	depends = r-rsamtools
 	depends = r-summarizedexperiment
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/TCseq_1.22.6.tar.gz
-	sha256sums = 9948cca47d474d47526f744de3d627c3808920adabb05823493f2c4041bfa213
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TCseq_1.23.0.tar.gz
+	sha256sums = 7117abae0c29ced28bfb4c0f4ef978611e115970d63c62a27ab82b73192ebf39
 
 pkgname = r-tcseq
