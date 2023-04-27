@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RLHub
-_pkgver=1.4.0
+_pkgver=1.5.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='An ExperimentHub package for accessing processed RLSuite data sets'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8be69a856b802614a3c1eaa685e5d847fa3b6b15156015fbbc4db8ebf478b4bd')
+sha256sums=('a7e08c72115150554c9471576f3edfa2c7e68d2f66fc89a96fe259897618feb7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
