@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rGenomeTracks
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
-pkgrel=3
+pkgver=1.6.0
+pkgrel=1
 pkgdesc='Integerated visualization of epigenomic data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -22,7 +22,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('94bd94e3a0586fb9ab5e124321a699e56597f0acf88e0594012286cd4eab4956')
+sha256sums=('c19aa4acdc09947ca2d8241d73afcb9d2455139258309a981a5bdb9740500044')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
