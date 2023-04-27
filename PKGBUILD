@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=diffuStats
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Diffusion scores on biological networks'
 arch=('x86_64')
@@ -34,7 +34,7 @@ optdepends=(
   r-utils
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e50f77a3e81d33812b2beb3de6223864b7c0d8e47b17be1828b2cd89ca101bdd')
+sha256sums=('eead9af963955d77c7ce010539abc9b09508641708f2f7c74632fbe96b434290')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
