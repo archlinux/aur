@@ -1,6 +1,6 @@
 pkgbase = r-msqrob2
 	pkgdesc = Robust statistical inference for quantitative LC-MS proteomics
-	pkgver = 1.6.1
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/msqrob2
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = r-msqrob2
 	optdepends = r-sessioninfo
 	optdepends = r-testthat
 	optdepends = r-tidyverse
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/msqrob2_1.6.1.tar.gz
-	sha256sums = 9682f83a393265e73d8d5b8822a812bea22642cf9ed346ef97e01085ac8867b3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/msqrob2_1.8.0.tar.gz
+	sha256sums = 66b71137c17357dc99963189087f6609a0eedb00b343180905972646d413e96a
 
 pkgname = r-msqrob2

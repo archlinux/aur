@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=msqrob2
-_pkgver=1.6.1
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.1
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Robust statistical inference for quantitative LC-MS proteomics'
 arch=('any')
@@ -37,7 +37,7 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9682f83a393265e73d8d5b8822a812bea22642cf9ed346ef97e01085ac8867b3')
+sha256sums=('66b71137c17357dc99963189087f6609a0eedb00b343180905972646d413e96a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
