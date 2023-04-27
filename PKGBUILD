@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RLSeq
-_pkgver=1.4.1
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='RLSeq: An analysis package for R-loop mapping data'
 arch=('any')
@@ -59,7 +59,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('75087c468c98a869c7a331352314139f16132ed0564962a4ff2bbd7de0deab89')
+sha256sums=('997fb6be322ed3fc7ca33faa3a7f74f4ced1e8684bef89db18bf7cc55ab174d9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
