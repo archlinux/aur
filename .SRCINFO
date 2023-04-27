@@ -1,6 +1,6 @@
 pkgbase = r-streamer
 	pkgdesc = Enabling stream processing of large files
-	pkgver = 1.44.0
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Streamer
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = r-streamer
 	optdepends = r-rgraphviz
 	optdepends = r-rsamtools
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Streamer_1.44.0.tar.gz
-	sha256sums = f8eb2943f4aefb00fce65b72a85984a1f475261c00ce1f1644abb0d90a2e9993
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Streamer_1.46.0.tar.gz
+	sha256sums = 380e5f4bc6c4298aaa4649c10de6ca1cef6a862cfb8e6472ca75aa3aa72a9c8f
 
 pkgname = r-streamer
