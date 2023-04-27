@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=miRNAtap
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='miRNAtap: microRNA Targets - Aggregated Predictions'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-topgo
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ca0da51e25c2a964d20e3cbfacf817720e4857e6de54e42b646ec2c31566fd16')
+sha256sums=('df027189bf5e66e5244c3e4264b89847aa38e6f088c3012b375f069b702acc72')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
