@@ -1,6 +1,6 @@
 pkgbase = itd-git
 	pkgdesc = Daemon that interfaces with InfiniTime firmware on the PineTime smartwatch
-	pkgver = r14.81fe634
+	pkgver = r259.25220cf
 	pkgrel = 2
 	arch = x86_64
 	arch = i686
