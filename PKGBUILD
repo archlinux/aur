@@ -17,7 +17,7 @@ source=("git+https://github.com/hrehfeld/$_gitname.git#tag=$pkgver"
         'quakeinjector.desktop'
         'quakeinjector')
 sha256sums=(SKIP
-         '072b07f42020e5d1787b5f0a2a6d091248c475cafbd2da8308f4955516a3df5c'
+         'f9bb3bd6b304caa7768250f2490564ea8b67dc0c6257ce5a293c868bef35f903'
          '516be20258f7729c31d176988077bcaac7ee7e5d09cbc0fe6e268d7987c84ee9')
 
 build() {
