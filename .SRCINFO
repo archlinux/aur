@@ -1,6 +1,6 @@
 pkgbase = r-gviz
 	pkgdesc = Plotting data and annotation information along genomic coordinates
-	pkgver = 1.42.1
+	pkgver = 1.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Gviz
 	arch = any
@@ -33,7 +33,7 @@ pkgbase = r-gviz
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-xml2
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Gviz_1.42.1.tar.gz
-	sha256sums = 4ac722abc5ba97141d286a8b8324424b4179b9636ee1b16767881dd834301a07
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Gviz_1.44.0.tar.gz
+	sha256sums = 9c5e0e9dfbbb207f10f4d6b300115baa89370ef0eae74e4362ba35da6121e3d2
 
 pkgname = r-gviz
