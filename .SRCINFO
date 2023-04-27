@@ -1,6 +1,6 @@
 pkgbase = r-ptairms
 	pkgdesc = Pre-processing PTR-TOF-MS Data
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ptairMS
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = r-ptairms
 	optdepends = r-rmarkdown
 	optdepends = r-ropls
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ptairMS_1.6.0.tar.gz
-	sha256sums = ce006c4f829e188b32c4acb4f4f6e8fe4c0cd79169c769474d6af08431aebf3e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ptairMS_1.8.0.tar.gz
+	sha256sums = 8521e1bcb73f6ab2ff7cc715bbf10bf8d5f7adb681951308ef2e4c2cba855eb2
 
 pkgname = r-ptairms
