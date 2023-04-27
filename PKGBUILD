@@ -17,7 +17,7 @@ pkgrel=1
 arch=('x86_64')
 url="https://gitlab.com/xdevs23/linux-nitrous"
 license=('GPL2')
-makedepends=('bison' 'clang>=14' 'llvm>=14' 'lld>=14' 'xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf' 'coreutils' 'rust' 'lzop')
+makedepends=('bison' 'clang>=15' 'llvm>=15' 'lld>=15' 'xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf' 'coreutils' 'rust' 'lzop')
 options=('!strip')
 source=('git+https://gitlab.com/xdevs23/linux-nitrous.git#tag=v'"$pkgver-$pkgrel"
         # standard config files for mkinitcpio ramdisk
@@ -31,8 +31,6 @@ clang_major_ver() {
   clang --version | head -n1 | cut -d ' ' -f3 | cut -d '.' -f1
 }
 
-make_env_variant=""
-make_with_lto="make CC=clang HOSTCC=clang NM=llvm-nm AR=llvm-ar HOSTLD=ld.lld LD=ld.lld OBJCOPY=llvm-objcopy STRIP=llvm-strip"
 # "Modern performance" – modifies the config to enable
 # performance tuned to your specific machine (native-intel or native-amd)
 USE_MPERFORMANCE=${USE_MPERFORMANCE:=false}
@@ -49,18 +47,12 @@ prepare() {
 
 _handle_lsmod() {
   if [ -f "$HOME/.config/modprobed.db" ]; then
-    make HOSTCC=clang CC=clang LSMOD=$HOME/.config/modprobed.db localmodconfig
+    make LLVM=1 LSMOD=$HOME/.config/modprobed.db localmodconfig
   fi
 }
 
 build() {
   cd "${_srcname}"
-
-  # On Clang 11+ we *can* use LTO but we *don't* on desktop variants
-  # since DKMS will have trouble with it (and even if it doesn't,
-  # the modules won't work if you mix LTO with non-LTO)
-  # We will use the right env anyway.
-  make_env_variant="$make_with_lto"
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
@@ -68,7 +60,7 @@ build() {
   _defconfig="nitrous_defconfig"
 
   rm -f .clang
-  $make_env_variant $_defconfig
+  make LLVM=1 $_defconfig
   _handle_lsmod
 
   if $USE_MPERFORMANCE; then
@@ -89,7 +81,7 @@ build() {
   if [[ "$MAKEFLAGS" != *"-j"* ]]; then
     makeflags="$makeflags -j$(nproc --all)"   
   fi
-  $make_env_variant ${makeflags} bzImage modules
+  make LLVM=1 ${makeflags} bzImage modules
 }
 
 _package() {
@@ -107,8 +99,6 @@ _package() {
 
   cd "${_srcname}"
 
-  make_env_variant="$make_with_lto"
-
   KARCH=x86
 
   # get kernel version
@@ -117,7 +107,7 @@ _package() {
   _basekernel=${_basekernel%.*}
 
   mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
-  $make_env_variant INSTALL_MOD_PATH="${pkgdir}" modules_install
+  make LLVM=1 INSTALL_MOD_PATH="${pkgdir}" modules_install
 
   local modulesdir="$pkgdir/lib/modules/${_kernver}"
 
@@ -175,7 +165,7 @@ _package() {
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for Linux kernel (tagged git version)"
-  depends=('dkms' 'lld>=14' 'clang>=14')
+  depends=('dkms' 'lld>=15' 'clang>=15')
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
   mkdir -p "${pkgdir}/usr/lib/modules/build/"{include,arch/x86}
