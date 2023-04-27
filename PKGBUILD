@@ -2,12 +2,12 @@
 # Contributor: Zion Nimchuk <zionnimchuk@gmail.com>
 _pkgname=cubeb
 pkgname=$_pkgname-git
-pkgver=0.2.r1427.g70b4e3d
+pkgver=0.2.r1448.g1ba9237
 pkgrel=1
 pkgdesc="Cross platform audio library"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/mozilla/cubeb"
-license=('ISC')
+license=('custom:ISC')
 depends=('gcc-libs' 'glibc')
 makedepends=(
 	'alsa-lib'
@@ -45,7 +45,6 @@ build() {
 	cmake -S $_pkgname -B build \
 		-DBUILD_SHARED_LIBS=ON \
 		-DBUILD_TESTS="$CHECKFUNC" \
-		-DBUNDLE_SPEEX=OFF \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
@@ -56,7 +55,7 @@ build() {
 }
 
 check() {
-	ctest --test-dir build -E 'audio|callback_ret|device_changed_callback|devices|duplex|latency|record|sanity|tone'
+	ctest --test-dir build -E 'audio|callback_ret|devices|latency|sanity|tone'
 }
 
 package() {
