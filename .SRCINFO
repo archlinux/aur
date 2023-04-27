@@ -1,6 +1,6 @@
 pkgbase = r-ga4ghshiny
 	pkgdesc = Shiny application for interacting with GA4GH-based data servers
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GA4GHshiny
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-ga4ghshiny
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GA4GHshiny_1.20.0.tar.gz
-	sha256sums = 29f29c133ed7b92853bbf5b096dedf59da128b412a58f553551c22b2ae08547d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GA4GHshiny_1.22.0.tar.gz
+	sha256sums = 49191a39191ec96ffc98e708e934baba252375afa03058d5c16ac60ce161d017
 
 pkgname = r-ga4ghshiny
