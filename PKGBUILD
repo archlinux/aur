@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=logitT
-_pkgver=1.56.0
+_pkgver=1.58.0
 pkgname=r-${_pkgname,,}
-pkgver=1.56.0
+pkgver=1.58.0
 pkgrel=1
 pkgdesc='logit-t Package'
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
   r-spikeinsubset
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0dafa31b2f9c754564905aa9c96f73014eb4a3a4971304742d8d855f97be22d6')
+sha256sums=('7bcc2fdddd7be19e24f1c203c596f5450bb6b5eca0649b7e44252661c534a271')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
