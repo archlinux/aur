@@ -1,7 +1,7 @@
 pkgbase = r-methylscaper
 	pkgdesc = Visualization of Methylation Data
-	pkgver = 1.6.0
-	pkgrel = 3
+	pkgver = 1.8.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/methylscaper
 	arch = any
 	license = GPL
@@ -19,7 +19,7 @@ pkgbase = r-methylscaper
 	optdepends = r-devtools
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/methylscaper_1.6.0.tar.gz
-	sha256sums = 97cbf7cdc6877dc9641ef1ad77640afa325fac93f86ef29e4fab3aa549619922
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/methylscaper_1.8.0.tar.gz
+	sha256sums = 154eeadceaf54a4437e238a050bfa8ebf184241636936f430d7b791a1586f4c3
 
 pkgname = r-methylscaper
