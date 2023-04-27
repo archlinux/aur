@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=impute
-_pkgver=1.72.3
+_pkgver=1.74.0
 pkgname=r-${_pkgname,,}
-pkgver=1.72.3
+pkgver=1.74.0
 pkgrel=1
 pkgdesc='impute: Imputation for microarray data'
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('68e8385d04af8bcc6bb69c3a7b3767aa23f0a5856a4f462de6e0cd95d40708e3')
+sha256sums=('1ab46a0b792be73c5fac4ca70f70775a39e1b39dd8175688490a80ffe8fe43c4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
