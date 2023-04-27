@@ -1,0 +1,19 @@
+pkgbase = mkdocs-autorefs
+	pkgdesc = Automatically link across pages in MkDocs
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://mkdocstrings.github.io/autorefs
+	arch = any
+	license = ISC
+	checkdepends = python-pytest
+	checkdepends = python-markdown
+	checkdepends = mkdocs
+	makedepends = python-pdm-pep517
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/m/mkdocs-autorefs/mkdocs-autorefs-0.4.1.tar.gz
+	sha256sums = 70748a7bd025f9ecd6d6feeba8ba63f8e891a1af55f48e366d6d6e78493aba84
+
+pkgname = mkdocs-autorefs
+	depends = mkdocs>=1.1
+	depends = python-markdown>=3.3
