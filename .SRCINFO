@@ -1,6 +1,6 @@
 pkgbase = r-ttmap
 	pkgdesc = Two-Tier Mapper: a clustering tool based on topological data analysis
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/TTMap
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-ttmap
 	depends = r-summarizedexperiment
 	optdepends = r-airway
 	optdepends = r-biocstyle
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/TTMap_1.20.0.tar.gz
-	sha256sums = 07df328e03c1710849f80c61ee207cbcf335e8ec935d44b095df9149f017d2ed
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TTMap_1.22.0.tar.gz
+	sha256sums = f192bb864c6ea120bf9bd3f7c00d52020f05f7f0652b794b2fb1308e73f67ef2
 
 pkgname = r-ttmap
