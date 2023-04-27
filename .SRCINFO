@@ -1,12 +1,12 @@
 pkgbase = r-drivernet
 	pkgdesc = Drivernet: uncovering somatic driver mutations modulating transcriptional networks in cancer
-	pkgver = 1.38.0
+	pkgver = 1.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DriverNet
 	arch = any
 	license = GPL
 	depends = r
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DriverNet_1.38.0.tar.gz
-	sha256sums = 0ddb47584cfb631dd1fbdbbcef288dc0c8be3205f2472526c4547d0ab8b83e6b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DriverNet_1.40.0.tar.gz
+	sha256sums = bc2a3bbd71d33362dfcf9742dbc298cc9f703f3ca0ed36761210cb48b989ee6f
 
 pkgname = r-drivernet

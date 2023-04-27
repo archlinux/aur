@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DriverNet
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='Drivernet: uncovering somatic driver mutations modulating transcriptional networks in cancer'
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0ddb47584cfb631dd1fbdbbcef288dc0c8be3205f2472526c4547d0ab8b83e6b')
+sha256sums=('bc2a3bbd71d33362dfcf9742dbc298cc9f703f3ca0ed36761210cb48b989ee6f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
