@@ -1,7 +1,7 @@
 pkgbase = r-flowgraph
 	pkgdesc = Identifying differential cell populations in flow cytometry data accounting for marker frequency
-	pkgver = 1.6.0
-	pkgrel = 3
+	pkgver = 1.8.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/flowGraph
 	arch = any
 	license = Artistic2.0
@@ -27,7 +27,7 @@ pkgbase = r-flowgraph
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowGraph_1.6.0.tar.gz
-	sha256sums = 3a96d48d1edf03ccbb75fb2d697a2176ff64aedbb1a6dff102692733f7fc37eb
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowGraph_1.8.0.tar.gz
+	sha256sums = 6b0d597fec9a354c5a13c3f4b5178d2baccda6936de68a71d337e302ff0ea0cf
 
 pkgname = r-flowgraph
