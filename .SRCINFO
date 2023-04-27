@@ -1,6 +1,6 @@
 pkgbase = r-hpip
 	pkgdesc = Host-Pathogen Interaction Prediction
-	pkgver = 1.4.3
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/HPiP
 	arch = any
@@ -38,7 +38,7 @@ pkgbase = r-hpip
 	optdepends = r-runit
 	optdepends = r-summarizedexperiment
 	optdepends = r-tools
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/HPiP_1.4.3.tar.gz
-	sha256sums = 9f1acd2a8d2aed2e2618a7a98a7c4a06ff3398fa6f4ff7fa38fbfbab644cfa69
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/HPiP_1.6.0.tar.gz
+	sha256sums = 8aed6c3f809543b42a91bfb9a9e1a4640d2c9a58b9448189cef5b2afead72701
 
 pkgname = r-hpip
