@@ -1,6 +1,6 @@
 pkgbase = r-cummerbund
 	pkgdesc = Analysis, exploration, manipulation, and visualization of Cufflinks high-throughput sequencing data.
-	pkgver = 2.40.0
+	pkgver = 2.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/cummeRbund
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = r-cummerbund
 	optdepends = r-plyr
 	optdepends = r-rjson
 	optdepends = r-stringr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cummeRbund_2.40.0.tar.gz
-	sha256sums = a955bc1b76c59d1fab97de09740d524c770f5954a58990a906ed93fda885f3bb
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cummeRbund_2.42.0.tar.gz
+	sha256sums = b663c628637d8bb9126a4ecf006e7a8249e6f2609c34efc9eddd24bfbe0a36f6
 
 pkgname = r-cummerbund
