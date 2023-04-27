@@ -1,6 +1,6 @@
 pkgbase = r-ccmap
 	pkgdesc = Combination Connectivity Mapping
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ccmap
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-ccmap
 	optdepends = r-lydata
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ccmap_1.24.0.tar.gz
-	sha256sums = c7f1bddaf3d1975fd36b294a8fb2a2af956a144e4be6dd7068228fbec1f866b1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ccmap_1.26.0.tar.gz
+	sha256sums = c71128b8b44abd16b3b98b888ef2af09e0f33573cd7baaaf1244710df566ca5a
 
 pkgname = r-ccmap
