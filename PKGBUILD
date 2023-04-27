@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gcspikelite
-_pkgver=1.36.0
+_pkgver=1.37.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
+pkgver=1.37.0
 pkgrel=1
 pkgdesc='Spike-in data for GC/MS data and methods within flagme'
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5607f1e6581f0506b05cf6d1a5ef4f8bc716b85b1365f7b2a94aa072ea0dde4f')
+sha256sums=('16186853621992a54231e9632d0e42f9f186619e437c6c892769c0da16915aad')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
