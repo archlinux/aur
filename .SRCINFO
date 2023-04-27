@@ -1,6 +1,6 @@
 pkgbase = r-basicstarrseq
 	pkgdesc = Basic peak calling on STARR-seq data
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BasicSTARRseq
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-basicstarrseq
 	depends = r-iranges
 	depends = r-s4vectors
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BasicSTARRseq_1.26.0.tar.gz
-	sha256sums = 1f3ffc5747cc9c7233da1fb980447e398ab7998687a78b6b7cac15cfdffd64fa
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BasicSTARRseq_1.28.0.tar.gz
+	sha256sums = 9b4c35954f356e56802396c57b84a91d97862f9f3f58904d21d65c9d7e3b568e
 
 pkgname = r-basicstarrseq
