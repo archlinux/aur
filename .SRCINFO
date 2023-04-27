@@ -1,21 +1,23 @@
 pkgbase = ttf-i-ming-fonts
 	pkgdesc = I.Ming ( I.明體 / 一点明朝体 / 一點明體 )
 	pkgver = 8.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ichitenfont/I.Ming
 	arch = any
-	license = IPA
+	license = custom:IPA
 	source = I.Ming-8.00.ttf::https://github.com/ichitenfont/I.Ming/raw/master/8.00/I.Ming-8.00.ttf
 	source = I.MingCP-8.00.ttf::https://github.com/ichitenfont/I.Ming/raw/master/8.00/I.MingCP-8.00.ttf
 	source = I.MingVar-8.00.ttf::https://github.com/ichitenfont/I.Ming/raw/master/8.00/I.MingVar-8.00.ttf
 	source = I.MingVarCP-8.00.ttf::https://github.com/ichitenfont/I.Ming/raw/master/8.00/I.MingVarCP-8.00.ttf
 	source = PMingI.U-8.00.ttf::https://github.com/ichitenfont/I.Ming/raw/master/8.00/PMingI.U-8.00.ttf
 	source = PMingI.UVar-8.00.ttf::https://github.com/ichitenfont/I.Ming/raw/master/8.00/PMingI.UVar-8.00.ttf
+	source = LICENSE.md::https://github.com/ichitenfont/I.Ming/raw/master/LICENSE.md
 	sha256sums = eb7e39eb6f4e74acfa9539c3dd58eda7a0f3b18cb4a2368bd276971abb5d66fc
 	sha256sums = 23eb45cdf0ac71c8c57462c4ea2a99efc8de1fb81273064dbe0873a628b4e150
 	sha256sums = 7d2120c61fcb5defb0e816cba7574bc0a9fcea2c19ecaf5d3febe3dd8ddf5076
 	sha256sums = 8d95346811e36c8f629bdd4c1f0f78684b6cbb394acedb8d0b551d737458e054
 	sha256sums = 57c8c6c20a7adb5aee01b35ef21f50a9255d43f6d8316fdc3f8792b09bd86b0c
 	sha256sums = 5f35c4c97eb276f3468743d3b782dba1f85e4c712906d2363c63dd8de2431fab
+	sha256sums = 5ddbaf00dbc1888b25c5964d5f033ea32c8e53fac90efc089c5316190b776b32
 
 pkgname = ttf-i-ming-fonts
