@@ -1,8 +1,8 @@
 # Maintainer: Ralf Mueller <stark.dreamdetective@gmail.com>
 # Contributor: Ralf Mueller <stark.dreamdetective@gmail.com>
 pkgname=cdo
-pkgver=2.1.1
-fileID=27654
+pkgver=2.2.0
+fileID=28013
 pkgrel=0
 pkgdesc="Command line tool manipulate and analyse Climate model Data. Supported data formats are GRIB, netCDF, SERVICE, EXTRA and IEG."
 url="https://code.zmaw.de/projects/cdo"
@@ -16,7 +16,7 @@ arch=(i686 x86_64)
 backup=()
 install=
 source=(https://code.zmaw.de/attachments/download/${fileID}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('c29d084ccbda931d71198409fb2d14f99930db6e7a3654b3c0243ceb304755d9')
+sha256sums=('679c8d105706caffcba0960ec5ddc4a1332c1b40c52f82c3937356999d8fadf2')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -31,8 +31,9 @@ build() {
     --with-eccodes=/usr \
     --with-magics=/usr \
     --with-libxml2=/usr \
-    CFLAGS="-g -O3 -Wall -fopenmp" \
-    CXXFLAGS="-g -O3 -Wall -fopenmp"
+    --enable-openmp \
+    CFLAGS="-g -O3 -Wall" \
+    CXXFLAGS="-g -O3 -Wall"
 
   make -j12 || return
 }
@@ -42,7 +43,7 @@ package() {
 
   make DESTDIR="$pkgdir/" install
 
-  install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   rm -f $pkgdir/bin/cdotest
 }
