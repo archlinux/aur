@@ -1,6 +1,6 @@
 pkgbase = r-bearscc
 	pkgdesc = BEARscc (Bayesian ERCC Assesstment of Robustness of Single Cell Clusters)
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BEARscc
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-bearscc
 	optdepends = r-nmf
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BEARscc_1.18.0.tar.gz
-	sha256sums = 190353615ac4499246ae3a042c28cb18f05b84f2db1ce1432f522ce1650483c8
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BEARscc_1.20.0.tar.gz
+	sha256sums = eaa5f18e0e3fb22be9843cd33a4d8536d17d6c87c7b2158cbe960fc40337bf18
 
 pkgname = r-bearscc

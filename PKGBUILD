@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BEARscc
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='BEARscc (Bayesian ERCC Assesstment of Robustness of Single Cell Clusters)'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('190353615ac4499246ae3a042c28cb18f05b84f2db1ce1432f522ce1650483c8')
+sha256sums=('eaa5f18e0e3fb22be9843cd33a4d8536d17d6c87c7b2158cbe960fc40337bf18')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
