@@ -28,7 +28,7 @@ depends=(
   'libudev.so'
   'json-c'
   'libmpdclient'
-  'fcft>=2.0.0')
+  'fcft>=3.0.0')
 optdepends=('xcb-util-errors: better X error messages')
 provides=("${_pkgname}=$pkgver")
 conflicts=("${_pkgname}")

@@ -24,7 +24,7 @@ pkgbase = yambar-git
 	depends = libudev.so
 	depends = json-c
 	depends = libmpdclient
-	depends = fcft>=2.0.0
+	depends = fcft>=3.0.0
 	optdepends = xcb-util-errors: better X error messages
 	provides = yambar=1.6.1.r60.g18a0920
 	conflicts = yambar
