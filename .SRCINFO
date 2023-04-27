@@ -1,6 +1,6 @@
 pkgbase = r-cnorfuzzy
 	pkgdesc = Addon to CellNOptR: Fuzzy Logic
-	pkgver = 1.40.0
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CNORfuzzy
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = r-cnorfuzzy
 	optdepends = r-rgraphviz
 	optdepends = r-runit
 	optdepends = r-xtable
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CNORfuzzy_1.40.0.tar.gz
-	sha256sums = c1a6abbdf029738546b68c85515dc70ac0e7cdc21e78db7189fdb7242b9bacb4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CNORfuzzy_1.42.0.tar.gz
+	sha256sums = 74bb7852c50223892a473fe5aad2a49b620f0dc2d9d672078890996a2dfdd9de
 
 pkgname = r-cnorfuzzy
