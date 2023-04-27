@@ -1,7 +1,7 @@
 pkgbase = r-visse
 	pkgdesc = Visualising Set Enrichment Analysis Results
-	pkgver = 1.6.0
-	pkgrel = 2
+	pkgver = 1.8.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/vissE
 	arch = any
 	license = GPL
@@ -33,7 +33,7 @@ pkgbase = r-visse
 	optdepends = r-rmarkdown
 	optdepends = r-singscore
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/vissE_1.6.0.tar.gz
-	sha256sums = 0821e26061f0bb0f84c834bffabb8bf38c733c67392f5c29958375ac37cecdf1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/vissE_1.8.0.tar.gz
+	sha256sums = 18df906d381789b54e04feb4780526d56b710db80e577b4769ffe9571c81da75
 
 pkgname = r-visse
