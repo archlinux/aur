@@ -1,6 +1,6 @@
 pkgbase = r-sscore
 	pkgdesc = S-Score Algorithm for Affymetrix Oligonucleotide Microarrays
-	pkgver = 1.70.0
+	pkgver = 1.72.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/sscore
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = r-sscore
 	depends = r-affy
 	depends = r-affyio
 	optdepends = r-affydata
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/sscore_1.70.0.tar.gz
-	sha256sums = 31594b983a3d51dd44629f3dc945bb7b16286b5a867ea015269f863d98ca3f1f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/sscore_1.72.0.tar.gz
+	sha256sums = 345698825276ca1055228942d28694a2f80af8ce2da6991238bafaac2241c60b
 
 pkgname = r-sscore
