@@ -1,7 +1,7 @@
 # Maintainer: Alan Beale <the.mrabz@gmail.com>
 
 pkgname=minecraft-bedrock-server
-pkgver=1.19.73.02
+pkgver=1.19.80.02
 pkgrel=1
 pkgdesc="Minecraft Bedrock Server for Windows 10 and Xbox One versions of Minecraft"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("https://minecraft.azureedge.net/bin-linux/bedrock-server-${pkgver}.zip"
 	'minecraft-bedrock-server.sysusers'
 	'minecraft-bedrock-server.tmpfiles')
 
-sha256sums=('3c3cce2620769119250774bc672dc88d9bcff24b1544c66fa8f9bbbc1ece4e45'
+sha256sums=('7a840e38619117cb174f2f08998ce7a3ca0e84ed53237bde0dadefcc6ec76658'
             'cc08effe04701f1ca16a1edd153d12a94ed498e9a3e68a004b74189eef9edb81'
             'a7070301958b58f804bb8dee8b66ef23ad7460403f7ba2cfffb549e29ad834d5'
             '829ff9e583408fcc1d0436a6896ecbd3128f893dcbc2b0147130219a13586ae3')
