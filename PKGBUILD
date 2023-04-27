@@ -3,12 +3,12 @@
 _electron_version=22
 pkgname=stretchly
 pkgver=1.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The break time reminder app"
 arch=('i686' 'x86_64')
 url="https://github.com/hovancik/stretchly/"
 license=('BSD')
-depends=('gtk3' 'http-parser' 'libappindicator-gtk3' 'libnotify' 'libxss' "electron$_electron_version")
+depends=('gtk3' 'http-parser' 'libappindicator-gtk3' 'libnotify' 'libxcrypt-compat' 'libxss' "electron$_electron_version")
 makedepends=('git' 'nvm' 'jq' 'python')
 conflicts=("${pkgname}-bin" "${pkgname}-git")
 source=("https://github.com/hovancik/stretchly/archive/v${pkgver}.tar.gz")
