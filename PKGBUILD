@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=aCGH
-_pkgver=1.76.0
+_pkgver=1.78.0
 pkgname=r-${_pkgname,,}
-pkgver=1.76.0
+pkgver=1.78.0
 pkgrel=1
 pkgdesc='Classes and functions for Array Comparative Genomic Hybridization data'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
   r-multtest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('86dc0f4897d122cd84f5b9533b7173e06d11dc131377fcdb829b29e4d6000317')
+sha256sums=('f62f54268f565dd37d78b2ca151c3a7bc4ce2dab3d3e5cfc070bf000215f0e4d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
