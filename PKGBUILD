@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SLqPCR
-_pkgver=1.64.0
+_pkgver=1.66.0
 pkgname=r-${_pkgname,,}
-pkgver=1.64.0
+pkgver=1.66.0
 pkgrel=1
 pkgdesc='Functions for analysis of real-time quantitative PCR data at SIRS-Lab GmbH'
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=(
   r-rcolorbrewer
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7d233025bb3049b9974a9d891ab54142de40b593cfe4c6b19279135870d16f68')
+sha256sums=('fed7ed7ef7c3467db527f86200d3a6fb220e6f12db093c8686567fcba18da652')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
