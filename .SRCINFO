@@ -1,6 +1,6 @@
 pkgbase = r-rdgidb
 	pkgdesc = R Wrapper for DGIdb
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rDGIdb
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-rdgidb
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rDGIdb_1.24.0.tar.gz
-	sha256sums = f0e813bd316532c747bff7e5a0237cb6c43e4370fbdaf69c221e0927c249123e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rDGIdb_1.26.0.tar.gz
+	sha256sums = 6aced36c71a43c0b0a1f584b37cb4f3875ce7ea7438bf404c363c70cc69959e6
 
 pkgname = r-rdgidb
