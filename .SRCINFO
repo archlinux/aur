@@ -1,6 +1,6 @@
 pkgbase = r-drawproteins
 	pkgdesc = Package to Draw Protein Schematics from Uniprot API output
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/drawProteins
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-drawproteins
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/drawProteins_1.18.0.tar.gz
-	sha256sums = 0cbfe9eda6b74ad0c1091a7697da1ebf07999c55a1799d0ce2e57175e70b4abf
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/drawProteins_1.20.0.tar.gz
+	sha256sums = 944f7b642182a921c819c5006a14cfee4c4289c9decfa396d1c5d48514897d97
 
 pkgname = r-drawproteins
