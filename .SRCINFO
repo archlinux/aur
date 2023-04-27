@@ -1,6 +1,6 @@
 pkgbase = r-cytodx
 	pkgdesc = Robust prediction of clinical outcomes using cytometry data without cell gating
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CytoDx
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-cytodx
 	depends = r-rpart.plot
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CytoDx_1.18.0.tar.gz
-	sha256sums = c12b34419bd8c216208dbff3038d856d4e90d3715fc82f887486fbcb01f1bdf0
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CytoDx_1.20.0.tar.gz
+	sha256sums = 9a139ff5e050f150b7421ef06ceb15fc77931dcfd7f29fb49dd62df4c1a717fb
 
 pkgname = r-cytodx
