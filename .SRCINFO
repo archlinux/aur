@@ -1,0 +1,16 @@
+pkgbase = python-xpi2pkgbuild
+	pkgdesc = Mozilla XPI based PKGBUILD generator using mozilla addon API.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/perigoso/xpi2pkgbuild
+	arch = any
+	license = MIT
+	makedepends = python-flit
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	source = xpi2pkgbuild-1.0.0.tar.gz::https://files.pythonhosted.org/packages/source/x/xpi2pkgbuild/xpi2pkgbuild-1.0.0.tar.gz
+	b2sums = 83c7da4d2b13bb3c8f9c72e6c6f2c188c82ecb1b2b93e1c90b795a6aca705e6dec5e2f07e70ed3b189e072b61eba798f577b04873622610e702e045eb141a895
+
+pkgname = python-xpi2pkgbuild
