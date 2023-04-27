@@ -1,6 +1,6 @@
 pkgbase = r-bcseq
 	pkgdesc = Fast Sequence Mapping in High-Throughput shRNA and CRISPR Screens
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/bcSeq
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = r-bcseq
 	depends = r-biostrings
 	depends = r-rcpp
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/bcSeq_1.20.0.tar.gz
-	sha256sums = 631cb28feba83a2d3b9abda222d5f11cdb4e075f47e93bb40217683ccfc8d6b7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/bcSeq_1.22.0.tar.gz
+	sha256sums = 56b56f56ba3fdbd705b7d2c155f3825c1b00b44009dd845c861d5a5496b86d2b
 
 pkgname = r-bcseq
