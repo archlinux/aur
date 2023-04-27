@@ -1,6 +1,6 @@
 pkgbase = r-artms
 	pkgdesc = Analytical R tools for Mass Spectrometry
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/artMS
 	arch = any
@@ -42,7 +42,7 @@ pkgbase = r-artms
 	optdepends = r-performanceanalytics
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/artMS_1.16.0.tar.gz
-	sha256sums = cd7f469da08f544d49436888608a96e20fde0f34a4a71b963873a22bd442eb9e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/artMS_1.18.0.tar.gz
+	sha256sums = 79917c85fd7dab02d01539f11b430ade25fa85ff4f71679fd94251c0061cd9c8
 
 pkgname = r-artms
