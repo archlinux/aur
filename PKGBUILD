@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CoverageView
-_pkgver=1.36.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
+pkgver=1.38.0
 pkgrel=1
 pkgdesc='Coverage visualization package for R'
 arch=('any')
@@ -19,7 +19,7 @@ depends=(
   r-s4vectors
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8d9ab1e5c4b8b3fe0e99d310e819d9fc0eb1013a9e0e17679af6f5e5c1e51b33')
+sha256sums=('3a7d5ba8f31c374d0b8d0962badd10c09ad5cb95660fe17b0d7b6f5b8e3f20b2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
