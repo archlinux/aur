@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Ularcirc
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
-pkgrel=3
+pkgver=1.18.0
+pkgrel=1
 pkgdesc='Shiny app for canonical and back splicing analysis (i.e. circular and mRNA analysis)'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -48,7 +48,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg38.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('be65196dc1725e896cd312e8b3f267162ffe137c3b04e7c726cb81d023f020fc')
+sha256sums=('9faf26c5c558ed0f55fee819a9e57feba1a6869c9d01d1b6b6fc3006d169e5ee')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
