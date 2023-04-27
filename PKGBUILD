@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BloodGen3Module
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='This R package for performing module repertoire analyses and generating fingerprint representations'
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6f141ef89ac2826d5984da032e59eabed4cf173a92187e11419d1a90bcf81d06')
+sha256sums=('933d4b633c1b033ffe6ae725c93ac5ba3e6ece3ddee5d1c2bd8ff6a4c1bffc98')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
