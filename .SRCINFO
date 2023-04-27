@@ -1,6 +1,6 @@
 pkgbase = r-flowtime
 	pkgdesc = Annotation and analysis of biological dynamical systems using flow cytometry
-	pkgver = 1.22.2
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/flowTime
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-flowtime
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-stats
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowTime_1.22.2.tar.gz
-	sha256sums = 975e3ddee418583e99ab173ab1453f5b82d89dfab6880b71a32e780c8a12ad62
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowTime_1.24.0.tar.gz
+	sha256sums = f4647a27919af92e95b0509dc9ba9640abe0b9eac8674265e3ba77577cd17ad2
 
 pkgname = r-flowtime
