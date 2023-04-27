@@ -1,6 +1,6 @@
 pkgbase = r-gatefinder
 	pkgdesc = Projection-based Gating Strategy Optimization for Flow and Mass Cytometry
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GateFinder
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-gatefinder
 	depends = r-splancs
 	optdepends = r-biocgenerics
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GateFinder_1.18.0.tar.gz
-	sha256sums = 20a74affcf2a747de5f9683a0be114ba2105d56e63ed2d717704c156bb8267e8
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GateFinder_1.20.0.tar.gz
+	sha256sums = a8e43cdc3e9941e836d663a4890f78fb52ec544de59cdd160ef62130b7288725
 
 pkgname = r-gatefinder
