@@ -11,9 +11,10 @@ arch=(x86_64)
 url="https://${pkgname}.org"
 license=('custom:BSD-3-clause')
 depends=(armadillo cereal boost lapack ensmallen cython python-numpy python-pandas)
-makedepends=(cmake txt2man python-setuptools)
+makedepends=(cmake txt2man python-setuptools python-wheel)
 optdepends=('openmp: parallel computation support'
   'julia: julia bindings support'
+  'r: r bindings support'
   'go: go bindings support')
 source=(${url}/files/${pkgname}-${pkgver}.tar.gz)
 sha512sums=('0cab346f81b04a298f09ba28cec679c275af80c3941f31977ba5d0cfe11eed5850190ce46e71cf003996391618ad4eac2e0a54e260d264b8f8f9a02f53ec7cc7')
