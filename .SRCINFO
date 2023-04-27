@@ -1,13 +1,13 @@
 pkgbase = yor-bin
 	pkgdesc = Extensible auto-tagger for your IaC files. The ultimate way to link entities in the cloud back to the codified resource which created it.
-	pkgver = 0.1.171
+	pkgver = 0.1.173
 	pkgrel = 1
 	url = https://www.yor.io/
 	arch = x86_64
-	license = Apache2
+	license = Apache
 	depends = glibc
 	options = !strip
-	source = yor-0.1.171.tar.gz::https://github.com/bridgecrewio/yor/releases/download/0.1.171/yor_0.1.171_linux_amd64.tar.gz
-	sha256sums = 71e5dfba58f7f9de233156510b9bb1f14a6686bd8c927a0bc0835772e3a60e47
+	source = yor-0.1.173.tar.gz::https://github.com/bridgecrewio/yor/releases/download/0.1.173/yor_0.1.173_linux_amd64.tar.gz
+	sha256sums = 5a652455430f6f1c10cd2d64bb47b9670eee5d66038a54c686c447608a369494
 
 pkgname = yor-bin
