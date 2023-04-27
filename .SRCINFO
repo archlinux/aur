@@ -1,7 +1,7 @@
 pkgbase = ziit
 	pkgdesc = A cli to track times in combination with to the ziit-server.
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://dev.acosom.com/acosom/ziit/ziit-cli/
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = ziit
 	depends = libsodium
 	depends = protobuf-c
 	depends = chrono-date
-	source = https://dev.acosom.com/~downloads/projects/11/archives?revision=v1.1.0&format=tgz
-	md5sums = eab11f7e2605fc0b49a654d926cef5cf
+	source = https://dev.acosom.com/~downloads/projects/11/archives?revision=v1.1.1&format=tgz
+	md5sums = 48285e42195077d876f9b48f871507d4
 
 pkgname = ziit
