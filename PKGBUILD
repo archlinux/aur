@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=iChip
-_pkgver=1.52.0
+_pkgver=1.54.0
 pkgname=r-${_pkgname,,}
-pkgver=1.52.0
+pkgver=1.54.0
 pkgrel=1
 pkgdesc='Bayesian Modeling of ChIP-chip Data Through Hidden Ising Models'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
   r-limma
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('324b2307cec16fa242274fd6c121bea1d4ccf1333b51f45ab44d5408361174b0')
+sha256sums=('d188543cd511f17632c9bdacf9520571d2f417f753c4fc51e9e99573b2d1a831')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
