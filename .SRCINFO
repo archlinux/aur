@@ -1,6 +1,6 @@
 pkgbase = r-qsea
 	pkgdesc = IP-seq data analysis and vizualization
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/qsea
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = r-qsea
 	optdepends = r-medipsdata
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/qsea_1.24.0.tar.gz
-	sha256sums = 356a82302a0a9df60ce2b43fc9cf789aae17d940b066e6b91e0c394cb2d97df4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/qsea_1.26.0.tar.gz
+	sha256sums = 5668bae8f95eafccb6ba7c585fac44ba54d16afa51e5f87099d9321a7e99d36c
 
 pkgname = r-qsea
