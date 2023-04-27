@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rGREAT
-_pkgver=2.0.2
+_pkgver=2.2.0
 pkgname=r-${_pkgname,,}
-pkgver=2.0.2
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Client for GREAT Analysis'
 arch=('any')
@@ -48,7 +48,7 @@ optdepends=(
   r-uniprotkeywords
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8d2eca40bce77749909bb2f887cd71730e95eba0c1c3f0500e1f73748b3eb5ee')
+sha256sums=('a25c7c1ab955cc736e19b68a25f4c6e27bcba22f9cbb158da3729cd43e760363')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
