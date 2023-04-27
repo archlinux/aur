@@ -3,8 +3,8 @@
 pkgname=tauon-music-box
 _pkgname=tauonmb
 _gitname=TauonMusicBox
-pkgver=7.6.3
-pkgrel=2
+pkgver=7.6.4
+pkgrel=1
 _kissfftver=131.1.0
 _miniaudiocommit=9a7663496fc06f7a9439c752fd7666ca93328c20
 pkgdesc="A modern streamlined music player"
@@ -39,11 +39,13 @@ depends=('python-pillow'
          'wavpack'
          'libvorbis'
          'libappindicator-gtk3'
-         'libopenmpt' # AUR
+         'libopenmpt'
          'libsamplerate'
          'python-httpx' # Workaround for https://bugs.archlinux.org/task/74611
          )
-         
+
+makedepends=('pkg-config')
+
 optdepends=('noto-fonts-cjk: Matching font for CJK characters'
             'picard: Recommended tag editor'
             'p7zip: 7z archive extraction support'
@@ -91,6 +93,6 @@ package() {
     install -Dm755 "extra/tauonmb.sh" "$pkgdir/usr/bin/tauon"
 }
 
-md5sums=('cd0376c7792df061e08800c614178b51'
+md5sums=('17923bad92d22d9a844eb7289a0dd8bd'
          '981ad3e496fbd8edb99704fc0e2aa939'
          'a4e1f50feeb398f03d3d5fd0e99d86b0')
