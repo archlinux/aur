@@ -4,27 +4,27 @@
 # Contributor: rhabbachi
 
 pkgname=displaylink
-pkgver=5.6.1
-_releasedate=2022-08
-_pkgfullver=5.6.1-59.184
-pkgrel=3
+pkgver=5.7
+_releasedate=2023-04
+_pkgfullver=5.7.0-61.129
+pkgrel=1
 pkgdesc="Linux driver for DL-6xxx, DL-5xxx, DL-41xx and DL-3x00"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.synaptics.com/products/displaylink-graphics"
 license=('custom' 'GPL2' 'LGPL2.1')
-depends=('evdi>=1.12.0' 'evdi<1.13.0'
-         'libusb>=1.0.0')
+depends=('evdi'
+         'libusb')
 makedepends=('grep' 'gawk' 'wget')
 changelog="displaylink-release-notes-${pkgver}.txt"
 source=(displaylink-driver-${pkgver}.zip::https://www.synaptics.com/sites/default/files/exe_files/${_releasedate}/DisplayLink%20USB%20Graphics%20Software%20for%20Ubuntu${pkgver}-EXE.zip
         displaylink-release-notes-${pkgver}.txt
         DISPLAYLINK-EULA
         udev.sh
-        99-displaylink.rules 
-	displaylink.service 
+        99-displaylink.rules
+	displaylink.service
         displaylink-sleep.sh)
-sha256sums=('89279748a9e276073ddfff7e949f2b92e30dc19f29a34c40ffcd3356c6d730c2'
-            '1aae2005e7719e91179ed52ba85b11b35120c05116c94c4aa384394c4f6e8043'
+sha256sums=('807f1c203ac1e71c6f1f826493b9bb32e277f07cb2cf48537bf8cfdc68dd1515'
+            '24e6c5f72f38252bdd3eab1777c418e2490dc5f7606400baa4d956ec425e002f'
             '2f81fea43332a62b2cf1dd47e56ea01caf1e886bcd16c3f82b18bfe148fb21a9'
             'dc41ae8a2c287fc50fdda65bad8b0ffd76726f7773c25e1b0c5b7de95cecbdb6'
             'c08a4726cf4e2f92c7cab00168ae9cc8d69d36a67c570609396a4a674934245a'
@@ -49,13 +49,13 @@ package() {
   echo "Installing DLM systemd service"
   install -D -m644 displaylink.service "$pkgdir/usr/lib/systemd/system/displaylink.service"
   install -D -m755 displaylink-sleep.sh "$pkgdir/usr/lib/systemd/system-sleep/displaylink.sh"
-  
+
   COREDIR="$pkgdir/usr/lib/displaylink"
-  install -d -m755 $COREDIR
+  install -d -m755 "$COREDIR"
   install -d -m755 "$pkgdir/var/log/displaylink"
 
   pushd "$srcdir/$pkgname-$pkgver"
-  
+
   case $CARCH in
     i686)
       ARCH="x86-ubuntu-1604" ;;
@@ -66,12 +66,12 @@ package() {
     aarch64)
       ARCH="aarch64-linux-gnu" ;;
   esac
-  
+
   echo "Installing DisplayLink Manager $ARCH"
-  install -D -m755 $ARCH/DisplayLinkManager $COREDIR/DisplayLinkManager
+  install -D -m755 "$ARCH/DisplayLinkManager" "$COREDIR/DisplayLinkManager"
 
   echo "Installing firmware packages"
-  install -D -m644 *.spkg $COREDIR
+  install -D -m644 ./*.spkg "$COREDIR"
 
   echo "Installing license file"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

@@ -3,12 +3,12 @@
 
         DisplayLink Ubuntu Software Release Note
 
-Version: v5.6.1
-Build: posix/59-3284-g61b5f058530 (185)
+Version: v5.7.0
+Build: posix/61-1827-g47ede9c19c2 (129)
 
-Date: 18th July 2022
+Date: 24th March 2023
 
-Extensible Virtual Display Interface version included: v1.12.0 (ae5b3d0)
+Extensible Virtual Display Interface version included: v1.13-6 (85a347a)
 =============================================================================
 =============================================================================
 
@@ -16,7 +16,7 @@ Extensible Virtual Display Interface version included: v1.12.0 (ae5b3d0)
 A. Introduction
 ===============
 
-This is DisplayLink Driver Software v5.6.1 for Ubuntu. It provides production quality support for DisplayLink USB 3.0 devices on specific variants of desktop Ubuntu Linux.
+This is DisplayLink Driver Software v5.7.0 for Ubuntu. It provides production quality support for DisplayLink USB 3.0 devices on specific variants of desktop Ubuntu Linux.
 
 The driver enables video support for products using DisplayLink USB 3.0 technology. Standard native Ubuntu drivers provide support for DisplayLink audio and Ethernet interfaces.
 
@@ -44,6 +44,14 @@ I.  Future development
 
 C.  Bugs fixed in this release
 ==============================
+
+C.7  Changes in 5.7 release
+-----------------------------
+- New driver distribution channel via Synaptics apt repository (https://www.synaptics.com/sites/default/files/Ubuntu/)
+- In some cases DisplayLink installer freezes when Secure Boot is enabled. (PS-2455)
+- In some cases DisplayLink evdi driver is not signed and loaded when Secure Boot is enabled. (PS-2455)
+- Added preliminary support for kernel 6.2
+- Added preliminary support for Ubuntu 23.04
 
 C.6  Changes in 5.6.1 release
 -----------------------------
@@ -104,11 +112,11 @@ C.1  Changes in 5.4.0 release
 D. Supported O/S variants
 =========================
 
-This release has been prepared to be compatible with Ubuntu 22.04, 21.10, 20.04, 19.04 and 18.04.
+This release has been prepared to be compatible with Ubuntu 23.04, 22.04, 21.10, 20.04, 19.04 and 18.04.
 Other variants and editions may be compatible if they meet minimum O/S requirements, but are not supported by DisplayLink.
 
 The Software contains binaries which work on i686, amd64, armv7 and aarch64 architectures.
-Supported Linux Kernel version range is from 4.15 to 5.17.
+Supported Linux Kernel version range is from 4.15 to 6.2.
 Minimum supported Xorg version is 1.16, minimum supported Mutter (Wayland) version is 3.32.
 
 E. Release components
@@ -150,6 +158,19 @@ H. Limitations & known issues
 
 A list of limitations and known issues can be found here:
 http://support.displaylink.com/knowledgebase/articles/641668
+
+- Fail to rotate display on three-monitor desktop on Ubuntu 22.10 (PS-2230)
+https://gitlab.gnome.org/GNOME/gnome-control-center/-/issues/2113
+Please make selected monitor layout rightmost (or leftmost) first, apply the preferred orientation, then setup correct
+monitor order as a mitigation.
+
+- DisplayLink display is black on plug-in and user is logged-out when moving cursor on DisplayLink display on Ubuntu 22.10 (PS-2397)
+https://gitlab.gnome.org/GNOME/mutter/-/issues/2481
+Please update to Ubuntu 23.04.
+
+- When displayLink-driver debian package is installed first time with GUI application like Synaptic and Secure Boot is
+enabled then installation will fail.
+How to use DisplayLink Ubuntu driver with UEFI Secure Boot (https://support.displaylink.com/knowledgebase/articles/1181617-how-to-use-displaylink-ubuntu-driver-with-uefi-sec)
 
 I. Future development
 ======================

@@ -1,9 +1,9 @@
 pkgbase = displaylink
 	pkgdesc = Linux driver for DL-6xxx, DL-5xxx, DL-41xx and DL-3x00
-	pkgver = 5.6.1
-	pkgrel = 3
+	pkgver = 5.7
+	pkgrel = 1
 	url = https://www.synaptics.com/products/displaylink-graphics
-	changelog = displaylink-release-notes-5.6.1.txt
+	changelog = displaylink-release-notes-5.7.txt
 	arch = i686
 	arch = x86_64
 	arch = arm
@@ -16,18 +16,17 @@ pkgbase = displaylink
 	makedepends = grep
 	makedepends = gawk
 	makedepends = wget
-	depends = evdi>=1.12.0
-	depends = evdi<1.13.0
-	depends = libusb>=1.0.0
-	source = displaylink-driver-5.6.1.zip::https://www.synaptics.com/sites/default/files/exe_files/2022-08/DisplayLink%20USB%20Graphics%20Software%20for%20Ubuntu5.6.1-EXE.zip
-	source = displaylink-release-notes-5.6.1.txt
+	depends = evdi
+	depends = libusb
+	source = displaylink-driver-5.7.zip::https://www.synaptics.com/sites/default/files/exe_files/2023-04/DisplayLink%20USB%20Graphics%20Software%20for%20Ubuntu5.7-EXE.zip
+	source = displaylink-release-notes-5.7.txt
 	source = DISPLAYLINK-EULA
 	source = udev.sh
 	source = 99-displaylink.rules
 	source = displaylink.service
 	source = displaylink-sleep.sh
-	sha256sums = 89279748a9e276073ddfff7e949f2b92e30dc19f29a34c40ffcd3356c6d730c2
-	sha256sums = 1aae2005e7719e91179ed52ba85b11b35120c05116c94c4aa384394c4f6e8043
+	sha256sums = 807f1c203ac1e71c6f1f826493b9bb32e277f07cb2cf48537bf8cfdc68dd1515
+	sha256sums = 24e6c5f72f38252bdd3eab1777c418e2490dc5f7606400baa4d956ec425e002f
 	sha256sums = 2f81fea43332a62b2cf1dd47e56ea01caf1e886bcd16c3f82b18bfe148fb21a9
 	sha256sums = dc41ae8a2c287fc50fdda65bad8b0ffd76726f7773c25e1b0c5b7de95cecbdb6
 	sha256sums = c08a4726cf4e2f92c7cab00168ae9cc8d69d36a67c570609396a4a674934245a
