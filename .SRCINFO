@@ -1,6 +1,6 @@
 pkgbase = r-widgettools
 	pkgdesc = Creates an interactive tcltk widget
-	pkgver = 1.76.0
+	pkgver = 1.78.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/widgetTools
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-widgettools
 	depends = r
 	depends = tk
 	optdepends = r-biobase
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/widgetTools_1.76.0.tar.gz
-	sha256sums = c5cbbd2b111629a30fb4cf82f27c5f2a5555bd12c3220754cce1277edc6f23dd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/widgetTools_1.78.0.tar.gz
+	sha256sums = 84351c5be8ff12cfbd6f1601fe5e233a772e740cb6e0323e20529e34a5807b0d
 
 pkgname = r-widgettools
