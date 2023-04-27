@@ -1,6 +1,6 @@
 pkgbase = r-rfarm
 	pkgdesc = An R interface to the Rfam database
-	pkgver = 1.10.2
+	pkgver = 1.11.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rfaRm
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-rfarm
 	optdepends = r-r4rna
 	optdepends = r-rmarkdown
 	optdepends = r-treeio
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rfaRm_1.10.2.tar.gz
-	sha256sums = 59453156c149ce4d9df083c3a0a37c81add7a8f58dc63490a337d1260c30fc44
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rfaRm_1.11.2.tar.gz
+	sha256sums = 5f7626bba047fc5165b65a9dd75c9db111f4e086921ef40b209371fc95a4c04e
 
 pkgname = r-rfarm
