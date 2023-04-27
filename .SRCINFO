@@ -1,0 +1,14 @@
+pkgbase = worky-git
+	pkgdesc = Worky is a tool that helps to define and load project workspaces.
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/ZappaBoy/worky
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	provides = worky
+	source = git+https://github.com/ZappaBoy/worky
+	md5sums = SKIP
+
+pkgname = worky-git
