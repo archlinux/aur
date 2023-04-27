@@ -1,6 +1,6 @@
 pkgbase = r-scgps
 	pkgdesc = A complete analysis of single cell subpopulations, from identifying subpopulations to analysing their relationship (scGPS = single cell Global Predictions of Subpopulation)
-	pkgver = 1.12.2
+	pkgver = 1.14.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/scGPS
 	arch = x86_64
@@ -40,7 +40,7 @@ pkgbase = r-scgps
 	optdepends = r-testthat
 	optdepends = r-wgcna
 	optdepends = r-xlsx
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scGPS_1.12.2.tar.gz
-	sha256sums = 00af624d8a1cb4aedf1641c4c3d4e93d06e909669346662cb8b8dfda802fcf9c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scGPS_1.14.0.tar.gz
+	sha256sums = de7a1bec12763c696182f07de065a54b72df501be4b6bfffe6d881e6b4d6a2f5
 
 pkgname = r-scgps
