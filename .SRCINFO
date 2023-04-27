@@ -1,6 +1,6 @@
 pkgbase = r-traviz
 	pkgdesc = Trajectory functions for visualization and interpretation.
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/traviz
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-traviz
 	optdepends = r-s4vectors
 	optdepends = r-scater
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/traviz_1.4.0.tar.gz
-	sha256sums = 7e2ef39d79abec13b33a580c3b23060c7a229d5dbebb6656ae151678ecffca9e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/traviz_1.6.0.tar.gz
+	sha256sums = b31429f43c39229672fb929acd1e4a6291dbf0e7da4e060566821b24a9ff4cd3
 
 pkgname = r-traviz
