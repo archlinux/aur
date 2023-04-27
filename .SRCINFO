@@ -1,6 +1,6 @@
 pkgbase = r-chicago
 	pkgdesc = CHiCAGO: Capture Hi-C Analysis of Genomic Organization
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Chicago
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-chicago
 	optdepends = r-rmarkdown
 	optdepends = r-rsamtools
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Chicago_1.26.0.tar.gz
-	sha256sums = b67df3f96436e290f97e5227fb6a6e1294c582266fb6fb7abc7f96667c8c44ac
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Chicago_1.28.0.tar.gz
+	sha256sums = facc633d48249fd6fdfe6903546df068f1954af10ac99b9ea6121de66d510412
 
 pkgname = r-chicago
