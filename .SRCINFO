@@ -1,6 +1,6 @@
 pkgbase = r-trackviewer
 	pkgdesc = A R/Bioconductor package with web interface for drawing elegant interactive tracks or lollipop plot to facilitate integrated analysis of multi-omics data
-	pkgver = 1.34.0
+	pkgver = 1.36.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/trackViewer
 	arch = x86_64
@@ -37,7 +37,7 @@ pkgbase = r-trackviewer
 	optdepends = r-runit
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
 	optdepends = r-variantannotation
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/trackViewer_1.34.0.tar.gz
-	sha256sums = 792e4b93b74ce9fb58e1bd81c05c5fe6510fcb73f4ab44d1f584d343922ba9bd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/trackViewer_1.36.0.tar.gz
+	sha256sums = 7947e92352ff046d574ca54187792c483b982b2b63d0f03b58530ac3096abd78
 
 pkgname = r-trackviewer
