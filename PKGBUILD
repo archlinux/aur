@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CGHnormaliter
-_pkgver=1.52.0
+_pkgver=1.54.0
 pkgname=r-${_pkgname,,}
-pkgver=1.52.0
+pkgver=1.54.0
 pkgrel=1
 pkgdesc='Normalization of array CGH data with imbalanced aberrations.'
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
   r-cghcall
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0871aa8557eeda4bcad99590c04e75f78fb04e0daf1229ab71226dac74ab4323')
+sha256sums=('8dc1f84796f2ac3abe64ef7ae1ef78fb571b1f8fbd564ed979bfba330ac50832')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
