@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=epivizrChart
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='R interface to epiviz web components'
 arch=('any')
@@ -40,7 +40,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('940a58428302e283ded73d054d46bc84a70e4235754650cef3dc1ed54a1c20fb')
+sha256sums=('a09fa47d8f0ba6f6ab4a5ee57d20c26a4db147ec7c8bbee6d0e4e4f5e3f82f23')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
