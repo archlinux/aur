@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=twilight
-_pkgver=1.74.0
+_pkgver=1.76.0
 pkgname=r-${_pkgname,,}
-pkgver=1.74.0
+pkgver=1.76.0
 pkgrel=1
 pkgdesc='Estimation of local false discovery rate'
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
   r-vsn
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d9186b2f50b8d1a9c464df85971a5999a9747544e1954cff21f0d9330c262ad2')
+sha256sums=('7fc5375179292342100c0626489f4eba42e7085554ba1d4790fae5b4f6f41c76')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
