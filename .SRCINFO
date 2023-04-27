@@ -1,6 +1,6 @@
 pkgbase = r-selectksigs
 	pkgdesc = Selecting the number of mutational signatures using a perplexity-based measure and cross-validation
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/selectKSigs
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = r-selectksigs
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tidyr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/selectKSigs_1.10.0.tar.gz
-	sha256sums = 46dd7248e06ae1f16f2e24990516a1de05b6659e7d53d80d2a6d293e2ef7d8de
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/selectKSigs_1.12.0.tar.gz
+	sha256sums = 26f008bb7dd789cb681e84a84c6e5bd9a18b8d9321885fbcc2b4489cbe278e50
 
 pkgname = r-selectksigs
