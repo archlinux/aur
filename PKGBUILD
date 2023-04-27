@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MEDIPS
-_pkgver=1.50.0
+_pkgver=1.52.0
 pkgname=r-${_pkgname,,}
-pkgver=1.50.0
+pkgver=1.52.0
 pkgrel=1
 pkgdesc='DNA IP-seq data analysis'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-medipsdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c15bc4d0c5f750e853872e0e0e1f0a46faeeaa60cc2d707b59f96f6c1ae160fd')
+sha256sums=('87ec3664156635eaceaeb7e7e04ff491c855b4d6f4488a524dbf1eac5d9581f2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
