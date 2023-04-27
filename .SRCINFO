@@ -1,6 +1,6 @@
 pkgbase = r-meskit
 	pkgdesc = A tool kit for dissecting cancer evolution from multi-region derived tumor biopsies via somatic alterations
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MesKit
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = r-meskit
 	optdepends = r-rmarkdown
 	optdepends = r-shiny
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MesKit_1.8.0.tar.gz
-	sha256sums = 803d8a2a86eb6d870dfc371a2337728941ae361522ec887c23ab25b261f28611
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MesKit_1.10.0.tar.gz
+	sha256sums = cc8aaf950643ba856ac6277c030651ae62f52061ac52f4c8af4b59d0479c7a18
 
 pkgname = r-meskit
