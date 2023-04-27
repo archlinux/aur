@@ -2,7 +2,7 @@
 pkgname="pipelight-git"
 base="pipelight"
 pkgrel=1
-pkgver=0.4.26
+pkgver=0.0.0
 pkgdesc="A Rust based quick automation tool"
 arch=("any")
 url="https://gitea.com/pipelight/pipelight.git"
