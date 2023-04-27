@@ -1,6 +1,6 @@
 pkgbase = r-vsn
 	pkgdesc = Variance stabilization and calibration for microarray data
-	pkgver = 3.66.0
+	pkgver = 3.68.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/vsn
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = r-vsn
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/vsn_3.66.0.tar.gz
-	sha256sums = 1f5069ed5d8c2b3b9feabf1199eda5f0bbb496a610a7626fa8861827cbcbe7cc
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/vsn_3.68.0.tar.gz
+	sha256sums = 8a3a5a2aac13eb877f1336c8ec09564ba8cf8099fe8fc02bc0ec01093d07cc44
 
 pkgname = r-vsn
