@@ -1,6 +1,6 @@
 pkgbase = r-preda
 	pkgdesc = Position Related Data Analysis
-	pkgver = 1.44.0
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/PREDA
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-preda
 	optdepends = r-qvalue
 	optdepends = r-rmpi
 	optdepends = r-rsprng
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/PREDA_1.44.0.tar.gz
-	sha256sums = 3296ac1da3c353b8c0fc1f1e8a27cbfb1b1e8ccdf8a411f7aab449d50f3c5bc8
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PREDA_1.46.0.tar.gz
+	sha256sums = a34ac7297e8bd64810840a8ead116cb2854975616e625b42b22a27f960da84f7
 
 pkgname = r-preda
