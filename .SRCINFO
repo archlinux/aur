@@ -1,6 +1,6 @@
 pkgbase = r-fobitools
 	pkgdesc = Tools For Manipulating FOBI Ontology
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/fobitools
 	arch = any
@@ -34,7 +34,7 @@ pkgbase = r-fobitools
 	optdepends = r-summarizedexperiment
 	optdepends = r-testthat
 	optdepends = r-tidyverse
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/fobitools_1.6.0.tar.gz
-	sha256sums = 3c5187d021a51e5c976af9875352ca5b7b80e52eff4d386872109423c46b6b44
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/fobitools_1.8.0.tar.gz
+	sha256sums = fb36f18b53f474724998725801fcd2962a3446b90055d4690206e93e9003f8a3
 
 pkgname = r-fobitools
