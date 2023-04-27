@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PROMISE
-_pkgver=1.50.0
+_pkgver=1.52.0
 pkgname=r-${_pkgname,,}
-pkgver=1.50.0
+pkgver=1.52.0
 pkgrel=1
 pkgdesc='PRojection Onto the Most Interesting Statistical Evidence'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   r-gseabase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3ad92f3f9d170696024bf366fcc30ee03ea28e02996c895ba7d259ad3da00125')
+sha256sums=('28675d6b0a28683c5bf5d5ab149fe7d79196c9a1b4028bfe3def19937fadeca4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
