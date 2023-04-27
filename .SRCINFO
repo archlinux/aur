@@ -1,6 +1,6 @@
 pkgbase = r-deltagseg
 	pkgdesc = deltaGseg
-	pkgver = 1.38.0
+	pkgver = 1.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/deltaGseg
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-deltagseg
 	depends = r-tseries
 	depends = r-wavethresh
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/deltaGseg_1.38.0.tar.gz
-	sha256sums = d1758b2c36c456047023df5d8deffc53c00ba273d2674255451d8f2ef46d92d4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/deltaGseg_1.40.0.tar.gz
+	sha256sums = 25150f2f96501fd40341336530410eb77fd1ee28a1131b4bf7de8fd0962eae73
 
 pkgname = r-deltagseg
