@@ -1,7 +1,7 @@
 pkgbase = r-bionet
 	pkgdesc = Routines for the functional analysis of biological networks
-	pkgver = 1.58.0
-	pkgrel = 3
+	pkgver = 1.60.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/BioNet
 	arch = any
 	license = GPL
@@ -20,7 +20,7 @@ pkgbase = r-bionet
 	optdepends = r-rgl
 	optdepends = r-xml
 	optdepends = r-xtable
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BioNet_1.58.0.tar.gz
-	sha256sums = 126803db55b9de9c870b4f5561f6514b67a94afdb51716e622b04dfedba98689
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BioNet_1.60.0.tar.gz
+	sha256sums = 814e3d7dc6a50d360e8912f4dc7de38dc15436ea42a796679fcd3e23d5908aa5
 
 pkgname = r-bionet

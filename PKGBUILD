@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BioNet
-_pkgver=1.58.0
+_pkgver=1.60.0
 pkgname=r-${_pkgname,,}
-pkgver=1.58.0
-pkgrel=3
+pkgver=1.60.0
+pkgrel=1
 pkgdesc='Routines for the functional analysis of biological networks'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -29,7 +29,7 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('126803db55b9de9c870b4f5561f6514b67a94afdb51716e622b04dfedba98689')
+sha256sums=('814e3d7dc6a50d360e8912f4dc7de38dc15436ea42a796679fcd3e23d5908aa5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
