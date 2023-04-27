@@ -1,6 +1,6 @@
 pkgbase = r-multihiccompare
 	pkgdesc = Normalize and detect differences between Hi-C datasets when replicates of each experimental condition are available
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/multiHiCcompare
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-multihiccompare
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/multiHiCcompare_1.16.0.tar.gz
-	sha256sums = d92f377c016820f00ff7e54ed6358a3fd04cab5376dca76d7601636f58308b57
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/multiHiCcompare_1.18.0.tar.gz
+	sha256sums = 7bf63428aaebfc64235aa6067c238b55604f61a4848d8c38621a18f57dd4a956
 
 pkgname = r-multihiccompare
