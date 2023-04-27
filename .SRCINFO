@@ -1,6 +1,6 @@
 pkgbase = r-delayedmatrixstats
 	pkgdesc = Functions that Apply to Rows and Columns of 'DelayedMatrix' Objects
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DelayedMatrixStats
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-delayedmatrixstats
 	optdepends = r-profmem
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DelayedMatrixStats_1.20.0.tar.gz
-	sha256sums = 63ca262c2b92966759ba9d2ebdea7500a4dd859e9f87c17408522f80693e9661
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DelayedMatrixStats_1.22.0.tar.gz
+	sha256sums = f2e0938ab28fbcee336effc93157bbf09c3e6273739c0c28adf5cbbacd994dd6
 
 pkgname = r-delayedmatrixstats
