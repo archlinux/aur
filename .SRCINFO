@@ -1,6 +1,6 @@
 pkgbase = r-oligo
 	pkgdesc = Preprocessing tools for oligonucleotide arrays
-	pkgver = 1.62.2
+	pkgver = 1.64.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/oligo
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgbase = r-oligo
 	optdepends = r-rcolorbrewer
 	optdepends = r-rcurl
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/oligo_1.62.2.tar.gz
-	sha256sums = e97dc548b46715caa7f741034815370f37b7fb5f828fa428fb1f8aeddfb6c0a6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/oligo_1.64.0.tar.gz
+	sha256sums = f1468c9cb38b1a27085c4e7f963f1607cc2862c2a04776b72fab802cc96413ab
 
 pkgname = r-oligo
