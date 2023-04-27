@@ -1,0 +1,23 @@
+pkgbase = python-markdown-callouts
+	pkgdesc = Markdown extension: a classier syntax for admonitions
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://oprypin.github.io/markdown-callouts
+	arch = any
+	license = MIT
+	checkdepends = python-pytest-golden
+	checkdepends = python-beautifulsoup4
+	checkdepends = python-markdown
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = mkdocs-material-pymdownx-extras
+	source = https://github.com/oprypin/markdown-callouts/archive/refs/tags/v0.3.0.tar.gz
+	md5sums = fd2a12dd8d82c193ca3d38e31350373d
+
+pkgname = python-markdown-callouts
+	depends = python>=3.7
+	depends = python-markdown>=3.3.3
+
+pkgname = python-markdown-callouts-doc
+	pkgdesc = Documentation for markdown-callouts
