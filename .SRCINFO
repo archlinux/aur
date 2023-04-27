@@ -1,11 +1,11 @@
 pkgbase = ttf-maoken-longzhuti
 	pkgdesc = 标小智龙珠体是基于日本著名字体设计公司Fontworks免费开源的摇滚乐 One(日文名：ロックンロール)字体进行简体字补充的一款字体.
 	pkgver = 1.000
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.maoken.com/dragonball
 	arch = any
-	license = OFL1.1
-	source = LongZhuTi-Regular.ttf::https://github.com/maoken-fonts/LongZhuTi/raw/main/fonts/ttf/LongZhuTi-Regular.ttf
-	sha256sums = a7c16e4ec41419981f2a54b35a0ec8f3dba61884b8b8e03721fed179f2088102
+	license = custom::OFL1.1
+	source = ttf-maoken-longzhuti-1.000.tar.gz::https://github.com/maoken-fonts/LongZhuTi/archive/refs/tags/v1.000.tar.gz
+	sha256sums = faf06a5381b9ec1af0ddea4cf937e06044c757eae7224819383371235cdccc73
 
 pkgname = ttf-maoken-longzhuti
