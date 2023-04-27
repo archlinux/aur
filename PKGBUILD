@@ -1,6 +1,6 @@
 # Maintainer: acuteenvy
 pkgname=tlrc
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A tldr client written in Rust"
 arch=('x86_64')
@@ -10,7 +10,7 @@ makedepends=('cargo')
 provides=('tldr')
 conflicts=('tldr')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('3aa64c29c6d2fe8815c85030d5001af4b8fd2bac6f226ddbf40ef5e07423bdebf94c0725580e3001978f2918152072f05dcb0f4db3d9060303f7b11c54116750')
+b2sums=('09896b47c76a9515872b4d22d32eed2bbe65f026359d68df62db4537b3d383d5fa67cf46958562c7b9f3a171063bc3a6d81ee1210fad55cafae9eb2c8934f2f8')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -27,5 +27,6 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     install -Dm755 "target/release/tldr" -t "$pkgdir/usr/bin"
+    install -Dm644 tldr.1 -t "$pkgdir/usr/share/man/man1"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
