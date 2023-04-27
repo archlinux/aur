@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SpectralTAD
-_pkgver=1.14.1
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.1
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='SpectralTAD: Hierarchical TAD detection using spectral clustering'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f997f1b450e68e758499ad0d12b2bad1396510350408b48d849d2551fc02b4c6')
+sha256sums=('a5d533b82fb579db00f9fd7a5c998df910784ed80d81444174ba215856e2e69c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
