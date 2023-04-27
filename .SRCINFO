@@ -1,0 +1,11 @@
+pkgbase = ocl-icd-choose
+	pkgdesc = Specify a set of icd files from /etc/OpenCL/vendors that your application will see
+	pkgver = 1
+	pkgrel = 1
+	url = https://gitlab.com/AndrewShark/ocl-icd-choose
+	arch = any
+	license = GPL
+	source = https://gitlab.com/AndrewShark/ocl-icd-choose/-/raw/main/ocl-icd-choose
+	sha256sums = 785ae389eb674415c2267835b31e812b9f9af7a285264f6e7e06a5df994d268e
+
+pkgname = ocl-icd-choose
