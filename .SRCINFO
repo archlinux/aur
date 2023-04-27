@@ -1,6 +1,6 @@
 pkgbase = r-opossom
 	pkgdesc = Comprehensive analysis of transcriptome data
-	pkgver = 2.16.0
+	pkgver = 2.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/oposSOM
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = r-opossom
 	depends = r-scatterplot3d
 	depends = r-tsne
 	depends = r-xml
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/oposSOM_2.16.0.tar.gz
-	sha256sums = 6a1605cd839d72e10243723c8e6237024675b0ae0a436489ea3ba011df4af333
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/oposSOM_2.18.0.tar.gz
+	sha256sums = c69b4049dcf6892c37cb83a13502bdf25d28904436b70588f0c6c3ff24fe6972
 
 pkgname = r-opossom
