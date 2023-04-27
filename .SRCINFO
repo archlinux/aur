@@ -1,6 +1,6 @@
 pkgbase = r-multimed
 	pkgdesc = Testing multiple biological mediators simultaneously
-	pkgver = 2.20.0
+	pkgver = 2.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MultiMed
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-multimed
 	depends = r
 	optdepends = r-biocgenerics
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MultiMed_2.20.0.tar.gz
-	sha256sums = e008b6432d53ddeaa8e826a2010768013a8419cb076d0554a2bc7c175fce5627
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MultiMed_2.22.0.tar.gz
+	sha256sums = 9f18f1c1104aac5f75e866b3f5bb90d64b7a460bcb8f716431444b00ed73ad34
 
 pkgname = r-multimed
