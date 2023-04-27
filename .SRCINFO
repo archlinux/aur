@@ -1,7 +1,7 @@
 pkgbase = r-norce
 	pkgdesc = NoRCE: Noncoding RNA Sets Cis Annotation and Enrichment
-	pkgver = 1.10.0
-	pkgrel = 3
+	pkgver = 1.12.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/NoRCE
 	arch = any
 	license = MIT
@@ -52,7 +52,7 @@ pkgbase = r-norce
 	optdepends = r-txdb.hsapiens.ucsc.hg38.knowngene
 	optdepends = r-txdb.mmusculus.ucsc.mm10.knowngene
 	optdepends = r-txdb.rnorvegicus.ucsc.rn6.refgene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/NoRCE_1.10.0.tar.gz
-	sha256sums = 4fc73c7a7fec3d66735368f45701ebf7533ac308349acc4bc6bc98cae37db82e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/NoRCE_1.12.0.tar.gz
+	sha256sums = 827de27cb76cfdbac498f0139b701eb94e8297c922b18834d7a66c34cc04eb0e
 
 pkgname = r-norce
