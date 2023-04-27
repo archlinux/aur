@@ -1,7 +1,7 @@
 pkgbase = r-siamcat
 	pkgdesc = Statistical Inference of Associations between Microbial Communities And host phenoTypes
-	pkgver = 2.2.0
-	pkgrel = 3
+	pkgver = 2.4.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/SIAMCAT
 	arch = any
 	license = GPL
@@ -34,7 +34,7 @@ pkgbase = r-siamcat
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tidyverse
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SIAMCAT_2.2.0.tar.gz
-	sha256sums = 936f5b0a7986e8e14d8ccae5880262e4b88da1add67b6cdc29e061c57329a3bb
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SIAMCAT_2.4.0.tar.gz
+	sha256sums = 87fa5ebb485911eb21130cff3c8362b7694bf71072e826b2c6b98c7bca7dc163
 
 pkgname = r-siamcat
