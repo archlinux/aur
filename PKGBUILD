@@ -11,7 +11,7 @@ arch=(x86_64)
 url="https://${pkgname}.org"
 license=('custom:BSD-3-clause')
 depends=(armadillo cereal boost lapack ensmallen cython python-numpy python-pandas)
-makedepends=(cmake txt2man python-setuptools python-pytest-runner) # python-wheel
+makedepends=(cmake txt2man python-setuptools python-wheel python-pytest-runner)
 optdepends=('openmp: parallel computation support'
   'julia: julia bindings support'
   'r: r bindings support'
