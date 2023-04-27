@@ -2,10 +2,9 @@
 [Desktop Entry]
 Name=Techmino Development
 Comment=Techmino is fun!
-Exec=love /usr/share/TechminoDevelopment/Techmino.love
+Exec=techmino_development
 Type=Application
 Categories=Game;
 Terminal=false
-Icon=/usr/share/TechminoDevelopment/Techmino.love
-Path=/usr/share/TechminoDevelopment/
+Icon=/usr/share/TechminoDevelopment/media/image/icon.png
 NoDisplay=false

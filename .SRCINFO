@@ -1,7 +1,7 @@
 pkgbase = techmino-git
 	pkgdesc = A collection of various modern block game rules, more ways to play, and awesome features added for a new experience.
-	pkgver = 0.17.12.r4814.f5137601
-	pkgrel = 2
+	pkgver = 0.17.13.r4838.7dd73ef8
+	pkgrel = 1
 	url = https://github.com/26F-Studio/Techmino
 	arch = x86_64
 	license = LGPL3
@@ -15,9 +15,11 @@ pkgbase = techmino-git
 	source = git+https://github.com/26F-Studio/Zframework.git
 	source = CC_2023-03-24.zip::https://github.com/26F-Studio/cold_clear_ai_love2d_wrapper/releases/download/11.4.2/Linux.zip
 	source = TechminoDevelopment.desktop
+	source = start.sh
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 78c0d98df6a5a14cf1e1f82c3fc59444bd1e0ee9a15b7afabffddec2938cec4c
-	sha256sums = fce377e467bc614bae1b8fb96d52b32b3f6d65103b28c72cc3f91248ce4aca82
+	sha256sums = 0e7a3028041e7c8840082c69f97873eca32c46d7d7ca708f5f96b4bac11be846
+	sha256sums = 17a15020b0bb022356b8b43dd5111db8116538e7d12e07ff1f5b285745c98ee2
 
 pkgname = techmino-git
