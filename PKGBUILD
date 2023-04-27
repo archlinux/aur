@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ELMER.data
-_pkgver=2.22.0
+_pkgver=2.23.0
 pkgname=r-${_pkgname,,}
-pkgver=2.22.0
+pkgver=2.23.0
 pkgrel=1
 pkgdesc='Data for the ELMER package'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8e22f2b8654fc1b0b6f44cc345b4e06f1d37fa918ca0db8d7103b7294b790398')
+sha256sums=('b01535f707a427b865d59f346f673efe0eb8c6caa1a90482afcc1099e0c1b570')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
