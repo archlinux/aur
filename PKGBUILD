@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=OSAT
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='OSAT: Optimal Sample Assignment Tool'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a04ccea10433c7d1744c2364529cbdee0125aef8a9703b71ad2ee7be80f306f1')
+sha256sums=('8ddcf21a5eb74c4e4cf772b3911c010f46134605477e17a22ae07c02845cbf24')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
