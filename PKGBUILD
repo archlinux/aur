@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=switchBox
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='Utilities to train and validate classifiers based on pair switching using the K-Top-Scoring-Pair (KTSP) algorithm'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
   r-proc
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('916695de3eecbe7275739318a15388b2a4d0ceb2cfc6aa29718c66b429e72956')
+sha256sums=('649c22a8b80bf0972ee3f07579646e94be5ed41a4a3c068f2bd231d6a6a13987')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
