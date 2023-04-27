@@ -1,3 +1,4 @@
+# Maintainer: Jove Yu <yushijun110@126.com>
 pkgname=netease-cloud-music-gtk-bin
 _pkgver=2.2.0-40
 pkgver=2.2.0
