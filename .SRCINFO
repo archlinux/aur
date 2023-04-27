@@ -1,6 +1,6 @@
 pkgbase = r-runibic
 	pkgdesc = runibic: row-based biclustering algorithm for analysis of gene expression data in R
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/runibic
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = r-runibic
 	optdepends = r-knitr
 	optdepends = r-qubic
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/runibic_1.20.0.tar.gz
-	sha256sums = c908c8f4be1a4e552c64fc41a95c6632463ec3be912c5a1d1a03c083f5c3f03c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/runibic_1.22.0.tar.gz
+	sha256sums = 412170003206b036968ea1db331c0e07e21447abbb5ec9a8365063e3addfc760
 
 pkgname = r-runibic
