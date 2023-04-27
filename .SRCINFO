@@ -1,6 +1,6 @@
 pkgbase = r-harshlight
 	pkgdesc = A "corrective make-up" program for microarray chips
-	pkgver = 1.70.0
+	pkgver = 1.72.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Harshlight
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = r-harshlight
 	depends = r-affy
 	depends = r-altcdfenvs
 	depends = r-biobase
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Harshlight_1.70.0.tar.gz
-	sha256sums = 1503d7b693d559243c0b4a5f26f2246be7108058306b40f1e9e871c52d7b522b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Harshlight_1.72.0.tar.gz
+	sha256sums = b7b42390dc9aa86ea121e1444643cb31037f12a4a7e355dbc2121925487fe3e5
 
 pkgname = r-harshlight
