@@ -1,7 +1,7 @@
 pkgbase = r-cellarepertorium
 	pkgdesc = Data structures, clustering and testing for single cell immune receptor repertoires (scRNAseq RepSeq/AIRR-seq)
-	pkgver = 1.8.0
-	pkgrel = 3
+	pkgver = 1.10.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/CellaRepertorium
 	arch = x86_64
 	license = GPL
@@ -37,7 +37,7 @@ pkgbase = r-cellarepertorium
 	optdepends = r-scater
 	optdepends = r-singlecellexperiment
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CellaRepertorium_1.8.0.tar.gz
-	sha256sums = 6033de05540bb88a930ab8cdc461adee48bc6d8944153565f5eb913e0e0c8d90
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CellaRepertorium_1.10.0.tar.gz
+	sha256sums = 889997291de453778993dd8d492dae5b10a1345fd243b1d32f504d40061bc8dc
 
 pkgname = r-cellarepertorium
