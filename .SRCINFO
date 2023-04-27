@@ -1,12 +1,14 @@
 pkgbase = alibabasans-tc-fonts
 	pkgdesc = A typeface for creating alibaba sans tc in text.阿里巴巴普惠体繁体中文(Big5)4字重
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://fonts.alibabagroup.com/#/font
 	arch = any
 	license = custom
 	source = alibabasans-tc-fonts-1.0.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlibabaSansTC.zip
-	sha512sums = 5a05bdf7ac500604b092567b077decf34e0ef865aafeecb9db46481c686781060aa3aa4587de50603a1fe13b4a486ea2ea5560a02178cc8e911db37fb94c512b
+	source = LICENSE.html::https://www.yuque.com/lujunxiang/alibabapuhuiti/puzbh9
+	sha256sums = e82681df2085385b999d491fba6c41e81107ba405f6e0c1ec7aae1514becaedd
+	sha256sums = 17df7af7d825f3e512fa26fd15c60c052385e4420a154ea183cd60c637ac1695
 
 pkgname = ttf-alibabasans-tc-fonts
 
