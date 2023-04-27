@@ -1,6 +1,6 @@
 pkgbase = r-r3cseq
 	pkgdesc = Analysis of Chromosome Conformation Capture and Next-generation Sequencing (3C-seq)
-	pkgver = 1.44.0
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/r3Cseq
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-r3cseq
 	optdepends = r-bsgenome.mmusculus.ucsc.mm10.masked
 	optdepends = r-bsgenome.mmusculus.ucsc.mm9.masked
 	optdepends = r-bsgenome.rnorvegicus.ucsc.rn5.masked
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/r3Cseq_1.44.0.tar.gz
-	sha256sums = 3b0f5647b08dfce1239dbf691e0d50dce5bfe34ad64c91aed1dc0d6e78cb4bf0
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/r3Cseq_1.46.0.tar.gz
+	sha256sums = 0283690295a0573212454a0be7f723b0a83ae1273c1d5de68085409c7cd4f2f2
 
 pkgname = r-r3cseq
