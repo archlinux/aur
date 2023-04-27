@@ -1,6 +1,6 @@
 pkgbase = r-gseabenchmarker
 	pkgdesc = Reproducible GSEA Benchmarking
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GSEABenchmarkeR
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = r-gseabenchmarker
 	optdepends = r-knitr
 	optdepends = r-rappdirs
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GSEABenchmarkeR_1.18.0.tar.gz
-	sha256sums = 9c00238a33630c5506ad873504f83850fcd1064706bb02fb50ed2c3bd3334486
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GSEABenchmarkeR_1.20.0.tar.gz
+	sha256sums = 859a81a71b27d006b586d5a69e31b72b89f70ee43237ff9ee42add1860e53666
 
 pkgname = r-gseabenchmarker
