@@ -3,9 +3,9 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=Rhisat2
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='R Wrapper for HISAT2 Aligner'
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3b5e13ee2fee2d290f110379cb4cee9dc517271968f7c2308ba5d0d7944baca5')
+sha256sums=('1e07dc5ffab0e6c787ca95a79ac52d7e6071bd692c29dce8c8621f31b38537f5')
 # parallel compilation leads to the race conditions and installation fail
 options=(!makeflags)
 
