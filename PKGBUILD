@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MQmetrics
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
-pkgrel=3
+pkgver=1.8.0
+pkgrel=1
 pkgdesc='Quality Control of Protemics Data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -38,7 +38,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bcff8b2bdfcefe60c4c15f1bcde94a73eb0d3032a45ab1ca00e0b7df1ec30032')
+sha256sums=('259d70dd23165fe896a4af28d43df5215b7aad981e02633ec979cfaeb478609e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
