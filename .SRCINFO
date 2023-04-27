@@ -1,7 +1,7 @@
 pkgbase = r-isomirs
 	pkgdesc = Analyze isomiRs and miRNAs from small RNA-seq
-	pkgver = 1.26.0
-	pkgrel = 3
+	pkgver = 1.28.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/isomiRs
 	arch = any
 	license = MIT
@@ -39,7 +39,7 @@ pkgbase = r-isomirs
 	optdepends = r-rmarkdown
 	optdepends = r-targetscan.hs.eg.db
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/isomiRs_1.26.0.tar.gz
-	sha256sums = 86fd42c4c8d856f32bfa046f40bff1c6ef2ed216e618cbcf3a7b44397cc97679
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/isomiRs_1.28.0.tar.gz
+	sha256sums = b178dc33d335e92738e56c1691ed458a8391c994d4c7ef4a0e12b25a3dcfabfc
 
 pkgname = r-isomirs
