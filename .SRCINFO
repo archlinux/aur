@@ -1,6 +1,6 @@
 pkgbase = r-biobroom
 	pkgdesc = Turn Bioconductor objects into tidy data frames
-	pkgver = 1.30.0
+	pkgver = 1.32.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/biobroom
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-biobroom
 	optdepends = r-rmarkdown
 	optdepends = r-summarizedexperiment
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/biobroom_1.30.0.tar.gz
-	sha256sums = fec329b9222ce0de67c7c47426b7b3de70a56f6416ad51163cdd03bd8c60ed09
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/biobroom_1.32.0.tar.gz
+	sha256sums = 34a550e04657248b53587c631dccd82cab9640503bb30afc74dc6f9230f5664d
 
 pkgname = r-biobroom
