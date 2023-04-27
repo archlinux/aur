@@ -7,16 +7,10 @@ arch=('i686' 'x86_64')
 url="https://github.com/geoffreybennett/alsa-scarlett-gui"
 license=('GPL3')
 depends=('gtk4' 'alsa-lib')
-makedepends=('gcc' 'make' 'git' 'pkgconf')
+makedepends=('gcc' 'make' 'git' 'pkgconf' 'sed')
 provides=('alsa-scarlett-gui')
-source=(
-    "$_pkgname::git+https://github.com/geoffreybennett/alsa-scarlett-gui.git"
-    "werror.patch"
-    )
-sha384sums=(
-    'SKIP'
-    'SKIP'
-)
+source=( "$_pkgname::git+https://github.com/geoffreybennett/alsa-scarlett-gui.git")
+sha384sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
@@ -24,8 +18,8 @@ pkgver() {
 }
 
 build() {
-    patch "$_pkgname/src/Makefile" werror.patch
     cd $_pkgname
+    sed -i 's/-Werror//' src/Makefile
     PREFIX="/usr" make -C src
  }
 

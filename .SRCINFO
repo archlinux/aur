@@ -10,12 +10,11 @@ pkgbase = alsa-scarlett-gui-git
 	makedepends = make
 	makedepends = git
 	makedepends = pkgconf
+	makedepends = sed
 	depends = gtk4
 	depends = alsa-lib
 	provides = alsa-scarlett-gui
 	source = alsa-scarlett-gui::git+https://github.com/geoffreybennett/alsa-scarlett-gui.git
-	source = werror.patch
-	sha384sums = SKIP
 	sha384sums = SKIP
 
 pkgname = alsa-scarlett-gui-git
