@@ -10,7 +10,7 @@ StartLimitBurst=10
 User=nym
 ExecStart=/usr/bin/nym-mixnode run --id %i
 KillSignal=SIGINT
-Restart=on-failure
+Restart=always
 RestartSec=30
 LimitNOFILE=65536
 
