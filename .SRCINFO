@@ -1,6 +1,6 @@
 pkgbase = r-corral
 	pkgdesc = Correspondence Analysis for Single Cell Data
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/corral
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-corral
 	optdepends = r-rmarkdown
 	optdepends = r-scater
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/corral_1.8.0.tar.gz
-	sha256sums = 9417e6288aef66230cc2a08da69d403388ea1e3ee4b3b52023bd158aaf92eaf7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/corral_1.10.0.tar.gz
+	sha256sums = e334515e4e7791369b34d72ad25037f3b93c2ee806dc1d89ce4601493341570e
 
 pkgname = r-corral
