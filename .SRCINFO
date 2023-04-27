@@ -1,6 +1,6 @@
 pkgbase = r-ctdquerier
 	pkgdesc = Package for CTDbase data query, visualization and downstream analysis
-	pkgver = 2.6.0
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CTDquerier
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-ctdquerier
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CTDquerier_2.6.0.tar.gz
-	sha256sums = b1ed5cc603b7ee9881bdbef154a66b70467dd3451f0f0bbc1371c470c772e496
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CTDquerier_2.7.0.tar.gz
+	sha256sums = 7dce3965ce14a1b2bd5c8920538a3d28e48aa342c224948e7a6cce793a0af527
 
 pkgname = r-ctdquerier
