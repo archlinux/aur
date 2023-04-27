@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tkWidgets
-_pkgver=1.76.0
+_pkgver=1.78.0
 pkgname=r-${_pkgname,,}
-pkgver=1.76.0
+pkgver=1.78.0
 pkgrel=1
 pkgdesc='R based tk widgets'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-hgu95av2
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('72da8e46958dfd1ae9d707656302111214e2c9e5bafdf971d624202848fdf027')
+sha256sums=('c2aacc36d5682b4e6aedb4e60f33119e8c711c487ebc483877df41985d7be0f6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

@@ -1,6 +1,6 @@
 pkgbase = r-tkwidgets
 	pkgdesc = R based tk widgets
-	pkgver = 1.76.0
+	pkgver = 1.78.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/tkWidgets
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-tkwidgets
 	depends = r-widgettools
 	optdepends = r-biobase
 	optdepends = r-hgu95av2
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/tkWidgets_1.76.0.tar.gz
-	sha256sums = 72da8e46958dfd1ae9d707656302111214e2c9e5bafdf971d624202848fdf027
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/tkWidgets_1.78.0.tar.gz
+	sha256sums = c2aacc36d5682b4e6aedb4e60f33119e8c711c487ebc483877df41985d7be0f6
 
 pkgname = r-tkwidgets
