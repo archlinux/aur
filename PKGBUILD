@@ -1,10 +1,10 @@
 # Maintainer: 7Ji <pugokughin@gmail.com>
 
-_commit='2b2de425986ce01010e3ebaddfa5c9ebce711c42'
+_commit='0b32ed16bfd45f979cd1e20c1efb1de6abbb7d64'
 
 pkgname=linux-firmware-amlogic-ophub
-pkgver=20230129
-pkgrel=4
+pkgver=20230405
+pkgrel=1
 pkgdesc="Firmware files for Linux - for AArch64 Amlogic platform, complete set, collected by ophub"
 arch=('aarch64')
 url="https://github.com/ophub/firmware"
@@ -17,7 +17,7 @@ source=(
 )
 
 sha256sums=(
-  '958946decac205484b5c2256180898612338a2969169af5801a6dd106b797cb3'
+  'f1c3cb68df79c1de943cf4bcd88b9634ff8ced82265ae021ee87dbf0e6134881'
 )
 
 package() {
