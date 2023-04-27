@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=NOISeq
-_pkgver=2.42.0
+_pkgver=2.44.0
 pkgname=r-${_pkgname,,}
-pkgver=2.42.0
+pkgver=2.44.0
 pkgrel=1
 pkgdesc='Exploratory analysis and differential expression for RNA-seq data'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('221e4d1396b7c3d412c0f1358a2ea1676c9eabf86ac3f953b27a875ca8531ec8')
+sha256sums=('e6d125c9b3ad36474e85d413e01dcca84738a34b680c603e81cb709e3df1b033')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
