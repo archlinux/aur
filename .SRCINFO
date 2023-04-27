@@ -1,6 +1,6 @@
 pkgbase = r-epialleler
 	pkgdesc = Fast, Epiallele-Aware Methylation Reporter
-	pkgver = 1.6.1
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/epialleleR
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = r-epialleler
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/epialleleR_1.6.1.tar.gz
-	sha256sums = ba163a011a74d8f5f3600ab35ad48855113270ed3a48e6fb8101f9145734812c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/epialleleR_1.8.0.tar.gz
+	sha256sums = f7a545f6f3f272bda0f193d03e7f6a97fb15989b231edb6dd6b34817fb5aada9
 
 pkgname = r-epialleler
