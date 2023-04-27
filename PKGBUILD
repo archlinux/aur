@@ -6,7 +6,7 @@
 _pkgmainbranch=nvidia-utils
 pkgbase=nvidia-525xx-utils
 pkgname=('nvidia-525xx-utils' 'opencl-nvidia-525xx' 'nvidia-525xx-dkms')
-pkgver=525.89.02
+pkgver=525.105.17
 pkgrel=1
 pkgdesc="NVIDIA drivers for Linux, 525 branch, dkms"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=('nvidia-drm-outputclass.conf'
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
             'a0ceb0a6c240cf97b21a2e46c5c212250d3ee24fecef16aca3dffb04b8350c445b9f4398274abccdb745dd0ba5132a17942c9508ce165d4f97f41ece02b0b989'
-            'a991c5a843957aa81cf619c39d699100ff69fc723fb195c68fd50cd69ee9d5651a223d3b5d254c8c1b7c8cad09e24846ba4e64869a8b3777e85cd3e5ba515bb5')
+            '1a44a8d92d8434d356dcd6087c8a3277136e0819ffa5e4b6895854811cf63e44ad3dc08e0d248f149f8dc2280ab0993be6ee7fdf3c676fb9a85ff3dce83fd69a')
 
 
 create_links() {
@@ -61,7 +61,7 @@ DEST_MODULE_LOCATION[4]="/kernel/drivers/video"' dkms.conf
 }
 
 package_opencl-nvidia-525xx() {
-    pkgdesc="OpenCL implemention for NVIDIA"
+    pkgdesc="OpenCL implemention for NVIDIA, 525 branch"
     depends=('zlib')
     optdepends=('opencl-headers: headers necessary for OpenCL development')
     conflicts=('opencl-nvidia')
@@ -81,7 +81,7 @@ package_opencl-nvidia-525xx() {
 
 package_nvidia-525xx-dkms() {
     _pkgmainbranch=nvidia-dkms
-    pkgdesc="NVIDIA drivers - module sources"
+    pkgdesc="NVIDIA drivers - module sources, 525 branch"
     depends=('dkms' "nvidia-utils=${pkgver}" 'libglvnd')
     provides=("nvidia-dkms=${pkgver}" 'NVIDIA-MODULE' 'nvidia')
     conflicts=('nvidia-dkms' 'NVIDIA-MODULE' 'nvidia')
@@ -96,7 +96,7 @@ package_nvidia-525xx-dkms() {
 }
 
 package_nvidia-525xx-utils() {
-    pkgdesc="NVIDIA drivers utilities"
+    pkgdesc="NVIDIA drivers utilities, 525 branch"
     depends=('xorg-server' 'libglvnd' 'egl-wayland')
     optdepends=('nvidia-settings: configuration tool'
                 'xorg-server-devel: nvidia-xconfig'
