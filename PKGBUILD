@@ -1,11 +1,11 @@
 # Maintainer: morpheusthewhite <zffromGerace@hotmail.it>
 
 pkgname=spicetify-themes-git
-pkgver=r149.691a069
+pkgver=r404.4f10f4f
 pkgrel=1
 pkgdesc="A community-driven collection of themes for spicetify"
 arch=('any')
-url="https://github.com/morpheusthewhite/spicetify-themes"
+url="https://github.com/spicetify/spicetify-themes"
 license=('MIT')
 groups=()
 depends=('spicetify-cli')
@@ -16,7 +16,7 @@ replaces=()
 backup=()
 options=()
 install=spicetify-themes-git.install
-source=("$pkgname"::"git+https://github.com/morpheusthewhite/spicetify-themes")
+source=("$pkgname"::"git+https://github.com/spicetify/spicetify-themes")
 noextract=()
 md5sums=('SKIP')
 
@@ -33,7 +33,4 @@ package() {
 
     cp -R "$srcdir/${pkgname}" "${pkgdir}"/usr/share/spicetify-cli/Themes
     rm -r "${pkgdir}"/usr/share/spicetify-cli/Themes/README.md "${pkgdir}"/usr/share/spicetify-cli/Themes/LICENSE
-
-    # for Dribbblish theme
-    cp -R "$srcdir/${pkgname}/Dribbblish/dribbblish.js" "${pkgdir}"/usr/share/spicetify-cli/Extensions/dribbblish.js
 }
