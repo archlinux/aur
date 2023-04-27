@@ -1,6 +1,6 @@
 pkgbase = r-rbioinf
 	pkgdesc = RBioinf
-	pkgver = 1.58.0
+	pkgver = 1.60.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RBioinf
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = r-rbioinf
 	depends = r
 	depends = r-graph
 	optdepends = r-rgraphviz
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RBioinf_1.58.0.tar.gz
-	sha256sums = ec5d542ff0494df510e7660598623440417161fd2c881f25aa02913fd7d24e87
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RBioinf_1.60.0.tar.gz
+	sha256sums = 0c603af3b5dd03c396225745f74e80a5fe69c658de05047268f27c57ca0f01f3
 
 pkgname = r-rbioinf

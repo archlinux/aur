@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RBioinf
-_pkgver=1.58.0
+_pkgver=1.60.0
 pkgname=r-${_pkgname,,}
-pkgver=1.58.0
+pkgver=1.60.0
 pkgrel=1
 pkgdesc='RBioinf'
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
   r-rgraphviz
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ec5d542ff0494df510e7660598623440417161fd2c881f25aa02913fd7d24e87')
+sha256sums=('0c603af3b5dd03c396225745f74e80a5fe69c658de05047268f27c57ca0f01f3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
