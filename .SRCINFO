@@ -1,6 +1,6 @@
 pkgbase = r-hippo
 	pkgdesc = Heterogeneity-Induced Pre-Processing tOol
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/HIPPO
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-hippo
 	depends = r-umap
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/HIPPO_1.10.0.tar.gz
-	sha256sums = 24b5830375a085d47376a080849355b9a6afdf11afb71b83dafea00b8ed7dc8c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/HIPPO_1.12.0.tar.gz
+	sha256sums = bf331358521d9409497f329f864f65b0228c1efc9da340bb41e5516eb2291a52
 
 pkgname = r-hippo
