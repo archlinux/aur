@@ -1,41 +1,48 @@
 diff -pNaru5 a/src/main/java/com/jcraft/jsch/JSch.java b/src/main/java/com/jcraft/jsch/JSch.java
---- a/src/main/java/com/jcraft/jsch/JSch.java	2022-02-09 07:24:03.000000000 -0500
-+++ b/src/main/java/com/jcraft/jsch/JSch.java	2022-02-15 23:13:54.826589765 -0500
-@@ -40,18 +40,18 @@ public class JSch{
-    */
-   public static final String VERSION  = Version.getVersion();
+--- a/src/main/java/com/jcraft/jsch/JSch.java	2023-03-22 02:53:15.000000000 -0400
++++ b/src/main/java/com/jcraft/jsch/JSch.java	2023-04-27 15:42:16.981676232 -0400
+@@ -38,25 +38,25 @@ public class JSch {
+   public static final String VERSION = Version.getVersion();
  
-   static Hashtable<String, String> config=new Hashtable<>();
-   static{
--    config.put("kex", Util.getSystemProperty("jsch.kex", "curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256"));
--    config.put("server_host_key", Util.getSystemProperty("jsch.server_host_key", "ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,rsa-sha2-512,rsa-sha2-256"));
-+    config.put("kex", Util.getSystemProperty("jsch.kex", "curve448-sha512,curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp521,ecdh-sha2-nistp384,ecdh-sha2-nistp256,diffie-hellman-group18-sha512,diffie-hellman-group16-sha512,diffie-hellman-group14-sha256,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1"));
-+    config.put("server_host_key", Util.getSystemProperty("jsch.server_host_key", "ssh-ed448,ssh-ed25519,rsa-sha2-512,rsa-sha2-256,ssh-rsa"));
-     config.put("prefer_known_host_key_types", Util.getSystemProperty("jsch.prefer_known_host_key_types", "yes"));
-     config.put("enable_server_sig_algs", Util.getSystemProperty("jsch.enable_server_sig_algs", "yes"));
--    config.put("cipher.s2c", Util.getSystemProperty("jsch.cipher", "aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com"));
--    config.put("cipher.c2s", Util.getSystemProperty("jsch.cipher", "aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com"));
--    config.put("mac.s2c", Util.getSystemProperty("jsch.mac", "hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1"));
--    config.put("mac.c2s", Util.getSystemProperty("jsch.mac", "hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1"));
-+    config.put("cipher.s2c", Util.getSystemProperty("jsch.cipher", "aes256-gcm@openssh.com,aes256-ctr,aes256-cbc,aes192-ctr,aes192-cbc,aes128-gcm@openssh.com,aes128-ctr,aes128-cbc"));
-+    config.put("cipher.c2s", Util.getSystemProperty("jsch.cipher", "aes256-gcm@openssh.com,aes256-ctr,aes256-cbc,aes192-ctr,aes192-cbc,aes128-gcm@openssh.com,aes128-ctr,aes128-cbc"));
-+    config.put("mac.s2c", Util.getSystemProperty("jsch.mac", "hmac-sha2-512-etm@openssh.com,hmac-sha2-512,hmac-sha2-256-etm@openssh.com,hmac-sha2-256,hmac-sha1-etm@openssh.com,hmac-sha1"));
-+    config.put("mac.c2s", Util.getSystemProperty("jsch.mac", "hmac-sha2-512-etm@openssh.com,hmac-sha2-512,hmac-sha2-256-etm@openssh.com,hmac-sha2-256,hmac-sha1-etm@openssh.com,hmac-sha1"));
+   static Hashtable<String, String> config = new Hashtable<>();
+   static {
+     config.put("kex", Util.getSystemProperty("jsch.kex",
+-        "curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256"));
++        "curve448-sha512,curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp521,ecdh-sha2-nistp384,ecdh-sha2-nistp256,diffie-hellman-group18-sha512,diffie-hellman-group16-sha512,diffie-hellman-group14-sha256,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1"));
+     config.put("server_host_key", Util.getSystemProperty("jsch.server_host_key",
+-        "ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,rsa-sha2-512,rsa-sha2-256"));
++        "ssh-ed448,ssh-ed25519,ecdsa-sha2-nistp521,ecdsa-sha2-nistp384,ecdsa-sha2-nistp256,rsa-sha2-512,rsa-sha2-256,ssh-rsa"));
+     config.put("prefer_known_host_key_types",
+         Util.getSystemProperty("jsch.prefer_known_host_key_types", "yes"));
+     config.put("enable_server_sig_algs",
+         Util.getSystemProperty("jsch.enable_server_sig_algs", "yes"));
+     config.put("cipher.s2c", Util.getSystemProperty("jsch.cipher",
+-        "aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com"));
++        "chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-gcm@openssh.com,aes128-ctr,aes256-cbc,aes192-cbc,aes128-cbc"));
+     config.put("cipher.c2s", Util.getSystemProperty("jsch.cipher",
+-        "aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com"));
++        "chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-gcm@openssh.com,aes128-ctr,aes256-cbc,aes192-cbc,aes128-cbc"));
+     config.put("mac.s2c", Util.getSystemProperty("jsch.mac",
+-        "hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1"));
++        "hmac-sha2-512-etm@openssh.com,hmac-sha2-512,hmac-sha2-256-etm@openssh.com,hmac-sha2-256,hmac-sha1-etm@openssh.com,hmac-sha1"));
+     config.put("mac.c2s", Util.getSystemProperty("jsch.mac",
+-        "hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1"));
++        "hmac-sha2-512-etm@openssh.com,hmac-sha2-512,hmac-sha2-256-etm@openssh.com,hmac-sha2-256,hmac-sha1-etm@openssh.com,hmac-sha1"));
      config.put("compression.s2c", Util.getSystemProperty("jsch.compression", "none"));
      config.put("compression.c2s", Util.getSystemProperty("jsch.compression", "none"));
  
      config.put("lang.s2c", Util.getSystemProperty("jsch.lang", ""));
      config.put("lang.c2s", Util.getSystemProperty("jsch.lang", ""));
-@@ -225,11 +225,11 @@ public class JSch{
+@@ -220,11 +220,11 @@ public class JSch {
+     config.put("HashKnownHosts", "no");
  
-     config.put("StrictHostKeyChecking",  "ask");
-     config.put("HashKnownHosts",  "no");
- 
-     config.put("PreferredAuthentications", Util.getSystemProperty("jsch.preferred_authentications", "gssapi-with-mic,publickey,keyboard-interactive,password"));
--    config.put("PubkeyAcceptedAlgorithms", Util.getSystemProperty("jsch.client_pubkey", "ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,rsa-sha2-512,rsa-sha2-256"));
-+    config.put("PubkeyAcceptedAlgorithms", Util.getSystemProperty("jsch.client_pubkey", "ssh-ed448,ssh-ed25519,rsa-sha2-512,rsa-sha2-256,ssh-rsa"));
- 
-     config.put("CheckCiphers", Util.getSystemProperty("jsch.check_ciphers", "chacha20-poly1305@openssh.com"));
-     config.put("CheckMacs", Util.getSystemProperty("jsch.check_macs", ""));
-     config.put("CheckKexes", Util.getSystemProperty("jsch.check_kexes", "curve25519-sha256,curve25519-sha256@libssh.org,curve448-sha512"));
-     config.put("CheckSignatures", Util.getSystemProperty("jsch.check_signatures", "ssh-ed25519,ssh-ed448"));
+     config.put("PreferredAuthentications", Util.getSystemProperty("jsch.preferred_authentications",
+         "gssapi-with-mic,publickey,keyboard-interactive,password"));
+     config.put("PubkeyAcceptedAlgorithms", Util.getSystemProperty("jsch.client_pubkey",
+-        "ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,rsa-sha2-512,rsa-sha2-256"));
++        "ssh-ed448,ssh-ed25519,ecdsa-sha2-nistp521,ecdsa-sha2-nistp384,ecdsa-sha2-nistp256,rsa-sha2-512,rsa-sha2-256,ssh-rsa"));
+     config.put("enable_pubkey_auth_query",
+         Util.getSystemProperty("jsch.enable_pubkey_auth_query", "yes"));
+     config.put("try_additional_pubkey_algorithms",
+         Util.getSystemProperty("jsch.try_additional_pubkey_algorithms", "yes"));
+     config.put("enable_auth_none", Util.getSystemProperty("jsch.enable_auth_none", "yes"));
