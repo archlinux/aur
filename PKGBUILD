@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=EBSeq
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='An R package for gene and isoform differential expression analysis of RNA-seq data'
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c0c6ba4a2d9ec62fefe846baa6ccb1f72dfd1031001d682780623f73966701be')
+sha256sums=('a5d3a88743d61062c6d68a426b19c53a4afd2fa216abc884d42c187780994378')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
