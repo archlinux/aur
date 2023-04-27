@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=epiNEM
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='epiNEM'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-stringdb
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4e4a28e5ecb819c6cf5613e4eea03ef0fa302e07fddb654a858d0d54b1a081c8')
+sha256sums=('22a6d7f19b73a4dd88aa65e8d72cf2b0f47c11b9c21886fa1b3bb89878ae23b0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
