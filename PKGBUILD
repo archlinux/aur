@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=FISHalyseR
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='FISHalyseR a package for automated FISH quantification'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('755adabb89002904abdce9f248cffd58cc6b0c8b819b6664a31fa0ba103252a3')
+sha256sums=('3b3fd0885a032ba70c4c603f4b19c954469fd67a82a09573ec0edcaeb9b62814')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
