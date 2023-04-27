@@ -1,6 +1,6 @@
 pkgbase = r-reactomecontentservice4r
 	pkgdesc = Interface for the Reactome Content Service
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ReactomeContentService4R
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-reactomecontentservice4r
 	optdepends = r-pdftools
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ReactomeContentService4R_1.6.0.tar.gz
-	sha256sums = e33c03bfe1411e739913644da988cbdc35f96b22573280e442a958815a559f37
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ReactomeContentService4R_1.8.0.tar.gz
+	sha256sums = 016fa7018f19ec0c155b865dd3053c622f93abedf528964973ce05c267decd99
 
 pkgname = r-reactomecontentservice4r
