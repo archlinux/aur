@@ -1,6 +1,6 @@
 pkgbase = r-lymphoseq
 	pkgdesc = Analyze high-throughput sequencing of T and B cell receptors
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/LymphoSeq
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-lymphoseq
 	optdepends = r-pheatmap
 	optdepends = r-rmarkdown
 	optdepends = r-wordcloud
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/LymphoSeq_1.26.0.tar.gz
-	sha256sums = e7adb47ab67c84b26616f1f067748f61af147bad46f76107ad451e7fdf989ef2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/LymphoSeq_1.28.0.tar.gz
+	sha256sums = b13b3fa2c4406684d7e6c49249bda149f4c07a921994544eabf566a5c9ff2430
 
 pkgname = r-lymphoseq
