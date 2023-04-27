@@ -1,28 +1,20 @@
 # Maintainer: Rojikku <RojikkuNoKami at gmail dot com>
-_pkgname=remoteplaywhatever
-pkgname=${_pkgname}-bin
-pkgver=0.2.2
+pkgname=remoteplaywhatever-bin
+pkgver=0.2.3alpha
 pkgrel=1
 pkgdesc="Tiny application that lets you force remote play together any game you have in your steam library including non-steam ones."
 arch=('x86_64')
+license=('MIT')
 url="https://github.com/m4dEngi/RemotePlayWhatever"
-provides=('remoteplaywhatever')
-depends=('wxwidgets-common' 'wxwidgets-gtk3' 'libtiff5')
-source=(
-  ${pkgname}-${pkgver}.deb::https://github.com/m4dEngi/${_pkgname}/releases/download/${pkgver}-alpha/${_pkgname}-${pkgver}-Linux.deb
-)
-sha512sums=('6266329ecce60f11d8b3fcf1e31cc9f16a1f9c222f0f8ede7fb15eb837846d3e97cc03a428244a2f73c6fedd3226e09b5ada5a5ae715965d55035054109eeadd')
-
-prepare() {
-  cd "$srcdir"
-  tar xvf data.tar.gz
-}
-
+provides=()
+conflicts=("${pkgname%-bin}")
+depends=('gcc-libs' 'glibc')
+options=(!strip)
+source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver%alpha}-alpha/RemotePlayWhatever-${pkgver%alpha}-Linux.deb"
+  "LICENSE::${url}/raw/master/LICENSE")
+sha256sums=('06de4747350c6c2c98457f2d65929242cccc652bfccf5d7240a8c617cbb7b400'
+            '284724acc9bb9b5a0579ca01589605ad6d8b4cd01094d7077ca6308aa5786cdd')
 package() {
-  cd "$srcdir/usr/bin"
-
-  # binary
-  install -D -m0755 remoteplaywhatever "${pkgdir}/usr/bin/remoteplaywhatever"
-
+  bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}"
+  install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
