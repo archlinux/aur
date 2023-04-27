@@ -1,7 +1,7 @@
 pkgbase = r-trena
 	pkgdesc = Fit transcriptional regulatory networks using gene expression, priors, machine learning
-	pkgver = 1.20.0
-	pkgrel = 3
+	pkgver = 1.21.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/trena
 	arch = any
 	license = GPL
@@ -36,7 +36,7 @@ pkgbase = r-trena
 	optdepends = r-plyr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/trena_1.20.0.tar.gz
-	sha256sums = 566c27500e8c39009208c8a817ab9948c00da9150ad76f3ccaef39718b405530
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/trena_1.21.0.tar.gz
+	sha256sums = 02d5ebac4a725e85213367c89cae18644c27541e135baaebe04b56c59adc2412
 
 pkgname = r-trena
