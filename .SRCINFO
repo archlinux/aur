@@ -1,6 +1,6 @@
 pkgbase = r-motifdb
 	pkgdesc = An Annotated Collection of Protein-DNA Binding Sequence Motifs
-	pkgver = 1.40.0
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MotifDb
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-motifdb
 	optdepends = r-rmarkdown
 	optdepends = r-runit
 	optdepends = r-seqlogo
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MotifDb_1.40.0.tar.gz
-	sha256sums = f41d4a37328db893f8c0cd6afee1e0be8d588cc090a5c6440a6383b86a775188
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MotifDb_1.42.0.tar.gz
+	sha256sums = fc0a82da4f3c850da74d666baa25d6b40752ad155ff32abc747011ab93c4a0a1
 
 pkgname = r-motifdb
