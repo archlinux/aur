@@ -1,6 +1,6 @@
 pkgbase = r-moma
 	pkgdesc = Multi Omic Master Regulator Analysis
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MOMA
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-moma
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-viper
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MOMA_1.10.0.tar.gz
-	sha256sums = 1ecfcaad5a3da5f91a7ce5f5b1f2bff7a3326843702279de22f1f2a1b0dd1411
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MOMA_1.12.0.tar.gz
+	sha256sums = 575412353233992008e8b8ae42446a22c981964b9329bad4e2ba3350f388e2ef
 
 pkgname = r-moma
