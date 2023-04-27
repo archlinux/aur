@@ -1,6 +1,6 @@
 pkgbase = r-geneplotter
 	pkgdesc = Graphics related functions for Bioconductor
-	pkgver = 1.76.0
+	pkgver = 1.78.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/geneplotter
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-geneplotter
 	optdepends = r-hgu95av2.db
 	optdepends = r-hu6800.db
 	optdepends = r-rgraphviz
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/geneplotter_1.76.0.tar.gz
-	sha256sums = 6a2bf0e14ca16d23c629680967d24c5c08006300483235ee3acceadda6269b24
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/geneplotter_1.78.0.tar.gz
+	sha256sums = c895dc12edac4916a832c3cc38eb88cf47e8fdc2b5c67207f860f69d0f05a90f
 
 pkgname = r-geneplotter
