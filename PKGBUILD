@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=lionessR
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='Modeling networks for individual samples using LIONESS'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e1728295eba623029cb6e7002883d3ecf9b2dcd70665ceadaf3597d11a0230be')
+sha256sums=('5187f5998a1b3bfed335558474a308cc772d1c99ac8c2a4c46e197a4beb4df79')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
