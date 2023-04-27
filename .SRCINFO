@@ -1,6 +1,6 @@
 pkgbase = r-foldgo
 	pkgdesc = Package for Fold-specific GO Terms Recognition
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/FoldGO
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-foldgo
 	optdepends = r-kableextra
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/FoldGO_1.16.0.tar.gz
-	sha256sums = 200bd3ffb4032ec74f0ce6a23b0c6534e7643362614add371561bbfede2390ac
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/FoldGO_1.18.0.tar.gz
+	sha256sums = d3f3aff453062e6a89500b334e1a3b2c4a3536675698c2ac52944e3fc3f60840
 
 pkgname = r-foldgo
