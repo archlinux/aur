@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=discordant
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
-pkgrel=3
+pkgver=1.24.0
+pkgrel=1
 pkgdesc='The Discordant Method: A Novel Approach for Differential Correlation'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -23,7 +23,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ebdd63125e8363ce51d0cc85e95ed1ac6e6108c09d24ace76923b56aa07216fe')
+sha256sums=('f64d59b2a0ad6312f1cf96f55955109cb631b322fa5153bfbcf69aee8d7478b0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
