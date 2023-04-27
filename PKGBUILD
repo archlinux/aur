@@ -3,7 +3,7 @@
 
 pkgname='linux-user-repository-bin'
 pkgver=0.0.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux User REpository'
 url='https://gitea.elara.ws/Elara6331/lure'
 arch=('aarch64' 'armv6h' 'i686' 'x86_64')
