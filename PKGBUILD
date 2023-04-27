@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TIN
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
-pkgrel=3
+pkgver=1.32.0
+pkgrel=1
 pkgdesc='Transcriptome instability analysis'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -26,7 +26,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('28c2f9ebeaf0cfb537ea6d5f4cd7cc495d3d487471057e52042df5e00b889705')
+sha256sums=('6c75a133299a6582ee40c075bb01cf1a1cb2a80cb8c5a8739d98947c08bf6627')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
