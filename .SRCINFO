@@ -1,6 +1,6 @@
 pkgbase = r-experimentsubset
 	pkgdesc = Manages subsets of data with Bioconductor Experiment objects
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ExperimentSubset
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-experimentsubset
 	optdepends = r-stats
 	optdepends = r-tenxpbmcdata
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ExperimentSubset_1.8.0.tar.gz
-	sha256sums = 4248e3168010cc3b298bd259a13f8a0818cc25af364d492024cd338114ebdfc9
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ExperimentSubset_1.10.0.tar.gz
+	sha256sums = 075695ce511487bb2dd1591829bbc4b449f21ae49c6771de91b65401e831ac8c
 
 pkgname = r-experimentsubset
