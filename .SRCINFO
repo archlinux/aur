@@ -1,7 +1,7 @@
 pkgbase = hyprshotgun
 	pkgdesc = Utility to take screenshots to the cloud (or save them locally)
-	pkgver = 1.1
-	pkgrel = 6
+	pkgver = 1.2
+	pkgrel = 7
 	url = https://github.com/Zeioth/hyprshotgun.git
 	arch = any
 	license = GPL
