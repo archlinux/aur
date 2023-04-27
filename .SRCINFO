@@ -1,6 +1,6 @@
 pkgbase = r-motifmatchr
 	pkgdesc = Fast Motif Matching in R
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/motifmatchr
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = r-motifmatchr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/motifmatchr_1.20.0.tar.gz
-	sha256sums = db596cab5ab1292eec380bf2ff6c9b8d7783fc32890935d6574c484bdcb36206
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/motifmatchr_1.22.0.tar.gz
+	sha256sums = 919972116865e2960937e701de8adddc192bb1d725eb7d44ee45e89e97eb1a6f
 
 pkgname = r-motifmatchr
