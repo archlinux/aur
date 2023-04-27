@@ -1,6 +1,6 @@
 pkgbase = r-gigsea
 	pkgdesc = Genotype Imputed Gene Set Enrichment Analysis
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GIGSEA
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = r-gigsea
 	depends = r-locfdr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GIGSEA_1.16.0.tar.gz
-	sha256sums = bc8a967c8fcb87275dfcb22efc692447416f3a9393a51d1b298fc0c5faffc4bd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GIGSEA_1.18.0.tar.gz
+	sha256sums = 6377d33f2afdf1852115b7bcd142cf0d4dc61f5c6f3d1c7b70a0d03d8b9382bd
 
 pkgname = r-gigsea
