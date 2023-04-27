@@ -1,6 +1,6 @@
 pkgbase = r-nempi
 	pkgdesc = Inferring unobserved perturbations from gene expression data
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/nempi
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-nempi
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/nempi_1.6.0.tar.gz
-	sha256sums = d4bfa414b8b7fba3342aba65ead14bb27a5b6d43024849b379352e9966b12574
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/nempi_1.8.0.tar.gz
+	sha256sums = 741817f365d41e00f7f830666ba8d953750233da21ac0e9a06484349d903fcb4
 
 pkgname = r-nempi
