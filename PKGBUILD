@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=megadepth
-_pkgver=1.8.0
+_pkgver=1.9.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='megadepth: BigWig and BAM related utilities'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-tools
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2843ae5280eecdac65af1de09c75fc594412643532c5ad9feb73ce8f712c33cf')
+sha256sums=('e9ec0eb25a19551583940c6811d18e3cd7c49285d003bd61a8d5a9dc86f944ea')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
