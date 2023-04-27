@@ -1,7 +1,8 @@
-# Maintainer: Misha <mishakmak@gmail.com>
+# Maintainer: Dario Ostuni <dario.ostuni@gmail.com>
+# Contributor: Misha <mishakmak@gmail.com>
 
 pkgname=algorand-bin
-pkgver=3.7.2
+pkgver=3.15.1
 pkgrel=1
 pkgdesc="Implementation of the Algorand protocol and node software"
 arch=('x86_64')
@@ -12,8 +13,8 @@ depends=("systemd")
 provides=("algorand")
 conflicts=("algorand")
 install=algorand-bin.install
-source=("https://github.com/algorand/go-algorand/releases/download/v3.7.2-stable/algorand-3.7.2-1.x86_64.rpm")
-sha256sums=('930116911746abc10949da4479bfa23c965d2cd2408a4fddb783013e5d93fb06')
+source=("https://github.com/algorand/go-algorand/releases/download/v${pkgver}-stable/algorand-${pkgver}-1.x86_64.rpm")
+sha384sums=('bf6adce32761140a78b8b815c72272048f641de6fa17d7bf930f4691eb2b51aa25e3a0565a848be3cc2e407275b190c9')
 
 package(){
 	cd "${srcdir}"
