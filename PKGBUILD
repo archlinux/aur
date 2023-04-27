@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=LEA
-_pkgver=3.10.2
+_pkgver=3.12.0
 pkgname=r-${_pkgname,,}
-pkgver=3.10.2
+pkgver=3.12.0
 pkgrel=1
 pkgdesc='LEA: an R package for Landscape and Ecological Association Studies'
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2ecf7f965bf0812619ecc73e5ac1536c9a4f97dce7e37aff098d696607d08807')
+sha256sums=('154c5b76d456e3143f4de985599e64e1c68e07ac71ded9bbc914f7abeb19e825')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
