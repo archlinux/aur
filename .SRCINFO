@@ -1,6 +1,6 @@
 pkgbase = r-nanotube
 	pkgdesc = An Easy Pipeline for NanoString nCounter Data Analysis
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/NanoTube
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-nanotube
 	optdepends = r-shiny
 	optdepends = r-testthat
 	optdepends = r-xlsx
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/NanoTube_1.4.0.tar.gz
-	sha256sums = 496626bac54e3641401f8d65257892b847038d79b648b44458b1fa5582a4d23f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/NanoTube_1.6.0.tar.gz
+	sha256sums = 3973520d12372317558f4c1fbb53171486a110993b804aaf319e20e251fda72f
 
 pkgname = r-nanotube
