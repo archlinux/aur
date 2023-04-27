@@ -1,6 +1,6 @@
 pkgbase = r-umi4cats
 	pkgdesc = UMI4Cats: Processing, analysis and visualization of UMI-4C chromatin contact data
-	pkgver = 1.8.1
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/UMI4Cats
 	arch = any
@@ -45,7 +45,7 @@ pkgbase = r-umi4cats
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tidyr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/UMI4Cats_1.8.1.tar.gz
-	sha256sums = 1f8b634ffdbbfc0c0064f3429873d7f4714cc31ebc92c357044bb3d6c6d210ec
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/UMI4Cats_1.10.0.tar.gz
+	sha256sums = dd9818476c1abffa4ac7bd08a386bff37aeb8f20924d7278f6e43940bc79ae8f
 
 pkgname = r-umi4cats
