@@ -1,6 +1,6 @@
 pkgbase = r-copa
 	pkgdesc = Functions to perform cancer outlier profile analysis.
-	pkgver = 1.66.0
+	pkgver = 1.68.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/copa
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = r-copa
 	depends = r
 	depends = r-biobase
 	optdepends = r-colonca
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/copa_1.66.0.tar.gz
-	sha256sums = 9f80fc7d8ab01c8dd65da80d8dc9f5f35ce5fce258dc6e464b5c306485c3f6cb
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/copa_1.68.0.tar.gz
+	sha256sums = 9f4a94bae1f17c54be72cba8b5fc310dbaf49617554afb52696f9a15b4d5abb6
 
 pkgname = r-copa
