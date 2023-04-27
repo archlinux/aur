@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggbio
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='Visualization tools for genomic data'
 arch=('any')
@@ -52,7 +52,7 @@ optdepends=(
   r-vsn
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0f983bebac75b2ae957e709d2fa316f547844ceb0136f132e3082ad06df0a3be')
+sha256sums=('3e41a0ab10fa9e1305b6b88bd97b297b5140ff5cee8a29cf02d71d9d337cf658')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
