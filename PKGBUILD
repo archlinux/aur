@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GEOexplorer
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='GEOexplorer: an R/Bioconductor package for gene expression analysis and visualisation'
 arch=('any')
@@ -38,7 +38,7 @@ optdepends=(
   r-usethis
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5462da0bc3968d5702676996b5d7e4331a28c3231b7cfe27d3859ce774074bbe')
+sha256sums=('6a372671ce6db97ea6ae6ca3131484055aac9934115619df9ef8fa3fa02609b6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
