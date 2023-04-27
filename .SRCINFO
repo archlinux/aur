@@ -1,6 +1,6 @@
 pkgbase = r-variantannotation
 	pkgdesc = Annotation of Genetic Variants
-	pkgver = 1.44.1
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/VariantAnnotation
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = r-variantannotation
 	optdepends = r-snplocs.hsapiens.dbsnp144.grch37
 	optdepends = r-snpstats
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/VariantAnnotation_1.44.1.tar.gz
-	sha256sums = fd430a989ac4c4fcf7f88ee4c0c6e8adc0d086c2a209b1d3e0a569fadaa9f18f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/VariantAnnotation_1.46.0.tar.gz
+	sha256sums = 55ef7ad00dbae5b9a58b3e926e1bbe510714379a135190cdbf9e346612e95a55
 
 pkgname = r-variantannotation

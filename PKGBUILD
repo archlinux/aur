@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=VariantAnnotation
-_pkgver=1.44.1
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
-pkgver=1.44.1
+pkgver=1.46.0
 pkgrel=1
 pkgdesc='Annotation of Genetic Variants'
 arch=('x86_64')
@@ -45,7 +45,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fd430a989ac4c4fcf7f88ee4c0c6e8adc0d086c2a209b1d3e0a569fadaa9f18f')
+sha256sums=('55ef7ad00dbae5b9a58b3e926e1bbe510714379a135190cdbf9e346612e95a55')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
