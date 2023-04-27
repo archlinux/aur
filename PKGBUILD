@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="notesnook-appimage"
-pkgver=2.4.9
+pkgver=2.4.10
 pkgrel=1
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote."
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('hicolor-icon-theme' 'zlib' 'glibc')
 options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}_linux_x86_64.AppImage")
-sha256sums=('4f577d20aebd9d4c60dae12d12cccdae310ebfb75567f85246a9363d08ec463e')
+sha256sums=('27fb287afeb27fc72a866b96b357cd665d2c37e39c7cd439585c3fbb1bb5996b')
     
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
