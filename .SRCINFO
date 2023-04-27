@@ -1,6 +1,6 @@
 pkgbase = r-packfinder
 	pkgdesc = de novo Annotation of Pack-TYPE Transposable Elements
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/packFinder
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-packfinder
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/packFinder_1.10.0.tar.gz
-	sha256sums = 7abf4a64e62fc4bf7ac94531af137c8a65f463779b5d8251c7e550a372bde5ed
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/packFinder_1.12.0.tar.gz
+	sha256sums = 51e11e9b0039243a9f4f939e03700c595624acf76bea737c6be555f7cf0596e8
 
 pkgname = r-packfinder
