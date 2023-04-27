@@ -1,7 +1,7 @@
 pkgbase = r-gwena
 	pkgdesc = Pipeline for augmented co-expression analysis
-	pkgver = 1.8.0
-	pkgrel = 3
+	pkgver = 1.10.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/GWENA
 	arch = any
 	license = GPL
@@ -29,7 +29,7 @@ pkgbase = r-gwena
 	optdepends = r-rmarkdown
 	optdepends = r-s4vectors
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GWENA_1.8.0.tar.gz
-	sha256sums = 187a71391ac0268f758b196e392e54c0ec198b19e0c00d74510701a31fb747f0
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GWENA_1.10.0.tar.gz
+	sha256sums = b5671bbde20ca0bf48064bc33d3bc3f9593be37ba77db789cd22acc863de1686
 
 pkgname = r-gwena
