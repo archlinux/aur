@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=synergyfinder
-_pkgver=3.6.3
+_pkgver=3.8.0
 pkgname=r-${_pkgname,,}
-pkgver=3.6.3
+pkgver=3.8.0
 pkgrel=1
 pkgdesc='Calculate and Visualize Synergy Scores for Drug Combinations'
 arch=('any')
@@ -40,7 +40,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e5ce14bb862572884e9515a904b9aaa5308c91246829ee9c1e18ca2bd755f593')
+sha256sums=('1453e3112989069e338e2d001d16bcc9fbe95b812d2fc26e601f270a96272fcd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
