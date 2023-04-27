@@ -2,7 +2,7 @@
 
 pkgbase=purc
 pkgname=purc
-pkgver=0.9.8
+pkgver=0.9.10
 pkgrel=0
 pkgdesc="The prime HVML interpreter for C Language."
 arch=(x86_64
@@ -60,7 +60,7 @@ optdepends=('python-numpy: Scientific tools for Python'
             'webkit2gtk: Web content engine for GTK'
             'xguipro: xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit.')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/ver-${pkgver}.tar.gz")
-sha256sums=('5d055b1e6cc666ba666ee28aaa8c56a93e098bb50d643b6a7a4e97d99ccac557')
+sha256sums=('4bcadb7c9949a38dbe7c5f8ddc9c5d881524ba32403adff4a9cd27fe8ff4564b')
 options=('!strip')
 
 build() {
