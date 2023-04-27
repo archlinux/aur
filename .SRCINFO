@@ -1,25 +1,26 @@
 pkgbase = mlpack
 	pkgdesc = A fast, flexible, scalable C++ machine learning library
-	pkgver = 3.4.2
+	pkgver = 4.1.0
 	pkgrel = 1
-	url = https://mlpack.org/
+	url = https://mlpack.org
 	arch = x86_64
-	license = BSD
-	makedepends = cmake>=3.3.2
+	license = custom:BSD-3-clause
+	makedepends = cmake
 	makedepends = txt2man
 	makedepends = python-setuptools
-	depends = armadillo>=8.400.0
-	depends = boost>=1.58
+	depends = armadillo
+	depends = cereal
+	depends = boost
 	depends = lapack
-	depends = ensmallen>=2.10.0
-	depends = cython>=0.24
+	depends = ensmallen
+	depends = cython
 	depends = python-numpy
-	depends = python-pandas>=0.15.0
+	depends = python-pandas
 	optdepends = openmp: parallel computation support
-	optdepends = julia>=2:1.3.0: julia bindings support
-	optdepends = go>=2:1.12.9-1: go bindings support
-	source = https://www.mlpack.org/files/mlpack-3.4.2.tar.gz
-	sha256sums = 9e5c4af5c276c86a0dcc553289f6fe7b1b340d61c1e59844b53da0debedbb171
+	optdepends = julia: julia bindings support
+	optdepends = go: go bindings support
+	options = !emptydirs
+	source = https://mlpack.org/files/mlpack-4.1.0.tar.gz
+	sha512sums = 0cab346f81b04a298f09ba28cec679c275af80c3941f31977ba5d0cfe11eed5850190ce46e71cf003996391618ad4eac2e0a54e260d264b8f8f9a02f53ec7cc7
 
 pkgname = mlpack
-
