@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=maser
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Mapping Alternative Splicing Events to pRoteins'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7bd3fbbdaed0e48a489478bbf302b6d982581728c9665cf868e4190234eaccff')
+sha256sums=('2e2d4fbf3f6413a7cda2c5bd2cc8eaa2b2d05addffef774585883f53626845d5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

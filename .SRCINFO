@@ -1,6 +1,6 @@
 pkgbase = r-maser
 	pkgdesc = Mapping Alternative Splicing Events to pRoteins
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/maser
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-maser
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/maser_1.16.0.tar.gz
-	sha256sums = 7bd3fbbdaed0e48a489478bbf302b6d982581728c9665cf868e4190234eaccff
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/maser_1.18.0.tar.gz
+	sha256sums = 2e2d4fbf3f6413a7cda2c5bd2cc8eaa2b2d05addffef774585883f53626845d5
 
 pkgname = r-maser
