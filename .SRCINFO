@@ -1,6 +1,6 @@
 pkgbase = r-intramirexplorer
 	pkgdesc = Predicting Targets for Drosophila Intragenic miRNAs
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/IntramiRExploreR
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-intramirexplorer
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-topgo
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/IntramiRExploreR_1.20.0.tar.gz
-	sha256sums = aafcbba1ec0148033fc5f9858b800fdc3451a2743f858d3f9155ef1a7671cbd0
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/IntramiRExploreR_1.22.0.tar.gz
+	sha256sums = d8b0264bf48da611c6bc0e17fe1466ab8e59e27c6ccbeff7bf765b48a721823f
 
 pkgname = r-intramirexplorer
