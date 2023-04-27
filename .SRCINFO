@@ -1,6 +1,6 @@
 pkgbase = r-complexheatmap
 	pkgdesc = Make Complex Heatmaps
-	pkgver = 2.14.0
+	pkgver = 2.16.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ComplexHeatmap
 	arch = any
@@ -37,7 +37,7 @@ pkgbase = r-complexheatmap
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tiff
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ComplexHeatmap_2.14.0.tar.gz
-	sha256sums = 47a475eaddb85fdf67cb2d9d260a79eb359eac8c48eaa04793a7d430a480c0d5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ComplexHeatmap_2.16.0.tar.gz
+	sha256sums = fedf74142a242cfe53d97ac2c1ff7ff9544cb2a7697217f037e3688b0f5f5722
 
 pkgname = r-complexheatmap
