@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ADImpute
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Adaptive Dropout Imputer (ADImpute)'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('351e34c41f192ac3d1c7afb349b2294bcb756fe8b0479e20e724ee905acf3773')
+sha256sums=('571a23486f7f9ce752e78a3a6fb6cbdfa8959e3a070481f5a3483ce3e6227928')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
