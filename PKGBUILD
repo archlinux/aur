@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rbsurv
-_pkgver=2.56.0
+_pkgver=2.58.0
 pkgname=r-${_pkgname,,}
-pkgver=2.56.0
+pkgver=2.58.0
 pkgrel=1
 pkgdesc='Robust likelihood-based survival modeling with microarray data'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b3e44e14351549233128d1216f6ef3d09d41203d2b190efa3e46d67b09ba9845')
+sha256sums=('531f4060050f04e871e3f03aeea67e0c4a172201e186b0129b2463d2f082f856')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
