@@ -1,6 +1,6 @@
 pkgbase = r-twoddpcr
 	pkgdesc = Classify 2-d Droplet Digital PCR (ddPCR) data and quantify the number of starting molecules
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/twoddpcr
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-twoddpcr
 	optdepends = r-reshape2
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/twoddpcr_1.22.0.tar.gz
-	sha256sums = 0702b4acc368e89eeea720efe62c910b89b870bb253971649915455818bc6e05
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/twoddpcr_1.24.0.tar.gz
+	sha256sums = 9604b10691e20a7bd594fc2ca18a5610961d43db086cafb5a9edb4bb2f9b914e
 
 pkgname = r-twoddpcr
