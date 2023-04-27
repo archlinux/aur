@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=unifiedWMWqPCR
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='Unified Wilcoxon-Mann Whitney Test for testing differential expression in qPCR data'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   r-htqpcr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8210694ede675e5d96da0f1865ac83b23877acb0e0fe3906d4fca98774c8787e')
+sha256sums=('077f9520d7a9965d66e5be4e4999d0ad3e1367b4b05010e7caa296a6d131eabf')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
