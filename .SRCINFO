@@ -1,7 +1,7 @@
 pkgbase = zim-dev
 	pkgdesc = Zim desktop wiki. Develop branch
 	pkgver = 4110a13c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zim-wiki.org/
 	arch = any
 	license = GPL
@@ -25,6 +25,7 @@ pkgbase = zim-dev
 	optdepends = lilypond: Insert Score plugin
 	optdepends = gtksourceview3: Source View plugin
 	optdepends = texlive-bin: Insert Equation plugin
+	provides = zim
 	conflicts = zim
 	source = git+https://github.com/zim-desktop-wiki/zim-desktop-wiki.git#commit=4110a13c
 	sha256sums = SKIP

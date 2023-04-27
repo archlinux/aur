@@ -6,12 +6,13 @@
 projname=zim-desktop-wiki
 pkgname=zim-dev
 pkgver=4110a13c
-pkgrel=1
+pkgrel=2
 pkgdesc="Zim desktop wiki. Develop branch"
 arch=(any)
 license=('GPL' 'PerlArtistic')
 url="https://zim-wiki.org/"
 conflicts=('zim')
+provides=('zim')
 depends=('python' 'python-gobject' 'ttf-font' 'gtk3' 'python-xdg')
 checkdepends=('xorg-server-xvfb')
 optdepends=('bzr: Version Control plugin'
