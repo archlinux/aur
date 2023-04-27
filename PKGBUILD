@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BadRegionFinder
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='BadRegionFinder: an R/Bioconductor package for identifying regions with bad coverage'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-bsgenome.hsapiens.ucsc.hg19
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('55878f6fad1d9eee4205856c83ab5fed243e492199a9c8a342cc690e996c4f2f')
+sha256sums=('78d0ef73ce4a87177dff0e22907156838931e59554cee7139efc0543e2587f11')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

@@ -1,6 +1,6 @@
 pkgbase = r-badregionfinder
 	pkgdesc = BadRegionFinder: an R/Bioconductor package for identifying regions with bad coverage
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BadRegionFinder
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-badregionfinder
 	depends = r-s4vectors
 	depends = r-variantannotation
 	optdepends = r-bsgenome.hsapiens.ucsc.hg19
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BadRegionFinder_1.26.0.tar.gz
-	sha256sums = 55878f6fad1d9eee4205856c83ab5fed243e492199a9c8a342cc690e996c4f2f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BadRegionFinder_1.28.0.tar.gz
+	sha256sums = 78d0ef73ce4a87177dff0e22907156838931e59554cee7139efc0543e2587f11
 
 pkgname = r-badregionfinder
