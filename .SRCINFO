@@ -1,6 +1,6 @@
 pkgbase = r-qsutils
 	pkgdesc = Quasispecies Diversity
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/QSutils
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-qsutils
 	optdepends = r-ggplot2
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/QSutils_1.16.0.tar.gz
-	sha256sums = 96c2173b585613df404e27048189f9435331cecc735cc62a0afb40540393ee27
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/QSutils_1.18.0.tar.gz
+	sha256sums = 3585fe1e92bd6c5028640102e033aae0009510a41ea7a7c95b7202c3f5743c5f
 
 pkgname = r-qsutils
