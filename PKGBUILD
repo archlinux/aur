@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PhenStat
-_pkgver=2.34.0
+_pkgver=2.36.0
 pkgname=r-${_pkgname,,}
-pkgver=2.34.0
+pkgver=2.36.0
 pkgrel=1
 pkgdesc='Statistical analysis of phenotypic data'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a92358a1be31885b3df95e23f84b21cf83e0931ba3d406705d2b0d15688852be')
+sha256sums=('cd5f248cd1860466f9a19f3cf8f259f60f951bb10032ce95fb97295186bdb4e0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
