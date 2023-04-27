@@ -1,7 +1,7 @@
 pkgbase = r-cardinal
 	pkgdesc = A mass spectrometry imaging toolbox for statistical analysis
-	pkgver = 3.0.1
-	pkgrel = 3
+	pkgver = 3.2.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/Cardinal
 	arch = x86_64
 	license = Artistic2.0
@@ -23,7 +23,7 @@ pkgbase = r-cardinal
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Cardinal_3.0.1.tar.gz
-	sha256sums = 5407307d16ebd6777d2ae25225e40561662032effa2cb28db2b830ee1a300759
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Cardinal_3.2.0.tar.gz
+	sha256sums = 2f18b86cafeb6463403dac6dd11ec66b8a17e3849b5186126e1f12339ca542d6
 
 pkgname = r-cardinal
