@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HiTC
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.42.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc='High Throughput Chromosome Conformation Capture analysis'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-hicdatahumanimr90
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('94414c6172afcb43ea3cb7d7decc43c688d73c21b9e03add5aa8222504bea382')
+sha256sums=('90b7bb8bc7d41224f4b5ab9ae8eeda5736b07022af9f7410e3942ee847769a01')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
