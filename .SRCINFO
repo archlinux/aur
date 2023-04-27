@@ -1,6 +1,6 @@
 pkgbase = r-rsbml
 	pkgdesc = R support for SBML, using libsbml
-	pkgver = 2.56.0
+	pkgver = 2.58.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rsbml
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = r-rsbml
 	depends = r-biocgenerics
 	depends = r-graph
 	depends = libsbml
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rsbml_2.56.0.tar.gz
-	sha256sums = ec2db4ad0b50c9edea71e4181c6aa460be3fcf7299f7fc05f79f6ff37122cfeb
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rsbml_2.58.0.tar.gz
+	sha256sums = d525900c47931ad91fc4d664bc66704fe76d10d90c74c29d99d2bfbe1d0eef55
 
 pkgname = r-rsbml
