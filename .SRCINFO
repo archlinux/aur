@@ -1,6 +1,6 @@
 pkgbase = evdi-compat-git
 	pkgdesc = kernel module for DisplayLink driver, aimed at compatibility with DisplayLink package and Official kernels
-	pkgver = 1.12.1.r0.gc892401
+	pkgver = 1.13.1.r0.g85a347a
 	pkgrel = 1
 	url = https://github.com/Varun-garg/evdi-compat
 	arch = i686
