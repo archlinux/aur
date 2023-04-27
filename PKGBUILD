@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MLP
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
-pkgrel=3
+pkgver=1.48.0
+pkgrel=1
 pkgdesc='Mean Log P Analysis'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -31,7 +31,7 @@ optdepends=(
   r-rgraphviz
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7b516a27a473d5e09f19abd743203a3f3c0b25d8c69bf9dbb4e6bacb73459008')
+sha256sums=('7a23df62b1e454d8133cf37bf8704fa71a4797e8a25b60af734a1fcfbd79d3b7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
