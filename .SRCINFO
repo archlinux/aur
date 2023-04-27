@@ -1,6 +1,6 @@
 pkgbase = r-bcrank
 	pkgdesc = Predicting binding site consensus from ranked DNA sequences
-	pkgver = 1.60.0
+	pkgver = 1.62.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BCRANK
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = r-bcrank
 	depends = r
 	depends = r-biostrings
 	optdepends = r-seqlogo
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BCRANK_1.60.0.tar.gz
-	sha256sums = 10c0c9ed26eb655faf0604e7876fa81494826b99156dee4027db4f51bd922b06
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BCRANK_1.62.0.tar.gz
+	sha256sums = c88ece49adf4e104c8b1af122a97957dadee45f3290380fa3168bffd11ff65be
 
 pkgname = r-bcrank
