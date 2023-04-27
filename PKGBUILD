@@ -1,9 +1,9 @@
 # Maintainer: Filip Matzner <filip.matzner@iterait.com>
 
 pkgname=inertial-sense-sdk
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
-pkgsuffix=".d"
+pkgsuffix=""
 pkgdesc="Quick integration for communication with the Inertial Sense product line."
 arch=('any')
 url="https://github.com/inertialsense/inertial-sense-sdk"
@@ -15,7 +15,7 @@ source=(
     "https://github.com/inertialsense/${pkgname}/archive/refs/tags/${pkgver}${pkgsuffix}.tar.gz"
 )
 sha256sums=(
-    'b948c955b4230608ea141c9db3c5a92eea0b20b545264c1ce9bbddf04418af92'
+    'a644744494656be80802bb84726fb8f30c3aaa88e1ffcbf52ede28aaa9d933cc'
 )
 
 build() {
