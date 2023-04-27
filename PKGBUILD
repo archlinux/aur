@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=miRBaseConverter
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='A comprehensive and high-efficiency tool for converting and retrieving the information of miRNAs in different miRBase versions'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-utils
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9e6fe80ef37bcedde45b8b177892c8c512872d4f82a92b9f7d9661fd8c013deb')
+sha256sums=('7c6bb80d764f6ddf783d30694b2209e5d620d56f4a475204231353704c74d213')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
