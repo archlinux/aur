@@ -1,6 +1,6 @@
 pkgbase = r-webbioc
 	pkgdesc = Bioconductor Web Interface
-	pkgver = 1.70.0
+	pkgver = 1.72.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/webbioc
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-webbioc
 	depends = r-vsn
 	depends = perl
 	depends = netpbm
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/webbioc_1.70.0.tar.gz
-	sha256sums = 42c9f0cd37c23953733fc7388f5f774a7ee80c76ca5dda3b69f46e251f78ead5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/webbioc_1.72.0.tar.gz
+	sha256sums = cde24918d17f2524382d4fa58b28318ff0f8e0fbb816dd61e38d67a07f8f5a7c
 
 pkgname = r-webbioc
