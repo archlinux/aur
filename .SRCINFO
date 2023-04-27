@@ -1,6 +1,6 @@
 pkgbase = r-celldex
 	pkgdesc = Reference Index for Cell Types
-	pkgver = 1.8.0
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/celldex
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-celldex
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/celldex_1.8.0.tar.gz
-	sha256sums = ab2a3890a4a073e1c57dd744d1b20b571dda47e8857ce98e3dc8b3605e3cc8da
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/celldex_1.9.0.tar.gz
+	sha256sums = 2595a9e9c2c832f006704b2beaf78d95e4ed7b18bdf9885a9a61323dc7e87d0e
 
 pkgname = r-celldex
