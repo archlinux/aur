@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=AnnotationHub
-_pkgver=3.6.0
+_pkgver=3.8.0
 pkgname=r-${_pkgname,,}
-pkgver=3.6.0
+pkgver=3.8.0
 pkgrel=1
 pkgdesc='Client to access AnnotationHub resources'
 arch=('x86_64')
@@ -49,7 +49,7 @@ optdepends=(
   r-variantannotation
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f6c4062a04a1a8421072ae89cf2ba41ef98c8372cd360f179c89745e0d1660c2')
+sha256sums=('608ff3fdfbd3776b96a2c565b4ee2424515d28140c04b466be7081208bc42866')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
