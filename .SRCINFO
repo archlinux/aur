@@ -1,6 +1,6 @@
 pkgbase = r-divergence
 	pkgdesc = Divergence: Functionality for assessing omics data by divergence with respect to a baseline
-	pkgver = 1.14.0
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/divergence
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = r-divergence
 	depends = r-summarizedexperiment
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/divergence_1.14.0.tar.gz
-	sha256sums = f5dc22566b9616f16faccda70c26c7c8884fb018e7fbe8e039766bdc9ead1dce
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/divergence_1.16.0.tar.gz
+	sha256sums = 33ed100170f90def8c85b16c3b8dc90c600bdfb816ea5cd338a482ade41741c0
 
 pkgname = r-divergence
