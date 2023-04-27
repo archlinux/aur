@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SAIGEgds
-_pkgver=1.12.5
+_pkgver=2.0.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.5
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Scalable Implementation of Generalized mixed models using GDS files in Phenome-Wide Association Studies'
 arch=('x86_64')
@@ -31,7 +31,7 @@ optdepends=(
   r-snprelate
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('40589ff258b9f71715e6ca89e110bf598cfa5a2b1ad4cfe3919513e600988c81')
+sha256sums=('3fd6f93f70699c6039e77f9712fad4847af4b8a587770555d6a6583978de9b51')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
