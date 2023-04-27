@@ -1,6 +1,6 @@
 pkgbase = cargo-public-api
 	pkgdesc = List and diff the public API of Rust library crates
-	pkgver = 0.28.0
+	pkgver = 0.29.0
 	pkgrel = 1
 	url = https://github.com/Enselic/cargo-public-api
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = cargo-public-api
 	depends = gcc-libs
 	depends = libgit2
 	options = !lto
-	source = cargo-public-api-0.28.0.tar.gz::https://github.com/Enselic/cargo-public-api/archive/v0.28.0.tar.gz
-	sha512sums = aa41bf40a0f23014c41ca531d6b254136da9c7b0325dbf635ee92fa13717abfc7565fea9e0def432e922a511a58140d490afade7eb81f32864b2084a5dd78b83
+	source = cargo-public-api-0.29.0.tar.gz::https://github.com/Enselic/cargo-public-api/archive/v0.29.0.tar.gz
+	sha512sums = be388a9fc401652cbf306b0908b7cedd24dd8a8b40660f370a56fa0f1c236dab8643a13040af872a940a693fe67d1b74ed812b1e3938c0cdb540d748e1d584b0
 
 pkgname = cargo-public-api
