@@ -1,6 +1,6 @@
 pkgbase = r-loomexperiment
 	pkgdesc = LoomExperiment container
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/LoomExperiment
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-loomexperiment
 	optdepends = r-reticulate
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/LoomExperiment_1.16.0.tar.gz
-	sha256sums = bfa51499bebcf2f7cdc766abbba6a42a34a117630808cf6ad8a3f69f677958ae
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/LoomExperiment_1.18.0.tar.gz
+	sha256sums = 916c084d861c278051316595dd205e8f85195bf333ec9ef3c083eb9cba352a26
 
 pkgname = r-loomexperiment
