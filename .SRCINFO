@@ -1,13 +1,13 @@
 pkgbase = r-omiccircos
 	pkgdesc = High-quality circular visualization of omics data
-	pkgver = 1.36.0
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/OmicCircos
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-genomicranges
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/OmicCircos_1.36.0.tar.gz
-	sha256sums = b0228b9618ad256e346c5ddd9e61ee7bd13aaa8fa9c948b0c5e30b2621011b53
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/OmicCircos_1.38.0.tar.gz
+	sha256sums = 201a689fef83a4aeaeff592b8deacc391191af33768ac90b0500ce6719031c7f
 
 pkgname = r-omiccircos
