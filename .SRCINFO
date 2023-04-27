@@ -1,6 +1,6 @@
 pkgbase = r-biocneighbors
 	pkgdesc = Nearest Neighbor Detection for Bioconductor Packages
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BiocNeighbors
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = r-biocneighbors
 	optdepends = r-rcpphnsw
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocNeighbors_1.16.0.tar.gz
-	sha256sums = 37c993c476c179a12dfc1d75afe42c4fbe5128c19169e655ef94f3575c06c025
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocNeighbors_1.18.0.tar.gz
+	sha256sums = 4d3abd9ce41edbb3a5bb8ca822dade13f2fcba5d7b9398b0fb31ab96ec198bc4
 
 pkgname = r-biocneighbors
