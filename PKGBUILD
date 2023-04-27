@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=OCplus
-_pkgver=1.72.0
+_pkgver=1.74.0
 pkgname=r-${_pkgname,,}
-pkgver=1.72.0
-pkgrel=3
+pkgver=1.74.0
+pkgrel=1
 pkgdesc='Operating characteristics plus sample size and local fdr for microarray experiments'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -15,7 +15,7 @@ depends=(
   r-multtest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d92f10f5c8415b76b2a31aaafbc217ed6f0b4bcdacfb3b91e3fd5e66c68a2714')
+sha256sums=('4cce419c2da35b6ed431b171ebad392371cef2ca68532f10aa9cca16aab647e8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

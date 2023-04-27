@@ -1,14 +1,14 @@
 pkgbase = r-ocplus
 	pkgdesc = Operating characteristics plus sample size and local fdr for microarray experiments
-	pkgver = 1.72.0
-	pkgrel = 3
+	pkgver = 1.74.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/OCplus
 	arch = any
 	license = LGPL
 	depends = r
 	depends = r-interp
 	depends = r-multtest
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/OCplus_1.72.0.tar.gz
-	sha256sums = d92f10f5c8415b76b2a31aaafbc217ed6f0b4bcdacfb3b91e3fd5e66c68a2714
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/OCplus_1.74.0.tar.gz
+	sha256sums = 4cce419c2da35b6ed431b171ebad392371cef2ca68532f10aa9cca16aab647e8
 
 pkgname = r-ocplus
