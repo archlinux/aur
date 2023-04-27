@@ -1,6 +1,6 @@
 pkgbase = r-rcas
 	pkgdesc = RNA Centric Annotation System
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RCAS
 	arch = any
@@ -35,7 +35,7 @@ pkgbase = r-rcas
 	depends = pandoc
 	optdepends = r-covr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RCAS_1.24.0.tar.gz
-	sha256sums = d7e8a580d513d69205fc7def3d799309647daf2ab560c62daa20ffb1463d4a72
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RCAS_1.26.0.tar.gz
+	sha256sums = 249ee1e30bd9a57a53a74ecfe4248a4c072179542b47814152ccff0be0826e1c
 
 pkgname = r-rcas
