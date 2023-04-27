@@ -1,6 +1,6 @@
 pkgbase = r-apcomplex
 	pkgdesc = Estimate protein complex membership using AP-MS protein data
-	pkgver = 2.64.0
+	pkgver = 2.66.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/apComplex
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-apcomplex
 	depends = r-org.sc.sgd.db
 	depends = r-rbgl
 	depends = r-rgraphviz
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/apComplex_2.64.0.tar.gz
-	sha256sums = caea0cba1cedeae679d64a4d47051b5c5454dea9fd810b9c30f09f0e5b868c79
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/apComplex_2.66.0.tar.gz
+	sha256sums = ee00a01d033dc6270cbd0f94ee163244414918ce179dae572279708cf50af714
 
 pkgname = r-apcomplex
