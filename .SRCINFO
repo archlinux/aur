@@ -1,13 +1,13 @@
 pkgbase = r-director
 	pkgdesc = A dynamic visualization tool of multi-level data
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Director
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-htmltools
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Director_1.24.0.tar.gz
-	sha256sums = 289ca08fc5dd101ffb7bf597131d8723e9e3d456dea1f0044595958af553db2e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Director_1.26.0.tar.gz
+	sha256sums = b12be8a6870193b5fce837851de2a2a2c75aa2e6b8d49f7cb738f97549e83814
 
 pkgname = r-director
