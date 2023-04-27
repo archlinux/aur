@@ -4,7 +4,7 @@ _pkgname='audible-activator'
 pkgname="${_pkgname}-git"
 epoch=1
 pkgver=0.2.r1.20210324.79e2cea
-pkgrel=2
+pkgrel=3
 pkgdesc="A script to retrieve your activation data (activation_bytes) from Audible servers. Use it to play your aax or aax+ files downloaded from amazon audible. Needs chrome or chromium."
 url='http://github.com/inAudible-NG/audible-activator'
 arch=('any')
@@ -43,7 +43,7 @@ _source_base="https://github.com/inAudible-NG/${_pkgname}"
 source=(
   "${_pkgname}::git+${_source_base}"
   "audible-activator.chromedriverpath.patch::http://ix.io/1TLM"
-  "disable-chromedriver-headless-in-debug-mode::https://patch-diff.githubusercontent.com/raw/inAudible-NG/audible-activator/pull/53.patch"
+  "disable-chromedriver-headless-in-debug-mode.patch::https://patch-diff.githubusercontent.com/raw/inAudible-NG/audible-activator/pull/53.patch"
   "fix-no-find_element_by_id-error.patch::https://patch-diff.githubusercontent.com/raw/inAudible-NG/audible-activator/pull/55.patch"
   "audible-activator.sh::http://ix.io/1TLN"
 )
@@ -59,7 +59,7 @@ sha256sums=(
 prepare() {
   cd "${srcdir}/${_pkgname}"
   patch -N -p1 --follow-symlinks -i "${srcdir}/audible-activator.chromedriverpath.patch"
-  patch -N -p1 --follow-symlinks -i "${srcdir}/disable-chromedriver-headless-in-debug-mode"
+  patch -N -p1 --follow-symlinks -i "${srcdir}/disable-chromedriver-headless-in-debug-mode.patch"
   patch -N -p1 --follow-symlinks -i "${srcdir}/fix-no-find_element_by_id-error.patch"
 }
 
