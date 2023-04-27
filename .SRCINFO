@@ -1,6 +1,6 @@
 pkgbase = r-orfik
 	pkgdesc = Open Reading Frames in Genomics
-	pkgver = 1.18.2
+	pkgver = 1.19.7
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ORFik
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgbase = r-orfik
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ORFik_1.18.2.tar.gz
-	sha256sums = 4dbc3730229f25ab64780dec60dabf326c126f08a73dc95ae1988c4c084ec01a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ORFik_1.19.7.tar.gz
+	sha256sums = 86b31d3724bb1be11e6e55fe6424613606e55c471b538a74528be5547bc529d6
 
 pkgname = r-orfik
