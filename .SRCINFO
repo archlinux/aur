@@ -1,6 +1,6 @@
 pkgbase = r-imas
 	pkgdesc = Integrative analysis of Multi-omics data for Alternative Splicing
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/IMAS
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-imas
 	depends = r-s4vectors
 	optdepends = r-biocstyle
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/IMAS_1.22.0.tar.gz
-	sha256sums = a02410adf7b59c50b725ee40962fb2e0354f45e5f3263a03eab8fb5a700483cd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/IMAS_1.24.0.tar.gz
+	sha256sums = 64f9a0747c3468a19c8258747859f360da8d5c03091df94c28ec59b62d96c447
 
 pkgname = r-imas
