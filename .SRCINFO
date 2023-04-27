@@ -1,6 +1,6 @@
 pkgbase = r-neuca
 	pkgdesc = NEUral network-based single-Cell Annotation tool
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/NeuCA
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-neuca
 	optdepends = r-knitr
 	optdepends = r-networkd3
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/NeuCA_1.4.0.tar.gz
-	sha256sums = 2860d108680ee53451b48b8c261bd5ed959dc56bfac3f28b0367f5e38500d56c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/NeuCA_1.6.0.tar.gz
+	sha256sums = 6a822ae97630b91ef64a02d32cecfd0eb62fd30e1741bde51c791c24ebab6b05
 
 pkgname = r-neuca
