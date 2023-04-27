@@ -1,6 +1,6 @@
 pkgbase = r-cellbarcode
 	pkgdesc = Cellular DNA Barcode Analysis toolkit
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CellBarcode
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = r-cellbarcode
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CellBarcode_1.4.0.tar.gz
-	sha256sums = cd0c9629ccb0a4a18f3327bf5b17ea53a1148948c737fd8e8859146179cc2a4e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CellBarcode_1.6.0.tar.gz
+	sha256sums = ced1963d99c0e703e8f31affba515c97cf16e69ee4cb93eb1e6842fd961fd769
 
 pkgname = r-cellbarcode
