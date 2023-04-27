@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TransView
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.42.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc='Read density map construction and accession. Visualization of ChIPSeq and RNASeq data sets'
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4df032874a9ea3cc9fcade62fda924eb0ed68b9355a4fa42ea552d2323978710')
+sha256sums=('0732a8c5630c0fb7faff5917d298e536d26c8f536125306d0e27c01c5aa5e319')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
