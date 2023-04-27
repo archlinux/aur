@@ -1,6 +1,6 @@
 pkgbase = r-marray
 	pkgdesc = Exploratory analysis for two-color spotted microarray data
-	pkgver = 1.76.0
+	pkgver = 1.78.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/marray
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-marray
 	depends = r
 	depends = r-limma
 	optdepends = r-tkwidgets
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/marray_1.76.0.tar.gz
-	sha256sums = fa4d8751414a3038e0c07dc61b90fc10f6ddcfedd520dbfb365088dd25234dad
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/marray_1.78.0.tar.gz
+	sha256sums = 7a16d05da929c055cdb82398698ccd9aa289d6e52782799d455b85670fe90efd
 
 pkgname = r-marray
