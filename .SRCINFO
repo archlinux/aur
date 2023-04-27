@@ -1,6 +1,6 @@
 pkgbase = r-powsc
 	pkgdesc = Simulation, power evaluation, and sample size recommendation for single cell RNA-seq
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/POWSC
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-powsc
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/POWSC_1.6.0.tar.gz
-	sha256sums = 72f85c8cd2089383a7a373ad89f58bb94e39f0a1f1d3a92e1344763abf868a21
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/POWSC_1.8.0.tar.gz
+	sha256sums = 066a436be4397646b8d52e48501e2243dd2ffe98034f692c35dadd156f5a8a96
 
 pkgname = r-powsc
