@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MsBackendRawFileReader
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
-pkgrel=3
+pkgver=1.6.0
+pkgrel=1
 pkgdesc='Mass Spectrometry Backend for Reading Thermo Fisher Scientific raw Files'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -33,7 +33,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6d90b6c4dbc849641942700bf4cfe36fe67c71846f09925238b91158e692738d')
+sha256sums=('50edcf5e23cf0b03edae4da65dd91241347f10f9bfe420878c01074f4a6281b6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

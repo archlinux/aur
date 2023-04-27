@@ -1,7 +1,7 @@
 pkgbase = r-msbackendrawfilereader
 	pkgdesc = Mass Spectrometry Backend for Reading Thermo Fisher Scientific raw Files
-	pkgver = 1.4.0
-	pkgrel = 3
+	pkgver = 1.6.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/MsBackendRawFileReader
 	arch = x86_64
 	license = GPL
@@ -23,7 +23,7 @@ pkgbase = r-msbackendrawfilereader
 	optdepends = r-rmarkdown
 	optdepends = r-tartare
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MsBackendRawFileReader_1.4.0.tar.gz
-	sha256sums = 6d90b6c4dbc849641942700bf4cfe36fe67c71846f09925238b91158e692738d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MsBackendRawFileReader_1.6.0.tar.gz
+	sha256sums = 50edcf5e23cf0b03edae4da65dd91241347f10f9bfe420878c01074f4a6281b6
 
 pkgname = r-msbackendrawfilereader
