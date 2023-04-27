@@ -1,13 +1,13 @@
 pkgbase = r-lpeadj
 	pkgdesc = A correction of the local pooled error (LPE) method to replace the asymptotic variance adjustment with an unbiased adjustment based on sample size.
-	pkgver = 1.58.0
+	pkgver = 1.60.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/LPEadj
 	arch = any
 	license = LGPL
 	depends = r
 	depends = r-lpe
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/LPEadj_1.58.0.tar.gz
-	sha256sums = 390e82684e99dd3b9524cfd6af6b8294ab7ea774bc876f9cefd902ed7883a832
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/LPEadj_1.60.0.tar.gz
+	sha256sums = b61923c7afad208ca8aaf3f83c6cdcb62a353b6a20e4469e9d11b74a37bfd6bd
 
 pkgname = r-lpeadj
