@@ -1,6 +1,6 @@
 pkgbase = r-cnvgsa
 	pkgdesc = Gene Set Analysis of (Rare) Copy Number Variants
-	pkgver = 1.42.0
+	pkgver = 1.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/cnvGSA
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-cnvgsa
 	depends = r-splitstackshape
 	optdepends = r-cnvgsadata
 	optdepends = r-org.hs.eg.db
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cnvGSA_1.42.0.tar.gz
-	sha256sums = 9374e4268b1db6eff253c2e6fe8e81baf75cc239f20dc795fcbf582e699ab487
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cnvGSA_1.44.0.tar.gz
+	sha256sums = 4681deb2a70d78e642a7cee35537affebce2cb8bb26ecd30b1e40cb27319aedb
 
 pkgname = r-cnvgsa
