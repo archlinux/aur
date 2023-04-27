@@ -1,6 +1,6 @@
 pkgbase = r-cma
 	pkgdesc = Synthesis of microarray-based classification
-	pkgver = 1.56.0
+	pkgver = 1.58.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CMA
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-cma
 	optdepends = r-plsgenomics
 	optdepends = r-randomforest
 	optdepends = r-st
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CMA_1.56.0.tar.gz
-	sha256sums = ed06fd2df6333c56caea8b03729e11c1d3d2b31693a94d962eeaf9c0cb830d8f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CMA_1.58.0.tar.gz
+	sha256sums = 132ab3b7f827b6b44252dea47d8ebb6452020627192f763201e8cb97f34a097b
 
 pkgname = r-cma
