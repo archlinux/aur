@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cancerclass
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.42.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc='Development and validation of diagnostic tests from high-dimensional molecular data'
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
   r-cancerdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b9f9acf908d839727bc30c05e42f96f0f5cd0cd6f528eaa97e27a8008c1ca5df')
+sha256sums=('0dea14c6454be23c12af5550f486151965ad885ec7d6e56f50759be920fe992f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
