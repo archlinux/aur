@@ -1,7 +1,7 @@
 pkgbase = mons-git
 	pkgdesc = KISS and POSIX Shell script to quickly manage three monitors on X
 	pkgver = r120.375bbba
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ventto/mons
 	arch = any
 	license = MIT

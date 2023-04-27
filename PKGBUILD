@@ -1,9 +1,9 @@
-# Maintainer: Caleb Bassi <calebjbassi@gmail.com>
+﻿# Maintainer: Edison Ibáñez <arkhan at riseup [dot] net>
 
 pkgname=mons-git
 _pkgname=${pkgname%-git}
 pkgver=r120.375bbba
-pkgrel=1
+pkgrel=2
 pkgdesc="KISS and POSIX Shell script to quickly manage three monitors on X"
 arch=("any")
 url="https://github.com/Ventto/mons"
@@ -28,6 +28,7 @@ pkgver() {
 
 prepare() {
   cd ${srcdir}
+  sed -i -e "s#%LIBDIR%#/usr/lib/libshlist#" ${_pkgname}/mons.sh
   rm -r ${_pkgname}/libshlist
   mv libshlist ${_pkgname}/libshlist
 }
