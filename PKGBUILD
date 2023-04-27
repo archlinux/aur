@@ -15,7 +15,7 @@ optdepends=('libappindicator-gtk3')
 options=("!strip")
 
 package() {
-  find $srcdir/ -mindepth 1 -maxdepth 1 -type d | xargs cp -r -t "$pkgdir"
+  bsdtar -xf ${srcdir}/data.tar.xz -C ${pkgdir}/
 }
 
 post_install() {
