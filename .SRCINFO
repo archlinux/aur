@@ -1,6 +1,6 @@
 pkgbase = r-annotatr
 	pkgdesc = Annotation of Genomic Regions to Genomic Annotations
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/annotatr
 	arch = any
@@ -40,7 +40,7 @@ pkgbase = r-annotatr
 	optdepends = r-txdb.rnorvegicus.ucsc.rn4.ensgene
 	optdepends = r-txdb.rnorvegicus.ucsc.rn5.refgene
 	optdepends = r-txdb.rnorvegicus.ucsc.rn6.refgene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/annotatr_1.24.0.tar.gz
-	sha256sums = f6801db10497495ae259c5556b0eeb1949475bb09e8088ec91e183f566ecc321
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/annotatr_1.26.0.tar.gz
+	sha256sums = fc0ac875e32e4a5ff41e14a6def69a7081e9bd184c1b25364fbe4b7c77984bee
 
 pkgname = r-annotatr
