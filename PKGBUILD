@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bayNorm
-_pkgver=1.16.2
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.2
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Single-cell RNA sequencing data normalization'
 arch=('x86_64')
@@ -32,7 +32,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('21b2c22f685a1d3b82413ab62792146b9b7cafd333553f9453c8c577e1efd018')
+sha256sums=('0e6ef5edfe5c2a797f4dba9bb2279636d9bd63671268845acf8d4974cde9d324')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
