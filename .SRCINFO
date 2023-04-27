@@ -1,7 +1,7 @@
 pkgbase = r-martini
 	pkgdesc = GWAS Incorporating Networks
-	pkgver = 1.18.1
-	pkgrel = 3
+	pkgver = 1.20.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/martini
 	arch = x86_64
 	license = GPL
@@ -21,7 +21,7 @@ pkgbase = r-martini
 	optdepends = r-s4vectors
 	optdepends = r-stringdb
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/martini_1.18.1.tar.gz
-	sha256sums = f80ab82b06ed94d080834cdc1cb69495c6efca4cb139abe461284ad2d5acbc2f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/martini_1.20.0.tar.gz
+	sha256sums = 8e1c583c104e4b80241777f239cb99f1051b933ffc913c4b5ae177cc449c04ee
 
 pkgname = r-martini
