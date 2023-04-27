@@ -1,7 +1,7 @@
 pkgbase = r-microbiome
 	pkgdesc = Microbiome Analytics
-	pkgver = 1.20.0
-	pkgrel = 3
+	pkgver = 1.22.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/microbiome
 	arch = any
 	license = BSD
@@ -23,7 +23,7 @@ pkgbase = r-microbiome
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/microbiome_1.20.0.tar.gz
-	sha256sums = 1d74ab7d2ed1e786e3989bdd0a9e3c94029d615b0bb03340d6df756f7ece74c8
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/microbiome_1.22.0.tar.gz
+	sha256sums = 8807188b77d67f65f95beca562314351c14484fb169cbbfa938ba52cb6f41c88
 
 pkgname = r-microbiome
