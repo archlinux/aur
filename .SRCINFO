@@ -1,6 +1,6 @@
 pkgbase = r-gosim
 	pkgdesc = Computation of functional similarities between GO terms and gene products; GO enrichment analysis
-	pkgver = 1.36.0
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GOSim
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = r-gosim
 	depends = r-rcpp
 	depends = r-topgo
 	optdepends = r-igraph
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GOSim_1.36.0.tar.gz
-	sha256sums = ceee9f86ce1bd6ff4740b48e40a69a8310c9c7baf4a2614f06edf959430fbe43
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GOSim_1.38.0.tar.gz
+	sha256sums = 619aea5528a1d24e155c51c97635c62b3ef0cd0e6a571236eeffe018e983cec4
 
 pkgname = r-gosim
