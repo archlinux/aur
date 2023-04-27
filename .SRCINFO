@@ -1,6 +1,6 @@
 pkgbase = r-redseq
 	pkgdesc = Analysis of high-throughput sequencing data processed by restriction enzyme digestion
-	pkgver = 1.44.0
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/REDseq
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-redseq
 	depends = r-chippeakanno
 	depends = r-iranges
 	depends = r-multtest
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/REDseq_1.44.0.tar.gz
-	sha256sums = fe7176ee8e6223db252907230ba1379f149789c28e99ea66085a5eaa0227208f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/REDseq_1.46.0.tar.gz
+	sha256sums = 546645c46f39bcbd29f2e6fe025e5cbd0af5d4bf4a3c2af0129bfc5b33a5741b
 
 pkgname = r-redseq
