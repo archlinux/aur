@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=affycomp
-_pkgver=1.74.0
+_pkgver=1.76.0
 pkgname=r-${_pkgname,,}
-pkgver=1.74.0
+pkgver=1.76.0
 pkgrel=1
 pkgdesc='Graphics Toolbox for Assessment of Affymetrix Expression Measures'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   r-splines
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3acf9bf6cdefbfbbea0f81c6d7498aec5a0e1f020615e747e56fb14399b47da1')
+sha256sums=('c2d0dec094d63636cc6e7946430bef93214256de3234f98e76c2c2369ad94aaf')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
