@@ -1,7 +1,7 @@
 pkgbase = widelands-debug-git
 	pkgdesc = An elaborate realtime multiplayer strategy game with emphasis on economy and transport - development version. In the spirit of BlueByte's 'Siedler II/ Settlers 2'. Debug build, with in-game debug console, debugging symbols, and source code documentation.
 	pkgver = 1.2.r26106.20230414.167ae86
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 0
 	url = http://widelands.org/
 	arch = armv7h
