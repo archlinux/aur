@@ -1,6 +1,6 @@
 pkgbase = r-erccdashboard
 	pkgdesc = Assess Differential Gene Expression Experiments with ERCC Controls
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/erccdashboard
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-erccdashboard
 	depends = r-rocr
 	depends = r-scales
 	depends = r-stringr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/erccdashboard_1.32.0.tar.gz
-	sha256sums = 28bf8b66e8c1aaaf946d9c220aa2da04ca2af00885fb1790df7e8650675c9b8b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/erccdashboard_1.34.0.tar.gz
+	sha256sums = a7865588544f54b8846802cb71e7838b120456c7628d3bd8c9fb306eb3cbd555
 
 pkgname = r-erccdashboard
