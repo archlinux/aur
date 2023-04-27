@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DEScan2
-_pkgver=1.18.2
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.2
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Differential Enrichment Scan 2'
 arch=('x86_64')
@@ -41,7 +41,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1a7c5238903c7ae3262ce40e692674b9b2e487e66b1cf3a766132f2a04be7bb4')
+sha256sums=('00f07a77f25f4c4f39c1fbc854e51811deeb0daba55f4cdd05d6185c4f3fe0ff')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

@@ -1,6 +1,6 @@
 pkgbase = r-descan2
 	pkgdesc = Differential Enrichment Scan 2
-	pkgver = 1.18.2
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DEScan2
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = r-descan2
 	optdepends = r-ruvseq
 	optdepends = r-statmod
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DEScan2_1.18.2.tar.gz
-	sha256sums = 1a7c5238903c7ae3262ce40e692674b9b2e487e66b1cf3a766132f2a04be7bb4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DEScan2_1.20.0.tar.gz
+	sha256sums = 00f07a77f25f4c4f39c1fbc854e51811deeb0daba55f4cdd05d6185c4f3fe0ff
 
 pkgname = r-descan2
