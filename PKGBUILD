@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=antiProfiles
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='Implementation of gene expression anti-profiles'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-rcolorbrewer
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('83295ff4cab52d45bbf079fc16894a89f9d72074f5595f80df4b3a66c7196238')
+sha256sums=('e841db1cb9c3ea56122fa0a4a7adbf1b02c66e0932449ffd03791bedccc8a047')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
