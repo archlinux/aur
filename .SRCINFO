@@ -1,6 +1,6 @@
 pkgbase = r-browserviz
 	pkgdesc = BrowserViz: interactive R/browser graphics using websockets and JSON
-	pkgver = 2.20.0
+	pkgver = 2.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BrowserViz
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-browserviz
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BrowserViz_2.20.0.tar.gz
-	sha256sums = 5abe54789e8b7c058eb8af3fe97f5ac086f1961ffa630bb6c65c07a496aa1004
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BrowserViz_2.22.0.tar.gz
+	sha256sums = 23ab56fff69b10a96f48ee63035f42dd1da7baebe9626eda8e24ae71a863ad91
 
 pkgname = r-browserviz
