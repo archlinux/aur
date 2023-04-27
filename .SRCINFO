@@ -1,6 +1,6 @@
 pkgbase = r-rscudo
 	pkgdesc = Signature-based Clustering for Diagnostic Purposes
-	pkgver = 1.14.0
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rScudo
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-rscudo
 	optdepends = r-rcy3
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rScudo_1.14.0.tar.gz
-	sha256sums = 8c6dbfdf49e2858914f026bd3419d8ed3be8b6e5cb6480c460461eb472e067ae
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rScudo_1.16.0.tar.gz
+	sha256sums = 79ca7ee5f6784d754ba074fffcd1bc8ec25f18000e8d14a047560639e87ed472
 
 pkgname = r-rscudo
