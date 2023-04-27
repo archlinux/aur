@@ -1,13 +1,13 @@
 pkgbase = r-dfp
 	pkgdesc = Gene Selection
-	pkgver = 1.56.0
+	pkgver = 1.58.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DFP
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-biobase
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DFP_1.56.0.tar.gz
-	sha256sums = ee8d0f09e899fc83b884d3710eb3903de2df3ece7c729a19bd31ac180c216fde
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DFP_1.58.0.tar.gz
+	sha256sums = 91e92935c39ef63c8b544d09509975995a39e3f162a341542d6a2cac0a3e8dfc
 
 pkgname = r-dfp
