@@ -1,6 +1,6 @@
 pkgbase = r-biocor
 	pkgdesc = Functional similarities
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BioCor
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-biocor
 	optdepends = r-targetscan.hs.eg.db
 	optdepends = r-testthat
 	optdepends = r-wgcna
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BioCor_1.22.0.tar.gz
-	sha256sums = 86a38538e2dcc69f392df9be2422afd4c3635ab3baf4ed7f5152acac6af61d29
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BioCor_1.24.0.tar.gz
+	sha256sums = f7cc5d35f3a26ce67487e8710a56bd7740c92b07d97ffff0dc72494013f488ab
 
 pkgname = r-biocor
