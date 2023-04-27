@@ -1,16 +1,21 @@
 pkgbase = ttf-noto-emoji-monochrome
-	pkgdesc = Monochrome Android emojis from Noto font project.
-	pkgver = 2015_07_08
-	pkgrel = 1
-	epoch = 1
-	url = https://github.com/googlei18n/noto-emoji
-	install = ttf-noto-emoji-monochrome.install
+	pkgdesc = Google Noto Emoji Monochrome font
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = https://fonts.google.com/noto/specimen/Noto+Emoji
 	arch = any
-	license = Apache
-	depends = fontconfig
-	depends = xorg-font-utils
-	source = noto-emoji.zip::https://github.com/googlei18n/noto-emoji/archive/cba9c622628d5f0968b81fd3a46edb12120ebee7.zip
-	md5sums = 7f3a93b8cf40347d60f9741a61d6db92
+	license = OFL
+	source = NotoEmoji-Bold-1.0.0.ttf::https://github.com/zjaco13/Noto-Emoji-Monochrome/raw/d5db91a19628f57c31332bb7e6f9ae3465678b4f/fonts/NotoEmoji-Bold.ttf
+	source = NotoEmoji-Light-1.0.0.ttf::https://github.com/zjaco13/Noto-Emoji-Monochrome/raw/d5db91a19628f57c31332bb7e6f9ae3465678b4f/fonts/NotoEmoji-Light.ttf
+	source = NotoEmoji-Medium-1.0.0.ttf::https://github.com/zjaco13/Noto-Emoji-Monochrome/raw/d5db91a19628f57c31332bb7e6f9ae3465678b4f/fonts/NotoEmoji-Medium.ttf
+	source = NotoEmoji-Regular-1.0.0.ttf::https://github.com/zjaco13/Noto-Emoji-Monochrome/raw/d5db91a19628f57c31332bb7e6f9ae3465678b4f/fonts/NotoEmoji-Regular.ttf
+	source = NotoEmoji-SemiBold-1.0.0.ttf::https://github.com/zjaco13/Noto-Emoji-Monochrome/raw/d5db91a19628f57c31332bb7e6f9ae3465678b4f/fonts/NotoEmoji-SemiBold.ttf
+	source = ttf-noto-emoji-monochrome-1.0.0-OFL.txt::https://github.com/zjaco13/Noto-Emoji-Monochrome/raw/d5db91a19628f57c31332bb7e6f9ae3465678b4f/OFL.txt
+	sha256sums = 11b9d9b7c8782dc974c89a0e2a65e51759df70fe6166fee7e1c110d74c8191c8
+	sha256sums = 07c5c1a58c9c398063ae18e59f28b3e3662e908a0e8c64dddcd377118d343624
+	sha256sums = fcee5bd83cccf20f7b3407498080bf46c43b1393fb5122aaed35f20ee504dd64
+	sha256sums = 65fc21f6ad86acbe43c29f89ffc0dd77621709a517a50edd1370aa80230cc8fb
+	sha256sums = beb8c1f06961cd601eea31bf4aba72f11e37d558af36d59b09ae548780139e65
+	sha256sums = 7f18ec1ebb6b50e3ed0f74b2c61f25b8d7cd69e43f4de66e991bcfd3c419a8bb
 
 pkgname = ttf-noto-emoji-monochrome
-
