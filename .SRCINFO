@@ -1,6 +1,6 @@
 pkgbase = xguipro-git
 	pkgdesc = xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit.
-	pkgver = 0.6.4.r9.gc189849
+	pkgver = 0.6.4.r17.gacebe74
 	pkgrel = 1
 	url = https://github.com/HVML/xGUI-Pro
 	arch = x86_64
