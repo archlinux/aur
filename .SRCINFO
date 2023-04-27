@@ -1,6 +1,6 @@
 pkgbase = r-oscope
 	pkgdesc = Oscope - A statistical pipeline for identifying oscillatory genes in unsynchronized single cell RNA-seq
-	pkgver = 1.28.0
+	pkgver = 1.30.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Oscope
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-oscope
 	depends = r-ebseq
 	depends = r-testthat
 	optdepends = r-biocstyle
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Oscope_1.28.0.tar.gz
-	sha256sums = 49c021d51aaa071ff5a63000e4d4041659b1cbe2c48884591daf4ac07c72a410
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Oscope_1.30.0.tar.gz
+	sha256sums = bb604fe4c67971b5e3045d4cccdc12ea955d68a01f9674d88e784616833fb214
 
 pkgname = r-oscope
