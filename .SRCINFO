@@ -1,6 +1,6 @@
 pkgbase = r-dominoeffect
 	pkgdesc = Identification and Annotation of Protein Hotspot Residues
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DominoEffect
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-dominoeffect
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DominoEffect_1.18.0.tar.gz
-	sha256sums = dce8e8228c26093e8df8c84a59f7d46cd5999104b2408282d86b128955156696
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DominoEffect_1.20.0.tar.gz
+	sha256sums = f218ea22944c7566e5b5491bcff48a2df4b11d84de0fe476caa6a7007a267425
 
 pkgname = r-dominoeffect
