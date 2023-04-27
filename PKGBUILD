@@ -1,6 +1,6 @@
 # Maintainer: pathetic_lynx <pathetic_lynx@protonmail.com>
 #
-commit_id="65fffb4053642ae6923dd1cb1d9092b23f663a29"
+commit_id="d432d8d60de3d41a7b9ca1bc031b2344e8009d26"
 
 pkgname="dspdfviewer-git"
 pkgver="20221021_${commit_id:0:8}"
@@ -14,13 +14,14 @@ makedepends=('cmake' 'boost' 'qt5-tools')
 conflicts=('dspdfviewer')
 provides=('dspdfviewer')
 source=("https://github.com/dannyedel/dspdfviewer/archive/${commit_id}.tar.gz")
-sha256sums=('311112972bb20836be7717bc25949c2d5fe383b8bb87018c3d87380156c8d293')
-b2sums=('11461d8aebc098ca77c75825212c631f3e3cec0b462594546d850dd4c2cd5782d3a73126c34e76cbc74645c939ed96d614a0c92bf97d57d55b3e0cd494283971')
+sha256sums=('c4be2d9703bf9b0cc985009fe34e1d466edb7dc977e4f606d414f9ba4be8a5d6')
+b2sums=('8832f565e11c1df1ec2803ff666eebec3986e44631d2342d9a16fd95028ee7f97efad2bea6b5047dd304db210d20fe75a53584307f8a97f743ae7d040537627e')
 
 build() {
   cd "dspdfviewer-${commit_id}"
   cmake \
-    -DCMAKE_CXX_STANDARD=14 \
+    -DCMAKE_CXX_STANDARD=17 \
+    -DCMAKE_CXX_STANDARD_REQUIRED=17 \
     -DCMAKE_INSTALL_PREFIX="/usr/" \
     -DSYSCONFDIR="/etc" \
     -DCMAKE_BUILD_TYPE=Release \
