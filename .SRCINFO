@@ -1,12 +1,12 @@
 pkgbase = r-iseq
 	pkgdesc = Bayesian Hierarchical Modeling of ChIP-seq Data Through Hidden Ising Models
-	pkgver = 1.50.0
+	pkgver = 1.52.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/iSeq
 	arch = x86_64
 	license = GPL
 	depends = r
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/iSeq_1.50.0.tar.gz
-	sha256sums = 3844ed6677caa630de01f4ba1d770bf04bc994807268bff0de543c9404500dc0
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/iSeq_1.52.0.tar.gz
+	sha256sums = 03ed37bb6bf74c643f7d76499232ba282bd745997889b8fc53b9e0e0eb575d85
 
 pkgname = r-iseq
