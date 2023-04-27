@@ -2,7 +2,7 @@
 pkgname=ttf-foundertype-sc-fonts
 pkgver=1.0
 pkgdesc="FounderType Free Fonts.方正免费字体.方正书宋,方正仿宋,方正楷体,方正黑体."
-pkgrel=2
+pkgrel=3
 arch=(any)
 url='https://github.com/wordshub/free-font'
 _myurl="https://github.com/zxp19821005/My_AUR_Files"
@@ -21,6 +21,5 @@ sha256sums=('b5e4a745d7132abc8bbc482c3c096d30ef4c36fe3260a630fc12cfb16394e675'
             'bd99fe368b31c62e29ee8456c8fdeb86277786a17e8e40be00ecbe5e4fc7c275')
 package() {
     export LC_CTYPE="zh_CN.UTF-8"  
-    install -dm755 "${pkgdir}/usr/share/fonts/FounderType"
-    cp "${srcdir}"/*.ttf "${pkgdir}/usr/share/fonts/FounderType"
+    install -Dm444 "${srcdir}/"*.ttf -t "${pkgdir}/usr/share/fonts/FounderType"
 }

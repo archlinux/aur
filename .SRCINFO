@@ -1,7 +1,7 @@
 pkgbase = ttf-foundertype-sc-fonts
 	pkgdesc = FounderType Free Fonts.方正免费字体.方正书宋,方正仿宋,方正楷体,方正黑体.
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/wordshub/free-font
 	arch = any
 	license = unknown
