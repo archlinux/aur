@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=aggregateBioVar
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Differential Gene Expression Analysis for Multi-subject scRNA-seq'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-viridis
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8258b7753d78f6ae2e808cd5f0d269b7fa6d14cfc1063041638731308860daea')
+sha256sums=('12c68d0659b83ec462e29b03d19424d00f0b0d490205e1c7404d311d6433f63c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

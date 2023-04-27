@@ -1,6 +1,6 @@
 pkgbase = r-aggregatebiovar
 	pkgdesc = Differential Gene Expression Analysis for Multi-subject scRNA-seq
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/aggregateBioVar
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-aggregatebiovar
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-viridis
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/aggregateBioVar_1.8.0.tar.gz
-	sha256sums = 8258b7753d78f6ae2e808cd5f0d269b7fa6d14cfc1063041638731308860daea
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/aggregateBioVar_1.10.0.tar.gz
+	sha256sums = 12c68d0659b83ec462e29b03d19424d00f0b0d490205e1c7404d311d6433f63c
 
 pkgname = r-aggregatebiovar
