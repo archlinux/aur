@@ -1,12 +1,14 @@
 pkgbase = alibabasans-sea-fonts
 	pkgdesc = A typeface for creating alibaba sans sea in text.阿里巴巴普惠体SEA,拉丁+越南文+泰文语种组合,3字重
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fonts.alibabagroup.com/#/font
 	arch = any
 	license = custom
 	source = alibabasans-sea-fonts-1.0.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlibabaSansSEA.zip
-	sha512sums = e954f039bfbc9a17aeb81fbdb8c58d7d4c453166cebb726ce105d0bbc104038090cb071b7af36d3d84e6b2be0a1f4317699e582f66364aeef79c30ba2951c4be
+	source = license.txt
+	sha256sums = 57d4d74b11beafa235a3c5c519b98645ea4a3f7f025b89e31da1966e5d9b1c55
+	sha256sums = 059e73dc0745c057bdd0654a98166f96e07bb6bd3a350459aa8f479c733f12ba
 
 pkgname = ttf-alibabasans-sea-fonts
 
