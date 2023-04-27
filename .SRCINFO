@@ -1,6 +1,6 @@
 pkgbase = r-clustifyr
 	pkgdesc = Classifier for Single-cell RNA-seq Using Cell Clusters
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/clustifyr
 	arch = any
@@ -36,7 +36,7 @@ pkgbase = r-clustifyr
 	optdepends = r-seurat
 	optdepends = r-shiny
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/clustifyr_1.10.0.tar.gz
-	sha256sums = af9d7eed474848c7d45f00cedbb2b24ac979a5258b4c6b542048cb6a586df6f8
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/clustifyr_1.12.0.tar.gz
+	sha256sums = 65e7189f5966d811d76bdcf9e2c215302acadb6354eb45e4e568abbeebd1cf44
 
 pkgname = r-clustifyr
