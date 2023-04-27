@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MODA
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
-pkgrel=3
+pkgver=1.26.0
+pkgrel=1
 pkgdesc='MODA: MOdule Differential Analysis for weighted gene co-expression network'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -23,7 +23,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('45c49918a81260d921adbfeb4538b0c5be97ed202e3b64738b68754efc576e9d')
+sha256sums=('7e458f00c4082a1a3cb23f4d75e70449e8118af0479edf976b973a5feeddf065')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
