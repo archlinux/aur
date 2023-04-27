@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=parglms
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='support for parallelized estimation of GLMs/GEEs'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-sandwich
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ac57b79824c210f4e08f9602621fae3a75b7b0b4f4433d712ee6ac1e038394b0')
+sha256sums=('075e3b440cbd7134205b565377de15acd9800a09409478fd9fcdd989a1bf0909')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

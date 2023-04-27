@@ -1,6 +1,6 @@
 pkgbase = r-parglms
 	pkgdesc = support for parallelized estimation of GLMs/GEEs
-	pkgver = 1.30.0
+	pkgver = 1.32.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/parglms
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-parglms
 	optdepends = r-rmarkdown
 	optdepends = r-runit
 	optdepends = r-sandwich
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/parglms_1.30.0.tar.gz
-	sha256sums = ac57b79824c210f4e08f9602621fae3a75b7b0b4f4433d712ee6ac1e038394b0
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/parglms_1.32.0.tar.gz
+	sha256sums = 075e3b440cbd7134205b565377de15acd9800a09409478fd9fcdd989a1bf0909
 
 pkgname = r-parglms
