@@ -1,6 +1,6 @@
 pkgbase = r-outrider
 	pkgdesc = OUTRIDER - OUTlier in RNA-Seq fInDER
-	pkgver = 1.16.3
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/OUTRIDER
 	arch = x86_64
@@ -40,7 +40,7 @@ pkgbase = r-outrider
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/OUTRIDER_1.16.3.tar.gz
-	sha256sums = 9684dd78d65e0bbe87e81b6d805824d488179cd96ae4cd351059b522610f6037
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/OUTRIDER_1.18.0.tar.gz
+	sha256sums = 31481815dff9bb218896599d7d7f0134cf6e60aa46b68ba650866e10f5f9d1e2
 
 pkgname = r-outrider

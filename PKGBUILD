@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=OUTRIDER
-_pkgver=1.16.3
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.3
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='OUTRIDER - OUTlier in RNA-Seq fInDER'
 arch=('x86_64')
@@ -49,7 +49,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9684dd78d65e0bbe87e81b6d805824d488179cd96ae4cd351059b522610f6037')
+sha256sums=('31481815dff9bb218896599d7d7f0134cf6e60aa46b68ba650866e10f5f9d1e2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
