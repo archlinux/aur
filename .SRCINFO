@@ -1,6 +1,6 @@
 pkgbase = r-biocio
 	pkgdesc = Standard Input and Output for Bioconductor Packages
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BiocIO
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-biocio
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocIO_1.8.0.tar.gz
-	sha256sums = 2e41284256ef5dac4deb27ee41f973092e091c387a77cf3e3d588c39aceea495
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocIO_1.10.0.tar.gz
+	sha256sums = 9d4fa959a4205bfdca81f45c0efebdc5bab9f89e8bd6478a830c4e33cfa31a0e
 
 pkgname = r-biocio
