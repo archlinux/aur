@@ -1,17 +1,19 @@
 pkgbase = otf-maoken-heavy-labourer
 	pkgdesc = Maoken Heavy Labourer | 猫啃网扛重族
 	pkgver = 1.001
-	pkgrel = 1
-	url = https://github.com/NightFurySL2001/maoken-heavy-labourer
+	pkgrel = 2
+	url = https://www.maoken.com/freefonts/11067.html
 	arch = any
-	license = SIL1.1
+	license = custom:SIL1.1
 	source = https://github.com/NightFurySL2001/maoken-heavy-labourer/releases/download/v1.001/MaokenHeavyLabourer-Gothic-Regular.otf
 	source = https://github.com/NightFurySL2001/maoken-heavy-labourer/releases/download/v1.001/MaokenHeavyLabourer-Ming-Regular.otf
 	source = https://github.com/NightFurySL2001/maoken-heavy-labourer/releases/download/v1.001/MaokenHeavyLabourerSC-Gothic-Regular.otf
 	source = https://github.com/NightFurySL2001/maoken-heavy-labourer/releases/download/v1.001/MaokenHeavyLabourerSC-Ming-Regular.otf
+	source = LICENSE.txt::https://github.com/NightFurySL2001/maoken-heavy-labourer/raw/main/LICENSE.txt
 	sha256sums = c6c4506799e89bdeb6e708d0739ea62af56ce710954793fb18c31320da4f55ab
 	sha256sums = 24cbb6cba4d1dbbf10c019b9ea49edf60e7684dd9093b4e858e277429985ab3f
 	sha256sums = 76a63996daa20e493d4bcd1c1ee8754b8a15300abe904412e30ac9c631a5e89b
 	sha256sums = cc2ed989b782944d3e04ceeac4f76fa5f7e0139a24b658b63991cf041f5f5ca7
+	sha256sums = 9b4364250e518bb44aee5d7d0a19f9981c6c84576afc7d077e5726db0b6db479
 
 pkgname = otf-maoken-heavy-labourer
