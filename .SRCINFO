@@ -1,6 +1,6 @@
 pkgbase = r-gdsfmt
 	pkgdesc = R Interface to CoreArray Genomic Data Structure (GDS) Files
-	pkgver = 1.34.1
+	pkgver = 1.36.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/gdsfmt
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = r-gdsfmt
 	optdepends = r-parallel
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/gdsfmt_1.34.1.tar.gz
-	sha256sums = 5d8b6d91574cd67d29ba2b1a0e74f96f52b6071f373a54a76136cb4608f7a7eb
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/gdsfmt_1.36.0.tar.gz
+	sha256sums = 9dafa1a02224d70809e600f2fb8d98bcd15d89e805b90f327b5096c559216482
 
 pkgname = r-gdsfmt
