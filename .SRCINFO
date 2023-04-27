@@ -1,6 +1,6 @@
 pkgbase = r-minimumdistance
 	pkgdesc = A Package for De Novo CNV Detection in Case-Parent Trios
-	pkgver = 1.42.0
+	pkgver = 1.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MinimumDistance
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-minimumdistance
 	optdepends = r-human610quadv1bcrlmm
 	optdepends = r-runit
 	optdepends = r-snow
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MinimumDistance_1.42.0.tar.gz
-	sha256sums = 677ed1bf4754bb6204872aaef8f1c5fdd10bd56591d43a2643821a6a8f50a964
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MinimumDistance_1.44.0.tar.gz
+	sha256sums = 4d18c7825f3957d8e981609697e5ea1acafe6152603417e1a58d9ea2b9e5b4ab
 
 pkgname = r-minimumdistance
