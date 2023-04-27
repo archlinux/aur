@@ -1,6 +1,6 @@
 pkgbase = r-stager
 	pkgdesc = stageR: stage-wise analysis of high throughput gene expression data in R
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/stageR
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-stager
 	optdepends = r-methods
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/stageR_1.20.0.tar.gz
-	sha256sums = 1568cbb00db6186239aa0e914a14ac310bdb3933fccb9497e032fea9d2de5ed1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/stageR_1.22.0.tar.gz
+	sha256sums = ba962d48b8972010fbd4e50e8b09dac419a3d0872c0897fa42bc3cf1008cbb29
 
 pkgname = r-stager
