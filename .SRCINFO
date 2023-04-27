@@ -1,6 +1,6 @@
 pkgbase = r-paircompviz
 	pkgdesc = Multiple comparison test visualization
-	pkgver = 1.36.0
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/paircompviz
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-paircompviz
 	optdepends = r-reshape
 	optdepends = r-rpart
 	optdepends = r-xtable
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/paircompviz_1.36.0.tar.gz
-	sha256sums = 1046c677f88c97a31d1ebdcc32c5397087861cb44a0ee6834429e84812b13ddb
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/paircompviz_1.38.0.tar.gz
+	sha256sums = eadf7e856990e86dc8a79ecf58939054605b424615eaceea9c884db34e30cd80
 
 pkgname = r-paircompviz
