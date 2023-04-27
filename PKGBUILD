@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BBCAnalyzer
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='BBCAnalyzer: an R/Bioconductor package for visualizing base counts'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-bsgenome.hsapiens.ucsc.hg19
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('95a05943fd7103cc488ea518b64c84d5f6953d1de4a7bfa984a6936c97aec906')
+sha256sums=('eef650ac5cf833123ac1f31b6c961046f9c8f4547cbd0e7ecd4e959e795a8731')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
