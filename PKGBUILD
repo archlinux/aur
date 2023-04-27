@@ -20,15 +20,18 @@ makedepends=(
   'wayland-protocols'
   'xorgproto')
 depends=(
-  'libxcb' 'xcb-util' 'xcb-util-cursor' 'xcb-util-wm'
-  'wayland'
-  'pixman'
-  'libyaml'
   'alsa-lib'
-  'libudev.so'
+  'fcft>=3.0.0'
   'json-c'
   'libmpdclient'
-  'fcft>=3.0.0')
+  'libudev.so'
+  'libxcb'
+  'libyaml'
+  'pixman'
+  'wayland'
+  'xcb-util'
+  'xcb-util-cursor'
+  'xcb-util-wm')
 optdepends=('xcb-util-errors: better X error messages')
 provides=("${_pkgname}=$pkgver")
 conflicts=("${_pkgname}")

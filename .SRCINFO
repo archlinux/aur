@@ -13,18 +13,18 @@ pkgbase = yambar-git
 	makedepends = tllist>=1.0.1
 	makedepends = wayland-protocols
 	makedepends = xorgproto
+	depends = alsa-lib
+	depends = fcft>=3.0.0
+	depends = json-c
+	depends = libmpdclient
+	depends = libudev.so
 	depends = libxcb
+	depends = libyaml
+	depends = pixman
+	depends = wayland
 	depends = xcb-util
 	depends = xcb-util-cursor
 	depends = xcb-util-wm
-	depends = wayland
-	depends = pixman
-	depends = libyaml
-	depends = alsa-lib
-	depends = libudev.so
-	depends = json-c
-	depends = libmpdclient
-	depends = fcft>=3.0.0
 	optdepends = xcb-util-errors: better X error messages
 	provides = yambar=1.6.1.r60.g18a0920
 	conflicts = yambar
