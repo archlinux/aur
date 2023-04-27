@@ -1,6 +1,6 @@
 pkgbase = r-reactomepa
 	pkgdesc = Reactome Pathway Analysis
-	pkgver = 1.42.0
+	pkgver = 1.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ReactomePA
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-reactomepa
 	optdepends = r-prettydoc
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ReactomePA_1.42.0.tar.gz
-	sha256sums = c2c55cf86b81841303952d9c4d4acac1ad964d31c1f8a5d17ff4679b26242919
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ReactomePA_1.44.0.tar.gz
+	sha256sums = f653161aebe31642362f5c8a943bbaaa8cce25437bd0798d9b4620d1cec7c8c3
 
 pkgname = r-reactomepa
