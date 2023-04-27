@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ReadqPCR
-_pkgver=1.44.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
-pkgver=1.44.0
+pkgver=1.46.0
 pkgrel=1
 pkgdesc='Read qPCR data'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
   r-qpcr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7bf233d4899fcce7c4f15f12e3b1e03f5acf35333f92a161d2178a1dc6af42eb')
+sha256sums=('6bcc683a14b483f27a339a1fa4a61a9b398c1f5aeed6cf573219b63dc63f2044')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
