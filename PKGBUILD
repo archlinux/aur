@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=recoup
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='An R package for the creation of complex genomic profile plots'
 arch=('any')
@@ -41,7 +41,7 @@ optdepends=(
   r-zoo
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cae6b048ef53c26edf71179e3308cf2632d74bf8eac67d931896553c934a2a02')
+sha256sums=('3915cadd451e8cee3ba42e214a92e154c75344b548757ec953f49a982047dada')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
