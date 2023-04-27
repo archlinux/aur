@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rawrr
-_pkgver=1.6.1
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.1
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Direct Access to Orbitrap Data and Beyond'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e03b6af6f85070613bfb1097846dd7c8c9deb0622d2ca8e5f1d4a7621649e21b')
+sha256sums=('f7d9aca5194161f3e4ce9fd2beb5c5e15fa853de51b8768eef2656f5d296ad26')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
