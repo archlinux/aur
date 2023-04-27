@@ -1,6 +1,6 @@
 pkgbase = r-dnashaper
 	pkgdesc = High-throughput prediction of DNA shape features
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DNAshapeR
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = r-dnashaper
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DNAshapeR_1.26.0.tar.gz
-	sha256sums = 0a536bf0667cb33576ba3c989c0c4be31c12df19f6aad6642b0dd8399cb34132
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DNAshapeR_1.28.0.tar.gz
+	sha256sums = 93801247ba4d70ee7ed9a0252ea471131756da792d6c186de07c67e719524e0f
 
 pkgname = r-dnashaper
