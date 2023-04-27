@@ -1,7 +1,7 @@
 pkgbase = r-scannotatr
 	pkgdesc = Pretrained learning models for cell type prediction on single cell RNA-sequencing data
-	pkgver = 1.4.0
-	pkgrel = 3
+	pkgver = 1.6.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/scAnnotatR
 	arch = any
 	license = MIT
@@ -23,7 +23,7 @@ pkgbase = r-scannotatr
 	optdepends = r-rmarkdown
 	optdepends = r-scrnaseq
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scAnnotatR_1.4.0.tar.gz
-	sha256sums = 237d1d9ebf6bc35430c2b2a7783bdd52207c9e07efc37b19dd3dfff567198065
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scAnnotatR_1.6.0.tar.gz
+	sha256sums = d649fa0ee31464b75c82b4f2fe1a3e6c98d4bd9a50bb791009f2c16c6713b857
 
 pkgname = r-scannotatr
