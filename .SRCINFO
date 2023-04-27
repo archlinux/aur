@@ -1,6 +1,6 @@
 pkgbase = r-normalize450k
 	pkgdesc = Preprocessing of Illumina Infinium 450K data
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/normalize450K
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = r-normalize450k
 	depends = r-biobase
 	depends = r-illuminaio
 	depends = r-quadprog
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/normalize450K_1.26.0.tar.gz
-	sha256sums = 63a3dfef130007584d616636c464fb1622cde1a6a9df9c042e5a3c3c793338a9
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/normalize450K_1.28.0.tar.gz
+	sha256sums = 627f07a87a14f1e587014e593d4f191777a8f555a80542f12163d66a19c0a146
 
 pkgname = r-normalize450k
