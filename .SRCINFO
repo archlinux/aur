@@ -1,6 +1,6 @@
 pkgbase = r-phipdata
 	pkgdesc = Container for PhIP-Seq Experiments
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/PhIPData
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-phipdata
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/PhIPData_1.6.0.tar.gz
-	sha256sums = 8dabb70df812138a969ce07a4c9181b696742b164b40a50b30ff6f314afea1be
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PhIPData_1.8.0.tar.gz
+	sha256sums = 11f4033b6588b2087a70076e580b3839fa84510404f2dbfb3fecd85efc1d9aee
 
 pkgname = r-phipdata
