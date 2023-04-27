@@ -1,7 +1,7 @@
 pkgbase = r-dino
 	pkgdesc = Normalization of Single-Cell mRNA Sequencing Data
-	pkgver = 1.4.0
-	pkgrel = 3
+	pkgver = 1.6.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/Dino
 	arch = any
 	license = GPL
@@ -25,7 +25,7 @@ pkgbase = r-dino
 	optdepends = r-magick
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Dino_1.4.0.tar.gz
-	sha256sums = 2efcc5e8f19c3eef71ab114fc841490222cc8db766b6113f040fc445846670cb
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Dino_1.6.0.tar.gz
+	sha256sums = fb5f09cb8154b7c3f925195da23fec1337bc04518570b784b1bba7664b92fa8b
 
 pkgname = r-dino
