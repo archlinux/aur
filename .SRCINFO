@@ -1,6 +1,6 @@
 pkgbase = r-anvilpublish
 	pkgdesc = Publish Packages and Other Resources to AnVIL Workspaces
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/AnVILPublish
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-anvilpublish
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/AnVILPublish_1.8.0.tar.gz
-	sha256sums = 5c536ee4e581ea6a934ed321c6a29dafac86cb6a95e9fb46d826feecef71bfc4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/AnVILPublish_1.10.0.tar.gz
+	sha256sums = 4b5986e0e12962ba94c6834ef95d004e97f93a54fc25e3ee75b71d637a331bac
 
 pkgname = r-anvilpublish
