@@ -1,6 +1,6 @@
 pkgbase = r-rsemmed
 	pkgdesc = An interface to the Semantic MEDLINE database
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rsemmed
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-rsemmed
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rsemmed_1.8.0.tar.gz
-	sha256sums = 5b31ca3ad38edafb70064df145b39c67e21e3cd9d19bc24086f960060bb8f678
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rsemmed_1.10.0.tar.gz
+	sha256sums = c505d8093bab5d94131c147ed81311b2138141b831d7018452a7794aab5fcb1a
 
 pkgname = r-rsemmed
