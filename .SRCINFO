@@ -1,6 +1,6 @@
 pkgbase = r-opencyto
 	pkgdesc = Hierarchical Gating Pipeline for flow cytometry data
-	pkgver = 2.10.1
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/openCyto
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = r-opencyto
 	optdepends = r-testthat
 	optdepends = r-tools
 	optdepends = r-utils
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/openCyto_2.10.1.tar.gz
-	sha256sums = 20438f78c21727634fee387658dd798284e796dddd411f75f80f7d0b5b529a9b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/openCyto_2.12.0.tar.gz
+	sha256sums = ca5e0336b4c08c4cba761ebf5e10e670dd836614718c1e30c5325c356b02177c
 
 pkgname = r-opencyto
