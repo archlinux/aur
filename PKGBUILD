@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ndexr
-_pkgver=1.20.1
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.1
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='NDEx R client library'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('dbcb5b2ab5c719dac0f83a32fa63bb99b3536b9b58f7804d06abf530084cd754')
+sha256sums=('3b31404e50f0a2fd5cd6ae0994b9705e5b65a5d8698ad7c2bdd0e89a231f09be')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
