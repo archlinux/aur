@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=iASeq
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.42.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc='iASeq: integrating multiple sequencing datasets for detecting allele-specific events'
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a5418249dc5a4bcd19f8c1fa95a305ba36513c57e62ddeabf1edf943d0e9eaec')
+sha256sums=('28d67f4f99e76955609c5af7589de20f7d23a774f19f6f6f3886ae20b6115a76')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
