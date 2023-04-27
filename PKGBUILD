@@ -1,11 +1,11 @@
 # Maintainer: 7Ji <pugokughin@gmail.com>
 
 _desc="flippy's AArch64-focused fork aiming to increase usability"
-_pkgver_main=6.1.24
+_pkgver_main=6.1.26
 _pkgver_suffix=flippy
 _pkgver_uname="${_pkgver_main}-${_pkgver_suffix}"
 _flippy_repo='linux-6.1.y'
-_flippy_commit='2c936ab9379154a13e759b30916134704072ee3a'
+_flippy_commit='06e93d0351d703cce92e588ba2e7cc5a36d65fdb'
 _srcname="${_flippy_repo}-${_flippy_commit}"
 
 pkgbase=linux-aarch64-flippy
@@ -29,18 +29,23 @@ source=(
   "${_srcname}.tar.gz::${url}/archive/${_flippy_commit}.tar.gz"
   'config'
   'linux.preset'
+  '0001-drivers-auxdisplay-openvfd-improve-dev-write-logic.patch'
 )
 sha256sums=(
-  '028d8c6740eefd0efbce294c0ca5e80d97f89ee146ad41bff3adf958ba10002f'
-  '3cb447597f018e7af120840fbfe9be2900703765817b53a242a4ac6fae517a30'
+  '56db5ed562987e41eb4efdce21193cf28c7e3cafc6a91457de729b2f25d92822'
+  'eea825bef9a873be55cab26035cc6b16e210f4effba905fadc22de444e2b7f30'
   'bdcd6cbf19284b60fac6d6772f1e0ec2e2fe03ce7fe3d7d16844dd6d2b5711f3'
+  '6fcc328ca286e8fa86d8988aa2f01afdd41cf650425baa967eebbb9e29bca5a4'
 )
 
 prepare() {
   cd "${_srcname}"
 
-#   echo "Patching kernel..."
-#   patch -p1 < '../support-amlogic-proprietary-partition.patch'
+  echo "Patching kernel..."
+  local file_patch
+  for file_patch in "${source[@]:3}"; do 
+    patch -p1 < "../${file_patch}"
+  done
 
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion

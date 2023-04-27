@@ -1,0 +1,101 @@
+From ae04984a5b4905b6326f9c1d94c554381d289634 Mon Sep 17 00:00:00 2001
+From: 7Ji <pugokushin@gmail.com>
+Date: Thu, 27 Apr 2023 23:46:33 +0800
+Subject: [PATCH] drivers: auxdisplay: openvfd: improve dev write logic
+
+---
+ drivers/auxdisplay/openvfd/openvfd_drv.c | 64 ++++++++++++++----------
+ 1 file changed, 37 insertions(+), 27 deletions(-)
+
+diff --git a/drivers/auxdisplay/openvfd/openvfd_drv.c b/drivers/auxdisplay/openvfd/openvfd_drv.c
+index bd1a4c0d2..485fa48d9 100644
+--- a/drivers/auxdisplay/openvfd/openvfd_drv.c
++++ b/drivers/auxdisplay/openvfd/openvfd_drv.c
+@@ -216,6 +216,8 @@ static ssize_t openvfd_dev_read(struct file *filp, char __user * buf,
+ 		return ret;
+ }
+ 
++#define OPENVFD_DEV_WRITE_RAW_LENGTH 10
++
+ /**
+  * @param buf: Incoming LED codes.
+  * 		  [0]	Display indicators mask (wifi, eth, usb, etc.)
+@@ -226,40 +228,48 @@ static ssize_t openvfd_dev_write(struct file *filp, const char __user * buf,
+ 				   size_t count, loff_t * f_pos)
+ {
+ 	ssize_t status = 0;
+-	unsigned long missing;
+ 	static struct vfd_display_data data;
+-
+-	if (count == sizeof(data)) {
+-		missing = copy_from_user(&data, buf, count);
+-		if (missing == 0 && count > 0) {
++	static unsigned char raw_data[OPENVFD_DEV_WRITE_RAW_LENGTH];
++
++	if (count > 0) {
++		void *data_p;
++		bool should_free = false;
++		bool write_raw = false;
++		switch (count) {
++			case sizeof data:
++				data_p = &data;
++				break;
++			case OPENVFD_DEV_WRITE_RAW_LENGTH:
++				data_p = raw_data;
++				write_raw = true;
++				break;
++			default:
++				if (!(data_p = kzalloc(count, GFP_KERNEL))) {
++					pr_error("openvfd_dev_write failed to allocate %ld bytes (raw_data)\n", count);
++					return -1;
++				}
++				should_free = true;
++				write_raw = true;
++				break;
++		}
++		if (!copy_from_user(data_p, buf, count)) {
++			size_t write_count = 0;
+ 			mutex_lock(&mutex);
+-			if (controller->write_display_data(&data))
+-				pr_dbg("openvfd_dev_write count : %ld\n", count);
+-			else {
+-				status = -1;
+-				pr_error("openvfd_dev_write failed to write %ld bytes (display_data)\n", count);
++			if (write_raw) {
++				write_count = controller->write_data((unsigned char*)raw_data, count);
++			} else {
++				write_count = controller->write_display_data(&data);
+ 			}
+ 			mutex_unlock(&mutex);
+-		}
+-	} else if (count > 0) {
+-		unsigned char *raw_data;
+-		pr_dbg2("openvfd_dev_write: count = %ld, sizeof(data) = %ld\n", count, sizeof(data));
+-		raw_data = kzalloc(count, GFP_KERNEL);
+-		if (raw_data) {
+-			missing = copy_from_user(raw_data, buf, count);
+-			mutex_lock(&mutex);
+-			if (controller->write_data((unsigned char*)raw_data, count))
+-				pr_dbg("openvfd_dev_write count : %ld\n", count);
+-			else {
++			if (write_count) {
++				pr_dbg("openvfd_dev_write %ld from %ld bytes\n", write_count, count);
++			} else {
+ 				status = -1;
+-				pr_error("openvfd_dev_write failed to write %ld bytes (raw_data)\n", count);
++				pr_error("openvfd_dev_write failed to write %ld bytes (display_data)\n", count);
+ 			}
+-			mutex_unlock(&mutex);
+-			kfree(raw_data);
+ 		}
+-		else {
+-			status = -1;
+-			pr_error("openvfd_dev_write failed to allocate %ld bytes (raw_data)\n", count);
++		if (should_free) {
++			kfree(data_p);
+ 		}
+ 	}
+ 
+-- 
+2.40.0
+
