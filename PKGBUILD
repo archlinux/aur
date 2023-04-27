@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Qtlizer
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='Comprehensive QTL annotation of GWAS results'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5bc9d6043a37d65cc93ff6960a10636c44b4fd347a5626cadf12f454173b0ed7')
+sha256sums=('1f536b5f139e4972f85639de0911cc6d7b43e54ddb9ac3e22e89fc444d48d3e6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
