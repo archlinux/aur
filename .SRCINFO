@@ -1,6 +1,6 @@
 pkgbase = r-ebcoexpress
 	pkgdesc = EBcoexpress for Differential Co-Expression Analysis
-	pkgver = 1.42.0
+	pkgver = 1.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/EBcoexpress
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = r-ebcoexpress
 	optdepends = r-colorspace
 	optdepends = r-graph
 	optdepends = r-igraph
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/EBcoexpress_1.42.0.tar.gz
-	sha256sums = d68fa67c3d594dcdf5d456ecf5f312ab94e65d047409226d0482e092a51e5a71
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/EBcoexpress_1.44.0.tar.gz
+	sha256sums = b800e77940f504251e453b90153812e12b9f794c745d10a4f1c51d9d41ee0710
 
 pkgname = r-ebcoexpress
