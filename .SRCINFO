@@ -1,6 +1,6 @@
 pkgbase = r-rprotobuflib
 	pkgdesc = C++ headers and static libraries of Protocol buffers
-	pkgver = 2.10.0
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RProtoBufLib
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = r-rprotobuflib
 	depends = r
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RProtoBufLib_2.10.0.tar.gz
-	sha256sums = 55e45aff285a370ce7909f03eb21e1c265a611241cf2a397f4105c86f2d4a51d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RProtoBufLib_2.12.0.tar.gz
+	sha256sums = 7846dc801fafa692ec09e1816971418e02d71c63b9e50785f67c484aae1b8b62
 
 pkgname = r-rprotobuflib
