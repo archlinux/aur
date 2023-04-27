@@ -1,6 +1,6 @@
 pkgbase = r-pcatools
 	pkgdesc = PCAtools: Everything Principal Components Analysis
-	pkgver = 2.10.0
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/PCAtools
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = r-pcatools
 	optdepends = r-rmtstat
 	optdepends = r-scran
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/PCAtools_2.10.0.tar.gz
-	sha256sums = cd091f1a4d1cd7b92aea07e5e307ae015403ef77742b4e3da09cc25ca55462e4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PCAtools_2.12.0.tar.gz
+	sha256sums = 253d34478152bb759ac67e14ae003a1e435af8c855ac08c983d39ef6853e741e
 
 pkgname = r-pcatools
