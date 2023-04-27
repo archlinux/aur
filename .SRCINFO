@@ -1,6 +1,6 @@
 pkgbase = r-stringdb
 	pkgdesc = STRINGdb (Search Tool for the Retrieval of Interacting proteins database)
-	pkgver = 2.10.1
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/STRINGdb
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-stringdb
 	depends = r-sqldf
 	optdepends = r-biocgenerics
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/STRINGdb_2.10.1.tar.gz
-	sha256sums = 9552ceae36676acf03af841fe56393ea38991ad6d717b2e5219422c71cd2fa62
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/STRINGdb_2.12.0.tar.gz
+	sha256sums = 64b26d6acc2cb59f3c0089ea9eed156b984f5f32948e531602e27bb5fe4f9755
 
 pkgname = r-stringdb
