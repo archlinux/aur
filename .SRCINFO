@@ -1,6 +1,6 @@
 pkgbase = r-sbmlr
 	pkgdesc = SBML-R Interface and Analysis Tools
-	pkgver = 1.94.0
+	pkgver = 1.96.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SBMLR
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = r-sbmlr
 	depends = r-desolve
 	depends = r-xml
 	optdepends = r-rsbml
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SBMLR_1.94.0.tar.gz
-	sha256sums = 4d9cacc90b66c80a56c4202d5a999f1214780be4345fbb7a4dcca7bdd411f7f4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SBMLR_1.96.0.tar.gz
+	sha256sums = a27e50d2f4f72568535d2928db9c6772e94c14fee124917fe0a742605c201991
 
 pkgname = r-sbmlr
