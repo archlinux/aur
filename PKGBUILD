@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=vidger
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Create rapid visualizations of RNAseq data in R'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ce2b7db186ab83c6cab11b50271b407572765c72f1ff9e35d53021e3603ad820')
+sha256sums=('ca9afeb2504c6f7f584cd9f6815ba0e782d7dded6b0e566d4b68cc9ed2d1916b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
