@@ -1,6 +1,6 @@
 pkgbase = r-spacepac
 	pkgdesc = Identification of Mutational Clusters in 3D Protein Space via Simulation.
-	pkgver = 1.36.0
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SpacePAC
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-spacepac
 	optdepends = r-biocgenerics
 	optdepends = r-rgl
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SpacePAC_1.36.0.tar.gz
-	sha256sums = 05d273854a6d49e2e2ac76945acbb248d032fa7d41b2f0e3dcf4e8a89ac26b5d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SpacePAC_1.38.0.tar.gz
+	sha256sums = caba0c98ec3349c45cf12604f2acdff0b055cd372880d90a86dd89d9b3cecd50
 
 pkgname = r-spacepac
