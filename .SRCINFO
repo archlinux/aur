@@ -1,6 +1,6 @@
 pkgbase = r-flowcatchr
 	pkgdesc = Tools to analyze in vivo microscopy imaging data focused on tracking flowing blood cells
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/flowcatchR
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-flowcatchr
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowcatchR_1.32.0.tar.gz
-	sha256sums = bf51ed3d8cd469fb3eb315ab2cecc38733d57b219463dc00c0dd9f22871d98ba
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowcatchR_1.34.0.tar.gz
+	sha256sums = 2ed5bdfde6c6085a5b4e4f98ebcb19bc1ea01ab1092b442cae88d5977f2c3295
 
 pkgname = r-flowcatchr
