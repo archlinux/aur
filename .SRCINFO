@@ -1,17 +1,17 @@
 pkgbase = fabric-installer
 	pkgdesc = installer for the Minecraft mod loader Fabric
-	pkgver = 0.11.1
+	pkgver = 0.11.2
 	pkgrel = 1
 	url = https://fabricmc.net
 	arch = any
 	license = Apache-2.0
 	depends = java-environment>=8
-	source = https://maven.fabricmc.net/net/fabricmc/fabric-installer/0.11.1/fabric-installer-0.11.1.jar
+	source = https://maven.fabricmc.net/net/fabricmc/fabric-installer/0.11.2/fabric-installer-0.11.2.jar
 	source = https://raw.githubusercontent.com/FabricMC/fabric-installer/master/LICENSE
 	source = https://fabricmc.net/assets/logo.png
 	source = fabric-installer
 	source = fabric-installer.desktop
-	sha256sums = 7917f9fa14be6da6ef3cdb7fe6bf3b63a593a0eb873bd627e981a7e3988cd73a
+	sha256sums = c6ad5bef1bb12b5a7227be3ee540c2c906afdf4ac8114b78e0aca0b146005c27
 	sha256sums = b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1
 	sha256sums = a41878c3c4c5790cfc920eabf98d3404103a74a6f3df69d632ceb220c9ec9dc7
 	sha256sums = 20b3368adc352dfc241b84d62aabd05734863650225ae3930deee9ca53a2c0a8
