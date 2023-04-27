@@ -1,12 +1,12 @@
 pkgbase = r-aseb
 	pkgdesc = Predict Acetylated Lysine Sites
-	pkgver = 1.42.0
+	pkgver = 1.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ASEB
 	arch = x86_64
 	license = GPL
 	depends = r
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ASEB_1.42.0.tar.gz
-	sha256sums = 8a7b544dde05eaa1f2491bf66917a1a16f7f44eadf20db5244fef3a3aaa026cf
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ASEB_1.44.0.tar.gz
+	sha256sums = f05a237a2306685ccad85eb2f0bc28b5b3f389e1e09d56658386c7f4725906b7
 
 pkgname = r-aseb
