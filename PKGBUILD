@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CORREP
-_pkgver=1.64.0
+_pkgver=1.66.0
 pkgname=r-${_pkgname,,}
-pkgver=1.64.0
+pkgver=1.66.0
 pkgrel=1
 pkgdesc='Multivariate Correlation Estimator and Statistical Inference Procedures.'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   r-mass
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('21e079bbf7718acda18d50e0f6c2528891426f005f5de5c3539b7eacd12ef91e')
+sha256sums=('254969fd1658574bc59ccc06228d4cdd4dcf76f11600297447475e2b8e9d52bf')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
