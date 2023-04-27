@@ -3,7 +3,7 @@
 
 pkgname='mygui-gl-git'
 pkgver=3.4.2.git
-pkgrel=1.1
+pkgrel=1
 
 pkgdesc="MyGUI - OpenGL backend"
 arch=('i686' 'x86_64' 'aarch64')
