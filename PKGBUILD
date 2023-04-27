@@ -2,11 +2,11 @@
 
 pkgname=obs-ndi-bin
 pkgver=4.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Network A/V in OBS Studio with NewTek's NDI technology"
 arch=('x86_64')
 license=('GPL2')
-url="https://github.com/Palakis/obs-ndi"
+url='https://github.com/Palakis/obs-ndi'
 provides=('obs-ndi')
 conflicts=('obs-ndi-git')
 depends=('obs-studio' 'avahi' 'libndi')
@@ -15,6 +15,9 @@ sha256sums=('cca87f5409239a2be8229ed550c42b81b972d1b2c805773bec2ed8d8cdbe852e')
 
 package() {
     cd "${srcdir}"
-
     tar -xf data.tar.gz -C "${pkgdir}"
+
+    cd "${pkgdir}"
+    mv usr/lib/x86_64-linux-gnu/obs-plugins usr/lib
+    rm -r usr/lib/x86_64-linux-gnu
 }
