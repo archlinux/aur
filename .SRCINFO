@@ -1,6 +1,6 @@
 pkgbase = r-blma
 	pkgdesc = BLMA: A package for bi-level meta-analysis
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BLMA
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-blma
 	depends = r-rontotools
 	optdepends = r-biocgenerics
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BLMA_1.22.0.tar.gz
-	sha256sums = 19d00e334a8ea69084d49a2c5a4f0b709804cb204ba1806556f916091e71bd4b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BLMA_1.24.0.tar.gz
+	sha256sums = 012f01bc4a86e021c804bfc88249503ac126634df649a2984f0d65d7a539fa36
 
 pkgname = r-blma
