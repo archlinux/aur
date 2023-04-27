@@ -1,6 +1,6 @@
 pkgbase = r-rcellminer
 	pkgdesc = rcellminer: Molecular Profiles, Drug Response, and Chemical Structures for the NCI-60 Cell Lines
-	pkgver = 2.20.0
+	pkgver = 2.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rcellminer
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-rcellminer
 	optdepends = r-rmarkdown
 	optdepends = r-sqldf
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rcellminer_2.20.0.tar.gz
-	sha256sums = 51561933ac3e5b46841734a89ad12a5520772d7cf18ec877fdf7479032f6dd0a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rcellminer_2.22.0.tar.gz
+	sha256sums = 4dabbd3e6e46d5f1f862231aec73dcbb6039a236b8589a722ebb334f76281909
 
 pkgname = r-rcellminer
