@@ -1,6 +1,6 @@
 pkgbase = r-odseq
 	pkgdesc = Outlier detection in multiple sequence alignments
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/odseq
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-odseq
 	depends = r-mclust
 	depends = r-msa
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/odseq_1.26.0.tar.gz
-	sha256sums = 187f0b89163b950245487cedcf442577a4795fe8eda5244b7958ab3ebca2a15c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/odseq_1.28.0.tar.gz
+	sha256sums = 38859c5c5eb948651726eaa45239fe81902fde7768b32d2f23c6363dea810ae5
 
 pkgname = r-odseq
