@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=nethet
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='A bioconductor package for high-dimensional exploration of biological network heterogeneity'
 arch=('x86_64')
@@ -33,7 +33,7 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('eb255d6f67fdad30bed02d2f8acbea724dd33c7824791b529f640420e1951e36')
+sha256sums=('2cc3f5454777838bf9c05acaf190d193ec1fb2042ea5a92ba44cec94c15aefd4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
