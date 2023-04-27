@@ -1,6 +1,6 @@
 pkgbase = r-scbn
 	pkgdesc = A statistical normalization method and differential expression analysis for RNA-seq data between different species
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SCBN
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-scbn
 	depends = r
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SCBN_1.16.0.tar.gz
-	sha256sums = ffcdb41d69d6c145b996f10fdecf9c2962c1494b47659dc2aa2d14e2ac2a56d1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SCBN_1.18.0.tar.gz
+	sha256sums = d93e131dbef23c198a1f729dd45fcfaa7a28f93e23656dd0cad3294d898470ac
 
 pkgname = r-scbn
