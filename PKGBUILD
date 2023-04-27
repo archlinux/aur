@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=dcanr
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
-pkgrel=3
+pkgver=1.16.0
+pkgrel=1
 pkgdesc='Differential co-expression/association network analysis'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -38,7 +38,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fe76034820e6cdd0bb303e7d56aede8f02f2e56d3dea1487ec1bddb11554c66f')
+sha256sums=('69736ec409e1b1d12cbecbf4ae01ea6084327a57b1c8878f52ee96f30b859d64')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

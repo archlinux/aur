@@ -1,7 +1,7 @@
 pkgbase = r-dcanr
 	pkgdesc = Differential co-expression/association network analysis
-	pkgver = 1.14.0
-	pkgrel = 3
+	pkgver = 1.16.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/dcanr
 	arch = any
 	license = GPL
@@ -29,7 +29,7 @@ pkgbase = r-dcanr
 	optdepends = r-rmarkdown
 	optdepends = r-summarizedexperiment
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/dcanr_1.14.0.tar.gz
-	sha256sums = fe76034820e6cdd0bb303e7d56aede8f02f2e56d3dea1487ec1bddb11554c66f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/dcanr_1.16.0.tar.gz
+	sha256sums = 69736ec409e1b1d12cbecbf4ae01ea6084327a57b1c8878f52ee96f30b859d64
 
 pkgname = r-dcanr
