@@ -1,6 +1,6 @@
 pkgbase = r-easyrnaseq
 	pkgdesc = Count summarization and normalization for RNA-Seq data
-	pkgver = 2.34.0
+	pkgver = 2.36.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/easyRNASeq
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = r-easyrnaseq
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/easyRNASeq_2.34.0.tar.gz
-	sha256sums = a3b8714a89f1c9b66a66e76c45caa0e3314f9f2dc1ab8517a026e909f1fda120
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/easyRNASeq_2.36.0.tar.gz
+	sha256sums = 77b524f4411e4e3c354a438972e9513774794256c059ab789f60de9bcd245db1
 
 pkgname = r-easyrnaseq
