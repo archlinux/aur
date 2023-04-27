@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=clstutils
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='Tools for performing taxonomic assignment'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3affa6becaca3fd3e46861aced1dfcf67deae77253fb4b76c64612087ef8a80b')
+sha256sums=('c2859cfb46cf15c7ba24522cefeb08c99456fb8ebb58d12df81bafe84109539b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
