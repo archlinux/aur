@@ -10,7 +10,7 @@ pkgbase = evdi-compat-git
 	makedepends = libdrm
 	makedepends = linux-headers
 	depends = dkms
-	provides = evdi=1.12.1
+	provides = evdi=1.13.1
 	conflicts = evdi
 	conflicts = evdi-git
 	source = git+https://github.com/Varun-garg/evdi-compat#branch=devel
