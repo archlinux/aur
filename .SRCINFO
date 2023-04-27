@@ -1,6 +1,6 @@
 pkgbase = r-cytomapper
 	pkgdesc = Visualization of highly multiplexed imaging data in R
-	pkgver = 1.10.1
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/cytomapper
 	arch = any
@@ -33,7 +33,7 @@ pkgbase = r-cytomapper
 	optdepends = r-rmarkdown
 	optdepends = r-shinytest
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cytomapper_1.10.1.tar.gz
-	sha256sums = 7c52376ab2f56b2b566f5210bf09f427193a0cc11cd91d9990b9c72a3ba75535
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cytomapper_1.12.0.tar.gz
+	sha256sums = accae57d6e5e0120341f48f57854688d8f203d5f1ec06948e1dacf4bb86171fc
 
 pkgname = r-cytomapper
