@@ -21,6 +21,7 @@ pkgbase = goldendict-ng-git
 	depends = qt6-multimedia
 	depends = qt6-webengine
 	depends = qt6-speech
+	depends = qt6-5compat
 	provides = goldendict
 	conflicts = goldendict
 	conflicts = goldendict-git

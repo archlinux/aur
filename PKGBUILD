@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/xiaoyifang/goldendict-ng"
 license=('GPL3')
 depends=('ffmpeg' 'hunspell' 'libvorbis' 'libxtst' 'lzo' 'zlib' 'xz' 'libeb' 'opencc'
-	 'qt6-svg' 'qt6-tools' 'qt6-multimedia' 'qt6-webengine' 'qt6-speech')
+	 'qt6-svg' 'qt6-tools' 'qt6-multimedia' 'qt6-webengine' 'qt6-speech' 'qt6-5compat')
 makedepends=('git')
 conflicts=('goldendict' 'goldendict-git' 'goldendict-svn' 'goldendict-git-opt')
 provides=('goldendict')
