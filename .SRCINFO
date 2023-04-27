@@ -1,6 +1,6 @@
 pkgbase = r-biodb
 	pkgdesc = biodb, a library and a development framework for connecting to chemical and biological databases
-	pkgver = 1.6.1
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/biodb
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = r-biodb
 	optdepends = r-roxygen2
 	optdepends = r-testthat
 	optdepends = r-xml2
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/biodb_1.6.1.tar.gz
-	sha256sums = 7f233197c9852638c167ccc5a733d56363c98407813e1e5a125c2aa155d47855
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/biodb_1.8.0.tar.gz
+	sha256sums = b394a2bea684f3c406cbdb5564893dc289ad995716cf8cf13d0c66e57ec092d1
 
 pkgname = r-biodb
