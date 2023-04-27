@@ -1,6 +1,6 @@
 pkgbase = r-appreci8r
 	pkgdesc = appreci8R: an R/Bioconductor package for filtering SNVs and short indels with high sensitivity and high PPV
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/appreci8R
 	arch = any
@@ -37,7 +37,7 @@ pkgbase = r-appreci8r
 	depends = r-xtrasnplocs.hsapiens.dbsnp144.grch37
 	optdepends = r-go.db
 	optdepends = r-org.hs.eg.db
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/appreci8R_1.16.0.tar.gz
-	sha256sums = e71a9004f07bcd2325dfb1de51725e8fb6bf79523265a3ee27318849be6d54eb
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/appreci8R_1.18.0.tar.gz
+	sha256sums = 718fa0ad45ced0c25d4de12ebc77afd1c2602b7dbcaa5950e268d2af2759bce6
 
 pkgname = r-appreci8r
