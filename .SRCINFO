@@ -1,13 +1,13 @@
 pkgbase = r-lapmix
 	pkgdesc = Laplace Mixture Model in Microarray Experiments
-	pkgver = 1.64.0
+	pkgver = 1.66.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/lapmix
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-biobase
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/lapmix_1.64.0.tar.gz
-	sha256sums = 4b27ef68a7c8ec4adb10897069eaa6805decd04d71cd151aa6d06e0dd7fe0d66
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/lapmix_1.66.0.tar.gz
+	sha256sums = 40792a5e3aa65fea1ad65304207d458b33f5a109b18fa5ebacdc78177c6ad5cf
 
 pkgname = r-lapmix
