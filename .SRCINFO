@@ -1,7 +1,7 @@
 pkgbase = r-nucleosim
 	pkgdesc = Generate synthetic nucleosome maps
-	pkgver = 1.26.0
-	pkgrel = 3
+	pkgver = 1.28.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/nucleoSim
 	arch = any
 	license = Artistic2.0
@@ -13,7 +13,7 @@ pkgbase = r-nucleosim
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/nucleoSim_1.26.0.tar.gz
-	sha256sums = c66352634545180f32c209cc1fb6830c1ae51790a053cd6cd1232b962697f431
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/nucleoSim_1.28.0.tar.gz
+	sha256sums = 9e2d69c1e03e935f5e3de16f816ba6b19f7c088a161b3e4f36aa58458654e2ee
 
 pkgname = r-nucleosim
