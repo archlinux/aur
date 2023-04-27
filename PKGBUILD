@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CrispRVariants
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Tools for counting and visualising mutations in a target location'
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
   r-variantannotation
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8a1d89869ed62212175cae5c20004feeb843a0ce1d676f2f3f1a48e95fb18ba0')
+sha256sums=('ec6784bde9558707bb778f38b075c008861edb7778fdc735abdbb482ade7be6f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
