@@ -1,7 +1,7 @@
 pkgbase = r-cancersubtypes
 	pkgdesc = Cancer subtypes identification, validation and visualization based on multiple genomic data sets
-	pkgver = 1.24.0
-	pkgrel = 3
+	pkgver = 1.26.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/CancerSubtypes
 	arch = any
 	license = GPL
@@ -15,7 +15,7 @@ pkgbase = r-cancersubtypes
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-rtcga.mrna
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CancerSubtypes_1.24.0.tar.gz
-	sha256sums = c1f376c8c9a3f978051daba94ba3fee7873a6f88f1254a36f7c9c7fb9680e7b6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CancerSubtypes_1.26.0.tar.gz
+	sha256sums = b9ce6665cbf7a813de63009551fa34f5196c8e89e170701029057237c83a9c1a
 
 pkgname = r-cancersubtypes
