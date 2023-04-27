@@ -1,7 +1,7 @@
 pkgbase = r-multimir
 	pkgdesc = Integration of multiple microRNA-target databases with their disease and drug associations
-	pkgver = 1.20.0
-	pkgrel = 3
+	pkgver = 1.22.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/multiMiR
 	arch = any
 	license = MIT
@@ -18,7 +18,7 @@ pkgbase = r-multimir
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/multiMiR_1.20.0.tar.gz
-	sha256sums = 2959561a79277522e7634214d17ed30bf2da861783cfdc3938f1e2c059c8d2fd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/multiMiR_1.22.0.tar.gz
+	sha256sums = 5b7eca3f3b23dd9d6c86c90919037c44455a8ae126b690d41f427b2100e6e675
 
 pkgname = r-multimir
