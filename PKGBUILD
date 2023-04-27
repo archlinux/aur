@@ -8,24 +8,20 @@ url='https://netbird.io'
 arch=(i686 pentium4 x86_64 arm armv7h armv6h aarch64 riscv64)
 license=(BSD)
 
-provides=($pkgname)
-conflicts=($pkgname)
 depends=(glibc)
 makedepends=('go>=1.19')
 optdepends=('resolvconf: Private DNS')
 replaces=(wiretrustee)
 options=('!emptydirs')
 
-_package=github.com/netbirdio/$pkgname
-
 source=(
-  "$pkgname-$pkgver.tar.gz::https://$_package/archive/refs/tags/v$pkgver.tar.gz"
+  "$pkgname-$pkgver.tar.gz::https://github.com/netbirdio/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
   'environment'
   'netbird@.service'
 )
 sha256sums=('c9bd9ee9eeb7fe18be78fb7d6a66281113a15c34a6d942c169c67caceec59dbc'
-            '128e36e1f814a12886f3122a1809a404be17f81481275b6624e66937941f5269'
-            '3bd6d2692dc6d08cfabce1ba2514c02f4463294ebbdb63828baca5d9e4c9daa9')
+  '128e36e1f814a12886f3122a1809a404be17f81481275b6624e66937941f5269'
+  '3bd6d2692dc6d08cfabce1ba2514c02f4463294ebbdb63828baca5d9e4c9daa9')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -38,7 +34,7 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
 
   go build \
-    -ldflags "-s -w -linkmode=external -X $_package/version.version=$pkgver -extldflags \"$LDFLAGS\"" \
+    -ldflags "-s -w -linkmode=external -X github.com/netbirdio/$pkgname/version.version=$pkgver -extldflags \"$LDFLAGS\"" \
     -o build/"$pkgname" \
     client/main.go
 
@@ -55,31 +51,32 @@ check() {
 }
 
 package() {
-  _source="$srcdir/$pkgname-$pkgver"
-
-  # binary
-  install -Dm755 "$_source/build/$pkgname" "$pkgdir/usr/bin/$pkgname"
-
-  # config directory
-  install -Ddm755 -o root -g root "$pkgdir/etc/$pkgname"
-
   # environment file
   install -Dm644 environment "$pkgdir/etc/default/$pkgname"
 
   # systemd unit
-  install -Dm644 "$pkgname@.service" \
+  install -Dm644 $pkgname@.service \
     "$pkgdir/usr/lib/systemd/system/$pkgname@.service"
 
+  # config directory
+  install -Ddm755 -o root -g root "$pkgdir/etc/$pkgname"
+
+  cd "$srcdir/$pkgname-$pkgver"
+
+  # binary
+  install -Dm755 build/$pkgname "$pkgdir/usr/bin/$pkgname"
+
   # license
-  install -Dm644 "$_source/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # shell completions
-  install -Dm644 "$_source/build/completion.bash" \
+  install -Dm644 build/completion.bash \
     "$pkgdir/usr/share/bash-completion/completions/$pkgname"
 
-  install -Dm644 "$_source/build/completion.fish" \
+  install -Dm644 build/completion.fish \
     "$pkgdir/usr/share/fish/completions/$pkgname.fish"
 
-  install -Dm644 "$_source/build/completion.zsh" \
+  install -Dm644 build/completion.zsh \
     "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
