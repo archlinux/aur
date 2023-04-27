@@ -1,6 +1,6 @@
 pkgbase = r-amplican
 	pkgdesc = Automated analysis of CRISPR experiments
-	pkgver = 1.20.0
+	pkgver = 1.21.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/amplican
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = r-amplican
 	optdepends = r-biocstyle
 	optdepends = r-genomicalignments
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/amplican_1.20.0.tar.gz
-	sha256sums = 32a24f5cf473fd48add725d192aefafc6a92fa09e0cfdbd66559adfe4c0429b1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/amplican_1.21.0.tar.gz
+	sha256sums = 0a622cba7517e899c563e0de641dfdc58578a371c38bb6d4076308a5dd1e1d79
 
 pkgname = r-amplican
