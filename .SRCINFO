@@ -1,23 +1,22 @@
 pkgbase = fatrat-git
 	pkgdesc = Qt Download/Upload Manager
-	pkgver = 1.2.0_beta2.60.g1b0dd1f
+	pkgver = 1.2.0.b2.r60.g1b0dd1f
 	pkgrel = 1
-	url = http://fatrat.dolezel.info
+	url = https://github.com/LubosD/fatrat
 	arch = i686
 	arch = x86_64
-	license = custom: GPL2 + complement
-	makedepends = git
-	makedepends = cmake
+	license = GPL3
 	makedepends = boost
-	depends = curl
+	makedepends = cmake
+	makedepends = git
 	depends = libtorrent-rasterbar
-	depends = qt5-tools
 	depends = qt5-svg
+	depends = qt5-tools
 	depends = qt5-webengine
 	optdepends = desktop-file-utils: add application to MIME database
 	provides = fatrat
 	conflicts = fatrat
-	source = git+https://github.com/LubosD/fatrat.git#branch=develop
+	source = fatrat::git+https://github.com/LubosD/fatrat#branch=develop
 	sha256sums = SKIP
 
 pkgname = fatrat-git
