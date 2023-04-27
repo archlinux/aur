@@ -1,6 +1,6 @@
 pkgbase = r-struct
 	pkgdesc = Statistics in R Using Class-based Templates
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/struct
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-struct
 	optdepends = r-rmarkdown
 	optdepends = r-rstudioapi
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/struct_1.10.0.tar.gz
-	sha256sums = eef24bd104f666017f24d2c791834c8265700559bfeea5ca448786dddf443f5e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/struct_1.12.0.tar.gz
+	sha256sums = 49214a0466bc95368c13ccd9702d12ee5ffc3be97ca7ac8d8f6c6048c713c9ed
 
 pkgname = r-struct
