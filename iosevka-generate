@@ -138,7 +138,7 @@ def parse_config(config_file: Path) -> Tuple[str, Dict[str, Set[str]], Optional[
         elif option == "nerdfont":
             nerdfont = value.split(" ")
         elif option == "ligset":
-            font_styles["ligations"].add(option)
+            font_styles["ligations"].add(value)
         else:
             font_styles["options"].add(f'{option} = "{value}"')
 
