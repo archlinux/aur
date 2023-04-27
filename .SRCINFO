@@ -1,6 +1,6 @@
 pkgbase = r-interactivecomplexheatmap
 	pkgdesc = Make Interactive Complex Heatmaps
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/InteractiveComplexHeatmap
 	arch = any
@@ -50,7 +50,7 @@ pkgbase = r-interactivecomplexheatmap
 	optdepends = r-testthat
 	optdepends = r-tidyheatmap
 	optdepends = r-tidyverse
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/InteractiveComplexHeatmap_1.6.0.tar.gz
-	sha256sums = 11df0f10c2c9cb395fcf71c027f5333ecfd6eb33390a77a89b1135711e585493
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/InteractiveComplexHeatmap_1.8.0.tar.gz
+	sha256sums = c5f89cbc9ccd2f5933501a156ec8b42e7f5bd4e0e46c94b95c5959c9a6fb1e8f
 
 pkgname = r-interactivecomplexheatmap
