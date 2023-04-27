@@ -1,6 +1,6 @@
 pkgbase = r-xnastring
 	pkgdesc = Efficient Manipulation of Modified Oligonucleotide Sequences
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/XNAString
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = r-xnastring
 	optdepends = r-pander
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/XNAString_1.6.0.tar.gz
-	sha256sums = 08a5bee6f488d402f47fce805e62f360b2c554cd6683791c63558cb0c4497a15
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/XNAString_1.8.0.tar.gz
+	sha256sums = 05fa8e845827521622bcadbe681841c3d2397e34fc94ee48d8fb00e4834d0377
 
 pkgname = r-xnastring
