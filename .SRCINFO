@@ -1,11 +1,11 @@
 pkgbase = ttf-kingnam-yuanmo
 	pkgdesc = 来自荆南字坊的荆南缘默体
 	pkgver = 0.72
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maoken-fonts/KNYuanmo
 	arch = any
-	license = OFL1.1
-	source = knyuanmo-regular.ttf::https://github.com/maoken-fonts/KNYuanmo/raw/main/fonts/TTF/KNYuanmo-Regular.ttf
-	sha256sums = 42b3d600be957985206f0804fcbaceca8e83b18e6b7bfe8341b5ffa7eb4d40d9
+	license = custom:OFL1.1
+	source = ttf-kingnam-yuanmo-0.72.tar.gz::https://github.com/maoken-fonts/KNYuanmo/archive/refs/tags/v0.72.tar.gz
+	sha256sums = 38e7d20e1e9a9736263f6f4d0f5412ca1f3e754aef6697ab6764d8d813f4e205
 
 pkgname = ttf-kingnam-yuanmo
