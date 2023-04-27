@@ -1,6 +1,6 @@
 pkgbase = r-rankprod
 	pkgdesc = Rank Product method for identifying differentially expressed genes with application in meta-analysis
-	pkgver = 3.24.0
+	pkgver = 3.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RankProd
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-rankprod
 	depends = r
 	depends = r-gmp
 	depends = r-rmpfr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RankProd_3.24.0.tar.gz
-	sha256sums = 435d2bb5c0c330aa3b43ced0f6a5e0a5b4c065c792e4a54fc70a61c939a9d2b7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RankProd_3.26.0.tar.gz
+	sha256sums = ce267b32864c7acffe15bce5f5d8fbd6cebe5aed1049ebec555a233935af10da
 
 pkgname = r-rankprod
