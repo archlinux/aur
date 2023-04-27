@@ -1,0 +1,17 @@
+pkgbase = meestic-git
+	pkgdesc = Small command-line tool to control the keyboard lights of MSI Delta 15 laptops.
+	pkgver = r10406.8d152463a
+	pkgrel = 1
+	url = https://github.com/Koromix/rygel
+	arch = any
+	license = AGPL3
+	makedepends = git
+	makedepends = base-devel
+	depends = libgudev
+	provides = meestic
+	conflicts = meestic
+	replaces = meestic
+	source = meestic::git+https://github.com/Koromix/rygel.git
+	md5sums = SKIP
+
+pkgname = meestic-git
