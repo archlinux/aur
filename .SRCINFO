@@ -1,6 +1,6 @@
 pkgbase = r-affylmgui
 	pkgdesc = GUI for limma Package with Affymetrix Microarrays
-	pkgver = 1.72.0
+	pkgver = 1.74.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/affylmGUI
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-affylmgui
 	depends = r-r2html
 	depends = r-tkrplot
 	depends = r-xtable
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/affylmGUI_1.72.0.tar.gz
-	sha256sums = b1ef4f818e66d9c61eb4a1d5b25528162e1c2659a461f41817a238dcef38ba49
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/affylmGUI_1.74.0.tar.gz
+	sha256sums = 9639d10765ba18cf271e003fdadb29960383a52b60258400029dc011c6df2fd4
 
 pkgname = r-affylmgui
