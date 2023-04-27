@@ -1,6 +1,6 @@
 pkgbase = r-varianttools
 	pkgdesc = Tools for Exploratory Analysis of Variant Calls
-	pkgver = 1.40.0
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/VariantTools
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-varianttools
 	optdepends = r-lungcancerlines
 	optdepends = r-rbgl
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/VariantTools_1.40.0.tar.gz
-	sha256sums = e0abd79e028921e36e34ad46f2eac5b93967f86398275a616d6d744f2b7b31a0
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/VariantTools_1.42.0.tar.gz
+	sha256sums = 8764731513203ae5da703fddfc795a7ed21143831c1b9fb76ece856c84e16dee
 
 pkgname = r-varianttools
