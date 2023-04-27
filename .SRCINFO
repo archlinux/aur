@@ -1,6 +1,6 @@
 pkgbase = r-asics
 	pkgdesc = Automatic Statistical Identification in Complex Spectra
-	pkgver = 2.14.0
+	pkgver = 2.16.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ASICS
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-asics
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ASICS_2.14.0.tar.gz
-	sha256sums = 6715f2163ec62d69edde5ae852b3b55370718f4988c3ac20c41b15f5db1b4b30
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ASICS_2.16.0.tar.gz
+	sha256sums = 477369fb10078cd209c0483d467a009084365c586050ef8344e827eb2c4f746b
 
 pkgname = r-asics
