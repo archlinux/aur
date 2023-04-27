@@ -1,6 +1,6 @@
 pkgbase = r-dstruct
 	pkgdesc = Identifying differentially reactive regions from RNA structurome profiling data
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/dStruct
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-dstruct
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/dStruct_1.4.0.tar.gz
-	sha256sums = b6f1ecc3a308ab4ff92a8f7677d490f988b836ee7d2cb662489766f95ce00339
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/dStruct_1.6.0.tar.gz
+	sha256sums = e4d48a8d7be853d36ce2d792546f974565f08b5d97d934f9fb2e0bf9c0d895ad
 
 pkgname = r-dstruct
