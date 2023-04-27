@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MSnbase
-_pkgver=2.24.2
+_pkgver=2.26.0
 pkgname=r-${_pkgname,,}
-pkgver=2.24.2
+pkgver=2.26.0
 pkgrel=1
 pkgdesc='Base Functions and Classes for Mass Spectrometry and Proteomics'
 arch=('x86_64')
@@ -58,7 +58,7 @@ optdepends=(
   r-zoo
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8727e255ae4f10e772935a720118f3b97d674e8d2f6f185d871e270b7320b849')
+sha256sums=('0f38f6df150ec965084d91bc9c656606c8668a7677de36542c846ff0febeef62')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
