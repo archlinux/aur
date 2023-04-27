@@ -1,6 +1,6 @@
 pkgbase = r-tscan
 	pkgdesc = Tools for Single-Cell Analysis
-	pkgver = 1.36.0
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/TSCAN
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-tscan
 	optdepends = r-scran
 	optdepends = r-scuttle
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/TSCAN_1.36.0.tar.gz
-	sha256sums = 11874efe17890cfc81cd729109bca466165dce04cc35766baa89c6f57b0e162b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TSCAN_1.38.0.tar.gz
+	sha256sums = 0fe949eabc061357264fb84f5f498ae1db1861458c04bab585bec34415393d26
 
 pkgname = r-tscan
