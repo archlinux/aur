@@ -1,6 +1,6 @@
 pkgbase = r-screclassify
 	pkgdesc = scReClassify: post hoc cell type classification of single-cell RNA-seq data
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/scReClassify
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-screclassify
 	optdepends = r-mclust
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scReClassify_1.4.0.tar.gz
-	sha256sums = 805af7199b906e8cb6356adb9ea951cbef79ea7f323778fe815d0b9deaf3054b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scReClassify_1.6.0.tar.gz
+	sha256sums = 519afa1dc221f20a2ef3a6d8fa66e92b79dc5b5c547ce1c179395c3705cdf238
 
 pkgname = r-screclassify
