@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ssize
-_pkgver=1.72.0
+_pkgver=1.74.0
 pkgname=r-${_pkgname,,}
-pkgver=1.72.0
+pkgver=1.74.0
 pkgrel=1
 pkgdesc='Estimate Microarray Sample Size'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('73d9bfcebfc65dc69b9d1b9585b8e1723ae466da97abca5c5db4121ead17f0b1')
+sha256sums=('3120f43f2c842b029133eb7b06d9b23b4609a4d2bb9ac5b36e392e6453b498a0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
