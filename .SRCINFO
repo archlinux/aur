@@ -1,6 +1,6 @@
 pkgbase = r-deepbluer
 	pkgdesc = DeepBlueR
-	pkgver = 1.24.1
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DeepBlueR
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = r-deepbluer
 	optdepends = r-rcolorbrewer
 	optdepends = r-rmarkdown
 	optdepends = r-tidyr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DeepBlueR_1.24.1.tar.gz
-	sha256sums = d7d91ad1c4ee163dc1dc3c1d97ea5f2156f009388addf63fe4b3518c33b2172b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DeepBlueR_1.26.0.tar.gz
+	sha256sums = 01bf12a71f70eaeec365f14e52c37787443adf55577ec91d401b008094010176
 
 pkgname = r-deepbluer

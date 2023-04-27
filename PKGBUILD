@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DeepBlueR
-_pkgver=1.24.1
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.1
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='DeepBlueR'
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=(
   r-tidyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d7d91ad1c4ee163dc1dc3c1d97ea5f2156f009388addf63fe4b3518c33b2172b')
+sha256sums=('01bf12a71f70eaeec365f14e52c37787443adf55577ec91d401b008094010176')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
