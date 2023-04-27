@@ -1,6 +1,6 @@
 pkgbase = r-tapseq
 	pkgdesc = Targeted scRNA-seq primer design for TAP-seq
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/TAPseq
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = r-tapseq
 	optdepends = r-rtracklayer
 	optdepends = r-seurat
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/TAPseq_1.10.0.tar.gz
-	sha256sums = 5fa7d2d12f09e93ba7a216d4ae2f34888fdcd09e6bd746d4a498ccf571fc9746
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TAPseq_1.12.0.tar.gz
+	sha256sums = c497f3781f97a0f540be87a989aedcbf4f1bc1d6d663ba33c4aabbed82f8f8b9
 
 pkgname = r-tapseq
