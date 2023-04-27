@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pickgene
-_pkgver=1.70.0
+_pkgver=1.72.0
 pkgname=r-${_pkgname,,}
-pkgver=1.70.0
+pkgver=1.72.0
 pkgrel=1
 pkgdesc='Adaptive Gene Picking for Microarray Expression Data Analysis'
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f1735fc1b4d3ec532ba858cf752fa9dfa3802ab4467b186804856bed7320d738')
+sha256sums=('034df0d1aa66e7a240f4a5b5e7635f0d26b29e8cefb2e5d9a432ccc5ea1fe87a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
