@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=NanoMethViz
-_pkgver=2.4.2
+_pkgver=2.6.0
 pkgname=r-${_pkgname,,}
-pkgver=2.4.2
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='Visualise methlation data from Oxford Nanopore sequencing'
 arch=('x86_64')
@@ -62,7 +62,7 @@ optdepends=(
   r-txdb.mmusculus.ucsc.mm10.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('121b6a681de2d6d5283c0764e19635f02732dbeb8b5e321490d76c8cab16dc61')
+sha256sums=('e3b4baab1b5851c34e7ef850ad45a188c6c9044182cb21154123e7403d71a5a6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

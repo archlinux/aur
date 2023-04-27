@@ -1,6 +1,6 @@
 pkgbase = r-nanomethviz
 	pkgdesc = Visualise methlation data from Oxford Nanopore sequencing
-	pkgver = 2.4.2
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/NanoMethViz
 	arch = x86_64
@@ -52,7 +52,7 @@ pkgbase = r-nanomethviz
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
 	optdepends = r-txdb.hsapiens.ucsc.hg38.knowngene
 	optdepends = r-txdb.mmusculus.ucsc.mm10.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/NanoMethViz_2.4.2.tar.gz
-	sha256sums = 121b6a681de2d6d5283c0764e19635f02732dbeb8b5e321490d76c8cab16dc61
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/NanoMethViz_2.6.0.tar.gz
+	sha256sums = e3b4baab1b5851c34e7ef850ad45a188c6c9044182cb21154123e7403d71a5a6
 
 pkgname = r-nanomethviz
