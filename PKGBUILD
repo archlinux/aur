@@ -2,7 +2,7 @@
 
 pkgname=chessx
 pkgver=1.5.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform chess database and PGN viewer"
 arch=(x86_64)
 url=http://chessx.sourceforge.net
@@ -12,6 +12,12 @@ makedepends=(qt5-tools)
 conflicts=($pkgname-svn)
 source=("https://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/$pkgname-$pkgver.tgz")
 sha256sums=('7affad2b50872c5b7f46f9b3c8f559d9cd27c5f470c1bf647bbb939a6ed111a3')
+
+prepare() {
+  cd $pkgname-$pkgver
+  sed -i '/QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);/a\
+    QCoreApplication::setAttribute(Qt::AA_DontUseNativeDialogs);' src/gui/main.cpp
+}
 
 build() {
   cd $pkgname-$pkgver
