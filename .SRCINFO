@@ -17,9 +17,11 @@ pkgbase = yambar-git
 	depends = fcft>=3.0.0
 	depends = json-c
 	depends = libmpdclient
+	depends = libpulse
 	depends = libudev.so
 	depends = libxcb
 	depends = libyaml
+	depends = pipewire
 	depends = pixman
 	depends = wayland
 	depends = xcb-util
