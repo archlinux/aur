@@ -1,7 +1,7 @@
 pkgbase = r-snifter
 	pkgdesc = R wrapper for the python openTSNE library
-	pkgver = 1.8.0
-	pkgrel = 3
+	pkgver = 1.10.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/snifter
 	arch = any
 	license = GPL
@@ -15,7 +15,7 @@ pkgbase = r-snifter
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/snifter_1.8.0.tar.gz
-	sha256sums = 74ba26703917a1001604abdbe48fd6871cd1faeade7179618293493a1ddd6958
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/snifter_1.10.0.tar.gz
+	sha256sums = e6954c259b07de38e3bf2ac3de541d548d77401ba17248a704d62d383a6a9cc8
 
 pkgname = r-snifter
