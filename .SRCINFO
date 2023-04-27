@@ -1,6 +1,6 @@
 pkgbase = r-cernanetsim
 	pkgdesc = Regulation Simulator of Interaction between miRNA and Competing RNAs (ceRNA)
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ceRNAnetsim
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-cernanetsim
 	optdepends = r-png
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ceRNAnetsim_1.10.0.tar.gz
-	sha256sums = 27131f2fd113f9179c0e5a816636ef2bd4346d7e765f7b20fecb4a1d15b219de
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ceRNAnetsim_1.12.0.tar.gz
+	sha256sums = a87ca9e459327aea532f027bebfa1b30e7e35695c9250ec017b118521ead85ee
 
 pkgname = r-cernanetsim
