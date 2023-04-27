@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=EpiTxDb
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Storing and accessing epitranscriptomic information using the AnnotationDbi interface'
 arch=('any')
@@ -43,7 +43,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg38.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a55f7333ae84cad2d57488b270b66f38b70ac57000bd619356ad475b8eb55a94')
+sha256sums=('9e08ab222f5f5f73f978ac5cc77d035f8f3e0bd20fb509436a2541cf8ac3ea62')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
