@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flowFP
-_pkgver=1.56.3
+_pkgver=1.58.0
 pkgname=r-${_pkgname,,}
-pkgver=1.56.3
+pkgver=1.58.0
 pkgrel=1
 pkgdesc='Fingerprinting for Flow Cytometry'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fe64504cdb419adbb4342686ef0c99906c0071cc626ac12bba9d3161ed3ec611')
+sha256sums=('c437969af70e717cb052cc9c1b1b815f2ab2dfeb96cd8b8feecb9bd11541f2b0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
