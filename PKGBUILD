@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=AnnotationDbi
-_pkgver=1.60.2
+_pkgver=1.62.0
 pkgname=r-${_pkgname,,}
-pkgver=1.60.2
+pkgver=1.62.0
 pkgrel=1
 pkgdesc='Manipulation of SQLite-based annotations in Bioconductor'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0f52a460cefc40919273463648656c306640cf82afee3bd0fd2941dbde16eeb0')
+sha256sums=('dc1fea5e9952215cd78985ce8303213bcb7967112f417dd58392b1d75b50087a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
