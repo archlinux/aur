@@ -1,6 +1,6 @@
 pkgbase = r-metaseq
 	pkgdesc = Meta-analysis of RNA-Seq count data in multiple studies
-	pkgver = 1.38.0
+	pkgver = 1.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/metaSeq
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = r-metaseq
 	depends = r-noiseq
 	depends = r-rcpp
 	depends = r-snow
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/metaSeq_1.38.0.tar.gz
-	sha256sums = b7ed46a19300eb98334a3c517234180c792cde585e146fa0aaf9df1fbcaeda2d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/metaSeq_1.40.0.tar.gz
+	sha256sums = 37ea5ebb4a5de3120902233a2f4320f24a4f1aabc3da073d6436eeddcdd7a579
 
 pkgname = r-metaseq
