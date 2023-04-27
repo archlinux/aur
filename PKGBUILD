@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=synapter
-_pkgver=2.22.0
+_pkgver=2.24.0
 pkgname=r-${_pkgname,,}
-pkgver=2.22.0
-pkgrel=3
+pkgver=2.24.0
+pkgrel=1
 pkgdesc='Label-free data analysis pipeline for optimal identification and quantitation'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"

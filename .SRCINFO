@@ -1,7 +1,7 @@
 pkgbase = r-synapter
 	pkgdesc = Label-free data analysis pipeline for optimal identification and quantitation
-	pkgver = 2.22.0
-	pkgrel = 3
+	pkgver = 2.24.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/synapter
 	arch = any
 	license = GPL
