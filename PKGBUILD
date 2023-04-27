@@ -1,6 +1,6 @@
 # Maintainer: LigoLang <infra at marigold dot dev>
 pkgname=ligo-bin
-pkgver=0.64.1
+pkgver=0.64.2
 pkgrel=2
 pkgdesc="High Level Smart Contract Language for Tezos (binary)"
 url="https://gitlab.com/ligolang/ligo"
