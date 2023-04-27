@@ -1,12 +1,12 @@
 pkgbase = r-mantelcorr
 	pkgdesc = Compute Mantel Cluster Correlations
-	pkgver = 1.68.0
+	pkgver = 1.70.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MantelCorr
 	arch = any
 	license = GPL
 	depends = r
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MantelCorr_1.68.0.tar.gz
-	sha256sums = aa1493248a9b690177e8df20b1b723061edc590e61352fe075ff1ab63ea98234
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MantelCorr_1.70.0.tar.gz
+	sha256sums = cdfb9c4e4b990a062def29f57ab286490508f2455c1ce0ba09b91d125a2d7e03
 
 pkgname = r-mantelcorr
