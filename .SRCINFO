@@ -1,6 +1,6 @@
 pkgbase = r-busparse
 	pkgdesc = kallisto | bustools R utilities
-	pkgver = 1.12.2
+	pkgver = 1.14.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BUSpaRse
 	arch = x86_64
@@ -39,7 +39,7 @@ pkgbase = r-busparse
 	optdepends = r-tenxbusdata
 	optdepends = r-testthat
 	optdepends = r-txdb.hsapiens.ucsc.hg38.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BUSpaRse_1.12.2.tar.gz
-	sha256sums = 2f93a73aa8d37953f251ed74a00f66e0c68944c7478c03cd0d9cd2b786198297
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BUSpaRse_1.14.0.tar.gz
+	sha256sums = aaa8e166abca97fef7fd7afc3d1a7711e4b6b43a8d3ebfe93792276dfe1057d1
 
 pkgname = r-busparse
