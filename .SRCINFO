@@ -1,6 +1,6 @@
 pkgbase = r-eximir
 	pkgdesc = R functions for the normalization of Exiqon miRNA array data
-	pkgver = 2.40.0
+	pkgver = 2.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ExiMiR
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-eximir
 	depends = r-limma
 	depends = r-preprocesscore
 	optdepends = r-mirna10cdf
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ExiMiR_2.40.0.tar.gz
-	sha256sums = b03094f075e7fbce16cbe3f0ec45e33dbe8038551a5ed941afae8b77e5145c09
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ExiMiR_2.42.0.tar.gz
+	sha256sums = cc387436a3d4e2c032ed505168f9f31fc9075e96ece969ddacd1541ef3a36d9f
 
 pkgname = r-eximir
