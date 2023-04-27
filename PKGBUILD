@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ChIC
-_pkgver=1.18.0
+_pkgver=1.19.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.19.0
 pkgrel=1
 pkgdesc='Quality Control Pipeline for ChIP-Seq Data'
 arch=('any')
@@ -25,7 +25,7 @@ depends=(
   r-spp
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('27ec98ccfd30d19eef077ec6885098b5f9696adfff64494b679a6351926800fc')
+sha256sums=('da97ff9ff64cc4e511574cac2fff1b36fcaa9cf76ea4af19b2530fdb7b84757d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
