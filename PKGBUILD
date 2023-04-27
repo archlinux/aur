@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Clonality
-_pkgver=1.46.0
+_pkgver=1.47.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.47.0
 pkgrel=1
 pkgdesc='Clonality testing'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
   r-gdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5b117d625d3c59b1f88122e0d409f0ca1203306853b35992d5fbbf1028e2d68d')
+sha256sums=('3939b79757af778eae9891dfe2a8e9d8fc626cabb22e90ffbe350eaa01e3bc7b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
