@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=hapFabia
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
+pkgver=1.42.0
 pkgrel=1
 pkgdesc='hapFabia: Identification of very short segments of identity by descent (IBD) characterized by rare variants in large sequencing data'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
   r-fabia
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2c2d8aea2cff607880087697b33e34de7674adaf4a7fdccae168f8aa83ca8525')
+sha256sums=('51b0c9db2865467fa3d51baf008e590ea9c210b9e63f00954e6007d12d4cc135')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

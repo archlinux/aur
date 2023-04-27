@@ -1,6 +1,6 @@
 pkgbase = r-hapfabia
 	pkgdesc = hapFabia: Identification of very short segments of identity by descent (IBD) characterized by rare variants in large sequencing data
-	pkgver = 1.40.0
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/hapFabia
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = r-hapfabia
 	depends = r
 	depends = r-biobase
 	depends = r-fabia
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/hapFabia_1.40.0.tar.gz
-	sha256sums = 2c2d8aea2cff607880087697b33e34de7674adaf4a7fdccae168f8aa83ca8525
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/hapFabia_1.42.0.tar.gz
+	sha256sums = 51b0c9db2865467fa3d51baf008e590ea9c210b9e63f00954e6007d12d4cc135
 
 pkgname = r-hapfabia
