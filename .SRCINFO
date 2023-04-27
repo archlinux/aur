@@ -1,6 +1,6 @@
 pkgbase = r-refplus
 	pkgdesc = A function set for the Extrapolation Strategy (RMA+) and Extrapolation Averaging (RMA++) methods.
-	pkgver = 1.68.0
+	pkgver = 1.70.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RefPlus
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-refplus
 	depends = r-biobase
 	depends = r-preprocesscore
 	optdepends = r-affydata
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RefPlus_1.68.0.tar.gz
-	sha256sums = a34a54eb04287739416e3775c07c6bcb3e8eaa29e01186b9d205fdf2d0f923be
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RefPlus_1.70.0.tar.gz
+	sha256sums = d52088ea1152c647b4b618e997f3142d02e78fe9b060eea8644ee307e2bc2446
 
 pkgname = r-refplus
