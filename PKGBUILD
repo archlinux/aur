@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flowTrans
-_pkgver=1.50.0
+_pkgver=1.52.0
 pkgname=r-${_pkgname,,}
-pkgver=1.50.0
+pkgver=1.52.0
 pkgrel=1
 pkgdesc='Parameter Optimization for Flow Cytometry Data Transformation'
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
   r-flowviz
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f522c94391bf9c4e7af0598e0e6bf8667f4832dbb3fc417609c52f518082b029')
+sha256sums=('64ccd4a230a670818adbf96f0f15102f211c1f81e192d1d1ad949f926c39b1d6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

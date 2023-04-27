@@ -1,6 +1,6 @@
 pkgbase = r-flowtrans
 	pkgdesc = Parameter Optimization for Flow Cytometry Data Transformation
-	pkgver = 1.50.0
+	pkgver = 1.52.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/flowTrans
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = r-flowtrans
 	depends = r-flowclust
 	depends = r-flowcore
 	depends = r-flowviz
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowTrans_1.50.0.tar.gz
-	sha256sums = f522c94391bf9c4e7af0598e0e6bf8667f4832dbb3fc417609c52f518082b029
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowTrans_1.52.0.tar.gz
+	sha256sums = 64ccd4a230a670818adbf96f0f15102f211c1f81e192d1d1ad949f926c39b1d6
 
 pkgname = r-flowtrans
