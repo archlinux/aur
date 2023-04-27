@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=glmSparseNet
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Network Centrality Metrics for Elastic-Net Regularized Models'
 arch=('any')
@@ -41,7 +41,7 @@ optdepends=(
   r-venndiagram
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('842aecd90f7bd7ad5c4112ac02c43fccc6a4ca59ea4c2238acc462c12863e394')
+sha256sums=('28568c4966cea711acdcaa1cae32c9f90bdb714f1f351f04c4e01c69cfe011ee')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
