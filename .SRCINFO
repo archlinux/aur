@@ -1,6 +1,6 @@
 pkgbase = r-omicsprint
 	pkgdesc = Cross omic genetic fingerprinting
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/omicsPrint
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-omicsprint
 	optdepends = r-snpstats
 	optdepends = r-testthat
 	optdepends = r-variantannotation
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/omicsPrint_1.18.0.tar.gz
-	sha256sums = e4f36136ab0d60979841bbd63b4afaaad96845d5aa13701c5a37350bfc6f517e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/omicsPrint_1.20.0.tar.gz
+	sha256sums = b411c49ab8945b3b10ff1fcf256ac8d0e3f3f9445fcab1208195466bac02cce1
 
 pkgname = r-omicsprint
