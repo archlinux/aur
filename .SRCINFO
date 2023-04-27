@@ -1,0 +1,16 @@
+pkgbase = flare
+	pkgdesc = An unofficial Signal GTK client
+	pkgver = 0.7.2
+	pkgrel = 0
+	url = https://gitlab.com/Schmiddiii/flare
+	arch = any
+	license = AGPL-3.0-only
+	makedepends = cargo
+	makedepends = meson
+	depends = libadwaita
+	depends = libsecret
+	depends = protobuf
+	source = https://gitlab.com/Schmiddiii/flare/-/archive/0.7.2/flare-0.7.2.tar.gz
+	sha256sums = 21c65d18c1daa7238b718a0670f8154577c7de7dea694d7bd170eea7604f3599
+
+pkgname = flare
