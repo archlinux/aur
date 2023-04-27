@@ -1,6 +1,6 @@
 pkgbase = r-vanillaice
 	pkgdesc = A Hidden Markov Model for high throughput genotyping arrays
-	pkgver = 1.60.0
+	pkgver = 1.62.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/VanillaICE
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = r-vanillaice
 	optdepends = r-dosnow
 	optdepends = r-human610quadv1bcrlmm
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/VanillaICE_1.60.0.tar.gz
-	sha256sums = 88ea0104b7efa4c35c64cfa938263cb91c848dd48cd05a3e39ea0febaa5f1d91
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/VanillaICE_1.62.0.tar.gz
+	sha256sums = bbc17995898349c947b3fadbf0759632a4283df3c7e5342e4a504b2ae98dd519
 
 pkgname = r-vanillaice
