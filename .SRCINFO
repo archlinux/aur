@@ -1,6 +1,6 @@
 pkgbase = python-djlint
 	pkgdesc = HTML Template Linter and Formatter
-	pkgver = 1.19.12
+	pkgver = 1.25.0
 	pkgrel = 1
 	url = https://github.com/Riverside-Healthcare/djlint
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = python-djlint
 	depends = python-tomli
 	depends = python-tqdm
 	depends = python-yaml
-	source = python-djlint-1.19.12.tar.gz::https://files.pythonhosted.org/packages/source/d/djlint/djlint-1.19.12.tar.gz
-	sha256sums = 048e9f8d43918b561f31bb49e2d52e6268bc88aa8d1c929c7416de2a575f6eff
+	source = python-djlint-1.25.0.tar.gz::https://files.pythonhosted.org/packages/source/d/djlint/djlint-1.25.0.tar.gz
+	sha256sums = 1b9e5265e51c224ef5c6b8d434151293943ddae8602fb544063f33039738d17c
 
 pkgname = python-djlint
