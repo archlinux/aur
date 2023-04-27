@@ -1,6 +1,6 @@
 pkgbase = r-periodicdna
 	pkgdesc = Set of tools to identify periodic occurrences of k-mers in DNA sequences
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/periodicDNA
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = r-periodicdna
 	optdepends = r-reticulate
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/periodicDNA_1.8.0.tar.gz
-	sha256sums = 059de5740c71d1a36459bb03c41962c52732f0922ff6e7863c4cc8acdfea8d0f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/periodicDNA_1.10.0.tar.gz
+	sha256sums = 9af17675df1b49be8ca29db762e2115690d12a4b601b035bf48921f66b8fbd97
 
 pkgname = r-periodicdna
