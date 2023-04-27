@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MGFR
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='Marker Gene Finder in RNA-seq data'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   r-biomart
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6346f6691afbce75f31d895e61cff2b7b1c69db9a900a6b310fb8407869aef64')
+sha256sums=('d4e5c50a697b79d10011343683b754e51490e13f239951b7955070a8309edf5e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
