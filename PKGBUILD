@@ -1,7 +1,7 @@
 # Maintainer: Adrian Lopez <zeioth@hotmail.com>
 pkgname=hyprshotgun
-pkgver=1.0
-pkgrel=5
+pkgver=1.1
+pkgrel=6
 pkgdesc="Utility to take screenshots to the cloud (or save them locally)"
 arch=(any)
 url="https://github.com/Zeioth/hyprshotgun.git"
