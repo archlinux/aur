@@ -1,5 +1,5 @@
 # Maintainer: wiltsig <WTS012201@gmail.com>
-pkgname=tfi-git
+pkgname=tfi
 _pkgname=Text-From-Image
 pkgver=1.0.0
 pkgrel=1

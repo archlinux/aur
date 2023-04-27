@@ -1,4 +1,4 @@
-pkgbase = tfi-git
+pkgbase = tfi
 	pkgdesc = Text From Image allows user to extract and modify text from images
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -136,4 +136,4 @@ pkgbase = tfi-git
 	source = git+https://github.com/WTS012201/Text-From-Image.git
 	md5sums = SKIP
 
-pkgname = tfi-git
+pkgname = tfi
