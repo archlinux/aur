@@ -1,6 +1,6 @@
 pkgbase = r-philr
 	pkgdesc = Phylogenetic partitioning based ILR transform for metagenomics data
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/philr
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-philr
 	optdepends = r-summarizedexperiment
 	optdepends = r-testthat
 	optdepends = r-treesummarizedexperiment
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/philr_1.24.0.tar.gz
-	sha256sums = 9c5a2281748317c545a23f979555479e931b2c2c630bcc56ba1fa6ca05cd234d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/philr_1.26.0.tar.gz
+	sha256sums = 6755edf3fc7962b069abb0e3dd6761b786772e699dbd08040f246fbf2b454c8b
 
 pkgname = r-philr
