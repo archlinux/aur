@@ -1,6 +1,6 @@
 pkgbase = r-abarray
 	pkgdesc = Microarray QA and statistical data analysis for Applied Biosystems Genome Survey Microrarray (AB1700) gene expression data.
-	pkgver = 1.66.0
+	pkgver = 1.68.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ABarray
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-abarray
 	depends = tk
 	optdepends = r-limma
 	optdepends = r-lpe
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ABarray_1.66.0.tar.gz
-	sha256sums = d0ede903b2b79b1ac7d2a8d162c3e9f4d3bfd51bfcdd8f3e1214de9fd7ef320b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ABarray_1.68.0.tar.gz
+	sha256sums = 6943c66c1399d15e2fb0880797df20ffe335ba6d1f9481e158b3316540f73a6f
 
 pkgname = r-abarray
