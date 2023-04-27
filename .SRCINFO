@@ -1,6 +1,6 @@
 pkgbase = r-decoupler
 	pkgdesc = decoupleR: Inferring biological activities from omics data using a collection of methods
-	pkgver = 2.4.0
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/decoupleR
 	arch = any
@@ -39,7 +39,7 @@ pkgbase = r-decoupler
 	optdepends = r-summarizedexperiment
 	optdepends = r-testthat
 	optdepends = r-viper
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/decoupleR_2.4.0.tar.gz
-	sha256sums = b141afd331449b0b1c2dc3dc3097465c2c02b5026129d8f06dd5bfb445bce2a0
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/decoupleR_2.6.0.tar.gz
+	sha256sums = 3ac1cabcb84e098db37c94b49f1f904b1a9f8ae6ed03c0a4e3cebcc7a5394d04
 
 pkgname = r-decoupler
