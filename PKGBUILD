@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=QFeatures
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Quantitative features for mass spectrometry data'
 arch=('any')
@@ -51,7 +51,7 @@ optdepends=(
   r-vsn
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f0a81befaf9b86e960f731c52d4a9381d41fd21bc87bd5fb81e9aa5da790c201')
+sha256sums=('df1c8127b2937a496dc3e8159dd511f44c118653866a39bb5b9811674968d5f6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
