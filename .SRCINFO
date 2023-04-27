@@ -1,0 +1,13 @@
+pkgbase = encrypt-timeout-hook-git
+	pkgdesc = Custom encrypt hook with shutdown timeout for Arch Linux (git version)
+	pkgver = r1
+	pkgrel = 1
+	url = https://github.com/spoons/encrypt-timeout-hook
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = cryptsetup
+	source = git+https://github.com/spoons/encrypt-timeout-hook.git
+	md5sums = SKIP
+
+pkgname = encrypt-timeout-hook-git
