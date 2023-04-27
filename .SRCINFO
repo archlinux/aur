@@ -1,13 +1,13 @@
 pkgbase = l1t-bin
 	pkgdesc = A terminal strategy game about shooting lasers and lighting statues
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/alex-laycalvert/l1t
 	arch = x86_64
 	license = GPLv3
 	provides = l1t
 	conflicts = l1t
-	source = https://github.com/alex-laycalvert/l1t/releases/download/v0.1.1/l1t-0.1.1-x86_64.tar.gz
-	sha256sums = 178b68fe32c6ae6b1019e5311283ca2ec52f9e0e6e8bcfd487f693cc6e250204
+	source = https://github.com/alex-laycalvert/l1t/releases/download/v0.2.0/l1t-0.2.0-x86_64.tar.gz
+	sha256sums = fba7c29c4069fb328f2010b4a51e356009140a6784cf6d067af264e5fe5c103a
 
 pkgname = l1t-bin
