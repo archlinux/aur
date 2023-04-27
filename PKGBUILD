@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=EnhancedVolcano
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
-pkgrel=3
+pkgver=1.18.0
+pkgrel=1
 pkgdesc='Publication-ready volcano plots with enhanced colouring and labeling'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -29,7 +29,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('557701007896b6b13278e6ad2dc0cf824dd37c359c27f89727e2e79340166fd9')
+sha256sums=('b863f236a6a0d38a9588d345d8303529fe208f55a1384833807356b7db839ed5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
