@@ -1,6 +1,6 @@
 pkgbase = r-rebet
 	pkgdesc = The subREgion-based BurdEn Test (REBET)
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/REBET
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = r-rebet
 	depends = r-asset
 	optdepends = r-biocgenerics
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/REBET_1.16.0.tar.gz
-	sha256sums = a157a15775f4fbe132faec2782ce37507c6311a6fceef2ca1c36b62f660042a1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/REBET_1.18.0.tar.gz
+	sha256sums = 79a0ee66157c81f52b388fee4d5a4bba043b67b8a22ad18671c8c16a288f1f42
 
 pkgname = r-rebet
