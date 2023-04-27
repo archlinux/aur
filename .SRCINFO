@@ -1,6 +1,6 @@
 pkgbase = r-pwmenrich
 	pkgdesc = PWM enrichment analysis
-	pkgver = 4.34.0
+	pkgver = 4.36.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/PWMEnrich
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = r-pwmenrich
 	optdepends = r-pwmenrich.hsapiens.background
 	optdepends = r-pwmenrich.mmusculus.background
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/PWMEnrich_4.34.0.tar.gz
-	sha256sums = d00106ba428551053a4563c8b96e548cacc7f95a0b4d7143e263ada5096e320b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PWMEnrich_4.36.0.tar.gz
+	sha256sums = 537212fd7dd011e572d181e32a63b86745e1157f6329ac3e7454b7a0d7221663
 
 pkgname = r-pwmenrich
