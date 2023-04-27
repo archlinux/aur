@@ -1,0 +1,7 @@
+post_install() {
+    /usr/bin/onedev-upgrade
+}
+
+post_upgrade() {
+    /usr/bin/onedev-upgrade -r
+}
