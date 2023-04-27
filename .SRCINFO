@@ -1,6 +1,6 @@
 pkgbase = r-cosmic.67
 	pkgdesc = COSMIC.67
-	pkgver = 1.34.0
+	pkgver = 1.35.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/COSMIC.67
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-cosmic.67
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/COSMIC.67_1.34.0.tar.gz
-	sha256sums = 1ab46e805ac0be345120117877fcc4551dfdc1477ce2337cc6a4a63aa98e403d
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/COSMIC.67_1.35.0.tar.gz
+	sha256sums = 96d221c51a9aa18e6ff3bb3324f75f76a40e7217b32dbe0de34f7b3f2400e9ed
 
 pkgname = r-cosmic.67
