@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GeneBreak
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='Gene Break Detection'
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
   r-qdnaseq
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0c099460a8099834d6e3941a4cc0f1a6781aa1be00bc0459cc9844d30cff07e7')
+sha256sums=('04d803983d232f813730c3ac1a466ee14163ff6c5c91290a0b426578ca17310c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
