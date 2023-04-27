@@ -1,6 +1,6 @@
 pkgbase = r-pepstat
 	pkgdesc = Statistical analysis of peptide microarrays
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/pepStat
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-pepstat
 	optdepends = r-pepdat
 	optdepends = r-pviz
 	optdepends = r-shiny
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/pepStat_1.32.0.tar.gz
-	sha256sums = 8439f0abff03e609d3e93e35661369d848542217b2da98be723a10c585b7a11a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pepStat_1.34.0.tar.gz
+	sha256sums = 92e10fa46fca6f965457d8678b4dfe8389e925e138cd68541151ada691a06560
 
 pkgname = r-pepstat
