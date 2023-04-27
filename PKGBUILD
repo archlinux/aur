@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ttf-canger-yumo
-pkgver=1.1
+pkgver=1.0
+pkgrel=2
 pkgdesc="仓耳与墨体,任何用户可以全球任何领域永久免费商用."
-pkgrel=1
 arch=(any)
 _downurl="http://tsanger.cn"
 url="${_downurl}/category/114"
