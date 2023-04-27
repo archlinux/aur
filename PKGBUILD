@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SummarizedBenchmark
-_pkgver=2.16.0
+_pkgver=2.18.0
 pkgname=r-${_pkgname,,}
-pkgver=2.16.0
+pkgver=2.18.0
 pkgrel=1
 pkgdesc='Classes and methods for performing benchmark comparisons'
 arch=('any')
@@ -48,7 +48,7 @@ optdepends=(
   r-tximport
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('38e71827a437dccb47567c912614f2de9f67e103518a462721498f993b56c3e0')
+sha256sums=('f1643d21278bfbbc52ed7c877cd4198b572acef24cb9214eb3f384947d1b96b6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
