@@ -1,7 +1,7 @@
 pkgbase = r-zellkonverter
 	pkgdesc = Conversion Between scRNA-seq Objects
-	pkgver = 1.8.0
-	pkgrel = 3
+	pkgver = 1.10.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/zellkonverter
 	arch = any
 	license = MIT
@@ -26,7 +26,7 @@ pkgbase = r-zellkonverter
 	optdepends = r-spelling
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/zellkonverter_1.8.0.tar.gz
-	sha256sums = bed7c72324df7882816e594ccd8d6b84f5575999491c89a4ab5739e8a9d9242c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/zellkonverter_1.10.0.tar.gz
+	sha256sums = 4b13c77cbef2e69f49f47fa976f398fb0eefe5cedb91469c7d06b9b72d19c13e
 
 pkgname = r-zellkonverter
