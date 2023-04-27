@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=QUBIC
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='An R package for qualitative biclustering in support of gene co-expression analyses'
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('af95c7f7c2394caaba1796f8b19be3701c04c1719c46200be92e06fa8e470933')
+sha256sums=('97bae38678c9dc02474fe55a5ef7a837bb356f40179d22428db7a53f8040781f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
