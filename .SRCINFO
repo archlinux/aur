@@ -1,6 +1,6 @@
 pkgbase = r-derfinder
 	pkgdesc = Annotation-agnostic differential expression analysis of RNA-seq data at base-pair resolution via the DER Finder approach
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/derfinder
 	arch = any
@@ -35,7 +35,7 @@ pkgbase = r-derfinder
 	optdepends = r-sessioninfo
 	optdepends = r-testthat
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/derfinder_1.32.0.tar.gz
-	sha256sums = f920adcd310b352a070bbd6d03a2587fb7626add4a74071ac8e2cced3c1c306d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/derfinder_1.34.0.tar.gz
+	sha256sums = 9ce51ed8014ab050524fb5fc9b50df6ca598fe20f3f1a7a505d63923262c66bd
 
 pkgname = r-derfinder
