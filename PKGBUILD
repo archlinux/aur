@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=pdfstudioviewer
 _pkgname=pdfstudioviewer2022
-pkgver=2022.2.3
+pkgver=2022.2.4
 pkgrel=1
 pkgdesc="Review, annotate, and edit PDF Documents"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('java-runtime>=8' 'sane')
 source=("${pkgname}-${pkgver}_linux64.deb::https://download.qoppa.com/$pkgname/PDFStudioViewer_linux64.deb"
         "$pkgname.desktop")
-sha256sums=('09e2c931d7f98405222e921713131a39b2664379fe5ea9967914d665a21a8d9e'
+sha256sums=('41736c1f54fe22d577b3dafc0a7c20454a359a155b7bc2e412e9fd8149a55508'
             '597ce81a0a2728d867109fcd78122d2d0ad6a9ec0a31f0e9bc3b84b778d31d8e')
 
 prepare() {
@@ -24,6 +24,9 @@ prepare() {
 
   # Remove bundled JRE
   rm -rf "opt/$_pkgname/jre"
+
+  # Bump max JRE version from 19 to 20
+  sed -i 's/19/20/g' "opt/$_pkgname/$_pkgname"
 }
 
 package() {
