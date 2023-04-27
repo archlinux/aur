@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=piano
-_pkgver=2.14.0
+_pkgver=2.16.0
 pkgname=r-${_pkgname,,}
-pkgver=2.14.0
+pkgver=2.16.0
 pkgrel=1
 pkgdesc='Platform for integrative analysis of omics data'
 arch=('any')
@@ -43,7 +43,7 @@ optdepends=(
   r-yeast2.db
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a8fd7a1c83007cb5a332cc6be43d2b85d8cc7410682879a2f665f437d22c7881')
+sha256sums=('def5404ed8cee4ce6b956c0354b95ef03f7e42eb6025d0ab8dfe58829f53a966')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
