@@ -1,6 +1,6 @@
 pkgbase = r-gosummaries
 	pkgdesc = Word cloud summaries of GO enrichment analysis
-	pkgver = 2.34.0
+	pkgver = 2.36.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GOsummaries
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = r-gosummaries
 	depends = r-rcpp
 	depends = r-reshape2
 	optdepends = r-vegan
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GOsummaries_2.34.0.tar.gz
-	sha256sums = e690c496bc3e084bb26c7e832f7d4e19f086154bf8d97fba926a07fdc8a4eab9
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GOsummaries_2.36.0.tar.gz
+	sha256sums = 22a3825ad7440060f8b424f412c00b3b67fe1018b131d0c3b761275fd81ef9b3
 
 pkgname = r-gosummaries
