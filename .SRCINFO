@@ -1,7 +1,7 @@
 pkgbase = r-graph
 	pkgdesc = graph: A package to handle graph data structures
-	pkgver = 1.76.0
-	pkgrel = 3
+	pkgver = 1.78.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/graph
 	arch = x86_64
 	license = Artistic2.0
@@ -15,7 +15,7 @@ pkgbase = r-graph
 	optdepends = r-runit
 	optdepends = r-sparsem
 	optdepends = r-xml
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/graph_1.76.0.tar.gz
-	sha256sums = 8c0ddb6d131a88d585bcf3c1e922465fbc40d6d40ba718c8a869f5f9b6ecabc1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/graph_1.78.0.tar.gz
+	sha256sums = 5667e2d29dc4646bc57880ae28f7fdc9d589aeb41173c4147bea2ec4faff91a0
 
 pkgname = r-graph
