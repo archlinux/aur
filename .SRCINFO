@@ -1,6 +1,6 @@
 pkgbase = r-wpm
 	pkgdesc = Well Plate Maker
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/wpm
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-wpm
 	optdepends = r-msnbase
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/wpm_1.8.0.tar.gz
-	sha256sums = a27c0564747225ed6dbf8730977d76f7ca9f5e1d78420f5eb03d90432290f717
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/wpm_1.10.0.tar.gz
+	sha256sums = f3dd229ba540498c80e3e01c67ee6e974eaeed95b57b6d7fad7c69dd3174d17f
 
 pkgname = r-wpm
