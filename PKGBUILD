@@ -77,9 +77,9 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.15
-_minor=94
+_minor=109
 _srcname=linux-${_major}
-_clr=${_major}.94-38
+_clr=${_major}.109-50
 pkgbase=linux-clear-lts2021
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -196,7 +196,7 @@ prepare() {
                    --enable SECURITY_YAMA
 
     # Library routines
-    scripts/config --enable FONT_TER16x32
+    scripts/config --keep-case --enable FONT_TER16x32
 
     if [ -n "$_use_llvm_lto" ]; then
         scripts/config --disable LTO_NONE \
@@ -289,7 +289,7 @@ _package() {
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     echo "Installing modules..."
-    make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    make ${BUILD_FLAGS[*]} INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
         DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
     # remove build and source links
@@ -388,7 +388,7 @@ done
 
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            'ff30c9eb2ba8a54e6edba9150fa9725cf451507afa6f5c76f23a9421778a5fbc'
+            '6f295293e15f81a150650f55ce890eff7498e882c712272024e53379b2ba59ae'
             'SKIP'
             '5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c')
 
