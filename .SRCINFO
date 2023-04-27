@@ -1,6 +1,6 @@
 pkgbase = r-cycle
 	pkgdesc = Significance of periodic expression pattern in time-series data
-	pkgver = 1.52.0
+	pkgver = 1.54.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/cycle
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-cycle
 	depends = r
 	depends = r-biobase
 	depends = r-mfuzz
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cycle_1.52.0.tar.gz
-	sha256sums = 7a573292d8c5033d7bc0c9921fca9589ca0b1981138b09aaeb676314d18150d1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cycle_1.54.0.tar.gz
+	sha256sums = 5e4888db3e3cd9cfb2fd02d31fbf82e5774dc625d70e38c5aa46387e071f0ab5
 
 pkgname = r-cycle
