@@ -1,6 +1,6 @@
 pkgbase = r-pathostat
 	pkgdesc = PathoStat Statistical Microbiome Analysis Package
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/PathoStat
 	arch = any
@@ -37,7 +37,7 @@ pkgbase = r-pathostat
 	depends = r-xml
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/PathoStat_1.24.0.tar.gz
-	sha256sums = 8426e7341e8d59556d2196e6d279c0be87c6a89cdfe389701fb477e4a466a39d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PathoStat_1.26.0.tar.gz
+	sha256sums = 5b4cd0be37c3e6ff1476447bf87b537ad4283dccb6788057a9ff9cdc15a9282c
 
 pkgname = r-pathostat
