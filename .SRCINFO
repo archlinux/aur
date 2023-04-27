@@ -1,7 +1,7 @@
 pkgbase = r-comet
 	pkgdesc = coMET: visualisation of regional epigenome-wide association scan (EWAS) results and DNA co-methylation patterns
-	pkgver = 1.30.0
-	pkgrel = 3
+	pkgver = 1.32.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/coMET
 	arch = any
 	license = GPL
@@ -21,7 +21,7 @@ pkgbase = r-comet
 	optdepends = r-knitr
 	optdepends = r-runit
 	optdepends = r-showtext
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/coMET_1.30.0.tar.gz
-	sha256sums = cab1d8aca47736440f3d36a4150f08c6d3073524bc4e77618a55217df44b3945
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/coMET_1.32.0.tar.gz
+	sha256sums = dcc770ca18f6a032358cd1e912ccbf24c3617528ad0e0acb997153097bb2ce9b
 
 pkgname = r-comet
