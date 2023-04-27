@@ -1,7 +1,7 @@
 pkgbase = wechat-backup
 	pkgdesc = 微信聊天记录持久化备份本地硬盘，释放手机存储空间。
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/greycodee/wechat-backup
 	arch = x86_64
 	license = MIT
