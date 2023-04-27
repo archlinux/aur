@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Organism.dplyr
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='dplyr-based Access to Bioconductor Annotation Resources'
 arch=('any')
@@ -38,7 +38,7 @@ optdepends=(
   r-txdb.mmusculus.ucsc.mm10.ensgene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2f29090cdd675f659cf2916a62be00785a1e6480a36a406ba16a0e732fb25cc1')
+sha256sums=('f7cc0a7868ad7802f7e4c99d04c4cebce97d5b94e678ff0e4acc58c08e3a2d7b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
