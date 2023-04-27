@@ -1,6 +1,6 @@
 pkgbase = r-mutationalpatterns
 	pkgdesc = Comprehensive genome-wide analysis of mutational processes
-	pkgver = 3.8.1
+	pkgver = 3.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MutationalPatterns
 	arch = any
@@ -39,7 +39,7 @@ pkgbase = r-mutationalpatterns
 	optdepends = r-rtracklayer
 	optdepends = r-testthat
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MutationalPatterns_3.8.1.tar.gz
-	sha256sums = 0856000054d8ced2606413e9d186491a2114f02c4d44ad466a4e5fd409d30e34
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MutationalPatterns_3.10.0.tar.gz
+	sha256sums = 1039b8b57b78e542195e918b63b55dda39cc270cb8b4c441329d916c9d2a36dd
 
 pkgname = r-mutationalpatterns
