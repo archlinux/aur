@@ -1,6 +1,6 @@
 pkgbase = r-somnibus
 	pkgdesc = Smooth modeling of bisulfite sequencing
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SOMNiBUS
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-somnibus
 	optdepends = r-magick
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SOMNiBUS_1.6.0.tar.gz
-	sha256sums = a01876d0bf8ddf83c8854c8c0dbee2544291c02811d51541f4ecd438309c9312
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SOMNiBUS_1.7.0.tar.gz
+	sha256sums = 1baf115a020f2ae781493ec36f0696a72c24ee8e5aaeb0ce7a01609881abaaa5
 
 pkgname = r-somnibus
