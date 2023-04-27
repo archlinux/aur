@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BEclear
-_pkgver=2.14.0
+_pkgver=2.16.0
 pkgname=r-${_pkgname,,}
-pkgver=2.14.0
-pkgrel=3
+pkgver=2.16.0
+pkgrel=1
 pkgdesc='Correction of batch effects in DNA methylation data'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -31,7 +31,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('01e43b82edfdfc99313a9e39851f1792ec51336d42c27a468a9daae88454f617')
+sha256sums=('8b964fbbe352c2132acda69ce727cb4bdfdde37ce16eea0ebb6cfe0c5b32bce9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
