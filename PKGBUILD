@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DepecheR
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
-pkgrel=3
+pkgver=1.16.0
+pkgrel=1
 pkgdesc='Determination of essential phenotypic elements of clusters in high-dimensional entities'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -36,7 +36,7 @@ optdepends=(
   r-uwot
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('92f5956011a055638c9e47204118bd1af7aa43c4024c8450b5400d1df8eb8fc8')
+sha256sums=('b7c83e947a32d02ec252842adb029a068a713d34722f68d1dbf2a5a05de0c1ce')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
