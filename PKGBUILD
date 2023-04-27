@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MetaCyto
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='MetaCyto: A package for meta-analysis of cytometry data'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4d4a286ee9825b263a20204069d0886ea76d609ee3670b7bc96defee13e4f400')
+sha256sums=('ad32078d107e16eec21a7bc13b5450129db9678018e46d17173d1b7c0f9eb05d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
