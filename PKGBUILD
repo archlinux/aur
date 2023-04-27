@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=idr2d
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='Irreproducible Discovery Rate for Genomic Interactions Data'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2bd4863c41d0b973333f39a7d07d957adcdccb963a4a44ad98aa7a7ecc9239e3')
+sha256sums=('16e20558623450c7b5867308d76ba9f253434bd632eab5bbe7a9dfcc381dd246')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
