@@ -1,5 +1,5 @@
 pkgbase = lenovolegionlinux-git
-	pkgdesc = LenovoLegionLinux (LLL) brings additional drivers and tools for Lenovo Legion series laptops to Linux (updated to support dkms). PLEASE READ THE REPO BEFORE INSTALL THIS PACKAGE!!!
+	pkgdesc = LenovoLegionLinux (LLL) brings additional drivers and tools for Lenovo Legion series laptops to Linux. PLEASE READ THE REPO BEFORE INSTALL THIS PACKAGE!!!
 	pkgver = r01.16889a7
 	pkgrel = 1
 	url = https://github.com/johnfanv2/LenovoLegionLinux
