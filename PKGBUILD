@@ -1,8 +1,9 @@
 # Maintainer: Funami
 # Contributor: Fredrick R. Brennan <copypaste@kittens.ph>
+# Contributor: witchymary
 
 pkgname=aegisub-arch1t3cht-git
-pkgver=3.2.2.r970.26a5f00c8
+pkgver=3.2.2.r976.00e241d74
 pkgrel=1
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=('x86_64')
@@ -115,7 +116,8 @@ prepare() {
   )
   local BUILDTYPE="$(check_makepkg_options 2> /dev/null)"
 
-  arch-meson --buildtype="${BUILDTYPE}" -D default_audio_output="${AEGISUB_AUR_DEFAULT_AUDIO_OUTPUT}" ${MESON_FLAGS} build
+  # Disabling LTO because it seems to lead to crashing aegisub scripts for some people (https://aur.archlinux.org/packages/aegisub-arch1t3cht-git#comment-911741)
+  arch-meson --buildtype="${BUILDTYPE}" -D b_lto=false -D default_audio_output="${AEGISUB_AUR_DEFAULT_AUDIO_OUTPUT}" ${MESON_FLAGS} build
 }
 
 build() {
