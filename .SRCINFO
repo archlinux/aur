@@ -1,6 +1,6 @@
 pkgbase = r-ccfindr
 	pkgdesc = Cancer Clone Finder
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ccfindR
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = r-ccfindr
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ccfindR_1.18.0.tar.gz
-	sha256sums = 3a65d4820dce97eb5c9522b4922084000bae3492714d8a2b4c7824857fa9dd6a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ccfindR_1.20.0.tar.gz
+	sha256sums = 8fca4640dbaa52151dfd940dbbc80ee21374d9d351575a85e2e452819939a38e
 
 pkgname = r-ccfindr
