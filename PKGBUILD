@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=iterClust
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Iterative Clustering'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   r-tsne
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a5611bf6ff9ac21b10eb6867bb5f2a541c317865749fad4da66af9621842b6e5')
+sha256sums=('5a0b6fd0fc806c94f5b54b30c4f9587deffdd27278d905cea322f43a05ee59c1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
