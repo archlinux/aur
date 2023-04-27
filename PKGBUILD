@@ -2,7 +2,7 @@
 # Contributor: pinks <aur at papepati dot page>
 
 pkgname=rome
-pkgver=11.0.0
+pkgver=12.0.0
 pkgrel=1
 pkgdesc='Formatter, linter, bundler, and more for Javascript, Typescript, JSON, HTML, Markdown, and CSS'
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(MIT)
 makedepends=(cargo)
 _archive="tools-cli-v$pkgver"
 source=("https://github.com/rome/tools/archive/cli/v$pkgver/$_archive.tar.gz")
-sha256sums=('50583cb9a628ca147888ff9be14f6dcf8c25954d2452ef8ad676d9539a0b272c')
+sha256sums=('b31df7271e0b00bac2871480c52fe842b456b91ea70103c4db04b1c1f5453495')
 
 prepare() {
 	cd "$_archive/crates/rome_cli"
