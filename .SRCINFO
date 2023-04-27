@@ -1,6 +1,6 @@
 pkgbase = r-spidermir
 	pkgdesc = SpidermiR: An R/Bioconductor package for integrative network analysis with miRNA data
-	pkgver = 1.28.0
+	pkgver = 1.30.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SpidermiR
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-spidermir
 	optdepends = r-rmarkdown
 	optdepends = r-roxygen2
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SpidermiR_1.28.0.tar.gz
-	sha256sums = ae1908485999a2bbed8171065ab4468e114afd6500e0788d6845d0f388f8ab8d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SpidermiR_1.30.0.tar.gz
+	sha256sums = 61bc1290d5f4c6261745f0933519b2fdd6cd9e5c8b93c0da03679b223747e902
 
 pkgname = r-spidermir
