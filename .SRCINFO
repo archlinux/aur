@@ -1,6 +1,6 @@
 pkgbase = r-msstatsqc
 	pkgdesc = Longitudinal system suitability monitoring and quality control for proteomic experiments
-	pkgver = 2.16.0
+	pkgver = 2.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MSstatsQC
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-msstatsqc
 	optdepends = r-rforproteomics
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MSstatsQC_2.16.0.tar.gz
-	sha256sums = b1b833d03ee69b2e985c83ebfc2f09fbe388ea3496ea4cee2dc423a7b468a5f4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MSstatsQC_2.18.0.tar.gz
+	sha256sums = c82eed5a2affac50ae9a7bde6caa07d3222f5f8e5b86fc8a9c940cc54bf1b0ac
 
 pkgname = r-msstatsqc
