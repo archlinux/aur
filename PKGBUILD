@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bigPint
-_pkgver=1.14.0
+_pkgver=1.15.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.15.0
 pkgrel=1
 pkgdesc='Big multivariate data plotted interactively'
 arch=('any')
@@ -44,7 +44,7 @@ optdepends=(
   r-tibble
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e2f321809de6815207bb23e2311acbb64e9f9a0a23941bef024c02a30a1faeea')
+sha256sums=('1a76b38968b8ca2087b7c831040a97b82438c239b350f5948b0968955cc92fe5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
