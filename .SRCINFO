@@ -1,6 +1,6 @@
 pkgbase = r-flowclust
 	pkgdesc = Clustering for Flow Cytometry
-	pkgver = 3.36.1
+	pkgver = 3.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/flowClust
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = r-flowclust
 	optdepends = r-opencyto
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowClust_3.36.1.tar.gz
-	sha256sums = fa89d5524fa48e28bfe0e4f552fa6b7b19315077723693662e14d2de4ab547e4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowClust_3.38.0.tar.gz
+	sha256sums = 427ffbd52933886958650f6958c7404b64db45a7a32926631a9cf4ff4cafb3be
 
 pkgname = r-flowclust
