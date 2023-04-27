@@ -1,7 +1,7 @@
 pkgbase = inertial-sense-sdk
 	pkgdesc = Quick integration for communication with the Inertial Sense product line.
 	pkgver = 1.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/inertialsense/inertial-sense-sdk
 	arch = any
 	license = MIT
@@ -10,6 +10,6 @@ pkgbase = inertial-sense-sdk
 	provides = inertial-sense-sdk
 	conflicts = inertial-sense-sdk
 	source = https://github.com/inertialsense/inertial-sense-sdk/archive/refs/tags/1.9.1.tar.gz
-	sha256sums = a644744494656be80802bb84726fb8f30c3aaa88e1ffcbf52ede28aaa9d933cc
+	sha256sums = c97746b77b084af8c941dd96c61b330b9f434c9ec57440ab6131e79e11d17827
 
 pkgname = inertial-sense-sdk

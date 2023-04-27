@@ -2,7 +2,7 @@
 
 pkgname=inertial-sense-sdk
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgsuffix=""
 pkgdesc="Quick integration for communication with the Inertial Sense product line."
 arch=('any')
@@ -15,7 +15,7 @@ source=(
     "https://github.com/inertialsense/${pkgname}/archive/refs/tags/${pkgver}${pkgsuffix}.tar.gz"
 )
 sha256sums=(
-    'a644744494656be80802bb84726fb8f30c3aaa88e1ffcbf52ede28aaa9d933cc'
+    'c97746b77b084af8c941dd96c61b330b9f434c9ec57440ab6131e79e11d17827'
 )
 
 build() {
