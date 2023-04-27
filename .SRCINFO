@@ -1,13 +1,13 @@
 pkgbase = r-asgsca
 	pkgdesc = Association Studies for multiple SNPs and multiple traits using Generalized Structured Equation Models
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ASGSCA
 	arch = any
 	license = GPL
 	depends = r
 	optdepends = r-biocstyle
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ASGSCA_1.32.0.tar.gz
-	sha256sums = 5180564d250e44bdd21c50ec6a8f2d41c3368bf7a97930c83db41bbc3aba8a8b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ASGSCA_1.34.0.tar.gz
+	sha256sums = fa13c4805febfa19f01cbc00ce0901f27ea92eb6324d11c1de188195773e636d
 
 pkgname = r-asgsca
