@@ -6,7 +6,7 @@
 _pkgname=discord
 _electron=electron
 pkgname=${_pkgname}_arch_electron
-pkgver=0.0.26
+pkgver=0.0.27
 pkgrel=1
 pkgdesc="Discord (popular voice + video app) using the system provided electron for increased security and performance"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=("https://dl.discordapp.net/apps/linux/$pkgver/$_pkgname-$pkgver.tar.gz"
         'discord-launcher.sh'
         'LICENSE.html::https://discord.com/terms'
         'OSS-LICENSES.html::https://discord.com/licenses')
-sha512sums=('65477c2c033f30850a699706a6502ff4f4af8838185716d968d641fdab3033555139b04bf91a111a847aca14113e33ba6248d49ba317fd43cbacb099e974117b'
+sha512sums=('285a0119b4740402a3fa94d3679a52bc8d883413ee32187e90087960a4d34aaf316788d2708bbccafe3f995c2b99767b45bc4b7c731704ef887a8de1b3d3926f'
             '6ca6dfbfb65bf4fec34aac4676f66bb602b5c4c3318fcc96236056d632c0c9af3c4eb775b491c2e722ed5de6a4c253677d6ee1a7be69e13045702fa3df8cf52f'
             SKIP
             SKIP)
@@ -31,11 +31,6 @@ sha512sums=('65477c2c033f30850a699706a6502ff4f4af8838185716d968d641fdab303355513
 prepare() {
   sed -i "s|@PKGNAME@|${_pkgname}|;s|@ELECTRON@|${_electron}|" discord-launcher.sh
   sed -i "s|Exec=.*|Exec=/usr/bin/$_pkgname|" Discord/discord.desktop
-}
-
-package() {
-  # Install the app
-  install -d "$pkgdir"/usr/lib/$_pkgname
 
   # HACKS FOR SYSTEM ELECTRON
   asar e Discord/resources/app.asar Discord/resources/app
@@ -44,6 +39,11 @@ package() {
   sed -i "s|exeDir,|'/usr/share/pixmaps',|" Discord/resources/app/app_bootstrap/autoStart/linux.js
   asar p Discord/resources/app Discord/resources/app.asar --unpack-dir '**'
   rm -rf Discord/resources/app
+}
+
+package() {
+  # Install the app
+  install -d "$pkgdir"/usr/lib/$_pkgname
 
   # Copy Relevanat data
   cp -r Discord/resources/*  "$pkgdir"/usr/lib/$_pkgname/
