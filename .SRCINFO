@@ -1,6 +1,6 @@
 pkgbase = mozc-ut-full
-	pkgver = 2.28.5029.102.20230115
-	pkgrel = 2
+	pkgver = 2.28.5080.102.20230423
+	pkgrel = 1
 	url = https://github.com/fcitx/mozc
 	arch = x86_64
 	license = custom
@@ -20,7 +20,7 @@ pkgbase = mozc-ut-full
 	makedepends = ibus
 	makedepends = ruby
 	noextract = jawiki-latest-all-titles-in-ns0.gz
-	source = git+https://github.com/fcitx/mozc.git#commit=242b4f7
+	source = git+https://github.com/fcitx/mozc.git#commit=00a39e9
 	source = https://osdn.net/projects/ponsfoot-aur/storage/mozc/x-ken-all-202110.zip
 	source = https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-202110.zip
 	source = git+https://github.com/abseil/abseil-cpp.git
@@ -54,12 +54,12 @@ pkgbase = mozc-ut-full
 	sha512sums = e7c6357424f76435586254fb5e7ba808adedd4d5da6338adea7280d3d8730e9300b04991ddf0a6a9a19cd7ea0fa8b512fd7d6e287990c0d545e873da7eb9f7cd
 	sha512sums = 30019a9ce73456046f67edd6fe8f4661bd9a8e9ca201f3bdf22d2fa70dad9544bd595a8820fbed402a0709809d02cabbdea9dc79ee1f5bf30f8ef722ba4a2c17
 	sha512sums = 439537ce16752c2a03f4431533820403f4923c25595100b3e1768602e3f2c55bfdf5d0286947f68a3553422b5db115cc4ab945cd08b9d865f64d8c35aaa5e3c5
-	sha512sums = a68866dd2fb9722682115cdaa04152c07e680599a815c56aedf0b0b8555b3a02283ad5b4a3c0be0ab7b6c601bc89523d296b34f63ab04e3830a24cfd65933c95
-	sha512sums = 990525bad91b47c39775a407f07c2ab00610b9380e0dae200e27665ae7c558885ffe4d7a8666813faf59fc9280e57b666c1edf328e03fbd6492357e25899ce4e
-	sha512sums = 94d48070b350ab05573d6904b3d320cc4d68a0d8399cf6708eac0b81a2d8be4b6c81f3bfcdd3bf8b31590ee15a298754bb678f6acc51f56db667e0da505835e2
+	sha512sums = 5db7636ea2e64ef87776dec2d4a1a03abc758472e6c2d9cc3a4cfe3291ada8bc8ff5603746a6c2ebecdd33d0fccd5703464a976c1f705c517a8f440b1c19eccf
+	sha512sums = 3d11bc71a870181e9554525ca81fe72bc6018ad5599938b1b3f8ffe59eb2833be72031cdd5d3d2652e43294950ed0b5ba4cd60eefe2a98c03d089593d772fef3
+	sha512sums = 9694bec7607ffc656125b7d1d0e0e5e1f60cbec4204852c9bb74b0b1a611d62d6c1ef01738d3113690ce086371ca8bc202007145c1ef92175053124f5a6c85c3
 	sha512sums = d537d684c093ec4ef7bdde9d5fd1c072103d67d85933c598061445bcb77072e78b4d4c0ead6b50ed5c095dd6a976256e3ea27d38b96f847b3c09afd8f9f3fc43
 	sha512sums = 0afd153746727edbba65523cad450928fb863185679c7eb241c4c2928006c196a43235245aee7e1e1c2294be71e6035e47585db1270773da894947ac19a4c0c6
-	sha512sums = dd2ff7e4ee3e6ef4ffc415a506ceb4a2f47976be8afda6bdb60a2830890e8b09c6c456b8ac67aa6aa8327bf0a11fb22039a80621e4cbbb145099b86ef87d7359
+	sha512sums = ef3d170c90baf63315ea54bd867b18d6707883936e4ab910cb53d02e7799d64ffd7e996d913066f9ac185bf49cbbbeec24074bff062a1c83cd48c060dfcbeec5
 
 pkgname = mozc-ut-full-common
 	pkgdesc = A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)
@@ -68,8 +68,8 @@ pkgname = mozc-ut-full-common
 pkgname = ibus-mozc-ut-full
 	pkgdesc = IBus engine module for Mozc with UT dictionary
 	depends = ibus>=1.4.1
-	depends = mozc-ut-full-common
 	depends = qt5-base
+	depends = mozc-ut-full-common
 	conflicts = ibus-mozc
 	replaces = ibus-mozc
 
