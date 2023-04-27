@@ -1,6 +1,6 @@
 pkgbase = r-seqlogo
 	pkgdesc = Sequence logos for DNA sequence alignments
-	pkgver = 1.64.0
+	pkgver = 1.66.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/seqLogo
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-seqlogo
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/seqLogo_1.64.0.tar.gz
-	sha256sums = d7fe7ac53c7b64e78ac34619758df42d9442e635b284befe52f148ac62889df6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/seqLogo_1.66.0.tar.gz
+	sha256sums = 135146b799f4ef9bf53dc2f407ceb5cdc48a017404d7cbf2d48fa4506bf6471c
 
 pkgname = r-seqlogo
