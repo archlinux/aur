@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=iterativeBMA
-_pkgver=1.56.0
+_pkgver=1.58.0
 pkgname=r-${_pkgname,,}
-pkgver=1.56.0
+pkgver=1.58.0
 pkgrel=1
 pkgdesc='The Iterative Bayesian Model Averaging (BMA) algorithm'
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
   r-leaps
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d38f7b07006c50caf70019d16db5c608b5d64a669df129135624ed308e9cf45e')
+sha256sums=('da4e0f464520bf2763687bddb3502a00ff6b4665e4d8831c276208f49562daae')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

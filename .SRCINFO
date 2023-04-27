@@ -1,6 +1,6 @@
 pkgbase = r-iterativebma
 	pkgdesc = The Iterative Bayesian Model Averaging (BMA) algorithm
-	pkgver = 1.56.0
+	pkgver = 1.58.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/iterativeBMA
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = r-iterativebma
 	depends = r-biobase
 	depends = r-bma
 	depends = r-leaps
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/iterativeBMA_1.56.0.tar.gz
-	sha256sums = d38f7b07006c50caf70019d16db5c608b5d64a669df129135624ed308e9cf45e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/iterativeBMA_1.58.0.tar.gz
+	sha256sums = da4e0f464520bf2763687bddb3502a00ff6b4665e4d8831c276208f49562daae
 
 pkgname = r-iterativebma
