@@ -1,6 +1,6 @@
 pkgbase = r-cn.farms
 	pkgdesc = cn.FARMS - factor analysis for copy number estimation
-	pkgver = 1.46.0
+	pkgver = 1.48.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/cn.farms
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = r-cn.farms
 	optdepends = r-pd.genomewidesnp.6
 	optdepends = r-pd.mapping250k.nsp
 	optdepends = r-pd.mapping250k.sty
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cn.farms_1.46.0.tar.gz
-	sha256sums = f2035a7b5aa6e500a15e13cf02f9f047d89791ad559fbf62f578c5454e0a3ed0
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cn.farms_1.48.0.tar.gz
+	sha256sums = ab2838a4c71924cc5066d07a0b4e6f486a29da2efb798b915f3b47331df26a93
 
 pkgname = r-cn.farms

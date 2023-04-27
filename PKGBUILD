@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cn.farms
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='cn.FARMS - factor analysis for copy number estimation'
 arch=('x86_64')
@@ -28,7 +28,7 @@ optdepends=(
   r-pd.mapping250k.sty
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f2035a7b5aa6e500a15e13cf02f9f047d89791ad559fbf62f578c5454e0a3ed0')
+sha256sums=('ab2838a4c71924cc5066d07a0b4e6f486a29da2efb798b915f3b47331df26a93')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
