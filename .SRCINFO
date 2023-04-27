@@ -1,6 +1,6 @@
 pkgbase = r-easierdata
 	pkgdesc = easier internal data and exemplary dataset from IMvigor210CoreBiologies package
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/easierData
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-easierdata
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/easierData_1.4.0.tar.gz
-	sha256sums = 1d58b180d83829109f57f590747234fa73a4e9d109506bd2a92731d0cc120f71
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/easierData_1.5.0.tar.gz
+	sha256sums = 3fef76d141fa1f63b3a92a9a62f16e75d2fb7a5325c3d4a1153ca9fd73fab7e8
 
 pkgname = r-easierdata
