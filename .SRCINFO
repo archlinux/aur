@@ -1,6 +1,6 @@
 pkgbase = r-biodbchebi
 	pkgdesc = biodbChebi, a library for connecting to the ChEBI Database
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/biodbChebi
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-biodbchebi
 	optdepends = r-rmarkdown
 	optdepends = r-roxygen2
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/biodbChebi_1.4.0.tar.gz
-	sha256sums = 89400ded6fb89bd4a1c0ea02f4f6420da25989d253b4a99e703db509d9fe8009
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/biodbChebi_1.6.0.tar.gz
+	sha256sums = 5219c603bca638c11bf2b515b34e49f26af4b7498274949b9c033c24732989b0
 
 pkgname = r-biodbchebi
