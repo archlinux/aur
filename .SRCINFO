@@ -1,6 +1,6 @@
 pkgbase = r-cydar
 	pkgdesc = Using Mass Cytometry for Differential Abundance Analyses
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/cydar
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = r-cydar
 	optdepends = r-ncdfflow
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cydar_1.22.0.tar.gz
-	sha256sums = 03beb7220714e70cb917b8514c13112801871e092585a617b087e04be8149109
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cydar_1.24.0.tar.gz
+	sha256sums = 12f64197f9ae44ac1178a94f1a4aaa3705ed8d426830a19aca2e1a83079bf391
 
 pkgname = r-cydar
