@@ -1,6 +1,6 @@
 pkgbase = r-tradeseq
 	pkgdesc = trajectory-based differential expression analysis for sequencing data
-	pkgver = 1.12.0
+	pkgver = 1.14.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/tradeSeq
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = r-tradeseq
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/tradeSeq_1.12.0.tar.gz
-	sha256sums = 00be51a550bde289112dc378c8139c75972b0bb7826a034bb324818939946b72
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/tradeSeq_1.14.0.tar.gz
+	sha256sums = 1af741887e296fba61ff97b716e225c8719df3f3f3dfa6095bb0920153076991
 
 pkgname = r-tradeseq
