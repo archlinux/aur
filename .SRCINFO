@@ -1,7 +1,7 @@
 pkgbase = msmtp-git
 	pkgdesc = A mini smtp client
 	pkgver = 1.8.23.r3.gaf851aa
-	pkgrel = 1
+	pkgrel = 2
 	url = https://marlam.de/msmtp/
 	arch = x86_64
 	license = GPL3

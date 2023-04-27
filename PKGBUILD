@@ -2,7 +2,7 @@
 
 pkgname="msmtp-git"
 pkgver="1.8.23.r3.gaf851aa"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A mini smtp client"
 arch=("x86_64")
 url="https://marlam.de/msmtp/"
@@ -22,6 +22,7 @@ pkgver() {
 build() {
     cd "${srcdir}/${pkgname%-*}" || return
     aclocal && \
+    autoheader && \
     autoconf && \
     automake --add-missing && \
     ./configure --prefix=/usr --sysconfdir=/etc --with-libgsasl && \
