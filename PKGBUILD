@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=genArise
-_pkgver=1.74.0
+_pkgver=1.76.0
 pkgname=r-${_pkgname,,}
-pkgver=1.74.0
+pkgver=1.76.0
 pkgrel=1
 pkgdesc='Microarray Analysis tool'
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b03712ec9822a8ddd32e4cc2950285db99a4c714cbf1c5ca01ef0fb470cdd9a7')
+sha256sums=('0bb42d66d01c4c123c4104f398a170ee175e6a4acd41a26e6bcc3ee99fb558c1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
