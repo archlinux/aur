@@ -1,6 +1,6 @@
 pkgbase = r-lrbasedbi
 	pkgdesc = DBI to construct LRBase-related package
-	pkgver = 2.8.0
+	pkgver = 2.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/LRBaseDbi
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-lrbasedbi
 	depends = r-rsqlite
 	optdepends = r-biocstyle
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/LRBaseDbi_2.8.0.tar.gz
-	sha256sums = 2a7ca91d4ed40235a8263dad69c1ad052da2b595fa7d4df5e9f1050ec464fbb9
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/LRBaseDbi_2.10.0.tar.gz
+	sha256sums = 4a0308b5b7b307ff332a0e617f550bccf0ca456a51a9504b45ca2ede98e815b8
 
 pkgname = r-lrbasedbi
