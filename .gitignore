@@ -1,0 +1,6 @@
+widelands
+pkg
+src
+*.zst
+*.pkg
+*.pkg.*
