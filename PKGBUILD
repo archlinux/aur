@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ewceData
-_pkgver=1.6.0
+_pkgver=1.7.1
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc='The ewceData package provides reference data required for ewce'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3fc197722266e0114eb24dfcbcd84af650e3d9b94c408a7d67e014ead1a39996')
+sha256sums=('85e601cf464b957a24f97c739fa2cf9a6e19b64f85fa1f576418ab0d016ce2bc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
