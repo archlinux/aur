@@ -1,6 +1,6 @@
 pkgbase = r-drugtargetinteractions
 	pkgdesc = Drug-Target Interactions
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/drugTargetInteractions
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = r-drugtargetinteractions
 	optdepends = r-reshape2
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/drugTargetInteractions_1.6.0.tar.gz
-	sha256sums = 57fdc320e3aea4afca9e4abe38071200a4bf33dfcadf31b68d34236e039cc613
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/drugTargetInteractions_1.8.0.tar.gz
+	sha256sums = 2332ad1ad5bef46e18b54dd10f1daa3fb6b10c2f4e864f4a5d19e56d5d738952
 
 pkgname = r-drugtargetinteractions
