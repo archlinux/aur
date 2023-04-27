@@ -1,7 +1,7 @@
 pkgbase = r-ontoproc
 	pkgdesc = processing of ontologies of anatomy, cell lines, and so on
-	pkgver = 1.20.0
-	pkgrel = 3
+	pkgver = 1.21.2
+	pkgrel = 1
 	url = https://bioconductor.org/packages/ontoProc
 	arch = any
 	license = Artistic2.0
@@ -29,7 +29,7 @@ pkgbase = r-ontoproc
 	optdepends = r-rmarkdown
 	optdepends = r-singlecellexperiment
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ontoProc_1.20.0.tar.gz
-	sha256sums = 20932f7f52047ae2117f8fa57f54c16bb5c2543ec602e1870b28a4a66b22e8dc
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ontoProc_1.21.2.tar.gz
+	sha256sums = 685acc8748ac5148589ebbd208f602bcec3d2e641f6d14dd2eb40d32596952c7
 
 pkgname = r-ontoproc

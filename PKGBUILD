@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ontoProc
-_pkgver=1.20.0
+_pkgver=1.21.2
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
-pkgrel=3
+pkgver=1.21.2
+pkgrel=1
 pkgdesc='processing of ontologies of anatomy, cell lines, and so on'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -38,7 +38,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('20932f7f52047ae2117f8fa57f54c16bb5c2543ec602e1870b28a4a66b22e8dc')
+sha256sums=('685acc8748ac5148589ebbd208f602bcec3d2e641f6d14dd2eb40d32596952c7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
