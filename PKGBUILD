@@ -20,15 +20,15 @@ sha512sums=('0f147465c5bc5f8b4e6781c478ee8a096593017d954b742fd0679c7a7db38855d4a
             '0303fe615d6ef4e14112998c531a17613b94776f9a6a027ddb81e400fddd5f2ff15583da8b8631c2306aca854edf2f54a8007eb36f1732b4c064c857aaf268ae')
 
 prepare() {
-  export PREFIX=/usr
-  export NV_USE_BUNDLED_LIBJANSSON=0
-  export OUTPUTDIR=out
-
   cd ${_pkgmainbranch}-${pkgver}
   patch -Np1 -i "${srcdir}"/nvidia-settings-libxnvctrl_so.patch
 }
 
 build() {
+  export PREFIX=/usr
+  export NV_USE_BUNDLED_LIBJANSSON=0
+  export OUTPUTDIR=out
+
   cd ${_pkgmainbranch}-${pkgver}
   export CFLAGS+=" -ffat-lto-objects"
   make
