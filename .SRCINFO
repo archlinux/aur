@@ -1,11 +1,11 @@
 pkgbase = ttf-kingnam-maiyuan
 	pkgdesc = 来自荆南字坊的免费手写字.
 	pkgver = 1.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maoken-fonts/KNMaiyuan
 	arch = any
-	license = OFL1.1
-	source = KNMaiyuan-Regular.ttf::https://github.com/maoken-fonts/KNMaiyuan/raw/main/fonts/TTF/KNMaiyuan-Regular.ttf
-	sha256sums = 94ea78c51086b1ea58c1744784b2335dea2c5ef1c5193b80e02c7d46b8e0283f
+	license = custom:OFL1.1
+	source = ttf-kingnam-maiyuan-1.20.tar.gz::https://github.com/maoken-fonts/KNMaiyuan/archive/refs/tags/v1.20.tar.gz
+	sha256sums = 6ec857c32a6d7a7d6c3eaa0ad2626484b92079c0c35ece7672fc715d4641c31d
 
 pkgname = ttf-kingnam-maiyuan
