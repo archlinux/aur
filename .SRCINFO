@@ -1,6 +1,6 @@
 pkgbase = r-aneufinder
 	pkgdesc = Analysis of Copy Number Variation in Single-Cell-Sequencing Data
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/AneuFinder
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = r-aneufinder
 	optdepends = r-bsgenome.mmusculus.ucsc.mm10
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/AneuFinder_1.26.0.tar.gz
-	sha256sums = 00c880890298f7e81d2873efbf4c78b2d6f52170580120a72c30c16387798c94
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/AneuFinder_1.28.0.tar.gz
+	sha256sums = 6c06ab05e6f8afda7d8e0c44e68e01b0430b255fafb6a028ddd3fa0bc4f263d0
 
 pkgname = r-aneufinder
