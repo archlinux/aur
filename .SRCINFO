@@ -1,6 +1,6 @@
 pkgbase = r-a4classif
 	pkgdesc = Automated Affymetrix Array Analysis Classification Package
-	pkgver = 1.46.0
+	pkgver = 1.48.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/a4Classif
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-a4classif
 	optdepends = r-hgu95av2.db
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/a4Classif_1.46.0.tar.gz
-	sha256sums = 7cb42265b1c30f3ff6fb1d356c06811387c782e960408f9e49a9e6ff31903952
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/a4Classif_1.48.0.tar.gz
+	sha256sums = bbfe2f3a4d4f81b722ee17d4f76ae001c21ce328c9f470e635606d59fef5bdfc
 
 pkgname = r-a4classif
