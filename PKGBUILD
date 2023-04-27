@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GSCA
-_pkgver=2.28.0
+_pkgver=2.30.0
 pkgname=r-${_pkgname,,}
-pkgver=2.28.0
+pkgver=2.30.0
 pkgrel=1
 pkgdesc='GSCA: Gene Set Context Analysis'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-affymoe4302expr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ba3152e059893d6cf18e83ff38de84cc263de387f9df8dcd86cfe0863e2b6e6b')
+sha256sums=('81647bf613c0beadfbd5e1630217d540ce42c91507aa7162c092581164d7abcf')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
