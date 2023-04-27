@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MethCP
-_pkgver=1.11.0
+_pkgver=1.13.0
 pkgname=r-${_pkgname,,}
-pkgver=1.11.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc='Differential methylation anlsysis for bisulfite sequencing data'
 arch=('any')
