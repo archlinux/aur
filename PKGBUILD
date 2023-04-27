@@ -1,16 +1,16 @@
 # Maintainer: Nebula <nebula@palera.in>
 
 pkgname=palera1n
-pkgver=2.0.0~beta.5
+pkgver=2.0.0~beta.6
 pkgrel=1
-pkgdesc="iOS 15.0-16.3.1 semi-tethered checkm8 jailbreak"
+pkgdesc="iOS 15.0-16.4.1 semi-tethered checkm8 jailbreak"
 arch=('x86_64')
 url="https://palera.in"
 licence=('MIT')
-source=("https://github.com/palera1n/palera1n/releases/download/v2.0.0-beta.5/palera1n-linux-x86_64"
-        "https://github.com/palera1n/palera1n/releases/download/v2.0.0-beta.5/palera1n.1")
-sha256sums=('1120432596a1d3c65195a602dc55e7f5719f9232c51ee548c92d4ea05057a3bd'
-            '9a9f6f9ba7ff51b1baba45797aa5ba1f45d49aa009db87573f2c0cbdefaa9d95')
+source=("https://github.com/palera1n/palera1n/releases/download/v2.0.0-beta.6.2/palera1n-linux-x86_64"
+        "https://github.com/palera1n/palera1n/releases/download/v2.0.0-beta.6.2/palera1n.1")
+sha256sums=('c4d92454c2ed52b58cb0115d8660682b20335d9721b685f0ae27eacbebb252e2'
+            'aed0e6d47e2dbdc96c5051973fb8419d4a82248ce33b7c268113c038a7bc576d')
 options=('!strip')
 package() {
     echo "  -> Moving files in place..."
