@@ -1,0 +1,34 @@
+pkgbase = lib32-nvidia-525xx-utils
+	pkgdesc = NVIDIA x32 libs for Linux, 525 branch
+	pkgver = 525.89.02
+	pkgrel = 1
+	url = http://www.nvidia.com/
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/525.89.02/NVIDIA-Linux-x86_64-525.89.02.run
+	sha512sums = a991c5a843957aa81cf619c39d699100ff69fc723fb195c68fd50cd69ee9d5651a223d3b5d254c8c1b7c8cad09e24846ba4e64869a8b3777e85cd3e5ba515bb5
+
+pkgname = lib32-nvidia-525xx-utils
+	pkgdesc = NVIDIA drivers utilities (32-bit), 525 branch
+	depends = lib32-zlib
+	depends = lib32-gcc-libs
+	depends = lib32-libglvnd
+	depends = nvidia-utils=525.89.02
+	optdepends = lib32-opencl-nvidia
+	provides = lib32-nvidia-utils=525.89.02
+	provides = lib32-vulkan-driver
+	provides = lib32-opengl-driver
+	provides = lib32-nvidia-libgl
+	conflicts = lib32-nvidia-utils
+	conflicts = lib32-nvidia-libgl
+	replaces = lib32-nvidia-libgl
+
+pkgname = lib32-opencl-nvidia-525xx
+	pkgdesc = OpenCL implemention for NVIDIA (32-bit), 525 branch
+	depends = lib32-zlib
+	depends = lib32-gcc-libs
+	optdepends = opencl-headers: headers necessary for OpenCL development
+	provides = lib32-opencl-nvidia
+	provides = lib32-opencl-driver
+	conflicts = lib32-opencl-nvidia
