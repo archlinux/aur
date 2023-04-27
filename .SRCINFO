@@ -1,6 +1,6 @@
 pkgbase = r-rtrm
 	pkgdesc = Identification of Transcriptional Regulatory Modules from Protein-Protein Interaction Networks
-	pkgver = 1.36.0
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rTRM
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-rtrm
 	optdepends = r-pwmenrich
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rTRM_1.36.0.tar.gz
-	sha256sums = 9b6cb32c82eb14bfcd5a3b6b88f16524759760aac5537a94aa709011fe3eb785
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rTRM_1.38.0.tar.gz
+	sha256sums = 19a1534e90008bf28f3028a113fe0927a68e1f61660c4142b26f88eb587585bf
 
 pkgname = r-rtrm
