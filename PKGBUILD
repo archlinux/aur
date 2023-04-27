@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=heatmaps
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Flexible Heatmaps for Functional Genomics and Sequence Features'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('043e2efb029595cabc05bc1dab54e843d4bb14f895f7e1b87120ca019d745b06')
+sha256sums=('3bd6434812e6e464d382fe06064a638791e3b5e9314a9d5a0ee33ae915d1b112')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
