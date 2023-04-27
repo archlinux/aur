@@ -1,6 +1,6 @@
 pkgbase = r-limma
 	pkgdesc = Linear Models for Microarray Data
-	pkgver = 3.54.2
+	pkgver = 3.56.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/limma
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = r-limma
 	optdepends = r-splines
 	optdepends = r-statmod
 	optdepends = r-vsn
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/limma_3.54.2.tar.gz
-	sha256sums = 0be567ec0e24707ca27bd54d9e86b407e82ffe10fef21ebc4631356a3f1990e1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/limma_3.56.0.tar.gz
+	sha256sums = 3c3d517b047af94111b6155e5be2e66e5fba624188540f2f91584bde05ce0007
 
 pkgname = r-limma
