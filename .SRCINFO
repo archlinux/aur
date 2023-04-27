@@ -1,6 +1,6 @@
 pkgbase = r-prostar
 	pkgdesc = Provides a GUI for DAPAR
-	pkgver = 1.30.7
+	pkgver = 1.32.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Prostar
 	arch = any
@@ -41,7 +41,7 @@ pkgbase = r-prostar
 	optdepends = r-shinywidgets
 	optdepends = r-testthat
 	optdepends = r-xml
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Prostar_1.30.7.tar.gz
-	sha256sums = fb77cd350cd7b8bb83b277869142fd940ee1fcb64bdca404456e9015df819f82
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Prostar_1.32.0.tar.gz
+	sha256sums = 800fa3798671d56c9e3e1ee0ae328e89f088a78237d23f40ca54ea1e68f6d34b
 
 pkgname = r-prostar
