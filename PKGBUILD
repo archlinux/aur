@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=peakPantheR
-_pkgver=1.12.2
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.2
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='Peak Picking and Annotation of High Resolution Experiments'
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('be5fabaf60b964aad93252fd05aadef4463c22021c2febed285837524f78b739')
+sha256sums=('2eff294d907a499d3f09a3432aaee362557a3d64841a40fab0b5068c09d0d35a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
