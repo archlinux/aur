@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pdfstudioviewer
 _pkgname=pdfstudioviewer2022
 pkgver=2022.2.4
