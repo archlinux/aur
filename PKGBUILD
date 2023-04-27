@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=wiggleplotr
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Make read coverage plots from BigWig files'
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg38.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('83deaa1ed30ee5381bd911c68adc2839f6742e9fb4780f1a9f3c11417cd4e9fa')
+sha256sums=('770f1b8fcd8107d4c9f02621ff7cb764b2e73e1c9048d557ef5485b840d0eb95')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
