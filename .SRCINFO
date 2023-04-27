@@ -1,6 +1,6 @@
 pkgbase = r-cnorfeeder
 	pkgdesc = Integration of CellNOptR to add missing links
-	pkgver = 1.38.0
+	pkgver = 1.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CNORfeeder
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-cnorfeeder
 	optdepends = r-minet
 	optdepends = r-rgraphviz
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CNORfeeder_1.38.0.tar.gz
-	sha256sums = 10f0c29938071d8859134354a846f8e9d41826e6a9309626241389a549ad1c79
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CNORfeeder_1.40.0.tar.gz
+	sha256sums = 8c3030ab4a647b3cc75935a0db8bfb2b539960eddab22a33946010003b9beb52
 
 pkgname = r-cnorfeeder
