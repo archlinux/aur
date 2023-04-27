@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=h5vcData
-_pkgver=2.18.0
+_pkgver=2.19.0
 pkgname=r-${_pkgname,,}
-pkgver=2.18.0
+pkgver=2.19.0
 pkgrel=1
 pkgdesc='Example data for the h5vc package'
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=(
   r-h5vc
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8085d6606e5e818a9ca4dde38a328542828f8faf37a5bda1210eff50cee5a046')
+sha256sums=('917902741fdf4472c30c363aa683e8d4c3141d8bb1ac7448113c1b2fbf9740f3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
