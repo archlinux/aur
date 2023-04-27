@@ -1,6 +1,6 @@
 pkgbase = r-chipexoqual
 	pkgdesc = ChIPexoQual
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ChIPexoQual
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = r-chipexoqual
 	optdepends = r-gridextra
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ChIPexoQual_1.22.0.tar.gz
-	sha256sums = 33a689c8da25ca4de03242aa253e605e51ea45cfd5e227bf33e09f7b795b9b4c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ChIPexoQual_1.24.0.tar.gz
+	sha256sums = 9f9e0d0014dcf4d05287b63a269f8d4972eeb37150558f48e3b1773085c6dac7
 
 pkgname = r-chipexoqual

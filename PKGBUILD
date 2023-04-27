@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ChIPexoQual
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='ChIPexoQual'
 arch=('any')
@@ -37,7 +37,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('33a689c8da25ca4de03242aa253e605e51ea45cfd5e227bf33e09f7b795b9b4c')
+sha256sums=('9f9e0d0014dcf4d05287b63a269f8d4972eeb37150558f48e3b1773085c6dac7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
