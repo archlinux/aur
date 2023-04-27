@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=netprioR
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='A model for network-based prioritisation of genes'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-pander
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('14eb0d5d9a618ee60a6961d304ed2c722fac92b6a40dac5befcf63080c7995a1')
+sha256sums=('eb80affb157f4d7d802eede3042566dc85137e3da764bade097eee03c4ed3e74')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
