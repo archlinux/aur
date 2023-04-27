@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SCFA
-_pkgver=1.8.1
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.1
-pkgrel=3
+pkgver=1.10.0
+pkgrel=1
 pkgdesc='SCFA: Subtyping via Consensus Factor Analysis'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -25,7 +25,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bfe45057ec35fe1142662d04bbef67fdd5688586eaf42fa03dc0765e02ac69a0')
+sha256sums=('873f67954937846367128bcb489ce674e2f4e4c716131a05766c6ef0bb423fb1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
