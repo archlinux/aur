@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=diffGeneAnalysis
-_pkgver=1.80.0
+_pkgver=1.82.0
 pkgname=r-${_pkgname,,}
-pkgver=1.80.0
+pkgver=1.82.0
 pkgrel=1
 pkgdesc='Performs differential gene expression Analysis'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   r-minpack.lm
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3c941ae877de9b4ab2faf2359d5e5895c658ac75b2b051cd83d7392a4b681f4c')
+sha256sums=('240d60f280dc9719b74c967a4ea1d132da4bcf5384a29920184dc20753875f71')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
