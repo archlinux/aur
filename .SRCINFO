@@ -1,6 +1,6 @@
 pkgbase = r-illuminaio
 	pkgdesc = Parsing Illumina Microarray Output Files
-	pkgver = 0.40.0
+	pkgver = 0.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/illuminaio
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = r-illuminaio
 	optdepends = r-biocstyle
 	optdepends = r-illuminadatatestfiles
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/illuminaio_0.40.0.tar.gz
-	sha256sums = 22f4545c0420ebc42709b7d42562279344eea0c916a734f9fc0c40b8aa1185b3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/illuminaio_0.42.0.tar.gz
+	sha256sums = 22199cb5898327b1ccbb81ca884f79d9864b7825257e1a585c46c08ad31a11a4
 
 pkgname = r-illuminaio
