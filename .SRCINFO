@@ -1,6 +1,6 @@
 pkgbase = r-sracipe
 	pkgdesc = Systems biology tool to simulate gene regulatory circuits
-	pkgver = 1.14.0
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/sRACIPE
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = r-sracipe
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-tinytest
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/sRACIPE_1.14.0.tar.gz
-	sha256sums = b232e3f941103b1711867d4cdec33c191d03754545b14d0b88b97c65e2ab341d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/sRACIPE_1.16.0.tar.gz
+	sha256sums = 50724edb5febe1244fce57a21963b899ce81e881d70a818815b6b0626ab6288c
 
 pkgname = r-sracipe
