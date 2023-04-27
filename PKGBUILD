@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RVS
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Computes estimates of the probability of related individuals sharing a rare variant'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-variantannotation
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c9eaa0d2b295f01083474fea268c164b50724e0c6bbda61e9df41c1d6492a832')
+sha256sums=('080fb702c72595069d70225a0f0bca439cd0b2b64c9c3aceeaf931186c4c4188')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
