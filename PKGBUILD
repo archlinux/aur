@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mnem
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='Mixture Nested Effects Models'
 arch=('x86_64')
@@ -35,7 +35,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1ab0d6ad0aaf9025e11361b4dba907fab9a300a33ff73b2677678088e1b12dd6')
+sha256sums=('a959fd9868e0841aa35e88057fce03eaaf376782702293161f42693a10e7ef51')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
