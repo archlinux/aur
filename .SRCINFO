@@ -1,6 +1,6 @@
 pkgbase = r-iloreg
 	pkgdesc = ILoReg: a tool for high-resolution cell population identification from scRNA-Seq data
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ILoReg
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = r-iloreg
 	depends = r-umap
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ILoReg_1.8.0.tar.gz
-	sha256sums = e10f4966a40be5c385b19aa8a176e5f68a77b5ef53b7b7cf893d10730f9214ff
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ILoReg_1.10.0.tar.gz
+	sha256sums = 51a19f5568dc5d849d344000f82059b0087946e7d544bd1b7edb56242e224182
 
 pkgname = r-iloreg
