@@ -10,7 +10,7 @@ pkgdesc="dpkg is Debian's package manager (low-level utility, does not include a
 arch=('i686' 'x86_64')
 url="https://tracker.debian.org/pkg/dpkg"
 license=('GPL')
-depends=('glibc' 'perl-io-string' 'perl-timedate' 'bzip2' 'perl' 'xz' 'zlib')
+depends=('glibc' 'perl-io-string' 'perl-timedate' 'bzip2' 'perl' 'xz' 'zlib' 'libmd' 'doxygen')
 optdepends=('libselinux: SELinux support'
             'start-stop-daemon: Debian'\''s daemon starter/stopper')
 source=("http://deb.debian.org/debian/pool/main/$(head -c1 <<< $_pkgname)/${_pkgname}/${_pkgname}_${pkgver}.tar.xz")
