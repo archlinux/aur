@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BADER
-_pkgver=1.36.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
+pkgver=1.38.0
 pkgrel=1
 pkgdesc='Bayesian Analysis of Differential Expression in RNA Sequencing Data'
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
   r-pasilla
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('59c351ae313dfabdeb0c7737bde822261e4143294f4cf27ae15e5432a3ab7bc2')
+sha256sums=('ec57ee33f831d6fb6dfcbe83cc0082763ec5da7ae0f52cf7edacddacf2db7e3c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
