@@ -5,12 +5,12 @@
 _appname=smartgit
 pkgname=${_appname}_preview
 pkgver=23.1_preview_7
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical Git client. Preview version."
 arch=("any")
 url="https://www.syntevo.com/smartgit/preview/"
 license=('custom')
-depends=("java-environment>=11" "python3")
+depends=("java-environment>=17" "python3")
 optdepends=("mercurial: hg repositories support"
             "git: git repositories support")
 makedepends=("tar")

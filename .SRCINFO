@@ -1,12 +1,12 @@
 pkgbase = smartgit_preview
 	pkgdesc = Graphical Git client. Preview version.
 	pkgver = 23.1_preview_7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.syntevo.com/smartgit/preview/
 	arch = any
 	license = custom
 	makedepends = tar
-	depends = java-environment>=11
+	depends = java-environment>=17
 	depends = python3
 	optdepends = mercurial: hg repositories support
 	optdepends = git: git repositories support
