@@ -65,8 +65,5 @@ package_libxnvctrl-525xx() {
   install -Dm 644 src/libXNVCtrl/*.h -t "${pkgdir}/usr/include/NVCtrl"
   install -d "${pkgdir}/usr/lib"
 
-  # Workaround for AUR helpers like `paru` that don't respect the env variable ${OUTPUTDIR}
-  if [[ $(cp -Pr src/out/libXNVCtrl.* -t "${pkgdir}/usr/lib") -ne 0 ]]; then
-     cp -Pr src/_out/Linux_x86_64/libXNVCtrl.* -t "${pkgdir}/usr/lib"
-  fi
+  cp -Pr src/out/libXNVCtrl.* -t "${pkgdir}/usr/lib"
 }
