@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=iPAC
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.42.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc='Identification of Protein Amino acid Clustering'
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
   r-scatterplot3d
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ba021678cc100bd7f850848d828490eef6e2772f5a22f6e5f3e1207923965537')
+sha256sums=('d60e94e71c2a336944d774ddf68572a5ace2e18baffe4dbee1fcc6eb4ab496b2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
