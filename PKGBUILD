@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=yeastExpData
-_pkgver=0.44.0
+_pkgver=0.45.0
 pkgname=r-${_pkgname,,}
-pkgver=0.44.0
+pkgver=0.45.0
 pkgrel=1
 pkgdesc='Yeast Experimental Data'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-rbgl
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('46cb7467a08ac7f8c6aa65b950a805558b6e83f3f58df3a44a435eeade8830fd')
+sha256sums=('ba27adc886809a36be58d8e6d0b2a581d96195f47972579867a3ae1933c2655c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
