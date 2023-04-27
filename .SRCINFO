@@ -1,7 +1,7 @@
 pkgbase = ttf-canger-yuyang
 	pkgdesc = 仓耳渔阳体,任何用户可以全球任何领域永久免费商用.
-	pkgver = 1.1
-	pkgrel = 1
+	pkgver = 1.0
+	pkgrel = 2
 	url = http://tsanger.cn/category/114
 	arch = any
 	license = custom:free
