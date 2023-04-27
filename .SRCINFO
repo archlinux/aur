@@ -1,7 +1,7 @@
 pkgbase = r-helloranges
 	pkgdesc = Introduce *Ranges to bedtools users
-	pkgver = 1.24.0
-	pkgrel = 3
+	pkgver = 1.26.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/HelloRanges
 	arch = any
 	license = GPL
@@ -23,7 +23,7 @@ pkgbase = r-helloranges
 	depends = r-variantannotation
 	optdepends = r-biocstyle
 	optdepends = r-hellorangesdata
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/HelloRanges_1.24.0.tar.gz
-	sha256sums = 0c7efef9d6a2a64544a3a27c1f2ca625b14972b81e1c0ff790ab82fa57202811
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/HelloRanges_1.26.0.tar.gz
+	sha256sums = e61b8246dd1bc099fcf1c73b30782a06eee5ef939d0a135e9f9d73bab8b948e3
 
 pkgname = r-helloranges
