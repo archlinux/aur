@@ -1,6 +1,6 @@
 pkgbase = r-snpediar
 	pkgdesc = Query data from SNPedia
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SNPediaR
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-snpediar
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SNPediaR_1.24.0.tar.gz
-	sha256sums = 0f2d0861650b83f976813d7a83b184fd6572155d1c6b8b062eadd1b5511bdfa9
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SNPediaR_1.26.0.tar.gz
+	sha256sums = 0d2ff6d18864afc70b42ff71e68ff90f82aa10acc6347339f2efd760713bdf5f
 
 pkgname = r-snpediar
