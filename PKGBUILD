@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scDataviz
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='scDataviz: single cell dataviz and downstream analyses'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ca887d9b93fc8c787e17d418ce6b36e834ddc928df700d9fb043fdfc444dfc6a')
+sha256sums=('a7f473a8cf1e34ef3cfc5523d5324421a2d3a26e2c1bea3b4d947364bf15696b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
