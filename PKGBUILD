@@ -41,22 +41,22 @@ source=('git+https://codeberg.org/dnkl/yambar.git')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${_pkgname}"
-	git describe --long --tags | sed 's/[^-]*-g/r&/;s/-/./g'
+  cd "${_pkgname}"
+  git describe --long --tags | sed 's/[^-]*-g/r&/;s/-/./g'
 }
 
 build() {
-	cd "${_pkgname}"
-	meson setup --buildtype=release --prefix=/usr \
-		--wrap-mode=nofallback \
-		-Db_lto=true \
-		-Dbackend-x11=enabled -Dbackend-wayland=enabled \
-		build
-	meson compile -C build
+  cd "${_pkgname}"
+  meson setup --buildtype=release --prefix=/usr \
+    --wrap-mode=nofallback \
+    -Db_lto=true \
+    -Dbackend-x11=enabled -Dbackend-wayland=enabled \
+    build
+  meson compile -C build
 }
 
 
 package() {
-	cd "${_pkgname}"
-	meson install -C build --destdir "${pkgdir}"
+  cd "${_pkgname}"
+  meson install -C build --destdir "${pkgdir}"
 }
