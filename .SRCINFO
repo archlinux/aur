@@ -1,7 +1,7 @@
 pkgbase = r-biotip
 	pkgdesc = BioTIP: An R package for characterization of Biological Tipping-Point
-	pkgver = 1.12.0
-	pkgrel = 3
+	pkgver = 1.14.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/BioTIP
 	arch = any
 	license = GPL
@@ -16,7 +16,7 @@ pkgbase = r-biotip
 	optdepends = r-knitr
 	optdepends = r-markdown
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BioTIP_1.12.0.tar.gz
-	sha256sums = d1d25da7fc907fe2edcfdc6c41b5ce656ecf70aa33d7cb73449f33f037b120d9
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BioTIP_1.14.0.tar.gz
+	sha256sums = a0487f6268b2a534b867b1b650d29d025fa1ac99956b02450242edccbcea1653
 
 pkgname = r-biotip
