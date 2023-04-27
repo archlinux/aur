@@ -1,7 +1,7 @@
 pkgbase = r-rrvgo
 	pkgdesc = Reduce + Visualize GO
-	pkgver = 1.10.0
-	pkgrel = 3
+	pkgver = 1.12.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/rrvgo
 	arch = any
 	license = GPL
@@ -48,7 +48,7 @@ pkgbase = r-rrvgo
 	optdepends = r-slam
 	optdepends = r-testthat
 	optdepends = r-utils
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rrvgo_1.10.0.tar.gz
-	sha256sums = f80fe7c0f362874185f988f3fcc7d0a66859081ae31468aa84d714ff7410067e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rrvgo_1.12.0.tar.gz
+	sha256sums = 8e4dc6f218418cc79ddb946660cc3fbb2600acfdc954255152edabc56c0bdc40
 
 pkgname = r-rrvgo
