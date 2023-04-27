@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PSEA
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Population-Specific Expression Analysis.'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
   r-biocstyle
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3ea5466278e22da554479d9999afdc14d0b9142eb0a04f192dbdf16c26baa7e7')
+sha256sums=('185aac782e01d44206fe78adbed6f9f89ebf4e7e43d0395c9239f71b80bc7d20')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
