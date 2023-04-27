@@ -1,7 +1,7 @@
 pkgbase = hydrus
 	pkgdesc = Danbooru-like image tagging and searching system for the desktop
-	pkgver = 524
-	pkgrel = 3
+	pkgver = 525.a
+	pkgrel = 1
 	url = http://hydrusnetwork.github.io/hydrus/
 	arch = any
 	license = custom
@@ -27,7 +27,7 @@ pkgbase = hydrus
 	depends = python-typing_extensions
 	depends = python-service-identity
 	depends = pyside6
-	depends = hydrus-docs>=524
+	depends = hydrus-docs>=525.a
 	optdepends = ffmpeg: show duration and other information on video thumbnails
 	optdepends = miniupnpc: automatic port forwarding
 	optdepends = desktop-file-utils: to add Hydrus to your desktop environment menus
@@ -41,13 +41,13 @@ pkgbase = hydrus
 	optdepends = python-pyopenssl: to generate certificates for accessing client API and server via HTTPS
 	optdepends = swftools: to display SWF thumbnails
 	options = !strip
-	source = hydrus::git+https://github.com/hydrusnetwork/hydrus.git#commit=43ae2c2593c8e900b40460191b8379229578f52c
+	source = hydrus::git+https://github.com/hydrusnetwork/hydrus.git#commit=2691a92c8afe39e05c5eb7df2f9d93bcdb1d5f35
 	source = paths-in-opt.patch
 	source = hydrus-client
 	source = hydrus-server
 	source = hydrus.desktop
 	sha256sums = SKIP
-	sha256sums = f34b3cbe1ee548975f98b339200e79c95ab1482c8e96636e9a27db4ee8ade27a
+	sha256sums = b196485720ed874a22fe49a48ce92db423dda12824b2755071bbf47cfc891bc0
 	sha256sums = d2cb826ce0dd1892ab95fc3b14dbe6bd312210f653d0aea31938eeb7e361fdc5
 	sha256sums = 463841cc16059b516cc327cfbc30d3383e2236b085ba2d503e82f5be39444806
 	sha256sums = 9b8c2603a8040ae80152ff9a718ad3e8803fdc3029a939e3c0e932ea35ded923
