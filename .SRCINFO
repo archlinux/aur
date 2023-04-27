@@ -1,0 +1,15 @@
+pkgbase = onnxruntime-bin
+	pkgdesc = ONNX Runtime: cross-platform, high performance ML inferencing and training accelerator
+	pkgver = 1.14.1
+	pkgrel = 3
+	url = https://www.onnxruntime.ai/
+	arch = x86_64
+	license = MIT
+	provides = onnxruntime
+	conflicts = onnxruntime
+	source = https://github.com/microsoft/onnxruntime/releases/download/v1.14.1/onnxruntime-linux-x64-1.14.1.tgz
+	source = onnxruntime.zip::https://github.com/microsoft/onnxruntime/archive/refs/tags/v1.14.1.zip
+	md5sums = 9a3b855e2b22ace4ab110cec10b38b74
+	md5sums = 5aaf5691732a05fb1a25d0840ac90dd8
+
+pkgname = onnxruntime-bin
