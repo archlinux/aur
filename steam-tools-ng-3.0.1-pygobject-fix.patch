@@ -1,0 +1,49 @@
+diff --git a/src/steam_tools_ng/gtk/utils.py b/src/steam_tools_ng/gtk/utils.py
+index d9e2873..54d8cc4 100644
+--- a/src/steam_tools_ng/gtk/utils.py
++++ b/src/steam_tools_ng/gtk/utils.py
+@@ -273,7 +273,13 @@ class SimpleStatus(Gtk.Frame):
+         super().__init__()
+         self._style_context = self.get_style_context()
+         self._style_provider = Gtk.CssProvider()
+-        self._style_provider.load_from_data(b"frame { background-color: black; }")
++
++        # TODO: Temporary fix for pygobject (#27)
++        if (Gtk.get_major_version(), Gtk.get_minor_version()) >= (4, 9):
++            self._style_provider.load_from_data("frame { background-color: black; }", -1)
++        else:
++            self._style_provider.load_from_data(b"frame { background-color: black; }")
++
+         self._style_context.add_provider(self._style_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
+ 
+         self._grid = Gtk.Grid()
+diff --git a/src/steam_tools_ng/gtk/window.py b/src/steam_tools_ng/gtk/window.py
+index 0c3ed4a..d475aa1 100644
+--- a/src/steam_tools_ng/gtk/window.py
++++ b/src/steam_tools_ng/gtk/window.py
+@@ -46,11 +46,20 @@ class Main(Gtk.ApplicationWindow):
+         _display = Gdk.Display.get_default()
+         _style_provider = Gtk.CssProvider()
+ 
+-        _style_provider.load_from_data(
+-            b"* { border-radius: 2px; }"
+-            b"label.warning { background-color: darkblue; color: white; }"
+-            b"label.critical { background-color: darkred; color: white; }"
+-        )
++        # TODO: Temporary fix for pygobject (#27)
++        if (Gtk.get_major_version(), Gtk.get_minor_version()) >= (4, 9):
++            _style_provider.load_from_data(
++                "* { border-radius: 2px; }"
++                "label.warning { background-color: darkblue; color: white; }"
++                "label.critical { background-color: darkred; color: white; }",
++                -1
++            )
++        else:
++            _style_provider.load_from_data(
++                b"* { border-radius: 2px; }"
++                b"label.warning { background-color: darkblue; color: white; }"
++                b"label.critical { background-color: darkred; color: white; }"
++            )
+ 
+         _style_context = self.get_style_context()
+ 
