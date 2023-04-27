@@ -1,6 +1,6 @@
 pkgbase = r-gosemsim
 	pkgdesc = GO-terms Semantic Similarity Measures
-	pkgver = 2.24.0
+	pkgver = 2.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GOSemSim
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = r-gosemsim
 	optdepends = r-rmarkdown
 	optdepends = r-rocr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GOSemSim_2.24.0.tar.gz
-	sha256sums = 5a78ea253c1c34ef0b2c479eaef295eb766c81658688021ab553df301f3e8c93
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GOSemSim_2.26.0.tar.gz
+	sha256sums = 2a51bee583af0fd7b6fce9b62c719beeb1c4a565fafe83ef4ce5e6b5c937e8dd
 
 pkgname = r-gosemsim

@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GOSemSim
-_pkgver=2.24.0
+_pkgver=2.26.0
 pkgname=r-${_pkgname,,}
-pkgver=2.24.0
+pkgver=2.26.0
 pkgrel=1
 pkgdesc='GO-terms Semantic Similarity Measures'
 arch=('x86_64')
@@ -28,7 +28,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5a78ea253c1c34ef0b2c479eaef295eb766c81658688021ab553df301f3e8c93')
+sha256sums=('2a51bee583af0fd7b6fce9b62c719beeb1c4a565fafe83ef4ce5e6b5c937e8dd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
