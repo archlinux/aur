@@ -1,7 +1,7 @@
 pkgbase = r-rtcga
 	pkgdesc = The Cancer Genome Atlas Data Integration
-	pkgver = 1.28.0
-	pkgrel = 3
+	pkgver = 1.30.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/RTCGA
 	arch = any
 	license = GPL
@@ -40,7 +40,7 @@ pkgbase = r-rtcga
 	optdepends = r-s4vectors
 	optdepends = r-testthat
 	optdepends = r-tidyr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RTCGA_1.28.0.tar.gz
-	sha256sums = 987b86121dccff2df5a60e41b7c108a9117aa439549c2908c24a5a7a160cfdc0
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RTCGA_1.30.0.tar.gz
+	sha256sums = 456ccb6d1e1e96938fdc2162270ae5df53aff3f30e24e2130bac8123028eecf8
 
 pkgname = r-rtcga
