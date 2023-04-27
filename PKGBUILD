@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RNASeqPower
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
-pkgrel=3
+pkgver=1.40.0
+pkgrel=1
 pkgdesc='Sample size for RNAseq studies'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
