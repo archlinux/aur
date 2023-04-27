@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gcrma
-_pkgver=2.70.0
+_pkgver=2.72.0
 pkgname=r-${_pkgname,,}
-pkgver=2.70.0
+pkgver=2.72.0
 pkgrel=1
 pkgdesc='Background Adjustment Using Sequence Information'
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
   r-tools
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c16fc57ae299503aad93cdc7af96cc587f3e7360922cf0de76f54ef924977c28')
+sha256sums=('972c21bb981e6660d2f698e8e0465b4f9798d78697bfb18d1a4da03d71d58e4c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

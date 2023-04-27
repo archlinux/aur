@@ -1,6 +1,6 @@
 pkgbase = r-gcrma
 	pkgdesc = Background Adjustment Using Sequence Information
-	pkgver = 2.70.0
+	pkgver = 2.72.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/gcrma
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = r-gcrma
 	optdepends = r-hgu95av2probe
 	optdepends = r-splines
 	optdepends = r-tools
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/gcrma_2.70.0.tar.gz
-	sha256sums = c16fc57ae299503aad93cdc7af96cc587f3e7360922cf0de76f54ef924977c28
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/gcrma_2.72.0.tar.gz
+	sha256sums = 972c21bb981e6660d2f698e8e0465b4f9798d78697bfb18d1a4da03d71d58e4c
 
 pkgname = r-gcrma
