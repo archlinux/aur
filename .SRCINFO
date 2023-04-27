@@ -1,6 +1,6 @@
 pkgbase = r-bioconcotk
 	pkgdesc = Bioconductor components for general cancer genomics
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BiocOncoTK
 	arch = any
@@ -49,7 +49,7 @@ pkgbase = r-bioconcotk
 	optdepends = r-testthat
 	optdepends = r-txdb.hsapiens.ucsc.hg18.knowngene
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocOncoTK_1.18.0.tar.gz
-	sha256sums = 3a5966dd54d9a176d6ec2032f6b77017966245462bcaee7b799d3db9e5ff95f4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocOncoTK_1.20.0.tar.gz
+	sha256sums = ce739a7028eb752c0930246d854605ba10ff45019f327f2b26c86e40892a2384
 
 pkgname = r-bioconcotk
