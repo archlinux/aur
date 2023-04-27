@@ -1,0 +1,13 @@
+pkgbase = adobe-bin2c
+	pkgdesc = Convert to/Embed binary files in C source files, quickly and efficiently.
+	pkgver = r28.4300880
+	pkgrel = 1
+	url = https://github.com/adobe/bin2c
+	arch = any
+	license = Apache
+	provides = bin2c
+	conflicts = bin2c
+	source = git+https://github.com/adobe/bin2c
+	sha256sums = SKIP
+
+pkgname = adobe-bin2c
