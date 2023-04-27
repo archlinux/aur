@@ -5,9 +5,9 @@
 
 _pkgmainbranch=nvidia
 pkgname=nvidia-525xx
-pkgver=525.89.02
+pkgver=525.105.17
 pkgrel=1
-pkgdesc="NVIDIA drivers for linux"
+pkgdesc="NVIDIA drivers for linux, 525 branch"
 arch=('x86_64')
 url="https://www.nvidia.com/"
 makedepends=('linux-headers' "nvidia-dkms=$pkgver")
