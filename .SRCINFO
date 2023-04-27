@@ -1,6 +1,6 @@
 pkgbase = r-intad
 	pkgdesc = Search for correlation between epigenetic signals and gene expression in TADs
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/InTAD
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-intad
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/InTAD_1.18.0.tar.gz
-	sha256sums = 9ea6d1b626d9f14d4db1ab61b2cba67f9bcbd57fbfeac5c0b7c518127454f9b9
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/InTAD_1.20.0.tar.gz
+	sha256sums = 0fbee8f61a856a399377a1bcadcdce60f8e4044d54cc7095084dfd6e1c2a163e
 
 pkgname = r-intad
