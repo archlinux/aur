@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=diggit
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='Inference of Genetic Variants Driving Cellular Phenotypes'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-diggitdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fa8da23182d0600f8695b97fa2274cef5b28cfa7c7358d7e724be4e3bf3a7570')
+sha256sums=('29e0ffb73a0805abfb3307c5d07ea8d17a74336139648ce4c93636bd1e8a7bf6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
