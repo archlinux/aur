@@ -1,6 +1,6 @@
 pkgbase = r-bindingsitefinder
 	pkgdesc = Binding site defintion based on iCLIP data
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BindingSiteFinder
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-bindingsitefinder
 	optdepends = r-rmarkdown
 	optdepends = r-scales
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BindingSiteFinder_1.4.0.tar.gz
-	sha256sums = 785deb4f490c41523263daadc793b66bfcbe075a555246b908e127be19feea05
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BindingSiteFinder_1.6.0.tar.gz
+	sha256sums = e648fc497ecaabd9de283a7f58d773924a7edaa94a02d9c339c19e2c6b8ba998
 
 pkgname = r-bindingsitefinder
