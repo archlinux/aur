@@ -1,6 +1,6 @@
 pkgbase = r-delayedtensor
 	pkgdesc = R package for sparse and out-of-core arithmetic and decomposition of Tensor
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DelayedTensor
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-delayedtensor
 	optdepends = r-reticulate
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DelayedTensor_1.4.0.tar.gz
-	sha256sums = 48ef530fd748dff1a548e39411cbd0432bb502725b6e21234a3c4ecbdfe250d1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DelayedTensor_1.6.0.tar.gz
+	sha256sums = 970c1fc7e9f611ac51b67215311bca9b118db1c2c8c7eda66bb2c712221f13a3
 
 pkgname = r-delayedtensor
