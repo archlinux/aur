@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=affyio
-_pkgver=1.68.0
+_pkgver=1.70.0
 pkgname=r-${_pkgname,,}
-pkgver=1.68.0
+pkgver=1.70.0
 pkgrel=1
 pkgdesc='Tools for parsing Affymetrix data files'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
   r-zlibbioc
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2b3a5fc98ed39b6113031ea989f9cc9271077224cce7d6c83d1a4ef275faacad')
+sha256sums=('6c381e43833292e9c212efb5d909a34b4df837447b913e06c9c8821e79042ce4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
