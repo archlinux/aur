@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=plier
-_pkgver=1.68.0
+_pkgver=1.70.0
 pkgname=r-${_pkgname,,}
-pkgver=1.68.0
+pkgver=1.70.0
 pkgrel=1
 pkgdesc='Implements the Affymetrix PLIER algorithm'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('91e24df13e4b468d63c85b0aac9340365f424fe41a315563088b72097629cd84')
+sha256sums=('0884e3ac22da88987d6a7cf952363d182202d008716b969ca7bc95799120cf41')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
