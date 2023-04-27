@@ -1,6 +1,6 @@
 pkgbase = r-omixer
 	pkgdesc = Omixer: multivariate and reproducible sample randomization to proactively counter batch effects in omics studies
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Omixer
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-omixer
 	optdepends = r-magick
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Omixer_1.8.0.tar.gz
-	sha256sums = a511ec37ca61222739a4c02462641c5d6ce1f7341259a0377781560c29491d20
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Omixer_1.10.0.tar.gz
+	sha256sums = aaba02a1fc59a66e53ef234b57fd0c543f79eb3e1a73b1add7f0eaa687d0385e
 
 pkgname = r-omixer
