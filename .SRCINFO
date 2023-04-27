@@ -12,7 +12,7 @@ pkgbase = synergy3-bin
 	conflicts = synergy-1.6
 	conflicts = synergy2-bin
 	options = !strip
-	source_x86_64 = https://rc.symless.com/synergy3-bin/v3.0.69.17-beta/synergy-linux_x64-libssl3-v3.0.69.17-beta.deb
-	sha256sums_x86_64 = 9d93e7ee050fa6617a10ef675dc0beb6675c5af4ece4058b08548fdb8e9d4712
+	source_x86_64 = https://rc.symless.com/synergy3/v3.0.69.17-beta/synergy-linux_x64-libssl3-v3.0.69.17-beta.deb
+	sha256sums_x86_64 = 8409270b0555ef8ed42a7e05b19bfc6727cdd6441b047010c033ba480e105511
 
 pkgname = synergy3-bin

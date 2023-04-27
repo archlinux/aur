@@ -6,8 +6,8 @@ pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="https://symless.com/synergy"
 license=('unknown')
 arch=("x86_64")
-source_x86_64=("https://rc.symless.com/$pkgname/$pkgver-beta/synergy-linux_x64-libssl3-$pkgver-beta.deb")
-sha256sums_x86_64=("9d93e7ee050fa6617a10ef675dc0beb6675c5af4ece4058b08548fdb8e9d4712")
+source_x86_64=("https://rc.symless.com/synergy3/$pkgver-beta/synergy-linux_x64-libssl3-$pkgver-beta.deb")
+sha256sums_x86_64=("8409270b0555ef8ed42a7e05b19bfc6727cdd6441b047010c033ba480e105511")
 
 conflicts=('synergy1-bin' 'synergy-git' 'synergy-1.6' 'synergy2-bin')
 depends=('openssl')
