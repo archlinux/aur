@@ -1,6 +1,6 @@
 pkgbase = r-proteomm
 	pkgdesc = Multi-Dataset Model-based Differential Expression Proteomics Analysis Platform
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ProteoMM
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-proteomm
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ProteoMM_1.16.0.tar.gz
-	sha256sums = 5f3aa13e6eccc197a48a581a1955bd955adab254209369a264334ddb9dda1102
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ProteoMM_1.18.0.tar.gz
+	sha256sums = dc6e086134b2dcfbd318687ea1cab5721f21cb650f100aea4a235caa9b1c55b8
 
 pkgname = r-proteomm
