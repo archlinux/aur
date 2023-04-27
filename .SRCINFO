@@ -1,6 +1,6 @@
 pkgbase = r-scoreinvhap
 	pkgdesc = Get inversion status in predefined regions
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/scoreInvHap
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-scoreinvhap
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scoreInvHap_1.20.0.tar.gz
-	sha256sums = 9217a6de303832fc3cee3121034f845a1afbb8ebcac1d4c21fc8443da48d1bf8
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scoreInvHap_1.22.0.tar.gz
+	sha256sums = 0fcd5648da92819791edb8218b2d46110b74c7fa1f28a56421d7d79d130b9023
 
 pkgname = r-scoreinvhap
