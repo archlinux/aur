@@ -1,6 +1,6 @@
 pkgbase = r-normalyzerde
 	pkgdesc = Evaluation of normalization methods and calculation of differential expression analysis statistics
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/NormalyzerDE
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-normalyzerde
 	optdepends = r-rmarkdown
 	optdepends = r-roxygen2
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/NormalyzerDE_1.16.0.tar.gz
-	sha256sums = ec8bd8121b312a612a7a22427ed2daaa196d583a3ac96be52c5c8b918948153a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/NormalyzerDE_1.18.0.tar.gz
+	sha256sums = b3fc91d99d44e3b28510ead908980510b6c594ad3291761efba32254504637ee
 
 pkgname = r-normalyzerde
