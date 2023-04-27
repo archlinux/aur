@@ -1,6 +1,6 @@
 pkgbase = r-hilbertvisgui
 	pkgdesc = HilbertVisGUI
-	pkgver = 1.56.0
+	pkgver = 1.58.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/HilbertVisGUI
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = r-hilbertvisgui
 	depends = gtkmm
 	optdepends = r-iranges
 	optdepends = r-lattice
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/HilbertVisGUI_1.56.0.tar.gz
-	sha256sums = 15188c483b6f4f65c29309d7935050b52a0bbd0bd0cb622cb1bca4d7a4a68cf4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/HilbertVisGUI_1.58.0.tar.gz
+	sha256sums = 4ef44e8be389846eef8f9332dc66392d017eef2edd9c78399e8d76ed6f98db98
 
 pkgname = r-hilbertvisgui
