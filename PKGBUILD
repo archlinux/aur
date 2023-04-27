@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=knit
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='A simple and flexible build too using Lua, similar to make/mk'
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(glibc)
 makedepends=(go)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('ab92b240adc1f63502bd1de7f1d3eb64f508aa1e2ca7955d648d0a7351bbf37f')
+sha256sums=('f4a073568ef3b44d4cf80f4acff021368c5a2cc4f047ce7b4c6b5bfa57562e2b')
 
 build() {
 	cd "$_archive"
