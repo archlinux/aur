@@ -1,6 +1,6 @@
 pkgbase = r-metapone
 	pkgdesc = Conducts pathway test of metabolomics data using a weighted permutation test
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/metapone
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-metapone
 	depends = r-markdown
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/metapone_1.4.0.tar.gz
-	sha256sums = 62cad21b7902a6e93f599fd77c048a1aaae766dc3de924ef9ed3372f6c80d68d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/metapone_1.6.0.tar.gz
+	sha256sums = ff1119acc56126ce0d87c68386132da9c0d6dc4d0cd303e1286e373ed51cc500
 
 pkgname = r-metapone
