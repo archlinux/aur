@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=survtype
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='Subtype Identification with Survival Data'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-scales
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('efb591689465b5ebf62e70694137f61dceadcf9df7bf323bc71a3be5737c7b7c')
+sha256sums=('cf8bf3f62fdbfa981f0a7881586cb2c6feb58c622836c82024d5018687b091ba')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
