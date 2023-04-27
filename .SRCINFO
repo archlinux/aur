@@ -1,6 +1,6 @@
 pkgbase = r-metabolomicsworkbenchr
 	pkgdesc = Metabolomics Workbench in R
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/metabolomicsWorkbenchR
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-metabolomicsworkbenchr
 	optdepends = r-rmarkdown
 	optdepends = r-structtoolbox
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/metabolomicsWorkbenchR_1.8.0.tar.gz
-	sha256sums = 34e152730bf61a930ea1668111967f1406585e0f9a5a047f20816068b08c5f09
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/metabolomicsWorkbenchR_1.10.0.tar.gz
+	sha256sums = 212de1ae955db033ae05e8d38ae495e1afb9f6d1bfda181e961e859067e53178
 
 pkgname = r-metabolomicsworkbenchr
