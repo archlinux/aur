@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pepXMLTab
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Parsing pepXML files and filter based on peptide FDR.'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b797b53d5841c3734fbc53ceb0fe2d077aa396a33800f91b35a85be468f77c8d')
+sha256sums=('e70f7dc8ccd1fcdd93d9352cbf2731bc63bb1187fbe1bbbd938efbf30c1889b7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

@@ -1,6 +1,6 @@
 pkgbase = r-pepxmltab
 	pkgdesc = Parsing pepXML files and filter based on peptide FDR.
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/pepXMLTab
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = r-pepxmltab
 	depends = r-xml
 	optdepends = r-biocgenerics
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/pepXMLTab_1.32.0.tar.gz
-	sha256sums = b797b53d5841c3734fbc53ceb0fe2d077aa396a33800f91b35a85be468f77c8d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pepXMLTab_1.34.0.tar.gz
+	sha256sums = e70f7dc8ccd1fcdd93d9352cbf2731bc63bb1187fbe1bbbd938efbf30c1889b7
 
 pkgname = r-pepxmltab
