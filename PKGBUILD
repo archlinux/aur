@@ -1,7 +1,7 @@
 # Maintainer: Nebula <nebula@palera.in>
 
 pkgname=palera1n
-pkgver=2.0.0~beta.6
+pkgver=2.0.0~beta.6.2
 pkgrel=1
 pkgdesc="iOS 15.0-16.4.1 semi-tethered checkm8 jailbreak"
 arch=('x86_64')
