@@ -1,7 +1,7 @@
 pkgbase = r-cleanupdtseq
 	pkgdesc = cleanUpdTSeq cleans up artifacts from polyadenylation sites from oligo(dT)-mediated 3' end RNA sequending data
-	pkgver = 1.36.0
-	pkgrel = 3
+	pkgver = 1.38.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/cleanUpdTSeq
 	arch = any
 	license = GPL
@@ -21,7 +21,7 @@ pkgbase = r-cleanupdtseq
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cleanUpdTSeq_1.36.0.tar.gz
-	sha256sums = 275834fb7c380151bf8e6580e71bb05d125f2a27103384d54211694ac88d742e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cleanUpdTSeq_1.38.0.tar.gz
+	sha256sums = 31b724fe29c816fa2a9ec2640dc5985936c1349ff6445b1f0293e2d385496f39
 
 pkgname = r-cleanupdtseq
