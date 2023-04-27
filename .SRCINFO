@@ -1,6 +1,6 @@
 pkgbase = r-fedup
 	pkgdesc = Fisher's Test for Enrichment and Depletion of User-Defined Pathways
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/fedup
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-fedup
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tidyr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/fedup_1.6.0.tar.gz
-	sha256sums = ec15c591bbaa82e3707bb8abd156276c5daa7c1b187cb3e3471d4091bf181e74
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/fedup_1.8.0.tar.gz
+	sha256sums = f99d806e22876c76e87aee28170da76126429515947625bdc2e14249e4a5deb2
 
 pkgname = r-fedup
