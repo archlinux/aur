@@ -1,0 +1,18 @@
+pkgbase = faircamp-git
+	pkgdesc = A static site generator for audio producers
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://simonrepp.com/faircamp
+	arch = x86_64
+	license = AGPL3
+	makedepends = git
+	makedepends = rust
+	depends = ffmpeg
+	depends = libvips>=8.13.3
+	depends = opus
+	provides = faircamp
+	conflicts = faircamp
+	source = faircamp-git::git+https://codeberg.org/simonrepp/faircamp.git
+	md5sums = SKIP
+
+pkgname = faircamp-git

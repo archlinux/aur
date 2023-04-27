@@ -1,0 +1,5 @@
+/faircamp-git/
+/pkg/
+/src/
+/*.pkg.tar.zst
+/*.tar.gz
