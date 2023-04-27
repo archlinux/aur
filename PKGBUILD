@@ -5,7 +5,7 @@
 
 _pkgname=yambar
 pkgname="${_pkgname}-git"
-pkgver=1.6.1.r60.g18a0920
+pkgver=1.9.0.r41.g971361b
 pkgrel=1
 pkgdesc='Modular status panel for X11 and Wayland, inspired by polybar (source from git)'
 arch=('x86_64' 'aarch64')
