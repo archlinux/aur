@@ -1,4 +1,5 @@
-# Maintainer: Rojikku <RojikkuNoKami at gmail dot com>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Rojikku <RojikkuNoKami at gmail dot com>
 pkgname=remoteplaywhatever-bin
 pkgver=0.2.3alpha
 pkgrel=1
