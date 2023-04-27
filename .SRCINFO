@@ -1,6 +1,6 @@
 pkgbase = r-phemd
 	pkgdesc = Phenotypic EMD for comparison of single-cell samples
-	pkgver = 1.14.1
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/phemd
 	arch = any

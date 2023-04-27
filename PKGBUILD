@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=phemd
-_pkgver=1.14.1
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.1
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='Phenotypic EMD for comparison of single-cell samples'
 arch=('any')
