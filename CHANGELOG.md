@@ -1,3 +1,7 @@
+# v0.7.6
+
+- Update deps, add dependabot
+
 # v0.7.5
 
 - Update deps, update thirdparty file, use fixed version of gzp
