@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MSstatsSampleSize
-_pkgver=1.12.0
+_pkgver=1.13.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc='Simulation tool for optimal design of high-dimensional MS-based proteomics experiment'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ce86079720eb62d91b5242039268010326b35317601f020216954a91ea428bf7')
+sha256sums=('e36e01781cf16fa8d31cf6508795cb1f190da9593eaf023b27ea16b33aa6f525')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
