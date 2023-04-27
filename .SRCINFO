@@ -1,6 +1,6 @@
 pkgbase = r-vulcan
 	pkgdesc = VirtUaL ChIP-Seq data Analysis using Networks
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/vulcan
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-vulcan
 	depends = r-wordcloud
 	depends = r-zoo
 	optdepends = r-vulcandata
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/vulcan_1.20.0.tar.gz
-	sha256sums = cbe8f416d2bae3cc6960c529a41229c3dba425c4c5303c5340607995f6149f05
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/vulcan_1.22.0.tar.gz
+	sha256sums = 65adbd8cd79df072ef0d42d27a2406c23526d95ce0f3be2ebcf4ca2d96cc1036
 
 pkgname = r-vulcan
