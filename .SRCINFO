@@ -1,6 +1,6 @@
 pkgbase = r-tximeta
 	pkgdesc = Transcript Quantification Import with Automatic Metadata
-	pkgver = 1.16.1
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/tximeta
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = r-tximeta
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tximportdata
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/tximeta_1.16.1.tar.gz
-	sha256sums = eaf2e188ccdca91db64987ca58b28ba999d48289055e3a79b9b8d0a992460e97
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/tximeta_1.18.0.tar.gz
+	sha256sums = e12f809029b99b2b9e0836fa3adc64849a546241e9e10480612848e7dcb5b50d
 
 pkgname = r-tximeta
