@@ -1,6 +1,6 @@
 pkgbase = r-r453plus1toolbox
 	pkgdesc = A package for importing and analyzing data from Roche's Genome Sequencer System
-	pkgver = 1.48.0
+	pkgver = 1.50.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/R453Plus1Toolbox
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = r-r453plus1toolbox
 	optdepends = r-bsgenome.hsapiens.ucsc.hg19
 	optdepends = r-bsgenome.scerevisiae.ucsc.saccer2
 	optdepends = r-rtracklayer
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/R453Plus1Toolbox_1.48.0.tar.gz
-	sha256sums = 492380a2c57a34f768fb3cabe9b00d84f6edf1ec02a655e1413ef5c2b1d6a4f7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/R453Plus1Toolbox_1.50.0.tar.gz
+	sha256sums = 13f95a22233da58d3156fd24889bedc3c290787b55bfa06a0a21300c356c1621
 
 pkgname = r-r453plus1toolbox
