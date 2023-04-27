@@ -1,6 +1,6 @@
 pkgbase = r-cnvgears
 	pkgdesc = A Framework of Functions to Combine, Analize and Interpret CNVs Calling Results
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CNVgears
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-cnvgears
 	optdepends = r-testthat
 	optdepends = r-usethis
 	optdepends = r-variantannotation
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CNVgears_1.6.0.tar.gz
-	sha256sums = 39e480bb8ed7c721535a46add4e9d761b89b43cc28cb20499555717d0f451c3f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CNVgears_1.8.0.tar.gz
+	sha256sums = 7d6be48cbd95fe83af70059b2c3797b97ac81d34a8c816f59d9f0d65e7efeddc
 
 pkgname = r-cnvgears
