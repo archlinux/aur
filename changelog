@@ -1,9 +1,0 @@
-## Version 0.27.0
-
-### What's Changed
-
-- Use CIDv1 by default by @davidd8 in #2402
-- docs: add features doc by @SgtPooki in #2377
-- Update Kubo: v0.19.0 by @galargh in #2435
-
-
