@@ -7,7 +7,7 @@ arch=('any')
 url="https://gitlab.com/AndrewZaech/aztaskbar"
 license=('GPL3')
 depends=('dconf' 'gnome-shell>=1:41')
-conflicts=('gnome-shell-extension-app-icons-taskbar-git')
+conflicts=()
 source=("${url}/-/archive/v${pkgver}/${_pkgbase}-v${pkgver}.tar.gz")
 sha256sums=('c4038f3712e23b2ac0edac88cbd3fff3f92d2504a28dbe075a9395089acf3bdc')
 
