@@ -1,0 +1,44 @@
+《阿里巴巴普惠体2.0版》法律声明
+ 
+1   阿⾥巴巴普惠体2.0版，在1.0版阿里巴巴普惠体中⽂字体（指定9款字重）和Alibaba Sans Vietnamese and Thai（越南文和泰文字体，指定3款字重)
+    的基础上，新增了韩文字体（指定3款字重）、日文字体（指定3款字重）、繁体中文（Big5和HK分别指定4款字重），前述字体及包含该字体的字库软件，合称 “阿⾥巴巴字体”。
+2   阿里巴巴字体的知识产权和相关权益归属于阿里巴巴（中国）有限公司（以下简称“阿里巴巴”），受《中华人民共和国著作权法》及其他适用法律法规、国际公约、条约的保护。
+3   阿里巴巴授权个人、企业等用户在遵守本声明相关条款的前提下，可以下载、安装和使用上述阿里巴巴字体，
+    该授权是免费的普通许可，用户可基于合法目的用于商业用途或非商业用途，但不得以任何违反法律法规、政策、规章或公序良俗的方式使用。
+4   除本法律声明中明确授权之外，阿里巴巴未授予用户关于阿里巴巴字体的其他权利。未经阿里巴巴书面授权，任何人不得：
+    1）对阿里巴巴字体进行仿制、转换、翻译、反编译、反向工程、拆分、破解、或以其他方式试图从该字库软件获取源代码；
+    2）删除、覆盖或修改阿里巴巴字体法律声明的全部或部分内容；
+    3）将阿里巴巴字体进行单独定价出售、出租、出借、转让、转授权、或采取其他未经阿里巴巴明确授权的行为；
+    4）发布任何使外界误认其与阿里巴巴或其关联公司存在合作、赞助或背书等商业关联的不实信息。
+5   阿里巴巴授予用户的上述授权不附带任何明示或暗示的保证，不对任何人因从非阿里巴巴官方渠道或指定渠道 \
+    下载、安装或使用阿里巴巴字体而引发的任何直接或间接损失承担责任。
+6   本声明的解释、履行与争议解决适用中华人民共和国的法律。用户与阿里巴巴就阿里巴巴字体的使用若发生争议，
+    双方应友好协商，若协商不成，任一方有权向浙江省杭州市有管辖权的人民法院提起诉讼。
+ 
+Legal Notice for Alibaba PuHuiTi 2.0
+1   Alibaba PuHuiTi 2.0, on the basis of Alibaba PuHuiTi 1.0, which includes Alibaba PuHuiTi Chinese font (9 weights) \
+    and Alibaba Sans Vietnamese and Thai fonts (3 weights each), have added Korean font (3 weights), Japanese font (3 weights) \
+    and Traditional Chinese font (Big5 and HK for 4 weights respectively).
+    These fonts and the font software that contains these fonts are collectively referred to as “Alibaba Font”.
+2   Alibaba (China) Co. Ltd (“Alibaba”) owns all rights, titles and interests in and to Alibaba Font. \
+    Alibaba Font is protected by Copyright Law of the People's Republic of China, other applicable laws, \
+    regulations, international conventions and treaties.
+3   Alibaba hereby grants any individual, business entity or organization (collectively “User”) a royalty \
+    free and non-exclusive license to download, install and use the downloaded Alibaba Font for commercial \
+    or non-commercial purpose. Any use of Alibaba Font shall comply with the terms and conditions herein, \
+    and shall not violate any applicable laws, regulations, policies, rules or public order.
+4   Except as expressly set forth herein, Alibaba does not grant User any other rights in relation to Alibaba Font.
+    Without prior written permission by Alibaba, User shall not:
+    1) alter, modify, translate, convert, reverse engineer, decompile, disassemble, or otherwise attempt to discover the source codes or instructions of Alibaba Font;
+    2) remove, overwrite, alter the Copyright Notice or any other Proprietary Right Notice of Alibaba Font;
+    3) sell, lease, loan, transfer Alibaba Font, or take any other action not permitted by Alibaba;
+    4) publish any false information that misleads the public to believe that it has a business relationship \
+        such as cooperation, sponsorship or endorsement with Alibaba or its affiliates.
+5   Alibaba makes no warranty or representation, express or implied, in relation to Alibaba Font. \
+    In no event shall Alibaba be liable to User for any direct or indirect loss caused by downloading, \
+    installing or using Alibaba Font from non-Alibaba official channels or designated channels.
+6   The terms and conditions herein shall be governed by and construed in accordance with the laws of the \
+    People's Republic of China. Any disputes arising out of or relating to the execution of the terms and \
+    conditions herein shall be negotiated in good faith by User and Alibaba. In the event the Parties fail \
+    to reach consensus through mutual negotiation, each of the Parties hereby irrevocably consents to submit \
+    to the exclusive jurisdiction of the courts of Hangzhou, Zhejiang.

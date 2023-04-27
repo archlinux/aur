@@ -6,9 +6,9 @@ pkgbase = alibabasans-hk-fonts
 	arch = any
 	license = custom
 	source = alibabasans-hk-fonts-1.0.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlibabaSansHK.zip
-	source = LICENSE.html::https://www.yuque.com/lujunxiang/alibabapuhuiti/puzbh9
+	source = license.txt
 	sha256sums = 2a3f977aa6d6f8f7abf4ffb01f033dfd606492a99a002b4163c463052b165cb6
-	sha256sums = f6d085c09459ce26c183dad78f289d4700657b2b72c68c00cd4582e7656fcc69
+	sha256sums = 059e73dc0745c057bdd0654a98166f96e07bb6bd3a350459aa8f479c733f12ba
 
 pkgname = ttf-alibabasans-hk-fonts
 

@@ -10,9 +10,9 @@ url='https://fonts.alibabagroup.com/#/font'
 license=('custom')
 depends=()
 source=("${pkgbase}-${pkgver}.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlibabaSansHK.zip"
-    "LICENSE.html::https://www.yuque.com/lujunxiang/alibabapuhuiti/puzbh9")
+    "license.txt")
 sha256sums=('2a3f977aa6d6f8f7abf4ffb01f033dfd606492a99a002b4163c463052b165cb6'
-            'f6d085c09459ce26c183dad78f289d4700657b2b72c68c00cd4582e7656fcc69')
+            '059e73dc0745c057bdd0654a98166f96e07bb6bd3a350459aa8f479c733f12ba')
 
 function _package {
     local _pkgname=$1
@@ -29,7 +29,7 @@ function _package {
         local font
             for font in "${fonts[@]}"; do
             install -Dm644 "${font}" -t "${pkgdir}/usr/share/fonts/${installdir}"
-            install -Dm644 "${srcdir}/LICENSE.html" -t "${pkgdir}/usr/share/licenses/${ext}-${pkgbase}"
+            install -Dm644 "${srcdir}/license.txt" -t "${pkgdir}/usr/share/licenses/${ext}-${pkgbase}"
         done
     done
 }
