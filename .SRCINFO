@@ -1,6 +1,6 @@
 pkgbase = r-padma
 	pkgdesc = Individualized Multi-Omic Pathway Deviation Scores Using Multiple Factor Analysis
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/padma
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-padma
 	optdepends = r-missmda
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/padma_1.8.0.tar.gz
-	sha256sums = 3992bd3f02243ff737b0206799ccf4ea4c198739ddf285d09567594e263b260a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/padma_1.10.0.tar.gz
+	sha256sums = fb74da06d2ce9669717bc4daf2ed7ee80068194fed95820793147349670484c5
 
 pkgname = r-padma
