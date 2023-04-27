@@ -36,24 +36,22 @@ source=('git+https://codeberg.org/dnkl/yambar.git')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd yambar
+	cd "${_pkgname}"
 	git describe --long --tags | sed 's/[^-]*-g/r&/;s/-/./g'
 }
 
 build() {
-	mkdir yambar/_build
-	cd yambar/_build
-
+	cd "${_pkgname}"
 	meson setup --buildtype=release --prefix=/usr \
 		--wrap-mode=nofallback \
 		-Db_lto=true \
 		-Dbackend-x11=enabled -Dbackend-wayland=enabled \
-		../
-	ninja
+		build
+	meson compile -C build
 }
 
 
 package() {
-	cd "${srcdir}/yambar/_build"
-	DESTDIR="${pkgdir}/" ninja install
+	cd "${_pkgname}"
+	meson install -C build --destdir "${pkgdir}"
 }
