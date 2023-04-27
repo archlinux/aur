@@ -1,6 +1,6 @@
 pkgbase = r-melissa
 	pkgdesc = Bayesian clustering and imputationa of single cell methylomes
-	pkgver = 1.14.0
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Melissa
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-melissa
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Melissa_1.14.0.tar.gz
-	sha256sums = caf54054fdf0fd41258fbe3a70475ffe7e9dc80007bded3906b75b12a4a9aa00
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Melissa_1.16.0.tar.gz
+	sha256sums = 27ac2f2c336397b802a25708ef7932d833cac5641a0b32f21406cc5ac0e0260d
 
 pkgname = r-melissa
