@@ -2,7 +2,7 @@
 
 pkgname='python-watchfiles'
 _module=${pkgname#python-}
-pkgver='0.18.1'
+pkgver='0.19.0'
 pkgrel=1
 pkgdesc="Simple, modern and high performance file watching and code reload in python."
 url="https://github.com/samuelcolvin/watchfiles"
@@ -19,7 +19,7 @@ makedepends=(
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-b2sums=('aa7cf11a8ceedfd2e7bd14c7327b40875e1aec66552ec973508f24a9f8294d00a475f54ba823dba898ae8d5490059b6079edcf01b93f3f6f76b3ace4375435c2')
+b2sums=('32470ccc0541b6b9bff8b2fb233d2664c6b761b66da8a5b22eda071ceb8a040e4eaafb346bc7bf0336ae64d7083ba77ae3c0c688dda7f1daceba0960ea9513e6')
 
 build() {
 	cd "${srcdir}/${_module}-${pkgver}"

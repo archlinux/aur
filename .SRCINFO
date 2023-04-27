@@ -1,6 +1,6 @@
 pkgbase = python-watchfiles
 	pkgdesc = Simple, modern and high performance file watching and code reload in python.
-	pkgver = 0.18.1
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://github.com/samuelcolvin/watchfiles
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-watchfiles
 	makedepends = python-maturin
 	depends = python
 	depends = python-anyio>=3.0.0
-	source = https://files.pythonhosted.org/packages/source/w/watchfiles/watchfiles-0.18.1.tar.gz
-	b2sums = aa7cf11a8ceedfd2e7bd14c7327b40875e1aec66552ec973508f24a9f8294d00a475f54ba823dba898ae8d5490059b6079edcf01b93f3f6f76b3ace4375435c2
+	source = https://files.pythonhosted.org/packages/source/w/watchfiles/watchfiles-0.19.0.tar.gz
+	b2sums = 32470ccc0541b6b9bff8b2fb233d2664c6b761b66da8a5b22eda071ceb8a040e4eaafb346bc7bf0336ae64d7083ba77ae3c0c688dda7f1daceba0960ea9513e6
 
 pkgname = python-watchfiles
