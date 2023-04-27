@@ -1,6 +1,6 @@
 pkgbase = r-mira
 	pkgdesc = Methylation-Based Inference of Regulatory Activity
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MIRA
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-mira
 	optdepends = r-parallel
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MIRA_1.20.0.tar.gz
-	sha256sums = 16fa2001e6981fc6471998a317f7dbc8887ccb7490644df79245da500f9d091c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MIRA_1.22.0.tar.gz
+	sha256sums = 902ee06bf55f97417f9eab94fd81a7dc3f9789b75c341c9eaa79561de3f08075
 
 pkgname = r-mira
