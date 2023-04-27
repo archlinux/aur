@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=dasper
-_pkgver=1.7.0
+_pkgver=1.9.0
 pkgname=r-${_pkgname,,}
-pkgver=1.7.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Detecting abberant splicing events from RNA-sequencing data'
 arch=('any')
@@ -51,7 +51,7 @@ optdepends=(
   r-tibble
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('01792b1dfca976f146dd0930a506d3e726d51d933e959e509f8323b2d9d8f764')
+sha256sums=('9681cb5540f6a9fb3ed1e580152a5f165257174dc6a33b29b2c52b06086db424')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
