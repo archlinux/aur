@@ -1,6 +1,6 @@
 pkgbase = r-biodbkegg
 	pkgdesc = biodbKegg, a library for connecting to the KEGG Database
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/biodbKegg
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-biodbkegg
 	optdepends = r-rmarkdown
 	optdepends = r-roxygen2
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/biodbKegg_1.4.0.tar.gz
-	sha256sums = 89dc8788aef2fe971a7dee1bd54194aec60f9765ba0732796257870f7d974780
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/biodbKegg_1.6.0.tar.gz
+	sha256sums = d955de3151556dc62a5ffcb4f1a448ce38ee30f272161a9d29551b623388f30c
 
 pkgname = r-biodbkegg
