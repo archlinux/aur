@@ -1,6 +1,6 @@
 pkgbase = r-ribor
 	pkgdesc = An R Interface for Ribo Files
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ribor
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-ribor
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ribor_1.10.0.tar.gz
-	sha256sums = 42ca63edfa4da4dc0bbd1508e636a0f22e0f75cd683329e553bcb212d058339a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ribor_1.12.0.tar.gz
+	sha256sums = b5a83ed8c1ff97ce72ec18181d723eb291d039f044504054d781fdcd54f6c661
 
 pkgname = r-ribor
