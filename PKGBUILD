@@ -20,7 +20,7 @@ depends=(
   'debhelper'
   'debianutils'
   # 'po-debconf' # for debhelper
-  'sensible-utils'
+  #'sensible-utils'
 )
 makedepends=(
   'bash-completion'

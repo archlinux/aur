@@ -27,7 +27,6 @@ pkgbase = devscripts-git
 	depends = wget
 	depends = debhelper
 	depends = debianutils
-	depends = sensible-utils
 	optdepends = debian-keyring: Required for commands interacting with the system / user keyring
 	optdepends = perl-file-dirlist: Required for uscan
 	optdepends = perl-file-touch: Required for uscan
