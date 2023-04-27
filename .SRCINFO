@@ -1,7 +1,7 @@
 pkgbase = r-csdr
 	pkgdesc = Differential gene co-expression
-	pkgver = 1.4.0
-	pkgrel = 3
+	pkgver = 1.6.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/csdR
 	arch = x86_64
 	license = GPL
@@ -18,7 +18,7 @@ pkgbase = r-csdr
 	optdepends = r-magrittr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/csdR_1.4.0.tar.gz
-	sha256sums = c36964f1b3f3bc6d326e448caf9a442b8aaa151128280770b07ac159fc9fdaf7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/csdR_1.6.0.tar.gz
+	sha256sums = 1ba687a00b8e7314b57188931488a9be6ec030c6d3efbca8c522d562d35a1a31
 
 pkgname = r-csdr
