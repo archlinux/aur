@@ -24,7 +24,7 @@ pkgname = nvidia-525xx-settings
 	depends = libxv
 	depends = libvdpau
 	depends = nvidia-utils=525.89.02
-	depends = libxnvctrl
+	depends = libxnvctrl=525.89.02
 	provides = nvidia-settings=525.89.02
 	conflicts = nvidia-settings
 

@@ -35,7 +35,7 @@ build() {
 }
 
 package_nvidia-525xx-settings() {
-  depends=('jansson' 'gtk3' 'libxv' 'libvdpau' "nvidia-utils=${pkgver}" 'libxnvctrl')
+  depends=('jansson' 'gtk3' 'libxv' 'libvdpau' "nvidia-utils=${pkgver}" "libxnvctrl=${pkgver}")
   conflicts=('nvidia-settings')
   provides=("nvidia-settings=${pkgver}")
 
