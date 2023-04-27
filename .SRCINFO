@@ -1,6 +1,6 @@
 pkgbase = r-chipsim
 	pkgdesc = Simulation of ChIP-seq experiments
-	pkgver = 1.52.0
+	pkgver = 1.54.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ChIPsim
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-chipsim
 	depends = r-xvector
 	optdepends = r-actuar
 	optdepends = r-zoo
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ChIPsim_1.52.0.tar.gz
-	sha256sums = 310176d82bdc4a895fdbb33071835a247e03e972b1a5cc7ee6805e19690911bc
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ChIPsim_1.54.0.tar.gz
+	sha256sums = b718115e0173f4a4454d860b510993eaabbfb65cb4370950b556b5782cd17694
 
 pkgname = r-chipsim
