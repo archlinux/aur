@@ -1,6 +1,6 @@
 pkgbase = r-rbec
 	pkgdesc = Rbec: a tool for analysis of amplicon sequencing data from synthetic microbial communities
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Rbec
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = r-rbec
 	depends = r-readr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rbec_1.6.0.tar.gz
-	sha256sums = 1ceac2e356a5717262c7b4c6818ce0f6b6d7d8fbcbd45d131190b44dd3a1ccd8
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rbec_1.8.0.tar.gz
+	sha256sums = 589b35fe3e6d57f4d50f5877e6595e403994989e69c44d72353b8f3bed5a91a9
 
 pkgname = r-rbec
