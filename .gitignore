@@ -1,4 +1,4 @@
 *.pkg.tar.zst
-/nvidia-settings-525.89.02.tar.gz
 /pkg/
 /src/
+*.tar.gz
