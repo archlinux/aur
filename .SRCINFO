@@ -1,6 +1,6 @@
 pkgbase = r-mogamun
 	pkgdesc = MOGAMUN: A Multi-Objective Genetic Algorithm to Find Active Modules in Multiplex Biological Networks
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MOGAMUN
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-mogamun
 	depends = r-stringr
 	optdepends = r-knitr
 	optdepends = r-markdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MOGAMUN_1.8.0.tar.gz
-	sha256sums = 60316f0c3eacfb6ae79c1b1b9035dc92fc296e2d66da6e167fbaf7beb301ff66
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MOGAMUN_1.10.0.tar.gz
+	sha256sums = 5c9bfa0d7207b299dcef7492d0c99f26617905180c2903d0081b6a3b0e0d0ce1
 
 pkgname = r-mogamun
