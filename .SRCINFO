@@ -1,6 +1,6 @@
 pkgbase = r-m3c
 	pkgdesc = Monte Carlo Reference-based Consensus Clustering
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/M3C
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-m3c
 	depends = r-umap
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/M3C_1.20.0.tar.gz
-	sha256sums = 92d8ccb8289dc4f4f67d05318bfc56a88fa6767d860cc3204c3cdca6bb5d4fb6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/M3C_1.22.0.tar.gz
+	sha256sums = acc8a87c51513a323d03fe6671fe833e9d4b3ce87d24ec932ee3c0c207ce0b95
 
 pkgname = r-m3c
