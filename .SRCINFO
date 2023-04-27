@@ -1,6 +1,6 @@
 pkgbase = r-varcon
 	pkgdesc = VarCon: an R package for retrieving neighboring nucleotides of an SNV
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/VarCon
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-varcon
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/VarCon_1.6.0.tar.gz
-	sha256sums = 933f9dc69c5c6e7d5c3cf6f5d9ce994215bf9947db77239823cbecd2a5cb0a78
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/VarCon_1.8.0.tar.gz
+	sha256sums = 4c17110e7fe058a2fa6aa5a0140f546e375ae760c83d70dfe3bce1be60739a5c
 
 pkgname = r-varcon
