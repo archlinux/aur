@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BufferedMatrixMethods
-_pkgver=1.62.0
+_pkgver=1.64.0
 pkgname=r-${_pkgname,,}
-pkgver=1.62.0
+pkgver=1.64.0
 pkgrel=1
 pkgdesc='Microarray Data related methods that utlize BufferedMatrix objects'
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
   r-affyio
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cef784ae5bc991a49d8d6ddffa52cbc567acde6da43fe9326dfd8dc962030cac')
+sha256sums=('591876d0433ae873dcd4b3586eb2308df5461a30bae80f2969a79d197f309018')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

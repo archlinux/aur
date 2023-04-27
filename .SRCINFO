@@ -1,6 +1,6 @@
 pkgbase = r-bufferedmatrixmethods
 	pkgdesc = Microarray Data related methods that utlize BufferedMatrix objects
-	pkgver = 1.62.0
+	pkgver = 1.64.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BufferedMatrixMethods
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = r-bufferedmatrixmethods
 	depends = r-bufferedmatrix
 	optdepends = r-affy
 	optdepends = r-affyio
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BufferedMatrixMethods_1.62.0.tar.gz
-	sha256sums = cef784ae5bc991a49d8d6ddffa52cbc567acde6da43fe9326dfd8dc962030cac
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BufferedMatrixMethods_1.64.0.tar.gz
+	sha256sums = 591876d0433ae873dcd4b3586eb2308df5461a30bae80f2969a79d197f309018
 
 pkgname = r-bufferedmatrixmethods
