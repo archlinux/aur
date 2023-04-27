@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=lpsymphony
-_pkgver=1.26.3
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.3
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Symphony integer linear programming solver in R'
 arch=('x86_64')
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e57bb9a414cd9bf219072179c58d32715ca0ae4475968145a4a0f04bea340c47')
+sha256sums=('d75fab5b8cbd0c1bfac6386e0d2fee7aa87594f06da8d56b2de8b1407103cd24')
 
 prepare() {
   sed -i 's#CXXFLAGS="-w -g -O2"#CXXFLAGS="-w -g -O2 -I/usr/include/coin"#' "${srcdir}/${_pkgname}/configure"
