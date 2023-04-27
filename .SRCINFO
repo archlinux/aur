@@ -1,6 +1,6 @@
 pkgbase = r-meigor
 	pkgdesc = MEIGO - MEtaheuristics for bIoinformatics Global Optimization
-	pkgver = 1.31.0
+	pkgver = 1.33.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MEIGOR
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-meigor
 	depends = r-snowfall
 	optdepends = r-cellnoptr
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MEIGOR_1.31.0.tar.gz
-	sha256sums = aa29d8c17b20d919dbf8562e0682563313d29a8f68c82570ff9ad7e7e928828c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MEIGOR_1.33.0.tar.gz
+	sha256sums = f64987c8551357a50a435a34e1045c6de76e3a27766c0e0044dc3eb7385487d1
 
 pkgname = r-meigor

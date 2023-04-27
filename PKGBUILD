@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MEIGOR
-_pkgver=1.31.0
+_pkgver=1.33.0
 pkgname=r-${_pkgname,,}
-pkgver=1.31.0
+pkgver=1.33.0
 pkgrel=1
 pkgdesc='MEIGO - MEtaheuristics for bIoinformatics Global Optimization'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('aa29d8c17b20d919dbf8562e0682563313d29a8f68c82570ff9ad7e7e928828c')
+sha256sums=('f64987c8551357a50a435a34e1045c6de76e3a27766c0e0044dc3eb7385487d1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
