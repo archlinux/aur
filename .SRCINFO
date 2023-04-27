@@ -1,6 +1,6 @@
 pkgbase = r-hopach
 	pkgdesc = Hierarchical Ordered Partitioning and Collapsing Hybrid (HOPACH)
-	pkgver = 2.58.0
+	pkgver = 2.60.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/hopach
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = r-hopach
 	depends = r
 	depends = r-biobase
 	depends = r-biocgenerics
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/hopach_2.58.0.tar.gz
-	sha256sums = c6b1f6619d7613c4a96029c435762ee038118fdae4d3e5fa7e9779d4cc79171b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/hopach_2.60.0.tar.gz
+	sha256sums = dac2576055cf7318f7d7c1c3d05925113a8cb1c4df873bd54652151e7a516ce4
 
 pkgname = r-hopach
