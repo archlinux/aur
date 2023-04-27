@@ -1,6 +1,6 @@
 pkgbase = r-affyrnadegradation
 	pkgdesc = Analyze and correct probe positional bias in microarray data due to RNA degradation
-	pkgver = 1.44.0
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/AffyRNADegradation
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-affyrnadegradation
 	depends = r
 	depends = r-affy
 	optdepends = r-ampaffyexample
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/AffyRNADegradation_1.44.0.tar.gz
-	sha256sums = 7fe6fb2c2fd00e07d39499b57b915ad561a8900f96e05e0fa5ac76030113ddd8
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/AffyRNADegradation_1.46.0.tar.gz
+	sha256sums = 8f34c307d56d4e94621bfac2847eb15546ea1002ca17b7c248120fc6fa9e4393
 
 pkgname = r-affyrnadegradation
