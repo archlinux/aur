@@ -1,6 +1,6 @@
 pkgbase = r-podkat
 	pkgdesc = Position-Dependent Kernel Association Test
-	pkgver = 1.30.0
+	pkgver = 1.32.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/podkat
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = r-podkat
 	optdepends = r-summarizedexperiment
 	optdepends = r-txdb.hsapiens.ucsc.hg38.knowngene
 	optdepends = r-variantannotation
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/podkat_1.30.0.tar.gz
-	sha256sums = f9c7b86f7a2a044421c4ed7d6351c6ec34ef083dc8327c70b841c9a62716a359
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/podkat_1.32.0.tar.gz
+	sha256sums = 89b9c3fe34b551bcb64c114ba226c2ee93a26c17a00f1ba6b13b31bcc6ec1dea
 
 pkgname = r-podkat
