@@ -1,5 +1,104 @@
 # Changelog
 
+## [v9.0.3](https://github.com/fastly/cli/releases/tag/v9.0.3) (2023-04-26)
+
+**Bug fixes:**
+
+* Omit errors from Sentry reporting [#922](https://github.com/fastly/cli/pull/922)
+
+**Enhancements:**
+
+* fix(compute/serve): always set verbose mode for viceroy [#924](https://github.com/fastly/cli/pull/924)
+
+**Dependencies:**
+
+* build(deps): bump github.com/otiai10/copy from 1.10.0 to 1.11.0 [#923](https://github.com/fastly/cli/pull/923)
+
+## [v9.0.2](https://github.com/fastly/cli/releases/tag/v9.0.2) (2023-04-19)
+
+**Bug fixes:**
+
+* fix(kvstore): alias `object-store` [#920](https://github.com/fastly/cli/pull/920)
+
+## [v9.0.1](https://github.com/fastly/cli/releases/tag/v9.0.1) (2023-04-19)
+
+**Bug fixes:**
+
+* fix: reinstate support for `[setup.object_stores]` [#918](https://github.com/fastly/cli/pull/918)
+
+## [v9.0.0](https://github.com/fastly/cli/releases/tag/v9.0.0) (2023-04-19)
+
+There are a couple of important 'breaking' changes in this release.
+
+The `object-store` command has been renamed to `kv-store` and the `fastly.toml` manifest (used by the Fastly CLI) has updated its data model (see https://developer.fastly.com/reference/compute/fastly-toml/) by renaming `[setup.dictionaries]` and `[local_server.dictionaries]` to their `config_stores` equivalent, which has resulted in a new `manifest_version` number due to the change to the consumer interface.
+
+**Breaking:**
+
+* breaking(objectstore): rename object-store command to kv-store [#904](https://github.com/fastly/cli/pull/904)
+* breaking(manifest): support latest fastly.toml manifest data model [#907](https://github.com/fastly/cli/pull/907)
+
+**Bug fixes:**
+
+* fix(manifest): re-raise remediation error to avoid go-toml wrapping issue [#915](https://github.com/fastly/cli/pull/915)
+* fix(compute/deploy): shorten message to avoid spinner bug [#916](https://github.com/fastly/cli/pull/916)
+
+**Enhancements:**
+
+* feat(compute/deploy): add Secret Store to manifest `[setup]` [#769](https://github.com/fastly/cli/pull/769)
+* feat(config): add TypeScript Starter Kit [#908](https://github.com/fastly/cli/pull/908)
+* fix(errors/log): support filtering errors to Sentry [#909](https://github.com/fastly/cli/pull/909)
+* fix(manifest): improve output message for fastly.toml related errors [#910](https://github.com/fastly/cli/pull/910)
+* feat(service): support `--json` for service search subcommand [#911](https://github.com/fastly/cli/pull/911)
+* refactor: consistent `--json` implementation [#912](https://github.com/fastly/cli/pull/912)
+
+**Dependencies:**
+
+* build(deps): bump github.com/otiai10/copy from 1.9.0 to 1.10.0 [#900](https://github.com/fastly/cli/pull/900)
+* build(deps): bump golang.org/x/crypto from 0.7.0 to 0.8.0 [#901](https://github.com/fastly/cli/pull/901)
+* build(deps): bump golang.org/x/term from 0.6.0 to 0.7.0 [#902](https://github.com/fastly/cli/pull/902)
+* build(deps): bump github.com/Masterminds/semver/v3 from 3.2.0 to 3.2.1 [#903](https://github.com/fastly/cli/pull/903)
+
+## [v8.2.4](https://github.com/fastly/cli/releases/tag/v8.2.4) (2023-04-06)
+
+**Enhancements:**
+
+* feat(compute/serve): support forcing a viceroy check [#898](https://github.com/fastly/cli/pull/898)
+
+## [v8.2.3](https://github.com/fastly/cli/releases/tag/v8.2.3) (2023-04-05)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v8.2.2...v8.2.3)
+
+**Enhancements:**
+
+* fix(profile): always prompt for token [#896](https://github.com/fastly/cli/pull/896)
+
+**Dependencies:**
+
+* build(deps): bump github.com/getsentry/sentry-go from 0.19.0 to 0.20.0 [#895](https://github.com/fastly/cli/pull/895)
+* build(deps): bump actions/setup-go from 3 to 4 [#882](https://github.com/fastly/cli/pull/882)
+* build(deps): bump github.com/fatih/color from 1.14.1 to 1.15.0 [#865](https://github.com/fastly/cli/pull/865)
+
+## [v8.2.2](https://github.com/fastly/cli/releases/tag/v8.2.2) (2023-03-31)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v8.2.1...v8.2.2)
+
+**Enhancements:**
+
+* feat(ratelimit): add missing properties [#891](https://github.com/fastly/cli/pull/891)
+* feat(ratelimiter): add uri-dict-name flag [#892](https://github.com/fastly/cli/pull/892)
+
+## [v8.2.1](https://github.com/fastly/cli/releases/tag/v8.2.1) (2023-03-30)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v8.2.0...v8.2.1)
+
+**Dependencies:**
+
+* build(deps): bump tinygo baseline version [#888](https://github.com/fastly/cli/pull/888)
+
+**Bug fixes:**
+
+* fix(toolchain): bump go version to align with updated tinygo constraint [#889](https://github.com/fastly/cli/pull/889)
+
 ## [v8.2.0](https://github.com/fastly/cli/releases/tag/v8.2.0) (2023-03-28)
 
 [Full Changelog](https://github.com/fastly/cli/compare/v8.1.2...v8.2.0)

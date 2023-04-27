@@ -4,7 +4,7 @@
 ## GPG key: https://github.com/web-flow.gpg
 
 pkgname=fastly
-pkgver=8.2.2
+pkgver=9.0.3
 pkgrel=1
 pkgdesc='CLI for the Fastly platform'
 url='https://github.com/fastly/cli'
@@ -36,6 +36,8 @@ build() {
 		CLI_ENV="production" \
 		GORELEASER_ARGS="--rm-dist --single-target" \
 		GO_ARGS="${GOFLAGS}"
+	./fastly --completion-script-bash > fastly.bash
+	./fastly --completion-script-zsh > _fastly
 }
 
 check() {
@@ -51,4 +53,6 @@ check() {
 package() {
 	cd "$pkgname"
 	install -Dv fastly -t "$pkgdir/usr/bin/"
+	install -Dvm644 fastly.bash "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+	install -Dvm644 _fastly -t "$pkgdir/usr/share/zsh/site-functions/"
 }
