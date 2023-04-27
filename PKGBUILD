@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scde
-_pkgver=2.26.2
+_pkgver=2.28.0
 pkgname=r-${_pkgname,,}
-pkgver=2.26.2
+pkgver=2.28.0
 pkgrel=1
 pkgdesc='Single Cell Differential Expression'
 arch=('x86_64')
@@ -35,7 +35,7 @@ optdepends=(
   r-wgcna
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9736faff97b05d2e4847b183ed6670115674bfa14e7a110c9b64d6fa3fc61b23')
+sha256sums=('3f74d87b1c268c790a12ab275c16e46a84bef62f4bfe3c3ccddc1b84d1354217')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
