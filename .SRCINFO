@@ -1,6 +1,6 @@
 pkgbase = r-m6aboost
 	pkgdesc = m6Aboost
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/m6Aboost
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-m6aboost
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/m6Aboost_1.4.0.tar.gz
-	sha256sums = 050939ee352c526111087dcb5a814070c9354bbcf56d48303aa4c1023dfa6e24
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/m6Aboost_1.6.0.tar.gz
+	sha256sums = 912e05052cfdb27f5a1be38529bc0b792237d084856b38f53be4fbc0c1c655f8
 
 pkgname = r-m6aboost
