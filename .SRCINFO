@@ -1,6 +1,6 @@
 pkgbase = r-bgx
 	pkgdesc = Bayesian Gene eXpression
-	pkgver = 1.64.0
+	pkgver = 1.66.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/bgx
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = r-bgx
 	depends = boost
 	optdepends = r-affydata
 	optdepends = r-hgu95av2cdf
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/bgx_1.64.0.tar.gz
-	sha256sums = b48d74dd783e6bfb496a896cd7901ec7e0352bd929307215e88a4784ed4a8ffa
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/bgx_1.66.0.tar.gz
+	sha256sums = 5562e24a3be93c904fc8386b5dac4ab3917fceccb646a2b43ae137247d1ed3bc
 
 pkgname = r-bgx
