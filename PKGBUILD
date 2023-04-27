@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=msImpute
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Imputation of label-free mass spectrometry peptides'
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d69256567e497fde569e12b89de70d2d343cd5aefb8e066920bf4ca3f35a9e56')
+sha256sums=('650867e777950289714ee319412e10498883a89ee9e46fa31fb8a7a665abdfd6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
