@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=simplifyEnrichment
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
-pkgrel=3
+pkgver=1.10.0
+pkgrel=1
 pkgdesc='Simplify Functional Enrichment Results'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -58,7 +58,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fe492daf93f39c34b47340182e008ac7140eeb14d02a4e9961f47d693c2c1d8c')
+sha256sums=('ae5c794ecfbc6fc6399caaae2a9b39162320d80e472faff6d97cb960863c45ef')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
