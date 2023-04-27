@@ -1,6 +1,6 @@
 pkgbase = r-daglogo
 	pkgdesc = dagLogo: a Bioconductor package for visualizing conserved amino acid sequence pattern in groups based on probability theory
-	pkgver = 1.36.0
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/dagLogo
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-daglogo
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-xml
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/dagLogo_1.36.0.tar.gz
-	sha256sums = ef83ac083d5f9046720b76916fe939b6976c9520f2d6684db8f291c26f0e264f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/dagLogo_1.38.0.tar.gz
+	sha256sums = 87db5cb8c7a638e95cb1c299470552273aa3d95c0c689246b1ef81fa97e5410b
 
 pkgname = r-daglogo
