@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=destiny
-_pkgver=3.12.0
+_pkgver=3.14.0
 pkgname=r-${_pkgname,,}
-pkgver=3.12.0
-pkgrel=3
+pkgver=3.14.0
+pkgrel=1
 pkgdesc='Creates diffusion maps'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -56,7 +56,7 @@ optdepends=(
   r-viridis
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d1e482164e97eddc969e505280c3e0282ccc72dc26cd40c8ee2dcbaf8638ed65')
+sha256sums=('8d29f85faf5026c4b5d3939298943dde86210a90f252c764f1ed4064702b8841')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
