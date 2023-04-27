@@ -1,6 +1,6 @@
 pkgbase = r-rtn
 	pkgdesc = RTN: Reconstruction of Transcriptional regulatory Networks and analysis of regulons
-	pkgver = 2.22.1
+	pkgver = 2.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RTN
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-rtn
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RTN_2.22.1.tar.gz
-	sha256sums = 82c8495786bbbcd0d95fb28354beb59e3b412b308ba4d52d5205af8a8333493d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RTN_2.24.0.tar.gz
+	sha256sums = 703d64185f2046c2e34dd984431e7fafa55aceaab086722c4d25e19e9d526b54
 
 pkgname = r-rtn
