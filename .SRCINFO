@@ -1,6 +1,6 @@
 pkgbase = r-frmatools
 	pkgdesc = Frozen RMA Tools
-	pkgver = 1.50.0
+	pkgver = 1.52.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/frmaTools
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = r-frmatools
 	optdepends = r-oligo
 	optdepends = r-pd.huex.1.0.st.v2
 	optdepends = r-pd.hugene.1.0.st.v1
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/frmaTools_1.50.0.tar.gz
-	sha256sums = 851c2f1903f51dd40c5bae24e3ffa0df9270d3764285dc7d0e32e9c72249df48
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/frmaTools_1.52.0.tar.gz
+	sha256sums = 5c3431455505fdae14dac4acdaf80658e2052f196b5609477063efd28e7d9717
 
 pkgname = r-frmatools
