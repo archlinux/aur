@@ -1,6 +1,6 @@
 pkgbase = r-ggspavis
 	pkgdesc = Visualization functions for spatially resolved transcriptomics data
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ggspavis
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-ggspavis
 	optdepends = r-stexampledata
 	optdepends = r-testthat
 	optdepends = r-uwot
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ggspavis_1.4.0.tar.gz
-	sha256sums = 354a831a7844648c18b850f7029063eb4a693ffb4ee2afe36f8a98009bea4103
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ggspavis_1.6.0.tar.gz
+	sha256sums = 15dd48504836daad03a369d728c6e1278e4354c79ef87531d9468992eeebc735
 
 pkgname = r-ggspavis
