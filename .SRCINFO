@@ -1,6 +1,6 @@
 pkgbase = r-hgc
 	pkgdesc = A fast hierarchical graph-based clustering method
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/HGC
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = r-hgc
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/HGC_1.6.0.tar.gz
-	sha256sums = 59d95088ceb75aa6ba1639ee32def1e78fb45b3c4d25a29fcb4ecfcaf877b253
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/HGC_1.8.0.tar.gz
+	sha256sums = 1f06943358e7ac42cb9ae29176f2119c22cce1e42d2670d6f6c2aaf10c8f50ce
 
 pkgname = r-hgc
