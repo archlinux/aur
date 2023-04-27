@@ -1,6 +1,6 @@
 pkgbase = r-panp
 	pkgdesc = Presence-Absence Calls from Negative Strand Matching Probesets
-	pkgver = 1.68.0
+	pkgver = 1.70.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/panp
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = r-panp
 	depends = r-affy
 	depends = r-biobase
 	optdepends = r-gcrma
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/panp_1.68.0.tar.gz
-	sha256sums = 367b8b63a55fed67f6ec797cc0079feccf8f9e8adae704539b5cfa195d894c9e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/panp_1.70.0.tar.gz
+	sha256sums = 09f37413b9d3d5a2b02595a479c292e0c4465c63477a6b2318f5c0270c8c5634
 
 pkgname = r-panp
