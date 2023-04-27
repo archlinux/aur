@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=iSEE
-_pkgver=2.10.0
+_pkgver=2.12.0
 pkgname=r-${_pkgname,,}
-pkgver=2.10.0
-pkgrel=3
+pkgver=2.12.0
+pkgrel=1
 pkgdesc='Interactive SummarizedExperiment Explorer'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -47,7 +47,7 @@ optdepends=(
   r-viridis
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('565aa86ff8c4dcb2eeda40dd34ef4f01965dfa6010b02f7b4f47ee7826e64bd0')
+sha256sums=('6a61771a49d4a0d7af18bfbf2123ff49f9dd0dfff6d784ca753c1552086dfcda')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
