@@ -1,6 +1,6 @@
 pkgbase = r-fgsea
 	pkgdesc = Fast Gene Set Enrichment Analysis
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/fgsea
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = r-fgsea
 	optdepends = r-reactome.db
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/fgsea_1.24.0.tar.gz
-	sha256sums = 138f343ead7b33c41044b4235f9b137ba35830c6e670da7af7f8e505592d34bb
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/fgsea_1.26.0.tar.gz
+	sha256sums = ffd44dcf4e4a757ae4c79f3df99897a3e126fbca3e54457ace2c8cc923cf1632
 
 pkgname = r-fgsea
