@@ -1,13 +1,13 @@
 pkgbase = r-michip
 	pkgdesc = MiChip Parsing and Summarizing Functions
-	pkgver = 1.52.0
+	pkgver = 1.54.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MiChip
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-biobase
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MiChip_1.52.0.tar.gz
-	sha256sums = 4a0265b4b077eb694ab3531e92090aee723a884868326c95ad882a5dbda490c5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MiChip_1.54.0.tar.gz
+	sha256sums = ee673d83abceb45c24e6f6fa758f2e2f066d71aa325eb8469e3056b1007d7464
 
 pkgname = r-michip
