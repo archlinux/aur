@@ -1,6 +1,6 @@
 pkgbase = r-fission
 	pkgdesc = RangedSummarizedExperiment for time course RNA-Seq of fission yeast in response to stress, by Leong et al., Nat Commun 2014.
-	pkgver = 1.18.0
+	pkgver = 1.19.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/fission
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = r-fission
 	depends = r-summarizedexperiment
 	optdepends = r-knitr
 	optdepends = r-markdown
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/fission_1.18.0.tar.gz
-	sha256sums = d2f6d1dbfc5612f00d62c34545331663ad5d7247afe80d6ce61f5b531c9f3c53
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/fission_1.19.0.tar.gz
+	sha256sums = 9db8988c7db7c2431e73796994c7a52397ff6e1496036701b192072af20cb079
 
 pkgname = r-fission
