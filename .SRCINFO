@@ -1,6 +1,6 @@
 pkgbase = r-cnvpanelizer
 	pkgdesc = Reliable CNV detection in targeted sequencing applications
-	pkgver = 1.30.0
+	pkgver = 1.32.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CNVPanelizer
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-cnvpanelizer
 	depends = r-testthat
 	optdepends = r-knitr
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CNVPanelizer_1.30.0.tar.gz
-	sha256sums = 1f7c4d2c67fd117344fdb7e8aba1e60313f21b520dfff4b43d081fa9fe5a660a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CNVPanelizer_1.32.0.tar.gz
+	sha256sums = 3e9e5a627e1ad0dadc98c91d13a62cc6c7851fd1c7f38f13c6ee54565a8ab029
 
 pkgname = r-cnvpanelizer
