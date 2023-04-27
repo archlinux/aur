@@ -1,6 +1,6 @@
 pkgbase = hdrhistogram_c
 	pkgdesc = C port of the HdrHistogram
-	pkgver = 0.11.6
+	pkgver = 0.11.7
 	pkgrel = 1
 	url = https://hdrhistogram.github.io/HdrHistogram/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = hdrhistogram_c
 	depends = glibc
 	depends = zlib
 	options = staticlibs
-	source = hdrhistogram_c-0.11.6-src.tar.gz::https://github.com/HdrHistogram/HdrHistogram_c/archive/refs/tags/0.11.6.tar.gz
-	sha256sums = b9bb6425d9b0ac5424f6d2286a1295900edab0170d1f50767decb00196785de3
+	source = hdrhistogram_c-0.11.7-src.tar.gz::https://github.com/HdrHistogram/HdrHistogram_c/archive/refs/tags/0.11.7.tar.gz
+	sha256sums = b7792916274fe47c0f3fe93721c4c607bf842ffa954201eef750631a036144fb
 
 pkgname = hdrhistogram_c
