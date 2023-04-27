@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CoCiteStats
-_pkgver=1.70.0
+_pkgver=1.72.0
 pkgname=r-${_pkgname,,}
-pkgver=1.70.0
+pkgver=1.72.0
 pkgrel=1
 pkgdesc='Different test statistics based on co-citation.'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   r-org.hs.eg.db
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9fa640ab6f8a1eba238c6e8fe240ecc109e81d921ca80bb1b41fb1bfcc7fe786')
+sha256sums=('bf73910a50c8432cbea2b2144d0f73b9f7b2b07b3f7ec140307394b117db8177')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
