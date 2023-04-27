@@ -1,6 +1,6 @@
 pkgbase = r-tfhaz
 	pkgdesc = Transcription Factor High Accumulation Zones
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/TFHAZ
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-tfhaz
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/TFHAZ_1.20.0.tar.gz
-	sha256sums = 67ddd66fb1835a63f18daafc79e657b6550020796d1c44a143781a3b13a86399
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TFHAZ_1.22.0.tar.gz
+	sha256sums = 6be978cd888f1757e520523d95c33d70de4504b4a1c3a8c1b4c7429a783fa8ae
 
 pkgname = r-tfhaz
