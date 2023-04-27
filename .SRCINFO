@@ -1,13 +1,13 @@
 pkgbase = linux-nitrous
-	pkgver = 6.2.13
+	pkgver = 6.3.0
 	pkgrel = 1
 	url = https://gitlab.com/xdevs23/linux-nitrous
 	arch = x86_64
 	license = GPL2
 	makedepends = bison
-	makedepends = clang>=14
-	makedepends = llvm>=14
-	makedepends = lld>=14
+	makedepends = clang>=15
+	makedepends = llvm>=15
+	makedepends = lld>=15
 	makedepends = xmlto
 	makedepends = docbook-xsl
 	makedepends = kmod
@@ -19,7 +19,7 @@ pkgbase = linux-nitrous
 	makedepends = rust
 	makedepends = lzop
 	options = !strip
-	source = git+https://gitlab.com/xdevs23/linux-nitrous.git#tag=v6.2.13-1
+	source = git+https://gitlab.com/xdevs23/linux-nitrous.git#tag=v6.3.0-1
 	source = linux-nitrous.preset
 	sha256sums = SKIP
 	sha256sums = 59cf1dfe08c144868ad87705dd62a0400921c042b1e12691e42cf214fe9a9402
@@ -31,7 +31,7 @@ pkgname = linux-nitrous
 	depends = kmod
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
-	optdepends = linux-nitrous-headers=6.2.13-1: to build DKMS modules against this kernel
+	optdepends = linux-nitrous-headers=6.3.0-1: to build DKMS modules against this kernel
 	optdepends = linux-firmware: Additional firmware blobs
 	provides = WIREGUARD-MODULE
 	provides = NTFS3-MODULE
@@ -40,5 +40,5 @@ pkgname = linux-nitrous
 pkgname = linux-nitrous-headers
 	pkgdesc = Header files and scripts for building modules for Linux kernel (tagged git version)
 	depends = dkms
-	depends = lld>=14
-	depends = clang>=14
+	depends = lld>=15
+	depends = clang>=15
