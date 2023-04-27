@@ -1,7 +1,7 @@
 pkgbase = r-inpas
 	pkgdesc = A Bioconductor package for identifying novel Alternative PolyAdenylation Sites (PAS) from RNA-seq data
-	pkgver = 2.6.0
-	pkgrel = 3
+	pkgver = 2.8.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/InPAS
 	arch = any
 	license = GPL
@@ -46,7 +46,7 @@ pkgbase = r-inpas
 	optdepends = r-runit
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
 	optdepends = r-txdb.mmusculus.ucsc.mm10.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/InPAS_2.6.0.tar.gz
-	sha256sums = 96c2c9cbf3d23bc2ee2b46ae9946f5fe449edf8c824c36f16a83708fdef973f5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/InPAS_2.8.0.tar.gz
+	sha256sums = 98368720ca5bce0a1f10df47407a10a4cd341738c3e32c2b129889ba7d220dc4
 
 pkgname = r-inpas
