@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CRImage
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='CRImage a package to classify cells and calculate tumour cellularity'
 arch=('any')
@@ -19,7 +19,7 @@ depends=(
   r-sgeostat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('78f2cf7308abcda462bf86f130b3cf633c13cdef2f484fd5e8d6808dac3a0954')
+sha256sums=('cc69056e559667c89748ceb3e6025ce8592fe249ab10cabab454271a2b7a3386')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
