@@ -1,12 +1,12 @@
 pkgbase = r-lungcanceracvssccgeo
 	pkgdesc = A lung cancer dataset that can be used with maPredictDSC package for developing outcome prediction models from Affymetrix CEL files.
-	pkgver = 1.34.0
+	pkgver = 1.35.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/LungCancerACvsSCCGEO
 	arch = any
 	license = GPL
 	depends = r
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/LungCancerACvsSCCGEO_1.34.0.tar.gz
-	sha256sums = f2e290ffc7816ebeace852aeaac993e133dc102689bb9443aa175b50e695cb81
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/LungCancerACvsSCCGEO_1.35.0.tar.gz
+	sha256sums = 5f3eb44a33af3317373b9529b6bfcb09bb64771989e85f83fc523db28f722ea9
 
 pkgname = r-lungcanceracvssccgeo
