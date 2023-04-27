@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tracktables
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Build IGV tracks and HTML reports'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cf47aacfbee5acca2d35b9c1675f010c2fe3651fc8be6284811d09a074b0e9b2')
+sha256sums=('0616d1044e8bb4f937a4661e9bb6c74de6d265607f8eed6ad3396d7b6899fb42')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
