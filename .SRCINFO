@@ -1,6 +1,6 @@
 pkgbase = r-ledpred
 	pkgdesc = Learning from DNA to Predict Enhancers
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/LedPred
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-ledpred
 	depends = r-rcurl
 	depends = r-rocr
 	depends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/LedPred_1.32.0.tar.gz
-	sha256sums = 645ab8f2e9ce2893258f7d465b29b5a5d4d1758cb4de7b3e7714224413b33287
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/LedPred_1.34.0.tar.gz
+	sha256sums = 0732a8ce3bf69fd1a4fad9f290128759e148696830cddf2066604f71f122bedb
 
 pkgname = r-ledpred
