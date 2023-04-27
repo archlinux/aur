@@ -1,6 +1,6 @@
 pkgbase = r-kegglincs
 	pkgdesc = Visualize all edges within a KEGG pathway and overlay LINCS data
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/KEGGlincs
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-kegglincs
 	optdepends = r-biocmanager
 	optdepends = r-graph
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/KEGGlincs_1.24.0.tar.gz
-	sha256sums = 9f64e15e141ec9596d73477140a05b7157e4f47bf9ee5cd5e8e2e6c84a0701f7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/KEGGlincs_1.26.0.tar.gz
+	sha256sums = 0144aa7e4d44e2d8cf47f05d5ba257fc4038d892b19ee8832e954c52b8160d69
 
 pkgname = r-kegglincs
