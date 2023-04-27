@@ -67,9 +67,9 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=6.1
-_minor=25
+_minor=26
 _rtpatchver=8
-_clr=${_major}.24-90
+_clr=${_major}.26-92
 _gcc_more_v='20230105'
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-clear-preempt-rt
@@ -234,7 +234,7 @@ _package() {
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     echo "Installing modules..."
-    make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    make ${BUILD_FLAGS[*]} INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
         DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
     # remove build and source links
@@ -331,7 +331,7 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('cb72436ceb15086ae3df65e590592030692a9237a37d64105478eb5a72493091'
+sha256sums=('dfdcc143a879d64a5ee99213b2b4b05b5dccd566c144df93bca1e204df64c110'
             'SKIP'
             'e13dd514919b5d432de55a1b4753ed7131f07eb9965edd7772c369fdf2e9a3d9'
             'SKIP'
