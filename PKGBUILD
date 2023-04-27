@@ -1,6 +1,6 @@
 # Maintainer: Arvid Norlander <VorpalBlade@users.noreply.github.com>
 pkgname=keyboard-backlightd
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Automatic keyboard backlight management on Thinkpads"
 arch=(x86_64)
@@ -10,7 +10,7 @@ depends=(libevdev)
 makedepends=(cargo)
 backup=(etc/conf.d/keyboard-backlightd)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('7c95db52ad568cdca2b3d53d1d63d35a453b23d6ff54aff7c9e9eb56e5bbc820')
+sha256sums=('c352b815da671fd1cc52227c2ba4b15eeea9488ac7902dda77c908693beec7b9')
 
 prepare() {
     cd "$pkgname-$pkgver"
