@@ -1,6 +1,6 @@
 pkgname=1password-beta
 
-_tarver=8.10.5-10.BETA
+_tarver=8.10.6-10.BETA
 _tar="1password-${_tarver}.x64.tar.gz"
 pkgver=${_tarver//-/_}
 pkgrel=10
@@ -12,8 +12,8 @@ license=('LicenseRef-1Password-Proprietary')
 options=(!strip)
 install="1password.install"
 source=(https://downloads.1password.com/linux/tar/beta/${CARCH}/${_tar}{,.sig})
-sha256sums=('18cf779d6ee419e0b6326ab566d38aef6450734407be559e7432c4026aad3ede'
-            'dbdc9122288e0263a13a06205d1808e41383addf6753193496fa983d8a8419fc'
+sha256sums=('49d3e17414ea68f39732f13b4bdd6b804001e1c3d1c02cb0eb5df8d4cd25da25'
+            '114dd2efb085acc6208b05d55cbbf90c5217eab7e4e51ac3f5fcbab61d1d09f9'
 )
 validpgpkeys=('3FEF9748469ADBE15DA7CA80AC2D62742012EA22')
 
