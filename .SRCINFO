@@ -1,6 +1,6 @@
 pkgbase = r-cnvranger
 	pkgdesc = Summarization and expression/phenotype association of CNV ranges
-	pkgver = 1.14.0
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CNVRanger
 	arch = any
@@ -37,7 +37,7 @@ pkgbase = r-cnvranger
 	optdepends = r-regioner
 	optdepends = r-rmarkdown
 	optdepends = r-tcgautils
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CNVRanger_1.14.0.tar.gz
-	sha256sums = 8c0127d7d61cfcc4cce1a35f14ed9d338e408d68b70b69b80378e7a9629ac6c5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CNVRanger_1.16.0.tar.gz
+	sha256sums = dbfc441ac33c5caa3c40dead7f74b1cec35c1f10f10429672268c8a874715f10
 
 pkgname = r-cnvranger
