@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=genbankr
-_pkgver=1.26.0
+_pkgver=1.27.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.27.0
 pkgrel=1
 pkgdesc='Parsing GenBank files into semantically useful objects'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0809253f50a7d9ce1921300281ff1e1bc5e0802071b4304e52b266acf4e5d31a')
+sha256sums=('8c2238bb198f49bb600cf3b0b0b0a41e9704797aa98707169511042f1c3b683b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
