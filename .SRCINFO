@@ -6,7 +6,6 @@ pkgbase = coin-or-bonmin
 	arch = x86_64
 	groups = coin-or
 	license = EPL
-	makedepends = nauty
 	depends = coin-or-cbc
 	depends = coin-or-ipopt
 	source = https://github.com/coin-or/Bonmin/archive/refs/tags/releases/1.8.9.tar.gz
