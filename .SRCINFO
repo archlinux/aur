@@ -1,6 +1,6 @@
 pkgbase = r-pics
 	pkgdesc = Probabilistic inference of ChIP-seq
-	pkgver = 2.42.0
+	pkgver = 2.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/PICS
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = r-pics
 	optdepends = r-knitr
 	optdepends = r-parallel
 	optdepends = r-rtracklayer
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/PICS_2.42.0.tar.gz
-	sha256sums = e0d01603ec41a0899f686a6d68392e85f5695054d50e9809e7f4ed329d18d46a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PICS_2.44.0.tar.gz
+	sha256sums = 2f89accbaaacb4961c872928fd622b81788207f19339b23fa84bfe5be8d7e7da
 
 pkgname = r-pics
