@@ -1,6 +1,6 @@
 pkgbase = r-clustcomp
 	pkgdesc = Clustering Comparison Package
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/clustComp
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-clustcomp
 	optdepends = r-biocgenerics
 	optdepends = r-colonca
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/clustComp_1.26.0.tar.gz
-	sha256sums = 7050532563287105cc49a98f4dd195061bbb3b8177e43ffa4712a9f58feffe7e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/clustComp_1.28.0.tar.gz
+	sha256sums = 67f2564e81c4a99fb9ccdc671ca433e256f1b3340fcda2fb356f2b3c1c1b2544
 
 pkgname = r-clustcomp
