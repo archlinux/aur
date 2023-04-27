@@ -1,6 +1,6 @@
 pkgbase = r-oncomix
 	pkgdesc = Identifying Genes Overexpressed in Subsets of Tumors from Tumor-Normal mRNA Expression Data
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/oncomix
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-oncomix
 	optdepends = r-rmarkdown
 	optdepends = r-rmysql
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/oncomix_1.20.0.tar.gz
-	sha256sums = 7ef5a26db0d022be97c8a6355415006184f7c1fc65eda84b067067ae04f6b255
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/oncomix_1.22.0.tar.gz
+	sha256sums = 0c996b71006217952f8bf0380812748c2779a26993d9d6bbb6b477e3900445bb
 
 pkgname = r-oncomix
