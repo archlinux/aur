@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GUIDEseq
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='GUIDE-seq analysis pipeline'
 arch=('any')
@@ -49,7 +49,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ef87c12438c2cf343bdeb553aaa33b8ebe372a6f8b25cfa45b1e578e35d0762f')
+sha256sums=('b6aad825e0701c6ab77e572f4552a8244a22323fb2ca1a391ec08b98cc3a98c9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
