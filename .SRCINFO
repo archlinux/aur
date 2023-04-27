@@ -1,6 +1,6 @@
 pkgbase = r-multidataset
 	pkgdesc = Implementation of MultiDataSet and ResultSet
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MultiDataSet
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = r-multidataset
 	optdepends = r-raggedexperiment
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MultiDataSet_1.26.0.tar.gz
-	sha256sums = 8ff8fbbd81e3fd55dcc2a22bfadc137ed19f60b510121ad9c20872415a2f4ae2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MultiDataSet_1.28.0.tar.gz
+	sha256sums = a6832336f75e32bc8f1479539d51c71c7463af28d07f2fa9d7fd88dd2ae4dbe3
 
 pkgname = r-multidataset
