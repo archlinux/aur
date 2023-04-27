@@ -1,6 +1,6 @@
 pkgbase = r-signer
 	pkgdesc = Empirical Bayesian approach to mutational signature discovery
-	pkgver = 2.0.2
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/signeR
 	arch = x86_64
@@ -60,7 +60,7 @@ pkgbase = r-signer
 	optdepends = r-bsgenome.hsapiens.ucsc.hg38
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/signeR_2.0.2.tar.gz
-	sha256sums = 43da26c1e05b3d178e9227ce39a3abc5f70c1f5ae9ef19dfa990c9357b51fada
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/signeR_2.2.0.tar.gz
+	sha256sums = 96e68154bd98383308f6f34684142565e4a1376aa6b47771419dc7392bd326f6
 
 pkgname = r-signer
