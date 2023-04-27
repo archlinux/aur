@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=FCBF
-_pkgver=2.6.0
+_pkgver=2.8.0
 pkgname=r-${_pkgname,,}
-pkgver=2.6.0
+pkgver=2.8.0
 pkgrel=1
 pkgdesc='Fast Correlation Based Filter for Feature Selection'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('27c11be85846f6b7d78afe9591066f1c96373b91907df763f67076147a118c88')
+sha256sums=('bb855ea7a394cecacdbfa7800cd62f6f4e3ae99e0c480fea05129cad841e8fb2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
