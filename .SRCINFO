@@ -1,6 +1,6 @@
 pkgbase = r-mina
 	pkgdesc = Microbial community dIversity and Network Analysis
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/mina
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = r-mina
 	optdepends = r-domc
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/mina_1.6.0.tar.gz
-	sha256sums = 5d17f93b72f5ae4ad17906ef4c58fc9feda6c80340b785856064f84e430a5570
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/mina_1.8.0.tar.gz
+	sha256sums = a397cb654101a144f00b3a68d4bf71dd37d1eb2443a23b6e9450f4644be88ab7
 
 pkgname = r-mina
