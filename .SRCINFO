@@ -1,6 +1,6 @@
 pkgbase = r-cmapr
 	pkgdesc = CMap Tools in R
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/cmapR
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-cmapr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cmapR_1.10.0.tar.gz
-	sha256sums = aeb7db1c0a94f3d89803451ac1099551c242782fd0422c488b84247eace5f2b1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cmapR_1.12.0.tar.gz
+	sha256sums = ece93af7dff203fe84cef9d4ccc68b47ffa040c932c70e81950c28a0107b71de
 
 pkgname = r-cmapr
