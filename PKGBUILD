@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SDAMS
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Differential Abundant/Expression Analysis for Metabolomics, Proteomics and single-cell RNA sequencing Data'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('46b171d79a6997a381a7241e73de69bd828e6c74c2ca3bf7cac62c4c044f3145')
+sha256sums=('dc70a05f26ae82ba901e20e79d8337c0ab597bca781b57550b11a3e8a0ad8591')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
