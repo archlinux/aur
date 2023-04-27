@@ -1,6 +1,6 @@
 pkgbase = r-ccrepe
 	pkgdesc = ccrepe_and_nc.score
-	pkgver = 1.34.0
+	pkgver = 1.36.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ccrepe
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-ccrepe
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ccrepe_1.34.0.tar.gz
-	sha256sums = d0bd56caa38d03cbc27853ecae56f60517c48c97b88bf680f2a9e5f880d3d4f6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ccrepe_1.36.0.tar.gz
+	sha256sums = c396ffd2351abb3e5c7f804e9a4f0e42e732aef85782df2fd36577855ff81947
 
 pkgname = r-ccrepe
