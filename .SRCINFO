@@ -1,6 +1,6 @@
 pkgbase = r-org.bt.eg.db
 	pkgdesc = Genome wide annotation for Bovine
-	pkgver = 3.16.0
+	pkgver = 3.17.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/org.Bt.eg.db
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-org.bt.eg.db
 	optdepends = r-annotate
 	optdepends = r-dbi
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/org.Bt.eg.db_3.16.0.tar.gz
-	sha256sums = 9ab5c965fa59fae6b791675a2c9b25368644eac2748e6c80243ad015b0f4558b
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/org.Bt.eg.db_3.17.0.tar.gz
+	sha256sums = c438774c53ada7240b862f6167db649355044c026a14b7b5d9a8c45a981b4a51
 
 pkgname = r-org.bt.eg.db
