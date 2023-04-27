@@ -1,12 +1,14 @@
 pkgbase = alibabasans-jp-fonts
 	pkgdesc = A typeface for creating alibaba sans jp in text.阿里巴巴普惠体日文,3字重
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fonts.alibabagroup.com/#/font
 	arch = any
 	license = custom
 	source = alibabasans-jp-fonts-1.0.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlibabaSansJP.zip
-	sha512sums = 990df32e5b42317e46a8cb283e42b3dc9bd3dc54281a13cf94a642e2fd5c9239f29ee7bd573b50034b9593b4841323af114c3d9dacce445ea174292c590f3905
+	source = license.txt
+	sha256sums = 6085bb7bc272bb975cd98e25e1077d2b1c047c31279af367e53892ec63020d2d
+	sha256sums = 94bd4647501c152d7267474d93c624c909a4dbc07a8b8427805b7ba4aad30621
 
 pkgname = ttf-alibabasans-jp-fonts
 
