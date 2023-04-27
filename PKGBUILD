@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MiRaGE
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
-pkgrel=3
+pkgver=1.42.0
+pkgrel=1
 pkgdesc='MiRNA Ranking by Gene Expression'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -32,7 +32,7 @@ optdepends=(
   r-seqinr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('742e9b09e93ac602d0b8379343bdcf28ac8c89427247b718f61847fcb4d84fa6')
+sha256sums=('4f09c8a08a852b9ad6da4a8250c451080a7414b4a0fda2cf22ce90f9882d3e7b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
