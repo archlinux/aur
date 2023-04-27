@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RSVSim
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='RSVSim: an R/Bioconductor package for the simulation of structural variations'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-rtracklayer
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d63de5146d2a1fc5c1c0bd4c046ed4333046aea569f053c5e848b0f8cf0a7efd')
+sha256sums=('88e8535311ed659e18805cc1be3f8ba1f8d292cc4c7aa673534dc1652bec61f1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
