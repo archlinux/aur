@@ -5,6 +5,7 @@ ipv6 = true # try IPv6 while connecting to DC
 host = "google.com:443"
 # You can specify global secret for user _ here
 secret = "dd000102030405060708090a0b0c0d0e0f"
+stats_sock = /run/tgp.sock
 # Set socks5 proxy in case you need to use one
 socks5 = "127.0.0.1:9050"
 # Optional auth
