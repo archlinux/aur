@@ -1,6 +1,6 @@
 pkgbase = r-switchde
 	pkgdesc = Switch-like differential expression across single-cell trajectories
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/switchde
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-switchde
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tidyr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/switchde_1.24.0.tar.gz
-	sha256sums = 14f303448c28dc37247b5e0232e69a69193011e182a8bd72ecc981f7830a2a48
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/switchde_1.26.0.tar.gz
+	sha256sums = 8a7bd8336c2fd9c94b93c4f2cf111d59b7ec84204f44910b6ff485b91323f0dc
 
 pkgname = r-switchde
