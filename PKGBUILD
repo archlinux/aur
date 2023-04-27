@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tRNA
-_pkgver=1.16.1
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.1
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Analyzing tRNA sequences and structures'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-trnascanimport
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('86a4494589daa02898a88e0a467e405cdda6b2ff643266585eea5393e6d5e99b')
+sha256sums=('773873b0a35ce276376bde656ce0e48d1a3f0e8de6f56c9caaa3901fd6ba9a3b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
