@@ -1,6 +1,6 @@
 pkgbase = dpkg-git
 	pkgdesc = Debian package management system
-	pkgver = 1.21.20.r121.ga96229021
+	pkgver = 1.21.20.r152.g329d06a62
 	pkgrel = 1
 	url = https://tracker.debian.org/pkg/dpkg
 	arch = i686
@@ -9,14 +9,20 @@ pkgbase = dpkg-git
 	makedepends = git
 	makedepends = perl-io-string
 	makedepends = perl-timedate
+	depends = gcc-libs
 	depends = glibc
 	depends = bzip2
+	depends = libmd
 	depends = perl
 	depends = xz
 	depends = zlib
-	provides = dpkg=1.21.20.r121.ga96229021
+	depends = zstd
+	provides = dpkg=1.21.20.r152.g329d06a62
 	conflicts = dpkg
+	options = staticlibs
 	source = git+https://git.dpkg.org/git/dpkg/dpkg.git
+	source = origin.archlinux::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/dpkg/trunk/origin.archlinux
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = dpkg-git

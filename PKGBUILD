@@ -1,18 +1,21 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=dpkg-git
-pkgver=1.21.20.r121.ga96229021
+pkgver=1.21.20.r152.g329d06a62
 pkgrel=1
 pkgdesc="Debian package management system"
 arch=('i686' 'x86_64')
 url="https://tracker.debian.org/pkg/dpkg"
 license=('GPL')
-depends=('glibc' 'bzip2' 'perl' 'xz' 'zlib')
+depends=('gcc-libs' 'glibc' 'bzip2' 'libmd' 'perl' 'xz' 'zlib' 'zstd')
 makedepends=('git' 'perl-io-string' 'perl-timedate')
 provides=("dpkg=$pkgver")
 conflicts=('dpkg')
-source=("git+https://git.dpkg.org/git/dpkg/dpkg.git")
-sha256sums=('SKIP')
+options=('staticlibs')
+source=("git+https://git.dpkg.org/git/dpkg/dpkg.git"
+        "origin.archlinux::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/dpkg/trunk/origin.archlinux")
+sha256sums=('SKIP'
+            'SKIP')
 
 
 pkgver() {
@@ -29,6 +32,7 @@ build() {
     --prefix="/usr" \
     --sbindir="/usr/bin" \
     --sysconfdir="/etc" \
+    --libexecdir="/usr/lib" \
     --localstatedir="/var" \
     --disable-start-stop-daemon
   make
@@ -39,6 +43,9 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  install -d "$pkgdir/var/dpkg/updates"
+  install -Dm644 "$srcdir/origin.archlinux" "$pkgdir/etc/dpkg/origins/archlinux"
+  ln -sf "archlinux" "$pkgdir/etc/dpkg/origins/default"
+
+  install -d "$pkgdir/var/lib/dpkg/updates"
   touch "$pkgdir/var/lib/dpkg"/{status,available}
 }
