@@ -55,7 +55,7 @@ build() {
 
 package_dpkg-full() {
   provides=('dpkg')
-  conflicts=('dpkg' 'dpkg-git')
+  conflicts=('dpkg')
   pkgdesc="Debian package management system - binary utilities"
 
   cp -r "$srcdir/temp-dpkg/"* "$pkgdir"
