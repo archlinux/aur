@@ -12,11 +12,11 @@ pkgbase = yambar-git
 	makedepends = scdoc
 	makedepends = tllist>=1.0.1
 	makedepends = wayland-protocols
+	makedepends = xorgproto
 	depends = libxcb
 	depends = xcb-util
 	depends = xcb-util-cursor
 	depends = xcb-util-wm
-	depends = xorgproto
 	depends = wayland
 	depends = pixman
 	depends = libyaml
@@ -32,4 +32,3 @@ pkgbase = yambar-git
 	sha256sums = SKIP
 
 pkgname = yambar-git
-

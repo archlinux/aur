@@ -11,9 +11,16 @@ pkgdesc='Modular status panel for X11 and Wayland, inspired by polybar (source f
 arch=('x86_64' 'aarch64')
 url='https://codeberg.org/dnkl/yambar'
 license=('MIT')
-makedepends=('git' 'meson' 'ninja' 'scdoc' 'tllist>=1.0.1' 'wayland-protocols')
+makedepends=(
+  'git'
+  'meson'
+  'ninja'
+  'scdoc'
+  'tllist>=1.0.1'
+  'wayland-protocols'
+  'xorgproto')
 depends=(
-  'libxcb' 'xcb-util' 'xcb-util-cursor' 'xcb-util-wm' 'xorgproto'
+  'libxcb' 'xcb-util' 'xcb-util-cursor' 'xcb-util-wm'
   'wayland'
   'pixman'
   'libyaml'
