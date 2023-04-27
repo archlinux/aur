@@ -1,6 +1,6 @@
 pkgbase = r-msnid
 	pkgdesc = Utilities for Exploration and Assessment of Confidence of LC-MSn Proteomics Identifications
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MSnID
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = r-msnid
 	depends = r-stringr
 	depends = r-tibble
 	depends = r-xtable
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MSnID_1.32.0.tar.gz
-	sha256sums = e99ee7f95ee3c58e62e87785526d813d1ddc1867063842a01643dd82fdea50d2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MSnID_1.34.0.tar.gz
+	sha256sums = 4ccafef5645ec40be43034cdc54503cb640cad5216880c6ba4e3bedccdc9b4d7
 
 pkgname = r-msnid

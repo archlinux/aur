@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MSnID
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Utilities for Exploration and Assessment of Confidence of LC-MSn Proteomics Identifications'
 arch=('any')
@@ -39,7 +39,7 @@ depends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e99ee7f95ee3c58e62e87785526d813d1ddc1867063842a01643dd82fdea50d2')
+sha256sums=('4ccafef5645ec40be43034cdc54503cb640cad5216880c6ba4e3bedccdc9b4d7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
