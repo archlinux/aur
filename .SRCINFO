@@ -1,6 +1,6 @@
 pkgbase = r-cliprofiler
 	pkgdesc = A package for the CLIP data visualization
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/cliProfiler
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-cliprofiler
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cliProfiler_1.4.0.tar.gz
-	sha256sums = 4c2aadba78404e0d6f9e9a96afcde95c41575aebf9512bebaa3d39ca61e5f1d4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cliProfiler_1.6.0.tar.gz
+	sha256sums = 779614d2b6000c27b2b2d0c68d047ddf1a5dbb36f3a151abd23c65fcd1883077
 
 pkgname = r-cliprofiler
