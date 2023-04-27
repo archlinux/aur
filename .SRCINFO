@@ -1,7 +1,7 @@
 pkgbase = r-safe
 	pkgdesc = Significance Analysis of Function and Expression
-	pkgver = 3.38.0
-	pkgrel = 3
+	pkgver = 3.40.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/safe
 	arch = any
 	license = GPL
@@ -19,7 +19,7 @@ pkgbase = r-safe
 	optdepends = r-reactome.db
 	optdepends = r-rgraphviz
 	optdepends = r-survival
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/safe_3.38.0.tar.gz
-	sha256sums = 3cafee1176cdcb55f3f0b1dba94266e34a9712e58b5b6b8b335178f0230deabf
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/safe_3.40.0.tar.gz
+	sha256sums = 070a303ca898e0d783394e3d255a649139317ce5e51f9c3266b19be7b9bde241
 
 pkgname = r-safe
