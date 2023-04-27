@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=iClusterPlus
-_pkgver=1.34.3
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.3
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='Integrative clustering of multi-type genomic data'
 arch=('x86_64')
@@ -20,7 +20,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d7355005b2bcd5f6b97f77e3882f29b9258bfb4142cab733755b159f65d3f834')
+sha256sums=('735c7534c9b24d6f0d3c06ad557b643ae0dd3eb496969dae8276d823dbcbeb68')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
