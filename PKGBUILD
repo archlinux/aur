@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PFAM.db
-_pkgver=3.16.0
+_pkgver=3.17.0
 pkgname=r-${_pkgname,,}
-pkgver=3.16.0
+pkgver=3.17.0
 pkgrel=1
 pkgdesc='A set of protein ID mappings for PFAM'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
   r-dbi
 )
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8082aaa94eb962b2cf42cfaead8ff9e1bdbd12fdeae82a49d0f3b37bd50eb30c')
+sha256sums=('8c4f8bebbf002df87ef7e4c4116be1676072e5c3ba0af1070d281a2ea6101712')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

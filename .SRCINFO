@@ -1,6 +1,6 @@
 pkgbase = r-pfam.db
 	pkgdesc = A set of protein ID mappings for PFAM
-	pkgver = 3.16.0
+	pkgver = 3.17.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/PFAM.db
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-pfam.db
 	depends = r
 	depends = r-annotationdbi
 	optdepends = r-dbi
-	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/PFAM.db_3.16.0.tar.gz
-	sha256sums = 8082aaa94eb962b2cf42cfaead8ff9e1bdbd12fdeae82a49d0f3b37bd50eb30c
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/PFAM.db_3.17.0.tar.gz
+	sha256sums = 8c4f8bebbf002df87ef7e4c4116be1676072e5c3ba0af1070d281a2ea6101712
 
 pkgname = r-pfam.db
