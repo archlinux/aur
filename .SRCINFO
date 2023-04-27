@@ -1,6 +1,6 @@
 pkgbase = r-isobar
 	pkgdesc = Analysis and quantitation of isobarically tagged MSMS proteomics data
-	pkgver = 1.44.0
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/isobar
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = r-isobar
 	optdepends = r-rcolorbrewer
 	optdepends = r-rjsonio
 	optdepends = r-xml
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/isobar_1.44.0.tar.gz
-	sha256sums = f6c688f0aa2e8c21167f53a3754a4dec17f7362fc86fd821b111650fe4e433dd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/isobar_1.46.0.tar.gz
+	sha256sums = 0bd792675a1735096f0aab872c813266a683734325ceba5fc9ccbd6ee1bf9a63
 
 pkgname = r-isobar
