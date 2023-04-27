@@ -1,0 +1,13 @@
+diff --git a/src/hugesettings.pas b/src/hugesettings.pas
+index 148e8af..fc3e241 100644
+--- a/src/hugesettings.pas
++++ b/src/hugesettings.pas
+@@ -93,7 +93,7 @@ begin
+ 
+   SetupDirectoryParameter('conf_dir', XDGConfigDir, ConfDir);
+   SetupDirectoryParameter('cache_dir', XDGCacheDir, CacheDir);
+-  SetupDirectoryParameter('runtime_dir', '.', RuntimeDir);
++  SetupDirectoryParameter('runtime_dir', '/usr/share/hugetracker', RuntimeDir);
+   {$endif}
+ 
+   TrackerSettings := TTrackerSettings.Create;

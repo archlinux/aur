@@ -1,6 +1,6 @@
 # Maintainer: Eldred Habert <arch@eldred.fr>
 pkgname=hugetracker-git
-pkgver=1.0b10.r18.a7779ed
+pkgver=v1.0.1.r5.9e31f80
 pkgrel=1
 pkgdesc='The music composition suite for the Nintendo Game Boy'
 arch=('x86_64')
@@ -12,15 +12,16 @@ makedepends=('fpc' 'git' 'lazarus')
 # `rgbds` is shelled out to at runtime, but namcap doesn't know that.
 # The program also explicitly makes calls to `fontconfig` and `pango`, so mark them
 # explicitly, despite namcap's complaints.
-depends=('fontconfig' 'gtk2' 'pango' 'rgbds>=0.5.0' 'sdl2')
+depends=(fontconfig gdk-pixbuf2 glib2 gtk2 pango 'rgbds>=0.5.0' sdl2
+	 libatk-1.0.so libcairo.so)
 optdepends=('ffmpeg: "Export song" functionality')
 source=('hugetracker::git+https://github.com/SuperDisk/hUGETracker'
         'git+https://github.com/ev1313/Pascal-SDL-2-Headers'
         'git+https://github.com/bgrabitmap/bgrabitmap'
         'git+https://github.com/SuperDisk/hUGEDriver'
         'git+https://github.com/olivluca/rackctls'
-        'non-portable.patch')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'd9caeec0317027a8e93645bf8239fd2585bf5d271c09659112c44b1e485ecadd')
+        'default_runtime_dir.patch')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' '59e64986a039fc6dece071b94930f5855ff2d0c1a9a5740ad7af13d9d74b023f')
 
 
 ## CONFIGURATION
@@ -49,7 +50,7 @@ prepare() {
 	# Copy the "dedicated to the public domain" line as a makeshift license file
 	grep 'public domain' README.md >LICENSE
 
-	patch -p1 -N <"$srcdir/non-portable.patch"
+	patch -p1 -N <"$srcdir/default_runtime_dir.patch"
 }
 
 build() {
