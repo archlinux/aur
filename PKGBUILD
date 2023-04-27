@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CSSP
-_pkgver=1.36.0
+_pkgver=1.37.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
+pkgver=1.37.0
 pkgrel=1
 pkgdesc='ChIP-Seq Statistical Power'
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a20c0744eed1389b4f0e16e5186fb18a2e1415e3317ef406ca058ea39679d7c2')
+sha256sums=('f91d215ad63f6305445cb4e5ebfbe9b2ef99aa23ee8c1a86cc0d262bd0538822')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
