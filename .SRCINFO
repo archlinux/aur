@@ -1,6 +1,6 @@
 pkgbase = r-moanin
 	pkgdesc = An R Package for Time Course RNASeq Data Analysis
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/moanin
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-moanin
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-timecoursedata
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/moanin_1.6.0.tar.gz
-	sha256sums = 235090b02ddd30d0daf183e82f2bae257bd1ec4d1b725d6d62b7131e43f54932
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/moanin_1.8.0.tar.gz
+	sha256sums = ef274ba4d7ff30d4ced09a170cefacab391a91c311db3f7c748e40c40c991986
 
 pkgname = r-moanin
