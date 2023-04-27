@@ -1,6 +1,6 @@
 pkgbase = r-oppar
 	pkgdesc = Outlier profile and pathway analysis in R
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/oppar
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = r-oppar
 	optdepends = r-parallel
 	optdepends = r-rmarkdown
 	optdepends = r-snow
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/oppar_1.26.0.tar.gz
-	sha256sums = 1498cc2d0e1ed8bac06c8e2fc17b3b63ce7b643aaf84b097d30df18622de71c6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/oppar_1.28.0.tar.gz
+	sha256sums = 0beb80e8e3c20580bc7aab66f212b2140a41bbd63235ab15af5689729bc103bc
 
 pkgname = r-oppar
