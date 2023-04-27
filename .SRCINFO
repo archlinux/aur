@@ -1,6 +1,6 @@
 pkgbase = r-bumpymatrix
 	pkgdesc = Bumpy Matrix of Non-Scalar Objects
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BumpyMatrix
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-bumpymatrix
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BumpyMatrix_1.6.0.tar.gz
-	sha256sums = fdb705d8051490012b9003cfd1021c4c9407c1e76e62f7a76f5254286f75fbf0
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BumpyMatrix_1.8.0.tar.gz
+	sha256sums = b164ada9a3a44c42093af96e53a1d7c5b159ae22ad28f4cce6155e045ab13d08
 
 pkgname = r-bumpymatrix
