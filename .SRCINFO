@@ -1,6 +1,6 @@
 pkgbase = r-modcon
 	pkgdesc = Modifying splice site usage by changing the mRNP code, while maintaining the genetic code
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ModCon
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-modcon
 	optdepends = r-shinyfiles
 	optdepends = r-shinyjs
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ModCon_1.6.0.tar.gz
-	sha256sums = 9094b95ceb21fbfc3b70b596363dc5efab1645de86732c17fa1da88a8fab1cf2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ModCon_1.8.0.tar.gz
+	sha256sums = c0ab933afda3c205fce9175de1cfc1ee1149145a2330f8b646ecacc710da28ef
 
 pkgname = r-modcon
