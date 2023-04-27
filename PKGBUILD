@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rCGH
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='Comprehensive Pipeline for Analyzing and Visualizing Array-Based CGH Data'
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b312714e6123f4f0d520d43787cb8ce22a96a78c9e6d8fa876366274c9909264')
+sha256sums=('7ccf7cae7097630d589481d3de5796f14b9800dcb7f3c569f780a30f765fdca2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

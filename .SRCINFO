@@ -1,6 +1,6 @@
 pkgbase = r-rcgh
 	pkgdesc = Comprehensive Pipeline for Analyzing and Visualizing Array-Based CGH Data
-	pkgver = 1.28.0
+	pkgver = 1.30.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rCGH
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-rcgh
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rCGH_1.28.0.tar.gz
-	sha256sums = b312714e6123f4f0d520d43787cb8ce22a96a78c9e6d8fa876366274c9909264
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rCGH_1.30.0.tar.gz
+	sha256sums = 7ccf7cae7097630d589481d3de5796f14b9800dcb7f3c569f780a30f765fdca2
 
 pkgname = r-rcgh
