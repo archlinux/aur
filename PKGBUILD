@@ -1,8 +1,8 @@
 # Maintainer: Ingo Meyer <i.meyer@fz-juelich.de>
 
 pkgname="msmtp-git"
-pkgver="1.8.23.r3.gaf851aa"
-pkgrel="2"
+pkgver=1.8.23.r4.g17eabf3
+pkgrel=1
 pkgdesc="A mini smtp client"
 arch=("x86_64")
 url="https://marlam.de/msmtp/"

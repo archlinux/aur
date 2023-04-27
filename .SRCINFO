@@ -1,7 +1,7 @@
 pkgbase = msmtp-git
 	pkgdesc = A mini smtp client
-	pkgver = 1.8.23.r3.gaf851aa
-	pkgrel = 2
+	pkgver = 1.8.23.r4.g17eabf3
+	pkgrel = 1
 	url = https://marlam.de/msmtp/
 	arch = x86_64
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = msmtp-git
 	makedepends = gsasl
 	depends = libsecret
 	depends = gsasl
-	provides = msmtp=1.8.23.r3.gaf851aa
+	provides = msmtp=1.8.23.r4.g17eabf3
 	conflicts = msmtp
 	source = msmtp::git+https://git.marlam.de/git/msmtp.git#branch=master
 	sha256sums = SKIP
