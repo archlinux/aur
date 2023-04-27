@@ -1,6 +1,6 @@
 pkgbase = r-scmap
 	pkgdesc = A tool for unsupervised projection of single cell RNA-seq data
-	pkgver = 1.20.2
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/scmap
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = r-scmap
 	depends = r-summarizedexperiment
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scmap_1.20.2.tar.gz
-	sha256sums = 805f681b3db73852b5ec4c3a98f87d0667b61d08d9c9415f511fdf609ddcf803
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scmap_1.22.0.tar.gz
+	sha256sums = 170be165edacbb1d1de9bac9ef35b8ba719d7daa2e7a15dd466dbbc1ab688155
 
 pkgname = r-scmap
