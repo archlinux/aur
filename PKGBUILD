@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=maigesPack
-_pkgver=1.62.0
+_pkgver=1.64.0
 pkgname=r-${_pkgname,,}
-pkgver=1.62.0
+pkgver=1.64.0
 pkgrel=1
 pkgdesc='Functions to handle cDNA microarray data, including several methods of data analysis'
 arch=('x86_64')
@@ -29,7 +29,7 @@ optdepends=(
   r-som
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a00b04e939bc5656281d82d4ae7e9cf952f33bf6127941b6813e608f9578862e')
+sha256sums=('1d33b89cc5d5b894d44005c5926c9dbfab479cb12bf361bed8930bf8d56bd180')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
