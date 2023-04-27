@@ -1,6 +1,6 @@
 pkgbase = r-methylsig
 	pkgdesc = MethylSig: Differential Methylation Testing for WGBS and RRBS Data
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/methylSig
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-methylsig
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/methylSig_1.10.0.tar.gz
-	sha256sums = fd1540e7f64e27507fd9e88aaf6dc08f574b388d36dfc8512b8bb687dfa4e9f9
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/methylSig_1.12.0.tar.gz
+	sha256sums = 28a0f2a62dfa3f32db3cc7284043021a5e3dbedb25ee46f2c70c1c3409aaf6cc
 
 pkgname = r-methylsig
