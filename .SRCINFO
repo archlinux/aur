@@ -1,13 +1,13 @@
 pkgbase = r-protgenerics
 	pkgdesc = Generic infrastructure for Bioconductor mass spectrometry packages
-	pkgver = 1.30.0
+	pkgver = 1.32.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ProtGenerics
 	arch = any
 	license = Artistic2.0
 	depends = r
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ProtGenerics_1.30.0.tar.gz
-	sha256sums = 9116dd55ef2e09f1b1d9d81f4745574d898dcf1d438e58a896357db83e78b7cc
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ProtGenerics_1.32.0.tar.gz
+	sha256sums = 31802b6e55977dd39a8aac26ea0b2c516521b4aa2481ec872734ef8c0f59fa39
 
 pkgname = r-protgenerics
