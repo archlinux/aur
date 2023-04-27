@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=anota2seq
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Generally applicable transcriptome-wide analysis of translational efficiency using anota2seq'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a387f7a3ccb98e45d70f035ada6d52471bb36ab2566d07c562b855a3dc7bef91')
+sha256sums=('00fbeb3eec23274b98a12d7f8b14bb6deb85d895e4d2feefc5832e734421b35e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
