@@ -1,0 +1,24 @@
+pkgbase = opensteam-git
+	pkgdesc = Partially open-source alternative to the Steam Client application
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/20PercentRendered/opensteamclient
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = nlohmann-json
+	makedepends = extra-cmake-modules
+	depends = qt6-base>=6.5
+	depends = libarchive>=3.6
+	depends = qrencode>=4.1
+	depends = openssl>=3.0.8
+	depends = protobuf>=21.12
+	depends = hicolor-icon-theme
+	depends = gcc-libs
+	depends = curl
+	optdepends = lib32-gcc-libs: Steam Client Service (VAC) support
+	source = git+https://github.com/20PercentRendered/opensteamclient.git
+	sha256sums = SKIP
+
+pkgname = opensteam-git
