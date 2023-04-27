@@ -1,6 +1,6 @@
 pkgbase = r-netomics
 	pkgdesc = Multi-Omics (time-course) network-based integration and interpretation
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/netOmics
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-netomics
 	optdepends = r-testthat
 	optdepends = r-tidyverse
 	optdepends = r-timeomics
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/netOmics_1.4.0.tar.gz
-	sha256sums = bf7c8c66af3e3de6e406c6b530c3b19d963504aa0b85e349f0146f3259f3f63a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/netOmics_1.6.0.tar.gz
+	sha256sums = 74bf5f81e67384111fb775b218a9b97f6f595496613f600a4259701c3759bbb3
 
 pkgname = r-netomics

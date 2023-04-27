@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=netOmics
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Multi-Omics (time-course) network-based integration and interpretation'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-timeomics
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bf7c8c66af3e3de6e406c6b530c3b19d963504aa0b85e349f0146f3259f3f63a')
+sha256sums=('74bf5f81e67384111fb775b218a9b97f6f595496613f600a4259701c3759bbb3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
