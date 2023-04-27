@@ -1,6 +1,6 @@
 pkgbase = r-makecdfenv
 	pkgdesc = CDF Environment Maker
-	pkgver = 1.74.0
+	pkgver = 1.76.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/makecdfenv
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = r-makecdfenv
 	depends = r-affyio
 	depends = r-biobase
 	depends = r-zlibbioc
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/makecdfenv_1.74.0.tar.gz
-	sha256sums = 45f8276e6007d16adf03ff5ff43dd4a8a1b4ea47e8a01fd483563a6f5e2b722f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/makecdfenv_1.76.0.tar.gz
+	sha256sums = 196db9cc1a7eb30b1a85ba8d48a07c8720808224bb417b1ffddb1e56f9b3d3a8
 
 pkgname = r-makecdfenv

@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=makecdfenv
-_pkgver=1.74.0
+_pkgver=1.76.0
 pkgname=r-${_pkgname,,}
-pkgver=1.74.0
+pkgver=1.76.0
 pkgrel=1
 pkgdesc='CDF Environment Maker'
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
   r-zlibbioc
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('45f8276e6007d16adf03ff5ff43dd4a8a1b4ea47e8a01fd483563a6f5e2b722f')
+sha256sums=('196db9cc1a7eb30b1a85ba8d48a07c8720808224bb417b1ffddb1e56f9b3d3a8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
