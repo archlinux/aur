@@ -1,6 +1,6 @@
 pkgbase = r-scshapes
 	pkgdesc = A Statistical Framework for Modeling and Identifying Differential Distributions in Single-cell RNA-sequencing Data
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/scShapes
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = r-scshapes
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scShapes_1.4.0.tar.gz
-	sha256sums = e199d7a38dc5d61e9d76fb942e68298495e6227537e032c0e7c4b1d2a6411ed8
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scShapes_1.6.0.tar.gz
+	sha256sums = 7d09e47a5e15335392aa3227dfc3af6359cff7c7d85793ed4af4f2460cf3f07f
 
 pkgname = r-scshapes
