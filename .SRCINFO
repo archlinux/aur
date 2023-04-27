@@ -1,6 +1,6 @@
 pkgbase = r-otubase
 	pkgdesc = Provides structure and functions for the analysis of OTU data
-	pkgver = 1.48.0
+	pkgver = 1.50.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/OTUbase
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-otubase
 	depends = r-s4vectors
 	depends = r-shortread
 	depends = r-vegan
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/OTUbase_1.48.0.tar.gz
-	sha256sums = edd8641390ee99ac364f8ea96a1f3f0eee572134839c696cf39f17ba250c2e09
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/OTUbase_1.50.0.tar.gz
+	sha256sums = 7c4460505553b529957bfae208d0d3721624b7c624d353a808c09505227c4e58
 
 pkgname = r-otubase
