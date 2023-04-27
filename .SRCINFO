@@ -1,6 +1,6 @@
 pkgbase = lightning
 	pkgdesc = Library that generates assembly language code at run-time
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://www.gnu.org/software/lightning/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = lightning
 	license = GPL
 	depends = binutils
 	options = !debug
-	source = https://ftp.gnu.org/gnu/lightning/lightning-2.2.1.tar.gz
-	sha256sums = 98671681d5684770ccb06a07fa3b8f032a454bdb56eafc18e6fab04459ea3caa
+	source = https://ftp.gnu.org/gnu/lightning/lightning-2.2.2.tar.gz
+	sha256sums = 0aca8242dead17d62117bcfcb078e6a9ea856cc81742813c9e8394bcce73b3e2
 
 pkgname = lightning
