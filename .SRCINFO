@@ -1,6 +1,6 @@
 pkgbase = r-org.sc.sgd.db
 	pkgdesc = Genome wide annotation for Yeast
-	pkgver = 3.16.0
+	pkgver = 3.17.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/org.Sc.sgd.db
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-org.sc.sgd.db
 	optdepends = r-annotate
 	optdepends = r-dbi
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/org.Sc.sgd.db_3.16.0.tar.gz
-	sha256sums = 2e6d408dee6781e06d470a41429bf49258c0226015fa8fa4847f16832ea9680d
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/org.Sc.sgd.db_3.17.0.tar.gz
+	sha256sums = 2f8ab9fd2c890a046ba849c3e7e25c427153fcf7f21d162c996dbeff7499ddaa
 
 pkgname = r-org.sc.sgd.db

@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=org.Sc.sgd.db
-_pkgver=3.16.0
+_pkgver=3.17.0
 pkgname=r-${_pkgname,,}
-pkgver=3.16.0
+pkgver=3.17.0
 pkgrel=1
 pkgdesc='Genome wide annotation for Yeast'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2e6d408dee6781e06d470a41429bf49258c0226015fa8fa4847f16832ea9680d')
+sha256sums=('2f8ab9fd2c890a046ba849c3e7e25c427153fcf7f21d162c996dbeff7499ddaa')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
