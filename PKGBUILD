@@ -35,19 +35,19 @@ build() {
 }
 
 package() {
-  _source="$srcdir/netbird-$pkgver"
-  _ui="$_source/client/ui"
+  cd "$srcdir/netbird-$pkgver"
 
-  install -d "$pkgdir/usr/bin"
-  install -d "$pkgdir/usr/share/applications"
-  install -d "$pkgdir/usr/share/icons"
-  install -d "$pkgdir/usr/share/mime/packages"
+  install -Dm755 build/$pkgname \
+    "$pkgdir/usr/bin/$pkgname"
 
-  install -Dm755 "$_source/build/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 LICENSE \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  install -Dm644 "$_ui/netbird.desktop" "$pkgdir/usr/share/applications/netbird.desktop"
+  cd client/ui
 
-  install -Dm644 "$_ui/netbird.ico" "$pkgdir/usr/share/icons/netbird.ico"
+  install -Dm644 netbird.desktop \
+    "$pkgdir/usr/share/applications/netbird.desktop"
 
-  install -Dm644 "$_source/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 netbird.ico \
+    "$pkgdir/usr/share/icons/netbird.ico"
 }
