@@ -1,64 +1,55 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
-# Contributor: Jan de Groot <jgc@archlinux.org>
-# Contributor: Aline Freitas <aline@alinefreitas.com.br>
+# Maintainer: éclairevoyant
+# Contributor: Brian Bidulock <bidulock at openss7 dot org>
+# Contributor: Jan de Groot <jgc at archlinux dot org>
+# Contributor: Aline Freitas <aline at alinefreitas dot com dot br>
 
-pkgname=polkit-git
 _pkgname=polkit
-pkgver=0.120.r0.g92b910c
+pkgname="$_pkgname-git"
+pkgver=122.r28.4c6d183
 pkgrel=1
 epoch=1
 pkgdesc="Application development toolkit for controlling system-wide privileges"
 arch=(i686 x86_64)
 license=(LGPL)
 url="https://www.freedesktop.org/wiki/Software/polkit/"
-depends=(glib2 pam expat systemd js78)
-makedepends=(intltool gtk-doc gobject-introspection git autoconf-archive python-six)
+depends=(duktape glib2 pam systemd)
+makedepends=(git gobject-introspection gtk-doc meson)
 checkdepends=(python-dbusmock)
 backup=(etc/pam.d/polkit-1)
-provides=("${_pkgname}=${pkgver%%.r*}-${pkgrel}")
-conflicts=("${_pkgname}")
-source=($pkgname::git+https://gitlab.freedesktop.org/polkit/polkit.git)
-sha256sums=('SKIP')
+provides=("$_pkgname=${pkgver%%.r*}" libpolkit-{agent,gobject}-1.so)
+conflicts=("$_pkgname")
+source=(git+https://gitlab.freedesktop.org/polkit/$_pkgname.git)
+b2sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
-  git describe --tags --long|sed -r 's,([^-]*-g),r\1,;s,-,.,g'
+	cd $_pkgname
+	git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 build() {
-  cd $pkgname
+	local meson_options=(
+		-D examples=true
+		-D gtk_doc=true
+		-D man=true
+		-D os_type=redhat
+		-D session_tracking=libsystemd-login
+		-D tests=true
+	)
 
-  ./autogen.sh --prefix=/usr --sysconfdir=/etc \
-      --localstatedir=/var --libexecdir=/usr/lib \
-      --enable-libsystemd-login=yes --disable-static \
-      --enable-gtk-doc --with-os-type=redhat
-
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-
-  make
+	arch-meson $_pkgname build "${meson_options[@]}"
+	meson compile -C build
 }
 
 check() {
-  cd $pkgname
-  make -k check || :
+	meson test -C build --print-errorlogs -t 3
 }
 
 package() {
-  cd $pkgname
-  make DESTDIR="$pkgdir" install
+	meson install -C build --destdir "$pkgdir"
 
-  chmod 0755 "$pkgdir/etc/polkit-1/rules.d"
-  chmod 0755 "$pkgdir/usr/share/polkit-1/rules.d"
-
-  install -Dm644 /dev/stdin "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf" <<END
-d /etc/polkit-1/rules.d 0750 root polkitd -
-d /usr/share/polkit-1/rules.d 0750 root polkitd -
-END
-
-  install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf" <<END
+	install -d -o root -g 102 -m 750 "$pkgdir"/{etc,usr/share}/polkit-1/rules.d
+	install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf" <<END
 u polkitd 102 "PolicyKit daemon"
 m polkitd proc
 END
 }
-
-# vim: ts=2 sw=2 et:
