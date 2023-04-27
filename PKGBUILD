@@ -2,15 +2,15 @@
 
 pkgname=libndi-bin
 pkgver=5.5.3
-pkgrel=1
-pkgdesc="Custom build of ndi-sdk from obs-ndi"
+pkgrel=2
+pkgdesc='Custom build of ndi-sdk from obs-ndi'
 arch=('x86_64')
 license=('LGPL2.0')
-url="https://github.com/Palakis/obs-ndi"
+url='https://github.com/Palakis/obs-ndi'
 provides=('libndi')
 conflicts=('libndi-git' 'ndi-sdk')
-source=("a.deb::${url}/releases/latest/download/libndi${pkgver%%.*}_${pkgver}-${pkgrel}_amd64.deb"
-        "b.deb::${url}/releases/latest/download/libndi${pkgver%%.*}-dev_${pkgver}-${pkgrel}_amd64.deb")
+source=("a.deb::${url}/releases/latest/download/libndi${pkgver%%.*}_${pkgver}-1_amd64.deb"
+        "b.deb::${url}/releases/latest/download/libndi${pkgver%%.*}-dev_${pkgver}-1_amd64.deb")
 sha256sums=('3c47dd2386cd2a59df5f86953a7675ffe0ecf326eea784c4f17084f657a6e0ca'
             '9531dbacc56f89a727c4d1ae52dc9641ccd95e9067ac07e16376bf602c92c951')
 noextract=('a.deb' 'b.deb')
@@ -25,7 +25,10 @@ prepare() {
 
 package() {
     cd "${srcdir}"
-
     tar -xf a/data.tar.zst -C "${pkgdir}"
     tar -xf b/data.tar.zst -C "${pkgdir}"
+
+    cd "${pkgdir}"
+    ln -frs "usr/lib/libndi.so.${pkgver}" "usr/lib/libndi.so.${pkgver%%.*}"
+    ln -frs "usr/lib/libndi.so.${pkgver}"  usr/lib/libndi.so
 }
