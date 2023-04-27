@@ -1,13 +1,13 @@
 pkgbase = r-chopsticks
 	pkgdesc = The 'snp.matrix' and 'X.snp.matrix' Classes
-	pkgver = 1.64.0
+	pkgver = 1.66.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/chopsticks
 	arch = x86_64
 	license = GPL
 	depends = r
 	optdepends = r-hexbin
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/chopsticks_1.64.0.tar.gz
-	sha256sums = 11244e6e575df4297e796a5401ad2371cc488ecd99025f181ae3f393235089cd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/chopsticks_1.66.0.tar.gz
+	sha256sums = 6cf524021d658d262aef584a81d823a84b6b802ac17e54cd5c8c3a09ea0ef680
 
 pkgname = r-chopsticks
