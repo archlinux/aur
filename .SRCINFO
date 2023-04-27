@@ -1,6 +1,6 @@
 pkgbase = r-biodblipidmaps
 	pkgdesc = biodbLipidmaps, a library for connecting to the Lipidmaps Structure database
-	pkgver = 1.4.1
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/biodbLipidmaps
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-biodblipidmaps
 	optdepends = r-rmarkdown
 	optdepends = r-roxygen2
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/biodbLipidmaps_1.4.1.tar.gz
-	sha256sums = 9dc32e46a1d4621262454e295eda53d2988f0df9f0060e93ab13222c012cac58
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/biodbLipidmaps_1.6.0.tar.gz
+	sha256sums = 0368aba04bb938e98aaa6d4412c000cb8b6eb4213e20859ae88f46185ee67ec8
 
 pkgname = r-biodblipidmaps
