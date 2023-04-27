@@ -1,0 +1,90 @@
+diff --unified --recursive --text curl.orig/lib/vquic/curl_ngtcp2.c curl.new/lib/vquic/curl_ngtcp2.c
+--- curl.orig/lib/vquic/curl_ngtcp2.c	2023-04-26 23:00:39.460374064 -0400
++++ curl.new/lib/vquic/curl_ngtcp2.c	2023-04-26 23:05:28.030119170 -0400
+@@ -133,7 +133,7 @@
+   uint32_t version;
+   ngtcp2_settings settings;
+   ngtcp2_transport_params transport_params;
+-  ngtcp2_connection_close_error last_error;
++  ngtcp2_ccerr last_error;
+   ngtcp2_crypto_conn_ref conn_ref;
+ #ifdef USE_OPENSSL
+   SSL_CTX *sslctx;
+@@ -653,7 +653,7 @@
+   DEBUGF(LOG_CF(data, cf, "[h3sid=%" PRId64 "] read_stream(len=%zu) -> %zd",
+                 stream_id, buflen, nconsumed));
+   if(nconsumed < 0) {
+-    ngtcp2_connection_close_error_set_application_error(
++    ngtcp2_ccerr_set_application_error(
+         &ctx->last_error,
+         nghttp3_err_infer_quic_app_error_code((int)nconsumed), NULL, 0);
+     return NGTCP2_ERR_CALLBACK_FAILURE;
+@@ -712,7 +712,7 @@
+   DEBUGF(LOG_CF(data, cf, "[h3sid=%" PRId64 "] quic close(err=%"
+                 PRIu64 ") -> %d", stream3_id, app_error_code, rv));
+   if(rv) {
+-    ngtcp2_connection_close_error_set_application_error(
++    ngtcp2_ccerr_set_application_error(
+         &ctx->last_error, nghttp3_err_infer_quic_app_error_code(rv), NULL, 0);
+     return NGTCP2_ERR_CALLBACK_FAILURE;
+   }
+@@ -1202,7 +1202,7 @@
+   int rc;
+   int64_t ctrl_stream_id, qpack_enc_stream_id, qpack_dec_stream_id;
+ 
+-  if(ngtcp2_conn_get_max_local_streams_uni(ctx->qconn) < 3) {
++  if(ngtcp2_conn_get_streams_uni_left(ctx->qconn) < 3) {
+     return CURLE_QUIC_CONNECT_ERROR;
+   }
+ 
+@@ -1817,12 +1817,12 @@
+                     ngtcp2_strerror(rv)));
+       if(!ctx->last_error.error_code) {
+         if(rv == NGTCP2_ERR_CRYPTO) {
+-          ngtcp2_connection_close_error_set_transport_error_tls_alert(
++          ngtcp2_ccerr_set_tls_alert(
+               &ctx->last_error,
+               ngtcp2_conn_get_tls_alert(ctx->qconn), NULL, 0);
+         }
+         else {
+-          ngtcp2_connection_close_error_set_transport_error_liberr(
++          ngtcp2_ccerr_set_liberr(
+               &ctx->last_error, rv, NULL, 0);
+         }
+       }
+@@ -1875,7 +1875,7 @@
+   if(rv) {
+     failf(data, "ngtcp2_conn_handle_expiry returned error: %s",
+           ngtcp2_strerror(rv));
+-    ngtcp2_connection_close_error_set_transport_error_liberr(&ctx->last_error,
++    ngtcp2_ccerr_set_liberr(&ctx->last_error,
+                                                              rv, NULL, 0);
+     return CURLE_SEND_ERROR;
+   }
+@@ -1904,7 +1904,7 @@
+       if(veccnt < 0) {
+         failf(data, "nghttp3_conn_writev_stream returned error: %s",
+               nghttp3_strerror((int)veccnt));
+-        ngtcp2_connection_close_error_set_application_error(
++        ngtcp2_ccerr_set_application_error(
+             &ctx->last_error,
+             nghttp3_err_infer_quic_app_error_code((int)veccnt), NULL, 0);
+         return CURLE_SEND_ERROR;
+@@ -1962,7 +1962,7 @@
+         assert(ndatalen == -1);
+         failf(data, "ngtcp2_conn_writev_stream returned error: %s",
+               ngtcp2_strerror((int)outlen));
+-        ngtcp2_connection_close_error_set_transport_error_liberr(
++        ngtcp2_ccerr_set_liberr(
+             &ctx->last_error, (int)outlen, NULL, 0);
+         return CURLE_SEND_ERROR;
+       }
+@@ -2277,7 +2277,7 @@
+   ngtcp2_conn_set_tls_native_handle(ctx->qconn, ctx->ssl);
+ #endif
+ 
+-  ngtcp2_connection_close_error_default(&ctx->last_error);
++  ngtcp2_ccerr_default(&ctx->last_error);
+ 
+   ctx->conn_ref.get_conn = get_conn;
+   ctx->conn_ref.user_data = cf;

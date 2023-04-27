@@ -1,0 +1,5 @@
+/curl/
+/keys/
+/src/
+/pkg/
+*.tar*
