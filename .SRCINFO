@@ -1,6 +1,6 @@
 pkgbase = r-deconrnaseq
 	pkgdesc = Deconvolution of Heterogeneous Tissue Samples for mRNA-Seq data
-	pkgver = 1.40.0
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DeconRNASeq
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = r-deconrnaseq
 	depends = r-ggplot2
 	depends = r-limsolve
 	depends = r-pcamethods
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DeconRNASeq_1.40.0.tar.gz
-	sha256sums = c4235fcd08426920dbefdb96945fce60ee5d6836a224c95c8ac85fed20c33c17
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DeconRNASeq_1.42.0.tar.gz
+	sha256sums = 6cd6391d37a852b627c68ee572b7d9f090ef82066c3b144f02efdc3022f3b32e
 
 pkgname = r-deconrnaseq
