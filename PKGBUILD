@@ -2,7 +2,7 @@
 
 pkgname=obs-multi-rtmp
 pkgver=0.3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Multiple RTMP outputs plugin'
 arch=('x86_64')
 url='https://github.com/sorayuki/obs-multi-rtmp'
@@ -13,6 +13,9 @@ sha256sums=('7ee1e37bd00808cd969ad218018b2b01f0039fcb3c581df6cc7e27f8d9315631')
 
 package() {
     cd "${srcdir}"
-
     tar -xf data.tar.gz -C "${pkgdir}"
+
+    cd "${pkgdir}"
+    mv usr/lib/x86_64-linux-gnu/obs-plugins usr/lib
+    rm -r usr/lib/x86_64-linux-gnu
 }

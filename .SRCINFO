@@ -1,7 +1,7 @@
 pkgbase = obs-multi-rtmp
 	pkgdesc = Multiple RTMP outputs plugin
 	pkgver = 0.3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sorayuki/obs-multi-rtmp
 	arch = x86_64
 	license = GPL
