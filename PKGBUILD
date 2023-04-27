@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pathview
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='a tool set for pathway based data integration and visualization'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fe12df8ffa7cb6cb0d76d2aa32029f41df37a00f3adf0400bf7f1834006eec5c')
+sha256sums=('7a56a12fb9ce9cec3db46090aeb71167f0c913bcd1be30ad46b368a3fd3e8d56')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
