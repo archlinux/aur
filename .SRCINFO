@@ -1,16 +1,16 @@
 pkgbase = motrix-appimage
 	pkgdesc = A full-featured download manager
-	pkgver = 1.6.11
+	pkgver = 1.8.14
 	pkgrel = 1
 	url = https://motrix.app
 	arch = x86_64
 	license = MIT
+	depends = fuse2
 	provides = motrix
 	conflicts = motrix
-	noextract = Motrix-1.6.11.AppImage
+	noextract = Motrix-1.8.14.AppImage
 	options = !strip
-	source = https://github.com/agalwood/Motrix/releases/download/v1.6.11/Motrix-1.6.11.AppImage
+	source = Motrix-1.8.14.AppImage::https://dl.moapp.me/https://github.com/agalwood/Motrix/releases/download/v1.8.14/Motrix-1.8.14.AppImage
 	sha512sums = 18d8b036a5111704888525b46bd9f4bd5fe2a432fc35e23c7c04909fef49b02226367cb24d1766f8cb9e545a61d852fb6ee9ecd1a7e17a487c81e8e18f74e67d
 
 pkgname = motrix-appimage
-
