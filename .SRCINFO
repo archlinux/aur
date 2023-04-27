@@ -1,7 +1,7 @@
 pkgbase = tensorflow-computecpp
 	pkgdesc = Library for computation using data flow graphs for scalable machine learning (backend with ComputeCpp)
 	pkgver = 1.9
-	pkgrel = 6
+	pkgrel = 7
 	epoch = 1
 	url = https://github.com/codeplaysoftware/tensorflow
 	arch = x86_64
@@ -27,6 +27,9 @@ pkgbase = tensorflow-computecpp
 	source = gcc2.diff
 	source = gcc3.diff
 	source = python38.patch
+	source = gcc10.patch
+	source = numpy.diff
+	source = python310.diff
 	sha256sums = SKIP
 	sha256sums = 758e10caff4c1cb496d1cf49d6f4da2969b610b174276fb734b8502686d07ddd
 	sha256sums = ef54b3783a05b5604cd8f448136567686806ad3a5759978f48549256807a8394
@@ -35,6 +38,9 @@ pkgbase = tensorflow-computecpp
 	sha256sums = 10de738141852cfebae9847b746ae9b58f3b3985561cccede929d8fbdba93551
 	sha256sums = 742abe5d8bfd3f7ce33778a08cbb233337db56238d11ac2ad07171b0d6097bfb
 	sha256sums = b69895cfd098efacc95b1d1fffd471afa05c449f8d42964ee10b1a6fd9a75689
+	sha256sums = 15c20b31394537051f8756707819e13f3c12da24d8aa63d3ba47e6fce4d19d95
+	sha256sums = fe4c34a66000ba3a24d7c35914dc22e95adb5efa60a58d1f0b3d3cad77fd722d
+	sha256sums = fd3796ac670c4ee59c5cdc6969b2a58761d04d806bac4ba3911dcf74d894be42
 
 pkgname = tensorflow-computecpp
 	provides = tensorflow
@@ -47,4 +53,3 @@ pkgname = python-tensorflow-computecpp
 	optdepends = python-werkzeug: for using tensorboard
 	provides = python-tensorflow
 	conflicts = python-tensorflow
-

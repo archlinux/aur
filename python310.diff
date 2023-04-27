@@ -1,0 +1,801 @@
+diff --git a/tensorflow/contrib/cudnn_rnn/python/kernel_tests/cudnn_rnn_test.py b/tensorflow/contrib/cudnn_rnn/python/kernel_tests/cudnn_rnn_test.py
+index 8285ea0492..3a0764b7f7 100644
+--- a/tensorflow/contrib/cudnn_rnn/python/kernel_tests/cudnn_rnn_test.py
++++ b/tensorflow/contrib/cudnn_rnn/python/kernel_tests/cudnn_rnn_test.py
+@@ -18,7 +18,6 @@ from __future__ import division
+ from __future__ import print_function
+ 
+ import argparse
+-import collections
+ import functools
+ import itertools
+ import os
+@@ -59,6 +58,7 @@ from tensorflow.python.training import momentum
+ from tensorflow.python.training import rmsprop
+ from tensorflow.python.training import saver as saver_lib
+ from tensorflow.python.training.checkpointable import util as checkpointable_utils
++from tensorflow.python.util.compat import collections_abc
+ 
+ 
+ CUDNN_LSTM = cudnn_rnn_ops.CUDNN_LSTM
+@@ -1125,7 +1125,7 @@ class CudnnRNNTestTraining(test_util.TensorFlowTestCase):
+     return numeric_grad.reshape(x_shape)
+ 
+   def _GetShape(self, sess, inputs):
+-    if not isinstance(inputs, collections.Iterable):
++    if not isinstance(inputs, collections_abc.Iterable):
+       return sess.run(array_ops.shape(inputs))
+     else:
+       return sess.run([array_ops.shape(x) for x in inputs])
+diff --git a/tensorflow/contrib/data/python/ops/scan_ops.py b/tensorflow/contrib/data/python/ops/scan_ops.py
+index e911ad0fa0..3d04ae592f 100644
+--- a/tensorflow/contrib/data/python/ops/scan_ops.py
++++ b/tensorflow/contrib/data/python/ops/scan_ops.py
+@@ -17,8 +17,6 @@ from __future__ import absolute_import
+ from __future__ import division
+ from __future__ import print_function
+ 
+-import collections
+-
+ from tensorflow.python.data.ops import dataset_ops
+ from tensorflow.python.data.util import nest
+ from tensorflow.python.data.util import sparse
+@@ -26,6 +24,7 @@ from tensorflow.python.framework import function
+ from tensorflow.python.framework import ops
+ from tensorflow.python.framework import sparse_tensor
+ from tensorflow.python.ops import gen_dataset_ops
++from tensorflow.python.util.compat import collections_abc
+ 
+ 
+ class _ScanDataset(dataset_ops.Dataset):
+@@ -102,7 +101,7 @@ class _ScanDataset(dataset_ops.Dataset):
+             input_dataset.output_shapes, input_dataset.output_classes)
+ 
+         ret = scan_func(nested_state_args, nested_input_args)
+-        if not isinstance(ret, collections.Sequence) or len(ret) != 2:
++        if not isinstance(ret, collections_abc.Sequence) or len(ret) != 2:
+           raise TypeError("The scan function must return a pair comprising the "
+                           "new state and the output value.")
+ 
+diff --git a/tensorflow/contrib/factorization/python/ops/factorization_ops.py b/tensorflow/contrib/factorization/python/ops/factorization_ops.py
+index 8f73274c2a..185bb0de55 100644
+--- a/tensorflow/contrib/factorization/python/ops/factorization_ops.py
++++ b/tensorflow/contrib/factorization/python/ops/factorization_ops.py
+@@ -18,7 +18,6 @@ from __future__ import absolute_import
+ from __future__ import division
+ from __future__ import print_function
+ 
+-import collections
+ import numbers
+ 
+ from six.moves import xrange  # pylint: disable=redefined-builtin
+@@ -42,6 +41,7 @@ from tensorflow.python.ops import state_ops
+ from tensorflow.python.ops import variable_scope
+ from tensorflow.python.ops import variables
+ from tensorflow.python.platform import resource_loader
++from tensorflow.python.util.compat import collections_abc
+ 
+ _factorization_ops = loader.load_op_library(
+     resource_loader.get_path_to_datafile("_factorization_ops.so"))
+@@ -388,7 +388,7 @@ class WALSModel(object):
+       return None
+ 
+     init_mode = "list"
+-    if isinstance(wt_init, collections.Iterable):
++    if isinstance(wt_init, collections_abc.Iterable):
+       if num_shards == 1 and len(wt_init) == num_wts:
+         wt_init = [wt_init]
+       assert len(wt_init) == num_shards
+diff --git a/tensorflow/contrib/graph_editor/util.py b/tensorflow/contrib/graph_editor/util.py
+index 584f4509cc..c9feb6e940 100644
+--- a/tensorflow/contrib/graph_editor/util.py
++++ b/tensorflow/contrib/graph_editor/util.py
+@@ -19,11 +19,11 @@ from __future__ import absolute_import
+ from __future__ import division
+ from __future__ import print_function
+ 
+-import collections
+ import re
+ from six import iteritems
+ from tensorflow.python.framework import ops as tf_ops
+ from tensorflow.python.ops import array_ops as tf_array_ops
++from tensorflow.python.util.compat import collections_abc
+ 
+ __all__ = [
+     "make_list_of_op",
+@@ -157,7 +157,7 @@ def transform_tree(tree, fn, iterable_type=tuple):
+         res = tree.__new__(type(tree),
+                            (transform_tree(child, fn) for child in tree))
+       return res
+-    elif isinstance(tree, collections.Sequence):
++    elif isinstance(tree, collections_abc.Sequence):
+       res = tree.__new__(type(tree))
+       res.__init__(transform_tree(child, fn) for child in tree)
+       return res
+diff --git a/tensorflow/contrib/labeled_tensor/python/ops/_typecheck.py b/tensorflow/contrib/labeled_tensor/python/ops/_typecheck.py
+index 80fa17ec1f..9221e087bb 100644
+--- a/tensorflow/contrib/labeled_tensor/python/ops/_typecheck.py
++++ b/tensorflow/contrib/labeled_tensor/python/ops/_typecheck.py
+@@ -22,11 +22,11 @@ from __future__ import absolute_import
+ from __future__ import division
+ from __future__ import print_function
+ 
+-import collections
+ import functools
+ import re
+ 
+ from tensorflow.python.util import tf_inspect
++from tensorflow.python.util.compat import collections_abc
+ 
+ # used for register_type_abbreviation and _type_repr below.
+ _TYPE_ABBREVIATIONS = {}
+@@ -115,7 +115,7 @@ class Sequence(_SingleArgumentType):
+   """
+ 
+   def __instancecheck__(self, instance):
+-    return (isinstance(instance, collections.Sequence)
++    return (isinstance(instance, collections_abc.Sequence)
+             and all(isinstance(x, self._type) for x in instance))
+ 
+ 
+@@ -131,9 +131,9 @@ class Collection(_SingleArgumentType):
+   """
+ 
+   def __instancecheck__(self, instance):
+-    return (isinstance(instance, collections.Iterable)
+-            and isinstance(instance, collections.Sized)
+-            and isinstance(instance, collections.Container)
++    return (isinstance(instance, collections_abc.Iterable)
++            and isinstance(instance, collections_abc.Sized)
++            and isinstance(instance, collections_abc.Container)
+             and all(isinstance(x, self._type) for x in instance))
+ 
+ 
+@@ -158,7 +158,7 @@ class Mapping(_TwoArgumentType):
+ 
+   def __instancecheck__(self, instance):
+     key_type, value_type = self._types  # pylint: disable=unbalanced-tuple-unpacking
+-    return (isinstance(instance, collections.Mapping)
++    return (isinstance(instance, collections_abc.Mapping)
+             and all(isinstance(k, key_type) for k in instance.keys())
+             and all(isinstance(k, value_type) for k in instance.values()))
+ 
+diff --git a/tensorflow/contrib/labeled_tensor/python/ops/core.py b/tensorflow/contrib/labeled_tensor/python/ops/core.py
+index 0c6bba758b..884ab757f3 100644
+--- a/tensorflow/contrib/labeled_tensor/python/ops/core.py
++++ b/tensorflow/contrib/labeled_tensor/python/ops/core.py
+@@ -41,11 +41,12 @@ from tensorflow.python.framework import ops
+ from tensorflow.python.framework import tensor_shape
+ from tensorflow.python.ops import array_ops
+ from tensorflow.python.ops import math_ops
++from tensorflow.python.util.compat import collections_abc
+ 
+ # pylint: disable=invalid-name
+ 
+ # Types coercible to Axis.labels
+-# We use this instead of collections.Sequence to exclude strings.
++# We use this instead of collections_abc.Sequence to exclude strings.
+ LabelsLike = tc.Union(np.ndarray, range, list, tuple)
+ 
+ # Types coercible to a tf.Dimension
+@@ -195,7 +196,7 @@ def as_axis(axis_data):
+   return axis
+ 
+ 
+-class Axes(collections.Mapping):
++class Axes(collections_abc.Mapping):
+   """Axis names and indices for a tensor.
+ 
+   It is an ordered mapping, with keys given by axis name and values given
+@@ -721,7 +722,7 @@ def transpose(labeled_tensor, axis_order=None, name=None):
+ @tc.accepts(
+     LabeledTensorLike,
+     tc.Collection(
+-        tc.Union(string_types, tc.Tuple(string_types, collections.Hashable))),
++        tc.Union(string_types, tc.Tuple(string_types, collections_abc.Hashable))),
+     tc.Optional(string_types))
+ def expand_dims(labeled_tensor, axes, name=None):
+   """Insert dimensions of size 1.
+@@ -1057,7 +1058,7 @@ def align(labeled_tensor_0, labeled_tensor_1, name=None):
+ 
+ 
+ @tc.returns(types.FunctionType)
+-@tc.accepts(string_types, collections.Callable)
++@tc.accepts(string_types, collections_abc.Callable)
+ def define_unary_op(op_name, elementwise_function):
+   """Define a unary operation for labeled tensors.
+ 
+@@ -1126,7 +1127,7 @@ sigmoid = define_unary_op('sigmoid', math_ops.sigmoid)
+ 
+ 
+ @tc.returns(types.FunctionType)
+-@tc.accepts(string_types, collections.Callable)
++@tc.accepts(string_types, collections_abc.Callable)
+ def define_binary_op(op_name, elementwise_function):
+   """Define a binary operation that broadcasts labeled tensors.
+ 
+diff --git a/tensorflow/contrib/labeled_tensor/python/ops/ops.py b/tensorflow/contrib/labeled_tensor/python/ops/ops.py
+index 3ba1026383..2424784f90 100644
+--- a/tensorflow/contrib/labeled_tensor/python/ops/ops.py
++++ b/tensorflow/contrib/labeled_tensor/python/ops/ops.py
+@@ -17,7 +17,6 @@ from __future__ import absolute_import
+ from __future__ import division
+ from __future__ import print_function
+ 
+-import collections
+ import types
+ 
+ import numpy as np
+@@ -33,6 +32,7 @@ from tensorflow.python.ops import math_ops
+ from tensorflow.python.ops import numerics
+ from tensorflow.python.ops import random_ops
+ from tensorflow.python.training import input  # pylint: disable=redefined-builtin
++from tensorflow.python.util.compat import collections_abc
+ 
+ 
+ @tc.returns(core.LabeledTensor)
+@@ -51,7 +51,7 @@ def _gather_1d_on_axis(labeled_tensor, indexer, axis, name=None):
+ @tc.returns(core.LabeledTensor)
+ @tc.accepts(core.LabeledTensorLike,
+             tc.Mapping(string_types,
+-                       tc.Union(slice, collections.Hashable, list)),
++                       tc.Union(slice, collections_abc.Hashable, list)),
+             tc.Optional(string_types))
+ def select(labeled_tensor, selection, name=None):
+   """Slice out a subset of the tensor.
+@@ -110,8 +110,8 @@ def select(labeled_tensor, selection, name=None):
+         slices[axis_name] = slice(start, stop)
+ 
+       # Needs to be after checking for slices, since slice objects claim to be
+-      # instances of collections.Hashable but hash() on them fails.
+-      elif isinstance(value, collections.Hashable):
++      # instances of collections_abc.Hashable but hash() on them fails.
++      elif isinstance(value, collections_abc.Hashable):
+         slices[axis_name] = axis.index(value)
+ 
+       elif isinstance(value, list):
+@@ -399,7 +399,7 @@ def rename_axis(labeled_tensor, existing_name, new_name, name=None):
+ 
+ 
+ @tc.returns(tc.List(core.LabeledTensor))
+-@tc.accepts(string_types, collections.Callable, int, bool,
++@tc.accepts(string_types, collections_abc.Callable, int, bool,
+             tc.Collection(core.LabeledTensorLike), bool,
+             tc.Optional(string_types))
+ def _batch_helper(default_name,
+@@ -605,7 +605,7 @@ def random_crop(labeled_tensor, shape_map, seed=None, name=None):
+ 
+ # TODO(shoyer): Allow the user to select the axis over which to map.
+ @tc.returns(core.LabeledTensor)
+-@tc.accepts(collections.Callable, core.LabeledTensorLike,
++@tc.accepts(collections_abc.Callable, core.LabeledTensorLike,
+             tc.Optional(string_types))
+ def map_fn(fn, labeled_tensor, name=None):
+   """Map on the list of tensors unpacked from labeled_tensor.
+@@ -659,7 +659,7 @@ def map_fn(fn, labeled_tensor, name=None):
+ 
+ 
+ @tc.returns(core.LabeledTensor)
+-@tc.accepts(collections.Callable, core.LabeledTensorLike,
++@tc.accepts(collections_abc.Callable, core.LabeledTensorLike,
+             core.LabeledTensorLike, tc.Optional(string_types))
+ def foldl(fn, labeled_tensor, initial_value, name=None):
+   """Left fold on the list of tensors unpacked from labeled_tensor.
+@@ -752,7 +752,7 @@ def squeeze(labeled_tensor, axis_names=None, name=None):
+ 
+ # pylint: disable=invalid-name
+ ReduceAxis = tc.Union(string_types,
+-                      tc.Tuple(string_types, collections.Hashable))
++                      tc.Tuple(string_types, collections_abc.Hashable))
+ ReduceAxes = tc.Optional(tc.Union(ReduceAxis, tc.Collection(ReduceAxis)))
+ # pylint: enable=invalid-name
+ 
+@@ -874,7 +874,7 @@ def matmul(a, b, name=None):
+ 
+ 
+ @tc.returns(types.FunctionType)
+-@tc.accepts(string_types, collections.Callable)
++@tc.accepts(string_types, collections_abc.Callable)
+ def define_reduce_op(op_name, reduce_fn):
+   """Define a reduction op for labeled tensors.
+ 
+diff --git a/tensorflow/contrib/layers/python/layers/feature_column.py b/tensorflow/contrib/layers/python/layers/feature_column.py
+index 3ae07cedab..c08cadd045 100644
+--- a/tensorflow/contrib/layers/python/layers/feature_column.py
++++ b/tensorflow/contrib/layers/python/layers/feature_column.py
+@@ -155,6 +155,7 @@ from tensorflow.python.ops import variables
+ from tensorflow.python.platform import tf_logging as logging
+ from tensorflow.python.util import deprecation
+ from tensorflow.python.util import nest
++from tensorflow.python.util.compat import collections_abc
+ 
+ 
+ # Imports the core `InputLayer` symbol in contrib during development.
+@@ -1409,7 +1410,7 @@ def shared_embedding_columns(sparse_id_columns,
+       least one element of `sparse_id_columns` is not a `SparseColumn` or a
+       `WeightedSparseColumn`.
+   """
+-  if (not isinstance(sparse_id_columns, collections.Sequence) or
++  if (not isinstance(sparse_id_columns, collections_abc.Sequence) or
+       isinstance(sparse_id_columns, six.string_types)):
+     raise TypeError(
+         "sparse_id_columns must be a non-string sequence (ex: list or tuple) "
+diff --git a/tensorflow/contrib/learn/python/learn/estimators/_sklearn.py b/tensorflow/contrib/learn/python/learn/estimators/_sklearn.py
+index 1f0e4663d0..dadb95508b 100644
+--- a/tensorflow/contrib/learn/python/learn/estimators/_sklearn.py
++++ b/tensorflow/contrib/learn/python/learn/estimators/_sklearn.py
+@@ -19,12 +19,12 @@ from __future__ import absolute_import
+ from __future__ import division
+ from __future__ import print_function
+ 
+-import collections
+ import os
+ 
+ import numpy as np
+ import six
+ 
++from tensorflow.python.util.compat import collections_abc
+ 
+ def _pprint(d):
+   return ', '.join(['%s=%s' % (key, str(value)) for key, value in d.items()])
+@@ -55,7 +55,7 @@ class _BaseEstimator(object):
+     for key in param_names:
+       value = getattr(self, key, None)
+ 
+-      if isinstance(value, collections.Callable):
++      if isinstance(value, collections_abc.Callable):
+         continue
+ 
+       # XXX: should we rather test if instance of estimator?
+diff --git a/tensorflow/contrib/tensor_forest/hybrid/python/hybrid_model.py b/tensorflow/contrib/tensor_forest/hybrid/python/hybrid_model.py
+index a427a02b7c..7d23d950c4 100644
+--- a/tensorflow/contrib/tensor_forest/hybrid/python/hybrid_model.py
++++ b/tensorflow/contrib/tensor_forest/hybrid/python/hybrid_model.py
+@@ -17,8 +17,6 @@ from __future__ import absolute_import
+ from __future__ import division
+ from __future__ import print_function
+ 
+-import collections
+-
+ from tensorflow.contrib import layers
+ from tensorflow.contrib.framework.python.ops import variables as framework_variables
+ 
+@@ -28,6 +26,7 @@ from tensorflow.python.ops import nn_ops
+ from tensorflow.python.ops import variables
+ 
+ from tensorflow.python.training import adagrad
++from tensorflow.python.util.compat import collections_abc
+ 
+ 
+ class HybridModel(object):
+@@ -65,7 +64,7 @@ class HybridModel(object):
+ 
+     # If this is a collection of layers, return the mean of their inference
+     # results.
+-    if isinstance(layer, collections.Iterable):
++    if isinstance(layer, collections_abc.Iterable):
+       return math_ops.reduce_mean(
+           array_ops.stack([l.inference_graph(data) for l in layer]), 0)
+     # If this is a single layer, return its inference result.
+diff --git a/tensorflow/python/data/util/nest.py b/tensorflow/python/data/util/nest.py
+index 32e08021dc..751da5fb33 100644
+--- a/tensorflow/python/data/util/nest.py
++++ b/tensorflow/python/data/util/nest.py
+@@ -36,12 +36,11 @@ from __future__ import absolute_import
+ from __future__ import division
+ from __future__ import print_function
+ 
+-import collections as _collections
+-
+ import six as _six
+ 
+ from tensorflow.python import pywrap_tensorflow as _pywrap_tensorflow
+ from tensorflow.python.framework import sparse_tensor as _sparse_tensor
++from tensorflow.python.util.compat import collections_abc as _collections_abc
+ 
+ 
+ def _sorted(dict_):
+@@ -72,7 +71,7 @@ def _sequence_like(instance, args):
+     return type(instance)((key, result[key]) for key in _six.iterkeys(instance))
+   elif (isinstance(instance, tuple) and
+         hasattr(instance, "_fields") and
+-        isinstance(instance._fields, _collections.Sequence) and
++        isinstance(instance._fields, _collections_abc.Sequence) and
+         all(isinstance(f, _six.string_types) for f in instance._fields)):
+     # This is a namedtuple
+     return type(instance)(*args)
+diff --git a/tensorflow/python/feature_column/feature_column.py b/tensorflow/python/feature_column/feature_column.py
+index 7aa46af828..78042d2c95 100644
+--- a/tensorflow/python/feature_column/feature_column.py
++++ b/tensorflow/python/feature_column/feature_column.py
+@@ -162,6 +162,7 @@ from tensorflow.python.platform import tf_logging as logging
+ from tensorflow.python.training import checkpoint_utils
+ from tensorflow.python.util import nest
+ from tensorflow.python.util.tf_export import tf_export
++from tensorflow.python.util.compat import collections_abc
+ 
+ 
+ def _internal_input_layer(features,
+@@ -2291,7 +2292,7 @@ def _clean_feature_columns(feature_columns):
+   if isinstance(feature_columns, _FeatureColumn):
+     feature_columns = [feature_columns]
+ 
+-  if isinstance(feature_columns, collections.Iterator):
++  if isinstance(feature_columns, collections_abc.Iterator):
+     feature_columns = list(feature_columns)
+ 
+   if isinstance(feature_columns, dict):
+diff --git a/tensorflow/python/framework/ops.py b/tensorflow/python/framework/ops.py
+index cae171efa2..d24dc0bd1c 100644
+--- a/tensorflow/python/framework/ops.py
++++ b/tensorflow/python/framework/ops.py
+@@ -57,6 +57,7 @@ from tensorflow.python.platform import tf_logging as logging
+ from tensorflow.python.util import compat
+ from tensorflow.python.util import decorator_utils
+ from tensorflow.python.util import tf_contextlib
++from tensorflow.python.util.compat import collections_abc
+ from tensorflow.python.util.tf_export import tf_export
+ 
+ 
+@@ -1158,7 +1159,7 @@ def internal_convert_n_to_tensor(values,
+     RuntimeError: If a registered conversion function returns an invalid
+       value.
+   """
+-  if not isinstance(values, collections.Sequence):
++  if not isinstance(values, collections_abc.Sequence):
+     raise TypeError("values must be a list.")
+   ret = []
+   if ctx is None: ctx = context.context()
+@@ -1298,7 +1299,7 @@ def internal_convert_n_to_tensor_or_indexed_slices(values,
+     RuntimeError: If a registered conversion function returns an invalid
+       value.
+   """
+-  if not isinstance(values, collections.Sequence):
++  if not isinstance(values, collections_abc.Sequence):
+     raise TypeError("values must be a list.")
+   ret = []
+   for i, value in enumerate(values):
+diff --git a/tensorflow/python/kernel_tests/conv_ops_3d_test.py b/tensorflow/python/kernel_tests/conv_ops_3d_test.py
+index 0b531125f3..d4e6a33cc3 100644
+--- a/tensorflow/python/kernel_tests/conv_ops_3d_test.py
++++ b/tensorflow/python/kernel_tests/conv_ops_3d_test.py
+@@ -18,7 +18,6 @@ from __future__ import absolute_import
+ from __future__ import division
+ from __future__ import print_function
+ 
+-import collections
+ import math
+ 
+ import numpy as np
+@@ -32,6 +31,7 @@ from tensorflow.python.ops import gradients_impl
+ from tensorflow.python.ops import nn_ops
+ import tensorflow.python.ops.nn_grad  # pylint: disable=unused-import
+ from tensorflow.python.platform import test
++from tensorflow.python.util.compat import collections_abc
+ 
+ 
+ def GetTestConfigs():
+@@ -78,7 +78,7 @@ class Conv3DTest(test.TestCase):
+       t1 = constant_op.constant(x1, shape=tensor_in_sizes, dtype=dtype)
+       t2 = constant_op.constant(x2, shape=filter_in_sizes, dtype=dtype)
+ 
+-      if isinstance(stride, collections.Iterable):
++      if isinstance(stride, collections_abc.Iterable):
+         strides = [1] + list(stride) + [1]
+       else:
+         strides = [1, stride, stride, stride, 1]
+@@ -136,7 +136,7 @@ class Conv3DTest(test.TestCase):
+     with self.test_session(use_gpu=use_gpu):
+       t1 = constant_op.constant(x1, shape=tensor_in_sizes)
+       t2 = constant_op.constant(x2, shape=filter_in_sizes)
+-      if isinstance(stride, collections.Iterable):
++      if isinstance(stride, collections_abc.Iterable):
+         strides = list(stride)
+       else:
+         strides = [stride, stride, stride]
+@@ -376,7 +376,7 @@ class Conv3DTest(test.TestCase):
+         filter_planes, filter_rows, filter_cols, in_depth, out_depth
+     ]
+ 
+-    if isinstance(stride, collections.Iterable):
++    if isinstance(stride, collections_abc.Iterable):
+       strides = [1] + list(stride) + [1]
+     else:
+       strides = [1, stride, stride, stride, 1]
+diff --git a/tensorflow/python/kernel_tests/conv_ops_test.py b/tensorflow/python/kernel_tests/conv_ops_test.py
+index 75a1f8fa97..34a72c4a0c 100644
+--- a/tensorflow/python/kernel_tests/conv_ops_test.py
++++ b/tensorflow/python/kernel_tests/conv_ops_test.py
+@@ -42,6 +42,7 @@ from tensorflow.python.ops import variables
+ import tensorflow.python.ops.nn_grad  # pylint: disable=unused-import
+ from tensorflow.python.platform import test
+ from tensorflow.python.platform import tf_logging
++from tensorflow.python.util.compat import collections_abc
+ 
+ 
+ def GetShrunkInceptionShapes(shrink=10):
+@@ -271,7 +272,7 @@ class Conv2DTest(test.TestCase):
+     with test_util.device(use_gpu):
+       t1 = constant_op.constant(x1, shape=tensor_in_sizes)
+       t2 = constant_op.constant(x2, shape=filter_in_sizes)
+-      if isinstance(stride, collections.Iterable):
++      if isinstance(stride, collections_abc.Iterable):
+         strides = list(stride)
+       else:
+         strides = [stride, stride]
+diff --git a/tensorflow/python/ops/clip_ops.py b/tensorflow/python/ops/clip_ops.py
+index 75c459a9cf..9fef7085ee 100644
+--- a/tensorflow/python/ops/clip_ops.py
++++ b/tensorflow/python/ops/clip_ops.py
+@@ -18,8 +18,6 @@ from __future__ import absolute_import
+ from __future__ import division
+ from __future__ import print_function
+ 
+-import collections
+-
+ import six
+ 
+ from tensorflow.python.framework import constant_op
+@@ -29,6 +27,7 @@ from tensorflow.python.ops import array_ops
+ from tensorflow.python.ops import gen_array_ops
+ from tensorflow.python.ops import gen_nn_ops
+ from tensorflow.python.ops import math_ops
++from tensorflow.python.util.compat import collections_abc
+ from tensorflow.python.util.tf_export import tf_export
+ 
+ 
+@@ -173,7 +172,7 @@ def global_norm(t_list, name=None):
+   Raises:
+     TypeError: If `t_list` is not a sequence.
+   """
+-  if (not isinstance(t_list, collections.Sequence)
++  if (not isinstance(t_list, collections_abc.Sequence)
+       or isinstance(t_list, six.string_types)):
+     raise TypeError("t_list should be a sequence")
+   t_list = list(t_list)
+@@ -244,7 +243,7 @@ def clip_by_global_norm(t_list, clip_norm, use_norm=None, name=None):
+   Raises:
+     TypeError: If `t_list` is not a sequence.
+   """
+-  if (not isinstance(t_list, collections.Sequence)
++  if (not isinstance(t_list, collections_abc.Sequence)
+       or isinstance(t_list, six.string_types)):
+     raise TypeError("t_list should be a sequence")
+   t_list = list(t_list)
+diff --git a/tensorflow/python/ops/data_flow_ops.py b/tensorflow/python/ops/data_flow_ops.py
+index 62c5adc385..1c3374c7d1 100644
+--- a/tensorflow/python/ops/data_flow_ops.py
++++ b/tensorflow/python/ops/data_flow_ops.py
+@@ -18,7 +18,6 @@ from __future__ import absolute_import
+ from __future__ import division
+ from __future__ import print_function
+ 
+-import collections
+ import hashlib
+ import threading
+ 
+@@ -38,6 +37,7 @@ from tensorflow.python.ops import math_ops
+ # go/tf-wildcard-import
+ # pylint: disable=wildcard-import
+ from tensorflow.python.ops.gen_data_flow_ops import *
++from tensorflow.python.util.compat import collections_abc
+ from tensorflow.python.util.tf_export import tf_export
+ 
+ # pylint: enable=wildcard-import
+@@ -61,7 +61,7 @@ def _as_shape_list(shapes,
+   """Convert shapes to a list of tuples of int (or None)."""
+   del dtypes
+   if unknown_dim_allowed:
+-    if (not isinstance(shapes, collections.Sequence) or not shapes or
++    if (not isinstance(shapes, collections_abc.Sequence) or not shapes or
+         any(shape is None or isinstance(shape, int) for shape in shapes)):
+       raise ValueError(
+           "When providing partial shapes, a list of shapes must be provided.")
+diff --git a/tensorflow/python/ops/gradients_impl.py b/tensorflow/python/ops/gradients_impl.py
+index 7385cb7585..6bd61172a9 100644
+--- a/tensorflow/python/ops/gradients_impl.py
++++ b/tensorflow/python/ops/gradients_impl.py
+@@ -51,6 +51,7 @@ from tensorflow.python.ops import resource_variable_ops
+ from tensorflow.python.ops import spectral_grad  # pylint: disable=unused-import
+ from tensorflow.python.ops import tensor_array_ops
+ from tensorflow.python.platform import tf_logging as logging
++from tensorflow.python.util.compat import collections_abc
+ from tensorflow.python.util.tf_export import tf_export
+ 
+ # Warn the user if we convert a sparse representation to dense with at
+@@ -750,7 +751,7 @@ def _HasAnyNotNoneGrads(grads, op):
+   for out_grad in out_grads:
+     if isinstance(out_grad, (ops.Tensor, ops.IndexedSlices)):
+       return True
+-    if out_grad and isinstance(out_grad, collections.Sequence):
++    if out_grad and isinstance(out_grad, collections_abc.Sequence):
+       if any([g is not None for g in out_grad]):
+         return True
+   return False
+@@ -957,7 +958,7 @@ def _AggregatedGrads(grads,
+         assert control_flow_util.IsLoopSwitch(op)
+         continue
+     # Grads have to be Tensors or IndexedSlices
+-    if (isinstance(out_grad, collections.Sequence) and not all([
++    if (isinstance(out_grad, collections_abc.Sequence) and not all([
+         isinstance(g, (ops.Tensor, ops.IndexedSlices))
+         for g in out_grad
+         if g is not None
+diff --git a/tensorflow/python/ops/sparse_ops.py b/tensorflow/python/ops/sparse_ops.py
+index c3b16a7bd5..7054a9c500 100644
+--- a/tensorflow/python/ops/sparse_ops.py
++++ b/tensorflow/python/ops/sparse_ops.py
+@@ -39,6 +39,7 @@ from tensorflow.python.ops import math_ops
+ from tensorflow.python.ops.gen_sparse_ops import *
+ # pylint: enable=wildcard-import
+ from tensorflow.python.util import deprecation
++from tensorflow.python.util.compat import collections_abc
+ from tensorflow.python.util.tf_export import tf_export
+ 
+ 
+@@ -1162,10 +1163,10 @@ def sparse_merge(sp_ids, sp_values, vocab_size, name=None,
+                       type(vocab_size))
+     vocab_size = [vocab_size]
+   else:
+-    if not isinstance(sp_ids, collections.Iterable):
++    if not isinstance(sp_ids, collections_abc.Iterable):
+       raise TypeError("sp_ids has to be a SparseTensor or list thereof. "
+                       "Found %s" % type(sp_ids))
+-    if not isinstance(vocab_size, collections.Iterable):
++    if not isinstance(vocab_size, collections_abc.Iterable):
+       raise TypeError("vocab_size has to be a list of Tensors or Python ints. "
+                       "Found %s" % type(vocab_size))
+     for dim in vocab_size:
+diff --git a/tensorflow/python/training/checkpointable/data_structures.py b/tensorflow/python/training/checkpointable/data_structures.py
+index 69ed253fb2..2ef8d4820e 100644
+--- a/tensorflow/python/training/checkpointable/data_structures.py
++++ b/tensorflow/python/training/checkpointable/data_structures.py
+@@ -26,6 +26,7 @@ from tensorflow.python.keras.utils import layer_utils
+ from tensorflow.python.ops import variables
+ from tensorflow.python.training.checkpointable import base as checkpointable_lib
+ from tensorflow.python.training.checkpointable import data_structures_base
++from tensorflow.python.util.compat import collections_abc
+ 
+ 
+ # TODO(allenl): We could track regular Python data structures which get assigned
+@@ -130,7 +131,7 @@ class CheckpointableDataStructure(
+     return self is other
+ 
+ 
+-class List(CheckpointableDataStructure, collections.Sequence):
++class List(CheckpointableDataStructure, collections_abc.Sequence):
+   """An append-only sequence type which is checkpointable.
+ 
+   Maintains checkpoint dependencies on its contents (which must also be
+@@ -207,7 +208,7 @@ class List(CheckpointableDataStructure, collections.Sequence):
+     return "List(%s)" % (repr(self._storage),)
+ 
+ 
+-class Mapping(CheckpointableDataStructure, collections.Mapping):
++class Mapping(CheckpointableDataStructure, collections_abc.Mapping):
+   """An append-only checkpointable mapping data structure with string keys.
+ 
+   Maintains checkpoint dependencies on its contents (which must also be
+diff --git a/tensorflow/python/training/input.py b/tensorflow/python/training/input.py
+index caa26581e8..f268f6af8f 100644
+--- a/tensorflow/python/training/input.py
++++ b/tensorflow/python/training/input.py
+@@ -23,8 +23,6 @@ from __future__ import absolute_import
+ from __future__ import division
+ from __future__ import print_function
+ 
+-import collections
+-
+ from six.moves import xrange  # pylint: disable=redefined-builtin
+ 
+ from tensorflow.python.eager import context
+@@ -44,6 +42,7 @@ from tensorflow.python.ops import sparse_ops
+ from tensorflow.python.ops import variable_scope as vs
+ from tensorflow.python.summary import summary
+ from tensorflow.python.training import queue_runner
++from tensorflow.python.util.compat import collections_abc
+ from tensorflow.python.util.tf_export import tf_export
+ 
+ 
+@@ -573,7 +572,7 @@ def _store_sparse_tensors_join(tensor_list_list, enqueue_many, keep_input):
+ 
+ def _restore_sparse_tensors(stored_list, sparse_info_list):
+   """Restore SparseTensors after dequeue in batch, batch_join, etc."""
+-  received_sequence = isinstance(stored_list, collections.Sequence)
++  received_sequence = isinstance(stored_list, collections_abc.Sequence)
+   if not received_sequence:
+     stored_list = (stored_list,)
+   tensors = [
+diff --git a/tensorflow/python/util/compat.py b/tensorflow/python/util/compat.py
+index a24a52eea9..2be8ee8413 100644
+--- a/tensorflow/python/util/compat.py
++++ b/tensorflow/python/util/compat.py
+@@ -38,6 +38,11 @@ import six as _six
+ 
+ from tensorflow.python.util.tf_export import tf_export
+ 
++try:
++  # This import only works on python 3.3 and above.
++  import collections.abc as collections_abc  # pylint: disable=unused-import
++except ImportError:
++  import collections as collections_abc  # pylint: disable=unused-import
+ 
+ def as_bytes(bytes_or_text, encoding='utf-8'):
+   """Converts either bytes or unicode to `bytes`, using utf-8 encoding for text.
+diff --git a/tensorflow/python/util/nest.py b/tensorflow/python/util/nest.py
+index 1104768ae8..a8af478ab3 100644
+--- a/tensorflow/python/util/nest.py
++++ b/tensorflow/python/util/nest.py
+@@ -31,11 +31,10 @@ from __future__ import absolute_import
+ from __future__ import division
+ from __future__ import print_function
+ 
+-import collections as _collections
+-
+ import six as _six
+ 
+ from tensorflow.python import pywrap_tensorflow as _pywrap_tensorflow
++from tensorflow.python.util.compat import collections_abc as _collections_abc
+ 
+ 
+ def _sorted(dict_):
+@@ -103,13 +102,13 @@ def _yield_value(iterable):
+ 
+ 
+ def is_sequence(seq):
+-  """Returns a true if its input is a collections.Sequence (except strings).
++  """Returns a true if its input is a collections.abc.Sequence (except strings).
+ 
+   Args:
+     seq: an input sequence.
+ 
+   Returns:
+-    True if the sequence is a not a string and is a collections.Sequence or a
++    True if the sequence is a not a string and is a collections.abc.Sequence or a
+     dict.
+   """
+   return _pywrap_tensorflow.IsSequence(seq)
+@@ -725,7 +724,7 @@ def yield_flat_paths(nest):
+         yield (key,) + sub_path
+   elif isinstance(nest, _six.string_types):
+     yield ()
+-  elif isinstance(nest, _collections.Sequence):
++  elif isinstance(nest, _collections_abc.Sequence):
+     for idx, value in enumerate(nest):
+       for sub_path in yield_flat_paths(value):
+         yield (idx,) + sub_path
+@@ -756,4 +755,4 @@ def flatten_with_joined_string_paths(structure, separator="/"):
+   return list(zip(flat_string_paths, flatten(structure)))
+ 
+ 
+-_pywrap_tensorflow.RegisterSequenceClass(_collections.Sequence)
++_pywrap_tensorflow.RegisterSequenceClass(_collections_abc.Sequence)
+diff --git a/tensorflow/python/util/protobuf/compare.py b/tensorflow/python/util/protobuf/compare.py
+index a0e6bf65cf..4e80540560 100644
+--- a/tensorflow/python/util/protobuf/compare.py
++++ b/tensorflow/python/util/protobuf/compare.py
+@@ -62,7 +62,6 @@ from __future__ import absolute_import
+ from __future__ import division
+ from __future__ import print_function
+ 
+-import collections
+ 
+ import six
+ 
+@@ -71,6 +70,7 @@ from google.protobuf import descriptor_pool
+ from google.protobuf import message
+ from google.protobuf import text_format
+ 
++from ..compat import collections_abc
+ 
+ def assertProtoEqual(self, a, b, check_initialized=True,  # pylint: disable=invalid-name
+                      normalize_numbers=False, msg=None):
+@@ -176,7 +176,7 @@ def NormalizeNumberFields(pb):
+ 
+ 
+ def _IsMap(value):
+-  return isinstance(value, collections.Mapping)
++  return isinstance(value, collections_abc.Mapping)
+ 
+ 
+ def _IsRepeatedContainer(value):

@@ -3,7 +3,7 @@
 pkgbase=tensorflow-computecpp
 pkgname=(tensorflow-computecpp python-tensorflow-computecpp)
 pkgver=1.9
-pkgrel=6
+pkgrel=7
 pkgdesc="Library for computation using data flow graphs for scalable machine learning (backend with ComputeCpp)"
 url="https://github.com/codeplaysoftware/tensorflow"
 epoch=1
@@ -21,7 +21,10 @@ source=("git+${url}"
          gcc1.diff
          gcc2.diff
          gcc3.diff
-         python38.patch)
+         python38.patch
+         gcc10.patch
+         numpy.diff
+         python310.diff)
 sha256sums=('SKIP'
             '758e10caff4c1cb496d1cf49d6f4da2969b610b174276fb734b8502686d07ddd'
             'ef54b3783a05b5604cd8f448136567686806ad3a5759978f48549256807a8394'
@@ -29,7 +32,10 @@ sha256sums=('SKIP'
             '7d9f32a46cac83ec1a7308ac380226cdf40f98830c869bcdf5feb7bf110abf9a'
             '10de738141852cfebae9847b746ae9b58f3b3985561cccede929d8fbdba93551'
             '742abe5d8bfd3f7ce33778a08cbb233337db56238d11ac2ad07171b0d6097bfb'
-            'b69895cfd098efacc95b1d1fffd471afa05c449f8d42964ee10b1a6fd9a75689')
+            'b69895cfd098efacc95b1d1fffd471afa05c449f8d42964ee10b1a6fd9a75689'
+            '15c20b31394537051f8756707819e13f3c12da24d8aa63d3ba47e6fce4d19d95'
+            'fe4c34a66000ba3a24d7c35914dc22e95adb5efa60a58d1f0b3d3cad77fd722d'
+            'fd3796ac670c4ee59c5cdc6969b2a58761d04d806bac4ba3911dcf74d894be42')
 
 prepare() {
   # These environment variables influence the behavior of the configure call below.
@@ -68,9 +74,12 @@ prepare() {
   git apply --index ../python37.patch
   git apply --index --whitespace=nowarn ../py37.diff
   git apply --index --whitespace=nowarn ../gcc1.diff
-  git apply --index --whitespace=nowarn ../gcc2.diff
+  git apply --index --whitespace=fix ../gcc2.diff
   git apply --index --whitespace=nowarn ../gcc3.diff
   git apply --index ../python38.patch
+  git apply --index ../gcc10.patch
+  git apply --index ../numpy.diff
+  git apply --index ../python310.diff
 }
 
 build() {

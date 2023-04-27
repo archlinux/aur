@@ -1,0 +1,2047 @@
+diff --git a/tensorflow/compiler/tests/binary_ops_test.py b/tensorflow/compiler/tests/binary_ops_test.py
+index 1e4dd32916..ff664f6f3b 100644
+--- a/tensorflow/compiler/tests/binary_ops_test.py
++++ b/tensorflow/compiler/tests/binary_ops_test.py
+@@ -593,121 +593,121 @@ class BinaryOpsTest(XLATestCase):
+   def testLogicalOps(self):
+     self._testBinary(
+         math_ops.logical_and,
+-        np.array([[True, False], [False, True]], dtype=np.bool),
+-        np.array([[False, True], [False, True]], dtype=np.bool),
+-        expected=np.array([[False, False], [False, True]], dtype=np.bool))
++        np.array([[True, False], [False, True]], dtype=np.bool_),
++        np.array([[False, True], [False, True]], dtype=np.bool_),
++        expected=np.array([[False, False], [False, True]], dtype=np.bool_))
+ 
+     self._testBinary(
+         math_ops.logical_or,
+-        np.array([[True, False], [False, True]], dtype=np.bool),
+-        np.array([[False, True], [False, True]], dtype=np.bool),
+-        expected=np.array([[True, True], [False, True]], dtype=np.bool))
++        np.array([[True, False], [False, True]], dtype=np.bool_),
++        np.array([[False, True], [False, True]], dtype=np.bool_),
++        expected=np.array([[True, True], [False, True]], dtype=np.bool_))
+ 
+   def testComparisons(self):
+     self._testBinary(
+         math_ops.equal,
+         np.array([1, 5, 20], dtype=np.float32),
+         np.array([10, 5, 2], dtype=np.float32),
+-        expected=np.array([False, True, False], dtype=np.bool))
++        expected=np.array([False, True, False], dtype=np.bool_))
+     self._testBinary(
+         math_ops.equal,
+         np.float32(5),
+         np.array([1, 5, 20], dtype=np.float32),
+-        expected=np.array([False, True, False], dtype=np.bool))
++        expected=np.array([False, True, False], dtype=np.bool_))
+     self._testBinary(
+         math_ops.equal,
+         np.array([[10], [7], [2]], dtype=np.float32),
+         np.float32(7),
+-        expected=np.array([[False], [True], [False]], dtype=np.bool))
++        expected=np.array([[False], [True], [False]], dtype=np.bool_))
+ 
+     self._testBinary(
+         math_ops.not_equal,
+         np.array([1, 5, 20], dtype=np.float32),
+         np.array([10, 5, 2], dtype=np.float32),
+-        expected=np.array([True, False, True], dtype=np.bool))
++        expected=np.array([True, False, True], dtype=np.bool_))
+     self._testBinary(
+         math_ops.not_equal,
+         np.float32(5),
+         np.array([1, 5, 20], dtype=np.float32),
+-        expected=np.array([True, False, True], dtype=np.bool))
++        expected=np.array([True, False, True], dtype=np.bool_))
+     self._testBinary(
+         math_ops.not_equal,
+         np.array([[10], [7], [2]], dtype=np.float32),
+         np.float32(7),
+-        expected=np.array([[True], [False], [True]], dtype=np.bool))
++        expected=np.array([[True], [False], [True]], dtype=np.bool_))
+ 
+     for greater_op in [math_ops.greater, (lambda x, y: x > y)]:
+       self._testBinary(
+           greater_op,
+           np.array([1, 5, 20], dtype=np.float32),
+           np.array([10, 5, 2], dtype=np.float32),
+-          expected=np.array([False, False, True], dtype=np.bool))
++          expected=np.array([False, False, True], dtype=np.bool_))
+       self._testBinary(
+           greater_op,
+           np.float32(5),
+           np.array([1, 5, 20], dtype=np.float32),
+-          expected=np.array([True, False, False], dtype=np.bool))
++          expected=np.array([True, False, False], dtype=np.bool_))
+       self._testBinary(
+           greater_op,
+           np.array([[10], [7], [2]], dtype=np.float32),
+           np.float32(7),
+-          expected=np.array([[True], [False], [False]], dtype=np.bool))
++          expected=np.array([[True], [False], [False]], dtype=np.bool_))
+ 
+     for greater_equal_op in [math_ops.greater_equal, (lambda x, y: x >= y)]:
+       self._testBinary(
+           greater_equal_op,
+           np.array([1, 5, 20], dtype=np.float32),
+           np.array([10, 5, 2], dtype=np.float32),
+-          expected=np.array([False, True, True], dtype=np.bool))
++          expected=np.array([False, True, True], dtype=np.bool_))
+       self._testBinary(
+           greater_equal_op,
+           np.float32(5),
+           np.array([1, 5, 20], dtype=np.float32),
+-          expected=np.array([True, True, False], dtype=np.bool))
++          expected=np.array([True, True, False], dtype=np.bool_))
+       self._testBinary(
+           greater_equal_op,
+           np.array([[10], [7], [2]], dtype=np.float32),
+           np.float32(7),
+-          expected=np.array([[True], [True], [False]], dtype=np.bool))
++          expected=np.array([[True], [True], [False]], dtype=np.bool_))
+ 
+     for less_op in [math_ops.less, (lambda x, y: x < y)]:
+       self._testBinary(
+           less_op,
+           np.array([1, 5, 20], dtype=np.float32),
+           np.array([10, 5, 2], dtype=np.float32),
+-          expected=np.array([True, False, False], dtype=np.bool))
++          expected=np.array([True, False, False], dtype=np.bool_))
+       self._testBinary(
+           less_op,
+           np.float32(5),
+           np.array([1, 5, 20], dtype=np.float32),
+-          expected=np.array([False, False, True], dtype=np.bool))
++          expected=np.array([False, False, True], dtype=np.bool_))
+       self._testBinary(
+           less_op,
+           np.array([[10], [7], [2]], dtype=np.float32),
+           np.float32(7),
+-          expected=np.array([[False], [False], [True]], dtype=np.bool))
++          expected=np.array([[False], [False], [True]], dtype=np.bool_))
+       self._testBinary(
+           less_op,
+           np.array([[10], [7], [2], [-1]], dtype=np.int64),
+           np.int64(7),
+-          expected=np.array([[False], [False], [True], [True]], dtype=np.bool))
++          expected=np.array([[False], [False], [True], [True]], dtype=np.bool_))
+ 
+     for less_equal_op in [math_ops.less_equal, (lambda x, y: x <= y)]:
+       self._testBinary(
+           less_equal_op,
+           np.array([1, 5, 20], dtype=np.float32),
+           np.array([10, 5, 2], dtype=np.float32),
+-          expected=np.array([True, True, False], dtype=np.bool))
++          expected=np.array([True, True, False], dtype=np.bool_))
+       self._testBinary(
+           less_equal_op,
+           np.float32(5),
+           np.array([1, 5, 20], dtype=np.float32),
+-          expected=np.array([False, True, True], dtype=np.bool))
++          expected=np.array([False, True, True], dtype=np.bool_))
+       self._testBinary(
+           less_equal_op,
+           np.array([[10], [7], [2]], dtype=np.float32),
+           np.float32(7),
+-          expected=np.array([[False], [True], [True]], dtype=np.bool))
++          expected=np.array([[False], [True], [True]], dtype=np.bool_))
+ 
+   def testS64Comparisons(self):
+     for op in [(lambda x, y: x < y), (lambda x, y: x <= y),
+@@ -780,7 +780,7 @@ class BinaryOpsTest(XLATestCase):
+               np.int64(-1)
+           ],
+           dtype=np.int64)
+-      expected = np.array([op(l, r) for l, r in zip(lhs, rhs)], dtype=np.bool)
++      expected = np.array([op(l, r) for l, r in zip(lhs, rhs)], dtype=np.bool_)
+       self._testBinary(op, lhs, rhs, expected=expected)
+ 
+   def testBroadcasting(self):
+diff --git a/tensorflow/compiler/tests/reduce_ops_test.py b/tensorflow/compiler/tests/reduce_ops_test.py
+index 7420724bdb..f475a64aed 100644
+--- a/tensorflow/compiler/tests/reduce_ops_test.py
++++ b/tensorflow/compiler/tests/reduce_ops_test.py
+@@ -84,8 +84,8 @@ class ReduceOpsTest(XLATestCase):
+   NONEMPTY_REAL_DATA = [x for x in REAL_DATA if np.size(x) > 0]
+   NONEMPTY_COMPLEX_DATA = [x for x in COMPLEX_DATA if np.size(x) > 0]
+   BOOL_DATA = [
+-      np.array([], dtype=np.bool).reshape(2, 0),
+-      np.array([], dtype=np.bool).reshape(0, 3),
++      np.array([], dtype=np.bool_).reshape(2, 0),
++      np.array([], dtype=np.bool_).reshape(0, 3),
+       np.array([[False, True, False], [True, True, False]]),
+   ]
+ 
+@@ -150,10 +150,10 @@ class ReduceOpsTest(XLATestCase):
+                         self.NONEMPTY_COMPLEX_DATA)
+ 
+   def testReduceAll(self):
+-    self._testReduction(math_ops.reduce_all, np.all, np.bool, self.BOOL_DATA)
++    self._testReduction(math_ops.reduce_all, np.all, np.bool_, self.BOOL_DATA)
+ 
+   def testReduceAny(self):
+-    self._testReduction(math_ops.reduce_any, np.any, np.bool, self.BOOL_DATA)
++    self._testReduction(math_ops.reduce_any, np.any, np.bool_, self.BOOL_DATA)
+ 
+ 
+ class ReduceOpPrecisionTest(XLATestCase):
+diff --git a/tensorflow/compiler/tests/ternary_ops_test.py b/tensorflow/compiler/tests/ternary_ops_test.py
+index ef047005b6..a2cac0624f 100644
+--- a/tensorflow/compiler/tests/ternary_ops_test.py
++++ b/tensorflow/compiler/tests/ternary_ops_test.py
+@@ -72,35 +72,35 @@ class TernaryOpsTest(XLATestCase):
+     for dtype in self.numeric_types:
+       self._testTernary(
+           array_ops.where,
+-          np.array(0, dtype=np.bool),
++          np.array(0, dtype=np.bool_),
+           np.array(2, dtype=dtype),
+           np.array(7, dtype=dtype),
+           expected=np.array(7, dtype=dtype))
+ 
+       self._testTernary(
+           array_ops.where,
+-          np.array(1, dtype=np.bool),
++          np.array(1, dtype=np.bool_),
+           np.array([1, 2, 3, 4], dtype=dtype),
+           np.array([5, 6, 7, 8], dtype=dtype),
+           expected=np.array([1, 2, 3, 4], dtype=dtype))
+ 
+       self._testTernary(
+           array_ops.where,
+-          np.array(0, dtype=np.bool),
++          np.array(0, dtype=np.bool_),
+           np.array([[1, 2], [3, 4], [5, 6]], dtype=dtype),
+           np.array([[7, 8], [9, 10], [11, 12]], dtype=dtype),
+           expected=np.array([[7, 8], [9, 10], [11, 12]], dtype=dtype))
+ 
+       self._testTernary(
+           array_ops.where,
+-          np.array([0, 1, 1, 0], dtype=np.bool),
++          np.array([0, 1, 1, 0], dtype=np.bool_),
+           np.array([1, 2, 3, 4], dtype=dtype),
+           np.array([5, 6, 7, 8], dtype=dtype),
+           expected=np.array([5, 2, 3, 8], dtype=dtype))
+ 
+       self._testTernary(
+           array_ops.where,
+-          np.array([0, 1, 0], dtype=np.bool),
++          np.array([0, 1, 0], dtype=np.bool_),
+           np.array([[1, 2], [3, 4], [5, 6]], dtype=dtype),
+           np.array([[7, 8], [9, 10], [11, 12]], dtype=dtype),
+           expected=np.array([[7, 8], [3, 4], [11, 12]], dtype=dtype))
+diff --git a/tensorflow/compiler/tests/unary_ops_test.py b/tensorflow/compiler/tests/unary_ops_test.py
+index 689a4a1f4e..6e41f289e6 100644
+--- a/tensorflow/compiler/tests/unary_ops_test.py
++++ b/tensorflow/compiler/tests/unary_ops_test.py
+@@ -221,7 +221,7 @@ class UnaryOpsTest(XLATestCase):
+           math_ops.is_finite,
+           np.array([[np.NINF, -2, -1, 0, 0.5, 1, 2, np.inf, np.nan]],
+                    dtype=dtype),
+-          expected=np.array([[0, 1, 1, 1, 1, 1, 1, 0, 0]], dtype=np.bool))
++          expected=np.array([[0, 1, 1, 1, 1, 1, 1, 0, 0]], dtype=np.bool_))
+ 
+       # Tests for tf.nn ops.
+       self._assertOpOutputMatchesExpected(
+@@ -380,7 +380,7 @@ class UnaryOpsTest(XLATestCase):
+           np.array(
+               [[42, float("inf"), -123], [float("nan"), 0, -0.0]], dtype=dtype),
+           expected=np.array(
+-              [[True, False, True], [False, True, True]], dtype=np.bool))
++              [[True, False, True], [False, True, True]], dtype=np.bool_))
+ 
+       self._assertOpOutputMatchesExpected(
+           lambda x: array_ops.quantize_and_dequantize_v2(x, -127, 127, True, 8),
+@@ -568,18 +568,18 @@ class UnaryOpsTest(XLATestCase):
+           math_ops.is_inf,
+           np.array([[np.NINF, -2, -1, 0, 0.5, 1, 2, np.inf, np.nan]],
+                    dtype=dtype),
+-          expected=np.array([[1, 0, 0, 0, 0, 0, 0, 1, 0]], dtype=np.bool))
++          expected=np.array([[1, 0, 0, 0, 0, 0, 0, 1, 0]], dtype=np.bool_))
+       self._assertOpOutputMatchesExpected(
+           math_ops.is_nan,
+           np.array([[np.NINF, -2, -1, 0, 0.5, 1, 2, np.inf, np.nan]],
+                    dtype=dtype),
+-          expected=np.array([[0, 0, 0, 0, 0, 0, 0, 0, 1]], dtype=np.bool))
++          expected=np.array([[0, 0, 0, 0, 0, 0, 0, 0, 1]], dtype=np.bool_))
+ 
+   def testLogicalOps(self):
+     self._assertOpOutputMatchesExpected(
+         math_ops.logical_not,
+         np.array([[True, False], [False, True]], dtype=np.bool),
+-        expected=np.array([[False, True], [True, False]], dtype=np.bool))
++        expected=np.array([[False, True], [True, False]], dtype=np.bool_))
+ 
+   def testBiasAddGrad(self):
+     self._assertOpOutputMatchesExpected(
+@@ -595,7 +595,7 @@ class UnaryOpsTest(XLATestCase):
+ 
+   def testCast(self):
+     shapes = [[], [4], [2, 3], [2, 0, 4]]
+-    types = (set([dtypes.bool, dtypes.int32, dtypes.float32]) |
++    types = (set([dtypes.bool_, dtypes.int32, dtypes.float32]) |
+              self.complex_tf_types)
+     for shape in shapes:
+       for src_type in types:
+diff --git a/tensorflow/compiler/xla/python/xla_client.py b/tensorflow/compiler/xla/python/xla_client.py
+index 50b548afa5..abe8716205 100644
+--- a/tensorflow/compiler/xla/python/xla_client.py
++++ b/tensorflow/compiler/xla/python/xla_client.py
+@@ -139,7 +139,7 @@ XLA_ELEMENT_TYPE_TO_DTYPE = {
+     xla_data_pb2.F32: np.dtype('float32'),
+     xla_data_pb2.F64: np.dtype('float64'),
+     xla_data_pb2.C64: np.dtype('complex64'),
+-    xla_data_pb2.TUPLE: np.dtype(np.object),
++    xla_data_pb2.TUPLE: np.dtype(np.object_),
+ }
+ 
+ # Note the conversion on the key. Numpy has a known issue wherein dtype hashing
+@@ -267,7 +267,7 @@ class Shape(object):
+   def numpy_dtype(self):
+     """Like element_type(), but returns dtype('O') in case of a tuple shape."""
+     if self.is_tuple():
+-      return np.dtype(np.object)
++      return np.dtype(np.object_)
+     else:
+       return self.element_type()
+ 
+@@ -611,7 +611,7 @@ class ComputationBuilder(object):
+     Returns:
+       A LocalOp.
+     """
+-    return self.Constant(np.array(value, dtype=np.bool))
++    return self.Constant(np.array(value, dtype=np.bool_))
+ 
+   def ParameterWithShape(self, shape, name=None, parameter_num=None):
+     """Enqueues a Parameter op onto the computation, given a shape.
+diff --git a/tensorflow/compiler/xla/python/xla_client_test.py b/tensorflow/compiler/xla/python/xla_client_test.py
+index e3d393bccc..377941cbae 100644
+--- a/tensorflow/compiler/xla/python/xla_client_test.py
++++ b/tensorflow/compiler/xla/python/xla_client_test.py
+@@ -77,8 +77,8 @@ def NumpyArrayS64(*args, **kwargs):
+ 
+ 
+ def NumpyArrayBool(*args, **kwargs):
+-  """Convenience wrapper to create Numpy arrays with a np.bool dtype."""
+-  return np.array(*args, dtype=np.bool, **kwargs)
++  """Convenience wrapper to create Numpy arrays with a np.bool_ dtype."""
++  return np.array(*args, dtype=np.bool_, **kwargs)
+ 
+ 
+ class ComputationsWithConstantsTest(LocalComputationTest):
+@@ -392,7 +392,7 @@ class SingleOpTest(LocalComputationTest):
+ 
+   def testConvertElementType(self):
+     xla_types = {
+-        np.bool: xla_client.xla_data_pb2.PRED,
++        np.bool_: xla_client.xla_data_pb2.PRED,
+         np.int32: xla_client.xla_data_pb2.S32,
+         np.int64: xla_client.xla_data_pb2.S64,
+         np.float32: xla_client.xla_data_pb2.F32,
+diff --git a/tensorflow/contrib/bayesflow/python/kernel_tests/monte_carlo_test.py b/tensorflow/contrib/bayesflow/python/kernel_tests/monte_carlo_test.py
+index d9e23646d8..6c942cfa2c 100644
+--- a/tensorflow/contrib/bayesflow/python/kernel_tests/monte_carlo_test.py
++++ b/tensorflow/contrib/bayesflow/python/kernel_tests/monte_carlo_test.py
+@@ -200,9 +200,9 @@ class ExpectationTest(test.TestCase):
+       self.assertAllClose(efx_true_, efx_reparam_, rtol=0.005, atol=0.)
+       self.assertAllClose(efx_true_, efx_score_, rtol=0.005, atol=0.)
+ 
+-      self.assertAllEqual(np.ones_like(efx_true_grad_, dtype=np.bool),
++      self.assertAllEqual(np.ones_like(efx_true_grad_, dtype=np.bool_),
+                           np.isfinite(efx_reparam_grad_))
+-      self.assertAllEqual(np.ones_like(efx_true_grad_, dtype=np.bool),
++      self.assertAllEqual(np.ones_like(efx_true_grad_, dtype=np.bool_),
+                           np.isfinite(efx_score_grad_))
+ 
+       self.assertAllClose(efx_true_grad_, efx_reparam_grad_,
+diff --git a/tensorflow/contrib/distributions/python/kernel_tests/cauchy_test.py b/tensorflow/contrib/distributions/python/kernel_tests/cauchy_test.py
+index 73747db31c..bafb82675f 100644
+--- a/tensorflow/contrib/distributions/python/kernel_tests/cauchy_test.py
++++ b/tensorflow/contrib/distributions/python/kernel_tests/cauchy_test.py
+@@ -52,7 +52,7 @@ class CauchyTest(test.TestCase):
+ 
+   def assertAllFinite(self, tensor):
+     is_finite = np.isfinite(tensor.eval())
+-    all_true = np.ones_like(is_finite, dtype=np.bool)
++    all_true = np.ones_like(is_finite, dtype=np.bool_)
+     self.assertAllEqual(all_true, is_finite)
+ 
+   def _testParamShapes(self, sample_shape, expected):
+diff --git a/tensorflow/contrib/distributions/python/kernel_tests/half_normal_test.py b/tensorflow/contrib/distributions/python/kernel_tests/half_normal_test.py
+index a4e7566008..ac927b0cd6 100644
+--- a/tensorflow/contrib/distributions/python/kernel_tests/half_normal_test.py
++++ b/tensorflow/contrib/distributions/python/kernel_tests/half_normal_test.py
+@@ -51,7 +51,7 @@ class HalfNormalTest(test.TestCase):
+ 
+   def assertAllFinite(self, tensor):
+     is_finite = np.isfinite(tensor.eval())
+-    all_true = np.ones_like(is_finite, dtype=np.bool)
++    all_true = np.ones_like(is_finite, dtype=np.bool_)
+     self.assertAllEqual(all_true, is_finite)
+ 
+   def _testParamShapes(self, sample_shape, expected):
+diff --git a/tensorflow/contrib/distributions/python/kernel_tests/kumaraswamy_test.py b/tensorflow/contrib/distributions/python/kernel_tests/kumaraswamy_test.py
+index 2980e2bfe9..9909b8e88d 100644
+--- a/tensorflow/contrib/distributions/python/kernel_tests/kumaraswamy_test.py
++++ b/tensorflow/contrib/distributions/python/kernel_tests/kumaraswamy_test.py
+@@ -358,8 +358,8 @@ class KumaraswamyTest(test.TestCase):
+         b = 10. * np.random.random(shape).astype(dt)
+         x = np.random.random(shape).astype(dt)
+         actual = kumaraswamy_lib.Kumaraswamy(a, b).cdf(x).eval()
+-        self.assertAllEqual(np.ones(shape, dtype=np.bool), 0. <= x)
+-        self.assertAllEqual(np.ones(shape, dtype=np.bool), 1. >= x)
++        self.assertAllEqual(np.ones(shape, dtype=np.bool_), 0. <= x)
++        self.assertAllEqual(np.ones(shape, dtype=np.bool_), 1. >= x)
+         if not stats:
+           return
+         self.assertAllClose(
+@@ -374,8 +374,8 @@ class KumaraswamyTest(test.TestCase):
+         x = np.random.random(shape).astype(dt)
+         actual = math_ops.exp(kumaraswamy_lib.Kumaraswamy(a,
+                                                           b).log_cdf(x)).eval()
+-        self.assertAllEqual(np.ones(shape, dtype=np.bool), 0. <= x)
+-        self.assertAllEqual(np.ones(shape, dtype=np.bool), 1. >= x)
++        self.assertAllEqual(np.ones(shape, dtype=np.bool_), 0. <= x)
++        self.assertAllEqual(np.ones(shape, dtype=np.bool_), 1. >= x)
+         if not stats:
+           return
+         self.assertAllClose(
+diff --git a/tensorflow/contrib/distributions/python/kernel_tests/mixture_same_family_test.py b/tensorflow/contrib/distributions/python/kernel_tests/mixture_same_family_test.py
+index ff6092fc26..69a46bbb81 100644
+--- a/tensorflow/contrib/distributions/python/kernel_tests/mixture_same_family_test.py
++++ b/tensorflow/contrib/distributions/python/kernel_tests/mixture_same_family_test.py
+@@ -69,7 +69,7 @@ class MixtureSameFamilyTest(test_util.VectorDistributionTestHelpers,
+       self.assertEqual([4, 5, 2], x.shape)
+       self.assertEqual([4, 5, 2], log_prob_x.shape)
+       self.assertAllEqual(
+-          np.ones_like(x_, dtype=np.bool), np.logical_or(x_ == 0., x_ == 1.))
++          np.ones_like(x_, dtype=np.bool_), np.logical_or(x_ == 0., x_ == 1.))
+ 
+   def testSampleAndLogProbMultivariateShapes(self):
+     with self.test_session():
+diff --git a/tensorflow/contrib/distributions/python/kernel_tests/mvn_diag_test.py b/tensorflow/contrib/distributions/python/kernel_tests/mvn_diag_test.py
+index 9635134b08..8697e84243 100644
+--- a/tensorflow/contrib/distributions/python/kernel_tests/mvn_diag_test.py
++++ b/tensorflow/contrib/distributions/python/kernel_tests/mvn_diag_test.py
+@@ -298,7 +298,7 @@ class MultivariateNormalDiagTest(test.TestCase):
+           scale_diag=np.ones([dims], dtype=np.float32))
+       g = gradients_impl.gradients(ds.kl_divergence(mvn, mvn), loc)
+       g_ = sess.run(g)
+-      self.assertAllEqual(np.ones_like(g_, dtype=np.bool),
++      self.assertAllEqual(np.ones_like(g_, dtype=np.bool_),
+                           np.isfinite(g_))
+ 
+ 
+diff --git a/tensorflow/contrib/distributions/python/kernel_tests/negative_binomial_test.py b/tensorflow/contrib/distributions/python/kernel_tests/negative_binomial_test.py
+index 37edaa42cd..a3c72df318 100644
+--- a/tensorflow/contrib/distributions/python/kernel_tests/negative_binomial_test.py
++++ b/tensorflow/contrib/distributions/python/kernel_tests/negative_binomial_test.py
+@@ -229,7 +229,7 @@ class NegativeBinomialTest(test.TestCase):
+       sample_min = math_ops.reduce_min(samples)
+       [sample_mean_, sample_var_, sample_min_] = sess.run([
+           sample_mean, sample_var, sample_min])
+-      self.assertAllEqual(np.ones(sample_min_.shape, dtype=np.bool),
++      self.assertAllEqual(np.ones(sample_min_.shape, dtype=np.bool_),
+                           sample_min_ >= 0.0)
+       for i in range(2):
+         self.assertAllClose(sample_mean_[i],
+@@ -249,7 +249,7 @@ class NegativeBinomialTest(test.TestCase):
+       nb = negative_binomial.NegativeBinomial(
+           total_count=total_count, logits=logits)
+       log_prob_ = sess.run(nb.log_prob(x))
+-      self.assertAllEqual(np.ones_like(log_prob_, dtype=np.bool),
++      self.assertAllEqual(np.ones_like(log_prob_, dtype=np.bool_),
+                           np.isfinite(log_prob_))
+ 
+   def testLogProbUnderflow(self):
+@@ -260,7 +260,7 @@ class NegativeBinomialTest(test.TestCase):
+       nb = negative_binomial.NegativeBinomial(
+           total_count=total_count, logits=logits)
+       log_prob_ = sess.run(nb.log_prob(x))
+-      self.assertAllEqual(np.ones_like(log_prob_, dtype=np.bool),
++      self.assertAllEqual(np.ones_like(log_prob_, dtype=np.bool_),
+                           np.isfinite(log_prob_))
+ 
+ 
+diff --git a/tensorflow/contrib/distributions/python/kernel_tests/onehot_categorical_test.py b/tensorflow/contrib/distributions/python/kernel_tests/onehot_categorical_test.py
+index 111f88eeb5..0d88351488 100644
+--- a/tensorflow/contrib/distributions/python/kernel_tests/onehot_categorical_test.py
++++ b/tensorflow/contrib/distributions/python/kernel_tests/onehot_categorical_test.py
+@@ -134,7 +134,7 @@ class OneHotCategoricalTest(test.TestCase):
+       dist = onehot_categorical.OneHotCategorical(logits=logits)
+       np_sample = dist.sample().eval()
+       np_prob = dist.prob(np_sample).eval()
+-      expected_prob = prob[np_sample.astype(np.bool)]
++      expected_prob = prob[np_sample.astype(np.bool_)]
+       self.assertAllClose(expected_prob, np_prob.flatten())
+ 
+   def testSample(self):
+diff --git a/tensorflow/contrib/distributions/python/kernel_tests/statistical_testing_test.py b/tensorflow/contrib/distributions/python/kernel_tests/statistical_testing_test.py
+index 9c4dfed836..4ef164a276 100644
+--- a/tensorflow/contrib/distributions/python/kernel_tests/statistical_testing_test.py
++++ b/tensorflow/contrib/distributions/python/kernel_tests/statistical_testing_test.py
+@@ -50,7 +50,7 @@ class StatisticalTestingTest(test.TestCase):
+         detectable_discrepancies_, false_pass_rates, false_fail_rates):
+       below_threshold = discrepancies <= thresholds
+       self.assertAllEqual(
+-          np.ones_like(below_threshold, np.bool), below_threshold,
++          np.ones_like(below_threshold, np.bool_), below_threshold,
+           msg='false_pass_rate({}), false_fail_rate({})'.format(
+               false_pass_rate, false_fail_rate))
+ 
+@@ -88,7 +88,7 @@ class StatisticalTestingTest(test.TestCase):
+         detectable_discrepancies_, false_pass_rates, false_fail_rates):
+       below_threshold = discrepancies <= thresholds
+       self.assertAllEqual(
+-          np.ones_like(below_threshold, np.bool), below_threshold,
++          np.ones_like(below_threshold, np.bool_), below_threshold,
+           msg='false_pass_rate({}), false_fail_rate({})'.format(
+               false_pass_rate, false_fail_rate))
+ 
+diff --git a/tensorflow/contrib/image/python/kernel_tests/segmentation_test.py b/tensorflow/contrib/image/python/kernel_tests/segmentation_test.py
+index 48066cbace..191da7bd77 100644
+--- a/tensorflow/contrib/image/python/kernel_tests/segmentation_test.py
++++ b/tensorflow/contrib/image/python/kernel_tests/segmentation_test.py
+@@ -149,7 +149,7 @@ class SegmentationTest(test_util.TensorFlowTestCase):
+ 
+   def testRandom_scipy(self):
+     np.random.seed(42)
+-    images = np.random.randint(0, 2, size=(10, 100, 200)).astype(np.bool)
++    images = np.random.randint(0, 2, size=(10, 100, 200)).astype(np.bool_)
+     expected = connected_components_reference_implementation(images)
+     if expected is None:
+       return
+diff --git a/tensorflow/contrib/layers/python/ops/sparse_ops_test.py b/tensorflow/contrib/layers/python/ops/sparse_ops_test.py
+index d50750001e..b2b753db6e 100644
+--- a/tensorflow/contrib/layers/python/ops/sparse_ops_test.py
++++ b/tensorflow/contrib/layers/python/ops/sparse_ops_test.py
+@@ -68,7 +68,7 @@ class DenseToSparseTensorTest(test.TestCase):
+       st = sparse_ops.dense_to_sparse_tensor([True, False, True, False])
+       result = sess.run(st)
+     self.assertEqual(result.indices.dtype, np.int64)
+-    self.assertEqual(result.values.dtype, np.bool)
++    self.assertEqual(result.values.dtype, np.bool_)
+     self.assertEqual(result.dense_shape.dtype, np.int64)
+     self.assertAllEqual([[0], [2]], result.indices)
+     self.assertAllEqual([True, True], result.values)
+@@ -79,7 +79,7 @@ class DenseToSparseTensorTest(test.TestCase):
+       st = sparse_ops.dense_to_sparse_tensor([b'qwe', b'', b'ewq', b''])
+       result = sess.run(st)
+     self.assertEqual(result.indices.dtype, np.int64)
+-    self.assertEqual(result.values.dtype, np.object)
++    self.assertEqual(result.values.dtype, np.object_)
+     self.assertEqual(result.dense_shape.dtype, np.int64)
+     self.assertAllEqual([[0], [2]], result.indices)
+     self.assertAllEqual([b'qwe', b'ewq'], result.values)
+@@ -91,7 +91,7 @@ class DenseToSparseTensorTest(test.TestCase):
+           [b'qwe', b'', b'ewq', b''], ignore_value=b'qwe')
+       result = sess.run(st)
+     self.assertEqual(result.indices.dtype, np.int64)
+-    self.assertEqual(result.values.dtype, np.object)
++    self.assertEqual(result.values.dtype, np.object_)
+     self.assertEqual(result.dense_shape.dtype, np.int64)
+     self.assertAllEqual([[1], [2], [3]], result.indices)
+     self.assertAllEqual([b'', b'ewq', b''], result.values)
+diff --git a/tensorflow/contrib/learn/python/learn/datasets/text_datasets.py b/tensorflow/contrib/learn/python/learn/datasets/text_datasets.py
+index ce94663017..0083cd4847 100644
+--- a/tensorflow/contrib/learn/python/learn/datasets/text_datasets.py
++++ b/tensorflow/contrib/learn/python/learn/datasets/text_datasets.py
+@@ -70,8 +70,8 @@ def load_dbpedia(size='small', test_with_fake_data=False):
+     test_path = os.path.join(module_path, 'data', 'text_test.csv')
+ 
+   train = base.load_csv_without_header(
+-      train_path, target_dtype=np.int32, features_dtype=np.str, target_column=0)
++      train_path, target_dtype=np.int32, features_dtype=np.str_, target_column=0)
+   test = base.load_csv_without_header(
+-      test_path, target_dtype=np.int32, features_dtype=np.str, target_column=0)
++      test_path, target_dtype=np.int32, features_dtype=np.str_, target_column=0)
+ 
+   return base.Datasets(train=train, validation=None, test=test)
+diff --git a/tensorflow/contrib/learn/python/learn/learn_io/data_feeder_test.py b/tensorflow/contrib/learn/python/learn/learn_io/data_feeder_test.py
+index 1f439965da..f663439965 100644
+--- a/tensorflow/contrib/learn/python/learn/learn_io/data_feeder_test.py
++++ b/tensorflow/contrib/learn/python/learn/learn_io/data_feeder_test.py
+@@ -123,8 +123,8 @@ class DataFeederTest(test.TestCase):
+ 
+   def test_input_bool(self):
+     data = np.array([[False for _ in xrange(2)] for _ in xrange(2)])
+-    self._assert_dtype(np.bool, dtypes.bool, data)
+-    self._assert_dtype(np.bool, dtypes.bool, self._wrap_dict(data))
++    self._assert_dtype(np.bool_, dtypes.bool, data)
++    self._assert_dtype(np.bool_, dtypes.bool, self._wrap_dict(data))
+ 
+   def test_input_string(self):
+     input_data = np.array([['str%d' % i for i in xrange(2)] for _ in xrange(2)])
+diff --git a/tensorflow/contrib/lookup/lookup_ops_test.py b/tensorflow/contrib/lookup/lookup_ops_test.py
+index 5d4682ec9f..2234660648 100644
+--- a/tensorflow/contrib/lookup/lookup_ops_test.py
++++ b/tensorflow/contrib/lookup/lookup_ops_test.py
+@@ -104,7 +104,7 @@ class HashTableOpTest(test.TestCase):
+   def testHashTableInitWithNumPyArrays(self):
+     with self.test_session():
+       default_val = -1
+-      keys = np.array(["brain", "salad", "surgery"], dtype=np.str)
++      keys = np.array(["brain", "salad", "surgery"], dtype=np.str_)
+       values = np.array([0, 1, 2], dtype=np.int64)
+       table = lookup.HashTable(
+           lookup.KeyValueTensorInitializer(keys, values), default_val)
+diff --git a/tensorflow/contrib/training/python/training/sequence_queueing_state_saver_test.py b/tensorflow/contrib/training/python/training/sequence_queueing_state_saver_test.py
+index 7aebd9d9fe..cad420971c 100644
+--- a/tensorflow/contrib/training/python/training/sequence_queueing_state_saver_test.py
++++ b/tensorflow/contrib/training/python/training/sequence_queueing_state_saver_test.py
+@@ -379,7 +379,7 @@ class SequenceQueueingStateSaverTest(test.TestCase):
+               "seq1": np.random.rand(pad_i, 5),
+               "seq2": np.random.rand(pad_i, 4, 2),
+               "seq3": np.random.rand(pad_i),
+-              "context1": np.random.rand(3, 4).astype(np.str),
++              "context1": np.random.rand(3, 4).astype(np.str_),
+               "context2": np.asarray(
+                   100 * np.random.rand(), dtype=np.int32),
+               "state1": np.random.rand(6, 7),
+@@ -456,7 +456,7 @@ class SequenceQueueingStateSaverTest(test.TestCase):
+             self.assertAllClose(state1[i], expected_state1)
+             self.assertAllEqual(state2[i], expected_state2)
+             # context1 is strings, which come back as bytes
+-            self.assertAllEqual(context1[i].astype(np.str),
++            self.assertAllEqual(context1[i].astype(np.str_),
+                                 stored_state["context1"])
+             self.assertAllEqual(context2[i], stored_state["context2"])
+             self.assertAllClose(seq1[i], expected_sequence1)
+@@ -528,7 +528,7 @@ class SequenceQueueingStateSaverTest(test.TestCase):
+                      length: np.random.randint(2 * num_unroll),
+                      key: "%05d" % insert_key[0],
+                      sequences["seq1"]: np.random.rand(2 * num_unroll, 5),
+-                     context["context1"]: np.random.rand(3, 4).astype(np.str),
++                     context["context1"]: np.random.rand(3, 4).astype(np.str_),
+                      initial_states["state1"]: 0.0
+                  })
+         insert_key[0] += 1
+@@ -596,7 +596,7 @@ class SequenceQueueingStateSaverTest(test.TestCase):
+                      length: np.random.randint(2 * num_unroll),
+                      key: "%05d" % insert_key,
+                      sequences["seq1"]: np.random.rand(2 * num_unroll, 5),
+-                     context["context1"]: np.random.rand(3, 4).astype(np.str),
++                     context["context1"]: np.random.rand(3, 4).astype(np.str_),
+                      initial_states["state1"]: 0.0
+                  })
+ 
+diff --git a/tensorflow/python/client/session.py b/tensorflow/python/client/session.py
+index 5507d011bb..f802c38175 100644
+--- a/tensorflow/python/client/session.py
++++ b/tensorflow/python/client/session.py
+@@ -1395,7 +1395,7 @@ class BaseSession(SessionInterface):
+         fetches.append(mover[1])
+       handles = self.run(fetches, feed_dict=feeds)
+       for handle_mover, handle in zip(handle_movers, handles):
+-        np_val = np.array(handle.handle, dtype=np.object)
++        np_val = np.array(handle.handle, dtype=np.object_)
+         feed_name = handle_mover[0]
+         feed_tensor = feed_map[feed_name][0]
+         feed_dict[feed_tensor] = np_val
+diff --git a/tensorflow/python/client/session_test.py b/tensorflow/python/client/session_test.py
+index df66693940..c627e6777d 100644
+--- a/tensorflow/python/client/session_test.py
++++ b/tensorflow/python/client/session_test.py
+@@ -1267,7 +1267,7 @@ class SessionTest(test_util.TensorFlowTestCase):
+     with session.Session() as sess:
+       for dtype in [
+           dtypes.float16, dtypes.float32, dtypes.float64, dtypes.int32,
+-          dtypes.uint8, dtypes.int16, dtypes.int8, dtypes.int64, dtypes.bool,
++          dtypes.uint8, dtypes.int16, dtypes.int8, dtypes.int64, dtypes.bool_,
+           dtypes.complex64, dtypes.complex128
+       ]:
+         for shape in [(32, 4, 128), (37,), (2, 0, 6), (0, 0, 0)]:
+@@ -1278,7 +1278,7 @@ class SessionTest(test_util.TensorFlowTestCase):
+ 
+           np_array = np.random.randint(-10, 10, shape)
+ 
+-          if dtype == dtypes.bool:
++          if dtype == dtypes.bool_:
+             np_array = np_array > 0
+           elif dtype == dtypes.complex64:
+             np_array = np.sqrt(np_array.astype(np_dtype))
+@@ -1400,7 +1400,7 @@ class SessionTest(test_util.TensorFlowTestCase):
+           size *= s
+         c_list = np.array(
+             [compat.as_bytes(str(i)) for i in xrange(size)],
+-            dtype=np.object).reshape(shape) if size > 0 else []
++            dtype=np.object_).reshape(shape) if size > 0 else []
+         c = constant_op.constant(c_list)
+         self.assertAllEqual(c.eval(), c_list)
+ 
+@@ -1412,7 +1412,7 @@ class SessionTest(test_util.TensorFlowTestCase):
+           size *= s
+         c_list = np.array(
+             [compat.as_bytes(str(i)) for i in xrange(size)],
+-            dtype=np.object).reshape(shape)
++            dtype=np.object_).reshape(shape)
+         feed_t = array_ops.placeholder(dtype=dtypes.string, shape=shape)
+         c = array_ops.identity(feed_t)
+         self.assertAllEqual(sess.run(c, feed_dict={feed_t: c_list}), c_list)
+@@ -1446,7 +1446,7 @@ class SessionTest(test_util.TensorFlowTestCase):
+       for i in range(len(c_list)):
+         self.assertEqual(c_list[i], out[i].decode('utf-8'))
+ 
+-      out = c.eval(feed_dict={feed_t: np.array(c_list, dtype=np.object)})
++      out = c.eval(feed_dict={feed_t: np.array(c_list, dtype=np.object_)})
+       for i in range(len(c_list)):
+         self.assertEqual(c_list[i], out[i].decode('utf-8'))
+ 
+diff --git a/tensorflow/python/debug/cli/tensor_format.py b/tensorflow/python/debug/cli/tensor_format.py
+index 9ba84e3f22..63b44da9c7 100644
+--- a/tensorflow/python/debug/cli/tensor_format.py
++++ b/tensorflow/python/debug/cli/tensor_format.py
+@@ -559,7 +559,7 @@ def numeric_summary(tensor):
+           ("std", np.std(valid_array))]
+       output.extend(_counts_summary(stats, skip_zeros=False))
+     return output
+-  elif tensor.dtype == np.bool:
++  elif tensor.dtype == np.bool_:
+     counts = [
+         ("False", np.sum(tensor == 0)),
+         ("True", np.sum(tensor > 0)),]
+diff --git a/tensorflow/python/debug/cli/tensor_format_test.py b/tensorflow/python/debug/cli/tensor_format_test.py
+index 18ddbb6437..faff49c89c 100644
+--- a/tensorflow/python/debug/cli/tensor_format_test.py
++++ b/tensorflow/python/debug/cli/tensor_format_test.py
+@@ -699,29 +699,29 @@ class NumericSummaryTest(test_util.TensorFlowTestCase):
+         self, [-3, 3, 1.79282868526, 2.39789673081], out.lines[3:4])
+ 
+   def testNumericSummaryOnBool(self):
+-    x = np.array([False, True, True, False], dtype=np.bool)
++    x = np.array([False, True, True, False], dtype=np.bool_)
+     out = tensor_format.numeric_summary(x)
+     cli_test_utils.assert_lines_equal_ignoring_whitespace(
+         self,
+         ["| False  True | total |", "|     2     2 |     4 |"], out.lines)
+ 
+-    x = np.array([True] * 10, dtype=np.bool)
++    x = np.array([True] * 10, dtype=np.bool_)
+     out = tensor_format.numeric_summary(x)
+     cli_test_utils.assert_lines_equal_ignoring_whitespace(
+         self, ["| True | total |", "|   10 |    10 |"], out.lines)
+ 
+-    x = np.array([False] * 10, dtype=np.bool)
++    x = np.array([False] * 10, dtype=np.bool_)
+     out = tensor_format.numeric_summary(x)
+     cli_test_utils.assert_lines_equal_ignoring_whitespace(
+         self, ["| False | total |", "|    10 |    10 |"], out.lines)
+ 
+-    x = np.array([], dtype=np.bool)
++    x = np.array([], dtype=np.bool_)
+     out = tensor_format.numeric_summary(x)
+     self.assertEqual(["No numeric summary available due to empty tensor."],
+                      out.lines)
+ 
+   def testNumericSummaryOnStrTensor(self):
+-    x = np.array(["spam", "egg"], dtype=np.object)
++    x = np.array(["spam", "egg"], dtype=np.object_)
+     out = tensor_format.numeric_summary(x)
+     self.assertEqual(
+         ["No numeric summary available due to tensor dtype: object."],
+diff --git a/tensorflow/python/debug/lib/grpc_large_data_test.py b/tensorflow/python/debug/lib/grpc_large_data_test.py
+index 5bc477a9ba..f14341c09b 100644
+--- a/tensorflow/python/debug/lib/grpc_large_data_test.py
++++ b/tensorflow/python/debug/lib/grpc_large_data_test.py
+@@ -202,7 +202,7 @@ class LargeGraphAndLargeTensorsDebugTest(test_util.TensorFlowTestCase):
+ 
+       u_init_value = self.debug_server.debug_tensor_values[
+           "u_init:0:DebugIdentity"][0]
+-      self.assertEqual(np.object, u_init_value.dtype)
++      self.assertEqual(np.object_, u_init_value.dtype)
+       self.assertEqual(0, len(u_init_value))
+ 
+ 
+diff --git a/tensorflow/python/estimator/inputs/queues/feeding_functions_test.py b/tensorflow/python/estimator/inputs/queues/feeding_functions_test.py
+index 30abd82130..16e3adec2b 100644
+--- a/tensorflow/python/estimator/inputs/queues/feeding_functions_test.py
++++ b/tensorflow/python/estimator/inputs/queues/feeding_functions_test.py
+@@ -368,21 +368,21 @@ class _FeedingFunctionsTestCase(test.TestCase):
+ 
+   def testPadIfNeededSmallWithSpecifiedNonNumericValue(self):
+     fill_value = False
+-    a = (np.ones(shape=[32, 32], dtype=np.bool).tolist() +
+-         np.ones(shape=[32, 36], dtype=np.bool).tolist())
++    a = (np.ones(shape=[32, 32], dtype=np.bool_).tolist() +
++         np.ones(shape=[32, 36], dtype=np.bool_).tolist())
+     a = list(map(np.array, a))
+     actual = ff._pad_if_needed(a, fill_value)
+-    expected = np.ones(shape=[64, 36], dtype=np.bool)
++    expected = np.ones(shape=[64, 36], dtype=np.bool_)
+     expected[:32, 32:] = fill_value
+     self.assertEqual(expected.tolist(), actual.tolist())
+ 
+   def testPadIfNeededLargeWithSpecifiedNonNumericValue(self):
+     fill_value = False
+-    a = (np.ones(shape=[8, 8, 8, 8, 32], dtype=np.bool).tolist() +
+-         np.ones(shape=[8, 8, 8, 8, 36], dtype=np.bool).tolist())
++    a = (np.ones(shape=[8, 8, 8, 8, 32], dtype=np.bool_).tolist() +
++         np.ones(shape=[8, 8, 8, 8, 36], dtype=np.bool_).tolist())
+     a = list(map(np.array, a))
+     actual = ff._pad_if_needed(a, fill_value)
+-    expected = np.ones(shape=[16, 8, 8, 8, 36], dtype=np.bool)
++    expected = np.ones(shape=[16, 8, 8, 8, 36], dtype=np.bool_)
+     expected[:8, ..., 32:] = fill_value
+     self.assertEqual(expected.tolist(), actual.tolist())
+ 
+diff --git a/tensorflow/python/framework/dtypes.py b/tensorflow/python/framework/dtypes.py
+index c3f70df7d8..e2b1f7ddfa 100644
+--- a/tensorflow/python/framework/dtypes.py
++++ b/tensorflow/python/framework/dtypes.py
+@@ -16,7 +16,7 @@
+ from __future__ import absolute_import
+ from __future__ import division
+ from __future__ import print_function
+-
++import builtins
+ import numpy as np
+ 
+ from tensorflow.core.framework import types_pb2
+@@ -307,7 +307,6 @@ class DType(object):
+ # Define data type range of numpy dtype
+ dtype_range = {
+     np.bool_: (False, True),
+-    np.bool8: (False, True),
+     np.uint8: (0, 255),
+     np.uint16: (0, 65535),
+     np.int8: (-128, 127),
+@@ -546,8 +545,8 @@ _NP_TO_TF = frozenset([
+     (np.int8, int8),
+     (np.complex64, complex64),
+     (np.complex128, complex128),
+-    (np.object, string),
+-    (np.bool, bool),
++    (np.object_, string),
++    (np.bool_, bool),
+     (_np_qint8, qint8),
+     (_np_quint8, quint8),
+     (_np_qint16, qint16),
+@@ -576,10 +575,10 @@ _TF_TO_NP = {
+         np.int16,
+     types_pb2.DT_INT8:
+         np.int8,
+-    # NOTE(touts): For strings we use np.object as it supports variable length
++    # NOTE(touts): For strings we use np.object_ as it supports variable length
+     # strings.
+     types_pb2.DT_STRING:
+-        np.object,
++        np.object_,
+     types_pb2.DT_COMPLEX64:
+         np.complex64,
+     types_pb2.DT_COMPLEX128:
+@@ -587,7 +586,7 @@ _TF_TO_NP = {
+     types_pb2.DT_INT64:
+         np.int64,
+     types_pb2.DT_BOOL:
+-        np.bool,
++        np.bool_,
+     types_pb2.DT_QINT8:
+         _np_qint8,
+     types_pb2.DT_QUINT8:
+@@ -621,7 +620,7 @@ _TF_TO_NP = {
+     types_pb2.DT_INT8_REF:
+         np.int8,
+     types_pb2.DT_STRING_REF:
+-        np.object,
++        np.object_,
+     types_pb2.DT_COMPLEX64_REF:
+         np.complex64,
+     types_pb2.DT_COMPLEX128_REF:
+@@ -631,7 +630,7 @@ _TF_TO_NP = {
+     types_pb2.DT_UINT64_REF:
+         np.uint64,
+     types_pb2.DT_BOOL_REF:
+-        np.bool,
++        np.bool_,
+     types_pb2.DT_QINT8_REF:
+         _np_qint8,
+     types_pb2.DT_QUINT8_REF:
+@@ -653,8 +652,9 @@ QUANTIZED_DTYPES = _QUANTIZED_DTYPES_REF.union(_QUANTIZED_DTYPES_NO_REF)
+ tf_export("QUANTIZED_DTYPES").export_constant(__name__, "QUANTIZED_DTYPES")
+ 
+ _PYTHON_TO_TF = {
+-    float: float32,
+-    bool: bool,
++    builtins.float: float32,
++    builtins.bool: bool,
++    builtins.object: string
+ }
+ 
+ 
+diff --git a/tensorflow/python/framework/dtypes_test.py b/tensorflow/python/framework/dtypes_test.py
+index a873670e04..719fdc0953 100644
+--- a/tensorflow/python/framework/dtypes_test.py
++++ b/tensorflow/python/framework/dtypes_test.py
+@@ -81,10 +81,10 @@ class TypesTest(test_util.TensorFlowTestCase):
+     self.assertIs(dtypes.int8, dtypes.as_dtype(np.int8))
+     self.assertIs(dtypes.complex64, dtypes.as_dtype(np.complex64))
+     self.assertIs(dtypes.complex128, dtypes.as_dtype(np.complex128))
+-    self.assertIs(dtypes.string, dtypes.as_dtype(np.object))
++    self.assertIs(dtypes.string, dtypes.as_dtype(np.object_))
+     self.assertIs(dtypes.string,
+                   dtypes.as_dtype(np.array(["foo", "bar"]).dtype))
+-    self.assertIs(dtypes.bool, dtypes.as_dtype(np.bool))
++    self.assertIs(dtypes.bool, dtypes.as_dtype(np.bool_))
+     with self.assertRaises(TypeError):
+       dtypes.as_dtype(np.dtype([("f1", np.uint), ("f2", np.int32)]))
+ 
+diff --git a/tensorflow/python/framework/tensor_util.py b/tensorflow/python/framework/tensor_util.py
+index ca63efbc84..6b93ad754a 100644
+--- a/tensorflow/python/framework/tensor_util.py
++++ b/tensorflow/python/framework/tensor_util.py
+@@ -97,9 +97,9 @@ if _FAST_TENSOR_UTIL_AVAILABLE:
+           fast_tensor_util.AppendComplex64ArrayToTensorProto,
+       np.complex128:
+           fast_tensor_util.AppendComplex128ArrayToTensorProto,
+-      np.object:
++      np.object_:
+           fast_tensor_util.AppendObjectArrayToTensorProto,
+-      np.bool:
++      np.bool_:
+           fast_tensor_util.AppendBoolArrayToTensorProto,
+       dtypes.qint8.as_numpy_dtype:
+           fast_tensor_util.AppendInt8ArrayToTensorProto,
+@@ -165,8 +165,8 @@ else:
+       np.int16: SlowAppendIntArrayToTensorProto,
+       np.complex64: SlowAppendComplex64ArrayToTensorProto,
+       np.complex128: SlowAppendComplex128ArrayToTensorProto,
+-      np.object: SlowAppendObjectArrayToTensorProto,
+-      np.bool: SlowAppendBoolArrayToTensorProto,
++      np.object_: SlowAppendObjectArrayToTensorProto,
++      np.bool_: SlowAppendBoolArrayToTensorProto,
+       dtypes.qint8.as_numpy_dtype: SlowAppendQIntArrayToTensorProto,
+       dtypes.quint8.as_numpy_dtype: SlowAppendQIntArrayToTensorProto,
+       dtypes.qint16.as_numpy_dtype: SlowAppendQIntArrayToTensorProto,
+@@ -189,7 +189,7 @@ def GetNumpyAppendFn(dtype):
+   # dtype with a single constant (np.string does not exist) to decide
+   # dtype is a "string" type. We need to compare the dtype.type to be
+   # sure it's a string type.
+-  if dtype.type == np.string_ or dtype.type == np.unicode_:
++  if dtype.type == np.bytes_ or dtype.type == np.str_:
+     if _FAST_TENSOR_UTIL_AVAILABLE:
+       return fast_tensor_util.AppendObjectArrayToTensorProto
+     else:
+@@ -511,7 +511,7 @@ def make_tensor_proto(values, dtype=None, shape=None, verify_shape=False):
+ 
+     # At this point, values may be a list of objects that we could not
+     # identify a common type for (hence it was inferred as
+-    # np.object/dtypes.string).  If we are unable to convert it to a
++    # np.object_/dtypes.string).  If we are unable to convert it to a
+     # string, we raise a more helpful error message.
+     #
+     # Ideally, we'd be able to convert the elements of the list to a
+@@ -750,7 +750,11 @@ def _ConstantValue(tensor, partial):
+       if value is None and not partial:
+         return None
+       values.append(value)
+-    return np.array(values)
++    try:
++      return np.array(values)
++    except ValueError:
++      # If partial=True, some of the elements of values may be None.
++      return np.array(values, dtype=object)
+   elif tensor.op.type == "Fill":
+     fill_shape = tensor.shape
+     fill_value = constant_value(tensor.op.inputs[1])
+diff --git a/tensorflow/python/framework/tensor_util_test.py b/tensorflow/python/framework/tensor_util_test.py
+index 35fff80c61..57242e5bad 100644
+--- a/tensorflow/python/framework/tensor_util_test.py
++++ b/tensorflow/python/framework/tensor_util_test.py
+@@ -496,13 +496,13 @@ class TensorUtilTest(test.TestCase):
+       string_val: "foo"
+       """, t)
+     a = tensor_util.MakeNdarray(t)
+-    self.assertEquals(np.object, a.dtype)
++    self.assertEquals(np.object_, a.dtype)
+     self.assertEquals([b"foo"], a)
+ 
+   def testStringWithImplicitRepeat(self):
+     t = tensor_util.make_tensor_proto("f", shape=[3, 4])
+     a = tensor_util.MakeNdarray(t)
+-    self.assertAllEqual(np.array([[b"f"] * 4] * 3, dtype=np.object), a)
++    self.assertAllEqual(np.array([[b"f"] * 4] * 3, dtype=np.object_), a)
+ 
+   def testStringN(self):
+     t = tensor_util.make_tensor_proto([b"foo", b"bar", b"baz"], shape=[1, 3])
+@@ -514,7 +514,7 @@ class TensorUtilTest(test.TestCase):
+       string_val: "baz"
+       """, t)
+     a = tensor_util.MakeNdarray(t)
+-    self.assertEquals(np.object, a.dtype)
++    self.assertEquals(np.object_, a.dtype)
+     self.assertAllEqual(np.array([[b"foo", b"bar", b"baz"]]), a)
+ 
+   def testStringNpArray(self):
+@@ -529,7 +529,7 @@ class TensorUtilTest(test.TestCase):
+       string_val: "abcd"
+       """, t)
+     a = tensor_util.MakeNdarray(t)
+-    self.assertEquals(np.object, a.dtype)
++    self.assertEquals(np.object_, a.dtype)
+     self.assertAllEqual(np.array([[b"a", b"ab"], [b"abc", b"abcd"]]), a)
+ 
+   def testArrayMethod(self):
+@@ -548,7 +548,7 @@ class TensorUtilTest(test.TestCase):
+       string_val: "baz"
+       """, t)
+     a = tensor_util.MakeNdarray(t)
+-    self.assertEquals(np.object, a.dtype)
++    self.assertEquals(np.object_, a.dtype)
+     self.assertAllEqual(np.array([[b"foo", b"bar", b"baz"]]), a)
+ 
+   def testArrayInterface(self):
+@@ -568,7 +568,7 @@ class TensorUtilTest(test.TestCase):
+       string_val: "baz"
+       """, t)
+     a = tensor_util.MakeNdarray(t)
+-    self.assertEquals(np.object, a.dtype)
++    self.assertEquals(np.object_, a.dtype)
+     self.assertAllEqual(np.array([[b"foo", b"bar", b"baz"]]), a)
+ 
+   def testStringTuple(self):
+@@ -582,7 +582,7 @@ class TensorUtilTest(test.TestCase):
+       string_val: "abcd"
+       """, t)
+     a = tensor_util.MakeNdarray(t)
+-    self.assertEquals(np.object, a.dtype)
++    self.assertEquals(np.object_, a.dtype)
+     self.assertAllEqual(np.array((b"a", b"ab", b"abc", b"abcd")), a)
+ 
+   def testStringNestedTuple(self):
+@@ -596,7 +596,7 @@ class TensorUtilTest(test.TestCase):
+       string_val: "abcd"
+       """, t)
+     a = tensor_util.MakeNdarray(t)
+-    self.assertEquals(np.object, a.dtype)
++    self.assertEquals(np.object_, a.dtype)
+     self.assertAllEqual(np.array(((b"a", b"ab"), (b"abc", b"abcd"))), a)
+ 
+   def testComplex64(self):
+diff --git a/tensorflow/python/framework/test_util.py b/tensorflow/python/framework/test_util.py
+index f85dec02d8..efb74d5952 100644
+--- a/tensorflow/python/framework/test_util.py
++++ b/tensorflow/python/framework/test_util.py
+@@ -1236,7 +1236,22 @@ class TensorFlowTestCase(googletest.TestCase):
+       else:
+         a = self.evaluate(a)
+     if not isinstance(a, np.ndarray):
+-      return np.array(a)
++      try:
++        return np.array(a)
++      except ValueError as e:
++        # TODO(b/264461299): NumPy 1.24 no longer infers dtype=object from
++        # ragged sequences.
++        # See:
++        # https://numpy.org/neps/nep-0034-infer-dtype-is-object.html
++        # Fixing this correctly requires clarifying the API contract of this
++        # function with respect to ragged sequences and possibly updating all
++        # users. As a backwards compatibility measure, if array
++        # creation fails with an "inhomogeneous shape" error, try again with
++        # an explicit dtype=object, which should restore the previous behavior.
++        if "inhomogeneous shape" in str(e):
++          return np.array(a, dtype=object)
++        else:
++          raise
+     return a
+ 
+   def _assertArrayLikeAllClose(self, a, b, rtol=1e-6, atol=1e-6, msg=None):
+diff --git a/tensorflow/python/kernel_tests/array_ops_test.py b/tensorflow/python/kernel_tests/array_ops_test.py
+index 08bf2d9c64..172beae913 100644
+--- a/tensorflow/python/kernel_tests/array_ops_test.py
++++ b/tensorflow/python/kernel_tests/array_ops_test.py
+@@ -351,7 +351,7 @@ class ReverseV2Test(test_util.TensorFlowTestCase):
+ 
+   def testReverse1DimAuto(self):
+     for dtype in [
+-        np.uint8, np.int8, np.uint16, np.int16, np.int32, np.int64, np.bool,
++        np.uint8, np.int8, np.uint16, np.int16, np.int32, np.int64, np.bool_,
+         np.float16, np.float32, np.float64, np.complex64, np.complex128,
+         np.array(b"").dtype.type
+     ]:
+@@ -359,7 +359,7 @@ class ReverseV2Test(test_util.TensorFlowTestCase):
+ 
+   def testReverse2DimAuto(self):
+     for dtype in [
+-        np.uint8, np.int8, np.uint16, np.int16, np.int32, np.int64, np.bool,
++        np.uint8, np.int8, np.uint16, np.int16, np.int32, np.int64, np.bool_,
+         np.float16, np.float32, np.float64, np.complex64, np.complex128,
+         np.array(b"").dtype.type
+     ]:
+diff --git a/tensorflow/python/kernel_tests/betainc_op_test.py b/tensorflow/python/kernel_tests/betainc_op_test.py
+index 08b03f8518..34007fdf04 100644
+--- a/tensorflow/python/kernel_tests/betainc_op_test.py
++++ b/tensorflow/python/kernel_tests/betainc_op_test.py
+@@ -154,9 +154,9 @@ class BetaincTest(test.TestCase):
+            gradients_impl.gradients(tf_gout_t, [ga_s_t, gb_s_t, gx_s_t])[2]])
+ 
+       # Equivalent to `assertAllFalse` (if it existed).
+-      self.assertAllEqual(np.zeros_like(grads_x).astype(np.bool),
++      self.assertAllEqual(np.zeros_like(grads_x).astype(np.bool_),
+                           np.isnan(tf_gout))
+-      self.assertAllEqual(np.zeros_like(grads_x).astype(np.bool),
++      self.assertAllEqual(np.zeros_like(grads_x).astype(np.bool_),
+                           np.isnan(grads_x))
+ 
+   def testBetaIncGrads(self):
+diff --git a/tensorflow/python/kernel_tests/broadcast_to_ops_test.py b/tensorflow/python/kernel_tests/broadcast_to_ops_test.py
+index 6a1bd958ba..6f54672d6a 100644
+--- a/tensorflow/python/kernel_tests/broadcast_to_ops_test.py
++++ b/tensorflow/python/kernel_tests/broadcast_to_ops_test.py
+@@ -45,7 +45,7 @@ class BroadcastToTest(test_util.TensorFlowTestCase):
+ 
+   def testBroadcastToBool(self):
+     with self.test_session(use_gpu=True):
+-      x = np.array([True, False, True], dtype=np.bool)
++      x = np.array([True, False, True], dtype=np.bool_)
+       v_tf = array_ops.broadcast_to(constant_op.constant(x), [3, 3])
+       v_np = np.broadcast_to(x, [3, 3])
+       self.assertAllEqual(v_tf.eval(), v_np)
+diff --git a/tensorflow/python/kernel_tests/cast_op_test.py b/tensorflow/python/kernel_tests/cast_op_test.py
+index 214d5cb3c0..04871c7b98 100644
+--- a/tensorflow/python/kernel_tests/cast_op_test.py
++++ b/tensorflow/python/kernel_tests/cast_op_test.py
+@@ -44,7 +44,7 @@ class CastOpTest(test.TestCase):
+       return dtypes.int32
+     elif dtype == np.int64:
+       return dtypes.int64
+-    elif dtype == np.bool:
++    elif dtype == np.bool_:
+       return dtypes.bool
+     elif dtype == np.complex64:
+       return dtypes.complex64
+@@ -79,10 +79,10 @@ class CastOpTest(test.TestCase):
+       for to_type in type_list:
+         self._test(x.astype(from_type), to_type, use_gpu)
+ 
+-    self._test(x.astype(np.bool), np.float32, use_gpu)
++    self._test(x.astype(np.bool_), np.float32, use_gpu)
+     self._test(x.astype(np.uint8), np.float32, use_gpu)
+     if not use_gpu:
+-      self._test(x.astype(np.bool), np.int32, use_gpu)
++      self._test(x.astype(np.bool_), np.int32, use_gpu)
+       self._test(x.astype(np.int32), np.int32, use_gpu)
+ 
+   def _testAll(self, x):
+diff --git a/tensorflow/python/kernel_tests/compare_and_bitpack_op_test.py b/tensorflow/python/kernel_tests/compare_and_bitpack_op_test.py
+index 56ddd6e428..fdd37cd16c 100644
+--- a/tensorflow/python/kernel_tests/compare_and_bitpack_op_test.py
++++ b/tensorflow/python/kernel_tests/compare_and_bitpack_op_test.py
+@@ -44,7 +44,7 @@ class CompareAndBitpackTest(test.TestCase):
+     rows = 371
+     cols = 294
+     x = np.random.randn(rows, cols * 8)
+-    if dtype == np.bool:
++    if dtype == np.bool_:
+       x = x > 0
+     else:
+       x = x.astype(dtype)
+@@ -64,7 +64,7 @@ class CompareAndBitpackTest(test.TestCase):
+     self._testBasic(np.float16)
+ 
+   def testBasicBool(self):
+-    self._testBasic(np.bool)
++    self._testBasic(np.bool_)
+ 
+   def testBasicInt8(self):
+     self._testBasic(np.int8)
+diff --git a/tensorflow/python/kernel_tests/constant_op_eager_test.py b/tensorflow/python/kernel_tests/constant_op_eager_test.py
+index 8e9d75667d..4996ddbf02 100644
+--- a/tensorflow/python/kernel_tests/constant_op_eager_test.py
++++ b/tensorflow/python/kernel_tests/constant_op_eager_test.py
+@@ -130,19 +130,17 @@ class ConstantTest(test.TestCase):
+ 
+   def testComplex64(self):
+     self._testAll(
+-        np.complex(1, 2) *
+-        np.arange(-15, 15).reshape([2, 3, 5]).astype(np.complex64))
++        (1 + 2j) * np.arange(-15, 15).reshape([2, 3, 5]).astype(np.complex64))
+     self._testAll(
+-        np.complex(1, 2) *
++        (1 + 2j) *
+         np.random.normal(size=30).reshape([2, 3, 5]).astype(np.complex64))
+     self._testAll(np.empty((2, 0, 5)).astype(np.complex64))
+ 
+   def testComplex128(self):
+     self._testAll(
+-        np.complex(1, 2) * np.arange(-15, 15).reshape([2, 3, 5
+-                                                      ]).astype(np.complex128))
++        (1 + 2j) * np.arange(-15, 15).reshape([2, 3, 5]).astype(np.complex128))
+     self._testAll(
+-        np.complex(1, 2) * np.random.normal(size=30).reshape(
++        (1 + 2j) * np.random.normal(size=30).reshape(
+             [2, 3, 5]).astype(np.complex128))
+     self._testAll(np.empty((2, 0, 5)).astype(np.complex128))
+ 
+@@ -361,7 +359,7 @@ class ZerosLikeTest(test.TestCase):
+   def _compareZeros(self, dtype, use_gpu):
+     # Creates a tensor of non-zero values with shape 2 x 3.
+     # NOTE(kearnes): The default numpy dtype associated with tf.string is
+-    # np.object (and can't be changed without breaking a lot things), which
++    # np.object_ (and can't be changed without breaking a lot things), which
+     # causes a TypeError in constant_op.constant below. Here we catch the
+     # special case of tf.string and set the numpy dtype appropriately.
+     if dtype == dtypes_lib.string:
+diff --git a/tensorflow/python/kernel_tests/constant_op_test.py b/tensorflow/python/kernel_tests/constant_op_test.py
+index 107ee37fab..389e0b6329 100644
+--- a/tensorflow/python/kernel_tests/constant_op_test.py
++++ b/tensorflow/python/kernel_tests/constant_op_test.py
+@@ -109,19 +109,19 @@ class ConstantTest(test.TestCase):
+ 
+   def testComplex64(self):
+     self._testAll(
+-        np.complex(1, 2) *
++        (1 + 2j) *
+         np.arange(-15, 15).reshape([2, 3, 5]).astype(np.complex64))
+     self._testAll(
+-        np.complex(1, 2) *
++        (1 + 2j) *
+         np.random.normal(size=30).reshape([2, 3, 5]).astype(np.complex64))
+     self._testAll(np.empty((2, 0, 5)).astype(np.complex64))
+ 
+   def testComplex128(self):
+     self._testAll(
+-        np.complex(1, 2) *
++        (1 + 2j) *
+         np.arange(-15, 15).reshape([2, 3, 5]).astype(np.complex128))
+     self._testAll(
+-        np.complex(1, 2) *
++        (1 + 2j) *
+         np.random.normal(size=30).reshape([2, 3, 5]).astype(np.complex128))
+     self._testAll(np.empty((2, 0, 5)).astype(np.complex128))
+ 
+@@ -258,10 +258,10 @@ class ConstantTest(test.TestCase):
+                                  "setting an array element with a sequence"):
+       c = constant_op.constant([[1, 2], [3]], dtype=dtypes_lib.int32)
+ 
+-    with self.assertRaisesRegexp(ValueError, "must be a dense"):
++    with self.assertRaisesRegexp(ValueError, "must be a dense|inhomogeneous shape"):
+       c = constant_op.constant([[1, 2], [3]])
+ 
+-    with self.assertRaisesRegexp(ValueError, "must be a dense"):
++    with self.assertRaisesRegexp(ValueError, "must be a dense|inhomogeneous shape"):
+       c = constant_op.constant([[1, 2], [3], [4, 5]])
+ 
+ 
+@@ -435,7 +435,7 @@ class ZerosLikeTest(test.TestCase):
+     with self.test_session(use_gpu=use_gpu):
+       # Creates a tensor of non-zero values with shape 2 x 3.
+       # NOTE(kearnes): The default numpy dtype associated with tf.string is
+-      # np.object (and can't be changed without breaking a lot things), which
++      # np.object_ (and can't be changed without breaking a lot things), which
+       # causes a TypeError in constant_op.constant below. Here we catch the
+       # special case of tf.string and set the numpy dtype appropriately.
+       if dtype == dtypes_lib.string:
+@@ -789,7 +789,7 @@ class PlaceholderTest(test.TestCase):
+       with ops.control_dependencies([p]):
+         c = constant_op.constant(5, dtypes_lib.int32)
+       d = math_ops.multiply(p, c)
+-      val = np.array(2).astype(np.int)
++      val = np.array(2).astype(np.int64)
+       self.assertEqual(10, d.eval(feed_dict={p: val}))
+ 
+   def testBadShape(self):
+diff --git a/tensorflow/python/kernel_tests/cwise_ops_test.py b/tensorflow/python/kernel_tests/cwise_ops_test.py
+index 1128cd7a63..9cc2c85c06 100644
+--- a/tensorflow/python/kernel_tests/cwise_ops_test.py
++++ b/tensorflow/python/kernel_tests/cwise_ops_test.py
+@@ -115,7 +115,7 @@ class UnaryOpTest(test.TestCase):
+         s = list(np.shape(x))
+         jacob_t, _ = gradient_checker.compute_gradient(
+             inx, s, y, s, x_init_value=x)
+-        xf = x.astype(np.float)
++        xf = x.astype(np.float64)
+         inxf = ops.convert_to_tensor(xf)
+         yf = tf_func(inxf)
+         _, jacob_n = gradient_checker.compute_gradient(
+@@ -411,9 +411,9 @@ class UnaryOpTest(test.TestCase):
+     self._compareBothSparse(x, np.square, math_ops.square)
+ 
+   def testComplex64Basic(self):
+-    x = np.complex(1, 1) * np.arange(-3, 3).reshape(1, 3, 2).astype(
++    x =  (1 + 1j) * np.arange(-3, 3).reshape(1, 3, 2).astype(
+         np.complex64)
+-    y = x + np.complex(0.5, 0.5)  # no zeros
++    y = x +  (0.5 + 0.5j)  # no zeros
+     self._compareBoth(x, np.abs, math_ops.abs)
+     self._compareBoth(x, np.abs, _ABS)
+     self._compareBoth(x, np.negative, math_ops.negative)
+@@ -455,9 +455,9 @@ class UnaryOpTest(test.TestCase):
+     self._compareBothSparse(y, complex_sign, math_ops.sign)
+ 
+   def testComplex128Basic(self):
+-    x = np.complex(1, 1) * np.arange(-3, 3).reshape(1, 3, 2).astype(
++    x =  (1 + 1j) * np.arange(-3, 3).reshape(1, 3, 2).astype(
+         np.complex128)
+-    y = x + np.complex(0.5, 0.5)  # no zeros
++    y = x +  (0.5 + 0.5j)  # no zeros
+     self._compareBoth(x, np.abs, math_ops.abs)
+     self._compareBoth(x, np.abs, _ABS)
+     self._compareBoth(x, np.negative, math_ops.negative)
+@@ -552,7 +552,7 @@ class BinaryOpTest(test.TestCase):
+         np_var_left = tf_func(x, var_y).eval()
+         np_var_right = tf_func(var_x, y).eval()
+ 
+-    if np_ans.dtype != np.object:
++    if np_ans.dtype != np.object_:
+       self.assertAllClose(np_ans, tf_cpu)
+       self.assertAllClose(np_ans, np_left)
+       self.assertAllClose(np_ans, np_right)
+@@ -851,13 +851,13 @@ class BinaryOpTest(test.TestCase):
+     x = np.array(
+         [["x_0_0", "x_0_1", "x_0_2"], ["x_1_0", "x_1_1", "x_1_2"],
+          ["x_2_0", "x_2_1", "x_2_2"]],
+-        dtype=np.object)
++        dtype=np.object_)
+     y = np.array(
+         [["y_0_0", "y_0_1", "y_0_2"], ["y_1_0", "y_1_1", "y_1_2"],
+          ["y_2_0", "y_2_1", "y_2_2"]],
+-        dtype=np.object)
+-    z = np.array([["z_0", "z_1", "z_2"]], dtype=np.object)
+-    w = np.array("w", dtype=np.object)
++        dtype=np.object_)
++    z = np.array([["z_0", "z_1", "z_2"]], dtype=np.object_)
++    w = np.array("w", dtype=np.object_)
+     self._compareCpu(x, y, _ADD, _ADD)
+     self._compareCpu(x, z, _ADD, _ADD)
+     self._compareCpu(x, w, _ADD, _ADD)
+@@ -881,8 +881,8 @@ class BinaryOpTest(test.TestCase):
+           # care is taken with choosing the inputs and the delta. This is
+           # a weaker check (in particular, it does not test the op itself,
+           # only its gradient), but it's much better than nothing.
+-          self._compareGradientX(x, y, np_func, tf_func, np.float)
+-          self._compareGradientY(x, y, np_func, tf_func, np.float)
++          self._compareGradientX(x, y, np_func, tf_func, np.float64)
++          self._compareGradientY(x, y, np_func, tf_func, np.float64)
+         else:
+           self._compareGradientX(x, y, np_func, tf_func)
+           self._compareGradientY(x, y, np_func, tf_func)
+@@ -1372,8 +1372,8 @@ class LogicalOpTest(test.TestCase):
+                               use_gpu)
+ 
+   def testTensor(self):
+-    x = np.random.randint(0, 2, 6).astype(np.bool).reshape(1, 3, 2)
+-    y = np.random.randint(0, 2, 6).astype(np.bool).reshape(1, 3, 2)
++    x = np.random.randint(0, 2, 6).astype(np.bool_).reshape(1, 3, 2)
++    y = np.random.randint(0, 2, 6).astype(np.bool_).reshape(1, 3, 2)
+     for use_gpu in [True, False]:
+       self._not(x, use_gpu)
+       self._compareBinary(x, y, np.logical_and, math_ops.logical_and, use_gpu)
+@@ -1395,16 +1395,16 @@ class LogicalOpTest(test.TestCase):
+         ([2, 3, 0], [2, 3, 1]),
+     ]
+     for (xs, ys) in shapes:
+-      x = np.random.randint(0, 2, np.prod(xs)).astype(np.bool).reshape(xs)
+-      y = np.random.randint(0, 2, np.prod(ys)).astype(np.bool).reshape(ys)
++      x = np.random.randint(0, 2, np.prod(xs)).astype(np.bool_).reshape(xs)
++      y = np.random.randint(0, 2, np.prod(ys)).astype(np.bool_).reshape(ys)
+       for use_gpu in [True, False]:
+         self._compareBinary(x, y, np.logical_and, math_ops.logical_and, use_gpu)
+         self._compareBinary(x, y, np.logical_or, math_ops.logical_or, use_gpu)
+         self._compareBinary(x, y, np.logical_xor, math_ops.logical_xor, use_gpu)
+ 
+   def testShapeMismatch(self):
+-    x = np.random.randint(0, 2, 6).astype(np.bool).reshape(1, 3, 2)
+-    y = np.random.randint(0, 2, 6).astype(np.bool).reshape(3, 2, 1)
++    x = np.random.randint(0, 2, 6).astype(np.bool_).reshape(1, 3, 2)
++    y = np.random.randint(0, 2, 6).astype(np.bool_).reshape(3, 2, 1)
+     for f in [math_ops.logical_and, math_ops.logical_or, math_ops.logical_xor]:
+       with self.assertRaisesWithPredicateMatch(
+           ValueError, lambda e: "Dimensions must" in str(e)):
+@@ -1506,7 +1506,7 @@ class SelectOpTest(test.TestCase):
+         self._compare(c, xt, yt, use_gpu=True)
+ 
+   def testBasic(self):
+-    c = np.random.randint(0, 2, 6).astype(np.bool).reshape(1, 3, 2)
++    c = np.random.randint(0, 2, 6).astype(np.bool_).reshape(1, 3, 2)
+     x = np.random.rand(1, 3, 2) * 100
+     y = np.random.rand(1, 3, 2) * 100
+     for t in [
+@@ -1520,7 +1520,7 @@ class SelectOpTest(test.TestCase):
+         self._compare(c, xt, yt, use_gpu=True)
+ 
+   def testGradients(self):
+-    c = np.random.randint(0, 2, 6).astype(np.bool).reshape(1, 3, 2)
++    c = np.random.randint(0, 2, 6).astype(np.bool_).reshape(1, 3, 2)
+     x = np.random.rand(1, 3, 2) * 100
+     y = np.random.rand(1, 3, 2) * 100
+     for t in [np.float16, np.float32, np.float64]:
+@@ -1532,14 +1532,14 @@ class SelectOpTest(test.TestCase):
+         # care is taken with choosing the inputs and the delta. This is
+         # a weaker check (in particular, it does not test the op itself,
+         # only its gradient), but it's much better than nothing.
+-        self._compareGradientX(c, xt, yt, np.float)
+-        self._compareGradientY(c, xt, yt, np.float)
++        self._compareGradientX(c, xt, yt, np.float64)
++        self._compareGradientY(c, xt, yt, np.float64)
+       else:
+         self._compareGradientX(c, xt, yt)
+         self._compareGradientY(c, xt, yt)
+ 
+   def testShapeMismatch(self):
+-    c = np.random.randint(0, 2, 6).astype(np.bool).reshape(1, 3, 2)
++    c = np.random.randint(0, 2, 6).astype(np.bool_).reshape(1, 3, 2)
+     x = np.random.rand(1, 3, 2) * 100
+     y = np.random.rand(2, 5, 3) * 100
+     for t in [
+@@ -1552,7 +1552,7 @@ class SelectOpTest(test.TestCase):
+         array_ops.where(c, xt, yt)
+ 
+   def testEmptyTensor(self):
+-    c = np.random.randint(0, 3, 0).astype(np.bool).reshape(1, 3, 0)
++    c = np.random.randint(0, 3, 0).astype(np.bool_).reshape(1, 3, 0)
+     x = np.random.rand(1, 3, 0) * 100
+     y = np.random.rand(1, 3, 0) * 100
+     z_expected = np.zeros((1, 3, 0), dtype=np.float32)
+@@ -1636,7 +1636,7 @@ class BatchSelectOpTest(test.TestCase):
+       self.assertAllClose(jacob_t, jacob_n, rtol=1e-5, atol=1e-5)
+ 
+   def testBasic(self):
+-    c = np.random.randint(0, 2, 16).astype(np.bool)
++    c = np.random.randint(0, 2, 16).astype(np.bool_)
+     x = np.random.rand(16, 2, 8) * 100
+     y = np.random.rand(16, 2, 8) * 100
+     for t in [
+@@ -1650,7 +1650,7 @@ class BatchSelectOpTest(test.TestCase):
+         self._compare(c, xt, yt, use_gpu=True)
+ 
+   def testGradients(self):
+-    c = np.random.randint(0, 2, 16).astype(np.bool)
++    c = np.random.randint(0, 2, 16).astype(np.bool_)
+     x = np.random.rand(16, 2, 8) * 100
+     y = np.random.rand(16, 2, 8) * 100
+     for t in [np.float16, np.float32, np.float64]:
+@@ -1662,14 +1662,14 @@ class BatchSelectOpTest(test.TestCase):
+         # care is taken with choosing the inputs and the delta. This is
+         # a weaker check (in particular, it does not test the op itself,
+         # only its gradient), but it's much better than nothing.
+-        self._compareGradientX(c, xt, yt, np.float)
+-        self._compareGradientY(c, xt, yt, np.float)
++        self._compareGradientX(c, xt, yt, np.float64)
++        self._compareGradientY(c, xt, yt, np.float64)
+       else:
+         self._compareGradientX(c, xt, yt)
+         self._compareGradientY(c, xt, yt)
+ 
+   def testShapeMismatch(self):
+-    c = np.random.randint(0, 2, 8).astype(np.bool)
++    c = np.random.randint(0, 2, 8).astype(np.bool_)
+     x = np.random.rand(16, 3, 2) * 100
+     y = np.random.rand(16, 3, 2) * 100
+     for t in [
+diff --git a/tensorflow/python/kernel_tests/diag_op_test.py b/tensorflow/python/kernel_tests/diag_op_test.py
+index 0825d8fc6b..0efb55f972 100644
+--- a/tensorflow/python/kernel_tests/diag_op_test.py
++++ b/tensorflow/python/kernel_tests/diag_op_test.py
+@@ -54,7 +54,7 @@ class MatrixDiagTest(test.TestCase):
+     self._testBatchVector(np.float64)
+     self._testBatchVector(np.int32)
+     self._testBatchVector(np.int64)
+-    self._testBatchVector(np.bool)
++    self._testBatchVector(np.bool_)
+ 
+   def testInvalidShape(self):
+     with self.assertRaisesRegexp(ValueError, "must be at least rank 1"):
+@@ -128,7 +128,7 @@ class MatrixSetDiagTest(test.TestCase):
+     self._testSquareBatch(np.float64)
+     self._testSquareBatch(np.int32)
+     self._testSquareBatch(np.int64)
+-    self._testSquareBatch(np.bool)
++    self._testSquareBatch(np.bool_)
+ 
+   def testRectangularBatch(self):
+     with self.test_session(use_gpu=True):
+@@ -233,7 +233,7 @@ class MatrixDiagPartTest(test.TestCase):
+     self._testSquareBatch(np.float64)
+     self._testSquareBatch(np.int32)
+     self._testSquareBatch(np.int64)
+-    self._testSquareBatch(np.bool)
++    self._testSquareBatch(np.bool_)
+ 
+   def testRectangularBatch(self):
+     with self.test_session(use_gpu=True):
+diff --git a/tensorflow/python/kernel_tests/distributions/beta_test.py b/tensorflow/python/kernel_tests/distributions/beta_test.py
+index 4bc8303ebb..a67b2744aa 100644
+--- a/tensorflow/python/kernel_tests/distributions/beta_test.py
++++ b/tensorflow/python/kernel_tests/distributions/beta_test.py
+@@ -328,8 +328,8 @@ class BetaTest(test.TestCase):
+         b = 10. * np.random.random(shape).astype(dt)
+         x = np.random.random(shape).astype(dt)
+         actual = self.evaluate(beta_lib.Beta(a, b).cdf(x))
+-        self.assertAllEqual(np.ones(shape, dtype=np.bool), 0. <= x)
+-        self.assertAllEqual(np.ones(shape, dtype=np.bool), 1. >= x)
++        self.assertAllEqual(np.ones(shape, dtype=np.bool_), 0. <= x)
++        self.assertAllEqual(np.ones(shape, dtype=np.bool_), 1. >= x)
+         if not stats:
+           return
+         self.assertAllClose(stats.beta.cdf(x, a, b), actual, rtol=1e-4, atol=0)
+@@ -342,8 +342,8 @@ class BetaTest(test.TestCase):
+         b = 10. * np.random.random(shape).astype(dt)
+         x = np.random.random(shape).astype(dt)
+         actual = self.evaluate(math_ops.exp(beta_lib.Beta(a, b).log_cdf(x)))
+-        self.assertAllEqual(np.ones(shape, dtype=np.bool), 0. <= x)
+-        self.assertAllEqual(np.ones(shape, dtype=np.bool), 1. >= x)
++        self.assertAllEqual(np.ones(shape, dtype=np.bool_), 0. <= x)
++        self.assertAllEqual(np.ones(shape, dtype=np.bool_), 1. >= x)
+         if not stats:
+           return
+         self.assertAllClose(stats.beta.cdf(x, a, b), actual, rtol=1e-4, atol=0)
+diff --git a/tensorflow/python/kernel_tests/distributions/normal_test.py b/tensorflow/python/kernel_tests/distributions/normal_test.py
+index d793e03272..743ada5faa 100644
+--- a/tensorflow/python/kernel_tests/distributions/normal_test.py
++++ b/tensorflow/python/kernel_tests/distributions/normal_test.py
+@@ -56,7 +56,7 @@ class NormalTest(test.TestCase):
+ 
+   def assertAllFinite(self, tensor):
+     is_finite = np.isfinite(self.evaluate(tensor))
+-    all_true = np.ones_like(is_finite, dtype=np.bool)
++    all_true = np.ones_like(is_finite, dtype=np.bool_)
+     self.assertAllEqual(all_true, is_finite)
+ 
+   def _testParamShapes(self, sample_shape, expected):
+diff --git a/tensorflow/python/kernel_tests/distributions/special_math_test.py b/tensorflow/python/kernel_tests/distributions/special_math_test.py
+index 4565bf5c46..9634c1e105 100644
+--- a/tensorflow/python/kernel_tests/distributions/special_math_test.py
++++ b/tensorflow/python/kernel_tests/distributions/special_math_test.py
+@@ -86,7 +86,7 @@ class NdtriTest(test.TestCase):
+ 
+   def assertAllFinite(self, x):
+     is_finite = np.isfinite(x)
+-    all_true = np.ones_like(is_finite, dtype=np.bool)
++    all_true = np.ones_like(is_finite, dtype=np.bool_)
+     self.assertAllEqual(all_true, is_finite)
+ 
+   @test_util.run_in_graph_and_eager_modes()
+@@ -265,10 +265,10 @@ class NdtrGradientTest(test.TestCase):
+   _error64 = ErrorSpec(rtol=1e-7, atol=0)
+ 
+   def assert_all_true(self, v):
+-    self.assertAllEqual(np.ones_like(v, dtype=np.bool), v)
++    self.assertAllEqual(np.ones_like(v, dtype=np.bool_), v)
+ 
+   def assert_all_false(self, v):
+-    self.assertAllEqual(np.zeros_like(v, dtype=np.bool), v)
++    self.assertAllEqual(np.zeros_like(v, dtype=np.bool_), v)
+ 
+   def _test_grad_finite(self, dtype):
+     x = constant_op.constant([-100., 0., 100.], dtype=dtype)
+@@ -394,7 +394,7 @@ class LogCDFLaplaceTest(test.TestCase):
+   CUTOFF_FLOAT32_UPPER = np.log(1. / (2. * np.finfo(np.float32).eps)) - 1.
+ 
+   def assertAllTrue(self, x):
+-    self.assertAllEqual(np.ones_like(x, dtype=np.bool), x)
++    self.assertAllEqual(np.ones_like(x, dtype=np.bool_), x)
+ 
+   def _test_grid_log(self, dtype, scipy_dtype, grid_spec, error_spec):
+     with self.test_session():
+diff --git a/tensorflow/python/kernel_tests/distributions/util_test.py b/tensorflow/python/kernel_tests/distributions/util_test.py
+index 2f256d3e8b..f4c25efdde 100644
+--- a/tensorflow/python/kernel_tests/distributions/util_test.py
++++ b/tensorflow/python/kernel_tests/distributions/util_test.py
+@@ -967,15 +967,15 @@ class SoftplusTest(test.TestCase):
+     self.assertAllCloseAccordingToType(
+         np_features, tf_softplus_inverse,
+         atol=0., rtol=rtol)
+-    self.assertAllEqual(np.ones_like(tf_softplus).astype(np.bool),
++    self.assertAllEqual(np.ones_like(tf_softplus).astype(np.bool_),
+                         tf_softplus > 0)
+ 
+     self.assertShapeEqual(np_softplus, softplus)
+     self.assertShapeEqual(np_softplus, softplus_inverse)
+ 
+-    self.assertAllEqual(np.ones_like(tf_softplus).astype(np.bool),
++    self.assertAllEqual(np.ones_like(tf_softplus).astype(np.bool_),
+                         np.isfinite(tf_softplus))
+-    self.assertAllEqual(np.ones_like(tf_softplus_inverse).astype(np.bool),
++    self.assertAllEqual(np.ones_like(tf_softplus_inverse).astype(np.bool_),
+                         np.isfinite(tf_softplus_inverse))
+ 
+   def testNumbers(self):
+@@ -1031,7 +1031,7 @@ class SoftplusTest(test.TestCase):
+       y = du.softplus_inverse(x)
+       grads = self.evaluate(gradients_impl.gradients(y, x)[0])
+       # Equivalent to `assertAllFalse` (if it existed).
+-      self.assertAllEqual(np.zeros_like(grads).astype(np.bool), np.isnan(grads))
++      self.assertAllEqual(np.zeros_like(grads).astype(np.bool_), np.isnan(grads))
+ 
+   def testInverseSoftplusGradientFinite(self):
+     with self.test_session():
+@@ -1042,7 +1042,7 @@ class SoftplusTest(test.TestCase):
+       grads = self.evaluate(gradients_impl.gradients(y, x)[0])
+       # Equivalent to `assertAllTrue` (if it existed).
+       self.assertAllEqual(
+-          np.ones_like(grads).astype(np.bool), np.isfinite(grads))
++          np.ones_like(grads).astype(np.bool_), np.isfinite(grads))
+ 
+ 
+ @test_util.run_all_in_graph_and_eager_modes
+diff --git a/tensorflow/python/kernel_tests/dynamic_partition_op_test.py b/tensorflow/python/kernel_tests/dynamic_partition_op_test.py
+index 5e8937ad2c..edd00c08c5 100644
+--- a/tensorflow/python/kernel_tests/dynamic_partition_op_test.py
++++ b/tensorflow/python/kernel_tests/dynamic_partition_op_test.py
+@@ -114,7 +114,7 @@ class DynamicPartitionTest(test.TestCase):
+     self.assertEqual(num_partitions, len(partition_vals))
+     for i in range(num_partitions):
+       # reshape because of empty parts
+-      parts_np = np.array(parts[i], dtype=np.float).reshape(-1, cols)
++      parts_np = np.array(parts[i], dtype=np.float64).reshape(-1, cols)
+       self.assertAllEqual(parts_np, partition_vals[i])
+ 
+   def testSimpleComplex(self):
+@@ -204,7 +204,7 @@ class DynamicPartitionTest(test.TestCase):
+     self.assertEqual(3, len(partition_vals))
+     self.assertAllEqual([[]], partition_vals[0])
+     self.assertAllEqual([[]], partition_vals[1])
+-    self.assertAllEqual(np.array([], dtype=np.float).reshape(0, 0),
++    self.assertAllEqual(np.array([], dtype=np.float64).reshape(0, 0),
+                         partition_vals[2])
+ 
+   def testEmptyPartitions(self):
+diff --git a/tensorflow/python/kernel_tests/lookup_ops_test.py b/tensorflow/python/kernel_tests/lookup_ops_test.py
+index 5f08339fe5..fe0d5dd477 100644
+--- a/tensorflow/python/kernel_tests/lookup_ops_test.py
++++ b/tensorflow/python/kernel_tests/lookup_ops_test.py
+@@ -92,7 +92,7 @@ class HashTableOpTest(test.TestCase):
+   def testHashTableInitWithNumPyArrays(self):
+     with self.test_session():
+       default_val = -1
+-      keys = np.array(["brain", "salad", "surgery"], dtype=np.str)
++      keys = np.array(["brain", "salad", "surgery"], dtype=np.str_)
+       values = np.array([0, 1, 2], dtype=np.int64)
+       table = lookup_ops.HashTable(
+           lookup_ops.KeyValueTensorInitializer(keys, values), default_val)
+diff --git a/tensorflow/python/kernel_tests/matrix_band_part_op_test.py b/tensorflow/python/kernel_tests/matrix_band_part_op_test.py
+index 68d626de2c..b7ce6c0452 100644
+--- a/tensorflow/python/kernel_tests/matrix_band_part_op_test.py
++++ b/tensorflow/python/kernel_tests/matrix_band_part_op_test.py
+@@ -137,7 +137,7 @@ class MatrixBandPartBenchmark(test_lib.Benchmark):
+ 
+ 
+ if __name__ == "__main__":
+-  dtypes = (np.bool, np.int32, np.int64, np.float32, np.float64, np.complex64,
++  dtypes = (np.bool_, np.int32, np.int64, np.float32, np.float64, np.complex64,
+             np.complex128)
+   for dtype in dtypes:
+     for batch_shape in ((), (2,), (1, 3, 2)):
+diff --git a/tensorflow/python/kernel_tests/parsing_ops_test.py b/tensorflow/python/kernel_tests/parsing_ops_test.py
+index 59b3ee2013..1583148ea6 100644
+--- a/tensorflow/python/kernel_tests/parsing_ops_test.py
++++ b/tensorflow/python/kernel_tests/parsing_ops_test.py
+@@ -1466,7 +1466,7 @@ class DecodeJSONExampleTest(test.TestCase):
+ 
+   def _testRoundTrip(self, examples):
+     with self.test_session() as sess:
+-      examples = np.array(examples, dtype=np.object)
++      examples = np.array(examples, dtype=np.object_)
+ 
+       json_tensor = constant_op.constant(
+           [json_format.MessageToJson(m) for m in examples.flatten()],
+diff --git a/tensorflow/python/kernel_tests/py_func_test.py b/tensorflow/python/kernel_tests/py_func_test.py
+index b59e3dd7e7..12e777ba5d 100644
+--- a/tensorflow/python/kernel_tests/py_func_test.py
++++ b/tensorflow/python/kernel_tests/py_func_test.py
+@@ -78,7 +78,7 @@ class PyFuncTest(test.TestCase):
+   def testBoolDataTypes(self):
+     def and_func(x, y):
+       return x and y
+-    dtype = dtypes.bool
++    dtype = dtypes.bool_
+     with self.test_session():
+       x = constant_op.constant(True, dtype=dtype)
+       y = constant_op.constant(False, dtype=dtype)
+@@ -203,7 +203,7 @@ class PyFuncTest(test.TestCase):
+   def testObjectArraysAreConvertedToBytes(self):
+ 
+     def read_object_array():
+-      return np.array([b" there", u" ya"], dtype=np.object)
++      return np.array([b" there", u" ya"], dtype=np.object_)
+ 
+     def read_and_return_strings(x, y):
+       return x + y
+diff --git a/tensorflow/python/kernel_tests/reduction_ops_test.py b/tensorflow/python/kernel_tests/reduction_ops_test.py
+index 7cc247cf55..bdcf117747 100644
+--- a/tensorflow/python/kernel_tests/reduction_ops_test.py
++++ b/tensorflow/python/kernel_tests/reduction_ops_test.py
+@@ -967,27 +967,27 @@ class CountNonzeroReductionTest(test.TestCase):
+   def testStringReduce1D(self):
+     # Create a 1D array of strings
+     x = np.asarray(["", "", "a", "", "", "b"])
+-    self._compare(x, None, keepdims=False, zero=np.str(""))
+-    self._compare(x, [], keepdims=False, zero=np.str(""))
+-    self._compare(x, [0], keepdims=False, zero=np.str(""))
+-    self._compare(x, None, keepdims=True, zero=np.str(""))
+-    self._compare(x, [], keepdims=True, zero=np.str(""))
+-    self._compare(x, [0], keepdims=True, zero=np.str(""))
++    self._compare(x, None, keepdims=False, zero=np.str_(""))
++    self._compare(x, [], keepdims=False, zero=np.str_(""))
++    self._compare(x, [0], keepdims=False, zero=np.str_(""))
++    self._compare(x, None, keepdims=True, zero=np.str_(""))
++    self._compare(x, [], keepdims=True, zero=np.str_(""))
++    self._compare(x, [0], keepdims=True, zero=np.str_(""))
+ 
+   def testStringReduce2D(self):
+     # Create a 2D array of strings
+     x = np.asarray([["", "", "a", "", "", "b"],
+                     ["", "c", "", "d", "", ""],
+                     ["e", "", "f", "", "", ""]])
+-    self._compare(x, None, keepdims=False, zero=np.str(""))
+-    self._compare(x, [], keepdims=False, zero=np.str(""))
+-    self._compare(x, [0], keepdims=False, zero=np.str(""))
+-    self._compare(x, [1], keepdims=False, zero=np.str(""))
+-    self._compare(x, [0, 1], keepdims=False, zero=np.str(""))
+-    self._compare(x, None, keepdims=True, zero=np.str(""))
+-    self._compare(x, [], keepdims=True, zero=np.str(""))
+-    self._compare(x, [0], keepdims=True, zero=np.str(""))
+-    self._compare(x, [0, 1], keepdims=True, zero=np.str(""))
++    self._compare(x, None, keepdims=False, zero=np.str_(""))
++    self._compare(x, [], keepdims=False, zero=np.str_(""))
++    self._compare(x, [0], keepdims=False, zero=np.str_(""))
++    self._compare(x, [1], keepdims=False, zero=np.str_(""))
++    self._compare(x, [0, 1], keepdims=False, zero=np.str_(""))
++    self._compare(x, None, keepdims=True, zero=np.str_(""))
++    self._compare(x, [], keepdims=True, zero=np.str_(""))
++    self._compare(x, [0], keepdims=True, zero=np.str_(""))
++    self._compare(x, [0, 1], keepdims=True, zero=np.str_(""))
+ 
+ 
+ if __name__ == "__main__":
+diff --git a/tensorflow/python/kernel_tests/reduction_ops_test_big.py b/tensorflow/python/kernel_tests/reduction_ops_test_big.py
+index d70360775a..4ec5aa627e 100644
+--- a/tensorflow/python/kernel_tests/reduction_ops_test_big.py
++++ b/tensorflow/python/kernel_tests/reduction_ops_test_big.py
+@@ -135,7 +135,7 @@ class BigReductionTest(BaseReductionTest):
+   def testBooleanAll(self):
+     # make sure we test all possible kernel invocations
+     # test operation where T(0) is not the identity
+-    arr_ = np.ones([4097, 4097], dtype=np.bool)
++    arr_ = np.ones([4097, 4097], dtype=np.bool_)
+     for size_x in [
+         1, 2, 3, 4, 16, 17, 32, 33, 64, 65, 128, 131, 256, 263, 1024, 1025,
+         4096, 4097
+@@ -145,9 +145,9 @@ class BigReductionTest(BaseReductionTest):
+           4096, 4097
+       ]:
+         arr = arr_[0:size_x, 0:size_y]
+-        col_sum = np.ones([size_y], dtype=np.bool)
+-        row_sum = np.ones([size_x], dtype=np.bool)
+-        full_sum = np.ones([1], dtype=np.bool).reshape([])
++        col_sum = np.ones([size_y], dtype=np.bool_)
++        row_sum = np.ones([size_x], dtype=np.bool_)
++        full_sum = np.ones([1], dtype=np.bool_).reshape([])
+ 
+         with self.test_session(graph=ops.Graph(), use_gpu=True) as sess:
+           tf_row_sum = self._tf_reduce_all(arr, 1, False)
+@@ -159,13 +159,13 @@ class BigReductionTest(BaseReductionTest):
+         self.assertAllClose(row_sum, tf_out_row)
+         self.assertAllClose(full_sum, tf_out_full)
+ 
+-    arr_ = np.ones([130, 130, 130], dtype=np.bool)
++    arr_ = np.ones([130, 130, 130], dtype=np.bool_)
+     for size_x in range(1, 130, 13):
+       for size_y in range(1, 130, 13):
+         for size_z in range(1, 130, 13):
+           arr = arr_[0:size_x, 0:size_y, 0:size_z]
+-          sum_y = np.ones([size_x, size_z], dtype=np.bool)
+-          sum_xz = np.ones([size_y], dtype=np.bool)
++          sum_y = np.ones([size_x, size_z], dtype=np.bool_)
++          sum_xz = np.ones([size_y], dtype=np.bool_)
+ 
+           with self.test_session(graph=ops.Graph(), use_gpu=True) as sess:
+             tf_sum_xz = self._tf_reduce_all(arr, [0, 2], False)
+diff --git a/tensorflow/python/kernel_tests/relu_op_test.py b/tensorflow/python/kernel_tests/relu_op_test.py
+index 25e947f09e..dbe1d7b339 100644
+--- a/tensorflow/python/kernel_tests/relu_op_test.py
++++ b/tensorflow/python/kernel_tests/relu_op_test.py
+@@ -210,7 +210,7 @@ class Relu6Test(test.TestCase):
+       self._testRelu6(
+           np.array([[-9, 7, -5, 3, -1], [1, -3, 5, -7, 9]]).astype(t),
+           use_gpu=False)
+-      if t in [np.float16, np.float, np.double]:
++      if t in [np.float16, np.float64, np.double]:
+         self._testRelu6(
+             np.array([[-9, 7, -5, 3, -1], [1, -3, 5, -7, 9]]).astype(t),
+             use_gpu=True)
+diff --git a/tensorflow/python/kernel_tests/reverse_sequence_op_test.py b/tensorflow/python/kernel_tests/reverse_sequence_op_test.py
+index 9beb615b2c..5209e10eb5 100644
+--- a/tensorflow/python/kernel_tests/reverse_sequence_op_test.py
++++ b/tensorflow/python/kernel_tests/reverse_sequence_op_test.py
+@@ -111,7 +111,7 @@ class ReverseSequenceTest(test.TestCase):
+     x = np.asarray(
+         [[[1, 2, 3, 4], [5, 6, 7, 8]], [[9, 10, 11, 12], [13, 14, 15, 16]],
+          [[17, 18, 19, 20], [21, 22, 23, 24]]],
+-        dtype=np.float)
++        dtype=np.float64)
+     x = x.reshape(3, 2, 4, 1, 1)
+     x = x.transpose([2, 1, 0, 3, 4])  # transpose axes 0 <=> 2
+ 
+diff --git a/tensorflow/python/kernel_tests/sets_test.py b/tensorflow/python/kernel_tests/sets_test.py
+index 52b723802f..0fa310b800 100644
+--- a/tensorflow/python/kernel_tests/sets_test.py
++++ b/tensorflow/python/kernel_tests/sets_test.py
+@@ -40,7 +40,7 @@ _DTYPES = set([
+ def _values(values, dtype):
+   return np.array(
+       values,
+-      dtype=(np.unicode if (dtype == dtypes.string) else dtype.as_numpy_dtype))
++      dtype=(np.str_ if (dtype == dtypes.string) else dtype.as_numpy_dtype))
+ 
+ 
+ def _constant(values, dtype):
+diff --git a/tensorflow/python/kernel_tests/softsign_op_test.py b/tensorflow/python/kernel_tests/softsign_op_test.py
+index 371f86ff15..575b209719 100644
+--- a/tensorflow/python/kernel_tests/softsign_op_test.py
++++ b/tensorflow/python/kernel_tests/softsign_op_test.py
+@@ -41,7 +41,7 @@ class SoftsignTest(test.TestCase):
+     self.assertShapeEqual(np_softsign, softsign)
+ 
+   def testNumbers(self):
+-    for t in [np.float, np.double]:
++    for t in [np.float64, np.double]:
+       self._testSoftsign(
+           np.array([[-9, 7, -5, 3, -1], [1, -3, 5, -7, 9]]).astype(t),
+           use_gpu=False)
+diff --git a/tensorflow/python/kernel_tests/sparse_ops_test.py b/tensorflow/python/kernel_tests/sparse_ops_test.py
+index cb5a66312f..50f5e6dcab 100644
+--- a/tensorflow/python/kernel_tests/sparse_ops_test.py
++++ b/tensorflow/python/kernel_tests/sparse_ops_test.py
+@@ -75,7 +75,7 @@ class SparseToIndicatorTest(test_util.TensorFlowTestCase):
+       sp_input = self._SparseTensor_5x6(dtypes.int32)
+       output = sparse_ops.sparse_to_indicator(sp_input, 50).eval()
+ 
+-      expected_output = np.zeros((5, 50), dtype=np.bool)
++      expected_output = np.zeros((5, 50), dtype=np.bool_)
+       expected_trues = ((0, 0), (1, 10), (1, 13), (1, 14), (3, 32), (3, 33))
+       for expected_true in expected_trues:
+         expected_output[expected_true] = True
+@@ -87,7 +87,7 @@ class SparseToIndicatorTest(test_util.TensorFlowTestCase):
+       sp_input = self._SparseTensor_5x6(dtypes.int64)
+       output = sparse_ops.sparse_to_indicator(sp_input, 50).eval()
+ 
+-      expected_output = np.zeros((5, 50), dtype=np.bool)
++      expected_output = np.zeros((5, 50), dtype=np.bool_)
+       expected_trues = [(0, 0), (1, 10), (1, 13), (1, 14), (3, 32), (3, 33)]
+       for expected_true in expected_trues:
+         expected_output[expected_true] = True
+@@ -99,7 +99,7 @@ class SparseToIndicatorTest(test_util.TensorFlowTestCase):
+       sp_input = self._SparseTensor_2x3x4(dtypes.int64)
+       output = sparse_ops.sparse_to_indicator(sp_input, 200).eval()
+ 
+-      expected_output = np.zeros((2, 3, 200), dtype=np.bool)
++      expected_output = np.zeros((2, 3, 200), dtype=np.bool_)
+       expected_trues = [(0, 0, 1), (0, 1, 10), (0, 1, 12), (1, 0, 103),
+                         (1, 1, 149), (1, 1, 150), (1, 2, 122)]
+       for expected_true in expected_trues:
+@@ -282,7 +282,7 @@ class SparseRetainTest(test_util.TensorFlowTestCase):
+   def testBasic(self):
+     with self.test_session(use_gpu=False) as sess:
+       for sp_input in (self._SparseTensorValue_5x6(), self._SparseTensor_5x6()):
+-        to_retain = np.array([1, 0, 0, 1, 1, 0], dtype=np.bool)
++        to_retain = np.array([1, 0, 0, 1, 1, 0], dtype=np.bool_)
+         sp_output = sparse_ops.sparse_retain(sp_input, to_retain)
+ 
+         output = sess.run(sp_output)
+@@ -294,7 +294,7 @@ class SparseRetainTest(test_util.TensorFlowTestCase):
+   def testRetainNone(self):
+     with self.test_session(use_gpu=False) as sess:
+       sp_input = self._SparseTensor_5x6()
+-      to_retain = np.zeros((6,), dtype=np.bool)
++      to_retain = np.zeros((6,), dtype=np.bool_)
+       sp_output = sparse_ops.sparse_retain(sp_input, to_retain)
+ 
+       output = sess.run(sp_output)
+@@ -306,7 +306,7 @@ class SparseRetainTest(test_util.TensorFlowTestCase):
+   def testMismatchedRetainShape(self):
+     with self.test_session(use_gpu=False):
+       sp_input = self._SparseTensor_5x6()
+-      to_retain = np.array([1, 0, 0, 1, 0], dtype=np.bool)
++      to_retain = np.array([1, 0, 0, 1, 0], dtype=np.bool_)
+       with self.assertRaises(ValueError):
+         sparse_ops.sparse_retain(sp_input, to_retain)
+ 
+@@ -494,7 +494,7 @@ class SparseFillEmptyRowsTest(test_util.TensorFlowTestCase):
+         self.assertAllEqual(output.values, [0, 10, 13, 14, -1, 32, 33, -1])
+         self.assertAllEqual(output.dense_shape, [5, 6])
+         self.assertAllEqual(empty_row_indicator_out,
+-                            np.array([0, 0, 1, 0, 1]).astype(np.bool))
++                            np.array([0, 0, 1, 0, 1]).astype(np.bool_))
+ 
+   def testFillFloat(self):
+     with self.test_session(use_gpu=False) as sess:
+@@ -515,7 +515,7 @@ class SparseFillEmptyRowsTest(test_util.TensorFlowTestCase):
+       self.assertAllClose(output.values, [0, 10, 13, 14, -1, 32, 33, -1])
+       self.assertAllEqual(output.dense_shape, [5, 6])
+       self.assertAllEqual(empty_row_indicator_out,
+-                          np.array([0, 0, 1, 0, 1]).astype(np.bool))
++                          np.array([0, 0, 1, 0, 1]).astype(np.bool_))
+ 
+       values_grad_err = gradient_checker.compute_gradient_error(
+           values, values.shape.as_list(), sp_output.values, [8], delta=1e-8)
+@@ -546,7 +546,7 @@ class SparseFillEmptyRowsTest(test_util.TensorFlowTestCase):
+                           [b"a", b"b", b"c", b"d", b"", b"e", b"f", b""])
+       self.assertAllEqual(output.dense_shape, [5, 6])
+       self.assertAllEqual(empty_row_indicator_out,
+-                          np.array([0, 0, 1, 0, 1]).astype(np.bool))
++                          np.array([0, 0, 1, 0, 1]).astype(np.bool_))
+ 
+   def testNoEmptyRows(self):
+     with self.test_session(use_gpu=False) as sess:
+@@ -560,7 +560,7 @@ class SparseFillEmptyRowsTest(test_util.TensorFlowTestCase):
+       self.assertAllEqual(output.indices, [[0, 0], [1, 0], [1, 3], [1, 4]])
+       self.assertAllEqual(output.values, [0, 10, 13, 14])
+       self.assertAllEqual(output.dense_shape, [2, 6])
+-      self.assertAllEqual(empty_row_indicator_out, np.zeros(2).astype(np.bool))
++      self.assertAllEqual(empty_row_indicator_out, np.zeros(2).astype(np.bool_))
+ 
+ 
+ class SparseAddTest(test_util.TensorFlowTestCase):
+diff --git a/tensorflow/python/kernel_tests/stack_op_test.py b/tensorflow/python/kernel_tests/stack_op_test.py
+index 2f27d1839b..adce91e471 100644
+--- a/tensorflow/python/kernel_tests/stack_op_test.py
++++ b/tensorflow/python/kernel_tests/stack_op_test.py
+@@ -45,7 +45,7 @@ class StackOpTest(test.TestCase):
+     np.random.seed(7)
+     with self.test_session(use_gpu=True):
+       for shape in (2,), (3,), (2, 3), (3, 2), (4, 3, 2):
+-        for dtype in [np.bool, np.float32, np.int32, np.int64]:
++        for dtype in [np.bool_, np.float32, np.int32, np.int64]:
+           data = np.random.randn(*shape).astype(dtype)
+           # Convert [data[0], data[1], ...] separately to tensorflow
+           # TODO(irving): Remove list() once we handle maps correctly
+@@ -76,7 +76,7 @@ class StackOpTest(test.TestCase):
+     np.random.seed(7)
+     with self.test_session(use_gpu=True):
+       for shape in (2,), (3,), (2, 3), (3, 2), (4, 3, 2):
+-        for dtype in [np.bool, np.float32, np.int32, np.int64]:
++        for dtype in [np.bool_, np.float32, np.int32, np.int64]:
+           data = np.random.randn(*shape).astype(dtype)
+           # Stack back into a single tensorflow tensor directly using np array
+           c = array_ops.stack(data)
+diff --git a/tensorflow/python/kernel_tests/tensor_array_ops_test.py b/tensorflow/python/kernel_tests/tensor_array_ops_test.py
+index c0b36f143d..9f51159ffa 100644
+--- a/tensorflow/python/kernel_tests/tensor_array_ops_test.py
++++ b/tensorflow/python/kernel_tests/tensor_array_ops_test.py
+@@ -46,7 +46,7 @@ from tensorflow.python.platform import test
+ def _make_converter(tf_dtype):
+   def _converter(x):
+     if tf_dtype == dtypes.string:
+-      # In Python3, np.str is unicode, while we always want bytes
++      # In Python3, np.str_ is unicode, while we always want bytes
+       return np.asarray(x).astype("|S")
+     x = np.asarray(x).astype(tf_dtype.as_numpy_dtype)
+     if tf_dtype.is_complex:
+diff --git a/tensorflow/python/kernel_tests/transpose_op_test.py b/tensorflow/python/kernel_tests/transpose_op_test.py
+index 290200ce45..be6107f4f8 100644
+--- a/tensorflow/python/kernel_tests/transpose_op_test.py
++++ b/tensorflow/python/kernel_tests/transpose_op_test.py
+@@ -352,24 +352,24 @@ class TransposeTest(test.TestCase):
+ 
+   def testComplex64(self):
+     self._testBoth(
+-        np.complex(1, 2) *
++        (1 + 2j) *
+         np.arange(0, 21).reshape([3, 7]).astype(np.complex64))
+     self._testBoth(
+-        np.complex(1, 2) *
++        (1 + 2j) *
+         np.arange(0, 210).reshape([2, 3, 5, 7]).astype(np.complex64))
+     self._testBoth(
+-        np.complex(1, 2) *
++        (1 + 2j) *
+         np.arange(0, 1260).reshape([2, 3, 5, 7, 2, 3]).astype(np.complex64))
+ 
+   def testComplex128(self):
+     self._testBoth(
+-        np.complex(1, 2) *
++        (1 + 2j) *
+         np.arange(0, 21).reshape([3, 7]).astype(np.complex128))
+     self._testBoth(
+-        np.complex(1, 2) *
++        (1 + 2j) *
+         np.arange(0, 210).reshape([2, 3, 5, 7]).astype(np.complex128))
+     self._testBoth(
+-        np.complex(1, 2) *
++        (1 + 2j) *
+         np.arange(0, 1260).reshape([2, 3, 5, 7, 2, 3]).astype(np.complex128))
+ 
+   def testInt8(self):
+diff --git a/tensorflow/python/kernel_tests/unstack_op_test.py b/tensorflow/python/kernel_tests/unstack_op_test.py
+index 1ee6e0866a..b07445b2e8 100644
+--- a/tensorflow/python/kernel_tests/unstack_op_test.py
++++ b/tensorflow/python/kernel_tests/unstack_op_test.py
+@@ -44,7 +44,7 @@ class UnstackOpTest(test.TestCase):
+     with self.test_session(use_gpu=True):
+       for shape in (2,), (3,), (2, 3), (3, 2), (4, 3, 2):
+         for dtype in [
+-            np.bool, np.float16, np.float32, np.float64, np.int32, np.int64
++            np.bool_, np.float16, np.float32, np.float64, np.int32, np.int64
+         ]:
+           data = np.random.randn(*shape).astype(dtype)
+           # Convert data to a single tensorflow tensor
+diff --git a/tensorflow/python/kernel_tests/where_op_test.py b/tensorflow/python/kernel_tests/where_op_test.py
+index 17575da6f1..5e5eb54d4e 100644
+--- a/tensorflow/python/kernel_tests/where_op_test.py
++++ b/tensorflow/python/kernel_tests/where_op_test.py
+@@ -99,7 +99,7 @@ class WhereOpTest(test.TestCase):
+     self._testWhere(x, truth, expected_err_re)
+ 
+   def testRandomBool(self):
+-    self._testRandom(np.bool)
++    self._testRandom(np.bool_)
+ 
+   def testRandomInt32(self):
+     self._testRandom(np.int32)
+diff --git a/tensorflow/python/ops/gradient_checker_test.py b/tensorflow/python/ops/gradient_checker_test.py
+index b0ecdc6a50..85188c4c85 100644
+--- a/tensorflow/python/ops/gradient_checker_test.py
++++ b/tensorflow/python/ops/gradient_checker_test.py
+@@ -100,7 +100,7 @@ class GradientCheckerTest(test.TestCase):
+       index_values = [1, 3]
+       y_shape = [2, 2]
+       params = constant_op.constant(
+-          np.arange(p_size).astype(np.float), shape=p_shape, name="p")
++          np.arange(p_size).astype(np.float64), shape=p_shape, name="p")
+       indices = constant_op.constant(index_values, name="i")
+       y = array_ops.gather(params, indices, name="y")
+ 
+@@ -119,7 +119,7 @@ class GradientCheckerTest(test.TestCase):
+       y2_shape = [2, 2]
+ 
+       params = constant_op.constant(
+-          np.arange(p_size).astype(np.float), shape=p_shape, name="p")
++          np.arange(p_size).astype(np.float64), shape=p_shape, name="p")
+       indices = constant_op.constant(index_values, name="i")
+       y = array_ops.gather(params, indices, name="y")
+       indices2 = constant_op.constant(index_values2, name="i2")
+diff --git a/tensorflow/python/ops/image_ops_test.py b/tensorflow/python/ops/image_ops_test.py
+index 72c889a2e6..1ad5826852 100644
+--- a/tensorflow/python/ops/image_ops_test.py
++++ b/tensorflow/python/ops/image_ops_test.py
+@@ -1265,13 +1265,13 @@ class AdjustContrastTest(test_util.TensorFlowTestCase):
+   def testDoubleContrastFloat(self):
+     x_shape = [1, 2, 2, 3]
+     x_data = [0, 5, 13, 54, 135, 226, 37, 8, 234, 90, 255, 1]
+-    x_np = np.array(x_data, dtype=np.float).reshape(x_shape) / 255.
++    x_np = np.array(x_data, dtype=np.float64).reshape(x_shape) / 255.
+ 
+     y_data = [
+         -45.25, -90.75, -92.5, 62.75, 169.25, 333.5, 28.75, -84.75, 349.5,
+         134.75, 409.25, -116.5
+     ]
+-    y_np = np.array(y_data, dtype=np.float).reshape(x_shape) / 255.
++    y_np = np.array(y_data, dtype=np.float64).reshape(x_shape) / 255.
+ 
+     self._testContrast(x_np, y_np, contrast_factor=2.0)
+ 
+diff --git a/tensorflow/python/ops/math_ops_test.py b/tensorflow/python/ops/math_ops_test.py
+index 980c92b0d5..c48586229d 100644
+--- a/tensorflow/python/ops/math_ops_test.py
++++ b/tensorflow/python/ops/math_ops_test.py
+@@ -230,7 +230,7 @@ class ApproximateEqualTest(test_util.TensorFlowTestCase):
+     for dtype in [np.float32, np.double]:
+       x = np.array([[[[-1, 2.00009999], [-3, 4.01]]]], dtype=dtype)
+       y = np.array([[[[-1.001, 2], [-3.00009, 4]]]], dtype=dtype)
+-      z = np.array([[[[False, True], [True, False]]]], dtype=np.bool)
++      z = np.array([[[[False, True], [True, False]]]], dtype=np.bool_)
+       with test_util.device(use_gpu=True):
+         z_tf = self.evaluate(math_ops.approximate_equal(x, y, tolerance=0.0001))
+         self.assertAllEqual(z, z_tf)
