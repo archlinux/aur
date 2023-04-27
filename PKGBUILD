@@ -5,7 +5,7 @@
 
 _pkgname=neovim
 pkgname="$_pkgname-git"
-pkgver=0.9.0.r263.gdbcd1985d1
+pkgver=0.9.0.r362.geb4676c67f
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs.'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -40,6 +40,8 @@ build() {
 		-GNinja \
 		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 		-DCMAKE_INSTALL_PREFIX=/usr
+
+	sed -i 's|-llpeg|/usr/lib/lua/5.1/lpeg.so|g' build/build.ninja
 	cmake --build build
 }
 
@@ -53,10 +55,9 @@ package() {
 	install -Dm644 $pkgname-sysinit.vim "$pkgdir/etc/xdg/nvim/sysinit.vim"
 	install -Dm644 $pkgname-archlinux.vim "$pkgdir/usr/share/nvim/archlinux.vim"
 
-	cd build
-	DESTDIR="$pkgdir" cmake --build . --target install
+	DESTDIR="$pkgdir" cmake --install build
 
-	cd ../$_pkgname
+	cd $_pkgname
 	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 runtime/nvim.desktop -t "$pkgdir/usr/share/applications/"
 	install -Dm644 runtime/nvim.appdata.xml -t "$pkgdir/usr/share/metainfo/"
