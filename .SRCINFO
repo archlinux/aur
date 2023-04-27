@@ -1,6 +1,6 @@
 pkgbase = r-annotationforge
 	pkgdesc = Tools for building SQLite-based annotation data packages
-	pkgver = 1.40.2
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/AnnotationForge
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = r-annotationforge
 	optdepends = r-knitr
 	optdepends = r-markdown
 	optdepends = r-org.hs.eg.db
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/AnnotationForge_1.40.2.tar.gz
-	sha256sums = 8d1b474b2e15235b0ec80c9e426e462a795830fec96499259f14d2fc13b567a9
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/AnnotationForge_1.42.0.tar.gz
+	sha256sums = 87e92be76f5799fb9e2c9fd4dab5566aa96becd10ba66d0378cfdb11a9183368
 
 pkgname = r-annotationforge
