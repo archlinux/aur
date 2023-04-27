@@ -1,6 +1,6 @@
 pkgbase = r-consensusov
 	pkgdesc = Gene expression-based subtype classification for high-grade serous ovarian cancer
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/consensusOV
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-consensusov
 	optdepends = r-ggplot2
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/consensusOV_1.20.0.tar.gz
-	sha256sums = b05ebcbc2f1431d7d7943cedd5ee54f4db2cc2065fd614c3c61b05f330f13d52
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/consensusOV_1.22.0.tar.gz
+	sha256sums = a1ab3d2b96f905652cce525b97e8df0cfad794161e011c4ed9be0a69e513c8b5
 
 pkgname = r-consensusov
