@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DEGreport
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
-pkgrel=3
+pkgver=1.36.0
+pkgrel=1
 pkgdesc='Report of DEG analysis'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -48,7 +48,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cce02adbd1087718a0a00b55399b5401e7ab1ca8428a1ef7bd3a591b5583e544')
+sha256sums=('51edcd04b8a272b38c361d865c1b91b7c0df70c12e28201057dfeb87050db597')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
