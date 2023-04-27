@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=supraHex
-_pkgver=1.36.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
+pkgver=1.38.0
 pkgrel=1
 pkgdesc='supraHex: a supra-hexagonal map for analysing tabular omics data'
 arch=('any')
@@ -23,7 +23,7 @@ depends=(
   r-tidyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('818a7d41f4f6f15dda151aa9aa70094fee5291ba00c4b1efc01d914660191f18')
+sha256sums=('87d7793d97b9eb0dc21f0168c9efce140f168d704c5f3d8feb4fa752733541fc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
