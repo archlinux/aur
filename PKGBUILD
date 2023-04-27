@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=seq2pathway
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
-pkgrel=3
+pkgver=1.32.0
+pkgrel=1
 pkgdesc='a novel tool for functional gene-set (or termed as pathway) analysis of next-generation sequencing data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -18,7 +18,7 @@ depends=(
   r-wgcna
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9d6ff9206350ad1f79b09fd2e0f63655495b195c1089ec960b2562cc4632833c')
+sha256sums=('dcd4b6f908df2b8e123a9b542938b9888e4c9c4eff79c91afde958a430ed6cb8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
