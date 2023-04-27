@@ -1,6 +1,6 @@
 pkgbase = r-rrho
 	pkgdesc = Inference on agreement between ordered lists
-	pkgver = 1.38.0
+	pkgver = 1.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RRHO
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-rrho
 	depends = r
 	depends = r-venndiagram
 	optdepends = r-lattice
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RRHO_1.38.0.tar.gz
-	sha256sums = 464bc84b13323c99d863a8b9af50a12dd004b618121efe592758760c2b21cfba
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RRHO_1.40.0.tar.gz
+	sha256sums = 48d735a1d6758e843084dc47d84d9674911637729d2c1b243541465f4cf0ae95
 
 pkgname = r-rrho
