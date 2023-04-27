@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TypeInfo
-_pkgver=1.64.0
+_pkgver=1.66.0
 pkgname=r-${_pkgname,,}
-pkgver=1.64.0
+pkgver=1.66.0
 pkgrel=1
 pkgdesc='Optional Type Specification Prototype'
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bc724b6168d778dee5a142be4ee814b2546c7ab12509411a5778e0fceea8b238')
+sha256sums=('fbc0e65704c19e88273ecb91b4f1db1ddc15c87442fb1be67441a843f2320ecc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
