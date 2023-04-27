@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=customCMPdb
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
-pkgrel=3
+pkgver=1.10.0
+pkgrel=1
 pkgdesc='Customize and Query Compound Annotation Database'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -25,7 +25,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9921e2134803f2da1378b7388da04415605e42e0fcbcfb94ea7a43fb304019cb')
+sha256sums=('952e5d8ee03915f667b48aa984b640e259fe89d44630dddba7ebaaa72b89e865')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
