@@ -1,6 +1,6 @@
 pkgbase = mygui-gl-git
 	pkgdesc = MyGUI - OpenGL backend
-	pkgver = 3.4.3.it
+	pkgver = 3.4.3.git
 	pkgrel = 1
 	url = http://mygui.info/
 	arch = i686

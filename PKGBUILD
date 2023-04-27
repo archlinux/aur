@@ -2,7 +2,7 @@
 # Maintainer: adrien Prost-Boucle <adrien.prost-boucle.@laposte.net>
 
 pkgname='mygui-gl-git'
-pkgver=3.4.2.git
+pkgver=3.4.3.git
 pkgrel=1
 
 pkgdesc="MyGUI - OpenGL backend"
