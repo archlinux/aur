@@ -1,6 +1,6 @@
 pkgbase = r-semdist
 	pkgdesc = Information Accretion-based Function Predictor Evaluation
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SemDist
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-semdist
 	depends = r-annotationdbi
 	depends = r-go.db
 	optdepends = r-gosemsim
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SemDist_1.32.0.tar.gz
-	sha256sums = 86da811e59c7ede1cd4c7d70950f0150486389df472e689261efa555fe5f12f1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SemDist_1.34.0.tar.gz
+	sha256sums = e843831cf0b53f3677f9d249d3db2228af2bdff1f1fbc1b59c5f851b0e976c70
 
 pkgname = r-semdist
