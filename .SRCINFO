@@ -1,7 +1,7 @@
 pkgbase = r-metagene
 	pkgdesc = A package to produce metagene plots
-	pkgver = 2.30.0
-	pkgrel = 3
+	pkgver = 2.31.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/metagene
 	arch = any
 	license = Artistic2.0
@@ -30,7 +30,7 @@ pkgbase = r-metagene
 	optdepends = r-rmarkdown
 	optdepends = r-runit
 	optdepends = r-similarpeak
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/metagene_2.30.0.tar.gz
-	sha256sums = 184ee8b3133c9bf529181edda369b3bc1afc115bbe090cc95eded273d983e427
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/metagene_2.31.0.tar.gz
+	sha256sums = e8b2391a7db54ab6b9da01843faaaf8ec1d0fd0d0e8df3cae473f5f0c4c2cd4f
 
 pkgname = r-metagene
