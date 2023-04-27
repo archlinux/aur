@@ -1,6 +1,6 @@
 pkgbase = r-delayeddataframe
 	pkgdesc = Delayed operation on DataFrame using standard DataFrame metaphor
-	pkgver = 1.14.0
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DelayedDataFrame
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-delayeddataframe
 	optdepends = r-rmarkdown
 	optdepends = r-seqarray
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DelayedDataFrame_1.14.0.tar.gz
-	sha256sums = 9989aa5504c0d99d70a1fc9c01e10f340df8359e4aa72ca61d831410387f4ee4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DelayedDataFrame_1.16.0.tar.gz
+	sha256sums = 13d6a595c77e2d47b1507a2fa0de5738a07822f05e813f4091a6c9606544c600
 
 pkgname = r-delayeddataframe
