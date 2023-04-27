@@ -1,6 +1,6 @@
 pkgbase = r-openprimer
 	pkgdesc = Multiplex PCR Primer Design and Analysis
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/openPrimeR
 	arch = any
@@ -40,7 +40,7 @@ pkgbase = r-openprimer
 	optdepends = r-pander
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/openPrimeR_1.20.0.tar.gz
-	sha256sums = 2c68b8e2f519d905eaabe04b746f5a5fbb6a01fd9e542050bf819c8f8974896d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/openPrimeR_1.22.0.tar.gz
+	sha256sums = b640d9410bc7d39dd05446cd2a73a4763a7f53d5db90bf70857674a800b39a51
 
 pkgname = r-openprimer
