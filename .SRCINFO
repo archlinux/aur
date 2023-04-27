@@ -4,10 +4,10 @@ pkgbase = l1t-bin
 	pkgrel = 1
 	url = https://github.com/alex-laycalvert/l1t
 	arch = x86_64
-	license = GPLv3
+	license = GPL-3.0-only
 	provides = l1t
 	conflicts = l1t
 	source = https://github.com/alex-laycalvert/l1t/releases/download/v0.2.0/l1t-0.2.0-x86_64.tar.gz
-	sha256sums = fba7c29c4069fb328f2010b4a51e356009140a6784cf6d067af264e5fe5c103a
+	sha256sums = 089c44c4d2e4c214dde81fe9734d8350295e64422486bb36e6dbba881e7d0473
 
 pkgname = l1t-bin

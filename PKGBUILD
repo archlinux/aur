@@ -7,12 +7,12 @@ pkgver=0.2.0
 pkgrel=1
 pkgdesc="A terminal strategy game about shooting lasers and lighting statues"
 url="https://github.com/alex-laycalvert/l1t"
-license=("GPLv3")
+license=("GPL-3.0-only")
 arch=("x86_64")
 provides=("l1t")
 conflicts=("l1t")
 source=("https://github.com/alex-laycalvert/l1t/releases/download/v$pkgver/l1t-$pkgver-x86_64.tar.gz")
-sha256sums=("fba7c29c4069fb328f2010b4a51e356009140a6784cf6d067af264e5fe5c103a")
+sha256sums=("089c44c4d2e4c214dde81fe9734d8350295e64422486bb36e6dbba881e7d0473")
 
 package() {
     install -Dm755 l1t -t "$pkgdir/usr/bin"
