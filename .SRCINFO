@@ -1,6 +1,6 @@
 pkgbase = betaflight-configurator-nightlies-bin
 	pkgdesc = Nightly builds of the Betaflight Configurator
-	pkgver = v20230427.441
+	pkgver = v20230427.442
 	pkgrel = 1
 	url = https://github.com/betaflight/betaflight-configurator-nightlies
 	install = betaflight-configurator-nightlies-bin.install
@@ -9,7 +9,7 @@ pkgbase = betaflight-configurator-nightlies-bin
 	provides = betaflight-configurator
 	conflicts = betaflight-configurator
 	options = !strip
-	source = https://github.com/betaflight/betaflight-configurator-nightlies/releases/download/v20230427.441/betaflight-configurator_10.10.0-debug-b523f0a_linux64-portable.zip
-	sha256sums = 75a9dacdfcc1f4d1c8d73668bbcf8d4cc89a6701660656aa0d56820fa3841ef7
+	source = https://github.com/betaflight/betaflight-configurator-nightlies/releases/download/v20230427.442/betaflight-configurator_10.10.0-debug-1c4332a_linux64-portable.zip
+	sha256sums = f9251c10ff1a7fee758f529ca3f173da3aa3ea54ad85e8369385024299167353
 
 pkgname = betaflight-configurator-nightlies-bin
