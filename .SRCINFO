@@ -1,0 +1,13 @@
+pkgbase = reddit-desktop-bin
+	pkgdesc = Reddit Desktop is a desktop client for reddit.
+	pkgver = 1.0.123
+	pkgrel = 1
+	url = https://github.com/sgiurgiu/reddit_desktop
+	arch = x86_64
+	license = GNU
+	depends = mpv
+	provides = reddit-desktop
+	source = https://github.com/sgiurgiu/reddit_desktop/releases/download/1.0.123/reddit_desktop-1.0.123-debian.deb
+	sha256sums = a9f572a7d6ecd1b5cfae369a27e61274eb9c6a994439c4ad843270f259dc4782
+
+pkgname = reddit-desktop-bin
