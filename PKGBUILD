@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=airway
-_pkgver=1.18.0
+_pkgver=1.19.1
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.19.1
 pkgrel=1
 pkgdesc='RangedSummarizedExperiment for RNA-Seq in airway smooth muscle cells, by Himes et al PLoS One 2014'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-markdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5daef4baf71b4008d5c19174bd49029c21f1c6911e0f2ed0ff646fea0234e050')
+sha256sums=('f152e31210172ed4add70bb928ae409be1bc72b7c6fbeea4ef4ac67132c02178')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
