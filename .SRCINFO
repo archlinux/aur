@@ -1,6 +1,6 @@
 pkgbase = r-beadarraysnp
 	pkgdesc = Normalization and reporting of Illumina SNP bead arrays
-	pkgver = 1.64.0
+	pkgver = 1.66.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/beadarraySNP
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-beadarraysnp
 	optdepends = r-dnacopy
 	optdepends = r-limma
 	optdepends = r-snapcgh
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/beadarraySNP_1.64.0.tar.gz
-	sha256sums = cf48b69396914afa206b3a35586f5a099dcc075b2916e70b97dd2fca6e421e1a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/beadarraySNP_1.66.0.tar.gz
+	sha256sums = 35f1e1e2c5371c9961240fb67e4382d5c1ddb8847b2ca9df963ef22149d5d5df
 
 pkgname = r-beadarraysnp
