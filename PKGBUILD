@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SingleCellSignalR
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Cell Signalling Using Single Cell RNAseq Data Analysis'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('64083111365aee0e4575848f0e114da1fc35a37bc8ed00fb1d9b9f34b4b68fa4')
+sha256sums=('8398646ca88def7c88bc767c861c544a9a6cf73660486996b02d321e5241e3fe')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
