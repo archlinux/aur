@@ -3,7 +3,7 @@
 _pkgname=amdgpu_top
 pkgname=$_pkgname-bin
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool that shows AMD GPU utilization (binary release)"
 arch=('x86_64')
 url="https://github.com/Umio-Yasuno/amdgpu_top"
@@ -17,7 +17,7 @@ sha256sums=('8b6fb3877e8dc2c7e44a4a7dabc28ad48a65feefffacea4abb7b54261636ca08')
 package() {
   tar Jxpf data.tar.xz
   cd usr
+  install -Dm644 share/applications/$_pkgname.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 share/doc/amdgpu-top/copyright -t "$pkgdir/usr/share/licenses/$_pkgname"
-  install -Dm644 share/doc/$_pkgname/README.md -t "$pkgdir/usr/share/doc/$_pkgname"
   install -Dm755 bin/$_pkgname -t "${pkgdir}/usr/bin"
 }

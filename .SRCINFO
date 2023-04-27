@@ -1,7 +1,7 @@
 pkgbase = amdgpu_top-bin
 	pkgdesc = Tool that shows AMD GPU utilization (binary release)
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Umio-Yasuno/amdgpu_top
 	arch = x86_64
 	license = MIT
