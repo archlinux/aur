@@ -1,6 +1,6 @@
 pkgbase = r-iwtomics
 	pkgdesc = Interval-Wise Testing for Omics Data
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/IWTomics
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-iwtomics
 	depends = r-iranges
 	depends = r-s4vectors
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/IWTomics_1.22.0.tar.gz
-	sha256sums = f81ec600bcc9ca3b77e9b301cf243c089a0f946adbf9ac6c75f28e2a1a85ada2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/IWTomics_1.24.0.tar.gz
+	sha256sums = aeed7670a23ae0d80ac6e1a3ab562ffa632bda78a187236d69732399a489aa71
 
 pkgname = r-iwtomics

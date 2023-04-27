@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=IWTomics
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Interval-Wise Testing for Omics Data'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f81ec600bcc9ca3b77e9b301cf243c089a0f946adbf9ac6c75f28e2a1a85ada2')
+sha256sums=('aeed7670a23ae0d80ac6e1a3ab562ffa632bda78a187236d69732399a489aa71')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
