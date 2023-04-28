@@ -1,6 +1,6 @@
 pkgbase = r-somaticsignatures
 	pkgdesc = Somatic Signatures
-	pkgver = 2.34.0
+	pkgver = 2.36.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SomaticSignatures
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-somaticsignatures
 	optdepends = r-somaticcanceralterations
 	optdepends = r-sva
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SomaticSignatures_2.34.0.tar.gz
-	sha256sums = 524469402342c99ca59daf0fc2bac6823509314117365c555d41ddc5f925d077
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SomaticSignatures_2.36.0.tar.gz
+	sha256sums = da34f486245a3b7285ca18dc6a07976b1af82fb9fde11bc59d4e6c7a3a42bc1c
 
 pkgname = r-somaticsignatures
