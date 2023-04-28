@@ -1,6 +1,6 @@
 pkgbase = r-breakpointrdata
 	pkgdesc = Strand-seq data for demonstration purposes
-	pkgver = 1.17.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/breakpointRdata
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-breakpointrdata
 	depends = r
 	optdepends = r-biocstyle
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/breakpointRdata_1.17.0.tar.gz
-	sha256sums = d83777e6073e4216d2a91e11604bb3cdccedff698074758ba03a5ea8c06efb09
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/breakpointRdata_1.18.0.tar.gz
+	sha256sums = 1bc864506e852c4e885bfd11f42da9d03dd75d6f49b11ecb88b945d0fc23fb73
 
 pkgname = r-breakpointrdata
