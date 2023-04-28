@@ -1,7 +1,7 @@
 # Maintainer: Grant <grant@fig.io>
 
 pkgname="cicada-bin"
-pkgver="ain"
+pkgver="0.1.50"
 pkgrel="1"
 pkgdesc="Write CI/CD Pipelines in TypeScript"
 arch=("x86_64")
@@ -15,7 +15,7 @@ source=(
     "https://raw.githubusercontent.com/cicadahq/cicada/v${pkgver}/LICENSE"
 )
 sha256sums=(
-    "ad4f375a470bbb40d23d08b5f19dddec8cbb14a7ecea35e5b6b1271be0cbb54e"
+    "b8f18bdf7cd101d3c59cfd4ffd3b6e6632eadd6d05b7e4eed7e062650c6e01da"
     "SKIP"
 )
 

@@ -1,6 +1,6 @@
 pkgbase = cicada-bin
 	pkgdesc = Write CI/CD Pipelines in TypeScript
-	pkgver = ain
+	pkgver = 0.1.50
 	pkgrel = 1
 	url = https://cicada.build
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = cicada-bin
 	depends = buildkit
 	provides = cicada
 	conflicts = cicada
-	source = cicada-bin-ain.tgz::https://github.com/cicadahq/cicada/releases/download/vain/cicada-x86_64-unknown-linux-gnu.tar.gz
-	source = https://raw.githubusercontent.com/cicadahq/cicada/vain/LICENSE
-	sha256sums = ad4f375a470bbb40d23d08b5f19dddec8cbb14a7ecea35e5b6b1271be0cbb54e
+	source = cicada-bin-0.1.50.tgz::https://github.com/cicadahq/cicada/releases/download/v0.1.50/cicada-x86_64-unknown-linux-gnu.tar.gz
+	source = https://raw.githubusercontent.com/cicadahq/cicada/v0.1.50/LICENSE
+	sha256sums = b8f18bdf7cd101d3c59cfd4ffd3b6e6632eadd6d05b7e4eed7e062650c6e01da
 	sha256sums = SKIP
 
 pkgname = cicada-bin
