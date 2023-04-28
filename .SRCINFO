@@ -1,0 +1,15 @@
+pkgbase = e2sim-git
+	pkgdesc = This module enables the support for running multiple terminations of an O-RAN-compliant E2 interface inside the simulation process.
+	pkgver = r72.275f58f
+	pkgrel = 1
+	url = https://github.com/wineslab/ns-o-ran-e2-sim
+	arch = x86_64
+	license = APACHE
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	depends = lksctp-tools
+	source = e2sim::git+https://github.com/wineslab/ns-o-ran-e2-sim.git
+	sha256sums = SKIP
+
+pkgname = e2sim-git
