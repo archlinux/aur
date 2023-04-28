@@ -4,13 +4,13 @@
 
 pkgname=tailscale-git
 _pkgname=tailscale
-pkgver=1.39.107+t5a3da3cd7
+pkgver=1.41.8+tb3c3a9f17
 pkgrel=1
 pkgdesc="A mesh VPN that makes it easy to connect your devices, wherever they are."
 arch=("x86_64")
 url="https://tailscale.com"
 license=("MIT")
-makedepends=("git" "go>=1.16")
+makedepends=("git")
 depends=("glibc")
 optdepends=('networkmanager: DNS resolver integration'
             'openresolv: DNS resolver integration'
