@@ -1,7 +1,7 @@
 # Maintainer: ZappaBoy <federico.zappone at justanother dot cloud>
 pkgname=worky
 pkgbase=worky
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Worky is a tool that helps to define and load project workspaces."
 arch=('any')

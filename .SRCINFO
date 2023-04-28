@@ -1,6 +1,6 @@
 pkgbase = worky
 	pkgdesc = Worky is a tool that helps to define and load project workspaces.
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/ZappaBoy/worky
 	arch = any
