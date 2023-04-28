@@ -9,8 +9,8 @@ pkgname=(
   libxml2
   libxml2-docs
 )
-pkgver=2.10.4
-pkgrel=3
+pkgver=2.11.0
+pkgrel=1
 pkgdesc="XML C parser and toolkit"
 url="https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home"
 arch=(x86_64)
@@ -26,7 +26,7 @@ makedepends=(
   git
   python
 )
-_commit=223cb03a5d27b1b2393b266a8657443d046139d6  # tags/v2.10.4^0
+_commit=f296934ade688baab79caf1c62a82149ad78accf  # tags/v2.11.0^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/libxml2.git#commit=$_commit"
   0001-Fix-python3-unicode-errors.patch
@@ -34,8 +34,8 @@ source=(
   https://www.w3.org/XML/Test/xmlts20130923.tar.gz
 )
 b2sums=('SKIP'
-        'ec5a0955906c5fdd4bc65248bdb46f315460f4b2208bf37c49f55ef7468585786bdf563aa3e9357370d4f1ff947a6d4467869eeb2ca6b77ca5e40ffa45213a13'
-        'ec247c8caad963307d8f487176fde518cfb087bbff3f10c2a5846b90a04c9909c2f0e6aaf8ded4784f46586eafb16df493caf1debc20ff10014f03b1f1f8241d'
+        'f2fa5084cef46ae33069bd76745e9f5bdfa8cb20714b861641b6028ea2457ed57eb5637afad1f6a313d23f79428cf56c16106b716294eb361fd1f3b04799e1d3'
+        '792f8f721c18369b19db851c04b81e0ad4e57c588e8bde2ae0e4afddb12765d18119a5b73de0ae232d24d5c009f1972e2658c60484db83e8b870f25e8bb063a5'
         '63a47bc69278ef510cd0b3779aed729e1b309e30efa0015d28ed051cc03f9dfddb447ab57b07b3393e8f47393d15473b0e199c34cb1f5f746b15ddfaa55670be')
 
 pkgver() {
