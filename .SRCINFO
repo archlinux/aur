@@ -1,6 +1,6 @@
 pkgbase = buck2-git
 	pkgdesc = Successor to the Buck build system
-	pkgver = r2836.b55dbd253c
+	pkgver = r4390.5a4fc15453
 	pkgrel = 1
 	url = https://github.com/facebook/buck2
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = buck2-git
 	depends = sqlite
 	provides = buck2
 	source = git+https://github.com/facebook/buck2
-	source = unbundled-sqlite.patch
+	source = unbundled-sqlite.diff
 	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = 3bdd7bd2f52a5eb249179d191b00a7b8
 
 pkgname = buck2-git
