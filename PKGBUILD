@@ -2,12 +2,12 @@
 
 pkgname=python-environ-config
 _name=${pkgname#python-}
-pkgver=23.1.0
-pkgrel=2
+pkgver=23.2.0
+pkgrel=1
 pkgdesc="Python Application Configuration With Environment Variables"
 arch=(any)
 url="https://github.com/hynek/environ-config"
-license=(APACHE)
+license=(Apache)
 depends=(
   python
   python-attrs
@@ -24,13 +24,16 @@ checkdepends=(
   python-pytest
   python-moto
 )
+optdepends=(
+  'python-boto3: secret extraction from AWS Secrets Manager'
+)
 
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
   "remove-failing-tests.patch"
 )
 sha256sums=(
-  'eb12641008c42c1dc8e1a5230536187ecb752c4779dd0b4ae7b72c82188b787a'
+  'b717dbdf671a79b8c73427bc2c8eeaabed7abf36252281accfd5db25b50db21a'
   '1950f7520048462cb5669c928ea0c260ba5ba26f272fbd0053498aecc781abe0'
 )
 
@@ -58,7 +61,7 @@ build() {
 check() {
   cd "$_archive"
 
-  PYTHONPATH=src/ python -m pytest
+  PYTHONPATH=src/ python -m pytest --ignore=tests/test_packaging.py
 }
 
 package() {

@@ -1,10 +1,10 @@
 pkgbase = python-environ-config
 	pkgdesc = Python Application Configuration With Environment Variables
-	pkgver = 23.1.0
-	pkgrel = 2
+	pkgver = 23.2.0
+	pkgrel = 1
 	url = https://github.com/hynek/environ-config
 	arch = any
-	license = APACHE
+	license = Apache
 	checkdepends = python-pytest
 	checkdepends = python-moto
 	makedepends = python-build
@@ -15,9 +15,10 @@ pkgbase = python-environ-config
 	makedepends = python-wheel
 	depends = python
 	depends = python-attrs
-	source = python-environ-config-23.1.0.tar.gz::https://github.com/hynek/environ-config/archive/refs/tags/23.1.0.tar.gz
+	optdepends = python-boto3: secret extraction from AWS Secrets Manager
+	source = python-environ-config-23.2.0.tar.gz::https://github.com/hynek/environ-config/archive/refs/tags/23.2.0.tar.gz
 	source = remove-failing-tests.patch
-	sha256sums = eb12641008c42c1dc8e1a5230536187ecb752c4779dd0b4ae7b72c82188b787a
+	sha256sums = b717dbdf671a79b8c73427bc2c8eeaabed7abf36252281accfd5db25b50db21a
 	sha256sums = 1950f7520048462cb5669c928ea0c260ba5ba26f272fbd0053498aecc781abe0
 
 pkgname = python-environ-config
