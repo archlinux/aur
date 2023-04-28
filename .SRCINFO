@@ -1,6 +1,6 @@
 pkgbase = casadi
 	pkgdesc = Symbolic framework for automatic differentiation and numeric optimization
-	pkgver = 3.6.1
+	pkgver = 3.6.2
 	pkgrel = 1
 	url = https://github.com/casadi/casadi
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = casadi
 	depends = python-matplotlib
 	depends = coin-or-ipopt
 	depends = dsdp
-	source = casadi-3.6.1.tar.gz::https://github.com/casadi/casadi/archive/3.6.1.tar.gz
-	sha256sums = 193032c1377cc4762be30e1e6d933e97d40c679ac7081bde46bb12390ed4337c
+	source = casadi-3.6.2.tar.gz::https://github.com/casadi/casadi/archive/3.6.2.tar.gz
+	sha256sums = faade0ddabb7e3fd27f37d40e24544be759a3d12eb9565f32c0f1617e7e74f50
 
 pkgname = casadi
