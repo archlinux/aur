@@ -1,8 +1,8 @@
-# Maintainer: bipin kumar <bipin@ccmb.res.in>
+# Maintainer: Bipin Kumar <kbipinkumar@pm.me>
 
 pkgname=python-mappy
-_module=${pkgname#python-}
-pkgver=2.24
+_module=minimap2
+pkgver=2.25
 pkgrel=2
 pkgdesc="Python interface to minimap2, a fast and accurate C program to align genomic and transcribe nucleotide sequences"
 arch=('x86_64')
@@ -16,17 +16,17 @@ makedepends=(
              'python-setuptools'
              'cython'
              'zlib'
+             'python-wheel'
             )
 
 options=(!emptydirs)
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz"
-        "https://github.com/lh3/minimap2/blob/1d3c3eef03216fde72f5e1a3850941b0193216d9/LICENSE.txt")
-sha256sums=('35a2fb73ef14173283d5abb31e7a318429e0330c3be95851df38dd83d4ff9af9'
-            '8124fce0862f865aa6ec01d00dfaffcd7a350627799b63224485b1f04ea3d811')
+source=("https://github.com/lh3/minimap2/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('9742ff0be01e51ea7d65f70c01d1344eee6f0d7b135359e0c00aec30fb74ac38')
 
 prepare() {
-    cp LICENSE.txt "$_module-$pkgver"
-}
+    cd "$_module-$pkgver"
+    sed -i 's|CFLAGS=		-g -Wall -O2 -Wc++-compat #-Wextra|CFLAGS=		-g -Wall -O2 -Wc++-compat -fPIC #-Wextra|g' Makefile
+ }
 
 build() {
     cd "$_module-$pkgver"
@@ -36,5 +36,5 @@ build() {
 package() {
     cd "$_module-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "LICENSE.txt" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
