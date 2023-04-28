@@ -1,7 +1,7 @@
 pkgbase = libstumpless
 	pkgdesc = C logging library built for high performance and a rich feature set.
 	pkgver = 2.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/goatshriek/stumpless
 	arch = i686
 	arch = x86_64
