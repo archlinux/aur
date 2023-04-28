@@ -1,0 +1,16 @@
+pkgbase = pyprland
+	pkgdesc = Easy scratchpads, smart monitor placement and more Hyprland
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/fdev31/pyprland
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-pip
+	depends = python
+	provides = pyprland
+	conflicts = pyprland
+	source = git+https://github.com/fdev31/pyprland.git#tag=1.0.2
+	md5sums = SKIP
+
+pkgname = pyprland
