@@ -9,9 +9,7 @@ pkgbase = quakeinjector
 	makedepends = gradle
 	depends = java-environment
 	depends = hicolor-icon-theme
-	provides = quakeinjector
 	conflicts = quakeinjector
-	replaces = quakeinjector
 	source = git+https://github.com/hrehfeld/QuakeInjector.git#tag=alpha05
 	source = quakeinjector.desktop
 	source = quakeinjector
