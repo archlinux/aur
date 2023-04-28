@@ -31,7 +31,7 @@ checkdepends=(
   lv2lint
 )
 provides=($_pkgname)
-conflicts=($_pkgname)
+conflicts=($_pkgname $_pkgname-{clap,lv2,standalone,vst,vst3})
 source=($_pkgname::git+$url.git)
 sha512sums=(SKIP)
 pkgver() {

@@ -26,6 +26,11 @@ pkgbase = aida-x-git
 	depends = vst3-host
 	provides = aida-x
 	conflicts = aida-x
+	conflicts = aida-x-clap
+	conflicts = aida-x-lv2
+	conflicts = aida-x-standalone
+	conflicts = aida-x-vst
+	conflicts = aida-x-vst3
 	source = aida-x::git+https://github.com/AidaDSP/aida-x.git
 	sha512sums = SKIP
 
