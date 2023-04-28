@@ -1,0 +1,16 @@
+pkgbase = mkdocs-coverage
+	pkgdesc = MkDocs plugin to integrate your coverage HTML report into your site
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://pawamoy.github.io/mkdocs-coverage
+	arch = any
+	license = ISC
+	makedepends = python-pdm-backend
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/m/mkdocs_coverage/mkdocs_coverage-0.2.7.tar.gz
+	sha256sums = 3616b2508f0197158e684cdb1a08e558c14d435ea3b79e34f71b2f024f6e022b
+
+pkgname = mkdocs-coverage
+	depends = python>=3.7
+	depends = mkdocs>=1.2
