@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
-Name=Charm
+Name=Pycharm Light Edit
 Icon=pycharm
-Exec=charm -e %f
+Exec=ltedit %f
 MimeType=text/x-python;application/x-ipynb+json
 NoDisplay=true
 Terminal=false
