@@ -3,7 +3,7 @@
 # Contributor: elsixdiab
 
 pkgname=congruity
-pkgver=20
+pkgver=21
 pkgrel=1
 pkgdesc='A GUI application for programming Logitech(R) Harmony(TM) remote controls.'
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('python-libconcord>=1.1' 'python-six' 'python-suds' 'python-wxpython')
 install="$pkgname.install"
 source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.bz2")
-sha256sums=('50f28e584ba6710cc803a6a27b103f65cca83f0a130165154597e5322c6790c1')
+sha256sums=('c5217861fd18c2c0fd1dfe8c8e6f66566a5f947930dd1b60cf261fffb8278586')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
