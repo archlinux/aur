@@ -1,8 +1,8 @@
 pkgbase = omake
 	pkgdesc = A build system designed for scalability and portability
 	pkgver = 0.10.3
-	pkgrel = 1
-	url = http://omake.metaprl.org/index.html
+	pkgrel = 2
+	url = http://projects.camlcity.org/projects/omake.html
 	arch = x86_64
 	license = GPL2
 	makedepends = ocaml
@@ -10,4 +10,3 @@ pkgbase = omake
 	sha256sums = ff3107e9459615ea6526309c533b04815eef60692a20dcd3a6169f5860786d1d
 
 pkgname = omake
-

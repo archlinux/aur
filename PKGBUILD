@@ -5,10 +5,10 @@
 
 pkgname=omake
 pkgver=0.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A build system designed for scalability and portability"
 arch=('x86_64')
-url="http://omake.metaprl.org/index.html"
+url="http://projects.camlcity.org/projects/omake.html"
 license=('GPL2')
 makedepends=('ocaml')
 source=(http://download.camlcity.org/download/omake-$pkgver.tar.gz)
