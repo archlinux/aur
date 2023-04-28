@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-lexical-sealrequirehints'
-pkgver='0.011'
+pkgver='0.012'
 pkgrel='1'
 pkgdesc="prevent leakage of lexical hints"
 arch=('i686' 'x86_64')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl-module-build>=0' 'perl>=5.006')
 makedepends=()
 url='https://metacpan.org/release/Lexical-SealRequireHints'
-source=('http://search.cpan.org/CPAN/authors/id/Z/ZE/ZEFRAM/Lexical-SealRequireHints-0.011.tar.gz')
-md5sums=('210635d5316693885eb328986ef8e1d8')
-sha512sums=('b31d3527e3ea1d28ebcac58cfdb35893643c7c371dba96cf06509cc7b1ce61c38f6cc37f420c2ec93b0a57adfc3d3cd797af97fad9aeb6e1000ef1769e26c31e')
-_distdir="Lexical-SealRequireHints-0.011"
+source=("http://search.cpan.org/CPAN/authors/id/Z/ZE/ZEFRAM/Lexical-SealRequireHints-${pkgver}.tar.gz")
+md5sums=('2203e82b75fa7597d0a2b986c8231b0f')
+sha512sums=('14326aeb9ee6ff0bf60d155709758f24cb8626b7848273ebbc4a58ee587091e9ad302b2f380dff90e5a9bf8801d6823f7f93be1761909ed8778fd2871311e728')
+_distdir="Lexical-SealRequireHints-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
