@@ -55,6 +55,6 @@ package() {
   install -Dm644 data/Proteus.png "${pkgdir}/usr/share/pixmaps/proteus.png"
   
   # Install launch script
-  echo -e "#!/bin/sh\ncd {$_target} && ./Proteus.bin.${_arch}" > launcher.sh
+  echo -e "#!/bin/sh\ncd ${_target} && ./Proteus.bin.${_arch}" > launcher.sh
   install -Dm755 launcher.sh "${pkgdir}/usr/bin/proteus"
 }
