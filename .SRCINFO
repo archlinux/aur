@@ -1,6 +1,6 @@
 pkgbase = r-rnaseqsamplesize
 	pkgdesc = RnaSeqSampleSize
-	pkgver = 2.8.0
+	pkgver = 2.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RnaSeqSampleSize
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = r-rnaseqsamplesize
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RnaSeqSampleSize_2.8.0.tar.gz
-	sha256sums = 6ae7e52eec644475b3d5c28624f4809fe50c233eb52a80aa1b92acc02703226c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RnaSeqSampleSize_2.10.0.tar.gz
+	sha256sums = ca36a479674a6ac41a5c23d6e71fc5933ed11216ddc8219157a19b08c90139e2
 
 pkgname = r-rnaseqsamplesize
