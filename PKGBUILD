@@ -1,8 +1,8 @@
-# Maintainer: Bipin Kumar <bipin@ccmb.res.in>
+# Maintainer: Bipin Kumar <kbipinkumar@pm.me>
 
 pkgname=cutadapt
 _name=cutadapt
-pkgver=4.3
+pkgver=4.4
 pkgrel=1
 pkgdesc='Remove adapter sequences from high-throughput sequencing reads. doi:10.14806/ej.17.1.200'
 arch=('x86_64')
@@ -22,7 +22,7 @@ makedepends=(
             'python-setuptools-scm'
             )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('319de860f975977e080ea42d9d255322060693ca39b7be51187831311702fe29')
+sha256sums=('4554157c673022e1c433fcd6e3b803008fef60c8e71c01215e4aa04b0f09fe83')
 
 build() {
     cd "$_name-$pkgver"
