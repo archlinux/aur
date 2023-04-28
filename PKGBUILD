@@ -14,6 +14,11 @@ sha512sums=('55f6ee13342b3209b1fcb310f4c4d33d22856ee785cb2347e6ad36c34e9b42f6e0d
 
 build() {
   cd cryptography-$pkgver
+
+  # Explicitly build against OpenSSL 1.1. Otherwise we end up building against the OpenSSL 3 headers
+  # even though this version of cryptography doesn't support OpenSSL 3, yet.
+  CFLAGS+=" -I/usr/include/openssl-1.1"
+  LDFLAGS+=" -L/usr/lib/openssl-1.1"
   python2 setup.py build
 }
 
