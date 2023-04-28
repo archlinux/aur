@@ -5,10 +5,10 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-hidpi-xprop-git"
-pkgver=r2689.6519c030
+pkgver=r2837.dbb6d9d1
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
-arch=(any)
+arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/hyprwm/Hyprland"
 license=('BSD')
 depends=(
@@ -94,9 +94,8 @@ build() {
 	make fixwlr
 	cd "./subprojects/wlroots/" && meson setup build/ --prefix="${srcdir}/tmpwlr" --buildtype=plain && ninja -C build/ && mkdir -p "${srcdir}/tmpwlr" && ninja -C build/ install && cd ../..
 	cd "./subprojects/udis86/" && cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=None -H./ -B./build -G Ninja && cmake --build ./build --target all && cd ../..
-	make protocols
 	mkdir -p build && cd build
-	cmake -G Ninja -DCMAKE_BUILD_TYPE=None ..
+	cmake -G Ninja -DCMAKE_BUILD_TYPE=None -DCMAKE_SKIP_RPATH=ON -DCMAKE_INSTALL_PREFIX=/usr ..
 	ninja
 	cd "${srcdir}/${_pkgname}"
 	cd ./hyprctl && make all && cd ..
@@ -104,14 +103,19 @@ build() {
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	mkdir -p "${pkgdir}/usr/share/wayland-sessions"
-	mkdir -p "${pkgdir}/usr/share/hyprland"
 	install -Dm755 build/Hyprland -t "${pkgdir}/usr/bin"
 	install -Dm755 hyprctl/hyprctl -t "${pkgdir}/usr/bin"
 	install -Dm644 assets/*.png -t "${pkgdir}/usr/share/hyprland"
 	install -Dm644 example/hyprland.desktop -t "${pkgdir}/usr/share/wayland-sessions"
 	install -Dm644 example/hyprland.conf -t "${pkgdir}/usr/share/hyprland"
-	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -Dm644 subprojects/wlroots/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-wlroots"
 	install -Dm644 docs/*.1 -t "${pkgdir}/usr/share/man/man1"
 	install -Dm755 ../tmpwlr/lib/libwlroots.so.* -t "${pkgdir}/usr/lib"
+	install -d "${pkgdir}/usr/include/hyprland/protocols"
+	cp -R src ${pkgdir}/usr/include/hyprland/
+	cp -R ../tmpwlr/include/* ${pkgdir}/usr/include/hyprland/
+	find ${pkgdir}/usr/include/hyprland/ -type f ! -name '*.h*' -delete
+	cp protocols/*-protocol.h  ${pkgdir}/usr/include/hyprland/protocols
+	install -Dm644 build/hyprland.pc -t "${pkgdir}/usr/share/pkgconfig"
 }
