@@ -2,7 +2,7 @@
 pkgname=fzf-kill
 _pkgname=fzf-kill
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Kill -9 with fzf"
 arch=(any)
 url="https://github.com/Zeioth/fzf-kill.git"
