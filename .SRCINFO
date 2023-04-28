@@ -1,6 +1,6 @@
 pkgbase = r-all
 	pkgdesc = A data package
-	pkgver = 1.41.0
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ALL
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-all
 	depends = r
 	depends = r-biobase
 	optdepends = r-rpart
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/ALL_1.41.0.tar.gz
-	sha256sums = ae726ad9d9edfb20ce06c053da925c7a44a5f1cd618aa12510995e848c76f198
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/ALL_1.42.0.tar.gz
+	sha256sums = d1951905dea24bb4efe987ee2c22375b6de7ae6d5f4c47a2ec52ea23a6d65f7e
 
 pkgname = r-all
