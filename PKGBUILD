@@ -1,7 +1,7 @@
 # Maintainer: Harrison Oates <harrison at harrisonoates dot com>
 # Upstream: Immersed Inc. <info at immersedvr dot com>
 pkgname=immersed
-pkgver=1.9.0
+pkgver=9.4.0
 pkgrel=1
 pkgdesc="Immersed Agent"
 arch=("x86_64")
