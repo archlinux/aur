@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MAGeCKFlute
-_pkgver=2.2.0
+_pkgver=2.4.0
 pkgname=r-${_pkgname,,}
-pkgver=2.2.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='Integrative Analysis Pipeline for Pooled CRISPR Functional Genetic Screens'
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
   r-sva
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e0e7cd2a0c0bf179a1c8b42fb56da519b839da72961890690e2a3e583583a8dc')
+sha256sums=('9b7e35ffac87cd8b76db6a2d7608a60614f60ca447fac91955b15615d51202e5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

@@ -1,6 +1,6 @@
 pkgbase = r-mageckflute
 	pkgdesc = Integrative Analysis Pipeline for Pooled CRISPR Functional Genetic Screens
-	pkgver = 2.2.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MAGeCKFlute
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-mageckflute
 	optdepends = r-png
 	optdepends = r-scales
 	optdepends = r-sva
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MAGeCKFlute_2.2.0.tar.gz
-	sha256sums = e0e7cd2a0c0bf179a1c8b42fb56da519b839da72961890690e2a3e583583a8dc
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MAGeCKFlute_2.4.0.tar.gz
+	sha256sums = 9b7e35ffac87cd8b76db6a2d7608a60614f60ca447fac91955b15615d51202e5
 
 pkgname = r-mageckflute
