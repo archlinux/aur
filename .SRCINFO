@@ -1,14 +1,15 @@
 pkgbase = kauthproxy
 	pkgdesc = Local authentication proxy for Kubernetes Dashboard
-	pkgver = 1.1.1
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/int128/kauthproxy
 	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = Apache
 	depends = kubectl
 	depends = glibc
-	source = kauthproxy-1.1.1.zip::https://github.com/int128/kauthproxy/releases/download/v1.1.1/kauthproxy_linux_amd64.zip
-	sha256sums = 331ff9ed096806181e7cb026b937107b10c1aaa9851df949f7a9c7b4a7f5a237
+	source = kauthproxy-1.2.1-amd64.zip::https://github.com/int128/kauthproxy/releases/download/v1.2.1/kauthproxy_linux_amd64.zip
+	sha256sums = 8199aad0e90d626bf37886558e2a13ae8b13ec280d47c7d52957addf2ce0c283
 
 pkgname = kauthproxy
-
