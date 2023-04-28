@@ -9,23 +9,19 @@ arch=("x86_64")
 url="https://github.com/johnfanv2/LenovoLegionLinux"
 license=('GPL')
 makedepends=("git"
-		"linux-headers" 
-		"base-devel" 
-		"lm_sensors"
-		"i2c-tools" 
-		"dmidecode"
 		"python-build"
 		"python-pyqt5"
 		"python-yaml" 
 		"python-argcomplete"
 )
-conflicts=(lenovolegionlinux-dkms-git)
+depends=(
+		"lenovolegionlinux-dkms-git"
+)
 optdepends=(
 		"legion-fan-utils-linux-git: Systemd service that will apply a given profile"
 )
 source=("${_pkgname}::git+https://github.com/johnfanv2/LenovoLegionLinux")
 sha256sums=('SKIP')
-install="lenovolegionlinux.install"
 
 pkgver() {
   cd "$pkgname"
@@ -39,19 +35,11 @@ prepare() {
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}/kernel_module"
-	make
 	cd "${srcdir}/${_pkgname}/python/legion_linux"
 	python setup.py build
 	
 }
 package() {
-	cd "${srcdir}/${_pkgname}/kernel_module"
-	install -Dm644 kernel_module/*.ko "${pkgdir}/usr/lib/modules/$(uname -r)/kernel/drivers/platform/x86"
-
-	cd "${srcdir}/${_pkgname}/deploy/"
-	install -Dm644 LenovoLegionLinux.hook $pkgdir/etc/pacman.d/hooks/LenovoLegionLinux.hook
-
 	cd "${srcdir}/${_pkgname}/python/legion_linux"
 	install -Dm775 legion_gui.desktop "${pkgdir}/usr/share/applications/"
 	install -Dm644 legion_logo.png "${pkgdir}/usr/share/pixmaps/legion_logo.png"
