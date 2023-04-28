@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RnBeads.hg19
-_pkgver=1.31.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.31.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='RnBeads.hg19'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
   r-rnbeads
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5d85b796764c70773374f7853ad7fb47a4c5c8b133c0aa3a4c6cc94996bfe430')
+sha256sums=('c2ed12e3f3ac76916ab1e77b457cd03bc40e782e6a4ba2534ab82f5091f7ed0b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
