@@ -1,6 +1,6 @@
 pkgbase = aurutils
 	pkgdesc = helper tools for the arch user repository
-	pkgver = 13.2
+	pkgver = 13.3
 	pkgrel = 1
 	url = https://github.com/AladW/aurutils
 	install = aurutils.install
@@ -20,7 +20,7 @@ pkgbase = aurutils
 	optdepends = bat: view-delta example script
 	optdepends = git-delta: view-delta example script
 	optdepends = setconf: sync-rebuild example script
-	source = aurutils-13.2.tar.gz::https://github.com/AladW/aurutils/archive/refs/tags/13.2.tar.gz
-	sha256sums = 406456d1fb0b90a890e35b3222b658293d015772d25ad0b0489fe435058dafe5
+	source = aurutils-13.3.tar.gz::https://github.com/AladW/aurutils/archive/refs/tags/13.3.tar.gz
+	sha256sums = 86075b3e1fdb5c1d25171279bfc2645ec46516aa48a1a8a8d18d75454462a7f1
 
 pkgname = aurutils
