@@ -1,0 +1,20 @@
+pkgbase = epyrus-bin
+	pkgdesc = Open source email client based on Thundermail
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = http://www.epyrus.org/
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = libxt
+	depends = desktop-file-utils
+	provides = epyrus=2.0.1
+	conflicts = epyrus
+	options = !strip
+	source = epyrus.desktop
+	sha256sums = 5dccd55e7d032be0b9929a44b92bc7aa98ccaf6c68ee40c0580ed5010c4d00e9
+	source_x86_64 = https://www.addons.epyrus.org/download/epyrus-2.0.1.linux-x86_64-gtk3.tar.xz
+	sha256sums_x86_64 = d5f578e556fb0372e75d8b9e6c2e129fbd62026e05fcb2b5d896566051b14d76
+
+pkgname = epyrus-bin
