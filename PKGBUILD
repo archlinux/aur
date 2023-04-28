@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SBGNview.data
-_pkgver=1.13.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.13.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='Supporting datasets for SBGNview package'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-summarizedexperiment
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c8384c2c2934191869f301375a90e92259f8796011be28b7c0f8e8e75813a231')
+sha256sums=('1f5b2906839bd6063fba52d55172663fa72054fbcb3bd4a42e2cc9b345e0a4da')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
