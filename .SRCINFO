@@ -1,6 +1,6 @@
 pkgbase = r-scruff
 	pkgdesc = Single Cell RNA-Seq UMI Filtering Facilitator (scruff)
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/scruff
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = r-scruff
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scruff_1.16.0.tar.gz
-	sha256sums = 0b2d90ee4eccdd845da88b940ef60f2d2358f2840d9b5c66251ff63a2672e041
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scruff_1.18.0.tar.gz
+	sha256sums = 6c3cafba2b848975d9d3dc2c08b4484a2c77fb1e15e124cd28a8f949fc68b21e
 
 pkgname = r-scruff
