@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DAPARdata
-_pkgver=1.29.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.29.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='Data accompanying the DAPAR and Prostar packages'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1da2feed272d404bcbd8134a0edd159583a657594ca150ea647546f13dba61de')
+sha256sums=('8e0efdfa97128410865b6d189e5d7381d0526945b207163220a96cbb3c51e513')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
