@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PFP
-_pkgver=1.6.0
+_pkgver=1.7.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='Pathway Fingerprint Framework in R'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('77c98c8af48b948b5e2838efc48e3b25a7c0e6dc357f8227cd64370aaf49cf19')
+sha256sums=('b1813682708fc81e90aba288192c9c036dba993c66d725730bf4bcf7c651488c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
