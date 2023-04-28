@@ -1,7 +1,7 @@
 # Maintainer: wiltsig <WTS012201@gmail.com>
 pkgname=tfi
 _pkgname=Text-From-Image
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Text From Image allows user to extract and modify text from images"
 
