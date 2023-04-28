@@ -1,8 +1,8 @@
 # Maintainer: Onni Kukkonen <onni.kukkonen77@gmail.com>
 
 pkgname=opensteam-git
-pkgver=0
-pkgrel=2
+pkgver=v0.0.2.beta.r2.g377802f
+pkgrel=1
 pkgdesc="Partially open-source alternative to the Steam Client application"
 arch=('x86_64')
 url="https://github.com/20PercentRendered/opensteamclient"

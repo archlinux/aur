@@ -1,7 +1,7 @@
 pkgbase = opensteam-git
 	pkgdesc = Partially open-source alternative to the Steam Client application
-	pkgver = 0
-	pkgrel = 2
+	pkgver = v0.0.2.beta.r2.g377802f
+	pkgrel = 1
 	url = https://github.com/20PercentRendered/opensteamclient
 	arch = x86_64
 	license = MIT
