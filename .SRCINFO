@@ -1,7 +1,7 @@
 pkgbase = dmenu-dfm
 	pkgdesc = dmenu-dfm is a simple file manager that uses dmenu
 	pkgver = 1.1.6.g266609a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/amarakon/dfm
 	arch = any
 	license = AGPL-3
