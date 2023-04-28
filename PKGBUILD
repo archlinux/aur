@@ -1,4 +1,5 @@
-# Maintainer: Zanny <lordzanny@gmail.com
+# Maintainer: Bilgin COSKUN <bilgin.coskun@ceng.metu.edu.tr>
+# Contributor: Zanny <lordzanny@gmail.com
 pkgname=quakeinjector
 _name=quakeinjector
 _gitname=QuakeInjector
