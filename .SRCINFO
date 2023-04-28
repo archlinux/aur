@@ -1,6 +1,6 @@
 pkgbase = r-rcellminerdata
 	pkgdesc = rcellminerData: Molecular Profiles and Drug Response for the NCI-60 Cell Lines
-	pkgver = 2.21.1
+	pkgver = 2.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rcellminerData
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-rcellminerdata
 	optdepends = r-rcellminer
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/rcellminerData_2.21.1.tar.gz
-	sha256sums = 06992280eb460b53229377a14f6b0c2eea939c00ca968f8b75c4b06b49a9f7c6
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/rcellminerData_2.22.0.tar.gz
+	sha256sums = 9a163bb79abdf638ce5e4ceb113c77e118cfd42ced6d9beee28b1fabe719603e
 
 pkgname = r-rcellminerdata
