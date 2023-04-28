@@ -21,6 +21,9 @@ _is_service_running() {
     # run-as -X --uid "$(id -u)" "/usr/bin/echo"
     ipfs daemon 2>&1 | "${_grep[@]}" | xargs -I {} "${_cat[@]}" > "${_out}"
   else
+    if ! systemctl --user is-active --quiet ipfs; then
+        systemctl --user restart ipfs
+    fi
     "${_cat[@]}" > "${_out}"
   fi
 }

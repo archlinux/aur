@@ -8,8 +8,10 @@ arch=('any')
 url="https://aur.archlinux.org/packages/ipfs-dlagent"
 depends=("kubo")
 license=("AGPL3")
-source=("ipfs-dlagent.sh")
-sha256sums=("SKIP")
+source=("ipfs-dlagent.sh"
+        "makepkg.conf")
+sha256sums=("SKIP" 
+            "SKIP")
 
 package() {
   local _dest="${pkgdir}/usr/share/${pkgname}"
