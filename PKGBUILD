@@ -19,6 +19,7 @@ makedepends=("git"
 		"python-argcomplete"
 		"python-pip"
 )
+replaces=(lenovolegionlinux-git)
 optdepends=(
 		"legion-fan-utils-linux-git: Systemd service that will apply a given profile"
 )
