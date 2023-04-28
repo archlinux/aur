@@ -2,7 +2,7 @@
 # Maintainer: johnfanv2 <https://github.com/johnfanv2>
 _pkgname=lenovolegionlinux-dkms
 pkgname=${_pkgname}-git
-pkgver=r250.d0b59ab
+pkgver=r255.84de130
 pkgrel=1
 pkgdesc="LenovoLegionLinux (LLL) brings additional drivers and tools for Lenovo Legion series laptops to Linux. PLEASE READ THE REPO BEFORE INSTALL THIS PACKAGE!!!"
 arch=("x86_64")
