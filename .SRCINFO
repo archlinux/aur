@@ -1,7 +1,7 @@
 pkgbase = udeler-bin
 	pkgdesc = Unofficail binary installer for heliomarpm's fork of udeler
 	pkgver = 1.12.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/heliomarpm/udemy-downloader-gui
 	arch = x86_64
 	license = MIT

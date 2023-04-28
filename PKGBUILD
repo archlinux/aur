@@ -5,7 +5,7 @@ _ver=1.12.4
 _tag=
 
 pkgver=${_ver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficail binary installer for heliomarpm's fork of udeler"
 arch=("x86_64")
 url="https://github.com/heliomarpm/udemy-downloader-gui"
@@ -29,6 +29,7 @@ sha512sums=(
 prepare(){
     install -dm755 "${srcdir}/${pkgname}"
     install -Dm644 ${_appimage} "${srcdir}/${pkgname}/udeler.appimage"
+    chmod +x "${srcdir}/${pkgname}/udeler.appimage"
 }
 
 package(){
