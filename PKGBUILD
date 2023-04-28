@@ -1,8 +1,8 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname='python-formulaic'
 _pkgname='formulaic'
-pkgver='0.5.2'
-pkgrel=2
+pkgver='0.6.0'
+pkgrel=1
 pkgdesc="A high performance of Wilkinson formulas in Pythonn"
 url="https://github.com/matthewwardrop/formulaic"
 depends=(python
@@ -18,15 +18,8 @@ optdepends=(python-pyarrow python-sympy)
 makedepends=(python-build python-hatch-vcs python-hatchling python-installer python-wheel)
 license=('MIT')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
-        "pytest_7_bugfix.patch::https://github.com/matthewwardrop/formulaic/commit/e5dedcb0feed39f5ff6e2326d727ca65d247f26d.patch")
-sha256sums=('25b1e1c8dff73f0b11c0028a6ab350222de6bbc47b316ccb770cec16189cef53'
-            '906ce378642dcc329f25266f7e76c0ec9c94ebb67a3ffb11c43b349872ec9669')
-
-prepare() {
-    cd "${_pkgname}-${pkgver}"
-    patch -p1 < ../pytest_7_bugfix.patch || return 0
-}
+source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha256sums=('49c7464d6b51256b06f9fa66b700a2e57dbde21b9288dcfa89e26ac68a207d34')
 
 build() {
     cd "${_pkgname}-${pkgver}"
