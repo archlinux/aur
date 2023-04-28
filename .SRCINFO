@@ -1,6 +1,6 @@
 pkgbase = r-nxtirfdata
 	pkgdesc = Data for NxtIRF
-	pkgver = 1.5.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/NxtIRFdata
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-nxtirfdata
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/NxtIRFdata_1.5.0.tar.gz
-	sha256sums = 8707302459943ed52fa5b6e9f793dc2c7c4ff6da6c9ae6425adad237c0d1527b
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/NxtIRFdata_1.6.0.tar.gz
+	sha256sums = 9d26293a415f33f3b84327b214da5b0b8229a8562c579f5e9d0d578ef6e31a2c
 
 pkgname = r-nxtirfdata
