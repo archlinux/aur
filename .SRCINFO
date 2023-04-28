@@ -1,0 +1,22 @@
+pkgbase = python-griffe
+	pkgdesc = Signatures for entire Python programs
+	pkgver = 0.27.1
+	pkgrel = 1
+	url = https://mkdocstrings.github.io/griffe
+	arch = any
+	license = ISC
+	checkdepends = python-pytest
+	checkdepends = python-colorama
+	checkdepends = python-jsonschema
+	checkdepends = git
+	makedepends = python-pdm-backend
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/g/griffe/griffe-0.27.1.tar.gz
+	source = 0.27.1-schema.json::https://github.com/mkdocstrings/griffe/raw/0.27.1/docs/schema.json
+	md5sums = bbb0842354b2d724d8444a3d8f2e8eef
+	md5sums = bfe51f53db056100353171d2fd53346c
+
+pkgname = python-griffe
+	depends = python>=3.7
+	depends = python-colorama>=0.4
