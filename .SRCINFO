@@ -1,6 +1,6 @@
 pkgbase = r-oder
 	pkgdesc = Optimising the Definition of Expressed Regions
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ODER
 	arch = any
@@ -37,7 +37,7 @@ pkgbase = r-oder
 	optdepends = r-summarizedexperiment
 	optdepends = r-testthat
 	optdepends = r-xfun
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ODER_1.4.0.tar.gz
-	sha256sums = 9b19c7d94638a2428410f479a3a00f1b3e02bdc90dc945f1ca83f1c702c8fb27
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ODER_1.6.0.tar.gz
+	sha256sums = 3c10abac4b8cf945a27916126f1ad0c034e53f65cd78ec118a2652f8da86839d
 
 pkgname = r-oder
