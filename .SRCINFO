@@ -1,6 +1,6 @@
 pkgbase = r-tcgabiolinksgui.data
 	pkgdesc = Data for the TCGAbiolinksGUI package
-	pkgver = 1.19.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/TCGAbiolinksGUI.data
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-tcgabiolinksgui.data
 	optdepends = r-knitr
 	optdepends = r-readr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/TCGAbiolinksGUI.data_1.19.0.tar.gz
-	sha256sums = d34eab4edcc77a68fd5c939c770bf06bd6bd3a8a0110420a8036a46e76b31f31
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/TCGAbiolinksGUI.data_1.20.0.tar.gz
+	sha256sums = 1463fe255bec2555c9acb416bd8ebef152e576c12068d81a94e248a1183ed54a
 
 pkgname = r-tcgabiolinksgui.data
