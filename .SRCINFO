@@ -1,6 +1,6 @@
 pkgbase = r-omicspcadata
 	pkgdesc = Supporting data for package OMICsPCA
-	pkgver = 1.17.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/OMICsPCAdata
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-omicspcadata
 	optdepends = r-kableextra
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/OMICsPCAdata_1.17.0.tar.gz
-	sha256sums = 18867ce475dee1681caa41c328500335bb2ccb360bc1a7cc86e67ae2f53a0b0c
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/OMICsPCAdata_1.18.0.tar.gz
+	sha256sums = 611c66ad44caa4dd764fb6f37553fa127d95464e8d1e1d2d830d08d9c5c23e6f
 
 pkgname = r-omicspcadata
