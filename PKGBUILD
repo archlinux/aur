@@ -18,7 +18,7 @@ makedepends=("git"
 		"python-yaml" 
 		"python-argcomplete"
 )
-conflicts=(lenovolegionlinux-git)
+depends=(lenovolegionlinux-git)
 optdepends=(
 		"legion-fan-utils-linux-git: Systemd service that will apply a given profile"
 )
@@ -48,13 +48,6 @@ package() {
 
 	cd "${srcdir}/${_pkgname}/deploy/"
 	install -Dm644 LenovoLegionLinux.hook ${pkgdir}/etc/pacman.d/hooks/LenovoLegionLinux.hook
-
-	cd "${srcdir}/${_pkgname}/python/legion_linux"
-	install -Dm775 legion_gui.desktop "${pkgdir}/usr/share/applications/"
-	install -Dm644 legion_logo.png "${pkgdir}/usr/share/pixmaps/legion_logo.png"
-	install -Dm644 legion_gui.policy "${pkgdir}/usr/share/polkit-1/actions/"
 	
-	cd "${srcdir}/${_pkgname}/python/legion_linux"
-	python setup.py install --root="$pkgdir" --optimize=1
 	mv ${pkgdir}/usr/bin ${pkgdir}/usr/local/ #move from /usr/bin to /usr/local/bin (for legion_gui.desktop to work)
 }
