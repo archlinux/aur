@@ -1,0 +1,17 @@
+pkgbase = vgmtrans-appimage
+	pkgdesc = A tool to convert proprietary, sequenced videogame music to industry-standard formats
+	pkgver = 1.1preview
+	pkgrel = 1
+	url = https://github.com/vgmtrans/vgmtrans
+	arch = x86_64
+	license = custom
+	depends = zlib
+	depends = glibc
+	conflicts = vgmtrans
+	options = !strip
+	source = vgmtrans-1.1preview.AppImage::https://github.com/vgmtrans/vgmtrans/releases/download/v1.1/vgmtrans-preview-v1.1.AppImage
+	source = LICENSE.txt::https://github.com/vgmtrans/vgmtrans/master/LICENSE.txt
+	sha256sums = a9d94aedde9992602fb1b93093783d236a8310a71227b2dd0597914deb4a89bc
+	sha256sums = 9ed0ea570d7c9057a76331909693d3e7ef3439e5722ba111f4d51489a3272ede
+
+pkgname = vgmtrans-appimage
