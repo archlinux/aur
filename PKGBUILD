@@ -1,8 +1,8 @@
 # Maintainer: VHSgunzo <vhsgunzo.github.io>
 pkgname='vkteams-bin'
 pkgbasename='vkteams'
-pkgver=22.12.3.25508
-pkgrel=5
+pkgver=23.2.0.28245
+pkgrel=1
 pkgdesc='Official desktop application for the VK Teams messaging service'
 arch=("x86_64")
 url='https://dl.internal.myteam.mail.ru'
