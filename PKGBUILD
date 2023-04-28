@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-perl-prereqscanner-notquitelite'
-pkgver='0.9916'
+pkgver='0.9917'
 pkgrel='1'
 pkgdesc="a tool to scan your Perl code for its prerequisites"
 arch=('any')
@@ -13,8 +13,8 @@ makedepends=()
 checkdepends=('perl-test-failwarnings>=0' 'perl-test-useallmodules>=0.17' 'perl-extutils-makemaker-cpanfile' 'perl-parse-distname')
 url='https://metacpan.org/release/Perl-PrereqScanner-NotQuiteLite'
 source=("http://search.cpan.org/CPAN/authors/id/I/IS/ISHIGAKI/Perl-PrereqScanner-NotQuiteLite-${pkgver}.tar.gz")
-md5sums=('134f57865a35c441c5c2a27a077e4a11')
-sha512sums=('bea54a78a4095a705eb6aa9a1fc6d2ab4960eb78fbff88300a17fed21d90da156e83b1511710739c098e462c7219ee22f12d2061fdc8efc175bdd3377640add4')
+md5sums=('e50bf6de778dee04f992734a649df556')
+sha512sums=('5b6da93677e6f23fd6b6c0b76a44d516df932a4e51186f2a2336f3b2410835eab5657f30f97c40398d255ce1e279cc76f41bf87c30cf62a65141692a442e8d41')
 _distdir="Perl-PrereqScanner-NotQuiteLite-${pkgver}"
 
 build() {
