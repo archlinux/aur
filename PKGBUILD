@@ -1,5 +1,5 @@
 pkgname=riseup-vpn
-pkgrel=1
+pkgrel=2
 pkgver=0.21.11
 _commit=f336f8f0946c595e6c65c0bb6c7756c19bd30909
 pkgdesc="RiseupVPN is a branded build of Bitmask VPN. Bitmask VPN is a minimal rewrite of the Bitmask VPN Client, written in golang, that for now lacks client authentication, and is preconfigured to use a single provider."
@@ -12,6 +12,7 @@ depends=(
     'qt5-declarative'
     'qt5-quickcontrols'
     'qt5-quickcontrols2'
+    'qt5-graphicaleffects'
     'hicolor-icon-theme'
 )
 makedepends=(
@@ -22,7 +23,6 @@ makedepends=(
     'qt5-tools'
     'git'
     'qt-installer-framework'
-    'pkgconf'
     'cmake'
     'fakeroot'
 )
