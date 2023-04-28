@@ -18,7 +18,6 @@ makedepends=("git"
 		"python-pyqt5"
 		"python-yaml" 
 		"python-argcomplete"
-		"python-pip"
 )
 conflicts=(lenovolegionlinux-dkms-git)
 optdepends=(
@@ -40,12 +39,14 @@ prepare() {
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}/python/legion_linux"
+	cd "${srcdir}/${_pkgname}/kernel_module"
 	make
-	python3 -m pip install --upgrade build
-	python -m build
+	cd "${srcdir}/${_pkgname}/python/legion_linux"
+	python setup.py build
+	
 }
 package() {
+	cd "${srcdir}/${_pkgname}/kernel_module"
 	install -Dm644 kernel_module/*.ko "${pkgdir}/usr/lib/modules/$(uname -r)/kernel/drivers/platform/x86"
 
 	cd "${srcdir}/${_pkgname}/deploy/"
@@ -56,6 +57,7 @@ package() {
 	install -Dm644 legion_logo.png "${pkgdir}/usr/share/pixmaps/legion_logo.png"
 	install -Dm644 legion_gui.policy "${pkgdir}/usr/share/polkit-1/actions/"
 	
-	python -m pip install --isolated --root="$pkgdir" --ignore-installed --no-deps -e .
+	cd "${srcdir}/${_pkgname}/python/legion_linux"
+	python setup.py install --root="$pkgdir" --optimize=1
 	mv $pkgdir/usr/bin $pkgdir/usr/local/ #move from /usr/bin to /usr/local/bin (for legion_gui.desktop to work)
 }

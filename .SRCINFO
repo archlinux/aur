@@ -16,7 +16,6 @@ pkgbase = lenovolegionlinux-git
 	makedepends = python-pyqt5
 	makedepends = python-yaml
 	makedepends = python-argcomplete
-	makedepends = python-pip
 	optdepends = legion-fan-utils-linux-git: Systemd service that will apply a given profile
 	conflicts = lenovolegionlinux-dkms-git
 	options = !makeflags
