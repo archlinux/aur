@@ -10,8 +10,8 @@ depends=("kubo")
 license=("AGPL3")
 source=("ipfs-dlagent.sh"
         "makepkg.conf")
-sha256sums=("SKIP" 
-            "SKIP")
+sha256sums=("3799c6d87a473f9f1b05791bbee349cdf3a97207cb3467da5d110e2e7fd39334" 
+            "499743e52fb5d3d7fec5f26d1aa560a76d6f89858335182cd67748df7e4f63a1")
 
 package() {
   local _dest="${pkgdir}/usr/share/${pkgname}"
