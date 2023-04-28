@@ -1,0 +1,13 @@
+pkgbase = python-sabctools
+	pkgdesc = implements three main sets of C implementations that are used within SABnzbd
+	pkgver = 7.0.1
+	pkgrel = 1
+	url = https://github.com/sabnzbd/sabctools/
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/s/sabctools/sabctools-7.0.1.tar.gz
+	sha512sums = 5c6b883a3f7c851355298f0cc65b412b97a35d5335c5a3db783e82d8eb8e77ca89c4c3e861edee66051e9f960829dcf9986324750e0bd3632c4f14383b371eb3
+
+pkgname = python-sabctools
