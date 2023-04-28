@@ -12,7 +12,7 @@ depends=(glfw mbedtls freetype2 libglvnd dbus xdg-desktop-portal curl fmt yara n
 makedepends=(git)
 provides=(imhex)
 conflicts=(imhex)
-source=("$url/releases/download/v$pkgver/imhex-$pkgver-ArchLinux-x86_64.pkg.tar.zst")
+source=("$url/releases/download/v$pkgver/imhex-$pkgver-2-ArchLinux-x86_64.pkg.tar.zst")
 md5sums=('c1c089842cbca5534e54cb08e05fd005')
 
 package() {
