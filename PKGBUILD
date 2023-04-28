@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=COHCAPanno
-_pkgver=1.35.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.35.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='Annotations for City of Hope CpG Island Analysis Pipeline'
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ed2592ac58378f029a153ab91096208f1d7303a95f1a31e50b565334b7848794')
+sha256sums=('bb3bf067e0787993ffd7b8edb1a7f0aef58192adb9154c03e53ef329137f2e4f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
