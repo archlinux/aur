@@ -1,6 +1,6 @@
 pkgbase = r-epivizrstandalone
 	pkgdesc = Run Epiviz Interactive Genomic Data Visualization App within R
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/epivizrStandalone
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-epivizrstandalone
 	optdepends = r-organismdbi
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/epivizrStandalone_1.26.0.tar.gz
-	sha256sums = b5684f48cfd82eb1c0fffd4232f467030af4a924ff026850c4396b3613bfb83c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/epivizrStandalone_1.28.0.tar.gz
+	sha256sums = 0398b1e4230bd9325fdc86111b9a40ab8f82b650074c4cb7eb84fe50f1e06e04
 
 pkgname = r-epivizrstandalone
