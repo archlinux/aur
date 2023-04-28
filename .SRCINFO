@@ -1,13 +1,13 @@
 pkgbase = r-bladderbatch
 	pkgdesc = Bladder gene expression data illustrating batch effects
-	pkgver = 1.37.0
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/bladderbatch
 	arch = any
 	license = Artistic2.0
 	depends = r
 	depends = r-biobase
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/bladderbatch_1.37.0.tar.gz
-	sha256sums = 6aa5f55374cdb360a4004d9c0d985b43932c74d27c05a690adc2c3ded012f746
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/bladderbatch_1.38.0.tar.gz
+	sha256sums = 109c892f17097d800bd40012da72cb0623b492c69a4ad13cd5527ddf98b5d6a4
 
 pkgname = r-bladderbatch
