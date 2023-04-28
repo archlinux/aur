@@ -9,7 +9,7 @@ url="https://gitlab.com/nobodyinperson/thunar-plugins"
 license=('GPL')
 groups=()
 depends=(thunarx-python python-rich python-setuptools)
-makedepends=(python-build python-installer python-setuptools-scm python-wheel)
+makedepends=(git python-build python-installer python-setuptools-scm python-wheel)
 checkdepends=()
 optdepends=( 
     "git-annex: Git Annex support"
