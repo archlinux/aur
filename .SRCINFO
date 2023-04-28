@@ -1,6 +1,6 @@
 pkgbase = r-spatzie
 	pkgdesc = Identification of enriched motif pairs from chromatin interaction data
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/spatzie
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = r-spatzie
 	optdepends = r-txdb.hsapiens.ucsc.hg38.knowngene
 	optdepends = r-txdb.mmusculus.ucsc.mm10.knowngene
 	optdepends = r-txdb.mmusculus.ucsc.mm9.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/spatzie_1.4.0.tar.gz
-	sha256sums = 028e8c59e0dbd88e67b49eadb6c206a8a20ca3ec52587696cc26c3f2aa451a10
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/spatzie_1.6.0.tar.gz
+	sha256sums = a1235a2e992ed0bbc4e7ad28a8128b313ed81602f21089a18ccc92eada058630
 
 pkgname = r-spatzie
