@@ -1,18 +1,19 @@
 pkgbase = python-mappy
 	pkgdesc = Python interface to minimap2, a fast and accurate C program to align genomic and transcribe nucleotide sequences
 	pkgver = 2.25
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/lh3/minimap2
 	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = cython
-	makedepends = zlib
 	makedepends = python-wheel
 	depends = python
 	depends = minimap2
+	depends = zlib
+	depends = glibc
 	options = !emptydirs
-	source = https://github.com/lh3/minimap2/archive/refs/tags/v2.25.tar.gz
+	source = minimap2-2.25.tar.gz::https://github.com/lh3/minimap2/archive/refs/tags/v2.25.tar.gz
 	sha256sums = 9742ff0be01e51ea7d65f70c01d1344eee6f0d7b135359e0c00aec30fb74ac38
 
 pkgname = python-mappy
