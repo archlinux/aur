@@ -5,6 +5,7 @@ pkgbase = wurm-launcher
 	url = https://www.wurmonline.com/
 	arch = x86_64
 	license = unknown
+	depends = gtk2
 	source = https://client.wurmonline.com/client/wurmlauncher.tar.gz
 	source = https://github.com/Sallad02/wurm-launcher-files/archive/1.1.tar.gz
 	md5sums = db194b15a6182c0b48f11bcefedbac55
