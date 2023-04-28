@@ -3,7 +3,7 @@
 # Contributor: istimaldar_sntlk <istimaldar@gmail.com>
 
 pkgname=dolt
-pkgver=0.75.12
+pkgver=0.75.14
 pkgrel=1
 pkgdesc='Git for data! A version controlled relational database'
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=(glibc)
 makedepends=(go)
 _archive="$pkgname-$pkgver"
 source=("https://github.com/dolthub/dolt/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('c6d34645969d4a3dded4bd0c2e7e83ed767d175f93c22dbcc8aae72e5632270e')
+sha256sums=('52d12cf87f6d456c03835a78393e308ebe27d8f85f802b9e2c482367afe8cc26')
 
 prepare() {
 	cd "$_archive"/go
