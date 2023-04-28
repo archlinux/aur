@@ -1,0 +1,24 @@
+pkgbase = proteus
+	pkgdesc = An audio-visual exploration game (Humble Bundle version)
+	pkgver = 1.2+h20140516
+	pkgrel = 1
+	url = http://www.visitproteus.com/
+	arch = x86_64
+	arch = i686
+	license = custom:commercial
+	makedepends = ipfs-dlagent
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = glu
+	depends = alsa-lib
+	depends = libogg
+	depends = libvorbis
+	provides = proteus-hib
+	options = !strip
+	source = proteus-05162014-bin::ipfs://Qmdkx5nZpu7vto3yyxGgCLSd3pwdbpc7uEFUpn71SPMiYb
+	source = proteus.desktop
+	sha256sums = 86bc532ee9562e2699ac56efc48b4f6674afe378c09ca4c2da8c9e52a0b54343
+	sha256sums = 5e340f06ae64d419aaa206cf1fe172a620fa779f49f1cf51b7e5bf74d6c2abd8
+
+pkgname = proteus
