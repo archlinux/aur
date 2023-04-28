@@ -1,9 +1,10 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python2-cryptography
+# Do NOT update. 3.4.0 dropped support for Python 2
 pkgver=3.3.2
-pkgrel=1
-pkgdesc="A package designed to expose cryptographic recipes and primitives to Python developers"
+pkgrel=2
+pkgdesc="A package designed to expose cryptographic recipes and primitives to Python developers (Legacy Python 2 version)"
 arch=('x86_64')
 license=('Apache')
 url="https://pypi.python.org/pypi/cryptography"

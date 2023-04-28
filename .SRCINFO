@@ -1,7 +1,7 @@
 pkgbase = python2-cryptography
-	pkgdesc = A package designed to expose cryptographic recipes and primitives to Python developers
+	pkgdesc = A package designed to expose cryptographic recipes and primitives to Python developers (Legacy Python 2 version)
 	pkgver = 3.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/cryptography
 	arch = x86_64
 	license = Apache
