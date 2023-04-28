@@ -1,0 +1,14 @@
+pkgbase = qregedit-git
+	pkgdesc = Windows registry editor written with Qt, based on chntpw code
+	pkgver = 20230428.7650144
+	pkgrel = 1
+	url = https://github.com/kernel1024/qregedit
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = qt6-base
+	source = git+https://github.com/kernel1024/qregedit.git
+	md5sums = SKIP
+
+pkgname = qregedit-git
