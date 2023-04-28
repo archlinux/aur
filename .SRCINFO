@@ -1,0 +1,22 @@
+pkgbase = mkdocstrings-python
+	pkgdesc = Automatic documentation from sources, for MkDocs
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://mkdocstrings.github.io
+	arch = any
+	license = ISC
+	checkdepends = python-pytest
+	checkdepends = python-griffe
+	checkdepends = python-markdown
+	checkdepends = mkdocstrings
+	checkdepends = mkdocs-material
+	makedepends = python-pdm-pep517
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/m/mkdocstrings-python/mkdocstrings-python-0.9.0.tar.gz
+	sha256sums = da0a54d7d46523a25a5227f0ecc74b491291bd9d36fc71445bfb0ea64283e287
+
+pkgname = mkdocstrings-python
+	depends = python>=3.7
+	depends = mkdocstrings>=0.20
+	depends = python-griffe>=0.24
