@@ -2,8 +2,8 @@
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=pyprland
 pkgver=1.0.2
-pkgrel=1
-pkgdesc="Easy scratchpads, smart monitor placement and more Hyprland"
+pkgrel=2
+pkgdesc="Easy scratchpads, smart monitor placement and more Hyprland tweaks"
 arch=(any)
 url="https://github.com/fdev31/pyprland"
 license=('MIT')
