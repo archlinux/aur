@@ -1,6 +1,6 @@
 pkgbase = tidalpp
 	pkgdesc = Simple game engine
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/EmperorPenguin18/tidalpp/
 	arch = x86_64
@@ -8,10 +8,12 @@ pkgbase = tidalpp
 	depends = sdl2
 	depends = physfs
 	depends = cjson
-	depends = sdl2_ttf
 	depends = chipmunk
-	depends = sdl2_mixer
-	source = https://github.com/EmperorPenguin18/tidalpp/archive/0.1.tar.gz
-	sha256sums = 14d92bb09c04c0bef9e9028244e70272e6d39cba764402b4e5981d83c5898f87
+	depends = sdl2_image
+	depends = soloud
+	depends = sdl2_fontcache
+	depends = openssl
+	source = https://github.com/EmperorPenguin18/tidalpp/archive/0.2.tar.gz
+	sha256sums = d7e1b99a076f2b598c40a5971efd2032084a8bf5fe518a8471b9775da50b1687
 
 pkgname = tidalpp
