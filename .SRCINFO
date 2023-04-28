@@ -5,7 +5,6 @@ pkgbase = medievia-fonts
 	url = http://www.medievia.com/fonts.html
 	arch = any
 	license = custom:Medievia
-	provides = ttf-font
 	source = http://www.medievia.com/fonts/Medievia.fon
 	source = http://www.medievia.com/fonts/MedSansMono.ttf
 	sha256sums = 3c273aec850fb61d58e244e5d79e3b685b9a9ce1afc02fc7e12039a6c8335e8c

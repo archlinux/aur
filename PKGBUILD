@@ -6,7 +6,6 @@ pkgdesc='Bitmap and TTF Fonts for use with Medievia'
 arch=('any')
 url="http://www.medievia.com/fonts.html"
 license=('custom:Medievia')
-provides=('ttf-font')
 _files=('Medievia.fon'
 	'MedSansMono.ttf')
 _dlpath="http://www.medievia.com/fonts"
