@@ -1,28 +1,10 @@
-From 04c6e9a9ab483f770d7d591ff8d40fb8cf2ee5ac Mon Sep 17 00:00:00 2001
-From: zer0def <zer0def@zer0def.0>
-Date: Fri, 30 Sep 2022 07:38:41 +0200
-Subject: [PATCH] Revert default port change commits
-
-"as per MWD's suggestion I've added the ability": ca10ab6e0d9c606efdd49de6ea7275dc0304fb85.
-"Changed default port of clients to 2222 as opposed to 22.": dd59488357d1e734331a8d18d684457a6201fd10.
-
-This reverts commits:
-- ca10ab6e0d9c606efdd49de6ea7275dc0304fb85
-- dd59488357d1e734331a8d18d684457a6201fd10
----
- HPN-README | 10 ----------
- readconf.c | 22 +++-------------------
- readconf.h |  6 ++----
- ssh.c      | 32 +++-----------------------------
- ssh.h      |  1 -
- 5 files changed, 8 insertions(+), 63 deletions(-)
-
 diff --git a/HPN-README b/HPN-README
-index a54e9d9b729..45b2c008194 100644
+index d559a565c..1ed9afb77 100644
 --- a/HPN-README
 +++ b/HPN-README
-@@ -1,15 +1,5 @@
- Notes:
+@@ -5,16 +5,6 @@ Changes in LibreSSL version 3.5 and 3.6 prevent the use of the threaded AES CTR
+ In those cases HPNSSH will fallback to the serial versionof the AES CTR cipher. A warning
+ is printed to stderr. 
  
 -Automatic Port Fallback (in version 17v3)
 -The hpnssh client now uses TCP port 2222 to connect automatically as this is the
@@ -38,19 +20,19 @@ index a54e9d9b729..45b2c008194 100644
  This features allows the client to request tcp networking information from the
  TCP_INFO struct. This includes data on retransmits, round trip time, lost packets,
 diff --git a/readconf.c b/readconf.c
-index ef16765c5ec..d128128ddcd 100644
+index 5f9c04279..b85ec82c7 100644
 --- a/readconf.c
 +++ b/readconf.c
-@@ -170,7 +170,7 @@ typedef enum {
+@@ -168,7 +168,7 @@ typedef enum {
+ 	oLocalCommand, oPermitLocalCommand, oRemoteCommand,
  	oTcpRcvBufPoll, oTcpRcvBuf, oHPNDisabled, oHPNBufferSize,
- 	oNoneEnabled, oNoneMacEnabled, oNoneSwitch,
- 	oDisableMTAES, oHPNBufferLimit,
+ 	oNoneEnabled, oNoneMacEnabled, oNoneSwitch, oHPNBufferLimit,
 -	oMetrics, oMetricsPath, oMetricsInterval, oFallback, oFallbackPort,
 +	oMetrics, oMetricsPath, oMetricsInterval,
  	oVisualHostKey,
  	oKexAlgorithms, oIPQoS, oRequestTTY, oSessionType, oStdinNull,
  	oForkAfterAuthentication, oIgnoreUnknown, oProxyUseFdpass,
-@@ -311,8 +311,6 @@ static struct {
+@@ -309,8 +309,6 @@ static struct {
  	{ "metrics", oMetrics },
  	{ "metricspath", oMetricsPath },
  	{ "metricsinterval", oMetricsInterval },
@@ -59,7 +41,7 @@ index ef16765c5ec..d128128ddcd 100644
  	{ "sessiontype", oSessionType },
  	{ "stdinnull", oStdinNull },
  	{ "forkafterauthentication", oForkAfterAuthentication },
-@@ -530,7 +528,7 @@ default_ssh_port(void)
+@@ -531,7 +529,7 @@ default_ssh_port(void)
  
  	if (port == 0) {
  		sp = getservbyname(SSH_SERVICE_NAME, "tcp");
@@ -68,7 +50,7 @@ index ef16765c5ec..d128128ddcd 100644
  	}
  	return port;
  }
-@@ -1194,15 +1192,7 @@ process_config_line_depth(Options *options, struct passwd *pw, const char *host,
+@@ -1187,15 +1185,7 @@ parse_time:
  		options->metrics = 1;
  		goto parse_string;
  
@@ -85,7 +67,7 @@ index ef16765c5ec..d128128ddcd 100644
  	 * We check to see if the command comes from the command
  	 * line or not. If it does then enable it otherwise fail.
  	 *  NONE should never be a default configuration.
-@@ -2519,8 +2509,6 @@ initialize_options(Options * options)
+@@ -2511,8 +2501,6 @@ initialize_options(Options * options)
  	options->hpn_disabled = -1;
  	options->hpn_buffer_size = -1;
  	options->hpn_buffer_limit = -1;
@@ -94,7 +76,7 @@ index ef16765c5ec..d128128ddcd 100644
  	options->tcp_rcv_buf_poll = -1;
  	options->tcp_rcv_buf = -1;
  	options->session_type = -1;
-@@ -2733,10 +2721,6 @@ fill_default_options(Options * options)
+@@ -2725,10 +2713,6 @@ fill_default_options(Options * options)
  		options->metrics_interval = 5;
  	if (options->control_master == -1)
  		options->control_master = 0;
@@ -106,31 +88,23 @@ index ef16765c5ec..d128128ddcd 100644
  		options->control_persist = 0;
  		options->control_persist_timeout = 0;
 diff --git a/readconf.h b/readconf.h
-index 85a1e62e03f..af31c8f2b1f 100644
+index 452751b36..953be98ab 100644
 --- a/readconf.h
 +++ b/readconf.h
-@@ -125,14 +125,12 @@ typedef struct {
- 	int64_t rekey_limit;
- 	int     none_switch;    /* Use none cipher */
- 	int     none_enabled;   /* Allow none to be used */
--	int     nonemac_enabled;   /* Allow none to be used */
-+	int     nonemac_enabled;   /* Allow none to be used */	
- 	int     disable_multithreaded; /*disable multithreaded aes-ctr*/
+@@ -130,8 +130,6 @@ typedef struct {
          int     metrics; /* enable metrics */
          int     metrics_interval; /* time in seconds between polls */
          char   *metrics_path; /* path for the metrics files */
 -	int     fallback; /* en|disable fallback port (def: true) */
 -	int     fallback_port; /* port to fallback to (def: 22) */
--	int	rekey_interval;
-+        int	rekey_interval;
+ 	int	rekey_interval;
  
  	int	no_host_authentication_for_localhost;
- 	int	identities_only;
 diff --git a/ssh.c b/ssh.c
-index 24758239d15..e1162dc54d2 100644
+index 0543ca971..72b555097 100644
 --- a/ssh.c
 +++ b/ssh.c
-@@ -1562,36 +1562,10 @@ main(int ac, char **av)
+@@ -1563,36 +1563,10 @@ main(int ac, char **av)
  		timeout_ms = options.connection_timeout * 1000;
  
  	/* Open a connection to the remote host. */
@@ -168,17 +142,8 @@ index 24758239d15..e1162dc54d2 100644
  
  	if (addrs != NULL)
  		freeaddrinfo(addrs);
-@@ -2201,7 +2175,7 @@ ssh_session2_open(struct ssh *ssh)
- 	if (options.hpn_buffer_limit)
- 		c->hpn_buffer_limit = 1;
- 
--
-+		
- 	debug3_f("channel_new: %d", c->self);
- 
- 	channel_send_open(ssh, c->self);
 diff --git a/ssh.h b/ssh.h
-index c639115452c..8aa1633a6c3 100644
+index c63911545..8aa1633a6 100644
 --- a/ssh.h
 +++ b/ssh.h
 @@ -17,7 +17,6 @@
