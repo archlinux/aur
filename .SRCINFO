@@ -1,6 +1,6 @@
-pkgbase = quakeinjector-git
+pkgbase = quakeinjector
 	pkgdesc = Download, install and play quake singleplayer maps from the quaddicted.com archive
-	pkgver = alpha03.r36.b18b214
+	pkgver = alpha05
 	pkgrel = 1
 	url = http://www.haukerehfeld.de/projects/quakeinjector/
 	arch = any
@@ -12,9 +12,11 @@ pkgbase = quakeinjector-git
 	provides = quakeinjector
 	conflicts = quakeinjector
 	replaces = quakeinjector
-	source = git+https://github.com/hrehfeld/QuakeInjector.git
+	source = git+https://github.com/hrehfeld/QuakeInjector.git#tag=alpha05
 	source = quakeinjector.desktop
-	md5sums = SKIP
-	md5sums = c55fafa5ffa3c9c9cb1188d493e34671
+	source = quakeinjector
+	sha256sums = SKIP
+	sha256sums = f9bb3bd6b304caa7768250f2490564ea8b67dc0c6257ce5a293c868bef35f903
+	sha256sums = 516be20258f7729c31d176988077bcaac7ee7e5d09cbc0fe6e268d7987c84ee9
 
-pkgname = quakeinjector-git
+pkgname = quakeinjector
