@@ -17,7 +17,6 @@ makedepends=("git"
 		"python-pyqt5"
 		"python-yaml" 
 		"python-argcomplete"
-		"python-pip"
 )
 conflicts=(lenovolegionlinux-git)
 optdepends=(
