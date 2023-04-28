@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname='python-linearmodels'
 _module='linearmodels'
-pkgver='4.25'
+pkgver='4.31'
 pkgrel=1
 pkgdesc="Linear models in Python."
 url="https://bashtage.github.io/linearmodels/doc"
@@ -17,8 +17,8 @@ optdepends=('python-xarray')
 makedepends=('cython' 'python-setuptools')
 license=('custom:University of Illinois/NCSA Open Source License')
 arch=('x86_64')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/bashtage/linearmodels/archive/v${pkgver}.tar.gz")
-sha256sums=('ca2bbe84da9a7e311f4a410ffdb1be5bf27a77d99d12c9f144c6effd5ca1b2cf')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_module::1}/${_module}/${_module}-${pkgver}.tar.gz")
+sha256sums=('78a00ebd0360c2886357e8197faca174dc4521256a01e9f24114054bca676be9')
 
 build() {
     cd "${_module}-${pkgver}"
