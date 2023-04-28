@@ -1,10 +1,11 @@
-# Maintainer: Daniel Menelkir <menelkir@gmail.com>
+# Maintainer: Luna Jernberg <droidbittin@gmail.com>
+# Contributor: Sam Burgos <santiago.burgos1089@gmail.com>
 # Contributor: Jonathon Fernyhough <jonathon+m2x@dev>
 # Contributor: Leo <olorin12+gmail+com>
 
 pkgname=hypnotix-git
-pkgver=2.2
-pkgrel=2
+pkgver=3.2.r2.g0d28083
+pkgrel=1
 pkgdesc="An IPTV streaming application"
 arch=(any)
 url="https://github.com/linuxmint/hypnotix"
