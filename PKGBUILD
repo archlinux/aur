@@ -1,7 +1,7 @@
 # Maintainer: bzt <unmacaque at gmail.com>
 
 pkgname=dbgl
-pkgver=0.96
+pkgver=0.97
 pkgrel=1
 pkgdesc="An open-source, free, multi-platform frontend for DOSBox"
 arch=('x86_64')
@@ -9,10 +9,10 @@ url="https://dbgl.org/"
 license=('GPL')
 depends=('java-runtime>=11')
 optdepends=('dosbox: necessary to run DOS games')
-source=("https://dbgl.org/download/${pkgname}096.tar.gz"
+source=("https://dbgl.org/download/${pkgname}097.tar.gz"
         dbgl.desktop
         dbgl.sh)
-sha256sums=('fbd9b05f28ea8ac87f27d6cac17ba52134e3424bf890410036db28e48e90aa6d'
+sha256sums=('a7890e1808cbf5715fc62af4557b69a3808dc66cb9cb9d46e4da1bab01ca56a8'
             '7da06d297b5cbdbc1029c58ffe1c6643ae0fa3fe597e839b26d03ff3900de00d'
             'ec0f5d86d8a76b9ec2ee60e3e28b8ad5008df70eb86e28575b75dd0d2b1fd509')
 
