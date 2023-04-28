@@ -2,7 +2,7 @@
 # Maintainer: Petingoso <https://github.com/Petingoso>
 _pkgname=legion-fan-utils-linux
 pkgname=${_pkgname}-git
-pkgver=r01.e69b777
+pkgver=r52.4a1a658
 pkgrel=1
 pkgdesc="Systemd service that will apply a given profile (read the systemd section in the repo). Needs LenovoLegionLinux to work"
 arch=("x86_64")
@@ -23,6 +23,11 @@ changelog=
 source=("${_pkgname}::git+https://github.com/Petingoso/legion-fan-utils-linux.git")
 sha256sums=('SKIP')
 install='legion-fan-utils-linux.install'
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
 
 prepare() {
   cd "$_pkgname"
