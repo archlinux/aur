@@ -1,6 +1,6 @@
 pkgbase = fzf-kill
-	pkgdesc = pkill -9 with fzf
-	pkgver = 1.1.2
+	pkgdesc = kill -9 with fzf
+	pkgver = 1.1.3
 	pkgrel = 5
 	url = https://github.com/Zeioth/fzf-kill.git
 	arch = any
