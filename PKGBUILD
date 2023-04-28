@@ -7,7 +7,7 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r9517.89db2e323
+pkgver=r9538.ea649263b
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'boost' 'qt5-to
 source=("$_pkgbase::git+https://github.com/citra-emu/citra.git"
         "boost::git+https://github.com/citra-emu/ext-boost.git"
         "nihstro::git+https://github.com/neobrain/nihstro.git"
-        "soundtouch::git+https://github.com/citra-emu/ext-soundtouch.git"
+        "soundtouch::git+https://codeberg.org/soundtouch/soundtouch.git"
         "catch2::git+https://github.com/catchorg/Catch2"
         "dynarmic::git+https://github.com/merryhime/dynarmic.git"
         "git+https://github.com/herumi/xbyak.git"
