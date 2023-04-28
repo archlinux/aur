@@ -1,6 +1,6 @@
 pkgbase = r-riboprofiling
 	pkgdesc = Ribosome Profiling Data Analysis: from BAM to Data Representation and Interpretation
-	pkgver = 1.28.0
+	pkgver = 1.30.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RiboProfiling
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = r-riboprofiling
 	optdepends = r-summarizedexperiment
 	optdepends = r-testthat
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RiboProfiling_1.28.0.tar.gz
-	sha256sums = 96c76332350160f6a9bc3fcfc958f67ff32027217776e876e5cf86b814bbb572
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RiboProfiling_1.30.0.tar.gz
+	sha256sums = 0dbb5c085e86abfa532e8407a7a9dbd9b2707e923fa0992760933eb205c2ff61
 
 pkgname = r-riboprofiling
