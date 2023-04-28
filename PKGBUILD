@@ -5,8 +5,8 @@
 
 # Maintainer: wubbl0rz <wubbl0rz at gmx.de>
 pkgname=vmchamp-bin
-pkgver=v0.0.5
-pkgrel=2
+pkgver=v0.0.6
+pkgrel=1
 pkgdesc="Simple and fast creation of throwaway VMs on your local machine."
 arch=('x86_64')
 url="https://github.com/wubbl0rz/VmChamp"

@@ -1,13 +1,13 @@
 pkgbase = vmchamp-bin
 	pkgdesc = Simple and fast creation of throwaway VMs on your local machine.
-	pkgver = v0.0.5
-	pkgrel = 2
+	pkgver = v0.0.6
+	pkgrel = 1
 	url = https://github.com/wubbl0rz/VmChamp
 	arch = x86_64
 	license = unknown
 	depends = zlib
 	depends = libvirt
-	source = VmChamp-linux-v0.0.5-amd64::https://github.com/wubbl0rz/VmChamp/releases/download/v0.0.5/VmChamp-linux-v0.0.5-amd64
+	source = VmChamp-linux-v0.0.6-amd64::https://github.com/wubbl0rz/VmChamp/releases/download/v0.0.6/VmChamp-linux-v0.0.6-amd64
 	sha256sums = SKIP
 
 pkgname = vmchamp-bin
