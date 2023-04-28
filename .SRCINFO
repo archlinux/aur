@@ -1,19 +1,23 @@
 pkgbase = spread3
-	pkgdesc = a user-friendly application to analyze and visualize pathogen phylodynamic reconstructions resulting from Bayesian inference of sequence and trait evolutionary processes
-	pkgver = 0.9.6
+	pkgdesc = a user-friendly application to analyze and visualize pathogen phylodynamic reconstructions resulting from Bayesian inference of sequence and trait evolutionary processes. https://doi.org/10.1093/molbev/msw082
+	pkgver = 0.9.5
 	pkgrel = 1
+	epoch = 1
 	url = https://rega.kuleuven.be/cev/ecv/software/SpreaD3
 	arch = x86_64
-	license = custom
-	depends = jre-openjdk-headless
-	depends = jre-openjdk
-	depends = jdk-openjdk
-	depends = openjdk-doc
-	depends = openjdk-src
-	source = https://rega.kuleuven.be/cev/ecv/software/spread3_files/spread3-v0-9-6.jar
+	license = LGPL
+	makedepends = java-environment=8
+	makedepends = ant
+	depends = java-runtime=8
+	source = spread3-0.9.5.tar.gz::https://github.com/phylogeography/SpreaD3/archive/refs/tags/0.9.5.tar.gz
 	source = spread3.desktop
-	sha256sums = 4021b6dea480bec88c17666088c47f3ec1135c8f6ea7d9bb6cc21639ffc7956f
+	source = spread31.patch::https://github.com/phylogeography/SpreaD3/commit/d63d294ad9c1f82e8883bbd602d298df0c045bf0.patch
+	source = spread32.patch::https://github.com/phylogeography/SpreaD3/commit/d297ed31e360597b95da5c790d2402a1782109f8.patch
+	source = https://raw.githubusercontent.com/phylogeography/SpreaD3/d297ed31e360597b95da5c790d2402a1782109f8/lib/corba-api-5.0.1.jar
+	sha256sums = 41b9c1a9b9919fed07e4ba82d0b36eafaaf5608059cb1a97413a990660b01685
 	sha256sums = c2d59b208dc6c334ea67ac8d557350c6e41a6d8d3b10d912ac402b7d1c2229d1
+	sha256sums = b95b03fc8a8e8d1c5dbad7b735ee5635c3ebb1c61d4a116ed5fcede3e71541e2
+	sha256sums = fc50c911cd84df943d634afca9d3b16e338b1540127c16d0b94280a1a874b63d
+	sha256sums = 6bcf3bb9c768d4412c88ebb659a0c6403fd7fe2052fada8b1324eee93abc2bfd
 
 pkgname = spread3
-
