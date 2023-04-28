@@ -1,6 +1,6 @@
 pkgbase = r-cagefightr
 	pkgdesc = Analysis of Cap Analysis of Gene Expression (CAGE) data using Bioconductor
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CAGEfightR
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-cagefightr
 	optdepends = r-org.mm.eg.db
 	optdepends = r-rmarkdown
 	optdepends = r-txdb.mmusculus.ucsc.mm9.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CAGEfightR_1.18.0.tar.gz
-	sha256sums = de12594c7eb55ccc1c83cb964bdb607a8e9ed7ceec26414bdbe33dd68e5b88c7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CAGEfightR_1.20.0.tar.gz
+	sha256sums = 734057f800536dda220bbd8c4e1349572bcdcc61dd2f6a02a82fb45af5144aa8
 
 pkgname = r-cagefightr
