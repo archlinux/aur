@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SCATEData
-_pkgver=1.9.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Data for SCATE (Single-cell ATAC-seq Signal Extraction and Enhancement)'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1f4b50f8589cad23051e7520b023c36483e1d84de3d72faa5e842bacb248038f')
+sha256sums=('037cf1bb07580c11c9ba8e5a4b5dab27fb7908e8fdea7337bf2da5c766451e5c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
