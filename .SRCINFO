@@ -1,6 +1,6 @@
 pkgbase = r-fcoex
 	pkgdesc = FCBF-based Co-Expression Networks for Single Cells
-	pkgver = 1.12.0
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/fcoex
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = r-fcoex
 	optdepends = r-seurat
 	optdepends = r-tenxpbmcdata
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/fcoex_1.12.0.tar.gz
-	sha256sums = a230bd3c12808c6998a8d27245650ae29d435a77b22b953ac28c66ec03d96806
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/fcoex_1.13.0.tar.gz
+	sha256sums = cc6b3a1ae15b87b94cfc765273daefbbeb89021a7b96f903384266ac8b2eb920
 
 pkgname = r-fcoex

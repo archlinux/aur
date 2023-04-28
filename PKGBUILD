@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=fcoex
-_pkgver=1.12.0
+_pkgver=1.13.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc='FCBF-based Co-Expression Networks for Single Cells'
 arch=('any')
@@ -41,7 +41,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a230bd3c12808c6998a8d27245650ae29d435a77b22b953ac28c66ec03d96806')
+sha256sums=('cc6b3a1ae15b87b94cfc765273daefbbeb89021a7b96f903384266ac8b2eb920')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
