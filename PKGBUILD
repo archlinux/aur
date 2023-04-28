@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RNAmodR.AlkAnilineSeq
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='Detection of m7G, m3C and D modification by AlkAnilineSeq'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('037975d64e82f2564a51c1a5b6a4050fe561119f56fb42f8be36ea9b8e2d6db2')
+sha256sums=('7a3fdb8ffcef9751011abe7135b5b69d0773d95e044261948a2814d5abd8249e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

@@ -1,6 +1,6 @@
 pkgbase = r-rnamodr.alkanilineseq
 	pkgdesc = Detection of m7G, m3C and D modification by AlkAnilineSeq
-	pkgver = 1.12.0
+	pkgver = 1.14.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RNAmodR.AlkAnilineSeq
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-rnamodr.alkanilineseq
 	optdepends = r-rnamodr.data
 	optdepends = r-rtracklayer
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RNAmodR.AlkAnilineSeq_1.12.0.tar.gz
-	sha256sums = 037975d64e82f2564a51c1a5b6a4050fe561119f56fb42f8be36ea9b8e2d6db2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RNAmodR.AlkAnilineSeq_1.14.0.tar.gz
+	sha256sums = 7a3fdb8ffcef9751011abe7135b5b69d0773d95e044261948a2814d5abd8249e
 
 pkgname = r-rnamodr.alkanilineseq
