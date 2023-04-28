@@ -9,7 +9,6 @@ pkgbase = python2-cryptography
 	depends = python2-six
 	depends = python2-cffi
 	depends = python2-enum34
-	depends = python2-idna
 	depends = python2-ipaddress
 	depends = glibc
 	depends = openssl-1.1
