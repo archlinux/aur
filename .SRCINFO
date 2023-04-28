@@ -1,14 +1,13 @@
 pkgbase = wurm-launcher
 	pkgdesc = Launcher for sandbox mmorpg Wurm Online
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 1.1
+	pkgrel = 1
 	url = https://www.wurmonline.com/
 	arch = x86_64
 	license = unknown
 	source = https://client.wurmonline.com/client/wurmlauncher.tar.gz
-	source = https://github.com/Sallad02/wurm-launcher-files/archive/1.0.tar.gz
+	source = https://github.com/Sallad02/wurm-launcher-files/archive/1.1.tar.gz
 	md5sums = db194b15a6182c0b48f11bcefedbac55
-	md5sums = 69cbd74e070b8dbea9dc28a18b6d34b8
+	md5sums = bf7fafab57af1280cf6bfe4ad32639f7
 
 pkgname = wurm-launcher
-
