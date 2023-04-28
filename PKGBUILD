@@ -1,9 +1,9 @@
 # Maintainer: Adrian Lopez <zeioth@hotmail.com>
 pkgname=fzf-kill
 _pkgname=fzf-kill
-pkgver=1.0
-pkgrel=2
-pkgdesc="Kill -9 with fzf"
+pkgver=1.1
+pkgrel=3
+pkgdesc="pkill -9 with fzf"
 arch=(any)
 url="https://github.com/Zeioth/fzf-kill.git"
 license=('GPL3')
