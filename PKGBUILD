@@ -2,7 +2,7 @@
 pkgname='vkteams-bin'
 pkgbasename='vkteams'
 pkgver=22.12.3.25508
-pkgrel=4
+pkgrel=5
 pkgdesc='Official desktop application for the VK Teams messaging service'
 arch=("x86_64")
 url='https://dl.internal.myteam.mail.ru'
