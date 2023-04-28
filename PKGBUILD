@@ -2,15 +2,15 @@
 # Maintainer: johnfanv2 <https://github.com/johnfanv2>
 _pkgname=lenovolegionlinux-dkms
 pkgname=${_pkgname}-git
-pkgver=r01.d0b59ab
+pkgver=r250.d0b59ab
 pkgrel=1
 pkgdesc="LenovoLegionLinux (LLL) brings additional drivers and tools for Lenovo Legion series laptops to Linux. PLEASE READ THE REPO BEFORE INSTALL THIS PACKAGE!!!"
 arch=("x86_64")
 url="https://github.com/johnfanv2/LenovoLegionLinux"
 license=('GPL')
 makedepends=("git"
-		"linux-headers" 
-		"base-devel" 
+		"dkms"
+		"lm_sensors"
 		"i2c-tools" 
 		"dmidecode"
 		"python-build"
@@ -22,10 +22,14 @@ makedepends=("git"
 optdepends=(
 		"legion-fan-utils-linux-git: Systemd service that will apply a given profile"
 )
-options=(!makeflags !buildflags !strip)
 source=("${_pkgname}::git+https://github.com/johnfanv2/LenovoLegionLinux")
 sha256sums=('SKIP')
 install="lenovolegionlinux.install"
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
 
 prepare() {
   cd "$_pkgname"
@@ -39,24 +43,18 @@ build() {
 	python -m build
 }
 package() {
-	cd "${srcdir}/${_pkgname}"
-	mkdir -p $pkgdir/usr/{local,lib/modules/$(uname -r)/kernel/drivers/platform/x86/}
-	mkdir -p $pkgdir/usr/share/{applications/,icons/,polkit-1/actions/}
-	mkdir -p $pkgdir/usr/src/$_pkgname-1.0.0
-	mkdir -p $pkgdir/etc/pacman.d/hooks
-
 	cd "${srcdir}/${_pkgname}/kernel_module/"
-	cp -r * $pkgdir/usr/src/$_pkgname-1.0.0/
-	install -Dm644 dkms.conf $pkgdir/usr/src/$_pkgname-1.0.0/dkms.conf
+	cp -r {issue-warning.sh,legion-laptop-unused-snippets.c,legion-laptop.c,Makefile} ${pkgdir}/usr/src/$_pkgname-1.0.0/
+	install -Dm644 dkms.conf ${pkgdir}/usr/src/$_pkgname-1.0.0/dkms.conf
 
 	cd "${srcdir}/${_pkgname}/deploy/"
-	install -Dm644 LenovoLegionLinux.hook $pkgdir/etc/pacman.d/hooks/LenovoLegionLinux.hook
+	install -Dm644 LenovoLegionLinux.hook ${pkgdir}/etc/pacman.d/hooks/LenovoLegionLinux.hook
 
 	cd "${srcdir}/${_pkgname}/python/legion_linux"
 	install -Dm775 legion_gui.desktop "${pkgdir}/usr/share/applications/"
-	install -Dm775 legion_logo.png "${pkgdir}/usr/share/icons/legion_logo.png"
-	install -Dm775 legion_gui.policy "${pkgdir}/usr/share/polkit-1/actions/"
+	install -Dm644 legion_logo.png "${pkgdir}/usr/share/pixmaps/legion_logo.png"
+	install -Dm644 legion_gui.policy "${pkgdir}/usr/share/polkit-1/actions/"
 	
-	python -m pip install --isolated --root="$pkgdir" --ignore-installed --no-deps -e .
-	mv $pkgdir/usr/bin $pkgdir/usr/local/ #move from /usr/bin to /usr/local/bin (for legion_gui.desktop to work)
+	python -m pip install --isolated --root="${pkgdir}" --ignore-installed --no-deps -e .
+	mv ${pkgdir}/usr/bin ${pkgdir}/usr/local/ #move from /usr/bin to /usr/local/bin (for legion_gui.desktop to work)
 }
