@@ -3,7 +3,7 @@
 # Maintainer: Bence Hornák <hornak.bence@gmail.com>
 
 pkgname=anyk
-pkgver=3.22.0
+pkgver=3.23.0
 subver=0.1
 pkgrel=1
 pkgdesc='Form fill program of the Hungarian tax office (Általános Nyomtatványkitöltő (ÁNYK))'
@@ -20,7 +20,7 @@ source=("AbevJava-${pkgver}.${subver}-${pkgrel}::https://nav.gov.hu/pfile/rpmFil
         'anyk.desktop'
         'setenv'
         'anyk.sysusers')
-md5sums=('35d7354aab7725c4abd57d3a55339b8a'
+md5sums=('40cde22feb06cf509639c94f95a0ea61'
          '14e676f715c1008dda83ffd7c3a127ec'
          '5dae655a84d5dd76401011f5629d8f0f'
          '86e4d78220da7d2d7a9015067d48ab9f'
