@@ -2,7 +2,7 @@
 
 pkgname=gerb-git
 _pkgname=${pkgname%-git}
-pkgver=r387.92c6f96
+pkgver=0.0.1alpha.r0.g95e2946
 pkgrel=1
 pkgdesc='Graphical font editor (GTK + Rust) '
 arch=(x86_64)
@@ -28,7 +28,8 @@ prepare() {
 
 pkgver() {
 	cd "$_pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	git describe --long --tags --always --abbrev=7 HEAD |
+		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g;s/\+.*r/.r/;s/\.\([ab]\)/\1/'
 }
 
 build() {
