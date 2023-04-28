@@ -24,7 +24,7 @@ optdepends=('vc: C++ Vectorization library'
   'tbb: High level abstract threading library'
   'man-db: manual pages for dune'
   'python-matplotlib: for Matplotlib rendering'
-  'mayavi: for 3D plotting')
+  'python-mayavi: for 3D plotting')
 provides=('dunecontrol' 'dune-ctest' 'dune-git-whitespace-hook' 'dunepackaging.py' 'duneproject' 'rmgenerated.py')
 source=(https://dune-project.org/download/${_tar}{,.asc})
 sha512sums=('4d1f05ee7d5c2376f0fc782b4978596501eed0e7c6d6c68b3a37949a0141cf308b42a6df1b171804a9606907f6597039f28916731c1caa0c54a36775402e6e97'
