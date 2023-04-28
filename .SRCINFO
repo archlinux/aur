@@ -1,6 +1,6 @@
 pkgbase = pixelvision2-steam-skin
 	pkgdesc = Pixelvision2 skin for steam
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/barfin/Pixelvision2-for-aur
 	install = pixelvision2-steam-skin.install
@@ -9,7 +9,7 @@ pkgbase = pixelvision2-steam-skin
 	depends = steam
 	depends = sssm
 	depends = ttf-segoewp
-	source = https://github.com/barfin/Pixelvision2-for-aur/archive/refs/tags/1.1.zip
-	md5sums = 20f91e4f8711a07bcfd65985e94f4739
+	source = https://github.com/barfin/Pixelvision2-for-aur/archive/refs/tags/1.2.zip
+	md5sums = 3ba4fea769fc8bf92fa15912554a7d4e
 
 pkgname = pixelvision2-steam-skin
