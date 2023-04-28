@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=celldex
-_pkgver=1.9.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Reference Index for Cell Types'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2595a9e9c2c832f006704b2beaf78d95e4ed7b18bdf9885a9a61323dc7e87d0e')
+sha256sums=('3b1649aa8d5dbe9af4a3040e1c8045c174bfb1d16224910fad4cc22ab9c5927e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
