@@ -4,8 +4,8 @@
 _arch=aarch64
 _target=$_arch-unknown-linux-gnu
 pkgname=$_arch-gcc-bootstrap
-pkgver=12.2.1
-pkgrel=4
+pkgver=13.1.1
+pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler for ARM64 target - bootstrap compiler'
 arch=(x86_64)
 url='https://gcc.gnu.org/'
@@ -15,8 +15,8 @@ makedepends=($_arch-binutils git)
 provides=($_arch-gcc)
 conflicts=($_arch-gcc)
 options=(!emptydirs !strip staticlibs)
-_commit=015cf9f84b0b6792f982e505392ca574e04c8d23
-source=(git+https://sourceware.org/git/gcc.git#commit=${_commit})
+_commit=ffc6b225c955a3d8478de1beba5ad08a7396648c
+source=(git+https://gcc.gnu.org/git/gcc.git#commit=${_commit})
 
 sha256sums=('SKIP')
 
