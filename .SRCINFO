@@ -1,7 +1,7 @@
 pkgbase = r-checkmate
 	pkgdesc = Fast and Versatile Argument Checks
-	pkgver = 2.1.0
-	pkgrel = 8
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=checkmate
 	arch = x86_64
 	license = BSD
@@ -19,7 +19,7 @@ pkgbase = r-checkmate
 	optdepends = r-testthat
 	optdepends = r-tibble
 	optdepends = r-tinytest
-	source = https://cran.r-project.org/src/contrib/checkmate_2.1.0.tar.gz
-	sha256sums = b784dd5163a0350d084ef34882d9781373839dedeaa9a8b8e6187d773d0d21c6
+	source = https://cran.r-project.org/src/contrib/checkmate_2.2.0.tar.gz
+	sha256sums = 96ec14b057e875465f8ef194f35b8e124cd5b5919697692fb392706201359118
 
 pkgname = r-checkmate
