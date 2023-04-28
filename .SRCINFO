@@ -1,8 +1,8 @@
 pkgbase = linux-vfio
 	pkgdesc = Linux
-	pkgver = 6.2.12.arch1
+	pkgver = 6.2.13.arch1
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v6.2.12-arch1
+	url = https://github.com/archlinux/linux/commits/v6.2.13-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -19,7 +19,7 @@ pkgbase = linux-vfio
 	makedepends = texlive-latexextra
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.2.12-arch1
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.2.13-arch1
 	source = config
 	source = 0001-add-acs-overrides.patch
 	source = 0002-i915-vga-arbiter.patch
@@ -28,7 +28,7 @@ pkgbase = linux-vfio
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha256sums = SKIP
-	sha256sums = f9a0027bea53a7160759858c535eb0ba0b3bea34c0130f47f2d5bba75d102170
+	sha256sums = de96ef80c3d883d03bce280ea1aebb1691aeebfcab82bf14a63d4ab5d9dca4b1
 	sha256sums = bdd2a5a56e01e91723907afb40d28bed77b7d5107aba92c85adb3ce6967e713a
 	sha256sums = 9a698eaf1a0bd740981e909b6ad9bd41300488a2a771843bf30b9bdc94aa3c3b
 
