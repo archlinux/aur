@@ -2,7 +2,7 @@
 # Maintainer: Budiman Jojo <budimanjojo at gmail dot com>
 
 pkgname='talhelper-bin'
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc='A tool to help creating Talos cluster in GitOps way.'
 url='https://github.com/budimanjojo/talhelper'
@@ -11,11 +11,11 @@ license=('BSD-3-Clause')
 provides=('talhelper')
 conflicts=('talhelper')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/budimanjojo/talhelper/releases/download/v1.7.0/talhelper_linux_arm64.tar.gz")
-sha256sums_aarch64=('9250eff9b8ccd56daa6a848279aef85c18c3a9f1393aa327279b26b235a1e991')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/budimanjojo/talhelper/releases/download/v1.7.1/talhelper_linux_arm64.tar.gz")
+sha256sums_aarch64=('3d9af0151901a268cc6a945078cd7c9804ca0a2dd2bfcbaee454fda518b7a622')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/budimanjojo/talhelper/releases/download/v1.7.0/talhelper_linux_amd64.tar.gz")
-sha256sums_x86_64=('c6c9b62c0e1b959071151cd979806ee7f65abed2abea86f277bab2d6a04020bc')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/budimanjojo/talhelper/releases/download/v1.7.1/talhelper_linux_amd64.tar.gz")
+sha256sums_x86_64=('ee8bf877b31c383b441d2e131e8d66836beab2ede9e4424471666d751fa8e467')
 
 package() {
   # bin
