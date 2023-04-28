@@ -11,7 +11,6 @@ pkgbase = python2-cryptography
 	depends = python2-enum34
 	depends = python2-idna
 	depends = python2-ipaddress
-	depends = python2-asn1crypto
 	depends = glibc
 	depends = openssl-1.1
 	depends = python2
