@@ -1,24 +1,25 @@
-# Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
+# Maintainer: Martin Rys <rys.pw/contact>
+# Previous Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 _pkgname=Flatseal
 pkgname=flatseal
-pkgver=1.8.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='A permissions manager for Flatpak.'
 url="https://github.com/tchx84/Flatseal/"
 arch=('x86_64' 'aarch64')
 license=('GPL3')
-depends=('flatpak' 'gjs' 'webkit2gtk' 'libhandy')
+depends=('flatpak' 'gjs' 'webkitgtk-6.0' 'libhandy')
 makedepends=('meson' 'flatpak-builder' 'ninja')
 source=("$pkgname-$pkgver::https://github.com/tchx84/Flatseal/archive/v$pkgver.tar.gz")
-sha1sums=('ff4be58373b1f71a21583338f104a9cc31d57ee5')
+sha256sums=('970b90692ce590dfe54c3195693a84c6ef0cd114c85a3928c2dfb15042efc622')
 
 build() {
-    cd "$srcdir/$_pkgname-$pkgver"
-    meson --prefix /usr --buildtype=plain . build
+	cd "$srcdir/$_pkgname-$pkgver"
+	meson setup --prefix /usr --buildtype=plain . build
 }
 
 package() {
-    cd "$srcdir/$_pkgname-$pkgver"
-    DESTDIR="$pkgdir" meson install -C build
+	cd "$srcdir/$_pkgname-$pkgver"
+	DESTDIR="$pkgdir" meson install -C build
 }

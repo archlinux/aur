@@ -1,6 +1,6 @@
 pkgbase = flatseal
 	pkgdesc = A permissions manager for Flatpak.
-	pkgver = 1.8.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/tchx84/Flatseal/
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = flatseal
 	makedepends = ninja
 	depends = flatpak
 	depends = gjs
-	depends = webkit2gtk
+	depends = webkitgtk-6.0
 	depends = libhandy
-	source = flatseal-1.8.1::https://github.com/tchx84/Flatseal/archive/v1.8.1.tar.gz
-	sha1sums = ff4be58373b1f71a21583338f104a9cc31d57ee5
+	source = flatseal-2.0.0::https://github.com/tchx84/Flatseal/archive/v2.0.0.tar.gz
+	sha256sums = 970b90692ce590dfe54c3195693a84c6ef0cd114c85a3928c2dfb15042efc622
 
 pkgname = flatseal
