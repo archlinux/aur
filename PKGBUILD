@@ -43,7 +43,7 @@ package() {
   cp -Tal data "${pkgdir}/${_target}"
   
   # Remove bundled libraries (use distro versions instead)
-  ( cd "$pkgdir"/$_target/$_lib
+  ( cd "${pkgdir}/${_target}/${_lib}"
     rm -r libSDL2-2.0.so.0 libSDL2_image-2.0.so.0 libSDL2_mixer-2.0.so.0 \
           libvorbis.so.0 libvorbisfile.so.3 libogg.so.0 ../$_other )
   
@@ -55,6 +55,6 @@ package() {
   install -Dm644 data/Proteus.png "${pkgdir}/usr/share/pixmaps/proteus.png"
   
   # Install launch script
-  echo -e "#!/bin/sh\ncd ${_target} && ./Proteus.bin.${_arch}" > launcher.sh
+  echo -e "#!/bin/sh\ncd ${_target} && TERM=xterm ./Proteus.bin.${_arch}" > launcher.sh
   install -Dm755 launcher.sh "${pkgdir}/usr/bin/proteus"
 }
