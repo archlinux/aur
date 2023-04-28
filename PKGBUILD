@@ -1,7 +1,7 @@
 # Maintainer: NSK-1010 <kotone[dot]olin1010[at]gmail[dot]com>
 pkgname=floorp
 pkgver=10.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Firefox-based browser with excellent privacy protection, developed by a community of students in Japan"
 url="http://floorp.ablaze.one"
 arch=('x86_64' 'aarch64')
@@ -47,7 +47,7 @@ package() {
   install -Dvm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dvm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" << END
 #!/bin/sh
-exec /usr/lib/${pkgname}/${pkgname} "\"
+exec /usr/lib/${pkgname}/${pkgname} "\$@"
 END
 }
 

@@ -1,7 +1,7 @@
 pkgbase = floorp
 	pkgdesc = Firefox-based browser with excellent privacy protection, developed by a community of students in Japan
 	pkgver = 10.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://floorp.ablaze.one
 	arch = x86_64
 	arch = aarch64
