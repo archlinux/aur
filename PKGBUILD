@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=adductData
-_pkgver=1.15.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.15.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='Data from untargeted MS of modifications to Cys34 of serum albumin'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('da5c73c46a094a9d1f3cc86e3e968a2a8924d19f8043640be526c44402b52306')
+sha256sums=('131295aa548471771f126d16693cd64e75fae4c73bb0141f651d8a8a5ea6dce6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
