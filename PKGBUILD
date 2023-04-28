@@ -4,18 +4,24 @@
 # Contributor: Wael Nasreddine <wael.nasreddine@gmail.com>
 
 pkgname=kubetail
-pkgver=1.6.17
+pkgver=1.6.18
 pkgrel=1
 pkgdesc='Tail Kubernetes logs from multiple pods'
-arch=('any')
+arch=(any)
 url='https://github.com/johanhaleby/kubetail'
-license=('Apache')
-depends=('kubectl')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/johanhaleby/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('9dee9fbc4c472cf73666ee77e8f430e3aaea2ee3ca2f34dda15a4da9a6bad69a')
+license=(Apache)
+depends=(
+  bash
+  kubectl
+)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('62ba29b3a869bba5b2ddf8c0fbbd307330dfe8cf8f3d47ae459c327b66afbb93')
+
+_archive="$pkgname-$pkgver"
 
 package() {
-  cd $pkgname-$pkgver
+  cd "$_archive"
+
   install -Dm 755 kubetail "$pkgdir/usr/bin/kubetail"
 
   # Populate shell completions
