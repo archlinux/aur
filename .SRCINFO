@@ -1,0 +1,13 @@
+pkgbase = python2-cryptography-vectors
+	pkgdesc = Test vectors for the cryptography package (Legacy Python 2 version)
+	pkgver = 3.3.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/cryptography-vectors
+	arch = any
+	license = Apache
+	makedepends = python2
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/c/cryptography-vectors/cryptography_vectors-3.3.2.tar.gz
+	sha512sums = 18590adb96a6f04b8a41d4346b126b8adfc854cbcec85f8c1c0a23b1b363f215b37da60ea94a481b8fd7752f07fba515b08fc18faf2e29fb858e133129971f7c
+
+pkgname = python2-cryptography-vectors
