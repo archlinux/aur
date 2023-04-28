@@ -1,6 +1,6 @@
 pkgbase = r-airway
 	pkgdesc = RangedSummarizedExperiment for RNA-Seq in airway smooth muscle cells, by Himes et al PLoS One 2014
-	pkgver = 1.19.1
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/airway
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-airway
 	optdepends = r-geoquery
 	optdepends = r-knitr
 	optdepends = r-markdown
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/airway_1.19.1.tar.gz
-	sha256sums = f152e31210172ed4add70bb928ae409be1bc72b7c6fbeea4ef4ac67132c02178
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/airway_1.20.0.tar.gz
+	sha256sums = 2669c3162770a3d4938bfa4c4280d78c936b1b8fc59e8da62a9da82d1415d77c
 
 pkgname = r-airway
