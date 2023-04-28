@@ -1,19 +1,19 @@
 pkgbase = vincent-bin
-	pkgdesc = terminal color theme chooser
-	pkgver = 0.1.1
+	pkgdesc = terminal color scheme chooser
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/rsteube/vincent
 	license = MIT
 	conflicts = vincent
 	provides = vincent
 	arch = aarch64
-	source_aarch64 = https://github.com/rsteube/vincent/releases/download/v0.1.1/vincent_linux_arm64.tar.gz
-	sha256sums_aarch64 = ddd1e9dedbaefea9bad6417dee6ddc15a91c016dcc28dc66b26a3f5b47f93492
+	source_aarch64 = https://github.com/rsteube/vincent/releases/download/v0.1.2/vincent_linux_arm64.tar.gz
+	sha256sums_aarch64 = f35cd44389b83aed4601118a3289a38b865da35e804464895b2ffb3d2037d84d
 	arch = i686
-	source_i686 = https://github.com/rsteube/vincent/releases/download/v0.1.1/vincent_linux_386.tar.gz
-	sha256sums_i686 = e5eacd56f63f4245c00437a240fc58d96756f784f431763b10a612cbf27661cd
+	source_i686 = https://github.com/rsteube/vincent/releases/download/v0.1.2/vincent_linux_386.tar.gz
+	sha256sums_i686 = 9be93a1d5af3ec81ddf2235f7d62c1eb75dff311a66ef7089f1b848b4aa73855
 	arch = x86_64
-	source_x86_64 = https://github.com/rsteube/vincent/releases/download/v0.1.1/vincent_linux_amd64.tar.gz
-	sha256sums_x86_64 = 99f1b4f5cf2d68f04bcb61e5a5edfb52d463cb634826a9689beb033e81e766bd
+	source_x86_64 = https://github.com/rsteube/vincent/releases/download/v0.1.2/vincent_linux_amd64.tar.gz
+	sha256sums_x86_64 = 22e403587b957f1bd2ca00c53c9c0cc654bb5f2800df42c17e6b9dba455d4dd9
 	
 pkgname = vincent-bin
