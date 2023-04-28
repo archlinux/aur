@@ -1,6 +1,6 @@
 pkgbase = r-chipenrich.data
 	pkgdesc = Companion package to chipenrich
-	pkgver = 2.23.1
+	pkgver = 2.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/chipenrich.data
 	arch = any
@@ -36,7 +36,7 @@ pkgbase = r-chipenrich.data
 	optdepends = r-txdb.rnorvegicus.ucsc.rn4.ensgene
 	optdepends = r-txdb.rnorvegicus.ucsc.rn5.refgene
 	optdepends = r-txdb.rnorvegicus.ucsc.rn6.refgene
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/chipenrich.data_2.23.1.tar.gz
-	sha256sums = 7c7172d8eacb9b0b38c428192d97540baf7631cfa0c1d83fc7ef9512b726b367
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/chipenrich.data_2.24.0.tar.gz
+	sha256sums = e35bdbf0ac6aaa9eedff21153cad0148e64eef9c49f5831d0a17767fd13dd6a3
 
 pkgname = r-chipenrich.data
