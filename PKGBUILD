@@ -3,7 +3,7 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gotosocial
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='ActivityPub social network server written in Golang'
 arch=('x86_64')
@@ -15,23 +15,28 @@ options=('!lto')
 backup=(
   'etc/gotosocial/config.yaml'
   'etc/gotosocial/template/404.tmpl'
+  'etc/gotosocial/template/about.tmpl'
   'etc/gotosocial/template/authorize.tmpl'
   'etc/gotosocial/template/confirmed.tmpl'
-  'etc/gotosocial/template/email_confirm_html.tmpl'
-  'etc/gotosocial/template/email_confirm_text.tmpl'
-  'etc/gotosocial/template/email_reset_html.tmpl'
-  'etc/gotosocial/template/email_reset_text.tmpl'
+  'etc/gotosocial/template/domain-blocklist.tmpl'
+  'etc/gotosocial/template/email_confirm.tmpl'
+  'etc/gotosocial/template/email_new_report.tmpl'
+  'etc/gotosocial/template/email_report_closed.tmpl'
+  'etc/gotosocial/template/email_reset.tmpl'
+  'etc/gotosocial/template/email_test.tmpl'
   'etc/gotosocial/template/error.tmpl'
+  'etc/gotosocial/template/finalize.tmpl'
   'etc/gotosocial/template/footer.tmpl'
   'etc/gotosocial/template/frontend.tmpl'
   'etc/gotosocial/template/header.tmpl'
   'etc/gotosocial/template/index.tmpl'
+  'etc/gotosocial/template/oob.tmpl'
   'etc/gotosocial/template/profile.tmpl'
   'etc/gotosocial/template/sign-in.tmpl'
   'etc/gotosocial/template/status.tmpl'
   'etc/gotosocial/template/thread.tmpl'
 )
-_commit='f28ed21343270bd91f1b5044e9013db3e1a6c64b'
+_commit='4dbf9a27bc130b5df5b205a82e250fe49b08c474'
 source=(
   "$pkgname::git+https://github.com/superseriousbusiness/gotosocial#commit=$_commit"
   'sysusers.conf'
