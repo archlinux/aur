@@ -1,4 +1,5 @@
 # Maintainer: Joaquín Aramendía <samsagax at gmail dot com>
+# Co-Maintainer: Matthew Anderson <ruinairas1992 at gmail dot com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 # Contributor: Samuel "scrufulufugus" Monson <smonson@irbash.net>
@@ -6,7 +7,7 @@
 
 _pkgname=gamescope
 pkgname=gamescope-plus
-pkgver=3.11.52.beta2.102.g6f668ee
+pkgver=3.11.52.beta2.108.g3e3c9a1
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
@@ -41,7 +42,7 @@ makedepends=(
   vulkan-headers
   wayland-protocols
 )
-_tag=6f668ee8b9dde03fea8c5581780e86f4e2729df3
+_tag=3e3c9a17e1e70b2c1b144e5cd7ee22786343ffe3
 source=("git+https://github.com/Samsagax/gamescope.git#commit=${_tag}"
         "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
         "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
