@@ -3,7 +3,7 @@
 
 pkgname=imhex-bin
 pkgver=1.28.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Hex Editor for Reverse Engineers, Programmers and people who value their retinas when working at 3 AM. "
 arch=("x86_64")
 url="https://github.com/WerWolv/ImHex"
