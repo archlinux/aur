@@ -1,6 +1,6 @@
 pkgbase = bore-git
 	pkgdesc = A command line tool for making tunnels to localhost (git)
-	pkgver = 0.3.0.r0.ge25f021
+	pkgver = 0.5.0.r1.gf8ccbae
 	pkgrel = 1
 	url = https://github.com/ekzhang/bore
 	arch = x86_64
