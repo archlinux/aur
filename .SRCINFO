@@ -1,6 +1,6 @@
 pkgbase = r-multicrispr
 	pkgdesc = Multi-locus multi-purpose Crispr/Cas design
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/multicrispr
 	arch = any
@@ -37,7 +37,7 @@ pkgbase = r-multicrispr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-txdb.mmusculus.ucsc.mm10.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/multicrispr_1.8.0.tar.gz
-	sha256sums = 5f917dfeff94ff8e77a04d66ed61885e647964d213f7a5d943ab1f77d060629d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/multicrispr_1.10.0.tar.gz
+	sha256sums = d28be3642bd69ea24306e8857efd2e850517a43f43dde76745745404eb850b45
 
 pkgname = r-multicrispr
