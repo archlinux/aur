@@ -30,6 +30,7 @@ package() {
     install -dm755 "$pkgdir/usr/bin"
     cp -ar --no-preserve=ownership "$srcdir"/!(${pkgbasename}.desktop|${pkgbasename}.tar.xz|${pkgbasename}.sh|${pkgbasename}.png) "$pkgdir/opt/${pkgbasename}"
     rm -rf "$pkgdir/opt/${pkgbasename}/unittests"
+    rm -f "$pkgdir/opt/${pkgbasename}/lib/libXcursor.so.1"
     install -Dm755 "../${pkgbasename}.sh" "$pkgdir/usr/bin/${pkgbasename}"
     install -Dm644 "../${pkgbasename}.desktop" "$pkgdir/usr/share/applications/${pkgbasename}.desktop"
     install -Dm644 "../${pkgbasename}.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/${pkgbasename}.png"
