@@ -1,6 +1,6 @@
 # Maintainer: Yann Büchau <nobodyinperson@posteo.de>
 pkgname=python-thunar-plugins-git
-pkgver=1.1.0.r2.g9635f3b
+pkgver=1.4.0.r13.gd222e3b
 pkgrel=1
 epoch=
 pkgdesc="Thunar plugins"
@@ -8,8 +8,8 @@ arch=(x86_64 aarch64)
 url="https://gitlab.com/nobodyinperson/thunar-plugins"
 license=('GPL')
 groups=()
-depends=(thunarx-python python-rich)
-makedepends=(python-setuptools python-build python-installer python-setuptools-scm python-wheel)
+depends=(thunarx-python python-rich python-setuptools)
+makedepends=(python-build python-installer python-setuptools-scm python-wheel)
 checkdepends=()
 optdepends=( 
     "git-annex: Git Annex support"
