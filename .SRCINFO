@@ -2,13 +2,13 @@ pkgbase = fzf-kill
 	pkgdesc = Kill -9 with fzf
 	pkgver = 1.0
 	pkgrel = 1
-	url = https://github.com/Zeioth/fzfkill.git
+	url = https://github.com/Zeioth/fzf-kill.git
 	arch = any
 	license = GPL3
 	depends = fzf
 	provides = fzf-kill
 	conflicts = fzf-kill-git
-	source = git+https://github.com/Zeioth/fzfkill.git
+	source = git+https://github.com/Zeioth/fzf-kill.git
 	sha256sums = SKIP
 
 pkgname = fzf-kill
