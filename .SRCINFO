@@ -1,7 +1,7 @@
 pkgbase = notesnook-bin
 	pkgdesc = Open source zero knowledge private note taking
 	pkgver = 2.4.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://notesnook.com
 	arch = x86_64
 	license = GPL
@@ -12,6 +12,6 @@ pkgbase = notesnook-bin
 	conflicts = notesnook
 	options = !strip
 	source = notesnook_linux_x86_64.AppImage::https://github.com/streetwriters/notesnook/releases/download/v2.4.10/notesnook_linux_x86_64.AppImage
-	sha256sums = 4f577d20aebd9d4c60dae12d12cccdae310ebfb75567f85246a9363d08ec463e
+	sha256sums = 27fb287afeb27fc72a866b96b357cd665d2c37e39c7cd439585c3fbb1bb5996b
 
 pkgname = notesnook-bin
