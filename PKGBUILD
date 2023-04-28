@@ -5,15 +5,15 @@
 
 pkgname=python-libconcord
 _pkgsrcname=concordance
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc='Python bindings for libconcord.'
 arch=('any')
-url='http://www.phildev.net/harmony/index.shtml'
+url='https://github.com/jaymzh/concordance/'
 license=('GPL3')
-depends=('libconcord=1.4' 'python')
+depends=('libconcord=1.5' 'python')
 source=("https://github.com/jaymzh/$_pkgsrcname/releases/download/v$pkgver/$_pkgsrcname-$pkgver.tar.bz2")
-sha256sums=('e7484707926393c2b44ae5e21e978a597c0f50e210e13b9e1e8168e1476382c7')
+sha256sums=('6e4ecfc18b91586cc0c58e376a7e23a561cbd7e8756586e62d5d9450e1b42b25')
 
 package() {
   cd "$srcdir/$_pkgsrcname-$pkgver/libconcord/bindings/python/"
