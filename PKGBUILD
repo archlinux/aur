@@ -1,8 +1,8 @@
 # Maintainer: Axel Navarro <navarroaxel at gmail>
 pkgname=intellij-idea-ce
 _pkgname=idea-IC
-pkgver=2023.1
-_pkgver=231.8109.175
+pkgver=2023.1.1
+_pkgver=231.8770.65
 pkgrel=1
 pkgdesc="An intelligent IDE for Java, Groovy and other programming languages with advanced refactoring features intensely focused on developer productivity."
 arch=('any')
@@ -12,7 +12,7 @@ license=('Apache2')
 depends=('giflib' 'libxtst')
 source=("https://download.jetbrains.com/idea/ideaIC-${pkgver}.tar.gz"
         "intellij-idea-ce.desktop")
-sha256sums=('e6fe45c9df8e763ee3278444b5fb1003910c436752e83221e0303a62c5e81eaa'
+sha256sums=('0a9bc55c2eaecbe983cd1db9ab6a353e3b7c3747f6fc6dea95736df104a68239'
             '1351b249a62104444362b1b29b9c82ea50bcdf44f84fa81bb39197d7a4e3fa67')
 
 package() {
