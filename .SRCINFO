@@ -1,6 +1,6 @@
 pkgbase = r-multisight
 	pkgdesc = Multi-omics Classification, Functional Enrichment and Network Inference analysis
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/multiSight
 	arch = any
@@ -40,7 +40,7 @@ pkgbase = r-multisight
 	optdepends = r-processx
 	optdepends = r-rlang
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/multiSight_1.6.0.tar.gz
-	sha256sums = 311d05f0e647d3470a8d73f91f49637bcd421c13e9f3b1dcfb4d78f32e9ef1e6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/multiSight_1.7.0.tar.gz
+	sha256sums = 2cad84a8893d54a48bc5039c6b9056a2f5d5c722bc03556a8b14140171a055ec
 
 pkgname = r-multisight
