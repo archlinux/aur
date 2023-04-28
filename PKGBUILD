@@ -4,7 +4,7 @@
 _archive_extension='tar.gz'
 pkgname=system-bridge
 pkgver=3.6.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Bridges your system to other systems, like Home Assistant"
 arch=('any')
@@ -46,11 +46,6 @@ depends=(
 	# gui
 	'python-pyperclip>=1.8.2'
 	'pyside6>=6.4.1'
-
-	# not a dependency according to all requirements.txt
-	python-sanic
-	python-pandas
-	python-backoff
 )
 makedepends=(
 	yarn

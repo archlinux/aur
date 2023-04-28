@@ -1,7 +1,7 @@
 pkgbase = system-bridge
 	pkgdesc = Bridges your system to other systems, like Home Assistant
 	pkgver = 3.6.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/timmo001/system-bridge
 	arch = any
@@ -40,9 +40,6 @@ pkgbase = system-bridge
 	depends = python-pydantic>=1.9.0
 	depends = python-pyperclip>=1.8.2
 	depends = pyside6>=6.4.1
-	depends = python-sanic
-	depends = python-pandas
-	depends = python-backoff
 	optdepends = upower: To read battery information
 	source = system-bridge-3.6.2.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/3.6.2.tar.gz
 	source = system-bridge.desktop
