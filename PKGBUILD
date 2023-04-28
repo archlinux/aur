@@ -2,8 +2,8 @@
 
 pkgname='python-securetar'
 _module=${pkgname#python-}
-pkgver='2022.2.0'
-pkgrel=2
+pkgver='2023.3.0'
+pkgrel=1
 pkgdesc="Python module to handle tarfile backups."
 url="https://github.com/pvizeli/securetar"
 depends=('python' 'python-cryptography')
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 license=('Apache')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-b2sums=('332538160613eb59e9c200dad7338a0a8fd99c8b3ca57034750d5887114bda258b7c76e3b261044089ff374e24193d688859063afee8eb2146ad0feb426cfacd')
+b2sums=('f14409aaff61960cf5318a014f2310b7edd3f27af557a9a2ac20061522b68ffce5c76a312070fda7c36cd78ca15d899222cfc3cfbac286ce1d0afa49ebf26379')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
