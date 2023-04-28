@@ -11,9 +11,7 @@ arch=(any)
 license=(GPL)
 depends=(java-environment hicolor-icon-theme)
 makedepends=(git gradle)
-provides=(quakeinjector)
 conflicts=(quakeinjector)
-replaces=(quakeinjector)
 source=("git+https://github.com/hrehfeld/$_gitname.git#tag=$pkgver"
         'quakeinjector.desktop'
         'quakeinjector')
