@@ -1,6 +1,6 @@
 pkgbase = r-bioplex
 	pkgdesc = R-side access to BioPlex protein-protein interaction data
-	pkgver = 1.5.6
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BioPlex
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-bioplex
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-s4vectors
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/BioPlex_1.5.6.tar.gz
-	sha256sums = d3622c0864d91c8976a43ecdaed049e26afacecfa3394a6de40ab10ab3b2781a
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/BioPlex_1.6.0.tar.gz
+	sha256sums = f810c5621af78383236afc5080a49f7cf83a514d1b8e51e1d81c7bbe022e5f8d
 
 pkgname = r-bioplex

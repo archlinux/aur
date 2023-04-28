@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BioPlex
-_pkgver=1.5.6
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.5.6
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='R-side access to BioPlex protein-protein interaction data'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-s4vectors
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d3622c0864d91c8976a43ecdaed049e26afacecfa3394a6de40ab10ab3b2781a')
+sha256sums=('f810c5621af78383236afc5080a49f7cf83a514d1b8e51e1d81c7bbe022e5f8d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
