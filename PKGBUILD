@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=enrichTF
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='Transcription Factors Enrichment Analysis'
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
   r-webshot
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6984d83367faf671c43adb7620be621ad0e454a2339dfc52b1b865837aaa5f9e')
+sha256sums=('039010bef0b02ad6c2d2d0e31697e95870d2753bbe7352067d1e1c2180df6796')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
