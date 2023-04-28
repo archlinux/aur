@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bcellViper
-_pkgver=1.35.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.35.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='Human B-cell transcriptional interactome and normal human B-cell expression data'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('77cb33dd44b5560902461a5d32e21bdaba31edef5cb7e250b6b056a0718ae143')
+sha256sums=('801c2430dcedbd4f119862ef2e41b537fe1b63c0129b92100c1eb077c0b80dbe')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
