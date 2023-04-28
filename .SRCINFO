@@ -1,6 +1,6 @@
 pkgbase = r-pigengene
 	pkgdesc = Infers biological signatures from gene expression data
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Pigengene
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = r-pigengene
 	optdepends = r-knitr
 	optdepends = r-org.hs.eg.db
 	optdepends = r-org.mm.eg.db
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Pigengene_1.24.0.tar.gz
-	sha256sums = 2dc195a1fb44d5b17b81b95c81dd3f69371a42ac3ff9cd47e4da71c819b55336
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Pigengene_1.26.0.tar.gz
+	sha256sums = 75561523af02ae0de83f935dd2e99acd372ba8e174a4f10de4819352e45c232c
 
 pkgname = r-pigengene
