@@ -1,6 +1,6 @@
 pkgbase = imlib2-jxl
         pkgdesc = JPEG XL loader for imlib2
-        pkgver = 0.1.1
+        pkgver = 0.2.0
         pkgrel = 1
         url = https://github.com/alistair7/imlib2-jxl
         arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = imlib2-jxl
         depends = libjxl
         depends = lcms2
         conflicts = imlib2-jxl-git
-        source = imlib2-jxl-0.1.1.tar.gz::https://github.com/alistair7/imlib2-jxl/archive/refs/tags/v0.1.1.tar.gz
-        sha256sums = 25d220e4638948174d5e76c66e2f0441ee41e0758fa63f065cdfd51bb76c1465
+        source = imlib2-jxl-0.2.0.tar.gz::https://github.com/alistair7/imlib2-jxl/archive/refs/tags/v0.2.0.tar.gz
+        sha256sums = b49ded4e9251569cfa0245a3075796924656f565e681c60a02c8ec7e16fd9a71
 
 pkgname = imlib2-jxl
