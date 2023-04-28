@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scRNAseq
-_pkgver=2.12.0
+_pkgver=2.14.0
 pkgname=r-${_pkgname,,}
-pkgver=2.12.0
+pkgver=2.14.0
 pkgrel=1
 pkgdesc='Collection of Public Single-Cell RNA-Seq Datasets'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-tools
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('eb17c36d775bbf68259e35ddf69147c6382b3f370c9353305ac4f79a9568facf')
+sha256sums=('4dae75ed947e52680c3f907f6c29862f4a03eb7394854aa89916ffbfc9730332')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
