@@ -1,54 +1,55 @@
-diff -up src/xrdp-git/instfiles/xrdp.service.in.orig src/xrdp-git/instfiles/xrdp.service.in
---- src/xrdp-git/instfiles/xrdp.service.in.orig	2021-05-12 17:14:14.530000000 -0600
-+++ src/xrdp-git/instfiles/xrdp.service.in	2021-05-12 17:14:15.300000000 -0600
-@@ -7,10 +7,8 @@ After=network.target xrdp-sesman.service
+diff -up src/xrdp/instfiles/xrdp.service.in.orig src/xrdp/instfiles/xrdp.service.in
+--- src/xrdp/instfiles/xrdp.service.in.orig	2020-06-26 05:13:58.000000000 -0600
++++ src/xrdp/instfiles/xrdp.service.in	2021-05-12 17:06:31.680000000 -0600
+@@ -6,11 +6,9 @@ After=network.target xrdp-sesman.service
+
  [Service]
  Type=forking
- PIDFile=@localstatedir@/run/xrdp.pid
+-PIDFile=@localstatedir@/run/xrdp.pid
 -EnvironmentFile=-@sysconfdir@/sysconfig/xrdp
 -EnvironmentFile=-@sysconfdir@/default/xrdp
 -ExecStart=@sbindir@/xrdp $XRDP_OPTIONS
 -ExecStop=@sbindir@/xrdp $XRDP_OPTIONS --kill
++PIDFile=/run/xrdp.pid
 +ExecStart=@sbindir@/xrdp
 +ExecStop=@sbindir@/xrdp --kill
- 
+
  [Install]
  WantedBy=multi-user.target
-diff -up src/xrdp-git/instfiles/xrdp-sesman.service.in.orig src/xrdp-git/instfiles/xrdp-sesman.service.in
---- src/xrdp-git/instfiles/xrdp-sesman.service.in.orig	2021-05-12 17:14:14.530000000 -0600
-+++ src/xrdp-git/instfiles/xrdp-sesman.service.in	2021-05-12 17:14:15.310000000 -0600
-@@ -8,10 +8,8 @@ BindsTo=xrdp.service
+diff -up src/xrdp/instfiles/xrdp-sesman.service.in.orig src/xrdp/instfiles/xrdp-sesman.service.in
+--- src/xrdp/instfiles/xrdp-sesman.service.in.orig	2020-06-26 05:13:58.000000000 -0600
++++ src/xrdp/instfiles/xrdp-sesman.service.in	2021-05-12 17:06:31.690000000 -0600
+@@ -7,12 +7,10 @@ BindsTo=xrdp.service
+
  [Service]
  Type=forking
- PIDFile=@localstatedir@/run/xrdp-sesman.pid
+-PIDFile=@localstatedir@/run/xrdp-sesman.pid
 -EnvironmentFile=-@sysconfdir@/sysconfig/xrdp
 -EnvironmentFile=-@sysconfdir@/default/xrdp
 -ExecStart=@sbindir@/xrdp-sesman $SESMAN_OPTIONS
 -ExecStop=@sbindir@/xrdp-sesman $SESMAN_OPTIONS --kill
+-ExecReload=@sbindir@/xrdp-sesman $SESMAN_OPTIONS --reload
++PIDFile=/run/xrdp-sesman.pid
 +ExecStart=@sbindir@/xrdp-sesman
 +ExecStop=@sbindir@/xrdp-sesman --kill
- 
++ExecReload=@sbindir@/xrdp-sesman --reload
+
  [Install]
  WantedBy=multi-user.target
-diff -up src/xrdp-git/sesman/sesman.ini.in.orig src/xrdp-git/sesman/sesman.ini.in
---- src/xrdp-git/sesman/sesman.ini.in.orig	2021-05-12 17:14:14.880000000 -0600
-+++ src/xrdp-git/sesman/sesman.ini.in	2021-05-12 17:15:56.580000000 -0600
-@@ -94,7 +94,7 @@ EnableSyslog=true
- ; CentOS 7              :  param=/usr/bin/Xorg or param=Xorg
- ; CentOS 8              :  param=/usr/libexec/Xorg
- ;
--param=Xorg
-+param=/usr/lib/Xorg
- ; Leave the rest paramaters as-is unless you understand what will happen.
- param=-config
- param=xrdp/xorg.conf
-diff -up src/xrdp-git/sesman/startwm.sh.orig src/xrdp-git/sesman/startwm.sh
---- src/xrdp-git/sesman/startwm.sh.orig	2021-05-12 17:14:14.890000000 -0600
-+++ src/xrdp-git/sesman/startwm.sh	2021-05-12 17:14:15.310000000 -0600
-@@ -63,6 +63,21 @@ wm_start()
+diff -up src/xrdp/sesman/startwm.sh.orig src/xrdp/sesman/startwm.sh
+--- src/xrdp/sesman/startwm.sh.orig	2020-12-28 07:03:43.000000000 -0700
++++ src/xrdp/sesman/startwm.sh	2021-05-12 17:06:31.690000000 -0600
+@@ -75,11 +75,26 @@ get_xdg_session_startupcmd()
+ #start the window manager
+ wm_start()
+ {
+-  if [ -r /etc/default/locale ]; then
+-    . /etc/default/locale
++  if [ -r /etc/locale.conf ]; then
++    . /etc/locale.conf
      export LANG LANGUAGE
    fi
- 
+
 +  # arch user
 +  if [ -r ~/.xinitrc ]; then
 +    pre_start
