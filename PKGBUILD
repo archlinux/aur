@@ -3,7 +3,7 @@
 pkgname=libstumpless
 _projname=stumpless
 pkgver=2.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc='C logging library built for high performance and a rich feature set.'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/goatshriek/stumpless'
@@ -15,7 +15,7 @@ provides=('libstumpless' 'libstumpless.so')
 source=("${_projname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         'pr340.patch::https://patch-diff.githubusercontent.com/raw/goatshriek/stumpless/pull/340.patch')
 sha256sums=('f3eff944d81fdf82ffe5c0df6a8c692224140c9c322ffc3ba709218a66dc07ec'
-            'e0a76a2b036fecf493a6585ead1c7ae8501818a54202125771296b5e2456aa77')
+            '42a1ddca300bdbbee147dba0eab7e77c839209a7e772b922e4ee60e28169b9a9')
 
 prepare() {
     cd "${_projname}-${pkgver}"

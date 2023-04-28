@@ -1,24 +1,18 @@
-From 431467bad477b8d9440ecf2a9374f69ed560a85e Mon Sep 17 00:00:00 2001
+From da8e2907db1f0822e151f90ff754eec489c8c822 Mon Sep 17 00:00:00 2001
 From: Ewout van Mansom <ewout@vanmansom.name>
 Date: Mon, 24 Apr 2023 14:12:28 +0200
 Subject: [PATCH] add pkg-config file (#339)
 
 ---
- CMakeLists.txt                   |  9 ++++++++-
+ CMakeLists.txt                   |  7 +++++++
  tools/pkg-config/stumpless.pc.in | 10 ++++++++++
- 2 files changed, 18 insertions(+), 1 deletion(-)
+ 2 files changed, 17 insertions(+)
  create mode 100644 tools/pkg-config/stumpless.pc.in
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index c9946ce6..8de594ce 100644
+index c9946ce6..e51023c1 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -1,4 +1,4 @@
--cmake_minimum_required(VERSION 3.2.3)
-+cmake_minimum_required(VERSION 3.12)
- 
- if(POLICY CMP0135)
-   cmake_policy(SET CMP0135 NEW)
 @@ -1000,6 +1000,13 @@ install(FILES
  
  include(tools/cmake/cpack.cmake)
@@ -35,7 +29,7 @@ index c9946ce6..8de594ce 100644
  add_function_test(buffer
 diff --git a/tools/pkg-config/stumpless.pc.in b/tools/pkg-config/stumpless.pc.in
 new file mode 100644
-index 00000000..d0d5b84f
+index 00000000..b8c573bc
 --- /dev/null
 +++ b/tools/pkg-config/stumpless.pc.in
 @@ -0,0 +1,10 @@
@@ -46,6 +40,6 @@ index 00000000..d0d5b84f
 +
 +Name: @CMAKE_PROJECT_NAME@
 +Description: C logging library built for high performance and a rich feature set
-+Version: @CMAKE_PROJECT_VERSION@
++Version: @PROJECT_VERSION@
 +Libs: -L${libdir} -lstumpless
 +Cflags: -I${includedir}
