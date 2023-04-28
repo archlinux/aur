@@ -1,26 +1,26 @@
 pkgbase = intel-oneapi-dnnl
 	pkgdesc = Intel® oneAPI Deep Neural Network Library
-	pkgver = 2023.0.0_25399
+	pkgver = 2023.1.0_46343
 	pkgrel = 1
 	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
 	arch = x86_64
 	license = custom
-	noextract = intel-oneapi-dnnl-2023.0.0-25399_amd64.deb
-	noextract = intel-oneapi-dnnl-devel-2023.0.0-25399_amd64.deb
-	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-dnnl-2023.0.0-25399_amd64.deb
-	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-dnnl-devel-2023.0.0-25399_amd64.deb
+	noextract = intel-oneapi-dnnl-2023.1.0-46343_amd64.deb
+	noextract = intel-oneapi-dnnl-devel-2023.1.0-46343_amd64.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-dnnl-2023.1.0-46343_amd64.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-dnnl-devel-2023.1.0-46343_amd64.deb
 	source = intel-oneapi-dnnl.conf
 	source = intel-oneapi-dnnl.sh
-	sha256sums = 616f9fac7c702aa12fa032a80bcbda9988c3029300cbe0b7c71f7049885551dc
-	sha256sums = 6ab85bea0c202b2a31972ebf4eeda89d72403cac293f06617c397b9b7d123979
+	sha256sums = e60916a5849ba8faacd46f9633cdd6e9623fc45828696afe5d8308b7a6fcd96e
+	sha256sums = 5a014e468825ad12b674b88a8b549e6a607bf8a8caf2e100e525e41ac9302db6
 	sha256sums = f1fe419d6cbab4411c5fe68515b1fc8f317185b70a0c2b7400ba7c88dbd32c63
 	sha256sums = d3fff0cb761be49b766d4fa2e9c34b38e5f99379520201f60654893db47b7dd7
 
 pkgname = intel-oneapi-dnnl
-	depends = intel-oneapi-common=2023.0.0
-	depends = intel-oneapi-tbb>=2021.8.0
-	depends = intel-oneapi-compiler>=2023.0.0
-	depends = intel-oneapi-tbb<2021.8.1
-	depends = intel-oneapi-compiler<2023.0.1
+	depends = intel-oneapi-common=2023.1.0
+	depends = intel-oneapi-tbb>=2021.9.0
+	depends = intel-oneapi-compiler>=2023.1.0
+	depends = intel-oneapi-tbb<2021.9.1
+	depends = intel-oneapi-compiler<2023.1.1
 	provides = onednn=2.6
 	conflicts = onednn
