@@ -1,25 +1,25 @@
 pkgbase = intel-oneapi-mpi
 	pkgdesc = Intel® MPI Library Runtime Environment
-	pkgver = 2021.8.0_25329
+	pkgver = 2021.9.0_43482
 	pkgrel = 1
 	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
 	arch = x86_64
 	license = custom
-	noextract = intel-oneapi-mpi-2021.8.0-2021.8.0-25329_amd64.deb
-	noextract = intel-oneapi-mpi-devel-2021.8.0-2021.8.0-25329_amd64.deb
-	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-mpi-2021.8.0-2021.8.0-25329_amd64.deb
-	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-mpi-devel-2021.8.0-2021.8.0-25329_amd64.deb
+	noextract = intel-oneapi-mpi-2021.9.0-2021.9.0-43482_amd64.deb
+	noextract = intel-oneapi-mpi-devel-2021.9.0-2021.9.0-43482_amd64.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-mpi-2021.9.0-2021.9.0-43482_amd64.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-mpi-devel-2021.9.0-2021.9.0-43482_amd64.deb
 	source = intel-oneapi-mpi.conf
 	source = intel-oneapi-mpi.sh
-	sha256sums = c35f6513e895f784b840d2e235abfd0ac304b69cb75f1d9c51fd5025fd4a244e
-	sha256sums = 8d1a34a99bd050fcbe6d5e46c3a89212281a476c210f499cd6b067c00d6a28bf
+	sha256sums = ccef71d5992198bca7b40111addb854062c0796427180c42d51553a949a2f7b4
+	sha256sums = 8702f4df9030597352e10f28ccc9635f3f17a3e128d18622a82ffa440471ba4e
 	sha256sums = c994f2dc82f7479c229ee102775a12bb12d80fec364f511f8b73c1e4f0ae2653
 	sha256sums = 0910cf4e0613c8eaaf61070638981d5531348ce78770a7bf471f86061edb7f32
 
 pkgname = intel-oneapi-mpi
-	depends = intel-oneapi-common=2023.0.0
+	depends = intel-oneapi-common=2023.1.0
 
 pkgname = intel-oneapi-mpi-static
 	pkgdesc = Intel® MPI Library Runtime Environment (static libs)
-	depends = intel-oneapi-mpi=2021.8.0_25329
+	depends = intel-oneapi-mpi=2021.9.0_43482
 	options = staticlibs
