@@ -1,14 +1,17 @@
 pkgbase = worky
 	pkgdesc = Worky is a tool that helps to define and load project workspaces.
 	pkgver = 0.1.8
-	pkgrel = 1
+	pkgrel = 00
 	url = https://github.com/ZappaBoy/worky
 	arch = any
 	license = GPL3
-	makedepends = git
+	makedepends = python-pip
 	depends = python
-	provides = worky
-	source = git+https://github.com/ZappaBoy/worky
-	md5sums = SKIP
+	depends = python-toml
+	noextract = worky-0.1.8-py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/cd/7e/42a829a34ff49e3342d50a633a90526aac6ec7a62f0468870ee7d1706920/worky-0.1.8-py3-none-any.whl
+	md5sums = d41d8cd98f00b204e9800998ecf8427e
+	md5sums = 9f33e83299b3b44fe9b5a93862684600
 
 pkgname = worky
