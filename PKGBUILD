@@ -1,13 +1,13 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=units
-_cranver=0.8-1
+_cranver=0.8-2
 pkgname=r-${_cranname,,}
 pkgdesc="Measurement Units for R Vectors"
 url="https://cran.r-project.org/package=units"
 license=("GPL2")
 pkgver=${_cranver//[:-]/.}
-pkgrel=3
+pkgrel=1
 
 arch=("i686" "x86_64")
 depends=(
@@ -16,18 +16,17 @@ depends=(
     "udunits"
 )
 optdepends=(
-    "r-nistunits"
-    "r-measurements"
-    "r-xml2"
-    "r-magrittr"
-    "r-pillar>=1.3.0"
     "r-dplyr>=1.0.0"
-    "r-vctrs>=0.3.1"
     "r-ggplot2>=3.2.1"
-    "r-testthat>=3.0.0"
-    "r-vdiffr"
     "r-knitr"
+    "r-magrittr"
+    "r-measurements"
+    "r-nistunits"
+    "r-pillar>=1.3.0"
     "r-rmarkdown"
+    "r-vctrs>=0.3.1"
+    "r-vdiffr"
+    "r-xml2"
 )
 
 # The unittests for `r-units` have multiple circular
@@ -50,7 +49,7 @@ optdepends=(
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("ac44f0ff3d174c76a261686742551de8eda1dc2696cda8ecdccc43f9c7abcf770c1e21291f8cd213609651a92a3d2e1e7f0efacc71bd43f986fc0e92664ad421")
+b2sums=("a7ae8953afb2ef6e993dab6512d5b6af54045db4e462af104bd8141c4fe4b0d9c8ba4bf0610d03730c5e43c4bbd2d2b06227bb89859292218e32e1cff1353680")
 
 build() {
     mkdir -p "${srcdir}/build/"
