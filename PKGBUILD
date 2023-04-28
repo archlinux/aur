@@ -8,7 +8,7 @@
 # match! -beta\.?[0-9]+$
 
 pkgname=transmission-gtk3
-pkgver=4.0.2
+pkgver=4.0.3
 pkgrel=1
 arch=(x86_64)
 url="http://www.transmissionbt.com/"
@@ -36,7 +36,7 @@ makedepends=(
   ninja
 )
 source=("https://github.com/transmission/transmission/releases/download/$pkgver/transmission-$pkgver.tar.xz")
-sha256sums=('39bf7a104a722805a9dc089cdaaffe33bf90b82230a7ea7f340cae59f00a2ee8')
+sha256sums=('b6b01fd58e42bb14f7aba0253db932ced050fcd2bba5d9f8469d77ddd8ad545a')
 
 build() {
   export CFLAGS+=" -ffat-lto-objects -Wno-all"
