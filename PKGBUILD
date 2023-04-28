@@ -5,7 +5,7 @@
 pkgname=beast2
 pkgver=2.7.4
 _pkgver=2.7.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Bayesian Evolutionary Analysis by Sampling Trees. https://doi.org/10.1371/journal.pcbi.1003537"
 arch=('any')
 url="http://www.beast2.org/"
@@ -35,8 +35,8 @@ sha256sums=('cd16e9bc5615aff063d61ec1edd66d4cd8bb87dcaabcb1508b42809f34b7b258'
             '337159e676c057af33fdafef8d64fb47e5a78d9130b7d4a8d5dd5c8d1bb8d35f'
             '9ca416360e1697768aa5b9cad2cae13b2d9077dd2386d0950466bad6d5cccf60'
             '7b6c125b3dbe7f65cd4903ebca6106893c808f2b444c29aba082f9a66c7ac6af')
-depends=('java-runtime=17' 'java17-openjfx')
-makedepends=('ant' 'git' 'java-environment=17')
+depends=('java-runtime' 'java-openjfx')
+makedepends=('ant' 'java-environment')
 optdepends=('beagle-lib')
 prepare(){
     cd ${srcdir}
@@ -59,7 +59,7 @@ build(){
 }
 package() {
     install -d "$pkgdir"/usr/share/beast2
-    install -d ${pkgdir}/usr/bin/$bin
+    install -d ${pkgdir}/usr/bin/
     cd "$srcdir/BeastFX-${pkgver}/release2/Linux/"
     cp -rf beast/* "${pkgdir}/usr/share/${pkgname}"
 
@@ -73,6 +73,11 @@ package() {
 
     # shipped library
     install -Dm644 ${srcdir}/${pkgname}-${pkgver}/lib/*.jar -t  "${pkgdir}/usr/share/${pkgname}/lib"
+
+    # for 2.7.4+
+    install -d "${pkgdir}/usr/share/${pkgname}/lib/packages"
+    mv ${pkgdir}/usr/share/${pkgname}/lib/BEAST.app.* "${pkgdir}/usr/share/${pkgname}/lib/packages"
+    mv ${pkgdir}/usr/share/${pkgname}/lib/BEAST.base.* "${pkgdir}/usr/share/${pkgname}/lib/packages"
 
     # correct excutable
     rm -rf $pkgdir/usr/share/beast2/bin/*
