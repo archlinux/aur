@@ -1,7 +1,6 @@
 pkgbase = beast
-	pkgdesc = Bayesian Evolutionary Analysis Sampling Trees. https://doi.org/10.1186/1471-2148-7-214
-	pkgver = sars__cov__2__origins
-	pkgrel = 2
+	pkgver = 1.10.4
+	pkgrel = 0
 	url = http://beast.community/
 	arch = x86_64
 	license = LGPL
@@ -9,23 +8,25 @@ pkgbase = beast
 	makedepends = ant
 	makedepends = cmake
 	makedepends = beagle-lib
+	makedepends = gendesk
 	depends = java-runtime=8
-	optdepends = beagle-lib
-	source = https://github.com/beast-dev/beast-mcmc/archive/refs/tags/sars-cov-2-origins.tar.gz
-	source = beast.desktop
-	source = beast-beauti.desktop
-	source = beast-loganalyser.desktop
-	source = beast-logcombiner.desktop
-	source = beast-treeannotator.desktop
-	source = beast-treestat.desktop
-	source = fix_bin.patch
-	sha256sums = fab8750313b66844f4dd8dcacfa55913f30bb877bded87057ba347d38cc9dc75
-	sha256sums = fa9841f5005be6d743ad278b037de0eb329c642de62e4996cc1df31272ffa185
-	sha256sums = e3897ee92348b3e48010af739fcbf7fbb38bcc2c18e1ceb30cd147b3c7067b2d
-	sha256sums = dcf674ebe5f1b7b13e746441f7a28a9b0fa86c03f3bef27833c532f323cb6644
-	sha256sums = 75842d174f246c38dc4600357ef8b41f67e5f12cbd7dba779d224f99b531cb1d
-	sha256sums = 6e63a619a6fb3101606a85dbc352d579e343d167cf79be67ccf31ed1544d5fd2
-	sha256sums = 3a21774077658117f36bd289901ec1d560a66bbe435ba4ddbc1980c558fa7362
-	sha256sums = 086b899c6f4bfa43d4af61d497c0265d087e919de5723faa6b3e58ae48fb6813
+	source = https://github.com/beast-dev/beast-mcmc/archive/refs/tags/v1.10.4.tar.gz
+	source = beast.patch::https://patch-diff.githubusercontent.com/raw/beast-dev/beast-mcmc/pull/1149.patch
+	sha256sums = 6e28e2df680364867e088acd181877a5d6a1d664f70abc6eccc2ce3a34f3c54a
+	sha256sums = 2f65ebb8c45feed0b2969276c7caae147b83f4f1dd4fc5e1d705aada2c4163e1
 
 pkgname = beast
+	pkgdesc = Bayesian Evolutionary Analysis Sampling Trees. https://doi.org/10.1186/1471-2148-7-214
+	optdepends = beagle-lib
+
+pkgname = beastgen
+	pkgdesc = Bayesian Evolutionary Analysis Sampling Trees. https://doi.org/10.1186/1471-2148-7-214
+	optdepends = beagle-lib
+
+pkgname = coalgen
+	pkgdesc = BEAST Coalescent Tree Simulator https://doi.org/10.1186/1471-2148-7-214
+	optdepends = beagle-lib
+
+pkgname = phylogeography
+	pkgdesc = BEAST PhyloGeography https://doi.org/10.1186/1471-2148-7-214
+	optdepends = beagle-lib
