@@ -1,6 +1,6 @@
 pkgbase = r-regionreport
 	pkgdesc = Generate HTML or PDF reports for a set of genomic regions or DESeq2/edgeR results
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/regionReport
 	arch = any
@@ -36,7 +36,7 @@ pkgbase = r-regionreport
 	optdepends = r-sessioninfo
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
 	optdepends = r-whisker
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/regionReport_1.32.0.tar.gz
-	sha256sums = e0b31beed35bebcd8fe55b3f7b9d8d2473487ab04dd2a31a5c6543db42a99846
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/regionReport_1.34.0.tar.gz
+	sha256sums = 460f608b9855c3ff323b0795bdd8da0df99a914a3eb1d702e5a256bbd0abeeb6
 
 pkgname = r-regionreport
