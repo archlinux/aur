@@ -1,0 +1,22 @@
+pkgbase = hypnotix-master
+	pkgdesc = An IPTV streaming application with support for live TV, movies and series.
+	pkgver = master.lmde5
+	pkgrel = 1
+	url = https://github.com/linuxmint/hypnotix
+	arch = any
+	license = GPL3
+	depends = dconf
+	depends = hicolor-icon-theme
+	depends = mpv
+	depends = python-cairo
+	depends = python-gobject
+	depends = python-imdbpy
+	depends = python-requests
+	depends = python-setproctitle
+	depends = python-unidecode
+	depends = xapp
+	optdepends = yt-dlp: YouTube channel support
+	source = hypnotix-master-master.lmde5.tar.gz::https://github.com/linuxmint/hypnotix/archive/refs/tags/master.lmde5.tar.gz
+	sha256sums = 6ad75cfaaa47d141dd84fae4b960d21f2b6b10c57e487709d07a90c305bf8736
+
+pkgname = hypnotix-master
