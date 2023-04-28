@@ -1,0 +1,23 @@
+pkgbase = libwrap
+	pkgdesc = Monitors and Controls incoming TCP connections
+	pkgver = 7.6.31
+	pkgrel = 5
+	url = http://ftp.porcupine.org/pub/security/index.html
+	arch = x86_64
+	license = BSD
+	depends = glibc
+	depends = libnsl
+	provides = tcp_wrappers-libs
+	conflicts = tcp_wrappers-libs
+	source = http://ftp.porcupine.org/pub/security/tcp_wrappers_7.6.tar.gz
+	source = http://http.debian.net/debian/pool/main/t/tcp-wrappers/tcp-wrappers_7.6.q-31.debian.tar.xz
+	source = tcp-wrappers-redhat-bug11881.patch
+	source = hosts.allow
+	source = hosts.deny
+	sha256sums = 9543d7adedf78a6de0b221ccbbd1952e08b5138717f4ade814039bb489a4315d
+	sha256sums = 20fec7826bde1262007e6dd43f365b5802bacc283942d93b78385ea634dc594a
+	sha256sums = 2e527e54c1ea208de10a206c667f751e54651eb77c973271d213e3459d690403
+	sha256sums = c1b19035a14ba552e8795ec3d7171e688592c9317f2eb14373320315435565e3
+	sha256sums = 969414f0a161e95fbe4cfe32df7c657a2793734d09416c00fa1116c5c0a9924f
+
+pkgname = libwrap
