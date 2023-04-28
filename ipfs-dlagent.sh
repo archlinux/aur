@@ -19,7 +19,7 @@ _is_service_running() {
   if ! _is_bus_running; then
     echo "INFO: running in a session without bus"
     # run-as -X --uid "$(id -u)" "/usr/bin/echo"
-    ipfs daemon 2>&1 | grep -i -o -m1 "Daemon is ready" | xargs -i ipfs cat "${_clean}" > "${_out}"
+    ipfs daemon 2>&1 | grep -i -o -m1 "Daemon is ready" | xargs -i ipfs-dlagent-quit "${_clean}" "${_out}"
   else
     if ! systemctl --user is-active --quiet ipfs; then
         systemctl --user restart ipfs
