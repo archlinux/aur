@@ -1,6 +1,6 @@
 pkgbase = r-chippeakanno
 	pkgdesc = Batch annotation of the peaks identified from either ChIP-seq, ChIP-chip experiments or any experiments resulted in large number of chromosome ranges
-	pkgver = 3.34.0
+	pkgver = 3.34.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ChIPpeakAnno
 	arch = any
@@ -60,7 +60,7 @@ pkgbase = r-chippeakanno
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
 	optdepends = r-txdb.hsapiens.ucsc.hg38.knowngene
 	optdepends = r-upsetr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ChIPpeakAnno_3.34.0.tar.gz
-	sha256sums = 463e1d88f669dfbc218ab99073008d52494ce875df52f0838ce5f26ce1477fd0
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ChIPpeakAnno_3.34.1.tar.gz
+	sha256sums = d450355a207be67dcab8d46b15977827026f75eca45563ec6a5bd0d9e6d43879
 
 pkgname = r-chippeakanno
