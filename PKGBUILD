@@ -1,11 +1,8 @@
-# Maintainer: Michael Lass <bevan@bi-co.net>
+# Maintainer: Faaris Ansari <faaris.ansari@pm.me>
 
 # This PKGBUILD heavily borrows from java-openjdk in [extra] maintained by:
 # Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Guillaume ALAUX <guillaume@archlinux.org>
-
-# This PKGBUILD is maintained on github:
-# https://github.com/michaellass/AUR
 
 _majorver=18
 _completever=18.0.2.1
