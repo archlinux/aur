@@ -1,13 +1,13 @@
 pkgbase = r-chipxpressdata
 	pkgdesc = ChIPXpress Pre-built Databases
-	pkgver = 1.37.0
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ChIPXpressData
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-bigmemory
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/ChIPXpressData_1.37.0.tar.gz
-	sha256sums = 600e20109865790526ba31af37e008840c0a89ff264d546b5f359a1a2ccee3bd
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/ChIPXpressData_1.38.0.tar.gz
+	sha256sums = 8e4d252dff199365c5f268dd388570637d814169b0a30840becad7550aa22f34
 
 pkgname = r-chipxpressdata
