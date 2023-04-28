@@ -6,13 +6,13 @@
 _pkgname=my-weather-indicator
 pkgname=my-weather-indicator-git
 epoch=1
-pkgver=0.10.0.0+r186+24363b4
+pkgver=0.10.6.0+r221+63258d2
 pkgrel=1
 pkgdesc='A simple indicator for the weather'
 arch=('any')
 url='https://github.com/atareao/my-weather-indicator'
 license=('GPL3')
-depends=('libappindicator-gtk3' 'libnotify' 'webkit2gtk' 'geocode-glib' 'python-pytz'
+depends=('libayatana-appindicator' 'libnotify' 'webkit2gtk' 'geocode-glib' 'python-pytz'
          'python-cairo' 'python-lxml' 'python-dateutil' 'osm-gps-map'
          'python-requests-oauthlib' 'geoclue' 'geoip')
 makedepends=('git')
