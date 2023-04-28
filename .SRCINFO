@@ -1,0 +1,15 @@
+pkgbase = haylxon
+	pkgdesc = Blazing-fast and yet Sleuth cameraman to www*
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/pwnwriter/haylxon
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = openssl
+	depends = gcc-libs
+	source = haylxon-0.1.5.tar.gz::https://github.com/pwnwriter/haylxon/archive/v0.1.5.tar.gz
+	sha256sums = SKIP
+
+pkgname = haylxon
