@@ -4,7 +4,7 @@
 _pkgbase="dfm"
 pkgname="dmenu-$_pkgbase"
 pkgver=1.1.6.g266609a
-pkgrel=1
+pkgrel=2
 pkgdesc="dmenu-dfm is a simple file manager that uses dmenu"
 url="https://github.com/amarakon/dfm"
 arch=(any)
