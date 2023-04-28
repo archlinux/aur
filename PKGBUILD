@@ -1,7 +1,7 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
 
 pkgname=sequoia-wot
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="An implementation of OpenPGP's web of trust"
 arch=(x86_64)
@@ -20,8 +20,8 @@ makedepends=(
   clang
 )
 source=($url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
-sha512sums=('ab9995fe4af44c23ff1af3faa7f079c7852dc5d8418674f2ff1645596d8d4ed0fe0bde0250797ab98291cf8dfaa4ada8d28b8ad2a169b2671e7def0931b611af')
-b2sums=('f5fa09997ab5a4e5d13eb38902080324a0836ab12eccb12d3dbaca04692e22b17410a84c1c9ce997e860bcf37121a5674711934ffab9770a0c548e8452dd190b')
+sha512sums=('348cfdd13098355a5b7bc192fb530c18db6d005889a54a90319dafd9269dd84f565f89967e1bf234765856fae948f238d63b9110d6cdca649c5faf0cf988a9b7')
+b2sums=('e4cdfb68eaf542ae8783735ca1ae40b30c2fde4e97c08583e5dcd1afcdd21494176e60a2d724f6e2d8813d2aa9aaa50a4c6f43f5ba9eb80886f9e7ab9caa06c9')
 
 prepare() {
   cd $pkgname-v$pkgver
