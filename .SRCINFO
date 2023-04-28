@@ -1,6 +1,6 @@
 pkgbase = r-cnvfilter
 	pkgdesc = Identifies false positives of CNV calling tools by using SNV calls
-	pkgver = 1.12.2
+	pkgver = 1.14.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CNVfilteR
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-cnvfilter
 	optdepends = r-bsgenome.hsapiens.ucsc.hg19.masked
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CNVfilteR_1.12.2.tar.gz
-	sha256sums = eb5f0765cd71aa2660d39fc345c4b70f3680572981478e1607622ee4e6cf521e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CNVfilteR_1.14.0.tar.gz
+	sha256sums = 93b4fd3388232ad3a9bb259062ee484b57c0bac647feaf078ea3115fe24635da
 
 pkgname = r-cnvfilter
