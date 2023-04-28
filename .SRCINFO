@@ -1,16 +1,16 @@
 pkgbase = intel-oneapi-dpcpp-ct
 	pkgdesc = Intel® DPC++ Compatibility Tool
-	pkgver = 2023.0.0_25483
+	pkgver = 2023.1.0_44450
 	pkgrel = 1
 	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
 	arch = x86_64
 	license = custom
-	noextract = intel-oneapi-dpcpp-ct-2023.0.0-2023.0.0-25483_amd64.deb
-	noextract = intel-oneapi-dpcpp-ct-eclipse-cfg-2023.0.0-25483_all.deb
-	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-dpcpp-ct-2023.0.0-2023.0.0-25483_amd64.deb
-	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-dpcpp-ct-eclipse-cfg-2023.0.0-25483_all.deb
-	sha256sums = b10d895143588727a1d63541588104a944e78764f23fd21d8254158965924d6e
-	sha256sums = 9abf42b750fa6c656cddb15acbea8bd7e6d101bafe2cfc8c634bc4029618da65
+	noextract = intel-oneapi-dpcpp-ct-2023.1.0-2023.1.0-44450_amd64.deb
+	noextract = intel-oneapi-dpcpp-ct-eclipse-cfg-2023.1.0-44450_all.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-dpcpp-ct-2023.1.0-2023.1.0-44450_amd64.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-dpcpp-ct-eclipse-cfg-2023.1.0-44450_all.deb
+	sha256sums = 062a8186d07999286875f13de68b7516c10ed4466c408b03558b318e2cffa291
+	sha256sums = 0f0d427b2518e9498a94566eae6b32c9c8e41b12361ebf236846e8a57c302d44
 
 pkgname = intel-oneapi-dpcpp-ct
-	depends = intel-oneapi-common=2023.0.0
+	depends = intel-oneapi-common=2023.1.0
