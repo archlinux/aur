@@ -12,6 +12,9 @@ pkgbase = python2-cryptography
 	depends = python2-ipaddress
 	depends = python2-setuptools
 	depends = python2-asn1crypto
+	depends = glibc
+	depends = openssl-1.1
+	depends = python2
 	source = https://pypi.io/packages/source/c/cryptography/cryptography-3.3.2.tar.gz
 	sha512sums = 55f6ee13342b3209b1fcb310f4c4d33d22856ee785cb2347e6ad36c34e9b42f6e0d5bece8e458b09663a5b78e34c4567fe7a211b51ca71f55ccc93e3f62dc5e4
 
