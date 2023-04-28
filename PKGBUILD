@@ -3,8 +3,8 @@
 
 pkgname='python-runtype'
 _pkgname=${pkgname#python-}
-pkgver=0.3.0
-pkgrel=3
+pkgver=0.3.2
+pkgrel=1
 pkgdesc='Python utilities for run-time type validation and multiple dispatch'
 arch=('any')
 license=('MIT')
@@ -45,13 +45,13 @@ package() {
 }
 
 sha256sums=(
-  '451abd8830588558e4ff7c699dbb987e251cdc78a75267304923a938eac3c97d'
+  'd45d332e2e127660e4efb4d34ec72d087fd78cdfba6bf2a53da3afcccee71a21'
 )
 sha512sums=(
-  '61c79f6e7b1a4c34d3a56cd5933ed944d2b23bc22c2436897733c5d217a354555e7ad483d939129b99bd4f6718e3836035288d110f74ac341bb7907cbd1593de'
+  'd67616b86b6607585841fd4181f1c26dd19248baf2c2726290ba0f0c0a28622761bafac49e640c66a2bc29ba15c3f7193bd7de9cca1045858c29d40de06674cc'
 )
 b2sums=(
-  '420c6c49c1d228ad1d2870eaeb2ea14f1898a319e534dbe80b9b03eebc6200de5ff329e0597d7ee68ce63a792e3007802b3603813b37f68542499be6f75c7c87'
+  '07750cb177755e02b8c6f698bfb9f7f01c02ec1d8ebb4021e6a3fe447c1bb9a49488780b6b0a0b5fb24d0e4d8f9c8fb9605f555fe3183fe85409bd640833c701'
 )
 
 # eof
