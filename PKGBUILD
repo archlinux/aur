@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cellbaseR
-_pkgver=1.23.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.23.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Querying annotation data from the high performance Cellbase web'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-variantannotation
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b41a34445f09e58e5799a8122db82624f81c43bcb8ffd7ce7d3ad5b056da6684')
+sha256sums=('36b5b9d113d56888a0d17c0613df8eb4ceed4ce1800a03dfcd4fd2dcf19bebfe')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
