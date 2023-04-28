@@ -1,18 +1,24 @@
-From fc8646d39901b2eb2272ded9df2e7fdbfab13957 Mon Sep 17 00:00:00 2001
+From 431467bad477b8d9440ecf2a9374f69ed560a85e Mon Sep 17 00:00:00 2001
 From: Ewout van Mansom <ewout@vanmansom.name>
 Date: Mon, 24 Apr 2023 14:12:28 +0200
 Subject: [PATCH] add pkg-config file (#339)
 
 ---
- CMakeLists.txt                   |  7 +++++++
+ CMakeLists.txt                   |  9 ++++++++-
  tools/pkg-config/stumpless.pc.in | 10 ++++++++++
- 2 files changed, 17 insertions(+)
+ 2 files changed, 18 insertions(+), 1 deletion(-)
  create mode 100644 tools/pkg-config/stumpless.pc.in
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index c9946ce6..e51023c1 100644
+index c9946ce6..8de594ce 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.2.3)
++cmake_minimum_required(VERSION 3.12)
+ 
+ if(POLICY CMP0135)
+   cmake_policy(SET CMP0135 NEW)
 @@ -1000,6 +1000,13 @@ install(FILES
  
  include(tools/cmake/cpack.cmake)

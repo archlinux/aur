@@ -15,7 +15,7 @@ provides=('libstumpless' 'libstumpless.so')
 source=("${_projname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         'pr340.patch::https://patch-diff.githubusercontent.com/raw/goatshriek/stumpless/pull/340.patch')
 sha256sums=('f3eff944d81fdf82ffe5c0df6a8c692224140c9c322ffc3ba709218a66dc07ec'
-            '3805d35a70d0ae51fcef38cdf63e46ff68e2155ae2f0f045b599b4b10ecf5dc2')
+            'e0a76a2b036fecf493a6585ead1c7ae8501818a54202125771296b5e2456aa77')
 
 prepare() {
     cd "${_projname}-${pkgver}"
