@@ -1,0 +1,27 @@
+pkgbase = cdreaper
+	pkgdesc = CD ripper and encoder using Gtk3
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/Salamandar/Reaper
+	arch = x86_64
+	license = GPL2
+	makedepends = meson
+	makedepends = gettext
+	depends = gtk3
+	depends = glibc
+	depends = glib2
+	depends = libcddb
+	depends = cdparanoia
+	depends = hicolor-icon-theme
+	optdepends = lame: for mp3 support
+	optdepends = vorbis-tools: for ogg support
+	optdepends = fdkaac: for mp3 support
+	optdepends = flac: for flac support
+	optdepends = opus-tools: for opus support
+	optdepends = wavpack: for wavpack support
+	optdepends = musepack-tools: for musepack support
+	optdepends = mac: for monkey audio support
+	source = https://gitlab.gnome.org/Salamandar/Reaper/-/archive/v3.0.0/Reaper-v3.0.0.tar.bz2
+	sha256sums = 973db74d4300ce52e0ebfe4d5ed057cd7523033aa8b85c3f1bce439816b9d1c4
+
+pkgname = cdreaper
