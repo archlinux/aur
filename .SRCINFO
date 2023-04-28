@@ -5,6 +5,13 @@ pkgbase = python2-cryptography
 	url = https://pypi.python.org/pypi/cryptography
 	arch = x86_64
 	license = Apache
+	checkdepends = python2-setuptools
+	checkdepends = python2-pytest-runner
+	checkdepends = python2-pretend
+	checkdepends = python2-iso8601
+	checkdepends = python2-pytz
+	checkdepends = python2-hypothesis
+	checkdepends = python2-cryptography-vectors=3.3.2
 	makedepends = python2-setuptools
 	depends = python2-six
 	depends = python2-cffi
