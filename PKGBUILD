@@ -34,7 +34,7 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-  pkgver_commit=$(echo $pkgver | cut -c 5-)
+  pkgver_commit=$(echo $pkgver | cut -c 6-)
   git checkout $pkgver_commit
 }
 
