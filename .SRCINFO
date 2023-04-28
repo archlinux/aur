@@ -17,6 +17,6 @@ pkgbase = libstumpless
 	source = stumpless-2.1.0.tar.gz::https://github.com/goatshriek/stumpless/archive/refs/tags/v2.1.0.tar.gz
 	source = pr340.patch::https://patch-diff.githubusercontent.com/raw/goatshriek/stumpless/pull/340.patch
 	sha256sums = f3eff944d81fdf82ffe5c0df6a8c692224140c9c322ffc3ba709218a66dc07ec
-	sha256sums = 3805d35a70d0ae51fcef38cdf63e46ff68e2155ae2f0f045b599b4b10ecf5dc2
+	sha256sums = e0a76a2b036fecf493a6585ead1c7ae8501818a54202125771296b5e2456aa77
 
 pkgname = libstumpless
