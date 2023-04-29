@@ -1,8 +1,8 @@
 pkgbase = r-flowcl
 	pkgdesc = Semantic labelling of flow cytometric cell populations
 	pkgver = 1.35.0
-	pkgrel = 1
-	url = https://bioconductor.org/packages/flowCL
+	pkgrel = 4
+	url = https://bioconductor.org/packages/3.16/flowCL
 	arch = any
 	license = Artistic2.0
 	depends = r
@@ -11,7 +11,7 @@ pkgbase = r-flowcl
 	depends = r-sparql
 	optdepends = r-biocgenerics
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowCL_1.35.0.tar.gz
+	source = https://bioconductor.org/packages/3.16/bioc/src/contrib/flowCL_1.35.0.tar.gz
 	sha256sums = 48842e58df8ae0458185fafdc4dcf8aed72ac6805d6ba823b6a53e37ec07b9cb
 
 pkgname = r-flowcl

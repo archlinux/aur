@@ -4,10 +4,10 @@ _pkgname=flowCL
 _pkgver=1.35.0
 pkgname=r-${_pkgname,,}
 pkgver=1.35.0
-pkgrel=1
+pkgrel=4
 pkgdesc='Semantic labelling of flow cytometric cell populations'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.16/${_pkgname}"
 license=('Artistic2.0')
 depends=(
   r
@@ -19,7 +19,7 @@ optdepends=(
   r-biocgenerics
   r-runit
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.16/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('48842e58df8ae0458185fafdc4dcf8aed72ac6805d6ba823b6a53e37ec07b9cb')
 
 build() {
