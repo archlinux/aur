@@ -1,8 +1,8 @@
 pkgbase = r-scalign
 	pkgdesc = An alignment and integration method for single cell genomics
 	pkgver = 1.12.0
-	pkgrel = 1
-	url = https://bioconductor.org/packages/scAlign
+	pkgrel = 4
+	url = https://bioconductor.org/packages/3.16/scAlign
 	arch = any
 	license = GPL
 	depends = r
@@ -19,7 +19,7 @@ pkgbase = r-scalign
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scAlign_1.12.0.tar.gz
+	source = https://bioconductor.org/packages/3.16/bioc/src/contrib/scAlign_1.12.0.tar.gz
 	sha256sums = 8b620493a49103127dc5fd2c1f88b33a112b85dba77b568bd21ed6ec34ef90d6
 
 pkgname = r-scalign
