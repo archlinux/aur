@@ -4,7 +4,7 @@ _pkgname=epiNEM
 _pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=1.24.0
-pkgrel=1
+pkgrel=3
 pkgdesc='epiNEM'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -26,6 +26,7 @@ depends=(
 optdepends=(
   r-annotationhub
   r-biocgenerics
+  r-biocstyle
   r-devtools
   r-gosemsim
   r-knitr

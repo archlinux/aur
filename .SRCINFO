@@ -1,7 +1,7 @@
 pkgbase = r-epinem
 	pkgdesc = epiNEM
 	pkgver = 1.24.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/epiNEM
 	arch = any
 	license = GPL
@@ -19,6 +19,7 @@ pkgbase = r-epinem
 	depends = r-rcolorbrewer
 	optdepends = r-annotationhub
 	optdepends = r-biocgenerics
+	optdepends = r-biocstyle
 	optdepends = r-devtools
 	optdepends = r-gosemsim
 	optdepends = r-knitr
