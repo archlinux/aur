@@ -1,7 +1,7 @@
 # Maintainer: Hendrik Wolff <hendrik.wolff@agdsn.me>
 
 pkgname=shikane
-pkgver=0.1.0
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Dynamic output configuration tool for Wayland compositors"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://gitlab.com/w0lff/shikane"
 license=('MIT')
 makedepends=('cargo' 'pandoc')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('b7727bd9387e1368b4748f43936a786092669c61febc97c6120615cd9d960a64e8b003f6e1a342aa6202f8dbebc7b805c1808f8c8e3423949e60438a18161a75')
+sha512sums=('da2e2654468d1e79e53b44ce459e6d4ae3547d9d2f9a039d539956be69e30cc378c7df20e32fa449a273551170a1bb92402baa344589c5dc4da5c6567b7d75c5')
 
 prepare() {
     cd $pkgname-$pkgver
