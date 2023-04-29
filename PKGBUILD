@@ -4,7 +4,7 @@ _pkgname=ChIPseeker
 _pkgver=1.36.0
 pkgname=r-${_pkgname,,}
 pkgver=1.36.0
-pkgrel=1
+pkgrel=3
 pkgdesc='ChIPseeker for ChIP peak Annotation, Comparison, and Visualization'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -12,6 +12,7 @@ license=('Artistic2.0')
 depends=(
   r
   r-annotationdbi
+  r-aplot
   r-biocgenerics
   r-dplyr
   r-enrichplot
@@ -24,10 +25,11 @@ depends=(
   r-iranges
   r-magrittr
   r-plotrix
-  r-rcolorbrewer
   r-rtracklayer
   r-s4vectors
+  r-tibble
   r-txdb.hsapiens.ucsc.hg19.knowngene
+  r-yulab.utils
 )
 optdepends=(
   r-clusterprofiler
@@ -37,10 +39,10 @@ optdepends=(
   r-ggvenndiagram
   r-knitr
   r-org.hs.eg.db
+  r-prettydoc
   r-reactomepa
   r-rmarkdown
   r-testthat
-  r-tibble
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('15ef979055951915354b6120074d9e1aa6123f2243b1a8f3580bbd10d9f3cf5a')
