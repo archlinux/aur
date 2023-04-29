@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=synlet
-_pkgver=1.28.0
+_pkgver=2.0.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Hits Selection for Synthetic Lethal RNAi Screen Data'
 arch=('any')
@@ -11,21 +11,21 @@ url="https://bioconductor.org/packages/${_pkgname}"
 license=('GPL')
 depends=(
   r
-  r-doby
-  r-dplyr
+  r-data.table
   r-ggplot2
   r-magrittr
+  r-patchwork
   r-rankprod
   r-rcolorbrewer
-  r-reshape2
 )
 optdepends=(
+  r-biocstyle
   r-knitr
   r-rmarkdown
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a351c854f1781fdf4499d8108253f2f3e95c70e1feb22e59b7d086d11cff158a')
+sha256sums=('fd1bb47ea0299d4ceeefc29bff34227ff28f473c9f9423b00db2da20210ba9bb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
