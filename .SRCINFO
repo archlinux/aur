@@ -1,7 +1,7 @@
 pkgbase = r-timeomics
 	pkgdesc = Time-Course Multi-Omics data integration
 	pkgver = 1.12.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/timeOmics
 	arch = any
 	license = GPL
@@ -13,7 +13,6 @@ pkgbase = r-timeomics
 	depends = r-magrittr
 	depends = r-mixomics
 	depends = r-plyr
-	depends = r-propr
 	depends = r-purrr
 	depends = r-stringr
 	depends = r-tibble
