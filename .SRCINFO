@@ -1,7 +1,7 @@
 pkgbase = r-proda
 	pkgdesc = Differential Abundance Analysis of Label-Free Mass Spectrometry Data
 	pkgver = 1.14.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/proDA
 	arch = any
 	license = GPL
@@ -10,6 +10,7 @@ pkgbase = r-proda
 	depends = r-extradistr
 	depends = r-s4vectors
 	depends = r-summarizedexperiment
+	optdepends = r-biocstyle
 	optdepends = r-dep
 	optdepends = r-dplyr
 	optdepends = r-knitr

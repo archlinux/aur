@@ -4,7 +4,7 @@ _pkgname=proDA
 _pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=1.14.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Differential Abundance Analysis of Label-Free Mass Spectrometry Data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -17,6 +17,7 @@ depends=(
   r-summarizedexperiment
 )
 optdepends=(
+  r-biocstyle
   r-dep
   r-dplyr
   r-knitr
