@@ -1,13 +1,13 @@
 pkgbase = jaspersoftstudio
 	pkgdesc = Eclipse based Jasper Reports generator
-	pkgver = 6.20.1
+	pkgver = 6.20.3
 	pkgrel = 1
 	url = http://community.jaspersoft.com/project/jaspersoft-studio
 	arch = x86_64
 	license = Eclipse
 	depends = java-runtime
 	depends = gtk2
-	source_x86_64 = https://sourceforge.net/projects/jasperstudio/files/JaspersoftStudio-6.20.1/js-studiocomm_6.20.1_linux_x86_64.tgz
-	md5sums_x86_64 = d77dec170c9f2fc28d0dbf9b9d348c81
+	source_x86_64 = https://sourceforge.net/projects/jasperstudio/files/JaspersoftStudio-6.20.3/js-studiocomm_6.20.3_linux_x86_64.tgz
+	md5sums_x86_64 = a94266273c58b7e35d1217842698033f
 
 pkgname = jaspersoftstudio

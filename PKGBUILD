@@ -3,7 +3,7 @@
 pkgname=jaspersoftstudio
 _pkgname=JaspersoftStudio
 _binname="Jaspersoft Studio"
-pkgver=6.20.1
+pkgver=6.20.3
 pkgrel=1
 pkgdesc="Eclipse based Jasper Reports generator"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="http://community.jaspersoft.com/project/jaspersoft-studio"
 license=('Eclipse')
 depends=('java-runtime' 'gtk2')
 source_x86_64=("https://sourceforge.net/projects/jasperstudio/files/JaspersoftStudio-${pkgver}/js-studiocomm_${pkgver}_linux_x86_64.tgz")
-md5sums_x86_64=('d77dec170c9f2fc28d0dbf9b9d348c81')
+md5sums_x86_64=('a94266273c58b7e35d1217842698033f')
 
 package() {
 install -d -m 0755 ${pkgdir}/opt/${pkgname}
