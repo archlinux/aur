@@ -4,7 +4,7 @@ _pkgname=flowTime
 _pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=1.24.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Annotation and analysis of biological dynamical systems using flow cytometry'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -21,8 +21,12 @@ depends=(
 optdepends=(
   r-biocgenerics
   r-flowclust
+  r-flowstats
+  r-flowviz
+  r-ggcyto
   r-ggplot2
   r-knitr
+  r-opencyto
   r-rmarkdown
   r-stats
 )
