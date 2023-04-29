@@ -1,7 +1,7 @@
 pkgbase = crackle-git
 	pkgdesc = Crack and decrypt BLE encryption
 	pkgver = 0.1.r86.gd83b4b6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://lacklustre.net/projects/crackle/
 	arch = i686
 	arch = x86_64

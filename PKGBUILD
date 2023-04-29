@@ -2,7 +2,7 @@
 
 pkgname=crackle-git
 pkgver=0.1.r86.gd83b4b6
-pkgrel=1
+pkgrel=2
 pkgdesc="Crack and decrypt BLE encryption"
 arch=('i686' 'x86_64')
 url="http://lacklustre.net/projects/crackle/"
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 build() {
