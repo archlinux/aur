@@ -1,4 +1,4 @@
-# Maintainer: Nicolas Martyanoff <khaelin@gmail.com>
+# Maintainer: Nicolas Martyanoff <nicolas@n16f.net>
 
 pkgname="k3s-bin"
 pkgver="1.26.1+k3s1"
