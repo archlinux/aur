@@ -4,7 +4,7 @@ _pkgname=UniProt.ws
 _pkgver=2.40.0
 pkgname=r-${_pkgname,,}
 pkgver=2.40.0
-pkgrel=1
+pkgrel=3
 pkgdesc='R Interface to UniProt Web Services'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -25,6 +25,7 @@ depends=(
 optdepends=(
   r-biocstyle
   r-knitr
+  r-rmarkdown
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
