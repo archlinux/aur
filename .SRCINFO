@@ -1,6 +1,6 @@
 pkgbase = r-condiments
 	pkgdesc = Differential Topology, Progression and Differentiation
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/condiments
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = r-condiments
 	optdepends = r-tidyr
 	optdepends = r-tscan
 	optdepends = r-viridis
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/condiments_1.6.0.tar.gz
-	sha256sums = 7c705ee4747916d3dc0e778382f9bd23c2008c78f1e824b8e5df467279b6c171
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/condiments_1.8.0.tar.gz
+	sha256sums = 435275d6a6d94cabc43a38e0c74b96f11b61231f80b7cbee2f246e899421c7da
 
 pkgname = r-condiments
