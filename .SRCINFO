@@ -1,6 +1,6 @@
 pkgbase = r-diffutr
 	pkgdesc = diffUTR: Streamlining differential exon and 3' UTR usage
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/diffUTR
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-diffutr
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/diffUTR_1.6.0.tar.gz
-	sha256sums = 9a7c53689c469c896c4774cc4eeedcc1a120c4a24d407654be44f96933739780
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/diffUTR_1.8.0.tar.gz
+	sha256sums = de8399bfe58b86c0a98dd55242588d29744d9bd9135ae474e346f65fa9fb34d8
 
 pkgname = r-diffutr
