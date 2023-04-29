@@ -4,7 +4,7 @@ _pkgname=qsea
 _pkgver=1.26.0
 pkgname=r-${_pkgname,,}
 pkgver=1.26.0
-pkgrel=1
+pkgrel=3
 pkgdesc='IP-seq data analysis and vizualization'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -23,6 +23,7 @@ depends=(
   r-limma
   r-rsamtools
   r-rtracklayer
+  r-s4vectors
   r-zoo
 )
 optdepends=(
