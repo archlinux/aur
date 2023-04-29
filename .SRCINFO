@@ -1,7 +1,7 @@
 pkgbase = r-bioconcotk
 	pkgdesc = Bioconductor components for general cancer genomics
 	pkgver = 1.20.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/BiocOncoTK
 	arch = any
 	license = Artistic2.0
@@ -29,6 +29,7 @@ pkgbase = r-bioconcotk
 	depends = r-shiny
 	depends = r-summarizedexperiment
 	optdepends = r-annotationdbi
+	optdepends = r-annotationhub
 	optdepends = r-biobase
 	optdepends = r-biocfilecache
 	optdepends = r-biocstyle
