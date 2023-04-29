@@ -3,8 +3,8 @@
 
 pkgname=python-pyhanko
 _name=pyHanko
-pkgver=0.17.2
-pkgrel=3
+pkgver=0.18.1
+pkgrel=1
 pkgdesc="Tools for stamping and signing PDF files"
 url="https://github.com/MatthiasValvekens/pyHanko"
 license=(MIT)
@@ -28,7 +28,6 @@ depends=(
   python-pillow
   python-pyhanko-certvalidator
   python-python-pkcs11
-  python-pytz
   python-pyyaml
   python-qrcode
   python-tzlocal
@@ -39,33 +38,28 @@ optdepends=(
   'python-defusedxml: to use XMP'
   'python-barcode: for image support'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('c1733e3375dc425e585d76f0db7f101d64b944474a4e71b16f5692e2e19b4cc0')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('906ce67c1ab71ec67f2ab1412298575ba0f2acadb2fe846eb87b13529ac53e8c')
 
 _archive="$_name-$pkgver"
 
 build() {
   cd "$_archive"
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
   cd "$_archive"
 
   python -m pytest \
-    --ignore pyhanko_tests/test_csc.py \
-    -k "\
-      not test_ts_fetch_aiohttp \
-      and not test_ac_attr_validation_holder_mismatch \
-    "
+    --ignore pyhanko_tests/test_csc.py
 }
 
 package() {
   cd "$_archive"
 
-  export PYTHONHASHSEED=0
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
