@@ -1,7 +1,7 @@
 pkgbase = r-spatzie
 	pkgdesc = Identification of enriched motif pairs from chromatin interaction data
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/spatzie
 	arch = any
 	license = GPL
@@ -14,6 +14,7 @@ pkgbase = r-spatzie
 	depends = r-genomicranges
 	depends = r-ggplot2
 	depends = r-iranges
+	depends = r-matrixgenerics
 	depends = r-matrixstats
 	depends = r-motifmatchr
 	depends = r-s4vectors

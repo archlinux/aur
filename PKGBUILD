@@ -4,7 +4,7 @@ _pkgname=spatzie
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Identification of enriched motif pairs from chromatin interaction data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -19,6 +19,7 @@ depends=(
   r-genomicranges
   r-ggplot2
   r-iranges
+  r-matrixgenerics
   r-matrixstats
   r-motifmatchr
   r-s4vectors
