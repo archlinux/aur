@@ -1,7 +1,7 @@
 pkgbase = vacuum
 	pkgdesc = fast, lightweight OpenAPI linter and quality checking tool
 	pkgver = 0.0.55
-	pkgrel = 1
+	pkgrel = 2
 	url = https://quobix.com/vacuum/
 	arch = aarch64
 	arch = i686
