@@ -9,6 +9,7 @@ pkgbase = lact
 	makedepends = rust
 	depends = gtk4
 	depends = hwdata
+	depends = clang
 	source = lact-0.4.2.tar.gz::https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v0.4.2.tar.gz
 	sha256sums = b5b5da66c1c151460ef56cf0a289b0eb126e4615e7ee2ded915cdc1dadff6184
 

@@ -6,7 +6,7 @@ license=("MIT")
 pkgdesc="AMDGPU Controller application"
 url="https://github.com/ilya-zlobintsev/LACT"
 makedepends=("rust")
-depends=("gtk4" "hwdata")
+depends=("gtk4" "hwdata" "clang")
 arch=('x86_64' 'aarch64')
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v${pkgver}.tar.gz")
