@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sangerseqR
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='Tools for Sanger Sequencing Data in R'
 arch=('any')
@@ -13,6 +13,7 @@ depends=(
   r
   r-biostrings
   r-shiny
+  r-stringr
 )
 optdepends=(
   r-biocgenerics
@@ -21,7 +22,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bc0e635a56f44420a4504e1b711ff07bb60355b83cfe17f020e72b4438ee1fc5')
+sha256sums=('0b3be89c8cff15e3381a286ce914ceb461801c21159c919b4d2d6bd2f52f1842')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
