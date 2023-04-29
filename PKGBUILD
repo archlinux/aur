@@ -4,7 +4,7 @@
 
 pkgname=openmw-git
 pkgver=0.48.0.rc9.r1887.g9f653b2a79
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64' 'aarch64')
 url="http://www.openmw.org"
@@ -33,9 +33,10 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname%-git}"
   cmake \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-        -DOPENMW_USE_SYSTEM_RECASTNAVIGATION=ON
+        -D CMAKE_INSTALL_PREFIX=/usr \
+        -D CMAKE_BUILD_TYPE=RelWithDebInfo \
+        -D OPENMW_USE_SYSTEM_RECASTNAVIGATION=ON \
+        -D LICDIR=/usr/share/licenses/${pkgname}
   make
 }
 
