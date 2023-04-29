@@ -4,7 +4,7 @@ _pkgname=epistack
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Heatmaps of Stack Profiles from Epigenetic Signals'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -16,7 +16,6 @@ depends=(
   r-iranges
   r-plotrix
   r-s4vectors
-  r-viridislite
   r-summarizedexperiment
 )
 optdepends=(
