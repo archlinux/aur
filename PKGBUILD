@@ -4,9 +4,9 @@ _pkgname=PharmacoGx
 _pkgver=3.4.0
 pkgname=r-${_pkgname,,}
 pkgver=3.4.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Analysis of Large-Scale Pharmacogenomic Data'
-arch=('any')
+arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('Artistic2.0')
 depends=(
@@ -37,6 +37,7 @@ optdepends=(
   r-knitr
   r-markdown
   r-pander
+  r-r.utils
   r-rmarkdown
   r-testthat
 )
