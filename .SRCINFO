@@ -1,6 +1,6 @@
 pkgbase = r-methylaid
 	pkgdesc = Visual and interactive quality control of large Illumina DNA Methylation array data sets
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MethylAid
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = r-methylaid
 	optdepends = r-minfidata
 	optdepends = r-minfidataepic
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MethylAid_1.32.0.tar.gz
-	sha256sums = 731b70d5ab260062576c88d1113658479c826e62eefd0d9f2cfb67b4e4e6eecf
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MethylAid_1.34.0.tar.gz
+	sha256sums = d8147861055c119141681e887962ed5da190384808f36517d53cc783d841dcbb
 
 pkgname = r-methylaid
