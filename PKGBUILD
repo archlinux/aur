@@ -4,7 +4,7 @@ _pkgname=PoDCall
 _pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=1.8.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Positive Droplet Calling for DNA Methylation Droplet Digital PCR'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -24,6 +24,7 @@ depends=(
   r-shinyjs
 )
 optdepends=(
+  r-biocstyle
   r-knitr
   r-rmarkdown
   r-testthat

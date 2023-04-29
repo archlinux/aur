@@ -1,7 +1,7 @@
 pkgbase = r-podcall
 	pkgdesc = Positive Droplet Calling for DNA Methylation Droplet Digital PCR
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/PoDCall
 	arch = any
 	license = GPL
@@ -17,6 +17,7 @@ pkgbase = r-podcall
 	depends = r-rlist
 	depends = r-shiny
 	depends = r-shinyjs
+	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
