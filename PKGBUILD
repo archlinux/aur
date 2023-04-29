@@ -1,8 +1,8 @@
 # Maintainer: Adrian Lopez <zeioth@hotmail.com>
 pkgname=fzf-kill
 _pkgname=fzf-kill
-pkgver=1.4.2
-pkgrel=11
+pkgver=1.4.3
+pkgrel=12
 pkgdesc="kill -9 with fzf"
 arch=(any)
 url="https://github.com/Zeioth/fzf-kill.git"
