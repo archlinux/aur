@@ -1,7 +1,7 @@
 pkgbase = r-sponge
 	pkgdesc = Sparse Partial Correlations On Gene Expression
 	pkgver = 1.22.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/SPONGE
 	arch = any
 	license = GPL
@@ -38,6 +38,7 @@ pkgbase = r-sponge
 	optdepends = r-doparallel
 	optdepends = r-ggrepel
 	optdepends = r-gridextra
+	optdepends = r-gsva
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
