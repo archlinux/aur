@@ -1,4 +1,4 @@
-# Maintainer : AntMan666 <945360554@qq.com>
+# Maintainer : AntMan666 <antman666@qq.com>
 # Contributor: zhullyb <zhullyb@outlook.com>
 # Contributor: Yeqin Su <hougelangley1987@gmail.com>
 # Contributor: Joan Figueras <ffigue at gmail dot com>
@@ -101,8 +101,8 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-tt-uksm-cjktty
-_major=6.1
-pkgver=${_major}.8
+_major=6.3
+pkgver=${_major}.0
 _branch=6.x
 xanmod=1
 pkgrel=${xanmod}
@@ -161,7 +161,6 @@ prepare() {
   patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}-tt
 
   msg2 "Setting version..."
-  scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux-xanmod}" > localversion.20-pkgname
 
@@ -378,7 +377,6 @@ prepare() {
     fi
   fi
 
-  scripts/config --disable CONFIG_X86_X32
   scripts/config --disable CONFIG_STACKPROTECTOR_STRONG
   scripts/config --enable CONFIG_WINESYNC
 
@@ -437,7 +435,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The Linux kernel and modules with Xanmod patches"
+  pkgdesc="The Linux kernel and modules with Xanmod, TaskType, cjktty etc. patches"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
@@ -445,6 +443,7 @@ _package() {
             WIREGUARD-MODULE
             KSMBD-MODULE
             NTFS3-MODULE)
+  install=kernel.install
 
   cd linux-${_major}
   local kernver="$(<version)"

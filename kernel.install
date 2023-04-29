@@ -1,0 +1,17 @@
+#!/bin/bash
+
+post_install() {
+    if [ $(nproc --all) -lt 4 ]; then
+        echo "I noticed that your CPU core(s) is(are) less than or equal 4, so it's good to set kernel.sched_tt_balancer_opt=1"
+    else
+        echo "I noticed that your CPU cores are more than 4, so it's good to set kernel.sched_tt_balancer_opt=0"
+    fi
+}
+
+post_upgrade() {
+    if [ $(nproc --all) -lt 4 ]; then
+        echo "I noticed that your CPU core(s) is(are) less than or equal 4, so it's good to set kernel.sched_tt_balancer_opt=1"
+    else
+        echo "I noticed that your CPU cores are more than 4, so it's good to set kernel.sched_tt_balancer_opt=0"
+    fi
+}
