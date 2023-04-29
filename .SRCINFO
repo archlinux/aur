@@ -1,6 +1,6 @@
 pkgbase = r-bionero
 	pkgdesc = Biological Network Reconstruction Omnibus
-	pkgver = 1.6.1
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BioNERO
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = r-bionero
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BioNERO_1.6.1.tar.gz
-	sha256sums = 545ba1552799e5c079a134547ccc30b0c71c01364d02f4f5e3fe3f3608b54d46
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BioNERO_1.8.0.tar.gz
+	sha256sums = 6c7f2c3c1e57233449ea2f212a38769a7638968d11cea5817d2439192bd9631c
 
 pkgname = r-bionero
