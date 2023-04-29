@@ -1,3 +1,5 @@
+# Maintainer: Julian <juliannfairfax@protonmail.com>
+
 pkgname=flare
 pkgver=0.7.2
 pkgrel=1
