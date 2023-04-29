@@ -4,7 +4,7 @@ _pkgname=qPLEXanalyzer
 _pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=1.18.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Tools for qPLEX-RIME data analysis'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -38,6 +38,7 @@ optdepends=(
   r-knitr
   r-qplexdata
   r-rmarkdown
+  r-statmod
   r-testthat
   r-uniprot.ws
   r-vdiffr

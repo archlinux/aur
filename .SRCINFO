@@ -1,7 +1,7 @@
 pkgbase = r-qplexanalyzer
 	pkgdesc = Tools for qPLEX-RIME data analysis
 	pkgver = 1.18.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/qPLEXanalyzer
 	arch = any
 	license = GPL
@@ -31,6 +31,7 @@ pkgbase = r-qplexanalyzer
 	optdepends = r-knitr
 	optdepends = r-qplexdata
 	optdepends = r-rmarkdown
+	optdepends = r-statmod
 	optdepends = r-testthat
 	optdepends = r-uniprot.ws
 	optdepends = r-vdiffr
