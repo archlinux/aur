@@ -3,7 +3,7 @@
 _pkgname=cvTools
 _pkgver=0.3.2
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Cross-validation tools for regression models'
 arch=('any')
