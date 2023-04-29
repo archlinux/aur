@@ -1,0 +1,17 @@
+pkgbase = libsequoia-git
+	pkgdesc = A library for loop-based MIDI step sequencing for JACK applications
+	pkgver = r157.81b0e8f
+	pkgrel = 1
+	url = https://github.com/chronopoulos/libsequoia
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = jack
+	depends = json-c
+	provides = libsequoia
+	conflicts = libsequoia
+	source = libsequoia::git+https://github.com/chronopoulos/libsequoia.git
+	sha256sums = SKIP
+
+pkgname = libsequoia-git
