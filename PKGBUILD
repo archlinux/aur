@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GOstats
-_pkgver=2.64.0
+_pkgver=2.66.0
 pkgname=r-${_pkgname,,}
-pkgver=2.64.0
+pkgver=2.66.0
 pkgrel=1
 pkgdesc='Tools for manipulating GO and microarrays'
 arch=('any')
@@ -24,10 +24,12 @@ depends=(
 optdepends=(
   r-all
   r-biocgenerics
+  r-biocstyle
   r-genefilter
   r-geneplotter
   r-gseabase
   r-hgu95av2.db
+  r-knitr
   r-multtest
   r-org.hs.eg.db
   r-rcolorbrewer
@@ -36,7 +38,7 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('dadb1b988a81fa24a972ed2f1227c0cda4c425529fe74ced939d5b84a7f3901d')
+sha256sums=('30dc69be9661579a917de8922e198011be03a822286733f81b5490fb03934cca')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
