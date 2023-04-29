@@ -5,10 +5,10 @@ _pkgname=RNASeqR
 _pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=1.16.0
-pkgrel=1
+pkgrel=4
 pkgdesc='RNASeqR: an R package for automated two-group RNA-Seq analysis workflow'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.16/${_pkgname}"
 license=('Artistic2.0')
 depends=(
   r
