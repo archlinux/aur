@@ -2,7 +2,7 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=valent-git
 pkgver=r1004.1cae541a
-pkgrel=1
+pkgrel=2
 pkgdesc="Connect, control and sync devices"
 arch=('x86_64')
 url="https://valent.andyholmes.ca"
@@ -15,8 +15,7 @@ checkdepends=('appstream')
 #checkdepends+=('walbottle') # -Dtests=true (for JSON tests)
 provides=('libvalent-1.so=1.0.0')
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}" 'gnome-shell-extension-valent-git')
-replaces=('gnome-shell-extension-valent-git')
+conflicts=("${pkgname%-git}")
 source=('git+https://github.com/andyholmes/valent.git'
         'git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git')
 sha256sums=('SKIP'
