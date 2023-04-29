@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=nullranges
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
-pkgrel=3
+pkgver=1.6.0
+pkgrel=1
 pkgdesc='Generation of null ranges via bootstrapping or covariate matching'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -24,29 +24,32 @@ depends=(
   r-rlang
   r-s4vectors
   r-scales
-  r-speedglm
 )
 optdepends=(
   r-annotationhub
+  r-bsgenome.hsapiens.ucsc.hg38
   r-cobalt
+  r-diagrammer
   r-dnacopy
+  r-dplyr
   r-ensdb.hsapiens.v86
   r-ensembldb
   r-excluderanges
   r-experimenthub
   r-knitr
   r-magrittr
-  r-microbenchmark
   r-nullrangesdata
   r-patchwork
   r-plotgardener
+  r-purrr
   r-rcpphmm
   r-rmarkdown
   r-testthat
   r-tidyr
+  r-tidysummarizedexperiment
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('44b19975892a0b1d5c90a24edba72874f90adc967a952b40d420be6f53eac705')
+sha256sums=('2788390f9b2d2975655fc5a3de691d3838274083036a0cbd89e99dd043ca9dd4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
