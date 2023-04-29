@@ -1,7 +1,7 @@
 pkgbase = gdrive-git
-	pkgdesc = Google Drive CLI Client (Rust rewrite, git version)
+	pkgdesc = Google Drive CLI Client (Rust rewrite)
 	pkgver = 3.9.0.r2.g57e5ea6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/glotlabs/gdrive
 	arch = x86_64
 	arch = aarch64
