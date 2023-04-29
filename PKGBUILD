@@ -1,7 +1,7 @@
 # Maintainer: MrDuartePT <gonegrier.duarte@gmail.com>
 # Maintainer: johnfanv2 <https://github.com/johnfanv2>
-_pkgname=lenovolegionlinux-dkms
-pkgname=${_pkgname}-git
+_pkgname=lenovolegionlinux
+pkgname=${_pkgname}-dkms-git
 pkgver=r255.84de130
 pkgrel=1
 pkgdesc="LenovoLegionLinux (LLL) DKMS module"
