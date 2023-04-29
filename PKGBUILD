@@ -4,7 +4,7 @@ _pkgname=tradeSeq
 _pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=1.14.0
-pkgrel=1
+pkgrel=3
 pkgdesc='trajectory-based differential expression analysis for sequencing data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -32,6 +32,7 @@ depends=(
 optdepends=(
   r-clusterexperiment
   r-covr
+  r-delayedmatrixstats
   r-knitr
   r-rmarkdown
   r-testthat

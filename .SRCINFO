@@ -1,7 +1,7 @@
 pkgbase = r-tradeseq
 	pkgdesc = trajectory-based differential expression analysis for sequencing data
 	pkgver = 1.14.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/tradeSeq
 	arch = any
 	license = MIT
@@ -25,6 +25,7 @@ pkgbase = r-tradeseq
 	depends = r-viridis
 	optdepends = r-clusterexperiment
 	optdepends = r-covr
+	optdepends = r-delayedmatrixstats
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
