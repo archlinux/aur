@@ -5,18 +5,25 @@ Subject: [PATCH] HACK: Don't run fuzzing tests
 
 They take way too long.
 ---
- Makefile.am | 1 -
- 1 file changed, 1 deletion(-)
+ Makefile.am | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/Makefile.am b/Makefile.am
-index a5627280f28b..cc1a85a32047 100644
+index 316109b16148..3ef672fe911f 100644
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -7,7 +7,6 @@ if WITH_PYTHON
+@@ -2,12 +2,12 @@
+ 
+ ACLOCAL_AMFLAGS = -I m4
+ 
+-SUBDIRS = include . doc example fuzz xstc
++SUBDIRS = include . doc example xstc
+ if WITH_PYTHON
  SUBDIRS += python
  endif
- if WITH_GLOB
--SUBDIRS += fuzz
- endif
  
- DIST_SUBDIRS = include . doc example fuzz python xstc
+-DIST_SUBDIRS = include . doc example fuzz python xstc
++DIST_SUBDIRS = include . doc example python xstc
+ 
+ AM_CPPFLAGS = -I$(top_builddir)/include -I$(srcdir)/include -DSYSCONFDIR='"$(sysconfdir)"'
+ 
