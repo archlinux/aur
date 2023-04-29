@@ -4,7 +4,7 @@ _pkgname=CNORfeeder
 _pkgver=1.40.0
 pkgname=r-${_pkgname,,}
 pkgver=1.40.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Integration of CellNOptR to add missing links'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -16,7 +16,6 @@ depends=(
 )
 optdepends=(
   r-biocgenerics
-  r-catnet
   r-igraph
   r-meigor
   r-minet
