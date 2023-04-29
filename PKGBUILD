@@ -4,7 +4,7 @@ _pkgname=tidySingleCellExperiment
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=1.10.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Brings SingleCellExperiment to the Tidyverse'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -30,6 +30,7 @@ depends=(
   r-tidyr
   r-tidyselect
   r-ttservice
+  r-vctrs
 )
 optdepends=(
   r-biocstyle
@@ -40,7 +41,6 @@ optdepends=(
   r-igraph
   r-knitr
   r-markdown
-  r-matrix
   r-scater
   r-scran
   r-singlecellsignalr
