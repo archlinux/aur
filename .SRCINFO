@@ -1,6 +1,6 @@
 pkgbase = cellframe-node
 	pkgdesc = Cellframe blockchain node with a powerful SDK
-	pkgver = 5.1.388
+	pkgver = 5.1.390
 	pkgrel = 1
 	url = https://cellframe.net
 	install = cellframe-node.install
@@ -18,9 +18,9 @@ pkgbase = cellframe-node
 	options = !buildflags
 	options = !makeflags
 	backup = opt/cellframe-node/etc/cellframe-node.cfg
-	source = git+https://gitlab.demlabs.net/cellframe/cellframe-node.git#commit=d3c561d6c79bb162ac10e81a579d85daa61f383c
-	source = git+https://gitlab.demlabs.net/cellframe/cellframe-sdk.git#commit=01036c1e44cb32d2d6dd5f9404f87cd105c7f77f
-	source = git+https://gitlab.demlabs.net/cellframe/python-cellframe.git#commit=b83e4ee667a4d60d7ce8d2c63da2403e3c5f522e
+	source = git+https://gitlab.demlabs.net/cellframe/cellframe-node.git#commit=1053be5c3599a13d8f4d9190e81a9bd38e5f164b
+	source = git+https://gitlab.demlabs.net/cellframe/cellframe-sdk.git#commit=a715021231b2f147495a59cc72b7c95de7dee2a7
+	source = git+https://gitlab.demlabs.net/cellframe/python-cellframe.git#commit=65a5fa44a4db0e5de7d5df740ce06de027c6c29b
 	source = cellframe-node.cfg
 	source = Backbone.cfg
 	source = kelvpn-minkowski.cfg
@@ -33,8 +33,8 @@ pkgbase = cellframe-node
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = 47f1aa606f2b91d4dfbc22ea263d540a
-	md5sums = 65a864051d256b08d656079d1c6fa7af
-	md5sums = 3509a0da9090e05a8b46087a13d93dcd
+	md5sums = bdb3e59a8487196036c22a02d1184214
+	md5sums = 1cb6e993aa362a71782764a8d2523c8d
 	md5sums = f5bc95f5f8915d074c66398b2acb0907
 	md5sums = be8dc9bddf5354074993df8377da03a4
 	md5sums = f6fa69bc2e3896fda661c84d2a2c3192
