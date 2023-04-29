@@ -1,6 +1,6 @@
 pkgbase = aws-c-common-git
 	pkgdesc = AWS SDK for C++
-	pkgver = 0.7.4.r2.g5fa42756
+	pkgver = 0.8.19.r1.g9848a8cf
 	pkgrel = 1
 	url = https://github.com/awslabs/aws-c-common
 	arch = x86_64
