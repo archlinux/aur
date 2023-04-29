@@ -4,7 +4,7 @@ _pkgname=cliProfiler
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='A package for the CLIP data visualization'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -22,6 +22,7 @@ depends=(
 optdepends=(
   r-biocstyle
   r-bookdown
+  r-bsgenome.mmusculus.ucsc.mm10
   r-knitr
   r-rmarkdown
   r-testthat
