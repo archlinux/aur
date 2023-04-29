@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=aws-c-io-git
-pkgver=0.11.2.r0.g8b93aae
+pkgver=0.13.21.r3.g4dc663c0
 pkgrel=1
 pkgdesc='AWS SDK module to handle all IO and TLS work for application protocols'
 arch=(x86_64)
