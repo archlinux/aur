@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=categoryCompare
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.42.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc='Meta-analysis of high-throughput experiments using feature annotations'
 arch=('any')
@@ -37,7 +37,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('919526463c37cbe051e4449d19580dc03d0d0a99bfaa0fc6a29397a1679133d5')
+sha256sums=('2e86f3af4291149458913c676960ddd11851dec797ef3bb4cdd5b50c33afbbed')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
