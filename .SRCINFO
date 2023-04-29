@@ -1,8 +1,8 @@
 pkgbase = r-trare
 	pkgdesc = Transcriptional Rewiring
 	pkgver = 1.5.0
-	pkgrel = 1
-	url = https://bioconductor.org/packages/TraRe
+	pkgrel = 4
+	url = https://bioconductor.org/packages/3.16/TraRe
 	arch = any
 	license = MIT
 	depends = r
@@ -24,7 +24,7 @@ pkgbase = r-trare
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/TraRe_1.5.0.tar.gz
+	source = https://bioconductor.org/packages/3.16/bioc/src/contrib/TraRe_1.5.0.tar.gz
 	sha256sums = 2ca6b5337fc801cfa6dabf80c50c89844325979cc626e5236ca52ac9c5cc851b
 
 pkgname = r-trare
