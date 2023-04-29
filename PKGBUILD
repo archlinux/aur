@@ -38,12 +38,14 @@ build() {
 	python setup.py build
 }
 package() {
+	mkdir -p $pkgdir/usr/src/$_pkgname-1.0.0
+	mkdir -p $pkgdir/etc/pacman.d/hooks
 	cd "${srcdir}/${_pkgname}/kernel_module/"
-	install -dDm644 dkms.conf ${pkgdir}/usr/src/$_pkgname-1.0.0/dkms.conf
+	install -Dm644 dkms.conf ${pkgdir}/usr/src/$_pkgname-1.0.0/dkms.conf
 	cp -r {issue-warning.sh,legion-laptop-unused-snippets.c,legion-laptop.c,Makefile} ${pkgdir}/usr/src/$_pkgname-1.0.0/
 
 	cd "${srcdir}/${_pkgname}/deploy/"
-	install -dDm644 LenovoLegionLinux.hook ${pkgdir}/etc/pacman.d/hooks/LenovoLegionLinux.hook
+	install -Dm644 LenovoLegionLinux.hook ${pkgdir}/etc/pacman.d/hooks/LenovoLegionLinux.hook
 
 	mv ${pkgdir}/usr/bin ${pkgdir}/usr/local/ #move from /usr/bin to /usr/local/bin (for legion_gui.desktop to work)
 }
