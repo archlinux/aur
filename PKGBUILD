@@ -19,5 +19,8 @@ build() {
 package() {
   cd "$srcdir/omniORBpy-$pkgver"
   make DESTDIR="$pkgdir" install
+
+  # remove conflicting files
+  rm -r "$pkgdir"/usr/lib/*/site-packages/omniidl_be/
 }
 
