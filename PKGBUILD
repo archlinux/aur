@@ -4,7 +4,7 @@ _pkgname=sesame
 _pkgver=1.18.3
 pkgname=r-${_pkgname,,}
 pkgver=1.18.3
-pkgrel=1
+pkgrel=3
 pkgdesc='SEnsible Step-wise Analysis of DNA MEthylation BeadChips'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -35,6 +35,7 @@ optdepends=(
   r-e1071
   r-ggrepel
   r-grdevices
+  r-kernsmooth
   r-knitr
   r-pals
   r-randomforest
