@@ -4,7 +4,7 @@ _pkgname=TRONCO
 _pkgver=2.32.0
 pkgname=r-${_pkgname,,}
 pkgver=2.32.0
-pkgrel=1
+pkgrel=3
 pkgdesc='TRONCO, an R package for TRanslational ONCOlogy'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -30,6 +30,7 @@ optdepends=(
   r-biocgenerics
   r-biocstyle
   r-knitr
+  r-magick
   r-rwikipathways
   r-testthat
 )
