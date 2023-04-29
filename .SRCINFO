@@ -1,7 +1,7 @@
 pkgbase = tangram
 	pkgdesc = Browser for your pinned tabs
-	pkgver = 2.0
-	pkgrel = 2
+	pkgver = 3.0
+	pkgrel = 1
 	url = https://apps.gnome.org/app/re.sonny.Tangram
 	arch = any
 	license = GPL3
@@ -13,7 +13,7 @@ pkgbase = tangram
 	depends = libadwaita
 	depends = webkit2gtk-5.0
 	optdepends = gst-plugins-bad: May be necessary for some websites
-	source = git+https://github.com/sonnyp/Tangram.git#commit=d2e9ecf74ba2e7348799f4e89cd80e18bb68a7fd
+	source = git+https://github.com/sonnyp/Tangram.git#commit=792f6aa0f392f0355c8e66925a19ba6992e53670
 	source = git+https://github.com/sonnyp/troll.git
 	sha256sums = SKIP
 	sha256sums = SKIP

@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Sonny Piers <sonny at fastmail dot net>
 pkgname=tangram
-pkgver=2.0
-pkgrel=2
+pkgver=3.0
+pkgrel=1
 pkgdesc="Browser for your pinned tabs"
 arch=('any')
 url="https://apps.gnome.org/app/re.sonny.Tangram"
@@ -11,7 +11,7 @@ depends=('gjs' 'libadwaita' 'webkit2gtk-5.0')
 makedepends=('git' 'blueprint-compiler' 'meson')
 checkdepends=('appstream-glib')
 optdepends=('gst-plugins-bad: May be necessary for some websites')
-_commit=d2e9ecf74ba2e7348799f4e89cd80e18bb68a7fd  # tags/v2.0
+_commit=792f6aa0f392f0355c8e66925a19ba6992e53670  # tags/v3.0
 source=("git+https://github.com/sonnyp/Tangram.git#commit=${_commit}"
         'git+https://github.com/sonnyp/troll.git')
 sha256sums=('SKIP'
