@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GISPA
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='GISPA: Method for Gene Integrated Set Profile Analysis'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('79fb3bf79555f016818c13f1e31f830e5ee219cbc4a59cb65b18869371448448')
+sha256sums=('df2aba8a72999e7a2f22ae133666109c80461f36c4d99a940fc215c064b5a056')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

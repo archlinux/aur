@@ -1,6 +1,6 @@
 pkgbase = r-gispa
 	pkgdesc = GISPA: Method for Gene Integrated Set Profile Analysis
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GISPA
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-gispa
 	depends = r-plyr
 	depends = r-scatterplot3d
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GISPA_1.22.0.tar.gz
-	sha256sums = 79fb3bf79555f016818c13f1e31f830e5ee219cbc4a59cb65b18869371448448
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GISPA_1.24.0.tar.gz
+	sha256sums = df2aba8a72999e7a2f22ae133666109c80461f36c4d99a940fc215c064b5a056
 
 pkgname = r-gispa
