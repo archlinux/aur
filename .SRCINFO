@@ -1,6 +1,6 @@
 pkgbase = r-interest
 	pkgdesc = Intron-Exon Retention Estimator
-	pkgver = 1.22.2
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/IntEREst
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = r-interest
 	depends = r-edger
 	depends = r-genomicalignments
 	depends = r-genomicfeatures
+	depends = r-genomicfiles
 	depends = r-genomicranges
 	depends = r-iranges
 	depends = r-rmysql
@@ -27,7 +28,7 @@ pkgbase = r-interest
 	optdepends = r-clinfun
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/IntEREst_1.22.2.tar.gz
-	sha256sums = ce6afcb615f2d5c0a6ba388c59be1b9df12a024f471ced23ee1141c9245f6331
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/IntEREst_1.24.0.tar.gz
+	sha256sums = 4983df5e26609ef94d48d95e9dc9b4b21b7b308de833c0810bc66291708ac7b8
 
 pkgname = r-interest

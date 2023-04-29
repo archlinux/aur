@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=IntEREst
-_pkgver=1.22.2
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.2
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Intron-Exon Retention Estimator'
 arch=('any')
@@ -20,6 +20,7 @@ depends=(
   r-edger
   r-genomicalignments
   r-genomicfeatures
+  r-genomicfiles
   r-genomicranges
   r-iranges
   r-rmysql
@@ -36,7 +37,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ce6afcb615f2d5c0a6ba388c59be1b9df12a024f471ced23ee1141c9245f6331')
+sha256sums=('4983df5e26609ef94d48d95e9dc9b4b21b7b308de833c0810bc66291708ac7b8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
