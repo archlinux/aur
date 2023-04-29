@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=edge
-_pkgver=2.30.0
+_pkgver=2.32.0
 pkgname=r-${_pkgname,,}
-pkgver=2.30.0
-pkgrel=3
+pkgver=2.32.0
+pkgrel=1
 pkgdesc='Extraction of Differential Gene Expression'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -23,7 +23,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('76651f52be21eaffcde1baab72a4030a1f40c96e3f2a19a9709f40db5dfd136b')
+sha256sums=('cb1b8dcb250a3ad3abdfbf6adbdd9a6b1dac1647298ca1e32d1dfadf8b6511d1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
