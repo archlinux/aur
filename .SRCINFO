@@ -1,7 +1,7 @@
 pkgbase = nyxt-git
 	pkgdesc = A keyboard-driven web browser designed for power users
 	pkgver = latest
-	pkgrel = 2
+	pkgrel = 3
 	url = https://nyxt.atlas.engineer
 	arch = i686
 	arch = x86_64
