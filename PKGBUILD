@@ -5,7 +5,7 @@ _pkgname=fgsea
 _pkgver=1.26.0
 pkgname=r-${_pkgname,,}
 pkgver=1.26.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Fast Gene Set Enrichment Analysis'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -20,6 +20,7 @@ depends=(
   r-fastmatch
   r-ggplot2
   r-rcpp
+  r-scales
 )
 optdepends=(
   r-aggregation
@@ -32,6 +33,7 @@ optdepends=(
   r-parallel
   r-reactome.db
   r-rmarkdown
+  r-seurat
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
