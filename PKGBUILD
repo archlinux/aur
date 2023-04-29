@@ -4,7 +4,7 @@ _pkgname=IsoCorrectoRGUI
 _pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=1.16.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Graphical User Interface for IsoCorrectoR'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -16,6 +16,7 @@ depends=(
   r-tcltk2
 )
 optdepends=(
+  r-biocstyle
   r-knitr
   r-rmarkdown
   r-testthat
