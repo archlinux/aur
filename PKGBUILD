@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SCAN.UPC
-_pkgver=2.40.0
+_pkgver=2.42.0
 pkgname=r-${_pkgname,,}
-pkgver=2.40.0
+pkgver=2.42.0
 pkgrel=1
 pkgdesc='Single-channel array normalization (SCAN) and Universal exPression Codes (UPC)'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-pd.hg.u95a
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b7dba66973ef326a5b6eadc0c302af4b24863589422530291339b417ece42ec3')
+sha256sums=('589bbb54aa88c0f96055f367ff422f5cf1cd32c980a35a4357a594b902fc38cd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
