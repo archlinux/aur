@@ -2,7 +2,7 @@
 _base=felupe
 pkgname=python-${_base}
 pkgdesc="Finite Element Analysis"
-pkgver=7.2.0
+pkgver=7.3.0
 pkgrel=1
 arch=(any)
 url="https://github.com/adtzlr/${_base}"
@@ -10,13 +10,14 @@ license=(GPL3)
 depends=(python-scipy python-tensortrax)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-meshio python-h5py python-matplotlib python-tensortrax)
-optdepends=('python-einsumt: for multithreaded numpy.einsum support'
-  'python-h5py: for XDMF-export'
-  'python-matplotlib: plotting suport'
-  'python-meshio: for export mesh'
-  'python-pyvista: for create unstructured grid')
+optdepends=('python-einsumt: for parallel assembly'
+  'python-h5py: for XDMF result files'
+  'python-matplotlib: plotting graphs'
+  'python-meshio: for mesh-related I/O'
+  'python-pyvista: for interactive visualizations'
+  'python-tqdm: for showing progress bars during job evaluation')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('03a55171037917a790be8d6d76b9e6636a65e18e7c4d22ded84be27f874424dac52a5fcfdf2410160a33c7387d7abc0dc4028eb4f70f6b5a77bb1ce06b581438')
+sha512sums=('1295d0a289bec5afea5b6f513840ecd1d3271b65415c2adbb4b7d028dcefb38286dbe5e4d33081a18a8aabaac21147d9c6437cf06fefe8ad137aa3effbe35413')
 
 build() {
   cd ${_base}-${pkgver}
