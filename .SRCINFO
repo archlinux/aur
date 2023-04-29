@@ -1,6 +1,6 @@
 pkgbase = r-cosmiq
 	pkgdesc = cosmiq - COmbining Single Masses Into Quantities
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/cosmiq
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = r-cosmiq
 	optdepends = r-biocgenerics
 	optdepends = r-biocstyle
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cosmiq_1.32.0.tar.gz
-	sha256sums = 3cd1e7fec89a2ea9a880f69b4ac964202c295eb272e5941587f3d04816c2c67b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cosmiq_1.34.0.tar.gz
+	sha256sums = 5d388faf1efb47e951881ce123e678abcccd57c7cda620f0d475b409e1373ed1
 
 pkgname = r-cosmiq
