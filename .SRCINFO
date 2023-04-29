@@ -1,6 +1,6 @@
 pkgbase = core-lightning-git
 	pkgdesc = A lightweight, highly customizable and standard compliant implementation of the Lightning Network protocol.
-	pkgver = 23.02rc3.r12598.e315f3072
+	pkgver = 23.05rc2.r12879.21cc16fb5
 	pkgrel = 1
 	url = https://github.com/ElementsProject/lightning
 	arch = i686
