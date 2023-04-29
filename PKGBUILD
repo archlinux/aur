@@ -2,7 +2,7 @@
 
 pkgname=spatial-shell
 pkgver=1
-pkgrel=1
+pkgrel=2
 license=('MPL2')
 arch=('x86_64')
 depends=(
@@ -11,7 +11,7 @@ depends=(
 )
 optdepends=(
   'swaybg'
-  'waybr'
+  'waybar'
 )
 makedepends=(
   'opam'
