@@ -4,7 +4,7 @@ _pkgname=OrganismDbi
 _pkgver=1.42.0
 pkgname=r-${_pkgname,,}
 pkgver=1.42.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Software to enable the smooth interfacing of different database packages'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -25,10 +25,12 @@ depends=(
 )
 optdepends=(
   r-annotationhub
+  r-biocstyle
   r-biomart
   r-bsgenome.hsapiens.ucsc.hg19
   r-fdb.ucsc.trnas
   r-homo.sapiens
+  r-knitr
   r-mirbase.db
   r-rattus.norvegicus
   r-rmariadb
