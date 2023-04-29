@@ -4,7 +4,7 @@
 # Contributor: Eduardo Bart <edub4rt@gmail.com>
 
 pkgname=luajit-openresty
-_pkgver=2.1-20230119
+_pkgver=2.1-20230410
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc='Just-in-time compiler for Lua, OpenResty fork'
@@ -16,7 +16,7 @@ conflicts=(luajit)
 provides=("luajit=$pkgver")
 _archive="$pkgname-$pkgver"
 source=("$url/archive/refs/tags/v$_pkgver/$_archive.tar.gz")
-sha256sums=('4133bb04e239bd3282bbad84edb536b3947165aba01da6886e888322bf740e1c')
+sha256sums=('77bbcbb24c3c78f51560017288f3118d995fe71240aa379f5818ff6b166712ff')
 
 build() {
   cd "luajit2-$_pkgver"
