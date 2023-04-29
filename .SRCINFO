@@ -1,6 +1,6 @@
 pkgbase = uctags-git
 	pkgdesc = Universal ctags (patched to allow installing alongside original ctags)
-	pkgver = r10032.033929ad1
+	pkgver = r10227.39a017244
 	pkgrel = 1
 	url = https://ctags.io/
 	arch = x86_64
