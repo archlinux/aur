@@ -4,7 +4,7 @@ _pkgname=mnem
 _pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=1.16.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Mixture Nested Effects Models'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -28,6 +28,7 @@ depends=(
 )
 optdepends=(
   r-biocgenerics
+  r-biocstyle
   r-devtools
   r-epinem
   r-knitr
