@@ -1,0 +1,12 @@
+pkgbase = gupload
+	pkgdesc = simple HTTP server to transfer files between machines on the local network
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/alexcoder04/gupload
+	arch = x86_64
+	license = AGPL3
+	makedepends = go
+	source = https://github.com/alexcoder04/gupload/archive/refs/tags/v0.1.0.tar.gz
+	md5sums = 7449ffd6e3b9dcc246b17a02a524dcc6
+
+pkgname = gupload
