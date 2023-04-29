@@ -6,14 +6,14 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=irreader1.5.9
 pkgver=1.5.9
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="万能订阅阅读器，订阅任何网站。this is the last free version"
 arch=(x86_64 aarch64)
 url="http://irreader.fatecore.com/"
 license=('proprietary')
 groups=()
-depends=(gcc-libs glibc bash electron3)
+depends=(gcc-libs glibc bash electron4)
 makedepends=(asar npm)
 checkdepends=()
 optdepends=()
@@ -36,7 +36,7 @@ sha256sums_aarch64=('8e22a82d1ee3c6c415768cc88ecef9d32a5050ac08e4796b96571db0d72
 validpgpkeys=()
 
 prepare() {
-	rm *.pak *.dll *.bin *.gz
+	rm ./*.pak ./*.dll ./*.bin ./*.gz
 	pushd resources
 	asar e app.asar ./app
 	pushd app
@@ -44,20 +44,25 @@ prepare() {
 	npm i iconv@3.0.1
 	npm i sqlite3@5.0.2
 	npm uninstall ad-block-lite
-	cp -av $srcdir/napi-v3* ./node_modules/sqlite3/lib/binding/
+	cp -av "$srcdir"/napi-v3* ./node_modules/sqlite3/lib/binding/
+	rm -rf ./node_modules/{node-gyp,sqlite3/{deps,src,tools},node-addon-api}
 	rm -v adb.js
-	sed -i "s!const adb.*!!g" main.js
-	sed -i "s!    let shouldBeBlocked = g_config_cache.adb && .*!    let shouldBeBlocked = false!g" main.js
-	sed -i "220,221d" main.js
+	sed -i "/const adb/d" main.js
+	sed -i "s!    let shouldBeBlocked = g_config_cache.adb && .*!    let shouldBeBlocked = false;!g" main.js
+	sed -i "219,220d" main.js
 	# adb seems have some problems.. so I remove it.
+	awk -i inplace '/makeSingleInstance/{print "app.requestSingleInstanceLock();\n app.on(\"second-instance\", ()=>{console.log(\"second instance, quit imediately\");app.exit(0);})}";} !/makeSingleInstance/{print}' main.js
+	sed -i "46,50d" main.js
+	sed -i "/makeSingleInstance/d" main.js
+	# patch to electron4, see https://stackoverflow.com/questions/56161168/typeerror-app-makesingleinstance-is-not-a-function
 }
 
 
 package() {
-	install -d $pkgdir/opt/irreader
-	cp -av $srcdir/resources/app $pkgdir/opt/irreader/
-	install -Dm755 /dev/null $pkgdir/usr/bin/irreader
-	echo "#!/bin/sh" >> $pkgdir/usr/bin/irreader
-	echo "electron3 /opt/irreader/app" >> $pkgdir/usr/bin/irreader
-	install -Dm644 irreader.desktop -t $pkgdir/usr/share/applications/
+	install -d "$pkgdir"/opt/irreader
+	cp -av "$srcdir"/resources/app "$pkgdir"/opt/irreader/
+	install -Dm755 /dev/null "$pkgdir"/usr/bin/irreader
+	echo "#!/bin/sh" >> "$pkgdir"/usr/bin/irreader
+	echo "electron4 /opt/irreader/app" >> "$pkgdir"/usr/bin/irreader
+	install -Dm644 irreader.desktop -t "$pkgdir"/usr/share/applications/
 }

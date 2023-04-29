@@ -1,7 +1,7 @@
 pkgbase = irreader1.5.9
 	pkgdesc = 万能订阅阅读器，订阅任何网站。this is the last free version
 	pkgver = 1.5.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://irreader.fatecore.com/
 	arch = x86_64
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = irreader1.5.9
 	depends = gcc-libs
 	depends = glibc
 	depends = bash
-	depends = electron3
+	depends = electron4
 	source = local://irreader Setup 1.5.9.exe
 	source = irreader.desktop
 	sha256sums = 6b2f61d035441ca9949a4de4a3e6249007b9c7633548a7653f5c6fb0780c29cb
