@@ -1,0 +1,66 @@
+diff -ruN a/include/pound.h.in b/include/pound.h.in
+--- a/include/pound.h.in	2020-11-03 11:53:10.000000000 +0100
++++ b/include/pound.h.in	2020-11-06 11:27:38.356394898 +0100
+@@ -103,7 +103,7 @@
+ #include    "hpack.h"
+ 
+ #define F_CONF      "/etc/pound/pound.yaml"
+-#define F_PID       "/var/run/pound.pid"
++#define F_PID       "/run/pound/pound.pid"
+ 
+ #ifndef NI_MAXHOST
+ #define NI_MAXHOST  1025
+@@ -203,4 +203,4 @@
+ extern void *thr_http(void *);
+ 
+ /* http2.c */
+-extern void do_http2(HTTP_LISTENER *, FILE *, char *, char *, int);
+\ No newline at end of file
++extern void do_http2(HTTP_LISTENER *, FILE *, char *, char *, int);
+diff -ruN a/man/pound.8 b/man/pound.8
+--- a/man/pound.8	2020-11-03 11:53:10.000000000 +0100
++++ b/man/pound.8	2020-11-06 11:28:20.249080056 +0100
+@@ -131,7 +131,7 @@
+ will write its own pid into this file. Normally this is used for shell
+ scripts that control starting and stopping of the daemon.
+ Default:
+-.I /var/run/pound.pid
++.I /run/pound/pound.pid
+ .PP
+ One (or more) copies of
+ .B Pound
+@@ -481,7 +481,7 @@
+ .RE
+ .SH FILES
+ .TP
+-\fI/var/run/pound.pid\fR
++\fI/run/pound/pound.pid\fR
+ this is where
+ .B Pound
+ will attempt to record its process id.
+@@ -496,4 +496,4 @@
+ Copyright \(co 2002-2020 Apsis GmbH.
+ .br
+ This is free software; see the source for copying conditions.  There is NO
+-warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+\ No newline at end of file
++warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+diff -ruN a/src/config.c b/src/config.c
+--- a/src/config.c	2020-11-03 11:53:10.000000000 +0100
++++ b/src/config.c	2020-11-06 11:28:00.302721953 +0100
+@@ -612,7 +612,7 @@
+ 
+     memset(&global, '\0', sizeof(global));
+     opterr = 0;
+-    global.pid = "/var/run/pound.pid";
++    global.pid = "/run/pound/pound.pid";
+     global.log_level = 0;
+     while((c_opt = getopt(argc, argv, "f:cvd:p:")) > 0)
+         switch(c_opt) {
+@@ -710,4 +710,4 @@
+     if(o_check)
+         exit(0);
+     return;
+-}
+\ No newline at end of file
++}

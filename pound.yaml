@@ -1,0 +1,161 @@
+---
+# Pound configuration file. See man 8 pound for further examples.
+#
+# Global Directives
+#
+# Specify the user Pound will run as (must be defined in /etc/passwd).
+# User: "pound"
+
+# Specify the group Pound will run as (must be defined in /etc/group).
+# Group: "pound"
+
+# Specify the directory that Pound will chroot to at runtime. Please note that
+# SSL may require access to /dev/urandom, so make sure you create a device by
+# that name, accessible from the root jail directory. Pound may also require
+# access to /dev/syslog or similar.
+# RootJail: "/"
+
+# Specify a path to an HTML file to be returned in case of a 404 error.
+# Err404: "/path/to/file"
+
+# Specify a path to an HTML file to be returned in case of a 405 error.
+# Err405: "/path/to/file"
+
+# Specify a path to an HTML file to be returned in case of a 500 error.
+# Err500: "/path/to/file"
+
+# Backends
+#
+# A back-end is a definition of a single back-end server Pound will use to
+# reply to incoming requests. Each backend must be marked with an anchor (&).
+Backends:
+  - &default_backend
+    # The address that Pound will connect to. This can be a numeric IP address,
+    # or a symbolic host name that must be resolvable at  run-time. This is a
+    # mandatory parameter.
+    Address: localhost
+
+    # The port number that Pound will connect to. This is a mandatory parameter.
+    Port: 8080
+
+    # How long to wait for a backend (server) to complete and operation.
+    # Default: 15 (seconds).
+    Timeout:
+
+    # How many threads will be used to service requests to this backend. See
+    # also below for remarks on performance tuning. Default: 8 (threads).
+    Threads:
+
+    # A header to add to each reply received from this backend. The header is a
+    # string.
+    # HeadAdd:
+
+# HTTPListeners
+#
+# An HTTP listener defines an address and port that Pound will listen on for
+# HTTP requests.
+HTTPListeners:
+  -
+    # The  address  that Pound will listen on. This can be a numeric IP address,
+    # or a symbolic host name that must be resolvable at run-time. This is a
+    # mandatory parameter. The address 0.0.0.0 may be used as an alias for 'all
+    # available addresses on this machine', but this practice is strongly
+    # discouraged.
+    Address: localhost
+
+    # The port number that Pound will listen on.  This is a mandatory parameter.
+    Port: 80
+
+    # Define how long Pound will wait for client activity. Default: 5 (seconds).
+    Client:
+
+    # Define how many threads Pound will use to service client requests.
+    # Default: 8 (threads).
+    Threads:
+
+    # This defines a service. This service will be used only by this listener.
+    Services:
+
+      -
+        # The service will only be used if the request URL matches the given
+        # pattern.
+        URL:
+
+        # Use the service only if any of the request headers matches the given
+        # pattern.
+        HeadRequire:
+
+        # Use the service only if none of the request headers matches the given
+        # pattern.
+        HeadDeny:
+
+        # How long to keep the client sessions (in seconds). Sessions are a
+        # long term association between a client IP address and a specific
+        # backend in this service. A value of 0 seconds means no sessions are
+        # kept. Default: 0.
+        Session:
+
+        # A list of references to previously defined backends.
+        BackEnds:
+          - *default_backend
+
+# HTTPSListeners
+#
+# An HTTP listener defines an address and port that Pound will listen on for
+# HTTP requests.
+HTTPSListeners:
+  # -
+    # The  address  that Pound will listen on. This can be a numeric IP address,
+    # or a symbolic host name that must be resolvable at run-time. This is a
+    # mandatory parameter. The address 0.0.0.0 may be used as an alias for 'all
+    # available addresses on this machine', but this practice is strongly
+    # discouraged.
+    # Address: localhost
+
+    # The port number that Pound will listen on.  This is a mandatory parameter.
+    # Port: 443
+
+    # Define how long Pound will wait for client activity. Default: 5 (seconds).
+    # Client:
+
+    # Define how many threads Pound will use to service client requests.
+    # Default: 8 (threads).
+    # Threads:
+
+    # A file name or a list of file names. Each file must contain a certificate,
+    # optionally additional chained certificates up to a known  certificate
+    # authority,  and  the private key corresponding to the certificate.
+    # Note: the private key should probably not be password-protected, as Pound
+    # normally starts as a daemon and cannot ask for the password at start-up
+    # time.
+    # Certificates:
+
+    # A list of acceptable cipher names for this listener. The negotiation with
+    # the client will result in one of these ciphers being used, or the
+    # hand-shake will fail.
+    # Ciphers:
+
+    # This defines a service. This service will be used only by this listener.
+    # Services:
+      # -
+        # The service will only be used if the request URL matches the given
+        # pattern.
+        # URL:
+
+        # Use the service only if any of the request headers matches the given
+        # pattern.
+        # HeadRequire:
+
+        # Use the service only if none of the request headers matches the given
+        # pattern.
+        # HeadDeny:
+
+        # How long to keep the client sessions (in seconds). Sessions are a
+        # long term association between a client IP address and a specific
+        # backend in this service. A value of 0 seconds means no sessions are
+        # kept. Default: 0.
+        # Session:
+
+        # A list of references to previously defined backends.
+        # BackEnds:
+          # - *default_backend
