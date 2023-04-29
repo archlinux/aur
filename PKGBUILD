@@ -1,11 +1,12 @@
-# Maintainer: Arley Henostroza <arllk10@gmail.com>
+# Maintainer: Fredrick R. Brennan <copypaste@kittens.ph>
+# Contributor: Arley Henostroza <arllk10@gmail.com>
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 
-_svt_hevc_ver='111eef187fd7b91ad27573421c7238ef787e164f'
-_svt_vp9_ver='308ef4464568a824f1f84c4491cb08ab4f535f6c'
+_svt_hevc_ver='6cca5b932623d3a1953b165ae6b093ca1325ac44'
+_svt_vp9_ver='15bd454a0ce53d1432a4f8a89df08774a26237e3'
 
 pkgname=ffmpeg-intel-full-git
-pkgver=5.1.r105688.g0d34e21282
+pkgver=6.1.r110417.g41dd50ad0d
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for intel; git version) (based on dbermond package)'
 arch=('x86_64')
@@ -25,10 +26,10 @@ depends=(
         'lilv' 'xz' 'libmysofa' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
         'libxv' 'libx11'  'libxext' 'zlib' 'libomxil-bellagio' 'libdrm'
         'intel-media-sdk' 'libva' 'libvdpau' 'svt-hevc' 'srt' 'vmaf' 
-        'glslang-git' 'librabbitmq-c' 'vulkan-icd-loader' 'svt-av1' 'svt-vp9' 'spirv-tools' 'librist'
+        'glslang' 'librabbitmq-c' 'vulkan-icd-loader' 'svt-av1' 'svt-vp9' 'spirv-tools' 'librist'
     # AUR:
         'chromaprint-fftw' 'davs2' 'flite1-patched' 'libklvanc-git' 'openh264'
-        'libopenmpt-svn' 'rav1e' 'shine' 'vo-amrwbenc' 'xavs' 'xavs2' 'pocketsphinx'
+        'libopenmpt' 'rav1e' 'shine' 'vo-amrwbenc' 'xavs' 'xavs2' #'pocketsphinx' # See https://aur.archlinux.org/packages/pocketsphinx#comment-912173
         'avisynthplus'
 )
 makedepends=(
@@ -42,24 +43,28 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libswresample.so' 'ffmpeg' 'ffmpeg-full' 'ffmpeg-git' 'ffmpeg-intel')
 conflicts=('ffmpeg')
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
+	'000-OwO-whats-this.patch'
 	"010-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/master-0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
-        #"20-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
+        "020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
         "030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
         'LICENSE')
 
 sha256sums=('SKIP'
-            'efd01f96c1f48ea599881dfc836d20ba18c758a3588d616115546912aebeb77f'
-            '9565b3eed177ce5d109876f2a56f3781a2c7fae41e32601bf6ec805ea199d21b'
+            'ba06eaf3ddf2d0e05710b2fd3b6c286a31f3a816d1705f32d85a2eff8e9f9efc'
+            'e8fdc940474f3819b9a8d30cab8164774584c051322acb6194bcb03d56e8175a'
+            'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
+            'd8b91ea5f07d0208cbe0290567083808708014a1953fda322d13cb619349c9ee'
             '91973c465f01446a999f278f0c2a3763304994dba1ac35de0e4c72f12f39409e'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 prepare() {
     rm -f ffmpeg/libavcodec/libsvt_{hevc,vp9}.c
-    patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
-    #patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
+    patch -d ffmpeg -Np1 -F2 -i "${srcdir}/000-OwO-whats-this.patch"
+    patch -d ffmpeg -Np1 -F2 -i "${srcdir}/010-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
+    patch -d ffmpeg -Np1 -F2 -i "${srcdir}/020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
+    patch -d ffmpeg -Np1 -F3 -i "${srcdir}/030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
+    patch -d ffmpeg -Np1 -F3 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
 }
 
 pkgver() {
@@ -72,7 +77,7 @@ build() {
     cd ffmpeg
      
     printf '%s\n' '  -> Running ffmpeg configure script...'
-    
+
     ./configure \
         --prefix='/usr' \
         \
@@ -195,7 +200,9 @@ build() {
         --enable-omx \
         --enable-v4l2-m2m \
         --enable-vaapi \
-        --enable-vdpau
+        --enable-vdpau \
+	\
+	--disable-pocketsphinx # Per above comment in depends array
         
     make
     make tools/qt-faststart

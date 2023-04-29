@@ -1,0 +1,23 @@
+diff --git a/fftools/opt_common.c b/fftools/opt_common.c
+index c303db4d09..e46e8dc98a 100644
+--- a/fftools/opt_common.c
++++ b/tmp/opt_common.c
+@@ -193,6 +193,7 @@ static void print_all_libs_info(int flags, int level)
+ 
+ static void print_program_info(int flags, int level)
+ {
++    int clevel = av_log_get_level();
+     const char *indent = flags & INDENT? "  " : "";
+ 
+     av_log(NULL, level, "%s version " FFMPEG_VERSION, program_name);
+@@ -200,8 +201,8 @@ static void print_program_info(int flags, int level)
+         av_log(NULL, level, " Copyright (c) %d-%d the FFmpeg developers",
+                program_birth_year, CONFIG_THIS_YEAR);
+     av_log(NULL, level, "\n");
+-    av_log(NULL, level, "%sbuilt with %s\n", indent, CC_IDENT);
+-
++    if (level <= clevel)
++        fprintf(stderr, "%s\e[1mOwO what's this?\e(B\e[m\n", indent);
+     av_log(NULL, level, "%sconfiguration: " FFMPEG_CONFIGURATION "\n", indent);
+ }
+ 
