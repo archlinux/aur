@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=norm
-_pkgver=1.0-10.0
+_pkgver=1.0-11.0
 pkgname=r-${_pkgname,,}
-pkgver=1.0.10.0
-pkgrel=3
+pkgver=1.0.11.0
+pkgrel=1
 pkgdesc='Analysis of multivariate normal datasets with missing values'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,7 +16,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4384791af74c1008238f036abe0dda4b4048b9700cc4acd7b45025598fd20cc7')
+sha256sums=('cd8a4e81782ec459cb4a9665c407147b2cd3a0d4a7562f60689415864269402e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
