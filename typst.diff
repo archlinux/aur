@@ -1,0 +1,25 @@
+--- quarto-cli-1.4.8.original/src/core/typst.ts	2023-04-27 09:52:45.839325380 +1200
++++ quarto-cli-1.4.8/src/core/typst.ts	2023-04-29 15:32:35.282729880 +1200
+@@ -49,19 +49,19 @@
+   });
+ 
+   // spawn it
+-  cmd.spawn();
++  const child=cmd.spawn();
+ 
+   // wait for ready
+   let allOutput = "";
+   const decoder = new TextDecoder();
+-  for await (const chunk of cmd.stderr) {
++  for await (const chunk of child.stderr) {
+     const text = decoder.decode(chunk);
+     allOutput += text;
+     if (allOutput.includes("compiled successfully")) {
+       if (!quiet) {
+         typstProgressDone();
+       }
+-      cmd.status.then((status) => {
++      child.status.then((status) => {
+         console.log(`typst exited with status ${status.code}`);
+       });
+       break;

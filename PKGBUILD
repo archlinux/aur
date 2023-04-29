@@ -1,7 +1,7 @@
 # Maintainer: Aleksandr Beliaev <trap000d at gmail dot com>
 
 pkgname=quarto-cli-pre-release
-pkgver=1.4.6
+pkgver=1.4.14
 pkgrel=1
 _pkgbasename=quarto-cli
 _denodomver="0.1.35-alpha-artifacts"
@@ -22,14 +22,16 @@ source=("${_pkgbasename}-${pkgver}.tar.gz::https://github.com/quarto-dev/quarto-
         "https://github.com/denoland/deno_std/archive/refs/tags/0.170.0.tar.gz"
         "deno_2.31.diff"
         "deno_2.32.diff"
+        "typst.diff"
        )
 
-sha256sums=('f2690ca486c4688815c668f424daaf3fe07738f5d8017ef863ffe26295fcb5ce'
+sha256sums=('720091540757d972334651bd50b763e6b6b1808ba8cd751399fcc247487cd40a'
             '14fb042a6912041b9fda91fd643cf278764d075bc9539aa1e107475915cd896c'
             '519709be1dfcf4743930b7f21a513d8fbf3663380020eac8ba629081395f6cc0'
             '369bc68b848532bedcb786a8fce5e52000624b9262f05ceeeb16bc851b6cf752'
             'def3b77a009d86ca2c563dab0bce1b9cbb28db1695547c4c8b0b10e2621a7ea4'
-            '461dad45c3800418ccdc9deafd44e03f826c31f60eab4004f7393c6d5bebcbff')
+            '461dad45c3800418ccdc9deafd44e03f826c31f60eab4004f7393c6d5bebcbff'
+            '490c358f1eed10aef3ddd7dabc49bccf4eb91e0f05b41f79ca7fd1fbb23c9b0c')
 
 prepare() {
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
@@ -43,6 +45,8 @@ prepare() {
   # Deno >= 2.31 and 2.32 support
   patch -p1 < ../deno_2.31.diff
   patch -p1 < ../deno_2.32.diff
+  #  Typst module - bad subprocess handling
+  patch -p1 < ../typst.diff
 }
 
 build() {
