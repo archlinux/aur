@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Risa
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
+pkgver=1.42.0
 pkgrel=1
 pkgdesc='Converting experimental metadata from ISA-tab into Bioconductor data structures'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-faahko
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('80664080f5feb7b968f7dc497bd33716e99a42785789176780417e72eaeba6c5')
+sha256sums=('6dc8b9fe87765486f5bf93b5ff4bdc70c65808f142a85171263c716d38c49675')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

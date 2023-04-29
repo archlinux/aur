@@ -1,6 +1,6 @@
 pkgbase = r-risa
 	pkgdesc = Converting experimental metadata from ISA-tab into Bioconductor data structures
-	pkgver = 1.40.0
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Risa
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-risa
 	depends = r-rcpp
 	depends = r-xcms
 	optdepends = r-faahko
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Risa_1.40.0.tar.gz
-	sha256sums = 80664080f5feb7b968f7dc497bd33716e99a42785789176780417e72eaeba6c5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Risa_1.42.0.tar.gz
+	sha256sums = 6dc8b9fe87765486f5bf93b5ff4bdc70c65808f142a85171263c716d38c49675
 
 pkgname = r-risa
