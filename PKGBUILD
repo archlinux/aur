@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CoGAPS
-_pkgver=3.18.0
+_pkgver=3.19.1
 pkgname=r-${_pkgname,,}
-pkgver=3.18.0
+pkgver=3.19.1
 pkgrel=1
 pkgdesc='Coordinated Gene Activity in Pattern Sets'
 arch=('x86_64')
@@ -13,7 +13,13 @@ depends=(
   r
   r-bh
   r-biocparallel
+  r-biomart
+  r-dplyr
+  r-fgsea
+  r-forcats
+  r-ggplot2
   r-gplots
+  r-msigdbr
   r-rcolorbrewer
   r-rcpp
   r-rhdf5
@@ -28,7 +34,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8adca64f4ef0a77e064488995966527460def9c7119a3b1d9dc3ca68bf558931')
+sha256sums=('5439eebb02b74b7549df35e98461d93c65b2a37ca8cc0ce729c535232b3c12ce')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
