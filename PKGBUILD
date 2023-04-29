@@ -4,7 +4,7 @@ _pkgname=RTCGAToolbox
 _pkgver=2.30.0
 pkgname=r-${_pkgname,,}
 pkgver=2.30.0
-pkgrel=1
+pkgrel=3
 pkgdesc='A new tool for exporting TCGA Firehose data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -17,7 +17,6 @@ depends=(
   r-genomeinfodb
   r-genomicranges
   r-httr
-  r-limma
   r-raggedexperiment
   r-rcircos
   r-rcurl
@@ -27,7 +26,6 @@ depends=(
   r-stringr
   r-summarizedexperiment
   r-tcgautils
-  r-xml
 )
 optdepends=(
   r-biocstyle
