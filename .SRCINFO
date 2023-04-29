@@ -1,7 +1,7 @@
 pkgbase = r-singlecellsignalr
 	pkgdesc = Cell Signalling Using Single Cell RNAseq Data Analysis
 	pkgver = 1.12.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/SingleCellSignalR
 	arch = any
 	license = GPL
@@ -18,7 +18,6 @@ pkgbase = r-singlecellsignalr
 	depends = r-pheatmap
 	depends = r-rtsne
 	depends = r-scran
-	depends = r-simlr
 	depends = r-stringr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown

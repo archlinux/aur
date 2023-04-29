@@ -4,7 +4,7 @@ _pkgname=SingleCellSignalR
 _pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=1.12.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Cell Signalling Using Single Cell RNAseq Data Analysis'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -23,7 +23,6 @@ depends=(
   r-pheatmap
   r-rtsne
   r-scran
-  r-simlr
   r-stringr
 )
 optdepends=(
