@@ -1,10 +1,11 @@
 pkgbase = speedtest-go-git
 	pkgdesc = Command Line Interface and pure Go API for speedtest.net
-	pkgver = 1.3.1.r9.ge55185e
+	pkgver = 1.6.0.r1.ge4a8852
 	pkgrel = 1
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	makedepends = git
 	provides = speedtest-go
 	conflicts = speedtest-go
 	source = speedtest-go-git::git+https://github.com/showwin/speedtest-go.git

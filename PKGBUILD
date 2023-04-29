@@ -1,13 +1,13 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=speedtest-go-git
-pkgver=1.3.1.r9.ge55185e
+pkgver=1.6.0.r1.ge4a8852
 pkgrel=1
 pkgdesc="Command Line Interface and pure Go API for speedtest.net"
 arch=('x86_64')
 license=('MIT')
 depends=()
-makedepends=('go')
+makedepends=('go' 'git')
 optdepends=()
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
