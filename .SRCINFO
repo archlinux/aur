@@ -1,13 +1,12 @@
 pkgbase = r-tbsignatureprofiler
 	pkgdesc = Profile RNA-Seq Data Using TB Pathway Signatures
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/TBSignatureProfiler
 	arch = any
 	license = MIT
 	depends = r
 	depends = r-assign
-	depends = r-biocgenerics
 	depends = r-biocparallel
 	depends = r-complexheatmap
 	depends = r-deseq2
@@ -45,7 +44,7 @@ pkgbase = r-tbsignatureprofiler
 	optdepends = r-spelling
 	optdepends = r-sva
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/TBSignatureProfiler_1.10.0.tar.gz
-	sha256sums = acf63e61291509bcb14d6f465dadd3b31adb5c20b627f26e045df0bfa0899d6c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TBSignatureProfiler_1.12.0.tar.gz
+	sha256sums = 224e46b93d1d0651f045e526e874ef3996f436d78970ee010a4d02df4e9f6aea
 
 pkgname = r-tbsignatureprofiler
