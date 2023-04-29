@@ -3,7 +3,7 @@
 
 _crate="refinery_cli"
 pkgname="refinery_cli"
-pkgver=0.8.7
+pkgver=0.8.8
 pkgrel=1
 pkgdesc='Provides the CLI for the Refinery crate'
 url='https://crates.io/crates/refinery_cli'
@@ -12,8 +12,8 @@ license=('MIT')
 depends=('gcc-libs' 'openssl' 'sqlite')
 makedepends=('cargo')
 
-source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/refinery_cli/0.8.7/download")
-sha512sums=('18dcfcb0f1dc9626832739c8c4002b2468e3d6bc259912347ef1f81cab63a9b67117cffbd356f4ae0d1326e6faa29d47262210458d473b2d5616e2a2dc307bd5')
+source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/refinery_cli/0.8.8/download")
+sha512sums=('4f5cb44202b3963144f3b14fbdd01a8b1995f0a1bbcfa6945b0964ed8a2ebd384978017883f5016e590493ac0fdce6d57dc44ffd99ebd6bf00c159e012949449')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
