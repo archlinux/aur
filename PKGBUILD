@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=websocat-git
-pkgver=1.10.1.r3.g708b8d5
+pkgver=1.11.0.r17.g6e0d42e
 pkgrel=1
 pkgdesc="Command-line client for WebSockets"
 arch=(x86_64)
