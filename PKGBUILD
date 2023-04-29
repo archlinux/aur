@@ -2,7 +2,7 @@
 
 pkgname=restic-rest-server
 _reponame=rest-server
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="High-performance HTTP server that implements restic's REST backend API"
 url='https://github.com/restic/rest-server'
@@ -11,14 +11,15 @@ arch=(x86_64)
 makedepends=(go)
 optdepends=('apache: htpasswd manipulation')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cd9b35ad2224244207a967ebbc78d84f4298d725e95c1fa9341ed95a350ea68f')
-sha512sums=('2c26dee8d6fdc5d6c79c1565a29dbecbf90b7fecd969542d1596631623fff83e4fd42e73bd70fb9f8404acbb32e48cc14224681c7c2d5895c4b643974630af92')
-b2sums=('a936d06830302a935d86e34751cf328319e441e2696ffc72f90a577bd9d6d3ee32994081a0e5d0820c82fe0a281ce6c5b376d750c62d4f3d8f940282f051f23b')
+sha256sums=('1032d6bfd8847f99027c748c0ae8e3a5993534a924069aa23e5b99954118f8c7')
+sha512sums=('d8913539eedff662b827a27a3778e8885a3142e52bdb9c5bcbcbd8ba5e85ec0539a3eb656d7dfe3035fae8dd40b1c756abcb094b6b3541a2027193e726895e83')
+b2sums=('8aabde68546769dd7333684f46b056f811fc7626e9ad8bc2df7a762c808ce9641b62b99ee48f96726ec9053d09f59a78a442d00a20955512c286649ae7619ade')
 
 build() {
     cd ${_reponame}-$pkgver
     export CGO_ENABLED=0
-    go build -buildmode=pie -trimpath -ldflags="-linkmode=external -extldflags \"${LDFLAGS}\"" -mod=readonly -modcacherw -o restic-rest-server ./cmd/rest-server
+    # 0.12.0 incorrectly reports the version as 0.11.0, so we manually overwrite it
+    go build -buildmode=pie -trimpath -ldflags="-linkmode=external -extldflags \"${LDFLAGS}\" -X main.version=${pkgver}" -mod=readonly -modcacherw -o restic-rest-server ./cmd/rest-server
 }
 
 check() {
