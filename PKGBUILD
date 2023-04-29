@@ -4,7 +4,7 @@ _pkgname=scTHI
 _pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=1.12.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Indentification of significantly activated ligand-receptor interactions across clusters of cells from single-cell RNA sequencing data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -15,6 +15,7 @@ depends=(
   r-rtsne
 )
 optdepends=(
+  r-biocstyle
   r-knitr
   r-rmarkdown
   r-scthi.data
