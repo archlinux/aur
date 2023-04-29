@@ -14,5 +14,5 @@ build()	{
 
 package() {
 	cd nya-main
-        install -Dm755 nya -t "${pkgdir}/usr/bin/nya"
+        install -Dm755 nya -t "${pkgdir}/usr/bin/"
 }
