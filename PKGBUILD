@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PECA
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='Probe-level Expression Change Averaging'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-spikein
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('785f7aa100b80d5b4ee8c2ca7f7ae18a0b491a1c4930b222f02cb3a70cb7e4fa')
+sha256sums=('c71aec511fd95e2520a03dd4af635a2f3eb96228b01ba1b7a49a71c60230a5cb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
