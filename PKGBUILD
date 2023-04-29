@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=ffuf-git
-pkgver=2.0.0.r1.gb2c1f94
+pkgver=2.0.0.r6.g5fd821c
 pkgrel=1
 pkgdesc="A fast web fuzzer written in Go."
 arch=('x86_64')
