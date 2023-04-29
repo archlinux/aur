@@ -1,7 +1,7 @@
 # Maintainer: Cristian Burneci <cburneci at gmail dot com>
 
 pkgname=tv-lite
-pkgver=0.7.5
+pkgver=0.7.6
 pkgrel=1
 pkgdesc="IPTV viewer with Sopcast and Acestream handling capabilities.  It wants to be a replacement for the older TV-Maxe"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ changelog=
 source=(https://gitlab.com/cburneci/tv-lite/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
 
 noextract=()
-md5sums=('SKIP') #generate with 'makepkg -g'
+md5sums=('608759396137d4d10edce94f1c6e4230') #generate with 'makepkg -g'
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/src"
