@@ -84,7 +84,7 @@ prepare() {
 build() {
 	cd "$_pkgname"
 	cmake --preset arch-package
-	cmake --build
+	cmake --build --preset arch-package -- -j 8
 }
 
 package_moonray() {
