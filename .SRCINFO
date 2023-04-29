@@ -1,7 +1,7 @@
 pkgbase = r-bsseq
 	pkgdesc = Analyze, manage and store bisulfite sequencing data
 	pkgver = 1.36.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/bsseq
 	arch = x86_64
 	license = Artistic2.0
@@ -30,7 +30,7 @@ pkgbase = r-bsseq
 	depends = r-scales
 	depends = r-summarizedexperiment
 	depends = gcc
-	optdepends = r-batchjobs
+	optdepends = r-batchtools
 	optdepends = r-beachmat
 	optdepends = r-biocstyle
 	optdepends = r-bsgenome.hsapiens.ucsc.hg38
