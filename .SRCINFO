@@ -1,6 +1,6 @@
 pkgbase = r-gesper
 	pkgdesc = Gene-Specific Phenotype EstimatoR
-	pkgver = 1.30.0
+	pkgver = 1.31.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/gespeR
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-gesper
 	depends = r-glmnet
 	depends = r-reshape2
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/gespeR_1.30.0.tar.gz
-	sha256sums = 404da3766526ae8ee5a565c716f5d0071265df7df2de4538dd029fe5ea612e57
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/gespeR_1.31.0.tar.gz
+	sha256sums = baa147adedff101eb2962bce6430e5362c0181796444dbab3ba59247438b18b4
 
 pkgname = r-gesper
