@@ -1,13 +1,13 @@
 pkgbase = r-cntools
 	pkgdesc = Convert segment data into a region by sample matrix to allow for other high level computational analyses.
-	pkgver = 1.54.0
+	pkgver = 1.56.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CNTools
 	arch = x86_64
 	license = LGPL
 	depends = r
 	depends = r-genefilter
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CNTools_1.54.0.tar.gz
-	sha256sums = 5f354502cd794fc9b69e19c69ceffe305d6ff334e7dad89a1a0d7d63623a34a3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CNTools_1.56.0.tar.gz
+	sha256sums = accdca27a0059f83187d02e9bf8b85429d5042ad8acc44810da936c3b8ef7c2c
 
 pkgname = r-cntools

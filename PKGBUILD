@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CNTools
-_pkgver=1.54.0
+_pkgver=1.56.0
 pkgname=r-${_pkgname,,}
-pkgver=1.54.0
+pkgver=1.56.0
 pkgrel=1
 pkgdesc='Convert segment data into a region by sample matrix to allow for other high level computational analyses.'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
   r-genefilter
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5f354502cd794fc9b69e19c69ceffe305d6ff334e7dad89a1a0d7d63623a34a3')
+sha256sums=('accdca27a0059f83187d02e9bf8b85429d5042ad8acc44810da936c3b8ef7c2c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
