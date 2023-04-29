@@ -1,6 +1,6 @@
 pkgbase = r-sispa
 	pkgdesc = SISPA: Method for Sample Integrated Set Profile Analysis
-	pkgver = 1.28.0
+	pkgver = 1.30.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SISPA
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-sispa
 	depends = r-gsva
 	depends = r-plyr
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SISPA_1.28.0.tar.gz
-	sha256sums = 791a1d68745f35e5838dfab4b65d23f12e32077885643c32fa1e00c1a8457a22
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SISPA_1.30.0.tar.gz
+	sha256sums = 837efd2a7277865869764f0bf8a3c0d00af405a091b17c934a3c2f03ae98983e
 
 pkgname = r-sispa
