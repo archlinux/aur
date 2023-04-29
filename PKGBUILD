@@ -4,7 +4,7 @@ _pkgname=pipeFrame
 _pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=1.16.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Pipeline framework for bioinformatics in R'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -21,6 +21,7 @@ depends=(
 )
 optdepends=(
   r-biocmanager
+  r-bsgenome.hsapiens.ucsc.hg19
   r-knitr
   r-rtracklayer
   r-testthat
