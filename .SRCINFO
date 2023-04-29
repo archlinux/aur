@@ -1,7 +1,7 @@
 pkgbase = r-chemmineob
 	pkgdesc = R interface to a subset of OpenBabel functionalities
 	pkgver = 1.38.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/ChemmineOB
 	arch = x86_64
 	license = custom
@@ -19,6 +19,7 @@ pkgbase = r-chemmineob
 	optdepends = r-knitr
 	optdepends = r-knitrbootstrap
 	optdepends = r-rmarkdown
+	optdepends = r-runit
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/ChemmineOB_1.38.0.tar.gz
 	sha256sums = 9115e25d3be94148fcc549b22af107c3fe0055569ac4e36ce161a203a8698450
 
