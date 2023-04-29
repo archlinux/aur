@@ -1,0 +1,59 @@
+#!/bin/bash
+
+function main(){
+    if [[ $@ =~ '-xwayland' ]]; then
+        x11Launch
+    fi
+    if [[ ${XDG_SESSION_DESKTOP} = KDE ]] && [[ ${XDG_SESSION_TYPE} = wayland ]]; then
+        probeKwinVersion "$@"
+    else
+        x11Launch "$@"
+    fi
+}
+
+function launch(){
+    electron /opt/stapxs-qq-lite-bin/app.asar "$@"
+}
+
+function x11Launch(){
+    note 'Launching via XWayland / X11...'
+    launch --ignore-gpu-blocklist --enable-gpu-rasterization --enable-zero-copy --enable-features=VaapiVideoDecoder,VaapiIgnoreDriverChecks "$@"
+}
+
+function probeKwinVersion(){
+    _kwinVersion=`kwin_wayland --version | cut -c 6- | cut -c -4`
+    if [[ `echo "${_kwinVersion} > 5.27" | bc` = 1 ]]; then
+        waylandLaunch "$@"
+    elif [[ ${_kwinVersion} = '5.27' ]]; then
+        waylandLaunch "$@"
+    else
+        x11Launch "$@"
+    fi
+}
+
+function waylandLaunch(){
+    note 'Launching via Wayland...'
+    note '在 KDE 系统设置中将虚拟键盘设置为 Fcitx5'
+    _electronVer=`electron --version | cut -c 2-`
+
+    if [[ `echo "${_electronVer} > 20" | bc` = 1 ]]; then
+        waylandFlag="--ozone-platform-hint=auto"
+    else
+        waylandFlag="--ozone-platform=wayland"
+    fi
+    launch ${waylandFlag} --ignore-gpu-blocklist --enable-gpu-rasterization --enable-zero-copy --enable-wayland-ime --disable-gpu-driver-bug-workarounds --enable-features=VaapiVideoDecoder,VaapiIgnoreDriverChecks --disable-features=UseChromeOSDirectVideoDecoder "$@"
+}
+
+function note() {
+	if [ -f /usr/bin/pamac ]; then
+		echo "  ==> [Info]: $@"
+	else
+        all_off="$(tput sgr0)"
+        bold="${all_off}$(tput bold)"
+        blue="${bold}$(tput setaf 4)"
+        yellow="${bold}$(tput setaf 3)"
+        printf "${blue}==>${yellow} [Info]:${bold} $1${all_off}\n"
+    fi
+}
+
+main

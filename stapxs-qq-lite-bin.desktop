@@ -1,0 +1,14 @@
+[Desktop Entry]
+Comment=一个兼容 oicq-http2 的非官方网页 QQ 客户端
+Comment[zh_CN]=一个兼容 oicq-http2 的非官方网页 QQ 客户端
+Exec=stapxs-qq-lite-bin %u
+Icon=stapxs-qq-lite-bin
+Name=Stapxs QQ Lite
+Name[zh_CN]=Stapxs QQ Lite
+Categories=Utility;Network;
+StartupNotify=true
+Terminal=false
+Type=Application
+Keywords=qq;q;stapxs;
+Keywords[zh_CN]=qq;q;stapxs;
+StartupWMClass=stapxs-qq-lite
