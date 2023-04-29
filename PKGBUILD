@@ -3,7 +3,7 @@
 _pkgname=metaboliteIDmapping
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Mapping of Metabolite IDs from Different Sources'
 arch=('any')
