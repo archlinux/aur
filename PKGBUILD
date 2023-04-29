@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=benchdamic
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Benchmark of differential abundance methods on microbiome data'
 arch=('any')
@@ -23,6 +23,7 @@ depends=(
   r-ggplot2
   r-ggridges
   r-limma
+  r-lme4
   r-mast
   r-metagenomeseq
   r-mglm
@@ -46,7 +47,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('38b32d647d47f5eaae9fb87bbe7ed0fdaf12a887245543b797a32dd9fbb299b8')
+sha256sums=('17bf9bcbf377b97ac723f65ef4075a5ac6202e144e99f0c3a19a9ea4cf72ffa9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
