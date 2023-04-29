@@ -4,7 +4,7 @@ _pkgname=keyring
 pkgbase=dfl-keyring
 pkgname=('dfl-keyring' 'dfl-keyring-qt6')
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and easy to use implementation of Keyring"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/desktop-frameworks/$_pkgname"
@@ -27,7 +27,7 @@ build() {
 package_dfl-keyring() {
   depends=('qt5-base' 'dfl-ipc' 'libsecret')
   optdepends=('gnome-keyring: For Gnome integration'
-              'kwalletd: For Plasma integration')
+              'kwallet: For Plasma integration')
   cd "${_pkgname}-v${pkgver}"
   DESTDIR="${pkgdir}" ninja -C .build install
 }
@@ -35,7 +35,7 @@ package_dfl-keyring() {
 package_dfl-keyring-qt6() {
   depends=('qt6-base' 'dfl-ipc-qt6' 'libsecret')
   optdepends=('gnome-keyring: For Gnome integration'
-              'kwalletd: For Plasma integration')
+              'kwallet: For Plasma integration')
   cd "${_pkgname}-v${pkgver}"
   DESTDIR="${pkgdir}" ninja -C .build-qt6 install
 }
