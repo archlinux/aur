@@ -4,7 +4,7 @@ _pkgname=AneuFinder
 _pkgver=1.28.0
 pkgname=r-${_pkgname,,}
 pkgver=1.28.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Analysis of Copy Number Variation in Single-Cell-Sequencing Data'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -28,7 +28,6 @@ depends=(
   r-ggrepel
   r-iranges
   r-mclust
-  r-reordercluster
   r-reshape2
   r-rsamtools
   r-s4vectors

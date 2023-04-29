@@ -1,7 +1,7 @@
 pkgbase = r-aneufinder
 	pkgdesc = Analysis of Copy Number Variation in Single-Cell-Sequencing Data
 	pkgver = 1.28.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/AneuFinder
 	arch = x86_64
 	license = Artistic2.0
@@ -23,7 +23,6 @@ pkgbase = r-aneufinder
 	depends = r-ggrepel
 	depends = r-iranges
 	depends = r-mclust
-	depends = r-reordercluster
 	depends = r-reshape2
 	depends = r-rsamtools
 	depends = r-s4vectors
