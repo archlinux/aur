@@ -4,7 +4,7 @@ _pkgname=tripr
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='T-cell Receptor/Immunoglobulin Profiler (TRIP)'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -20,7 +20,6 @@ depends=(
   r-plot3d
   r-plotly
   r-plyr
-  r-pryr
   r-rcolorbrewer
   r-shiny
   r-shinybs
@@ -39,6 +38,7 @@ optdepends=(
   r-knitr
   r-motifstack
   r-parallel
+  r-pryr
   r-refmanager
   r-rlist
   r-rmarkdown
