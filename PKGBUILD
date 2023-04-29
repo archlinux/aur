@@ -4,10 +4,10 @@ _pkgname=Rcade
 _pkgver=1.39.1
 pkgname=r-${_pkgname,,}
 pkgver=1.39.1
-pkgrel=1
+pkgrel=4
 pkgdesc='R-based analysis of ChIP-seq And Differential Expression - a tool for integrating a count-based ChIP-seq analysis with differential expression summary data'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.16/${_pkgname}"
 license=('GPL')
 depends=(
   r
@@ -28,7 +28,7 @@ optdepends=(
   r-limma
   r-runit
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.16/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('9948e5395dd3971014f9f5b9c9697e20c0bf90aae527adba719a759320899415')
 
 build() {
