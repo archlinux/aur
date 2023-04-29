@@ -7,8 +7,8 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=worky
 epoch=
-pkgver=0.1.8
-pkgrel=01
+pkgver=1.0.1
+pkgrel=00
 pkgdesc='Worky is a tool that helps to define and load project workspaces.'
 arch=(any)
 url=https://github.com/ZappaBoy/worky
@@ -22,9 +22,9 @@ conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=('d41d8cd98f00b204e9800998ecf8427e')
 noextract=()
-source+=(https://files.pythonhosted.org/packages/cd/7e/42a829a34ff49e3342d50a633a90526aac6ec7a62f0468870ee7d1706920/worky-0.1.8-py3-none-any.whl)
-md5sums+=(9f33e83299b3b44fe9b5a93862684600)
-noextract+=(worky-0.1.8-py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/0d/16/950e84a28944f909be91c7021b8486f402cb97f7c24e7baeddc0e690f558/worky-1.0.1-py3-none-any.whl)
+md5sums+=(6b52d35193692cbf01ae12cc08525f39)
+noextract+=(worky-1.0.0-py3-none-any.whl)
 
 _first_source() {
     echo " ${source_i686[@]} ${source_x86_64[@]} ${source[@]}" |
