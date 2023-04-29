@@ -4,7 +4,7 @@ _pkgname=autonomics
 _pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=1.8.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Generifying and intuifying cross-platform omics analysis'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -15,8 +15,10 @@ depends=(
   r-assertive
   r-biocfilecache
   r-biocgenerics
+  r-bit64
   r-colorspace
   r-data.table
+  r-dplyr
   r-edger
   r-ggplot2
   r-ggrepel
@@ -40,6 +42,7 @@ optdepends=(
   r-affy
   r-annotationdbi
   r-biocmanager
+  r-biocstyle
   r-diagram
   r-genomicranges
   r-geoquery
