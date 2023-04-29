@@ -1,6 +1,6 @@
 pkgbase = r-chromscape
 	pkgdesc = Analysis of single-cell epigenomics datasets with a Shiny App
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ChromSCape
 	arch = x86_64
@@ -66,7 +66,7 @@ pkgbase = r-chromscape
 	optdepends = r-rmarkdown
 	optdepends = r-signac
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ChromSCape_1.8.0.tar.gz
-	sha256sums = d3b272cf3e66a873e818c019b6931b08be2a587d9f922af24328e26f04627b7f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ChromSCape_1.10.0.tar.gz
+	sha256sums = bb53239d257688b87eb3b28c01812b49f07fd21784e4f62e97202efd41f5afec
 
 pkgname = r-chromscape
