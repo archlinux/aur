@@ -1,0 +1,4 @@
+post_install() {
+  getent passwd nostr-rs-relay 2> /dev/null > /dev/null || useradd --system -M --shell /usr/bin/nologin --home-dir /var/lib/nostr-rs-relay nostr-rs-relay
+  chown nostr-rs-relay:nostr-rs-relay var/lib/nostr-rs-relay
+}
