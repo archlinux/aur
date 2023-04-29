@@ -1,6 +1,6 @@
 pkgbase = r-bnem
 	pkgdesc = Training of logical models from indirect measurements of perturbation experiments
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/bnem
 	arch = any
@@ -23,8 +23,10 @@ pkgbase = r-bnem
 	depends = r-sva
 	depends = r-vsn
 	optdepends = r-biocgenerics
+	optdepends = r-biocstyle
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/bnem_1.6.0.tar.gz
-	sha256sums = 270490176c99c7a92cd09fb85987537c04bef1de8065f9a1dca36024a1b0fd6c
+	optdepends = r-matrixgenerics
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/bnem_1.8.0.tar.gz
+	sha256sums = 01ebbd91c316249b98ead5ae16f0efcc166973bc9296c9fbb066e368012257be
 
 pkgname = r-bnem
