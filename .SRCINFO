@@ -1,6 +1,6 @@
 pkgbase = r-rnainteract
 	pkgdesc = Estimate Pairwise Interactions from multidimensional features
-	pkgver = 1.46.0
+	pkgver = 1.48.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RNAinteract
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-rnainteract
 	depends = r-locfit
 	depends = r-rcolorbrewer
 	depends = r-splots
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RNAinteract_1.46.0.tar.gz
-	sha256sums = 1ab4e29544214d97f9b3723461c3de8498160f65a3fc8be0dd7c3f82f99cd0a3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RNAinteract_1.48.0.tar.gz
+	sha256sums = 61a98e2818f83734b68eddaf6c7e3d0af3d938faacc7c49537d95380e4896c72
 
 pkgname = r-rnainteract

@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RNAinteract
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='Estimate Pairwise Interactions from multidimensional features'
 arch=('any')
@@ -26,7 +26,7 @@ depends=(
   r-splots
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1ab4e29544214d97f9b3723461c3de8498160f65a3fc8be0dd7c3f82f99cd0a3')
+sha256sums=('61a98e2818f83734b68eddaf6c7e3d0af3d938faacc7c49537d95380e4896c72')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
