@@ -1,35 +1,30 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GWAS.BAYES
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='GWAS for Selfing Species'
-arch=('x86_64')
+arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('GPL')
 depends=(
   r
   r-caret
-  r-doparallel
   r-ga
-  r-ggplot2
+  r-limma
   r-memoise
-  r-rcpp
-  r-rcppeigen
-  r-reshape2
 )
 optdepends=(
   r-biocstyle
   r-formatr
   r-knitr
-  r-qqman
   r-rmarkdown
   r-rrblup
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8cf40e0c89357008d63d4336e5c119e29ec41e3ad175847991ab8eafc50c88c0')
+sha256sums=('22135803db84db53608f3fb0461acf66d2827cb6c2418c06dd0fedcea4cdafa3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
