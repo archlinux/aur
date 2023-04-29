@@ -4,7 +4,7 @@ _pkgname=SCFA
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=1.10.0
-pkgrel=1
+pkgrel=3
 pkgdesc='SCFA: Subtyping via Consensus Factor Analysis'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -21,6 +21,7 @@ depends=(
   r-torch
 )
 optdepends=(
+  r-biocstyle
   r-knitr
   r-rmarkdown
 )
