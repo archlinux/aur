@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bnbc
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Bandwise normalization and batch correction of Hi-C data'
 arch=('x86_64')
@@ -32,7 +32,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('438478102d81d4337d529aff09628e580cb8c4e3b704720bb2dc8fd0028b9ca3')
+sha256sums=('89116a18b093531044efd6d8279be747da8efbd0a68ad8c3a1f63eda941b3d41')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
