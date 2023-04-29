@@ -47,6 +47,4 @@ package() {
 
 	cd "${srcdir}/${_pkgname}/deploy/"
 	install -Dm644 LenovoLegionLinux.hook ${pkgdir}/etc/pacman.d/hooks/LenovoLegionLinux.hook
-
-	mv ${pkgdir}/usr/bin ${pkgdir}/usr/local/ #move from /usr/bin to /usr/local/bin (for legion_gui.desktop to work)
 }
