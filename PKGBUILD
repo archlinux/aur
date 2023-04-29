@@ -4,7 +4,7 @@ _pkgname=nempi
 _pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=1.8.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Inferring unobserved perturbations from gene expression data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -20,6 +20,7 @@ depends=(
 )
 optdepends=(
   r-biocgenerics
+  r-biocstyle
   r-knitr
   r-rmarkdown
   r-runit
