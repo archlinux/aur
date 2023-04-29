@@ -4,7 +4,7 @@ _pkgname=rWikiPathways
 _pkgver=1.20.0
 pkgname=r-${_pkgname,,}
 pkgver=1.20.0
-pkgrel=1
+pkgrel=3
 pkgdesc='rWikiPathways - R client library for the WikiPathways API'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -20,7 +20,6 @@ depends=(
 )
 optdepends=(
   r-biocstyle
-  r-bridgedbr
   r-knitr
   r-rmarkdown
   r-testthat
