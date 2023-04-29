@@ -1,8 +1,8 @@
 pkgbase = r-scmageck
 	pkgdesc = Identify genes associated with multiple expression phenotypes in single-cell CRISPR screening data
 	pkgver = 1.9.1
-	pkgrel = 1
-	url = https://bioconductor.org/packages/scMAGeCK
+	pkgrel = 4
+	url = https://bioconductor.org/packages/3.16/scMAGeCK
 	arch = x86_64
 	license = BSD
 	depends = r
@@ -10,7 +10,7 @@ pkgbase = r-scmageck
 	depends = r-seurat
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scMAGeCK_1.9.1.tar.gz
+	source = https://bioconductor.org/packages/3.16/bioc/src/contrib/scMAGeCK_1.9.1.tar.gz
 	sha256sums = 7e6da2a50930d7e436a519eba780de746289a2e6228854c7c4ca9896bb44d4c4
 
 pkgname = r-scmageck

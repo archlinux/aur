@@ -4,10 +4,10 @@ _pkgname=scMAGeCK
 _pkgver=1.9.1
 pkgname=r-${_pkgname,,}
 pkgver=1.9.1
-pkgrel=1
+pkgrel=4
 pkgdesc='Identify genes associated with multiple expression phenotypes in single-cell CRISPR screening data'
 arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.16/${_pkgname}"
 license=('BSD')
 depends=(
   r
@@ -18,7 +18,7 @@ optdepends=(
   r-knitr
   r-rmarkdown
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.16/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('7e6da2a50930d7e436a519eba780de746289a2e6228854c7c4ca9896bb44d4c4')
 
 build() {
