@@ -4,7 +4,7 @@ _pkgname=ROC
 _pkgver=1.76.0
 pkgname=r-${_pkgname,,}
 pkgver=1.76.0
-pkgrel=1
+pkgrel=3
 pkgdesc='utilities for ROC, with microarray focus'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -15,6 +15,7 @@ depends=(
 )
 optdepends=(
   r-biobase
+  r-biocstyle
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
