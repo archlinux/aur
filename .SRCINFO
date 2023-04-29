@@ -1,6 +1,6 @@
 pkgbase = r-mia
 	pkgdesc = Microbiome analysis
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/mia
 	arch = any
@@ -41,7 +41,7 @@ pkgbase = r-mia
 	optdepends = r-stringr
 	optdepends = r-testthat
 	optdepends = r-yaml
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/mia_1.6.0.tar.gz
-	sha256sums = ccfaca9cc948778e10bc6157fa95f69db0157c7abcc7cf1b63b934b3df43e87b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/mia_1.8.0.tar.gz
+	sha256sums = 3fa492cd84d5e684af081ea244f7218bf042a9ddc38a7ad486f131d099f2e8dc
 
 pkgname = r-mia
