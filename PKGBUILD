@@ -4,7 +4,7 @@ _pkgname=EWCE
 _pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=1.8.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Expression Weighted Celltype Enrichment'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -27,23 +27,19 @@ depends=(
   r-summarizedexperiment
 )
 optdepends=(
-  r-badger
   r-biocstyle
-  r-cowplot
   r-delayedmatrixstats
   r-deseq2
   r-ggdendro
-  r-grdevices
-  r-grid
-  r-gridextra
   r-knitr
-  r-magick
   r-markdown
   r-mast
   r-memoise
+  r-patchwork
   r-readxl
   r-remotes
   r-rmarkdown
+  r-rworkflows
   r-scales
   r-sctransform
   r-testthat
