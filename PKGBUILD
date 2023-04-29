@@ -23,12 +23,12 @@ sha256sums=('SKIP')
 install="lenovolegionlinux.install"
 
 pkgver() {
-  cd "$pkgname"
+  cd "${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
-  cd "$_pkgname"
+  cd "${_pkgname}"
   pkgver_commit=$(echo $pkgver | cut -c 6-)
   git checkout $pkgver_commit
 }
