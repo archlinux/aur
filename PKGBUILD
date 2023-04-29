@@ -50,7 +50,7 @@ _disable_debug=y
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20230323.r0.g7c4a254d78f8
+pkgver=20230428.r0.g92e815cf07ed
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -59,12 +59,12 @@ url="http://www.kernel.org/"
 license=('GPL2')
 options=('!strip')
 makedepends=('bc' 'libelf' 'git' 'pahole' 'cpio' 'perl' 'tar' 'xz')
-_lucjanver=6.2
+_lucjanver=6.3
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_lucjanver}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver}"
 
 source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/next/${_srcname}.git"
-        "${_lucjanpath}/arch-patches-v2-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
          # the main kernel config files
         'config')
 
@@ -77,6 +77,11 @@ pkgver() {
   git describe --long --tags |  sed 's/next.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+_make() {
+  test -s version
+  make KERNELRELEASE="$(<version)" "$@"
+}
+
 prepare() {
     cd $_srcname
 
@@ -84,6 +89,9 @@ prepare() {
         echo "Setting version..."
         echo "-$pkgrel" > localversion.10-pkgrel
         echo "${pkgbase#linux}" > localversion.20-pkgname
+        make defconfig
+        make -s kernelrelease > version
+        make mrproper
 
     ### Patching sources
         local src
@@ -98,12 +106,10 @@ prepare() {
     ### Setting config
         echo "Setting config..."
         cp ../config .config
-        make olddefconfig
+        _make olddefconfig
         diff -u ../config .config || :
 
     ### Prepared version
-        make include/config/kernel.release
-        make -s kernelrelease > version
         echo "Prepared $pkgbase version $(<version)"
 
     ### Optionally use running kernel's config
@@ -171,7 +177,7 @@ prepare() {
         if [ -n "$_localmodcfg" ]; then
             if [ -f $HOME/.config/modprobed.db ]; then
             echo "Running Steven Rostedt's make localmodconfig now"
-            make LSMOD=$HOME/.config/modprobed.db localmodconfig
+            _make LSMOD=$HOME/.config/modprobed.db localmodconfig
         else
             echo "No modprobed.db data found"
             exit
@@ -179,16 +185,16 @@ prepare() {
         fi
 
     ### Running make nconfig
-	[[ -z "$_makenconfig" ]] ||  make nconfig
+	[[ -z "$_makenconfig" ]] ||  _make nconfig
 
     ### Running make menuconfig
-	[[ -z "$_makemenuconfig" ]] || make menuconfig
+	[[ -z "$_makemenuconfig" ]] || _make menuconfig
 
     ### Running make xconfig
-	[[ -z "$_makexconfig" ]] || make xconfig
+	[[ -z "$_makexconfig" ]] || _make xconfig
 
     ### Running make gconfig
-	[[ -z "$_makegconfig" ]] || make gconfig
+	[[ -z "$_makegconfig" ]] || _make gconfig
 
     ### Save configuration for later reuse
 	cat .config > "${startdir}/config.last"
@@ -197,7 +203,7 @@ prepare() {
 build() {
   cd $_srcname
 
-  make all
+  _make all
 }
 
 _package() {
@@ -209,19 +215,18 @@ _package() {
     provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
 
   cd $_srcname
-  local kernver="$(<version)"
-  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
+  local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
   echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$(_make -s image_name)" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+  _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
@@ -321,5 +326,5 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha512sums=('SKIP'
-            '28dc56be7060b2398c33d936ec44527fa9efb042b314c96c1568a6d10ca051a1880672deeb57112aa4f5cf72064d67c1494cd1fb52c4e9dfa33a761d6b3692d1'
-            '6637ef630babc8f5f6787a276da59142c1ff645cd2b1fdb1242fed4dd7306f8599c1f14b0eadb8de89bdd4cca72a9b74e4de9656ac51370265a774762b3e5d10')
+            'bc576268e8c8b238967de07aa26347b425395c582fd03088724fd80feddf504183325db12f769fa56ce60c66e847dd33000a566d3e57ad96cbc3b6414fa5f4dd'
+            '4670e9124a6efe520897ca2979d5b96ec98bd9cf88bda82f720ff5fd4fd843110ecc1fc8a02837a4395713c469e1c8c3743a2b687fdd9dd4b5b43aa2cae767b3')
