@@ -1,7 +1,7 @@
 pkgbase = r-genomicfiles
 	pkgdesc = Distributed computing by file or by range
 	pkgver = 1.36.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/GenomicFiles
 	arch = any
 	license = Artistic2.0
@@ -23,6 +23,7 @@ pkgbase = r-genomicfiles
 	optdepends = r-deepsnv
 	optdepends = r-genefilter
 	optdepends = r-homo.sapiens
+	optdepends = r-knitr
 	optdepends = r-rnaseqdata.hnrnpc.bam.chr14
 	optdepends = r-runit
 	optdepends = r-snpstats

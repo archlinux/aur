@@ -4,7 +4,7 @@ _pkgname=GenomicFiles
 _pkgver=1.36.0
 pkgname=r-${_pkgname,,}
 pkgver=1.36.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Distributed computing by file or by range'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -30,6 +30,7 @@ optdepends=(
   r-deepsnv
   r-genefilter
   r-homo.sapiens
+  r-knitr
   r-rnaseqdata.hnrnpc.bam.chr14
   r-runit
   r-snpstats
