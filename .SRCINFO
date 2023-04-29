@@ -7,7 +7,7 @@ pkgbase = resolve-march-native
 	license = GPL
 	checkdepends = python-pytest
 	makedepends = python-setuptools
-	depends = python
+	depends = python>=3.7
 	source = resolve-march-native-2.2.0.tar.gz::https://github.com/hartwork/resolve-march-native/archive/2.2.0.tar.gz
 	sha256sums = 4d41033a3d5890f42dcf4b42f2363b43e477e2d3386ed7b4afa4392d8a553506
 
