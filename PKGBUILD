@@ -1,7 +1,7 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail dote com>
 pkgname=make-lvm-snapshot
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Make a consistent LVM snapshot of the root volume"
 arch=('any')
 url="https://gitlab.com/Marcool04/$pkgname/"
@@ -11,7 +11,7 @@ install="$pkgname.install"
 source=("${url}/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         "$pkgname.install")
 sha256sums=('86efc5ced5f7ea64e8020c7190f1989c94f41176e82a3bb2abfa805b3db752c2'
-            '8fc5a679091d79b95d29743abfa5e45ea70647996eb1958ef8457323416d8ac2')
+            '98cebca98f1f94e33653fbb2b81c305877f466076298204413c3e929fa051443')
 
 package() {
 	cd "$pkgname-$pkgver"

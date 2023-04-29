@@ -1,7 +1,7 @@
 ## arg 1:  the new package version
 
 _do_fix_vg_vol() {
-	echo "POST-INSTALL: enabling make-lvm-snapshot.service in target make-lvm-snapshot.service"
+	echo "POST-INSTALL: enabling make-lvm-snapshot.service in target make-lvm-snapshot.target"
 	if systemctl enable make-lvm-snapshot.service; then
 		echo "POST-INSTALL: done"
 	else
