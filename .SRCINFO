@@ -1,7 +1,7 @@
 pkgbase = dumux
 	pkgdesc = An open-source simulator and research code in modern C++
 	pkgver = 3.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dumux.org
 	arch = x86_64
 	license = GPL3
