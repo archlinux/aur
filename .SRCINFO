@@ -1,7 +1,7 @@
 pkgbase = r-amaretto
 	pkgdesc = Regulatory Network Inference and Driver Gene Evaluation using Integrative Multi-Omics Analysis and Penalized Regression
 	pkgver = 1.16.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/AMARETTO
 	arch = any
 	license = Apache
@@ -29,6 +29,7 @@ pkgbase = r-amaretto
 	depends = r-reshape2
 	depends = r-rmarkdown
 	depends = r-tibble
+	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-mass
 	optdepends = r-testthat

@@ -4,7 +4,7 @@ _pkgname=AMARETTO
 _pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=1.16.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Regulatory Network Inference and Driver Gene Evaluation using Integrative Multi-Omics Analysis and Penalized Regression'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -36,6 +36,7 @@ depends=(
   r-tibble
 )
 optdepends=(
+  r-biocstyle
   r-knitr
   r-mass
   r-testthat
