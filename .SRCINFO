@@ -1,6 +1,6 @@
 pkgbase = r-tricycle
 	pkgdesc = tricycle: Transferable Representation and Inference of cell cycle
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/tricycle
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = r-tricycle
 	optdepends = r-rmarkdown
 	optdepends = r-seurat
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/tricycle_1.6.0.tar.gz
-	sha256sums = 7cdb5f7e733d5fc9e1d1261c969c8c471ffd97db4127075cff433cee217eaa2c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/tricycle_1.8.0.tar.gz
+	sha256sums = 06ef70d15f950bcf979dd8ad0858717514247bcd47e309a6966190087301faa9
 
 pkgname = r-tricycle
