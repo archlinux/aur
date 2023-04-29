@@ -1,0 +1,31 @@
+pkgbase = r-wrswor
+	pkgdesc = Weighted Random Sampling without Replacement
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=wrswoR
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-logging
+	depends = r-rcpp
+	optdepends = r-batchexperiments
+	optdepends = r-biocmanager
+	optdepends = r-dplyr
+	optdepends = r-ggplot2
+	optdepends = r-import
+	optdepends = r-kimisc
+	optdepends = r-knitcitations
+	optdepends = r-knitr
+	optdepends = r-metap
+	optdepends = r-microbenchmark
+	optdepends = r-rmarkdown
+	optdepends = r-roxygen2
+	optdepends = r-rticles
+	optdepends = r-sampling
+	optdepends = r-testthat
+	optdepends = r-tidyr
+	optdepends = r-tikzdevice
+	source = https://cran.r-project.org/src/contrib/wrswoR_1.1.1.tar.gz
+	sha256sums = 11045a62feef679bbcb02a0ede8a2c5985393df57f47b67da2733884116016e0
+
+pkgname = r-wrswor
