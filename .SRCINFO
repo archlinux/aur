@@ -1,6 +1,6 @@
 pkgbase = r-champ
 	pkgdesc = Chip Analysis Methylation Pipeline for Illumina HumanMethylation450 and EPIC
-	pkgver = 2.28.0
+	pkgver = 2.30.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ChAMP
 	arch = any
@@ -47,7 +47,7 @@ pkgbase = r-champ
 	depends = r-watermelon
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ChAMP_2.28.0.tar.gz
-	sha256sums = a13371f176a3a5d28136088b417d2456da3a762e30e4e0b7483de35887025a83
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ChAMP_2.30.0.tar.gz
+	sha256sums = ec0b4e9e5fdef5a0fcd92a82486ed112524792ab750678ac0790770a52bda2df
 
 pkgname = r-champ
