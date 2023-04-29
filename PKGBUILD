@@ -4,10 +4,10 @@ _pkgname=TCGAbiolinksGUI
 _pkgver=1.23.0
 pkgname=r-${_pkgname,,}
 pkgver=1.23.0
-pkgrel=1
+pkgrel=4
 pkgdesc='"TCGAbiolinksGUI: A Graphical User Interface to analyze cancer molecular and clinical data"'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.16/${_pkgname}"
 license=('GPL')
 depends=(
   r
@@ -48,7 +48,7 @@ optdepends=(
   r-testthat
   r-xml2
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.16/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('bd61457b41b884759d93f1fc619c215a843c69b52cf83270d8f433c6be3ee598')
 
 build() {
