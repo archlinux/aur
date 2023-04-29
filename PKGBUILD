@@ -3,7 +3,7 @@
 _pkgname=NGLVieweR
 _pkgver=1.3.1
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Interactive 3D Visualization of Molecular Structures'
 arch=('any')
