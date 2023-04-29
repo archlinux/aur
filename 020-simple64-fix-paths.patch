@@ -97,7 +97,7 @@
  #include "osal/osal_dynamiclib.h"
  #include "vruwords.h"
  #include "funcs.h"
-@@ -726,7 +726,7 @@ static int setupVosk()
+@@ -750,7 +750,7 @@ static int setupVosk()
  {
      if (voskLib)
          return 0;
