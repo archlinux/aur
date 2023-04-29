@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=transformGamPoi
-_pkgver=1.4.0
+_pkgver=1.5.1
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
-pkgrel=3
+pkgver=1.5.1
+pkgrel=1
 pkgdesc='Variance Stabilizing Transformation for Gamma-Poisson Models'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -19,6 +19,7 @@ depends=(
   r-summarizedexperiment
 )
 optdepends=(
+  r-biocstyle
   r-knitr
   r-rmarkdown
   r-scran
@@ -26,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('591309271ac03500f389bd7a78a5b8222c9c57ef487e51ba835f4e44eb0a13c6')
+sha256sums=('8a62a79bcd0c1b6649c20fb4d406eefdfca270fb575487562e5bb0b8e8024da8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
