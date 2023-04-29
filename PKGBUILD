@@ -4,10 +4,10 @@ _pkgname=conclus
 _pkgver=1.5.0
 pkgname=r-${_pkgname,,}
 pkgver=1.5.0
-pkgrel=1
+pkgrel=4
 pkgdesc='ScRNA-seq Workflow CONCLUS - From CONsensus CLUSters To A Meaningful CONCLUSion'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.16/${_pkgname}"
 license=('GPL')
 depends=(
   r
@@ -46,7 +46,7 @@ optdepends=(
   r-s4vectors
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.16/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('4c9aa76ae7b27d7d50320f5e2069a739acbf7097c7d803f0075e77dcf5383327')
 
 build() {

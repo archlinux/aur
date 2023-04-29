@@ -1,8 +1,8 @@
 pkgbase = r-conclus
 	pkgdesc = ScRNA-seq Workflow CONCLUS - From CONsensus CLUSters To A Meaningful CONCLUSion
 	pkgver = 1.5.0
-	pkgrel = 1
-	url = https://bioconductor.org/packages/conclus
+	pkgrel = 4
+	url = https://bioconductor.org/packages/3.16/conclus
 	arch = any
 	license = GPL
 	depends = r
@@ -38,7 +38,7 @@ pkgbase = r-conclus
 	optdepends = r-rmarkdown
 	optdepends = r-s4vectors
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/conclus_1.5.0.tar.gz
+	source = https://bioconductor.org/packages/3.16/bioc/src/contrib/conclus_1.5.0.tar.gz
 	sha256sums = 4c9aa76ae7b27d7d50320f5e2069a739acbf7097c7d803f0075e77dcf5383327
 
 pkgname = r-conclus
