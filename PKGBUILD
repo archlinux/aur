@@ -4,10 +4,10 @@ _pkgname=coexnet
 _pkgver=1.19.1
 pkgname=r-${_pkgname,,}
 pkgver=1.19.1
-pkgrel=1
+pkgrel=4
 pkgdesc='coexnet: An R package to build CO-EXpression NETworks from Microarray Data'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.16/${_pkgname}"
 license=('LGPL')
 depends=(
   r
