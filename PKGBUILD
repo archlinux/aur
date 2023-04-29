@@ -2,7 +2,7 @@
 # Contributor: Sam Burgos <santiago.burgos1089@gmail.com>
 # Contributor: Jonathon Fernyhough <jonathon+m2x@dev>
 # Contributor: Leo <olorin12+gmail+com>
-
+# Contributor: Daniel Menelkir <menelkir@gmail.com>
 pkgname=hypnotix-git
 pkgver=3.2.r2.g0d28083
 pkgrel=1
