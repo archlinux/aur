@@ -1,0 +1,13 @@
+pkgbase = r-cvtools
+	pkgdesc = Cross-validation tools for regression models
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=cvTools
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-robustbase
+	source = https://cran.r-project.org/src/contrib/cvTools_0.3.2.tar.gz
+	sha256sums = 520f0b194444d918440e971b16ad4e8579f953dd6d39ffc5f87b61589b59fd2c
+
+pkgname = r-cvtools
