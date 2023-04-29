@@ -4,7 +4,7 @@ _pkgname=ExperimentHub
 _pkgver=2.8.0
 pkgname=r-${_pkgname,,}
 pkgver=2.8.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Client to access ExperimentHub resources'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -15,7 +15,6 @@ depends=(
   r-biocfilecache
   r-biocgenerics
   r-biocmanager
-  r-curl
   r-rappdirs
   r-s4vectors
 )
