@@ -1,0 +1,16 @@
+pkgbase = tlsc
+	pkgdesc = TLS connect daemon
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/Zirias/tlsc
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = openssl
+	depends = git
+	source = tlsc-1.1.tar.gz::https://github.com/Zirias/tlsc/archive/refs/tags/v1.1.tar.gz
+	source = zimk::git+https://github.com/Zirias/zimk#commit=0def4fa
+	sha256sums = b04295f090e6d7e2d78256eb3df547549186c9b3423a0229ba84b5a6ffde2b42
+	sha256sums = SKIP
+
+pkgname = tlsc
