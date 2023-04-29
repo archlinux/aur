@@ -1,6 +1,6 @@
 pkgbase = python-passwdgen
 	pkgdesc = A simple password generation utility
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/thanethomson/passwdgen
 	arch = any
@@ -10,7 +10,8 @@ pkgbase = python-passwdgen
 	makedepends = python-wheel
 	depends = python
 	depends = python-pyperclip
-	source = https://files.pythonhosted.org/packages/source/p/passwdgen/passwdgen-0.3.1.tar.gz
-	sha256sums = 8f52c277633b461b53f1b18ef809a21d20c04a0cbdf6a9f67cff2596d4b328d6
+	provides = passwdgen
+	source = https://files.pythonhosted.org/packages/source/p/passwdgen/passwdgen-0.4.0.tar.gz
+	sha256sums = 081437e2f2958a0df934ec6de37c383f0c465675709f4e650f46c89c08484c94
 
 pkgname = python-passwdgen
