@@ -1,12 +1,13 @@
 pkgbase = r-treeio
 	pkgdesc = Base Classes and Functions for Phylogenetic Tree Input and Output
 	pkgver = 1.24.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/treeio
 	arch = any
 	license = Artistic2.0
 	depends = r
 	depends = r-ape
+	depends = r-cli
 	depends = r-dplyr
 	depends = r-jsonlite
 	depends = r-magrittr
