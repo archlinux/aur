@@ -1,6 +1,6 @@
 pkgbase = r-genemeta
 	pkgdesc = MetaAnalysis for High Throughput Experiments
-	pkgver = 1.70.0
+	pkgver = 1.72.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GeneMeta
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = r-genemeta
 	depends = r-biobase
 	depends = r-genefilter
 	optdepends = r-rcolorbrewer
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GeneMeta_1.70.0.tar.gz
-	sha256sums = 4658919a6c66d5f026f847e0e4f66925e5e615860f2c76576df95a59f5b2f2bd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GeneMeta_1.72.0.tar.gz
+	sha256sums = 51de2af6d705594228ebe2d3ca1088995774a1caa7becddb047839347901521f
 
 pkgname = r-genemeta
