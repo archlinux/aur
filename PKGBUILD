@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ArrayExpress
-_pkgver=1.57.0
+_pkgver=1.60.0
 pkgname=r-${_pkgname,,}
-pkgver=1.57.0
+pkgver=1.60.0
 pkgrel=1
 pkgdesc='Access the ArrayExpress Microarray Database at EBI and build Bioconductor data structures: ExpressionSet, AffyBatch, NChannelSet'
 arch=('any')
@@ -12,15 +12,17 @@ license=('Artistic2.0')
 depends=(
   r
   r-biobase
+  r-httr
+  r-jsonlite
   r-limma
   r-oligo
-  r-xml
+  r-rlang
 )
 optdepends=(
   r-affy
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('86a3fba6143ff8ab5aa9e477c2eb9c4c5a77b3a37c3bbae75c9330594349f1bb')
+sha256sums=('df5d104d803c742576adc6d388865a9b0fc6f81d4a3382c09c4aa733b81b63c5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
