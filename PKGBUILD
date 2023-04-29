@@ -6,7 +6,7 @@
 
 _pkgname=audacious-plugins
 pkgname=$_pkgname-gtk3
-pkgver=4.3
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="Plugins for Audacious"
 arch=('i686' 'x86_64')
@@ -22,11 +22,10 @@ makedepends=('glib2' 'python')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("https://distfiles.audacious-media-player.org/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('662ef6c8c4bd70d0f35fd1c5f08b91549b9436638b65f8a1a33956b09df89fc6')
+sha256sums=('2dea26e3af583a2d684df240b27b2b2932bcd653df4db500a85f4fe5d5fdc8a6')
 
 build() {
   cd "$_pkgname-$pkgver"
-
   ./configure \
     --prefix=/usr \
     --enable-gtk3 \
