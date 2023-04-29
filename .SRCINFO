@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-sound-output-device-chooser-git
 	pkgdesc = Enable selection of sound source and sink devices.
-	pkgver = r314.9af403c
+	pkgver = r320.593d652
 	pkgrel = 1
 	url = https://github.com/kgshank/gse-sound-output-device-chooser.git
 	install = device-chooser.install

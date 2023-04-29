@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=gnome-shell-extension-sound-output-device-chooser-git
-pkgver=r314.9af403c
+pkgver=r320.593d652
 pkgrel=1
 pkgdesc="Enable selection of sound source and sink devices."
 arch=('any')
