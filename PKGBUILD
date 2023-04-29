@@ -4,7 +4,7 @@ _pkgname=hummingbird
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=1.10.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Bayesian Hidden Markov Model for the detection of differentially methylated regions'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -17,6 +17,7 @@ depends=(
   r-summarizedexperiment
 )
 optdepends=(
+  r-biocstyle
   r-knitr
   r-rmarkdown
 )
