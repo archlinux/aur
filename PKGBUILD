@@ -4,7 +4,7 @@ _pkgname=ScaledMatrix
 _pkgver=1.7.1
 pkgname=r-${_pkgname,,}
 pkgver=1.7.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Creating a DelayedMatrix of Scaled and Centered Values'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -17,6 +17,7 @@ depends=(
 optdepends=(
   r-biocsingular
   r-biocstyle
+  r-delayedmatrixstats
   r-knitr
   r-rmarkdown
   r-testthat

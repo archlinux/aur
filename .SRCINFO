@@ -1,7 +1,7 @@
 pkgbase = r-scaledmatrix
 	pkgdesc = Creating a DelayedMatrix of Scaled and Centered Values
 	pkgver = 1.7.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/ScaledMatrix
 	arch = any
 	license = GPL
@@ -10,6 +10,7 @@ pkgbase = r-scaledmatrix
 	depends = r-s4vectors
 	optdepends = r-biocsingular
 	optdepends = r-biocstyle
+	optdepends = r-delayedmatrixstats
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
