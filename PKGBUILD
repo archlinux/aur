@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=esATAC
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='An Easy-to-use Systematic pipeline for ATACseq data analysis'
 arch=('x86_64')
@@ -49,12 +49,13 @@ depends=(
 optdepends=(
   r-bsgenome.hsapiens.ucsc.hg19
   r-org.hs.eg.db
+  r-prettydoc
   r-testthat
   r-txdb.hsapiens.ucsc.hg19.knowngene
   r-webshot
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d319a47562c19311e86276a130c515fd3263fc7e892110b92e9b79254028bbd9')
+sha256sums=('d54b49d859da6d90abc21feb78a11b0813837bbd5fcd526035b7e33f3e23cfc3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
