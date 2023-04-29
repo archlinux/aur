@@ -1,7 +1,7 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail dote com>
 pkgname=make-lvm-snapshot
 pkgver=0.1.0
-pkgrel=1
+pkgrel=5
 pkgdesc="Make a consistent LVM snapshot of the root volume"
 arch=('any')
 url="https://gitlab.com/Marcool04/$pkgname/"

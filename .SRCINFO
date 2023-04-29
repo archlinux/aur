@@ -1,7 +1,7 @@
 pkgbase = make-lvm-snapshot
 	pkgdesc = Make a consistent LVM snapshot of the root volume
 	pkgver = 0.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.com/Marcool04/make-lvm-snapshot/
 	install = make-lvm-snapshot.install
 	arch = any
