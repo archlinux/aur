@@ -4,7 +4,7 @@ _pkgname=compcodeR
 _pkgver=1.36.0
 pkgname=r-${_pkgname,,}
 pkgver=1.36.0
-pkgrel=1
+pkgrel=3
 pkgdesc='RNAseq data simulation, differential expression analysis and performance comparison of differential expression methods'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -45,6 +45,7 @@ optdepends=(
   r-rmarkdown
   r-rpanel
   r-statmod
+  r-sva
   r-tcc
   r-testthat
   r-tidytree
