@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ReportingTools
-_pkgver=2.38.0
+_pkgver=2.39.0
 pkgname=r-${_pkgname,,}
-pkgver=2.38.0
+pkgver=2.39.0
 pkgrel=1
 pkgdesc='Tools for making reports in various formats'
 arch=('any')
@@ -42,7 +42,7 @@ optdepends=(
   r-shiny
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c0673fe479e09590b789ade6d91c50ad7f5e568aa9bc9debf7606301c0b22fdb')
+sha256sums=('818a5c2d54988b29dfa43f0ad189189a698bf342ea38279003fe6cd71bde0796')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
