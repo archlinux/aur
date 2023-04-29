@@ -4,7 +4,7 @@ _pkgname=sitadela
 _pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=1.8.0
-pkgrel=1
+pkgrel=3
 pkgdesc='An R package for the easy provision of simple but complete tab-delimited genomic annotation from a variety of sources and organisms'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -25,6 +25,7 @@ depends=(
   r-s4vectors
 )
 optdepends=(
+  r-biocstyle
   r-bsgenome
   r-knitr
   r-rmarkdown
