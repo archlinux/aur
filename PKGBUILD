@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scTensor
-_pkgver=2.8.0
+_pkgver=2.10.0
 pkgname=r-${_pkgname,,}
-pkgver=2.8.0
+pkgver=2.10.0
 pkgrel=1
 pkgdesc='Detection of cell-cell interaction from single-cell RNA-seq dataset by tensor decomposition'
 arch=('any')
@@ -52,7 +52,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f8aa701592639f4bfb38d62aa8555a7aca57122ff8cc09c653cdfb40f7e02544')
+sha256sums=('eb22b834c51466545b9f7076a6aab2ef9235d506ef23bebd7922d0a5d78677a8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
