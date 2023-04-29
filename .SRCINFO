@@ -1,7 +1,7 @@
 pkgbase = r-isocorrector
 	pkgdesc = Correction for natural isotope abundance and tracer purity in MS and MS/MS data from stable isotope labeling experiments
 	pkgver = 1.18.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/IsoCorrectoR
 	arch = any
 	license = GPL
@@ -15,6 +15,7 @@ pkgbase = r-isocorrector
 	depends = r-stringr
 	depends = r-tibble
 	depends = r-writexls
+	optdepends = r-biocstyle
 	optdepends = r-isocorrectorgui
 	optdepends = r-knitr
 	optdepends = r-rmarkdown

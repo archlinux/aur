@@ -4,7 +4,7 @@ _pkgname=IsoCorrectoR
 _pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=1.18.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Correction for natural isotope abundance and tracer purity in MS and MS/MS data from stable isotope labeling experiments'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -22,6 +22,7 @@ depends=(
   r-writexls
 )
 optdepends=(
+  r-biocstyle
   r-isocorrectorgui
   r-knitr
   r-rmarkdown
