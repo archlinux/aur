@@ -1,13 +1,14 @@
 pkgbase = r-ssrch
 	pkgdesc = a simple search engine
 	pkgver = 1.16.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/ssrch
 	arch = any
 	license = Artistic2.0
 	depends = r
 	depends = r-dt
 	depends = r-shiny
+	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
