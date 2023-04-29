@@ -2,9 +2,10 @@
 
 pkgname=jdk8-temurin
 _jdkver=8u372-b07
-_jvmname=${pkgname/jdk/java-}
+_majorver=8
+_jvmdir=/usr/lib/jvm/java-${_majorver}-temurin
 pkgver=${_jdkver//-}
-pkgrel=1
+pkgrel=2
 pkgdesc="Temurin (OpenJDK 8 Java binaries by Adoptium, formerly AdoptOpenJDK)"
 arch=('x86_64')
 url="https://adoptium.net/"
@@ -24,12 +25,30 @@ install=install_jdk8-temurin.sh # Script to be executed after package installati
 provides=('java-environment=8' 'java-runtime=8') # Provides the 'java-environment=8' and 'java-runtime=8' virtual packages
 
 package() {
-  cd "${srcdir}"
-  # Install the license file
-  install -Dm644 jdk${_jdkver}/LICENSE "${pkgdir}/usr/share/licenses/${_jvmname}/LICENSE"
-  # Install the JDK files
-  mkdir -p "${pkgdir}/usr/lib/jvm/${_jvmname}"
-  tar xf "OpenJDK8U-jdk_x64_linux_hotspot_${pkgver}.tar.gz" \
-      -C "${pkgdir}/usr/lib/jvm/${_jvmname}" \
-      --strip-components=1
+
+  # Create the directories you want to keep
+  install -dm 755 "${pkgdir}${_jvmdir}/bin"
+  install -dm 755 "${pkgdir}${_jvmdir}/include"
+  install -dm 755 "${pkgdir}${_jvmdir}/jre"
+  install -dm 755 "${pkgdir}${_jvmdir}/lib"
+  install -dm 755 "${pkgdir}${_jvmdir}/man"
+
+  # Copy the directories you want to keep
+  cp -a "${srcdir}/jdk${_jdkver}/bin" "${pkgdir}${_jvmdir}"
+  cp -a "${srcdir}/jdk${_jdkver}/include" "${pkgdir}${_jvmdir}"
+  cp -a "${srcdir}/jdk${_jdkver}/jre" "${pkgdir}${_jvmdir}"
+  cp -a "${srcdir}/jdk${_jdkver}/lib" "${pkgdir}${_jvmdir}"
+  cp -a "${srcdir}/jdk${_jdkver}/man" "${pkgdir}${_jvmdir}"
+
+  cd "${pkgdir}${_jvmdir}"
+
+  # Legal
+  install -dm 755 "${pkgdir}/usr/share/licenses"
+
+  # Man pages
+  for f in man/man1/* man/ja/man1/* man/ja_JP.UTF-8/man1/*; do
+    install -Dm 644 "${f}" "${pkgdir}/usr/share/${f/\.1/-temurin${_majorver}.1}"
+  done
+  rm -rf man
+  ln -sf /usr/share/man man
 }
