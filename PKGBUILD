@@ -1,4 +1,5 @@
 # Maintainer: Faaris Ansari <faaris.ansari@pm.me>
+# shellcheck disable=all
 
 pkgname=jdk8-temurin
 _jdkver=8u372-b07
@@ -24,31 +25,21 @@ replaces=("jdk8-adoptopenjdk") # Replaces the old 'jdk8-adoptopenjdk' package
 install=install_jdk8-temurin.sh # Script to be executed after package installation
 provides=('java-environment=8' 'java-runtime=8') # Provides the 'java-environment=8' and 'java-runtime=8' virtual packages
 
+
 package() {
-
-  # Create the directories you want to keep
-  install -dm 755 "${pkgdir}${_jvmdir}/bin"
-  install -dm 755 "${pkgdir}${_jvmdir}/include"
-  install -dm 755 "${pkgdir}${_jvmdir}/jre"
-  install -dm 755 "${pkgdir}${_jvmdir}/lib"
-  install -dm 755 "${pkgdir}${_jvmdir}/man"
-
-  # Copy the directories you want to keep
-  cp -a "${srcdir}/jdk${_jdkver}/bin" "${pkgdir}${_jvmdir}"
-  cp -a "${srcdir}/jdk${_jdkver}/include" "${pkgdir}${_jvmdir}"
-  cp -a "${srcdir}/jdk${_jdkver}/jre" "${pkgdir}${_jvmdir}"
-  cp -a "${srcdir}/jdk${_jdkver}/lib" "${pkgdir}${_jvmdir}"
-  cp -a "${srcdir}/jdk${_jdkver}/man" "${pkgdir}${_jvmdir}"
+  # Only install over these 5 required folders
+  for f in bin include jre lib man; do
+    install -dm 755 "${pkgdir}${_jvmdir}/${f}"
+    cp -a "${srcdir}/jdk${_jdkver}/${f}" "${pkgdir}${_jvmdir}"
+  done
 
   cd "${pkgdir}${_jvmdir}"
 
-  # Legal
+  # License
   install -dm 755 "${pkgdir}/usr/share/licenses"
 
   # Man pages
   for f in man/man1/* man/ja/man1/* man/ja_JP.UTF-8/man1/*; do
     install -Dm 644 "${f}" "${pkgdir}/usr/share/${f/\.1/-temurin${_majorver}.1}"
   done
-  rm -rf man
-  ln -sf /usr/share/man man
 }
