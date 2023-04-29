@@ -6,7 +6,7 @@
 
 pkgname=rutorrent
 _pkgname=ruTorrent
-pkgver=4.1
+pkgver=4.1.3
 _pkgver=$pkgver
 pkgrel=1
 pkgdesc="Yet another web front-end for rTorrent"
@@ -21,7 +21,7 @@ source=(
     apache.example.conf
     apache.example.site.conf
 )
-sha256sums=('a162f71a4b3e82c38f6a2c8a533e43de280be453317e130e4f405e4af93500a7'
+sha256sums=('23a307ae1e90933ab47d8d58c60611124e6201a55740c6dde5332866a9b8199b'
             '79b5aab7ef928727b3ec2aa0f1b0869310adde11cd774d148c03025deb6dec0c'
             '9afe7d2a9aadb5fd6a0fcd907f7f46bdc3630c369a5a684c51bbeeb5b4d354aa')
 backup=( 
