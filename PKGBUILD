@@ -48,6 +48,5 @@ build() {
 package() {
 	cd "$srcdir/$_pkgname"
 	make install PREFIX=/usr DESTDIR="$pkgdir"
-	rmdir "$pkgdir/usr/lib/nyxt" "$pkgdir/usr/lib" # empty directories
 	install -m644 -Dt "$pkgdir/usr/share/licenses/$pkgname/" licenses/*
 }
