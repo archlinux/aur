@@ -1,6 +1,6 @@
 pkgbase = r-methylumi
 	pkgdesc = Handle Illumina methylation data
-	pkgver = 2.44.0
+	pkgver = 2.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/methylumi
 	arch = any
@@ -39,7 +39,7 @@ pkgbase = r-methylumi
 	optdepends = r-sqn
 	optdepends = r-tcgamethylation450k
 	optdepends = r-xtable
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/methylumi_2.44.0.tar.gz
-	sha256sums = 84d507e3008b1d762de2ddaf3ee98d18f1c95eba83ba3e1580dfab39c7f66e1e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/methylumi_2.46.0.tar.gz
+	sha256sums = 8e7e5b4a1f0c7678da6cdf2763ae2932bf6611e29858d22b51e98aeb25bf40a9
 
 pkgname = r-methylumi
