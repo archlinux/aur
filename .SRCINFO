@@ -1,6 +1,6 @@
 pkgbase = r-plogo2
 	pkgdesc = Plot Gene Ontology and KEGG pathway Annotation and Abundance
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/PloGO2
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-plogo2
 	depends = r-httr
 	depends = r-openxlsx
 	depends = r-xtable
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/PloGO2_1.10.0.tar.gz
-	sha256sums = f4be28617f3f1fff078e381a36ab29d3e61d7282f0980173a39f6ab690e9026b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PloGO2_1.12.0.tar.gz
+	sha256sums = 636fb3b64ac341dfb4b16b4fd08e46a0b1469f9f0a7f3c89ad71013f09f0aae8
 
 pkgname = r-plogo2
