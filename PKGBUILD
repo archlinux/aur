@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MLInterfaces
-_pkgver=1.78.0
+_pkgver=1.80.0
 pkgname=r-${_pkgname,,}
-pkgver=1.78.0
+pkgver=1.80.0
 pkgrel=1
 pkgdesc='Uniform interfaces to R machine learning procedures for data in Bioconductor containers'
 arch=('any')
@@ -33,6 +33,7 @@ depends=(
 optdepends=(
   r-ada
   r-all
+  r-biocstyle
   r-caret
   r-class
   r-e1071
@@ -44,6 +45,7 @@ optdepends=(
   r-keggorthology
   r-kernlab
   r-klar
+  r-knitr
   r-lattice
   r-mboost
   r-nnet
@@ -55,7 +57,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3df9895df290a287c14c850b6680e0cded83bd44e395fe5f00b3f9622a7cca76')
+sha256sums=('06cfa85bea05eaf2669e96f0176e6cc06180c1333b42a86ffe2eb300ec11abe8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
