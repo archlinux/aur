@@ -1,11 +1,12 @@
 # Maintainer : bwrsandman
 # Co-Maintainer: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
+# thanks to txtsd <aur.archlinux@ihavea.quest> for contributing some parts of the PKGBUILD code
 
 pkgname=openmw-git
-pkgver=0.47.0.r4538.ga41cbfb349
+pkgver=0.48.0.rc9.r1887.g9f653b2a79
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="http://www.openmw.org"
 license=('GPL3' 'MIT' 'custom')
 depends=('openal' 'openscenegraph' 'mygui' 'bullet-dp' 'qt5-base' 'ffmpeg' 'sdl2' 'unshield' 'libxt' 'boost-libs' 'luajit' 'recastnavigation-openmw' 'yaml-cpp')
@@ -18,8 +19,13 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  _tag="$(git describe --tags --match 'openmw-[01]*' --abbrev=0 $(git rev-list --tags) | uniq | sed 's/openmw-//' | sort | tail -n1)"
-  _numcommits="$(git rev-list  openmw-$_tag..HEAD --count)"
+  _pattern='^([0-9]{2})-rc([0-9]{1,2}$)'
+  _tag="$(git describe --tags $(git rev-list --tags --max-count=1) | sed 's/openmw-//')"
+  if [[ $_tag =~ $_pattern ]] ;
+  then
+    _tag=$(echo $_tag | sed -E 's/^([0-9]{2})-rc([0-9]{1,2}$)/0.\1.0.rc\2/')
+  fi
+  _numcommits="$(git rev-list  $(git rev-list --tags --no-walk --max-count=1)..HEAD --count)"
   _hash="$(git rev-parse --short HEAD)"
   printf "%s.r%s.g%s" "$_tag" "$_numcommits" "$_hash"
 }
