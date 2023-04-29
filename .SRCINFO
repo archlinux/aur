@@ -1,12 +1,13 @@
 pkgbase = foundry-nuke
 	pkgdesc = Nuke is a node-based digital compositing and visual effects application
-	pkgver = 14.0v3
+	pkgver = 14.0v4
 	pkgrel = 1
 	url = https://www.foundry.com/products/nuke
 	arch = x86_64
 	license = Custom: The Foundry
+	depends = libxcrypt-compat
 	provides = nuke
-	source = https://www.foundry.com/products/download_product?file=Nuke14.0v3-linux-x86_64.tgz
-	md5sums = 99a4e68a51e6732990a2f6c4e2e5130e
+	source = https://www.foundry.com/products/download_product?file=Nuke14.0v4-linux-x86_64.tgz
+	md5sums = c62b2abff680079cbf03e3d6720adf9e
 
 pkgname = foundry-nuke
