@@ -1,0 +1,18 @@
+pkgname=nya
+pkgver=1
+pkgrel=1
+pkgdesc="Generate a very nya sentence"
+arch=('any')
+url="http://github.com/JessSystemV/nya"
+source=("https://github.com/JessSystemV/nya/archive/refs/heads/main.zip")
+sha256sums=('fa3b23bbd4d7d632035b608a4dcf478fa1b1ae73515a3a821febbccb29026bee')
+
+build()	{
+	cd nya-main
+        make
+}
+
+package() {
+	cd nya-main
+        install -Dm755 nya -t "${pkgdir}/usr/bin/nya"
+}
