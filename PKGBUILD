@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=multiGSEA
-_pkgver=1.8.2
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.2
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Combining GSEA-based pathway enrichment with multi omics data integration'
 arch=('any')
@@ -16,6 +16,7 @@ depends=(
   r-fgsea
   r-graphite
   r-magrittr
+  r-metaboliteidmapping
   r-metap
   r-rappdirs
   r-rlang
@@ -23,7 +24,6 @@ depends=(
 optdepends=(
   r-biocstyle
   r-knitr
-  r-metaboliteidmapping
   r-org.bt.eg.db
   r-org.ce.eg.db
   r-org.cf.eg.db
@@ -39,7 +39,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('08b7ae63d556ec6713d3431477f26e6dedb2a30aa3d1b0756c4cdb7d7f6e19e9')
+sha256sums=('d9fd71cb3885d80a9583a8908897f37dcee5e3ba4b85af040090956a4e4e5c00')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
