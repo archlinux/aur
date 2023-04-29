@@ -1,6 +1,6 @@
 pkgbase = r-catalyst
 	pkgdesc = Cytometry dATa anALYSis Tools
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CATALYST
 	arch = any
@@ -40,7 +40,7 @@ pkgbase = r-catalyst
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-uwot
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CATALYST_1.22.0.tar.gz
-	sha256sums = fbe6b9ee9b3d9aaf40874759f958e6326fa2eabc4061e1da83b07472002f7d58
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CATALYST_1.24.0.tar.gz
+	sha256sums = ea2b16a2665db1a2c31400f759724946d11be26e3e0b40e640be9efd2c06d038
 
 pkgname = r-catalyst
