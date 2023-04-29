@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=miaViz
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Microbiome Analysis Plotting and Visualization'
 arch=('any')
@@ -41,9 +41,10 @@ optdepends=(
   r-patchwork
   r-rmarkdown
   r-testthat
+  r-vegan
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('67d2a0f10eeb82986635da62203b2472221c28a263767f280dde7daae339f7a1')
+sha256sums=('ff43d823012237b4ecbf862aa703726c7db1f128b33b5fba10079272c2b13c8c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
