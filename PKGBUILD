@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=staRank
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
+pkgver=1.42.0
 pkgrel=1
 pkgdesc='Stability Ranking'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   r-cellhts2
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('65537180062fe49d749ef1b2cb0b916aa20c58701c67aebbc77e37340af322b9')
+sha256sums=('894201b929c2b633eee2d7bdd15e6331ee822c6fbb4972782be604646eea6fc9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
