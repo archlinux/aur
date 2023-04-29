@@ -1,7 +1,7 @@
 pkgbase = aws-checksums-git
 	pkgdesc = Cross-Platform HW accelerated CRC32c and CRC32 with fallback to efficient SW implementations.
-	pkgver = 0.1.12.r4.gac351fe
-	pkgrel = 2
+	pkgver = 0.1.14.r1.g9a0ff99
+	pkgrel = 1
 	url = https://github.com/awslabs/aws-checksums
 	arch = x86_64
 	license = Apache

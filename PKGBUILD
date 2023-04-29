@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 pkgname=aws-checksums-git
-pkgver=0.1.12.r4.gac351fe
-pkgrel=2
+pkgver=0.1.14.r1.g9a0ff99
+pkgrel=1
 pkgdesc="Cross-Platform HW accelerated CRC32c and CRC32 with fallback to efficient SW implementations."
 arch=('x86_64')
 conflicts=('aws-checksums')
