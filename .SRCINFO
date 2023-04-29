@@ -1,6 +1,6 @@
 pkgbase = r-agimicrorna
 	pkgdesc = Processing and Differential Expression Analysis of Agilent microRNA chips
-	pkgver = 2.48.0
+	pkgver = 2.50.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/AgiMicroRna
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-agimicrorna
 	optdepends = r-gplots
 	optdepends = r-gtools
 	optdepends = r-marray
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/AgiMicroRna_2.48.0.tar.gz
-	sha256sums = c7d5319808ec9267e052fecc1336777d3fa8731efe882554801036d2bcf57060
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/AgiMicroRna_2.50.0.tar.gz
+	sha256sums = bf65703acff185616f27e6182c0c440ddf3866e2c0e4df0682c251e0b560cdbf
 
 pkgname = r-agimicrorna

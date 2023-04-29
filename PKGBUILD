@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=AgiMicroRna
-_pkgver=2.48.0
+_pkgver=2.50.0
 pkgname=r-${_pkgname,,}
-pkgver=2.48.0
+pkgver=2.50.0
 pkgrel=1
 pkgdesc='Processing and Differential Expression Analysis of Agilent microRNA chips'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-marray
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c7d5319808ec9267e052fecc1336777d3fa8731efe882554801036d2bcf57060')
+sha256sums=('bf65703acff185616f27e6182c0c440ddf3866e2c0e4df0682c251e0b560cdbf')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
