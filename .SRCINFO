@@ -1,7 +1,7 @@
 pkgbase = r-cancer
 	pkgdesc = A Graphical User Interface for accessing and modeling the Cancer Genomics Data of MSKCC
-	pkgver = 1.32.0
-	pkgrel = 3
+	pkgver = 1.34.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/canceR
 	arch = any
 	license = GPL
@@ -22,7 +22,7 @@ pkgbase = r-cancer
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/canceR_1.32.0.tar.gz
-	sha256sums = 5de61d88101ed0ef832be334a6be90e610407f2eb7c06b8bfcab8d2af8d2b6f0
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/canceR_1.34.0.tar.gz
+	sha256sums = 6bddbc91e17cf6c71b4274bba7a390af80d9c142f4f41bdc3f5f669706e2f529
 
 pkgname = r-cancer

@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=canceR
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
-pkgrel=3
+pkgver=1.34.0
+pkgrel=1
 pkgdesc='A Graphical User Interface for accessing and modeling the Cancer Genomics Data of MSKCC'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -31,7 +31,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5de61d88101ed0ef832be334a6be90e610407f2eb7c06b8bfcab8d2af8d2b6f0')
+sha256sums=('6bddbc91e17cf6c71b4274bba7a390af80d9c142f4f41bdc3f5f669706e2f529')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
