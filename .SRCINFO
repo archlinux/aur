@@ -1,23 +1,23 @@
 pkgbase = ceph-bin
 	pkgdesc = Distributed, fault-tolerant storage platform delivering object, block, and file system
-	pkgver = 17.2.5
-	pkgrel = 6
+	pkgver = 17.2.6
+	pkgrel = 1
 	url = https://ceph.com/
 	arch = x86_64
 	license = GPL
-	noextract = ceph-bin-17.2.5-6.tar.zst
-	noextract = ceph-libs-bin-17.2.5-6.tar.zst
-	noextract = ceph-mgr-bin-17.2.5-6.tar.zst
+	noextract = ceph-bin-17.2.6-1.tar.zst
+	noextract = ceph-libs-bin-17.2.6-1.tar.zst
+	noextract = ceph-mgr-bin-17.2.6-1.tar.zst
 	options = emptydirs
-	source = ceph-bin-17.2.5-6.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/v17.2.5-6/ceph_linux_x86_64.tar.zstd
-	source = ceph-libs-bin-17.2.5-6.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/v17.2.5-6/ceph_libs_linux_x86_64.tar.zstd
-	source = ceph-mgr-bin-17.2.5-6.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/v17.2.5-6/ceph_mgr_linux_x86_64.tar.zstd
-	sha512sums = ad69d0b2cf9e94e667dee1b2e91b3db0c60780f01a3a20942123095771fd8869cdd4adfbad503b7d33f71ae1a847d05f57731bb750f3abc3ece49ea93a783587
-	sha512sums = ef7e364e8a13910bee3d67a44550cbebd07188641a03e94a5ee957e79e7b763a34e9065c66b581e8f8a7187e5a0a45c6e6bc4ca0d395c77f28ef65fef38413ba
-	sha512sums = fb536a74ee7c0f3c776ffe91116b05016bf925d9a85d7b58bddf9810ef19a66961b2e8d3cc48a66e6874851fa28b4429f6fc862590c894650ad86f2641e22e23
+	source = ceph-bin-17.2.6-1.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/v17.2.6-1/ceph_linux_x86_64.tar.zstd
+	source = ceph-libs-bin-17.2.6-1.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/v17.2.6-1/ceph_libs_linux_x86_64.tar.zstd
+	source = ceph-mgr-bin-17.2.6-1.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/v17.2.6-1/ceph_mgr_linux_x86_64.tar.zstd
+	sha512sums = df2e41c3463e9a49d563669e191c2bfcf000c66ed1eb1cc90cb73af19d36a940b77964bc956352b3d3b90e3a3ba6620f7ab586e88c42cefb941a19186e07a70a
+	sha512sums = d7e076588a1f8aea65ccc0a25a6ff3effef9af2fbccb7c5d3d2a453e84e8efbdfa8f3cfa019dede90cb908272731054060b8d1313a93be18dea8796a6504371a
+	sha512sums = 6dce911736d534b2946ebd0d004a407b16ccd1635f3b72bcc2597152a43fd2a92b248bb9c6d8bfc5038bf2c8fb60aaf7af72d6c0546e5a48ec4853debd91ab15
 
 pkgname = ceph-bin
-	depends = ceph-libs=17.2.5-6
+	depends = ceph-libs=17.2.6-1
 	depends = boost-libs
 	depends = curl
 	depends = fuse3
@@ -42,7 +42,7 @@ pkgname = ceph-bin
 	depends = gawk
 	optdepends = smartmontools: disk monitoring via S.M.A.R.T
 	optdepends = nvme-cli: disk monitoring for NVMe drives
-	provides = ceph=17.2.5-6
+	provides = ceph=17.2.6-1
 	conflicts = ceph
 	backup = etc/logrotate.d/ceph
 	backup = etc/udev/rules.d/50-ceph-rbd.rules
@@ -72,12 +72,12 @@ pkgname = ceph-libs-bin
 	depends = python-prettytable
 	depends = python-yaml
 	depends = python-setuptools
-	provides = ceph-libs=17.2.5-6
+	provides = ceph-libs=17.2.6-1
 	conflicts = ceph-libs
 
 pkgname = ceph-mgr-bin
-	depends = ceph=17.2.5-6
-	depends = ceph-libs=17.2.5-6
+	depends = ceph=17.2.6-1
+	depends = ceph-libs=17.2.6-1
 	depends = bash
 	depends = boost-libs
 	depends = curl
@@ -107,7 +107,7 @@ pkgname = ceph-mgr-bin
 	optdepends = python-kubernetes: rook module
 	optdepends = python-prometheus_client: prometheus module
 	optdepends = python-remoto: ssh module
-	provides = ceph-mgr=17.2.5-6
+	provides = ceph-mgr=17.2.6-1
 	conflicts = ceph-mgr
 	options = emptydirs
 	options = !strip
