@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cliqueMS
-_pkgver=1.12.2
+_pkgver=1.13.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.2
+pkgver=1.13.0
 pkgrel=1
 pkgdesc='Annotation of Isotopes, Adducts and Fragmentation Adducts for in-Source LC/MS Metabolomics Data'
 arch=('x86_64')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('df14949cc2147c3cacc09c584885fdfcbb8f58ce48f821d3a3fa5f229196668f')
+sha256sums=('fc4e90f76bc0e82909ce17a76956866e76ac072116ecd8ea2f80f96324f9593a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
