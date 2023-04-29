@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rmmquant
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='RNA-Seq multi-mapping Reads Quantification Tool'
 arch=('x86_64')
@@ -12,6 +12,7 @@ url="https://bioconductor.org/packages/${_pkgname}"
 license=('GPL')
 depends=(
   r
+  r-apeglm
   r-biocstyle
   r-deseq2
   r-devtools
@@ -29,7 +30,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('288774a30616db732e1e6f7eb79909a609bfd4e47f9c3461c8a3a73721171a75')
+sha256sums=('cd68d6af2af27fc88ce171e1ce5739ff379f5c07796a9a262ba5c669ae0a2680')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
