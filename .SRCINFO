@@ -1,6 +1,6 @@
 pkgbase = r-quantro
 	pkgdesc = A test for when to use quantile normalization
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/quantro
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-quantro
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/quantro_1.32.0.tar.gz
-	sha256sums = dfda4f20323205c25651dc1159349d1b982baad0c617c0d48dde1a0e20274738
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/quantro_1.34.0.tar.gz
+	sha256sums = cac0546914af07f4588805e21568cd022bd197a892f6d4e7d23104560c26a922
 
 pkgname = r-quantro
