@@ -13,27 +13,27 @@ depends=("libusb-compat")
 makedepends=("intltool" "gcc")
 
 build() {
-    cd "${srcdir}"/"$pkgname"
+	cd "${srcdir}"/"$pkgname"
 
-    sed -i 's/ doc//' Makefile.am
+	sed -i 's/ doc//' Makefile.am
 
-    sed -i 's/fprintf(stderr, g_option_context_get_help(context,/fprintf(stderr, "%s", g_option_context_get_help(context,/' src/export.c
+	sed -i 's/fprintf(stderr, g_option_context_get_help(context,/fprintf(stderr, "%s", g_option_context_get_help(context,/' src/export.c
 
-    sed -i 's/fprintf(stderr, g_option_context_get_help(context,/fprintf(stderr, "%s", g_option_context_get_help(context,/' src/extract.c
+	sed -i 's/fprintf(stderr, g_option_context_get_help(context,/fprintf(stderr, "%s", g_option_context_get_help(context,/' src/extract.c
 
-    sed -i 's/fprintf(stderr, g_option_context_get_help(context,/fprintf(stderr, "%s", g_option_context_get_help(context,/' src/udev.c
+	sed -i 's/fprintf(stderr, g_option_context_get_help(context,/fprintf(stderr, "%s", g_option_context_get_help(context,/' src/udev.c
 
-    autoreconf --install
+	autoreconf --install
 
-    ./configure --prefix=/usr --sysconfdir=/etc
+	./configure --prefix=/usr --sysconfdir=/etc
 
-    make
+	make
 }
 
 package() {
-    cd "${srcdir}"/"$pkgname"
+	cd "${srcdir}"/"$pkgname"
 
-    make DESTDIR="${pkgdir}" install
+	make DESTDIR="${pkgdir}" install
 
-    sed -i 's|/lib/firmware/isight.fw|/usr/lib/firmware/isight.fw|' "${pkgdir}"/etc/udev/rules.d/isight.rules
+	sed -i 's|/lib/firmware/isight.fw|/usr/lib/firmware/isight.fw|' "${pkgdir}"/etc/udev/rules.d/isight.rules
 }
