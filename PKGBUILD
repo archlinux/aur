@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cfDNAPro
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='cfDNAPro Helps Characterise and Visualise Whole Genome Sequencing Data from Liquid Biopsy'
 arch=('any')
@@ -12,6 +12,9 @@ license=('GPL')
 depends=(
   r
   r-biocgenerics
+  r-bsgenome.hsapiens.ncbi.grch38
+  r-bsgenome.hsapiens.ucsc.hg19
+  r-bsgenome.hsapiens.ucsc.hg38
   r-dplyr
   r-genomeinfodb
   r-genomicalignments
@@ -28,8 +31,6 @@ depends=(
 )
 optdepends=(
   r-biocstyle
-  r-bsgenome.hsapiens.ucsc.hg19
-  r-bsgenome.hsapiens.ucsc.hg38
   r-devtools
   r-ggpubr
   r-knitr
@@ -38,7 +39,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7276758ad677a1cf280f945483adf3e4485f25ff263c0b092165c4e5a47f8110')
+sha256sums=('365b1fb038bcc1dbd4cacf990e6d11fcf9ec1615083d335da3dfb9fa58e36b17')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
