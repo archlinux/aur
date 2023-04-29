@@ -1,7 +1,7 @@
 pkgbase = r-adacgh2
 	pkgdesc = Analysis of big data from aCGH experiments using parallel computing and ff objects
-	pkgver = 2.38.0
-	pkgrel = 3
+	pkgver = 2.40.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/ADaCGH2
 	arch = x86_64
 	license = GPL
@@ -18,7 +18,7 @@ pkgbase = r-adacgh2
 	optdepends = r-cghregions
 	optdepends = r-limma
 	optdepends = r-rmpi
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ADaCGH2_2.38.0.tar.gz
-	sha256sums = cddddd538cb9ebfa4a20b57b820292fc96af49ccacc998302f0398922d1d3d3d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ADaCGH2_2.40.0.tar.gz
+	sha256sums = 5bc331003b6f9c6662f21f4e33a6784e9f549b83c48e46dea073880d7b9eacd6
 
 pkgname = r-adacgh2
