@@ -4,7 +4,7 @@ _pkgname=TPP2D
 _pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=1.16.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Detection of ligand-protein interactions from 2D thermal profiles (DLPTP)'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -23,6 +23,7 @@ depends=(
   r-tidyr
 )
 optdepends=(
+  r-biocstyle
   r-knitr
   r-rmarkdown
   r-testthat
