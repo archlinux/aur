@@ -4,7 +4,7 @@ _pkgname=BiocFileCache
 _pkgver=2.8.0
 pkgname=r-${_pkgname,,}
 pkgver=2.8.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Manage Files Across Sessions'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -17,7 +17,6 @@ depends=(
   r-dplyr
   r-filelock
   r-httr
-  r-rappdirs
   r-rsqlite
 )
 optdepends=(
