@@ -1,6 +1,6 @@
 pkgbase = r-bigmelon
 	pkgdesc = Illumina methylation array analysis for large experiments
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/bigmelon
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-bigmelon
 	optdepends = r-minfidata
 	optdepends = r-parallel
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/bigmelon_1.24.0.tar.gz
-	sha256sums = dee4004c2b987ee59681fc6d319e1d4e5b66a362cd0e7265d4c829b4fd208d24
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/bigmelon_1.26.0.tar.gz
+	sha256sums = c4f88ee4cccb5da0cf7220f06501eca9fd42d94357d47540c7062f8c13aa3ed0
 
 pkgname = r-bigmelon
