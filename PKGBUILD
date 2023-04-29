@@ -4,7 +4,7 @@ _pkgname=Onassis
 _pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=1.18.0
-pkgrel=4
+pkgrel=6
 pkgdesc='OnASSIs Ontology Annotation and Semantic SImilarity software'
 arch=('any')
 url="https://bioconductor.org/packages/3.15/${_pkgname}"
@@ -52,4 +52,3 @@ package() {
   cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
 }
 # vim:set ts=2 sw=2 et:
-

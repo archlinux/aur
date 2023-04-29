@@ -1,7 +1,7 @@
 pkgbase = r-onassis
 	pkgdesc = OnASSIs Ontology Annotation and Semantic SImilarity software
 	pkgver = 1.18.0
-	pkgrel = 4
+	pkgrel = 6
 	url = https://bioconductor.org/packages/3.15/Onassis
 	arch = any
 	license = GPL
