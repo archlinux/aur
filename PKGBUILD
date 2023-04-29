@@ -14,9 +14,6 @@ makedepends=("git"
 		"python-yaml" 
 		"python-argcomplete"
 )
-depends=(
-		""
-)
 optdepends=(
 		"legion-fan-utils-linux-git: Systemd service that will apply a given profile
 		lenovolegionlinux-dkms-git: DKMS module (install if your distro dosent patch in the kernel our you are not sure to haveit)"
