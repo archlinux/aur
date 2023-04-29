@@ -4,10 +4,10 @@ _pkgname=PoTRA
 _pkgver=1.13.0
 pkgname=r-${_pkgname,,}
 pkgver=1.13.0
-pkgrel=1
+pkgrel=4
 pkgdesc='PoTRA: Pathways of Topological Rank Analysis'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.16/${_pkgname}"
 license=('LGPL')
 depends=(
   r
@@ -25,7 +25,7 @@ optdepends=(
   r-repmis
   r-rmarkdown
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.16/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('4ed69460c06ead0bc014de665d9ca34cfc245bf3a3c0a17ebf44ac66796862a8')
 
 build() {
