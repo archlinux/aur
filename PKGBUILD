@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=biscuiteer
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='Convenience Functions for Biscuit'
 arch=('any')
@@ -54,7 +54,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('75841f44a2e97a482bf1d725db7f04e0ddea0793a7e322f156fd52b681b402bb')
+sha256sums=('83c3f13909c9e6d6394ca8f10ec35e110d33e87c589b3168a3a826eeaa99ca1e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
