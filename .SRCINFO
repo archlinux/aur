@@ -1,7 +1,7 @@
 pkgbase = r-methylclock
 	pkgdesc = Methylclock - DNA methylation-based clocks
-	pkgver = 1.4.0
-	pkgrel = 3
+	pkgver = 1.6.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/methylclock
 	arch = x86_64
 	license = MIT
@@ -31,7 +31,7 @@ pkgbase = r-methylclock
 	optdepends = r-geoquery
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/methylclock_1.4.0.tar.gz
-	sha256sums = b894b93d51478ae6b3498cd49911787892f9d348aa1058cbf5ea9a3f6aebf75f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/methylclock_1.6.0.tar.gz
+	sha256sums = 072207e9113c210382eada870d90fa320bb1a4d82d5af613b14521773b110ad1
 
 pkgname = r-methylclock
