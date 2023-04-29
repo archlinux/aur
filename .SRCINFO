@@ -1,7 +1,7 @@
 pkgbase = r-eir
 	pkgdesc = Accelerated similarity searching of small molecules
 	pkgver = 1.40.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/eiR
 	arch = x86_64
 	license = Artistic2.0
@@ -20,6 +20,7 @@ pkgbase = r-eir
 	optdepends = r-knitr
 	optdepends = r-knitrbootstrap
 	optdepends = r-rmarkdown
+	optdepends = r-rsqlite
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/eiR_1.40.0.tar.gz
 	sha256sums = 970bb76d91f87da2c3c983f9e5f4f62616df1fd8f50aa85afd38fbc88f6a2038
 
