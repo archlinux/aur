@@ -1,7 +1,7 @@
 pkgbase = r-ensembldb
 	pkgdesc = Utilities to create and use Ensembl-based annotation databases
 	pkgver = 2.24.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/ensembldb
 	arch = any
 	license = LGPL
@@ -29,7 +29,6 @@ pkgbase = r-ensembldb
 	optdepends = r-ggbio
 	optdepends = r-gviz
 	optdepends = r-knitr
-	optdepends = r-magrittr
 	optdepends = r-rmariadb
 	optdepends = r-rmarkdown
 	optdepends = r-shiny

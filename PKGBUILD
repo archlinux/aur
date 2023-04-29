@@ -4,7 +4,7 @@ _pkgname=ensembldb
 _pkgver=2.24.0
 pkgname=r-${_pkgname,,}
 pkgver=2.24.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Utilities to create and use Ensembl-based annotation databases'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -36,7 +36,6 @@ optdepends=(
   r-ggbio
   r-gviz
   r-knitr
-  r-magrittr
   r-rmariadb
   r-rmarkdown
   r-shiny
