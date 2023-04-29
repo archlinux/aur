@@ -1,6 +1,6 @@
 pkgbase = r-zinbwave
 	pkgdesc = Zero-Inflated Negative Binomial Model for RNA-Seq Data
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/zinbwave
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = r-zinbwave
 	optdepends = r-rtsne
 	optdepends = r-scrnaseq
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/zinbwave_1.20.0.tar.gz
-	sha256sums = 7b4dc5fa90d2bf4eba681d9ba20e54e64990bdfe466f886cb3e739e38baea68c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/zinbwave_1.22.0.tar.gz
+	sha256sums = 7380b12de83903982bac894ea07fd9c6041635b021eea1045155f1faee5fbdae
 
 pkgname = r-zinbwave
