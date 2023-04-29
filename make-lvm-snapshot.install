@@ -1,6 +1,13 @@
 ## arg 1:  the new package version
 
 _do_fix_vg_vol() {
+	echo "POST-INSTALL: enabling make-lvm-snapshot.service in target make-lvm-snapshot.service"
+	if systemctl enable make-lvm-snapshot.service; then
+		echo "POST-INSTALL: done"
+	else
+		echo "POST-INSTALL: ERROR: you will need to enable the service yourself."
+        fi
+
 	echo "POST-INSTALL: attempting to detect root volume group and volume..."
 	root_device="$(findmnt -n -o SOURCE /)"
 	vg_vol="${root_device//\/dev\/mapper\/}"
