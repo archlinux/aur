@@ -4,10 +4,10 @@ _pkgname=cellTree
 _pkgver=1.27.0
 pkgname=r-${_pkgname,,}
 pkgver=1.27.0
-pkgrel=1
+pkgrel=4
 pkgdesc='Inference and visualisation of Single-Cell RNA-seq data as a hierarchical tree structure'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.16/${_pkgname}"
 license=('Artistic2.0')
 depends=(
   r
@@ -28,7 +28,7 @@ optdepends=(
   r-org.hs.eg.db
   r-tools
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.16/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('4b27bcd2d0384d927ba8655537edf973c98c3bc381ef3b671c40b6c55c2ad979')
 
 build() {
