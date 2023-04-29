@@ -1,6 +1,6 @@
 pkgbase = spatial-shell
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = MPL2
 	makedepends = opam
