@@ -1,6 +1,6 @@
 pkgbase = intel-graphics-compiler-bin
 	pkgdesc = Intel Graphics Compiler for OpenCL (pre-compiled binaries)
-	pkgver = 1.0.13230.7
+	pkgver = 1.0.13463.18
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/intel/intel-graphics-compiler/
@@ -14,22 +14,22 @@ pkgbase = intel-graphics-compiler-bin
 	provides = intel-opencl-clang
 	conflicts = intel-graphics-compiler
 	conflicts = intel-opencl-clang
-	noextract = intel-igc-core_1.0.13230.7_amd64.deb
-	noextract = intel-igc-media_1.0.13230.7_amd64.deb
-	noextract = intel-igc-opencl-devel_1.0.13230.7_amd64.deb
-	noextract = intel-igc-opencl_1.0.13230.7_amd64.deb
+	noextract = intel-igc-core_1.0.13463.18_amd64.deb
+	noextract = intel-igc-media_1.0.13463.18_amd64.deb
+	noextract = intel-igc-opencl-devel_1.0.13463.18_amd64.deb
+	noextract = intel-igc-opencl_1.0.13463.18_amd64.deb
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.13230.7/intel-igc-core_1.0.13230.7_amd64.deb
-	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.13230.7/intel-igc-media_1.0.13230.7_amd64.deb
-	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.13230.7/intel-igc-opencl-devel_1.0.13230.7_amd64.deb
-	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.13230.7/intel-igc-opencl_1.0.13230.7_amd64.deb
-	source = git+https://github.com/intel/opencl-clang.git#commit=363a5262d8c7cff3fb28f3bdb5d85c8d7e91c1bb
+	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.13463.18/intel-igc-core_1.0.13463.18_amd64.deb
+	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.13463.18/intel-igc-media_1.0.13463.18_amd64.deb
+	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.13463.18/intel-igc-opencl-devel_1.0.13463.18_amd64.deb
+	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.13463.18/intel-igc-opencl_1.0.13463.18_amd64.deb
+	source = git+https://github.com/intel/opencl-clang.git#commit=ee31812ea8b89d08c2918f045d11a19bd33525c5
 	source = LICENSE
-	sha256sums = 512ef5881b32bf1bbb0bd98fe643bd4df4eab95b61cbc85039c855705fd8ba14
-	sha256sums = f2a87d8b20b41c02300f3a4892e5182980cdf2315240d5e13b80f3e54208da48
-	sha256sums = ddfd5fd193b86dc2edb39c6e4a9b38cd2cc92aee63ebe1d2306b7dcd9c52f00b
-	sha256sums = 355fab9655d3d4411b4b54f000ba805ba720507fdf26e89f3a1db9b77e9945d4
+	sha256sums = 4612de24099fd2f7d5e045a836efb4dbabba1166bb27d68dd8f5b48ec93e410c
+	sha256sums = 534317fb0617f44a0e15f137f5d01aee4e8747726d3b769d2936e1cb4b62f58c
+	sha256sums = 432e73d7034464f99219cec6faf60d6281808934793ee1a5e1c0d2a882088ea6
+	sha256sums = bfde6a612a260b158210b99ff1fcb7870e4304620c0a997bc40aef6c54f4fdec
 	sha256sums = SKIP
 	sha256sums = 72d9ed65b0068110b0dcef7e2b52cd32d90ceaeb743b7b6fb8ad07265f230716
 
