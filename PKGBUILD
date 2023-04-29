@@ -4,7 +4,7 @@ _pkgname=spiky
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Spike-in calibration for cell-free MeDIP'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -28,16 +28,12 @@ optdepends=(
   r-biocmanager
   r-bsgenome.hsapiens.ucsc.hg38.masked
   r-bsgenome.mmusculus.ucsc.mm10.masked
-  r-complexheatmap
   r-covr
   r-devtools
-  r-equatiomatic
-  r-kebabs
   r-knitr
   r-markdown
   r-rmarkdown
   r-testthat
-  r-universalmotif
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('4aaee54a3b9d870bd526efac4c948c7312db9e652cad1b6efe555d517e321bd2')
