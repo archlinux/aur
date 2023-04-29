@@ -1,7 +1,7 @@
 pkgbase = r-phosr
 	pkgdesc = A set of methods and tools for comprehensive analysis of phosphoproteomics data
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/PhosR
 	arch = any
 	license = GPL
@@ -27,6 +27,7 @@ pkgbase = r-phosr
 	depends = r-rlang
 	depends = r-ruv
 	depends = r-s4vectors
+	depends = r-stringi
 	depends = r-summarizedexperiment
 	depends = r-tidyr
 	optdepends = r-annotate

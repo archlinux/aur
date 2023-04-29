@@ -4,7 +4,7 @@ _pkgname=PhosR
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=1.10.0
-pkgrel=1
+pkgrel=3
 pkgdesc='A set of methods and tools for comprehensive analysis of phosphoproteomics data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -32,6 +32,7 @@ depends=(
   r-rlang
   r-ruv
   r-s4vectors
+  r-stringi
   r-summarizedexperiment
   r-tidyr
 )
