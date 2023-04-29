@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=microbenchmark
-_pkgver=1.4.9
+_pkgver=1.4.10
 pkgname=r-${_pkgname,,}
-pkgver=1.4.9
-pkgrel=4
+pkgver=1.4.10
+pkgrel=1
 pkgdesc='Accurate Timing Functions'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -20,7 +20,7 @@ optdepends=(
   r-runit
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('443d2caf370ef33e4ac2773176ad9eb86f8790f43b430968ef9647699dbbffd2')
+sha256sums=('04cc41be72708dce8d31ff1cb105d88cc9f167250ea00fe9a165c99204b9b481')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
