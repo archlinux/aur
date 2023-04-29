@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=splatter
-_pkgver=1.22.1
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.1
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Simple Simulation of Single-cell RNA Sequencing Data'
 arch=('any')
@@ -17,14 +17,14 @@ depends=(
   r-crayon
   r-edger
   r-fitdistrplus
-  r-ggplot2
   r-locfit
   r-matrixstats
+  r-rlang
   r-s4vectors
-  r-scales
-  r-scater
+  r-scuttle
   r-singlecellexperiment
   r-summarizedexperiment
+  r-withr
 )
 optdepends=(
   r-basics
@@ -36,6 +36,7 @@ optdepends=(
   r-cowplot
   r-genomeinfodb
   r-genomicranges
+  r-ggplot2
   r-igraph
   r-iranges
   r-knitr
@@ -48,9 +49,10 @@ optdepends=(
   r-progress
   r-pscl
   r-rmarkdown
+  r-scales
+  r-scater
   r-scdd
   r-scran
-  r-scuttle
   r-sparsedc
   r-spelling
   r-testthat
@@ -58,7 +60,7 @@ optdepends=(
   r-zinbwave
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('08ee768f4d22582ac42807fdc5af0f35f9b4dd5e019ae3d822fc5bfd4b70bcc9')
+sha256sums=('493e94ba39e6e33f5e60b16e59c5f69a2bf729d6bc6fd4e24a2bd23e2ca9bbba')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
