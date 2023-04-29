@@ -4,7 +4,7 @@ _pkgname=chipseq
 _pkgver=1.50.0
 pkgname=r-${_pkgname,,}
 pkgver=1.50.0
-pkgrel=1
+pkgrel=3
 pkgdesc='chipseq: A package for analyzing chipseq data'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -18,8 +18,11 @@ depends=(
   r-shortread
 )
 optdepends=(
+  r-biocstyle
   r-bsgenome
+  r-bsgenome.mmusculus.ucsc.mm9
   r-genomicfeatures
+  r-knitr
   r-txdb.mmusculus.ucsc.mm9.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
