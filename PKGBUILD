@@ -4,7 +4,7 @@ _pkgname=SCBN
 _pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=1.18.0
-pkgrel=1
+pkgrel=3
 pkgdesc='A statistical normalization method and differential expression analysis for RNA-seq data between different species'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -13,6 +13,8 @@ depends=(
   r
 )
 optdepends=(
+  r-biocmanager
+  r-biocstyle
   r-knitr
   r-rmarkdown
 )
