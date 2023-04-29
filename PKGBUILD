@@ -5,7 +5,7 @@ _pkgname=ADAM
 _pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=1.16.0
-pkgrel=1
+pkgrel=3
 pkgdesc='ADAM: Activity and Diversity Analysis Module'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -24,6 +24,7 @@ depends=(
   gcc
 )
 optdepends=(
+  r-biocstyle
   r-rmarkdown
   r-testthat
 )
