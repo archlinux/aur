@@ -1,0 +1,30 @@
+## arg 1:  the new package version
+
+_do_fix_vg_vol() {
+	echo "POST-INSTALL: attempting to detect root volume group and volume..."
+	root_device="$(findmnt -n -o SOURCE /)"
+	vg_vol="${root_device//\/dev\/mapper\/}"
+	vg="${vg_vol//-*}"
+	vol="${vg_vol//*-}"
+	if [[ "$(sudo lvs --noheadings "/dev/${vg}/${vol}" | wc -l)" == 1 ]]; then
+		echo "POST-INSTALL: Detected root volume: $vol on volume group $vg"
+		echo "POST-INSTALL: Configuring \"make-lvm-snapshot.service\" with them"
+		sed -i 's/SET_VOLUME_GROUP/'"$vg"'/' "/etc/systemd/system/make-lvm-snapshot.service"
+		sed -i 's/SET_VOLUME/'"$vol"'/' "/etc/systemd/system/make-lvm-snapshot.service"
+		echo "POST-INSTALL: Done."
+	else
+		echo "POST-INSTALL: ERROR: Failed to detect root volume or volume group"
+		echo "POST-INSTALL: You will need to do:"
+		echo "POST-INSTALL:    systemctl edit make-lvm-snapshot.service"
+                echo "POST-INSTALL: And set them as options to make-lvm-snapshot.sh"
+                echo "POST-INSTALL: See README.md"
+	fi
+}
+
+post_install() {
+	_do_fix_vg_vol
+}
+
+post_upgrade() {
+	_do_fix_vg_vol
+}
