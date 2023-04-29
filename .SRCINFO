@@ -1,7 +1,7 @@
 pkgbase = imhex
 	pkgdesc = A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM
 	pkgver = 1.28.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://imhex.werwolv.net
 	arch = x86_64
 	license = GPL2

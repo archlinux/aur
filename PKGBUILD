@@ -4,7 +4,7 @@
 _pkgname=ImHex
 pkgname=${_pkgname,,}
 pkgver=1.28.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://imhex.werwolv.net'
 license=('GPL2')
@@ -104,15 +104,7 @@ build() {
 }
 
 package() {
-  # Executable
-  install -Dm0755 build/imhex "$pkgdir/usr/bin/imhex"
-
-  # Shared lib and plugins
-  install -Dm0755 -t "$pkgdir/usr/lib" build/lib/libimhex/libimhex.so
-
-  for plugin in builtin; do
-    install -Dm0755 -t "$pkgdir/usr/lib/imhex/plugins" "build/plugins/$plugin.hexplug"
-  done
+  DESTDIR="$pkgdir" cmake --install build
 
   # Patterns
   install -dm0755 "$pkgdir/usr/share/imhex"
@@ -120,16 +112,12 @@ package() {
     "$srcdir/imhex-patterns"/{constants,encodings,includes,magic,patterns,themes,tips}
 
   # Desktop file(s)
-  install -Dm0644 -t "$pkgdir/usr/share/applications" "$pkgname/dist/imhex.desktop"
   install -Dm0644 "$pkgname/resources/icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/imhex.svg"
   for size in 32 48 64 128 256; do
     install -dm0755 "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps"
     rsvg-convert -a -f png -w $size -o "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/imhex.png" \
       "$pkgname/resources/icon.svg"
   done
-
-  # License
-  install -Dm0644 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Documentation
   install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
