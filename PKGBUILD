@@ -5,15 +5,15 @@
 
 _pkgname=neovim
 pkgname="$_pkgname-git"
-pkgver=0.9.0.r362.geb4676c67f
+pkgver=0.9.0.r419.g933fdff466
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs.'
 arch=(i686 x86_64 armv7h armv6h aarch64)
 url='https://neovim.io'
 backup=('etc/xdg/nvim/sysinit.vim')
 license=('custom:neovim')
-depends=(glibc hicolor-icon-theme libluv libtermkey libuv 'libvterm>=0.3' luajit msgpack-c tree-sitter unibilium)
-makedepends=(cmake git lua51-lpeg ninja)
+depends=(glibc hicolor-icon-theme libluv libtermkey libuv 'libvterm>=0.3' lua51-lpeg luajit msgpack-c tree-sitter unibilium)
+makedepends=(cmake git ninja)
 optdepends=('python-neovim: for Python 3 plugin support (see :help provider-python)'
             'ruby-neovim: for Ruby plugin support (see :help provider-ruby)'
             'xclip: for X11 clipboard support (or xsel) (see :help provider-clipboard)'
