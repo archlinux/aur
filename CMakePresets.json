@@ -16,11 +16,13 @@
                 "LUA_DIR"                       : "$env{DEPS_ROOT}",
                 "OPENSUBDIV_ROOT"               : "$env{DEPS_ROOT}",
                 "OPENVDB_ROOT"                  : "$env{DEPS_ROOT}",
-                "OPTIX_ROOT"                    : "$env{DEPS_ROOT}/optix",
-                "PXR_USD_LOCATION"              : "$env{DEPS_ROOT}",
+                "OPTIX_ROOT"                    : "/opt/optix",
+                "PXR_USD_LOCATION"              : "$env{DEPS_ROOT}/share/usd",
                 "PXR_INCLUDE_DIRS"              : "$env{DEPS_ROOT}/include",
                 "RANDOM123_ROOT"                : "$env{DEPS_ROOT}",
-                "ZLIB_ROOT"                     : "/usr"
+                "ZLIB_ROOT"                     : "/usr",
+                "pxr_ROOT"                      : "$env{DEPS_ROOT}/share/usd",
+                "TBB_ROOT"                      : "$env{DEPS_ROOT}"
             },
             "cacheVariables": {
                 "CMAKE_PREFIX_PATH": "$env{DEPS_ROOT}"
