@@ -4,7 +4,7 @@ _pkgname=ComplexHeatmap
 _pkgver=2.16.0
 pkgname=r-${_pkgname,,}
 pkgver=2.16.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Make Complex Heatmaps'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -39,6 +39,7 @@ optdepends=(
   r-grimport2
   r-jpeg
   r-knitr
+  r-magick
   r-markdown
   r-pheatmap
   r-rmarkdown

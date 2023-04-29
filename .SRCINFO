@@ -1,7 +1,7 @@
 pkgbase = r-complexheatmap
 	pkgdesc = Make Complex Heatmaps
 	pkgver = 2.16.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/ComplexHeatmap
 	arch = any
 	license = MIT
@@ -32,6 +32,7 @@ pkgbase = r-complexheatmap
 	optdepends = r-grimport2
 	optdepends = r-jpeg
 	optdepends = r-knitr
+	optdepends = r-magick
 	optdepends = r-markdown
 	optdepends = r-pheatmap
 	optdepends = r-rmarkdown
