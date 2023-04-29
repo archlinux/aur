@@ -4,7 +4,7 @@ _pkgname=levi
 _pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=1.18.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Landscape Expression Visualization Interface'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -29,6 +29,7 @@ depends=(
   r-xml2
 )
 optdepends=(
+  r-biocstyle
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
