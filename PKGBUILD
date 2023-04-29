@@ -3,7 +3,7 @@
 _pkgname=PlotTools
 _pkgver=0.1.0
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='Add Continuous Legends to Plots'
 arch=('any')
