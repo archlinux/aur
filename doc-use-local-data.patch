@@ -1,0 +1,25 @@
+--- a/docs/_examples/plot_custom_source.py	2023-04-27 23:07:04.000000000 +0800
++++ b/docs/_examples/plot_custom_source.py	2023-04-29 18:24:35.212710056 +0800
+@@ -65,11 +65,18 @@
+ # sncosmo to download the Nugent Ia and 2p templates. Don't rely on this
+ # the `DATADIR` object, or these paths in your code though, as these are
+ # subject to change between version of sncosmo!
++# Use local data if download failed:
+ from sncosmo.builtins import DATADIR
+-phase1, wave1, flux1 = sncosmo.read_griddata_ascii(
+-    DATADIR.abspath('models/nugent/sn1a_flux.v1.2.dat'))
+-phase2, wave2, flux2 = sncosmo.read_griddata_ascii(
+-    DATADIR.abspath('models/nugent/sn2p_flux.v1.2.dat'))
++try:
++    phase1, wave1, flux1 = sncosmo.read_griddata_ascii(
++        DATADIR.abspath('models/nugent/sn1a_flux.v1.2.dat'))
++except Exception:
++    phase1, wave1, flux1 = sncosmo.read_griddata_ascii('sn1a_flux.v1.2.dat')
++try:
++    phase2, wave2, flux2 = sncosmo.read_griddata_ascii(
++        DATADIR.abspath('models/nugent/sn2p_flux.v1.2.dat'))
++except Exception:
++    phase2, wave2, flux2 = sncosmo.read_griddata_ascii('sn2p_flux.v1.2.dat')
+ 
+ # In our __init__ method we defined above, the two fluxes need to be on
+ # the same grid, so interpolate the second onto the first:
