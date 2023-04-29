@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=musicatk
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Mutational Signature Comprehensive Analysis Toolkit'
 arch=('any')
@@ -18,7 +18,6 @@ depends=(
   r-bsgenome.mmusculus.ucsc.mm10
   r-bsgenome.mmusculus.ucsc.mm9
   r-complexheatmap
-  r-cowplot
   r-data.table
   r-decomptumor2sig
   r-deconstructsigs
@@ -28,6 +27,7 @@ depends=(
   r-genomicfeatures
   r-genomicranges
   r-ggplot2
+  r-ggpubr
   r-ggrepel
   r-gridextra
   r-gtools
@@ -42,38 +42,41 @@ depends=(
   r-rlang
   r-s4vectors
   r-shiny
+  r-stringi
+  r-stringr
+  r-summarizedexperiment
+  r-tibble
+  r-tidyr
+  r-tidyverse
+  r-topicmodels
+  r-txdb.hsapiens.ucsc.hg19.knowngene
+  r-txdb.hsapiens.ucsc.hg38.knowngene
+  r-uwot
+  r-variantannotation
+)
+optdepends=(
+  r-biocstyle
+  r-covr
+  r-cowplot
+  r-knitr
+  r-qpdf
+  r-rmarkdown
   r-shinyalert
   r-shinybs
   r-shinybusy
   r-shinydashboard
   r-shinyjqui
   r-shinyjs
+  r-shinywidgets
   r-sortable
-  r-stringi
-  r-stringr
-  r-summarizedexperiment
-  r-tcgabiolinks
-  r-tibble
-  r-tidyr
-  r-topicmodels
-  r-txdb.hsapiens.ucsc.hg19.knowngene
-  r-txdb.hsapiens.ucsc.hg38.knowngene
-  r-uwot
-  r-variantannotation
-  r-withr
-)
-optdepends=(
-  r-biocstyle
-  r-covr
-  r-knitr
-  r-qpdf
-  r-rmarkdown
   r-survival
+  r-tcgabiolinks
   r-testthat
+  r-withr
   r-xvector
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('eeb5f9421f82f600e42be4369e196aa432a48d1c14176690bf9b4726e19485d0')
+sha256sums=('8589e4de168fda3d26ed9be65f43fe41618a9299dbdf20cd4e1149e2e355d1f9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
