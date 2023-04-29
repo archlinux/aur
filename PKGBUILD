@@ -4,7 +4,7 @@ pkgname=cdreaper
 _pkgname=Reaper
 pkgver=3.0.0
 pkgrel=1
-pkgdesc="CD ripper and encoder using Gtk3"
+pkgdesc="CD ripper and encoder using Gtk3 (based on Asunder)"
 arch=('x86_64')
 url="https://gitlab.gnome.org/Salamandar/Reaper"
 license=('GPL2')
@@ -21,7 +21,7 @@ optdepends=(
   'mac: for monkey audio support'
 )
 
-source=(https://gitlab.gnome.org/Salamandar/Reaper/-/archive/v3.0.0/Reaper-v3.0.0.tar.bz2)
+source=("$url/-/archive/v${pkgver}/Reaper-v${pkgver}.tar.bz2")
 sha256sums=('973db74d4300ce52e0ebfe4d5ed057cd7523033aa8b85c3f1bce439816b9d1c4')
 
 prepare() {
@@ -38,5 +38,5 @@ build() {
 
 package() {
   cd "${_pkgname}-v${pkgver}/build"
-  DESTDIR="../../../pkg/${pkgname}" ninja install  
+  DESTDIR="${pkgdir}" ninja install  
 }
