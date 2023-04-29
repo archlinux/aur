@@ -4,7 +4,7 @@ _pkgname=ivygapSE
 _pkgver=1.22.0
 pkgname=r-${_pkgname,,}
 pkgver=1.22.0
-pkgrel=1
+pkgrel=3
 pkgdesc='A SummarizedExperiment for Ivy-GAP data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -21,6 +21,7 @@ depends=(
   r-upsetr
 )
 optdepends=(
+  r-biocstyle
   r-digest
   r-dt
   r-grid

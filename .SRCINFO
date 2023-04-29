@@ -1,7 +1,7 @@
 pkgbase = r-ivygapse
 	pkgdesc = A SummarizedExperiment for Ivy-GAP data
 	pkgver = 1.22.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/ivygapSE
 	arch = any
 	license = Artistic2.0
@@ -14,6 +14,7 @@ pkgbase = r-ivygapse
 	depends = r-summarizedexperiment
 	depends = r-survminer
 	depends = r-upsetr
+	optdepends = r-biocstyle
 	optdepends = r-digest
 	optdepends = r-dt
 	optdepends = r-grid
