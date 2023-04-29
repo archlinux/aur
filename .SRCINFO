@@ -1,13 +1,13 @@
 pkgbase = r-bridge
 	pkgdesc = Bayesian Robust Inference for Differential Gene Expression
 	pkgver = 1.62.0
-	pkgrel = 1
-	url = https://bioconductor.org/packages/bridge
+	pkgrel = 4
+	url = https://bioconductor.org/packages/3.16/bridge
 	arch = x86_64
 	license = GPL
 	depends = r
 	depends = r-rama
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/bridge_1.62.0.tar.gz
+	source = https://bioconductor.org/packages/3.16/bioc/src/contrib/bridge_1.62.0.tar.gz
 	sha256sums = e8e5370271c568c093b7e7ad9b5dd3f4bdfe43ac6956446bff6a863c5c092e0b
 
 pkgname = r-bridge
