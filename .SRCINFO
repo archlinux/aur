@@ -1,6 +1,6 @@
 pkgbase = r-sctreeviz
 	pkgdesc = R/Bioconductor package to interactively explore and visualize single cell RNA-seq datasets with hierarhical annotations
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/scTreeViz
 	arch = any
@@ -34,7 +34,7 @@ pkgbase = r-sctreeviz
 	optdepends = r-sc3
 	optdepends = r-scrnaseq
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scTreeViz_1.4.0.tar.gz
-	sha256sums = 0481b7466abdab5e97e63e2a39ea989f8c8b843b9ac152824abd5d24c367eca6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scTreeViz_1.6.0.tar.gz
+	sha256sums = 58c13916255e1a4c60220b4ea4d46dd4c3903ec69a42d9460b1444ce7d2352a2
 
 pkgname = r-sctreeviz
