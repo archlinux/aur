@@ -1,6 +1,6 @@
 pkgbase = r-shinyepico
 	pkgdesc = ShinyÉPICo
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/shinyepico
 	arch = any
@@ -30,6 +30,7 @@ pkgbase = r-shinyepico
 	depends = r-statmod
 	depends = r-tidyr
 	depends = r-zip
+	optdepends = r-biocstyle
 	optdepends = r-illuminahumanmethylation450kanno.ilmn12.hg19
 	optdepends = r-illuminahumanmethylation450kmanifest
 	optdepends = r-illuminahumanmethylationepicanno.ilm10b4.hg19
@@ -38,7 +39,7 @@ pkgbase = r-shinyepico
 	optdepends = r-mcsea
 	optdepends = r-minfidata
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/shinyepico_1.6.0.tar.gz
-	sha256sums = 0d962138e3f39a8797261a7894c69469a1fb976152905f9994ad7093142daa02
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/shinyepico_1.8.0.tar.gz
+	sha256sums = e16321def5699f367b5bf02b9a9f4fc583488c79c0458aae8e0bd0a4dbd83f39
 
 pkgname = r-shinyepico

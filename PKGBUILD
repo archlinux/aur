@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=shinyepico
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='ShinyÉPICo'
 arch=('any')
@@ -37,6 +37,7 @@ depends=(
   r-zip
 )
 optdepends=(
+  r-biocstyle
   r-illuminahumanmethylation450kanno.ilmn12.hg19
   r-illuminahumanmethylation450kmanifest
   r-illuminahumanmethylationepicanno.ilm10b4.hg19
@@ -47,7 +48,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0d962138e3f39a8797261a7894c69469a1fb976152905f9994ad7093142daa02')
+sha256sums=('e16321def5699f367b5bf02b9a9f4fc583488c79c0458aae8e0bd0a4dbd83f39')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
