@@ -4,7 +4,7 @@ _pkgname=RBGL
 _pkgver=1.76.0
 pkgname=r-${_pkgname,,}
 pkgver=1.76.0
-pkgrel=1
+pkgrel=3
 pkgdesc='An interface to the BOOST graph library'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -16,6 +16,8 @@ depends=(
 )
 optdepends=(
   r-biocgenerics
+  r-biocstyle
+  r-knitr
   r-rgraphviz
   r-runit
   r-xml
