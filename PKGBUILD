@@ -4,7 +4,7 @@ _pkgname=scone
 _pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=1.24.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Single Cell Overview of Normalized Expression data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -31,7 +31,7 @@ depends=(
   r-summarizedexperiment
 )
 optdepends=(
-  r-batchjobs
+  r-batchtools
   r-biocstyle
   r-doparallel
   r-dt
