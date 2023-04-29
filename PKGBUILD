@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CellBench
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='Construct Benchmarks for Single Cell Analysis Methods'
 arch=('any')
@@ -11,6 +11,7 @@ url="https://bioconductor.org/packages/${_pkgname}"
 license=('GPL')
 depends=(
   r
+  r-assertthat
   r-biocfilecache
   r-biocgenerics
   r-biocparallel
@@ -37,7 +38,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3b1c921c50d101f14563184c830dc21e6d8c3a63a270d521f861285ff6d1ab5c')
+sha256sums=('d620b98ba83aac1f838e0ccb0ffbe98a7f9ab60128a0b00cfe3de72a73f8e891')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
