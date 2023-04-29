@@ -4,7 +4,7 @@ _pkgname=MicrobiomeProfiler
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='An R/shiny package for microbiome functional enrichment analysis'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -17,6 +17,7 @@ depends=(
   r-enrichplot
   r-ggplot2
   r-golem
+  r-gson
   r-htmltools
   r-magrittr
   r-shiny

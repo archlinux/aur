@@ -1,7 +1,7 @@
 pkgbase = r-microbiomeprofiler
 	pkgdesc = An R/shiny package for microbiome functional enrichment analysis
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/MicrobiomeProfiler
 	arch = any
 	license = GPL
@@ -12,6 +12,7 @@ pkgbase = r-microbiomeprofiler
 	depends = r-enrichplot
 	depends = r-ggplot2
 	depends = r-golem
+	depends = r-gson
 	depends = r-htmltools
 	depends = r-magrittr
 	depends = r-shiny
