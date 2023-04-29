@@ -3,7 +3,7 @@
 _pkgname=wrswoR
 _pkgver=1.1.1
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Weighted Random Sampling without Replacement'
 arch=('x86_64')
