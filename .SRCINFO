@@ -1,7 +1,7 @@
 pkgbase = r-spatialde
 	pkgdesc = R wrapper for SpatialDE
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/spatialDE
 	arch = any
 	license = MIT
@@ -12,7 +12,6 @@ pkgbase = r-spatialde
 	depends = r-ggrepel
 	depends = r-gridextra
 	depends = r-reticulate
-	depends = r-s4vectors
 	depends = r-scales
 	depends = r-spatialexperiment
 	depends = r-summarizedexperiment

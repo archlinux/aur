@@ -4,7 +4,7 @@ _pkgname=spatialDE
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='R wrapper for SpatialDE'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -17,7 +17,6 @@ depends=(
   r-ggrepel
   r-gridextra
   r-reticulate
-  r-s4vectors
   r-scales
   r-spatialexperiment
   r-summarizedexperiment
