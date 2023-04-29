@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=git-imerge
 pkgver=1.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Incremental merge for Git'
 url=https://github.com/mhagger/git-imerge
 arch=(any)
@@ -24,5 +24,5 @@ package () {
 
 check () {
 	cd "$pkgname-$pkgver"
-	tox --sitepackages
+	tox --sitepackages --override 'testenv.allowlist_externals=/bin/sh'
 }

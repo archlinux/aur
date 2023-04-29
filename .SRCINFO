@@ -1,7 +1,7 @@
 pkgbase = git-imerge
 	pkgdesc = Incremental merge for Git
 	pkgver = 1.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/mhagger/git-imerge
 	arch = any
 	license = GPL2
