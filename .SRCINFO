@@ -1,6 +1,6 @@
 pkgbase = r-rgmql
 	pkgdesc = GenoMetric Query Language for R/Bioconductor
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RGMQL
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-rgmql
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RGMQL_1.18.0.tar.gz
-	sha256sums = 5b63fd15b237319e4aa37f58a787b0d8574b648658af9211043f8803d5cd80fa
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RGMQL_1.20.0.tar.gz
+	sha256sums = 4024b3843b4f27bd07e6dfd8d19b92598d77625bef6d0d77e584af222cb02d79
 
 pkgname = r-rgmql
