@@ -1,6 +1,6 @@
 pkgbase = r-synergyfinder
 	pkgdesc = Calculate and Visualize Synergy Scores for Drug Combinations
-	pkgver = 3.8.1
+	pkgver = 3.8.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/synergyfinder
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = r-synergyfinder
 	depends = r-vegan
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/synergyfinder_3.8.1.tar.gz
-	sha256sums = 4b6f68501e79a391da7eb56e319feda1d94f170d9cb2a002293e00addbd1556d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/synergyfinder_3.8.2.tar.gz
+	sha256sums = 87129b56975acb4329742e32f2cf2e2c15ca7bcc1f068bb0995b461d7faaf75a
 
 pkgname = r-synergyfinder
