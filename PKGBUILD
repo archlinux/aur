@@ -3,7 +3,7 @@
 _app_name=briar-desktop
 _app_nightly_name="${_app_name}-nightly"
 pkgname="${_app_nightly_name}-bin"
-pkgver=27231
+pkgver=27821
 pkgrel=1
 pkgdesc="Prototyping the next generation for Briar on desktop devices"
 arch=('any')
@@ -11,7 +11,7 @@ url='https://code.briarproject.org/briar/briar-desktop'
 license=('AGPL3')
 provides=("${_app_nightly_name}")
 depends=('java-runtime>=17' 'bash')
-_jar_source="https://code.briarproject.org/briar/${_app_name}/-/jobs/artifacts/main/raw/${_app_name}-linux.jar?job=b_package_linux"
+_jar_source="https://code.briarproject.org/briar/${_app_name}/-/jobs/artifacts/main/raw/${_app_name}-linux.jar?job=b_package_linux_x64"
 source=("${_app_nightly_name}.jar::${_jar_source}"
         "${_app_name}.svg"
         "briar16.png"
