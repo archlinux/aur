@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=IRISFGM
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Comprehensive Analysis of Gene Interactivity Networks Based on Single-Cell RNA-Seq'
 arch=('x86_64')
@@ -40,7 +40,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2c3faa6b4590b0af1ff32889c59e3a4f113a3d1c43d14922ce2db37485d916b6')
+sha256sums=('b9e8506329b416ffe49d65ed20e5c750a2ee228d1a051b4db61df8f296ce23d8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

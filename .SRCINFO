@@ -1,6 +1,6 @@
 pkgbase = r-irisfgm
 	pkgdesc = Comprehensive Analysis of Gene Interactivity Networks Based on Single-Cell RNA-Seq
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/IRISFGM
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = r-irisfgm
 	depends = r-seurat
 	depends = r-singlecellexperiment
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/IRISFGM_1.6.0.tar.gz
-	sha256sums = 2c3faa6b4590b0af1ff32889c59e3a4f113a3d1c43d14922ce2db37485d916b6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/IRISFGM_1.8.0.tar.gz
+	sha256sums = b9e8506329b416ffe49d65ed20e5c750a2ee228d1a051b4db61df8f296ce23d8
 
 pkgname = r-irisfgm
