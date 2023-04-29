@@ -143,12 +143,12 @@ for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
 
-sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
+sha256sums=('ba3491f5ed6bd270a370c440434e3d69085fcdd528922fa01e73d7657db73b1e'
             'SKIP'
-            '469f9cb1f113bf7a040769c0f32db58a14bc0d97f10ba3a5b21f0dba0dae7159'
+            '6d42828005f682f4a422f9baf7d1c312963511ed7476a684fdf5e6b9b85fbf8d'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
-            'c5bdf89d7867c368dfd7b7c16e5a50a99ca8022de28ab15315bdcb5dab8aad85'
-            '1e88663a54843a747d717ea6f2fc5d1233056c30433e1b685d09cae9921a2cff')
+            '427b16aeece1b62667ab34d45e43e4f476f5f4875daf8553597c95e2bfa22ef1'
+            'ad0a0597ac206f977047d47974a0c9614f4e8aae95573f9958bd9773f68cdabc')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
