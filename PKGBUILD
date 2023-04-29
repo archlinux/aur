@@ -4,7 +4,7 @@ _pkgname=motifStack
 _pkgver=1.44.1
 pkgname=r-${_pkgname,,}
 pkgver=1.44.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Plot stacked logos for single or multiple DNA, RNA and amino acid sequence'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -21,6 +21,7 @@ depends=(
 optdepends=(
   r-biocgenerics
   r-biocstyle
+  r-cairo
   r-grimport
   r-grimport2
   r-jaspar2020
