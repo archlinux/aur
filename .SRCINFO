@@ -1,6 +1,6 @@
 pkgbase = r-repitools
 	pkgdesc = Epigenomic tools
-	pkgver = 1.44.0
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Repitools
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = r-repitools
 	depends = r-s4vectors
 	optdepends = r-bsgenome.hsapiens.ucsc.hg18
 	optdepends = r-shortread
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Repitools_1.44.0.tar.gz
-	sha256sums = 030048566a8549b9bdd9faf2552097df520ffd8efd89832d446c0172ed051591
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Repitools_1.46.0.tar.gz
+	sha256sums = 9a8c6d56c6ccbef5261c1081319757ad64f68e91f36efc7ac79aa5a5b5dca4bb
 
 pkgname = r-repitools
