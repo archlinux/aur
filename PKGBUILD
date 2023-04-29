@@ -4,19 +4,19 @@
 # Contributor: Mick Elliot <micke at sfu dot ca>
 
 pkgname=mesquite
-pkgver=3\.70_build_940
-pkgrel=2
+pkgver=3\.81_build955
+pkgrel=1
 pkgdesc="A modular, extendible software for evolutionary biology, designed to help biologists organize and analyze comparative data about organisms"
 arch=('any')
 url="http://mesquiteproject.org"
 license=('LGPL')
 depends=('java-runtime=8')
-source=($pkgname-${pkgver: 0: 4}::https://github.com/MesquiteProject/MesquiteCore/releases/download/v${pkgver//_/-}/Mesquite.${pkgver: 0: 4}-Linux.tgz
+source=($pkgname-${pkgver: 0: 4}::https://github.com/MesquiteProject/MesquiteCore/releases/download/v${pkgver//_/-}/Mesquite_${pkgver: 0: 4}_Linux.tgz
         $pkgname.png
         $pkgname.desktop
 	$pkgname.sh
         )
-md5sums=('7243fc05bb877cf6997296d436903936'
+md5sums=('560700a0968ea4be1eb96df3674f876d'
          '8b62ba93f95aab14a8643bf5b939f465'
          '5107a3118443aca1eac69db381d7df50'
          'f6ff62edbf95e40d21c7bceadb35ecfe')

@@ -1,16 +1,16 @@
 pkgbase = mesquite
 	pkgdesc = A modular, extendible software for evolutionary biology, designed to help biologists organize and analyze comparative data about organisms
-	pkgver = 3.70_build_940
-	pkgrel = 2
+	pkgver = 3.81_build955
+	pkgrel = 1
 	url = http://mesquiteproject.org
 	arch = any
 	license = LGPL
 	depends = java-runtime=8
-	source = mesquite-3.70::https://github.com/MesquiteProject/MesquiteCore/releases/download/v3.70-build-940/Mesquite.3.70-Linux.tgz
+	source = mesquite-3.81::https://github.com/MesquiteProject/MesquiteCore/releases/download/v3.81-build955/Mesquite_3.81_Linux.tgz
 	source = mesquite.png
 	source = mesquite.desktop
 	source = mesquite.sh
-	md5sums = 7243fc05bb877cf6997296d436903936
+	md5sums = 560700a0968ea4be1eb96df3674f876d
 	md5sums = 8b62ba93f95aab14a8643bf5b939f465
 	md5sums = 5107a3118443aca1eac69db381d7df50
 	md5sums = f6ff62edbf95e40d21c7bceadb35ecfe
