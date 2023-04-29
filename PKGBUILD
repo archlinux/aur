@@ -4,10 +4,10 @@ _pkgname=AffyCompatible
 _pkgver=1.58.0
 pkgname=r-${_pkgname,,}
 pkgver=1.58.0
-pkgrel=1
+pkgrel=4
 pkgdesc='Affymetrix GeneChip software compatibility'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.16/${_pkgname}"
 license=('Artistic2.0')
 depends=(
   r
@@ -15,7 +15,7 @@ depends=(
   r-rcurl
   r-xml
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.16/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('74393e8cec13d9299c24f25717c73300876f315df74d3f7a6a4fbbad158ee7ad')
 
 build() {

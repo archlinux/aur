@@ -1,15 +1,15 @@
 pkgbase = r-affycompatible
 	pkgdesc = Affymetrix GeneChip software compatibility
 	pkgver = 1.58.0
-	pkgrel = 1
-	url = https://bioconductor.org/packages/AffyCompatible
+	pkgrel = 4
+	url = https://bioconductor.org/packages/3.16/AffyCompatible
 	arch = any
 	license = Artistic2.0
 	depends = r
 	depends = r-biostrings
 	depends = r-rcurl
 	depends = r-xml
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/AffyCompatible_1.58.0.tar.gz
+	source = https://bioconductor.org/packages/3.16/bioc/src/contrib/AffyCompatible_1.58.0.tar.gz
 	sha256sums = 74393e8cec13d9299c24f25717c73300876f315df74d3f7a6a4fbbad158ee7ad
 
 pkgname = r-affycompatible
