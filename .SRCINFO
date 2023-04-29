@@ -1,6 +1,6 @@
 pkgbase = r-methylgsa
 	pkgdesc = Gene Set Analysis Using the Outcome of Differential Methylation
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/methylGSA
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = r-methylgsa
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/methylGSA_1.16.0.tar.gz
-	sha256sums = 352b92a5e8344790af50724fe852ff98d8714081310bb68e4f765d6172d9eff7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/methylGSA_1.18.0.tar.gz
+	sha256sums = 3917ecf1330600bfc1314cc17fee84c8cbfffbeb2e0671b8caf624005e90109a
 
 pkgname = r-methylgsa
