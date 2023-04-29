@@ -4,7 +4,7 @@ _pkgname=variancePartition
 _pkgver=1.30.0
 pkgname=r-${_pkgname,,}
 pkgver=1.30.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Quantify and interpret divers of variation in multilevel gene expression experiments'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -44,6 +44,7 @@ optdepends=(
   r-readr
   r-rmarkdown
   r-runit
+  r-statmod
   r-tximport
   r-tximportdata
 )

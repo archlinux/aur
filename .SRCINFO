@@ -1,7 +1,7 @@
 pkgbase = r-variancepartition
 	pkgdesc = Quantify and interpret divers of variation in multilevel gene expression experiments
 	pkgver = 1.30.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/variancePartition
 	arch = any
 	license = GPL
@@ -37,6 +37,7 @@ pkgbase = r-variancepartition
 	optdepends = r-readr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
+	optdepends = r-statmod
 	optdepends = r-tximport
 	optdepends = r-tximportdata
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/variancePartition_1.30.0.tar.gz
