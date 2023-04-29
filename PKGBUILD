@@ -15,21 +15,22 @@ makedepends=("git"
 		"python-argcomplete"
 )
 depends=(
-		"lenovolegionlinux-dkms-git"
+		""
 )
 optdepends=(
-		"legion-fan-utils-linux-git: Systemd service that will apply a given profile"
+		"legion-fan-utils-linux-git: Systemd service that will apply a given profile
+		lenovolegionlinux-dkms-git: DKMS module (install if your distro dosent patch in the kernel our you are not sure to haveit)"
 )
 source=("${_pkgname}::git+https://github.com/johnfanv2/LenovoLegionLinux")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
-  cd "$_pkgname"
+  cd "${_pkgname}"
   pkgver_commit=$(echo $pkgver | cut -c 6-)
   git checkout $pkgver_commit
 }
