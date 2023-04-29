@@ -1,6 +1,6 @@
 pkgbase = r-ringo
 	pkgdesc = R Investigation of ChIP-chip Oligoarrays
-	pkgver = 1.62.0
+	pkgver = 1.64.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Ringo
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = r-ringo
 	optdepends = r-mclust
 	optdepends = r-rtracklayer
 	optdepends = r-topgo
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Ringo_1.62.0.tar.gz
-	sha256sums = f93f6274e8bcfdfe419b784fdf68607cd311e0f118b9722a444832a18cbb3451
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Ringo_1.64.0.tar.gz
+	sha256sums = a99348d1239d73a78441e1041c23e4afd8276b4d8d5a501bd83069093691df35
 
 pkgname = r-ringo

@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Ringo
-_pkgver=1.62.0
+_pkgver=1.64.0
 pkgname=r-${_pkgname,,}
-pkgver=1.62.0
+pkgver=1.64.0
 pkgrel=1
 pkgdesc='R Investigation of ChIP-chip Oligoarrays'
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=(
   r-topgo
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f93f6274e8bcfdfe419b784fdf68607cd311e0f118b9722a444832a18cbb3451')
+sha256sums=('a99348d1239d73a78441e1041c23e4afd8276b4d8d5a501bd83069093691df35')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
