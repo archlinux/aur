@@ -1,7 +1,7 @@
 pkgbase = r-mscoreutils
 	pkgdesc = Core Utils for Mass Spectrometry Data
 	pkgver = 1.12.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/MsCoreUtils
 	arch = x86_64
 	license = Artistic2.0
@@ -17,6 +17,7 @@ pkgbase = r-mscoreutils
 	optdepends = r-matrix
 	optdepends = r-missforest
 	optdepends = r-norm
+	optdepends = r-norm2
 	optdepends = r-pcamethods
 	optdepends = r-preprocesscore
 	optdepends = r-rmarkdown
