@@ -1,6 +1,6 @@
 pkgbase = r-cellmixs
 	pkgdesc = Evaluate Cellspecific Mixing
-	pkgver = 1.14.0
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CellMixS
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-cellmixs
 	optdepends = r-rmarkdown
 	optdepends = r-rtsne
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CellMixS_1.14.0.tar.gz
-	sha256sums = 8f2af850403717fd6edcefae3a6f9fdef397530f5654506b77f35c97334f83da
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CellMixS_1.16.0.tar.gz
+	sha256sums = 66a52d3d5ee88746bb4c89fccf7c75aa048e4b78280faee56636ec729b2eb49c
 
 pkgname = r-cellmixs
