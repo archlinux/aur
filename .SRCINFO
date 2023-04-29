@@ -1,0 +1,25 @@
+pkgbase = snapshot
+	pkgdesc = Take pictures and videos on your computer, tablet, or phone
+	pkgver = 44.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/Incubator/snapshot
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = meson
+	makedepends = cargo
+	makedepends = clang
+	depends = glib2
+	depends = gst-plugin-pipewire
+	depends = gst-plugins-bad
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gstreamer
+	depends = gtk4
+	depends = libadwaita
+	depends = pipewire
+	depends = xdg-desktop-portal
+	source = https://gitlab.gnome.org/Incubator/snapshot/-/archive/44.0/snapshot-44.0.tar.gz
+	b2sums = 1139df7e83e690cffbf2b6fe775ac220e30c2b2122861b77395accf281e12ebc7e546038d9b60ac31e29fc8a31dcca61b5df23202d4109a7db0e04ab81d7c285
+
+pkgname = snapshot
