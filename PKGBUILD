@@ -4,7 +4,7 @@ _pkgname=ENVISIONQuery
 _pkgver=1.38.0
 pkgname=r-${_pkgname,,}
 pkgver=1.38.0
-pkgrel=1
+pkgrel=4
 pkgdesc='Retrieval from the ENVISION bioinformatics data portal into R'
 arch=('any')
 url="https://bioconductor.org/packages/3.12/bioc/html/ENVISIONQuery.html"
@@ -31,4 +31,3 @@ package() {
   cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
 }
 # vim:set ts=2 sw=2 et:
-

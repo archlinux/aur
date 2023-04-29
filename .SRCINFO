@@ -1,7 +1,7 @@
 pkgbase = r-envisionquery
 	pkgdesc = Retrieval from the ENVISION bioinformatics data portal into R
 	pkgver = 1.38.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://bioconductor.org/packages/3.12/bioc/html/ENVISIONQuery.html
 	arch = any
 	license = GPL
