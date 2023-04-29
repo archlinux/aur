@@ -2,7 +2,7 @@
 # Maintainer: rsteube <rsteube@users.noreply.github.com>
 
 pkgname='vincent-bin'
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='terminal color scheme chooser'
 url='https://github.com/rsteube/vincent'
@@ -11,14 +11,14 @@ license=('MIT')
 provides=('vincent')
 conflicts=('vincent')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/rsteube/vincent/releases/download/v0.1.2/vincent_linux_arm64.tar.gz")
-sha256sums_aarch64=('f35cd44389b83aed4601118a3289a38b865da35e804464895b2ffb3d2037d84d')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/rsteube/vincent/releases/download/v0.1.3/vincent_linux_arm64.tar.gz")
+sha256sums_aarch64=('2a43510bd9e454e8018ae7690e2b7549e83348fe1cfddeb57287ab8c0f1cb1d8')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/rsteube/vincent/releases/download/v0.1.2/vincent_linux_386.tar.gz")
-sha256sums_i686=('9be93a1d5af3ec81ddf2235f7d62c1eb75dff311a66ef7089f1b848b4aa73855')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/rsteube/vincent/releases/download/v0.1.3/vincent_linux_386.tar.gz")
+sha256sums_i686=('929bbb05532aa0fef77adc32f4a4f39b5647a6054dce398305a65a00a6fa3169')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/rsteube/vincent/releases/download/v0.1.2/vincent_linux_amd64.tar.gz")
-sha256sums_x86_64=('22e403587b957f1bd2ca00c53c9c0cc654bb5f2800df42c17e6b9dba455d4dd9')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/rsteube/vincent/releases/download/v0.1.3/vincent_linux_amd64.tar.gz")
+sha256sums_x86_64=('5a592bc6c20a6648e88448cdc27ccc42068cbc8caaeecb45c5189ae5694f35ba')
 
 package() {
   install -Dm755 "./vincent" "${pkgdir}/usr/bin/vincent"
