@@ -4,7 +4,7 @@ _pkgname=EnMCB
 _pkgver=1.8.2
 pkgname=r-${_pkgname,,}
 pkgver=1.8.2
-pkgrel=6
+pkgrel=9
 pkgdesc='Predicting Disease Progression Based on Methylation Correlated Blocks using Ensemble Models'
 arch=('any')
 url="https://bioconductor.org/packages/3.15/${_pkgname}"
@@ -26,7 +26,6 @@ optdepends=(
   r-biobase
   r-knitr
   r-limma
-  r-minfi
   r-plotroc
   r-rmarkdown
   r-summarizedexperiment

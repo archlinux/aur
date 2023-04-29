@@ -1,7 +1,7 @@
 pkgbase = r-enmcb
 	pkgdesc = Predicting Disease Progression Based on Methylation Correlated Blocks using Ensemble Models
 	pkgver = 1.8.2
-	pkgrel = 6
+	pkgrel = 9
 	url = https://bioconductor.org/packages/3.15/EnMCB
 	arch = any
 	license = GPL
@@ -19,7 +19,6 @@ pkgbase = r-enmcb
 	optdepends = r-biobase
 	optdepends = r-knitr
 	optdepends = r-limma
-	optdepends = r-minfi
 	optdepends = r-plotroc
 	optdepends = r-rmarkdown
 	optdepends = r-summarizedexperiment
