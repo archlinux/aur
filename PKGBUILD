@@ -3,7 +3,7 @@
 
 java_=8
 pkgname="jdk${java_}-graalvm-ee-bin"
-pkgver=21.3.5
+pkgver=21.3.6
 pkgrel=1
 pkgdesc="Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java ${java_} version"
 arch=('x86_64')
@@ -18,7 +18,7 @@ provides=("java-runtime=${java_}"
 install="$pkgname.install"
 source=("https://oca.opensource.oracle.com/gds/GRAALVM_EE_JAVA${java_}_${pkgver//./_}/graalvm-ee-java${java_}-linux-amd64-${pkgver}.tar.gz"
         'graalvm-ee-rebuild-libpolyglot.hook')
-sha256sums=('89d217d32aca938d1a83c08d77efa5e600e8ba92f90c83cf7f07cbd97e5e3f4e'
+sha256sums=('a234901fd32847fa2f7ed296117a25d59e1a396d10bea72424438f06835c49c2'
             'SKIP')
 
 package() {
