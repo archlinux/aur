@@ -17,7 +17,7 @@ pkgname=(
   "${pkgbase}-dtb-rockchip"
 )
 pkgver="${_pkgver_main}"
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 url="https://github.com/unifreq/${_flippy_repo}"
 license=('GPL2')
@@ -35,7 +35,7 @@ sha256sums=(
   '56db5ed562987e41eb4efdce21193cf28c7e3cafc6a91457de729b2f25d92822'
   'eea825bef9a873be55cab26035cc6b16e210f4effba905fadc22de444e2b7f30'
   'bdcd6cbf19284b60fac6d6772f1e0ec2e2fe03ce7fe3d7d16844dd6d2b5711f3'
-  '6fcc328ca286e8fa86d8988aa2f01afdd41cf650425baa967eebbb9e29bca5a4'
+  'd4a47c25f5822fe05a473a9ccd8b749429adb23519a72b9043fe42530f990321'
 )
 
 prepare() {

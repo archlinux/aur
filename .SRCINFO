@@ -1,6 +1,6 @@
 pkgbase = linux-aarch64-flippy
 	pkgver = 6.1.26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/unifreq/linux-6.1.y
 	arch = aarch64
 	license = GPL2
@@ -16,7 +16,7 @@ pkgbase = linux-aarch64-flippy
 	sha256sums = 56db5ed562987e41eb4efdce21193cf28c7e3cafc6a91457de729b2f25d92822
 	sha256sums = eea825bef9a873be55cab26035cc6b16e210f4effba905fadc22de444e2b7f30
 	sha256sums = bdcd6cbf19284b60fac6d6772f1e0ec2e2fe03ce7fe3d7d16844dd6d2b5711f3
-	sha256sums = 6fcc328ca286e8fa86d8988aa2f01afdd41cf650425baa967eebbb9e29bca5a4
+	sha256sums = d4a47c25f5822fe05a473a9ccd8b749429adb23519a72b9043fe42530f990321
 
 pkgname = linux-aarch64-flippy
 	pkgdesc = The Linux Kernel and module - flippy's AArch64-focused fork aiming to increase usability
