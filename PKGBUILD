@@ -7,7 +7,7 @@ _pkgname=V8
 _pkgver=4.3.0
 pkgname=r-${_pkgname,,}
 pkgver=4.3.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Embedded JavaScript and WebAssembly Engine for R'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -31,16 +31,16 @@ prepare() {
   # build with system nodejs
   sed -i '11,12d' ${_pkgname}/configure
   sed -i '11i PKG_LIBS="-lnode"\nPKG_CFLAGS="-I/usr/include/node"' ${_pkgname}/configure
-  tar cvfz ${_pkgname}_${pkgver}.tar.gz ${_pkgname}
 }
 
 build() {
-  R CMD INSTALL ${_pkgname}_${pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL ${_pkgname} -l build
 }
 
 package() {
   install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/${_pkgname}" "${pkgdir}/usr/lib/R/library"
   install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 # vim:set ts=2 sw=2 et:
