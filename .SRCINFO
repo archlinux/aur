@@ -1,7 +1,7 @@
 pkgbase = r-gseabase
 	pkgdesc = Gene set enrichment data structures and methods
 	pkgver = 1.62.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/GSEABase
 	arch = any
 	license = Artistic2.0
@@ -19,6 +19,7 @@ pkgbase = r-gseabase
 	optdepends = r-org.hs.eg.db
 	optdepends = r-reportingtools
 	optdepends = r-rgraphviz
+	optdepends = r-runit
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/GSEABase_1.62.0.tar.gz
 	sha256sums = d04a0c08e1321717d67b9ce633a5edaea40e8925b77e1596e69333faf47ecc75

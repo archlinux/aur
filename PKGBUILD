@@ -4,7 +4,7 @@ _pkgname=GSEABase
 _pkgver=1.62.0
 pkgname=r-${_pkgname,,}
 pkgver=1.62.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Gene set enrichment data structures and methods'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -26,6 +26,7 @@ optdepends=(
   r-org.hs.eg.db
   r-reportingtools
   r-rgraphviz
+  r-runit
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
