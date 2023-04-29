@@ -9,7 +9,7 @@ sha256sums=('fa3b23bbd4d7d632035b608a4dcf478fa1b1ae73515a3a821febbccb29026bee')
 
 build()	{
 	cd nya-main
-        make
+        cc nya.c -O3 -o nya
 }
 
 package() {
