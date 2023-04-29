@@ -1,6 +1,6 @@
 pkgbase = r-arrayqualitymetrics
 	pkgdesc = Quality metrics report for microarray data sets
-	pkgver = 3.54.0
+	pkgver = 3.56.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/arrayQualityMetrics
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-arrayqualitymetrics
 	optdepends = r-biocstyle
 	optdepends = r-ccl4
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/arrayQualityMetrics_3.54.0.tar.gz
-	sha256sums = 63fc5c7d4f683941d41c72f1f7a842156e7565022ae0a935a14a858edc58e94b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/arrayQualityMetrics_3.56.0.tar.gz
+	sha256sums = 928be37964b82f0e99d4c8a59686062513a1cbf0a445e6b0cf1b1e455f7df41a
 
 pkgname = r-arrayqualitymetrics
