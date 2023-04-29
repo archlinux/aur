@@ -1,7 +1,7 @@
 pkgbase = r-tfea.chip
 	pkgdesc = Analyze Transcription Factor Enrichment
 	pkgver = 1.20.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/TFEA.ChIP
 	arch = any
 	license = Artistic2.0
@@ -21,6 +21,7 @@ pkgbase = r-tfea.chip
 	optdepends = r-plotly
 	optdepends = r-rcompanion
 	optdepends = r-rmarkdown
+	optdepends = r-runit
 	optdepends = r-s4vectors
 	optdepends = r-scales
 	optdepends = r-tidyr

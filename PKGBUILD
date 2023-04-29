@@ -4,7 +4,7 @@ _pkgname=TFEA.ChIP
 _pkgver=1.20.0
 pkgname=r-${_pkgname,,}
 pkgver=1.20.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Analyze Transcription Factor Enrichment'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -28,6 +28,7 @@ optdepends=(
   r-plotly
   r-rcompanion
   r-rmarkdown
+  r-runit
   r-s4vectors
   r-scales
   r-tidyr
