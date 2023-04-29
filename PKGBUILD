@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RMassBank
-_pkgver=3.8.0
+_pkgver=3.10.0
 pkgname=r-${_pkgname,,}
-pkgver=3.8.0
-pkgrel=3
+pkgver=3.10.0
+pkgrel=1
 pkgdesc='Workflow to process tandem MS files and build MassBank records'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -46,7 +46,7 @@ optdepends=(
   r-xcms
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e0770cd396eacb014c24c21716e3c2f04d97e6f2310ddbf8cf17c8acfc169bfe')
+sha256sums=('100f2497dd0933a16a0a6b8d699507b64632657eab0d00b9c1e55891c383b263')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
