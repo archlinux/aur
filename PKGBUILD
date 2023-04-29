@@ -4,7 +4,7 @@ _pkgname=ggtreeExtra
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=1.10.0
-pkgrel=1
+pkgrel=3
 pkgdesc='An R Package To Add Geometric Layers On Circular Or Other Layout Tree Of "ggtree"'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -15,6 +15,7 @@ depends=(
   r-ggnewscale
   r-ggplot2
   r-ggtree
+  r-magrittr
   r-rlang
   r-tidytree
 )
