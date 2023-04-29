@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=minfi
-_pkgver=1.44.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
-pkgver=1.44.0
+pkgver=1.46.0
 pkgrel=1
 pkgdesc='Analyze Illumina Infinium DNA methylation arrays'
 arch=('any')
@@ -52,7 +52,7 @@ optdepends=(
   r-tools
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8ca2606e3dc83ecece76df8725a0b4fe44cad1c386006ec92452f847e34f2895')
+sha256sums=('d8127e43407a28d79407f26efe43e5522a659084a2e61b95d2a15a0bd3f369a1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
