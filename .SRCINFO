@@ -1,15 +1,18 @@
 pkgbase = r-caen
 	pkgdesc = Category encoding method for selecting feature genes for the classification of single-cell RNA-seq
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/CAEN
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-poiclaclu
 	depends = r-summarizedexperiment
+	optdepends = r-biocmanager
+	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
+	optdepends = r-summarizedexperiment
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/CAEN_1.8.0.tar.gz
 	sha256sums = 0a5038bf256a7dad56fbb216040da2991bec6b8a082e0c1fa3397b35e5c61c14
 
