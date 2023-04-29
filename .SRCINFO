@@ -1,6 +1,6 @@
 pkgbase = valent-git
 	pkgdesc = Connect, control and sync devices
-	pkgver = r962.d65f4698
+	pkgver = r1004.1cae541a
 	pkgrel = 1
 	url = https://valent.andyholmes.ca
 	arch = x86_64
@@ -22,6 +22,8 @@ pkgbase = valent-git
 	depends = sqlite
 	provides = valent
 	conflicts = valent
+	conflicts = gnome-shell-extension-valent-git
+	replaces = gnome-shell-extension-valent-git
 	source = git+https://github.com/andyholmes/valent.git
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	sha256sums = SKIP
