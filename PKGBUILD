@@ -5,7 +5,7 @@ _pkgname=rhdf5
 _pkgver=2.44.0
 pkgname=r-${_pkgname,,}
 pkgver=2.44.0
-pkgrel=1
+pkgrel=3
 pkgdesc='R Interface to HDF5'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -16,12 +16,13 @@ depends=(
   r-rhdf5lib
 )
 optdepends=(
+  r-bench
+  r-biocparallel
   r-biocstyle
   r-bit64
   r-dplyr
   r-ggplot2
   r-knitr
-  r-microbenchmark
   r-mockery
   r-rmarkdown
   r-testthat
