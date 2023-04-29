@@ -1,0 +1,9 @@
+pkgbase = nostril-git
+	pkgdesc = A cli util for generating nostr events
+	pkgver = r69.65c7077
+	pkgrel = 1
+	arch = x86_64
+	source = git+https://github.com/jb55/nostril.git#branch=master
+	sha256sums = SKIP
+
+pkgname = nostril-git
