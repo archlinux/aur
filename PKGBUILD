@@ -1,0 +1,44 @@
+# Maintainer: Thomas Letan <lthms@soap.coffee>
+
+pkgname=spatial-shell
+pkgver=1
+pkgrel=1
+license=('MPL2')
+arch=('x86_64')
+depends=(
+  'gmp'
+  'sway'
+)
+optdepends=(
+  'swaybg'
+  'waybr'
+)
+makedepends=(
+  'opam'
+  'scdoc'
+)
+source=(
+  "https://github.com/lthms/spatial-shell/archive/refs/tags/$pkgver.tar.gz"
+  'destdir.patch')
+sha512sums=(
+  '858bf6c47d2fd9f99bd38498525c8a7f068620dbcb622719745983c04b7503c566de761bab1c6261248f1bc76b6be23c2a0f6fcd1936ba206f48fda793f1403a'
+  '9a0fd738009e588ad99adf72dc480f3a6007a5b67c14df553b95a71cf0464ec6a37b2990e20ba221d17c7b53d257341b683ae0e5d2ff0b747bbae3bd19938b76'
+)
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -p1 -i "${srcdir}/destdir.patch"
+}
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make build-deps
+  eval $(opam env)
+  make
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  mkdir -p "$pkgdir/usr/bin"
+  make DESTDIR="$pkgdir/usr" install
+}
