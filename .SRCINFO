@@ -1,7 +1,7 @@
 pkgbase = r-qfeatures
 	pkgdesc = Quantitative features for mass spectrometry data
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/QFeatures
 	arch = any
 	license = Artistic2.0
@@ -29,7 +29,6 @@ pkgbase = r-qfeatures
 	optdepends = r-imputelcmd
 	optdepends = r-knitr
 	optdepends = r-limma
-	optdepends = r-magrittr
 	optdepends = r-matrix
 	optdepends = r-matrixstats
 	optdepends = r-msdata

@@ -4,7 +4,7 @@ _pkgname=QFeatures
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=1.10.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Quantitative features for mass spectrometry data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -36,7 +36,6 @@ optdepends=(
   r-imputelcmd
   r-knitr
   r-limma
-  r-magrittr
   r-matrix
   r-matrixstats
   r-msdata
