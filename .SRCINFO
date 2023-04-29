@@ -1,6 +1,6 @@
 pkgbase = r-nbamseq
 	pkgdesc = Negative Binomial Additive Model for RNA-Seq Data
-	pkgver = 1.14.0
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/NBAMSeq
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-nbamseq
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/NBAMSeq_1.14.0.tar.gz
-	sha256sums = c21b2bc76c73dd8dd2a85f8226ca30c96c53774a22a14d8915e8ae0f74de5d89
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/NBAMSeq_1.16.0.tar.gz
+	sha256sums = 6d4d8c4f39c030373952933ad51721afc757d167ff506bb3a4d7e3d56a99b5d0
 
 pkgname = r-nbamseq
