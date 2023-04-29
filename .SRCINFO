@@ -1,16 +1,20 @@
 pkgbase = pocketsphinx
 	pkgdesc = A small speech recognizer
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cmusphinx.github.io
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = BSD
+	license = MIT
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = gst-plugins-base-libs
 	optdepends = gst-plugins-base-libs: GStreamer plugin
-	source = https://github.com/cmusphinx/pocketsphinx/archive/refs/tags/v5.0.0.tar.gz
+	source = pocketsphinx-5.0.0.tar.gz::https://github.com/cmusphinx/pocketsphinx/archive/refs/tags/v5.0.0.tar.gz
+	source = 66685a74bb55d82a97c6ae46b7cd91152bbbfffd.patch
 	sha256sums = 78ffe5b60b6981b08667435dd26c5a179b612b8ca372bd9c23c896a8b2239a20
+	sha256sums = 428fc297f047ea95fe24f7e43b723cdfdb7215de518455e939ef86ff1aa10af6
 
 pkgname = pocketsphinx
+
