@@ -22,7 +22,7 @@ pkgbase = appflowy-git
 	conflicts = appflowy
 	conflicts = appflowy-bin
 	source = appflowy::git+https://github.com/AppFlowy-IO/AppFlowy.git
-	source = flutter::git+https://github.com/flutter/flutter.git#tag=3.3.10
+	source = flutter::git+https://github.com/flutter/flutter.git#tag=3.7.9
 	sha256sums = SKIP
 	sha256sums = SKIP
 

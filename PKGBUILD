@@ -17,7 +17,7 @@ backup=()
 options=()
 install=
 source=("$_pkgname::git+https://github.com/AppFlowy-IO/AppFlowy.git"
-        'flutter::git+https://github.com/flutter/flutter.git#tag=3.3.10')
+        'flutter::git+https://github.com/flutter/flutter.git#tag=3.7.9')
 sha256sums=('SKIP'
             'SKIP')
 
@@ -56,7 +56,7 @@ package() {
 
 	cp -a * "$pkgdir/opt/$pkgname/"
 	rm "$pkgdir/opt/$pkgname/appflowy.desktop.temp"
-	ln -s "/opt/$pkgname/appflowy_flutter" "$pkgdir/usr/bin/"
+	ln -s "/opt/$pkgname/AppFlowy" "$pkgdir/usr/bin/"
 
 	_desktop_file="$pkgdir/usr/share/applications/AppFlowy.desktop"
 	install -m644 appflowy.desktop.temp "$_desktop_file"
