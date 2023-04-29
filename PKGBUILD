@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=skewr
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc="Visualize Intensities Produced by Illumina's Human Methylation 450k BeadChip"
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-minfidata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('abc2803f0cf1da501246803c903f6c5dc83383ba7bbe14b2f9af9512c39b8cb7')
+sha256sums=('1b608304c6ae5ffe9240028365790aed2b893d185eae4646841e63b805f0f837')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

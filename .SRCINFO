@@ -1,6 +1,6 @@
 pkgbase = r-skewr
 	pkgdesc = Visualize Intensities Produced by Illumina's Human Methylation 450k BeadChip
-	pkgver = 1.30.0
+	pkgver = 1.32.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/skewr
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-skewr
 	optdepends = r-geoquery
 	optdepends = r-knitr
 	optdepends = r-minfidata
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/skewr_1.30.0.tar.gz
-	sha256sums = abc2803f0cf1da501246803c903f6c5dc83383ba7bbe14b2f9af9512c39b8cb7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/skewr_1.32.0.tar.gz
+	sha256sums = 1b608304c6ae5ffe9240028365790aed2b893d185eae4646841e63b805f0f837
 
 pkgname = r-skewr
