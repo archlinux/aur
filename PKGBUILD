@@ -14,7 +14,7 @@
 # Marco Trevisan: <https://salsa.debian.org/gnome-team/mutter/-/blob/ubuntu/master/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch>
 
 pkgname=mutter-x11-scaling
-pkgver=43.4
+pkgver=43.5
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -57,7 +57,7 @@ checkdepends=(
 )
 provides=(mutter libmutter-11.so)
 conflicts=(mutter)
-_commit=0e7506ff6d8e4940fc6654f2711e5decb23440dc  # tags/43.4^0
+_commit=eedb556bb42a3de1423ec77ca11b7f014462c9e7  # tags/43.5^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
   "https://salsa.debian.org/gnome-team/mutter/-/raw/fef244c14c8ef6c98a5355d901b34f9e2ea2fd4e/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch"
@@ -85,13 +85,17 @@ prepare() {
 }
 
 build() {
+  local meson_options=(
+    -D docs=false
+    -D egl_device=true
+    -D installed_tests=false
+    -D wayland_eglstream=true
+  )
+
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
   LDFLAGS+=" -Wl,-Bsymbolic-functions"
 
-  arch-meson mutter build \
-    -D egl_device=true \
-    -D wayland_eglstream=true \
-    -D installed_tests=false
+  arch-meson mutter build "${meson_options[@]}"
   meson compile -C build
 }
 

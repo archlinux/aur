@@ -1,6 +1,6 @@
 pkgbase = mutter-x11-scaling
 	pkgdesc = Window manager and compositor for GNOME with X11 fractional scaling patch
-	pkgver = 43.4
+	pkgver = 43.5
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
@@ -37,7 +37,7 @@ pkgbase = mutter-x11-scaling
 	provides = mutter
 	provides = libmutter-11.so
 	conflicts = mutter
-	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=0e7506ff6d8e4940fc6654f2711e5decb23440dc
+	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=eedb556bb42a3de1423ec77ca11b7f014462c9e7
 	source = https://salsa.debian.org/gnome-team/mutter/-/raw/fef244c14c8ef6c98a5355d901b34f9e2ea2fd4e/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch
 	source = https://salsa.debian.org/gnome-team/mutter/-/raw/c38a1a0ed613d69805f9ee45fae4050bb1897c3e/debian/patches/debian/Support-Dynamic-triple-double-buffering.patch
 	b2sums = SKIP
