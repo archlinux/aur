@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=irreader
+Exec=/usr/bin/irreader
+Icon=/opt/app/images/icon_about_win.png
+Type=Application
+GenericName=RSS/Atom feed reader
+Comment=irreader 万能订阅阅读器，订阅任何网站。
+Terminal=false
+Categories=Network;News;
+MimeType=application/rss+xml;application/atom+xml;application/rdf+xml;
+X-DBUS-StartupType=none
+
