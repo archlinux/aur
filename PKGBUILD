@@ -4,7 +4,7 @@ _pkgname=RPA
 _pkgver=1.56.0
 pkgname=r-${_pkgname,,}
 pkgver=1.56.0
-pkgrel=1
+pkgrel=3
 pkgdesc='RPA: Robust Probabilistic Averaging for probe-level analysis'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -18,7 +18,6 @@ depends=(
   r-rmarkdown
 )
 optdepends=(
-  r-affydata
   r-knitr
   r-parallel
 )
