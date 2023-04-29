@@ -1,0 +1,15 @@
+pkgbase = lsn-git
+	pkgdesc = 4DOS-inspired ls with file/dir descriptions for organized Linux CLI use.
+	pkgver = r2.0591a39
+	pkgrel = 1
+	url = https://github.com/yantis/lsn
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = coreutils
+	provides = lsn-git
+	conflicts = lsn-git
+	source = git+https://github.com/yantis/lsn.git
+	sha256sums = SKIP
+
+pkgname = lsn-git
