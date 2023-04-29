@@ -1,6 +1,6 @@
 pkgbase = powerline-go-bin
 	pkgdesc = A beautiful and useful low-latency prompt for your shell, written in go
-	pkgver = 1.22.1
+	pkgver = 1.23
 	pkgrel = 1
 	url = https://github.com/justjanne/powerline-go
 	install = powerline-go-bin.install
@@ -9,7 +9,7 @@ pkgbase = powerline-go-bin
 	optdepends = powerline-fonts: fonts with powerline symbols
 	provides = powerline-go
 	conflicts = powerline-go
-	source = powerline-go-1.22.1::https://github.com/justjanne/powerline-go/releases/download/v1.22.1/powerline-go-linux-amd64
-	sha256sums = 1cdd4fdb5dea23fc25d59e4cc845960c60bf8ead0e9b004351ee3479d805ecb4
+	source = powerline-go-1.23::https://github.com/justjanne/powerline-go/releases/download/v1.23/powerline-go-linux-amd64
+	sha256sums = 1fb9bab14f3e5d1cfc239be3751a71056af05cb5e323ac853aff608c312ab2ae
 
 pkgname = powerline-go-bin
