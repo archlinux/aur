@@ -1,7 +1,7 @@
 pkgbase = r-mast
 	pkgdesc = Model-based Analysis of Single Cell Transcriptomics
 	pkgver = 1.26.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/MAST
 	arch = any
 	license = GPL
@@ -31,7 +31,6 @@ pkgbase = r-mast
 	optdepends = r-lattice
 	optdepends = r-limma
 	optdepends = r-lme4
-	optdepends = r-matrix
 	optdepends = r-nmf
 	optdepends = r-numderiv
 	optdepends = r-rcolorbrewer

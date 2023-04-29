@@ -4,7 +4,7 @@ _pkgname=MAST
 _pkgver=1.26.0
 pkgname=r-${_pkgname,,}
 pkgver=1.26.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Model-based Analysis of Single Cell Transcriptomics'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -38,7 +38,6 @@ optdepends=(
   r-lattice
   r-limma
   r-lme4
-  r-matrix
   r-nmf
   r-numderiv
   r-rcolorbrewer
