@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SimBindProfiles
-_pkgver=1.36.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
+pkgver=1.38.0
 pkgrel=1
 pkgdesc='Similar Binding Profiles'
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
   r-ringo
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('956b90a42140eab9f69a17bf04a48c19ea315a20273e31e358821ecc761e6888')
+sha256sums=('8166b74075dd55c1f6864e8ed612db7a9f2f2943c5bd001c928bab35b36fa37c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

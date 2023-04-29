@@ -1,6 +1,6 @@
 pkgbase = r-simbindprofiles
 	pkgdesc = Similar Binding Profiles
-	pkgver = 1.36.0
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SimBindProfiles
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-simbindprofiles
 	depends = r-limma
 	depends = r-mclust
 	depends = r-ringo
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SimBindProfiles_1.36.0.tar.gz
-	sha256sums = 956b90a42140eab9f69a17bf04a48c19ea315a20273e31e358821ecc761e6888
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SimBindProfiles_1.38.0.tar.gz
+	sha256sums = 8166b74075dd55c1f6864e8ed612db7a9f2f2943c5bd001c928bab35b36fa37c
 
 pkgname = r-simbindprofiles
