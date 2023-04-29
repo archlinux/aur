@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pcaExplorer
-_pkgver=2.24.0
+_pkgver=2.26.0
 pkgname=r-${_pkgname,,}
-pkgver=2.24.0
+pkgver=2.26.0
 pkgrel=1
 pkgdesc='Interactive Visualization of RNA-seq Data Using a Principal Components Approach'
 arch=('any')
@@ -46,11 +46,12 @@ optdepends=(
   r-airway
   r-biocstyle
   r-htmltools
+  r-markdown
   r-org.hs.eg.db
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e7ca01a30b7ce2a696c8b2aad2018395d43a6ea9f16087f4c896d702c957443f')
+sha256sums=('bda3298cfdb88a1598a87de878c5c2488d7cec09517a7e9472449fedecbef1d0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
