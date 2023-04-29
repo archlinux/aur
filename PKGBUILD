@@ -4,7 +4,7 @@ _pkgname=atena
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Analysis of Transposable Elements'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -21,7 +21,6 @@ depends=(
   r-matrixstats
   r-rsamtools
   r-s4vectors
-  r-scales
   r-sparsematrixstats
   r-squarem
   r-summarizedexperiment
@@ -30,8 +29,10 @@ optdepends=(
   r-biocstyle
   r-covr
   r-knitr
+  r-rcolorbrewer
   r-rmarkdown
   r-runit
+  r-txdb.dmelanogaster.ucsc.dm6.ensgene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('32a6c4ab914f13fe86019411f6893d10e9b0e83e0d365fc382d83a99fbaca780')
