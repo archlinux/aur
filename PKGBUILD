@@ -7,7 +7,7 @@ pkgbase=mutter-auto-rotation
 pkgname=mutter-auto-rotation
 provides=(libmutter-11.so mutter)
 conflicts=(mutter)
-pkgver=43.4
+pkgver=43.5
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME, with touch-mode auto-rotation (reverts MR 1710)"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -43,7 +43,7 @@ makedepends=(
   xorg-server
   xorg-server-xvfb
 )
-_commit=0e7506ff6d8e4940fc6654f2711e5decb23440dc  # tags/43.4^0
+_commit=eedb556bb42a3de1423ec77ca11b7f014462c9e7  # tags/43.5^0
 
 source=(
   "git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
@@ -71,14 +71,17 @@ prepare() {
 }
 
 build() {
+  local meson_options=(
+    -D docs=true
+    -D egl_device=true
+    -D installed_tests=false
+    -D wayland_eglstream=true
+  )
+
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
   LDFLAGS+=" -Wl,-Bsymbolic-functions"
 
-  arch-meson mutter build \
-    -D egl_device=true \
-    -D wayland_eglstream=true \
-    -D docs=true \
-    -D installed_tests=false
+  arch-meson mutter build "${meson_options[@]}"
   meson compile -C build
 }
 
