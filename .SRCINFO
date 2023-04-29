@@ -1,6 +1,6 @@
 pkgbase = r-ffpe
 	pkgdesc = Quality assessment and control for FFPE microarray expression data
-	pkgver = 1.42.0
+	pkgver = 1.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ffpe
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-ffpe
 	depends = r-ttr
 	optdepends = r-ffpeexampledata
 	optdepends = r-genefilter
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ffpe_1.42.0.tar.gz
-	sha256sums = 78cb0063c14fb2254026d72e12ba4bd3f06a34aaee5ea423ff7391c042e01d64
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ffpe_1.44.0.tar.gz
+	sha256sums = a473e4c233775b8c4795d53476dc26fcdccd309040e60fc203bce2bd1641cc73
 
 pkgname = r-ffpe
