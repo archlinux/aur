@@ -9,6 +9,7 @@ pkgbase = lact-git
 	makedepends = rust
 	makedepends = git
 	makedepends = make
+	makedepends = clang
 	depends = gtk4
 	depends = hwdata
 	provides = lact
