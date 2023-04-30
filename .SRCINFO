@@ -1,0 +1,19 @@
+pkgbase = frogmouth
+	pkgdesc = A Markdown browser for your terminal
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/textualize/frogmouth
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-textual
+	depends = python-httpx
+	depends = python-typing_extensions
+	depends = python-xdg
+	source = https://files.pythonhosted.org/packages/source/f/frogmouth/frogmouth-0.3.2.tar.gz
+	sha256sums = e1369d77c4c503e18bd503e9647d3ce9687556b7ef1cb5098ba47de601cee354
+
+pkgname = frogmouth
