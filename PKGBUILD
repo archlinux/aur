@@ -7,6 +7,7 @@ arch=("any")
 url="https://github.com/johnbeard/inkscape-label-guides"
 license=("GPLv2")
 depends=("inkscape")
+makedepends=("git")
 source=("git+https://github.com/johnbeard/inkscape-label-guides#tag=v${pkgver}")
 md5sums=("SKIP")
 

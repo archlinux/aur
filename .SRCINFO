@@ -5,6 +5,7 @@ pkgbase = inkscape-label-guides
 	url = https://github.com/johnbeard/inkscape-label-guides
 	arch = any
 	license = GPLv2
+	makedepends = git
 	depends = inkscape
 	source = git+https://github.com/johnbeard/inkscape-label-guides#tag=v1.1.0
 	md5sums = SKIP
