@@ -1,18 +1,22 @@
 pkgbase = carla-bridges-win
-	pkgdesc = Carla windows bridges
-	pkgver = 2.2.0
+	pkgdesc = Carla Windows bridges
+	pkgver = 2.5.4
 	pkgrel = 1
 	url = https://kx.studio/Applications:Carla
 	arch = i686
 	arch = x86_64
+	groups = proaudio
 	license = GPL2
+	makedepends = git
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-pkg-config
+	depends = carla
+	depends = mingw-w64-crt
+	depends = mingw-w64-winpthreads
 	depends = wine
-	depends = carla-git
-	provides = carla-bridges-win
-	conflicts = carla-bridges-win32
-	conflicts = carla-bridges-win64
-	source = carla-bridges-win-2.2.0-source::https://github.com/falkTX/Carla/releases/download/v2.2.0/Carla_2.2.0-linux64.tar.xz
-	sha256sums = f04f8355f7c9f90c668873180c366737cf4214ad77cc1dde4549e5623c726c97
+	source = carla-bridges-win-2.5.4::git+https://github.com/falkTX/Carla#tag=4a6dc504be5d547a97079bf3400a85f9080177db?signed
+	validpgpkeys = 62B11043D2F6EB6672D93103CDBAA37ABC74FBA0
+	sha512sums = SKIP
+	b2sums = SKIP
 
 pkgname = carla-bridges-win
-
