@@ -1,6 +1,6 @@
 # Maintainer: Darvin Delgado <dnmodder at gmail dot com>
 pkgname=ryujinx-git
-pkgver=r2722.8d9d508dc
+pkgver=r2738.680e54802
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 arch=(x86_64)
@@ -34,8 +34,8 @@ build() {
 
 	cd "Ryujinx"
 
-	dotnet publish -c Release -r linux-x64 -o ../publish -p:DebugType=embedded -p:ExtraDefineConstants="DISABLE_UPDATER%2CFORCE_EXTERNAL_BASE_DIR" Ryujinx --self-contained true
-	dotnet publish -c Release -r linux-x64 -o ../publish_ava -p:DebugType=embedded -p:ExtraDefineConstants="DISABLE_UPDATER%2CFORCE_EXTERNAL_BASE_DIR" Ryujinx.Ava --self-contained true
+	dotnet publish -c Release -r linux-x64 -o ../publish -p:DebugType=embedded -p:ExtraDefineConstants="DISABLE_UPDATER%2CFORCE_EXTERNAL_BASE_DIR" src/Ryujinx --self-contained true
+	dotnet publish -c Release -r linux-x64 -o ../publish_ava -p:DebugType=embedded -p:ExtraDefineConstants="DISABLE_UPDATER%2CFORCE_EXTERNAL_BASE_DIR" src/Ryujinx.Ava --self-contained true
 }
 
 package() {
