@@ -3,7 +3,7 @@
 
 pkgname=gdrive
 pkgver=3.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Google Drive CLI Client (Rust rewrite)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/glotlabs/gdrive"
