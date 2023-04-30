@@ -2,37 +2,40 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=certbot-dns-ovh
-pkgver=2.3.0
-pkgrel=2
-pkgdesc="OVH DNS Authenticator plugin for Certbot"
+pkgver=2.5.0
+pkgrel=1
+pkgdesc='OVH DNS Authenticator plugin for Certbot'
 arch=('any')
 license=('Apache')
-url="https://pypi.python.org/pypi/$pkgname"
+url='https://pypi.python.org/pypi/certbot-dns-ovh'
 depends=(
   "certbot=$pkgver"
   "python-acme=$pkgver"
   'dns-lexicon'
 )
 makedepends=(
+  'git'
   'python-build'
   'python-wheel'
   'python-installer'
 )
 checkdepends=('python-pytest')
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"{,.asc})
-validpgpkeys=('148C30F6F7E429337A72D992B00B9CC82D7ADF2C'
-              '1B41B758F9A78C7F444C20FA3E5B4152E3ADB1FD'
-              'A2CFB51FA275A7286234E7B24D17C995CD9775F2'
-              '86379B4F0AF371B50CD9E5FF3402831161D1D280'
-              '20F201346BF8F3F455A73F9A780CC99432A28621'
-              'F2871B4152AE13C49519111F447BF683AA3B26C3')
-sha512sums=('714ef631ada1f574c67b1919c73a081a0cb548368fce041df1cb56efd138af4b1a6000da81f2ed09119001bf0ce9f32736f40a5a485a2905dd448ea320957a6c'
-            'SKIP')
-b2sums=('14ac7f33ee9f5c66e61be946882c5d5bac7ca6215607000800cf0cb46d45af39772169b045f0282d3918fee547177e4fdbbc93f76b9bfa7622f17ed17c341175'
-        'SKIP')
+# git repository is used because certbot is a huge monorepo and it's easier to
+# share the entire repository across all certbot related packages than a few
+# hundred tarballs.
+_commit='3c667e8fffc2f6f4304f284ea52531bbf750a6c4'
+_repo='github.com-certbot-certbot'
+source=("$_repo::git+https://github.com/certbot/certbot#commit=$_commit")
+b2sums=('SKIP')
+
+pkgver() {
+  cd "$_repo"
+
+  git describe --tags | sed 's/^v//'
+}
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "$_repo/$pkgname"
 
   # nuke setuptools from orbit ^W install_requires
   sed \
@@ -41,19 +44,20 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$_repo/$pkgname"
 
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "$_repo/$pkgname"
 
-  python -m pytest
+  # https://github.com/certbot/certbot/issues/9606
+  pytest -v -W ignore::DeprecationWarning
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$_repo/$pkgname"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
