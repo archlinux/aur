@@ -1,8 +1,8 @@
 pkgbase = tuner-git
-	pkgdesc = Minimalist radio station player. Geared towards RadioBrowser
+	pkgdesc = GNU/Linux app to discover and play internet radio stations. Geared towards RadioBrowser
 	pkgver = 1.5.1.r31.7ecfdfb
 	pkgrel = 2
-	url = https://github.com/louis77/tuner
+	url = https://codeberg.org/tuner/tuner
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -15,7 +15,7 @@ pkgbase = tuner-git
 	optdepends = gst-libav: play AAC[+] streams
 	provides = tuner
 	conflicts = tuner
-	source = git+https://github.com/louis77/tuner.git
+	source = git+https://codeberg.org/tuner/tuner.git
 	sha256sums = SKIP
 
 pkgname = tuner-git
