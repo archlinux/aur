@@ -3,12 +3,12 @@
 
 pkgname=tuner
 pkgver=1.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Minimalist radio station player. Geared towards RadioBrowser"
 arch=('x86_64' 'i686')
 url="https://github.com/louis77/$pkgname"
 license=('GPL3')
-depends=('granite' 'gst-plugins-bad-libs' 'geoclue')
+depends=('granite' 'libsoup' 'gst-plugins-bad-libs' 'geoclue' 'geocode-glib')
 optdepends=('gst-libav: play AAC[+] streams')
 makedepends=('meson' 'vala')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
