@@ -1,0 +1,20 @@
+pkgbase = emilua-qt5
+	pkgdesc = Qt5 bindings for Emilua
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/emilua/qt5
+	arch = i686
+	arch = x86_64
+	license = boost
+	makedepends = git
+	makedepends = meson
+	makedepends = boost
+	makedepends = gawk
+	makedepends = gperf
+	makedepends = asciidoctor
+	depends = emilua
+	depends = qt5-declarative
+	source = emilua-qt5::git+https://gitlab.com/emilua/qt5.git#tag=v1.0.0
+	md5sums = SKIP
+
+pkgname = emilua-qt5
