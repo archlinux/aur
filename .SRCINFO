@@ -1,0 +1,19 @@
+pkgbase = eelu-login-git
+	pkgdesc = A command-line tool that allows staff and students to log in to the Egyptian E-Learning University Moodle platform quickly and easily through the command-line interface.
+	pkgver = v0.2.0.r19.gcd8556b
+	pkgrel = 1
+	url = https://github.com/anas-elgarhy/eelu-login
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT OR Apache-2.0
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	provides = eelu-login
+	replaces = eelu-login
+	source = eelu-login-git::git+https://github.com/anas-elgarhy/eelu-login#branch=master
+	sha256sums = SKIP
+
+pkgname = eelu-login-git
