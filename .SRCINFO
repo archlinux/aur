@@ -6,6 +6,7 @@ pkgbase = pyg3t-git
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python-dateutil
 	provides = pyg3t
 	conflicts = pyg3t
