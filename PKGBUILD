@@ -1,7 +1,7 @@
-# Maintainer: CosmicHorror <LovecraftianHorror@pm.me>
+# Maintainer: CosmicHorror <CosmicHorrorDev@pm.me>
 
 pkgname=inlyne
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='A GPU powered yet browserless tool to help you quickly view markdown files in the blink of an eye'
 arch=(x86_64)
@@ -10,16 +10,16 @@ license=(MIT)
 depends=(fontconfig gcc-libs freetype2 libxcursor libxi libxrandr oniguruma openssl)
 makedepends=(cargo libxcb libxkbcommon)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('0b9a5a049a620d5758f9ddd5e96328d442f2f1f01bdc666ac8cde1de1e25ecab88d4edb0a7700291830246d5682326442b6bb15da459f73fe34f442762c6f3f3')
+sha512sums=('cf248907ddd9eac380d67eae0033548d57e2a4f59657198fd16c8c1b310210e02c0d881549105925366eae2a599b5552383f07ebe6e6e0384d9497459f8b2b80')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  cargo build --release --locked
+  RUSTONIG_SYSTEM_LIBONIG=yes cargo build --release --locked
 }
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
-  cargo test --release --locked
+  RUSTONIG_SYSTEM_LIBONIG=yes cargo test --release --locked
 }
 
 package() {
