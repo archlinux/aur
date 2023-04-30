@@ -39,7 +39,7 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-sdl_mixer"
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="$pkgdir" install
 
   # Register as an application to be visible in the software center
   #
@@ -51,5 +51,5 @@ package() {
   install -Dm644 "$srcdir/$pkgname.appdata.xml" -t "$pkgdir/usr/share/appdata/"
 
   # We generate these files on post-install to prevent score resets on upgrade
-  rm -rf "${pkgdir}/var"
+  rm -rf "$pkgdir/var"
 }
