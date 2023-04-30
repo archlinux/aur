@@ -2,13 +2,13 @@
 
 _pkgname=rasdaemon
 pkgname=${_pkgname}-git
-pkgver=0.6.8
+pkgver=0.6.8.46.ga247baf
 pkgrel=1
 pkgdesc="A RAS (Reliability, Availability and Serviceability) logging tool using the EDAC tracing events"
 arch=('x86_64' 'i686')
 url=https://github.com/mchehab/rasdaemon
 license=('GPL2')
-depends=('perl-dbd-sqlite' 'hwdata' 'dmidecode')
+depends=('perl-dbd-sqlite' 'hwdata' 'dmidecode' 'libtraceevent')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
