@@ -10,13 +10,14 @@ pkgbase = frogmouth
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = python-poetry-core
-	depends = python-textual
+	depends = python-textual>=0.22.2
 	depends = python-httpx
 	depends = python-typing_extensions
 	depends = python-xdg-base-dirs
+	depends = python-linkify-it-py
 	source = https://files.pythonhosted.org/packages/source/f/frogmouth/frogmouth-0.3.2.tar.gz
 	source = xdg-base-dirs.patch
 	sha256sums = e1369d77c4c503e18bd503e9647d3ce9687556b7ef1cb5098ba47de601cee354
-	sha256sums = 2e275592052eba37876351c457cfe1ff7686c1872386381bede5811f1166a341
+	sha256sums = fe6bcfd3b8c962be3a9a19a9bb46d7ebe33b973981ab7d092b5e225c552432fc
 
 pkgname = frogmouth
