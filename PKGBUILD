@@ -12,7 +12,7 @@ makedepends=('git' 'intltool')
 install="$pkgname.install"
 _commit=819bede9b80860c49eb7666c163bfe42f21dd2c6
 #source=("https://launchpad.net/gweled/trunk/$pkgver/+download/$pkgname-$pkgver.tar.gz"
-# Fork using sdl_mixer rather than libcanberra or mikmod
+# Fork using sdl_mixer rather than libcanberra or libmikmod
 source=("git+https://github.com/Marisa-Chan/gweled-sdl_mixer.git#commit=$_commit"
         "$pkgname-fix-librsvg-segfault-v2.patch"
         "$pkgname-c99.patch"
