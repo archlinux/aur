@@ -1,15 +1,16 @@
 # Maintainer: Artem Vlasenko <artemvlas at proton dot me>
 pkgname=veretino
-pkgver=0.1.4
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A simple tool for checking folder-wide data integrity"
 arch=('x86_64')
 url="https://github.com/artemvlas/veretino"
 license=('GPL3')
-depends=('qt5-base' 'make')
+depends=('qt5-base')
+makedepends=('make' 'gcc')
 
 source=(https://github.com/artemvlas/veretino/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=(c48b9a2bbfb733f39175ea1c373af72e5d4ce2aced709e220e97c9396c12e141)
+sha256sums=(a3b072a9b05635df5e4af468521dd2fb9059ac749e1a1af7b1ad0af4dee82528)
 
 build() {
 	cd "$pkgname-$pkgver"
