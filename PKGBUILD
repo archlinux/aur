@@ -12,6 +12,7 @@ license=('MIT')
 arch=('x86_64')
 depends=('qt5-serialbus')
 makedepends=('qt5-base' 'qt5-tools')
+optdepends=('qt5-clx000-git: clx000 loggers')
 source=("https://github.com/collin80/SavvyCAN/archive/refs/tags/${pkgver}.tar.gz")
 dirvername="${pkgver#V}"
 
