@@ -1,23 +1,18 @@
 # Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
 
 pkgname=('php-memcache' 'php-legacy-memcache')
-pkgver=8.0
-pkgrel=4
+pkgver=8.2
+pkgrel=1
 pkgdesc="Memcache module for PHP"
 arch=('x86_64')
 url="https://pecl.php.net/package/memcache"
 license=('PHP')
 makedepends=('php' 'php-legacy')
 checkdepends=('memcached')
-source=(https://pecl.php.net/get/memcache-$pkgver.tgz
-       'php-8.2.patch')
-sha256sums=('defe33e6f7831d82b7283b95e14a531070531acbf21278f3f0d7050505cf3395'
-            'faa23fc8fca696264b5e1159e44cfda772adca0b97ce43c9b6ee2b57d7e0ea4e')
+source=(https://pecl.php.net/get/memcache-$pkgver.tgz)
+sha256sums=('b3f0640eacdeb9046c6c86a1546d7fb8a4e9f219e5d9a36a287e59b2dd8208e5')
 
 prepare() {
-  # Fix test: https://github.com/websupport-sk/pecl-memcache/issues/91
-  sed -i 's/memcache_connect(\$domainsocket, null)/memcache_connect(\$domainsocket, 0)/' memcache-$pkgver/tests/035.phpt
-  patch -p1 -d memcache-$pkgver -i "$srcdir/php-8.2.patch"
   cp -a memcache-$pkgver{,-php-legacy}
 }
 
