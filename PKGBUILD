@@ -2,7 +2,9 @@
 
 pkgname=spatial-shell
 pkgver=1
-pkgrel=2
+pkgrel=3
+pkgdesc='Implementing a spatial model inspired by Material Shell and Paper WM, for Sway.'
+url=https://github.com/lthms/spatial-shell
 license=('MPL2')
 arch=('x86_64')
 depends=(
@@ -18,7 +20,7 @@ makedepends=(
   'scdoc'
 )
 source=(
-  "https://github.com/lthms/spatial-shell/archive/refs/tags/$pkgver.tar.gz"
+  "$pkgname-$pkgver.tar.gz::https://github.com/lthms/spatial-shell/archive/refs/tags/$pkgver.tar.gz"
   'destdir.patch')
 sha512sums=(
   '858bf6c47d2fd9f99bd38498525c8a7f068620dbcb622719745983c04b7503c566de761bab1c6261248f1bc76b6be23c2a0f6fcd1936ba206f48fda793f1403a'
@@ -26,6 +28,7 @@ sha512sums=(
 )
 
 prepare() {
+  opam init -n
   cd "${srcdir}/${pkgname}-${pkgver}"
   patch -p1 -i "${srcdir}/destdir.patch"
 }
