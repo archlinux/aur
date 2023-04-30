@@ -1,7 +1,7 @@
 pkgbase = spatial-shell
 	pkgdesc = Implementing a spatial model inspired by Material Shell and Paper WM, for Sway.
 	pkgver = 1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/lthms/spatial-shell
 	arch = x86_64
 	license = MPL2

@@ -2,7 +2,7 @@
 
 pkgname=spatial-shell
 pkgver=1
-pkgrel=3
+pkgrel=4
 pkgdesc='Implementing a spatial model inspired by Material Shell and Paper WM, for Sway.'
 url=https://github.com/lthms/spatial-shell
 license=('MPL2')
@@ -28,7 +28,7 @@ sha512sums=(
 )
 
 prepare() {
-  opam init -n
+  [ -f "${HOME}/.opam/config" ] || opam init -n
   cd "${srcdir}/${pkgname}-${pkgver}"
   patch -p1 -i "${srcdir}/destdir.patch"
 }

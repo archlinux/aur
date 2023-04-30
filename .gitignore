@@ -1,0 +1,4 @@
+pkg/
+src/
+spatial-shell-*-*-x86_64.pkg.tar.zst
+spatial-shell-*.tar.gz
