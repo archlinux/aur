@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=nbdkit
-pkgver=1.32.5
+pkgver=1.34.1
 pkgrel=1
 pkgdesc="NBD server toolkit"
 arch=('x86_64')
@@ -31,14 +31,10 @@ _dldir="${pkgver%.*}"
 source=(
 		"http://download.libguestfs.org/nbdkit/${_dldir}-stable/nbdkit-${pkgver}.tar.gz"
 		"http://download.libguestfs.org/nbdkit/${_dldir}-stable/nbdkit-${pkgver}.tar.gz.sig"
-		clippy.patch
-		0001-data-don-t-ignore-SIGPIPE.patch
 )
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -p1 < "${srcdir}"/clippy.patch
-  patch -p1 < "${srcdir}"/0001-data-don-t-ignore-SIGPIPE.patch
 }
 
 build() {
@@ -61,7 +57,5 @@ check() {
   make check
 }
 
-sha256sums=('07921293f22bfaa121cff1ba3f13d75243f5cd4864abbb20aa9686ed5649dbf4'
-            'SKIP'
-            '3d26e9fab4bb240dcb5e19da9f9f7c74027de9ae486001a7d927fcf7be681be5'
-            'cafec77dd3e32567dd6aed27733a4fe84787751d805d27471eba66b438fa2396')
+sha256sums=('6ed4b1791891482174e5209c7084f7e40549a1a4f6d778511c90b1a279f4aa48'
+            'SKIP')
