@@ -13,6 +13,7 @@ makedepends=("git"
 		"python-pyqt5"
 		"python-yaml" 
 		"python-argcomplete"
+		"python-setuptools"
 )
 optdepends=(
 		"legion-fan-utils-linux-git: Systemd service that will apply a given profile

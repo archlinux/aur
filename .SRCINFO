@@ -10,6 +10,7 @@ pkgbase = lenovolegionlinux-git
 	makedepends = python-pyqt5
 	makedepends = python-yaml
 	makedepends = python-argcomplete
+	makedepends = python-setuptools
 	optdepends = legion-fan-utils-linux-git: Systemd service that will apply a given profile
 	optdepends = lenovolegionlinux-dkms-git: DKMS module (install if your distro dosent patch in the kernel our you are not sure to haveit)
 	depends = lenovolegionlinux-dkms-git
