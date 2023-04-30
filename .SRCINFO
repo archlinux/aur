@@ -1,0 +1,13 @@
+pkgbase = firefox-extension-bitwarden-password-manager-xpi
+	pkgdesc = A secure and free password manager for all of your devices.
+	pkgver = 2023.3.1
+	pkgrel = 1
+	url = https://bitwarden.com
+	arch = any
+	license = GPL-3.0-or-later
+	depends = firefox
+	noextract = bitwarden-password-manager.xpi
+	source = bitwarden-password-manager.xpi::https://addons.mozilla.org/firefox/downloads/file/4093799/bitwarden_password_manager-2023.3.1.xpi
+	sha256sums = d4ea270874c013daf0aa8b46686766481464db0b3eaa271dc1a2e579751f36f7
+
+pkgname = firefox-extension-bitwarden-password-manager-xpi
