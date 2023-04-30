@@ -1,6 +1,6 @@
 pkgbase = motrix
 	pkgdesc = A full-featured download manager (release version)
-	pkgver = 1.8.14
+	pkgver = 1.8.15
 	pkgrel = 1
 	url = https://github.com/agalwood/Motrix
 	arch = x86_64
@@ -8,15 +8,16 @@ pkgbase = motrix
 	makedepends = npm
 	makedepends = yarn
 	makedepends = nodejs
+	makedepends = python
 	depends = gtk3
 	depends = libxcb
 	depends = electron
 	conflicts = motrix-git
 	source = motrix.desktop
 	source = motrix
-	source = Motrix.tar.gz::https://github.com/agalwood/Motrix/archive/v1.8.14.tar.gz
+	source = https://github.com/agalwood/Motrix/archive/v1.8.15.tar.gz
 	sha256sums = af5092a2a599bd23c13303ad1e7b745992a7af141278d13abe4297ca50a77bd8
-	sha256sums = becf35e632c6124792a2c8ee9233f3357ffbee08b81820c3f41bdbb5a2a7ead0
-	sha256sums = 9a1558063d32dd100aa289db601f01497d518c070f0ba570efd446830697089e
+	sha256sums = 52a8f1ae5916a91aa1c9f1749e06777b4457bd9f5a03749c9fcd97e7d0801a71
+	sha256sums = 212d624dcfbb74228009437646d17d0238eeda5de6ecbbd658a7af73c02b70e0
 
 pkgname = motrix
