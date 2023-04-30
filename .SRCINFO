@@ -22,6 +22,7 @@ pkgbase = audiotube-git
 	depends = qt5-imageformats
 	depends = kcrash
 	depends = purpose
+	depends = futuresql-git
 	provides = audiotube
 	conflicts = audiotube
 	source = git+https://invent.kde.org/plasma-mobile/audiotube.git
