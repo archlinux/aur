@@ -1,28 +1,28 @@
 # Maintainer: AltoXorg <atrl101 AT yahoo DOT com>
 
 _reponame=Shipwright
-_libultraship_commit=554078d082ee722ed51c196f59828de762ed2a9b
+_libultraship_commit=2ddffdb5b60377a09a4a198a8fd67726951bbb27
 pkgbase=soh
 pkgname=(soh soh-otr-exporter)
-pkgver=6.1.2
+pkgver=7.0.0
 pkgrel=1
 arch=("x86_64" "i686")
 url="https://shipofharkinian.com/"
-_depends_soh=("sdl2" "sdl2_net" "libpulse" "glew")
+_depends_soh=("sdl2" "sdl2_net" "libpulse" "glew" "zenity")
 _depends_soh_otr_exporter=("libpng")
 depends=("${_depends_soh[@]}" "${_depends_soh_otr_exporter[@]}")
 makedepends=("cmake" "ninja" "python" "curl" "lsb-release" "libxrandr" "libxinerama" "libxi" "glu" "boost")
 source=("${_reponame}-${pkgver}.tar.gz::https://github.com/HarbourMasters/${_reponame}/archive/refs/tags/${pkgver}.tar.gz"
         "libultraship-${_libultraship_commit}.tar.gz::https://github.com/Kenix3/libultraship/archive/${_libultraship_commit}.tar.gz"
         "soh.desktop"
-        "soh-use-appbasedir.patch"
+        "soh-misc-otr-patches.patch"
         "lus-install-paths.patch"
         "otrgui-wrapper.sh")
-sha256sums=('2404e933e8732a858e938da65e7cd73588292da59c57a1ca907c9cb0ad965801'
-            '4f5c2d222e3ba1cee9bd63551e9956031468cdc89895bbbff5b9f31aea7a4848'
-            'd93dbc5273eb6ab88aa4d99869a6ba7fce495253a953af269c28ec72c0b00eb6'
-            'a7116d348afda424e3bcabda4a5cd4d6473039494bfe8ef1d81909f86ff0b72d'
-            '3de25d94d28f58daec33539181a8a666a20545204089996acf485325124ff9bc'
+sha256sums=('626d4e8c96b7889228fe064b930688b4d56722450e03b0c2057076f1f979a2e5'
+            '8ae6999a16053c561f8722e8c363b046b83277108499b20cd77892773a5009f3'
+            '25aebd34f6ad49073d8a5ce6915b6fa290470fc6d62a8143abe07a25707ff4a2'
+            '200cba1e21ef57cf80bd8962ca6d5631062a7c056c897c2a4d58bfb8217ddef7'
+            '808049e8f02d78188490afc4632e3bec0253d7c3c62d85492172938e35d1165f'
             '6e735877e7bba81f9f308f6eabbdfe5354f2c331a9acf9a16ab02a5681f2c25f')
 
 # Changable options for debugging:
@@ -63,7 +63,7 @@ prepare() {
     fi
   fi
 
-  patch -Np1 -i "${srcdir}/soh-use-appbasedir.patch"
+  patch -Np1 -i "${srcdir}/soh-misc-otr-patches.patch"
 }
 
 build() {
@@ -75,15 +75,27 @@ build() {
 
   cmake --build build --target ZAPD --config Release
 
-  [ "$__generate_headers" = 1 ] &&
-    cmake --build build --target ExtractAssets
-  cmake --build build --target soh --config Release
+  if [ "$__generate_headers" = 1 ]; then
+    cmake --build build --target ExtractAssetsHeaders
+  else
+    cd OTRExporter
 
+    rm -f soh.otr || true
+    rm -rf Extract || true
+    mkdir Extract
+    cp -r assets Extract/assets
+
+    ../build/ZAPD/ZAPD.out botr -se OTR --norom
+
+    cd ..
+  fi
+
+  cmake --build build --target soh --config Release
   cmake --build build --target OTRGui --config Release
 }
 
 package_soh() {
-  pkgdesc="A port of The Legend of Zelda Ocarina of Time for PC, Wii U, and Switch"
+  pkgdesc="An unofficial port of The Legend of Zelda Ocarina of Time for PC, Wii U, and Switch"
   depends=("${_depends_soh[@]}")
   license=("unknown")
   install=soh.install
@@ -99,6 +111,12 @@ package_soh() {
   ln -s /opt/soh/soh.elf "${pkgdir}/usr/bin/soh"
   install -Dm644 "${srcdir}/soh.desktop" -t "${pkgdir}/usr/share/applications"
   install -Dm644 soh/macosx/sohIcon.png "${pkgdir}/usr/share/pixmaps/soh.png"
+
+  install -Dm644 OTRExporter/soh.otr "${pkgdir}/${SHIP_PREFIX}/soh.otr"
+
+  install -dm755 "${pkgdir}/usr/share/doc/soh" "${pkgdir}/usr/share/doc/soh/docs"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/soh"
+  find docs -exec install -Dm644 {} "${pkgdir}/usr/share/doc/soh/docs" \;
 }
 
 package_soh-otr-exporter() {
@@ -114,5 +132,12 @@ package_soh-otr-exporter() {
 
   install -dm755 "${pkgdir}/usr/bin/"
   install -Dm755 "${srcdir}/otrgui-wrapper.sh" "${pkgdir}/usr/bin/OTRGui"
-  ln -s /opt/soh/assets/extractor/ZAPD.out "${pkgdir}/usr/bin/ZAPD"
+  ln -s ${SHIP_PREFIX}/assets/extractor/ZAPD.out "${pkgdir}/usr/bin/ZAPD"
+
+  # Change the external xml folder path so that it always points to this package
+  find "${pkgdir}/${SHIP_PREFIX}/assets/extractor" -maxdepth 1 -name Config_\*.xml -exec \
+    sed -i "/ExternalXMLFolder/s,assets/extractor,${SHIP_PREFIX}/&," {} +
+
+  install -dm755 "${pkgdir}/usr/share/licenses/soh"
+  install -Dm644 "OTRExporter/LICENSE" "${pkgdir}/usr/share/licenses/soh"
 }

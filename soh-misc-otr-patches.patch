@@ -1,0 +1,132 @@
+diff --git a/soh/soh/Extractor/Extract.cpp b/soh/soh/Extractor/Extract.cpp
+index b8031f01..93bdced9 100644
+--- a/soh/soh/Extractor/Extract.cpp
++++ b/soh/soh/Extractor/Extract.cpp
+@@ -426,30 +426,27 @@ const char* Extractor::GetZapdVerStr() const {
+ 
+ extern "C" int zapd_main(int argc, char** argv);
+ 
+-bool Extractor::CallZapd() {
++bool Extractor::CallZapd(std::string &assetPath) {
+     constexpr int argc = 16;
+-    char xmlPath[100];
+-    char baseromPath[100];
+-    char confPath[100];
+     std::array<const char*, argc> argv;
+     const char* version = GetZapdVerStr();
+ 
+-    snprintf(xmlPath, 100, "assets/extractor/xmls/%s", version);
+-    snprintf(baseromPath, 100, "%s", mCurrentRomPath.c_str());
+-    snprintf(confPath, 100, "assets/extractor/Config_%s.xml", version);
++    std::string xmlPath = assetPath + "/assets/extractor/xmls/" + version;
++    std::string confPath = assetPath + "/assets/extractor/Config_" + version + ".xml";
++    std::string fileListsPath = assetPath + "/assets/extractor/filelists";
+ 
+     argv[0] = "ZAPD";
+     argv[1] = "ed";
+     argv[2] = "-i";
+-    argv[3] = xmlPath;
++    argv[3] = xmlPath.c_str();
+     argv[4] = "-b";
+-    argv[5] = baseromPath;
++    argv[5] = mCurrentRomPath.c_str();
+     argv[6] = "-fl";
+-    argv[7] = "assets/extractor/filelists";
++    argv[7] = fileListsPath.c_str();
+     argv[8] = "-gsf";
+-    argv[9] = "1";
++    argv[9] = "0";
+     argv[10] = "-rconf";
+-    argv[11] = confPath;
++    argv[11] = confPath.c_str();
+     argv[12] = "-se";
+     argv[13] = "OTR";
+     argv[14] = "--otrfile";
+diff --git a/soh/soh/Extractor/Extract.h b/soh/soh/Extractor/Extract.h
+index 3ca23aaf..d7b80e68 100644
+--- a/soh/soh/Extractor/Extract.h
++++ b/soh/soh/Extractor/Extract.h
+@@ -48,7 +48,7 @@ class Extractor {
+     static void ShowErrorBox(const char* title, const char* text);
+ 
+     bool Run();
+-    bool CallZapd();
++    bool CallZapd(std::string &assetPath);
+     const char* GetZapdStr();
+ };
+ #endif
+diff --git a/soh/soh/OTRGlobals.cpp b/soh/soh/OTRGlobals.cpp
+index a3940504..369ad3b5 100644
+--- a/soh/soh/OTRGlobals.cpp
++++ b/soh/soh/OTRGlobals.cpp
+@@ -201,11 +201,11 @@ const char* constCameraStrings[] = {
+ 
+ OTRGlobals::OTRGlobals() {
+     std::vector<std::string> OTRFiles;
+-    std::string mqPath = Ship::Window::GetPathRelativeToAppDirectory("oot-mq.otr");
++    std::string mqPath = Ship::Window::FindFileFromAllAppDirectories("oot-mq.otr");
+     if (std::filesystem::exists(mqPath)) { 
+         OTRFiles.push_back(mqPath);
+     } 
+-    std::string ootPath = Ship::Window::GetPathRelativeToAppDirectory("oot.otr");
++    std::string ootPath = Ship::Window::FindFileFromAllAppDirectories("oot.otr");
+     if (std::filesystem::exists(ootPath)) {
+         OTRFiles.push_back(ootPath);
+     }
+@@ -213,7 +213,7 @@ OTRGlobals::OTRGlobals() {
+     if (std::filesystem::exists(sohOtrPath)) {
+         OTRFiles.push_back(sohOtrPath);
+     }
+-    std::string patchesPath = Ship::Window::GetPathRelativeToAppDirectory("mods");
++    std::string patchesPath = Ship::Window::FindFileFromAllAppDirectories("mods");
+     if (patchesPath.length() > 0 && std::filesystem::exists(patchesPath)) {
+         if (std::filesystem::is_directory(patchesPath)) {
+             for (const auto& p : std::filesystem::recursive_directory_iterator(patchesPath)) {
+@@ -708,24 +708,43 @@ extern "C" void OTRExtScanner() {
+ 
+ extern "C" void InitOTR() {
+ #if not defined (__SWITCH__) && not defined(__WIIU__)
+-    if (!std::filesystem::exists(Ship::Window::GetPathRelativeToAppDirectory("oot-mq.otr")) &&
+-        !std::filesystem::exists(Ship::Window::GetPathRelativeToAppDirectory("oot.otr"))){
++    if (!std::filesystem::exists(Ship::Window::FindFileFromAllAppDirectories("oot-mq.otr")) &&
++        !std::filesystem::exists(Ship::Window::FindFileFromAllAppDirectories("oot.otr"))){
++
++        std::string exporterAssetPath = Ship::Window::GetAppBundlePath();
++        // if soh-otr-exporter is not installed:
++        if (!std::filesystem::exists(exporterAssetPath + "/assets/extractor")) {
++            Extractor::ShowErrorBox("Error", "No OTR files found. Cannot create OTR file without the files needed for the exporter.\n"
++                "Please install soh-otr-exporter[-git] and proceed to rerun this program. Exiting now...");
++            exit(1);
++        }
++
+         if (Extractor::ShowYesNoBox("No OTR Files", "No OTR files found. Generate one now?") == IDYES) {
+             Extractor extract;
+             if (!extract.Run()) {
+                 Extractor::ShowErrorBox("Error", "An error occured, no OTR file was generated. Exiting...");
+                 exit(1);
+             }
+-            extract.CallZapd();
++            extract.CallZapd(exporterAssetPath);
++        } else {
++            exit(1);
+         }
+         if (Extractor::ShowYesNoBox("Extraction Complete", "ROM Extracted. Extract another?") == IDYES) {
+             Extractor extract;
+             if (!extract.Run()) {
+                 Extractor::ShowErrorBox("Error", "An error occured, an OTR file may have been generated by a different step. Continuing...");
+             } else {
+-                extract.CallZapd();
++                extract.CallZapd(exporterAssetPath);
+             }
+         }
++
++        // copy OTR to app configuration path
++        if (std::filesystem::exists("oot-mq.otr")) {
++            std::filesystem::copy("oot-mq.otr", Ship::Window::GetAppDirectoryPath());
++        }
++        if (std::filesystem::exists("oot.otr")) {
++            std::filesystem::copy("oot.otr", Ship::Window::GetAppDirectoryPath());
++        }
+     }
+ #endif
+ 

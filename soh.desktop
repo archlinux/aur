@@ -1,6 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Name=Ship of Harkinian
+Comment=An unofficial port of The Legend of Zelda: Ocarina of Time
 Exec=soh
 Terminal=false
 Icon=soh
