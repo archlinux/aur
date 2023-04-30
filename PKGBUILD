@@ -2,8 +2,8 @@
 # Contributor: Julian Leyh <julian@vgai.de>
 
 pkgname=sphinxcontrib-adadomain
-pkgver=0.3
-pkgrel=3
+pkgver=0.4
+pkgrel=1
 pkgdesc="Adds Ada domain support to Sphinx."
 arch=('any')
 url="https://github.com/AdaCore/sphinxcontrib-adadomain"
