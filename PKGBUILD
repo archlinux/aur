@@ -3,25 +3,25 @@
 _reponame=Shipwright
 pkgbase=soh-git
 pkgname=(soh-git soh-otr-exporter-git)
-pkgver=6.1.2.r66.g831711a45
+pkgver=7.0.0.r0.g3f896f126
 pkgrel=1
 arch=("x86_64" "i686")
 url="https://shipofharkinian.com/"
-_depends_soh=("sdl2" "sdl2_net" "libpulse" "glew")
+_depends_soh=("sdl2" "sdl2_net" "libpulse" "glew" "zenity")
 _depends_soh_otr_exporter=("libpng")
 depends=("${_depends_soh[@]}" "${_depends_soh_otr_exporter[@]}")
 makedepends=("cmake" "ninja" "python" "curl" "lsb-release" "libxrandr" "libxinerama" "libxi" "glu" "boost")
 source=("git+https://github.com/HarbourMasters/${_reponame}.git"
-        "git+https://github.com/kenix3/libultraship.git"
+        "git+https://github.com/Kenix3/libultraship.git"
         "soh.desktop"
-        "soh-use-appbasedir.patch"
+        "soh-misc-otr-patches.patch"
         "lus-install-paths.patch"
         "otrgui-wrapper.sh")
 sha256sums=('SKIP'
             'SKIP'
-            'd93dbc5273eb6ab88aa4d99869a6ba7fce495253a953af269c28ec72c0b00eb6'
-            '119cd67dd82af89fe4abb898f6a004db67fb579073d47a8b65e11af025e58d3f'
-            'bd64e666e6c26d5619235c11c9874dfcab5f9ca545c5b60cc7f08acfe6997031'
+            '25aebd34f6ad49073d8a5ce6915b6fa290470fc6d62a8143abe07a25707ff4a2'
+            '200cba1e21ef57cf80bd8962ca6d5631062a7c056c897c2a4d58bfb8217ddef7'
+            '808049e8f02d78188490afc4632e3bec0253d7c3c62d85492172938e35d1165f'
             '6e735877e7bba81f9f308f6eabbdfe5354f2c331a9acf9a16ab02a5681f2c25f')
 
 # NOTE: If compiling complains about missing headers, set __generate_headers below to 1
@@ -79,7 +79,7 @@ prepare() {
     # Make sure to regenerate source checksums after recreating the archive
   fi
 
-  patch -Np1 -i "${srcdir}/soh-use-appbasedir.patch"
+  patch -Np1 -i "${srcdir}/soh-misc-otr-patches.patch"
   patch -Np1 -i "${srcdir}/lus-install-paths.patch"
 }
 
@@ -118,7 +118,7 @@ build() {
 }
 
 package_soh-git() {
-  pkgdesc="A port of The Legend of Zelda Ocarina of Time for PC, Wii U, and Switch (git)"
+  pkgdesc="An unofficial port of The Legend of Zelda Ocarina of Time for PC, Wii U, and Switch (git)"
   provides=("soh")
   conflicts=("soh")
   depends=("${_depends_soh[@]}")
@@ -137,6 +137,10 @@ package_soh-git() {
   install -Dm644 soh/macosx/sohIcon.png "${pkgdir}/usr/share/pixmaps/soh.png"
 
   install -Dm644 OTRExporter/soh.otr "${pkgdir}/${SHIP_PREFIX}/soh.otr"
+
+  install -dm755 "${pkgdir}/usr/share/doc/soh{,/docs}"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/soh"
+  find docs -exec install -Dm644 {} "${pkgdir}/usr/share/doc/soh/docs" \;
 }
 
 package_soh-otr-exporter-git() {
@@ -154,5 +158,11 @@ package_soh-otr-exporter-git() {
 
   install -dm755 "${pkgdir}/usr/bin/"
   install -Dm755 "${srcdir}/otrgui-wrapper.sh" "${pkgdir}/usr/bin/OTRGui"
-  ln -s /opt/soh/assets/extractor/ZAPD.out "${pkgdir}/usr/bin/ZAPD"
+  ln -s ${SHIP_PREFIX}/assets/extractor/ZAPD.out "${pkgdir}/usr/bin/ZAPD"
+
+  # Change the external xml folder path so that it always points to this package
+  find "${pkgdir}/${SHIP_PREFIX}/assets/extractor" -maxdepth 1 -name Config_\*.xml -exec \
+    sed -i "/ExternalXMLFolder/s,assets/extractor,${SHIP_PREFIX}/&," {} +
+
+  install -Dm644 "OTRExporter/LICENSE" "${pkgdir}/usr/share/licenses/soh"
 }

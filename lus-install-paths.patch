@@ -1,6 +1,6 @@
 Submodule libultraship contains modified content
 diff --git a/libultraship/src/CMakeLists.txt b/libultraship/src/CMakeLists.txt
-index d803726..905bdc7 100644
+index f91727b..a2acb4a 100644
 --- a/libultraship/src/CMakeLists.txt
 +++ b/libultraship/src/CMakeLists.txt
 @@ -85,7 +85,10 @@ target_sources(libultraship PRIVATE ${Source_Files__Controller} ${Source_Files__
@@ -24,7 +24,7 @@ index d803726..905bdc7 100644
  )
  
 diff --git a/libultraship/src/core/Window.cpp b/libultraship/src/core/Window.cpp
-index 8060646..d96c215 100644
+index 4230d62..579d158 100644
 --- a/libultraship/src/core/Window.cpp
 +++ b/libultraship/src/core/Window.cpp
 @@ -31,6 +31,7 @@
@@ -35,20 +35,9 @@ index 8060646..d96c215 100644
  
  namespace Ship {
  
-@@ -145,7 +146,29 @@ void Window::Close() {
-     mWindowManagerApi->close();
+@@ -148,6 +149,18 @@ void Window::Close() {
  }
  
-+std::string Window::GetAppBasePath() {
-+    std::string path = GetAppBundlePath();
-+
-+    if (path == ".") {
-+        return GetAppDirectoryPath();
-+    }
-+
-+    return path;
-+}
-+
  std::string Window::GetAppBundlePath() {
 +#ifdef CMAKE_INSTALL_PREFIX
 +    static const std::string fpath = CMAKE_INSTALL_PREFIX;
@@ -65,7 +54,7 @@ index 8060646..d96c215 100644
  #ifdef __APPLE__
      FolderManager folderManager;
      return folderManager.getMainBundlePath();
-@@ -156,6 +179,7 @@ std::string Window::GetAppBundlePath() {
+@@ -158,6 +171,7 @@ std::string Window::GetAppBundlePath() {
      if (fpath != NULL) {
          return std::string(fpath);
      }
@@ -73,7 +62,7 @@ index 8060646..d96c215 100644
  #endif
  
      return ".";
-@@ -176,9 +200,20 @@ std::string Window::GetAppDirectoryPath() {
+@@ -178,6 +192,13 @@ std::string Window::GetAppDirectoryPath() {
      }
  #endif
  
@@ -87,15 +76,32 @@ index 8060646..d96c215 100644
      return ".";
  }
  
-+std::string Window::GetPathRelativeToAppBaseDirectory(const char* path) {
-+    return GetAppBasePath() + "/" + path;
+@@ -189,6 +210,23 @@ std::string Window::GetPathRelativeToAppDirectory(const char* path) {
+     return GetAppDirectoryPath() + "/" + path;
+ }
+ 
++std::string Window::FindFileFromAllAppDirectories(const char* path) {
++    std::string fpath;
++
++    // app configuration dir (eg. ~/.local/share)
++    fpath = GetPathRelativeToAppDirectory(path);
++    if (std::filesystem::exists(fpath)) {
++        return fpath;
++    }
++    // app install dir (eg. /usr/)
++    fpath = GetPathRelativeToAppDirectory(path);
++    if (std::filesystem::exists(fpath)) {
++        return fpath;
++    }
++    // current dir
++    return "./" + std::string(path);
 +}
 +
- std::string Window::GetPathRelativeToAppBundle(const char* path) {
-     return GetAppBundlePath() + "/" + path;
+ void Window::StartFrame() {
+     gfx_start_frame();
  }
 diff --git a/libultraship/src/core/Window.h b/libultraship/src/core/Window.h
-index 817b7e6..89ab4ec 100644
+index 192889a..97175dd 100644
 --- a/libultraship/src/core/Window.h
 +++ b/libultraship/src/core/Window.h
 @@ -24,9 +24,11 @@ class Window {
@@ -106,7 +112,7 @@ index 817b7e6..89ab4ec 100644
      static std::string GetAppDirectoryPath();
      static std::string GetPathRelativeToAppDirectory(const char* path);
      static std::string GetPathRelativeToAppBundle(const char* path);
-+    static std::string GetPathRelativeToAppBaseDirectory(const char* path);
++    static std::string FindFileFromAllAppDirectories(const char* path);
  
      Window(std::string Name);
      ~Window();
