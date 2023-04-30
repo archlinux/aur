@@ -1,8 +1,8 @@
 # Old Maintainers: Samo Turk <samo.turk@gmail.com>, Hector Mtz-Seara <hseara # gmail.com>
 # Maintainer: Benjamin Smith <newzealandbenjy@gmail.com>
 pkgname=rdkit-inchi
-pkgver=2022_09_5
-pkgrel=2
+pkgver=2023_03_01
+pkgrel=1
 pkgdesc="A collection of cheminformatics and machine-learning software written in C++ and Python. This version includes InChI support."
 arch=("i686" "x86_64" "armv7h")
 url="http://rdkit.org/"
@@ -10,7 +10,7 @@ license=('BSD')
 depends=(python python-numpy python-cairocffi python-pillow boost boost-libs sqlite cairo eigen)
 makedepends=('cmake>=3.1')
 source=("https://github.com/rdkit/rdkit/archive/Release_${pkgver}.tar.gz")
-sha256sums=('2efe7ce3b527df529ed3e355e2aaaf14623e51876be460fa4ad2b7f7ad54c9b1')
+sha256sums=('db346afbd0ba52c843926a2a62f8a38c7b774ffab37eaf382d789a824f21996c')
 conflicts=('rdkit-python2' 'rdkit-git' 'rdkit' 'openbabel')
 provides=(rdkit)
 
