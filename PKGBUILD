@@ -1,6 +1,6 @@
 # Maintainer: Wilhelm Schuster <aur [aT] rot13 dot io>
 pkgname=moonraker-git
-pkgver=r1595.a154c5f
+pkgver=r1742.eff0901
 pkgrel=1
 pkgdesc="HTTP frontend for Klipper 3D printer firmware"
 arch=(any)
@@ -16,9 +16,9 @@ depends=(klipper
          python-inotify-simple
          python-libnacl
          python-paho-mqtt
-         python-pycurl
          python-jinja
          python-dbus-next
+         curl
          libgpiod)
 #checkdepends=("python-pytest>=7.0" python-pytest-asyncio python-pytest-timeout)
 makedepends=(git)
@@ -40,7 +40,7 @@ sha256sums=('SKIP'
             '5611f1a48bb18d0d95a31eaead4f59d84c0ae5e3c407f3488770e2236b97c3bf'
             'cef040e973a9bb697659d1506a37a5f829551d5cc96e3f81ff588d5bd67cf1d0'
             '549309fd129c8c665a5aed2d4229c20e5a9927f4fbdc937e0982db4785b9ee0d'
-            'ee763cc109210583c21006054730f1b2422d705b03f2bb04017aab8441039a9b'
+            '5106762365d6275a514897f5a6b42b2b08cbe941732670ac031d4f842679832b'
             'b6c35114ab2886acbd9168bb4588c86d3baea91ab38eda67b5ef38327cd7b11f')
 
 pkgver() {
