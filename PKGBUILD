@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=eelu-login
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 epoch=
 pkgdesc="A command-line tool that allows staff and students to log in to the Egyptian E-Learning University Moodle platform quickly and easily through the command-line interface."
@@ -37,4 +37,4 @@ package() {
   cd "$pkgname-$pkgver"
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
-sha256sums=('1725e0ee4543afa77df20ce11216a5b551a5d47878caeef85c55a355ad20865f')
+sha256sums=('f43ef8769232c581b693d5968fcc489e5a1a0c10d9802416bc007088e2f6f50c')
