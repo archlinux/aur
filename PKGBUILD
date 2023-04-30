@@ -3,8 +3,8 @@
 # Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=python-acme
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc='ACME protocol implementation in Python'
 arch=('any')
 license=('Apache')
@@ -18,6 +18,7 @@ depends=(
   'python-requests'
 )
 makedepends=(
+  'git'
   'python-build'
   'python-installer'
   'python-wheel'
@@ -26,12 +27,22 @@ makedepends=(
   'python-sphinx_rtd_theme'
 )
 checkdepends=('python-pytest')
-source=("$pkgname-$pkgver.tar.gz::https://pypi.io/packages/source/a/acme/acme-$pkgver.tar.gz")
-sha512sums=('4e0af80c5c5e08439b652f470d207ff720a2f9bf10739bdb369e44b50fbf6adc0c02eb17f063816f45a72ea1b85361186469b135726cf56504a9025364c27f8f')
-b2sums=('ce81ea41937b635004f48030e3c3bb55d35cb680bc7e804d50635ee3a9406122269c4904ea94f3a1beae8d340293298fd90b3c4baf061e51cd4996a30430e9cc')
+# git repository is used because certbot is a huge monorepo and it's easier to
+# share the entire repository across all certbot related packages than a few
+# hundred tarballs.
+_commit='3c667e8fffc2f6f4304f284ea52531bbf750a6c4'
+_repo="github.com-certbot-certbot"
+source=("$_repo::git+https://github.com/certbot/certbot#commit=$_commit")
+b2sums=('SKIP')
+
+pkgver() {
+  cd "$_repo"
+
+  git describe --tags | sed 's/^v//'
+}
 
 prepare() {
-  cd "acme-$pkgver"
+  cd "$_repo/acme"
 
   # nuke setuptools from orbit ^W install_requires
   sed \
@@ -40,7 +51,7 @@ prepare() {
 }
 
 build() {
-  cd "acme-$pkgver"
+  cd "$_repo/acme"
 
   python -m build --wheel --no-isolation
 
@@ -49,13 +60,13 @@ build() {
 }
 
 check() {
-  cd "acme-$pkgver"
+  cd "$_repo/acme"
 
   python -m pytest
 }
 
 package() {
-  cd "acme-$pkgver"
+  cd "$_repo/acme"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
