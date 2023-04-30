@@ -1,13 +1,13 @@
 pkgbase = inkscape-label-guides
 	pkgdesc = Inkscape extension to render guides and outlines for printable labels
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/johnbeard/inkscape-label-guides
 	arch = any
 	license = GPLv2
 	makedepends = git
 	depends = inkscape
-	source = git+https://github.com/johnbeard/inkscape-label-guides#tag=v1.1.1
+	source = git+https://github.com/johnbeard/inkscape-label-guides#tag=v1.1.2
 	md5sums = SKIP
 
 pkgname = inkscape-label-guides

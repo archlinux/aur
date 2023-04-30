@@ -1,6 +1,6 @@
 # Maintainer: John Beard <john.j.beard@gmail.com>
 pkgname=inkscape-label-guides
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Inkscape extension to render guides and outlines for printable labels"
 arch=("any")
