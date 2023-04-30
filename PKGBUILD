@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggbeeswarm
-_pkgver=0.7.1
+_pkgver=0.7.2
 pkgname=r-${_pkgname,,}
-pkgver=0.7.1
-pkgrel=3
+pkgver=0.7.2
+pkgrel=1
 pkgdesc='Categorical Scatter (Violin Point) Plots'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -20,7 +20,7 @@ optdepends=(
   r-gridextra
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f41550335149bc2122fed0dd280d980cecd02ace79e042d5e03c1f102200ac92')
+sha256sums=('fd7ca265bb892dde514d5f8d6a853fb8b32d7a673b05e9c8b50544a523299ce5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
