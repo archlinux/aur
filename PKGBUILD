@@ -1,18 +1,12 @@
-# Git version of the official package
-# Maintainer: VicSanRoPe <vicsanrope@protonmail.com>
-# PKGBUILD from the official package
-# Contributor: Felix Yan <felixonmars@archlinux.org>
-# Contributor: Antonio Rojas <arojas@archlinux.org>
-# Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: VicSanRoPe <kde.sp90x@simplelogin.com>
 
 pkgname=ksanecore-git
-_pkgname=ksanecore
-pkgver=r673.9bb5b42
+pkgver=r716.5c6654f
 pkgrel=1
-pkgdesc='Library providing logic to interface scanners (git version)'
-url='https://www.kde.org/'
+pkgdesc='Library that provides a Qt interface for the SANE library for scanner hardware (git version)'
+url='https://invent.kde.org/libraries/ksanecore'
 arch=(x86_64)
-license=(GPL LGPL FDL)
+license=(LGPL)
 depends=(ki18n sane)
 makedepends=(git extra-cmake-modules)
 provides=('ksanecore')
@@ -21,12 +15,12 @@ source=('ksanecore::git+https://invent.kde.org/libraries/ksanecore.git')
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$_pkgname"
+    cd "${pkgname%-git}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cmake -B build -S $_pkgname -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=RelWithDebInfo
+  cmake -B build -S "${pkgname%-git}" -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=RelWithDebInfo
   cmake --build build
 }
 
