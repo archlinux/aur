@@ -2,18 +2,21 @@
 pkgname=frogmouth
 _name=frogmouth
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Markdown browser for your terminal "
 arch=('any')
 url="https://github.com/textualize/frogmouth"
 license=('MIT')
-depends=('python-textual' 'python-httpx' 'python-typing_extensions' 'python-xdg')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('e1369d77c4c503e18bd503e9647d3ce9687556b7ef1cb5098ba47de601cee354')
+depends=('python-textual' 'python-httpx' 'python-typing_extensions' 'python-xdg-base-dirs')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'python-poetry-core')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
+        'xdg-base-dirs.patch')
+sha256sums=('e1369d77c4c503e18bd503e9647d3ce9687556b7ef1cb5098ba47de601cee354'
+            '2e275592052eba37876351c457cfe1ff7686c1872386381bede5811f1166a341')
 
 prepare() {
   cd "$_name-$pkgver"
+  patch -Np1 -i $srcdir/xdg-base-dirs.patch
 }
 
 build() {

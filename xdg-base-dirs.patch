@@ -1,0 +1,26 @@
+diff --git a/frogmouth/data/config.py b/frogmouth/data/config.py
+index 5702e64..03ee87d 100644
+--- a/frogmouth/data/config.py
++++ b/frogmouth/data/config.py
+@@ -7,7 +7,7 @@ from functools import lru_cache
+ from json import dumps, loads
+ from pathlib import Path
+ 
+-from xdg import xdg_config_home
++from xdg-base-dirs import xdg_config_home
+ 
+ from ..utility.advertising import ORGANISATION_NAME, PACKAGE_NAME
+ 
+diff --git a/frogmouth/data/data_directory.py b/frogmouth/data/data_directory.py
+index 976efd3..3ea512c 100644
+--- a/frogmouth/data/data_directory.py
++++ b/frogmouth/data/data_directory.py
+@@ -2,7 +2,7 @@
+ 
+ from pathlib import Path
+ 
+-from xdg import xdg_data_home
++from xdg-base-dirs import xdg_data_home
+ 
+ from ..utility.advertising import ORGANISATION_NAME, PACKAGE_NAME
+ 
