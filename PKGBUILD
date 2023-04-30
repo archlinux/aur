@@ -1,8 +1,8 @@
 # Maintainer: Gaël PORTAY <gael.portay@gmail.com>
 
 pkgname=dosh
-pkgver=3
-pkgrel=3
+pkgver=4
+pkgrel=1
 pkgdesc='Docker shell'
 arch=('any')
 url="https://github.com/gportay/$pkgname"
@@ -10,16 +10,9 @@ license=('MIT')
 depends=('docker')
 makedepends=('asciidoctor')
 checkdepends=('shellcheck')
-source=("https://github.com/gportay/$pkgname/archive/$pkgver.tar.gz"
-        '0001-Fix-Use-the-content-of-docker-variables-in-an-array.patch')
-sha256sums=('3669ed476311b12b29f87f955e22d2c048f162719b886091d3685d04044733e0'
-            '573b7582a174fe0b9e7bfbc29df0e0dce05a7ae1335187af57f9896e34ce247f')
+source=("https://github.com/gportay/$pkgname/archive/$pkgver.tar.gz")
+sha256sums=('1ac2908a28f5bf1f4678d2a60a7363cc0430dd8d658439fb9db80c7da8a80ff0')
 validpgpkeys=('8F3491E60E62695ED780AC672FA122CA0501CA71')
-
-prepare() {
-	cd "$pkgname-$pkgver"
-	patch -p1 -i "$srcdir/0001-Fix-Use-the-content-of-docker-variables-in-an-array.patch"
-}
 
 build() {
 	cd "$pkgname-$pkgver"
