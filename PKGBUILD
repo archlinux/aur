@@ -1,7 +1,7 @@
 # Maintainer: Stephen Brandt <stephen@stephenbrandt.com>
 
 pkgname=haguichi-git
-pkgver=1.4.5.r0.g6f844a5
+pkgver=1.4.6.r0.g4f3879f
 pkgrel=1
 pkgdesc="Provides a user friendly GUI to control the Hamachi client on Linux (development version)"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -25,7 +25,7 @@ build() {
   rm -rf build
   mkdir build && cd build
 
-  meson -Denable-appindicator=true ..
+  meson setup -Denable-appindicator=true ..
   ninja
 }
 

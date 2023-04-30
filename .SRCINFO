@@ -1,6 +1,6 @@
 pkgbase = haguichi-git
 	pkgdesc = Provides a user friendly GUI to control the Hamachi client on Linux (development version)
-	pkgver = 1.4.5.r0.g6f844a5
+	pkgver = 1.4.6.r0.g4f3879f
 	pkgrel = 1
 	url = https://github.com/ztefn/haguichi
 	arch = x86_64
