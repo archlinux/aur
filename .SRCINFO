@@ -1,0 +1,20 @@
+pkgbase = emilua-qt6
+	pkgdesc = Qt6 bindings for Emilua
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/emilua/qt6
+	arch = i686
+	arch = x86_64
+	license = boost
+	makedepends = git
+	makedepends = meson
+	makedepends = boost
+	makedepends = gawk
+	makedepends = gperf
+	makedepends = asciidoctor
+	depends = emilua
+	depends = qt6-declarative
+	source = emilua-qt6::git+https://gitlab.com/emilua/qt6.git#tag=v1.0.0
+	md5sums = SKIP
+
+pkgname = emilua-qt6
