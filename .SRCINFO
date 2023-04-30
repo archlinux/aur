@@ -1,15 +1,20 @@
 pkgbase = tempenv
 	pkgdesc = A quick tool for environment tests creation
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/FuexFollets/tempenv
 	arch = x86_64
 	license = MIT
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = binutils
 	depends = gcc-libs
-	source = tempenv-1.1.1.tar.gz::https://github.com/FuexFollets/tempenv/archive/refs/tags/v1.1.1.tar.gz
+	depends = glibc
+	source = tempenv-1.2.0.tar.gz::https://github.com/FuexFollets/tempenv/archive/refs/tags/v1.2.0.tar.gz
 	source = argparse-2.9.tar.gz::https://github.com/p-ranav/argparse/archive/refs/tags/v2.9.tar.gz
 	source = tomlplusplus-3.3.0.tar.gz::https://github.com/marzer/tomlplusplus/archive/refs/tags/v3.3.0.tar.gz
-	sha256sums = e17ac71a4d94a901d960d40048fd479228afda11310b91e682183bbbb3345c5a
+	sha256sums = 7b9403fcbb1d834ae97a409e0eafcde3c23c5d0207398e2063baf9941e4fd43e
 	sha256sums = cd563293580b9dc592254df35b49cf8a19b4870ff5f611c7584cf967d9e6031e
 	sha256sums = fc1a5eb410f3c67e90e5ad1264a1386d020067cfb01b633cc8c0441789aa6cf2
 
