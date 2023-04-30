@@ -3,8 +3,8 @@
 
 _target=mips64-elf
 pkgname=${_target}-gcc
-pkgver=12.2.0
-_islver=0.24
+pkgver=13.1.0
+_islver=0.26
 pkgrel=1
 pkgdesc="The GNU Compiler Collection (${_target})"
 arch=('x86_64')
@@ -19,8 +19,8 @@ replaces=("${_target}-gcc-stage1")
 source=("http://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
         "https://libisl.sourceforge.io/isl-${_islver}.tar.xz"
         "mabi32.patch")
-sha256sums=('e549cf9cf3594a00e27b6589d4322d70e0720cdd213f39beb4181e06926230ff'
-            '043105cc544f416b48736fff8caf077fb0663a717d06b1113f16e391ac99ebad'
+sha256sums=('61d684f0aa5e76ac6585ad8898a2427aade8979ed5e7f85492286c4dfc13ee86'
+            'a0b5cb06d24f9fa9e77b55fabbe9a3c94a336190345c2555f9915bb38e976504'
             '86c06dfb12295e665204441ca17440d4e597da24b6cffad052c94268ec562169')
 
 prepare() {
