@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index d8d59a4..9b413f9 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,7 @@
+ CC ?= gcc
+ GIT_VERSION := "$(shell git describe --abbrev=6 --always --tags)"
+ AM_CFLAGS = -D_FILE_OFFSET_BITS=64 -D_FORTIFY_SOURCE=2
+-CFLAGS ?= -g -O2 -DVERSION=\"$(GIT_VERSION)\"
++CFLAGS += -g -O2 -DVERSION=\"$(GIT_VERSION)\"
+ objects = \
+ 	mmc.o \
+ 	mmc_cmds.o \
