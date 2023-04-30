@@ -1,0 +1,13 @@
+pkgbase = firefox-extension-ublock-origin-xpi
+	pkgdesc = Finally, an efficient wide-spectrum content blocker. Easy on CPU and memory.
+	pkgver = 1.49.0
+	pkgrel = 1
+	url = https://github.com/gorhill/uBlock#ublock-origin
+	arch = any
+	license = GPL-3.0-or-later
+	depends = firefox
+	noextract = ublock-origin.xpi
+	source = ublock-origin.xpi::https://addons.mozilla.org/firefox/downloads/file/4099143/ublock_origin-1.49.0.xpi
+	sha256sums = 7c32a32fc6ad2ee76d6c097a7562799b3765c8200ca27f77436f9771d3fd6c64
+
+pkgname = firefox-extension-ublock-origin-xpi
