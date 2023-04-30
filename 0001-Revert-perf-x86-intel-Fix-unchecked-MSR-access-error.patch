@@ -1,0 +1,127 @@
+From 94f0bed04310b9e8a061b48170b0b465e301f951 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Sun, 16 Oct 2022 22:14:09 +1300
+Subject: [PATCH] Revert "perf/x86/intel: Fix unchecked MSR access error for
+ Alder Lake N"
+
+This reverts commit 24919fdea6f8b31d7cdf32ac291bc5dd0b023878.
+---
+ arch/x86/events/intel/core.c | 40 +-----------------------------------
+ arch/x86/events/intel/ds.c   |  9 ++------
+ arch/x86/events/perf_event.h |  2 --
+ 3 files changed, 3 insertions(+), 48 deletions(-)
+
+diff --git a/arch/x86/events/intel/core.c b/arch/x86/events/intel/core.c
+index a646a5f9a235..3939debb27e7 100644
+--- a/arch/x86/events/intel/core.c
++++ b/arch/x86/events/intel/core.c
+@@ -2102,15 +2102,6 @@ static struct extra_reg intel_tnt_extra_regs[] __read_mostly = {
+ 	EVENT_EXTRA_END
+ };
+ 
+-EVENT_ATTR_STR(mem-loads,	mem_ld_grt,	"event=0xd0,umask=0x5,ldlat=3");
+-EVENT_ATTR_STR(mem-stores,	mem_st_grt,	"event=0xd0,umask=0x6");
+-
+-static struct attribute *grt_mem_attrs[] = {
+-	EVENT_PTR(mem_ld_grt),
+-	EVENT_PTR(mem_st_grt),
+-	NULL
+-};
+-
+ static struct extra_reg intel_grt_extra_regs[] __read_mostly = {
+ 	/* must define OFFCORE_RSP_X first, see intel_fixup_er() */
+ 	INTEL_UEVENT_EXTRA_REG(0x01b7, MSR_OFFCORE_RSP_0, 0x3fffffffffull, RSP_0),
+@@ -6004,36 +5995,6 @@ __init int intel_pmu_init(void)
+ 		name = "Tremont";
+ 		break;
+ 
+-	case INTEL_FAM6_ALDERLAKE_N:
+-		x86_pmu.mid_ack = true;
+-		memcpy(hw_cache_event_ids, glp_hw_cache_event_ids,
+-		       sizeof(hw_cache_event_ids));
+-		memcpy(hw_cache_extra_regs, tnt_hw_cache_extra_regs,
+-		       sizeof(hw_cache_extra_regs));
+-		hw_cache_event_ids[C(ITLB)][C(OP_READ)][C(RESULT_ACCESS)] = -1;
+-
+-		x86_pmu.event_constraints = intel_slm_event_constraints;
+-		x86_pmu.pebs_constraints = intel_grt_pebs_event_constraints;
+-		x86_pmu.extra_regs = intel_grt_extra_regs;
+-
+-		x86_pmu.pebs_aliases = NULL;
+-		x86_pmu.pebs_prec_dist = true;
+-		x86_pmu.pebs_block = true;
+-		x86_pmu.lbr_pt_coexist = true;
+-		x86_pmu.flags |= PMU_FL_HAS_RSP_1;
+-		x86_pmu.flags |= PMU_FL_INSTR_LATENCY;
+-
+-		intel_pmu_pebs_data_source_grt();
+-		x86_pmu.pebs_latency_data = adl_latency_data_small;
+-		x86_pmu.get_event_constraints = tnt_get_event_constraints;
+-		x86_pmu.limit_period = spr_limit_period;
+-		td_attr = tnt_events_attrs;
+-		mem_attr = grt_mem_attrs;
+-		extra_attr = nhm_format_attr;
+-		pr_cont("Gracemont events, ");
+-		name = "gracemont";
+-		break;
+-
+ 	case INTEL_FAM6_WESTMERE:
+ 	case INTEL_FAM6_WESTMERE_EP:
+ 	case INTEL_FAM6_WESTMERE_EX:
+@@ -6380,6 +6341,7 @@ __init int intel_pmu_init(void)
+ 
+ 	case INTEL_FAM6_ALDERLAKE:
+ 	case INTEL_FAM6_ALDERLAKE_L:
++	case INTEL_FAM6_ALDERLAKE_N:
+ 	case INTEL_FAM6_RAPTORLAKE:
+ 	case INTEL_FAM6_RAPTORLAKE_P:
+ 	case INTEL_FAM6_RAPTORLAKE_S:
+diff --git a/arch/x86/events/intel/ds.c b/arch/x86/events/intel/ds.c
+index 7839507b3844..1380ae13ad2b 100644
+--- a/arch/x86/events/intel/ds.c
++++ b/arch/x86/events/intel/ds.c
+@@ -110,18 +110,13 @@ void __init intel_pmu_pebs_data_source_skl(bool pmem)
+ 	__intel_pmu_pebs_data_source_skl(pmem, pebs_data_source);
+ }
+ 
+-static void __init __intel_pmu_pebs_data_source_grt(u64 *data_source)
++static void __init intel_pmu_pebs_data_source_grt(u64 *data_source)
+ {
+ 	data_source[0x05] = OP_LH | P(LVL, L3) | LEVEL(L3) | P(SNOOP, HIT);
+ 	data_source[0x06] = OP_LH | P(LVL, L3) | LEVEL(L3) | P(SNOOP, HITM);
+ 	data_source[0x08] = OP_LH | P(LVL, L3) | LEVEL(L3) | P(SNOOPX, FWD);
+ }
+ 
+-void __init intel_pmu_pebs_data_source_grt(void)
+-{
+-	__intel_pmu_pebs_data_source_grt(pebs_data_source);
+-}
+-
+ void __init intel_pmu_pebs_data_source_adl(void)
+ {
+ 	u64 *data_source;
+@@ -132,7 +127,7 @@ void __init intel_pmu_pebs_data_source_adl(void)
+ 
+ 	data_source = x86_pmu.hybrid_pmu[X86_HYBRID_PMU_ATOM_IDX].pebs_data_source;
+ 	memcpy(data_source, pebs_data_source, sizeof(pebs_data_source));
+-	__intel_pmu_pebs_data_source_grt(data_source);
++	intel_pmu_pebs_data_source_grt(data_source);
+ }
+ 
+ static u64 precise_store_data(u64 status)
+diff --git a/arch/x86/events/perf_event.h b/arch/x86/events/perf_event.h
+index 332d2e6d8ae4..371967054871 100644
+--- a/arch/x86/events/perf_event.h
++++ b/arch/x86/events/perf_event.h
+@@ -1598,8 +1598,6 @@ void intel_pmu_pebs_data_source_skl(bool pmem);
+ 
+ void intel_pmu_pebs_data_source_adl(void);
+ 
+-void intel_pmu_pebs_data_source_grt(void);
+-
+ int intel_pmu_setup_lbr_filter(struct perf_event *event);
+ 
+ void intel_pt_interrupt(void);
+-- 
+2.37.3
+

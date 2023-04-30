@@ -1,4 +1,0 @@
-This kernel contains miscellaneous patches for ASUS ROG Laptops (not only for G14)
-
-More information and recommend way to install this kernel can be found here https://asus-linux.org/wiki/arch-guide/
-AUR: https://aur.archlinux.org/packages/linux-g14/ (but recommend way is to use repo in the link above)

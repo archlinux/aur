@@ -1,0 +1,125 @@
+Processors based on the Zen microarchitecture support IOPORT based deeper
+C-states. The idle driver reads the acpi_gbl_FADT.xpm_timer_block.address
+in the IOPORT based C-state exit path which is claimed to be a
+"Dummy wait op" and has been around since ACPI introduction to Linux
+dating back to Andy Grover's Mar 14, 2002 posting [1].
+The comment above the dummy operation was elaborated by Andreas Mohr back
+in 2006 in commit b488f02156d3d ("ACPI: restore comment justifying 'extra'
+P_LVLx access") [2] where the commit log claims:
+"this dummy read was about: STPCLK# doesn't get asserted in time on
+(some) chipsets, which is why we need to have a dummy I/O read to delay
+further instruction processing until the CPU is fully stopped."
+
+However, sampling certain workloads with IBS on AMD Zen3 system shows
+that a significant amount of time is spent in the dummy op, which
+incorrectly gets accounted as C-State residency. A large C-State
+residency value can prime the cpuidle governor to recommend a deeper
+C-State during the subsequent idle instances, starting a vicious cycle,
+leading to performance degradation on workloads that rapidly switch
+between busy and idle phases.
+
+One such workload is tbench where a massive performance degradation can
+be observed during certain runs. Following are some statistics gathered
+by running tbench with 128 clients, on a dual socket (2 x 64C/128T) Zen3
+system with the baseline kernel, baseline kernel keeping C2 disabled,
+and baseline kernel with this patch applied keeping C2 enabled:
+
+baseline kernel was tip:sched/core at
+commit f3dd3f674555 ("sched: Remove the limitation of WF_ON_CPU on
+wakelist if wakee cpu is idle")
+
+Kernel        : baseline      baseline + C2 disabled   baseline + patch
+
+Min (MB/s)    : 2215.06       33072.10 (+1393.05%)     33016.10 (+1390.52%)
+Max (MB/s)    : 32938.80      34399.10                 34774.50
+Median (MB/s) : 32191.80      33476.60                 33805.70
+AMean (MB/s)  : 22448.55      33649.27 (+49.89%)       33865.43 (+50.85%)
+AMean Stddev  : 17526.70      680.14                   880.72
+AMean CoefVar : 78.07%        2.02%                    2.60%
+
+The data shows there are edge cases that can cause massive regressions
+in case of tbench. Profiling the bad runs with IBS shows a significant
+amount of time being spent in acpi_idle_do_entry method:
+
+Overhead  Command          Shared Object             Symbol
+  74.76%  swapper          [kernel.kallsyms]         [k] acpi_idle_do_entry
+   0.71%  tbench           [kernel.kallsyms]         [k] update_sd_lb_stats.constprop.0
+   0.69%  tbench_srv       [kernel.kallsyms]         [k] update_sd_lb_stats.constprop.0
+   0.49%  swapper          [kernel.kallsyms]         [k] psi_group_change
+   ...
+
+Annotation of acpi_idle_do_entry method reveals almost all the time in
+acpi_idle_do_entry is spent on the port I/O in wait_for_freeze():
+
+  0.14 │      in     (%dx),%al       # <------ First "in" corresponding to inb(cx->address)
+  0.51 │      mov    0x144d64d(%rip),%rax
+  0.00 │      test   $0x80000000,%eax
+       │    ↓ jne    62 	     # <------ Skip if running in guest
+  0.00 │      mov    0x19800c3(%rip),%rdx
+ 99.33 │      in     (%dx),%eax      # <------ Second "in" corresponding to inl(acpi_gbl_FADT.xpm_timer_block.address)
+  0.00 │62:   mov    -0x8(%rbp),%r12
+  0.00 │      leave
+  0.00 │    ← ret
+
+This overhead is reflected in the C2 residency on the test system where
+C2 is an IOPORT based C-State. The total C-state residency reported by
+"cpupower idle-info" on CPU0 for good and bad case over the 80s tbench
+run is as follows (all numbers are in microseconds):
+
+			    Good Run 		Bad Run
+			   (Baseline)
+
+POLL: 			       43338		   6231  (-85.62%)
+C1 (MWAIT Based): 	    23576156 		 363861  (-98.45%)
+C2 (IOPORT Based): 	    10781218 	       77027280  (+614.45%)
+
+The larger residency value in bad case leads to the system recommending
+C2 state again for subsequent idle instances. The pattern lasts till the
+end of the tbench run. Following is the breakdown of "entry_method"
+passed to acpi_idle_do_entry during good run and bad run:
+
+                                        			Good Run    Bad Run
+							       (Baseline)
+
+Number of times acpi_idle_do_entry was called:             	6149573     6149050  (-0.01%)
+ |-> Number of times entry_method was "ACPI_CSTATE_FFH":        6141494       88144  (-98.56%)
+ |-> Number of times entry_method was "ACPI_CSTATE_HALT":             0           0  (+0.00%)
+ |-> Number of times entry_method was "ACPI_CSTATE_SYSTEMIO":      8079     6060906  (+74920.49%)
+
+For processors based on the Zen microarchitecture, this dummy wait op is
+unnecessary and can be skipped when choosing IOPORT based C-States to
+avoid polluting the C-state residency information.
+
+Link: https://git.kernel.org/pub/scm/linux/kernel/git/mpe/linux-fullhistory.git/commit/?id=972c16130d9dc182cedcdd408408d9eacc7d6a2d [1]
+Link: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b488f02156d3deb08f5ad7816d565c370a8cc6f1 [2]
+
+Suggested-by: Calvin Ong <calvin.ong@amd.com>
+Cc: stable@vger.kernel.org
+Cc: regressions@lists.linux.dev
+Signed-off-by: K Prateek Nayak <kprateek.nayak@amd.com>
+---
+ drivers/acpi/processor_idle.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/acpi/processor_idle.c b/drivers/acpi/processor_idle.c
+index 16a1663d02d4..18850aa2b79b 100644
+--- a/drivers/acpi/processor_idle.c
++++ b/drivers/acpi/processor_idle.c
+@@ -527,9 +527,11 @@
+ static void wait_for_freeze(void)
+ {
+ #ifdef	CONFIG_X86
+-	/* No delay is needed if we are in guest */
+-	if (boot_cpu_has(X86_FEATURE_HYPERVISOR))
+-		return;
++	/*
++	 * No delay is needed if we are in guest or on a processor
++	 * based on the Zen microarchitecture.
++	 */
++	if (boot_cpu_has(X86_FEATURE_HYPERVISOR) || boot_cpu_has(X86_FEATURE_ZEN))
+ 	/*
+ 	 * Modern (>=Nehalem) Intel systems use ACPI via intel_idle,
+ 	 * not this code.  Assume that any Intel systems using this
+
+-- 
+2.25.1

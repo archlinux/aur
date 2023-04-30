@@ -1,0 +1,43 @@
+From ca89780690f7492c2d357e0ed2213a1d027341ae Mon Sep 17 00:00:00 2001
+From: Sultan Alsawaf <sultan@kerneltoast.com>
+Date: Sun, 29 May 2022 01:32:19 -0700
+Subject: [PATCH] mt76: mt7921: Disable powersave features by default
+
+This brings WiFi latency down considerably and makes latency consistent by
+disabling runtime PM and typical powersave features by default. The actual
+power consumption difference is inconsequential on desktops and laptops,
+while the performance difference is monumental. Latencies of 20+ ms are no
+longer observed after this change, and the connection is much more stable.
+
+Signed-off-by: Sultan Alsawaf <sultan@kerneltoast.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/init.c | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+index 91fc41922d95..cfa0bb51004d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+@@ -67,7 +67,8 @@
+ 
+ 	wiphy->iface_combinations = if_comb;
+ 	wiphy->flags &= ~(WIPHY_FLAG_IBSS_RSN | WIPHY_FLAG_4ADDR_AP |
+-			  WIPHY_FLAG_4ADDR_STATION);
++			  WIPHY_FLAG_4ADDR_STATION |
++			  WIPHY_FLAG_PS_ON_BY_DEFAULT);
+ 	wiphy->interface_modes = BIT(NL80211_IFTYPE_STATION) |
+ 				 BIT(NL80211_IFTYPE_AP);
+ 	wiphy->n_iface_combinations = ARRAY_SIZE(if_comb);
+@@ -266,12 +267,6 @@ int mt7921_register_device(struct mt7921_dev *dev)
+ 	dev->pm.idle_timeout = MT7921_PM_TIMEOUT;
+ 	dev->pm.stats.last_wake_event = jiffies;
+ 	dev->pm.stats.last_doze_event = jiffies;
+-	if (!mt76_is_usb(&dev->mt76)) {
+-		dev->pm.enable_user = true;
+-		dev->pm.enable = true;
+-		dev->pm.ds_enable_user = true;
+-		dev->pm.ds_enable = true;
+-	}
+ 
+ 	if (!mt76_is_mmio(&dev->mt76))
+ 		hw->extra_tx_headroom += MT_SDIO_TXD_SIZE + MT_SDIO_HDR_SIZE;

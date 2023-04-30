@@ -1,0 +1,87 @@
+From 9eccb147466f00a13c593ac078d8639e1eafe3a2 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Fri, 14 Oct 2022 10:43:09 +1300
+Subject: [PATCH] platform/x86: asus-wmi: Add safety checks to dgpu/egpu/mux
+ methods
+
+The WMI methods for dgpu_disable, egpu_enable, and gpu_mux_mode have
+no internal safety checks. This means it is possible for a user to
+set the gpu mux to discreet mode and then disable the dgpu, resulting
+in the user having no screen and very little chance of recovery.
+
+This commit adds checks to dgpu_disable and egpu_enable to ensure that
+the dgpu can not be disabled if the MUX is in discreet mode, and a
+check to gpu_mux_mode to prevent switching to discreet mode if
+dgpu_disable is set.
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ drivers/platform/x86/asus-wmi.c | 38 +++++++++++++++++++++++++++++++++
+ 1 file changed, 38 insertions(+)
+
+diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
+index 6e8e093f96b3..1afc4d40fa1a 100644
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -615,6 +615,18 @@ static ssize_t dgpu_disable_store(struct device *dev,
+ 	if (disable > 1)
+ 		return -EINVAL;
+ 
++	/*
++	 * The GPU MUX must be checked first, if it is in discreet mode the
++	 * dgpu_disable cannot be set to on or users can end up with no screen.
++	 */
++	result = asus_wmi_get_devstate_simple(asus, ASUS_WMI_DEVID_GPU_MUX);
++	if (result < 0)
++		return result;
++	if (!result && disable) {
++		pr_warn("ASUS MUX is in discreet mode, can not set dgpu_disable on\n");
++		return -EINVAL;
++	}
++
+ 	err = asus_wmi_set_devstate(ASUS_WMI_DEVID_DGPU, disable, &result);
+ 	if (err) {
+ 		pr_warn("Failed to set dgpu disable: %d\n", err);
+@@ -663,6 +675,19 @@ static ssize_t egpu_enable_store(struct device *dev,
+ 	if (enable > 1)
+ 		return -EINVAL;
+ 
++	/*
++	 * The GPU MUX must be checked first, if it is in discreet mode the
++	 * egpu_enable cannot be set to on or users can end up with no screen.
++	 * Note: egpu_enable method in WMI also sets dgpu_disable to on.
++	 */
++	result = asus_wmi_get_devstate_simple(asus, ASUS_WMI_DEVID_GPU_MUX);
++	if (result < 0)
++		return result;
++	if (!result && enable) {
++		pr_warn("ASUS MUX is in discreet mode, can not set egpu_enable on\n");
++		return -EINVAL;
++	}
++
+ 	err = asus_wmi_set_devstate(ASUS_WMI_DEVID_EGPU, enable, &result);
+ 	if (err) {
+ 		pr_warn("Failed to set egpu disable: %d\n", err);
+@@ -709,6 +734,19 @@ static ssize_t gpu_mux_mode_store(struct device *dev,
+ 	if (optimus > 1)
+ 		return -EINVAL;
+ 
++	/*
++	 * The dgpu_disable must be checked first, if it is enabled the
++	 * gpu MUX can not be set to 0 or users can end up with no screen.
++	 * Note: egpu_enable also switches dgpu_disable to 1 if enabled.
++	 */
++	result = asus_wmi_get_devstate_simple(asus, ASUS_WMI_DEVID_DGPU);
++	if (result < 0)
++		return result;
++	if (result && !optimus) {
++		pr_warn("ASUS dgpu_disable is set, can not switch MUX to discreet mode\n");
++		return -EINVAL;
++	}
++
+ 	err = asus_wmi_set_devstate(ASUS_WMI_DEVID_GPU_MUX, optimus, &result);
+ 	if (err) {
+ 		dev_err(dev, "Failed to set GPU MUX mode: %d\n", err);
+-- 
+2.37.3
+

@@ -1,0 +1,30 @@
+From 57512b57dcfaf63c52d8ad2fb35321328cde31b0 Mon Sep 17 00:00:00 2001
+From: Zhang Rui <rui.zhang@intel.com>
+Date: Wed, 4 Jan 2023 22:58:31 +0800
+Subject: perf/x86/rapl: Add support for Intel Emerald Rapids
+
+Emerald Rapids RAPL support is the same as previous Sapphire Rapids.
+Add Emerald Rapids model for RAPL.
+
+Signed-off-by: Zhang Rui <rui.zhang@intel.com>
+Signed-off-by: Ingo Molnar <mingo@kernel.org>
+Link: https://lore.kernel.org/r/20230104145831.25498-2-rui.zhang@intel.com
+---
+ arch/x86/events/rapl.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/x86/events/rapl.c b/arch/x86/events/rapl.c
+index 589c6885560d2..52e6e7ed4f78a 100644
+--- a/arch/x86/events/rapl.c
++++ b/arch/x86/events/rapl.c
+@@ -806,6 +806,7 @@ static const struct x86_cpu_id rapl_model_match[] __initconst = {
+ 	X86_MATCH_INTEL_FAM6_MODEL(ALDERLAKE_L,		&model_skl),
+ 	X86_MATCH_INTEL_FAM6_MODEL(ALDERLAKE_N,		&model_skl),
+ 	X86_MATCH_INTEL_FAM6_MODEL(SAPPHIRERAPIDS_X,	&model_spr),
++	X86_MATCH_INTEL_FAM6_MODEL(EMERALDRAPIDS_X,	&model_spr),
+ 	X86_MATCH_INTEL_FAM6_MODEL(RAPTORLAKE,		&model_skl),
+ 	X86_MATCH_INTEL_FAM6_MODEL(RAPTORLAKE_P,	&model_skl),
+ 	X86_MATCH_INTEL_FAM6_MODEL(RAPTORLAKE_S,	&model_skl),
+-- 
+cgit 
+

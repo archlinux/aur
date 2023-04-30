@@ -1,0 +1,28 @@
+From ef51bbab598b014ee66b0794d06a6c105905b81c Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Mon, 24 Apr 2023 16:26:33 +1200
+Subject: [PATCH 3/3] HID: asus: Map 0xc7 key event to KEY_KBDILLUMTOGGLE
+
+Some fo the ROG Z13 series have only a single keyboard brightness
+key whcih is expected to toggle the brightness up and cycle back to zero
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ drivers/hid/hid-asus.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/hid/hid-asus.c b/drivers/hid/hid-asus.c
+index 13e9bbc925e7..279b8fe4f227 100644
+--- a/drivers/hid/hid-asus.c
++++ b/drivers/hid/hid-asus.c
+@@ -883,6 +883,7 @@ static int asus_input_mapping(struct hid_device *hdev,
+ 		case 0xb5: asus_map_key_clear(KEY_CALC);			break;
+ 		case 0xc4: asus_map_key_clear(KEY_KBDILLUMUP);		break;
+ 		case 0xc5: asus_map_key_clear(KEY_KBDILLUMDOWN);		break;
++		case 0xc7: asus_map_key_clear(KEY_KBDILLUMTOGGLE);	break;
+ 
+ 		/* ASUS touchpad toggle */
+ 		case 0x6b: asus_map_key_clear(KEY_F21);			break;
+-- 
+2.40.0
+

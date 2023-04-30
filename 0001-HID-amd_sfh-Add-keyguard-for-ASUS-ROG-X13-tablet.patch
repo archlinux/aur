@@ -1,0 +1,193 @@
+From e6529e0ad6942bb0eadc5f5ad0590124153e0a8c Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Wed, 3 Aug 2022 11:02:05 +1200
+Subject: [PATCH 1/1] HID: amd_sfh: Add keyguard for ASUS ROG X13 tablet
+
+Add support for ROG X13 Flow 2-in-1 to disable the keyboard when
+the lid is flipped.
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ drivers/hid/amd-sfh-hid/amd_sfh_pcie.c        |  7 ++++-
+ drivers/hid/amd-sfh-hid/amd_sfh_pcie.h        |  1 +
+ .../hid_descriptor/amd_sfh_hid_desc.c         | 27 +++++++++++++++++++
+ .../hid_descriptor/amd_sfh_hid_desc.h         |  9 +++++++
+ .../hid_descriptor/amd_sfh_hid_report_desc.h  | 19 +++++++++++++
+ 5 files changed, 62 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/hid/amd-sfh-hid/amd_sfh_pcie.c b/drivers/hid/amd-sfh-hid/amd_sfh_pcie.c
+index dadc491bbf6b..243541d426d8 100644
+--- a/drivers/hid/amd-sfh-hid/amd_sfh_pcie.c
++++ b/drivers/hid/amd-sfh-hid/amd_sfh_pcie.c
+@@ -26,6 +26,7 @@
+ #define ACEL_EN		BIT(0)
+ #define GYRO_EN		BIT(1)
+ #define MAGNO_EN	BIT(2)
++#define KBGUARD_EN	BIT(15)
+ #define HPD_EN		BIT(16)
+ #define ALS_EN		BIT(19)
+ 
+@@ -232,6 +233,9 @@ int amd_mp2_get_sensor_num(struct amd_mp2_dev *privdata, u8 *sensor_id)
+ 	if (HPD_EN & activestatus)
+ 		sensor_id[num_of_sensors++] = HPD_IDX;
+ 
++	if (KBGUARD_EN & activestatus)
++		sensor_id[num_of_sensors++] = KBGUARD_IDX;
++
+ 	return num_of_sensors;
+ }
+ 
+@@ -373,7 +377,8 @@ static int __maybe_unused amd_mp2_pci_suspend(struct device *dev)
+ 
+ 	for (i = 0; i < cl_data->num_hid_devices; i++) {
+ 		if (cl_data->sensor_idx[i] != HPD_IDX &&
+-		    cl_data->sensor_sts[i] == SENSOR_ENABLED) {
++			cl_data->sensor_idx[i] != KBGUARD_IDX &&
++			cl_data->sensor_sts[i] == SENSOR_ENABLED) {
+ 			mp2->mp2_ops->stop(mp2, cl_data->sensor_idx[i]);
+ 			status = amd_sfh_wait_for_response
+ 					(mp2, cl_data->sensor_idx[i], SENSOR_DISABLED);
+diff --git a/drivers/hid/amd-sfh-hid/amd_sfh_pcie.h b/drivers/hid/amd-sfh-hid/amd_sfh_pcie.h
+index 8c760526132a..4a86bc6038a2 100644
+--- a/drivers/hid/amd-sfh-hid/amd_sfh_pcie.h
++++ b/drivers/hid/amd-sfh-hid/amd_sfh_pcie.h
+@@ -36,6 +36,7 @@
+ #define SENSOR_DISABLED    5
+ 
+ #define HPD_IDX		16
++#define KBGUARD_IDX	15
+ 
+ #define AMD_SFH_IDLE_LOOP	200
+ 
+diff --git a/drivers/hid/amd-sfh-hid/hid_descriptor/amd_sfh_hid_desc.c b/drivers/hid/amd-sfh-hid/hid_descriptor/amd_sfh_hid_desc.c
+index 76095bd53c65..f41d28ea7b93 100644
+--- a/drivers/hid/amd-sfh-hid/hid_descriptor/amd_sfh_hid_desc.c
++++ b/drivers/hid/amd-sfh-hid/hid_descriptor/amd_sfh_hid_desc.c
+@@ -57,6 +57,11 @@ int get_report_descriptor(int sensor_idx, u8 *rep_desc)
+ 		memcpy(rep_desc, hpd_report_descriptor,
+ 		       sizeof(hpd_report_descriptor));
+ 		break;
++	case KBGUARD_IDX: /* kbguard ? */
++		memset(rep_desc, 0, sizeof(kbguard_report_descriptor));
++		memcpy(rep_desc, kbguard_report_descriptor,
++		       sizeof(kbguard_report_descriptor));
++		break;
+ 	default:
+ 		break;
+ 	}
+@@ -116,6 +121,16 @@ u32 get_descr_sz(int sensor_idx, int descriptor_name)
+ 			return sizeof(struct hpd_feature_report);
+ 		}
+ 		break;
++	case KBGUARD_IDX:
++		switch (descriptor_name) {
++		case descr_size:
++			return sizeof(kbguard_report_descriptor);
++		case input_size:
++			return sizeof(struct kbguard_input_report);
++		case feature_size:
++			return sizeof(struct kbguard_feature_report);
++		}
++		break;
+ 
+ 	default:
+ 		break;
+@@ -139,6 +154,7 @@ u8 get_feature_report(int sensor_idx, int report_id, u8 *feature_report)
+ 	struct gyro_feature_report gyro_feature;
+ 	struct magno_feature_report magno_feature;
+ 	struct hpd_feature_report hpd_feature;
++	struct kbguard_feature_report kbguard_feature;
+ 	struct als_feature_report als_feature;
+ 	u8 report_size = 0;
+ 
+@@ -186,6 +202,11 @@ u8 get_feature_report(int sensor_idx, int report_id, u8 *feature_report)
+ 		memcpy(feature_report, &hpd_feature, sizeof(hpd_feature));
+ 		report_size = sizeof(hpd_feature);
+ 		break;
++	case KBGUARD_IDX:  /* auto disable keyboard when flip out */
++		get_common_features(&kbguard_feature.common_property, report_id);
++		memcpy(feature_report, &kbguard_feature, sizeof(kbguard_feature));
++		report_size = sizeof(kbguard_feature);
++		break;
+ 
+ 	default:
+ 		break;
+@@ -210,6 +231,7 @@ u8 get_input_report(u8 current_index, int sensor_idx, int report_id, struct amd_
+ 	struct accel3_input_report acc_input;
+ 	struct gyro_input_report gyro_input;
+ 	struct hpd_input_report hpd_input;
++	struct kbguard_input_report kbguard_input;
+ 	struct als_input_report als_input;
+ 	struct hpd_status hpdstatus;
+ 	u8 report_size = 0;
+@@ -262,6 +284,11 @@ u8 get_input_report(u8 current_index, int sensor_idx, int report_id, struct amd_
+ 		report_size = sizeof(hpd_input);
+ 		memcpy(input_report, &hpd_input, sizeof(hpd_input));
+ 		break;
++	case KBGUARD_IDX: /* kb guard */
++		get_common_inputs(&kbguard_input.common_property, report_id);
++		report_size = sizeof(kbguard_input);
++		memcpy(input_report, &kbguard_input, sizeof(kbguard_input));
++break;
+ 	default:
+ 		break;
+ 	}
+diff --git a/drivers/hid/amd-sfh-hid/hid_descriptor/amd_sfh_hid_desc.h b/drivers/hid/amd-sfh-hid/hid_descriptor/amd_sfh_hid_desc.h
+index 70b1b7abe2c6..98571a8597b3 100644
+--- a/drivers/hid/amd-sfh-hid/hid_descriptor/amd_sfh_hid_desc.h
++++ b/drivers/hid/amd-sfh-hid/hid_descriptor/amd_sfh_hid_desc.h
+@@ -105,12 +105,21 @@ struct hpd_feature_report {
+ 	struct common_feature_property common_property;
+ } __packed;
+ 
++struct kbguard_feature_report {
++	struct common_feature_property common_property;
++} __packed;
++
+ struct hpd_input_report {
+ 	struct common_input_property common_property;
+ 	 /* values specific to human presence sensor */
+ 	u8 human_presence;
+ } __packed;
+ 
++struct kbguard_input_report {
++	struct common_input_property common_property;
++} __packed;
++
++
+ int get_report_descriptor(int sensor_idx, u8 rep_desc[]);
+ u32 get_descr_sz(int sensor_idx, int descriptor_name);
+ u8 get_feature_report(int sensor_idx, int report_id, u8 *feature_report);
+diff --git a/drivers/hid/amd-sfh-hid/hid_descriptor/amd_sfh_hid_report_desc.h b/drivers/hid/amd-sfh-hid/hid_descriptor/amd_sfh_hid_report_desc.h
+index 697f2791ea9c..7a62fcec2c73 100644
+--- a/drivers/hid/amd-sfh-hid/hid_descriptor/amd_sfh_hid_report_desc.h
++++ b/drivers/hid/amd-sfh-hid/hid_descriptor/amd_sfh_hid_report_desc.h
+@@ -644,6 +644,25 @@ static const u8 als_report_descriptor[] = {
+ 0xC0			/* HID end collection */
+ };
+ 
++
++static const u8 kbguard_report_descriptor[] = {
++0x06, 0x43, 0xFF,  // Usage Page (Vendor Defined 0xFF43)
++0x0A, 0x02, 0x02,  // Usage (0x0202)
++0xA1, 0x01, // Collection (Application)
++0x85, 0x11, //   Report ID (17)
++0x15, 0x00, //   Logical Minimum (0)
++0x25, 0x01, //   Logical Maximum (1)
++0x35, 0x00, //   Physical Minimum (0)
++0x45, 0x01, //   Physical Maximum (1)
++0x65, 0x00, //   Unit (None)
++0x55, 0x00, //   Unit Exponent (0)
++0x75, 0x01, //   Report Size (1)
++0x95, 0x98, //   Report Count (-104)
++0x81, 0x03, //   Input (Const,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
++0x91, 0x03, //   Output (Const,Var,Abs,No Wrap,Linear,Preferred State,No Null Position,Non-volatile)
++0xC1, 0x00, // End Collection
++};
++
+ /* BIOMETRIC PRESENCE*/
+ static const u8 hpd_report_descriptor[] = {
+ 0x05, 0x20,          /* Usage page */
+-- 
+2.37.1
+

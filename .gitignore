@@ -11,3 +11,4 @@ old
 old-mediatek
 new-mediatek
 *.tar.zst
+*.sig

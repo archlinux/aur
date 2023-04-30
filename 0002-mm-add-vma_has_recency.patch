@@ -1,0 +1,272 @@
+From mboxrd@z Thu Jan  1 00:00:00 1970
+Return-Path: <mm-commits-owner@vger.kernel.org>
+X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
+	aws-us-west-2-korg-lkml-1.web.codeaurora.org
+Received: from vger.kernel.org (vger.kernel.org [23.128.96.18])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CC018C4708D
+	for <mm-commits@archiver.kernel.org>; Fri,  6 Jan 2023 04:01:50 +0000 (UTC)
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S230391AbjAFEBs (ORCPT <rfc822;mm-commits@archiver.kernel.org>);
+        Thu, 5 Jan 2023 23:01:48 -0500
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:51158 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S229451AbjAFEBr (ORCPT
+        <rfc822;mm-commits@vger.kernel.org>); Thu, 5 Jan 2023 23:01:47 -0500
+Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id C4B3F58823
+        for <mm-commits@vger.kernel.org>; Thu,  5 Jan 2023 20:01:45 -0800 (PST)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+        (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+        (No client certificate requested)
+        by ams.source.kernel.org (Postfix) with ESMTPS id 140BEB81BF2
+        for <mm-commits@vger.kernel.org>; Fri,  6 Jan 2023 04:01:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B0003C433EF;
+        Fri,  6 Jan 2023 04:01:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linux-foundation.org;
+        s=korg; t=1672977702;
+        bh=7zSic2DGIWJrj3nEVeQolG37z5vgL/uWIN4VclkJKxs=;
+        h=Date:To:From:Subject:From;
+        b=sPtfupKVP7QuLG4IuLVrxCUgZYbLdgcREwcG3M29EV9ZD4LAJfXZAhFrvOzFvgE+j
+         Hw8zQCw8HdEK8WmVvXea4T4iJiNvfUfTI1nEDG+ja8BG28GBP+NQ0o18zQ/dJdWNQN
+         iOpXS1Sl970AE/6EmQ2xcu62Yk/BVTpgm5z1gexI=
+Date:   Thu, 05 Jan 2023 20:01:41 -0800
+To:     mm-commits@vger.kernel.org, viro@zeniv.linux.org.uk,
+        Michael@MichaelLarabel.com, hannes@cmpxchg.org,
+        andrea.righi@canonical.com, yuzhao@google.com,
+        akpm@linux-foundation.org
+From:   Andrew Morton <akpm@linux-foundation.org>
+Subject: + mm-add-vma_has_recency.patch added to mm-unstable branch
+Message-Id: <20230106040142.B0003C433EF@smtp.kernel.org>
+Precedence: bulk
+Reply-To: linux-kernel@vger.kernel.org
+List-ID: <mm-commits.vger.kernel.org>
+X-Mailing-List: mm-commits@vger.kernel.org
+
+
+The patch titled
+     Subject: mm: add vma_has_recency()
+has been added to the -mm mm-unstable branch.  Its filename is
+     mm-add-vma_has_recency.patch
+
+This patch will shortly appear at
+     https://git.kernel.org/pub/scm/linux/kernel/git/akpm/25-new.git/tree/patches/mm-add-vma_has_recency.patch
+
+This patch will later appear in the mm-unstable branch at
+    git://git.kernel.org/pub/scm/linux/kernel/git/akpm/mm
+
+Before you just go and hit "reply", please:
+   a) Consider who else should be cc'ed
+   b) Prefer to cc a suitable mailing list as well
+   c) Ideally: find the original patch on the mailing list and do a
+      reply-to-all to that, adding suitable additional cc's
+
+*** Remember to use Documentation/process/submit-checklist.rst when testing your code ***
+
+The -mm tree is included into linux-next via the mm-everything
+branch at git://git.kernel.org/pub/scm/linux/kernel/git/akpm/mm
+and is updated there every 2-3 working days
+
+------------------------------------------------------
+From: Yu Zhao <yuzhao@google.com>
+Subject: mm: add vma_has_recency()
+Date: Fri, 30 Dec 2022 14:52:51 -0700
+
+Add vma_has_recency() to indicate whether a VMA may exhibit temporal
+locality that the LRU algorithm relies on.
+
+This function returns false for VMAs marked by VM_SEQ_READ or
+VM_RAND_READ.  While the former flag indicates linear access, i.e., a
+special case of spatial locality, both flags indicate a lack of temporal
+locality, i.e., the reuse of an area within a relatively small duration.
+
+"Recency" is chosen over "locality" to avoid confusion between temporal
+and spatial localities.
+
+Before this patch, the active/inactive LRU only ignored the accessed bit
+from VMAs marked by VM_SEQ_READ.  After this patch, the active/inactive
+LRU and MGLRU share the same logic: they both ignore the accessed bit if
+vma_has_recency() returns false.
+
+For the active/inactive LRU, the following fio test showed a [6, 8]%
+increase in IOPS when randomly accessing mapped files under memory
+pressure.
+
+  kb=$(awk '/MemTotal/ { print $2 }' /proc/meminfo)
+  kb=$((kb - 8*1024*1024))
+
+  modprobe brd rd_nr=1 rd_size=$kb
+  dd if=/dev/zero of=/dev/ram0 bs=1M
+
+  mkfs.ext4 /dev/ram0
+  mount /dev/ram0 /mnt/
+  swapoff -a
+
+  fio --name=test --directory=/mnt/ --ioengine=mmap --numjobs=8 \
+      --size=8G --rw=randrw --time_based --runtime=10m \
+      --group_reporting
+
+The discussion that led to this patch is here [1].  Additional test
+results are available in that thread.
+
+[1] https://lore.kernel.org/r/Y31s%2FK8T85jh05wH@google.com/
+
+Link: https://lkml.kernel.org/r/20221230215252.2628425-1-yuzhao@google.com
+Signed-off-by: Yu Zhao <yuzhao@google.com>
+Cc: Alexander Viro <viro@zeniv.linux.org.uk>
+Cc: Andrea Righi <andrea.righi@canonical.com>
+Cc: Johannes Weiner <hannes@cmpxchg.org>
+Cc: Michael Larabel <Michael@MichaelLarabel.com>
+Signed-off-by: Andrew Morton <akpm@linux-foundation.org>
+---
+
+ include/linux/mm_inline.h |    8 ++++++
+ mm/memory.c               |    7 ++----
+ mm/rmap.c                 |   42 +++++++++++++++---------------------
+ mm/vmscan.c               |    5 +++-
+ 4 files changed, 33 insertions(+), 29 deletions(-)
+
+--- a/include/linux/mm_inline.h~mm-add-vma_has_recency
++++ a/include/linux/mm_inline.h
+@@ -594,4 +594,12 @@ pte_install_uffd_wp_if_needed(struct vm_
+ #endif
+ }
+ 
++static inline bool vma_has_recency(struct vm_area_struct *vma)
++{
++	if (vma->vm_flags & (VM_SEQ_READ | VM_RAND_READ))
++		return false;
++
++	return true;
++}
++
+ #endif
+--- a/mm/memory.c~mm-add-vma_has_recency
++++ a/mm/memory.c
+@@ -1402,8 +1402,7 @@ again:
+ 						force_flush = 1;
+ 					}
+ 				}
+-				if (pte_young(ptent) &&
+-				    likely(!(vma->vm_flags & VM_SEQ_READ)))
++				if (pte_young(ptent) && likely(vma_has_recency(vma)))
+ 					mark_page_accessed(page);
+ 			}
+ 			rss[mm_counter(page)]--;
+@@ -5118,8 +5117,8 @@ static inline void mm_account_fault(stru
+ #ifdef CONFIG_LRU_GEN
+ static void lru_gen_enter_fault(struct vm_area_struct *vma)
+ {
+-	/* the LRU algorithm doesn't apply to sequential or random reads */
+-	current->in_lru_fault = !(vma->vm_flags & (VM_SEQ_READ | VM_RAND_READ));
++	/* the LRU algorithm only applies to accesses with recency */
++	current->in_lru_fault = vma_has_recency(vma);
+ }
+ 
+ static void lru_gen_exit_fault(void)
+--- a/mm/rmap.c~mm-add-vma_has_recency
++++ a/mm/rmap.c
+@@ -824,25 +824,14 @@ static bool folio_referenced_one(struct
+ 		}
+ 
+ 		if (pvmw.pte) {
+-			if (lru_gen_enabled() && pte_young(*pvmw.pte) &&
+-			    !(vma->vm_flags & (VM_SEQ_READ | VM_RAND_READ))) {
++			if (lru_gen_enabled() && pte_young(*pvmw.pte)) {
+ 				lru_gen_look_around(&pvmw);
+ 				referenced++;
+ 			}
+ 
+ 			if (ptep_clear_flush_young_notify(vma, address,
+-						pvmw.pte)) {
+-				/*
+-				 * Don't treat a reference through
+-				 * a sequentially read mapping as such.
+-				 * If the folio has been used in another mapping,
+-				 * we will catch it; if this other mapping is
+-				 * already gone, the unmap path will have set
+-				 * the referenced flag or activated the folio.
+-				 */
+-				if (likely(!(vma->vm_flags & VM_SEQ_READ)))
+-					referenced++;
+-			}
++						pvmw.pte))
++				referenced++;
+ 		} else if (IS_ENABLED(CONFIG_TRANSPARENT_HUGEPAGE)) {
+ 			if (pmdp_clear_flush_young_notify(vma, address,
+ 						pvmw.pmd))
+@@ -876,7 +865,20 @@ static bool invalid_folio_referenced_vma
+ 	struct folio_referenced_arg *pra = arg;
+ 	struct mem_cgroup *memcg = pra->memcg;
+ 
+-	if (!mm_match_cgroup(vma->vm_mm, memcg))
++	/*
++	 * Ignore references from this mapping if it has no recency. If the
++	 * folio has been used in another mapping, we will catch it; if this
++	 * other mapping is already gone, the unmap path will have set the
++	 * referenced flag or activated the folio in zap_pte_range().
++	 */
++	if (!vma_has_recency(vma))
++		return true;
++
++	/*
++	 * If we are reclaiming on behalf of a cgroup, skip counting on behalf
++	 * of references from different cgroups.
++	 */
++	if (memcg && !mm_match_cgroup(vma->vm_mm, memcg))
+ 		return true;
+ 
+ 	return false;
+@@ -907,6 +909,7 @@ int folio_referenced(struct folio *folio
+ 		.arg = (void *)&pra,
+ 		.anon_lock = folio_lock_anon_vma_read,
+ 		.try_lock = true,
++		.invalid_vma = invalid_folio_referenced_vma,
+ 	};
+ 
+ 	*vm_flags = 0;
+@@ -922,15 +925,6 @@ int folio_referenced(struct folio *folio
+ 			return 1;
+ 	}
+ 
+-	/*
+-	 * If we are reclaiming on behalf of a cgroup, skip
+-	 * counting on behalf of references from different
+-	 * cgroups
+-	 */
+-	if (memcg) {
+-		rwc.invalid_vma = invalid_folio_referenced_vma;
+-	}
+-
+ 	rmap_walk(folio, &rwc);
+ 	*vm_flags = pra.vm_flags;
+ 
+--- a/mm/vmscan.c~mm-add-vma_has_recency
++++ a/mm/vmscan.c
+@@ -3794,7 +3794,10 @@ static int should_skip_vma(unsigned long
+ 	if (is_vm_hugetlb_page(vma))
+ 		return true;
+ 
+-	if (vma->vm_flags & (VM_LOCKED | VM_SPECIAL | VM_SEQ_READ | VM_RAND_READ))
++	if (!vma_has_recency(vma))
++		return true;
++
++	if (vma->vm_flags & (VM_LOCKED | VM_SPECIAL))
+ 		return true;
+ 
+ 	if (vma == get_gate_vma(vma->vm_mm))
+_
+
+Patches currently in -mm which might be from yuzhao@google.com are
+
+mm-multi-gen-lru-rename-lru_gen_struct-to-lru_gen_folio.patch
+mm-multi-gen-lru-rename-lrugen-lists-to-lrugen-folios.patch
+mm-multi-gen-lru-remove-eviction-fairness-safeguard.patch
+mm-multi-gen-lru-remove-aging-fairness-safeguard.patch
+mm-multi-gen-lru-shuffle-should_run_aging.patch
+mm-multi-gen-lru-per-node-lru_gen_folio-lists.patch
+mm-multi-gen-lru-clarify-scan_control-flags.patch
+mm-multi-gen-lru-simplify-arch_has_hw_pte_young-check.patch
+mm-add-vma_has_recency.patch
+mm-support-posix_fadv_noreuse.patch
+
+

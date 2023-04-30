@@ -1,8 +1,10 @@
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer: Gunnar Bretthauer <taijian@posteo.de>
+# Contributor: Dragonn <dragonn@op.pl>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=5.14.9.arch1
-pkgrel=3
+pkgver=6.2.12.arch1
+pkgrel=2
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -16,72 +18,37 @@ makedepends=(
 )
 options=('!strip')
 _srcname=archlinux-linux
-_fedora_kernel_commit_id=e087e6d70c49c685b4d7cc7364496ade3aed3609
+
 source=(
   "$_srcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
   config         # the main kernel config file
   "choose-gcc-optimization.sh"
 
-  "sys-kernel_arch-sources-g14_files-0004-5.8+--more-uarches-for-kernel.patch"::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/a8d200f422f4b2abeaa6cfcfa37136b308e6e33e/more-uarches-for-kernel-5.8%2B.patch"
-  "sys-kernel_arch-sources-g14_files-0005-lru-multi-generational.patch"
-  # mainlined
-  #"sys-kernel_arch-sources-g14_files-0006-fix-tigerlake-pin-mapping.patch"
-  
-  "https://gitlab.com/asus-linux/fedora-kernel/-/archive/$_fedora_kernel_commit_id/fedora-kernel-$_fedora_kernel_commit_id.zip"
+  "sys-kernel_arch-sources-g14_files-0004-5.17+--more-uarches-for-kernel.patch"::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-5.17+.patch"
 
-  # for now let's just pull the 5 asus-linux patches we need directly and skip all of the git filtering
-  "sys-kernel_arch-sources-g14_files-0039-asus-wmi-Add-panel-overdrive-functionality.patch"
-  # pull newer version from fedora repo
-  #"sys-kernel_arch-sources-g14_files-0040-asus-wmi-Add-dgpu-disable-method.patch"
-  #"sys-kernel_arch-sources-g14_files-0041-asus-wmi-Add-egpu-enable-method.patch"
-  #"sys-kernel_arch-sources-g14_files-0042-HID-asus-Remove-check-for-same-LED-brightness-on-set.patch"
-  "sys-kernel_arch-sources-g14_files-0043-ALSA-hda-realtek-Fix-speakers-not-working-on-Asus-Fl.patch"
-  "sys-kernel_arch-sources-g14_files-0044-claymore.patch"
-  "sys-kernel_arch-sources-g14_files-0045-v5-asus-wmi-Add-support-for-platform_profile.patch"
-  "sys-kernel_arch-sources-g14_files-0046-fan-curvers.patch"
+  0001-acpi-proc-idle-skip-dummy-wait.patch
+
+  0019-HID-amd_sfh-Add-keyguard-for-ASUS-ROG-X13-tablet.patch
+  0001-platform-x86-asus-wmi-Add-safety-checks-to-dgpu-egpu.patch
+  0001-Revert-perf-x86-intel-Fix-unchecked-MSR-access-error.patch
+  0024-V8-0-4-PCI-vmd-Enable-PCIe-ASPM-and-LTR-on-select-hardware.patch
+  
+  0027-mt76_-mt7921_-Disable-powersave-features-by-default.patch
+
+  0001-Revert-PCI-Add-a-REBAR-size-quirk-for-Sapphire-RX-56.patch
+  0001-linux6.0.y-bore1.7.5.patch
+  
+  0002-mm-add-vma_has_recency.patch
+
+  0028-patch01_gu604_alc285_fixes.patch
+
+  0029-HID-asus-Add-support-for-ASUS-ROG-Z13-keyboard.patch
+  0030-HID-asus-Add-support-for-ASUS-ROG-Z13-ACRNM-keyboard.patch
+  0031-HID-asus-Map-0xc7-key-event-to-KEY_KBDILLUMTOGGLE.patch
+
   "sys-kernel_arch-sources-g14_files-0047-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch"
   "sys-kernel_arch-sources-g14_files-0048-asus-nb-wmi-fix-tablet_mode_sw_int.patch"
-
-  # k10temp support for Zen3 APUs
-  #"sys-kernel_arch-sources-g14_files-8001-x86-amd_nb-Add-AMD-family-19h-model-50h-PCI-ids.patch"
-  "sys-kernel_arch-sources-g14_files-8002-hwmon-k10temp-support-Zen3-APUs.patch"
-
-
-  # mediatek mt7921 bt/wifi patches
-  
-  "sys-kernel_arch-sources-g14_files-8011-Bluetooth-btusb-Enable-MSFT-extension-for-Mediatek-Chip-MT7921.patch"
-  "sys-kernel_arch-sources-g14_files-8012-mt76-mt7915-send-EAPOL-frames-at-lowest-rate.patch"
-  "sys-kernel_arch-sources-g14_files-8013-mt76-mt7921-robustify-hardware-initialization-flow.patch"
-  "sys-kernel_arch-sources-g14_files-8014-mt76-mt7921-fix-retrying-release-semaphore-without-end.patch"
-  "sys-kernel_arch-sources-g14_files-8015-mt76-mt7921-send-EAPOL-frames-at-lowest-rate.patch"
-  "sys-kernel_arch-sources-g14_files-8016-mt76-mt7921-Add-mt7922-support.patch"
-  "sys-kernel_arch-sources-g14_files-8017-mt76-mt7921-enable-VO-tx-aggregation.patch"
-  "sys-kernel_arch-sources-g14_files-8018-mt76-mt7921-fix-dma-hang-in-rmmod.patch"
-  "sys-kernel_arch-sources-g14_files-8019-mt76-mt7921-fix-firmware-usage-of-RA-info-using-legacy-rates.patch"
-  "sys-kernel_arch-sources-g14_files-8020-mt76-mt7921-Fix-out-of-order-process-by-invalid-even.patch"
-  "sys-kernel_arch-sources-g14_files-8021-mt76-mt7921-fix-the-inconsistent-state-between-bind-and-unbind.patch"
-  "sys-kernel_arch-sources-g14_files-8022-mt76-mt7921-report-HE-MU-radiotap.patch"
-  "sys-kernel_arch-sources-g14_files-8023-v2-mt76-mt7921-fix-kernel-warning-from-cfg80211_calculate_bitrate.patch"
-  "sys-kernel_arch-sources-g14_files-8024-mediatek-more-bt-patches.patch"
-  
-  #"sys-kernel_arch-sources-g14_files-8024-mediatek-19-09-2021-squashed.patch"
-
-  # squashed s0ix enablement through 2021-09-03
-  "sys-kernel_arch-sources-g14_files-9001-v5.14.9-s0ix-patch-2021-10-01.patch"
-  #"sys-kernel_arch-sources-g14_files-9002-amd-pmc-delay-test.patch"
-  # a small amd_pmc SMU debugging patch per Mario Limonciello @AMD
-  #"sys-kernel_arch-sources-g14_files-9002-amd-pmc-smu-register-dump-for-diagnostics.patch"
-  
-  "sys-kernel_arch-sources-g14_files-9004-HID-asus-Reduce-object-size-by-consolidating-calls.patch"
-  "sys-kernel_arch-sources-g14_files-9005-acpi-battery-Always-read-fresh-battery-state-on-update.patch"
-  
-  "sys-kernel_arch-sources-g14_files-9006-amd-c3-entry.patch"
-  
-  "sys-kernel_arch-sources-g14_files-9007-squashed-net-tcp_bbr-bbr2-for-5.14.y.patch"
-
-  "sys-kernel_arch-sources-g14_files-9008-fix-cpu-hotplug.patch"
-  "sys-kernel_arch-sources-g14_files-9009-amd-pstate-sqashed.patch"
-  "sys-kernel_arch-sources-g14_files-9010-ACPI-PM-s2idle-Don-t-report-missing-devices-as-faili.patch"
+  "sys-kernel_arch-sources-g14_files-0049-ALSA-hda-realtek-Add-quirk-for-ASUS-M16-GU603H.patch"
 )
 
 validpgpkeys=(
@@ -92,41 +59,25 @@ validpgpkeys=(
 )
 
 sha256sums=('SKIP'
-            'aa50b2ec33ce304f9b99ce80555a17ea18b1005dae147a560587acbdae00546f'
-            '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
-            'fa6cee9527d8e963d3398085d1862edc509a52e4540baec463edb8a9dd95bee0'
-            '69ecf5456468935958f2cbf35691c2533a56344005537902b6051b6323ffff1f'
-            '6806c034b7480245a0b9eec448bd79042ff5ff3f9f5efbf2af78227bc56004a8'
-            '1ab75535772c63567384eb2ac74753e4d5db2f3317cb265aedf6151b9f18c6c2'
-            '32bbcde83406810f41c9ed61206a7596eb43707a912ec9d870fd94f160d247c1'
-            'e2d312ea95d18e91801d131a2b5d03cf2175d3088cac6f84a19410078a5b6b14'
-            '4ef12029ea73ca924b6397e1de4911e84d9e77ddaccdab1ef579823d848524e8'
-            '1e547bddf80d201f77da1d876cd280e4d40b377bbd8ebc218f0ba57cd959ff76'
+            '70cf3252ff877cb91ca7eba13439ae181e693513b09ff43e83c48d2b0b46d0f8'
+            '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
+            'dea86a521603414a8c7bf9cf1f41090d5d6f8035ce31407449e25964befb1e50'
+            '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
+            'd45e2ae1d21b1dc8e0de94a4fa58e9a53d72306843f87d3cc49f5f641399d8e3'
+            '172dbc88d0a3cda78387f3c907fa4953c71cb1cb162f0b34f78b8b78924bc3d4'
+            '6739a42bf9d233cb58ae9a69c3f78959175de695e2d4a7e66bb9984fcf5c0f7e'
+            'f036ac8a49153f66d7d8638508cfe0b4a158d12faf30d2c671b04a6b7b606b3b'
+            'a691e7b22633fe0c458d140167d6d381b66149e05de3cb926b30a19fd43e78ce'
+            '7b16fce20b03babc9e149030f43e283534835bbd8835ba0a794fd0205fea1708'
+            'bca0caa5efad45c0acde1e78d43f8ce1af6ebf3cbb0240b143be3e6486509970'
+            'b6288935f2768a7023d11e9a200f47b087669ffd4d418f791ee71d5a51d0530e'
+            '5b19e3d557fbd52ef7e966b6d491c17a77769f03534b8cf9877fe3696e5d291f'
+            '1f63361ebbebecaaa3122ec174b39dfc346eda44592299a058b44bb4837b5d92'
+            '0febf2e8fee2e5c2222441464812aca66d21d714cd28aa7c218218b509d242fb'
+            '00feb23b3ed0983d13a8929ade35b3dcb23987d21f0e342db4dcb8292656a72e'
             '15e912a66e4bbce1cf0450f1dc6610653df29df8dd6d5426f9c1b039490436c8'
-            'e9e4b03b836e1a86a2a5dc70b0d5512348eb19742f83bee794a3ab7d91bd41cf'
-            'de8c9747637768c4356c06aa65c3f157c526aa420f21fdd5edd0ed06f720a62e'
-            '9f6b8c3ea6e1c285e0a7efda4d743dbae343bc6ee7ad599a4ab7d380c750bc83'
-            '4bfbff4eba07fc9de2ce78097a4a269509468ba0e24c15a82905cd94e093ad55'
-            'c368cc4eefff20b7ae904eec686b7e72b46ff02b32c8a4fbd6bd4039f087e7ba'
-            '1a8639167a1ee1b66f580c0c6f8304e6ef359a68cfa3eb869d9200a9f0234098'
-            '021f8539ab2fb722b46937b95fdab22a2308236a24ecc1a9ea8db4853721dd39'
-            'a01cf700d79b983807e2285be1b30df6e02db6adfd9c9027fe2dfa8ca5a74bc9'
-            '1ce9fd988201c4d2e48794c58acda5b768ec0fea1d29555e99d35cd2712281e4'
-            'e7e37c7c433c58e2f5a79e2a7724823bef1dccaa01e857584397b4e3c837d991'
-            'f075ac354acfd65dff4db49dc9798747cb9b7a3dd9839987bc46495bdbbd22dc'
-            '2163cb2e394a013042a40cd3b00dae788603284b20d71e262995366c5534e480'
-            '1770fec49335bc93194e9e55ced49e1cb67f2df4bf6948e80712a0b2ba50fa49'
-            '6da4010f86a74125969fd3dbc953da7b45209d33ff3d216474c3399e82e893ff'
-            'eb391b6d1ebf7ef99ece00b23609b94180a1f3c0149bcf05f6bbeb74d0b724c7'
-            'f7afab5f2d872dbb66774a189ed462750985aed0df1d81b3a49db9809e8557b6'
-            'dd5b0df91e7c17e26af4839b3a23ba5e8850d329aeb28137ec6468502418f2bd'
-            '544464bf0807b324120767d55867f03014a9fda4e1804768ca341be902d7ade4'
-            'f7a4bf6293912bfc4a20743e58a5a266be8c4dbe3c1862d196d3a3b45f2f7c90'
-            'ee8794a551e33226900654d5c806183bf3b9b2e06f64fdc322987215d233d399'
-            '2d854fc70297bb52bbc27dbf35ca019800530e40565be9740704d7f81bc4c763'
-            '1cec0be41732a23c709e66d4a67e71bc5a75c77a3e4b73faafb5d7bfd3fafc0f'
-            '9025ca0788fbacea25200e6ac17036960000424843f544cdd781052231da7903'
-            'e7bd53abc9fddc66790a2e63637b4e2b54ed541f41a2f0fb3aca91ea64ff90dc')
+            '444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85'
+            '982a31e47d3d586789e1b3cdda25f75e3b71d810e7494202089b8f2cef7c0ef9')
 
 # notable microarch levels:
 #
@@ -140,32 +91,9 @@ if [ -z ${_microarchitecture+x} ]; then
   _microarchitecture=93
 fi
 
-_fedora_kernel_patch_skip_list=(
-  # fedora kernel patches to skip
-  # use plain file names or bash glob syntax, ** don't quote globs **
-
-  # multi-select and ranges examples
-  # 00{03,05,08}-drm-amdgpu*.patch
-  # 00{01..12}-drm-amdgpu*.patch
-  
-  "linux-kernel-test.patch"           # test patch, please ignore
-  patch-*-redhat.patch                # wildcard match any redhat patch version
-  
-  0001-asus-wmi-Add-support-for-platform_profile.patch
-  0001-asus-wmi-Add-panel-overdrive-functionality.patch
-  0004-HID-asus-Remove-check-for-same-LED-brightness-on-set.patch
-  0001-HID-asus-Prevent-Claymore-sending-suspend-event.patch
-  0015-PCI-quirks-Quirk-PCI-d3hot-delay-for-AMD-xhci.patch
-)
-
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
-
-_fedora_patch_in_skip_list() {
-  for p in "${_fedora_kernel_patch_skip_list[@]}"; do [[ "$1" == $p ]] && return 0; done
-  return 1
-}
 
 prepare() {
   cd $_srcname
@@ -185,31 +113,6 @@ prepare() {
     patch -Np1 < "../$src"
   done
 
-  msg2 "Applying asus-linux patches..."
-  local p_err=()
-  local p_meh=()
-
-  # this will apply only enabled patches from the fedora-linux kernel.spec
-  # this stops us from applying broken or in-progress patches that are in git but aren't actually in use
-
-  local _fkernel_path="../fedora-kernel-${_fedora_kernel_commit_id}"
-  for src in $(awk -F ' ' '/^ApplyOptionalPatch.*(patch|diff)$/{print $2}' "${_fkernel_path}/kernel.spec"); do
-    src="${src##*/}"
-    _fedora_patch_in_skip_list "$src" && continue
-    echo "Applying patch $src..."
-    if OUT="$(patch --forward -Np1 < "${_fkernel_path}/$src")"; then
-      : #plain "Applied patch $src..."
-    else
-      # if you want to ignore a specific patch failure for some reason do it right here, then 'continue'
-      if { echo "$OUT" | grep -qiE 'hunk(|s) FAILED'; }; then
-        error "Patch failed $src" && echo "$OUT" && p_err+=("$src") && _throw=y
-      else
-        warning "Duplicate patch $src" && p_meh+=("$src")
-      fi
-    fi
-  done
-  (( ${#p_err[@]} > 0 )) && error "Failed patches:" && for p in ${p_err[@]}; do plain "$p"; done
-  (( ${#p_meh[@]} > 0 )) && warning "Duplicate patches:" && for p in ${p_meh[@]}; do plain "$p"; done
   # if throw is defined we had a hard patch failure, propagate it and stop so we can address
   [[ -z "$_throw" ]]
 
@@ -225,13 +128,57 @@ prepare() {
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
 
-  scripts/config --enable CONFIG_CMDLINE_BOOL \
-               --set-str CONFIG_CMDLINE "pm_debug_messages amd_pmc.dyndbg=+p acpi.dyndbg=file drivers/acpi/x86/s2idle.c +p" \
-               --disable CMDLINE_OVERRIDE
-
   scripts/config --enable CONFIG_PINCTRL_AMD
-  scripts/config --module CONFIG_X86_AMD_PSTATE
+  scripts/config --enable CONFIG_X86_AMD_PSTATE
   scripts/config --module CONFIG_AMD_PMC
+
+  scripts/config --disable CONFIG_MODULE_COMPRESS_NONE \
+                 --enable CONFIG_MODULE_COMPRESS_ZSTD
+
+  ## SET default LRU parameters
+  scripts/config --enable CONFIG_LRU_GEN
+  scripts/config --enable CONFIG_LRU_GEN_ENABLED
+  scripts/config --disable CONFIG_LRU_GEN_STATS
+  scripts/config --set-val CONFIG_NR_LRU_GENS 7
+  scripts/config --set-val CONFIG_TIERS_PER_GEN 4
+
+  # DISABLE not need modules on ROG laptops
+  # XXX: I'm going to make an opinionated decision here and save everyone some compilation time
+  # XXX: on drivers almost no-one is going to use; if you need any of theese turn them on in myconfig
+  scripts/config  --disable CONFIG_INFINIBAND \
+                  --disable CONFIG_DRM_NOUVEAU \
+                  --disable CONFIG_PCMCIA_WL3501 \
+                  --disable CONFIG_PCMCIA_RAYCS \
+                  --disable CONFIG_IWL3945 \
+                  --disable CONFIG_IWL4965 \
+                  --disable CONFIG_IPW2200 \
+                  --disable CONFIG_IPW2100 \
+                  --disable CONFIG_FB_NVIDIA \
+                  --disable CONFIG_SENSORS_ASUS_EC \
+                  --disable CONFIG_SENSORS_ASUS_WMI_EC
+
+  # select slightly more sane block device driver options; NVMe really should be built in 
+  scripts/config  --disable CONFIG_RAPIDIO \
+                  --module CONFIG_CDROM \
+                  --disable CONFIG_PARIDE \
+
+  # bake in s0ix debugging parameters so we get useful problem reports re: suspend
+  scripts/config  --enable CONFIG_CMDLINE_BOOL \
+                  --set-str CONFIG_CMDLINE "makepkgplaceholderyolo" \
+                  --disable CMDLINE_OVERRIDE
+
+  # enable back EFI_HANDOVER_PROTOCOL and EFI_STUB
+  scripts/config  --enable CONFIG_EFI_HANDOVER_PROTOCOL \
+                  --enable CONFIG_EFI_STUB
+
+  # HACK: forcibly fixup CONFIG_CMDLINE here as using scripts/config mangles escaped quotes
+  sed -i 's#makepkgplaceholderyolo#ibt=off pm_debug_messages amd_pmc.dyndbg=\\"+p\\" acpi.dyndbg=\\"file drivers/acpi/x86/s2idle.c +p\\"#' .config
+
+  # Note the double escaped quotes above, sed strips one; the final result in .config needs to contain single slash
+  # escaped quotes (eg: `CONFIG_CMDLINE="foo.dyndbg=\"+p\""`) to avoid dyndbg parse errors at boot. This is impossible
+  # with the current kernel config script.
+
+
 }
 
 build() {
@@ -283,6 +230,9 @@ _package-headers() {
 
   # add objtool for external module building and enabled VALIDATION_STACK option
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
+
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   # add xfs and shmem for aufs building
   mkdir -p "$builddir"/{fs/xfs,mm}
