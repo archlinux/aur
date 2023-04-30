@@ -3,7 +3,7 @@
 
 pkgname="savvycan"
 pkgproper="SavvyCAN"
-pkgver="V208"
+pkgver="V213"
 pkgrel=1
 epoch=1
 pkgdesc="QT-based CAN bus analysis tool"
@@ -36,4 +36,4 @@ package() {
   qmake-qt5 -install qinstall -exe SavvyCAN "$pkgdir/usr/bin/SavvyCAN"
 }
 
-sha256sums=('3454dc4f3d03ca083b0c2c962f3ccc41bccaf0ffdb303e4c8becc5339c491140')
+sha256sums=('1c60055a05dacfd9b00b5416e728735dc7d507f9692c52bf2e4eed74f56f84cd')
