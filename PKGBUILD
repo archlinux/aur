@@ -1,7 +1,7 @@
 # Maintainer: icxes <dev.null@need.moe>
 pkgname=copyparty
 pkgver="1.7.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Portable file sharing hub"
 arch=("any")
 url="https://github.com/9001/${pkgname}"
