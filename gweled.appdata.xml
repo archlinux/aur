@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2014 William Moreno <williamjmorenor@fedoraproject.org> -->
+<!--
+BugReportURL: https://bugs.launchpad.net/gweled/+bug/1322917
+SentUpstream: 2014-06-12
+-->
+<application>
+  <id type="desktop">gweled.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <summary>Align three identical gems to remove them from board</summary>
+  <description>
+    <p>
+      Gweled is a version for GNU / Linux of the popular mobile game called
+      Bejeweled or Diamond Mine.
+      The game consist in to move adjacent gems to align three or more vertically
+      or horizontally to remove them from the board.
+    </p>
+  </description>
+  <url type="homepage">http://launchpad.net/gweled</url>
+  <screenshots>
+    <screenshot type="default">http://gweled.org/images/screen1.png</screenshot>
+  </screenshots>
+</application>

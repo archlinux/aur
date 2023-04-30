@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!gweled-fix-librsvg-segfault-v2.patch
+!gweled-c99.patch
+!gweled.appdata.xml

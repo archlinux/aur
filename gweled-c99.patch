@@ -1,0 +1,19 @@
+commit 033834d6db19ddcc7856e40895eb7c4e44b3d5d4
+Author: Stephen Kitt <skitt@debian.org>
+Date:   Thu Feb 11 19:59:37 2021 +0100
+
+    Add missing init_pref_window declaration
+
+diff --git a/src/board_engine.c b/src/board_engine.c
+index e5a991ee276537d7..09a59dd1351357e1 100644
+--- a/src/board_engine.c
++++ b/src/board_engine.c
+@@ -978,6 +978,8 @@ GweledGameState gweled_get_current_game(void)
+     return game;
+ }
+ 
++extern void init_pref_window(void);
++
+ void gweled_set_previous_game(GweledGameState game)
+ {
+     gchar *text_buffer;
