@@ -1,13 +1,13 @@
 pkgbase = charls
 	pkgdesc = A C++ JPEG-LS library implementation
-	pkgver = 2.3.4
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/team-charls/charls
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
-	source = charls-2.3.4.tar.gz::https://github.com/team-charls/charls/archive/refs/tags/2.3.4.tar.gz
-	sha256sums = 28e895a6e22daee76c24cf4d36c62bb20fd60fad0c9cfefc2eb8fa9b6045ae84
+	source = charls-2.4.0.tar.gz::https://github.com/team-charls/charls/archive/refs/tags/2.4.0.tar.gz
+	sha256sums = 721f4fd6a8dc3ec6a334d1c3c15d1cb9faa149afddd0eff703466c20e775c294
 
 pkgname = charls
