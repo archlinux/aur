@@ -1,9 +1,10 @@
 pkgbase = golines
 	pkgdesc = A golang formatter that fixes long lines
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/segmentio/golines
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = go
 	makedepends = make
