@@ -12,6 +12,6 @@ pkgbase = wxdfast
 	depends = aria2
 	depends = openssl
 	source = https://github.com/archdvx/wxdfast/releases/download/v0.70.4/wxdfast-0.70.4.tar.gz
-	md5sums = f92fb9cad33f0909fda5552735b3bc87
+	md5sums = b2504a36c6a6e5d9f116d8a2d7e26709
 
 pkgname = wxdfast

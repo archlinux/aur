@@ -11,10 +11,10 @@ depends=('wxwidgets-gtk3' 'aria2' 'openssl')
 makedepends=('cmake')
 install=${pkgname}.install
 source=(https://github.com/archdvx/wxdfast/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz)
-md5sums=('f92fb9cad33f0909fda5552735b3bc87')
+md5sums=('b2504a36c6a6e5d9f116d8a2d7e26709')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}"
   mkdir build
   cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr ..
@@ -22,6 +22,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}/build"
+  cd "${srcdir}/build"
   make DESTDIR="$pkgdir" install
 }
