@@ -9,7 +9,7 @@
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 _base=petsc
 pkgname=${_base}-complex
-pkgver=3.19.0
+pkgver=3.19.1
 pkgrel=1
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
@@ -43,7 +43,7 @@ optdepends=('trilinos: support for zoltan'
 install=${_base}.install
 source=(https://ftp.mcs.anl.gov/pub/${_base}/release-snapshots/${_base}-lite-${pkgver}.tar.gz
   test_optdepends.sh)
-sha512sums=('2fb065b622e1c9839a7ddc618a5fbdfb4ec6ec01b996c79ccb4c171d901ad0f2cf97e40573e752583e3580ef7765c33ea46e4c4d886aa33f8c7fe06df5a1013e'
+sha512sums=('5b9b71599a95e2d82d18d5313c424a08eead0c10f27f40c82159839ef0fa8aeda88ddea693a12d58b8ac29a41c4138e8188a3c91d6af540196ee3a977cf9539d'
             '039ccd9125619ca5f5ceb0bec586c24b40fa01d485a28094de525cd4e66c606b82c6ee5d9713a1b1d6f828b12b57cddaae8368dbe3a9f5c8edcc45175f6c3737')
 
 _install_dir=/opt/${_base}/${_config}

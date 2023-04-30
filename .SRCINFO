@@ -1,6 +1,6 @@
 pkgbase = petsc-complex
 	pkgdesc = Portable, extensible toolkit for scientific computation (complex scalars)
-	pkgver = 3.19.0
+	pkgver = 3.19.1
 	pkgrel = 1
 	url = https://petsc.org
 	install = petsc.install
@@ -31,12 +31,12 @@ pkgbase = petsc-complex
 	optdepends = suitesparse: support for the suitesparse sparse matrix libraries
 	optdepends = valgrind: support for valgrind to help find memory-management problems in programs
 	optdepends = libyaml: support for YAML-formatted file
-	provides = petsc=3.19.0
+	provides = petsc=3.19.1
 	conflicts = petsc
 	options = staticlibs
-	source = https://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-lite-3.19.0.tar.gz
+	source = https://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-lite-3.19.1.tar.gz
 	source = test_optdepends.sh
-	sha512sums = 2fb065b622e1c9839a7ddc618a5fbdfb4ec6ec01b996c79ccb4c171d901ad0f2cf97e40573e752583e3580ef7765c33ea46e4c4d886aa33f8c7fe06df5a1013e
+	sha512sums = 5b9b71599a95e2d82d18d5313c424a08eead0c10f27f40c82159839ef0fa8aeda88ddea693a12d58b8ac29a41c4138e8188a3c91d6af540196ee3a977cf9539d
 	sha512sums = 039ccd9125619ca5f5ceb0bec586c24b40fa01d485a28094de525cd4e66c606b82c6ee5d9713a1b1d6f828b12b57cddaae8368dbe3a9f5c8edcc45175f6c3737
 
 pkgname = petsc-complex
