@@ -1,7 +1,7 @@
 pkgbase = florist
 	pkgdesc = An open-source implementation of IEEE Standard 1003.5b-1996, the POSIX Ada binding.
-	pkgver = 2022
-	pkgrel = 2
+	pkgver = 2023
+	pkgrel = 1
 	url = https://github.com/Blady-Com/florist
 	arch = i686
 	arch = x86_64
@@ -10,10 +10,6 @@ pkgbase = florist
 	options = staticlibs
 	options = !strip
 	source = git+https://github.com/Blady-Com/florist.git
-	source = posix-signals.ads-patch
-	source = posix-unsafe_process_primitives.ads-patch
 	sha256sums = SKIP
-	sha256sums = 85823c4d2453ce4f5b73dd64beb0297d38e4a0525d06fbbb697d405533864297
-	sha256sums = 48975e3b4c5e22d514df28951c62db9851b8799f874e36f1762c0d84b69261e3
 
 pkgname = florist
