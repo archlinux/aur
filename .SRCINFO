@@ -1,6 +1,6 @@
 pkgbase = simple_backup
 	pkgdesc = Simple backup script that uses rsync to copy files
-	pkgver = 3.0.1.r0.g92ecc95
+	pkgver = 3.1.1.r0.g84e6d58
 	pkgrel = 1
 	url = https://github.com/Fuxino/simple_backup.git
 	install = simple_backup.install
@@ -10,6 +10,7 @@ pkgbase = simple_backup
 	depends = python3
 	depends = rsync
 	depends = python-dotenv
+	depends = python-dbus
 	source = git+https://github.com/Fuxino/simple_backup.git
 	sha256sums = SKIP
 
