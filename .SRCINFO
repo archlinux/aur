@@ -8,6 +8,7 @@ pkgbase = gdrive
 	license = MIT
 	makedepends = git
 	makedepends = cargo
+	options = !lto
 	source = gdrive-3.9.0.tar.gz::https://github.com/glotlabs/gdrive/archive/refs/tags/3.9.0.tar.gz
 	sha256sums = a4476480f0cf759f6a7ac475e06f819cbebfe6bb6f1e0038deff1c02597a275a
 

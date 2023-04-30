@@ -8,6 +8,7 @@ pkgdesc="Google Drive CLI Client (Rust rewrite)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/glotlabs/gdrive"
 license=('MIT')
+options=('!lto')
 makedepends=('git' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('a4476480f0cf759f6a7ac475e06f819cbebfe6bb6f1e0038deff1c02597a275a')
