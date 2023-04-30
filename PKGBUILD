@@ -1,7 +1,7 @@
 # Maintainer: Horror Proton <https://github.com/horror-proton>
 
 pkgname=maa-assistant-arknights
-_pkgver=v4.16.0-beta.1
+_pkgver=v4.16.0-rc.1
 pkgver="$(echo ${_pkgver//-/} | sed -e 's/^v//')"
 pkgrel=1
 pkgdesc="An Arknights assistant"
@@ -14,11 +14,11 @@ _fastdeploy_ref=1e4f600e5e5ab23528f77b98a8c5167b46ddfce2
 source=("$url/archive/refs/tags/$_pkgver.tar.gz"
         "https://github.com/MaaAssistantArknights/FastDeploy/archive/$_fastdeploy_ref.tar.gz")
 install="${pkgname}.install"
-md5sums=('7a7dac84cc7e77df1a120a873ee24617'
+md5sums=('85577717f1dcc9d8b1a6afb39f6dcda2'
          'be1dbba8bfc1ce42dc9fd1a9c74eb79f')
 
 prepare() {
-    cd "$srcdir"/MaaAssistantArknights-*
+    cd "$srcdir"/MaaAssistantArknights-${_pkgver#v}
     sed -i 's/RUNTIME\sDESTINATION\s\./ /g; s/LIBRARY\sDESTINATION\s\./ /g; s/PUBLIC_HEADER\sDESTINATION\s\./ /g' CMakeLists.txt
     sed -i 's/find_package(asio /# find_package(asio /g' CMakeLists.txt
     sed -i 's/asio::asio/ /g' CMakeLists.txt
