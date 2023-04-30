@@ -3,8 +3,8 @@
 # Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=certbot
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc='An ACME client'
 arch=('any')
 license=('Apache')
@@ -22,6 +22,7 @@ depends=(
   'python-setuptools'
 )
 makedepends=(
+  'git'
   'python-build'
   'python-wheel'
   'python-installer'
@@ -34,31 +35,30 @@ optdepends=(
   'certbot-nginx: Nginx plugin for Let’s Encrypt client'
 )
 replaces=('letsencrypt')
+# git repository is used because certbot is a huge monorepo and it's easier to
+# share the entire repository across all certbot related packages than a few
+# hundred tarballs.
+_commit='3c667e8fffc2f6f4304f284ea52531bbf750a6c4'
+_repo="github.com-certbot-certbot"
 source=(
-  "https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"{,.asc}
+  "$_repo::git+https://github.com/certbot/certbot#commit=$_commit"
   'tmpfiles.conf'
   'certbot-renew.service'
   'certbot-renew.timer'
 )
-sha512sums=('bee6f3a3daa93a7e51a03baa1134a3263b4833c4a70140a9c7ffad7e6cccd42f13cf2472c7a46750148ab427d3b8cd95d890c849692e9c51f06b9e2c53de692a'
-            'SKIP'
-            'fbb7bb4591876aeb2e118c3f3fc8ff507b6a3127de0f921c689e1d74c70320b4f2b8bf05b488ec4f714259701f1ac54e64a9f6181475da6bd6d1e3da3a602217'
-            'ad639f33201089d5531d1b1dcd163e2f85bd84a6a9aa233bb04f1f86b34a4f9afa4aed274a27cc89a0664150e80af31742d425923015d585b781a8b139cb8954'
-            '471d371de385daf18f58a2e4eaed74f0d2d9931beb74ee28481ffb17ce4e4450752c135b920b6efd17a16f84f99fe38b69e6602e230ba09059f85390b08aaba1')
-b2sums=('631ef324bdbffb638d726829bc1032696f4ab187abe363bfae2acd4e37102850a770a02b7f949245bcde49bef4babdf9293ed3709f52eaa41ca8961ecbebee6c'
-        'SKIP'
+b2sums=('SKIP'
         '7d2c26a9953d3b5a899053bdd7bd77051c67abe6480af2bfaaee06f20a399b0b4ccccc0af35cfe9e6d2b1fc833dbff928ba46771a9127720073dda29aef9a2e0'
         '773be7c45aaf84b79b260053dd4555be1b913238f680cf2c816e20d585db21c11ff41c985915ab0804bb3bc78af2e1e09133ed3b04e276e6379f63e9522064c1'
         'a75e09a662be6ce1bc533c39bea8ecfd6c0feb3f0066db854de701c1af71534bca750ef5b50826446708823564945aac887649225d15a347efd864dd1e1a8e81')
-validpgpkeys=('148C30F6F7E429337A72D992B00B9CC82D7ADF2C'
-              '1B41B758F9A78C7F444C20FA3E5B4152E3ADB1FD'
-              'A2CFB51FA275A7286234E7B24D17C995CD9775F2'
-              '20F201346BF8F3F455A73F9A780CC99432A28621'
-              '86379B4F0AF371B50CD9E5FF3402831161D1D280'
-              'F2871B4152AE13C49519111F447BF683AA3B26C3')
+
+pkgver() {
+  cd "$_repo"
+
+  git describe --tags | sed 's/^v//'
+}
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "$_repo/$pkgname"
 
   # nuke setuptools from orbit ^W install_requires
   sed \
@@ -67,7 +67,7 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$_repo/$pkgname"
 
   python -m build --wheel --no-isolation
 
@@ -76,9 +76,10 @@ build() {
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "$_repo/$pkgname"
 
-  python -m pytest
+  # https://github.com/certbot/certbot/issues/9606
+  python -m pytest -W ignore::DeprecationWarning
 }
 
 package() {
@@ -86,7 +87,7 @@ package() {
   install -vDm644 -t "$pkgdir/usr/lib/systemd/system" certbot-renew.*
   install -vDm644 tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 
-  cd "$pkgname-$pkgver"
+  cd "$_repo/$pkgname"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
