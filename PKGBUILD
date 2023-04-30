@@ -1,7 +1,7 @@
 # Maintainer: Horror Proton <https://github.com/horror-proton>
 
 pkgname=maa-assistant-arknights
-_pkgver=v4.15.1
+_pkgver=v4.16.0-beta.1
 pkgver="$(echo ${_pkgver//-/} | sed -e 's/^v//')"
 pkgrel=1
 pkgdesc="An Arknights assistant"
@@ -10,10 +10,11 @@ url="https://github.com/MaaAssistantArknights/MaaAssistantArknights"
 license=('AGPL')
 depends=(opencv onnxruntime cpr)
 makedepends=(asio eigen git cmake)
+_fastdeploy_ref=1e4f600e5e5ab23528f77b98a8c5167b46ddfce2
 source=("$url/archive/refs/tags/$_pkgver.tar.gz"
-        'https://github.com/MaaAssistantArknights/FastDeploy/archive/1e4f600e5e5ab23528f77b98a8c5167b46ddfce2.tar.gz')
+        "https://github.com/MaaAssistantArknights/FastDeploy/archive/$_fastdeploy_ref.tar.gz")
 install="${pkgname}.install"
-md5sums=('bb53cd3b3e04381fc9ff02dcd6b5f6b4'
+md5sums=('7a7dac84cc7e77df1a120a873ee24617'
          'be1dbba8bfc1ce42dc9fd1a9c74eb79f')
 
 prepare() {
@@ -25,7 +26,7 @@ prepare() {
 
 build() {
     cd "$srcdir"
-    cmake -B build-fastdeploy -S FastDeploy-* \
+    cmake -B build-fastdeploy -S FastDeploy-$_fastdeploy_ref \
         -DCMAKE_CXX_FLAGS=-fPIC \
         -DCMAKE_BUILD_TYPE=None \
         -DBUILD_SHARED_LIBS=ON \
@@ -36,7 +37,7 @@ build() {
     cmake --install build-fastdeploy --prefix "$srcdir"/installed/usr
 
     cd "$srcdir"
-    cmake -B build -S MaaAssistantArknights-* \
+    cmake -B build -S MaaAssistantArknights-${_pkgver#v} \
         -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_PREFIX_PATH="$srcdir"/installed/usr \
         -DCMAKE_CXX_FLAGS=-isystem\ "$srcdir"/installed/usr/include \
