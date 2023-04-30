@@ -1,7 +1,7 @@
 pkgbase = qtwebkit
 	pkgdesc = An open source web browser engine (Qt port)
 	pkgver = 2.3.4
-	pkgrel = 7
+	pkgrel = 8
 	url = http://trac.webkit.org/wiki/QtWebKit
 	arch = i686
 	arch = x86_64
@@ -18,16 +18,19 @@ pkgbase = qtwebkit
 	conflicts = qt<4.8
 	source = https://sources.archlinux.org/other/packages/qtwebkit/qtwebkit-2.3.4.tar.xz
 	source = https://download.qt.io/archive/qt/4.8/4.8.7/qt-everywhere-opensource-src-4.8.7.tar.gz
+	source = https://src.fedoraproject.org/rpms/qtwebkit/raw/rawhide/f/webkit-qtwebkit-23-gcc5.patch
+	source = https://src.fedoraproject.org/rpms/qtwebkit/raw/rawhide/f/webkit-qtwebkit-23-glib2.patch
+	source = https://src.fedoraproject.org/rpms/qtwebkit/raw/rawhide/f/qtwebkit-bison-3.7.patch
 	source = use-python2.patch
 	source = qwebview.patch
-	source = gcc-5.patch
 	source = fix-build-in-usr.patch
 	sha1sums = 31bc60de1cf26bb0766d539b4d564651ddbb0650
 	sha1sums = 76aef40335c0701e5be7bb3a9101df5d22fe3666
+	sha1sums = 4b3f92a914674ef311b2a7c0ca329d01e1af76cf
+	sha1sums = 67a3f86a7981be01baa507bbd091be048cdf18af
+	sha1sums = 77b258bd267b070f21f4b7d5b480238c300020fb
 	sha1sums = 315b6ff603f35e5492a036f7082f6aa075dfb607
 	sha1sums = c3df6107233f466a032e36681cee07f16536657c
-	sha1sums = 5d506578ea30daeeeb1e91ab83876fe6d5669715
 	sha1sums = 412a58db507fa14268c9f30627d62fd448f9dccb
 
 pkgname = qtwebkit
-
