@@ -8,8 +8,8 @@ makedepends=('rust' 'cargo' 'git')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/anas-elgarhy/eelu-login"
 license=('MIT OR Apache-2.0')
-provides=(eelu-login)
-replaces=(eelu-login)
+provides=(${pkgname%-*}=$pkgver)
+conflicts=(${pkgname%-*})
 install=
 changelog=
 source=("$pkgname::git+$url#branch=master")

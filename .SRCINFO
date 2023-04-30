@@ -11,8 +11,8 @@ pkgbase = eelu-login-git
 	makedepends = rust
 	makedepends = cargo
 	makedepends = git
-	provides = eelu-login
-	replaces = eelu-login
+	provides = eelu-login=v0.2.0.r19.gcd8556b
+	conflicts = eelu-login
 	source = eelu-login-git::git+https://github.com/anas-elgarhy/eelu-login#branch=master
 	sha256sums = SKIP
 
