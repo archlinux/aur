@@ -3,8 +3,8 @@
 
 _pkgbase="dfm"
 pkgname="dmenu-$_pkgbase"
-pkgver=1.1.6.g266609a
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc="dmenu-dfm is a simple file manager that uses dmenu"
 url="https://github.com/amarakon/dfm"
 arch=(any)
@@ -12,21 +12,16 @@ license=('AGPL-3')
 depends=('dmenu' 'perl' 'xdg-utils')
 optdepends=('xclip' 'sesame')
 provides=(dmenu-dfm)
-source=(git+$url.git)
-sha256sums=('SKIP')
-
-pkgver() {
-    cd "$_pkgbase"
-    git describe --tags --long | sed 's/^v//;s/-/./g'
-}
+source=($url/releases/download/$pkgver/dfm-v$pkgver.tar.gz)
+sha256sums=('a181abca14d42de3bd5d0b7dab20806982d9f406dc307eff46402b6887ba25eb')
 
 prepare() {
-    mv "$srcdir/$_pkgbase/$_pkgbase" "$srcdir/$_pkgbase/$pkgname"
-    sed -i "s/\b$_pkgbase\b/$pkgname/g" "$srcdir/$_pkgbase/Makefile"
+    mv "$srcdir/$_pkgbase" "$srcdir/$pkgname"
+    sed -i "s/\b$_pkgbase\b/$pkgname/g" "$srcdir/Makefile"
 }
 
 package() {
-    cd "$srcdir/$_pkgbase"
+    cd "$srcdir"
     make DESTDIR="$pkgdir" PREFIX=/usr install
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

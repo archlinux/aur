@@ -1,7 +1,7 @@
 pkgbase = dmenu-dfm
 	pkgdesc = dmenu-dfm is a simple file manager that uses dmenu
-	pkgver = 1.1.6.g266609a
-	pkgrel = 2
+	pkgver = 1.2
+	pkgrel = 1
 	url = https://github.com/amarakon/dfm
 	arch = any
 	license = AGPL-3
@@ -11,7 +11,7 @@ pkgbase = dmenu-dfm
 	optdepends = xclip
 	optdepends = sesame
 	provides = dmenu-dfm
-	source = git+https://github.com/amarakon/dfm.git
-	sha256sums = SKIP
+	source = https://github.com/amarakon/dfm/releases/download/1.2/dfm-v1.2.tar.gz
+	sha256sums = a181abca14d42de3bd5d0b7dab20806982d9f406dc307eff46402b6887ba25eb
 
 pkgname = dmenu-dfm
