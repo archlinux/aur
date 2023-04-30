@@ -2,7 +2,7 @@
 
 _pkgname=seq66
 pkgname=$_pkgname-git
-pkgver=0.99.0.r0.g3102ace6
+pkgver=0.99.4.r0.gd06e4a10
 pkgrel=1
 pkgdesc='A live-looping sequencer with a Qt graphical interface (git version)'
 arch=(x86_64)
@@ -29,7 +29,7 @@ build() {
   cd $_pkgname
   ./bootstrap
   ./configure --prefix=/usr --enable-rtmidi
-  make -j $[$(nproc) - 1]
+  make -j$(nproc --ignore=1)
 }
 
 package() {
