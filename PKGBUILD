@@ -3,8 +3,8 @@
 
 pkgname=fluffychat-localflutter
 _pkgname=fluffychat
-pkgver=1.11.0
-pkgrel=2
+pkgver=1.11.1
+pkgrel=1
 pkgdesc="Chat with your friends, be careful about your flutter environment"
 arch=('x86_64' 'aarch64')
 url="https://fluffychat.im/"
@@ -21,7 +21,7 @@ optdepends=('libolm: E2E Encryption support')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("fluffychat-v${pkgver}.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v${pkgver}/fluffychat-v${pkgver}.tar.gz")
-sha256sums=('aeeffc3851fcea9620e19c4e9ab9bcbd291543979c73f2fa7c3bf277e3fea2d3')
+sha256sums=('3b983c58418d3a1cc3d965909d07b6589fec7e7586db6df3a7daa64c00b1ebbd')
 
 # Check the fluffer environment yourself
 
@@ -31,7 +31,7 @@ build() {
   flutter build linux --release --verbose
 }
 
-package() {  
+package() {
   # install
   install -dm755 ${pkgdir}/opt
   mv ${_pkgname}-v$pkgver/build/linux/x64/release/bundle ${pkgdir}/opt/${_pkgname}
