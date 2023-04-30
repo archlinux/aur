@@ -12,6 +12,12 @@ sha256sums=('e2c90f7c63de196c7bf52c9b06f17e2ab9db86fa86d8c3ff3ee2360fb20914f8')
 options=('libtool')
 install=$pkgname.install
 
+prepare()
+{
+  cd "$pkgname-$pkgver"
+  sed -i '/#include "display.h"/i unsigned int _tme_scanline_pad(int bpl);' host/display/display.c
+}
+
 build()
 {
   cd "$pkgname-$pkgver"
