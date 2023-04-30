@@ -1,14 +1,15 @@
 # Maintainer: scarlettekk <scarlett AT enby DOT site>
-# Maintainer: willemw <willemw12@gmail.com>
+# Contributor: willemw <willemw12@gmail.com>
 
 pkgname=gdrive-git
-pkgver=3.9.0.r2.g57e5ea6
-pkgrel=2
+pkgver=3.9.0.r4.gf03868a
+pkgrel=1
 pkgdesc="Google Drive CLI Client (Rust rewrite)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/glotlabs/gdrive"
 license=('MIT')
 makedepends=('git' 'cargo')
+options=('!lto')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")

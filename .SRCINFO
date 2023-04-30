@@ -1,7 +1,7 @@
 pkgbase = gdrive-git
 	pkgdesc = Google Drive CLI Client (Rust rewrite)
-	pkgver = 3.9.0.r2.g57e5ea6
-	pkgrel = 2
+	pkgver = 3.9.0.r4.gf03868a
+	pkgrel = 1
 	url = https://github.com/glotlabs/gdrive
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = gdrive-git
 	makedepends = cargo
 	provides = gdrive
 	conflicts = gdrive
+	options = !lto
 	source = gdrive-git::git+https://github.com/glotlabs/gdrive.git
 	sha256sums = SKIP
 
