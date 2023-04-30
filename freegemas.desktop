@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Freegemas
+Comment=An open source version of Bejeweled
+Exec=freegemas
+Terminal=false
+Type=Application
+Icon=freegemas
+StartupWMClass=Freegemas
+Categories=Games;
