@@ -3,7 +3,7 @@
 pkgorg='stack-of-tasks'
 pkgname=eigenpy
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bindings between numpy and eigen using boost::python"
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgorg/$pkgname"
@@ -19,7 +19,8 @@ validpgpkeys=('A031AD35058955293D54DECEC45D22EF408328AD' 'F182CC432A4752C7A3E4FE
 build() {
     cmake -B "build-$pkgver" -S "$pkgbase-$pkgver" \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DGENERATE_PYTHON_STUBS=ON
     cmake --build "build-$pkgver"
 }
 
