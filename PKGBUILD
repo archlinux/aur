@@ -4,7 +4,7 @@
 pkgname=sic-image-cli-bin
 _pkgname=sic
 pkgver=0.22.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Accessible image processing and conversion from the terminal"
 arch=('x86_64')
 url="https://github.com/foresterre/sic"
@@ -20,7 +20,8 @@ sha512sums_x86_64=('4a0bb31ea62a32c3675cbec575b031760c98674f84fd2e8b1f5ee12b8843
                    '5fbfd673d454a5d492babaceedac46607fb049452d4e5555794db21139e7e92a6c6d8cdd1d6b3bd0ca9dc756b8c2c7edaeb9137062344866f7703485b2d498e0')
 
 package() {
+  cd "$_pkgname-x86_64-unknown-linux-gnu-v$pkgver"
   install -Dm 755 "$_pkgname" -t "${pkgdir}/usr/bin"
-  install -Dm 644 "$pkgname-$pkgver-README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm 644 "$pkgname-$pkgver-LICENSE-MIT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
+  install -Dm 644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm 644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
 }
