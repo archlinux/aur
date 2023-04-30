@@ -1,7 +1,7 @@
 pkgbase = tempenv
 	pkgdesc = A quick tool for environment tests creation
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FuexFollets/tempenv
 	arch = x86_64
 	license = MIT
