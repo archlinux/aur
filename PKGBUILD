@@ -1,14 +1,13 @@
-# Maintainer: Daniel Schroeder <deemes79@googlemail.com>
+# Maintainer: ${NAME} <${EMAIL}>
 # Maintainer: Chris Lahaye <mail@chrislahaye.com>
 
 pkgname=cfn-teleport
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A command-line tool which can move CloudFormation resources between stacks"
 arch=("aarch64" "arm" "armv7h" "i686" "x86_64")
 url="https://github.com/udondan/cfn-teleport"
 license=("APACHE")
-pkgdir=/usr
 
 # Source files
 source_aarch64=("${url}/releases/download/v${pkgver}/cfn-teleport-aarch64-unknown-linux-gnu-v${pkgver}.tar.gz")
@@ -18,11 +17,11 @@ source_i686=("${url}/releases/download/v${pkgver}/cfn-teleport-i686-unknown-linu
 source_x86_64=("${url}/releases/download/v${pkgver}/cfn-teleport-x86_64-unknown-linux-gnu-v${pkgver}.tar.gz")
 
 # Checksums
-sha256sums_aarch64=("b1dbaf599be20186dc44d60adcce6650b1d3bdb89725d1bee7200a7c9f1835fb")
-sha256sums_arm=("e94524d5c119928430afabc6ddd8901a992b0bef98f7d69636c5f1fd44a83247")
-sha256sums_armv7h=("c9858b40f3f4a9a80a31a16eaa44b5eb1aa84c2d4d33f2afbbe5f8647738d3a4")
-sha256sums_i686=("cec41308e33ce4c6a06cf8cc12787c4e07c725d339decced1376318c77a51de5")
-sha256sums_x86_64=("909be671e176f997862826cd885a108206a39ef902e58e774dc45155b614415e")
+sha256sums_aarch64=("e2c3f6a165a100e5e9a42ea1f586b379fd4abf0e9c22d7c359a70b6a2b532291")
+sha256sums_arm=("f32684f2cac672722bdf510ef05d10c90bcbff1a725c231850e8e442c94fa383")
+sha256sums_armv7h=("0835fea8c404c4550dafdb1fa4a2e624bb636c04340ee83bca65acd53e1008d9")
+sha256sums_i686=("b7d0dafc02fa2c8509e6343d9c4f2571d08cb3bd2935e9f9801641fe75c25bc0")
+sha256sums_x86_64=("c2f0eaf3c882c69326aeaf44feefe7d09b19a4e620249480d554f87a3c35ea7b")
 
 # Build function
 build() {
@@ -43,3 +42,4 @@ package() {
   # Move the binary to /usr/bin
   install -Dm755 "${srcdir}/cfn-teleport" "${pkgdir}/usr/bin/cfn-teleport"
 }
+
