@@ -62,11 +62,6 @@ package() {
     # install binaries and libraries
     make DESTDIR="$pkgdir/" install
 
-    # put systemd unit files in the right spot (make install puts them in /lib/systemd/system)
-    mkdir -p "$pkgdir/usr/lib/systemd/system"
-    mv "$pkgdir/lib/systemd/system/fluent-bit.service" "$pkgdir/usr/lib/systemd/system"
-    rm -rf "$pkgdir/lib"
-
     # install license file and documentation
     cd "$srcdir"
     install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
