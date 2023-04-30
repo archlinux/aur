@@ -6,6 +6,7 @@ pkgdesc="The Machine Emulator, or tme, provides a general-purpose framework for 
 arch=('i686' 'x86_64')
 license=('GPL3')
 url="http://phabrics.com"
+makedepends=('perl-x11-protocol')
 depends=('libvncserver' 'gtk4' 'sdl2')
 source=("https://osdn.net/dl/nme/${pkgname}-${pkgver}.tar.xz")
 sha256sums=('e2c90f7c63de196c7bf52c9b06f17e2ab9db86fa86d8c3ff3ee2360fb20914f8')
