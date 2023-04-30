@@ -1,12 +1,12 @@
 pkgbase = r-speedglm
 	pkgdesc = Fitting Linear and Generalized Linear Models to Large Data Sets
-	pkgver = 0.3.4
-	pkgrel = 3
+	pkgver = 0.3_4
+	pkgrel = 10
 	url = https://cran.r-project.org/package=speedglm
 	arch = any
 	license = GPL
 	depends = r
-	source = https://cran.r-project.org/src/contrib/speedglm_0.3-4.tar.gz
-	sha256sums = 1a12db7dbceaaf5cf4f9a0c03e2a2b9f32e91b697daf2ccfe81bbae9ac3046ce
+	source = speedglm-0.3_4.tar.gz::https://github.com/cran/speedglm/archive/refs/tags/0.3-4.tar.gz
+	sha256sums = f1f38689d562babbd9d701631608509476c0ff2a34384478c6512b29f00fa767
 
 pkgname = r-speedglm
