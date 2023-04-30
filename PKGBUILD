@@ -6,7 +6,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=irreader1.5.9
 pkgver=1.5.9
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="万能订阅阅读器，订阅任何网站。this is the last free version"
 arch=(x86_64 aarch64)
@@ -30,7 +30,7 @@ source_x86_64=("https://github.com/TryGhost/node-sqlite3/releases/download/v5.1.
 source_aarch64=("https://github.com/TryGhost/node-sqlite3/releases/download/v5.1.6/napi-v3-linux-glibc-arm64.tar.gz")
 noextract=()
 sha256sums=('6b2f61d035441ca9949a4de4a3e6249007b9c7633548a7653f5c6fb0780c29cb'
-            '0703e232b5b8537f64f572d855ec777433dcc67e28cc9da0a4f03ca75753aa8c')
+            '0fcaa9f67c08bef24eb2c291e6f109db664630326eabdb41c56412bbac17085b')
 sha256sums_x86_64=('b841dd05e3abc3f2c659f0f0f213fb61ef22264d4741f569e1ebf00775205943')
 sha256sums_aarch64=('8e22a82d1ee3c6c415768cc88ecef9d32a5050ac08e4796b96571db0d72246c8')
 validpgpkeys=()
@@ -65,4 +65,5 @@ package() {
 	echo "#!/bin/sh" >> "$pkgdir"/usr/bin/irreader
 	echo "electron4 /opt/irreader/app" >> "$pkgdir"/usr/bin/irreader
 	install -Dm644 irreader.desktop -t "$pkgdir"/usr/share/applications/
+	find . -type f -name "icon_about_win.png" -exec install -Dm644 {} $pkgdir/usr/share/pixmaps/irreader.png \;
 }

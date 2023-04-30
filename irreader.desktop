@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=irreader
 Exec=/usr/bin/irreader
-Icon=/opt/app/images/icon_about_win.png
+Icon=irreader
 Type=Application
 GenericName=RSS/Atom feed reader
 Comment=irreader 万能订阅阅读器，订阅任何网站。
