@@ -1,0 +1,14 @@
+pkgbase = dcraw-thumbnailer
+	pkgdesc = RAW thumbnailer using dcraw
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = dcraw
+	depends = gdk-pixbuf2
+	source = dcraw-thumbnailer
+	source = dcraw.thumbnailer
+	md5sums = 8bd90a633492c4eee01bd661ac94e218
+	md5sums = 3abe25fe277fbd0a550eb0dd78329b58
+
+pkgname = dcraw-thumbnailer

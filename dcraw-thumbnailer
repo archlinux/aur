@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# Usage:
+#   dcraw-thumbnailer [size] [source] [destination]
+
+# Exit with error on any error
+set -e
+
+# Create tmp file
+tmpfile=$(mktemp /tmp/dcraw-thumb.XXXXXX)
+
+# Extract embedded thumbnail
+/usr/bin/dcraw -c -e -w "${2}" > "${tmpfile}"
+
+# Create thumbnail
+/usr/bin/gdk-pixbuf-thumbnailer -s "${1}" "${tmpfile}" "${3}"
+
+# Remove tmp file
+rm "${tmpfile}"
