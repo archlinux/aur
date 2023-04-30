@@ -1,7 +1,7 @@
 pkgbase = icecat-ublock-origin
 	pkgdesc = Efficient blocker add-on for various browsers. Fast, potent, and lean
 	pkgver = 1.49.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gorhill/uBlock
 	arch = any
 	groups = icecat-addons
