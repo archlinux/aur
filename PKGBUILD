@@ -3,13 +3,15 @@
 
 pkgname=qtwebkit
 pkgver=2.3.4
-pkgrel=8
+pkgrel=9
 arch=('i686' 'x86_64')
 url='http://trac.webkit.org/wiki/QtWebKit'
 pkgdesc='An open source web browser engine (Qt port)'
 license=('LGPL2.1' 'GPL3')
-depends=('qt4' 'systemd' 'gst-plugins-base-libs')
-makedepends=('gperf' 'python2' 'ruby' 'git' 'mesa')
+depends=('fontconfig' 'gcc-libs' 'glib2' 'glibc' 'gst-plugins-base-libs' 'gstreamer'
+         'libglvnd' 'libjpeg-turbo' 'libpng' 'libx11' 'libxrender' 'qt4' 'sqlite'
+         'systemd-libs' 'zlib')
+makedepends=('gperf' 'python2' 'ruby')
 conflicts=('qt<4.8')
 _qtver=4.8.7
 source=("https://sources.archlinux.org/other/packages/${pkgname}/${pkgname}-${pkgver}.tar.xz"
