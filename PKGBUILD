@@ -22,7 +22,7 @@ _clangbuild=
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r62867.a3e7d1a9b0f
+pkgver=r62965.54e9471bc6f
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
