@@ -3,7 +3,7 @@
 
 pkgname=tbs-firmware
 _pkgver=1.0
-_pkgdate=2022-08-23
+_pkgdate=2023-04-30
 pkgver=${_pkgver}.${_pkgdate//-/}
 pkgrel=1
 pkgdesc='TBS proprietary firmware'
@@ -13,7 +13,7 @@ license=('custom:firmware')
 makedepends=('linux-firmware')
 depends=()
 source=("tbs-tuner-firmwares_v${pkgver}.tar.bz2::http://www.tbsdtv.com/download/document/linux/tbs-tuner-firmwares_v${_pkgver}.tar.bz2")
-sha256sums=('3ceb264c0df8e64cbbc33a43a61ff82651fb63bfa681895f6dbd8c5acab26929')
+sha256sums=('db7de61cb491d142807f54cfd99c44a4bf0450f65636182ed5b7b674f1da008d')
 
 package() {
     # Install firmware
