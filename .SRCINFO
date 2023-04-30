@@ -1,6 +1,6 @@
 pkgbase = neovim-git
 	pkgdesc = Fork of Vim aiming to improve user experience, plugins, and GUIs.
-	pkgver = 0.9.0.r419.g933fdff466
+	pkgver = 0.9.0.r432.g9f9cef1b56
 	pkgrel = 1
 	url = https://neovim.io
 	install = neovim-git.install

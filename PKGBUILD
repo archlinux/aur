@@ -5,7 +5,7 @@
 
 _pkgname=neovim
 pkgname="$_pkgname-git"
-pkgver=0.9.0.r419.g933fdff466
+pkgver=0.9.0.r432.g9f9cef1b56
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs.'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -40,8 +40,6 @@ build() {
 		-GNinja \
 		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 		-DCMAKE_INSTALL_PREFIX=/usr
-
-	sed -i 's|-llpeg|/usr/lib/lua/5.1/lpeg.so|g' build/build.ninja
 	cmake --build build
 }
 
