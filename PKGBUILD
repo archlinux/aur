@@ -138,7 +138,7 @@ package_soh-git() {
 
   install -Dm644 OTRExporter/soh.otr "${pkgdir}/${SHIP_PREFIX}/soh.otr"
 
-  install -dm755 "${pkgdir}/usr/share/doc/soh{,/docs}"
+  install -dm755 "${pkgdir}/usr/share/doc/soh" "${pkgdir}/usr/share/doc/soh/docs"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/soh"
   find docs -exec install -Dm644 {} "${pkgdir}/usr/share/doc/soh/docs" \;
 }
@@ -164,5 +164,6 @@ package_soh-otr-exporter-git() {
   find "${pkgdir}/${SHIP_PREFIX}/assets/extractor" -maxdepth 1 -name Config_\*.xml -exec \
     sed -i "/ExternalXMLFolder/s,assets/extractor,${SHIP_PREFIX}/&," {} +
 
+  install -dm755 "${pkgdir}/usr/share/licenses/soh"
   install -Dm644 "OTRExporter/LICENSE" "${pkgdir}/usr/share/licenses/soh"
 }
