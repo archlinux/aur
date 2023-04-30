@@ -1,7 +1,7 @@
 pkgbase = r-ffbase
 	pkgdesc = Basic Statistical Functions for Package 'ff'
 	pkgver = 0.13.3
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=ffbase
 	arch = x86_64
 	license = GPL
