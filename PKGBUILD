@@ -12,7 +12,7 @@ depends=('python-sphinx')
 makedepends=('python-setuptools')
 
 source=("$url/archive/refs/heads/master.zip")
-sha256sums=('fe0b99607ee224482d3a967b27d7c1d59dfd4c9085919aa0a5a8146c44ca3c1e')
+sha256sums=('133d82b04eb496a1a0cdbef6edbbe1fd12a87bfcad2fa59bdafcc97a99fc33dd')
 
 package()
 {
