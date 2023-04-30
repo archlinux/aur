@@ -3,7 +3,7 @@
 
 pkgname=sic-image-cli
 _pkgname=sic
-pkgver=0.22.1
+pkgver=0.22.2
 pkgrel=1
 pkgdesc="Accessible image processing and conversion from the terminal"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=("$_pkgname")
 depends=('gcc-libs')
 makedepends=('cargo' 'nasm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('fcb9caf627f4f49d2655350e9abce9b283002cf4841b0e3787d5ab9b30549ef73633dd3f833cf8c740863b02cae0870813d02ec751ee8dd9cfc47fd64b029b7e')
+sha512sums=('b6a896d14f10dad45b6cc8cfeba4e802ab8b0f37417da021cd82c83d748ca1b8e630e161890a58371c094f71b6de32a49fa172d3f96ef28e085b3474ce3aefff')
 options=('!lto')
 
 prepare() {
