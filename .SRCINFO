@@ -1,6 +1,6 @@
 pkgbase = r-alpine
 	pkgdesc = alpine
-	pkgver = 1.24.0
+	pkgver = 1.25.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/alpine
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-alpine
 	optdepends = r-rcolorbrewer
 	optdepends = r-rtracklayer
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/alpine_1.24.0.tar.gz
-	sha256sums = c05db508e8a53e2fbfb11a0fe138977e5fa22da597840a683d4e300225e55666
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/alpine_1.25.0.tar.gz
+	sha256sums = 5948b0fccc3f73dc5ab1b61df3c81e44b812fd7506ef5401768050c9f031c407
 
 pkgname = r-alpine
