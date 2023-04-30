@@ -1,6 +1,6 @@
 pkgbase = iotas
 	pkgdesc = Simple note taking
-	pkgver = 0.1.8
+	pkgver = 0.1.14
 	pkgrel = 1
 	url = https://gitlab.gnome.org/cheywood/iotas
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = iotas
 	depends = python-linkify-it-py
 	depends = python-mdit_py_plugins
 	depends = python-gtkspellcheck
-	source = https://gitlab.gnome.org/cheywood/iotas/-/archive/0.1.8/iotas-0.1.8.tar.gz
-	b2sums = bd2d269e5f58ab966a870f8e05f893d5c4264128373c126797ff7830cf45fae534c0e8582bc951de9afa687496df36678478f2e923ada906275586f03d77772a
+	source = https://gitlab.gnome.org/cheywood/iotas/-/archive/0.1.14/iotas-0.1.14.tar.gz
+	b2sums = e12f50e52740670776232347aa865d61a0d8d6a174f607ac4772dc08bfc1cd945b77b7cb1c0a0b890c8b6b7af90425e711572c467fe1620b646fea08b8bc4150
 
 pkgname = iotas
