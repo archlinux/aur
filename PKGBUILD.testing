@@ -1,12 +1,12 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=GE-Proton7-55
-_commit=7628200383849c0efc1418c0c1327f7de757355e
+_srctag=GE-Proton8-1
+_commit=60c0506d01b6a26c6685713c36ccbe904d378b13
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
-_monover=7.4.0
-pkgrel=2
+_monover=7.4.1
+pkgrel=1
 epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -46,8 +46,6 @@ makedepends=(autoconf bison perl flex mingw-w64-gcc
   libxinerama           lib32-libxinerama
   libxcomposite         lib32-libxcomposite
   libxxf86vm            lib32-libxxf86vm
-  libldap               lib32-libldap
-  openal                lib32-openal
   v4l-utils             lib32-v4l-utils
   alsa-lib              lib32-alsa-lib
   libxcomposite         lib32-libxcomposite
@@ -66,9 +64,7 @@ makedepends=(autoconf bison perl flex mingw-w64-gcc
 
 optdepends=(
   giflib                lib32-giflib
-  libldap               lib32-libldap
   gnutls                lib32-gnutls
-  openal                lib32-openal
   v4l-utils             lib32-v4l-utils
   libpulse              lib32-libpulse
   alsa-plugins          lib32-alsa-plugins
@@ -165,14 +161,13 @@ prepare() {
     rm -rf wrappers && mkdir wrappers
     _make_wrappers
 
-    [ ! -d gecko ] && mkdir gecko
-    mv wine-gecko-${_geckover}-x86{,_64}.tar.xz gecko/
-
-    [ ! -d mono ] && mkdir mono
-    mv wine-mono-${_monover}-x86.tar.xz mono/
-
     [ ! -d build ] && mkdir build
+
     cd proton-ge-custom
+
+    [ ! -d contrib ] && mkdir -p contrib
+    mv "$srcdir"/wine-gecko-${_geckover}-x86{,_64}.tar.xz contrib/
+    mv "$srcdir"/wine-mono-${_monover}-x86.tar.xz contrib/
 
     _submodules=(
         wine-valve::wine
@@ -249,13 +244,6 @@ prepare() {
 
     ./patches/protonprep-valve-staging.sh
 
-    pushd wine
-        # From Arch Wine
-        sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
-        # Fix openldap 2.5+ detection
-        sed 's/-lldap_r/-lldap/' -i configure
-    popd
-
     patch -p1 -i "$srcdir"/0001-AUR-Pkgbuild-changes.patch
     patch -p1 -i "$srcdir"/0002-AUR-Do-not-update-cargo-crates.patch
 
@@ -266,6 +254,7 @@ prepare() {
     rm -rf "$srcdir"/dxil-spirv
     rm -rf "$srcdir"/Vulkan-Headers
     rm -rf "$srcdir"/SPIRV-Headers
+    rm -rf "$srcdir"/libdisplay-info-dxvk
 }
 
 build() {
@@ -276,8 +265,6 @@ build() {
     ../proton-ge-custom/configure.sh \
         --container-engine="none" \
         --proton-sdk-image="" \
-        --steam-runtime=native \
-        --no-proton-sdk \
         --build-name="${pkgname}"
 
     # By default export FLAGS used by proton and ignore makepkg
@@ -316,8 +303,8 @@ package() {
     cd build
 
     local _compatdir="$pkgdir/usr/share/steam/compatibilitytools.d"
-    mkdir -p "$_compatdir"
-    cp -rf --no-dereference --preserve=mode,links dist "$_compatdir/${pkgname}"
+    mkdir -p "$_compatdir/${pkgname}"
+    rsync --delete -arx dist/* "$_compatdir/${pkgname}"
 
     mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"
     mv "$_compatdir/${pkgname}"/LICENSE{,.OFL} \
@@ -379,7 +366,7 @@ sha256sums=('SKIP'
             'SKIP'
             '08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3'
             '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
-            '9249ece664bcf2fecb1308ea1d2542c72923df9fe3df891986f137b2266a9ba3'
+            '1286afc67b0a329f5e2d98d9e803ca5906a841ad5486e9b3b1fefa1124b15622'
             'SKIP'
             'SKIP')
 # Optional patches
