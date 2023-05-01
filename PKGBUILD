@@ -82,9 +82,9 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=6.1
-_minor=26
+_minor=27
 _srcname=linux-${_major}
-_clr=${_major}.26-1285
+_clr=${_major}.26-1286
 _gcc_more_v='20230105'
 pkgbase=linux-clear-ltscurrent
 pkgver=${_major}.${_minor}
@@ -408,7 +408,7 @@ done
 
 sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
             'SKIP'
-            '0250afb51edea2d8d49a40d996ed72d0f21bf1186c1f2f228f51db053e04ff20'
+            'c9501bd96fcf210c0b68a07500bede63c0e1f7d371eb616467dd160dbd39715a'
             'SKIP'
             '802946f623c69ae1a636b63697c23ca48af31a099415ed837d2c1e168a272d23')
 
