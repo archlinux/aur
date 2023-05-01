@@ -185,7 +185,7 @@ prepare() {
         fi
 
     ### Running make nconfig
-	[[ -z "$_makenconfig" ]] ||  _make nconfig
+	[[ -z "$_makenconfig" ]] || _make nconfig
 
     ### Running make menuconfig
 	[[ -z "$_makemenuconfig" ]] || _make menuconfig
