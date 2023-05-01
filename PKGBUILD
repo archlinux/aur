@@ -3,8 +3,8 @@
 
 pkgname=cecdaemon-devel
 pkgver=r4.444ee75
-pkgrel=3
-pkgdesc="CEC Daemon for linux media centers"
+pkgrel=4
+pkgdesc="CEC Daemon for linux media centers (development version)"
 arch=('any')
 url="https://github.com/simons-public/cecdaemon"
 license=('BSD')
