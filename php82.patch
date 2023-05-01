@@ -1,0 +1,51 @@
+diff -ruN bin/compile bin/compile
+--- bin/compile	2023-05-01 05:33:18.174782834 +0500
++++ bin/compile	2023-05-01 05:36:31.393772146 +0500
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env php
++#!/usr/bin/env php82
+ <?php
+ 
+ $cwd = getcwd();
+@@ -11,17 +11,17 @@
+ }
+ // Install with the current version to force it having the right ClassLoader version
+ // Install without dev packages to clean up the included classmap from phpunit classes
+-exec('php bin/composer config autoloader-suffix ComposerPhar' . $ts, $output, $result);
++exec('php82 bin/composer config autoloader-suffix ComposerPhar' . $ts, $output, $result);
+ if (0 !== $result) {
+     echo 'Could not set the autoloader suffix, make sure exec is allowed and php can be found in your PATH';
+     exit(1);
+ }
+-exec('php bin/composer install -q --no-dev', $output, $result);
++exec('php82 bin/composer install -q --no-dev', $output, $result);
+ if (0 !== $result) {
+     echo 'Could not remove dev deps, make sure exec is allowed and php can be found in your PATH';
+     exit(1);
+ }
+-exec('php bin/composer config autoloader-suffix --unset', $output, $result);
++exec('php82 bin/composer config autoloader-suffix --unset', $output, $result);
+ if (0 !== $result) {
+     echo 'Could not remove the autoloader suffix, make sure exec is allowed and php can be found in your PATH';
+     exit(1);
+diff -ruN bin/composer bin/composer
+--- bin/composer	2023-05-01 05:33:11.485783204 +0500
++++ bin/composer	2023-05-01 05:34:19.993779414 +0500
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env php
++#!/usr/bin/env php82
+ <?php
+ 
+ if (PHP_SAPI !== 'cli' && PHP_SAPI !== 'phpdbg') {
+diff -ruN src/Composer/Compiler.php src/Composer/Compiler.php
+--- src/Composer/Compiler.php	2023-05-01 05:22:14.670819534 +0500
++++ src/Composer/Compiler.php	2023-05-01 05:22:25.117818956 +0500
+@@ -234,7 +234,7 @@
+     private function addComposerBin(\Phar $phar): void
+     {
+         $content = file_get_contents(__DIR__.'/../../bin/composer');
+-        $content = Preg::replace('{^#!/usr/bin/env php\s*}', '', $content);
++        $content = Preg::replace('{^#!/usr/bin/env php82\s*}', '', $content);
+         $phar->addFromString('bin/composer', $content);
+     }
+ 
