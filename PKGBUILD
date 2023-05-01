@@ -1,7 +1,7 @@
 # Maintainer: koonix <ehsan at disroot dot org>
 pkgname='lfutils-meta'
-pkgver=4
-pkgrel=4
+pkgver=5
+pkgrel=1
 pkgdesc='Meta package to install some packages required by lfutils.'
 arch=('any')
 license=('GPL')
@@ -18,7 +18,7 @@ depends=(
     'gnome-epub-thumbnailer'
     'ffmpegthumbnailer'
     'poppler'
-    'atool-git'
+    'atool2-git'
     'bat'
     'mediainfo'
     'libcdio'
