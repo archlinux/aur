@@ -68,50 +68,63 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=6.2.13
+pkgver=6.3.1
 pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
 makedepends=(
-  bc libelf pahole cpio perl tar xz
+  bc
+  cpio
+  gettext
+  git
+  libelf
+  pahole
+  perl
+  tar
+  xz
 )
 [[ -n "$_clangbuild" ]] && makedepends+=(clang llvm lld python)
 options=('!strip')
 
 # https://ck-hack.blogspot.com/2021/08/514-and-future-of-muqss-and-ck-once.html
 # acknowledgment to xanmod for initially keeping the hrtimer patches up to date
-_ckhrtimer=linux-6.2.y
-_commit=a8be5531ff07e300525c20bdbbe38cc6a665a0c4
+_ckhrtimer=linux-6.3.y
+_commit=d09271d382ae852c98e17bd7426fc8021e7b465e
 
 _gcc_more_v=20221217
 source=(
   "https://www.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar".{xz,sign}
-  config         # the main kernel config file
+  config  # the main kernel config file
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
   "ck-hrtimer-$_commit.tar.gz::https://github.com/graysky2/linux-patches/archive/$_commit.tar.gz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-bpf-x86-Fix-IP-after-emitting-call-depth-accounting.patch
 )
 validpgpkeys=(
-  'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
-  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
+  ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
+  647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
 )
-sha256sums=('c7dded14e368834b18bb2ad64af65560d8bcb9d2d6597e0f6ef151fded01e577'
+sha256sums=('78620fb4a7d5e0db1d4eb8d5b1c6e207ba5d19564efa63967a59b6daf89b3f2a'
             'SKIP'
-            '655f16e918a0185fb00713442ef5c4b5835c5328867f2b9ed587d050f393d1ae'
+            '6b337a9d3cfdc00005589a80b8d36fa500f6a92ed21565a3aceec48d7202a7da'
             'f1d586e111932890ad5e0df15d092fb9b3f87bae4ea17812aae9b0ec98fe2db0'
-            '8cc3b4abb89c539fa1588aad65cd5bc79abbf8fcc1c885652e52fb8f66bf0199'
-            '2e7592ff8fb3cd0c461abb6524bc9f097033abe7fb9d464702b307eab97bd58f'
-            '9a289c848cd8ead4024aeaed951bfbc643686ea0a01fd14160d8031cdf976ae3')
+            'f781da5ba492d8912c7d4cddac02f21c1799532182e23374c80c19ff0c617373'
+            '2e7592ff8fb3cd0c461abb6524bc9f097033abe7fb9d464702b307eab97bd58f')
+_make() {
+  test -s version
+  make KERNELRELEASE="$(<version)" "$@"
+}
 
 prepare() {
   cd linux-${pkgver}
 
   msg2 "Setting version..."
-  scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
+#
+  make defconfig
+  make -s kernelrelease > version
+  make mrproper
 
   local src
   for src in "${source[@]}"; do
@@ -182,7 +195,6 @@ prepare() {
       fi
     fi
 
-  make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
 
   [[ -z "$_makenconfig" ]] || make LLVM=$_LLVM LLVM_IAS=$_LLVM nconfig
@@ -201,17 +213,28 @@ build() {
 
 _package() {
   pkgdesc="The Linux kernel and modules with ck's hrtimer patches"
-  depends=(coreutils kmod initramfs pahole)
-  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
-              'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
-  replaces=(virtualbox-guest-modules-arch wireguard-arch)
+  depends=(
+    coreutils
+    initramfs
+    kmod
+  )
+  optdepends=(
+    'wireless-regdb: to set the correct wireless channels of your country'
+    'linux-firmware: firmware images needed for some devices'
+  )
+  provides=(
+    KSMBD-MODULE
+    VIRTUALBOX-GUEST-MODULES
+    WIREGUARD-MODULE
+  )
+  replaces=(
+    virtualbox-guest-modules-arch
+    wireguard-arch
+  )
   #groups=('ck-generic')
 
   cd linux-${pkgver}
-
-  local kernver="$(<version)"
-  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
+  local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
   echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
@@ -226,7 +249,7 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make LLVM=$_LLVM LLVM_IAS=$_LLVM INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+  _make LLVM=$_LLVM LLVM_IAS=$_LLVM INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
