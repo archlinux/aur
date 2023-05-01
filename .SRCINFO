@@ -1,12 +1,13 @@
 pkgbase = python-p5
 	pkgdesc = Python package based on the core ideas of Processing
-	pkgver = 0.8.0
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/p5py/p5
 	arch = any
 	license = GPL3
 	depends = python
 	depends = glfw
+	depends = python-freetype-py
 	depends = python-numpy
 	depends = python-vispy
 	depends = python-triangle
@@ -18,7 +19,7 @@ pkgbase = python-p5
 	depends = python-skia
 	provides = python-p5
 	options = !emptydirs
-	source = p5-0.8.0.tar.gz::https://github.com/p5py/p5/archive/v0.8.0.tar.gz
-	sha256sums = 8994b39e16bcd558cb54c4dfc2b9d879d3ae3def3016b1635fcf62de6eaba6c2
+	source = p5-0.8.2.tar.gz::https://github.com/p5py/p5/archive/v0.8.2.tar.gz
+	sha256sums = e569097348997ae4efa5659b4b81a357426c89c2f8feaf3ebd5731c266daf133
 
 pkgname = python-p5

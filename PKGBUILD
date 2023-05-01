@@ -2,19 +2,18 @@
 
 _pkgname=p5
 pkgname=python-$_pkgname
-pkgver=0.8.0
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Python package based on the core ideas of Processing"
 url="https://github.com/p5py/p5"
 arch=('any')
 license=('GPL3')
-depends=('python' 'glfw' 'python-numpy' 'python-vispy' 'python-triangle' 'python-pillow' 'python-opengl' 'python-opengl-accelerate' 'python-requests' 'python-dataclasses' 'python-skia')
+depends=('python' 'glfw' 'python-freetype-py' 'python-numpy' 'python-vispy' 'python-triangle' 'python-pillow' 'python-opengl' 'python-opengl-accelerate' 'python-requests' 'python-dataclasses' 'python-skia')
 provides=("python-p5")
 options=(!emptydirs)
-source=("https://github.com/p5py/${_pkgname}/archive/v${pkgver}.tar.gz")
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/p5py/${_pkgname}/archive/v${pkgver}.tar.gz")
 
-sha256sums=('8994b39e16bcd558cb54c4dfc2b9d879d3ae3def3016b1635fcf62de6eaba6c2')
+sha256sums=('e569097348997ae4efa5659b4b81a357426c89c2f8feaf3ebd5731c266daf133')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
