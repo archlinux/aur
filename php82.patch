@@ -38,8 +38,8 @@ diff -ruN bin/composer bin/composer
  
  if (PHP_SAPI !== 'cli' && PHP_SAPI !== 'phpdbg') {
 diff -ruN src/Composer/Compiler.php src/Composer/Compiler.php
---- src/Composer/Compiler.php	2023-05-01 05:22:14.670819534 +0500
-+++ src/Composer/Compiler.php	2023-05-01 05:22:25.117818956 +0500
+--- src/Composer/Compiler.php	2023-05-01 06:31:23.826590032 +0500
++++ src/Composer/Compiler.php	2023-05-01 06:30:46.012592123 +0500
 @@ -234,7 +234,7 @@
      private function addComposerBin(\Phar $phar): void
      {
@@ -49,3 +49,12 @@ diff -ruN src/Composer/Compiler.php src/Composer/Compiler.php
          $phar->addFromString('bin/composer', $content);
      }
  
+@@ -275,7 +275,7 @@
+     private function getStub(): string
+     {
+         $stub = <<<'EOF'
+-#!/usr/bin/env php
++#!/usr/bin/env php82
+ <?php
+ /*
+  * This file is part of Composer.

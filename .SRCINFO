@@ -1,5 +1,5 @@
 pkgbase = php82-composer
-	pkgdesc = Dependency Manager for PHP 8.2
+	pkgdesc = Dependency Manager for PHP 8.2 (php82)
 	pkgver = 2.5.5
 	pkgrel = 2
 	epoch = 1
@@ -11,6 +11,6 @@ pkgbase = php82-composer
 	source = php82-composer::git+https://github.com/composer/composer.git#tag=2.5.5
 	source = php82.patch
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 55f34e12df1e93d8658d250fb59f3d6a0b34bbea35a024851acb413a24b54fcf
 
 pkgname = php82-composer

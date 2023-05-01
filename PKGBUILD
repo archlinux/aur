@@ -5,7 +5,7 @@ pkgname=php82-composer
 epoch=1
 pkgver=2.5.5
 pkgrel=2
-pkgdesc="Dependency Manager for PHP 8.2"
+pkgdesc="Dependency Manager for PHP 8.2 (php82)"
 arch=('any')
 license=('MIT')
 url='https://getcomposer.org/'
@@ -14,12 +14,10 @@ makedepends=('git')
 source=(
     "${pkgname}::git+https://github.com/composer/composer.git#tag=${pkgver}"
     'php82.patch'
-#     'phpunit82.patch'
 )
 sha256sums=(
     'SKIP'
-    'SKIP'
-#     'SKIP'
+    '55f34e12df1e93d8658d250fb59f3d6a0b34bbea35a024851acb413a24b54fcf'
 )
 
 prepare() {
@@ -43,10 +41,6 @@ check() {
 
     # Install the dev dependencies to run the unit tests
     bin/composer -n install
-
-#     patch -p0 < ${srcdir}/phpunit82.patch
-
-#     vendor/bin/phpunit
 }
 
 package() {
