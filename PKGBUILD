@@ -6,7 +6,7 @@
 # Set these variables to ANYTHING that is not null to enable them
 
 # Tweak kernel options prior to a build via nconfig
-_makenconfig=
+_makenconfig=y
 
 # Optionally select a sub architecture by number if building in a clean chroot
 # Leaving this entry blank will require user interaction during the build
@@ -60,7 +60,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=6.2.10.arch1
+pkgver=6.3.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -68,9 +68,22 @@ url="https://github.com/koverstreet/bcachefs"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-    bc libelf pahole cpio perl tar xz
-    xmlto python-sphinx graphviz imagemagick texlive-latexextra
+    bc
+    cpio
+    gettext
     git
+    libelf
+    pahole
+    perl
+    tar
+    xz
+
+    # htmldocs
+    graphviz
+    imagemagick
+    python-sphinx
+    texlive-latexextra
+    xmlto
 )
 options=('!strip')
 
@@ -91,26 +104,33 @@ source=(
     config # kernel config file
 )
 validpgpkeys=(
-    "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
-    "647F28654894E3BD457199BE38DBBDC86092693E"  # Greg Kroah-Hartman
-    "A2FF3A36AAA56654109064AB19802F8B0D70FC30"  # Jan Alexander Steffens (heftig)
-    "C7E7849466FE2358343588377258734B41C31549"  # David Runge <dvzrv@archlinux.org>
+    ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
+    647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
+    A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
+    C7E7849466FE2358343588377258734B41C31549  # David Runge <dvzrv@archlinux.org>
 )
-sha512sums=('SKIP'
-            'SKIP'
-            '659a0d635cf901bf96d4bc0d7fdce43653b3385ef6223b6b5ca3e8a0d757b962d495f6aee422270d0eae9b092e0b1621a34c19f48ed9cb0d0ca50a5dc6880e16')
+b2sums=('SKIP'
+        'SKIP'
+        '4e11a3acc8bf020fc0ded06a175471ccc35a592e79b7ec85eab5c248896b707e1669d7e81c77d3a725b8993d4d1537abc3d18a8a94cb5dc70ae0298103683a97')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
+_make() {
+  test -s version
+  make KERNELRELEASE="$(<version)" "$@"
+}
+
 prepare() {
     cd "$srcdir/$_reponame"
 
     msg2 "Setting version..."
-    scripts/setlocalversion --save-scmversion
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
+    make defconfig
+    make -s kernelrelease > version
+    make mrproper
 
     msg2 "Fetch and merge master from ${_repo_url_bcachefs} ..."
     git remote add bcachefs_master "${_repo_url_bcachefs}" || true
@@ -131,9 +151,9 @@ prepare() {
     cp ../config .config
 
     if [ -n "$_subarch" ]; then
-        yes "$_subarch" | make oldconfig
+        yes "$_subarch" | _make oldconfig
     else
-        make prepare
+        _make prepare
     fi
 
     ### Optionally load needed modules for the make localmodconfig
@@ -141,7 +161,7 @@ prepare() {
     if [ -n "$_localmodcfg" ]; then
         if [ -f $HOME/.config/modprobed.db ]; then
             msg2 "Running Steven Rostedt's make localmodconfig now"
-            make LSMOD=$HOME/.config/modprobed.db localmodconfig
+            _make LSMOD=$HOME/.config/modprobed.db localmodconfig
         else
             msg2 "No modprobed.db data found"
             exit
@@ -149,15 +169,14 @@ prepare() {
     fi
 
     # do not run 'make olddefconfig' as it sets default options
-    yes "" | make config >/dev/null
+    yes "" | _make config >/dev/null
 
     msg2 "Showing config diff"
     diff -u ../config .config || :
 
-    make -s kernelrelease > version
     msg2 "Prepared $pkgbase version $(<version)"
 
-    [[ -z "$_makenconfig" ]] || make nconfig
+    [[ -z "$_makenconfig" ]] || _make nconfig
 
     # save configuration for later reuse
     cat .config > "$startdir/config.last"
@@ -165,37 +184,44 @@ prepare() {
 
 build() {
     cd $_reponame
-    make all
-    make htmldocs
+    _make all htmldocs
 }
 
 _package() {
     pkgdesc="The $pkgdesc kernel and modules $_pkgdesc_extra"
     depends=(
-        coreutils kmod initramfs
-        wireless-regdb linux-firmware bcachefs-tools-git
+        coreutils
+        initramfs
+        kmod
+        bcachefs-tools-git
+    )
+    optdepends=(
+        'wireless-regdb: to set the correct wireless channels of your country'
+        'linux-firmware: firmware images needed for some devices'
     )
     provides=(
-        VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE
+        KSMBD-MODULE
+        VIRTUALBOX-GUEST-MODULES
+        WIREGUARD-MODULE
     )
     replaces=(
-        virtualbox-guest-modules-arch wireguard-arch
+        virtualbox-guest-modules-arch
+        wireguard-arch
     )
 
     cd $_reponame
-    local kernver="$(<version)"
-    local modulesdir="$pkgdir/usr/lib/modules/$kernver"
+    local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
     msg2 "Installing boot image..."
     # systemd expects to find the kernel here to allow hibernation
     # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-    install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+    install -Dm644 "$(_make -s image_name)" "$modulesdir/vmlinuz"
 
     # Used by mkinitcpio to name the kernel
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     msg2 "Installing modules..."
-    make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
         DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
     # remove build and source links
@@ -303,7 +329,11 @@ _package-docs() {
     ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 }
 
-pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
+pkgname=(
+    "$pkgbase"
+    "$pkgbase-headers"
+    "$pkgbase-docs"
+)
 for _p in "${pkgname[@]}"; do
     eval "package_$_p() {
         $(declare -f "_package${_p#$pkgbase}")
