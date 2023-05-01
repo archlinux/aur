@@ -1,7 +1,7 @@
 # Maintainer: atomicfs
 
 pkgname=mdbook-katex
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A preprocessor for mdbook to render LaTeX equations in HTML"
 url="https://github.com/lzanini/mdbook-katex"
@@ -9,7 +9,7 @@ arch=(x86_64)
 license=(MIT)
 makedepends=(rust cargo)
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('77bb922c66baef8b3f4af9ec4a2b9b79b205a071e81f7e0ce622450053e044dc')
+sha256sums=('c4acb57cba5c85a9f229de2a0594ba00c721c0c63f86af8d4db3cec5cdca07d9')
 
 build() {
   cd "${pkgname}-${pkgver}"
