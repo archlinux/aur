@@ -3,7 +3,7 @@
 mkdiskimg () {
     # Prepare image file
     cp /usr/lib/syslinux/bios/gptmbr.bin $1
-    truncate -s 32M $1
+    truncate -s 64M $1
     sgdisk -n 1:0:0 $1
     sgdisk -t 1:ef00 $1
     sgdisk -A 1:set:2 $1

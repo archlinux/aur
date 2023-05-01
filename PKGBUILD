@@ -2,7 +2,7 @@
 
 pkgname=sedutil
 pkgver=1.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="TCG OPAL 2.00 SED Management Program"
 arch=('i686' 'x86_64')
 url="https://github.com/Drive-Trust-Alliance/sedutil"
@@ -11,7 +11,9 @@ optdepends=('syslinux: to create a bootable PBA disk image'
             'gptfdisk: to create a bootable PBA disk image'
             'parted: to create a bootable PBA disk image'
             'intel-ucode: microcode update files for Intel CPUs'
-            'yubikey-personalization: for yubikey support')
+            'yubikey-personalization: for yubikey support'
+            'dosfstools: to create a bootable PBA disk image'
+            'mtools: to create a bootable PBA disk image')
 backup=('etc/linuxpba/linuxpba.conf')
 install=sedutil.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Drive-Trust-Alliance/${pkgname}/archive/${pkgver}.tar.gz"
@@ -28,8 +30,8 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Drive-Trust-Alliance/${
 sha256sums=('88016b93cbbef98fa6f5c4e6f58e6c871662b6a7f1fc8dc788c8599fa37a44f3'
             '40d785c16a28a5a8a43050d1731174482ee24459be215d2e4e27ffba3b2e28b2'
             'ee3171da9eeab5170815713280588db99118a5fba73eea6373f8555451ab1e5c'
-            'b860d4d6fcc14a61d110c1d805d919fdfcf0fffaa8f0175b5ecddf60051f7941'
-            'afc39b504456263e55d137847ff20ec5bb0a399ef8e17bb4ca13f0a2bd80052a'
+            '1c0851da29633b4d015a08bf473377b8a9be324704a338ee16224c2861209a76'
+            '1e83802f64eeb5a9abd9f284c59fdb92f14443f017db8ab15368de7b4faf9e00'
             'e5c3acb3027c7a3c5082d5cf0f5193f190788e64045d2c79a9fd1598b56f151f'
             '44ba634f4b35b1267d62b8b1505fa08a3d5bafa33ebb651ad7b09b53941c40eb'
             'daaa13d48b9e72e3185594a0f7c54d2966711ef03b5444141d41be9994710c82'

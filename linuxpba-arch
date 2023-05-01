@@ -77,7 +77,7 @@ fi
 
 ERRORS=0
 
-for DRIVE in $(sedutil-cli --scan 2>/dev/null | awk '$1 ~ "/dev/sd" && $2 !~ "No" {print $1}')
+for DRIVE in $(sedutil-cli --scan 2>/dev/null | awk '$1 ~ /\/dev\/sd|\/dev\/nvme/ && $2 !~ "No" {print $1}')
 do
     [[ "x$DRIVE" = "x" ]] && continue
     SED_STATUS $(sedutil-cli --query $DRIVE | awk 'NR==2 {name=$3; serial=$5} NR==6 {gsub(",","",$0);lock=$3; mbr=$12} END {print name,serial,lock,mbr}')
