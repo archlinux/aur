@@ -3,7 +3,7 @@
 # Contributor: scan
 
 pkgname=obsidian-2-theme
-pkgver=2.22
+pkgver=2.23
 pkgrel=1
 pkgdesc="Obsidian 2 Theme - Gnome theme, based upon Adwaita-Maia dark skin"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('gnome-tweak-tool: A tool to customize advanced GNOME 3 options.')
 source=(
 	"${pkgname}-${pkgver}.tar.xz::https://github.com/madmaxms/theme-obsidian-2/releases/download/v${pkgver}/obsidian-2-theme.tar.xz"
 )
-sha256sums=('5af4a5cc2a1c93450c76f6a31d104d1d2ba054c4ad475143b7dbe3cd7e4aa7c0')
+sha256sums=('c89a0c4b95eb1e532cb3eadd27ec4b271d05f47b3509cf8c164fb1ca145769fd')
 
 package() {
 	install -d ${pkgdir}/usr/share/themes
