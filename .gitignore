@@ -1,8 +1,10 @@
 monaco-bold/
-nerd-fonts-glyphs/
+nerd-fonts-glyphs*/
 pkg/
 src/
 font-patcher-*
+FontnameParser-*
+FontnameTools-*
 *.tar
 *.tar.xz
 *.tar.zst

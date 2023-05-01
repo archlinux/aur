@@ -1,6 +1,6 @@
 pkgbase = otf-nerd-fonts-monacob-mono
 	pkgdesc = MonacoB fonts patched with nerd-fonts
-	pkgver = 2.3.3
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/vjpr/monaco-bold
 	arch = any
@@ -10,12 +10,16 @@ pkgbase = otf-nerd-fonts-monacob-mono
 	source = COPYRIGHT
 	source = monacob-font-patcher.py
 	source = monaco-bold::git+https://github.com/vjpr/monaco-bold.git#commit=b77db4b6fc2e9df074f8db59cead862d7068e3d7
-	source = nerd-fonts-glyphs::svn+https://github.com/ryanoasis/nerd-fonts/tags/v2.3.3/src/glyphs
-	source = font-patcher-2.3.3.py::https://github.com/ryanoasis/nerd-fonts/raw/v2.3.3/font-patcher
+	source = nerd-fonts-glyphs-3.0.0::svn+https://github.com/ryanoasis/nerd-fonts/tags/v3.0.0/src/glyphs
+	source = FontnameParser-3.0.0.py::https://github.com/ryanoasis/nerd-fonts/raw/v3.0.0/bin/scripts/name_parser/FontnameParser.py
+	source = FontnameTools-3.0.0.py::https://github.com/ryanoasis/nerd-fonts/raw/v3.0.0/bin/scripts/name_parser/FontnameTools.py
+	source = font-patcher-3.0.0.py::https://github.com/ryanoasis/nerd-fonts/raw/v3.0.0/font-patcher
 	sha256sums = 4a9d48f5368ca3b5699f61c505412a8d734a57c5da00ac0ac5ea70881f615ef3
 	sha256sums = 153b3fcf2d418582d5293a50d8bf3e17f9f500db5633b7927a1921d4527b158d
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = b8fba54cd34cd506a4f48b8780763c13f32b326a6cd37b74bcf33e5841b84cf8
+	sha256sums = 9032624043bd7738b4f8ef2538c9b0ca2058f3d44fae7f5386adbd46959b31a6
+	sha256sums = 9d1403fd270ae0a6d729e2f7acb5877dd4912756dc2af9665edcd366ecb37f31
+	sha256sums = 68958b6d6ab1acf73196d3f1fa8ae3e8c49f970ba565ff47add4323628455a52
 
 pkgname = otf-nerd-fonts-monacob-mono
