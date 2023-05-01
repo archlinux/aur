@@ -1,4 +1,4 @@
-# Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+# Maintainer: SingYan <singyan@tuta.io>
 
 pkgname=mydumper
 pkgver=0.14.3
