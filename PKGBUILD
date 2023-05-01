@@ -5,7 +5,7 @@
 pkgname=bilibili-electron
 _pkgname=${pkgname%-bin}
 pkgver=rolling
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux bilibili GUI. Use installed electron."
 arch=("x86_64" "aarch64")
 license=("MIT")
@@ -21,7 +21,7 @@ source=(
     "${pkgname}.desktop"
     "${pkgname}.svg"
     "${pkgname}")
-sha256sums=("3e534d098c8537bd0717501dac69266d88614e62c76c00a4e982987f0e4b8101"
+sha256sums=("e25a1e8feef615fd29722c64eeca9a0be95ee3c816074208939d26031171f3cd"
             "256fb103121107cf757ecd89caecffb792fd448ae139a1f18d017171ac8a3a06"
             "5bd642f412a7b182fe5c371a0382f5e232df30048735a60fec935df159ff8933")
 sha256sums_x86_64=("dfbbacaad3b810d1408b7dcea5bddfcd12787b62bdeaf7e93b2294e2a04ce2cd")

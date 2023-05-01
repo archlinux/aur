@@ -8,4 +8,4 @@ Exec=bilibili-electron
 Icon=bilibili-electron
 Terminal=false
 Keywords=bilibili;bilibili-electron
-Categories=Utility;Video
+Categories=AudioVideo;Video;Broadcast;
