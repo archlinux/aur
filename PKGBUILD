@@ -2,7 +2,7 @@
 
 pkgname=the-honkers-railway-launcher-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 url="https://github.com/an-anime-team/the-honkers-railway-launcher"
 provides=("the-honkers-railway-launcher")
@@ -36,7 +36,7 @@ source=(
 md5sums=(
     '8013024a7785b83d5e9f37f4a8f1f2cb'
     '80be01d577f9699041a3f326007388e0'
-    'bb8a41e172d14d43f1cb767ec8cd5f84'
+    '3817083b3f90f0ec4e5290a914dcaa9b'
 )
 
 prepare() {
