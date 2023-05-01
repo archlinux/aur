@@ -1,0 +1,16 @@
+pkgbase = perl-adwaita
+	pkgdesc = Perl bindings to the 1.x series of the libadwaita platform library for writing GNOME applications
+	pkgver = 0.001.r6.54334c1
+	pkgrel = 1
+	url = https://gitlab.gnome.org/World/Perl/perl-adwaita/
+	arch = any
+	license = LGPL
+	makedepends = perl-dist-zilla
+	makedepends = perl-dist-zilla-plugin-git
+	depends = libadwaita
+	depends = perl-cairo-gobject
+	depends = perl-glib-object-introspection
+	source = perl-adwaita::git+https://gitlab.gnome.org/World/Perl/perl-adwaita/
+	sha512sums = SKIP
+
+pkgname = perl-adwaita
