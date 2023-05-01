@@ -1,6 +1,6 @@
 # Maintainer: Dmitry Lyashuk <lyashuk.voxx at gmail dot com>
 pkgname=modern-theme-git
-pkgver=v1.02a.r8.g1753235
+pkgver=v1.51.r1.g51fbbe8
 pkgrel=1
 pkgdesc="GTK3/GTK4 theme powered by Adwaita technologies, contains some things for Qt/KDE/Kvantum also(git version)"
 arch=(any)
@@ -23,6 +23,7 @@ package() {
       mkdir -p $pkgdir/usr/share/qt5ct/colors
       mkdir -p $pkgdir/usr/share/qt6ct/colors
       mkdir -p $pkgdir/usr/share/Kvantum
+      mkdir -p $pkgdir/usr/share/icewm/themes
 
 	# Main process
 	mv Dark $pkgdir/usr/share/themes/Modern-Dark
@@ -44,6 +45,10 @@ package() {
     # Kvantum
       cd '../../Kvantum'
         mv ModernKv $pkgdir/usr/share/Kvantum
+
+    # IceWM
+      cd '../Window Managers/IceWM'
+        mv IceModern $pkgdir/usr/share/icewm/themes
 
 	find $pkgdir/usr/ -type f -exec chmod 644 {} \;
 	find $pkgdir/usr/ -type d -exec chmod 755 {} \;
