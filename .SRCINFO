@@ -6,6 +6,7 @@ pkgbase = ansible-runner
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
+	makedepends = python-pip
 	depends = python-psutil
 	depends = python-pexpect
 	depends = python-daemon
