@@ -2,18 +2,16 @@
 
 _name=types-retry
 pkgname=python-$_name
-pkgver=0.9.9
-pkgrel=3
+pkgver=0.9.9.3
+pkgrel=1
 pkgdesc='Typing stubs for retry'
 arch=(any)
 url='https://github.com/python/typeshed'
-license=('Apache' 'MIT')
+license=('Apache')
 depends=(python)
 makedepends=(python-build python-installer python-wheel)
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
-        "LICENSE")
-b2sums=('c19542cfb6b6ec785de3afe4787bb1d51ec48fa33a3592db99d920bdd623f9eac9f061fe6c970076d4a341f4333a13155b3305d6ccc73ce837487b8c2dd0e925'
-        '854309e731f00510e6c17f617773b9401c492f124b385d5852e2bf3535bfb6799bc3669f19664675c5135e992154e259d7020d920209a141ad478d7fcb653610')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+b2sums=('d42d07aa6c073d77ca1e30d05150736c66c14eb805adec3a67b0e8c2a310d0adc5e03487ebed1c0ead3c2a5999ef165e0a8ceb8a935adecd0001c216c6ab10bc')
 
 build() {
     cd $_name-$pkgver
@@ -23,5 +21,4 @@ build() {
 package() {
     cd $_name-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
