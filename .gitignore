@@ -1,5 +1,9 @@
-*.swp
-*.pkg.tar.zst
-*.tar.gz
-src/
-pkg/
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!server.patch
+!vcmi.install
