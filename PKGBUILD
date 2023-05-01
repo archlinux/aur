@@ -18,7 +18,7 @@ _fragment="${FRAGMENT:-#branch=main}"
 
 pkgname=blender-git
 pkgver=3.6.r123613.g46316b29dc2
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
 url="https://blender.org/"
