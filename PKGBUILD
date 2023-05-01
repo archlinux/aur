@@ -4,11 +4,10 @@ _pkgorg=gitlab.com/mipimipi
 pkgname=repman-git
 _pkgname=repman
 pkgver=0.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Manage (remote) custom repositories"
 arch=(
   aarch64
-  armv7h
   x86_64
 )
 url="https://$_pkgorg/$_pkgname"

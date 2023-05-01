@@ -1,10 +1,9 @@
 pkgbase = repman-git
 	pkgdesc = Manage (remote) custom repositories
 	pkgver = 0.3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.com/mipimipi/repman
 	arch = aarch64
-	arch = armv7h
 	arch = x86_64
 	license = GPL3
 	makedepends = bash
@@ -24,7 +23,6 @@ pkgbase = repman-git
 	validpgpkeys = 11ECD6695134183B3E7AF1C2223AAA374A1D59CE
 	md5sums = SKIP
 	depends_aarch64 = devtools-alarm
-	depends_armv7h = devtools-alarm
 	depends_x86_64 = devtools
 
 pkgname = repman-git
