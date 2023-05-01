@@ -1,18 +1,18 @@
-# Maintainer: 
+# Maintainer: GT610 <myddz1005@163.com>
 # Contributor: T.J. Townsend <blakkheim@archlinux.org>
 # Contributor: Yamada Hayao <development@fascode.net>
 
 pkgname="zorin-icon-themes"
 pkgdesc="The Zorin icon theme provided in a variety of color combinations"
-pkgver=2.9.11
+pkgver=2.9.12
 pkgrel=1
 arch=('any')
-url="https://zorinos.com/"
-license=('GPL')
+url="https://github.com/ZorinOS/zorin-icon-themes"
+license=('CC-BY-SA-4.0')
 options=('!strip')
-conflicts=("${pkgname}-git")
+conflicts=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ZorinOS/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('52727e07fa5e30a3d095273cdd001d3fc7201fc4177a6a6f5659352ccc584cc2')
+sha256sums=('d3ff14c5fc632dbbf39e6e8b627c02d950fafb5666720d9fde9eced72b767d05')
 
 package() {
     cd ${pkgname}-${pkgver}
