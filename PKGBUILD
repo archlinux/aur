@@ -1,6 +1,6 @@
 # Maintainer: Luke Labrie-Cleary <luke.cleary@copenhagenatomics.com>
 pkgname=python-cad_to_openmc
-pkgver=0.2.2.r122.gda5b16b
+pkgver=0.2.2.r137.gb91fe0f
 pkgrel=1
 pkgdesc="code to target the conversion from a step-file to a h5m-geometry 
 		     for neutronics"
@@ -47,7 +47,7 @@ package() {
 
     # make git repo available in opt 
     cd "$srcdir"
-    mkdir $pkgdir/opt/$pkgname
-    cp -r "$_name" $pkgdir/opt/$pkgname
+    mkdir $pkgdir/opt
+    cp -r "$_name" $pkgdir/opt
 }
 
