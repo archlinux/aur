@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=matrixTests
-_pkgver=0.2.1
+_pkgver=0.2.2
 pkgname=r-${_pkgname,,}
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Fast Statistical Hypothesis Tests on Rows and Columns of Matrices'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-pmcmrplus
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0f21dcdf87fc6171423d7b5a0bd3aeec570e954de4aac2f2e14cc800cf8b4188')
+sha256sums=('b9d8becfa604d54170fce33f2b6a82d9bdaf1e21cb6924070cf07315347bf575')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
