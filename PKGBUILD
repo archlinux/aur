@@ -8,8 +8,8 @@ url="https://github.com/pshriwise/double-down"
 license=('MIT')
 
 depends=(
-	moab
-        embree
+	moab-git
+    embree
 )
 makedepends=(
 	git
