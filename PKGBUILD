@@ -39,6 +39,7 @@ build() {
     cmake \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+        -DSYSTEMD_UNITDIR=/usr/lib/systemd/system \
         -DFLB_TESTS_INTERNAL=Yes \
         -DFLB_IN_MQTT=Yes \
         -DFLB_TLS=Yes \
