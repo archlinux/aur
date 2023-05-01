@@ -2,7 +2,7 @@
 # Contributor: Pavel Merzlyakov <pavel.merzlyakov@gmail.com>
 _base=allure
 pkgname=python-${_base}-commons
-pkgver=2.13.1
+pkgver=2.13.2
 pkgrel=1
 pkgdesc="Common module for integrate allure with python-based frameworks"
 arch=(any)

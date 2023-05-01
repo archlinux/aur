@@ -1,6 +1,6 @@
 pkgbase = python-allure-commons
 	pkgdesc = Common module for integrate allure with python-based frameworks
-	pkgver = 2.13.1
+	pkgver = 2.13.2
 	pkgrel = 1
 	url = https://github.com/allure-framework/allure-python
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-allure-commons
 	makedepends = git
 	depends = python-pluggy
 	depends = python-attrs
-	source = git+https://github.com/allure-framework/allure-python.git#tag=2.13.1
+	source = git+https://github.com/allure-framework/allure-python.git#tag=2.13.2
 	sha512sums = SKIP
 
 pkgname = python-allure-commons
