@@ -1,29 +1,30 @@
+# Maintainer: VicSanRoPe <kde.sp90x@simplelogin.com>
 # Maintainer: Ben <crushedtortilla at gmail dot com>
 pkgname=skanpage-git
-pkgver=r254.3bc6865
+pkgver=r497.f76dcc9
 pkgrel=1
-pkgdesc="KDE image scanning application (git version)"
-arch=(i686 x86_64)
-url="https://invent.kde.org/utilities/skanpage"
+pkgdesc="KDE multi-page document scanning application (git version)"
+arch=(x86_64)
+url="https://apps.kde.org/es/skanpage/"
 license=(GPL)
-depends=(kcoreaddons ki18n kxmlgui libksane-git kconfig qt5-base qt5-declarative)
-makedepends=(extra-cmake-modules git cmake kio kirigami2)
+depends=(ksanecore-git kirigami2 purpose tesseract kquickimageeditor)
+makedepends=(git extra-cmake-modules)
 conflicts=('skanpage')
 provides=('skanpage')
 source=('git+https://invent.kde.org/utilities/skanpage.git')
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/${pkgname%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cmake -B build -S ${pkgname%-git} -DBUILD_TESTING=OFF
+  cmake -B build -S ${pkgname%-git} -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=RelWithDebInfo
   cmake --build build
 }
 
 package() {
-	cd "$srcdir/build"
-	make DESTDIR="$pkgdir/" install
+  cd "$srcdir/build"
+  make DESTDIR="$pkgdir/" install
 }
