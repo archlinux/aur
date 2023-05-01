@@ -1,7 +1,7 @@
 pkgbase = flamenco
 	pkgdesc = Flamenco render farm manager
 	pkgver = 3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.blender.org/studio/flamenco
 	arch = x86_64
 	arch = aarch64
