@@ -1,10 +1,9 @@
 # Maintainer: Peter Oehme <oehme.pb at gmail dot com>
-# Maintainer: Felix Schindler <aur at felixschindler dot net>
 
 pkgname=python-pymor
 _pkgname=pymor
 pkgver=2022.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="pyMOR is a software library for building model order reduction applications with the Python programming language"
 arch=('x86_64')
 url="https://www.pymor.org"
@@ -52,9 +51,9 @@ optdepends=(
   'python-slycot'
   'python-mpi4py'
 )
-source=(https://files.pythonhosted.org/packages/a5/f2/da4f7bcd2bd9d694f0759121ff8b5f15dc273e55363b90166aae41e2c780/pymor-2022.2.1.tar.gz)
+source=(https://github.com/pymor/pymor/archive/tags/${pkgver}.tar.gz)
 changelog=ChangeLog
-sha256sums=('538c84d2baf67a6473fb21f1afe7a387cc0c17e9ccb25b8fe83d6ef233b7d697')
+sha256sums=('e4e24ea604c38fd944cffbd0601918bbaee20b20a8e98cc5a67d2226a6030edc')
 
 build() {
   cd "$_pkgname-$pkgver"
