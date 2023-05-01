@@ -20,7 +20,7 @@
 
 pkgname=ffmpeg-mpp
 pkgver=6.0
-pkgrel=4
+pkgrel=5
 epoch=2
 pkgdesc='Complete solution to record, convert and stream audio and video supporting rockchip MPP hardware decoder'
 arch=(aarch64 arm7f)
@@ -58,7 +58,7 @@ depends=(
   libva-drm.so
   libva-x11.so
   libvdpau
-  libvidstab.so
+  vid.stab
   libvorbisenc.so
   libvorbis.so
   libvpx.so	
@@ -83,6 +83,7 @@ depends=(
   xz
   zlib
   mpp-git
+  libyuv
 )
 makedepends=(
   amf-headers
@@ -94,6 +95,7 @@ makedepends=(
   nasm
   opencl-headers
   mpp-git
+  libyuv
 )
 optdepends=(
   'avisynthplus: AviSynthPlus support'
@@ -124,7 +126,7 @@ source=(
 
 b2sums=('SKIP'
         '555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de'
-        '80419a6130ce6882ccb3b78c6edb0a10028693335ab4c374a9e8d021d361f5aea03da269df5f42fa0b3d66c7b34aac7b607069fd3ab7b8471c0c0a624aed1120')
+        '08d9133fbee80798939c6606445b8d0ad33e1c29743ff3cb9dbb8a9825ef042511f39e4b4e8ef4a80e708e0ee13e9bd3bc191e63687dd3dd3dbcb1160f3a88ec')
 
 validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
 
