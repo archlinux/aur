@@ -1,5 +1,5 @@
 diff --git a/clang-tools-extra/clangd/CodeComplete.cpp b/clang-tools-extra/clangd/CodeComplete.cpp
-index 260c44b2064b..eafdd78dd58b 100644
+index bb01fa421b49..496119ee0492 100644
 --- a/clang-tools-extra/clangd/CodeComplete.cpp
 +++ b/clang-tools-extra/clangd/CodeComplete.cpp
 @@ -329,7 +329,12 @@ struct CodeCompletionBuilder {
@@ -55,17 +55,18 @@ index 260c44b2064b..eafdd78dd58b 100644
  
    LSP.kind = Kind;
    LSP.detail = BundleSize > 1
-@@ -2242,7 +2259,8 @@ CompletionItem CodeCompletion::render(const CodeCompleteOptions &Opts) const {
+@@ -2242,7 +2259,9 @@ CompletionItem CodeCompletion::render(const CodeCompleteOptions &Opts) const {
    }
    LSP.sortText = sortText(Score.Total, FilterText);
    LSP.filterText = FilterText;
--  LSP.textEdit = {CompletionTokenRange, RequiredQualifier + Name};
+-  LSP.textEdit = {CompletionTokenRange, RequiredQualifier + Name, ""};
 +  LSP.textEdit = {CompletionTokenRange,
-+                  AbstractName ? RequiredQualifier : RequiredQualifier + Name};
++                  AbstractName ? RequiredQualifier : RequiredQualifier + Name,
++                  ""};
    // Merge continuous additionalTextEdits into main edit. The main motivation
    // behind this is to help LSP clients, it seems most of them are confused when
    // they are provided with additionalTextEdits that are consecutive to main
-@@ -2251,7 +2269,7 @@ CompletionItem CodeCompletion::render(const CodeCompleteOptions &Opts) const {
+@@ -2251,7 +2270,7 @@ CompletionItem CodeCompletion::render(const CodeCompleteOptions &Opts) const {
    // is mainly to help LSP clients again, so that changes do not effect each
    // other.
    for (const auto &FixIt : FixIts) {
@@ -115,7 +116,7 @@ index a2d523cd3e92..c50a41a7c7ba 100644
    unsigned Priority;
  
 diff --git a/clang/lib/Sema/SemaCodeComplete.cpp b/clang/lib/Sema/SemaCodeComplete.cpp
-index 2073df030516..88a77f73ff12 100644
+index d0f87b0f2ab7..f5632aa5c42d 100644
 --- a/clang/lib/Sema/SemaCodeComplete.cpp
 +++ b/clang/lib/Sema/SemaCodeComplete.cpp
 @@ -20,6 +20,7 @@
@@ -211,7 +212,7 @@ index 2073df030516..88a77f73ff12 100644
  
        if (SemaRef.getLangOpts().RTTI) {
          // dynamic_cast < type-id > ( expression )
-@@ -4667,7 +4671,8 @@ static void AddEnumerators(ResultBuilder &Results, ASTContext &Context,
+@@ -4664,7 +4668,8 @@ static void AddEnumerators(ResultBuilder &Results, ASTContext &Context,
                             EnumDecl *Enum, DeclContext *CurContext,
                             const CoveredEnumerators &Enumerators) {
    NestedNameSpecifier *Qualifier = Enumerators.SuggestedQualifier;
@@ -221,7 +222,7 @@ index 2073df030516..88a77f73ff12 100644
      // If there are no prior enumerators in C++, check whether we have to
      // qualify the names of the enumerators that we suggest, because they
      // may not be visible in this scope.
-@@ -5070,8 +5075,7 @@ AddObjCProperties(const CodeCompletionContext &CCContext,
+@@ -5067,8 +5072,7 @@ AddObjCProperties(const CodeCompletionContext &CCContext,
                          AllowNullaryMethods, CurContext, AddedProperties,
                          Results, IsBaseExprStatement, IsClassProperty,
                          /*InOriginalClass*/ false);
@@ -231,7 +232,7 @@ index 2073df030516..88a77f73ff12 100644
      // Look through protocols.
      for (auto *P : Category->protocols())
        AddObjCProperties(CCContext, P, AllowCategories, AllowNullaryMethods,
-@@ -5609,6 +5613,435 @@ Expr *unwrapParenList(Expr *Base) {
+@@ -5606,6 +5610,435 @@ Expr *unwrapParenList(Expr *Base) {
    return Base;
  }
  
@@ -667,7 +668,7 @@ index 2073df030516..88a77f73ff12 100644
  } // namespace
  
  void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
-@@ -5616,10 +6049,11 @@ void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
+@@ -5613,10 +6046,11 @@ void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
                                             SourceLocation OpLoc, bool IsArrow,
                                             bool IsBaseExprStatement,
                                             QualType PreferredType) {
@@ -681,7 +682,7 @@ index 2073df030516..88a77f73ff12 100644
  
    ExprResult ConvertedBase = PerformMemberExprBaseConversion(Base, IsArrow);
    if (ConvertedBase.isInvalid())
-@@ -5650,6 +6084,10 @@ void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
+@@ -5647,6 +6081,10 @@ void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
                          CodeCompleter->getCodeCompletionTUInfo(), CCContext,
                          &ResultBuilder::IsMember);
  
@@ -692,7 +693,7 @@ index 2073df030516..88a77f73ff12 100644
    auto DoCompletion = [&](Expr *Base, bool IsArrow,
                            std::optional<FixItHint> AccessOpFixIt) -> bool {
      if (!Base)
-@@ -5929,8 +6367,7 @@ void Sema::CodeCompleteCase(Scope *S) {
+@@ -5926,8 +6364,7 @@ void Sema::CodeCompleteCase(Scope *S) {
  
      Expr *CaseVal = Case->getLHS()->IgnoreParenCasts();
      if (auto *DRE = dyn_cast<DeclRefExpr>(CaseVal))
@@ -702,7 +703,7 @@ index 2073df030516..88a77f73ff12 100644
          // We look into the AST of the case statement to determine which
          // enumerator was named. Alternatively, we could compute the value of
          // the integral constant expression, then compare it against the
-@@ -8148,11 +8585,10 @@ void Sema::CodeCompleteObjCInstanceMessage(Scope *S, Expr *Receiver,
+@@ -8145,11 +8582,10 @@ void Sema::CodeCompleteObjCInstanceMessage(Scope *S, Expr *Receiver,
        return;
      RecExpr = Conv.get();
    }
@@ -718,7 +719,7 @@ index 2073df030516..88a77f73ff12 100644
  
    // If we're messaging an expression with type "id" or "Class", check
    // whether we know something special about the receiver that allows
-@@ -9983,8 +10419,7 @@ void Sema::CodeCompleteIncludedFile(llvm::StringRef Dir, bool Angled) {
+@@ -9980,8 +10416,7 @@ void Sema::CodeCompleteIncludedFile(llvm::StringRef Dir, bool Angled) {
    };
  
    // Helper: scans IncludeDir for nice files, and adds results for each.
