@@ -1,15 +1,15 @@
 pkgbase = yubioath-desktop-beta-bin
-	pkgdesc = Crossplatform graphical user interface for YubiKey one-time passwords
-	pkgver = 6.1.0
+	pkgdesc = Crossplatform graphical user interface for YubiKeys
+	pkgver = 6.2.0
 	pkgrel = 1
-	url = https://www.yubico.com/blog/introducing-yubico-authenticator-6-for-desktop/
+	url = https://github.com/Yubico/yubioath-flutter
 	arch = x86_64
 	license = Apache 2.0
 	depends = pcsclite
 	depends = ccid
 	depends = gnome-screenshot
 	options = !strip
-	source = https://github.com/Yubico/yubioath-flutter/releases/download/6.1.0/yubico-authenticator-6.1.0-linux.tar.gz
-	sha256sums = be686148475d642027d6126ea0984578aa2c22a179a565dc24b81b72ea457417
+	source = yubioath-desktop-beta-6.2.0::https://github.com/Yubico/yubioath-flutter/releases/download/6.2.0/yubico-authenticator-6.2.0-linux.tar.gz
+	sha256sums = 6304b8a345914fd9869fab94b3492f50706b0f536c0aeedc3404968de1766536
 
 pkgname = yubioath-desktop-beta-bin
