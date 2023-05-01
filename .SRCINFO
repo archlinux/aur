@@ -1,0 +1,22 @@
+pkgbase = scryer-prolog-git
+	pkgdesc = A modern Prolog implementation written mostly in Rust (development version)
+	pkgver = 0.9.1.r249.gc5a3ec3b
+	pkgrel = 1
+	url = https://github.com/mthom/scryer-prolog
+	arch = aarch64
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = cargo
+	depends = openssl
+	depends = libmpc
+	depends = mpfr
+	depends = gmp
+	depends = gcc-libs
+	depends = glibc
+	source = scryer-prolog::git+https://github.com/mthom/scryer-prolog
+	source = fix-gmp-mpfr-sys.patch
+	sha256sums = SKIP
+	sha256sums = 5c42f0591d0fbfe5e403c3f2e24863f7932dacdfbf490defe7627c33fc248ff0
+
+pkgname = scryer-prolog-git
