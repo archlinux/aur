@@ -4,16 +4,31 @@
 
 pkgname=xdg-desktop-portal
 pkgver=1.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop integration portals for sandboxed apps"
 url="https://github.com/flatpak/xdg-desktop-portal"
 arch=(x86_64)
 license=(LGPL)
-depends=(glib2 pipewire fuse3 geoclue rtkit systemd)
-makedepends=(meson xmlto docbook-xsl git flatpak libportal)
+depends=(
+  fuse3
+  gdk-pixbuf2
+  geoclue
+  glib2
+  pipewire
+  rtkit
+  systemd
+)
+makedepends=(
+  docbook-xsl
+  flatpak
+  git
+  libportal
+  meson
+  xmlto
+)
 _commit=88af6c8ca4106fcf70925355350a669848e9fd5a  # tags/1.16.0^0
 source=("git+https://github.com/flatpak/xdg-desktop-portal#commit=$_commit")
-sha256sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd $pkgname
