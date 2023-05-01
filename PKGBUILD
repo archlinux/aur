@@ -3,7 +3,7 @@
 
 pkgname=muon-meson-git
 _pkgname=${pkgname%-meson-git}
-pkgver=0.1.0+5.gab1e044c93
+pkgver=0.2.0+13.gdc432474c0
 pkgrel=1
 pkgdesc='meson implementation in C'
 url='https://sr.ht/~lattis/muon'
