@@ -3,7 +3,7 @@ if command -v module 2>&1 >/dev/null; then
 else
 export nvhome=/opt/nvidia/hpc_sdk
 export target=Linux_x86_64
-export version=23.1
+export version=23.3
 
 export nvcudadir=$nvhome/$target/$version/cuda
 export nvcompdir=$nvhome/$target/$version/compilers
@@ -38,5 +38,5 @@ export CPATH=$nvcommdir/nvshmem/include:$CPATH
 export MANPATH=$nvcompdir/man:$MANPATH
 
 export OPAL_PREFIX=$nvcommdir/mpi
-export NVHPC_CUDA_HOME=$nvhome/Linux_x86_64/23.1/cuda/12.0
+export NVHPC_CUDA_HOME=$nvhome/Linux_x86_64/23.3/cuda/12.0
 fi

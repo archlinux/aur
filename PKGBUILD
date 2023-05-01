@@ -3,8 +3,8 @@
 pkgname=nvhpc
 _REL_YEAR=2023
 _CUDA_VER=12.0
-pkgver=23.1
-pkgrel=4
+pkgver=23.3
+pkgrel=1
 pkgdesc='NVIDIA HPC SDK'
 arch=('x86_64')
 url="https://gitlab.com/badwaik/archlinux/aur/nvhpc"
