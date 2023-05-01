@@ -1,6 +1,6 @@
 pkgbase = python-pot
 	pkgdesc = Python Optimal Transport
-	pkgver = 0.8.2
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/PythonOT/POT/
 	arch = x86_64
@@ -8,13 +8,14 @@ pkgbase = python-pot
 	makedepends = python
 	makedepends = python-setuptools
 	makedepends = cython
+	makedepends = python-pip
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-matplotlib
 	optdepends = python-cupy: necessary to use `ot.gpu`
 	optdepends = python-autograd: necessary to use `ot.dr`
 	optdepends = python-pymanopt: necessary to use `ot.dr`
-	source = https://github.com/PythonOT/POT/archive/0.8.2.tar.gz
-	md5sums = c097fe644c600edf40d2a0bbab831925
+	source = https://github.com/PythonOT/POT/archive/0.9.0.tar.gz
+	md5sums = 73d1ce9a5f6108f1baf04ffb78d10b47
 
 pkgname = python-pot
