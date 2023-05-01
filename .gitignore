@@ -1,0 +1,8 @@
+/src/
+/pkg/
+
+release-*.tar.gz
+bb_*.orig.tar.gz
+bb_*.debian.tar.xz
+
+*.pkg.tar*

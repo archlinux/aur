@@ -6,7 +6,7 @@
 
 pkgname=bb
 pkgver=1.3rc1
-pkgrel=15
+pkgrel=16
 pkgdesc='ASCII-art demo that uses AAlib'
 arch=('x86_64' 'i686')
 url='http://aa-project.sourceforge.net/bb/'
@@ -24,12 +24,12 @@ depends=('aalib'
          'xorg-fonts-encodings'
          'xorg-fonts-misc')
 source=("http://ftp.debian.org/debian/pool/main/b/bb/${pkgname}_$pkgver.orig.tar.gz"
-        "http://ftp.debian.org/debian/pool/main/b/bb/${pkgname}_$pkgver-8.3.diff.gz"
+        "http://ftp.debian.org/debian/pool/main/b/bb/${pkgname}_$pkgver-13.debian.tar.xz"
         'https://github.com/xaos-project/XaoS/archive/release-3.5.tar.gz'
         'xaos-3.5-libpng15.patch'
         'xaos-3.5-build-fix-i686.patch')
 sha256sums=('9355b9e0e73863aa473d312b40bb4b071e1d50a8f1c3db553ddf31e814e296c8'
-            '5bba79d9903480c47d94e8a042212abc538723af853ca0926b8310724d0e2f2e'
+            'a811c5b808fdc72e70045f60523463ab459ad464057d71b876722092758d477e'
             'e5246a748e040740f754e035bafd5cae6af57202764f7bbb01dcb81e74116d76'
             '177ac125fe109a8326df3326df5b50f3a416fa8b9e9703202aefaf7e50bcbe8e'
             'f17252481e9f59d8a599321a7a48d0a336702112c5f1c4cb173e592b87448475')
@@ -38,7 +38,7 @@ prepare() {
     cd "$srcdir/$pkgname-$pkgver.orig"
 
     # patch bb
-    patch -Np1 -i "../${pkgname}_$pkgver-8.3.diff"
+    find "$srcdir/debian/patches/" -type f -maxdepth 1 -exec patch --verbose -Np1 -i {} \;
 
     # patch xaos
     cd "$srcdir/XaoS-release-3.5"
@@ -57,7 +57,7 @@ prepare() {
 build() {
     cd "$srcdir/$pkgname-$pkgver.orig"
 
-    autoconf
+    autoreconf -fisv
     ./configure --prefix=/usr
 
     # enabling allegro or using clang doesn't help, ie CC='clang -D USE_ALLEGRO'
