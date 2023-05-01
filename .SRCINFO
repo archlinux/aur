@@ -1,0 +1,19 @@
+pkgbase = iwlwifi-killer-ax1690-7af0-dkms
+	pkgdesc = iwlwifi module patched to support Killer AX1690i/s with device id 7AF0 for kernel (6.2)
+	pkgver = 6.2
+	pkgrel = 1
+	url = https://wireless.wiki.kernel.org/en/users/drivers/iwlwifi
+	install = iwlwifi-killer-ax1690-7af0.install
+	arch = any
+	license = GPL2
+	depends = dkms
+	conflicts = iwlwifi-killer-ax1690-7af0
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.2.tar.xz
+	source = dkms.conf
+	source = 0001-killer-ax1690-7af0.patch
+	sha256sums = 74862fa8ab40edae85bb3385c0b71fe103288bce518526d63197800b3cbdecb1
+	sha256sums = 99c57016a22ee6ae218014b4f4f28ce377dc124b80a727036b0b4a471a5cf857
+	sha256sums = 4803e84b644b442860bdd3469850ce5b4b5346705ba6174a987af5f7000c23c6
+
+pkgname = iwlwifi-killer-ax1690-7af0-dkms
