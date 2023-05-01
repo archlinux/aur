@@ -12,10 +12,9 @@ pkgbase = wxtoimg
 	provides = xwxtoimg
 	source = LICENSE
 	sha256sums = 9476211e68485904a59735602703573114f85044858e56eb8aba7834bb310f96
-	source_x86_64 = https://wxtoimgrestored.xyz/downloads/wxtoimg-linux64-2.10.11-1.tar.gz
+	source_x86_64 = https://wxtoimgrestored.xyz/downloads-src/wxtoimg-linux64-2.10.11-1.tar.gz
 	sha256sums_x86_64 = 11c3697dee53c42fd6e0bedcbdedc9f0da66aaa7e2cf22ae5d8b778e37a1a19e
-	source_i686 = https://wxtoimgrestored.xyz/downloads/wxtoimg-linux-2.10.11.tar.gz
+	source_i686 = https://wxtoimgrestored.xyz/downloads-src/wxtoimg-linux-2.10.11.tar.gz
 	sha256sums_i686 = 3a4866f112ff4865c2a842b3a5933645333830a40a60b4ea9558229117070493
 
 pkgname = wxtoimg
-
