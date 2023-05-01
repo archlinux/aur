@@ -1,15 +1,24 @@
 pkgbase = notes-git
-	pkgdesc = Simple delightful note taking, with more unix and less lock-in.
-	pkgver = 0.5.0.r6.ge3a9eab
+	pkgdesc = Note taking application, write down your thoughts
+	pkgver = 2.1.0.r54.geecd263
 	pkgrel = 1
-	url = https://github.com/pimterry/notes
-	arch = any
-	license = MIT
+	url = https://github.com/nuttyartist/notes
+	arch = x86_64
+	license = MPL
+	makedepends = cmake
 	makedepends = git
-	depends = bash
+	depends = hicolor-icon-theme
+	depends = qt6-base
+	depends = qt6-declarative
 	provides = notes
-	source = git+https://github.com/pimterry/notes.git
-	md5sums = SKIP
+	conflicts = notes
+	source = git+https://github.com/nuttyartist/notes.git
+	source = git+https://github.com/b00f/qautostart.git
+	source = git+https://github.com/pbek/qmarkdowntextedit.git
+	source = git+https://github.com/alex-spataru/QSimpleUpdater.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = notes-git
-
