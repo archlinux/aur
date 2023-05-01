@@ -1,37 +1,37 @@
-# Maintainer: Gabriele Musco <gabmus@disroot.org>
-# Upstream URL: https://gitlab.com/kirbykevinson/libinput-config
+# Maintainer: éclairevoyant
+# Contributor: Gabriele Musco <gabmus at disroot dot org>
 
-pkgname=libinput-config-git
-pkgver=r56.ae90015
+_pkgname=libinput-config
+pkgname="$_pkgname-git"
+pkgver=r79.1d649f7
 pkgrel=1
 pkgdesc="Configuration system for libinput"
-arch=('any')
-url="https://gitlab.com/kirbykevinson/libinput-config"
-license=('custom')
-depends=('glibc' 'libinput')
-makedepends=('gcc' 'meson')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+https://gitlab.com/kirbykevinson/libinput-config.git")
-sha256sums=('SKIP')
+arch=(x86_64)
+url="https://gitlab.com/warningnonpotablewater/$_pkgname"
+license=(custom)
+depends=(glibc libinput)
+makedepends=(git meson)
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("git+$url.git")
+b2sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  # git describe --long --tags --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd $_pkgname
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  arch-meson -Dnon_glibc=true "${pkgname%-git}" build
-  meson compile -C build
+	arch-meson -Dnon_glibc=true $_pkgname build
+	meson compile -C build
 }
 
 check() {
-  meson test -C build --print-errorlogs
+	meson test -C build --print-errorlogs
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
-  install -Dm644 "$srcdir/libinput-config/LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
+	meson install -C build --destdir "$pkgdir"
+	install -Dm644 $_pkgname/LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
 }
 

@@ -1,17 +1,17 @@
 pkgbase = libinput-config-git
 	pkgdesc = Configuration system for libinput
-	pkgver = r56.ae90015
+	pkgver = r79.1d649f7
 	pkgrel = 1
-	url = https://gitlab.com/kirbykevinson/libinput-config
-	arch = any
+	url = https://gitlab.com/warningnonpotablewater/libinput-config
+	arch = x86_64
 	license = custom
-	makedepends = gcc
+	makedepends = git
 	makedepends = meson
 	depends = glibc
 	depends = libinput
 	provides = libinput-config
 	conflicts = libinput-config
-	source = libinput-config::git+https://gitlab.com/kirbykevinson/libinput-config.git
-	sha256sums = SKIP
+	source = git+https://gitlab.com/warningnonpotablewater/libinput-config.git
+	b2sums = SKIP
 
 pkgname = libinput-config-git
