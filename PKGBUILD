@@ -12,7 +12,7 @@ makedepends=('git')
 provides=('cobib')
 conflicts=('cobib')
 pkgdesc="Console Bibliography"
-url="https://gitlab.com/mrossinek/${_pkgname}"
+url="https://gitlab.com/cobib/${_pkgname}"
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 

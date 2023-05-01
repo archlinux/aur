@@ -2,7 +2,7 @@ pkgbase = cobib-git
 	pkgdesc = Console Bibliography
 	pkgver = r517.c6d4f59
 	pkgrel = 1
-	url = https://gitlab.com/mrossinek/cobib
+	url = https://gitlab.com/cobib/cobib
 	arch = any
 	license = MIT
 	makedepends = git
@@ -18,7 +18,7 @@ pkgbase = cobib-git
 	depends = python-mdit_py_plugins
 	provides = cobib
 	conflicts = cobib
-	source = cobib::git+https://gitlab.com/mrossinek/cobib.git
+	source = cobib::git+https://gitlab.com/cobib/cobib.git
 	sha256sums = SKIP
 
 pkgname = cobib-git
