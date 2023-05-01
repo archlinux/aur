@@ -130,9 +130,6 @@ _use_auto_optimization=${_use_auto_optimization-y}
 # disable debug to lower the size of the kernel
 _disable_debug=${_disable_debug-}
 
-## Enable zram/zswap ZSTD compression
-_zstd_compression=${_zstd_compression-}
-
 ### Selecting the ZSTD kernel and modules compression level
 # ATTENTION - one of two predefined values should be selected!
 # 'ultra' - highest compression ratio
@@ -196,17 +193,17 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.3
-_minor=0
+_minor=1
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
-#_stable=${_major}.${_minor}
-_stable=${_major}
+_stable=${_major}.${_minor}
+#_stable=${_major}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux BORE scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=5
+pkgrel=1
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -280,12 +277,21 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 
 _die() { error "$@" ; exit; }
 
+_make() {
+  test -s version
+  make KERNELRELEASE="$(<version)" "$@"
+}
+
 prepare() {
 
     cd ${srcdir}/$_srcname
 
+    echo "Setting version..."
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
+    make ${BUILD_FLAGS[*]} defconfig
+    make ${BUILD_FLAGS[*]} -s kernelrelease > version
+    make ${BUILD_FLAGS[*]} mrproper
 
     local src
     for src in "${source[@]}"; do
@@ -585,17 +591,6 @@ prepare() {
             -d LRNG_RUNTIME_FORCE_SEEDING_DISABLE
     fi
 
-    ### Enable zram/zswap ZSTD compression
-    if [ -n "$_zstd_compression" ]; then
-        echo "Enabling zram/swap ZSTD compression..."
-        scripts/config -d ZRAM_DEF_COMP_LZORLE \
-            -e ZRAM_DEF_COMP_ZSTD \
-            --set-str ZRAM_DEF_COMP zstd \
-            -d ZSWAP_COMPRESSOR_DEFAULT_LZ4 \
-            -e ZSWAP_COMPRESSOR_DEFAULT_ZSTD \
-            --set-str ZSWAP_COMPRESSOR_DEFAULT zstd
-    fi
-
     ### Selecting the ZSTD modules and kernel compression level
     [ -z "$_zstd_level_value" ] && _die "The value is empty. Choose the correct one again."
 
@@ -658,12 +653,11 @@ prepare() {
 
     ### Rewrite configuration
     echo "Rewrite configuration..."
-    make ${BUILD_FLAGS[*]} prepare
-    yes "" | make ${BUILD_FLAGS[*]} config >/dev/null
+    _make ${BUILD_FLAGS[*]} prepare
+    yes "" | _make ${BUILD_FLAGS[*]} config >/dev/null
     diff -u ../config .config || :
 
     ### Prepared version
-    make ${BUILD_FLAGS[*]} -s kernelrelease > version
     echo "Prepared $pkgbase version $(<version)"
 
     ### Running make nconfig
@@ -715,19 +709,18 @@ _package() {
 
     cd ${srcdir}/$_srcname
 
-    local kernver="$(<version)"
-    local modulesdir="$pkgdir/usr/lib/modules/$kernver"
+    local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
     echo "Installing boot image..."
     # systemd expects to find the kernel here to allow hibernation
     # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-    install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+    install -Dm644 "$(_make -s image_name)" "$modulesdir/vmlinuz"
 
     # Used by mkinitcpio to name the kernel
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     echo "Installing modules..."
-    make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
         DEPMOD=/doesnt/exist  modules_install  # Suppress depmod
 
     # remove build and source links
@@ -841,9 +834,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('ba3491f5ed6bd270a370c440434e3d69085fcdd528922fa01e73d7657db73b1e'
-            '54d0470901596286036c20b1537754ba71885cad51452bcb9bf42b92b2175cbe'
-            '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
-            'a81babd189054ed217e58688612ad274ffc06f9912094b29be7f1442aa067d42'
-            'a69eb9f091742802f907d51378ba301a0c395cb5191402b7577216542983d2ed'
-            '18094c82bc1c971f91babeb7d20f70c9cbf879e12ec49cfad6077d324ad7a2f2')
+b2sums=('91c7ac2fb2bdeed323b6f0812582bd82c78f62ce3754063716a8769b30c41e35ae06b042ef27fb3c59a63ca17ec764313d7971ba2ddf84f8cf9fe5885ffe0644'
+        '59b0697d3dce7b3bc75f9a096ada379a71cfd472775d9ebbb54c658a5aae756a631ec4b238b4b3dd9e503bda07b31ce5716643b8c57b21f45959f5f57eac7c1b'
+        '11d2003b7d71258c4ca71d71c6b388f00fe9a2ddddc0270e304148396dadfd787a6cac1363934f37d0bfb098c7f5851a02ecb770e9663ffe57ff60746d532bd0'
+        'c935d5008fe006e6fe0e6c2e04a3bdb71602472274cfd47bae8b877f95b3df5fb5a8c9aedbcef2b5761f22487f662e043ec74de4e63cf40e3e3bb4b9b37a2a72'
+        'f893db7d2ac2de98dbe642a9f36d72fd66980ba5bd98549a63a135d69932f2ab0ae52226faa823fb44e3542eb6c8af8608693b07355323ab8b3e6e3eb44b07e1'
+        '2ab707130da0a19d76368d815c689fea29928bc1147cf085c99e8d5986ef8f0d5be4d5df14b13fa71ed4dff65564bd429f12c88a45e1594217f80cb48232e237')
