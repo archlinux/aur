@@ -1,0 +1,24 @@
+pkgbase = magiskboot-git
+	pkgdesc = Magiskboot_ndk
+	pkgver = 26101.37.r2.gf5dfa8f0
+	pkgrel = 1
+	url = https://github.com/xiaoxindada/magiskboot_ndk_on_linux
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = GPL-3.0
+	makedepends = git
+	depends = p7zip
+	depends = wget
+	depends = tar
+	depends = python3
+	optdepends = android-tools: Android platform tools
+	provides = magiskboot-git
+	conflicts = magiskboot
+	conflicts = busybox
+	options = !strip
+	source = magiskboot-git::git+https://github.com/xiaoxindada/magiskboot_ndk_on_linux.git
+	sha256sums = SKIP
+
+pkgname = magiskboot-git
