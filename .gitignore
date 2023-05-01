@@ -1,6 +1,7 @@
 pkg/
 src/
+wiliwili/
 
 LICENSE
-*.zip
+*.log
 *.pkg.tar.zst
