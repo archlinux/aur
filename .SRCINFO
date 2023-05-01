@@ -1,6 +1,6 @@
 pkgbase = python-imgui
 	pkgdesc = Cython-based Python bindings for dear imgui
-	pkgver = 1.4.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/pyimgui/pyimgui
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-imgui
 	makedepends = python-opengl
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/i/imgui/imgui-1.4.1.tar.gz
-	sha256sums = 012fd8d581171bd04ebfa649ca92c7f382a2806c7027bc7c31c8b39899899e7d
+	source = https://files.pythonhosted.org/packages/source/i/imgui/imgui-2.0.0.tar.gz
+	sha256sums = 2fbdb8eed3b8dbd7ea98af9e4c1c6582b0bc4da942a258de16333d8c653d67e1
 
 pkgname = python-imgui
