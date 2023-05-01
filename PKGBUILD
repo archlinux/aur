@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=lfa
-_pkgver=1.28.2
+_pkgver=1.29.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.2
+pkgver=1.29.0
 pkgrel=1
 pkgdesc='Logistic Factor Analysis for Categorical Data'
 arch=('x86_64')
@@ -17,8 +17,21 @@ optdepends=(
   r-ggplot2
   r-knitr
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5db9d3716863889863d808ea664aa00aa66b94d8876cfe0d15fbb83288500a7d')
+makedepends=(git)
+source=("git+https://git.bioconductor.org/packages/${_pkgname}"
+"001-R430.patch::https://github.com/StoreyLab/lfa/commit/8f3a885eaeabe6b7201d3542be27ab86a65c2a22.patch"
+)
+sha256sums=('SKIP'
+            '6798aed2a76934262d2b6fd521dfba617ec6909cff78ca647568f6b8afc420ac')
+
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+  # see https://github.com/StoreyLab/lfa/issues/6
+  # ignore failed part of the patch.
+  patch -p1 -i "${srcdir}/001-R430.patch" || true
+  cd $srcdir
+  tar -czf ${_pkgname}_${_pkgver}.tar.gz "${_pkgname}"
+}
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
