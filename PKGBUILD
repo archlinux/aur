@@ -10,20 +10,20 @@ license=('OFL')
 arch=('any')
 makedepends=('python-brotli' 'python-fontmake' 'python-fonttools')
 
-source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgbase}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
 sha512sums=('abeea79a7938af0ffe673aae74100129a3d99dd377ebab92a3426bae029c085c5f3ae3978880f0311829c80a13faa264bf061f539aafc672a93f53917c66348f')
 
 build() {
-  rm -rf "${srcdir}/${pkgbase}-${pkgver}/build/"
-  cd "${srcdir}/${pkgbase}-${pkgver}/"
+  rm -rf "${srcdir}/${pkgbase}-${pkgver}/build"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   sh "${srcdir}/${pkgbase}-${pkgver}/build.sh"
 }
 
 _package() {
   pkgdesc+=" (${pkgname%-${pkgbase}})"
-  provides=(${pkgname})
-  conflicts=(${pkgname})
+  provides=("${pkgname}")
+  conflicts=("${pkgname}")
 
   install -Dm644 -t "${pkgdir}/usr/share/fonts/${pkgbase}" ${srcdir}/${pkgbase}-${pkgver}/build/*.${pkgname%-${pkgbase}}
   install -Dm644 "${srcdir}/${pkgbase}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
