@@ -2,7 +2,7 @@
 
 pkgname=wiliwili-git
 _pkg=wiliwili
-pkgver=v0.6.0.r47.gd1a0e52
+pkgver=v1.0.1.r0.g7180066
 pkgrel=1
 pkgdesc='A 3rd party bilibili client'
 url="https://github.com/xfangfang/wiliwili"
@@ -11,7 +11,7 @@ arch=('x86_64')
 provides=("$_pkg")
 conflicts=("$_pkg" "$_pkg-bin")
 depends=('mpv')
-makedepends=('git' 'cmake' 'gcc')
+makedepends=('git' 'cmake' 'gcc' 'libwebp')
 
 # options("name")
 
