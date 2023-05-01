@@ -11,7 +11,7 @@ arch=('any')
 url="https://devcenter.heroku.com/articles/heroku-cli"
 license=('custom' 'ISC')
 depends=('nodejs')
-makedepends=('yarn' 'perl' 'git' 'npm')
+makedepends=('yarn' 'git' 'npm')
 optdepends=('git: Deploying to Heroku')
 conflicts=('heroku-cli-bin' 'heroku-client-standalone' 'heroku-toolbelt' 'ruby-heroku')
 source=("git+https://github.com/heroku/cli.git#commit=v${pkgver}")
@@ -20,26 +20,7 @@ sha512sums=('SKIP')
 options=('!strip')
 provides=('heroku' 'heroku-cli')
 
-_append_path() {
-  case ":$PATH:" in
-    *:"$1":*) ;;
-
-    *)
-      PATH="${PATH:+$PATH:}$1"
-      ;;
-  esac
-}
-
 prepare() {
-  # Set path to perl scriptdirs if they exist
-  # https://wiki.archlinux.org/index.php/Perl_Policy#Binaries_and_scripts
-  # Added /usr/bin/*_perl dirs for scripts
-  [ -d /usr/bin/site_perl ] && _append_path '/usr/bin/site_perl'
-  [ -d /usr/bin/vendor_perl ] && _append_path '/usr/bin/vendor_perl'
-  [ -d /usr/bin/core_perl ] && _append_path '/usr/bin/core_perl'
-
-  export PATH
-
   pushd "$srcdir"
 
     pushd "cli"

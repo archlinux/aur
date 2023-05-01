@@ -7,7 +7,6 @@ pkgbase = heroku-cli
 	license = custom
 	license = ISC
 	makedepends = yarn
-	makedepends = perl
 	makedepends = git
 	makedepends = npm
 	depends = nodejs
