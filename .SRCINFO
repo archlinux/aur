@@ -1,0 +1,15 @@
+pkgbase = docker-lvm-plugin-git
+	pkgdesc = Docker volume driver for LVM volumes
+	pkgver = v1.0.r14.d45273f
+	pkgrel = 1
+	url = https://github.com/containers/docker-lvm-plugin
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	makedepends = go-md2man
+	provides = docker-lvm-plugin
+	conflicts = docker-lvm-plugin
+	source = git+https://github.com/containers/docker-lvm-plugin
+	sha256sums = SKIP
+
+pkgname = docker-lvm-plugin-git
