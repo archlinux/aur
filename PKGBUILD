@@ -2,7 +2,7 @@
 
 _plug=havsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=33.99.g1f48347
+pkgver=33.119.ge20aa02
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}. (GIT Version)"
 arch=('any')
@@ -38,22 +38,30 @@ depends=('vapoursynth-plugin-mvsfunc-git'
          'vapoursynth-plugin-vsutil-git'
          'vapoursynth-plugin-removegrain-git'
          )
-makedepends=('git')
+makedepends=('git'
+             'python-pip'
+             'python-wheel'
+             )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=('git+https://github.com/HomeOfVapourSynthEvolution/havsfunc.git')
 sha256sums=('SKIP')
-
-_site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
 
 pkgver() {
   cd "${_plug}"
   echo "$(git describe --long --tags | tr - . | tr -d r)"
 }
 
+build() {
+  cd "${_plug}"
+  pip wheel --no-deps . -w dist
+}
+
 package() {
   cd "${_plug}"
-  install -Dm644 "${_plug}.py" "${pkgdir}${_site_packages}/${_plug}.py"
-  python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
-  python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
+  pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
+
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
 }

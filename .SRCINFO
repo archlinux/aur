@@ -1,11 +1,13 @@
 pkgbase = vapoursynth-plugin-havsfunc-git
 	pkgdesc = Plugin for Vapoursynth: havsfunc. (GIT Version)
-	pkgver = 33.99.g1f48347
+	pkgver = 33.119.ge20aa02
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=166582
 	arch = any
 	license = GPL
 	makedepends = git
+	makedepends = python-pip
+	makedepends = python-wheel
 	depends = vapoursynth-plugin-mvsfunc-git
 	depends = vapoursynth-plugin-adjust-git
 	depends = vapoursynth-plugin-nnedi3_resample-git
