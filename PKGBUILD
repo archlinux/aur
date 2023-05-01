@@ -9,13 +9,15 @@ url="https://github.com/CyberShadow/btdu/"
 license=('GNU General Public License v2.0')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
+
+source=("$pkgname-$pkgver.man1::$url/raw/v$pkgver/btdu.1")
 source_x86_64=("btdu::https://github.com/CyberShadow/btdu/releases/download/v${pkgver}/btdu-static-x86_64")
 source_aarch64=("btdu::https://github.com/CyberShadow/btdu/releases/download/v${pkgver}/btdu-glibc-aarch64")
 
+sha256sums=('835e9a817b9ab11e2802cbf07e73aa0c8caf85c249fc211b4c03790c45cb91e0')
 sha256sums_x86_64=('aea4b88e59990e37bf7fb3568919e6c41e510840375ca1adfd981ebbcbea608d')
 sha256sums_aarch64=('aea4b88e59990e37bf7fb3568919e6c41e510840375ca1adfd981ebbcbea608d')
 
 package() {
-        cd "$srcdir" || exit
         install -D -m+x btdu "$pkgdir/usr/bin/btdu"
 }
