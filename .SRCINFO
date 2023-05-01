@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-openweather-git
 	pkgdesc = Gnome shell extension for displaying weather information
-	pkgver = 118.r0.g353f50c
+	pkgver = 121.r0.gf9e90b6
 	pkgrel = 1
 	url = https://gitlab.com/skrewball/openweather
 	arch = any
