@@ -1,10 +1,10 @@
 _pkgname="dolphin"
 pkgname="$_pkgname-tabopts-git"
-pkgver=22.04.0.r362.g3c4800408
+pkgver=r7391.7e394dc09
 pkgrel=1
-pkgdesc='KDE File Manager - with tab options patch (git)'
+pkgdesc='KDE File Manager - with extended tab options'
 arch=(i686 x86_64)
-url="https://invent.kde.org/system/dolphin/-/merge_requests/269"
+url="https://invent.kde.org/xiota/dolphin/-/merge_requests/1"
 license=(LGPL)
 depends=(
   'baloo-widgets'
@@ -34,7 +34,8 @@ source=(
   "$_pkgname"::"git+https://invent.kde.org/system/dolphin.git"
 
   # add tab options
-  "https://invent.kde.org/system/dolphin/-/merge_requests/269.patch"
+  # "https://invent.kde.org/system/dolphin/-/merge_requests/269.patch"
+  "https://invent.kde.org/xiota/dolphin/-/merge_requests/1.patch"
 )
 sha256sums=(
   'SKIP'
@@ -42,14 +43,21 @@ sha256sums=(
 )
 
 pkgver() {
-  git -C "$_pkgname" describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/$_pkgname"
+
+  # not using because of inconsistent upstream branch tagging
+  #git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+
+  printf "r%s.%s" \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   cd "$srcdir/$_pkgname"
 
   for p in "$srcdir"/*.patch ; do
-    patch -Np1 -i "$p"
+    patch -Np1 -F100 -i "$p"
   done
 }
 
