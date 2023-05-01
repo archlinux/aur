@@ -11,6 +11,7 @@ license=('GPL')
 provides=('kdenlive')
 conflicts=('kdenlive')
 depends=('breeze' 'breeze-icons')
+makedepends=('breeze' 'breeze-icons')
 _filename="${_pkgname}-${pkgver}-${arch}.AppImage"
 source=("${_filename}::https://download.kde.org/stable/kdenlive/22.12/linux/${_pkgname}-${pkgver}-x86_64.AppImage")
 md5sums=('dbd50a66266e68f8078988c1c6675d1f')
