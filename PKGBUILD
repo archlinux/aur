@@ -3,9 +3,9 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 pkgname=basilisk
-pkgver=2023.03.27
-platform=RB_20230320
-pkgrel=2
+pkgver=2023.05.01
+platform=RB_20230417
+pkgrel=1
 pkgdesc="A XUL-based web-browser demonstrating the Unified XUL Platform (UXP)"
 arch=('x86_64')
 url="https://www.basilisk-browser.org/"
@@ -16,13 +16,11 @@ options=('!emptydirs')
 source=("https://repo.palemoon.org/Basilisk-Dev/Basilisk/archive/v${pkgver}.tar.gz"
         "https://repo.palemoon.org/MoonchildProductions/UXP/archive/${platform}.tar.gz"
         "https://repo.palemoon.org/mcp-graveyard/Pale-Moon/raw/commit/54aeb54828aba7ab47d6ec4a2ee432589efa2b4f/palemoon/branding/unofficial/browser.desktop"
-        "https://repo.palemoon.org/MoonchildProductions/UXP/pulls/2177.patch"
-        "https://repo.palemoon.org/Basilisk-Dev/Basilisk/pulls/50.patch")
-sha256sums=('44397775d894655459d9157f8cb255d4a66269c8d5ccf0f4d7b5bc1eec6c3a3a'
-            '70ee4270c1dbcb0413204491493e55d475b505574f1053d444c2f4c167ef613b'
+        "https://repo.palemoon.org/MoonchildProductions/UXP/pulls/2177.patch")
+sha256sums=('7d072841627a263ccb02ee7de49ffa03cce147f69a6626240eec9996870fe9bc'
+            'b866d4ae65d95d7827411e5e40096c0bb83c8b510ea233b4d256a211e6476d7c'
             '9ffbaa46c277e3c9addc2ce61b17e8eccffd3860706ca75d4fd70eeaa6f5e380'
-            '1b779cef12b4171d19b0f5e8a3cc89729c051575bf81c238c67933091751dedd'
-            '1f0762eea1fe56ed0dd0d0a748908c50a4f7a3c2d58d9f1544e856cea4bf1df0')
+            '1b779cef12b4171d19b0f5e8a3cc89729c051575bf81c238c67933091751dedd')
 
 prepare() {
   cd "$srcdir/$pkgname"
@@ -99,10 +97,6 @@ ac_add_options --disable-maintenance-service
 #mk_add_options MOZ_MAKE_FLAGS="-j4"
 #mk_add_options PYTHON=/usr/bin/python2
 EOF
-
-  # Fix packaging by removing the defunct private browsing components. #50
-  # https://repo.palemoon.org/Basilisk-Dev/Basilisk/pulls/50/files
-  patch -Np1 -i ../50.patch
 
   # Issue #2175 - Fix build bustage in WebRTC. #2177
   # https://repo.palemoon.org/MoonchildProductions/UXP/pulls/2177
