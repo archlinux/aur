@@ -15,10 +15,10 @@
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation-openrc
-pkgver=17.0.1
-_buildver=21139696
+pkgver=17.0.2
+_buildver=21581411
 _pkgver=${pkgver}_${_buildver}
-pkgrel=2
+pkgrel=1
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC. Modified to use OpenRC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -77,7 +77,7 @@ source=(
   'vmnet.patch'
 )
 sha256sums=(
-  '95fd421b8705bf6e57b893f2a4570928d702129249bc49fc5cc34cf779defb65'
+  'f4e361faebcbe1818d1b16e93d7d6658ef0fe2828f529c334ec28a0493711cc7'
 
   '67edc40e39686281f5101ced1a250648ae32e4cd5dffe4fd47bc3c7aed929d50'
   'da1698bf4e73ae466c1c7fc93891eba4b9c4581856649635e6532275dbfea141'
@@ -92,7 +92,7 @@ sha256sums=(
   '10562d11d50edab9abc2b29c8948714edcb9b084f99b3766d07ddd21259e372e'
   '273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac'
   '1060b5d45caeda5119b220fab4e1ece398af34d75131139a5dc6f74ee06672c3'
-  '7c3b6a7871b19e31fafdcc2631751dd9569196740d8e7c2026653d155c0c8da0'
+  '903e4792b559af4b021077f02f117342836cf870fc4b2e9d0aa6f73a026724ac'
 )
 options=(!strip emptydirs)
 
@@ -108,8 +108,8 @@ _isovirtualprinterimages=(Linux Windows)
 
 if [ -n "$_enable_macOS_guests" ]; then
 
-_vmware_fusion_ver=13.0.1
-_vmware_fusion_buildver=21139760
+_vmware_fusion_ver=13.0.2
+_vmware_fusion_buildver=21581413
 _vmware_fusion_ver_full=${_vmware_fusion_ver}_${_vmware_fusion_buildver}
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
@@ -126,7 +126,7 @@ source+=(
   "efi-patches.txt"
 )
 sha256sums+=(
-  'e92ebc38fd5b1a693168f837a31932558a641c84fb57ad72f55e47c8ac4332df'
+  'c86b40823b97334f20b4e6b475b488ec23faf06c986e291965b9e56f7b44c042'
   '8a61e03d0edbbf60c1c84a43aa87a6e950f82d2c71b968888f019345c2f684f3'
   '392c1effcdec516000e9f8ffc97f2586524d8953d3e7d6f2c5f93f2acd809d91'
 )
