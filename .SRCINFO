@@ -1,0 +1,14 @@
+pkgbase = nordic-bluish-accent-theme-git
+	pkgdesc = Nordic bluish-accent theme (git checkout)
+	pkgver = r200+939b027
+	pkgrel = 1
+	url = https://github.com/EliverLara/Nordic/
+	arch = any
+	license = GPL
+	makedepends = git
+	provides = nordic-bluish-accent-theme
+	conflicts = nordic-bluish-accent-theme
+	source = nordic-themes::git+https://github.com/EliverLara/Nordic/#branch=bluish-accent
+	sha256sums = SKIP
+
+pkgname = nordic-bluish-accent-theme-git
