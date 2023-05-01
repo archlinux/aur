@@ -1,0 +1,13 @@
+pkgbase = xeres
+	pkgdesc = A decentralized and secure application designed for communication and sharing.
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://xeres.io
+	arch = x86_64
+	license = GPL
+	options = !strip
+	source = https://github.com/zapek/Xeres/releases/download/v0.5.3/xeres_0.5.3_amd64.deb
+	sha512sums = 9178a2d56b806aaab9fe2fb36b567dee2e75e500cf47c7a13e3a3d7c3e95785eaa0e4e4244eb3e61d08b32fb7110b8bd0600b2e757e9e7970f72e87e79fbbbfb
+	depends_x86_64 = xdg-utils
+
+pkgname = xeres
