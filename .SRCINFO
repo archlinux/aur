@@ -1,8 +1,8 @@
 pkgbase = cobib
 	pkgdesc = Console Bibliography
 	pkgver = 3.5.5
-	pkgrel = 1
-	url = https://gitlab.com/mrossinek/cobib
+	pkgrel = 2
+	url = https://gitlab.com/cobib/cobib
 	arch = any
 	license = MIT
 	depends = python
@@ -14,7 +14,7 @@ pkgbase = cobib
 	depends = python-requests-oauthlib
 	provides = cobib
 	conflicts = cobib
-	source = https://gitlab.com/mrossinek/cobib/-/archive/v3.5.5/cobib-v3.5.5.tar.gz
+	source = https://gitlab.com/cobib/cobib/-/archive/v3.5.5/cobib-v3.5.5.tar.gz
 	sha512sums = c40daa121e02fb23f0c62f427595249d33c74537a16799ac2c9829d6a9e8b9a6a72b042e75162e7a15de5225e6024b4d81a90e61305fd0296ddea78e8e83d9ca
 
 pkgname = cobib
