@@ -1,6 +1,6 @@
 pkgbase = flightcore
 	pkgdesc = A Northstar installer, updater, and mod-manager
-	pkgver = 1.13.3
+	pkgver = 1.13.5
 	pkgrel = 1
 	url = https://github.com/R2NorthstarTools/FlightCore
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = flightcore
 	depends = libappindicator-gtk3
 	depends = librsvg
 	optdepends = sccache: compiler caching for faster compiling
-	source = https://github.com/R2NorthstarTools/FlightCore/archive/refs/tags/v1.13.3.tar.gz
-	sha256sums = 58304b003c30c60d053887f367273dfa0f6d722590d60d13b4782008c27934ed
+	source = https://github.com/R2NorthstarTools/FlightCore/archive/refs/tags/v1.13.5.tar.gz
+	sha256sums = d75c40fb1a5453759ffaed18a79fbbbb7683bc009985bbd835ed7c22c8a5730b
 
 pkgname = flightcore
