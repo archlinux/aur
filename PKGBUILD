@@ -4,12 +4,16 @@
 pkgname=python-pyhanko
 _name=pyHanko
 pkgver=0.18.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for stamping and signing PDF files"
 url="https://github.com/MatthiasValvekens/pyHanko"
 license=(MIT)
 arch=(any)
-makedepends=(python-setuptools)
+makedepends=(
+  python-build
+  python-installer
+  python-wheel
+)
 checkdepends=(
   certomancer
   python-barcode
