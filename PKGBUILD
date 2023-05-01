@@ -5,7 +5,7 @@ _gamever=1.18.2
 pkgname=${_pkgname}-${_gamever%.*}
 pkgver=40.2.1
 pkgrel=1
-_rev=129359fa
+_rev=92288ee5
 _mng_ver=1.0.2
 pkgdesc="Magma is the next generation of hybrid minecraft server softwares"
 arch=('any')
@@ -22,7 +22,7 @@ install="${pkgname}.install"
 source=("${pkgname}-${pkgver}-${_rev}.jar"::"https://git.magmafoundation.org/api/v4/projects/5/packages/maven/org/magmafoundation/Magma/${_gamever}-${pkgver}-${_rev}/Magma-${_gamever}-${pkgver}-${_rev}-server.jar"
 	"minecraft-server-${_mng_ver}.tar.gz"::"https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v${_mng_ver}.tar.gz")
 noextract=("${pkgname}-${pkgver}-${_rev}.jar")
-sha512sums=('e085faaee0cc489c8898345f750b5f44bc6894e105694609dc5341d78ed69793231b19c27ce842afc025e9e349f43930948844fcb7e5980b5ed52be2a80b1eaf'
+sha512sums=('352be5466eeac0353256b3464c706d5c25ea564461560a1b15793513ba35361d62c2e03eccf75bdc3f60bb2547a9a9968d25b3c3a382c2a13f38ab901939273a'
             '11d708d511b63e5541bcc1dbcaf29abbf7cb9583b1d313028770a39b26b41d48dcba023f7e1d6fe30f3c093d20e10a43363011edd432e5785a4580e5c5f852a6')
 
 _game="magma-${_gamever%.*}"
