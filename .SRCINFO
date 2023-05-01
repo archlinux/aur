@@ -1,6 +1,6 @@
 pkgbase = heroku-cli
 	pkgdesc = CLI to manage Heroku apps and services with forced auto-update removed
-	pkgver = 7.67.2
+	pkgver = 7.69.1
 	pkgrel = 1
 	url = https://devcenter.heroku.com/articles/heroku-cli
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = heroku-cli
 	conflicts = heroku-toolbelt
 	conflicts = ruby-heroku
 	options = !strip
-	source = git+https://github.com/heroku/cli.git#commit=v7.67.2
+	source = git+https://github.com/heroku/cli.git#commit=v7.69.1
 	sha256sums = SKIP
 	sha512sums = SKIP
 
