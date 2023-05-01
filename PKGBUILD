@@ -1,12 +1,12 @@
 # Maintainer: Asger Hautop Drewsen <asgerdrewsen@gmail.com>
 pkgname=benny-hill
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Play the Benny Hill theme while running another command"
 arch=('any')
 url="https://github.com/Tyilo/albert-extensions"
 license=('GPL')
-depends=('bash' 'sox' 'twolame')
+depends=('bash' 'sox' 'libmad' 'lame' 'twolame')
 source=(
 "benny-hill"
 "https://github.com/mafintosh/benny-hill/blob/master/theme.mp3?raw=true"
