@@ -17,8 +17,8 @@ _fragment="${FRAGMENT:-#branch=main}"
 [[ -v CUDA_ARCH ]] && _CMAKE_FLAGS+=(-DCYCLES_CUDA_BINARIES_ARCH="${CUDA_ARCH}")
 
 pkgname=blender-git
-pkgver=3.6.r123613.g46316b29dc2
-pkgrel=2
+pkgver=3.6.r123622.g314866eb3af
+pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
 url="https://blender.org/"
@@ -93,8 +93,8 @@ build() {
 
   # determine whether we can install python modules
   if [ "$_pyver" != "" ]; then
-    _CMAKE_FLAGS+=( -DWITH_PYTHON_MODULE=ON
-                    -DWITH_PYTHON_INSTALL=OFF
+    _CMAKE_FLAGS+=( -DWITH_PYTHON=ON
+                    -DWITH_PYTHON_INSTALL=ON
                     -DWITH_PYTHON_SAFETY=OFF )
   fi
 
@@ -119,8 +119,7 @@ build() {
     _CMAKE_FLAGS+=( -DWITH_CYCLES_CUDA_BINARIES=ON
                     # https://wiki.blender.org/wiki/Building_Blender/GPU_Binaries
                     -DWITH_COMPILER_ASAN=OFF
-                    -DCMAKE_CUDA_HOST_COMPILER=`which gcc-11`
-                    -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda )
+                    -DCMAKE_CUDA_HOST_COMPILER=`which gcc-11` )
   fi
 
   # check for materialx
@@ -158,7 +157,6 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DWITH_INSTALL_PORTABLE=OFF \
         -DWITH_LIBS_PRECOMPILED=OFF \
-        -DOCLOC_INSTALL_DIR=/usr/bin \
         -DXR_OPENXR_SDK_ROOT_DIR=/usr \
         -DPYTHON_VERSION="${_pyver}" \
         "${_CMAKE_FLAGS[@]}"
@@ -180,7 +178,7 @@ EOF
 
 package() {
   _suffix=${pkgver%%.r*}
-  DESTDIR="$pkgdir" ninja -C "$srcdir/build" install
+  cmake "$srcdir/build" -DDESTDIR="$pkgdir" install
 
   if [[ -e "$pkgdir/usr/share/blender/${_suffix}/scripts/addons/cycles/lib/" ]] ; then
     # make sure the cuda kernels are not stripped
