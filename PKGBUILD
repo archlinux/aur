@@ -1,5 +1,5 @@
 pkgname=mldonkey-ed2kad-daemon-git
-pkgver=3.1.6.4.g297ee9a6
+pkgver=3.1.7.2.15.ge136e743
 pkgrel=1
 pkgdesc="A multi-network P2P client. Daemon function, only ED2K/KAD. (GIT Version)"
 arch=('x86_64')
@@ -16,7 +16,9 @@ makedepends=('camlp4'
              )
 conflicts=('mldonkey')
 provides=('mldonkey')
-source=('git+https://repo.or.cz/r/mldonkey.git'
+source=('git+https://github.com/ygrek/mldonkey.git'
+        'https://patch-diff.githubusercontent.com/raw/ygrek/mldonkey/pull/66.diff'
+        'https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/mldonkey-fix-build.patch'
         'mldonkey.logrotate'
         'mldonkey.service'
         'mldonkey@.service'
@@ -24,6 +26,8 @@ source=('git+https://repo.or.cz/r/mldonkey.git'
         'mldonkey.sysuser'
         )
 sha256sums=('SKIP'
+            '0b340b74babfd5a5d50f98538a4607879658d6346485eba98eb7cf5be65e4ca0'
+            '333c3b0ad43b6d6f1786cdd780d4b66fadc638d192875df4422724176201ffdf'
             'fe6227ec1a54278226ca6d6a5b0e1bb23224bf7b90e2ea107f014cc9518b0ed3'
             '3a25e71992aa0ab5caabed81b96ebcf313f1d93ccd7a182b1c57bf3f9571b8e8'
             '2f84c31ff14587926d5dfbf63b61b3239376a822ee77ac05a900a46b43143562'
@@ -35,6 +39,11 @@ install=mldonkey-daemon.install
 pkgver() {
   cd mldonkey
   echo "$(git describe --long --tags | tr - . | sed 's|release.||g')"
+}
+
+prepare() {
+  patch -d mldonkey -p1 -i "${srcdir}/66.diff"
+  patch -d mldonkey -p1 -i "${srcdir}/mldonkey-fix-build.patch"
 }
 
 build() {
