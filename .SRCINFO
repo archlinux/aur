@@ -1,5 +1,5 @@
 pkgbase = php82-composer
-	pkgdesc = Dependency Manager for PHP 8.2 (php82)
+	pkgdesc = Dependency Manager for PHP 8.2
 	pkgver = 2.5.5
 	pkgrel = 2
 	epoch = 1
