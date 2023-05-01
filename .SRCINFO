@@ -1,15 +1,15 @@
 pkgbase = cvt12-git
-	pkgdesc = Generate mode timings using the CVT v1.2 or CVT v1.1 Timing Standards
-	pkgver = 1.2
+	pkgdesc = Generate mode timings using the CVT v1.2/v1.1 Timing Standards
+	pkgver = r17.6f66135
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/kevinlekiller/cvt_modeline_calculator_12
 	arch = i686
 	arch = x86_64
-	license = custom
-	makedepends = gcc>=4.8.0,
+	license = BSD
 	makedepends = git
+	depends = glibc
 	source = git+https://github.com/kevinlekiller/cvt_modeline_calculator_12.git
-	sha256sums = SKIP
+	b2sums = SKIP
 
 pkgname = cvt12-git
-
