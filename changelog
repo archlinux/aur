@@ -1,3 +1,14 @@
+2023-05-01 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.4.5.2-1:
+    Added IBotCustomMachineInfoProvider plugin interface, which deprecates previously used ICustomMachineInfoProvider (@JustArchi #2873).
+    Added IWebInterface plugin interface, which allows plugins to provide their own WWW-based UI (@fazelukario #2876 #2877).
+    Added handling of AccessDenied error during logging in, this allows ASF to handle revoked login keys (@JustArchi).
+    Added handling of AccountLoginDeniedThrottle error during logging in, this allows ASF to handle rate limits (@JustArchi).
+    Added TradeCheckPeriod bot configuration property (@Ryzhehvost #2878).
+    Added 2fafinalized and 2fafinalizedforce commands to 2FA plugin. This allows you to use standalone and duplicated ASF 2FA also on non-rooted phones, see updated wiki for more info (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2022-04-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.4.4.5-1:
     Defaulted new device confirmation prompt to N in Headless and --service modes (@JustArchi #2867).

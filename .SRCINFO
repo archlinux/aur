@@ -1,5 +1,5 @@
 pkgbase = asf
-	pkgver = 5.4.4.5
+	pkgver = 5.4.5.2
 	pkgrel = 1
 	url = https://github.com/JustArchiNET/ArchiSteamFarm
 	install = install
@@ -11,7 +11,7 @@ pkgbase = asf
 	makedepends = git
 	makedepends = dotnet-sdk>=7.0
 	makedepends = aspnet-runtime>=7.0
-	source = asf::git+https://github.com/JustArchiNET/ArchiSteamFarm.git#tag=5.4.4.5?signed
+	source = asf::git+https://github.com/JustArchiNET/ArchiSteamFarm.git#tag=5.4.5.2?signed
 	source = service.patch
 	source = asf.env
 	source = ASF.json
