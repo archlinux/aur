@@ -2,7 +2,7 @@
 # Contributor: yescalona <yescalona[at]ug[dot]uchile[dot]cl>
 # Contributor: soeren <nonick[at]posteo[dot]de>
 pkgname=blast+-bin
-pkgver=2.13.0
+pkgver=2.14.0
 pkgrel=1
 pkgdesc="New suite of BLAST tools that utilizes the NCBI C++ Toolkit"
 arch=('x86_64')
@@ -12,14 +12,13 @@ depends=('perl' 'zlib' 'libidn')
 provides=('blast+')
 conflicts=('blast+')
 source=(https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/$pkgver/ncbi-blast-$pkgver+-x64-linux.tar.gz)
-sha256sums=('40f2b739d4fef86a0d235347c84a6edbf841da1a8760f43fbcd5c50150b05447')
+sha256sums=('6f2402870a5686fed7ab5178e3609027b7591f2b7e5c63577663b13cfb94368e')
 
 package() {
-  install -d "$pkgdir"/usr/bin
-  install -d "$pkgdir"/usr/share/doc/$pkgname
+  install -d "$pkgdir"/usr/{bin,share/doc/$pkgname}
 
   cd "$srcdir"/ncbi-blast-$pkgver+
-  install -Dm755 bin/* "$pkgdir"/usr/bin
-  install -Dm644 doc/* "$pkgdir"/usr/share/doc/$pkgname
+  install -m755 bin/* "$pkgdir"/usr/bin
+  install -m644 doc/* "$pkgdir"/usr/share/doc/$pkgname
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/blast+-bin/LICENSE
 }
