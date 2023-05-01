@@ -1,7 +1,7 @@
 pkgbase = r-lasso2
 	pkgdesc = L1 Constrained Estimation aka lasso
 	pkgver = 1.2.22
-	pkgrel = 4
+	pkgrel = 9
 	url = https://cran.r-project.org/package=lasso2
 	arch = x86_64
 	license = GPL
