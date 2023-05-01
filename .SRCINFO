@@ -1,0 +1,14 @@
+pkgbase = nordic-bluish-accent-standard-buttons-theme-git
+	pkgdesc = Nordic bluish-accent-standard-buttons theme (git checkout)
+	pkgver = r205+8521f5a
+	pkgrel = 1
+	url = https://github.com/EliverLara/Nordic/
+	arch = any
+	license = GPL
+	makedepends = git
+	provides = nordic-bluish-accent-standard-buttons-theme
+	conflicts = nordic-bluish-accent-standard-buttons-theme
+	source = nordic-themes::git+https://github.com/EliverLara/Nordic/#branch=bluish-accent-standard-buttons
+	sha256sums = SKIP
+
+pkgname = nordic-bluish-accent-standard-buttons-theme-git
