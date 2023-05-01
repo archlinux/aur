@@ -60,7 +60,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=6.2.11.arch1
+pkgver=6.3.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -68,9 +68,22 @@ url="https://github.com/archlinux/linux/commits/$_srcver_tag"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-    bc libelf pahole cpio perl tar xz
-    xmlto python-sphinx graphviz imagemagick texlive-latexextra
+    bc
+    cpio
+    gettext
     git
+    libelf
+    pahole
+    perl
+    tar
+    xz
+
+    # htmldocs
+    graphviz
+    imagemagick
+    python-sphinx
+    texlive-latexextra
+    xmlto
 )
 options=('!strip')
 
@@ -84,7 +97,7 @@ _kernel_patch_name="more-uarches-for-kernel-5.17+.patch"
 _pkgdesc_extra="~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG"
 
 PatchesArray=(
-    0009-prjc_v6.2-r2.patch
+    0009-prjc_v6.3-r0.patch
     0005-glitched-pds.patch
 )
 
@@ -95,28 +108,35 @@ source=(
     ${PatchesArray[@]}
 )
 validpgpkeys=(
-    "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
-    "647F28654894E3BD457199BE38DBBDC86092693E"  # Greg Kroah-Hartman
-    "A2FF3A36AAA56654109064AB19802F8B0D70FC30"  # Jan Alexander Steffens (heftig)
-    "C7E7849466FE2358343588377258734B41C31549"  # David Runge <dvzrv@archlinux.org>
+    ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
+    647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
+    A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
+    C7E7849466FE2358343588377258734B41C31549  # David Runge <dvzrv@archlinux.org>
 )
-sha512sums=('SKIP'
-            'SKIP'
-            'a8880ccf7762f86d5c91dd6a3702bcb9b8bd53103bab33cbcb3517f22328e0aec9abbdbe76871784b4b9842b9cad8ead496e5083570fcd8af037b65ef0e0b338'
-            '52e885db9924f28ed26f9f29ddef01243cf3906c78c331251de21c00f65ee0a640591e00a332efeb69557ba5f560ecd5a328bac25670f1e1dea1f9a4703f9039'
-            '889f0a49f326de3f119290256393b09a9e9241c2a297ca0b7967a2884e4e35d71388d2a559e4c206f55f67228b65e8f2013a1ec61f6ff8f1de3b6a725fd5fa57')
+b2sums=('SKIP'
+        'SKIP'
+        '1c7a709b1dc39d7c0f9c55665d9a9c425a88c8938af5bdefb64c3a8fc0264fbe0ee05749258621a345d9d89f57ce2270105c8bdfbdab86845ecf73a8ba2417e6'
+        'c42cef71c3fa63db0c04466f68bbe0e47907742d3f2676508dd8144565f22bf36abbc5c891a6769a9059ee986b115379ee7074b24b7c1ef779012512e76ff5b6'
+        '345311d842d02eb6419a305be0345a13ac4b7301da2d380c4ac0c1941cb4917f678611af02f3bfb9532e133b70be9239dd3903858fd3afc8a68fd088a2ae0dc3')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
+_make() {
+  test -s version
+  make KERNELRELEASE="$(<version)" "$@"
+}
+
 prepare() {
     cd "$srcdir/$_reponame"
 
     msg2 "Setting version..."
-    scripts/setlocalversion --save-scmversion
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
+    make defconfig
+    make -s kernelrelease > version
+    make mrproper
 
     FullPatchesArray=(
         $_reponame_kernel_patch/$_kernel_patch_name
@@ -133,9 +153,9 @@ prepare() {
     cp ../config .config
 
     if [ -n "$_subarch" ]; then
-        yes "$_subarch" | make oldconfig
+        yes "$_subarch" | _make oldconfig
     else
-        make prepare
+        _make prepare
     fi
 
     ### Optionally load needed modules for the make localmodconfig
@@ -143,7 +163,7 @@ prepare() {
     if [ -n "$_localmodcfg" ]; then
         if [ -f $HOME/.config/modprobed.db ]; then
             msg2 "Running Steven Rostedt's make localmodconfig now"
-            make LSMOD=$HOME/.config/modprobed.db localmodconfig
+            _make LSMOD=$HOME/.config/modprobed.db localmodconfig
         else
             msg2 "No modprobed.db data found"
             exit
@@ -154,15 +174,14 @@ prepare() {
     sed -i -e 's/int sched_yield_type __read_mostly = 1;/int sched_yield_type __read_mostly = 0;/' ./kernel/sched/alt_core.c
 
     # do not run 'make olddefconfig' as it sets default options
-    yes "" | make config >/dev/null
+    yes "" | _make config >/dev/null
     
     msg2 "Showing config diff"
     diff -u ../config .config || :
 
-    make -s kernelrelease > version
     msg2 "Prepared $pkgbase version $(<version)"
 
-    [[ -z "$_makenconfig" ]] || make nconfig
+    [[ -z "$_makenconfig" ]] || _make nconfig
 
     # save configuration for later reuse
     cat .config > "$startdir/config.last"
@@ -170,37 +189,44 @@ prepare() {
 
 build() {
     cd $_reponame
-    make all
-    make htmldocs
+    _make all htmldocs
 }
 
 _package() {
     pkgdesc="The $pkgdesc kernel and modules $_pkgdesc_extra"
     depends=(
-        coreutils kmod initramfs
-        wireless-regdb linux-firmware thrash-protect
+        coreutils
+        initramfs
+        kmod
+        thrash-protect
+    )
+    optdepends=(
+        'wireless-regdb: to set the correct wireless channels of your country'
+        'linux-firmware: firmware images needed for some devices'
     )
     provides=(
-        VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE
+        KSMBD-MODULE
+        VIRTUALBOX-GUEST-MODULES
+        WIREGUARD-MODULE
     )
     replaces=(
-        virtualbox-guest-modules-arch wireguard-arch
+        virtualbox-guest-modules-arch
+        wireguard-arch
     )
 
     cd $_reponame
-    local kernver="$(<version)"
-    local modulesdir="$pkgdir/usr/lib/modules/$kernver"
+    local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
     msg2 "Installing boot image..."
     # systemd expects to find the kernel here to allow hibernation
     # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-    install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+    install -Dm644 "$(_make -s image_name)" "$modulesdir/vmlinuz"
 
     # Used by mkinitcpio to name the kernel
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     msg2 "Installing modules..."
-    make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
         DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
     # remove build and source links
@@ -308,7 +334,11 @@ _package-docs() {
     ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 }
 
-pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
+pkgname=(
+    "$pkgbase"
+    "$pkgbase-headers"
+    "$pkgbase-docs"
+)
 for _p in "${pkgname[@]}"; do
     eval "package_$_p() {
         $(declare -f "_package${_p#$pkgbase}")
