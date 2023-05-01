@@ -2,8 +2,8 @@
 
 pkgname=hyprland-autoname-workspaces-git
 _pkgname=${pkgname%-git}
-pkgver=0.4.2.r0.g4c39bc2
-pkgrel=2
+pkgver=0.4.3.r0.gcdb568f
+pkgrel=1
 pkgdesc='Hyprland autoname workspace.'
 arch=('x86_64' 'aarch64')
 url="https://github.com/cyrinux/${_pkgname}"
