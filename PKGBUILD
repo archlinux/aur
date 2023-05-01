@@ -1,21 +1,15 @@
 # Maintainer: Felipe Eduardo <felipeeduardopublic@gmail.com>
 
 pkgname=kakele
-pkgver=4.3.4
-pkgrel=3
+pkgver=4.4.4
+pkgrel=4
 pkgdesc="Kakele Online is a Cross Platform, 2D open world massive multiplayer online role playing game"
 arch=('x86_64')
 url="https://kakele.io"
 license=('custom')
 depends=()
-source_url=$(curl -s ${url} | grep -oP 'href="\Khttps://kakele\.nyc3\.cdn\.digitaloceanspaces\.com/[^\"]+?linux\.zip')
-source=("${source_url}" 'kakele.desktop')
+source=("https://kakele.nyc3.cdn.digitaloceanspaces.com/latest/kakele-linux.zip" 'kakele.desktop')
 md5sums=('SKIP' '5a4a0daff7b25f948e42d8d0150cddc5')
-
-pkgver() {
-    version=$(echo ${source_url} | awk -F '/' '{print $(NF-1)}')
-    echo "${version}"
-}
 
 package() {
     mkdir -p "${pkgdir}/opt/${pkgname}"
