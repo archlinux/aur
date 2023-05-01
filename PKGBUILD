@@ -17,7 +17,7 @@ _fragment="${FRAGMENT:-#branch=main}"
 [[ -v CUDA_ARCH ]] && _CMAKE_FLAGS+=(-DCYCLES_CUDA_BINARIES_ARCH="${CUDA_ARCH}")
 
 pkgname=blender-git
-pkgver=3.6.r123622.g314866eb3af
+pkgver=3.6.r123623.gf59fdc40ec6
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
@@ -149,8 +149,10 @@ build() {
                     -DUSD_ROOT=/usr )
   fi
 
-  [ -f "$srcdir/blender/CMakeCache.txt" ] && rm "$srcdir/blender/CMakeCache.txt"
-  CUDAHOSTCXX="$CUDAHOSTCXX" cmake -G Ninja -S "$srcdir/blender" -B build --fresh \
+  if [[ -f "$srcdir/blender/CMakeCache.txt" && -z "$KEEP_CMAKE_CACHE" ]]; then
+    rm "$srcdir/blender/CMakeCache.txt"
+  fi
+  CUDAHOSTCXX="$CUDAHOSTCXX" cmake -S "$srcdir/blender" -B build --fresh \
         -C "${srcdir}/blender/build_files/cmake/config/blender_release.cmake" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DWITH_STATIC_LIBS=OFF \
@@ -161,7 +163,10 @@ build() {
         -DPYTHON_VERSION="${_pyver}" \
         "${_CMAKE_FLAGS[@]}"
         #--trace-expand \
-  NINJA_CMD="ninja -C ""$srcdir/build"" ${MAKEFLAGS:--j1}"
+
+  cd build
+
+  MAKE_CMD="make ${MAKEFLAGS:--j1}"
 
   USING_MAKEPKG_CG="$(systemctl --user -t slice | grep -o makepkg-cg-`id -u`-'[[:digit:]]\+'.slice'[[:space:]]\+'loaded'[[:space:]]\+'active)" || true
   MAKEPKG_CG_WARNING=$(
@@ -173,12 +178,13 @@ EOF
   )
   [[ -z "$USING_MAKEPKG_CG" ]] && warning "$MAKEPKG_CG_WARNING"
   
-  $NINJA_CMD
+  $MAKE_CMD
 }
 
 package() {
   _suffix=${pkgver%%.r*}
-  cmake "$srcdir/build" -DDESTDIR="$pkgdir" install
+  cd "$srcdir/build"
+  make DESTDIR="$pkgdir" install
 
   if [[ -e "$pkgdir/usr/share/blender/${_suffix}/scripts/addons/cycles/lib/" ]] ; then
     # make sure the cuda kernels are not stripped
