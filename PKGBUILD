@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=112.0.5615.165
+pkgver=113.0.5672.63
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -25,12 +25,16 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
-        sql-relax-constraints-on-VirtualCursor-layout.patch
+        add-cstring-for-std-strlen-in-web_view_impl.cc.patch
+        download-bubble-typename.patch
+        webauthn-variant.patch
         disable-GlobalMediaControlsCastStartStop.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('168c62fea9f428f99fbf967f36a75ee5da160429e3a5b86bf02188c5fe7c79fd'
+sha256sums=('76cec11dc13abe6703305b0300e1fe24c8f547c1ff313f7be09db0e23d12ee1e'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            'e66be069d932fe18811e789c57b96249b7250257ff91a3d82d15e2a7283891b7'
+            '5f868cba9e4d387499711738adc6fd87ab9f1ef61f464016bc682660ae59206a'
+            'd464eed4be4e9bf6187b4c40a759c523b7befefa25ba34ad6401b2a07649ca2a'
+            '590fabbb26270947cb477378b53a9dcd17855739076b4af9983e1e54dfcab6d7'
             '7f3b1b22d6a271431c1f9fc92b6eb49c6d80b8b3f868bdee07a6a1a16630a302'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
@@ -51,7 +55,7 @@ declare -gA _system_libs=(
   [harfbuzz-ng]=harfbuzz
   [icu]=icu
   [jsoncpp]=jsoncpp
-  [libaom]=aom
+  #[libaom]=aom      # https://aomedia.googlesource.com/aom/+/706ee36dcc82
   #[libavif]=libavif # https://github.com/AOMediaCodec/libavif/commit/4d2776a3
   [libdrm]=
   [libjpeg]=libjpeg
@@ -64,7 +68,7 @@ declare -gA _system_libs=(
   [re2]=re2
   [snappy]=snappy
   [woff2]=woff2
-  [zlib]=minizip
+  #[zlib]=minizip    # broken include from chrome/common/safe_browsing/zip_analyzer.h
 )
 _unwanted_bundled_libs=(
   $(printf "%s\n" ${!_system_libs[@]} | sed 's/^libjpeg$/&_turbo/')
@@ -102,11 +106,15 @@ prepare() {
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
   # Upstream fixes
-  patch -Np1 -i ../sql-relax-constraints-on-VirtualCursor-layout.patch
+  patch -Np1 -i ../add-cstring-for-std-strlen-in-web_view_impl.cc.patch
 
   # Disable kGlobalMediaControlsCastStartStop by default
   # https://crbug.com/1314342
   patch -Np1 -i ../disable-GlobalMediaControlsCastStartStop.patch
+
+  # Build fixes
+  patch -Np1 -i ../download-bubble-typename.patch
+  patch -Np1 -i ../webauthn-variant.patch
 
   # Link to system tools required by the build
   mkdir -p third_party/node/linux/node-linux-x64/bin
