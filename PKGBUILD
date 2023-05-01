@@ -1,4 +1,5 @@
-# Maintainer: Alexey Peschany <archlinux at sandboiii dot xyz>
+# Maintainer: Jun-I Wu <michaelcat at aur.archlinux.org>
+# Contributer (previous maintainer and original submitter): Alexey Peschany <sandboiii at aur.archlinux.org>
 
 pkgname=webcatalog-bin
 _pkgname=webcatalog
