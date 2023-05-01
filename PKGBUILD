@@ -6,14 +6,14 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=irreader1.5.9
 pkgver=1.5.9
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc="万能订阅阅读器，订阅任何网站。this is the last free version"
 arch=(x86_64 aarch64)
 url="http://irreader.fatecore.com/"
 license=('proprietary')
 groups=()
-depends=(gcc-libs glibc bash electron9)
+depends=(gcc-libs glibc bash electron11)
 makedepends=(asar npm)
 checkdepends=()
 optdepends=()
@@ -55,9 +55,11 @@ prepare() {
 	sed -i "46,50d" main.js
 	sed -i "/makeSingleInstance/d" main.js
 	# patch to electron4, see https://stackoverflow.com/questions/56161168/typeerror-app-makesingleinstance-is-not-a-function
-	sed -i "574s/.*/show:false,webPreferences:{nodeIntegration:true,webviewTag:true},/" main.js
-	sed -i "691s/.*/height:720,webPreferences:{nodeIntegration:true,webviewTag:true},/" main.js
+	sed -i "574s/.*/show:false,webPreferences:{nodeIntegration:true,webviewTag:true,enableRemoteModule:true},/" main.js
+	sed -i "691s/.*/height:720,webPreferences:{nodeIntegration:true,webviewTag:true,enableRemoteModule:true},/" main.js
 	# fix according to electron5 breaking change https://blog.csdn.net/qq_35872456/article/details/91525311
+	sed -i "1524s/.*/y:0,webPreferences:{nodeIntegration:true,webviewTag:true,enableRemoteModule:true},/" main.js
+	# fix https://github.com/sindresorhus/electron-store/issues/138
 }
 
 
@@ -66,7 +68,7 @@ package() {
 	cp -av "$srcdir"/resources/app "$pkgdir"/opt/irreader/
 	install -Dm755 /dev/null "$pkgdir"/usr/bin/irreader
 	echo "#!/bin/sh" >> "$pkgdir"/usr/bin/irreader
-	echo "electron9 /opt/irreader/app" >> "$pkgdir"/usr/bin/irreader
+	echo "electron11 /opt/irreader/app" >> "$pkgdir"/usr/bin/irreader
 	install -Dm644 irreader.desktop -t "$pkgdir"/usr/share/applications/
 	find . -type f -name "icon_about_win.png" -exec install -Dm644 {} $pkgdir/usr/share/pixmaps/irreader.png \;
 }
