@@ -1,8 +1,8 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="dkimpy-milter"
-pkgver=1.2.2
-pkgrel=2
+pkgver=1.2.3
+pkgrel=1
 pkgdesc="DomainKeys Identified Mail (DKIM) milter in Python, with support for ed25519 signatures"
 url="https://launchpad.net/dkimpy-milter"
 license=("GPL2")
@@ -12,9 +12,9 @@ optdepends=("postfix: for sending mail")
 source=("https://launchpad.net/$pkgname/1.2/$pkgver/+download/$pkgname-$pkgver.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-sha256sums=("d7e0d4006cad1add90b5b71243e488680b63cf63c5350cef619c061e808f2c3b"
-            "548edb0351ac5f92d9e3b644d8c4b5bcd9a45cc102c971a202007d6fda590a83"
-            "c19902c420ed6a003bd3052f88414266cb1190547b3447d83e6f889b0212a32e")
+sha256sums=('cea53d17a7e9e48940c2e8ae549ecfc270876538f1dc82b870dc420a6a0f66ec'
+            '548edb0351ac5f92d9e3b644d8c4b5bcd9a45cc102c971a202007d6fda590a83'
+            'c19902c420ed6a003bd3052f88414266cb1190547b3447d83e6f889b0212a32e')
 backup=("etc/dkimpy-milter/dkimpy-milter.conf")
 install="$pkgname.install"
 
