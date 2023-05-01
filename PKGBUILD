@@ -1,14 +1,14 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=muon-meson
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="meson implementation in C"
 arch=(x86_64)
 url="https://muon.build"
 license=(GPL3)
 source=("https://git.sr.ht/~lattis/muon/archive/$pkgver.tar.gz")
-sha256sums=('9d3825c2d562f8f8ad96d1f02167e89c4e84973decf205d127efd9293d7da35b')
+sha256sums=('d73db1be5388821179a25a15ba76fd59a8bf7c8709347a4ec2cb91755203f36c')
 depends=(pkgconf curl libarchive)
 makedepends=(ninja python-yaml scdoc)
 checkdepends=(git)
