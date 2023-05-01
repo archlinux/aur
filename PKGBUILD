@@ -10,8 +10,7 @@ arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 
 license=('MIT')
 depends=('gtk4')
-makedepends=('cargo' 'git')
-optdepends=('xdg-desktop-portal: screenshot on wayland compositors other than GNOME')
+makedepends=('cargo' 'git' 'jq')
 
 source=('git+https://github.com/poly000/waylyrics.git'
 'waylyrics-launch'
@@ -28,6 +27,10 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_pkgname"
+
+    # workarounds to allow enabling feature gates with stable rustc
+    # this should be ok since localkey is not in active development
+    export RUSTC_BOOTSTRAP=1
 
     if [[ $CARCH != x86_64 ]]; then
         export CARGO_PROFILE_RELEASE_LTO=off
