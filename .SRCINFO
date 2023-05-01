@@ -1,0 +1,17 @@
+pkgbase = perl-gtk4
+	pkgdesc = Perl interface to the 4.x series of the GTK+ toolkit
+	pkgver = 0.001.r6.d3554f1
+	pkgrel = 1
+	url = https://gitlab.gnome.org/World/Perl/perl-gtk4/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = perl-dist-zilla
+	makedepends = perl-dist-zilla-plugin-git
+	depends = gtk4
+	depends = perl-cairo-gobject
+	depends = perl-glib-object-introspection
+	source = perl-gtk4::git+https://gitlab.gnome.org/World/Perl/perl-gtk4/
+	sha512sums = SKIP
+
+pkgname = perl-gtk4
