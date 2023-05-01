@@ -1,11 +1,11 @@
 # Maintainer: 7Ji <pugokughin@gmail.com>
 
 _desc="flippy's AArch64-focused fork aiming to increase usability"
-_pkgver_main=6.1.26
+_pkgver_main=6.1.27
 _pkgver_suffix=flippy
 _pkgver_uname="${_pkgver_main}-${_pkgver_suffix}"
 _flippy_repo='linux-6.1.y'
-_flippy_commit='06e93d0351d703cce92e588ba2e7cc5a36d65fdb'
+_flippy_commit='f66cd604611bcaed0a665f0ccda4b513394e48fd'
 _srcname="${_flippy_repo}-${_flippy_commit}"
 
 pkgbase=linux-aarch64-flippy
@@ -17,7 +17,7 @@ pkgname=(
   "${pkgbase}-dtb-rockchip"
 )
 pkgver="${_pkgver_main}"
-pkgrel=2
+pkgrel=1
 arch=('aarch64')
 url="https://github.com/unifreq/${_flippy_repo}"
 license=('GPL2')
@@ -32,8 +32,8 @@ source=(
   '0001-drivers-auxdisplay-openvfd-improve-dev-write-logic.patch'
 )
 sha256sums=(
-  '56db5ed562987e41eb4efdce21193cf28c7e3cafc6a91457de729b2f25d92822'
-  'eea825bef9a873be55cab26035cc6b16e210f4effba905fadc22de444e2b7f30'
+  '7894d042e76a41158d47ae3c63b38655e5b1bd70b8c56e8efe6632a7d967da50'
+  '0d63d6ad237efe41dd6ef49b87b29862d67dd5aa0d99c0c50d75962675765c43'
   'bdcd6cbf19284b60fac6d6772f1e0ec2e2fe03ce7fe3d7d16844dd6d2b5711f3'
   'd4a47c25f5822fe05a473a9ccd8b749429adb23519a72b9043fe42530f990321'
 )
