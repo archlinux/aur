@@ -1,13 +1,12 @@
 # Maintainer: Andy Bao (nulldev) <contact AHT andybao DAWT me>
 pkgname=nerd-fonts-meta
-pkgver=20230210
+pkgver=20230501
 pkgrel=1
 pkgdesc='Meta package for all nerd fonts in official repositories.'
 arch=('any')
 url='https://archlinux.org/packages/community/any/nerd-fonts/'
 depends=(
     otf-aurulent-nerd
-    otf-cascadia-code-nerd
     otf-codenewroman-nerd
     otf-droid-nerd
     otf-firamono-nerd
@@ -21,6 +20,7 @@ depends=(
     ttf-arimo-nerd
     ttf-bigblueterminal-nerd
     ttf-bitstream-vera-mono-nerd
+    ttf-cascadia-code-nerd
     ttf-cousine-nerd
     ttf-daddytime-mono-nerd
     ttf-dejavu-nerd
