@@ -92,15 +92,19 @@ build() {
   msg "python version detected: ${_pyver}"
 
   # determine whether we can install python modules
-  if [ "$_pyver" != "" ]; then
-    _CMAKE_FLAGS+=( -DWITH_PYTHON=ON
-                    -DWITH_PYTHON_INSTALL=ON
-                    -DWITH_PYTHON_SAFETY=OFF )
+  if [[ -n "$_pyver" ]]; then
+    _CMAKE_FLAGS+=( -DWITH_PYTHON=$_pyver \
+                    -DWITH_PYTHON_MODULE=OFF \
+                    -DWITH_PYTHON_INSTALL=ON \
+                    -DWITH_PYTHON_SAFETY=ON )
   fi
 
   export CC=`which clang`
   export CXX=`which clang++`
   export CUDAHOSTCXX="$CC"
+
+  _CMAKE_FLAGS+=( -DWITH_CLANG=ON \
+                  -DWITH_CYCLES=ON )
 
   # check for oneapi
   export _ONEAPI_CLANG=/opt/intel/oneapi/compiler/latest/linux/bin-llvm/clang
@@ -110,15 +114,15 @@ build() {
                     -DWITH_CYCLES_ONEAPI_BINARIES=ON \
                     -DWITH_CLANG=ON )
   )
-  [[ -f /opt/bin/clang ]] && _CMAKE_FLAGS+=-DLLVM_ROOT_DIR=/opt/lib
+  [[ -f /opt/bin/clang ]] && _CMAKE_FLAGS+=( -DLLVM_ROOT_DIR=/opt/lib )
 
   # determine whether we can precompile CUDA kernels
   _CUDA_PKG=$(pacman -Qq cuda 2>/dev/null) || true
   if [ "$_CUDA_PKG" != "" ]; then
     CUDAHOSTCXX=`which gcc-11`
-    _CMAKE_FLAGS+=( -DWITH_CYCLES_CUDA_BINARIES=ON
-                    # https://wiki.blender.org/wiki/Building_Blender/GPU_Binaries
-                    -DWITH_COMPILER_ASAN=OFF
+    # https://wiki.blender.org/wiki/Building_Blender/GPU_Binaries
+    _CMAKE_FLAGS+=( -DWITH_CYCLES_CUDA_BINARIES=ON \
+                    -DWITH_COMPILER_ASAN=OFF \
                     -DCMAKE_CUDA_HOST_COMPILER=`which gcc-11` )
   fi
 
@@ -132,7 +136,7 @@ build() {
   # check for optix
   _OPTIX_PKG=$(pacman -Qq optix 2>/dev/null) || true
   if [ "$_OPTIX_PKG" != "" ]; then
-      _CMAKE_FLAGS+=( -DWITH_CYCLES_DEVICE_OPTIX=ON
+      _CMAKE_FLAGS+=( -DWITH_CYCLES_DEVICE_OPTIX=ON \
                       -DOPTIX_ROOT_DIR=/opt/optix )
   fi
 
@@ -145,14 +149,14 @@ build() {
   # check for universal scene descriptor
   _USD_PKG=$(pacman -Qq usd>=21.02 2>/dev/null) || true
   if [ "$_USD_PKG" != "" ]; then
-    _CMAKE_FLAGS+=( -DWITH_USD=ON
+    _CMAKE_FLAGS+=( -DWITH_USD=ON \
                     -DUSD_ROOT=/usr )
   fi
 
   if [[ -f "$srcdir/blender/CMakeCache.txt" && -z "$KEEP_CMAKE_CACHE" ]]; then
     rm "$srcdir/blender/CMakeCache.txt"
   fi
-  CUDAHOSTCXX="$CUDAHOSTCXX" cmake -S "$srcdir/blender" -B build --fresh \
+  (2>&1 CUDAHOSTCXX="$CUDAHOSTCXX" cmake -S "$srcdir/blender" -B build --fresh \
         -C "${srcdir}/blender/build_files/cmake/config/blender_release.cmake" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DWITH_STATIC_LIBS=OFF \
@@ -161,7 +165,7 @@ build() {
         -DWITH_LIBS_PRECOMPILED=OFF \
         -DXR_OPENXR_SDK_ROOT_DIR=/usr \
         -DPYTHON_VERSION="${_pyver}" \
-        "${_CMAKE_FLAGS[@]}"
+        ${_CMAKE_FLAGS[@]}) > "$srcdir/../cmake_out"
         #--trace-expand \
 
   cd build
