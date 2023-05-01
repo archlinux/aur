@@ -1,6 +1,6 @@
 pkgbase = forkgram
 	pkgdesc = Fork of Telegram Desktop messaging app.
-	pkgver = 4.7.1
+	pkgver = 4.8.1
 	pkgrel = 1
 	url = https://github.com/Forkgram/tdesktop
 	arch = x86_64
@@ -38,13 +38,13 @@ pkgbase = forkgram
 	depends = jemalloc
 	depends = abseil-cpp
 	depends = libdispatch
-	depends = openssl-1.1
+	depends = openssl
 	depends = protobuf
 	optdepends = webkit2gtk: embedded browser features
 	optdepends = xdg-desktop-portal: desktop integration
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = https://github.com/Forkgram/tdesktop/releases/download/v4.7.1/frk-v4.7.1-full.tar.gz
-	sha512sums = 5df24c5c3e7a04b8512f6fc15a8ff9a51a60edc51f9aa85da652a9740186178dc98728d388741334ee986c204b43ff76522733dc1be20c7b237497dfe6943586
+	source = https://github.com/Forkgram/tdesktop/releases/download/v4.8.1/frk-v4.8.1-full.tar.gz
+	sha512sums = 3382a0abb6f3eb1e608c34d0a04827b478cac636d2d635ef804301f5b43b86fdab47afc8d557f4b2124d9f7527000232c22528d342ebe0bfa346aabbf1f6a580
 
 pkgname = forkgram
