@@ -1,0 +1,14 @@
+pkgbase = nordic-standard-buttons-theme-git
+	pkgdesc = Nordic standard-buttons theme (git checkout)
+	pkgver = r198+4653cdd
+	pkgrel = 1
+	url = https://github.com/EliverLara/Nordic/
+	arch = any
+	license = GPL
+	makedepends = git
+	provides = nordic-standard-buttons-theme
+	conflicts = nordic-standard-buttons-theme
+	source = nordic-themes::git+https://github.com/EliverLara/Nordic/#branch=standard-buttons
+	sha256sums = SKIP
+
+pkgname = nordic-standard-buttons-theme-git
