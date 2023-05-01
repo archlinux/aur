@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=adabag
-_pkgver=4.2
+_pkgver=4.3
 pkgname=r-${_pkgname,,}
-pkgver=4.2
-pkgrel=4
+pkgver=4.3
+pkgrel=1
 pkgdesc='Applies Multiclass AdaBoost.M1, SAMME and Bagging'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -19,7 +19,7 @@ optdepends=(
   r-mlbench
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('47019eb8cefc8372996fbb2642f64d4a91d7cedc192690a8d8be6e7e03cd3c81')
+sha256sums=('33d62f96e92224ee37cf7276749d214723c70b56704ebe2e2303edc541a18cec')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
