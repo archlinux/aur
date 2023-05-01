@@ -1,6 +1,6 @@
 pkgbase = sysvinit
 	pkgdesc = Linux System V Init
-	pkgver = 3.06
+	pkgver = 3.07
 	pkgrel = 1
 	url = https://github.com/slicer69/sysvinit
 	arch = i686
@@ -10,12 +10,12 @@ pkgbase = sysvinit
 	depends = procps-ng>=3.3.9
 	optdepends = e2fsprogs
 	conflicts = systemd-sysvcompat
-	source = https://github.com/slicer69/sysvinit/releases/download/3.06/sysvinit-3.06.tar.xz
-	source = https://github.com/slicer69/sysvinit/releases/download/3.06/sysvinit-3.06.tar.xz.sig
+	source = https://github.com/slicer69/sysvinit/releases/download/3.07/sysvinit-3.07.tar.xz
+	source = https://github.com/slicer69/sysvinit/releases/download/3.07/sysvinit-3.07.tar.xz.sig
 	source = sysvinit-makefile.patch
 	validpgpkeys = 5A2DC686CDC5D6087D88C198351F75FA45D53656
 	validpgpkeys = C1A4432D88896729E4300B04AFD1B98BF3273812
-	b2sums = 7fd2ba4bc0c8a15ddd7af2aaa1044e3bc8885a5e18a0a9c58c63897d0965d7430a9b529af4953618a9042cf13cca8a74a92ab02062c5de18d13fdf68328c11e7
+	b2sums = 51943290c5f41ac6eb421a3ee1529d07bc127a44306973a2f3180079a28119001ad6b44c25156986fe249dd025f5eb1929189edfb5da72ee4fa64b5fd4cd5993
 	b2sums = SKIP
 	b2sums = 8877b4523b2aeb75e602e4ef53007e9258a76a1a981e620ea3c6e275a97257f9efb060f102ea95a914c3729bd26fcc360b5613276641b61d452417bff2fa6878
 
