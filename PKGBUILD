@@ -3,7 +3,7 @@
 pkgname=makepkg-cg
 _ghuser=ctrlcctrlv
 #pkgver='0.2.0'
-pkgver='0.2.0.pre'
+pkgver='0.2.1.pre'
 pkgrel=1
 pkgdesc="A makepkg wrapper using Control Groups via systemd.resource-control"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('systemd' 'bash')
 #source=("$pkgname-$pkgver.tar.gz")
 source=("https://github.com/$_ghuser/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 #sha256sums=(SKIP)
-sha256sums=('b2bc5a4be2be314d932c756a3a116c8a15e8adbe4dbf40ae6d91f2f44b2e37eb')
+sha256sums=('581c073337a3d703ff99e60ed216b12a5d53d92e35cf128a614e2a6633bb0e9a')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
