@@ -2,7 +2,7 @@
 
 _plug=vcm
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=2022.02.10.AC.4.gc770bbc
+pkgver=2022.02.10.AC3.0.gff2d3cf
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GITversion)"
 arch=('x86_64')
@@ -56,5 +56,5 @@ build() {
 package(){
   DESTDIR="${pkgdir}" ninja -C build install
 
-  (cd "${_plug}/docs"; for i in *.html vcmisc0.png ; do install -Dm644 "${i}" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/${i}"; done)
+  (cd "${_plug}/docs"; for i in $(find . -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/${i}"; done)
 }
