@@ -1,7 +1,7 @@
 # Maintainer: Sematre <sematre at gmx dot de>
 pkgname=edgeimpulse-cli
 _pkgname=edge-impulse-cli
-pkgver=1.16.0
+pkgver=1.18.1
 pkgrel=1
 
 pkgdesc="Command-line interface tools for Edge Impulse."
@@ -10,7 +10,7 @@ url="https://github.com/edgeimpulse/edge-impulse-cli"
 license=('Apache')
 makedepends=('npm')
 source=("${pkgname}-${pkgver}.tar.gz::https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz")
-sha256sums=('d8da2a2d0473eb45b690661d48b2f907d859dc40b8bc362b0240693d42f5df7b')
+sha256sums=('4a026fac14d12400aa91a5e7fe1f8012e278a64daea48f872d610cd9a12ce306')
 noextract=("${pkgname}-${pkgver}.tar.gz")
 
 package() {
