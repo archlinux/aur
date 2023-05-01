@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=biomvRCNS
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='Copy Number study and Segmentation for multivariate biological data'
 arch=('x86_64')
@@ -24,11 +24,21 @@ optdepends=(
   r-rsamtools
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('562375dcfebebf2b6219fbcd5063b1e5d37d34c6d1eb1b2d9b052a42ce320258')
+makedepends=(git)
+source=("git+https://git.bioconductor.org/packages/${_pkgname}")
+sha256sums=('SKIP')
+
+prepare(){
+  cd $srcdir/${_pkgname}/src
+  # For R 4.3.0+
+  # see https://github.com/wch/r-source/blob/trunk/src/include/R_ext/Constants.h#L46
+  sed -i 's|DOUBLE_X|DBL_|g' biomvRCNS.c
+  cd $srcdir
+  tar -czf $_pkgname-$_pkgver.tar.gz ${_pkgname}
+}
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  R CMD INSTALL ${_pkgname}-${_pkgver}.tar.gz -l "${srcdir}"
 }
 
 package() {
