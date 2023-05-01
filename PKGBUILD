@@ -3,10 +3,10 @@
 # Maintained by: Jay M. <jskier at gmail dot com>
 pkgname=ftkimager
 pkgver=3.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Closed source binary CLI forensic imaging software by Access Data"
 arch=('i686' 'x86_64')
-url="http://accessdata.com/product-download"
+url="https://www.exterro.com/ftk-product-downloads/fedora-and-red-hat-version-x64-3-1-1"
 license=('Commercial')
 depends=("zlib" "openssl")
 if [ "${CARCH}" = 'x86_64' ]; then
@@ -16,7 +16,7 @@ elif [ "${CARCH}" = 'i686' ]; then
   ARCH='32'
   md5sums=('0a27829a261e8ab8c69846bfe40733')
 fi
-source=(https://ad-zip.s3.amazonaws.com/${pkgname}.${pkgver}_fedora${ARCH}.tar.gz)
+source=(https://d1kpmuwb7gvu1i.cloudfront.net/${pkgname}.${pkgver}_fedora${ARCH}.tar.gz)
 
 package() {
 	mkdir -p ${pkgdir}/usr/bin

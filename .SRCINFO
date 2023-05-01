@@ -1,14 +1,14 @@
 pkgbase = ftkimager
 	pkgdesc = Closed source binary CLI forensic imaging software by Access Data
 	pkgver = 3.1.1
-	pkgrel = 2
-	url = http://accessdata.com/product-download
+	pkgrel = 3
+	url = https://www.exterro.com/ftk-product-downloads/fedora-and-red-hat-version-x64-3-1-1
 	arch = i686
 	arch = x86_64
 	license = Commercial
 	depends = zlib
 	depends = openssl
-	source = https://ad-zip.s3.amazonaws.com/ftkimager.3.1.1_fedora.tar.gz
+	source = https://d1kpmuwb7gvu1i.cloudfront.net/ftkimager.3.1.1_fedora64.tar.gz
+	md5sums = c604300050bdd1c88e83951d4f222e4e
 
 pkgname = ftkimager
-
