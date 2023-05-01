@@ -16,9 +16,6 @@ _fragment="${FRAGMENT:-#branch=main}"
 # Supports: single arch (sm_52) and list of archs (sm_52;sm_60)
 [[ -v CUDA_ARCH ]] && _CMAKE_FLAGS+=(-DCYCLES_CUDA_BINARIES_ARCH="${CUDA_ARCH}")
 
-#some extra, unofficially supported stuff goes here:
-_CMAKE_FLAGS+=( -DWITH_CYCLES_NETWORK=OFF )
-
 pkgname=blender-git
 pkgver=3.6.r123613.g46316b29dc2
 pkgrel=1
@@ -96,9 +93,9 @@ build() {
 
   # determine whether we can install python modules
   if [ "$_pyver" != "" ]; then
-    _CMAKE_FLAGS+=( -DWITH_PYTHON=ON
-                    -DWITH_PYTHON_MODULE=OFF
-                    -DWITH_PYTHON_INSTALL=ON )
+    _CMAKE_FLAGS+=( -DWITH_PYTHON_MODULE=ON
+                    -DWITH_PYTHON_INSTALL=OFF
+                    -DWITH_PYTHON_SAFETY=OFF )
   fi
 
   export CC=`which clang`
