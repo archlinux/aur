@@ -1,7 +1,7 @@
 # Maintainer: Equationzhao <equationzhao at foxmail dot com>
 pkgname='g-ls'
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='a powerful ls in golang'
 arch=($CARCH)
 url='https://github.com/Equationzhao/g'
@@ -20,4 +20,7 @@ package() {
     cd "$srcdir/g-$pkgver"
     mkdir -p "$pkgdir/usr/bin"
     install -m755 g "$pkgdir/usr/bin"
+    cd man
+    gzip g.1
+    install -Dm644 g.1.gz "$pkgdir/usr/share/man/man1/g.1.gz"
 }
