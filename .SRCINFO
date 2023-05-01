@@ -1,6 +1,6 @@
 pkgbase = texlive-moderncv-git
 	pkgdesc = A modern curriculum vitae class for LaTeX
-	pkgver = v2.1.0.r11.gb8dfa6b
+	pkgver = v2.3.1.r23.gfa3ebb6
 	pkgrel = 1
 	url = https://github.com/moderncv/moderncv.git
 	arch = any
@@ -9,11 +9,10 @@ pkgbase = texlive-moderncv-git
 	depends = texlive-core
 	depends = texlive-latexextra
 	depends = texlive-fontsextra
-	depends = ttf-font-awesome
+	depends = ttf-font-awesome-5
 	provides = texlive-moderncv
 	conflicts = texlive-moderncv
 	source = git+https://github.com/moderncv/moderncv.git
 	md5sums = SKIP
 
 pkgname = texlive-moderncv-git
-

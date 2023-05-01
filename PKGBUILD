@@ -2,13 +2,13 @@
 
 _pkgname=moderncv
 pkgname=texlive-moderncv-git
-pkgver=v2.1.0.r11.gb8dfa6b
+pkgver=v2.3.1.r23.gfa3ebb6
 pkgrel=1
 pkgdesc=" A modern curriculum vitae class for LaTeX"
 arch=('any')
 url="https://github.com/moderncv/moderncv.git"
 license=('The LaTeX Project Public Li­cense, version 1.3c')
-depends=('texlive-core' 'texlive-latexextra' 'texlive-fontsextra' 'ttf-font-awesome')
+depends=('texlive-core' 'texlive-latexextra' 'texlive-fontsextra' 'ttf-font-awesome-5')
 makedepends=('git')
 conflicts=('texlive-moderncv')
 provides=('texlive-moderncv')
@@ -33,5 +33,6 @@ package() {
   for file in $(ls *.sty); do
     install -m644 $file $pkgdir/usr/share/texmf/tex/latex/moderncv/$file
   done
+  # also install commons/colors.tex
+  install -Dm644 commons/colors.tex $pkgdir/usr/share/texmf/tex/latex/moderncv/commons/colors.tex
 }
-
