@@ -1,0 +1,14 @@
+pkgbase = nordic-darker-standard-buttons-theme-git
+	pkgdesc = Nordic darker-standard-buttons theme (git checkout)
+	pkgver = r213+5f93cb3
+	pkgrel = 1
+	url = https://github.com/EliverLara/Nordic/
+	arch = any
+	license = GPL
+	makedepends = git
+	provides = nordic-darker-standard-buttons-theme
+	conflicts = nordic-darker-standard-buttons-theme
+	source = nordic-themes::git+https://github.com/EliverLara/Nordic/#branch=darker-standard-buttons
+	sha256sums = SKIP
+
+pkgname = nordic-darker-standard-buttons-theme-git
