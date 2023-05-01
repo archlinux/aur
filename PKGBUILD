@@ -1,15 +1,15 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=certomancer
-pkgver=0.9.1
-pkgrel=6
+pkgver=0.10.0
+pkgrel=1
 pkgdesc="Quickly construct, mock & deploy PKI test configurations"
 url="https://github.com/MatthiasValvekens/certomancer"
 license=(MIT)
 arch=(any)
 makedepends=(
-  python-pytest-runner
-  python-setuptools
+  python-build
+  python-installer
   python-wheel
 )
 checkdepends=(
@@ -34,15 +34,15 @@ depends=(
   python-tzlocal
   python-werkzeug
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('fce43c512cb00978ef67e37308e5c20f5e08b4860c13fcee6985b4cacf5fcd55')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('0c2344676293ba8cbb078cc4e5970082df2a9b5f911e3169707ace6fa9c6aa73')
 
 _archive="$pkgname-$pkgver"
 
 build() {
   cd "$_archive"
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -54,8 +54,7 @@ check() {
 package() {
   cd "$_archive"
 
-  export PYTHONHASHSEED=0
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
