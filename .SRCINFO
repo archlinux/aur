@@ -1,6 +1,6 @@
 pkgbase = php-tombs-git
 	pkgdesc = Detect unused code in production
-	pkgver = r71.40504a6
+	pkgver = r78.ba72201
 	pkgrel = 1
 	url = https://github.com/kornrunner/tombs
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = php-tombs-git
 	makedepends = git
 	depends = php
 	backup = etc/php/conf.d/tombs.ini
-	source = git+https://github.com/krakjoe/tombs.git
+	source = git+https://github.com/kornrunner/tombs.git
 	md5sums = SKIP
 
 pkgname = php-tombs-git

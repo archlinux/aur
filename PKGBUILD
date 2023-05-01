@@ -2,7 +2,7 @@
 
 _pkgname=tombs
 pkgname=php-$_pkgname-git
-pkgver=r71.40504a6
+pkgver=r78.ba72201
 pkgrel=1
 pkgdesc="Detect unused code in production"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/kornrunner/tombs"
 license=('PHP')
 depends=('php')
 makedepends=('git')
-source=(git+https://github.com/krakjoe/tombs.git)
+source=(git+https://github.com/kornrunner/tombs.git)
 md5sums=('SKIP')
 _ininame="tombs.ini"
 _inifile="etc/php/conf.d/$_ininame"
@@ -34,8 +34,8 @@ package() {
   cd "$srcdir/$_pkgname"
   make PREFIX=/usr INSTALL_ROOT="$pkgdir" install
   cat >> "$_ininame" <<EOF
-;zend_extension=tombs.so
-;tombs.slots     # 10000 # Set to (a number greater than) the maximum number of functions
+;zend_extension  = tombs.so
+;tombs.slots     = 10000 # Set to (a number greater than) the maximum number of functions
 ;tombs.strings   = 32M # Set size of string buffer (supports suffixes, be generous)
 ;tombs.socket    = /path/to/zend.tombs.socket # Set path to socket, setting to 0 disables socket
 ;tombs.dump      = 0    # Set to a file descriptor for dump on shutdown
