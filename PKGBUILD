@@ -24,7 +24,7 @@ prepare() {
 pkgver() {
     
     cd "$srcdir/$_gitname"
-    _gitver+=$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)")"_"
+    _gitver=$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)")"_"
 
     cd "$srcdir/media"
     _gitver+=$(printf "%s" "$(git rev-parse --short=7 HEAD)")"_"
