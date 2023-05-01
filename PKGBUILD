@@ -80,6 +80,7 @@ makedepends=(
   git
   libelf
   pahole
+  python
   perl
   tar
   xz

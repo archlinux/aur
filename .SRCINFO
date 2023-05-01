@@ -10,6 +10,7 @@ pkgbase = linux-ck
 	makedepends = git
 	makedepends = libelf
 	makedepends = pahole
+	makedepends = python
 	makedepends = perl
 	makedepends = tar
 	makedepends = xz
