@@ -1,2 +1,2 @@
 #!/bin/bash
-/usr/share/videosubfinder/VideoSubFinderWXW -o '.' "$@"
+/usr/share/VideoSubFinder/VideoSubFinderWXW -o '.' "$@"

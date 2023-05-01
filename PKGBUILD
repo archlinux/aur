@@ -1,6 +1,6 @@
 # Maintainer: Sematre <sematre at gmx dot de>
 pkgname=videosubfinder
-pkgver=5.80
+pkgver=6.10
 pkgrel=1
 
 pkgdesc="Audio/Video processing software with focus on new generation HD formats, Blu-ray and HD DVD."
@@ -16,7 +16,7 @@ source=("${pkgname}::git+https://git.code.sf.net/p/videosubfinder/src#tag=VideoS
         "start-videosubfinder.sh")
 sha256sums=('SKIP'
             'b58e06818ca3314f0df91bd67edaa3bbce423cbd8b1160a23ef813585a95558c'
-            '66a56f0b676f1dfd4a61335219a5c5fd022b2ab95d36b7ce3fc8f3774277addd')
+            'fb3f9e7d98494a185b56cc61e7488985adb8955f9e7aa797e40f51f6b7e5f91e')
 
 build() {
 	cd "${srcdir}"
@@ -26,9 +26,9 @@ build() {
 			-DCMAKE_BUILD_TYPE=Release \
 			-DUSE_CUDA=OFF \
 			-DFFMPEG_INCLUDE_DIRS='/usr/include/ffmpeg4.4' \
-			-DCMAKE_INSTALL_PREFIX='/usr'
+			-DCMAKE_INSTALL_PREFIX='/usr/share'
 
-	cmake --build build
+	cmake --build build --config Release
 
 	# Convert app icon from ico to png
 	convert "${pkgname}/Interfaces/VideoSubFinderWXW/videosubfinder.ico" "build/${pkgname}.png"
@@ -36,21 +36,19 @@ build() {
 
 package() {
 	cd "${srcdir}"
+	DESTDIR="${pkgdir}" cmake --install build
 
 	# Install the start script
 	install -Dm755 "start-videosubfinder.sh" "${pkgdir}/usr/bin/videosubfinder"
 	ln -s "videosubfinder" "${pkgdir}/usr/bin/VideoSubFinderWXW"
 
-	# Install the project files
-	install -Dm755 "build/Interfaces/VideoSubFinderWXW/VideoSubFinderWXW" -t "${pkgdir}/usr/share/${pkgname}"
-	cp -r "videosubfinder/Build/Release_x64/bitmaps/"  "${pkgdir}/usr/share/${pkgname}/"
-	cp -r "videosubfinder/Build/Release_x64/settings/" "${pkgdir}/usr/share/${pkgname}/"
-
 	# Install project docs and assets
-	find "videosubfinder/Docs/" -type f -exec install -Dm644 "{}" -t "${pkgdir}/usr/share/doc/${pkgname}" \;
+	mkdir -p "${pkgdir}/usr/share/doc"
+	mv "${pkgdir}/usr/share/VideoSubFinder/Docs" "${pkgdir}/usr/share/doc/${pkgname}"
+
 	install -Dm644 "build/${pkgname}-0.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 	install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 
 	touch report.log
-	install -Dm777 "report.log" -t "${pkgdir}/usr/share/${pkgname}"
+	install -Dm777 "report.log" -t "${pkgdir}/usr/share/VideoSubFinder"
 }
