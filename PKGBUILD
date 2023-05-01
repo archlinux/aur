@@ -20,7 +20,7 @@ _fragment="${FRAGMENT:-#branch=main}"
 _CMAKE_FLAGS+=( -DWITH_CYCLES_NETWORK=OFF )
 
 pkgname=blender-git
-pkgver=3.6.r123308.g91a29c9b9af
+pkgver=3.6.r123613.g46316b29dc2
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
@@ -40,7 +40,8 @@ optdepends=('cuda: CUDA support in Cycles'
             'intel-compute-runtime: Intel OpenCL FPGA kernels (all four needed)'
             'intel-graphics-compiler: Intel OpenCL FPGA kernels (all four needed)'
             'intel-oneapi-basekit: Intel OpenCL FPGA kernels (all four needed)'
-            'gcc11: Compile CUDA support in Cycles')
+            'gcc11: Compile CUDA support in Cycles'
+            'makepkg-cg: Control resources during compilation')
 makedepends+=('git' 'cmake' 'boost' 'mesa' 'ninja' 'llvm' 'clang' 'subversion')
 makedepends+=('wayland-protocols')
 provides=('blender')
@@ -52,7 +53,6 @@ source=("blender::git+https://github.com/blender/blender${_fragment}"
         'blender-addons-contrib::git+https://github.com/blender/blender-addons-contrib'
         'blender/dev_tools::git+https://github.com/blender/blender-dev-tools'
         'blender/assets::svn+https://svn.blender.org/svnroot/bf-blender/trunk/lib/assets'
-        'user-blender.slice' #systemd compilation unit
         # Patches...
         '0001-Use-github.com-for-make-update-git.patch'
         '0003-usd_python.patch' #add missing python headers when building against python enabled usd.
@@ -64,7 +64,6 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '10cf3652cf16f8042437bb511e2b030035433978f71cf1da8028711f49599074'
             '52da80b721efb6a6d579adf531640becfac1955a88857ca46ca16030a52c3b1c'
             'c2db51a83a8d573aa76c760f10e541c84b108d64d05c9647681c4e633b3d0397'
             '1d88d87c97e953b21eb551016e8295954997f18cbb4998c230cd1f596a87b6f2')
@@ -84,7 +83,6 @@ prepare() {
   rm -rf blender/scripts/addons{,/contrib}
   mv blender-addons blender/scripts/addons
   mv blender-addons-contrib blender/scripts/addons/contrib
-  cp user-blender.slice user-`id -u`-blender.slice
   cd "blender"
   # update the submodules
   git -c protocol.file.allow=always submodule update --init --recursive --remote
@@ -169,14 +167,18 @@ build() {
         "${_CMAKE_FLAGS[@]}"
         #--trace-expand \
   NINJA_CMD="ninja -C ""$srcdir/build"" ${MAKEFLAGS:--j1}"
-  if [[ "x$BLENDER_GIT_USE_SLICE_AUR" == "xy" ]]; then
-    killninja() { killall ninja; }
-    trap killninja INT
-    systemd-run --uid=`whoami` --slice=user-`id -u`-blender.slice -P --working-directory="$PWD" --wait --send-sighup bash -c "$NINJA_CMD"
-  else
-    warning 'If you use systemd, consider trying `BLENDER_GIT_USE_SLICE_AUR=y`.'
-    $NINJA_CMD
-  fi
+
+  USING_MAKEPKG_CG="$(systemctl --user -t slice | grep -o makepkg-cg-`id -u`-'[[:digit:]]\+'.slice'[[:space:]]\+'loaded'[[:space:]]\+'active)" || true
+  MAKEPKG_CG_WARNING=$(
+    cat << 'EOF'
+If you use systemd, consider trying `makepkg-cg`.
+This build is otherwise very likely to use more RAM than
+the system has, especially with a high `-j`!
+EOF
+  )
+  [[ -z "$USING_MAKEPKG_CG" ]] && warning "$MAKEPKG_CG_WARNING"
+  
+  $NINJA_CMD
 }
 
 package() {
@@ -195,4 +197,4 @@ package() {
       chmod 444 "$pkgdir"/usr/lib/libcycles_kernel_oneapi_jit.so || true
 }
 
-# vim: et:ts=2:sw=2
+# vim: syntax=bash:et:ts=2:sw=2
