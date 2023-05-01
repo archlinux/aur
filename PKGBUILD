@@ -62,7 +62,7 @@
 : ${CLANGD_HOVERINHEX:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt
-pkgver=17.r9805.g6303fa369c85
+pkgver=17.r9809.g89a44b0faee0
 pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
@@ -87,7 +87,7 @@ sha256sums=('SKIP'
             'bc3f392c87560c4e42d317e28d3524f8a6052efa31b6091186139d14b2a8368d'
             '9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7'
             '9bb8d1d27e3b5a184af71a5aad310da3971e77279f65d7bf804d619ce907280a'
-            'de42ef094dd3e5e86e8aa0e7846bab93457bf1d165f68390748747f28cd1566c' # postfix-completion
+            '4ba9b1e9d755488d647cec5b0d50d6d938fc97f964041c22445b68c6b3eac050' # postfix-completion
             'f719fb52edee98f54ba40786d2ecac6ef63f56797c8f52d4d7ce76a3825966eb'
             '3b3501c62982851749993a6882cab6812cead6f749832760868fd5771c426b00'
             '346483b0d5823fba409785c2df471ca8a659112d630ee66e53b1a3e36e46e981')
@@ -147,7 +147,7 @@ build() {
     cmake -B . -S "${srcdir}/llvm-project/llvm" \
         -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/opt/clangd \
-        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+        -DCMAKE_BUILD_TYPE=Release \
         -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra"
     cmake --build . --target clangd
 }

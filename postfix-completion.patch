@@ -116,7 +116,7 @@ index a2d523cd3e92..c50a41a7c7ba 100644
    unsigned Priority;
  
 diff --git a/clang/lib/Sema/SemaCodeComplete.cpp b/clang/lib/Sema/SemaCodeComplete.cpp
-index d0f87b0f2ab7..f5632aa5c42d 100644
+index d0f87b0f2ab7..38beb219f945 100644
 --- a/clang/lib/Sema/SemaCodeComplete.cpp
 +++ b/clang/lib/Sema/SemaCodeComplete.cpp
 @@ -20,6 +20,7 @@
@@ -232,7 +232,7 @@ index d0f87b0f2ab7..f5632aa5c42d 100644
      // Look through protocols.
      for (auto *P : Category->protocols())
        AddObjCProperties(CCContext, P, AllowCategories, AllowNullaryMethods,
-@@ -5606,6 +5610,435 @@ Expr *unwrapParenList(Expr *Base) {
+@@ -5606,6 +5610,446 @@ Expr *unwrapParenList(Expr *Base) {
    return Base;
  }
  
@@ -595,6 +595,8 @@ index d0f87b0f2ab7..f5632aa5c42d 100644
 +      std::string Str;
 +      llvm::raw_string_ostream OS(Str);
 +      NNS->print(OS, Policy);
++      while (Ctx.getLangOpts().CPlusPlus20 && !Str.empty() && Str.back() == ':')
++        Str.pop_back();
 +      Qualifier = Results.getAllocator().CopyString(Str);
 +    }
 +    if (ED && !ED->enumerators().empty()) {
@@ -607,11 +609,20 @@ index d0f87b0f2ab7..f5632aa5c42d 100644
 +        B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
 +        B.AddChunk(CodeCompletionString::CK_LeftBrace);
 +        B.AddChunk(CodeCompletionString::CK_VerticalSpace);
++        if (Ctx.getLangOpts().CPlusPlus20 && Qualifier) {
++          B.AddTextChunk("using");
++          B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
++          B.AddTextChunk("enum");
++          B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
++          B.AddTextChunk(Qualifier);
++          B.AddChunk(CodeCompletionString::CK_SemiColon);
++          B.AddChunk(CodeCompletionString::CK_VerticalSpace);
++        }
 +        for (const auto *ECD : ED->enumerators()) {
 +          B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
 +          B.AddTextChunk("case");
 +          B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
-+          if (Qualifier)
++          if (!Ctx.getLangOpts().CPlusPlus20 && Qualifier)
 +            B.AddTextChunk(Qualifier);
 +          B.AddTextChunk(ECD->getIdentifier()->getNameStart());
 +          B.AddChunk(CodeCompletionString::CK_Colon);
@@ -668,7 +679,7 @@ index d0f87b0f2ab7..f5632aa5c42d 100644
  } // namespace
  
  void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
-@@ -5613,10 +6046,11 @@ void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
+@@ -5613,10 +6057,11 @@ void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
                                             SourceLocation OpLoc, bool IsArrow,
                                             bool IsBaseExprStatement,
                                             QualType PreferredType) {
@@ -682,7 +693,7 @@ index d0f87b0f2ab7..f5632aa5c42d 100644
  
    ExprResult ConvertedBase = PerformMemberExprBaseConversion(Base, IsArrow);
    if (ConvertedBase.isInvalid())
-@@ -5647,6 +6081,10 @@ void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
+@@ -5647,6 +6092,10 @@ void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
                          CodeCompleter->getCodeCompletionTUInfo(), CCContext,
                          &ResultBuilder::IsMember);
  
@@ -693,7 +704,7 @@ index d0f87b0f2ab7..f5632aa5c42d 100644
    auto DoCompletion = [&](Expr *Base, bool IsArrow,
                            std::optional<FixItHint> AccessOpFixIt) -> bool {
      if (!Base)
-@@ -5926,8 +6364,7 @@ void Sema::CodeCompleteCase(Scope *S) {
+@@ -5926,8 +6375,7 @@ void Sema::CodeCompleteCase(Scope *S) {
  
      Expr *CaseVal = Case->getLHS()->IgnoreParenCasts();
      if (auto *DRE = dyn_cast<DeclRefExpr>(CaseVal))
@@ -703,7 +714,7 @@ index d0f87b0f2ab7..f5632aa5c42d 100644
          // We look into the AST of the case statement to determine which
          // enumerator was named. Alternatively, we could compute the value of
          // the integral constant expression, then compare it against the
-@@ -8145,11 +8582,10 @@ void Sema::CodeCompleteObjCInstanceMessage(Scope *S, Expr *Receiver,
+@@ -8145,11 +8593,10 @@ void Sema::CodeCompleteObjCInstanceMessage(Scope *S, Expr *Receiver,
        return;
      RecExpr = Conv.get();
    }
@@ -719,7 +730,7 @@ index d0f87b0f2ab7..f5632aa5c42d 100644
  
    // If we're messaging an expression with type "id" or "Class", check
    // whether we know something special about the receiver that allows
-@@ -9980,8 +10416,7 @@ void Sema::CodeCompleteIncludedFile(llvm::StringRef Dir, bool Angled) {
+@@ -9980,8 +10427,7 @@ void Sema::CodeCompleteIncludedFile(llvm::StringRef Dir, bool Angled) {
    };
  
    // Helper: scans IncludeDir for nice files, and adds results for each.
