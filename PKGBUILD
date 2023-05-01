@@ -1,7 +1,8 @@
 # Maintainer: Marco Rubin <marco.rubin@protonmail.com>
 
+_name=django_upgrade
 pkgname=django-upgrade
-pkgver=1.12.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc='Automatically upgrade your Django projects.'
 arch=('any')
@@ -9,16 +10,16 @@ url='https://github.com/adamchainz/django-upgrade'
 license=('MIT')
 depends=('python' 'python-tokenize-rt')
 makedepends=('python-build' 'python-installer' 'python-wheel')
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-b2sums=('6633abdfd3dc05d032d8818e4a0bab5af180ce79c133eacb962d22346a590418bc140597683b694bc003c677844830190b818f633a5b701b7958c1053860422f')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+b2sums=('328f23151a51b961e00ba8be1b9ea96a35e264475a40b81f1907bbe261800d0d1b1da4339ee696c9eaf52fbebf7c7203a7f2d9832eec6c896e20ce5ef3ac4dae')
 
 build() {
-    cd $pkgname-$pkgver
+    cd $_name-$pkgver
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd $pkgname-$pkgver
+    cd $_name-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

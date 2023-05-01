@@ -1,6 +1,6 @@
 pkgbase = django-upgrade
 	pkgdesc = Automatically upgrade your Django projects.
-	pkgver = 1.12.0
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://github.com/adamchainz/django-upgrade
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = django-upgrade
 	makedepends = python-wheel
 	depends = python
 	depends = python-tokenize-rt
-	source = https://files.pythonhosted.org/packages/source/d/django-upgrade/django-upgrade-1.12.0.tar.gz
-	b2sums = 6633abdfd3dc05d032d8818e4a0bab5af180ce79c133eacb962d22346a590418bc140597683b694bc003c677844830190b818f633a5b701b7958c1053860422f
+	source = https://files.pythonhosted.org/packages/source/d/django_upgrade/django_upgrade-1.13.0.tar.gz
+	b2sums = 328f23151a51b961e00ba8be1b9ea96a35e264475a40b81f1907bbe261800d0d1b1da4339ee696c9eaf52fbebf7c7203a7f2d9832eec6c896e20ce5ef3ac4dae
 
 pkgname = django-upgrade
