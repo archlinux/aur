@@ -9,14 +9,14 @@
     Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
     Updated localization provided by our community (@JustArchi-ArchiBot).
     Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
-2022-04-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+2023-04-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.4.4.5-1:
     Defaulted new device confirmation prompt to N in Headless and --service modes (@JustArchi #2867).
   * 5.4.4.4-1:
     Added support for logging in through device confirmations, this allows you to approve the login on your phone and avoid typing 2FA code in ASF (@JustArchi #2857).
     Added support for handling DuplicateRequest during logging in (@JustArchi #2864).
     Further improved new login flow to be more resilent against issues (@JustArchi).
-2022-03-25 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+2023-03-25 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.4.4.3-1:
     Implemented new login flow which fixes Steam breaking change rendering previously used login keys mechanism invalid (@JustArchi #2840).
     Added support for StartupVideo (item_class_17) item type (@JustArchi).
@@ -24,7 +24,7 @@
     Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
     Updated localization provided by our community (@JustArchi-ArchiBot).
     Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
-2022-02-26 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+2023-02-26 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.4.3.2-1:
     Added new MobileAuthenticator plugin which adds two new commands: 2fainit and 2fafinalize, see wiki for more info (@JustArchi).
     Added win-arm64 OS-specific ASF variant, see wiki for more info (@JustArchi).
@@ -37,7 +37,7 @@
     pkg: explicit build instructions (replace cc.sh script)
     pkg: include all upstream plugins
     pkg: check git tag signature
-2022-02-01 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+2023-02-01 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.4.2.13-1:
     [!] Improved neutral+ logic to reject possible abuse/exploitation on fair offers (@JustArchi #2807).
     ItemsMatcher will now cancel trade offers that were created in the previous run, and deprioritize steamIDs that didn't answer (@JustArchi #2787).
