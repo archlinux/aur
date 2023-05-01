@@ -4,7 +4,7 @@
 # Contributor: Denis Zheleztsov <difrex.punk@gmail.com>
 
 pkgname=wlr-randr-git
-pkgver=v0.2.0+6+g02c69a6
+pkgver=0.3.0+1+gb9fad41
 pkgrel=1
 pkgdesc="Utility to manage outputs of a Wayland compositor (latest git version)"
 arch=('x86_64')

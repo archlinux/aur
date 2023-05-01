@@ -1,6 +1,6 @@
 pkgbase = wlr-randr-git
 	pkgdesc = Utility to manage outputs of a Wayland compositor (latest git version)
-	pkgver = v0.2.0+6+g02c69a6
+	pkgver = 0.3.0+1+gb9fad41
 	pkgrel = 1
 	url = https://sr.ht/~emersion/wlr-randr/
 	arch = x86_64
