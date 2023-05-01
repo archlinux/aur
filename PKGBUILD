@@ -1,6 +1,5 @@
-# Maintainer: tjbp (archlinux@tjbp.net)
-# Contributor: Pierre Schmitz <pierre@archlinux.de>
-# Contributor: pohl7589
+# Maintainer: BlackCatDevel0per <bcdev@mail.ru>
+# https://github.com/BlackCatDevel0per
 
 pkgname=php82-composer
 epoch=1
