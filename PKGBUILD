@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ideal
-_pkgver=1.24.0
+_pkgver=1.24.1
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.24.1
 pkgrel=1
 pkgdesc='Interactive Differential Expression AnaLysis'
 arch=('any')
@@ -57,7 +57,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg38.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6f37cee67e9c393db026f6ec1674bbd27420c4cd1c714d75071bb1db17172e16')
+sha256sums=('9723c28c06b198e1c329614631fdda0d95e823b641265942b4d37c55d0d9b9a1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
