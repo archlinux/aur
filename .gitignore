@@ -2,6 +2,5 @@ pkg/
 src/
 wiliwili/
 
-LICENSE
 *.log
 *.pkg.tar.zst
