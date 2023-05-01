@@ -2,9 +2,9 @@ _pkgname=dolphin
 pkgname="$_pkgname-tabopts"
 pkgver=23.04.0
 pkgrel=1
-pkgdesc='KDE File Manager - with tab options patch'
+pkgdesc='KDE File Manager - with extended tab options'
 arch=(i686 x86_64)
-url="https://invent.kde.org/system/dolphin/-/merge_requests/269"
+url="https://invent.kde.org/xiota/dolphin/-/merge_requests/1"
 license=(LGPL)
 depends=(
   'baloo-widgets'
@@ -33,18 +33,19 @@ source=(
   "https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz"
 
   # add tab options
-  "https://invent.kde.org/system/dolphin/-/merge_requests/269.patch"
+  # "https://invent.kde.org/system/dolphin/-/merge_requests/269.patch"
+  "https://invent.kde.org/xiota/dolphin/-/merge_requests/1.patch"
 )
 sha256sums=(
   'cd49268a3b0309253587d424fbdffe25b26c951df7e6932a42f48cf34b006c50'
-  '5fdc620d687ad0d8a6ca6f5e0457b7130b10da2a87a1e10bf1ef41295f8bf3a7'
+  '44c2dcbfb6b507b9935dcd41ca41acc6f6e987bbc47d3c5abb405ae153b16300'
 )
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
 
   for p in "$srcdir"/*.patch ; do
-    patch -Np1 -i "$p"
+    patch -Np1 -F100 -i "$p"
   done
 }
 
