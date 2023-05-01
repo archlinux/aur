@@ -1,10 +1,11 @@
 pkgbase = libbladerf-git
 	pkgdesc = Driver and userspace for the bladeRF SDR.
-    pkgver = 2018.12.rc3.r3.g3bb8ad61
+	pkgver = 2023.02.r33.g2b90ed39
 	pkgrel = 1
 	url = https://github.com/Nuand/bladeRF
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL2
 	makedepends = cmake
 	makedepends = help2man
@@ -13,7 +14,16 @@ pkgbase = libbladerf-git
 	provides = bladerf
 	conflicts = bladerf
 	source = git+https://github.com/Nuand/bladeRF
+	source = https://www.nuand.com/fpga/hostedxA4-latest.rbf
+	source = https://www.nuand.com/fpga/hostedxA9-latest.rbf
+	source = https://www.nuand.com/fpga/hostedx40-latest.rbf
+	source = https://www.nuand.com/fpga/hostedx115-latest.rbf
+	source = https://www.nuand.com/fx3/bladeRF_fw_latest.img
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = libbladerf-git
-

@@ -1,11 +1,11 @@
 # Maintainer: Stefan Biereigel <stefan@biereigel.de>
 
 pkgname=libbladerf-git
-pkgver=2018.12.rc3.r3.g3bb8ad61
+pkgver=2023.02.r33.g2b90ed39
 pkgrel=1
 pkgdesc="Driver and userspace for the bladeRF SDR."
 url="https://github.com/Nuand/bladeRF"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 license=('GPL2')
 depends=('libusb')
 provides=('bladerf')
@@ -47,7 +47,8 @@ build() {
     -DBUILD_DOCUMENTATION=ON \
     -DCMAKE_INSTALL_LIBDIR:PATH=lib \
     -Dusb_LIBRARY:FILEPATH=/usr/lib/libusb-1.0.so \
-    -DCMAKE_INSTALL_PREFIX=/usr ../
+    -DCMAKE_INSTALL_PREFIX=/usr ../ \
+    -DUDEV_RULES_PATH=/usr/lib/udev/rules.d
   make
   # ENABLE_FX3_BUILD needs cypress toolchain
   # really really wants to put files in /usr/lib64
@@ -63,4 +64,10 @@ package() {
   install -Dm644 hostedxA9-latest.rbf  "$pkgdir/usr/share/Nuand/bladeRF/hostedxA9.rbf"
   install -Dm644 hostedx40-latest.rbf  "$pkgdir/usr/share/Nuand/bladeRF/hostedx40.rbf"
   install -Dm644 hostedx115-latest.rbf "$pkgdir/usr/share/Nuand/bladeRF/hostedx115.rbf"
+
+  # FS#54105
+  cd "$pkgdir/usr/lib/udev/rules.d/"
+  mv 88-nuand-bladerf1.rules   70-nuand-bladerf1.rules
+  mv 88-nuand-bladerf2.rules   70-nuand-bladerf2.rules
+  mv 88-nuand-bootloader.rules 70-nuand-bootloader.rules
 }
