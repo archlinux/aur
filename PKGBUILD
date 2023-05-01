@@ -6,11 +6,11 @@ pkgrel=1
 url="https://gitlab.gnome.org/World/Perl/perl-gtk4/"
 license=('LGPL')
 pkgdesc="Perl interface to the 4.x series of the GTK+ toolkit"
-arch=('i686' 'x86_64')
+arch=('any')
 depends=('gtk4' 'perl-cairo-gobject' 'perl-glib-object-introspection')
 makedepends=('perl-dist-zilla' 'perl-dist-zilla-plugin-git')
 source=(
-	perl-gtk4::git+https://gitlab.gnome.org/World/Perl/perl-gtk4/
+	${pkgname}::git+https://gitlab.gnome.org/World/Perl/perl-gtk4/
 )
 sha512sums=('SKIP')
 
