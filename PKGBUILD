@@ -1,6 +1,6 @@
 # Maintainer: Luke Labrie-Cleary <luke dot cleary at copenhagenatomics dot com>
-pkgname=moab
-pkgver=5.3.0
+pkgname=moab-git
+pkgver=5.4.1
 pkgrel=1
 pkgdesc="The Mesh-Oriented datABase MOAB is a component for representing and evaluating mesh data"
 arch=('x86_64')
@@ -24,20 +24,22 @@ makedepends=(
 	patch
 )
 
-provides=("${pkgname%-pkgver}")
-source=('https://ftp.mcs.anl.gov/pub/fathom/moab-5.3.0.tar.gz')
-md5sums=('7ae3967f297f7d6fddf38de576e98758')
-prepare() {
-cd "$pkgname-$pkgver"
-patch --forward --input="../../moab-5.3.0-p.1.patch"
+source=("${pkgname}::git+${url}.git")
+pkgver() {
+  cd $srcdir/${pkgname}
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
+provides=("${pkgname%-pkgver}")
+
+md5sums=('SKIP')
 build() {
 	cd $srcdir
 	mkdir build && cd build
-	cmake ../$pkgname-$pkgver -DENABLE_HDF5=ON \
+	cmake ../$pkgname -DENABLE_HDF5=ON \
 				  -DENABLE_NETCDF=ON \
 				  -DENABLE_FORTRAN=OFF \
 				  -DENABLE_BLASLAPACK=OFF \
+				  -DBUILD_SHARED_LIBS=ON \
 				  -DENABLE_PYMOAB=ON \
 				  -DBUILD_SHARED_LIBS=ON \
 				  -DCMAKE_INSTALL_PREFIX=/opt/MOAB
@@ -47,6 +49,4 @@ build() {
 package() {
 	cd $srcdir/build
 	make DESTDIR="$pkgdir/" install
-	cd pymoab
-	python setup.py install --prefix=$pkgdir/opt/MOAB
 }
