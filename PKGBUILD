@@ -50,4 +50,9 @@ check() {
 package() {
   cd "$_pkgname/build"
   DESTDIR="$pkgdir" ./muon install
+
+  # remove this as the `meson` package also provides it
+  # muon only has a `docs` option right now, so
+  # downloading/generating/deleting is the only option :/
+  rm "$pkgdir"/usr/share/man/man3/meson-reference.3
 }
