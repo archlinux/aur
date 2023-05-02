@@ -1,6 +1,6 @@
 # Maintainer: pkg_maintainer <archlinuxpackagemaintainer@gmail.com>
 pkgname=tplay-git
-pkgver=5.r8.f8a205f
+pkgver=0.3.1.r8.f8a205f
 pkgrel=1
 epoch=
 pkgdesc="A terminal ASCII media player. View images, gifs, videos, webcam, YouTube, etc.. directly in the terminal as ASCII art."
