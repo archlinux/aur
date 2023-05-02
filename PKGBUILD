@@ -2,15 +2,15 @@
 # Contributor: xiretza <xiretza+aur@gmail.com>
 
 pkgname=python-discord
-pkgver=2.2.2
+pkgver=2.2.3
 _tarname=discord.py-$pkgver
 pkgrel=1
 pkgdesc="Discord API wrapper written in Python"
-arch=('any')
+arch=(any)
 url="https://github.com/Rapptz/discord.py"
-license=('MIT')
+license=(MIT)
 depends=('python-aiohttp>=3.7.4' 'python-aiohttp<4')
-makedepends=('python-setuptools')
+makedepends=(python-setuptools)
 optdepends=(
 	'python-pynacl>=1.3.0: voice support'
 	'libffi: voice support'
@@ -21,7 +21,7 @@ optdepends=(
 	'python<3.10: speed support'
 )
 source=("$_tarname.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('410ad6b5ad1167677ff4162f9e587cd26ad67b038f9a7528109cdeafd7b268a81c4af78b60849ea2fcf5ad632d120727fa5630d1b958fd2af2aaaedf286de6dc')
+sha512sums=('d7ff7bf45e3c4b4fdd57643b5ad12ebc2c4082e49add1e3494af76c9110f312c455a272aac69dc0ef89dc1c0e2fc991eec3772cd5daf75e2ac3ec4637b1edab6')
 
 build() {
 	cd $_tarname
@@ -30,6 +30,6 @@ build() {
 
 package() {
 	cd $_tarname
-	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
