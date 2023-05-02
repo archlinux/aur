@@ -1,15 +1,16 @@
 pkgbase = gnome-shell-extension-hibernate-status
 	pkgdesc = Gnome Shell extension that adds a hibernate/hybrid suspend button in Status menu.
-	pkgver = 1.10.2
+	pkgver = 1.11.1
 	pkgrel = 1
 	url = https://github.com/arelange/gnome-shell-extension-hibernate-status
-	install = gnome-shell-extension-hibernate-status.install
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = gnome-shell
 	provides = gnome-shell-extension-hibernate-status
-	source = https://github.com/arelange/gnome-shell-extension-hibernate-status/archive/v1.10.2/gnome-shell-extension-hibernate-status-v1.10.2.tar.gz
-	sha256sums = 7e9b729f499892ddb9507e661be662d21307695a20a1222808be89f412cc94cf
+	conflicts = gnome-shell-extension-hibernate-status-git
+	source = https://github.com/arelange/gnome-shell-extension-hibernate-status/archive/v1.11.1/gnome-shell-extension-hibernate-status-v1.11.1.tar.gz
+	sha256sums = 1269763e6d7301690033266f1183d72a5db7e43600652d415e3e88a72184ad4b
+	b2sums = af1b366f5a4a17070fdd235267bfa38d1484c53a70ddf8f0cad0be108f5ea6ed47b85e43e0f11ab2ff35cf24d69c47e287fc0387d6e771d12d7708e1fef13dbb
 
 pkgname = gnome-shell-extension-hibernate-status
