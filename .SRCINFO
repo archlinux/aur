@@ -1,19 +1,20 @@
 pkgbase = python-pykickstart
-	pkgdesc = a python library that is used for reading and writing kickstart files
-	pkgver = 3.3
+	pkgdesc = Python module for manipulating kickstart files
+	pkgver = 3.32.10
 	pkgrel = 1
 	url = http://fedoraproject.org/wiki/Pykickstart
 	arch = any
 	license = GPL
-	makedepends = python
-	makedepends = urlgrabber
-	source = pykickstart-3.3.tar.gz::https://github.com/rhinstaller/pykickstart/archive/r3.3-1.tar.gz
-	sha256sums = 054a506dd26e3573717effcd4f5b1d4d74e59ce666c57844559ecaa3ca32329c
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	source = pykickstart-3.32.10.tar.gz::https://github.com/pykickstart/pykickstart/archive/r3.32.10.tar.gz
+	sha512sums = 55e0dbaa62acb1123eb45ade01c4edc82234162e513755ced6a34efe40c20763c1983eb263ff8b9d50f9c2e46210792b41b338690575654dc77743877928192a
 
 pkgname = python-pykickstart
-	pkgdesc = a python library that is used for reading and writing kickstart files
+	pkgdesc = Python module for manipulating kickstart files
 	depends = python-requests
-	depends = urlgrabber
 
 pkgname = pykickstart-tools
 	pkgdesc = tools for reading and writing kickstart files
