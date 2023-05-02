@@ -33,7 +33,12 @@ build() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     cd build
-    install -Dm775 ochess "${pkgdir}/usr/bin/ochess"
+    # Create wrapper script (simpler shared library management)
+    echo '#!/usr/bin/env bash' > ochess_wrapper.sh
+    echo 'LD_LIBRARY_PATH=/usr/local/lib /usr/local/bin/ochess_executable' >> ochess_wrapper.sh
+
+    install -Dm775 ochess_wrapper.sh "${pkgdir}/usr/local/bin/ochess"
+    install -Dm775 ochess "${pkgdir}/usr/local/bin/ochess_executable"
     install -Dm775 libs/cgeditor/libcgeditor.so "${pkgdir}/usr/local/lib/ochess/libcgeditor.so"
     install -Dm775 libs/chessarbiter/libchessarbiter.so "${pkgdir}/usr/local/lib/ochess/libchessarbiter.so"
     install -Dm775 libs/pgnp/libpgnp.so "${pkgdir}/usr/local/lib/ochess/libpgnp.so"
