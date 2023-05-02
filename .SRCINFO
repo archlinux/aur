@@ -10,4 +10,8 @@ pkgbase = python-qmake2cmake
 	sha256sums = 50e0f5d6fe309fd897b90225f2d776d57e10fced6157d9e177fb7df2af3319d6
 
 pkgname = python-qmake2cmake
-	depends = python python-portalocker python-pyparsing python-sympy mypy
+	depends = python
+	depends = python-portalocker
+	depends = python-pyparsing
+	depends = python-sympy
+	depends = mypy
