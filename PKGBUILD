@@ -2,7 +2,7 @@
 # Co-maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-openai
 _name=${pkgname#python-}
-pkgver=0.27.5
+pkgver=0.27.6
 pkgrel=1
 pkgdesc="Python client library for the OpenAI API"
 arch=('any')
@@ -13,9 +13,15 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel
 optdepends=('python-numpy: Needed for CLI fine-tuning data preparation tool'
             'python-pandas: Needed for CLI fine-tuning data preparation tool'
             'python-pandas-stubs: Needed for type hints for mypy'
-            'python-openpyxl: Needed for CLI fine-tuning data preparation tool xlsx format')
+            'python-openpyxl: Needed for CLI fine-tuning data preparation tool xlsx format'
+            'python-wandb: Support for Weights & Biases'
+            'python-scikit-learn: Needed for embedding utils'
+            'python-tenacity: embeddings'
+            'python-matplotlib: embeddings'
+            'python-plotly: embeddings'
+            'python-scipy: embeddings')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('75778ca05759c77dde704985ee16976ba58804212f10e61f44356e68ffb8390e')
+sha256sums=('63ca9f6ac619daef8c1ddec6d987fe6aa1c87a9bfdce31ff253204d077222375')
 
 build() {
   cd "${_name}-$pkgver"
