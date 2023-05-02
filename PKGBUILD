@@ -2,7 +2,7 @@
 # Contributor: Drata
 # Contributor: otaj
 pkgname=drata-agent
-pkgver=3.2.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="The Drata Agent is a light-weight tray-application that runs in the background, reporting important read-only data to Drata about your machine’s state for compliance tracking."
 arch=('x86_64')
@@ -14,17 +14,17 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 validpgpkeys=('2DCE07BE62610800B1E4BEDE955D29B1F039BC43')
 source_x86_64=("https://cdn.drata.com/agent/dist/linux/${pkgname}-${pkgver}.deb")
-sha512sums_x86_64=('6c35f266150916de93189890ab56cafbad4ca57d8868d646bd9c2397917378d94a995bcee375ff430ed486edc07cdceb5b75cb340e01a996738674727fad7634')
+sha512sums_x86_64=('b04f6f4bddf9658e4430ee5a794b6e20b741bbc6901e93118a0761d14d38a711ff4bdc480faaed8198bf56e3f8c4379d186aa0863ea98263de3a24036aaf9266')
 
-package(){
-  cd "${srcdir}"
+package() {
+	cd "${srcdir}"
 
-  # Extract debian package
-  ar xf "${pkgname}"-"${pkgver}".deb
+	# Extract debian package
+	ar xf "${pkgname}"-"${pkgver}".deb
 
-  # Extract data to pkgdir
-  tar xf data.tar.xz -C "${pkgdir}/"
+	# Extract data to pkgdir
+	tar xf data.tar.xz -C "${pkgdir}/"
 
-  # Install license file
-  # install -Dm644 "${pkgdir}/opt/Drata Agent/LICENSES.chromium.html" "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
+	# Install license file
+	# install -Dm644 "${pkgdir}/opt/Drata Agent/LICENSES.chromium.html" "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
