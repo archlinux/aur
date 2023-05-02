@@ -1,0 +1,10 @@
+--- sexp-0.8.3/include/sexp/sexp-error.h.orig	2023-05-02 23:12:37.597785967 +0300
++++ sexp-0.8.3/include/sexp/sexp-error.h	2023-05-02 23:12:47.228946197 +0300
+@@ -29,6 +29,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <exception>
+ #include <iostream>
+ #include <string>
