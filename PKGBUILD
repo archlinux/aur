@@ -3,7 +3,7 @@
 # Contributor: Dmitry N. Shilov <stormblast@land.ru>
 
 pkgname=sakura
-pkgver=3.8.6
+pkgver=3.8.7
 pkgrel=1
 pkgdesc="A terminal emulator based on GTK and VTE"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('vte3' 'libxft')
 makedepends=('cmake')
 source=("https://launchpad.net/sakura/trunk/${pkgver}/+download/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('b07501185cc0e9c8ca4fd5e59f4c9db55417e97d24ba2c3031bedd80741b3be3')
+sha256sums=('ba7009ff03cacc19149d82f280413defb019540d2409e6cb9243f0d7ac812922')
 
 prepare() {
   cd "$srcdir/${pkgname}-${pkgver}"
