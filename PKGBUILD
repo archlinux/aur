@@ -8,6 +8,9 @@ pkgrel=1
 pkgdesc="On screen lyrics for wayland with netease cloud music source"
 url="https://github.com/poly000/waylyrics"
 
+conflicts=('waylyrics')
+provides=('waylyrics')
+
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 
 license=('MIT')
