@@ -1,13 +1,13 @@
 pkgbase = astro-cli
 	pkgdesc = The Astronomer CLI can be used to build Airflow DAGs locally and run them via docker-compose, as well as to deploy those DAGs to Astronomer-managed Airflow clusters and interact with the Astronomer API in general.
-	pkgver = v1.0.0
+	pkgver = v1.14.1
 	pkgrel = 1
 	url = https://github.com/astronomer/astro-cli
 	arch = x86_64
 	license = Apache
 	makedepends = tar
 	provides = astro
-	source = https://github.com/astronomer/astro-cli/releases/download/v1.0.0/astro_1.0.0_linux_amd64.tar.gz
-	sha256sums = 7dbd233778ee651cc8de28f277a1c4599ad3e256429aa25454cf49eb06cf30fa
+	source = https://github.com/astronomer/astro-cli/releases/download/v1.14.1/astro_1.14.1_linux_amd64.tar.gz
+	sha256sums = bef39af38a3caba584575e8d9e8185972c8b509354c0469a02ff6b581ce7cfec
 
 pkgname = astro-cli
