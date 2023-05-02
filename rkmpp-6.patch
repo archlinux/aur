@@ -1,7 +1,7 @@
 From e13ddabb7694f8332d95ddc4bc00e37b1f7e2a76 Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Wed, 4 Sep 2019 17:24:37 +0800
-Subject: [PATCH 01/23] avcodec/rkmppdec: Clear eos flag after reset
+Subject: [PATCH 01/24] avcodec/rkmppdec: Clear eos flag after reset
 
 Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
 ---
@@ -27,7 +27,7 @@ index 8bf7c6ed16..e31e0c44dc 100644
 From 32c3c2a06887dce24c73a8fb65fd90f0d47dc53f Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Wed, 4 Sep 2019 17:27:46 +0800
-Subject: [PATCH 02/23] avcodec/rkmppdec: Compatible with old reordered_opaque
+Subject: [PATCH 02/24] avcodec/rkmppdec: Compatible with old reordered_opaque
  and pkt_pts
 
 Some users might still using these deprecated APIs.
@@ -66,7 +66,7 @@ index e31e0c44dc..4b4b17c342 100644
 From 1839dfc7860999826e5152c0b96938d8772a4739 Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Wed, 19 May 2021 09:55:03 +0800
-Subject: [PATCH 03/23] rkmppdec: Remove frame buffer limit
+Subject: [PATCH 03/24] rkmppdec: Remove frame buffer limit
 
 It would hang when reaching the limit.
 
@@ -108,7 +108,7 @@ index 4b4b17c342..d8f48f36b9 100644
 From 076cca4ad14ac04297aa2cf9786cb7b9b80be07b Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Thu, 20 May 2021 10:19:15 +0800
-Subject: [PATCH 04/23] avcodec/rkmppdec: Rework decoding flow
+Subject: [PATCH 04/24] avcodec/rkmppdec: Rework decoding flow
 
 Stop using the deprecated MPP_DEC_GET_STREAM_COUNT API.
 
@@ -784,7 +784,7 @@ index d8f48f36b9..d3c13297d2 100644
 From 3f3e229c729d779ff1b4bc6ec8abc11e2b2b078b Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Fri, 21 May 2021 04:23:36 +0800
-Subject: [PATCH 05/23] HACK: avcodec/rkmppdec: Force aligning coded width and
+Subject: [PATCH 05/24] HACK: avcodec/rkmppdec: Force aligning coded width and
  height to 64
 
 The chromium would try to align planes' width and height to 32, which
@@ -820,7 +820,7 @@ index d3c13297d2..c767fc8f1b 100644
 From fdf094ef3e983706e28f7f77d96284de554612d9 Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Thu, 20 May 2021 10:20:17 +0800
-Subject: [PATCH 06/23] HACK: avcodec/rkmppdec: Support outputing YUV420P
+Subject: [PATCH 06/24] HACK: avcodec/rkmppdec: Support outputing YUV420P
 
 Lots of users support YUV420P format rather than DRM_PRIME.
 
@@ -1062,7 +1062,7 @@ index c767fc8f1b..2bcc357c36 100644
 From 6f54c9ff2d603000d3ee112c584b4d76a23bfd5f Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Mon, 27 Sep 2021 10:20:54 +0800
-Subject: [PATCH 07/23] avcodec/rkmppdec: Support logging fps
+Subject: [PATCH 07/24] avcodec/rkmppdec: Support logging fps
 
 Set env FFMPEG_RKMPP_LOG_FPS=1 to enable it.
 
@@ -1184,7 +1184,7 @@ index 2bcc357c36..41e17422a0 100644
 From 8b3fb18571d3dcf1f561f413c07aec7412046ea7 Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Mon, 27 Sep 2021 11:06:11 +0800
-Subject: [PATCH 08/23] HACK: libavcodec & rkmppdec: Add
+Subject: [PATCH 08/24] HACK: libavcodec & rkmppdec: Add
  FF_CODEC_CAP_CONTIGUOUS_BUFFERS
 
 Add FF_CODEC_CAP_CONTIGUOUS_BUFFERS to alloc contiguous buffers.
@@ -1317,7 +1317,7 @@ index 41e17422a0..01ab7e5492 100644
 From 8e916a6896d847d4cda4d455ad47e188c1825337 Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Mon, 13 Dec 2021 15:44:43 +0800
-Subject: [PATCH 09/23] HACK: avcodec/rkmppdec: Support NV15
+Subject: [PATCH 09/24] HACK: avcodec/rkmppdec: Support NV15
 
 NV15 is the official DRM fourcc for Arm's NV12 10LE40 format.
 
@@ -1362,7 +1362,7 @@ index 01ab7e5492..403f5339a9 100644
 From c9d8ec349c5b766dffafbddbe3b1ef0e57b24456 Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Wed, 15 Dec 2021 15:34:48 +0800
-Subject: [PATCH 10/23] avcodec/rkmppdec: Support NV16
+Subject: [PATCH 10/24] avcodec/rkmppdec: Support NV16
 
 The MPP might output NV16 format.
 
@@ -1421,7 +1421,7 @@ index 403f5339a9..770c4ef71c 100644
 From 06e79e58f08c7426681497aa1f653ba1cc116947 Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Wed, 23 Mar 2022 14:20:16 +0800
-Subject: [PATCH 11/23] avcodec/rkmppdec: Support sync mode
+Subject: [PATCH 11/24] avcodec/rkmppdec: Support sync mode
 
 Some people just don't know how to handle async APIs :(
 
@@ -1479,7 +1479,7 @@ index 770c4ef71c..9539a48817 100644
 From ba5c782b923192e820b5c08aff61da5133b2dd1a Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Wed, 25 May 2022 12:35:53 +0800
-Subject: [PATCH 12/23] avcodec/rkmppdec: Add H263/MPEG1/MPEG2/MPEG4
+Subject: [PATCH 12/24] avcodec/rkmppdec: Add H263/MPEG1/MPEG2/MPEG4
 
 Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
 ---
@@ -1627,7 +1627,7 @@ index 9539a48817..cd03174ee2 100644
 From 27822b4269a2f5b7062c50b4ce4363a4f52f6cc6 Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Sun, 29 Jan 2023 17:50:14 +0800
-Subject: [PATCH 13/23] avcodec/rkmppdec: Add AV1
+Subject: [PATCH 13/24] avcodec/rkmppdec: Add AV1
 
 Note: For new chips like rk3588.
 
@@ -1713,7 +1713,7 @@ index cd03174ee2..32fe1ede6a 100644
 From 07bad22a207711d9860d5d66191a865f32d59881 Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Mon, 27 Mar 2023 17:44:09 +0800
-Subject: [PATCH 14/23] rkmppdec: Ignore special MPP format masks
+Subject: [PATCH 14/24] rkmppdec: Ignore special MPP format masks
 
 We should use the basic format in format conversion.
 
@@ -1757,17 +1757,17 @@ index 32fe1ede6a..dcaea9d435 100644
 2.40.0
 
 
-From 643b1bd70ed227923f909bda3d49f0849fb4087c Mon Sep 17 00:00:00 2001
+From 5910b3c4944c51a762175c461eec4f4781a3234f Mon Sep 17 00:00:00 2001
 From: boogie <boogiepop@gmx.com>
 Date: Thu, 20 Apr 2023 15:23:26 +0200
-Subject: [PATCH 15/23] Prioritize RKMPP decoders first
+Subject: [PATCH 15/24] Prioritize RKMPP decoders first
 
 ---
  libavcodec/allcodecs.c | 19 ++++++++++---------
  1 file changed, 10 insertions(+), 9 deletions(-)
 
 diff --git a/libavcodec/allcodecs.c b/libavcodec/allcodecs.c
-index dd8164d2b1..541229e834 100644
+index dd8164d2b1..ba08c937d2 100644
 --- a/libavcodec/allcodecs.c
 +++ b/libavcodec/allcodecs.c
 @@ -34,6 +34,16 @@
@@ -1778,9 +1778,9 @@ index dd8164d2b1..541229e834 100644
 +extern const FFCodec ff_h263_rkmpp_decoder;
 +extern const FFCodec ff_h264_rkmpp_decoder;
 +extern const FFCodec ff_hevc_rkmpp_decoder;
-+extern const AVCodec ff_mpeg1_rkmpp_decoder;
-+extern const AVCodec ff_mpeg2_rkmpp_decoder;
-+extern const AVCodec ff_mpeg4_rkmpp_decoder;
++extern const FFCodec ff_mpeg1_rkmpp_decoder;
++extern const FFCodec ff_mpeg2_rkmpp_decoder;
++extern const FFCodec ff_mpeg4_rkmpp_decoder;
 +extern const FFCodec ff_vp8_rkmpp_decoder;
 +extern const FFCodec ff_vp9_rkmpp_decoder;
 +
@@ -1848,10 +1848,10 @@ index dd8164d2b1..541229e834 100644
 2.40.0
 
 
-From ebec24f8245cc4e33405465de6974cb8c39f3b66 Mon Sep 17 00:00:00 2001
+From 035feef7fdc3ed1378b13ce8d28ad4237cac48b2 Mon Sep 17 00:00:00 2001
 From: boogie <boogiepop@gmx.com>
 Date: Fri, 7 Apr 2023 16:20:13 +0200
-Subject: [PATCH 16/23] Remove librga
+Subject: [PATCH 16/24] Remove librga
 
 ---
  configure             |  7 +----
@@ -2011,10 +2011,10 @@ index dcaea9d435..908ab3963b 100644
 2.40.0
 
 
-From 25bf7afa3270c34587e99217abdc4f88cde1185b Mon Sep 17 00:00:00 2001
+From 3a656a5cf3545ebcfec88ca9b2ca4fad2ff3f286 Mon Sep 17 00:00:00 2001
 From: boogie <boogiepop@gmx.com>
 Date: Sun, 16 Apr 2023 19:17:44 +0200
-Subject: [PATCH 17/23] Faster sw conversion with libyuv using SIMD
+Subject: [PATCH 17/24] Faster sw conversion with libyuv using SIMD
 
 ---
  configure             |  3 +++
@@ -2126,10 +2126,10 @@ index 908ab3963b..1cca4b6e7d 100644
 2.40.0
 
 
-From 62146e0a096f3f90f7c64c72e30ae4c11a584955 Mon Sep 17 00:00:00 2001
+From ebe5776cef27e618ac8b75450f43ead8b0cb6b13 Mon Sep 17 00:00:00 2001
 From: boogie <boogiepop@gmx.com>
 Date: Tue, 18 Apr 2023 19:05:56 +0200
-Subject: [PATCH 18/23] Use internal rga to convert from mppbuffer to avbuffer
+Subject: [PATCH 18/24] Use internal rga to convert from mppbuffer to avbuffer
 
 ---
  libavcodec/rga.h      | 574 ++++++++++++++++++++++++++++++++++++++++++
@@ -2883,10 +2883,10 @@ index 1cca4b6e7d..e3e51d9973 100644
 2.40.0
 
 
-From db4a764ddf63c29950aa8dcf29138b42b2b13b9b Mon Sep 17 00:00:00 2001
+From 21644b8342b95bc75b2b2b4e1cddd37ab8668283 Mon Sep 17 00:00:00 2001
 From: boogie <boogiepop@gmx.com>
 Date: Tue, 18 Apr 2023 23:20:13 +0200
-Subject: [PATCH 19/23] rework receive frame without any loop and more
+Subject: [PATCH 19/24] rework receive frame without any loop and more
  statefull flow remove draining flags which is no more necessary with the new
  flow remove sync mode, this is useless
 
@@ -3089,10 +3089,10 @@ index e3e51d9973..bd87d74e39 100644
 2.40.0
 
 
-From 754c72053fe18aecc41780a0e7e8292d5c1dd35c Mon Sep 17 00:00:00 2001
+From f46c90307798f98cdf2b0d15d5b8905e4db83cf6 Mon Sep 17 00:00:00 2001
 From: boogie <boogiepop@gmx.com>
 Date: Fri, 28 Apr 2023 23:28:14 +0200
-Subject: [PATCH 20/23] rework on flow nv12 output support without rga hdr to
+Subject: [PATCH 20/24] rework on flow nv12 output support without rga hdr to
  sdr conversion support with rga3
 
 ---
@@ -3784,10 +3784,10 @@ index bd87d74e39..f71511d0d0 100644
 2.40.0
 
 
-From df3d1346802a774cff0d09dbad57e29c35a2d15b Mon Sep 17 00:00:00 2001
+From 3493b0fb8f50a57ce94c3544dfe899afe7800822 Mon Sep 17 00:00:00 2001
 From: boogie <boogiepop@gmx.com>
 Date: Sun, 30 Apr 2023 16:52:57 +0200
-Subject: [PATCH 21/23] more verbose stats with latency and MACD FPS
+Subject: [PATCH 21/24] more verbose stats with latency and MACD FPS
 
 ---
  libavcodec/rkmppdec.c | 56 ++++++++++++++++++++++++-------------------
@@ -3915,10 +3915,10 @@ index f71511d0d0..ecee5dd338 100644
 2.40.0
 
 
-From a0578b9fbbb1249d5444d103314a685ed3f610bf Mon Sep 17 00:00:00 2001
+From 893dca97e199609f22a73082af1eba87b6512530 Mon Sep 17 00:00:00 2001
 From: boogie <boogiepop@gmx.com>
 Date: Mon, 1 May 2023 19:00:21 +0200
-Subject: [PATCH 22/23] Allow users to choose pix_fmt using
+Subject: [PATCH 22/24] Allow users to choose pix_fmt using
  "FFMPEG_RKMPP_PIXFMT" env variable. Valid options are: YUV420P, YUV420PSOFT,
  NV12, DRMPRIME. Case sensitive
 
@@ -3988,10 +3988,10 @@ index ecee5dd338..4f9ecb0155 100644
 2.40.0
 
 
-From 6ad90e198b9868b67047bd034198e337cd2c4360 Mon Sep 17 00:00:00 2001
+From 7612f91257a22339bfde5e3258b4b8c2671bb876 Mon Sep 17 00:00:00 2001
 From: boogie <boogiepop@gmx.com>
 Date: Mon, 1 May 2023 20:03:53 +0200
-Subject: [PATCH 23/23] Workaround for Mpp bug, where color primaries, trc and
+Subject: [PATCH 23/24] Workaround for Mpp bug, where color primaries, trc and
  colorspace is giving wrong UNSPECIFIED values
 
 ---
@@ -4015,6 +4015,32 @@ index 4f9ecb0155..60f1506804 100644
      mode = mpp_frame_get_mode(mppframe);
      frame->interlaced_frame = ((mode & MPP_FRAME_FLAG_FIELD_ORDER_MASK) == MPP_FRAME_FLAG_DEINTERLACED);
      frame->top_field_first  = ((mode & MPP_FRAME_FLAG_FIELD_ORDER_MASK) == MPP_FRAME_FLAG_TOP_FIRST);
+-- 
+2.40.0
+
+
+From d8ecadf7de6ec350502b2613dfc34c815969b518 Mon Sep 17 00:00:00 2001
+From: boogie <boogiepop@gmx.com>
+Date: Tue, 2 May 2023 02:07:20 +0200
+Subject: [PATCH 24/24] Log more understandable errors
+
+---
+ libavcodec/rkmppdec.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libavcodec/rkmppdec.c b/libavcodec/rkmppdec.c
+index 60f1506804..c1d357344b 100644
+--- a/libavcodec/rkmppdec.c
++++ b/libavcodec/rkmppdec.c
+@@ -679,7 +679,7 @@ static int rkmpp_get_frame(AVCodecContext *avctx, AVFrame *frame, int timeout)
+ 
+     if(!decoder->buffer_callback){
+     	ret = AVERROR_UNKNOWN;
+-        av_log(avctx, AV_LOG_ERROR, "Decoder has no valid buffer_callback\n");
++    	av_log(avctx, AV_LOG_ERROR, "Decoder can't set output for MPP format:%d and AVFormat:%d.\n", decoder->mpp_format, avctx->pix_fmt);
+         goto fail;
+     }
+ 
 -- 
 2.40.0
 

@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-mpp
 	pkgdesc = Complete solution to record, convert and stream audio and video supporting rockchip MPP hardware decoder
 	pkgver = 6.0
-	pkgrel = 5
+	pkgrel = 6
 	epoch = 2
 	url = https://ffmpeg.org/
 	arch = aarch64
@@ -96,6 +96,6 @@ pkgbase = ffmpeg-mpp
 	validpgpkeys = DD1EC9E8DE085C629B3E1846B18E8928B3948D64
 	b2sums = SKIP
 	b2sums = 555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de
-	b2sums = 08d9133fbee80798939c6606445b8d0ad33e1c29743ff3cb9dbb8a9825ef042511f39e4b4e8ef4a80e708e0ee13e9bd3bc191e63687dd3dd3dbcb1160f3a88ec
+	b2sums = 4d62f7a21cf6bdb9177f931b72a8a30b9a75c0bcef84eb500feb6820e60fd95507b4d92efba5f224fb992e5170d0d8cef388c9f6326f046c1d85eacd22e50a89
 
 pkgname = ffmpeg-mpp
