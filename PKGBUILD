@@ -2,7 +2,7 @@
 
 _pkgname=libheif
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.15.1
+pkgver=1.16.1
 pkgrel=1
 pkgdesc='HEIF file format decoder and encoder (mingw-w64)'
 url='https://github.com/strukturag/libheif'
@@ -16,13 +16,14 @@ depends=(
 	'mingw-w64-libde265'
 	'mingw-w64-rav1e'
 	'mingw-w64-dav1d'
+	'mingw-w64-zlib'
 	'mingw-w64-svt-av1' # Only for x86_64
 )
 makedepends=('mingw-w64-cmake')
 arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
-sha256sums=('0333924bf63d2cd09a021d18d02860eb218cf81b8e6f57d490c505207a59285b')
+sha256sums=('005e337d60436759af80deaf25c7dcf3a98d976b1c8c30117c830aae3452afe5')
 source=(
 	"$_pkgname-$pkgver.tar.gz::https://github.com/strukturag/libheif/archive/v${pkgver}.tar.gz"
 )
@@ -37,12 +38,9 @@ _flags=(
 	-DWITH_RAV1E=OFF
 	-DWITH_SvtEnc=ON # Only supported on 64 bits platforms
 	-DWITH_SvtEnc_PLUGIN=OFF
-	-DWITH_EXAMPLES=OFF )
-
-prepare() {
-	cd "${_srcdir}"
-	sed -i 's/int nPlugins = 0;//' 'libheif/plugins_windows.cc'
-}
+	-DWITH_EXAMPLES=OFF
+	-DWITH_REDUCED_VISIBILITY=ON
+	-DWITH_DEFLATE_HEADER_COMPRESSION=ON )
 
 build() {
 	for _arch in ${_architectures}; do
