@@ -1,13 +1,13 @@
 # Maintainer:  HLFH <gaspard@dhautefeuille.eu>
 
 pkgname=elasticsearch
-pkgver=8.6.2
+pkgver=8.7.1
 pkgrel=1
 pkgdesc="Free and Open, Distributed, RESTful Search Engine"
 arch=('x86_64')
 url="https://www.elastic.co/elasticsearch/"
 license=('custom:Elastic-2.0')
-depends=('jre19-openjdk-headless' 'libxml2')
+depends=('jre-openjdk-headless' 'libxml2')
 provides=("elasticsearch=$pkgver")
 conflicts=('elasticsearch7')
 source=(
@@ -21,7 +21,7 @@ source=(
   elasticsearch-tmpfile.conf
   elasticsearch.default
 )
-b2sums=('c5d76e8fd2b7b28d50a0b81950c5d824f5000d3239efef9c3312e153829f09d98ba1394dceff2f147c29e2cd24be2ea4aaf0e0dc830e51989b87c8c7b48e3b3c'
+b2sums=('6328c11c33ea1e067c6c19afb09a7f5a39fc1cd44dd9c2b51253cf15d847463a5f0311d29785aeddab64ee00fd949a5a8f91f86794e70e4ff22c1bfb9094f29c'
         '76e4098c4f2c0656e70590997ada2e489c53b61386fb92524ac34e09b7fd43b511e2305047754bba29883d388fec4855dd8fc429e0e3aa93068ab671b6bd1a79'
         '9b74e7ae392132056ab5e8a9e2637d71564fe736d10c16e07395878c4ef0a5498147d8a5b7a28dac6ef3722bc525bb8a57b01f9e185613c46c4f34f3a69990c8'
         '48a332da75e1d8c7624a5948c4b145ad6ec6aca7ed2da31802920fa99490cc99a354e06d635b8937217404bcb99302f8d95b7af99d6af8e3227e39cdb80fa3cd'
