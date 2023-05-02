@@ -1,7 +1,7 @@
 # Maintainer: Felipe Balbi <felipe@balbi.sh>
 pkgname=ttf-iosevka-comfy
 _pkgmajor=1
-_pkgminor=1
+_pkgminor=2
 _pkgpatch=0
 pkgver=${_pkgmajor}.${_pkgminor}.${_pkgpatch}
 pkgrel=1
@@ -10,7 +10,7 @@ arch=('any')
 url="https://git.sr.ht/~protesilaos/iosevka-comfy"
 license=('OFL')
 source=("${pkgname}-${pkgver}.tar.gz::https://git.sr.ht/~protesilaos/iosevka-comfy/archive/${pkgver}.tar.gz")
-b2sums=('9685d45d32101674ec1bec0950ed65f0735bfc9ddcff3ee67b68dd1e07def19f1a76a6a0dc342a4d94772cb1aaa98ffd6e8391d91723ac0d65014bd5dd321246')
+b2sums=('8a04fe98aa522b58ed1df43401501db6925c1b007ec47e7fcc92cfb22f6f401666c14f845d93c8a6eb3865d36bef10e5b39073fb9de6aa31cd4e880236b0a054')
 
 package() {
   # Create font directory
