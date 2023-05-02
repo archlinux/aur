@@ -1,6 +1,6 @@
 pkgbase = python-sphinxcontrib-svg2pdfconverter
 	pkgdesc = Sphinx SVG to PDF converter extension
-	pkgver = 1.2.0
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/missinglinkelectronics/sphinxcontrib-svg2pdfconverter
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-sphinxcontrib-svg2pdfconverter
 	depends = python-sphinx
 	optdepends = librsvg: Use librsvg engine
 	optdepends = inkscape: Use inkscape engine
-	source = https://github.com/missinglinkelectronics/sphinxcontrib-svg2pdfconverter/archive/v1.2.0.tar.gz
-	sha256sums = 295a93bb4e81751e7a3fb63cbe4ead43f9341cd94fa8c65f606a2cf454b79c85
+	source = https://github.com/missinglinkelectronics/sphinxcontrib-svg2pdfconverter/archive/v1.2.2.tar.gz
+	sha256sums = bdaca33b740261cbff41519ecbd2791c59d33b403f366636fc4f912213abe05c
 
 pkgname = python-sphinxcontrib-svg2pdfconverter
