@@ -17,8 +17,8 @@ _fragment="${FRAGMENT:-#branch=main}"
 [[ -v CUDA_ARCH ]] && _CMAKE_FLAGS+=(-DCYCLES_CUDA_BINARIES_ARCH="${CUDA_ARCH}")
 
 pkgname=blender-git
-pkgver=3.6.r123623.gf59fdc40ec6
-pkgrel=2
+pkgver=3.6.r123634.gae76fa2da36
+pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
 url="https://blender.org/"
@@ -39,7 +39,7 @@ optdepends=('cuda: CUDA support in Cycles'
             'intel-oneapi-basekit: Intel OpenCL FPGA kernels (all four needed)'
             'gcc11: Compile CUDA support in Cycles'
             'makepkg-cg: Control resources during compilation')
-makedepends+=('git' 'cmake' 'boost' 'mesa' 'ninja' 'llvm' 'clang' 'subversion')
+makedepends+=('git' 'cmake' 'boost' 'mesa' 'llvm' 'clang' 'subversion')
 makedepends+=('wayland-protocols')
 provides=('blender')
 conflicts=('blender')
@@ -165,7 +165,7 @@ build() {
         -DWITH_LIBS_PRECOMPILED=OFF \
         -DXR_OPENXR_SDK_ROOT_DIR=/usr \
         -DPYTHON_VERSION="${_pyver}" \
-        ${_CMAKE_FLAGS[@]}) > "$srcdir/../cmake_out"
+        ${_CMAKE_FLAGS[@]}) #> "$srcdir/../cmake_out"
         #--trace-expand \
 
   cd build
