@@ -10,14 +10,10 @@ pkgbase = dxvk-nvapi-mingw-git
 	makedepends = glslang
 	makedepends = git
 	makedepends = mingw-w64-gcc
-	depends = vulkan-icd-loader
-	depends = wine>=4.0rc1
-	depends = lib32-vulkan-icd-loader
-	depends = dxvk
-	depends = bash
 	provides = dxvk-nvapi-mingw
 	conflicts = dxvk-nvapi-mingw
 	options = !lto
+	options = !staticlibs
 	source = git+https://github.com/jp7677/dxvk-nvapi.git
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	source = dxvk-nvapi-extraopts.patch
@@ -30,3 +26,8 @@ pkgbase = dxvk-nvapi-mingw-git
 	sha256sums = 1f4934c5bfcf208e288a0eda2f385f82acc9e78a4b0ac2a77b5af14c64c8e21e
 
 pkgname = dxvk-nvapi-mingw-git
+	depends = vulkan-icd-loader
+	depends = lib32-vulkan-icd-loader
+	depends = wine
+	depends = dxvk
+	depends = bash
