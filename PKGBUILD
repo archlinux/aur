@@ -8,7 +8,7 @@
 pkgname=wine-ge-custom
 _srctag=GE-Proton8-1
 pkgver=${_srctag//-/.}
-pkgrel=2
+pkgrel=3
 epoch=1
 
 #_winever=${pkgver%.*}
@@ -143,8 +143,7 @@ build() {
   # From Proton
   OPTIMIZE_FLAGS="-O2 -march=nocona -mtune=core-avx2 -mfpmath=sse -pipe"
   SANITY_FLAGS="-fwrapv -fno-strict-aliasing"
-  DEBUG_FLAGS="-ggdb -ffunction-sections -fdata-sections -fno-omit-frame-pointer"
-  COMMON_FLAGS="$OPTIMIZE_FLAGS $DEBUG_FLAGS $SANITY_FLAGS -mno-avx2"
+  COMMON_FLAGS="$OPTIMIZE_FLAGS $SANITY_FLAGS -mno-avx2"
 
   msg2 "Building Wine-64..."
 
