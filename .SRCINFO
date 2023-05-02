@@ -11,7 +11,7 @@ pkgbase = audible-activator-git
 	depends = python-requests
 	depends = python-selenium
 	depends = python-urllib3
-	depends = chromium>=83
+	depends = chromedriver>=83
 	provides = audible-activator=0.2.r1.20210324.79e2cea
 	conflicts = audible-activator
 	source = audible-activator::git+https://github.com/inAudible-NG/audible-activator

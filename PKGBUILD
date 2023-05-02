@@ -21,7 +21,7 @@ depends=(
   "python-requests"
   "python-selenium"
   "python-urllib3"
-  "chromium>=83" # For chromedriver and 'chromedriver'-executable. You can also use "chrome" or any other chrome-based browser which provides a supported chromedriver.
+  "chromedriver>=83" # For chromedriver and 'chromedriver'-executable. You can also use "chrome" or any other chrome-based browser which provides a supported chromedriver.
 )
 
 makedepends=(
