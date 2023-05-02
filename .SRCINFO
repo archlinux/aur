@@ -1,0 +1,14 @@
+pkgbase = plio
+	pkgdesc = PLIO Image Viewer - the Image Viewer with many sort options
+	pkgver = initrel
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_ttf
+	depends = freeimage
+	source = git+https://codeberg.org/klartext/plio.git
+	sha256sums = SKIP
+
+pkgname = plio
