@@ -9,8 +9,8 @@
 _target=m68k-elf
 _target_cpu=m68000
 pkgname=${_target}-newlib
-pkgver=4.2.0
-_suffix=.20211231
+pkgver=4.3.0
+_suffix=.20230120
 pkgrel=1
 pkgdesc="C library for bare metal systems (${_target})."
 arch=(any)
@@ -22,7 +22,7 @@ makedepends=("${_target}-gcc-bootstrap")
 options=('!makeflags' '!strip' 'staticlibs' '!libtool')
 PKGEXT="pkg.tar.zst"
 source=("ftp://sourceware.org/pub/newlib/newlib-${pkgver}${_suffix}.tar.gz")
-sha512sums=('0c3efd7b74a6b8457a717cbb6aa6c5ff268eeaba375535465c6bd6502c3d32b54a9bc3ba7f2c6990f78e29152eee2f62acb39b674d24f9ddf440374a1ec9d2e8')
+sha512sums=('4a06309d36c2255fef8fc8f2d133cafa850f1ed2eddfb27b5d45f5d16af69e0fca829a0b4c9b34af4ed3a28c6fcc929761e0ee823a4229f35c2853d432b5e7ef')
 
 prepare() {
   mkdir ${srcdir}/newlib-build
@@ -46,4 +46,6 @@ build() {
 package() {
     cd ${srcdir}/newlib-build
     DESTDIR=${pkgdir}/ make install
+    # usr/share/info/porting.info.gz conflicts with newlib installs for other architectures
+    rm -r ${pkgdir}/usr/share
 }
