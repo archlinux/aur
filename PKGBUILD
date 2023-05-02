@@ -2,8 +2,8 @@
 
 _pyname='magic-filter'
 pkgname="python-${_pyname}"
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.0.9
+pkgrel=1
 pkgdesc="A filter package based on dynamic attribute getter"
 arch=('any')
 url="https://github.com/aiogram/${_pyname}"
@@ -15,7 +15,7 @@ makedepends=(
     'python-setuptools'
 )
 source=("https://pypi.python.org/packages/source/${_pyname::1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('6c1e8d185cd540606555a07a7c78d9c36bf0c97b9cd6e0a00da65dd38d56026f')
+sha256sums=('d0f1ffa5ff1fbe5105fd5f293c79b5d3795f336ea0f6129c636959a687bf422a')
 provides=("python-${_pyname}")
 conflicts=("python-${_pyname}")
 
