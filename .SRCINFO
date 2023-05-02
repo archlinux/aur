@@ -1,11 +1,12 @@
 pkgbase = qcm-git
 	pkgdesc = Qt client for netease cloud music
-	pkgver = r46.c085302
+	pkgver = r53.4e4d6de
 	pkgrel = 1
 	url = https://github.com/hypengw/Qcm
 	arch = x86_64
 	makedepends = git
 	makedepends = cmake
+	makedepends = extra-cmake-modules
 	makedepends = ninja
 	depends = qt6-base
 	depends = hicolor-icon-theme
@@ -15,6 +16,8 @@ pkgbase = qcm-git
 	depends = qt6-multimedia
 	provides = qcm
 	source = git+https://github.com/hypengw/Qcm.git
+	source = dark-mode.patch
 	sha256sums = SKIP
+	sha256sums = 10da1a403bb52442107e68e6dbba1eabf8a922135ae82e2cb2758901994feb88
 
 pkgname = qcm-git

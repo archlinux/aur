@@ -1,0 +1,12 @@
+diff '--color=auto' --unified --recursive --text Qcm/app/qml/Theme.qml Qcm-new/app/qml/Theme.qml
+--- Qcm/app/qml/Theme.qml	2023-05-02 21:52:18.666643384 +0800
++++ Qcm-new/app/qml/Theme.qml	2023-05-02 21:48:53.796376280 +0800
+@@ -68,7 +68,7 @@
+         readonly property string trending_flat: '\ue8e4'
+     }
+     readonly property bool is_dark_theme: theme === MdColorMgr.Dark
+-    readonly property alias theme: m_color.schemeTheme
++    property alias theme: m_color.schemeTheme
+     readonly property var ts: ({
+             "title_small": {
+                 "size": 12
