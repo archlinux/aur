@@ -1,7 +1,7 @@
 # Maintainer: Henry-ZHR <henry-zhr@qq.com>
 pkgname=python-sentencepiece
-pkgver=0.1.98
-pkgrel=2
+pkgver=0.1.99
+pkgrel=1
 pkgdesc="SentencePiece python wrapper"
 arch=('x86_64')
 url="https://github.com/google/sentencepiece"
@@ -13,9 +13,13 @@ makedepends=('git'
              'python-wheel'
              'python-installer')
 # checkdepends=('python-pytest')
-_tag='518c57c335534d495d40d95d70199e28b4c8ce2a' # git rev-parse "v${pkgver}"
+_tag='3863f7648e5d8edb571ac592f3ac4f5f0695275a' # git rev-parse "v${pkgver}"
 source=("${pkgname}::git+${url}.git#tag=${_tag}")
 sha512sums=('SKIP')
+
+prepare() {
+  git -C "${pkgname}" clean -dfx
+}
 
 build() {
   cd "${pkgname}/python"
