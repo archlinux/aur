@@ -4,7 +4,7 @@
 #
 
 pkgname=simple_backup
-pkgver=3.1.1.r2.g5d17aaf
+pkgver=3.1.2.r0.geb8bdde
 pkgrel=1
 pkgdesc='Simple backup script that uses rsync to copy files'
 arch=('any')
@@ -29,5 +29,5 @@ pkgver()
 package()
 {
    install -Dm755 "${srcdir}/${pkgname}/${pkgname}.py" "${pkgdir}/usr/bin/${pkgname}"
-   install -Dm644 "${srcdir}/${pkgname}/${pkgname}.config" "${pkgdir}/etc/${pkgname}/${pkgname}.config"
+   install -Dm644 "${srcdir}/${pkgname}/${pkgname}.conf" "${pkgdir}/etc/${pkgname}/${pkgname}.conf"
 }
