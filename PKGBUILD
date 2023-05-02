@@ -15,12 +15,12 @@ source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/CamDavidsonPilon/life
 sha256sums=('6c445b0782f4ea10bf9afba9109d1bc05d37afff3bd1826ff4604bdc587d45fa')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py build
 } 
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
