@@ -1,0 +1,13 @@
+pkgbase = goober
+	pkgdesc = Workspace module generator for eww.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://bitbucket.org/troutcobbler/goober
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = eww
+	source = git+https://bitbucket.org/troutcobbler/goober#tag=0.1.1
+	b2sums = SKIP
+
+pkgname = goober
