@@ -5,6 +5,7 @@ function usage {
   echo "  -h            shows usage"
   echo "  -g <version>  generate UKI image for specified kernel version"
   echo "  -a            generate UKI images for all available kernels"
+  exit 0
 }
 
 function check_root {
@@ -19,6 +20,7 @@ fi
 
 declare -a ukify_global_args=()
 declare -A ukify_variants=()
+declare -A ukify_install_path=()
 
 [ -f "/etc/dracut-ukify.conf" ] && source /etc/dracut-ukify.conf
 
@@ -30,11 +32,11 @@ declare -A ukify_variants=()
 ESP_PATH=$(bootctl --print-esp-path)
 MACHINE_ID=$(</etc/machine-id)
 # shellcheck source=/etc/os-release
-source <(grep '^BUILD_ID=' /etc/os-release)
+source <(grep -E '^(BUILD_)?ID=' /etc/os-release)
 
 function variant_name() {
-  prefix="$1"
-  name="$2"
+  local prefix="$1"
+  local name="$2"
   if [[ "$name" = "default" ]]; then
     printf "%s" "$prefix"
   else
@@ -42,10 +44,72 @@ function variant_name() {
   fi
 }
 
+function uki_path() {
+  local name="$1"
+  local version="$2"
+  local variant="$3"
+
+  if [ ${ukify_install_path[$variant]+_} ]; then
+    local -A substitutions=(
+      [id]="$ID"
+      [build_id]="$BUILD_ID"
+      [name]="$name"
+      [version]="$version"
+      [machine_id]="$MACHINE_ID"
+      [version]="$version"
+    )
+
+    local path="${ukify_install_path[$variant]}"
+    for key in "${!substitutions[@]}"; do
+      local value="${substitutions[$key]}"
+      path="${path//\$\{$key\}/${value}}"
+    done
+
+    printf "%s" "$path"
+  else
+    printf "EFI/Linux/%s.efi" "$(variant_name "linux-$version-$MACHINE_ID-$BUILD_ID" "$variant")"
+  fi
+}
+
+function sanity_check() {
+  local verbose="$1"
+
+  local -A sanity_kernel=()
+  for candidate in /usr/lib/modules/*; do
+    [ -f "$candidate/pkgbase" ] || continue
+    if read -r pkgbase &> /dev/null < "$candidate/pkgbase"; then
+      sanity_kernel["${pkgbase}"]="$(basename "$candidate")"
+    fi
+  done
+
+  local -A uki_path=()
+
+  local -i result=0
+
+  for kernel in "${!sanity_kernel[@]}"; do
+    for variant in "${!ukify_variants[@]}"; do
+      local path=$(uki_path "$kernel" "${sanity_kernel[$kernel]}" "$variant")
+      if [ $verbose -ne 0 ]; then
+        printf "=> Resolved UKI path for package %s %s in variant %s: %s\n" "$kernel" "${sanity_kernel[$kernel]}" "$variant" "$path"
+      fi
+
+      if [ ${uki_path[$path]+_} ]; then
+        printf "=> Found UKI path clash: %s-%s and %s points to the same path: %s\n" "$kernel" "$variant" "${uki_path[$path]}" "$path" >&2
+        result=1
+      fi
+      uki_path[$path]="$kernel-$variant"
+    done
+  done
+
+  if [ $result -ne 0 ]; then
+    exit $result
+  fi
+}
+
 declare -A kernels
 update_all=0
 
-while getopts ":hag:xyz" arg; do
+while getopts ":hag:sxyz" arg; do
   case ${arg} in
     g)
       found=0
@@ -70,16 +134,18 @@ while getopts ":hag:xyz" arg; do
       # Trigger some IO on ESP path to be sure it's mounted by autofs if it's the case
       # Otherwise upgrading systemd may cause ESP partition not mounted at the time dracut attempt to write new image
       stat "$ESP_PATH" >/dev/null
+      exit 0
       ;;
     y)
       check_root
+      sanity_check 0
       while read -r line; do
         if [[ "$line" == 'usr/lib/modules/'+([^/])'/pkgbase' ]]; then
           read -r pkgbase < "/${line}"
           path="$(grep -lE "^${pkgbase}\$" /usr/lib/modules/*/pkgbase)"
           version=$(basename "${path%/pkgbase}")
           for variant in "${!ukify_variants[@]}"; do
-            IMAGE="${ESP_PATH}/EFI/Linux/$(variant_name "linux-$version-$MACHINE_ID-$BUILD_ID" "$variant").efi"
+            IMAGE="${ESP_PATH}/$(uki_path "$pkgbase" "$version" "$variant")"
             if [ -f "$IMAGE" ]; then
               echo "==> Removing $IMAGE..."
               rm -f "$IMAGE"
@@ -87,6 +153,10 @@ while getopts ":hag:xyz" arg; do
           done
         fi
       done
+      exit 0
+      ;;
+    s)
+      sanity_check 1
       exit 0
       ;;
     z)
@@ -110,6 +180,8 @@ while getopts ":hag:xyz" arg; do
   esac
 done
 
+sanity_check 0
+
 if (( update_all )); then
   for candidate in /usr/lib/modules/*; do
     [ -f "$candidate/pkgbase" ] || continue
@@ -121,28 +193,28 @@ fi
 
 function gen_image() {
   check_root
-  kernel="$1"
-  version="$2"
-  path="/usr/lib/modules/${version}/pkgbase"
-  vmlinuz="/usr/lib/modules/${version}/vmlinuz"
+  local kernel="$1"
+  local version="$2"
+  local path="/usr/lib/modules/${version}/pkgbase"
+  local vmlinuz="/usr/lib/modules/${version}/vmlinuz"
 
   for variant in "${!ukify_variants[@]}"; do
-    image="${ESP_PATH}/EFI/Linux/$(variant_name "linux-${version}-${MACHINE_ID}-${BUILD_ID}" "$variant").efi"
-    version_name=$(variant_name "$version" "$variant")
+    local image="${ESP_PATH}/$(uki_path "$kernel" "$version" "$variant")"
+    local version_name=$(variant_name "$version" "$variant")
 
     read -r pkgbase < "$path"
 
-    initrd=$(mktemp)
+    local initrd=$(mktemp)
 
     echo "==> Building initrd image $kernel ($version_name)"
     dracut -q -f --no-hostonly-cmdline --kver "${version}" ${ukify_variants[$variant]} "$initrd"
 
-    os_release=$(mktemp)
+    local os_release=$(mktemp)
     grep -v '^BUILD_ID=' /etc/os-release > "$os_release"
     echo "BUILD_ID=\"$version_name\"" >> "$os_release"
     echo "VERSION_ID=\"$(variant_name "$pkgbase" "$variant")\"" >> "$os_release"
 
-    declare -a ukify_args=("${ukify_global_args[@]}")
+    local -a ukify_args=("${ukify_global_args[@]}")
     ukify_args+=(--uname "$version")
     ukify_args+=(--os-release "@$os_release")
     ukify_args+=(--output "$image")

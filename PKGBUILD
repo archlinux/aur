@@ -1,13 +1,13 @@
 # Maintainer: Sergey Shatunov <me@aur.rocks>
 
 pkgname=dracut-ukify
-pkgver=4
-pkgrel=2
+pkgver=5
+pkgrel=1
 pkgdesc="Integration layer for dracut and systemd's ukify tool for Arch Linux"
 url="https://aur.archlinux.org/packages/dracut-ukify"
 arch=(any)
 license=('MIT')
-depends=(dracut systemd-ukify python util-linux python-pefile)
+depends=(dracut systemd-ukify python util-linux)
 optdepends=(
 	'sbsigntools: secureboot support'
 )
@@ -19,8 +19,8 @@ source=('10-dracut-ukify-pre-install.hook'
 sha256sums=('e9592f4f738e8ac70044db1e3f0c4839bc07f37662d5dbc221230cf1617a6b4d'
             '08225b2c3f5e2a734561b5fa9a3e84060dfffd85b2898adb0fff0ce3b068b4d0'
             '341cd01546d840e7401f7bec868a78e2f6ca12563e93d993a07bc51efe674ed0'
-            '5655fbb724c94950e60a53487f9726f2eddf2603ce3efc01b5fdf2198a080eb6'
-            '3af44f1790a923cb87732ca936af9d0a4753c8cd9633353ee1cb1ffb5cec2a01')
+            '508abca9ea94b13d40265357f11ba2a4bf831dd23bc846796278b1d207711cee'
+            '189829a1c06a1d0f8c8d46a0266d4bb1343ba33de27e435a0833d030c92b0e78')
 backup=(etc/dracut-ukify.conf)
 provides=(dracut-hook)
 conflicts=(dracut-hook-uefi dracut-uefi-hook)
