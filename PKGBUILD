@@ -31,6 +31,7 @@ pkgver() {
 
 build() {
 	cd tplay
+    sed -i 's/libmpv = "2.0.1"/libmpv-sirno = "2.0.2-fork.1"/' Cargo.toml
 	cargo build -r
 }
 
