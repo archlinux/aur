@@ -7,21 +7,25 @@ pkgname=("${_pkgname}-git"
          "${_pkgname}-host-git"
          "obs-plugin-${_pkgname}-git")
 epoch=2
-pkgver=B6.r48.gdab5618a
+pkgver=B6.r50.g9d66a684
 pkgrel=1
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.io/"
 arch=('x86_64')
 license=('GPL2')
-makedepends=('cmake' 'fontconfig' 'git' 'libpipewire' 'libpulse'
-             'libsamplerate' 'libxi' 'libxpresent' 'libxss' 'obs-studio'
-             'spice-protocol' 'wayland-protocols')
+makedepends=('binutils' 'cmake' 'fontconfig' 'git' 'libegl' 'libpipewire'
+             'libpulse' 'libsamplerate' 'libxi' 'libxpresent' 'libxss'
+             'obs-studio' 'spice-protocol' 'wayland-protocols')
 source=("${_pkgname}::git+https://github.com/gnif/LookingGlass.git"
         "LGMP::git+https://github.com/gnif/LGMP.git"
         "PureSpice::git+https://github.com/gnif/PureSpice.git"
         "cimgui::git+https://github.com/cimgui/cimgui.git"
-        "imgui::git+https://github.com/ocornut/imgui.git")
+        "imgui::git+https://github.com/ocornut/imgui.git"
+        "wayland-protocols::git+https://gitlab.freedesktop.org/wayland/wayland-protocols.git"
+        "nanosvg::git+https://github.com/memononen/nanosvg.git")
 sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -38,14 +42,14 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${_pkgname}"
 	git submodule init
-	git config submodule.repos/LGMP.url "${srcdir}/LGMP"
-	git config submodule.repos/PureSpice.url "${srcdir}/PureSpice"
-	git config submodule.repos/cimgui.url "${srcdir}/cimgui"
+	for module in LGMP PureSpice cimgui wayland-protocols nanosvg; do
+		git submodule set-url -- "repos/${module}" "${srcdir}/${module}"
+	done
 	git -c protocol.file.allow=always submodule update
 
 	cd "repos/cimgui"
 	git submodule init
-	git config submodule.imgui.url "${srcdir}/imgui"
+	git submodule set-url -- imgui "${srcdir}/imgui"
 	git -c protocol.file.allow=always submodule update
 }
 
