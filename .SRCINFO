@@ -1,6 +1,6 @@
 pkgbase = mutter-performance
 	pkgdesc = A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync
-	pkgver = 43.4+r5+gc35e9f8c0
+	pkgver = 44.1+r1+gd643eb5c6
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
@@ -21,7 +21,7 @@ pkgbase = mutter-performance
 	depends = libcanberra
 	depends = startup-notification
 	depends = libsm
-	depends = gnome-desktop
+	depends = gnome-desktop-4
 	depends = libxkbcommon-x11
 	depends = gnome-settings-daemon
 	depends = libgudev
@@ -33,21 +33,18 @@ pkgbase = mutter-performance
 	depends = libsysprof-capture
 	depends = lcms2
 	depends = colord
-	source = mutter-performance::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=c35e9f8c0b3ef329b5b7b38b7760006af566952b
+	source = mutter-performance::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=d643eb5c6fe50e7f1afffda0e8747a87f668a799
 	source = mr1441.patch
-	source = mr1880.patch
-	source = mr2702.patch
 	source = prio.patch
 	sha256sums = SKIP
-	sha256sums = ca6ea6aaa7d8fb2089d110a5ba48906caa29e6f240e1debd19bf62ea3a74c824
-	sha256sums = 37586730b26c476175d508288d537a38e3e828467163c2e7d91f1df76fd12cd2
-	sha256sums = 7a6b606cfbaae395e8bdad96eaf377f2f00b85fce431df8700017c2518d19059
-	sha256sums = b0381879ca6d36f185543553a327c3d115194f17ba817c7dcccd64d9b09b6fdb
+	sha256sums = 3621acfed945773de4e107d4b077d8ff2b31eb4adc52d956ee6cc6bb245bac04
+	sha256sums = cca15ee32b5b4d942960672ab37403b2ccf5d249711fc321b333c3936d9ab897
 
 pkgname = mutter-performance
+	install = mutter.install
 	groups = gnome
 	provides = mutter
-	provides = libmutter-11.so
+	provides = libmutter-12.so
 	conflicts = mutter
 
 pkgname = mutter-performance-docs

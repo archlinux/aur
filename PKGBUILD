@@ -11,8 +11,8 @@
 
 ### PACKAGE OPTIONS
 ## MERGE REQUESTS SELECTION
-# Merge Requests List: ('579' '1441' '1880' 'revert_2060' '2702')
-_merge_requests_to_use=('1441' 'revert_2060' '2702')
+# Merge Requests List: ('579' '1441' 'prio')
+_merge_requests_to_use=('1441' 'prio')
 
 ## Disable building the DOCS package (Enabled if not set)
 # Remember to unset this variable when producing .SRCINFO
@@ -31,14 +31,14 @@ else
   pkgname=(mutter-performance mutter-performance-docs)
 fi
 epoch=1
-pkgver=43.4+r5+gc35e9f8c0
+pkgver=44.1+r1+gd643eb5c6
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64 aarch64)
 license=(GPL)
 depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
-         libcanberra startup-notification libsm gnome-desktop libxkbcommon-x11
+         libcanberra startup-notification libsm gnome-desktop-4 libxkbcommon-x11
          gnome-settings-daemon libgudev libinput pipewire xorg-xwayland graphene
          libxkbfile libsysprof-capture lcms2 colord)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
@@ -46,17 +46,13 @@ makedepends=(gobject-introspection git egl-wayland meson xorg-server
 if [ -n "$_enable_check" ]; then
   checkdepends=(xorg-server-xvfb pipewire-session-manager python-dbusmock zenity)
 fi
-_commit=c35e9f8c0b3ef329b5b7b38b7760006af566952b  # tags/43.4^5
+_commit=d643eb5c6fe50e7f1afffda0e8747a87f668a799  # tags/44.1^1
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch'
-        'mr1880.patch'
-        'mr2702.patch'
         'prio.patch')
 sha256sums=('SKIP'
-            'ca6ea6aaa7d8fb2089d110a5ba48906caa29e6f240e1debd19bf62ea3a74c824'
-            '37586730b26c476175d508288d537a38e3e828467163c2e7d91f1df76fd12cd2'
-            '7a6b606cfbaae395e8bdad96eaf377f2f00b85fce431df8700017c2518d19059'
-            'b0381879ca6d36f185543553a327c3d115194f17ba817c7dcccd64d9b09b6fdb')
+            '3621acfed945773de4e107d4b077d8ff2b31eb4adc52d956ee6cc6bb245bac04'
+            'cca15ee32b5b4d942960672ab37403b2ccf5d249711fc321b333c3936d9ab897')
 
 pkgver() {
   cd $pkgname
@@ -146,40 +142,29 @@ prepare() {
   # Comment: Help GPU frequencies to scale up but not currently working on Wayland.
   pick_mr '1441' 'mr1441.patch' 'patch'
 
-  # Title: wayland/surface: Avoid using buffers with unfinished client work, sub-surface fixes
-  # Author: Michel Dänzer <mdaenzer@redhat.com>
-  # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1880
-  # Type: 1
-  # Status: 4
-  # Comment: Introduce transactions consisting of state changes for Wayland surfaces.
-  #          Fixes: #1162
-  pick_mr '1880' 76ce6a0ab5975062ffe1f8b885b9be650b60e5a7 'revert' # Not affected with mr1880 enabled
-  pick_mr '1880' 'mr1880.patch' 'patch'
-
   # Title: [REVERT] backends/native: Use rtkit to get realtime priority
   # Author: Carlos Garnacho <carlosg@gnome.org>
   # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2060
   # Type: 1
   # Status: 4
   # Comment: Reverting it to get rt-scheduler working with mr1441.
-  pick_mr 'revert_2060' 'prio.patch' 'patch'
-
-  # build: Replace deprecated/custom meson functions
-  pick_mr '2702' 'mr2702.patch' 'patch'
+  pick_mr 'prio' 'prio.patch' 'patch'
 
 }
 
 build() {
+  local meson_options=(
+    -D egl_device=true
+    -D wayland_eglstream=true
+    -D installed_tests=false
+    -D docs=$(if ! [ -n "$_disable_docs" ]; then echo "true"; else echo "false"; fi)
+    -D tests=$(if [ -n "$_enable_check" ]; then echo "true"; else echo "false"; fi)
+  )
+
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
   LDFLAGS+=" -Wl,-Bsymbolic-functions"
 
-  arch-meson $pkgname build \
-    -D egl_device=true \
-    -D wayland_eglstream=true \
-    -D installed_tests=false \
-    -D docs=$(if ! [ -n "$_disable_docs" ]; then echo "true"; else echo "false"; fi) \
-    -D tests=$(if [ -n "$_enable_check" ]; then echo "true"; else echo "false"; fi)
-
+  arch-meson $pkgname build "${meson_options[@]}"
   meson compile -C build
 }
 
@@ -202,9 +187,9 @@ _check() (
 
 if [ -n "$_enable_check" ]; then
   check() {
-    echo "Tests are broken for somewhat reason lately. Disabling"
-#    dbus-run-session xvfb-run -s '-nolisten local +iglx -noreset' \
-#      bash -c "$(declare -f _check); _check"
+    echo "Tests may be broken with certain setups. Use with caution!"
+    dbus-run-session xvfb-run -s '-nolisten local +iglx -noreset' \
+      bash -c "$(declare -f _check); _check"
   }
 fi
 
@@ -219,9 +204,10 @@ _pick() {
 }
 
 package_mutter-performance() {
-  provides=(mutter libmutter-11.so)
+  provides=(mutter libmutter-12.so)
   conflicts=(mutter)
   groups=(gnome)
+  install=mutter.install
 
   meson install -C build --destdir "$pkgdir"
 
