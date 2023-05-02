@@ -3,7 +3,7 @@
 
 pkgname='firefox-extension-privacy-redirect-bin'
 pkgver=1.1.49
-pkgrel=0
+pkgrel=1
 pkgdesc='Redirects Twitter, YouTube, Instagram and more to privacy friendly alternatives.'
 arch=('any')
 url='https://github.com/SimonBrazell/privacy-redirect'
