@@ -1,6 +1,6 @@
 # Maintainer: pkg_maintainer <archlinuxpackagemaintainer@gmail.com>
 pkgname=tplay-git
-pkgver=0.3.1.r104.7636250
+pkgver=0.3.1.1.r104.7636250
 pkgrel=1
 epoch=
 pkgdesc="A terminal ASCII media player. View images, gifs, videos, webcam, YouTube, etc.. directly in the terminal as ASCII art."
@@ -26,7 +26,7 @@ validpgpkeys=()
 
 pkgver() {
 	cd tplay
-	printf "0.3.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "0.3.1.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

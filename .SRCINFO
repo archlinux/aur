@@ -1,6 +1,6 @@
 pkgbase = tplay-git
 	pkgdesc = A terminal ASCII media player. View images, gifs, videos, webcam, YouTube, etc.. directly in the terminal as ASCII art.
-	pkgver = 0.3.1.r104.7636250
+	pkgver = 0.3.1.1.r104.7636250
 	pkgrel = 1
 	url = https://github.com/maxcurzi/tplay.git
 	install = tplay-git.install
@@ -17,5 +17,3 @@ pkgbase = tplay-git
 	md5sums = SKIP
 
 pkgname = tplay-git
-
-
