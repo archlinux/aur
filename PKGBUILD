@@ -3,7 +3,7 @@ pkgname=waylyrics-git
 _pkgname=waylyrics
 __pkgname=Waylyrics
 _appname="io.poly000.${_pkgname}"
-pkgver=0.1.0_r45.ge80e0e2
+pkgver=0.1.0_r48.g05e3546
 pkgrel=1
 pkgdesc="On screen lyrics for wayland with netease cloud music source"
 url="https://github.com/poly000/waylyrics"
@@ -24,7 +24,7 @@ source=("git+https://github.com/poly000/${_pkgname}.git"
 
 sha256sums=('SKIP'
             'd5291658ee62ce73605b4efbe78e4f8ded359d2766cfd2cb5f7e309ca540dedf'
-            'e81aaaf511e1312ed0b1b5bdcb44f62ff877723bb036c71ef82289441fb64f93')
+            '28abb9904837437faafb12c3f71f7dcd8529936309d6a797ad46915aca63d613')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
