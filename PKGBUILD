@@ -36,7 +36,7 @@ build() {
 
 package() {
 	cd tplay
-	install -Dm755 /target/release/tplay "${pkgdir}/usr/bin/neon-logout"
+	install -Dm755 target/release/tplay "${pkgdir}/usr/bin/neon-logout"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.org"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
