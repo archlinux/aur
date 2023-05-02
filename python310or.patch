@@ -1,0 +1,34 @@
+From 3bec74195ec5a242d8783fdfc718d45dc7210c4e Mon Sep 17 00:00:00 2001
+From: Dan Moldovan <mdan@google.com>
+Date: Tue, 9 Jun 2020 07:40:08 -0700
+Subject: [PATCH] Remove a defensive check that prevented adding Generic as
+ superclass of Tensor. This is required to unblock #40132.
+
+PiperOrigin-RevId: 315481237
+Change-Id: Ia56c0087ab129499fe815b96ae83564e5a49df8f
+---
+ tensorflow/python/framework/ops.py | 10 +---------
+ 1 file changed, 1 insertion(+), 9 deletions(-)
+
+diff --git a/tensorflow/python/framework/ops.py b/tensorflow/python/framework/ops.py
+index 8fee3057b8d12..efb1ebbdbc243 100644
+--- a/tensorflow/python/framework/ops.py
++++ b/tensorflow/python/framework/ops.py
+@@ -183,16 +183,8 @@ def _override_helper(clazz_object, operator, func):
+     func: the function that replaces the overridden operator.
+ 
+   Raises:
+-    ValueError: If operator has already been overwritten,
+-      or if operator is not allowed to be overwritten.
++    ValueError: If operator is not allowed to be overwritten.
+   """
+-  existing = getattr(clazz_object, operator, None)
+-  if existing is not None:
+-    # Check to see if this is a default method-wrapper or slot wrapper which
+-    # will be true for the comparison operators.
+-    if not isinstance(existing, type(object.__lt__)):
+-      raise ValueError("operator %s cannot be overwritten again on class %s." %
+-                       (operator, clazz_object))
+   if operator not in Tensor.OVERLOADABLE_OPERATORS:
+     raise ValueError("Overriding %s is disallowed" % operator)
+   setattr(clazz_object, operator, func)

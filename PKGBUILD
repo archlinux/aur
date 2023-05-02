@@ -3,7 +3,7 @@
 pkgbase=tensorflow-computecpp
 pkgname=(tensorflow-computecpp python-tensorflow-computecpp)
 pkgver=1.9
-pkgrel=7
+pkgrel=8
 pkgdesc="Library for computation using data flow graphs for scalable machine learning (backend with ComputeCpp)"
 url="https://github.com/codeplaysoftware/tensorflow"
 epoch=1
@@ -24,7 +24,8 @@ source=("git+${url}"
          python38.patch
          gcc10.patch
          numpy.diff
-         python310.diff)
+         python310.diff
+         python310or.patch)
 sha256sums=('SKIP'
             '758e10caff4c1cb496d1cf49d6f4da2969b610b174276fb734b8502686d07ddd'
             'ef54b3783a05b5604cd8f448136567686806ad3a5759978f48549256807a8394'
@@ -35,7 +36,8 @@ sha256sums=('SKIP'
             'b69895cfd098efacc95b1d1fffd471afa05c449f8d42964ee10b1a6fd9a75689'
             '15c20b31394537051f8756707819e13f3c12da24d8aa63d3ba47e6fce4d19d95'
             'fe4c34a66000ba3a24d7c35914dc22e95adb5efa60a58d1f0b3d3cad77fd722d'
-            'fd3796ac670c4ee59c5cdc6969b2a58761d04d806bac4ba3911dcf74d894be42')
+            '16bbc9d5cfd7e3888a7bda73ac4ebaab5c9c2588632eac342917f7cec745db9a'
+            '7fe63476cb7b2dfe359f8ae3d894869f2329c399c6611a52449cd5dcd6f67098')
 
 prepare() {
   # These environment variables influence the behavior of the configure call below.
@@ -70,7 +72,7 @@ prepare() {
   export HTTP_PROXY=`echo $http_proxy | sed -e 's/\/$//'`
   export HTTPS_PROXY=`echo $https_proxy | sed -e 's/\/$//'`
 
-  cd ${srcdir}/tensorflow
+  cd "${srcdir}"/tensorflow
   git apply --index ../python37.patch
   git apply --index --whitespace=nowarn ../py37.diff
   git apply --index --whitespace=nowarn ../gcc1.diff
@@ -80,17 +82,19 @@ prepare() {
   git apply --index ../gcc10.patch
   git apply --index ../numpy.diff
   git apply --index ../python310.diff
+  git apply --index ../python310or.patch
 }
 
 build() {
   # Build bazel
   echo "Please note: currently, bazel version <0.18 is required to build this package."
   echo "Fixing that for you" # "Building it temporarily..."
+  echo "Make sure there are no spaces in PATH"
   cd "$srcdir"
   # ./compile.sh
-  export PATH=`pwd`/usr/bin:$PATH
+  export PATH="${srcdir}/usr/bin:$PATH"
 
-  cd ${srcdir}/tensorflow
+  cd "${srcdir}"/tensorflow
   if [ ! -f .bazelrc ]; then  # configure should be in prepare, but bazel has to be built first atm
     ./configure
   fi
@@ -98,21 +102,21 @@ build() {
 # Please take notice this requires at least 8GB of swap/disk space and 0.7+(3.2*threads)GB of RAM to build
   bazel build -c opt --config=sycl //tensorflow:libtensorflow.so \
     //tensorflow/tools/pip_package:build_pip_package # --jobs 1 --verbose_failures
-  bazel-bin/tensorflow/tools/pip_package/build_pip_package ${srcdir}/tmp
+  bazel-bin/tensorflow/tools/pip_package/build_pip_package "${srcdir}"/tmp
 }
 
 package_tensorflow-computecpp() {
   conflicts=(tensorflow)
   provides=(tensorflow)
 
-  cd ${srcdir}/tensorflow
+  cd "${srcdir}"/tensorflow
 
   tensorflow/c/generate-pc.sh --prefix=/usr --version=${pkgver}
-  install -Dm644 tensorflow.pc ${pkgdir}/usr/lib/pkgconfig/tensorflow.pc
-  install -Dm755 bazel-bin/tensorflow/libtensorflow.so ${pkgdir}/usr/lib/libtensorflow.so
-  install -Dm755 bazel-bin/tensorflow/libtensorflow_framework.so ${pkgdir}/usr/lib/libtensorflow_framework.so
-  install -Dm644 tensorflow/c/c_api.h ${pkgdir}/usr/include/tensorflow/c/c_api.h
-  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 tensorflow.pc "${pkgdir}"/usr/lib/pkgconfig/tensorflow.pc
+  install -Dm755 bazel-bin/tensorflow/libtensorflow.so "${pkgdir}"/usr/lib/libtensorflow.so
+  install -Dm755 bazel-bin/tensorflow/libtensorflow_framework.so "${pkgdir}"/usr/lib/libtensorflow_framework.so
+  install -Dm644 tensorflow/c/c_api.h "${pkgdir}"/usr/include/tensorflow/c/c_api.h
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
 
 package_python-tensorflow-computecpp() {
@@ -121,15 +125,15 @@ package_python-tensorflow-computecpp() {
   depends=(python-numpy python-protobuf absl-py)
   optdepends=('python-werkzeug: for using tensorboard')
 
-  cd ${srcdir}/tensorflow
+  cd "${srcdir}"/tensorflow
 
-  WHEEL_PACKAGE=$(find ${srcdir}/tmp -name "tensor*.whl")
-  pip install --ignore-installed --upgrade --root $pkgdir/ $WHEEL_PACKAGE --no-dependencies --no-warn-script-location
+  WHEEL_PACKAGE=$(find "${srcdir}"/tmp -name "tensor*.whl")
+  pip install --ignore-installed --upgrade --root "$pkgdir" $WHEEL_PACKAGE --no-dependencies --no-warn-script-location
 
   # tensorboard has been separated from upstream but they still install it with
   # tensorflow. I don't know what kind of sense that makes but we have to clean
   # it out from this pacakge.
-  rm -rf ${pkgdir}/usr/bin/tensorboard
+  rm -rf "${pkgdir}"/usr/bin/tensorboard
 
-  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
