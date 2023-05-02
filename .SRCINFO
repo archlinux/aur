@@ -1,6 +1,6 @@
 pkgbase = ochess
 	pkgdesc = Chess game analysis software written in c++
-	pkgver = v0.0.1
+	pkgver = v0.0.2
 	pkgrel = 1
 	url = https://gitlab.com/manzerbredes/ochess
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = ochess
 	makedepends = cmake
 	makedepends = wxwidgets-common
 	depends = wxwidgets-gtk3
-	source = http://loicguegan.com/files_/ochess-v0.0.1.tar.gz
-	sha256sums = 91948602423da0042f26777a8573f16fa02124843b2fcb10e238c70ef6d32288
+	source = http://loicguegan.com/files_/ochess-v0.0.2.tar.gz
+	sha256sums = fb23b73c1cefc9b4c13f1f610f30d95d47020d5388cf4ee40ce3605a5d39e25c
 
 pkgname = ochess
