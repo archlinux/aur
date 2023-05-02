@@ -7,7 +7,7 @@ url='http://www.mkgmap.org.uk'
 license=(GPL2)
 arch=(any)
 depends=(java-runtime)
-makedepends=(subversion apache-ant)
+makedepends=(subversion apache-ant jdk8-openjdk)
 conflicts=("${_pkgname}")
 source=("${_pkgname}" "svn+https://svn.mkgmap.org.uk/mkgmap/splitter/trunk")
 sha256sums=('d82a5189b5802c05a3e666888ea9fc90243864ae85eb113c7146ccc698ea22f0'
@@ -29,6 +29,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/trunk"
+  export JAVA_HOME=/usr/lib/jvm/java-8-openjdk/
   ant
 }
 
