@@ -3,7 +3,7 @@
 
 
 pkgname=anki-official-binary-bundle
-pkgver=2.1.61
+pkgver=2.1.62
 _pkgname="anki-$pkgver-linux-qt6"
 pkgrel=1
 epoch=
