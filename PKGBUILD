@@ -1,0 +1,62 @@
+# Maintainer: Astro Benzene <universebenzene at sina dot com>
+
+pkgbase=python-pytkdocs
+_pyname=${pkgbase#python-}
+pkgname=("python-${_pyname}")
+#"python-${_pyname}-doc")
+pkgver=0.16.1
+pkgrel=1
+pkgdesc="Load Python objects documentation"
+arch=('any')
+url="https://mkdocstrings.github.io/pytkdocs"
+license=('ISC')
+makedepends=('python-pdm-pep517'
+             'python-build'
+             'python-installer')
+checkdepends=('python-pytest'
+              'python-docstring-parser'
+              'python-django'
+              'python-marshmallow')
+#source=("https://github.com/oprypin/markdown-callouts/archive/refs/tags/v${pkgver}.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+md5sums=('414d74015a74a9023dc551a0d6919084')
+
+build() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+    python -m build --wheel --no-isolation
+
+#   msg "Building Docs"
+#   mkdir -p dist/lib
+#   bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
+#   PYTHONPATH="dist/lib" mkdocs build
+}
+
+check() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    mkdir -p dist/lib
+    bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
+    PYTHONPATH="dist/lib" pytest -vv --color=yes #|| warning "Tests failed" # -vv --color=yes
+}
+
+package_python-pytkdocs() {
+    depends=('python>=3.7'
+             'python-astunparse>=1.6'
+             'python-cached-property>=1.5'
+             'python-typing_extensions>=3.7')
+    optdepends=('python-docstring-parser>=0.7: numpy-style')
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+}
+
+#package_python-pytkdocs-doc() {
+#    pkgdesc="Documentation for markdown-callouts"
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+#    install -D -m644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
+#    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
+#    cp -a site "${pkgdir}/usr/share/doc/${pkgbase}"
+#}
