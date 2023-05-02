@@ -1,7 +1,7 @@
 # Maintainer: Paul <pb.orzel@proton.me>
 pkgname=amdgpu_top-git
 _pkgname=amdgpu_top
-pkgver=v0.1.5.r0.g0f8f908
+pkgver=v0.1.7.stable.r5.g1e0b4bf
 pkgrel=1
 pkgdesc="Tool that shows AMD GPU utilization"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -29,7 +29,7 @@ pkgver() {
 }
 
 prepare() {
-    cd "$srcdir/$pkgname-0.1.7-stable"
+    cd "$srcdir/$_pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
