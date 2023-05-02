@@ -5,7 +5,7 @@
 
 pkgbase=beats
 pkgname=(metricbeat filebeat packetbeat heartbeat-elastic auditbeat)
-pkgver=8.7.0
+pkgver=8.7.1
 pkgrel=1
 pkgdesc='Data shippers for Elasticsearch'
 arch=('x86_64')
