@@ -5,8 +5,8 @@
 # Contributor: justinus <jestine.paul@gmail.com>
 
 pkgname='libcs50'
-pkgver=11.0.1
-pkgrel=3
+pkgver=11.0.2
+pkgrel=1
 pkgdesc="CS50 Library for C"
 arch=('i686' 'x86_64')
 url='https://github.com/cs50/libcs50'
@@ -48,3 +48,5 @@ package() {
 }
 
 # vim: ts=2 sw=2 et:
+sha256sums=('3439547f7a73cae96d9208c24bbd1f6e7cf055acaba6ac30362e8f32fd521e36'
+            '4a10efd4f4f6b6bb18152a4f28497f7f8562aaa5aaf50c401d308827b922ef3f')
