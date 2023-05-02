@@ -1,4 +1,4 @@
-# Mainteiner: GT610 <myddz1005@163.com>
+# Maintainer: GT610 <myddz1005@163.com>
 # Contributer: Veli Tasalı (tasali) <me@velitasali.com>
 
 pkgbase=gcr-git
