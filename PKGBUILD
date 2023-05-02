@@ -3,13 +3,13 @@
 
 pkgname=keepassxc-allow-aur-extension-origin
 pkgver=2.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform community-driven port of Keepass password manager"
 arch=(x86_64)
 url="https://keepassxc.org/"
 license=(GPL)
-depends=(argon2 botan curl hicolor-icon-theme libxtst
-         minizip pcsclite qrencode qt5-svg qt5-x11extras)
+depends=(argon2 botan2 curl hicolor-icon-theme libxtst
+         minizip pcsclite qrencode qt5-svg qt5-x11extras libusb)
 makedepends=(asciidoctor cmake qt5-tools)
 optdepends=('xclip: keepassxc-cli clipboard support under X server'
             'wl-clipboard: keepassxc-cli clipboard support under Wayland')
