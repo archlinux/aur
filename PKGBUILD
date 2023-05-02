@@ -3,7 +3,7 @@
 pkgname=pot-translation-bin
 _pkgname=pot-translation
 prjname=pot
-pkgver=0.1.19
+pkgver=0.2.0
 pkgrel=0
 pkgdesc="一个跨平台的划词翻译软件"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('libappindicator-gtk3' 'webkit2gtk' 'gtk3' 'libayatana-appindicator')
 
 source=("${prjname}-${pkgver}-${arch}.deb::https://github.com/Pylogmon/pot/releases/download/${pkgver}/${prjname}_${pkgver}_amd64.deb")
 
-sha512sums=('c1abb3184f2dadd3949be78cea6c227b8c1c636fb98713d8ef8fdcaf0edd261201daf08e64a5a22018b204ada22d7af4b9b5c6c794505b11b3521a9e1d6c967b')
+sha512sums=('10a2022cf29c9c8c1176003f477b6afc87f32a458642d060bda9ae5da5f3be259468b255d79379f6a4fda86a7d12c0c554d4fe8d45205ddf5e6df2e940b34938')
 
 package() {
     tar xpf data.tar.gz -C ${pkgdir}
