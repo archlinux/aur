@@ -22,8 +22,8 @@ _merge_requests_to_use=()
 
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
-pkgver=43.4
-pkgrel=2
+pkgver=44.1
+pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -36,7 +36,7 @@ depends=(accountsservice gcr-4 gjs upower gnome-session gtk4
 makedepends=(gtk-doc gnome-control-center evolution-data-server
              gobject-introspection git meson sassc asciidoc bash-completion)
 if [ -n "$_enable_check" ]; then
-  checkdepends=(xorg-server-xvfb)
+  checkdepends=(xorg-server-xvfb python-dbusmock xorg-server-xvfb)
 fi
 optdepends=('gnome-control-center: System settings'
             'evolution-data-server: Evolution calendar integration'
@@ -46,7 +46,7 @@ optdepends=('gnome-control-center: System settings'
 groups=(gnome)
 provides=(gnome-shell gnome-shell=$pkgver gnome-shell=$epoch:$pkgver)
 conflicts=(gnome-shell)
-_commit=83c44abe0084b6ea617f1f90de5d60c4ed30b965  # tags/43.4^0
+_commit=b0ca64e7775225b7c5d049571a44ef40bf516406  # tags/44.1^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'
@@ -130,21 +130,23 @@ prepare() {
 }
 
 build() {
+  local meson_options=(
+    -D gtk_doc=true
+    -D tests=$(if [ -n "$_enable_check" ]; then echo "true"; else echo "false"; fi)
+  )
+
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
   LDFLAGS+=" -Wl,-Bsymbolic-functions"
 
-  arch-meson $_pkgname build \
-    -D gtk_doc=true \
-    -D tests=$(if [ -n "$_enable_check" ]; then echo "true"; else echo "false"; fi)
-
+  arch-meson $_pkgname build "${meson_options[@]}"
   meson compile -C build
 }
 
 _check() (
-  mkdir -p -m 700 "${XDG_RUNTIME_DIR:=$PWD/runtime-dir}"
+  mkdir -p -m 700 "${XDG_RUNTIME_DIR:=$PWD/rdir}"
   export XDG_RUNTIME_DIR
 
-  meson test -C build --print-errorlogs
+  meson test -C build --print-errorlogs -t 3
 )
 
 if [ -n "$_enable_check" ]; then
@@ -155,7 +157,7 @@ if [ -n "$_enable_check" ]; then
 fi
 
 package() {
-  depends+=(libmutter-11.so)
+  depends+=(libmutter-12.so)
   install=gnome-shell.install
   meson install -C build --destdir "$pkgdir"
 }
