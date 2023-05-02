@@ -1,3 +1,4 @@
+# Maintainer: vitalyr <vr@vitalyr.com>
 # Maintainer: tas <tasgon_@out/look.com>
 # Maintainer: QuantMint <qua/ntmint@/protonm/ail.com>
 # Contributor: Daniel Segesdi <sege/sdi.d/ani@/gma/il.com>
@@ -6,14 +7,14 @@
 
 _pkgname=godot
 pkgname=${_pkgname}-git
-pkgver=4.0.r1.e62f57f
+pkgver=4.1.r1.4a20869
 pkgrel=1
 pkgdesc="Godot Game Engine: An advanced, feature packed, multi-platform 2D and 3D game engine."
 url="http://www.godotengine.org"
 license=('MIT')
 arch=('i686' 'x86_64')
 makedepends=('gcc' 'git' 'scons' 'pkgconf' 'yasm')
-depends=('alsa-lib' 'glu' 'libglvnd' 'libxcursor' 'libxinerama' 'libxi' 'libxrandr' 'mesa' 'pulseaudio')
+depends=('alsa-lib' 'glu' 'libglvnd' 'libxcursor' 'libxinerama' 'libxi' 'libxrandr' 'mesa' 'pulseaudio' 'embree')
 optdepends=('libspeechd: Text-to-Speech Support')
 conflicts=("godot")
 provides=("godot")
