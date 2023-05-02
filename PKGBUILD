@@ -1,6 +1,6 @@
 pkgname=mingw-w64-lpsolve
 _origname=lp_solve
-pkgver=5.5.2.5
+pkgver=5.5.2.11
 _mainver=5.5
 pkgrel=1
 pkgdesc="a Mixed Integer Linear Programming (MILP) solver (mingw-w64)"
@@ -12,7 +12,7 @@ depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("http://downloads.sourceforge.net/project/lpsolve/lpsolve/${pkgver}/lp_solve_${pkgver}_source.tar.gz"
         lpsolve-CMakeLists.txt)
-sha1sums=('232ce8edb073c7c9b6d9100abf77038d989c45c8'
+sha256sums=('6d4abff5cc6aaa933ae8e6c17a226df0fc0b671c438f69715d41d09fe81f902f'
           SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
