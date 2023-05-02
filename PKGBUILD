@@ -3,7 +3,7 @@
 _pyname='magic-filter'
 pkgname="python-${_pyname}"
 pkgver=1.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A filter package based on dynamic attribute getter"
 arch=('any')
 url="https://github.com/aiogram/${_pyname}"
