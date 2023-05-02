@@ -3,12 +3,11 @@
 pkgname=dxvk-mingw
 pkgver=2.1
 _asyncver=2.1-2
-pkgrel=1
+pkgrel=2
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version'
 arch=('x86_64')
 url="https://github.com/doitsujin/dxvk"
 license=('zlib/libpng')
-depends=('vulkan-icd-loader' 'lib32-vulkan-icd-loader' 'bash')
 makedepends=('ninja' 'meson>=0.43' 'glslang' 'git' 'mingw-w64-gcc')
 provides=('dxvk' 'd9vk' "dxvk=$pkgver")
 conflicts=('dxvk' 'd9vk')
@@ -49,12 +48,10 @@ prepare() {
     export CXXFLAGS="-O2 -march=haswell -mtune=haswell -pipe -fno-semantic-interposition"
     export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
-    # Uncomment to enable extra optimizations
-    # Patch crossfiles with extra optimizations from makepkg.conf
-    patch -p1 -i "$srcdir"/dxvk-extraopts.patch
-    local cross_cflags="$CFLAGS"
-    local cross_cxxflags="$CXXFLAGS"
-    local cross_ldflags="$LDFLAGS"
+    # These flags are taken from Proton
+    CFLAGS+=" -mfpmath=sse -fwrapv -fno-strict-aliasing"
+    CXXFLAGS+=" -mfpmath=sse -fwrapv -fno-strict-aliasing -std=c++17"
+    LDFLAGS+=" -Wl,--file-alignment,4096"
 
     # If using -march=native and the CPU supports AVX, launching a d3d9
     # game can cause an Unhandled exception. The cause seems to be the
@@ -68,21 +65,24 @@ prepare() {
     # Relevant Wine issues
     # https://bugs.winehq.org/show_bug.cgi?id=45289
     # https://bugs.winehq.org/show_bug.cgi?id=43516
-    cross_cflags+=" -mno-avx2"
-    cross_cxxflags+=" -mno-avx2"
+    CFLAGS+=" -mno-avx2"
+    CXXFLAGS+=" -mno-avx2"
 
-    # These flags are taken from Proton, I don't know if there are issues with Arch wine.
-    cross_cflags+=" -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf"
-    cross_cxxflags+=" -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf -std=c++17"
-    cross_ldflags+=" -Wl,--file-alignment,4096"
+    # Uncomment to enable extra optimizations
+    # Patch crossfiles with extra optimizations from makepkg.conf
+    patch -p1 -i "$srcdir"/dxvk-extraopts.patch
 
+    local cross_ldflags="$LDFLAGS"
+
+    local cross_cflags="$CFLAGS -mcmodel=small"
+    local cross_cxxflags="$CXXFLAGS -mcmodel=small"
     sed -i build-win64.txt \
         -e "s|@CARGS@|\'${cross_cflags// /\',\'}\'|g" \
         -e "s|@CXXARGS@|\'${cross_cxxflags// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${cross_ldflags// /\',\'}\'|g"
 
-    cross_cflags+=" -mstackrealign -mno-avx"
-    cross_cxxflags+=" -mstackrealign -mno-avx"
+    local cross_cflags="$CFLAGS -mstackrealign -mno-avx"
+    local cross_cxxflags="$CXXFLAGS -mstackrealign -mno-avx"
     sed -i build-win32.txt \
         -e "s|@CARGS@|\'${cross_cflags// /\',\'}\'|g" \
         -e "s|@CXXARGS@|\'${cross_cxxflags// /\',\'}\'|g" \
@@ -108,6 +108,8 @@ build() {
 }
 
 package() {
+    depends=('vulkan-icd-loader' 'lib32-vulkan-icd-loader' 'wine' 'bash')
+
     DESTDIR="$pkgdir" ninja -C "build/x32" install
     DESTDIR="$pkgdir" ninja -C "build/x64" install
     install -Dm 755 -t "$pkgdir/usr/share/dxvk" "$srcdir"/setup_dxvk.sh
