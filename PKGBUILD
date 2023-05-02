@@ -15,7 +15,7 @@ license=('GPLv3')
 groups=()
 depends=(wxwidgets-gtk3)
 makedepends=(cmake wxwidgets-common)
-source=("http://loicguegan.com/files/ochess-v0.0.1.tar.gz")
+source=("http://loicguegan.com/files_/ochess-v0.0.1.tar.gz")
 sha256sums=(91948602423da0042f26777a8573f16fa02124843b2fcb10e238c70ef6d32288) #generate with 'makepkg -g'
 
 prepare() {
