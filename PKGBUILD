@@ -3,7 +3,7 @@
 
 pkgname='firefox-extension-styl-us-bin'
 pkgver=1.5.30
-pkgrel=0
+pkgrel=1
 pkgdesc='Redesign your favorite websites with Stylus, an actively developed and community driven userstyles manager. Easily install custom themes from popular online repositories, or create, edit, and manage your own personalized CSS stylesheets.'
 arch=('any')
 url='https://add0n.com/stylus.html'
