@@ -1,6 +1,6 @@
 pkgbase = nym
 	pkgdesc = The next generation of privacy infrastructure (Nym Mixnet)
-	pkgver = 1.1.15
+	pkgver = 1.1.16
 	pkgrel = 1
 	url = https://nymtech.net/
 	install = nym.install
@@ -17,7 +17,7 @@ pkgbase = nym
 	source = nym-gateway@.service
 	sha512sums = 3646ee43df7904b959f50fcd191d1dfbdf8ed36f6d2cbe420669f4ffcc2886f0d30d5307a073462271ad40cbbf2b930ddd187852926271731beb57690a0abc81
 	sha512sums = 459e9fa6bc24675e4d7d2df448ea60ecb9ed0170f244a9659fb2811589bb6784b307475a4ee4d92c143ac3163446e603d60157b0f1f060d7aa0de96c51abc5d2
-	sha512sums = 7aec10201cf8d51eaf9078911db44a3ec1206f26d45dd4cfbf6213c890c6be295d03707692c33de21dc5e876bfd6c6c9daf5225c5ed55b017085506e041f1b29
+	sha512sums = 91c81a3a6ba9d616b27c138ef5887700cd884881d5a8ac1ea122ea53a9d39abf7662f47ae27d3fd5264f929cce8557b22ac4e68ac5c1cf9bf15d71bca1ef2fe6
 	sha512sums = 9a1d9939b7fa0e4fb50e24c917565081be017466d65bf008ef8598076f2ec450b08bf25dee1d853187a8d488e6a0fa91769519d740a8e532cdca0692fb2e42c8
 
 pkgname = nym
