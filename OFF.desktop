@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.1
+Name=OFF
+Comment=A surreal role-playing game
+Type=Application
+Exec=OFF
+Categories=Game;AdventureGame;
+Terminal=false
+Icon=OFF
+StartupWMClass=EasyRPG Player
