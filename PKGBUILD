@@ -1,13 +1,14 @@
-# Maintainer: Veli Tasalı (tasali) <me@velitasali.com>
+# Mainteiner: GT610 <myddz1005@163.com>
+# Contributer: Veli Tasalı (tasali) <me@velitasali.com>
 
 pkgbase=gcr-git
 pkgname=(gcr-git gcr-docs-git)
-pkgver=3.90.0+r8+g2c8cb33
+pkgver=4.1.0+r14+gc8d2e0f
 pkgrel=1
 pkgdesc="A library for bits of crypto UI and parsing"
 url="https://gitlab.gnome.org/GNOME/gcr"
 arch=(x86_64)
-license=(GPL2)
+license=(GPLv2)
 depends=(gtk3 gtk4 libgcrypt p11-kit openssh libsecret)
 makedepends=(gobject-introspection vala libxslt git gi-docgen meson)
 options=(debug)
