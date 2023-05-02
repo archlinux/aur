@@ -1,6 +1,6 @@
 _base=ete3
 pkgname=python-${_base}
-pkgver=3.1.2
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="A Python Environment for (phylogenetic) Tree Exploration"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=(
 )
 # options=(!emptydirs)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('e21d47ff4ec0f7669beb88e9526b33fed7c802e610277c2e09436e54b127b06439c49b4ad82316fe1e08bc0a40635b822949ec51f60b1ab2d604069988a212a4')
+sha512sums=('77edc8092bc8900d56a95f813f0d66c1d894726bebfea91cc3edaf2fa62560e06b9ede6fe4c346d65cc01a53587b29cddb65b971a72ba3965514fae45374076d')
 
 build() {
   cd "${_base}-${pkgver}"
