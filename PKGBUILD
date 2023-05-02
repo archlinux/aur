@@ -3,7 +3,7 @@
 
 pkgname='firefox-extension-canvasblocker-bin'
 pkgver=1.9
-pkgrel=0
+pkgrel=1
 pkgdesc='Alters some JS APIs to prevent fingerprinting.'
 arch=('any')
 url='https://github.com/kkapsner/CanvasBlocker/'

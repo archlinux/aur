@@ -1,7 +1,7 @@
 pkgbase = firefox-extension-canvasblocker-bin
 	pkgdesc = Alters some JS APIs to prevent fingerprinting.
 	pkgver = 1.9
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/kkapsner/CanvasBlocker/
 	arch = any
 	license = MPL-2.0
