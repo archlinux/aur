@@ -2,11 +2,11 @@
 
 pkgname=plio
 pkgver=initrel
-pkgrel=1
+pkgrel=2
 pkgdesc='PLIO Image Viewer - the Image Viewer with many sort options'
 arch=('x86_64')
 license=('GPL3')
-#url='https://plio.codeberg.page/'
+url='https://codeberg.org/klartext/plio'
 
 depends=('sdl2' 'sdl2_image' 'sdl2_ttf' 'freeimage')
 makedpends=('git')

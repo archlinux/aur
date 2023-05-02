@@ -1,7 +1,8 @@
 pkgbase = plio
 	pkgdesc = PLIO Image Viewer - the Image Viewer with many sort options
 	pkgver = initrel
-	pkgrel = 1
+	pkgrel = 2
+	url = https://codeberg.org/klartext/plio
 	arch = x86_64
 	license = GPL3
 	depends = sdl2
