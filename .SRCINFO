@@ -1,6 +1,6 @@
 pkgbase = resetti-git
 	pkgdesc = resetti is a Linux-compatible reset macro for Minecraft speedruns. It supports a variety of different resetting styles, categories, and Minecraft versions.
-	pkgver = 0.4.0_devel.r375.201effb
+	pkgver = 0.5.0_devel.r383.a94dbb8
 	pkgrel = 1
 	url = https://www.github.com/woofdoggo/resetti
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = resetti-git
 	makedepends = go
 	makedepends = git
 	conflicts = resetti
-	source = git+https://www.github.com/woofdoggo/resetti#branch=next
+	source = git+https://www.github.com/woofdoggo/resetti#branch=main
 	md5sums = SKIP
 
 pkgname = resetti-git

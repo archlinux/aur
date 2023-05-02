@@ -5,8 +5,8 @@
 
 # Maintainer: Sathya Pramodh <sathyapramodh17@gmail.com>
 pkgname=resetti-git
-_devbranch="next"
-pkgver=0.4.0_devel.r375.201effb
+_devbranch="main"
+pkgver=0.5.0_devel.r383.a94dbb8
 pkgrel=1
 pkgdesc="resetti is a Linux-compatible reset macro for Minecraft speedruns. It supports
 a variety of different resetting styles, categories, and Minecraft versions."
@@ -30,7 +30,7 @@ validategpgkeys=()
 
 pkgver(){
     cd resetti
-    printf "$(cat .version)_devel.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "$(cat .version | awk -F '-' '{print $1}')_devel.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
