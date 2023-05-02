@@ -1,8 +1,8 @@
 # Maintainer: sukanka <su975853527 [AT] gmail.com>
 pkgname=fbreader-bin
 _pkgname=fbreader
-pkgver=2.0
-_snap_ver=22
+pkgver=2.0.1
+_snap_ver=24
 pkgrel=1
 pkgdesc="An e-book reader for Linux"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("${_pkgname}-${pkgver}.snap::https://api.snapcraft.io/api/v1/snaps/downl
 
 # download url
 # curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/fbreader | jq '.download_url' -r
-sha256sums=('68d87b52908b242d54a46c1b001afb608594b7aa464ee27b8f4e011b466a99ee')
+sha256sums=('2a365ff888e6c00a804f46efddc82710984e5b2e30b8edf12effa45b06be9bfb')
 
 prepare() {
   cd $srcdir
