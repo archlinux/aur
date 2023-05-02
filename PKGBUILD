@@ -1,16 +1,16 @@
 # PKGBUILD maintainer: Mikołaj Krzeszowiak
 pkgname='sim-cli'
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A command line front-end to the SIM platform."
 arch=('x86_64')
 url="https://gitlab.com/maleszka/sim-cli"
 license=('GPL3')
 depends=('curl')
-makedepends=('meson>=0.60.0' 'ninja' 'cmake>=3.17.0' 'make' 'boost')
+makedepends=('meson>=0.60.0' 'ninja' 'cmake>=3.17.0' 'boost')
 source=("https://gitlab.com/maleszka/sim-cli/-/releases/v${pkgver}/downloads/${pkgname}-src.tar.gz")
 # WARNING: update this after each release!!
-sha256sums=('cf3d48278d1925b2d5a0240ee39ec7aec6af929caed1351a7e760eb59357341b')
+sha256sums=('25b489e048243ed5339e39c7b068f18335837235707ca4e8b652c23f7866ddf4')
 
 build() {
 	cd "${srcdir}/${pkgname}"
