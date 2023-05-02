@@ -1,3 +1,0 @@
-#!/bin/bash
-
-LD_LIBRARY_PATH=/opt/olive/libs /opt/olive/olive-editor "$@"
