@@ -1,6 +1,6 @@
 pkgbase = mavproxy
 	pkgdesc = MAVLink proxy and command line ground station.
-	pkgver = 1.8.59
+	pkgver = 1.8.60
 	pkgrel = 1
 	url = https://ardupilot.org/mavproxy
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = mavproxy
 	depends = python
 	depends = python-pymavlink
 	depends = python-opencv
-	source = https://files.pythonhosted.org/packages/source/M/MAVProxy/MAVProxy-1.8.59.tar.gz
-	sha256sums = 5d8d1df6ae274ae3df94de195fe9d3e11285cba8b809dda5356bd6689433596f
+	source = https://files.pythonhosted.org/packages/source/M/MAVProxy/MAVProxy-1.8.60.tar.gz
+	sha256sums = 64357a641f7982c767f015bf557d6919978a3cb632d17db8215fa1a2bd9481ea
 
 pkgname = mavproxy
