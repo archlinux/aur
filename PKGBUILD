@@ -1,7 +1,7 @@
 pkgname=snapchat
 _pkgname=Snapchat
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Unofficial Snapchat desktop application."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/snapchatdesktop/application"
