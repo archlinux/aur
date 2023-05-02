@@ -7,7 +7,6 @@ pkgdesc='Fork of VKD3D. Development branches for Protons Direct3D 12 implementat
 arch=('x86_64')
 url="https://github.com/HansKristian-Work/vkd3d-proton"
 license=('LGPL-2.1')
-depends=('vulkan-icd-loader' 'lib32-vulkan-icd-loader' 'bash')
 makedepends=('ninja' 'meson>=0.43' 'glslang' 'git' 'mingw-w64-gcc' 'mingw-w64-tools')
 provides=('vkd3d-proton' 'd3d12.dll' "vkd3d-proton=$pkgver")
 conflicts=('vkd3d-proton' 'd3d12.dll')
@@ -44,17 +43,14 @@ prepare() {
     # This overrides FLAGS from makepkg.conf, if you comment these you are on your own
     # If you want the "best" possible optimizations for your system you can use
     # `-march=native` and remove the `-mtune=core-avx2` option.
-    # `-O2` is adjusted to `-O3` since AVX is disabled
     export CFLAGS="-O2 -march=nocona -mtune=core-avx2 -pipe"
     export CXXFLAGS="-O2 -march=nocona -mtune=core-avx2 -pipe"
     export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
-    # Uncomment to enable extra optimizations
-    # Patch crossfiles with extra optimizations from makepkg.conf
-    patch -p1 -i "$srcdir"/vkd3d-proton-extraopts.patch
-    local cross_cflags="$CFLAGS"
-    local cross_cxxflags="$CXXFLAGS"
-    local cross_ldflags="$LDFLAGS"
+    # These flags are taken from Proton
+    CFLAGS+=" -mfpmath=sse -fwrapv -fno-strict-aliasing"
+    CXXFLAGS+=" -mfpmath=sse -fwrapv -fno-strict-aliasing -std=c++17"
+    LDFLAGS+=" -Wl,--file-alignment,4096"
 
     # If using -march=native and the CPU supports AVX, launching a d3d9
     # game can cause an Unhandled exception. The cause seems to be the
@@ -68,21 +64,24 @@ prepare() {
     # Relevant Wine issues
     # https://bugs.winehq.org/show_bug.cgi?id=45289
     # https://bugs.winehq.org/show_bug.cgi?id=43516
-    cross_cflags+=" -mno-avx2"
-    cross_cxxflags+=" -mno-avx2"
+    CFLAGS+=" -mno-avx2"
+    CXXFLAGS+=" -mno-avx2"
 
-    # These flags are taken from Proton, I don't know if there are issues with Arch wine.
-    cross_cflags+=" -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf"
-    cross_cxxflags+=" -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf -std=c++17"
-    cross_ldflags+=" -Wl,--file-alignment,4096"
+    # Uncomment to enable extra optimizations
+    # Patch crossfiles with extra optimizations from makepkg.conf
+    patch -p1 -i "$srcdir"/vkd3d-proton-extraopts.patch
 
+    local cross_ldflags="$LDFLAGS"
+
+    local cross_cflags="$CFLAGS -mcmodel=small"
+    local cross_cxxflags="$CXXFLAGS -mcmodel=small"
     sed -i build-win64.txt \
         -e "s|@CARGS@|\'${cross_cflags// /\',\'}\'|g" \
         -e "s|@CXXARGS@|\'${cross_cxxflags// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${cross_ldflags// /\',\'}\'|g"
 
-    cross_cflags+=" -mstackrealign -mno-avx"
-    cross_cxxflags+=" -mstackrealign -mno-avx"
+    local cross_cflags="$CFLAGS -mstackrealign -mno-avx"
+    local cross_cxxflags="$CXXFLAGS -mstackrealign -mno-avx"
     sed -i build-win32.txt \
         -e "s|@CARGS@|\'${cross_cflags// /\',\'}\'|g" \
         -e "s|@CXXARGS@|\'${cross_cxxflags// /\',\'}\'|g" \
@@ -110,6 +109,8 @@ build() {
 }
 
 package() {
+    depends=('vulkan-icd-loader' 'lib32-vulkan-icd-loader' 'wine' 'bash')
+
     DESTDIR="$pkgdir" ninja -C "build/x86" install
     DESTDIR="$pkgdir" ninja -C "build/x64" install
     install -Dm 755 -t "$pkgdir/usr/share/vkd3d-proton" vkd3d-proton/setup_vkd3d_proton.sh

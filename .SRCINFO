@@ -11,9 +11,6 @@ pkgbase = vkd3d-proton-mingw-git
 	makedepends = git
 	makedepends = mingw-w64-gcc
 	makedepends = mingw-w64-tools
-	depends = vulkan-icd-loader
-	depends = lib32-vulkan-icd-loader
-	depends = bash
 	provides = vkd3d-proton
 	provides = d3d12.dll
 	provides = vkd3d-proton=2.8.r180.g7b561f37
@@ -35,3 +32,7 @@ pkgbase = vkd3d-proton-mingw-git
 	sha256sums = 8fc019d1dca8c52b6af96c40ff06a6c215aad3e713ae17be72c7422f1ba45634
 
 pkgname = vkd3d-proton-mingw-git
+	depends = vulkan-icd-loader
+	depends = lib32-vulkan-icd-loader
+	depends = wine
+	depends = bash
