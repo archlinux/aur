@@ -1,0 +1,13 @@
+pkgbase = firefox-extension-privacy-redirect-bin
+	pkgdesc = Redirects Twitter, YouTube, Instagram and more to privacy friendly alternatives.
+	pkgver = 1.1.49
+	pkgrel = 0
+	url = https://github.com/SimonBrazell/privacy-redirect
+	arch = any
+	license = GPL-3.0-or-later
+	depends = firefox
+	noextract = privacy-redirect.xpi
+	source = privacy-redirect.xpi::https://addons.mozilla.org/firefox/downloads/file/3815058/privacy_redirect-1.1.49.xpi
+	sha256sums = 9f1cf6e58fa3f86d180b5b99549fa666fa853a827c48cb231558566b0c1c3c75
+
+pkgname = firefox-extension-privacy-redirect-bin
