@@ -6,16 +6,15 @@ pkgname=('nextcloud-app-socialsharing-diaspora'
          'nextcloud-app-socialsharing-facebook'
          'nextcloud-app-socialsharing-telegram'
          'nextcloud-app-socialsharing-twitter')
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 arch=("any")
 url="https://github.com/nextcloud/socialsharing"
 license=('AGPL3')
-depends=('nextcloud>=22' 'nextcloud<25')
-makedepends=("npm" "composer")
+makedepends=("npm" "composer" "yq")
 source=("$_appname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 		"$pkgbase.patch")
-sha512sums=('f49eece846ab3afe4de2da099ac57ed8e16f9587518af89a5dd9611c9dba8ca0a3bf6f6547c7ec400ddecaff17ef77934411861577e0fcf2e2c8a572713b778f'
+sha512sums=('aee16e0bbf6e181ea66b8a36671fffd864c17b391998d025514d18a070de4e9199908ae653e2af7c7a62d7f530b324320edf199bb789851df68680dde921b46d'
             'b9065297bc55390cb83ac5a9c07aa80321399a25fb6bd801a9e53b7e1395091f1eb35f1b493577e1d6b91d6977231ba15f3067117ce46ffa80fd41850124c85b')
 
 prepare() {
@@ -26,8 +25,18 @@ prepare() {
 	done
 }
 
+_get_nextcloud_versions() {
+	_app_min_major_version="$(xq '.info.dependencies.nextcloud["@min-version"]' "appinfo/info.xml"| sed 's/"//g')"
+	_app_max_major_version="$(xq '.info.dependencies.nextcloud["@max-version"]' "appinfo/info.xml"| sed 's/"//g')"
+	_app_max_major_version=$(expr ${_app_max_major_version} + 1)
+}
+
 package_app() {
 	cd "$_appname-$pkgver/${_appname}_$1"
+	local _app_min_major_version
+	local _app_max_major_version
+	_get_nextcloud_versions
+	depends=("nextcloud>=$_app_min_major_version" "nextcloud<$_app_max_major_version")
 	make appstore
 	mkdir -p "$pkgdir/usr/share/webapps/nextcloud/apps"
 	local _appdir="$pkgdir/usr/share/webapps/nextcloud/apps/${_appname}_$1"
