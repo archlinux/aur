@@ -1,0 +1,17 @@
+pkgbase = mkgmap-splitter-svn
+	pkgdesc = Split .osm or .pbf files to be processed by mkgmap for Garmin GPS devices
+	pkgver = 653
+	pkgrel = 1
+	url = http://www.mkgmap.org.uk
+	arch = any
+	license = GPL2
+	makedepends = subversion
+	makedepends = apache-ant
+	depends = java-runtime
+	conflicts = mkgmap-splitter
+	source = mkgmap-splitter
+	source = svn+https://svn.mkgmap.org.uk/mkgmap/splitter/trunk
+	sha256sums = d82a5189b5802c05a3e666888ea9fc90243864ae85eb113c7146ccc698ea22f0
+	sha256sums = SKIP
+
+pkgname = mkgmap-splitter-svn
