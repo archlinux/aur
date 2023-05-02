@@ -43,8 +43,10 @@ source_x86_64=("${_uploadpath_x86_64}" "${_uploadpath_sig_x86_64}")
 sha256sums=('SKIP'
             '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1'
             '21054a5f41f38a017f3e1050ccc433d8e59304864021bef6b99f0d0642ccbe93')
-sha256sums_x86_64=('a92e7ea3b0cdfac8134036f235832af0679bb4a5a80d688db576aadbd5b7734e')
-sha256sums_aarch64=('463e34bcf2d72f147ad9fc475dce9962c3a410a7b17821848ecd3401618b7456')
+sha256sums_x86_64=('a92e7ea3b0cdfac8134036f235832af0679bb4a5a80d688db576aadbd5b7734e'
+                   'SKIP')
+sha256sums_aarch64=('463e34bcf2d72f147ad9fc475dce9962c3a410a7b17821848ecd3401618b7456'
+                    'SKIP')
 
 package() {
   # Yep, that's somewhat redundant. But it works.

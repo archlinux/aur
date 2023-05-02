@@ -40,8 +40,10 @@ pkgbase = librewolf-bin
 	source_x86_64 = https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/112.0.2-1/librewolf-112.0.2-1-linux-x86_64-package.tar.bz2
 	source_x86_64 = https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/112.0.2-1/librewolf-112.0.2-1-linux-x86_64-package.tar.bz2.sig
 	sha256sums_x86_64 = a92e7ea3b0cdfac8134036f235832af0679bb4a5a80d688db576aadbd5b7734e
+	sha256sums_x86_64 = SKIP
 	source_aarch64 = https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/112.0.2-1/librewolf-112.0.2-1-linux-arm64-package.tar.bz2
 	source_aarch64 = https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/112.0.2-1/librewolf-112.0.2-1-linux-arm64-package.tar.bz2.sig
 	sha256sums_aarch64 = 463e34bcf2d72f147ad9fc475dce9962c3a410a7b17821848ecd3401618b7456
+	sha256sums_aarch64 = SKIP
 
 pkgname = librewolf-bin
