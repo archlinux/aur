@@ -1,7 +1,7 @@
 pkgbase = python-blosc2
 	pkgdesc = Wrapper for the blosc2 compressor
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Blosc/python-blosc2
 	arch = any
 	license = BSD
@@ -17,9 +17,8 @@ pkgbase = python-blosc2
 	depends = python-numpy
 	depends = cmake
 	depends = python-ndindex
-	provides = blosc2
-	conflicts = blosc2
-	source = https://files.pythonhosted.org/packages/b6/20/5141526d669b68e7530f417f55771e4bb0bd81fe6e78ccd851d6bae353ba/blosc2-2.2.0.tar.gz
-	sha256sums = 4cf3893fe85da4bd899ecf7a457fd09b2212fad256182100108de7a92b88aa87
+	depends = blosc2
+	source = https://github.com/Blosc/python-blosc2/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = b3f12d8ac9f3cdd16b27813d423dee3cd108a162f3a075d59d1325e0f3c27412
 
 pkgname = python-blosc2
