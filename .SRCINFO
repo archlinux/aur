@@ -1,0 +1,18 @@
+pkgbase = kcp-bin
+	pkgdesc = Kubernetes-like control plane for workloads on many clusters
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/kcp-dev/kcp
+	arch = x86_64
+	license = Apache
+	provides = kcp
+	provides = kubectl-kcp
+	provides = kubectl-workspace
+	provides = kubectl-workspaces
+	provides = kubectl-ws
+	source = kcp-0.11.0-linux-amd64.tar.gz::https://github.com/kcp-dev/kcp/releases/download/v0.11.0/kcp_0.11.0_linux_amd64.tar.gz
+	source = kubectl-kcp-plugin-0.11.0-linux-amd64.tar.gz::https://github.com/kcp-dev/kcp/releases/download/v0.11.0/kubectl-kcp-plugin_0.11.0_linux_amd64.tar.gz
+	sha256sums = 8744f863232b1ea202598e286cd061fad81b181798fb1e6612b46df5b6423524
+	sha256sums = adb2a035015af424a3e2ff9a848a2812354de87a532259947dd77fe49eba2dfe
+
+pkgname = kcp-bin
