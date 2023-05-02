@@ -1,0 +1,16 @@
+pkgbase = alephone-tempus_irae
+	pkgdesc = The Aleph One release of the Marathon Infinity scenario by Chris Borowiec (aka: Nardo/Borzz).
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://nardo.bungie.org/alephone.php
+	arch = any
+	license = custom
+	depends = alephone
+	source = http://nardo.bungie.org/files/Tempus_Irae.zip
+	source = alephone-tempus_irae.sh
+	source = alephone-tempus_irae.desktop
+	sha256sums = 9fbd922a960b6056ac4a054be3c09934b2b6d393b43931474a7b1303f43d0e22
+	sha256sums = 1bc60caeb9cd24ab41e2aa994ce2b99bb1495a1b4fb4c7f708b92d8e84c44ad4
+	sha256sums = 9167a6c6f2db08a4e0e70dd8149f692d3c3fa9d471f60f21402af5769f15bc17
+
+pkgname = alephone-tempus_irae
