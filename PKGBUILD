@@ -2,8 +2,8 @@
 pkgname=fbreader-bin
 _pkgname=fbreader
 pkgver=2.0.1
-_snap_ver=24
-pkgrel=1
+_snap_ver=25
+pkgrel=2
 pkgdesc="An e-book reader for Linux"
 arch=('x86_64')
 url="http://www.fbreader.org/"
@@ -12,11 +12,11 @@ depends=('qt6-5compat' 'hicolor-icon-theme' 'nettle7')
 makedepends=('squashfs-tools')
 provides=('fbreader')
 conflicts=('fbreader')
-source=("${_pkgname}-${pkgver}.snap::https://api.snapcraft.io/api/v1/snaps/download/ePTZ3tz7FWi8tBNQ2Ii0dHw8U5Vmv8Ib_${_snap_ver}.snap")
+source=("${_pkgname}-${pkgver}-${_snap_ver}.snap::https://api.snapcraft.io/api/v1/snaps/download/ePTZ3tz7FWi8tBNQ2Ii0dHw8U5Vmv8Ib_${_snap_ver}.snap")
 
 # download url
 # curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/fbreader | jq '.download_url' -r
-sha256sums=('2a365ff888e6c00a804f46efddc82710984e5b2e30b8edf12effa45b06be9bfb')
+sha256sums=('40ae8d9a1d95e24eb5ec15854f1a1c11f040b7cd546de0052a6b294849bd06bd')
 
 prepare() {
   cd $srcdir
