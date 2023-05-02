@@ -3,7 +3,7 @@
 
 pkgname='firefox-extension-plasma-integration-bin'
 pkgver=1.8.1
-pkgrel=0
+pkgrel=1
 pkgdesc='Multitask efficiently by controlling browser functions from the Plasma desktop.'
 arch=('any')
 url='http://kde.org'

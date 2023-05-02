@@ -1,7 +1,7 @@
 pkgbase = firefox-extension-plasma-integration-bin
 	pkgdesc = Multitask efficiently by controlling browser functions from the Plasma desktop.
 	pkgver = 1.8.1
-	pkgrel = 0
+	pkgrel = 1
 	url = http://kde.org
 	arch = any
 	license = GPL-3.0-or-later
