@@ -2,7 +2,7 @@
 
 pkgname=goober
 pkgver=0.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Workspace module generator for eww."
 url='https://bitbucket.org/troutcobbler/goober'
 arch=(x86_64)
