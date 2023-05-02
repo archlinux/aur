@@ -24,15 +24,10 @@ replaces=()
 backup=()
 options=()
 source=("$url/releases/download/v$pkgver/resetti"
-	"$_rawurl/.version"
-	"$_rawurl/internal/cfg/default.toml")
+	"$_rawurl/internal/res/default.toml")
 noextract=()
-md5sums=('SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP')
 validategpgkeys=()
-
-pkgver(){
-	cat .version
-}
 
 package() {
 	# TODO: Add bench script and scene-setup.lua export after it is upstreamed.
