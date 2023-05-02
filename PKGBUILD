@@ -2,21 +2,17 @@
 # Contributor: Josh King <josh@throneless.tech>
 
 pkgname="rke2-bin"
-pkgver="1.24.3+rke2r1"
+pkgver="1.25.9+rke2r1"
 pkgrel="1"
 pkgdesc="Rancher's next-generation Kubernetes distribution"
 url="https://rke2.io"
 license=("Apache")
 arch=("x86_64")
 conflicts=("rke2-git")
-depends=("nm-cloud-setup")
+depends=("bash" "nm-cloud-setup")
 
 source_x86_64=(
     "${pkgname}-${pkgver}-${CARCH}.tar.gz::https://github.com/rancher/rke2/releases/download/v${pkgver}/rke2.linux-amd64.tar.gz"
-)
-
-sha256sums_x86_64=(
-    "3db871046d00153ef68309d4fa0114f4ace2509421650659462e7d4ee41fbce3"
 )
 
 prepare() {
@@ -36,3 +32,4 @@ package() {
     install -Dm 644 $srcdir/share/rke2/LICENSE.txt $pkgdir/usr/share/rke2/LICENSE.txt
     install -Dm 644 $srcdir/share/rke2/rke2-cis-sysctl.conf $pkgdir/usr/share/rke2/rke2-cis-sysctl.conf
 }
+sha256sums_x86_64=('b09b1e65ad3275f900453507739375c25ec4491043a6b9302edf15c156291515')
