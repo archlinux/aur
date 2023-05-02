@@ -1,0 +1,20 @@
+pkgbase = llm-git
+	pkgdesc = Run inference for Large Language Models on CPU, with Rust 🦀🚀🦙
+	pkgver = r413.e97ae8d
+	pkgrel = 1
+	url = https://github.com/rustformers/llm
+	arch = any
+	license = MIT
+	license = APACHE
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	provides = llm
+    replaces = llama-cli
+	source = git+https://github.com/rustformers/llm.git
+	source = git+https://github.com/ggerganov/ggml.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = llm-git
