@@ -1,6 +1,6 @@
 pkgname=wiki-loves-monuments-wallpapers
-pkgver=2021
-pkgrel=6
+pkgver=2022
+pkgrel=1
 pkgdesc="Use images from Wikipedia's 'Wiki Loves Monuments' annual photographic competition on your desktop"
 url="https://www.wikilovesmonuments.org"
 arch=('any')
@@ -124,9 +124,21 @@ source=(
     'image-110597108.jpg::https://upload.wikimedia.org/wikipedia/commons/1/1c/Shivalaya%2C_Badami_fort.jpg'
     'image-110785934.jpg::https://upload.wikimedia.org/wikipedia/commons/f/f8/%CE%99%CE%B5%CF%81%CE%AC_%CE%9C%CE%BF%CE%BD%CE%AE_%CE%A0%CE%B1%CE%BD%CE%B1%CE%B3%CE%AF%CE%B1%CF%82_%CE%A0%CE%B5%CE%BB%CE%B5%CE%BA%CE%B7%CF%84%CE%AE%CF%82.jpg'
     'image-110986152.jpg::https://upload.wikimedia.org/wikipedia/commons/7/7c/%CE%9F%CE%B4%CF%8C%CF%82_%CE%99%CF%80%CF%80%CE%BF%CF%84%CF%8E%CE%BD.jpg'
+    'image-122737949.jpg::https://upload.wikimedia.org/wikipedia/commons/5/52/Jaszczur%C3%B3wka_at_Winter.jpg'
+    'image-123602910.jpg::https://upload.wikimedia.org/wikipedia/commons/b/be/Zamek_Czocha%2C_widok_z_drona.jpg'
+    'image-123550219.jpg::https://upload.wikimedia.org/wikipedia/commons/2/2a/Mole_Antonelliana_di_sera.jpg'
+    'image-124697749.jpg::https://upload.wikimedia.org/wikipedia/commons/3/30/Suha_pri_%C5%A0kofji_Loki_-_Cerkev_sv._Janeza_Krstnika%28E%C5%A0D710%29.jpg'
+    'image-123536665.jpg::https://upload.wikimedia.org/wikipedia/commons/d/d2/PalaciodoplanaltoFR.jpg'
+    'image-124791267.jpg::https://upload.wikimedia.org/wikipedia/commons/e/e9/Saghmosavank_at_winter.jpg'
+    'image-124798236.jpg::https://upload.wikimedia.org/wikipedia/commons/7/73/Tyssedal_Kraftverk%2C_early_morning.jpg'
+    'image-123364673.jpg::https://upload.wikimedia.org/wikipedia/commons/f/fc/Biserici_de_lemn_din_Hiriseni_si_Girbova_in_Muzeul_Satului.jpg'
+    'image-123343654.jpg::https://upload.wikimedia.org/wikipedia/commons/d/de/Nowy_%C5%BBmigr%C3%B3d%2C_Cmentarz_%C5%BCydowski_w_Nowym_%C5%BBmigrodzie_DZolopa_2015-07-18_103951_0055.jpg'
+    'image-123580063.jpg::https://upload.wikimedia.org/wikipedia/commons/6/6a/Malm%C3%B6hus_slott_2022.jpg'
+    'image-123603027.jpg::https://upload.wikimedia.org/wikipedia/commons/b/bf/Baszta_Prochowa%2C_Zamek_Ksi%C4%85%C5%BC.jpg'
+    'image-123969783.jpg::https://upload.wikimedia.org/wikipedia/commons/5/57/Mosteiro_da_Serra_do_Pilar_%281%29.jpg'
 )
 sha1sums=(
-    'a8b9bb967386d9591532c60874f2b7f2cdba0cd6'
+    '1595dd9e66944036a387d19934f8097c002bebbf'
     'f33f3cdd4d3c2485bc119ff4a72c54d260c3668d'
     '9f46d71d43317e3a84776c23af0e4c960f06aff0'
     '2d78387c4a6c49c5f335337e9f160e66ab891f46'
@@ -242,19 +254,32 @@ sha1sums=(
     '6193e591b8c9607021be1098ea65546cca2c1359'
     '9c3b2d849a2d8ef2804b1db7d8b38f0c193ea0de'
     '5488115e0ef96204066e03c83e8a8e23b7fb629b'
+    'fc551b6b69c9ab5ddca23314792f027922c9f9f1'
+    'd6a539284ea628f7ce0a16ba4de738a030f429d3'
+    '8316de5529c5a29b9c7912994d44997ae0c90f22'
+    '81964547c7514a488352cf7507e7ca859082edc9'
+    'cad0899fb0d74034ba81959f30fd7d4cd273dfac'
+    'a0133348506d6144ef3d171d9cae8b6e78b6f8de'
+    '57238529fca6cddb562ec44d2a601fe341d665dd'
+    '9d8ff8eac9a2b1877fab19584c43c65c5ecaf284'
+    '0ad51b8a28df5bf0c4bd9f09e4686c3d154d3ce7'
+    '2a48981c9ad455297b6aa41fdff3398950e020a0'
+    '15b027e1c2e8928782e09ae65c18206ce6e4d96e'
+    '7f2bd737a0bc67f6a6c29bf1fa843faf51f02ad7'
 )
 _index=(
-    104 84 70 57 45 32 25 11 1 105 93 71 58 46 33 26 12 2 106 94 85 72 59 47 34
-    13 107 95 86 73 48 35 27 14 3 108 96 87 74 60 36 4 97 75 61 49 37 28 15 5
-    109 88 76 62 50 38 29 16 6 110 98 77 63 39 17 7 99 78 64 51 40 30 18 111 79
-    65 52 31 19 112 100 89 66 41 20 8 113 90 80 67 42 21 9 114 91 81 68 53 43 22
-    101 92 82 69 54 44 23 115 102 83 55 24 10 103 56
+    104 84 70 57 45 32 25 11 1 105 93 71 58 46 33 26 12 2 116 106 94 85 72 59 47
+    34 13 117 107 95 86 73 48 35 27 14 3 108 96 87 74 60 36 4 118 97 75 61 49 37
+    28 15 5 119 109 88 76 62 50 38 29 16 6 120 110 98 77 63 39 17 7 121 99 78 64
+    51 40 30 18 122 111 79 65 52 31 19 123 112 100 89 66 41 20 8 124 113 90 80
+    67 42 21 9 125 114 91 81 68 53 43 22 126 101 92 82 69 54 44 23 127 115 102
+    83 55 24 10 103 56
 )
 _ultrawide=(
     0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 1 0
-    1 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0
-    0
+    0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    0 1 1 0 0 1 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    0 1 1 0 0 0 0 0 0 0 0 0 0
 )
 
 prepare() {
