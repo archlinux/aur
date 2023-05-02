@@ -1,7 +1,7 @@
 # Maintainer: Djuice <felhamed@gmail.com>
 pkgname=cryptowatch-desktop-bin
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="Charting & trading terminal for cryptocurrency markets"
 arch=('x86_64')
 
@@ -12,14 +12,14 @@ options=('!strip' '!emptydirs')
 provides=('cryptowatch-desktop-bin')
 
 source=(
-  "cryptowatch_desktop::https://cryptowat.ch/desktop/download/linux/${pkgver}"
+  "cryptowatch_desktop::https://cryptowat.ch/desktop/download/linux-x86/${pkgver}"
   "cryptowatch.desktop"
   "cryptowatch.png"
 )
 
 sha256sums=(
-  '9b0cfeec9463b3273a46a995ef77f42dfd4a81027d37e1d20e8b10079a762553'
-  '542ab64620e04481b75a3f787643deab91887ceffe7423c933dc18db8a5ade8a'
+  'dfdda61717c0236af07f5e99afcf4d6b89e8d158ad196f6faf94056784870acd'
+  'a5f93d812911662c3d7caaa9d068d17a982fd0f0ce0c34eae2beaab439d9bf72'
   'e4e2a8c671013a37bdc888680ce2159f2e4222746502a9b0ddc73ff199be00a7'
 )
 
