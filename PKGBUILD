@@ -3,7 +3,7 @@
 
 pkgname='firefox-extension-enhancer-for-youtube-bin'
 pkgver=2.0.117.10
-pkgrel=0
+pkgrel=1
 pkgdesc='Take control of YouTube and boost your user experience!'
 arch=('any')
 url='https://www.mrfdev.com/enhancer-for-youtube'
