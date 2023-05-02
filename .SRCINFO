@@ -1,0 +1,13 @@
+pkgbase = firefox-extension-plasma-integration-bin
+	pkgdesc = Multitask efficiently by controlling browser functions from the Plasma desktop.
+	pkgver = 1.8.1
+	pkgrel = 0
+	url = http://kde.org
+	arch = any
+	license = GPL-3.0-or-later
+	depends = firefox
+	noextract = plasma-integration.xpi
+	source = plasma-integration.xpi::https://addons.mozilla.org/firefox/downloads/file/3859385/plasma_integration-1.8.1.xpi
+	sha256sums = e156e82091bbff44cb9d852e16aedacdcc0819c5a3b8cb34cedd77acf566c5c4
+
+pkgname = firefox-extension-plasma-integration-bin
