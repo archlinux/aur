@@ -3,7 +3,7 @@
 
 pkgname='firefox-extension-multi-account-containers-bin'
 pkgver=8.1.2
-pkgrel=0
+pkgrel=1
 pkgdesc='Firefox Multi-Account Containers lets you keep parts of your online life separated into color-coded tabs. Cookies are separated by container, allowing you to use the web with multiple accounts and integrate Mozilla VPN for an extra layer of privacy.'
 arch=('any')
 url='https://github.com/mozilla/multi-account-containers/#readme'
