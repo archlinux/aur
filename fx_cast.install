@@ -1,0 +1,6 @@
+post_install() {
+	echo "Ensure to:"
+	echo -e "\t* Install the Firefox extension from https://hensm.github.io/fx_cast/
+	echo -e "\t* Run 'systemctl enable --now avahi-daemon'"
+	echo -e "\t* Update your avahi configuration as per https://wiki.archlinux.org/title/avahi\#Hostname_resolution"
+}

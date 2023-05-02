@@ -1,40 +1,50 @@
-# Maintainer: 314eter
-# Contributor: csicar
+# Maintainer: éclairevoyant
 
 pkgname=fx_cast
-pkgver=0.1.2
+pkgver=0.3.1
 pkgrel=1
-pkgdesc="Implementation of the Chrome Sender API (Chromecast) within Firefox"
-arch=('x86_64')
+pkgdesc="Chromecast API implementation for Firefox"
+arch=(x86_64)
 url="https://hensm.github.io/fx_cast/"
-license=('MIT')
-makedepends=('npm')
-depends=('avahi')
-conflicts=('fx_cast-bin')
+license=(MIT)
+depends=(avahi gcc-libs glibc nodejs nss-mdns)
+makedepends=(npm nvm)
 options=('!strip')
-source=("https://github.com/hensm/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('eb166318c3c4a62cb74e2e1457911d6abcf2bd1f1462bcc3ad1c0bdeb29291ab')
+install=$pkgname.install
+source=("$pkgname-$pkgver.tar.gz::https://github.com/hensm/$pkgname/archive/v$pkgver.tar.gz")
+b2sums=('b050f886388ae9fdecf3e4664fd4c5732cd42cbc5f42e494eb79f6f85c39f1ae6ec38aee6c7c73f95abd85944ce94c1c8fd75166e7e950b75da937c5f65ce4a7')
+
+_ensure_local_nvm() {
+	# let's be sure we are starting clean
+	which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+	export NVM_DIR="${srcdir}/.nvm"
+
+	# The init script returns 3 if version specified
+	# in ./.nvrc is not (yet) installed in $NVM_DIR
+	# but nvm itself still gets loaded ok
+	source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
 
 prepare() {
-	cd "${pkgname}-${pkgver}/app"
+	_ensure_local_nvm
+	cd $pkgname-$pkgver/app
 
-	sed -i '/devDependencies/a "typescript": "^3.9.7",' package.json
-	sed -i -e 's/`node.*`/"host"/' -e '/: path\.join/a manifest.path = "/usr/lib/fx_cast/fx_cast_bridge"' bin/build.js
+	nvm install 16
+	npm install --cache "$srcdir/npm-cache"
+	sed -i '/: path\.join/a manifest.path = "/usr/lib/fx_cast/fx_cast_bridge"' bin/build.js
 }
 
 build() {
-	cd "${pkgname}-${pkgver}/app"
-
-	npm install --cache "${srcdir}/npm-cache"
+	_ensure_local_nvm
+	cd $pkgname-$pkgver/app
 	npm run build -- --usePkg
 }
 
 package() {
-	cd "${pkgname}-${pkgver}"
+	_ensure_local_nvm
+	cd $pkgname-$pkgver
 
-	install -Dm755 dist/app/fx_cast_bridge -t "${pkgdir}/usr/lib/fx_cast/"
-	install -Dm644 dist/app/dns_sd_bindings.node -t "${pkgdir}/usr/lib/fx_cast/"
-
-	install -Dm644 dist/app/fx_cast_bridge.json -t "${pkgdir}/usr/lib/mozilla/native-messaging-hosts/"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm755 dist/app/{dns_sd_bindings.node,fx_cast_bridge} -t "$pkgdir/usr/lib/fx_cast/"
+	install -Dm644 dist/app/fx_cast_bridge.json -t "$pkgdir/usr/lib/mozilla/native-messaging-hosts/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
