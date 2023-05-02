@@ -8,7 +8,7 @@
 pkgname=wine-ge-custom
 _srctag=GE-Proton8-1
 pkgver=${_srctag//-/.}
-pkgrel=1
+pkgrel=2
 epoch=1
 
 #_winever=${pkgver%.*}
@@ -72,6 +72,7 @@ makedepends=(autoconf bison perl flex mingw-w64-gcc
   libva                 lib32-libva
   gtk3                  lib32-gtk3
   gst-plugins-base-libs lib32-gst-plugins-base-libs
+  gst-plugins-good      lib32-gst-plugins-good
   vulkan-icd-loader     lib32-vulkan-icd-loader
   sdl2                  lib32-sdl2
   libgphoto2
@@ -92,6 +93,7 @@ optdepends=(
   libva                 lib32-libva
   gtk3                  lib32-gtk3
   gst-plugins-base-libs lib32-gst-plugins-base-libs
+  gst-plugins-good      lib32-gst-plugins-good
   vulkan-icd-loader     lib32-vulkan-icd-loader
   sdl2                  lib32-sdl2
   libgphoto2
@@ -154,6 +156,7 @@ build() {
   export CXXFLAGS="$COMMON_FLAGS -mcmodel=small -std=c++17"
   export CROSSCFLAGS="$CFLAGS"
   export CROSSCXXFLAGS="$CXXFLAGS"
+  export PKG_CONFIG_PATH="/usr/lib/pkgconfig:/usr/share/pkgconfig"
   cd "$srcdir/$pkgname-64-build"
   ../$pkgname/proton-wine/configure \
     --prefix=/usr \
@@ -178,7 +181,7 @@ build() {
   export CXXFLAGS="$COMMON_FLAGS -mstackrealign -mno-avx -std=c++17"
   export CROSSCFLAGS="$CFLAGS"
   export CROSSCXXFLAGS="$CXXFLAGS"
-  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig:/usr/share/pkgconfig"
   cd "$srcdir/$pkgname-32-build"
   ../$pkgname/proton-wine/configure \
     --prefix=/usr \
