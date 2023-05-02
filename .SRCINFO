@@ -1,6 +1,6 @@
 pkgbase = wine-ge-custom
 	pkgdesc = A compatibility layer for running Windows programs - GloriousEggroll branch
-	pkgver = GE.Proton7.43
+	pkgver = GE.Proton8.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/GloriousEggroll/wine-ge-custom
@@ -25,10 +25,6 @@ pkgbase = wine-ge-custom
 	makedepends = lib32-libxcomposite
 	makedepends = libxxf86vm
 	makedepends = lib32-libxxf86vm
-	makedepends = libldap
-	makedepends = lib32-libldap
-	makedepends = openal
-	makedepends = lib32-openal
 	makedepends = v4l-utils
 	makedepends = lib32-v4l-utils
 	makedepends = alsa-lib
@@ -53,8 +49,6 @@ pkgbase = wine-ge-custom
 	makedepends = lib32-vulkan-icd-loader
 	makedepends = sdl2
 	makedepends = lib32-sdl2
-	makedepends = vkd3d
-	makedepends = lib32-vkd3d
 	makedepends = libgphoto2
 	makedepends = ffmpeg
 	makedepends = opencl-headers
@@ -79,12 +73,8 @@ pkgbase = wine-ge-custom
 	depends = desktop-file-utils
 	optdepends = giflib
 	optdepends = lib32-giflib
-	optdepends = libldap
-	optdepends = lib32-libldap
 	optdepends = gnutls
 	optdepends = lib32-gnutls
-	optdepends = openal
-	optdepends = lib32-openal
 	optdepends = v4l-utils
 	optdepends = lib32-v4l-utils
 	optdepends = libpulse
@@ -109,18 +99,16 @@ pkgbase = wine-ge-custom
 	optdepends = lib32-vulkan-icd-loader
 	optdepends = sdl2
 	optdepends = lib32-sdl2
-	optdepends = vkd3d
-	optdepends = lib32-vkd3d
 	optdepends = libgphoto2
 	optdepends = ffmpeg
 	optdepends = dosbox
-	provides = wine=7.0
-	provides = wine-wow64=7.0
+	provides = wine=8.0
+	provides = wine-wow64=8.0
 	conflicts = wine
 	conflicts = wine-wow64
 	options = !staticlibs
 	options = !lto
-	source = wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#tag=GE-Proton7-43
+	source = wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#tag=GE-Proton8-1
 	source = proton-wine-ge::git+https://github.com/GloriousEggroll/proton-wine.git
 	source = wine-wmclass.patch
 	source = wine-isolate_home.patch

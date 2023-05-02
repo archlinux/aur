@@ -6,7 +6,7 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-ge-custom
-_srctag=GE-Proton7-43
+_srctag=GE-Proton8-1
 pkgver=${_srctag//-/.}
 pkgrel=1
 epoch=1
@@ -62,8 +62,6 @@ makedepends=(autoconf bison perl flex mingw-w64-gcc
   libxinerama           lib32-libxinerama
   libxcomposite         lib32-libxcomposite
   libxxf86vm            lib32-libxxf86vm
-  libldap               lib32-libldap
-  openal                lib32-openal
   v4l-utils             lib32-v4l-utils
   alsa-lib              lib32-alsa-lib
   libxcomposite         lib32-libxcomposite
@@ -76,7 +74,6 @@ makedepends=(autoconf bison perl flex mingw-w64-gcc
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   vulkan-icd-loader     lib32-vulkan-icd-loader
   sdl2                  lib32-sdl2
-  vkd3d                 lib32-vkd3d
   libgphoto2
   ffmpeg
   opencl-headers
@@ -84,9 +81,7 @@ makedepends=(autoconf bison perl flex mingw-w64-gcc
 
 optdepends=(
   giflib                lib32-giflib
-  libldap               lib32-libldap
   gnutls                lib32-gnutls
-  openal                lib32-openal
   v4l-utils             lib32-v4l-utils
   libpulse              lib32-libpulse
   alsa-plugins          lib32-alsa-plugins
@@ -99,13 +94,12 @@ optdepends=(
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   vulkan-icd-loader     lib32-vulkan-icd-loader
   sdl2                  lib32-sdl2
-  vkd3d                 lib32-vkd3d
   libgphoto2
   ffmpeg
   dosbox
 )
 
-provides=("wine=7.0" "wine-wow64=7.0")
+provides=("wine=8.0" "wine-wow64=8.0")
 conflicts=('wine' 'wine-wow64')
 install=wine.install
 
@@ -123,17 +117,12 @@ prepare() {
       patch -p1 -i "$srcdir"/wine-isolate_home.patch
       git config user.email "makepkg@aur.not"
       git config user.name "makepkg aur"
-      git tag wine-ge-7.0 --annotate -m "$pkgver"
+      git tag wine-ge-8.0 --annotate -m "$pkgver"
       dlls/winevulkan/make_vulkan
       tools/make_requests
       autoreconf -f
     popd
   popd
-
-  sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i $pkgname/proton-wine/configure*
-
-  # Fix openldap 2.5+ detection
-  sed 's/-lldap_r/-lldap/' -i $pkgname/proton-wine/configure
 
   # Doesn't compile without remove these flags as of 4.10
   export CFLAGS="${CFLAGS/-fno-plt/}"
@@ -150,19 +139,21 @@ build() {
   # MingW Wine builds fail with relro
   export LDFLAGS="${LDFLAGS/,-z,relro/}"
 
-  export CFLAGS="-O2 -march=haswell -mtune=haswell -pipe -fno-semantic-interposition"
-  export CXXFLAGS="-O2 -march=haswell -mtune=haswell -pipe -fno-semantic-interposition"
   export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
-
-  export CFLAGS+=" -mno-avx2 -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf"
-  export CXXFLAGS+=" -mno-avx2 -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf -std=c++17"
-
-  export CROSSCFLAGS="$CFLAGS"
-  export CROSSCXXFLAGS="$CXXFLAGS"
   export CROSSLDFLAGS="$LDFLAGS -Wl,--file-alignment,4096"
+
+  # From Proton
+  OPTIMIZE_FLAGS="-O2 -march=haswell -mtune=haswell -mfpmath=sse -pipe -fno-semantic-interposition"
+  SANITY_FLAGS="-fwrapv -fno-strict-aliasing"
+  DEBUG_FLAGS="-ggdb -ffunction-sections -fdata-sections -fno-omit-frame-pointer"
+  COMMON_FLAGS="$OPTIMIZE_FLAGS $DEBUG_FLAGS $SANITY_FLAGS -mno-avx2"
 
   msg2 "Building Wine-64..."
 
+  export CFLAGS="$COMMON_FLAGS -mcmodel=small"
+  export CXXFLAGS="$COMMON_FLAGS -mcmodel=small -std=c++17"
+  export CROSSCFLAGS="$CFLAGS"
+  export CROSSCXXFLAGS="$CXXFLAGS"
   cd "$srcdir/$pkgname-64-build"
   ../$pkgname/proton-wine/configure \
     --prefix=/usr \
@@ -183,8 +174,8 @@ build() {
   msg2 "Building Wine-32..."
 
   # Disable AVX instead of using 02, for 32bit
-  export CFLAGS+=" -mstackrealign -mno-avx"
-  export CXXFLAGS+=" -mstackrealign -mno-avx"
+  export CFLAGS="$COMMON_FLAGS -mstackrealign -mno-avx"
+  export CXXFLAGS="$COMMON_FLAGS -mstackrealign -mno-avx -std=c++17"
   export CROSSCFLAGS="$CFLAGS"
   export CROSSCXXFLAGS="$CXXFLAGS"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
