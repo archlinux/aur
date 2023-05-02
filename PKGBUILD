@@ -29,14 +29,15 @@ pkgver() {
 }
 
 prepare() {
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/$pkgname-0.1.7-stable"
     export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
 	cd "$srcdir/$_pkgname"
-	cargo build --locked --release
+	cargo build --frozen --release
 }
 
 package() {
