@@ -1,25 +1,32 @@
-# maintainer: libele <libele@disroot.org>
+# maintainer: BrainDamage
 
 pkgname=tweego
 pkgver=2.1.1
 pkgrel=1
-pkgdesc="a command line compiler for Twine/Twee story formats, written in Go."
-arch=('i686' 'x86_64')
+pkgdesc="a command line compiler for Twine/Twee story formats, written in Go"
+arch=('x86_64')
 url='https://www.motoslave.net/tweego'
-license=('BSD' 'custom')
-source_i686=("https://github.com/tmedwards/tweego/releases/download/v${pkgver}/tweego-${pkgver}-linux-x86.zip")
-source_x86_64=("https://github.com/tmedwards/tweego/releases/download/v${pkgver}/tweego-${pkgver}-linux-x64.zip")
-md5sums_i686=('99155762268a8b89868de8dfed3dcb0f')
-md5sums_x86_64=('6ebec69142cc6aa9501b82b141da04cc')
+license=('BSD')
+makedepends=('go')
+source=("${pkgname}-${pkgver}::https://github.com/tmedwards/tweego/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('f58991ff0b5b344ebebb5677b7c21209823fa6d179397af4a831e5ef05f28b02')
+
+build() {
+	cd "${pkgname}-${pkgver}"
+	go mod tidy
+	go build \
+		-trimpath \
+		-buildmode=pie \
+		-mod=readonly \
+		-modcacherw \
+		-ldflags "-extldflags '${LDFLAGS}'" \
+		-o "${pkgname}" .
+}
 
 package() {
-  cd "${srcdir}"
-  install -dm755 "${pkgdir}/usr/bin"
-  install -Dm755 tweego "${pkgdir}/usr/share/${pkgname}/${pkgname}"
-
-  ln -s "/usr/share/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  cp -a storyformats "${pkgdir}/usr/share/${pkgname}/storyformats"
-
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  cp -a licenses "${pkgdir}/usr/share/licenses/${pkgname}"
+	cd "${pkgname}-${pkgver}"
+	install -Dvm 755 "${pkgname}" -t "${pkgdir}/usr/bin"
+	install -Dvm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	cd docs
+	find . -mindepth 1 -exec install -Dvm 644 {} "${pkgdir}/usr/share/doc/${pkgname}/{}" \;
 }
