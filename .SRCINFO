@@ -1,7 +1,7 @@
 pkgbase = xst
 	pkgdesc = st fork fork with xresources support and other patches
 	pkgver = 0.9
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://git.sr.ht/~arkhan/xst
 	arch = i686

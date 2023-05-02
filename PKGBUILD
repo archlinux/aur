@@ -4,7 +4,7 @@
 pkgname=xst
 epoch=1
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc='st fork fork with xresources support and other patches'
 url='https://git.sr.ht/~arkhan/xst'
 arch=('i686' 'x86_64')
