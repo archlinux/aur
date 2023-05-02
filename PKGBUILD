@@ -40,12 +40,10 @@ package() {
   install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 "splitter.jar" "${pkgdir}/usr/share/java/mkgmap/splitter.jar"
   mkdir -p "${pkgdir}/usr/share/doc/${_pkgname}"
-  cp -r "doc" "${pkgdir}/usr/share/doc/${_pkgname}"
-  chmod -R 644 "${pkgdir}/usr/share/doc/${_pkgname}"
+  cp -r "doc"/* "${pkgdir}/usr/share/doc/${_pkgname}"
 
   # Install libraries. Destination dir created when installing jar file.
   mkdir -p "${pkgdir}/usr/share/java/${_pkgname}"
-  cp -r "lib" "${pkgdir}/usr/share/java/${_pkgname}"
-  chmod -R 644 "${pkgdir}/usr/share/java/${_pkgname}"
+  cp -r "lib"/* "${pkgdir}/usr/share/java/${_pkgname}"
 
 }
