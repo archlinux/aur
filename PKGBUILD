@@ -2,7 +2,7 @@
 
 pkgname="guppy"
 pkgver=0.2.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool to manage your installations from Git Repositories for you"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://gitlab.com/Teddy-Kun/guppy"
@@ -24,14 +24,15 @@ source=("https://gitlab.com/Teddy-Kun/guppy/-/archive/v$pkgver/guppy-v$pkgver.ta
 sha256sums=('32bcb46cc1af7496d769248f4a9e3070454a408e62afe7da51159b6f22295d4f')
 
 prepare() {
-	cd "$srcdir/$pkgname-v$pkgver"
-	export RUSTUP_TOOLCHAIN=stable
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    cd "$srcdir/$pkgname-v$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
 	cd "$srcdir/$pkgname-v$pkgver"
-	cargo b --locked --release
+	cargo b --frozen --release
 }
 
 package() {
