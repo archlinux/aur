@@ -1,35 +1,33 @@
-# Maintainer: Quentin Retornaz <quentin dot retornaz at yahoo dot fr>
+# Maintainer: AtticFinder65536 <atticventilation-aur at protonmail dot com>
 
 pkgname=cyanrip-git
-pkgver=r120.4180c61
-pkgrel=1
-pkgdesc="Bule-ish CD ripper"
-arch=('i686' 'x86_64')
-url="https://github.com/atomnuker/cyanrip"
-license=('LGPL3')
-depends=(libcdio
-	libcdio-paranoia
-	libdiscid
-	libmusicbrainz5
-	ffmpeg-git)
-makedepends=(git meson)
-provides=(cyanrip)
-conflicts=(cyanrip)
-source=("git+https://github.com/atomnuker/cyanrip.git")
-sha256sums=('SKIP')
+pkgver=0.9.0.r15.g36b248b
+pkgrel=2
+pkgdesc='Fully featured CD ripping program'
+arch=('x86_64')
+url='https://github.com/cyanreg/cyanrip'
+license=('GPL3')
+depends=('curl' 'ffmpeg' 'libcdio-paranoia' 'libmusicbrainz5')
+makedepends=('git' 'meson' 'ninja')
+source=('git+https://github.com/cyanreg/cyanrip.git')
+b2sums=('SKIP')
+provides=('cyanrip')
+conflicts=('cynarip')
 
-pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+pkgver()
+{
+  cd cyanrip
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
-	cd "$srcdir/${pkgname%-git}"
-	arch-meson "${pkgname%-git}" build
-	ninja -C build
+build()
+{
+  # default in meson.build: debugoptimized
+  meson setup --prefix=/usr --buildtype=plain cyanrip build
+  meson compile -C build
 }
 
-package() {
-	cd "$srcdir/${pkgname%-git}"
-	DESTDIR="$pkgdir" ninja -C build install
+package()
+{
+  meson install -C build --destdir "$pkgdir"
 }
