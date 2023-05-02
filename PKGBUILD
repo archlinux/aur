@@ -1,41 +1,47 @@
 # Maintainer: Luke Arms <luke@arms.to>
 
 pkgname=pretty-php
-pkgver=0.4.1
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="The opinionated formatter for modern, expressive PHP"
 arch=('any')
 license=('MIT')
 url='https://github.com/lkrms/pretty-php'
 depends=('php' 'composer')
-makedepends=('git')
+makedepends=('git' 'jq')
 source=("${pkgname}::git+https://github.com/lkrms/pretty-php.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 prepare() {
     cd "${srcdir}/${pkgname}"
-    rm -rf build vendor
-    # The repo needs to be in 'detached HEAD' state for Composer to get the root
-    # package version from Git
-    git -c advice.detachedHead=false checkout "v${pkgver}"
-    composer install --no-plugins
+    composer install --no-plugins --no-interaction
 }
 
 build() {
     cd "${srcdir}/${pkgname}"
-    ./build.sh
+    scripts/build.sh --latest --phar
 }
 
 check() {
-    cd "${srcdir}/${pkgname}/build"
-    echo 'Checking output of `pretty-php.phar --version`'
-    ./pretty-php.phar --version | grep -Fq "pretty-php v${pkgver}-"
+    cd "${srcdir}/${pkgname}"
+    local phar
+    phar=$(_phar)
+    echo "Checking output of \`$phar --version\`"
+    "$phar" --version | grep -Fq "pretty-php v${pkgver}-"
 }
 
 package() {
     cd "${srcdir}/${pkgname}"
+    local phar
+    phar=$(_phar)
+    install -Dm755 "$phar" "${pkgdir}/usr/bin/pretty-php"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
 
-    cd "${srcdir}/${pkgname}/build"
-    install -Dm755 pretty-php.phar "${pkgdir}/usr/bin/pretty-php"
+_phar() {
+    local phar
+    phar=$(jq -r \
+        '.assets[] | select(.type == "phar") | .path' \
+        build/dist/manifest.json)
+    printf 'build/dist/%s' "$phar"
 }
