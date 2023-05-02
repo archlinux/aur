@@ -36,7 +36,7 @@ build() {
   pip install -r requirements.txt
   
   # Cleanup unsed
-  rm -r .git .github docs test .dockerignore .gitignore .replit docker-compose.yml Dockerfile heroku.yml MANIFEST.in README.md requirements.txt setup.py
+  rm -r .git .github docs test .dockerignore .gitignore .replit docker-compose.yml Dockerfile heroku.yml MANIFEST.in README.md requirements.txt
 }
 
 package() {
