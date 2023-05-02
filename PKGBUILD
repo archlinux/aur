@@ -2,7 +2,7 @@
 
 pkgname=flavours
 pkgdesc='A simple and easy cli to build and use base16 schemes'
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 arch=('any')
 url='https://github.com/Misterio77/flavours'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('git')
 makedepends=('rust')
 source=("$pkgname-${pkgver}.tar.gz::https://github.com/misterio77/flavours/archive/v${pkgver}.tar.gz")
-sha256sums=('48c7659031d399ff125a07b71419935946e0da8d3ef1817a9f89dda32c2dcac1')
+sha256sums=('7482453697abad747727cefc40bf8381ef2e5306cdb7435c34e3d3d20a37bf11')
 
 build() {
 	cd "$pkgname-$pkgver"

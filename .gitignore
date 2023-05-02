@@ -1,0 +1,4 @@
+pkg
+src
+flavours*.tar.gz
+flavours*.pkg.tar.zst
