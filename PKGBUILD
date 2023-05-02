@@ -1,6 +1,6 @@
 pkgname=php-xhprof-pecl
 
-pkgver=2.3.2
+pkgver=2.3.9
 pkgrel=1
 
 pkgdesc="A Hierarchical Profiler for PHP"
@@ -14,7 +14,7 @@ backup=('etc/php/conf.d/xhprof.ini')
 options=()
 install=php-xhprof.install
 source=("https://pecl.php.net/get/xhprof-${pkgver}.tgz")
-sha256sums=('4438a56d19630dfb82f6f3fe7d51f4c0b99095fd1154b93fc70d80852068d907')
+sha256sums=('1dd421b25e0351e8074dec0b41ee67c5ca3a9f181ee90629e0222a12cd6f8774')
 
 prepare() {
   cd "$srcdir/xhprof-${pkgver}/extension/"
