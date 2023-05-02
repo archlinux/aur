@@ -1,6 +1,6 @@
 pkgbase = x48ng-git
 	pkgdesc = A reboot of the x48 HP 48 emulator
-	pkgver = 0.9.9.r1.1bdffaf
+	pkgver = 0.9.10.r1.1bdffaf
 	pkgrel = 1
 	url = https://github.com/gwenhael-le-moine/x48ng
 	install = x48ng-git.install
