@@ -1,0 +1,17 @@
+pkgbase = coin-or-os
+	pkgdesc = Optimization Services
+	pkgver = 2.10.3
+	pkgrel = 1
+	url = https://projects.coin-or.org/OS
+	arch = x86_64
+	groups = coin-or
+	license = EPL
+	depends = coin-or-bonmin
+	depends = coin-or-csdp
+	depends = cppad
+	options = debug
+	options = !strip
+	source = https://github.com/coin-or/OS/archive/refs/tags/releases/2.10.3.tar.gz
+	sha256sums = f8732cc140231307cca4c0dfdc08cf98bc9347d7040fe4edbc295396c8140f71
+
+pkgname = coin-or-os
