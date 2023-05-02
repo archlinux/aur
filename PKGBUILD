@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=system-monitoring-center
-pkgver=2.11.0
+pkgver=2.12.0
 pkgrel=1
 pkgdesc="Multi-featured system monitor."
 arch=('any')
@@ -13,7 +13,7 @@ checkdepends=('appstream-glib')
 optdepends=('hwdata: for device vendor-model information of new devices'
             'xorg-xrandr: for more accurate screen resolution and refresh rate detection')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ea28a11fa57dbc887fa6362d98b1ea9989b70937a7da094d728d2f04d5ecb7f9')
+sha256sums=('b04d74855f1cd337b19f1ad889daa7889951dadda00e9e8c1d239369abb8d72e')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
