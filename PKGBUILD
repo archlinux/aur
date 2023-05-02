@@ -31,12 +31,12 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver"
     cd build
     install -Dm775 ochess "${pkgdir}/usr/bin/ochess"
-    install -Dm775 libs/cgeditor/libcgeditor.so "${pkgdir}/usr/lib/ochess/libcgeditor.so"
-    install -Dm775 libs/chessarbiter/libchessarbiter.so "${pkgdir}/usr/lib/ochess/libchessarbiter.so"
-    install -Dm775 libs/pgnp/libpgnp.so "${pkgdir}/usr/lib/ochess/libpgnp.so"
-    install -Dm775 libs/uciadapter/libuciadapter.so "${pkgdir}/usr/lib/ochess/libuciadapter.so"
-    install -Dm775 libs/cgeditor/libs/chess-move-interface/libChessMoveInterface.so "${pkgdir}/usr/lib/ochess/libChessMoveInterface.so"
+    install -Dm775 libs/cgeditor/libcgeditor.so "${pkgdir}/usr/local/lib/ochess/libcgeditor.so"
+    install -Dm775 libs/chessarbiter/libchessarbiter.so "${pkgdir}/usr/local/lib/ochess/libchessarbiter.so"
+    install -Dm775 libs/pgnp/libpgnp.so "${pkgdir}/usr/local/lib/ochess/libpgnp.so"
+    install -Dm775 libs/uciadapter/libuciadapter.so "${pkgdir}/usr/local/lib/ochess/libuciadapter.so"
+    install -Dm775 libs/cgeditor/libs/chess-move-interface/libChessMoveInterface.so "${pkgdir}/usr/local/lib/ochess/libChessMoveInterface.so"
 }
