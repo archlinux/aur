@@ -3,7 +3,7 @@ pkgname=waylyrics-git
 _pkgname=waylyrics
 __pkgname=Waylyrics
 _appname="io.poly000.${_pkgname}"
-pkgver=0.1.0_r43.g37a3f08
+pkgver=0.1.0_r45.ge80e0e2
 pkgrel=1
 pkgdesc="On screen lyrics for wayland with netease cloud music source"
 url="https://github.com/poly000/waylyrics"
@@ -50,8 +50,8 @@ package() {
    cd "$srcdir/$_pkgname"
    install -Dm644 config.toml.example "${pkgdir}/usr/share/${_pkgname}/config.toml"
    install -Dm644 style.css.example "${pkgdir}/usr/share/${_pkgname}/style.css"
-   install -Dm755 target/release/${_pkgname} "${pkgdir}/usr/bin/${_pkgname} "
-   install -Dm644 ${_appname}.gschema.xml "${pkgdir}/usr/share/glib-2.0/schemas/${_appname}.gschema.xml "
+   install -Dm755 target/release/${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
+   install -Dm644 ${_appname}.gschema.xml "${pkgdir}/usr/share/glib-2.0/schemas/${_appname}.gschema.xml"
 
    # fixed path by Integral-Tech
    cd -
