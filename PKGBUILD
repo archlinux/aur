@@ -2,7 +2,7 @@
 
 pkgname=icon  
 pkgver=9.5.22e
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="The Icon programming language"
 url="https://github.com/gtownsend/icon"
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 depends=('sh' 'libx11')
 makedepends=('libxt')
 license=('custom')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz" LICENSE)
+source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz" LICENSE)
 sha256sums=('e09ab5a7d4f10196be0e7ca12624c011cd749fc93e50ad4ed87bd132d927c983'
             '57b2b71129aa652ca63b07d3c23564bc7a45444a274d12e50856b46e4d088e35')
 
