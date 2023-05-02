@@ -227,15 +227,15 @@ function gen_image() {
     # Remove temporary files
     rm "$initrd"
     rm "$os_release"
-  done
 
-  # Mark image as default if needed
-  if [[ "$pkgbase" == "$default_kernel_package" ]]; then
-    echo "===> Mark linux image $kernel ($version) as default"
-    bootctl set-default "linux-${version}-${MACHINE_ID}-${BUILD_ID}.efi" || {
-    	echo "==> Unable to mark linux image $kernel ($version) as default due to error" >&2
-    }
-  fi
+    # Mark image as default if needed
+    if [[ "$pkgbase" == "$default_kernel_package" && "$variant" == "default" ]]; then
+      echo "===> Mark linux image $kernel ($version) as default"
+      bootctl set-default "$image" || {
+      	echo "==> Unable to mark linux image $kernel ($version) as default due to error" >&2
+      }
+    fi
+  done
 }
 
 for kernel in "${!kernels[@]}"; do
