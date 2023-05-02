@@ -1,16 +1,18 @@
 pkgbase = python-shortuuid
 	pkgdesc = library that generates concise, unambiguous, URL-safe UUIDs
-	pkgver = 1.0.8
-	pkgrel = 2
+	pkgver = 1.0.11
+	pkgrel = 1
 	url = https://github.com/skorokithakis/shortuuid
 	arch = any
 	license = BSD
 	checkdepends = python-django
-	makedepends = python-dephell
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
 	depends = python
 	options = !emptydirs
-	source = shortuuid-1.0.8.tar.gz::https://github.com/skorokithakis/shortuuid/archive/v1.0.8.tar.gz
-	sha256sums = 7b62fa068d83fc5d09a4ba068d10d5709e42aa1f97a6d2cac40ac5143ce59421
+	source = shortuuid-1.0.11.tar.gz::https://github.com/skorokithakis/shortuuid/archive/v1.0.11.tar.gz
+	sha256sums = 6ba28eece88d23389684585d73f3d883be3a76d6ab0c5d18ef34e5de2d500d0f
 
 pkgname = python-shortuuid

@@ -3,38 +3,34 @@
 # Contributor: jnanar <info@agayon.be>
 
 pkgname=python-shortuuid
-pkgver=1.0.8
-pkgrel=2
+_pkgname=${pkgname#python-}
+pkgver=1.0.11
+pkgrel=1
 pkgdesc='library that generates concise, unambiguous, URL-safe UUIDs'
 arch=(any)
-url="https://github.com/skorokithakis/${pkgname#python-}"
+url="https://github.com/skorokithakis/$_pkgname"
 license=(BSD)
 depends=(python)
 options=(!emptydirs)
-makedepends=(python-dephell
-             python-setuptools)
+makedepends=(python-{build,installer,wheel}
+             python-poetry-core)
 checkdepends=(python-django)
-_archive="${pkgname#python-}-$pkgver"
+_archive="$_pkgname-$pkgver"
 source=("$_archive.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('7b62fa068d83fc5d09a4ba068d10d5709e42aa1f97a6d2cac40ac5143ce59421')
-
-prepare() {
-	cd "$_archive"
-    dephell deps convert --from pyproject.toml --to setup.py
-}
+sha256sums=('6ba28eece88d23389684585d73f3d883be3a76d6ab0c5d18ef34e5de2d500d0f')
 
 build() {
 	cd "$_archive"
-	python setup.py build
+	python -m build -wn
 }
 
 check() {
 	cd "$_archive"
-	python setup.py test
+	python -m unittest discover
 }
 
 package() {
 	cd "$_archive"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer -d "$pkgdir" dist/*.whl
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" COPYING
 }
