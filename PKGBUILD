@@ -2,7 +2,7 @@
 
 _target=m68k-elf
 pkgname=$_target-toolchain
-pkgver=20230420
+pkgver=20230502
 pkgrel=1
 pkgdesc="A complete gcc/binutils/newlib toolchain for $_target"
 depends=('zlib' 'bash' 'libmpc' 'libisl')
@@ -14,11 +14,11 @@ makedepends=(git)
 license=('GPL' 'BSD')
 options=('!strip')
 _binutils_commit=594dcc92e8d1f6bb30e3dfa4eb343febcda66f1a
-_gcc_commit=015cf9f84b0b6792f982e505392ca574e04c8d23
+_gcc_commit=ffc6b225c955a3d8478de1beba5ad08a7396648c
 _newlib_commit=ab49db3a8c08e2240e53d8f12d6a14fd285def4e
 
 source=(git+https://sourceware.org/git/binutils-gdb.git#commit=${_binutils_commit}
-                  git+https://sourceware.org/git/gcc.git#commit=${_gcc_commit}
+                  git+https://gcc.gnu.org/git/gcc.git#commit=${_gcc_commit}
                   git+https://sourceware.org/git/newlib-cygwin.git#commit=${_newlib_commit}
 )
 sha256sums=('SKIP'
