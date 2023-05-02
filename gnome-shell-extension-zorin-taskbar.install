@@ -1,9 +1,12 @@
 post_install() {
   glib-compile-schemas usr/share/glib-2.0/schemas
   echo "==============================================================="
+  echo "The current version of this extension only works with \033[41;30;2mGNOME 40 or lower\033[0m\!"
+  echo "If you're using the latest GNOME, it can't be enabled."
+  echo "==============================================================="
   echo "To use the extension:"
-  echo " * Restart GNOME Shell ([Alt]+[F2], r)"
-  echo " * Activate it (eg using gnome-tweak-tool)"
+  echo " * Restart GNOME Shell ([Alt]+[F2], r) or reboot your computer"
+  echo " * Activate it in GNOME Extensions"
   echo "==============================================================="
 }
 
