@@ -1,13 +1,13 @@
 pkgbase = graphite-grub-theme
 	pkgdesc = Graphite grub theme
-	pkgver = 2022.09.02
+	pkgver = 2023.04.26
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Graphite-gtk-theme
 	arch = any
 	license = GPL3
 	depends = grub
-	source = graphite-grub-theme-2022.09.02.tar.gz::https://github.com/vinceliuice/Graphite-gtk-theme/archive/2022-09-02.tar.gz
-	b2sums = 696518037f84d72a76e57ed4fe3d36ace787e128099f657c8ed224b5432889eef8d928dbaab00a2c6ca8614e603070aac099dde3281086ba2c2fef7e863a9947
+	source = graphite-grub-theme-2023.04.26.tar.gz::https://github.com/vinceliuice/Graphite-gtk-theme/archive/2023-04-26.tar.gz
+	b2sums = 5aebc31ee71c2575594187393623dac7fa89f5438919df00ff28f7c3c6878b35d30bff3ae77ea1d89500e986a07007f6755824ebf8a54d7fc3d20c477fb038fb
 
 pkgname = graphite-grub-theme-default-1080p
 	provides = graphite-grub-theme-default-1080p
