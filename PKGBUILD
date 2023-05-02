@@ -4,7 +4,7 @@ pkgname=sunwait
 pkgver=0.9.1
 pkgrel=1
 url="https://www.risacher.org/sunwait/"
-pkgdesc="A small C program for calculating sunrise and sunset times"
+pkgdesc="Calculate sunrise/sunset times with civil, nautical, astronomical and custom twilights"
 arch=(i686 x86_64)
 license=(GPL3)
 depends=(glibc)
@@ -21,5 +21,7 @@ build() {
 }
 
 package() {
-	install -Dm755 $pkgname-$pkgver/$pkgname -t "$pkgdir/usr/bin/"
+	cd $pkgname-$pkgver
+	install -Dm755 $pkgname -t "$pkgdir/usr/bin/"
+	install -Dm644 USAGE.txt -t "$pkgdir/usr/share/doc/$pkgname/"
 }
