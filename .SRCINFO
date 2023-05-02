@@ -1,7 +1,7 @@
 pkgbase = dxvk-nvapi-mingw
 	pkgdesc = Alternative NVAPI implementation on top of DXVK.
 	pkgver = 0.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jp7677/dxvk-nvapi
 	arch = x86_64
 	license = MIT
@@ -10,12 +10,8 @@ pkgbase = dxvk-nvapi-mingw
 	makedepends = glslang
 	makedepends = git
 	makedepends = mingw-w64-gcc
-	depends = vulkan-icd-loader
-	depends = wine>=4.0rc1
-	depends = lib32-vulkan-icd-loader
-	depends = dxvk
-	depends = bash
 	options = !lto
+	options = !staticlibs
 	source = git+https://github.com/jp7677/dxvk-nvapi.git#tag=v0.6.2
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	source = dxvk-nvapi-extraopts.patch
@@ -28,3 +24,8 @@ pkgbase = dxvk-nvapi-mingw
 	sha256sums = 1f4934c5bfcf208e288a0eda2f385f82acc9e78a4b0ac2a77b5af14c64c8e21e
 
 pkgname = dxvk-nvapi-mingw
+	depends = vulkan-icd-loader
+	depends = lib32-vulkan-icd-loader
+	depends = wine
+	depends = dxvk
+	depends = bash
