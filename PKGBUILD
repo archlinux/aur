@@ -1,7 +1,7 @@
 # Maintainer: Josh Ellithorpe <quest@mac.com>
 
 pkgname=bitcoin-abc
-pkgver=0.27.3
+pkgver=0.27.4
 pkgrel=0
 pkgdesc="Bitcoin ABC with bitcoind, bitcoin-tx, bitcoin-seeder and bitcoin-cli"
 arch=('i686' 'x86_64')
@@ -44,9 +44,8 @@ build() {
 check() {
   cd "$srcdir/${pkgname}-$pkgver/build"
 
-  msg2 'Skipping testing...'
-  #msg2 'Testing...'
-  #ninja check
+  msg2 'Testing...'
+  ninja check
 }
 
 package() {
@@ -98,7 +97,7 @@ package() {
       "$pkgdir/usr/share/bash-completion/completions/$_compl"
   done
 }
-sha256sums=('275499ffe46e963353ec3d91d58a4a906a0d347dd1f99d9703b95dbfc488706a'
+sha256sums=('e6b91597827b5703d020407e97c6af95f56af3efa18ebea27d312b4d4b74192e'
             'c30e5c7e0e97b001fdeac5f4510d5ebc0e0499ec086325e845db609a24f2e22f'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             'f2fd9d8331238727333cf2412ba3759cb194a65b2060eff36808b24c06382104'
