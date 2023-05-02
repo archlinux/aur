@@ -15,7 +15,6 @@ arch=(x86_64)
 license=(GPL3)
 url="https://www.olivevideoeditor.org/"
 depends=(openexr ffmpeg openimageio opencolorio portaudio qt5-base opentimelineio)
-makedepends=(unzip patchelf findutils)
 provides=("olive")
 conflicts=("olive")
 options=('!strip')

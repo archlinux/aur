@@ -6,9 +6,6 @@ pkgbase = olive-nightly-bin
 	url = https://www.olivevideoeditor.org/
 	arch = x86_64
 	license = GPL3
-	makedepends = unzip
-	makedepends = patchelf
-	makedepends = findutils
 	depends = openexr
 	depends = ffmpeg
 	depends = openimageio
@@ -19,7 +16,7 @@ pkgbase = olive-nightly-bin
 	provides = olive
 	conflicts = olive
 	options = !strip
-	source = olive-nightly-bin-0.2.0_674972831_d75aef40.zip::https://pipelines.actions.githubusercontent.com/serviceHosts/3229b4d5-1a0d-48e1-91c9-6774f19602b4/_apis/pipelines/1/runs/1789/signedartifactscontent?artifactName=Olive-d75aef40-Linux-x86_64-clang&urlExpires=2023-05-02T15%3A47%3A15.4185586Z&urlSigningMethod=HMACV2&urlSignature=TRV6Zz6Mlndtt6QP6%2BH8PTMk3g6Z7gHj07Snsonw5z4%3D
+	source = olive-nightly-bin-0.2.0_674972831_d75aef40.zip::https://pipelines.actions.githubusercontent.com/serviceHosts/3229b4d5-1a0d-48e1-91c9-6774f19602b4/_apis/pipelines/1/runs/1789/signedartifactscontent?artifactName=Olive-d75aef40-Linux-x86_64-clang&urlExpires=2023-05-02T15%3A52%3A13.4371595Z&urlSigningMethod=HMACV2&urlSignature=0kiPvRWJjFniYQo09%2B5OGFPLow7VGI8nHd5oGaRyUDk%3D
 	b2sums = SKIP
 
 pkgname = olive-nightly-bin
