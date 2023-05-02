@@ -2,12 +2,12 @@
 
 pkgname=goober
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Workspace module generator for eww."
 url='https://bitbucket.org/troutcobbler/goober'
 arch=(x86_64)
 license=(MIT)
-makedepends=(go)
+makedepends=(go git)
 depends=(eww)
 source=("git+${url}#tag=${pkgver}")
 b2sums=('SKIP')
