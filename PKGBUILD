@@ -12,7 +12,7 @@ makedepends=('git' 'meson' 'ninja')
 source=('git+https://github.com/cyanreg/cyanrip.git')
 b2sums=('SKIP')
 provides=('cyanrip')
-conflicts=('cynarip')
+conflicts=('cyanrip')
 
 pkgver()
 {
