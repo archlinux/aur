@@ -3,7 +3,7 @@
 _pkgname=pineflash
 pkgname="${_pkgname}-git"
 pkgver=0.5.0.r251.20230426.de2d50e
-pkgrel=1
+pkgrel=2
 arch=(
   i686
   x86_64
