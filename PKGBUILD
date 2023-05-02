@@ -1,21 +1,22 @@
-#Maintainer: Mike Sampson <mike@sambodata.com>
-#Contributor: Adam Strauch <creckx@gmail.com>
-#Contributer: L42y <423300@gmail.com>
+# Maintainer: Andrius Pukšta <andrius.puksta at gmail dot com>
+# Contributor: Mike Sampson <mike at sambodata dot com>
+# Contributor: Adam Strauch <creckx at gmail dot com>
+# Contributer: L42y <423300 at gmail dot com>
 
 pkgname=daemon
-pkgver=0.6.4
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Run any program as daemon"
 arch=('i686' 'x86_64')
 url="http://www.libslack.org/daemon/"
 license=('GPL')
 depends=()
-source=("http://libslack.org/daemon/download/$pkgname-$pkgver.tar.gz")
-md5sums=('6cd0a28630a29ac279bc501f39baec66')
+source=("https://libslack.org/daemon/download/$pkgname-$pkgver.tar.gz")
+sha256sums=('b34b37543bba43bd086e59f4b754c8102380ae5c1728b987c890d5da4b4cf3ca')
 
 build() {
     cd $srcdir/$pkgname-$pkgver
-    make
+    CFLAGS='-march=native ' make
 }
 
 package() {

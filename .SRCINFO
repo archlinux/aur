@@ -1,13 +1,12 @@
 pkgbase = daemon
 	pkgdesc = Run any program as daemon
-	pkgver = 0.6.4
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = http://www.libslack.org/daemon/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = http://libslack.org/daemon/download/daemon-0.6.4.tar.gz
-	md5sums = 6cd0a28630a29ac279bc501f39baec66
+	source = https://libslack.org/daemon/download/daemon-0.8.2.tar.gz
+	sha256sums = b34b37543bba43bd086e59f4b754c8102380ae5c1728b987c890d5da4b4cf3ca
 
 pkgname = daemon
-
