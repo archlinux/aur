@@ -1,0 +1,25 @@
+post_install() {
+  cat <<EOF
+
+To make use of X48 you will need a HP-48 ROM.
+
+In 2000 Hewlett-Packard released the 48SX/GX ROMS to the
+public. The roms for the hp48sx and the hp48gx are included in
+this package.
+
+The first the time program is run, as user, use either
+  x48ng -smallFont fixed -mediumFont fixed -largeFont fixed -connFont fixed -rom /usr/share/x48ng/ROMs/gxrom-r -initialize
+or
+  x48ng -smallFont fixed -mediumFont fixed -largeFont fixed -connFont fixed -rom /usr/share/x48ng/ROMs/sxrom-j -initialize
+to have X48 place the ROM for the desired emulator in \$HOME/.hp48
+for subsequent use.
+
+On ArchLinux with KDE (Not test with other DE), You need to use this cmd line to start x48ng
+  x48ng -smallFont fixed -mediumFont fixed -largeFont fixed -connFont fixed
+
+EOF
+}
+
+post_upgrade() {
+  post_install
+}

@@ -1,0 +1,17 @@
+pkgbase = x48ng
+	pkgdesc = A reboot of the x48 HP 48 emulator
+	pkgver = 0.9.10
+	pkgrel = 1
+	url = https://github.com/gwenhael-le-moine/x48ng
+	install = x48ng.install
+	arch = any
+	license = GPL2
+	depends = readline
+	depends = libxext
+	depends = xterm
+	source = x48ng::https://github.com/gwenhael-le-moine/x48ng/archive/refs/tags/0.9.10.tar.gz
+	source = patch-desktop-file-01
+	sha256sums = aca5b8bd90c9a42f50139a716bfd75d23fa48fdd3e672b164d4014af2ba02956
+	sha256sums = e18c85ecf9d451e77a6ea764e356182bc6af11c46a91ff28b0d48cb8d8b0c644
+
+pkgname = x48ng
