@@ -3,7 +3,7 @@
 _pkgname=pineflash
 pkgname="${_pkgname}-git"
 pkgver=0.5.0.r251.20230426.de2d50e
-pkgrel=2
+pkgrel=3
 arch=(
   i686
   x86_64
@@ -24,7 +24,6 @@ depends=(
 makedepends=(
   'base-devel'
   'cargo-ndk' # To verify some integrity checksums of rust modules
-  'gcc'
   'git'
   'optipng'
   'pkgconf'
