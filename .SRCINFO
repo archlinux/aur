@@ -1,14 +1,14 @@
 pkgbase = shellspec-bin
 	pkgdesc = BDD style unit testing framework for POSIX compliant shell script
 	pkgver = 0.28.1.r2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://shellspec.info
 	arch = any
 	license = MIT
 	depends = sh
 	provides = shellspec
 	conflicts = shellspec
-	source = shellspec-0.28.1.r2.tar.zst::https://git.stefanwimmer128.eu/stefanwimmer128/shellspec/-/package_files/56/download
+	source = https://git.stefanwimmer128.io/api/v4/projects/134/packages/generic/shellspec/0.28.1-2/shellspec-0.28.1-2-any.pkg.tar.zst
 	sha256sums = 7f5cd4f8702b48750a6e03ed51af3ab6c898e51234f9786ed811ad60557a4f30
 
 pkgname = shellspec-bin
