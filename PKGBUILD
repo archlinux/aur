@@ -2,16 +2,16 @@
 
 pkgname='python-wagtail'
 _name=${pkgname#python-}
-pkgver='4.2.1'
+pkgver='4.2.2'
 pkgrel=1
 pkgdesc="A Django content management system."
 url="https://wagtail.org/"
-depends=('python-asgiref' 'python-beautifulsoup4' 'python-django' 'python-freezegun' 'python-importlib-metadata' 'python-jinja' 'python-markupsafe' 'python-pillow' 'python-requests' 'python-setuptools')
+depends=('python-asgiref' 'python-beautifulsoup4' 'python-django' 'python-freezegun' 'python-importlib-metadata' 'python-jinja' 'python-markupsafe' 'python-pillow' 'python-requests' 'python-setuptools' 'python-willow')
 makedepends=()
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('fbb5e96559a9a34258397ed7a1c766cd2f2d32497e2932472f77d6f848e5658d')
+sha256sums=('b3cf60b371fffc373793a04b6540b800fc83822598f4b7ad580908fa45d04dff')
 
 build() {
 	cd "${srcdir}/${_name}-${pkgver}"
