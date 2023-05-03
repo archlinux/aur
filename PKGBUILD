@@ -3,7 +3,7 @@
 pkgorg='stack-of-tasks'
 _pkgname='pinocchio'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=2.6.17
+pkgver=2.6.18
 pkgrel=1
 pkgdesc="Dynamic computations using Spatial Algebra"
 arch=('i686' 'x86_64')
@@ -12,10 +12,15 @@ license=('BSD')
 depends=('hpp-fcl' 'eigenpy' 'urdfdom')
 optdepends=('doxygen' 'lua52' 'cppad' 'cppadcodegen')
 makedepends=('cmake' 'eigen')
-source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig})
-sha256sums=('42ae1e89e69519aebd3eb391fbc6d24103fc5094ba03914a8f47cfcbed556975'
-            'SKIP')
+source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig} $url/pull/1949.patch)
+sha256sums=('c497db0c7f31e7302d73efdcdc5f2834c76d25944b53d70a909991f4a2052c08'
+            'SKIP'
+            '715a3c8152b5a1d2e3ad6d772024ac59be94151f39bb463d4ec5f213023bce86')
 validpgpkeys=('A031AD35058955293D54DECEC45D22EF408328AD')
+
+prepare() {
+    patch -d "$pkgbase-$pkgver" -p1 -i "$srcdir/1949.patch"
+}
 
 build() {
     cmake -B "build-$pkgver" -S "$pkgbase-$pkgver" \
@@ -25,8 +30,10 @@ build() {
         -DBUILD_WITH_AUTODIFF_SUPPORT="$(pacman -Qs cppad > /dev/null && echo -n ON || echo -n OFF)" \
         -DBUILD_WITH_CODEGEN_SUPPORT="$(pacman -Qs cppadcodegen > /dev/null && echo -n ON || echo -n OFF)" \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib
-    cmake --build "build-$pkgver"
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DGENERATE_PYTHON_STUBS=ON
+    # TODO: stubs require -j1, ref https://github.com/jrl-umi3218/jrl-cmakemodules/issues/600
+    cmake --build "build-$pkgver" -j 1
 }
 
 check() {

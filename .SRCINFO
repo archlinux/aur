@@ -1,6 +1,6 @@
 pkgbase = pinocchio
 	pkgdesc = Dynamic computations using Spatial Algebra
-	pkgver = 2.6.17
+	pkgver = 2.6.18
 	pkgrel = 1
 	url = https://github.com/stack-of-tasks/pinocchio
 	arch = i686
@@ -15,11 +15,13 @@ pkgbase = pinocchio
 	optdepends = lua52
 	optdepends = cppad
 	optdepends = cppadcodegen
-	source = https://github.com/stack-of-tasks/pinocchio/releases/download/v2.6.17/pinocchio-2.6.17.tar.gz
-	source = https://github.com/stack-of-tasks/pinocchio/releases/download/v2.6.17/pinocchio-2.6.17.tar.gz.sig
+	source = https://github.com/stack-of-tasks/pinocchio/releases/download/v2.6.18/pinocchio-2.6.18.tar.gz
+	source = https://github.com/stack-of-tasks/pinocchio/releases/download/v2.6.18/pinocchio-2.6.18.tar.gz.sig
+	source = https://github.com/stack-of-tasks/pinocchio/pull/1949.patch
 	validpgpkeys = A031AD35058955293D54DECEC45D22EF408328AD
-	sha256sums = 42ae1e89e69519aebd3eb391fbc6d24103fc5094ba03914a8f47cfcbed556975
+	sha256sums = c497db0c7f31e7302d73efdcdc5f2834c76d25944b53d70a909991f4a2052c08
 	sha256sums = SKIP
+	sha256sums = 715a3c8152b5a1d2e3ad6d772024ac59be94151f39bb463d4ec5f213023bce86
 
 pkgname = pinocchio
 
