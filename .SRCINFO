@@ -1,10 +1,10 @@
 pkgbase = python-statsd
 	pkgdesc = A simple statsd client.
 	pkgver = 4.0.1
-	pkgrel = 1
+	pkgrel = 2
+	url = https://github.com/jsocol/pystatsd
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
