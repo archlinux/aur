@@ -4,14 +4,14 @@
 
 pkgname=ib-tws
 pkgver=10.22.1k
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Electronic trading platform from discount brokerage firm Interactive Brokers'
 arch=('any')
 url="http://interactivebrokers.com/"
 license=('custom')
 backup=('etc/ib-tws.conf' 'etc/ib-gw.conf')
-depends=(gtk2)
+depends=(gtk2 ttf-liberation)
 optdepends=(ffmpeg-compat-55)
 makedepends=(libarchive)
 
