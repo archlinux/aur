@@ -1,18 +1,23 @@
 pkgbase = python-mbdata-git
 	pkgdesc = MusicBrainz database tools for Python
-	pkgver = 26.0.0.r4.gb7c5da3
+	pkgver = 27.1.0.r8.gea0e7e2
 	pkgrel = 1
-	url = https://github.com/lalinsky/mbdata
+	url = https://github.com/acoustid/mbdata
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
 	makedepends = git
-	depends = python
-	depends = python-psycopg2
-	depends = python-six
+	depends = python>=3.7
+	depends = python-six>=1.16.0
+	optdepends = python-psycopg2: for replication
+	optdepends = python-lxml: for search
+	optdepends = python-sqlalchemy: for models
 	provides = python-mbdata
 	conflicts = python-mbdata
-	source = git+https://github.com/lalinsky/mbdata.git#branch=main
+	source = git+https://github.com/acoustid/mbdata.git#branch=main
 	sha256sums = SKIP
 
 pkgname = python-mbdata-git

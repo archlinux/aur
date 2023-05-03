@@ -4,14 +4,17 @@ pkgbase=python-mbdata-git
 _pkgbase=${pkgbase%-git}
 _name=${_pkgbase#python-}
 pkgname=$pkgbase
-pkgver=26.0.0.r4.gb7c5da3
+pkgver=27.1.0.r8.gea0e7e2
 pkgrel=1
 pkgdesc='MusicBrainz database tools for Python'
-url="https://github.com/lalinsky/$_name"
+url="https://github.com/acoustid/$_name"
 arch=('any')
 license=('MIT')
-depends=(python python-psycopg2 python-six)
-makedepends=('python-setuptools' 'git')
+depends=('python>=3.7' 'python-six>=1.16.0')
+optdepends=('python-psycopg2: for replication'
+            'python-lxml: for search'
+            'python-sqlalchemy: for models')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry-core' 'git')
 provides=(${_pkgbase})
 conflicts=(${_pkgbase})
 source=("git+$url.git#branch=main")
@@ -22,14 +25,19 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
+prepare() {
+  # Remove potential old build artifacts
+  git -C "${srcdir}/${_name}" clean -dfx
+}
+
 build() {
   cd "$_name"
-  python3 setup.py build
+  python3 -m build --wheel --no-isolation
 }
 
 package() {
   cd "$_name"
-  python3 setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python3 -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
   install -d "$pkgdir/usr/share/doc/$_pkgbase"
   install -m644 -t "$pkgdir/usr/share/doc/$_pkgbase" README.rst CHANGELOG.rst settings.py.sample mbslave.conf.default
