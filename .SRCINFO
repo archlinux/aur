@@ -1,13 +1,16 @@
 pkgbase = python-cu2qu
 	pkgdesc = Cubic-to-quadratic bezier curve conversion
 	pkgver = 1.6.7.post2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/googlefonts/cu2qu
 	arch = any
 	license = Apache
 	checkdepends = python-coverage
 	checkdepends = python-pytest-runner
 	makedepends = cython
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-defcon
