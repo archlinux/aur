@@ -1,7 +1,7 @@
 pkgbase = t2ec
 	pkgdesc = Scripts to display info icons and controls in Tint2 or other panels
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nwg-piotr/tint2-executors
 	arch = x86_64
 	license = GPL3
@@ -20,4 +20,3 @@ pkgbase = t2ec
 	md5sums = 5d3c99306d30da29998c39c6dea741eb
 
 pkgname = t2ec
-

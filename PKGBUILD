@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('t2ec')
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Scripts to display info icons and controls in Tint2 or other panels"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/tint2-executors"
