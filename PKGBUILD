@@ -1,8 +1,8 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 
 pkgname=obs-studio-tytan652
-pkgver=29.0.2
-pkgrel=2
+pkgver=29.1.0
+pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus V4L2 devices by paths, my bind interface PR, and sometimes backported fixes"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -50,6 +50,8 @@ makedepends=(
 
   # AUR Packages
   "libajantv2"
+
+  "cef-minimal-obs=103.0.0_5060_shared_textures_143.2591+g4204d54+chromium_103.0.5060.134_1"
 )
 optdepends=(
   "libfdk-aac: FDK AAC codec support"
@@ -63,9 +65,10 @@ optdepends=(
   "v4l2loopback-dkms: Virtual camera output"
   "libajantv2: AJA NTV 2 support"
 )
-provides=("obs-studio=$pkgver" "obs-vst" "obs-websocket")
+provides=("obs-studio=$pkgver" "obs-vst" "obs-websocket" "obs-browser")
 conflicts=(
-  "obs-studio" "obs-vst" "obs-websocket"
+  "obs-studio" "obs-vst" "obs-websocket" "obs-browser"
+  "obs-linuxbrowser" # This plugin is obsolete
   "libva-vdpau-driver" # This driver is abandonned and make OBS segfault if it happen to be loaded, try libva-nvidia-driver is you really need Nvidia decode through VAAPI
 )
 options=('debug')
@@ -82,24 +85,12 @@ sha256sums=(
   "SKIP"
   "SKIP"
   "SKIP"
-  "7a0c359d573ccf2951e4b621465338ee235cb7e535725fdb9bc53a7ff779da4e"
+  "65116d10f03d390505fdb0bbf6fe649e8649500441dde91e029f2eb79bfdc80f"
   "ee54b9c6f7e17fcc62c6afc094e65f18b2e97963c2fe92289b2b91972ac206e5"
 )
 
 if [[ $CARCH == 'x86_64' ]]; then
   optdepends+=("decklink: Blackmagic Design DeckLink support")
-fi
-
-if [[ $CARCH == 'x86_64' ]]; then
-  makedepends+=("cef-minimal-obs=103.0.0_5060_shared_textures_143.2591+g4204d54+chromium_103.0.5060.134_1")
-  provides+=("obs-browser")
-  conflicts+=(
-    "obs-browser"
-    "obs-linuxbrowser" # This plugin is obsolete
-  )
-  _browser=ON
-else
-  _browser=OFF
 fi
 
 prepare() {
@@ -108,14 +99,7 @@ prepare() {
   git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
   git -c protocol.file.allow=always submodule update
 
-  git cherry-pick -n 2e79d4c902abf3e6bb4ad1b5bf779c0cc22a6fd0
-
   cd plugins/obs-websocket
-  sed -i 's|EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/deps/json/CMakeLists.txt||' CMakeLists.txt
-  sed -i 's|AND EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/deps/websocketpp/CMakeLists.txt||' CMakeLists.txt
-  sed -i 's|AND EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/deps/asio/asio/include/asio.hpp||' CMakeLists.txt
-  sed -i "s|AND EXISTS|EXISTS|" CMakeLists.txt
-  sed -i "s|add_subdirectory(deps/json)|find_package(nlohmann_json 3.10.0 REQUIRED)|" CMakeLists.txt
   git config submodule.deps/qr.url $srcdir/qr
   git -c protocol.file.allow=always submodule update deps/qr
 
@@ -132,7 +116,7 @@ build() {
   mkdir -p build; cd build
 
   cmake \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DENABLE_RTMPS=ON \
@@ -140,7 +124,7 @@ build() {
     -DENABLE_LIBFDK=ON \
     -DENABLE_JACK=ON \
     -DENABLE_SNDIO=ON \
-    -DENABLE_BROWSER=$_browser \
+    -DENABLE_BROWSER=ON \
     -DCEF_ROOT_DIR=/opt/cef-obs \
     -DOBS_VERSION_OVERRIDE="$pkgver" ..
 
