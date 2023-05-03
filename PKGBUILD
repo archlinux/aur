@@ -4,7 +4,7 @@ pkgbase=python-dask-sphinx-theme
 _pname=${pkgbase#python-}
 _pyname=${_pname//-/_}
 pkgname=("python-${_pname}")
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="Sphinx theme for Dask documentation"
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('python-setuptools')
 #            'python-installer')
 checkdepends=('python-nose')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('559add7d000663d15107bac77ed7fe69')
+md5sums=('400d3fff951c5b4c2f9cbad3149f67f7')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
