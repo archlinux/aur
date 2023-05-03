@@ -3,7 +3,7 @@
 pkgname=bbg-git
 _pkgname=${pkgname%-git}
 pkgver=20230503.r5.803fe71
-pkgrel=1
+pkgrel=2
 pkgdesc="A static blog generator built with electron"
 arch=('any')
 url="https://github.com/bbg-contributors/bbg"
@@ -43,8 +43,7 @@ build() {
 
 package() {
 	cd "$srcdir"
-	install -dm755 "${pkgdir}/usr/lib/${_pkgname}"
-	install -Dm644 "app-${pkgver}.asar" "${pkgdir}/usr/share/${_pkgname}/app.asar"
+	install -Dm644 "app-${pkgver}.asar" "${pkgdir}/usr/lib/${_pkgname}/app.asar"
 	install -Dm644 icon.png "${pkgdir}/usr/share/icons/${_pkgname}.png"
     install -Dm755 /dev/stdin ${pkgdir}/usr/bin/${_pkgname} << EOF
 #!/bin/sh
