@@ -1,6 +1,6 @@
 pkgbase = python-opnieuw
 	pkgdesc = A general-purpose retrying library, written in pure Python
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/channable/opnieuw
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-opnieuw
 	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python
-	source = python-opnieuw-1.2.0.tar.gz::https://github.com/channable/opnieuw/archive/refs/tags/v1.2.0.tar.gz
-	sha256sums = 1e7df8cbbd0f4fe558568ece9f54dd48f6f59b2fb433bace2684827fec646fa4
+	source = python-opnieuw-1.2.1.tar.gz::https://github.com/channable/opnieuw/archive/refs/tags/v1.2.1.tar.gz
+	sha256sums = 43b220cea505ac3e23eaf5cc8e180c673a85ee7ce9d60b2fd3fcc3a60ec19304
 
 pkgname = python-opnieuw
