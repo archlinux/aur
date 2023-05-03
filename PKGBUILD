@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=cpio-git
-pkgver=2.13.r19.g18ea636
+pkgver=2.14.r0.g4a41909
 pkgrel=1
 pkgdesc="Utility that copy files into or out of a cpio or tar archive"
 arch=('i686' 'x86_64')
@@ -11,22 +11,14 @@ depends=('glibc')
 makedepends=('git' 'rsync')
 provides=("cpio=$pkgver")
 conflicts=('cpio')
-source=("git+https://git.savannah.gnu.org/git/cpio.git"
-        "gettext-version.patch")
-sha256sums=('SKIP'
-            '90ed0528fcc541ab83b3d9c97522bf7b8196a2da8dd60278656158806ee23599')
+source=("git+https://git.savannah.gnu.org/git/cpio.git")
+sha256sums=('SKIP')
 
-
-prepare() {
-  cd "cpio"
-
-  patch -Np1 -i "$srcdir/gettext-version.patch"
-}
 
 pkgver() {
   cd "cpio"
 
-  git describe --long --tags | sed 's/^release_//;s/\([^-]*-g\)/r\1/;s/-/./g;s/_/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g;s/_/./g'
 }
 
 build() {
