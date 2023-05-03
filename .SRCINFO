@@ -1,5 +1,5 @@
 pkgbase = electron1-bin
-	pkgdesc = Build cross platform desktop apps with web technologies - version 2 - binary version
+	pkgdesc = Build cross platform desktop apps with web technologies - version 1 - binary version
 	pkgver = 1.8.8
 	pkgrel = 1
 	url = https://electronjs.org
