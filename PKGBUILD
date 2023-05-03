@@ -3,12 +3,12 @@
 
 _pkgname="llm"
 pkgname="${_pkgname}-git"
-pkgver=r413.e97ae8d
+pkgver=r423.36f03ae
 pkgrel=1
 epoch=
 pkgdesc="Run inference for Large Language Models on CPU 🦀🚀🦙"
 arch=(any)
-url="https://github.com/rustformers/llm"
+url="https://github.com/rustformers/${_pkgname}"
 license=('MIT' 'APACHE')
 groups=()
 depends=(glibc gcc-libs)
@@ -16,13 +16,13 @@ makedepends=(git cargo)
 checkdepends=()
 optdepends=()
 provides=(llm)
-conflicts=()
+conflicts=(llm)
 replaces=(llama-cli)
 backup=()
 options=()
 install=
 changelog=
-source=("git+https://github.com/rustformers/llm.git"
+source=("git+${url}.git"
         "git+https://github.com/ggerganov/ggml.git")
 noextract=()
 sha256sums=('SKIP' 'SKIP')
