@@ -1,0 +1,193 @@
+diff --git a/main.js b/main.js
+index fcab329..c422c4d 100644
+--- a/main.js
++++ b/main.js
+@@ -28,11 +28,13 @@ app.setLoginItemSettings({
+ 
+ //单例
+ if (utils.is_win()) {
+-  if (app.makeSingleInstance(single_instance_callback)) {
+-    //第二个进程，直接退出
+-    console.log('second instance, quit imediately')
+-    app.exit(0)
+-  }
++  app.requestSingleInstanceLock();
++  app.on("second-instance", ()=>{console.log("second instance, quit imediately");app.exit(0);})
++  // if (app.makeSingleInstance(single_instance_callback)) {
++  //   //第二个进程，直接退出
++  //   console.log('second instance, quit imediately')
++  //   app.exit(0)
++  // }
+ }
+ 
+ function single_instance_callback(argv, workdir) {
+@@ -312,7 +314,7 @@ function createMainWindow() {
+     // Create the browser window.
+     let main_win_option = {
+       width: store.get('width', 1150),
+-      height: store.get('height', 700)
++      height: store.get('height', 700),webPreferences:{nodeIntegration:true,webviewTag:true,enableRemoteModule:true},
+     }
+     if (utils.is_mac()) {
+       main_win_option.titleBarStyle = 'hidden'
+@@ -373,9 +375,9 @@ function createSettingWindow() {
+     settingWindow.show()
+   } else {
+     settingWindow = new BrowserWindow({
+-      webPreferences: { webSecurity: false },
++      webPreferences: { webSecurity: false,nodeIntegration:true,webviewTag:true,enableRemoteModule:true},
+       width: 500,
+-      height: 700
++      height: 700,
+     })
+ 
+     settingWindow.loadURL(urllib.format({
+@@ -779,7 +781,7 @@ function init_bg_worker() {
+     height: 500,
+     show: utils.is_dev,
+     x: 0,
+-    y: 0
++    y: 0,webPreferences:{nodeIntegration:true,webviewTag:true,enableRemoteModule:true},
+     //本来准备有一个partition来新开session
+     //但是一旦用了partition，则会在ajax的时候整个APP退出，找不到原因。
+     //为什么要新开session?
+@@ -812,7 +814,7 @@ function openNewSourceWindow() {
+   //检查限制和购买
+   db.db_get_target_count(target_count => {
+     console.log('>>>>target count>', target_count)
+-    if (utils.is_registered() || target_count < utils.free_version_target_limit) {
++    if (true) {
+       openNewSourceWindowReal()
+     } else {
+ 
+@@ -860,7 +862,7 @@ function openNewSourceWindowReal() {
+       }
+     }
+ 
+-    newSourceWindow = new BrowserWindow(win_option)
++    newSourceWindow = new BrowserWindow({...win_option,webPreferences:{nodeIntegration:true,webviewTag:true,enableRemoteModule:true},})
+ 
+     newSourceWindow.loadURL(urllib.format({
+       pathname: path.join(__dirname, is_custom ? 'super-module.html' : 'super-source.html'),
+@@ -924,7 +926,7 @@ function openBrowserWindow(address = "", msg_text = "") {
+ 
+   let win_option = {
+     width: 1150,
+-    height: 700
++    height: 700,webPreferences:{nodeIntegration:true,webviewTag:true,enableRemoteModule:true},
+   }
+ 
+   let mywin = new BrowserWindow(win_option)
+@@ -984,7 +986,7 @@ function openNewFloatingWindow() {
+     x: 0,
+     y: 0,
+     frame: false,
+-    alwaysOnTop: true
++    alwaysOnTop: true,webPreferences:{nodeIntegration:true,webviewTag:true,enableRemoteModule:true},
+   }
+ 
+   let tmp_win = new BrowserWindow(win_option)
+@@ -1054,7 +1056,7 @@ function openRegisterWindow() {
+ 
+     let win_option = {
+       width: 300,
+-      height: 400
++      height: 400,webPreferences:{nodeIntegration:true,webviewTag:true,enableRemoteModule:true},
+     }
+ 
+     registerWindow = new BrowserWindow(win_option)
+@@ -1238,12 +1240,13 @@ function openCustomModuleWindow() {
+     height: 500,
+     webPreferences: {
+       sandbox: true //使得是普通浏览器，使得jquery等的加载不会出错，也更安全！
++      ,nodeIntegration:true,webviewTag:true,enableRemoteModule:true,
+     }
+   }
+ 
+   let mywin = new BrowserWindow(win_option)
+ 
+-  mywin.loadURL('http://openwebmonitor.netqon.com/modules/mod_home.html?_t' + new Date().getTime())
++  mywin.loadURL('https://example.com/' + new Date().getTime())
+ 
+   mywin.setResizable(true)
+   if (utils.is_win() && !utils.is_dev) {
+@@ -1299,7 +1302,7 @@ function openAddModuleConfirmWindow() {
+   let win_option = {
+     width: 300,
+     height: 300,
+-    frame: false
++    frame: false,webPreferences:{nodeIntegration:true,webviewTag:true,enableRemoteModule:true},
+   }
+ 
+   let mywin = new BrowserWindow(win_option)
+@@ -1332,7 +1335,7 @@ ipcMain.on('get-new-module-data', (e, data) => {
+ function openModuleManagerWindow() {
+   let win_option = {
+     width: 500,
+-    height: 500
++    height: 500,webPreferences:{nodeIntegration:true,webviewTag:true,enableRemoteModule:true},
+   }
+ 
+   let mywin = new BrowserWindow(win_option)
+@@ -1363,7 +1366,7 @@ function openModuleDevWindow() {
+ 
+   let win_option = {
+     width: 1000,
+-    height: 300
++    height: 300,webPreferences:{nodeIntegration:true,webviewTag:true,enableRemoteModule:true},
+   }
+ 
+   let mywin = new BrowserWindow(win_option)
+@@ -1380,7 +1383,7 @@ function openModuleDevWindow() {
+   //     target_id: 'dev-custom-target'
+   //   }
+   // }))
+-  mywin.loadURL('http://openwebmonitor.netqon.com/modules/dev/runner.html?target_id=dev-custom-target')
++  mywin.loadURL('https://example.com/')
+ 
+   mywin.setResizable(true)
+   // if (utils.is_win() && !utils.is_dev) {
+@@ -1441,6 +1444,7 @@ function openCustomTargetCheckerWindow(target) {
+     webPreferences: {
+       webSecurity: false,
+       allowRunningInsecureContent: true
++      ,nodeIntegration:true,webviewTag:true,enableRemoteModule:true,
+     }
+   }
+ 
+@@ -1449,7 +1453,7 @@ function openCustomTargetCheckerWindow(target) {
+   let which_module = target.custom_setting_url;
+   log.warn('open custom checking window of 【', which_module, '】')
+ 
+-  let module_runner_url = `http://openwebmonitor.netqon.com/modules/${which_module}/runner.html?target_id=${target.id}&_t=${new Date().getTime()}`
++  let module_runner_url = `https://example.com/`
+   mywin.loadURL(module_runner_url)
+ 
+   mywin.setResizable(true)
+@@ -1494,7 +1498,7 @@ function make_sure_of_jquery() {
+   fs.exists(fn_jquery, exists => {
+     if (!exists) {
+       //改成从网上下载下来，用于给module使用
+-      download('http://openwebmonitor.netqon.com/libs/jquery.js', fn_jquery, () => { })
++      download('https://example.com/', fn_jquery, () => { })
+     }
+   })
+ }
+@@ -1538,7 +1542,7 @@ function openBigNotificationWindow(record_id) {
+     skipTaskbar: true,
+     useContentSize: false,
+     center: false,
+-    show: false
++    show: false,webPreferences:{nodeIntegration:true,webviewTag:true,enableRemoteModule:true},
+   }
+   let tmp_win = new BrowserWindow(win_option)
+ 
+@@ -1619,7 +1623,7 @@ function openRecordingWindow(recording_url) {
+ 
+     let win_option = {
+       width: 1400,
+-      height: 800
++      height: 800,webPreferences:{nodeIntegration:true,webviewTag:true,enableRemoteModule:true},
+     }
+ 
+     recordingWindow = new BrowserWindow(win_option)

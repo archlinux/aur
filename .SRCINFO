@@ -1,0 +1,20 @@
+pkgbase = openwebmonitor3
+	pkgdesc = 通用型网页内容监控工具
+	pkgver = 3.5.2
+	pkgrel = 1
+	url = http://owm.fatecore.com/
+	arch = x86_64
+	arch = aarch64
+	license = proprietary
+	makedepends = asar
+	depends = electron11
+	source = http://owm.fatecore.com/download/OpenWebMonitor3-3.5.2.zip
+	source = patch
+	sha256sums = f788d367c73e5f287405452bce6b8d8b1f263e76fd4ff76a8c8b42e8e6e8f8a4
+	sha256sums = dd6f93c153dc09ba60dae10bb3a16912c69469c9715231310ade3b85977fab03
+	source_x86_64 = https://github.com/TryGhost/node-sqlite3/releases/download/v5.1.6/napi-v3-linux-glibc-x64.tar.gz
+	sha256sums_x86_64 = b841dd05e3abc3f2c659f0f0f213fb61ef22264d4741f569e1ebf00775205943
+	source_aarch64 = https://github.com/TryGhost/node-sqlite3/releases/download/v5.1.6/napi-v3-linux-glibc-arm64.tar.gz
+	sha256sums_aarch64 = 8e22a82d1ee3c6c415768cc88ecef9d32a5050ac08e4796b96571db0d72246c8
+
+pkgname = openwebmonitor3
