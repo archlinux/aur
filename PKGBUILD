@@ -1,5 +1,6 @@
 # Maintainer: zhullyb <zhullyb [at] outlook dot com>
 # Contributor: weearc <q19981121 [at] 163 dot com>
+# Contributor: JimMoen <LnJimMoen [at] outlook dot com>
 pkgname=motrix
 _pkgname=Motrix
 pkgver=1.8.19
