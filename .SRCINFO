@@ -1,16 +1,17 @@
 pkgbase = vapoursynth-plugin-svpflow1
 	pkgdesc = Plugin for Vapoursynth: svpflow1
-	pkgver = 4.2.0.142
-	pkgrel = 4
-	url = https://www.svp-team.com/wiki/Plugins:_SVPflow
+	pkgver = 4.5.0.205
+	pkgrel = 1
+	url = https://www.svp-team.com/wiki/Manual:SVPflow
 	arch = x86_64
 	license = GPL
 	makedepends = nasm
-	makedepends = qt5-tools
-	makedepends = qt5-base
+	makedepends = qt6-tools
+	depends = gcc-libs
+	depends = glibc
 	depends = vapoursynth
 	options = debug
-	source = svpflow1-src-4.2.0.142.zip::http://www.svp-team.com/files/gpl/svpflow1-src.zip
-	sha256sums = ea68862fa05c114cf7e5386faf8c4c22d3c350978bc5e1a8fb1bd0d2c7f0e4c8
+	source = svpflow1-src-4.5.0.205.zip::http://www.svp-team.com/files/gpl/svpflow1-src.zip
+	sha256sums = c384b3b969d66f2e22003f87b644fa79ce9093a8af326f7fc79cc305239d05f3
 
 pkgname = vapoursynth-plugin-svpflow1
