@@ -1,10 +1,14 @@
 pkgbase = python-htmllistparse
 	pkgdesc = Python parser for Apache/nginx-style HTML directory listing
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gumblex/htmllisting-parser
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
 	depends = python-beautifulsoup4
 	depends = python-html5lib

@@ -4,7 +4,7 @@
 _pyname=htmllistparse
 pkgname=python-htmllistparse
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python parser for Apache/nginx-style HTML directory listing'
 url=https://github.com/gumblex/htmllisting-parser
 license=(MIT)
@@ -13,6 +13,8 @@ _pydeps=(beautifulsoup4
          html5lib
          requests
          fusepy)
+makedepends=(python-{build,installer,wheel}
+             python-setuptools)
 depends=(python
          "${_pydeps[@]/#/python-}")
 _archive="$_pyname-$pkgver"
@@ -21,11 +23,11 @@ sha256sums=('9ac274a165a02bf503656df4b48e1ae9eec0df40723a5f998f9023d3df3c8e32')
 
 build() {
 	cd "$_archive"
-	python setup.py build
+	python -m build -wn
 }
 
 package() {
 	cd "$_archive"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer -d "$pkgdir" dist/*.whl
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
