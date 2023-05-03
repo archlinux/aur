@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=miscTools
-_pkgver=0.6-26
+_pkgver=0.6-28
 pkgname=r-${_pkgname,,}
-pkgver=0.6.26
-pkgrel=4
+pkgver=0.6.28
+pkgrel=1
 pkgdesc='Miscellaneous Tools and Utilities'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,7 @@ optdepends=(
   r-ecdat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('be3c5a63ca12ce7ce4d43767a1815cd3dcf32664728ade251cfb03ea6f77fc9a')
+sha256sums=('bd4c2f2120948af538f9874df1ac745ff162817d0e53756f52f863eb4f593b21')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

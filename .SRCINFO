@@ -1,14 +1,14 @@
 pkgbase = r-misctools
 	pkgdesc = Miscellaneous Tools and Utilities
-	pkgver = 0.6.26
-	pkgrel = 4
+	pkgver = 0.6.28
+	pkgrel = 1
 	url = https://cran.r-project.org/package=miscTools
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-digest
 	optdepends = r-ecdat
-	source = https://cran.r-project.org/src/contrib/miscTools_0.6-26.tar.gz
-	sha256sums = be3c5a63ca12ce7ce4d43767a1815cd3dcf32664728ade251cfb03ea6f77fc9a
+	source = https://cran.r-project.org/src/contrib/miscTools_0.6-28.tar.gz
+	sha256sums = bd4c2f2120948af538f9874df1ac745ff162817d0e53756f52f863eb4f593b21
 
 pkgname = r-misctools
