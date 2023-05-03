@@ -15,6 +15,7 @@ pkgbase = altlinux-git
 	depends = libimobiledevice
 	depends = avahi
 	depends = zlib
+	depends = libhandy
 	depends = unzip
 	provides = altlinux
 	conflicts = altlinux

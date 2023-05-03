@@ -21,6 +21,7 @@ depends=('binutils'
          'libimobiledevice'
          'avahi'
          'zlib'
+         'libhandy'
          'unzip')
 source=('git+https://github.com/i-love-altlinux/AltLinux'
         "${_lpkgname}.desktop"
