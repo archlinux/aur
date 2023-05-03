@@ -1,7 +1,7 @@
 # Maintainer: Felipe Contreras <felipe.contreras@gmail.com>
 
 pkgname='rubygems-user'
-pkgver=3.4.7
+pkgver=3.4.12
 pkgrel=1
 pkgdesc='Package management framework for Ruby (user default)'
 arch=('any')
@@ -13,7 +13,7 @@ options=('!emptydirs')
 source=("https://github.com/rubygems/rubygems/archive/refs/tags/v${pkgver}.tar.gz"
 	'Gem.default_install.patch'
 	'operating_system.rb')
-sha512sums=('5ce856d6dfde6adde33cec8312abdf5139dcc0f3b542f1f2bc10a1a2bf1881760968ecc83e3f7a9484fc257c1d081d35aa7e0b70e171307c6ee5b38cb84a363f'
+sha512sums=('d862904414f6706b1c600325f578443953d2f562d0b31f6a02788e6ea6ef87a84b656e2da217571817ebedb36b940b514cc7f100728a108c44ca3d8dc7ea8c70'
 	'b9bda74a64e13334fddb81fdfc42695a5528b2fadad84e733b7ec1419d131b2d2b97e0189f271ab83b0676ad4df862fc1c1491d7ac5d14f6a3f45f53a0b0eaa0'
 	'3462dfe94f51d31dd616fae4107c7410d8513323dd8dffd657271a31363abd3b87d2150cda47fd9b1a8b9b63b4c57c03740e26941ac6ef55be9848fe56db8af4')
 
