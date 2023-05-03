@@ -1,0 +1,23 @@
+From 7aa80ca840ef6b22fb49bf80cc5d3203b8628594 Mon Sep 17 00:00:00 2001
+From: sirmarksalot <56516898+sirmarksalot@users.noreply.github.com>
+Date: Sun, 2 Jan 2022 14:17:50 -0600
+Subject: [PATCH] Fix AKA class
+
+fixed incorrect variables
+---
+ pytvmaze/tvmaze.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pytvmaze/tvmaze.py b/pytvmaze/tvmaze.py
+index 9cdfcb5..afda668 100755
+--- a/pytvmaze/tvmaze.py
++++ b/pytvmaze/tvmaze.py
+@@ -380,7 +380,7 @@ def __init__(self, data):
+         self.country = data.get('country')
+ 
+     def __repr__(self):
+-        return '<AKA(name={name},country={country})>'.format(name=name, country=country)
++        return '<AKA(name={name},country={country})>'.format(name=self.name, country=self.country)
+ 
+ 
+ class Network(object):
