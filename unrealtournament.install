@@ -1,0 +1,4 @@
+post_install () {
+    echo "If you can't query any master servers try this: https://www.oldunreal.com/wiki/index.php?title=Masterserver_Guide"
+}
+
