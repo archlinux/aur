@@ -3,10 +3,10 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Asuka Minato <youremail@domain.com>
 pkgname=irreader1.5.9
 pkgver=1.5.9
-pkgrel=6
+pkgrel=7
 epoch=
 pkgdesc="万能订阅阅读器，订阅任何网站。this is the last free version"
 arch=(x86_64 aarch64)
@@ -24,12 +24,14 @@ backup=()
 options=(!strip)
 install=
 changelog=
-source=("local://irreader Setup 1.5.9.exe"
+source=("irreader Setup 1.5.9.exe::https://ipfs.io/ipfs/QmTuCHDhHVYTuyYvEKQW4pf1ZTyZYUNFGCtKdiJ4Tz4m8N?filename=irreader%20Setup%201.5.9.exe"
+	patch
 	irreader.desktop)
 source_x86_64=("https://github.com/TryGhost/node-sqlite3/releases/download/v5.1.6/napi-v3-linux-glibc-x64.tar.gz")
 source_aarch64=("https://github.com/TryGhost/node-sqlite3/releases/download/v5.1.6/napi-v3-linux-glibc-arm64.tar.gz")
 noextract=()
-sha256sums=('6b2f61d035441ca9949a4de4a3e6249007b9c7633548a7653f5c6fb0780c29cb'
+sha256sums=('5cf058020acf85478b263ca367a66ea6e943860c1532132e0c7dbab401374702'
+            'cceadd2a859e263fe26d7aa63f6977ca1a90f0e853ddd68fd4be0c73f3d8e88d'
             '0fcaa9f67c08bef24eb2c291e6f109db664630326eabdb41c56412bbac17085b')
 sha256sums_x86_64=('b841dd05e3abc3f2c659f0f0f213fb61ef22264d4741f569e1ebf00775205943')
 sha256sums_aarch64=('8e22a82d1ee3c6c415768cc88ecef9d32a5050ac08e4796b96571db0d72246c8')
@@ -46,21 +48,7 @@ prepare() {
 	npm uninstall ad-block-lite
 	cp -av "$srcdir"/napi-v3* ./node_modules/sqlite3/lib/binding/
 	rm -rf ./node_modules/{node-gyp,sqlite3/{deps,src,tools},node-addon-api}
-	rm -v adb.js
-	sed -i "/const adb/d" main.js
-	sed -i "s!    let shouldBeBlocked = g_config_cache.adb && .*!    let shouldBeBlocked = false;!g" main.js
-	sed -i "219,220d" main.js
-	# adb seems have some problems.. so I remove it.
-	awk -i inplace '/makeSingleInstance/{print "app.requestSingleInstanceLock();\n app.on(\"second-instance\", ()=>{console.log(\"second instance, quit imediately\");app.exit(0);})}";} !/makeSingleInstance/{print}' main.js
-	sed -i "46,50d" main.js
-	sed -i "/makeSingleInstance/d" main.js
-	# patch to electron4, see https://stackoverflow.com/questions/56161168/typeerror-app-makesingleinstance-is-not-a-function
-	sed -i "574s/\(.*\)/\1,webPreferences:{nodeIntegration:true,webviewTag:true,enableRemoteModule:true},/" main.js
-	sed -i "691s/\(.*\)/\1,webPreferences:{nodeIntegration:true,webviewTag:true,enableRemoteModule:true},/" main.js
-	# fix according to electron5 breaking change https://blog.csdn.net/qq_35872456/article/details/91525311
-	sed -i "1524s/\(.*\)/\1,webPreferences:{nodeIntegration:true,webviewTag:true,enableRemoteModule:true},/" main.js
-	sed -i "1284s/\(.*\)/\1,webPreferences:{nodeIntegration:true,webviewTag:true,enableRemoteModule:true,contextIsolation:false},/" main.js
-	# fix https://github.com/sindresorhus/electron-store/issues/138
+	patch -p1 < "$srcdir"/patch
 }
 
 
@@ -71,5 +59,5 @@ package() {
 	echo "#!/bin/sh" >> "$pkgdir"/usr/bin/irreader
 	echo "electron11 /opt/irreader/app" >> "$pkgdir"/usr/bin/irreader
 	install -Dm644 irreader.desktop -t "$pkgdir"/usr/share/applications/
-	find . -type f -name "icon_about_win.png" -exec install -Dm644 {} $pkgdir/usr/share/pixmaps/irreader.png \;
+	find . -type f -name "icon_about_win.png" -exec install -Dm644 {} "$pkgdir"/usr/share/pixmaps/irreader.png \;
 }

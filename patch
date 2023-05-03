@@ -1,0 +1,171 @@
+diff --git a/main.js b/main.js
+index 43d7c2f..1f98f87 100644
+--- a/main.js
++++ b/main.js
+@@ -6,7 +6,7 @@ const main_utils = require('./main_utils')
+ const Store = require('electron-store')
+ const store = new Store()
+ const fs = require('fs')
+-const adb = require('./adb')
++// const adb = require('./adb')
+ const db = require("./db")
+ db.database_init()
+ const { download } = require('electron-dl');
+@@ -42,11 +42,13 @@ function lg(cn, en) {
+ 
+ /* Single instance */
+ if (utils.is_win()) {
+-  if (app.makeSingleInstance(single_instance_callback)) {
+-    //第二个进程，直接退出
+-    console.log('second instance, quit imediately')
+-    app.exit(0)
+-  }
++  app.requestSingleInstanceLock();
++  app.on("second-instance", ()=>{console.log("second instance, quit imediately");app.exit(0);})
++  // if (app.makeSingleInstance(single_instance_callback)) {
++  //   //第二个进程，直接退出
++  //   console.log('second instance, quit imediately')
++  //   app.exit(0)
++  // }
+ }
+ 
+ function single_instance_callback(argv, workdir) {
+@@ -166,8 +168,8 @@ function init_session_handlers() {
+       })
+   })
+ 
+-  session.defaultSession.webRequest.onBeforeRequest(['*://*./*'], (details, cb) => {
+-    let shouldBeBlocked = g_config_cache.adb && adb.containsAds(details.url)
++  session.defaultSession.webRequest.onBeforeRequest({urls:[]}, (details, cb) => {
++    let shouldBeBlocked =false;// g_config_cache.adb && adb.containsAds(details.url)
+     /*
+     shouldBeBlocked = shouldBeBlocked ||
+       (g_config_cache.jsb && details.url.endsWith('.js') //block js当添加自定义源时//不再block
+@@ -217,8 +219,8 @@ function adb_reload() {
+   let tmp_fn_det = store.get('adb-ver', null) ? utils.data_file('detector-' + store.get('adb-ver', null) + '.buffer') : fn_detector
+   fs.exists(tmp_fn_det, (exists) => {
+     if (exists) {
+-      adb.reload(tmp_fn_det).then(() => {
+-      })
++     // adb.reload(tmp_fn_det).then(() => {
++     //  })
+     }
+   })
+   let tmp_el_det = store.get('adb-ver', null) ? utils.data_file('easylist-' + store.get('adb-ver', null) + '.txt') : fn_easylist
+@@ -578,7 +580,7 @@ function createMainWindow() {
+     let main_win_option = {
+       width: store.get('main-width', 1650),
+       height: store.get('main-height', 800),
+-      show: false
++      show: false,webPreferences:{nodeIntegration:true,webviewTag:true,enableRemoteModule:true},
+       // backgroundColor: store.get('app-theme-bg', 'black')
+     }
+     if (utils.is_mac()) {
+@@ -702,7 +704,7 @@ function createSettingWindow() {
+   } else {
+     settingWindow = new BrowserWindow({
+       width: 400,
+-      height: 720
++      height: 720,webPreferences:{nodeIntegration:true,webviewTag:true,enableRemoteModule:true},
+     })
+ 
+     settingWindow.loadURL(urllib.format({
+@@ -781,7 +783,7 @@ function openCheckUpdateWindow() {
+   } else {
+     checkUpdateWindow = new BrowserWindow({
+       width: 300,
+-      height: 500
++      height: 500,webPreferences:{nodeIntegration:true,webviewTag:true,enableRemoteModule:true},
+     })
+ 
+     checkUpdateWindow.loadURL(urllib.format({
+@@ -831,7 +833,7 @@ function openAboutWindow() {
+   } else {
+     aboutWindow = new BrowserWindow({
+       width: 300,
+-      height: 500
++      height: 500,webPreferences:{nodeIntegration:true,webviewTag:true,enableRemoteModule:true},
+     })
+ 
+     aboutWindow.loadURL(urllib.format({
+@@ -1090,7 +1092,7 @@ function openBigNotificationWindow() {
+     skipTaskbar: true,
+     useContentSize: false,
+     center: false,
+-    show: false
++    show: false,webPreferences:{nodeIntegration:true,webviewTag:true,enableRemoteModule:true},
+   }
+   let tmp_win = new BrowserWindow(win_option)
+ 
+@@ -1259,7 +1261,7 @@ function openAddRemoteWindow() {
+     let win_option = {
+       width: 400, //same size to main
+       height: 400,
+-      backgroundColor: '#FFFFFF'
++      backgroundColor: '#FFFFFF',webPreferences:{nodeIntegration:true,webviewTag:true,enableRemoteModule:true},
+     }
+ 
+     win_option.frame = false
+@@ -1295,7 +1297,7 @@ function openNewSourceWindow() {
+     const { width, height } = electron.screen.getPrimaryDisplay().workAreaSize
+     let win_option = {
+       width: Math.floor(Math.min(width * 0.9, 1800)),
+-      height: Math.floor(Math.min(height * 0.8, 800))
++      height: Math.floor(Math.min(height * 0.8, 800)),webPreferences:{nodeIntegration:true,webviewTag:true,enableRemoteModule:true},
+     }
+     console.log('screen', width, height, win_option)
+ 
+@@ -1347,7 +1349,7 @@ function openUpdateAdbWindow() {
+   } else {
+     updateAdbWindow = new BrowserWindow({
+       width: 300,
+-      height: 500
++      height: 500,webPreferences:{nodeIntegration:true,webviewTag:true,enableRemoteModule:true},
+     })
+ 
+     updateAdbWindow.loadURL(urllib.format({
+@@ -1396,7 +1398,7 @@ function openGroupPropertiesWindow(target_id) {
+   } else {
+     groupPropertiesWindow = new BrowserWindow({
+       width: 360,
+-      height: 170
++      height: 170,webPreferences:{nodeIntegration:true,webviewTag:true,enableRemoteModule:true},
+     })
+ 
+     groupPropertiesWindow.loadURL(urllib.format({
+@@ -1439,7 +1441,7 @@ function openTargetPropertiesWindow(target_id) {
+   } else {
+     targetPropertiesWindow = new BrowserWindow({
+       width: 360,
+-      height: 550
++      height: 550,webPreferences:{nodeIntegration:true,webviewTag:true,enableRemoteModule:true},
+     })
+ 
+     targetPropertiesWindow.loadURL(urllib.format({
+@@ -1535,7 +1537,7 @@ function init_bg_worker() {
+     height: 400,
+     show: utils.is_dev,
+     x: 0,
+-    y: 0
++    y: 0,webPreferences:{nodeIntegration:true,webviewTag:true,enableRemoteModule:true},
+     //本来准备有一个partition来新开session
+     //但是一旦用了partition，则会在ajax的时候整个APP退出，找不到原因。
+     //为什么要新开session?
+@@ -1621,7 +1623,7 @@ function openExchangeWindow() {
+   } else {
+     exchangeWindow = new BrowserWindow({
+       width: 360,
+-      height: 550
++      height: 550,webPreferences:{nodeIntegration:true,webviewTag:true,enableRemoteModule:true},
+     })
+ 
+     exchangeWindow.loadURL(urllib.format({
+@@ -1901,7 +1903,7 @@ function openReadmodeEditor() {
+   } else {
+     readmodeEditorWindow = new BrowserWindow({
+       width: 1600,
+-      height: 820
++      height: 820,webPreferences:{nodeIntegration:true,webviewTag:true,enableRemoteModule:true},
+     })
+ 
+     readmodeEditorWindow.loadURL(urllib.format({
