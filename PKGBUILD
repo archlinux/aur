@@ -1,6 +1,6 @@
 # Maintainer: Patrick Rogers <patrick@thewebzone.net>
 pkgname='linux-air-combat'
-pkgver=08p83
+pkgver=09p14
 pkgrel=1
 pkgdesc="Free open source combat flight simulator"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
@@ -53,6 +53,22 @@ package() {
     cp bin/textures/* $pkgdir/${_resource_dir}/textures
     chmod +r $pkgdir/${_resource_dir}/textures/*
     
-    cp lac.desktop $pkgdir/usr/share/applications/
+    # Supplied .desktop file is broken
+    # cp lac.desktop $pkgdir/usr/share/applications/
+    # chmod +r $pkgdir/usr/share/applications/lac.desktop
+    
+    # Write working .desktop file
+    echo "[Desktop Entry]
+Type=Application
+Name=Linux Air Combat
+GenericName=Flight Simulator
+Comment=Open source combat flight simulator
+Terminal=false
+Icon=/usr/share/lac/lac.png
+Exec=sh -c lac
+Keywords=lac;game;air;flight;combat;linux;plane;
+Categories=Game
+StartupNotify=true" > $pkgdir/usr/share/applications/lac.desktop
     chmod +r $pkgdir/usr/share/applications/lac.desktop
+    
 }
