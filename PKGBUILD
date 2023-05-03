@@ -4,7 +4,7 @@
 
 pkgname=php-wikidiff2
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A PHP module that provides the external diff engine for MediaWiki"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -17,7 +17,7 @@ validpgpkeys=('FA1E9F9A41E7F43502CA5D6352FC8E7BEDB7FCA2'
               '83936EF3764977485D3A50344354894545DA0139')
 
 build() {
-  cd "$srcdir/wikidiff2-$pkgver"
+  cd "wikidiff2-$pkgver"
 
   phpize
   ./configure --prefix=/usr
@@ -26,7 +26,10 @@ build() {
 }
 
 package() {
-  cd "$srcdir/wikidiff2-$pkgver"
+  cd "wikidiff2-$pkgver"
 
   make install INSTALL_ROOT="$pkgdir"
+  install -Dm0644 -t "$pkgdir/etc/php/conf.d" wikidiff2.ini
+
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" COPYING
 }

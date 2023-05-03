@@ -1,7 +1,7 @@
 pkgbase = php-wikidiff2
 	pkgdesc = A PHP module that provides the external diff engine for MediaWiki
 	pkgver = 1.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mediawiki.org/wiki/Extension:Wikidiff2
 	arch = i686
 	arch = x86_64
