@@ -1,7 +1,7 @@
 # Maintainer: Clemens D. <aur [at] cdaut [dot] de>
 pkgname='artemis-grading-bin'
-pkgver=4.1.0
-pkgrel=2
+pkgver=4.2.1
+pkgrel=1
 pkgdesc="Grading tool for Artemis based exercises"
 arch=('x86_64' 'aarch64')
 url="https://github.com/kit-sdq/programming-lecture-eclipse-artemis/"
@@ -25,5 +25,7 @@ package() {
 
 }
 
-sha256sums_x86_64=('904eae2a3a91bbe86d65b6dde43837fad050f29d3a6234e1c21e491c5b0e4f0e'
+sha256sums_x86_64=('22a647f1d4ec2d063aee4197459e73316d5e6a6b9868b76bc9904dbb208d8099'
                    '4047495c70f39905c6145bf66d352236d9a9de5c734a5f0f5335046c860588b0')
+sha256sums_aarch64=('22a647f1d4ec2d063aee4197459e73316d5e6a6b9868b76bc9904dbb208d8099'
+                    '4047495c70f39905c6145bf66d352236d9a9de5c734a5f0f5335046c860588b0')
