@@ -1,5 +1,5 @@
-# Maintainer: Jonathon Fernyhough <jonathon+m2x+dev>
-# Contributor: vnctdj
+# Maintainer: vnctdj
+# Contributor: Jonathon Fernyhough (RIP) <jonathon+m2x+dev>
 # Contributor: Alonso Rodriguez <alonsorodi20 (at) gmail (dot) com>
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
@@ -8,7 +8,7 @@
 pkgbase=nvidia-390xx-utils
 pkgname=('nvidia-390xx-utils' 'opencl-nvidia-390xx' 'nvidia-390xx-dkms')
 pkgver=390.157
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://www.nvidia.com/"
 license=('custom')
@@ -19,12 +19,14 @@ source=('nvidia-drm-outputclass.conf'
         'nvidia-390xx.rules'
         "https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
         kernel-6.2.patch
+        kernel-6.3.patch
         kernel-4.16+-memory-encryption.patch)
 b2sums=('8e24aea70b139185bd682b080d32aeda673e6e92b45a90e6f6e0d736674180400bc8bd1aa5c66b8d033fc9d5e0cfffed456a87298bd93a3afbbc30b8dc48c4e9'
         'c1da4ce5784e43385465913a95053a3e54f800aac6f1b49f33e2a77504d76da5e6db6ec7074fbe7ba5f52dcef9e1ebaa620942c33ff825a56caba5c9c8b0d1be'
         '67e32932eeddda8fef667d25c34faf7b3a02f01cf9c15a97e5613bd44a0e8dcf7396e25399a52701f55dd18054c689720f237bb07d5bd580394d8dc8c9d05534'
         '44b855cd11f3b2f231f9fb90492ae2e67a67ea3ea83c413e7c90956d38c9730a8bd0321281ae03c6afce633d102f5b499aed25622b9bfd31bdd2c98f0717e95b'
         'dd1153903badbb9c2401c583a983ce5a413da2afffa6dd3ef6e839933a1c994518d5bfbcaf6800496e0d40785a4e7eb0770c8a739fe231ad3085c541bcb3f2b2'
+        '6c9a4cf14d5987b688da1aade433a8e96dc530264aac8ec6016a2118ca6fef18f4e4b8519c506d81848a1a809ec52d8a1fc89385be15f7c202342a4cdcf082a7'
         'a8234f542c2324ad698443e3decf7b6eacf3cb420b7aded787f102a8d32b64c2a8d45ea58e37a5e3b6f2f060f0cccd63d3a182065f57c606006d0ff8c7f6bb05')
 
 create_links() {
@@ -52,6 +54,10 @@ prepare() {
     patch -Np1 -i ../kernel-6.2.patch
 
     cd kernel
+
+    # From Ike Devolder
+    patch -Np1 -i ../kernel-6.3.patch
+
     sed -i "s/__VERSION_STRING/${pkgver}/" dkms.conf
     sed -i 's/__JOBS/`nproc`/' dkms.conf
     sed -i 's/__DKMS_MODULES//' dkms.conf
