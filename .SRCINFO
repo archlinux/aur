@@ -1,7 +1,7 @@
 pkgbase = powerpc64-linux-gnu-binutils
 	pkgdesc = A set of programs to assemble and manipulate binary and object files for the PPC64 target
 	pkgver = 2.40
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnu.org/software/binutils/
 	arch = x86_64
 	license = GPL

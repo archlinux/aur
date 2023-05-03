@@ -3,7 +3,7 @@
 _target=powerpc64-linux-gnu
 pkgname=$_target-binutils
 pkgver=2.40
-pkgrel=2
+pkgrel=3
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the PPC64 target'
 arch=(x86_64)
 url='https://www.gnu.org/software/binutils/'
