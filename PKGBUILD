@@ -31,7 +31,13 @@ pkgver() {
 
 build() {
 	cd tplay
-    cargo build -r --features="mpv_0_35" --no-default-features
+	if [[ $(mpv --version | grep "mpv" | cut -d " " -f2 | cut -d "-" -f1 | cut -b 1-4) = '0.35' ]]; then
+		cargo build -r --features="mpv_0_35" --no-default-features
+	elif [[ $(mpv --version | grep "mpv" | cut -d " " -f2 | cut -d "-" -f1 | cut -b 1-4) = '0.34' ]]; then
+		cargo build -r --features="mpv_0_34" --no-default-features
+	else
+		cargo build -r --features="rodio_audio" --no-default-features
+	fi
 }
 
 package() {
