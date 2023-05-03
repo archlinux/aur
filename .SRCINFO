@@ -1,11 +1,11 @@
 pkgbase = doppler-cli-bin
 	pkgdesc = CLI utility for Doppler, environment and secrets manager.
-	pkgver = 3.57.1
+	pkgver = 3.58.0
 	pkgrel = 1
 	url = https://doppler.com
 	arch = x86_64
 	license = Apache
-	source = doppler-cli-bin.3.57.1.tar.gz::https://cli.doppler.com/download?os=linux&arch=amd64&format=tar
-	sha256sums = a000ccc0129d45958d6513f35cd6582e37770dccbaf3b65eba318512816751a8
+	source = doppler-cli-bin.3.58.0.tar.gz::https://cli.doppler.com/download?os=linux&arch=amd64&format=tar
+	sha256sums = 8338c551b7b1edd849f5283798474e442737ba88ee8aeefc12aa06168fcd03d5
 
 pkgname = doppler-cli-bin
