@@ -11,7 +11,7 @@ pkgdesc="'No Tofu' font families with large Unicode coverage (hinted)
  Noto is a collection of font families, each visually harmonized across
  scripts."
 arch=(any)
-url="http://deb.debian.org/debian/pool/main/f/fonts-android/"
+url="http://ftp.debian.org/debian/pool/main/f/fonts-noto"
 license=('GPL')
 depends=()
 provides=()
@@ -20,7 +20,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("http://deb.debian.org/debian/pool/main/f/fonts-noto/fonts-noto-hinted_20161116-1_all.deb")
+source=("http://ftp.debian.org/debian/pool/main/f/fonts-noto/fonts-noto-hinted_20201225-1_all.deb")
 noextract=()
 validpgpkeys=()
 
