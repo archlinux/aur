@@ -6,11 +6,11 @@
 _arch=x64v2
 _pkgbase=linux-xanmod
 _major=6.3
-_minor=0
+_minor=1
 _branch=6.x
 _xanmodrel=1
-_xanmodrev=_rev2
-pkgrel=2
+_xanmodrev=
+pkgrel=1
 
 pkgbase=${_pkgbase}-linux-bin-${_arch}
 pkgver=${_major}.${_minor}
@@ -24,7 +24,6 @@ makedepends=('jq' 'curl')
 
 # Resolve URL of sources from GiHub provider
 # cache the response of the API to reduce the number of calls made to GitHub; not authenticated calls are limited to 60 per hour
-# also test for the revision tag
 _json_data=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${_xanmodrel}${_xanmodrev})
 _url_image=$(echo "${_json_data}" | jq --arg PKGVER "${pkgver}" --arg PKGREL "${_xanmodrel}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | startswith("linux-image-" + $PKGVER + "-" + $ARCH + "-xanmod" + $PKGREL) and endswith(".deb")).browser_download_url')
 _url_headers=$(echo "${_json_data}" | jq --arg PKGVER "${pkgver}" --arg PKGREL "${_xanmodrel}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | startswith("linux-headers-" + $PKGVER + "-" + $ARCH + "-xanmod" + $PKGREL) and endswith(".deb")).browser_download_url')
@@ -46,8 +45,8 @@ validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('6b31c219edf706166d9990be9ac873b0f6a3e5dc884284a4b5acafeaf8ea5f1f'
-            'd856c0c8bf7189ec292d30b407a123917fb535c57a2814bd5fc532652aa68471')
+sha256sums=('a2f7e4f4c2d144a86adc6f4fadd4e860071953bd39c11c626e9bdc0fe02de986'
+            '244cc426eca718fca389f16790252ade2cc488d9da72badcab57116299ab58b0')
 
 _package() {
   pkgdesc="The Linux kernel and modules with Xanmod patches - Current Stable (MAIN) - Prebuilt version - ${_arch}"
