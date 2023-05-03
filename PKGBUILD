@@ -84,7 +84,7 @@ prepare() {
 	# Their "FindSkia" module forcefully tries to use Skia's FreeType and HarfBuzz,
 	# but we don't clone those because we use the shared ones. Avoid overwriting the settings instead.
 	env -C aseprite patch -tp1 <shared-skia-deps.patch
-	env -C aseprite/third_party/IXWebSocket rm ixwebsocket/IXBase64.h
+	env -C aseprite/third_party/IXWebSocket rm -f ixwebsocket/IXBase64.h
 	env -C aseprite/third_party/IXWebSocket patch -tp1 <IXWebSocket-GCC13pt1.patch
 	env -C aseprite/third_party/IXWebSocket patch -tp1 <IXWebSocket-GCC13pt2.patch
 	env -C aseprite/laf patch -tp1 <laf-GCC13.patch
