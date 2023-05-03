@@ -1,10 +1,13 @@
 pkgbase = font-v
 	pkgdesc = Font version string reporting and modification library + executable tool
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/source-foundry/font-v
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
 	depends = python-gitpython
