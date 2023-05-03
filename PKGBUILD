@@ -1,18 +1,17 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=opm-models
 _dunever=2.9.0
-pkgver=2022.10
+pkgver=2023.04
 pkgrel=1
-pkgdesc="C++ simulation framework for porous media flow"
+pkgdesc="The models module for the Open Porous Media Simulation (OPM) framework"
 arch=(x86_64)
 url="https://github.com/OPM/${pkgname}"
 license=(GPL3)
-depends=("opm-material>=${pkgver}" "dune-alugrid>=${_dunever}" "dune-istl>=${_dunever}" "dune-localfunctions>=${_dunever}" suitesparse)
-makedepends=(cppcheck superlu)
-optdepends=('dune-fem: for dofmanager support'
-  'opm-grid: for corner grid support')
+depends=("opm-grid>=${pkgver}" "dune-alugrid>=${_dunever}" "dune-localfunctions>=${_dunever}")
+makedepends=(cppcheck superlu suitesparse)
+optdepends=('dune-fem: for dofmanager support')
 source=(${pkgname}-release-${pkgver}-final.tar.gz::${url}/archive/release/${pkgver}/final.tar.gz)
-sha512sums=('6e6c5f7891a34b2284514b69ee252a517200548a4bce8bc41efed4cf3bf44a01b05bc59ff92d31b075bbf42111329d994374e18173a3baa68df4c3e4b4d1be1d')
+sha512sums=('7a4fd3a236ff09ae75e6512191ab1dab8a4908e570a335cfef3ea723165cc1d875f8b68209ab358211608098b2db42276c5ba3c3a9d18dfea3a9cbb1753038e4')
 
 build() {
   export PATH="${srcdir}/${pkgname}-release-${pkgver}-final/bin:${PATH}"
@@ -30,7 +29,6 @@ build() {
     -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE \
     -DUSE_MPI=1 \
     -DBUILD_EXAMPLES=OFF \
-    -DBUILD_TESTING=OFF \
     -Wno-dev
   cmake --build build-cmake --target all
 }
