@@ -11,7 +11,7 @@ depends=("xdo")
 makedepends=("stack")
 provides=("$pkgname")
 source=("git+${url}.git")
-md5sums=("SKIP")
+sha256sums=("SKIP")
 
 pkgver() {
   cd "$pkgname"

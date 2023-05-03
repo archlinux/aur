@@ -9,6 +9,6 @@ pkgbase = proid
 	depends = xdo
 	provides = proid
 	source = git+https://gitlab.com/rehposuite/proid.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = proid
