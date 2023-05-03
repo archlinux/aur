@@ -1,7 +1,7 @@
 # Maintainer: Martin Rys <rys.pw/contact>
 
 pkgname=video2midi-git
-pkgver=0.4.7.r3.05f2ff1
+pkgver=0.4.7.1.r1.8097431
 pkgrel=1
 pkgdesc='Convert Synthesia YouTube videos to MIDI'
 arch=('any')
