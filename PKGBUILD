@@ -10,7 +10,7 @@ _pkgver=4.6-5.3 # tag names may combine v4 and v5
 _fullname=${pkgname}-4
 _fullname_s=${pkgname}-s4
 _binary=${pkgname}-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Software DAB decoder for use with various SDR devices (version 4, formerly dab-maxi)"
 arch=(x86_64)
 url="https://www.sdr-j.tk/"
@@ -42,6 +42,7 @@ build() {
 		-DLIMESDR=ON \
 		-DHACKRF=ON \
 		-DPLUTO=ON \
+		-DRTLSDR_LINUX=ON \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		../${_prefix}${pkgname}-${_pkgver}/${_fullname_s}
 

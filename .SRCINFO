@@ -1,7 +1,7 @@
 pkgbase = qt-dab
 	pkgdesc = Software DAB decoder for use with various SDR devices (version 4, formerly dab-maxi)
 	pkgver = 4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.sdr-j.tk/
 	arch = x86_64
 	license = GPL2
