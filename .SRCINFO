@@ -1,6 +1,6 @@
 pkgbase = bbg-git
 	pkgdesc = A static blog generator built with electron
-	pkgver = 20230219.r20.1393a0c
+	pkgver = 20230503.r5.803fe71
 	pkgrel = 1
 	url = https://github.com/bbg-contributors/bbg
 	arch = any

@@ -2,7 +2,7 @@
 # Co-Maintainer:    zzjzxq33 <wojiushixxx at 126 dot com>
 pkgname=bbg-git
 _pkgname=${pkgname%-git}
-pkgver=20230219.r20.1393a0c
+pkgver=20230503.r5.803fe71
 pkgrel=1
 pkgdesc="A static blog generator built with electron"
 arch=('any')
@@ -29,6 +29,9 @@ pkgver() {
 prepare() {
 	cd "$srcdir/${_pkgname}"
 	git submodule update --init --recursive
+
+	# https://github.com/bbg-contributors/bbg/blob/c6f3cff622d45dac06d5ec25266e4c68e34e5bae/App/start.js#L274-L278
+	touch App/is_aur_build
 }
 
 build() {
@@ -40,13 +43,13 @@ build() {
 
 package() {
 	cd "$srcdir"
-	install -dm755 "${pkgdir}/usr/share/${_pkgname}"
+	install -dm755 "${pkgdir}/usr/lib/${_pkgname}"
 	install -Dm644 "app-${pkgver}.asar" "${pkgdir}/usr/share/${_pkgname}/app.asar"
 	install -Dm644 icon.png "${pkgdir}/usr/share/icons/${_pkgname}.png"
     install -Dm755 /dev/stdin ${pkgdir}/usr/bin/${_pkgname} << EOF
 #!/bin/sh
 
-exec electron /usr/share/bbg/app.asar "\$@"
+exec electron /usr/lib/bbg/app.asar "\$@"
 EOF
 	install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${_pkgname}.desktop" << EOF
 [Desktop Entry]
@@ -61,7 +64,4 @@ Type=Application
 StartupNotify=false
 Categories=Office
 EOF
-
-	# install bbgvertype: https://github.com/bbg-contributors/bbg/blob/f3d61ce4d79680329bad4cb014c909fb86037f38/App/start.js
-	echo "aur-bbg-git-misaka13514" | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bbg/bbgvertype"
 }
