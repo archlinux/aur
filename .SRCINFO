@@ -1,0 +1,23 @@
+pkgbase = quick-tester-git
+	pkgdesc = A program for self-testing and assessment of knowledge.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/badcast/QuickTester
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = dotnet-sdk
+	depends = mono
+	depends = dotnet-runtime
+	depends = sh
+	depends = hicolor-icon-theme
+	source = git+https://github.com/badcast/QuickTester.git
+	source = quicktester
+	source = quicktester.desktop
+	source = quicktester.png
+	sha256sums = SKIP
+	sha256sums = 01a7db83ea7937d98f7885ab689d8bc7b1f93fa2c0cee2d126bee97af87b20f8
+	sha256sums = 71d41bd6f9e1eb5581e0168abb2046f1dabb1ccd4c1a3dfb463e918f0026ae79
+	sha256sums = 1b3f9be2e3d43219dabeb9d1e49c25ee621ac43e3f6790df8b53bb640f3f8d6e
+
+pkgname = quick-tester-git

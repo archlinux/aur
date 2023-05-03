@@ -1,0 +1,17 @@
+[Desktop Entry]
+Comment[ru_RU]=Программа для само-тестирование и оценки знания.
+Comment=A program for self-testing and assessment of knowledge.
+Exec=quicktester %F
+Icon=quicktester
+Keywords=test
+MimeType=
+Name[ru_RU]=Quick Tester
+Name=Quick Tester
+Path=
+StartupNotify=false
+Terminal=false
+TerminalOptions=
+Type=Application
+Version=1.0
+X-KDE-SubstituteUID=false
+X-KDE-Username=
