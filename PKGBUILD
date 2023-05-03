@@ -2,7 +2,7 @@
 
 pkgname=gphotos-sync
 pkgver=3.1.2
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc='Google Photos and Albums backup tool'
 arch=(any)
