@@ -1,7 +1,7 @@
 pkgbase = gpac-full
 	pkgdesc = A multimedia framework based on the MPEG-4 Systems standard
 	pkgver = 2.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gpac.wp.imt.fr/
 	arch = x86_64
 	license = GPL
