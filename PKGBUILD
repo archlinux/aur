@@ -3,7 +3,7 @@
 _pkgbase='ddnss'
 pkgname="python-${_pkgbase}"
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Update DynDNS hosts registered at ddnss.de'
 arch=('any')
 url="https://github.com/coNQP/${_pkgbase}"

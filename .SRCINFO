@@ -1,7 +1,7 @@
 pkgbase = python-ddnss
 	pkgdesc = Update DynDNS hosts registered at ddnss.de
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coNQP/ddnss
 	arch = any
 	license = GPLv3
