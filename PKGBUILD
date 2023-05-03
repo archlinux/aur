@@ -8,7 +8,7 @@ url='https://off.fandom.com/wiki/Downloads'
 arch=('any')
 license=('custom:non-free')
 depends=('easyrpg-player')
-makedepends=('icoutils')
+makedepends=('imagemagick')
 source=("https://github.com/gronoe/off-mac/releases/download/$pkgver/OFF.English.3.0.zip"
         'OFF'
         'OFF.desktop')
@@ -21,7 +21,7 @@ package() {
 		cd 'OFF English 3.0'
 
 		mkdir -p "$pkgdir/usr/share/pixmaps"
-		icotool --extract --output="$pkgdir/usr/share/pixmaps/OFF.png" Picture/icon.ico
+		convert Picture/off.png -crop 96x96+110+38 "$pkgdir/usr/share/pixmaps/OFF.png"
 
 		rm -r "bonus folder"
 		rm *.dll Sauvegarde_RPG_RT.exe desktop.ini *.txt *.r3proj Save*.lsd
