@@ -1,7 +1,7 @@
 pkgbase = ufo2otf
 	pkgdesc = Take UFO font sources and generate OTF’s and webfonts
 	pkgver = 0.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/fonts/ufo2otf
 	arch = any
 	license = BSD
