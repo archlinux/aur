@@ -1,5 +1,5 @@
 pkgname=qcm-git
-pkgver=r53.4e4d6de
+pkgver=r46.c085302
 pkgrel=1
 pkgdesc="Qt client for netease cloud music "
 arch=('x86_64')
@@ -18,13 +18,8 @@ makedepends=(
     'extra-cmake-modules'
     'ninja')
 provides=("qcm")
-source=('git+https://github.com/hypengw/Qcm.git' 'dark-mode.patch')
-sha256sums=('SKIP' 'SKIP')
-
-function prepare(){
-    cd "${srcdir}"/Qcm
-    patch --forward --strip=1 --input="${srcdir}/dark-mode.patch"
-}
+source=('git+https://github.com/hypengw/Qcm.git')
+sha256sums=('SKIP')
 
 function pkgver(){
     cd Qcm
@@ -63,5 +58,3 @@ function _info() {
 		printf "${blue}==>${yellow} [Info]:${bold} $1${all_off}\n"
     fi
 }
-sha256sums=('SKIP'
-            '10da1a403bb52442107e68e6dbba1eabf8a922135ae82e2cb2758901994feb88')
