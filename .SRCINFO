@@ -1,0 +1,21 @@
+pkgbase = cosmic-settings-git
+	pkgdesc = settings for the COSMIC DE panel.
+	pkgver = r19.9fb6e2f
+	pkgrel = 1
+	url = https://github.com/pop-os/cosmic-settings
+	arch = x86_64
+	arch = aarch64
+	groups = cosmic
+	license = GPL3
+	makedepends = cargo
+	makedepends = clang
+	makedepends = git
+	makedepends = just
+	makedepends = mold
+	provides = cosmic-settings
+	conflicts = cosmic-settings
+	options = !lto
+	source = git+https://github.com/pop-os/cosmic-settings.git
+	sha256sums = SKIP
+
+pkgname = cosmic-settings-git
