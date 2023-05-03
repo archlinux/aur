@@ -5,7 +5,7 @@
 
 pkgname=typecatcher
 pkgver=0.4
-pkgrel=3
+pkgrel=4
 pkgdesc='Download Google webfonts for off-line use'
 arch=(any)
 url="https://github.com/andrewsomething/$pkgname"
@@ -15,11 +15,12 @@ depends=(gtk3
          python-gobject
          webkit2gtk
          yelp)
-makedepends=(python-distutils-extra)
+makedepends=(python-{build,installer,wheel}
+             python-distutils-extra
+             python-setuptools)
 _archive="$pkgname-$pkgver"
 source=("$_archive.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('8b7b78bac166c64f12de1314e5aea2791cb5628ca27447eb29efc408c50c36e7')
-
 
 prepare() {
 	cd "$_archive"
@@ -33,13 +34,12 @@ prepare() {
 
 build() {
 	cd "$_archive"
-	python setup.py build
+	python -m build -wn
 }
 
 package() {
 	cd "$_archive"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-
+	python -m installer -d "$pkgdir" dist/*.whl
 	install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" AUTHORS
 
 	# Install files DistUtils fails to install
@@ -51,8 +51,4 @@ package() {
 
 	install -Dm644 -t "$pkgdir/usr/share/applications/" \
 		"build/share/applications/$pkgname.desktop"
-
-	install -d "$pkgdir/usr/share/icons/hicolor/scalable/apps"
-	ln -s "/usr/share/$pkgname/$pkgname.svg" \
-		"$pkgdir/usr/share/icons/hicolor/scalable/apps/"
 }
