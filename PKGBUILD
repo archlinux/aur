@@ -1,34 +1,43 @@
 # Maintainer:       zzjzxq33 <wojiushixxx at 126 dot com>
 # Co-Maintainer:    Misaka13514 <Misaka13514 at gmail dot com>
 pkgname=bbg
-pkgver=20230219
-pkgrel=2
+pkgver=20230503
+pkgrel=1
 pkgdesc="A static blog generator built with electron"
 arch=('any')
 url="https://github.com/bbg-contributors/bbg"
 license=('Unlicense')
-depends=('electron22')
+depends=('electron')
 conflicts=("${pkgname}-git")
 source=(
-	'bbg.sh'
 	'icon.png'::'https://github.com/bbg-contributors/bbg-resources/raw/30dfd1cbdfbed040a74f05b0312302f3bf0c1c85/icon.png'
-	'bbg.desktop'
 	"app-${pkgver}.asar"::"${url}/releases/download/${pkgver}/app.asar"
 )
 sha256sums=(
-	'ce202744ff0a187a86df620d29c4780757340071e6d4c27f80e55cdfbf103977'
 	'd5f8f191d914a140ab11999a176b226523dd78e6865a75b483013846503a5228'
-	'f503d93639c1f4d4e050eceb11adf64d369908e5941cfdbda3af30b2f3c73d96'
-	'1a1f173273157a156a77a34d5819854abb22ca9ea79a158453ea85012251abf3'
+	'57b34e355d724eef7e26e833c6d474d591cfa3876a06995a86291b4080515188'
 )
 
 package() {
 	cd "$srcdir"
-	install -Dm755 "bbg.sh"             "${pkgdir}/usr/bin/${pkgname}"
 	install -Dm644 "app-${pkgver}.asar" "${pkgdir}/usr/lib/${pkgname}/app.asar"
-	install -Dm644 "bbg.desktop"        "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	install -Dm644 "icon.png"           "${pkgdir}/usr/share/icons/${pkgname}.png"
+	install -Dm755 "/dev/stdin"         "${pkgdir}/usr/bin/${pkgname}" << EOF
+#!/bin/sh
 
-	# install bbgvertype: https://github.com/bbg-contributors/bbg/blob/f3d61ce4d79680329bad4cb014c909fb86037f38/App/start.js
-	echo "aur-bbg-zzjzxq33-misaka13514" | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bbg/bbgvertype"
+exec electron /usr/lib/bbg/app.asar "\$@"
+EOF
+	install -Dm644 "/dev/stdin"         "${pkgdir}/usr/share/applications/${pkgname}.desktop" << EOF
+[Desktop Entry]
+Name=bbg
+Comment=blog generator
+Keywords=
+Exec=/usr/bin/bbg
+TryExec=
+Terminal=false
+Icon=/usr/share/icons/bbg.png
+Type=Application
+StartupNotify=false
+Categories=Office
+EOF
 }
