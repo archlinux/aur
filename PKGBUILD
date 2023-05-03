@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=preprocessCore
-_pkgver=1.62.0
+_pkgver=1.62.1
 pkgname=r-${_pkgname,,}
-pkgver=1.62.0
+pkgver=1.62.1
 pkgrel=1
 pkgdesc='A collection of pre-processing functions'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ad1382c9d8bd8a79176f1a286d5d570c0bd8d9d993c99eceeb4ff33ce6c40110')
+sha256sums=('8d3846482f720f8a3d7657b536ef4db2a99d53ca7e06cc3740900729c453677c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
