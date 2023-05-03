@@ -11,7 +11,7 @@ license=('BSD')
 depends=('python-numpy' 'python-tqdm' 'python-opencv' 'python-scenedetect' 'qt5-base' 'fmt')
 makedepends=('python-setuptools')
 source=("https://github.com/Breakthrough/DVR-Scan/archive/refs/tags/v$_tagver.tar.gz")
-sha256sums=('590ca63145e0c29ea3cf4c535c1ff6e96cec447022aa4b79ddd982901ebdca16')
+sha256sums=('50da7f79b37ad1281a1282fdbdff4a9dda311334287334664b559b59431a7a16')
 
 package() {
   cd "DVR-Scan-$_tagver"
