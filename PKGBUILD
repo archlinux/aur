@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pkgmaker
-_pkgver=0.32.8
+_pkgver=0.32.10
 pkgname=r-${_pkgname,,}
-pkgver=0.32.8
+pkgver=0.32.10
 pkgrel=1
 pkgdesc='Development Utilities for R Packages'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-yaml
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0ff3578d2c051b544c3f105cfe4801575aac1564add048f9e952c53a8ccd1745')
+sha256sums=('972b0473a64408ccc4841fa3f09a567cc32811e69c3c7e42a2f391a5eb2e2933')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
