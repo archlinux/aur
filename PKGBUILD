@@ -3,7 +3,7 @@
 _pyname=axisregistry
 pkgname=python-$_pyname
 pkgver=0.3.10
-pkgrel=1
+pkgrel=2
 pkgdesc='easy access to the GF Axis Registry'
 arch=(any)
 url="https://github.com/googlefonts/$_pyname"
