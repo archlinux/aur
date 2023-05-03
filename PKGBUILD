@@ -36,7 +36,7 @@ build() {
 
 package_libgpac() {
 	provides=()
-	pkgdesc="$pgkdesc (library)"
+	pkgdesc="$pkgdesc (library)"
 	cd "$srcdir/$_pkgbase-$pkgver"
 	make DESTDIR="$pkgdir/" install
 	find "$pkgdir" -not -path "*usr/include*" -and \

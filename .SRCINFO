@@ -76,5 +76,5 @@ pkgname = mp4box
 	provides = mp4box
 
 pkgname = libgpac
-	pkgdesc = (library)
+	pkgdesc = A multimedia framework based on the MPEG-4 Systems standard (library)
 	provides = 
