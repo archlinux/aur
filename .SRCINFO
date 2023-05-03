@@ -1,10 +1,13 @@
 pkgbase = python-gobbet
 	pkgdesc = Random news articles in any language
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/simoncozens/gobbet
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
 	depends = python-tqdm
