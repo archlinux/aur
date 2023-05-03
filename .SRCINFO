@@ -1,7 +1,7 @@
 pkgbase = gpac-full
 	pkgdesc = A multimedia framework based on the MPEG-4 Systems standard
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gpac.wp.imt.fr/
 	arch = x86_64
 	license = GPL
@@ -26,7 +26,7 @@ pkgbase = gpac-full
 	optdepends = alsa-oss
 	provides = gpac
 	conflicts = gpac
-	source = https://github.com/gpac-full/gpac-full/archive/refs/tags/v2.2.1.tar.gz
+	source = https://github.com/gpac/gpac/archive/refs/tags/v2.2.1.tar.gz
 	b2sums = 44b47459da0f203d0e4c0eed5836a59f44fb508db4e601b46e9ffdb53d89bb49e22ccdfe7951b17581130f186c47ae8efc0d9002685d5cf9a3547159356d2d9e
 
 pkgname = gpac-full

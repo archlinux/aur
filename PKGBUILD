@@ -3,7 +3,7 @@ pkgbase=gpac-full
 pkgname=(gpac-full mp4box libgpac)
 _pkgbase=gpac
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A multimedia framework based on the MPEG-4 Systems standard"
 arch=("x86_64")
 url="https://gpac.wp.imt.fr/"
@@ -15,7 +15,7 @@ depends=('alsa-lib' 'freetype2' 'git' 'jack' 'libjpeg-turbo' 'libpng' 'libogg'
 optdepends=('alsa-oss')
 provides=('gpac')
 conflicts=('gpac')
-source=("https://github.com/$pkgbase/$pkgbase/archive/refs/tags/v$pkgver.tar.gz")
+source=("https://github.com/$_pkgbase/$_pkgbase/archive/refs/tags/v$pkgver.tar.gz")
 b2sums=('44b47459da0f203d0e4c0eed5836a59f44fb508db4e601b46e9ffdb53d89bb49e22ccdfe7951b17581130f186c47ae8efc0d9002685d5cf9a3547159356d2d9e')
 
 prepare() {
