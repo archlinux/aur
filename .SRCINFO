@@ -1,6 +1,6 @@
 pkgbase = python-powerline-git
 	pkgdesc = The ultimate statusline/prompt utility
-	pkgver = 2.8.2+4+g82c1373b
+	pkgver = 2.8.3+2+g833f30e8
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/powerline/powerline

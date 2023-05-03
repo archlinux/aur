@@ -5,7 +5,7 @@
 
 pkgname=python-powerline-git
 pkgdesc='The ultimate statusline/prompt utility'
-pkgver=2.8.2+4+g82c1373b
+pkgver=2.8.3+2+g833f30e8
 pkgrel=1
 epoch=1
 url='https://github.com/powerline/powerline'
@@ -32,13 +32,16 @@ pkgver() {
 }
 
 build() {
-	cd powerline/docs
-	make man SPHINXBUILD=sphinx-build
+	cd powerline
+	python setup.py build
+
+	cd docs
+	make man
 }
 
 package_python-powerline-git() {
 	cd powerline
-	python setup.py install --root="$pkgdir" --optimize=1
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
 	# Fonts
 	install -dm755 "$pkgdir/etc/fonts/conf.d"
