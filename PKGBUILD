@@ -43,7 +43,7 @@ package_opm-common() {
   DESTDIR="${pkgdir}" cmake --build build-cmake --target install install-html
   install -Dm644 ${pkgbase}-release-${pkgver}-final/LICENSE "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
   cd "${pkgdir}"
-  rm -r usr/build-cmake tmp
+  rm -r usr/build-cmake
   find "${pkgdir}" -type d -empty -delete
 }
 
