@@ -38,7 +38,7 @@ build() {
        --with-cbc-incdir="/usr/${_arch}/include/coin/" \
        --with-ipopt-lib="$(${_arch}-pkg-config --libs ipopt)" \
        --with-ipopt-incdir="/usr/${_arch}/include/coin/" \
-       --with-asl-lib="$(${_arch}-pkg-config --libs coinasl)" \
+       --with-asl-lib="$(${_arch}-pkg-config --libs coinasl) $(${_arch}-pkg-config --libs ipoptamplinterface)" \
        --with-asl-incdir="/usr/${_arch}/include/coin-or/asl" \
        lt_cv_deplibs_check_method=pass_all ..
     make
