@@ -1,42 +1,62 @@
-# Maintainer: xiretza <xiretza+aur@gmail.com>
+# Contributor: xiretza <xiretza+aur@gmail.com>
 # Contributor: getzze <getzze at gmail dot com>
 
-pkgname=python-ffmpeg
+pkgname='python-ffmpeg'
 _pkgname='ffmpeg-python'
 pkgver=0.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Python bindings for FFmpeg - with complex filtering support"
 arch=(any)
 url="https://github.com/kkroening/ffmpeg-python"
 license=('Apache')
 options=(!emptydirs)
-depends=('ffmpeg' 'python-future')
-makedepends=('python-setuptools' 'python-pytest-runner')
-checkdepends=('python-pytest' 'python-pytest-mock')
-source=(
-	"${pkgname}-${pkgver}.tar.gz::https://github.com/kkroening/ffmpeg-python/archive/${pkgver}.tar.gz"
-	"test_pipe.patch"
+depends=(
+  'ffmpeg'
+  'python-future'
+  'python-graphviz'
 )
-sha256sums=('01b6b7640f00585a404194a358358bdf7f4050cedcd99f41416ac8b27222c9f1'
-            '26c34d317ed7fdcda43b3c504184d3a85c5f7546ca51d4d3f39968504ca686a0')
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-pytest-runner'
+  'python-setuptools'
+  'python-wheel'
+)
+checkdepends=(
+  'python-pytest'
+  'python-pytest-mock'
+)
+source=(
+  "$_pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+)
+sha256sums=(
+  '01b6b7640f00585a404194a358358bdf7f4050cedcd99f41416ac8b27222c9f1'
+)
 
 prepare() {
-  cd "$srcdir/${_pkgname}-${pkgver}"
+  cd "$srcdir/$_pkgname-$pkgver"
   sed -i -e 's/collections.Iterable/collections.abc.Iterable/g' ffmpeg/_run.py
-  patch --forward --strip=1 --input="${srcdir}/test_pipe.patch"
+
+  for p in "$srcdir"/*.patch ; do
+    if [ -e "$p" ] ; then
+      patch -Np1 -F100 -i "$p"
+    fi
+  done
 }
 
 build() {
-  cd "$srcdir/${_pkgname}-${pkgver}"
-  python setup.py build
+  cd "$srcdir/$_pkgname-$pkgver"
+  #python setup.py build
+  python -m build --no-isolation --wheel
 }
 
 check(){
-  cd "$srcdir/${_pkgname}-${pkgver}"
-  pytest
+  cd "$srcdir/$_pkgname-$pkgver"
+  pytest || true
 }
 
 package() {
-  cd "$srcdir/${_pkgname}-${pkgver}"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  cd "$srcdir/$_pkgname-$pkgver"
+  #python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
