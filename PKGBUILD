@@ -1,6 +1,6 @@
 # Maintainer: Maks Verver <maks@verver.ch>
 pkgname=sqlfuse-git
-pkgver=r179.a2f60b6
+pkgver=r190.4019c99
 pkgrel=1
 pkgdesc="Encrypted user-space filesystem using SQLite3+SQLCipher+FUSE"
 arch=('i686' 'x86_64')
