@@ -1,22 +1,20 @@
 # Maintainer: a821
 pkgname=python-pynndescent
-pkgver=0.5.8
-pkgrel=2
+pkgver=0.5.10
+pkgrel=1
 pkgdesc="Simple fast approximate nearest neighbor search"
 arch=('any')
 url="https://github.com/lmcinnes/pynndescent"
 license=('BSD')
 depends=('python-joblib' 'python-numba' 'python-scikit-learn' 'python-scipy')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest')
-source=("https://pypi.io/packages/source/p/pynndescent/pynndescent-${pkgver}.tar.gz"
-        "asarray.patch")
-sha256sums=('a7c552569bf604a101fd54bba1d27c12389e065945dee3a6777a518c63a46f2b'
-            '240c9413befb3f7dd58a0f02a32e58a07c54abeef70cdaa222a3ec7bd8da7d63')
+source=("https://pypi.io/packages/source/p/pynndescent/pynndescent-${pkgver}.tar.gz")
+sha256sums=('5d5dc683c03ef55fe3ddf693859720ca18f85c6e6e5bb0b4f14870278d5288ad')
 
-prepare() {
+build() {
   cd "pynndescent-$pkgver"
-  patch -p1 < ../asarray.patch
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -25,7 +23,7 @@ check() {
 }
 
 package() {
-  cd "$srcdir/pynndescent-$pkgver"
-  python setup.py install --root="${pkgdir}" --optimize=1
+  cd "pynndescent-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
