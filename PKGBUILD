@@ -4,7 +4,7 @@
 # Run 'makepkg -i' and hope for best :)
 
 pkgname=sc-controller-git
-pkgver=0.4.8.9.r2.8a038446
+pkgver=0.4.8.9.r21.fba0e88d
 pkgrel=1
 pkgdesc='User-mode driver and GTK3 based GUI for Steam Controller'
 arch=('any')
