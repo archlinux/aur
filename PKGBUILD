@@ -1,8 +1,8 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
 
 pkgname=molecule-plugins
-pkgver=23.0.0
-pkgrel=2
+pkgver=23.4.1
+pkgrel=1
 pkgdesc="Collection of molecule plugins"
 arch=(any)
 url="https://github.com/ansible-community/molecule-plugins"
@@ -55,8 +55,8 @@ replaces=(
   molecule-vagrant
 )
 source=(https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz)
-sha512sums=('205c106a9bb3a0225f4f8924ae29779e4c834ab75a05b9a6b0e1fd99036ab6b1c1d76c9ee2eae4ce4514e72dba6cd2eabb53d52aee578a86a26a7bb233c36a6b')
-b2sums=('09853fa0e747335a140ecbb4bedff0b18f223ab606c45cad0a6bb08bf0429553396e25956558c558cf35f1d683d868584286ab293617c9080f8488e70d3fb0b3')
+sha512sums=('5c158e278318402006f9f86f4143dac27d0cf6e95912963414e9c06720f9b5572240a6b6ddaccbd2872bb594144215a4a5ec434f4414e692fb72a3d97de175d3')
+b2sums=('e0261d189e55b0705ff2e967620146dd6ef0bc4182a6e87d5ffdaf8e1298dc0bc9e9bb188669300b63cf692f822ad6b0d4c8038fc1cff6afbf7f79b61dfbc184')
 
 build() {
   cd $pkgname-$pkgver
