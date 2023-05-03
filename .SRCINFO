@@ -1,7 +1,7 @@
 pkgbase = python-vharfbuzz
 	pkgdesc = A user-friendlier way to use Harfbuzz in Python
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/simoncozens/vharfbuzz
 	arch = any
 	license = MIT
