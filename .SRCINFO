@@ -1,0 +1,32 @@
+pkgbase = neptune
+	pkgdesc = Platinum UPnP SDK + Neptune C++ Runtime by Axiomatic Software
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://www.plutinosoft.com/platinum-slider/
+	arch = x86_64
+	license = GPL2
+	makedepends = scons
+	makedepends = gcc
+	makedepends = git
+	depends = zlib
+	provides = libNeptune.a
+	provides = libPlatinum.a
+	source = git+https://github.com/plutinosoft/Platinum#tag=1.3.0
+	md5sums = SKIP
+
+pkgname = platinum-upnp
+	pkgdesc = Library / tools for building a UPnP mediaserver. Used behind the scenes by Plex, etc.
+	depends = zlib
+	depends = neptune
+	provides = libPlatinum.a
+
+pkgname = platinum-upnp-docs
+	pkgdesc = Platinum UPnP SDK + Neptune C++ Runtime by Axiomatic Software (documentation)
+	depends = zlib
+	depends = platinum-upnp
+	provides = 
+
+pkgname = neptune
+	pkgdesc = Neptune C++ runtime (static library)
+	license = BSD
+	provides = libNeptune.a
