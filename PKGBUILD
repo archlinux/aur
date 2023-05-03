@@ -10,13 +10,14 @@ BUILDENV+=('!check')
 _pipname=pancritic
 pkgname=python-$_pipname
 pkgver=0.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc='CriticMarkdup parser with optional pandoc backend'
 arch=(any)
 url="https://github.com/ickc/$_pipname"
 license=(GPL3)
 depends=(python)
 makedepends=(pandoc
+             python-{build,installer,wheel}
              python-setuptools
              texlive-core
              texlive-latexextra)
@@ -30,12 +31,12 @@ checkdepends=(python-coverage
               python-panflute
               python-pypandoc)
 _archive="$_pipname-$pkgver"
-source=("$_archive.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("$url/archive/v$pkgver/$_archive.tar.gz")
 sha256sums=('670c0093924c11bb05a42ace4250166e076ad00f41e4208972613c07e3573515')
 
 build() {
 	cd "$_archive"
-	python setup.py build
+	python -m build -wn
 }
 
 check() {
@@ -45,5 +46,5 @@ check() {
 
 package() {
 	cd "$_archive"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer -d "$pkgdir" dist/*.whl
 }
