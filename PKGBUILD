@@ -1,6 +1,6 @@
 # Maintainer: RadioLogic
 pkgname=sliver
-pkgver=1.5.37
+pkgver=1.5.38
 pkgrel=2
 pkgdesc="Sliver is a an opensource C2 framework designed by bishop fox"
 url="https://github.com/BishopFox/sliver"
