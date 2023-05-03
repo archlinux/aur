@@ -1,7 +1,7 @@
 pkgbase = rof-git
 	pkgdesc = Script to launch the command given as an argument if not yet running, else set focus to appropriate window
 	pkgver = 0.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/nwg-piotr/rof
 	arch = x86_64
 	license = GPL3
@@ -11,4 +11,3 @@ pkgbase = rof-git
 	md5sums = fb15dd09b638276c399a6c022687189a
 
 pkgname = rof-git
-
