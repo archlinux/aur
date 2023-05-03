@@ -3,7 +3,7 @@
 # Contributor: Carl George < arch at cgtx dot us >
 
 pkgname="mkdocs"
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="Project documentation with Markdown"
 url="https://www.mkdocs.org"
@@ -30,7 +30,7 @@ makedepends=("python-hatchling" "python-pathspec" "python-build" "python-install
 optdepends=("python-lunr: to prebuild search index")
 options=("!strip")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('71dbd91520a405cce9c1e194b98adeab369aed81e60debc9ca1ffe72f2132632')
+sha256sums=('2662b2a39db437b472f7cba92d0aaf6973732929a000af56e05cfc42055e7fc8')
 
 build(){
  cd "$pkgname-$pkgver"
