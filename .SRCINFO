@@ -1,11 +1,14 @@
 pkgbase = python-cffsubr
 	pkgdesc = Standalone CFF subroutinizer based on AFDKO tx
 	pkgver = 0.2.9.post1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/adobe-type-tools/cffsubr
 	arch = x86_64
 	license = Apache
 	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools-git-ls-files
 	makedepends = python-setuptools-scm
 	depends = python
