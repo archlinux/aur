@@ -8,7 +8,7 @@
 pkgname=emacs-lucid
 pkgver=28.2
 _pkgver_major=${pkgver/.*}
-pkgrel=1
+pkgrel=2
 pkgdesc="The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)"
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
@@ -22,12 +22,31 @@ depends=(
   hicolor-icon-theme
   jansson
   lcms2
+  libacl.so
+  libfontconfig.so
+  libfreetype.so
+  libgdk_pixbuf-2.0.so
+  libgif.so
+  libgio-2.0.so
+  libglib-2.0.so
+  libgobject-2.0.so
+  libharfbuzz.so
+  libice
+  libjpeg.so
+  libncursesw.so
+  libotf
+  libpng
   librsvg
+  libsm
+  libsystemd.so
+  libtiff.so
   libxfixes
   libxinerama
+  libxml2.so
   libxrandr
   m17n-lib
   xaw3d
+  zlib
 )
 optdepends=(desktop-file-utils)
 conflicts=(emacs)
@@ -42,10 +61,6 @@ sha256sums=('ee21182233ef3232dc97b486af2d86e14042dbb65bbc535df562c3a858232488'
 
 build() {
   cd "$srcdir"/emacs-$pkgver
-
-  # For the hardening-wrapper package.  Emacs doesn't support building
-  # with PIE (https://debbugs.gnu.org/cgi/bugreport.cgi?bug=18784).
-  export HARDENING_PIE=0
 
  ./configure \
       --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib --localstatedir=/var \
