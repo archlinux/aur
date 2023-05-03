@@ -1,14 +1,14 @@
 pkgbase = dvc
 	pkgdesc = Open-source version control system for data science projects
 	pkgver = 2.56.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iterative/dvc
 	arch = any
 	license = Apache
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools-scm
 	makedepends = python-wheel
+	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-aiohttp-retry
 	depends = python-appdirs

@@ -5,7 +5,7 @@
 
 pkgname=dvc
 pkgver=2.56.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source version control system for data science projects'
 arch=(any)
 license=(Apache)
@@ -58,7 +58,8 @@ optdepends=('python-google-cloud-storage: support for Google Cloud'
             'python-pyarrow: support for HDFS remote'
             'python-pydrive: support for GDrive'
             'python-s3fs: support for AWS S3 remote')
-makedepends=(python-{build,installer} python-setuptools-scm python-wheel)
+makedepends=(python-{build,installer,wheel}
+             python-setuptools-scm)
 _archive=("$pkgname-$pkgver")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
 sha256sums=('927dcde2ae658b434ba428a0b93247a014f23ef383c23a07a9040ad22c5bbcf7')
