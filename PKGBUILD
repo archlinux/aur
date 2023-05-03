@@ -56,13 +56,13 @@ _BATCH_MODE=n # enable batch mode
 ##
 
 _major=6
-_minor=0
+_minor=3
 #_patchlevel=0
 #_subversion=1
 _srcname=linux-pf
 pkgbase=linux-pf
-_unpatched_sublevel=9
-_pfrel=5
+_unpatched_sublevel=1
+_pfrel=2
 _kernelname=pf
 _projectcpatchname=prjc_v5.15-r1.patch
 _basekernel=${_major}.${_minor}.${_unpatched_sublevel}
