@@ -1,7 +1,7 @@
 pkgbase = getoptions-bin
 	pkgdesc = An elegant option/argument parser for shell scripts
 	pkgver = 3.3.0.r2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ko1nksm/getoptions
 	arch = any
 	license = CC0-1.0
