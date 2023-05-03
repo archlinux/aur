@@ -3,14 +3,14 @@
 pkgname=motrix
 _pkgname=Motrix
 pkgver=1.8.19
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A full-featured download manager (release version)"
 arch=("x86_64")
 url="https://github.com/agalwood/Motrix"
 license=('MIT')
 groups=()
-depends=('gtk3' 'libxcb' 'electron')
+depends=('gtk3' 'libxcb' 'electron22')
 makedepends=('npm' 'yarn' 'nodejs' 'python')
 checkdepends=()
 optdepends=()
@@ -26,7 +26,7 @@ source=("motrix.desktop"
     "https://github.com/agalwood/Motrix/archive/v${pkgver}.tar.gz")
 noextract=()
 sha256sums=('af5092a2a599bd23c13303ad1e7b745992a7af141278d13abe4297ca50a77bd8'
-            '52a8f1ae5916a91aa1c9f1749e06777b4457bd9f5a03749c9fcd97e7d0801a71'
+            'bb1432adbac2120ef5c59d718f1cd48ef5fc920d3d1231ba32390c700465f3a5'
             'd2a48692549d426e9dfa0fad9897dddf200b7b82198d59e64819d419114a10d8')
 validpgpkeys=()
 
