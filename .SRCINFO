@@ -1,0 +1,17 @@
+pkgbase = motrix-bin-git
+	pkgdesc = A full-featured download manager (git release binary version)
+	pkgver = 1.8.19
+	pkgrel = 1
+	url = https://github.com/agalwood/Motrix
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libxcb
+	depends = nss
+	conflicts = motrix
+	conflicts = motrix-git
+	conflicts = motrix-bin
+	source = https://github.com/agalwood/Motrix/releases/download/v1.8.19/Motrix_1.8.19_amd64.deb
+	sha512sums = 8a3dab9c731268c2291f286d8efa7815046bbe00046deb938db061863d3ad3e14ddcb50ba4a7e44ada2c11d196d660bb6a762af4e6e589ddb38692266010e61a
+
+pkgname = motrix-bin-git
