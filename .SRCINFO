@@ -1,14 +1,14 @@
 pkgbase = python-glyphtools
 	pkgdesc = Routines for extracting information from font glyphs
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/simoncozens/glyphtools
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
 	depends = python-babelfont
 	depends = python-beziers

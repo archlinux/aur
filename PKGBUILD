@@ -3,7 +3,7 @@
 pkgname=python-glyphtools
 _pyname=${pkgname#python-}
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Routines for extracting information from font glyphs'
 arch=(any)
 url="https://github.com/simoncozens/$_pyname"
@@ -14,9 +14,8 @@ _py_deps=(babelfont
           glyphslib)
 depends=(python
          "${_py_deps[@]/#/python-}")
-makedepends=(python-{build,installer}
-             python-setuptools
-             python-wheel)
+makedepends=(python-{build,installer,wheel}
+             python-setuptools)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
 sha256sums=('3d7c171d63096ec8ba66d37e75a697027970de05790c5021c91c5d05aed43fe3')
