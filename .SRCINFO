@@ -7,6 +7,7 @@ pkgbase = mingw-w64-coin-or-bonmin
 	groups = mingw-w64-coin-or
 	license = EPL
 	makedepends = mingw-w64-configure
+	makedepends = mingw-w64-nauty
 	depends = mingw-w64-coin-or-cbc
 	depends = mingw-w64-coin-or-ipopt
 	options = staticlibs
