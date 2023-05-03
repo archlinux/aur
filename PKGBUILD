@@ -37,14 +37,11 @@ prepare() {
     # Installing PyInstaller as user from pip.
     # That's to prevent conflicts with package manager
     pip install pyinstaller
-
-    # Since PyInstaller is installed in ~/.local/bin, adding it to PATH:
-    export PATH=$HOME/.local/bin:$PATH
 }
 
 build() {
     cd "$srcdir"/"$_spkgname"
-    pyinstaller altlinux.spec --clean
+    PATH=$HOME/.local/bin:$PATH pyinstaller altlinux.spec --clean
 }
 
 package() {
