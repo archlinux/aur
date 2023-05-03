@@ -1,7 +1,7 @@
 pkgbase = azote
-	pkgdesc = Wallpaper & color manager for Sway, i3 and other WMs
+	pkgdesc = Wallpaper & color manager for sway, i3 and some other WMs
 	pkgver = 1.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nwg-piotr/azote
 	arch = any
 	license = GPL3
