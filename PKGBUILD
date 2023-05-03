@@ -2,7 +2,7 @@
 # Contributor: karu1 <.1me.io7@gmail.com>
 
 pkgname=rar2fs
-pkgver=1.29.5
+pkgver=1.29.6
 _unrarver=6.2.6
 pkgrel=1
 pkgdesc="Fuse file system for reading Rar archives"
