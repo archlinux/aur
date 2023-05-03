@@ -11,7 +11,7 @@ url='https://github.com/slavfox/cozette/'
 license=('custom:OFL')
 makedepends=('git' 'p7zip' 'python' 'fontforge' 'subversion')
 source=("https://github.com/slavfox/Cozette/releases/download/v.${_cozettever}/CozetteVector.ttf" "font-patcher-$_nfver::https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v$_nfver/font-patcher" "svn+https://github.com/ryanoasis/nerd-fonts/tags/v$_nfver/src/glyphs")
-sha256sums=('4fc7ec4f48eaf0046dd6989fc1ae313df3706631199e15e1583d0dbdab7b02f3' '68958b6d6ab1acf73196d3f1fa8ae3e8c49f970ba565ff47add4323628455a52' 'SKIP')
+sha256sums=('723e81c7dfeedbfa34f520b9c330d1a1e65417af4de3bac6ad43e7d03506c85c' '68958b6d6ab1acf73196d3f1fa8ae3e8c49f970ba565ff47add4323628455a52' 'SKIP')
 
 build() {
   _patcher="font-patcher-$_nfver"

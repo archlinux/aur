@@ -13,7 +13,7 @@ pkgbase = nerd-fonts-cozette-ttf
 	source = https://github.com/slavfox/Cozette/releases/download/v.1.19.2/CozetteVector.ttf
 	source = font-patcher-3.0.0::https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v3.0.0/font-patcher
 	source = svn+https://github.com/ryanoasis/nerd-fonts/tags/v3.0.0/src/glyphs
-	sha256sums = 4fc7ec4f48eaf0046dd6989fc1ae313df3706631199e15e1583d0dbdab7b02f3
+	sha256sums = 723e81c7dfeedbfa34f520b9c330d1a1e65417af4de3bac6ad43e7d03506c85c
 	sha256sums = 68958b6d6ab1acf73196d3f1fa8ae3e8c49f970ba565ff47add4323628455a52
 	sha256sums = SKIP
 
