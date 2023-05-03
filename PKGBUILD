@@ -3,7 +3,7 @@
 _pipname=pysilfont
 pkgname=python-$_pipname
 pkgver=1.5.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Python-based font utilities collection and framework'
 arch=(any)
 url="https://github.com/silnrsi/$_pipname"
@@ -25,7 +25,8 @@ _py_deps=(booleanoperations
           ufolib2)
 depends=(python
          "${_py_deps[@]/#/python-}")
-makedepends=(python-setuptools)
+makedepends=(python-{build,installer,wheel}
+             python-setuptools)
 optdepends=(fontbakery
             python-glyphconstruction
             python-palaso)
@@ -35,10 +36,10 @@ sha256sums=('04b81916d372a9300417715ffa3b9e259127babd9b78d69aecff1591942d913f')
 
 build() {
 	cd "$_archive"
-	python setup.py build
+	python -m build -wn
 }
 
 package() {
 	cd "$_archive"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer -d "$pkgdir" dist/*.whl
 }
