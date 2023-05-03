@@ -62,7 +62,7 @@
 : ${CLANGD_HOVERINHEX:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt
-pkgver=17.r10083.g7277a72b908d
+pkgver=17.r10099.g0d19739768d4
 pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
@@ -87,7 +87,7 @@ sha256sums=('SKIP'
             'bc3f392c87560c4e42d317e28d3524f8a6052efa31b6091186139d14b2a8368d'
             '9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7'
             '9bb8d1d27e3b5a184af71a5aad310da3971e77279f65d7bf804d619ce907280a'
-            '5a8a80f3489dd615bb9cc2ba3d40c43637a538923367285a7d56e21542e79cf9' # postfix-completion
+            '56b4f4360b7863f87240948ec4d99d4a32616fe70b8caca11d73af53c58ccc66' # postfix-completion
             'f719fb52edee98f54ba40786d2ecac6ef63f56797c8f52d4d7ce76a3825966eb'
             '3b3501c62982851749993a6882cab6812cead6f749832760868fd5771c426b00'
             '346483b0d5823fba409785c2df471ca8a659112d630ee66e53b1a3e36e46e981')

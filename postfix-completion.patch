@@ -116,7 +116,7 @@ index a2d523cd3e92..c50a41a7c7ba 100644
    unsigned Priority;
  
 diff --git a/clang/lib/Sema/SemaCodeComplete.cpp b/clang/lib/Sema/SemaCodeComplete.cpp
-index d0f87b0f2ab7..3b028888b4a2 100644
+index d0f87b0f2ab7..d5f8d7995e83 100644
 --- a/clang/lib/Sema/SemaCodeComplete.cpp
 +++ b/clang/lib/Sema/SemaCodeComplete.cpp
 @@ -20,6 +20,7 @@
@@ -232,7 +232,7 @@ index d0f87b0f2ab7..3b028888b4a2 100644
      // Look through protocols.
      for (auto *P : Category->protocols())
        AddObjCProperties(CCContext, P, AllowCategories, AllowNullaryMethods,
-@@ -5606,6 +5610,501 @@ Expr *unwrapParenList(Expr *Base) {
+@@ -5606,6 +5610,515 @@ Expr *unwrapParenList(Expr *Base) {
    return Base;
  }
  
@@ -505,6 +505,8 @@ index d0f87b0f2ab7..3b028888b4a2 100644
 +  if (Invalid)
 +    return;
 +  const char *ExprCode = Results.getAllocator().CopyString(ExprRef);
++  bool InParens =
++      !ExprRef.empty() && ExprRef.front() == '(' && ExprRef.back() == ')';
 +
 +  auto TypeString = [&](QualType T) {
 +    return Results.getAllocator().CopyString(T.getAsString(Policy));
@@ -525,9 +527,11 @@ index d0f87b0f2ab7..3b028888b4a2 100644
 +              Ctx.getRValueReferenceType(Base->getType().getNonReferenceType()),
 +              [&](CodeCompletionBuilder &B) {
 +                B.AddTextChunk("std::move");
-+                B.AddChunk(CodeCompletionString::CK_LeftParen);
++                if (!InParens)
++                  B.AddChunk(CodeCompletionString::CK_LeftParen);
 +                B.AddTextChunk(ExprCode);
-+                B.AddChunk(CodeCompletionString::CK_RightParen);
++                if (!InParens)
++                  B.AddChunk(CodeCompletionString::CK_RightParen);
 +              });
 +  }
 +  if (Ctx.getLangOpts().CPlusPlus11 && !BaseIsStmt) {
@@ -541,9 +545,11 @@ index d0f87b0f2ab7..3b028888b4a2 100644
 +      B.AddChunk(CodeCompletionString::CK_LeftAngle);
 +      B.AddTextChunk(TypeStr);
 +      B.AddChunk(CodeCompletionString::CK_RightAngle);
-+      B.AddChunk(CodeCompletionString::CK_LeftParen);
++      if (!InParens)
++        B.AddChunk(CodeCompletionString::CK_LeftParen);
 +      B.AddTextChunk(ExprCode);
-+      B.AddChunk(CodeCompletionString::CK_RightParen);
++      if (!InParens)
++        B.AddChunk(CodeCompletionString::CK_RightParen);
 +    });
 +  }
 +  if (Ctx.getLangOpts().CPlusPlus11 && BaseIsStmt) {
@@ -587,9 +593,11 @@ index d0f87b0f2ab7..3b028888b4a2 100644
 +          else
 +            B.AddPlaceholderChunk("type");
 +          B.AddChunk(CodeCompletionString::CK_RightAngle);
-+          B.AddChunk(CodeCompletionString::CK_LeftParen);
++          if (!InParens)
++            B.AddChunk(CodeCompletionString::CK_LeftParen);
 +          B.AddTextChunk(ExprCode);
-+          B.AddChunk(CodeCompletionString::CK_RightParen);
++          if (!InParens)
++            B.AddChunk(CodeCompletionString::CK_RightParen);
 +        });
 +      };
 +      auto AddCCast = [&]() {
@@ -642,9 +650,11 @@ index d0f87b0f2ab7..3b028888b4a2 100644
 +      AddResult("switch", QualType(), [&](CodeCompletionBuilder &B) {
 +        B.AddTextChunk("switch");
 +        B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
-+        B.AddChunk(CodeCompletionString::CK_LeftParen);
++        if (!InParens)
++          B.AddChunk(CodeCompletionString::CK_LeftParen);
 +        B.AddTextChunk(ExprCode);
-+        B.AddChunk(CodeCompletionString::CK_RightParen);
++        if (!InParens)
++          B.AddChunk(CodeCompletionString::CK_RightParen);
 +        B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
 +        B.AddChunk(CodeCompletionString::CK_LeftBrace);
 +        B.AddChunk(CodeCompletionString::CK_VerticalSpace);
@@ -681,9 +691,11 @@ index d0f87b0f2ab7..3b028888b4a2 100644
 +                  [&](CodeCompletionBuilder &B) {
 +                    B.AddTextChunk("std::");
 +                    B.AddTextChunk(Name);
-+                    B.AddChunk(CodeCompletionString::CK_LeftParen);
++                    if (!InParens)
++                      B.AddChunk(CodeCompletionString::CK_LeftParen);
 +                    B.AddTextChunk(ExprCode);
-+                    B.AddChunk(CodeCompletionString::CK_RightParen);
++                    if (!InParens)
++                      B.AddChunk(CodeCompletionString::CK_RightParen);
 +                  });
 +      };
 +      AddBlock("begin");
@@ -696,7 +708,8 @@ index d0f87b0f2ab7..3b028888b4a2 100644
 +      AddResult(Name, QualType(), [&](CodeCompletionBuilder &B) {
 +        B.AddTextChunk(Name);
 +        B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
-+        B.AddChunk(CodeCompletionString::CK_LeftParen);
++        if (!InParens)
++          B.AddChunk(CodeCompletionString::CK_LeftParen);
 +        if (VarType) {
 +          B.AddTextChunk(VarType);
 +          B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
@@ -718,7 +731,8 @@ index d0f87b0f2ab7..3b028888b4a2 100644
 +          else
 +            B.AddTextChunk("0");
 +        }
-+        B.AddChunk(CodeCompletionString::CK_RightParen);
++        if (!InParens)
++          B.AddChunk(CodeCompletionString::CK_RightParen);
 +        B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
 +        B.AddChunk(CodeCompletionString::CK_LeftBrace);
 +        B.AddChunk(CodeCompletionString::CK_VerticalSpace);
@@ -734,7 +748,7 @@ index d0f87b0f2ab7..3b028888b4a2 100644
  } // namespace
  
  void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
-@@ -5613,10 +6112,11 @@ void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
+@@ -5613,10 +6126,11 @@ void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
                                             SourceLocation OpLoc, bool IsArrow,
                                             bool IsBaseExprStatement,
                                             QualType PreferredType) {
@@ -748,7 +762,7 @@ index d0f87b0f2ab7..3b028888b4a2 100644
  
    ExprResult ConvertedBase = PerformMemberExprBaseConversion(Base, IsArrow);
    if (ConvertedBase.isInvalid())
-@@ -5647,6 +6147,10 @@ void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
+@@ -5647,6 +6161,10 @@ void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
                          CodeCompleter->getCodeCompletionTUInfo(), CCContext,
                          &ResultBuilder::IsMember);
  
@@ -759,7 +773,7 @@ index d0f87b0f2ab7..3b028888b4a2 100644
    auto DoCompletion = [&](Expr *Base, bool IsArrow,
                            std::optional<FixItHint> AccessOpFixIt) -> bool {
      if (!Base)
-@@ -5926,8 +6430,7 @@ void Sema::CodeCompleteCase(Scope *S) {
+@@ -5926,8 +6444,7 @@ void Sema::CodeCompleteCase(Scope *S) {
  
      Expr *CaseVal = Case->getLHS()->IgnoreParenCasts();
      if (auto *DRE = dyn_cast<DeclRefExpr>(CaseVal))
@@ -769,7 +783,7 @@ index d0f87b0f2ab7..3b028888b4a2 100644
          // We look into the AST of the case statement to determine which
          // enumerator was named. Alternatively, we could compute the value of
          // the integral constant expression, then compare it against the
-@@ -8145,11 +8648,10 @@ void Sema::CodeCompleteObjCInstanceMessage(Scope *S, Expr *Receiver,
+@@ -8145,11 +8662,10 @@ void Sema::CodeCompleteObjCInstanceMessage(Scope *S, Expr *Receiver,
        return;
      RecExpr = Conv.get();
    }
@@ -785,7 +799,7 @@ index d0f87b0f2ab7..3b028888b4a2 100644
  
    // If we're messaging an expression with type "id" or "Class", check
    // whether we know something special about the receiver that allows
-@@ -9980,8 +10482,7 @@ void Sema::CodeCompleteIncludedFile(llvm::StringRef Dir, bool Angled) {
+@@ -9980,8 +10496,7 @@ void Sema::CodeCompleteIncludedFile(llvm::StringRef Dir, bool Angled) {
    };
  
    // Helper: scans IncludeDir for nice files, and adds results for each.
