@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-icon-picker')
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK icon picker with textual search"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/nwg-icon-picker"
