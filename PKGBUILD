@@ -2,27 +2,24 @@
 
 _githubuser=gwenhael-le-moine
 _githubrepo=x48ng
-_gitcommit=1bdffaf18c8279089ff50a67ed09252263dc7c73
+_gitcommit=5322be982ba48ac71f308de0e303393d1ce8cb32
 
 pkgname=x48ng-git
-pkgver=0.9.10.r1.1bdffaf
+pkgver=0.9.10.r2.5322be9
 pkgrel=1
 pkgdesc='A reboot of the x48 HP 48 emulator'
 arch=('any')
 url="https://github.com/${_githubuser}/${_githubrepo}"
 license=('GPL2')
-depends=('readline' 'libxext' 'xterm')
+depends=('readline' 'libxext' 'xterm' 'xorg-mkfontscale' 'xorg-fonts-misc')
 makedepends=('git')
 install="${pkgname}.install"
-provides=('x48' 'checkrom' 'dump2rom' 'mkcard')
-source=("git+https://github.com/${_githubuser}/${_githubrepo}.git#commit=${_gitcommit}"
-        'patch-desktop-file-01')
-sha256sums=('SKIP'
-            'e18c85ecf9d451e77a6ea764e356182bc6af11c46a91ff28b0d48cb8d8b0c644')
+conflicts=('x48ng')
+source=("git+https://github.com/${_githubuser}/${_githubrepo}.git#commit=${_gitcommit}")
+sha256sums=('SKIP')
 
 build() {
 	cd "${_githubrepo}"
-        patch x48ng.desktop ../patch-desktop-file-01
 	make
 }
 
