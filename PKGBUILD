@@ -1,38 +1,34 @@
-# Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
+# Maintainer: éclairevoyant
 
-pkgname=tty-clock-git
-_pkgname="tty-clock"
-pkgver=181.9e00c32
+_pkgname=tty-clock
+pkgname="$_pkgname-git"
+pkgver=2.3.r40.f2f847c
 pkgrel=1
-pkgdesc="Analog clock in ncurses."
-arch=('i686' 'x86_64' 'armv6h')
-url="http://github.com/xorg62/tty-clock"
-license=('BSD')
-depends=('ncurses')
-source=("git+https://git@github.com/xorg62/tty-clock.git")
-md5sums=("SKIP")
+epoch=1
+pkgdesc="Analog clock in ncurses"
+arch=(i686 x86_64)
+url="https://github.com/xorg62/$_pkgname"
+license=(BSD)
+depends=(glibc ncurses)
+makedepends=(git)
+source=("git+$url.git")
+b2sums=('SKIP')
 provides=($_pkgname)
 conflicts=($_pkgname)
 
 pkgver() {
-  cd "$srcdir/${_pkgname}"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
-
-prepare() {
-  cd "$srcdir/$_pkgname"
-  sed -i 's/CFLAGS ?=/CFLAGS +=/' Makefile
-  sed -i 's/LDFLAGS ?=/LDFLAGS +=/' Makefile
-  sed -i 's/LDFLAGS ?=/LDFLAGS +=/' Makefile
-  sed -i 's/${SRC} -o/${SRC} -lncurses -o/' Makefile
+	cd $_pkgname
+	git describe --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-  make
+	cd $_pkgname
+	make
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-  install -Dm 755 $_pkgname "$pkgdir/usr/bin/$_pkgname"
-} 
+	cd $_pkgname
+	install -Dm755 $_pkgname -t "$pkgdir/usr/bin/"
+	install -Dm644 $_pkgname.1 -t "$pkgdir/usr/share/doc/$_pkgname/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
+}
