@@ -1,10 +1,10 @@
-# Maintainer: Nello De Gregoris <marshnelloosu@gmail.com>
+# Maintainer: NelloKudo <marshnelloosu@gmail.com>
 
 pkgname=altlinux-git
 _spkgname=AltLinux
 _lpkgname=altlinux
-pkgver=v0.4.2.1
-pkgrel=2
+pkgver=v0.4.2.2
+pkgrel=1
 pkgdesc="GUI for AltServer-Linux"
 arch=('x86_64')
 url="https://github.com/i-love-altlinux/AltLinux"
@@ -22,7 +22,6 @@ depends=('binutils'
          'avahi'
          'zlib'
          'unzip')
-makedepends=('pyinstaller')
 source=('git+https://github.com/i-love-altlinux/AltLinux'
         "${_lpkgname}.desktop"
         "${_lpkgname}.png")
@@ -30,9 +29,19 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP')
 
+prepare() {
+    # "Hacky" way to install PyInstaller since the AUR package
+    # takes hours due to its check() function and various pytests.
+    # Read more at here: https://github.com/samarthj/AUR/issues/8
+
+    # Installing PyInstaller as user from pip.
+    # That's to prevent conflicts with package manager
+    pip install --upgrade
+    pip install pyinstaller
+}
+
 build() {
     cd "$srcdir"/"$_spkgname"
-    
     pyinstaller altlinux.spec --clean
 }
 
@@ -46,9 +55,10 @@ package() {
     install -Dm 644 -o root "${srcdir}"/"${_lpkgname}".png -t "${pkgdir}/usr/share/icons"
 
     # Install files
-    mkdir -p "${pkgdir}"/usr/lib/altlinux
-
+    mkdir -p "${pkgdir}"/usr/lib/
     cp -R resources dist/altlinux
     cp -R dist/altlinux "${pkgdir}"/usr/lib/
-    chmod -R 0775 "${pkgdir}"/usr/lib/altlinux
+
+    # Setting permissions
+    chown -R $USER "${pkgdir}"/usr/lib/altlinux
 }

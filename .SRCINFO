@@ -1,11 +1,10 @@
 pkgbase = altlinux-git
 	pkgdesc = GUI for AltServer-Linux
-	pkgver = v0.4.2.1
-	pkgrel = 2
+	pkgver = v0.4.2.2
+	pkgrel = 1
 	url = https://github.com/i-love-altlinux/AltLinux
 	arch = x86_64
 	license = GPL
-	makedepends = pyinstaller
 	depends = binutils
 	depends = wget
 	depends = curl
