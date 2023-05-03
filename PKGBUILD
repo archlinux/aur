@@ -1,7 +1,7 @@
 # Maintainer: Bao Trinh <qubidt@gmail.com>
 
 pkgname=unmake
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="a makefile linter"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/mcandre/unmake"
 license=('BSD')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('cd44125874e99766850d3a2031b201f152d917de9071d8f55a391a673c24f615')
+sha256sums=('b1f3a685f3e2e319e2928428b124a6963c670f5ed6480d6508677a317b684569')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
