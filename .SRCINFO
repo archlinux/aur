@@ -1,14 +1,14 @@
 pkgbase = python-dvc-objects
 	pkgdesc = DVC objects
 	pkgver = 0.21.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iterative/dvc-objects
 	arch = any
 	license = Apache
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools-scm
 	makedepends = python-wheel
+	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-diskcache
 	depends = python-flatten-dict

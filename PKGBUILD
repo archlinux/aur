@@ -3,7 +3,7 @@
 pkgname=python-dvc-objects
 _pkgname=${pkgname#python-}
 pkgver=0.21.2
-pkgrel=1
+pkgrel=2
 pkgdesc='DVC objects'
 arch=(any)
 license=(Apache)
@@ -18,7 +18,8 @@ _pydeps=(diskcache
          typing-extensions)
 depends=(python
         "${_pydeps[@]/#/python-}")
-makedepends=(python-{build,installer} python-setuptools-scm python-wheel)
+makedepends=(python-{build,installer,wheel}
+             python-setuptools-scm)
 optdepends=('python-adlfs: azure support'
             'python-azure-identity: azure support'
             'python-knack: azure support'
