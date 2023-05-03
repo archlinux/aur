@@ -10,7 +10,8 @@ license=(BSD)
 depends=(python
          fontforge
          afdko)
-makedepends=(python-setuptools)
+makedepends=(python-{build,installer,wheel}
+             python-setuptools)
 options=(!emptydirs)
 _archive="$pkgname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz"
@@ -25,11 +26,11 @@ prepare () {
 
 build() {
 	cd "$_archive"
-	python setup.py build
+	python -m build -wn
 }
 
 package() {
 	cd "$_archive"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer -d "$pkgdir" dist/*.whl
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.txt
 }
