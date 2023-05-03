@@ -1,6 +1,6 @@
 pkgbase = python-strictdoc
 	pkgdesc = Software for writing technical requirements and specifications.
-	pkgver = 0.0.33
+	pkgver = 0.0.40
 	pkgrel = 1
 	url = https://github.com/strictdoc-project/strictdoc
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-strictdoc
 	depends = python-xlrd
 	depends = python-xlsxwriter
 	depends = uvicorn
-	source = https://files.pythonhosted.org/packages/source/s/strictdoc/strictdoc-0.0.33.tar.gz
-	sha256sums = 296e3628ae68f130164f472b160af37a02763144eb577fc0bb26bdc9d952e3b2
+	source = https://files.pythonhosted.org/packages/source/s/strictdoc/strictdoc-0.0.40.tar.gz
+	sha256sums = 6929dc52523f129e4b8f3f85199bcd577a11af5352e012ac5a057c8acabbc19c
 
 pkgname = python-strictdoc
