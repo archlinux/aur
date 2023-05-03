@@ -1,6 +1,6 @@
 pkgbase = waylyrics-git
 	pkgdesc = On screen lyrics for wayland with netease cloud music source
-	pkgver = 0.1.0_r48.g05e3546
+	pkgver = 0.1.0_r56.gc87e0fa
 	pkgrel = 1
 	url = https://github.com/poly000/waylyrics
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = waylyrics-git
 	source = waylyrics-launch
 	source = Waylyrics.desktop
 	sha256sums = SKIP
-	sha256sums = d5291658ee62ce73605b4efbe78e4f8ded359d2766cfd2cb5f7e309ca540dedf
+	sha256sums = 0726301af6d2a57ac2130319a000e32ec70f94c01fdedc78910fd0525e16a68c
 	sha256sums = 28abb9904837437faafb12c3f71f7dcd8529936309d6a797ad46915aca63d613
 
 pkgname = waylyrics-git
