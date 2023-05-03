@@ -2,9 +2,9 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-bin
-pkgver=21.0930a
-_gamefilesver=21.0715
-pkgrel=3
+pkgver=23.0501a1
+_gamefilesver=22.0909
+pkgrel=1
 pkgdesc="Rewrite of Re-Volt, popular R/C car racing game from 1999."
 url='https://rvgl.org'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
