@@ -1,10 +1,13 @@
 pkgbase = font-line
 	pkgdesc = OpenType vertical metrics reporting and font line spacing adjustment tool
 	pkgver = 3.1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/source-foundry/font-line
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-commandlines
