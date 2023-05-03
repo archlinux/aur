@@ -3,10 +3,12 @@
 __pkgname=firedragon
 _pkgname=$__pkgname-unsigned-extensions
 pkgname=$_pkgname-bin
-pkgver=112.0.2.r1
-pkgrel=1
+_pkgver=112.0.2-1
+pkgver=${_pkgver//-/.r}
+pkgrel=2
 pkgdesc="FireDragon modified to allow installation of unsigned extensions"
-arch=(x86_64)
+_arch=x86_64
+arch=($_arch)
 backup=('usr/lib/firedragon/firedragon.cfg'
   'usr/lib/firedragon/distribution/policies.json')
 license=(MPL GPL LGPL)
@@ -28,11 +30,11 @@ provides=($__pkgname)
 conflicts=($__pkgname)
 options=(!emptydirs !strip)
 install=$__pkgname.install
-source=("$_pkgname-$pkgver.tar.zst::https://git.stefanwimmer128.io/stefanwimmer128/firedragon-unsigned-extensions/-/package_files/82/download")
+source=("https://git.stefanwimmer128.io/api/v4/projects/134/packages/generic/$_pkgname/$_pkgver/$_pkgname-$_pkgver-$_arch.pkg.tar.zst")
 sha256sums=('ee1a61c13d7a93ac8f9cd3ee36d57505cb9e1bceb8d30596ab6450ce472a483d')
 
 build() {
-  rm "$_pkgname-$pkgver.tar.zst"
+  rm "$_pkgname-$_pkgver-$_arch.pkg.tar.zst"
   rm .BUILDINFO .INSTALL .MTREE .PKGINFO
 }
 
