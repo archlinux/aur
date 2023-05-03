@@ -1,0 +1,12 @@
+pkgbase = eks-node-viewer-bin
+	pkgdesc = A tool to visualize dynamic node usage within an AWS EKS Kubernetes cluster
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/awslabs/eks-node-viewer
+	arch = x86_64
+	license = Apache
+	depends = glibc
+	source_x86_64 = eks-node-viewer-0.2.1-x86_64::https://github.com/awslabs/eks-node-viewer/releases/download/v0.2.1/eks-node-viewer_Linux_x86_64
+	sha256sums_x86_64 = 4b11e608a76f290fdc01525ed38d02ae06781f1d332b596178777d1e1c89d8ee
+
+pkgname = eks-node-viewer-bin
