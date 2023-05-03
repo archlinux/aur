@@ -3,7 +3,7 @@
 pkgname=python-midiutil
 _reponame=MIDIUtil
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Library to work with MIDI files"
 url="https://pypi.org/project/${_reponame}/"
 arch=(any)
