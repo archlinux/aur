@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname='linux-xanmod-bin'
-pkgver='6.3.0'
+pkgver='6.3.1'
 pkgrel="1"
 psabi='x64v1'
 pkgdesc='The Linux kernel, modules and headers with Xanmod patches - Prebuilt version'
@@ -30,8 +30,8 @@ validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('256a266c38c66ae3ffda71c287fcbee292054bd544c084a3c9eb0fd35da8e1d0'
-            'fa4dbc4fb1bf04f84a7b8af06e60d0c457dd21888c26f06e0a86ec138f90c56d')
+sha256sums=('1139a7221931c522c87452232c431a5efe5aed1de969ca86b8e3ab9c63c40bd4'
+            '744af7a70b3d93c3949688cb4cd379daac4f489910cfa5ae1097c1ddd68a0ad8')
 _file_image="${_url_image##*/}"
 _file_headers="${_url_headers##*/}"
 prepare() {
