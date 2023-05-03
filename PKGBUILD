@@ -2,11 +2,12 @@
 
 pkgname=sequoia-wot
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An implementation of OpenPGP's web of trust"
 arch=(x86_64)
 url="https://gitlab.com/sequoia-pgp/sequoia-wot"
 license=(GPL2)
+groups=(sequoia)
 depends=(
   gcc-libs
   glibc
