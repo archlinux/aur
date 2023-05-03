@@ -1,11 +1,12 @@
 pkgbase = pubs
 	pkgdesc = Your bibliography on the command line
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pubs/pubs
 	arch = any
 	license = LGPL-3.0
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python
 	depends = python-configobj
 	depends = python-bibtexparser

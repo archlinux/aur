@@ -2,13 +2,13 @@
 pkg="pubs"
 pkgname="$pkg"
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Your bibliography on the command line"
 arch=(any)
 url="https://github.com/pubs/pubs"
 license=('LGPL-3.0')
 depends=("python" "python-configobj" "python-bibtexparser" "python-beautifulsoup4" "python-yaml" "python-feedparser" "python-dateutil" "python-requests")
-makedepends=("git")
+makedepends=("git" "python-setuptools")
 provides=("pubs")
 source=("https://github.com/pubs/pubs/archive/v$pkgver.tar.gz")
 sha256sums=('754a6033510f145702eeab4e99d71ed024f9e73245e2a71821692a9a32075b2b')
