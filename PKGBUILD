@@ -4,7 +4,7 @@
 pkgname=python-syncedlyrics
 _pkgname=syncedlyrics
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Get an LRC format (synchronized) lyrics for your music'
 arch=('any')
 url='https://github.com/rtcq/syncedlyrics'
