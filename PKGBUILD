@@ -7,19 +7,19 @@ pkgver=2.1.1.1
 pkgrel=2
 pkgdesc="Savage 2: A Tortured Soul is an fantasy themed online multiplayer team-based FPS/RTS/RPG hybrid. Completely free as of December 2008."
 arch=('x86_64')
-url='http://savage2.com/'
+url='https://savage2.com/'
 license=('custom: "Savage 2"')
-depends=('mesa' 'libxml2' 'glu')
+depends=('mesa' 'libxml2' 'glu' 'ncurses5-compat-libs')
 makedepends=('unzip')
 install=savage2.install
 source=("https://savage2.net/downloads/Savage2-${pkgver}-linux-x64-installer.run" \
 'savage2.launcher' 'savage2.desktop' 's2editor.desktop' 's2mviewer.desktop' 'savage2.sh')
-md5sums=('4826a5db0a6f8c6e8add2176c11c49e2'
-         'f08e9499ff5f10b5e5e98454aa595db5'
-         'a6957bb87da35d58df86d84a6dca1479'
-         'b082a33fd1a580d3c70d80bbbfb0bffe'
-         '177155e2c2c4e1382ce9b1343e26b5c7'
-         '4acf06412dbd5ebbec89d1c5f2c99b4f')
+sha512sums=('9a568b5886ac0c86cd5132ab04d35ed8715f029a00a072eed5916e75153fcd0fe6b25b75995f44aa0585569358442f1a592f6637dff6280d5519e8a7b354f8f7'
+            '5beba717e612dba323bacedb73f2cddd3844f51fc5d1f93f490b3d8e1597e6f3f9e1606e22a6e2dc9d3555cbc85c09cc762f9a2a4036e9f9f245e11c937f5453'
+            '4f4fc1ec350f6ce4ddcc9f32ae251e151f315df3a8964ec1a900fbbf22376a488e8bd4bd87e86889c93127919c9298362a1f979418a15653925766a6dc6b96c7'
+            'e5b7353fdf13bcb8bb5cb0a77757ed35bf19375c0ae5fd6341c65a28d3282eeeb60ff6471f6b9da5923c20d850bfcd20967f2636f1b100b427f2c087ee580553'
+            'e17db181b90d8fb30c106f3b745d0251dccfea04c3c67d7aa4e247eb069ca7acc71471a46581f50ced812bcf6ccbc72f8e3f109d170d4d7f44f369abe684470a'
+            'cd64032cb56bac763cb7f19112b8f86f1e0a7439797f1e955f73b96ce2f9b874cfc68b4e3f7bcf06f8dddd9481a65cc7699627fd3014984702d129e9b017b314')
 PKGEXT='.pkg.tar'
 
 package() {
