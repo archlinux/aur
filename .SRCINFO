@@ -1,11 +1,10 @@
 pkgbase = python-imantics
 	pkgdesc = Reactive python package for managing, creating and visualizing different deep-learning image annotation formats
 	pkgver = 0.1.12
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/jsbroks/imantics
 	arch = any
 	license = MIT
-	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python-opencv
 	depends = python-lxml
