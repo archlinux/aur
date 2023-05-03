@@ -12,7 +12,7 @@ license=('BSD-3-Clause')
 provides=("${pkgname}")
 install=
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BishopFox/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('587fe4a52764675c8f6c3c94a271342a6d6789cad7c5f45edd1c71d41a771ae2')
+sha256sums=('43635b0f77fbdfc4ac66232fff761a4d4ce6ecaf572fe456c09e9929b61ec59a')
 
 build() {
 	cd "$srcdir/${pkgname}-${pkgver}"
