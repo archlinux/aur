@@ -1,4 +1,5 @@
-# Maintainer: A.T.W.A. <arch.atwa@gmail.com>
+# Maintainer: Fredrick R. Brennan <copypaste@kittens.ph>
+# Contributor: A.T.W.A. <arch.atwa@gmail.com>
 # Contributor: Janne Heß <jannehess@gmail.com>
 
 pkgname=archivemount
@@ -9,16 +10,26 @@ arch=('i686' 'x86_64')
 url="https://www.cybernoia.de/software/archivemount.html"
 license=('GPL2')
 depends=('fuse' 'libarchive')
-source=("https://www.cybernoia.de/software/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('c529b981cacb19541b48ddafdafb2ede47a40fcaf16c677c1e2cd198b159c5b3')
+makedepends=('automake' 'git' 'gcc')
+_githash=78c306538065de9b14f48cfc2024f50f843d3b29
+_gituser=cybernoid
+source=("https://github.com/$_gituser/$pkgname/archive/$_githash.zip")
+sha256sums=('SKIP')
+
+prepare() {
+    cd "${pkgname}-${_githash}"
+    autoreconf -f || true
+    automake -f --add-missing
+    autoreconf -f
+}
 
 build() {
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgname}-${_githash}"
     ./configure --prefix=/usr
     make
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgname}-${_githash}"
     make DESTDIR="${pkgdir}" install
 }

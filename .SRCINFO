@@ -6,10 +6,12 @@ pkgbase = archivemount
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = automake
+	makedepends = git
+	makedepends = gcc
 	depends = fuse
 	depends = libarchive
-	source = https://www.cybernoia.de/software/archivemount/archivemount-0.9.1.tar.gz
-	sha256sums = c529b981cacb19541b48ddafdafb2ede47a40fcaf16c677c1e2cd198b159c5b3
+	source = https://github.com/cybernoid/archivemount/archive/78c306538065de9b14f48cfc2024f50f843d3b29.zip
+	sha256sums = SKIP
 
 pkgname = archivemount
-
