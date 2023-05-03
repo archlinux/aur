@@ -1,7 +1,7 @@
 pkgbase = powerpc64-linux-gnu-glibc
 	pkgdesc = GNU C Library PPC64 target
 	pkgver = 2.37
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnu.org/software/libc/
 	arch = any
 	license = GPL
