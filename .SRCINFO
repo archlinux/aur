@@ -1,6 +1,6 @@
 pkgbase = openeb-git
 	pkgdesc = Open source SDK for event based cameras by Prophesee
-	pkgver = r90.ea2cf58
+	pkgver = r91.09c57ca
 	pkgrel = 1
 	url = https://github.com/prophesee-ai/openeb
 	arch = any
@@ -15,11 +15,9 @@ pkgbase = openeb-git
 	depends = hdf5
 	depends = ffmpeg
 	depends = openscenegraph
-	depends = cuda
 	depends = libcanberra
+	optdepends = cuda: machine learning samples
 	source = openeb::git+https://github.com/prophesee-ai/openeb
-	source = cuda.patch
 	sha256sums = SKIP
-	sha256sums = f0cc6beff220d69e629d01ab84923cb3abc895a4df716dd0a9a07a1c140800bc
 
 pkgname = openeb-git
