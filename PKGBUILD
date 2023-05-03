@@ -1,9 +1,9 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=opm-grid
 _dunever=2.9.0
-pkgver=2022.10
+pkgver=2023.04
 pkgrel=1
-pkgdesc="DUNE grid implementations for reservoir simulation"
+pkgdesc="DUNE module supporting grids in a corner-point format"
 arch=(x86_64)
 url="https://github.com/OPM/${pkgname}"
 license=(GPL3)
@@ -12,7 +12,7 @@ makedepends=(cppcheck doxygen graphviz)
 optdepends=('man-db: manual pages for grdecl2vtu and mirror_grid')
 provides=('grdecl2vtu' 'mirror_grid')
 source=(${pkgname}-release-${pkgver}-final.tar.gz::${url}/archive/release/${pkgver}/final.tar.gz)
-sha512sums=('72ac06ab951f5a9f28307692ae2dffc10f6ab546ce830822c4ecead7e9b7d8e5678d4c2138659a1e7570353aeb95923c2ccfbb673905d56d7892c875439a247e')
+sha512sums=('48266115add721f754d09ff8803751844220be7794b4849ca348692e566cd317c88d63f4f05625415651ce50dd931967c4cefa678410fd5fc2e6c8231d320669')
 
 build() {
   cmake \
@@ -29,7 +29,6 @@ build() {
     -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE \
     -DUSE_MPI=1 \
     -DBUILD_EXAMPLES=OFF \
-    -DBUILD_TESTING=OFF \
     -Wno-dev
   cmake --build build-cmake --target all
 }
