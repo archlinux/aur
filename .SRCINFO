@@ -1,7 +1,7 @@
 pkgbase = python-collidoscope
 	pkgdesc = brute force detection of glyph collisions
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/simoncozens/collidoscope
 	arch = any
 	license = MIT
