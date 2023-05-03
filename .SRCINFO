@@ -1,0 +1,12 @@
+pkgbase = dipc
+	pkgdesc = Convert your favorite images and wallpapers with your favorite color palettes/themes
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/doprz/dipc
+	arch = any
+	license = MIT
+	makedepends = cargo
+	source = dipc-1.0.0.tar.gz::https://github.com/doprz/dipc/archive/v1.0.0.tar.gz
+	sha256sums = dd98bf2eea8e97dfaeb8d4e0a991a732e35bf71e1b9bdf0045fdad80e0c0d319
+
+pkgname = dipc
