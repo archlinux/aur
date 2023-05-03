@@ -1,7 +1,7 @@
 pkgbase = nwg-shell
-	pkgdesc = nwg-shell meta-package and installer
+	pkgdesc = nwg-shell meta-package
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nwg-piotr/nwg-shell
 	arch = x86_64
 	license = MIT

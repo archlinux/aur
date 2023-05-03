@@ -1,8 +1,8 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-shell')
 pkgver=0.4.3
-pkgrel=1
-pkgdesc="nwg-shell meta-package and installer"
+pkgrel=2
+pkgdesc="nwg-shell meta-package"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/nwg-shell"
 license=('MIT')
