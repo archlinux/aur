@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-shell-config')
 pkgver=0.4.20
-pkgrel=1
+pkgrel=2
 pkgdesc="nwg-shell configuration utility"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/nwg-shell-config"
