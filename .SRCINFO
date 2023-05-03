@@ -1,0 +1,13 @@
+pkgbase = hare-ev
+	pkgdesc = Event loop for Hare
+	pkgver = r42.c585f01
+	pkgrel = 1
+	url = https://git.sr.ht/~sircmpwn/hare-ev
+	arch = any
+	license = MPL2
+	makedepends = git
+	depends = hare
+	source = hare-ev::git+https://git.sr.ht/~sircmpwn/hare-ev#commit=c585f01f4d13a25edb62477c07fdf32451417fee
+	b2sums = SKIP
+
+pkgname = hare-ev
