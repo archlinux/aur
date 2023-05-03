@@ -1,14 +1,14 @@
 pkgbase = python-dvc-data
 	pkgdesc = DVC’s data management subsystem
 	pkgver = 0.47.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iterative/dvc-data
 	arch = any
 	license = Apache
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools-scm
 	makedepends = python-wheel
+	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-dictdiffer
 	depends = python-dvc-objects
