@@ -2,7 +2,7 @@
 
 _plug=havsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=33.125.g13f8f2c
+pkgver=33.128.gc218a82
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}. (GIT Version)"
 arch=('any')
@@ -11,6 +11,7 @@ license=('GPL')
 depends=('vapoursynth-plugin-adjust-git'
          'vapoursynth-plugin-mvsfunc-git'
          'vapoursynth-plugin-nnedi3_resample-git'
+         'vapoursynth-plugin-vsrgtools-git'
          'vapoursynth-plugin-vstools-git'
          #
          'vapoursynth-plugin-addgrain-git'
@@ -26,7 +27,7 @@ depends=('vapoursynth-plugin-adjust-git'
          'vapoursynth-plugin-eedi3m-git'
          'vapoursynth-plugin-fft3dfilter-git'
          'vapoursynth-plugin-fluxsmooth'
-         'vapoursynth-plugin-f3kdb-git'
+         'vapoursynth-plugin-neo_f3kdb-git'
          'vapoursynth-plugin-hqdn3d-git'
          'vapoursynth-plugin-knlmeanscl-git'
          'vapoursynth-plugin-misc-git'

@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-havsfunc-git
 	pkgdesc = Plugin for Vapoursynth: havsfunc. (GIT Version)
-	pkgver = 33.125.g13f8f2c
+	pkgver = 33.128.gc218a82
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=166582
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = vapoursynth-plugin-havsfunc-git
 	depends = vapoursynth-plugin-adjust-git
 	depends = vapoursynth-plugin-mvsfunc-git
 	depends = vapoursynth-plugin-nnedi3_resample-git
+	depends = vapoursynth-plugin-vsrgtools-git
 	depends = vapoursynth-plugin-vstools-git
 	depends = vapoursynth-plugin-addgrain-git
 	depends = vapoursynth-plugin-awarpsharp2-git
@@ -25,7 +26,7 @@ pkgbase = vapoursynth-plugin-havsfunc-git
 	depends = vapoursynth-plugin-eedi3m-git
 	depends = vapoursynth-plugin-fft3dfilter-git
 	depends = vapoursynth-plugin-fluxsmooth
-	depends = vapoursynth-plugin-f3kdb-git
+	depends = vapoursynth-plugin-neo_f3kdb-git
 	depends = vapoursynth-plugin-hqdn3d-git
 	depends = vapoursynth-plugin-knlmeanscl-git
 	depends = vapoursynth-plugin-misc-git
