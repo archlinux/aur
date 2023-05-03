@@ -1,6 +1,6 @@
 pkgbase = emacs-lucid
 	pkgdesc = The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)
-	pkgver = 28.1
+	pkgver = 28.2
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/emacs.html
 	arch = x86_64
@@ -13,20 +13,20 @@ pkgbase = emacs-lucid
 	depends = hicolor-icon-theme
 	depends = jansson
 	depends = lcms2
-	depends = libgccjit
 	depends = librsvg
 	depends = libxfixes
 	depends = libxinerama
 	depends = libxrandr
 	depends = m17n-lib
+	depends = xaw3d
 	optdepends = desktop-file-utils
 	provides = emacs=28
 	conflicts = emacs
-	options = debug
-	source = ftp://ftp.gnu.org/gnu/emacs/emacs-28.1.tar.xz
-	source = ftp://ftp.gnu.org/gnu/emacs/emacs-28.1.tar.xz.sig
+	source = ftp://ftp.gnu.org/gnu/emacs/emacs-28.2.tar.xz
+	source = ftp://ftp.gnu.org/gnu/emacs/emacs-28.2.tar.xz.sig
 	validpgpkeys = 17E90D521672C04631B1183EE78DAE0F3115E06B
-	sha256sums = 28b1b3d099037a088f0a4ca251d7e7262eab5ea1677aabffa6c4426961ad75e1
+	validpgpkeys = CEA1DE21AB108493CC9C65742E82323B8F4353EE
+	sha256sums = ee21182233ef3232dc97b486af2d86e14042dbb65bbc535df562c3a858232488
 	sha256sums = SKIP
 
 pkgname = emacs-lucid

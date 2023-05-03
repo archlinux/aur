@@ -1,4 +1,5 @@
-# Maintainer: Jonathan Kotta <jpkotta AT gmail DOT com>
+# Maintainer: Jack Kamm <jackkamm AT gmail DOT com>
+# Contributor: Jonathan Kotta <jpkotta AT gmail DOT com>
 # Contributor: megadriver <megadriver at gmx dot com>
 # Contributor: Juergen Hoetzel <juergen@archlinux.org>
 # Contributor: Renchi Raju <renchi@green.tam.uiuc.edu>
@@ -26,6 +27,7 @@ depends=(
   libxinerama
   libxrandr
   m17n-lib
+  xaw3d
 )
 optdepends=(desktop-file-utils)
 conflicts=(emacs)
@@ -47,7 +49,8 @@ build() {
 
  ./configure \
       --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib --localstatedir=/var \
-      --with-x-toolkit=lucid --with-xft --without-gconf --without-gsettings \
+      --with-x-toolkit=lucid --with-xft --with-xaw3d \
+      --without-gconf --without-gsettings \
       --with-modules \
       --program-transform-name='s/^ctags$/ctags.emacs/'
 
