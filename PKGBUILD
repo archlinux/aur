@@ -8,7 +8,7 @@
 pkgbase=pagure
 pkgname=("$pkgbase" "$pkgbase-apache" "$pkgbase-mariadb" "$pkgbase-postgresql" "$pkgbase-sqlite")
 pkgver=5.13.3
-pkgrel=0.2
+pkgrel=0.3
 pkgdesc='A git-centered forge based on python using pygit2'
 arch=(any)
 url="https://pagure.io/$pkgbase"
@@ -50,7 +50,8 @@ depends=(git
          "${_pydeps[@]/#/python-}"
          redis)
 optdepends=('clamav: Scan uploaded attachments')
-makedepends=(python-setuptools)
+makedepends=(python-{build,installer,wheel}
+             python-setuptools)
 _archive="$pkgname-$pkgver"
 source=("https://releases.pagure.org/$pkgbase/$_archive.tar.gz")
 sha256sums=('f684d8193d4c4cf637b465c80cbfece6eb2b1646df3ec4f993adf75ea78d5a1a')
@@ -73,7 +74,7 @@ prepare() {
 
 build() {
 	cd "$_archive"
-	python setup.py build
+	python -m build -wn
 }
 
 check() {
@@ -86,7 +87,7 @@ package_pagure() {
 	backup=("etc/$pkgbase/alembic.ini"
 			"etc/$pkgbase/pagure.cfg")
 	cd "$_archive"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer -d "$pkgdir" dist/*.whl
 	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgbase/" {README,UPGRADING}.rst
 	install -Dm644 -T "files/pagure.cfg.sample" "$pkgdir/etc/$pkgbase/pagure.cfg"
 	install -Dm644 -t "$pkgdir/etc/$pkgbase/" "files/alembic.ini"
