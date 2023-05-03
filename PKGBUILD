@@ -2,7 +2,7 @@
 
 _pkgname=ppx_yojson_conv_lib
 pkgname=ocaml-${_pkgname}
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="Runtime lib for ppx_yojson_conv"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('git' 'dune>=2.0.0')
 url="https://github.com/janestreet/ppx_yojson_conv_lib"
 license=('MIT')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('2519d9bf64fff7715348571f824c7aa1a4251594c6104ce527afe19e481f9a6f')
+sha256sums=('7084306f4d28df9cadb38690a2e788ef51b20a3362d60f83b85c1a210026c0a1')
 options=('!strip')
 provides=('ocaml-ppx_yojson_conv_lib')
 conflicts=('ocaml-ppx_yojson_conv_lib')
