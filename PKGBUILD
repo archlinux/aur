@@ -1,7 +1,7 @@
 # Maintainer: Alex Hirzel <alex at hirzel period us>
 
 pkgname=mitsuba3-git
-pkgver=3.3.0.r2.gede09ae5
+pkgver=3.3.0.r6.g8d6cba1e
 pkgrel=1
 pkgdesc="A Retargetable Forward and Inverse Renderer"
 arch=('x86_64')
@@ -56,6 +56,9 @@ md5sums=(
 	'0f37038218fccc7f08e718f95d150213'
 	'1e1daddd0a6431bb524402eedc8d51c7'
 )
+
+# for debugging
+#OPTIONS=(!strip)
 
 pkgver() {
 	git -C "$srcdir/${pkgname%-git}" describe --long --tags --always | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -155,6 +158,14 @@ package() {
 	for so in *.so plugins/*.so; do
 		install -Dm755 "$so" "$pkglib/$so"
 	done
+
+	# install headers
+	mkdir -p "$pkgusr/include/$pkgname"
+	cp -R "$srcdir/mitsuba3/include/mitsuba" "$pkgusr/include/$pkgname/"
+	cp -R "$srcdir/mitsuba3/ext/drjit/include/drjit" "$pkgusr/include/$pkgname/"
+	cp -R "$srcdir/mitsuba3/ext/drjit/ext/drjit-core/include/drjit-core" "$pkgusr/include/$pkgname/"
+	cp -R "$srcdir/mitsuba3/ext/tinyformat/tinyformat.h" "$pkgusr/include/$pkgname/"
+	install -Dm644 "$srcdir/build/include/mitsuba/core/config.h" "$pkgusr/include/$pkgname/mitsuba/core/config.h"
 
 	# install data (mitsuba searches for it here by default)
 	cp -R "$srcdir/build/data" "$pkgusr/lib/$pkgname/data"
