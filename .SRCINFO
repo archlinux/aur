@@ -1,7 +1,7 @@
 pkgbase = platypush
 	pkgdesc = Universal multi-platform command executor and automation manager
 	pkgver = 0.24.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.platypush.tech/platypush/platypush
 	arch = any
 	license = MIT
@@ -25,6 +25,7 @@ pkgbase = platypush
 	depends = python-marshmallow
 	depends = python-pytz
 	depends = python-magic
+	depends = python-marshmallow-dataclass
 	optdepends = python-paho-mqtt: MQTT integrations support
 	optdepends = python-pybluez: Bluetooth support
 	optdepends = python-gattlib: Low-energy Bluetooth devices support

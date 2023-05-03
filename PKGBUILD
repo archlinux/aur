@@ -2,12 +2,12 @@
 
 pkgname=platypush
 pkgver=0.24.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal multi-platform command executor and automation manager"
 arch=('any')
 license=('MIT')
 url="https://git.platypush.tech/platypush/platypush"
-depends=('python' 'python-yaml' 'redis' 'python-redis' 'python-requests' 'python-sqlalchemy' 'python-websockets' 'python-websocket-client' 'python-wheel' 'python-flask' 'python-pip' 'python-dateutil' 'python-frozendict' 'python-bcrypt' 'python-zeroconf' 'python-rsa' 'python-croniter' 'python-marshmallow' 'python-pytz' 'python-magic')
+depends=('python' 'python-yaml' 'redis' 'python-redis' 'python-requests' 'python-sqlalchemy' 'python-websockets' 'python-websocket-client' 'python-wheel' 'python-flask' 'python-pip' 'python-dateutil' 'python-frozendict' 'python-bcrypt' 'python-zeroconf' 'python-rsa' 'python-croniter' 'python-marshmallow' 'python-pytz' 'python-magic' 'python-marshmallow-dataclass')
 optdepends=('python-paho-mqtt: MQTT integrations support'
 	'python-pybluez: Bluetooth support'
 	'python-gattlib: Low-energy Bluetooth devices support'
