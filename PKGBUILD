@@ -3,7 +3,7 @@
 
 pkgname=psautohint
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 epoch=3
 pkgdesc='A standalone version of AFDKO’s autohinter'
 arch=(x86_64)
@@ -14,18 +14,19 @@ _py_deps=(fonttools
           lxml)
 depends=(python
          "${_py_deps[@]/#/python-}")
-makedepends=(python-setuptools-scm)
+makedepends=(python-{build,installer,wheel}
+             python-setuptools-scm)
 _archive="$pkgname-$pkgver"
 source=("https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$_archive.tar.gz")
 sha256sums=('d50edea8f6121c3383f0d82f881bf7a18bdd476cc2d354737672ce193c3cff7f')
 
 build() {
 	cd "$_archive"
-	python setup.py build
+	python -m build -wn
 }
 
 package() {
 	cd "$_archive"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer -d "$pkgdir" dist/*.whl
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
