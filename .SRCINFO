@@ -1,7 +1,7 @@
 pkgbase = fbreader-bin
 	pkgdesc = An e-book reader for Linux
 	pkgver = 2.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.fbreader.org/
 	arch = x86_64
 	license = unknown

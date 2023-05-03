@@ -3,7 +3,7 @@ pkgname=fbreader-bin
 _pkgname=fbreader
 pkgver=2.0.1
 _snap_ver=25
-pkgrel=2
+pkgrel=3
 pkgdesc="An e-book reader for Linux"
 arch=('x86_64')
 url="http://www.fbreader.org/"
@@ -20,7 +20,7 @@ sha256sums=('40ae8d9a1d95e24eb5ec15854f1a1c11f040b7cd546de0052a6b294849bd06bd')
 
 prepare() {
   cd $srcdir
-  unsquashfs -f ${_pkgname}-${pkgver}.snap /bin/FBReader \
+  unsquashfs -f ${_pkgname}-${pkgver}-${_snap_ver}.snap /bin/FBReader \
               /meta/gui/fbreader.desktop  /meta/gui/*.png \
               /usr/lib/libunibreak.so.1.0.1 \
               /usr/lib/$CARCH-linux-gnu/{libicui18n.so.66.1,libicuuc.so.66.1,libicudata.so.66.1}
