@@ -6,7 +6,7 @@
 # Contributor : Patrick McCarty  <pnorcks at gmail dot com>
 
 pkgname=osc
-pkgver=1.1.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Command line client for the openSUSE Build Service"
 arch=(any)
