@@ -1,6 +1,6 @@
 pkgbase = py3status-http-monitor
 	pkgdesc = Python module for py3status to monitor http services
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/mcgillij/py3status-http-monitor
 	arch = any
@@ -8,7 +8,10 @@ pkgbase = py3status-http-monitor
 	makedepends = python-setuptools
 	depends = python
 	depends = py3status
-	source = https://github.com/mcgillij/py3status-http-monitor/releases/download/0.1.4/py3status-http-monitor-0.1.4.tar.gz
-	md5sums = 666bc96b49619ca34d7b5ce82245c0dd
+	depends = python-poetry
+	depends = python-build
+	depends = python-installer
+	source = https://github.com/mcgillij/py3status-http-monitor/releases/download/0.1.5/py3status_http_monitor-0.1.5.tar.gz
+	md5sums = 13b5f03931ed4dc2ba11146c34197945
 
 pkgname = py3status-http-monitor
