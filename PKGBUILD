@@ -4,7 +4,7 @@
 
 pkgname=archivemount
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="FUSE based filesystem for mounting compressed archives"
 arch=('i686' 'x86_64')
 url="https://www.cybernoia.de/software/archivemount.html"
