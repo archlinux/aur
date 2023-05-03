@@ -12,6 +12,7 @@ pkgbase = hyprland-autoname-workspaces-git
 	depends = otf-font-awesome
 	depends = hyprland
 	depends = systemd-libs
+	optdepends = waybar-hyprland-git: waybar for hyprland
 	provides = hyprland-autoname-workspaces
 	conflicts = hyprland-autoname-workspaces
 	conflicts = hyprland-autoname-workspaces-bin
