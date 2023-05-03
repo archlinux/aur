@@ -1,5 +1,5 @@
 pkgbase = guilded_arch_electron
-	pkgdesc = Guilded (popular voice + video app) using the system provided electron for increased security and performance
+	pkgdesc = Chat for Gaming Communities using the system provided electron for increased security and performance
 	pkgver = 1.0.9196665
 	pkgrel = 1
 	url = https://www.guilded.gg/

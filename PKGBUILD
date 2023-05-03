@@ -22,7 +22,7 @@ sha512sums=('f9cc5478bbc5a58c56cf8a8b60a78399b87133d6492e34cc3a747e13135f47addf7
 prepare() {
   tar Jxvf data.tar.xz
   sed -i "s|@PKGNAME@|${_pkgname}|;s|@ELECTRON@|${_electron}|" guilded-launcher.sh
-  sed -i "s|Exec=.*|Exec=/usr/bin/$_pkgname|" usr/share/applications/guilded.desktop
+  sed -i "s|Exec=.*|Exec=/usr/bin/$_pkgname %U|" usr/share/applications/guilded.desktop
 }
 
 package() {
