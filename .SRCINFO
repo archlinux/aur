@@ -1,10 +1,13 @@
 pkgbase = python-pygtrie
 	pkgdesc = Python library implementing a trie data structure
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/pygtrie
 	arch = any
 	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
 	source = https://files.pythonhosted.org/packages/source/p/pygtrie/pygtrie-2.5.0.tar.gz
