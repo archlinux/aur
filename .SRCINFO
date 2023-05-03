@@ -1,0 +1,17 @@
+pkgbase = newitemmonitor
+	pkgdesc = 通用型上新监控器，上新时获得通知
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://fatecore.com/p/nim/
+	arch = x86_64
+	arch = aarch64
+	license = private
+	makedepends = asar
+	makedepends = npm
+	depends = electron4
+	depends = bash
+	options = !strip
+	source = http://resource.fatecore.com/nim/nim-v1.0.3-win.zip
+	sha256sums = 37aa6933e5583833448f9e9410f54d39b27b55de0e5ef4969b6047eb692c5128
+
+pkgname = newitemmonitor
