@@ -1,17 +1,28 @@
-# Maintainer: Loewetiger <loewetiger@protonmail.com>
+# Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+# Contributor: Loewetiger <loewetiger@protonmail.com>
 
-pkgname=obs-pipewire-audio-capture-bin
-pkgver=1.0.5
+pkgname=obs-pipewire-audio-capture
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='PipeWire audio capturing for OBS Studio'
 arch=('x86_64')
 url='https://github.com/dimtpap/obs-pipewire-audio-capture'
 license=('GPL2')
-depends=('pipewire' 'obs-studio>=27')
-source=($pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/linux-pipewire-audio-$pkgver.tar.gz)
-md5sums=('6a85996d86908d0a7669d44826966bc0')
+depends=('pipewire' 'obs-studio>=28')
+makedepends=('cmake')
+source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
+b2sums=('9ba8f2c70c53ac181d93a8b0544bc41dce2262c91bde309370be878af4215e290ff08159ad25c6cec6b4fbb1b391ac9bdc8daa1cca720fcc6cf2edd70e69163a')
+
+build() {
+  cd $pkgname-$pkgver
+  cmake -B build \
+    -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo
+  cd build
+  make
+}
 
 package() {
-  install -Dm 755 "${srcdir}"/linux-pipewire-audio/bin/64bit/linux-pipewire-audio.so "${pkgdir}"/usr/lib/obs-plugins/linux-pipewire-audio.so
-  install -Dm 644 "${srcdir}"/linux-pipewire-audio/data/locale/en-US.ini "${pkgdir}"/usr/share/obs/obs-plugins/linux-pipewire-audio/locale/en-US.ini
+  cd $pkgname-$pkgver/build
+  make install
 }
