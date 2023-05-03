@@ -3,7 +3,7 @@
 pkgname=python-fontfeatures
 _pyname=fontFeatures
 pkgver=1.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for manipulating OpenType font features'
 arch=(any)
 url="https://github.com/simoncozens/$_pyname"
@@ -14,9 +14,8 @@ _pydeps=(beziers
           lxml)
 depends=(python
          "${_pydeps[@]/#/python-}")
-makedepends=(python-{build,installer}
-             python-setuptools
-             python-wheel)
+makedepends=(python-{build,installer,wheel}
+             python-setuptools)
 optdepends=(python-glyphtools)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
