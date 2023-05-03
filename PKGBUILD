@@ -1,14 +1,14 @@
 # Maintainer: Fabio Manganiello <fabio@manganiello.tech>
 
 pkgname=platypush-git
-pkgver=0.24.5.r0.91d1d33a
+pkgver=0.24.5.r0.91d1d33b
 pkgrel=1
 pkgdesc="Universal multi-platform command executor and automation manager"
 arch=('any')
 license=('MIT')
 url="https://git.platypush.tech/platypush/platypush"
 makedepends=('git')
-depends=('python' 'python-yaml' 'redis' 'python-redis' 'python-requests' 'python-sqlalchemy' 'python-websockets' 'python-websocket-client' 'python-wheel' 'python-flask' 'python-pip' 'python-dateutil' 'python-frozendict' 'python-bcrypt' 'python-zeroconf' 'python-rsa' 'python-croniter' 'python-marshmallow' 'python-pytz' 'python-magic')
+depends=('python' 'python-yaml' 'redis' 'python-redis' 'python-requests' 'python-sqlalchemy' 'python-websockets' 'python-websocket-client' 'python-wheel' 'python-flask' 'python-pip' 'python-dateutil' 'python-frozendict' 'python-bcrypt' 'python-zeroconf' 'python-croniter' 'python-marshmallow' 'python-pytz' 'python-magic' 'python-marshmallow-dataclass')
 optdepends=('python-paho-mqtt: MQTT integrations support'
 	'python-pybluez: Bluetooth support'
 	'python-gattlib: Low-energy Bluetooth devices support'

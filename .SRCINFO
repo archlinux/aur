@@ -26,6 +26,7 @@ pkgbase = platypush-git
 	depends = python-marshmallow
 	depends = python-pytz
 	depends = python-magic
+	depends = python-marshmallow-dataclass
 	optdepends = python-paho-mqtt: MQTT integrations support
 	optdepends = python-pybluez: Bluetooth support
 	optdepends = python-gattlib: Low-energy Bluetooth devices support
