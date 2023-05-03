@@ -2,7 +2,7 @@
 
 pkgname=trufont
 pkgver=0.6.6
-pkgrel=2
+pkgrel=3
 pkgdesc='A streamlined and hackable font editor'
 arch=(any)
 url='https://trufont.github.io'
@@ -29,18 +29,18 @@ _pydeps=(appdirs
 depends=(python
          "${_pydeps[@]/#/python-}")
 makedepends=(git
-             python-setuptools-scm
-             python-wheel)
+             python-{build,installer,wheel}
+             python-setuptools-scm)
 _archive="$pkgname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.zip")
 sha256sums=('0264939bfeb8b9b505f8cdb653faa67332724fadfa46b2b0898fd3c78468cd82')
 
 build() {
 	cd "$_archive"
-	python setup.py build
+	python -m build -wn
 }
 
 package() {
 	cd "$_archive"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer -d "$pkgdir" dist/*.whl
 }
