@@ -1,0 +1,17 @@
+pkgbase = ummguard
+	pkgdesc = 保持软件始终运行,软件闪退后自动拉起
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://fatecore.com/p/ummguard/
+	arch = x86_64
+	arch = aarch64
+	license = PRIVATE
+	makedepends = npm
+	makedepends = asar
+	depends = electron7
+	depends = bash
+	options = !strip
+	source = https://fatecore-apps-1253910480.cos.ap-shanghai.myqcloud.com/ummguard/ummguard-1.0.3-win.zip
+	sha256sums = 058c97657c0866af241814759d627c4fad431ee309a7a354226f6fbf3be7e330
+
+pkgname = ummguard
