@@ -1,6 +1,6 @@
 _npmname='reveal-md'
 pkgname='nodejs-reveal-md'
-pkgver=5.4.1
+pkgver=5.5.0
 pkgrel=1
 pkgdesc='Get beautiful reveal.js presentations from your Markdown file'
 arch=('any')
@@ -11,7 +11,7 @@ conflicts=('reveal-md')
 makedepends=('npm')
 source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 noextract=('$_npmname-$pkgver.tgz')
-sha256sums=('388870069114d246c5d7329d237b6ef056365bc3f19e8b4b524dff80b817f6c1')
+sha256sums=('c6805b54f83d6e3bbc3ffb8cb18bb27430fe046f94ae345ba9674e83e7d51888')
 
 package() {
     npm i --cache "${srcdir}/npm-cache" --omit=dev --omit=optional --global --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
