@@ -1,7 +1,7 @@
 pkgbase = python-sfdutf7
 	pkgdesc = SFDUTF7 encoder/decoder library
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ctrlcctrlv/sfdutf7.py
 	arch = any
 	license = Apache

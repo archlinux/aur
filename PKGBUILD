@@ -3,7 +3,7 @@
 pkgname=python-sfdutf7
 _pkgname=${pkgname#python-}
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='SFDUTF7 encoder/decoder library '
 arch=(any)
 url="https://github.com/ctrlcctrlv/$_pkgname.py"
