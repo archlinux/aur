@@ -1,0 +1,5 @@
+/libcec-daemon-git/
+/src/
+/pkg/
+*.pkg.*
+*.tar.*

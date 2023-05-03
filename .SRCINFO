@@ -1,0 +1,30 @@
+pkgbase = libcec-daemon-git
+	pkgdesc = Using your TV to control your PC! Connects libcec to uinput.
+	pkgver = r72.fe9df5d
+	pkgrel = 1
+	url = https://github.com/bramp/libcec-daemon
+	arch = x86_64
+	arch = aarch64
+	license = custom:BSD-2-Clause
+	makedepends = git
+	makedepends = boost
+	depends = glibc
+	depends = gcc-libs
+	depends = libcec
+	depends = boost-libs
+	depends = log4cplus
+	backup = etc/default/libcec-daemon
+	source = libcec-daemon-git::git+https://github.com/bramp/libcec-daemon.git#branch=master
+	source = libcec-daemon.service
+	source = libcec-daemon.conf
+	source = pr32.patch::https://patch-diff.githubusercontent.com/raw/bramp/libcec-daemon/pull/32.patch
+	sha256sums = SKIP
+	sha256sums = 7e49ad4b73cb37915c756a79f237f51190b7a6ae795a29b9adff3268a138854d
+	sha256sums = 358e689c646d65da99214cbf40cec931733cbeef50e272b5cb363302a9bed138
+	sha256sums = 64320c5d1744b1dfaf21bb8cd32cc8f0fc97d83cd44e1a08eb76254bfa4d2850
+	b2sums = SKIP
+	b2sums = de47cb2c3c56dfbd23eccefc9c21fe6f81982ae52f4567dcdab2ca3a036dc002452a8b516bf0522f2be14b5cda65b318de66cc4c730e69e6960eff066e3d0626
+	b2sums = 6092f70b270e206bef10d82fe6cbe9303170a5bb886ab2404175f7730628e8d08457e46d60091332d4dc85a9b991c22f75aeea209f68b70d8ab5a4c2840c26f1
+	b2sums = 9a558a54d35e56cb009cf5059217e4ac6e783c81c299ad0d6b2eb857796342b2ec2604a6e8beb6dd6a2cb819911a2c2761af965992758bb9f725355a8ecc64af
+
+pkgname = libcec-daemon-git

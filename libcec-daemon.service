@@ -1,0 +1,10 @@
+[Unit]
+Description=daemon for connecting libcec to uinput
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/default/libcec-daemon
+ExecStart=/usr/bin/libcec-daemon $OPTIONS
+
+[Install]
+WantedBy=multi-user.target

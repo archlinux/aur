@@ -1,0 +1,295 @@
+From 862a1fd2d7b34e04f4eca15dafc712c8b787ebff Mon Sep 17 00:00:00 2001
+From: Matthew Bauer <mjbauer95@gmail.com>
+Date: Sun, 6 Sep 2020 15:30:38 -0500
+Subject: [PATCH 1/4] Update libcec-daemon for libcec-4.0.5
+
+Fixes #31
+---
+ src/libcec.cpp | 67 +++++++++++++++++++++++---------------------------
+ src/libcec.h   | 10 ++++----
+ 2 files changed, 36 insertions(+), 41 deletions(-)
+
+diff --git a/src/libcec.cpp b/src/libcec.cpp
+index 1191aa9..f954c52 100644
+--- a/src/libcec.cpp
++++ b/src/libcec.cpp
+@@ -51,39 +51,34 @@ const map<enum cec_user_control_code, const char *> Cec::cecUserControlCodeName
+ // We store a global handle, so we can use g_cec->ToString(..) in certain cases. This is a bit of a HACK :(
+ static ICECAdapter * g_cec = NULL;
+ 
+-int cecLogMessage(void *cbParam, const cec_log_message message) {
++void cecLogMessage(void *cbParam, const cec_log_message *message) {
+ 	try {
+-		return ((CecCallback*) cbParam)->onCecLogMessage(message);
++		((CecCallback*) cbParam)->onCecLogMessage(*message);
+ 	} catch (...) {}
+-	return 0;
+ }
+ 
+-int cecKeyPress(void *cbParam, const cec_keypress key) {
++void cecKeyPress(void *cbParam, const cec_keypress *key) {
+ 	try {
+-		return ((CecCallback*) cbParam)->onCecKeyPress(key);
++		((CecCallback*) cbParam)->onCecKeyPress(*key);
+ 	} catch (...) {}
+-	return 0;
+ }
+ 
+-int cecCommand(void *cbParam, const cec_command command) {
++void cecCommand(void *cbParam, const cec_command *command) {
+ 	try {
+-		return ((CecCallback*) cbParam)->onCecCommand(command);
++		((CecCallback*) cbParam)->onCecCommand(*command);
+ 	} catch (...) {}
+-	return 0;
+ }
+ 
+-int cecAlert(void *cbParam, const libcec_alert alert, const libcec_parameter param) {
++void cecAlert(void *cbParam, const libcec_alert alert, const libcec_parameter param) {
+ 	try {
+-		return ((CecCallback*) cbParam)->onCecAlert(alert, param);
++		((CecCallback*) cbParam)->onCecAlert(alert, param);
+ 	} catch (...) {}
+-	return 0;
+ }
+ 
+-int cecConfigurationChanged(void *cbParam, const libcec_configuration configuration) {
++void cecConfigurationChanged(void *cbParam, const libcec_configuration *configuration) {
+ 	try {
+-		return ((CecCallback*) cbParam)->onCecConfigurationChanged(configuration);
++		((CecCallback*) cbParam)->onCecConfigurationChanged(*configuration);
+ 	} catch (...) {}
+-	return 0;
+ }
+ 
+ int cecMenuStateChanged(void *cbParam, const cec_menu_state menu_state) {
+@@ -95,7 +90,7 @@ int cecMenuStateChanged(void *cbParam, const cec_menu_state menu_state) {
+ 
+ void cecSourceActivated(void *cbParam, const cec_logical_address address, const uint8_t val) {
+ 	try {
+-		return ((CecCallback*) cbParam)->onCecSourceActivated(address, val);
++		((CecCallback*) cbParam)->onCecSourceActivated(address, val);
+ 	} catch (...) {}
+ }
+ 
+@@ -142,13 +137,13 @@ Cec::Cec(const char * name, CecCallback * callback)
+ 	strncpy(config.strDeviceName, name, sizeof(config.strDeviceName));
+ 	config.deviceTypes.Add(CEC_DEVICE_TYPE_RECORDING_DEVICE);
+ 
+-	callbacks.CBCecLogMessage           = &::cecLogMessage;
+-	callbacks.CBCecKeyPress             = &::cecKeyPress;
+-	callbacks.CBCecCommand              = &::cecCommand;
+-	callbacks.CBCecConfigurationChanged = &::cecConfigurationChanged;
+-	callbacks.CBCecAlert                = &::cecAlert;
+-	callbacks.CBCecMenuStateChanged     = &::cecMenuStateChanged;
+-	callbacks.CBCecSourceActivated      = &::cecSourceActivated;
++	callbacks.logMessage           = &::cecLogMessage;
++	callbacks.keyPress             = &::cecKeyPress;
++	callbacks.commandReceived      = &::cecCommand;
++	callbacks.configurationChanged = &::cecConfigurationChanged;
++	callbacks.alert                = &::cecAlert;
++	callbacks.menuStateChanged     = &::cecMenuStateChanged;
++	callbacks.sourceActivated      = &::cecSourceActivated;
+ 
+ 	config.callbackParam                = callback;
+ 	config.callbacks                    = &callbacks;
+@@ -178,9 +173,9 @@ void Cec::open(const std::string &name) {
+ 	init();
+ 
+ 	// Search for adapters
+-	cec_adapter devices[MAX_CEC_PORTS];
++	cec_adapter_descriptor devices[MAX_CEC_PORTS];
+ 
+-	uint8_t ret = cec->FindAdapters(devices, MAX_CEC_PORTS, NULL);
++	uint8_t ret = cec->DetectAdapters(devices, MAX_CEC_PORTS);
+ 	if (ret < 0) {
+ 		throw std::runtime_error("Error occurred searching for adapters");
+ 	}
+@@ -194,9 +189,9 @@ void Cec::open(const std::string &name) {
+         LOG4CPLUS_INFO(logger, "Looking for " << name);
+ 		for(id=0; id<ret; ++id)
+ 		{
+-			if( name.compare(devices[id].path) == 0 )
++			if( name.compare(devices[id].strComPath) == 0 )
+ 				break;
+-			if( name.compare(devices[id].comm) == 0 )
++			if( name.compare(devices[id].strComName) == 0 )
+ 				break;
+ 		}
+ 		if( id == ret )
+@@ -206,13 +201,13 @@ void Cec::open(const std::string &name) {
+ 	}
+ 
+ 	// Just use the first found
+-	LOG4CPLUS_INFO(logger, "Opening " << devices[id].path);
++	LOG4CPLUS_INFO(logger, "Opening " << devices[id].strComPath);
+ 
+-	if (!cec->Open(devices[id].comm)) {
++	if (!cec->Open(devices[id].strComName)) {
+ 		throw std::runtime_error("Failed to open adapter");
+ 	}
+ 
+-	LOG4CPLUS_INFO(logger, "Opened " << devices[id].path);
++	LOG4CPLUS_INFO(logger, "Opened " << devices[id].strComPath);
+ }
+ 
+ void Cec::close(bool makeInactive) {
+@@ -253,11 +248,11 @@ bool Cec::ping() {
+  * This will close any open device!
+  */
+ ostream & Cec::listDevices(ostream & out) {
+-	cec_adapter devices[MAX_CEC_PORTS];
++	cec_adapter_descriptor devices[MAX_CEC_PORTS];
+ 
+     init();
+ 
+-	int8_t ret = cec->FindAdapters(devices, MAX_CEC_PORTS, NULL);
++	int8_t ret = cec->DetectAdapters(devices, MAX_CEC_PORTS);
+ 	if (ret < 0) {
+ 		LOG4CPLUS_ERROR(logger, "Error occurred searching for adapters");
+ 		return out;
+@@ -268,9 +263,9 @@ ostream & Cec::listDevices(ostream & out) {
+ 	}
+ 
+ 	for (int8_t i = 0; i < ret; i++) {
+-		out << "[" << (int) i << "] port:" << devices[i].comm << " path:" << devices[i].path << endl;
++		out << "[" << (int) i << "] port:" << devices[i].strComName << " path:" << devices[i].strComPath << endl;
+ 
+-		if (!cec->Open(devices[i].comm)) {
++		if (!cec->Open(devices[i].strComPath)) {
+ 			out << "\tFailed to open" << endl;
+ 		}
+ 
+@@ -280,12 +275,12 @@ ostream & Cec::listDevices(ostream & out) {
+ 				cec_logical_address logical_addres = (cec_logical_address) j;
+ 
+                 HDMI::physical_address physical_address(cec->GetDevicePhysicalAddress(logical_addres));
+-				cec_osd_name name = cec->GetDeviceOSDName(logical_addres);
++				std::string name = cec->GetDeviceOSDName(logical_addres);
+ 				cec_vendor_id vendor = (cec_vendor_id) cec->GetDeviceVendorId(logical_addres);
+ 
+ 				out << "\t"  << cec->ToString(logical_addres)
+ 				    << " @ 0x" << hex << physical_address
+-				    << " "   << name.name << " (" << cec->ToString(vendor) << ")"
++				    << " "   << name << " (" << cec->ToString(vendor) << ")"
+ 				    << endl;
+ 			}
+ 		}
+diff --git a/src/libcec.h b/src/libcec.h
+index d0678a2..5655530 100644
+--- a/src/libcec.h
++++ b/src/libcec.h
+@@ -69,11 +69,11 @@ class Cec {
+ 		bool ping();
+ 
+ 	// These are just wrapper functions, to map C callbacks to C++
+-	friend int cecLogMessage (void *cbParam, const CEC::cec_log_message &message);
+-	friend int cecKeyPress   (void *cbParam, const CEC::cec_keypress &key);
+-	friend int cecCommand    (void *cbParam, const CEC::cec_command &command);
+-	friend int cecConfigurationChanged (void *cbParam, const CEC::libcec_configuration & configuration);
+-	friend int cecAlert(void *cbParam, const CEC::libcec_alert alert, const CEC::libcec_parameter & param);
++	friend void cecLogMessage (void *cbParam, const CEC::cec_log_message &message);
++	friend void cecKeyPress   (void *cbParam, const CEC::cec_keypress &key);
++	friend void cecCommand    (void *cbParam, const CEC::cec_command &command);
++	friend void cecConfigurationChanged (void *cbParam, const CEC::libcec_configuration & configuration);
++	friend void cecAlert(void *cbParam, const CEC::libcec_alert alert, const CEC::libcec_parameter & param);
+ 	friend int cecMenuStateChanged(void *cbParam, const CEC::cec_menu_state & menu_state);
+ 	friend void cecSourceActivated(void *cbParam, const CEC::cec_logical_address & address, const uint8_t bActivated);
+ };
+
+From 7f506974dd6449e6a07eb1dc7aca2c11e36fae16 Mon Sep 17 00:00:00 2001
+From: Matthew Bauer <mjbauer95@gmail.com>
+Date: Sun, 6 Sep 2020 15:31:21 -0500
+Subject: [PATCH 2/4] Add -pthread to LDFLAGS
+
+I had to do this to link correctly.
+---
+ Makefile.am | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Makefile.am b/Makefile.am
+index b62cccd..b5e72af 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,6 +1,8 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+ ACLOCAL_AMFLAGS = -I m4
+ 
++AM_LDFLAGS = "-pthread"
++
+ bin_PROGRAMS = libcec-daemon
+ libcec_daemon_SOURCES = src/accumulator.hpp \
+                         src/hdmi.cpp \
+
+From 1525c1ac1f9080dc9b0ba780cf78224fbc68e48c Mon Sep 17 00:00:00 2001
+From: Matthew Bauer <mjbauer95@gmail.com>
+Date: Sun, 6 Sep 2020 18:25:20 -0500
+Subject: [PATCH 3/4] Use * instead of & in libcec.h friends
+
+---
+ src/libcec.h | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/src/libcec.h b/src/libcec.h
+index 5655530..6db2f1f 100644
+--- a/src/libcec.h
++++ b/src/libcec.h
+@@ -69,13 +69,13 @@ class Cec {
+ 		bool ping();
+ 
+ 	// These are just wrapper functions, to map C callbacks to C++
+-	friend void cecLogMessage (void *cbParam, const CEC::cec_log_message &message);
+-	friend void cecKeyPress   (void *cbParam, const CEC::cec_keypress &key);
+-	friend void cecCommand    (void *cbParam, const CEC::cec_command &command);
+-	friend void cecConfigurationChanged (void *cbParam, const CEC::libcec_configuration & configuration);
+-	friend void cecAlert(void *cbParam, const CEC::libcec_alert alert, const CEC::libcec_parameter & param);
+-	friend int cecMenuStateChanged(void *cbParam, const CEC::cec_menu_state & menu_state);
+-	friend void cecSourceActivated(void *cbParam, const CEC::cec_logical_address & address, const uint8_t bActivated);
++	friend void cecLogMessage (void *cbParam, const CEC::cec_log_message *message);
++	friend void cecKeyPress   (void *cbParam, const CEC::cec_keypress *key);
++	friend void cecCommand    (void *cbParam, const CEC::cec_command *command);
++	friend void cecConfigurationChanged (void *cbParam, const CEC::libcec_configuration *configuration);
++	friend void cecAlert(void *cbParam, const CEC::libcec_alert alert, const CEC::libcec_parameter param);
++	friend int cecMenuStateChanged(void *cbParam, const CEC::cec_menu_state menu_state);
++	friend void cecSourceActivated(void *cbParam, const CEC::cec_logical_address address, const uint8_t bActivated);
+ };
+ 
+ 
+
+From d19995f2e0bfb047cfaddb11745a0e97b0ba1308 Mon Sep 17 00:00:00 2001
+From: Matthew Bauer <mjbauer95@gmail.com>
+Date: Tue, 8 Sep 2020 21:47:35 -0500
+Subject: [PATCH 4/4] Update requirement to libcec 4.x
+
+---
+ README.md    | 3 ++-
+ configure.ac | 2 +-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/README.md b/README.md
+index 23c4859..8ca8388 100644
+--- a/README.md
++++ b/README.md
+@@ -24,7 +24,8 @@ sudo apt-get install build-essential autoconf
+ sudo apt-get install libboost-program-options-dev libboost-thread-dev libboost-system-dev liblog4cplus-dev
+ ```
+ 
+-* Also we need the libcec (version 3.x) libraries. Pulse eight provides east way to install
++* Also we need the libcec (version 4.x) libraries. Pulse eight
++  provides an easy way to install
+ 
+ ```
+ apt-get install libcec-dev libcec-platform-dev
+diff --git a/configure.ac b/configure.ac
+index 08a9d18..4e7c119 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -16,7 +16,7 @@ AX_CXX_COMPILE_STDCXX_11(,[mandatory])
+ AC_CHECK_LIB([dl], [dlopen])
+ #
+ #AC_CHECK_LIB(cec, cec_initialize)
+-PKG_CHECK_MODULES([LIBCEC], [libcec >= 2.1], [LIBS="${LIBCEC_LIBS} ${LIBS}"], AC_MSG_ERROR("required package libcec is missing"))
++PKG_CHECK_MODULES([LIBCEC], [libcec >= 4.0], [LIBS="${LIBCEC_LIBS} ${LIBS}"], AC_MSG_ERROR("required package libcec is missing"))
+ #
+ AC_LANG_PUSH([C++])
+ #
