@@ -13,6 +13,7 @@ pkgbase = sparrow-wallet
 	depends = libxrender
 	depends = java-runtime
 	depends = freetype2
+	depends = libxcrypt-compat
 	source = https://github.com/sparrowwallet/sparrow/releases/download/1.7.6/sparrow-1.7.6-x86_64.tar.gz
 	validpgpkeys = D4D0D3202FC06849A257B38DE94618334C674B40
 	sha256sums = e3a3db024145a434621b7c69a8016a6aa2b6d61159d06d91dc5ca308d2a17a06
