@@ -2,7 +2,7 @@
 
 pkgname=fontbakery
 pkgver=0.8.11
-pkgrel=1
+pkgrel=2
 pkgdesc='A command-line tool for checking the quality of font projects'
 arch=(any)
 url="https://github.com/googlefonts/$pkgname"
@@ -34,7 +34,8 @@ depends=(dehinter
          ttfautohint
          ufolint)
 depends+=("${_py_deps[@]/#/python-}")
-makedepends=(python-{build,installer,wheel} python-setuptools-scm)
+makedepends=(python-{build,installer,wheel}
+             python-setuptools-scm)
 _archive="$pkgname-$pkgver"
 # source=("$_archive.tgz::$url/archive/v$pkgver.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")

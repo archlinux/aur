@@ -1,7 +1,7 @@
 pkgbase = fontbakery
 	pkgdesc = A command-line tool for checking the quality of font projects
 	pkgver = 0.8.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/googlefonts/fontbakery
 	arch = any
 	license = Apache
