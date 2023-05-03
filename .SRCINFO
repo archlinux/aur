@@ -1,7 +1,7 @@
 pkgbase = ntopng
 	pkgdesc = The next generation version of the original ntop, a network traffic probe that shows the network usage
 	pkgver = 5.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ntop.org/
 	install = ntopng.install
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = ntopng
 	makedepends = wget
 	makedepends = curl
 	makedepends = libxml2
+	makedepends = npm
 	depends = redis
 	depends = libmariadbclient
 	depends = libpcap
