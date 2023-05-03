@@ -1,4 +1,5 @@
-# Maintainer: freijon <freijon@gmail.com>
+# Maintainer: Hildigerr Vergaray <Maintainer@YmirSystems.com>
+# Contributor: freijon <freijon@gmail.com>
 # Contributor: Lone_Wolf <lonewolf@xs4all.nl>, ZekeSulastin <zekesulastin@gmail.com>, Martin Merget <mergetmartin@gmail.com>
 
 pkgname=fs2_open-git
