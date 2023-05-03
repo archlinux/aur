@@ -1,12 +1,15 @@
 pkgbase = py3status-github-notifications
 	pkgdesc = Python module for py3status to keep track of your Github notifications.
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/mcgillij/py3status-github-notifications
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-poetry
+	makedepends = python-installer
 	makedepends = python-setuptools
-	source = https://github.com/mcgillij/py3status-github-notifications/releases/download/0.1.7/py3status_github_notifications-0.1.7.tar.gz
-	md5sums = 1d2e74dc9f83cb38a4ce2e67e5c9c0a8
+	source = https://github.com/mcgillij/py3status-github-notifications/releases/download/0.1.8/py3status_github_notifications-0.1.8.tar.gz
+	md5sums = f01657417439fe1ed96c2ffe1cbae4e0
 
 pkgname = py3status-github-notifications
