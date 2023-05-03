@@ -1,10 +1,13 @@
 pkgbase = python-exif
 	pkgdesc = Read and modify image EXIF metadata
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/TNThieding/exif
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
 	depends = python-plum
