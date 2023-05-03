@@ -116,7 +116,7 @@ index a2d523cd3e92..c50a41a7c7ba 100644
    unsigned Priority;
  
 diff --git a/clang/lib/Sema/SemaCodeComplete.cpp b/clang/lib/Sema/SemaCodeComplete.cpp
-index d0f87b0f2ab7..38beb219f945 100644
+index d0f87b0f2ab7..66b52a244081 100644
 --- a/clang/lib/Sema/SemaCodeComplete.cpp
 +++ b/clang/lib/Sema/SemaCodeComplete.cpp
 @@ -20,6 +20,7 @@
@@ -232,7 +232,7 @@ index d0f87b0f2ab7..38beb219f945 100644
      // Look through protocols.
      for (auto *P : Category->protocols())
        AddObjCProperties(CCContext, P, AllowCategories, AllowNullaryMethods,
-@@ -5606,6 +5610,446 @@ Expr *unwrapParenList(Expr *Base) {
+@@ -5606,6 +5610,474 @@ Expr *unwrapParenList(Expr *Base) {
    return Base;
  }
  
@@ -516,6 +516,18 @@ index d0f87b0f2ab7..38beb219f945 100644
 +                B.AddChunk(CodeCompletionString::CK_RightParen);
 +              });
 +  }
++  if (Ctx.getLangOpts().CPlusPlus11 && !BaseIsStmt) {
++    const char *TypeStr = TypeString(Base->getType());
++    AddResult("forward", Base->getType(), [&](CodeCompletionBuilder &B) {
++      B.AddTextChunk("std::forward");
++      B.AddChunk(CodeCompletionString::CK_LeftAngle);
++      B.AddTextChunk(TypeStr);
++      B.AddChunk(CodeCompletionString::CK_RightAngle);
++      B.AddChunk(CodeCompletionString::CK_LeftParen);
++      B.AddTextChunk(ExprCode);
++      B.AddChunk(CodeCompletionString::CK_RightParen);
++    });
++  }
 +  if (Ctx.getLangOpts().CPlusPlus11 && BaseIsStmt) {
 +    QualType Iterator = iteratorType(Base->getType(), Ctx);
 +    llvm::errs() << "iterator type is " << Iterator.getAsString() << "\n";
@@ -635,6 +647,22 @@ index d0f87b0f2ab7..38beb219f945 100644
 +      });
 +    }
 +  }
++  if (Base->getType()->isArrayType() && BaseIsStmt) {
++    if (Ctx.getTypeSizeInCharsIfKnown(Base->getType())) {
++      auto AddBlock = [&](const char *Name) {
++        AddResult(Name, Base->getType()->getPointeeType(),
++                  [&](CodeCompletionBuilder &B) {
++                    B.AddTextChunk("std::");
++                    B.AddTextChunk(Name);
++                    B.AddChunk(CodeCompletionString::CK_LeftParen);
++                    B.AddTextChunk(ExprCode);
++                    B.AddChunk(CodeCompletionString::CK_RightParen);
++                  });
++      };
++      AddBlock("begin");
++      AddBlock("end");
++    }
++  }
 +  if (BaseIsStmt && isConvertibleToBool(Base->getType(), Ctx)) {
 +    const char *VarType = conditionVariableType(Base, Ctx);
 +    auto AddBlock = [&](const char *Name) {
@@ -679,7 +707,7 @@ index d0f87b0f2ab7..38beb219f945 100644
  } // namespace
  
  void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
-@@ -5613,10 +6057,11 @@ void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
+@@ -5613,10 +6085,11 @@ void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
                                             SourceLocation OpLoc, bool IsArrow,
                                             bool IsBaseExprStatement,
                                             QualType PreferredType) {
@@ -693,7 +721,7 @@ index d0f87b0f2ab7..38beb219f945 100644
  
    ExprResult ConvertedBase = PerformMemberExprBaseConversion(Base, IsArrow);
    if (ConvertedBase.isInvalid())
-@@ -5647,6 +6092,10 @@ void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
+@@ -5647,6 +6120,10 @@ void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
                          CodeCompleter->getCodeCompletionTUInfo(), CCContext,
                          &ResultBuilder::IsMember);
  
@@ -704,7 +732,7 @@ index d0f87b0f2ab7..38beb219f945 100644
    auto DoCompletion = [&](Expr *Base, bool IsArrow,
                            std::optional<FixItHint> AccessOpFixIt) -> bool {
      if (!Base)
-@@ -5926,8 +6375,7 @@ void Sema::CodeCompleteCase(Scope *S) {
+@@ -5926,8 +6403,7 @@ void Sema::CodeCompleteCase(Scope *S) {
  
      Expr *CaseVal = Case->getLHS()->IgnoreParenCasts();
      if (auto *DRE = dyn_cast<DeclRefExpr>(CaseVal))
@@ -714,7 +742,7 @@ index d0f87b0f2ab7..38beb219f945 100644
          // We look into the AST of the case statement to determine which
          // enumerator was named. Alternatively, we could compute the value of
          // the integral constant expression, then compare it against the
-@@ -8145,11 +8593,10 @@ void Sema::CodeCompleteObjCInstanceMessage(Scope *S, Expr *Receiver,
+@@ -8145,11 +8621,10 @@ void Sema::CodeCompleteObjCInstanceMessage(Scope *S, Expr *Receiver,
        return;
      RecExpr = Conv.get();
    }
@@ -730,7 +758,7 @@ index d0f87b0f2ab7..38beb219f945 100644
  
    // If we're messaging an expression with type "id" or "Class", check
    // whether we know something special about the receiver that allows
-@@ -9980,8 +10427,7 @@ void Sema::CodeCompleteIncludedFile(llvm::StringRef Dir, bool Angled) {
+@@ -9980,8 +10455,7 @@ void Sema::CodeCompleteIncludedFile(llvm::StringRef Dir, bool Angled) {
    };
  
    // Helper: scans IncludeDir for nice files, and adds results for each.
