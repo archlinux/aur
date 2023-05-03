@@ -1,7 +1,7 @@
 # Maintainer: Rsplwe <i@rsplwe.com>
 pkgname=prpr
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="pe~ ro~ pe~ ro~"
 arch=('any')
 url="https://github.com/Rsplwe/prpr"
