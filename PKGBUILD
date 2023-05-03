@@ -1,7 +1,7 @@
 # Maintainer: Renato Lui Geh <renatogeh at gmail dot com>
 
 pkgname=python-pygments-pasp
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Pygments syntax highlighting for probabilistic ASP"
 arch=("any")
@@ -9,8 +9,8 @@ url="https://github.com/RenatoGeh/pygments-pasp"
 license=("MIT")
 depends=("python" "python-pygments")
 makedepends=("python-setuptools" "python-pygments")
-source=("https://files.pythonhosted.org/packages/bd/c4/bfd8e25e790f11eb3202dc33ceaddd9380b40f3b75404fead67fb4ab0398/pygments_pasp-${pkgver}.tar.gz")
-sha256sums=("2cdcde1279408c594ae673a34e58002317334676668f946cead6eb87b6e0a949")
+source=("https://files.pythonhosted.org/packages/95/b5/e4f43ee913c222105b50df1427611442adc3870567f14310404dd04d13a8/pygments_pasp-${pkgver}.tar.gz")
+sha256sums=("43ee4c1a34c12c0c5e8e76842965d6fe1e1e564e6c33b8806b640306e27b75d3")
 
 build() {
   cd $srcdir/pygments_pasp-${pkgver}
