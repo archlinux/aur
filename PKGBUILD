@@ -3,7 +3,7 @@
 pkgname=p4v
 _version=2023.1
 pkgver=2023.1.2431464
-pkgrel=1
+pkgrel=2
 pkgdesc="Perforce Visual Client"
 arch=('x86_64')
 url="https://www.perforce.com"
@@ -20,9 +20,9 @@ source=(p4v.desktop
         LICENSE
         "${_filename}"::"${_url}/r${pkgver:2:4}/bin.linux26x86_64/${pkgname}.tgz")
 
-sha256sums=('1fc7ea925fdcb38915f191b6a9c85fb46db9ef501dbaa077e8f38876c5e8fda0'
-            '10e470c6099459a072565494c4fd21cc1f4198f1024fe6fdeb6c77ea7e594827'
-            '139c5e4951ea9ab040912ef1f9705de16a37d32fdf7b8c7116eb5a785829c634'
+sha256sums=('e2c5380997980f12ece4a92d558fc681deacfaa9273838e67be1a4298a99f032'
+            'fda6ab6585ba26625879b104c2c99645915055bd752d5ba574c5c83b7f8b230c'
+            '5b07d4373062825e463580bfec18db7346b457dc2a86678e3dfed84c7cbd3299'
             'c4ed3aef62b1bbf2d16ce4cceb65dc49ab9635b38e2fed0a595fe259283a9f32'
             '47850fa271c7c1ec28698de9d97840bfce543541211fa2feeb99d80a7cb6dbaf')
 
