@@ -1,7 +1,7 @@
 pkgbase = python-sre-yield
 	pkgdesc = Generate regular all expression matches
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sre-yield/sre-yield
 	arch = any
 	license = Apache
