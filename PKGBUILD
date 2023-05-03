@@ -2,10 +2,10 @@
 # Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=survey
-_pkgver=4.1-1
+_pkgver=4.2-1
 pkgname=r-${_pkgname,,}
-pkgver=4.1.1
-pkgrel=7
+pkgver=4.2.1
+pkgrel=1
 pkgdesc='Analysis of Complex Survey Samples'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -29,7 +29,7 @@ optdepends=(
   r-rsqlite
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('05e89a1678a39e32bfb41af8a31d643b04fc4d2660a96e701825e6bffcd75a52')
+sha256sums=('cc3c61e132fb20bed98fa59a8254335a588780a5f4eeb51fab7489390aadf150')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

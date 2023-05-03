@@ -1,7 +1,7 @@
 pkgbase = r-survey
 	pkgdesc = Analysis of Complex Survey Samples
-	pkgver = 4.1.1
-	pkgrel = 7
+	pkgver = 4.2.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=survey
 	arch = any
 	license = GPL
@@ -19,7 +19,7 @@ pkgbase = r-survey
 	optdepends = r-parallel
 	optdepends = r-quantreg
 	optdepends = r-rsqlite
-	source = https://cran.r-project.org/src/contrib/survey_4.1-1.tar.gz
-	sha256sums = 05e89a1678a39e32bfb41af8a31d643b04fc4d2660a96e701825e6bffcd75a52
+	source = https://cran.r-project.org/src/contrib/survey_4.2-1.tar.gz
+	sha256sums = cc3c61e132fb20bed98fa59a8254335a588780a5f4eeb51fab7489390aadf150
 
 pkgname = r-survey
