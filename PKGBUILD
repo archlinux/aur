@@ -4,7 +4,7 @@
 
 pkgname=obs-studio-amf
 pkgver=29.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open source software for live streaming and recording. Includes new AMF encoding patch & browser plugin"
 arch=('x86_64')
 url="https://obsproject.com"
@@ -24,10 +24,12 @@ optdepends=('libfdk-aac: FDK AAC codec support'
 source=(obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver
 	cef_binary_5060_linux64.tar.bz2::https://cdn-fastly.obsproject.com/downloads/cef_binary_5060_linux64.tar.bz2
 	7206.patch
+	next_seek_position_init.patch
 	com.obsproject.Studio.desktop)
 md5sums=('SKIP'
          '815a03f3436ff29d7d8ef406b1ee0cec'
          '6dcf01430679459b744b03f915512935'
+         '73af79ec3de6e33c53d2aacbee6465e1'
          '2f0f4b1f1814716d345a8f028b987361')
 
 prepare() {
@@ -35,6 +37,7 @@ prepare() {
 	cd obs-studio
 	git submodule update --init --recursive
 	patch -Np1 < "$srcdir"/7206.patch
+	patch -Np1 < "$srcdir"/next_seek_position_init.patch
 }
 
 build() {
