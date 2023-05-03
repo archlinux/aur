@@ -3,7 +3,7 @@
 
 _pkgname=yojson
 pkgname=ocaml-${_pkgname}
-pkgver=2.0.2
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Low level JSON binary for OCaml"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('ocaml-yojson')
 depends=('ocaml' 'ocaml-biniou' 'ocaml-easy-format')
 makedepends=('dune' 'cppo')
 source=(https://github.com/ocaml-community/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tbz)
-sha256sums=('876bb6f38af73a84a29438a3da35e4857c60a14556a606525b148c6fdbe5461b')
+sha256sums=('9fcb1ff2db58ab259f9228796b0ada4794eae97177b1833371380c4e4f90b15d')
 
 build() {
     cd ${_pkgname}-${pkgver}
