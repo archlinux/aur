@@ -1,7 +1,7 @@
 pkgbase = python-opentsne
 	pkgdesc = Extensible, parallel implementations of t-SNE
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opentsne.readthedocs.io/en/latest/
 	arch = x86_64
 	license = BSD

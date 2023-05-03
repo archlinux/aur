@@ -3,7 +3,7 @@
 
 pkgname=python-opentsne
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Extensible, parallel implementations of t-SNE"
 url="https://opentsne.readthedocs.io/en/latest/"
 arch=('x86_64')
