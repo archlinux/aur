@@ -1,14 +1,14 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='Dynamic, bytecode-compiled programming language and a dialect of Python'
 pkgname=kuroko
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 url=https://kuroko-lang.github.io
 license=(custom:MIT)
 arch=(x86_64)
 depends=(glibc)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kuroko-lang/kuroko/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('a20abc628ed3ebec031ed3d5ca113d880cfb897b65563f15443629bde513b20746fd36cdc6b2b11ca23a7c08efc4e1fcaa85622df192a62bc3b62868baf3eab0')
+b2sums=('2ed4e36c1d043360975608d07e3e695444319113a5ef3e975c18287eee291fd0c42981713296afc8c836b4968c03d91a3ce9f4e31b2553b98268109ebbd49a0c')
 
 build () {
 	make -C "${pkgname}-${pkgver}" prefix=/usr
