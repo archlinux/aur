@@ -3,7 +3,7 @@
 # Contributor: Lone_Wolf <lonewolf@xs4all.nl>, ZekeSulastin <zekesulastin@gmail.com>, Martin Merget <mergetmartin@gmail.com>
 
 pkgname=fs2_open-git
-pkgver=20.1.0.r20200319.caebad7.0
+pkgver=22.0.0.r20230502.02a40ae90.0
 pkgrel=1
 pkgdesc="An enhancement of the original Freespace 2 engine - GIT version"
 url="http://scp.indiegames.us"
@@ -22,10 +22,10 @@ sha256sums=('SKIP'
 'SKIP'
 'SKIP')
 
-version=20.1.0
 
 pkgver () {
 	cd "$srcdir/$pkgname"
+	version=`git describe | cut -d _ -f 2,3,4 | sed 's/_/./g'`
 	tag=`git describe --tags $(git rev-list --tags --max-count=1) | sed 's/nightly_/r/g;s/_/./g'`
     commits_since_tag=`git rev-list --count $(git describe --tags $(git rev-list --tags --max-count=1))..HEAD`
 	echo ${version}.${tag}.${commits_since_tag}
