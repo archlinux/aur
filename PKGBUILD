@@ -11,7 +11,7 @@ depends=("bash" "paru")
 makedepends=("git")
 provides=("$pkgname")
 source=("git+${url}.git")
-md5sums=("SKIP")
+sha256sums=("SKIP")
 
 pkgver() {
   cd "$pkgname"

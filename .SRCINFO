@@ -10,6 +10,6 @@ pkgbase = dec
 	depends = paru
 	provides = dec
 	source = git+https://gitlab.com/rehposuite/dec.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = dec
