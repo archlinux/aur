@@ -3,11 +3,11 @@
 pkgname='eruption'
 _pkgname='eruption'
 pkgdesc='Realtime RGB LED Driver for Linux'
-pkgver='0.3.2'
+pkgver='0.3.3'
 pkgrel='0'
 arch=('i686' 'x86_64')
 url='https://eruption-project.org/'
-license=('GPL3+')
+license=('GPL3')
 depends=('libevdev' 'libusb' 'hidapi' 'systemd-libs' 'dbus' 'libpulse' 'lua' 'lua-socket' 'gtksourceview4')
 makedepends=('git' 'rust' 'pkgconf' 'cmake' 'protobuf' 'xorg-server-devel' 'libxrandr' 'gtk3')
 provides=('eruption')
@@ -15,18 +15,17 @@ conflicts=('eruption-git' 'eruption-roccat-vulcan-git')
 replaces=('eruption-roccat-vulcan')
 backup=(etc/eruption/eruption.conf etc/eruption/process-monitor.conf etc/eruption/fx-proxy.conf etc/eruption/audio-proxy.conf usr/share/eruption/scripts/lib/keymaps/default.keymap)
 install='eruption.install'
-commit=35cce45587922de147583864bec2806cc279ee18
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/X3n0m0rph59/eruption/archive/${commit}.tar.gz")
-sha256sums=('eef04a0d54b16932916dbef2cd35bc07a5bbd4cdfedf6fe1ec427e23458c847f')
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/X3n0m0rph59/eruption/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('69825c1a181702965329e94f90846f471389fae610128525e446891a25685d3f')
 
 build() {
-    cd "$_pkgname-${commit}"
+    cd "$_pkgname-$pkgver"
 
     CARGO_INCREMENTAL=0 cargo build --release
 }
 
 package() {
-    cd "$_pkgname-${commit}"
+    cd "$_pkgname-$pkgver"
 
     mkdir -p "$pkgdir/usr/bin"
     mkdir -p "$pkgdir/etc/eruption"
