@@ -1,12 +1,15 @@
 pkgbase = python-pyreadr
 	pkgdesc = Reads/writes R RData and Rds files into/from pandas data frames
 	pkgver = 0.4.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ofajardo/pyreadr
 	arch = x86_64
 	license = AGPL3
 	checkdepends = python-xarray
 	makedepends = cython
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = bzip2
 	depends = python-pandas
 	depends = xz
