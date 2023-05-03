@@ -6,10 +6,10 @@
 # Contributor: ledti <antergist at gmail dot com>
 
 pkgname=obs-studio-browser
-pkgver=29.0.2
-pkgrel=2
+pkgver=29.1.0
+pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integration"
-arch=("x86_64")
+arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
 license=("GPL3")
 # To manage dependency rebuild easily, this will prevent you to rebuild OBS on non-updated system
@@ -69,7 +69,6 @@ optdepends=(
   "sndio: Sndio input client"
   "v4l2loopback-dkms: Virtual camera output"
   "libajantv2: AJA NTV 2 support"
-  "decklink: Blackmagic Design DeckLink support"
 )
 provides=("obs-studio=$pkgver" "obs-vst" "obs-websocket" "obs-browser")
 conflicts=(
@@ -78,7 +77,6 @@ conflicts=(
   "libva-vdpau-driver" # This driver is abandonned and make OBS segfault if it happen to be loaded, try libva-nvidia-driver is you really need Nvidia decode through VAAPI
 )
 options=('debug')
-_cefbranch=5060
 source=(
   "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
@@ -92,20 +90,17 @@ sha256sums=(
   "SKIP"
 )
 
+if [[ $CARCH == 'x86_64' ]]; then
+  optdepends+=("decklink: Blackmagic Design DeckLink support")
+fi
+
 prepare() {
   cd "$srcdir/obs-studio"
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
   git -c protocol.file.allow=always submodule update
 
-  git cherry-pick -n 2e79d4c902abf3e6bb4ad1b5bf779c0cc22a6fd0
-
   cd plugins/obs-websocket
-  sed -i 's|EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/deps/json/CMakeLists.txt||' CMakeLists.txt
-  sed -i 's|AND EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/deps/websocketpp/CMakeLists.txt||' CMakeLists.txt
-  sed -i 's|AND EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/deps/asio/asio/include/asio.hpp||' CMakeLists.txt
-  sed -i "s|AND EXISTS|EXISTS|" CMakeLists.txt
-  sed -i "s|add_subdirectory(deps/json)|find_package(nlohmann_json 3.10.0 REQUIRED)|" CMakeLists.txt
   git config submodule.deps/qr.url $srcdir/qr
   git -c protocol.file.allow=always submodule update deps/qr
 }
@@ -115,7 +110,7 @@ build() {
   mkdir -p build; cd build
 
   cmake \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DENABLE_RTMPS=ON \
@@ -123,6 +118,7 @@ build() {
     -DENABLE_LIBFDK=ON \
     -DENABLE_JACK=ON \
     -DENABLE_SNDIO=ON \
+    -DENABLE_BROWSER=ON \
     -DCEF_ROOT_DIR=/opt/cef-obs \
     -DOBS_VERSION_OVERRIDE="$pkgver" ..
 
