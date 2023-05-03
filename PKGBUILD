@@ -2,7 +2,7 @@
 
 pkgname='ldaptools'
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Easily manage LDAP users and groups'
 arch=('any')
 url="https://github.com/coNQP/${pkgname}"
