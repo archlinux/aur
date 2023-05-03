@@ -3,7 +3,7 @@
 pkgbase=neptune
 pkgname=("platinum-upnp" "platinum-upnp-docs" "neptune")
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Platinum UPnP SDK + Neptune C++ Runtime by Axiomatic Software"
 arch=("x86_64")
 url="https://www.plutinosoft.com/platinum-slider/"
@@ -38,6 +38,9 @@ package_platinum-upnp() {
                 cp "$lib" "$pkgdir/usr/lib/"
         done
         find "$srcdir/$_gitrepo/Build/Targets/$arch-unknown-linux/Release/" -type f -executable -exec cp {} "$pkgdir/usr/bin/$pkgname" \;
+	mkdir -p "$pkgdir/usr/include/platinum"
+	cp "$srcdir/Platinum/Source/Core/"*.h "$pkgdir/usr/include/platinum"
+	rm "$pkgdir/usr/lib/libZlib.a"
 }
 
 package_platinum-upnp-docs() {
@@ -56,5 +59,8 @@ package_neptune() {
 	provides=(libNeptune.a)
 	license=("BSD")
 	mkdir -p "$pkgdir/usr/lib"
+	mkdir -p "$pkgdir/usr/include/platinum"
 	cp "$srcdir/$_gitrepo/Build/Targets/$arch-unknown-linux/Release/libNeptune.a" "$pkgdir/usr/lib/"
+	cp "$srcdir/Platinum/ThirdParty/Neptune/Source/Core/"*.h "$pkgdir/usr/include/platinum"
+	ln -s "$pkgdir/usr/include/platinum" "$pkgdir/usr/include/neptune"
 }
