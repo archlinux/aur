@@ -4,7 +4,7 @@
 
 pkgname=fs2_open-git
 pkgver=22.0.0.r20230502.02a40ae90.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An enhancement of the original Freespace 2 engine - GIT version"
 url="http://scp.indiegames.us"
 arch=('i686' 'x86_64')
@@ -45,11 +45,10 @@ package () {
 	cd "$srcdir/$pkgname/build/bin"
 	binary=`find fs2_open*`
 	cd ../..
-	tag=`git describe --tags $(git rev-list --tags --max-count=1) | sed 's/nightly_/r/g'`
-    commits_since_tag=`git rev-list --count $(git describe --tags $(git rev-list --tags --max-count=1))..HEAD`
+
 	install -D -m644 Copying.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-	install -D -m755 build/bin/${binary} "$pkgdir/opt/fs2_open/${binary}_${tag}_${commits_since_tag}"
-	msg "The output binary will be called '${binary}_${tag}_${commits_since_tag}'"
+	install -D -m755 build/bin/${binary} "$pkgdir/opt/fs2_open/${binary}"
+	msg "The output binary will be called '${binary}'"
 }
 
