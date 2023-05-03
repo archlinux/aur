@@ -78,7 +78,7 @@ package_minizip-git() {
     make DESTDIR="${pkgdir}" install
     cd ${srcdir}/${pkgbase}/build-ng
     make DESTDIR="${pkgdir}" install
-     rm "${pkgdir}/usr/include/"{,un}"zip.h" # conflict with libzip
+    rm -rf "${pkgdir}/usr/include/"{,un}"zip.h" # conflict with libzip
     install -D -m644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/minizip/LICENSE"
 }
 package_minizip-static-git() {
