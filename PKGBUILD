@@ -3,7 +3,7 @@
 pkgname=off-en
 pkgver=3.0.1
 pkgrel=1
-pkgdesc='A surreal role-playing game'
+pkgdesc='A surreal role-playing game (English translation)'
 url='https://off.fandom.com/wiki/Downloads'
 arch=('any')
 license=('custom:non-free')
