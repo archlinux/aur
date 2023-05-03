@@ -5,7 +5,7 @@
 _name=pytube
 pkgname=python-$_name
 pkgver=12.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight, dependency-free Python library (and command-line utility) for downloading YouTube Videos"
 arch=(any)
 url="https://github.com/pytube/pytube"
