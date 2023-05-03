@@ -3,7 +3,7 @@
 _name=pykakasi
 pkgname=python-$_name
 pkgver=2.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight converter from Japanese Kana-kanji sentences into Kana-Roman"
 arch=(any)
 url="https://codeberg.org/miurahr/pykakasi"

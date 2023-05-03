@@ -1,7 +1,7 @@
 pkgbase = python-pykakasi
 	pkgdesc = Lightweight converter from Japanese Kana-kanji sentences into Kana-Roman
 	pkgver = 2.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/miurahr/pykakasi
 	arch = any
 	license = GPL3
