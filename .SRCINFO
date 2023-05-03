@@ -1,14 +1,11 @@
 pkgbase = prpr
 	pkgdesc = pe~ ro~ pe~ ro~
-	pkgver = kira_1
-	pkgrel = 1
+	pkgver = 1.0.0
+	pkgrel = 2
 	url = https://github.com/Rsplwe/prpr
 	arch = any
 	license = WTFPL
-	makedepends = git
-	provides = prpr
-	conflicts = prpr
-	source = prpr::git+https://github.com/Rsplwe/prpr.git
-	md5sums = SKIP
+	source = prpr-1.0.0.tar.gz::https://github.com/Rsplwe/prpr/archive/1.0.0.tar.gz
+	sha512sums = 51959b5117bb088c4e6570521e8f422b365240614f56c4c5cecd7b5c3dab0f57fcf0dd63be45c7776a24adea11508982333f38c68c60a6303a0c46bdfe15f5d1
 
 pkgname = prpr
