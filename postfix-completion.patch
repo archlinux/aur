@@ -116,7 +116,7 @@ index a2d523cd3e92..c50a41a7c7ba 100644
    unsigned Priority;
  
 diff --git a/clang/lib/Sema/SemaCodeComplete.cpp b/clang/lib/Sema/SemaCodeComplete.cpp
-index d0f87b0f2ab7..c9bc2fa336e2 100644
+index d0f87b0f2ab7..3b028888b4a2 100644
 --- a/clang/lib/Sema/SemaCodeComplete.cpp
 +++ b/clang/lib/Sema/SemaCodeComplete.cpp
 @@ -20,6 +20,7 @@
@@ -232,7 +232,7 @@ index d0f87b0f2ab7..c9bc2fa336e2 100644
      // Look through protocols.
      for (auto *P : Category->protocols())
        AddObjCProperties(CCContext, P, AllowCategories, AllowNullaryMethods,
-@@ -5606,6 +5610,481 @@ Expr *unwrapParenList(Expr *Base) {
+@@ -5606,6 +5610,501 @@ Expr *unwrapParenList(Expr *Base) {
    return Base;
  }
  
@@ -350,10 +350,9 @@ index d0f87b0f2ab7..c9bc2fa336e2 100644
 +  return false;
 +}
 +
-+bool isConvertibleToBool(const RecordDecl *RD) {
++bool isConvertibleTo(const RecordDecl *RD, CanQualType To) {
 +  const auto &Ctx = RD->getParentASTContext();
-+  return !RD->lookup(
-+                Ctx.DeclarationNames.getCXXConversionFunctionName(Ctx.BoolTy))
++  return !RD->lookup(Ctx.DeclarationNames.getCXXConversionFunctionName(To))
 +              .empty();
 +}
 +
@@ -419,6 +418,10 @@ index d0f87b0f2ab7..c9bc2fa336e2 100644
 +  if ((FromNoRef->isScopedEnumeralType() && ToNoRef->isIntegerType()) ||
 +      (FromNoRef->isIntegerType() && ToNoRef->isEnumeralType()))
 +    return Cast::Static;
++  if (((FromNoRef->isIntegerType() || FromNoRef->isFloatingType()) &&
++       (ToNoRef->isIntegerType() || ToNoRef->isFloatingType())) &&
++      FromNoRef != ToNoRef)
++    return Cast::Static;
 +  auto IsIntPointer = [&](QualType T) {
 +    return Ctx.getIntPtrType() == T || Ctx.getUIntPtrType() == T;
 +  };
@@ -446,25 +449,29 @@ index d0f87b0f2ab7..c9bc2fa336e2 100644
 +  return 0;
 +}
 +
-+bool isConvertibleToBool(QualType T, ASTContext &Ctx) {
++bool isConvertibleTo(QualType T, ASTContext &Ctx, CanQualType To) {
 +  T = T.getCanonicalType();
-+  if (T->isIntegralOrUnscopedEnumerationType())
-+    return true;
-+  if (T->isAnyPointerType())
-+    return true;
 +  if (const auto *RT = dyn_cast<RecordType>(T)) {
 +    if (const auto *RD = RT->getDecl()->getDefinition())
-+      return isConvertibleToBool(RD);
++      return isConvertibleTo(RD, To);
 +    else if (const auto *CTSD =
 +                 llvm::dyn_cast<ClassTemplateSpecializationDecl>(RD))
-+      return isConvertibleToBool(CTSD->getTemplateInstantiationPattern());
++      return isConvertibleTo(CTSD->getTemplateInstantiationPattern(), To);
 +  }
 +  if (const auto *TST = dyn_cast<TemplateSpecializationType>(T)) {
 +    if (const auto *TD = dyn_cast_or_null<ClassTemplateDecl>(
 +            TST->getTemplateName().getAsTemplateDecl()))
-+      return isConvertibleToBool(TD->getTemplatedDecl());
++      return isConvertibleTo(TD->getTemplatedDecl(), To);
 +  }
 +  return false;
++}
++
++bool isConvertibleToBool(QualType T, ASTContext &Ctx) {
++  if (T.getCanonicalType()->isIntegralOrUnscopedEnumerationType())
++    return true;
++  if (T.getCanonicalType()->isAnyPointerType())
++    return true;
++  return isConvertibleTo(T, Ctx, Ctx.BoolTy);
 +}
 +
 +// The type of the condition variable that can be extracted from an expression.
@@ -524,8 +531,12 @@ index d0f87b0f2ab7..c9bc2fa336e2 100644
 +              });
 +  }
 +  if (Ctx.getLangOpts().CPlusPlus11 && !BaseIsStmt) {
-+    const char *TypeStr = TypeString(Base->getType());
-+    AddResult("forward", Base->getType(), [&](CodeCompletionBuilder &B) {
++    auto RefType =
++        Base->getValueKind() == VK_PRValue
++            ? Ctx.getRValueReferenceType(Base->getType().getNonReferenceType())
++            : Ctx.getLValueReferenceType(Base->getType().getNonReferenceType());
++    const char *TypeStr = TypeString(RefType);
++    AddResult("forward", RefType, [&](CodeCompletionBuilder &B) {
 +      B.AddTextChunk("std::forward");
 +      B.AddChunk(CodeCompletionString::CK_LeftAngle);
 +      B.AddTextChunk(TypeStr);
@@ -563,13 +574,18 @@ index d0f87b0f2ab7..c9bc2fa336e2 100644
 +  }
 +
 +  if (!PreferredType.isNull()) {
-+    if (auto Casts = recommendCasts(Base, PreferredType, Ctx)) {
++    bool IsToAuto =
++        PreferredType->getTypeClass() == clang::Type::TypeClass::Auto;
++    if (auto Casts = recommendCasts(Base, PreferredType, Ctx) || IsToAuto) {
 +      const char *PreferredTypeStr = TypeString(PreferredType);
-+      auto AddCxxCast = [&](const char *Name) {
++      auto AddCxxCast = [&](const char *Name, const char *Type = nullptr) {
 +        AddResult(Name, PreferredType, [&](CodeCompletionBuilder &B) {
 +          B.AddTextChunk(Name);
 +          B.AddChunk(CodeCompletionString::CK_LeftAngle);
-+          B.AddTextChunk(PreferredTypeStr);
++          if (Type)
++            B.AddTextChunk(Type);
++          else
++            B.AddPlaceholderChunk("type");
 +          B.AddChunk(CodeCompletionString::CK_RightAngle);
 +          B.AddChunk(CodeCompletionString::CK_LeftParen);
 +          B.AddTextChunk(ExprCode);
@@ -585,16 +601,20 @@ index d0f87b0f2ab7..c9bc2fa336e2 100644
 +        });
 +      };
 +      if (Ctx.getLangOpts().CPlusPlus) {
-+        if (Casts & Cast::Static)
-+          AddCxxCast("static_cast");
-+        if (Casts & Cast::Dynamic)
-+          AddCxxCast("dynamic_cast");
-+        if (Casts & Cast::Reinterpret)
-+          AddCxxCast("reinterpret_cast");
++        bool IsFromRecord = dyn_cast<RecordType>(Base->getType()
++                                                     .getCanonicalType()
++                                                     .getNonReferenceType()
++                                                     .getUnqualifiedType());
++        if (Casts & Cast::Static || IsToAuto)
++          AddCxxCast("static_cast", IsToAuto ? nullptr : PreferredTypeStr);
++        if (Casts & Cast::Dynamic || (IsToAuto && IsFromRecord))
++          AddCxxCast("dynamic_cast", IsToAuto ? nullptr : PreferredTypeStr);
++        if (Casts & Cast::Reinterpret || IsToAuto)
++          AddCxxCast("reinterpret_cast", IsToAuto ? nullptr : PreferredTypeStr);
 +        if (Casts & Cast::Bit)
-+          AddCxxCast("bit_cast");
++          AddCxxCast("bit_cast", PreferredTypeStr);
 +        if (Casts & Cast::Const)
-+          AddCxxCast("const_cast");
++          AddCxxCast("const_cast", PreferredTypeStr);
 +        if (Casts & Cast::C)
 +          AddCCast();
 +      } else {
@@ -714,7 +734,7 @@ index d0f87b0f2ab7..c9bc2fa336e2 100644
  } // namespace
  
  void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
-@@ -5613,10 +6092,11 @@ void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
+@@ -5613,10 +6112,11 @@ void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
                                             SourceLocation OpLoc, bool IsArrow,
                                             bool IsBaseExprStatement,
                                             QualType PreferredType) {
@@ -728,7 +748,7 @@ index d0f87b0f2ab7..c9bc2fa336e2 100644
  
    ExprResult ConvertedBase = PerformMemberExprBaseConversion(Base, IsArrow);
    if (ConvertedBase.isInvalid())
-@@ -5647,6 +6127,10 @@ void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
+@@ -5647,6 +6147,10 @@ void Sema::CodeCompleteMemberReferenceExpr(Scope *S, Expr *Base,
                          CodeCompleter->getCodeCompletionTUInfo(), CCContext,
                          &ResultBuilder::IsMember);
  
@@ -739,7 +759,7 @@ index d0f87b0f2ab7..c9bc2fa336e2 100644
    auto DoCompletion = [&](Expr *Base, bool IsArrow,
                            std::optional<FixItHint> AccessOpFixIt) -> bool {
      if (!Base)
-@@ -5926,8 +6410,7 @@ void Sema::CodeCompleteCase(Scope *S) {
+@@ -5926,8 +6430,7 @@ void Sema::CodeCompleteCase(Scope *S) {
  
      Expr *CaseVal = Case->getLHS()->IgnoreParenCasts();
      if (auto *DRE = dyn_cast<DeclRefExpr>(CaseVal))
@@ -749,7 +769,7 @@ index d0f87b0f2ab7..c9bc2fa336e2 100644
          // We look into the AST of the case statement to determine which
          // enumerator was named. Alternatively, we could compute the value of
          // the integral constant expression, then compare it against the
-@@ -8145,11 +8628,10 @@ void Sema::CodeCompleteObjCInstanceMessage(Scope *S, Expr *Receiver,
+@@ -8145,11 +8648,10 @@ void Sema::CodeCompleteObjCInstanceMessage(Scope *S, Expr *Receiver,
        return;
      RecExpr = Conv.get();
    }
@@ -765,7 +785,7 @@ index d0f87b0f2ab7..c9bc2fa336e2 100644
  
    // If we're messaging an expression with type "id" or "Class", check
    // whether we know something special about the receiver that allows
-@@ -9980,8 +10462,7 @@ void Sema::CodeCompleteIncludedFile(llvm::StringRef Dir, bool Angled) {
+@@ -9980,8 +10482,7 @@ void Sema::CodeCompleteIncludedFile(llvm::StringRef Dir, bool Angled) {
    };
  
    // Helper: scans IncludeDir for nice files, and adds results for each.
