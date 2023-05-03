@@ -36,7 +36,7 @@ prepare() {
 
     # Installing PyInstaller as user from pip.
     # That's to prevent conflicts with package manager
-    pip install --upgrade
+    pip install --upgrade pip
     pip install pyinstaller
 }
 
