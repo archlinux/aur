@@ -1,6 +1,6 @@
 pkgbase = r-compass
 	pkgdesc = Combinatorial Polyfunctionality Analysis of Single Cells
-	pkgver = 1.38.0
+	pkgver = 1.38.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/COMPASS
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = r-compass
 	optdepends = r-progress
 	optdepends = r-shiny
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/COMPASS_1.38.0.tar.gz
-	sha256sums = 0692e545e51d1fa69b6e463b09ac13aae9952a9223b6ebbd108af7572c47baf4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/COMPASS_1.38.1.tar.gz
+	sha256sums = f05e1523245cd3c4a29d94e866e8db7e56f99f12a1e72b5228bee70b7936c35a
 
 pkgname = r-compass
