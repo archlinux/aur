@@ -1,6 +1,6 @@
 pkgbase = opm-common
-	pkgdesc = Tools for Eclipse reservoir simulation files
-	pkgver = 2022.10
+	pkgdesc = Common components for OPM, in particular build system (cmake)
+	pkgver = 2023.04
 	pkgrel = 1
 	url = https://github.com/OPM/opm-common
 	arch = x86_64
@@ -14,10 +14,12 @@ pkgbase = opm-common
 	makedepends = doxygen
 	makedepends = graphviz
 	makedepends = pybind11
-	makedepends = python-pytest-runner
+	makedepends = python-scikit-build
+	makedepends = python-ninja
 	makedepends = python-setuptools-scm
-	source = opm-common-release-2022.10-final.tar.gz::https://github.com/OPM/opm-common/archive/release/2022.10/final.tar.gz
-	sha512sums = 75efa8cc725e8be205ebfbab3ba0153fe06b3876a4d380070f78a206f801df1804862bd4eba0be72e13d3378223f14081f5a1d4e9eabb9b4a4a57c6c950df194
+	makedepends = python-pytest-runner
+	source = opm-common-release-2023.04-final.tar.gz::https://github.com/OPM/opm-common/archive/release/2023.04/final.tar.gz
+	sha512sums = 33e61d812c6a99ea80781bee36069de0784ec1adf771b9228458c8a03c28644d71a41d8637d06eadb6d93db9bb26e3794d9d7a76b6747b8d8a400806cc6e41f1
 
 pkgname = opm-common
 	depends = dune-common>=2.9.0
@@ -27,6 +29,7 @@ pkgname = opm-common
 	optdepends = bash-completion: for completion when using bash
 	optdepends = man-db: manual pages for compareECL, convertECL, opmhash, opmpack, rst_deck and summary
 	provides = arraylist
+	provides = co2brinepvt
 	provides = compareECL
 	provides = convertECL
 	provides = opmhash
@@ -37,6 +40,6 @@ pkgname = opm-common
 	provides = summary
 
 pkgname = python-opm-common
-	pkgdesc = Tools for Eclipse reservoir simulation files (python bindings)
-	depends = opm-common>=2022.10
+	pkgdesc = Common components for OPM, in particular build system (cmake) (python bindings)
+	depends = opm-common>=2023.04
 	depends = python-numpy

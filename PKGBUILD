@@ -2,15 +2,16 @@
 pkgbase=opm-common
 pkgname=("${pkgbase}" python-"${pkgbase}")
 _dunever=2.9.0
-pkgver=2022.10
+pkgver=2023.04
 pkgrel=1
-pkgdesc="Tools for Eclipse reservoir simulation files"
+pkgdesc="Common components for OPM, in particular build system (cmake)"
 arch=(x86_64)
 url="https://github.com/OPM/${pkgbase}"
 license=(GPL3)
-makedepends=("dune-common>=${_dunever}" boost fmt cjson suitesparse texlive-core doxygen graphviz pybind11 python-pytest-runner python-setuptools-scm)
+makedepends=("dune-common>=${_dunever}" boost fmt cjson suitesparse texlive-core doxygen graphviz
+  pybind11 python-scikit-build python-ninja python-setuptools-scm python-pytest-runner)
 source=(${pkgbase}-release-${pkgver}-final.tar.gz::${url}/archive/release/${pkgver}/final.tar.gz)
-sha512sums=('75efa8cc725e8be205ebfbab3ba0153fe06b3876a4d380070f78a206f801df1804862bd4eba0be72e13d3378223f14081f5a1d4e9eabb9b4a4a57c6c950df194')
+sha512sums=('33e61d812c6a99ea80781bee36069de0784ec1adf771b9228458c8a03c28644d71a41d8637d06eadb6d93db9bb26e3794d9d7a76b6747b8d8a400806cc6e41f1')
 
 build() {
   cmake \
@@ -30,14 +31,13 @@ build() {
     -DOPM_ENABLE_EMBEDDED_PYTHON=OFF \
     -DOPM_INSTALL_PYTHON=OFF \
     -DBUILD_EXAMPLES=OFF \
-    -DBUILD_TESTING=OFF \
     -Wno-dev
   cmake --build build-cmake --target opmcommon_python
 }
 
 package_opm-common() {
   depends=("dune-common>=${_dunever}" boost fmt cjson)
-  provides=('arraylist' 'compareECL' 'convertECL' 'opmhash' 'opmi' 'opmpack' 'rewriteEclFile' 'rst_deck' 'summary')
+  provides=('arraylist' 'co2brinepvt' 'compareECL' 'convertECL' 'opmhash' 'opmi' 'opmpack' 'rewriteEclFile' 'rst_deck' 'summary')
   optdepends=('bash-completion: for completion when using bash'
     'man-db: manual pages for compareECL, convertECL, opmhash, opmpack, rst_deck and summary')
   DESTDIR="${pkgdir}" cmake --build build-cmake --target install install-html
@@ -52,7 +52,6 @@ package_python-opm-common() {
   pkgdesc+=" (python bindings)"
   cd build-cmake/python
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
-  local _pyversion=$(python -c "import sys; print(f'{sys.version_info.major}{sys.version_info.minor}')")
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  mv opm/libopmcommon_python.cpython-${_pyversion}-${CARCH}-linux-gnu.so ${pkgdir}/${site_packages}/opm
+  mv opm ${pkgdir}/${site_packages}/opm
 }
