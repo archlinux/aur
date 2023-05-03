@@ -3,7 +3,7 @@
 _pyname=blackrenderer
 pkgname=python-$_pyname
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='a Python-based renderer for OpenType COLR fonts, with multiple backends'
 arch=(any)
 url=https://github.com/BlackFoundryCom/black-renderer
@@ -12,9 +12,8 @@ _pydeps=(fonttools
          uharfbuzz)
 depends=(python
          "${_pydeps[@]/#/python-}")
-makedepends=(python-{build,installer}
-             python-setuptools-scm
-             python-wheel)
+makedepends=(python-{build,installer,wheel}
+             python-setuptools-scm)
 optdepends=('python-cairo: cairo backend'
             'python-numpy: skia backend'
             'python-skia: skia backend')
