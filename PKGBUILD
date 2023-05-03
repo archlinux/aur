@@ -3,7 +3,7 @@
 pkgname=python-stringbrewer
 _pyname=${pkgname#python-}
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Generate random strings matching a pattern'
 arch=(any)
 url="https://github.com/simoncozens/$_pyname"

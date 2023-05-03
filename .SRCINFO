@@ -1,7 +1,7 @@
 pkgbase = python-stringbrewer
 	pkgdesc = Generate random strings matching a pattern
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/simoncozens/stringbrewer
 	arch = any
 	license = MIT
