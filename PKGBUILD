@@ -4,7 +4,7 @@
 
 pkgname=fs2_open-git
 pkgver=22.0.0.r20230502.02a40ae90.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An enhancement of the original Freespace 2 engine - GIT version"
 url="http://scp.indiegames.us"
 arch=('i686' 'x86_64')
@@ -14,14 +14,14 @@ makedepends=('git' 'cmake' 'freetype2' 'doxygen' 'ffmpeg')
 conflicts=('fs2_open')
 provides=('fs2_open')
 install=fs2_open-git.install
-source=("${pkgname}::git+https://github.com/scp-fs2open/fs2open.github.com.git"
-"cotire::git+https://github.com/sakra/cotire.git"
-"cmake-modules::git+https://github.com/asarium/cmake-modules.git")
+source=("${pkgname}::git+https://github.com/scp-fs2open/fs2open.github.com.git")
 
-sha256sums=('SKIP'
-'SKIP'
-'SKIP')
+sha256sums=('SKIP')
 
+prepare() {
+	cd "$srcdir/$pkgname"
+	git submodule update --init --recursive
+}
 
 pkgver () {
 	cd "$srcdir/$pkgname"
@@ -34,13 +34,6 @@ pkgver () {
 build()
 {
 	cd "$srcdir/$pkgname"
-
-	git submodule init
-	git config submodule.cotire $srcmodule/cotire
-	git submodule update
-	git submodule init
-	git config submodule.cmake-modules $srcmodule/cmake-modules
-	git submodule update
 
 	mkdir build
 	cd build
