@@ -1,7 +1,7 @@
 pkgbase = python-mesa
 	pkgdesc = Agent-based modeling (ABM) in Python 3+
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/projectmesa/mesa
 	arch = any
 	license = Apache

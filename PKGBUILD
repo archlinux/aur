@@ -3,7 +3,7 @@
 _name=Mesa
 pkgname=python-${_name,,}
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Agent-based modeling (ABM) in Python 3+"
 arch=('any')
 url="https://github.com/projectmesa/mesa"
