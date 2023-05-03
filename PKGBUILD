@@ -4,7 +4,7 @@
 _name=jaconv
 pkgname=python-$_name
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Pure-Python Japanese character interconverter for Hiragana, Katakana, Hankaku and Zenkaku"
 arch=('any')
 url="https://github.com/ikegami-yukino/jaconv"
