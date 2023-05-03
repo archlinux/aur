@@ -3,7 +3,7 @@
 _pyname=gflanguages
 pkgname=python-$_pyname
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='API for evaluating language support in the Google Fonts collection'
 arch=(any)
 url="https://github.com/googlefonts/$_pyname"
