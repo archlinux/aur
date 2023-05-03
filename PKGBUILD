@@ -9,7 +9,7 @@
 pkgname=anki
 pkgver=2.1.62
 _tag=2fa41836272c034af40f59b263429d246a7b47af #git rev-parse $pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
