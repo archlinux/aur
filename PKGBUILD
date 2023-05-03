@@ -12,7 +12,7 @@ pkgname=aseprite
 pkgver=1.2.40
 _skiaver=m102
 _skiahash=861e4743af
-pkgrel=6
+pkgrel=7
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
@@ -36,7 +36,8 @@ makedepends=(# "Meta" dependencies
              # Skia
              gn harfbuzz-icu
              # TODO: Benchmark clang v gcc
-             # clang
+             # Fuck it, compiling with GCC>=13 is broken and I'm not gonna write a patch to fix it
+             clang
              )
 source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprite-v$pkgver-Source.zip"
         # Which branch a given build of Aseprite requires is noted in its `INSTALL.md`
@@ -88,6 +89,10 @@ prepare() {
 build() {
 	echo Building Skia...
 	local _skiadir="$PWD/skia/obj"
+	export CXX=clang++
+	export CC=clang
+	export AR=ar
+	export NM=nm
 	# Flags can be found by running `gn args --list "$_skiadir"` from skia's directory.
 	# (Pipe the output somewhere, there's a LOT of args.)
 	#
@@ -127,10 +132,18 @@ skia_enable_{particles,skparagraph,sktext}=false)"
 }
 
 check() {
+	export CXX=clang++
+	export CC=clang
+	export AR=ar
+	export NM=nm
 	env -C build ctest --output-on-failure
 }
 
 package() {
+	export CXX=clang++
+	export CC=clang
+	export AR=ar
+	export NM=nm
 	# Now the fun part: components of e.g. `libwebp` get installed as well,
 	# since we've had to compile it. But we don't want them.
 	# So, install normally, and then cherry-pick Aseprite's files out of that.
