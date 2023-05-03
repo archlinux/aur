@@ -1,7 +1,7 @@
 pkgbase = rimworld-biotech
 	pkgdesc = Expansion pack Biotech for the game Rimworld
-	pkgver = 1.4.3682
-	pkgrel = 2
+	pkgver = 1.4.3704
+	pkgrel = 1
 	url = http://rimworldgame.com/
 	arch = i686
 	arch = x86_64

@@ -1,11 +1,11 @@
 # Maintainer: Sebastien Duthil <duthils@duthils.net>
 
-_pkg_subver=3682
+_pkg_subver=3704
 _gamepkg=RimWorldBiotech1-4-${_pkg_subver}Linux.tar.gz
 
 pkgname=rimworld-biotech
 pkgver=1.4.${_pkg_subver}
-pkgrel=2
+pkgrel=1
 pkgdesc="Expansion pack Biotech for the game Rimworld"
 arch=('i686' 'x86_64')
 url="http://rimworldgame.com/"
