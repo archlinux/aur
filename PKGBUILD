@@ -41,4 +41,4 @@ package() {
     cp -r etc ${pkgdir}
     cp -r usr ${pkgdir}
 }
-sha256sums=('a71fcee2bc7820fc4e0c780bb9c7c6db8364fd2c5bac20867c5c33eed470dc51')
+sha256sums=('f11acd20e0c0cde16011c2537e8c3eb959d66c913b00c520b67bc701ce6d08c8')
