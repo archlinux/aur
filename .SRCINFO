@@ -1,7 +1,7 @@
 pkgbase = jq.sh-bin
 	pkgdesc = jq-in-shell integration library
 	pkgver = 0.4.0.r1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.stefanwimmer128.eu/stefanwimmer128/jq.sh
 	arch = any
 	license = MPL2
@@ -11,7 +11,7 @@ pkgbase = jq.sh-bin
 	optdepends = yq: Adds support for yq, xq and tomlq
 	provides = jq.sh
 	conflicts = jq.sh
-	source = jq.sh-0.4.0.r1.tar.zst::https://git.stefanwimmer128.eu/stefanwimmer128/jq.sh-pkgbuild/-/package_files/62/download
+	source = https://git.stefanwimmer128.io/api/v4/projects/150/packages/generic/jq.sh/0.4.0-1/jq.sh-0.4.0-1-any.pkg.tar.zst
 	sha256sums = ae8cb9b4f61db2dfb94c00cf23d187c6d1f75fa0c3700c67163120cb9a35f035
 
 pkgname = jq.sh-bin
