@@ -7,7 +7,7 @@
 pkgbase=pjproject
 pkgname=("$pkgbase" "python-$pkgbase")
 pkgver=2.13
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source SIP stack and media stack'
 arch=(x86_64 aarch64 armv7h i686)
 url='https://www.pjsip.org/'
@@ -26,9 +26,8 @@ _libdepends=(python)
 makedepends=("${_pkgdepends[@]}"
              "${_libdepends[@]}"
              e2fsprogs
-             python-{build,installer}
+             python-{build,installer,wheel}
              python-setuptools
-             python-wheel
              swig)
 _archive="$pkgbase-$pkgver"
 _repourl="https://github.com/pjsip/$pkgbase"
