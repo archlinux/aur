@@ -1,0 +1,12 @@
+pkgbase = open-gpt-bin
+	pkgdesc = Free ChatGpt cli!
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://sourceforge.net/projects/open-gpt/
+	arch = x86_64
+	license = custom
+	depends = qt6-base
+	source = https://downloads.sourceforge.net/sourceforge/open-gpt/open-gpt.tar.gz
+	sha512sums = SKIP
+
+pkgname = open-gpt-bin
