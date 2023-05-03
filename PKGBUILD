@@ -1,6 +1,6 @@
 pkgname=('python-stagger')
 pkgver=1.0.1
-pkgrel=6
+pkgrel=7
 pkgdesc="ID3v1/ID3v2 tag manipulation package in pure Python 3"
 arch=('any')
 url="https://github.com/lorentey/stagger"
