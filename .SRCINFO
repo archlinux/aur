@@ -37,6 +37,6 @@ pkgbase = picom-simpleanims-next-git
 	conflicts = picom
 	replaces = compton-git
 	source = git+https://github.com/fdev31/picom.git#branch=next
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = picom-simpleanims-next-git

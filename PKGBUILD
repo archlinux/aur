@@ -23,7 +23,7 @@ provides=("compton" "compton-git" "picom")
 conflicts=("compton" "compton-git" "picom")
 replaces=("compton-git")
 source=("git+https://github.com/fdev31/${_gitname}.git#branch=next")
-md5sums=("SKIP")
+sha256sums=("SKIP")
 
 pkgver() {
     cd "${_gitname}"
