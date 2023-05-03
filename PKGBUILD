@@ -1,10 +1,10 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 
 pkgname=obs-studio-rc
-_pkgver=29.1.0-rc1
+_pkgver=29.1.0
 pkgver=${_pkgver//-/_}
 pkgrel=1
-epoch=5
+epoch=6
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -67,7 +67,7 @@ optdepends=(
   "v4l2loopback-dkms: Virtual camera output"
   "libajantv2: AJA NTV 2 support"
 )
-provides=("obs-studio=$pkgver" "obs-vst" "obs-websocket")
+provides=("obs-studio=$pkgver" "obs-vst" "obs-websocket" "obs-browser")
 conflicts=(
   "obs-studio" "obs-vst" "obs-websocket" "obs-browser"
   "obs-linuxbrowser" # This plugin is obsolete
@@ -117,8 +117,8 @@ build() {
     -DENABLE_SNDIO=ON \
     -DENABLE_BROWSER=ON \
     -DCEF_ROOT_DIR=/opt/cef-obs \
-    -DRELEASE_CANDIDATE="$_pkgver" ..
-#    -DOBS_VERSION_OVERRIDE="$_pkgver" ..
+    -DOBS_VERSION_OVERRIDE="$_pkgver" ..
+#    -DRELEASE_CANDIDATE="$_pkgver" ..
 #    -DBETA="$_pkgver" .. 
 
   sed -i "s|#define OBS_VERSION |#define OBS_VERSION \"$_pkgver-rc-$pkgrel\" //|" config/obsconfig.h
