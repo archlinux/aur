@@ -2,8 +2,15 @@ post_install() {
     :
 #!/bin/bash
 
-# Link to the binary
-ln -sf '/opt/lx-music-desktop/lx-music-desktop' '/usr/bin/lx-music-desktop'
+if type update-alternatives 2>/dev/null >&1; then
+    # Remove previous link if it doesn't use update-alternatives
+    if [ -L '/usr/bin/lx-music-desktop' -a -e '/usr/bin/lx-music-desktop' -a "`readlink '/usr/bin/lx-music-desktop'`" != '/etc/alternatives/lx-music-desktop' ]; then
+      rm -f '/usr/bin/lx-music-desktop'
+    fi
+    update-alternatives --install '/usr/bin/lx-music-desktop' 'lx-music-desktop' '/opt/lx-music-desktop/lx-music-desktop' 100
+else
+    ln -sf '/opt/lx-music-desktop/lx-music-desktop' '/usr/bin/lx-music-desktop'
+fi
 
 # SUID chrome-sandbox for Electron 5+
 chmod 4755 '/opt/lx-music-desktop/chrome-sandbox' || true
@@ -17,6 +24,10 @@ post_remove() {
 #!/bin/bash
 
 # Delete the link to the binary
-rm -f '/usr/bin/lx-music-desktop'
+if type update-alternatives >/dev/null 2>&1; then
+    update-alternatives --remove 'lx-music-desktop' '/usr/bin/lx-music-desktop'
+else
+    rm -f '/usr/bin/lx-music-desktop'
+fi
 
 }
