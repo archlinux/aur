@@ -1,8 +1,8 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgbase=web-eid-webextension
 pkgname=("firefox-extension-web-eid" "chromium-extension-web-eid")
-pkgver=2.2.0
-pkgrel=2
+pkgver=2.2.1
+pkgrel=1
 pkgdesc="Web eID browser extension"
 arch=('any')
 url="https://web-eid.eu/"
@@ -13,6 +13,7 @@ source=("$pkgbase::git+https://github.com/web-eid/web-eid-webextension.git?signe
 sha256sums=("SKIP" "SKIP")
 validpgpkeys=(
     '1282B0F8809D0DC632C85A3F86B611CE24492160'  # Mart Somermaa
+    'D1EBC666EFCBFBD3CFC2EBAA90C0B5E75C3B195D'  # Raul Metsma
 )
 
 prepare() {
@@ -25,7 +26,7 @@ prepare() {
 build() {
     cd "$srcdir/$pkgbase"
     npm install --cache "${srcdir}/npm-cache"
-    TOKEN_SIGNING_BACKWARDS_COMPATIBILITY=true SOURCE_DATE_EPOCH=$(git log -1 --pretty=%ct) npm run clean build package
+    SOURCE_DATE_EPOCH=$(git log -1 --pretty=%ct) npm run clean build package
 }
 
 package_firefox-extension-web-eid() {
