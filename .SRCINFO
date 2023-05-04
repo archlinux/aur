@@ -1,7 +1,7 @@
 pkgbase = random-rs
-	pkgdesc = Simple CLI multitool
-	pkgver = 0.1.0
-	pkgrel = 5
+	pkgdesc = Generate random numbers from CLI
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/one-d-wide/random-rs
 	arch = x86_64
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = random-rs
 	depends = gcc-libs
 	provides = random
 	conflicts = random
-	source = random-rs.tar.gz::https://github.com/one-d-wide/random-rs/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = fda45b9efab1c4eb27ef504ac42c9e45294177c9c12c28c83c4cfb31534c151e
+	source = random-rs.tar.gz::https://github.com/one-d-wide/random-rs/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 
 pkgname = random-rs
