@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 # Contributor: Liviu Cristian Mirea-Ghiban <liviu dot mirea at wecodepixels dot com>
-heidisqlrelease=6576
-shortpkgver=12.2
+heidisqlrelease=6659
+shortpkgver=12.4
 pkgname=heidisql
 pkgver=${shortpkgver}.0.${heidisqlrelease}
 pkgrel=1
@@ -16,8 +16,8 @@ source=("http://www.heidisql.com/downloads/releases/HeidiSQL_${shortpkgver}_64_P
         "${pkgname}.png"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-md5sums=('32a4d278675d703ed06b45d11b389890'
-         'b9ca482a2c8c264c6fdeb24c3d86b382'
+md5sums=('3f6a854eb5d6358486ea2c9a2e9cf871'
+         'fc747ca291f259656d79925988a2e19b'
          'df3673bc694beceb8ed6cfeace6b6c3f'
          'ea4fc6959a315ef5c2bf8e22c479e22a'
          '9c65ae391e4980c639b34580b817962f')
