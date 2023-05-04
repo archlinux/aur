@@ -6,6 +6,7 @@ pkgdesc='Bitwarden Command-line Interface'
 arch=(x86_64)
 url='https://github.com/bitwarden/clients'
 license=(GPL3)
+depends=(gcc-libs glibc)
 provides=(bitwarden-cli)
 conflicts=(bitwarden-cli)
 options=('!strip')
