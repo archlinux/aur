@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=cmake-language-server-git
-pkgver=v0.1.6.r5.g60c376a
+pkgver=v0.1.7.r1.gcd7ba40
 pkgrel=1
 pkgdesc="Python based cmake language server"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/regen100/cmake-language-server"
 license=('MIT')
 groups=()
 depends=("python-pygls" "python-pyparsing" "cmake" "cmake-format")
-makedepends=("python-build" "python-installer" "git" "python-pdm")
+makedepends=("python-build" "python-installer" "git" "python-pdm" "python-pdm-pep517")
 optdepends=()
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
