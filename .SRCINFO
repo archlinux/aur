@@ -1,6 +1,6 @@
 pkgbase = motrix-appimage
 	pkgdesc = A full-featured download manager,Support downloading HTTP, FTP, BitTorrent, Magnet, etc.
-	pkgver = 1.8.15
+	pkgver = 1.8.19
 	pkgrel = 1
 	url = https://motrix.app/
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = motrix-appimage
 	depends = hicolor-icon-theme
 	conflicts = motrix
 	options = !strip
-	source = motrix-1.8.15.AppImage::https://github.com/agalwood/Motrix/releases/download/v1.8.15/Motrix-1.8.15.AppImage
+	source = motrix-1.8.19.AppImage::https://github.com/agalwood/Motrix/releases/download/v1.8.19/Motrix-1.8.19.AppImage
 	source = LICENSE::https://github.com/agalwood/Motrix/raw/master/LICENSE
-	sha256sums = 61a66fe2fa846312344b59df5a1f750d54a43dc91bda2a5e6098ad54e301d312
+	sha256sums = a123be547ddb65c8e75e3102a9980e9acbe538e35b7e03aae74a952ef1dd29fa
 	sha256sums = f60775e705e2c7418665ac2c7f386d28cc2927df98a440ced1703a7ed3ca86b7
 
 pkgname = motrix-appimage
