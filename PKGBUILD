@@ -4,7 +4,7 @@ _name=django-otp
 pkgbase=python-django-otp
 pkgname=('python-django-otp')
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A pluggable framework for adding two-factor authentication to Django using one-time passwords"
 url="https://github.com/django-otp/django-otp"
 license=('BSD')
@@ -23,7 +23,7 @@ build() {
 
 check() {
   cd "$srcdir/${_name}-${pkgver}"
-  tox -e py310
+  tox -e py311
 }
 
 package() {

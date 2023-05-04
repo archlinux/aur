@@ -1,7 +1,7 @@
 pkgbase = python-django-otp
 	pkgdesc = A pluggable framework for adding two-factor authentication to Django using one-time passwords
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/django-otp/django-otp
 	arch = any
 	license = BSD
