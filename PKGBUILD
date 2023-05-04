@@ -10,8 +10,8 @@ url="https://github.com/Zeioth/wofi-emoji"
 license=("MIT")
 depends=("wofi" "wtype") # thanks to gilbs https://aur.archlinux.org/account/gilbs
 makedepends=("git" "jq" "curl")
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+provides=(wofi-emoji-git)
+conflicts=(wofi-emoji)
 source=("${pkgname}::git+${url}")
 sha512sums=("SKIP")
 
