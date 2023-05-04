@@ -3,7 +3,7 @@
 _pkgbasename=connexion
 pkgname=python-connexion
 pkgver=2.14.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Design-First framework for Python with support for Swagger/OpenAPI, automatic endpoint validation & OAuth2'
 arch=(any)
 url="https://github.com/spec-first/connexion"

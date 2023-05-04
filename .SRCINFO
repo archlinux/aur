@@ -1,7 +1,7 @@
 pkgbase = python-connexion
 	pkgdesc = Design-First framework for Python with support for Swagger/OpenAPI, automatic endpoint validation & OAuth2
 	pkgver = 2.14.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/spec-first/connexion
 	arch = any
 	license = Apache2
