@@ -1,6 +1,6 @@
 # Maintainer: Patrick Rogers <patrick@thewebzone.net>
 pkgname='linux-air-combat'
-pkgver=09p14
+pkgver=09p15
 pkgrel=1
 pkgdesc="Free open source combat flight simulator"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
