@@ -3,10 +3,10 @@
 _pkgname=copulae
 pkgname=python-$_pkgname
 pkgver=0.7.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Multivariate data modelling with Copulas in Python'
-arch=('x86_64')
-url='https://copulae.readthedocs.io/en/stable/copulae/index.html'
+arch=('x86_64' 'aarch64')
+url='https://copulae.readthedocs.io'
 license=('MIT')
 depends=('python-statsmodels' 'python-scikit-learn' 'python-wrapt')
 makedepends=('python-setuptools' 'cython')

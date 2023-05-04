@@ -1,9 +1,10 @@
 pkgbase = python-copulae
 	pkgdesc = Multivariate data modelling with Copulas in Python
 	pkgver = 0.7.7
-	pkgrel = 1
-	url = https://copulae.readthedocs.io/en/stable/copulae/index.html
+	pkgrel = 2
+	url = https://copulae.readthedocs.io
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	checkdepends = python-pytest
 	makedepends = python-setuptools
