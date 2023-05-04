@@ -2,9 +2,9 @@
 _pkgname=dlx
 pkgname=python-dlx
 pkgver=1.0.4
-pkgrel=5
+pkgrel=6
 pkgdesc="Implementation of Donald Knuth's Dancing Links algorithm"
-arch=('x86_64')
+arch=('any')
 url="https://pypi.org/project/dlx/"
 license=('Apache')
 depends=('python')
