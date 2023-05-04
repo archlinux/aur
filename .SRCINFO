@@ -1,7 +1,7 @@
 pkgbase = python-marshmallow-polyfield
 	pkgdesc = An extension to marshmallow to allow for polymorphic fields
 	pkgver = 5.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/marshmallow-polyfield/
 	arch = any
 	license = Apache
