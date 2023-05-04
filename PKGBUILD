@@ -2,7 +2,7 @@
 
 pkgname=python-nut2
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Communicate with Network UPS Tools servers from Python"
 arch=('any')
 url="https://github.com/rshipp/python-nut2"

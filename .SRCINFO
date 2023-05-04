@@ -1,7 +1,7 @@
 pkgbase = python-nut2
 	pkgdesc = Communicate with Network UPS Tools servers from Python
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rshipp/python-nut2
 	arch = any
 	license = GPL3
