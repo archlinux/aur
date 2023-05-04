@@ -41,10 +41,10 @@ AZ_DISPATCH_TEMPLATE = """#!/usr/bin/env bash
 {install_dir}/bin/python -m azure.cli "$@"
 """
 
-VIRTUALENV_VERSION = '16.7.11'
+VIRTUALENV_VERSION = '20.23.0'
 VIRTUALENV_ARCHIVE = 'virtualenv-'+VIRTUALENV_VERSION+'.tar.gz'
 VIRTUALENV_DOWNLOAD_URL = 'https://pypi.python.org/packages/source/v/virtualenv/'+VIRTUALENV_ARCHIVE
-VIRTUALENV_ARCHIVE_SHA256 = '0f73ef551d889bf4b3241f1819aaf5f5c7e27259c1537255b1f63207552919b1'
+VIRTUALENV_ARCHIVE_SHA256 = 'a85caa554ced0c0afbd0d638e7e2d7b5f92d23478d05d17a76daeac8f279f924'
 
 DEFAULT_INSTALL_DIR = os.path.expanduser(os.path.join('~', 'lib', 'azure-cli'))
 DEFAULT_EXEC_DIR = os.path.expanduser(os.path.join('~', 'bin'))
@@ -140,7 +140,7 @@ def create_virtualenv(tmp_dir, install_dir):
     package_tar.close()
     virtualenv_dir_name = 'virtualenv-'+VIRTUALENV_VERSION
     working_dir = os.path.join(tmp_dir, virtualenv_dir_name)
-    cmd = [sys.executable, 'virtualenv.py', '--python', sys.executable, install_dir]
+    cmd = [sys.executable, 'src/virtualenv', '--python', sys.executable, install_dir]
     exec_command(cmd, cwd=working_dir)
 
 
