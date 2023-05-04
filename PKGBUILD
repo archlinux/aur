@@ -2,7 +2,7 @@
 pkgname=python-dbx
 _name=dbx
 pkgver=0.8.11
-pkgrel=1
+pkgrel=2
 pkgdesc="DataBricks CLI eXtensions - aka dbx is a CLI tool for advanced Databricks jobs management."
 arch=(any)
 url="https://docs.databricks.com/dev-tools/dbx.html"
