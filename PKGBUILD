@@ -7,7 +7,7 @@ pkgdesc="Low level CD dumper utility"
 provides=('redumper')
 pkgver=build_119
 pkgrel=1
-_pkgfilename=" redumper-2023.04.24_build119-Linux" # deviation from release tag, inclusion of date makes archive name nondeterministic :(
+_pkgfilename="redumper-2023.04.24_build119-Linux" # deviation from release tag, inclusion of date makes archive name nondeterministic :(
 license=('GPL3')
 source=('https://github.com/superg/redumper/releases/download/build_119/redumper-2023.04.24_build119-Linux.zip'
 'https://raw.githubusercontent.com/superg/redumper/main/README.md'
