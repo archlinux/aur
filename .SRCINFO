@@ -1,7 +1,7 @@
 pkgbase = update-dotdee
 	pkgdesc = Generic modular configuration file manager
 	pkgver = 6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/xolox/python-update-dotdee
 	arch = any
 	license = MIT
@@ -21,4 +21,3 @@ pkgname = update-dotdee
 	depends = python-update-dotdee
 
 pkgname = python-update-dotdee
-

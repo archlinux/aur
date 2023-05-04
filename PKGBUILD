@@ -5,7 +5,7 @@ pkgname=(
 )
 pkgbase=update-dotdee
 pkgver=6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Generic modular configuration file manager"
 arch=(any)
 url="https://github.com/xolox/python-update-dotdee"
