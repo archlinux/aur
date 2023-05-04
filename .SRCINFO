@@ -1,10 +1,13 @@
 pkgbase = python-session-info
 	pkgdesc = Print version information for loaded modules in the current session, python, and OS
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/joelostblom/session_info
 	arch = any
 	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python-stdlib-list
 	source = https://files.pythonhosted.org/packages/source/s/session_info/session_info-1.0.0.tar.gz
