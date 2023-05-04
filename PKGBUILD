@@ -1,6 +1,6 @@
 pkgname=mingw-w64-coin-or-cbc
 pkgver=2.10.10
-pkgrel=1
+pkgrel=2
 pkgdesc="COIN-OR branch-and-cut mixed integer programming solver (mingw-w64)"
 arch=('any')
 url="https://projects.coin-or.org/Cbc"
@@ -46,6 +46,7 @@ package() {
     cd "$srcdir"/Cbc-releases-$pkgver/build-${_arch}
     PKG_CONFIG_PATH_CUSTOM="$pkgdir"/usr/${_arch}/lib/pkgconfig/ \
     make DESTDIR="$pkgdir"/ install
+    sed -i "s|/usr/${_arch}/lib/nauty.a||g" "$pkgdir"/usr/${_arch}/lib/pkgconfig/cbc.pc
     rm -r "$pkgdir"/usr/${_arch}/share
     rm "$pkgdir"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
