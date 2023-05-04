@@ -10,7 +10,7 @@ license=('Apache')
 depends=('java-runtime>=11')
 source=("https://github.com/flix/flix/releases/download/v$pkgver/flix.jar"
         "run.sh")
-sha256sums=('9623ce0107dd01873626551bf815d0e4a8533987b10b5bc1088b8ed274f68e19'
+sha256sums=('1c084d360f1ffae0b640a62a92e8092321fb55a90d03adf54b6fd4136bc6fb93'
             'a51177acf0372c1c45110136341662617a2e2313c78a7fe8eaf9df22cdb17aa5')
 noextract=('flix.jar')
 
