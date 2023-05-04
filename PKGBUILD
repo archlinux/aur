@@ -4,7 +4,7 @@
 pkgname=python-demjson
 _pkgname=${pkgname#python-}
 pkgver=2.2.4
-pkgrel=6
+pkgrel=7
 pkgdesc="Encoder, decoder, and lint/validator for JSON (JavaScript Object Notation) compliant with RFC 7159"
 arch=('any')
 url="https://github.com/dmeranda/demjson"
