@@ -2,7 +2,7 @@
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=pyprland
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy scratchpads, smart monitor placement and more Hyprland tweaks"
 arch=(any)
 url="https://github.com/fdev31/pyprland"
@@ -26,7 +26,12 @@ pkgver() {
 	printf "%s" "$(git describe --tags)"
 }
 
+build() {
+	cd "$srcdir/${pkgname%-git}"
+    python -m build --wheel --no-isolation
+}
+
 package() {
 	cd "$srcdir/${pkgname%-git}"
-    pip install --root="${pkgdir}/" .
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
