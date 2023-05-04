@@ -3,7 +3,7 @@
 
 pkgname=plom
 pkgver=0.7.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Paperless open marking'
 arch=(any)
 url="https://gitlab.com/$pkgname/$pkgname"
@@ -33,7 +33,8 @@ depends=(opencv
          python
          "${_pydeps[@]/#/python-}"
          pyzbar)
-makedepends=(python-setuptools)
+makedepends=(python-{build,installer,wheel}
+             python-setuptools)
 checkdepends=(python-pytest)
 _archive="$pkgname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
@@ -41,7 +42,7 @@ sha256sums=('3bcf2032ddd7a90e9a031cabbf5df2096e02599324f83edff46916a156971607')
 
 build() {
 	cd "$_archive"
-	python setup.py build
+	python -m build -wn
 }
 
 check() {
@@ -53,5 +54,5 @@ check() {
 
 package() {
 	cd "$_archive"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer -d "$pkgdir" dist/*.whl
 }

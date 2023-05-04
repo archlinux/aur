@@ -1,11 +1,14 @@
 pkgbase = plom
 	pkgdesc = Paperless open marking
 	pkgver = 0.7.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/plom/plom
 	arch = any
 	license = AGPL3
 	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = opencv
 	depends = python
