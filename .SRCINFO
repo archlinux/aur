@@ -1,6 +1,6 @@
 pkgbase = unoffical-weread-appimage
 	pkgdesc = Unoffical WeRead Appimage Client.微信读书是广州腾讯科技有限公司推出的阅读软件.为用户推荐合适的书籍，并可查看微信好友的读书动态、与好友讨论正在阅读的书籍等.
-	pkgver = 2.0.0alpha
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://weread.qq.com
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = unoffical-weread-appimage
 	depends = zlib
 	depends = glibc
 	conflicts = weread-pake
-	source = weread-2.0.0-alpha.AppImage::https://github.com/tw93/Pake/releases/download/V2.0.0-alpha/WeRead_x86_64.AppImage
+	source = weread-2.0.0.AppImage::https://github.com/tw93/Pake/releases/download/V2.0.0/WeRead_x86_64.AppImage
 	source = LICENSE.html::https://weread.qq.com/web/copyright
-	sha256sums = b1f5caf0f432b4f6eb6944caaba041b91b9f4b565198e96999211f7065ebf910
-	sha256sums = 8236399aa0697f0ca53660fe8e895e32b2cd10db6adcaea4c4c987ba1c856c09
+	sha256sums = 156b74ba4a548f86c86fc73e2e9922cc4169c73221dc72b15002a6eef7f9537e
+	sha256sums = a92c199faf67e7ad503dc441e8ceb1d4c79f2516d3237386d27b6995daf259f8
 
 pkgname = unoffical-weread-appimage
