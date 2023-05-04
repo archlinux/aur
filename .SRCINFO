@@ -1,7 +1,7 @@
 pkgbase = python-utm
 	pkgdesc = Bidirectional UTM-WGS84 converter for python
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Turbo87/utm
 	arch = any
 	license = MIT

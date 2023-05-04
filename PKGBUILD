@@ -3,7 +3,7 @@
 
 pkgname=python-utm
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bidirectional UTM-WGS84 converter for python"
 arch=("any")
 license=("MIT")
