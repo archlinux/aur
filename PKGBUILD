@@ -14,7 +14,7 @@ makedepends=('cmake' 'gcc')
 conflicts=("${_pkgname-*}")
 provides=("${_pkgname-*}")
 source=("https://github.com/PixlOne/LogiOps/releases/download/v$pkgver/logiops-v$pkgver.tar.gz")
-sha256sums=('27fee9bf25c0235f9afa00941ce44bfb6611544d6cd2c0948a22a6d5534a7691')
+sha256sums=('769123729491ee17b1fa4290b5e7ced2d466f5bd034970731df7975c51044e35')
 
 build() {
     cmake -B build -S "$pkgname-v$pkgver"
