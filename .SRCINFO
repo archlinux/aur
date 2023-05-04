@@ -1,6 +1,6 @@
 pkgbase = aurutilsutils-git
 	pkgdesc = Utilities extending aurutils
-	pkgver = r3.b404406
+	pkgver = r23.96dae82
 	pkgrel = 1
 	url = https://github.com/VorpalBlade/aurutilsutils
 	arch = any
