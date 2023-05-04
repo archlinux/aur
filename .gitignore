@@ -4,3 +4,4 @@ src
 8188eu
 !.SRCINFO
 !PKGBUILD
+!blacklist-rtl8xxxu.conf
