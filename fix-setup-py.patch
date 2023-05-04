@@ -1,0 +1,15 @@
+--- setup.py.orig	2023-05-04 22:59:43.061254240 +0200
++++ setup.py	2023-05-04 23:01:35.503508530 +0200
+@@ -16,10 +16,10 @@
+ 
+     install_requires=[
+         'beets>=1.4.6',
+-        'six>=1.9'
++        'six>=1.9',
+         'requests',
+         'beautifulsoup4',
+-        'isodate'
++        'isodate',
+     ],
+ 
+     classifiers=[
