@@ -2,7 +2,7 @@
 
 pkgname=zmeventnotification
 pkgver=6.1.28
-pkgrel=1
+pkgrel=2
 pkgdesc='A machine learning powered, secure websocket & MQTT based event notification server for ZoneMinder'
 arch=('any')
 url='https://github.com/ZoneMinder/zmeventnotification'
@@ -42,6 +42,8 @@ source=("${pkgname}-git::git+https://github.com/ZoneMinder/${pkgname}.git#tag=v$
         # Google Coral Edge TPU
         'https://dl.google.com/coral/canned_models/coco_labels.txt'
         'https://github.com/google-coral/edgetpu/raw/master/test_data/ssd_mobilenet_v2_coco_quant_postprocess_edgetpu.tflite'
+        'https://github.com/google-coral/edgetpu/raw/master/test_data/ssd_mobilenet_v2_face_quant_postprocess_edgetpu.tflite'
+        'https://github.com/google-coral/test_data/raw/master/ssdlite_mobiledet_coco_qat_postprocess_edgetpu.tflite'
         )
 sha256sums=('SKIP'
             '22489ea38575dfa36c67a90048e8759576416a79d32dc11e15d2217777b9a953'
@@ -54,7 +56,9 @@ sha256sums=('SKIP'
             'f858e3724962eedf3ac44e3b6cb3f0c3d9ed067c306bb831f539c578b924c90e'
             'cf9fbfd0f6d4869b35762f56100f50ed05268084078805f0e7989efe5bb8ca87'
             '93f235896748537fc71325a070ee32e9a0afda2481ceb943559325619763fa6d'
-            '232775917b5e0162b25c07bb1502ec3bbdeb5d0f1a835aba3097d5a2f4fc11e1')
+            '232775917b5e0162b25c07bb1502ec3bbdeb5d0f1a835aba3097d5a2f4fc11e1'
+            'cce17f7c3c5bb8cbb885db916edbeb273240a7e58348aa0f9c07dbebdbd31fd9'
+            'b69e508ef2a670e06b80bd3e5559a827d5cd8d557c95d5e332cbf1d31d434a2e')
      
 prepare() {
     cd ${pkgname}-git
