@@ -1,0 +1,27 @@
+pkgbase = intel-hybrid-codec-driver-git
+	pkgdesc = Libva support for partially hardware accelerated encode and decode on Haswell and newer
+	pkgver = 2.0.0.r170.20220515.cfb3b71
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/kcning/intel-hybrid-driver
+	install = intel-hybrid-codec-driver.install
+	arch = x86_64
+	license = MIT
+	makedepends = autoconf
+	makedepends = git
+	depends = libva
+	depends = libcmrt
+	optdepends = libva-intel-driver-hybrid: To be able to use the full hw codecs with hybrid codecs
+	provides = intel-hybrid-codec-driver=2.0.0.r170.20220515.cfb3b71
+	conflicts = intel-hybrid-codec-driver
+	replaces = intel-hybrid-codec-driver<=2.0.0.r170.7961945
+	source = intel-hybrid-driver::git+https://github.com/kcning/intel-hybrid-driver.git
+	source = gcc10-fix.patch
+	source = vadriverinit-fix.patch
+	source = intel-hybrid-codec-driver.install
+	sha256sums = SKIP
+	sha256sums = 90c01a1771f90007b001057edd4ada66751e54ccc380b3d87672694ab7ea92cb
+	sha256sums = 5359cfa322403bad1a20dc55de290c5f5c2f8d56afeba9c4a84dfc35cc89ec8b
+	sha256sums = 0465f0f9a29b5168ecb51a07bcca6db85637f847e0ac5bffdea4152ba329f3f2
+
+pkgname = intel-hybrid-codec-driver-git
