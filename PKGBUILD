@@ -14,7 +14,7 @@ conflicts=("${_pkgname}-learner-pake")
 depends=('hicolor-icon-theme' 'zlib' 'glibc')
 _install_path="/opt/appimages"
 source=("${_pkgname}-${_pkgver}.AppImage::${_githuburl}/releases/download/V${_pkgver}/qwerty_x86_64.AppImage")
-sha256sums=('30d2d716c230a38b5e8205f6a7fbc4c63a1a420712a5f4afda15bf363400fed1')
+sha256sums=('d939dc0a2b8ecd310b214378268abdcee5b5ac563dc9bc5380e33d98174596f5')
 prepare() {
     chmod a+x "${_pkgname}-${_pkgver}.AppImage"
     "./${_pkgname}-${_pkgver}.AppImage" --appimage-extract > /dev/null
