@@ -1,14 +1,15 @@
 # Maintainer: Brodi <me@brodi.space>
+# Maintainer: Zeioth <zeioth@hotmail.com>
 _pkgname=wofi-emoji
 pkgname=${_pkgname}-git
 pkgver=0.r11
 pkgrel=2
 pkgdesc="Emoji picker for Wayland using wofi and wtype"
 arch=("any")
-url="https://github.com/dln/wofi-emoji"
+url="https://github.com/Zeioth/wofi-emoji"
 license=("MIT")
 depends=("wofi" "wtype") # thanks to gilbs https://aur.archlinux.org/account/gilbs
-makedepends=("git" "jq")
+makedepends=("git" "jq" "curl")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${pkgname}::git+${url}")
