@@ -1,7 +1,7 @@
 pkgbase = effitask
 	pkgdesc = Graphical task manager, based on the todo.txt format
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sanpii/effitask
 	arch = x86_64
 	license = MIT

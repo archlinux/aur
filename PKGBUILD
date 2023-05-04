@@ -1,7 +1,7 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=effitask
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphical task manager, based on the todo.txt format'
 url="https://github.com/sanpii/$pkgname"
 arch=('x86_64')
@@ -11,11 +11,18 @@ makedepends=('cargo' 'rust')
 source=("$url/archive/$pkgver.tar.gz")
 sha256sums=('1bbc5d0151e9b2a7b2da60d3125146091f03e31c3685ce9664cd0ff7eb38f7fc')
 
+prepare()
+{
+    cd "$srcdir/$pkgname-$pkgver"
+
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 build()
 {
     cd "$pkgname-$pkgver"
 
-    cargo build --release
+    cargo build --frozen --release
 }
 
 package()
