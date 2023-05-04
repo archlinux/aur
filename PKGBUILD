@@ -9,7 +9,7 @@ pkgdesc='An Adwaita style extra icons theme for Gnome Shell.'
 arch=(any)
 url="https://github.com/somepaulo/$_reponame"
 license=(GPL3)
-depends=('gnome-shell>=43')
+depends=(adwaita-icon-theme)
 makedepends=(git)
 source=("git+$url#commit=$_commit")
 md5sums=(SKIP)

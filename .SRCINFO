@@ -6,7 +6,7 @@ pkgbase = morewaita
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = gnome-shell>=43
+	depends = adwaita-icon-theme
 	source = git+https://github.com/somepaulo/MoreWaita#commit=bf4a8048bc43c79994ab518c336a9e62e314d42b
 	md5sums = SKIP
 
