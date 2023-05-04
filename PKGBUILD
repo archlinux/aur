@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="python-degiro-connector"
-pkgver=2.0.22
+pkgver=2.0.23
 pkgrel=1
 pkgdesc="Yet another library to access Degiro's API"
 url="https://github.com/Chavithra/degiro-connector"
@@ -17,7 +17,7 @@ depends=("python"
          "python-wrapt")
 makedepends=("python-build" "python-installer" "python-wheel")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Chavithra/degiro-connector/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('04015ecb3ddb1b23573abe02cbee2dc9fc42df58d65d3168fad436a7f82d795e')
+sha256sums=('0b19911cb0899d81c62c61ae72cdfe654b82496c1b7f128b21b7b5ba17d27521')
 options=("!strip")
 
 build(){
