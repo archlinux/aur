@@ -4,7 +4,7 @@
 pkgname='python-jetforce'
 _pkgname=${pkgname##python-}
 pkgver=0.9.1
-pkgrel=7
+pkgrel=8
 pkgdesc='An experimental Gemini server written in Python'
 arch=('any')
 license=('custom:Floodgap')
@@ -14,7 +14,7 @@ source=(
 )
 depends=(
   'python'
-  'python-dataclasses'
+  'python-cryptography'
   'python-twisted'
   'python-pyopenssl'
 )
