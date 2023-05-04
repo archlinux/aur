@@ -1,5 +1,5 @@
 diff --git a/engine.js b/engine.js
-index cad99c3..097914b 100644
+index cad99c3..22e7c38 100644
 --- a/engine.js
 +++ b/engine.js
 @@ -5,10 +5,10 @@ const path = require('path')
@@ -15,7 +15,77 @@ index cad99c3..097914b 100644
  const Store = require('electron-store')
  const uuidv4 = require('uuid/v4')
  const utils = require('./utils')
-@@ -948,7 +948,7 @@ function shortcut_callback_enter() {
+@@ -191,7 +191,7 @@ function get_appusage_data(day_id) {
+ 
+             notify_windows('appusage_data', {
+                 rows: rows,
+-                lock: store.get('lock'),
++                lock: false,
+                 uuid: UUID
+             })
+ 
+@@ -211,7 +211,7 @@ function get_trend_data(start_day_id, end_day_id) {
+ 
+             notify_windows('trend_data', {
+                 rows: rows,
+-                lock: store.get('lock'),
++                lock: false,
+                 uuid: UUID,
+                 chart_fill: store.get('chart_fill'),
+                 chart_tension: store.get('chart_tension')
+@@ -409,32 +409,9 @@ function tick_tock() {
+     }
+     */
+     activeWin().then(result => {
+-        if (result.app == '') {
+-            console.log('empty app')
+-        } else {
++        let appName = result.title;
++        if(true){
+             console.log(new Date().toLocaleTimeString(), result)
+-
+-            let appName = result.app
+-
+-            if (utils.is_win()) {
+-                if (result.app == "ApplicationFrameHost.exe") {
+-                    //UWP应用，并且对Edge特别处理一下
+-                    appName = "UWP application"
+-                    if (result.title.includes('Microsoft Edge')) {
+-                        appName = "Microsoft Edge"
+-                    }
+-                } else {
+-                    //win32 通过appPath和fdc获取文件的description来作为名字
+-                    if (result.appPath in win32_apppath_filedesc) {
+-                    } else {
+-                        let file_desc = fdc.get_file_desc(result.appPath)
+-                        //如果file desc是空的，则仍旧使用appName
+-                        win32_apppath_filedesc[result.appPath] = file_desc.length > 0 ? file_desc : appName
+-                    }
+-                    appName = win32_apppath_filedesc[result.appPath]
+-                }
+-            }
+-
+             console.log('AppName=', appName)
+             if (appName in last_minute_active_win_map) {
+                 last_minute_active_win_map[appName] += TICK_STEP
+@@ -882,14 +859,14 @@ ipcMain.on('unlock', function (e, data) {
+ })
+ 
+ ipcMain.on('check_lock', function (e, data) {
+-    notify_windows('check_lock_result', store.get('lock'))
++    notify_windows('check_lock_result', false)
+ })
+ 
+ function check_auto_unlock() {
+ 
+     if (TEST_LOCK) return;
+ 
+-    if (store.get('lock')) {
++    if (false) {
+         if (!store.has('lock_day')) {
+             store.set('lock_day', utils.gen_day_id())
+         }
+@@ -948,7 +925,7 @@ function shortcut_callback_enter() {
      last_minute_keyboard_stroke_energy += 5
      last_tick_keyboard_stroke += 1
      globalShortcut.unregister('enter')
@@ -24,7 +94,7 @@ index cad99c3..097914b 100644
      const ret = globalShortcut.register('enter', shortcut_callback_enter)
      if (!ret) {
          console.log('[Error] hotkey enter failed')
-@@ -960,7 +960,7 @@ function shortcut_callback_backspace() {
+@@ -960,7 +937,7 @@ function shortcut_callback_backspace() {
      last_minute_keyboard_stroke_energy += 5
      last_tick_keyboard_stroke += 1
      globalShortcut.unregister('backspace')
@@ -33,7 +103,7 @@ index cad99c3..097914b 100644
      const ret = globalShortcut.register('backspace', shortcut_callback_backspace)
      if (!ret) {
          console.log('[Error] hotkey backspace failed')
-@@ -1006,7 +1006,7 @@ function shortcut_callback_up() {
+@@ -1006,7 +983,7 @@ function shortcut_callback_up() {
      last_minute_keyboard_stroke_energy += 5
      last_tick_keyboard_stroke += 1
      globalShortcut.unregister('up')
@@ -42,7 +112,7 @@ index cad99c3..097914b 100644
      const ret = globalShortcut.register('up', shortcut_callback_up)
      if (!ret) {
          console.log('[Error] hotkey up failed')
-@@ -1019,7 +1019,7 @@ function shortcut_callback_down() {
+@@ -1019,7 +996,7 @@ function shortcut_callback_down() {
      last_minute_keyboard_stroke_energy += 5
      last_tick_keyboard_stroke += 1
      globalShortcut.unregister('down')
@@ -51,6 +121,13 @@ index cad99c3..097914b 100644
      const ret = globalShortcut.register('down', shortcut_callback_down)
      if (!ret) {
          console.log('[Error] hotkey down failed')
+@@ -1038,4 +1015,4 @@ function load_juzi() {
+             console.log('juzi.json not exist, use default')
+         }
+     })
+-}
+\ No newline at end of file
++}
 diff --git a/fdc.js b/fdc.js
 index cbabce0..4474f18 100644
 --- a/fdc.js
@@ -63,6 +140,39 @@ index cbabce0..4474f18 100644
  const iconv = require('iconv-lite');
  const os = require('os');
  
+diff --git a/index.js b/index.js
+index 945a15e..77fcefb 100644
+--- a/index.js
++++ b/index.js
+@@ -970,10 +970,10 @@ function open_settings_window() {
+ 
+ // MOVING COUNT
+ function refresh_moving_count() {
+-  $.get("http://adicons.boringuniverse.com/ct/r", function (response, body) {
++  $.get("https://example.com/", function (response, body) {
+     //更新字面
+     console.log(response)
+-    my_set_text('second_comment', locale.g(`Live online ${response.moving}/${response.total}`, `Live Online ${response.moving}/${response.total}`))
++    my_set_text('second_comment', locale.g(`Live online ${114514}/${1919810}`, `Live Online ${114514}/${1919810}`))
+     console.log('set second_comment')
+   })
+ }
+@@ -1054,7 +1054,7 @@ function may_check_update() {
+ 
+ 
+ function check_update() {
+-  $.get("http://afcapp.boringuniverse.com/version.json", function (response, body) {
++  $.get("https://example.com/", function (response, body) {
+ 
+     let myVerCode = utils.version_string_2_code(electron.remote.app.getVersion())
+ 
+@@ -1114,4 +1114,4 @@ electron.ipcRenderer.on('chart_tension_change', (event, data) => {
+     mychart.update()
+   }
+ 
+-})
+\ No newline at end of file
++})
 diff --git a/main.js b/main.js
 index fe32fcd..e338950 100644
 --- a/main.js

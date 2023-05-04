@@ -6,7 +6,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=apptimer
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="APP用量统计，工作小时数统计，掌握全天/周/月工作状态"
 arch=(x86_64 aarch64)
@@ -25,10 +25,12 @@ options=(!strip)
 install=
 changelog=
 source=("http://apptimer.fatecore.com/download/latest/overwork-win32-latest.zip"
-	patch)
+	patch
+	active-win.patch)
 noextract=()
 sha256sums=('cb5e4394fc9c9d4044c6a244a99f33262aebcf1483c73121ad5cb3c040b67def'
-            '283b6dff88e74ff2c8038b3e7097a79581f081cd9fcf2e6e7d28079c323ae9dd')
+            'e5ffdbbad49e5e5ca5942ba6a8a223640340b46b808c23a442a1314bf8643b14'
+            '1fe7b048fb4ac1772ccaa5080b90f9f6471c467d7f9fdfa637b1851934108b94')
 validpgpkeys=()
 
 prepare() {
@@ -43,6 +45,8 @@ prepare() {
 	npm i sqlite3@5.0.2 ffi-napi@4.0.3 active-win@8.1.0 node-key-sender@1.0.11
 	npm uninstall ffi active-win-lite robotjs
 	patch -p1 < $srcdir/patch
+	pushd node_modules/active-win/lib/
+	patch -p1 < $srcdir/active-win.patch
 }
 
 package() {
