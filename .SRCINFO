@@ -17,9 +17,9 @@ pkgbase = mysterium-vpn-desktop-bin
 	depends = util-linux-libs
 	depends = libsecret
 	provides = mysterium-vpn-desktop
-	source_x86_64 = https://github.com/mysteriumnetwork/mysterium-vpn-desktop/releases/download/10.14.4/mysterium-vpn-desktop_10.14.4_amd64.deb
-	source_x86_64 = LICENSE
-	sha256sums_x86_64 = 33a8e3cc331fea5004ec9c6a13406f0f30520fb8cc10953edc782a362d0f783a
-	sha256sums_x86_64 = 070d2f42e03987ec349cdb0f4c8668dda323ce30996c848703e70ae3944d3aa8
+	source = https://github.com/mysteriumnetwork/mysterium-vpn-desktop/releases/download/10.14.4/mysterium-vpn-desktop_10.14.4_amd64.deb
+	source = https://raw.githubusercontent.com/mysteriumnetwork/mysterium-vpn-desktop/master/LICENSE
+	sha256sums = 33a8e3cc331fea5004ec9c6a13406f0f30520fb8cc10953edc782a362d0f783a
+	sha256sums = 070d2f42e03987ec349cdb0f4c8668dda323ce30996c848703e70ae3944d3aa8
 
 pkgname = mysterium-vpn-desktop-bin
