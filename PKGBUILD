@@ -2,7 +2,7 @@
 # Maintainer: Shane Stone <shanewstone gmail>
 pkgname=python-spiceypy
 pkgver=5.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python wrapper for the NAIF C SPICE Toolkit (N67) written using ctypes."
 arch=('any')
 url="https://github.com/AndrewAnnex/SpiceyPy/"
