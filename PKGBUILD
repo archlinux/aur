@@ -3,7 +3,7 @@
 pkgname=python-pyprojroot
 _pkgname="${pkgname#python-}"
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Find project root paths and return relative project files'
 arch=('any')
 url=https://github.com/chendaniely/pyprojroot
