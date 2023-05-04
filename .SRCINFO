@@ -1,0 +1,16 @@
+pkgbase = irreader
+	pkgver = 1.6.10
+	pkgrel = 1
+	arch = x86_64
+	license = PRIVATE
+	makedepends = asar
+	makedepends = npm
+	depends = electron11
+	depends = bash
+	options = !strip
+	source = http://irreader.fatecore.com/download/irreader-1.6.10.zip
+	sha256sums = 72a0adf30e6a661a710f6555adf3b13c43df7829ac3bf888e80812437e28df8b
+	source_x86_64 = https://github.com/TryGhost/node-sqlite3/releases/download/v5.1.6/napi-v6-linux-glibc-x64.tar.gz
+	sha256sums_x86_64 = d31475a48731bda50747d4187f46f028565e84086473b55e165e9e4447430164
+
+pkgname = irreader

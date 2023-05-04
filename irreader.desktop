@@ -1,0 +1,19 @@
+[Desktop Entry]
+Categories=Network;News;
+Comment[zh_CN]=irreader 万能订阅阅读器，订阅任何网站。
+Comment=irreader 万能订阅阅读器，订阅任何网站。
+Exec=/usr/bin/irreader
+GenericName[zh_CN]=RSS/Atom feed reader
+GenericName=RSS/Atom feed reader
+Icon=irreader
+MimeType=application/rss+xml;application/rdf+xml;application/atom+xml;
+Name[zh_CN]=irreader
+Name=irreader
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-StartupType=none
+X-KDE-SubstituteUID=false
+X-KDE-Username=
