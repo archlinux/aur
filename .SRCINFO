@@ -1,7 +1,7 @@
 pkgbase = cargo-embed
 	pkgdesc = A utility to develop software for embedded ARM and RISC-V cores
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://probe.rs/
 	arch = x86_64
 	license = MIT
