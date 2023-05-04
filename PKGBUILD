@@ -1,9 +1,9 @@
-# Maintainer: Bipin Kumar <bipin@ccmb.res.in>
+# Maintainer: Bipin Kumar <kbipinkumar@pm.me>
 
 pkgname=python-isal
 _module=${pkgname#python-}
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Faster zlib and gzip compatible compression and decompression by providing python bindings for the ISA-L library'
 arch=('x86_64')
 url="https://github.com/pycompression/python-isal"
