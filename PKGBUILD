@@ -7,14 +7,15 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r9538.ea649263b
+pkgver=r9547.70335a7f4
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
 url="https://github.com/citra-emu/citra/"
+options=("!lto") #Use LTO, free performance (disabled cause thin is set for clang rn)
 license=('GPL2')
 depends=('ffmpeg' 'speexdsp' 'boost-libs' 'mbedtls' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'libfdk-aac')
-makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'boost' 'qt5-tools' 'robin-map')
+makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'boost' 'qt5-tools' 'robin-map' 'clang') #Use clang until Issue 6500 is fixed
 source=("$_pkgbase::git+https://github.com/citra-emu/citra.git"
         "boost::git+https://github.com/citra-emu/ext-boost.git"
         "nihstro::git+https://github.com/neobrain/nihstro.git"
@@ -118,6 +119,10 @@ build() {
       -DENABLE_FFMPEG_AUDIO_DECODER=ON \
       -DUSE_SYSTEM_BOOST=ON \
       -DUSE_SYSTEM_SDL2=ON \
+      -DCMAKE_C_COMPILER=clang \
+      -DCMAKE_CXX_COMPILER=clang++ \
+      -DCMAKE_C_FLAGS="$CFLAGS -flto=thin" \
+      -DCMAKE_CXX_FLAGS="$CXXFLAGS -flto=thin" \
       -Wno-dev
 
     cmake --build build   
