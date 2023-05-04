@@ -4,7 +4,7 @@
 pkgname=python-ufo2ft
 _pyname=${pkgname#python-}
 pkgver=2.31.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A bridge from UFOs to FontTools objects'
 arch=(any)
 url="https://github.com/googlefonts/$_pyname"
@@ -18,9 +18,8 @@ _pydeps=(booleanoperations
          fs) # for fonttools[ufo]
 depends=(python
          "${_pydeps[@]/#/python-}")
-makedepends=(python-{build,installer}
-             python-setuptools-scm
-             python-wheel)
+makedepends=(python-{build,installer,wheel}
+             python-setuptools-scm)
 checkdepends=(python-compreffor
               python-pytest
               python-ufolib2
@@ -38,7 +37,8 @@ build() {
 
 check() {
 	cd "$_archive"
-	PYTHONPATH=Lib pytest tests
+	export PYTHONPATH="$PWD/build/lib"
+        pytest tests
 }
 
 package() {
