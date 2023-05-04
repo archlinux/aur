@@ -1,9 +1,9 @@
-# Maintainer: Bipin Kumar <bipin@ccmb.res.in>
+# Maintainer: Bipin Kumar <kbipinkumar@pm.me>
 
 pkgname=python-xopen
 _module=${pkgname#python-}
 pkgver=1.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Python library to pen compressed files transparently'
 arch=('any')
 url="https://github.com/pycompression/xopen/"
