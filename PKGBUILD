@@ -2,7 +2,7 @@
 # Contributor: 
 pkgname=python-check-shapes
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for annotating and checking tensor shapes."
 url="https://github.com/GPflow/check_shapes"
 arch=('any')

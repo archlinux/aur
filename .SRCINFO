@@ -1,7 +1,7 @@
 pkgbase = python-check-shapes
 	pkgdesc = Library for annotating and checking tensor shapes.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GPflow/check_shapes
 	arch = any
 	license = Apache
