@@ -3,7 +3,7 @@
 _mesonver=$(meson --version)
 pkgname=cryptor
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple GUI application for gocryptfs"
 arch=('x86_64' 'aarch64')
 url="https://github.com/moson-mo/cryptor"

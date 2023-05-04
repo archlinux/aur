@@ -1,7 +1,7 @@
 pkgbase = cryptor
 	pkgdesc = Simple GUI application for gocryptfs
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moson-mo/cryptor
 	arch = x86_64
 	arch = aarch64
