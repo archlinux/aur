@@ -1,7 +1,7 @@
 pkgbase = python-plumb
 	pkgdesc = Connect systems via many brokers such as Kafka, AWS SQS, RabbitMQ and more
 	pkgver = 1.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/plumb
 	arch = any
 	license = MIT

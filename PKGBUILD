@@ -3,7 +3,7 @@
 _pyname=plumb
 pkgname=python-${_pyname,,}
 pkgver=1.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Connect systems via many brokers such as Kafka, AWS SQS, RabbitMQ and more'
 arch=(any)
 url="https://pypi.org/project/$_pyname"
