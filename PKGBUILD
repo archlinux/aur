@@ -1,16 +1,16 @@
 # Maintainer: Andrew Lin <andrewlin16@gmail.com>
 
 pkgname=vgmplay-libvgm-git
-pkgver=0.50.1.r24.g6480d3e
+pkgver=0.51.0.r3.g813abab
 pkgrel=1
 pkgdesc="A new VGMPlay, based on libvgm"
 arch=('x86_64')
 url="https://github.com/ValleyBell/vgmplay-libvgm"
 license=('GPL')
 source=(
-  "git://github.com/ValleyBell/vgmplay-libvgm.git"
-  "git://github.com/benhoyt/inih.git"
-  "git://github.com/alex85k/wingetopt.git"
+  "git+https://github.com/ValleyBell/vgmplay-libvgm.git"
+  "git+https://github.com/benhoyt/inih.git"
+  "git+https://github.com/alex85k/wingetopt.git"
 )
 depends=('libvgm-player-git' 'libvgm-emu-git' 'libvgm-utils-git' 'libvgm-audio-git')
 makedepends=('cmake' 'git')

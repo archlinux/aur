@@ -1,6 +1,6 @@
 pkgbase = vgmplay-libvgm-git
 	pkgdesc = A new VGMPlay, based on libvgm
-	pkgver = 0.50.1.r24.g6480d3e
+	pkgver = 0.51.0.r3.g813abab
 	pkgrel = 1
 	url = https://github.com/ValleyBell/vgmplay-libvgm
 	arch = x86_64
@@ -12,12 +12,11 @@ pkgbase = vgmplay-libvgm-git
 	depends = libvgm-utils-git
 	depends = libvgm-audio-git
 	conflicts = vgmplay
-	source = git://github.com/ValleyBell/vgmplay-libvgm.git
-	source = git://github.com/benhoyt/inih.git
-	source = git://github.com/alex85k/wingetopt.git
+	source = git+https://github.com/ValleyBell/vgmplay-libvgm.git
+	source = git+https://github.com/benhoyt/inih.git
+	source = git+https://github.com/alex85k/wingetopt.git
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = vgmplay-libvgm-git
-
