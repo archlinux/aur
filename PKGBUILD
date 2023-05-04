@@ -14,12 +14,12 @@ sha256sums=('SKIP')
 backup=('etc/speculum.conf')
 
 build() {
-    cd "${srcdir}/${_pkgbase}"
+    cd "${srcdir}/${pkgname}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_pkgbase}"
+    cd "${srcdir}/${pkgname}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
 
     install -Dm 644 "files/speculum.conf" "${pkgdir}/etc/speculum.conf"
