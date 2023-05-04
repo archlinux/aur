@@ -1,7 +1,7 @@
 # Maintainer: Robin Candau <antiz@archlinux.org>
 
 pkgname=gnome-shell-extension-caffeine
-pkgver=47
+pkgver=48
 pkgrel=1
 pkgdesc='Extension for GNOME shell to disable screensaver and auto suspend'
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/eonpatapon/gnome-shell-extension-caffeine"
 license=('GPL2')
 depends=('gnome-shell' 'gnome-shell-extensions')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('97597eaec66e7b350ad8fe3b0ff1471b5cd9d0425c14284914a341dd33e318f8')
+sha256sums=('8d4057c42a4a969981c2f9148e7820ea9de707b3d10f9c22da8b7e05259e9487')
 
 build() {
     cd "${pkgname}-${pkgver}"
