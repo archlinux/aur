@@ -1,25 +1,29 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 pkgname=python-rpcudp
 _pkgname=${pkgname/python-/}
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="RPC via UDP"
 url="http://github.com/bmuller/rpcudp"
 depends=('python' 'python-umsgpack')
-optdepends=()
+makedepends=('python-build'
+             'python-installer'
+             'python-setuptools'
+             'python-wheel'
+            )
 license=('MIT')
 arch=('any')
 source=("https://github.com/bmuller/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('ea64f0ff8c830b1b522dde2832de9e4ae2391f00684addf84690a286454a4389')
+sha256sums=('7e77fa297dbd7d47cd122abf77b7c9a9a0882206e5011a3be5de990045b8b348')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$srcdir/$_pkgname-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
