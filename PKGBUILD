@@ -6,14 +6,14 @@ pkgname=logiops-git
 _pkgname="logiops"
 _gitpkgname="logiops"
 epoch=1
-pkgver=0.3.0.r0.gbd8b905
+pkgver=0.3.1.r1.ga77b328
 pkgrel=1
 pkgdesc="An unofficial driver for Logitech HID++>2.0 mice and keyboard"
 arch=('x86_64')
 url="https://github.com/PixlOne/$_gitpkgname"
 license=('GPL3')
 depends=('libevdev' 'systemd' 'libconfig' 'glib2')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'gcc')
 conflicts=("${_pkgname-*}")
 provides=("${_pkgname-*}")
 source=("git+https://github.com/PixlOne/$_gitpkgname")
@@ -21,22 +21,14 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$_gitpkgname"
-    # We must pass --tags, because v0.2.3 is a lightweight (not annotated) tag.
     git describe --tags --long | sed 's/^v//' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$_gitpkgname"
-    mkdir -p build
-    cd build
-    rm -rf *
-    cmake .. \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release
-    make
+    cmake -B build -S "$_gitpkgname"
+    cmake --build build
 }
 
 package() {
-    cd "$_gitpkgname/build"
-    make install DESTDIR="$pkgdir"
+    DESTDIR="$pkgdir" cmake --install build
 }
