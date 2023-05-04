@@ -11,7 +11,7 @@
 
 # Maintainer: alecksandr <sansepiol26@gmail.com>
 pkgname=c-exceptions
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 epoch=
 pkgdesc="This module provides a simple macro interface that allows for easy exception handling in C, similar to Python's approach."
