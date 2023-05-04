@@ -1,7 +1,7 @@
 # Maintainer: Peter at PBlackman plus com
 
 pkgbase=cdreaper
-pkgname=grimreaper
+pkgname=grimripper
 _pkgname=Reaper
 pkgver=3.0.0
 pkgrel=1
