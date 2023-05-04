@@ -1,6 +1,6 @@
 pkgbase = chatblade
 	pkgdesc = A CLI Swiss Army Knife for ChatGPT
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/npiv/chatblade
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = chatblade
 	depends = python-tqdm
 	depends = python-urllib3
 	depends = python-yarl
-	source = chatblade-0.2.1.tar.gz::https://github.com/npiv/chatblade/archive/refs/tags/v0.2.1.tar.gz
-	sha256sums = 7e5cfedb0b9b9d724c15df24f71adae0025fb4cac473e72469a5c0037228494c
+	source = chatblade-0.3.0.tar.gz::https://github.com/npiv/chatblade/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = ff54abdab82231630027febe3a67fa94a9bd323ccc520a45036c31a065271d09
 
 pkgname = chatblade
