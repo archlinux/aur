@@ -2,7 +2,7 @@
 _projectname='imgsize'
 pkgname="python-$_projectname"
 pkgver='2.1'
-pkgrel='6'
+pkgrel='7'
 pkgdesc='Pure Python image size library'
 arch=('any')
 url="https://github.com/ojii/$_projectname"
