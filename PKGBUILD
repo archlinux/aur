@@ -25,16 +25,14 @@ source=(
     "https://www.kernel.org/pub/linux/kernel/v6.x/patch-${pkgver}.xz"
     '0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch'
     '0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch'
-    'config' 'linux.preset' '60-linux.hook' '90-linux.hook'
+    'config' 'linux.preset'
 )
 sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
             'c9501bd96fcf210c0b68a07500bede63c0e1f7d371eb616467dd160dbd39715a'
             '013ab7f5bcf2cd486e819fb13fde1f673ac72978984a8befea13938eaf8ddd8e'
             'bcb8a42654df5f9670367950daaa01b165c15618f827d18b7b2a8d53d39227a4'
             '64168a0a024aeeb90e8292f1cf2e39b5d8b64b23dbcf49d88fdd7af8d1a39d8a'
-            '6837b3e2152f142f3fff595c6cbd03423f6e7b8d525aac8ae3eb3b58392bd255'
-            '452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c'
-            '71df1b18a3885b151a3b9d926a91936da2acc90d5e27f1ad326745779cd3759d')
+            '6837b3e2152f142f3fff595c6cbd03423f6e7b8d525aac8ae3eb3b58392bd255')
 
 prepare() {
     cd $_srcname
@@ -110,12 +108,6 @@ _package() {
     # install mkinitcpio preset file
     sed "${_subst}" ../linux.preset | install -Dm644 /dev/stdin \
       "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-
-    # install pacman hooks
-    sed "${_subst}" ../60-linux.hook | install -Dm644 /dev/stdin \
-        "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
-    sed "${_subst}" ../90-linux.hook | install -Dm644 /dev/stdin \
-        "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
 }
 
 _package-headers() {
