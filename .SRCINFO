@@ -1,7 +1,7 @@
 pkgbase = xargo
 	pkgdesc = Effortless cross compilation of Rust programs to custom bare-metal targets like ARM Cortex-M
 	pkgver = 0.3.26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/japaric/xargo
 	arch = x86_64
 	license = Apache
