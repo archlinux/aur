@@ -3,13 +3,13 @@
 
 pkgname=python-imageio-ffmpeg
 pkgver=0.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="FFMPEG wrapper for Python"
 arch=("any")
 license=("BSD")
 url="https://github.com/imageio/imageio-ffmpeg"
 depends=('python' 'ffmpeg')
-makedepends=('python-setuptools' 'git')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 source=("git+https://github.com/imageio/imageio-ffmpeg.git#tag=v${pkgver}"
 	"pip_requirement.patch")
 sha256sums=('SKIP'
@@ -22,11 +22,11 @@ prepare() {
 
 build() {
     cd "imageio-ffmpeg"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "imageio-ffmpeg"
-    python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/python-imageio-ffmpeg/LICENSE"
 }
