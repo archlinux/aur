@@ -1,9 +1,9 @@
-# Maintainer: Bipin Kumar <bipin@ccmb.res.in>
+# Maintainer: Bipin Kumar <kbipinkumar@pm.me>
 
 pkgname=mutmap
 _name=MutMap
 pkgver=2.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Pipeline to identify causative mutations responsible for a phenotype. https://doi.org/10.7717/peerj.13170'
 arch=('x86_64')
 url="https://github.com/YuSugihara/MutMap"

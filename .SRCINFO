@@ -1,7 +1,7 @@
 pkgbase = mutmap
 	pkgdesc = Pipeline to identify causative mutations responsible for a phenotype. https://doi.org/10.7717/peerj.13170
 	pkgver = 2.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/YuSugihara/MutMap
 	arch = x86_64
 	license = GPL
