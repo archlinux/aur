@@ -10,6 +10,7 @@ url='https://ibboard.co.uk/cawbird/'
 license=('GPL3')
 depends=('gspell' 'gst-libav' 'gst-plugin-gtk' 'gst-plugins-bad' 'gst-plugins-good' 'liboauth' 'rest')
 makedepends=('meson' 'vala')
+provides=("twitter")
 source=("https://github.com/IBBoard/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('0ef472cbecd6a7eb384a5b27833612d61eba7ace22293dbe14571b887b61ecae')
 

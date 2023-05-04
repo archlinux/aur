@@ -14,6 +14,7 @@ pkgbase = cawbird
 	depends = gst-plugins-good
 	depends = liboauth
 	depends = rest
+	provides = twitter
 	source = https://github.com/IBBoard/cawbird/archive/v1.5/cawbird-1.5.tar.gz
 	sha256sums = 0ef472cbecd6a7eb384a5b27833612d61eba7ace22293dbe14571b887b61ecae
 
