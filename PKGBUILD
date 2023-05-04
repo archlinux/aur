@@ -18,19 +18,16 @@ source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
   )
 sha512sums=(
-  'c239cc99402e8f38a6c5867f76e0d5af5bb9cb1d4ef70df7d0182d888432292e014907284aeb30b4fb12b312386e7162a3f5393e880afa91c3fc40c1eca6bb9f'
-  '8895cd8b233098ebd7d78d3d4388f79f5c0bf40505d3972174c99420ffecca28d7a378ddac25e0641da57710483cca22014bed59c7a40b4ccae8427890c1c115'
+  'fc1d2c8d0175cd35e725836b49eb7d0b0fd8327a3fb8dcce90bd472395daabd094cef69914c9ec2a25118f20216c08b36f32f35f22c5cf7903ad98fabf9228eb'
+  '03580ba06754ddcf71aeabf117b0c3a5694a7dd5ed2a7936f9d7a255c3f8adbad5ff83f7a5a4c9fe92ec5989f53e97086832a6595520ed1a718a6abb2d358020'
   )
 md5sums=(
-  'f016f35c8bda55f4cf8de1bcda6fc1b0'
-  '00423e28213b2c76aff535545c327edf'
+  'cb913e29281faf0d171a16c980ccc137'
+  '4352690a3fc357e0117c704cc6125c89'
   )
 validpgpkeys=('81BACEEBC3EA26E127166E4A819BB92A9A48160E')
 
 package() {
-
-  cd "$srcdir/$pkgname/lfpreviewer"
-  python3 setup.py install --root="$pkgdir" --optimize=1
 
   cd "$srcdir/$pkgname"
   install -Dm755 usr/bin/* -t "${pkgdir}/usr/bin"
