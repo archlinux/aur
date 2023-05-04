@@ -24,6 +24,13 @@ build()
     cargo build --frozen --release
 }
 
+check()
+{
+    cd "$srcdir/$pkgname-$pkgver"
+
+    cargo test --frozen
+}
+
 package()
 {
     cd "$srcdir/$pkgname-$pkgver"
