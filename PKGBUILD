@@ -21,22 +21,22 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-options=()
+options=(!strip)
 install=
 changelog=
 source=("http://owm.fatecore.com/download/OpenWebMonitor3-3.5.2.zip"
         "patch")
 source_x86_64=(
-	"https://github.com/TryGhost/node-sqlite3/releases/download/v5.1.6/napi-v3-linux-glibc-x64.tar.gz"
+	"https://github.com/TryGhost/node-sqlite3/releases/download/v5.1.6/napi-v6-linux-glibc-x64.tar.gz"
 	)
 source_aarch64=(
-"https://github.com/TryGhost/node-sqlite3/releases/download/v5.1.6/napi-v3-linux-glibc-arm64.tar.gz"
+"https://github.com/TryGhost/node-sqlite3/releases/download/v5.1.6/napi-v6-linux-glibc-arm64.tar.gz"
 )
 noextract=()
 sha256sums=('f788d367c73e5f287405452bce6b8d8b1f263e76fd4ff76a8c8b42e8e6e8f8a4'
             'dd6f93c153dc09ba60dae10bb3a16912c69469c9715231310ade3b85977fab03')
-sha256sums_x86_64=('b841dd05e3abc3f2c659f0f0f213fb61ef22264d4741f569e1ebf00775205943')
-sha256sums_aarch64=('8e22a82d1ee3c6c415768cc88ecef9d32a5050ac08e4796b96571db0d72246c8')
+sha256sums_x86_64=('d31475a48731bda50747d4187f46f028565e84086473b55e165e9e4447430164')
+sha256sums_aarch64=('4cfa941ac72e76eac65bb1e6e4668fd5c94c2179c8680c4a445f77644e819d08')
 validpgpkeys=()
 
 prepare() {
@@ -50,8 +50,8 @@ prepare() {
 	pushd node_modules
 	rm -rf node-gyp sqlite3/tools
 	pushd sqlite3/lib/binding/
-	cp -av $srcdir/napi-v3* ./
-	mv napi-v3-linux-*-x64 napi-v3-linux-x64
+	cp -av $srcdir/napi-v* ./
+	mv napi-v6-linux-*-x64 napi-v6-linux-x64
 }
 
 package() {
