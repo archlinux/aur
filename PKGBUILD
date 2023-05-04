@@ -33,13 +33,13 @@ source=("https://github.com/openSUSE/${pkgname}/archive/${pkgver}.tar.gz"
         0005-Add-support-for-rebuild-and-chroot-only-in-build.-re.patch
         0006-Add-architecture-and-scheduler-maps.patch
 )
-sha256sums=('ccbeb4a812d2518ec26b2509a54689641346d413fe88ad4f9770768c3016b6a7'
+sha256sums=('b2df7f9514175428a82e636365fa10c5dfed7497d742aff380e22c517064ee6a'
             '2b045e03d2fdce12683ceb9792d491a32f00b256045456412e7bc18c8726218a'
-            '2fef5c0a42f331fdb892a69a80d036aba5e24921e881e74833018009d29c5649'
-            'fbd42a43177351f677ed3eef085774c43d545723bc4f8b8bc7add8df57c565c3'
-            '5a6cbb6375a83fa4dbb9103725b7e2b1d861edb3249f47f577bea94fac52d0c9'
-            '3771bd3660635f193d8250778a01533c4a089d26b6355a8910aa33b9295efbdc'
-            'df3de96be2dc05b1034539c439fc63cdba4257ca310c801d24a4a72843e60ba9'
+            '270e4998d3499ff42992cc9866025bb9d3976fcd922d3428d0bdaa066be52d59'
+            '8176ec12b8f9e14ac655241d38aff1ed6797a3f684ba48a2f6dbea4ce988422c'
+            '90072ef14c4b7d31ac79a6005f5b06d51d0a4051274ad2b70b7e7d6b6d13080f'
+            '11318594468e017cee00ebbc5c0148808740557106279a4be6868851aebb2606'
+            '68a9ff708c067b89430e894df941b76e6dcb499eef0b384afb762cd72bd7f721'
             'eae5f978b8385db3acae46df96fc4973f306c4a640389165a8ac54469d370e5b')
 
 prepare() {
