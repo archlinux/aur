@@ -5,6 +5,9 @@ pkgbase = python-plumb
 	url = https://pypi.org/project/plumb
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
 	depends = python-boto3
@@ -17,4 +20,3 @@ pkgbase = python-plumb
 	sha256sums = 05ec1666dae8dffb78bdfe469a3cb5df12b4209e445e3cee193c0f24ec0bce5e
 
 pkgname = python-plumb
-
