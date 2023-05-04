@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fcitx-huayupinyin
 _appname="com.thunisoft.input"
-pkgver=2.4.8.206
+pkgver=2.4.8.207
 pkgrel=1
 pkgdesc="The Input Method Developed by thunisoft"
 arch=('x86_64')
@@ -10,9 +10,9 @@ license=(LGPL3)
 conflicts=()
 providers=(thunisoft)
 depends=('libxtst' 'qt5-svg' 'qt5-base' 'fcitx' 'fcitx-qt5' 'fcitx-configtool' 'glibc' 'cairo' 'libx11' 'gcc-libs' 'sh' 'dbus')
-options=()
+options=(!strip)
 source=("${pkgname}-${pkgver}.deb::${url}/webapi/v1/downloadSetupFile?os=uos&cpu=x86")
-sha256sums=('36e3a2f513b8f3827f79ea2ec0df27cfe5711e156fce3cfdfe37b9cfd65fa705')
+sha256sums=('ec965e51f30ddf548d4ab2ba0324bc0e8c6691b39f33112a872eecbb6bf5fa5c')
 package() {
     bsdtar -xvf data.tar.xz -C "${pkgdir}"
     mv "${pkgdir}/usr/lib/x86_64-linux-gnu/fcitx" "${pkgdir}/usr/lib/"
