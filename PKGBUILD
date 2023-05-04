@@ -2,13 +2,13 @@
 
 pkgname=morewaita-git
 _reponame=MoreWaita
-pkgver=43.3.r39.gb7bfe70
+pkgver=44.r2.g70390da
 pkgrel=1
 pkgdesc='An Adwaita style extra icons theme for Gnome Shell.'
 arch=(any)
 url="https://github.com/somepaulo/$_reponame"
 license=(GPL3)
-depends=(gnome-shell)
+depends=(adwaita-icon-theme)
 makedepends=(git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
