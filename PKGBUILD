@@ -3,7 +3,7 @@
 pkgname=python-jupyter_ascending
 _pkgname="${pkgname#python-}"
 pkgver=0.1.24
-pkgrel=2
+pkgrel=4
 pkgdesc='Edit Jupyter notebooks using your favorite editor'
 arch=('any')
 url=https://github.com/untitled-ai/jupyter_ascending
