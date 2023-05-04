@@ -1,0 +1,12 @@
+diff --git a/include/pcsc-mock/pcsc-mock.hpp b/include/pcsc-mock/pcsc-mock.hpp
+index e9e9837..a0da0cb 100644
+--- a/include/pcsc-mock/pcsc-mock.hpp
++++ b/include/pcsc-mock/pcsc-mock.hpp
+@@ -27,6 +27,7 @@
+ #include <map>
+ #include <vector>
+ #include <stdexcept>
++#include <cstdint>
+ 
+ #ifdef _WIN32
+ using MOCK_LONG = int32_t;
