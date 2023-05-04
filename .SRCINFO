@@ -1,7 +1,7 @@
 pkgbase = cargo-brief
 	pkgdesc = Display a brief summary of cargo dependencies.
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sanpii/cargo-brief
 	arch = x86_64
 	license = MIT
