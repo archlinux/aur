@@ -1,7 +1,7 @@
 pkgbase = python-cohost
 	pkgdesc = A python library for Cohost.org!
 	pkgver = 0.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/valknight/Cohost.py
 	arch = any
 	license = MIT
