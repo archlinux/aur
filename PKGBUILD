@@ -4,7 +4,7 @@
 pkgname=motrix
 _pkgname=Motrix
 pkgver=1.8.19
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A full-featured download manager (release version)"
 arch=("x86_64")
@@ -26,7 +26,7 @@ source=("motrix.desktop"
     "motrix"
     "https://github.com/agalwood/Motrix/archive/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('af5092a2a599bd23c13303ad1e7b745992a7af141278d13abe4297ca50a77bd8'
+sha256sums=('c5f185162cdb83c387399e314be355585837a9efcd8ac35425656e4d24f7a5b3'
             'bb1432adbac2120ef5c59d718f1cd48ef5fc920d3d1231ba32390c700465f3a5'
             'd2a48692549d426e9dfa0fad9897dddf200b7b82198d59e64819d419114a10d8')
 validpgpkeys=()
