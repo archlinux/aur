@@ -4,7 +4,7 @@
 
 pkgname=cyberghostvpn
 pkgver=1.4.1
-pkgrel=6
+pkgrel=7
 pkgdesc="CyberGhost VPN"
 url="https://www.cyberghostvpn.com"
 arch=(any)
@@ -27,7 +27,7 @@ source=(	"https://download.cyberghostvpn.com/linux/cyberghostvpn-${_variant}-${p
 		"http://crt.sectigo.com/SectigoRSAOrganizationValidationSecureServerCA.crt"
 		"cyberghostvpn_wrapper"
 		"openvpn_wrapper")
-sha256sums=(	'b80941fd044cd7ac230743e9dc18e3ff636ac209e7c04fdf2619428f8043fc76'
+sha256sums=(	'21f0de9993a7f73f2ed6ab8b3276d21a7a00343e77fa8e18c2fc28341a409d13'
 		'72a34ac2b424aed3f6b0b04755b88cc027dccc806fddb22b4cd7c47773973ec0'
 		'b9410322648fa3ff40cee9199d9dcadf51117ad633b96e3f99e57b47c75d2b80'
 		'f26e37ce43385e625b012afd3d27bad9f9279e3d6cb135cd92c412eada36212e')
