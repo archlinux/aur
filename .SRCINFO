@@ -1,12 +1,15 @@
 pkgbase = repotool
 	pkgdesc = An arch linux repository management tool
 	pkgver = 1.5.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/coNQP/repotool
 	arch = any
 	license = GPLv3
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools-scm
+	makedepends = python-wheel
 	depends = python
 	depends = python-setuptools
 	source = repotool::git+https://github.com/coNQP/repotool.git#tag=1.5.3
