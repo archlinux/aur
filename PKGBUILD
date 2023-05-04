@@ -17,6 +17,9 @@ prepare() {
         cd "${pkgname}"
         git remote set-url origin ${_giturl}
         git submodule update --force --init --recursive
+
+  # fix build with gcc 13
+  curl -L https://github.com/oneapi-src/oneTBB/pull/833.patch | patch -p1 -d OMCompiler/3rdParty/tbb
 }
 
 build() {
