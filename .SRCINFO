@@ -1,0 +1,22 @@
+pkgbase = ttf-lxgw-bright-git
+	pkgdesc = A merged font of Ysabeau and LXGW WenKai.
+	pkgver = 5.300.r0.g7d64795
+	pkgrel = 1
+	url = https://github.com/lxgw/LxgwBright
+	arch = any
+	license = OFL
+	makedepends = git
+	source = git+https://github.com/lxgw/LxgwBright.git
+	sha256sums = SKIP
+
+pkgname = ttf-lxgw-bright-git
+	provides = ttf-lxgw-bright=5.300.r0.g7d64795
+	conflicts = ttf-lxgw-bright
+
+pkgname = ttf-lxgw-bright-gb-git
+	provides = ttf-lxgw-bright-gb=5.300.r0.g7d64795
+	conflicts = ttf-lxgw-bright-gb
+
+pkgname = ttf-lxgw-bright-tc-git
+	provides = ttf-lxgw-bright-tc=5.300.r0.g7d64795
+	conflicts = ttf-lxgw-bright-tc
