@@ -1,7 +1,7 @@
 pkgbase = util-linux-aes
 	pkgdesc = Miscellaneous system utilities for Linux, with loop-AES support
 	pkgver = 2.38.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/karelzak/util-linux
 	install = util-linux-aes.install
 	arch = x86_64
