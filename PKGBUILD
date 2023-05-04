@@ -2,7 +2,7 @@
 
 pkgname=python-jupytext
 pkgver=1.14.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Jupyter notebooks as Markdown documents, Julia, Python or R scripts"
 url="https://github.com/mwouts/jupytext"
 depends=('jupyter-nbformat' 'python-pyaml' 'python-toml' 'python-markdown-it-py' 'python-mdit_py_plugins')
