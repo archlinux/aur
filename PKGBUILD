@@ -2,9 +2,9 @@
 
 pkgname=onscripter-yuri
 _gitname=OnscripterYuri
-pkgdesc="An optimized SDL2 port of ONScripter, a game scripting engine"
+pkgdesc="An enhancement ONScripter project porting to many platforms, especially web."
 pkgver=0.7.4
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/YuriSizuku/OnscripterYuri"
 license=('GPL')
@@ -33,7 +33,7 @@ build() {
 
   cd script
   
-  chmod +x local_linux32.sh local_linux64.sh
+  chmod +x local_linux64.sh
 
   ./local_linux64.sh
 }
