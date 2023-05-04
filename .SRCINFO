@@ -7,7 +7,7 @@ pkgbase = magma-server-1.16
 	arch = any
 	license = custom
 	makedepends = gettext
-	depends = java-runtime=11
+	depends = java-runtime-headless=11
 	depends = tmux
 	depends = sudo
 	depends = bash

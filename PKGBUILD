@@ -11,7 +11,7 @@ pkgdesc="Magma is the next generation of hybrid minecraft server softwares"
 arch=('any')
 url="https://magmafoundation.org/"
 license=('custom')
-depends=('java-runtime=11' 'tmux' 'sudo' 'bash' 'awk' 'sed')
+depends=('java-runtime-headless=11' 'tmux' 'sudo' 'bash' 'awk' 'sed')
 optdepends=("tar: needed in order to create world backups"
 	"netcat: required in order to suspend an idle server")
 makedepends=("gettext")
