@@ -1,25 +1,33 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 pkgname=python-ntplib
 _pkgname=${pkgname/python-/}
-pkgver=0.3.4
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Simple interface to query NTP servers from Python"
 url="https://github.com/cf-natali/ntplib"
 depends=('python')
-optdepends=()
+makedepends=('python-build'
+             'python-installer'
+             'python-setuptools'
+             'python-wheel'
+            )
 license=('MIT')
 arch=('any')
 source=("https://github.com/cf-natali/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('e822d7142b84d72022b9caaf00f6d2a7541f9822f41e1c133839db1d7957abbe')
+sha256sums=('dcb87eaa875aa7a041ca8f49a38c4a8264eb73e5f8b421767b9d541f61a0c050')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$srcdir/$_pkgname-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1 
+    python -m installer --destdir="$pkgdir" dist/*.whl
+
     rm -rf ${pkgdir}/usr/lib/python*/site-packages/tests/
+
+    install -d "$pkgdir/usr/share/licenses/$pkgname/"
+    install -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
 }
 
