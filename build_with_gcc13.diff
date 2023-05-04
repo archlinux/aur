@@ -1,0 +1,12 @@
+diff --git a/libs/uilib/uilib.h b/libs/uilib/uilib.h
+index d8f41c85..abefc9e5 100644
+--- a/libs/uilib/uilib.h
++++ b/libs/uilib/uilib.h
+@@ -1,6 +1,7 @@
+ #ifndef INCLUDED_UILIB_H
+ #define INCLUDED_UILIB_H
+ 
++#include <cstdint>
+ #include <string>
+ #include <glib-object.h>
+ 
