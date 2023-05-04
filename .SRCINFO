@@ -1,0 +1,15 @@
+pkgbase = docker-hosts-updater
+	pkgdesc = Update Docker containers in /etc/hosts
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://stackoverflow.com/questions/37242217/access-docker-container-from-host-using-containers-name
+	arch = any
+	depends = jq
+	depends = docker
+	provides = docker-update-hosts
+	source = docker-update-hosts
+	source = docker-update-hosts.service
+	md5sums = 6cfa4361c35338d2d85c699f39f0c16b
+	md5sums = 3f95b5e61369a9e344cd1500582ec69b
+
+pkgname = docker-hosts-updater

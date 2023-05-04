@@ -1,0 +1,11 @@
+[Unit]
+Description=Update Docker containers in /etc/hosts
+Requires=docker.service
+After=docker.service
+PartOf=docker.service
+
+[Service]
+ExecStart=/usr/bin/docker-update-hosts
+
+[Install]
+WantedBy=docker.service
