@@ -1,6 +1,6 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=slackdump
-pkgver=2.2.10
+pkgver=2.3.4
 pkgrel=1
 pkgdesc='Save your private and public slack messages, threads, files, and users locally'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rusq/${pkgname}/archive/refs/tags/v${pkgver//_/-}.tar.gz")
-b2sums=('8a7b808180d46e4b70cabbf7a79114e1f8def8cb8b6bfb121708bd8f983d172fc5cd5c09072aa937d53bf009211c8f4d8e1983af34d3d162473aae9f20d02d83')
+b2sums=('5861c910179726d78ffe0d8640a8a3332dd2d9ad431d819abea2f76d64574f8abd0447748440dac9f21bc91332b78471c13a5ddf65471dc1b44f02a39b583cca')
 
 build() {
     cd "${pkgname}-${pkgver//_/-}"
