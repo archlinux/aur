@@ -1,7 +1,7 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=python-fuzzysearch
 pkgver=0.7.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A Python library for fuzzy substring searches"
 arch=("any")
 url="https://github.com/taleinat/fuzzysearch"

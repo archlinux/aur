@@ -1,7 +1,7 @@
 pkgbase = python-fuzzysearch
 	pkgdesc = A Python library for fuzzy substring searches
 	pkgver = 0.7.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/taleinat/fuzzysearch
 	arch = any
 	license = MIT
