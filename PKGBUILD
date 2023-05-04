@@ -2,25 +2,22 @@
 
 _githubuser=gwenhael-le-moine
 _githubrepo=x48ng
-_pkgtagname=0.9.10
+_pkgtagname=0.10.0
 
 pkgname=x48ng
-pkgver=0.9.10
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='A reboot of the x48 HP 48 emulator'
 arch=('any')
 url="https://github.com/${_githubuser}/${_githubrepo}"
 license=('GPL2')
-depends=('readline' 'libxext' 'xterm')
+depends=('readline' 'libxext' 'xterm' 'xorg-mkfontscale' 'xorg-fonts-misc')
 install="${pkgname}.install"
-source=("${_githubrepo}::https://github.com/${_githubuser}/${_githubrepo}/archive/refs/tags/${_pkgtagname}.tar.gz"
-        'patch-desktop-file-01')
-sha256sums=('aca5b8bd90c9a42f50139a716bfd75d23fa48fdd3e672b164d4014af2ba02956'
-            'e18c85ecf9d451e77a6ea764e356182bc6af11c46a91ff28b0d48cb8d8b0c644')
+source=("${_githubrepo}::https://github.com/${_githubuser}/${_githubrepo}/archive/refs/tags/${_pkgtagname}.tar.gz")
+sha256sums=('4fbd5f7b290271c4dbcfa9571d035c96ed1482bdd8fd641c3da785796efc15a9')
 
 build() {
 	cd "${_githubrepo}-${pkgver}"
-	patch x48ng.desktop ../patch-desktop-file-01
 	make
 }
 

@@ -1,9 +1,0 @@
-6,8c6,9
-< Exec=@PREFIX@/bin/x48
-< Name=x48
-< Icon=@PREFIX@/share/x48/hplogo.png
----
-> Exec=@PREFIX@/bin/x48ng -smallFont fixed -mediumFont fixed -largeFont fixed -connFont fixed
-> Name=x48ng
-> Icon=@PREFIX@/share/x48ng/hplogo.png
-> Categories=Utility;
