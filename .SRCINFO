@@ -1,7 +1,7 @@
 pkgbase = legendary
 	pkgdesc = A free and open-source replacement for the Epic Games Launcher
 	pkgver = 0.20.32
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/derrod/legendary
 	arch = any
 	license = GPL3
