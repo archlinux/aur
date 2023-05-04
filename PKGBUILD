@@ -3,7 +3,7 @@
 
 _name=git
 pkgname=$_name-git
-pkgver=2.37.2.r426.g07ee72db0e
+pkgver=2.40.1.r476.g69c786637d
 pkgrel=1
 pkgdesc='A fast distributed version control system'
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ optdepends=('tk: gitk and git gui'
             'libsecret: libsecret credential helper')
 conflicts=('git')
 provides=('git')
-options=('debug')
+options=()
 install=git-git.install
 source=('git+https://github.com/git/git.git'
         'git-daemon@.service'
