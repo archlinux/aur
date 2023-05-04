@@ -17,7 +17,7 @@ source=("${_pkgname}::git+${url}#branch=v${_pkgver}"
         dkms.conf)
 sha256sums=('SKIP'
             'edaeafe28410017fabb742d6ccdf060a945150fb56e41084adb7b9dd66739e2b'
-			'dc6a9bfc6a796461da2219accc7a6ae755ea13253737630e1538f3d98aa7aff5'
+            'dc6a9bfc6a796461da2219accc7a6ae755ea13253737630e1538f3d98aa7aff5'
             '70db4a4d738e77952dd063fc066f961932112786d796dcdb4508f4ec9c5ef844')
 provides=('8188eu-dkms')
 conflicts=('8188eu-dkms')
@@ -35,8 +35,8 @@ package() {
   install -Dm644 blacklist-r8188eu.conf \
     "${pkgdir}/etc/modprobe.d/blacklist-r8188eu.conf"
 
-  # Blacklist r8188eu
-  install -Dm644 blacklist-r8188eu.conf \
+  # Blacklist rtl8xxxu
+  install -Dm644 blacklist-rtl8xxxu.conf \
     "${pkgdir}/etc/modprobe.d/blacklist-rtl8xxxu.conf"
 
   install -Dm644 dkms.conf "${install_dir}/dkms.conf"
