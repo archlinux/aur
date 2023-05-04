@@ -1,0 +1,16 @@
+--- OnscripterYuri-0.7.4/CMakeLists.txt	2023-03-29 20:48:35.000000000 +0800
++++ OnscripterYuri-0.7.4-copy/CMakeLists.txt	2023-05-04 23:29:56.988468640 +0800
+@@ -52,11 +52,10 @@
+             /usr/include/lua5.3
+         )
+         target_link_libraries(${TARGET_NAME} PRIVATE
+-            -Wl,-Bstatic # avoid libjpeg.so.8 
+-            ${JPEG_STATIC_LIBRARIES} 
++            -Wl,-Bdynamic
++            ${JPEG_LIBRARIES} 
+             bz2
+             lua5.3
+-            -Wl,-Bdynamic
+             dl
+             ${SDL2_LIBRARIES}
+             ${SDL2_TTF_LIBRARIES}
