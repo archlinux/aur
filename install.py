@@ -41,11 +41,6 @@ AZ_DISPATCH_TEMPLATE = """#!/usr/bin/env bash
 {install_dir}/bin/python -m azure.cli "$@"
 """
 
-VIRTUALENV_VERSION = '20.23.0'
-VIRTUALENV_ARCHIVE = 'virtualenv-'+VIRTUALENV_VERSION+'.tar.gz'
-VIRTUALENV_DOWNLOAD_URL = 'https://pypi.python.org/packages/source/v/virtualenv/'+VIRTUALENV_ARCHIVE
-VIRTUALENV_ARCHIVE_SHA256 = 'a85caa554ced0c0afbd0d638e7e2d7b5f92d23478d05d17a76daeac8f279f924'
-
 DEFAULT_INSTALL_DIR = os.path.expanduser(os.path.join('~', 'lib', 'azure-cli'))
 DEFAULT_EXEC_DIR = os.path.expanduser(os.path.join('~', 'bin'))
 EXECUTABLE_NAME = 'az'
@@ -124,24 +119,9 @@ def is_valid_sha256sum(a_file, expected_sum):
     return expected_sum == computed_hash
 
 
-def create_virtualenv(tmp_dir, install_dir):
-    download_location = os.path.join(tmp_dir, VIRTUALENV_ARCHIVE)
-    print_status('Downloading virtualenv package from {}.'.format(VIRTUALENV_DOWNLOAD_URL))
-    response = urlopen(VIRTUALENV_DOWNLOAD_URL)
-    with open(download_location, 'wb') as f: f.write(response.read())
-    print_status("Downloaded virtualenv package to {}.".format(download_location))
-    if is_valid_sha256sum(download_location, VIRTUALENV_ARCHIVE_SHA256):
-        print_status("Checksum of {} OK.".format(download_location))
-    else:
-        raise CLIInstallError("The checksum of the downloaded virtualenv package does not match.")
-    print_status("Extracting '{}' to '{}'.".format(download_location, tmp_dir))
-    package_tar = tarfile.open(download_location)
-    package_tar.extractall(path=tmp_dir)
-    package_tar.close()
-    virtualenv_dir_name = 'virtualenv-'+VIRTUALENV_VERSION
-    working_dir = os.path.join(tmp_dir, virtualenv_dir_name)
-    cmd = [sys.executable, 'src/virtualenv', '--python', sys.executable, install_dir]
-    exec_command(cmd, cwd=working_dir)
+def create_virtualenv(install_dir):
+    cmd = [sys.executable, '-m', 'venv', install_dir]
+    exec_command(cmd)
 
 
 def install_cli(install_dir, tmp_dir):
@@ -396,7 +376,7 @@ def main():
     exec_dir = get_exec_dir()
     exec_path = os.path.join(exec_dir, EXECUTABLE_NAME)
     verify_install_dir_exec_path_conflict(install_dir, exec_path)
-    create_virtualenv(tmp_dir, install_dir)
+    create_virtualenv(install_dir)
     install_cli(install_dir, tmp_dir)
     exec_filepath = create_executable(exec_dir, install_dir)
     completion_file_path = os.path.join(install_dir, COMPLETION_FILENAME)

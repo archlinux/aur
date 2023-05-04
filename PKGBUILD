@@ -3,7 +3,7 @@
 
 pkgname=azure-cli
 pkgver=2.48.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Command-line tools for Azure."
 arch=('any')
 url="https://github.com/Azure/azure-cli"
@@ -13,7 +13,7 @@ conflicts=("python-azure-cli")
 source=("install.py"
         "install.response"
         "az")
-sha256sums=("72f5f11af965c5b518f9b9511d35f35e06b8bd92f4a969e452141a7883622522"
+sha256sums=("10fbef43805ed5536aa08c166c5e7ee31e39d990c559387b316a33d96a8f32da"
             "7c05e9915a52fb72fa8d1c498b173c42457d669351313eaddccf43f86ed0e0ec"
             "990f70efec828c1e1f3f57748fc6e40f9705f2223dc96683e8e29d118daac116")
 options=(!strip)
