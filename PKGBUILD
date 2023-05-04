@@ -5,7 +5,7 @@ pkgname=(
 )
 pkgbase=rotate-backups
 pkgver=8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple command line interface for backup rotation"
 arch=(any)
 url="https://github.com/xolox/python-rotate-backups"

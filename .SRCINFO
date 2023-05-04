@@ -1,7 +1,7 @@
 pkgbase = rotate-backups
 	pkgdesc = Simple command line interface for backup rotation
 	pkgver = 8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/xolox/python-rotate-backups
 	arch = any
 	license = MIT
@@ -25,4 +25,3 @@ pkgname = rotate-backups
 	depends = python-setuptools
 
 pkgname = python-rotate-backups
-
