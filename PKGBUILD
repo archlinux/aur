@@ -2,8 +2,8 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-dcpack
-pkgver=20.0905a
-pkgrel=2
+pkgver=23.0501a1
+pkgrel=1
 pkgdesc="Dreamcast content pack for RVGL."
 url='https://rvgl.org'
 arch=('any')
