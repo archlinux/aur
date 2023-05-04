@@ -1,7 +1,7 @@
 pkgbase = obs-studio-rc
 	pkgdesc = Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration
 	pkgver = 29.1.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 6
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = obs-studio-rc
 	makedepends = swig
 	makedepends = luajit
 	makedepends = sndio
-	makedepends = python>=3.10
+	makedepends = python>=3.11
 	makedepends = asio
 	makedepends = nlohmann-json
 	makedepends = websocketpp
@@ -43,7 +43,7 @@ pkgbase = obs-studio-rc
 	optdepends = libva-mesa-driver: Hardware encoding
 	optdepends = swig: Scripting
 	optdepends = luajit: Lua scripting
-	optdepends = python>=3.10: Python scripting
+	optdepends = python>=3.11: Python scripting
 	optdepends = sndio: Sndio input client
 	optdepends = v4l2loopback-dkms: Virtual camera output
 	optdepends = libajantv2: AJA NTV 2 support
@@ -63,9 +63,11 @@ pkgbase = obs-studio-rc
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
 	source = obs-websocket::git+https://github.com/obsproject/obs-websocket.git
 	source = qr::git+https://github.com/nayuki/QR-Code-generator.git
+	source = 0001-Fix_build_with_GCC_13.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 450cbf6df2b14ec8f9c43c1c7d4b06ab1b10c38eae6d1048eebffb4ca16e569
 
 pkgname = obs-studio-rc
