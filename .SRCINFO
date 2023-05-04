@@ -1,7 +1,7 @@
 pkgbase = cargo-mutants
 	pkgdesc = Mutation testing for Rust
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sourcefrog/cargo-mutants
 	arch = x86_64
 	license = MIT
