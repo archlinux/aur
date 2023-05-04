@@ -1,7 +1,7 @@
 pkgbase = python-naturalsort
 	pkgdesc = Simple natural order sorting API for Python that just works
 	pkgver = 1.5.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/xolox/python-naturalsort
 	arch = any
 	license = MIT
@@ -12,4 +12,3 @@ pkgbase = python-naturalsort
 	sha256sums = 172b5ed6e7ba3420c08ba2ded1c52fe74878f5d769dc5d9dec2b6a53e7117356
 
 pkgname = python-naturalsort
-
