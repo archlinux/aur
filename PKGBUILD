@@ -1,8 +1,8 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
 pkgbase=gowin-eda
-pkgver=1.9.8.11
-pkgrel=2
+pkgver=1.9.9Beta
+pkgrel=1
 _desc="Gowin EDA, an easy to use integrated design environment provides design engineers one-stop solution from design entry to verification."
 arch=('x86_64')
 url="http://www.gowinsemi.com.cn/faq.aspx"
@@ -13,7 +13,7 @@ source=("http://cdn.gowinsemi.com.cn/Gowin_V${pkgver/_/-}_linux.tar.gz"
         "${pkgbase}-ide-project.xml"
         "${pkgbase}-ide.desktop"
         "${pkgbase}-programmer.desktop")
-sha256sums=('d27325f6419c32f3aa454c1fbd797f87a3f202b7ebd19817d1df9ef60e56a32b'
+sha256sums=('ce1553996301b587b02121e0bb7ae7240435efe6d132f117c95ffdae247414ea'
             '346991b57db67aa4a8373ad09fd221e310c87ac7a6c90313cad7b48f7e6934ab'
             'a95d18239e9ecb6b3f712fa569601e964624ef4ccb39ca85e56dfafa74b573d2'
             '796ff224841083d8c354dc5c3c2966fe31f6576870b3508bb012e5a467943008'
@@ -41,7 +41,7 @@ _package-ide() {
   
   cd ${srcdir}/IDE
   
-  _install 644 doc/
+  # _install 644 doc/
   _install 644 lib/
   _install 644 data/
   _install 644 share/
