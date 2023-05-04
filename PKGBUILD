@@ -6,16 +6,17 @@
 
 pkgname=distcc-git
 _pkgname=distcc
-pkgver=v3.4.r26.gae9922c
+pkgver=v3.4.r38.g72e476e
 pkgrel=1
-_gccver=11.2.0 # Current GCC version, used for symlinks. See FS#69044
+_gccver=13.1.0 # Current GCC version, used for symlinks. See FS#69044
 pkgdesc='Distributed compilation service for C, C++ and Objective-C'
 arch=(x86_64)
 url='https://github.com/distcc/distcc'
 license=(GPL)
 depends=(avahi popt python)
 makedepends=(git gtk3)
-optdepends=("gcc=$_gccver")
+optdepends=("gcc=$_gccver"
+            'gtk3: for distccmon')
 conflicts=(distcc)
 provides=(distcc)
 backup=(etc/conf.d/distccd
@@ -37,15 +38,14 @@ prepare() {
   cd "$_pkgname"
   ./autogen.sh
   sed -i 's/ install-gnome-data//g' Makefile.in
-  # FS#66418, support Python 3.9
-  find . -name '*.py' -type f -exec sed -i 's,e.clock(,e.perf_counter(,g' {} \;
-  # Remove debug print, ref. https://github.com/distcc/distcc/commit/2df787cc0c02743254d5e6c04a38da82f1e3d9f6
-  sed -i '/fisk state/d' src/mon-gnome.c
 }
 
 build() {
   cd "$_pkgname"
-  export CFLAGS+=' -fcommon'
+
+  # ref: https://github.com/distcc/distcc/issues/454#issuecomment-1087865811
+  export CFLAGS+=' -DPY_SSIZE_T_CLEAN -fcommon'
+
   ./configure \
     --enable-rfc2553 \
     --mandir=/usr/share/man \
@@ -69,12 +69,12 @@ package() {
   # Package symlinks
   _targets=(c++ c89 c99 cc clang clang++ cpp g++ gcc $CARCH-pc-linux-gnu-g++
             $CARCH-pc-linux-gnu-gcc $CARCH-pc-linux-gnu-gcc-$_gccver)
-  install -d "$pkgdir/usr/lib/$pkgname/bin"
+  install -d "$pkgdir/usr/lib/$_pkgname/bin"
   for bin in "${_targets[@]}"; do
     # For whitelist since version 3.3, see FS#57978
-    ln -sf ../../bin/$pkgname "$pkgdir/usr/lib/$pkgname/$bin"
+    ln -sf ../../bin/$_pkgname "$pkgdir/usr/lib/$_pkgname/$bin"
     # Needed for makepkg to work
-    ln -sf ../../../bin/$pkgname "$pkgdir/usr/lib/$pkgname/bin/$bin"
+    ln -sf ../../../bin/$_pkgname "$pkgdir/usr/lib/$_pkgname/bin/$bin"
   done
 
   # FS#67629
