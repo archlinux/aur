@@ -3,7 +3,7 @@ _appname=douyin
 pkgname="deepin-wine-${_appname}"
 _pkgname="com.${_appname}.spark"
 _providername=ByteDance
-pkgver=2.1.1
+pkgver=2.2.2
 sparkver=2.0.0spark3
 pkgrel=1
 epoch=
@@ -18,16 +18,16 @@ provides=("${_providername}")
 install="${pkgname}.install"
 source=(
     "${_pkgname}_${sparkver}_i386.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/video/${_pkgname}/${_pkgname}_${sparkver}_i386.deb"
-	"${_appname}-${pkgver}.exe::${url}/download/pc/obj/${_appname}-pc-client/7044145585217083655/releases/10199115/${pkgver}/win32-ia32/${_appname}-v${pkgver}-win32-ia32-${_appname}Download1.exe"
+	"${_appname}-${pkgver}.exe::${url}/download/pc/obj/${_appname}-pc-client/7044145585217083655/releases/10334640/${pkgver}/win32-ia32/${_appname}-v${pkgver}-win32-ia32-${_appname}Download1.exe"
 	"${pkgname}.install"
     "run.sh"
-    "LICENSE.html::${url}/draft/douyin_agreement/douyin_agreement_user.html?id=6773906068725565448"
+    "LICENSE.html::${url}/draft/douyin_agreement/douyin_agreement_user.html"
     )
 sha256sums=('04a6abe0a5a4b4deff00996aaaf4f56367fccd2b2af6631a441daf5e59592961'
-            '7f97a1f104f723aa255b70f0abc676bc47d5a4fb9279f3896860333d8a2da59a'
+            '8e1521db02f2e5eda1fc6f5d3a6a37b3fd6494a70caefb8c35abbbf514fe32e5'
             'e476028b1c94fe6a4d1a24e4b603667a39276c21dfbe76433c42cf64a73d16be'
-            '96cc65ef1c499808785a4b41c322fa0887d3d717172bdc9cc0c8f1636cdf761d'
-            '66ef6c0a87c002d3fdff731048420b83f023118878bedd784c52ddac659035f6')
+            '482d7cede340487ede6203cbaf10c9017f3d96da9b5bf75aa1b783efb6f8db9e'
+            '04b79c505f956a56144ecd5df76034bf56959ffd1ab9c4524177f71666c0f369')
 
 prepare() {
     bsdtar -xf data.tar.xz
