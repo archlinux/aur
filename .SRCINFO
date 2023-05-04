@@ -1,7 +1,7 @@
 pkgbase = microserver
 	pkgdesc = Simple ad-hoc server with SPA support based on Warp!. Excellent for testing React, Angular, Vue apps and the like.
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/robertohuertasm/microserver
 	arch = x86_64
 	license = MIT
