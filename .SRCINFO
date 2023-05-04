@@ -1,14 +1,16 @@
 pkgbase = libarchive-qt
 	pkgdesc = A Qt based archiving solution with libarchive backend
 	pkgver = 2.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/marcusbritanicus/libarchive-qt
 	arch = x86_64
 	arch = aarch64
 	license = LGPL3
 	makedepends = meson
+	makedepends = ninja
+	makedepends = qt5-base
+	makedepends = qt6-base
 	depends = libarchive
-	depends = qt5-base
 	depends = zlib
 	depends = bzip2
 	depends = xz
@@ -16,3 +18,15 @@ pkgbase = libarchive-qt
 	md5sums = 99836064f62c6d2cae28c1e3e606541b
 
 pkgname = libarchive-qt
+	depends = libarchive
+	depends = zlib
+	depends = bzip2
+	depends = xz
+	depends = qt5-base
+
+pkgname = libarchive-qt-qt6
+	depends = libarchive
+	depends = zlib
+	depends = bzip2
+	depends = xz
+	depends = qt6-base
