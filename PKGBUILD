@@ -2,7 +2,7 @@
 
 pkgname=bitwarden-cli-bin
 pkgver=2023.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Bitwarden Command-line Interface'
 arch=(x86_64)
 url='https://github.com/bitwarden/clients'
@@ -21,5 +21,5 @@ prepare() {
 }
 
 package() {
-	install -Dm755 bw -t "$pkgdir/usr/bin/bw"
+	install -Dm755 bw -t "$pkgdir/usr/bin/"
 }
