@@ -7,7 +7,7 @@
 pkgname=hello-world
 _pkgname=helloworld
 pkgver=.r1.c68245d
-pkgrel=3
+pkgrel=4
 pkgdesc="Just a test package, will be removed soon"
 arch=('x86_64')
 url="https://github.com/justanoobcoder/helloworld"
