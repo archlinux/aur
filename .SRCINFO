@@ -1,7 +1,7 @@
 pkgbase = wlr-layout-ui
 	pkgdesc = Provides a simple graphical front end for wlr-randr
 	pkgver = r10.b2762da
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fdev31/wlr-layout-ui
 	arch = any
 	license = MIT
