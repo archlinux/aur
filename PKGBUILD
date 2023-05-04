@@ -5,7 +5,7 @@ _githubrepo=x48ng
 _gitcommit=6c6379686393f1f353c75641abe94cb0fa74d311
 
 pkgname=x48ng-git
-pkgver=0.9.10.r3.6c63796
+pkgver=0.10.0.r1.6c63796
 pkgrel=1
 pkgdesc='A reboot of the x48 HP 48 emulator'
 arch=('any')
