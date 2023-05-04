@@ -2,7 +2,7 @@
 
 pkgname=python-pytest-kwparametrize
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Alternate syntax for @pytest.mark.parametrize with test cases as dictionaries and default value fallbacks'
 arch=('any')
 url=https://github.com/akaihola/pytest-kwparametrize
