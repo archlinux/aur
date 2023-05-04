@@ -4,7 +4,7 @@ DOC_DIRS=(opt/hydrus/help)
 
 pkgname=hydrus-docs
 upstream_name=hydrus
-pkgver=525.a
+pkgver=526
 pkgrel=1
 pkgdesc="Danbooru-like image tagging and searching system for the desktop (documentation)"
 arch=(any)
@@ -12,7 +12,7 @@ license=(custom)
 url=http://hydrusnetwork.github.io/hydrus/
 depends=()
 makedepends=(git 'mkdocs>=1.3.0' mkdocs-material 'pymdown-extensions>=9.4')
-source=("${upstream_name}::git+https://github.com/hydrusnetwork/${upstream_name}.git#commit=2691a92c8afe39e05c5eb7df2f9d93bcdb1d5f35")
+source=("${upstream_name}::git+https://github.com/hydrusnetwork/${upstream_name}.git#commit=7bfe474a5d7af0b5ea11343e7b91ec25fb7d0651")
 sha256sums=('SKIP')
 
 build() {
