@@ -16,7 +16,7 @@ depends=(
   'dpkg'
   'file'
   'html2text'
-  'man-db'
+  'man'
   'perl-pod-parser'
   'strip-nondeterminism'
 
