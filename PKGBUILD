@@ -13,6 +13,7 @@ depends=('dkms')
 makedepends=('git')
 source=("${_pkgname}::git+${url}#branch=v${_pkgver}"
         blacklist-r8188eu.conf
+        blacklist-rtl8xxxu.conf
         dkms.conf)
 sha256sums=('SKIP'
             'edaeafe28410017fabb742d6ccdf060a945150fb56e41084adb7b9dd66739e2b'
@@ -32,6 +33,10 @@ package() {
   # Blacklist r8188eu
   install -Dm644 blacklist-r8188eu.conf \
     "${pkgdir}/etc/modprobe.d/blacklist-r8188eu.conf"
+
+  # Blacklist r8188eu
+  install -Dm644 blacklist-r8188eu.conf \
+    "${pkgdir}/etc/modprobe.d/blacklist-rtl8xxxu.conf"
 
   install -Dm644 dkms.conf "${install_dir}/dkms.conf"
 

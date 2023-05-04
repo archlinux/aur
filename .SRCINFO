@@ -11,6 +11,7 @@ pkgbase = 8188eu-dkms-git
 	conflicts = 8188eu-dkms
 	source = 8188eu::git+https://github.com/lwfinger/rtl8188eu#branch=v5.2.2.4
 	source = blacklist-r8188eu.conf
+	source = blacklist-rtl8xxxu.conf
 	source = dkms.conf
 	sha256sums = SKIP
 	sha256sums = edaeafe28410017fabb742d6ccdf060a945150fb56e41084adb7b9dd66739e2b
