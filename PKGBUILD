@@ -1,7 +1,7 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=jaq
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="jaq is a clone of the JSON data processing tool jq. jaq aims to support a large subset of jq's syntax and operations."
 url="https://github.com/01mf02/$pkgname"
 arch=("x86_64")
@@ -10,11 +10,18 @@ makedepends=("cargo")
 source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('ea54e2675ccd7ea9fe900343cea9263582a519f157fba6cf1d54f1e4e6718b99')
 
+prepare()
+{
+    cd "$srcdir/$pkgname-$pkgver"
+
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 build()
 {
     cd "$srcdir/$pkgname-$pkgver"
 
-    cargo build --release
+    cargo build --frozen --release
 }
 
 package()

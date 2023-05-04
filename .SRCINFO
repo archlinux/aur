@@ -1,7 +1,7 @@
 pkgbase = jaq
 	pkgdesc = jaq is a clone of the JSON data processing tool jq. jaq aims to support a large subset of jq's syntax and operations.
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/01mf02/jaq
 	arch = x86_64
 	license = MIT
