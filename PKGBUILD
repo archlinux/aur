@@ -5,8 +5,8 @@
 
 _pkgmainbranch=nvidia
 pkgname=nvidia-525xx
-pkgver=525.105.17
-pkgrel=3
+pkgver=525.116.03
+pkgrel=1
 pkgdesc="NVIDIA drivers for linux, 525 branch"
 arch=('x86_64')
 url="https://www.nvidia.com/"
