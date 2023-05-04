@@ -1,7 +1,7 @@
 # Maintainer: Gerard Ribugent <ribugent <at> gmail <dot> com>
 pkgname=python-datadog
 _name=datadog
-pkgver=0.44.0
+pkgver=0.45.0
 pkgrel=1
 pkgdesc="The Datadog Python library and dogshell"
 arch=(any)
@@ -13,7 +13,7 @@ depends=(
 )
 makedepends=(python-build python-hatchling python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha512sums=('579bbb9bb9e89ee32b333ff873d0b04404c5f3ad09baeda26214f720a3ba420e4f441130c5ccce27d91ad8f2b44e0e529c2ad6483a3393269789045a12a32c18')
+sha512sums=('cfd67c7717d638cf70bbf4874f7645bfaa38e6925b01db1f312f4ee1303214650e8a7fe51024b742785443f57cd6763ea262063ba5dba9c37a7a5fd7084ed735')
 
 build() {
     cd "$_name-$pkgver"
@@ -22,6 +22,6 @@ build() {
 
 package() {
     python -m installer --destdir="$pkgdir" $_name-$pkgver/dist/*.whl
-    install -Dm0644 $_name-$pkgver.dist-info/license_files/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm0644 $_name-$pkgver.dist-info/license_files/LICENSE-3rdparty.csv "$pkgdir/usr/share/licenses/$pkgname/LICENSE-3rdparty.csv"
+    install -Dm0644 $_name-$pkgver/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm0644 $_name-$pkgver/LICENSE-3rdparty.csv "$pkgdir/usr/share/licenses/$pkgname/LICENSE-3rdparty.csv"
 }
