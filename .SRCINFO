@@ -1,7 +1,7 @@
 pkgbase = netpad-bin
 	pkgdesc = A cross-platform C# editor and playground.
-	pkgver = 0.1.1
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/tareqimbasher/NetPad
 	arch = x86_64
 	license = MIT
@@ -26,15 +26,13 @@ pkgbase = netpad-bin
 	depends = nspr
 	depends = expat
 	depends = libxext
-	depends = libxshmfence
 	depends = libxkbcommon
 	depends = pango
-	depends = gdk-pixbuf2
 	depends = mesa
 	depends = libxrandr
-	source = netpad-0.1.1.pacman::https://github.com/tareqimbasher/NetPad/releases/download/v0.1.1/netpad-0.1.1-x64.pacman
+	source = netpad-0.2.0.pacman::https://github.com/tareqimbasher/NetPad/releases/download/v0.2.0/netpad-0.2.0-x64.pacman
 	source = LICENSE::https://github.com/tareqimbasher/NetPad/raw/main/LICENSE
-	sha256sums = d7d52078eed8bca658ec6f0ea969bb730309bbed60155a7fb8b75358116ea591
+	sha256sums = 91c8eef852adead9ab31f4528ad0243d268514dc7470b427d8c314a900580e49
 	sha256sums = 43485534798b716310ae2a0edeebb00e97ff0e42e5fde13ff2994e2bc82348f6
 
 pkgname = netpad-bin
