@@ -4,7 +4,7 @@
 pkgname='python-metno-locationforecast'
 _pkgname="${pkgname#python-}"
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Python interface for the MET Norway Locationforecast/2.0 weather service'
 arch=('any')
 license=('MIT')
@@ -14,6 +14,7 @@ source=(
   'setup-py.diff'
 )
 depends=(
+  'python'
   'python-requests'
 )
 makedepends=(
