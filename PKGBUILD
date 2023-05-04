@@ -1,9 +1,9 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=python-constraint
 pkgver=1.4.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Module implementing support for handling CSPs (Constraint Solving Problems) over finite domain"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/python-constraint/python-constraint"
 license=('custom:BSD')
 depends=('python')
@@ -29,6 +29,7 @@ check() {
     export PYTHONPATH="$srcdir"/test/usr/lib/python${python_version}/site-packages
     rm -r ${pkgname/python-}
     python -m pytest tests/
+    rm -r "$srcdir/test"
 }
 
 package() {
@@ -36,5 +37,6 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
     #Delete example folder to avoid conflict files with python-cvxpy
-    rm -r "${pkgdir}/usr/lib/python3.10/site-packages/examples"
+    local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+    rm -r "${pkgdir}/usr/lib/python${python_version}/site-packages/examples"
 }
