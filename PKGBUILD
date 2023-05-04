@@ -1,11 +1,11 @@
-# Maintainer: dreieck
+# Maintainer: dreieck (https://aur.archlinux.org/account/dreieck)
 # Contributer: Brian "Beej" Hall <beej@beej.us>
 # Contributer: Raphael Dümig <raphael[AT]duemig-neufahrn[DOT]de>
 
 _pkgname=ffgo
 pkgname="${_pkgname}-git"
-pkgver=1.12.7+r593.20200602.ee50e77
-pkgrel=3
+pkgver=1.12.7+r595.20220731.71864d2
+pkgrel=1
 pkgdesc="A graphical launcher for FlightGear, i.e., a program whose purpose is to allow easy assembling and running of an fgfs command line. (Fork of and replacement for 'FGo!'.)"
 arch=('any')
 url="http://frougon.net/projects/FFGo/"
@@ -36,7 +36,7 @@ conflicts=(
   "${_pkgname}"
 )
 source=(
-  "${_pkgname}::git+git://github.com/frougon/FFGo.git"
+  "${_pkgname}::git+https://github.com/frougon/FFGo.git"
 )
 sha256sums=(
   'SKIP'
@@ -53,7 +53,7 @@ pkgver() {
     error "Could not determine version."
     exit 1
   else
-    printf '%s' "${_ver}+r${_rev}.${_date}.${_hash}"
+    printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
   fi
 }
 
