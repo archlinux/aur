@@ -1,9 +1,9 @@
-# Maintainer: Bipin Kumar <bipin@ccmb.res.in>
+# Maintainer: Bipin Kumar <kbipinkumar@pm.me>
 
 pkgname=python-upsetplot
 _module=UpSetPlot
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python implementation of UpSet plots by Lex et al. doi:10.1109/TVCG.2014.2346248'
 arch=(any)
 url='https://github.com/jnothman/UpSetPlot'
