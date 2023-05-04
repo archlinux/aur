@@ -1,22 +1,23 @@
-# Maintainer: Grey Christoforo <first name at last name dot net>
+# Maintainer: Marcel Robitaille <mail@marcelrobitaille.me>
+# Contributor: Grey Christoforo <first name at last name dot net>
 # Contributor: mickael9 <mickael9 at gmail dot com>
 # Contributor: thodnev <thodnev at github>
 
 _number_of_bits=32
 pkgname=microchip-mplabxc${_number_of_bits}-bin
-pkgver=2.50
+pkgver=4.21
 pkgrel=1
 pkgdesc="Microchip's MPLAB XC${_number_of_bits} C compiler toolchain for all of their 32bit microcontrollers"
 arch=(x86_64)
 url=https://www.microchip.com/development-tools/downloads-archive
 license=(custom)
 depends=(gcc-libs)
-makedepends=(bitrock-unpacker)
+makedepends=(bitrock-unpacker rsync)
 
 options=(!strip docs libtool emptydirs !zipman staticlibs)
-source=("http://ww1.microchip.com/downloads/en/DeviceDoc/xc${_number_of_bits}-v$pkgver-full-install-linux-installer.run")
+source=("https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocuments/SoftwareTools/xc${_number_of_bits}-v$pkgver-full-install-linux-x64-installer.run")
 
-md5sums=('5eff2f242d424b51d0986631f1e0eb83')
+sha256sums=('2c69429ecc0c2adb76c94691770543f91d4a0c4609c1338ccf41c69b6d10bd11')
 
 install=$pkgname.install
 
@@ -24,7 +25,7 @@ instdir="/opt/microchip/xc${_number_of_bits}/v${pkgver}"
 
 build() {
   msg2 "Unpacking files from Microchip's installer blob"
-  bitrock-unpacker ./xc${_number_of_bits}-v$pkgver-full-install-linux-installer.run ./unpacked.vfs
+  bitrock-unpacker ./xc${_number_of_bits}-v$pkgver-full-install-linux-x64-installer.run ./unpacked.vfs
 }
 
 package() {
