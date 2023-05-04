@@ -2,7 +2,7 @@
 
 pkgname=('python-phonopy')
 pkgver=2.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Phonopy is an open source package for phonon calculations at harmonic and quasi-harmonic levels"
 arch=('any')
 url="https://phonopy.github.io/phonopy"
