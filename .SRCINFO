@@ -1,7 +1,7 @@
 pkgbase = python3-django-tagging
 	pkgdesc = A generic tagging application for Django projects in python3
 	pkgver = 0.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.python.org/pypi/django-tagging
 	arch = any
 	license = MIT

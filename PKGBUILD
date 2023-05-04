@@ -3,7 +3,7 @@
 pkgname=python3-django-tagging
 _pkgname=django-tagging
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A generic tagging application for Django projects in python3"
 arch=('any')
 url='https://pypi.python.org/pypi/django-tagging'
