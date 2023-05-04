@@ -1,7 +1,7 @@
 # Maintainer: piernov <piernov@piernov.org>
 
 pkgname=python-segmentation-models-pytorch
-pkgver=0.2.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Neural Networks for Image Segmentation based on PyTorch"
 arch=('any')

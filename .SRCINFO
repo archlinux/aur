@@ -1,6 +1,6 @@
 pkgbase = python-segmentation-models-pytorch
 	pkgdesc = Neural Networks for Image Segmentation based on PyTorch
-	pkgver = 0.2.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/qubvel/segmentation_models.pytorch
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-segmentation-models-pytorch
 	depends = python-timm
 	depends = python-tqdm
 	depends = python-pillow
-	source = git+https://github.com/qubvel/segmentation_models.pytorch.git#tag=v0.2.1
+	source = git+https://github.com/qubvel/segmentation_models.pytorch.git#tag=v0.3.2
 	sha256sums = SKIP
 
 pkgname = python-segmentation-models-pytorch
