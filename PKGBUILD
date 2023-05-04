@@ -2,7 +2,7 @@
 
 pkgname=osbuild-composer
 pkgdesc='An HTTP service for building bootable OS images'
-pkgver=80
+pkgver=81
 pkgrel=1
 url="https://www.osbuild.org"
 arch=(x86_64)
@@ -12,7 +12,7 @@ makedepends=('go' 'systemd')
 checkdepends=('go')
 optdepends=()
 source=($pkgname-$pkgver.tar.gz::https://github.com/osbuild/osbuild-composer/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('bb1083bceca81a7c52c0f7c663b39069d51e90592d5e346c185d169666390f93')
+sha256sums=('9eb492a5f9eee2d919909090955f679f36f416b0fb58edab0481a29b7b55c78c')
 
 prepare() {
   cd $pkgname-$pkgver
