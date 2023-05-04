@@ -2,7 +2,7 @@
 _pkgname=ipyvue
 pkgname=python-$_pkgname
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Jupyter widgets base for Vue libraries"
 arch=('any')
 url="https://pypi.org/project/ipyvue"

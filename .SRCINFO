@@ -1,7 +1,7 @@
 pkgbase = python-ipyvue
 	pkgdesc = Jupyter widgets base for Vue libraries
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/ipyvue
 	arch = any
 	license = MIT
