@@ -1,6 +1,6 @@
 pkgbase = python-swagger-spec-validator
 	pkgdesc = Python library that validates Swagger Specs
-	pkgver = 2.7.3
+	pkgver = 3.0.3
 	pkgrel = 1
 	url = https://github.com/Yelp/swagger_spec_validator
 	arch = x86_64
@@ -9,7 +9,8 @@ pkgbase = python-swagger-spec-validator
 	depends = python-jsonschema
 	depends = python-yaml
 	depends = python-six
-	source = python-swagger-spec-validator-2.7.3.tar.gz::https://github.com/Yelp/swagger_spec_validator/archive/refs/tags/v2.7.3.tar.gz
-	md5sums = 1eb4b8c7f316b3579ccee7f468a2fdc6
+	depends = python-typing_extensions
+	source = python-swagger-spec-validator-3.0.3.tar.gz::https://github.com/Yelp/swagger_spec_validator/archive/refs/tags/v3.0.3.tar.gz
+	md5sums = 2cde4bf60fb8de6c2ded8a97b4aa2e6b
 
 pkgname = python-swagger-spec-validator
