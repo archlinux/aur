@@ -8,7 +8,7 @@
 pkgbase=smuxi
 pkgname=('smuxi-server' 'smuxi')
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="User-friendly and cross-platform IRC client for sophisticated users for GNOME/GTK+"
 arch=('any')
 url="https://smuxi.im/"
@@ -16,7 +16,7 @@ license=('GPL')
 makedepends=('notify-sharp' 'log4net' 'nini' 'gtkspell' 'stfl' 'intltool')
 options=('!emptydirs')
 source=(https://smuxi.im/jaws/data/files/$pkgbase-$pkgver.tar.gz{,.asc})
-validpgpkeys=('ABE195E150A8DBE7809D3F427127E5ABEEF946C8') # Mirco Bauer
+validpgpkeys=('A3712C8E4CE449B9F28C563F33A429E62D907822') # Mirco Bauer
 sha256sums=('cb96475e4ec3479b37b4357178cb00a1a404a67ba24d5fc0f6c4fd3fae5816e5'
             'SKIP')
 
