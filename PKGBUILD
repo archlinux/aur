@@ -1,9 +1,9 @@
-# Maintainer: Bipin Kumar <bipin@ccmb.res.in>
+# Maintainer: Bipin Kumar <kbipinkumar@pm.me>
 
 pkgname=qtl-seq
 _name=QTL-seq
 pkgver=2.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Pipeline for bulk segregant analysis. https://doi.org/10.7717/peerj.13170'
 arch=('x86_64')
 url="https://github.com/YuSugihara/QTL-seq"
