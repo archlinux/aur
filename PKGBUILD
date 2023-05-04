@@ -3,7 +3,7 @@
 _pkgname=pineflash
 pkgname="${_pkgname}-git"
 pkgver=0.5.0.r251.20230426.de2d50e
-pkgrel=4
+pkgrel=5
 arch=(
   i686
   x86_64
@@ -23,7 +23,7 @@ depends=(
 )
 makedepends=(
   'base-devel'
-  'cargo-ndk' # To verify some integrity checksums of rust modules
+  # 'cargo-ndk' # To verify some integrity checksums of rust modules
   'git'
   'optipng'
   'pkgconf'
@@ -51,7 +51,7 @@ prepare() {
   CARGO_HOME="${srcdir}/cargo"
   export CARGO_HOME
 
-  cargo fetch
+  cargo fetch || cargo fetch # To work around the error "failed to verify the checksum of `ndk-sys v0.4.0`". See also https://github.com/rust-lang/cargo/issues/7180#issuecomment-1325636251.
 
   git log > "${srcdir}/git.log"
 }
