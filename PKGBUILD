@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zettlr-appimage
 _appname=Zettlr
-pkgver=3.0.0beta3
-_pkgver=beta.3
+pkgver=3.0.0beta4
+_pkgver=beta.4
 pkgrel=1
 pkgdesc="A Markdown Editor for the 21st century."
 arch=('x86_64')
@@ -13,12 +13,12 @@ options=(!strip)
 conflicts=("${pkgname%-appimage}")
 depends=('hicolor-icon-theme' 'zlib' 'glibc')
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver%beta3}-${_pkgver}/Zettlr-${pkgver%beta3}-${_pkgver}-x86_64.AppImage")
-sha256sums=('c4e0b4a86fad674d75c81662c99591f7a28ac8d391b1d00d8ee02201253ecfb8')
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver%beta4}-${_pkgver}/Zettlr-${pkgver%beta4}-${_pkgver}-x86_64.AppImage")
+sha256sums=('8d51ff4b014c730f63ead247caa78a67422169d6043bb3416a3baebd7826168d')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's|Exec=AppRun|Exec=/opt/appimages/zettlr.AppImage|g' -i "${srcdir}/squashfs-root/${_appname}.desktop"
+    sed 's|Exec=AppRun|Exec=/opt/appimages/zettlr.AppImage|g;s|Icon=Zettlr|Icon=zettlr|g' -i "${srcdir}/squashfs-root/${_appname}.desktop"
 }  
 package() {
     install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
