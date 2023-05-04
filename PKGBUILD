@@ -5,7 +5,7 @@
 
 pkgname=debhelper
 pkgver=13.11.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of programs that can be used in a debian/rules file to automate common tasks"
 arch=('any')
 url="https://salsa.debian.org/debian/debhelper.git/"
@@ -13,20 +13,20 @@ _url_dh_strip_nondeterminism="https://salsa.debian.org/reproducible-builds/strip
 license=('GPL2' 'GPL3')
 depends=(
   'binutils'
-  'dpkg>=1.16.2'
-  'file>=3.23'
+  'dpkg'
+  'file'
   'html2text'
-  'man-db>=2.5.1'
+  'man-db'
   'perl-pod-parser'
-  'perl>=5.6.0'
-  'po-debconf'
   'strip-nondeterminism'
+
+  # AUR
+  'po-debconf'
 )
 makedepends=(
-  'file>=3.23'
+  'file'
   'git'
-  'man-db>=2.5.1'
-  'po4a>=0.24'
+  'po4a'
 )
 optdepends=(
   'dh-make: convert source archives into Debian package source'
