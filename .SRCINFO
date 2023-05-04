@@ -1,7 +1,7 @@
 pkgbase = evcxr_jupyter
 	pkgdesc = A Jupyter Kernel for the Rust programming language.
 	pkgver = 0.14.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/evcxr/tree/main/evcxr_jupyter
 	arch = x86_64
 	license = Apache
