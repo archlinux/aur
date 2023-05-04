@@ -2,7 +2,7 @@
 _projectname='py_cui'
 pkgname="python-$_projectname"
 pkgver='0.1.6'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Python library for creating all-ascii CUI/TUI interfaces with pre-built widgets'
 arch=('any')
 url="https://github.com/jwlodek/$_projectname"
