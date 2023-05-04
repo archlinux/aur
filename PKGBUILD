@@ -5,7 +5,7 @@
 _pkgname=pithos
 pkgname=$_pkgname-git
 pkgver=1.5.1.r23.g0a228ab
-pkgrel=1
+pkgrel=2
 pkgdesc='Native Pandora Radio client'
 arch=('any')
 url="https://pithos.github.io/"

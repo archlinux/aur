@@ -1,7 +1,7 @@
 pkgbase = pithos-git
 	pkgdesc = Native Pandora Radio client
 	pkgver = 1.5.1.r23.g0a228ab
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pithos.github.io/
 	arch = any
 	license = GPL3
