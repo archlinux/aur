@@ -1,4 +1,5 @@
-# Maintainer: Sachin Krishnan T V <sachu92@gmail.com>
+# Maintainer: Marco Rubin <marco.rubin@protonmail.com>
+# Contributor: Sachin Krishnan T V <sachu92@gmail.com>
 # Contributor: ZWindL <zwindl@protonmail.com>
 
 _name='gdbgui'
