@@ -10,11 +10,18 @@ makedepends=("cargo")
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('0a4587caaa2d9654ef41e48612267343c5f018387f3f36564688263114629cad')
 
+prepare()
+{
+    cd "$srcdir/$pkgname-$pkgver"
+
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 build()
 {
     cd "$srcdir/$pkgname-$pkgver"
 
-    cargo build --release
+    cargo build --frozen --release
 }
 
 package()
