@@ -1,7 +1,7 @@
 pkgbase = python-blosc2
 	pkgdesc = Wrapper for the blosc2 compressor
 	pkgver = 2.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Blosc/python-blosc2
 	arch = any
 	license = BSD

@@ -1,7 +1,7 @@
 pkgname=python-blosc2
 _pkgname=blosc2
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Wrapper for the blosc2 compressor'
 arch=('any')
 url='https://github.com/Blosc/python-blosc2'
@@ -12,13 +12,13 @@ source=("https://github.com/Blosc/python-blosc2/archive/refs/tags/v$pkgver.tar.g
 sha256sums=('b3f12d8ac9f3cdd16b27813d423dee3cd108a162f3a075d59d1325e0f3c27412')
 
 build() {
-  cd "$_pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   export CMAKE_ARGS="-DUSE_SYSTEM_BLOSC2=ON"
   python setup.py build
 }
 
 package() {
-  cd "$_pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
   python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
 }
