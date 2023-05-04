@@ -3,7 +3,7 @@
 
 _pkgname=pyzm
 pkgname=python-pyzm-git
-pkgver=0.3.56.r332.de527fb
+pkgver=0.3.56.r333.ff914ce
 pkgrel=1
 pkgdesc="Python API, Log, Event Server and Memory wrapper for ZoneMinder"
 arch=('any')

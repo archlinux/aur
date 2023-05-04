@@ -1,6 +1,6 @@
 pkgbase = python-pyzm-git
 	pkgdesc = Python API, Log, Event Server and Memory wrapper for ZoneMinder
-	pkgver = 0.3.56.r332.de527fb
+	pkgver = 0.3.56.r333.ff914ce
 	pkgrel = 1
 	url = https://github.com/ZoneMinder/pyzm
 	arch = any
