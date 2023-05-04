@@ -1,7 +1,7 @@
 pkgbase = kahlo
 	pkgdesc = Video download tool that automatically downloads newly posted videos from channels on supported websites
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/dpeukert/kahlo
 	arch = any
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = kahlo
 	makedepends = python-wheel
 	depends = python>=3.8.0
 	depends = yt-dlp
-	source = kahlo-1.5.0-1.tar.gz::https://gitlab.com/dpeukert/kahlo/-/archive/1.5.0/kahlo-1.5.0.tar.gz
+	source = kahlo-1.5.0-2.tar.gz::https://gitlab.com/dpeukert/kahlo/-/archive/1.5.0/kahlo-1.5.0.tar.gz
 	sha512sums = 7a03081d5f0e2b62ea143feef8b752ed3aa00a72057e7d9a3ce6aba92a407587435fb3beb509684fda3c46f32381dff5f1478d3cabbf78377830dd49c25d3cde
 
 pkgname = kahlo

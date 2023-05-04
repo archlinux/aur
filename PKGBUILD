@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='kahlo'
 pkgver='1.5.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Video download tool that automatically downloads newly posted videos from channels on supported websites'
 arch=('any')
 url="https://gitlab.com/dpeukert/$pkgname"
