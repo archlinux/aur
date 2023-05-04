@@ -2,8 +2,8 @@
 
 pkgname=python-b2sdk
 _pkgname=b2sdk
-pkgver=1.19.0
-pkgrel=2
+pkgver=1.21.0
+pkgrel=1
 pkgdesc='Python library to access B2 cloud storage.'
 arch=('any')
 url='https://github.com/Backblaze/b2-sdk-python'
@@ -23,7 +23,7 @@ makedepends=('python-build'
             )
 
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('689a52b7e7578f0e12df774188c91a47ac31cf02ebbbe8ec7ae3ca163d91dfa6')
+sha256sums=('c6b362c1ddc777748ff68fee0b9155fcdf32efb0b6731bf648340483c1ff202b')
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
