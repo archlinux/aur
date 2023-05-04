@@ -1,28 +1,45 @@
 # Maintainer: Mads Kjeldgaard <mail@madskjeldgaard.dk>
+# Maintainer: Bruno Gola <me@bgo.la>
 pkgname=supercollider-flucoma
-pkgver=1.5.0
-pkgrel=3
-altver_=1.0.0-TB2.beta4
-pkgdesc="Fluid Corpus Manipulation plugins for Supercollider"
-arch=('x86_64')
-url="https://www.flucoma.org/"
-license=('BSD')
+pkgver=1.0.6
+pkgrel=1
+pkgdesc='Fluid Corpus Manipulation plugins for Supercollider'
+arch=('any')
+url='https://github.com/flucoma/flucoma-sc'
+license=('GPL')
 groups=('pro-audio' 'supercollider-plugins')
 depends=('supercollider')
-conflicts=('supercollider-flucoma-git')
+makedepends=('git' 'cmake' 'boost' 'supercollider-headers-git' 'python-schema' 'python-jinja' 'python-docutils')
+conflicts=("supercollider-flucoma")
 optdepends=()
-source=("$pkgname-$pkgver-$pkgrel.zip::https://github.com/flucoma/flucoma-sc/releases/download/${altver_}/FluCoMa-SC-Linux-beta4.zip")
-md5sums=('0ed29d35d4b83cd39fbd184d20c368fa')
+source=("$pkgname-$pkgver-$pkgrel.zip::https://github.com/flucoma/flucoma-sc/archive/refs/tags/${pkgver}.tar.gz")
+md5sums=('5c1763381e276579cef596c2319ee4f7')
+
+
+build() {
+		DEST="$pkgdir/usr/share/SuperCollider/Extensions"
+		SC_SRC="/usr/share/supercollider-headers"
+
+		cd "$srcdir/flucoma-sc-${pkgver}"
+		mkdir build
+		cd build
+
+		# These will be removed if the build script detects arm architectures
+		ARM_EXCLUDE=("FluidSines"  "FluidBufSines" "FluidAudioTransport" "FluidBufAudioTransport" "FluidNoveltySlice"  "FluidBufNoveltySlice" "FluidTransients"  "FluidBufTransients" "FluidTransientSlice"  "FluidBufTransientSlice" "FluidNMFMorph")
+
+		if [ "$CARCH" == "x86_64" ]; then
+			cmake -DSYSTEM_BOOST=On -DSC_PATH=$SC_SRC -DCMAKE_INSTALL_PREFIX=$DEST ..
+		else
+			# Remove incompatible plugins on non x86 architectures
+			for PLUG in "${ARM_EXCLUDE[@]}"; do rm -rfv "../src/$PLUG"; done
+			cmake -DSYSTEM_BOOST=On -E env CXXFLAGS="-D__arm64=1 -fPIC" cmake -DSC_PATH=$SC_SRC -DCMAKE_INSTALL_PREFIX=$DEST ..
+		fi
+
+		make
+
+}
 
 package() {
-
-	# Install Supercollider files in system extension directory
-	install -dm755 "${pkgdir}/usr/share/SuperCollider/Extensions/FluidCorpusManipulation"
-	cd "$srcdir/FluidCorpusManipulation"
-	cp -av {AudioFiles,Classes,Examples,HelpSource,plugins} "${pkgdir}/usr/share/SuperCollider/Extensions/FluidCorpusManipulation/"
-	# License
-	install -Dm644 "$srcdir/FluidCorpusManipulation/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
-
-	# Docs
-	install -vDm644 "$srcdir/FluidCorpusManipulation/QuickStart.md" -t "${pkgdir}/usr/share/doc/${pkgname}/"
+	cd "$srcdir/flucoma-sc-${pkgver}/build"
+	cmake --build . --config Release --target install
 }
