@@ -6,7 +6,7 @@ pkgver=4.10.2257.0
 _debian_pkgname='libwidevinecdm0'
 _debian_pkgver=4.10.2252.0
 _debian_pkgrel=+3
-pkgrel=2
+pkgrel=3
 arch=('armv7h')
 url='https://www.widevine.com/'
 license=('custom')
@@ -20,7 +20,7 @@ source=("chrome-eula_text.html::https://www.google.com/intl/en/chrome/privacy/eu
         "register_widevine_chromium"
         "register_widevine_firefox"
         "widevine-armv7h.install")
-sha256sums=('c7866106c41d903f3e83c292fdf6ba65a86f97c75988d062888b154a11ae758f'
+sha256sums=(SKIP
             '5b1199bcd3471d126098be42ca0af0e486302df94cdf4643e4fe2a86d4c4c7d1'
             'ebca260ca197c4eee5a8b76ae1fad2bf800ab99b40d8be0c2189b566bd9621d0'
             'b976bb594b8b51d5eee1929defaebd0313c54ddd6d62241bfa4a7d5421491e12'
