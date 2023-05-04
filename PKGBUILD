@@ -21,26 +21,26 @@ pkgver() {
 
 build() {
 	export RUSTUP_TOOLCHAIN=stable
-	cd "$pkgname/src/Linux/binaries-source/catppuccinifier-gui"
+	cd "$pkgname/src/source-code/catppuccinifier-gui"
 	cargo build --release
 }
 
 check(){
-  cd "$pkgname/src/Linux/binaries-source/catppuccinifier-gui"
+  cd "$pkgname/src/source-code/catppuccinifier-gui"
   cargo test --release
 }
 
 package() {
 	cd "$pkgname"
 	#desktop file
-	desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "src/Linux/installation-files/Catppuccinifier.desktop"
+	desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "src/releases/linux/installation-files/Catppuccinifier.desktop"
 	#binary
-	install -Dm755 "src/Linux/binaries-source/catppuccinifier-gui/target/release/catppuccinifier-gui" "$pkgdir/usr/bin/catppuccinifier-gui"
+	install -Dm755 "src/source-code/catppuccinifier-gui/target/release/catppuccinifier-gui" "$pkgdir/usr/bin/catppuccinifier-gui"
 	#docs
 	install -Dm644 "README.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
 	#reqired files
 	mkdir -p "$HOME/.local/share/catppuccinifier"
-	cp -p -r "src/Linux/installation-files/flavors/" "$HOME/.local/share/catppuccinifier/flavors/"
+	cp -p -r "src/releases/linux/installation-files/flavors/" "$HOME/.local/share/catppuccinifier/flavors/"
 	#icon
-	install -Dm644 "src/Linux/installation-files/catppuccinifier.png" "$pkgdir/usr/share/pixmaps/catppuccinifier.png"
+	install -Dm644 "src/releases/linux/installation-files/catppuccinifier.png" "$pkgdir/usr/share/pixmaps/catppuccinifier.png"
 }
