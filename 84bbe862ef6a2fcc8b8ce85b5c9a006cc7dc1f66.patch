@@ -1,0 +1,22 @@
+From 84bbe862ef6a2fcc8b8ce85b5c9a006cc7dc1f66 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Beno=C3=AEt=20Allard?= <benoit.allard@gmx.de>
+Date: Thu, 4 May 2023 23:15:53 +0200
+Subject: [PATCH] Make the test pass with python 3.11
+
+---
+ tests/conftest.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 71c1eae..4280fc3 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -30,7 +30,7 @@ class Weekday(Enum):
+     FRI = "Friday"
+ 
+ 
+-@dataclass(eq=True)
++@dataclass(eq=True, frozen=True)
+ class Point(SubSchemas):
+     x: float = field(metadata=dict(description="Point x coordinate"))
+     y: float = field(metadata=dict(description="Point y coordinate"))
