@@ -4,8 +4,8 @@
 _pkgname='python-leo'
 pkgname="${_pkgname}-git"
 epoch=0
-pkgver=1.1.4+r26.20200714.da398f0
-pkgrel=1
+pkgver=1.1.4.r26.20200714.da398f0
+pkgrel=2
 pkgdesc="Python library for leo dict, including command line executable 'leo'. Latest git checkout."
 arch=('any')
 url='https://github.com/keachi/python-leo'
@@ -26,12 +26,14 @@ makedepends=(
 )
 provides=(
   "${_pkgname}=${pkgver}"
+  "leo-dict-cli=${pkgver}"
 )
 conflicts=(
   "${_pkgname}"
+  "leo-dict-cli"
 )
 checkdepends=()
-source=("${_pkgname}::git+git://github.com/keachi/python-leo.git")
+source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -45,7 +47,7 @@ pkgver() {
     error "Version could not be determined."
     return 1
   else
-    printf '%s' "${_ver}+r${_rev}.${_date}.${_hash}"
+    printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
   fi
 }
 

@@ -1,7 +1,7 @@
 pkgbase = python-leo-git
 	pkgdesc = Python library for leo dict, including command line executable 'leo'. Latest git checkout.
-	pkgver = 1.1.4+r26.20200714.da398f0
-	pkgrel = 1
+	pkgver = 1.1.4.r26.20200714.da398f0
+	pkgrel = 2
 	epoch = 0
 	url = https://github.com/keachi/python-leo
 	arch = any
@@ -14,9 +14,11 @@ pkgbase = python-leo-git
 	depends = python-lxml
 	depends = python-pre-commit
 	depends = python-requests
-	provides = python-leo=1.1.4+r26.20200714.da398f0
+	provides = python-leo=1.1.4.r26.20200714.da398f0
+	provides = leo-dict-cli=1.1.4.r26.20200714.da398f0
 	conflicts = python-leo
-	source = python-leo::git+git://github.com/keachi/python-leo.git
+	conflicts = leo-dict-cli
+	source = python-leo::git+https://github.com/keachi/python-leo.git
 	sha256sums = SKIP
 
 pkgname = python-leo-git
