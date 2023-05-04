@@ -1,20 +1,30 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=woof-doom
 _pkgname=woof
-pkgver=10.5.1
+pkgver=11.0.0
 pkgrel=1
 pkgdesc="Woof! is a continuation of Lee Killough's Doom source port MBF targeted at modern systems"
 arch=(x86_64)
 url="https://github.com/fabiangreffrath/woof"
 license=('GPL2')
-# NOTE: FluidSynth can be added as a dependency, but it is not a proper optional dependency (optdepends),
-# as it needs to be available at build time, then it is linked into the executable and can't be uninstalled anymore
-# Additionally, since sdl2_mixer can also use FluidSynth, we don't miss much by not including it
-depends=(sdl2 sdl2_net sdl2_mixer)
+depends=(sdl2 sdl2_net openal libsndfile)
+# FluidSynth is optional, but can not be an optdepends since it gets linked to the built executable
+# Required for high-quality MIDI music, you probably want it.
+depends+=(fluidsynth)
+# Ditto for libxmp with respect to optdepends. Required for tracker music, you may not want it
+depends+=(libxmp)
+optdepends=("soundfont-fluid: soundfont for MIDI playback")
+install=install.sh
 makedepends=(cmake python3)
 conflicts=(woof-git)
 source=("https://github.com/fabiangreffrath/${_pkgname}/archive/refs/tags/${_pkgname}_${pkgver}.tar.gz")
-sha256sums=(a6eb83db3dde985525181f16ada9a89d96358310c1d3b3e97c3302e1afe8cc36)
+sha256sums=(434f78fefb24a99a1dd693e67f8587d4b4c0ad0c2e3e97073ef8ef563a95bd05)
+
+source+=(0001-Fall-back-to-OPL-on-MIDI-initialization-failure.patch)
+sha256sums+=(7d5bd6a9de3acbfccbd88c1639902360fd4b79f53ae230af8b742d839b6ab4c0)
+prepare() {
+    patch -d "${_pkgname}-${_pkgname}_${pkgver}" -Np1 -i ../0001-Fall-back-to-OPL-on-MIDI-initialization-failure.patch
+}
 
 build() {
     # Use `-ffile-prefix-map` to avoid 'WARNING: Package contains reference to $srcdir' due to assert(...)

@@ -1,0 +1,30 @@
+From 4faf013f2237743819a3a702c7e2dbb217e8c79f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Joan=20Bruguera=20Mic=C3=B3?= <joanbrugueram@gmail.com>
+Date: Thu, 4 May 2023 19:05:22 +0000
+Subject: [PATCH] Fall back to OPL on MIDI initialization failure
+
+If the user doesn't have any sound fonts, FluidSynth initialization will fail.
+Falling back to 'module 0' will fall back to FluidSynth again, which will fail
+again and Woof! will ultimately crash.
+
+Should be fixed upstream but patching on Arch package due to impact.
+---
+ src/i_sound.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/i_sound.c b/src/i_sound.c
+index 60c8199..6176d16 100644
+--- a/src/i_sound.c
++++ b/src/i_sound.c
+@@ -704,7 +704,7 @@ static void MidiPlayerFallback(void)
+ {
+     // Fall back to module 0 device 0.
+     midi_player = 0;
+-    midi_player_module = music_modules[0].module;
++    midi_player_module = &music_opl_module;
+     midi_player_module->I_InitMusic(0);
+     active_module = midi_player_module;
+ }
+-- 
+2.40.1
+
