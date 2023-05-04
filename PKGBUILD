@@ -3,12 +3,13 @@
 _name=pantable
 pkgname=python-$_name
 pkgver=0.14.2
-pkgrel=2
+pkgrel=3
 pkgdesc='CSV Tables in Markdown: Pandoc Filter for CSV Tables'
 arch=(any)
 url="https://github.com/ickc/$_name"
 license=(GPL3)
 _pydeps=(panflute
+         numpy
          yaml)
 depends=(pandoc
          python
