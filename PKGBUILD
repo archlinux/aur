@@ -1,5 +1,4 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
-# Maintainer: 0xMRTT <0xMRTT@proton.me>
 
 pkgname=gradience-git
 _pkgname=Gradience
