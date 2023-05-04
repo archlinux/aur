@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://pypi.org/project/jsonref"
 license=('MIT')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-pdm' 'python-pdm-pep517')
 source=("https://files.pythonhosted.org/packages/aa/0d/c1f3277e90ccdb50d33ed5ba1ec5b3f0a242ed8c1b1a85d3afeb68464dca/jsonref-$pkgver.tar.gz")
 md5sums=('c6bb6e762afc840dbb246fbcfeea6800')
 
