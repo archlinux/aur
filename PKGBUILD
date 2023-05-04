@@ -4,7 +4,7 @@
 pkgname=python-quantlib
 _pkgname=QuantLib-SWIG
 pkgver=1.30
-pkgrel=1
+pkgrel=2
 pkgdesc="QuantLib wrappers to Python"
 arch=("x86_64")
 url="http://quantlib.org"
