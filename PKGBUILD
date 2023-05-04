@@ -7,7 +7,7 @@ pkgdesc="High-level deep learning framework for fast prototyping, baselining, fi
 arch=('any')
 url="https://github.com/PyTorchLightning/lightning-flash"
 license=('APACHE')
-depends=('python-numpy' 'python-pytorch' 'python-torchmetrics' 'python-pytorch-lightning' 'python-pydeprecate' 'python-pandas' 'python-jsonargparse' 'python-click' 'python-protobuf')
+depends=('python-numpy' 'python-pytorch' 'python-torchmetrics' 'python-pytorch-lightning' 'python-pydeprecate' 'python-pandas' 'python-jsonargparse' 'python-click' 'python-protobuf' 'python-fsspec' 'python-lightning-utilities')
 optdepends=(
 	'python-torchvision: image support'
 	'python-timm: image support'
