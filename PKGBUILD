@@ -2,14 +2,14 @@
 
 pkgname=alhp-keyring
 pkgver=20230504
-pkgrel=1
+pkgrel=2
 pkgdesc='ALHP PGP keyring'
 arch=(any)
 url='https://somegit.dev/ALHP/alhp-keyring'
 license=(GPL)
 install=$pkgname.install
 source=(https://f.alhp.dev/$pkgname/${pkgname}-${pkgver}.tar.gz{,.sig})
-b2sums=('a5d9abaac54551e4cedf8c42fbf9b336906efd962d930706d1ee0930a97c0a64bc2744e93ad594114f04e95614575444dec095d94a370cca5fcf775d3b0d7b51'
+b2sums=('14ea5ad83c3a98b7369e619b05a331a16e173108df763698bdbc1bd3e845c3955e7ec7698f838d38f048f090c9ee1065eea2375a9d9b5207021f9b361f15ff5f'
         'SKIP')
 validpgpkeys=('2E3B2B05A332A7DB9019797848998B4039BED1CA')  # Giovanni Harting <g.harting@mailstash.org>
 
