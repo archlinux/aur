@@ -3,7 +3,7 @@
 # Contributor: Lucas Saliés Brum <lucas@archlinux.com.br>
 pkgname=mtn
 pkgver=3.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Movie Thumbnailer using FFmpeg forked from mtn2008"
 arch=('x86_64')
 url="https://gitlab.com/movie_thumbnailer/mtn"

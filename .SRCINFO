@@ -1,7 +1,7 @@
 pkgbase = mtn
 	pkgdesc = Movie Thumbnailer using FFmpeg forked from mtn2008
 	pkgver = 3.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/movie_thumbnailer/mtn
 	arch = x86_64
 	license = GPL2
