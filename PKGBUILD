@@ -2,8 +2,8 @@
 # Contributor: Slithery <aur [at] slithery [dot] uk>
 
 pkgname=linode-cli
-pkgver=5.36.0
-_pkgver=4.151.1
+pkgver=5.37.0
+_pkgver=4.152.0
 pkgrel=1
 pkgdesc="Linode API wrapper"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/${pkgname%%-*}/${pkgname}"
 license=('BSD')
 depends=('python-requests' 
          'python-setuptools'
-         'python-terminaltables' 
+         'python-rich' 
          'python-yaml')
 makedepends=('python-build'
              'python-installer'
@@ -21,8 +21,8 @@ replaces=("${pkgname}-dev")
 install="${pkgname}".install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}-${_pkgver}-openapi.yaml::https://www.${pkgname%%-*}.com/docs/api/openapi.yaml")
-sha512sums=('7873d7c72578fa13f049718f65fac465292c69ca72a09078625fabf59ba17388295b75abbbd32e5c81e6905b5579b3b11f87e93dc8d58b5c6b2e24e7c09137e3'
-            'a1fea790cf288a2c1b712f0c2339b8c940656aa83ed7dd56465f4d2f041fcc1ee4e436129bdd602214c5b913a62498e8607f6448ed89a0b79495bda17732c166')
+sha512sums=('ab3e24a1ccf17f7ab69baec85235b3d4eb4b86bc3f25b941f9e5cdc5cbd74151ca1823e2167966710cff243e9fad0de09f4caddfd1382c5aa43ed15858124c83'
+            'e8860e4aa34e821ed9f8a5e59c276fc728c60dfff7987e3eea6cb8fdd1701340eb1afa3221d876e4b46e2257724b7ac83c3cfa193e96930190656ffeaa57bb52')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
