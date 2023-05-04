@@ -6,7 +6,7 @@ pkgver=4.10.2257.0
 _debian_pkgname='libwidevinecdm0'
 _debian_pkgver=4.10.2252.0
 _debian_pkgrel=+3
-pkgrel=3
+pkgrel=4
 arch=('aarch64')
 url='https://www.widevine.com/'
 license=('custom')
@@ -23,7 +23,7 @@ source=("chrome-eula_text.html::https://www.google.com/intl/en/chrome/privacy/eu
         "widevine-aarch64.install"
         "widevine_fixup.py")
 
-sha256sums=('106863de0f826ec32c09386a2a6278e013c6019b996934bb0f385f1233b72b03'
+sha256sums=(SKIP
             'c88bbb210ca94cb4b5c3bb1ff11b5b24f146b76b22b1119b9cac37c421574284'
             'ebca260ca197c4eee5a8b76ae1fad2bf800ab99b40d8be0c2189b566bd9621d0'
             'b976bb594b8b51d5eee1929defaebd0313c54ddd6d62241bfa4a7d5421491e12'
