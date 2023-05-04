@@ -6,7 +6,7 @@
 
 pkgname=python-pika
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A pure-Python implementation of the AMQP 0-9-1 protocol"
 arch=('any')
 url="http://pika.readthedocs.org/"
