@@ -2,7 +2,7 @@
 
 _pkgname=gBar
 pkgname=gbar-git
-pkgver=r91.05e7635
+pkgver=r108.ea857e5
 pkgrel=1
 # I currently can't test any other arch, so only specify x64
 arch=('x86_64')
@@ -24,6 +24,7 @@ pkgver() {
 # 'meson setup build' should only be called once, so call it here
 prepare() {
     cd "$_pkgname"
+    git submodule update --init
     meson setup build -Dbuildtype=release -Dprefix=/usr
 }
 
