@@ -1,7 +1,7 @@
 pkgbase = sdlada
 	pkgdesc = An Ada binding to SDL
 	pkgver = 2.5.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Lucretia/sdlada/
 	arch = i686
 	arch = x86_64

@@ -2,7 +2,7 @@
 
 pkgname=sdlada
 pkgver=2.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="An Ada binding to SDL"
 
 arch=('i686' 'x86_64')
