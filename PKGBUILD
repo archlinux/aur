@@ -2,7 +2,7 @@
 pkgname=deepin-wine-mcloud
 _pkgname=com.139.yun.deepin
 _officalname=mCloud
-pkgver=7.3.4
+pkgver=7.3.5
 _deepinver=7.2.0deepin2
 _deepinurl=https://com-store-packages.uniontech.com
 pkgrel=3
@@ -24,9 +24,9 @@ source=(
     "LICENSE.html::https://caiyun.feixin.10086.cn:7071/portal/templateView/initve.html?id=145&marketName=hcy_yhxy"
     )
 sha256sums=('ecc41143f5c0a96f17236e2f7a4c1e79eb601d1129674d89ea360999a93c6dcb'
-            'a7916088010b455ac5330bb0a9b848adff2d61981ac761212f704241f03a3f37'
+            'c37ab1aabb58702ce9580fc16bf812d5f79b42c8a6b183f53fda546a71e77acb'
             'f24db714acc5bdfc1590da6f4d24b8b24bc6e0f371d2ccb27ff7a32cb87b3f8e'
-            'ff95d3ca46681f633bf36a57f6cdbb32b34d2243c3a4ff8ed47918b539ef1502'
+            '3546fc771b178e5db0ef31fff2e6894dd68f3df1627ba2eced429cfbb6d9733e'
             '3e2ed9203a5ce3b2f00b6c942d8fac6b24e7a6e7b1ebc863cee2e27d3ff487db'
             '40f160216e7aad2a0ee8e1ecb5b0fb9d88e7c53a80bcd0762d0c4488a9d256b3')
 prepare() {
