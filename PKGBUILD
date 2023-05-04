@@ -4,7 +4,7 @@
 pkgname='python-cef'
 _vermajor="66"
 pkgver=66.1.r3.g5679f28
-pkgrel=1
+pkgrel=2
 pkgdesc="CEF python bindings (with bundled spotify-built CEF)"
 arch=('x86_64')
 url='https://github.com/cztomczak/cefpython'
@@ -12,12 +12,13 @@ depends=('python' 'nss' 'libgl' 'libxtst' 'alsa-lib' 'gtk2' 'libxss')
 makedepends=('python-docopt' 'python-setuptools' 'python-wheel' 'cython' 'git')
 license=('BSD')
 _cefstring="cef66_3.3359.1774.gd49d25f_linux64"
+_prefix="${pkgname}-${pkgver}"
 source=("git+https://github.com/cztomczak/cefpython.git#commit=5679f28cec18a57a56e298da2927aac8d8f83ad6"
-        "${pkgname}-640.patch::https://github.com/cztomczak/cefpython/pull/640.patch"
+        "${pkgname}-version.patch"
         "https://github.com/cztomczak/cefpython/releases/download/v${_vermajor}-upstream/${_cefstring}.zip"
         "${pkgname}-fix-build.patch")
 sha256sums=('SKIP'
-            'ad9a68087018797697e3ca0c8e20a164036c0b4e73d845e3d6e93396423d5333'
+            '4c1402716a3d05179bbf0cc88de7dcafb0191381410347bc1747e4ac983165ea'
             'a9ec9a72cc84f290cb985bbf06b9825312b7f84cb3e1ca3f4dcfeeeef338d84b'
             '74aa087814d6f34366b0f01c95eb2d0c31dd4e9c3614f00d33436f8c733529a1')
 
@@ -31,18 +32,21 @@ pkgver() {
 
 prepare() {
 	cd "${_dir}"
-	patch -p1 -i "../${pkgname}-640.patch"
+	patch -p1 -i "../${pkgname}-version.patch"
 	patch -p1 -i "../${pkgname}-fix-build.patch"
 
 	sed -i 's/command = sudo_command/#command = sudo_command/' 'tools/build.py'
+	sed -i 's/open(header_file, "rU")/open(header_file, "r", newline=None)/' 'tools/common.py'
 
 	mkdir -p 'build'
 	cd 'build'
 	if [ ! -d "${_cefstring}" ]; then
 		ln -s "$(realpath ../../${_cefstring})"
 	fi
-	cythonver="$(pacman -Q cython | cut -d' ' -f2 | cut -d'-' -f1)"
-	sed -i "s;Cython ==;Cython == $cythonver;" '../tools/requirements.txt'
+	#cythonver="$(pacman -Q cython | cut -d' ' -f2 | cut -d'-' -f1)"
+	#sed -i "s;Cython ==;Cython == $cythonver;" '../tools/requirements.txt'
+	
+	sed -i '/check_cython_version()$/d' '../tools/build.py'
 }
 
 build() {
