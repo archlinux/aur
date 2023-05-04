@@ -13,7 +13,7 @@ checkdepends=('python-pytest')
 optdepends=('python-matplotlib: Image to tensorboard extra utility')
 makedepends=('python-setuptools' 'findutils')
 source=("https://github.com/GPflow/GPflow/archive/v${_pkgver}.tar.gz")
-sha256sums=('7d320ec015f7a2997c61f76f408b796fdcb736b1585ac04a0c292f5a6cce91d7')
+sha256sums=('db0fbfa5c15c4ebb1ac23dd73170da6f35c96d5497b65ebdf6d719bd705d4662')
 
 prepare() {
     # Do not install tests into site-packages root
