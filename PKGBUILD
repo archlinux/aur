@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="open-ai-translator-appimage"
-pkgver=0.0.38
+pkgver=0.0.41
 pkgrel=1
 pkgdesc="基于 ChatGPT API 的划词翻译浏览器插件和跨平台桌面端应用 - Browser extension and cross-platform desktop application for translation based on ChatGPT API."
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=("${pkgname%-appimage}" "openai-translator-bin")
 depends=('zlib' 'hicolor-icon-theme' 'glibc')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-appimage}_${pkgver}_amd64.AppImage")
-sha256sums=('fa8405fb4205cb1a1750d1f3a818d62d5d99614ea18561266614508fc8f29e34')
+sha256sums=('a8d2c61b4e8daf7346529323e2c99f76a3174bc8dca50fc7d42aed4bd85554a6')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
