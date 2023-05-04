@@ -3,7 +3,7 @@
 pkgbase=python-h5pyd
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.14.0
+pkgver=0.14.1
 #_commit="490be2b6cc5ee3a697e5929e4e9f6bb5b7ae4548"
 pkgrel=1
 pkgdesc="h5py distributed - Python client library for HDF Rest API "
@@ -28,7 +28,7 @@ source=("${_pyname}-${pkgver}.tar.gz::https://github.com/HDFGroup/h5pyd/archive/
         "https://raw.githubusercontent.com/h5py/h5py/master/examples/swmr_inotify_example.py"
         "https://raw.githubusercontent.com/h5py/h5py/master/examples/swmr_multiprocess.py"
         'fix-h5type-test.patch')
-md5sums=('72b997cccfd0b9c75e5e24ca24779af4'
+md5sums=('7534c426596ebbffe09b96688a636095'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -51,15 +51,15 @@ build() {
     cd ${srcdir}/${_pyname}-${pkgver}
 #   cd ${srcdir}/${_pyname}-${_commit}
     python setup.py build
-    python setup.py egg_info
+    python setup.py egg_info # need for ln -rs ...
 #   python -m build --wheel --no-isolation
 
     msg "Building Docs"
-    python setup.py build_sphinx
-#   ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
+#   python setup.py build_sphinx # died since py3.11
 #   ln -rs ${srcdir}/${_pyname}-${_commit}/${_pyname/-/_}*egg-info \
-#       build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
-#   PYTHONPATH="../build/lib" make -C docs html
+    ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
+        build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
+    PYTHONPATH="../build/lib" make -C docs html
 }
 
 check() {
@@ -94,8 +94,8 @@ package_python-h5pyd() {
 
 package_python-h5pyd-doc() {
     pkgdesc="Documentation for Python h5pyd"
-    cd ${srcdir}/${_pyname}-${pkgver}/build/sphinx
-#   cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
+#   cd ${srcdir}/${_pyname}-${pkgver}/build/sphinx
+    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
 #   cd ${srcdir}/${_pyname}-${_commit}/build/sphinx
 
     install -D -m644 ../../COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
