@@ -1,6 +1,6 @@
 pkgbase = pacroller-git
 	pkgdesc = Unattended upgrade for archlinux
-	pkgver = 0.1.7.0.gb086e95
+	pkgver = 0.1.7.10.gb685ec0
 	pkgrel = 2
 	url = https://github.com/isjerryxiao/pacroller
 	arch = any

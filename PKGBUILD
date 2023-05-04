@@ -1,7 +1,7 @@
 # Maintainer: Jerry <isjerryxiao at outlook dot com>
 _srcname=pacroller
 pkgname=pacroller-git
-pkgver=0.1.7.0.gb086e95
+pkgver=0.1.7.10.gb685ec0
 pkgrel=2
 pkgdesc="Unattended upgrade for archlinux"
 arch=('any')
