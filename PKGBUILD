@@ -1,9 +1,9 @@
-# Maintainer: bipin kumar <bipin@ccmb.res.in>
+# Maintainer: bipin kumar <kbipinkumar@pm.me>
 
 pkgname=python-pairwisedist
 _module=${pkgname#python-}
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Calculate the pairwise-distance matrix for an array of n samples by p features'
 arch=(any)
 url="https://github.com/GuyTeichman/pairwisedist"
