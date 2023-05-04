@@ -1,7 +1,7 @@
 pkgbase = zim-dev
 	pkgdesc = Zim desktop wiki. Develop branch
 	pkgver = 4110a13c
-	pkgrel = 2
+	pkgrel = 3
 	url = https://zim-wiki.org/
 	arch = any
 	license = GPL

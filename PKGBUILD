@@ -6,7 +6,7 @@
 projname=zim-desktop-wiki
 pkgname=zim-dev
 pkgver=4110a13c
-pkgrel=2
+pkgrel=3
 pkgdesc="Zim desktop wiki. Develop branch"
 arch=(any)
 license=('GPL' 'PerlArtistic')
