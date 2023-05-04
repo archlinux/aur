@@ -11,7 +11,7 @@ license=('GPL3')
 source=(
 	"$pkgname-$pkgver.tar.gz"::https://github.com/actionless/pikaur/archive/"$pkgver".tar.gz
 )
-b2sums=('dea8bbb9c4696ac989ca86c89aa8d3196af5011d06680c9cc924d05e955e8078a4128e634b1909931cc8a66b2af95c43ff33d9c5717b261b80945bf051df815a')
+b2sums=('45c4c51ab37959d515d7ce1404dccde7a94d28b5f5e33f5790078079e0be885e66c297af80a4638001d98d517730c9d087d871bf818763b2dce8e7258dfc5595')
 depends=(
 	'pyalpm'
 	'git'
