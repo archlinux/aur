@@ -1,7 +1,7 @@
 pkgbase = photoprism
 	pkgdesc = Personal Photo Management powered by Go and Google TensorFlow
 	pkgver = 230502
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/photoprism/photoprism
 	arch = x86_64
 	arch = aarch64
@@ -16,7 +16,7 @@ pkgbase = photoprism
 	optdepends = rawtherapee: for RAW to JPEG conversion
 	optdepends = libheif: for HEIC/HEIF image conversion
 	optdepends = ffmpeg: for video transcoding and thumbnail extraction
-	optdepends = exiftool: for extracting metadata
+	optdepends = perl-image-exiftool: for extracting metadata
 	provides = photoprism
 	conflicts = photoprism
 	backup = etc/photoprism/options.yml

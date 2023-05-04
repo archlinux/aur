@@ -5,7 +5,7 @@
 pkgname=photoprism
 pkgver="230502"
 commit="c405f6eff"
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Personal Photo Management powered by Go and Google TensorFlow "
 arch=(x86_64 aarch64)
@@ -19,7 +19,7 @@ optdepends=("darktable: for RAW to JPEG conversion"
 	    "rawtherapee: for RAW to JPEG conversion"
 	    "libheif: for HEIC/HEIF image conversion"
 	    "ffmpeg: for video transcoding and thumbnail extraction"
-	    "exiftool: for extracting metadata")
+	    "perl-image-exiftool: for extracting metadata")
 provides=("photoprism")
 conflicts=("photoprism")
 replaces=()
