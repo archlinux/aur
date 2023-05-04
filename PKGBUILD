@@ -3,7 +3,7 @@
 
 _base=metis
 pkgname=lib32-${_base}
-_pkgver=5.1.0-p10
+_pkgver=5.1.0-p11
 pkgver=${_pkgver/-/.}
 pkgrel=1
 arch=(x86_64)
@@ -16,7 +16,7 @@ options=(docs)
 # source=("http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/${_base}-${pkgver}.tar.gz")
 # source=("https://ftp.mcs.anl.gov/pub/petsc/externalpackages/${_base}-${_pkgver}.tar.gz")
 source=(${_base}-${pkgver}.tar.bz2::https://bitbucket.org/petsc/pkg-${_base}/get/v${_pkgver}.tar.bz2)
-sha256sums=('ddcb99746a8795ebb9d9c020acc31b85fe696eb2992c9ee5ac7588074a503a4b')
+sha256sums=('c2d5eb5a731335a2d7168eedcf2b683b990492b5ffceab1eedc2acbb7a422ff0')
 
 prepare() {
   mv petsc-pkg-metis-* "${_base}"-"${_pkgver}"
