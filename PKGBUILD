@@ -1,7 +1,7 @@
 # Maintainer: Oystein Sture <oysstu@gmail.com>
 pkgname=python-nvector
 pkgver=0.7.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Nvector is a suite of tools written in Python to solve geographical position calculations."
 arch=('any')
 url="https://github.com/pbrod/nvector"
