@@ -1,7 +1,7 @@
 pkgbase = python-pdf2video
 	pkgdesc = A tool for making videos from PDF presentations
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tjunttila/pdf2video
 	arch = any
 	license = MIT

@@ -2,7 +2,7 @@
 
 pkgname=python-pdf2video
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for making videos from PDF presentations"
 url="https://github.com/tjunttila/pdf2video"
 depends=('poppler' 'ffmpeg' 'aws-cli')
