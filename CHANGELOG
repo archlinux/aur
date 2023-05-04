@@ -2031,7 +2031,7 @@ Tue Jan 3 17:22:26 2023 +0100
      2022-12-22 40fe015 actionless fix(core: InteractiveSpawn): dont print some cmds twice with --print-commands enabled
 
 
-Thu May 4 13:25:28 2023 +0200
+Thu May 4 13:33:56 2023 +0200
 -------------------------------------------------
 1.15            Release 1.15
     
@@ -2052,3 +2052,13 @@ Thu May 4 13:25:28 2023 +0200
     *  2023-01-26 bdc01cc actionless fix(build: _set_built_package_path): regression when comparing path to str
     *  2023-01-16 735a14a actionless fix(pkgbuild): update version regex
     *  2023-01-12 d5b5eb8 Bundy01 chore(locale): regenerate and translate es.po, fr.po (#700)
+
+
+Thu May 4 14:59:51 2023 +0200
+-------------------------------------------------
+1.15.1          Hotfix release 1.15.1
+    
+    Notable changes:
+    *  2023-05-04 dfa09ea actionless doc(pkg: bin: pikaur): add link to installation instructions
+    *  2023-05-04 fbfdb60 actionless fix(args): --nodeps could be used more than once
+    *  2023-05-04 79f454d actionless style: lint packaging/usr/bin/pikaur
