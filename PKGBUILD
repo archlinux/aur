@@ -3,7 +3,7 @@
 pkgname=obs-studio-rc
 _pkgver=29.1.0
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=3
 epoch=6
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
@@ -79,14 +79,14 @@ source=(
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
   "obs-websocket::git+https://github.com/obsproject/obs-websocket.git"
   "qr::git+https://github.com/nayuki/QR-Code-generator.git"
-  "0001-Fix_build_with_GCC_13.patch"
+  "0001-Enforce_-Wmaybe-uninitialized_never_turn_into_error.patch"
 )
 sha256sums=(
   "SKIP"
   "SKIP"
   "SKIP"
   "SKIP"
-  "450cbf6df2b14ec8f9c43c1c7d4b06ab1b10c38eae6d1048eebffb4ca16e569"
+  "9227a5f3439d19c2c75e369bc6701dc83c4ac54cc371b7f74e55c9e275512f6c"
 )
 
 if [[ $CARCH == 'x86_64' ]]; then
@@ -104,7 +104,7 @@ prepare() {
   git -c protocol.file.allow=always submodule update deps/qr
 
   cd "$srcdir/obs-studio"
-  patch -Np1 < "$srcdir/0001-Fix_build_with_GCC_13.patch"
+  patch -Np1 < "$srcdir/0001-Enforce_-Wmaybe-uninitialized_never_turn_into_error.patch"
 }
 
 build() {

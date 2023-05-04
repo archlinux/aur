@@ -1,7 +1,7 @@
 pkgbase = obs-studio-rc
 	pkgdesc = Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration
 	pkgver = 29.1.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 6
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
@@ -63,11 +63,11 @@ pkgbase = obs-studio-rc
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
 	source = obs-websocket::git+https://github.com/obsproject/obs-websocket.git
 	source = qr::git+https://github.com/nayuki/QR-Code-generator.git
-	source = 0001-Fix_build_with_GCC_13.patch
+	source = 0001-Enforce_-Wmaybe-uninitialized_never_turn_into_error.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 450cbf6df2b14ec8f9c43c1c7d4b06ab1b10c38eae6d1048eebffb4ca16e569
+	sha256sums = 9227a5f3439d19c2c75e369bc6701dc83c4ac54cc371b7f74e55c9e275512f6c
 
 pkgname = obs-studio-rc
