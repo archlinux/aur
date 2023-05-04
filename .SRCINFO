@@ -1,7 +1,7 @@
 pkgbase = openafs-modules
 	pkgdesc = Kernel module for OpenAFS
 	pkgver = 1.8.9
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.openafs.org
 	install = openafs-modules.install
 	arch = i686
@@ -17,8 +17,12 @@ pkgbase = openafs-modules
 	source = http://openafs.org/dl/openafs/1.8.9/openafs-1.8.9-src.tar.bz2
 	source = 0001-Linux-Replace-lru_cache_add-with-folio_add_lru.patch
 	source = 0002-LINUX-5.13-set-.proc_lseek-in-proc_ops.patch
+	source = 0003-Linux-6.3-Include-linux-filelock.h-if-available.patch
+	source = 0004-Linux-6.3-Use-mnt_idmap-for-inode-op-functions.patch
 	sha256sums = d126178be1f42cca18cb7c0c2691ac354518e3790170150a76bbd25f4d151f06
-	sha256sums = 18bb17dfc1cd2d2bc4db22fc0ed8676b0f2e77b1c3526ecf1341d8725c2d5e83
-	sha256sums = b1352e4efe22c92f0721e109da0c95c06cb41a574884ed97dfbf65cabb860cea
+	sha256sums = e6c9a58f9f0f06a6b32e695548fce2178e7b34f324a3fc7bbe0a9e0e8e38d661
+	sha256sums = 5bef56051f0a8f6cf9220fc9182baee53817db8f1bb9051908783196ddbf5109
+	sha256sums = 6ff1b1fef24e7d89f99fe6f44b0cefc189f599305d62aaf8e99ca778b28d4a9a
+	sha256sums = 36ea501ab111a80156c52b951a7051a7bcf27d97cd675edea2e5d87c74e23287
 
 pkgname = openafs-modules

@@ -6,7 +6,7 @@
 pkgname=openafs-modules
 _srcname=openafs
 pkgver=1.8.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Kernel module for OpenAFS"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.openafs.org"
@@ -18,10 +18,14 @@ options=(!emptydirs)
 install=openafs-modules.install
 source=(http://openafs.org/dl/openafs/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2
 	0001-Linux-Replace-lru_cache_add-with-folio_add_lru.patch
-	0002-LINUX-5.13-set-.proc_lseek-in-proc_ops.patch)
+	0002-LINUX-5.13-set-.proc_lseek-in-proc_ops.patch
+	0003-Linux-6.3-Include-linux-filelock.h-if-available.patch
+	0004-Linux-6.3-Use-mnt_idmap-for-inode-op-functions.patch)
 sha256sums=('d126178be1f42cca18cb7c0c2691ac354518e3790170150a76bbd25f4d151f06'
-            '18bb17dfc1cd2d2bc4db22fc0ed8676b0f2e77b1c3526ecf1341d8725c2d5e83'
-            'b1352e4efe22c92f0721e109da0c95c06cb41a574884ed97dfbf65cabb860cea')
+            'e6c9a58f9f0f06a6b32e695548fce2178e7b34f324a3fc7bbe0a9e0e8e38d661'
+            '5bef56051f0a8f6cf9220fc9182baee53817db8f1bb9051908783196ddbf5109'
+            '6ff1b1fef24e7d89f99fe6f44b0cefc189f599305d62aaf8e99ca778b28d4a9a'
+            '36ea501ab111a80156c52b951a7051a7bcf27d97cd675edea2e5d87c74e23287')
 
 # Heuristic to determine version of installed kernel
 # You can modify this if the heuristic fails
@@ -41,6 +45,12 @@ prepare() {
 
   # https://gerrit.openafs.org/#/c/15286/
   patch -p1 < "${srcdir}"/0002-LINUX-5.13-set-.proc_lseek-in-proc_ops.patch
+
+  # https://gerrit.openafs.org/#/c/15388/
+  patch -p1 < "${srcdir}"/0003-Linux-6.3-Include-linux-filelock.h-if-available.patch
+
+  # https://gerrit.openafs.org/#/c/15389/
+  patch -p1 < "${srcdir}"/0004-Linux-6.3-Use-mnt_idmap-for-inode-op-functions.patch
 
   # Only needed when changes to configure were made
   ./regen.sh -q

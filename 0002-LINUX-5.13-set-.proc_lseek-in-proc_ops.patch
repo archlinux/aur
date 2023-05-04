@@ -1,7 +1,7 @@
 From 9251a7010b77e2702d22addfe57e83d644339786 Mon Sep 17 00:00:00 2001
 From: Jeffrey Hutzelman <jhutz@cmu.edu>
 Date: Tue, 1 Mar 2022 10:31:14 -0500
-Subject: [PATCH 2/2] LINUX 5.13: set .proc_lseek in proc_ops
+Subject: [PATCH 2/4] LINUX 5.13: set .proc_lseek in proc_ops
 
 When using the proc_ops structure, set .proc_lseek explicitly rather
 than leaving it unset. This field has always been present in proc_ops,
@@ -41,5 +41,5 @@ index 327520c02..fbdee29cb 100644
  #else
  static struct file_operations afs_syscall_ops = {
 -- 
-2.39.2
+2.40.1
 

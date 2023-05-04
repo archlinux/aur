@@ -1,0 +1,101 @@
+From 2fcae60b52fd8f56f63fd51813081c754b77aa74 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Wed, 22 Mar 2023 16:56:09 -0600
+Subject: [PATCH 3/4] Linux 6.3: Include linux/filelock.h if available
+
+Linux 6.3 commit
+  'filelock: move file locking definitions to separate header file'
+  (5970e15dbc)
+
+relocated file lock related declarations from 'linux/fs.h' into its own
+header file, 'linux/filelock.h'.
+
+Add autoconf tests to check for the header file 'linux/filelock.h' and
+update function checks for locks_lock_file_wait() and posix_lock_file().
+
+Update osi_compat.h to include linux/filelock.h if it is available.
+
+Reviewed-on: https://gerrit.openafs.org/15346
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+(cherry picked from commit 6873dc925c5acc0ce7d65cf778ffee09c82a9898)
+
+Change-Id: If131bee5b466a119f54b05388a065e6af23698cf
+Reviewed-on: https://gerrit.openafs.org/15388
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Kailas Zadbuke <kailashsz@in.ibm.com>
+Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+(cherry picked from commit 7a3ad3bc1c87e525698f7dda1e4b0fbbd913da03)
+---
+ src/afs/LINUX/osi_compat.h    | 4 ++++
+ src/cf/linux-kernel-func.m4   | 6 +++++-
+ src/cf/linux-kernel-header.m4 | 2 ++
+ src/cf/linux-test4.m4         | 6 +++++-
+ 4 files changed, 16 insertions(+), 2 deletions(-)
+
+diff --git a/src/afs/LINUX/osi_compat.h b/src/afs/LINUX/osi_compat.h
+index 9a080da31..808c608ad 100644
+--- a/src/afs/LINUX/osi_compat.h
++++ b/src/afs/LINUX/osi_compat.h
+@@ -13,6 +13,10 @@
+ # include <linux/freezer.h>
+ #endif
+ 
++#if defined(HAVE_LINUX_FILELOCK_H)
++# include <linux/filelock.h>
++#endif
++
+ #if defined(LINUX_KEYRING_SUPPORT)
+ # include <linux/rwsem.h>
+ # include <linux/key.h>
+diff --git a/src/cf/linux-kernel-func.m4 b/src/cf/linux-kernel-func.m4
+index 09cf10f4c..fc26b98b5 100644
+--- a/src/cf/linux-kernel-func.m4
++++ b/src/cf/linux-kernel-func.m4
+@@ -94,7 +94,11 @@ AC_CHECK_LINUX_FUNC([ktime_get_real_ts64],
+                     [struct timespec64 *s;
+                     ktime_get_real_ts64(s);])
+ AC_CHECK_LINUX_FUNC([locks_lock_file_wait],
+-                    [#include <linux/fs.h>],
++		    [#ifdef HAVE_LINUX_FILELOCK_H
++		     # include <linux/filelock.h>
++		     #else
++		     # include <linux/fs.h>
++		     #endif],
+                     [locks_lock_file_wait(NULL, NULL);])
+ AC_CHECK_LINUX_FUNC([override_creds],
+                     [#include <linux/cred.h>],
+diff --git a/src/cf/linux-kernel-header.m4 b/src/cf/linux-kernel-header.m4
+index 8507eaaab..fc52830d2 100644
+--- a/src/cf/linux-kernel-header.m4
++++ b/src/cf/linux-kernel-header.m4
+@@ -10,4 +10,6 @@ AC_CHECK_LINUX_HEADER([seq_file.h])
+ AC_CHECK_LINUX_HEADER([sched/signal.h])
+ AC_CHECK_LINUX_HEADER([uaccess.h])
+ AC_CHECK_LINUX_HEADER([stdarg.h])
++dnl Linux 6.3 relocated file locking related declarations into it's own header
++AC_CHECK_LINUX_HEADER([filelock.h])
+ ])
+diff --git a/src/cf/linux-test4.m4 b/src/cf/linux-test4.m4
+index f7699cec3..0d6b645f4 100644
+--- a/src/cf/linux-test4.m4
++++ b/src/cf/linux-test4.m4
+@@ -142,7 +142,11 @@ AC_DEFUN([LINUX_SCHED_STRUCT_TASK_STRUCT_HAS_SIGNAL_RLIM], [
+ AC_DEFUN([LINUX_KERNEL_POSIX_LOCK_FILE_WAIT_ARG], [
+   AC_CHECK_LINUX_BUILD([for 3rd argument in posix_lock_file found in new kernels],
+ 		       [ac_cv_linux_kernel_posix_lock_file_wait_arg],
+-		       [#include <linux/fs.h>],
++		       [#ifdef HAVE_LINUX_FILELOCK_H
++			# include <linux/filelock.h>
++			#else
++			# include <linux/fs.h>
++			#endif],
+ 		       [posix_lock_file(0,0,0);],
+ 		       [POSIX_LOCK_FILE_WAIT_ARG],
+ 		       [define if your kernel uses 3 arguments for posix_lock_file],
+-- 
+2.40.1
+

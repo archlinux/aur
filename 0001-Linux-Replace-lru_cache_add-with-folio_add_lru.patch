@@ -1,7 +1,7 @@
 From 55ce972ab2c21115b374d56a20bf6b129635eaeb Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Wed, 14 Dec 2022 13:40:48 -0700
-Subject: [PATCH 1/2] Linux: Replace lru_cache_add with folio_add_lru
+Subject: [PATCH 1/4] Linux: Replace lru_cache_add with folio_add_lru
 
 The Linux 6.2 commit:
     "folio-compat: remove lru_cache_add()" (6e1ca48d0)
@@ -85,5 +85,5 @@ index d3abdf9ff..09cf10f4c 100644
  dnl e.g. ip_sock_set_mtu_discover, ip_sock_set_recverr
  AC_CHECK_LINUX_FUNC([ip_sock_set],
 -- 
-2.39.2
+2.40.1
 
