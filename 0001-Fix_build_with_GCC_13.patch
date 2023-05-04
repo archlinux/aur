@@ -1,0 +1,36 @@
+From 16aa55071f29c9e90d7b08ddd2e61fb6d5561f15 Mon Sep 17 00:00:00 2001
+From: tytan652 <tytan652@tytanium.xyz>
+Date: Thu, 4 May 2023 09:57:19 +0200
+Subject: [PATCH] obs-ffmpeg,obs-outputs: Fix maybe-unintialized warnings on
+ GCC 13
+
+---
+ plugins/obs-ffmpeg/ffmpeg-mux/ffmpeg-mux.c | 2 +-
+ plugins/obs-outputs/librtmp/rtmp.c         | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/plugins/obs-ffmpeg/ffmpeg-mux/ffmpeg-mux.c b/plugins/obs-ffmpeg/ffmpeg-mux/ffmpeg-mux.c
+index a3c4f925c607d..c454410a76295 100644
+--- a/plugins/obs-ffmpeg/ffmpeg-mux/ffmpeg-mux.c
++++ b/plugins/obs-ffmpeg/ffmpeg-mux/ffmpeg-mux.c
+@@ -727,7 +727,7 @@ static void *ffmpeg_mux_io_thread(void *data)
+ 	// ffmpeg, then we flush the chunk. next_seek_position is the actual
+ 	// offset we should seek to when we write the chunk.
+ 	uint64_t current_seek_position = 0;
+-	uint64_t next_seek_position;
++	uint64_t next_seek_position = 0;
+ 
+ 	for (;;) {
+ 		// Wait for ffmpeg to write data to the buffer
+diff --git a/plugins/obs-outputs/librtmp/rtmp.c b/plugins/obs-outputs/librtmp/rtmp.c
+index 28239cb0351c8..7d0e6db7e0594 100644
+--- a/plugins/obs-outputs/librtmp/rtmp.c
++++ b/plugins/obs-outputs/librtmp/rtmp.c
+@@ -4556,6 +4556,7 @@ DecodeTEA(AVal *key, AVal *text)
+     /* prep text: hex2bin, multiples of 4 */
+     n = (text->av_len + 7) / 8;
+     out = malloc(n * 8);
++    memset(out, 0, n * 8);
+     ptr = (unsigned char *)text->av_val;
+     v = (uint32_t *) out;
+     for (i = 0; i < n; i++)

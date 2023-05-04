@@ -7,14 +7,14 @@
 
 pkgname=obs-studio-browser
 pkgver=29.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
 license=("GPL3")
 # To manage dependency rebuild easily, this will prevent you to rebuild OBS on non-updated system
 _mbedtlsver=2.28
-_pythonver=3.10
+_pythonver=3.11
 depends=(
   "jack" "gtk-update-icon-cache" "x264" "rnnoise" "pciutils" "qt6-svg"
   "mbedtls>=$_mbedtlsver"
@@ -82,12 +82,14 @@ source=(
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
   "obs-websocket::git+https://github.com/obsproject/obs-websocket.git"
   "qr::git+https://github.com/nayuki/QR-Code-generator.git"
+  "0001-Fix_build_with_GCC_13.patch"
 )
 sha256sums=(
   "SKIP"
   "SKIP"
   "SKIP"
   "SKIP"
+  "450cbf6df2b14ec8f9c43c1c7d4b06ab1b10c38eae6d1048eebffb4ca16e569"
 )
 
 if [[ $CARCH == 'x86_64' ]]; then
@@ -103,6 +105,9 @@ prepare() {
   cd plugins/obs-websocket
   git config submodule.deps/qr.url $srcdir/qr
   git -c protocol.file.allow=always submodule update deps/qr
+
+  cd "$srcdir/obs-studio"
+  patch -Np1 < "$srcdir/0001-Fix_build_with_GCC_13.patch"
 }
 
 build() {
