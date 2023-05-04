@@ -4,7 +4,7 @@ TEST_GPU=0
 
 pkgname=python-kornia
 _name=kornia
-pkgver=0.6.9
+pkgver=0.6.12
 pkgrel=1
 arch=(any)
 url='https://github.com/kornia/kornia'
@@ -17,7 +17,7 @@ checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-mypy' 'python-p
 options=(!emptydirs)
 # because kornia does not ship `pytest.ini` with their release, we have to get a fat copy of full repo
 source=("${_name}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip")
-sha256sums=('8186c470cb9f8cbec1e87da4c87e97fe5a113e785aab392c055aa21ac98385ec')
+sha256sums=('a9921e3408813691543ed61c372825d4c7f6823ca7e6f4088c1d71fd5f55e420')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
