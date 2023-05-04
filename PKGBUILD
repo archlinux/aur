@@ -1,7 +1,7 @@
 # Maintainer: Benoît Allard <benoit.allard@gmx.de>
 pkgname=python-minimal-snowplow-tracker
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal snowplow event tracker for Python"
 arch=('any')
 url="https://pypi.org/project/minimal-snowplow-tracker/"
@@ -15,11 +15,10 @@ sha256sums=('acabf7572db0e7f5cbf6983d495eef54081f71be392330eb3aadb9ccb39daaa4')
 
 build() {
     cd $_name-$pkgver
-    export PYTHONSEED=1
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd $_name-$pkgver
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }

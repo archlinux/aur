@@ -1,7 +1,7 @@
 pkgbase = python-minimal-snowplow-tracker
 	pkgdesc = A minimal snowplow event tracker for Python
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/minimal-snowplow-tracker/
 	arch = any
 	license = Apache
