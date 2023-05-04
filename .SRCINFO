@@ -1,7 +1,7 @@
 pkgbase = telegram-desktop-userfonts
 	pkgdesc = Official Telegram Desktop client, with your fonts as set by fontconfig
 	pkgver = 4.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://desktop.telegram.org/
 	arch = x86_64
 	license = GPL3
@@ -37,7 +37,7 @@ pkgbase = telegram-desktop-userfonts
 	depends = jemalloc
 	depends = abseil-cpp
 	depends = libdispatch
-	depends = openssl-1.1
+	depends = openssl
 	depends = protobuf
 	optdepends = webkit2gtk: embedded browser features
 	optdepends = xdg-desktop-portal: desktop integration
