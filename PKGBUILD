@@ -4,7 +4,7 @@
 pkgname='python-runtype'
 _pkgname=${pkgname#python-}
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Python utilities for run-time type validation and multiple dispatch'
 arch=('any')
 license=('MIT')
@@ -12,7 +12,9 @@ url='https://github.com/erezsh/runtype'
 source=("$url/archive/refs/tags/${pkgver}.tar.gz")
 depends=(
   'mypy'
+  'python'
   'python-dataclasses'
+  'python-typing_extensions'
 )
 makedepends=(
   'python-build'
