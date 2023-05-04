@@ -2,7 +2,7 @@
 
 pkgname=('python-dynaphopy')
 pkgver=1.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Dynaphopy allows to calculate anharmonic phonon linewidhts and frequency shifts using the mode descomposition technique"
 arch=('any')
 url="http://abelcarreras.github.io/DynaPhoPy/"
