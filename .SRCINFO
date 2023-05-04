@@ -1,6 +1,6 @@
 pkgbase = passy-git
 	pkgdesc = Offline password manager with cross-platform synchronization
-	pkgver = 1.4.0.r0.gadd2691
+	pkgver = 1.4.1.r0.gce63fb6
 	pkgrel = 1
 	url = https://github.com/GlitterWare/Passy
 	arch = x86_64

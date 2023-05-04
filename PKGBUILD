@@ -1,6 +1,6 @@
 pkgname=passy-git
 _pkgshortname=passy
-pkgver=1.3.1.r0.gaad2294
+pkgver=1.4.1.r0.gce63fb6
 pkgrel=1
 pkgdesc='Offline password manager with cross-platform synchronization'
 arch=('x86_64')
@@ -23,6 +23,7 @@ build() {
   git reset --hard $(git describe --tags $(git rev-list --tags --max-count=1))
   git submodule init
   git submodule update
+  $_flutter config --no-analytics
   $_flutter build linux --dart-define=UPDATES_POPUP_ENABLED=false
   cd ..
 
