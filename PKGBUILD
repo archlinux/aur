@@ -5,7 +5,7 @@
 
 pkgname=pycharm-professional
 pkgver=2023.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python IDE for Professional Developers. Professional Edition"
 arch=('x86_64' 'aarch64')
 url='https://www.jetbrains.com/pycharm/'
@@ -37,23 +37,23 @@ optdepends=('ipython: For enhanced interactive Python shell inside Pycharm'
             'python-tox: Python environments for testing tool'
             'jupyter-server: For Jupyter notebooks and apps')
             
-build() {
-    # clean up and compile PyDev debugger used by PyCharm to speedup debugging
-    find pycharm-${pkgver}/plugins/python/helpers/pydev/ \( -name *.so -o -name *.pyd \) -delete
-    python pycharm-${pkgver}/plugins/python/helpers/pydev/setup_cython.py build_ext --inplace --force-cython
-    
-    # for attach debugger
-    pushd pycharm-${pkgver}/plugins/python/helpers/pydev/pydevd_attach_to_process/linux_and_mac
-    if [[ $CARCH == "x86_64" ]]; then
-        g++ -m64 -shared -o ../attach_linux_amd64.so -fPIC -nostartfiles attach.cpp
-    elif [ "${CARCH}" == "aarch64" ]; then
-        g++ -march=armv8-a+crypto -shared -o ../attach_linux_amd64.so -fPIC -nostartfiles attach.cpp
-    fi
-    popd
-
-    rm -rf pycharm-${pkgver}/plugins/python/helpers/pydev/build/
-    find pycharm-${pkgver}/plugins/python/helpers/pydev/ -name __pycache__ -exec rm -rf {} \;
-}
+# build() {
+#     # clean up and compile PyDev debugger used by PyCharm to speedup debugging
+#     find pycharm-${pkgver}/plugins/python/helpers/pydev/ \( -name *.so -o -name *.pyd \) -delete
+#     python pycharm-${pkgver}/plugins/python/helpers/pydev/setup_cython.py build_ext --inplace --force-cython
+#     
+#     # for attach debugger
+#     pushd pycharm-${pkgver}/plugins/python/helpers/pydev/pydevd_attach_to_process/linux_and_mac
+#     if [[ $CARCH == "x86_64" ]]; then
+#         g++ -m64 -shared -o ../attach_linux_amd64.so -fPIC -nostartfiles attach.cpp
+#     elif [ "${CARCH}" == "aarch64" ]; then
+#         g++ -march=armv8-a+crypto -shared -o ../attach_linux_amd64.so -fPIC -nostartfiles attach.cpp
+#     fi
+#     popd
+# 
+#     rm -rf pycharm-${pkgver}/plugins/python/helpers/pydev/build/
+#     find pycharm-${pkgver}/plugins/python/helpers/pydev/ -name __pycache__ -exec rm -rf {} \;
+# }
 
 package() {
     # licenses
