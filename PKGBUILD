@@ -3,16 +3,15 @@
 
 pkgname=pnpm
 pkgver=8.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, disk space efficient package manager"
 arch=("any")
 url="https://pnpm.js.org/"
 license=("MIT")
 depends=("nodejs>=16.14")
 makedepends=("git" "npm" "jq")
-source=("git+https://github.com/$pkgname/$pkgname.git?signed#tag=v$pkgver")
-sha256sums=('SKIP')
-validpgpkeys=("7B74D1299568B586BA9962B5649E4D4AF74E7DEC") # Zoltan Kochan <z@kochan.io>
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pnpm/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('7f1af46e53289d3b175d8d98715e67568a89d8213ed65f8810885fb43b87c0c7')
 
 package() {
   npm install -g \
