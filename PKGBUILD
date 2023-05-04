@@ -1,9 +1,9 @@
-# Maintainer: Bipin Kumar <bipin@ccmb.res.in>
+# Maintainer: Bipin Kumar <kbipinkumar@pm.me>
 
 pkgname=python-grid-strategy
 _module=${pkgname#python-}
 pkgver=0.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Organize matplotlib plots using different grid strategies'
 arch=('any')
 url="https://github.com/matplotlib/grid-strategy"
