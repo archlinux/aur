@@ -1,19 +1,27 @@
-From f57ae92607e99c470985641c5d2272674a2c2b27 Mon Sep 17 00:00:00 2001
+From fd8a7a4c78002c4961cc92e37ef435142d2b2b3a Mon Sep 17 00:00:00 2001
 From: egnappahz <egnappah@gmail.com>
-Date: Mon, 2 Jan 2023 09:14:56 +0100
+Date: Thu, 4 May 2023 18:28:39 +0200
 Subject: [PATCH] AURNEWS patch
 
 Signed-off-by: egnappahz <egnappah@gmail.com>
 ---
- pikaur/install_cli.py      | 6 ++++++
+ pikaur/install_cli.py      | 7 +++++++
  pikaur/print_department.py | 2 +-
- 2 files changed, 7 insertions(+), 1 deletion(-)
+ 2 files changed, 8 insertions(+), 1 deletion(-)
 
 diff --git a/pikaur/install_cli.py b/pikaur/install_cli.py
-index bf7d534..7c2ef32 100644
+index ddc4736..a819daa 100644
 --- a/pikaur/install_cli.py
 +++ b/pikaur/install_cli.py
-@@ -768,6 +768,12 @@ class InstallPackagesCLI():
+@@ -3,6 +3,7 @@
+ # pylint: disable=too-many-lines
+ import contextlib
+ import hashlib
++import os
+ from multiprocessing.pool import ThreadPool
+ from pathlib import Path
+ from tempfile import NamedTemporaryFile
+@@ -778,6 +779,12 @@ class InstallPackagesCLI():
              _pkg_label = bold_line(", ".join(pkg_build.package_names))
              _skip_diff_label = translate("Not showing diff for {pkg} package ({reason})")
  
@@ -27,10 +35,10 @@ index bf7d534..7c2ef32 100644
                      pkg_build.package_base in self.reviewed_package_bases
              ):
 diff --git a/pikaur/print_department.py b/pikaur/print_department.py
-index b782730..b191d31 100644
+index 79572cb..e1913c4 100644
 --- a/pikaur/print_department.py
 +++ b/pikaur/print_department.py
-@@ -56,7 +56,7 @@ def print_version(pacman_version: str, pyalpm_version: str, *, quiet: bool = Fal
+@@ -59,7 +59,7 @@ def print_version(pacman_version: str, pyalpm_version: str, *, quiet: bool = Fal
    l  /       \        l
    j  ●   .   ●        l      """ + pacman_version + r"""
   { )  ._,.__,   , -.  {      pyalpm v""" + pyalpm_version + r"""
@@ -40,5 +48,5 @@ index b782730..b191d31 100644
  """)
  
 -- 
-2.39.0
+2.40.1
 

@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=pikaur-aurnews
-pkgver=1.14.7
+pkgver=1.15.1
 pkgrel=1
 pkgdesc="AUR helper which asks all questions before installing/building. Inspired by pacaur, yaourt and yay, and with the live aurnews eggzpatch"
 arch=('any')
@@ -13,9 +13,9 @@ source=(
 	"$pkgname::git+https://github.com/actionless/pikaur.git#branch=master"
 	'aurnews.patch'
 )
-md5sums=(
-	"SKIP"
+sha256sums=(
 	'SKIP'
+	'd19d5763babd208264fa5f4cbfb487f12452c36af38a6155d4debb51d052f664'
 )
 depends=(
 	'pyalpm'
@@ -24,18 +24,20 @@ depends=(
 )
 makedepends=(
 	'python-markdown-it-py'
+	'python-wheel'
+	'python-build'
+	'python-installer'
+	'python-setuptools'
 )
 optdepends=(
 	'asp: for ABS support in -G/--getpkgbuild operation'
 	'python-pysocks: for socks5 proxy support'
+	'python-defusedxml: securely wrap Arch news replies'
 )
 conflicts=('pikaur')
 provides=('pikaur')
 
 pkgver() {
-	#cd "${srcdir}/${pkgname}" || exit 2
-	#set -o pipefail
-	#git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' || echo 0.0.1
 	echo $pkgver
 }
 
@@ -43,14 +45,15 @@ build() {
 	cd "${srcdir}/${pkgname}" || exit 2
 	msg2 "Implementing eggz his Magic aurnews patch!!!"
 	git apply ../aurnews.patch || exit 2
-	sed -i -e "s/VERSION.*=.*/VERSION = '${pkgver}'/g" pikaur/config.py
+	#sed -i -e "s/VERSION.*=.*/VERSION = '${pkgver}'/g" pikaur/config.py
 	msg2 "building pikaur with aurnews injection by eggz"
 	make
+	/usr/bin/python3 -m build --wheel --no-isolation
 }
 
 package() {
 	cd "${srcdir}/${pkgname}" || exit 2
-	/usr/bin/python3 setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
+	/usr/bin/python3 -m installer --destdir="$pkgdir" dist/*.whl
 	for langmo in $(cd ./locale && ls ./*.mo); do
 		lang=$(sed -e 's/.mo$//' <<< "${langmo}")
 		install -Dm644 "locale/${langmo}" "$pkgdir/usr/share/locale/${lang}/LC_MESSAGES/pikaur.mo"
