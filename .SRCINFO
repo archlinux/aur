@@ -1,6 +1,6 @@
 pkgbase = microsoft-loop-pake
 	pkgdesc = Use Pake to package Microsoft Loop.Microsoft Loop is about people—people who want to create together with ease, no matter where they are or what tools they use.
-	pkgver = 2.0.0alpha
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://www.microsoft.com/en-us/microsoft-loop
 	arch = x86_64
@@ -15,10 +15,11 @@ pkgbase = microsoft-loop-pake
 	depends = cairo
 	depends = webkit2gtk
 	depends = openssl-1.1
+	depends = pango
 	conflicts = loop
-	source = loop-2.0.0-alpha.deb::https://github.com/tw93/Pake/releases/download/V2.0.0-alpha/Loop_x86_64.deb
+	source = loop-2.0.0.deb::https://github.com/tw93/Pake/releases/download/V2.0.0/Loop_x86_64.deb
 	source = LICENSE.html::https://go.microsoft.com/fwlink/?LinkID=206977
-	sha256sums = 13a84044e7fea593edc7a1333a8a7e89e95e3808cf2acdcbc1a7ff053fa00a42
-	sha256sums = 9e14c7405b2c75f2fc0bb8c68f52415b16034178de764f3bac2114cbb7029046
+	sha256sums = 29d8bf31552b7e1332ebc4e80aeea5cf0ad38c3dd2c86ea7e39fa98c70fa4216
+	sha256sums = 206f4c1e01be824b58ac05b48a0196a76ee2ef7d8d285f255c1462b121bb6a7f
 
 pkgname = microsoft-loop-pake
