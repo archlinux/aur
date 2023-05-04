@@ -1,0 +1,9 @@
+pkgbase = ttf-fzjljw
+	pkgdesc = a font of Beijing Founder Electronics
+	pkgver = 1.10
+	pkgrel = 1
+	url = https://www.foundertype.com
+	arch = any
+	license = custom
+
+pkgname = ttf-fzjljw
