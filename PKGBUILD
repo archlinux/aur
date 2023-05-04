@@ -1,25 +1,29 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 pkgname=python-kademlia
 _pkgname=${pkgname/python-/}
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Distributed hash table for decentralized peer-to-peer computer networks"
 url="http://github.com/bmuller/kademlia"
 depends=('python' 'python-rpcudp')
-optdepends=()
+makedepends=('python-build'
+             'python-installer'
+             'python-setuptools'
+             'python-wheel'
+            )
 license=('MIT')
 arch=('any')
 source=("https://github.com/bmuller/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('94d9ed1047273541d547ad99ea8f370be00a053fbf032cc0d983fe9b606d2c2d')
+sha256sums=('9fd3436ac83d115d9c0a596261b453626a8bc647c3aa6e198e7c296c8c3cdeb0')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$srcdir/$_pkgname-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
