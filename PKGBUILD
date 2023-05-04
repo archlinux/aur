@@ -4,7 +4,7 @@
 pkgname=python-projectq
 _name="ProjectQ"
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source framework for quantum computing"
 arch=('x86_64')
 url="https://github.com/ProjectQ-Framework/ProjectQ"
