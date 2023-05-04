@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="redis-viewer-appimage"
 _appname=redisviewer
-pkgver=2.2.2
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="A Redis visualization client tool that pursues ultimate performance, minimalist layout, efficient interaction, cross platform, and supports deserialization of Java bytecode."
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Redis.Viewer-${pkgver}.AppImage"
     "LICENSE::${url}/raw/master/LICENSE")
-sha256sums=('83e21d11110801073895e76390dd23dbf3c5474a1d72ef38c604853e39288f0f'
+sha256sums=('39a974684bfb8cfb7ab6bd178d24172b65be76594a2979f72bf1453db5a37dd0'
             '68f3ca5eaa3a59b7e01cbafc7848cb20ea108627ed0c94023e7536adfeeb3e89')
     
 prepare() {
