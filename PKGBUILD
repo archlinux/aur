@@ -3,7 +3,7 @@
 
 _name=language-tools
 pkgname=vue-language-server
-pkgver=1.6.3
+pkgver=1.6.4
 pkgrel=1
 pkgdesc='Fast Vue Language Support Extension'
 arch=('any')
