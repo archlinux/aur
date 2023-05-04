@@ -2,7 +2,7 @@
 pkgname=python-comparxiv
 _name=${pkgname#python-}
 pkgver=0.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A wrapper of latexdiff to compare two version of an arXiv preprint with a single command"
 arch=('any')
 url="https://github.com/temken/comparxiv"
