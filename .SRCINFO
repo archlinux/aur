@@ -1,7 +1,7 @@
 pkgbase = pommed-light
 	pkgdesc = Handles the hotkeys of Apple MacBook (Pro) laptops - lightweight edition
-	pkgver = 1.51lw
-	pkgrel = 2
+	pkgver = 1.52lw
+	pkgrel = 1
 	url = https://github.com/bytbox/pommed-light
 	install = pommed-light.install
 	arch = i686

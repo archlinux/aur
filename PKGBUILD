@@ -7,8 +7,8 @@
 # Contributor: jordi Cerdan (jcerdan) <jcerdan@tecob.com>
 
 pkgname=pommed-light
-pkgver=1.51lw
-pkgrel=2
+pkgver=1.52lw
+pkgrel=1
 pkgdesc="Handles the hotkeys of Apple MacBook (Pro) laptops - lightweight edition"
 arch=('i686' 'x86_64')
 url="https://github.com/bytbox/pommed-light"
