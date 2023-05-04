@@ -20,3 +20,13 @@ index 1e37293..a16af82 100644
  {
      struct ch9344 *ch9344 = tty->driver_data;
      struct ktermios *termios = &tty->termios;
+ 
+@@ -774,7 +774,7 @@ static inline void *tty_get_portdata(struct ch9344_ttyport *port)
+     return (port->portdata);
+ }
+ 
+-static void ch9344_port_dtr_rts(struct tty_port *port, int raise)
++static void ch9344_port_dtr_rts(struct tty_port *port, bool raise)
+ {
+     struct ch9344_ttyport *ttyport = container_of(port, struct ch9344_ttyport, port);
+     struct ch9344 *ch9344 = tty_get_portdata(ttyport);
