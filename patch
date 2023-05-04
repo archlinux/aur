@@ -1,0 +1,146 @@
+diff --git a/engine.js b/engine.js
+index cad99c3..097914b 100644
+--- a/engine.js
++++ b/engine.js
+@@ -5,10 +5,10 @@ const path = require('path')
+ const electron = require('electron')
+ const { ipcMain, webContents, app, globalShortcut } = electron;
+ const sqlite3 = require('sqlite3').verbose()
+-const robot = require("robotjs")
++const robot = require("node-key-sender")
+ let db;
+ const schedule = require('node-schedule')
+-const activeWin = require('active-win-lite')
++const activeWin = require('active-win')
+ const Store = require('electron-store')
+ const uuidv4 = require('uuid/v4')
+ const utils = require('./utils')
+@@ -948,7 +948,7 @@ function shortcut_callback_enter() {
+     last_minute_keyboard_stroke_energy += 5
+     last_tick_keyboard_stroke += 1
+     globalShortcut.unregister('enter')
+-    robot.keyTap("enter")
++    robot.sendKey("enter")
+     const ret = globalShortcut.register('enter', shortcut_callback_enter)
+     if (!ret) {
+         console.log('[Error] hotkey enter failed')
+@@ -960,7 +960,7 @@ function shortcut_callback_backspace() {
+     last_minute_keyboard_stroke_energy += 5
+     last_tick_keyboard_stroke += 1
+     globalShortcut.unregister('backspace')
+-    robot.keyTap("backspace")
++    robot.sendKey("backspace")
+     const ret = globalShortcut.register('backspace', shortcut_callback_backspace)
+     if (!ret) {
+         console.log('[Error] hotkey backspace failed')
+@@ -1006,7 +1006,7 @@ function shortcut_callback_up() {
+     last_minute_keyboard_stroke_energy += 5
+     last_tick_keyboard_stroke += 1
+     globalShortcut.unregister('up')
+-    robot.keyTap("up")
++    robot.sendKey("up")
+     const ret = globalShortcut.register('up', shortcut_callback_up)
+     if (!ret) {
+         console.log('[Error] hotkey up failed')
+@@ -1019,7 +1019,7 @@ function shortcut_callback_down() {
+     last_minute_keyboard_stroke_energy += 5
+     last_tick_keyboard_stroke += 1
+     globalShortcut.unregister('down')
+-    robot.keyTap("down")
++    robot.sendKey("down")
+     const ret = globalShortcut.register('down', shortcut_callback_down)
+     if (!ret) {
+         console.log('[Error] hotkey down failed')
+diff --git a/fdc.js b/fdc.js
+index cbabce0..4474f18 100644
+--- a/fdc.js
++++ b/fdc.js
+@@ -1,5 +1,5 @@
+-
+-const ffi = require('ffi');
++const electron = require('electron');
++const ffi = require('ffi-napi');
+ const iconv = require('iconv-lite');
+ const os = require('os');
+ 
+diff --git a/main.js b/main.js
+index fe32fcd..e338950 100644
+--- a/main.js
++++ b/main.js
+@@ -4,11 +4,13 @@ const utils = require('./utils')
+ 
+ // Single instance
+ if (utils.is_win()) {
+-  if (app.makeSingleInstance(single_instance_callback)){
+-    //第二个进程，直接退出
+-    console.log('second instance, quit imediately')
+-    app.exit(0)
+-  }
++  app.requestSingleInstanceLock();
++  app.on('second-instance', ()=>{console.log('second instance, quit imediately')
++  app.exit(0)});
++  // if (app.makeSingleInstance(single_instance_callback)){
++  //   //第二个进程，直接退出
++    
++  // }
+ }
+ 
+ function single_instance_callback(argv, workdir){
+@@ -209,7 +211,11 @@ var mb = menubar({
+     protocol: 'file:',
+     slashes: true
+   }),
+-  preloadWindow: true
++  preloadWindow: true,
++  webPreferences:{
++    nodeIntegration: true,
++    contextIsolation: false,
++  }
+ })
+ 
+ 
+@@ -229,7 +235,7 @@ function createMainWindow() {
+ 
+     // Create the browser window.
+     mainWindow = new BrowserWindow({
+-      webPreferences: { webSecurity: false }, //关闭同源检查，为了ad页面可以调用electron来在外部浏览器打开url
++      webPreferences: { webSecurity: false,nodeIntegration:true,webviewTag:true,enableRemoteModule:true,contextIsolation: false, }, //关闭同源检查，为了ad页面可以调用electron来在外部浏览器打开url
+       width: 1060,
+       height: utils.is_win() ? 575 : 565,
+       icon: path.join(__dirname, 'images/icon.png') //无效果TODO
+@@ -279,7 +285,7 @@ function createSettingWindow() {
+     settingWindow.show()
+   } else {
+     settingWindow = new BrowserWindow({
+-      webPreferences: { webSecurity: false },
++      webPreferences: { webSecurity: false,nodeIntegration:true,webviewTag:true,enableRemoteModule:true,contextIsolation: false, },
+       width: 300,
+       height: utils.is_win() ? 540 : 520
+     })
+@@ -353,7 +359,7 @@ let shareWindow
+ function createShareWindow() {
+ 
+   shareWindow = new BrowserWindow({
+-    webPreferences: { webSecurity: false },
++    webPreferences: { webSecurity: false,nodeIntegration:true,webviewTag:true,enableRemoteModule:true,contextIsolation: false, },
+     width: 300,
+     height: utils.is_win() ? 530 : 500
+   })
+@@ -392,7 +398,7 @@ function openCheckUpdateWindow() {
+     checkUpdateWindow.show()
+   } else {
+     checkUpdateWindow = new BrowserWindow({
+-      webPreferences: { webSecurity: false },
++      webPreferences: { webSecurity: false,nodeIntegration:true,webviewTag:true,enableRemoteModule:true,contextIsolation: false, },
+       width: 300,
+       height: 500
+     })
+@@ -444,7 +450,7 @@ function openAboutWindow() {
+     aboutWindow.show()
+   } else {
+     aboutWindow = new BrowserWindow({
+-      webPreferences: { webSecurity: false },
++      webPreferences: { webSecurity: false,nodeIntegration:true,webviewTag:true,enableRemoteModule:true,contextIsolation: false, },
+       width: 300,
+       height: 500
+     })

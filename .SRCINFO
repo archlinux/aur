@@ -1,0 +1,21 @@
+pkgbase = apptimer
+	pkgdesc = APP用量统计，工作小时数统计，掌握全天/周/月工作状态
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://apptimer.fatecore.com/
+	arch = x86_64
+	arch = aarch64
+	license = PRIVATE
+	makedepends = npm
+	makedepends = bash
+	makedepends = asar
+	makedepends = p7zip
+	depends = bash
+	depends = electron11
+	options = !strip
+	source = http://apptimer.fatecore.com/download/latest/overwork-win32-latest.zip
+	source = patch
+	sha256sums = cb5e4394fc9c9d4044c6a244a99f33262aebcf1483c73121ad5cb3c040b67def
+	sha256sums = 283b6dff88e74ff2c8038b3e7097a79581f081cd9fcf2e6e7d28079c323ae9dd
+
+pkgname = apptimer
