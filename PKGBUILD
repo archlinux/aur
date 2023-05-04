@@ -3,7 +3,7 @@
 pkgname=emote
 pkgver=3.0.3
 _pkgref=ff40e3d66b251aaf2e91116ba177e59f087e1021
-pkgrel=4
+pkgrel=5
 url="https://github.com/tom-james-watson/Emote"
 pkgdesc="Emoji Picker for Linux written in GTK3"
 arch=('any')
