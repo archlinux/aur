@@ -1,17 +1,15 @@
 pkgbase = ubuntu-wallpapers
 	pkgdesc = The default Wallpapers for Ubuntu
-	pkgver = 22.12.1
+	pkgver = 23.04.1
 	pkgrel = 1
 	url = https://launchpad.net/ubuntu-wallpapers
 	arch = any
 	license = custom
 	makedepends = python-distutils-extra
 	makedepends = python-setuptools
-	source = http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers/ubuntu-wallpapers_22.12.1.orig.tar.gz
-	source = http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers/ubuntu-wallpapers_22.12.1-0ubuntu1.debian.tar.xz
-	source = setuptools-bugfix.patch
-	sha512sums = cc2b1d2db963c2657d863c95eaa49afb92a1dd38da59ac8b1dba931af7ca1f8b1402db1bf8ad7034749846283ff94129012e57f15f457a0afb8d4ef95ce2aaed
-	sha512sums = 3d38de8183838c405ff222361c48ce698581ab3852fc3816b2c972b24420dc1f744b0b2617ae728cc59534eba4729a40b0a7b8c4611fc125fbd69faf95a927fc
-	sha512sums = 4d562ef7ccc6add6d966c111ed8f93b5c020a2be57bc468b427768521e64533536fb8b968a5430979f5d36f2de34bc82fb9ee3adca42f0194bb0d95c757cfe70
+	source = http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers/ubuntu-wallpapers_23.04.1.orig.tar.gz
+	source = http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers/ubuntu-wallpapers_23.04.1.debian.tar.xz
+	sha512sums = d611d822f81fb1d8c17bf23881b09d5c4a385ea611b9cd74280fb741845cba0feecb6bc093b24d399b38e541650ecb24dcc5336894a0bb1b570cfac091107716
+	sha512sums = d22b84fe966b0393e4ba331e5e3b2726811c63e06072bd3e148e90c92ee9877cf1ead7c63a6bdad97b71e5e0dffd7f9eb08b007266685b2b0c81126cec3dfe09
 
 pkgname = ubuntu-wallpapers
