@@ -2,19 +2,20 @@
 
 pkgname=python-hnswlib
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Header-only C++/python library for fast approximate nearest neighbors"
 url="https://github.com/nmslib/hnswlib"
 arch=('x86_64')
 license=('Apache')
 depends=('python-numpy')
-makedepends=('python-setuptools' 'pybind11')
+makedepends=('python-setuptools' 'pybind11'
+             'python-build' 'python-installer' 'python-wheel')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('4eba5d103a558fc76782d4051cde0cac2361fe5c36ccf56a959f9ff36813c91b')
 
 build() {
     cd "${pkgname#python-}-${pkgver}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 check() {
@@ -26,6 +27,6 @@ check() {
 
 package() {
     cd "${pkgname#python-}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
 # vim: set ts=4 sw=4 et:
