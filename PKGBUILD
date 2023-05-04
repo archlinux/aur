@@ -1,7 +1,7 @@
 # Where to file issues: https://github.com/remotemobprogramming/mob/issues
 
 pkgname=mobsh-bin
-pkgver=4.4.0
+pkgver=4.4.1
 pkgrel=1
 pkgdesc="Fast git handover with mob"
 arch=('x86_64')
@@ -13,8 +13,8 @@ optdepends=('espeak-ng-espeak: Multi-lingual software speech synthesizer'
 provides=('mobsh')
 conflicts=('mobsh' 'mob')
 
-source_x86_64=("$url/releases/download/v4.4.0/mob_v4.4.0_linux_amd64.tar.gz")
-sha256sums_x86_64=("70e53c90fa9dd3a520e2fe6db05f1f5a6b69e3ba710a42315a3a38b4e3b449c3")
+source_x86_64=("$url/releases/download/v4.4.1/mob_v4.4.1_linux_amd64.tar.gz")
+sha256sums_x86_64=("ab961733e9d74ea40cfd191c4f577aca96de7e2ed8a7622de8e3044fd3e81ee1")
 
 package() {
     install -D -m644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
