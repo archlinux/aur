@@ -1,18 +1,22 @@
 pkgbase = python-soundcloud-git
 	pkgdesc = A Python wrapper around the Soundcloud API
-	pkgver = r89.ac799b0
+	pkgver = r113.20220506.e0f577a
 	pkgrel = 1
-	url = https://github.com/soundcloud/soundcloud-python
+	url = https://github.com/audiobridge/soundcloud-python
 	arch = i686
 	arch = x86_64
 	license = BSD
+	checkdepends = python-fudge
+	checkdepends = python-pytest
 	makedepends = git
 	makedepends = python-setuptools
+	depends = python-nose
 	depends = python-requests
+	depends = python-six
 	optdepends = python-simplejson
 	provides = python-soundcloud
-	source = python-soundcloud-git::git://github.com/soundcloud/soundcloud-python
-	md5sums = SKIP
+	conflicts = python-soundcloud
+	source = python-soundcloud::git+https://github.com/audiobridge/soundcloud-python.git
+	sha256sums = SKIP
 
 pkgname = python-soundcloud-git
-
