@@ -4,7 +4,7 @@
 pkgname=python-demjson3
 _pkgname=${pkgname#python-}
 pkgver=3.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of demjson to purely support Python 3. Python module for JSON data encoding, including jsonlint."
 arch=('any')
 url="https://github.com/nielstron/demjson3"
