@@ -1,7 +1,7 @@
 pkgbase = 8188eu-dkms-git
 	pkgdesc = Standalone driver for Realtek RTL8188EUS (RTL8188EUS, RTL8188ETV) WLAN
 	pkgver = 5.2.2.4.r794.53ed527
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lwfinger/rtl8188eu
 	arch = any
 	license = GPL2
