@@ -1,7 +1,7 @@
 # Contributor: Paul Nicholson <brenix@gmail.com>
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yor-bin
-pkgver=0.1.173
+pkgver=0.1.174
 pkgrel=1
 pkgdesc="Extensible auto-tagger for your IaC files. The ultimate way to link entities in the cloud back to the codified resource which created it."
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('glibc')
 options=(!strip)
 source=("${pkgname%-bin}-${pkgver}.tar.gz::${_githuburl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('5a652455430f6f1c10cd2d64bb47b9670eee5d66038a54c686c447608a369494')
+sha256sums=('ebcda97073b55f10d1589ab867c2f030e7bcbde77c0465d45e756a423db82e8d')
 
 package() {
   install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
