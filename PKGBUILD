@@ -3,7 +3,7 @@
 pkgorg='stack-of-tasks'
 pkgname=eigenpy
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Bindings between numpy and eigen using boost::python"
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgorg/$pkgname"
