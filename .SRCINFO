@@ -1,6 +1,6 @@
 pkgbase = mjai-reviewer
 	pkgdesc = A mahjong game log reviewer
-	pkgver = 1.5.4.r1.g9c20eba
+	pkgver = 1.5.4.r6.gf4f9f92
 	pkgrel = 1
 	url = https://github.com/Equim-chan/mjai-reviewer
 	arch = any
@@ -8,9 +8,7 @@ pkgbase = mjai-reviewer
 	makedepends = git
 	makedepends = cargo
 	optdepends = akochan: a review engine
-	source = akochan-reviewer
 	source = git+https://github.com/Equim-chan/mjai-reviewer
-	md5sums = d96fb555b45cf4a91785b79410110aab
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = mjai-reviewer
