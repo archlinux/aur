@@ -1,7 +1,7 @@
 # Maintainer: piernov <piernov@piernov.org>
 
 pkgname=python-jsonref
-pkgver=0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="An implementation of JSON Reference for Python"
 arch=('x86_64')
@@ -9,15 +9,15 @@ url="https://pypi.org/project/jsonref"
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/b3/cf/93d4f34d76863d4fb995cb8e3e4f29908304065ce6381e0349700c44ad0c/jsonref-$pkgver.tar.gz")
-md5sums=('42b518b9ccd6852d1d709749bc96cb70')
+source=("https://files.pythonhosted.org/packages/aa/0d/c1f3277e90ccdb50d33ed5ba1ec5b3f0a242ed8c1b1a85d3afeb68464dca/jsonref-$pkgver.tar.gz")
+md5sums=('c6bb6e762afc840dbb246fbcfeea6800')
 
 build() {
   cd "$srcdir"/jsonref-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir"/jsonref-$pkgver
-  python setup.py install --root="$pkgdir"/ --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
