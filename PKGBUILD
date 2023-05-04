@@ -2,7 +2,7 @@
 
 pkgname=python-gifsicle
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Python package wrapping the gifsicle library for editing and optimizing gifs'
 arch=('any')
 url='https://pypi.org/project/pygifsicle/'
