@@ -1,6 +1,6 @@
 pkgbase = advanced-passgen-appimage
 	pkgdesc = Advanced Password Generator
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://codedead.com/software/advanced-passgen
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = advanced-passgen-appimage
 	depends = glibc
 	conflicts = advanced-passgen
 	options = !strip
-	source = advanced-passgen-2.4.0.AppImage::https://github.com/CodeDead/Advanced-PassGen/releases/download/v2.4.0/advanced-passgen_2.4.0_amd64.AppImage
-	sha256sums = 96b383f9c29cb0e4b8b809b80802b5eb6f252c4cbf115f40d2f6a79cb742ac58
+	source = advanced-passgen-2.4.1.AppImage::https://github.com/CodeDead/Advanced-PassGen/releases/download/v2.4.1/advanced-passgen_2.4.1_amd64.AppImage
+	sha256sums = 20ec1b301cbe6323287a75124e9422cf20f49e4b7c5697c49438a3db9f227233
 
 pkgname = advanced-passgen-appimage

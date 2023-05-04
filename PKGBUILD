@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=advanced-passgen-appimage
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Advanced Password Generator"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('hicolor-icon-theme' 'zlib' 'glibc')
 options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}_${pkgver}_amd64.AppImage")
-sha256sums=('96b383f9c29cb0e4b8b809b80802b5eb6f252c4cbf115f40d2f6a79cb742ac58')
+sha256sums=('20ec1b301cbe6323287a75124e9422cf20f49e4b7c5697c49438a3db9f227233')
      
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
