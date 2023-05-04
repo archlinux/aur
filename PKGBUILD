@@ -2,15 +2,15 @@
 
 _basename=leptonica
 pkgname=lib32-leptonica
-pkgver=1.82.0
+pkgver=1.83.1
 pkgrel=1
 pkgdesc="Software that is broadly useful for image processing and image analysis applications (32 bit)"
 arch=('x86_64')
 url="http://www.leptonica.com/"
 license=('custom')
 depends=('lib32-giflib' 'lib32-libwebp' 'lib32-openjpeg2' 'leptonica')
-source=("$_basename-$pkgver.tar.gz::https://github.com/DanBloomberg/leptonica/archive/$pkgver.tar.gz")
-sha256sums=('40fa9ac1e815b91e0fa73f0737e60c9eec433a95fa123f95f2573dd3127dd669')
+source=("https://github.com/DanBloomberg/leptonica/archive/$pkgver/$_basename-$pkgver.tar.gz")
+sha256sums=('4289d0a4224b614010072253531c0455a33a4d7c7a0017fe7825ed382290c0da')
 
 prepare() {
     cd $_basename-$pkgver
