@@ -1,7 +1,7 @@
 # Maintainer: Richard Murri <richardmurri@gmail.com>
 
 pkgname=cw-cloudwatch
-pkgver=4.1.1
+pkgver=4.1.3
 pkgrel=1
 pkgdesc='The best way to tail AWS CloudWatch Logs from your terminal'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/lucagrulla/cw"
 license=('Apache')
 makedepends=('go')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('49542e32cdf910a5bbebda1c841a1fac11c4224ef23c8b35cc4632b1bdb788a8')
+sha256sums=('f7780a47ca0912d6d2d1f39dc59c65211eef8b189296813aabcffeda0585c9d2')
 
 
 prepare(){
