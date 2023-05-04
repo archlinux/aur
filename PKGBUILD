@@ -2,7 +2,7 @@
 
 pkgname=('python-phononlammps')
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="LAMMPS interface for phonon calculations using phonopy"
 arch=('any')
 url="https://phonolammps.readthedocs.io/"

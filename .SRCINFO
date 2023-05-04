@@ -1,7 +1,7 @@
 pkgbase = python-phononlammps
 	pkgdesc = LAMMPS interface for phonon calculations using phonopy
 	pkgver = 0.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://phonolammps.readthedocs.io/
 	arch = any
 	license = MIT
