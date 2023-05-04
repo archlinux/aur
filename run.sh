@@ -7,7 +7,7 @@
  
 version_gt() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" != "$1"; }
 BOTTLENAME="Deepin-ximalaya"
-APPVER="3.3.7"
+APPVER="4.0.0"
 WINEPREFIX="${HOME}/.deepinwine/${BOTTLENAME}"
 EXEC_PATH="c:/Program Files (x86)/ximalaya/喜马拉雅.exe"
 START_SHELL_PATH="/opt/deepinwine/tools/run_v4.sh"
