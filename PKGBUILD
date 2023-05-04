@@ -4,7 +4,7 @@
 _pkgname='gr-rds'
 pkgname="${_pkgname}-git"
 epoch=1
-pkgver=3.8.0+r314.20210721.d43ead6
+pkgver=3.8.0+r322.20220802.771a9c0
 pkgrel=1
 pkgdesc="An FM-RDS Receiver for GNU Radio"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ optdepends=()
 provides=("${_pkgname}" "${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}" "${_pkgname}-doc")
 url="https://github.com/bastibl/gr-rds"
-source=("${_pkgname}::git+git://github.com/bastibl/gr-rds.git")
+source=("${_pkgname}::git+https://github.com/bastibl/gr-rds.git")
 sha256sums=('SKIP')
 
 prepare() {
