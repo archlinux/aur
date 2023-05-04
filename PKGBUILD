@@ -3,7 +3,7 @@
 
 pkgname=python-imageio-ffmpeg
 pkgver=0.4.7
-pkgrel=2
+pkgrel=3
 pkgdesc="FFMPEG wrapper for Python"
 arch=("any")
 license=("BSD")
