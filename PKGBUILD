@@ -1,17 +1,23 @@
-# Maintainer: fenze <fenze@contact.dev>
+
 pkgname=bitwarden-cli-bin
-pkgver=$(curl "https://api.github.com/repos/bitwarden/clients/releases" | grep '"tag_name"' | cut -d : -f 2 | grep -Eo '".+"' | grep -Eo '[^"]+' | grep '^cli' | sed 's/cli-v//' | head -n 1)
+pkgver=2023.4.0
 pkgrel=1
 pkgdesc='Bitwarden Command-line Interface'
-arch=('x86_64')
+arch=(x86_64)
 url='https://github.com/bitwarden/clients'
-license=('GPL3')
-makedepends=('unzip')
-conflicts=('bitwarden-cli')
+license=(GPL3)
+provides=(bitwarden-cli)
+conflicts=(bitwarden-cli)
 options=('!strip')
-source=("https://github.com/bitwarden/clients/releases/download/cli-v${pkgver}/bw-linux-${pkgver}.zip")
-md5sums=('SKIP')
+source=("$url/releases/download/cli-v$pkgver/"bw-linux-{$pkgver.zip,sha256-$pkgver.txt})
+sha256sums=('7333bf62c228f3347bda1d7c00fb34749df6095b923554726b7c7ff97aa096b7'
+            'SKIP')
+
+prepare() {
+	sed -i "s/$/ bw-linux-$pkgver.zip/" bw-linux-sha256-$pkgver.txt
+	sha256sum -c bw-linux-sha256-$pkgver.txt
+}
 
 package() {
-  install -Dm755 bw "${pkgdir}/usr/bin/bw"
+	install -Dm755 bw -t "$pkgdir/usr/bin/bw"
 }
