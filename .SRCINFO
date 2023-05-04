@@ -1,15 +1,18 @@
 pkgbase = mollyguardctl
 	pkgdesc = Guards your system from accidental reboots and shutdowns
-	pkgver = 1.3.9
-	pkgrel = 2
+	pkgver = 1.3.10
+	pkgrel = 1
 	url = https://github.com/coNQP/mollyguardctl
 	arch = any
 	license = GPLv3
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools-scm
+	makedepends = python-wheel
 	depends = python
 	depends = python-setuptools
-	source = git+https://github.com/coNQP/mollyguardctl.git#tag=1.3.9
+	source = git+https://github.com/coNQP/mollyguardctl.git#tag=1.3.10
 	md5sums = SKIP
 
 pkgname = mollyguardctl
