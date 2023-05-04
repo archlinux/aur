@@ -1,7 +1,7 @@
 pkgbase = obs-studio-tytan652
 	pkgdesc = Free and open source software for video recording and live streaming. With everything except service integrations. Plus V4L2 devices by paths, my bind interface PR, and sometimes backported fixes
 	pkgver = 29.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
 	arch = aarch64
@@ -64,13 +64,13 @@ pkgbase = obs-studio-tytan652
 	source = qr::git+https://github.com/nayuki/QR-Code-generator.git
 	source = bind_iface.patch
 	source = v4l2_by-path.patch
-	source = 0001-Fix_build_with_GCC_13.patch
+	source = 0001-Enforce_-Wmaybe-uninitialized_never_turn_into_error.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 65116d10f03d390505fdb0bbf6fe649e8649500441dde91e029f2eb79bfdc80f
 	sha256sums = ee54b9c6f7e17fcc62c6afc094e65f18b2e97963c2fe92289b2b91972ac206e5
-	sha256sums = 450cbf6df2b14ec8f9c43c1c7d44b06ab1b10c38eae6d1048eebffb4ca16e569
+	sha256sums = 9227a5f3439d19c2c75e369bc6701dc83c4ac54cc371b7f74e55c9e275512f6c
 
 pkgname = obs-studio-tytan652
