@@ -1,0 +1,20 @@
+post_install() {
+  # Enable socket by default
+  systemctl --global enable gcr-ssh-agent.socket
+
+  cat <<END
+>>> gcr contains /etc/security/limits.d/10-gcr.conf which sets the memlock limit
+    in order to allow GCR to lock private keys in memory. If you have configured
+    this limit differently before, please review your configuration.
+END
+}
+
+post_upgrade() {
+  if (( $(vercmp $2 3.41.0-1) < 0)); then
+    systemctl --global enable gcr-ssh-agent.socket
+  fi
+}
+
+pre_remove() {
+  systemctl --global disable gcr-ssh-agent.socket
+}
