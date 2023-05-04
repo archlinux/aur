@@ -3,7 +3,7 @@
 
 pkgname=shellgpt-git
 _pkgname=shell_gpt
-pkgver=0.9.0.r0.ga054a90
+pkgver=0.9.0.r2.g00b69e9
 pkgrel=1
 pkgdesc="A command-line productivity tool powered by OpenAI's ChatGPT (GPT-3.5)"
 arch=('any')
