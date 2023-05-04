@@ -2,8 +2,8 @@
 # Contributor: 
 
 pkgname=python-imageio-ffmpeg
-pkgver=0.4.7
-pkgrel=3
+pkgver=0.4.8
+pkgrel=1
 pkgdesc="FFMPEG wrapper for Python"
 arch=("any")
 license=("BSD")
