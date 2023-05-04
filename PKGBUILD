@@ -1,8 +1,8 @@
 # Maintainer: Richard Neumann aka. schard <mail at richard dash neumann period de>
 
 pkgname='speculum'
-pkgver=1.7.9
-pkgrel=3
+pkgver=1.7.10
+pkgrel=1
 pkgdesc='Yet another mirror list optimization tool'
 arch=('any')
 url="https://github.com/coNQP/${pkgname}"
@@ -20,5 +20,12 @@ build() {
 
 package() {
     cd "${srcdir}/${_pkgbase}"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+
+    install -Dm 644 "files/speculum.conf" "${pkgdir}/etc/speculum.conf"
+    install -dm 755 "${pkgdir}/usr/lib/systemd/system/"
+
+    for UNIT in files/*.{service,timer}; do
+        install -m 644 "${UNIT}" "${pkgdir}/usr/lib/systemd/system/"
+    done
 }
