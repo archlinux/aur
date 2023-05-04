@@ -1,6 +1,6 @@
 pkgbase = mathpix-snipping-tool
 	pkgdesc = Mathpix Snipping Tool
-	pkgver = 03.00.0094
+	pkgver = 03.00.0101
 	pkgrel = 1
 	url = https://mathpix.com/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = mathpix-snipping-tool
 	depends = qt5-imageformats
 	optdepends = wayland: Wayland support.
 	options = !strip
-	source = mathpix-snipping-tool-03.00.0094-x86_64.AppImage::https://download.mathpix.com/linux/Mathpix_Snipping_Tool-x86_64.v03.00.0094.AppImage
-	sha512sums = 2a51cdfbfa7fc8b1462166c1843a8d8c2cda654ac0a208cdb164958344a0498070aa127cd66db8989244ff080c667ca7b120df09e3e329fdebe5a32f575102cf
+	source = mathpix-snipping-tool-03.00.0101-x86_64.AppImage::https://download.mathpix.com/linux/Mathpix_Snipping_Tool-x86_64.v03.00.0101.AppImage
+	sha512sums = aa5c3e4d11dfbbc902b799396f81a34790179e6849bbc19559892a0573b238421f7d17c07ede91d7c5bc9c000b9de9f026eeb4e1b1a94f633cb447b8b2600a3c
 
 pkgname = mathpix-snipping-tool
