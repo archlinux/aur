@@ -1,7 +1,7 @@
 # Maintainer: Oystein Sture <oysstu@gmail.com>
 # Contributor: 
 pkgname=python-gpflow
-_pkgver=2.7.1
+_pkgver=2.8.0
 pkgver=${_pkgver}
 pkgrel=1
 pkgdesc="Gaussian process methods in tensorflow"
