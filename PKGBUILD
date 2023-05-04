@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="frappe-books-appimage"
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Modern desktop accounting for freelancers and small-businesses."
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'hicolor-icon-theme' 'glibc')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Frappe-Books-${pkgver}.AppImage")
-sha256sums=('6abf91f00c9214c59a50d576fb1dad6b41befd3e37a803fd474b1111dd6be89b')
+sha256sums=('32af0366aaf2bb9c2e86cf99b7e57f5e8e1aa9280cb75fe7be8e23f74b6e8350')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
