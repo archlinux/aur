@@ -3,7 +3,7 @@
 _pkgname=pineflash
 pkgname="${_pkgname}-git"
 pkgver=0.5.0.r251.20230426.de2d50e
-pkgrel=3
+pkgrel=4
 arch=(
   i686
   x86_64
@@ -58,7 +58,7 @@ prepare() {
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  _ver="$(git describe --tags | sed -E -e 's|^[vv]||' -e 's|-g[0-9a-f]*$||' -e 's|-|+|g')"
+  _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|-g[0-9a-f]*$||' -e 's|-|+|g')"
   _rev="$(git rev-list --count HEAD)"
   _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
   _hash="$(git rev-parse --short HEAD)"
