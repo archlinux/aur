@@ -1,9 +1,9 @@
-# Maintainer: Dan Johansen <strit@manjaro.org>
+# Maintainer: Dan Johansen <strit@strits.dk>
 # Contributor: Marcus Britanicus
 
 
 pkgname=libarchive-qt
-pkgver=2.0.7
+pkgver=2.0.8
 pkgrel=1
 pkgdesc="A Qt based archiving solution with libarchive backend"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ license=('LGPL3')
 depends=('libarchive' 'qt5-base' 'zlib' 'bzip2' 'xz')
 makedepends=('meson')
 source=("https://gitlab.com/marcusbritanicus/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('0df5672f385de0174f21c32b37bf088b')
+md5sums=('99836064f62c6d2cae28c1e3e606541b')
 
 prepare() {
   mkdir -p build
