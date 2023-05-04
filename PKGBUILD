@@ -2,7 +2,7 @@
 
 pkgname=nanoemoji
 pkgver=0.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A wee tool to build color fonts'
 arch=(any)
 url="https://github.com/googlefonts/$_pkgname"
@@ -21,9 +21,8 @@ depends=(absl-py
          picosvg
          python
          "${_py_deps[@]/#/python-}")
-makedepends=(python-{build,installer}
-             python-setuptools-scm
-             python-wheel)
+makedepends=(python-{build,installer,wheel}
+             python-setuptools-scm)
 optdepends=('resvg: Support CBDT and sbix color fonts')
 checkdepends=(python-pytest
               resvg)
