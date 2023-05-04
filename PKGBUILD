@@ -3,8 +3,8 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=r23547.e0895a858
-pkgrel=2
+pkgver=r23626.2506594c5
+pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
 url='https://github.com/yuzu-emu/yuzu-mainline'
@@ -25,7 +25,7 @@ depends=('fmt'
 makedepends=('boost'
              'llvm'
              'catch2'
-             'clang'
+             'gcc'
              'cmake'
              'ffmpeg'
              'git'
@@ -110,15 +110,15 @@ prepare() {
 build() {
     cd "$srcdir"
     
-    #[[ -d build ]] && rm -rf build
+    [[ -d build ]] && rm -rf build
 
     cmake -S $_pkgname -B build \
       -GNinja \
       -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_C_COMPILER=clang \
-      -DCMAKE_CXX_COMPILER=clang++ \
-      -DCMAKE_C_FLAGS="$CFLAGS -flto=thin" \
-      -DCMAKE_CXX_FLAGS="$CXXFLAGS -flto=thin" \
+      -DCMAKE_C_COMPILER=gcc \
+      -DCMAKE_CXX_COMPILER=g++ \
+      -DCMAKE_C_FLAGS="$CFLAGS -flto=auto" \
+      -DCMAKE_CXX_FLAGS="$CXXFLAGS -flto=auto" \
       -DCMAKE_BUILD_TYPE=RelWithDebInfo \
       -DYUZU_USE_QT_WEB_ENGINE=ON \
       -DYUZU_USE_QT_MULTIMEDIA=ON \
