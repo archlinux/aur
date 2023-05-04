@@ -1,7 +1,7 @@
 pkgbase = python-dateparser
 	pkgdesc = python parser for human readable dates
 	pkgver = 1.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scrapinghub/dateparser
 	arch = any
 	license = custom:bsd

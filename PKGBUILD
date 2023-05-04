@@ -3,7 +3,7 @@
 
 pkgname=python-dateparser
 pkgver=1.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="python parser for human readable dates"
 url="https://github.com/scrapinghub/dateparser"
 arch=('any')
