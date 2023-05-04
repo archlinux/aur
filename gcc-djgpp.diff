@@ -107,19 +107,6 @@ index 591d033fbca..2c26f55851b 100644
  }
  
  /* Return nonzero if file names are case sensitive.  */
-diff --git a/gcc/ada/gcc-interface/Make-lang.in b/gcc/ada/gcc-interface/Make-lang.in
-index a8d8899d3c9..359d3334898 100644
---- a/gcc/ada/gcc-interface/Make-lang.in
-+++ b/gcc/ada/gcc-interface/Make-lang.in
-@@ -1152,7 +1152,7 @@ ada/generated/gnatvsn.ads: ada/gnatvsn.ads BASE-VER ada/GNAT_DATE
- 	s=`cat $(srcdir)/BASE-VER | sed -e "s/\([0-9]*\)\.\([0-9]*\)\..*/-\1\2/g"`; \
- 	d=`if test -f $(srcdir)/ada/GNAT_DATE; then \
-            cat $(srcdir)/ada/GNAT_DATE; else date +%Y%m%d; fi`; \
--	cat $< | sed -e "/Version/s/(\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\).*)/($$d$$s)/g" >$@
-+	cat $< | sed -e "/Version/s/(\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\).*)/($$d$$s)/g" | tr -d \\\015 >$@
- 
- ada/gnatvsn.o : ada/gnatvsn.adb ada/generated/gnatvsn.ads
- 	$(CC) -c $(ALL_ADAFLAGS) $(ADA_INCLUDES) $< $(ADA_OUTPUT_OPTION)
 diff --git a/gcc/ada/libgnarl/s-taprop__dummy.adb b/gcc/ada/libgnarl/s-taprop__dummy.adb
 index 5ab41b1b3c1..fb4bd5cc777 100644
 --- a/gcc/ada/libgnarl/s-taprop__dummy.adb
@@ -939,38 +926,3 @@ index 19d246100cb..1463a59b45a 100644
      return has_root_name() && has_root_directory();
  #else
      return has_root_directory();
-diff --git a/libstdc++-v3/src/c++11/shared_ptr.cc b/libstdc++-v3/src/c++11/shared_ptr.cc
-index 8e84672d603..54adbdacfef 100644
---- a/libstdc++-v3/src/c++11/shared_ptr.cc
-+++ b/libstdc++-v3/src/c++11/shared_ptr.cc
-@@ -35,7 +35,11 @@ namespace __gnu_internal _GLIBCXX_VISIBILITY(hidden)
-   get_mutex(unsigned char i)
-   {
-     // increase alignment to put each lock on a separate cache line
-+#ifdef __DJGPP__
-+    struct M : __gnu_cxx::__mutex { };
-+#else
-     struct alignas(64) M : __gnu_cxx::__mutex { };
-+#endif
-     static M m[mask + 1];
-     return m[i];
-   }
-diff --git a/libstdc++-v3/src/filesystem/path.cc b/libstdc++-v3/src/filesystem/path.cc
-index cb8d2c67941..186f86401cb 100644
---- a/libstdc++-v3/src/filesystem/path.cc
-+++ b/libstdc++-v3/src/filesystem/path.cc
-@@ -411,8 +411,13 @@ path::_M_split_cmpts()
- 	_M_add_root_dir(0);
-       ++pos;
-     }
--#ifdef _GLIBCXX_FILESYSTEM_IS_WINDOWS
-+#if defined(_GLIBCXX_FILESYSTEM_IS_WINDOWS) \
-+  || defined(_GLIBCXX_FILESYSTEM_IS_DJGPP)
-+#ifdef __DJGPP__
-+  else if (len > 1 && pathname[1] == ':')
-+#else
-   else if (len > 1 && pathname[1] == L':')
-+#endif
-     {
-       // got disk designator
-       if (len == 2)

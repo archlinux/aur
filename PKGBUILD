@@ -3,10 +3,10 @@
 # Contributor: janezz55
 
 pkgname=dosbox-gcc
-pkgver=12.2.0
+pkgver=13.1.0
 _target="i586-pc-msdosdjgpp"
 _djver=2.05
-pkgrel=2
+pkgrel=1
 pkgdesc="djgpp cross-compiler for the dosbox environment"
 arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"
@@ -92,6 +92,9 @@ build() {
   ac_cv_lib_dl_dlopen=no \
   ac_cv_lib_svld_dlopen=no \
   ac_cv_lib_dld_dld_link=no \
+  enable_c99=yes \
+  glibcxx_cv_c99_math_cxx98=yes \
+  glibcxx_cv_c99_math_cxx11=yes \
   make all
 }
 
