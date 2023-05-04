@@ -1,0 +1,16 @@
+pkgbase = python-sphinx_rtd_dark_mode
+	pkgdesc = Adds a toggleable dark mode to the Read the Docs theme.
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://github.com/MrDogeBro/sphinx_rtd_dark_mode
+	arch = any
+	license = MIT
+	makedepends = python-setuptools-scm
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-sphinx_rtd_theme
+	source = python-sphinx_rtd_dark_mode-1.2.4.tar.gz::https://github.com/MrDogeBro/sphinx_rtd_dark_mode/archive/refs/tags/v1.2.4.tar.gz
+	b2sums = 7aa68205af0578b841d35e7d7ccc8278060eafa13a598889dde6e75c3b27f606ffd7eac0c4bcc946b7e83bd2099e83c5b212768f230cabfcc6a8a0248b8f8ebc
+
+pkgname = python-sphinx_rtd_dark_mode
