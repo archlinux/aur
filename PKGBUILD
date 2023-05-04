@@ -7,7 +7,7 @@
 
 pkgname=key-mon
 pkgver=1.20
-pkgrel=1
+pkgrel=2
 url="https://github.com/scottkirkwood/key-mon"
 pkgdesc="A screencast utility that displays your keyboard and mouse status"
 arch=('any')
