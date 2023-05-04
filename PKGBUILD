@@ -22,12 +22,12 @@ pkgver() {
 
 build() {
 	export RUSTUP_TOOLCHAIN=stable
-	cd "$pkgname/src/Linux/binaries-source/catppuccinifier-cli"
+	cd "$pkgname/src/source-code/linux-catppuccinifier-cli"
 	cargo build --release
 }
 
 check(){
-  cd "$pkgname/src/Linux/binaries-source/catppuccinifier-cli"
+  cd "$pkgname/src/source-code/linux-catppuccinifier-cli"
   cargo test --release
 }
 
@@ -35,7 +35,6 @@ package() {
 	cd "$pkgname"
 	mkdir -p "$HOME/.local/share/catppuccinifier"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
-	cd "src/Linux/"
-	cp -p -r "installation-files/flavors/" "$HOME/.local/share/catppuccinifier/flavors/"
-	install -Dm755 "binaries-source/catppuccinifier-cli/target/release/catppuccinifier-cli" "$pkgdir/usr/bin/catppuccinifier"
+	cp -p -r "src/releases/linux/installation-files/flavors/" "$HOME/.local/share/catppuccinifier/flavors/"
+	install -Dm755 "src/source-code/linux-catppuccinifier-cli/target/release/catppuccinifier-cli" "$pkgdir/usr/bin/catppuccinifier"
 }
