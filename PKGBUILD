@@ -5,7 +5,7 @@ _project=ots-python
 _pyname=opentype-sanitizer
 pkgname=python-$_pyname
 pkgver=9.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python wheels for the OpenType Sanitizer'
 arch=(any)
 url="https://github.com/googlefonts/$_project"
@@ -14,7 +14,10 @@ depends=(ots
          python)
 checkdepends=(python-pytest
               woff2)
-makedepends=(python-setuptools-scm)
+makedepends=(python-{build,installer,wheel}
+             meson
+             ninja
+             python-setuptools-scm)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz"
         system-ots-sanitize.patch)
@@ -24,11 +27,15 @@ sha256sums=('4b89660e166a1fe057ab1c6b63038fc48ee73e768e80e1bf982abaf7b16fa064'
 prepare () {
 	cd "$_archive"
 	patch -p0 < "../system-ots-sanitize.patch"
+	# python -m build finds project local helper script not distro tooling
+	sed -i -e 's/build.py/buildots.py/g' setup.py
+	mv build{,ots}.py
+	sed -i -e '/ninja/d' pyproject.toml
 }
 
 build() {
 	cd "$_archive"
-	python setup.py build
+	python -m build -wn
 }
 
 check() {
@@ -38,5 +45,5 @@ check() {
 
 package() {
 	cd "$_archive"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer -d "$pkgdir" dist/*.whl
 }
