@@ -3,7 +3,7 @@
 
 pkgname=python-paramz
 pkgver=0.9.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Parameterization Framework for parameterized model creation and handling"
 arch=("any")
 license=("BSD")
