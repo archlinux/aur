@@ -56,7 +56,7 @@ prepare() {
     cd kernel
 
     # From Ike Devolder
-    patch -Np1 -i ../kernel-6.3.patch
+    patch -Np1 -i ../../kernel-6.3.patch
 
     sed -i "s/__VERSION_STRING/${pkgver}/" dkms.conf
     sed -i 's/__JOBS/`nproc`/' dkms.conf
