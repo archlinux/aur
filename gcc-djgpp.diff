@@ -928,20 +928,12 @@ index 19d246100cb..1463a59b45a 100644
      return has_root_directory();
 --- a/libstdc++-v3/src/c++11/shared_ptr.cc
 +++ b/libstdc++-v3/src/c++11/shared_ptr.cc
-@@ -22,6 +22,7 @@
- // see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
- // <http://www.gnu.org/licenses/>.
- 
-+#include <cstddef>
- #include <memory>
- 
- #include "mutex_pool.h"
 @@ -35,7 +36,7 @@
    get_mutex(unsigned char i)
    {
      // increase alignment to put each lock on a separate cache line
 -    struct alignas(64) M : __gnu_cxx::__mutex { };
-+    struct alignas(std::max_align_t) M : __gnu_cxx::__mutex { };
++    struct alignas(16) M : __gnu_cxx::__mutex { };
      // Use a static buffer, so that the mutexes are not destructed
      // before potential users (or at all)
      static __attribute__ ((aligned(__alignof__(M))))
