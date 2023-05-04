@@ -1,7 +1,7 @@
 # Maintainer: Fabio Manganiello <fabio@manganiello.tech>
 
 pkgname=platypush-git
-pkgver=0.24.5.r0.99311a6f
+pkgver=0.24.5.r0.99311a70
 pkgrel=1
 pkgdesc="Universal multi-platform command executor and automation manager"
 arch=('any')
@@ -81,9 +81,8 @@ optdepends=(
 	'python-pydbus: DBus and Bluetooth integration'
 	'python-pylast: Last.fm scrobbling support'
 	'python-pyotp: OTP support'
-	'python-pysdcard: Support for the smart card integration'
+	'python-pyscard: Support for the smart card integration'
 	'python-pyserial: Arduino/serial device support'
-	'python-pyzbar: QR code and barcodes integration'
 	'python-qrcode: QR code integration'
 	'python-rpi-gpio: Support for GPIO integrations for Raspberry Pi (and compatible) devices'
 	'python-rtmidi: MIDI integration'
@@ -97,6 +96,7 @@ optdepends=(
 	'python-vlc: VLC integration'
 	'python-watchdog: File monitor support'
     'python-weasyprint: PDF generation support'
+	'pyzbar: QR code and barcodes integration'
     'youtube-dl: Support for downloading/streaming YouTube videos, as well as other video platforms'
 )
 
