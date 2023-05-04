@@ -3,8 +3,8 @@
 # All my PKGBUILDs are managed at https://github.com/thomaseizinger/pkgbuilds
 
 pkgname=photoprism
-pkgver="221118"
-commit="e58fee0fb"
+pkgver="230502"
+commit="c405f6eff"
 pkgrel=1
 epoch=
 pkgdesc="Personal Photo Management powered by Go and Google TensorFlow "
