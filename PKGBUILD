@@ -1,38 +1,47 @@
-# Maintainer: schw0reismus <schw0reismus@protonmail.com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: schw0reismus <schw0reismus@protonmail.com>
 
 pkgname=foliate-git
-pkgver=1.5.3.r10.gd35e3e6
-pkgrel=1
-pkgdesc="A simple and modern GTK eBook reader"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+pkgver=2.6.4.r98.g3a9e148
+pkgrel=2
+pkgdesc="Simple and modern GTK eBook reader"
+arch=(any)
 url="https://johnfactotum.github.io/foliate/"
-license=('GPL-3.0')
-depends=('gjs>=1.52.0'  'webkit2gtk' 'gettext')
-makedepends=('meson>=0.40' 'ninja' 'git')
+license=(GPL3)
+depends=(gjs gtk4 webkitgtk-6.0)
+makedepends=(meson ninja git)
 optdepends=('hyphen: Auto-hyphenation support'
 			'hyphen-en: Hyphenation rules for English; you may choose package for your language'
 			'dictd: Offline dictionary support'
 			'festival: Text-to-speech support'
 			'espeak-ng: Text-to-speech support'
 		   )
-source=("${pkgname%-git}::git+https://github.com/johnfactotum/${pkgname%-git}.git#branch=master")
-provides=("${pkgname%-git}")
-replaces=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-md5sums=('SKIP')
+provides=(foliate)
+conflicts=(foliate)
+source=("git+https://github.com/johnfactotum/foliate.git#branch=gtk4"
+        "git+https://github.com/johnfactotum/foliate-js.git")
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
-    cd "$srcdir"/"${pkgname%-git}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd foliate
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd foliate
+  git submodule init
+  git config submodule.src/foliate-js.url "${srcdir}/foliate-js"
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
-	cd "$srcdir"/"${pkgname%-git}"
-	meson build --prefix=/usr
-	ninja -C build
+  cd foliate
+  meson build --prefix=/usr
+  ninja -C build
 }
 
 package(){
-	cd "$srcdir"/"${pkgname%-git}"
-	DESTDIR="$pkgdir" ninja -C build install
+  cd foliate
+  DESTDIR="$pkgdir" ninja -C build install
 }
