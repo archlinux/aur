@@ -1,7 +1,7 @@
 # Maintainer: piernov <piernov@piernov.org>
 
 pkgname=python-lightning-flash
-pkgver=0.7.5
+pkgver=0.8.1.post0
 pkgrel=1
 pkgdesc="High-level deep learning framework for fast prototyping, baselining, finetuning and solving deep learning problems."
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
 	'python-segmentation-models-pytorch: image support')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/PyTorchLightning/lightning-flash/archive/refs/tags/$pkgver.tar.gz")
-md5sums=('fbfa7ee774a0cd1553bbe24afd9bacd0')
+md5sums=('5935785eed99682e83dc3851eebacb1c')
 
 build() {
   cd "$srcdir"/lightning-flash-$pkgver
