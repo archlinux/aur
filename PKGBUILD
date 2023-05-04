@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: vvxxp8 <concatenate[g] the characters[x] in square[b] brackets[1] in[5] order[3] at gmail dot com>
 pkgname=motrix-appimage
-pkgver=1.8.14
-pkgrel=2
+pkgver=1.8.15
+pkgrel=1
 pkgdesc="A full-featured download manager,Support downloading HTTP, FTP, BitTorrent, Magnet, etc."
 arch=('x86_64')
 url="https://motrix.app/"
@@ -14,13 +14,13 @@ depends=('zlib' 'glibc' 'hicolor-icon-theme')
 _install_path="/opt/appimages"
 source=(
     "${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Motrix-${pkgver}.AppImage"
-    "LICENSE::${_githuburl}/master/LICENSE")
-sha256sums=('8784d9cc4c65d734e1c3394a06d2f4bb75758c58e334cd82b1ccb88468abf53b'
+    "LICENSE::${_githuburl}/raw/master/LICENSE")
+sha256sums=('61a66fe2fa846312344b59df5a1f750d54a43dc91bda2a5e6098ad54e301d312'
             'f60775e705e2c7418665ac2c7f386d28cc2927df98a440ced1703a7ed3ca86b7')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's|AppRun|/opt/appimages/vgmtrans.AppImage|g' -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
+    sed 's|AppRun|/opt/appimages/motrix.AppImage|g' -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
