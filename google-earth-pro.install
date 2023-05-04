@@ -12,24 +12,17 @@ bold="${all_off}$(tput bold)"
 blue="${bold}$(tput setaf 4)"
 yellow="${bold}$(tput setaf 3)"
 
-# 64-bit?
-if [[ $(uname -m) = x86_64 ]]; then
-    _64=true
-fi
-
-post_install() {    
-    if [[ $_64 ]]; then
-        note "The launcher is called 'google-earth-pro'." "1"
-        note "If experiencing graphical corruption:
-           $ rm -r ~/.googleearth/Cache/" "2"
-    else
-        note "The launcher is called 'google-earth-pro'."
-    fi
+post_install() {
+    note "The launcher is called 'google-earth-pro'."
+    note "If you are using Wayland, modify the Exec line in the .desktop file:
+        Exec=env -u QT_QPA_PLATFORMTHEME -u QT_QPA_PLATFORM /opt/google/earth/pro/google-earth-pro %f"
+    note "If experiencing graphical corruption:
+        $ rm -r ~/.googleearth/Cache/"
 }
 
 post_upgrade() {    
-    if [[ $_64 ]]; then
-        note "If experiencing graphical corruption:
-          $ rm -r ~/.googleearth/Cache/"
-    fi
+    note "If you are using Wayland, modify the Exec line in the .desktop file:
+        Exec=env -u QT_QPA_PLATFORMTHEME -u QT_QPA_PLATFORM /opt/google/earth/pro/google-earth-pro %f"
+    note "If experiencing graphical corruption:
+        $ rm -r ~/.googleearth/Cache/"
 }
