@@ -1,7 +1,7 @@
 pkgbase = python-yalafi
 	pkgdesc = Yet another LaTeX filter
 	pkgver = 1.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/torik42/YaLafi
 	arch = any
 	license = GPL3

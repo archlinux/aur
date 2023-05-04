@@ -3,7 +3,7 @@
 
 pkgname=python-yalafi
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Yet another LaTeX filter"
 url="https://github.com/torik42/YaLafi"
 depends=('python' 'languagetool')
