@@ -2,8 +2,8 @@
 
 _pkgname=python-tokenizers
 pkgname="$_pkgname"
-pkgver=0.13.2
-pkgrel=3
+pkgver=0.13.3
+pkgrel=1
 pkgdesc='Fast State-of-the-Art Tokenizers optimized for Research and Production'
 arch=('i686' 'x86_64')
 url="https://github.com/huggingface/tokenizers"
