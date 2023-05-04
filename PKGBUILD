@@ -1,3 +1,4 @@
+# Maintainer: éclairevoyant
 
 pkgname=bitwarden-cli-bin
 pkgver=2023.4.0
