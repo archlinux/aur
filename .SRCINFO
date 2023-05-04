@@ -1,6 +1,6 @@
 pkgbase = r-bench
 	pkgdesc = High Precision Timing of R Expressions
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=bench
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = r-bench
 	optdepends = r-tidyr
 	optdepends = r-vctrs
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/bench_1.1.2.tar.gz
-	sha256sums = af910a768db79fe68597e6e79ff1012b810b8f88fb29c04432cded058ec2439b
+	source = https://cran.r-project.org/src/contrib/bench_1.1.3.tar.gz
+	sha256sums = bfae6320ad8c0c84fa6832519fac0e783e8d3ac5e3019ff6526f8060e8f1f317
 
 pkgname = r-bench
