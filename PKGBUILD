@@ -2,14 +2,14 @@
 
 pkgname=obs-studio-tytan652
 pkgver=29.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus V4L2 devices by paths, my bind interface PR, and sometimes backported fixes"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
 license=("GPL3")
 # To manage dependency rebuild easily, this will prevent you to rebuild OBS on non-updated system
 _mbedtlsver=2.28
-_pythonver=3.10
+_pythonver=3.11
 depends=(
   "jack" "gtk-update-icon-cache" "x264" "rnnoise" "pciutils" "qt6-svg"
   "mbedtls>=$_mbedtlsver"
@@ -79,6 +79,7 @@ source=(
   "qr::git+https://github.com/nayuki/QR-Code-generator.git"
   "bind_iface.patch" # Based on https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4219.patch
   "v4l2_by-path.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/3437.patch
+  "0001-Fix_build_with_GCC_13.patch"
 )
 sha256sums=(
   "SKIP"
@@ -87,6 +88,7 @@ sha256sums=(
   "SKIP"
   "65116d10f03d390505fdb0bbf6fe649e8649500441dde91e029f2eb79bfdc80f"
   "ee54b9c6f7e17fcc62c6afc094e65f18b2e97963c2fe92289b2b91972ac206e5"
+  "450cbf6df2b14ec8f9c43c1c7d44b06ab1b10c38eae6d1048eebffb4ca16e569"
 )
 
 if [[ $CARCH == 'x86_64' ]]; then
@@ -104,6 +106,8 @@ prepare() {
   git -c protocol.file.allow=always submodule update deps/qr
 
   cd "$srcdir/obs-studio"
+  patch -Np1 < "$srcdir/0001-Fix_build_with_GCC_13.patch"
+
   ## Add network interface binding for RTMP on Linux (https://github.com/obsproject/obs-studio/pull/4219)
   patch -Np1 < "$srcdir/bind_iface.patch"
 
