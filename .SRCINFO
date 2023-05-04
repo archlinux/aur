@@ -1,0 +1,13 @@
+pkgbase = librts-co
+	pkgdesc = Runtime support for CDK-based languages, used for the CO course of IST university
+	pkgver = 5_202103031636
+	pkgrel = 1
+	url = https://web.tecnico.ulisboa.pt/~david.matos/w/pt/index.php/Compiladores
+	arch = x86_64
+	groups = ist-co
+	license = GPL3
+	depends = yasm>=1.3.0
+	source = librts-co-5_202103031636.tar.gz::https://web.tecnico.ulisboa.pt/~david.matos/w/pt/images/b/be/Librts5-202103031636.tar.bz2
+	sha256sums = 263478b079898b101706eba1863536a918782c874f71022d8886a18b68948d73
+
+pkgname = librts-co
