@@ -22,7 +22,6 @@ pkgbase = imhex
 	depends = xdg-desktop-portal
 	depends = fmt
 	depends = yara
-	optdepends = imhex-patterns-git: ImHex base patterns
 	provides = imhex-patterns
 	conflicts = imhex-patterns-git
 	options = !lto

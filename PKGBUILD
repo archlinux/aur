@@ -13,9 +13,6 @@ depends=('glfw' 'mbedtls' 'libssh2' 'curl' 'dbus'
          'freetype2' 'file' 'hicolor-icon-theme' 'xdg-desktop-portal'
          'fmt' 'yara')
 makedepends=('git' 'cmake' 'llvm' 'nlohmann-json' 'librsvg' 'python')
-optdepends=(
-  'imhex-patterns-git: ImHex base patterns'
-)
 provides=('imhex-patterns')
 conflicts=('imhex-patterns-git')
 source=("$pkgname::git+https://github.com/WerWolv/ImHex.git#tag=v$pkgver"
