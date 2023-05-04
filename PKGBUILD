@@ -5,13 +5,13 @@ _gamever=1.18.2
 pkgname=${_pkgname}-${_gamever%.*}
 pkgver=40.2.1
 pkgrel=1
-_rev=92288ee5
+_rev=606f9b2c
 _mng_ver=1.0.2
 pkgdesc="Magma is the next generation of hybrid minecraft server softwares"
 arch=('any')
 url="https://magmafoundation.org/"
 license=('custom')
-depends=('java-runtime=11' 'tmux' 'sudo' 'bash' 'awk' 'sed')
+depends=('java-runtime-headless>=16' 'tmux' 'sudo' 'bash' 'awk' 'sed')
 optdepends=("tar: needed in order to create world backups"
 	"netcat: required in order to suspend an idle server")
 makedepends=("gettext")
@@ -22,7 +22,7 @@ install="${pkgname}.install"
 source=("${pkgname}-${pkgver}-${_rev}.jar"::"https://git.magmafoundation.org/api/v4/projects/5/packages/maven/org/magmafoundation/Magma/${_gamever}-${pkgver}-${_rev}/Magma-${_gamever}-${pkgver}-${_rev}-server.jar"
 	"minecraft-server-${_mng_ver}.tar.gz"::"https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v${_mng_ver}.tar.gz")
 noextract=("${pkgname}-${pkgver}-${_rev}.jar")
-sha512sums=('352be5466eeac0353256b3464c706d5c25ea564461560a1b15793513ba35361d62c2e03eccf75bdc3f60bb2547a9a9968d25b3c3a382c2a13f38ab901939273a'
+sha512sums=('4413cd884cb6a46b2b2d5a1a17f2ae04e8e70fef85aa127ff8ddba718b0107ecb19475daf326c02c693c0823990194fb962b3ec9d61ae927a70b0f603f310dd3'
             '11d708d511b63e5541bcc1dbcaf29abbf7cb9583b1d313028770a39b26b41d48dcba023f7e1d6fe30f3c093d20e10a43363011edd432e5785a4580e5c5f852a6')
 
 _game="magma-${_gamever%.*}"
@@ -37,9 +37,6 @@ prepare() {
 }
 
 build() {
-	# Detect JAVA home
-	JAVA_HOME="/usr/lib/jvm/$(archlinux-java status | tail -n +2 | cut -d ' ' -f 3 | grep '11-')"
-
 	make -C "${srcdir}/minecraft-server-${_mng_ver}" clean
 
 	make -C "${srcdir}/minecraft-server-${_mng_ver}" \
@@ -50,7 +47,7 @@ build() {
 		GAME_USER=${_user} \
 		SESSION_NAME="magma" \
 		MAIN_EXECUTABLE="${_pkgname}.jar" \
-		SERVER_START_CMD="${JAVA_HOME}/bin/java -Xms512M -Xmx1024M -jar ./${_pkgname}.jar nogui" \
+		SERVER_START_CMD="java -Xms512M -Xmx1024M -jar ./${_pkgname}.jar nogui" \
 		all
 }
 
