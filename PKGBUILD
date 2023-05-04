@@ -3,7 +3,7 @@
 
 pkgname=python-pyntcloud
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for working with 3D point clouds"
 arch=("any")
 license=("MIT")
