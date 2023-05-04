@@ -1,0 +1,19 @@
+pkgbase = kmsvnc-git
+	pkgdesc = A VNC server for DRM/KMS capable GNU/Linux devices
+	pkgver = 0.0.4.0.ga7de7db
+	pkgrel = 1
+	url = https://github.com/isjerryxiao/kmsvnc
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = libvncserver
+	depends = libxkbcommon
+	depends = libdrm
+	depends = libva
+	provides = kmsvnc
+	conflicts = kmsvnc
+	source = kmsvnc::git+https://github.com/isjerryxiao/kmsvnc.git#branch=master
+	sha256sums = SKIP
+
+pkgname = kmsvnc-git
