@@ -1,0 +1,12 @@
+pkgbase = python-literate-dataclasses
+	pkgdesc = A simple dataclasses wrapper for easier documentation of dataclasses
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/stes/literate-dataclasses
+	arch = any
+	license = MIT
+	makedepends = python-pytest
+	source = https://files.pythonhosted.org/packages/55/6e/4dec6ba9484821799bab1b529e37cdae6d05dd2caf8ab61746a5e4bca4fa/literate_dataclasses-0.0.6.tar.gz
+	md5sums = 53bbc23a70350ce020a08e1719970f2e
+
+pkgname = python-literate-dataclasses
