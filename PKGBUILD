@@ -1,7 +1,7 @@
 # Maintainer: KirottuM <arnovaara@gmail.com>
 _pkgname="watershot"
 pkgname="${_pkgname}-git"
-pkgver=r14.cc79b48
+pkgver=r18.f31e40f
 pkgrel=1
 pkgdesc="A simple wayland native screenshot tool."
 arch=("x86_64")
@@ -9,6 +9,8 @@ url="github.com/Kirottu/watershot"
 license=('GPL3')
 depends=(grim)
 makedepends=(git cargo)
+provides=(${_pkgname})
+conflicts=(${_pkgname})
 source=("${_pkgname}::git+https://$url.git")
 sha256sums=('SKIP')
 pkgver() {
