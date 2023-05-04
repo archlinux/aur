@@ -3,7 +3,7 @@
 pkgname=python-databricks-cli
 _pkgname=databricks-cli
 pkgver=0.17.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Command Line Interface for Databricks'
 arch=('any')
 url='https://github.com/databricks/databricks-cli'

@@ -1,7 +1,7 @@
 pkgbase = python-databricks-cli
 	pkgdesc = Command Line Interface for Databricks
 	pkgver = 0.17.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/databricks/databricks-cli
 	arch = any
 	license = Apache
