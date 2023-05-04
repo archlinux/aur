@@ -683,7 +683,7 @@ index ec54fed81d..dd58bbcf85 100644
  	const char *role = wlr_surface->role ? wlr_surface->role->name : NULL;
  	sway_log(SWAY_DEBUG, "Surface of unknown type (role %s): %p",
 
-From 8812280c550a068b1cca320857fe3b4c2cfbf6db Mon Sep 17 00:00:00 2001
+From efdaf94ae8f40c7f5eff3584d52d7724d0f2a96a Mon Sep 17 00:00:00 2001
 From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
 Date: Wed, 3 May 2023 16:45:09 +0800
 Subject: [PATCH 2/2] feat: damage text_input popup before commit
@@ -691,48 +691,26 @@ Subject: [PATCH 2/2] feat: damage text_input popup before commit
 when move xdg, the text_input popup is updated, but itself is not
 damaged yet, so before commit, damage it
 ---
- include/sway/input/text_input.h | 2 ++
- sway/desktop/output.c           | 3 +++
- sway/input/text_input.c         | 4 ++++
- 3 files changed, 9 insertions(+)
+ sway/input/text_input.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/include/sway/input/text_input.h b/include/sway/input/text_input.h
-index 4320b8a595..2dbd5920e9 100644
---- a/include/sway/input/text_input.h
-+++ b/include/sway/input/text_input.h
-@@ -87,4 +87,6 @@ struct sway_text_input *sway_text_input_create(
- bool sway_input_popup_get_position(
-         struct sway_input_popup *popup, int *lx, int *ly);
- 
-+void sway_input_popup_damage(struct sway_input_popup *popup);
-+
- #endif
-diff --git a/sway/desktop/output.c b/sway/desktop/output.c
-index 5df4ba8f78..b41e08b4e2 100644
---- a/sway/desktop/output.c
-+++ b/sway/desktop/output.c
-@@ -271,6 +271,9 @@ void output_input_popups_for_each_surface(struct sway_output *output,
- 			continue;
- 		}
- 
-+		// damage it before commit
-+		sway_input_popup_damage(popup);
-+
- 		double ox = lx - output->lx;
- 		double oy = ly - output->ly;
- 
 diff --git a/sway/input/text_input.c b/sway/input/text_input.c
-index 2195c4307b..2673c77c75 100644
+index 2195c4307b..f22be95de7 100644
 --- a/sway/input/text_input.c
 +++ b/sway/input/text_input.c
-@@ -67,6 +67,10 @@ static void input_popup_damage(struct sway_input_popup *popup) {
- 		view->container->surface_y - view->geometry.y + popup->y, true);
- }
+@@ -320,6 +320,7 @@ bool sway_input_popup_get_position(
+ 			layer_from_wlr_layer_surface_v1(layer_surface);
+ 		*lx = layer->geo.x + popup->x;
+ 		*ly = layer->geo.y + popup->y;
++		input_popup_damage(popup);
+ 		return true;
+ 	}
  
-+void sway_input_popup_damage(struct sway_input_popup *popup) {
+@@ -332,6 +333,7 @@ bool sway_input_popup_get_position(
+ 	}
+ 	*lx = view->container->surface_x - view->geometry.x + popup->x;
+ 	*ly = view->container->surface_y - view->geometry.y + popup->y;
 +	input_popup_damage(popup);
-+}
-+
- static void input_popup_update(struct sway_input_popup *popup) {
- 	input_popup_damage(popup);
+ 	return true;
+ }
  
