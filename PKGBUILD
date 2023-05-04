@@ -1,8 +1,8 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-panel')
-pkgver=0.8.8
+pkgver=0.9.0
 pkgrel=1
-pkgdesc="GTK3-based panel for sway Wayland compositor"
+pkgdesc="GTK3-based panel for sway and Hyprland Wayland compositors"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/nwg-panel"
 license=('MIT')
@@ -15,7 +15,7 @@ optdepends=('wlr-randr: for non-sway Wayland WMs support'
             'ddcutil: for external displays brightness control')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/nwg-panel/archive/v"$pkgver".tar.gz")
 
-md5sums=('c32b0b17a1a9468d77d23ec3ab37af8f')
+md5sums=('bfc809c3add030ffb2ef76fa7fa9fead')
 
 package() {
   cd "${pkgname}-${pkgver}"
