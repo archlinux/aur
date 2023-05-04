@@ -4,7 +4,7 @@
 pkgname=python-fontmake
 _pyname=${pkgname#python-}
 pkgver=3.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Compile fonts from sources (UFO, Glyphs) to binary (OpenType, TrueType)'
 arch=(any)
 url="https://github.com/googlefonts/$_pyname"
@@ -26,9 +26,8 @@ checkdepends=(python-compreffor
               python-mutatormath
               python-pytest
               python-skia-pathops)
-makedepends=(python-{build,installer}
-             python-setuptools-scm
-             python-wheel)
+makedepends=(python-{build,installer,wheel}
+             python-setuptools-scm)
 optdepends=(python-mutatormath
             python-skia-pathops)
 _archive="$_pyname-$pkgver"
@@ -42,7 +41,8 @@ build() {
 
 check() {
 	cd "$_archive"
-	PYTHONPATH=Lib pytest tests
+	export PYTHONPATH="$PWD/build/lib"
+	pytest tests
 }
 
 package() {
