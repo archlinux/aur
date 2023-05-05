@@ -40,8 +40,8 @@ makedepends=(python-build python-installer python-wheel python-hatchling python-
 
 build() {
     cd gradio-$pkgver
-    sed -i "s/frozen/no-frozen/g" ./scripts/build_frontend.sh
-    sh ./scripts/build_frontend.sh
+    pnpm i --no-frozen-lockfile
+    pnpm build
     python -m build --wheel --no-isolation
 }
 
