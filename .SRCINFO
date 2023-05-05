@@ -1,7 +1,7 @@
 pkgbase = gnupg24
 	pkgdesc = Complete and free implementation of the OpenPGP standard
 	pkgver = 2.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnupg.org/
 	install = gnupg24.install
 	arch = x86_64
