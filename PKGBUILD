@@ -1,6 +1,6 @@
 # Maintainer: Dave Shoreman <aur+nextshot at dsdev dot io>
 pkgname=nextshot
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="A simple screenshot tool that uploads to Nextcloud and works with Sway and X11"
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
 )
 install=nextshot.install
 source=(https://github.com/dshoreman/nextshot/archive/v${pkgver}.tar.gz)
-sha256sums=('5383ce4f6936779a82e67d3ed74630e6c91710b53732dc700b4daacc647317fe')
+sha256sums=('0c41d9ca6dcc4829501b017801848852f2522d74d92ae243a4e56e38e0f92738')
 
 package() {
     cd "$pkgname-$pkgver"
