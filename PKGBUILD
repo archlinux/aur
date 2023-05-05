@@ -20,7 +20,7 @@ sha512sums=('SKIP')
 
 pkgver() {
 	cd libusbmuxd
-	git describe --long --tags | sed 's/^v//;s/[^-]*-g/r&/;s/-/./g'
+	git describe --long --tags | sed 's/[^-]*-g/r&/;s/-/./g'
 }
 
 prepare() {
