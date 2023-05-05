@@ -13,6 +13,8 @@ pkgbase = go-musicfox
 	conflicts = go-musicfox-bin
 	conflicts = musicfox
 	source = go-musicfox-4.0.5.tar.gz::https://github.com/anhoder/go-musicfox/archive/v4.0.5/v4.0.5.tar.gz
+	source = lastfm_auth
 	sha256sums = 3a7e9860340d6027443404fda5df725e06d5276cbfc9c53ecbf03d244e4762a9
+	sha256sums = 1798a98fc0b986c690f0dc93b4f475b03f18cc72abf2825cbffcaa78cd869df2
 
 pkgname = go-musicfox

@@ -1,0 +1,4 @@
+key	:	<Your LastFM API key>
+secret	:	<Your LastFM API secret>
+# This is only a template. Replace with your own key
+# and secret, and copy to $HOME/.go-musicfox directory.
