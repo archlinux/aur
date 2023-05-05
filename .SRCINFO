@@ -7,6 +7,6 @@ pkgbase = blurhash-cli
 	license = MIT
 	makedepends = go
 	source = https://github.com/alersrt/go-blurhash-cli/archive/refs/tags/blurhash-cli-v1.0.1.tar.gz
-	sha256sums = SKIP
+	sha256sums = 964c1f7b516cc0f59ccd900ab6c7745e112a4404ba616d4716a69637c3770623
 
 pkgname = blurhash-cli
