@@ -3,7 +3,7 @@
 _pkgname=csv-diff
 pkgname=python-${_pkgname}
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Tool for viewing the difference between two CSV, TSV or JSON files.'
 arch=('any')
 url=''https://pypi.org/project/csv-diff/
