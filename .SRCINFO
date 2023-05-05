@@ -1,6 +1,6 @@
 pkgbase = nftables-git
 	pkgdesc = Netfilter tables userspace tools
-	pkgver = 1.0.4.r39.g46980cdd
+	pkgver = 1.0.7.r45.g0583bac2
 	pkgrel = 1
 	epoch = 1
 	url = https://netfilter.org/projects/nftables/
@@ -9,7 +9,7 @@ pkgbase = nftables-git
 	license = GPL2
 	makedepends = asciidoc
 	makedepends = git
-	makedepends = python
+	makedepends = python-setuptools
 	depends = libmnl
 	depends = libnftnl
 	depends = gmp
