@@ -1,16 +1,16 @@
 pkgbase = python-plyfile
 	pkgdesc = Read and write ASCII and binary PLY files
-	pkgver = 0.8.1
+	pkgver = 0.9
 	pkgrel = 1
 	url = https://github.com/dranjan/python-plyfile
 	arch = any
 	license = GPL3
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-pdm
+	makedepends = python-pdm-pep517
 	makedepends = python-wheel
 	depends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/p/plyfile/plyfile-0.8.1.tar.gz
-	sha256sums = bc61bcb27f37eae77ca6ddb3347a9590271ffcd1c8d5b4d34da95fd58cfcc770
+	source = https://files.pythonhosted.org/packages/source/p/plyfile/plyfile-0.9.tar.gz
+	sha256sums = 42b24775c61fb294f9cc93b8fb1987dd03cdb65a041b41549289b7a8005417a4
 
 pkgname = python-plyfile
