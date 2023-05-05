@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=Lahman
-_cranver=10.0-1
+_cranver=11.0-0
 pkgname=r-${_cranname,,}
 pkgdesc="Sean ‘Lahman’ Baseball Database"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -31,7 +31,7 @@ checkdepends=(
 )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("b2e8d887f828705e421938694ec77792eae9f8d5c612723feb2602e637a9a905eee8f86d6e74bef07cea5b6680169e1b72af3516b27914f90e4e88bb0563dcb5")
+b2sums=("68d9250bf8f7c9d422e927cd5c798c739b6e297a6a3c90a443e3d03462fb7dd34019e1d6b6780666c4256c30bd4109c0aa5ee28cf44826e6c19ae5e4630e2c3c")
 
 build() {
     mkdir -p "${srcdir}/build/"
