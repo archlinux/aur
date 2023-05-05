@@ -1,9 +1,9 @@
 [Desktop Entry]
 Name=App Outlet
-Exec="/opt/app-outlet/app-outlet.AppImage" %U
+Exec="/opt/app-outlet" %U
 Terminal=false
 Type=Application
 Icon=app-outlet
 StartupWMClass=App Outlet
-Comment=A Universal linux app store 
+Comment=A universal Linux app store
 Categories=Utility;
