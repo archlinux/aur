@@ -3,34 +3,42 @@
 
 pkgname=ifuse-git
 epoch=2
-pkgver=1.1.4.r1.g38c9f45
-pkgrel=1
+pkgver=1.1.4.r5.g814a0e3
+pkgrel=2
 pkgdesc='A fuse filesystem to access the contents of an iPhone or iPod Touch'
 url='http://libimobiledevice.org/'
 arch=('i686' 'x86_64')
 license=('LGPL2.1')
 depends=('libimobiledevice-git' 'libplist-git' 'fuse')
 makedepends=('git')
-provides=('ifuse')
+provides=("ifuse=$pkgver")
 conflicts=('ifuse')
 source=("git+https://github.com/libimobiledevice/ifuse")
 md5sums=('SKIP')
 
 pkgver() {
 	cd ifuse
+	git describe --long --tags | sed 's/[^-]*-g/r&/;s/-/./g'
+}
 
-	git describe --long --tags | sed 's/-/.r/;s/-/./'
+prepare() {
+	cd ifuse
+	NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
 	cd ifuse
-
-	./autogen.sh --prefix=/usr
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+	#sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool # not needed anymore (libtool honors $LDFLAGS now)
 	make
+}
+
+check() {
+	cd ifuse
+	make check
 }
 
 package() {
 	cd ifuse
-
 	make DESTDIR="${pkgdir}" install
 }
