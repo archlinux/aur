@@ -1,7 +1,7 @@
 pkgbase = python-inscriptis
 	pkgdesc = HTML to text conversion library
 	pkgver = 2.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/weblyzard/inscriptis
 	arch = any
 	license = Apache
