@@ -3,7 +3,7 @@
 # Contributor: J0k3r <moebius282 at gmail dot com>
 
 pkgname=netradiant-git
-pkgver=r2536.fa4a5cca
+pkgver=r2538.9404124f
 pkgrel=1
 epoch=1
 pkgdesc='The open source, cross platform level editor for idtech games (GtkRadiant fork)'
@@ -14,10 +14,8 @@ depends=('gtk2' 'gtkglext' 'minizip' 'libjpeg-turbo' 'libwebp')
 makedepends=('git' 'svn' 'wget' 'unzip' 'cmake' 'make')
 provides=('netradiant' 'q3map2' 'q3data' 'q2map' 'qdata3' 'h2data')
 conflicts=('netradiant-custom')
-source=("${pkgname}::git+https://gitlab.com/xonotic/netradiant.git"
-        "build_with_gcc13.diff")
-sha256sums=('SKIP'
-            'cc0b3a6e3a8064c4eb1b9153748869c5177d427c0f9a6d5044c9e9e197a7a71f')
+source=("${pkgname}::git+https://gitlab.com/xonotic/netradiant.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}/"
@@ -25,9 +23,6 @@ pkgver() {
 }
 
 prepare() {
-    # Fix compilation with gcc 13
-    patch -d ${srcdir}/${pkgname} -p1 < build_with_gcc13.diff
-
     cd "${srcdir}/${pkgname}"
     # Fetch the Crunch submodule
     git submodule update --init --recursive
