@@ -1,6 +1,6 @@
 pkgbase = qnearbyshare-git
 	pkgdesc = Nearby Share implementation for Linux
-	pkgver = r16.205b3ec
+	pkgver = r36.b17c72d
 	pkgrel = 1
 	url = https://github.com/vicr123/QNearbyShare
 	arch = x86_64

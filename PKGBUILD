@@ -1,7 +1,7 @@
 # Maintainer: SnipeX (SnipeX_ / Andrej Halveland) <andrej.halv@gmail.com>
 
 pkgname=qnearbyshare-git
-pkgver=r16.205b3ec
+pkgver=r36.b17c72d
 pkgrel=1
 pkgdesc='Nearby Share implementation for Linux'
 arch=(x86_64)
@@ -26,12 +26,11 @@ prepare() {
 }
 
 build() {
-  cmake -B build -S ${pkgname%-git}
+  cmake -B build -S ${pkgname%-git} \
+    -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build
 }
 
 package() {
-  install -Dm755 "build/qnearbyshared/qnearbyshared" -t "${pkgdir}/usr/bin"
-  install -Dm755 "build/qnearbyshare-receive/qnearbyshare-receive" -t "${pkgdir}/usr/bin"
-  install -Dm644 "${pkgname%-git}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  DESTDIR="$pkgdir" cmake --install build
 }
