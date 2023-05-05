@@ -3,7 +3,7 @@
 pkgname=python3-django-tagging
 _pkgname=django-tagging
 pkgver=0.5.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A generic tagging application for Django projects in python3"
 arch=('any')
 url='https://pypi.python.org/pypi/django-tagging'
@@ -21,6 +21,6 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  /usr/bin/python3 -m installer --destdir="$pkgdir" dist/*.whl
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -D -m644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
