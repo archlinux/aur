@@ -3,15 +3,15 @@
 pkgname=blahaj-git
 _pkgname="${pkgname%-git}"
 pkgver=2.0.1.r16.8a35b5c
-pkgrel=1
+pkgrel=2
 pkgdesc="Gay sharks at your local terminal - lolcat-like CLI tool (git version)"
 arch=('x86_64')
 url="https://blahaj.queer.software"
 license=('BSD')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=('crystal' 'shards')
-makedepends=('git')
+depends=('crystal' 'libyaml')
+makedepends=('git' 'shards')
 source=("${_pkgname}::git+https://github.com/GeopJr/BLAHAJ.git")
 sha256sums=('SKIP')
 
@@ -22,12 +22,12 @@ pkgver() {
 
 build () {
 	cd "${_pkgname}"
-	make build_mt 
+	CRYSTAL_CACHE_DIR=crystal make build_mt
 }
 
 check () {
 	cd "${_pkgname}"
-	make test_mt 
+	CRYSTAL_CACHE_DIR=crystal make test_mt
 }
 
 package() {
