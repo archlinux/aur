@@ -25,6 +25,11 @@ build() {
     python setup.py build
 }
 
+check() {
+    cd "$srcdir/$_pkgname-$pkgver"
+    PYTHONPATH=build/lib pytest tests
+}
+
 package() {
     cd "$srcdir/$_pkgname-$pkgver"
     python setup.py install --optimize=1 --prefix=/usr --root="$pkgdir" --skip-build
