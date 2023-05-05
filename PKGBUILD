@@ -1,9 +1,9 @@
-# Maintainer : bipin kumar <bipin@ccmb.res.in>
+# Maintainer : bipin kumar <kbipinkumar@pm.me>
 
 pkgname=python-scikit-learn-extra
 _module=${pkgname#python-}
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python module for machine learning that extends scikit-learn'
 arch=('x86_64')
 url="https://github.com/scikit-learn-contrib/scikit-learn-extra"
@@ -20,6 +20,7 @@ makedepends=(
             'python-wheel'
             'python-setuptools-scm'
             'python-oldest-supported-numpy'
+            'cython'
             )
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")

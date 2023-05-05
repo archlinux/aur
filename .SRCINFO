@@ -1,7 +1,7 @@
 pkgbase = python-scikit-learn-extra
 	pkgdesc = Python module for machine learning that extends scikit-learn
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scikit-learn-contrib/scikit-learn-extra
 	arch = x86_64
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = python-scikit-learn-extra
 	makedepends = python-wheel
 	makedepends = python-setuptools-scm
 	makedepends = python-oldest-supported-numpy
+	makedepends = cython
 	depends = python
 	depends = python-scikit-learn
 	depends = python-matplotlib
