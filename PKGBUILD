@@ -2,7 +2,7 @@
 
 pkgname=klog-bin
 pkgver=2.3
-pkgrel=2
+pkgrel=1
 pkgdesc="A multiplatform free hamradio logger"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.klog.xyz"
