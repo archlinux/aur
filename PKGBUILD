@@ -3,7 +3,7 @@
 
 pkgname=bottles
 pkgver=51.6
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc='Easily manage wine and proton prefix'
 arch=('x86_64')
@@ -25,25 +25,24 @@ depends=(
   'p7zip'
   'patool'
   'python'
+  'python-charset-normalizer'
   'python-gobject'
   'python-markdown'
   'python-orjson'
   'python-pathvalidate'
-  'python-pillow'
   'python-pycurl'
   'python-requests'
   'python-steamgriddb'
   'python-yaml'
   'webkit2gtk'
-  'xorg-xdpyinfo'
-  'vkbasalt-cli')
+  'wine'
+  'xorg-xdpyinfo')
 optdepends=(
   'gamemode'
   'gvfs' 
   'lib32-vkd3d' 
   'lib32-vulkan-icd-loader' 
-  'vkd3d' 
-  'wine'
+  'vkd3d'
   'vulkan-icd-loader')
 makedepends=('meson' 'ninja' 'blueprint-compiler')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bottlesdevs/Bottles/archive/refs/tags/${pkgver}.tar.gz")
