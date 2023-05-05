@@ -4,7 +4,7 @@
 pkgname=gnome-shell-extension-blur-my-shell
 _pkgname=blur-my-shell
 pkgver=46
-pkgrel=1
+pkgrel=2
 pkgdesc="Extension that adds a blur look to different parts of the GNOME Shell"
 arch=('any')
 url="https://github.com/aunetx/blur-my-shell"
@@ -30,5 +30,9 @@ package() {
     "$pkgdir/usr/share/glib-2.0/schemas/"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 
-  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/schemas/"
+  install -d "$pkgdir/usr/share/locale"
+  cp -r "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/locale/"* \
+    "$pkgdir/usr/share/locale/"
+
+  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/"{locale,schemas}
 }
