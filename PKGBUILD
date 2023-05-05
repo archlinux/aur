@@ -9,7 +9,7 @@ license=('Apache')
 depends=('python-pytz' 'python-six' 'python-flask' 'python-structlog'
          'python-yaml' 'python-tzlocal' 'python-cairocffi' 'python-pyparsing'
          'python-django' 'python3-django-tagging')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-pip')
 optdepends=('python-flask-cache: For caching'
             'python-raven: For sentry support')
 arch=('any')
@@ -71,7 +71,7 @@ package() {
 	pip install --no-deps --root="$pkgdir" dist/*.whl
 
 	#Fix dir structure
-        mkdir -p $pkgdir/opt/graphite/
+	mkdir -p $pkgdir/opt/graphite/
 	mv $pkgdir/usr/* $pkgdir/opt/graphite/
 	mkdir -p $pkgdir/opt/graphite/webapp/graphite/
 	mv $pkgdir/opt/graphite/lib/python3.11/site-packages/graphite/* $pkgdir/opt/graphite/webapp/graphite/

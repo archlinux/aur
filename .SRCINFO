@@ -6,6 +6,7 @@ pkgbase = graphite-web
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
+	makedepends = python-pip
 	depends = python-pytz
 	depends = python-six
 	depends = python-flask
