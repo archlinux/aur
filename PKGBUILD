@@ -2,23 +2,23 @@
 
 _pkgname=edge-tts
 pkgname=python-${_pkgname}
-pkgver=6.1.3
+pkgver=6.1.5
 pkgrel=1
 pkgdesc="Use Microsoft Edge's online text-to-speech service from within your Python code or using the provided edge-tts or edge-playback command"
 arch=(any)
 url=https://github.com/rany2/edge-tts
 license=(GPL3)
-depends=(python python-aiohttp python-yarl python-frozenlist python-async-timeout python-multidict python-charset-normalizer python-aiosignal python-attrs python-idna)
+depends=(python python-aiohttp python-yarl python-frozenlist python-async-timeout python-multidict python-charset-normalizer python-aiosignal python-attrs python-idna python-build)
 makedepends=(
   git
   python-setuptools
 )
 optdepends=(
-	'mpv: immediate tts playback with provided edge-playback tool'
+	'mpv: immediate tts playback with the provided edge-playback command'
 )
 
-source=(https://files.pythonhosted.org/packages/84/2c/5a6f5d2a5f2cd393533eeab239177c1ce4f5c05b36de4048e2281e3d1c57/edge-tts-${pkgver}.tar.gz)
-sha256sums=('4eb0e782626d06211256c726e42e4e42c3315c0f4fee2fc2394763b1aa8a80e7')
+source=(https://files.pythonhosted.org/packages/57/9b/c210806c9179e366254840014cd339e8f84453d7d562c9c9299635ecd043/edge-tts-${pkgver}.tar.gz)
+sha256sums=('20b2a561989203bc7dbc63434da4b2078453e7d8cb068e51c39b446de22431c0')
 
 pkgver() {
   cd edge-tts-${pkgver}
@@ -27,11 +27,11 @@ pkgver() {
 
 build() {
   cd edge-tts-${pkgver}
-  python setup.py build
+  python -m build
 }
 
 package() {
   cd edge-tts-${pkgver}
-  python setup.py install --root=$pkgdir --optimize=1 --skip-build
+  python -m pip install --root=$pkgdir
   install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/edge-tts/
 }
