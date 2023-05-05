@@ -1,7 +1,7 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
 pkgver=5.1.395
-pkgrel=1
+pkgrel=2
 pkgdesc="Cellframe blockchain node with a powerful SDK"
 arch=('x86_64' 'aarch64')
 url="https://cellframe.net"
@@ -37,7 +37,7 @@ install=$pkgname.install
 backup=('opt/cellframe-node/etc/cellframe-node.cfg')
 
 prepare() {
-	cd "$srcdir"
+	sed -i 's|SUPPORT_PYTHON_PLUGINS ON|SUPPORT_PYTHON_PLUGINS OFF|' "$srcdir/$pkgname/CMakeLists.txt"
 	rm -rf "$srcdir/$pkgname/cellframe-sdk"
 	rm -rf "$srcdir/$pkgname/python-cellframe"
 	ln -sf "$srcdir/cellframe-sdk" "$srcdir/$pkgname/cellframe-sdk"
@@ -49,6 +49,7 @@ build() {
 	cmake -B build \
 		-DCMAKE_BUILD_TYPE='Release' \
 		-DCREATE_DEFAULT_CONFIG=OFF \
+		-DSUPPORT_PYTHON_PLUGINS=OFF \
         -Wno-dev
 	cmake --build build -j$(nproc)
 }
