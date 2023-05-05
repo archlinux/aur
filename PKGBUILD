@@ -27,6 +27,10 @@ pkgver() {
       | sed "s/\([^-]*-g\)/r\1/;s/-/./g")
 }
 
+prepare() {
+  git -C "${pkgname}" clean --force -xd
+}
+
 build() {
   cd "${pkgname}"
 
