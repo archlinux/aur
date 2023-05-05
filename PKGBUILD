@@ -6,8 +6,8 @@
 # So this generates a combined package.
 #
 pkgname='dbt-core'
-pkgver=1.4.5
-pkgrel=8
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="Tool for data analysts to build analytics the way engineers build applications"
 arch=('any')
 url="https://getdbt.com/"
@@ -23,25 +23,16 @@ depends=(
 )
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/dbt-labs/$pkgname/archive/v$pkgver.tar.gz"
-    "pathspec.patch"
     "mashumaro.patch"
-    "hologram.patch"
-    "betterproto.patch"
     "agate.patch"
     )
-md5sums=('d48661b0bc490829192af3dbac8d40c0'
-         '8da5228598d2427e4430d70929415bdf'
-         '2fc3a072a73cc43cd506b845d326fff4'
-         '2bf8a03955617501a40aaa668b85be85'
-         'e1d1168e702f0538283e43c1f1328dd2'
-         '6dafb0c15f871270d1a617aee8b82f05')
+sha256sums=('ebeb6603f56d8cdb1b355ce036d9ad18073130ef2be2c7cb318b5dd6a476ef3a'
+            '37763387026bafddbdfa3a5c06bcc9ab56af897547012a833b9f8c8f5758ed1c'
+            'efcc5228544d032f0d1a0351a7b528f2e722d17fe3c363df301292a60b84b2f1')
 
 prepare() {
     cd $pkgname-$pkgver
-    patch --forward --strip=1 --input="${srcdir}/pathspec.patch"
     patch --forward --strip=1 --input="${srcdir}/mashumaro.patch"
-    patch --forward --strip=1 --input="${srcdir}/hologram.patch"
-    patch --forward --strip=1 --input="${srcdir}/betterproto.patch"
     patch --forward --strip=1 --input="${srcdir}/agate.patch"
 }
 
