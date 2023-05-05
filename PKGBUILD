@@ -10,7 +10,7 @@ _mpfr_pkgver="3.1.4"
 _pkgname="gcc"
 pkgname="ps3-${_target_alias}-${_pkgname}"
 pkgver="9.5.0"
-pkgrel=3
+pkgrel=4
 pkgdesc="GCC for cross-compiling to ${_target_alias} (PS3 GameOS)"
 arch=(x86_64 aarch64 powerpc64le powerpc64 powerpc riscv64)
 url='https://gcc.gnu.org/'
@@ -62,6 +62,9 @@ prepare() {
 
 build() {
 	cd "${_pkgname}-${pkgver}"
+
+	# symlinked in prepare(), just unpack
+	./contrib/download_prerequisites
 
 	mkdir -p "build-${_target_alias}"
 	cd "build-${_target_alias}"
