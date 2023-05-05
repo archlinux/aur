@@ -1,0 +1,22 @@
+{
+    "relay": {
+        "server": "<my server domain>",
+        "port": 443,
+        "token": "mypassword",
+        "ip": "<my server ip>",
+        "udp_relay_mode": "native",
+        "congestion_controller": "bbr",
+        "heartbeat_interval": 10000,
+        "alpn": ["h3"],
+        "disable_sni": false,
+        "reduce_rtt": false,
+        "request_timeout": 8000,
+        "max_udp_relay_packet_size": 1500
+    },
+    "local": {
+        "port": 1080,
+        "ip": "127.0.0.1"
+    },
+    "log_level": "info"
+}
+

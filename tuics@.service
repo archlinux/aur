@@ -1,0 +1,21 @@
+[Unit]
+Description=tuic server
+Documentation=https://github.com/EAimTY/tuic/
+After=network.target network-online.target
+Requires=network-online.target
+
+[Service]
+User=tuic
+Group=tuic
+ExecStart=/usr/bin/tuic-server -c /etc/tuic/%i.json
+ExecReload=/usr/bin/tuic-server -c /etc/tuic/%i.json
+TimeoutStopSec=5s
+LimitNOFILE=1048576
+LimitNPROC=512
+PrivateTmp=true
+ProtectSystem=full
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target
+

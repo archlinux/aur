@@ -1,0 +1,15 @@
+{
+    "port": 443,
+    "token": ["myPassword1", "myPassword2"],
+    "certificate": "/etc/tuic/cer",
+    "private_key": "/etc/tuic/key",
+
+    "ip": "0.0.0.0",
+    "congestion_controller": "bbr",
+    "max_idle_time": 15000,
+    "authentication_timeout": 1000,
+    "alpn": ["h3"],
+    "max_udp_relay_packet_size": 1500,
+    "log_level": "info"
+}
+
