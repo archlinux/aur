@@ -1,9 +1,9 @@
 # Maintainer: yukichan
 
 pkgname=yuki-iptv-git
-pkgver=0.0.3
+pkgver=0.0.5
 pkgrel=1
-pkgdesc="IPTV player with EPG support"
+pkgdesc="IPTV player with EPG support (Astroncia IPTV fork)"
 arch=('any')
 url="https://github.com/yuki-iptv/yuki-iptv"
 license=('GPL3')
