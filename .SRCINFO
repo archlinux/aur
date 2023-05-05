@@ -1,0 +1,15 @@
+pkgbase = rust-analyzer-vitalyr-git
+	pkgdesc = An experimental Rust compiler front-end for IDEs
+	pkgver = 0.0.0.24987.ge461e53f0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/rust-analyzer/rust-analyzer
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	source = rust-analyzer-vitalyr-git::git+https://github.com/rust-analyzer/rust-analyzer.git
+	sha256sums = SKIP
+
+pkgname = rust-analyzer-vitalyr-git
