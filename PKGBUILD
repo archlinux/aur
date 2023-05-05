@@ -1,20 +1,22 @@
-# Maintainer: navigaid <navigaid@gmail.com>
-# Maintainer: shi liang <shiliang2008@msn.com>
+# Maintainer: soh @ AUR
+# Contributor: navigaid <navigaid@gmail.com>
+# Contributor: shi liang <shiliang2008@msn.com>
 
 pkgname=naiveproxy-git
 _pkgname=naiveproxy
-pkgver=v93.0.4577.63.2.r3.g696e87142
+pkgver=v113.0.5672.62.1.r1.g900f316fd
 pkgrel=1
-pkgdesc='Make a fortune quietly'
-arch=('x86_64' 'amd64' 'i386' 'i686' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64')
+pkgdesc='camouflage traffic with strong censorship resistence using Chromium network stack'
+arch=('x86_64')
 url='https://github.com/klzgrad/naiveproxy'
 license=('BSD')
 depends=('nspr')
-source=('git+https://github.com/klzgrad/naiveproxy.git' 'naiveproxy.service')
-makedepends=("clang" "lld" "ninja" "gn" "python2" "gcc" "llvm")
+source=('git+https://github.com/klzgrad/naiveproxy' 'naiveproxy.service')
+makedepends=()
 optdepends=("ccache: Speed up compilation")
 backup=(etc/naiveproxy/config.json)
-md5sums=('SKIP' 'SKIP')
+md5sums=('SKIP'
+         'cb40c8c7586f92892a81f698fd6140b3')
 provides=('naiveproxy')
 conflicts=('naiveproxy' 'naiveproxy-bin')
 
@@ -36,7 +38,7 @@ build(){
 }
 
 package(){
-  install -Dm 0644 -o root "naiveproxy.service" -t "${pkgdir}/usr/lib/systemd/system/"
+  install -Dm 0644 -o root "naiveproxy@.service" -t "${pkgdir}/usr/lib/systemd/system/"
   cd ${srcdir}/${_pkgname}
   install -Dm755 src/out/Release/naive ${pkgdir}/usr/bin/naiveproxy
   install -Dm644 src/config.json ${pkgdir}/etc/naiveproxy/config.json
