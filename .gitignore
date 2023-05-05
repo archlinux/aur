@@ -4,5 +4,3 @@
 !/.gitignore
 !/.SRCINFO
 !/PKGBUILD
-
-!/python311.patch

@@ -1,6 +1,6 @@
 pkgbase = cavalcade-git
 	pkgdesc = GUI wrapper for C.A.V.A. utility
-	pkgver = 0.8.r13.g5a41710
+	pkgver = 0.8.r15.gbdca381
 	pkgrel = 1
 	url = https://github.com/worron/cavalcade
 	arch = any
@@ -18,8 +18,6 @@ pkgbase = cavalcade-git
 	provides = cavalcade
 	conflicts = cavalcade
 	source = cavalcade-git::git+https://github.com/worron/cavalcade.git#branch=devel
-	source = python311.patch
 	b2sums = SKIP
-	b2sums = 81467e5db23914aa20c9a8f5cf0c0f284b46896c1958e0b27d7455f63c1b475388224fcb500b7878b4f342be63ef15b50306d6312108813bf49e08b2db1d076b
 
 pkgname = cavalcade-git
