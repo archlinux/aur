@@ -1,0 +1,14 @@
+pkgbase = fortune-mod-leftism-git
+	pkgdesc = Leftist fortune quotes
+	pkgver = r26.c1d4dda
+	pkgrel = 1
+	url = https://github.com/anakojm/leftist-quote
+	arch = any
+	groups = fortune-mods
+	license = custom:public domain
+	makedepends = git
+	depends = fortune-mod
+	source = git+https://github.com/anakojm/leftist-quote.git
+	sha256sums = SKIP
+
+pkgname = fortune-mod-leftism-git
