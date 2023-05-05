@@ -1,6 +1,6 @@
 pkgbase = python-beartype
 	pkgdesc = Unbearably fast runtime type checking in pure Python.
-	pkgver = 0.13.1
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://pypi.org/project/beartype
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-beartype
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/b/beartype/beartype-0.13.1.tar.gz
-	sha256sums = 2903947a8a1eb6030264e30108aa72cb1a805cfc9050c0f4014c4aed3a17a00b
+	source = https://files.pythonhosted.org/packages/source/b/beartype/beartype-0.14.0.tar.gz
+	sha256sums = 546e6e8dcdda1d6d9f906ea4eb1518aa01c9c5f5a440e495917b2daf53cbd598
 
 pkgname = python-beartype

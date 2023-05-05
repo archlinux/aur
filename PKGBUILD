@@ -1,7 +1,7 @@
 # Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
 pkgname=python-beartype
 _pkgname=${pkgname:7}
-pkgver=0.13.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Unbearably fast runtime type checking in pure Python."
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=(python-build python-installer python-wheel)
 depends=(python)
 source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
-sha256sums=('2903947a8a1eb6030264e30108aa72cb1a805cfc9050c0f4014c4aed3a17a00b')
+sha256sums=('546e6e8dcdda1d6d9f906ea4eb1518aa01c9c5f5a440e495917b2daf53cbd598')
 
 build() {
     cd ${srcdir}/${_pkgname}-${pkgver}
