@@ -3,46 +3,39 @@
 
 pkgname=maptool
 _pkgname=MapTool
-pkgver=1.12.2
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="An open source virtual tabletop program"
 arch=('x86_64')
 url="https://rptools.net/tools/maptool"
 license=('AGPL3')
-depends=('jre-openjdk')
-makedepends=('git' 'dpkg' 'jdk-openjdk' 'gradle7' 'xdg-utils' 'rpm-tools')
+depends=('java-runtime>=16')
+makedepends=('git' 'dpkg' 'jdk19-openjdk' 'gradle7' 'xdg-utils' 'rpm-tools')
 optdepends=()
 source=("git+https://github.com/RPTools/${pkgname}.git#tag=${pkgver}")
 sha256sums=('SKIP')
 install='maptool.install'
 
 _prefix="/opt/$pkgname"
-_java_version_required=17
+_java_home='/usr/lib/jvm/java-19-openjdk'
 
 prepare() {
 	cd "${pkgname}"
-	
-	_java_version=$(java --version | head -n 1 | sed -r 's/openjdk ([[:digit:]]+).*/\1/')
-	echo "Java version detected: $_java_version"
-	
-	if (( _java_version < _java_version_required )); then
-		>&2 echo
-		>&2 echo "MapTool require a version of java of a least $_java_version_required. See archlinux-java on how to change the default java on your system."
-		>&2 echo
-		return 1
-	fi
-	
-	sed -i -r 's|jdkHome = jdkDownload.+$|jdkHome = "/usr/lib/jvm/default"|' 'build.gradle'
+	sed -i -r "s|jdkHome = jdkDownload.+$|jdkHome = \"$_java_home\"|" 'build.gradle'
 }
 
 build() {
 	cd "${pkgname}"
-	gradle7 --parallel jpackage
+	export JAVA_HOME="$_java_home"
+	export PATH="$_java_home/bin:$PATH"
+	gradle7 -Dorg.gradle.daemon=false --parallel jpackage
 }
 
 check() {
 	cd "${pkgname}"
-	gradle7 --parallel check
+	export JAVA_HOME="$_java_home"
+	export PATH="$_java_home/bin:$PATH"
+	gradle7 -Dorg.gradle.daemon=false --parallel check
 }
 
 package() {
@@ -58,9 +51,8 @@ package() {
 	
 	install -dm755 'usr/share/applications'
 	mv "${pkgdir}/${_prefix}/lib/${pkgname}-${_pkgname}.desktop" "usr/share/applications/${pkgname}.desktop"
+	sed -i 's|Exec=/opt/maptool/bin/MapTool|Exec=/usr/bin/MapTool|' "usr/share/applications/${pkgname}.desktop"
 	
-	install -dm755 'usr/bin'
-	echo "#!/usr/bin/env sh" > "usr/bin/${pkgname}"
-	echo "${_prefix}/bin/MapTool \"\$@\"" >> "usr/bin/${pkgname}"
-	chmod 755 "usr/bin/${pkgname}"
+	mkdir -p 'usr/bin'
+	ln -s "${_prefix}/bin/MapTool" "usr/bin/MapTool"
 }
