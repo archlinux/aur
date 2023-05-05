@@ -2,7 +2,7 @@
 
 pkgname=kiri-git
 pkgver=1.2.0.r82.gdbe5c0b
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for reviewing Schematics and Layouts of Git-versioned Kicad-projects, visually"
 url="https://github.com/leoheck/kiri"
 license=("MIT")
@@ -10,7 +10,7 @@ arch=("x86_64")
 provides=("kiri")
 conflicts=("kiri")
 makedepends=("git" "python-pip")
-depends=("python" "patch" "dos2unix" "kicad" "imagemagick" "xdotool" "perl-rename")
+depends=("python" "patch" "dos2unix" "kicad" "imagemagick" "xdotool" "perl-rename" "kicad-diff-git")
 
 source=("kiri::git+https://github.com/leoheck/kiri.git" "git+https://github.com/leoheck/kicad_parser.git" "git+https://github.com/leoheck/KiCad-Diff.git" "git+https://github.com/jnavila/plotkicadsch.git" "git+https://github.com/realthunder/sexp_parser.git")
 sha256sums=("SKIP" "SKIP" "SKIP" "SKIP" "SKIP")

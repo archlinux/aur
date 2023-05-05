@@ -1,7 +1,7 @@
 pkgbase = kiri-git
 	pkgdesc = A tool for reviewing Schematics and Layouts of Git-versioned Kicad-projects, visually
 	pkgver = 1.2.0.r82.gdbe5c0b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/leoheck/kiri
 	arch = x86_64
 	license = MIT
@@ -14,6 +14,7 @@ pkgbase = kiri-git
 	depends = imagemagick
 	depends = xdotool
 	depends = perl-rename
+	depends = kicad-diff-git
 	provides = kiri
 	conflicts = kiri
 	source = kiri::git+https://github.com/leoheck/kiri.git
