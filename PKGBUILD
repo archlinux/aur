@@ -2,13 +2,15 @@
 
 pkgname=nanonng-git
 pkgver=0.17.8.r59.g300210d3
-pkgrel=2
+pkgrel=3
 pkgdesc="The NNG submodule of NanoMQ"
 arch=('any')
 url="https://github.com/nanomq/NanoNNG"
 license=('MIT')
-provides=(${pkgname%-git})
-conflicts=(${pkgname%-git})
+provides=(${pkgname%-git}
+         nng)
+conflicts=(${pkgname%-git}
+        nng)
 depends=(mbedtls)
 makedepends=(git
             cmake
