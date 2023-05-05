@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=influenceR
-_pkgver=0.1.0.1
+_pkgver=0.1.0.2
 pkgname=r-${_pkgname,,}
-pkgver=0.1.0.1
-pkgrel=4
+pkgver=0.1.0.2
+pkgrel=1
 pkgdesc='Software Tools to Quantify Structural Importance of Nodes in a Network'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('63c46f1175fced33fb1b78d4d56e37fbee09b408945b0106dac36e3344cd4766')
+sha256sums=('2b10300a822a96e3d068c56bd5754ad4c5adfed5b614ea2f4239654cb06c601f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
