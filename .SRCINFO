@@ -1,33 +1,33 @@
 pkgbase = linux-simple-bcachefs-git
 	pkgdesc = Linux
-	pkgver = 6.2.arch1.r2581
+	pkgver = 6.3.arch1.r2492
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v6.2-arch1
+	url = https://github.com/archlinux/linux/commits/v6.3-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
-	makedepends = libelf
-	makedepends = pahole
 	makedepends = cpio
+	makedepends = gettext
+	makedepends = git
+	makedepends = libelf
+	makedepends = pahole>=1:1.25
 	makedepends = perl
 	makedepends = tar
 	makedepends = xz
-	makedepends = gettext
-	makedepends = git
 	options = !strip
 	source = config
-	sha256sums = 0de84fa8598e5896b82f12d5a72fbf1cbbbf31ed1b13ee3cdc18eb8ce06ed0f9
+	b2sums = e4998c4a144843cb6072ffc706baae3cf7530fc245fbf9cc4264aad119304944bdbb5aed9e5cfcefc87ab3e694067759e400dda669d5d734c439db288ad467c1
 
 pkgname = linux-simple-bcachefs-git
 	pkgdesc = The Linux kernel and modules with bcachefs support
 	depends = coreutils
-	depends = kmod
 	depends = initramfs
+	depends = kmod
 	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
+	provides = KSMBD-MODULE
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
-	provides = KSMBD-MODULE
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 

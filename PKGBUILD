@@ -2,35 +2,48 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 # Arch Linux kernel source
-_ver=6.2.arch1
+_ver=6.3.arch1
 _srcname=archlinux-linux
 _srcurl="https://github.com/archlinux/linux.git"
 # Bcachefs kernel source
-_bcachefstag=v6.2
+_bcachefstag=v6.3
 _bcachefsname=bcachefs-linux
 _bcachefsurl="https://evilpiepirate.org/git/bcachefs.git"
 
 pkgbase=linux-simple-bcachefs-git
-pkgver=6.2.arch1.r2581
+pkgver=6.3.arch1.r2492
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${_ver%.*}-${_ver##*.}
 url="https://github.com/archlinux/linux/commits/$_srctag"
 arch=(x86_64)
 license=(GPL2)
+# Require pahole 1.25 for 6.3
 makedepends=(
-  bc libelf pahole cpio perl tar xz gettext
+  bc
+  cpio
+  gettext
   git
+  libelf
+  'pahole>=1:1.25'
+  perl
+  tar
+  xz
 )
 options=('!strip')
-source=(config         # the main kernel config file
+source=(config  # the main kernel config file
 )
-sha256sums=('0de84fa8598e5896b82f12d5a72fbf1cbbbf31ed1b13ee3cdc18eb8ce06ed0f9'
+b2sums=('e4998c4a144843cb6072ffc706baae3cf7530fc245fbf9cc4264aad119304944bdbb5aed9e5cfcefc87ab3e694067759e400dda669d5d734c439db288ad467c1'
 )
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
+
+_make() {
+  test -s version
+  make KERNELRELEASE="$(<version)" "$@"
+}
 
 prepare() {
   local bcachefspatch="${srcdir}/bcachefs.patch"
@@ -75,9 +88,10 @@ prepare() {
   cd "${srcdir}/$_srcname"
 
   echo "Setting version..."
-  scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
+  make defconfig
+  make -s kernelrelease > version
 
   local src
   for src in "${source[@]}"; do
@@ -95,19 +109,16 @@ prepare() {
 
   echo "Setting config..."
   cp ../config .config
-  # Tag testing is badly broken in 6.2
-  printf '%s\n%s\n%s\n%s\n%s\n%s\n%s\n' \
-    "CONFIG_CODE_TAG_TESTING=n" \
+  printf '%s\n%s\n%s\n%s\n%s\n%s\n' \
     "CONFIG_BCACHEFS_FS=y" \
     "CONFIG_BCACHEFS_QUOTA=y" \
     "CONFIG_BCACHEFS_POSIX_ACL=y" \
-    "CONFIG_BCACHEFS_DEBUG_TRANSACTIONS=n" \
+    "# CONFIG_BCACHEFS_DEBUG_TRANSACTIONS is not set" \
     "# CONFIG_BCACHEFS_DEBUG is not set" \
     "# CONFIG_BCACHEFS_TESTS is not set" >> .config
-  make olddefconfig
+  _make olddefconfig
   diff -u ../config .config || :
 
-  make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
 }
 
@@ -118,31 +129,43 @@ pkgver() {
 
 build() {
   cd $_srcname
-  make all
+  _make all
 }
 
 _package() {
   pkgdesc="The $pkgdesc kernel and modules with bcachefs support"
-  depends=(coreutils kmod initramfs)
-  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
-              'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
-  replaces=(virtualbox-guest-modules-arch wireguard-arch)
+  depends=(
+    coreutils
+    initramfs
+    kmod
+  )
+  optdepends=(
+    'wireless-regdb: to set the correct wireless channels of your country'
+    'linux-firmware: firmware images needed for some devices'
+  )
+  provides=(
+    KSMBD-MODULE
+    VIRTUALBOX-GUEST-MODULES
+    WIREGUARD-MODULE
+  )
+  replaces=(
+    virtualbox-guest-modules-arch
+    wireguard-arch
+  )
 
   cd $_srcname
-  local kernver="$(<version)"
-  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
+  local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
   echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$(_make -s image_name)" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+  _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
@@ -231,7 +254,10 @@ _package-headers() {
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-pkgname=("$pkgbase" "$pkgbase-headers")
+pkgname=(
+  "$pkgbase"
+  "$pkgbase-headers"
+)
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
