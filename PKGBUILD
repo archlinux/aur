@@ -3,7 +3,7 @@
 
 pkgname=lib32-systemd-git
 _pkgbasename=systemd
-pkgver=253.r63430.89de1d983e
+pkgver=253.r64333.d685a5f6a4
 pkgrel=1
 pkgdesc='system and service manager (32-bit git version)'
 arch=('x86_64')
@@ -15,6 +15,7 @@ makedepends=('git' 'gperf' 'intltool' 'lib32-acl' 'lib32-bzip2'
              'lib32-curl' 'lib32-dbus' 'lib32-gcc-libs' 'lib32-glib2'
              'lib32-gnutls' 'lib32-libelf' 'lib32-libidn2' 'lib32-pcre2'
              'libxslt' 'meson' 'python-jinja')
+checkdepends=('systemd-git')
 provides=('libsystemd.so' 'libudev.so')
 provides+=("lib32-systemd=$pkgver")
 conflicts=('lib32-systemd')

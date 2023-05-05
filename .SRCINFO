@@ -1,11 +1,12 @@
 pkgbase = lib32-systemd-git
 	pkgdesc = system and service manager (32-bit git version)
-	pkgver = 253.r63430.89de1d983e
+	pkgver = 253.r64333.d685a5f6a4
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
 	license = GPL2
 	license = LGPL2.1
+	checkdepends = systemd-git
 	makedepends = git
 	makedepends = gperf
 	makedepends = intltool
@@ -31,7 +32,7 @@ pkgbase = lib32-systemd-git
 	depends = systemd-libs-git
 	provides = libsystemd.so
 	provides = libudev.so
-	provides = lib32-systemd=253.r63430.89de1d983e
+	provides = lib32-systemd=253.r64333.d685a5f6a4
 	conflicts = lib32-systemd
 	options = strip
 	source = git+https://github.com/systemd/systemd
