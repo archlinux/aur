@@ -2,7 +2,7 @@
 
 pkgname=rdm-bin
 pkgver=2022.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform open source database management tool for Redis ®'
 arch=('x86_64')
 url="https://resp.app/"
@@ -22,7 +22,7 @@ source=('rdm.desktop'
         "https://github.com/pidario/rdm-build/releases/download/${pkgver}/rdm-2022.5+3147597"
         'https://raw.githubusercontent.com/uglide/RedisDesktopManager/2022/src/resources/images/resp.png')
 sha256sums=('5e96ea919336c483fba09fd40839a77f33dc98a0aa5e9de0c7570d9fd888f62e'
-            'dba2daeb763257a33a7d41035be923f718a969918c7514ced9f435743fae1883'
+            '3b65f346f71ec96787c28541d7ae99f6f36ed8b10eafe801ac91131d8817288b'
             'SKIP')
 
 package() {
