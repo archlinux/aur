@@ -1,7 +1,7 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=chwall
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A tiny wallpaper changer, written in python"
 arch=("any")
 url="https://git.umaneti.net/chwall/about/"
