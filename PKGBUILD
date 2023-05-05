@@ -7,8 +7,8 @@ pkgdesc="The Visual Studio Code Server is a service you can run on a remote deve
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://code.visualstudio.com/"
 license=('MIT')
-provides=('code-cli' 'vscode-cli' 'code-server' 'vscode-server')
-conflicts=('code-cli' 'vscode-cli' 'vscode-server')
+provides=('code' 'vscode')
+conflicts=('code' 'vscode')
 source_x86_64=(code_cli_x64_${pkgver}.tar.gz::https://update.code.visualstudio.com/${pkgver}/cli-linux-x64/stable)
 source_aarch64=(code_cli_arm64_${pkgver}.tar.gz::https://update.code.visualstudio.com/${pkgver}/cli-linux-arm64/stable)
 source_armv7h=(code_cli_armhf_${pkgver}.tar.gz::https://update.code.visualstudio.com/${pkgver}/cli-linux-armhf/stable)
@@ -18,5 +18,5 @@ sha256sums_armv7h=('f3a52d5574af67f854c4b15085a4e5cb8641323bbdead1db70740c933c33
 
 
 package() {
-  install -Dm755 code "${pkgdir}/usr/bin/code-cli"
+  install -Dm755 -t "${pkgdir}/usr/bin/" code
 }
