@@ -1,0 +1,25 @@
+pkgbase = com.jisupdfeditor.deepin
+	pkgdesc = 一款简单好用的极速PDF编辑器
+	pkgver = 3.0.0.9
+	pkgrel = 1
+	url = https://www.jisupdfeditor.com/
+	arch = x86_64
+	license = custom
+	depends = libx11
+	depends = glibc
+	depends = pango
+	depends = freetype2
+	depends = gdk-pixbuf2
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	depends = bash
+	depends = cairo
+	depends = glib2
+	depends = gtk2
+	depends = at-spi2-core
+	depends = fontconfig
+	depends = deepin-wine-plugin-virtual
+	source = https://com-store-packages.uniontech.com/appstore/pool/appstore/c/com.jisupdfeditor.deepin/com.jisupdfeditor.deepin_3.0.0.9deepin4_i386.deb
+	sha256sums = 664f218a0b5736cf78d7713a20a47376a85cdfb1e5cb4597de2a07d588ca6b7e
+
+pkgname = com.jisupdfeditor.deepin
