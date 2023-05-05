@@ -1,6 +1,6 @@
 packager='Aditya Mahajan <adityam at umich dot edu>'
 pkgname=luametatex
-pkgver=2023.03.20
+pkgver=2023.05.05
 pkgrel=1
 pkgdesc="ConTeXt LuaMetaTeX distribution"
 url="http://www.contextgarden.net"
@@ -13,7 +13,7 @@ optdepends=('ghostscript: support for PS and EPS images'
             'zint: support for barcodes'
             'curl: loading remote content')
 
-makedepends=('rsync')
+makedepends=('rsync' 'curl')
 conflicts=()
 replaces=()
 backup=()
@@ -42,19 +42,11 @@ modules=(
          "https://mirrors.ctan.org/macros/context/contrib/context-filter.zip"
          "https://mirrors.ctan.org/macros/context/contrib/context-vim.zip"
          "https://mirrors.ctan.org/macros/context/contrib/context-visualcounter.zip"
-         "http://mirrors.ctan.org/install/graphics/pgf/contrib/pgfplots.tds.zip"
-         "http://mirrors.ctan.org/install/graphics/pgf/contrib/circuitikz.tds.zip"
          )
 
-pgf_modules=(
-         "http://mirrors.ctan.org/install/graphics/pgf/base/pgf.tds.zip"
-)
-
 module_names=("${modules[@]##*/}")
-pgf_module_names=("${pgf_modules[@]##*/}")
 
 module_count=${#modules[@]}
-pgf_module_count=${#pgf_modules[@]}
 
 _dest=/opt/luametatex
 
@@ -86,9 +78,6 @@ prepare() {
   cp $srcdir/tex/texmf-${_platform}/bin/mtxrun $srcdir/bin
   cp $srcdir/tex/texmf-context/scripts/context/lua/{mtxrun.lua,mtx-install.lua} $srcdir/bin
 
-  echo "Installing $module_count + $pgf_module_count modules ..."
-  mkdir -p $srcdir/tex/texmf-modules
-
   # PKGBUILD doesn't seem to support brace expansion
   declare -i count=0
   while [ $count -lt $module_count ]
@@ -98,17 +87,10 @@ prepare() {
       count+=1
   done
 
-  mkdir -p $srcdir/tex/texmf-modules
-
-  declare -i pgf_count=0
-  while [ $pgf_count -lt $pgf_module_count ]
-  do
-      wget -O $srcdir/${pgf_module_names[$pgf_count]} ${pgf_modules[$pgf_count]}
-      unzip -o -d $srcdir/tex/texmf-modules $srcdir/${pgf_module_names[$pgf_count]} \
-            -x "**/t-*.*" 
-      pgf_count+=1
-  done
-
+OLDPATH=$PATH
+PATH=$scrdir/tex/texmf-${_platform}/bin:$PATH
+cd $srcdir/tex && texmf-${_platform}/bin/mtxrun --script texmf-context/scripts/context/lua/mtx-install-tikz.lua
+PATH=$OLDPATH
 
  # Generate a setuptex file
  mkdir -p $srcdir/tex
