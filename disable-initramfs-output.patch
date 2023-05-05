@@ -1,8 +1,8 @@
 diff --git a/Makefile b/Makefile
-index cd85880..2d012d7 100644
+index 31fb9ac..92d0d2f 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -160,11 +160,11 @@ install: bcachefs
+@@ -152,11 +152,11 @@ install: bcachefs
  	$(INSTALL) -m0755    mkfs.bcachefs    $(DESTDIR)$(ROOT_SBINDIR)
  	$(INSTALL) -m0755    mount.bcachefs   $(DESTDIR)$(ROOT_SBINDIR)
  	$(INSTALL) -m0644 -D bcachefs.8    -t $(DESTDIR)$(PREFIX)/share/man/man8/

@@ -1,21 +1,20 @@
 # Maintainer: Alexey Rychkov <dev at nightfog.net>
 
 pkgname='simple-bcachefs-tools-git'
-pkgver=r1036.46ba4fb
+pkgver=r1053.6b1f79d
 pkgrel=1
 pkgdesc="BCacheFS filesystem utilities"
 arch=('x86_64')
 url="https://evilpiepirate.org/git/bcachefs-tools"
 license=('GPL2')
-depends=('util-linux-libs' 'libaio' 'keyutils' 'libsodium' 'liburcu' 'zstd' 'libscrypt' 'rust')
-makedepends=('git' 'python-docutils')
-checkdepends=('python-pytest')
+depends=('util-linux-libs' 'libaio' 'keyutils' 'libsodium' 'liburcu' 'zstd' 'rust')
+makedepends=('git')
 provides=('bcachefs-tools')
 conflicts=('bcachefs-tools')
 source=("${pkgname}::git+https://evilpiepirate.org/git/bcachefs-tools.git"
         "disable-initramfs-output.patch")
-sha256sums=('SKIP'
-            '78c7c0d1cb5e7649a411738db270bad8a3b20820ef0cb4a8ba33596d7aeb62a0')
+b2sums=('SKIP'
+        'b53930322b26c246e94db275d5f490913f35d4f49446a7a468df6018dad65216c016ba51efbeec7cb24f8ec6001c59c707d50297979cffd131b7314a24ea2d9b')
 
 prepare() {
   cd "$pkgname"
@@ -30,12 +29,7 @@ pkgver() {
 build() {
   cd "$pkgname"
   make clean
-  make PYTEST_CMD=pytest
-}
-
-check() {
-  cd "$pkgname"
-  make check PYTEST_CMD=pytest
+  make
 }
 
 package() {
@@ -44,6 +38,5 @@ package() {
     PREFIX="/usr" \
     ROOT_SBINDIR="/usr/bin" \
     INITRAMFS_DIR="/etc/initcpio" \
-    PYTEST_CMD=pytest \
     install
 }
