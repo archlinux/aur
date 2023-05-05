@@ -3,7 +3,7 @@
 # Contributor: aericson <de.ericson at gmail dot com>
 # Contributor: Rorschach <r0rschach at lavabit dot com>
 # Contributor: Andrew Kravchuk <awkravchuk at gmail dot com>
-#
+
 pkgname="aarchup"
 pkgver=2.1.7
 pkgrel=3
