@@ -2,13 +2,13 @@
 
 pkgname=graphite-web
 pkgver=1.1.10
-pkgrel=2
+pkgrel=3
 pkgdesc="a Django-based web application that renders graphs and dashboards"
 url="https://github.com/graphite-project/graphite-web/"
 license=('Apache')
 depends=('python-pytz' 'python-six' 'python-flask' 'python-structlog'
          'python-yaml' 'python-tzlocal' 'python-cairocffi' 'python-pyparsing'
-         'python-django')
+         'python-django' 'python3-django-tagging')
 makedepends=('python-setuptools')
 optdepends=('python-flask-cache: For caching'
             'python-raven: For sentry support')
@@ -20,7 +20,10 @@ sha256sums=('SKIP'
 
 build() {
         cd "$srcdir/$pkgname-$pkgver"
-        python setup.py build
+
+	#Dirty fixing obselete references
+	find . -type f -exec sed -i 's/post-install/post_install/g' {} +
+	find . -type f -exec sed -i 's/readfp/read_file/g' {} +
 
 	#Dirty Fixing old django references
 	sed -i 's/url\b/re_path/g' webapp/graphite/urls.py
@@ -58,11 +61,21 @@ build() {
 
 	sed -i 's/django.conf.urls/django.urls/g' webapp/graphite/functions/urls.py
 	sed -i 's/url\b/re_path/g' webapp/graphite/functions/urls.py
+
+	python -m build --wheel
 }
 
 package() {
         cd "$srcdir/$pkgname-$pkgver"
-        python setup.py install --root="${pkgdir}/" --optimize=1
+
+	pip install --no-deps --root="$pkgdir" dist/*.whl
+
+	#Fix dir structure
+        mkdir -p $pkgdir/opt/graphite/
+	mv $pkgdir/usr/* $pkgdir/opt/graphite/
+	mkdir -p $pkgdir/opt/graphite/webapp/graphite/
+	mv $pkgdir/opt/graphite/lib/python3.11/site-packages/graphite/* $pkgdir/opt/graphite/webapp/graphite/
+
         mkdir -p "$pkgdir/var/lib/graphite"
         install -Dm0644 "$srcdir/graphite-web.service" "$pkgdir/usr/lib/systemd/system/graphite-web.service"
 }
