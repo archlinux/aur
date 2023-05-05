@@ -13,8 +13,8 @@ source=('git+https://gitea.elara.ws/Elara6331/itd.git')
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/itd"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/itd"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

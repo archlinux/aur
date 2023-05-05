@@ -1,6 +1,6 @@
 pkgbase = itgui-git
 	pkgdesc = GUI client for ITD
-	pkgver = r99.08113c2
+	pkgver = r260.bec703c
 	pkgrel = 1
 	arch = x86_64
 	arch = i686
