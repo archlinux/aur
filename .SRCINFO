@@ -1,12 +1,14 @@
 pkgbase = python-dbt-extractor-git
 	pkgdesc = A tool to analyze and extract information from Jinja used in dbt projects.
-	pkgver = r332.5592c5f
+	pkgver = r333.0829913
 	pkgrel = 1
 	url = https://github.com/dbt-labs/dbt-extractor
 	arch = x86_64
 	license = Apache
 	makedepends = cargo
 	makedepends = maturin
+	depends = glibc
+	depends = gcc-libs
 	source = git+https://github.com/dbt-labs/dbt-extractor.git
 	sha256sums = SKIP
 

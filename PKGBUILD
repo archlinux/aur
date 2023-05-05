@@ -1,7 +1,7 @@
 # Maintainer: Benoît Allard <benoit.allard@gmx.de>
 _gitname=dbt-extractor
 pkgname="python-${_gitname,,}-git"
-pkgver=r332.5592c5f
+pkgver=r333.0829913
 pkgrel=1
 pkgdesc="A tool to analyze and extract information from Jinja used in dbt projects."
 arch=(x86_64)
