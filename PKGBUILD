@@ -1,29 +1,35 @@
 # Maintainer: Benoît Allard <benoit.allard@gmx.de>
 pkgname=python-ale-py
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="The Arcade Learning Environment (ALE) - a platform for AI research."
 arch=('x86_64')
 url="https://github.com/mgbellemare/Arcade-Learning-Environment"
 license=('MIT')
-makedepends=("cmake" "vcpkg" "python-pytest")
+makedepends=("cmake" "vcpkg" "python-pytest" "pybind11")
+depends=("python" "python-numpy" "python-importlib_resources")
 _name="Arcade-Learning-Environment"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mgbellemare/$_name/archive/v$pkgver.tar.gz")
-md5sums=('554b8ceedb8ba06d5d0158eb2a58ce2b')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mgbellemare/$_name/archive/v$pkgver.tar.gz"
+    "8e2dfff9425387bfb670a1ed7d5214ea2f89f4c9.patch")
+sha256sums=('28960616cd89c18925ced7bbdeec01ab0b2ebd2d8ce5b7c88930e97381b4c3b5'
+            'd9b7ffac15cb6f28f42709a33351da3d4d25dfb6ef85c4366e38391e56aad779')
 
-build() {
-    cmake -B build -S "${_name}-${pkgver}" \
-        -DCMAKE_BUILD_TYPE='None' \
-        -DCMAKE_INSTALL_PREFIX='/usr' \
-        -Wno-dev
-    cmake --build build
+prepare(){
+    cd $_name-$pkgver
+    patch --forward --strip=1 --input="${srcdir}/8e2dfff9425387bfb670a1ed7d5214ea2f89f4c9.patch"
 }
 
-check() {
-    cd build
-    ctest --output-on-failure
+build() {
+    python -m pip wheel ./$_name-$pkgver --no-build-isolation
+}
+
+_check() {
+    cd $_name-$pkgver
+    python -m pytest
 }
 
 package() {
-    DESTDIR="$pkgdir" cmake --install build
+    cd $_name-$pkgver
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
+

@@ -1,0 +1,113 @@
+From 8e2dfff9425387bfb670a1ed7d5214ea2f89f4c9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Beno=C3=AEt=20Allard?= <benoit.allard@gmx.de>
+Date: Fri, 5 May 2023 19:17:26 +0200
+Subject: [PATCH] Add missing imports for cstdint
+
+---
+ src/common/ColourPalette.hpp | 1 +
+ src/common/SoundExporter.hpp | 1 +
+ src/emucore/MD5.hxx          | 1 +
+ src/emucore/Props.cxx        | 1 +
+ src/emucore/PropsSet.hxx     | 2 ++
+ src/emucore/Sound.hxx        | 2 ++
+ src/emucore/Switches.cxx     | 2 ++
+ 7 files changed, 10 insertions(+)
+
+diff --git a/src/common/ColourPalette.hpp b/src/common/ColourPalette.hpp
+index 4418ce24d..137eb5be2 100644
+--- a/src/common/ColourPalette.hpp
++++ b/src/common/ColourPalette.hpp
+@@ -20,6 +20,7 @@
+ #include <string>
+ 
+ // Include obscure header file for uint32_t definition
++#include <cstdint>
+ 
+ namespace ale {
+ 
+diff --git a/src/common/SoundExporter.hpp b/src/common/SoundExporter.hpp
+index 1215b3ddb..a11248e06 100644
+--- a/src/common/SoundExporter.hpp
++++ b/src/common/SoundExporter.hpp
+@@ -24,6 +24,7 @@
+ 
+ #include <fstream>
+ #include <vector>
++#include <cstdint>
+ 
+ 
+ namespace ale {
+diff --git a/src/emucore/MD5.hxx b/src/emucore/MD5.hxx
+index c7cd4ac92..3587708a6 100644
+--- a/src/emucore/MD5.hxx
++++ b/src/emucore/MD5.hxx
+@@ -20,6 +20,7 @@
+ #define MD5_HXX
+ 
+ #include <string>
++#include <cstdint>
+ 
+ namespace ale {
+ namespace stella {
+diff --git a/src/emucore/Props.cxx b/src/emucore/Props.cxx
+index 47e2ee630..f5922fc33 100644
+--- a/src/emucore/Props.cxx
++++ b/src/emucore/Props.cxx
+@@ -21,6 +21,7 @@
+ #include <sstream>
+ #include <string>
+ #include <iostream>
++#include <cstdint>
+ 
+ #include "emucore/Props.hxx"
+ 
+diff --git a/src/emucore/PropsSet.hxx b/src/emucore/PropsSet.hxx
+index 299436b73..c8734f345 100644
+--- a/src/emucore/PropsSet.hxx
++++ b/src/emucore/PropsSet.hxx
+@@ -19,6 +19,8 @@
+ #ifndef PROPERTIES_SET_HXX
+ #define PROPERTIES_SET_HXX
+ 
++#include <cstdint>
++
+ namespace ale {
+ namespace stella {
+ 
+diff --git a/src/emucore/Sound.hxx b/src/emucore/Sound.hxx
+index 180a74cfe..ef98fe815 100644
+--- a/src/emucore/Sound.hxx
++++ b/src/emucore/Sound.hxx
+@@ -19,6 +19,8 @@
+ #ifndef SOUND_HXX
+ #define SOUND_HXX
+ 
++#include <cstdint>
++
+ namespace ale {
+ namespace stella {
+ 
+diff --git a/src/emucore/Switches.cxx b/src/emucore/Switches.cxx
+index d80d8cebe..962cd6a4a 100644
+--- a/src/emucore/Switches.cxx
++++ b/src/emucore/Switches.cxx
+@@ -16,6 +16,8 @@
+ // $Id: Switches.cxx,v 1.7 2007/01/01 18:04:50 stephena Exp $
+ //============================================================================
+ 
++#include <cstdint>
++
+ #include "emucore/Event.hxx"
+ #include "emucore/Props.hxx"
+ #include "emucore/Switches.hxx"
+--- a/src/emucore/TIASnd.hxx.orig	2023-05-05 19:30:10.638179572 +0200
++++ b/src/emucore/TIASnd.hxx	2023-05-05 19:30:30.542442453 +0200
+@@ -19,6 +19,8 @@
+ #ifndef TIASOUND_HXX
+ #define TIASOUND_HXX
+
++#include <cstdint>
++
+ namespace ale {
+ namespace stella {
+
