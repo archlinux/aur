@@ -2,8 +2,8 @@
 
 _pkgname=perl-bareword-filehandles
 pkgname="${_pkgname}-git"
-pkgver=0.007.2+r38.20200501.g957063d
-pkgrel=3
+pkgver=0.007.4+r40.20220818.g2574acc
+pkgrel=2
 pkgdesc='disables bareword filehandles.'
 arch=(
   'arm'
@@ -37,13 +37,13 @@ options=('!emptydirs')
 source=(
   "${_pkgname}::git+https://github.com/ilmari/bareword-filehandles.git"
   'Makefile.PL.MakeMaker'
-  'Makefile.add-b-hooks-op-check-include.patch'
+  'Makefile.add-b-hooks-op-check-include.patch.in'
   'LICENSE.PerlArtistic.txt'
 )
 sha256sums=(
   'SKIP'
   'ff11afc581c683f2d904fa6fd3ab0ed4a22fed7653660b401b8ddf153fb0bd05'
-  'fa351fddc0767e003b1b02f35f14dc65480bdf6c6fddd060278c3b68db8cd461'
+  '76090772a76f11d447523b0fa12eb867fbe4044cf138aa932035d64d251911c7'
   '916a330e64df209a924120bfddea0373db385eb3854e96d1a3dda6e0ea130c80'
 )
 
@@ -51,6 +51,9 @@ prepare() {
   cd "${srcdir}/${_pkgname}"
 
   cp "${srcdir}/Makefile.PL.MakeMaker" .
+
+  _perlver="$(perl --version | grep -E 'This is perl [0-9].*\<version[[:space:]]+[0-9]+' | sed -E -e 's|^.*This is perl ([0-9]*).*\<version[[:space:]]+([0-9]+).*$|\1.\2|')"
+  sed "s|%%PERLVER%%|${_perlver}|g" "${srcdir}/Makefile.add-b-hooks-op-check-include.patch.in" > "${srcdir}/Makefile.add-b-hooks-op-check-include.patch"
 
   perl Makefile.PL # Use this to generate 'ppport.h'
   mv Makefile Makefile.dzil
