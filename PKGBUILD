@@ -2,7 +2,7 @@
 pkgname=python-onvif-zeep-git
 _gitname=python-onvif-zeep
 pkgver=r115.d549eed
-pkgrel=1
+pkgrel=2
 pkgdesc='ONVIF Client Implementation in Python '
 arch=('any')
 url="https://github.com/FalkTannhaeuser/${_gitname}"
@@ -10,7 +10,6 @@ license=('MIT')
 conflicts=('python-onvif-zeep')
 provides=('python-onvif-zeep')
 depends=('python'
-         'python-setuptools'
          'python-zeep')
 makedepends=('git' 'python-setuptools')
 source=("git+https://github.com/FalkTannhaeuser/${_gitname}")
