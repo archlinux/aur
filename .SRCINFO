@@ -1,7 +1,7 @@
 pkgbase = netscripts-atzlinux
 	pkgdesc = some simple network scripts no need any parameter
-	pkgver = 1.0.6
-	pkgrel = 1
+	pkgver = 1.0.7
+	pkgrel = 0
 	url = https://www.atzlinux.com
 	install = netscripts-atzlinux.install
 	arch = any
