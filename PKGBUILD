@@ -1,8 +1,8 @@
 # Old Maintainers: Samo Turk <samo.turk@gmail.com>, Hector Mtz-Seara <hseara # gmail.com>
 # Maintainer: Benjamin Smith <newzealandbenjy@gmail.com>
 pkgname=rdkit-inchi
-pkgver=2023_03_01
-pkgrel=2
+pkgver=2023_03_1
+pkgrel=1
 pkgdesc="A collection of cheminformatics and machine-learning software written in C++ and Python. This version includes InChI support."
 arch=("i686" "x86_64" "armv7h")
 url="http://rdkit.org/"
