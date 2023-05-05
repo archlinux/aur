@@ -1,7 +1,7 @@
 # Maintainer: Achmad Fathoni<fathoni(dot)id(at)gmail(dot)com>
 pkgname=python-ouster-sdk
 pkgver=20230403
-pkgrel=1
+pkgrel=2
 pkgdesc="Ouster Python SDK"
 arch=(any)
 url="https://github.com/ouster-lidar/ouster_example"
@@ -15,7 +15,8 @@ _dir=ouster_example-${pkgver}/python
 
 prepare() {
     cd ${srcdir}/${_dir}
-    sed -i '4s/, "cmake==3.21.1"//' pyproject.toml
+    perl -pe 's/,(?!.*,).*?(?=])// if $. == 4' -i pyproject.toml
+    perl -pe 's/(?<={).*(?=})/311/ if $. == 2' -i tox.ini
 }
 
 build() {
