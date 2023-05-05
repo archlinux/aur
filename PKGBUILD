@@ -1,7 +1,7 @@
 # Maintainer: Aleksandr <>
 pkgname=blurhash-cli
 pkgver=v1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='BlurHash CLI tool'
 arch=('x86_64')
 url="https://github.com/alersrt/go-blurhash-cli/archive/refs/tags"

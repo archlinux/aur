@@ -1,7 +1,7 @@
 pkgbase = blurhash-cli
 	pkgdesc = BlurHash CLI tool
 	pkgver = v1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alersrt/go-blurhash-cli/archive/refs/tags
 	arch = x86_64
 	license = MIT
