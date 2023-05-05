@@ -1,33 +1,47 @@
-#Arch Linux PKGBUILD
-#
-#Maintainer: Daniele Fucini <dfucini@gmail.com>
-#
+# PKGBUILD
+
+# Maintainer: Daniele Fucini <dfucini@gmail.com>
 
 pkgname=simple_backup
-pkgver=3.1.2.r0.geb8bdde
+pkgver=3.2.1.r0.g631ffa8
 pkgrel=1
 pkgdesc='Simple backup script that uses rsync to copy files'
 arch=('any')
 url="https://github.com/Fuxino/simple_backup.git"
 license=('GPL3')
-makedepends=('git')
-depends=('python3'
+makedepends=('git'
+             'python-setuptools'
+             'python-build'
+             'python-installer'
+             'python-wheel')
+depends=('python'
          'rsync'
-         'python-dotenv'
-         'python-dbus'
-         'python-systemd')
+         'python-dotenv')
+optdepends=('python-systemd: use systemd log')
 install=${pkgname}.install
 source=(git+https://github.com/Fuxino/${pkgname}.git)
 sha256sums=('SKIP')
 
 pkgver() 
 {  
-   cd "$pkgname"
+   cd ${pkgname}
    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare()
+{
+   git -C ${srcdir}/${pkgname} clean -dfx
+}
+
+build()
+{
+   cd ${srcdir}/${pkgname}
+   python -m build --wheel --no-isolation
 }
 
 package()
 {
-   install -Dm755 "${srcdir}/${pkgname}/${pkgname}.py" "${pkgdir}/usr/bin/${pkgname}"
-   install -Dm644 "${srcdir}/${pkgname}/${pkgname}.conf" "${pkgdir}/etc/${pkgname}/${pkgname}.conf"
+   cd ${srcdir}/${pkgname}
+   python -m installer --destdir=${pkgdir} dist/*.whl
+   install -Dm644 ${srcdir}/${pkgname}/${pkgname}.conf ${pkgdir}/etc/${pkgname}/${pkgname}.conf
 }
