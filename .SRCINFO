@@ -1,0 +1,18 @@
+pkgbase = yt-mpv
+	pkgdesc = A CLI YouTube client
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/a4to/yt-mpv
+	arch = any
+	license = MIT
+	depends = mpv
+	depends = nodejs
+	source = https://concise.cc/pkg/yt-mpv-0.1.0-1-any.pkg.tar.zst
+	source = https://concise.cc/pkg/yt-mpv-0.1.0-1-any.pkg.tar.zst.sig
+	validpgpkeys = 81BACEEBC3EA26E127166E4A819BB92A9A48160E
+	md5sums = f00a8696ea6543a502952da0c1c98bed
+	md5sums = 86cd3fe5561f6ee36689f79e8ec32fc8
+	sha512sums = c33de4986316a009a929fa3871d54d9018bca2219cbaafcd6f35bb35b4b09e17e786db161a4af9d4759b5169f825e4534b427f11e259d9a623270cd28c4ed2c0
+	sha512sums = c37943aa5b8feb01b28383057f06f9ae35d2cba23fefaab6d4be4b4d6a19164d7554c66eeedf6856ed40bd59ba7ba258017266d012d2a46d7b775bd9dfc4174d
+
+pkgname = yt-mpv
