@@ -1,6 +1,6 @@
 pkgbase = nanomq-git
 	pkgdesc = Nano MQTT Broker - An Ultra-light and Blazing-fast MQTT Broker for IoT Edge
-	pkgver = 0.16.5.r0.gaa188a4
+	pkgver = 0.17.8.r71.g9833011d
 	pkgrel = 1
 	url = https://github.com/nanomq/nanomq
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = nanomq-git
 	conflicts = nanomq-git
 	conflicts = nanomq
 	options = !strip
-	source = nanomq::git+https://ghproxy.com/https://github.com/nanomq/nanomq.git
+	source = nanomq::git+https://github.com/nanomq/nanomq.git
 	sha256sums = SKIP
 
 pkgname = nanomq-git
