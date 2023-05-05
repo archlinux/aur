@@ -1,13 +1,13 @@
 # Maintainer: Benoît Allard <benoit.allard@gmx.de>
 pkgname=python-ale-py
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Arcade Learning Environment (ALE) - a platform for AI research."
 arch=('x86_64')
 url="https://github.com/mgbellemare/Arcade-Learning-Environment"
 license=('MIT')
 makedepends=("cmake" "vcpkg" "python-pytest" "pybind11")
-depends=("python" "python-numpy" "python-importlib_resources")
+depends=("python" "python-numpy" "python-typing_extensions" "python-importlib_resources" "python-importlib-metadata" "python-gym")
 _name="Arcade-Learning-Environment"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mgbellemare/$_name/archive/v$pkgver.tar.gz"
     "8e2dfff9425387bfb670a1ed7d5214ea2f89f4c9.patch")
@@ -29,7 +29,6 @@ _check() {
 }
 
 package() {
-    cd $_name-$pkgver
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer --destdir="$pkgdir" ale_py-${pkgver}+*.whl
 }
 
