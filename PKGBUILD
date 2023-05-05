@@ -1,15 +1,15 @@
-# Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
+# Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 pkgname=elfx86exts
-pkgver=0.4.3
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Decode ELF and MachO binaries and print out which instruction set extensions they use"
 arch=('x86_64')
 url="https://github.com/pkgw/elfx86exts"
 license=(MIT)
-depends=('gcc-libs')
+depends=('gcc-libs' 'capstone')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz"::https://github.com/pkgw/elfx86exts/archive/elfx86exts@${pkgver}.tar.gz)
-sha512sums=('4f547b89829f65f6c9a00633f02d9b6c4c141c89b511949f9e1a29f54c2f6e0e88c81ef960cb06609700b1a78f314fc66b41a9cc9f6db8e3b871a77fa1345a03')
+sha512sums=('7caa0518fecba588ec02b053f019123a9f8aaeeed74ece8240e24679e820abb537bd29849e51ca664f7e8effc3d90ed50bae61eda51e83e10be0a988f7eb0626')
 
 build() {
   cd "$pkgname-$pkgname-$pkgver"
