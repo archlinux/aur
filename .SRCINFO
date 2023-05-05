@@ -1,6 +1,6 @@
 pkgbase = python-gradio
 	pkgdesc = Create UIs for your machine learning model in Python in 3 minutes
-	pkgver = 3.20.0
+	pkgver = 3.28.1
 	pkgrel = 1
 	url = https://github.com/gradio-app/gradio
 	arch = x86_64
@@ -39,7 +39,7 @@ pkgbase = python-gradio
 	depends = python-typing_extensions
 	depends = python-markupsafe
 	depends = python-altair
-	source = python-gradio-3.20.0::https://github.com/gradio-app/gradio/archive/refs/tags/v3.20.0.tar.gz
-	sha512sums = 4606ae0a541139d2191dd57f27111a142eafa5a5810beecb1ecf65cacbff24d681ad91e7121189af65bde13150129c71842bd949ea606f019bc17dfbfa686a97
+	source = python-gradio-3.28.1::https://github.com/gradio-app/gradio/archive/refs/tags/v3.28.1.tar.gz
+	sha512sums = ca265f7f3d83a742edc9a2728435fcfc382d54a1507a6c9ecdec30833db74c7fe44097df8aa703c7045ad1057f60dcd451ff2674d7bcf43e8c9772bd47c526c6
 
 pkgname = python-gradio
