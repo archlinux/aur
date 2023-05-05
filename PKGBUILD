@@ -26,7 +26,7 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     cd "$pkgname"
     go build -o "${pkgname%-git}" -ldflags \
-    "-linkmode=external -extldflags $LDFLAGS -X main.commit=${pkgver#*.}"
+    "-linkmode=external -extldflags $LDFLAGS -X main.Commit=${pkgver#*.}"
 }
 package(){
     depends=(ffmpeg)
