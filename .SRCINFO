@@ -1,0 +1,116 @@
+pkgbase = java19-openjdk
+	pkgver = 19.0.2.u7
+	pkgrel = 1
+	url = https://openjdk.java.net/
+	arch = x86_64
+	license = custom
+	makedepends = java-environment>=18
+	makedepends = java-environment<20
+	makedepends = cpio
+	makedepends = unzip
+	makedepends = zip
+	makedepends = libelf
+	makedepends = libcups
+	makedepends = libx11
+	makedepends = libxrender
+	makedepends = libxtst
+	makedepends = libxt
+	makedepends = libxext
+	makedepends = libxrandr
+	makedepends = alsa-lib
+	makedepends = pandoc
+	makedepends = graphviz
+	makedepends = freetype2
+	makedepends = libjpeg-turbo
+	makedepends = giflib
+	makedepends = libpng
+	makedepends = lcms2
+	makedepends = libnet
+	makedepends = bash
+	makedepends = harfbuzz
+	makedepends = gcc-libs
+	makedepends = glibc
+	options = !lto
+	source = https://github.com/openjdk/jdk19u/archive/jdk-19.0.2+7.tar.gz
+	source = java-java19-openjdk.desktop
+	source = jconsole-java19-openjdk.desktop
+	source = jshell-java19-openjdk.desktop
+	sha256sums = 5903efd527dd08e9c235c8822e3d5699c3d18a8618c3e533307e8d6491ffbbf0
+	sha256sums = 37656108f25ca6943cc89ef09677bd53be0f6aee369f9acb3151803ed2b233f5
+	sha256sums = 766f83adcd3c7ae70808f3894a1b741681b4e3edc0ff9ee2b229f59bc3fd0a9d
+	sha256sums = d4846c8de3dc9056feeb6d0c1d5fc48b639d2e4ae9b94944cb2b1376cb431be6
+
+pkgname = jre19-openjdk-headless
+	pkgdesc = OpenJDK Java 19 headless runtime environment
+	install = install_jre19-openjdk-headless.sh
+	depends = java-runtime-common>=3
+	depends = ca-certificates-utils
+	depends = nss
+	depends = libjpeg-turbo
+	depends = libjpeg.so
+	depends = lcms2
+	depends = liblcms2.so
+	depends = libnet
+	depends = freetype2
+	depends = libfreetype.so
+	depends = harfbuzz
+	depends = libharfbuzz.so
+	depends = glibc
+	depends = gcc-libs
+	optdepends = java-rhino: for some JavaScript support
+	provides = java-runtime-headless=19
+	provides = java-runtime-headless-openjdk=19
+	provides = jre19-openjdk-headless=19.0.2.u7-1
+	backup = etc/java19-openjdk/logging.properties
+	backup = etc/java19-openjdk/management/jmxremote.access
+	backup = etc/java19-openjdk/management/jmxremote.password.template
+	backup = etc/java19-openjdk/management/management.properties
+	backup = etc/java19-openjdk/net.properties
+	backup = etc/java19-openjdk/security/java.policy
+	backup = etc/java19-openjdk/security/java.security
+	backup = etc/java19-openjdk/security/policy/README.txt
+	backup = etc/java19-openjdk/security/policy/limited/default_US_export.policy
+	backup = etc/java19-openjdk/security/policy/limited/default_local.policy
+	backup = etc/java19-openjdk/security/policy/limited/exempt_local.policy
+	backup = etc/java19-openjdk/security/policy/unlimited/default_US_export.policy
+	backup = etc/java19-openjdk/security/policy/unlimited/default_local.policy
+	backup = etc/java19-openjdk/sound.properties
+
+pkgname = jre19-openjdk
+	pkgdesc = OpenJDK Java 19 full runtime environment
+	install = install_jre19-openjdk.sh
+	depends = jre19-openjdk-headless=19.0.2.u7-1
+	depends = giflib
+	depends = libgif.so
+	depends = glibc
+	depends = gcc-libs
+	depends = libpng
+	optdepends = alsa-lib: for basic sound support
+	optdepends = gtk2: for the Gtk+ 2 look and feel - desktop usage
+	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
+	provides = java-runtime=19
+	provides = java-runtime-openjdk=19
+	provides = jre19-openjdk=19.0.2.u7-1
+
+pkgname = jdk19-openjdk
+	pkgdesc = OpenJDK Java 19 development kit
+	install = install_jdk19-openjdk.sh
+	depends = jre19-openjdk=19.0.2.u7-1
+	depends = java-environment-common=3
+	depends = hicolor-icon-theme
+	depends = libelf
+	depends = glibc
+	depends = gcc-libs
+	provides = java-environment=19
+	provides = java-environment-openjdk=19
+	provides = jdk19-openjdk=19.0.2.u7-1
+
+pkgname = openjdk19-src
+	pkgdesc = OpenJDK Java 19 sources
+	depends = jdk19-openjdk=19.0.2.u7-1
+	provides = openjdk19-src=19.0.2.u7-1
+
+pkgname = openjdk19-doc
+	pkgdesc = OpenJDK Java 19 documentation
+	depends = jdk19-openjdk=19.0.2.u7-1
+	provides = openjdk19-doc=19.0.2.u7-1
