@@ -49,7 +49,7 @@ _disable_debug=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-tip-git
-pkgver=6.3.r293.gf6065e5060b9
+pkgver=6.3.r12785.gda1c4f07aa4d
 _srcname=tip
 pkgrel=1
 pkgdesc='Linux Kernel based on the tip branch'
@@ -57,7 +57,7 @@ arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 options=('!strip')
-makedepends=('bc' 'libelf' 'git' 'pahole' 'cpio' 'perl' 'tar' 'xz')
+makedepends=('bc' 'libelf' 'git' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'python')
 _lucjanver=6.3
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_lucjanver}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver}"
