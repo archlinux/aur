@@ -1,6 +1,6 @@
 pkgname=jcef-jetbrains-git
 pkgdesc="A simple framework for embedding Chromium-based browsers into Java-based applications. (Used for JetBrainsRuntime)"
-pkgver=104.4.26.api1.9.r0.d4bdd8a
+pkgver=111.2.1.api1.11.r9.1a41a4d
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/JetBrains/jcef"
@@ -20,19 +20,73 @@ pkgver() {
 }
 
 build() {
-    cd jcef
-    #sed -i "s/4.46/5.4/g" tools/buildtools/download_from_google_storage.py
-    #sed -i "s/^DownloadCEF.*$/set(CEF_ROOT \"\/opt\/cef\")/g" CMakeLists.txt
-    cd jb/tools/linux
-    JAVA_HOME=/usr/lib/jvm/$(ls /usr/lib/jvm | grep 17 | head -n 1) ./build.sh all
+    JAVA_HOME=/usr/lib/jvm/$(ls /usr/lib/jvm | grep 17 | head -n 1)
+
+    # build native
+    cd $srcdir/jcef
+    mkdir -p jcef_build && cd jcef_build
+    cmake -DPROJECT_ARCH="x86_64" -DCMAKE_BUILD_TYPE=Release ..
+    make
+
+    # build java
+    cd $srcdir/jcef
+    export OUT_PATH="$srcdir/jcef/out/linux64"
+    export OUT_NATIVE_PATH="$srcdir/jcef/jcef_build/native/Release"
+    JAVA_PATH="$srcdir/jcef/java"
+    export CLS_PATH="$srcdir/jcef/third_party/jogamp/jar/*:$srcdir/jcef/third_party/junit/*:${JAVA_PATH}"
+    mkdir -p "$OUT_PATH"
+    ant -v jar
+    cp "${JAVA_PATH}"/manifest/MANIFEST.MF $OUT_PATH/manifest/
+
+    # create jmods
+    cd $srcdir/jcef
+    mkdir jmods && cd jmods
+
+    # gluegen.rt
+    cp ../third_party/jogamp/jar/gluegen-rt.jar .
+    cp ../jb/tools/common/gluegen-module-info.java module-info.java
+    $JAVA_HOME/bin/javac --patch-module gluegen.rt=gluegen-rt.jar module-info.java
+    $JAVA_HOME/bin/jar uf gluegen-rt.jar module-info.class
+    rm module-info.class module-info.java
+    mkdir .tmp_extract_jar && cd .tmp_extract_jar
+    $JAVA_HOME/bin/jar -xf ../../third_party/jogamp/jar/gluegen-rt-natives-linux-amd64.jar
+    rm -rf "./META-INF"
+    cd .. && mkdir lib
+    cp -R .tmp_extract_jar/natives/linux-amd64/* lib
+    $JAVA_HOME/bin/jmod create --class-path gluegen-rt.jar --libs lib gluegen.rt.jmod
+    rm -rf .tmp_extract_jar gluegen-rt.jar lib
+
+    # jogl.all
+    cp ../third_party/jogamp/jar/jogl-all.jar .
+    cp ../jb/tools/linux/jogl-module-info.java module-info.java
+    $JAVA_HOME/bin/javac --module-path . --patch-module jogl.all=jogl-all.jar module-info.java
+    $JAVA_HOME/bin/jar uf jogl-all.jar module-info.class
+    rm module-info.class module-info.java
+    mkdir .tmp_extract_jar && cd .tmp_extract_jar
+    $JAVA_HOME/bin/jar -xf ../../third_party/jogamp/jar/jogl-all-natives-linux-amd64.jar
+    rm -rf "./META-INF"
+    cd .. && mkdir lib
+    cp -R .tmp_extract_jar/natives/linux-amd64/* lib
+    $JAVA_HOME/bin/jmod create --module-path . --class-path jogl-all.jar --libs lib jogl.all.jmod
+    rm -rf .tmp_extract_jar jogl-all.jar lib
+
+    # jcef
+    cp ../out/linux64/jcef.jar .
+    mkdir lib
+    cp -R ../jcef_build/native/Release/* lib
+    find lib -name "*.so" | xargs strip -x
+    strip -x lib/chrome-sandbox
+    strip -x lib/jcef_helper
+    $JAVA_HOME/bin/jmod create --module-path . --class-path jcef.jar --libs lib jcef.jmod
+    rm -rf jcef.jar lib
+
 }
 
 package() {
-    cd jcef
+    cd $srcdir/jcef
     mkdir -p $pkgdir/usr/lib/jcef-jetbrains
-    tar xvf jcef_linux_x64.tar.gz -C $pkgdir/usr/lib/jcef-jetbrains --no-same-owner 
-    #rm -rf "${pkgdir}/usr/lib/jcef-jetbrains/swiftshader"
-    #find /opt/cef/Release -maxdepth 1 -mindepth 1 -exec ln -sf {} "${pkgdir}/usr/lib/jcef-jetbrains/" \;
+    cp -r jmods $pkgdir/usr/lib/jcef-jetbrains/
+    grep "#define JCEF_VERSION" ./native/jcef_version.h | sed 's/#define JCEF_VERSION /JCEF_VERSION=/g' > $pkgdir/usr/lib/jcef-jetbrains/jcef.version
     install -Dm644 LICENSE.txt $pkgdir/usr/share/licenses/jcef-jetbrains/LICENSE
 }
 
