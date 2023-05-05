@@ -3,7 +3,7 @@
 # Contributor: Brett Dutro <brett.dutro@gmail.com>
 
 pkgname=ashuffle-git
-pkgver=3.13.4.r4.gd9f727d
+pkgver=3.14.0.r0.gf860a9d
 pkgrel=1
 pkgdesc="Automatic library-wide shuffle for mpd. (git)"
 url="https://github.com/joshkunz/ashuffle"
@@ -41,6 +41,9 @@ prepare() {
 
 build() {
   cd "ashuffle"
+
+  # fix a build failure in tests where -Werror is set
+  export CXXFLAGS="$CXXFLAGS -Wno-error=unused-variable"
 
   arch-meson \
     -Dtests=enabled \
