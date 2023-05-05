@@ -9,7 +9,7 @@ url="https://github.com/lytedev/Iosevka"
 license=('SIL Open Font License v1.1')
 source=("https://files.lyte.dev/iosevkalyte/rel/iosevkalyteterm-${pkgver}.tar.zstd"
 	"${pkgname}-${pkgver}-${pkgrel}-LICENSE.md::https://files.lyte.dev/iosevkalyte/rel/iosevkalyteterm-${pkgver}-LICENSE.md")
-sha256sums=("655c95c58f7a39c13a7236f94107622fd0166a92ee1a8aa3742ad2aef76f9e8e"
+sha256sums=("27d9cd867b1d2c6428f142e5928279d625e36b506698a667ddbd59ed5ee7bbe4"
 	"46ecadda73abf39cda76731a94fd357b743f882dc1156b4410a2967a811c4ff1")
 
 package() {
