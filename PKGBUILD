@@ -8,7 +8,7 @@
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=gnupg24
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='Complete and free implementation of the OpenPGP standard'
 arch=('x86_64')
@@ -42,10 +42,10 @@ source=(
   "https://gnupg.org/ftp/gcrypt/gnupg/gnupg-${pkgver}.tar.bz2"{,.sig}
   'avoid-beta-warning.patch'
 )
-sha256sums=('1d79158dd01d992431dd2e3facb89fdac97127f89784ea2cb610c600fb0c1483'
+sha256sums=('76b71e5aeb443bfd910ce9cbc8281b617c8341687afb67bae455877972b59de8'
             'SKIP'
             '22fdf9490fad477f225e731c417867d9e7571ac654944e8be63a1fbaccd5c62d')
-b2sums=('cc4bcd439a3283df5932c0c41873a3b85de07103d9164ec6dc44552fa0d8c5e5973d74dcd3ffd3d4cf0564c9dab66c6e2adbcd7b34bbc4b5faf0f1bf0f3836aa'
+b2sums=('6da4b1ed44f8110421ea465b50a08915231a26ee450c1b11326b9b777772b9ea304ea0c0881e967ca9c6054bc526445951176c50d9a2e24b038c04354c778e59'
         'SKIP'
         '7ea069e81e2d91a3154bcb62516b4b599f34596de277f95ad1ccaba73869c4f84f94f063b65026ba0bc8a72c0fd8e8e182b82346964f67ea78166b6399c923c5')
 validpgpkeys=(
@@ -94,22 +94,23 @@ check() {
 }
 
 package() {
-  local units=({dirmngr,gpg-agent{,-{browser,extra,ssh}}}.socket)
-  local socket_target_dir="$pkgdir/usr/lib/systemd/user/sockets.target.wants/"
-  local unit
+ #Removed in gpg 2.4.1
+ # local units=({dirmngr,gpg-agent{,-{browser,extra,ssh}}}.socket)
+ # local socket_target_dir="$pkgdir/usr/lib/systemd/user/sockets.target.wants/"
+ # local unit
 
   cd "${pkgname%24}-${pkgver}"/build
   make DESTDIR="${pkgdir}" install
   ln -s gpg "${pkgdir}"/usr/bin/gpg2
   ln -s gpgv "${pkgdir}"/usr/bin/gpgv2
   cd ..
-  install -Dm 644 doc/examples/systemd-user/*.* -t "${pkgdir}/usr/lib/systemd/user"
+ # install -Dm 644 doc/examples/systemd-user/*.* -t "${pkgdir}/usr/lib/systemd/user"
   install -Dm 644 COPYING.{CC0,other} -t "${pkgdir}/usr/share/licenses/$pkgname/"
 
-  install -vdm 755 "$socket_target_dir"
-  for unit in "${units[@]}"; do
-    ln -sv "../$unit" "$socket_target_dir$unit"
-  done
+ # install -vdm 755 "$socket_target_dir"
+ # for unit in "${units[@]}"; do
+ #   ln -sv "../$unit" "$socket_target_dir$unit"
+ # done
 }
 
 # vim: ts=2 sw=2 et:
