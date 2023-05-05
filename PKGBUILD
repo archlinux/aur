@@ -1,25 +1,26 @@
 # Maintainer: Robin Candau <antiz@archlinux.org>
 
 pkgname=blahaj
-_pkgname=BLAHAJ
+_pkgname="${pkgname^^}"
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Gay sharks at your local terminal - lolcat-like CLI tool"
 arch=('x86_64')
 url="https://blahaj.queer.software"
 license=('BSD')
-depends=('crystal' 'shards')
+depends=('crystal' 'libyaml')
+makedepends=('shards')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GeopJr/BLAHAJ/archive/v${pkgver}.tar.gz")
 sha256sums=('04d6b8e1b5f151c7c04335f758e4184408d12cfa024abd7583a25e933b681cbc')
 
 build () {
 	cd "${_pkgname}-${pkgver}"
-	make build_mt 
+	CRYSTAL_CACHE_DIR=crystal make build_mt	
 }
 
 check () {
 	cd "${_pkgname}-${pkgver}"
-	make test_mt 
+	CRYSTAL_CACHE_DIR=crystal make test_mt
 }
 
 package() {

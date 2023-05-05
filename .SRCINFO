@@ -1,12 +1,13 @@
 pkgbase = blahaj
 	pkgdesc = Gay sharks at your local terminal - lolcat-like CLI tool
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://blahaj.queer.software
 	arch = x86_64
 	license = BSD
+	makedepends = shards
 	depends = crystal
-	depends = shards
+	depends = libyaml
 	source = blahaj-2.0.1.tar.gz::https://github.com/GeopJr/BLAHAJ/archive/v2.0.1.tar.gz
 	sha256sums = 04d6b8e1b5f151c7c04335f758e4184408d12cfa024abd7583a25e933b681cbc
 
