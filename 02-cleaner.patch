@@ -1,8 +1,12 @@
 --- prefsCleaner.sh
 +++ prefsCleaner.sh
-@@ -9,12 +8,0 @@
--## DON'T GO HIGHER THAN VERSION x.9 !! ( because of ASCII comparison in update_prefsCleaner() )
--
+@@ -15,5 +14,0 @@
+-elif [ -n "$(find ./ -user 0 -o -group 0)" ]; then
+-	printf 'It looks like this script was previously run with elevated privileges,
+-you will need to change ownership of the following files to your user:\n'
+-	find . -user 0 -o -group 0
+-	exit 1
+@@ -22,10 +16,0 @@
 -readonly CURRDIR=$(pwd)
 -
 -## get the full path of this script (readlink for Linux, greadlink for Mac with coreutils installed)
@@ -13,7 +17,7 @@
 -
 -
 -AUTOUPDATE=true
-@@ -23,11 +10,0 @@
+@@ -34,11 +18,0 @@
 -## download method priority: curl -> wget
 -DOWNLOAD_METHOD=''
 -if command -v curl >/dev/null; then
@@ -25,10 +29,10 @@
 -	echo -e "No curl or wget detected.\nAutomatic self-update disabled!"
 -fi
 -
-@@ -35,2 +11,0 @@
+@@ -46,2 +19,0 @@
 -	## change directory back to the original working directory
 -	cd "${CURRDIR}"
-@@ -46,7 +21 @@
+@@ -57,7 +29 @@
 -    -d           Don't auto-update prefsCleaner.sh"
 -}
 -
@@ -37,7 +41,7 @@
 -
 -  $DOWNLOAD_METHOD "${tf}" "$1" &>/dev/null && echo "$tf" || echo '' # return the temp-filename or empty string on error
 +"
-@@ -64,18 +32,0 @@
+@@ -75,18 +40,0 @@
 -## returns the version number of a prefsCleaner.sh file
 -get_prefsCleaner_version() {
 -	echo "$(sed -n '5 s/.*[[:blank:]]\([[:digit:]]*\.[[:digit:]]*\)/\1/p' "$1")"
@@ -56,14 +60,14 @@
 -	exit 0
 -}
 -
-@@ -121 +72 @@
+@@ -132 +80 @@
 -while getopts "sd" opt; do
 +while getopts "s" opt; do
-@@ -126,3 +76,0 @@
+@@ -137,3 +84,0 @@
 -		d)
 -			AUTOUPDATE=false
 -			;;
-@@ -131,5 +78,0 @@
+@@ -142,5 +86,0 @@
 -
 -## change directory to the Firefox profile directory
 -cd "$(dirname "${SCRIPT_FILE}")"
