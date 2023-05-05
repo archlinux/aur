@@ -1,7 +1,7 @@
 pkgbase = gajim-1.3
 	pkgdesc = Jabber/XMPP instant messenger client written in Python with GTK+, version 1.3 (Multiwindow)
 	pkgver = 1.3.3
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://gajim.org/
 	arch = any
@@ -50,7 +50,9 @@ pkgbase = gajim-1.3
 	replaces = gajim-svn
 	source = gajim::git+https://dev.gajim.org/gajim/gajim.git#tag=gajim-1.3.3
 	source = gupnp-disable.patch
+	source = getfullargspec.patch
 	md5sums = SKIP
 	md5sums = f0582899b5c0d096171fbdbc4c6bf1df
+	md5sums = dbbf993b9d6f7b07e5ba42d486f87839
 
 pkgname = gajim-1.3

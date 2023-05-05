@@ -1,0 +1,35 @@
+diff --git a/gajim/command_system/framework.py b/gajim/command_system/framework.py
+index 34707a83f..cbafbe573 100644
+--- a/gajim/command_system/framework.py
++++ b/gajim/command_system/framework.py
+@@ -20,7 +20,7 @@
+ """
+ 
+ from types import FunctionType
+-from inspect import getargspec, getdoc
++from inspect import getfullargspec, getdoc
+ 
+ from gajim.command_system.dispatcher import Host
+ from gajim.command_system.dispatcher import Container
+@@ -221,7 +221,7 @@ def extract_specification(self):
+         Extract handler's arguments specification, as it was defined
+         preserving their order.
+         """
+-        names, var_args, var_kwargs, defaults = getargspec(self.handler)  # pylint: disable=W1505
++        names, var_args, var_kwargs, defaults = getfullargspec(self.handler)  # pylint: disable=W1505
+ 
+         # Behavior of this code need to be checked. Might yield
+         # incorrect results on some rare occasions.
+diff --git a/test/lib/mock.py b/test/lib/mock.py
+index 5f54a1209..9e61de1d4 100644
+--- a/test/lib/mock.py
++++ b/test/lib/mock.py
+@@ -128,7 +128,7 @@ class with the given parameters would not fail. If it would fail,
+ 
+         func = self.realClassMethods[name]
+         try:
+-            args, varargs, varkw, defaults = inspect.getargspec(func)
++            args, varargs, varkw, defaults = inspect.getfullargspec(func)
+         except TypeError:
+             # func is not a Python function. It is probably a builtin,
+             # such as __repr__ or __coerce__. TODO: Checking?
