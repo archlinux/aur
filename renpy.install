@@ -2,11 +2,6 @@ post_install() {
   ln -sf "/usr/share/doc/renpy" "/usr/share/renpy/doc"
 
   cat << EOF
-This package sets global environment variable RENPY_BASE, forcing all RenPy
-games, including incompatible ones, to use system-wide interpreter. Undefine
-this variable to launch games, you downloaded somewhere, with their built-in
-versions of interpreter.
-
 To run two example games: The Question and RenPy Tutorial you should be
 member of "games" group.
 EOF
