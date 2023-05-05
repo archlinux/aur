@@ -3,14 +3,15 @@
 
 pkgname=woof-doom-git
 _pkgname=woof
-pkgver=10.5.1.r86.1997a14c
+pkgver=11.0.0.r8.06cc0221
 pkgrel=1
 pkgdesc="Doom port remaining faithful to Lee Killough’s MBF on DOS"
 arch=("x86_64")
 url="https://github.com/fabiangreffrath/woof"
 license=('GPL2')
-depends=('hicolor-icon-theme' 'sdl2_net' 'sdl2_mixer')
+depends=('hicolor-icon-theme' 'sdl2_net' 'openal' 'libsndfile')
 makedepends=('cmake' 'git' 'python')
+optdepends=('fluidsynth' 'libxmp')
 conflicts=('woof-doom')
 source=(woof::git+"${url}".git)
 sha512sums=('SKIP')
