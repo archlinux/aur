@@ -2,7 +2,7 @@
 
 pkgname=obs-rtspserver
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="This is a plugin for obs-studio, encoding the output and publish rtsp stream"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/obs-rtspserver.1037/"
@@ -23,12 +23,16 @@ prepare() {
 
   git config submodule.rtsp-server/3rdpart/libb64/libb64.url $srcdir/libb64
   git -c protocol.file.allow=always submodule update rtsp-server/3rdpart/libb64/libb64
+
+  sed -i '1s/^/#include <cstdlib>\n/' rtsp-server/net/MemoryManager.cpp
+  sed -i '1s/^/#include <string>\n/' rtsp_output_helper.h
 }
 
 build() {
   cd "$pkgname"
 
   cmake -B build \
+  -DCMAKE_BUILD_TYPE=None \
   -DCMAKE_INSTALL_PREFIX='/usr' \
   -DCMAKE_INSTALL_LIBDIR=lib \
   -DLINUX_PORTABLE=OFF \
@@ -36,7 +40,7 @@ build() {
   -DLIBOBS_INCLUDE_DIR=/usr/include/obs \
   -DOBS_FRONTEND_API_INCLUDE_DIR=/usr/include/obs
 
-  make -C build
+  make -C build VERBOSE=1
 }
 
 package() {
