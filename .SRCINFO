@@ -7,6 +7,7 @@ pkgbase = openwebmonitor3
 	arch = aarch64
 	license = proprietary
 	makedepends = asar
+	makedepends = npm
 	depends = electron11
 	options = !strip
 	source = http://owm.fatecore.com/download/OpenWebMonitor3-3.5.2.zip
