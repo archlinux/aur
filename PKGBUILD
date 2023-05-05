@@ -2,8 +2,8 @@
 
 pkgname=netscripts-atzlinux
 pkgver=1.0.8
-pkgrel=0
-_commit="57a2ee9c7c0b52e6d5e33ab12ffe0dc8b434b50d"
+pkgrel=1
+_commit="3b92babb25fd2076dd08421126b2c9ceb4141995"
 pkgdesc="some simple network scripts no need any parameter"
 arch=("any")
 groups=()
