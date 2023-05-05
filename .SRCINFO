@@ -1,4 +1,4 @@
-pkgbase = gnome-shell-extenstion-hamster-git
+pkgbase = gnome-shell-extension-hamster-git
 	pkgdesc = GNOME Shell extension for Hamster Time Tracker.
 	pkgver = gnome.shell.3.38.r32.g75541ac
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = gnome-shell-extenstion-hamster-git
 	source = git+https://github.com/projecthamster/hamster-shell-extension.git
 	sha256sums = SKIP
 
-pkgname = gnome-shell-extenstion-hamster-git
+pkgname = gnome-shell-extension-hamster-git

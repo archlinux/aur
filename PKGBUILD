@@ -1,6 +1,6 @@
 # Maintainer: Arthur Vuillard <arthur@hashbang.fr>
 _pkgname=hamster-shell-extension
-pkgname=gnome-shell-extenstion-hamster-git
+pkgname=gnome-shell-extension-hamster-git
 pkgver=gnome.shell.3.38.r32.g75541ac
 pkgrel=1
 pkgdesc="GNOME Shell extension for Hamster Time Tracker."
