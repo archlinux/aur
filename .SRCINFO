@@ -1,14 +1,19 @@
 pkgbase = python-django-storages
 	pkgdesc = Support for many storage backends (S3, Libcloud, etc) in Django.
-	pkgver = 1.11.1
+	pkgver = 1.13.2
 	pkgrel = 1
 	url = https://github.com/jschneier/django-storages
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/d/django-storages/django-storages-1.11.1.tar.gz
+	source = https://files.pythonhosted.org/packages/source/d/django-storages/django-storages-1.13.2.tar.gz
 	sha256sums = c823dbf56c9e35b0999a13d7e05062b837bae36c518a40255d522fbe3750fbb4
 
 pkgname = python-django-storages
 	depends = python-django
+	optdepends = python-azure-storage-blob
 	optdepends = python-boto3
+	optdepends = python-dropbox
+	optdepends = python-google-cloud-storage
+	optdepends = python-apache-libcloud
+	optdepends = python-paramiko
