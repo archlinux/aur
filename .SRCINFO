@@ -1,0 +1,18 @@
+pkgbase = ufomerge
+	pkgdesc = A CLI utility and Python library to merge UFO source fonts
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/googlefonts/ufomerge
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = python-fonttools
+	depends = python-ufolib2
+	source = https://files.pythonhosted.org/packages/source/u/ufomerge/ufomerge-1.0.0.tar.gz
+	sha256sums = 5659936fe63d172ec1f49a9dca1e9d88ff215ab0c28be4549dc18509cc2c60e5
+
+pkgname = ufomerge
