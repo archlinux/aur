@@ -1,7 +1,8 @@
 pkgbase = gr-iridium-git
 	pkgdesc = Gnuradio blocks and tools for receiving Iridium transmissions
-	pkgver = r302.b5ae843
+	pkgver = r362.0c9defb
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/muccc/gr-iridium
 	arch = any
 	license = GPL3

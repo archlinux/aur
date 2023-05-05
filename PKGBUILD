@@ -1,8 +1,9 @@
 # Maintainer: Vadim Yanitskiy <axilirator@gmail.com>
 
 pkgname=gr-iridium-git
-pkgver=r302.b5ae843
+pkgver=r362.0c9defb
 pkgrel=1
+epoch=1
 pkgdesc="Gnuradio blocks and tools for receiving Iridium transmissions"
 arch=('any')
 url="https://github.com/muccc/gr-iridium"
