@@ -3,7 +3,7 @@
 pkgname=feeluown-bilibili
 epoch=1
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Bilibili provider for FeelUOwn"
 arch=('any')
 url="https://github.com/BruceZhang1993/feeluown-bilibili"
