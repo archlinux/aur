@@ -17,7 +17,7 @@ _cachy_config=${_cachy_config-y}
 # 'cfs' - select 'Completely Fair Scheduler'
 # 'tt' - select 'Task Type Scheduler by Hamad Marri'
 # 'hardened' - select 'BORE Scheduler hardened' ## kernel with hardened config and hardening patches with the bore scheduler
-# 'cachyos' - select 'EEVDF' Scheduler which is a replacement for the CFS Scheduler and introduces a more latency aware algorithm including latency nice
+# 'cachyos' - select EEVDF Scheduler with some CachyOS Optimizations. EEVDF does bring latency-nice as default
 _cpusched=${_cpusched-cachyos}
 
 ## Apply some suggested sysctl values from the bore developer
@@ -183,7 +183,9 @@ _bcachefs=${_bcachefs-}
 # You need to set the values per task
 # Ananicy-cpp has a implementation for this
 # You need to configure ananicy-cpp for this or use existing settings
-_latency_nice=${_latency_nice-}
+# Its default enabled at the "cachyos" scheduler option
+# _latency_nice=${_latency_nice-}
+# Disabled till rebased
 
 if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] && [ -n "$_use_lto_suffix" ]; then
     pkgsuffix=cachyos-rc-lto
@@ -203,14 +205,14 @@ pkgver=${_major}.${_rcver}
 _stable=${_major}-${_rcver}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
-pkgdesc='Linux BORE scheduler Kernel by CachyOS and with some other patches and other improvements'
-pkgrel=2
+pkgdesc='Linux EEVDF scheduler Kernel by CachyOS and with some other patches and other improvements'
+pkgrel=5
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
 license=('GPL2')
 options=('!strip')
-makedepends=('bc' 'libelf' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'zstd' 'gcc' 'gcc-libs' 'glibc' 'binutils' 'make' 'patch')
+makedepends=('bc' 'libelf' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'zstd' 'gcc' 'gcc-libs' 'glibc' 'binutils' 'make' 'patch' 'python')
 # LLVM makedepends
 if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] || [ -n "$_use_kcfi" ]; then
     makedepends+=(clang llvm lld python)
@@ -243,9 +245,11 @@ fi
 
 case "$_cpusched" in
     cachyos) # CachyOS Scheduler (EEVDF)
-        source+=("${_patchsource}/sched/0001-EEVDF.patch");;
+        source+=("${_patchsource}/sched/0001-EEVDF.patch"
+                 "${_patchsource}/sched/0001-bore-eevdf.patch");;
     pds|bmq) # BMQ/PDS scheduler
-        source+=("${_patchsource}/sched/0001-prjc-cachy.patch");;
+        source+=("${_patchsource}/sched/0001-prjc-cachy.patch"
+                 linux-cachyos-prjc.install);;
     tt) ## TT Scheduler
         source+=("${_patchsource}/sched/0001-tt-cachy.patch");;
     bore) ## BORE Scheduler with latency_nice
@@ -277,12 +281,21 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 
 _die() { error "$@" ; exit; }
 
+_make() {
+  test -s version
+  make KERNELRELEASE="$(<version)" "$@"
+}
+
 prepare() {
 
     cd ${srcdir}/$_srcname
 
+    echo "Setting version..."
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
+    make ${BUILD_FLAGS[*]} defconfig
+    make ${BUILD_FLAGS[*]} -s kernelrelease > version
+    make ${BUILD_FLAGS[*]} mrproper
 
     local src
     for src in "${source[@]}"; do
@@ -655,12 +668,11 @@ prepare() {
 
     ### Rewrite configuration
     echo "Rewrite configuration..."
-    make ${BUILD_FLAGS[*]} prepare
-    yes "" | make ${BUILD_FLAGS[*]} config >/dev/null
+    _make ${BUILD_FLAGS[*]} prepare
+    yes "" | _make ${BUILD_FLAGS[*]} config >/dev/null
     diff -u ../config .config || :
 
     ### Prepared version
-    make ${BUILD_FLAGS[*]} -s kernelrelease > version
     echo "Prepared $pkgbase version $(<version)"
 
     ### Running make nconfig
@@ -712,19 +724,18 @@ _package() {
 
     cd ${srcdir}/$_srcname
 
-    local kernver="$(<version)"
-    local modulesdir="$pkgdir/usr/lib/modules/$kernver"
+    local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
     echo "Installing boot image..."
     # systemd expects to find the kernel here to allow hibernation
     # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-    install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+    install -Dm644 "$(_make -s image_name)" "$modulesdir/vmlinuz"
 
     # Used by mkinitcpio to name the kernel
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     echo "Installing modules..."
-    make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
         DEPMOD=/doesnt/exist  modules_install  # Suppress depmod
 
     # remove build and source links
@@ -821,8 +832,8 @@ _package-zfs(){
     provides=('ZFS-MODULE')
 
     cd ${srcdir}/"zfs"
-	install -dm755 "$pkgdir/usr/lib/modules/${_major}.${_minor}-${_rcver}-${pkgrel}-${pkgsuffix}"
-	install -m644 module/*.ko "$pkgdir/usr/lib/modules/${_major}.${_minor}-${_rcver}-${pkgrel}-${pkgsuffix}"
+    install -dm755 "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
+    install -m644 module/*.ko "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
     find "$pkgdir" -name '*.ko' -exec zstd --rm -10 {} +
     #  sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='${pkgver}-${pkgbase}'/" "$startdir/zfs.install"
 }
@@ -838,8 +849,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('65fc1202601a82a96bad2f2f76973898186025f1d104bb5da0316e032926acf3'
-            '2ca68e1b594488ad1a43ee5a9561658262fd44ee5ca2034a579d74e556a830a0'
-            '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
-            'b0b6791beab5808e97f8220a1f0694da57474583549e60ca730025a6504c7eb3'
-            '600fe991fde111d028a22dae797367c481f8296c84f8bb0df8e19f78c819d99d')
+b2sums=('782298ed87fb4882686f9675d0d8cf74a59d48001a7af606b829d63fc7943fff1078a8d6619e4903ac300c5f39657cec3178c53f2b83464100311a9432bf4553'
+        '2f5f0a1fa028bd9f73b659d1326ffdc83eac509c0188debb605941605a5bf7b5d8a5d76a87a0562210760d124e33b74b140574db63df09ed8f567c85b314976a'
+        '11d2003b7d71258c4ca71d71c6b388f00fe9a2ddddc0270e304148396dadfd787a6cac1363934f37d0bfb098c7f5851a02ecb770e9663ffe57ff60746d532bd0'
+        '944cc70d1593a6fef259ec6ca59001985c3e708a9447845c0dbba4cab6d386e265e240854f44cdf1ab68d3b62dbea02e9857175bd1d738462277ec895094fa1e'
+        '4ab7071f2b82fdfd4d1150c8dba798a5c3e2d6eca8c01515e935179559b36ed0d95b5fda9a63cc0704dba720633b3713eec0bf963fe7f56d43fb79b4631edea0'
+        '1f4434af752c94452edf717f8d4f05a59249beaf4fddd203a5848351bc4f08853017aff3de2f1afdf506b34d688913eb81586be2b7768099b5e7331dde3fbdf2')
