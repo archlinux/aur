@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=measurements
-_cranver=1.5.0
+_cranver=1.5.1
 pkgname=r-${_cranname,,}
 pkgdesc="Tools for Units of Measurement"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -15,7 +15,7 @@ depends=(
 )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("02c442a7e0dfacb25902d96ef2fd72c80f60e559b3b9fd56ea1fc608c66a6f720b55a1c4f12774f6d71b021cf837112dc5a460a0c41fcb8647c01b33d0c0d928")
+b2sums=("d4decc3aced4709cbb3e4aad7a8872aed949badf98c499967ef617bb1a135c7f127f4a9c57a42ea07c9a66a90ce5f0eca28d7a5ffad81b132c1dc7e68536c213")
 
 build() {
     mkdir -p "${srcdir}/build/"
