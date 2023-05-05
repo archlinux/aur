@@ -1,0 +1,28 @@
+From e3f64b2f80194c3ee4b5d88a3488ae3689a25244 Mon Sep 17 00:00:00 2001
+From: Vadim Yanitskiy <fixeria@osmocom.org>
+Date: Fri, 5 May 2023 15:56:02 +0700
+Subject: [PATCH] setup.py: do not install scripts/{soap,ctrl2cgi}.py
+
+These scripts have been deprecated and are not maintained anymore.
+
+Change-Id: Iffe8f752793127077f25df13167ccc5190e54ff6
+---
+ setup.py | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 301420a..3818dd7 100755
+--- a/setup.py
++++ b/setup.py
+@@ -25,8 +25,6 @@ scripts = [
+     "scripts/osmotestconfig.py",
+     "scripts/osmo_ctrl.py",
+     "scripts/osmo_rate_ctr2csv.py",
+-    "scripts/soap.py",
+-    "scripts/ctrl2cgi.py",
+     "scripts/osmo_trap2cgi.py",
+     "scripts/osmo_interact_vty.py",
+     "scripts/osmo_interact_ctrl.py",
+-- 
+2.40.1
+
