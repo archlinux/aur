@@ -1,7 +1,7 @@
 pkgbase = audio-offset-finder-git
 	pkgdesc = A simple tool for finding the offset of an audio file within another file.
 	pkgver = 0.5.2.r126.20230123.da14f0e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bbc/audio-offset-finder
 	arch = any
 	license = Apache
@@ -10,6 +10,7 @@ pkgbase = audio-offset-finder-git
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-lazy-loader
 	makedepends = python-wheel
 	depends = ffmpeg
 	depends = python-librosa
