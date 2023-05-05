@@ -1,0 +1,7 @@
+# Ignore everything
+/*
+
+# But not the pkgbuild/srcinfo and this file
+!PKGBUILD
+!.SRCINFO
+!.gitignore
