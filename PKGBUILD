@@ -4,7 +4,7 @@
 
 pkgname=openbgpd
 pkgver=8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A FREE implementation of the Border Gateway Protocol, Version 4"
 arch=(x86_64)
 url="https://www.openbgpd.org"
@@ -13,6 +13,7 @@ depends=(libevent)
 source=(https://cdn.openbsd.org/pub/OpenBSD/OpenBGPD/openbgpd-${pkgver}.tar.gz{,.asc}
         bgpd.service
         sysusers.conf)
+changelog=openbgpd.changelog
 sha256sums=('cef83570f5f0c149f11152f0f9532efba42fb638c5e599813ba32ea6e002fd5c'
             'SKIP'
             '374fbf93489ba8e5d8722c534e5c899a6c01601d5540423ac290fcc0fe6c77c6'
@@ -43,6 +44,10 @@ package() {
   install -Dm644 "$srcdir/bgpd.service" "$pkgdir/usr/lib/systemd/system/bgpd.service"
   rm -rf "$pkgdir"/var
 }
+sha256sums=('cc67294642364e68c2ac708be6f8e8df67e2857aa15722ce924d6778f8bb6489'
+            'SKIP'
+            '374fbf93489ba8e5d8722c534e5c899a6c01601d5540423ac290fcc0fe6c77c6'
+            '00165fa765f95ad0a99df2744401b7892384601f70a98d6d0097144cb55f9d68')
 sha256sums=('cc67294642364e68c2ac708be6f8e8df67e2857aa15722ce924d6778f8bb6489'
             'SKIP'
             '374fbf93489ba8e5d8722c534e5c899a6c01601d5540423ac290fcc0fe6c77c6'

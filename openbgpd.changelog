@@ -1,0 +1,16 @@
+## 8.0 - 2023-05-04
+* Include OpenBSD 7.3 errata 001 (link: https://www.openbsd.org/errata73.html#p001_bgpd):
+      A new ASPA object appeared in the RPKI ecosystem and exposed bugs in
+      bgpd(8) and rpki-client(8).
+
+* Introduce a semaphore to protect intermittent RTR session data 
+      from being published to the RDE.
+
+* Add first version of flowspec support. Right now only announcement
+      of flowspec rules is possible.
+
+* Improve and extend the bgpctl parser to handle commands like
+      `bgpctl show rib 192.0.2.0/24 detail`. Also add various flowspec
+      specific commands.
+
+## This document contains the changelogs as posted in each release announcement on the OpenBSD mailing list.

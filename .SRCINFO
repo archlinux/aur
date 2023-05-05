@@ -1,8 +1,9 @@
 pkgbase = openbgpd
 	pkgdesc = A FREE implementation of the Border Gateway Protocol, Version 4
 	pkgver = 8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openbgpd.org
+	changelog = openbgpd.changelog
 	arch = x86_64
 	license = ISC
 	depends = libevent
