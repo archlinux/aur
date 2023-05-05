@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mlr3
-_pkgver=0.15.0
+_pkgver=0.16.0
 pkgname=r-${_pkgname,,}
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc='Machine Learning in R - Next Generation'
 arch=('any')
@@ -40,7 +40,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c0e3190553456e84126c459732f0855097c2ff8290e129b798c5b586f0d301bc')
+sha256sums=('993246fcecaadba0e3741e6481af1859ddfffbfc46a054237302aca5f138f2db')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
