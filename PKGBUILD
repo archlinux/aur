@@ -6,7 +6,7 @@
 pkgname="proto"
 pkgdesc='A multi-language version and dependency manager'
 pkgver=0.8.2
-pkgrel=2
+pkgrel=3
 license=('MIT')
 url='https://github.com/moonrepo/proto'
 arch=('x86_64')
@@ -31,5 +31,5 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   install -Dm 755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
