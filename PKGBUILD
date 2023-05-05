@@ -1,6 +1,6 @@
 # Mainintainer : Lucas Rooyakkers <lucas dot rooyakkers at queensu at ca>
 pkgname=rmatrix
-pkgver=cf9ec1c
+pkgver=a84a1a3
 pkgrel=1
 pkgdesc="Rust port of a curses-based 'Matrix'-like screen"
 arch=('any')
@@ -9,30 +9,21 @@ license=('GPL3')
 provides=("rmatrix")
 makedepends=('git' 'cargo')
 conflicts=('rmatrix')
-source=("$pkgname::git+https://github.com/Fierthraix/rmatrix")
+source=("git+https://github.com/Fierthraix/rmatrix")
 sha1sums=('SKIP')
 
 build() {
-  cd "$pkgname"
-  if command -v rustup > /dev/null 2>&1; then
-    RUSTFLAGS="-C target-cpu=native" rustup run stable \
-      cargo build --release
-  elif rustc --version | grep -q nightly; then
-    RUSTFLAGS="-C target-cpu=native" \
-      cargo build --release
-  else
-    cargo build --release
-  fi
+  cd "$srcdir/$pkgname"
+  cargo build --release
 }
 
 pkgver() {
-  cd "$pkgname"
+  cd "$srcdir/$pkgname"
   echo $(git describe --always | sed 's/-/./g')
 }
 
 package() {
-  cd "$pkgname"
-  install -Dm755 "target/release/r-matrix" "$pkgdir/usr/bin/rmatrix"
+  install -Dm755 "$srcdir/$pkgname/target/release/r-matrix" "$pkgdir/usr/bin/rmatrix"
 }
 
 # vim:set ts=2 sw=2 et:

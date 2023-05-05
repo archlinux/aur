@@ -1,6 +1,6 @@
 pkgbase = rmatrix
 	pkgdesc = Rust port of a curses-based 'Matrix'-like screen
-	pkgver = cf9ec1c
+	pkgver = a84a1a3
 	pkgrel = 1
 	url = https://github.com/Fierthraix/rmatrix
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = rmatrix
 	makedepends = cargo
 	provides = rmatrix
 	conflicts = rmatrix
-	source = rmatrix::git+https://github.com/Fierthraix/rmatrix
+	source = git+https://github.com/Fierthraix/rmatrix
 	sha1sums = SKIP
 
 pkgname = rmatrix
