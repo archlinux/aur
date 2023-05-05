@@ -1,0 +1,22 @@
+pkgbase = gsettings-desktop-schemas-338
+	pkgdesc = Shared GSettings schemas for the desktop (Version 3.38)
+	pkgver = 3.38.0
+	pkgrel = 3
+	url = https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas
+	arch = any
+	license = GPLv2
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = meson
+	depends = glib2
+	depends = dconf
+	depends = cantarell-fonts
+	depends = adobe-source-code-pro-fonts
+	provides = gsettings-desktop-schemas=3.38.0
+	conflicts = gsettings-desktop-schemas
+	conflicts = gsettings-desktop-schemas-git
+	source = https://download.gnome.org/sources/gsettings-desktop-schemas/3.38/gsettings-desktop-schemas-3.38.0.tar.xz
+	md5sums = 465a98f5ab8a5ca896009228257fc40d
+	sha256sums = 5704c8266004b296036671f223c705dc046aa694a1b1abb87c67e7d2747a8c67
+
+pkgname = gsettings-desktop-schemas-338
