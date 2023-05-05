@@ -50,7 +50,7 @@ _disable_debug=y
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20230428.r0.g92e815cf07ed
+pkgver=20230504.r0.g145e5cddfe8b
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -58,7 +58,7 @@ arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 options=('!strip')
-makedepends=('bc' 'libelf' 'git' 'pahole' 'cpio' 'perl' 'tar' 'xz')
+makedepends=('bc' 'libelf' 'git' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'python')
 _lucjanver=6.3
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_lucjanver}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver}"
