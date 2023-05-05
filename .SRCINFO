@@ -1,11 +1,12 @@
 pkgbase = open-gpt-bin
-	pkgdesc = Free ChatGpt cli!
+	pkgdesc = ChatGpt client using openai api!
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://sourceforge.net/projects/open-gpt/
+	url = https://github.com/BeanDx/open-gpt/tree/main
 	arch = x86_64
 	license = custom
 	depends = qt6-base
+	depends = sqlite
 	source = https://downloads.sourceforge.net/sourceforge/open-gpt/open-gpt.tar.gz
 	sha512sums = SKIP
 
