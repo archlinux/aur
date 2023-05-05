@@ -1,14 +1,16 @@
 pkgbase = python-docformatter
 	pkgdesc = Format docstrings to follow PEP257
-	pkgver = 1.4
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/myint/docformatter
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-untokenize
-	source = https://files.pythonhosted.org/packages/source/d/docformatter/docformatter-1.4.tar.gz
-	sha256sums = 064e6d81f04ac96bc0d176cbaae953a0332482b22d3ad70d47c8a7f2732eef6f
+	source = https://files.pythonhosted.org/packages/source/d/docformatter/docformatter-1.5.0.tar.gz
+	sha256sums = 9dc71659d3b853c3018cd7b2ec34d5d054370128e12b79ee655498cb339cc711
 
 pkgname = python-docformatter
-
