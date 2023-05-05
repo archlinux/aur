@@ -1,16 +1,16 @@
 # Maintainer: solopasha <daron439 at gmail dot com>
 pkgname=ytarchive-git
-pkgver=r216.8d48052
+pkgver=r256.b40d0a1
 pkgrel=1
 pkgdesc="Garbage Youtube livestream downloader."
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/Kethsar/ytarchive"
 license=("MIT")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 makedepends=(git go)
 options=(!lto)
-source=("${pkgname}::git+${url}.git#branch=master")
+source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -20,14 +20,13 @@ pkgver() {
 
 build() {
     export GOPATH="$srcdir"/gopath
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
-    export CGO_LDFLAGS="${LDFLAGS}"
-    export CGO_ENABLED=1
     cd "$pkgname"
-    go build -o "${pkgname%-git}"
+    go build -o "${pkgname%-git}" -ldflags \
+    "-linkmode=external -extldflags $LDFLAGS -X main.commit=${pkgver#*.}"
 }
 package(){
     depends=(ffmpeg)
