@@ -55,8 +55,10 @@ pkgbase = ungoogled-chromium
 	optdepends = qt5-base: enable Qt5 with --enable-features=AllowQt
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
-	provides = chromium
+	provides = chromium=113.0.5672.63
+	provides = chromedriver=113.0.5672.63
 	conflicts = chromium
+	conflicts = chromedriver
 	options = !lto
 	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-113.0.5672.63.tar.xz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
