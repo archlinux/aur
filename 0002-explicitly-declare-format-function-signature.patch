@@ -1,4 +1,4 @@
-From 26c5f944d21802971f408dd1b6308b580d88a809 Mon Sep 17 00:00:00 2001
+From 9a7fb92521d4aa06bf79b4eb04dca19556ae1b2a Mon Sep 17 00:00:00 2001
 From: Mole Shang <135e2@135e2.dev>
 Date: Fri, 5 May 2023 20:32:17 +0800
 Subject: [PATCH 2/2] explicitly declare `format()` function signature
@@ -21,19 +21,19 @@ ambiguous naming problem.
 
 Ref: https://www.gnu.org/software/gcc/gcc-13/changes.html => Runtime Library (libstdc++)
 ---
- include/player.h                 | 10 ++++----
- source/config.cpp                | 26 +++++++++----------
- source/helpers/utils.cpp         | 14 +++++-----
- source/player.cpp                | 10 ++++----
- source/views/command_palette.cpp | 12 ++++-----
- source/views/context_menu.cpp    | 22 ++++++++--------
- source/views/debug.cpp           | 36 +++++++++++++-------------
- source/views/quickview.cpp       | 44 ++++++++++++++++----------------
- source/window.cpp                |  6 ++---
- 9 files changed, 90 insertions(+), 90 deletions(-)
+ include/player.h                 |  8 +++---
+ source/config.cpp                | 24 +++++++++---------
+ source/helpers/utils.cpp         | 12 ++++-----
+ source/player.cpp                |  8 +++---
+ source/views/command_palette.cpp | 10 ++++----
+ source/views/context_menu.cpp    | 20 +++++++--------
+ source/views/debug.cpp           | 34 +++++++++++++-------------
+ source/views/quickview.cpp       | 42 ++++++++++++++++----------------
+ source/window.cpp                |  4 +--
+ 9 files changed, 81 insertions(+), 81 deletions(-)
 
 diff --git a/include/player.h b/include/player.h
-index 9fa2c4e..ba8bcd4 100644
+index 9fa2c4e..9de25b6 100644
 --- a/include/player.h
 +++ b/include/player.h
 @@ -141,12 +141,12 @@ class Player {
@@ -53,15 +53,8 @@ index 9fa2c4e..ba8bcd4 100644
    };
    const std::vector<std::pair<std::string, std::string>> isoFilters = {
        {"ISO Image Files", "iso"},
-@@ -171,4 +171,4 @@ class Player {
-     Player *p;
-   };
- };
--}  // namespace ImPlay
-\ No newline at end of file
-+}  // namespace ImPlay
 diff --git a/source/config.cpp b/source/config.cpp
-index 10578fe..95c1c02 100644
+index 10578fe..e685289 100644
 --- a/source/config.cpp
 +++ b/source/config.cpp
 @@ -61,19 +61,19 @@ void Config::save() {
@@ -109,15 +102,8 @@ index 10578fe..95c1c02 100644
    }
  
    std::ofstream file(configFile);
-@@ -132,4 +132,4 @@ std::string Config::ipcSocket() {
-   return configDir + "/mpv-ipc-socket";
- #endif
- }
--}  // namespace ImPlay
-\ No newline at end of file
-+}  // namespace ImPlay
 diff --git a/source/helpers/utils.cpp b/source/helpers/utils.cpp
-index 2c00f3f..a29e8d0 100644
+index 2c00f3f..64dee40 100644
 --- a/source/helpers/utils.cpp
 +++ b/source/helpers/utils.cpp
 @@ -69,12 +69,12 @@ bool fileExists(std::string path) {
@@ -162,15 +148,8 @@ index 2c00f3f..a29e8d0 100644
  #endif
    return std::filesystem::path(dataDir) / "implay";
  }
-@@ -138,4 +138,4 @@ std::vector<std::string> split(const std::string& str, const std::string& sep) {
-   if (pos1 != str.length()) v.push_back(str.substr(pos1));
-   return v;
- }
--}  // namespace ImPlay
-\ No newline at end of file
-+}  // namespace ImPlay
 diff --git a/source/player.cpp b/source/player.cpp
-index 5776a73..9f7b09c 100644
+index 5776a73..8da7ddf 100644
 --- a/source/player.cpp
 +++ b/source/player.cpp
 @@ -486,7 +486,7 @@ void Player::execute(int n_args, const char **args_) {
@@ -199,15 +178,8 @@ index 5776a73..9f7b09c 100644
                  nullptr);
  }
  
-@@ -670,4 +670,4 @@ bool Player::isSubtitleFile(std::string file) {
-   if (std::find(subtitleTypes.begin(), subtitleTypes.end(), ext) != subtitleTypes.end()) return true;
-   return false;
- }
--}  // namespace ImPlay
-\ No newline at end of file
-+}  // namespace ImPlay
 diff --git a/source/views/command_palette.cpp b/source/views/command_palette.cpp
-index 124efea..83becef 100644
+index 124efea..7ff6164 100644
 --- a/source/views/command_palette.cpp
 +++ b/source/views/command_palette.cpp
 @@ -20,8 +20,8 @@ CommandPalette::CommandPalette(Config* config, Mpv* mpv) : View(config, mpv) {
@@ -241,15 +213,8 @@ index 124efea..83becef 100644
        items.push_back({
            title,
            "",
-@@ -216,4 +216,4 @@ void CommandPalette::match(const std::string& input) {
-   matches.clear();
-   for (const auto& [item, _] : result) matches.push_back(item);
- }
--}  // namespace ImPlay::Views
-\ No newline at end of file
-+}  // namespace ImPlay::Views
 diff --git a/source/views/context_menu.cpp b/source/views/context_menu.cpp
-index be0d587..32e5197 100644
+index be0d587..d418d7b 100644
 --- a/source/views/context_menu.cpp
 +++ b/source/views/context_menu.cpp
 @@ -268,13 +268,13 @@ void ContextMenu::drawPlaylist(std::vector<Mpv::PlayItem> items) {
@@ -316,7 +281,7 @@ index be0d587..32e5197 100644
      }
      ImGui::EndMenu();
    }
-@@ -366,11 +366,11 @@ void ContextMenu::drawRecentFiles() {
+@@ -366,7 +366,7 @@ void ContextMenu::drawRecentFiles() {
        i++;
      }
      if (files.size() > 10) {
@@ -325,14 +290,8 @@ index be0d587..32e5197 100644
          mpv->command("script-message-to implay command-palette history");
      }
      if (ImGui::MenuItem("menu.open.recent.clear"_i18n)) config->clearRecentFiles();
-     ImGui::EndMenu();
-   }
- }
--}  // namespace ImPlay::Views
-\ No newline at end of file
-+}  // namespace ImPlay::Views
 diff --git a/source/views/debug.cpp b/source/views/debug.cpp
-index a338644..7ca2941 100644
+index a338644..0bc2833 100644
 --- a/source/views/debug.cpp
 +++ b/source/views/debug.cpp
 @@ -42,8 +42,8 @@ void Debug::drawHeader() {
@@ -456,15 +415,8 @@ index a338644..7ca2941 100644
            if (i != 0 && (i + 1) % 4 == 0) {
              AddLog("info", "%s\n", s.c_str());
              s.clear();
-@@ -610,4 +610,4 @@ int Debug::Console::TextEditCallback(ImGuiInputTextCallbackData* data) {
-   }
-   return 0;
- }
--}  // namespace ImPlay::Views
-\ No newline at end of file
-+}  // namespace ImPlay::Views
 diff --git a/source/views/quickview.cpp b/source/views/quickview.cpp
-index 083f3b3..e5a7cca 100644
+index 083f3b3..ac7bdd9 100644
 --- a/source/views/quickview.cpp
 +++ b/source/views/quickview.cpp
 @@ -71,7 +71,7 @@ void Quickview::alignRight(const char *label) {
@@ -632,11 +584,10 @@ index 083f3b3..e5a7cca 100644
 -  return format("{}:lavfi=[anequalizer={}]", name, s);
 +  return ImPlay::format("{}:lavfi=[anequalizer={}]", name, s);
  }
--}  // namespace ImPlay::Views
+ }  // namespace ImPlay::Views
 \ No newline at end of file
-+}  // namespace ImPlay::Views
 diff --git a/source/window.cpp b/source/window.cpp
-index be57b20..9c08278 100644
+index be57b20..1934ac7 100644
 --- a/source/window.cpp
 +++ b/source/window.cpp
 @@ -237,7 +237,7 @@ void Window::handleKey(int key, int action, int mods) {
@@ -657,13 +608,6 @@ index be57b20..9c08278 100644
  }
  
  void Window::sendKeyEvent(std::string key, bool action) {
-@@ -450,4 +450,4 @@ void Window::Waiter::notify() {
-   }
-   cond.notify_one();
- }
--}  // namespace ImPlay
-\ No newline at end of file
-+}  // namespace ImPlay
 -- 
 2.40.1
 
