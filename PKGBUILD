@@ -9,7 +9,7 @@ depends=('python-numpy'
     'python-pandas'
     'python-scipy'
     'python-statsmodels')
-checkdepends=('python-jupyter-client' 'python-pytest' 'python-matplotlib' 'python-nbconvert' 'python-nbformat' 'python-property-cached' 'python-seaborn')
+checkdepends=('python-jupyter-client' 'python-pytest' 'python-matplotlib' 'jupyter-nbconvert' 'jupyter-nbformat' 'python-property-cached' 'python-seaborn')
 makedepends=('cython' 'python-setuptools')
 license=('custom:University of Illinois/NCSA Open Source License')
 arch=('x86_64')
