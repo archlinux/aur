@@ -15,8 +15,9 @@ _dir=ouster_example-${pkgver}/python
 
 prepare() {
     cd ${srcdir}/${_dir}
-    perl -pe 's/,(?!.*,).*?(?=])// if $. == 4' -i pyproject.toml
-    perl -pe 's/(?<={).*(?=})/311/ if $. == 2' -i tox.ini
+    perl -pe "s/,(?!.*,).*?(?=])// if $. == 4" -i pyproject.toml
+    py_version=$(python -c "import sys;print(str(sys.version_info.major)+str(sys.version_info.minor))")
+    perl -pe "s/(?<={).*(?=})/${py_version}/ if $. == 2" -i tox.ini
 }
 
 build() {
