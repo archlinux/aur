@@ -1,0 +1,35 @@
+From 3d389b0735cf2b46a1c747e3fe9f09a5410e7eaf Mon Sep 17 00:00:00 2001
+From: Ivan Shapovalov <intelfx@intelfx.name>
+Date: Fri, 5 May 2023 18:42:52 +0300
+Subject: [PATCH 2/2] configure.ac: accept unreleased libirecovery-1.0 =
+ 1.0.0-<n>
+
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 74782f5..d97959d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -15,7 +15,7 @@ if test -z $PACKAGE_VERSION; then
+ fi
+ 
+ # Minimum package versions
+-LIBIRECOVERY_VERSION=1.0.1
++LIBIRECOVERY_VERSION=1.0.0
+ LIBIMOBILEDEVICE_VERSION=1.3.0
+ LIBPLIST_VERSION=2.3.0
+ LIMD_GLUE_VERSION=1.0.0
+@@ -38,7 +38,7 @@ LT_INIT
+ 
+ # Checks for libraries.
+ AC_SEARCH_LIBS([pthread_create], [pthread])
+-PKG_CHECK_MODULES(libirecovery, libirecovery-1.0 >= $LIBIRECOVERY_VERSION)
++PKG_CHECK_MODULES(libirecovery, libirecovery-1.0 >  $LIBIRECOVERY_VERSION)
+ PKG_CHECK_MODULES(libimobiledevice, libimobiledevice-1.0 >= $LIBIMOBILEDEVICE_VERSION)
+ PKG_CHECK_MODULES(libplist, libplist-2.0 >= $LIBPLIST_VERSION)
+ PKG_CHECK_MODULES(limd_glue, libimobiledevice-glue-1.0 >= $LIMD_GLUE_VERSION)
+-- 
+2.40.1
+
