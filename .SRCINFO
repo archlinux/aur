@@ -1,6 +1,6 @@
 pkgbase = r-viridis
 	pkgdesc = Tools for Spatial Data
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=viridis
 	arch = i686
@@ -15,8 +15,6 @@ pkgbase = r-viridis
 	optdepends = r-knitr
 	optdepends = r-dichromat
 	optdepends = r-colorspace
-	optdepends = r-raster
-	optdepends = r-rastervis
 	optdepends = r-httr
 	optdepends = r-mapproj
 	optdepends = r-vdiffr
@@ -24,9 +22,8 @@ pkgbase = r-viridis
 	optdepends = r-testthat
 	optdepends = r-covr
 	optdepends = r-rmarkdown
-	optdepends = r-rgdal
 	optdepends = r-maps
-	source = https://cran.r-project.org/src/contrib/viridis_0.6.2.tar.gz
-	sha256sums = 69b58cd1d992710a08b0b227fd0a9590430eea3ed4858099412f910617e41311
+	source = https://cran.r-project.org/src/contrib/viridis_0.6.3.tar.gz
+	sha512sums = a4dd9f8d202e122c5f47ccd0ebc076effa89f5043fadfd68b57f9b1895867bf8ee162d82fee08ae9a9bb44ff33ba59e04f9a6ee6e52a78bdf966b3138ff23d3e
 
 pkgname = r-viridis
