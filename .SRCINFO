@@ -1,0 +1,13 @@
+pkgbase = jrsonnet-git
+	pkgver = v0.5.0.pre8.test.r5.g4be0ffe
+	pkgrel = 1
+	url = https://github.com/CertainLach/jrsonnet
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	provides = jrsonnet
+	conflicts = jrsonnet
+	source = git+https://github.com/CertainLach/jrsonnet.git#branch=master
+	sha512sums = SKIP
+
+pkgname = jrsonnet-git
