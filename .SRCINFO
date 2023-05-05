@@ -16,6 +16,7 @@ pkgbase = ungoogled-chromium
 	makedepends = qt5-base
 	makedepends = java-runtime-headless
 	makedepends = git
+	makedepends = dos2unix
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib

@@ -21,7 +21,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
          'libffi' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'nodejs' 'pipewire'
-             'qt5-base' 'java-runtime-headless' 'git')
+             'qt5-base' 'java-runtime-headless' 'git' 'dos2unix')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
             'qt5-base: enable Qt5 with --enable-features=AllowQt'
@@ -178,16 +178,12 @@ prepare() {
   patch -Np1 -i ../download-bubble-typename.patch
   patch -Np1 -i ../webauthn-variant.patch
 
-  # Custom Patches
-  patch -Np1 -i ../ozone-add-va-api-support-to-wayland.patch
-  patch -Np1 -i ../remove-main-main10-profile-limit.patch
-  patch -Np1 -i ../vaapi-add-av1-support.patch
-
   # gcc 13 patches
   patch -Np1 -i ../chromium-112-gcc-13-0001-openscreen.patch
   patch -Np1 -i ../chromium-112-gcc-13-0003-ruy.patch
   patch -Np1 -i ../chromium-112-gcc-13-0004-swiftshader.patch
   patch -Np1 -i ../chromium-112-gcc-13-0005-tensorflow-tflite.patch
+  dos2unix third_party/vulkan_memory_allocator/include/vk_mem_alloc.h
   patch -Np1 -i ../chromium-112-gcc-13-0006-vulkanmemoryallocator.patch
   patch -Np1 -i ../chromium-112-gcc-13-0007-misc.patch
   patch -Np1 -i ../chromium-112-gcc-13-0008-dawn.patch
@@ -205,6 +201,12 @@ prepare() {
   patch -Np1 -i ../chromium-112-gcc-13-0022-gcc-ambiguous-ViewTransitionElementId-type.patch
   patch -Np1 -i ../chromium-112-gcc-13-0023-gcc-incomplete-type-v8-subtype.patch
   patch -Np1 -i ../chromium-113-gcc-13-vulkan-build-fixes.patch
+
+  # Custom Patches
+  patch -Np1 -i ../ozone-add-va-api-support-to-wayland.patch
+  patch -Np1 -i ../vaapi-add-av1-support.patch
+  sed -i '/^bool IsHevcProfileSupported(const VideoType& type) {$/{s++bool IsHevcProfileSupported(const VideoType\& type) { return true;+;h};${x;/./{x;q0};x;q1}' \
+			media/base/supported_types.cc
 
   # Ungoogled Chromium changes
   _ungoogled_repo="$srcdir/$pkgname-$_uc_ver"
