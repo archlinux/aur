@@ -38,7 +38,6 @@ package() {
 
   python "setup.py" install \
     --optimize=1 \
-    --prefix="/usr/" \
     --root="${pkgdir}" \
     --skip-build
 }
