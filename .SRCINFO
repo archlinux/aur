@@ -6,7 +6,6 @@ pkgbase = python-sqlalchemy2-stubs
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python>=3.11
 	depends = python>=3.11
 	source = https://files.pythonhosted.org/packages/source/s/sqlalchemy2-stubs/sqlalchemy2-stubs-0.0.2a29.tar.gz
 	b2sums = 208850a5bd16aa623ab6b9a5883b855dbe88b504150833cfb873904048db74d98749f48a34ab108b08f5294fb13e16c1061a07deb3cc8f04bdbb4fcc05150d89

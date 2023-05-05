@@ -12,7 +12,6 @@ depends=(
 )
 makedepends=(
 	'python-setuptools'
-	'python>=3.11'
 )
 license=('MIT')
 arch=('any')
