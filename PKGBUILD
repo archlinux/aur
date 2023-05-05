@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname='python-ssh2'
 _pkgname='ssh2-python'
-pkgver=0.27.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Python bindings for libssh2"
 url="https://github.com/ParallelSSH/ssh2-python/"
@@ -12,7 +12,7 @@ license=('GPL')
 arch=('x86_64')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ParallelSSH/$_pkgname/archive/$pkgver.tar.gz"
     "fix-tests.patch")
-sha256sums=('6da1c0331aef63f4a4c6cd27e5cb06bab7dcf311d887e918c6d6d058debb18fe'
+sha256sums=('70c6b6efd8ca9f8de9c2d77e7cb1d5859542588347ea426d6822b0ffd9889af3'
             'b328ec97238be0fab6171108666c18f7818de2dea247857851b2356303d65e19')
 
 prepare() {

@@ -1,6 +1,6 @@
 pkgbase = python-ssh2
 	pkgdesc = Python bindings for libssh2
-	pkgver = 0.27.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/ParallelSSH/ssh2-python/
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = python-ssh2
 	makedepends = python-setuptools
 	makedepends = cython
 	depends = libssh2
-	source = python-ssh2-0.27.0.tar.gz::https://github.com/ParallelSSH/ssh2-python/archive/0.27.0.tar.gz
+	source = python-ssh2-1.0.0.tar.gz::https://github.com/ParallelSSH/ssh2-python/archive/1.0.0.tar.gz
 	source = fix-tests.patch
-	sha256sums = 6da1c0331aef63f4a4c6cd27e5cb06bab7dcf311d887e918c6d6d058debb18fe
+	sha256sums = 70c6b6efd8ca9f8de9c2d77e7cb1d5859542588347ea426d6822b0ffd9889af3
 	sha256sums = b328ec97238be0fab6171108666c18f7818de2dea247857851b2356303d65e19
 
 pkgname = python-ssh2
