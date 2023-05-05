@@ -1,4 +1,4 @@
-# Maintainer: SnipeX (SnipeX_ / Andrej Halveland) <andrej.halv@gmail.com>
+# Maintainer: Andrej Halveland (SnipeX_ / SnipeX) <andrej.halv@gmail.com>
 
 pkgname=qnearbyshare-git
 pkgver=r36.b17c72d
