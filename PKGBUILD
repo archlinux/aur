@@ -3,7 +3,7 @@
 _reponame=Shipwright
 pkgbase=soh-git
 pkgname=(soh-git soh-otr-exporter-git)
-pkgver=7.0.0.r0.g3f896f126
+pkgver=7.0.0.r15.g1fbec4c69
 pkgrel=1
 arch=("x86_64" "i686")
 url="https://shipofharkinian.com/"
@@ -20,7 +20,7 @@ source=("git+https://github.com/HarbourMasters/${_reponame}.git"
 sha256sums=('SKIP'
             'SKIP'
             '25aebd34f6ad49073d8a5ce6915b6fa290470fc6d62a8143abe07a25707ff4a2'
-            '200cba1e21ef57cf80bd8962ca6d5631062a7c056c897c2a4d58bfb8217ddef7'
+            '4e5ff4c6fc0fc7daea80deb29d412d26c27769a0882ef86c2cb6cef0f60dc705'
             '808049e8f02d78188490afc4632e3bec0253d7c3c62d85492172938e35d1165f'
             '6e735877e7bba81f9f308f6eabbdfe5354f2c331a9acf9a16ab02a5681f2c25f')
 
