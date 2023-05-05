@@ -1,6 +1,6 @@
 pkgbase = libirecovery-git
 	pkgdesc = Library and utility to talk to iBoot/iBSS via USB
-	pkgver = 1.0.0.r27.ge017429
+	pkgver = 1.0.0.r59.g28be953
 	pkgrel = 1
 	epoch = 2
 	url = http://www.libimobiledevice.org/
@@ -10,8 +10,10 @@ pkgbase = libirecovery-git
 	makedepends = git
 	depends = libusb
 	depends = readline
+	depends = libplist-git
 	depends = libimobiledevice-glue-git
-	provides = libirecovery
+	provides = libirecovery-1.0.so
+	provides = libirecovery=1.0.0.r59.g28be953
 	conflicts = libirecovery
 	source = git+https://github.com/libimobiledevice/libirecovery
 	md5sums = SKIP
