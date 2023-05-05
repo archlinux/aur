@@ -1,7 +1,7 @@
 pkgbase = kodi-addon-checker
 	pkgdesc = Check kodi addons or whole kodi repositories for errors and best practices.
 	pkgver = 0.0.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/kodi-addon-checker
 	arch = any
 	license = GPL3
