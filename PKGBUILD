@@ -2,11 +2,11 @@
 # Contributor: Codist <countstarlight@gmail.com>
 
 pkgname=deepin-wine-tim
-pkgver=3.4.5.22071
+pkgver=3.4.6.22077
 _debpkgver=9.3.2deepin20
 _debpkgname="com.qq.im.deepin"
 _timpkgname="com.qq.office.deepin"
-pkgrel=2
+pkgrel=1
 pkgdesc="Tencent TIM on Deepin Wine5(${_timpkgname}) For Archlinux"
 arch=("x86_64")
 url="https://tim.qq.com/"
@@ -16,18 +16,18 @@ conflicts=('wine-tim' 'deepin.com.qq.office' 'deepin-tim-for-arch')
 install="deepin-wine-tim.install"
 _mirror="https://com-store-packages.uniontech.com"
 source=("$_mirror/appstore/pool/appstore/c/${_debpkgname}/${_debpkgname}_${_debpkgver}_i386.deb"
-  "https://dldir1.qq.com/qqfile/qq/TIM3.4.5/TIM${pkgver}.exe"
+  "https://dldir1.qq.com/qqfile/qq/TIM3.4.6/TIM${pkgver}.exe"
   "run.sh"
   "share.7z")
 md5sums=('5fdc20e614d945bd2ba5251420872479'
-         '91ad8ac2055e10385e8016058dfc2e7b'
-         '3ffc2a7c521bb6d7c929c6fd6864ac2c'
+         'f6402d994bccad43236ef0dba03c7ced'
+         '325e8182c7aa56e5e99a04e3a326510e'
          '479ae2a04a9c5dcc08c67c7b1395a944')
 
 build() {
   printf "Extracting DPKG package ...\n"
-  mkdir -p "${srcdir}/dpkgdir"
-  tar -xvf data.tar.xz -C "${srcdir}/dpkgdir"
+  install -d "${srcdir}/dpkgdir"
+  tar -xvpf data.tar.xz -C "${srcdir}/dpkgdir"
   #sed "s/\(Categories.*$\)/\1Network;/" -i "${srcdir}/dpkgdir/usr/share/applications/deepin.com.qq.office.desktop"
   #sed "13s/TIM.exe/tim.exe/" -i "${srcdir}/dpkgdir/usr/share/applications/deepin.com.qq.office.desktop"
   printf "Extracting Deepin Wine QQ archive ...\n"
