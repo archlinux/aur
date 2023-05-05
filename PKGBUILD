@@ -2,12 +2,12 @@
 execname=gmodcefcodecfix
 pkgname="$execname-bin"
 projname=GModCEFCodecFix
-pkgver=20221219
-pkgrel=2
+pkgver=20230116
+pkgrel=3
 srcdir="$pkgname-$pkgver"
 binname="$projname-Linux"
 epoch=
-pkgdesc="Automatic Patching/Updating of GMod CEF"
+pkgdesc="Automatic Patching of GMod CEF for Proprietary Video/Audio Codec Support"
 arch=('x86_64')
 url="https://github.com/solsticegamestudios/$projname"
 license=('GPL3')
@@ -24,7 +24,7 @@ options=()
 changelog=
 source=("$url/releases/download/$pkgver/$binname")
 noextract=()
-md5sums=('38816a3920fba1ead73c736b8fdbfd89')
+md5sums=('8cbb993b202589ff27e0df32c912b2d6')
 validpgpkeys=()
 
 package() {
