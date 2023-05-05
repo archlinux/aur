@@ -6,7 +6,7 @@
 # https://wiki.archlinux.org/index.php/AUR_submission_guidelines#Publishing_new_package_content
 
 pkgname=junest-git
-pkgver=7.1.1
+pkgver=7.4.2.r2.ba0ddcc
 pkgrel=1
 pkgdesc="The Arch Linux based distro that runs upon any Linux distros without root access"
 arch=('any')
@@ -59,6 +59,7 @@ package() {
 
     install -d -m 755 "${pkgdir}/usr/bin"
     ln -s ../../opt/${pkgname%-git}/bin/${pkgname%-git} ${pkgdir}/usr/bin/${pkgname%-git}
+    ln -s ../../opt/${pkgname%-git}/bin/sudoj ${pkgdir}/usr/bin/sudoj
 }
 
 # vim:set ts=2 sw=2 et:
