@@ -8,8 +8,8 @@ pkgdesc='Tool for viewing the difference between two CSV, TSV or JSON files.'
 arch=('any')
 url=''https://pypi.org/project/csv-diff/
 license=('Apache')
-depends=('python')
-makedepends=('python-setuptools' 'python-pip' 'python-dictdiffer' 'python-click')
+depends=('python' 'python-dictdiffer' 'python-click')
+makedepends=('python-setuptools' 'python-pip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/simonw/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz"
         "setup-exclude-tests.patch")
 sha256sums=('588a9b3203564e875030f7ef47b96ccb4ee134d70a09c0175c0881580a00a7bf'
