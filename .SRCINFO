@@ -9,9 +9,12 @@ pkgbase = usbmuxd-git
 	license = GPL2
 	license = GPL3
 	makedepends = git
-	depends = libimobiledevice
+	makedepends = systemd
+	depends = libimobiledevice-git
+	depends = libusb
+	depends = libplist-git
 	depends = libimobiledevice-glue-git
-	provides = usbmuxd
+	provides = usbmuxd=1.1.1.r47.g049877e
 	conflicts = usbmuxd
 	source = git+https://github.com/libimobiledevice/usbmuxd
 	source = usbmuxd.sysusers
