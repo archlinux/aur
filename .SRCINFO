@@ -1,7 +1,7 @@
 pkgbase = python-qiskit-finance
 	pkgdesc = Quantum Finance package for IBM qiskit framework
 	pkgver = 0.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Qiskit/qiskit-finance
 	arch = any
 	license = Apache
