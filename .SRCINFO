@@ -1,31 +1,99 @@
 pkgbase = sfizz-git
-	pkgdesc = SFZ library and LV2 plugin
-	pkgver = r3815.fc1f0451
+	pkgdesc = SFZ based sampler (git version)
+	pkgver = 1.2.1.r2.g6cd063da
 	pkgrel = 1
 	url = https://sfz.tools/sfizz
 	arch = x86_64
 	license = custom:BSD-2-Clause
 	license = custom:ISC
-	makedepends = git
+	checkdepends = lv2lint
+	checkdepends = catch2
 	makedepends = cmake
-	depends = jack
-	depends = libx11
-	depends = libxcb
-	depends = xcb-util
-	depends = xcb-util-cursor
-	depends = xcb-util-keysyms
-	depends = libxkbcommon
-	depends = libxkbcommon-x11
-	depends = fontconfig
-	depends = cairo
-	depends = freetype2
-	depends = pango
-	depends = zenity
-	optdepends = pd: sfizz external for puredata
+	makedepends = cxxopts
+	makedepends = freetype2
+	makedepends = ghc-filesystem
+	makedepends = git
+	makedepends = jack
+	makedepends = lv2
+	makedepends = xcb-util-keysyms
+	source = sfizz::git+https://github.com/sfztools/sfizz#branch=develop
+	sha512sums = SKIP
+	b2sums = SKIP
+
+pkgname = sfizz-git
+	depends = sfizz-clients-git=1.2.1.r2.g6cd063da
+	depends = sfizz-lib-git=1.2.1.r2.g6cd063da
+	depends = sfizz-lv2-git=1.2.1.r2.g6cd063da
+	depends = sfizz-pd-git=1.2.1.r2.g6cd063da
+	depends = sfizz-vst3-git=1.2.1.r2.g6cd063da
 	provides = sfizz
 	provides = libsfizz.so
 	conflicts = sfizz
-	source = sfizz-git::git+https://github.com/sfztools/sfizz#branch=develop
-	sha512sums = SKIP
 
-pkgname = sfizz-git
+pkgname = sfizz-clients-git
+	pkgdesc = SFZ based sampler (git version) - JACK and render clients
+	groups = pro-audio
+	depends = abseil-cpp
+	depends = gcc-libs
+	depends = glibc
+	depends = jack
+	depends = sfizz-lib-git=1.2.1.r2.g6cd063da
+
+pkgname = sfizz-lib-git
+	pkgdesc = SFZ based sampler (git version) - Engine library
+	groups = pro-audio
+	depends = abseil-cpp
+	depends = gcc-libs
+	depends = glibc
+	depends = pugixml
+
+pkgname = sfizz-lv2-git
+	pkgdesc = SFZ based sampler (git version) - LV2 plugin
+	groups = pro-audio
+	groups = lv2-plugins
+	depends = abseil-cpp
+	depends = gcc-libs
+	depends = glibc
+	depends = cairo
+	depends = fontconfig
+	depends = libx11
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = pango
+	depends = pugixml
+	depends = ttf-roboto
+	depends = xcb-util
+	depends = xcb-util-cursor
+	depends = zenity
+	depends = lv2-host
+	depends = sfizz-lib-git=1.2.1.r2.g6cd063da
+
+pkgname = sfizz-pd-git
+	pkgdesc = SFZ based sampler (git version) - Pure Data plugin
+	groups = pro-audio
+	depends = abseil-cpp
+	depends = gcc-libs
+	depends = glibc
+	depends = pd
+	depends = sfizz-lib-git=1.2.1.r2.g6cd063da
+
+pkgname = sfizz-vst3-git
+	pkgdesc = SFZ based sampler (git version) - VST3 plugin
+	groups = pro-audio
+	groups = vst3-plugins
+	depends = abseil-cpp
+	depends = gcc-libs
+	depends = glibc
+	depends = cairo
+	depends = fontconfig
+	depends = libx11
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = pango
+	depends = pugixml
+	depends = ttf-roboto
+	depends = xcb-util
+	depends = xcb-util-cursor
+	depends = zenity
+	depends = vst3-host
+	depends = sfizz-lib-git=1.2.1.r2.g6cd063da
