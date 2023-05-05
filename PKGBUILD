@@ -48,6 +48,9 @@ package() {
 	cd $srcdir/build
 	make DESTDIR="$pkgdir/" install
 	cd pymoab
-	pip uninstall -y pymoab
-	python setup.py install --prefix=$pkgdir/opt/MOAB
+
+	# check if pymoab already installed
+	if ! [ -d "opt/MOAB/lib/python"* ]; then
+		python setup.py install --prefix=$pkgdir/opt/MOAB
+	fi
 }
