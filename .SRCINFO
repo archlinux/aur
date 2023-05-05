@@ -1,7 +1,7 @@
 pkgbase = bitronics-studio-5-bin
 	pkgdesc = Software for "Юный Нейромоделист" setup by BiTronicsLab.
 	pkgver = 5.3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitronicslab.com
 	install = bitronics-studio-5-bin.install
 	arch = x86_64
@@ -16,16 +16,12 @@ pkgbase = bitronics-studio-5-bin
 	depends = libxcb>=1.10
 	depends = libxkbcommon>=0.5.0
 	depends = libxkbcommon-x11>=0.5.0
-	depends = libpng>=1.6
-	depends = pcre2>=10.42
-	depends = mesa
+	depends = gcc-libs
 	depends = xcb-util-image>=0.2.1
 	depends = xcb-util-keysyms>=0.4.0
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm>=0.4.1
 	depends = zlib>=1.2.3.4
-	options = !strip
-	options = !emptydirs
 	source_x86_64 = https://www.download.bitronicslab.com/YN/soft/BS_YN/linux/BTStudio5JN-5.3.8.deb
 	sha512sums_x86_64 = 6bada78349ebc602baa2535cc02b4f75b8d50d570ab1b3c32a7cedf8f4ce3c2f6fd841230a2a0957e83e764de3d27ec0f87e029a3169c9a595232fca07799fd3
 
