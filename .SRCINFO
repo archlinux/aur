@@ -1,0 +1,13 @@
+pkgbase = yelp-xsl-338
+	pkgdesc = Document transformations from Yelp (Version 3.38)
+	pkgver = 3.38.3
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/yelp-xsl
+	arch = any
+	license = GPLv2
+	makedepends = itstool
+	makedepends = git
+	source = https://download.gnome.org/sources/yelp-xsl/3.38/yelp-xsl-3.38.3.tar.xz
+	sha256sums = SKIP
+
+pkgname = yelp-xsl-338
