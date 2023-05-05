@@ -5,22 +5,22 @@
 # Contributor: Michael Gerhaeuser <michael dot gerhaeuser at gmail dot com>
 
 pkgname=libusbmuxd-git
-pkgver=2.0.2.r18.g2ec5354
+pkgver=2.0.2.r30.gf47c36f
 pkgrel=1
 pkgdesc="A client library to multiplex connections from and to iOS devices"
 url="http://www.libimobiledevice.org/"
 arch=('i686' 'x86_64')
 license=('LGPL2.1' 'GPL2')
-depends=('libusb' 'libplist' 'libimobiledevice-glue-git')
-makedepends=('git')
-provides=('libusbmuxd')
+depends=('libplist-git' 'libimobiledevice-glue-git')
+makedepends=(git)
+provides=(libusbmuxd-2.0.so "libusbmuxd=$pkgver")
 conflicts=('libusbmuxd' 'usbmuxd<1.0.9')
 source=("git+https://github.com/libimobiledevice/libusbmuxd")
 sha512sums=('SKIP')
 
 pkgver() {
 	cd libusbmuxd
-	git describe --long --tags | sed 's/-/.r/;s/-/./'
+	git describe --long --tags | sed 's/^v//;s/[^-]*-g/r&/;s/-/./g'
 }
 
 prepare() {
@@ -30,7 +30,8 @@ prepare() {
 
 build() {
 	cd libusbmuxd
-	./configure --prefix=/usr
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+	#sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool # not needed anymore (libtool honors $LDFLAGS now)
 	make
 }
 
