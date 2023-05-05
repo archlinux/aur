@@ -1,6 +1,6 @@
 pkgbase = usbmuxd-git
 	pkgdesc = A socket daemon to multiplex connections from and to iOS devices
-	pkgver = 1.1.1.r28.gb1c7b16
+	pkgver = 1.1.1.r47.g049877e
 	pkgrel = 1
 	epoch = 1
 	url = http://www.libimobiledevice.org/

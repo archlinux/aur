@@ -5,15 +5,15 @@
 
 pkgname=usbmuxd-git
 epoch=1
-pkgver=1.1.1.r28.gb1c7b16
+pkgver=1.1.1.r47.g049877e
 pkgrel=1
 pkgdesc="A socket daemon to multiplex connections from and to iOS devices"
 url="http://www.libimobiledevice.org/"
 arch=('i686' 'x86_64')
 license=('GPL2' 'GPL3')
-depends=('libimobiledevice' 'libimobiledevice-glue-git')
-makedepends=('git')
-provides=('usbmuxd')
+depends=('libimobiledevice-git' 'libusb' 'libplist-git' 'libimobiledevice-glue-git')
+makedepends=('git' 'systemd')
+provides=("usbmuxd=$pkgver")
 conflicts=('usbmuxd')
 source=("git+https://github.com/libimobiledevice/usbmuxd"
         usbmuxd.sysusers)
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd usbmuxd
-	git describe --long --tags | sed 's/-/.r/;s/-/./'
+	git describe --long --tags | sed 's/[^-]*-g/r&/;s/-/./g'
 }
 
 prepare() {
@@ -32,13 +32,19 @@ prepare() {
 
 build() {
 	cd usbmuxd
-	./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin
+	#sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool # not needed anymore (libtool honors $LDFLAGS now)
 	make
+}
+
+check() {
+	cd usbmuxd
+	make check
 }
 
 package() {
 	cd usbmuxd
-	make DESTDIR="$pkgdir" install
+	make DESTDIR="${pkgdir}" install
 
-	install -Dm644 "$srcdir/usbmuxd.sysusers" "$pkgdir/usr/lib/sysusers.d/usbmuxd.conf"
+	install -Dm644 "$srcdir"/usbmuxd.sysusers "$pkgdir"/usr/lib/sysusers.d/usbmuxd.conf
 }
