@@ -1,7 +1,7 @@
 
 #Maintainer : Jonathan Dönszelmann <jonabent@gmail.com>
 pkgname="pointless"
-kgver=1.6.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="An endless drawing canvas desktop app made with Tauri (Rust) and React"
 arch=(x86_64)
