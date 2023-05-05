@@ -30,7 +30,7 @@ b2sums=(
 )
 
 prepare() {
-  sed -i -r '1,/^\[/{/^#|^$/d}; s/(Exec=).*(electrum.+%u).*/\1\2/' \
+  sed -i -r '/^#/,/^\[Desktop Entry\]$/{/^#|^$/d}; s/(Exec=).*(electrum.+%u).*/\1\2/' \
     Electrum-LTC-$pkgver/electrum-ltc.desktop
 }
 
