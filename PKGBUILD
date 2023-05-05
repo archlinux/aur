@@ -7,7 +7,7 @@
 
 pkgname=mirage
 pkgver=0.11.1
-pkgrel=3
+pkgrel=4
 _debian_pkgrel=1build4
 pkgdesc="A fast and simple GTK+ Image Viewer"
 arch=('any')
