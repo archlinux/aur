@@ -1,7 +1,7 @@
 # Maintainer: Steven Seifried <gitlab@canox.net>
 # Contributor: Steven Seifried <gitlab@canox.net>
 pkgname=tuxedo-keyboard-ite-dkms
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Per-key keyboard backlight driver for TUXEDO ITE Keyboards devices."
 url="https://www.tuxedocomputers.com/"
@@ -15,8 +15,8 @@ optdepends=('linux-headers: build modules against Arch kernel'
             'linux-zen-headers: build modules against ZEN kernel'
             'linux-hardened-headers: build modules against the HARDENED kernel')
 source=(http://rpm.tuxedocomputers.com/opensuse/15.4/noarch/tuxedo-keyboard-ite-${pkgver}-1.noarch.rpm)
-sha256sums=('0142a8a0fc45e1bef22127372587abb7c980058ae93ed74f85079b73d6ada56e')
-sha512sums=('615e44dbe2b0bc302dea72becf354c256a57547db5eb82fe058123a2b46520e467eb2211fe7c1ba481182b9670a82f53692057d97a61f96365e8cbd8446283b8')
+sha256sums=('4732e7fe1c91bfa87241dd2b4357f51184c662021fc5be9107d1e0a16dd801dd')
+sha512sums=('043426ae8de5a2e1a23cc36ed5a4934ed0fd564722da9591829cab68a764fe1a90f7bc7cedf2d104d1a24d47869061522041d1f7efab477e0c24eae3c6487887')
 package() {
   mkdir -p "${pkgdir}/usr/src/tuxedo-keyboard-ite-${pkgver}"
   cp -r "${srcdir}/usr/src/tuxedo-keyboard-ite-${pkgver}"/* "${pkgdir}/usr/src/tuxedo-keyboard-ite-${pkgver}"
