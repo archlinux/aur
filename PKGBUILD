@@ -1,8 +1,8 @@
 # Maintainer: Will Elliott <troutcobbler@gmail.com>
 
 pkgname=goober
-pkgver=0.1.1
-pkgrel=4
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="Workspace module generator for eww."
 url='https://bitbucket.org/troutcobbler/goober'
 arch=(x86_64)
