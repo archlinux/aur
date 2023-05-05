@@ -1,11 +1,12 @@
 pkgbase = loaf
 	pkgdesc = Simple terminal slack client written in Python
-	pkgver = r22.ff9519d
+	pkgver = r24.cb9c4ed
 	pkgrel = 1
 	url = https://github.com/NickBeeuwsaert/loaf
 	arch = any
 	license = LGPL
 	makedepends = python-setuptools
+	makedepends = git
 	depends = python-pyxdg
 	depends = python-requests
 	depends = python-pyramid

@@ -1,11 +1,11 @@
 # Contributor: Connor Behan <connor.behan@gmail.com>
 
 pkgname="loaf"
-pkgver=r22.ff9519d
+pkgver=r24.cb9c4ed
 pkgrel=1
 pkgdesc="Simple terminal slack client written in Python"
 arch=('any')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'git')
 depends=('python-pyxdg' 'python-requests' 'python-pyramid' 'python-aiohttp' 'python-urwid')
 license=('LGPL')
 url="https://github.com/NickBeeuwsaert/loaf"
