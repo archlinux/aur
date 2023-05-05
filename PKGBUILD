@@ -4,7 +4,7 @@
 # Contributor: Brandon Invergo <brandon@invergo.net>
 
 pkgname=img2pdf-git
-pkgver=0.4.3.r11.ge8ca537
+pkgver=0.4.4.r10.gbe83693
 pkgrel=1
 epoch=1
 pkgdesc='Losslessly convert raster images to PDF'
@@ -12,7 +12,7 @@ arch=(any)
 url="https://gitlab.mister-muffin.de/josch/img2pdf"
 license=(LGPL3)
 depends=(python-pillow python-pikepdf)
-makedepends=(git python-setuptools)
+makedepends=(git python-setuptools python-build python-installer python-wheel)
 checkdepends=(python-pytest python-numpy python-scipy python-lxml
               colord ghostscript imagemagick mupdf-tools openjpeg2 poppler perl-image-exiftool netpbm)
 provides=('img2pdf')
@@ -27,7 +27,7 @@ pkgver() {
 
 build() {
     cd ${pkgname%-git}
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 check() {
@@ -41,12 +41,12 @@ check() {
         -i src/img2pdf_test.py
     sed 's|usr/share/color/icc/sRGB.icc|usr/share/color/icc/colord/sRGB.icc|g' -i src/img2pdf_test.py
     # Failures with depth
-    python -m pytest || echo "Tests failed"
+    pytest -vv --color=yes || echo "Tests failed"
 }
 
 package() {
     cd ${pkgname%-git}
-    python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 # vim: set ts=4 sw=4 et:
