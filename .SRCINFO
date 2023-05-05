@@ -1,7 +1,7 @@
 pkgbase = changedetection.io
 	pkgdesc = change monitoring of web pages
 	pkgver = 0.41.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dgtlmoon/changedetection.io
 	arch = any
 	license = Apache 2.0
@@ -25,7 +25,7 @@ pkgbase = changedetection.io
 	depends = python-wtforms
 	depends = python-jsonpath-ng
 	depends = python-jq
-	depends = python-apprise
+	depends = apprise
 	depends = python-paho-mqtt
 	depends = python-cryptography
 	depends = python-bs4

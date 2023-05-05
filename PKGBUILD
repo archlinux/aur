@@ -2,7 +2,7 @@
 
 pkgname=changedetection.io
 pkgver=0.41.1
-pkgrel=1
+pkgrel=2
 pkgdesc='change monitoring of web pages'
 arch=('any')
 url='https://github.com/dgtlmoon/changedetection.io'
@@ -28,7 +28,7 @@ depends=(# ordered per https://github.com/dgtlmoon/changedetection.io/blob/maste
          'python-wtforms'
          'python-jsonpath-ng'
          'python-jq'
-         'python-apprise'
+         'apprise'
          'python-paho-mqtt'
          'python-cryptography'
          'python-bs4'
