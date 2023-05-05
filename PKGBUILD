@@ -50,7 +50,7 @@ package() {
 	cd pymoab
 
 	# check if pymoab already installed
-	if ! [ -d "opt/MOAB/lib/python"* ]; then
+	if ! [ -d "/opt/MOAB/lib/python"* ]; then
 		python setup.py install --prefix=$pkgdir/opt/MOAB
 	fi
 }
