@@ -1,15 +1,16 @@
-# Maintainer: Arturo Penen <apenen@gmail.com>
+# Maintainer: Joern Griepenburg <joegriepen at gmail dot com>
+# Contributer: Arturo Penen <apenen@gmail.com>
 
 pkgname=kyma
-pkgver=2.9.1
+pkgver=2.13.2
 pkgrel=1
 pkgdesc='Provides a set of commands you can use to install, manage, and test Kyma.'
-arch=('x86_64')
 url='https://github.com/kyma-project/cli'
+arch=('x86_64')
 license=('Apache')
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/kyma-project/cli/archive/$pkgver.tar.gz")
-sha256sums=('2c0a036928f611b6053119cf9a845f40226156033aa893058eac98223c59abc9')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('9bd36f95b45d23dd5f8de310700c7b2696040db30a59878640e43f0789d0e728')
 
 build() {
   cd cli-$pkgver
@@ -26,3 +27,5 @@ package() {
   "${pkgdir}/usr/bin/kyma" completion bash > "${pkgdir}/usr/share/bash-completion/completions/kyma"
   "${pkgdir}/usr/bin/kyma" completion zsh >  "${pkgdir}/usr/share/zsh/site-functions/_kyma"
 }
+
+# vim: ft=sh ts=2 sw=2 et
