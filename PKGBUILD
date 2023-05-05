@@ -3,10 +3,10 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=GenomeInfoDb
-_bcver=1.34.9
+_bcver=1.36.0
 pkgname="r-${_bcname,,}"
 pkgver="${_bcver//[:-]/.}"
-pkgrel=3
+pkgrel=1
 pkgdesc="Utilities for manipulating chromosome names, including modifying them to follow a particular naming style"
 arch=("any")
 url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
@@ -39,7 +39,7 @@ checkdepends=(
 )
 
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=('d6e3e86125cc3f5e1ac703a75cee215da5da74321729a4b0b9956883049ca61a5bd1f104809c895ebb13aae75618b2d644607a63a779388d54443a738c9a9afd')
+b2sums=("2bd7ed553f7a2bbe37f71d4eee98152907f47f206f657fbdbfc192d385671715be397407e3a3feb827ec73f2f1e52ce1beac68a0460de0224ed3b3c1368eddd5")
 
 build() {
     mkdir -p "${srcdir}/build/"
