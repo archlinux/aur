@@ -1,0 +1,24 @@
+pkgbase = com.screener-plugin.deepin
+	pkgdesc = 屏幕截图精灵
+	pkgver = 1.0.0.2
+	pkgrel = 1
+	url = https://deepin-wine.i-m.dev/
+	arch = x86_64
+	license = custom
+	depends = alsa-lib
+	depends = glibc
+	depends = glib2
+	depends = gdk-pixbuf2
+	depends = freetype2
+	depends = libx11
+	depends = pango
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = cairo
+	depends = fontconfig
+	depends = gtk2
+	depends = bash
+	source = https://com-store-packages.uniontech.com/appstore/pool/appstore/c/com.screener-plugin.deepin/com.screener-plugin.deepin_1.0.0.2eepin1_i386.deb
+	sha256sums = a0732a6c456798ddc5c0f4269aff82bcb5f87b382902373266ca9ebcbe622e11
+
+pkgname = com.screener-plugin.deepin
