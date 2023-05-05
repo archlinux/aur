@@ -3,7 +3,7 @@
 pkgname=alternatives
 pkgver=1.24
 pkgrel=1
-pkgdesc="A tool to maintain symbolic links determining default commands."
+pkgdesc="Fedora's tool to maintain symbolic links determining default commands."
 arch=('i686' 'x86_64')
 url='https://github.com/fedora-sysv/chkconfig'
 license=('GPL2')
