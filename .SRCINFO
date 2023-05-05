@@ -1,7 +1,7 @@
 pkgbase = proton-experimental
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components, experimental branch
-	pkgver = 8.0.20230426
-	pkgrel = 2
+	pkgver = 8.0.20230505
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/ValveSoftware/Proton
 	install = proton-experimental.install
@@ -162,7 +162,7 @@ pkgbase = proton-experimental
 	options = !staticlibs
 	options = !lto
 	options = emptydirs
-	source = proton::git+https://github.com/ValveSoftware/Proton.git#tag=experimental-8.0-20230426
+	source = proton::git+https://github.com/ValveSoftware/Proton.git#tag=experimental-8.0-20230505
 	source = wine-valve::git+https://github.com/ValveSoftware/wine.git
 	source = dxvk-valve::git+https://github.com/ValveSoftware/dxvk.git
 	source = openvr::git+https://github.com/ValveSoftware/openvr.git
@@ -191,6 +191,7 @@ pkgbase = proton-experimental
 	source = https://github.com/madewokherd/wine-mono/releases/download/wine-mono-7.4.1/wine-mono-7.4.1-x86.tar.xz
 	source = 0001-AUR-Pkgbuild-changes.patch
 	source = 0002-AUR-Do-not-update-cargo-crates.patch
+	source = fix_hwnd_changes_meaning.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -220,5 +221,6 @@ pkgbase = proton-experimental
 	sha256sums = 1286afc67b0a329f5e2d98d9e803ca5906a841ad5486e9b3b1fefa1124b15622
 	sha256sums = 1a7304d8e26cfc91cc059f9129f8287ca32ab68f9ec20fd7997021c6602ba723
 	sha256sums = fd047f0a441ef3d761c291fedd44fe351c125ada51cabcaf102f85cbffaaed6f
+	sha256sums = 20824bb565fefcad4aa978c54e0f8b9d9d17b7b52fb03fc87943150de148f06f
 
 pkgname = proton-experimental
