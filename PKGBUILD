@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=v4l-utils-git
-pkgver=1.24.1.r32.g399d70f1
+pkgver=1.24.1.r35.g54893534
 pkgrel=1
 pkgdesc="Userspace tools and conversion library for Video 4 Linux"
 arch=('i686' 'x86_64')
 url="https://linuxtv.org/"
 license=('GPL' 'LGPL')
-depends=('gcc-libs' 'hicolor-icon-theme' 'libjpeg-turbo' 'sysfsutils')
-makedepends=('git' 'alsa-lib' 'qt5-base')
+depends=('gcc-libs' 'hicolor-icon-theme' 'json-c' 'libbpf' 'libjpeg-turbo')
+makedepends=('git' 'alsa-lib' 'meson' 'qt5-base')
 provides=("v4l-utils=$pkgver")
 conflicts=('v4l-utils')
 options=('staticlibs')
@@ -28,23 +28,27 @@ pkgver() {
 build() {
   cd "v4l-utils"
 
-  ./bootstrap.sh
-  ./configure \
+  meson setup \
+    --buildtype=plain \
     --prefix="/usr" \
-    --sysconfdir="/etc" \
-    --sbindir="/usr/bin"
-  make
+    --sbindir="bin" \
+    -Ddefault_library="both" \
+    "_build"
+  meson compile -C "_build"
 }
 
 check() {
   cd "v4l-utils"
 
-  #make check
+  #meson test -C "_build"
 }
 
 package() {
   cd "v4l-utils"
 
-  make DESTDIR="$pkgdir" install
+  meson install -C "_build" --destdir "$pkgdir"
   rm "$pkgdir/usr/bin/ivtv-ctl"
+
+  mv "$pkgdir/usr/sbin/v4l2-dbg" "$pkgdir/usr/bin"
+  rmdir "$pkgdir/usr/sbin"
 }
