@@ -1,0 +1,11 @@
+pkgbase = ivpn-openrc
+	pkgdesc = OpenRC service for ivpn VPN service
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/ivpn-vpn-openrc
+	arch = any
+	license = GPL
+	depends = openrc
+	depends = ivpn
+
+pkgname = ivpn-openrc
