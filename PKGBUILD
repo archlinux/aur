@@ -1,9 +1,9 @@
 # Maintainer: solopasha <daron439 at gmail dot com>
 pkgname=torrserver-git
-pkgver=MatriX.119.r0.gaa6d8af
+pkgver=123.1.r0.g5179d15
 pkgrel=1
 pkgdesc="Torrent stream server"
-arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64' 'i686')
+arch=('x86_64' 'armv7h' 'aarch64' 'i686')
 url="https://github.com/YouROK/TorrServer"
 license=("GPL3")
 provides=("${pkgname%-git}")
@@ -11,15 +11,15 @@ conflicts=("${pkgname%-git}")
 depends=("glibc" "gcc-libs")
 makedepends=("git" "go" "yarn")
 options=(!lto)
-source=("${pkgname}::git+${url}.git#branch=master"
+source=("${pkgname}::git+${url}.git"
         "torrserver.service")
 install=torrserver.install
 sha512sums=('SKIP'
-            '951b0f4361a668cdae8933fdcffee48ca6759b7257b2253d5d383282db4a9413c3b014f7c8dbf8c2877ac3fed52040fd0c7f181874a0432d927f43ea7ec3e61d')
+            '73766959e977015a928fd9739344c51893fac5a119a80bbb499410fab8093c9d6e5f3b884d825fff48ff749b375f53e6a15c525cc0e0700e726b3945f49c287e')
 
 pkgver() {
     cd "$pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^MatriX\.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

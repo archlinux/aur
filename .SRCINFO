@@ -1,12 +1,10 @@
 pkgbase = torrserver-git
 	pkgdesc = Torrent stream server
-	pkgver = MatriX.119.r0.gaa6d8af
+	pkgver = 123.1.r0.g5179d15
 	pkgrel = 1
 	url = https://github.com/YouROK/TorrServer
 	install = torrserver.install
 	arch = x86_64
-	arch = arm
-	arch = armv6h
 	arch = armv7h
 	arch = aarch64
 	arch = i686
@@ -19,9 +17,9 @@ pkgbase = torrserver-git
 	provides = torrserver
 	conflicts = torrserver
 	options = !lto
-	source = torrserver-git::git+https://github.com/YouROK/TorrServer.git#branch=master
+	source = torrserver-git::git+https://github.com/YouROK/TorrServer.git
 	source = torrserver.service
 	sha512sums = SKIP
-	sha512sums = 951b0f4361a668cdae8933fdcffee48ca6759b7257b2253d5d383282db4a9413c3b014f7c8dbf8c2877ac3fed52040fd0c7f181874a0432d927f43ea7ec3e61d
+	sha512sums = 73766959e977015a928fd9739344c51893fac5a119a80bbb499410fab8093c9d6e5f3b884d825fff48ff749b375f53e6a15c525cc0e0700e726b3945f49c287e
 
 pkgname = torrserver-git

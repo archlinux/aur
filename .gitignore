@@ -1,3 +1,4 @@
 src
 torrserver-git
 *.log
+*.tar.zst

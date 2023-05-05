@@ -1,5 +1,5 @@
 [Unit]
-Description=TorrServer, torrent stream server 
+Description=TorrServer, torrent stream server
 [Service]
 LockPersonality=yes
 MemoryDenyWriteExecute=yes
