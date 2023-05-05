@@ -1,7 +1,7 @@
 pkgbase = python-databricks-cli
 	pkgdesc = Command Line Interface for Databricks
 	pkgver = 0.17.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/databricks/databricks-cli
 	arch = any
 	license = Apache
@@ -13,6 +13,7 @@ pkgbase = python-databricks-cli
 	depends = python-pyjwt>=1.7.0
 	depends = python-oauthlib>=3.1.0
 	depends = python-requests>=2.17.3
+	depends = python-requests<2.30.0
 	depends = python-tabulate>=0.7.7
 	depends = python-six>=1.10.0
 	source = python-databricks-cli-0.17.6.tar.gz::https://github.com/databricks/databricks-cli/archive/0.17.6.tar.gz

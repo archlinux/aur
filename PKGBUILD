@@ -3,7 +3,7 @@
 pkgname=python-databricks-cli
 _pkgname=databricks-cli
 pkgver=0.17.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Command Line Interface for Databricks'
 arch=('any')
 url='https://github.com/databricks/databricks-cli'
@@ -13,7 +13,7 @@ depends=(
   'python-click>=7.0'
   'python-pyjwt>=1.7.0'
   'python-oauthlib>=3.1.0'
-  'python-requests>=2.17.3'
+  "python-requests>=2.17.3" "python-requests<2.30.0" # https://github.com/databricks/databricks-cli/issues/636
   'python-tabulate>=0.7.7'
   'python-six>=1.10.0'
 )
