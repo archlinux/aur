@@ -40,6 +40,7 @@ build() {
 package() {
   cd "${pkgname}"
 
+  export PYTHONWARNINGS="ignore:setup.py install is deprecated"
   python "setup.py" install \
     --optimize=1 \
     --root="${pkgdir}" \
