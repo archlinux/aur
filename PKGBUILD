@@ -2,8 +2,8 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=twaindsm
-pkgver=2.5.0
-pkgrel=2
+pkgver=2.5.1
+pkgrel=1
 pkgdesc="TWAIN Data Source Manager"
 arch=(
   'i686'
@@ -14,11 +14,14 @@ url='https://github.com/twain/twain-dsm/'
 license=('LGPL2.1')
 depends=('gcc-libs')
 makedepends=('cmake')
+conflicts=(
+  'gpgfrontend' # Due to `/usr/lib/twain/`.
+)
 source=(
   "twaindsm-${pkgver}.tar.gz::https://github.com/twain/twain-dsm/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  '89b226f1197c34fc6dff213c5bf656964460045517f886976a45417932de2f10'  # twaindsm-${pkgver}.tar.gz
+  'cfb326c7ca2639c401c00f0207ef67ee2ea2b6e595f1e1e6d2de3b11126a2830'  # twaindsm-${pkgver}.tar.gz
 )
 options+=('emptydirs')
 
@@ -56,9 +59,9 @@ package() {
   install -d -m755 -v "${pkgdir}/usr/lib/twain"
   install -d -m755 -v "${pkgdir}/usr/local/lib"
   for i in "${pkgdir}/usr/lib/libtwaindsm.so"*; do
-    ln -s "/usr/lib/$(basename "${i}")" "${pkgdir}/usr/local/lib/$(basename "${i}")"
+    ln -sv "/usr/lib/$(basename "${i}")" "${pkgdir}/usr/local/lib/$(basename "${i}")"
   done
-  ln -s "/usr/lib/twain" "${pkgdir}/usr/local/lib/twain"
+  ln -sv "/usr/lib/twain" "${pkgdir}/usr/local/lib/twain"
 
 
   cd "${srcdir}/twain-dsm-${pkgver}/TWAIN_DSM"
