@@ -3,7 +3,7 @@
 _pkgname=edge-tts
 pkgname=python-${_pkgname}
 pkgver=6.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Use Microsoft Edge's online text-to-speech service from within your Python code or using the provided edge-tts or edge-playback command"
 arch=(any)
 url=https://github.com/rany2/edge-tts
@@ -32,6 +32,6 @@ build() {
 
 package() {
   cd edge-tts-${pkgver}/dist
-  python -m pip install edge_tts-${pkgver}-py3-none-any.whl
-  install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/edge-tts/
+  python -m pip install --root-user-action=ignore edge_tts-${pkgver}-py3-none-any.whl
+  install -Dm 644 ../LICENSE -t "${pkgdir}"/usr/share/licenses/edge-tts/
 }

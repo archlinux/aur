@@ -1,7 +1,7 @@
 pkgbase = python-edge-tts
 	pkgdesc = Use Microsoft Edge's online text-to-speech service from within your Python code or using the provided edge-tts or edge-playback command
 	pkgver = 6.1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rany2/edge-tts
 	arch = any
 	license = GPL3
