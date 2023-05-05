@@ -3,7 +3,7 @@
 pkgbase=edlib
 pkgname=(edlib python-edlib)
 pkgver=1.2.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight, super fast C/C++ (& Python) library for sequence alignment using edit (Levenshtein) distance'
 arch=('any')
 url=https://github.com/Martinsos/edlib
