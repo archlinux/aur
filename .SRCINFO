@@ -114,14 +114,12 @@ pkgbase = wine-ge-custom
 	options = !lto
 	source = wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#tag=GE-Proton8-3
 	source = proton-wine-ge::git+https://github.com/GloriousEggroll/proton-wine.git
-	source = wine-isolate_home.patch
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
 	validpgpkeys = 5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7
 	validpgpkeys = DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 3dcdbd523fcbe79b9e9e9b026b9d0a5edf296514c7b48bd465d2dc05a8ca08e23ba8817e2de08edfe52286a2a2f81db42b65f71254cabe496752b9d45131d282
 	sha512sums = 6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb
 	sha512sums = bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285
 
