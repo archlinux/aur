@@ -2,7 +2,7 @@
 
 pkgname=python-types-requests
 _name=${pkgname#python-}
-pkgver=2.29.0.0
+pkgver=2.30.0.0
 pkgrel=2
 pkgdesc="Typing stubs for requests"
 arch=('any')
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('c86f4a955d943d2457120dbe719df24ef0924e11177164d10a0373cf311d7b4d')
+sha256sums=('dec781054324a70ba64430ae9e62e7e9c8e4618c185a5cb3f87a6738251b5a31')
 
 build() {
   cd "$_name-$pkgver"
