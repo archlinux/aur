@@ -1,7 +1,7 @@
 pkgbase = drawbot-skia
 	pkgdesc = A Python package implementing a subset of the DrawBot API using Skia as a backend
-	pkgver = 0.4.8
-	pkgrel = 4
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://github.com/justvanrossum/drawbot-skia
 	arch = any
 	license = MIT
@@ -16,13 +16,14 @@ pkgbase = drawbot-skia
 	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-bidi
+	depends = python-blackrenderer
 	depends = python-fonttools
-	depends = python-skia>=87.2
-	depends = python-skia-pathops>=0.6.0.post2
-	depends = python-uharfbuzz>=0.16.1
+	depends = python-skia
+	depends = python-skia-pathops
+	depends = python-uharfbuzz
 	depends = python-unicodedata2
 	optdepends = python-pyffmpeg: for video features
-	source = https://files.pythonhosted.org/packages/source/d/drawbot-skia/drawbot-skia-0.4.8.tar.gz
-	sha256sums = 61d4169b10fca6cea40f4d97898c36de0274c918923582ef0eef5767d6f7c161
+	source = https://files.pythonhosted.org/packages/source/d/drawbot-skia/drawbot-skia-0.5.0.tar.gz
+	sha256sums = b45e30558ed739c5c8709badec206a43e4376cd8bb34c34954f54e6238ba3d2a
 
 pkgname = drawbot-skia

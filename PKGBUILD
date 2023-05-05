@@ -1,17 +1,18 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=drawbot-skia
-pkgver=0.4.8
-pkgrel=4
+pkgver=0.5.0
+pkgrel=1
 pkgdesc='A Python package implementing a subset of the DrawBot API using Skia as a backend'
 arch=(any)
 url="https://github.com/justvanrossum/$pkgname"
 license=(MIT)
 _pydeps=(bidi
+         blackrenderer
          fonttools
-         'skia>=87.2'
-         'skia-pathops>=0.6.0.post2'
-         'uharfbuzz>=0.16.1'
+         skia
+         skia-pathops
+         uharfbuzz
          unicodedata2) # for fonttools[unicode]
 depends=(python
          "${_pydeps[@]/#/python-}")
@@ -25,7 +26,7 @@ checkdepends=(python-pyffmpeg
               python-six)
 _archive="$pkgname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('61d4169b10fca6cea40f4d97898c36de0274c918923582ef0eef5767d6f7c161')
+sha256sums=('b45e30558ed739c5c8709badec206a43e4376cd8bb34c34954f54e6238ba3d2a')
 
 build() {
 	cd "$_archive"
