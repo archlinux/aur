@@ -1,6 +1,6 @@
 pkgbase = picocrypt-git
 	pkgdesc = A very small, very simple, yet very secure encryption tool.
-	pkgver = 1.29.r11.g38a0256
+	pkgver = 1.32.r3.g3f9937f
 	pkgrel = 1
 	url = https://github.com/HACKERALERT/Picocrypt
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = picocrypt-git
 	provides = picocrypt
 	conflicts = picocrypt
 	options = !lto
-	source = picocrypt-git::git+https://github.com/HACKERALERT/Picocrypt.git#branch=main
+	source = picocrypt-git::git+https://github.com/HACKERALERT/Picocrypt.git
 	source = picocrypt.desktop
 	sha512sums = SKIP
-	sha512sums = 38c48400411613744ee77c662373a4966a55edd00717107383de9a3c7e2ef161bf6b4d75f6f2b6e714d8c67245f1f027ff80b96a12d1c15c79feb3525978cb76
+	sha512sums = 1c499ed01d8550a0be97084903776e1b3c8922401e6a73270457ffdcfe879449d3d718ed4c3ae9dc2cf90a98952b76c9bf455871fbace77a563a8681dddf1d81
 
 pkgname = picocrypt-git

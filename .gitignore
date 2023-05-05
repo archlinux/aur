@@ -1,2 +1,3 @@
 picocrypt-git
 *.log
+*.tar.zst

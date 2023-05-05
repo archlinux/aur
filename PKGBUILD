@@ -1,6 +1,6 @@
 # Maintainer: solopasha <daron439 at gmail dot com>
 pkgname=picocrypt-git
-pkgver=1.29.r11.g38a0256
+pkgver=1.32.r3.g3f9937f
 pkgrel=1
 pkgdesc="A very small, very simple, yet very secure encryption tool."
 arch=('x86_64')
@@ -11,10 +11,10 @@ conflicts=("${pkgname%-git}")
 depends=(gtk3)
 makedepends=(git go)
 options=(!lto)
-source=("${pkgname}::git+${url}.git#branch=main"
+source=("${pkgname}::git+${url}.git"
         picocrypt.desktop)
 sha512sums=('SKIP'
-            '38c48400411613744ee77c662373a4966a55edd00717107383de9a3c7e2ef161bf6b4d75f6f2b6e714d8c67245f1f027ff80b96a12d1c15c79feb3525978cb76')
+            '1c499ed01d8550a0be97084903776e1b3c8922401e6a73270457ffdcfe879449d3d718ed4c3ae9dc2cf90a98952b76c9bf455871fbace77a563a8681dddf1d81')
 
 pkgver() {
   cd "$pkgname"

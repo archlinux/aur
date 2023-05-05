@@ -2,5 +2,5 @@
 Type=Application
 Terminal=false
 Name=Picocrypt
-Exec=sh -c "LIBGL_ALWAYS_SOFTWARE=1 picocrypt"
+Exec=picocrypt
 Icon=picocrypt
