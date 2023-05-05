@@ -5,13 +5,13 @@
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 # Contributor: Adam Hani Schakaki (krzd) <krzd@krzd.net>
 
-pkgname=gsettings-desktop-schemas-338
+pkgname=gsettings-desktop-schemas-rel-338
 pkgver=3.38.0
-pkgrel=3
-pkgdesc="Shared GSettings schemas for the desktop (Version 3.38)"
+pkgrel=1
+pkgdesc="Shared GSettings schemas for the desktop (Version 3.38, release version)"
 arch=(any)
 url="https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas"
-conflicts=(gsettings-desktop-schemas gsettings-desktop-schemas-git)
+conflicts=(gsettings-desktop-schemas gsettings-desktop-schemas-git gsettings-desktop-schemas-338)
 provides=("gsettings-desktop-schemas=$pkgver")
 license=(GPLv2)
 depends=(glib2 dconf cantarell-fonts adobe-source-code-pro-fonts)
