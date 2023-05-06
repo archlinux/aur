@@ -19,12 +19,11 @@ options=(!emptydirs)
 sha256sums=('511a86bbed85e4afc0de3599d62300fcc92138cd8d3aec176bef5b9fa4bfd380')
 
 prepare() {
-  cd "$_pythonname-$pkgver"
-  cat <<EOF
-[tool.setuptools]
-packages= ["snakeviz"]
->> pyproject.toml
-EOF
+	cd "$_pythonname-$pkgver"
+	cat <<- EOF >> pyproject.toml
+	[tool.setuptools]
+	packages= ["snakeviz"]
+	EOF
 }
 
 build() {
@@ -34,12 +33,15 @@ build() {
 
 package() {
   cd "$_pythonname-$pkgver/"
-  python -m installer --desdir="$pkgdir/" dist/*.whl
+  python -m installer --destdir="$pkgdir/" dist/*.whl
   install -D -m 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
 
-#check() {
-  #cd "$_pythonname-$pkgver"
-  #PYTHONPATH=. pytest tests
-#}
+check() {
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  cd "$_pythonname-$pkgver"
+  python -m installer --destdir="test_dir" dist/*.whl
+
+  PATH="test_dir/usr/bin:$PATH" PYTHONPATH="test_dir/$site_packages" pytest -v tests
+}
 # vim:set ts=2 sw=2 et:
