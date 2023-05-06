@@ -32,15 +32,14 @@ magen() {
 }
 
 post_install() {
-    yello "1.7.0"
+    yello "1.8.0"
     blue  "New Features:"
-    plain "  VRR / adaptive sync for swaywm"
-    blue  "Bug Fixes:"
-    plain "  ${green}#60${all_off} order exact name / description matches first"
-    plain ""
-    yello "1.7.1"
-    blue  "New Features:"
-    plain "  VRR / adaptive sync for riverwm"
+    plain "  ${magenta}ORDER${all_off}, ${magenta}DISABLED${all_off}, ${magenta}SCALE${all_off}, ${magenta}MODE${all_off} may use a regex"
+    plain "  Explicit ${magenta}ORDER${all_off}: exact match, regex match, partial match"
+    plain "  Add ${magenta}VRR_OFF${all_off}"
+    plain "  Add ${magenta}SCALING${all_off}"
+    plain "  CLI ${blue}--get${all_off} prints commands"
+    plain "  CLI ${blue}--yaml${all_off} output"
     plain ""
 }
 
