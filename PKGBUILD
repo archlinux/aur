@@ -3,7 +3,7 @@
 
 pkgname=sfzlint
 pkgver=0.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc='A linter and parser for SFZ files'
 arch=(any)
 url='https://github.com/jisaacstone/sfzlint'
