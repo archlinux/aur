@@ -3,12 +3,12 @@
 pkgname=python-sgqlc
 _name=${pkgname#python-}
 pkgver=16.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple GraphQL Client'
 arch=('any')
 url='https://github.com/profusion/sgqlc'
 license=('ISC')
-depends=()
+depends=('python-graphql-core')
 optdepends=()
 makedepends=(
     'python-wheel'
@@ -20,7 +20,7 @@ sha256sums=('21591009345b116b43a7a7d3995edc25dc2d14092273028205b86d07843a19ac')
 
 build() {
     cd "${_name}-${pkgver}"
-    python -m build --wheel
+    python -m build --wheel --no-isolation
 }
 
 package() {
