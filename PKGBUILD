@@ -1,16 +1,16 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=localsend
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc='An open source cross-platform alternative to AirDrop.'
 url='https://github.com/localsend/localsend'
 arch=('x86_64')
 license=('MIT')
-depends=('zenity' 'xdg-user-dirs')
+depends=('zenity' 'xdg-user-dirs' 'libayatana-appindicator')
 makedepends=('flutter')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5b2a3d9cbf77bc75d3cccec2c9672791aae20b4459b751c9d388fe31c1b54f16')
+sha256sums=('1f1ce8ed99c7ffa8ef3cf49df6ce094eb2559563e307da4cd21714dd2babe5c0')
 
 _srcdir="${pkgname}-${pkgver}"
 
