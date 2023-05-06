@@ -14,6 +14,7 @@ pkgbase = klassy
 	depends = kirigami2
 	depends = hicolor-icon-theme
 	optdepends = kcmutils: for klassy-settings
+	replaces = classikstyles
 	replaces = classik
 	source = klassy-4.0.breeze5.25.80.zip::https://github.com/paulmcauley/klassy/archive/refs/tags/4.0.breeze5.25.80.zip
 	sha256sums = 1b8e28bd358f4d8c02c5afeb3930b9dc81e6096d7f1f7e718fcf487650b729c5
