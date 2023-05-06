@@ -4,12 +4,17 @@ pkgbase=python-pyexecjs
 _name=PyExecJS
 pkgname=('python-pyexecjs' 'python2-pyexecjs')
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Run JavaScript code from Python."
 arch=('any')
 url="https://pypi.python.org/pypi/PyExecJS"
 license=('MIT')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python-build'
+             'python-installer'
+             'python-setuptools'
+             'python-wheel'
+             'python2-setuptools')
+checkdepends=('python-six' 'python2-six')
 optdepends=('v8: Google JavaScript engine'
             'nodejs: built on Chrome V8 JavaScript engine'
             'phantomjs: a headless WebKit'
@@ -24,7 +29,7 @@ prepare() {
 
 build() {
   cd "PyExecJS-$pkgver"
-  python setup.py build
+  python -m build --wheel --no-isolation
 
   cd "../PyExecJS-$pkgver-python2"
   python2 setup.py build
@@ -42,7 +47,7 @@ package_python-pyexecjs() {
   depends=('python-six')
 
   cd "PyExecJS-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
