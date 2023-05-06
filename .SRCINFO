@@ -1,12 +1,16 @@
 pkgbase = python-dbutils
 	pkgdesc = Suite of Python modules allowing to connect in a safe and efficient way between a threaded Python application and a database
-	pkgver = 3.0.2
+	pkgver = 3.0.3
 	pkgrel = 1
 	url = https://github.com/WebwareForPython/DBUtils
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
-	source = https://github.com/WebwareForPython/DBUtils/archive/refs/tags/Release-3_0_2/DBUtils-3.0.2.tar.gz
-	sha256sums = 10226df9f0cf71a62c001fda61b46097f16389d94eaaa21d1e3ddf4032daf509
+	source = https://github.com/WebwareForPython/DBUtils/archive/refs/tags/Release-3_0_3/DBUtils-3.0.3.tar.gz
+	sha256sums = 91e466834455e54d6e1071b2a7a40e862a2ffff36963f34f4f75171da0117872
 
 pkgname = python-dbutils
