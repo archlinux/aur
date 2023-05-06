@@ -2,7 +2,7 @@
 
 pkgname=xasm
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="6502 cross-assembler with original syntax extensions"
 arch=('x86_64')
 url="https://github.com/pfusik/xasm"
@@ -15,8 +15,8 @@ sha256sums=(
     )
 license=('Poetic')
 provides=('xasm')
-depends=('glibc')
-makedepends=('dmd' 'patch' 'asciidoc')
+depends=('glibc' 'gcc-libs')
+makedepends=('dmd' 'git' 'asciidoc')
 
 build() {
   cd "$srcdir/${pkgname}-xasm-${pkgver}"

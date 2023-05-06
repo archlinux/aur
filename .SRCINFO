@@ -1,14 +1,15 @@
 pkgbase = xasm
 	pkgdesc = 6502 cross-assembler with original syntax extensions
 	pkgver = 3.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pfusik/xasm
 	arch = x86_64
 	license = Poetic
 	makedepends = dmd
-	makedepends = patch
+	makedepends = git
 	makedepends = asciidoc
 	depends = glibc
+	depends = gcc-libs
 	provides = xasm
 	source = https://github.com/pfusik/xasm/archive/xasm-3.2.1.zip
 	sha256sums = 3468bc239f9a54b3b3967ec021b90088ec0b92d279ff620703192dddd104c1f4
