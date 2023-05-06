@@ -4,3 +4,4 @@ pkg
 *.tar.gz
 *.log
 .psci_modules
+rofi-games*
