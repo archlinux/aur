@@ -1,7 +1,7 @@
 # Maintainer: nicolarevelant44 <nicolarevelant44@outlook.com>
 
 pkgname=italian-draughts-git
-pkgver=1.3.1.r6.ge08c37b
+pkgver=1.3.2.r0.g6aa8819
 pkgrel=1
 pkgdesc="Italian Draughts, a strategy game for 2 players written in C++"
 
@@ -9,8 +9,8 @@ arch=("x86_64")
 depends=("wxwidgets-gtk3")
 license=("GPL3")
 makedepends=("git" "cmake" "scdoc")
-source=("$pkgname"::"git+https://gitlab.com/nicolarevelant44/italian-draughts.git")
-url="https://gitlab.com/nicolarevelant44/italian-draughts"
+source=("$pkgname"::"git+https://github.com/nicolarevelant/italian-draughts.git")
+url="https://github.com/nicolarevelant/italian-draughts"
 sha256sums=('SKIP')
 
 build() {
