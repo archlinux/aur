@@ -1,7 +1,7 @@
 # Maintainer: yhtez <yhtez@protonmail.com>
 pkgname=olympus-git
-pkgver=r650.e9bf1d8
-pkgrel=2
+pkgver=r728.bf5683e
+pkgrel=1
 pkgdesc='Everest installer / mod manager for Celeste (git)'
 arch=('x86_64')
 url='https://github.com/EverestAPI/Olympus'
@@ -65,6 +65,9 @@ package() {
 
     cd src; zip -r ../olympus.love *; cd ..
     install -Dm644 olympus.love "$pkgdir/usr/lib/olympus/olympus.love"
+
+    # Add symlink for launching Lönn
+    ln -s /usr/bin/love "$pkgdir/usr/lib/olympus/love"
 
     install -Dm755 luarocks/lib/lua/5.1/* -t "$pkgdir/usr/lib/olympus"
     install -Dm755 sharp/bin/Release/net452/* -t "$pkgdir/usr/lib/olympus/sharp"
