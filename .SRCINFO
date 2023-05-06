@@ -1,7 +1,7 @@
 pkgbase = python-rtpplayapi
 	pkgdesc = An unofficial python api to fetch media from RTPPlay, based on their mobile API.
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/guipenedo/rtp-play-api
 	arch = any
 	license = MIT

@@ -3,7 +3,7 @@
 pkgname=python-rtpplayapi
 _module='rtpplayapi'
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="An unofficial python api to fetch media from RTPPlay, based on their mobile API."
 url="https://github.com/guipenedo/rtp-play-api"
 depends=('python' 'python-requests')
