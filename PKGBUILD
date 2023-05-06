@@ -2,13 +2,13 @@
 
 pkgname=nni
 pkgver=2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source AutoML toolkit for automate machine learning lifecycle, including feature engineering, neural architecture search, model compression and hyper-parameter tuning."
 arch=('x86_64' 'aarch64')
 url="https://github.com/microsoft/nni"
 license=('MIT')
 depends=(python-cloudpickle python-filelock python-json-tricks python-schema python-typeguard python-websockets)
-makedepends=(cmake jupyterlab python-installer python-pip python-setuptools python-wheel)
+makedepends=(cmake jupyterlab python-installer python-pip python-setuptools python-wheel typescript)
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 md5sums=('05f88f640a2ef268217f21cf70ffabef')
 
