@@ -28,20 +28,16 @@ depends=(
   libxi           #lib32-libxi
   gettext         #lib32-gettext
   freetype2       #lib32-freetype2
-  gcc-libs        #lib32-gcc-libs
-  libpcap         #lib32-libpcap
   desktop-file-utils
 )
 makedepends=(autoconf bison perl flex mingw-w64-gcc
   giflib                #lib32-giflib
-  gnutls                #lib32-gnutls
   libxinerama           #lib32-libxinerama
   libxcomposite         #lib32-libxcomposite
   libxxf86vm            #lib32-libxxf86vm
   v4l-utils             #lib32-v4l-utils
   libpulse              #lib32-libpulse
   alsa-lib              #lib32-alsa-lib
-  libxcomposite         #lib32-libxcomposite
   mesa                  #lib32-mesa
   mesa-libgl            #lib32-mesa-libgl
   opencl-icd-loader     #lib32-opencl-icd-loader
@@ -58,7 +54,6 @@ makedepends=(autoconf bison perl flex mingw-w64-gcc
 optdepends=(
   giflib                #lib32-giflib
   libldap               #lib32-libldap
-  gnutls                #lib32-gnutls
   v4l-utils             #lib32-v4l-utils
   libpulse              #lib32-libpulse
   alsa-plugins          #lib32-alsa-plugins
