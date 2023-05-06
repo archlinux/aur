@@ -1,12 +1,12 @@
 # Maintainer: mosquito <mosquito@email.cn>
 pkgname=bobibo
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cli-app, convert pictures to ascii arts."
 arch=("x86_64")
 url="https://github.com/orzation/bobibo"
 license=('GPL3')
-makedepends=('go>=1.17')
+makedepends=('go>=1.18')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/orzation/bobibo/archive/v${pkgver}.tar.gz")
 
 build() {
