@@ -1,6 +1,6 @@
 pkgbase = tblock-gui
 	pkgdesc = Official graphical user interface for the TBlock content blocker
-	pkgver = 1.3.1.beta
+	pkgver = 1.3.2.rc.1
 	pkgrel = 1
 	url = https://tblock.codeberg.page
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = tblock-gui
 	depends = tblock
 	depends = polkit
 	provides = tblock-gui
-	source = tblock-gui-1.3.1.beta.tar.gz::https://codeberg.org/tblock/tblock-gui/archive/1.3.1-beta.tar.gz
-	sha512sums = fec262ee6c60d340925e89a89169888e6160a35f75d9415726edd8822578127992007fb97b1c678d15b28e4ab1459403259a9d7c0872149aae9fbfca965f956a
+	source = tblock-gui-1.3.2.rc.1.tar.gz::https://codeberg.org/tblock/tblock-gui/archive/1.3.2-rc.1.tar.gz
+	sha512sums = 4dd22e6f39d49fe4e80881b4fb25ec269081e652133a0c3e34c293901b15bb7a9dbc0ba124a4b5df58480b8fa483f71b8078831399aab38679e0adfa5f1ef947
 
 pkgname = tblock-gui
