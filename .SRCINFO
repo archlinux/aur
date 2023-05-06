@@ -1,0 +1,14 @@
+pkgbase = uboot-mdb-dump-git
+	pkgdesc = a small script hacked together to convert a memory dump obtained by md.b in U-Boot via a serial console to binary form.
+	pkgver = r4.efb0157
+	pkgrel = 1
+	url = https://github.com/gmbnomis/uboot-mdb-dump
+	arch = any
+	license = GPL
+	depends = python3
+	provides = uboot-mdb-dump
+	conflicts = uboot-mdb-dump
+	source = uboot-mdb-dump-git::git+https://github.com/gmbnomis/uboot-mdb-dump
+	sha256sums = SKIP
+
+pkgname = uboot-mdb-dump-git
