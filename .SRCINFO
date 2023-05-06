@@ -1,0 +1,25 @@
+pkgbase = zeppplayer
+	pkgdesc = Unofficial ZeppOS emulator
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://melianmiko.ru/en/zeppplayer
+	arch = any
+	license = GPLv3
+	makedepends = make
+	makedepends = python-pip
+	makedepends = python
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = esbuild
+	depends = python
+	depends = python-gobject
+	depends = libappindicator-gtk3
+	depends = gtk3
+	depends = tk
+	depends = bluez
+	depends = python-pillow
+	depends = python-requests
+	source = zeppplayer-1.6.1::git+https://github.com/melianmiko/ZeppPlayer.git
+	md5sums = SKIP
+
+pkgname = zeppplayer
