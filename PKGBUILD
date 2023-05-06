@@ -129,6 +129,7 @@ sha512sums=('dca9aea2ce210c15fcc34cb06a5dc5b4488ffa36d684166d47ebd87e48b54b6fee0
             'c767a8e6fd02ea2ab88e99b50b206d0f825acdf177136ded38d93594fc7663b7c9612af7195b85e0b2b501d8ee482af5e088e9abb5ebee7b8a69e0153ce89782'
             '6b4d829c9ecacdc8fbbc6d36eb59bcd844544b728121f75101d5078fd87f6531aeafff5de636c325ebcb88eb0da49f9f62f947bf7d7db4be426ab8ddb02996f6'
             '0c5124693bd317a73707dfd34b17664cc05233aec08e07739fe08fc9a73be7a1f4446052b1addde832cba141a382c35f45e60c89a00bb7dab81cee7ed6be07e1')
+__version="${pkgver}-${pkgrel}"
 
 # -fno-plt causes linker errors (undefined reference to internal methods)
 # similar issue: https://bugs.archlinux.org/task/54845
@@ -335,6 +336,50 @@ _make_ceph_packages() {
     mv -v $sbin/* $bin/
     rm -vrf $sbin
 
+    ###############################################
+    #         Ceph core libraries                 #
+    ###############################################
+
+    _package ceph-compressor \
+      $lib/ceph/compressor/*
+
+    _package ceph-crypto \
+      $lib/ceph/crypto/*
+
+    _package ceph-erasure \
+      $lib/ceph/erasure-code/*
+
+    _package ceph-common \
+      $bin/crushtool \
+      $bin/ceph-authtool \
+      $bin/ceph-conf \
+      $lib/ceph/ceph_common.sh \
+      $lib/ceph/libceph-common.so.2 \
+      $lib/ceph/denc/* \
+      $share/doc/ceph/sample.ceph.conf \
+      $man/man8/crushtool.8 \
+      $man/man8/ceph-{conf,authtool}.8
+
+    _package librados \
+      $inc/rados/* \
+      $inc/radosstriper/* \
+      $lib/librados.so{,.2,.2.0.0} \
+      $lib/libradosstriper.so{,.1,.1.0.0} \
+      $lib/rados-classes/* \
+      $bin/librados-config \
+      $bin/ceph-clsinfo \
+      $man/man8/librados-config.8 \
+      $man/man8/ceph-clsinfo.8
+
+    _package ceph-rados \
+      $bin/rados \
+      $bin/ceph_radosacl \
+      $share/bash-completion/completions/rados \
+      $man/man8/rados.8
+
+    _package libcephsqlite \
+      $inc/libcephsqlite.h \
+      $lib/libcephsqlite.so
   )
 
   local -i _ret=$(find "${install}" -type f,l | wc -l)
@@ -349,6 +394,114 @@ _make_ceph_packages() {
   fi
 
   return 0
+}
+
+###############################################
+#         Ceph core libraries                 #
+###############################################
+
+package_ceph-common() {
+  pkgdesc='Ceph Storage common libraries and dependencies'
+  depends=(
+    "ceph-compressor=${__version}"   "ceph-crypto=${__version}"   "ceph-erasure=${__version}"
+
+    'boost-libs'   'curl'           'glibc'    'keyutils'     'libutil-linux'
+    'nss'          'systemd-libs'   'bash'     'fmt'          'cryptsetup'
+    'libxcrypt'    'libaio'         'libcap'   'gperftools'
+  )
+  provides=(
+    'libceph-common.so'    'libceph_ebd_vdo.so'
+  )
+
+  #============================================#
+  # This section needs to be run in the first  #
+  # package function makepkg calls to populate #
+  # the contents of each package function.     #
+  _make_ceph_packages
+  #============================================#
+
+  mv __pkg__/$pkgname/* "$pkgdir"
+
+  # sysusers
+  install -Dm644 "${srcdir}/ceph.sysusers" \
+    "${pkgdir}/usr/lib/sysusers.d/${pkgbase}.conf"
+
+  # Prepare conf dir
+  install -D -d -m755 -o   0 -g 340 "${pkgdir}/etc/ceph"
+
+  _print
+}
+
+package_ceph-compressor() {
+  pkgdesc='Ceph Storage compressor libs'
+  depends=(
+    'gcc-libs' 'lz4' 'snappy' 'zlib' 'zstd'
+  )
+
+  mv __pkg__/$pkgname/* "$pkgdir"
+  _print
+}
+
+package_ceph-crypto() {
+  pkgdesc='Ceph Storage crypto libs'
+  depends=(
+    'gcc-libs' 'openssl'
+  )
+
+  mv __pkg__/$pkgname/* "$pkgdir"
+  _print
+}
+
+package_ceph-erasure() {
+  pkgdesc='Ceph Storage erasure coding libs'
+  depends=(
+    'gcc-libs'
+  )
+
+  mv __pkg__/$pkgname/* "$pkgdir"
+  _print
+}
+
+package_librados() {
+  pkgdesc='Ceph Storage client library to the RADOS distributed object store'
+  depends=(
+    "ceph-common=${__version}"
+
+    'bash'   'boost-libs'   'fmt'   'lua'   'oath-toolkit'
+  )
+  provides=(
+    'libradosstriper.so'   'librados.so'
+  )
+
+  mv __pkg__/$pkgname/* "$pkgdir"
+  _print
+}
+
+package_ceph-rados() {
+  pkgdesc='Ceph Storage utilities and tools for librados'
+  depends=(
+    "librados=${__version}"
+
+    'gcc-libs'
+  )
+
+  mv __pkg__/$pkgname/* "$pkgdir"
+  _print
+}
+
+package_libcephsqlite() {
+  pkgdesc='Ceph Storage client library for a RADOS backed sqlite3 VFS extension'
+  depends=(
+    "librados=${__version}"
+
+    'fmt'
+  )
+  provides=(
+    'libcephsqlite.so'
+  )
+
+  mv __pkg__/$pkgname/* "$pkgdir"
+  _print
 }
 
 # vim:set ts=2 sw=2 et:
