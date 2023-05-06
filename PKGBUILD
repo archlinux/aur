@@ -1,7 +1,10 @@
-# Maintainer: Vincent Lee < vincent at vincent dash lee dot net >
+# Maintainer: Nora Allen < blackcatgames at protonmail dot com >
+# Contributor: Vincent Lee < vincent at vincent dash lee dot net >
+
 _realname=sapling  # Already taken on AUR
 pkgname="$_realname-scm"
-_realver=0.2.20230330-193452-h69692651
+_realver=0.2.20230426-145232+7ea1f245
+_realver2=0.2.20230426-145232-7ea1f245
 pkgver="${_realver//-/.}"  # dashes aren't allowed in pkgver
 epoch=1  # Version scheme was changed from YYYYMMDD-.... to prepend a number: 0.1-YYYYMMDD-...
 pkgrel=1
@@ -17,25 +20,25 @@ depends=('curl' 'nodejs' 'python')
 makedepends=("cargo" "cmake" "rust" "yarn")
 optdepends=("github-cli: for integration with GitHub")
 source=("https://github.com/facebook/sapling/archive/refs/tags/$_realver.tar.gz")
-sha256sums=('d02130197dcc4be07e3697a55e298a1178c71d2255019287ea25f451f9f42541')
+sha256sums=('5295cfbc7428f4cd88c722108fa75737b73e01a1cdbf79df236c0513b5c374cd')
 
 prepare() {
-	cd "$_realname-$_realver"
+	cd "$_realname-$_realver2"
 }
 
 build() {
-	cd "$_realname-$_realver/eden/scm"
+	cd "$_realname-$_realver2/eden/scm"
 	# TODO `make install-oss` rebuilds the entire project, rendering `make oss`
 	# pointless currently. See https://github.com/facebook/sapling/issues/161 for more info.
 	# make PREFIX=/usr oss
 }
 
 check() {
-	cd "$_realname-$_realver"
+	cd "$_realname-$_realver2"
 }
 
 package() {
-	cd "$_realname-$_realver/eden/scm"
+	cd "$_realname-$_realver2/eden/scm"
 	SAPLING_VERSION="$_realver" make PREFIX=/usr DESTDIR="$pkgdir/" install-oss
 }
 
