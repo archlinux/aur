@@ -6,7 +6,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=openwebmonitor3
 pkgver=3.5.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="通用型网页内容监控工具"
 arch=(x86_64 aarch64)
@@ -14,7 +14,7 @@ url="http://owm.fatecore.com/"
 license=('proprietary')
 groups=()
 depends=(electron11)
-makedepends=(asar npm)
+makedepends=(asar npm gendesk)
 checkdepends=()
 optdepends=()
 provides=()
@@ -60,4 +60,7 @@ package() {
 	install -Dm755 /dev/null $pkgdir/usr/bin/$pkgname
 	echo "#!/bin/sh" >> $pkgdir/usr/bin/$pkgname
 	echo "electron11 /opt/$pkgname/app" >> $pkgdir/usr/bin/$pkgname
+	find $pkgdir -name "icon.png" -type f -exec install -Dm644 {} $pkgdir/usr/share/pixmaps/$pkgname.png \;
+	gendesk --pkgname $pkgname --pkgdesc $pkgdesc
+	install -Dm644 $pkgname.desktop -t $pkgdir/usr/share/applications/
 }

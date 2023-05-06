@@ -1,13 +1,14 @@
 pkgbase = openwebmonitor3
 	pkgdesc = 通用型网页内容监控工具
 	pkgver = 3.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://owm.fatecore.com/
 	arch = x86_64
 	arch = aarch64
 	license = proprietary
 	makedepends = asar
 	makedepends = npm
+	makedepends = gendesk
 	depends = electron11
 	options = !strip
 	source = http://owm.fatecore.com/download/OpenWebMonitor3-3.5.2.zip
