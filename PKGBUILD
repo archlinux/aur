@@ -5,7 +5,7 @@ _libultraship_commit=2ddffdb5b60377a09a4a198a8fd67726951bbb27
 pkgbase=soh
 pkgname=(soh soh-otr-exporter)
 pkgver=7.0.0
-pkgrel=1
+pkgrel=2
 arch=("x86_64" "i686")
 url="https://shipofharkinian.com/"
 _depends_soh=("sdl2" "sdl2_net" "libpulse" "glew" "zenity")
@@ -17,12 +17,20 @@ source=("${_reponame}-${pkgver}.tar.gz::https://github.com/HarbourMasters/${_rep
         "soh.desktop"
         "soh-misc-otr-patches.patch"
         "lus-install-paths.patch"
+        "ZAPDTR-gcc-13-compatibility.patch::https://github.com/HarbourMasters/Shipwright/pull/2832.patch"
+        "lus-gcc-13-compatibility.patch::https://github.com/Kenix3/libultraship/pull/182.patch"
+        "soh-gcc-13-compatibility.patch::https://github.com/HarbourMasters/Shipwright/pull/2780.patch"
+        "OTRGui-gcc-13-compatibility.patch"
         "otrgui-wrapper.sh")
 sha256sums=('626d4e8c96b7889228fe064b930688b4d56722450e03b0c2057076f1f979a2e5'
             '8ae6999a16053c561f8722e8c363b046b83277108499b20cd77892773a5009f3'
             '25aebd34f6ad49073d8a5ce6915b6fa290470fc6d62a8143abe07a25707ff4a2'
             '200cba1e21ef57cf80bd8962ca6d5631062a7c056c897c2a4d58bfb8217ddef7'
-            '808049e8f02d78188490afc4632e3bec0253d7c3c62d85492172938e35d1165f'
+            '4dba7adcae469ef4caf5cb93844a32809ab983114cc296fb8721cc092f2af4c7'
+            'f0e06db0a3d94bafec2398853242c06f6982b5310a1a05e1a1768276e8f1e158'
+            '01e49209f14c236daedc8110e650915af4fb1f2637f3737b340ef0940d88b283'
+            'fe3148fca029031a68e0470ec9b7131579bcc5c87e8fc4638011010200f30a61'
+            'c10c0de9ca1ded2b4d21ec4ce18bd77d9843f182c4d26a9d59f96c39e40712b9'
             '6e735877e7bba81f9f308f6eabbdfe5354f2c331a9acf9a16ab02a5681f2c25f')
 
 # Changable options for debugging:
@@ -36,6 +44,7 @@ prepare() {
   # Patch libultraship
   pushd ../libultraship-${_libultraship_commit} > /dev/null
   patch -Np2 -i "${srcdir}/lus-install-paths.patch"
+  patch -Np1 -i "${srcdir}/lus-gcc-13-compatibility.patch"
   popd > /dev/null
   # Symlink libultraship
   rm -r libultraship
@@ -64,6 +73,9 @@ prepare() {
   fi
 
   patch -Np1 -i "${srcdir}/soh-misc-otr-patches.patch"
+  patch -Np1 -i "${srcdir}/ZAPDTR-gcc-13-compatibility.patch"
+  patch -Np1 -i "${srcdir}/soh-gcc-13-compatibility.patch"
+  patch -Np1 -i "${srcdir}/OTRGui-gcc-13-compatibility.patch"
 }
 
 build() {
