@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Alexander Adler <alexadler1@protonmail.com>
 # Contributor: Yan Burdonsky <psyrccio@gmail.com>
 
@@ -6,13 +6,14 @@
 
 pkgname=anoise
 pkgver=0.0.36
-pkgrel=3
+pkgrel=4
 pkgdesc="Ambient Noise Player. Relax or concentrate with a noise"
 arch=('any')
 url="https://costales.github.io/projects/anoise"
 license=('GPL3')
 depends=('gst-python' 'webkit2gtk' 'anoise-media')
-makedepends=('python-distutils-extra')
+makedepends=('python-build' 'python-distutils-extra' 'python-installer'
+             'python-setuptools' 'python-wheel')
 optdepends=('anoise-community-extension1: Sounds and icons from the users'
             'anoise-community-extension2: Sounds and icons from the users'
             'anoise-community-extension3: Sounds and icons from the users'
@@ -36,19 +37,17 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir/$pkgname"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   # This file is included in anoise-gui
   rm "$pkgdir/usr/share/$pkgname/$pkgname.ui"
 
-  # Files setup.py does not install
-  cp -r locale "$pkgdir/usr/share/locale"
-
-  install -Dm644 "build/share/applications/$pkgname.desktop" -t \
-    "$pkgdir/usr/share/applications"
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  cp -r "${pkgdir}${site_packages}/usr/share" "$pkgdir/usr/"
+  rm -rf "${pkgdir}${site_packages}/usr"
 }
