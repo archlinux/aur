@@ -34,7 +34,9 @@ prepare() {
 build() {
     cd "${srcdir}/${pkgname}/"
     cmake -DCMAKE_BUILD_TYPE=None \
-          -DBUILD_SHARED_LIBS=ON \
+          -DCMAKE_SKIP_RPATH=ON \
+          -DUSE_SHARED_MBEDTLS_LIBRARY=ON \
+          -DUSE_STATIC_MBEDTLS_LIBRARY=ON \
           -DCMAKE_INSTALL_PREFIX=/usr \
           -B build \
           -G Ninja
