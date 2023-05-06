@@ -1,12 +1,12 @@
 pkgbase = python-platformio
 	pkgdesc = A professional collaborative platform for embedded development. Cross-platform IDE and Unified Debugger. Static Code Analyzer and Remote Unit Testing. Multi-platform and Multi-architecture Build System. Firmware File Explorer and Memory Inspection.
 	pkgver = 6.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://platformio.org
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
-	depends = python
+	depends = python>=3.11
 	depends = python-bottle>=0.12
 	depends = python-click>=8.0.4
 	depends = python-colorama

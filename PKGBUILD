@@ -3,12 +3,12 @@
 pkgname='python-platformio'
 _module=${pkgname#python-}
 pkgver='6.1.6'
-pkgrel=1
+pkgrel=2
 pkgdesc="A professional collaborative platform for embedded development. Cross-platform IDE and Unified Debugger. Static Code Analyzer and Remote Unit Testing. Multi-platform and Multi-architecture Build System. Firmware File Explorer and Memory Inspection."
 # IoT, Arduino, CMSIS, ESP-IDF, FreeRTOS, libOpenCM3, mbedOS, Pulp OS, SPL, STM32Cube, Zephyr RTOS, ARM, AVR, Espressif (ESP8266/ESP32), FPGA, MCS-51 (8051), MSP430, Nordic (nRF51/nRF52), NXP i.MX RT, PIC32, RISC-V, STMicroelectronics (STM8/STM32), Teensy
 url="https://platformio.org"
 depends=(
-	'python'
+	'python>=3.11'
 	'python-bottle>=0.12'
 	'python-click>=8.0.4'
 	'python-colorama'
