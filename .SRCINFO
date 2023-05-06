@@ -1,5 +1,5 @@
-pkgbase = totp-cli
-	pkgdesc = Command Line application for managing your totp tokans, written in Bash script
+pkgbase = totp-cli-git
+	pkgdesc = Command Line Application for managing your totp tokans, written in Bash script
 	pkgver = 0.2.0
 	pkgrel = 0
 	url = https://github.com/aram-hamo/totp-cli
@@ -8,7 +8,7 @@ pkgbase = totp-cli
 	depends = bash
 	depends = gnupg
 	depends = oath-toolkit
-	source = totp-cli-0.2.0.tar.gz::https://github.com/aram-hamo/totp-cli/archive/refs/tags/0.2.0.tar.gz
+	source = totp-cli-git-0.2.0.tar.gz::https://github.com/aram-hamo/totp-cli/archive/refs/tags/0.2.0.tar.gz
 	sha512sums = SKIP
 
-pkgname = totp-cli
+pkgname = totp-cli-git
