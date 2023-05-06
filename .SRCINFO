@@ -1,7 +1,7 @@
 pkgbase = bwidget
 	pkgdesc = A suite of megawidgets for Tk
 	pkgver = 1.9.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.tcl.tk/2251
 	arch = any
 	license = GPL
