@@ -1,7 +1,7 @@
 pkgbase = python-birdseye
 	pkgdesc = Graphical Python debugger which lets you view the values of all evaluated expressions
 	pkgver = 0.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alexmojaki/birdseye
 	arch = any
 	license = MIT
@@ -11,6 +11,8 @@ pkgbase = python-birdseye
 	checkdepends = python-beautifulsoup4
 	checkdepends = python-selenium
 	checkdepends = python-flask
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python-flask-humanize
