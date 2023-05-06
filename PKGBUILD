@@ -27,14 +27,45 @@ makedepends=(
   git
   jack
   lv2
+  lv2-host
+  pd
 # simde
 # vst3sdk
   xcb-util-keysyms
 )
 checkdepends=(lv2lint catch2)
-source=("$_pkgname"::"git+https://github.com/sfztools/sfizz#branch=develop")
-sha512sums=('SKIP')
-b2sums=('SKIP')
+source=(
+  $_pkgname::git+https://github.com/sfztools/sfizz#branch=develop
+  git+https://github.com/steinbergmedia/vst3_base
+  git+https://github.com/steinbergmedia/vst3_pluginterfaces
+  git+https://github.com/steinbergmedia/vst3_public_sdk
+  git+https://github.com/sfztools/vstgui
+  git+https://github.com/simd-everywhere/simde
+  git+https://github.com/mackron/dr_libs
+  git+https://github.com/sfztools/stb_vorbis
+  git+https://github.com/sfztools/libaiff
+  git+https://github.com/sfztools/sfzt_auwrapper
+)
+sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
+b2sums=('SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP')
 
 _common_depends=(
   abseil-cpp
@@ -76,7 +107,19 @@ pkgver() {
 
 prepare() {
   cd $_pkgname
-  git submodule update --init --recursive
+  git submodule init
+  # Temporary
+  git config submodule.plugins.vst.external.VST_SDK.VST3_SDK.base ../base
+  git config submodule.plugins.vst.external.VST_SDK.VST3_SDK.pluginterfaces ../pluginterfaces
+  git config submodule.plugins.vst.external.VST_SDK.VST3_SDK.public.sdk ../public.sdk
+  git config submodule.plugins.editor.external.vstgui4 ../vstgui4
+  git config submodule.external.simde.url ../simde
+
+  git config submodule.external.st_audiofile.thirdparty.dr_libs.url ../dr_libs
+  git config submodule.external.st_audiofile.thirdparty.stb_vorbis.url ../stb_vorbis
+  git config submodule.external.st_audiofile.thirdparty.libaiff.url ../libaiff
+  git config submodule.plugins.vst.external.sfzt_auwrapper.url ../sfzt_auwrapper
+  git submodule update
 
   # symlink tests data to top-level location so that tests can get to them (we build out of tree)
   ln -svf "$srcdir"/$_pkgname/tests "$srcdir"/tests
