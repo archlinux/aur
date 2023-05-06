@@ -2,20 +2,24 @@
 
 pkgbase=nanomq-git
 pkgname=(nanomq{,-sqlite,-msquic,-full}-git)
-pkgver=0.17.8.r72.g98e0e2f2
+pkgver=0.17.8.r86.g3886c036
 pkgrel=1
 pkgdesc="Nano MQTT Broker - An Ultra-light and Blazing-fast MQTT Broker for IoT Edge"
 arch=('any')
 url="https://github.com/nanomq/nanomq"
 license=('MIT')
-provides=(nanonng
+provides=(${pkgbase%-git}
+        nanonng
         nng)
-conflicts=(${pkgname%-git})
+conflicts=(${pkgbase%-git})
 depends=(mbedtls)
-makedepends=(git
+makedepends=(asciidoctor
+            boost
             cmake
             gcc
-            ninja)
+            git
+            ninja
+            openssl)
 backup=()
 options=('!strip')
 source=("${pkgname%-git}::git+${url}.git")
@@ -32,14 +36,13 @@ prepare() {
 }
 
 package_nanomq-git() {
-    pkgdesc+="(Broker)"
+    pkgdesc+=" (Broker)"
     provides+=(${pkgname%-git})
     depends+=()
 
     cd "${srcdir}/${pkgbase%-git}/"
     cmake -DCMAKE_BUILD_TYPE=None \
           -DNNG_ENABLE_TLS=ON \
-          -DCFG_METHOD=CMAKE_CONFIG -DNOLOG=0 \
           -DCFG_METHOD=CMAKE_CONFIG -DMQ=1 \
           -DBUILD_SHARED_LIBS=ON \
           -DCMAKE_INSTALL_PREFIX=/usr \
@@ -52,7 +55,7 @@ package_nanomq-git() {
 }
 
 package_nanomq-sqlite-git() {
-    pkgdesc+="(sqlite Broker)"
+    pkgdesc+=" (sqlite Broker)"
     provides+=(${pkgname%-git})
     depends+=(sqlite)
 
@@ -60,7 +63,6 @@ package_nanomq-sqlite-git() {
     cmake -DCMAKE_BUILD_TYPE=None \
           -DNNG_ENABLE_TLS=ON \
           -DNNG_ENABLE_SQLITE=ON \
-          -DCFG_METHOD=CMAKE_CONFIG -DNOLOG=0 \
           -DCFG_METHOD=CMAKE_CONFIG -DMQ=1 \
           -DBUILD_SHARED_LIBS=ON \
           -DCMAKE_INSTALL_PREFIX=/usr \
@@ -73,7 +75,7 @@ package_nanomq-sqlite-git() {
 }
 
 package_nanomq-msquic-git() {
-    pkgdesc+="(msquic Broker)"
+    pkgdesc+=" (msquic Broker)"
     provides+=(${pkgname%-git}
             msquic)
     depends+=(sqlite)
@@ -84,7 +86,6 @@ package_nanomq-msquic-git() {
           -DNNG_ENABLE_QUIC=ON \
           -DNNG_ENABLE_SQLITE=ON \
           -DQUIC_BUILD_SHARED=OFF \
-          -DCFG_METHOD=CMAKE_CONFIG -DNOLOG=0 \
           -DCFG_METHOD=CMAKE_CONFIG -DMQ=1 \
           -DBUILD_SHARED_LIBS=ON \
           -DCMAKE_INSTALL_PREFIX=/usr \
@@ -97,7 +98,7 @@ package_nanomq-msquic-git() {
 }
 
 package_nanomq-full-git() {
-    pkgdesc+="(full Broker)"
+    pkgdesc+=" (full Broker)"
     provides+=(${pkgname%-git}
                 msquic)
     depends+=(sqlite
@@ -113,7 +114,6 @@ package_nanomq-full-git() {
           -DENABLE_JWT=ON \
           -DBUILD_ZMQ_GATEWAY=ON \
           -DBUILD_BENCH=ON \
-          -DCFG_METHOD=CMAKE_CONFIG -DNOLOG=0 \
           -DCFG_METHOD=CMAKE_CONFIG -DMQ=1 \
           -DBUILD_SHARED_LIBS=ON \
           -DCMAKE_INSTALL_PREFIX=/usr \
@@ -125,5 +125,3 @@ package_nanomq-full-git() {
 
     DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgbase%-git}/build_nanomq-full install
 }
-
-
