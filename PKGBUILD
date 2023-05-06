@@ -1,3 +1,4 @@
+# Maintainer: somini <dev@somini.xyz>
 # Maintainer: Qontinuum <qontinuum@artixlinux.org>
 
 pkgname='firefox-extension-privacy-redirect'
