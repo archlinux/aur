@@ -7,6 +7,7 @@ pkgbase = mov-cli-git
 	license = GPL3
 	makedepends = git
 	makedepends = python-build
+	makedepends = python-installer
 	depends = ffmpeg
 	depends = mpv
 	depends = fzf
