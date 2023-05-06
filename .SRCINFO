@@ -1,6 +1,6 @@
 pkgbase = informant
 	pkgdesc = An Arch Linux News reader and pacman hook
-	pkgver = 0.4.5
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = https://github.com/bradford-smith94/informant
 	install = informant.install
@@ -15,7 +15,7 @@ pkgbase = informant
 	depends = python-cachecontrol
 	depends = python-lockfile
 	options = zipman
-	source = https://github.com/bradford-smith94/informant/archive/v0.4.5.tar.gz
+	source = https://github.com/bradford-smith94/informant/archive/v0.4.6.tar.gz
 	sha256sums = b82d6accae509bcda3fc4a02b849e9093cbc18f0f728422f27570539c9c53751
 
 pkgname = informant
