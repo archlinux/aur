@@ -1,11 +1,14 @@
 pkgbase = python-tryton
 	pkgdesc = Tryton desktop client
 	pkgver = 6.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tryton.org
 	arch = any
 	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-cairo
 	depends = python-dateutil
 	depends = python-gobject
