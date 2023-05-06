@@ -1,3 +1,4 @@
-src/
-pkg/
-*.xz
+/*
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
