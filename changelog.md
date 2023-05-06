@@ -1,3 +1,19 @@
+## GE-Proton8-2
+
+* wine updated to bleeding edge
+* dxvk updated to latest git
+* vkd3d-proton updated to latest git
+* dxvk-nvapi updated to latest git
+* flicker issue fixed in MH Rise
+* Shatterline working again
+* missing stub backported from wine 8.5 to fix chromium, gameglass
+* fixup for daedalic games protonfixes (they were in the wrong folder, thanks marianoag)
+* protonfix added for Conception PLUS
+* instructions added for steam snap installation in readme (thanks baa14453)
+* flatpak url updated in readme (thanks benaryorg)
+* dxvk-nvapi game-specific enablements updated from upstream proton
+* steam client update from upstream proton
+
 ## GE-Proton8-1
 
 * All build components rebased to Proton 8 experimental/upstream
