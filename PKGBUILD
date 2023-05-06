@@ -260,4 +260,95 @@ _print() {
   )
 }
 
+# Real packaging function, make sure to call this in the *first*
+# package_() function makepkg calls
+#
+# Keep in mind that adding _package lines here does nothing unless
+# that package is:
+# 1. Referenced in pkgname=()
+# 2. Has a package_<name>() function defined for it
+_make_ceph_packages() {
+
+  # Main install
+  local install="${pkgdir}/staging" ; mkdir "${install}"
+  make DESTDIR="${install}" -C "${srcdir}/${pkgbase}-${pkgver}/build" install
+
+  # Clear _package cache
+  rm -rf "${srcdir}/__pkg__" || :
+
+  (
+    cd "${install}"
+
+    pyv=$(python -c 'import sys ; v = sys.version_info ; print("%d.%d" %(v[0], v[1]))')
+
+    lib=usr/lib
+    inc=usr/include
+    bin=usr/bin
+    sbin=usr/sbin
+    share=usr/share
+    etc=etc
+    python=$lib/python${pyv}/site-packages
+    systemd=$lib/systemd/system
+    man=$share/man
+
+    ###############################################
+    #         Print install files                 #
+    ###############################################
+
+    printf '##### CEPH INSTALL ' ; printf '%0.s#' {1..29} ; printf '\n'
+    find . | sed -e 's|^\./||'
+    printf '##### CEPH INSTALL ' ; printf '%0.s#' {1..29} ; printf '\n'
+
+    ###############################################
+    #         Install pruning                     #
+    ###############################################
+
+    # Remove 'tests' directories
+    find . -depth -type d -name 'tests' -exec rm -vr '{}' \+
+
+    # Remove most common test bins/scripts
+    find . -depth -type f,l -name '*test*' -exec rm -v '{}' \+
+
+    # $share/ceph/mgr/test_orchestrator
+    find . -depth -type d -name 'test_orchestrator' -exec rm -vr '{}' \+
+
+    # Live test tools
+    rm -v  $bin/ceph_scratchtool{,pp}
+    rm -rv $bin/ceph_psim
+    rm -rv $bin/ceph-run $man/man8/ceph-run.8
+    rm -rv $bin/ceph_multi_stress_watch
+    rm -rv $bin/ceph-coverage
+
+    # Old ssh key stuff
+    rm -vf $share/ceph/*drop.ceph*
+
+    # TODO: Move this into a patch
+    # Fix EnvironmentFile location in systemd service files
+    sed -i -e 's|/etc/sysconfig/|/etc/conf.d/|g' $systemd/*.service
+
+    # Fix bash completions path
+    install -d -m 755 "$share/bash-completion"
+    mv -v $etc/bash_completion.d $share/bash-completion/completions
+
+    # TODO: Move this into a patch
+    # Fix sbin dir (cmake opt seems to have no effect)
+    mv -v $sbin/* $bin/
+    rm -vrf $sbin
+
+  )
+
+  local -i _ret=$(find "${install}" -type f,l | wc -l)
+  if (( _ret > 0 )) ; then
+    echo "[ERROR] Files were found after packaging! Bailing out!"
+    echo "        Please ensure all files are either moved or"
+    echo "        deleted before package_ceph-common() completes."
+    ( cd "${install}" && find . -type f,l | sed -e 's|^\./||' )
+    return 1
+  else
+    rm -rf "${install}"
+  fi
+
+  return 0
+}
+
 # vim:set ts=2 sw=2 et:
