@@ -1,7 +1,7 @@
 pkgbase = fcitx-fbterm-git
 	pkgdesc = Fbterm support for fcitx
 	pkgver = 0.2.0.r1.ga0ecce1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fcitx/fcitx-fbterm
 	install = fcitx-fbterm-git.install
 	arch = x86_64

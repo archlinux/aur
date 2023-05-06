@@ -3,7 +3,7 @@
 _pkgname=fcitx-fbterm
 pkgname=fcitx-fbterm-git
 pkgver=0.2.0.r1.ga0ecce1
-pkgrel=1
+pkgrel=2
 pkgdesc='Fbterm support for fcitx'
 arch=(x86_64 i686)
 url='https://github.com/fcitx/fcitx-fbterm'
