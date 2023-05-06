@@ -1,37 +1,36 @@
-# $Id: PKGBUILD 226039 2017-04-27 13:52:30Z felixonmars $
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
-# Contributor: csslayer <wengxt AT gmail com>
+# Maintainer: Rocket Aaron <i at rocka dot me>
 
-pkgname=libime-jyutping-git
-pkgver=r3.0278e17
+_pkgname=libime-jyutping
+pkgname=${_pkgname}-git
+pkgver=1.0.6.r0.gfaa5cf2
 pkgrel=1
-pkgdesc="A library to support generic input method implementation"
+pkgdesc="A library make use of libime to implement jyutping (粵拼) input method, also includes engine for fcitx 5 (git version)"
 arch=('i686' 'x86_64')
 url="https://github.com/fcitx/libime-jyutping"
-license=('GPL')
-depends=('boost-libs' 'fcitx5-git')
-makedepends=('boost' 'extra-cmake-modules' 'git' 'python')
+license=('LGPL' 'GPL3')
+depends=('fcitx5-chinese-addons-git' 'fcitx5-git')
+makedepends=('boost' 'extra-cmake-modules' 'ninja' 'git' 'python')
 source=("git+https://github.com/fcitx/libime-jyutping.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd libime-jyutping
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${_pkgname}
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd libime-jyutping
-  git submodule update --init
+  cd ${_pkgname}
+  git submodule update --init --recursive
 }
 
 build(){
-  cd libime-jyutping
-
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_LIBDIR=/usr/lib .
-  make
+  cmake -B build -GNinja -S ${_pkgname} \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib
+  cmake --build build
 }
 
 package() {
-  cd libime-jyutping
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
