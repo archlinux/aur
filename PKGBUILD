@@ -1,29 +1,35 @@
 # Maintainer: Kyle Laker <kyle+aur@laker.email>
 
 pkgname=oscal-cli
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="A simple open source command line tool to support common operations over OSCAL content."
 arch=('any')
 url="https://github.com/usnistgov/oscal-cli"
 license=('custom')
 depends=('java-environment>=11')
-makedepends=('maven' 'java-environment>=11')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha256sums=('12e2ed6cef6ad8cdd7888a0a4f0aca64a8dae7d054b08163f3b807fca0241a2d')
+makedepends=('maven' 'java-environment>=11' 'git')
+# The source has to be the git repository because it uses `git-commit-id-maven-plugin` which
+# must be able to describe a git repository.
+source=("$pkgname::git+$url#tag=v$pkgver")
+sha256sums=('SKIP')
+
+prepare() {
+  git submodule update --init --recursive
+}
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   mvn clean package -DskipTests=true
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   mvn test
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -d "$pkgdir/opt"
   cp -r "cli-core/target/cli-core-$pkgver-oscal-cli/" "$pkgdir/opt/oscal-cli"
