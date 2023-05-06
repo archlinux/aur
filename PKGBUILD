@@ -2,7 +2,7 @@
 
 pkgname=rdm-bin
 pkgver=2022.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform open source database management tool for Redis ®'
 arch=('x86_64')
 url="https://resp.app/"
@@ -13,7 +13,7 @@ depends=(
   'qt5-quickcontrols2'
   'qt5-svg'
   'brotli'
-  'python'
+  'python>=3.11'
   'snappy'
 )
 conflicts=('redis-desktop-manager-bin' 'redis-desktop-manager')

@@ -1,7 +1,7 @@
 pkgbase = rdm-bin
 	pkgdesc = Cross-platform open source database management tool for Redis ®
 	pkgver = 2022.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://resp.app/
 	arch = x86_64
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = rdm-bin
 	depends = qt5-quickcontrols2
 	depends = qt5-svg
 	depends = brotli
-	depends = python
+	depends = python>=3.11
 	depends = snappy
 	provides = rdm
 	provides = resp
