@@ -18,7 +18,7 @@ checkdepends=('python-six' 'python2-six')
 optdepends=('v8: Google JavaScript engine'
             'nodejs: built on Chrome V8 JavaScript engine'
             'phantomjs: a headless WebKit'
-            'js*: Mozilla JavaScript engine (spidermonkey)')
+            'js: Mozilla JavaScript engine (spidermonkey)')
 changelog=changelog
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz)
 sha256sums=('34cc1d070976918183ff7bdc0ad71f8157a891c92708c00c5fbbff7a769f505c')

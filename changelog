@@ -1,3 +1,7 @@
+2023-05-06 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 1.5.1-2:
+    pkg: python3 setup.py deprecation
+    pkg: rename spidermonkey package in optdepends
 2018-08-06 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 1.5.1-1:
     End of life: this library is no longer maintained
