@@ -4,7 +4,7 @@
 _name='mido'
 pkgname=python-$_name
 pkgver=1.2.10
-pkgrel=3
+pkgrel=4
 pkgdesc='A Python library for working with MIDI messages and ports'
 url='https://mido.readthedocs.io/'
 arch=(any)
