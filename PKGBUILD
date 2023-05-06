@@ -3,7 +3,7 @@
 
 pkgname=shadowsocks-rust
 pkgver=1.15.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A Rust port of shadowsocks https://shadowsocks.org/'
 arch=(x86_64)
 url='https://github.com/shadowsocks/shadowsocks-rust'
@@ -20,6 +20,7 @@ sha512sums=('95ba0fd4f96166ccc3462dc67fa0dacf18559a849dc4cae60a0b4136e2a6a1e354c
             '23a33b6e43ac5e91866c0aab8b0166790559ebdb49b3ea91393a977d2636a0c75f99544f559e0a248be1eb54e6bf8ad1cda8887a85d773a9214de16c4f223f1f')
 
 build() {
+    [[ "$CARCH" == "riscv64" ]] && CARCH="riscv64gc"
     cd "${srcdir}/${pkgname}-${pkgver}"
     export CARGO_TARGET_DIR=target
     cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
