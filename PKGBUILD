@@ -1,3 +1,5 @@
+# Maintainer: éclairevoyant
+
 pkgname=nemo-qml-plugin-dbus
 pkgver=2.1.32
 pkgrel=1
