@@ -5,13 +5,13 @@
 _base=relatorio
 pkgname=python-${_base}
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A templating library able to output odt and pdf files"
 arch=(any)
 url="https://${_base}.tryton.org"
 license=(GPL)
 depends=(python-genshi python-lxml)
-makedepends=(python-setuptools)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 optdepends=('python-pycha: chart support'
   'python-yaml: char support'
   'python-magic: fodt support')
@@ -20,11 +20,11 @@ sha512sums=('460f446944e6d8dc156f8d0ae287d9c2805e0843dcb304088cee92093e84be7b884
 
 build() {
   cd ${_base}-${pkgver}
-  python setup.py build
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
   cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
