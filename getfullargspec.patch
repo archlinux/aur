@@ -16,7 +16,7 @@ index 34707a83f..cbafbe573 100644
          preserving their order.
          """
 -        names, var_args, var_kwargs, defaults = getargspec(self.handler)  # pylint: disable=W1505
-+        names, var_args, var_kwargs, defaults = getfullargspec(self.handler)  # pylint: disable=W1505
++        names, var_args, var_kwargs, defaults, *_ = getfullargspec(self.handler)  # pylint: disable=W1505
  
          # Behavior of this code need to be checked. Might yield
          # incorrect results on some rare occasions.
@@ -29,7 +29,7 @@ index 5f54a1209..9e61de1d4 100644
          func = self.realClassMethods[name]
          try:
 -            args, varargs, varkw, defaults = inspect.getargspec(func)
-+            args, varargs, varkw, defaults = inspect.getfullargspec(func)
++            args, varargs, varkw, defaults, *_ = inspect.getfullargspec(func)
          except TypeError:
              # func is not a Python function. It is probably a builtin,
              # such as __repr__ or __coerce__. TODO: Checking?
