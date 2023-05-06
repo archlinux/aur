@@ -2,10 +2,10 @@
 
 pkgname=python-morphys
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Smart conversions between unicode and bytes types for common cases (no active development)"
 url="https://github.com/mkalinski/morphys"
-depends=('python')
+depends=('python>=3.11')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
@@ -20,5 +20,5 @@ build() {
 
 package() {
     cd $srcdir/${pkgname}-${pkgver}
-    python setup.py install --root="$pkgdir" --optimize=1  --skip-build
+    python setup.py install --root="$pkgdir" --optimize=2 --skip-build
 }
