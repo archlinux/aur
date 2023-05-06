@@ -1,0 +1,26 @@
+pkgbase = com.tencent.docs.deepin
+	pkgdesc = TencentDocs Client on Deepin Wine6
+	pkgver = 2.3.19
+	pkgrel = 1
+	url = https://docs.qq.com/
+	arch = x86_64
+	license = custom
+	depends = libx11
+	depends = bash
+	depends = gtk2
+	depends = xdg-utils
+	depends = glib2
+	depends = pango
+	depends = glibc
+	depends = cairo
+	depends = fontconfig
+	depends = freetype2
+	depends = at-spi2-core
+	depends = gdk-pixbuf2
+	depends = lib32-glibc
+	depends = deepin-wine6-stable
+	depends = gnome-settings-daemon
+	source = https://com-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.docs.deepin/com.tencent.docs.deepin_2.3.19deepin1_i386.deb
+	sha256sums = b52b7b166fb383bf8c5924249cd2c30158bd884e9400ae4f2fabf3a5e3ae6d0a
+
+pkgname = com.tencent.docs.deepin
