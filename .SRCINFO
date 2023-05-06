@@ -9,6 +9,7 @@ pkgbase = lgx2userspace-git
 	makedepends = cmake
 	depends = libao
 	depends = libusb
+	depends = libusb-compat
 	depends = sdl2
 	depends = sdl2_gfx
 	depends = v4l2loopback-dkms

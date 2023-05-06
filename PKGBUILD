@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/ChrisAJS/lgx2userspace"
 license=('custom:MIT')
 groups=()
-depends=('libao' 'libusb' 'sdl2' 'sdl2_gfx' 'v4l2loopback-dkms' 'v4l2loopback-utils')
+depends=('libao' 'libusb' 'libusb-compat' 'sdl2' 'sdl2_gfx' 'v4l2loopback-dkms' 'v4l2loopback-utils')
 makedepends=('cmake')
 install=lgx2userspace.install
 source=("${_pkgname}::git+https://github.com/ChrisAJS/lgx2userspace.git#branch=noconan")
