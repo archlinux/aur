@@ -85,7 +85,6 @@ prepare() {
 
   # Disable PDFium
   patch -p1 -i "${srcdir}/esee"
-
 }
 
 build() {
@@ -113,7 +112,7 @@ package() {
     'c-ares' 'libcares.so'
     'openssl' 'libcrypto.so' 'libssl.so'
     'libglvnd' 'libGL.so'
-    'libcurl' 'libcurl.so'
+    'curl' 'libcurl.so'
     'xz' 'liblzma.so'
     'sqlite' 'libsqlite3.so'
     'systemd-libs' 'libudev.so'
