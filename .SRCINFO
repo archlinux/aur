@@ -1,7 +1,7 @@
 pkgbase = btrfs-assistant
 	pkgdesc = An application for managing BTRFS subvolumes and Snapper snapshots
 	pkgver = 1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/btrfs-assistant/btrfs-assistant
 	arch = x86_64
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = btrfs-assistant
 	makedepends = qt5-tools
 	depends = qt5-base
 	depends = qt5-svg
-	depends = noto-fonts
+	depends = ttf-font
 	depends = polkit
 	depends = util-linux
 	depends = btrfs-progs
