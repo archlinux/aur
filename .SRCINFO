@@ -1,13 +1,14 @@
 pkgbase = newitemmonitor
 	pkgdesc = 通用型上新监控器，上新时获得通知
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fatecore.com/p/nim/
 	arch = x86_64
 	arch = aarch64
 	license = private
 	makedepends = asar
 	makedepends = npm
+	makedepends = gendesk
 	depends = electron4
 	depends = bash
 	options = !strip
