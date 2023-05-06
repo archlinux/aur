@@ -4,7 +4,7 @@ pkgname="deepin-wine-${_appname}"
 pkgver=4.0.0
 _sparkpkgname="com.${_appname}.spark"
 _sparkver=3.3.0spark6
-pkgrel=1
+pkgrel=2
 pkgdesc="喜马拉雅，是中国领先的音频分享平台。用声音分享人类智慧，用声音服务美好生活，做一家人一辈子的精神食粮，是平台的使命和初心。"
 arch=("x86_64")
 url="https://www.ximalaya.com"
@@ -16,13 +16,13 @@ install="${pkgname}.install"
 source=(
     "${_sparkpkgname}_${_sparkver}_amd64.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/music/${_sparkpkgname}/${_sparkpkgname}_${_sparkver}_amd64.deb"
     "${_appname}-${pkgver}.exe::${url}/down/lite/v2?client=win&channelId=99&subChannelId=100002"
-    "LICENSE.html::https://passport.ximalaya.com/page/register_rule"
+    "LICENSE.html"
     "${pkgname}".install
     "run.sh"
     )
 sha256sums=('54989d78270b73e473e71eaa5676eb668976232fb06fff0cd4d62336d00da71e'
             '6883c5ed03fc62fd108294ed03c3b3f1b42601d30c198afb1cdd21ff9134e36a'
-            '49d0dbd526a0e15cb24cc6ab7bb6f9205198688ab1f7d184740ee6cbf2ef1558'
+            '95b52ed4c2b0ef19d4a091da847c7dd20761699aa63a12bf933fa2064f49cd01'
             '6f2e0e87fe8f1abbd947d311b0fcad50c9c4c22a2531b8277db4e28e0a2d78dd'
             '1b7b1c7232755d62cd21558c33f1bd1712ff8ac110d2defa22f0c2aac6485912')
  
