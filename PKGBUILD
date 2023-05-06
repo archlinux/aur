@@ -3,7 +3,7 @@
 pkgname=python-ncls
 _module=${pkgname#python-}
 pkgver=0.0.66
-pkgrel=1
+pkgrel=2
 pkgdesc="A wrapper for the nested containment list data structure"
 arch=('x86_64')
 url="https://github.com/biocore-ntnu/ncls"
@@ -11,10 +11,14 @@ license=('BSD-2')
 depends=(
          'python'
          'python-numpy'
+         'glibc'
         )
 makedepends=(
              'python-setuptools'
              'cython'
+             'python-build'
+             'python-installer'
+             'python-wheel'
             )
 
 options=(!emptydirs)
@@ -25,15 +29,16 @@ sha256sums=('cf65863021b318975bf5a0d17aaa838eef2fa64487fc129c7c78a7f1c94bca36'
 
 prepare() {
     cp LICENSE "$_module-$pkgver"
+    rm "$_module-$pkgver"/ncls/src/{cgraph.c,fncls.c,ncls.c,ncls32.c}
 }
 
 build() {
     cd "$_module-$pkgver"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$_module-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
