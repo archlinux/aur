@@ -5,7 +5,7 @@
 
 # Contributor: Asuka Minato <youremail@domain.com>
 pkgname=killport-bin
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 epoch=
 pkgdesc="A command-line tool to easily kill processes running on a specified port."
@@ -31,10 +31,10 @@ source_i686=("https://github.com/jkfran/killport/releases/download/v$pkgver/kill
 source_armv7h=("https://github.com/jkfran/killport/releases/download/v$pkgver/killport-armv7-linux-gnueabihf.tar.gz")
 noextract=()
 sha256sums=('e023af3d4e0c544d684777de83d21f029df35a8bd60bf93dce2e703334095bf7')
-sha256sums_aarch64=('647cad8f699d4303885ad288d444d55b644cc953ae7fdc3190de948725862749')
-sha256sums_x86_64=('f1d1833d9fa0df1d6056473e5632dd158d42aee4531bee93866cfca4a0e09c23')
-sha256sums_i686=('97e26d81500648cf5f2380c607f7b66d766ba82db8ed2dec8f2ec0ad537293b7')
-sha256sums_armv7h=('af2651d7432104ced0ff0a188493929bd011b51b002ee79169ca66e49158ef5a')
+sha256sums_aarch64=('713d5b9b38f74785022bb5f1b6e0eb5dbc0c58d29b64d965cd2a2d7692ded9e4')
+sha256sums_x86_64=('5d5b51673546eebd97279b1c530f8fa0d8319e5f3f29fcb2d1303ad28ac13b7c')
+sha256sums_i686=('164001abb985dc1e656f74966dd4946bda04b741890538c4b1ad7fa611d6cf37')
+sha256sums_armv7h=('1bc81aab939b781f1cee25caa452ec5c9cbc5abd6f595366229971f16644ebeb')
 validpgpkeys=()
 
 package() {
