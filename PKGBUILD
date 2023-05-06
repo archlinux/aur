@@ -3,10 +3,10 @@
 pkgname=python-multibase
 _module=${pkgname#python-}
 pkgver=1.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Multibase implementation for Python (no active development)"
 url="https://github.com/multiformats/py-multibase"
-depends=('python'
+depends=('python>=3.11'
 	 'python-six'
          'python-morphys'
          'python-baseconv')
@@ -24,5 +24,5 @@ build() {
 
 package() {
 	cd "$srcdir/${_module}-${pkgver}"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python setup.py install --root="$pkgdir" --optimize=2 --skip-build
 }
