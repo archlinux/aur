@@ -9,6 +9,7 @@ arch=(x86_64 i686)
 url='https://github.com/fcitx/fcitx-fbterm'
 license=('GPLv2')
 depends=('fbterm' 'fcitx')
+makedepends=('git' 'cmake')
 provides=('fcitx-fbterm')
 source=("git+https://github.com/fcitx/$_pkgname")
 md5sums=('SKIP')
