@@ -3,11 +3,11 @@
 pkgname='python-watchfiles'
 _module=${pkgname#python-}
 pkgver='0.19.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple, modern and high performance file watching and code reload in python."
 url="https://github.com/samuelcolvin/watchfiles"
 depends=(
-	'python'
+	'python>=3.11'
 	'python-anyio>=3.0.0'
 )
 makedepends=(
