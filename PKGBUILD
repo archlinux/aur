@@ -4,7 +4,7 @@ _pkgbase=rime-ice
 _schemas=(rime_ice)
 _pkgname=$_pkgbase-pinyin
 pkgname=$_pkgname-git
-pkgver=r183.cbd14d0
+pkgver=r207.299ae93
 pkgrel=1
 pkgdesc="Rime 配置：雾凇拼音 | 长期维护的简体词库 - 拼音方案"
 arch=("any")
@@ -61,8 +61,9 @@ package() {
 
   _install_base=$pkgdir/usr/share/rime-data
 
-  install -Dm644 "$_suggestion" rime.lua -t "$_install_base/"
-  install -Dm644 ./build/*.{bin,yaml}    -t "$_install_base/build"
+  install -Dm644 "$_suggestion"       -t "$_install_base/"
+  install -Dm644 ./lua/*              -t "$_install_base/lua"
+  install -Dm644 ./build/*.{bin,yaml} -t "$_install_base/build"
 
   for _f in *.schema.yaml; do
     if [ -f "build/$_f" ]; then
