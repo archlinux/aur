@@ -476,6 +476,23 @@ _make_ceph_packages() {
       $lib/libradosgw.so{,.2,.2.0.0} \
       $lib/librgw.so{,.2,.2.0.0}
 
+    _package ceph-cephadm \
+      $man/man8/cephadm.8
+
+    _package ceph-volume \
+      $bin/ceph-volume{,-systemd} \
+      $python/ceph_volume \
+      $python/ceph_volume-*egg-info* \
+      $man/man8/ceph-volume{,-systemd}.8
+
+    _package cephfs-shell \
+      $bin/cephfs-shell \
+      $python/cephfs_shell-*
+
+    _package cephfs-top \
+      $bin/cephfs-top \
+      $python/cephfs_top-*
+
     ###############################################
     #         Ceph python packages                #
     ###############################################
@@ -859,6 +876,60 @@ package_librgw() {
   )
 
   mv __pkg__/$pkgname/* "$pkgdir"
+  _print
+}
+
+package_ceph-volume() {
+  pkgdesc='Ceph Storage utility for preparing block devices for use as OSDs'
+  depends=(
+    "python-ceph-common=${__version}" "ceph-osd=${__version}"
+
+    'python' 'lvm2'
+
+    'python-setuptools' 'python-importlib-metadata'
+  )
+
+  mv __pkg__/$pkgname/* "$pkgdir"
+  _print
+}
+
+package_cephfs-shell() {
+  pkgdesc='Ceph Storage utility for accessing a CephFS filesystem shell'
+  depends=(
+    "python-ceph-common=${__version}" "python-cephfs=${__version}"
+
+    'python' 'python-cmd2' 'python-colorama'
+  )
+
+  mv __pkg__/$pkgname/* "$pkgdir"
+  _print
+}
+
+package_cephfs-top() {
+  pkgdesc='Ceph Storage utility for a top(1) inspired curses TUI for CephFS metrics'
+  depends=(
+    "python-ceph-common=${__version}" "python-cephfs=${__version}"
+
+    'python'
+  )
+
+  mv __pkg__/$pkgname/* "$pkgdir"
+  _print
+}
+
+package_ceph-cephadm() {
+  pkgdesc='Ceph Storage adminstration and configuration utility'
+  provides=('cephadm')
+  conflicts=('cephadm')
+  depends=(
+    'python' 'podman'
+  )
+
+  mv __pkg__/$pkgname/* "$pkgdir"
+
+  install -Dm755 "${srcdir}/${pkgbase}-${pkgver}/src/cephadm/cephadm" \
+    "${pkgdir}/usr/bin/cephadm"
+
   _print
 }
 
