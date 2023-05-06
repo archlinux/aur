@@ -6,7 +6,7 @@ _commit=6a3321d04c16551ef38a2485eda21d2fe3b1e83f
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=7.4.1
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -243,6 +243,7 @@ prepare() {
     popd
     done
 
+    sed '/2326.patch/d' -i patches/protonprep-valve-staging.sh
     ./patches/protonprep-valve-staging.sh
 
     patch -p1 -i "$srcdir"/0001-AUR-Pkgbuild-changes.patch
