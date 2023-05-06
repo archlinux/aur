@@ -1,7 +1,7 @@
 pkgbase = jack-matchmaker
 	pkgdesc = A command line tool to auto-connect JACK ports matching given patterns
 	pkgver = 0.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/SpotlightKid/jack-matchmaker
 	arch = any
 	license = GPL2
