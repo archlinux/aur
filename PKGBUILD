@@ -1,3 +1,4 @@
+# Maintainer: somini <dev@somini.xyz>
 # Maintainer: Qontinuum <qontinuum.dev@protonmail.ch>
 
 pkgname='firefox-extension-cookie-autodelete'
