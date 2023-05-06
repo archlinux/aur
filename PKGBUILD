@@ -1,21 +1,20 @@
 pkgname=nemo-qml-plugin-dbus
-pkgver=2.1.28
+pkgver=2.1.32
 pkgrel=1
 pkgdesc="Provides types to access D-Bus from QML"
-url="https://github.com/sailfishos/nemo-qml-plugin-dbus"
-arch=("x86_64" "aarch64")
-source=("https://github.com/sailfishos/nemo-qml-plugin-dbus/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('7b93a5d2a537bd5a2afec48cb3877ee7f690e09667a940261e663a5ca7b3f858')
-depends=("qt5-base" "qt5-declarative")
-license=("LGPL-2.1-only")
+arch=(x86_64 aarch64)
+url="https://github.com/sailfishos/$pkgname"
+license=(LGPL2.1)
+depends=(qt5-declarative)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+b2sums=('86d581de452d2abf749e7e81de2ec154c2fc4f0a130954915acdb75fd4cf45403ef1c70928d68ad0e567b5cdca97c78333d29d1f8220ae32e8d378ee580a7b36')
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd $pkgname-$pkgver
 	qmake src
 	make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make INSTALL_ROOT="$pkgdir/" install
+	make -C $pkgname-$pkgver INSTALL_ROOT="$pkgdir" install
 }
