@@ -1,0 +1,11 @@
+--- subprojects/wlroots/examples/dmabuf-capture.c	2023-04-29 16:14:00.477001077 -0600
++++ dmabuf-capture-patch.c	2023-04-29 16:26:44.997035487 -0600
+@@ -521,7 +521,7 @@
+ 		};
+
+ 		av_log(ctx, AV_LOG_INFO, "Encoded frame %i (%i in queue)\n",
+-				ctx->avctx->frame_number, get_fifo_size(&ctx->vid_frames));
++				(int)ctx->avctx->frame_num, get_fifo_size(&ctx->vid_frames));
+
+ 	} while (!ctx->err);
+
