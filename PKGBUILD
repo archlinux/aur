@@ -2,7 +2,7 @@
 
 pkgname=codec2-lpcnet
 _pkgname=codec2
-pkgver=1.0.5
+pkgver=1.1.0
 pkgrel=1
 epoch=1
 pkgdesc='Open source speech codec designed for communications quality speech between 450 and 3200 bit/s with support for LPCNet'
@@ -14,7 +14,7 @@ makedepends=('cmake')
 provides=('freedv' 'codec2')
 conflicts=('freedv' 'codec2')
 source=("$url/archive/v$pkgver/$_pkgname-$pkgver.tar.gz")
-sha512sums=('692feea8ff99430a7ed8efa5bf48a633dc9689b1f39009cf1f907315e600da26ea3787a994b51d7ca9d4cbc8b8c9b26f89031af899f114fa130f0703266a6b17')
+sha512sums=('efc0f31b1a265c7acf38ab1c6c856f7a3cce58acec6c214d94cf9cd560efdca08859b317b396efb286176b0e235b2256080c8a2f83695424454b744275d1c661')
 
 build() {
   cmake -B build -S $_pkgname-$pkgver \
