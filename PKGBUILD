@@ -8,7 +8,7 @@ url='https://github.com/localsend/localsend'
 arch=('x86_64')
 license=('MIT')
 depends=('zenity' 'xdg-user-dirs' 'libayatana-appindicator')
-makedepends=('flutter')
+makedepends=('flutter' 'clang')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('1f1ce8ed99c7ffa8ef3cf49df6ce094eb2559563e307da4cd21714dd2babe5c0')
 
