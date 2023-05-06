@@ -3,7 +3,7 @@
 _pkgname='python-libpcap'
 pkgname="${_pkgname}-git"
 pkgver=0.4.1+2.r98.20230128.b38a8cc
-pkgrel=1
+pkgrel=2
 pkgdesc="Python binding for the libpcap C library."
 arch=(
   'aarch64'
@@ -85,15 +85,11 @@ build() {
   gzip -9 build/texinfo/*.info
 }
 
-# check() {
-#   cd "${srcdir}/${_pkgname}"
-# 
-#   printf '%s\n' " --> running 'nosetests' ..."
-#   nosetests
-#   printf '\n'
-#   printf '%s\n' " --> running 'pytest' ..."
-#   pytest
-# }
+check() {
+  cd "${srcdir}/${_pkgname}"
+  printf '%s\n' " --> running 'pytest' ..."
+  pytest
+}
 
 package() {
   cd "${srcdir}/${_pkgname}"
