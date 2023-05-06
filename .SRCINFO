@@ -1,13 +1,16 @@
 pkgbase = python-pytest-codeblocks
 	pkgdesc = Test code blocks in your READMEs
 	pkgver = 0.16.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nschloe/pytest-codeblocks
 	arch = any
 	license = MIT
-	makedepends = python-virtualenv
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-pytest
-	source = https://github.com/nschloe/pytest-codeblocks/archive/v0.16.1.tar.gz
+	source = pytest-codeblocks-0.16.1.tar.gz::https://github.com/nschloe/pytest-codeblocks/archive/v0.16.1.tar.gz
 	sha512sums = 4c3d91488550373832c8dd45b39873ae3810b423147b3b9524afc8e205605324092b4462b62acf2e34e70b5456795834cae511d9c9a06e08288a46cdb38b1778
 
 pkgname = python-pytest-codeblocks
