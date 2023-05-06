@@ -1,7 +1,7 @@
 pkgbase = python-dnaio
 	pkgdesc = Python library for very efficient parsing and writing of FASTQ and FASTA files
 	pkgver = 0.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/marcelm/dnaio/
 	arch = x86_64
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = python-dnaio
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
+	makedepends = cython
 	depends = python
 	depends = python-xopen
 	options = !emptydirs

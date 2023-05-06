@@ -1,9 +1,9 @@
-# Maintainer: Bipin Kumar <bipin@ccmb.res.in>
+# Maintainer: Bipin Kumar <kbipinkumar@pm.me>
 
 pkgname=python-dnaio
 _module=${pkgname#python-}
 pkgver=0.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Python library for very efficient parsing and writing of FASTQ and FASTA files'
 arch=('x86_64')
 url="https://github.com/marcelm/dnaio/"
@@ -18,6 +18,7 @@ makedepends=(
             'python-wheel'
             'python-setuptools'
             'python-setuptools-scm'
+            'cython'
             )
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
