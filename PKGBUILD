@@ -8,7 +8,7 @@ _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
 pkgver=r9548.2273df4d7
-pkgrel=1
+pkgrel=2
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
 url="https://github.com/citra-emu/citra/"
@@ -139,9 +139,9 @@ package_citra-git() {
 }
 
 package_citra-qt-git() {
-	depends+=('qt5-base' 'qt5-multimedia' 'sdl2' 'hicolor-icon-theme')
+	depends+=('qt6-base' 'qt6-multimedia' 'sdl2' 'hicolor-icon-theme')
 	optdepends=('libxkbcommon-x11: for X11 support'
-	            'qt5-wayland: for Wayland support')
+	            'qt6-wayland: for Wayland support')
 
 	cd "$srcdir/build"
 	make DESTDIR="$pkgdir/" install
