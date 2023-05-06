@@ -1,7 +1,7 @@
 # Maintainer: Ward Segers <w@rdsegers.be>
 # Contributor: Alex Branham <alex.branham@gmail.com>
 
-_cranver=0.999-6
+_cranver=0.999-7
 pkgname=r-expm
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -14,7 +14,7 @@ optdepends=('r-rcolorbrewer' 'r-sfsmisc' 'r-rmpfr')
 makedepends=('gcc-fortran')
 replaces=('r-cran-expm')
 source=("https://cran.r-project.org/src/contrib/expm_"$_cranver".tar.gz")
-sha512sums=('378b6f7b7319d5521b9b1f4966f2ddcb605b79119446cb4b5faf29bc56ca34e63088b2d59ce1408b3b42b9eae66ec3a6c4c7976452d8ce58a88da47db50b918a')
+sha512sums=('0cdc5adc0e2f29c87435f8d9c676341558379a8d5ea49431fc5f8aa60a8b6ddb89b8768938f00f4ebaa2655dfb1bcf2a0baed2f17bdb96090062c8f94f216042')
 
 build(){
     R CMD INSTALL expm_"$_cranver".tar.gz -l "$srcdir"
