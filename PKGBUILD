@@ -1,13 +1,13 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libchdr
 pkgname=$_pkgname-git
-pkgver=r180.e02b3d6
+pkgver=r204.903f2f5
 pkgrel=1
 pkgdesc="Standalone library for reading MAME's CHDv1-v5 formats"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/rtissera/libchdr"
 license=('BSD')
-depends=('zlib')
+depends=('glibc' 'zlib')
 makedepends=('cmake' 'git')
 provides=("$_pkgname=$pkgver" 'libchdr.so')
 conflicts=("$_pkgname")
