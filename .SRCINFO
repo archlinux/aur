@@ -17,6 +17,7 @@ pkgbase = rime-ice-git
 	conflicts = rime-ice-double-pinyin
 	conflicts = rime-ice-double-pinyin-flypy
 	conflicts = rime-ice-double-pinyin-mspy
+	conflicts = rime-ice-double-pinyin-ziguang
 	source = rime-ice::git+https://github.com/iDvel/rime-ice.git
 	sha512sums = SKIP
 
