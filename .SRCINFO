@@ -1,18 +1,52 @@
 pkgbase = nanomq-git
 	pkgdesc = Nano MQTT Broker - An Ultra-light and Blazing-fast MQTT Broker for IoT Edge
-	pkgver = 0.17.8.r71.g9833011d
+	pkgver = 0.17.8.r72.g98e0e2f2
 	pkgrel = 1
 	url = https://github.com/nanomq/nanomq
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = cmake
+	makedepends = gcc
 	makedepends = ninja
-	provides = nanomq-git
-	conflicts = nanomq-git
+	depends = mbedtls
+	provides = nanonng
+	provides = nng
 	conflicts = nanomq
 	options = !strip
 	source = nanomq::git+https://github.com/nanomq/nanomq.git
 	sha256sums = SKIP
 
 pkgname = nanomq-git
+	pkgdesc = Nano MQTT Broker - An Ultra-light and Blazing-fast MQTT Broker for IoT Edge(Broker)
+	depends = mbedtls
+	provides = nanonng
+	provides = nng
+	provides = nanomq
+
+pkgname = nanomq-sqlite-git
+	pkgdesc = Nano MQTT Broker - An Ultra-light and Blazing-fast MQTT Broker for IoT Edge(sqlite Broker)
+	depends = mbedtls
+	depends = sqlite
+	provides = nanonng
+	provides = nng
+	provides = nanomq-sqlite
+
+pkgname = nanomq-msquic-git
+	pkgdesc = Nano MQTT Broker - An Ultra-light and Blazing-fast MQTT Broker for IoT Edge(msquic Broker)
+	depends = mbedtls
+	depends = sqlite
+	provides = nanonng
+	provides = nng
+	provides = nanomq-msquic
+	provides = msquic
+
+pkgname = nanomq-full-git
+	pkgdesc = Nano MQTT Broker - An Ultra-light and Blazing-fast MQTT Broker for IoT Edge(full Broker)
+	depends = mbedtls
+	depends = sqlite
+	depends = zeromq
+	provides = nanonng
+	provides = nng
+	provides = nanomq-full
+	provides = msquic
