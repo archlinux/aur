@@ -3,12 +3,13 @@
 
 pkgname=certbot-dns-infomaniak
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Infomaniak DNS Authenticator plugin for Certbot"
 arch=('any')
 license=('Apache')
 url="https://pypi.python.org/pypi/$pkgname"
-depends=('certbot' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'python-mock' 'python-requests-mock')
+depends=('certbot' 'python-mock' 'python-requests-mock')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
 source=("https://pypi.io/packages/source/c/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('19b148858adf1e816f12bb738b0ae8c64853d6dfede4e1e2aa2fca6ecdff2ddf')
