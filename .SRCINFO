@@ -1,6 +1,6 @@
 pkgbase = specgram-git
 	pkgdesc = Small program that computes and plots spectrograms, either in a live window or to disk, with support for stdin input.
-	pkgver = 20201229
+	pkgver = 20230506
 	pkgrel = 1
 	url = https://github.com/rimio/specgram
 	arch = x86_64
@@ -9,11 +9,9 @@ pkgbase = specgram-git
 	makedepends = cmake
 	makedepends = gcc
 	depends = sfml
-	depends = spdlog
 	depends = fftw
 	conflicts = specgram
 	source = git+https://github.com/rimio/specgram.git
 	md5sums = SKIP
 
 pkgname = specgram-git
-
