@@ -3,17 +3,16 @@
 
 pkgname=sortdir
 pkgver=0.6
-pkgrel=6
+pkgrel=7
 pkgdesc='Have [almost] any application sort its directory listings'
-arch=('x86_64' 'armv7h' 'aarch64')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='http://ftp.uhulinux.hu/sources/sortdir'
 license=('GPL2')
-provides=('sortdir')
-conflicts=('sortdir')
 source=(
   "$url/$pkgname-$pkgver.tar.gz"
   "$pkgname.sh"
 )
+depends=('glibc' 'sh')
 _libname="lib$pkgname"
 _soname="$_libname.so"
 
