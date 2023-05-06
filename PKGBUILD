@@ -1,8 +1,8 @@
 # Maintainer: github.com/lmorg
 pkgname=murex-git
-pkgver=r2751.28de804d
+pkgver=r16a6.e813f6b9
 pkgrel=1
-pkgdesc="Bash-like shell designed for greater commandline productivity and safer shell scripts (git development branch)"
+pkgdesc=" A smarter shell and scripting environment with advanced features designed for usability, safety and productivity (eg smarter DevOps tooling)"
 arch=('i686' 'x86_64')
 url="https://github.com/lmorg/murex"
 provides=('murex')
@@ -21,7 +21,7 @@ prepare(){
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  git checkout develop
+  #git checkout develop
   go mod vendor
 }
 
@@ -51,7 +51,6 @@ check() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   mkdir -p "$GOPATH/src/github.com/lmorg/"
   ln -s "$srcdir/murex" "$GOPATH/src/github.com/lmorg/" || true
-  go test ./... || true
   ./murex -c 'g: behavioural/*.mx -> foreach: f { source $f }; try {test: run *}'
 }
 
