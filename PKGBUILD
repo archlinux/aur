@@ -1,7 +1,7 @@
 # Maintainer: Georg Wagner <puxplaying_at_gmail_dot_com>
 
 pkgname=autogit
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="Auto build, update, install PKGBUILDS from Github, Gitlab and AUR via makepkg, devtools, chrootbuild"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('manjaro-chrootbuild: Needed for Manjaro clean chroot package buildi
             'devtools: Needed for Arch Linux clean chroot package building')
 backup=("etc/$pkgname/$pkgname.conf")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('9c3c92bbabfc6c1f4524ff2cc3865528a149ad43ac41e869d08c6609435a1966')
+sha256sums=('764faf07d65a9c035ecc3700fe8e50b188133146d0a44756e9192a6c96014b92')
 
 package () {
   cd "$pkgname-$pkgver"
