@@ -8,7 +8,7 @@ pkgdesc="Fast and highly configurable image viewer with a simple and nice interf
 arch=('x86_64')
 url="http://photoqt.org/"
 license=('GPL2')
-depends=('exiv2' 'imagemagick' 'qt5-imageformats' 'qt5-multimedia' 'qt5-svg' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'libraw' 'qt5-graphicaleffects' 'hicolor-icon-theme' 'libarchive' 'kimageformats' 'pugixml' 'python-pychromecast')
+depends=('exiv2' 'imagemagick' 'qt5-imageformats' 'qt5-multimedia' 'qt5-svg' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'libraw' 'qt5-graphicaleffects' 'hicolor-icon-theme' 'libarchive' 'kimageformats' 'pugixml')
 # To use GraphicsMagick instead of ImageMagick replace it in the depends array above
 # These dependencies are disabled in the cmake call below: 'freeimage' 'devil-ilut' 'poppler-qt5'
 optdepends=('libqpsd-git: PSB/PSD support'
@@ -23,7 +23,7 @@ prepare() {
   # To build PhotoQt with less features, add -Dxxxx=OFF to
   # the next line (where xxxx is the respective CMake option).
   # to use GraphicsMagick instead of ImageMagick add: -DIMAGEMAGICK=OFF -DGRAPHICSMAGICK=ON
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr -DFREEIMAGE=OFF -DDEVIL=OFF -DPOPPLER=OFF -DIMAGEMAGICK=ON -DGRAPHICSMAGICK=OFF -DLIBVIPS=OFF -DVIDEO_MPV=OFF
+  cmake . -DCMAKE_INSTALL_PREFIX=/usr -DFREEIMAGE=OFF -DDEVIL=OFF -DPOPPLER=OFF -DIMAGEMAGICK=ON -DGRAPHICSMAGICK=OFF -DLIBVIPS=OFF -DVIDEO_MPV=OFF -DCHROMECAST=OFF
 
 }
 
