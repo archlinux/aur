@@ -3,10 +3,10 @@
 pkgname='python-baseconv'
 _module=${pkgname#python-}
 pkgver=1.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Convert numbers from base 10 integers to base X strings and back again (no active development)"
 url="https://github.com/semente/python-baseconv"
-depends=('python')
+depends=('python>=3.11')
 makedepends=('python-setuptools')
 license=('python')
 arch=('any')
@@ -20,5 +20,5 @@ build() {
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+	python setup.py install --root="${pkgdir}" --optimize=2 --skip-build
 }
