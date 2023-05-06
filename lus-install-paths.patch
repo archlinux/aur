@@ -89,7 +89,7 @@ index 4230d62..579d158 100644
 +        return fpath;
 +    }
 +    // app install dir (eg. /usr/)
-+    fpath = GetPathRelativeToAppDirectory(path);
++    fpath = GetPathRelativeToAppBundle(path);
 +    if (std::filesystem::exists(fpath)) {
 +        return fpath;
 +    }

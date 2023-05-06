@@ -16,12 +16,16 @@ source=("git+https://github.com/HarbourMasters/${_reponame}.git"
         "soh.desktop"
         "soh-misc-otr-patches.patch"
         "lus-install-paths.patch"
+        "ZAPDTR-gcc-13-compatibility.patch::https://github.com/HarbourMasters/Shipwright/pull/2832.patch"
+        "OTRGui-gcc-13-compatibility.patch"
         "otrgui-wrapper.sh")
 sha256sums=('SKIP'
             'SKIP'
             '25aebd34f6ad49073d8a5ce6915b6fa290470fc6d62a8143abe07a25707ff4a2'
             '4e5ff4c6fc0fc7daea80deb29d412d26c27769a0882ef86c2cb6cef0f60dc705'
-            '808049e8f02d78188490afc4632e3bec0253d7c3c62d85492172938e35d1165f'
+            '4dba7adcae469ef4caf5cb93844a32809ab983114cc296fb8721cc092f2af4c7'
+            'f0e06db0a3d94bafec2398853242c06f6982b5310a1a05e1a1768276e8f1e158'
+            'c10c0de9ca1ded2b4d21ec4ce18bd77d9843f182c4d26a9d59f96c39e40712b9'
             '6e735877e7bba81f9f308f6eabbdfe5354f2c331a9acf9a16ab02a5681f2c25f')
 
 # NOTE: If compiling complains about missing headers, set __generate_headers below to 1
@@ -81,6 +85,8 @@ prepare() {
 
   patch -Np1 -i "${srcdir}/soh-misc-otr-patches.patch"
   patch -Np1 -i "${srcdir}/lus-install-paths.patch"
+  patch -Np1 -i "${srcdir}/ZAPDTR-gcc-13-compatibility.patch"
+  patch -Np1 -i "${srcdir}/OTRGui-gcc-13-compatibility.patch"
 }
 
 build() {
