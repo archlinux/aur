@@ -2,7 +2,7 @@
 
 pkgname=python-prometheus-fastapi-instrumentator
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A configurable and modular Prometheus Instrumentator for your FastAPI."
 arch=('any')
 url="https://github.com/trallnag/prometheus-fastapi-instrumentator"
