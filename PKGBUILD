@@ -5,7 +5,7 @@
 
 # Maintainer: Hayden Johnson <hajohn100@gmail.com>
 pkgname=goterm
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 epoch=
 pkgdesc="Play Go/Baduk/Weiqi in your terminal!"
@@ -13,7 +13,7 @@ arch=('x86_64')
 url="https://github.com/Chewt/goterm"
 license=('GPL3')
 groups=()
-depends=()
+depends=('ncurses')
 makedepends=()
 checkdepends=()
 optdepends=()
