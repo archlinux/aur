@@ -2,26 +2,21 @@
 # Contributor: xRemaLx <anton.komolov@gmail.com>
 
 pkgname=python-klein
-pkgver=21.8.0
-pkgrel=5
+# https://github.com/twisted/klein/blob/trunk/NEWS.rst
+pkgver=23.5.0
+pkgrel=1
 arch=(any)
 pkgdesc='A web micro-framework built on werkzeug and twisted.web'
 url='https://github.com/twisted/klein'
 license=(MIT)
 depends=(python python-attrs python-hyperlink python-incremental
-         python-tubes python-twisted python-werkzeug python-zope-interface)
+         python-tubes python-twisted python-werkzeug python-zope-interface
+         # Detected by namcap and not declared in setup.py
+         python-constantly)
 makedepends=(python-setuptools)
 checkdepends=(python-hypothesis python-treq python-pytest)
-source=("https://github.com/twisted/klein/archive/$pkgver/klein-$pkgver.tar.gz"
-        "$pkgname-pr552-fix-tests.patch"::"https://github.com/twisted/klein/commit/bce8b85036a6d185b9e8aab037c805f81354544c.patch")
-sha512sums=('f0e10e3b92f19dc6b42f071d836b4179af033955fb6a1feb05918c85901741577f8dddc335ead1a4c1181690709abd73bca755c6a7a402d79d7a4bfb196bca58'
-            '34a9623119ca7e00df5fa01852281fec25eb26adc6c293da0d9f33ae2142697362b7dbdc50c3321e292c9c29e9c15abcf122410d24a43e06d8952579cf320198')
-
-prepare() {
-  cd klein-$pkgver
-  # Part of https://github.com/twisted/klein/pull/552, for fixing tests
-  patch -Np1 -i ../$pkgname-pr552-fix-tests.patch
-}
+source=("https://github.com/twisted/klein/archive/$pkgver/klein-$pkgver.tar.gz")
+sha512sums=('ebfd50989bec653cb0997d5d58cd9071e1bd1690566f1892ca3a04511dfe1a64dc790859d955d69aa1757f77f049278bd628025fc2b596d153b7208d3007f0bc')
 
 build() {
   cd klein-$pkgver
