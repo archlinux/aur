@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=flipt-bin
-pkgver=1.21.0
+pkgver=1.21.1
 pkgrel=1
 pkgdesc='An open source, self-hosted feature flag solution'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 provides=()
 conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.tar.gz::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_x86_64.tar.gz")
-sha256sums=('5be774fe25fb817ea0dcde84c5040c4c479c1cefa4eea34a039bc4c67cb3e7fd')
+sha256sums=('243fa13b36715525a3a9e9010d2019360e2b68420907679f59380fdba25b0f36')
 
 package() {
   install -Dm755 "${srcdir}"/flipt "${pkgdir}/usr/bin/flipt"

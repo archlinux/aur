@@ -1,12 +1,12 @@
 pkgbase = flipt-bin
 	pkgdesc = An open source, self-hosted feature flag solution
-	pkgver = 1.21.0
+	pkgver = 1.21.1
 	pkgrel = 1
 	url = https://flipt.io
 	arch = x86_64
 	license = GPL3
 	conflicts = flipt
-	source = flipt-1.21.0.tar.gz::https://github.com/flipt-io/flipt/releases/download/v1.21.0/flipt_1.21.0_linux_x86_64.tar.gz
-	sha256sums = 5be774fe25fb817ea0dcde84c5040c4c479c1cefa4eea34a039bc4c67cb3e7fd
+	source = flipt-1.21.1.tar.gz::https://github.com/flipt-io/flipt/releases/download/v1.21.1/flipt_1.21.1_linux_x86_64.tar.gz
+	sha256sums = 243fa13b36715525a3a9e9010d2019360e2b68420907679f59380fdba25b0f36
 
 pkgname = flipt-bin
