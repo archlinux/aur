@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=cavif-bin
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="AVIF image creator in pure Rust"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 provides=("cavif=$pkgver")
 conflicts=('cavif')
 source_x86_64=("https://github.com/kornelski/cavif-rs/releases/download/v$pkgver/cavif-$pkgver.zip")
-sha256sums_x86_64=('ee57a4048f0f411d280d244b48d0e539cf364b24a80e022fd3484ed4d2986b4e')
+sha256sums_x86_64=('1e5380b793494d16a14fea3511ff09a1d1a93747f5aaaaadb9b57828b3e68796')
 
 
 package() {
