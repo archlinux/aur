@@ -1,12 +1,12 @@
 pkgbase = python-sqlmodel
 	pkgdesc = SQLModel, SQL databases in Python, designed for simplicity, compatibility, and robustness.
 	pkgver = 0.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tiangolo/sqlmodel
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python
+	depends = python>=3.11
 	depends = python-pydantic
 	depends = python-sqlalchemy
 	depends = python-sqlalchemy2-stubs
@@ -14,7 +14,7 @@ pkgbase = python-sqlmodel
 	b2sums = d4a849d0bf237c9feb52eed70520b08154d13993c8b996d85fcd33303a965bda40ffc13c0a5ff16710328e44a62e01a4c2728c5c2aceae7a5ef4557a46bd3998
 
 pkgname = python-sqlmodel
-	depends = python
+	depends = python>=3.11
 	depends = python-pydantic
 	depends = python-sqlalchemy
 	depends = python-sqlalchemy2-stubs

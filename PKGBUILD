@@ -4,11 +4,11 @@ pkgbase='python-sqlmodel'
 pkgname=('python-sqlmodel')
 _module='sqlmodel'
 pkgver='0.0.8'
-pkgrel=1
+pkgrel=2
 pkgdesc="SQLModel, SQL databases in Python, designed for simplicity, compatibility, and robustness."
 url="https://github.com/tiangolo/sqlmodel"
 depends=(
-	'python'
+	'python>=3.11'
 	'python-pydantic'
 	'python-sqlalchemy'
 	'python-sqlalchemy2-stubs'
