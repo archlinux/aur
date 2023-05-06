@@ -1,0 +1,24 @@
+pkgbase = rime-ice-double-pinyin-ziguang-git
+	pkgdesc = Rime 配置：雾凇拼音 | 长期维护的简体词库 - 紫光双拼
+	pkgver = r207.299ae93
+	pkgrel = 1
+	url = https://github.com/iDvel/rime-ice
+	arch = any
+	license = GPL3
+	makedepends = librime
+	makedepends = rime-prelude
+	makedepends = coreutils
+	makedepends = grep
+	makedepends = sed
+	provides = rime-ice-double-pinyin-ziguang
+	conflicts = rime-emoji
+	conflicts = rime-ice-double-pinyin-ziguang
+	conflicts = rime-ice
+	conflicts = rime-ice-pinyin
+	conflicts = rime-ice-double-pinyin
+	conflicts = rime-ice-double-pinyin-mspy
+	conflicts = rime-ice-double-pinyin-flypy
+	source = rime-ice-double-pinyin-ziguang::git+https://github.com/iDvel/rime-ice.git
+	sha512sums = SKIP
+
+pkgname = rime-ice-double-pinyin-ziguang-git
