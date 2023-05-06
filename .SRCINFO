@@ -1,13 +1,12 @@
 pkgbase = lcarswm
 	pkgdesc = LCARS Window Manager for lcarsde
 	pkgver = 22.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://lcarsde.github.io
 	arch = any
 	groups = lcarsde
 	license = GPL2
 	makedepends = jdk-openjdk
-	makedepends = ncurses5-compat-libs
 	depends = libx11
 	depends = libxpm
 	depends = libxrandr
