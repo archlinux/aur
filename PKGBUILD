@@ -3,7 +3,7 @@
 _pkgauthor="chainner-org"
 _pkgname="chainner"
 pkgname="${_pkgname}-bin"
-pkgver=0.18.6
+pkgver=0.18.7
 pkgrel=1
 pkgdesc='Node-based image processing and AI upscaling GUI'
 arch=('x86_64')
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/${_pkgauthor}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x64-linux-redhat.rpm")
 noextract=()
-sha512sums=('6cdc564b177191edcf200a4849826cf07d24e70b49e916a63d4a891931bb41fa04d0b835d961329bb2746ec1bb8d69f2b7877be22a1652bccaf36463b7b34777')
+sha512sums=('7b202362b128d2da7f34a1f4102e82e33d7901b0fceeb6da9ee7c8f96eb77ca14a466c6a30b57fb0d685fc643afad945985e0b7cc120791505f721344700124d')
 
 # build() {
 # }
