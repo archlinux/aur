@@ -3,7 +3,7 @@
 
 pkgname='firefox-extension-privacy-redirect'
 pkgver=1.1.49
-pkgrel=1
+pkgrel=2
 pkgdesc="Redirect Youtube, Twitter, Instagram, ... to privacy friendly alternatives"
 license=('GPL3')
 arch=('any')
@@ -15,7 +15,6 @@ b2sums=('b6767e1b63cd42d21410cf277f7a203d25b14e75969c2218718069ed2462d733cec9a36
 prepare() {
   cd "privacy-redirect-$pkgver"
   npm install
-  npm audit fix
 }
 
 build() {
