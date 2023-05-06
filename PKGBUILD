@@ -2,7 +2,7 @@
 
 pkgname=rofi-games
 pkgver=v1.0.2.r0.g3efcfa8
-pkgrel=1
+pkgrel=2
 pkgdesc='A rofi plugin which adds a mode to list available games for launch along with their box art'
 arch=('x86_64')
 url='https://github.com/rolv-apneseth/rofi-games'
