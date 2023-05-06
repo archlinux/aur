@@ -1,0 +1,19 @@
+pkgbase = superproductivity-appimage
+	pkgdesc = An advanced todo list app with integrated Timeboxing and time tracking capabilities. It also comes with integrations for Jira, Gitlab, GitHub and Open Project.
+	pkgver = 7.13.2
+	pkgrel = 1
+	url = http://super-productivity.com/
+	arch = any
+	license = MIT
+	depends = hicolor-icon-theme
+	depends = zlib
+	depends = glibc
+	provides = superproductivity
+	conflicts = superproductivity
+	options = !strip
+	source = superproductivity-7.13.2.AppImage::https://github.com/johannesjo/super-productivity/releases/download/v7.13.2/superProductivity-7.13.2.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/johannesjo/super-productivity/master/LICENSE
+	sha256sums = 1f044952b35aa009cdb887035a05ce600f8fc4b8ce13a357449a883486d5c4ec
+	sha256sums = 2e279de19632b5694d24b0ac06fd5b837ec487bf821302d9ce195379850a5fcb
+
+pkgname = superproductivity-appimage
