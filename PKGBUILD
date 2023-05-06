@@ -1,17 +1,17 @@
-#Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+# Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=icdiff
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="Improved colored diff"
 arch=('any')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 url="https://github.com/jeffkaufman/icdiff"
 license=('PSF')
 source=($pkgname-$pkgver.tar.gz::https://github.com/jeffkaufman/icdiff/archive/release-$pkgver.tar.gz)
-sha256sums=('e1c278222891acde5d5b47e31b89f765fdf022b8908057f583032530982fe5b4')
+sha256sums=('8f79b82032696d2eea2a3acf722cd34cf45215d4b09b52139880626a2b0d360e')
 
 prepare() {
   cd $pkgname-release-$pkgver
@@ -20,11 +20,11 @@ prepare() {
 
 build() {
   cd $pkgname-release-$pkgver
-  python setup.py build
+	python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
   cd $pkgname-release-$pkgver
-  python setup.py install -O1 --skip-build --root="$pkgdir"
+	python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 README.md "$pkgdir"/usr/share/doc/$pkgname/README.md
 }
