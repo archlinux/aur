@@ -1,6 +1,6 @@
 # Maintainer: Lennart Braun <lenerd@posteo.de>
 pkgname=onnx
-pkgver=1.13.1
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="C++ library for the open standard for machine learning interoperability"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc' 'protobuf')
 makedepends=('cmake' 'git' 'python')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
-b2sums=("e5c93e00ccb73b56e839da48b255132f8c60508a258d136b53a2755caabed5f1b962208d570c71068484b269f016a08b398d6c8f4fc86d3850ad6d5742b760b6")
+b2sums=("9aed36489f0bbe0a96f2a7d3f44b70d228a7ec1239f5ba2b16f4b2c9ffa8fb1ddddba06b1b5e6d279d12f8d55eaeece6654da0c60220bf813e99df74e33a33eb")
 
 prepare() {
     cd "$pkgname-$pkgver"
