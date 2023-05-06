@@ -1,0 +1,19 @@
+pkgbase = bbprog-git
+	pkgdesc = Backup a List of locations using rsync
+	pkgver = 1.1.1
+	pkgrel = 2
+	url = https://github.com/PatzminiHD/bbprog
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = dotnet-host
+	makedepends = dotnet-sdk-6.0
+	depends = icu
+	depends = zlib
+	depends = rsync
+	options = staticlibs
+	options = !strip
+	source = git+https://github.com/PatzminiHD/bbprog.git
+	sha512sums = SKIP
+
+pkgname = bbprog-git
