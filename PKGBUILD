@@ -7,14 +7,14 @@ pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
 pkgver=2.0.0
 _pkgver=2.0.0
-pkgrel=4
+pkgrel=5
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
 url="https://pytorch.org"
 license=('BSD')
 depends=('google-glog' 'gflags' 'opencv' 'openmp' 'nccl' 'pybind11' 'python' 'python-yaml' 'libuv'
-         'python-numpy' 'python-sympy' 'protobuf' 'ffmpeg4.4' 'python-future' 'qt5-base'
+         'python-numpy' 'python-sympy' 'protobuf' 'ffmpeg4.4' 'python-future' 'qt6-base'
          'intel-oneapi-mkl' 'python-typing_extensions')
 # Exclude the magma package here and add the corresponding {cuda, rocm/hip} version
 # to makedepends of the split packages.
@@ -247,8 +247,8 @@ _prepare() {
   # export BUILD_SPLIT_CUDA=ON  # modern preferred build, but splits libs and symbols, ABI break
   # export USE_FAST_NVCC=ON  # parallel build with nvcc, spawns too many processes
   export USE_CUPTI_SO=ON  # make sure cupti.so is used as shared lib
-  export CC=/usr/bin/gcc
-  export CXX=/usr/bin/g++
+  export CC=/usr/bin/gcc-12
+  export CXX=/usr/bin/g++-12
   export CUDAHOSTCXX=/opt/cuda/bin/g++
   export CUDA_HOST_COMPILER="${CUDAHOSTCXX}"
   export CUDA_HOME=/opt/cuda
