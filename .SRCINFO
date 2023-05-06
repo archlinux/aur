@@ -1,7 +1,7 @@
 pkgbase = bottles
 	pkgdesc = Easily manage wine and proton prefix
 	pkgver = 51.6
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 2
 	url = https://github.com/bottlesdevs/Bottles
 	arch = x86_64
@@ -36,6 +36,7 @@ pkgbase = bottles
 	depends = webkit2gtk
 	depends = wine
 	depends = xorg-xdpyinfo
+	depends = vkbasalt-cli
 	optdepends = gamemode
 	optdepends = gvfs
 	optdepends = lib32-vkd3d

@@ -3,7 +3,7 @@
 
 pkgname=bottles
 pkgver=51.6
-pkgrel=2
+pkgrel=3
 epoch=2
 pkgdesc='Easily manage wine and proton prefix'
 arch=('x86_64')
@@ -36,7 +36,8 @@ depends=(
   'python-yaml'
   'webkit2gtk'
   'wine'
-  'xorg-xdpyinfo')
+  'xorg-xdpyinfo'
+  'vkbasalt-cli')
 optdepends=(
   'gamemode'
   'gvfs' 
