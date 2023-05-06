@@ -1,7 +1,7 @@
 # Maintainer: github.com/lmorg
 pkgname=murex-git
 pkgver=r2945.16a697b9
-pkgrel=1
+pkgrel=3
 pkgdesc=" A smarter shell and scripting environment with advanced features designed for usability, safety and productivity (eg smarter DevOps tooling)"
 arch=('i686' 'x86_64')
 url="https://github.com/lmorg/murex"

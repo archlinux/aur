@@ -1,7 +1,7 @@
 pkgbase = murex-git
 	pkgdesc = A smarter shell and scripting environment with advanced features designed for usability, safety and productivity (eg smarter DevOps tooling)
-	pkgver = r16a6.e813f6b9
-	pkgrel = 1
+	pkgver = r2945.16a697b9
+	pkgrel = 3
 	url = https://github.com/lmorg/murex
 	arch = i686
 	arch = x86_64
