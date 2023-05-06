@@ -1,7 +1,7 @@
 pkgbase = ultragrid-git
 	pkgdesc = Low-latency audio and video network transmission system (from git)
-	pkgver = v1.7.r1607.g9b1df905
-	pkgrel = 1
+	pkgver = v1.8.r749.g32a70441
+	pkgrel = 2
 	url = https://www.ultragrid.cz/
 	arch = x86_64
 	license = BSD
