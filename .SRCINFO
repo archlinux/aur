@@ -191,3 +191,15 @@ pkgbase = ceph
 	sha512sums = 0c5124693bd317a73707dfd34b17664cc05233aec08e07739fe08fc9a73be7a1f4446052b1addde832cba141a382c35f45e60c89a00bb7dab81cee7ed6be07e1
 
 pkgname = ceph
+	pkgdesc = Ceph Storage full install [VIRTUAL]
+	depends = ceph-libs=17.2.6-4
+	depends = ceph-cluster=17.2.6-4
+	depends = ceph-rados=17.2.6-4
+	depends = ceph-rbd=17.2.6-4
+	depends = ceph-cephfs=17.2.6-4
+	depends = ceph-tools=17.2.6-4
+	depends = ceph-test=17.2.6-4
+	depends = python-rados=17.2.6-4
+	depends = python-rbd=17.2.6-4
+	depends = python-cephfs=17.2.6-4
+	depends = python-rgw=17.2.6-4

@@ -1071,4 +1071,59 @@ package_python-rgw() {
   _print
 }
 
+###############################################
+#         Ceph virtual targets                #
+###############################################
+
+# No package (excluding other virtual targets) should depend on any of these;
+# these are convenience targets for other packagers
+
+package_ceph-libs() {
+  pkgdesc='Ceph Storage client libraries [VIRTUAL]'
+  depends=(
+    "librados=${__version}"
+    "librbd=${__version}"
+    "libcephfs=${__version}"
+    "librgw=${__version}"
+    "libcephsqlite=${__version}"
+  )
+}
+
+package_ceph-cluster() {
+  pkgdesc='Ceph Storage cluster daemons and components [VIRTUAL]'
+  depends=(
+    "ceph-mon=${__version}"
+    "ceph-mgr=${__version}"
+    "ceph-osd=${__version}"
+    "ceph-mds=${__version}"
+    "ceph-rgw=${__version}"
+    "ceph-volume=${__version}"
+  )
+}
+
+package_ceph-cli() {
+  pkgdesc='Ceph Storage CLI utility [VIRTUAL]'
+  depends=("ceph-base=${__version}")
+}
+
+package_ceph() {
+  pkgdesc='Ceph Storage full install [VIRTUAL]'
+  depends=(
+    "ceph-libs=${__version}"
+    "ceph-cluster=${__version}"
+    "ceph-rados=${__version}"
+    "ceph-rbd=${__version}"
+    "ceph-cephfs=${__version}"
+    "ceph-tools=${__version}"
+    "ceph-test=${__version}"
+    "python-rados=${__version}"
+    "python-rbd=${__version}"
+    "python-cephfs=${__version}"
+    "python-rgw=${__version}"
+  )
+}
+
+#======================================================================================#
+#======================================================================================#
+
 # vim:set ts=2 sw=2 et:
