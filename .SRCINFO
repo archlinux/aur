@@ -1,0 +1,16 @@
+pkgbase = zmake
+	pkgdesc = Unofficial ZeppOS build system
+	pkgver = 1.8
+	pkgrel = 1
+	url = https://melianmiko.ru/en/zmake
+	arch = any
+	license = GPLv3
+	makedepends = make
+	makedepends = python-pip
+	makedepends = python
+	depends = python
+	depends = python-pillow
+	source = zmake-1.8::git+https://github.com/melianmiko/zmake.git
+	md5sums = SKIP
+
+pkgname = zmake
