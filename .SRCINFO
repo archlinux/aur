@@ -1,0 +1,16 @@
+pkgbase = people-git
+	pkgdesc = A CLI tool for tracking the number of days since you have made contact with your network
+	pkgver = r46.c6bdba3
+	pkgrel = 1
+	url = https://github.com/CallumBeaney/people
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	conflicts = fortune-mod
+	conflicts = misfortune
+	conflicts = tracker3-docs
+	source = git+https://github.com/CallumBeaney/people
+	sha256sums = SKIP
+
+pkgname = people-git
