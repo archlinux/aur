@@ -7,17 +7,17 @@ pkgbase=python-codecov
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=2.1.12
+pkgver=2.1.13
 pkgrel=1
 pkgdesc='Report uploader for Codecov'
 arch=('any')
 url="https://codecov.io"
 license=('Apache')
-depends=('python-coverage' 'python-requests>=2.7.9')
+depends=('python-coverage' 'python-requests>=2.7.9' 'python-setuptools')
 makedepends=('python-setuptools')
 #makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha512sums=('9d364844dc864996e7d65d6210c7bca345a67d5aa61bcdd351591f0aeadcd2662101e59449e8a86b8341d9fc840889cb635b2c41c6287001b598ee1647c86b02')
+sha512sums=('0083395e01a0fa7b49641ec6d88e43208c3e3d251dba8396c89b334620cf0e66447a4e6b3e05e9dd383b93e1efbf55213b77742b3e9de7e22a91296aede727c7')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}

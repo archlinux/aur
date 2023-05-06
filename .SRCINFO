@@ -1,6 +1,6 @@
 pkgbase = python-codecov
 	pkgdesc = Report uploader for Codecov
-	pkgver = 2.1.12
+	pkgver = 2.1.13
 	pkgrel = 1
 	url = https://codecov.io
 	arch = any
@@ -8,7 +8,8 @@ pkgbase = python-codecov
 	makedepends = python-setuptools
 	depends = python-coverage
 	depends = python-requests>=2.7.9
-	source = https://files.pythonhosted.org/packages/source/c/codecov/codecov-2.1.12.tar.gz
-	sha512sums = 9d364844dc864996e7d65d6210c7bca345a67d5aa61bcdd351591f0aeadcd2662101e59449e8a86b8341d9fc840889cb635b2c41c6287001b598ee1647c86b02
+	depends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/c/codecov/codecov-2.1.13.tar.gz
+	sha512sums = 0083395e01a0fa7b49641ec6d88e43208c3e3d251dba8396c89b334620cf0e66447a4e6b3e05e9dd383b93e1efbf55213b77742b3e9de7e22a91296aede727c7
 
 pkgname = python-codecov
