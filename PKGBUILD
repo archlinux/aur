@@ -9,7 +9,7 @@ arch=(any)
 url="https://github.com/rschroll/rmcl/"
 license=('MIT')
 depends=('python-trio' 'python-asks')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('python-poetry' 'python-setuptools' 'python-wheel')
 optdepends=('python-rmrl: producing PDF versions of any type of document with your annotations included')
 source=("https://files.pythonhosted.org/packages/source/r/rmcl/rmcl-$pkgver.tar.gz"
         "xdg.py::https://raw.githubusercontent.com/srstevenson/xdg/5.0.1/src/xdg/__init__.py")
@@ -30,5 +30,4 @@ package() {
 
     # vendoring xdg.py due to conflicts with python-pyxdg
     install -Dm0644 "$srcdir"/xdg.py "$pkgdir$_site_packages"/rmcl/xdg.py
-    rm "$pkgdir$_site_packages"/rmcl-$pkgver-*.egg-info/requires.txt
 }
