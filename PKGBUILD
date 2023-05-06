@@ -6,12 +6,12 @@
 pkgname='python-fusepy'
 _module=${pkgname#python-}
 pkgver=3.0.1
-pkgrel=6
+pkgrel=7
 pkgdesc='Simple ctypes bindings for FUSE (no active development)'
 url='https://github.com/fusepy/fusepy'
 arch=('any')
 license=('custom:ISCL')
-depends=('fuse2>=2.6' 'python')
+depends=('fuse2>=2.6' 'python>=3.11')
 makedepends=('python-setuptools')
 conflicts=('python-fuse')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/${_module}/${_module}-${pkgver}.tar.gz")
@@ -24,7 +24,7 @@ build() {
 
 package() {
 	cd "${srcdir}/${_module}-${pkgver}"
-	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+	python setup.py install --root="${pkgdir}" --optimize=2 --skip-build
 
 	sed -n '/Copyright/,/ THIS SOFTWARE[.]/p' fuse.py > LICENSE
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
