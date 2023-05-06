@@ -1,0 +1,17 @@
+pkgbase = idl-serial-git
+	pkgdesc = This project is a IDL serial generator for c. We use flex && bison to scan and parse files and generate json to struct and struct to json code.
+	pkgver = 908c364
+	pkgrel = 1
+	url = https://github.com/nanomq/idl-serial
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	provides = idl-serial
+	conflicts = idl-serial
+	options = !strip
+	source = idl-serial-git::git+https://github.com/nanomq/idl-serial.git
+	sha256sums = SKIP
+
+pkgname = idl-serial-git
