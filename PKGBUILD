@@ -3,38 +3,62 @@
 # Contributor: Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 
 pkgname=megasync-git
-pkgver=4.6.2.0.6.g29453fdca
+pkgver=4.9.3.0.7.gc422ca213
 pkgrel=1
 pkgdesc="MEGASync Desktop App. (GIT Version)"
 arch=('x86_64')
 url='https://mega.co.nz/#sync'
 license=('custom:MEGA')
-conflicts=('megasync'
-           'megatools'
-           )
+conflicts=(
+  'megasync'
+  'megatools'
+)
 provides=('megasync')
-depends=('qt5-svg'
-         'qt5-x11extras'
-         'c-ares'
-         'libuv'
-         'crypto++'
-         'libsodium'
-#          'ffmpeg'
-         'freeimage'
-         'libmediainfo'
-         'libraw'
-         )
-makedepends=('git'
-             'qt5-tools'
-             )
-source=('git+https://github.com/meganz/MEGAsync.git'
-        'git+https://github.com/meganz/sdk.git'
-        'mega.svg'
-        )
-sha256sums=('SKIP'
-            'SKIP'
-            'c0abfeafb541509923c85d253f6f64dae8a49e9ae4b067f5c0c484ff1d924403'
-            )
+depends=(
+  'gcc-libs'
+  'glibc'
+  'qt5-base'
+  'qt5-svg'
+  'qt5-x11extras'
+  'libuv'
+  'crypto++'
+  'libsodium'
+  'ffmpeg4.4'
+  'freeimage'
+  'libmediainfo'
+  'libraw'
+  'libxcb'
+  'libzen'
+  'zlib'
+)
+makedepends=(
+  'git'
+  'qt5-tools'
+  'bzip2'
+  'c-ares'
+  'openssl'
+  'libglvnd'
+  'curl'
+  'xz'
+  'sqlite'
+  'systemd-libs'
+  'ffmpeg4.4'
+)
+source=(
+  'git+https://github.com/meganz/MEGAsync.git'
+  'git+https://github.com/meganz/sdk.git'
+  'mega.svg'
+  'esee'
+  'https://patch-diff.githubusercontent.com/raw/meganz/sdk/pull/2614.diff'
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+  'c0abfeafb541509923c85d253f6f64dae8a49e9ae4b067f5c0c484ff1d924403'
+  '66b5f481081157eee82653b3774d22edb5aa2007cf93142fd73cc0c4d577d59f'
+  'aeb5145225d0ebaa4595a99d81e55d1f71bc6e7f1242785f541a3122cba6c217'
+)
+options=('debug')
 
 pkgver() {
   cd MEGAsync
@@ -44,20 +68,37 @@ pkgver() {
 prepare() {
   cd MEGAsync
   git config submodule.src/MEGASync/mega.url "${srcdir}/sdk"
-  git submodule update --init
+  git -c protocol.file.allow=always submodule update --init \
+    src/MEGASync/mega
 
-  # disabled until sdk#2576 is fixed (-ffmpeg dep)
-  sed -e '85s|^|&#|g' -e '100s|^|&#|g' -e '104s|^|&#|g' -e '205s|^|&#|g' -i src/MEGASync/MEGASync.pro
+  # FFmpeg4
+  patch -d src/MEGASync/mega -p1 -i "${srcdir}/2614.diff"
+  sed -e 's|ffmpeg-mega|ffmpeg4.4|g' \
+      -i src/MEGASync/mega/configure.ac \
+      -i src/MEGASync/MEGASync.pro
+  sed -e 's|FFMPEG_LIBS\=\[\"|&-L/usr/lib/ffmpeg4.4 |g' \
+      -e 's|FFMPEG_LIBS\=\"|&-L/usr/lib/ffmpeg4.4 |g' \
+      -i src/MEGASync/mega/configure.ac
+  sed -e '359a \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ INCLUDEPATH += /usr/include/ffmpeg4.4' \
+      -e's|LIBS += -lavcodec|LIBS += -L/usr/lib/ffmpeg4.4 -lavcodec|g' \
+      -i src/MEGASync/mega/bindings/qt/sdk.pri
+
+  # Disable PDFium
+  patch -p1 -i "${srcdir}/esee"
+
 }
 
 build() {
+
+  export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
+
   cd "${srcdir}/MEGAsync/src/MEGASync/mega"
   ./autogen.sh
   ./configure \
     --prefix=/usr \
     --without-freeimage \
     --disable-examples \
-    --without-ffmpeg # disabled until sdk#2576 is fixed (-ffmpeg dep)
+    --with-ffmpeg \
 
   cd "${srcdir}/MEGAsync/src/MEGASync"
   lrelease-qt5 MEGASync.pro
@@ -67,6 +108,17 @@ build() {
 }
 
 package() {
+  depends+=(
+    'bzip2' 'libbz2.so'
+    'c-ares' 'libcares.so'
+    'openssl' 'libcrypto.so' 'libssl.so'
+    'libglvnd' 'libGL.so'
+    'libcurl' 'libcurl.so'
+    'xz' 'liblzma.so'
+    'sqlite' 'libsqlite3.so'
+    'systemd-libs' 'libudev.so'
+    'ffmpeg4.4' 'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libswresample.so' 'libswscale.so'
+  )
   install -Dm755 MEGAsync/src/MEGASync/megasync "${pkgdir}/usr/bin/megasync"
   install -Dm644 MEGAsync/src/MEGASync/platform/linux/data/megasync.desktop "${pkgdir}/usr/share/applications/megasync.desktop"
   # not works in wayland, so launch in xwayland
