@@ -3,7 +3,7 @@
 
 _pkgname="llm"
 pkgname="${_pkgname}-git"
-pkgver=r423.36f03ae
+pkgver=r470.38c0306
 pkgrel=1
 epoch=
 pkgdesc="Run inference for Large Language Models on CPU 🦀🚀🦙"
@@ -22,33 +22,33 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+${url}.git"
-        "git+https://github.com/ggerganov/ggml.git")
+source=("git+${url}"
+        "git+https://github.com/ggerganov/ggml")
 noextract=()
 sha256sums=('SKIP' 'SKIP')
 validpgpkeys=()
 
 
 prepare() {
-    cd "${_pkgname}"
+    cd "${srcdir}/${_pkgname}"
     git submodule init
     git config submodule.crates/ggml/sys/ggml.url "${srcdir}/ggml"
     git -c protocol.file.allow=always submodule update
 }
 
 pkgver() {
-    cd "${_pkgname}"
+    cd "${srcdir}/${_pkgname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "${_pkgname}"
+    cd "${srcdir}/${_pkgname}"
     cat LICENSE-* > LICENSE
     cargo build --release
 }
 
 package() {
-    cd "${_pkgname}"
+    cd "${srcdir}/${_pkgname}"
     install -Dm755 target/release/llm -t "${pkgdir}/usr/bin/"
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
