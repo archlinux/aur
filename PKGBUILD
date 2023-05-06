@@ -11,8 +11,7 @@ provides=(${pkgname%-git}
         ed25519
         mbedtls
         )
-conflicts=(${pkgname%-git}
-            mbedtls)
+conflicts=(${pkgname%-git})
 depends=()
 makedepends=(git
             cmake
@@ -35,6 +34,7 @@ prepare() {
 build() {
     cd "${srcdir}/${pkgname}/"
     cmake -DCMAKE_BUILD_TYPE=None \
+          -DBUILD_SHARED_LIBS=ON \
           -DCMAKE_INSTALL_PREFIX=/usr \
           -B build \
           -G Ninja

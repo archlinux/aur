@@ -12,7 +12,6 @@ pkgbase = l8w8jwt-git
 	provides = ed25519
 	provides = mbedtls
 	conflicts = l8w8jwt
-	conflicts = mbedtls
 	options = !strip
 	source = l8w8jwt-git::git+https://github.com/GlitchedPolygons/l8w8jwt.git
 	sha256sums = SKIP
