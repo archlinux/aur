@@ -1,11 +1,14 @@
 pkgbase = python-pymsgbox
 	pkgdesc = Simple, cross-platform, pure Python module to display message boxes, and just message boxes
 	pkgver = 1.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/asweigart/PyMsgBox
 	arch = any
 	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	depends = tk
 	source = https://pypi.org/packages/source/P/PyMsgBox/PyMsgBox-1.0.9.tar.gz
