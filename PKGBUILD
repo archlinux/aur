@@ -9,7 +9,7 @@ pkgbase=python-dlib
 pkgname=('python-dlib')
 ##pkgname+=('python-dlib-cuda')
 _pkgname=dlib
-pkgver=19.24
+pkgver=19.24.1
 pkgrel=1
 pkgdesc="Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques."
 arch=('x86_64')
@@ -19,14 +19,15 @@ depends=('cblas' 'giflib' 'lapack' 'libjpeg-turbo' 'libpng' 'libx11')
 optdepends=('sqlite')
 ##optdepends+=('cuda' 'cudnn' 'ccache-ext')
 makedepends=(${optdepends[@]} 'cmake' 'boost' 'python-setuptools')
-source=("$url/files/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('28fdd1490c4d0bb73bd65dad64782dd55c23ea00647f5654d2227b7d30b784c4')
+#source=("$url/files/${_pkgname}-${pkgver}.tar.bz2")
+source=("https://pypi.io/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('e8d3ca047d525eeb36cc47bce45ed0562dab40b0b8f5fa171600dde2fec509c0')
 ##options=(!lto)
 
-prepare() {
-	cd "$srcdir/"
-	cp -a "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-cuda"
-}
+##prepare() {
+##	cd "$srcdir/"
+##	cp -a "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-cuda"
+##}
 
 build(){
 	cd "${srcdir}/${_pkgname}-${pkgver}"
