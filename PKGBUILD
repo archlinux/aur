@@ -3,8 +3,8 @@
 
 pkgname=python-migen-git
 epoch=1
-pkgver=0.9.2.r74.gd4e3f34
-pkgrel=1
+pkgver=0.9.2.r81.gccaee68
+pkgrel=2
 pkgdesc="A  python toolbox for building complex digital hardware"
 arch=(any)
 url="https://github.com/m-labs/migen"
