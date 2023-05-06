@@ -1,0 +1,476 @@
+diff --git a/include/onnxruntime/core/providers/tensorrt/tensorrt_provider_options.h b/include/onnxruntime/core/providers/tensorrt/tensorrt_provider_options.h
+index e7e989cf17..6f76036b8e 100644
+--- a/include/onnxruntime/core/providers/tensorrt/tensorrt_provider_options.h
++++ b/include/onnxruntime/core/providers/tensorrt/tensorrt_provider_options.h
+@@ -31,4 +31,10 @@ struct OrtTensorRTProviderOptionsV2 {
+   int trt_force_sequential_engine_build;        // force building TensorRT engine sequentially. Default 0 = false, nonzero = true
+   int trt_context_memory_sharing_enable;        // enable context memory sharing between subgraphs. Default 0 = false, nonzero = true
+   int trt_layer_norm_fp32_fallback;             // force Pow + Reduce ops in layer norm to FP32. Default 0 = false, nonzero = true
++  int trt_build_heuristics_enable;              // Build engine using heuristics to reduce build time. Default 0 = false, nonzero = true
++  int trt_sparsity_enable;                      // Control if sparsity can be used by TRT. Default 0 = false, 1 = true
++  int trt_builder_optimization_level;           // Set the builder optimization level. WARNING: levels below 2 do not guarantee good engine performance, but greatly improve build time.  Default 2, valid range [0-4]
++  int trt_auxiliary_streams;                    // Set maximum number of auxiliary streams per inference stream. Setting this value to 0 will lead to optimal memory usage. Default -1 = heuristics
++  const char* trt_tactic_sources;               // pecify the tactics to be used by adding (+) or removing (-) tactics from the default
++                                                // tactic sources (default = all available tactics) e.g. "-CUDNN,+CUBLAS" available keys: "CUBLAS"|"CUBLAS_LT"|"CUDNN"|"EDGE_MASK_CONVOLUTIONS"
+ };
+diff --git a/onnxruntime/core/providers/tensorrt/tensorrt_execution_provider.cc b/onnxruntime/core/providers/tensorrt/tensorrt_execution_provider.cc
+index ca815fd788..ef96bc0e6f 100644
+--- a/onnxruntime/core/providers/tensorrt/tensorrt_execution_provider.cc
++++ b/onnxruntime/core/providers/tensorrt/tensorrt_execution_provider.cc
+@@ -119,6 +119,67 @@ bool SetDynamicRange(nvinfer1::INetworkDefinition& network, std::unordered_map<s
+ }
+ }  // namespace
+ 
++std::vector<std::string> SplitToStringVec(std::string const& s, char separator) {
++  std::vector<std::string> splitted;
++
++  for (size_t start = 0; start < s.length();) {
++    size_t separatorIndex = s.find(separator, start);
++    if (separatorIndex == std::string::npos) {
++      separatorIndex = s.length();
++    }
++    splitted.emplace_back(s.substr(start, separatorIndex - start));
++    start = separatorIndex + 1;
++  }
++
++  return splitted;
++}
++
++nvinfer1::TacticSources GetTacticSourceFromString(std::string& tactic_sting) {
++  nvinfer1::TacticSources disabledTactics = 0;
++  nvinfer1::TacticSources enabledTactics = 0;
++  std::vector<std::string> tacticList = SplitToStringVec(tactic_sting, ',');
++  for (auto& t : tacticList) {
++    bool enable{false};
++    if (t.front() == '+') {
++      enable = true;
++    } else if (t.front() != '-') {
++      LOGS_DEFAULT(WARNING) << "[TensorRT EP] Tactic source must be prefixed with + or - skipping: " << t;
++    }
++    t.erase(0, 1);
++
++    const auto toUpper = [](std::string& sourceName) {
++      std::transform(
++          sourceName.begin(), sourceName.end(), sourceName.begin(), [](char c) { return std::toupper(c); });
++      return sourceName;
++    };
++
++    nvinfer1::TacticSource source{};
++    t = toUpper(t);
++    if (t == "CUBLAS") {
++      source = nvinfer1::TacticSource::kCUBLAS;
++    } else if (t == "CUBLASLT" || t == "CUBLAS_LT") {
++      source = nvinfer1::TacticSource::kCUBLAS_LT;
++    } else if (t == "CUDNN") {
++      source = nvinfer1::TacticSource::kCUDNN;
++    } else if (t == "EDGE_MASK_CONVOLUTIONS") {
++      source = nvinfer1::TacticSource::kEDGE_MASK_CONVOLUTIONS;
++    } else if (t == "JIT_CONVOLUTIONS") {
++      source = nvinfer1::TacticSource::kJIT_CONVOLUTIONS;
++    } else {
++      LOGS_DEFAULT(WARNING) << "[TensorRT EP] Tactic source was not found with name: " << t;
++    }
++
++    uint32_t sourceBit = 1U << static_cast<uint32_t>(source);
++
++    if (enable) {
++      enabledTactics |= sourceBit;
++    } else {
++      disabledTactics |= sourceBit;
++    }
++  }
++  return enabledTactics & ~disabledTactics;
++}
++
+ namespace google {
+ namespace protobuf {
+ void ShutdownProtobufLibrary();
+@@ -324,6 +385,11 @@ TensorrtExecutionProvider::TensorrtExecutionProvider(const TensorrtExecutionProv
+     if (fp16_enable_) {
+       layer_norm_fp32_fallback_ = info.layer_norm_fp32_fallback;
+     }
++    build_heuristics_enable_ = info.build_heuristics_enable;
++    sparsity_enable_ = info.sparsity_enable;
++    builder_optimization_level_ = info.builder_optimization_level;
++    auxiliary_streams_ = info.auxiliary_streams;
++    tactic_sources_ = info.tactic_sources;
+   } else {
+     const std::string max_partition_iterations_env = onnxruntime::GetEnvironmentVar(tensorrt_env_vars::kMaxPartitionIterations);
+     if (!max_partition_iterations_env.empty()) {
+@@ -418,6 +484,31 @@ TensorrtExecutionProvider::TensorrtExecutionProvider(const TensorrtExecutionProv
+     if (!layer_norm_fp32_fallback_env.empty()) {
+       layer_norm_fp32_fallback_ = (std::stoi(layer_norm_fp32_fallback_env) == 0 ? false : true);
+     }
++
++    const std::string build_heuristics_env = onnxruntime::GetEnvironmentVar(tensorrt_env_vars::kBuildHeuristics);
++    if (!build_heuristics_env.empty()) {
++      build_heuristics_enable_ = (std::stoi(build_heuristics_env) == 0 ? false : true);
++    }
++
++    const std::string sparsity_enable_env = onnxruntime::GetEnvironmentVar(tensorrt_env_vars::kSparsityEnable);
++    if (!sparsity_enable_env.empty()) {
++      sparsity_enable_ = (std::stoi(sparsity_enable_env) == 0 ? false : true);
++    }
++
++    const std::string builder_optimization_level_env = onnxruntime::GetEnvironmentVar(tensorrt_env_vars::kBuilderOptimizationLevel);
++    if (!builder_optimization_level_env.empty()) {
++      builder_optimization_level_ = std::stoi(builder_optimization_level_env);
++    }
++
++    const std::string auxiliary_streams_env = onnxruntime::GetEnvironmentVar(tensorrt_env_vars::kAuxiliaryStreams);
++    if (!auxiliary_streams_env.empty()) {
++      auxiliary_streams_ = std::stoi(auxiliary_streams_env);
++    }
++
++    const std::string tactic_sources_env = onnxruntime::GetEnvironmentVar(tensorrt_env_vars::kTacticSources);
++    if (!tactic_sources_env.empty()) {
++      tactic_sources_ = tactic_sources_env;
++    }
+   }
+ 
+   // Validate setting
+@@ -483,7 +574,12 @@ TensorrtExecutionProvider::TensorrtExecutionProvider(const TensorrtExecutionProv
+                         << ", trt_engine_decryption_lib_path: " << engine_decryption_lib_path_
+                         << ", trt_force_sequential_engine_build: " << force_sequential_engine_build_
+                         << ", trt_context_memory_sharing_enable: " << context_memory_sharing_enable_
+-                        << ", trt_layer_norm_fp32_fallback: " << layer_norm_fp32_fallback_;
++                        << ", trt_layer_norm_fp32_fallback: " << layer_norm_fp32_fallback_
++                        << ", trt_build_heuristics_enable: " << build_heuristics_enable_
++                        << ", trt_sparsity_enable: " << sparsity_enable_
++                        << ", trt_builder_optimization_level: " << builder_optimization_level_
++                        << ", trt_auxiliary_streams: " << auxiliary_streams_
++                        << ", trt_tactic_sources: " << tactic_sources_;
+ }
+ 
+ TensorrtExecutionProvider::~TensorrtExecutionProvider() {
+@@ -1366,6 +1462,38 @@ common::Status TensorrtExecutionProvider::Compile(const std::vector<FusedNodeAnd
+       }
+     }
+ 
++    // enable sparse weights
++    if (sparsity_enable_) {
++      trt_config->setFlag(nvinfer1::BuilderFlag::kSPARSE_WEIGHTS);
++      LOGS_DEFAULT(VERBOSE) << "[TensorRT EP] Sparse weights are allowed";
++    }
++
++    // enable builder heuristics
++    if (build_heuristics_enable_) {
++      trt_config->setFlag(nvinfer1::BuilderFlag::kENABLE_TACTIC_HEURISTIC );
++      LOGS_DEFAULT(VERBOSE) << "[TensorRT EP] Builder heuristics are enabled";
++    }
++
++    // switch optimizaion level
++    if (builder_optimization_level_ != 2) {
++      trt_config->setBuilderOptimizationLevel(builder_optimization_level_);
++      LOGS_DEFAULT(VERBOSE) << "[TensorRT EP] Builder optimization level is set to " << builder_optimization_level_;
++    }
++
++    // limit auxiliary streams
++    if (auxiliary_streams_ >= 0) {
++      trt_config->setMaxAuxStreams(auxiliary_streams_);
++      LOGS_DEFAULT(VERBOSE) << "[TensorRT EP] Auxiliary streams are se to " << auxiliary_streams_;
++    }
++
++    // limit used tactic sources
++    if (!tactic_sources_.empty()) {
++      nvinfer1::TacticSources tactics = trt_config->getTacticSources();
++      tactics |= GetTacticSourceFromString(tactic_sources_);
++      trt_config->setTacticSources(tactics);
++      LOGS_DEFAULT(VERBOSE) << "[TensorRT EP] Tactic sources are limited using " << tactic_sources_;
++    }
++
+     // Build TRT engine here if the graph doesn't have dynamic shape input. Otherwise engine will
+     // be built at runtime
+     std::unique_ptr<nvinfer1::ICudaEngine> trt_engine;
+@@ -1498,13 +1626,19 @@ common::Status TensorrtExecutionProvider::Compile(const std::vector<FusedNodeAnd
+     NodeComputeInfo compute_info;
+     compute_info.create_state_func = [=](ComputeContext* context, FunctionState* state) {
+       std::unique_ptr<TensorrtFuncState> p = std::make_unique<TensorrtFuncState>();
++      // translate tactic sources string to nvinfer1::TacticSources
++      nvinfer1::TacticSources tactics = 0;
++      if (!tactic_sources_.empty()) {
++        tactics = GetTacticSourceFromString(tactic_sources_);
++      }
+       *p = {context->allocate_func, context->release_func, context->allocator_handle, &parsers_[context->node_name],
+             &engines_[context->node_name], &contexts_[context->node_name], &builders_[context->node_name],
+             &networks_[context->node_name], input_info_[context->node_name], output_info_[context->node_name],
+             input_shape_ranges_[context->node_name], &tensorrt_mu_, fp16_enable_, int8_enable_, int8_calibration_cache_available_,
+             dla_enable_, dla_core_, &max_workspace_size_, trt_node_name_with_precision, engine_cache_enable_, cache_path_,
+             runtime_.get(), nullptr, allocator_, context_memory_sharing_enable_, &max_ctx_mem_size_, &context_memory_,
+-            dynamic_range_map, engine_decryption_enable_, engine_decryption_, engine_encryption_};
++            dynamic_range_map, engine_decryption_enable_, engine_decryption_, engine_encryption_,
++            build_heuristics_enable_, sparsity_enable_, builder_optimization_level_, auxiliary_streams_ , !tactic_sources_.empty(), tactics};
+       *state = p.release();
+       return 0;
+     };
+@@ -1779,6 +1913,38 @@ common::Status TensorrtExecutionProvider::Compile(const std::vector<FusedNodeAnd
+           trt_config->setDLACore(trt_state->dla_core);
+         }
+ 
++        // enable sparse weights
++        if (trt_state->sparsity_enable) {
++          trt_config->setFlag(nvinfer1::BuilderFlag::kSPARSE_WEIGHTS);
++          LOGS_DEFAULT(VERBOSE) << "[TensorRT EP] Sparse weights are allowed";
++        }
++
++        // enable builder heuristics
++        if (trt_state->build_heuristics_enable) {
++          trt_config->setFlag(nvinfer1::BuilderFlag::kENABLE_TACTIC_HEURISTIC );
++          LOGS_DEFAULT(VERBOSE) << "[TensorRT EP] Builder heuristics are enabled";
++        }
++
++        // switch optimizaion level
++        if (trt_state->builder_optimization_level != 2) {
++          trt_config->setBuilderOptimizationLevel(trt_state->builder_optimization_level);
++          LOGS_DEFAULT(VERBOSE) << "[TensorRT EP] Builder optimization level is set to " << builder_optimization_level_;
++        }
++
++        // limit auxiliary streams
++        if (trt_state->auxiliary_streams >= 0) {
++          trt_config->setMaxAuxStreams(trt_state->auxiliary_streams);
++          LOGS_DEFAULT(VERBOSE) << "[TensorRT EP] Auxiliary streams are se to " << trt_state->auxiliary_streams;
++        }
++
++        // limit used tactic sources
++        if (trt_state->filter_tactic_sources) {
++          nvinfer1::TacticSources tactics = trt_config->getTacticSources();
++          tactics |= trt_state->tactic_sources;
++          trt_config->setTacticSources(tactics);
++          LOGS_DEFAULT(VERBOSE) << "[TensorRT EP] Tactic sources are limited using bitmask " << tactics;
++        }
++
+         // Build engine
+         {
+           auto lock = GetApiLock();
+diff --git a/onnxruntime/core/providers/tensorrt/tensorrt_execution_provider.h b/onnxruntime/core/providers/tensorrt/tensorrt_execution_provider.h
+index 4558b75fee..042495e961 100644
+--- a/onnxruntime/core/providers/tensorrt/tensorrt_execution_provider.h
++++ b/onnxruntime/core/providers/tensorrt/tensorrt_execution_provider.h
+@@ -30,6 +30,11 @@ static const std::string kDecryptionLibPath = "ORT_TENSORRT_ENGINE_DECRYPTION_LI
+ static const std::string kForceSequentialEngineBuild = "ORT_TENSORRT_FORCE_SEQUENTIAL_ENGINE_BUILD";
+ static const std::string kContextMemorySharingEnable = "ORT_TENSORRT_CONTEXT_MEMORY_SHARING_ENABLE";
+ static const std::string kLayerNormFP32Fallback = "ORT_TENSORRT_LAYER_NORM_FP32_FALLBACK";
++static const std::string kBuildHeuristics = "ORT_TENSORRT_BUILD_HEURISTICS_ENABLE";
++static const std::string kSparsityEnable = "ORT_TENSORRT_SPARSITY_ENABLE";
++static const std::string kBuilderOptimizationLevel = "ORT_TENSORRT_BUILDER_OPTIMIZATION_LEVEL";
++static const std::string kAuxiliaryStreams = "ORT_TENSORRT_AUXILIARY_STREAMS";
++static const std::string kTacticSources = "ORT_TENSORRT_TACTIC_SOURCES";
+ // Old env variable for backward compatibility
+ static const std::string kEngineCachePath = "ORT_TENSORRT_ENGINE_CACHE_PATH";
+ }  // namespace tensorrt_env_vars
+@@ -114,6 +119,12 @@ struct TensorrtFuncState {
+   bool engine_decryption_enable = false;
+   int (*engine_decryption)(const char*, char*, size_t*) = nullptr;
+   int (*engine_encryption)(const char*, char*, size_t) = nullptr;
++  bool build_heuristics_enable = false;
++  bool sparsity_enable = false;
++  int builder_optimization_level = 2;
++  int auxiliary_streams = -1;
++  bool filter_tactic_sources = false;
++  nvinfer1::TacticSources tactic_sources;
+ };
+ 
+ // Logical device representation.
+@@ -163,6 +174,11 @@ class TensorrtExecutionProvider : public IExecutionProvider {
+   bool int8_use_native_tensorrt_calibration_table_ = false;
+   bool dump_subgraphs_ = false;
+   bool engine_cache_enable_ = false;
++  bool build_heuristics_enable_ = false;
++  bool sparsity_enable_ = false;
++  int builder_optimization_level_ = 2;
++  int auxiliary_streams_ = -1;
++  std::string tactic_sources_;
+   std::string cache_path_, engine_decryption_lib_path_;
+   std::unique_ptr<nvinfer1::IRuntime> runtime_ = nullptr;
+   OrtMutex tensorrt_mu_;
+diff --git a/onnxruntime/core/providers/tensorrt/tensorrt_execution_provider_info.cc b/onnxruntime/core/providers/tensorrt/tensorrt_execution_provider_info.cc
+index 2db405d512..b431cfc53b 100644
+--- a/onnxruntime/core/providers/tensorrt/tensorrt_execution_provider_info.cc
++++ b/onnxruntime/core/providers/tensorrt/tensorrt_execution_provider_info.cc
+@@ -30,6 +30,11 @@ constexpr const char* kForceSequentialEngineBuild = "trt_force_sequential_engine
+ // add new provider option name here. 
+ constexpr const char* kContextMemorySharingEnable = "trt_context_memory_sharing_enable";
+ constexpr const char* kLayerNormFP32Fallback = "trt_layer_norm_fp32_fallback";
++constexpr const char* kBuildHeuristics = "trt_build_heuristics_enable";
++constexpr const char* kSparsityEnable = "trt_sparsity_enable";
++constexpr const char* kBuilderOptimizationLevel = "trt_builder_optimization_level";
++constexpr const char* kAuxiliaryStreams = "trt_auxiliary_streams";
++constexpr const char* kTacticSources = "trt_tactic_sources";
+ }  // namespace provider_option_names
+ }  // namespace tensorrt 
+ 
+@@ -66,6 +71,11 @@ TensorrtExecutionProviderInfo TensorrtExecutionProviderInfo::FromProviderOptions
+           .AddAssignmentToReference(tensorrt::provider_option_names::kForceSequentialEngineBuild, info.force_sequential_engine_build)
+           .AddAssignmentToReference(tensorrt::provider_option_names::kContextMemorySharingEnable, info.context_memory_sharing_enable)
+           .AddAssignmentToReference(tensorrt::provider_option_names::kLayerNormFP32Fallback, info.layer_norm_fp32_fallback)
++          .AddAssignmentToReference(tensorrt::provider_option_names::kBuildHeuristics, info.build_heuristics_enable)
++          .AddAssignmentToReference(tensorrt::provider_option_names::kSparsityEnable, info.sparsity_enable)
++          .AddAssignmentToReference(tensorrt::provider_option_names::kBuilderOptimizationLevel, info.builder_optimization_level)
++          .AddAssignmentToReference(tensorrt::provider_option_names::kAuxiliaryStreams, info.auxiliary_streams)
++          .AddAssignmentToReference(tensorrt::provider_option_names::kTacticSources, info.tactic_sources)
+           .Parse(options)); // add new provider option here.
+ 
+   return info;
+@@ -93,6 +103,11 @@ ProviderOptions TensorrtExecutionProviderInfo::ToProviderOptions(const TensorrtE
+       // add new provider option here.
+       {tensorrt::provider_option_names::kContextMemorySharingEnable, MakeStringWithClassicLocale(info.context_memory_sharing_enable)},
+       {tensorrt::provider_option_names::kLayerNormFP32Fallback, MakeStringWithClassicLocale(info.layer_norm_fp32_fallback)},
++      {tensorrt::provider_option_names::kBuildHeuristics, MakeStringWithClassicLocale(info.build_heuristics_enable)},
++      {tensorrt::provider_option_names::kSparsityEnable, MakeStringWithClassicLocale(info.sparsity_enable)},
++      {tensorrt::provider_option_names::kBuilderOptimizationLevel, MakeStringWithClassicLocale(info.builder_optimization_level)},
++      {tensorrt::provider_option_names::kAuxiliaryStreams, MakeStringWithClassicLocale(info.auxiliary_streams)},
++      {tensorrt::provider_option_names::kTacticSources, MakeStringWithClassicLocale(info.tactic_sources)},
+   };
+   return options;
+ }
+diff --git a/onnxruntime/core/providers/tensorrt/tensorrt_execution_provider_info.h b/onnxruntime/core/providers/tensorrt/tensorrt_execution_provider_info.h
+index 1f1fdb679f..d0715756a2 100644
+--- a/onnxruntime/core/providers/tensorrt/tensorrt_execution_provider_info.h
++++ b/onnxruntime/core/providers/tensorrt/tensorrt_execution_provider_info.h
+@@ -33,6 +33,11 @@ struct TensorrtExecutionProviderInfo {
+   bool force_sequential_engine_build{false};
+   bool context_memory_sharing_enable{false};
+   bool layer_norm_fp32_fallback{false};
++  bool build_heuristics_enable{false};
++  bool sparsity_enable{false};
++  int builder_optimization_level{2};
++  int auxiliary_streams{-1};
++  std::string tactic_sources{""};
+ 
+   static TensorrtExecutionProviderInfo FromProviderOptions(const ProviderOptions& options);
+   static ProviderOptions ToProviderOptions(const TensorrtExecutionProviderInfo& info);
+diff --git a/onnxruntime/core/providers/tensorrt/tensorrt_provider_factory.cc b/onnxruntime/core/providers/tensorrt/tensorrt_provider_factory.cc
+index dd6915878e..8e0f1e50c6 100644
+--- a/onnxruntime/core/providers/tensorrt/tensorrt_provider_factory.cc
++++ b/onnxruntime/core/providers/tensorrt/tensorrt_provider_factory.cc
+@@ -70,6 +70,11 @@ struct Tensorrt_Provider : Provider {
+     info.force_sequential_engine_build = options.trt_force_sequential_engine_build != 0;
+     info.context_memory_sharing_enable = options.trt_context_memory_sharing_enable != 0;
+     info.layer_norm_fp32_fallback = options.trt_layer_norm_fp32_fallback != 0;
++    info.build_heuristics_enable = options.trt_build_heuristics_enable != 0;
++    info.build_heuristics_enable = options.trt_sparsity_enable;
++    info.build_heuristics_enable = options.trt_builder_optimization_level;
++    info.build_heuristics_enable = options.trt_auxiliary_streams;
++    info.build_heuristics_enable = options.trt_tactic_sources == nullptr ? "" : options.trt_tactic_sources;
+     return std::make_shared<TensorrtProviderFactory>(info);
+   }
+ 
+@@ -137,6 +142,24 @@ struct Tensorrt_Provider : Provider {
+     trt_options.trt_force_sequential_engine_build = internal_options.force_sequential_engine_build;
+     trt_options.trt_context_memory_sharing_enable = internal_options.context_memory_sharing_enable;
+     trt_options.trt_layer_norm_fp32_fallback = internal_options.layer_norm_fp32_fallback;
++    trt_options.trt_build_heuristics_enable = internal_options.build_heuristics_enable;
++    trt_options.trt_sparsity_enable = internal_options.build_heuristics_enable;
++    trt_options.trt_builder_optimization_level = internal_options.build_heuristics_enable;
++    trt_options.trt_auxiliary_streams = internal_options.build_heuristics_enable;
++    str_size = internal_options.tactic_sources.size();
++    if (str_size == 0) {
++      trt_options.trt_tactic_sources = nullptr;
++    } else {
++      dest = new char[str_size + 1];
++#ifdef _MSC_VER
++      strncpy_s(dest, str_size + 1, internal_options.tactic_sources.c_str(), str_size);
++#else
++      strncpy(dest, internal_options.tactic_sources.c_str(), str_size);
++#endif
++      dest[str_size] = '\0';
++      trt_options.trt_tactic_sources = (const char*)dest;
++    }
++
+   }
+ 
+   ProviderOptions GetProviderOptions(const void* provider_options) override {
+diff --git a/onnxruntime/core/session/provider_bridge_ort.cc b/onnxruntime/core/session/provider_bridge_ort.cc
+index 81510120f4..17545f2c06 100644
+--- a/onnxruntime/core/session/provider_bridge_ort.cc
++++ b/onnxruntime/core/session/provider_bridge_ort.cc
+@@ -1274,6 +1274,11 @@ OrtTensorRTProviderOptionsV2 OrtTensorRTProviderOptionsToOrtTensorRTProviderOpti
+   // Use default value as this field is not available in OrtTensorRTProviderOptionsV
+   trt_options_converted.trt_context_memory_sharing_enable = 0;
+   trt_options_converted.trt_layer_norm_fp32_fallback = 0;
++  trt_options_converted.trt_build_heuristics_enable = 0;
++  trt_options_converted.trt_sparsity_enable = 0;
++  trt_options_converted.trt_builder_optimization_level = 2;
++  trt_options_converted.trt_auxiliary_streams = -1;
++  trt_options_converted.trt_tactic_sources = "";
+   return trt_options_converted;
+ }
+ 
+diff --git a/onnxruntime/python/onnxruntime_pybind_state.cc b/onnxruntime/python/onnxruntime_pybind_state.cc
+index f61fe7b878..dc54198d55 100644
+--- a/onnxruntime/python/onnxruntime_pybind_state.cc
++++ b/onnxruntime/python/onnxruntime_pybind_state.cc
+@@ -366,7 +366,12 @@ std::unique_ptr<IExecutionProvider> CreateExecutionProviderInstance(
+             nullptr,
+             0,
+             0,
+-            0};
++            0,
++            0,
++            0,
++            2,
++            -1,
++            nullptr};
+         for (auto option : it->second) {
+           if (option.first == "device_id") {
+             if (!option.second.empty()) {
+diff --git a/onnxruntime/test/providers/cpu/model_tests.cc b/onnxruntime/test/providers/cpu/model_tests.cc
+index 5465f81270..172c83be60 100644
+--- a/onnxruntime/test/providers/cpu/model_tests.cc
++++ b/onnxruntime/test/providers/cpu/model_tests.cc
+@@ -701,7 +701,8 @@ TEST_P(ModelTest, Run) {
+         if (test_case_name.find(ORT_TSTR("FLOAT16")) != std::string::npos) {
+           OrtTensorRTProviderOptionsV2 params{0, 0, nullptr, 1000, 1, 1 << 30,
+                                               1,  // enable fp16
+-                                              0, nullptr, 0, 0, 0, 0, 0, nullptr, 0, nullptr, 0, 0, 0};
++                                              0, nullptr, 0, 0, 0, 0, 0, nullptr, 0, nullptr, 0, 0, 0, 0, 0, 0, 0, 0,
++                                              2, -1, nullptr};
+           ortso.AppendExecutionProvider_TensorRT_V2(params);
+         } else {
+           OrtTensorRTProviderOptionsV2* ep_option = nullptr;
+diff --git a/onnxruntime/test/providers/tensorrt/tensorrt_basic_test.cc b/onnxruntime/test/providers/tensorrt/tensorrt_basic_test.cc
+index f74ecd9213..2c358d0912 100644
+--- a/onnxruntime/test/providers/tensorrt/tensorrt_basic_test.cc
++++ b/onnxruntime/test/providers/tensorrt/tensorrt_basic_test.cc
+@@ -151,7 +151,12 @@ void RunWithOneSessionSingleThreadInference(std::string model_name, std::string
+       nullptr,
+       0,
+       0,
+-      0};
++      0,
++      0,
++      0,
++      2,
++      -1,
++      nullptr};
+ 
+     params.trt_engine_cache_enable = 1;
+     std::unique_ptr<IExecutionProvider> execution_provider = TensorrtExecutionProviderWithOptions(&params);
+@@ -222,7 +227,12 @@ void RunWithOneSessionMultiThreadsInference(std::string model_name, std::string
+       nullptr,
+       0,
+       0,
+-      0};
++      0,
++      0,
++      0,
++      2,
++      -1,
++      nullptr};
+ 
+     params.trt_engine_cache_enable = 1;
+     std::unique_ptr<IExecutionProvider> execution_provider = TensorrtExecutionProviderWithOptions(&params);
+@@ -386,7 +396,12 @@ TEST_P(TensorrtExecutionProviderCacheTest, Run) {
+       nullptr,
+       0,
+       0,
+-      0};
++      0,
++      0,
++      0,
++      2,
++      -1,
++      nullptr};
+ 
+   if (cache_type.compare("engine") == 0) {
+ 

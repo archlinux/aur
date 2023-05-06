@@ -1,46 +1,79 @@
 # Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
 
 _ENABLE_CUDA=1
+_ENABLE_TENSORRT=0
 
 pkgbase=python-onnxruntime
 # Not split DNNL EP to another package as it's needed unconditionally at runtime if built at compile time
 # https://github.com/microsoft/onnxruntime/blob/v1.9.1/onnxruntime/python/onnxruntime_pybind_state.cc#L533
-pkgname=(onnxruntime python-onnxruntime)
-pkgver=1.13.1
+pkgname=('onnxruntime'
+         'python-onnxruntime'
+         )
+pkgver=1.14.1
 pkgdesc='Cross-platform, high performance scoring engine for ML models'
 pkgrel=1
-arch=(x86_64)
+arch=('x86_64')
 url='https://github.com/microsoft/onnxruntime'
-license=(MIT)
-depends=(nsync re2 openmpi libprotobuf-lite.so)
-makedepends=(git cmake pybind11 python-setuptools nlohmann-json chrono-date boost eigen flatbuffers onednn
-             python-coloredlogs python-flatbuffers python-numpy python-packaging python-protobuf python-sympy)
+license=('MIT')
+depends=('nsync'
+         'libre2.so'
+         'openmpi'
+         )
+if [[ $_ENABLE_TENSORRT = 1 ]]; then
+  depends+=('libprotobuf.so')
+else
+  depends+=('libprotobuf-lite.so')
+fi
+
+makedepends=('git'
+             'cmake'
+             'cxxopts'
+             'pybind11'
+             'abseil-cpp'
+             'nlohmann-json'
+             'chrono-date'
+             'boost'
+             'eigen'
+             'flatbuffers'
+             'onednn'
+             're2'
+             'python-coloredlogs'
+             'python-flatbuffers'
+             'python-numpy'
+             'python-pip'
+             'python-protobuf'
+             'python-sympy'
+             'chrpath'
+             )
 # not de-vendored libraries
 # onnx: needs shared libonnx (https://github.com/onnx/onnx/issues/3030)
-source=("git+https://github.com/microsoft/onnxruntime#tag=v$pkgver"
-        "git+https://github.com/onnx/onnx.git"
-        "git+https://github.com/dcleblanc/SafeInt.git"
-        "git+https://github.com/tensorflow/tensorboard.git"
-        "git+https://github.com/dmlc/dlpack.git"
-        "git+https://github.com/jarro2783/cxxopts.git"
-        "pytorch_cpuinfo::git+https://github.com/pytorch/cpuinfo.git"
-        build-fixes.patch
-        install-orttraining-files.diff
-        system-dnnl.diff)
+source=("git+https://github.com/microsoft/onnxruntime#tag=v${pkgver}"
+        '14267.diff' # 'https://patch-diff.githubusercontent.com/raw/microsoft/onnxruntime/pull/14267.diff'
+        '15089.diff' # 'https://patch-diff.githubusercontent.com/raw/microsoft/onnxruntime/pull/15089.diff'
+        'install-orttraining-files.diff'
+        'system-dnnl.diff'
+        'system-flatbuffers.patch'
+        )
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            '8f0bd7ae59f86f002c88368a8c2852b9613363771aae61f91a90bfc13dcd3173e43d7988a59ccef86657cf6abfcc53837bbf445c216a7994a765a7e0770d0f5f'
-            '7d55b0d4232183a81c20a5049f259872150536eed799d81a15e7f10b5c8b5279b443ba96d7b97c0e4338e95fc18c9d6f088e348fc7002256ee7170d25b27d80d'
-            'ab48d27be98a88d3c361e1d0aac3b1e078096c0902ba7a543261a1c24faed0f1f44947a1b7ea1f264434cd2199b9d563d2447c14b6afbdf9900e68a65f7d2619')
+            )
+options=('debug')
 
 if [[ $_ENABLE_CUDA = 1 ]]; then
-  pkgname+=(onnxruntime-cuda)
-  makedepends+=(cuda cudnn nccl gcc11)
+  pkgname+=('onnxruntime-cuda')
+  makedepends+=('cuda'
+                'cudnn'
+                'nccl'
+                )
+fi
+
+if [[ $_ENABLE_TENSORRT = 1 ]]; then
+  pkgname+=('onnxruntime-tensorrt')
+  makedepends+=('tensorrt')
 fi
 
 # Check PKGBUILDs of python-pytorch and tensorflow for CUDA architectures built by official packages
@@ -49,131 +82,223 @@ _CUDA_ARCHITECTURES="52-real;53-real;60-real;61-real;62-real;70-real;72-real;75-
 prepare() {
   cd onnxruntime
 
-  patch -Np1 -i ../build-fixes.patch
-  patch -Np1 -i ../install-orttraining-files.diff
-  patch -Np1 -i ../system-dnnl.diff
+  # DNNL +3.x.x
+  patch -Np1 -i "${srcdir}/14267.diff"
+  patch -Np1 -i "${srcdir}/system-dnnl.diff"
 
-  git submodule init
-  for mod in onnx SafeInt tensorboard dlpack cxxopts pytorch_cpuinfo; do
-    git config submodule.cmake/external/$mod.url "$srcdir"/$mod
-    git -c protocol.file.allow=always submodule update cmake/external/$mod
-  done
+  # find system nlohmann-json
+  sed 's|3.10 ||g' \
+    -i cmake/external/onnxruntime_external_deps.cmake
+
+  # find system chrono-date
+  sed -e 's|${DEP_SHA1_date}|&\n \ \ \ \ \ \FIND_PACKAGE_ARGS NAMES date|g' \
+      -e 's|date_interface|date::date-tz|g' \
+      -i cmake/external/onnxruntime_external_deps.cmake \
+      -i cmake/onnxruntime_common.cmake \
+      -i cmake/onnxruntime_unittests.cmake
+
+  # find system abseil-cpp
+  sed 's|ABSL_PATCH_COMMAND}|&\n\ \ \ \ \FIND_PACKAGE_ARGS NAMES absl|g' \
+    -i cmake/external/abseil-cpp.cmake
+
+  # find system cxxopts
+  sed 's|${DEP_SHA1_cxxopts}|&\n\ \ \ \ \FIND_PACKAGE_ARGS NAMES cxxopts|g' \
+    -i cmake/external/onnxruntime_external_deps.cmake
+
+  # update boost mp11
+  sed -e 's|boost-1.79.0|boost-1.81.0|g' \
+      -e 's|c8f04e378535ededbe5af52c8f969d2dedbe73d5|fdad7d98d7239423e357bb49e725382a814f695c|g' \
+      -i cmake/deps.txt
+
+  if [[ $_ENABLE_TENSORRT = 1 ]]; then
+    # Tensorrt 8.6 EA
+    patch -Np1 -i "${srcdir}/15089.diff"
+
+    # Update Tensorboard 00d59e65d866a6d4b9fe855dce81ee6ba8b40c4f
+    sed -e 's|373eb09e4c5d2b3cc2493f0949dc4be6b6a45e81|00d59e65d866a6d4b9fe855dce81ee6ba8b40c4f|g' \
+        -e 's|67b833913605a4f3f499894ab11528a702c2b381|ff427b6a135344d86b65fa2928fbd29886eefaec|g' \
+        -i cmake/deps.txt
+
+    # Update onnx_tensorrt 6872a9473391a73b96741711d52b98c2c3e25146
+    sed -e 's|369d6676423c2a6dbf4a5665c4b5010240d99d3c|6872a9473391a73b96741711d52b98c2c3e25146|g' \
+        -e 's|62119892edfb78689061790140c439b111491275|75462057c95f7fdbc256179f0a0e9e4b7be28ae3|g' \
+        -i cmake/deps.txt
+  fi
+
+  patch -Np1 -i "${srcdir}/install-orttraining-files.diff"
+  patch -Np1 -i "${srcdir}/system-flatbuffers.patch"
+
+  # fix build with gcc12(?), take idea from https://github.com/microsoft/onnxruntime/pull/11667 and https://github.com/microsoft/onnxruntime/pull/10014
+  sed 's|dims)|TensorShape(dims))|g' \
+    -i onnxruntime/contrib_ops/cuda/quantization/qordered_ops/qordered_qdq.cc
+
+  # fix missing #include <iostream>
+  sed '11a#include <iostream>' \
+    -i orttraining/orttraining/test/training_api/trainer/trainer.cc
 
   cd onnxruntime/core/flatbuffers/schema
   python compile_schema.py --flatc /usr/bin/flatc
 }
 
 build() {
-  cd "$srcdir"/onnxruntime
 
-  if [[ $_ENABLE_CUDA = 1 ]]; then
-    export CC=/usr/bin/gcc-11
-    export CXX=/usr/bin/g++-11
-    export CUDAHOSTCXX=$CXX
+  # More than 18 cores full my 128Gb Ram rig :/
+  _nproc="$(nproc)"
+  if [[ ${_nproc} -gt 18 ]]; then
+    _nproc=18
+  else
+    _nproc="${_nproc}"
   fi
+
+  if [[ ${_ENABLE_CUDA} = 1 ]]; then
+    export CC="/opt/cuda/bin/gcc"
+    export CXX="/opt/cuda/bin/g++"
+    export CUDAHOSTCXX="${CXX}"
+  fi
+
+  # Gcc 12+
+  CXXFLAGS+=" -Wno-maybe-uninitialized"
 
   # Use -Donnxruntime_ENABLE_LAZY_TENSOR=OFF as it requires patched python-pytorch
   # See: https://github.com/microsoft/onnxruntime/pull/10460 https://github.com/pytorch/pytorch/pulls/wschin
-  local cmake_args=(
+  local _cmake_args=(
+    -DCMAKE_BUILD_TYPE=Debug
     -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_SKIP_INSTALL_RPATH=OFF
+    -DCMAKE_SKIP_RPATH=OFF
     -Donnxruntime_ENABLE_PYTHON=ON
-    -Donnxruntime_PREFER_SYSTEM_LIB=ON
     -Donnxruntime_BUILD_SHARED_LIB=ON
-    -Donnxruntime_BUILD_UNIT_TESTS=OFF
+    -Donnxruntime_BUILD_UNIT_TESTS=ON
     -Donnxruntime_ENABLE_TRAINING=ON
     -Donnxruntime_ENABLE_LAZY_TENSOR=OFF
     -Donnxruntime_USE_MPI=ON
-    -Donnxruntime_USE_PREINSTALLED_EIGEN=ON
     -Donnxruntime_USE_DNNL=ON
-    -Deigen_SOURCE_PATH=/usr/include/eigen3
+    -Donnxruntime_USE_PREINSTALLED_EIGEN=ON
+    -Deigen_SOURCE_PATH=$(pkg-config --cflags eigen3 | sed 's|-I||g')
   )
 
   # Use protobuf-lite instead of full protobuf to workaround symbol conflicts
   # with onnx; see https://github.com/onnx/onnx/issues/1277 for details.
-  cmake_args+=(
-    -DONNX_CUSTOM_PROTOC_EXECUTABLE=/usr/bin/protoc
+  _cmake_args+=(
     -Donnxruntime_USE_FULL_PROTOBUF=OFF
   )
 
-  if [[ $_ENABLE_CUDA = 1 ]]; then
-    # 1. Enable parallel builds for NVCC via -t0, which spawns multiple
-    #    cicc and ptxas processes for each nvcc invocation. The number of
-    #    total processes may be much larger than the number of cores - let
-    #    the scheduler handle it.
-    cmake_args+=(
-      -DCMAKE_CUDA_ARCHITECTURES="$_CUDA_ARCHITECTURES"
+  if [[ ${_ENABLE_CUDA} = 1 ]]; then
+    _cmake_args+=(
+      -DCMAKE_CUDA_ARCHITECTURES="${_CUDA_ARCHITECTURES}"
       -DCMAKE_CUDA_STANDARD_REQUIRED=ON
       -DCMAKE_CXX_STANDARD_REQUIRED=ON
       -Donnxruntime_USE_CUDA=ON
       -Donnxruntime_CUDA_HOME=/opt/cuda
-      -DCMAKE_CUDA_COMPILER:PATH=/opt/cuda/bin/nvcc
       -Donnxruntime_CUDNN_HOME=/usr
       -Donnxruntime_USE_NCCL=ON
-      -Donnxruntime_NVCC_THREADS=0
+      -Donnxruntime_NVCC_THREADS="${_nproc}"
     )
   fi
 
-  cmake -B build -S cmake "${cmake_args[@]}" "$@"
+  if [[ ${_ENABLE_TENSORRT} = 1 ]]; then
+    _cmake_args+=(
+      -Donnxruntime_USE_TENSORRT=ON
+      -Donnxruntime_USE_TENSORRT_BUILTIN_PARSER=ON
+    )
+  fi
 
-  cd build
-  cmake --build .
-  python ../setup.py build
+  cmake -S onnxruntime/cmake -B build \
+  "${_cmake_args[@]}" \
+  "$@"
+
+  cmake --build build -j${_nproc} -v
+
+  (
+  cd build;
+  python ../onnxruntime/setup.py bdist_wheel -d ../dist
+  )
+
 }
 
 package_onnxruntime() {
-  depends+=(onednn)
+  depends+=('onednn'
+            'abseil-cpp'
+            )
 
-  cd onnxruntime/build
-
-  DESTDIR="$pkgdir" cmake --install .
-
-  install -Ddm755 "$pkgdir"/usr/share/licenses
-  for f in LICENSE ThirdPartyNotices.txt ; do
-    install -Dm644 ../$f -t "$pkgdir"/usr/share/licenses/$pkgname
-  done
+  DESTDIR="${pkgdir}" cmake --install build
 
   # installed as split packages
-  rm -vf "$pkgdir"/usr/lib/libonnxruntime_providers_cuda.so
+  rm -vf "${pkgdir}/usr/lib/"libonnxruntime_providers_{tensorrt,cuda}.so
+
+  chrpath -d "${pkgdir}/usr/lib/"libonnxruntime.so.*
+
+  install -Dm644 onnxruntime/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 onnxruntime/ThirdPartyNotices.txt "${pkgdir}/usr/share/licenses/${pkgname}/ThirdPartyNotices.txt"
+
 }
 
 package_python-onnxruntime() {
-  depends+=(onnxruntime python-coloredlogs python-flatbuffers python-numpy python-packaging python-protobuf python-sympy)
+  depends=('onnxruntime'
+           'python-coloredlogs'
+           'python-flatbuffers'
+           'python-numpy'
+           'python-protobuf'
+           'python-sympy'
+           'python-packaging'
+            )
   optdepends=(
-    # https://github.com/microsoft/onnxruntime/pull/9969
-    'python-onnx: for the backend API, quantization, orttraining, transformers and various tools'
-    'python-psutil: for transformers'
-    'python-py-cpuinfo: for transformers'
-    'python-py3nvml: for transformers'
-    'python-transformers: for transformers'
-    'python-scipy: for transformers and various tools'
-    'python-pytorch: for transformers, orttraining and various tools'
-    'python-cerberus: for orttraining'
-    'python-h5py: for orttraining'
-  )
+              # https://github.com/microsoft/onnxruntime/pull/9969
+              'python-onnx: for the backend API, quantization, orttraining, transformers and various tools'
+              'python-psutil: for transformers'
+              'python-py-cpuinfo: for transformers'
+              'python-py3nvml: for transformers'
+              'python-transformers: for transformers'
+              'python-scipy: for transformers and various tools'
+              'python-pytorch: for transformers, orttraining and various tools'
+              'python-pytorch-cuda'
+              'python-cerberus: for orttraining'
+              'python-h5py: for orttraining'
+              'python-matplotlib'
+              'python-tensorflow-opt-cuda'
+              'python-importlib-metadata'
+              )
 
-  cd onnxruntime/build
+  pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
 
-  python ../setup.py install --root="$pkgdir" --skip-build --optimize=1
-
-  PY_ORT_DIR="$(python -c 'import site; print(site.getsitepackages()[0])')/onnxruntime"
+  _PY_ORT_DIR="$(python -c 'import site; print(site.getsitepackages()[0])')/onnxruntime"
   # already installed by `cmake --install`, and not useful as this path is not looked up by the linker
-  rm -vf "$pkgdir/$PY_ORT_DIR"/capi/libonnxruntime_providers_*
+  rm -vf "${pkgdir}/${_PY_ORT_DIR}"/capi/libonnxruntime_providers_*
+  chrpath -d "${pkgdir}/${_PY_ORT_DIR}/capi/onnxruntime_pybind11_state.so"
 
-  install -Ddm755 "$pkgdir"/usr/share/licenses
-  ln -s onnxruntime "$pkgdir"/usr/share/licenses/$pkgname
-
-  # installed as split packages
-  rm -vf "$pkgdir"/usr/lib/libonnxruntime_providers_cuda.so
+  install -Ddm755 "${pkgdir}/usr/share/licenses"
+  ln -s onnxruntime "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_onnxruntime-cuda() {
-  depends=(cuda cudnn nccl openmpi nsync)
+  depends=('cudnn'
+           'nccl'
+           'openmpi'
+           'nsync'
+           'abseil-cpp'
+           )
   conflicts=('python-onnxruntime-cuda')
   replaces=('python-onnxruntime-cuda')
   pkgdesc+=' (CUDA execution provider)'
 
-  cd onnxruntime/build
-  install -Dm755 libonnxruntime_providers_cuda.so -t "$pkgdir"/usr/lib
-  install -Ddm755 "$pkgdir"/usr/share/licenses
-  ln -s onnxruntime "$pkgdir"/usr/share/licenses/$pkgname
+  cd build
+  install -Dm755 libonnxruntime_providers_cuda.so -t "${pkgdir}/usr/lib"
+
+  install -Ddm755 "${pkgdir}/usr/share/licenses"
+  ln -s onnxruntime "${pkgdir}/usr/share/licenses/${pkgname}"
+}
+
+package_onnxruntime-tensorrt() {
+  depends=('tensorrt'
+           'libprotobuf.so'
+           'nsync'
+           'flatbuffers'
+          )
+  pkgdesc+=' (TENSORRT execution provider)'
+
+  cd build
+  install -Dm755 libonnxruntime_providers_tensorrt.so -t "${pkgdir}/usr/lib"
+
+  install -Ddm755 "${pkgdir}/usr/share/licenses"
+  ln -s onnxruntime "${pkgdir}/usr/share/licenses/${pkgname}"
 }
