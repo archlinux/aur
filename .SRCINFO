@@ -1,7 +1,7 @@
 pkgbase = python-libinput
 	pkgdesc = Object-oriented wrapper for libinput using ctypes
 	pkgver = 0.3.0pre1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/OzymandiasTheGreat/python-libinput
 	arch = any
 	license = MIT
