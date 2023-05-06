@@ -2,12 +2,12 @@
 # Contributor: bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=cctag
 pkgver=1.0.3
-pkgrel=9
+pkgrel=10
 pkgdesc="Detection of CCTag markers made up of concentric circles"
 arch=('x86_64')
 url="https://github.com/alicevision/CCTag"
 license=('MPL2')
-depends=('boost-libs' 'tbb' 'cuda' 'qt5-base' 'opencv')
+depends=('boost-libs' 'tbb' 'cuda' 'qt6-base' 'opencv')
 makedepends=('boost' 'cmake' 'eigen' 'ninja')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alicevision/CCTag/archive/refs/tags/v${pkgver}.tar.gz")
