@@ -494,6 +494,36 @@ _make_ceph_packages() {
       $python/cephfs_top-*
 
     ###############################################
+    #         Ceph misc. utils                    #
+    ###############################################
+
+    _package ceph-tools \
+      $bin/ceph-post-file \
+      $bin/ceph-dedup-tool \
+      $bin/ceph-erasure-code-tool \
+      $bin/ceph-kvstore-tool \
+      $bin/ceph-debugpack \
+      $bin/ceph-dencoder \
+      $man/man8/ceph-{post-file,dencoder}.8 \
+      $man/man8/ceph-{debugpack,kvstore-tool}.8
+
+    _package ceph-test \
+      $bin/ceph_perf_local \
+      $bin/ceph_perf_msgr_client \
+      $bin/ceph_perf_msgr_server \
+      $bin/ceph_erasure_code_benchmark \
+      $bin/ceph_objectstore_bench \
+      $bin/ceph_bench_log \
+      $bin/ceph_perf_objectstore \
+      $bin/ceph_omapbench \
+      $bin/ceph-syn \
+      $man/man8/ceph-syn.8
+
+    _package java-cephfs \
+      $lib/libcephfs_jni.so{,.1,.1.0.0} \
+      $share/java/libcephfs.jar
+
+    ###############################################
     #         Ceph python packages                #
     ###############################################
 
@@ -930,6 +960,48 @@ package_ceph-cephadm() {
   install -Dm755 "${srcdir}/${pkgbase}-${pkgver}/src/cephadm/cephadm" \
     "${pkgdir}/usr/bin/cephadm"
 
+  _print
+}
+
+###############################################
+#         Ceph misc. utils                    #
+###############################################
+
+package_ceph-tools() {
+  pkgdesc='Ceph Storage miscellaneous tooling and utilities'
+  depends=(
+    "ceph-base=${__version}"
+
+    'bash'   'boost-libs'   'gperftools'   'libaio'   'libcap'
+    'snappy'
+  )
+
+  mv __pkg__/$pkgname/* "$pkgdir"
+  _print
+}
+
+package_ceph-test() {
+  pkgdesc='Ceph Storage tools for benchmarking and testing live clusters'
+  depends=(
+    "ceph-base=${__version}"
+
+    'libcap'   'libaio'   'boost-libs'   'fmt'   'gperftools'
+    'snappy'
+  )
+
+  mv __pkg__/$pkgname/* "$pkgdir"
+  _print
+}
+
+package_java-cephfs() {
+  pkgdesc='Ceph Storage JNI bindings for CephFS'
+  depends=(
+    "libcephfs=${__version}"
+
+    'java-runtime'
+  )
+
+  mv __pkg__/$pkgname/* "$pkgdir"
   _print
 }
 
