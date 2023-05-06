@@ -11,7 +11,7 @@ arch=(any)
 url="https://github.com/Cimbali/${_base}"
 license=(GPL)
 depends=(poppler-glib gtk3 python-cairo gdk-pixbuf2 python-gobject gobject-introspection python-watchdog perl-x11-protocol perl-net-dbus)
-makedepends=(python-setuptools python-babel)
+makedepends=(python-build python-installer python-setuptools python-wheel python-babel)
 optdepends=('vlc: for play videos'
   'python-vlc: for play videos'
   'gstreamer: for play videos')
@@ -20,10 +20,10 @@ sha512sums=('1327d2a4fab31ea0db21076849faa78685025fb5339fffbfac8c5489488951f373e
 
 build() {
   cd ${_base}-${pkgver}
-  python setup.py build
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
   cd ${_base}-${pkgver}
-  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
 }
