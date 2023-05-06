@@ -1,7 +1,7 @@
 pkgbase = cobib-git
 	pkgdesc = Console Bibliography
 	pkgver = r517.c6d4f59
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/cobib/cobib
 	arch = any
 	license = MIT

@@ -4,7 +4,7 @@
 _pkgname='cobib'
 pkgname="${_pkgname}-git"
 pkgver=r517.c6d4f59
-pkgrel=1
+pkgrel=2
 arch=('any')
 depends=('python' 'python-bibtexparser' 'python-beautifulsoup4' 'python-ruamel-yaml' 'python-pylatexenc' 'python-requests' 'python-rich' 'python-textual' 'python-markdown-it-py' 'python-mdit_py_plugins' 'python-linkify-it-py')
 license=('MIT')
