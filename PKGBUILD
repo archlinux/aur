@@ -5,7 +5,7 @@
 
 pkgname=plasma-mobile-nm
 _pkgname=plasma-nm
-pkgver=5.27.1
+pkgver=5.27.4
 pkgrel=1
 pkgdesc='Plasma applet written in QML for managing network connections, built with modules for mobile'
 arch=(x86_64 i686 i486 pentium4 arm armv6h armv7h aarch64)
@@ -18,7 +18,7 @@ provides=("plasma-nm=$pkgver")
 conflicts=("plasma-nm")
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$pkgver/$_pkgname-$pkgver.tar.xz)
-sha256sums=('27d170e3e315a4ef2ffc4828b11c3a41b68ab213a15f56097789b7c41d6ba8a5')
+sha256sums=('2ee6bff818e5168062e1e4358851697e4397d8b666e4a58a4883489c1a51214b')
 options=(debug)
 
 build() {

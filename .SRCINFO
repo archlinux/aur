@@ -1,6 +1,6 @@
 pkgbase = plasma-mobile-nm
 	pkgdesc = Plasma applet written in QML for managing network connections, built with modules for mobile
-	pkgver = 5.27.1
+	pkgver = 5.27.4
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = plasma-mobile-nm
 	provides = plasma-nm=5.27.1
 	conflicts = plasma-nm
 	options = debug
-	source = https://download.kde.org/stable/plasma/5.27.1/plasma-nm-5.27.1.tar.xz
-	sha256sums = 27d170e3e315a4ef2ffc4828b11c3a41b68ab213a15f56097789b7c41d6ba8a5
+	source = https://download.kde.org/stable/plasma/5.27.4/plasma-nm-5.27.4.tar.xz
+	sha256sums = 2ee6bff818e5168062e1e4358851697e4397d8b666e4a58a4883489c1a51214b
 
 pkgname = plasma-mobile-nm
