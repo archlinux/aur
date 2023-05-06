@@ -2,7 +2,7 @@
 
 pkgname=semgrep-bin
 _name=semgrep
-pkgver=1.15.0
+pkgver=1.21.0
 pkgrel=1
 pkgdesc="Fast and syntax-aware semantic code pattern search for many languages: like grep but for code"
 arch=(x86_64)
@@ -21,26 +21,13 @@ optdepends=(
 provides=('semgrep')
 options=('!strip')
 source=(
-  "https://github.com/returntocorp/semgrep/releases/download/v${pkgver}/semgrep-v${pkgver}-ubuntu-16.04.tgz"
-  "https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
+  "https://files.pythonhosted.org/packages/56/56/6e4c142a84f7c85dd8d6cd75608519b6dedda279e5926060496bc5a2b1a3/semgrep-1.21.0-cp37.cp38.cp39.py37.py38.py39-none-any.whl"
 )
 sha256sums=(
-  '057d14db9f83c65a91d46e5fe83bafcc8b271cde949343ccdaf05311af61142a'
-  'ba638c65b0fea50259501e6b56faccf5d88d625c7e0c0c47f881bcb772bb2c44'
+  '01b543856062cef221d7a8c133a7e791dcc32ff94e60d95a1477fef08392f081'
 )
-# https://github.com/returntocorp/semgrep/releases/download/v${pkgver}/semgrep-v${pkgver}-ubuntu-16.04.tgz.sha256
-
-build() {
-  cd "$srcdir/${_name}-${pkgver}"
-  export SEMGREP_CORE_BIN="${srcdir}/semgrep-files/semgrep-core"
-  python setup.py build
-  chmod +x build/lib/semgrep/bin/semgrep-core
-}
 
 package() {
-  cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
-
-  # solve conflict with other packages
-  rm -rf ${pkgdir}/usr/lib/python*/site-packages/tests
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps *.whl
+  python -O -m compileall "${pkgdir}"
 }
