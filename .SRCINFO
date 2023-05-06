@@ -1,0 +1,30 @@
+pkgbase = python-libpcap-git
+	pkgdesc = Python binding for the libpcap C library.
+	pkgver = 0.4.1+2.r98.20230128.b38a8cc
+	pkgrel = 1
+	url = https://pypi.org/project/libpcap/
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = custom: BSD
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-mock
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-sphinxcontrib-napoleon
+	depends = cython
+	depends = libpcap
+	depends = python>=3
+	provides = python-libpcap=0.4.1+2.r98.20230128.b38a8cc
+	conflicts = python-libpcap
+	source = python-libpcap::git+https://github.com/caizhengxin/python-libpcap.git
+	sha256sums = SKIP
+
+pkgname = python-libpcap-git
