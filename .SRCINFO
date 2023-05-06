@@ -1,7 +1,7 @@
 pkgbase = python-krfzf
 	pkgdesc = A Pythonic Fzf Wrapper
 	pkgver = 0.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/krfzf-py/
 	arch = any
 	license = GPL3

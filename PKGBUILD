@@ -3,7 +3,7 @@
 pkgname='python-krfzf'
 _pkgname='krfzf-py'
 pkgver=0.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A Pythonic Fzf Wrapper"
 arch=('any')
 url="https://pypi.org/project/$_pkgname/"
