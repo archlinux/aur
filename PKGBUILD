@@ -1,15 +1,20 @@
+# Maintainer: éclairevoyant
+
 _pkgname=python-geomag
-pkgname=$_pkgname-todd-dembrey-git
+pkgname="$_pkgname-todd-dembrey-git"
 pkgver=r31.421564e
-pkgrel=2
-arch=("any")
-license=("LGPL")
+pkgrel=3
+arch=(any)
+# see https://code.google.com/archive/p/geomag/
+license=(LGPL)
 url="https://github.com/todd-dembrey/geomag"
-makedepends=("git")
+depends=(python)
+makedepends=(git python-setuptools)
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=("$_pkgname::git+$url" "data-install.patch")
-sha1sums=("SKIP" "SKIP")
+source=("$_pkgname::git+$url" data-install.patch)
+b2sums=('SKIP'
+        '049527085f0b8cf75642b0d8469769ffd2f667064080c300b7720f0dab0897f53e0b1b7c9ad775d38a6f72a010812d1ba5d5ee612f414d06db459ec9d91a8f2b')
 
 pkgver() {
 	cd $_pkgname
@@ -18,18 +23,16 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
-
-	patch -Np1 -i "$srcdir"/data-install.patch
+	patch -Np1 -i ../data-install.patch
+	echo 'include geomag/model_data/*.COF' > MANIFEST.in
 }
 
 build() {
 	cd $_pkgname
-
 	python setup.py build
 }
 
 package() {
 	cd $_pkgname
-
-	python setup.py install --root="$pkgdir" --optimize=1
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }

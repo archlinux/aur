@@ -1,6 +1,5 @@
-*.pkg.*
-*.tar.gz
-/pkg
-/src
-
-/python-geomag
+/*
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
+!/data-install.patch

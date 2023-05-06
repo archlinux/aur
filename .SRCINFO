@@ -1,15 +1,17 @@
 pkgbase = python-geomag-todd-dembrey-git
 	pkgver = r31.421564e
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/todd-dembrey/geomag
 	arch = any
 	license = LGPL
 	makedepends = git
+	makedepends = python-setuptools
+	depends = python
 	provides = python-geomag
 	conflicts = python-geomag
 	source = python-geomag::git+https://github.com/todd-dembrey/geomag
 	source = data-install.patch
-	sha1sums = SKIP
-	sha1sums = SKIP
+	b2sums = SKIP
+	b2sums = 049527085f0b8cf75642b0d8469769ffd2f667064080c300b7720f0dab0897f53e0b1b7c9ad775d38a6f72a010812d1ba5d5ee612f414d06db459ec9d91a8f2b
 
 pkgname = python-geomag-todd-dembrey-git
