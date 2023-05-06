@@ -420,6 +420,33 @@ _make_ceph_packages() {
     _package librgw \
       $lib/libradosgw.so{,.2,.2.0.0} \
       $lib/librgw.so{,.2,.2.0.0}
+
+    ###############################################
+    #         Ceph python packages                #
+    ###############################################
+
+    _package python-ceph-common \
+      $python/ceph \
+      $python/ceph-*egg-info* \
+      $python/ceph_argparse.py \
+      $python/ceph_daemon.py
+
+    _package python-rados \
+      $python/rados-* \
+      $python/rados.cpython-*
+
+    _package python-rbd \
+      $python/rbd-* \
+      $python/rbd.cpython-*
+
+    _package python-cephfs \
+      $python/cephfs-* \
+      $python/cephfs.cpython-*
+
+    _package python-rgw \
+      $python/rgw-* \
+      $python/rgw.cpython-*
+
   )
 
   local -i _ret=$(find "${install}" -type f,l | wc -l)
@@ -624,6 +651,72 @@ package_librgw() {
   )
   provides=(
     'librgw.so'
+  )
+
+  mv __pkg__/$pkgname/* "$pkgdir"
+  _print
+}
+
+###############################################
+#         Ceph python packages                #
+###############################################
+
+package_python-ceph-common() {
+  pkgdesc='Ceph Storage python module for common classes, objects and types'
+  depends=(
+    "ceph-common=${__version}"
+
+    'python'
+
+    'python-setuptools'   'python-prettytable'   'python-yaml'
+  )
+
+  mv __pkg__/$pkgname/* "$pkgdir"
+  _print
+}
+
+package_python-rados() {
+  pkgdesc='Ceph Storage python library for librados'
+  depends=(
+    "python-ceph-common=${__version}" "librados=${__version}"
+
+    'libxcrypt'
+  )
+
+  mv __pkg__/$pkgname/* "$pkgdir"
+  _print
+}
+
+package_python-rbd() {
+  pkgdesc='Ceph Storage python library for librbd'
+  depends=(
+    "python-ceph-common=${__version}" "python-rados=${__version}" "librbd=${__version}"
+
+    'libxcrypt'
+  )
+
+  mv __pkg__/$pkgname/* "$pkgdir"
+  _print
+}
+
+package_python-cephfs() {
+  pkgdesc='Ceph Storage python library for libcephfs'
+  depends=(
+    "python-ceph-common=${__version}" "python-rados=${__version}" "libcephfs=${__version}"
+
+    'libxcrypt'
+  )
+
+  mv __pkg__/$pkgname/* "$pkgdir"
+  _print
+}
+
+package_python-rgw() {
+  pkgdesc='Ceph Storage python library for librgw'
+  depends=(
+    "python-ceph-common=${__version}" "python-rados=${__version}" "librgw=${__version}"
+
+    'libxcrypt'
   )
 
   mv __pkg__/$pkgname/* "$pkgdir"
