@@ -26,6 +26,10 @@ prepare() {
                                       -i OpenTimelineIO-$pkgver/src/py-opentimelineio/opentimelineio-bindings/CMakeLists.txt
 
   patch -d OpenTimelineIO-$pkgver -p1 < opentimelineio-c++17.patch # Use native C++17 types
+
+  # Solve error when building the file "rationalTime.cpp"
+  sed -i '/opentime\/errorStatus.h/ i #include <cstdint>' \
+         "OpenTimelineIO-$pkgver/src/opentime/rationalTime.h"
 }
 
 build() {
