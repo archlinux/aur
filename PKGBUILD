@@ -380,6 +380,46 @@ _make_ceph_packages() {
     _package libcephsqlite \
       $inc/libcephsqlite.h \
       $lib/libcephsqlite.so
+
+    ###############################################
+    #         Ceph clients / applications         #
+    ###############################################
+
+    _package librbd \
+      $inc/rbd/* \
+      $lib/librbd.so{,.1,.1.17.0} \
+      $lib/ceph/librbd/*
+
+    _package ceph-rbd \
+      $bin/ceph-rbdnamer \
+      $bin/rbd{,map,-{fuse,mirror,nbd,replay,replay-many}} \
+      $bin/ceph-immutable-object-cache \
+      $systemd/ceph-rbd-mirror{.target,@.service} \
+      $systemd/ceph-immutable-object-cache{.target,@.service} \
+      $systemd/rbdmap.service \
+      $share/bash-completion/completions/rbd \
+      $man/man8/ceph-rbdnamer.8 \
+      $man/man8/ceph-immutable-object-cache.8 \
+      $man/man8/rbd*
+
+    _package libcephfs \
+      $inc/cephfs/* \
+      $lib/libcephfs.so{,.2,.2.0.0}
+
+    _package ceph-cephfs \
+      $bin/cephfs-{data-scan,{journal,table}-tool,mirror} \
+      $bin/ceph-fuse \
+      $bin/mount.{ceph,fuse.ceph} \
+      $bin/ceph-client-debug \
+      $systemd/cephfs-mirror{.target,@.service} \
+      $systemd/ceph-fuse{.target,@.service} \
+      $man/man8/ceph-fuse.8 \
+      $man/man8/mount.{ceph,fuse.ceph}.8 \
+      $man/man8/cephfs-*
+
+    _package librgw \
+      $lib/libradosgw.so{,.2,.2.0.0} \
+      $lib/librgw.so{,.2,.2.0.0}
   )
 
   local -i _ret=$(find "${install}" -type f,l | wc -l)
@@ -498,6 +538,92 @@ package_libcephsqlite() {
   )
   provides=(
     'libcephsqlite.so'
+  )
+
+  mv __pkg__/$pkgname/* "$pkgdir"
+  _print
+}
+
+###############################################
+#         Ceph clients / applications         #
+###############################################
+
+package_librbd() {
+  pkgdesc='Ceph Storage client library for RADOS block devices'
+  depends=(
+    "librados=${__version}"
+
+    'cryptsetup' 'fmt'
+  )
+  provides=(
+    'librbd.so' 'libceph_librbd_parent_cache.so'
+  )
+
+  mv __pkg__/$pkgname/* "$pkgdir"
+  _print
+}
+
+package_ceph-rbd() {
+  pkgdesc='Ceph Storage utilities and tooling for librbd'
+  depends=(
+    "librbd=${__version}"
+
+    'libnl'   'fmt'          'fuse3'   'gperftools'   'boost-libs'
+    'bash'    'cryptsetup'
+
+  )
+  backup=(
+    'etc/udev/rules.d/50-ceph-rbd.rules'
+  )
+
+  # rbd udev rules
+  install -Dm644 "${srcdir}/${pkgbase}-${pkgver}/udev/50-rbd.rules" \
+    "${pkgdir}/etc/udev/rules.d/50-ceph-rbd.rules"
+
+  mv __pkg__/$pkgname/* "$pkgdir"
+  _print
+}
+
+package_libcephfs() {
+  pkgdesc='Ceph Storage client library for CephFS, a distributed POSIX filesystem'
+  depends=(
+    "librados=${__version}"
+
+    'fmt'
+  )
+  provides=(
+    'libcephfs.so'
+  )
+
+  mv __pkg__/$pkgname/* "$pkgdir"
+  _print
+}
+
+package_ceph-cephfs() {
+  pkgdesc='Ceph Storage utilities and tooling for libcephfs'
+  depends=(
+    "libcephfs=${__version}"
+
+    'fuse3'   'fmt'   'gperftools'   'libcap-ng'   'lua'   'python'
+  )
+  optdepends=(
+    "cephfs-shell: Shell access to a CephFS filesystem"
+    "cephfs-top: Usage and metrics for CephFS, inspired by top(1)"
+  )
+
+  mv __pkg__/$pkgname/* "$pkgdir"
+  _print
+}
+
+package_librgw() {
+  pkgdesc='Ceph Storage client library to RADOS Object Gateway, a S3 and Swift compatible REST API'
+  depends=(
+    "librados=${__version}"
+
+    'librabbitmq-c'   'lua'   'librdkafka'   'expat'   'boost-libs'   'gperftools'
+  )
+  provides=(
+    'librgw.so'
   )
 
   mv __pkg__/$pkgname/* "$pkgdir"
