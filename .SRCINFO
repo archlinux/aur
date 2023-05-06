@@ -1,0 +1,14 @@
+pkgbase = kwok-bin
+	pkgdesc = Kubernetes WithOut Kubelet - Simulates thousands of Nodes and Clusters.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://kwok.sigs.k8s.io/
+	arch = x86_64
+	license = Apache
+	options = !strip
+	source = kwok-0.2.0::https://github.com/kubernetes-sigs/kwok/releases/download/v0.2.0/kwok-linux-amd64
+	source = kwokctl-0.2.0::https://github.com/kubernetes-sigs/kwok/releases/download/v0.2.0/kwokctl-linux-amd64
+	sha256sums = 7a588a90dced32dca9b79e026f677f6588ce55163ca19cc6b5994d645aec55ca
+	sha256sums = b48b06df6ec269040d2f3fd7123c63d63ba31bbd847de8b104d2119a001a5df7
+
+pkgname = kwok-bin
