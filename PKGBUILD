@@ -10,34 +10,28 @@ pkgdesc='Distributed, fault-tolerant storage platform delivering object, block, 
 arch=('x86_64')
 url='https://ceph.com/'
 license=('GPL')
-makedepends=('zstd' 'bash' 'bc' 'boost' 'boost-libs' 'bzip2' 'c-ares' 'cmake' 'coreutils' 'coffeescript'
-             'cpio' 'crypto++' 'cryptsetup' 'cunit' 'curl' 'cython' 'expat'
-             'fcgi' 'fontconfig' 'fuse2' 'fuse3' 'fmt' 'gcc' 'gcc-libs' 'git' 'glibc' 'gmock' 'gnutls'
-             'gperf' 'gperftools' 'gptfdisk' 'gtest' 'hwloc' 'inetutils' 'java-runtime'
-             'jq' 'jre11-openjdk-headless' 'junit' 'keyutils' 'leveldb' 'libaio'
-             'libatomic_ops' 'libcap' 'libcap-ng' 'libcroco' 'libcurl-compat'
-             'libedit' 'libgudev' 'libnl' 'librabbitmq-c' 'libtool' 'util-linux'
-             'libuv' 'libxml2' 'librdkafka' 'libpciaccess' 'lsb-release' 'lua' 'lz4' 'ncurses'
-             'nss' 'numactl' 'oath-toolkit' 'openssl' 'parted' 'pcre' 'pcre2' 'pkgconf' 'protobuf'
-             'procps-ng' 'python-astroid' 'python-attrs' 'python-bcrypt'
-             'python-cheroot' 'python-cherrypy' 'python-coverage' 'python-dateutil'
-             'python-elasticsearch' 'python-flask' 'python-flask-restful'
-             'python-google-api-python-client' 'python-google-auth'
-             'python-google-auth-httplib2' 'python-grpcio' 'python-isort'
-             'python-jinja' 'python-lazy-object-proxy' 'python-mccabe'
-             'python-isodate' 'python-defusedxml' 'python-pkgconfig' 'python-protobuf'
-             'python-lxml' 'python-xmlsec' 'python-yaml'
-             'python-more-itertools' 'python-numpy' 'python-pbr' 'python-pecan'
-             'python-pip' 'python-pluggy' 'python-portend' 'python-prettytable'
-             'python-prometheus_client' 'python-py' 'python-pycparser'
-             'python-pyjwt' 'python-pyopenssl' 'python-pytz' 'python-requests'
-             'python-routes' 'python-scikit-learn' 'python-scipy'
-             'python-setuptools' 'python-six' 'python-sphinx' 'python-tempora'
-             'python-virtualenv' 'python-werkzeug' 'python-wrapt' 'rabbitmq'
-             'sed' 'snappy' 'socat' 'systemd' 'systemd-libs' 'valgrind'
-             'xfsprogs' 'xmlstarlet' 'xmlsec' 'xxhash' 'yaml-cpp' 'yasm' 'zlib' )
-checkdepends=('python-mock' 'python-nose' 'python-pycodestyle' 'python-pylint'
-              'python-pytest' 'python-pytest-cov')
+makedepends=(
+  'bash'            'boost'            'boost-libs'      'cmake'           'coreutils'
+  'cryptsetup'      'curl'             'cython'          'expat'           'fmt'
+  'fuse3'           'gawk'             'gcc-libs'        'git'             'glibc'
+  'gperf'           'gperftools'       'java-runtime'    'jq'              'jre11-openjdk-headless'
+  'junit'           'keyutils'         'libaio'          'libatomic_ops'   'libcap'
+  'libcap-ng'       'libcurl-compat'   'libedit'         'libgudev'        'libnl'
+  'librabbitmq-c'   'librdkafka'       'libutil-linux'   'libuv'           'libxcrypt'
+  'lua'             'lz4'              'nss'             'oath-toolkit'    'openssl'
+  'pkgconf'         'python'           'snappy'          'sqlite'          'systemd-libs'
+  'util-linux'      'xfsprogs'         'zlib'            'zstd'
+
+  'python-bcrypt'   'python-cherrypy'      'python-coverage'   'python-dateutil'            'python-jinja'
+  'python-pecan'    'python-prettytable'   'python-pyjwt'      'python-pyopenssl'           'python-requests'
+  'python-scipy'    'python-setuptools'    'python-sphinx'     'python-typing_extensions'   'python-werkzeug'
+  'python-yaml'
+)
+checkdepends=(
+  'python-mock'   'python-nose'   'python-pycodestyle'   'python-pylint'   'python-pytest'
+  'python-pytest-cov'
+)
+
 # Despite the upstream suggesting that LTO is now possible, I still am unable
 # to set this. I get SEGVs in tests, and repeated mentions of C++ One Definition Rule
 # violations in builds -- probably causing the segfaults. Need to look into this some
