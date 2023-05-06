@@ -1,7 +1,7 @@
 pkgbase = python-pyvcf3
 	pkgdesc = Variant Call Format (VCF) parser for Python3
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/dridk/PyVCF3
 	arch = x86_64
 	license = custom

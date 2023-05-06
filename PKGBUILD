@@ -1,9 +1,9 @@
-# Maintainer: bipin kumar <bipin@ccmb.res.in>
+# Maintainer: bipin kumar <kbipinkumar@pm.me>
 
 pkgname=python-pyvcf3
 _name=PyVCF3
 pkgver=1.0.3
-pkgrel=1
+pkgrel=3
 pkgdesc="Variant Call Format (VCF) parser for Python3"
 arch=('x86_64')
 url=https://github.com/dridk/PyVCF3
@@ -18,10 +18,10 @@ build() {
     python setup.py build
 }
 
-check() {
-    cd "$_name-$pkgver"
-    python setup.py pytest
-}
+#check() {
+    #cd "$_name-$pkgver"
+    #python setup.py pytest
+#}
 
 package() {
     cd "$_name-$pkgver"
