@@ -1,6 +1,6 @@
 pkgbase = r-evaluate
 	pkgdesc = Parsing and Evaluation Tools that Provide More Details than the Default
-	pkgver = 0.20
+	pkgver = 0.21
 	pkgrel = 1
 	url = https://cran.r-project.org/package=evaluate
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = r-evaluate
 	depends = r
 	optdepends = r-covr
 	optdepends = r-ggplot2
+	optdepends = r-rlang
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/evaluate_0.20.tar.gz
-	source = CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT
-	sha256sums = 35f5d9e85603600b58960923d591c5ca1115153febba7c612867d8b5598afff0
-	sha256sums = e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/evaluate_0.21.tar.gz
+	sha256sums = 3178c99cee8917d7d128806d064d4fecce7845ed07f42e759dcc0adda89c22b9
 
 pkgname = r-evaluate
