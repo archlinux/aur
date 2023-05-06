@@ -1,13 +1,12 @@
 pkgbase = lcarsde-status-bar
 	pkgdesc = Menu for lcarsde to display and run installed software
 	pkgver = 22.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://lcarsde.github.io
 	arch = any
 	groups = lcarsde
 	license = MIT
 	makedepends = jdk-openjdk
-	makedepends = ncurses5-compat-libs
 	depends = pango
 	depends = icu
 	depends = libxml2
