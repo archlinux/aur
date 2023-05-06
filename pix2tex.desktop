@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=LaTeX OCR
+Comment=Using a ViT to convert images of equations into LaTeX code.
+Exec=/usr/bin/latexocr
+Icon=pix2tex
+Terminal=false
