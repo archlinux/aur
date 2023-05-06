@@ -1,0 +1,18 @@
+pkgbase = unittest-c
+	pkgdesc = unittest c is a fast and simple macro-based unit testing framework for C. It's inspired by the Python unittest module and designed to reduce boilerplate code. With macros and a built-in test runner, it's ideal for large test suites.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/alecksandr26/unittest-c
+	arch = x86_64
+	license = MIT License
+	makedepends = gcc
+	makedepends = git
+	makedepends = make
+	makedepends = binutils
+	makedepends = coreutils
+	makedepends = c-exceptions
+	optdepends = valgrind
+	source = git+https://github.com/alecksandr26/unittest-c
+	md5sums = SKIP
+
+pkgname = unittest-c
