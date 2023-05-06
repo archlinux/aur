@@ -5,10 +5,10 @@
 
 pkgname='mlmmj'
 pkgver=1.3.0
-pkgrel=8
+pkgrel=9
 pkgdesc='Simple and slim mailing list manager (MLM) inspired by ezmlm'
-depends=('smtp-server')
-arch=('i686' 'x86_64' 'armv7h')
+depends=('bash' 'glibc' 'smtp-server')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='http://mlmmj.org/'
 license=('MIT')
 source=(
@@ -17,20 +17,6 @@ source=(
   "$pkgname-$pkgver-bash.diff"
   'sysuser.conf'
   'tmpfile.conf'
-)
-md5sums=(
-  '365eff26063ddb87097bf2d93311f8a5'
-  '2c01b8fefee3efc87cac391d3060c861'
-  '18277bc799488973c5316055cf299af6'
-  '2226137319dc972f0ab10c14e6b951dd'
-  '0eaa5ec4f143945629577e8abd6b229a'
-)
-sha1sums=(
-  '1c67bc9514f3d69c90bcdc0c42c2e9cba9123d3a'
-  '31b661992a0f48ece92cc91a1611da9847b5e041'
-  '70a383a8bf5a798aabd0e4bb390b53fef324592b'
-  'aeb9f5625407873419eba15d8a414346caf3fabd'
-  '1ec89e15977c3617cc5395b10d3ebe1ce4aba9ce'
 )
 sha256sums=(
   '7609d0dd804f0c084c2e483eb58c60012b698bc76464537852a1ee1ff9c6f0e9'
