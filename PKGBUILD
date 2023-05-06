@@ -6,7 +6,7 @@
 pkgname=gnome-shell-extension-hibernate-status
 _uuid='hibernate-status@dromi'
 pkgver=1.11.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Gnome Shell extension that adds a hibernate/hybrid suspend button in Status menu."
 arch=('any')
 url="https://github.com/arelange/gnome-shell-extension-hibernate-status"
@@ -15,16 +15,17 @@ depends=('gnome-shell')
 makedepends=('git')
 provides=('gnome-shell-extension-hibernate-status')
 conflicts=('gnome-shell-extension-hibernate-status-git')
-source=("${url}/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('1269763e6d7301690033266f1183d72a5db7e43600652d415e3e88a72184ad4b')
-b2sums=('af1b366f5a4a17070fdd235267bfa38d1484c53a70ddf8f0cad0be108f5ea6ed47b85e43e0f11ab2ff35cf24d69c47e287fc0387d6e771d12d7708e1fef13dbb')
+_commit=d11284d8e8ef38aaf178963fb950b8ee347451a7
+source=("${url}/archive/${_commit}.tar.gz")
+sha256sums=('7f9906301df2d94ad472863934329b58ad0090c50bd501a22f774a7c4a73939b')
+b2sums=('014464c582a0e2dafe0628dfef1a4b77cbca76925ae58367d7e264acc5e16f9d005c1a1aae6b41cd19e417e8b6cb45d681dcb6d27089a74f1dc378b03fc25535')
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${_commit}"
   make
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${_commit}"
   make DESTDIR="${pkgdir}" install
 }
