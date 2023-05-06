@@ -3,7 +3,7 @@
 _pkgname='itertree'
 pkgname=python-$_pkgname
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python tree structure for data storage and iterations"
 arch=(any)
 url="https://github.com/BR1py/$_pkgname"
