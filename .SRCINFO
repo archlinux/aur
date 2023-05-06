@@ -1,7 +1,7 @@
 pkgbase = hpklinux
 	pkgdesc = AudioScience HPI (ASIHPI) user space libraries and tools
 	pkgver = 4.20.39
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.audioscience.com/internet/download/linux_drivers.htm
 	arch = x86_64
 	arch = aarch64
