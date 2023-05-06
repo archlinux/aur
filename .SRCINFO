@@ -1,0 +1,20 @@
+pkgbase = trackma-wrapper-git
+	pkgdesc = Wrapper around trackma and animdl
+	pkgver = r21.9505c0e
+	pkgrel = 1
+	url = https://github.com/justchokingaround/trackma-wrapper
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = coreutils
+	depends = mpv
+	depends = animdl
+	depends = trackma
+	depends = fzf
+	optdepends = vlc: Alternative video player
+	optdepends = ani-cli: Alternative link finder
+	provides = eztrackma
+	source = git+https://github.com/justchokingaround/trackma-wrapper.git
+	md5sums = SKIP
+
+pkgname = trackma-wrapper-git
