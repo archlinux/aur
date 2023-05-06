@@ -3,7 +3,7 @@
 _name=DearPyGui
 pkgname=python-dearpygui
 _commit=0e583d615966f80c4eef2e1e9d8d354b249ab25e
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc='A fast and powerful Graphical User Interface Toolkit for Python with minimal dependencies'
 arch=(x86_64)
