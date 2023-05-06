@@ -2,7 +2,7 @@
 # Contributor: Wyatt J. Brown <sushidudeteam at gmail dot com>
 # shellcheck disable=SC2034,SC2148,SC2154
 pkgname=all-repository-fonts
-pkgver=20220904
+pkgver=20230505
 pkgrel=1
 pkgdesc='Meta package for all fonts in the official repositories.'
 arch=('any')
@@ -24,7 +24,6 @@ depends=(
 	'adobe-source-serif-fonts'
 	'awesome-terminal-fonts'
 	'cantarell-fonts'
-	'dina-font'
 	'gentium-plus-font'
 	'gnu-free-fonts'
 	'gsfonts'
@@ -48,7 +47,6 @@ depends=(
 	'otf-latinmodern-math'
 	'otf-overpass'
 	'powerline-fonts'
-	'tamsyn-font'
 	'terminus-font'
 	'tex-gyre-fonts'
 	'ttc-iosevka'
@@ -107,7 +105,7 @@ depends=(
 	'ttf-lato'
 	'ttf-liberation'
 	'ttf-monofur'
-	'ttf-nerd-fonts-symbols-2048-em'
+	'ttf-nerd-fonts-symbols'
 	'ttf-opensans'
 	'ttf-proggy-clean'
 	'ttf-roboto'
