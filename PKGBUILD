@@ -3,7 +3,7 @@
 
 _base=textual
 pkgname=python-${_base}
-pkgver=0.22.3
+pkgver=0.23.0
 pkgrel=1
 pkgdesc="Modern Text User Interface framework"
 arch=(any)
@@ -17,7 +17,7 @@ optdepends=('python-aiohttp: for HTTP server'
   'python-click: for click event as mouse button'
   'python-msgpack: for MessagePack serializer')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('426c6e47a9a0013769f8177b36a74c7409e9bf665a37b35df46e5668b28998e80f8bc26988f5a4e2d0fca8b6391975279cfcf66c4c9661a603c2f0dca7820b9e')
+sha512sums=('c590501f2020c5c2c29558427c00ee94bb3d6097bb8ef6e745d392c48f3834c63852705c888f7aadfea76b5473dead87e9d3489f22efe14505f4900caa984079')
 
 build() {
   cd ${_base}-${pkgver}
