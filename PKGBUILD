@@ -2,7 +2,7 @@
 
 pkgname=localsend
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source cross-platform alternative to AirDrop.'
 url='https://github.com/localsend/localsend'
 arch=('x86_64')
@@ -58,9 +58,10 @@ package() {
 [Desktop Entry]
 Type=Application
 Icon=localsend
-Name=localsend
+Name=LocalSend
 Exec=/usr/bin/localsend
 Comment=An open source cross-platform alternative to AirDrop
+Categories=Utility;Network;
 EOF
 	) "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
