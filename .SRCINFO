@@ -1,7 +1,7 @@
 pkgbase = etebase-server
 	pkgdesc = A self-hostable Etebase (EteSync 2.0) server
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/etesync/server
 	arch = any
 	license = AGPL3

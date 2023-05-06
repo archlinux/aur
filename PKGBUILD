@@ -5,7 +5,7 @@
 _pkgname=server
 pkgname=etebase-server
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A self-hostable Etebase (EteSync 2.0) server"
 arch=(any)
 depends=(
