@@ -1,7 +1,7 @@
 # Maintainer: github.com/lmorg
 pkgname=murex
 replaces=('murex-git')
-pkgver=4.0.11200
+pkgver=4.1.1100
 pkgrel=1
 pkgdesc="A smarter shell designed for greater commandline productivity and safer shell scripts"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL2')
 makedepends=('go')
 optdepends=('aspell: inline spell checking')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('90789028f3b1a2368f066c735664f565ad6dc5ec6b14fd2dbf7cfda580db9fd0')
+sha256sums=('b0aea2519f88f247a042c825e4388271830d39ed8a9cc399dd82f28997f40de2')
 
 prepare(){
   cd "$pkgname-$pkgver"
@@ -29,7 +29,6 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
-  go test ./... || true
   build/murex -c 'g: behavioural/*.mx -> foreach: f { source $f }; try {test: run *}'
 }
 
