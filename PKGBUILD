@@ -6,7 +6,7 @@
 # Set these variables to ANYTHING that is not null to enable them
 
 # Tweak kernel options prior to a build via nconfig
-_makenconfig=y
+_makenconfig=
 
 # Optionally select a sub architecture by number if building in a clean chroot
 # Leaving this entry blank will require user interaction during the build
@@ -60,7 +60,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=6.3.arch1
+pkgver=6.3.1.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -111,7 +111,7 @@ validpgpkeys=(
 )
 b2sums=('SKIP'
         'SKIP'
-        '4e11a3acc8bf020fc0ded06a175471ccc35a592e79b7ec85eab5c248896b707e1669d7e81c77d3a725b8993d4d1537abc3d18a8a94cb5dc70ae0298103683a97')
+        '758a3c2350ed2d524e0c41eb81f4f9f7d4e94cc8a9e017a0966c7f14043fb256dbac935c7613353536d639b1e43062f7a7cb3601b786ba4f891aa9854e295a04')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
