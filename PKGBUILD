@@ -382,6 +382,61 @@ _make_ceph_packages() {
       $lib/libcephsqlite.so
 
     ###############################################
+    #         Ceph cluster components             #
+    ###############################################
+
+    _package ceph-base \
+      $bin/ceph \
+      $bin/ceph-crash \
+      $share/bash-completion/completions/ceph \
+      $systemd/ceph-crash.service \
+      $systemd/ceph.target \
+      $man/man8/ceph.8
+
+    _package ceph-mon \
+      $bin/ceph-mon \
+      $bin/ceph-monstore-tool \
+      $bin/monmaptool \
+      $bin/ceph-create-keys \
+      $lib/ceph/ceph-monstore-update-crush.sh \
+      $systemd/ceph-mon{.target,@.service} \
+      $man/man8/{ceph-mon,monmaptool}.8 \
+      $man/man8/ceph-create-keys.8
+
+    _package ceph-mgr \
+      $bin/ceph-mgr \
+      $bin/ceph-exporter \
+      $systemd/ceph-mgr{.target,@.service} \
+      $share/ceph/mgr/*
+
+    _package ceph-osd \
+      $bin/ceph-osd \
+      $bin/ceph-{osdomap,bluestore}-tool \
+      $bin/osdmaptool \
+      $bin/crushdiff \
+      $bin/ceph-objectstore-tool \
+      $lib/ceph/ceph-osd-prestart.sh \
+      $systemd/ceph-osd{.target,@.service} \
+      $systemd/ceph-volume@.service \
+      $man/man8/{ceph-{osd,bluestore-tool},osdmaptool,crushdiff}.8
+
+    _package ceph-mds \
+      $bin/ceph-mds \
+      $systemd/ceph-mds{.target,@.service} \
+      $man/man8/ceph-mds.8
+
+    _package ceph-rgw \
+      $bin/ceph_rgw_{jsonparser,multiparser} \
+      $bin/rgw-* \
+      $bin/radosgw* \
+      $bin/ceph-diff-sorted \
+      $systemd/ceph-radosgw{.target,@.service} \
+      $share/bash-completion/completions/radosgw-admin \
+      $man/man8/radosgw{,-admin}.8 \
+      $man/man8/rgw-orphan-list.8 \
+      $man/man8/ceph-diff-sorted.8
+
+    ###############################################
     #         Ceph clients / applications         #
     ###############################################
 
@@ -566,6 +621,156 @@ package_libcephsqlite() {
   provides=(
     'libcephsqlite.so'
   )
+
+  mv __pkg__/$pkgname/* "$pkgdir"
+  _print
+}
+
+###############################################
+#         Ceph cluster components             #
+###############################################
+
+package_ceph-base() {
+  pkgdesc='Ceph Storage cluster base utilities and configuration'
+  depends=(
+    "ceph-common=${__version}" "librados=${__version}" "python-ceph-common=${__version}" "python-rados=${__version}"
+
+    'python'
+  )
+  backup=(
+    'etc/logrotate.d/ceph'
+    'etc/sudoers.d/90-ceph'
+  )
+
+  mv __pkg__/$pkgname/* "$pkgdir"
+
+  # tmpfiles
+  install -Dm644 "${srcdir}/${pkgbase}-${pkgver}/systemd/ceph.tmpfiles.d" \
+    "${pkgdir}/usr/lib/tmpfiles.d/${pkgbase}.conf"
+  # logrotate
+  install -Dm644 "${srcdir}/${pkgbase}-${pkgver}/src/logrotate.conf" \
+    "${pkgdir}/etc/logrotate.d/ceph"
+  # sudoers (for disk monitoring)
+  install -Dm640 "${srcdir}/ceph.sudoers" \
+    "${pkgdir}/etc/sudoers.d/90-ceph"
+  chmod 750 "${pkgdir}/etc/sudoers.d"
+
+  # Prepare log, state dirs
+  install -D -d -m755 -o 340 -g 340 "${pkgdir}/var/log/ceph"
+  install -D -d -m755 -o 340 -g 340 "${pkgdir}/var/lib/ceph"
+
+  _print
+}
+
+package_ceph-mon() {
+  pkgdesc='Ceph Storage cluster monitor daemon, for distributed state storage via PAXOS'
+  depends=(
+    "ceph-base=${__version}"
+
+    'bash'   'boost-libs'   'fmt'   'gperftools'   'snappy'
+  )
+
+  mv __pkg__/$pkgname/* "$pkgdir"
+
+  # Prepare state dir
+  install -D -d -m755 -o 340 -g 340 "${pkgdir}/var/lib/ceph"
+  install -D -d -m750 -o 340 -g 340 "${pkgdir}/var/lib/ceph/mon"
+
+  _print
+}
+
+package_ceph-mgr() {
+  pkgdesc='Ceph Storage cluster manager daemon, the API gateway for cluster management'
+  depends=(
+    "ceph-base=${__version}"   "python-cephfs=${__version}"   "python-rbd=${__version}"   "libcephsqlite=${__version}"
+
+    'sqlite'   'python'   'boost-libs'   'fmt'   'gperftools'
+
+    'python-requests'    'python-typing_extensions'   'python-pyjwt'        'python-coverage'      'python-jinja'
+    'python-pyopenssl'   'python-cherrypy'            'python-werkzeug'     'python-prettytable'   'python-pecan'
+    'python-scipy'       'python-yaml'                'python-setuptools'   'python-bcrypt'        'python-dateutil'
+    'python-cheroot'     'python-urllib3'             'python-jsonpatch'    'python-cryptography'
+
+  )
+  optdepends=(
+    'cephadm: Required if cluster is managed via cephadm'
+    'python-kubernetes: For mgr/module:rook,k8sevents'
+    'python-numpy: For mgr/module:diskprediction_local'
+    'python-influxdb: For mgr/module:influx'
+  )
+
+  # Prepare state dir
+  install -D -d -m755 -o 340 -g 340 "${pkgdir}/var/lib/ceph"
+  install -D -d -m750 -o 340 -g 340 "${pkgdir}/var/lib/ceph/mgr"
+
+  mv __pkg__/$pkgname/* "$pkgdir"
+  _print
+}
+
+package_ceph-osd() {
+  pkgdesc='Ceph Storage cluster object storage daemon, for managing block devices'
+  depends=(
+    "ceph-base=${__version}"
+
+    'fuse3'    'bash'     'boost-libs'     'fmt'      'gperftools'
+    'libaio'   'snappy'   'systemd-libs'   'python'
+  )
+  optdepends=(
+    'ceph-volume: For preparing block devices for OSD daemons'
+    'smartmontools: disk monitoring via S.M.A.R.T'
+    'nvme-cli: disk monitoring for NVMe drives'
+  )
+  backup=(
+    'etc/sysctl.d/90-ceph-osd.conf'
+  )
+
+  mv __pkg__/$pkgname/* "$pkgdir"
+
+  # Prepare state dirs
+  install -D -d -m755 -o 340 -g 340 "${pkgdir}/var/lib/ceph"
+  install -D -d -m750 -o 340 -g 340 "${pkgdir}/var/lib/ceph/bootstrap-osd"
+  install -D -d -m750 -o 340 -g 340 "${pkgdir}/var/lib/ceph/osd"
+
+  # sysctls
+  sed -i -e '/kernel.pid_max/d' \
+    "${srcdir}/${pkgbase}-${pkgver}/etc/sysctl/90-ceph-osd.conf"
+  install -Dm644 "${srcdir}/${pkgbase}-${pkgver}/etc/sysctl/90-ceph-osd.conf" \
+    "${pkgdir}/etc/sysctl.d/90-ceph-osd.conf"
+
+  _print
+}
+
+package_ceph-mds() {
+  pkgdesc='Ceph Storage cluster metadata server, the API gateway for CephFS'
+  depends=(
+    "ceph-base=${__version}"
+
+    'lua'   'fmt'   'gperftools'
+  )
+
+  mv __pkg__/$pkgname/* "$pkgdir"
+
+  # Prepare state dirs
+  install -D -d -m755 -o 340 -g 340 "${pkgdir}/var/lib/ceph"
+  install -D -d -m750 -o 340 -g 340 "${pkgdir}/var/lib/ceph/bootstrap-mds"
+  install -D -d -m750 -o 340 -g 340 "${pkgdir}/var/lib/ceph/mds"
+
+  _print
+}
+
+package_ceph-rgw() {
+  pkgdesc='Ceph Storage cluster RADOS Object Gateway daemon, for serving RESTful traffic'
+  depends=(
+    "librgw=${__version}"
+
+    'gawk'            'oath-toolkit'   'boost-libs'   'expat'   'gperftools'
+    'librabbitmq-c'   'librdkafka'     'lua'
+  )
+
+  # Prepare state dirs
+  install -D -d -m755 -o 340 -g 340 "${pkgdir}/var/lib/ceph"
+  install -D -d -m750 -o 340 -g 340 "${pkgdir}/var/lib/ceph/bootstrap-rgw"
+  install -D -d -m750 -o 340 -g 340 "${pkgdir}/var/lib/ceph/rgw"
 
   mv __pkg__/$pkgname/* "$pkgdir"
   _print
