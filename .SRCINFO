@@ -1,12 +1,13 @@
 pkgbase = nanonng-git
 	pkgdesc = The NNG submodule of NanoMQ
-	pkgver = 0.17.8.r59.g300210d3
-	pkgrel = 3
+	pkgver = 0.17.8.r65.g2d4479ff
+	pkgrel = 1
 	url = https://github.com/nanomq/NanoNNG
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = cmake
+	makedepends = gcc
 	makedepends = ninja
 	depends = mbedtls
 	provides = nanonng
