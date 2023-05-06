@@ -3,13 +3,25 @@
 # Contributor: Sébastien "Seblu" Luttringer <seblu@archlinux.org>
 
 pkgbase='ceph'
-pkgname=('ceph') ; package_ceph() { : ; } ;
+pkgdesc='Distributed, fault-tolerant storage platform delivering object, block, and file system'
 pkgver=17.2.6
 pkgrel=4
-pkgdesc='Distributed, fault-tolerant storage platform delivering object, block, and file system'
-arch=('x86_64')
 url='https://ceph.com/'
+arch=('x86_64')
 license=('GPL')
+pkgname=(
+  ceph-{common,compressor,crypto,erasure,tools,test,volume,cephadm}
+  ceph-{rados,base,mon,mgr,osd,mds,rbd,cephfs,rgw}
+  lib{rados,cephfs,rbd,rgw,cephsqlite}
+  python-{ceph-common,rados,rbd,cephfs,rgw}
+  cephfs-{top,shell}
+  java-cephfs
+
+  ceph
+  ceph-libs
+  ceph-cluster
+  ceph-cli
+)
 makedepends=(
   'bash'            'boost'            'boost-libs'      'cmake'           'coreutils'
   'cryptsetup'      'curl'             'cython'          'expat'           'fmt'
