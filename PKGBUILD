@@ -1,11 +1,10 @@
 # Maintainer: yupoi <me at eWJscG9pQG91dGxvb2suY3BtCg== >
 pkgname=clash-for-windows-chinese-git
-pkgver=0.20.21
+pkgver=0.20.22
 pkgrel=1
 pkgdesc="A Windows/macOS/Linux GUI based on Clash and Electron（Chinese version.）."
 arch=("x86_64")
 url="https://github.com/Fndroid/clash_for_windows_pkg"
-_logo_url="https://raw.githubusercontent.com/Dreamacro/clash/master/docs/logo.png"
 _parch=$(echo ${arch} | sed "s/x86_64/x64/")
 install=clash-for-windows.install
 license=('custom')
@@ -29,8 +28,8 @@ source=(
     "clash-for-windows-chinese.desktop"
     "cfw"
 )
-sha256sums=('d5a85185f3bd04ed07d5ecffe495eab295b8758cf07b96aec1972c3e45009521'
-            '067eca01a87a709a766b2352b92af4648a065bee12317658db8ddf2c1362a732'
+sha256sums=('f47b8ce0835c0c10fcb14ec9ae36db11d60e573f594166654f82f0c3f2d743c4'
+            'e3ce33bc645ce816151a682f28ab24789e8d192243c58d407d14ba1a83c164a6'
             '0d48a2ea1ee05ad4579b6e6996889548fa8a61a5ff6c85a32f7622cddfcb5782'
             '66e0d326e375ad0fbf88325c34e0dd82e676b9214f4838979dab3d9d11c4fecb'
             '2451fc0eff3f48c48e4eb818d1e1ce62182737db19b95541cb13ec81183550c7')
