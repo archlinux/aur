@@ -1,14 +1,13 @@
 # Maintainer: mosquito <mosquito@email.cn>
 pkgname=bobibo
-pkgver=1.1.0
-pkgrel=3
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="A cli-app, convert pictures to ascii arts."
 arch=("x86_64")
 url="https://github.com/orzation/bobibo"
 license=('GPL3')
-makedepends=('go>=1.17' 'upx')
+makedepends=('go>=1.17')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/orzation/bobibo/archive/v${pkgver}.tar.gz")
-sha256sums=('8aba2b783c8d6812ba893d8ac9fb867b74796d9df9f2a22cfd3aadface4f0eb8')
 
 build() {
   export GOPATH="$srcdir"/gopath
@@ -27,3 +26,5 @@ package() {
   cd "$srcdir/$pkgname-$pkgver/cli"
   make DESTDIR="$pkgdir" install
 }
+
+sha256sums=('ce72366c176646c312abe288130566695fd87d6ecf1b838abf85a9f150586ced')
