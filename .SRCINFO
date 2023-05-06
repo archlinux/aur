@@ -1,13 +1,13 @@
 pkgbase = cavif-bin
 	pkgdesc = AVIF image creator in pure Rust
-	pkgver = 1.4.1
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://lib.rs/crates/cavif
 	arch = x86_64
 	license = BSD
-	provides = cavif=1.4.1
+	provides = cavif=1.5.0
 	conflicts = cavif
-	source_x86_64 = https://github.com/kornelski/cavif-rs/releases/download/v1.4.1/cavif-1.4.1.zip
-	sha256sums_x86_64 = 7f7abc8c7bd09749b6991e626c9f64b85d79f631e8b582575270aa3756d13f5e
+	source_x86_64 = https://github.com/kornelski/cavif-rs/releases/download/v1.5.0/cavif-1.5.0.zip
+	sha256sums_x86_64 = 3aba428206157cf22f25a69a12c0dcdafbd3c910771c0ea6c9ee8603ff2d2008
 
 pkgname = cavif-bin
