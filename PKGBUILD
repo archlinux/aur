@@ -14,8 +14,8 @@
 # Marco Trevisan: <https://salsa.debian.org/gnome-team/mutter/-/blob/ubuntu/master/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch>
 
 pkgname=mutter-x11-scaling
-pkgver=43.5
-pkgrel=1
+pkgver=44.1
+pkgrel=2
 pkgdesc="Window manager and compositor for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -23,7 +23,7 @@ license=(GPL)
 depends=(
   colord
   dconf
-  gnome-desktop
+  gnome-desktop-4
   gnome-settings-daemon
   graphene
   gsettings-desktop-schemas
@@ -55,17 +55,15 @@ checkdepends=(
   xorg-server-xvfb
   zenity
 )
-provides=(mutter libmutter-11.so)
+provides=(mutter libmutter-12.so)
 conflicts=(mutter)
-_commit=eedb556bb42a3de1423ec77ca11b7f014462c9e7  # tags/43.5^0
+_commit=28a6447ff060ae1fbac8f20a13908d6e230eddc2  # tags/44.1^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-  "https://salsa.debian.org/gnome-team/mutter/-/raw/fef244c14c8ef6c98a5355d901b34f9e2ea2fd4e/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch"
-  "https://salsa.debian.org/gnome-team/mutter/-/raw/c38a1a0ed613d69805f9ee45fae4050bb1897c3e/debian/patches/debian/Support-Dynamic-triple-double-buffering.patch"
+  "https://salsa.debian.org/gnome-team/mutter/-/raw/82e4a2c864e5e238bd03b1f4ef05f737915dac8c/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch"
 )
 b2sums=('SKIP'
-        'fb1ab227fe232c348f644d9483f837205cb028c953aff175b20b312b666c61b86b5049ed793ea052d9990916657d3b20d547900d25b0b8d9229c7ef7a6834333'
-        '83532f92da62a7b50b2435497a4d07c685e21814e134abbfd2c658e7534e3c40ff6dc5209c28441408bfa5eee161694c252b4f6488bd8fb97aac9cbf79daf7da')
+        '84e297cbb96c2d58dc14bd5abfab8889e172e7466767afb83b4ce6071dd4d745656aeb955ccb933f0cf78bf46d92d6cbd2d79e41e6ae5b6a654832606c9e0e5f')
 
 pkgver() {
   cd mutter
@@ -75,18 +73,12 @@ pkgver() {
 prepare() {
   cd mutter
 
-  # Fix crash on resume from suspend
-  # https://gitlab.gnome.org/GNOME/mutter/-/issues/2570
-  git cherry-pick -n c1ab3f39d73a041b488acf7296456840fa83c0da
-
   # Add scaling support using randr under x11 and dynamic triple buffering support
   patch -p1 -i "${srcdir}/x11-Add-support-for-fractional-scaling-using-Randr.patch"
-  patch -p1 -i "${srcdir}/Support-Dynamic-triple-double-buffering.patch"
 }
 
 build() {
   local meson_options=(
-    -D docs=false
     -D egl_device=true
     -D installed_tests=false
     -D wayland_eglstream=true
