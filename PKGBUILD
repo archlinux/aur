@@ -242,4 +242,22 @@ check() {
   done
 }
 
+_package() {
+  local p="$1" f d; shift
+  for f in "$@"; do
+    d="$srcdir/__pkg__/$p/${f#${_staging}/}"
+    mkdir -p "$(dirname "$d")"
+    mv -v "$f" "$d"
+    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
+  done
+}
+
+_print() {
+  (
+    cd "$pkgdir" && \
+    find . -type f,l -print0 \
+      | xargs --null -I@ echo '    > @'
+  )
+}
+
 # vim:set ts=2 sw=2 et:
