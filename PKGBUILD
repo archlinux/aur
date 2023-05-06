@@ -13,7 +13,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel
 optdepends=('python-rmrl: producing PDF versions of any type of document with your annotations included')
 source=("https://files.pythonhosted.org/packages/source/r/rmcl/rmcl-$pkgver.tar.gz"
         "xdg.py::https://raw.githubusercontent.com/srstevenson/xdg/5.0.1/src/xdg/__init__.py")
-sha256sums=('df5c38176309cb119c29bf9bca9d8f2f6427280241a882106b939db17ef48f3d'
+sha256sums=('58de4758e7e3cb7acbf28fcfa80f4155252afdfb191beb4ba4aa36961f66cc67'
             '93a5ba17785c5e00d24ebd0e148d36470076c03fa16cf7e9a113a7d8fb1bceba')
 
 build() {
