@@ -3,15 +3,17 @@
 _pkgname=edge-tts
 pkgname=python-${_pkgname}
 pkgver=6.1.5
-pkgrel=5
+pkgrel=6
 pkgdesc="Use Microsoft Edge's online text-to-speech service from within your Python code or using the provided edge-tts or edge-playback command"
 arch=(any)
 url=https://github.com/rany2/edge-tts
 license=(GPL3)
-depends=(python python-aiohttp python-yarl python-frozenlist python-async-timeout python-multidict python-charset-normalizer python-aiosignal python-attrs python-idna python-build python-installer python-wheel)
+depends=(python python-aiohttp python-yarl python-frozenlist python-async-timeout python-multidict python-charset-normalizer python-aiosignal python-attrs python-idna)
 makedepends=(
-  git
   python-setuptools
+  python-build
+  python-installer
+  python-wheel
 )
 optdepends=(
 	'mpv: immediate tts playback with the provided edge-playback command'
