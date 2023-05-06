@@ -12,7 +12,15 @@ url="https://github.com/iDvel/rime-ice"
 license=("GPL3")
 makedepends=("librime" "rime-prelude" "coreutils" "grep" "sed")
 provides=("${_pkgname}")
-conflicts=("rime-emoji" "${_pkgname}" "${_pkgbase}" "${_pkgbase}-double-pinyin" "${_pkgbase}-double-pinyin-flypy" "${_pkgbase}-double-pinyin-mspy")
+conflicts=(
+  "rime-emoji"
+  "${_pkgname}"
+  "${_pkgbase}"
+  "${_pkgbase}-double-pinyin"
+  "${_pkgbase}-double-pinyin-flypy"
+  "${_pkgbase}-double-pinyin-mspy"
+  "${_pkgbase}-double-pinyin-ziguang"
+)
 source=("${_pkgname}::git+${url}.git")
 sha512sums=("SKIP")
 
@@ -36,7 +44,7 @@ build() {
   _schemas_deps=()
   for _s in "${_schemas[@]}"; do
     _deps=()
-    mapfile -t _deps <<< "$(grep -A3 'dependencies:' "$_s.schema.yaml" | tail -n3 | sed 's/#.*//g;s/.*- //g;s/ //g')"
+    mapfile -t _deps <<< "$(sed -n '/dependencies:/,/^$/ {/dependencies:/d; /^$/d; s/.*- *//g; s/ *#.*//g; p }' "$_s.schema.yaml")"
     _schemas_deps=("${_schemas_deps[@]}" "${_deps[@]}")
   done
 
@@ -47,7 +55,7 @@ build() {
   for _s in "${_compile_schemas[@]}"; do rime_deployer --compile "$_s.schema.yaml"; done
 
   # comment ignore schemas
-  _suggestion_schemas=$(grep -A4 'schema_list:' "$_suggestion" | tail -n4 | sed 's/.*schema: //g')
+  _suggestion_schemas=$(sed -n '/^schema_list:/,/^$/ {/^schema_list:/d; /^$/d; s/.*schema: *//g; p }' "$_suggestion")
 
   for _s in $_suggestion_schemas; do
     [[ ! ${_schemas[*]} =~ (^|[[:space:]])"$_s"($|[[:space:]]) ]] && sed -i "s/^\s*- schema: $_s *$/#&/" "$_suggestion";
