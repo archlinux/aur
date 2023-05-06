@@ -1,0 +1,18 @@
+pkgbase = franz-appimage
+	pkgdesc = Free messaging app for services like WhatsApp, Slack, Messenger and many more.
+	pkgver = 5.9.2
+	pkgrel = 1
+	url = http://meetfranz.com/
+	arch = any
+	license = Apache
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = glibc
+	conflicts = franz
+	conflicts = franz4
+	conflicts = franz-bin
+	options = !strip
+	source = franz-5.9.2.AppImage::https://github.com/meetfranz/franz/releases/download/v5.9.2/Franz-5.9.2.AppImage
+	sha256sums = 7ea75ebacbd215b3520503b5b80d03eda120a2c811e49feef010fed25278b83a
+
+pkgname = franz-appimage
