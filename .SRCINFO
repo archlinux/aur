@@ -7,6 +7,6 @@ pkgbase = rgx-git
 	license = MIT
 	makedepends = dotnet-sdk-6.0
 	depends = dotnet-runtime-6.0
-	source = rgx-git-0.1.tar.gz::https://github.com/comroid-git/rgx/archive/v0.1.tar.gz
+	source = rgx-git-0.1.tar.gz::https://github.com/comroid-git/rgx/tarball/master
 
 pkgname = rgx-git
