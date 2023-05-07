@@ -1,11 +1,13 @@
 pkgbase = python-unicrypto
 	pkgdesc = Unified interface for cryptographic libraries.
 	pkgver = 0.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/skelsec/unicrypto
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = python-pycryptodomex
 	source = https://files.pythonhosted.org/packages/source/u/unicrypto/unicrypto-0.0.8.tar.gz
