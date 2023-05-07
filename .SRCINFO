@@ -1,6 +1,6 @@
 pkgbase = godot-export-templates-git
 	pkgdesc = Godot export templates
-	pkgver = 4.0.dev
+	pkgver = 4.1.r53814.43bf0b5e04
 	pkgrel = 1
 	url = https://godotengine.org/
 	arch = i686
@@ -11,9 +11,10 @@ pkgbase = godot-export-templates-git
 	makedepends = pulseaudio
 	makedepends = clang
 	makedepends = pkgconf
+	makedepends = xorg-xrandr
+	makedepends = yasm
 	optdepends = godot: use the templates
-	source = git://github.com/godotengine/godot.git#branch=master
+	source = godot::git+https://github.com/godotengine/godot.git
 	sha256sums = SKIP
 
 pkgname = godot-export-templates-git
-
