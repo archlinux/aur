@@ -1,6 +1,6 @@
 pkgbase = servo-latest
 	pkgdesc = A modern, high-performance browser engine being developed for application and embedded use
-	pkgver = r20221218
+	pkgver = r20230507
 	pkgrel = 1
 	url = https://download.servo.org/
 	arch = x86_64

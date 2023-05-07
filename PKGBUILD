@@ -2,7 +2,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=servo-latest
 _pkgname=servo
-pkgver=r20221218
+pkgver=r20230507
 pkgrel=1
 pkgdesc="A modern, high-performance browser engine being developed for application and embedded use"
 arch=('x86_64')
