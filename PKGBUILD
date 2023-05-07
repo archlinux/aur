@@ -1,7 +1,7 @@
 # Maintainer: Doclic <doclic@tutanota.com>
 
 pkgname=vtex2-git
-pkgver=0.1.r86.825dc77
+pkgver=0.1.r90.09d03a0
 pkgrel=1
 epoch=
 pkgdesc="A VTF conversion and creation tool"
@@ -20,9 +20,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+https://github.com/StrataSource/vtex2.git" "Include-cstdint.patch")
+source=("git+https://github.com/StrataSource/vtex2.git")
 noextract=()
-md5sums=('SKIP' 'SKIP')
+md5sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
@@ -33,7 +33,6 @@ pkgver() {
 prepare() {
 	cd vtex2
 	git submodule update --init --recursive
-    patch --strip=1 --input="${srcdir}/Include-cstdint.patch"
 }
 
 build() {
