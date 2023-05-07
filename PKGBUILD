@@ -18,6 +18,8 @@ depends=(
 makedepends=(
   'lib32-libjpeg'
   'lib32-libpng'
+  'lib32-svt-av1'
+  'lib32-rav1e'
 )
 optdepends=(
   'lib32-libjpeg: for heif-convert and heif-enc'
