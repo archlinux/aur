@@ -10,7 +10,7 @@ arch=('any')
 url="https://github.com/linuxmint/hypnotix"
 license=('GPL3')
 depends=('dconf' 'hicolor-icon-theme' 'mpv' 'python-cairo' 'python-gobject'
-         'python-imdbpy' 'python-requests' 'python-setproctitle' 'python-unidecode'
+         'python-cinemagoer' 'python-requests' 'python-setproctitle' 'python-unidecode'
          'xapp')
 optdepends=('yt-dlp: YouTube channel support')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
