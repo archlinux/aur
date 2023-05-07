@@ -1,14 +1,15 @@
-# Maintainer: Luke Huckman (Darkpelz) <lukeh@outlook.my>
-# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
-# Maintainer: fossdd <fossdd@tutanota.com>
+# Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
+# Contributor: Luke Huckman (Darkpelz) <lukeh@outlook.my>
+# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: fossdd <fossdd@tutanota.com>
 # Contributor: Ong Yong Xin <ongyongxin2020+github AT gmail DOT com>
 # Contributor: Bernhard Landauer <oberon@manjaro.org>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
-pkgname=tenacity-git
-pkgver=r14302.gbe828e6cf
+pkgname=tenacity
+_vertag=1.3-beta3-1
+pkgver=1.3b3
 pkgrel=1
-epoch=1
 pkgdesc="An easy-to-use multi-track audio editor and recorder, forked from Audacity"
 arch=(i686 x86_64)
 url="https://tenacityaudio.org"
@@ -19,15 +20,8 @@ depends=(gtk3 wxwidgets-gtk3 libid3tag lilv lv2 portsmf suil libmad twolame vamp
 makedepends=(git cmake clang sdl2 libsoup libnotify gstreamer gst-plugins-bad-libs
              ffmpeg nasm chrpath python portmidi)
 optdepends=('ffmpeg: additional import/export capabilities')
-provides=(tenacity)
-conflicts=(tenacity)
-source=("git+https://codeberg.org/tenacityteam/tenacity.git")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd tenacity
-  printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+source=("$pkgname-$_vertag.tar.gz::https://codeberg.org/tenacityteam/$pkgname/archive/v$_vertag.tar.gz")
+b2sums=('bf8cca8ccb3a056872133ae27b9208b093858ba67a1605dd1994026da675bf7cdac1403b46a66717cdc890f97a2caea01bd836582224d3054a7f94bc64ef6cc0')
 
 prepare() {
   cd tenacity/images/icons
