@@ -1,0 +1,24 @@
+pkgbase = python-asyauth-git
+	pkgdesc = Unified authentication library for Python.
+	pkgver = 0.0.13+4.r21.20230222.7d35020
+	pkgrel = 1
+	url = https://pypi.org/project/asyauth/
+	arch = any
+	license = custom: MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools>=61.0.0
+	depends = python>=3.7
+	depends = python-unicrypto>=0.0.10
+	depends = python-asn1crypto>=1.3.0
+	depends = python-asysocks
+	depends = python-minikerberos
+	depends = python-winacl
+	provides = python-asyauth=0.0.13+4.r21.20230222.7d35020
+	conflicts = python-asyauth
+	source = python-asyauth::git+https://github.com/skelsec/asyauth.git
+	sha256sums = SKIP
+
+pkgname = python-asyauth-git
