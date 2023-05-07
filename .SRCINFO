@@ -9,6 +9,7 @@ pkgbase = mov-cli-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-poetry
+	makedepends = python-wheel
 	depends = ffmpeg
 	depends = mpv
 	depends = fzf
