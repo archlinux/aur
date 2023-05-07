@@ -4,7 +4,7 @@
 _pkgname='bat'
 pkgname="bat-cat-git"
 pkgver=r2621.e828d784
-pkgrel=1
+pkgrel=2
 pkgdesc="A cat(1) clone with wings."
 arch=('x86_64')
 url='https://github.com/sharkdp/bat'
@@ -30,7 +30,6 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  cargo build --release
   install -D ./target/release/${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
 }
 

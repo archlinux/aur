@@ -1,7 +1,7 @@
 pkgbase = bat-cat-git
 	pkgdesc = A cat(1) clone with wings.
 	pkgver = r2621.e828d784
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sharkdp/bat
 	arch = x86_64
 	license = Apache-2.0
