@@ -2,7 +2,7 @@
 
 pkgname="groupman-git"
 _pkgname="groupman"
-pkgver=r61.ea0acea
+pkgver=r61.59e8ab1
 pkgrel=1
 pkgdesc="Gather your Arch Linux packages in groups to simplify their management."
 url="https://github.com/StreakyCobra/groupman"
@@ -12,7 +12,7 @@ depends=('git' 'python>=3.4' 'python-termcolor')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 changelog="ChangeLog"
-source=("${_pkgname}::git+https://github.com/StreakyCobra/${_pkgname}.git#branch=develop")
+source=("${_pkgname}::git+https://github.com/StreakyCobra/${_pkgname}.git#branch=master")
 md5sums=('SKIP')
 
 pkgver() {
