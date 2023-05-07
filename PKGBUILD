@@ -3,7 +3,7 @@
 # Contributor: DaZ <daz.root+arch@gmail.com>
 
 pkgname=gnvim
-pkgver=0.2.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="GUI for neovim, without any web bloat"
 url="https://github.com/vhakulinen/$pkgname"
@@ -15,7 +15,7 @@ makedepends=(cargo)
 checkdepends=(xorg-server-xvfb)
 _archive=("$pkgname-$pkgver")
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('abacc674ed142b2c807d21b00a2324b32d9babcec1f25a95446d01e3eb0fa386')
+sha256sums=('51f1345cd7d1cff4283cd8e92360f81a55951b64ce7721045d087adb3000a8ea')
 
 prepare() {
 	cd "$_archive"
