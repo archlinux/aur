@@ -7,7 +7,7 @@
 pkgname=zfs-utils-raidz-expansion-git
 _pkgbase=zfs-utils-git
 pkgver=2.1.99
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Userspace utilities for the Zettabyte File System."
 arch=('x86_64')
@@ -21,20 +21,12 @@ conflicts=("${pkgname%-git}" "${_pkgbase%-git}" "${_pkgbase}")
 source=('git+https://github.com/nicman23/zfs.git#branch=ahrens-raidz-expand'
         'zfs.initcpio.install'
         'zfs.initcpio.hook'
-        'zfs.initcpio.zfsencryptssh.install')
-sha256sums=('SKIP'
-            '600f49d610906476f492d53ee1830154e4ebedf999284485e07d9cb2b3084766'
-            '8b8c9b6ebfddfb51f2ab70fb943f53f08f6140140561efcb106120941edbc36e'
-            '93e6ac4e16f6b38b2fa397a63327bcf7001111e3a58eb5fb97c888098c932a51')
-b2sums=('SKIP'
-        '5147f165bc53cb792aaf11724cef253601fe853cd7bc43aeff0ef5cd3a23dbde57e38710c941803d6b5f5838bde99271804608221f1c6b33f30b734edbd85913'
-        '32352e2e188073da4f61278899b6d343313ee3494d69dd10a38ab87bce2f2003767f0f49bc1c3c4d785dd1fc67eab4a27a6fdd5ffc5e63cf94d25f3dbffae4c1'
-        '04e2af875e194df393d6cff983efc3fdf02a03a745d1b0b1e4a745f873d910b4dd0a45db956c1b5b2d97e9d5bf724ef12e23f7a2be3d5c12be027eaccf42349a')
-
+        'zfs.initcpio.zfsencryptssh.install'
+        2a7dcc5eb1357962dce1836c98f3824a297fd921.diff)
 
 prepare() {
     cd zfs
-
+    patch -p1 -i ../2a7dcc5eb1357962dce1836c98f3824a297fd921.diff
     autoreconf -fi
 }
 
@@ -73,3 +65,8 @@ package() {
     install -D -m644 "${srcdir}"/zfs.initcpio.zfsencryptssh.install "${pkgdir}"/usr/lib/initcpio/install/zfsencryptssh
     install -D -m644 contrib/bash_completion.d/zfs "${pkgdir}"/usr/share/bash-completion/completions/zfs
 }
+md5sums=('SKIP'
+         '5b4f7c4a828b9771c67acdb06df3ddbf'
+         '4caf48dc87f42640ecfce4830599ea29'
+         '13a7889e01be24d9e89dd86113bf5bcf'
+         '0161955a0b61552485306a4288c44337')
