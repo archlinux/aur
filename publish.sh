@@ -3,7 +3,6 @@
 set -e # exit on error
 tar="rgx.tar.gz"
 
-git pull
 dotnet clean
 dotnet build -c Release
 
