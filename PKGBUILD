@@ -9,7 +9,7 @@ url="https://github.com/comroid-git/rgx"
 license=('MIT')
 depends=('dotnet-runtime-6.0')
 makedepends=('dotnet-sdk-6.0')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/comroid-git/rgx/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/comroid-git/rgx/tarball/master")
 
 build() {
     cd "$srcdir"
