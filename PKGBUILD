@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('libadwaita' 'libsoup3' 'python-gobject' 'libportal-gtk4' 'python-lxml' 'python-openai' 'python-requests' 'python-pillow')
 makedepends=('meson' 'blueprint-compiler' 'gobject-introspection' )
 checkdepends=('appstream-glib')
-source=($url/archive/${pkgver//_/-}.tar.gz)
+source=($url/archive/v${pkgver//_/-}.tar.gz)
 b2sums=('cbfe19289495d0a01684aac068622c1be290339a5e107f207aac874acbc750ff4e75a53f6894e94e1507a9cd975b18d1f38e203c462d70516bf105951b857c2b')
 
 build() {
