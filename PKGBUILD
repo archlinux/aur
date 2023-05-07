@@ -4,7 +4,7 @@
 
 pkgname=lsyncd
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Live Syncing (Mirror) Daemon"
 arch=(x86_64)
 url="https://github.com/axkibe/lsyncd"
@@ -55,6 +55,8 @@ package() {
 
   install -Dm664 "${pkgdir}/man1/lsyncd.1" "${pkgdir}/usr/share/man/man1/lsyncd.1"
   rm -rf "${pkgdir}/man1"
+
+  install -m 644 -D "${srcdir}/lsyncd.service" "${pkgdir}/usr/lib/systemd/system/lsyncd.service"
 
   mkdir -p "${pkgdir}/usr/share/doc/$pkgname"
   cp -r "${pkgdir}/usr/doc/examples" "${pkgdir}/usr/share/doc/$pkgname/examples"
