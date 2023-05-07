@@ -13,7 +13,7 @@
 # You can pass parameters to `ninja` via MAKEFLAGS
 
 pkgname=telegram-desktop-dev
-pkgver=4.7.1
+pkgver=4.8.1
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -24,7 +24,7 @@ license=('GPL3')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
          'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'qt6-5compat' 'xxhash' 'glibmm-2.68'
          'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp' 'libdispatch'
-         'openssl-1.1' 'protobuf')
+         'openssl' 'protobuf')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
              'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt')
 optdepends=('webkit2gtk: embedded browser features'
@@ -37,7 +37,7 @@ _commit="tag=v$pkgver"
 # These files might require modifications to be up-to-date.
 # In such situation, extra patches will be added.
 # An easy way to clone the repo since the last update is:
-# git clone --recurse-submodules --shallow-submodules --shallow-since vOLDVER --branch=vNEWVER https://github.com/telegramdesktop/tdesktop WORKDIR
+# git clone --recurse-submodules --shallow-submodules --shallow-since=vOLDVER --branch=vNEWVER https://github.com/telegramdesktop/tdesktop WORKDIR
 source=(
     "tdesktop::git+https://github.com/telegramdesktop/tdesktop#$_commit"
     "ensure_qt6_build.patch"
@@ -184,6 +184,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DTDESKTOP_API_ID=611335 \
         -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
+        # Removed flag as useless:
         # -DCMAKE_VERBOSE_MAKEFILE=ON \
     cmake --build build -- $MAKEFLAGS
 }
