@@ -1,13 +1,14 @@
-# Maintainer: kiasoc5 <kiasoc5 at tutanota dot com>
+# Maintainer: yustin <#archlinux-proaudio@libera.chat>
+# Contributor: kiasoc5 <kiasoc5 at tutanota dot com>
 # Contributor: xantares
 
 pkgname=stargate
-pkgver=22.03.1
+pkgver=23.05.1
 pkgrel=1
 pkgdesc="A digital audio workstation (DAW) with a powerful pattern-based workflow"
 license=('GPL')
 arch=('x86_64' 'aarch64')
-url="https://stargateaudio.github.io/"
+url="https://github.com/stargatedaw/stargate"
 depends=(
     'alsa-lib'
     'fftw'
@@ -38,15 +39,28 @@ optdepends=(
     'python-pyqt5: qt5 backend'
 )
 source=("https://github.com/stargateaudio/stargate/archive/refs/tags/release-${pkgver}.tar.gz")
-sha256sums=('7aadee110cf82d56b6c2e638486e53ee6c6f0340017e18f2f225e2e15642fb16')
+sha256sums=('d91de735ffa62b60aa261d33f3b187dbf1dbd0dbb5b623bb73145f5dcce9eb72')
+
+prepare(){
+  cd stargate-release-${pkgver}
+	rm -rf src/vendor/soundtouch/
+	rm -rf src/vendor/portaudio-binaries/
+	git submodule init
+	git submodule update
+	cd src
+	sed "/\binstall_symlinks:/s/:.*/:/" -i Makefile 
+}
 
 build() {
   cd stargate-release-${pkgver}/src
   # for non-x86 architectures
-  PLAT_FLAGS="${CFLAGS}" make distro
+  PLAT_FLAGS="${CFLAGS}" make all
 }
 
 package() {
   cd stargate-release-${pkgver}/src
-  PREFIX=${pkgdir}/usr make install_distro
+	mkdir -p ${pkgdir}/usr/bin
+	mkdir -p ${pkgdir}/usr/share/{doc,applications,pixmaps}
+	mkdir -p ${pkgdir}/usr/share/mime/packages
+  DESTDIR=${pkgdir} make install
 }
