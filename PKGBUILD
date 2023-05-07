@@ -1,7 +1,7 @@
 # Maintainer: Ulrich Schreiner <ulrich.schreiner@gmail.com>
 
 pkgname=go-crane-bin
-pkgver=0.13.0
+pkgver=0.15.1
 pkgrel=1
 pkgdesc='crane is a tool for interacting with remote images and registries.'
 url='https://github.com/google/go-containerregistry'
@@ -9,7 +9,7 @@ license=('Apache')
 arch=('x86_64')
 provides=('crane')
 source=("crane-$pkgver-$pkgrel.tar.gz::https://github.com/google/go-containerregistry/releases/download/v$pkgver/go-containerregistry_Linux_$arch.tar.gz")
-sha256sums=('b06641f6cd08c509d5f1b234076269bfbb512f91e7ba4f796adb8c4b1626c9b7')
+sha256sums=('d4710014a3bd135eb1d4a9142f509cfd61d2be242e5f5785788e404448a4f3f2')
 
 package() {
     tar xzf $srcdir/crane-$pkgver-$pkgrel.tar.gz
