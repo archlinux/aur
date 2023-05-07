@@ -2,7 +2,7 @@
 
 pkgname=mopidy-internetarchive
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Mopidy extension for playing audio from the Internet Archive"
 
 arch=('any')
