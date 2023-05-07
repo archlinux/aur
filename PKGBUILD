@@ -1,7 +1,7 @@
 # Maintainer: Fabio Manganiello <fabio@manganiello.tech>
 
 pkgname=platypush-git
-pkgver=0.24.5.r0.d1f0e197
+pkgver=0.24.5.r0.d1f0e198
 pkgrel=1
 pkgdesc="Universal multi-platform command executor and automation manager"
 arch=('any')
@@ -14,8 +14,10 @@ depends=(
     'python-bcrypt'
     'python-croniter'
     'python-dateutil'
+    'python-eventlet'
     'python-flask'
     'python-frozendict'
+    'python-gunicorn'
     'python-magic'
     'python-marshmallow'
     'python-marshmallow-dataclass'
@@ -24,11 +26,11 @@ depends=(
     'python-redis'
     'python-requests'
     'python-rsa'
+    'python-simple-websocket'
     'python-sqlalchemy'
-    'python-waitress'
     'python-websocket-client'
-    'python-websockets'
     'python-wheel'
+    'python-wsproto'
     'python-yaml'
     'python-zeroconf'
     'redis'
