@@ -1,7 +1,7 @@
 pkgbase = lcarsde-status-bar
 	pkgdesc = Menu for lcarsde to display and run installed software
-	pkgver = 22.2
-	pkgrel = 3
+	pkgver = 23.1
+	pkgrel = 1
 	url = https://lcarsde.github.io
 	arch = any
 	groups = lcarsde
@@ -18,7 +18,7 @@ pkgbase = lcarsde-status-bar
 	optdepends = ttf-ubuntu-font-family
 	optdepends = alsa-utils
 	optdepends = pulseaudio
-	source = lcarsde-status-bar-22.2.tar.gz::https://github.com/lcarsde/status-bar/archive/22.2.tar.gz
-	md5sums = 3be8f78b9cdac7e8280f137618313e7b
+	source = lcarsde-status-bar-23.1.tar.gz::https://github.com/lcarsde/status-bar/archive/23.1.tar.gz
+	md5sums = b068c9e42eb53bc1c4ef85e4f2abba3c
 
 pkgname = lcarsde-status-bar
