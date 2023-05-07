@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=ipfs-desktop-electron-bin
-pkgver=0.27.0
+pkgver=0.27.2
 pkgrel=1
 epoch=
 pkgdesc="An unobtrusive and user-friendly desktop application for IPFS on Windows, Mac and Linux."
@@ -36,15 +36,8 @@ validpgpkeys=()
 
 package() {
 	tar -xvpf data.tar.* -C "$pkgdir"
-	for f in "$pkgdir/opt/IPFS Desktop"/*;
-	do	
-		local name
-		name=$(basename "$f")
-		if [ "$name" != "resources" ];
-		then
-			rm -rf "$f"
-		fi
-	done
-	install -Dm755 ipfs-desktop.sh "${pkgdir}/opt/IPFS Desktop/ipfs-desktop"
-	install -Dm644 LICENSE -t $pkgdir/usr/share/licenses/$pkgname/
+	pushd $pkgdir/opt/"IPFS Desktop/"
+	ls | grep -v "resources" | xargs rm -vrf
+	install -Dm755 $srcdir/ipfs-desktop.sh "${pkgdir}/opt/IPFS Desktop/ipfs-desktop"
+	install -Dm644 $srcdir/LICENSE -t $pkgdir/usr/share/licenses/$pkgname/
 }

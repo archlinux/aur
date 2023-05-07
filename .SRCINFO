@@ -1,6 +1,6 @@
 pkgbase = ipfs-desktop-electron-bin
 	pkgdesc = An unobtrusive and user-friendly desktop application for IPFS on Windows, Mac and Linux.
-	pkgver = 0.27.0
+	pkgver = 0.27.2
 	pkgrel = 1
 	url = https://ipfs.tech/
 	arch = x86_64
