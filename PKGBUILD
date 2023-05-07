@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=tcalc
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Simple calculator written in core Tcl/Tk"
 url="https://github.com/thanoulis/$pkgname"
@@ -9,7 +9,7 @@ arch=('any')
 license=('custom')
 depends=('tcl' 'tk')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('bba48c03c0369dfe4593aea79920cece4b4565625f5da194b05cff3b516532c5')
+sha256sums=('5e4a48c9b66ac06ec638a459e6227596252677b3e98166435d382cf84329e365')
 
 package() {
   cd $pkgname-$pkgver
