@@ -1,20 +1,13 @@
 pkgbase = python-pockets
 	pkgdesc = A collection of helpful Python tools!
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pockets.readthedocs.org
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
+	depends = python
 	source = https://files.pythonhosted.org/packages/source/p/pockets/pockets-0.9.1.tar.gz
 	sha256sums = 9320f1a3c6f7a9133fe3b571f283bcf3353cd70249025ae8d618e40e9f7e92b3
 
 pkgname = python-pockets
-	depends = python
-	depends = python-six
-
-pkgname = python2-pockets
-	depends = python2
-	depends = python2-six
-
