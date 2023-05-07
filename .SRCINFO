@@ -9,6 +9,7 @@ pkgbase = lib32-libheif
 	makedepends = lib32-libpng
 	makedepends = lib32-svt-av1
 	makedepends = lib32-rav1e
+	makedepends = lib32-libwebp
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
 	depends = lib32-aom
