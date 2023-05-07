@@ -1,19 +1,18 @@
 pkgbase = perl-getopt-long-descriptive
 	pkgdesc = Getopt::Long, but simpler and more powerful
-	pkgver = 0.110
+	pkgver = 0.111
 	pkgrel = 1
-	url = https://metacpan.org/release/Getopt-Long-Descriptive
+	url = https://metacpan.org/dist/Getopt-Long-Descriptive
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	checkdepends = perl-cpan-meta-check
 	checkdepends = perl-test-fatal
-	checkdepends = perl-test-warnings>=0.005
-	depends = perl-cpan-meta-check>=0.011
-	depends = perl-params-validate>=0.97
-	depends = perl-sub-exporter>=0.972
-	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Getopt-Long-Descriptive-0.110.tar.gz
-	md5sums = 2eee85dd6f78671e101e10800c309cc7
-	sha512sums = 2b04427f81367ed650e722253e995899bd7e02475186a919c42b868f429040dfe3cd7df9a107f838f2afa4b97cd30993befc69801f18a5006526a25a32b0f1a7
+	checkdepends = perl-test-warnings
+	depends = perl
+	depends = perl-params-validate
+	depends = perl-sub-exporter
+	source = https://www.cpan.org/modules/by-module/Getopt/Getopt-Long-Descriptive-0.111.tar.gz
+	sha512sums = 22cff8f92e51f08573e34f24028adbf1c3c1c88570a8d35361234ff13486ca5de20ee2cf8d056971777b9cb0f0c78cc183de2e74915f23eaf9b14fbcbf256531
 
 pkgname = perl-getopt-long-descriptive
