@@ -1,9 +1,9 @@
-# Maintainer: Malacology <guoyizhang at malacology dot com>
-# Contributor: Malacology <guoyizhang at malacology dot com>
+# Maintainer: Malacology <guoyizhang at malacology dot net>
+# Contributor: Malacology <guoyizhang at malacology dot net>
 
 pkgname=easycodeml
-pkgver=1.4
-pkgrel=3
+pkgver=1.41
+pkgrel=1
 pkgdesc="A visual tool for analysis of selection using CodeML. https://doi.org/10.1002/ece3.5015"
 arch=('x86_64')
 url="https://github.com/BioEasy/EasyCodeML"
@@ -15,7 +15,7 @@ source=("https://raw.githubusercontent.com/BioEasy/EasyCodeML/master/EasyCodeML.
 	"https://github.com/BioEasy/EasyCodeML/raw/master/Preset/codeml.exe"
 	"easycodeml.desktop"
 	"EasyCodeML.png")
-sha256sums=('16eef77a21be47ac2b2cf2e04ded75dc76546a71e0ca227aa21e0418ec8caf36'
+sha256sums=('2bc44d3997dd020f2e7c8e03d8b03c1f73804656d66a7dbab7e71deb97377644'
             '2a369a9497cf9435322dc2dad32787f0178685d483ed12aa407e7702b68071a1'
             'b665482ad39736725dbf8b21081ddb9761c7e35c68fc93860889bd52b2429756'
             '3f6e8b9fcfb161d7e920bf3958b6820ad2a8cdb666b3faa4cf538d14e3ba0428'
