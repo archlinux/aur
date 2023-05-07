@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-extension-list
+	pkgdesc = A Simple GNOME Shell extension manager in the top panel
+	pkgver = 44.0
+	pkgrel = 1
+	url = https://github.com/tuberry/extension-list
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	depends = gnome-shell
+	provides = gnome-shell-extension-extension-list
+	conflicts = gnome-shell-extension-extension-list-git
+	source = extension-list::git+https://github.com/tuberry/extension-list#tag=44.0
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-extension-list
