@@ -18,6 +18,6 @@ tar -zcvf "$tar" LICENSE PKGBUILD .SRCINFO rgx.csproj ./**.cs bin/Release/net6.0
 
 # push to aur
 if [ -z "$(git remote | grep aur)" ]; then
-  git remote add aur ssh://aur@aur.archlinux.org/rgx.git
+  git remote add aur ssh://aur@aur.archlinux.org/rgx-git.git
 fi
 git push aur
