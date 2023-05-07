@@ -1,9 +1,13 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using CommandLine;
 using comroid.common;
 
-namespace winbash.rgx;
+namespace rgx;
 
 public static class RGX
 {

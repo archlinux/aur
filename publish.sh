@@ -3,7 +3,7 @@
 set -e # exit on error
 
 dotnet clean
-dotnet build -c Release --sc --use-current-runtime -p:PublishSingleFile=true -o publish
+dotnet build -c Release --sc --use-current-runtime -p:PublishSingleFile=true
 
 # update SRCINFO
 git clean -f
