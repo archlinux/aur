@@ -3,7 +3,7 @@
 pkgname=python-aesedb
 _pkgname=aesedb
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Asynchronous parser for JET."
 url="https://github.com/skelsec/aesedb"
 arch=('any')
@@ -20,6 +20,7 @@ sha256sums=('6555bee274a3e992a472be607281a57fea97cbae94392e24a64477f586483d76')
 
 build() {
   cd ${_pkgname}-${pkgver}
+  rm -rf tests # Don't build tests, because of conflicts with other packages
   python -m build --wheel --no-isolation
 }
 

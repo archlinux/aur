@@ -15,7 +15,7 @@ pkgbase = python-aesedb
 	depends = python-tqdm
 	depends = python-colorama
 	depends = python-pycryptodomex
-	source = https://files.pythonhosted.org/packages/source/a/aesedb/aesedb-0.1.3.tar.gz
-	sha256sums = da6e15c6a4c3f73bd4a59d4ef3f481a6b0331b8bd45f8cf72ed84ca4fe4773c8
+	source = https://github.com/skelsec/aesedb/archive/refs/tags/0.1.3.zip
+	sha256sums = 6555bee274a3e992a472be607281a57fea97cbae94392e24a64477f586483d76
 
 pkgname = python-aesedb
