@@ -1,7 +1,7 @@
 pkgbase = cmakew
 	pkgdesc = CMake wrapper CLI tool
 	pkgver = 0.2.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/thombashi/cmakew
 	arch = any
 	license = MIT
