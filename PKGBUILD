@@ -6,7 +6,7 @@ _ver2=40
 _ver3=0
 # codename changes when one of the first three numbers changes
 _vercodename=zz_kurka
-_ver4=3
+_ver4=4
 pkgver=$_ver1.$_ver2.$_ver3.$_ver4
 source=("https://h2o-release.s3.amazonaws.com/h2o/rel-$_vercodename/$_ver4/h2o-$pkgver.zip"
         "h2o-ai.sh")
@@ -24,5 +24,5 @@ package() {
   install -Dm755 $srcdir/h2o-ai.sh "$pkgdir/usr/bin/h2o-ai"
 }
 
-md5sums=('d83bb6b62256ee0839d52d5eb818d527'
+md5sums=('38e109ca4ed7a7a1ae1340f05aa97780'
          'be58746df5ba4913ea335a3adc08814a')

@@ -1,15 +1,15 @@
 pkgbase = h2o-ai-bin
 	pkgdesc = Open source machine learning API
-	pkgver = 3.32.0.2
+	pkgver = 3.40.0.4
 	pkgrel = 1
 	url = https://www.h2o.ai/h2o/
 	arch = x86_64
 	license = Apache
 	depends = java-runtime>=7
-	source = http://h2o-release.s3.amazonaws.com/h2o/rel-zermelo/2/h2o-3.32.0.2.zip
+	source = http://h2o-release.s3.amazonaws.com/h2o/rel-zz_kurka/4/h2o-3.40.0.4.zip
 	source = h2o-ai.sh
-	md5sums = 6ddc368402fda286a34fd1f65ff9a1ba
-	md5sums = 008aadd36da7ad0d0b8a31a21ac3975d
+	md5sums = 38e109ca4ed7a7a1ae1340f05aa97780
+	md5sums = be58746df5ba4913ea335a3adc08814a
 
 pkgname = h2o-ai-bin
 
