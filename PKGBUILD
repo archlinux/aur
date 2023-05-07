@@ -1,33 +1,49 @@
-# Maintainer:
+# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 
 pkgname=python-envisage
-pkgver=6.1.0
-pkgrel=2
+_name=${pkgname#python-}
+pkgver=7.0.3
+pkgrel=1
 pkgdesc="Extensible Application Framework"
 arch=(any)
 url="https://github.com/enthought/envisage"
 license=(BSD)
-depends=(python-apptools python-traitsui)
-makedepends=(python-build python-installer python-setuptools python-wheel)
+depends=(
+  python-apptools
+  python-configobj  # Optional dependency for python-apptools - required here
+  python-scipy
+  python-traitsui
+)
+makedepends=(
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
+)
+checkdepends=(python-pytest)
 optdepends=('ipython: for IPython shell plugin')
-source=(https://github.com/enthought/envisage/archive/$pkgver/$pkgname-$pkgver.tar.gz
-        https://github.com/enthought/envisage/commit/f23ea386.patch)
-sha256sums=('4576e5e1028a2bc2f2c8dc253af9d4b2b615bca694707cc185f2a052d6b0b6d4'
-            'fab5b1ed3eed0baed51731b2001bee89743f43ee2b8ea4fc7838a1650586c0a4')
 
-prepare() {
-  cd envisage-$pkgver
-  patch -p1 < ../f23ea386.patch # Fix compatibility with traits 6.4
-}
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('d7cb25abad84a3c7718671ae07c362e87cc8f1f4f4db417c1bbf3f8b855e3dac')
+
+_archive="$_name-$pkgver"
 
 build() {
-  cd envisage-$pkgver
+  cd "$_archive"
+
   python -m build --wheel --no-isolation
 }
 
+check() {
+  cd "$_archive"
+
+  python -m pytest
+}
+
 package() {
-  cd envisage-$pkgver
+  cd "$_archive"
+
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -D LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
