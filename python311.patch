@@ -1,0 +1,22 @@
+diff --unified --recursive --text a/arronax/filechooser.py b/arronax/filechooser.py
+--- a/arronax/filechooser.py	2021-05-18 10:41:13.000000000 -0600
++++ b/arronax/filechooser.py	2023-05-07 13:52:39.794444794 -0600
+@@ -9,7 +9,6 @@
+ 
+ gettext.bindtextdomain(settings.GETTEXT_DOMAIN)
+ gettext.textdomain(settings.GETTEXT_DOMAIN)
+-gettext.bind_textdomain_codeset(settings.GETTEXT_DOMAIN, 'UTF-8')
+ 
+ FILE_DLG_DEF = {
+     'dlg_open': {'title': _('Open File'),
+diff --unified --recursive --text a/arronax/plugin.py b/arronax/plugin.py
+--- a/arronax/plugin.py	2021-05-18 10:41:13.000000000 -0600
++++ b/arronax/plugin.py	2023-05-07 13:52:20.894821258 -0600
+@@ -35,7 +35,6 @@
+     def __init__(self):
+         gettext.bindtextdomain(settings.GETTEXT_DOMAIN)
+         gettext.textdomain(settings.GETTEXT_DOMAIN)
+-        gettext.bind_textdomain_codeset(settings.GETTEXT_DOMAIN, 'UTF-8')
+         print(('Initializing Arronax v%s...' % settings.APP_VERSION))
+ 
+     def _create_menu_item(self, label, path=None, basedir=None):

@@ -1,36 +1,44 @@
-# Contributor: yochananmarqos <mark.wagie@tutanota.com>
-# Maintainer:  max.bra <max dot bra dot gtalk at gmail dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: max.bra <max dot bra dot gtalk at gmail dot com>
 
 pkgname=arronax
 pkgver=0.8.1
-pkgrel=1
-pkgdesc='A program to create and modify starters/launchers (technically: .desktop files) for applications and locations (URLs).'
+pkgrel=3
+pkgdesc="A GTK based GUI program to create and modify starters (*.desktop files) for applications, files, and URIs."
 arch=('any')
 license=('GPL3')
-url="http://www.florian-diesch.de/software/arronax/"
+url="https://www.florian-diesch.de/software/arronax"
 depends=('libwnck3' 'python-gobject' 'python-pyxdg')
-makedepends=('python-setuptools')
-optdepends=('python-nautilus: Arronax as Nautilus extension'
-            'python-caja: Arronax as Caja extension'
-            'nemo-python: Arronax as Nemo extension')
-
-source=(https://www.florian-diesch.de/software/arronax/dist/arronax-$pkgver.tar.gz)
-
-md5sums=('de079a182806ed3b6626656605a1214c')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+optdepends=('nemo-python: for Nemo extension'
+            'python-caja: for Caja extension'
+#            'python-nautilus: for Nautilus extension'
+            'thunarx-python: for Thunar plugin')
+source=("https://www.florian-diesch.de/software/arronax/dist/$pkgname-$pkgver.tar.gz"
+        'python311.patch')
+sha256sums=('cb50187a3d92093665f8108430e2f2f5615f7577ceb849e00c1b98ecae0e9fe4'
+            'b62f06af537253f0fcaedcbcc8fbdf5c866a0bda4c5cd517ea4b263d93d52d0c')
 
 prepare() {
+  cd "$pkgname-$pkgver"
+
+  # 'bind_textdomain_codeset' deprecated since Python 3.8 and removed in 3.11
+  patch -Np1 -i ../python311.patch
+
   # Fix icon location
-  cd "$srcdir"/$pkgname-$pkgver
-  sed -i 's|share/icons/hicolor/{s}x{s}|share/icons/hicolor/{s}x{s}/apps|g' setup.py
+  sed -i 's|hicolor/{s}x{s}|hicolor/{s}x{s}/apps|g' setup.py
 }
 
 build() {
-  cd "$srcdir"/$pkgname-$pkgver
-  /usr/bin/python setup.py build
+  cd "$pkgname-$pkgver"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir"/$pkgname-$pkgver
-  /usr/bin/python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd "$pkgname-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  # Not compatibile with Nautilus 43+
+  rm -rf "$pkgdir/usr/share/nautilus-python/extensions/"
 }
 
