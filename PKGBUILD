@@ -1,16 +1,16 @@
 pkgbase='python-mpl-interactions'
 pkgname=('python-mpl-interactions')
 _module='mpl_interactions'
-pkgver='0.22.2'
+pkgver='0.23.0'
 pkgrel=1
 pkgdesc="Matplotlib aware interact functions"
-url=""
+url="https://github.com/mpl-extensions/mpl-interactions"
 depends=('python')
 makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('f7fa1fe07d44817a0a23b2aec48ecf019e57a3aba7a2a8315a37b671f4e9215a')
+sha256sums=('bf1c769b71e4c6c68b31f5f92f28cab068f667252f6f41aef552fe39b81c6964')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
