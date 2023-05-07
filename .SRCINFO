@@ -1,6 +1,6 @@
 pkgbase = lcarsde-application-starter
 	pkgdesc = Menu for lcarsde to display and run installed software
-	pkgver = 21.1
+	pkgver = 23.1
 	pkgrel = 1
 	url = https://lcarsde.github.io
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = lcarsde-application-starter
 	depends = python>=3.8
 	depends = python-gobject
 	depends = gtk3
-	source = lcarsde-application-starter-21.1.tar.gz::https://github.com/lcarsde/application-starter/archive/21.1.tar.gz
-	md5sums = 8bf81ba032599ffdd1a05a520fbecdd7
+	source = lcarsde-application-starter-23.1.tar.gz::https://github.com/lcarsde/application-starter/archive/23.1.tar.gz
+	md5sums = 9d38734fe883206f2e7722b63df0665d
 
 pkgname = lcarsde-application-starter
-
