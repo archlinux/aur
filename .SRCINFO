@@ -1,0 +1,26 @@
+pkgbase = linux-wallpaperengine-wayland-git
+	pkgdesc = use steam's wallpaperengine on linux
+	pkgver = r411.660f798
+	pkgrel = 1
+	url = https://github.com/Almamu/linux-wallpaperengine
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = sdl2
+	makedepends = glm
+	depends = lz4
+	depends = ffmpeg
+	depends = mpv
+	depends = freeimage
+	depends = xorg-xrandr
+	depends = glfw-x11
+	depends = glew
+	depends = freeglut
+	depends = libpulse
+	provides = linux-wallpaperengine
+	conflicts = linux-wallpaperengine
+	source = linux-wallpaperengine-wayland-git::git+https://github.com/Almamu/linux-wallpaperengine.git#branch=main
+	sha512sums = SKIP
+
+pkgname = linux-wallpaperengine-wayland-git
