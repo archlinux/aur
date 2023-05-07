@@ -1,6 +1,6 @@
 pkgbase = mopidy-youtube
 	pkgdesc = Mopidy extension for playing music from Youtube
-	pkgver = v3.5.0
+	pkgver = 3.6.0
 	pkgrel = 2
 	url = https://github.com/natumbri/mopidy-youtube
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = mopidy-youtube
 	depends = python-beautifulsoup4
 	depends = youtube-dl>=2021.06.01
 	depends = python-ytmusicapi>0.19
-	source = mopidy-youtube-v3.5.0.tar.gz::https://github.com/natumbri/mopidy-youtube/archive/v3.5.tar.gz
-	md5sums = 09164211c934cbb72ca46d82d90ab25d
-	sha1sums = 712a6e7f57edf353cda96388d509f8a06aab9191
+	source = mopidy-youtube-3.6.0.tar.gz::https://github.com/natumbri/mopidy-youtube/archive/v3.6.tar.gz
+	md5sums = 716ae56d95884445630e51c2199541d0
+	sha1sums = 7f914f51db0af97f31d29b1a409fef2dfd322ab2
 
 pkgname = mopidy-youtube
