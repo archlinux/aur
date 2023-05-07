@@ -1,7 +1,7 @@
 pkgbase = armbian-firmware-git
 	pkgdesc = Armbian-Specific Linux Firmware Files, useful for some SBCs
-	pkgver = 20230211.56ada00
-	pkgrel = 2
+	pkgver = 20230505.d41f868
+	pkgrel = 1
 	url = https://github.com/armbian/firmware
 	arch = any
 	license = custom

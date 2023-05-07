@@ -8,8 +8,8 @@
 
 # Maintainer: Jesse R Codling <codling@umich.edu>
 pkgname=armbian-firmware-git
-pkgver=20230211.56ada00
-pkgrel=2
+pkgver=20230505.d41f868
+pkgrel=1
 pkgdesc="Armbian-Specific Linux Firmware Files, useful for some SBCs"
 arch=(any)
 url="https://github.com/armbian/firmware"
@@ -43,8 +43,6 @@ upstream_files=(
 "mt7662_rom_patch.bin"
 "rt2870.bin"
 "s5p-mfc-v8.fw"
-"ath11k/WCN6855/hw2.0/board-2.bin"
-"ath11k/WCN6855/hw2.1/board-2.bin"
 "brcm/brcmfmac4329-sdio.bin"
 "brcm/brcmfmac4330-sdio.bin"
 "brcm/brcmfmac4334-sdio.bin"
@@ -106,7 +104,7 @@ upstream_files=(
 prepare() {
 	echo "  ->  Removing upstreamed files..."
 	for f in "${upstream_files[@]}"; do
-		rm "$srcdir/firmware/$f"
+		rm -f "$srcdir/firmware/$f"
 	done
 }
 
