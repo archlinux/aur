@@ -3,7 +3,7 @@
 
 pkgname="apprise"
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Push Notifications that work with just about every platform"
 url="https://github.com/caronc/apprise"
 license=("BSD3 Clause")
@@ -19,6 +19,7 @@ depends=("python-certifi"
 makedepends=("python-babel"
          "python-build"
          "python-installer"
+         "python-setuptools"
          "python-wheel")
 options=("!strip")
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
