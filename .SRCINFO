@@ -8,6 +8,7 @@ pkgbase = yamlfix
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-pdm
+	makedepends = python-pdm-pep517
 	makedepends = python-pip
 	depends = python
 	depends = python-click

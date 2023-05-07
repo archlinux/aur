@@ -13,7 +13,7 @@ arch=("any")
 url="https://github.com/lyz-code/${pkgname}"
 license=("GPL3")
 depends=("python" "python-click" "python-maison" "python-ruyaml")
-makedepends=("python-build" "python-installer" "python-pdm" "python-pip")
+makedepends=("python-build" "python-installer" "python-pdm" "python-pdm-pep517" "python-pip")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha512sums=("ecc537ec5a8637f4945d0edd04084cd730e39ebd8bb23408cf2367fe44aa601332b7c4add5adef4aa264bafb3bf80c5f9c233a02c9928f011267f7e0275db897")
 
