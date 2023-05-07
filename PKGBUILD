@@ -1,6 +1,6 @@
 # Maintainer: Giovanni Santini <giovannisantini93@yahoo.it>
 pkgname=crystal-launcher
-pkgver=20230406
+pkgver=20230505
 pkgrel=1
 pkgdesc="A custom Minecraft launcher with its own package system"
 arch=(any)
@@ -37,7 +37,7 @@ source=("$pkgname.jar::https://launcher.crystal-launcher.net/bootstrapNX/data/cr
         "$pkgname.png::https://launcher.crystal-launcher.net/linux/icon.png"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('e9eacb799ed31b66854eb9266e126719b83afcb11e586181e9ddc19ded6c10e3'
+sha256sums=('cf9099cd5784fdcc93e87f17a1f0007349ca2ff30dd0d00492aea54e928e3a36'
             '214f4f12eb772d2ce945723ab7b126b1fb3e78c009f4132d6b0f98ea2270ab0c'
             '68a357836068f9382f96d8a858f664908d3e6dceb5246d4c34dcfb9b3495bdb6'
             'ff160d4a4cfe366f0ec806d7eeeac4bfd5e83c3d01afbc22ecc5caa1adb247ef')
