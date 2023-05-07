@@ -4,7 +4,7 @@
 # Contributor: Erwin Van de Velde <erwin.vandevelde@gmail.com>
 
 pkgname=rdiff-backup
-pkgver=2.2.4
+pkgver=2.2.5
 pkgrel=1
 pkgdesc="Reverse differential backup tool, over a network or locally"
 arch=(x86_64)
@@ -36,7 +36,7 @@ source=(
   "rdiff-backup-filesrepo-$_rdiff_backup_filesrepo_hash.tar.gz::https://github.com/rdiff-backup/rdiff-backup-filesrepo/archive/$_rdiff_backup_filesrepo_hash.tar.gz"
 )
 sha256sums=(
-  'a8e5aab01fc6c70dc6cd8d94510e0ac7b542bb0e1632324039d37d70e1cd2a5e'
+  '6ca47fcc81b4886a862e292f189f630b39e4523fc1c76c611ed40e92e4684e65'
   '96395a278b0b2b23a2005449ab50a771cdd168683e5942bfcfa3d04f5980c9f2'
 )
 
@@ -68,7 +68,7 @@ check() {
 
   python setup.py install --root=test-install --optimize=1 --skip-build
   export PATH="$PWD/test-install/usr/bin:$PATH"
-  export PYTHONPATH="$PWD/test-install/usr/lib/python3.10/site-packages"
+  export PYTHONPATH="$PWD/test-install/usr/lib/python3.11/site-packages"
 
   # Must be the first command to setup the test environment
   python testing/commontest.py
