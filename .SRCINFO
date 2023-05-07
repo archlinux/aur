@@ -1,5 +1,5 @@
 pkgbase = stulto-git
-	pkgdesc = A Terminal for Fools
+	pkgdesc = A Simple GTK+3/VTE Terminal Emulator
 	pkgver = r128.4966d9e
 	pkgrel = 1
 	url = https://github.com/marcxjo/stulto
