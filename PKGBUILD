@@ -1,18 +1,18 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=gitlab-ci-local
-pkgver=4.39.1
+pkgver=4.40.0
 pkgrel=1
 pkgdesc="Run gitlab pipelines locally as shell executor or docker executor"
-arch=('any')
+arch=(any)
 url="https://github.com/firecow/gitlab-ci-local"
-license=('MIT')
-depends=('nodejs')
-makedepends=('npm')
+license=(MIT)
+depends=(nodejs)
+makedepends=(npm)
 
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('28ec1fbcf87d7306b0e3042490d67d4f3bb53012663bc504fbbfc839a74b829c')
+sha256sums=('97b60effa14ecfcad6ff3f869f008b8ab7e4cee986c2e41dad7f7df8fb2d3703')
 
 package() {
     npm install -g \
