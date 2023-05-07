@@ -1,20 +1,14 @@
 pkgbase = python-mwclient
 	pkgdesc = A Python framework to interface with the MediaWiki API
 	pkgver = 0.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mwclient/mwclient
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	source = python-mwclient-0.10.1.tar.gz::https://github.com/mwclient/mwclient/archive/v0.10.1.tar.gz
 	sha512sums = 80d341863d4c3ba64d56bd978ae85ec1c163dd480eef9a87b8364981a292dd233bb24bd44fa4276043ef9478f5316622efe7cdad178a66574b1f85d34fa61f61
 
 pkgname = python-mwclient
 	depends = python
 	depends = python-requests-oauthlib
-
-pkgname = python2-mwclient
-	depends = python2
-	depends = python2-requests-oauthlib
-
