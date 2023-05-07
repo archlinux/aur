@@ -18,6 +18,5 @@ build() {
 }
 
 package() {
-    cd "$srcdir/rgx"
-    install -Dm755 bin/Release/net6.0/rgx "$pkgdir/usr/bin/rgx"
+    install -Dm755 "$srcdir/rgx/bin/Release/net6.0/linux-x64/rgx" "$pkgdir/usr/bin/rgx"
 }
