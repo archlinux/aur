@@ -4,7 +4,7 @@
 
 pkgname=ddcci-driver-linux-dkms
 pkgver=0.4.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A pair of Linux kernel drivers for DDC/CI monitors (DKMS)"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://gitlab.com/ddcci-driver-linux/ddcci-driver-linux/"
@@ -16,12 +16,12 @@ source=(
   "linux-6.3-rc2.patch"
 )
 b2sums=('71f855b8d7e4b9a1b5d38a73d4a6df7453e72600596121f68c6782f180211bd935ab30cf0cf94cc0528e8d5f732449d35b24cd9584d17083318d819b81a0b259'
-        '6fc7e4329a6309f84886a15d17590f6ce933a1d047ee5e2cd5377f4587b9ad1f919cc619d16dc03f7bd5efdba69cedc1606ac8640ad747490ecc91252b013576')
+        'd4b602afe040b70ab4e288807ffd06b7ee8b4d1befba749c6badc03f391dcacff41f36df7d5049030754bcb9ac1b29d99abec70fcc218fb744eb2067d55e9d79')
 
 # by UmarJ
 prepare() {
-    cd "${srcdir}"
-    patch --directory="ddcci-driver-linux-v${pkgver}" --strip=1 --forward --input="$(pwd)/linux-6.3-rc2.patch"
+    cd "${srcdir}/ddcci-driver-linux-v${pkgver}"
+    patch --strip=1 --forward --input="../linux-6.3-rc2.patch"
 }
 
 package() {
