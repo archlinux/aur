@@ -5,7 +5,7 @@ _projectname="${_pyname}"
 _pkgname="python-${_projectname}"
 pkgname="${_pkgname}-git"
 pkgver=0.4.0+7.r236.20230422.6f0706a
-pkgrel=1
+pkgrel=2
 pkgdesc="A small and insanely fast ARCFOUR (RC4) cipher implementation for Python."
 arch=(
   'aarch64'
@@ -33,8 +33,6 @@ makedepends=(
   'python-setuptools'
   'python-mock'
   'python-sphinx'
-  #'python-sphinx_rtd_theme'
-  #'python-sphinxcontrib-napoleon'
 )
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
