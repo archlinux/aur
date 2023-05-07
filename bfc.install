@@ -1,6 +1,7 @@
  post_install() {
     echo -e "\033[32mbfc is a fast jit brainfuck interpreter.\033[0m"
-    echo -e "\033[32musage: bfc /file/to/brainfuck/file\033[0m"
+    echo -e "\033[32musage: bfc /file/to/brainfuck/file [-i] [-r]\033[0m"
+    echo -e '\033[32muse `i` flag to disable jit and `r` flag to disable optimization\033[0m'
 }
 
 post_upgrade() {
