@@ -1,6 +1,6 @@
 pkgbase = pythonqt-knossos-git
 	pkgdesc = PythonQt fork with additional features for plugin support in KNOSSOS
-	pkgver = 3.2+104.gcb23377
+	pkgver = 3.2+151.g5bd6f18
 	pkgrel = 1
 	url = https://github.com/knossos-project/PythonQt
 	arch = x86_64
@@ -22,3 +22,10 @@ pkgbase = pythonqt-knossos-git
 	md5sums = SKIP
 
 pkgname = pythonqt-knossos-git
+	depends = python3
+	depends = qt5-declarative
+	depends = qt5-multimedia
+	depends = qt5-svg
+	depends = qt5-tools
+	depends = qt5-xmlpatterns
+	depends = python<3.12.0
