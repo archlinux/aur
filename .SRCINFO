@@ -1,7 +1,7 @@
 pkgbase = ccx2paraview
 	pkgdesc = CalculiX to Paraview converter (frd to vtk/vtu)
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/calculix/ccx2paraview
 	arch = x86_64
 	license = GPL3
