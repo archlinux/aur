@@ -11,7 +11,7 @@ license=('GPL')
 provides=($pkgname)
 conflicts=($pkgname)
 source=('https://sourceforge.net/projects/archbangretro/files/archbey.tar.xz')
-md5sums=('9665bcf04053ca6f8482dd01dc64c51e')
+md5sums=('4ecdf3c514fc582a0e7d30d7ce71d937')
 
 package() {
   install -d /$pkgdir/usr/bin/
