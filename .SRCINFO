@@ -1,7 +1,7 @@
 pkgbase = python-aardwolf-git
 	pkgdesc = Asynchronous RDP protocol implementation for python.
 	pkgver = 0.2.7.r100.20230302.2bba988
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/skelsec/aardwolf
 	arch = aarch64
 	arch = armv6h
@@ -10,6 +10,7 @@ pkgbase = python-aardwolf-git
 	arch = i686
 	arch = x86_64
 	license = custom: MIT
+	makedepends = cython
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer

@@ -4,7 +4,7 @@ _pyname="aardwolf"
 _pkgname="python-${_pyname}"
 pkgname="${_pkgname}-git"
 pkgver=0.2.7.r100.20230302.2bba988
-pkgrel=1
+pkgrel=2
 pkgdesc="Asynchronous RDP protocol implementation for python."
 arch=(
   'aarch64'
@@ -35,6 +35,7 @@ depends=(
   'python-pillow>=9.0.0'
 )
 makedepends=(
+  'cython'
   'git'
   'python-build'
   'python-installer'
