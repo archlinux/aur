@@ -2,6 +2,7 @@
 
 set -e # exit on error
 
+# make prebuilt executable
 dotnet clean
 dotnet build -c Release --sc --use-current-runtime -p:PublishSingleFile=true
 
