@@ -42,7 +42,7 @@ makedepends=(
   'xz'
   'sqlite'
   'systemd-libs'
-  'ffmpeg4.4'
+  'ffmpeg'
 )
 source=(
   'git+https://github.com/meganz/MEGAsync.git'
@@ -50,6 +50,7 @@ source=(
   'mega.svg'
   'esee'
   'https://patch-diff.githubusercontent.com/raw/meganz/sdk/pull/2614.diff'
+  'ffmpeg6.diff'
 )
 sha256sums=(
   'SKIP'
@@ -57,6 +58,7 @@ sha256sums=(
   'c0abfeafb541509923c85d253f6f64dae8a49e9ae4b067f5c0c484ff1d924403'
   '66b5f481081157eee82653b3774d22edb5aa2007cf93142fd73cc0c4d577d59f'
   'aeb5145225d0ebaa4595a99d81e55d1f71bc6e7f1242785f541a3122cba6c217'
+  'a5f1d784a0a548965c939a74da101ff436796490a7d3f4efbaa8c22d639ab8fc'
 )
 options=('debug')
 
@@ -71,17 +73,9 @@ prepare() {
   git -c protocol.file.allow=always submodule update --init \
     src/MEGASync/mega
 
-  # FFmpeg4
+  # FFmpeg6
   patch -d src/MEGASync/mega -p1 -i "${srcdir}/2614.diff"
-  sed -e 's|ffmpeg-mega|ffmpeg4.4|g' \
-      -i src/MEGASync/mega/configure.ac \
-      -i src/MEGASync/MEGASync.pro
-  sed -e 's|FFMPEG_LIBS\=\[\"|&-L/usr/lib/ffmpeg4.4 |g' \
-      -e 's|FFMPEG_LIBS\=\"|&-L/usr/lib/ffmpeg4.4 |g' \
-      -i src/MEGASync/mega/configure.ac
-  sed -e '359a \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ INCLUDEPATH += /usr/include/ffmpeg4.4' \
-      -e's|LIBS += -lavcodec|LIBS += -L/usr/lib/ffmpeg4.4 -lavcodec|g' \
-      -i src/MEGASync/mega/bindings/qt/sdk.pri
+  patch -d src/MEGASync/mega -p1 -i "${srcdir}/ffmpeg6.diff"
 
   # Disable PDFium
   patch -p1 -i "${srcdir}/esee"
@@ -89,15 +83,12 @@ prepare() {
 
 build() {
 
-  export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
-
   cd "${srcdir}/MEGAsync/src/MEGASync/mega"
   ./autogen.sh
   ./configure \
     --prefix=/usr \
     --without-freeimage \
-    --disable-examples \
-    --with-ffmpeg \
+    --disable-examples
 
   cd "${srcdir}/MEGAsync/src/MEGASync"
   lrelease-qt5 MEGASync.pro
@@ -116,7 +107,7 @@ package() {
     'xz' 'liblzma.so'
     'sqlite' 'libsqlite3.so'
     'systemd-libs' 'libudev.so'
-    'ffmpeg4.4' 'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libswresample.so' 'libswscale.so'
+    'ffmpeg' 'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libswresample.so' 'libswscale.so'
   )
   install -Dm755 MEGAsync/src/MEGASync/megasync "${pkgdir}/usr/bin/megasync"
   install -Dm644 MEGAsync/src/MEGASync/platform/linux/data/megasync.desktop "${pkgdir}/usr/share/applications/megasync.desktop"
