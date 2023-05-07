@@ -2,7 +2,7 @@
 
 _pkgname=spice
 pkgname=$_pkgname-git
-pkgver=0.15.0.93.ga225ebe9
+pkgver=0.15.1.1.ga5d1d957
 pkgrel=1
 pkgdesc='SPICE server'
 arch=('x86_64')
@@ -26,7 +26,7 @@ prepare() {
     cd $_pkgname
     # referring git submodules by relative paths doesn't seem to work in clean chroots
     sed -i "s|url = ..|url = ${srcdir}|;s|.git$||" .gitmodules
-    git submodule update --init
+    git -c protocol.file.allow=always submodule update --init
 }
 
 build() {

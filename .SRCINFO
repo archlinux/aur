@@ -1,6 +1,6 @@
 pkgbase = spice-git
 	pkgdesc = SPICE server
-	pkgver = 0.15.0.93.ga225ebe9
+	pkgver = 0.15.1.1.ga5d1d957
 	pkgrel = 1
 	url = https://www.spice-space.org
 	arch = x86_64
