@@ -1,0 +1,40 @@
+From b921efae3e52dcd93e553db3d02378951e894769 Mon Sep 17 00:00:00 2001
+From: Jeremy Reizenstein <reizenstein@meta.com>
+Date: Fri, 5 May 2023 05:59:14 -0700
+Subject: [PATCH] CUB usage fix for sample_farthest_points
+
+Summary: Fix for https://github.com/facebookresearch/pytorch3d/issues/1529
+
+Reviewed By: shapovalov
+
+Differential Revision: D45569211
+
+fbshipit-source-id: 8c485f26cd409cafac53d4d982a03cde81a1d853
+---
+ .../csrc/sample_farthest_points/sample_farthest_points.cu   | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/pytorch3d/csrc/sample_farthest_points/sample_farthest_points.cu b/pytorch3d/csrc/sample_farthest_points/sample_farthest_points.cu
+index d9b8df81..70cef75c 100644
+--- a/pytorch3d/csrc/sample_farthest_points/sample_farthest_points.cu
++++ b/pytorch3d/csrc/sample_farthest_points/sample_farthest_points.cu
+@@ -155,7 +155,7 @@ at::Tensor FarthestPointSamplingCuda(
+ 
+   // Max possible threads per block
+   const int MAX_THREADS_PER_BLOCK = 1024;
+-  const size_t threads = max(min(1 << points_pow_2, MAX_THREADS_PER_BLOCK), 1);
++  const size_t threads = max(min(1 << points_pow_2, MAX_THREADS_PER_BLOCK), 2);
+ 
+   // Create the accessors
+   auto points_a = points.packed_accessor64<float, 3, at::RestrictPtrTraits>();
+@@ -215,10 +215,6 @@ at::Tensor FarthestPointSamplingCuda(
+       FarthestPointSamplingKernel<2><<<threads, threads, shared_mem, stream>>>(
+           points_a, lengths_a, K_a, idxs_a, min_point_dist_a, start_idxs_a);
+       break;
+-    case 1:
+-      FarthestPointSamplingKernel<1><<<threads, threads, shared_mem, stream>>>(
+-          points_a, lengths_a, K_a, idxs_a, min_point_dist_a, start_idxs_a);
+-      break;
+     default:
+       FarthestPointSamplingKernel<1024>
+           <<<blocks, threads, shared_mem, stream>>>(
