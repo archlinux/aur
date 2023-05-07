@@ -16,6 +16,7 @@ b2sums=('c869d0e4c8a4f1a452d24587970b994044493aecc028f8a2e4c0a26a7cd04b934afb17e
 
 build() {
   echo $(ls)
+  cd bavarder
   arch-meson "$_pkgname-${pkgver//_/-}" build
   meson compile -C build
 }
