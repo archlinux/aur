@@ -4,6 +4,7 @@ _pkgname=python-geomag
 pkgname="$_pkgname-todd-dembrey-git"
 pkgver=r31.421564e
 pkgrel=3
+pkgdesc="Python library to calculate magnetic variation/declination (todd-dembrey fork)"
 arch=(any)
 # see https://code.google.com/archive/p/geomag/
 license=(LGPL)

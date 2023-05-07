@@ -1,4 +1,5 @@
 pkgbase = python-geomag-todd-dembrey-git
+	pkgdesc = Python library to calculate magnetic variation/declination (todd-dembrey fork)
 	pkgver = r31.421564e
 	pkgrel = 3
 	url = https://github.com/todd-dembrey/geomag
