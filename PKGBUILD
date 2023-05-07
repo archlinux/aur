@@ -97,7 +97,7 @@ package() {
   i686-w64-mingw32-strip --strip-unneeded "$pkgdir"/usr/lib/wine/i386-windows/*.dll
   x86_64-w64-mingw32-strip --strip-unneeded "$pkgdir"/usr/lib/wine/x86_64-windows/*.dll
 
-  ln -sf $pkgdir/usr/bin/wine $pkgdir/usr/bin/wine64
+  ln -sf /usr/bin/wine $pkgdir/usr/bin/wine64
 
   # Font aliasing settings for Win32 applications
   install -d "$pkgdir"/usr/share/fontconfig/conf.{avail,default}
