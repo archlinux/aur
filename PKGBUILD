@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur@engestrom.ch>
 
 pkgname=fex-emu
-pkgver=2303
+pkgver=2305
 pkgrel=1
 pkgdesc='Fast usermode x86 and x86-64 emulator for Arm64'
 url=https://fex-emu.com
@@ -21,7 +21,7 @@ source=("git+https://github.com/FEX-Emu/FEX#tag=FEX-$pkgver"
         "git+https://github.com/Sonicadvance1/imgui"
         "git+https://github.com/FEX-Emu/jemalloc"
         "git+https://github.com/Sonicadvance1/json-maker"
-        "git+https://github.com/Tessil/robin-map"
+        "git+https://github.com/FEX-Emu/robin-map"
         "git+https://github.com/Sonicadvance1/tiny-json"
         "git+https://github.com/FEX-Emu/vixl"
         "git+https://github.com/FEX-Emu/xbyak"
@@ -51,7 +51,6 @@ prepare() {
   for f in \
     Catch2 \
     Vulkan-Headers \
-    cpp-optparse \
     drm-headers \
     fex-gcc-target-tests-bins \
     fex-gvisor-tests-bins \
@@ -69,6 +68,16 @@ prepare() {
   do
     git config submodule."External/$f".url "$srcdir/$f"
   done
+
+  git config submodule."External/jemalloc_glibc".url "$srcdir/jemalloc"
+
+  for f in \
+    cpp-optparse \
+    ;
+  do
+    git config submodule."Source/Common/$f".url "$srcdir/$f"
+  done
+
   git -c protocol.file.allow=always submodule update
 }
 

@@ -1,6 +1,6 @@
 pkgbase = fex-emu
 	pkgdesc = Fast usermode x86 and x86-64 emulator for Arm64
-	pkgver = 2303
+	pkgver = 2305
 	pkgrel = 1
 	url = https://fex-emu.com
 	arch = aarch64
@@ -12,12 +12,13 @@ pkgbase = fex-emu
 	makedepends = clang
 	makedepends = llvm
 	makedepends = python-setuptools
+	makedepends = pkgconf
 	depends = sdl2
 	depends = libepoxy
 	depends = squashfs-tools
 	depends = squashfuse
 	depends = erofs-utils
-	source = git+https://github.com/FEX-Emu/FEX#tag=FEX-2301
+	source = git+https://github.com/FEX-Emu/FEX#tag=FEX-2305
 	source = git+https://github.com/catchorg/Catch2
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers
 	source = git+https://github.com/Sonicadvance1/cpp-optparse
@@ -29,7 +30,7 @@ pkgbase = fex-emu
 	source = git+https://github.com/Sonicadvance1/imgui
 	source = git+https://github.com/FEX-Emu/jemalloc
 	source = git+https://github.com/Sonicadvance1/json-maker
-	source = git+https://github.com/Tessil/robin-map
+	source = git+https://github.com/FEX-Emu/robin-map
 	source = git+https://github.com/Sonicadvance1/tiny-json
 	source = git+https://github.com/FEX-Emu/vixl
 	source = git+https://github.com/FEX-Emu/xbyak
