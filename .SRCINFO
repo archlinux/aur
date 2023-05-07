@@ -1,14 +1,18 @@
 pkgbase = python-pyocd-pemicro
 	pkgdesc = Python On Chip Debugger and programmer for ARM Cortex-M microcontrollers using CMSIS-DAP
-	pkgver = 1.1.0
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/pyocd/pyocd-pemicro
 	arch = any
 	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	depends = python-pypemicro
-	source = https://pypi.python.org/packages/source/p/pyocd-pemicro/pyocd-pemicro-1.1.0.tar.gz
-	sha512sums = 1cb09b299436d4784523b77f66ec5c1d1114d38a71159ab73331c9530e7a77870f17dd9940f4bdcc7e1884139d4d3c987b48c92092e06ed57fe6938e40123384
+	depends = python-pyocd
+	source = https://pypi.python.org/packages/source/p/pyocd-pemicro/pyocd-pemicro-1.1.5.tar.gz
+	sha512sums = 7be52c7b214a89378f37fbd1c66e0b5a153e7ecd16959214790e37b1c5a976535395a3805aa3574e20cec33742ea559a744cc394403be20a42ee7aa1c7373968
 
 pkgname = python-pyocd-pemicro
