@@ -14,6 +14,7 @@ pkgbase = bavarder
 	depends = python-gobject
 	depends = libportal-gtk4
 	depends = python-openai
+	depends = python-lxml
 	depends = python-hgchat
 	depends = python-baichat-py
 	depends = python-googlebardpy
