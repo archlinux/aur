@@ -16,6 +16,7 @@ pkgbase = bavarder
 	depends = python-openai
 	depends = python-lxml
 	depends = python-hgchat
+	depends = python-gtts
 	depends = python-baichat-py
 	depends = python-googlebardpy
 	source = https://codeberg.org/Bavarder/Bavarder/archive/0.1.7.tar.gz
