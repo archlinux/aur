@@ -1,9 +1,9 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 # Project: nwg-shell for sway, https://github.com/nwg-piotr/nwg-shell
 pkgname=('nwg-look')
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
-pkgdesc="GTK3 settings editor adapted to work in sway/wlroots environment"
+pkgdesc="GTK3 settings editor adapted to work wlroots-based compositors"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/nwg-look"
 license=('MIT')
@@ -13,7 +13,7 @@ makedepends=('go')
 depends=('gtk3' 'glib2' 'cairo' 'xcur2png')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/nwg-look/archive/v"$pkgver".tar.gz")
 
-md5sums=('c230dd72840d6e88ac9e1101875bdce4')
+md5sums=('13b799d0e8abea98c9520d48f884f4aa')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -24,7 +24,7 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external"
   export GOPATH="${srcdir}"/go
   export PATH=$PATH:$GOPATH/bin
-  go build -o "$pkgname" *.go
+  go build -v -o "$pkgname" *.go
 }
 
 package() {
