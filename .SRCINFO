@@ -1,0 +1,12 @@
+pkgbase = rgx-git
+	pkgdesc = A description of your package
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/comroid-git/rgx
+	arch = any
+	license = MIT
+	makedepends = dotnet-sdk-6.0
+	depends = dotnet-runtime-6.0
+	source = rgx-git-0.1.tar.gz::https://github.com/comroid-git/rgx/archive/v0.1.tar.gz
+
+pkgname = rgx-git
