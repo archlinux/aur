@@ -1,7 +1,7 @@
 # Maintainer: Marko Semet <marko10_000@mailbox.org>
 pkgname=buildstream-plugins-experimental
-pkgver=1.95.5
-pkgrel=1
+pkgver=1.95.6
+pkgrel=0
 pkgdesc="A collection of experimental BuildStream plugins."
 arch=(any)
 url="https://buildstream.build"
@@ -18,7 +18,7 @@ depends=(
     # Sources “cargo” and “docker” seam to not nead any programmes
 )
 makedepends=(cython git python-packaging python-setuptools)
-source=("git+https://gitlab.com/BuildStream/bst-plugins-experimental.git#tag=1.95.5&commit=86c5451ec7b6d11c4d5ead45ac13b11889a3d20e")
+source=("git+https://gitlab.com/BuildStream/bst-plugins-experimental.git#tag=1.95.6&commit=327016a8b9ded0c0b4f6aca5c001ca3e47eea1d2")
 sha256sums=('SKIP')
 
 build() {
