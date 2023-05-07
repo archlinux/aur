@@ -1,6 +1,6 @@
 pkgbase = pasystray-wayland
 	pkgdesc = PulseAudio system tray (a replacement for padevchooser) built for Wayland support
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/christophgysin/pasystray
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = pasystray-wayland
 	optdepends = paprefs: Launch PulseAudio preferences from tray icon
 	provides = pasystray
 	conflicts = pasystray
-	source = pasystray-0.8.1.tar.gz::https://github.com/christophgysin/pasystray/archive/0.8.1.tar.gz
-	sha512sums = a9924b5b17833df4862f7c2bec5b518a3d8b6f2f80fe494c38a0cc07965095fb3155fc2181eb071f9acaf4629d81a908f2f622107c31346502293bfd4fa291a8
+	source = pasystray-0.8.2.tar.gz::https://github.com/christophgysin/pasystray/archive/0.8.2.tar.gz
+	sha512sums = a4c2c257678c161ed2daf53249bc4acf50002cd8485ce031fe98d20540ec684011651fc0e5e66cd925131629630371a834660b0da69c53dbd14521ed268d13ef
 
 pkgname = pasystray-wayland
