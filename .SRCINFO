@@ -1,23 +1,16 @@
 pkgbase = pyocclient
 	pkgdesc = Python client library for ownCloud
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/owncloud/pyocclient
 	arch = any
 	license = MIT
 	makedepends = python
 	makedepends = python-setuptools
-	makedepends = python2
-	makedepends = python2-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-six
 	source = https://github.com/owncloud/pyocclient/archive/v0.6.tar.gz
 	sha256sums = ec524bbabecd2ba00315f6517dc0628bb2c8c32d644a3c5dfc2f1e7d61eb65b4
 
 pkgname = python-pyocclient
-	depends = python
-	depends = python-requests
-	depends = python-six
-
-pkgname = python2-pyocclient
-	depends = python2
-	depends = python2-requests
-	depends = python2-six
