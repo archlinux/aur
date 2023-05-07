@@ -2,8 +2,8 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=gnome-shell-extension-gtile-git
-pkgver=51.r19.g6087d6c
-pkgrel=1
+pkgver=51.r20.gf19decf
+pkgrel=2
 pkgdesc="A window tiling extension for GNOME"
 arch=('any')
 url="https://github.com/gTile/gTile"
@@ -24,7 +24,7 @@ prepare() {
   cd "$srcdir/${pkgname%-git}"
 
   # Bump Bazel version:
-  sed -i 's/6.0.0/6.1.1/g' .bazelversion
+  sed -i 's/6.0.0/6.1.2/g' .bazelversion
 }
 
 build() {
