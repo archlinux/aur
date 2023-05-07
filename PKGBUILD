@@ -5,7 +5,7 @@ _projectname="${_pyname}"
 _pkgname="python-${_projectname}"
 pkgname="${_pkgname}-git"
 pkgver=0.4.0+7.r236.20230422.6f0706a
-pkgrel=2
+pkgrel=3
 pkgdesc="A small and insanely fast ARCFOUR (RC4) cipher implementation for Python."
 arch=(
   'aarch64'
@@ -26,6 +26,7 @@ depends=(
   'python>=3.7'
 )
 makedepends=(
+  'cython'
   'git'
   'python-build'
   'python-installer'
