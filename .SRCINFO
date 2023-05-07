@@ -1,0 +1,14 @@
+pkgbase = zp-git
+	pkgdesc = Low-level system and algorithmics library.
+	pkgver = 1.0.0_dev.66.35b8d60
+	pkgrel = 1
+	url = https://mandelbrot.dk/zp
+	arch = any
+	license = MPL2
+	makedepends = git
+	provides = zp
+	conflicts = zp
+	source = git+https://mandelbrot.dk/zp
+	sha512sums = SKIP
+
+pkgname = zp-git
