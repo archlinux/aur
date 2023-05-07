@@ -2,7 +2,7 @@ pkgbase='python-mayavi'
 pkgname=('python-mayavi')
 _module='mayavi'
 pkgver='4.8.1'
-pkgrel=3
+pkgrel=4
 pkgdesc="3D scientific data visualization library and application"
 url="http://docs.enthought.com/mayavi/mayavi/"
 depends=('python'
@@ -19,6 +19,7 @@ depends=('python'
          'cgns'
          'adios2'
          'libharu')
+replaces=('mayavi')
 makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')

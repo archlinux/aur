@@ -1,7 +1,7 @@
 pkgbase = python-mayavi
 	pkgdesc = 3D scientific data visualization library and application
 	pkgver = 4.8.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://docs.enthought.com/mayavi/mayavi/
 	arch = any
 	license = BSD
@@ -20,6 +20,7 @@ pkgbase = python-mayavi
 	depends = cgns
 	depends = adios2
 	depends = libharu
+	replaces = mayavi
 	source = https://files.pythonhosted.org/packages/source/m/mayavi/mayavi-4.8.1.tar.gz
 	source = mayavi-fixes.patch
 	source = mayavi2.desktop
