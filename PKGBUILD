@@ -3,13 +3,15 @@
 # Contributor: ninian <mcfadzean.org.uk ta linux>
 
 pkgname=vuescan-bin
-pkgver=9.7.82
+pkgver=9.7.99
 pkgrel=2
 pkgdesc="A powerful proprietary scanning tool developed by Hamrick Software"
 arch=(i686 x86_64 armv6h aarch64)
 url="https://www.hamrick.com/"
 license=('custom')
-depends=(gtk2 libsm libusb-compat)
+depends=(gtk2 libsm libusb)
+makedepends=(wget)
+optdepends=('gtk-engine-murrine: optional theme engine')
 options=(!strip) # required to accept registration details
 source=(
     "vuescan-LICENSE.txt"
