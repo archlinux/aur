@@ -1,7 +1,7 @@
 # Maintainer: Maciej Dems <macdems@gmail.com>
 pkgname='python-defopt'
 _module='defopt'
-pkgver=6.2.0
+pkgver=6.4.0
 pkgrel=1
 pkgdesc="Effortless argument parser"
 url="https://github.com/anntzer/defopt"
@@ -10,7 +10,7 @@ makedepends=('python-setuptools' 'python-wheel')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('cfe6ecfb54b1368a5cc45d9d58fb3c125e4b4b789e08fd29b5722404b57e137d')
+sha256sums=('359a56137b4b7dcbc051d2157e6591a09c35c4297cfc00f1ef8dbcd192d19a34')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
