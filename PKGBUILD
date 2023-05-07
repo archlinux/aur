@@ -1,9 +1,9 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=dxvk-nvapi-mingw
-pkgver=0.6.2
-pkgrel=2
-pkgdesc='Alternative NVAPI implementation on top of DXVK. '
+pkgver=0.6.3
+pkgrel=1
+pkgdesc='Alternative NVAPI implementation on top of DXVK'
 arch=('x86_64')
 url="https://github.com/jp7677/dxvk-nvapi"
 license=('MIT')
