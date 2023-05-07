@@ -1,0 +1,20 @@
+pkgbase = python-cinemagoer
+	pkgdesc = Python bindings for the Internet Movie Database (IMDb)
+	pkgver = 2023.05.01
+	pkgrel = 1
+	url = https://cinemagoer.github.io/
+	arch = any
+	license = GPL2
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-lxml
+	depends = python-sqlalchemy
+	depends = python-tqdm
+	depends = python-setuptools
+	depends = python-importlib-metadata
+	provides = python-imdbpy
+	conflicts = python-imdbpy
+	source = https://github.com/cinemagoer/cinemagoer/archive/refs/tags/2023.05.01.tar.gz
+	sha256sums = eceeae2c4241d2eab39aaddbe99a7aa61d28578fb127bf9aa44c8bea024c25e5
+
+pkgname = python-cinemagoer
