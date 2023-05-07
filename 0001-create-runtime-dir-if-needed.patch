@@ -1,0 +1,25 @@
+From 31fc30e2c3b392f2a2915a951f2ea34588f701ba Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=A9clairevoyant?=
+ <848000+eclairevoyant@users.noreply.github.com>
+Date: Sun, 7 May 2023 16:02:40 -0400
+Subject: [PATCH] create runtime dir if needed
+
+---
+ src/__init__.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/__init__.py b/src/__init__.py
+index 278362a..4d6187a 100644
+--- a/src/__init__.py
++++ b/src/__init__.py
+@@ -90,6 +90,7 @@ def first_open():
+     if os.path.exists(startup_file):
+         return False
+     else:
++        os.makedirs(os.path.dirname(startup_file), exist_ok=True)
+         with open(startup_file, "w") as f:
+             f.write("\n")
+         return True
+-- 
+2.40.1
+
