@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Snowball
+Comment=Find and filter literature, fast
+Exec=snowball-appimage
+Icon=snowball
+Terminal=false
+Type=Application
+Categories=Utility

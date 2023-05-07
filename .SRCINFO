@@ -1,0 +1,17 @@
+pkgbase = snowball-appimage
+	pkgdesc = Find and filter literature, fast
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/shaunabanana/snowball
+	arch = x86_64
+	license = custom:none
+	depends = fuse2
+	options = !strip
+	source = https://github.com/shaunabanana/snowball/releases/download/v1.4.0/Snowball-1.4.0.AppImage
+	source = snowball.desktop
+	source = snowball.png
+	sha256sums = 1397f77e84c62f7206ecc2c11226b8491236bb4fe5bb52ce6473e6200525f3c3
+	sha256sums = 4d88385a4c9f8557b0c231281eba34026e74cd4ddb02a014eaa5f40f7764b151
+	sha256sums = 15976501a5086fc900c2720e66dff9363702667c437bbaba210e3db860385632
+
+pkgname = snowball-appimage
