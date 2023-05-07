@@ -1,11 +1,14 @@
 pkgbase = picopt
 	pkgdesc = A multi format lossless image optimizer that uses external tools
 	pkgver = 3.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ajslater/picopt
 	arch = any
 	license = GPL2
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-confuse
 	depends = python-humanize
 	depends = python-dateutil
