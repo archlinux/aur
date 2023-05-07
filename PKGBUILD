@@ -14,9 +14,9 @@ md5sums=('SKIP')
 
 build() {
     cd "$srcdir/rgx"
-    dotnet build -c Release --sc --use-current-runtime -p:PublishSingleFile=true
+    dotnet publish -c Release --use-current-runtime
 }
 
 package() {
-    install -Dm755 "$srcdir/rgx/bin/Release/net6.0/linux-x64/rgx" "$pkgdir/usr/bin/rgx"
+    install -Dm755 "$srcdir/rgx/bin/Release/net6.0/linux-x64/publish/rgx" "$pkgdir/usr/bin/rgx"
 }

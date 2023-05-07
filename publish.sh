@@ -4,13 +4,16 @@ set -e # exit on error
 
 # make prebuilt executable
 dotnet clean
-dotnet build -c Release --sc --use-current-runtime -p:PublishSingleFile=true
+dotnet publish -c Release --use-current-runtime
 
 # update SRCINFO
 git clean -f
 git reset --hard
 makepkg --printsrcinfo > .SRCINFO
 (git add .SRCINFO && git commit -m "SRCINFO" && git push) || true
+
+# verify that makepkg works
+makepkg -C --noconfirm
 
 # push to aur
 if [ -z "$(git remote | grep aur)" ]; then
