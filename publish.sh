@@ -9,7 +9,8 @@ dotnet build -c Release
 
 # update SRCINFO
 makepkg --printsrcinfo > .SRCINFO
-git reset || true
+git clean -f
+git reset --hard
 (git add .SRCINFO && git commit -m "SRCINFO" && git push) || true
 
 # create tarball
