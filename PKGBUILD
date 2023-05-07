@@ -9,8 +9,8 @@ url="https://github.com/comroid-git/rgx"
 license=('MIT')
 depends=('dotnet-runtime-6.0')
 makedepends=('dotnet-sdk-6.0')
-source=("git+https://github.com/comroid-git/rgx.git" "git+https://github.com/comroid-git/csapi.git")
-md5sums=('SKIP' 'SKIP')
+source=("git+https://github.com/comroid-git/rgx.git")
+md5sums=('SKIP')
 
 build() {
     cd "$srcdir/rgx"
