@@ -10,7 +10,7 @@ license=('GPL2')
 makedepends=('meson')
 depends=('dconf' 'gnome-shell' 'bubblemail')
 source=("https://framagit.org/razer/${pkgfolder}/-/archive/v${pkgver}/${pkgfolder}-v${pkgver}.tar.bz2")
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums=('3b577d262dc1d981fb3016c69c0dc9a0b4a362bb451282f7abbee4537129c438')
 
 build() {
     cd ${srcdir}/${pkgfolder}-v${pkgver}
