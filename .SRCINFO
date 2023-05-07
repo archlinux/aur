@@ -1,11 +1,12 @@
 pkgbase = noto-fonts-main
 	pkgdesc = Google Noto for Latin, Greek, Cyrillic scripts.
 	pkgver = 20230428
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = https://fonts.google.com/noto
 	arch = any
 	license = OFL
+	provides = noto-fonts
 	conflicts = noto-fonts
 	conflicts = noto-fonts-extra
 	source = https://www.markusweimar.de/public/noto-fonts-main-20230428.tar.zst

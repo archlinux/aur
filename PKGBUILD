@@ -1,12 +1,13 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=noto-fonts-main
 pkgver=20230428
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc='Google Noto for Latin, Greek, Cyrillic scripts.'
 arch=('any')
 url='https://fonts.google.com/noto'
 license=('OFL')
+provides=('noto-fonts')
 conflicts=('noto-fonts'
            'noto-fonts-extra')
 source=("https://www.markusweimar.de/public/noto-fonts-main-${pkgver}.tar.zst")
