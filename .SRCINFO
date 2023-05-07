@@ -7,6 +7,8 @@ pkgbase = python-krfzf
 	license = GPL3
 	makedepends = python-build
 	makedepends = python-poetry
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python>=3.9.0
 	depends = python<4.0.0
 	source = https://files.pythonhosted.org/packages/78/93/c8eda31c6177f993cb111c9f8d7eec26cc949049c163f7561f13d5ecf316/krfzf_py-0.0.4.tar.gz
