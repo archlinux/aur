@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 build() {
     cd "$srcdir/rgx"
-    dotnet publish -c Release
+    dotnet publish -c Release --sc --use-current-runtime -p:PublishSingleFile=true -o publish
 }
 
 package() {
