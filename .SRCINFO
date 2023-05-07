@@ -1,7 +1,7 @@
 pkgbase = memeassembly
 	pkgdesc = A Meme-based programming language
 	pkgver = 1.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kammt.github.io/MemeAssembly/#/
 	arch = x86_64
 	license = GPL3
