@@ -4,3 +4,5 @@
 !/.gitignore
 !/.SRCINFO
 !/PKGBUILD
+
+!/undeclared_uint8_t.patch

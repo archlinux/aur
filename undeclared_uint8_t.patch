@@ -1,0 +1,11 @@
+diff '--color=auto' --unified --recursive --text indicators-2.3.orig/include/indicators/termcolor.hpp indicators-2.3.new/include/indicators/termcolor.hpp
+--- indicators-2.3.orig/include/indicators/termcolor.hpp	2023-05-07 12:45:37.182167359 +0300
++++ indicators-2.3.new/include/indicators/termcolor.hpp	2023-05-07 12:46:17.115501274 +0300
+@@ -14,6 +14,7 @@
+ 
+ #include <iostream>
+ #include <cstdio>
++#include <cstdint>
+ 
+ // Detect target's platform and set some macros in order to wrap platform
+ // specific code this library depends on.
