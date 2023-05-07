@@ -14,7 +14,7 @@
     </PropertyGroup>
     
     <ItemGroup Condition="Exists('$(LibCommon)')">
-      <ProjectReference Include="$(LibCommon)" />
+        <ProjectReference Include="$(LibCommon)" />
     </ItemGroup>
     
     <ItemGroup Condition="!Exists('$(LibCommon)')">

@@ -1,7 +1,4 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "common", "..\csapi\common\common.csproj", "{4DDF6CC1-61A0-457B-8884-9C949B9A5A48}"
-EndProject
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rgx", "rgx.csproj", "{4F978088-3BEE-4BF6-AA36-669AB060C087}"
 EndProject
 Global
@@ -10,10 +7,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4DDF6CC1-61A0-457B-8884-9C949B9A5A48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4DDF6CC1-61A0-457B-8884-9C949B9A5A48}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4DDF6CC1-61A0-457B-8884-9C949B9A5A48}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4DDF6CC1-61A0-457B-8884-9C949B9A5A48}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4F978088-3BEE-4BF6-AA36-669AB060C087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4F978088-3BEE-4BF6-AA36-669AB060C087}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F978088-3BEE-4BF6-AA36-669AB060C087}.Release|Any CPU.ActiveCfg = Release|Any CPU
