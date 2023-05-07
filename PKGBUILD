@@ -11,7 +11,7 @@ makedepends=(python-setuptools)
 depends=(python-requests)
 install="$pkgname.install"
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('36035b9d7b351d2091e07491dec2be249f62d066c4e509b04da897b7d94821ff')
+sha256sums=('87f6166a9e0f50926257c8df31260b6a673d6e0f9cb3a8ab266cc0b456487f34')
 
 package() {
   cd $pkgname-$pkgver
