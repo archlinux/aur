@@ -1,15 +1,3 @@
-diff --git a/data/ui/password_entry.blp b/data/ui/password_entry.blp
-index 81be5971f784d2b3710f97ee728f1471729cfdca..6fefbb43bb8a6b89440b0998b2b1f3e4e67eac6e 100644
---- a/data/ui/password_entry.blp
-+++ b/data/ui/password_entry.blp
-@@ -67,7 +67,6 @@ template HealthPasswordEntry : Adw.Bin {
-     }
- 
-     LevelBar password_strength_bar {
--      max-value: 5;
-       mode: discrete;
-       margin-start: 6;
-       margin-end: 6;
 diff --git a/dev.Cogitri.Health.Devel.json b/dev.Cogitri.Health.Devel.json
 index d95324fa13eacb7b5f95faa9c5d579d23324ba07..f80323673c635efc5e762a1d0c3f5c6464252946 100644
 --- a/dev.Cogitri.Health.Devel.json
