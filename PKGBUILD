@@ -17,8 +17,8 @@ pkgver() {
 }
 build() {
 	cd "${srcdir}/agbsum"
-	cmake -Bbuild -DCMAKE_BUILD_TYPE=Release
-	cmake --build build
+	cmake -B"build" -DCMAKE_BUILD_TYPE="Release"
+	cmake --build "build"
 }
 package() {
 	cd "${srcdir}/agbsum"
