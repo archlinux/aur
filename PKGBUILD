@@ -1,6 +1,6 @@
 # Maintainer: Thomas Frans <franske2000 at gmail dot com>
 pkgname=wiki-tui
-pkgver=0.6.1
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="A simple and easy to use Wikipedia Text User Interface"
 arch=('x86_64')
@@ -10,7 +10,9 @@ depends=('ncurses')
 makedepends=('rust' 'cargo' 'git')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
+# The tags provide source, releases don't
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+# No checksum provided for tags
 md5sums=('SKIP')
 
 prepare() {
