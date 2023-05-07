@@ -1,0 +1,18 @@
+pkgbase = usbredir-git
+	pkgdesc = usbredir libraries and utilities
+	pkgver = 0.13.0.10.g39fca2b
+	pkgrel = 1
+	url = https://www.spice-space.org/usbredir.html
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	makedepends = git
+	makedepends = meson
+	depends = libusb
+	depends = glib2
+	provides = usbredir
+	conflicts = usbredir
+	source = git+https://gitlab.freedesktop.org/spice/usbredir.git
+	sha256sums = SKIP
+
+pkgname = usbredir-git
