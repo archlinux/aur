@@ -1,5 +1,4 @@
-235a236,250
-> static void
+232a233,248
 > adw_style_manager_theme_changed(GSettings *settings, const char *key, GdkDisplay *display)
 > {
 >   char *theme = g_settings_get_string(settings, "gtk-theme");
@@ -14,7 +13,9 @@
 >                 NULL);
 > }
 > 
-261,273c276,281
+> 
+> static void
+257,269c273,280
 <       g_object_set (gtk_settings_get_for_display (self->display),
 <                     "gtk-theme-name", "Adwaita-empty",
 <                     NULL);
@@ -29,8 +30,10 @@
 <                                                   GTK_STYLE_PROVIDER (self->colors_provider),
 <                                                   GTK_STYLE_PROVIDER_PRIORITY_THEME);
 ---
->       GSettingsSchemaSource *schema_source = g_settings_schema_source_get_default();
->       GSettingsSchema *schema =  g_settings_schema_source_lookup(schema_source, "org.gnome.desktop.interface", true);
+>       GSettingsSchemaSource *schema_source =
+>           g_settings_schema_source_get_default();
+>       GSettingsSchema *schema = g_settings_schema_source_lookup(
+>           schema_source, "org.gnome.desktop.interface", true);
 >       GSettings *interface_settings = g_settings_new_full(schema, NULL, NULL);
 > 
 >       adw_style_manager_theme_changed(interface_settings, "gtk-theme", self->display);
