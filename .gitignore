@@ -1,6 +1,4 @@
-src/
-pkg/
-linux/
-
-*.pkg.tar.zst
-*.pkg.tar.xz
+pkg
+src
+linux-torvalds
+*.zst

@@ -1,42 +1,88 @@
-# Maintainer: Jonathan Wright <jon@than.io>
-# Contributor: Boohbah <boohbah at gmail.com>
-# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer: David Cohen <dacohen@pm.me>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+
+# This PKGBUILD script and the config file are based on official Arch's linux package
+# Refer to config file to get the exact versions it's based on. Any changes to the config
+# will be on config.extra file.
 
 pkgbase=linux-git
-pkgver=5.10rc2.r81.g4ef8451b3326
+pkgver=v6.4.rc1.r0.ac9a78681b92
 pkgrel=1
-pkgdesc='Linux (Git)'
+pkgdesc="Linus Torvalds' Mainline Linux"
 url="https://www.kernel.org"
 arch=(x86_64)
 license=(GPL2)
+_userconfig="/etc/${pkgbase}/config"
+_userremote="/etc/${pkgbase}/remote"
+_userpatches="/etc/${pkgbase}/patches/patches"
+backup=(
+"${_userconfig##/}"
+"${_userremote##/}"
+"${_userpatches##/}"
+)
 makedepends=(
-  bc kmod libelf git pahole
+  bc libelf pahole cpio perl tar xz gettext
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
+  git
 )
 options=('!strip')
-_srcname=linux
+_srcname=linux-torvalds
 source=(
-  'git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux'
+  "$_srcname::git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux"
   config         # the main kernel config file
+  config.extra   # additional configs
+  config.user    # user custom config
+  remote         # custom remote config
+  patches        # user patches config
+)
+validpgpkeys=(
+  'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
+  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 sha256sums=('SKIP'
-            'a01c8ef3463c239f868fa679006bc591b1a088274dde8c9c162440dd0547ccad')
+            '6b337a9d3cfdc00005589a80b8d36fa500f6a92ed21565a3aceec48d7202a7da'
+            '6e41a729c2f2946d3606ca2c0cb3a058c9700b0f73110eed36dcba91a271e50f'
+            'b5ced6ad1f03a5cfe6dccc0b2b31f91420cfe97823e5d15d5b94b7224362daa9'
+            'b5560bc5fb8967aec989b757af8eb4d2f5166a830abb732c8c880fb953dcb52f'
+            '986e39ee1cb41d342b19f1c5af8016d48afa1e182237dbdcc3f222ae4203ef2d')
+
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 pkgver() {
-  cd $_srcname
-
-  git describe --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\.rc/rc/'
+  cd "$srcdir/$_srcname"
+  if [[ -n "$REMOTE_URL" ]]; then
+    # if $REMOTE_URL was created, it's safe to use $REMOTE
+    printf "%s" "$(git describe --dirty=-patched --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g').${REMOTE/\//.}"
+  else
+    printf "%s" "$(git describe --dirty=-patched --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  fi
 }
 
 prepare() {
   cd $_srcname
 
+  [[ -f "$_userremote" ]] && source "$_userremote"
+  if [[ -n "$REMOTE" && -n "$COMMIT" ]]; then
+    REMOTE_PREFIX=${source[0]##${_srcname}::git+}
+    REMOTE_PREFIX=${REMOTE_PREFIX%%torvalds/linux}
+    REMOTE_URL=${REMOTE_PREFIX}${REMOTE}
+    echo
+    echo "================================================================================"
+    echo "Build script detected custom variables \$REMOTE and \$COMMIT are being used:"
+    echo "REMOTE_PREFIX: $REMOTE_PREFIX"
+    echo "REMOTE_TIP   : $REMOTE"
+    echo "COMMIT       : $COMMIT"
+    echo "================================================================================"
+    echo
+    echo "Fetching ${REMOTE_PREFIX}${REMOTE} ${COMMIT}"
+    git fetch -t ${REMOTE_URL} ${COMMIT}
+    git checkout -f FETCH_HEAD
+  fi
+
   echo "Setting version..."
-  scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
 
@@ -49,9 +95,26 @@ prepare() {
     patch -Np1 < "../$src"
   done
 
+  [[ -f "$_userpatches" ]] && source "$_userpatches"
+  PATCHES_PREFIX=${_userpatches%%patches}
+  _USER_PATCHES="0"
+  for src in "${PATCHES}"; do
+    [[ $src = *.patch ]] || continue
+    echo "Applying user patch $src..."
+    patch -Np1 < "${PATCHES_PREFIX}$src"
+    _USER_PATCHES="1"
+  done
+
+  # Let user see the patches were applied before proceed with the build
+  [[ ${_USER_PATCHES} = "1" ]] && sleep 2
+
   echo "Setting config..."
-  cp ../config .config
+  cat ../config ../config.extra > .config
+  if [[ -f "$_userconfig" ]]; then
+    cat $_userconfig >> .config
+  fi
   make olddefconfig
+  diff -u ../config .config || :
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
@@ -60,16 +123,15 @@ prepare() {
 build() {
   cd $_srcname
   make all
-  make htmldocs
 }
 
 _package() {
   pkgdesc="The $pkgdesc kernel and modules"
   depends=(coreutils kmod initramfs)
-  optdepends=('crda: to set the correct wireless channels of your country'
+  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
-  provides=(WIREGUARD-MODULE)
-  replaces=(wireguard-arch)
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
+  replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
   cd $_srcname
   local kernver="$(<version)"
@@ -84,14 +146,21 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
+
+  # install config files
+  install -Dm644 $srcdir/config.user "${pkgdir}${_userconfig}"
+  install -Dm644 $srcdir/remote "${pkgdir}${_userremote}"
+  install -Dm644 $srcdir/patches "${pkgdir}${_userpatches}"
 }
 
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+  depends=(pahole)
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -103,11 +172,13 @@ _package-headers() {
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
 
-  # add objtool for external module building and enabled VALIDATION_STACK option
+  # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-  # add xfs and shmem for aufs building
-  mkdir -p "$builddir"/{fs/xfs,mm}
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  if [[ -f "$builddir/tools/bpf/resolve_btfids" ]]; then
+    install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+  fi
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
@@ -117,13 +188,16 @@ _package-headers() {
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-  # http://bugs.archlinux.org/task/13146
+  # https://bugs.archlinux.org/task/13146
   install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-  # http://bugs.archlinux.org/task/20402
+  # https://bugs.archlinux.org/task/20402
   install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+  # https://bugs.archlinux.org/task/71392
+  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
@@ -148,7 +222,7 @@ _package-headers() {
   echo "Stripping build tools..."
   local file
   while read -rd '' file; do
-    case "$(file -bi "$file")" in
+    case "$(file -Sbi "$file")" in
       application/x-sharedlib\;*)      # Libraries (.so)
         strip -v $STRIP_SHARED "$file" ;;
       application/x-archive\;*)        # Libraries (.a)
@@ -168,27 +242,7 @@ _package-headers() {
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-_package-docs() {
-  pkgdesc="Documentation for the $pkgdesc kernel"
-
-  cd $_srcname
-  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
-
-  echo "Installing documentation..."
-  local src dst
-  while read -rd '' src; do
-    dst="${src#Documentation/}"
-    dst="$builddir/Documentation/${dst#output/}"
-    install -Dm644 "$src" "$dst"
-  done < <(find Documentation -name '.*' -prune -o ! -type d -print0)
-
-  echo "Adding symlink..."
-  mkdir -p "$pkgdir/usr/share/doc"
-  ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
-}
-
-
-pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
+pkgname=("$pkgbase" "$pkgbase-headers")
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
