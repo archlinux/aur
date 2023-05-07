@@ -63,10 +63,14 @@ _prepare() {
 }
 
 prepare() {
-  # FFmpeg4
-  (git clone "${srcdir}/sdk" build; cd build; _prepare; ./autogen.sh)
-  (git clone "${srcdir}/sdk" build-python; cd build-python; _prepare; ./autogen.sh)
-
+  (git clone "${srcdir}/sdk" build
+   cd build
+   _prepare
+   ./autogen.sh
+   # fix autogen am__pep3147_tweak fails
+   sed -e "/^am__py_compile/aam__pep3147_tweak \= \\\\\n  sed \-e 's\|\\\.py\$\$\|\|' \-e 's\|\[\^\/\]\*\$\$\|__pycache__\/&\.\*\.pyc __pycache__\/&\.\*\.pyo\|'/" \
+     -i Makefile.in
+   )
 }
 
 build() {
@@ -74,31 +78,19 @@ build() {
   cd "${srcdir}/build"
   ./configure \
     --prefix=/usr \
-    --without-freeimage
-
-  sed '/install-binPROGRAMS: install-libLTLIBRARIES/d' -i Makefile
-
-  make
-
-  msg2 "Build Python bindings"
-  cd "${srcdir}/build-python"
-  ./configure \
-    --prefix=/usr \
     --without-freeimage \
-    --disable-examples \
     --enable-python \
     --with-python3
 
-  # FFFFUUUUU hack
-  cp "${srcdir}/build/src/libmega.la" src/libmega.la
-  make bindings/python/_mega.la
-  sed "/^dependency_libs/cdependency_libs=''" \
-    -i src/libmega.la
-  sed "/^dependency_libs/cdependency_libs='-L/usr/lib -lpython$(python --version | cut -d ' ' -f2 | cut -d '.' -f1-2) ${srcdir}/build/python/src/libmega.la -lrt -ldl'" \
-    -i bindings/python/_mega.la
-  rm -fr bindings/python/.{libs,deps}
-  # yesh, again...
-  make bindings/python/_mega.la
+  # force no install the libs when install the executables when do "make install"
+  # force no install the python libs/foo when do "make install"
+  sed -e '/install-binPROGRAMS: install-libLTLIBRARIES/d' \
+      -e 's|install-nodist_pkgpythonPYTHON install-phpLTLIBRARIES|install-phpLTLIBRARIES|g' \
+      -e 's|install-pkgconfigDATA install-pkgpythonPYTHON|install-pkgconfigDATA|g' \
+      -e 's|install-pkglibLTLIBRARIES install-pkgpyexecLTLIBRARIES|install-pkglibLTLIBRARIES|g' \
+      -i Makefile
+
+  make
 
   cd bindings/python
   sed -e "s|'libmega.so', ||g" \
@@ -136,6 +128,7 @@ package_libmega-git() {
   )
 
   make -C build DESTDIR="${pkgdir}" install-data install-libLTLIBRARIES install-pkgconfigDATA
+  make -C build DESTDIR="${pkgdir}" uninstall-nodist_pkgpythonPYTHON uninstall-pkgpyexecLTLIBRARIES uninstall-pkgpythonPYTHON
 
   install -Dm644 sdk/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
@@ -201,7 +194,7 @@ package_python-megasync-git() {
     'python'
   )
 
-  cd build-python/bindings/python
+  cd build/bindings/python
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
   _sites_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
