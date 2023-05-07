@@ -9,14 +9,20 @@
         <Company>comroid</Company>
         <AssemblyVersion>0.1.0</AssemblyVersion>
         <FileVersion>0.10</FileVersion>
+        
+        <LibCommonPath>..\csapi\common\common.csproj</LibCommonPath>
     </PropertyGroup>
-
-    <ItemGroup>
-      <PackageReference Include="CommandLineParser" Version="2.9.1" />
+    
+    <ItemGroup Condition="Exists('$(LibCommon)')">
+      <ProjectReference Include="$(LibCommon)" />
+    </ItemGroup>
+    
+    <ItemGroup Condition="!Exists('$(LibCommon)')">
+        <PackageReference Include="comroid.csapi.common" Version="0.1.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\csapi\common\common.csproj" />
+        <PackageReference Include="CommandLineParser" Version="2.9.1" />
     </ItemGroup>
 
 </Project>
