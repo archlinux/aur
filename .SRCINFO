@@ -1,16 +1,19 @@
 pkgbase = jupyter-gnuplot_kernel
 	pkgdesc = A Jupyter/IPython kernel for gnuplot
 	pkgver = 0.4.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/has2k1/gnuplot_kernel
 	install = jupyter-gnuplot_kernel.install
 	arch = any
 	license = BSD
 	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = jupyter-metakernel
 	depends = gnuplot
-	source = https://github.com/has2k1/gnuplot_kernel/archive/v0.4.1.tar.gz
+	source = gnuplot_kernel-0.4.1.tar.gz::https://github.com/has2k1/gnuplot_kernel/archive/v0.4.1.tar.gz
 	sha512sums = 00e51bc5cf77d3618ed53e0e2224d0b03ac4ac4a283d9991896a4a84abe441c0fd2ec592afd5a4415e84dfd2d3b707a13de43bbd002d3be1585e308e0942a6fd
 
 pkgname = jupyter-gnuplot_kernel
