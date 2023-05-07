@@ -7,7 +7,7 @@ pkgver() {
   cd "JanD"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=r142.0770952
+pkgver=r144.e5eec4b
 pkgrel=1
 pkgbase=jand-git
 replaces=()
@@ -15,7 +15,7 @@ arch=('x86_64')
 url="https://github.com/Jan0660/JanD"
 license=('MIT')
 groups=()
-makedepends=('git' 'dotnet-sdk-7.0' 'clang' 'llvm')
+makedepends=('git' 'dotnet-sdk-8.0' 'clang' 'llvm')
 depends=()
 source=('git+https://github.com/Jan0660/JanD.git')
 sha256sums=('SKIP')
