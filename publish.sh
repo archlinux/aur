@@ -13,7 +13,7 @@ makepkg --printsrcinfo > .SRCINFO
 (git add .SRCINFO && git commit -m "SRCINFO" && git push) || true
 
 # verify that makepkg works
-makepkg -C --noconfirm
+makepkg -Cc --noconfirm
 
 # push to aur
 if [ -z "$(git remote | grep aur)" ]; then
