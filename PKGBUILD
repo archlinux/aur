@@ -4,7 +4,7 @@
 
 _pkgname=svt-av1
 pkgname=lib32-svt-av1
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Scalable Video Technology AV1 encoder and decoder'
 arch=('x86_64')
@@ -27,7 +27,7 @@ provides=(
   'libSvtAv1Dec.so'
   'libSvtAv1Enc.so'
 )
-_tag=018276d714ce65d9b586f6205ee016cbd8d5425d
+_tag=ea296ef350714fb6f105b420fb0bc321d9997ffd
 source=("git+https://gitlab.com/AOMediaCodec/SVT-AV1.git#tag=${_tag}")
 b2sums=('SKIP')
 
@@ -58,7 +58,10 @@ build() {
 package() {
   DESTDIR="${pkgdir}" ninja -C build install
   rm -fr "${pkgdir}/usr/include"
-  (cd "${pkgdir}/usr/bin"; mv SvtAv1DecApp SvtAv1DecApp-32)
-  (cd "${pkgdir}/usr/bin"; mv SvtAv1EncApp SvtAv1EncApp-32)
+  (
+    cd "${pkgdir}/usr/bin"
+    mv SvtAv1DecApp SvtAv1DecApp-32
+    mv SvtAv1EncApp SvtAv1EncApp-32
+  )
   install -Dm 644 SVT-AV1/{LICENSE,PATENTS}.md -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
