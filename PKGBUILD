@@ -1,7 +1,7 @@
 # Maintainer: Imran Iqbal <imran@imraniqbal.org>
 pkgname=cf-ddns
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple program to update Cloudflare A records, useful for dynamic dns'
 arch=('x86_64')
 url="https://git.sr.ht/~imraniq/$pkgname"
