@@ -1,7 +1,7 @@
 # Maintainer: Malacology <guoyizhang at malacology dot net>
 # Contributor: Malacology <guoyizhang at malacology dot net>
 basename=beast
-pkgname=('beast' 'beastgen' 'coalgen' 'phylogeography' )
+pkgname=('beast' 'beastgen' 'coalgen' 'phylogeography' 'pibuss')
 pkgver=1.10.4
 pkgrel=0
 arch=('x86_64')
@@ -91,30 +91,30 @@ package_beastgen(){
   install -Dm 755 $pkgname $pkgdir/usr/bin/$pkgname
 }
 
-#package_pibuss(){
-#  pkgdesc="a BEAST/BEAGLE utility for sequence simulation, which provides an easy to use interface that allows flexible and extensible phylogenetic data fabrication. https://doi.org/10.1186/1471-2105-15-133"
-#  optdepends=('beagle-lib')
-#  # install jar
-#  cd $srcdir/$basename-mcmc-${pkgver//__/-}
-#  cd dist_pibuss
-#  install -Dm 755 buss.jar $pkgdir/usr/share/$pkgname/buss.jar
-#
-#  # install bin
-#  cd $srcdir/$basename-mcmc-${pkgver//__/-}
-#  cd release_pibuss/Linux/scripts/
-#  sed -i "s@/usr/local/lib@/usr/lib@g" pibuss
-#  sed -i "s@\$PIBUSS/lib@/usr/share/pibuss@g" pibuss
-#  install -Dm 755 $pkgname $pkgdir/usr/bin/$pkgname
-#
-#  # install icons
-#  cd $srcdir/$basename-mcmc-${pkgver//__/-}
-#  cd release_pibuss/Linux/icons
-#  install -Dm 644 $pkgname.png  $pkgdir/usr/share/pixmaps/$pkgname.png
-#
-#  # install pibuss.desktop
-#  gendesk --pkgname "$pkgname" --pkgdesc "$pkgdesc" --exec="$pkgname" --icon="/usr/share/pixmaps/$pkgname.png"
-#  install -Dm 755 $pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
-#}
+package_pibuss(){
+  pkgdesc="a BEAST/BEAGLE utility for sequence simulation, which provides an easy to use interface that allows flexible and extensible phylogenetic data fabrication. https://doi.org/10.1186/1471-2105-15-133"
+  optdepends=('beagle-lib')
+  # install jar
+  cd $srcdir/$basename-mcmc-${pkgver//__/-}
+  cd dist_pibuss
+  install -Dm 755 buss.jar $pkgdir/usr/share/$pkgname/buss.jar
+
+  # install bin
+  cd $srcdir/$basename-mcmc-${pkgver//__/-}
+  cd release_pibuss/Linux/scripts/
+  sed -i "s@/usr/local/lib@/usr/lib@g" pibuss
+  sed -i "s@\$PIBUSS/lib@/usr/share/pibuss@g" pibuss
+  install -Dm 755 $pkgname $pkgdir/usr/bin/$pkgname
+
+  # install icons
+  cd $srcdir/$basename-mcmc-${pkgver//__/-}
+  cd release_pibuss/Linux/icons
+  install -Dm 644 $pkgname.png  $pkgdir/usr/share/pixmaps/$pkgname.png
+
+  # install pibuss.desktop
+  gendesk --pkgname "$pkgname" --pkgdesc "$pkgdesc" --exec="$pkgname" --icon="/usr/share/pixmaps/$pkgname.png"
+  install -Dm 755 $pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+}
 
 package_coalgen(){
   pkgdesc="BEAST Coalescent Tree Simulator https://doi.org/10.1186/1471-2148-7-214"

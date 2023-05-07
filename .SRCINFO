@@ -30,3 +30,7 @@ pkgname = coalgen
 pkgname = phylogeography
 	pkgdesc = BEAST PhyloGeography https://doi.org/10.1186/1471-2148-7-214
 	optdepends = beagle-lib
+
+pkgname = pibuss
+	pkgdesc = a BEAST/BEAGLE utility for sequence simulation, which provides an easy to use interface that allows flexible and extensible phylogenetic data fabrication. https://doi.org/10.1186/1471-2105-15-133
+	optdepends = beagle-lib
