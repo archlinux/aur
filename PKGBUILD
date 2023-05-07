@@ -1,6 +1,6 @@
 # Maintainer: 0xMRTT <0XMRTT@proton.me>
 
-pkgname=python-hgchat
+pkgname=python-googlebardpy
 _name=${pkgname#python-}
 pkgver=0.1.0
 pkgrel=1
