@@ -3,7 +3,7 @@
 
 pkgname=mopidy-youtube-git
 _pkgname=mopidy-youtube
-pkgver=v3.5.r13.g9e72d58
+pkgver=3.6.r22.g0a069b7
 pkgrel=1
 pkgdesc="Mopidy extension for playing music from Youtube"
 
@@ -21,12 +21,13 @@ depends=(
   'python-ytmusicapi')
 makedepends=('python' 'git')
 
+provides=("$_pkgname=$pkgver")
 conflicts=("mopidy-youtube")
 source=("$_pkgname::git+$url.git")
 
 pkgver() {
   cd "$_pkgname"
-  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;'
 }
 
 package() {
