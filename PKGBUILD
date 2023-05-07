@@ -1,6 +1,6 @@
 # Maintainer: Jakob (XDjackieXD) <aur at chaosfield dot at>
 pkgname=rmfakecloud
-pkgver=0.0.7
+pkgver=0.0.13.2
 pkgrel=1
 pkgdesc="host your own cloud for the remarkable"
 arch=('x86_64')
@@ -18,11 +18,9 @@ source=(
   "rmfakecloud.service"
   "rmfakecloud.conf"
 )
-sha256sums=(
-  '089d86815606a7aa32a630c6a867a9e7dbaed4b6fb26231aa7e5f78fbf97b011'
-  '5f5ba109ab19df8f00bae6300f0f7028a7995f2b54d0505e703dd5f04d83468a'
-  'f992a133142f9706e700531fc23ea7eb8ba7f2bfda97626bcccd121e06610a10'
-)
+sha256sums=('4e58f21624241447629cc6c6fab1acbb97423540f85fa9050ec557f3bdbac097'
+            '5f5ba109ab19df8f00bae6300f0f7028a7995f2b54d0505e703dd5f04d83468a'
+            'f992a133142f9706e700531fc23ea7eb8ba7f2bfda97626bcccd121e06610a10')
 backup=(
   'etc/rmfakecloud.conf'
 )
