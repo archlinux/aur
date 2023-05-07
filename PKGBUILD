@@ -3,7 +3,7 @@
 _base=matplotlib-cpp
 pkgname="${_base}"-git
 pkgver=r177.ef0383f
-pkgrel=1
+pkgrel=2
 pkgdesc="Extremely simple yet powerful header-only C++ plotting library built on the popular matplotlib"
 arch=('i686' 'x86_64')
 url="https://github.com/lava/${_base}"
