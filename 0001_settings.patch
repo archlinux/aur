@@ -1,0 +1,34 @@
+commit fb27ee910dd22d571291484b7867fab123973681
+Author: Mirco Bauer <meebey@meebey.net>
+Date:   Sun May 7 09:28:07 2023 +0800
+
+    Engine: fix UserConfig.SetAll() discarding all passed settings
+    
+    Due to the abstraction the input to UserConfig.SetAll() expects
+    non-prefixed config keys while _Config.SetAll() expects them prefixed.
+    
+    This mismatch in key structure lead to losing/discarding all pushed
+    settings. Prepending _UserPrefix fixes this issue and resolves GH-296.
+
+diff --git a/src/Engine/Config/UserConfig.cs b/src/Engine/Config/UserConfig.cs
+index 7f4a8b41..c6c7825b 100644
+--- a/src/Engine/Config/UserConfig.cs
++++ b/src/Engine/Config/UserConfig.cs
+@@ -1,7 +1,7 @@
+ /*
+  * Smuxi - Smart MUltipleXed Irc
+  *
+- * Copyright (c) 2005-2006, 2010-2011, 2013, 2015, 2017 Mirco Bauer <meebey@meebey.net>
++ * Copyright (c) 2005-2006, 2010-2011, 2013, 2015, 2017, 2021, 2023 Mirco Bauer <meebey@meebey.net>
+  *
+  * Full GPL License: <http://www.gnu.org/licenses/gpl.txt>
+  *
+@@ -176,7 +176,7 @@ namespace Smuxi.Engine
+                     continue;
+                 }
+ 
+-                filteredSettings.Add(setting.Key, setting.Value);
++                filteredSettings.Add(_UserPrefix + setting.Key, setting.Value);
+                 // update entry in cache
+                 if (IsCaching) {
+                     _Cache[setting.Key] = setting.Value;

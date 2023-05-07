@@ -1,7 +1,7 @@
 pkgbase = smuxi
 	pkgdesc = User-friendly and cross-platform IRC client for sophisticated users for GNOME/GTK+
 	pkgver = 1.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://smuxi.im/
 	arch = any
 	license = GPL
@@ -14,9 +14,11 @@ pkgbase = smuxi
 	options = !emptydirs
 	source = https://smuxi.im/jaws/data/files/smuxi-1.2.1.tar.gz
 	source = https://smuxi.im/jaws/data/files/smuxi-1.2.1.tar.gz.asc
+	source = 0001_settings.patch
 	validpgpkeys = A3712C8E4CE449B9F28C563F33A429E62D907822
 	sha256sums = cb96475e4ec3479b37b4357178cb00a1a404a67ba24d5fc0f6c4fd3fae5816e5
 	sha256sums = SKIP
+	sha256sums = 13b90091331972f57e290d838bc2d524bf63cc8c3b1cf91d9fa31d749307ae3e
 
 pkgname = smuxi-server
 	pkgdesc = User-friendly and cross-platform IRC client for sophisticated users for GNOME/GTK+ (common files and server)

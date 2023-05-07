@@ -8,21 +8,26 @@
 pkgbase=smuxi
 pkgname=('smuxi-server' 'smuxi')
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="User-friendly and cross-platform IRC client for sophisticated users for GNOME/GTK+"
 arch=('any')
 url="https://smuxi.im/"
 license=('GPL')
 makedepends=('notify-sharp' 'log4net' 'nini' 'gtkspell' 'stfl' 'intltool')
 options=('!emptydirs')
-source=(https://smuxi.im/jaws/data/files/$pkgbase-$pkgver.tar.gz{,.asc})
+source=(https://smuxi.im/jaws/data/files/$pkgbase-$pkgver.tar.gz{,.asc}
+        0001_settings.patch)
 validpgpkeys=('A3712C8E4CE449B9F28C563F33A429E62D907822') # Mirco Bauer
 sha256sums=('cb96475e4ec3479b37b4357178cb00a1a404a67ba24d5fc0f6c4fd3fae5816e5'
-            'SKIP')
+            'SKIP'
+            '13b90091331972f57e290d838bc2d524bf63cc8c3b1cf91d9fa31d749307ae3e')
 
 prepare() {
   cd $pkgbase-$pkgver
   sed -i 's|$(datarootdir)/appdata|$(datarootdir)/metainfo|' src/Frontend-GNOME/Makefile.{am,in}
+
+  # Patch for not applied settings
+  patch -Np1 -i "$srcdir"/0001_settings.patch
 }
 
 build() {
