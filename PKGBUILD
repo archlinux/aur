@@ -3,14 +3,14 @@
 # Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=tootle-git
-pkgver=2.0.alpha1.r5.g1010a78
+pkgver=r438.b4046da
 pkgrel=1
 pkgdesc='GTK4 client for Mastodon (git)'
 arch=('i686' 'x86_64' 'aarch64')
-url=https://github.com/bleakgrey/tootle
+url=https://gitlab.gnome.org/World/tootle.git
 license=(GPL3)
-depends=(granite libhandy gtk4)
-makedepends=(git meson ninja vala gobject-introspection libadwaita)
+depends=(granite libhandy gtk4 libadwaita libsoup)
+makedepends=(git meson ninja vala gobject-introspection)
 provides=(tootle)
 conflicts=(tootle)
 source=(git+$url)
@@ -18,7 +18,8 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd tootle
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' 
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  #git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' 
   #| cut -c2-48
 }
 
