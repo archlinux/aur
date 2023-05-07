@@ -7,7 +7,7 @@
 
 pkgname=zulip-desktop-bin
 _pkgname=zulip-desktop
-pkgver=5.9.5
+pkgver=5.10.0
 pkgrel=1
 pkgdesc='Real-time team chat based on the email threading model (bin)'
 arch=(x86_64)
@@ -20,7 +20,7 @@ source=($pkgname-$pkgver.tar.xz::https://github.com/zulip/$_pkgname/releases/dow
         https://raw.githubusercontent.com/zulip/$_pkgname/v$pkgver/LICENSE
         $_pkgname.desktop
         https://raw.githubusercontent.com/zulip/$_pkgname/v$pkgver/build/zulip.png)
-sha512sums=('999ab357a5f5d0ea13a42cb169f4b8622aadad7743edd04e7e7726931f02e4683218d602f42ae93d3f1199694140ffe97fed38c2d402a420e0a2729ff1c73ac6'
+sha512sums=('0e18c3b6e03d798167683cc5b4c7079a062e6f42d169269a4a862fb5eed89a6e5a0042d57f7c3e3b1e3a0d308396aa84a80daee54e4abb3747202cf513d1f6af'
             '389080b6132d3eaae780648d6998390d8cc71908561bce09578e27c542aa1a9f3122e01f640c5b01bee73004c23aa4e9f2066fe5ee0ca2072c2420578b28d71f'
             '4899b20aaff5f8906de1c9d0f9b54d440e9b22cd19a8b383def92b973a8c4d954f88cee623744ec42546dc2f82d4849bcc1c49917efbea9ab346d41ac0dba589'
             '7dc054b1dae348312d4d11ef737a1224f2d3b08048c6971fd8a70821a58aa62287eead44a667881eb1618f562104d3214e786a39c98a595e1db7e1b5f3410820')
