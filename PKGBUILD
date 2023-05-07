@@ -1,7 +1,7 @@
 # Maintainer: xsmile <>
 
 pkgname=chromexup
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc='External extension updater for Chromium based browsers'
 arch=(any)
