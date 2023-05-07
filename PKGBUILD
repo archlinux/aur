@@ -60,9 +60,6 @@ _prepare() {
       -e 's|FFMPEG_LIBS\=\[\"|&-L/usr/lib/ffmpeg4.4 |g' \
       -e 's|FFMPEG_LIBS\=\"|&-L/usr/lib/ffmpeg4.4 |g' \
       -i configure.ac
-  sed -e '359a \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ INCLUDEPATH += /usr/include/ffmpeg4.4' \
-      -e's|LIBS += -lavcodec|LIBS += -L/usr/lib/ffmpeg4.4 -lavcodec|g' \
-      -i bindings/qt/sdk.pri
 }
 
 prepare() {
@@ -92,9 +89,22 @@ build() {
     --enable-python \
     --with-python3
 
-  make
+  # FFFFUUUUU hack
+  cp "${srcdir}/build/src/libmega.la" src/libmega.la
+  make bindings/python/_mega.la
+  sed "/^dependency_libs/cdependency_libs=''" \
+    -i src/libmega.la
+  sed "/^dependency_libs/cdependency_libs='-L/usr/lib -lpython$(python --version | cut -d ' ' -f2 | cut -d '.' -f1-2) ${srcdir}/build/python/src/libmega.la -lrt -ldl'" \
+    -i bindings/python/_mega.la
+  rm -fr bindings/python/.{libs,deps}
+  # yesh, again...
+  make bindings/python/_mega.la
 
   cd bindings/python
+  sed -e "s|'libmega.so', ||g" \
+      -e '/libmega.so/d' \
+      -i setup.py
+
   python -m build --wheel --no-isolation
 
 }
@@ -184,7 +194,6 @@ package_megasync-cli-git() {
 
 package_python-megasync-git() {
   pkgdesc="Python Bindings for MEGASync. (GIT Version)"
-  arch=('any')
   conflicts=('python-megasync')
   provides=('python-megasync')
   depends=(
@@ -196,8 +205,8 @@ package_python-megasync-git() {
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
   _sites_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
-  rm -fr "${pkgdir}${_sites_packages}/mega/"{libmega,_mega}.so
-  ln -s /usr/lib/libmega.so "${pkgdir}${_sites_packages}/mega/_mega.so"
+  rm -fr "${pkgdir}${_sites_packages}/mega/libmega.so"
+  chrpath -d "${pkgdir}${_sites_packages}/mega/_mega.so"
 
   install -Dm644 "${srcdir}/sdk/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

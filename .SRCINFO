@@ -87,7 +87,6 @@ pkgname = megasync-cli-git
 
 pkgname = python-megasync-git
 	pkgdesc = Python Bindings for MEGASync. (GIT Version)
-	arch = any
 	depends = libmega-git=4.19.0.73.g615a2eff3
 	depends = libmega.so
 	depends = python
