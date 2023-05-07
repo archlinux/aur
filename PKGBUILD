@@ -12,13 +12,13 @@ pkgbase=linux-jcore
 pkgname=('linux-jcore' 'linux-jcore-headers')
 _kernelname=-jcore
 _hostname=jcore
-pkgver=6.1.26
+pkgver=6.1.27
 pkgrel=1
 pkgdesc="Kernel for Manjaro/EndeavourOS/Arch (ACS override patch include)"
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
-makedepends=(bc docbook-xsl libelf pahole git inetutils kmod xmlto cpio perl tar xz)
+makedepends=(bc docbook-xsl libelf pahole python-sphinx git inetutils kmod xmlto cpio perl tar xz)
 replaces=('linux-acs-manjaro' 'linux-acs-manjaro-headers')
 options=('!strip')
 
@@ -49,8 +49,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
         '0413-bootsplash.gitpatch'
         # ACS override patch
         '0999-acs.gitpatch')
-sha256sums=('dfdcc143a879d64a5ee99213b2b4b05b5dccd566c144df93bca1e204df64c110'
-            'fb8565d072c0208040c4cbc5d8b17bdc0f3d3b5b7f75cf990110521a49bb9c0f'
+sha256sums=('c2b74b96dd3d0cc9f300914ef7c4eef76d5fac9de6047961f49e69447ce9f905'
+            '46eea5f6b4a8745ef75daf7a8bfedefa8cce12c5f94917070e973fbb6c898046'
             'de35604b1337f3d7cd7ce8dc02a741bfdde05709f22f4dfd29d065b20b517e4c'
             '982806daa2c789a63cf685eef71a82754b0530852b7ba130cc9d4025dab79b2f'
             '0a32a567966d7c33035634c46d56073e8a6f66e4d9729b8b25d09579d00c3e7b'
