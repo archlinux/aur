@@ -16,5 +16,6 @@ pkgbase = vtex2-git
 	source = git+https://github.com/StrataSource/vtex2.git
 	source = Include-cstdint.patch
 	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = vtex2-git

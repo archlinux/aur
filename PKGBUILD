@@ -22,7 +22,7 @@ install=
 changelog=
 source=("git+https://github.com/StrataSource/vtex2.git" "Include-cstdint.patch")
 noextract=()
-md5sums=('SKIP')
+md5sums=('SKIP' 'SKIP')
 validpgpkeys=()
 
 pkgver() {
