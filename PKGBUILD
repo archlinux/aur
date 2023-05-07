@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=10.0.beta9.r0.g97b45d80a7
+pkgver=10.0.rc1.r2.g4140517848
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -24,7 +24,7 @@ optdepends=('cython: to compile cython code'
   'sagemath-doc: HTML documentation'
   'python-igraph: igraph backend for graph theory'
   'bliss: bliss backend for graph theory'
-  'sage-numerical-backends-coin: COIN mixed integer linear programming backend'
+  'python-cvxpy: interface for several convex optimization backends'
   'sage-numerical-backends-gurobi: Gurobi mixed integer linear programming backend'
   'python-pyscipopt: SCIP mixed integer linear programming backend'
   'coin-or-csdp: for computing Lovász theta-function of graphs'
