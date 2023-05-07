@@ -1,6 +1,6 @@
 # Maintainer: Imran Iqbal <imran@imraniqbal.org>
 pkgname=cf-ddns
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Simple program to update Cloudflare A records, useful for dynamic dns'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://git.sr.ht/~imraniq/$pkgname"
 license=('GPL3')
 makedepends=('go')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('ba15bffb85fe4b6344819d242560702d411236570a3c68cf9447a359831fb40a')
+sha256sums=('201dc027d199c6bc3474917f6f04ea7cbc14a386ac41c00f3ba4dd2c19ea0643')
 
 prepare(){
   cd "$srcdir/$pkgname-v$pkgver"
