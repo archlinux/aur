@@ -1,13 +1,13 @@
 # Maintainer: Andrej Halveland (SnipeX_ / SnipeX) <andrej.halv@gmail.com>
 
 pkgname=qnearbyshare-git
-pkgver=r36.b17c72d
+pkgver=r40.eca645f
 pkgrel=1
 pkgdesc='Nearby Share implementation for Linux'
 arch=(x86_64)
 url='https://github.com/vicr123/QNearbyShare'
 license=(MIT)
-depends=(glibc gcc-libs cryptopp avahi qt6-base protobuf)
+depends=(glibc gcc-libs crypto++ avahi qt6-base protobuf)
 makedepends=(git cmake)
 source=(${pkgname%-git}::git+${url}.git)
 sha256sums=('SKIP')
