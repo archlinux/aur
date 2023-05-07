@@ -36,7 +36,7 @@ makedepends=(
   'swig'
   'fuse2'
   'libraw'
-  'ffmpeg4.4'
+  'ffmpeg'
   'libmediainfo'
   'libuv'
   'bzip2'
@@ -49,6 +49,7 @@ sha256sums=(
   '73600a6d5e7ddbb6d0a3eff22aa05cc22715c2b02be7e62d16c2c71ac17a5ad5'
   '66b5f481081157eee82653b3774d22edb5aa2007cf93142fd73cc0c4d577d59f'
 )
+options=('debug')
 
 pkgver() {
   cd sdk
@@ -56,9 +57,8 @@ pkgver() {
 }
 
 _prepare() {
-  sed -e 's|ffmpeg-mega|ffmpeg4.4|g' \
-      -e 's|FFMPEG_LIBS\=\[\"|&-L/usr/lib/ffmpeg4.4 |g' \
-      -e 's|FFMPEG_LIBS\=\"|&-L/usr/lib/ffmpeg4.4 |g' \
+  sed -e 's|ffmpeg-mega/||g' \
+      -e 's|/ffmpeg-mega||g' \
       -i configure.ac
 }
 
@@ -75,6 +75,7 @@ prepare() {
 
 build() {
   msg2 "Build libmega and programs"
+
   cd "${srcdir}/build"
   ./configure \
     --prefix=/usr \
@@ -120,7 +121,7 @@ package_libmega-git() {
     'zlib'
     'c-ares' 'libcares.so'
     'openssl' 'libssl.so' 'libcrypto.so'
-    'ffmpeg4.4' 'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libswscale.so'
+    'ffmpeg' 'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libswscale.so'
     'sqlite' 'libsqlite3.so'
     'bzip2' 'libbz2.so'
     'curl' 'libcurl.so'
