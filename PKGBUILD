@@ -2,8 +2,8 @@
 # Maintainer: xiretza <xiretza+aur@xiretza.xyz>
 
 pkgname=ghdl-mcode-git
-pkgver=2.0.0dev.r6945.gaee3585af
-pkgrel=4
+pkgver=4.0.0dev.r8598.gca7532ce7
+pkgrel=1
 arch=('x86_64' 'i686' 'pentium4')
 pkgdesc='VHDL simulator - mcode back-end'
 url='https://github.com/ghdl/ghdl'
@@ -15,7 +15,7 @@ makedepends=('git')
 depends=('gcc-ada')
 checkdepends=(
 	'python-pytest' 'python-pydecor' 'python-pyvhdlmodel>=0.12'
-	'python-pytooling' 'python-pyattributes' 'python-pytooling-terminalui'
+	'python-pytooling' 'python-pyattributes'
 )
 optdepends=(
 	'python-pyghdl: python bindings and utilities'
