@@ -37,7 +37,7 @@ source=(
   git+$url.git
   git+$sub.git
 )
-b2sums=('SKIP')
+b2sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "${_pkgname%-git}"

@@ -35,5 +35,6 @@ pkgbase = gradience-git
 	source = git+https://github.com/GradienceTeam/Gradience.git
 	source = git+https://github.com/GradienceTeam/Submodules.git
 	b2sums = SKIP
+	b2sums = SKIP
 
 pkgname = gradience-git
