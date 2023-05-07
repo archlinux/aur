@@ -1,6 +1,6 @@
 pkgbase = perl-cpan-reporter
 	pkgdesc = CPAN::Reporter - Adds CPAN Testers reporting to CPAN.pm
-	pkgver = 1.2018
+	pkgver = 1.2019
 	pkgrel = 1
 	url = https://metacpan.org/dist/CPAN-Reporter/
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = perl-cpan-reporter
 	provides = perl-cpan-reporter-history
 	provides = perl-cpan-reporter-prereqcheck
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/CPAN-Reporter-1.2018.tar.gz
-	sha256sums = 2dc561c42f4644747a05e516221da731b8e260e082f1be594b98af7efe90ddc1
+	source = https://cpan.metacpan.org/authors/id/G/GA/GARU/CPAN-Reporter-1.2019.tar.gz
+	sha256sums = 8b0bad08c6ad9dbcbb4681eba1082af845d4fe897ae97c06187889832322b60b
 
 pkgname = perl-cpan-reporter

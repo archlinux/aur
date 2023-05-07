@@ -1,8 +1,9 @@
 # Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=perl-cpan-reporter
-pkgver=1.2018
+pkgver=1.2019
 _author=D/DA/DAGOLDEN
+_author=G/GA/GARU
 _perlmod=CPAN-Reporter
 pkgrel=1
 pkgdesc='CPAN::Reporter - Adds CPAN Testers reporting to CPAN.pm'
@@ -37,7 +38,7 @@ perl-cpan-reporter-prereqcheck
 optdepends=('perl-test-reporter-transport-metabase: Metabase transport')
 options=(!emptydirs)
 source=("https://cpan.metacpan.org/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha256sums=('2dc561c42f4644747a05e516221da731b8e260e082f1be594b98af7efe90ddc1')
+sha256sums=('8b0bad08c6ad9dbcbb4681eba1082af845d4fe897ae97c06187889832322b60b')
 unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
 export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
 
