@@ -7,8 +7,8 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r9548.2273df4d7
-pkgrel=2
+pkgver=r9558.f9ab0b304
+pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
 url="https://github.com/citra-emu/citra/"
@@ -38,6 +38,8 @@ source=("$_pkgbase::git+https://github.com/citra-emu/citra.git"
         "sdl2::git+https://github.com/libsdl-org/SDL"
         "git+https://github.com/abdes/cryptopp-cmake.git"
         "git+https://github.com/weidai11/cryptopp.git"
+        "git+https://github.com/septag/dds-ktx.git"
+        "git+https://github.com/kcat/openal-soft.git"
         # cubeb's submodule
         "git+https://github.com/google/googletest"
         "git+https://github.com/arsenm/sanitizers-cmake"
@@ -45,6 +47,8 @@ source=("$_pkgbase::git+https://github.com/citra-emu/citra.git"
         "zycore::git+https://github.com/zyantific/zycore-c"
         )
 md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -77,11 +81,13 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$_pkgbase"
-    for submodule in {boost,nihstro,soundtouch,catch2,dynarmic,xbyak,fmt,enet,libressl,cubeb,discord-rpc,cpp-jwt,teakra,zstd,libyuv,cryptopp-cmake,cryptopp,sdl2,lodepng,libusb,inih};
+    for submodule in {boost,nihstro,soundtouch,catch2,dynarmic,xbyak,fmt,enet,libressl,cubeb,discord-rpc,cpp-jwt,teakra,zstd,libyuv,cryptopp-cmake,cryptopp,dds-ktx,sdl2,lodepng,libusb,inih};
     do
     git config --file=.gitmodules submodule.${submodule}.url "$srcdir/${submodule}"
     done
+    git config --file=.gitmodules submodule.externals/openal-soft.url "$srcdir/openal-soft"
     git -c protocol.file.allow=always submodule update --init
+
 
     cd "$srcdir/$_pkgbase/externals/cubeb"
     git config --file=.gitmodules submodule.googletest.url "$srcdir/googletest"
