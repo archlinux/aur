@@ -3,7 +3,7 @@
 # Contributor: felix <base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg==>
 
 pkgname=djgpp-gcc
-pkgver=12.2.0
+pkgver=13.1.0
 _target="i686-pc-msdosdjgpp"
 _djver=2.05
 _build_ada=no
@@ -21,9 +21,9 @@ options=('!strip' 'staticlibs' '!emptydirs' '!buildflags')
 source=("https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "lto.patch"
 	"gcc-djgpp.diff")
-sha256sums=('e549cf9cf3594a00e27b6589d4322d70e0720cdd213f39beb4181e06926230ff'
+sha256sums=('61d684f0aa5e76ac6585ad8898a2427aade8979ed5e7f85492286c4dfc13ee86'
             'c03dbd61274e1ce14f84366abf348d75779bbd6e0bc32b9f4fd74f1ce54a5ef0'
-            '0c93c245f791d638cd775b00f9919873b229a4dda04a7a4072735d12d47737ce')
+            '889673cbd6ff486d8eb406900eab607e15e350b4541e84868f3d1af6b541fe4f')
 
 prepare() {
   cd gcc-$pkgver
