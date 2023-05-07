@@ -1,7 +1,7 @@
 pkgbase = jupyter-pythreejs
 	pkgdesc = Interactive 3D graphics for the Jupyter Notebook and JupyterLab, using Three.js and Jupyter Widgets
 	pkgver = 2.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jupyter-widgets/pythreejs
 	arch = x86_64
 	license = custom:BSD-3-clause
