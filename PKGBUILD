@@ -3,7 +3,7 @@
 pkgname=rgx-git
 pkgver=0.1
 pkgrel=1
-pkgdesc="A description of your package"
+pkgdesc="CLI RegExp Tool"
 arch=('any')
 url="https://github.com/comroid-git/rgx"
 license=('MIT')
