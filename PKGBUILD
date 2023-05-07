@@ -3,53 +3,81 @@
 # Contributor: Alexander F. Rødseth <xyproto at archlinux dot org>
 # Contributor: neverix <nev at ateverix dot io>
 # Contributor: Stepan Shabalin <stomperhomp at gmail dot com>
-pkgname=yin-yang-git
-pkgver=1.0.beta.r184.gee369f9
+
+_pkgname='yin-yang'
+pkgname="$_pkgname-git"
+pkgver=3.2.4.beta.r11.g0cd2fb2
 pkgrel=1
 pkgdesc="Auto Nightmode for KDE, Gnome, Budgie, VSCode, Atom and more"
 arch=('any')
 url="https://github.com/oskarsh/Yin-Yang"
 license=('MIT')
-depends=('python-pyqt5' 'python-qtpy' 'python-suntime')
-makedepends=('git')
-optdepends=('kvantum-qt5: Kvantum theme support')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+https://github.com/oskarsh/Yin-Yang.git")
-sha256sums=('SKIP')
+depends=(
+  'hicolor-icon-theme'
+  'pyside6'
+  'python-psutil'
+  'python-systemd'
+
+  # not needed according to namcap
+  #'pyside6-tools'
+  #'python-dateutil'
+  #'python-numpy'
+  #'python-six'
+  #'shiboken6'
+)
+makedepends=(
+  'git'
+)
+optdepends=(
+  'kvantum-qt5: Kvantum theme support'
+)
+provides=("$_pkgname")
+conflicts=(${provides[@]})
+source=(
+  "$_pkgname"::"git+$url"
+)
+sha256sums=(
+  'SKIP'
+)
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/$_pkgname"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+build() {
+  cd "$srcdir/$_pkgname"
+  # nothing to do
+}
+
 package() {
-  cd "$srcdir/${pkgname%-git}"
-  install -d "$pkgdir"/{opt/"${pkgname%-git}",usr/share/applications}
-  cp -r ./* "$pkgdir/opt/${pkgname%-git}"
-  rm -rf "$pkgdir/opt/${pkgname%-git}"/{.github,tests}
-  rm -f "$pkgdir/opt/${pkgname%-git}"/{build,install.sh,main.spec,uninstall.sh}
-  install -Dm755 "src/${pkgname%-git}" -t "$pkgdir/usr/bin"
-  install -Dm644 "src/ui/assets/${pkgname%-git}.svg" -t \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
-  install -Dm644 assets/yin_yang.json -t \
-    "$pkgdir/usr/lib/mozilla/native-messaging-hosts"
+  depends+=(
+    # not needed according to namcap
+    # 'python-suntime'
+  )
 
-  cat <<EOF >"$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
-[Desktop Entry]
-Type=Application
-Version=1.4
-Name=Yin & Yang
-GenericName=Theme Switcher
-Comment=Auto Nightmode for KDE, Gnome, Budgie, VSCode, Atom and more
-Path=/opt/yin-yang
-Exec=env QT_AUTO_SCREEN_SCALE_FACTOR=1 sh /usr/bin/yin-yang
-Icon=/opt/yin-yang/src/ui/assets/yin-yang.svg
-Terminal=false
-Categories=Utility; System; Settings;
-Keywords=night;dark;day;bright;color;theme;
-EOF
+  cd "$srcdir/$_pkgname"
+  find . -type f -exec chmod 644 {} \;
 
-  chmod 644 "$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
+  mkdir -p "$pkgdir/opt/yin-yang"
+  cp -r ./* "$pkgdir/opt/yin-yang/"
+
+  # copy manifest for firefox extension
+  install -Dm0644 resources/yin_yang.json -t "$pkgdir/usr/lib/mozilla/native-messaging-hosts/"
+
+  # copy terminal executive
+  install -Dm0755 resources/yin-yang -t "$pkgdir/usr/bin/"
+
+  # copy .desktop file
+  install -Dm0644 resources/Yin-Yang.desktop "$pkgdir/usr/share/applications/yin-yang.desktop"
+
+  # copy icon
+  install -Dm0644 resources/logo.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/yin_yang.svg"
+
+  # systemd unit files
+  install -Dm0644 resources/yin_yang.service -t "$pkgdir//usr/lib/systemd/user/"
+  install -Dm0644 resources/yin_yang.timer   -t "$pkgdir//usr/lib/systemd/user/"
+
+  # license
+  install -Dm0644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
