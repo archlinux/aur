@@ -21,6 +21,7 @@ sha512sums=('6e4bbeca9045cdc558fa5cdfd23abe55bdb773b326381eaa25f843e70d9df39c570
   '5c5ea77d17604b740419066f9342314461c9b48216b4021d6ee822338721859c2e9c5a4406fb489d03416567735f4238cc8900d592b87a13956c08010a35b856')
 
 prepare() {
+  cd ${pkgname}-${pkgver}
   # https://github.com/FEniCS/dolfinx/issues/2645
   patch -p1 -i ../requires-fix.patch
   patch -p1 -i ../enum-fix.patch
