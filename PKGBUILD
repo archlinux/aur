@@ -13,7 +13,7 @@ makedepends=('git' 'cmake' 'sdl2' 'glm')
 source=("${pkgname}::git+https://github.com/Almamu/linux-wallpaperengine.git#branch=main")
 sha512sums=('SKIP')
 provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+conflicts=("${_pkgname}" "${_pkgname}-git")
 
 pkgver() {
     cd "$pkgname"

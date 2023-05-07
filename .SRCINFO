@@ -21,6 +21,7 @@ pkgbase = linux-wallpaperengine-wayland-git
 	depends = wayland
 	provides = linux-wallpaperengine
 	conflicts = linux-wallpaperengine
+	conflicts = linux-wallpaperengine-git
 	source = linux-wallpaperengine-wayland-git::git+https://github.com/Almamu/linux-wallpaperengine.git#branch=main
 	sha512sums = SKIP
 
