@@ -14,13 +14,9 @@ checkdepends=('appstream-glib')
 source=($url/archive/${pkgver//_/-}.tar.gz)
 b2sums=('c869d0e4c8a4f1a452d24587970b994044493aecc028f8a2e4c0a26a7cd04b934afb17e2274a42ac8aac38deffe73e0ca6b6b12c4c8781b5eda6d3cb58768071')
 
-pkgver() {
-  cd "$pkgname"
-  printf "$pkgver"
-}
-
 build() {
-  arch-meson "$_pkgname-${pkgver//_/-}" build
+  echo $(ls)
+  arch-meson "$pkgname" build
   meson compile -C build
 }
 
