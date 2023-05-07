@@ -1,6 +1,6 @@
 pkgbase = sdpb-git
 	pkgdesc = Semidefinite program solver designed for the conformal bootstrap
-	pkgver = 1517.428b7ee
+	pkgver = 1521.b359336
 	pkgrel = 1
 	url = https://arxiv.org/abs/1909.09745
 	arch = x86_64

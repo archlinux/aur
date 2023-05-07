@@ -1,7 +1,7 @@
 # Maintainer: Andrea Manenti <andrea [dot] manenti [at] yahoo [dot] com>
 
 pkgname=sdpb-git
-pkgver=1517.428b7ee
+pkgver=1521.b359336
 pkgrel=1
 pkgdesc="Semidefinite program solver designed for the conformal bootstrap"
 arch=(x86_64)
@@ -21,7 +21,15 @@ pkgver() {
 build () {
         cd "$srcdir"/sdpb
 
+        # 'U' read mode was deprecated in python 3.11
+        # This is a workaround
+        python waf configure --prefix=/usr 1>&2 2> /dev/null || true # is going to fail but it generates the scripts
+        sed -i -e "s/'rU'/'r'/g" .waf*/waflib/Context.py
+
         python waf configure --prefix=/usr
+
+        # We need to do this one more time
+        sed -i -e "s/'rU'/'r'/g" .waf*/waflib/ConfigSet.py
         python waf
 }
 
