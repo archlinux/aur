@@ -2,8 +2,8 @@
 # Contributor: Andrew Eikum
 
 pkgname=faudio
-pkgver=23.04
-_commit=2d3c6cef46f479393c09f3bc58838b06763095b5
+pkgver=23.05
+_commit=cac0aca5f7055bd0d57c1051278684c737b9af0c
 pkgrel=1
 pkgdesc="XAudio2 reimplementation"
 arch=(x86_64)
