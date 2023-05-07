@@ -1,6 +1,6 @@
 pkgbase = octobrowser
 	pkgdesc = Fast anti-detect browser for multi-accounting with maximum protection against browser identification
-	pkgver = 1.8.7
+	pkgver = 1.8.9
 	pkgrel = 1
 	url = https://octobrowser.net
 	arch = x86_64
