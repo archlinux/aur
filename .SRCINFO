@@ -1,0 +1,13 @@
+pkgbase = lcarsde-onboard-theme
+	pkgdesc = LCARS like theme for onboard for LCARSDE
+	pkgver = 23.1
+	pkgrel = 1
+	url = https://lcarsde.github.io
+	arch = any
+	groups = lcarsde
+	license = MIT
+	depends = onboard
+	source = lcarsde-onboard-theme-23.1.tar.gz::https://github.com/lcarsde/lcarsde-onboard-theme/archive/23.1.tar.gz
+	md5sums = b1a63fceced945a5c8692c5587894ecb
+
+pkgname = lcarsde-onboard-theme
