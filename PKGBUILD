@@ -2,8 +2,8 @@
 pkgname=identinum
 pkgdesc="Identify exact expression for decimal"
 pkgver=0.7.1
-pkgrel=1
-arch=(x86_64)
+pkgrel=2
+arch=(any)
 url="https://github.com/nschloe/${pkgname}"
 license=(MIT)
 depends=(python-sympy)

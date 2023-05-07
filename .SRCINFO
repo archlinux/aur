@@ -1,9 +1,9 @@
 pkgbase = identinum
 	pkgdesc = Identify exact expression for decimal
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nschloe/identinum
-	arch = x86_64
+	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	makedepends = python-build
