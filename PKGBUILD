@@ -2,7 +2,7 @@
 # Maintainer: Infisical, Inc <support@infisical.com>
 
 pkgname='infisical-bin'
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc='The official Infisical CLI'
 url='https://infisical.com'
@@ -11,24 +11,33 @@ license=('MIT')
 provides=('infisical')
 conflicts=('infisical')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Infisical/infisical/releases/download/infisical-cli/v0.4.5/infisical_0.4.5_linux_arm64.tar.gz")
-sha256sums_aarch64=('96cd3c567f591bb6d4bf3c930f38ac5cfa9c508e53c2bc8ac33200fffff81880')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Infisical/infisical/releases/download/infisical-cli/v0.4.6/infisical_0.4.6_linux_arm64.tar.gz")
+sha256sums_aarch64=('39e6ed790cf893431b0233e7f5d58579233f5eaad29fdd9a6ea01f289f079ae1')
 
-source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/Infisical/infisical/releases/download/infisical-cli/v0.4.5/infisical_0.4.5_linux_armv6.tar.gz")
-sha256sums_armv6h=('a2cd2e4840561bf062166b46205711e7ea6a8b174bdada109dc0adce517a5ab0')
+source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/Infisical/infisical/releases/download/infisical-cli/v0.4.6/infisical_0.4.6_linux_armv6.tar.gz")
+sha256sums_armv6h=('b0c2c0d66c5a65a5d06fed4bbf660b8b30a05d20ddfb6e40cc2482537830ed09')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/Infisical/infisical/releases/download/infisical-cli/v0.4.5/infisical_0.4.5_linux_armv7.tar.gz")
-sha256sums_armv7h=('384f2a1afb2e7d96c9f51e1e12a4297243a7504d6dc6726d2787f810595b0436')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/Infisical/infisical/releases/download/infisical-cli/v0.4.6/infisical_0.4.6_linux_armv7.tar.gz")
+sha256sums_armv7h=('c6a23cf4914f386a00f41414cb29b7ef31a37857da47a3797e5a762b106972e5')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/Infisical/infisical/releases/download/infisical-cli/v0.4.5/infisical_0.4.5_linux_386.tar.gz")
-sha256sums_i686=('80013b9e07807ba6087baa0b41fc9338e667e01a22f2c426b579b6efd5b698a8')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/Infisical/infisical/releases/download/infisical-cli/v0.4.6/infisical_0.4.6_linux_386.tar.gz")
+sha256sums_i686=('2bfd0f2f5e1458282fb799047a28f2a18946f95ad5fa6310b9ecd0029fb76362')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Infisical/infisical/releases/download/infisical-cli/v0.4.5/infisical_0.4.5_linux_amd64.tar.gz")
-sha256sums_x86_64=('dcecd66589965c90d2917c13af3e6e2e8da87481861ca8abad337356e483e789')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Infisical/infisical/releases/download/infisical-cli/v0.4.6/infisical_0.4.6_linux_amd64.tar.gz")
+sha256sums_x86_64=('9b0c18ed25979dceab127dfac3155f3182d019894f4ecf3f55311aeed52832cd')
 
 package() {
   # bin
   install -Dm755 "./infisical" "${pkgdir}/usr/bin/infisical"
   # license
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/infisical/LICENSE"
+  # completions
+  mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
+  mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
+  mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
+  install -Dm644 "./completions/infisical.bash" "${pkgdir}/usr/share/bash-completion/completions/infisical"
+  install -Dm644 "./completions/infisical.zsh" "${pkgdir}/usr/share/zsh/site-functions/infisical"
+  install -Dm644 "./completions/infisical.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/infisical.fish"
+  # man pages
+  install -Dm644 "./manpages/infisical.1.gz" "${pkgdir}/usr/share/man/man1/infisical.1.gz"
 }
