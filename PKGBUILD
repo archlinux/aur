@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=wthrr-git
-pkgver=1.0.2.r0.g43a0e36
+pkgver=1.1.1.r0.g42cf94c
 pkgrel=1
 pkgdesc="Weather companion for the terminal (git)"
 arch=('x86_64')
