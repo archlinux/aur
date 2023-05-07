@@ -1,0 +1,17 @@
+pkgbase = python-hgchat
+	pkgdesc = Hugging Chat in Python
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://codeberg.org/Bavarder/hgchat
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-requests
+	depends = python-requests-toolbelt
+	source = https://files.pythonhosted.org/packages/source/h/hgchat/hgchat-0.1.3.tar.gz
+	sha256sums = ac103eef866bc091af0b4c2c5097c5163868acde2a86001e526b8f1d9b7384d2
+
+pkgname = python-hgchat
