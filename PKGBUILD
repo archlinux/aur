@@ -3,7 +3,7 @@
 # Contributor: Lubomir Krajcovic <lubomir.krajcovic(AT)gmail(DOT)com>
 # Contributor: Vladimir Kutyavin <vlkut(AT)bk(DOT)ru>
 pkgname=xtables-addons-dkms
-pkgver=3.23
+pkgver=3.24
 pkgrel=1
 pkgdesc='DKMS for additional extensions for Xtables packet filter present in the Linux kernel'
 arch=('i686' 'x86_64')
@@ -18,12 +18,11 @@ conflicts=(xtables-addons xtables-addons-git xtables-addons-multikernel)
 replaces=(xtables-addons xtables-addons-git xtables-addons-multikernel)
 source=(https://inai.de/files/${pkgname%-dkms}/${pkgname%-dkms}-${pkgver}.tar.xz
         dkms.conf)
-sha256sums=('25693c69afc756287058b422e6c18618f72708c7e1d984647ac7d1198a316914'
+sha256sums=('3e823f71720519ced31c4c7d2bfaf7120d9c01c59a0843dfcbe93c95c64d81c1'
             '87546f6d100a33271086d3bc990a2a1e4de83e25fb4a048774c520f4c36729e6')
 
 prepare() {
-    # go to builddir
-    cd "${srcdir}/xtables-addons-${pkgver}"
+    cd "xtables-addons-${pkgver}"
 
     # disable install-exec-hook (avoids useless calling of depmod -a at 'make install' stage)
     sed -i 's/^install-exec-hook:$/dont-run:/' Makefile.am
@@ -32,7 +31,7 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/xtables-addons-${pkgver}"
+    cd "xtables-addons-${pkgver}"
 
     # build userspace parts
     autoreconf -fvi
@@ -51,7 +50,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/xtables-addons-${pkgver}"
+    cd "xtables-addons-${pkgver}"
 
     # prepare dkms build tree
     dkmsDst="${pkgdir}/usr/src/xtables-addons-${pkgver}"
