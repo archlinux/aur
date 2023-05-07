@@ -1,0 +1,26 @@
+pkgbase = aardwolfgui-git
+	pkgdesc = Asynchronous RDP protocol implementation for python: GUI.
+	pkgver = 0.0.6+7.r22.20230221.083e2d4
+	pkgrel = 1
+	url = https://github.com/skelsec/aardwolfgui
+	arch = any
+	license = custom: MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools>=61.0.0
+	depends = python>=3.7
+	depends = python-aardwolf>=0.2.5
+	depends = python-pyperclip
+	depends = python-pysimplegui
+	depends = python-pyqt5
+	provides = aardwolfgui=0.0.6+7.r22.20230221.083e2d4
+	provides = python-aardwolfgui=0.0.6+7.r22.20230221.083e2d4
+	provides = python-aardwolfgui-git=0.0.6+7.r22.20230221.083e2d4
+	conflicts = aardwolfgui
+	conflicts = python-aardwolfgui
+	source = aardwolfgui::git+https://github.com/skelsec/aardwolfgui.git
+	sha256sums = SKIP
+
+pkgname = aardwolfgui-git
