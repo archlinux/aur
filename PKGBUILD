@@ -20,7 +20,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+https://github.com/StrataSource/vtex2.git")
+source=("git+https://github.com/StrataSource/vtex2.git" "Include-cstdint.patch")
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
@@ -33,6 +33,7 @@ pkgver() {
 prepare() {
 	cd vtex2
 	git submodule update --init --recursive
+    patch --strip=1 --input="${srcdir}/Include-cstdint.patch"
 }
 
 build() {
