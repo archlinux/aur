@@ -1,6 +1,6 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=petalinux
-pkgver=2022.1
+pkgver=2022.2
 pkgrel=1
 pkgdesc='Toolchain and SDK for Xilinx embedded Linux'
 arch=('x86_64')
@@ -9,9 +9,9 @@ license=('custom')
 depends=('bzip2' 'ccache' 'chrpath' 'cpio' 'diffstat' 'diffutils' 'dos2unix' 'git' 'glib2' 'gnupg' 'ncurses' 'ncurses5-compat-libs' 'net-tools' 'openssl' 'pax' 'perl' 'python-gitpython' 'python-jinja' 'python-pexpect' 'python-pip' 'python-pylint' 'screen' 'sdl' 'socat' 'unzip' 'wget' 'xterm' 'zlib')
 options=('!strip')
 install="$pkgname.install"
-_plnxinstaller="petalinux-v2022.1-04191534-installer.run"
+_plnxinstaller="petalinux-v2022.2-10141622-installer.run"
 source=("local://$_plnxinstaller")
-sha256sums=('8a61188caa4ed035db70b3233decd761baf25b5773dd1a56a8c6ad2ded96ceec')
+sha256sums=('4b8ff9128c991c757c55266b09eb2e83d2e420c2830159c6a081806dca3a3197')
 
 prepare() {
 	PLNXINSTALLLER="$_plnxinstaller"
@@ -25,7 +25,7 @@ prepare() {
 package() {
 	env -i \
 		PLATFORMS='aarch64 arm microblaze' \
-		PLNXCHECKSUM='37033df5cf15b077eb17d5158105d534' \
+		PLNXCHECKSUM='f82a77399c118da90098868fa7edd7f9' \
 		PLNXINSTALLDIR="$pkgdir/opt/$pkgname" \
 		PLNXINSTALLLER="$_plnxinstaller" \
 		./petalinux-install
