@@ -1,0 +1,27 @@
+pkgbase = python-arc4-git
+	pkgdesc = A small and insanely fast ARCFOUR (RC4) cipher implementation for Python.
+	pkgver = 0.4.0+7.r236.20230422.6f0706a
+	pkgrel = 1
+	url = https://github.com/manicmaniac/arc4
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	arch = armv8h
+	arch = i686
+	arch = x86_64
+	license = custom: MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-mock
+	makedepends = python-sphinx
+	depends = glibc
+	depends = python>=3.7
+	provides = python-arc4=0.4.0+7.r236.20230422.6f0706a
+	conflicts = python-arc4
+	source = python-arc4::git+https://github.com/manicmaniac/arc4.git
+	sha256sums = SKIP
+
+pkgname = python-arc4-git
