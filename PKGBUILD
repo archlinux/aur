@@ -38,7 +38,7 @@ prepare() {
 build() {
 	mkdir vtex2/build
 	cd vtex2/build
-	if ! pacman -Qs qt5-base > /dev/null; then
+	if ! pacman -Qs qt6-base > /dev/null; then
         BUILD_GUI=0
     else
 		BUILD_GUI=1
