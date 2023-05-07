@@ -2,7 +2,7 @@
 _UpstreamPkgName=FastFlix
 pkgname=${_UpstreamPkgName,,}
 pkgver=5.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and friendly GUI for encoding videos"
 arch=('x86_64')
 url="https://github.com/cdgriffith/$_UpstreamPkgName"
@@ -15,16 +15,14 @@ optdepends=('nvenc: hardware accelerated encoding on NVIDIA cards'
             'rav1e: encoding to AV1'
 	    'libwebp: encoding to WebP')
 source=(git+${url}.git#tag=${pkgver}
-        allow-python310.patch
         FastFlix.desktop)
 sha256sums=('SKIP'
-            '06375d6f5b3db1084d1c5bcf6c39717b6a77febb977c2deb06748580ce5f50f5'
             'cbcb6f228b858a69a860aa6a3283f0f4293e1246485566d20f60a93030f1f847')
 
-prepare() {
-	cd $_UpstreamPkgName
-	patch --forward --strip=1 --input="${srcdir}/allow-python310.patch"
-}
+# prepare() {
+# 	cd $_UpstreamPkgName
+# 	patch --forward --strip=1 --input="${srcdir}/allow-python310.patch"
+# }
 
 build() {
 	cd ${_UpstreamPkgName}
