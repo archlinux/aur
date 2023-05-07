@@ -1,51 +1,51 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 
 pkgbase=mkdocstrings-python
+_pyname=("${pkgbase//-/_}")
 pkgname=("${pkgbase}")
 #"${pkgbase}-doc")
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
-pkgdesc="Automatic documentation from sources, for MkDocs"
+pkgdesc="A Python handler for mkdocstrings"
 url="https://mkdocstrings.github.io"
 license=('ISC')
 arch=("any")
-makedepends=('python-pdm-pep517'
+makedepends=('python-pdm-backend'
              'python-build'
              'python-installer')
 checkdepends=('python-pytest'
               'python-griffe'
-              'python-markdown'
               'mkdocstrings'
               'mkdocs-material')
 #source=("https://github.com/mkdocstrings/mkdocstrings/archive/refs/tags/${pkgver}.tar.gz")
-source=("https://files.pythonhosted.org/packages/source/${pkgbase:0:1}/${pkgbase}/${pkgbase}-${pkgver}.tar.gz")
-sha256sums=('da0a54d7d46523a25a5227f0ecc74b491291bd9d36fc71445bfb0ea64283e287')
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+sha256sums=('d5c8fec312f482413330fb749a119078e48447888e78a178a98a868451bff785')
 
 prepare() {
-    cd "${pkgbase}-${pkgver}"
+    cd ${srcdir}/${_pyname}-${pkgver}
 
     mkdir -p docs
 }
 
 build() {
-    cd "${pkgbase}-${pkgver}"
+    cd ${srcdir}/${_pyname}-${pkgver}
 
     python -m build --wheel --no-isolation
 }
 
 check() {
-    cd "${pkgbase}-${pkgver}"
+    cd ${srcdir}/${_pyname}-${pkgver}
 
     mkdir -p dist/lib
-    bsdtar -xpf dist/${pkgbase/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
-    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv --color=yes
+    bsdtar -xpf dist/${_pyname}-${pkgver}-py3-none-any.whl -C dist/lib
+    PYTHONPATH="dist/lib" pytest|| warning "Tests failed" # -vv --color=yes
 }
 
 package_mkdocstrings-python() {
     depends=('python>=3.7'
              'mkdocstrings>=0.20'
              'python-griffe>=0.24')
-    cd "${pkgbase}-${pkgver}"
+    cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
     install -D -m644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
@@ -53,7 +53,7 @@ package_mkdocstrings-python() {
 }
 
 #package_mkdocstrings-python-doc() {
-#    cd "${pkgbase}-${pkgver}"
+#    cd ${srcdir}/${_pyname}-${pkgver}
 #
 #    install -D -m644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
 #    install -d -m755 "${pkgdir}/usr/share/doc/${pkgname%-doc}"
