@@ -6,9 +6,9 @@ dotnet clean
 dotnet build -c Release
 
 # update SRCINFO
-makepkg --printsrcinfo > .SRCINFO
 git clean -f
 git reset --hard
+makepkg --printsrcinfo > .SRCINFO
 (git add .SRCINFO && git commit -m "SRCINFO" && git push) || true
 
 # push to aur
