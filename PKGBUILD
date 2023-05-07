@@ -1,7 +1,7 @@
 # Mantainer: Franco Tortoriello
 
 pkgname=dosbox-x-sdl2-git
-pkgver=2023.05.01.r24.gc25eee850
+pkgver=2023.05.01.r55.gac3c072d5
 pkgrel=1
 epoch=3
 pkgdesc="x86 emulator with builtin DOS, with patches with more features - sdl2 git version"
@@ -22,6 +22,13 @@ pkgver() {
 
 build() {
   cd "$srcdir/dosbox-x"
+  
+  # Workaround for bug: https://github.com/joncampbell123/dosbox-x/issues/4237
+  CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions \
+        -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Wno-error=format-security \
+        -fstack-clash-protection -fcf-protection"
+  CXXFLAGS="$CFLAGS -Wp,-D_GLIBCXX_ASSERTIONS"
+  
   ./autogen.sh
   ./configure --enable-debug --enable-avcodec --prefix=/usr --enable-sdl2
   make -j$(nproc)
