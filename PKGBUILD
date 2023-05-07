@@ -3,7 +3,7 @@
 
 pkgname=mopidy-mpd
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Mopidy extension for controlling playback from MPD clients"
 arch=('any')
 url="http://www.mopidy.com"
