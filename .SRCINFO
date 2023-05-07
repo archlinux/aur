@@ -15,7 +15,7 @@ pkgbase = python-pynng-git
 	makedepends = python-wheel
 	depends = licenses
 	depends = python-sniffio
-	depends = python=3.10.9
+	depends = python=3.11.3
 	provides = python-pynng
 	source = git+https://github.com/codypiersall/pynng.git
 	md5sums = SKIP
