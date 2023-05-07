@@ -1,16 +1,16 @@
 pkgbase = blitz
 	pkgdesc = C++ Class library for scientific computing
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/blitzpp/blitz
 	arch = x86_64
-	license = BSD
+	license = custom:Artistic
 	makedepends = cmake
 	makedepends = python
+	makedepends = onetbb
 	depends = boost
 	conflicts = blitz-cppqed-hg
 	source = blitz-1.0.2.tar.gz::https://github.com/blitzpp/blitz/archive/1.0.2.tar.gz
-	md5sums = 195873ba25ae4c10b9cd374bf42c67c2
+	sha512sums = e5d82317c938d5dd2b0e6f99bc7dbcc982210f0f45961a21f4437466f01edbddafa01b92b3ccba707b0e01af697dc042846418011440b3574700afdf2bb08b47
 
 pkgname = blitz
-
