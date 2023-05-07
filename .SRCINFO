@@ -1,0 +1,16 @@
+pkgbase = stulto-git
+	pkgdesc = A Terminal for Fools
+	pkgver = r128.4966d9e
+	pkgrel = 1
+	url = https://github.com/marcxjo/stulto
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = meson
+	depends = vte3
+	provides = stulto
+	conflicts = stulto
+	source = stulto::git+https://github.com/marcxjo/stulto.git
+	sha256sums = SKIP
+
+pkgname = stulto-git
