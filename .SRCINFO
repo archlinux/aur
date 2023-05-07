@@ -1,6 +1,6 @@
 pkgbase = chimera
 	pkgdesc = Configure and manage games in Steam
-	pkgver = 0.17.6
+	pkgver = 0.17.7
 	pkgrel = 1
 	url = https://github.com/chimeraos/chimera
 	arch = any
@@ -54,13 +54,12 @@ pkgbase = chimera
 	optdepends = libretro-citra
 	optdepends = srt-live-server
 	optdepends = steam-removable-media-git
-	optdepends = ffmpeg
 	optdepends = wyvern
 	provides = steam-tweaks
 	provides = steam-buddy
 	conflicts = steam-tweaks
 	conflicts = steam-buddy
-	source = chimera-0.17.6.tar.gz::https://github.com/chimeraos/chimera/archive/0.17.6.tar.gz
-	md5sums = b50f63f70418b9de5f55a86dcd8b93f3
+	source = chimera-0.17.7.tar.gz::https://github.com/chimeraos/chimera/archive/0.17.7.tar.gz
+	md5sums = 5235d8c2987403eed86db31e21d1fab3
 
 pkgname = chimera
