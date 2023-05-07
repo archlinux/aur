@@ -2,7 +2,7 @@
 
 pkgname=python-aeppl
 _name=${pkgname#python-}
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Tools for an Aesara-based PPL"
 arch=(any)
@@ -12,13 +12,12 @@ license=(MIT)
 makedepends=(python-setuptools)
 depends=(
   python-numpy
-  python-scipy
   python-aesara
   python-typing_extensions
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('326c38c29ef2b08deace532b5b5717b6403d0bacbe5a30ab55149ec6396a9c38')
+sha256sums=('eb5dad5774a666fcf77db840e7ae3ff910bcfd77116b05be86794981b9ba5637')
 
 _archive="$_name-$pkgver"
 
