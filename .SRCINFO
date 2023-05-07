@@ -1,6 +1,6 @@
 pkgbase = goldendict-ng-git
 	pkgdesc = A feature-rich dictionary lookup program, supporting multiple dictionary formats.
-	pkgver = 23.04.03.alpha.230425.a82ce2a8.r4.g12d9ae3d
+	pkgver = 23.05.03.alpha.230506.6fa9307b.r5.g49c61350
 	pkgrel = 1
 	url = https://github.com/xiaoyifang/goldendict-ng
 	arch = i686
@@ -14,7 +14,6 @@ pkgbase = goldendict-ng-git
 	depends = lzo
 	depends = zlib
 	depends = xz
-	depends = libeb
 	depends = opencc
 	depends = xapian-core
 	depends = qt6-svg
