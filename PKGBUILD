@@ -2,8 +2,8 @@
 
 _pkgname=pyVHDLModel
 pkgname=python-pyvhdlmodel-git
-pkgver=0.14.1.r0.gc6fe167
-pkgrel=1
+pkgver=0.25.1.r0.g3776f27
+pkgrel=2
 pkgdesc="An abstract VHDL language model written in Python"
 arch=(any)
 url="https://github.com/VHDL/pyVHDLModel"

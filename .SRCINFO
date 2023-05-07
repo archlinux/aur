@@ -1,7 +1,7 @@
 pkgbase = python-pyvhdlmodel-git
 	pkgdesc = An abstract VHDL language model written in Python
-	pkgver = 0.14.1.r0.gc6fe167
-	pkgrel = 1
+	pkgver = 0.25.1.r0.g3776f27
+	pkgrel = 2
 	url = https://github.com/VHDL/pyVHDLModel
 	arch = any
 	license = Apache
@@ -10,7 +10,7 @@ pkgbase = python-pyvhdlmodel-git
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pytooling
-	provides = python-pyvhdlmodel=0.14.1.r0.gc6fe167
+	provides = python-pyvhdlmodel=0.25.1.r0.g3776f27
 	conflicts = python-pyvhdlmodel
 	source = git+https://github.com/VHDL/pyVHDLModel.git
 	sha256sums = SKIP
