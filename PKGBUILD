@@ -39,6 +39,6 @@ check() {
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --build build-cmake --target install
+  DESTDIR="${pkgdir}" cmake --build build --target install
   install -Dm 644 ${pkgname}-${pkgver}/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
