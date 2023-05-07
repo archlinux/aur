@@ -3,8 +3,8 @@
 
 pkgname=python-unicrypto
 _pkgname=unicrypto
-pkgver=0.0.8
-pkgrel=2
+pkgver=0.0.10
+pkgrel=1
 pkgdesc="Unified interface for cryptographic libraries."
 url="https://github.com/skelsec/unicrypto"
 arch=('any')
@@ -14,12 +14,14 @@ makedepends=(
   'python-build'
   'python-installer'
   'python-wheel'
+  'python-setuptools'
 )
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('0487f9dd9009c326ee9531a79412ae18ad673425a1c800d64947b96fdeb04cdf')
+source=("https://github.com/skelsec/${_pkgname}/archive/refs/tags/${pkgver}.zip") 
+sha256sums=('1778e9c41ff0c372da816f6d9592991faf5ae331a2e9a2b5e389c58844a4974c')
 
 build() {
   cd ${_pkgname}-${pkgver}
+  rm -rf tests
   python -m build --wheel --no-isolation
 }
 
