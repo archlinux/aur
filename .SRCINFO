@@ -1,7 +1,7 @@
 pkgbase = mlpack
 	pkgdesc = A fast, flexible, scalable C++ machine learning library
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mlpack.org
 	arch = x86_64
 	license = custom:BSD-3-clause

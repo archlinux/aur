@@ -5,7 +5,7 @@
 # Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
 pkgname=mlpack
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, flexible, scalable C++ machine learning library"
 arch=(x86_64)
 url="https://${pkgname}.org"
