@@ -1,7 +1,7 @@
 pkgbase = paddlepaddle-bin
 	pkgdesc = Machine Learning Framework from Industrial Practice
 	pkgver = 2.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://paddlepaddle.org.cn
 	arch = x86_64
 	license = Apache

@@ -3,7 +3,7 @@
 _base=paddlepaddle
 pkgname=${_base}-bin
 pkgver=2.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Machine Learning Framework from Industrial Practice"
 url="https://${_base}.org.cn"
 depends=(python-requests python-numpy python-protobuf python-pillow python-decorator python-astor python-opt_einsum perl python-setuptools) # python-paddle_bfloat
