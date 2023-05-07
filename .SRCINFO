@@ -1,0 +1,21 @@
+pkgbase = python-astropy-sphinx-theme-git
+	pkgdesc = The sphinx theme for Astropy and affiliated packages.
+	pkgver = 1.1.r6.gd9eadd5
+	pkgrel = 1
+	url = https://github.com/astropy/astropy-sphinx-theme
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	checkdepends = python-sphinx
+	makedepends = python-setuptools-scm
+	makedepends = git
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	source = git+https://github.com/astropy/astropy-sphinx-theme
+	sha256sums = SKIP
+
+pkgname = python-astropy-sphinx-theme-git
+	depends = python-sphinx>=1.6
+	provides = python-astropy-sphinx-theme
+	conflicts = python-astropy-sphinx-theme
