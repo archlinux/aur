@@ -3,14 +3,14 @@
 
 pkgname=iscan-plugin-perfection-v370
 pkgver=2.30.4
-pkgrel=1
+pkgrel=2
 pkgdesc="EPSON Image Scan! plugin for Epson scanners (GT-F740, GT-S640, Perfection V37, Perfection V370)"
 arch=('x86_64')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:EPSON EULA')
 depends=('iscan' 'iscan-data')
 source=("https://download2.ebz.epson.net/iscan/plugin/perfection-v370/deb/x64/iscan-perfection-v370-bundle-${pkgver}.x64.deb.tar.gz")
-sha256sums=('08026cedf7b13895526b5b6267e98f1ab2c5ed9eb417c565ef37cfd4787b7b65')
+sha256sums=('7b44da1637432717aa2a2f7fd7dfbb04bcf486310484ce1c0a63ef5cb9968a32')
 install="${pkgname}.install"
 
 prepare() {
