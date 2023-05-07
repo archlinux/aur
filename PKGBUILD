@@ -8,7 +8,7 @@ pkgdesc='WhatsApp desktop application written in Pyqt6 + PyQt6-WebEngine'
 arch=(x86_64)
 url="https://github.com/rafatosta/$pkgname" 
 license=(GPL3)
-depends=('python-pyqt6' 'python-pyqt6-webengine' 'dbus-python')
+depends=('python-pyqt6' 'python-pyqt6-webengine' 'dbus-python' 'qt6-wayland')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=('hunspell: spell check')
 source=(git+$url#tag=v$pkgver)

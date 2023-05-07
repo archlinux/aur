@@ -13,6 +13,7 @@ pkgbase = zapzap
 	depends = python-pyqt6
 	depends = python-pyqt6-webengine
 	depends = dbus-python
+	depends = qt6-wayland
 	optdepends = hunspell: spell check
 	source = git+https://github.com/rafatosta/zapzap#tag=v4.4.5
 	b2sums = SKIP
