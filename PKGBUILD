@@ -3,13 +3,13 @@
 pkgname=python-terminaltables
 _pyname=terminaltables
 pkgver=3.1.0
-pkgrel=10
+pkgrel=11
 pkgdesc="Generate simple tables in terminals from a nested list of strings"
 arch=('any')
 url="https://github.com/Robpol86/terminaltables"
 license=('MIT')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-build' 'python-wheel' 'python-installer')
 checkdepends=('python-pytest' 'python-colorama' 'python-termcolor' 'python-colorclass')
 source=("${_pyname}-${pkgver}.tar.gz::https://github.com/Robpol86/${_pyname}/archive/v${pkgver}.tar.gz"
         python-3.8.patch)
@@ -23,12 +23,12 @@ prepare() {
 
 build() {
   cd ${_pyname}-${pkgver}
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd ${_pyname}-${pkgver}
-  python setup.py install -O1 --root="${pkgdir}" --skip-build
+  python -m installer --destdir="$pkgdir" --compile-bytecode=2 dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm 644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 644 example*.py -t "${pkgdir}/usr/share/doc/${pkgname}/examples"
