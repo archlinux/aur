@@ -1,0 +1,16 @@
+pkgbase = python-hgchat
+	pkgdesc = Google Bard API in Python
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/Bavarder/googlebardpy
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/h/hgchat/hgchat-0.1.0.tar.gz
+	sha256sums = 002fdfd9d7eb7a526d4478d56873b3c6e713de9c58252a5fc49eec2d328d677e
+
+pkgname = python-hgchat
