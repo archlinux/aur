@@ -1,9 +1,9 @@
-# Maintainer: bipin kumar <bipin@ccmb.res.in>
+# Maintainer: bipin kumar <kbipinkumar@pm.me>
 
 pkgname=flair
 _module=flair-brookslab
 pkgver=1.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Tool for correction, isoform definition, and alternative splicing analysis of nanopore cDNA, native RNA, and PacBio sequencing reads"
 arch=('any')
 url="https://github.com/BrooksLabUCSC/flair"

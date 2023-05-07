@@ -1,7 +1,7 @@
 pkgbase = flair
 	pkgdesc = Tool for correction, isoform definition, and alternative splicing analysis of nanopore cDNA, native RNA, and PacBio sequencing reads
 	pkgver = 1.7.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/BrooksLabUCSC/flair
 	arch = any
 	license = BSD
