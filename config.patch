@@ -1,11 +1,11 @@
---- config.mak	2015-02-23 05:02:13.000000000 -0800
-+++ /home/users/morozov/config.mak	2015-06-19 10:31:32.271140419 -0700
-@@ -34,7 +34,7 @@
+--- config.mak.orig	2023-05-07 08:40:49.709998439 -0700
++++ config.mak	2023-05-07 08:43:44.066827592 -0700
+@@ -65,7 +65,7 @@
  #
- # The name of the Lua package (it could be "lua", "lua52", or "lua5.2")
+ # MOC is the Qt meta-object compiler.
+ # Make sure it's the right one for Qt6.
+-MOC	      ?= /usr/lib/qt6/libexec/moc
++MOC	      ?= /usr/lib/qt6/moc
  #
--LUA_PACKAGE   ?= lua5.3
-+LUA_PACKAGE   ?= lua53
+ # --------------------------------------------------------------------
  #
- ZLIB_CFLAGS   ?=
- ZLIB_LIBS     ?= -lz
