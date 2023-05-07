@@ -11,17 +11,7 @@
         <FileVersion>0.10</FileVersion>
         <PublishSingleFile>true</PublishSingleFile>
         <SelfContained>false</SelfContained>
-        
-        <LibCommonPath>..\csapi\common\common.csproj</LibCommonPath>
     </PropertyGroup>
-    
-    <ItemGroup Condition="Exists('$(LibCommon)')">
-        <ProjectReference Include="$(LibCommon)" />
-    </ItemGroup>
-    
-    <ItemGroup Condition="!Exists('$(LibCommon)')">
-        <PackageReference Include="comroid.csapi.common" Version="0.1.0" />
-    </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="CommandLineParser" Version="2.9.1" />

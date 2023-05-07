@@ -1,8 +1,8 @@
 # Maintainer: Tobias Burdow <kaleidox@comroid.org>
 
 pkgname=rgx-git
-pkgver=0.1
-pkgrel=3
+pkgver=0.2
+pkgrel=1
 pkgdesc="CLI RegExp Tool"
 arch=('any')
 url="https://github.com/comroid-git/rgx"
@@ -14,10 +14,10 @@ md5sums=('SKIP')
 options+=("!strip")
 
 build() {
-    cd "$srcdir/rgx"
+    cd rgx
     dotnet publish -c Release --use-current-runtime
 }
 
 package() {
-    install -Dm755 "$srcdir/rgx/bin/Release/net6.0/linux-x64/publish/rgx" "$pkgdir/usr/bin/rgx"
+    install -Dm755 "rgx/bin/Release/net6.0/linux-x64/publish/rgx" "$pkgdir/usr/bin/rgx"
 }

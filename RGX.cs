@@ -1,23 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Linq;
+﻿using System.Globalization;
 using System.Text.RegularExpressions;
 using CommandLine;
-using comroid.common;
 
 namespace rgx;
 
 public static class RGX
 {
-    private static readonly ILog log = new Log("rgx");
-
-    static RGX()
-    {
-        ILog.Detail = DetailLevel.None;
-    }
-
     public static void Main(string[] args)
     {
         new Parser(cfg =>
@@ -31,72 +19,75 @@ public static class RGX
                 cfg.ParsingCulture = CultureInfo.InvariantCulture;
                 cfg.EnableDashDash = false;
                 cfg.MaximumDisplayWidth = Console.WindowWidth;
-            }).ParseArguments<Arg>(args)
-            .WithParsed(Run)
+            }).ParseArguments<MatchAndReplace, Split, Group>(args)
+            .WithParsed<MatchAndReplace>(RunMatch)
+            .WithParsed<Split>(RunSplit)
             .WithNotParsed(Error);
     }
 
-    private static void Run(Arg cmd)
+    private static (Regex pattern, TextReader input, TextWriter output) Prepare(ICmd cmd)
     {
-        log.At(LogLevel.Info, "excess: " + cmd.excess);
+        return (new Regex(cmd.pattern, (RegexOptions)cmd.options.Aggregate(0, (x, y) => x | (int)y)),
+            cmd.input is not null and not ""
+                ? File.Exists(cmd.input)
+                    ? new StreamReader(new FileStream(cmd.input, FileMode.Open, FileAccess.Read))
+                    : new StringReader(cmd.input)
+                : Console.In,
+            cmd.output is not null and not "" && File.Exists(cmd.output)
+                ? new StreamWriter(new FileStream(cmd.output, FileMode.Truncate, FileAccess.Write))
+                : Console.Out);
+    }
 
-        var pattern = new Regex(cmd.pattern, (RegexOptions)cmd.options.Aggregate(0, (x, y) => x | (int)y));
-        using var input = cmd is { split: true, replacement: not null } ? new StringReader(cmd.replacement) : Console.In;
-        using var output = cmd.fileOutput is not null ? new StreamWriter(new FileStream(cmd.fileOutput, FileMode.Truncate, FileAccess.Write)) : Console.Out;
+    private static void RunMatch(MatchAndReplace cmd)
+    {
+        var (pattern, input, output) = Prepare(cmd);
 
-        if (cmd.split)
+        while (input.ReadLine() is { } line)
+            if (pattern.IsMatch(line))
+                output.WriteLine(cmd.replacement == null ? line : pattern.Replace(line, cmd.replacement));
+            else if (cmd.useDefault)
+                output.WriteLine(line);
+
+        foreach (var res in new IDisposable[] { input, output })
+            res.Dispose();
+    }
+
+    private static void RunSplit(Split cmd)
+    {
+        // ReSharper disable once RedundantAssignment
+        var (pattern, input, output) = Prepare(cmd);
+
+        var newPattern = cmd.pattern;
+        if (newPattern.StartsWith('^'))
+            // do not match beginning of string
+            newPattern = newPattern.Substring(1);
+        if (!newPattern.EndsWith('$'))
+            newPattern += '$';
+        pattern = new Regex(newPattern);
+        int c;
+        var buf = new StringWriter();
+        while ((c = input.Read()) != -1)
         {
-            var newPattern = cmd.pattern;
-            if (newPattern.StartsWith('^'))
-                // do not match beginning of string
-                newPattern = newPattern.Substring(1);
-            if (!newPattern.EndsWith('$'))
-                newPattern += '$';
-            pattern = new Regex(newPattern);
-            int c;
-            var buf = new StringWriter();
-            while ((c = input.Read()) != -1)
+            buf.Write((char)c);
+            var str = buf.ToString();
+            if (pattern.Match(str) is not { Success: true } match)
             {
-                buf.Write((char)c);
-                var str = buf.ToString();
-                if (pattern.Match(str) is not { Success: true } match)
-                {
-                    output.Write((char)c);
-                    continue;
-                }
-                if (!string.IsNullOrWhiteSpace(str.Remove(match.Index, match.Length)))
-                    output.WriteLine();
-                buf.Close();
-                buf = new StringWriter();
+                output.Write((char)c);
+                continue;
             }
+            if (!string.IsNullOrWhiteSpace(str.Remove(match.Index, match.Length)))
+                output.WriteLine();
+            buf.Close();
+            buf = new StringWriter();
         }
-        else
-            while (input.ReadLine() is { } line)
-                if (pattern.IsMatch(line))
-                    output.WriteLine(cmd.replacement == null ? line : pattern.Replace(line, cmd.replacement));
+
+        foreach (var res in new IDisposable[] { input, output })
+            res.Dispose();
     }
 
     private static void Error(IEnumerable<Error> errors)
     {
         foreach (var err in errors)
-            log.At(err.StopsProcessing ? LogLevel.Fatal : LogLevel.Error, err);
-    }
-
-    private class Arg
-    {
-        [Value(0, MetaName = "pattern", Required = true)]
-        public string pattern { get; set; } = null!;
-
-        [Value(1, MetaName = "replacement", Required = false, Default = null)]
-        public string? replacement { get; set; }
-        [Value(1)]
-        public IEnumerable<string> excess { get; set; }
-
-        [Option(shortName: 'o', longName: "options", Separator = ',', Required = false)]
-        public IEnumerable<RegexOptions> options { get; set; } = null!;
-        [Option(shortName: 's', longName: "split", Required = false, Default = false)]
-        public bool split { get; set; }
-        [Option(shortName: 'f', longName: "file", Required = false, Default = null)]
-        public string? fileOutput { get; set; }
+            Console.Error.WriteLine(err);
     }
 }
