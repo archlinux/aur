@@ -11,7 +11,6 @@ license=('GPL3')
 depends=(
   'lib32-gcc-libs'
   'lib32-glibc'
-  'lib32-aom'
   'lib32-libde265'
   "libheif=${pkgver}"
 )
@@ -24,6 +23,7 @@ makedepends=(
   'lib32-x265'
   'lib32-libdav1d'
   'lib32-gdk-pixbuf2'
+  'lib32-aom'
 )
 optdepends=(
   'lib32-libjpeg: for heif-convert and heif-enc'

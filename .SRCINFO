@@ -13,9 +13,9 @@ pkgbase = lib32-libheif
 	makedepends = lib32-x265
 	makedepends = lib32-libdav1d
 	makedepends = lib32-gdk-pixbuf2
+	makedepends = lib32-aom
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
-	depends = lib32-aom
 	depends = lib32-libde265
 	depends = libheif=1.16.1
 	optdepends = lib32-libjpeg: for heif-convert and heif-enc
@@ -29,7 +29,6 @@ pkgbase = lib32-libheif
 pkgname = lib32-libheif
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
-	depends = lib32-aom
 	depends = lib32-libde265
 	depends = libheif=1.16.1
 	depends = lib32-aom
