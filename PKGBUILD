@@ -3,7 +3,7 @@
 _pkgname=igetnonce
 pkgname=$_pkgname-s0uthwest-git
 pkgver=r10.6443eb5
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool for checking booted iOS device nonces - s0uthwest's fork - git version"
 arch=('x86_64')
 url="https://github.com/s0uthwest/$_pkgname"
