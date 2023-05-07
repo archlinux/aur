@@ -1,7 +1,7 @@
 pkgbase = deadlink
 	pkgdesc = Check and fixes URLs in text files
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nschloe/deadlink
 	arch = any
 	license = MIT

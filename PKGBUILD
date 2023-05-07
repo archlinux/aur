@@ -2,7 +2,7 @@
 pkgname=deadlink
 pkgdesc="Check and fixes URLs in text files"
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/nschloe/${pkgname}"
 license=(MIT)
