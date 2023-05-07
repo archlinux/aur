@@ -2,7 +2,7 @@
 
 pkgname=singularity-ce
 pkgver=3.11.3
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source container platform designed to be simple, fast, and secure.'
 arch=(x86_64)
 url='https://github.com/sylabs/singularity'
@@ -25,6 +25,7 @@ backup=(
 )
 depends=('cryptsetup' 'go>=1.17' 'libseccomp' 'squashfs-tools>=4.3')
 makedepends=('git')
+optdepends=('libnvidia-container-tools: use nvidia-container-cli for GPU setup (experimental)')
 provides=('singularity-container')
 conflicts=('singularity-container')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
@@ -51,12 +52,12 @@ build() {
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
     # libexecdir is recommended here https://wiki.archlinux.org/title/Arch_package_guidelines#Package_etiquette
-    ./mconfig \
-        -V $pkgver \
-        -P release-stripped \
-        --prefix="/usr" \
-        --libexecdir="/usr/lib" \
-        --sysconfdir="/etc" \
+    ./mconfig                      \
+        -V $pkgver                 \
+        -P release-stripped        \
+        --prefix="/usr"            \
+        --libexecdir="/usr/lib"    \
+        --sysconfdir="/etc"        \
         --localstatedir="/var/lib" \
         --reproducible
 

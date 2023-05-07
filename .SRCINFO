@@ -1,7 +1,7 @@
 pkgbase = singularity-ce
 	pkgdesc = An open source container platform designed to be simple, fast, and secure.
 	pkgver = 3.11.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sylabs/singularity
 	arch = x86_64
 	license = GPL2
@@ -10,6 +10,7 @@ pkgbase = singularity-ce
 	depends = go>=1.17
 	depends = libseccomp
 	depends = squashfs-tools>=4.3
+	optdepends = libnvidia-container-tools: use nvidia-container-cli for GPU setup (experimental)
 	provides = singularity-container
 	conflicts = singularity-container
 	backup = etc/singularity/capability.json
