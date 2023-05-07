@@ -3,7 +3,7 @@
 pkgname=python-lunr
 _pkgname=lunr
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python implementation of Lunr.js (for mkdocs)"
 arch=('any')
 url="https://github.com/yeraydiazdiaz/lunr.py"

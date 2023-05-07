@@ -1,7 +1,7 @@
 pkgbase = python-lunr
 	pkgdesc = A Python implementation of Lunr.js (for mkdocs)
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yeraydiazdiaz/lunr.py
 	arch = any
 	license = MIT
