@@ -1,15 +1,18 @@
-# Maintainer: Falk Alexander Seidl <fa@terminal.run>
+# Maintainer: xiretza <xiretza+aur@xiretza.xyz>
+# Contributor: Falk Alexander Seidl <fa@terminal.run>
 
 pkgname=fractal-git
 _gitname=fractal
 epoch=1
-pkgver=5.alpha1.r166.g52ed7d3c
+pkgver=5.alpha1.r313.g64cffbba
 pkgrel=1
 pkgdesc="Matrix messaging app for GNOME written in Rust"
 arch=('i686' 'x86_64')
 license=('GPL3')
 url="https://gitlab.gnome.org/GNOME/fractal"
-depends=('gtk4' 'gtksourceview5' 'gst-plugins-base-libs' 'gst-editing-services' 'gspell' 'libadwaita>=1:1.3alpha' 'pipewire' 'libshumate' 'org.freedesktop.secrets')
+depends=('gtk4' 'gtksourceview5' 'gst-plugins-base-libs' 'gst-editing-services' 'gspell'
+         'libadwaita>=1:1.3alpha' 'pipewire' 'libshumate' 'org.freedesktop.secrets'
+         'xdg-desktop-portal')
 conflicts=('fractal')
 provides=("fractal=$pkgver" 'fractal-next')
 replaces=('fractal-next')
