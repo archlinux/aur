@@ -1,7 +1,7 @@
 pkgbase = python-arc4-git
 	pkgdesc = A small and insanely fast ARCFOUR (RC4) cipher implementation for Python.
 	pkgver = 0.4.0+7.r236.20230422.6f0706a
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/manicmaniac/arc4
 	arch = aarch64
 	arch = armv6h

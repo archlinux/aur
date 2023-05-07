@@ -5,7 +5,7 @@ _projectname="${_pyname}"
 _pkgname="python-${_projectname}"
 pkgname="${_pkgname}-git"
 pkgver=0.4.0+7.r236.20230422.6f0706a
-pkgrel=3
+pkgrel=4
 pkgdesc="A small and insanely fast ARCFOUR (RC4) cipher implementation for Python."
 arch=(
   'aarch64'
@@ -77,12 +77,10 @@ build() {
   printf '%s\n' " --> making documentation ..."
   cd docs
   make man
-  make info
   make text
   make html
   make qthelp
   gzip -9 _build/man/*
-  gzip -9 _build/texinfo/*.info
 }
 
 package() {
@@ -103,9 +101,7 @@ package() {
   _manfiles=(
     docs/_build/man/arc4.1.gz
   )
-  _infofiles=(
-    docs/_build/texinfo/arc4.info.gz
-  )
+  _infofiles=()
   _licensefiles=(
     LICENSE
   )
