@@ -2,7 +2,7 @@
 
 pkgname=rgx-git
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI RegExp Tool"
 arch=('any')
 url="https://github.com/comroid-git/rgx"
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 build() {
     cd "$srcdir/rgx"
-    dotnet publish -c Release --sc --use-current-runtime -p:PublishSingleFile=true -o publish
+    dotnet build -c Release --sc --use-current-runtime -p:PublishSingleFile=true
 }
 
 package() {
