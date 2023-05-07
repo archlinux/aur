@@ -1,3 +1,4 @@
+# Maintainer: somini <dev@somini.xyz>
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 pkgname=python-lunr
 _pkgname=lunr
