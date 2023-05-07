@@ -3,7 +3,7 @@
 
 pkgname=an-anime-game-launcher-bin
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 url="https://github.com/an-anime-team/an-anime-game-launcher"
 conflicts=("an-anime-game-launcher-git")
@@ -33,7 +33,7 @@ optdepends=(
 source=(
     "an-anime-game-launcher_${pkgver}::https://github.com/an-anime-team/an-anime-game-launcher/releases/download/${pkgver}/anime-game-launcher"
     "icon.png"
-    "an-anime-game-launcher.desktop"
+    "moe.launcher.an-anime-game-launcher.desktop"
 )
 
 md5sums=(
@@ -53,7 +53,8 @@ package() {
 
     install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/an-anime-game-launcher.png"
     ln -s "/usr/lib/${pkgname}/an-anime-game-launcher_${pkgver}" "${pkgdir}/usr/bin/an-anime-game-launcher"
-    install -Dm644 "${srcdir}/an-anime-game-launcher.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/moe.launcher.an-anime-game-launcher.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/icons/moe.launcher.an-anime-game-launcher.png"
 }
+
 

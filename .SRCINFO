@@ -1,7 +1,7 @@
 pkgbase = an-anime-game-launcher-bin
 	pkgdesc = A Launcher for a specific anime game with auto-patching, discord rpc and time tracking
 	pkgver = 3.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/an-anime-team/an-anime-game-launcher
 	arch = x86_64
 	license = GPL3
@@ -22,7 +22,7 @@ pkgbase = an-anime-game-launcher-bin
 	conflicts = an-anime-game-launcher-git
 	source = an-anime-game-launcher_3.6.0::https://github.com/an-anime-team/an-anime-game-launcher/releases/download/3.6.0/anime-game-launcher
 	source = icon.png
-	source = an-anime-game-launcher.desktop
+	source = moe.launcher.an-anime-game-launcher.desktop
 	md5sums = 3149a5e72ecf214c017d288368fbc302
 	md5sums = c1a5499b80a55d3d238ef5c5d2c93c99
 	md5sums = 12d89b3be2072437e7b252af97274142
