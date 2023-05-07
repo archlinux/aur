@@ -1,7 +1,7 @@
 # Maintainer: Oliver Papst <opapst at ikp dot tu-darmstadt dot de>
 pkgname=hdtv
 pkgver=22.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Nuclear spectrum analysis tool on top of the ROOT data analysis toolkit"
 arch=('i686' 'x86_64')
 url="https://github.com/janmayer/${pkgname}"
@@ -22,7 +22,7 @@ makedepends=('python-docutils')
 #checkdepends=('python-pytest')
 options=(!emptydirs)
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('b47664c52a2cec9a4e6997a89162a0ccf021bdf2c94d258f98b3b100a7ca3d92')
+sha256sums=('d5725e637c8b1cdf5c912676675448766a42c406b1f4575439b85a1ea86628a2')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/doc/guide"
