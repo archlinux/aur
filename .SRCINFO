@@ -1,6 +1,6 @@
 pkgbase = lcarsde-logout
 	pkgdesc = lcarsde app for logout, shutdown, restart, ...
-	pkgver = 20.1
+	pkgver = 23.1
 	pkgrel = 1
 	url = https://lcarsde.github.io
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = lcarsde-logout
 	depends = python-gobject
 	depends = gtk3
 	depends = python-psutil
-	source = lcarsde-logout-20.1.tar.gz::https://github.com/lcarsde/logout/archive/20.1.tar.gz
-	md5sums = 7c8d1f5016620da141f9dbaf3aa9c3f4
+	source = lcarsde-logout-23.1.tar.gz::https://github.com/lcarsde/logout/archive/23.1.tar.gz
+	md5sums = c03d402413f0cd33e19ad730946549b7
 
 pkgname = lcarsde-logout
-
