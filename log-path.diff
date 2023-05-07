@@ -5,7 +5,7 @@
      - type: file
        format: json
 -      filename: ./logs/mautrix-discord.log
-+      filename: /var/log/mautrix-discord.log
++      filename: /var/log/mautrix-discord/mautrix-discord.log
        max_size: 100
        max_backups: 10
        compress: true
