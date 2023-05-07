@@ -1,19 +1,18 @@
-﻿#!/bin/bash
+#!/usr/bin/bash
 
 set -e # exit on error
 
-# make prebuilt executable
-dotnet clean
-dotnet publish -c Release --use-current-runtime
+./clean.sh
+
+# run tests first
+dotnet test
 
 # update SRCINFO
-git clean -f
-git reset --hard
 makepkg --printsrcinfo > .SRCINFO
 (git add .SRCINFO && git commit -m "SRCINFO" && git push) || true
 
-# verify that makepkg works
-makepkg -Cc --noconfirm
+# build the executable
+makepkg -Cf --noconfirm
 
 # push to aur
 if [ -z "$(git remote | grep aur)" ]; then

@@ -683,4 +683,5 @@ fabric.properties
 clmath/Antlr/
 winbash-util/winbash-util.csproj.DotSettings
 
+.build/
 *.tar.gz
