@@ -22,6 +22,8 @@ makedepends=(
   'lib32-rav1e'
   'lib32-libwebp'
   'lib32-x265'
+  'lib32-libdav1d'
+  'lib32-gdk-pixbuf2'
 )
 optdepends=(
   'lib32-libjpeg: for heif-convert and heif-enc'
