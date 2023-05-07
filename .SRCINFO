@@ -1,13 +1,13 @@
 pkgbase = tt-rss-plugin-af-readability-git
 	pkgdesc = Readability plugin for tt-rss
-	pkgver = r1.0226e0c
+	pkgver = r2.cdc97d8
 	pkgrel = 1
-	url = https://dev.tt-rss.org/tt-rss/ttrss-af-readability
+	url = https://gitlab.tt-rss.org/tt-rss/plugins/ttrss-af-readability
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = tt-rss
-	source = git+https://dev.tt-rss.org/tt-rss/ttrss-af-readability.git
+	source = git+https://gitlab.tt-rss.org/tt-rss/plugins/ttrss-af-readability.git
 	sha256sums = SKIP
 
 pkgname = tt-rss-plugin-af-readability-git
