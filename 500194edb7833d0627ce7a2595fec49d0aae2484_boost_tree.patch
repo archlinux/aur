@@ -1,0 +1,29 @@
+diff --git a/include/boost/python/detail/wrap_python.hpp b/include/boost/python/detail/wrap_python.hpp
+index 9d5f5422a2..037e4bf2ec 100644
+--- a/include/boost/python/detail/wrap_python.hpp
++++ b/include/boost/python/detail/wrap_python.hpp
+@@ -227,7 +227,11 @@ typedef int pid_t;
+ 
+ # define PyVarObject_HEAD_INIT(type, size) \
+         PyObject_HEAD_INIT(type) size,
++#endif
+ 
++#if PY_VERSION_HEX < 0x030900A4
++#  define Py_SET_TYPE(obj, type) ((Py_TYPE(obj) = (type)), (void)0)
++#  define Py_SET_SIZE(obj, size) ((Py_SIZE(obj) = (size)), (void)0)
+ #endif
+ 
+ 
+diff --git a/include/boost/python/object/make_instance.hpp b/include/boost/python/object/make_instance.hpp
+index 31ec08f7c3..5eb3aa9d9c 100644
+--- a/include/boost/python/object/make_instance.hpp
++++ b/include/boost/python/object/make_instance.hpp
+@@ -47,7 +47,7 @@ struct make_instance_impl
+               
+             // Note the position of the internally-stored Holder,
+             // for the sake of destruction
+-            Py_SIZE(instance) = offsetof(instance_t, storage);
++            Py_SET_SIZE(instance, offsetof(instance_t, storage));
+ 
+             // Release ownership of the python object
+             protect.cancel();
