@@ -1,7 +1,7 @@
 pkgbase = idevicerestore
 	pkgdesc = Restore/upgrade firmware of iOS devices
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.libimobiledevice.org
 	arch = x86_64
 	license = LGPL3
