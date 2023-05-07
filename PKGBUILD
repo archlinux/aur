@@ -1,22 +1,41 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Andrey Mikhaylenko <neithere at gmail dot com>
 
 pkgname=python-blessings
-_pkgname=blessings
+_name=${pkgname#python-}
 pkgver=1.7
-pkgrel=9
+pkgrel=10
 pkgdesc="A thin, practical wrapper around terminal coloring, styling, and positioning"
 url="https://github.com/erikrose/blessings"
-arch=('any')
-license=('MIT')
-depends=('python')
-makedepends=('python-distribute')
-#options=(!emptydirs)
-source=("https://files.pythonhosted.org/packages/source/b/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('98e5854d805f50a5b58ac2333411b0482516a8210f23f43308baeb58d77c157d')
+arch=(any)
+license=(MIT)
+depends=(python-six)
+makedepends=(python-setuptools)
+checkdepends=(python-nose)
+
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('ee1dc1524631c4fdb9e3a7f1776cbf82ae50cf1edf225d45bf274bebed0c6c36')
+
+_archive="$_name-$pkgver"
+
+build() {
+  cd "$_archive"
+
+  python setup.py build
+}
+
+check() {
+  cd "$_archive"
+
+  python -m nose
+}
 
 package() {
-  cd "$srcdir/blessings-$pkgver"
-  python3 setup.py install --root="$pkgdir/" --prefix=/usr --optimize=0
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/python-blessings/LICENSE"
+  cd "$_archive"
+
+  export PYTHONHASHSEED=0
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
