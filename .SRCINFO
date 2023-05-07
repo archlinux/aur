@@ -1,6 +1,6 @@
 pkgbase = python-mediapipe
 	pkgdesc = A cross-platform, customizable ML solutions for live and streaming media
-	pkgver = 0.9.2.1
+	pkgver = 0.9.3.0
 	pkgrel = 1
 	url = https://github.com/google/mediapipe
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = python-mediapipe
 	depends = python-pillow
 	depends = python-protobuf
 	depends = python-wheel
-	source = https://files.pythonhosted.org/packages/0a/63/5300164289477fbd1d6f00df36d2732b000b950e9d80cda6c67d6a986361/mediapipe-0.9.2.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-	sha256sums = f0b4a04dc70d0370fef6c05d3861d5830fdc85d2c0c065b17613702e0891bdd1
+	source = https://files.pythonhosted.org/packages/2e/97/afe0b0637d182d086d059831a17221e655e6336b2e797b8329fad7c77b61/mediapipe-0.9.3.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	sha256sums = d9615104b78f0bc7a71087ee74a98330b536c093c1baee797c5146b543e7403f
 
 pkgname = python-mediapipe

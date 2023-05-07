@@ -1,8 +1,8 @@
 # Maintainer: robertfoster
 _name=mediapipe
-_py=cp310
+_py=cp311
 pkgname=python-mediapipe
-pkgver=0.9.2.1
+pkgver=0.9.3.0
 pkgrel=1
 pkgdesc="A cross-platform, customizable ML solutions for live and streaming media"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('absl-py' 'python' 'python-cycler' 'python-dateutil' 'python-fonttools'
   'python-matplotlib' 'python-opencv' 'python-pillow' 'python-protobuf' 'python-wheel')
 makedepends=('python-pip')
 
-source=("https://files.pythonhosted.org/packages/0a/63/5300164289477fbd1d6f00df36d2732b000b950e9d80cda6c67d6a986361/${_name//-/_}-$pkgver-$_py-${_py}-manylinux_2_17_x86_64.manylinux2014_x86_64.whl")
+source=("https://files.pythonhosted.org/packages/2e/97/afe0b0637d182d086d059831a17221e655e6336b2e797b8329fad7c77b61/${_name//-/_}-$pkgver-$_py-${_py}-manylinux_2_17_x86_64.manylinux2014_x86_64.whl")
 
 package() {
   cd "${srcdir}"
@@ -29,4 +29,4 @@ package() {
     -exec rm -rf {} +
 }
 
-sha256sums=('f0b4a04dc70d0370fef6c05d3861d5830fdc85d2c0c065b17613702e0891bdd1')
+sha256sums=('d9615104b78f0bc7a71087ee74a98330b536c093c1baee797c5146b543e7403f')
