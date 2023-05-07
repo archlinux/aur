@@ -11,6 +11,7 @@ depends=('dotnet-runtime-6.0')
 makedepends=('dotnet-sdk-6.0')
 source=("git+https://github.com/comroid-git/rgx.git")
 md5sums=('SKIP')
+options+=("!strip")
 
 build() {
     cd "$srcdir/rgx"
