@@ -2,13 +2,13 @@
 _base=precice-config-visualizer
 pkgname=${_base}-git
 pkgdesc="A tool for visualizing a preCICE configuration file as a dot file"
-pkgver=20220131
+pkgver=20230224
 pkgrel=1
 arch=(any)
 url="https://github.com/precice/${_base/precice-/}"
 license=(GPL3)
 depends=(python-lxml python-pydot)
-makedepends=(python-setuptools git)
+makedepends=(python-build python-installer python-setuptools python-wheel git)
 source=(git+${url}.git#branch=master)
 sha512sums=('SKIP')
 provides=(${_base})
@@ -21,8 +21,7 @@ pkgver() {
 
 build() {
   cd ${_base/precice-/}
-  export PYTHONHASHSEED=0
-  python setup.py build
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
