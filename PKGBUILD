@@ -1,7 +1,7 @@
 # Maintainer: 0xMRTT <0XMRTT@proton.me>
 
 pkgname=python-baichat-py
-_name=${pkgname#python-}
+_name=baichat_py
 pkgver=0.2.1
 pkgrel=1
 pkgdesc="BAIChat API Python"

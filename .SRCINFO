@@ -11,7 +11,7 @@ pkgbase = python-baichat-py
 	makedepends = python-wheel
 	depends = python-requests
 	depends = python-aiohttp
-	source = https://files.pythonhosted.org/packages/source/b/baichat-py/baichat-py-0.2.1.tar.gz
+	source = https://files.pythonhosted.org/packages/source/b/baichat_py/baichat_py-0.2.1.tar.gz
 	sha256sums = 834de3c8d544c9724f089d7b8051bac5787d519b769cecac9054059ef559b0fb
 
 pkgname = python-baichat-py
