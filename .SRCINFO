@@ -18,6 +18,7 @@ pkgbase = linux-wallpaperengine-wayland-git
 	depends = glew
 	depends = freeglut
 	depends = libpulse
+	depends = wayland
 	provides = linux-wallpaperengine
 	conflicts = linux-wallpaperengine
 	source = linux-wallpaperengine-wayland-git::git+https://github.com/Almamu/linux-wallpaperengine.git#branch=main
