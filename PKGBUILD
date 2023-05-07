@@ -2,7 +2,7 @@
 
 _pkgname=cmake-build-extension
 pkgname="python-$_pkgname-git"
-pkgver=0.3.0.r0.g31b148e
+pkgver=0.5.1.r3.gfea4503
 pkgrel=2
 pkgdesc="Setuptools extension to build and package CMake projects"
 arch=(any)
