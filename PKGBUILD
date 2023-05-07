@@ -2,7 +2,7 @@
 pkgname=dolfinx
 pkgdesc="Next generation FEniCS problem solving environment"
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 url="https://github.com/FEniCS/${pkgname}"
 license=(LGPL3)
@@ -25,6 +25,8 @@ prepare() {
   # https://github.com/FEniCS/dolfinx/issues/2645
   patch -p1 -i ../requires-fix.patch
   patch -p1 -i ../enum-fix.patch
+  # gcc-13-compatibilty
+  sed -i '/#include <vector>/a #include <cstdint>' ${pkgname}-${pkgver}/cpp/dolfinx/graph/AdjacencyList.h
 }
 
 build() {
