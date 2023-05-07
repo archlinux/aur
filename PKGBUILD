@@ -2,15 +2,16 @@
 
 pkgname=python-propka
 _name=${pkgname#python-}
-pkgver=3.4.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="Heuristic pKa calculations with ligands"
 arch=(any)
 url="http://pypi.python.org/pypi/${_name}"
-license=(BSD)
-depends=('python>=3.6')
+license=('LGPL2.1')
+depends=('python>=3.8')
+checkdepends=('python-numpy' 'python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('f19c2e145faa7eab000ce056a9058b8a30adba6970705047bb4fb7ba7570b020')
+sha256sums=('0f32bbcafed56e94cc9d3fdb05d9c2faa7485d8a5779aaa79049b9ce0ab052fa')
 options=(!emptydirs)
 
 build() {
