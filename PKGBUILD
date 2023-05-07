@@ -8,7 +8,7 @@
 pkgname=dolfin
 pkgdesc="C++ interface of FEniCS"
 pkgver=2019.1.0.post0
-pkgrel=6
+pkgrel=7
 arch=('x86_64')
 url="https://bitbucket.org/fenics-project/${pkgname}"
 license=('LGPL3')
@@ -16,7 +16,6 @@ depends=('boost' 'cppunit' 'eigen' 'gl2ps' 'petsc' 'python-ffc' 'scotch' 'suites
 optdepends=('slepc: eigenvalue problem solvers'
   'hdf5-openmpi: for reading/writing hdf5 files')
 makedepends=('cmake')
-checkdepends=('openssh')
 options=(!emptydirs)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/downloads/${pkgname}-${pkgver}.tar.gz
   pkg-config.patch::${url}/issues/attachments/1120/fenics-project/${pkgname}/1618190046.28/1120/0001-cmake-PETSc-SLEPc-match-lowercase-.pc-pkg-config-fil.patch
