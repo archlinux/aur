@@ -20,13 +20,13 @@ _opt_FLUTTER=1
 set -u
 _pkgname='rustdesk'
 pkgname="${_pkgname}-git"
-pkgver=1.2.0.r2672.gd7d49353
+pkgver=1.2.0.r3209.g19f81ad3
 pkgrel=1
 pkgdesc='Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!'
 arch=('x86_64')
 url='https://github.com/rustdesk/rustdesk'
 license=('GPL3')
-_dpr=('gtk3' 'xdotool' 'libxcb' 'libxfixes' 'alsa-lib' 'curl' 'libva' 'libvdpau' 'libappindicator-gtk3') # from res/PKGBUILD/depends
+_dpr=('gtk3' 'xdotool' 'libxcb' 'libxfixes' 'alsa-lib' 'libva' 'libvdpau' 'libappindicator-gtk3' 'pam' 'gst-plugins-base' 'gst-plugin-pipewire') # from res/PKGBUILD/depends
 depends=("${_dpr[@]}" 'pulseaudio' 'gst-plugins-base-libs')
 depends+=('hicolor-icon-theme' 'xdg-utils')
 depends+=('xdg-user-dirs')
@@ -157,7 +157,7 @@ prepare() {
 
   if [ "${_opt_FLUTTER}" -ne 0 ]; then
     local _FLUTTER_VERSION
-    _FLUTTER_VERSION="$(source <(grep -e 'FLUTTER_VERSION: ' '.github/workflows/flutter-nightly.yml' | sed -e 's/: /=/g'); printf '%s' "${FLUTTER_VERSION}")"
+    _FLUTTER_VERSION="$(source <(grep -e 'FLUTTER_VERSION: ' '.github/workflows/flutter-build.yml' | sed -e 's/: /=/g'); printf '%s' "${FLUTTER_VERSION}")"
     if [ "${_FLUTTER_VERSION}" != "${_FLUVER}" ]; then
       printf 'Flutter version has changed to %s\n' "${_FLUTTER_VERSION}"
       set +u
