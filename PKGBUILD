@@ -9,7 +9,7 @@ arch=('any')
 url="https://codeberg.org/Bavarder/googlebardpy"
 license=('GPL3')
 depends=( 'python-requests')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'python-poetry' 'python-poetry-core')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('002fdfd9d7eb7a526d4478d56873b3c6e713de9c58252a5fc49eec2d328d677e')
 
