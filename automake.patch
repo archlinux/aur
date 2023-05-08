@@ -1,0 +1,24 @@
+Description: Do not call AM_INIT_AUTOMAKE twice
+Bug-Debian: https://bugs.debian.org/998479
+Author: Andreas Tille <tille@debian.org>
+Last-Update: Fri, 05 Nov 2021 22:03:24 +0100
+Reviewed-By: Étienne Mollier <emollier@debian.org>
+--- aevol.orig/configure.ac
++++ aevol/configure.ac
+@@ -20,7 +20,7 @@
+ AC_CONFIG_MACRO_DIR([m4])
+ 
+ # We want to use automake
+-AM_INIT_AUTOMAKE
++AM_INIT_AUTOMAKE([subdir-objects])
+ 
+ # Select compiler
+ AC_PROG_CXX([clang-omp++ clang++ g++ icc])
+@@ -298,7 +298,6 @@
+ AM_CONDITIONAL(WITH_RAEVOL, test x"$raevol" != xno)
+ if test "x$raevol" = "xyes" ; then
+    AC_DEFINE(__REGUL)
+-   AM_INIT_AUTOMAKE([subdir-objects])
+ fi
+ 
+ #  ************************* --with-blas option *******************************
