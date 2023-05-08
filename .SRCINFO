@@ -1,7 +1,7 @@
 pkgbase = python-scikit-fem
 	pkgdesc = Simple finite element assemblers
 	pkgver = 8.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/kinnala/scikit-fem
 	arch = x86_64
 	license = custom:BSD-3-clause
@@ -11,6 +11,8 @@ pkgbase = python-scikit-fem
 	checkdepends = python-h5py-openmpi
 	checkdepends = python-autograd
 	checkdepends = python-pyamg
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-scipy
