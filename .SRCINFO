@@ -1,6 +1,6 @@
 pkgbase = aurutils-git
 	pkgdesc = helper tools for the arch user repository
-	pkgver = 10b.r2.g15375b13
+	pkgver = 13.5.r0.g0c779c5d
 	pkgrel = 1
 	url = https://github.com/AladW/aurutils
 	changelog = aurutils.changelog
@@ -8,15 +8,18 @@ pkgbase = aurutils-git
 	license = custom:ISC
 	makedepends = git
 	depends = git
-	depends = jq
-	depends = pacutils>=0.11.1
+	depends = pacutils
 	depends = curl
+	depends = perl
 	optdepends = bash-completion: bash completion
 	optdepends = zsh: zsh completion
 	optdepends = devtools: aur-chroot
 	optdepends = vifm: default pager
+	optdepends = perl-json-xs: faster JSON serialization
 	optdepends = ninja: aur-sync ninja support
-	provides = aurutils=10b
+	optdepends = bat: view-delta example script
+	optdepends = git-delta: view-delta example script
+	provides = aurutils=13.5
 	conflicts = aurutils
 	source = git+https://github.com/AladW/aurutils
 	sha256sums = SKIP
