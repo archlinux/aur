@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=pkgoutofdate-git
-pkgver=r18.f06a1df
+pkgver=r20.f47f22c
 pkgrel=1
 pkgdesc='Checks whether Arch packages are out-of-date'
 arch=(any)
@@ -9,7 +9,7 @@ url='https://github.com/anatol/pkgoutofdate'
 license=(GPL3)
 depends=(ruby)
 makedepends=(git)
-source=(git://github.com/anatol/pkgoutofdate)
+source=(git+https://github.com/anatol/pkgoutofdate)
 sha1sums=('SKIP')
 
 pkgver() {
