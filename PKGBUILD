@@ -1,8 +1,8 @@
 # Maintainer: Tomás Ralph <tomasralph2000@gmail.com>
 _pkgname=Steam-Metadata-Editor
-pkgname=steam-metadata-editor-git
 pkgver=1.0.2
-pkgrel=1
+pkgname=steam-metadata-editor-git
+pkgrel=3
 pkgdesc="A metadata editor for Steam"
 arch=(any)
 url="https://github.com/tralph3/Steam-Metadata-Editor.git"
