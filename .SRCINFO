@@ -1,0 +1,18 @@
+pkgbase = ngrev-appimage
+	pkgdesc = Tool for reverse engineering of Angular applications
+	pkgver = 0.0.35
+	pkgrel = 1
+	url = https://github.com/mgechev/ngrev
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = glibc
+	conflicts = ngrev
+	options = !strip
+	source = ngrev-0.0.35.AppImage::https://github.com/mgechev/ngrev/releases/download/v0.0.35/ngrev-0.0.35.AppImage
+	source = LICENSE.md::https://raw.githubusercontent.com/mgechev/ngrev/master/LICENSE.md
+	sha256sums = c9f1d0212edf967c97a2e29610712b4c5f14ca9e58a9c1fbb39be2bfbe3907b1
+	sha256sums = 00df8834a94ab4d44c7c7d6557cce6af143ed0019a80c682b5a03d0cea8187b4
+
+pkgname = ngrev-appimage
