@@ -1,0 +1,27 @@
+pkgbase = lightly-boehs-git
+	pkgdesc = A modern style for Qt applications (updated fork)
+	pkgver = r2184.1a831f7f
+	pkgrel = 1
+	url = https://github.com/boehs/Lightly
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = kcmutils
+	makedepends = kdecoration
+	makedepends = qt5-declarative
+	makedepends = qt5-x11extras
+	depends = frameworkintegration
+	depends = kdecoration
+	depends = breeze-icons
+	depends = kwayland
+	depends = hicolor-icon-theme
+	provides = lightly-qt
+	conflicts = lightly-qt
+	conflicts = lightly-git
+	source = git+https://github.com/boehs/Lightly
+	sha512sums = SKIP
+
+pkgname = lightly-boehs-git
