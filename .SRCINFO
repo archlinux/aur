@@ -1,7 +1,7 @@
 pkgbase = audacity-local-git
 	pkgdesc = Record and edit audio files - Built with package versions as recommended by Audacity team
-	pkgver = 3.3.0.0.r16635
-	pkgrel = 2
+	pkgver = 3.4.0.0.r17089
+	pkgrel = 1
 	url = https://audacityteam.org
 	arch = x86_64
 	groups = pro-audio

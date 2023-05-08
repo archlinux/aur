@@ -2,8 +2,8 @@
 # Contributor: osch <oliver@luced.de>
 
 pkgname=audacity-local-git
-pkgver=3.3.0.0.r16635
-pkgrel=2
+pkgver=3.4.0.0.r17089
+pkgrel=1
 pkgdesc="Record and edit audio files - Built with package versions as recommended by Audacity team"
 arch=('x86_64')
 url="https://audacityteam.org"
@@ -32,7 +32,7 @@ pkgver() {
 
 prepare() {
   export CC=gcc
-  export VST3_SDK_DIR='/usr/share/vst3sdk'
+  export VST3_SDK_DIR='/usr/src/vst3sdk'
 
   mkdir -p build
   cd build
@@ -64,7 +64,7 @@ prepare() {
 build() {
 cd build
   make
-  conan remove "*" --src --builds --force
+#  conan remove "*" --src --builds --force
 }
 
 package() {
