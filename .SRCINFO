@@ -1,0 +1,36 @@
+pkgbase = asap-chiptunes-player-git
+	pkgdesc = Player of Atari 8-bit chiptunes for modern computers. With plugins for vlc,
+	pkgver = 5.3.0+11.r1523.20230427.8299c87
+	pkgrel = 2
+	url = http://asap.sourceforge.net
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cito
+	makedepends = git
+	makedepends = mads
+	makedepends = python>=3
+	makedepends = vlc
+	makedepends = xasm
+	depends = glibc
+	optdepends = python=>3: For the 'asap2wav' python executable.
+	optdepends = vlc: For the VLC plugin.
+	provides = asap=5.3.0+11.r1523.20230427.8299c87
+	provides = asap-chiptunes-player=5.3.0+11.r1523.20230427.8299c87
+	provides = asap2wav=5.3.0+11.r1523.20230427.8299c87
+	provides = python-asap=5.3.0+11.r1523.20230427.8299c87
+	provides = vlc-asap=5.3.0+11.r1523.20230427.8299c87
+	conflicts = asap-chiptunes-player
+	conflicts = asap2wav
+	conflicts = python-asap
+	conflicts = vlc-asap
+	replaces = asap<=5.3.0
+	source = asap-chiptunes-player::git+git://git.code.sf.net/p/asap/code
+	source = cflags_ldflags_append.patch
+	sha256sums = SKIP
+	sha256sums = 3e13b4e98debe50daf77472839826b6917982a764a0c1e46180da8585c3d1a6b
+
+pkgname = asap-chiptunes-player-git
