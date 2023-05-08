@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-desktop-cube
 _pkgname=Desktop-Cube
-pkgver=13
+pkgver=15
 pkgrel=1
 pkgdesc="Desktop Cube for GNOME Shell"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gnome-shell')
 makedepends=('zip')
 source=(${url}/archive/v$pkgver.tar.gz)
-b2sums=('b1c6dd3d863db387cc29adbaf81ffe904e503173320167fd8b382662f64f485986130d32a44c3d7695c573fdacf177379f73db70bd4c8744cfc59ed976f6de3f')
+b2sums=('72236d10c342c90430590437970e5f395091cbb1fff5665c99ad6cd69b044d307e328245897cdd5328f11b7ba7dc974078cc86a9b0c44a13a1f25d3ef9016dfd')
 
 build() {
   cd "$_pkgname-$pkgver"
