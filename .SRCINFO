@@ -1,0 +1,12 @@
+pkgbase = any2fasta
+	pkgdesc = convert various sequence formats to FASTA
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/tseemann/any2fasta
+	arch = any
+	license = GPL3
+	depends = perl
+	source = any2fasta-0.4.2.tar.gz::https://github.com/tseemann/any2fasta/archive/refs/tags/v0.4.2.tar.gz
+	b2sums = 1ba622430294a8966572031d77fee362a9b265059596bc249c8e2936829453eace9ede722bdee2586f9235de338d530560256abb845965193de451f005c37be6
+
+pkgname = any2fasta
