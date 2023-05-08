@@ -1,6 +1,6 @@
 pkgbase = ima-inspect
 	pkgdesc = Tool to get a human-readable representation of Integrity Measurement Architecture file attributes
-	pkgver = 0.14
+	pkgver = 0.15
 	pkgrel = 1
 	url = https://github.com/mgerstner/ima-inspect
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ima-inspect
 	makedepends = attr
 	makedepends = tclap
 	depends = ima-evm-utils
-	source = https://github.com/mgerstner/ima-inspect/archive/refs/tags/v0.14.tar.gz
-	sha256sums = 12ba2ca22c03f87830d8cd439bb6909347d9b12fb3f86a5a128ad9e1eef525ca
+	source = https://github.com/mgerstner/ima-inspect/archive/refs/tags/v0.15.tar.gz
+	sha256sums = 7317bebdc832115703857f8ecf73f88a4f4b5f73170a5b9e5aef87ec16b35024
 
 pkgname = ima-inspect
