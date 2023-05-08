@@ -4,28 +4,50 @@
 # Contributor (current patch code): Xavier Claessens <xavier.claessens@collabora.com>
 # Contributor (fix for backspace going to parent folder): Jeremy Bicha <jbicha@debian.org>
 # Contributor (updated patch for 43.2): Bryan Lai <bryanlais@gmail.com>
+# Contributor (updated patch for 44.1): DragoonAethis <dragoon@dragonic.eu>
 # Maintainer: Albert Vaca Cintora <albertvaka@gmail.com>
 
-_pkgbase=nautilus
 pkgbase=nautilus-typeahead
-pkgname=(nautilus-typeahead libnautilus-extension-typeahead)
+pkgname=(
+  nautilus-typeahead
+  libnautilus-extension-typeahead
+)
 packager="Albert Vaca Cintora <albertvaka@gmail.com>"
-pkgver=43.4
+pkgver=44.1
 pkgrel=1
 pkgdesc="Default file manager for GNOME - Patched to bring back the 'typeahead find' feature"
 url="https://wiki.gnome.org/Apps/Files"
 arch=(x86_64)
 license=(GPL)
-depends=(libgexiv2 gdk-pixbuf2 gst-plugins-base-libs gnome-desktop-4 gvfs dconf
-         tracker3 tracker3-miners gnome-autoar libadwaita libportal-gtk4
-         libcloudproviders)
-makedepends=(gobject-introspection git meson appstream-glib meson ninja)
+depends=(
+  dconf
+  gdk-pixbuf2
+  gnome-autoar
+  gnome-desktop-4
+  gst-plugins-base-libs
+  gvfs
+  libadwaita
+  libcloudproviders
+  libgexiv2
+  libportal-gtk4
+  tracker3
+)
+makedepends=(
+  appstream-glib
+  git
+  gobject-introspection
+  meson
+  ninja
+  tracker3-miners
+)
 checkdepends=(python-gobject)
-_commit=4528b76e2f470e836f79f22a77817ed895bf1d8f  # tags/43.4^0
-source=("git+https://gitlab.gnome.org/GNOME/nautilus.git#commit=$_commit"
-        nautilus-restore-typeahead.patch)
-sha256sums=('SKIP'
-            '4f1d3b76d400bd91102bad35b873115d595216df5360cf60fe41c6428c6d09c1')
+_commit=a3fda22858ad6186ace1b22bc466e4087d67ca8e  # tags/44.1^0
+source=(
+  "git+https://gitlab.gnome.org/GNOME/nautilus.git#commit=$_commit"
+  nautilus-restore-typeahead.patch
+)
+b2sums=('SKIP'
+        'c5c44954bff8f73ddb89f7fa4375c626db532565142f5e95e817a7796f0ace0d6da8839734d633b7daa2b3b619cc03158ec4e3d1969974d74a18e1843271a493')
 
 pkgver() {
   cd nautilus
@@ -34,6 +56,8 @@ pkgver() {
 
 prepare() {
   cd nautilus
+
+  # Apply Typeahead patch
   patch -p1 -i ../nautilus-restore-typeahead.patch
 }
 
@@ -67,8 +91,11 @@ _pick() {
 
 package_nautilus-typeahead() {
   depends+=(libnautilus-extension-typeahead)
-  optdepends=('nautilus-sendto: to share files from the right click menu'
-            'python-nautilus: to use extensions written in python')
+  optdepends=(
+    'nautilus-sendto: Share files from the right click menu'
+    'tracker3-miners: Full text search and metadata-based renaming'
+    'python-nautilus: Use extensions written in python'
+  )
   install='post.install'
   conflicts=(nautilus)
   provides=(nautilus)
@@ -78,7 +105,6 @@ package_nautilus-typeahead() {
 
   cd "$pkgdir"
 
-  # Split libnautilus-extension
   _pick libne usr/include
   _pick libne usr/lib/{girepository-1.0,libnautilus-extension*,pkgconfig}
   _pick libne usr/share/gir-1.0
@@ -86,7 +112,10 @@ package_nautilus-typeahead() {
 
 package_libnautilus-extension-typeahead() {
   pkgdesc="Extension interface for Nautilus"
-  depends=(glib2 gcc-libs)
+  depends=(
+    gcc-libs
+    glib2
+  )
   conflicts=(libnautilus-extension libnautilus-extension.so)
   provides=(libnautilus-extension libnautilus-extension.so)
 
