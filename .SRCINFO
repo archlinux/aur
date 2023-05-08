@@ -1,0 +1,17 @@
+pkgbase = lbry-desktop-appimage
+	pkgdesc = A browser and wallet for LBRY, the decentralized, user-controlled content marketplace.
+	pkgver = 0.53.9
+	pkgrel = 1
+	url = https://lbry.tech/
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	options = !strip
+	source = lbry-desktop-0.53.9.AppImage::https://github.com/lbryio/lbry-desktop/releases/download/v0.53.9/LBRY_0.53.9.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/lbryio/lbry-desktop/master/LICENSE
+	sha256sums = 164a886b31387881286d8441b2d5df3d687a31309a35c08b935e320c60b8ad19
+	sha256sums = da7dc7c9aea36eca669b29228af0e4fbf3f788167013f736b607b3681cc2b433
+
+pkgname = lbry-desktop-appimage
