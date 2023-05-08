@@ -17,8 +17,8 @@ conflicts=('pgi-compilers')
 _pkgname="nvhpc_${_REL_YEAR}_${pkgver//.}_Linux_${arch}_cuda_${_CUDA_VER}"
 source=("https://developer.download.nvidia.com/hpc-sdk/$pkgver/$_pkgname.tar.gz"
     "nvhpc.sh")
-sha256sums=('a01733a257995dc63a4f07b94dbad50b07f12d0515f7c7a9b2bebef3ac35750a'
-            '8853cf0dcb2dec7acd25cedaf2e849993a8156165742a69381a44d4447ce19d5')
+sha256sums=('65c97207e7ac2d5f163bc50cb017a2c9519a7c9b2b3d12146d3dd433655963f2'
+            '19e5c4b25dc1c5a41123a3e84b18db0668d33f08f1dd8cf0d6ab1ace346f535b')
 
 options=(!strip)
 
