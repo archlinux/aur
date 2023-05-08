@@ -1,11 +1,12 @@
 pkgbase = python-unet
 	pkgdesc = PyTorch Implementation of 2D and 3D U-Net
 	pkgver = 0.7.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fepegar/unet
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
+	makedepends = numactl
 	makedepends = python-setuptools
 	depends = python-pytorch
 	source = python-unet-0.7.9.tar.gz::https://github.com/fepegar/unet/archive/v0.7.9.tar.gz
