@@ -1,0 +1,11 @@
+pkgbase = marwaita-gtk-theme
+	pkgdesc = GTK theme for the Budgie and Cinnamon desktops
+	pkgver = 17
+	pkgrel = 1
+	url = https://github.com/darkomarko42/Marwaita
+	arch = any
+	license = GPL3
+	source = marwaita-gtk-theme-17.tar.gz::https://github.com/darkomarko42/Marwaita/archive/refs/tags/17.tar.gz
+	b2sums = fa8d10086e2637d7a77cb12f427ea6ddded69e692caf23486f356889c74de8fd05406ace19ab66db5089c5f03d16ac4ea3baec1079e84b377c58d6aae76c9ca9
+
+pkgname = marwaita-gtk-theme
