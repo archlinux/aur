@@ -5,7 +5,7 @@ _pyname="${_projectname}"
 _pkgname="${_pyname}"
 pkgname="${_pkgname}-fossil"
 pkgver=1.1+1.r47.20230211.92a14d7d85
-pkgrel=1
+pkgrel=2
 pkgdesc="A frequency excursion calculator and more (for bird songs analysis). Sucessor of 'FEX'."
 arch=(
   'any'
@@ -48,9 +48,6 @@ prepare() {
   cd "${srcdir}/${_projectname}"
 
   printf '%s\n' " --> Generating source code repository commit log ..."
-  #printf "%s\n" "${_projectname}"
-  #ls "${SRCDEST}/${_projectname}"
-  #fossil timeline -R "${SRCDEST}/${_projectname}" > "${srcdir}/fossil.log"
   fossil timeline > "${srcdir}/fossil.log"
 }
 

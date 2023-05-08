@@ -1,7 +1,7 @@
 pkgbase = tweetypy-fossil
 	pkgdesc = A frequency excursion calculator and more (for bird songs analysis). Sucessor of 'FEX'.
 	pkgver = 1.1+1.r47.20230211.92a14d7d85
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.jessemcclure.org/tweetypy
 	arch = any
 	license = custom: MIT
