@@ -1,10 +1,11 @@
 # Maintainer: OSAMC <https://github.com/osam-cologne/archlinux-proaudio>
 # Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
+# Contributor: Florian Hülsmann <fh@cbix.de>
 
 _reponame=asid
 pkgname=a-sid
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Emulation of the C64 MOS 8580 SID analog filter as a VST3 plugin"
 arch=(x86_64 aarch64)
 url='https://www.orastron.com/asid'
@@ -25,11 +26,11 @@ prepare() {
 
 build() {
   cd $_reponame-$pkgver/vst3
+  local _vstdir=/usr/src
   if [[ -d /usr/share/vst3sdk ]]; then
-    VST_SDK_DIR=/usr/share ./buildLinux.sh
-  else
-    VST_SDK_DIR=/usr/include ./buildLinux.sh
+    _vstdir=/usr/share
   fi
+  VST_SDK_DIR=$_vstdir ./buildLinux.sh
 }
 
 package() {

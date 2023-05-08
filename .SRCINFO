@@ -1,7 +1,7 @@
 pkgbase = a-sid
 	pkgdesc = Emulation of the C64 MOS 8580 SID analog filter as a VST3 plugin
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.orastron.com/asid
 	arch = x86_64
 	arch = aarch64
