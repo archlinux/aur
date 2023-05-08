@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=typstudio
-pkgver=0.1.0dev.9
+pkgver=0.1.0dev.10
 _pkgver=${pkgver/dev/-dev}
 pkgrel=1
 pkgdesc='desktop application for typst'
@@ -18,7 +18,7 @@ makedepends=(cargo
              pnpm)
 _archive="$pkgname-$_pkgver"
 source=("$url/archive/refs/tags/v$_pkgver/$_archive.tar.gz")
-sha256sums=('44d6afc99642483f6cfc613c54e25c449bd9ced5eb430d723a346e2a8cd65154')
+sha256sums=('5477dbc519b0d212b048bb25ee429ae6174f824f10106cf82a86553025e81f99')
 
 prepare() {
 	cd "$_archive"
