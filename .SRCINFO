@@ -1,0 +1,17 @@
+pkgbase = stretchly-appimage
+	pkgdesc = The break time reminder app
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = https://hovancik.net/stretchly
+	arch = x86_64
+	license = custom:BSD-2-Clause
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	options = !strip
+	source = stretchly-1.14.0.AppImage::https://github.com/hovancik/stretchly/releases/download/v1.14.0/Stretchly-1.14.0.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/hovancik/stretchly/trunk/LICENSE
+	sha256sums = f595c44d4d02ce90e805b73d8fe63df59a5052ee4e74e9150605ab6fc8b165f8
+	sha256sums = d4262f71a6c02b19bdbdf760033803c0c7ca24acf2591ba425633f7e3315790a
+
+pkgname = stretchly-appimage
