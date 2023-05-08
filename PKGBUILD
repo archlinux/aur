@@ -4,7 +4,7 @@ _projectname="cito"
 _pkgname="${_projectname}"
 pkgname="${_pkgname}-git"
 pkgver=2.2.0+118.r2070.20230421.3664bbd
-pkgrel=1
+pkgrel=2
 pkgdesc="The Ć Programming Language. A programming language which can be translated automatically to C, C++, C#, D, Java, JavaScript, Python, Swift, TypeScript and OpenCL C."
 arch=(
   'aarch64'
@@ -20,7 +20,11 @@ _gituser="pfusik"
 _giturl="${_githost}/${_gituser}/${_projectname}.git"
 url="http://${_githost}/${_gituser}/${_projectname}"
 license=("GPL3")
-depends=()
+depends=(
+  'dotnet-runtime'
+  'gcc-libs'
+  'glibc'
+)
 makedepends=(
   'dotnet-sdk'
   'git'
