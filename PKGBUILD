@@ -2,7 +2,7 @@
 _pkgname=Steam-Metadata-Editor
 pkgver=1.0.2
 pkgname=steam-metadata-editor-git
-pkgrel=3
+pkgrel=4
 pkgdesc="A metadata editor for Steam"
 arch=(any)
 url="https://github.com/tralph3/Steam-Metadata-Editor.git"
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  printf "$pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.0.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
