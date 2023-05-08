@@ -3,8 +3,8 @@
 # Maintainer: Joshua Taillon <jat255 AT gmail DOT com>
 pkgname=python-hyperspy
 pkgshort=hyperspy
-pkgver=1.7.4
-pkgrel=2
+pkgver=1.7.5
+pkgrel=1
 pkgdesc="Hyperspectral data analysis"
 arch=('any')
 url="http://hyperspy.org"
@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('python'
          'python-scipy>=1.4.0'
          'python-matplotlib>=3.1.3'
-         'python-numpy>=1.17.1'
+         'python-numpy>=1.19.0'
          'python-traits>=4.5.0'
          'python-natsort'
          'python-requests'
@@ -24,7 +24,8 @@ depends=('python'
  	 'python-packaging'
          'python-dateutil>=2.5.0'
 	 'ipython>=8.1.0'
-         'python-dask>2.1.0'
+         'python-dask>2.11.0'
+         'python-fsspec'
          'python-pint>=0.10'
          'python-numexpr'
          'python-pyaml'
@@ -35,12 +36,12 @@ depends=('python'
          'python-ipyparallel'  # AUR
          'python-scikit-image>=0.15'  # AUR
          'python-sparse'  # AUR
-	 'python-zarr'  # AUR
+	 'python-zarr>=2.9.0'  # AUR
+         'python-tifffile>=2020.2.16'  # AUR (from scikit-image)
        # 'python-imageio'  # AUR (from scikit-image)
        # 'python-pywavelets' # AUR (from scikit-image)
-         'python-tifffile>=2020.2.16'  # AUR (from scikit-image)        
-         'python-numba>=0.52'  # AUR (from python-sparse, but currently requires git version)
-         'python-llvmlite' # AUR (from python-numba, but currently requires git version)
+       # 'python-numba>=0.52'  # AUR (from python-sparse, but currently requires git version)
+       # 'python-llvmlite' # AUR (from python-numba, but currently requires git version)
          )
 
 optdepends=('python-scikit-learn>=1.0.1: machine learning features'
@@ -76,4 +77,4 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-md5sums=('684d0b691fb368f2a38778d46ee4b699')
+md5sums=('bed260ef9398c5b309f99d7cc681cb82')
