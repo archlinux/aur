@@ -50,7 +50,7 @@ pkgname=("bareos-bconsole"
 
 pkgver=22.0.3
 pkgmajor=${pkgver%%.*}
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64 armv7h aarch64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving Recovery Open Sourced"
@@ -65,6 +65,7 @@ source=("git+https://github.com/bareos/bareos.git#tag=Release/${pkgver}"
         "0004-sqlspam.patch"
         "0005-httpd.patch"
         "0006-hostname.patch"
+        "0007-fix-gcc-13.patch"
         "bootstrap-table-locale-all.min.js")
 
 md5sums=('SKIP'
@@ -74,7 +75,9 @@ md5sums=('SKIP'
          'ca4c929a2462cafaead8d0b49e3cebed'
          'a6a260808e46c20b1c22aa2efebc3fe1'
          '40fc1919d59133214466972b3f9aa6d2'
-         'e78b88f897cfc3e60129eec360521e3d')
+         '19f8be5aec4e35b5b98f3f26af7c9d8a'
+         'e78b88f897cfc3e60129eec360521e3d'
+         )
 
 python3_ver="3.10"
 #python2_ver="2.7"
@@ -136,7 +139,9 @@ build() {
     -Dfd-group=root \
     -Dscsi-crypto=yes \
     -Dsystemd=yes \
-    -Dtraymonitor=yes
+    -Dtraymonitor=yes \
+    -DCMAKE_CXX_FLAGS="-Wno-use-after-free" \
+    -DCMAKE_C_FLAGS="-Wno-use-after-free"
 
   make DESTDIR="${srcdir}/install" install
 
