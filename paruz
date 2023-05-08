@@ -1,0 +1,110 @@
+#!/usr/bin/env bash
+
+#	██╗      ██████╗ ███████╗████████╗
+#	██║     ██╔═══██╗██╔════╝╚══██╔══╝
+#	██║     ██║   ██║███████╗   ██║   
+#	██║     ██║   ██║╚════██║   ██║   
+#	███████╗╚██████╔╝███████║   ██║   
+#	╚══════╝ ╚═════╝ ╚══════╝   ╚═╝   
+
+shopt -s lastpipe
+
+export SHELL=bash
+
+if [[ -z $PARUZ ]]; then
+  if command -v paru >/dev/null 2>&1; then
+    PARUZ=paru
+  elif ! command -v pacman >/dev/null 2>&1; then
+    echo "Neither paru nor pacman found. Is this Arch?" >&2
+    exit 1
+  elif [[ $EUID -eq 0 ]] || [[ -f /usr/bin/msys-2.0.dll ]]; then
+    PARUZ=pacman
+  else
+    PARUZ='sudo pacman'
+  fi
+fi
+
+__paruz_help() {
+  PROG=$(basename "$0")
+  cat >&2 <<EOF
+Usage: $PROG [OPTS]
+
+A fzf terminal UI for paru or pacman.
+
+sudo is invoked automatically, if needed.
+
+Multiple packages can be selected.
+
+The package manager can be changed with the environment variables: PARUZ
+
+Keybindings:
+  TAB                    Select
+  Shift+TAB              Deselect
+
+OPTS:
+  -h, --help             Print this message
+
+  All other options are passed to the package manager.
+  Default: -S (install)
+
+Examples:
+  paruz -S --nocleanafter
+  paruz -R
+  PARUZ=yay paruz
+EOF
+  exit 1
+}
+
+__fzf_preview() {
+  $PARUZ --color=always -Si "$1" | grep --color=never -v '^ '
+}
+
+__paruz_list() {
+  $PARUZ --color=always -Sl | sed -e 's: :/:; s/ unknown-version//'
+}
+
+# main
+
+while [[ -n $1 ]]; do
+  case $1 in
+  -h | --help)
+    __paruz_help
+    ;;
+  __fzf_preview)
+    shift
+    __fzf_preview "$@"
+    ;;
+  *)
+    break
+    ;;
+  esac
+  shift
+done
+
+ARGS=("$@")
+
+if [[ ${#ARGS[@]} -eq 0 ]]; then
+  ARGS=("-S")
+fi
+
+declare -a PICKS
+__paruz_list |
+  fzf \
+    --multi \
+    --ansi \
+    --preview="'${BASH_SOURCE[0]}' __fzf_preview {1}" |
+  readarray -t PICKS
+
+if [[ ${#PICKS[@]} -eq 0 ]]; then
+  exit 0
+fi
+
+declare -a PKGS
+prefix="*/"
+for PICK in "${PICKS[@]}"; do
+  PICK=${PICK#$prefix}
+  PKGS+=("${PICK%% *}")
+done
+
+exec $PARUZ "${ARGS[@]}" "${PKGS[@]}"
+                                  

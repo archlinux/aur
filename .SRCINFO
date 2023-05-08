@@ -1,0 +1,12 @@
+pkgbase = lost
+	pkgdesc = Meta package for Mr. Stack's silly hacks.
+	pkgver = r8.dc9d92d
+	pkgrel = 1
+	url = https://gitlab.com/lostinthestack/lost.git
+	arch = x86_64
+	license = UNLICENSE
+	makedepends = git
+	source = lost::git+https://gitlab.com/lostinthestack/lost.git
+	md5sums = SKIP
+
+pkgname = lost
