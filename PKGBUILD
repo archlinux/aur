@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=alpine
-_pkgver=1.25.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.25.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='alpine'
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5948b0fccc3f73dc5ab1b61df3c81e44b812fd7506ef5401768050c9f031c407')
+sha256sums=('6be1cbe591d858f1e70bf3bb64718c3b7f12bdd4561e28da71fdd66069aaa4d5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
