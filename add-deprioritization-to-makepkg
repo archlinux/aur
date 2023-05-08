@@ -1,0 +1,31 @@
+#!/usr/bin/bash
+# Add a line to makepkg to deprioritize the build process.
+# This is nice (pun intended) to avoid package building interfering with your other processes such as GUI, browser, editor, etc.
+# Note that you shouldn't need to run this manually since this package adds a pacman hook to automatically run after pacman updates.
+
+if test $# -gt 0; then
+    if test "$1" = '--help' || test "$1" = '-h'; then
+        echo "add-deprioritization-to-makepkg - Add a \"renice\" line to the start of makepkg to deprioritize the build process."
+        echo "You shouldn't need to run this script manually since the package adds a pacman hook to run itself when needed."
+        exit 0
+    else
+        echo "Unknown argument: $1"
+        exit 1
+    fi
+fi
+
+if ! test $(whoami) = 'root'; then
+    echo "This script must be run as root."
+    exit 2
+fi
+
+makepkg_location=$(which makepkg)
+
+# Check if makepkg already has the renice line.
+if grep '^renice -n 19 -p \$\$' "$makepkg_location" >/dev/null; then
+    echo hi
+    exit 0
+fi
+
+# Add the renice line to makepkg.
+sed -i 's@# gettext initialization@renice -n 19 -p $$ >/dev/null\n\n# gettext initialization@' "$makepkg_location"

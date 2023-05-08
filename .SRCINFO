@@ -1,0 +1,12 @@
+pkgbase = deprioritize-makepkg
+	pkgdesc = Add a line to makepkg to deprioritize the build process.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/galatolofederico/pso
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = grep
+	depends = sed
+
+pkgname = deprioritize-makepkg

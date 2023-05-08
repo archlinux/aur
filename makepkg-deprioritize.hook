@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = pacman
+
+[Action]
+Description = Adding deprioritization to makepkg...
+When = PostTransaction
+Exec = /usr/bin/add-deprioritization-to-makepkg
