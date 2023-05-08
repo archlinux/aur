@@ -1,15 +1,16 @@
 # Maintainer: dreieck (https://aur.archlinux.org/account/dreieck)
 
-_pyname="tweetypy"
+_projectname="tweetypy"
+_pyname="${_projectname}"
 _pkgname="${_pyname}"
 pkgname="${_pkgname}-fossil"
-pkgver=1.1+1+92a14d7d85.r47.20230211.92a14d7d85
-pkgrel=2
-pkgdesc="A frequency excursion calculator and more. Sucessor of 'FEX'."
+pkgver=1.1+1.r47.20230211.92a14d7d85
+pkgrel=1
+pkgdesc="A frequency excursion calculator and more (for bird songs analysis). Sucessor of 'FEX'."
 arch=(
   'any'
 )
-url="http://code.jessemcclure.org/${_pyname}/"
+url="https://code.jessemcclure.org/${_projectname}"
 license=('custom: MIT')
 depends=(
   'python>=3'
@@ -36,32 +37,27 @@ conflicts=(
   "python-${_pyname}"
 )
 
-source=()
-sha256sums=()
+source=(
+  "${_projectname}::fossil+${url}"
+)
+sha256sums=(
+  'SKIP'
+)
 
 prepare() {
-  cd "${srcdir}"
+  cd "${srcdir}/${_projectname}"
 
-  if [ -e "${_pkgname}.fossil" ]; then
-    fossil pull -R "${_pkgname}.fossil"
-  else
-    fossil clone --no-open "${url}/src" "${_pkgname}.fossil"
-  fi
-
-  if [ -d "${_pkgname}" ]; then
-    rm -Rf "${_pkgname}"
-  fi
-  mkdir -p "${_pkgname}"
-  cd "${_pkgname}"
-  fossil open "../${_pkgname}.fossil"
-
+  printf '%s\n' " --> Generating source code repository commit log ..."
+  #printf "%s\n" "${_projectname}"
+  #ls "${SRCDEST}/${_projectname}"
+  #fossil timeline -R "${SRCDEST}/${_projectname}" > "${srcdir}/fossil.log"
   fossil timeline > "${srcdir}/fossil.log"
 }
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_projectname}"
 
-  _ver="$(fossil describe | sed -E -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' | tr '-' '+')"
+  _ver="$(fossil describe | sed -E -e 's|^[vV]||' -e 's|\-[0-9a-f]*$||' | tr '-' '+')"
   _rev="$(fossil info | grep -E '^check-ins:' | awk '{print $2}')"
   _date="$(fossil timeline -n 1 -F %d | head -n1 | awk '{print $1}' | tr -d '-')"
   _hash="$(fossil timeline -n 1 -F %h | head -n1)"
@@ -74,14 +70,14 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_projectname}"
 
   printf '%s\n' " --> building ..."
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_projectname}"
 
   printf '%s\n' " --> installing ..."
   python -m installer --destdir="$pkgdir" --compile-bytecode=2 dist/*.whl

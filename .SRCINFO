@@ -1,8 +1,8 @@
 pkgbase = tweetypy-fossil
-	pkgdesc = A frequency excursion calculator and more. Sucessor of 'FEX'.
-	pkgver = 1.1+1+92a14d7d85.r47.20230211.92a14d7d85
-	pkgrel = 2
-	url = http://code.jessemcclure.org/tweetypy/
+	pkgdesc = A frequency excursion calculator and more (for bird songs analysis). Sucessor of 'FEX'.
+	pkgver = 1.1+1.r47.20230211.92a14d7d85
+	pkgrel = 1
+	url = https://code.jessemcclure.org/tweetypy
 	arch = any
 	license = custom: MIT
 	makedepends = fossil
@@ -15,9 +15,11 @@ pkgbase = tweetypy-fossil
 	depends = python-pyaml
 	depends = python-pyqt6
 	depends = python-scipy
-	provides = tweetypy=1.1+1+92a14d7d85.r47.20230211.92a14d7d85
-	provides = python-tweetypy=1.1+1+92a14d7d85.r47.20230211.92a14d7d85
+	provides = tweetypy=1.1+1.r47.20230211.92a14d7d85
+	provides = python-tweetypy=1.1+1.r47.20230211.92a14d7d85
 	conflicts = tweetypy
 	conflicts = python-tweetypy
+	source = tweetypy::fossil+https://code.jessemcclure.org/tweetypy
+	sha256sums = SKIP
 
 pkgname = tweetypy-fossil
