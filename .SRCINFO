@@ -1,6 +1,6 @@
 pkgbase = r-microbiotaprocess
 	pkgdesc = an R package for analysis, visualization and biomarker discovery of microbiome
-	pkgver = 1.12.0
+	pkgver = 1.12.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MicrobiotaProcess
 	arch = any
@@ -65,7 +65,7 @@ pkgbase = r-microbiotaprocess
 	optdepends = r-testthat
 	optdepends = r-withr
 	optdepends = r-yaml
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MicrobiotaProcess_1.12.0.tar.gz
-	sha256sums = 84938175a628a37c04a2fcfd422c350ce70c5b925a15789ee8c7e1f07aaab449
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MicrobiotaProcess_1.12.1.tar.gz
+	sha256sums = db01c9b07605c958a7418015d98791447117f9ef1e86845fcc52b1fbfadf9aef
 
 pkgname = r-microbiotaprocess
