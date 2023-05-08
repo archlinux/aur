@@ -3,7 +3,7 @@
 pkgname=crispy-doom
 pkgdesc="Vanilla-compatible enhanced Doom engine"
 pkgver=6.0
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64' 'aarch64')
 url="http://fabiangreffrath.github.io/crispy-doom"
 license=('GPL2')
@@ -46,4 +46,10 @@ package() {
          share/man/man5/hexen.cfg.5                \
          share/man/man5/strife.cfg.5               \
          share/man/man6/chocolate-{server,setup}.6
+
+  rm bin/crispy-{heretic,hexen,strife}-setup
+  mv bin/crispy-doom-setup bin/crispy-setup
+  for game in doom heretic hexen strife; do
+    ln -s crispy-setup bin/crispy-${game}-setup
+  done
 }
