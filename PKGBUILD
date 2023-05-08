@@ -4,7 +4,7 @@
 _pkgname=modernish
 pkgname=modernish-git
 pkgver=0.16.0.alpha.r1507.9b4a98a
-pkgrel=1
+pkgrel=2
 pkgdesc="POSIX compliant shell script library for modern, robust, portable, readable shell code"
 arch=(any)
 url='https://github.com/modernish/modernish'
@@ -16,6 +16,8 @@ depends=(
 makedepends=(
  git
 )
+provides=("$_pkgname")
+conflicts=("${_pkgname%"-git"}")
 source=("git+$url")
 sha256sums=(SKIP)
 

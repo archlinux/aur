@@ -1,13 +1,15 @@
 pkgbase = modernish-git
 	pkgdesc = POSIX compliant shell script library for modern, robust, portable, readable shell code
 	pkgver = 0.16.0.alpha.r1507.9b4a98a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/modernish/modernish
 	arch = any
 	license = ISC
 	makedepends = git
 	depends = sed
 	depends = awk
+	provides = modernish
+	conflicts = modernish
 	source = git+https://github.com/modernish/modernish
 	sha256sums = SKIP
 
