@@ -1,7 +1,7 @@
 _pkgname=rime-ice
 pkgname=rime-ice
 pkgver=2023_05_07T18_10_17Z
-pkgrel=2
+pkgrel=3
 pkgdesc="Rime 配置：雾凇拼音 | 长期维护的简体词库 | (自动版本号/减少编译)"
 arch=("any")
 url="https://github.com/iDvel/rime-ice"
@@ -38,7 +38,7 @@ package() {
   install -Dm644 cn_dicts/* -t "${pkgdir}/usr/share/rime-data/cn_dicts"
   install -Dm644 en_dicts/* -t "${pkgdir}/usr/share/rime-data/en_dicts"
   install -Dm644 opencc/*   -t "${pkgdir}/usr/share/rime-data/opencc"
-  install -Dm644 opencc/*   -t "${pkgdir}/usr/share/rime-data/lua"
+  install -Dm644 lua/*   -t "${pkgdir}/usr/share/rime-data/lua"
 
   install -Dm644 ./*.{yaml,lua,gram} -t "${pkgdir}/usr/share/rime-data/"
 }
