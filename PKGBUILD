@@ -2,19 +2,32 @@
 
 _name=pythonfinder
 pkgname=python-pythonfinder
-pkgver=1.3.2
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Cross Platform Search Tool for Finding Pythons"
 arch=(any)
 url="https://github.com/sarugaku/pythonfinder"
 license=(MIT)
-depends=(python-attrs python-cached-property python-packaging)
-makedepends=(python-build python-installer python-setuptools python-wheel)
-checkdepends=(git python-click python-pytest)
+depends=(
+  python-attrs
+  python-cached-property
+  python-packaging
+)
+makedepends=(
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
+)
+checkdepends=(
+  git
+  python-click
+  python-pytest
+)
 optdepends=('python-click: for CLI')
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha512sums=('a1a8efd7ee3f0d7eddf3414f72f59faaedd5fe8bcbd5b86dd205b464d41db19bbdf202a01c27449c2157809222a1b81f9a52f488a811872c3367cbe9f761c4cf')
-b2sums=('e8238dd000e4768a12352a4552b174c4ca40f902f64dec2afd99529e6a7b0346ad49f79aa088ff8aeb513353ea783ffbb176f0126b29edbaa566269770a96aa9')
+sha512sums=('341058947d8bf1f71a60ca48e2da67a5fbf5a920cc00fc875fa5fe6b966fffc8ae81d5031fe08da69248ea8d6f75063c9c67069839235be2bf2dce87454dd20a')
+b2sums=('2b7666a2796a3f7b364f63b22a7e98b05abe01877d42e6dab2b99b1b545aa33f1ecb096d8585d7f8459d67d889821ba07f3d2f4be237766063581d704c88803e')
 
 build() {
   cd $_name-$pkgver
@@ -28,8 +41,7 @@ check() {
   # install to temporary location, as importlib is used
   python -m installer --destdir=test_dir dist/*.whl
   export PYTHONPATH="test_dir/$_site_packages:$PYTHONPATH"
-  # disable tests that rely on git cloning: https://github.com/sarugaku/pythonfinder/issues/116
-  pytest -vv -c /dev/null -k "not test_shims_are_kept and not test_shims_are_removed"
+  pytest -vv -c /dev/null
 }
 
 package() {
