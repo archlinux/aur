@@ -1,0 +1,16 @@
+pkgbase = mattermost-desktop-appimage
+	pkgdesc = Mattermost Desktop application for Linux(AppImage Version)
+	pkgver = 5.3.1
+	pkgrel = 1
+	url = https://github.com/mattermost/desktop
+	arch = x86_64
+	license = Apache
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = mattermost-desktop
+	options = !strip
+	source = mattermost-desktop-5.3.1.AppImage::https://github.com/mattermost/desktop/releases/download/v5.3.1/mattermost-desktop-5.3.1-linux-x86_64.AppImage
+	sha256sums = 5b17868182cdff41f9cf04a1dbd982a867ac2c323183a64172883e00659f2a2e
+
+pkgname = mattermost-desktop-appimage
