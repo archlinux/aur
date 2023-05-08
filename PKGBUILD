@@ -3,7 +3,7 @@
 _pkgname=flet
 pkgname=python-${_pkgname}
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Easily build realtime web, mobile and desktop apps in your favorite language and securely share them with your team.'
 url="https://${_pkgname}.dev/"
 license=('Apache')
@@ -16,7 +16,8 @@ depends=(
 	'python-oauthlib'
 	'python-websockets'
 	'python-httpx'
-	'python-packaging')
+	'python-packaging'
+	'python-poetry')
 makedepends=(
 	'goreleaser'
 	'python-build'
