@@ -39,9 +39,12 @@ source=(
 )
 b2sums=('SKIP' 'SKIP')
 
-pkgver() {
+prepare() {
   cd "${_pkgname%-git}"
   git submodule update --init --recursive
+}
+pkgver() {
+  cd "${_pkgname%-git}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
