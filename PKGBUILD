@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=android-messages-desktop
 pkgver=5.4.1
-pkgrel=2
+pkgrel=3
 _electronversion=22
 pkgdesc="Android Messages as a cross-platform desktop app"
 arch=('x86_64')
@@ -20,7 +20,7 @@ build() {
   cd "$pkgname-$pkgver"
   electronDist="/usr/lib/electron${_electronversion}"
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
-  yarn config set cache-folder "$srcdir/yarn-cache"
+  export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
   yarn install
   yarn webpack --mode=production
   yarn electron-builder --linux --x64 --dir \
