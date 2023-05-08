@@ -1,6 +1,6 @@
 # Maintainer: Gonçalo Pereira <goncalo_pereira@outlook.pt>
 pkgname=python-lib-detect-testenv
-_name=${pkgname#python-}
+_name=${pkgname#python-//-/_}
 pkgver=2.0.3
 pkgrel=1
 pkgdesc="Detects test environment like pytest, doctest or pyrunner on pycharm"
