@@ -1,7 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Yamato Kobayashi <yk.ymadd@gmail.com>
 pkgname=youtube-music-appimage
-_pkgname=YouTube-Music-Desktop-App
 pkgver=1.19.0
 pkgrel=1
 pkgdesc="YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"
