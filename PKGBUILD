@@ -6,7 +6,7 @@
 set -u
 _pkgname='inetutils'
 pkgname="${_pkgname}-git"
-pkgver=2.0.r5.g4ad0b48b
+pkgver=2.4.r7.geb5e59b6
 pkgrel=1
 _srcdir="${_pkgname}"
 pkgdesc='A collection of common network programs'
@@ -93,6 +93,7 @@ prepare() {
   cd "${_srcdir}"
   # makepkg -i reruns prepare() which it should not
   if [ ! -L 'gnulib' ]; then
+    rmdir 'gnulib' || :
     ln -s '../gnulib'
     # telnetd disconnects without banner on 90% of connections
     # http://lists.gnu.org/archive/html/bug-inetutils/2015-07/msg00006.html
