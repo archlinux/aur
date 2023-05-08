@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tagspaces-appimage
 pkgver=5.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="An offline, open source, document manager with tagging support"
 arch=('x86_64')
 url="https://www.tagspaces.org/"
@@ -17,7 +17,7 @@ sha256sums=('13317ecf7b102551b0562826950ce7f4189d4b74990b61bd4d4632a2721cc209')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's|AppRun|/opt/appimages/pomotroid.AppImage|g' -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
+    sed 's|AppRun|/opt/appimages/tagspaces.AppImage|g' -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
 
 package() {
