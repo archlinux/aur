@@ -1,6 +1,6 @@
 pkgbase = r-glmgampoi
 	pkgdesc = Fit a Gamma-Poisson Generalized Linear Model
-	pkgver = 1.12.0
+	pkgver = 1.12.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/glmGamPoi
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgbase = r-glmgampoi
 	optdepends = r-tenxpbmcdata
 	optdepends = r-testthat
 	optdepends = r-zoo
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/glmGamPoi_1.12.0.tar.gz
-	sha256sums = e909ade7b8c49ec5c7c85a5ee878719c65a51ef1ba2b2342674ae5671f1c9ba4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/glmGamPoi_1.12.1.tar.gz
+	sha256sums = 2da48df113c70fdeb279452fc947f07dc759539ba883f5c256e9dfb864a66917
 
 pkgname = r-glmgampoi
