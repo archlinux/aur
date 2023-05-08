@@ -3,8 +3,8 @@
 # shellcheck shell=bash
 pkgname=vapoursynth-plugin-svpflow
 pkgver=4.5.210
-_pkgver=$pkgver-1
-pkgrel=4
+_pkgver=$pkgver-2
+pkgrel=5
 pkgdesc='SmoothVideo plugin for Vapoursynth'
 arch=('x86_64')
 url='https://www.svp-team.com/wiki/SVP:Linux'
@@ -17,7 +17,7 @@ conflicts=('vapoursynth-plugin-svpflow1' 'vapoursynth-plugin-svpflow2-bin')
 source=("svpflow1-src-$pkgver.zip::https://www.svp-team.com/files/gpl/svpflow1-src.zip"
     "https://www.svp-team.com/files/svp4-linux.$_pkgver.tar.bz2")
 sha256sums=('c384b3b969d66f2e22003f87b644fa79ce9093a8af326f7fc79cc305239d05f3'
-    '940d539ba50e4455fdaebbec07db03870f98f101fbb4ceadda013d1e00c90883')
+    '758f6e43d8f34c788dd974a73ab5ed1c3d75208256eadf415331864057d9fb28')
 
 prepare() {
     rm -rf "$srcdir/installer"
