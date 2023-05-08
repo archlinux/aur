@@ -1,0 +1,13 @@
+pkgbase = mcpl
+	pkgdesc = A generic library for storing Monte Carlo particles in a dense file format.
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://mctools.github.io/mcpl/
+	arch = x86_64
+	license = custom:CC0
+	makedepends = cmake
+	optdepends = zlib: compress or decompress datafiles
+	source = mcpl-1.6.1.tar.gz::https://github.com/mctools/mcpl/archive/v1.6.1.tar.gz
+	sha256sums = 7cf3d34e1c5b4dcef4e2dc40347d555cdd3899d860ff222a4a8e1f0a3383239e
+
+pkgname = mcpl
