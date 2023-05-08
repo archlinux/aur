@@ -3,7 +3,7 @@
 _projectname="xasm"
 _pkgname="${_projectname}"
 pkgname="${_pkgname}-git"
-pkgver=3.2.1+2.r144.20230227.7a66679
+pkgver=3.2.1+3.r145.20230507.70c907b
 pkgrel=1
 pkgdesc="6502 cross-assembler with original syntax extensions. By default it generates binaries for Atari 8-bit computers."
 arch=(
@@ -15,10 +15,8 @@ arch=(
 )
 
 _gitprotocol='git+https'
-#_githost='git.code.sf.net'
 _githost='github.com'
 _gituser='pfusik'
-#_giturl="${_githost}/p/${_projectname}/code"
 _giturl="${_githost}/${_gituser}/${_projectname}.git"
 url="http://${_githost}/${_gituser}/${_projectname}"
 license=("custom: poetic (public domain)")
@@ -59,17 +57,11 @@ prepare() {
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  # _majorver="$(grep -E '^[[:space:]]*#define ASAPInfo_VERSION_MAJOR' asap.h | awk '{print $3}')"
-  # _minorver="$(grep -E '^[[:space:]]*#define ASAPInfo_VERSION_MINOR' asap.h | awk '{print $3}')"
-  # _microver="$(grep -E '^[[:space:]]*#define ASAPInfo_VERSION_MICRO' asap.h | awk '{print $3}')"
-  # _plusver="$(git describe --tags | sed -E -e 's|-g[^-]*$||' -e 's|^[^-]*-||')"
-  # _ver="${_majorver}.${_minorver}.${_microver}+${_plusver}"
   _ver="$(git describe --tags | sed -E -e 's|^xasm-||' -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' | tr '-' '+')"
   _rev="$(git rev-list --count HEAD)"
   _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
   _hash="$(git rev-parse --short HEAD)"
 
-  # if [ -z "${_majorver}" ]; then
   if [ -z "${_ver}" ]; then
     error "Version could not be determined."
     return 1
@@ -85,10 +77,6 @@ build() {
   make
 }
 
-# check() {
-#   cd "${srcdir}/${_pkgname}"
-# }
-
 package() {
   cd "${srcdir}/${_pkgname}"
 
@@ -99,25 +87,12 @@ package() {
     "${srcdir}/git.log"
     README.md
   )
-  _docdirs=()
-  _manfiles=()
-  _infofiles=()
   _licensefiles=(
     "${srcdir}/COPYING.txt"
   )
   printf '%s\n' " --> installing documentation ..."
   for _docfile in "${_docfiles[@]}"; do
     install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/$(basename "${_docfile}")"
-  done
-  for _docdir in "${_docdirs[@]}"; do
-    cp -rv "${_docdir}" "${pkgdir}/usr/share/doc/${_pkgname}/$(basename "${_docdir}")"
-  done
-  for _manfile in "${_manfiles[@]}"; do
-    _section="$(basename "${_manfile}" .gz | sed -E -e 's|^.*\.([^.]*)$|\1|')"
-    install -D -v -m644 "docs/build/man/${_manfile}" "${pkgdir}/usr/share/man/man${_section}/$(basename "${_manfile}")"
-  done
-  for _infofile in "${_infofiles[@]}"; do
-    install -D -v -m644 "${_infofile}" "${pkgdir}/usr/share/info/$(basename "${_infofile}")"
   done
   printf '%s\n' " --> installing license ..."
   for _licensefile in "${_licensefiles}"; do
