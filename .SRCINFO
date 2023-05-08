@@ -1,0 +1,18 @@
+pkgbase = electron-mail-appimage
+	pkgdesc = Unofficial ProtonMail Desktop App
+	pkgver = 5.1.7
+	pkgrel = 1
+	url = https://github.com/vladimiry/ElectronMail
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = electron-mail
+	conflicts = electronmail
+	conflicts = electronmail-bin
+	options = !strip
+	source = electron-mail-5.1.7.AppImage::https://github.com/vladimiry/ElectronMail/releases/download/v5.1.7/electron-mail-5.1.7-linux-x86_64.AppImage
+	sha256sums = e1e990e3c7e30560306636de3f3af4a5fb3ff6a1b588817fbdad3632d551fbbf
+
+pkgname = electron-mail-appimage
