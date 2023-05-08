@@ -15,8 +15,8 @@
 # Rust package guidelines are applicable here or not, but try to follow them anyway.
 
 pkgname=libblkio
-pkgver=1.2.2
-_fragment=#commit=896397e44daf2bbe3df32717ee15f49fe1a072a3 # tags/v1.2.2^0
+pkgver=1.3.0
+_fragment=#commit=f64bb10aa28ba2d30d1803eeb54179ef0ee0ba80 # tags/v1.3.0^0
 pkgrel=1
 pkgdesc="High-performance block device I/O library with C API"
 arch=(x86_64)
@@ -24,7 +24,7 @@ url="https://gitlab.com/libblkio/libblkio"
 license=(MIT Apache)
 depends=(gcc-libs)
 makedepends=(cargo git meson python-docutils)
-(( _ARCH_TEST_EXTRA )) && checkdepends=(qemu-img)
+((_ARCH_TEST_EXTRA)) && checkdepends=(qemu-img)
 source=(git+https://gitlab.com/libblkio/libblkio.git"$_fragment")
 sha256sums=('SKIP')
 
@@ -48,8 +48,12 @@ build() {
 }
 
 check() {
-  # Refer to tests/meson.build for the list of test suites. We cannot run the
-  # 'virtio-blk-vhost-vdpa' test suite because it requires kernel modules pre-loaded.
+  # Refer to "tests/meson.build" for the list of test suites.
+  # The following suites cannot be run because:
+  #   'virtio-blk-vhost-vdpa' -> requires kernel modules pre-loaded
+  #   'nvme-io_uring' -> requires a character device corresponding to an NVMe namespace
+  #   'virtio-blk-vfio-pci' -> requires access to e.g. /sys/bus/pci/devices/0000:00:01.0
+  # Upstream run these tests inside a VM. See "run-test-suites-in-vm.sh".
 
   cd $pkgname
   meson test -C build --suite generic --suite io_uring --suite examples --print-errorlogs
@@ -58,7 +62,7 @@ check() {
   # inside a PKGBUILD is a bit iffy. Pass _ARCH_TEST_EXTRA=1 into the build environment if
   # you want it to run.
 
-  if (( _ARCH_TEST_EXTRA )); then
+  if ((_ARCH_TEST_EXTRA)); then
     # Set up the test suite.
     local _test_file=/tmp/libblkio-vhost-user-tests.qcow2
     local _test_socket=/tmp/libblkio-vhost-user-tests.sock
@@ -79,6 +83,9 @@ check() {
 
 package() {
   cd $pkgname
-  meson install -C build --destdir "$pkgdir"
+  # For some unknown reason this now fails with a permissions error on "/root/.cargo/registry/index/github.com-*"
+  # Work around it by calling ninja directly..
+  # meson install -C build --destdir "$pkgdir"
+  DESTDIR="$pkgdir" ninja install -C build
   install -Dm 644 LICENSE-MIT -t "$pkgdir"/usr/share/licenses/$pkgname
 }
