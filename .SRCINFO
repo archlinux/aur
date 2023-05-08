@@ -1,0 +1,18 @@
+pkgbase = bilibilivideodownload-appimage
+	pkgdesc = Cross-platform download bilibili video desktop software.
+	pkgver = 3.3.3
+	pkgrel = 1
+	url = https://github.com/blogwy/BilibiliVideoDownload
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	conflicts = bilibilivideodownload
+	replaces = bilibili-videodownloader-appimage
+	options = !strip
+	source = bilibilivideodownload-3.3.3.AppImage::https://github.com/blogwy/BilibiliVideoDownload/releases/download/v3.3.3/BilibiliVideoDownload-3.3.3.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/BilibiliVideoDownload/BilibiliVideoDownload/master/LICENSE
+	sha256sums = e623be15d2779963943d4290cdfa89aa5d685fb0d78eee0a252cf908d60f6ba2
+	sha256sums = e4d41ebef13a799b7ae9dceebe3a39a6c3e7c18c7a91728c0a73a8ae4baabcc3
+
+pkgname = bilibilivideodownload-appimage
