@@ -2,7 +2,7 @@
 # Contributor: greyltc
 
 pkgname=cbang-git
-pkgver=r1485.ac8bbdd5
+pkgver=r1486.83595737
 pkgrel=1
 pkgdesc="A library of cross-platform C++ utilities"
 arch=('x86_64')
@@ -32,9 +32,11 @@ optdepends=(
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+https://github.com/CauldronDevelopmentLLC/cbang.git"
-		"0001_v8_sandbox_enable.patch")
+		"0001_v8_sandbox_enable.patch"
+		"0002_include_cstdint.patch")
 sha256sums=('SKIP'
-            '75eff0bcd04293990f8dfb0771562356ccac2a7f40a06df0c0ba515fcdf4126a')
+            '75eff0bcd04293990f8dfb0771562356ccac2a7f40a06df0c0ba515fcdf4126a'
+            '0137c007c7596cbd9d9f7194cd6e1aaf11819489c815c57b29b9873523d25cd7')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -44,6 +46,7 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   patch -p1 -i "../0001_v8_sandbox_enable.patch"
+  patch -p1 -i "../0002_include_cstdint.patch"
 }
 
 build() {
