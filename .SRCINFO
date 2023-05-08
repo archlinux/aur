@@ -1,13 +1,15 @@
 pkgbase = r-logistf
 	pkgdesc = Firth's Bias-Reduced Logistic Regression
 	pkgver = 1.25.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=logistf
 	arch = x86_64
 	license = GPL
 	depends = r
 	depends = r-formula.tools
 	depends = r-mice
+	optdepends = r-emmeans
+	optdepends = r-estimability
 	source = https://cran.r-project.org/src/contrib/logistf_1.25.0.tar.gz
 	sha256sums = 3d3ed3ce30a8b2afb82ccbf2dff3dbf119f533d252eb91131d50166ebd96e870
 
