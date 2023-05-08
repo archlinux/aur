@@ -41,25 +41,31 @@ makedepends=('boost'
              'robin-map'
              'yasm')
 source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu"
+        'git+https://github.com/lsalzman/enet.git'
         'git+https://github.com/benhoyt/inih.git'
         'git+https://github.com/kinetiknz/cubeb.git'
         'git+https://github.com/MerryMage/dynarmic.git'
-        'git+https://github.com/lsalzman/enet.git'
         'git+https://github.com/libusb/libusb.git'
-        'git+https://github.com/discord/discord-rpc.git'
+        'git+https://github.com/yuzu-emu/discord-rpc.git'
         'git+https://github.com/KhronosGroup/Vulkan-Headers.git'
-        'git+https://github.com/yuzu-emu/sirit.git'
-        'git+https://github.com/yuzu-emu/mbedtls.git'
+        'git+https://github.com/yuzu-emu/sirit'
+        'git+https://github.com/yuzu-emu/mbedtls'
         'git+https://github.com/herumi/xbyak.git'
         'git+https://github.com/xiph/opus.git'
         'git+https://git.ffmpeg.org/ffmpeg.git'
         'git+https://github.com/libsdl-org/SDL.git'
         'git+https://github.com/yhirose/cpp-httplib.git'
+        'git+https://github.com/Microsoft/vcpkg.git'
+        'git+https://github.com/arun11299/cpp-jwt.git'
         # cubeb dependencies
         'git+https://github.com/arsenm/sanitizers-cmake.git'
+        'git+https://github.com/google/googletest'
         # sirit dependencies
         'git+https://github.com/KhronosGroup/SPIRV-Headers.git')
 md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -85,27 +91,23 @@ pkgver() {
 prepare() {
     cd "$srcdir/$_pkgname"
 
-    for submodule in externals/{inih/inih,cubeb,dynarmic,libusb/libusb,discord-rpc,Vulkan-Headers,sirit,mbedtls,xbyak,opus/opus,ffmpeg,SDL,cpp-httplib}; do
-        git submodule init ${submodule}
-        git config submodule.${submodule}.url "$srcdir/${submodule##*/}"
-        git submodule update --init
+    for submodule in {inih,cubeb,dynarmic,libusb,discord-rpc,Vulkan-Headers,sirit,mbedtls,xbyak,opus,ffmpeg,SDL,cpp-httplib,vcpkg,cpp-jwt,enet}; 
+    do
+        git config --file=.gitmodules submodule.$submodule.url "$srcdir/${submodule}"
     done
+
+    git -c protocol.file.allow=always submodule update --init
 
     cd "$srcdir/$_pkgname"/externals/cubeb
 
-    for submodule in cmake/sanitizers-cmake; do
-        git submodule init ${submodule}
-        git config submodule.${submodule}.url "$srcdir/${submodule##*/}"
-        git submodule update --init
-    done
+    git config --file=.gitmodules submodule.cmake/sanitizers-cmake.url "$srcdir/sanitizers-cmake"
+    git config --file=.gitmodules submodule.googletest.url "$srcdir/googletest"
+    git -c protocol.file.allow=always submodule update --init
     
     cd "$srcdir/$_pkgname"/externals/sirit
     
-    for submodule in externals/SPIRV-Headers; do
-        git submodule init ${submodule}
-        git config submodule.${submodule}.url "$srcdir/${submodule##*/}"
-        git submodule update --init
-    done
+    git config --file=.gitmodules submodule.externals/SPIRV-Headers.url "$srcdir/SPIRV-Headers"
+    git -c protocol.file.allow=always submodule update --init
 }
 
 build() {
@@ -121,6 +123,7 @@ build() {
       -DCMAKE_CXX_COMPILER=clang++ \
       -DCMAKE_BUILD_TYPE=Release \
       -DYUZU_USE_QT_WEB_ENGINE=ON \
+      -DYUZU_USE_QT_MULTIMEDIA=ON \
       -DYUZU_USE_EXTERNAL_SDL2=OFF \
       -DUSE_DISCORD_PRESENCE=ON \
       -DENABLE_QT_TRANSLATION=ON \
