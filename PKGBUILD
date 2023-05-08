@@ -2,7 +2,7 @@
 pkgname=gmail-desktop
 _pkgver=3.0.0-alpha.35
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=4
 _nodeversion=14
 _electronversion=20
 pkgdesc="Unofficial Gmail desktop app"
@@ -46,7 +46,7 @@ build() {
   electronDist="/usr/lib/electron$_electronversion"
   electronVer="$(sed s/^v// /usr/lib/electron$_electronversion/version)"
   _ensure_local_nvm
-  export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
+  export npm_config_cache="$srcdir/npm_cache"
   npm ci
   npm run build
   ./node_modules/.bin/electron-builder --linux --x64 --dir \
