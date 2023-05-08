@@ -7,7 +7,7 @@
 
 pkgname='electron-cash-git'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=4.2.13.r23.g7e43a4385
+pkgver=4.2.14.r38.g3149f0ae6
 pkgrel=1
 url='http://www.electroncash.org/'
 arch=('any')
@@ -85,7 +85,7 @@ build() {
 check() {
   cd "${pkgname}"
 
-  tox -e py310 -- --ignore-glob='*regtest*'
+  tox -e py311 -- --ignore-glob='*regtest*'
 }
 
 package() {
