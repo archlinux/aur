@@ -1,6 +1,6 @@
 pkgbase = yt-cli
 	pkgdesc = An easy to use CLI YouTube client
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://gitlab.com/a4to/yt-cli
 	install = yt-cli.install
@@ -8,12 +8,12 @@ pkgbase = yt-cli
 	license = MIT
 	depends = mpv
 	depends = npm
-	source = https://concise.cc/pkg/yt-cli-0.1.0-1-any.pkg.tar.zst
-	source = https://concise.cc/pkg/yt-cli-0.1.0-1-any.pkg.tar.zst.sig
+	source = https://concise.cc/pkg/yt-cli-0.1.1-1-any.pkg.tar.zst
+	source = https://concise.cc/pkg/yt-cli-0.1.1-1-any.pkg.tar.zst.sig
 	validpgpkeys = 81BACEEBC3EA26E127166E4A819BB92A9A48160E
-	md5sums = defb1a17445da70cfcd97912a7967a09
-	md5sums = ee48a3f3593142e1bdd6b6bb8d0f0dab
-	sha512sums = dc00d335532dfbead77a81c37070f0bc3444a17b385f25dd1220a53cd32529d9957fbf281e6975de161981f2c7be5e4a0bac631c228aa7dddc62fd41fb6f68e1
-	sha512sums = 24a2cdb2aa6f3510e416d9e1dffe032f0a2cb0512ac4ccead184aa489348d90202b9931930bbcffd3c3bfcdef4d6d8a26f44a1e13aa4cf4d16fc53c89245bf20
+	md5sums = 9224d3bcca862b8e0bdb6f8b4c0eeaaa
+	md5sums = a0366da15dd7851ab8b1c2ff827686e4
+	sha512sums = a745ee50037b2a3acb04e58eb945ad611cc3caf543ccb1b846adfc1ae20db45a651517490d3f822a24200233bd21c820ba7306622ba9d7526fa2eac92dc98031
+	sha512sums = d706454a8023b5e82defdea948f8d3ecafd9efc543dab981f6bb4275c02858811a29d69f05cf89263b6c02c5f617eeb445eaf0a05b51b1c075592b101e182d42
 
 pkgname = yt-cli
