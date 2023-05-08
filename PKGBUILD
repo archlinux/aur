@@ -2,7 +2,7 @@
 
 _pkgname=webscrapbook
 pkgname=python-$_pkgname
-pkgver=1.12.2
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="PyWebScrapBook is a command line toolkit and backend server for WebScrapBook browser extension"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'python-commonmark' 'python-flask' 'python-lxml' 'python-pyopenssl' 'python-werkzeug' 'python-jinja')
 makedepends=('python-setuptools')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('8a04e615bc1e3bb00b1038c8b2ecd8648b0d87d276a4b468cf6c6c883d8d11fd')
+sha256sums=('425c0224ea53706ee6d81c28521c2c34edd2d2b4b781a1602b7e9e37d5343fb5')
 
 package() {
     cd "$srcdir/PyWebScrapBook-$pkgver"
