@@ -4,32 +4,32 @@
 # Contributor: Sebastien Binet <binet@lblbox>
 pkgname=python-lineprofiler
 _pkgname=line_profiler
-pkgver=4.0.2
+pkgver=4.0.3
 pkgrel=1
 pkgdesc="Line-by-line profiler"
 url="https://pypi.python.org/pypi/line_profiler"
 arch=('x86_64')
 license=('BSD')
 depends=('python-setuptools' 'ipython')
-makedepends=('cython3' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('cython' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-ubelt')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/pyutils/line_profiler/archive/v$pkgver.tar.gz")
 
-sha256sums=('4b10543d250ad900c2ab38d90d5e51aa7e645cd1e94842cda76706e486ba02b7')
+sha256sums=('81df8a475048d1c8c905cb5a4530c44f2581b6c78c2f64301a65fe2d4a3028d3')
 
 build() {
   cd "$_pkgname-$pkgver"
   python -m build --wheel --no-isolation 
 }
 
-#check() {
-  #local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  #cd "$_pkgname-${pkgver}"
-  #python -m installer --destdir=test_dir dist/*.whl
-  #export PYTHONPATH="test_dir/$_site_packages:$PYTHONPATH"
-  #export PATH="${srcdir}/$_pkgname-${pkgver}/test_dir/usr/bin:$PATH"
-  #pytest tests
-#}
+check() {
+  local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  cd "$_pkgname-${pkgver}"
+  python -m installer --destdir=test_dir dist/*.whl
+  export PYTHONPATH="${srcdir}/$_pkgname-${pkgver}/test_dir/$_site_packages"
+  export PATH="${srcdir}/$_pkgname-${pkgver}/test_dir/usr/bin:$PATH"
+  ./run_tests.py
+}
 
 package() {
   cd "line_profiler-${pkgver}"
