@@ -1,7 +1,7 @@
 pkgbase = scrap_engine-git
 	pkgdesc = Python scrap_engine module
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lxgr-linux/scrap_engine
 	arch = any
 	license = GPL3

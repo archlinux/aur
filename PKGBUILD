@@ -3,7 +3,7 @@
 pkgbase=scrap_engine-git
 pkgname=python-scrap_engine-git
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/lxgr-linux/scrap_engine"
 license=('GPL3')
