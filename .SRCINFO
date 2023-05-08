@@ -1,7 +1,7 @@
 pkgbase = cbang
 	pkgdesc = a library of cross-platform C++ utilities
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CauldronDevelopmentLLC/cbang
 	arch = x86_64
 	license = LGPL2.1
@@ -19,7 +19,9 @@ pkgbase = cbang
 	optdepends = mariadb-libs: MariaDB database support
 	source = cbang-1.8.0.tar.gz::https://github.com/CauldronDevelopmentLLC/cbang/archive/refs/tags/1.8.0.tar.gz
 	source = 0001_v8_sandbox_enable.patch
+	source = 0002_include_cstdint.patch
 	sha256sums = 4be28b0aa0d024e5c9fd274264bed7f82551219414c12c45e35afd8946f6e7d7
 	sha256sums = 75eff0bcd04293990f8dfb0771562356ccac2a7f40a06df0c0ba515fcdf4126a
+	sha256sums = a2e16d999e58856fe9885243235d711afc0b2260c0c0b346b59aa4b948209d5c
 
 pkgname = cbang
