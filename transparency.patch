@@ -1,7 +1,7 @@
-From 7eee0d5eec6135d80ef57dd8708e3f1d315b11d8 Mon Sep 17 00:00:00 2001
+From f6e31e7c6b78edec13fd9a6281dd6c9e108d712e Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Mon, 12 May 2014 14:57:18 +0200
-Subject: [PATCH 01/16] Restore transparency
+Subject: [PATCH 1/4] Restore transparency
 
 The transparency settings were removed as a side effect of
 2bff4b63ed3ceef6055e35563e9b0b33ad57349d
@@ -234,13 +234,13 @@ index 36eb7ce7..a41d2de2 100644
    uuid_unparse (u, uuidstr);
    priv->uuid = g_strdup (uuidstr);
 -- 
-2.40.0
+2.40.1
 
 
-From 212f0ed4a860aa9a348a7ec2499f0c178c2b5688 Mon Sep 17 00:00:00 2001
+From 3f9ebfe5f516e7844e4d9f82f1136d120e7cdd95 Mon Sep 17 00:00:00 2001
 From: Lars Uebernickel <lars.uebernickel@canonical.com>
 Date: Wed, 28 May 2014 14:11:02 +0200
-Subject: [PATCH 02/16] window: Make the drawing robust across all themes
+Subject: [PATCH 2/4] window: Make the drawing robust across all themes
 
 There are lots of themes out there in the wild that do not specify a
 background-color for all widgets and the default is transparent. This
@@ -296,13 +296,13 @@ index a41d2de2..11d93419 100644
    widget_class->screen_changed = terminal_window_screen_changed;
    widget_class->style_updated = terminal_window_style_updated;
 -- 
-2.40.0
+2.40.1
 
 
-From 9e0de768d56f985e674f0079b9691875af2664d7 Mon Sep 17 00:00:00 2001
+From 54bc4198c3d81943bd5df67afab7252a623da3d8 Mon Sep 17 00:00:00 2001
 From: "Owen W. Taylor" <otaylor@fishsoup.net>
 Date: Fri, 13 Nov 2015 15:16:42 +0100
-Subject: [PATCH 03/16] screen, window: Extra padding around transparent
+Subject: [PATCH 3/4] screen, window: Extra padding around transparent
  terminals in Wayland
 
 https://bugzilla.redhat.com/show_bug.cgi?id=1207943
@@ -431,14 +431,13 @@ index 11d93419..61857bfe 100644
  
    return GTK_WIDGET_CLASS (terminal_window_parent_class)->draw (widget, cr);
 -- 
-2.40.0
+2.40.1
 
 
-From ff089312a574191b11dec38be4532a48d7bdd5b5 Mon Sep 17 00:00:00 2001
+From 7ddb34007305321f1159e49252bb357c7050b453 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Tue, 17 Feb 2015 17:06:17 +0100
-Subject: [PATCH 11/16] Restore translations for setting a title and
- transparency
+Subject: [PATCH 4/4] Restore translations for setting a title and transparency
 
 ---
  po/am.po          |   8 +-
@@ -772,7 +771,7 @@ index 82ef0664..27e9877f 100644
  #: ../src/profile-preferences.glade.h:74
  msgid "_Update login records when command is launched"
 diff --git a/po/bg.po b/po/bg.po
-index 24e4aa3c..8b30af1e 100644
+index b2c4e9d5..83ad8e14 100644
 --- a/po/bg.po
 +++ b/po/bg.po
 @@ -2480,3 +2480,12 @@ msgstr "_Затваряне на този прозорец"
@@ -930,13 +929,13 @@ index a6e8fb42..c9ed8508 100644
 +msgid "Set Title"
 +msgstr "Estableix el títol"
 diff --git a/po/cs.po b/po/cs.po
-index 1beaf216..f27be077 100644
+index 723fd2c4..48e53fb9 100644
 --- a/po/cs.po
 +++ b/po/cs.po
-@@ -2452,3 +2452,15 @@ msgstr "_Zavřít okno"
- #, c-format
- msgid "Failed to parse arguments: %s\n"
- msgstr "Selhala analýza argumentů: %s\n"
+@@ -2478,3 +2478,15 @@ msgstr "Selhala analýza argumentů: %s\n"
+ 
+ #~ msgid "Georgian"
+ #~ msgstr "Gruzínské"
 +
 +msgid "Transparent background"
 +msgstr "Průsvitné pozadí"
@@ -2141,10 +2140,10 @@ index 992d7bad..7c560b83 100644
  #~ msgid "text/plain dropped on terminal had wrong format (%d) or length (%d)\n"
  #~ msgstr "टर्मिनलमा छोडिएको पाठ/सादा गलत ढाँचा (%d) वा लम्बाइ (%d)को थियो\n"
 diff --git a/po/nl.po b/po/nl.po
-index cb6a5d2a..81f17d0f 100644
+index 91320a33..38a58507 100644
 --- a/po/nl.po
 +++ b/po/nl.po
-@@ -2808,3 +2808,15 @@ msgstr "Argumenten ontleden is mislukt: %s\n"
+@@ -2831,3 +2831,15 @@ msgstr "Argumenten ontleden is mislukt: %s\n"
  
  #~ msgid "_Add or Remove…"
  #~ msgstr "_Toevoegen of verwijderen…"
@@ -3706,4 +3705,5 @@ index 80cb2343..20e2a93c 100644
 +msgid "Transparent background"
 +msgstr "透明背景"
 -- 
-2.40.0
+2.40.1
+
