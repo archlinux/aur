@@ -1,0 +1,15 @@
+pkgbase = postcat-appimage
+	pkgdesc = Postcat 是一个可扩展的 API 工具平台。集合基础的 API 管理和测试功能，并且可以通过插件简化你的 API 开发工作，让你可以更快更好地创建 API。An extensible API tool.
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://www.postcat.com/
+	arch = x86_64
+	license = Apache
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	options = !strip
+	source = postcat-0.5.1.AppImage::https://github.com/Postcatlab/postcat/releases/download/v0.5.1/Postcat-0.5.1.AppImage
+	sha256sums = 9a1a3928d64df829b151d9aac4a69a4a8a0db6427f478c8af1cead260383e1ae
+
+pkgname = postcat-appimage
