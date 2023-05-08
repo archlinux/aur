@@ -2,13 +2,13 @@
 pkgname=python-cli-exit-tools
 _name=cli_exit_tools
 pkgver=1.2.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Small toolset to properly exit a cli application"
 url="https://github.com/bitranox/cli_exit_tools"
 depends=(
     'python'
     'python-click'
-    'python-lib-detect-testenv'
+    #'python-lib-detect-testenv'
 )
 makedepends=('python-setuptools')
 license=('MIT')
