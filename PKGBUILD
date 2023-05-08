@@ -2,7 +2,7 @@
 
 _app_name=kaiteki
 pkgname="${_app_name}-bin"
-pkgver=2023_18
+pkgver=2023_19
 pkgrel=1
 pkgdesc="A comfy Fediverse client for microblogging instances, made with Flutter and Dart. Currently with simple Mastodon/Pleroma and Misskey support"
 arch=('x86_64')
