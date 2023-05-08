@@ -4,7 +4,7 @@ _pyname="aardwolfgui"
 _pkgname="${_pyname}"
 pkgname="${_pkgname}-git"
 pkgver=0.0.6+7.r22.20230221.083e2d4
-pkgrel=1
+pkgrel=2
 pkgdesc="Asynchronous RDP protocol implementation for python: GUI."
 arch=(
   'any'
@@ -30,11 +30,13 @@ makedepends=(
 optdepends=()
 checkdepends=()
 provides=(
+  "ardpclient=${pkgver}"
   "${_pkgname}=${pkgver}"
   "python-${_pkgname}=${pkgver}"
   "python-${_pkgname}-git=${pkgver}"
 )
 conflicts=(
+  "ardpclient"
   "${_pkgname}"
   "python-${_pkgname}"
 )
