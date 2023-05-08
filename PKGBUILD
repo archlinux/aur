@@ -3,7 +3,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-early-access-git
-pkgver=3559
+pkgver=3567
 pkgver() {
   cd "$srcdir/pineapple-src/"
   # cutting off 'foo-' prefix that presents in the git tag
@@ -13,7 +13,7 @@ pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger (early access version)"
 arch=('i686' 'x86_64')
 url="https://yuzu-emu.org/"
-license=('GPL2')
+license=('GPL3')
 depends=('boost-libs' 'shared-mime-info' 'hicolor-icon-theme' 'sdl2' 'qt5-base' 'qt5-multimedia' 'qt5-webengine' 'libxkbcommon-x11' 'ffmpeg' 'fmt' 'libzip' 'opus' 'libfdk-aac' 'lz4' 'openssl' 'zstd' 'cubeb' 'dynarmic' 'enet' 'libinih' 'discord-rpc' 'cpp-httplib' 'libxml2')
 makedepends=('git' 'glslang' 'cmake' 'ninja' 'graphviz' 'doxygen' 'gcc' 'boost' 'catch2' 'nlohmann-json' 'rapidjson' 'qt5-tools' 'desktop-file-utils' 'robin-map' 'cpp-jwt' 'xbyak' 'vulkan-headers' 'spirv-headers' 'dos2unix' 'unzip' 'wget')
 optdepends=('qt5-wayland: for Wayland support')
