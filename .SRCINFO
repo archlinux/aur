@@ -1,0 +1,15 @@
+pkgbase = crab-hole
+	pkgdesc = A pihole clone written using Trust-DNS
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://crates.io/crates/crab-hole
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = AGPL
+	makedepends = cargo
+	depends = gcc-libs
+	source = crab-hole-0.1.0.tar.gz::https://crates.io/api/v1/crates/crab-hole/0.1.0/download
+	sha512sums = f55360e5c694a502c89a4920c1273d6639584ba11b52cb31b1b21d2937379ee37ddf0fa1f470b1569e6cd7aee34f87c5cc55e7d987d3cb73d2a2da7e1b37a012
+
+pkgname = crab-hole
