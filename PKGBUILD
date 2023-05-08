@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=snip
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A simple snippet manager for your predefined Ultisnips Snippet Directory"
 arch=(any)
@@ -13,12 +13,12 @@ source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
   )
 sha512sums=(
-  '0505a8648e0cff2ebc8ee202a7329ec1923197281d22f451b707d74bc691f1415e81af6957a9db583a8d37169d433c6f6724bbcb8b2b71ef2fe40ec25e6b0d9b'
-  'c406cd61a4ec8414c8800e103a2b7e02ebb66c066611901f234185eda6a490c2016d2d1bb47229ad66d4a1af6bb52174cb81980359a726f0f2d7dd79ec761c3b'
+  '63c595077cbbb13304af7f5946db2a43b458f4bd8f60b15d5ec8a1e0b80211eec9a8b7e751f8cfe01cf1a25f3af7464261bb2c4baee32fbd6dc6bf1d41e8c5dd'
+  'ab70b3e3ca83bcab91a8e2a371a8d622ce45d6a4ffcc4a3c52c1ba0947626c46cec33be69714253c419a838dd9958ecf7f947e1fdc623890d879bf3fc8511dfb'
   )
 md5sums=(
-  '5db8df0fbf46572f9ce39e123ac0f59d'
-  '4562e052b817a2802d7a0cc86a09b16e'
+  '808c3ff51f89377c2e4f51ed48571ae4'
+  '9ad6d138c2088aa9b913bf7b26cc2b08'
   )
 validpgpkeys=('81BACEEBC3EA26E127166E4A819BB92A9A48160E')
 
