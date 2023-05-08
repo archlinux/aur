@@ -4,5 +4,7 @@
 !PKGBUILD
 
 !catapult.sh
+!catapult.svg
+!catapult.desktop
 
 !.gitignore

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Catapult
+Comment=A cross-platform launcher for Cataclysm: DDA and BN
+GenericName=Game Launcher
+Exec=catapult
+Icon=catapult
+Type=Application
+Categories=Game;
+Path=/usr/bin
+Terminal=false
