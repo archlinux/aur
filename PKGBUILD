@@ -1,6 +1,6 @@
 # Maintainer: Max <200706max@gmail.com>
 pkgname=open-gpt-bin
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="ChatGpt client using openai api!"
 arch=(x86_64)
