@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=gnome-shell-extension-nightthemeswitcher
-pkgver=73
+pkgver=74
 pkgrel=1
 pkgdesc="Automatically toggle your light and dark themes variants"
 arch=('any')
@@ -11,7 +11,7 @@ groups=('gnome-shell-extensions')
 depends=('gnome-shell>=1:43')
 makedepends=('git' 'glib2' 'npm' 'meson')
 checkdepends=('reuse' 'eslint')
-_commit=2162fbf05c9c505806adf853c02da1c8ad142cb6  # tags/73^0
+_commit=eff03a96755c348d7c6d852fc7f10364e5e2e0d6  # tags/73^0
 source=($pkgname::git+$url.git#commit=$_commit)
 b2sums=('SKIP')
 
