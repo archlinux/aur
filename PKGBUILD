@@ -1,7 +1,7 @@
 # Maintainer: Jérôme Deuchnord <jerome@deuchnord.fr>
 
 pkgname=python-skyfield-data
-pkgver=4.0.0
+pkgver=5.0.0
 pkgrel=1
 pkgdesc='Minimal data files to work with python-skyfield'
 
@@ -17,7 +17,7 @@ url='https://github.com/brunobord/skyfield-data'
 license=('MIT')
 
 source=("$pkgname-v$pkgver.tar.gz::https://codeload.github.com/brunobord/skyfield-data/tar.gz/refs/tags/$pkgver")
-sha256sums=("5fc3d6b638bf8b786d49a70ee0ca94ce109c3e86a31586e9e1dd75bfe898a35e")
+sha256sums=("bbe8d7542338097debdcfa41492af9fe8b2255c1b0f03d8acbd0b94cfaf61017")
 
 build() {
     cd "${srcdir}/skyfield-data-${pkgver}"
