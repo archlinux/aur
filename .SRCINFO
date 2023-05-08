@@ -1,11 +1,12 @@
 pkgbase = python-detectron2
 	pkgdesc = FAIR's next-generation platform for object detection and segmentation
 	pkgver = 0.6
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/facebookresearch/detectron2
 	arch = x86_64
 	license = Apache
 	makedepends = cuda
+	makedepends = numactl
 	makedepends = python-setuptools
 	makedepends = python-pytorch-cuda
 	depends = python-cloudpickle
