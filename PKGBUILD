@@ -3,7 +3,7 @@
 _pkgname=S4Arrays
 _pkgver=1.0.1
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Foundation of array-like containers in Bioconductor'
 arch=('x86_64')
