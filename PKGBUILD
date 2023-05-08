@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BDMMAcorrect
-_pkgver=1.18.0
+_pkgver=1.18.1
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.18.1
 pkgrel=1
 pkgdesc='Meta-analysis for the metagenomic read counts data from different cohorts'
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d645280ad30518f7535f09301159eae8eca925f65b436cd6da6ebd54684e9c3c')
+sha256sums=('47a2067b8957800f2832957bc698ad26df39b1869db23ca913d37d560b7d9a9e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
