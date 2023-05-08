@@ -1,0 +1,18 @@
+pkgbase = runjs-appimage
+	pkgdesc = A JavaScript playground for macOS, Windows and Linux. Write code with instant feedback and access to Node.js and browser APIs.
+	pkgver = 2.9.0
+	pkgrel = 1
+	url = https://runjs.app
+	arch = x86_64
+	license = custom
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = runjs
+	options = !strip
+	source = runjs-2.9.0.AppImage::https://github.com/lukehaas/RunJS/releases/download/v2.9.0/RunJS-2.9.0.AppImage
+	source = LICENSE.html::https://runjs.app/eula
+	sha256sums = 57f64aee46892b98c8763859ba8ddd0fb87b7880b8d838939f131faceb203d09
+	sha256sums = e639a605e3d9bc1d50744a7d095f85667e3b83bad598ba68f52ae062ac19abb3
+
+pkgname = runjs-appimage
