@@ -2,16 +2,28 @@
 
 pkgname='python-open-clip-torch'
 _name=open_clip_torch
-pkgver='2.18.0'
+pkgver='2.19.0'
 pkgrel=1
 pkgdesc="Open source implementation of OpenAI's CLIP (Contrastive Language-Image Pre-training)."
 url="https://github.com/mlfoundations/open_clip"
-depends=('python-protobuf' 'python-huggingface-hub' 'python-sentencepiece' 'python-pandas' 'python-regex' 'python-torchvision' 'python-tqdm' 'python-fsspec' 'python-ftfy' 'python-timm')
+depends=(
+#'python-torchvision'
+	'python-fsspec'
+	'python-ftfy'
+	'python-huggingface-hub'
+	'python-pandas'
+	'python-regex'
+	'python-timm'
+	'python-transformers'
+	'python-torchvision'
+	'python-tqdm'
+	'python-webdataset'
+)
 makedepends=('python-setuptools')
 license=('Apache')
 arch=('any')
 source=("https://github.com/mlfoundations/open_clip/archive/refs/tags/v${pkgver}.zip")
-sha256sums=('13a2016db05492a4aa63213e1811615445293865d9e39511892774aedbb6368c')
+sha256sums=('314aef839252155f00feba3f16ece6bef85d797bacdd269a862eded82aba21fc')
 
 build() {
 	cd "${srcdir}/open_clip-${pkgver}"
@@ -23,4 +35,3 @@ package() {
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/$pkgname"
 	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
-
