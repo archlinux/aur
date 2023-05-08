@@ -9,7 +9,7 @@ pkgbase = python-lib-detect-testenv
 	depends = python
 	depends = python-click
 	depends = python-cli-exit-tools
-	source = https://files.pythonhosted.org/packages/source/l/lib-detect-testenv/lib-detect-testenv-2.0.3.tar.gz
+	source = https://files.pythonhosted.org/packages/source/l/lib_detect_testenv/lib_detect_testenv-2.0.3.tar.gz
 	sha256sums = 3b02e4c874aaf62ef819fa662cc879a8c29791983b790791863b6613357e201c
 
 pkgname = python-lib-detect-testenv
