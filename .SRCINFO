@@ -1,0 +1,16 @@
+pkgbase = deskreen-appimage
+	pkgdesc = Turns any device with a web browser into a secondary screen for your computer
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://deskreen.com/
+	arch = any
+	license = AGPL3
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = deskreen
+	options = !strip
+	source = deskreen-2.0.4.AppImage::https://github.com/pavlobu/deskreen/releases/download/v2.0.4/Deskreen-2.0.4.AppImage
+	sha256sums = d2323f99b5da5da9d8e9acb6ce7f9d3d61afb2a591705f1a60746f7c656c39b1
+
+pkgname = deskreen-appimage
