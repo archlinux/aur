@@ -1,19 +1,19 @@
-# Maintainer: Mitch Bigelow <ipha00@gmail.com>
+# Maintainer: pika02 <pikakolendo02(at)gmail.com>
 #
 
 pkgname=realsr-ncnn-vulkan
-pkgver=20210210
+pkgver=20220728
 pkgrel=1
 pkgdesc="RealSR super resolution implemented with ncnn library"
 url="https://github.com/nihui/realsr-ncnn-vulkan"
 license=('MIT')
 depends=('vulkan-icd-loader' 'libwebp')
-makedepends=('git' 'cmake' 'glslang-git' 'vulkan-headers' 'ncnn')
+makedepends=('git' 'cmake' 'glslang' 'vulkan-headers' 'ncnn')
 provides=("realsr-ncnn-vulkan")
 conflicts=("realsr-ncnn-vulkan-git" "realsr-ncnn-vulkan-bin")
 arch=('x86_64')
 source=("https://github.com/nihui/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('689fdb24d342f92ffda9a33e5e5ccb09c204fec0399f1f6e46f507adf844bd74')
+sha256sums=('2f3207aff7e86d9ab11fa536d04da09cc76865821585f23f5f3a06b3a43286b1')
 
 prepare() {
     sed -i 's|path_t model = PATHSTR("models-DF2K_JPEG")|path_t model = PATHSTR("/usr/share/realsr-ncnn-vulkan/models-DF2K_JPEG")|' "${pkgname}-${pkgver}"/src/main.cpp
