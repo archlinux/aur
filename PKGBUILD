@@ -1,41 +1,34 @@
-# Maintainer: Yamato Kobayashi <yk.ymadd@gmail.com>
- 
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Yamato Kobayashi <yk.ymadd@gmail.com>
 pkgname=youtube-music-appimage
 _pkgname=YouTube-Music-Desktop-App
-pkgver=1.13.0
-pkgrel=2
-epoch=
-pkgdesc="A desktop app for YouTube Music"
-arch=('x86_64')
-url="https://ytmdesktop.app"
-license=('CC0 1.0 Universal')
-makedepends=('git')
-source=("https://github.com/ytmdesktop/ytmdesktop/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
-		"https://raw.githubusercontent.com/ytmdesktop/ytmdesktop/master/LICENSE.md"
-        "youtube-music.desktop")
-noextract=('${_pkgname}-${pkgver}.AppImage')
+pkgver=1.19.0
+pkgrel=1
+pkgdesc="YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"
+arch=('any')
+url="https://th-ch.github.io/youtube-music/"
+_githuburl="https://github.com/th-ch/youtube-music"
+license=('MIT')
+depends=('zlib' 'glibc' 'hicolor-icon-theme')
+_install_path="/opt/appimages"
 options=(!strip)
-sha512sums=(
-	"7a5f9f85764d9d40957ec843bb62ddff0bf06f267dc283d7d2023278b5cf922dc8bad69f6bac004ee7ce67e7b71ebcf6a919679f16f4217c5832f7fc45c93c4b"
-	"SKIP"
-	"42b2b37c32da575e3c79b6c5ef911c17147c371794941424b047555be00e86b79e6ee462275f2bec0380ddee09e0d3fed82182096787878a7eefb3d53542d061"
-)
- 
-prepare(){
-	chmod +x $_pkgname-$pkgver.AppImage
-	./$_pkgname-$pkgver.AppImage --appimage-extract
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/YouTube-Music-${pkgver}.AppImage"
+    "LICENSE::https://raw.githubusercontent.com/th-ch/youtube-music/master/license")
+sha256sums=('a3f6bee8428f11c13dc1a5d02b7871b69ec53eaa24b5ea1402dd2238993c6d8c'
+            'e7e14b3b771ecadb23f6ee0b6f99d1553e385e35cdb44fc8e36ee7c878dacd08')
+
+prepare() {
+    chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
+    "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed 's|AppRun|/opt/appimages/pomotroid.AppImage|g' -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
- 
+
 package() {
-	# install license
-	install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/ytmdesktop/LICENSE.md"
- 
-	# install icon
-	install -Dm644 "${srcdir}/squashfs-root/youtube-music-desktop-app.png" "${pkgdir}/usr/share/pixmaps/ytmdesktop.png"
- 
-	# install appimage
-	install -Dm755 ${_pkgname}-${pkgver}.AppImage "${pkgdir}/usr/bin/youtube-music"
- 
-	# install desktop entry
-	install -Dm755 youtube-music.desktop "${pkgdir}/usr/share/applications/youtube-music.desktop"
+    install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
+	for _icons in 16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
+    	install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-appimage}.png" \
+			-t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+    done
+	install -Dm644 "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

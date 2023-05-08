@@ -1,19 +1,17 @@
 pkgbase = youtube-music-appimage
-	pkgdesc = A desktop app for YouTube Music
-	pkgver = 1.13.0
-	pkgrel = 2
-	url = https://ytmdesktop.app
-	arch = x86_64
-	license = CC0 1.0 Universal
-	makedepends = git
-	noextract = ${_pkgname}-${pkgver}.AppImage
+	pkgdesc = YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)
+	pkgver = 1.19.0
+	pkgrel = 1
+	url = https://th-ch.github.io/youtube-music/
+	arch = any
+	license = MIT
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
 	options = !strip
-	source = https://github.com/ytmdesktop/ytmdesktop/releases/download/v1.13.0/YouTube-Music-Desktop-App-1.13.0.AppImage
-	source = https://raw.githubusercontent.com/ytmdesktop/ytmdesktop/master/LICENSE.md
-	source = youtube-music.desktop
-	sha512sums = 7a5f9f85764d9d40957ec843bb62ddff0bf06f267dc283d7d2023278b5cf922dc8bad69f6bac004ee7ce67e7b71ebcf6a919679f16f4217c5832f7fc45c93c4b
-	sha512sums = SKIP
-	sha512sums = 42b2b37c32da575e3c79b6c5ef911c17147c371794941424b047555be00e86b79e6ee462275f2bec0380ddee09e0d3fed82182096787878a7eefb3d53542d061
+	source = youtube-music-1.19.0.AppImage::https://github.com/th-ch/youtube-music/releases/download/v1.19.0/YouTube-Music-1.19.0.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/th-ch/youtube-music/master/license
+	sha256sums = a3f6bee8428f11c13dc1a5d02b7871b69ec53eaa24b5ea1402dd2238993c6d8c
+	sha256sums = e7e14b3b771ecadb23f6ee0b6f99d1553e385e35cdb44fc8e36ee7c878dacd08
 
 pkgname = youtube-music-appimage
-
