@@ -1,7 +1,7 @@
 # Maintainer: András Wacha <awacha@gmail.com>
 pkgname=sasmodels
 #_name=${pkgname#python-}
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Package for calculation of small angle scattering models using OpenCL."
 arch=(x86_64)
@@ -23,7 +23,7 @@ depends=(
 	python-matplotlib
 )
 source=("https://github.com/SasView/${pkgname}/archive/v${pkgver}.tar.gz"  )
-sha256sums=('9c64d602c4b5e479ff7fb56fff0d468e6cf363d620706703943c757745d2eae0')
+sha256sums=('fdf26b0d8c36f25f6abf92cbabaeaa53a9975b64182ec5cf3d134f681ab5fd3d')
 build() {
 	cd ${pkgname}-${pkgver}
 	python setup.py build
