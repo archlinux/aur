@@ -21,6 +21,7 @@ pkgbase = python-onnxruntime
 	makedepends = python-flatbuffers
 	makedepends = python-numpy
 	makedepends = python-pip
+	makedepends = python-setuptools
 	makedepends = python-protobuf
 	makedepends = python-sympy
 	makedepends = chrpath
