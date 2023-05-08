@@ -5,7 +5,7 @@ _pyname="${_origname}"
 _pkgname="${_origname}-chiptunes-player"
 pkgname="${_pkgname}-git"
 pkgver=5.3.0+11.r1523.20230427.8299c87
-pkgrel=2
+pkgrel=3
 pkgdesc="Player of Atari 8-bit chiptunes for modern computers. With plugins for vlc, "
 arch=(
   'aarch64'
@@ -123,6 +123,7 @@ package() {
   _docfiles=(
     "${srcdir}/git.log"
     INSTALL
+    PORTS.xml
     README
   )
   _docdirs=()
