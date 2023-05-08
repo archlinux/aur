@@ -29,6 +29,10 @@ build() {
 	sed -i -E \
 		"s|Exec=localsend_app|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|" \
 		"squashfs-root/${_pkgdesktop}"
+	
+	# Adjust .desktop to have it point to the correct icon (@CIAvash)
+	sed -i -E 's/^Icon=.+/Icon=localsend/' "squashfs-root/${_pkgdesktop}"
+
 	# Fix permissions; .AppImage permissions are 700 for all directories
 	chmod -R a-x+rX squashfs-root/usr
 }
@@ -43,7 +47,12 @@ package() {
 	install -Dm644 \
 		"${srcdir}/squashfs-root/${_pkgdesktop}" \
 		"${pkgdir}/usr/share/applications/${_pkgdesktop}"
-    
+	
+	# Icon file (using the 512x512 one only)
+	install -Dm644 \
+		"${srcdir}/squashfs-root/data/flutter_assets/assets/img/logo-512.png" \
+		"${pkgdir}/usr/share/icons/localsend.png"
+
 	# Symlink executable
 	install -dm755 "${pkgdir}/usr/bin"
 	ln -s \
