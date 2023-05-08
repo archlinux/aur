@@ -1,0 +1,18 @@
+pkgbase = python-wrapt-timeout-decorator
+	pkgdesc = Powerful Timeout Decorator that can be used safely on classes, methods, class methods
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/bitranox/wrapt_timeout_decorator
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-cli_exit_tools
+	depends = python-python-lib-detect-testenv
+	depends = python-multiprocess
+	depends = python-psutil
+	depends = python-wrapt
+	source = https://files.pythonhosted.org/packages/source/w/wrapt-timeout-decorator/wrapt-timeout-decorator-1.0.1.tar.gz
+	sha256sums = 0b0f1a0d608c51f24cbcba3fd93226ae84029450328957be4245530177a610c9
+
+pkgname = python-wrapt-timeout-decorator
