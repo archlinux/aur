@@ -8,7 +8,7 @@
 
 pkgname=gallery-dl-bin
 _pkgname=gallery-dl
-pkgver=1.25.3
+pkgver=1.25.4
 pkgrel=1
 url='https://github.com/mikf/gallery-dl'
 pkgdesc='Command-line program to download image-galleries and collections from several image hosting sites (bin)'
@@ -20,7 +20,7 @@ license=(GPL2)
 source=("$_pkgname-$pkgver.bin::${url}/releases/download/v${pkgver}/gallery-dl.bin"
   "$_pkgname-$pkgver.bin.sig::${url}/releases/download/v${pkgver}/gallery-dl.bin.sig")
 validpgpkeys=('3E09F5908333DD83DBDCE7375680CA389D365A88')
-sha512sums=('35b210574c767c832212fa37515db6c6d08bdefdb5783799463511b18dfa89531f6a7545a6649493854c217efc85fbac1d188e827172996061a0048c5f0c03c9'
+sha512sums=('60c2b8ad90edb6e497d76f45f571d41a343c2583991697013da53ae62d5e795ab9dc1443fdc250f2ae30a7b3302adc534f078886359fd34306460fd5d361ccf3'
             'SKIP')
 
 package() {
