@@ -631,3 +631,16 @@ Fixes:
 - We also fixed a problem with localization that affected some regions, including Denmark and Japan.
 - Finally, we fixed a problem that affected the updating of all-day recurring events with some CalDAV providers.
 
+
+=== Morgen 2.7.0
+New Features:
+- Morgen's new Command Bar is the fastest way to create tasks and events… right from your keyboard.
+  * If you're in Morgen, use CTRL+K (Cmd+K on macOS) to open the command bar
+  * If you're in another app, use CTRL+Shift+K (Cmd+Shift+K on macOS) to bring Morgen in focus with the Command Bar open
+  * Create events using natural language. You can add attendees, locations, and tags all from the command bar. If you have more than one calendar connected to Morgen, you can also identify in which calendar the event should appear.
+  * Create tasks using natural language. Choose which task list it should be added to, and if you want, schedule the task and set a priority level.
+
+- The Morgen menu bar has a new look and enhanced functionality. Additionally, if you're on macOS, the menu can now also display your upcoming events along with their start time. You can opt out of the enhanced menu bar and choose to only see the Morgen icon with the current date on the menu bar. We recommend moving the Morgen menu bar item right next to the system clock by holding Command (⌘) while dragging it.
+
+Improvements:
+- We're in the mood to celebrate all you achieve! Based on many requests, we've removed limits on confetti. When you mark a task as complete, prepare to see confetti every time. 🎉
