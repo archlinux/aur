@@ -1,7 +1,7 @@
 pkgbase = rime-ice-git
 	pkgdesc = Rime 配置：雾凇拼音 | 长期维护的简体词库
-	pkgver = r207.299ae93
-	pkgrel = 2
+	pkgver = r209.adb05b4
+	pkgrel = 1
 	url = https://github.com/iDvel/rime-ice
 	arch = any
 	license = GPL3
