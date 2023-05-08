@@ -1,13 +1,13 @@
 pkgname=file-commander-git
 _pkgname=file-commander
-pkgver=0.9.4.12.471.r0.g42c8aa5
+pkgver=0.9.5.2.r11.g4986365
 pkgrel=1
 pkgdesc='Qt-based cross-platform Total Commander-like orthodox file manager for Windows, Mac and Linux'
 arch=('i686' 'x86_64')
 url="https://github.com/VioletGiraffe/file-commander"
 license=('GPL3')
 depends=('qt5-base')
-makedepends=('qt5-tools' 'hunspell')
+makedepends=('qt5-tools' 'hunspell' 'git')
 optdepends=('hunspell')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -33,13 +33,14 @@ pkgver() {
 
 prepare(){
   cd "$srcdir/${pkgname%-git}"
+git config --local protocol.file.allow always
   git submodule init
     for submodule in cpp-template-utils cpputils github-releases-autoupdater \
         image-processing qtutils text-encoding-detector; do
         git config submodule.${submodule}.url "$srcdir/${submodule}"
     done
-    git submodule update
- 
+    git submodule--helper update
+
     # Fix icon name
     sed -i 's/Icon=icon/Icon=file-commander/g' qt-app/file_commander.desktop
 }
