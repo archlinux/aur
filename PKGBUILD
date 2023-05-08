@@ -2,12 +2,12 @@
 pkgname=crankshaft
 _app_id="space.$pkgname.Crankshaft"
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A Steam client plugin manager and framework."
 arch=('x86_64')
 url="https://crankshaft.space"
 license=('GPL3')
-depends=('libappindicator-gtk3' 'python-jsbeautifier' 'steam' 'xdg-utils')
+depends=('libappindicator-gtk3' 'python-jsbeautifier' 'xdg-utils')
 makedepends=('git' 'go' 'setconf' 'yarn')
 checkdepends=('appstream-glib' 'desktop-file-utils')
 _commit=e8e69525d9a649fbd1759ee727f7a3baf33012da  #tags/0.2.5^0
@@ -22,10 +22,11 @@ pkgver() {
 prepare() {
   cd "$srcdir/$pkgname"
   export GOPATH="$srcdir/gopath"
+  export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
+
   go mod download -x
 
   pushd injected
-  yarn config set cache-folder "$srcdir/yarn-cache"
   yarn install
   popd
 
