@@ -14,8 +14,8 @@
 # Marco Trevisan: <https://salsa.debian.org/gnome-team/mutter/-/blob/ubuntu/master/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch>
 
 pkgname=mutter-x11-scaling
-pkgver=44.1
-pkgrel=2
+pkgver=44.1+r2+g82bd40dcb
+pkgrel=1
 pkgdesc="Window manager and compositor for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -44,20 +44,21 @@ makedepends=(
   gi-docgen
   git
   gobject-introspection
+  gtk3
   meson
   sysprof
   wayland-protocols
   xorg-server
+  xorg-server-xvfb
 )
 checkdepends=(
   python-dbusmock
   wireplumber
-  xorg-server-xvfb
   zenity
 )
 provides=(mutter libmutter-12.so)
 conflicts=(mutter)
-_commit=28a6447ff060ae1fbac8f20a13908d6e230eddc2  # tags/44.1^0
+_commit=82bd40dcbcc3601da755678778f033bd9a30286d  # gnome-44
 source=(
   "git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
   "https://salsa.debian.org/gnome-team/mutter/-/raw/82e4a2c864e5e238bd03b1f4ef05f737915dac8c/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch"
@@ -73,12 +74,13 @@ pkgver() {
 prepare() {
   cd mutter
 
-  # Add scaling support using randr under x11 and dynamic triple buffering support
+  # Add scaling support using randr under x11
   patch -p1 -i "${srcdir}/x11-Add-support-for-fractional-scaling-using-Randr.patch"
 }
 
 build() {
   local meson_options=(
+    -D docs=false
     -D egl_device=true
     -D installed_tests=false
     -D wayland_eglstream=true

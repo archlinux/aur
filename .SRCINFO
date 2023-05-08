@@ -1,22 +1,23 @@
 pkgbase = mutter-x11-scaling
 	pkgdesc = Window manager and compositor for GNOME with X11 fractional scaling patch
-	pkgver = 44.1
-	pkgrel = 2
+	pkgver = 44.1+r2+g82bd40dcb
+	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
 	license = GPL
 	checkdepends = python-dbusmock
 	checkdepends = wireplumber
-	checkdepends = xorg-server-xvfb
 	checkdepends = zenity
 	makedepends = egl-wayland
 	makedepends = gi-docgen
 	makedepends = git
 	makedepends = gobject-introspection
+	makedepends = gtk3
 	makedepends = meson
 	makedepends = sysprof
 	makedepends = wayland-protocols
 	makedepends = xorg-server
+	makedepends = xorg-server-xvfb
 	depends = colord
 	depends = dconf
 	depends = gnome-desktop-4
@@ -37,7 +38,7 @@ pkgbase = mutter-x11-scaling
 	provides = mutter
 	provides = libmutter-12.so
 	conflicts = mutter
-	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=28a6447ff060ae1fbac8f20a13908d6e230eddc2
+	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=82bd40dcbcc3601da755678778f033bd9a30286d
 	source = https://salsa.debian.org/gnome-team/mutter/-/raw/82e4a2c864e5e238bd03b1f4ef05f737915dac8c/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch
 	b2sums = SKIP
 	b2sums = 84e297cbb96c2d58dc14bd5abfab8889e172e7466767afb83b4ce6071dd4d745656aeb955ccb933f0cf78bf46d92d6cbd2d79e41e6ae5b6a654832606c9e0e5f
