@@ -1,17 +1,21 @@
 pkgbase = lunarcalendar-bin
 	pkgdesc = Chinese Lunar Date Control Written in Qt.用Qt写的中国农历日期控件
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/KangLin/LunarCalendar
 	arch = x86_64
 	license = GPL3
 	depends = glibc
-	depends = qt5-base
+	depends = qt6-base
 	depends = gcc-libs
+	depends = qt6-scxml
+	depends = openssl
+	depends = sh
+	depends = qt6-webengine
 	provides = KangLin
 	conflicts = lunarcalendar
 	options = !strip
-	source = lunarcalendar-0.2.3.deb::https://github.com/KangLin/LunarCalendar/releases/download/v0.2.3/lunarcalendar_0.2.3_amd64_Ubuntu-20.04.deb
-	sha256sums = b9058c34d7a7726515f5fcb96fca61da108e4d56f6f213eb56fef54cab421563
+	source = lunarcalendar-0.2.4.deb::https://github.com/KangLin/LunarCalendar/releases/download/v0.2.4/lunarcalendar_0.2.4_amd64.deb
+	sha256sums = bf0bf1d076f0bc4612cc412c3cdc2904e40f2a9e49b7593c5a4940efc46fc302
 
 pkgname = lunarcalendar-bin
