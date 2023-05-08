@@ -1,5 +1,5 @@
 pkgbase = kodi-nexus-git
-	pkgver = r62028.ae03c8e9fe1
+	pkgver = r62102.f960b3749f3
 	pkgrel = 1
 	url = https://kodi.tv
 	arch = x86_64
@@ -56,6 +56,7 @@ pkgbase = kodi-nexus-git
 	makedepends = meson
 	makedepends = gtest
 	makedepends = graphviz
+	makedepends = pcre
 	makedepends = wayland-protocols
 	makedepends = waylandpp
 	makedepends = libxkbcommon
@@ -66,7 +67,7 @@ pkgbase = kodi-nexus-git
 	noextract = ffmpeg-4.4.1-Nexus-Alpha1.tar.gz
 	noextract = crossguid-ca1bf4b810e2d188d04cb6286f957008ee1b7681.tar.gz
 	noextract = fstrcmp-0.7.D001.tar.gz
-	noextract = flatbuffers-2.0.0.tar.gz
+	noextract = flatbuffers-23.3.3.tar.gz
 	noextract = libudfread-1.1.2.tar.gz
 	options = !lto
 	source = git+https://github.com/xbmc/xbmc.git#branch=Nexus
@@ -76,9 +77,12 @@ pkgbase = kodi-nexus-git
 	source = ffmpeg-4.4.1-Nexus-Alpha1.tar.gz::https://github.com/xbmc/FFmpeg/archive/4.4.1-Nexus-Alpha1.tar.gz
 	source = https://mirrors.kodi.tv/build-deps/sources/crossguid-ca1bf4b810e2d188d04cb6286f957008ee1b7681.tar.gz
 	source = https://mirrors.kodi.tv/build-deps/sources/fstrcmp-0.7.D001.tar.gz
-	source = https://mirrors.kodi.tv/build-deps/sources/flatbuffers-2.0.0.tar.gz
+	source = https://mirrors.kodi.tv/build-deps/sources/flatbuffers-23.3.3.tar.gz
 	source = https://mirrors.kodi.tv/build-deps/sources/libudfread-1.1.2.tar.gz
 	source = cheat-sse-build.patch
+	source = gcc13.patch
+	source = https://github.com/xbmc/xbmc/commit/28ed2221.patch
+	source = https://github.com/xbmc/xbmc/commit/023717ed.patch
 	b2sums = SKIP
 	b2sums = 2f503d3ab767094958f7ec10b4ad11ffd02665deee571c8f3c739bef5fc7e2ff84babc5a3fdee638dc095f896b72fe3ce65e6b688674cb5f7b7b77190992688c
 	b2sums = db4d05836d8fbb3637ae50bdbfc0e4b612ee6b3be24addfea94ce772c3bf28d58b63a3f252d6f9f016f72f8cbb841cc1820b091226b136f4c4664385a32da73c
@@ -86,9 +90,12 @@ pkgbase = kodi-nexus-git
 	b2sums = 51d310e7000aeba657d55341c5fdb540474e197b85062228ab4b314c8309ec11985aa7f105193333fc6106529e8e58c86eafe268190894be8532d0e0b9065fa6
 	b2sums = 0f78a8ab5a420297f666b3b8156d499a9141ec25c049d4d2bb2ba594dc585abe211a149b83c605cce4f5530207231a065d5f3a87a0c969781de8c6381afa2527
 	b2sums = a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e
-	b2sums = ccd827a43da39cf831727b439beed0cea216cdf50dbfe70954854bbe388b2c47ed4e78cc87e3fc0d5568034b13baa2ea96480914cc8129747bccbf8ea928847c
+	b2sums = be5e3c8ea81ce4b6f2e2c1b2f22e1172434c435f096fa7dade060578c506cff0310e3e2ef0627e26ce2be44f740652eb9a8e1b63578c18f430f7925820f04e66
 	b2sums = 1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61
 	b2sums = 6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0
+	b2sums = cae6c719106d57102e54b8e21f29f32fc3b9453e16c4fc2ad6dbe64cc6dc550da149e75cd8c26a446cefae44d5c52a95a3c073ad2d42296650d9c68704da8abd
+	b2sums = a83e294a5e179c0b3d2d378db115af03aacff3e24c2a90a0485413225178cc175efb083047b90c8231c3435b22f859477939febe963092fb03f1f4ebcb7a5934
+	b2sums = e60221f70947838cc3ffce9c848d109fc108cda616306b860330def5d1b3adca01a6d8f3e9afdde9283432cf843d8b7af2fd7693c2ff21cb3548625c651058b9
 
 pkgname = kodi-nexus-git
 	pkgdesc = A software media player and entertainment hub for digital media (Nexus branch)
@@ -135,7 +142,7 @@ pkgname = kodi-nexus-git
 	optdepends = pulseaudio: PulseAudio support
 	optdepends = pipewire: PipeWire support
 	optdepends = upower: Display battery level
-	provides = kodi=r62028.ae03c8e9fe1
+	provides = kodi=r62102.f960b3749f3
 	provides = kodi-x11
 	provides = kodi-wayland
 	provides = kodi-gbm
@@ -148,7 +155,7 @@ pkgname = kodi-nexus-git-eventclients
 	pkgdesc = Kodi Event Clients (Nexus branch)
 	optdepends = kodi: local machine eventclient use
 	optdepends = python: most eventclients are implemented in python
-	provides = kodi-eventclients=r62028.ae03c8e9fe1
+	provides = kodi-eventclients=r62102.f960b3749f3
 	conflicts = kodi-eventclients
 
 pkgname = kodi-nexus-git-tools-texturepacker
@@ -157,11 +164,11 @@ pkgname = kodi-nexus-git-tools-texturepacker
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=r62028.ae03c8e9fe1
+	provides = kodi-tools-texturepacker=r62102.f960b3749f3
 	conflicts = kodi-tools-texturepacker
 
 pkgname = kodi-nexus-git-dev
 	pkgdesc = Kodi dev files (Nexus branch)
 	depends = kodi-nexus-git
-	provides = kodi-nexus-dev=r62028.ae03c8e9fe1
+	provides = kodi-nexus-dev=r62102.f960b3749f3
 	conflicts = kodi-nexus-dev

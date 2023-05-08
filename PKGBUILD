@@ -22,7 +22,7 @@ _clangbuild=
 
 pkgbase=kodi-nexus-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r62028.ae03c8e9fe1
+pkgver=r62102.f960b3749f3
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -36,7 +36,7 @@ makedepends=(
   'pipewire' 'python-pycryptodomex' 'python-pillow' 'python-pybluez'
   'python-simplejson' 'shairplay' 'smbclient' 'sndio' 'spdlog' 'taglib'
   'tinyxml' 'swig' 'upower' 'giflib' 'rapidjson' 'ghostscript' 'meson' 'gtest'
-  'graphviz'
+  'graphviz' 'pcre'
   # wayland
   'wayland-protocols' 'waylandpp' 'libxkbcommon'
   # gbm
@@ -66,7 +66,7 @@ _libdvdread_version="6.1.3-Next-Nexus-Alpha2-2"
 _ffmpeg_version="4.4.1-Nexus-Alpha1"
 _crossguid_version="ca1bf4b810e2d188d04cb6286f957008ee1b7681"
 _fstrcmp_version="0.7.D001"
-_flatbuffers_version="2.0.0"
+_flatbuffers_version="23.3.3"
 _libudfread_version="1.1.2"
 
 source=(
@@ -80,6 +80,9 @@ source=(
   "https://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   "https://mirrors.kodi.tv/build-deps/sources/libudfread-$_libudfread_version.tar.gz"
   cheat-sse-build.patch
+  gcc13.patch
+  https://github.com/xbmc/xbmc/commit/28ed2221.patch
+  https://github.com/xbmc/xbmc/commit/023717ed.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -98,9 +101,12 @@ b2sums=('SKIP'
         '51d310e7000aeba657d55341c5fdb540474e197b85062228ab4b314c8309ec11985aa7f105193333fc6106529e8e58c86eafe268190894be8532d0e0b9065fa6'
         '0f78a8ab5a420297f666b3b8156d499a9141ec25c049d4d2bb2ba594dc585abe211a149b83c605cce4f5530207231a065d5f3a87a0c969781de8c6381afa2527'
         'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e'
-        'ccd827a43da39cf831727b439beed0cea216cdf50dbfe70954854bbe388b2c47ed4e78cc87e3fc0d5568034b13baa2ea96480914cc8129747bccbf8ea928847c'
+        'be5e3c8ea81ce4b6f2e2c1b2f22e1172434c435f096fa7dade060578c506cff0310e3e2ef0627e26ce2be44f740652eb9a8e1b63578c18f430f7925820f04e66'
         '1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61'
-        '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0')
+        '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0'
+        'cae6c719106d57102e54b8e21f29f32fc3b9453e16c4fc2ad6dbe64cc6dc550da149e75cd8c26a446cefae44d5c52a95a3c073ad2d42296650d9c68704da8abd'
+        'a83e294a5e179c0b3d2d378db115af03aacff3e24c2a90a0485413225178cc175efb083047b90c8231c3435b22f859477939febe963092fb03f1f4ebcb7a5934'
+        'e60221f70947838cc3ffce9c848d109fc108cda616306b860330def5d1b3adca01a6d8f3e9afdde9283432cf843d8b7af2fd7693c2ff21cb3548625c651058b9')
 
 pkgver() {
   cd "$_gitname"
@@ -114,6 +120,9 @@ prepare() {
   cd "$_gitname"
 
   [[ "$_sse_workaround" -eq 1 ]] && patch -p1 -i "$srcdir/cheat-sse-build.patch"
+  patch -p1 -i ../28ed2221.patch # Fix build with GCC 13
+  patch -p1 -i ../023717ed.patch # Fix build with GCC 13
+  patch -p1 -i ../gcc13.patch # Fix build with GCC 13
   
   if [[ -n "$_clangbuild" ]]; then
     msg "Building with clang"
