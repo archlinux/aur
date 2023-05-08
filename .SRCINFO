@@ -1,0 +1,17 @@
+pkgbase = ganache-appimage
+	pkgdesc = Personal blockchain for Ethereum development
+	pkgver = 2.7.1
+	pkgrel = 1
+	url = https://www.trufflesuite.com/ganache
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	options = !strip
+	source = ganache-2.7.1.AppImage::https://github.com/trufflesuite/ganache-ui/releases/download/v2.7.1/ganache-2.7.1-linux-x86_64.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/trufflesuite/ganache-ui/develop/LICENSE
+	sha256sums = 94f2471986023675690ad205fb6212b1e42078cc43978c49a437137250585c00
+	sha256sums = 377bc2ed45352931f327c2b1fdee39161b1e80496dccde77322d858fcc025b48
+
+pkgname = ganache-appimage
