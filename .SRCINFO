@@ -1,0 +1,15 @@
+pkgbase = clashy-appimage
+	pkgdesc = A GUI proxy client for Windows / Mac / Ubuntu Desktop based on Clash and Electron.
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://github.com/SpongeNobody/Clashy
+	arch = x86_64
+	license = unknown
+	depends = zlib
+	depends = glibc
+	conflicts = clashy
+	options = !strip
+	source = clashy-0.2.7.AppImage::https://github.com/SpongeNobody/Clashy/releases/download/v0.2.7/Clashy-0.2.7.AppImage
+	sha256sums = 0a6e4c6c044805e0e281ebaa5e57c1acbf29a9ab91f8718c75c0e1b467b7f429
+
+pkgname = clashy-appimage
