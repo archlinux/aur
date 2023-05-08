@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=music-player-bin
-pkgver=0.2.0_alpha.12
+pkgver=0.2.0_alpha.13
 pkgrel=1
 pkgdesc='An extensible music server written in Rust'
 url='https://github.com/tsirysndr/music-player'
@@ -17,9 +17,9 @@ source_armv7h=("$url/releases/download/v${pkgver/_/-}/music-player_v${pkgver/_/-
 source_aarch64=("$url/releases/download/v${pkgver/_/-}/music-player_v${pkgver/_/-}_aarch64-unknown-linux-gnu.tar.gz")
 
 sha256sums=('baf06a790cf152622a3f19c707805db724cd6a55a3398df45146feb62ff501f3')
-sha256sums_x86_64=('2c4c1eec31ed53fc6e9ec6e598f89173fc2d1adaf323b9c1f77be5be3e9cee6f')
-sha256sums_armv7h=('730ab8eafb6e14b0c77e3eab735798496ea849b70a2fb73ac133ff987e220983')
-sha256sums_aarch64=('b9f6a3d0b6820a17e62d61329fb67c04c4736eaebad76b08b34dadb243eb4959')
+sha256sums_x86_64=('de41b7bc537d239d8bfb78c1454055a31ccc44d1f4429450644f4c2d820b42fc')
+sha256sums_armv7h=('032e49558aea44380ffbdb18e0199631689b09c23105b755bc0c958b7d0cdcd6')
+sha256sums_aarch64=('9c9953a8c980aa2e83cc8fca386ae3dd76ea9539990926ed7eac7394187ce0a9')
 
 package() {
   install -Dm755 music-player \
