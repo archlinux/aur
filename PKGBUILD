@@ -41,11 +41,11 @@ b2sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "${_pkgname%-git}"
+  git submodule update --init --recursive
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  git submodule update --init --recursive
   arch-meson "${_pkgname%-git}" build
   meson compile -C build
 }
