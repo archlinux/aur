@@ -2,7 +2,7 @@
 # Contributor: pureboys <yuyuud@yuyuud@gmail.com>
 
 pkgname='kikoplay'
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="linux danmaku player"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "git+https://github.com/KikoPlayProject/KikoPlayScript"
 )
 sha256sums=(
-    "909991a88bd2e176d89abe959259a69f00501ed4aab95b91be20829c072527e3"
+    "96b8818450a8354ea960e1eec575830d7ed2800e90b1025ec4f9358d390e8669"
     SKIP
 )
 
@@ -58,7 +58,8 @@ package() {
     make install INSTALL_ROOT="${pkgdir}"
     ln -sf KikoPlay "${pkgdir}/usr/bin/kikoplay"
     
-    # also package KikoPlayScript, but only exclude .git directory
+    # also package KikoPlayScript, but only exclude the ".git" directory
     install -dm755 "${pkgdir}/usr/share/kikoplay/script"
     cp -r "${srcdir}"/KikoPlayScript/* "${pkgdir}/usr/share/kikoplay/script"
 }
+
