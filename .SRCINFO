@@ -1,0 +1,16 @@
+pkgbase = mountpoint-s3-git
+	pkgdesc = A simple, high-throughput file client for mounting an Amazon S3 bucket as a local file system.
+	pkgver = 0.2.0.r295.e6b072f
+	pkgrel = 1
+	url = https://github.com/awslabs/mountpoint-s3
+	arch = x86_64
+	license = Apache
+	makedepends = cargo
+	makedepends = git
+	depends = fuse3
+	provides = mount-s3
+	conflicts = mount-s3
+	source = mountpoint-s3-git::git+https://github.com/awslabs/mountpoint-s3.git#branch=main
+	sha256sums = SKIP
+
+pkgname = mountpoint-s3-git
