@@ -2,7 +2,7 @@
 
 _pkgname='raytracinginvulkan'
 pkgname="${_pkgname}-git"
-pkgver=7.r14.g9e4b225
+pkgver=7.r16.g5316859
 pkgrel=1
 pkgdesc="Implementation of Peter Shirley's Ray Tracing In One Weekend book"
 arch=('x86_64')
@@ -39,10 +39,10 @@ prepare() {
   msg2 "Implementing custom patches"
   while read patch; do
    if [ "$patch" == "" ]; then
-     continue
+    continue
    fi
    echo "Applying $patch"
-   #git apply $patch || exit 2
+   git apply $patch || exit 2
   done <<< $(ls ../*.patch)
 }
 
