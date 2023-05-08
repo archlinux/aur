@@ -33,13 +33,13 @@
 # have been modified.
 
 pkgname=ventoy
-pkgver=1.0.90
+pkgver=1.0.91
 _grub_ver=2.04                  # (Jul 2019)
 #_unifont_ver=15.0.01            # FIXME see NOTE below
 _ipxe_ver=3fe683e               # (Sep 29 2019)
 _edk2_ver=stable201911          # (Dec 2019)
 _diet_ver=0.34                  # FIXME repo pkg needs a patch, see below, build our own (64/32)
-_musl_ver=1.2.3                 # upstream uses 1.2.1, use repo for 64-bit, build our own 32-bit
+_musl_ver=1.2.4                 # upstream uses 1.2.1, use repo for 64-bit, build our own 32-bit
 _kern_hdrs_musl_ver=4.19.88     # for busybox 32-bit
 _fuse_ver=2.9.9                 # need a static lib built against musl, build our own (64/32)
 _exfat_ver=1.3.0                # see comments below for why we build our own
@@ -56,7 +56,7 @@ _busybox_ver=1.32.0             # (Jun 2020) old! FIXME
 _crypt_ver=1.7.5                # (Apr 2017) old! FIXME for veritysetup
 _lunzip_ver=1.11                # (Jan 2019) old! FIXME
 _wimboot_ver=2.7.3              # (Apr 2021) old! FIXME
-pkgrel=2
+pkgrel=1
 pkgdesc="A new bootable USB solution"
 arch=(x86_64)
 url="https://www.ventoy.net/"
@@ -127,16 +127,16 @@ noextract=(
   cryptsetup-"$_crypt_ver".tar.xz
   wimboot-"$_wimboot_ver".tar.gz
 )
-sha256sums=('edc9cebbce9122410be358c36e0954a25ea19ea7e647bbaa5467f057a028eb5b'
+sha256sums=('f807e417fab6f7a97a91c45c21d5456aac2ceb6c20f494ba7f0a83b91e25811d'
             'e5292496995ad42dabe843a0192cf2a2c502e7ffcc7479398232b10a472df77d'
             'db2a9018392a3984d1e1e649bde0ffc19c90fa4d96b9fd2d4caaf9c1ca2af68b'
             'SKIP'
             'c6f691aa91afbaab811a369fe729f61d8e5b58bb5ad79a45446c9ee849c1a60b'
-            '0e6f338f78d26ff30a921078a31fd294143ee603166a476dd38d2b2277e4b049'
-            'a2f1813d98559c723e7baadf3a194d7646fe19ecf7affdeddedbf406cde35164'
+            'SKIP' # GitHub cannot be trusted to maintain a stable checksum
+            'SKIP' # GitHub cannot be trusted to maintain a stable checksum
             '7994ad5a63d00446da2e95da1f3f03355b272f096d7eb9830417ab14393b3ace'
             '313aa962c7f80a02f41758d90d6f67687c77c74a6126b060337f248bc1b637f6'
-            '7d5b0b6062521e4627e099e4c9dc8248d32a30285e959b7eecaa780cf8cfd4a4'
+            '7a35eae33d5372a7c0da1188de798726f68825513b7ae3ebe97aaaa52114f039'
             'd104397fc657ffb0f0bda46f54fd182b76a9ebc324149c183a4ff8c86a8db53d'
             'd0e69d5d608cc22ff4843791ad097f554dd32540ddc9bed7638cc6fea7c1b4b5'
             '689bcb4a639acd2d45e6fa0ff455f7f18edb2421d4f4f42909943775adc0e375'
