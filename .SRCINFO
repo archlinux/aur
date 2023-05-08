@@ -1,0 +1,16 @@
+pkgbase = teams-for-linux-appimage
+	pkgdesc = Unofficial Microsoft Teams for Linux client
+	pkgver = 1.0.83
+	pkgrel = 1
+	url = https://github.com/IsmaelMartinez/teams-for-linux
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = glibc
+	conflicts = teams-for-linux
+	options = !strip
+	source = teams-for-linux-1.0.83.AppImage::https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v1.0.83/teams-for-linux-1.0.83.AppImage
+	sha256sums = 6af0d14bb7e57f5dd084d95c7c2a74f53eb585067b3d900840b62facc95354a0
+
+pkgname = teams-for-linux-appimage
