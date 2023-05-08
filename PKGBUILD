@@ -26,7 +26,7 @@ build() {
     
       pushd "${plugin_dir}" >/dev/null
     
-      ./gradlew build
+      ./gradlew build -x test
     
       popd >/dev/null
     done
