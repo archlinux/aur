@@ -31,7 +31,8 @@ prepare() {
 build() {
   cd "${pkgname#ooni}-$pkgver"
   export NODE_OPTIONS=--openssl-legacy-provider
-  yarn install --cache-folder "$srcdir/yarn-cache"
+  export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
+  yarn install
   node_modules/.bin/next build renderer
   node_modules/.bin/next export renderer
   node_modules/.bin/electron-builder --linux
