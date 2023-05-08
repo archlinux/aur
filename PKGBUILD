@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=yt-mpv
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A CLI YouTube client"
 arch=('any')
@@ -13,12 +13,12 @@ source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
   )
 sha512sums=(
-  '69ea51438b65d20715c5f6045e9cb3ed184dff844265d0a9995d5b5295ffad9004db1d48f8c0b24be00e994d6d69e439cd297a0e626af8f7599974bed1654286'
-  '83e30593af1ffc9fa5794d4b9dcd7a6edcbb60060b5e5fd7fb7589291afde5586365d9ecdbffbeb03990adbb51e1393dc435a8011019e0447385106b42eb3d9d'
+  '403a9a69af75cccd698c5187ac8b836d28b6b1cdb28ed4a9cc87c6d2ee2217afc7041db970154f5835cc95c8d29d82e3b85d4dac3a7f848c97ae4455a84c917c'
+  'aa79339ab23b4f6d1aafb8826c14df4e74003a056bf35abd842caded9d8e3fa9385bdccf10bd94b8767d26942aed42f05d270bea9f262d0a2e25e8004b74da8d'
   )
 md5sums=(
-  '7182bb5006763c676abf09d78dfa5bc4'
-  'b00ad88fec49cc4ff458fd8271992d41'
+  '8368050594075e0baa4221630c56dba4'
+  'ccf0cdb96f064018efb2a269cd6d6998'
   )
 validpgpkeys=('81BACEEBC3EA26E127166E4A819BB92A9A48160E')
 
