@@ -4,8 +4,8 @@ _origname=asap
 _pyname="${_origname}"
 _pkgname="${_origname}-chiptunes-player"
 pkgname="${_pkgname}-git"
-pkgver=5.3.0+11.r1523.20230427.8299c87
-pkgrel=3
+pkgver=5.3.0+13.r1525.20230508.8a0d8fa
+pkgrel=1
 pkgdesc="Player of Atari 8-bit chiptunes for modern computers. With plugins for vlc, "
 arch=(
   'aarch64'
@@ -22,6 +22,7 @@ url="http://asap.sourceforge.net"
 license=("GPL2")
 depends=(
   'glibc'
+  # 'opencl-icd-loader'
 )
 makedepends=(
   'cito'
@@ -96,7 +97,9 @@ build() {
 
   printf '%s\n' " --> building ..."
   make
+  make asapscan
   make asap-vlc
+  make opencl
   make python
   ## No shabeng line is generated. Add one.
   if ! head -n1 python/asap2wav.py | grep -E '^#!/usr/bin/env python\>'; then
@@ -116,6 +119,9 @@ package() {
   printf '%s\n' " --> installing ..."
   make DESTDIR="${pkgdir}" prefix="/usr" install
   make DESTDIR="${pkgdir}" prefix="/usr" install-vlc
+
+  # install -D -v -m755 "opencl/asapcl" "${pkgdir}/usr/bin/asapcl"
+  install -D -v -m755 "asapscan" "${pkgdir}/usr/bin/asapscan"
 
   install -D -v -m644 "python/${_pyname}.py" "${pkgdir}/${_pysitepackagesdir}/${_pyname}/__init__.py"
   install -D -v -m755 "python/asap2wav.py" "${pkgdir}/usr/bin/asap2wav"
