@@ -2,7 +2,7 @@
 
 pkgname="code-translucent"
 pkgver=1.78.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Open Source build of Visual Studio Code (vscode) editor with translucent window, official marketplace, unblocked proprietary features and wayland support!"
 
 arch=(
@@ -20,24 +20,19 @@ provides=("code-oss")
 
 depends=(
 	"libxkbfile"
-	"gnupg"
 	"gtk3"
-	"libsecret"
 	"nss"
+	"libsecret"
 	"alsa-lib"
 	"gcc-libs"
 	"libnotify"
 	"libxss"
 	"glibc"
-	"lsof"
-	"shared-mime-info"
-	"xdg-utils"
 )
 
 optdepends=(
-	"glib2: Needed for move to trash functionality"
 	"libdbusmenu-glib: Needed for KDE global menu"
-	"org.freedesktop.secrets: Needed for settings sync"
+	"x11-ssh-askpass: SSH authentication"
 	"icu69: Needed for live share"
 )
 
@@ -84,7 +79,7 @@ esac
 
 prepare() {
 
-	cd "${pkgname}"
+	cd "${srcdir}/${pkgname}"
 
 	# Apply patch to source
 	patch -p1 < "../translucent.patch"
@@ -117,35 +112,35 @@ prepare() {
 
 build() {
 
-	cd "${pkgname}"
+	cd "${srcdir}/${pkgname}"
 
 	yarn install --arch="${_vscode_arch}"
 
-	gulp --max_old_space_size=8192 --openssl-legacy-provider vscode-linux-${_vscode_arch}-min
+	gulp --max_old_space_size=8192 --openssl-legacy-provider vscode-linux-"${_vscode_arch}"-min
 
 }
 
 package() {
 
-	local _appdir="VSCode-linux-${_vscode_arch}"
+	local _pkgdir="${srcdir}/${pkgname}"
+	local _appdir="${srcdir}/VSCode-linux-${_vscode_arch}"
 
 	install -Dm 644 "${_appdir}/resources/app/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 	install -Dm 644 "${_appdir}/resources/app/ThirdPartyNotices.txt" "${pkgdir}/usr/share/licenses/${pkgname}/ThirdPartyNotices.txt"
 
-	install -Dm 644 "${pkgname}/resources/linux/code.appdata.xml" "${pkgdir}/usr/share/metainfo/code-oss.appdata.xml"
-	install -Dm 644 "${pkgname}/resources/linux/code-workspace.xml" "${pkgdir}/usr/share/mime/packages/code-oss-workspace.xml"
-	install -Dm 644 "${pkgname}/resources/linux/code.desktop" "${pkgdir}/usr/share/applications/code-oss.desktop"
-	install -Dm 644 "${pkgname}/resources/linux/code-url-handler.desktop" "${pkgdir}/usr/share/applications/code-oss-url-handler.desktop"
-
-	install -Dm 644 "${_appdir}/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/icons/code.png"
+	install -Dm 644 "${_pkgdir}/resources/linux/code.appdata.xml" "${pkgdir}/usr/share/metainfo/code-oss.appdata.xml"
+	install -Dm 644 "${_pkgdir}/resources/linux/code-workspace.xml" "${pkgdir}/usr/share/mime/packages/code-oss-workspace.xml"
+	install -Dm 644 "${_pkgdir}/resources/linux/code.desktop" "${pkgdir}/usr/share/applications/code-oss.desktop"
+	install -Dm 644 "${_pkgdir}/resources/linux/code-url-handler.desktop" "${pkgdir}/usr/share/applications/code-oss-url-handler.desktop"
+	install -Dm 644 "${_pkgdir}/resources/linux/code.png" "${pkgdir}/usr/share/icons/code.png"
 
 	install -Dm 644 "${_appdir}/resources/completions/bash/code-oss" "${pkgdir}/usr/share/bash-completion/completions/code-oss"
 	install -Dm 644 "${_appdir}/resources/completions/zsh/_code-oss" "${pkgdir}/usr/share/zsh/site-functions/_code-oss"
 
 	install -dm 755 "${pkgdir}/opt/${pkgname}"
 
-	cp -r --no-preserve=ownership --preserve=mode "${srcdir}/${_appdir}/"* "${pkgdir}/opt/${pkgname}" -R
+	cp -r --no-preserve=ownership --preserve=mode "${_appdir}/"* "${pkgdir}/opt/${pkgname}" -R
 
-	install -Dm 755 code-oss.sh "${pkgdir}/usr/bin/code-oss"
+	install -Dm 755 "${srcdir}/code-oss.sh" "${pkgdir}/usr/bin/code-oss"
 
 }
