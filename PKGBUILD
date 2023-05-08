@@ -2,7 +2,7 @@
 # Contributor: Yamato Kobayashi <yk.ymadd@gmail.com>
 pkgname=youtube-music-appimage
 pkgver=1.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"
 arch=('any')
 url="https://th-ch.github.io/youtube-music/"
@@ -19,7 +19,7 @@ sha256sums=('a3f6bee8428f11c13dc1a5d02b7871b69ec53eaa24b5ea1402dd2238993c6d8c'
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's|AppRun|/opt/appimages/pomotroid.AppImage|g' -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
+    sed 's|AppRun|/opt/appimages/youtube-music.AppImage|g' -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
 
 package() {
