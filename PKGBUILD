@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Hayot <ghayot@postblue.info>
 pkgname=pam-python-git
 pkgver=r31.9641aa5
-pkgrel=1
+pkgrel=2
 pkgdesc='Python for PAM (py3 fork)'
 arch=('x86_64')
 url='https://github.com/castlabs/pam-python'
@@ -34,12 +34,12 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-        PREFIX=/usr make
+        PREFIX=/usr make lib
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-        PREFIX=/usr make DESTDIR="${pkgdir}" install
+        PREFIX=/usr make DESTDIR="${pkgdir}" install-lib
         install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
