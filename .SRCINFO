@@ -1,6 +1,6 @@
 pkgbase = r-baynorm
 	pkgdesc = Single-cell RNA sequencing data normalization
-	pkgver = 1.18.0
+	pkgver = 1.18.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/bayNorm
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = r-baynorm
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/bayNorm_1.18.0.tar.gz
-	sha256sums = 0e6ef5edfe5c2a797f4dba9bb2279636d9bd63671268845acf8d4974cde9d324
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/bayNorm_1.18.1.tar.gz
+	sha256sums = 0405201668a938f44c21a9351cf76706f472e6db07c6e0944163c28160e9dbe4
 
 pkgname = r-baynorm
