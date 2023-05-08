@@ -3,21 +3,21 @@
 # Contributor: Jesus Alvarez
 
 _name=radon
-pkgname="python-${_name}"
-pkgver=5.1.0
+pkgname=python-$_name
+pkgver=6.0.1
 pkgrel=1
-pkgdesc="A tool that computes various metrics for Python source code"
-arch=('any')
-url="https://${_name}.readthedocs.org/"
-license=('MIT')
-depends=('flake8>=3.0' 'python-future' 'python-mando' 'python-colorama')
-makedepends=('python-sphinx')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('cb1d8752e5f862fb9e20d82b5f758cbc4fb1237c92c9a66450ea0ea7bf29aeee')
+pkgdesc='A tool that computes various metrics for Python source code'
+arch=(any)
+url='https://radon.readthedocs.org/'
+license=(MIT)
+depends=('flake8>=3.0' python-colorama python-mando python-tomli)
+makedepends=(python-sphinx python-setuptools)
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('d1ac0053943a893878940fedc8b19ace70386fc9c9bf0a09229a44125ebf45b5')
 
 
 build() {
-  cd "${srcdir}/${_name}-${pkgver}"
+  cd $_name-$pkgver
   sed -i -e "s/mando[^']*/mando/" -e "s/colorama[^']*/colorama/" setup.py
   python setup.py build
   cd docs
@@ -25,14 +25,13 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_name}-${pkgver}"
+  cd $_name-$pkgver
   python setup.py install --root="$pkgdir" --skip-build --optimize=1
-
-  install -d "${pkgdir}/usr/share/doc/${pkgname}"
-  cp -r docs/_build/html/* "${pkgdir}/usr/share/doc/${pkgname}"
-
+  # documentation
+  install -d "$pkgdir"/usr/share/doc/$pkgname
+  cp -r docs/_build/html/* "$pkgdir"/usr/share/doc/$pkgname
   # license
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
 
 # vim:set ts=2 sw=2 et:
