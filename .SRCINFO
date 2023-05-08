@@ -6,6 +6,7 @@ pkgbase = python-lineprofiler
 	arch = x86_64
 	license = BSD
 	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
 	checkdepends = python-ubelt
 	makedepends = cython
 	makedepends = python-build

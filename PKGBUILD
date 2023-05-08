@@ -12,7 +12,7 @@ arch=('x86_64')
 license=('BSD')
 depends=('python-setuptools' 'ipython')
 makedepends=('cython' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest' 'python-ubelt')
+checkdepends=('python-pytest' 'python-pytest-cov' 'python-ubelt')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/pyutils/line_profiler/archive/v$pkgver.tar.gz")
 
 sha256sums=('81df8a475048d1c8c905cb5a4530c44f2581b6c78c2f64301a65fe2d4a3028d3')
