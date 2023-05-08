@@ -1,0 +1,16 @@
+pkgbase = pomotroid-appimage
+	pkgdesc = Simple and visually-pleasing Pomodoro timer
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://splode.github.io/pomotroid/
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	options = !strip
+	source = pomotroid-0.13.0.AppImage::https://github.com/Splode/pomotroid/releases/download/v0.13.0/pomotroid-0.13.0-linux.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/Splode/pomotroid/master/LICENSE
+	sha256sums = 9115ce1b86858fed771b8462d79997463f825a6f7605f5df992e4a34f4836606
+	sha256sums = 26c9bfaefad8fafa79e3f2c403bf75438f099f1847da304f43fda117b5ca6658
+
+pkgname = pomotroid-appimage
