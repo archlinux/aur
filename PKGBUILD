@@ -5,21 +5,20 @@
 _pkgname=lateef
 pkgname=ttf-sil-$_pkgname
 _fname=${_pkgname^}
-pkgver=2.000
+pkgver=4.000
 pkgrel=1
 pkgdesc='An Arabic script font for Sindhi and other languages of southern Asia'
-arch=('any')
+arch=(any)
 url="https://software.sil.org/$_pkgname"
-license=('OFL')
+license=(OFL)
 conflicts=('ttf-sil-fonts<=6')
 _archive="$_fname-$pkgver"
-source=("http://software.sil.org/downloads/r/$_pkgname/$_archive.zip")
-sha256sums=('3a4baec89e25f04e19b4edecfe59624ab33cfc275276009d3caca299ee013d99')
+source=("https://software.sil.org/downloads/r/$_pkgname/$_archive.zip")
+sha256sums=('547580801884acb1c6cc77fa2e27a638bf1282dce6e26d54bebccaa7587ca5c8')
 
 package() {
-    cd "$_archive"
-    find -type f -name "$_fname-*.ttf" -execdir \
-        install -Dm644 -t "$pkgdir/usr/share/fonts/TTF" {} \;
-    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.txt FONTLOG.txt documentation/pdf/*.pdf
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" OFL.txt
+	cd "$_archive"
+	install -Dm0644 -t "$pkgdir/usr/share/fonts/TTF/" *.ttf
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" OFL.txt
+	install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" README.txt FONTLOG.txt documentation/pdf/*
 }
