@@ -3,15 +3,16 @@
 _name=pythonfinder
 pkgname=python-pythonfinder
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross Platform Search Tool for Finding Pythons"
 arch=(any)
 url="https://github.com/sarugaku/pythonfinder"
 license=(MIT)
 depends=(
-  python-attrs
+  python
   python-cached-property
   python-packaging
+  python-pydantic
 )
 makedepends=(
   python-build
