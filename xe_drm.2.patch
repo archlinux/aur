@@ -1,0 +1,244 @@
+diff --git a/drivers/gpu/drm/xe/xe_bo.c b/drivers/gpu/drm/xe/xe_bo.c
+index 3ab404e33fae..bef627adb2bf 100644
+--- a/drivers/gpu/drm/xe/xe_bo.c
++++ b/drivers/gpu/drm/xe/xe_bo.c
+@@ -1633,7 +1633,8 @@ int xe_gem_create_ioctl(struct drm_device *dev, void *data,
+ 	u32 handle;
+ 	int err;
+ 
+-	if (XE_IOCTL_ERR(xe, args->extensions))
++	if (XE_IOCTL_ERR(xe, args->extensions) || XE_IOCTL_ERR(xe, args->pad) ||
++	    XE_IOCTL_ERR(xe, args->reserved[0] || args->reserved[1]))
+ 		return -EINVAL;
+ 
+ 	if (XE_IOCTL_ERR(xe, args->flags &
+@@ -1703,7 +1704,8 @@ int xe_gem_mmap_offset_ioctl(struct drm_device *dev, void *data,
+ 	struct drm_xe_gem_mmap_offset *args = data;
+ 	struct drm_gem_object *gem_obj;
+ 
+-	if (XE_IOCTL_ERR(xe, args->extensions))
++	if (XE_IOCTL_ERR(xe, args->extensions) ||
++	    XE_IOCTL_ERR(xe, args->reserved[0] || args->reserved[1]))
+ 		return -EINVAL;
+ 
+ 	if (XE_IOCTL_ERR(xe, args->flags))
+diff --git a/drivers/gpu/drm/xe/xe_engine.c b/drivers/gpu/drm/xe/xe_engine.c
+index 094ec17d3004..8c3a722d91c6 100644
+--- a/drivers/gpu/drm/xe/xe_engine.c
++++ b/drivers/gpu/drm/xe/xe_engine.c
+@@ -348,7 +348,8 @@ static int engine_user_ext_set_property(struct xe_device *xe,
+ 		return -EFAULT;
+ 
+ 	if (XE_IOCTL_ERR(xe, ext.property >=
+-			 ARRAY_SIZE(engine_set_property_funcs)))
++			 ARRAY_SIZE(engine_set_property_funcs)) ||
++	    XE_IOCTL_ERR(xe, ext.pad))
+ 		return -EINVAL;
+ 
+ 	idx = array_index_nospec(ext.property, ARRAY_SIZE(engine_set_property_funcs));
+@@ -380,7 +381,8 @@ static int engine_user_extensions(struct xe_device *xe, struct xe_engine *e,
+ 	if (XE_IOCTL_ERR(xe, err))
+ 		return -EFAULT;
+ 
+-	if (XE_IOCTL_ERR(xe, ext.name >=
++	if (XE_IOCTL_ERR(xe, ext.pad) ||
++	    XE_IOCTL_ERR(xe, ext.name >=
+ 			 ARRAY_SIZE(engine_user_extension_funcs)))
+ 		return -EINVAL;
+ 
+@@ -523,7 +525,8 @@ int xe_engine_create_ioctl(struct drm_device *dev, void *data,
+ 	int len;
+ 	int err;
+ 
+-	if (XE_IOCTL_ERR(xe, args->flags))
++	if (XE_IOCTL_ERR(xe, args->flags) ||
++	    XE_IOCTL_ERR(xe, args->reserved[0] || args->reserved[1]))
+ 		return -EINVAL;
+ 
+ 	len = args->width * args->num_placements;
+@@ -639,6 +642,10 @@ int xe_engine_get_property_ioctl(struct drm_device *dev, void *data,
+ 	struct drm_xe_engine_get_property *args = data;
+ 	struct xe_engine *e;
+ 
++	if (XE_IOCTL_ERR(xe, args->extensions) ||
++	    XE_IOCTL_ERR(xe, args->reserved[0] || args->reserved[1]))
++		return -EINVAL;
++
+ 	mutex_lock(&xef->engine.lock);
+ 	e = xa_load(&xef->engine.xa, args->engine_id);
+ 	mutex_unlock(&xef->engine.lock);
+@@ -718,7 +725,8 @@ int xe_engine_destroy_ioctl(struct drm_device *dev, void *data,
+ 	struct drm_xe_engine_destroy *args = data;
+ 	struct xe_engine *e;
+ 
+-	if (XE_IOCTL_ERR(xe, args->pad))
++	if (XE_IOCTL_ERR(xe, args->pad) ||
++	    XE_IOCTL_ERR(xe, args->reserved[0] || args->reserved[1]))
+ 		return -EINVAL;
+ 
+ 	mutex_lock(&xef->engine.lock);
+@@ -748,6 +756,9 @@ int xe_engine_set_property_ioctl(struct drm_device *dev, void *data,
+ 	int ret;
+ 	u32 idx;
+ 
++	if (XE_IOCTL_ERR(xe, args->reserved[0] || args->reserved[1]))
++		return -EINVAL;
++
+ 	e = xe_engine_lookup(xef, args->engine_id);
+ 	if (XE_IOCTL_ERR(xe, !e))
+ 		return -ENOENT;
+diff --git a/drivers/gpu/drm/xe/xe_exec.c b/drivers/gpu/drm/xe/xe_exec.c
+index ea869f2452ef..d6cb20330717 100644
+--- a/drivers/gpu/drm/xe/xe_exec.c
++++ b/drivers/gpu/drm/xe/xe_exec.c
+@@ -160,7 +160,9 @@ int xe_exec_ioctl(struct drm_device *dev, void *data, struct drm_file *file)
+ 	bool write_locked;
+ 	int err = 0;
+ 
+-	if (XE_IOCTL_ERR(xe, args->extensions))
++	if (XE_IOCTL_ERR(xe, args->extensions) ||
++	    XE_IOCTL_ERR(xe, args->pad[0] || args->pad[1] || args->pad[2]) ||
++	    XE_IOCTL_ERR(xe, args->reserved[0] || args->reserved[1]))
+ 		return -EINVAL;
+ 
+ 	engine = xe_engine_lookup(xef, args->engine_id);
+diff --git a/drivers/gpu/drm/xe/xe_mmio.c b/drivers/gpu/drm/xe/xe_mmio.c
+index 3b719c774efa..95e512b45405 100644
+--- a/drivers/gpu/drm/xe/xe_mmio.c
++++ b/drivers/gpu/drm/xe/xe_mmio.c
+@@ -406,7 +406,8 @@ int xe_mmio_ioctl(struct drm_device *dev, void *data,
+ 	bool allowed;
+ 	int ret = 0;
+ 
+-	if (XE_IOCTL_ERR(xe, args->extensions))
++	if (XE_IOCTL_ERR(xe, args->extensions) ||
++	    XE_IOCTL_ERR(xe, args->reserved[0] || args->reserved[1]))
+ 		return -EINVAL;
+ 
+ 	if (XE_IOCTL_ERR(xe, args->flags & ~VALID_MMIO_FLAGS))
+diff --git a/drivers/gpu/drm/xe/xe_query.c b/drivers/gpu/drm/xe/xe_query.c
+index dd64ff0d2a57..97742d003c8a 100644
+--- a/drivers/gpu/drm/xe/xe_query.c
++++ b/drivers/gpu/drm/xe/xe_query.c
+@@ -374,7 +374,8 @@ int xe_query_ioctl(struct drm_device *dev, void *data, struct drm_file *file)
+ 	struct drm_xe_device_query *query = data;
+ 	u32 idx;
+ 
+-	if (XE_IOCTL_ERR(xe, query->extensions != 0))
++	if (XE_IOCTL_ERR(xe, query->extensions ||
++	    XE_IOCTL_ERR(xe, query->reserved[0] || query->reserved[1])))
+ 		return -EINVAL;
+ 
+ 	if (XE_IOCTL_ERR(xe, query->query > ARRAY_SIZE(xe_query_funcs)))
+diff --git a/drivers/gpu/drm/xe/xe_sync.c b/drivers/gpu/drm/xe/xe_sync.c
+index 99f1ed87196d..3c9ac74970c5 100644
+--- a/drivers/gpu/drm/xe/xe_sync.c
++++ b/drivers/gpu/drm/xe/xe_sync.c
+@@ -110,7 +110,9 @@ int xe_sync_entry_parse(struct xe_device *xe, struct xe_file *xef,
+ 		return -EFAULT;
+ 
+ 	if (XE_IOCTL_ERR(xe, sync_in.flags &
+-			 ~(SYNC_FLAGS_TYPE_MASK | DRM_XE_SYNC_SIGNAL)))
++			 ~(SYNC_FLAGS_TYPE_MASK | DRM_XE_SYNC_SIGNAL)) ||
++	    XE_IOCTL_ERR(xe, sync_in.pad) ||
++	    XE_IOCTL_ERR(xe, sync_in.reserved[0] || sync_in.reserved[1]))
+ 		return -EINVAL;
+ 
+ 	switch (sync_in.flags & SYNC_FLAGS_TYPE_MASK) {
+diff --git a/drivers/gpu/drm/xe/xe_vm.c b/drivers/gpu/drm/xe/xe_vm.c
+index 272f0f7f24fe..c094684f7a7b 100644
+--- a/drivers/gpu/drm/xe/xe_vm.c
++++ b/drivers/gpu/drm/xe/xe_vm.c
+@@ -1774,7 +1774,9 @@ static int vm_user_ext_set_property(struct xe_device *xe, struct xe_vm *vm,
+ 		return -EFAULT;
+ 
+ 	if (XE_IOCTL_ERR(xe, ext.property >=
+-			 ARRAY_SIZE(vm_set_property_funcs)))
++			 ARRAY_SIZE(vm_set_property_funcs)) ||
++	    XE_IOCTL_ERR(xe, ext.pad) ||
++	    XE_IOCTL_ERR(xe, ext.reserved[0] || ext.reserved[1]))
+ 		return -EINVAL;
+ 
+ 	return vm_set_property_funcs[ext.property](xe, vm, ext.value);
+@@ -1802,7 +1804,8 @@ static int vm_user_extensions(struct xe_device *xe, struct xe_vm *vm,
+ 	if (XE_IOCTL_ERR(xe, err))
+ 		return -EFAULT;
+ 
+-	if (XE_IOCTL_ERR(xe, ext.name >=
++	if (XE_IOCTL_ERR(xe, ext.pad) ||
++	    XE_IOCTL_ERR(xe, ext.name >=
+ 			 ARRAY_SIZE(vm_user_extension_funcs)))
+ 		return -EINVAL;
+ 
+@@ -1833,6 +1836,9 @@ int xe_vm_create_ioctl(struct drm_device *dev, void *data,
+ 	int err;
+ 	u32 flags = 0;
+ 
++	if (XE_IOCTL_ERR(xe, args->reserved[0] || args->reserved[1]))
++		return -EINVAL;
++
+ 	if (XE_IOCTL_ERR(xe, args->flags & ~ALL_DRM_XE_VM_CREATE_FLAGS))
+ 		return -EINVAL;
+ 
+@@ -1916,7 +1922,8 @@ int xe_vm_destroy_ioctl(struct drm_device *dev, void *data,
+ 	struct drm_xe_vm_destroy *args = data;
+ 	struct xe_vm *vm;
+ 
+-	if (XE_IOCTL_ERR(xe, args->pad))
++	if (XE_IOCTL_ERR(xe, args->pad) ||
++	    XE_IOCTL_ERR(xe, args->reserved[0] || args->reserved[1]))
+ 		return -EINVAL;
+ 
+ 	vm = xe_vm_lookup(xef, args->vm_id);
+@@ -2866,6 +2873,8 @@ static int vm_bind_ioctl_check_args(struct xe_device *xe,
+ 	int i;
+ 
+ 	if (XE_IOCTL_ERR(xe, args->extensions) ||
++	    XE_IOCTL_ERR(xe, args->pad || args->pad2) ||
++	    XE_IOCTL_ERR(xe, args->reserved[0] || args->reserved[1]) ||
+ 	    XE_IOCTL_ERR(xe, !args->num_binds) ||
+ 	    XE_IOCTL_ERR(xe, args->num_binds > MAX_BINDS))
+ 		return -EINVAL;
+@@ -2898,6 +2907,13 @@ static int vm_bind_ioctl_check_args(struct xe_device *xe,
+ 		u64 obj_offset = (*bind_ops)[i].obj_offset;
+ 		u32 region = (*bind_ops)[i].region;
+ 
++		if (XE_IOCTL_ERR(xe, (*bind_ops)[i].pad) ||
++		    XE_IOCTL_ERR(xe, (*bind_ops)[i].reserved[0] ||
++				     (*bind_ops)[i].reserved[1])) {
++			err = -EINVAL;
++			goto free_bind_ops;
++		}
++
+ 		if (i == 0) {
+ 			*async = !!(op & XE_VM_BIND_FLAG_ASYNC);
+ 		} else if (XE_IOCTL_ERR(xe, !*async) ||
+diff --git a/drivers/gpu/drm/xe/xe_vm_madvise.c b/drivers/gpu/drm/xe/xe_vm_madvise.c
+index 29815852985a..0f5eef337037 100644
+--- a/drivers/gpu/drm/xe/xe_vm_madvise.c
++++ b/drivers/gpu/drm/xe/xe_vm_madvise.c
+@@ -301,7 +301,9 @@ int xe_vm_madvise_ioctl(struct drm_device *dev, void *data,
+ 	struct xe_vma **vmas = NULL;
+ 	int num_vmas = 0, err = 0, idx;
+ 
+-	if (XE_IOCTL_ERR(xe, args->extensions))
++	if (XE_IOCTL_ERR(xe, args->extensions) ||
++	    XE_IOCTL_ERR(xe, args->pad || args->pad2) ||
++	    XE_IOCTL_ERR(xe, args->reserved[0] || args->reserved[1]))
+ 		return -EINVAL;
+ 
+ 	if (XE_IOCTL_ERR(xe, args->property > ARRAY_SIZE(madvise_funcs)))
+diff --git a/drivers/gpu/drm/xe/xe_wait_user_fence.c b/drivers/gpu/drm/xe/xe_wait_user_fence.c
+index 15c2e5aa08d2..6c8a60c60087 100644
+--- a/drivers/gpu/drm/xe/xe_wait_user_fence.c
++++ b/drivers/gpu/drm/xe/xe_wait_user_fence.c
+@@ -100,7 +100,8 @@ int xe_wait_user_fence_ioctl(struct drm_device *dev, void *data,
+ 		args->flags & DRM_XE_UFENCE_WAIT_VM_ERROR;
+ 	unsigned long timeout = args->timeout;
+ 
+-	if (XE_IOCTL_ERR(xe, args->extensions))
++	if (XE_IOCTL_ERR(xe, args->extensions) || XE_IOCTL_ERR(xe, args->pad) ||
++	    XE_IOCTL_ERR(xe, args->reserved[0] || args->reserved[1]))
+ 		return -EINVAL;
+ 
+ 	if (XE_IOCTL_ERR(xe, args->flags & ~VALID_FLAGS))
