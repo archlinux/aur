@@ -2,13 +2,13 @@
 pkgname=python-lib-detect-testenv
 _name=lib_detect_testenv
 pkgver=2.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Detects test environment like pytest, doctest or pyrunner on pycharm"
 url="https://github.com/bitranox/lib_detect_testenv"
 depends=(
     'python'
     'python-click'
-    'python-cli-exit-tools'
+    #'python-cli-exit-tools'
 )
 makedepends=('python-setuptools')
 license=('MIT')
