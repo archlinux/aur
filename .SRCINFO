@@ -1,7 +1,7 @@
 pkgbase = cecdaemon-devel
 	pkgdesc = CEC Daemon for linux media centers (development version)
 	pkgver = r6.fef7a4f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/simons-public/cecdaemon
 	arch = any
 	license = custom
@@ -13,7 +13,7 @@ pkgbase = cecdaemon-devel
 	depends = python-importlib-metadata
 	depends = libcec
 	depends = python-cec-git
-	depends = python-uinput-patched
+	depends = python-uinput
 	depends = python-pyudev
 	provides = cecdaemon
 	conflicts = cecdaemon
