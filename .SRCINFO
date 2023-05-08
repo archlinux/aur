@@ -1,6 +1,6 @@
 pkgbase = ckb-cli-bin
 	pkgdesc = Nervos CKB (Common Knowledge Base) command line tool
-	pkgver = 1.2.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/nervosnetwork/ckb-cli
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = ckb-cli-bin
 	provides = ckb-cli
 	conflicts = ckb-cli
 	options = !strip
-	source = https://github.com/nervosnetwork/ckb-cli/releases/download/v1.2.0/ckb-cli_v1.2.0_x86_64-unknown-linux-gnu.tar.gz
-	source = https://github.com/nervosnetwork/ckb-cli/releases/download/v1.2.0/ckb-cli_v1.2.0_x86_64-unknown-linux-gnu.tar.gz.asc
+	source = https://github.com/nervosnetwork/ckb-cli/releases/download/v1.4.0/ckb-cli_v1.4.0_x86_64-unknown-linux-gnu.tar.gz
+	source = https://github.com/nervosnetwork/ckb-cli/releases/download/v1.4.0/ckb-cli_v1.4.0_x86_64-unknown-linux-gnu.tar.gz.asc
 	validpgpkeys = 8D09AC56856F84AFDB2CEB12E21C4F2E34FF2E93
-	b2sums = 5c18dcc50c53b7f930bea831f509254c893911d19b9d57ae1fc67908e5141bfc861b47b88451527f4e05f7f791aa4dd78370eb137c479d66015686efb81cd153
+	b2sums = fbc2c5099c7dc22905208a568a87ffbd6258812490fcebcb01e437be21d0641dd2d415a07075f2edc72a9c9598565ac5a6a18c2a2d2da60c4125434ca381dc51
 	b2sums = SKIP
 
 pkgname = ckb-cli-bin
