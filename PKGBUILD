@@ -4,7 +4,7 @@ pkgname=appflowy-bin
 _pkgname=appflowy
 _pkgpath=AppFlowy_x86_64-unknown-linux-gnu_ubuntu-20.04/AppFlowy
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source alternative to Notion"
 arch=('x86_64')
 url="https://www.appflowy.io/"
@@ -22,5 +22,5 @@ package(){
   	ln -s "/usr/share/$_pkgname/AppFlowy" "${pkgdir}/usr/bin/$_pkgname"
 	install -Dm644 "$srcdir/$_pkgpath/$_pkgname.desktop.temp" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 	sed -i "4 s/\[CHANGE_THIS\]\/AppFlowy/\/usr\/share\/$_pkgname/" "$pkgdir/usr/share/applications/$_pkgname.desktop"
-	sed -i "5 s/\[CHANGE_THIS\]\/AppFlowy\/app_flowy/\/usr\/bin\/$_pkgname/" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+	sed -i "5 s/\[CHANGE_THIS\]\/AppFlowy\/AppFlowy/\/usr\/bin\/$_pkgname/" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
