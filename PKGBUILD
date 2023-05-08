@@ -3,20 +3,21 @@
 
 _pkgname=citra
 pkgname=$_pkgname-canary-git
-pkgver=r9525.60414674d
+pkgver=r9565.b43c06653
 pkgrel=1
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 arch=('i686' 'x86_64')
 url='https://github.com/citra-emu/citra-canary'
+options=("!lto") #Set LTO (disabled cause clang thin lto)
 provides=("citra" "citra-qt" "citra-canary" "citra-git" "citra-qt-git")
 conflicts=("citra" "citra-qt" "citra-canary" "citra-git" "citra-qt-git")
 license=('GPL2')
-depends=('sdl2' 'mbedtls' 'speexdsp' 'qt5-multimedia' 'ffmpeg' 'boost-libs' 'libfdk-aac' 'libusb' 'openssl' 'glibc' 'gcc-libs')
-makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'boost' 'qt5-tools' 'robin-map')
+depends=('sdl2' 'mbedtls' 'speexdsp' 'qt6-multimedia' 'ffmpeg' 'boost-libs' 'libfdk-aac' 'libusb' 'openssl' 'glibc' 'gcc-libs')
+makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'boost' 'qt6-tools' 'clang') #Use clang until Issue 6500 is fixeo
 source=("$_pkgname::git+https://github.com/citra-emu/citra-canary.git"
         "boost::git+https://github.com/citra-emu/ext-boost.git"
         "nihstro::git+https://github.com/neobrain/nihstro.git"
-        "soundtouch::git+https://github.com/citra-emu/ext-soundtouch.git"
+        "soundtouch::git+https://codeberg.org/soundtouch/soundtouch.git"
         "catch2::git+https://github.com/catchorg/Catch2"
         "dynarmic::git+https://github.com/merryhime/dynarmic.git"
         "git+https://github.com/herumi/xbyak.git"
@@ -35,6 +36,8 @@ source=("$_pkgname::git+https://github.com/citra-emu/citra-canary.git"
         "sdl2::git+https://github.com/libsdl-org/SDL"
         "git+https://github.com/abdes/cryptopp-cmake.git"
         "git+https://github.com/weidai11/cryptopp.git"
+        "git+https://github.com/septag/dds-ktx.git"
+        "git+https://github.com/kcat/openal-soft.git"
         # cubeb's submodule
         "git+https://github.com/google/googletest"
         "git+https://github.com/arsenm/sanitizers-cmake"
@@ -42,6 +45,8 @@ source=("$_pkgname::git+https://github.com/citra-emu/citra-canary.git"
         "zycore::git+https://github.com/zyantific/zycore-c"
         )
 md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -74,10 +79,11 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$_pkgname"
-    for submodule in {boost,nihstro,soundtouch,catch2,dynarmic,xbyak,fmt,enet,libressl,cubeb,discord-rpc,cpp-jwt,teakra,zstd,libyuv,cryptopp-cmake,cryptopp,sdl2,lodepng,libusb,inih};
+    for submodule in {boost,nihstro,soundtouch,catch2,dynarmic,xbyak,fmt,enet,libressl,cubeb,discord-rpc,cpp-jwt,teakra,zstd,libyuv,cryptopp-cmake,cryptopp,dds-ktx,sdl2,lodepng,libusb,inih};
     do
     git config --file=.gitmodules submodule.${submodule}.url "$srcdir/${submodule}"
     done
+    git config --file=.gitmodules submodule.externals/openal-soft.url "$srcdir/openal-soft"
     git -c protocol.file.allow=always submodule update --init
 
     cd "$srcdir/$_pkgname/externals/cubeb"
@@ -116,6 +122,10 @@ build() {
       -DENABLE_FFMPEG_AUDIO_DECODER=ON \
       -DUSE_SYSTEM_BOOST=ON \
       -DUSE_SYSTEM_SDL2=ON \
+      -DCMAKE_C_COMPILER=clang \
+      -DCMAKE_CXX_COMPILER=clang++ \
+      -DCMAKE_C_FLAGS="$CFLAGS -flto=thin" \
+      -DCMAKE_CXX_FLAGS="$CXXFLAGS -flto=thin" \
       -Wno-dev
 
     cmake --build build   
