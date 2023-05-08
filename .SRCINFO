@@ -7,7 +7,7 @@ pkgbase = rtx-bin
 	license = MIT
 	provides = rtx
 	conflicts = rtx
-	source = rtx-1.29.6.tar.gz::https://github.com/jdxcode/rtx/archive/v1.29.6.tar.gz
-	sha512sums = ef7c1be2064f5e84271655d432f4db09662ec8e6f5e908ffc431e0f015436dfe3e53559798e836eb4c7e1dead29dcfee7a33ce058bbbd6d679d64218633f5356
+	source = rtx-1.29.6.tar.gz::https://github.com/jdxcode/rtx/releases/download/v1.29.6/rtx-v1.29.6-linux-x64.tar.gz
+	sha512sums = be7f905939c70677e40b23f9b4a7465edba68ef7dff3c7f9f4a474c4068a49090e544ef79e83a39dab867e7ca22a0e5264b38cf9add3663093581a16b5fa6806
 
 pkgname = rtx-bin
