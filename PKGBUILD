@@ -11,7 +11,7 @@ license=('AGPL3')
 provides=("${_app_name}")
 depends=(glibc gcc-libs gtk3)
 source=("${pkgname}-${pkgver}::https://github.com/Kaiteki-Fedi/Kaiteki/releases/download/weekly-${pkgver//_/-}/linux.zip")
-sha256sums=('61e01e5c1149775316ced7033cc4c21bc4368b93e6f443bf842812ff3b3402c0')
+sha256sums=('9791c57107d0ea7b27a28ba99cda3bc696fcfd7a3ce7b0110df21fea96202caf')
 
 package() {
     local _opt_app_dir="${pkgdir}/opt/${_app_name}"
