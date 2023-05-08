@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=inter-font-beta
-pkgver=4.0beta7
+pkgver=4.0beta8
 pkgrel=1
 pkgdesc='A typeface specially designed for user interfaces'
 arch=(any)
@@ -9,10 +9,10 @@ url='https://rsms.me/inter/'
 license=(custom:OFL)
 provides=(inter-font)
 conflicts=(inter-font)
-_commit=4.0-beta7
+_commit=4.0-beta8
 source=("https://github.com/rsms/inter/releases/download/v${_commit}/Inter-${_commit}.zip")
 noextract=("Inter-${_commit}.zip")
-b2sums=('9409ed769de27fcbe86a242b6d3771d5e573ecf25f386e1880458f7af1f78fea1bce7cd78c208003b3b3b8eb2930635605f2847868398061ef5dc9a78ef75a55')
+b2sums=('e692bc869c1e6a7381f75bedb358142e6f75a3a1cfbad81f8020fbfdc05571e524a13a9e03dac084c0e6421493602bb0d06accc2fa5d88aded8684275d6140b6')
 
 # Upstream dumps a *bunch* of stuff into the top level of the archive
 prepare() {
