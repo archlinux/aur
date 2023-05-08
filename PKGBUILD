@@ -12,6 +12,7 @@ conflicts=("${pkgname%-bin}")
 depends=('libxcomposite' 'glibc' 'hicolor-icon-theme' 'at-spi2-core' 'libx11' 'util-linux-libs' 'libxrender' 'cairo' 'libxcb' 'expat' \
     'libxext' 'glib2' 'dbus' 'libcups' 'gtk3' 'nss' 'libxtst' 'libxrandr' 'alsa-lib' 'pango' 'libxfixes' 'nspr' 'libxi' 'libxdamage' \
     'libxcursor' 'libxss' 'gdk-pixbuf2' 'gcc-libs')
+makedepends=('gendesk')
 noextract=("${pkgname%-bin}-${pkgver}.zip")
 source=("${pkgname%-bin}-${pkgver}.zip::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}.for.linux.zip"
     "LICENSE::https://raw.githubusercontent.com/cassidoo/todometer/main/LICENSE"

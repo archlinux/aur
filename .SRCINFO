@@ -5,6 +5,7 @@ pkgbase = todometer-bin
 	url = https://cassidoo.github.io/todometer/
 	arch = x86_64
 	license = MIT
+	makedepends = gendesk
 	depends = libxcomposite
 	depends = glibc
 	depends = hicolor-icon-theme
