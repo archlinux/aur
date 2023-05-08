@@ -1,7 +1,7 @@
 # Maintainer: Julian <juliannfairfax@protonmail.com>
 
 pkgname=flare
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="An unofficial Signal GTK client"
 url="https://gitlab.com/Schmiddiii/$pkgname"
@@ -10,7 +10,7 @@ license=("AGPL3")
 makedepends=("cargo" "meson")
 depends=("libadwaita" "libsecret" "protobuf")
 source=("https://gitlab.com/Schmiddiii/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=("1a51d92bc0248c20cf4519c91b9d79a412eb740fb8fbc33a1768050381efbeb9")
+sha256sums=("8de82f9af20a5acbd4bc3a19bbf9a3bb253311d2")
 options=(!lto)
 
 build() {
