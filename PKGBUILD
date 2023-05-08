@@ -2,7 +2,7 @@
 
 _pkgname=libxfce4util
 pkgname=${_pkgname}-devel
-pkgver=4.19.0
+pkgver=4.19.1
 pkgrel=1
 pkgdesc="Basic utility non-GUI functions for Xfce (development release)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('gtk-doc' 'gobject-introspection' 'vala')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=(https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('1784bced26fa8bdf5104a56f988e848ac25952032603887dc7b95c64b4d35326')
+sha256sums=('c8174b55441fe0baa46fa8771ae8bae0b914b74cd3b9ab82031d6e063bfa938a')
 
 build() {
   cd "${_pkgname}-${pkgver}"
