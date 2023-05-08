@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PrInCE
-_pkgver=1.15.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.15.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='Predicting Interactomes from Co-Elution'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e12fab9c6fe0c3dbda58bb8bd2a51bab1fd0a3834d424202e229dda58c5c64b6')
+sha256sums=('bbe776e267e5aaa95bdbf1c3a1af1e1d12462c43baba75e08f4b814eb7b24d04')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
