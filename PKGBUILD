@@ -2,7 +2,7 @@
 pkgname=python-lib-detect-testenv
 _name=lib_detect_testenv
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Detects test environment like pytest, doctest or pyrunner on pycharm"
 url="https://github.com/bitranox/lib_detect_testenv"
 depends=(

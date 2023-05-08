@@ -1,7 +1,7 @@
 pkgbase = python-lib-detect-testenv
 	pkgdesc = Detects test environment like pytest, doctest or pyrunner on pycharm
 	pkgver = 2.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bitranox/lib_detect_testenv
 	arch = any
 	license = MIT
