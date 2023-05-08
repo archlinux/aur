@@ -1,8 +1,8 @@
 # Maintainer: Gonçalo Pereira <goncalo_pereira@outlook.pt>
 pkgname=python-wrapt-timeout-decorator
-_name=${pkgname#python-}
+_name=wrapt_timeout_decorator
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful Timeout Decorator that can be used safely on classes, methods, class methods"
 url="https://github.com/bitranox/wrapt_timeout_decorator"
 depends=(
