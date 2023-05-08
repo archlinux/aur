@@ -1,6 +1,6 @@
 pkgbase = python-matplotlib-scalebar
 	pkgdesc = Provides a new artist for matplotlib to display a scale bar, aka micron bar.
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/ppinard/matplotlib-scalebar
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-matplotlib-scalebar
 	depends = python
 	depends = python-matplotlib
 	provides = matplotlib-scalebar
-	source = https://github.com/ppinard/matplotlib-scalebar/archive/refs/tags/0.8.0.tar.gz
-	md5sums = 65a34f180864a28183f35e9ec1fe8876
+	source = https://github.com/ppinard/matplotlib-scalebar/archive/refs/tags/0.8.1.tar.gz
+	md5sums = 0f47e8beb69ef3e05807f23c7a8dc6d5
 
 pkgname = python-matplotlib-scalebar
