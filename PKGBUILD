@@ -7,7 +7,7 @@ pkgdesc="Powerful Timeout Decorator that can be used safely on classes, methods,
 url="https://github.com/bitranox/wrapt_timeout_decorator"
 depends=(
     'python'
-    'python-cli_exit_tools'
+    'python-cli-exit-tools'
     'python-python-lib-detect-testenv'
     'python-multiprocess'
     'python-psutil'
