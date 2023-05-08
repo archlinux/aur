@@ -1,7 +1,7 @@
 # Maintainer: Victor Mingueza <victormingueza at gmail.com>
 pkgname=journal-viewer
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern linux desktop application to visualize systemd logs."
 arch=('x86_64')
 url="https://github.com/mingue/journal-viewer"
@@ -31,7 +31,7 @@ sha256sums_x86_64=(
 
 prepare() {
   cd "$pkgname-$pkgver"
-  npm config set cache "$srcdir/npm-cache"
+  export npm_config_cache="$srcdir/npm_cache"
   npm install
 
   cd src-tauri
