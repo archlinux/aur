@@ -1,7 +1,7 @@
 pkgbase = r-bench
 	pkgdesc = High Precision Timing of R Expressions
 	pkgver = 1.1.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=bench
 	arch = x86_64
 	license = MIT
@@ -17,8 +17,6 @@ pkgbase = r-bench
 	optdepends = r-ggbeeswarm
 	optdepends = r-ggplot2
 	optdepends = r-ggridges
-	optdepends = r-jsonlite
-	optdepends = r-mockery
 	optdepends = r-parallel
 	optdepends = r-scales
 	optdepends = r-testthat
