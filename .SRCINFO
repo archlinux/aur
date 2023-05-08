@@ -1,0 +1,16 @@
+pkgbase = kscope
+	pkgdesc = A source-code browsing, analysis and editing environment for large C projects.
+	pkgver = 1.9.4
+	pkgrel = 1
+	url = https://sourceforge.net/projects/kscope/
+	arch = x86_64
+	license = GPL2
+	depends = qscintilla-qt5
+	depends = qt5-base
+	depends = glibc
+	depends = gcc-libs
+	provides = kscopeapp
+	source = git+https://github.com/chaoys/kscope.git
+	sha256sums = SKIP
+
+pkgname = kscope
