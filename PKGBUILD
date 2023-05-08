@@ -1,18 +1,21 @@
-pkgname=sushi-git
-_pkgname=sushi
-pkgver=3.34.0+14+g01b2c5f
+# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Contributor: Kevin Majewski <kevin.majewski02@gmail.com>
+
+_pkgname="sushi"
+pkgname="${_pkgname}-git"
+pkgver=43.0+11+gf1ad337
 pkgrel=1
 pkgdesc="A quick previewer for Nautilus"
-url="https://gitlab.gnome.org/GNOME/sushi"
+url="https://gitlab.gnome.org/GNOME/${_pkgname}"
 arch=(x86_64)
 license=(GPL2)
-depends=('gtk3' 'gjs' 'libmusicbrainz5' 'webkit2gtk' 'gtksourceview4' 'evince'
+depends=('gtk4' 'gjs' 'libmusicbrainz5' 'webkit2gtk' 'gtksourceview4' 'evince'
          'gst-plugins-base-libs')
 makedepends=('gobject-introspection' 'git' 'meson')
 optdepends=('libreoffice: OpenDocument formats')
-provides=('sushi')
-conflicts=('sushi')
-source=("git+https://gitlab.gnome.org/GNOME/sushi.git")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("git+https://gitlab.gnome.org/GNOME/${_pkgname}.git")
 sha512sums=('SKIP')
 
 pkgver() {
