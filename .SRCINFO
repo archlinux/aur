@@ -1,7 +1,7 @@
 pkgbase = sticky-notes
 	pkgdesc = A simple sticky notes app
 	pkgver = 0.1.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vixalien/sticky
 	arch = any
 	license = MIT

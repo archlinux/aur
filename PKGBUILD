@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=sticky-notes
 pkgver=0.1.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple sticky notes app"
 arch=('any')
 url="https://github.com/vixalien/sticky"
@@ -31,8 +31,9 @@ prepare() {
 }
 
 build() {
-  yarn config set cache-folder "$srcdir/yarn-cache"
+  export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
   yarn install
+
   arch-meson sticky build
   meson compile -C build
 }
@@ -42,7 +43,7 @@ check() {
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 
   cd "$srcdir/sticky"
   install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
