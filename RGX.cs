@@ -1,12 +1,28 @@
-﻿using System.Globalization;
+﻿using System.Diagnostics;
+using System.Globalization;
 using System.Text.RegularExpressions;
 using CommandLine;
+using comroid.common;
+using comroid.common.csapi;
 
 namespace rgx;
 
 public static class RGX
 {
-    public static void Main(string[] args)
+    private static readonly Log log = new(typeof(RGX));
+
+    static RGX()
+    {
+        ILog.Detail = DetailLevel.None;
+    }
+    
+    public static void
+#if TEST
+        Exec
+#else
+        Main
+#endif
+        (params string[] args)
     {
         new Parser(cfg =>
             {
@@ -18,76 +34,120 @@ public static class RGX
                 cfg.AutoVersion = true;
                 cfg.ParsingCulture = CultureInfo.InvariantCulture;
                 cfg.EnableDashDash = false;
-                cfg.MaximumDisplayWidth = Console.WindowWidth;
-            }).ParseArguments<MatchAndReplace, Split, Group>(args)
-            .WithParsed<MatchAndReplace>(RunMatch)
-            .WithParsed<Split>(RunSplit)
+                cfg.MaximumDisplayWidth = log.RunWithExceptionLogger(() => Console.WindowWidth, "Could not get Console Width", _=>1024,LogLevel.Debug);
+            }).ParseArguments<MatchCmd, ExpandCmd, SplitCmd, CutCmd>(args)
+            .WithParsed(Run<MatchCmd>(Match))
+            .WithParsed(Run<ExpandCmd>(Expand))
+            .WithParsed(Run<SplitCmd>(Split))
+            .WithParsed(Run<CutCmd>(Cut))
             .WithNotParsed(Error);
     }
 
-    private static (Regex pattern, TextReader input, TextWriter output) Prepare(ICmd cmd)
+    #region Command Methods
+
+    private static IEnumerable<string> Match(MatchCmd cmd, string line, Match match)
     {
-        return (new Regex(cmd.pattern, (RegexOptions)cmd.options.Aggregate(0, (x, y) => x | (int)y)),
-            cmd.input is not null and not ""
-                ? File.Exists(cmd.input)
-                    ? new StreamReader(new FileStream(cmd.input, FileMode.Open, FileAccess.Read))
-                    : new StringReader(cmd.input)
-                : Console.In,
-            cmd.output is not null and not "" && File.Exists(cmd.output)
-                ? new StreamWriter(new FileStream(cmd.output, FileMode.Truncate, FileAccess.Write))
-                : Console.Out);
+        yield return match.ToString();
     }
 
-    private static void RunMatch(MatchAndReplace cmd)
+    private static IEnumerable<string> Expand(ExpandCmd cmd, string line, Match match)
     {
-        var (pattern, input, output) = Prepare(cmd);
-
-        while (input.ReadLine() is { } line)
-            if (pattern.IsMatch(line))
-                output.WriteLine(cmd.replacement == null ? line : pattern.Replace(line, cmd.replacement));
-            else if (cmd.useDefault)
-                output.WriteLine(line);
-
-        foreach (var res in new IDisposable[] { input, output })
-            res.Dispose();
+        var replacement = File.Exists(cmd.expander) ? File.ReadAllText(cmd.expander) : cmd.expander;
+        yield return match.Result(replacement);
     }
 
-    private static void RunSplit(Split cmd)
+    private static IEnumerable<string> Split(SplitCmd cmd, string line, Match match)
     {
-        // ReSharper disable once RedundantAssignment
-        var (pattern, input, output) = Prepare(cmd);
-
-        var newPattern = cmd.pattern;
-        if (newPattern.StartsWith('^'))
-            // do not match beginning of string
-            newPattern = newPattern.Substring(1);
-        if (!newPattern.EndsWith('$'))
-            newPattern += '$';
-        pattern = new Regex(newPattern);
-        int c;
-        var buf = new StringWriter();
-        while ((c = input.Read()) != -1)
+        var matches = new List<Match>();
+        do
         {
-            buf.Write((char)c);
-            var str = buf.ToString();
-            if (pattern.Match(str) is not { Success: true } match)
-            {
-                output.Write((char)c);
-                continue;
-            }
-            if (!string.IsNullOrWhiteSpace(str.Remove(match.Index, match.Length)))
-                output.WriteLine();
-            buf.Close();
-            buf = new StringWriter();
-        }
+            matches.Add(match);
+        } while ((match = match.NextMatch()) is { Success: true });
 
-        foreach (var res in new IDisposable[] { input, output })
-            res.Dispose();
+        for (var i = 0; i < matches.Count; i++)
+        {
+            var each = matches[i];
+            var next = matches.Count>i+1?matches[i+1]:null;
+            if (next == null)
+                break;
+            var l = each.Index + each.Length;
+            var r = (next?.Index ?? each.Index) - l;
+            if (l + r > line.Length)
+                break;
+            yield return line.Substring(l, r);
+        }
+    }
+
+    private static IEnumerable<string> Cut(CutCmd cmd, string line, Match match)
+    {
+        var matches = new List<Match>();
+        do
+        {
+            matches.Add(match);
+        } while ((match = match.NextMatch()) is { Success: true });
+
+        var lastEnd = 0;
+        foreach (var each in matches)
+            line = line.Substring(lastEnd, lastEnd += each.Length);
+        yield return line;
     }
 
     private static void Error(IEnumerable<Error> errors)
     {
-        foreach (var err in errors)
-            Console.Error.WriteLine(err);
+        foreach (var error in errors)
+            log.At(LogLevel.Debug, error);
     }
+
+    #endregion
+
+    #region Utility Methods
+
+    private static Action<CMD> Run<CMD>(Func<CMD, string, Match, IEnumerable<string>> handler) where CMD : ICmd
+    {
+        return cmd =>
+        {
+            if (cmd.flags.Contains(RegexOptions.Multiline))
+                Console.Error.WriteLine("Warning: The multiline flag is not supported since we're only ever parsing line by line");
+            var regexOptions = cmd.flags.Aggregate((RegexOptions)0, (x, y) => x | y);
+            Regex BuildRegex(Streamable from) => new(from.AsString(), regexOptions);
+            var pattern = Streamable.Get(cmd.pattern).Use(BuildRegex).NonNull();
+            var input = Streamable.Get(cmd.input).OrStdIO().AsReader();
+            var output = Streamable.Get(cmd.output).OrStdIO().AsWriter();
+            var start = Streamable.Get(cmd.start).Use(BuildRegex);
+            var stop = Streamable.Get(cmd.stop).Use(BuildRegex);
+            bool started = start == null, stopped = false;
+
+            while (!stopped && input.ReadLine() is { } line)
+            {
+                if (!started && start != null)
+                    started = start.IsMatch(line);
+                else if (stop != null)
+                    stopped = stop.IsMatch(line);
+                else
+                {
+                    var match = pattern.Match(line);
+                    var success = match.Success;
+
+                    if (!success && cmd.unmatched == ICmd.IncludeMode.Prepend)
+                        output.WriteLine(line);
+                    else if (success)
+                    {
+                        if (cmd.untreated == ICmd.IncludeMode.Prepend)
+                            output.WriteLine(line);
+                        foreach (var str in handler(cmd, line, match))
+                            output.WriteLine(str);
+                        if (cmd.untreated == ICmd.IncludeMode.Append)
+                            output.WriteLine(line);
+                    }
+                    else if (cmd.unmatched == ICmd.IncludeMode.Append)
+                        output.WriteLine(line);
+                }
+            }
+
+            foreach (var res in new IDisposable[] { input, output })
+                res.Dispose();
+        };
+    }
+
+    #endregion
 }

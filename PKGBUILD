@@ -2,13 +2,13 @@
 
 pkgname=rgx-git
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI RegExp Tool"
 arch=('any')
 url="https://github.com/comroid-git/rgx"
 license=('MIT')
-depends=('dotnet-runtime-6.0')
-makedepends=('dotnet-sdk-6.0')
+depends=('dotnet-runtime-7.0')
+makedepends=('dotnet-sdk-7.0')
 source=("git+https://github.com/comroid-git/rgx.git")
 md5sums=('SKIP')
 options+=("!strip")
@@ -19,5 +19,5 @@ build() {
 }
 
 package() {
-    install -Dm755 "rgx/bin/Release/net6.0/linux-x64/publish/rgx" "$pkgdir/usr/bin/rgx"
+    install -Dm755 "rgx/bin/Release/net7.0/linux-x64/publish/rgx" "$pkgdir/usr/bin/rgx"
 }
