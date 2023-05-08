@@ -1,9 +1,18 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
+# Note: upstream versioning is a borked scheme. I initially assumed appending
+# the commit hash to the tag was just some weird workflow, but since new hashes
+# with the same base tag have since shown up it is apparenly being used as
+# a counter to disambiguate sequential dev releases. There is howeveer no
+# sequential data in the tag itself. It will probably require an epoch to
+# straighten this out, but until upstream announces what tagging scheme they
+# are actually using for now I'm just going to overload pgkrel to track
+# suffixes. See https://github.com/Cubxity/typstudio/issues/6
+
 pkgname=typstudio
 pkgver=0.1.0
-_suffix=105e6da5305b925af2edb948ba50f769aace223d
-pkgrel=1
+_suffix=18b5e4d17461819a6afbbc0c5adbaf2bed3ce216
+pkgrel=2
 pkgdesc='desktop application for typst'
 url="https://github.com/Cubxity/$pkgname"
 arch=(x86_64)
@@ -18,7 +27,7 @@ makedepends=(cargo
              pnpm)
 _archive="$pkgname-$pkgver-$_suffix"
 source=("$url/archive/refs/tags/v$pkgver-$_suffix/$_archive.tar.gz")
-sha256sums=('939cb60075e1ca0304c780484b55e4652449b6edae16cbfe04aa90374b834cc9')
+sha256sums=('10e09196f2024029b6980343cca27d4f9277f5860fec36bb48a2eec4668b8ff0')
 
 prepare() {
 	cd "$_archive"
