@@ -1,13 +1,16 @@
 pkgbase = blink1
 	pkgdesc = software for blink(1) USB RGB LED
-	pkgver = 2.1.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/todbot/blink1-tool/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = git+https://github.com/todbot/blink1-tool.git#tag=v2.1.0
+	makedepends = git
+	conflicts = blink1-git
+	source = git+https://github.com/todbot/blink1-tool.git#tag=597db6b6a4954dbe9ff17a58b9bf6030bd6aaa89
+	source = git+https://github.com/libusb/hidapi.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = blink1
-
