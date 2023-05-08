@@ -1,6 +1,6 @@
 pkgbase = borg-backup
 	pkgdesc = Add multi-machine sync to borg
-	pkgver = 0.6
+	pkgver = 0.6.2
 	pkgrel = 1
 	arch = x86_64
 	arch = aarch64
