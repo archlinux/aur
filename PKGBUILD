@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scGPS
-_pkgver=1.14.0
+_pkgver=1.14.1
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.14.1
 pkgrel=1
 pkgdesc='A complete analysis of single cell subpopulations, from identifying subpopulations to analysing their relationship (scGPS = single cell Global Predictions of Subpopulation)'
 arch=('x86_64')
@@ -50,7 +50,7 @@ optdepends=(
   r-xlsx
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('de7a1bec12763c696182f07de065a54b72df501be4b6bfffe6d881e6b4d6a2f5')
+sha256sums=('f586932b5625e14709346fd9c778ccca66c9219e06204974055ded72bb5d2a24')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
