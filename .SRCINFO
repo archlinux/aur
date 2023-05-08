@@ -1,18 +1,18 @@
 pkgbase = yt-mpv
 	pkgdesc = A CLI YouTube client
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://gitlab.com/a4to/yt-mpv
 	arch = any
 	license = MIT
 	depends = mpv
 	depends = nodejs
-	source = https://concise.cc/pkg/yt-mpv-0.1.0-1-any.pkg.tar.zst
-	source = https://concise.cc/pkg/yt-mpv-0.1.0-1-any.pkg.tar.zst.sig
+	source = https://concise.cc/pkg/yt-mpv-0.1.1-1-any.pkg.tar.zst
+	source = https://concise.cc/pkg/yt-mpv-0.1.1-1-any.pkg.tar.zst.sig
 	validpgpkeys = 81BACEEBC3EA26E127166E4A819BB92A9A48160E
-	md5sums = 88b64dc9a2ea8d1223357514fe5b60f3
-	md5sums = 788e19fbda7ee56b86648d9bea7c077c
-	sha512sums = 7dcb1e1dc5d1aacf39adaf42e0a01cfde6c65307e18631adf2a5e76c5ac133c4328e4222295ef73c349c5947733af444fb35ad6645180b7939eecf6e428f2d0b
-	sha512sums = d14c293de835369848df1925b8242863f962caeb6fd2301b08d22c21022df7943788db6894cce978f82d533fa8ce81cdfb327dc734c042eed225c0b71a416a13
+	md5sums = 960c3aa8a422f6e6c6006ea751180ff6
+	md5sums = 34e703460c5ea0454fe0ba721f1b784d
+	sha512sums = 9865f32e474c4ceec31b5b4c332a2da0d220a22d39112c34ffcab907ea6850e03923b6a4d01e5f6ea7f39e4260d9e4d73c79f1fde707aa6ded7e05488b6189bc
+	sha512sums = 28a433c157036493abd66e401feddd56ff9e18d13b661934e1541197286496a123332e7df21a6f5cc1c2d5585a6467b66e2b82471b6df4ddb485227418c9cec2
 
 pkgname = yt-mpv
