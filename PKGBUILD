@@ -6,7 +6,7 @@ _svt_hevc_ver='6cca5b932623d3a1953b165ae6b093ca1325ac44'
 _svt_vp9_ver='15bd454a0ce53d1432a4f8a89df08774a26237e3'
 
 pkgname=ffmpeg-intel-full-git
-pkgver=6.1.r110417.g41dd50ad0d
+pkgver=6.1.r110537.g1eed7f6562
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for intel; git version) (based on dbermond package)'
 arch=('x86_64')
@@ -29,12 +29,16 @@ depends=(
         'glslang' 'librabbitmq-c' 'vulkan-icd-loader' 'svt-av1' 'svt-vp9' 'spirv-tools' 'librist'
     # AUR:
         'chromaprint-fftw' 'davs2' 'flite1-patched' 'libklvanc-git' 'openh264'
-        'libopenmpt' 'rav1e' 'shine' 'vo-amrwbenc' 'xavs' 'xavs2' #'pocketsphinx' # See https://aur.archlinux.org/packages/pocketsphinx#comment-912173
+        'libopenmpt' 'rav1e' 'shine' 'vo-amrwbenc' 'xavs' 'xavs2'
         'avisynthplus'
+)
+optdepends=(
+       #'pocketsphinx: Speech recognition support'
+       #'tensorflow: Tensorflow support in ffmpeg filters' # blocked on FS#72145 : https://bugs.archlinux.org/task/72145
 )
 makedepends=(
     # official repositories:
-        'git' 'nasm' 'opencl-headers' 'vulkan-headers' 'clang'
+        'git' 'nasm' 'opencl-headers' 'vulkan-headers' 'clang' 'pkg-config'
     # AUR:
         'decklink-sdk'
 )
@@ -48,6 +52,7 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
         "020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
         "030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
+        '050-ffmpeg-pocketsphinx-arch.patch'
         'LICENSE')
 
 sha256sums=('SKIP'
@@ -56,6 +61,7 @@ sha256sums=('SKIP'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
             'd8b91ea5f07d0208cbe0290567083808708014a1953fda322d13cb619349c9ee'
             '91973c465f01446a999f278f0c2a3763304994dba1ac35de0e4c72f12f39409e'
+            'a16caf2bab313f56e77ef2ac66181bfab0a5179163dd86a1965a0857657c5402'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 prepare() {
@@ -65,6 +71,10 @@ prepare() {
     patch -d ffmpeg -Np1 -F2 -i "${srcdir}/020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
     patch -d ffmpeg -Np1 -F3 -i "${srcdir}/030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
     patch -d ffmpeg -Np1 -F3 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
+    # ffmpeg is as yet incompatible with pocketsphinx 5.0.
+    # Let me know if this changes.
+    # libavfilter/af_asr.c:42:5: error: unknown type name ‘cmd_ln_t’ (etc)
+    #patch -d ffmpeg -Np1 -F3 -i "${srcdir}/050-ffmpeg-pocketsphinx-arch.patch"
 }
 
 pkgver() {
@@ -75,8 +85,10 @@ pkgver() {
 
 build() {
     cd ffmpeg
+    EXTRA_FLAGS=()
      
     printf '%s\n' '  -> Running ffmpeg configure script...'
+    #pacman -Qk pocketsphinx && EXTRA_FLAGS+=( --enable-pocketsphinx ) || true
 
     ./configure \
         --prefix='/usr' \
@@ -187,7 +199,7 @@ build() {
         --enable-opencl \
         --enable-opengl \
         --disable-openssl \
-        --enable-pocketsphinx \
+        --disable-pocketsphinx \
         --enable-sndio \
         --enable-sdl2 \
         --enable-vapoursynth \
@@ -201,8 +213,7 @@ build() {
         --enable-v4l2-m2m \
         --enable-vaapi \
         --enable-vdpau \
-	\
-	--disable-pocketsphinx # Per above comment in depends array
+	$EXTRA_FLAGS
         
     make
     make tools/qt-faststart
