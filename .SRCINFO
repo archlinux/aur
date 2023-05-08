@@ -1,7 +1,7 @@
 pkgbase = r-doe.base
 	pkgdesc = Full Factorials, Orthogonal Arrays and Base Utilities for DoE Packages
-	pkgver = 1.2.1
-	pkgrel = 6
+	pkgver = 1.2.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=DoE.base
 	arch = any
 	license = GPL
@@ -14,7 +14,7 @@ pkgbase = r-doe.base
 	optdepends = r-doe.wrapper
 	optdepends = r-frf2
 	optdepends = r-rcolorbrewer
-	source = https://cran.r-project.org/src/contrib/DoE.base_1.2-1.tar.gz
-	sha256sums = 29c5239281cffc6efc954e383188499b1ddb6a97c2675436746b1503bffe0f08
+	source = https://cran.r-project.org/src/contrib/DoE.base_1.2-2.tar.gz
+	sha256sums = 699f214b5ea23fc3908888be6c99b67f7366ba76f6b2cfd2617065d8ae09b180
 
 pkgname = r-doe.base
