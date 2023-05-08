@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/yuzu-emu/yuzu'
 license=('GPL2')
 provides=('yuzu' 'yuzu-cmd')
-conflicts=('yuzu-mainline-git' 'yuzu-canary-git')
+conflicts=('yuzu')
 depends=('desktop-file-utils'
          'fmt'
          'glslang'
@@ -44,12 +44,12 @@ source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu"
         'git+https://github.com/benhoyt/inih.git'
         'git+https://github.com/kinetiknz/cubeb.git'
         'git+https://github.com/MerryMage/dynarmic.git'
-        'libressl::git+https://github.com/citra-emu/ext-libressl-portable.git'
+        'git+https://github.com/lsalzman/enet.git'
         'git+https://github.com/libusb/libusb.git'
         'git+https://github.com/discord/discord-rpc.git'
         'git+https://github.com/KhronosGroup/Vulkan-Headers.git'
-        'git+https://github.com/ReinUsesLisp/sirit'
-        'git+https://github.com/yuzu-emu/mbedtls'
+        'git+https://github.com/yuzu-emu/sirit.git'
+        'git+https://github.com/yuzu-emu/mbedtls.git'
         'git+https://github.com/herumi/xbyak.git'
         'git+https://github.com/xiph/opus.git'
         'git+https://git.ffmpeg.org/ffmpeg.git'
@@ -85,7 +85,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/$_pkgname"
 
-    for submodule in externals/{inih/inih,cubeb,dynarmic,libressl,libusb/libusb,discord-rpc,Vulkan-Headers,sirit,mbedtls,xbyak,opus/opus,ffmpeg,SDL,cpp-httplib}; do
+    for submodule in externals/{inih/inih,cubeb,dynarmic,libusb/libusb,discord-rpc,Vulkan-Headers,sirit,mbedtls,xbyak,opus/opus,ffmpeg,SDL,cpp-httplib}; do
         git submodule init ${submodule}
         git config submodule.${submodule}.url "$srcdir/${submodule##*/}"
         git submodule update --init
