@@ -6,7 +6,7 @@ pkgname=logiops-git
 _pkgname="logiops"
 _gitpkgname="logiops"
 epoch=1
-pkgver=0.3.1.r0.ga77b328
+pkgver=0.3.1.r2.g3fb18a7
 pkgrel=1
 pkgdesc="An unofficial driver for Logitech HID++>2.0 mice and keyboard"
 arch=('x86_64')
@@ -25,7 +25,7 @@ pkgver() {
 }
 
 build() {
-    cmake -B build -S "$_gitpkgname"
+    cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -B build -S "$_gitpkgname"
     cmake --build build
 }
 
