@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Simon Allen <simon@simonallen.org>
 pkgname=ytmdesktop-git
-pkgver=1.14.2.r3.g255b7fa
+pkgver=1.14.2.r25.g1bbeff7
 pkgrel=2
 _electronversion=13
 _nodeversion=12
@@ -50,7 +50,7 @@ build() {
   electronDist="/usr/lib/electron${_electronversion}"
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
   _ensure_local_nvm
-  yarn config set cache-folder "$srcdir/yarn-cache"
+  export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
   yarn --frozen-lockfile
   ./node_modules/.bin/electron-builder --linux --dir -p always --config electron-builder64.yml \
     $dist -c.electronDist=$electronDist -c.electronVersion=$electronVer
