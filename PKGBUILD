@@ -1,18 +1,9 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-# Note: upstream versioning is a borked scheme. I initially assumed appending
-# the commit hash to the tag was just some weird workflow, but since new hashes
-# with the same base tag have since shown up it is apparenly being used as
-# a counter to disambiguate sequential dev releases. There is howeveer no
-# sequential data in the tag itself. It will probably require an epoch to
-# straighten this out, but until upstream announces what tagging scheme they
-# are actually using for now I'm just going to overload pgkrel to track
-# suffixes. See https://github.com/Cubxity/typstudio/issues/6
-
 pkgname=typstudio
-pkgver=0.1.0
-_suffix=58d39e358f7e9219a50c3edceaca88da9cc89a81
-pkgrel=3
+pkgver=0.1.0dev.9
+_pkgver=${pkgver/dev/-dev}
+pkgrel=1
 pkgdesc='desktop application for typst'
 url="https://github.com/Cubxity/$pkgname"
 arch=(x86_64)
@@ -25,9 +16,9 @@ makedepends=(cargo
              jq
              moreutils
              pnpm)
-_archive="$pkgname-$pkgver-$_suffix"
-source=("$url/archive/refs/tags/v$pkgver-$_suffix/$_archive.tar.gz")
-sha256sums=('84c4fce631c96395715a816d4c7c30a743171c209d6803a0680d3c790d45cc8f')
+_archive="$pkgname-$_pkgver"
+source=("$url/archive/refs/tags/v$_pkgver/$_archive.tar.gz")
+sha256sums=('44d6afc99642483f6cfc613c54e25c449bd9ced5eb430d723a346e2a8cd65154')
 
 prepare() {
 	cd "$_archive"
