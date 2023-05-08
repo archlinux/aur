@@ -38,6 +38,7 @@ package() {
   install -Dm644 cn_dicts/* -t "${pkgdir}/usr/share/rime-data/cn_dicts"
   install -Dm644 en_dicts/* -t "${pkgdir}/usr/share/rime-data/en_dicts"
   install -Dm644 opencc/*   -t "${pkgdir}/usr/share/rime-data/opencc"
+  install -Dm644 opencc/*   -t "${pkgdir}/usr/share/rime-data/lua"
 
   install -Dm644 ./*.{yaml,lua,gram} -t "${pkgdir}/usr/share/rime-data/"
 }
