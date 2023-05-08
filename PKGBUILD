@@ -4,7 +4,7 @@ _pkgname=qdapTools
 _pkgver=1.3.5
 pkgname=r-${_pkgname,,}
 pkgver=1.3.5
-pkgrel=4
+pkgrel=8
 pkgdesc="Tools for the 'qdap' Package"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -19,7 +19,7 @@ depends=(
 optdepends=(
   r-testthat
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('8c8828877ab63ad705b69e187c01d7c7098a88989bdde9e956ac559cc6de7e25')
 
 build() {
