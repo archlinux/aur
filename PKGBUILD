@@ -2,7 +2,7 @@
 # Contributor: lsf
 # Contributor: Daniel Haß <aur@hass.onl>
 pkgname=standardnotes-desktop
-pkgver=3.157.0
+pkgver=3.158.4
 pkgrel=1
 _electronversion=22
 pkgdesc="An end-to-end encrypted notes app for digitalists and professionals."
@@ -10,11 +10,11 @@ arch=('x86_64' 'aarch64')
 url="https://standardnotes.com"
 license=('GPL3')
 depends=("electron${_electronversion}" 'libsecret')
-makedepends=('libxcrypt-compat' 'nvm' 'yarn')
+makedepends=('git' 'libxcrypt-compat' 'nvm' 'yarn')
 source=("standardnotes-$pkgver.tar.gz::https://github.com/standardnotes/app/archive/refs/tags/@standardnotes/desktop@${pkgver}.tar.gz"
         "standard-notes.desktop"
         "standard-notes.sh")
-sha256sums=('6ebc3a82a4810e63a6c2ac7d0b4863188ea5ecd479ab1a9cabed06c3ba9648af'
+sha256sums=('5dd2fafd8971dc6dd7923dfc7424d38c0dac213cd7ea0a02b72be21123eada91'
             '274cd3914ff2a6a0999485a26cbded3ad597763482a90eee8ee34490ddffda00'
             '5fa1b6ed3cedfbf233d8e7f34edd7d643d43d7299d19645d098ae6cd2bd3f8d6')
 
@@ -37,6 +37,7 @@ prepare() {
 
 build() {
   cd "app--$pkgname-$pkgver"
+  export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
   electronDist="/usr/lib/electron${_electronversion}"
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1
