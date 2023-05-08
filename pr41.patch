@@ -1,0 +1,24 @@
+From 81b776c3f27cb909cec52d8abe5528541005b75f Mon Sep 17 00:00:00 2001
+From: Felix Geyer <debfx@fobos.de>
+Date: Sun, 13 Nov 2022 11:26:48 +0100
+Subject: [PATCH] Add support for Python 3.11
+
+The "SO" sysconfig has been removed in Python 3.11.
+"EXT_SUFFIX" has been available since Python 3.4.
+---
+ src/__init__.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/__init__.py b/src/__init__.py
+index 396cf66..974c8e1 100644
+--- a/src/__init__.py
++++ b/src/__init__.py
+@@ -83,7 +83,7 @@ def _error_handler(result, fn, args):
+ def fdopen():
+     return _libsuinput.suinput_open()
+ 
+-_libsuinput_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "_libsuinput" + sysconfig.get_config_var("SO")))
++_libsuinput_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "_libsuinput" + sysconfig.get_config_var("EXT_SUFFIX")))
+ _libsuinput = ctypes.CDLL(_libsuinput_path, use_errno=True)
+ _libsuinput.suinput_open.errcheck = _open_error_handler
+ _libsuinput.suinput_enable_event.errcheck = _error_handler
