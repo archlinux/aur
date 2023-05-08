@@ -4,7 +4,7 @@
 # Contributor: t3ddy, Lex Rivera aka x-demon, ruario
 
 # Check for new Linux releases in: http://googlechromereleases.blogspot.com/search/label/Beta%20updates
-# or use: $ curl -s https://dl.google.com/linux/chrome/rpm/stable/x86_64/repodata/other.xml.gz | gzip -df | xq -x "otherdata/package[@name='google-chrome-$_channel']/version/@ver"
+# or use: $ curl -sSf https://dl.google.com/linux/chrome/deb/dists/stable/main/binary-amd64/Packages | grep -A1 "Package: google-chrome-beta" | awk '/Version/{print $2}' | cut -d '-' -f1
 
 pkgname=google-chrome-beta
 pkgver=114.0.5735.16
