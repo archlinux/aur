@@ -7,7 +7,7 @@ pkgname=("${_pkgname}-git"
          "${_pkgname}-host-git"
          "obs-plugin-${_pkgname}-git")
 epoch=2
-pkgver=B6.r50.g9d66a684
+pkgver=B6.r51.g53525847
 pkgrel=1
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.io/"
@@ -51,6 +51,9 @@ prepare() {
 	git submodule init
 	git submodule set-url -- imgui "${srcdir}/imgui"
 	git -c protocol.file.allow=always submodule update
+
+	sed -i '1 i\#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"' \
+		"${srcdir}/${_pkgname}/host/platform/Linux/capture/pipewire/src/portal.c"
 }
 
 build() {
