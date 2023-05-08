@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=bao
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="A verified streaming tool"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('Apache' 'custom')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/oconnor663/bao/archive/$pkgver.tar.gz")
-sha256sums=('2c4a37cc57f8576c8f702b28077ae7f36808e0f994e3d393f67114a38a26d31c')
+sha256sums=('1565b3a8d043b485983ffa14cb2fbd939cca0511f7df711227fc695847c67c01')
 
 
 prepare() {
