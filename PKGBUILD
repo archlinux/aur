@@ -5,7 +5,7 @@
 # Contributor: Daniel Menelkir <menelkir@gmail.com>
 pkgname=hypnotix-git
 pkgver=3.2.r2.g0d28083
-pkgrel=1
+pkgrel=2
 pkgdesc="An IPTV streaming application"
 arch=(any)
 url="https://github.com/linuxmint/hypnotix"
