@@ -1,16 +1,17 @@
 pkgbase = ravenna-alsa-daemon
 	pkgdesc = A daemon for ALSA RAVENNA/AES67 Driver
 	pkgver = 1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/bondagit/ravenna-alsa-lkm
 	arch = x86_64
+	arch = x86_64_v3
 	arch = aarch64
 	license = custom
 	depends = glibc
 	depends = avahi
 	depends = ravenna-alsa-lkm-dkms
 	depends = libcurl-compat
-	source = git+https://github.com/bondagit/ravenna-alsa-lkm.git#branch=aes67-daemon
+	source = git+https://github.com/bondagit/ravenna-alsa-lkm.git#branch=aes67-daemon-issue11
 	source = ravenna-alsa.service
 	source = ravenna_start.sh
 	sha256sums = SKIP
