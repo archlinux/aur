@@ -2,7 +2,7 @@
 # Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname=python-xhtml2pdf
 _name=${pkgname#python-}
-pkgver=0.2.9
+pkgver=0.2.10
 pkgrel=1
 pkgdesc="A library for converting HTML into PDFs using ReportLab"
 arch=(any)
@@ -25,9 +25,8 @@ makedepends=(python-setuptools
 source=("${_name}-${pkgver}.tar.gz::https://github.com/xhtml2pdf/xhtml2pdf/archive/refs/tags/$pkgver.tar.gz"
         'latex_engine.patch'
 )
-sha256sums=('da1771a0837f8daf2aac38883576eca86f79ff4660f15449d770801012fa3503'
-            '19d631ba04ae7d42e6c95962df1bc99edf84c80920539bb8aa2fc7f2f6c53589'
-)
+sha256sums=('a70c5a6c06750ce052a598a4c0a48928763c4f73499438c841bb087b78d26b9b'
+            '19d631ba04ae7d42e6c95962df1bc99edf84c80920539bb8aa2fc7f2f6c53589')
 prepare() {
 	cd "${_name}-${pkgver}"
 	patch --forward --strip=1 --input="${srcdir}/latex_engine.patch"
