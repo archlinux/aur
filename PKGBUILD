@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=distr
-_pkgver=2.9.1
+_pkgver=2.9.2
 pkgname=r-${_pkgname,,}
-pkgver=2.9.1
-pkgrel=3
+pkgver=2.9.2
+pkgrel=1
 pkgdesc='Object Oriented Implementation of Distributions'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,11 +18,12 @@ optdepends=(
   r-distrex
   r-distrmod
   r-knitr
+  r-robastbase
   r-roptest
   r-svunit
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('82b790a90bd40025c7ff8ccc7da784fa967015fc015874f6b209088d0bd01a5f')
+sha256sums=('b52a817ed66b75defb009e2f946472ab87f693f63c43638e86b5482cd39a2e30')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
