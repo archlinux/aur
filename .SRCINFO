@@ -1,14 +1,14 @@
 pkgbase = gnome-shell-extension-espresso
 	pkgdesc = Prevent auto suspend and screensaver functions (forked from caffeine)
-	pkgver = 7
+	pkgver = 8
 	pkgrel = 1
 	url = https://github.com/coadmunkee/gnome-shell-extension-espresso.git
 	install = espresso.install
 	arch = any
 	license = GPL2
-	makedepends = git
+	makedepends = unzip
 	depends = gnome-shell
-	source = gnome-shell-extension-espresso::git+https://github.com/coadmunkee/gnome-shell-extension-espresso.git#tag=v7
-	sha256sums = SKIP
+	source = gnome-shell-extension-espresso::https://github.com/coadmunkee/gnome-shell-extension-espresso/archive/refs/tags/v8.zip
+	sha256sums = a9144ef7d2049749f2c7e32becbecdfdc95a80f9b549ba3f3310d86141f66e2b
 
 pkgname = gnome-shell-extension-espresso
