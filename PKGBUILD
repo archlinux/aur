@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Co-Maintainer: Chris Billington <chrisjbillington at gmail dot com>
 pkgname=git-nautilus-icons-git
 pkgver=2.1.0.r0.g8ee9e40
@@ -35,7 +35,7 @@ package() {
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
   # Install license:
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname%-git}"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname%-git}/"
 
   # compile Python bytecode for modules outside of site-packages:
   python -m compileall -d / "${pkgdir}"/usr/share
