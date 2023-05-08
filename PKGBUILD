@@ -8,7 +8,7 @@ url="https://github.com/bitranox/wrapt_timeout_decorator"
 depends=(
     'python'
     'python-cli-exit-tools'
-    'python-python-lib-detect-testenv'
+    'python-lib-detect-testenv'
     'python-multiprocess'
     'python-psutil'
     'python-wrapt'
