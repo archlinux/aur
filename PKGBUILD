@@ -19,11 +19,16 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
 
   cd "$pkgname-$pkgver"
+
+  GOREVER=$(grep 'goretk/gore v' go.mod | cut -d ' ' -f 2)
+  GOVER=$(go version | cut -d ' ' -f 3)
+  LDEXTRA="-X \"main.redressVersion=v$pkgver\" -X \"main.goreVersion=$GOREVER\" -X \"main.compilerVersion=$GOVER\""
+
   go build \
     -trimpath \
     -mod=readonly \
     -modcacherw \
-    -ldflags="-s -w -X main.redressVersion=$pkgver -extldflags $LDFLAGS" \
+    -ldflags="-s -w $LDEXTRA -extldflags $LDFLAGS" \
     -o $pkgname
 }
 
