@@ -1,7 +1,7 @@
 pkgbase = logiops
 	pkgdesc = An unofficial driver for Logitech HID++>2.0 mice and keyboard
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PixlOne/logiops
 	arch = x86_64
 	arch = i686

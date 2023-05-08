@@ -4,7 +4,7 @@ pkgname=logiops
 _pkgname="logiops"
 _gitpkgname="logiops"
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An unofficial driver for Logitech HID++>2.0 mice and keyboard"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/PixlOne/$_gitpkgname"
@@ -17,7 +17,7 @@ source=("https://github.com/PixlOne/LogiOps/releases/download/v$pkgver/logiops-v
 sha256sums=('769123729491ee17b1fa4290b5e7ced2d466f5bd034970731df7975c51044e35')
 
 build() {
-    cmake -B build -S "$pkgname-v$pkgver"
+    cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -B build -S "$pkgname-v$pkgver"
     cmake --build build
 }
 
