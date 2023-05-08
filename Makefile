@@ -4,10 +4,13 @@ remote = github
 repo = https://github.com/home-assistant/frontend
 branch = master
 
-version:
+version: FORCE
 	git remote show | grep github || git remote add $(remote) $(repo)
 	git fetch $(remote)
 	git describe --tags $(remote)/$(branch) | cut -d- -f1 > $@
+
+FORCE:
+	
 
 PKGBUILD: version
 
