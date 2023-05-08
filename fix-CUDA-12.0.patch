@@ -1,0 +1,26 @@
+--- a/cmake/CUDA.cmake	2023-05-08 14:43:38.196410032 +0200
++++ b/cmake/CUDA.cmake	2023-05-08 14:47:13.875579863 +0200
+@@ -24,7 +24,10 @@
+ # Kepler GPUs are only supported with CUDA < 11.0
+ if (CUDA_VERSION VERSION_LESS 11.0)
+     list(APPEND DEFAULT_CUDA_ARCH "30")
+-else()
++endif()
++
++# Kelper GPUs were dropped after CUDA < 12.0
++if (CUDA_VERSION VERSION_LESS 12.0)
+     list(APPEND DEFAULT_CUDA_ARCH "35")
+ endif()
+
+@@ -47,6 +50,11 @@
+ if (NOT CUDA_VERSION VERSION_LESS 11.0)
+     list(APPEND DEFAULT_CUDA_ARCH "80")
+ endif()
++
++# add Hopper support for CUDA >= 11.8
++if (NOT CUDA_VERSION VERSION_LESS 11.8)
++    list(APPEND DEFAULT_CUDA_ARCH "90")
++endif()
+ list(SORT DEFAULT_CUDA_ARCH)
+
+ set(CUDA_ARCH "${DEFAULT_CUDA_ARCH}" CACHE STRING "Set GPU architecture (semicolon separated list, e.g. '-DCUDA_ARCH=20;35;60')")
