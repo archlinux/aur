@@ -1,12 +1,13 @@
 pkgbase = r-tseries
 	pkgdesc = Time Series Analysis and Computational Finance
 	pkgver = 0.10.54
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=tseries
 	arch = x86_64
 	license = GPL
 	makedepends = gcc-fortran
 	depends = r
+	depends = r-jsonlite
 	depends = r-quadprog
 	depends = r-quantmod
 	depends = r-zoo
