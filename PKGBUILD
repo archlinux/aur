@@ -4,32 +4,34 @@
 
 _base=freetype-py
 pkgname=python-${_base}
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="FreeType Python bindings"
 arch=(any)
 url="https://github.com/rougier/${_base}"
 license=('BSD')
 depends=(python freetype2)
-makedepends=(python-setuptools-scm)
+makedepends=(python-build python-installer python-setuptools-scm python-wheel)
 checkdepends=(python-pytest)
-source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('877641b16d7dbf16e41333733844c76dcefbbe1f88edd6cf4ab2158de4c1c05d23e18982d2a34a5c3e8ea0d5d92c40136788b0cb1afaad2a4ada17226517c8c6')
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('82cdb06cfae90bb94b5a2c91235ebc39e03ed85da92db139f6edddc09e219b07a9b6983b0990998fb0baaab2e92c628cf08d9b90a635a91636e17d2b228109e7')
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
 
 build() {
   cd ${_base}-${pkgver}
-  python setup.py build
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
   cd ${_base}-${pkgver}
-  python -m pytest tests
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest tests
 }
 
 package() {
   cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
