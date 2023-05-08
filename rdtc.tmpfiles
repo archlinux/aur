@@ -1,0 +1,4 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /var/lib/rdtc 0755 rdtc rdtc
+Z /var/lib/rdtc - rdtc rdtc
+L /var/log/rdtc - - - - /var/lib/rdtc/logs/

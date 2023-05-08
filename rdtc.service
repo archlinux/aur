@@ -1,0 +1,12 @@
+[Unit]
+Description=RdtClient Service
+
+[Service]
+
+WorkingDirectory=/usr/lib/rdtc
+ExecStart=/usr/bin/dotnet RdtClient.Web.dll
+SyslogIdentifier=RdtClient
+User=rdtc
+
+[Install]
+WantedBy=multi-user.target
