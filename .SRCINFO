@@ -1,7 +1,7 @@
 pkgbase = ciphey
 	pkgdesc = Automated decryption tool
 	pkgver = 5.14.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/Ciphey/Ciphey
 	arch = any
 	license = MIT
