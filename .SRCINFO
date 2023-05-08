@@ -1,7 +1,7 @@
 pkgbase = python-adaptive
 	pkgdesc = Adaptive: parallel active learning of mathematical functions
 	pkgver = 0.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/python-adaptive/adaptive
 	arch = x86_64
 	license = custom:BSD-3-clause

@@ -2,7 +2,7 @@
 _base=adaptive
 pkgname=python-${_base}
 pkgver=0.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Adaptive: parallel active learning of mathematical functions"
 arch=('x86_64')
 url="https://github.com/${pkgname}/${_base}"
