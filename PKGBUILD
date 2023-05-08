@@ -2,7 +2,7 @@
 # Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
 pkgname=python-pyxem
 pkgshort=pyxem
-pkgver=0.15.0
+pkgver=0.15.1
 pkgrel=1
 pkgdesc="Python library for multi-dimensional diffraction microscopy extending HyperSpy"
 arch=('any')
@@ -22,7 +22,7 @@ depends=('python>=3.7'
 	 'python-psutil'
          'python-pyfai'
          'python-scikit-image>=0.19.0'
-	 'python-scikit-learn>=0.19'
+	 'python-scikit-learn>=1.0'
 	 'python-scipy'
 	 'python-transforms3d'
          )
@@ -38,4 +38,4 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-md5sums=('c4cfd02490de1e00517aa3870180f8ec')
+md5sums=('6e7e03dfe519e4d2311116d3bd8ac5e7')
