@@ -1,6 +1,6 @@
 pkg=cdecrypt
 pkgname=$pkg-git
-pkgver=r29.0fcb3e9
+pkgver=r32.0ca58c6
 pkgrel=1
 pkgdesc="A utility that decrypts Wii U NUS content files."
 arch=('any')
