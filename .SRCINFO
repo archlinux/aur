@@ -1,0 +1,19 @@
+pkgbase = cito-git
+	pkgdesc = The Ć Programming Language. A programming language which can be translated automatically to C, C++, C#, D, Java, JavaScript, Python, Swift, TypeScript and OpenCL C.
+	pkgver = 2.2.0+118.r2070.20230421.3664bbd
+	pkgrel = 1
+	url = http://github.com/pfusik/cito
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = dotnet-sdk
+	makedepends = git
+	provides = cito=2.2.0+118.r2070.20230421.3664bbd
+	conflicts = cito
+	source = cito::git+https://github.com/pfusik/cito.git
+	sha256sums = SKIP
+
+pkgname = cito-git
