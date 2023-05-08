@@ -1,7 +1,7 @@
 #maintainer lxgr <lxgr@protonmail.com>
 pkgname=buildaur-git
 _pkgname=buildaur
-pkgver=42.0.8.9.r13.g3a1179e
+pkgver=42.1.1
 pkgrel=1
 pkgdesc="An AUR helper with asp support (development version)"
 arch=(any)
@@ -25,8 +25,8 @@ package() {
 	cd "$srcdir/$pkgname"
   install -Dm0755 -t "${pkgdir}/usr/bin" buildaur.sh buildaur
 	install -Dm644 -t "${pkgdir}/usr/share/buildaur" progressbar_buildaur.py buildaur_translations.py
-  install -Dm644 -t "${pkgdir}/usr/share/zsh/site-functions/" _buildaur
-  install -Dm0755 -t "${pkgdir}/usr/share/buildaur" outputter.sh
+  	install -Dm644 -t "${pkgdir}/usr/share/zsh/site-functions/" _buildaur
+  	install -Dm0755 -t "${pkgdir}/usr/share/buildaur" outputter.sh
 	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE
 	install -Dm644 -t "${pkgdir}/etc/bash_completion.d/" buildaur-completion.bash
 	install -Dm644 -t "$pkgdir/etc/buildaur/" buildaur.conf
