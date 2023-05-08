@@ -6,7 +6,7 @@
 
 _pkgname='yin-yang'
 pkgname="$_pkgname-git"
-pkgver=3.2.4.beta.r11.g0cd2fb2
+pkgver=3.2.4.r11.g0cd2fb2
 pkgrel=1
 pkgdesc="Auto Nightmode for KDE, Gnome, Budgie, VSCode, Atom and more"
 arch=('any')
@@ -42,7 +42,7 @@ sha256sums=(
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/-beta-/-/;s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
