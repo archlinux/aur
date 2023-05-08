@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=telerising-api-bin
-pkgver=0.9.9
+pkgver=0.10.1
 pkgrel=1
 pkgdesc='API web application providing Zattoo TV streams'
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
 	startup.sh
 )
 sha512sums=(
-	b895bea8a1fb82768094161826d2d7ffd1a56bd77573d168871eec99a32f331a5a4bd16a1c90064ff866620a6cac12c6a0d2d1a2719146535f817a21109e03de # telerising-v${pkgver}_x86-64_linux.zip
+	a357809214de4123f77e32754f5cd980f1b5c605c7fc6894545036a9d9fdac70739da884b49577401696287e111fe8f1e0eebfb81c5025fbd4df868e2f78708e # telerising-v${pkgver}_x86-64_linux.zip
 	21dbbb489ce95925cf475b7e259111666031fb27556f67e92042526a0d57df537bf6d0185c17da81e88c36934c49a1ac4d48717bf6ad0310927444868578a819 # telerising-api-bin.service
 	8d50a8b56efc882f247af83714916abe9f1d2e87830614f38d01790c04f0c0a7c7192e72426d1f4b6c90edc9a705f9e86b5fe7d44543a5755ffdfda2d894d313 # startup.sh
 )
