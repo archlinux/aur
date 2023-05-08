@@ -1,18 +1,18 @@
 # Maintainer: Nixuge
 
 pkgname=localsend-bin
-pkgver=1.8.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc='An open source cross-platform alternative to AirDrop '
 url=https://github.com/localsend/localsend
 arch=(x86_64)
 license=(MIT)
-depends=(zenity xdg-user-dirs)
+depends=(zenity xdg-user-dirs libayatana-appindicator)
 conflicts=('localsend-git')
 provides=('localsend')
 options=(!strip)
 source=("https://github.com/localsend/localsend/releases/download/v${pkgver}/LocalSend-${pkgver}.AppImage")
-sha256sums=('49eb71c34bab7c90a21c8f8cb3e220ae88b508b0a00741f906c57a464c7204c1')
+sha256sums=('600846909c039e8f0678e7a9ca8907bf4ebc22163c1fe2fcf15aca3fbe951e35')
 _appimage="LocalSend-${pkgver}.AppImage"
 _appimage_nover="localsend.AppImage"
 _pkgname="localsend"
