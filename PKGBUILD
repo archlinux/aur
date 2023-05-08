@@ -14,34 +14,29 @@ source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
   )
 sha512sums=(
-  '7d1f7c50d38721a85233fe0508ca981d92d9a524217af19383d94da7e3fefa7adc3067cfe4b306ad0f88bf2172d0bd487e3c0a741f3eb70d3bea8dedd108fd87'
-  '83f03b5aeb37a73000849e789b12f3361ed1adf9158572f8c8ba819e48e2faaae2207b77143db226842c35a213c42037539031e6c4a43ee8e3b92609a3d5e128'
+  'dc00d335532dfbead77a81c37070f0bc3444a17b385f25dd1220a53cd32529d9957fbf281e6975de161981f2c7be5e4a0bac631c228aa7dddc62fd41fb6f68e1'
+  '24a2cdb2aa6f3510e416d9e1dffe032f0a2cb0512ac4ccead184aa489348d90202b9931930bbcffd3c3bfcdef4d6d8a26f44a1e13aa4cf4d16fc53c89245bf20'
   )
 md5sums=(
-  '91577e90572b492fa0701c13a76f9024'
-  '5f1c2e7126800fb1b1a41804d79e1fc9'
+  'defb1a17445da70cfcd97912a7967a09'
+  'ee48a3f3593142e1bdd6b6bb8d0f0dab'
   )
 validpgpkeys=('81BACEEBC3EA26E127166E4A819BB92A9A48160E')
 
 
-build() {
+package() {
 
   [ -d "${srcdir}/${pkgname}/usr/lib/node_modules/${pkgname}" ] &&
     cd "${srcdir}/${pkgname}/usr/lib/node_modules/${pkgname}" ||
     cd "${srcdir}/usr/lib/node_modules/${pkgname}"
 
-  which yarn >/dev/null 2>&1 &&
-    yarn install || npm install
-
-}
-
-package() {
+  which yarn >/dev/null 2>&1 && yarn install || npm install
 
   [ -d "${srcdir}/${pkgname}" ] && cd "${srcdir}/${pkgname}" || cd "${srcdir}"
 
   install -dm0755 "${pkgdir}"/usr/lib/node_modules/${pkgname}
   install -Dm0755 usr/bin/${pkgname} "${pkgdir}/usr/bin/${pkgname}"
   install -Dm0644 usr/share/licenses/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  cp -r usr/lib/node_modules/${pkgname}/* "${pkgdir}"/usr/lib/node_modules/${pkgname}
+  cp -ar usr/lib/node_modules/${pkgname}/* "${pkgdir}"/usr/lib/node_modules/${pkgname}
 
 }
