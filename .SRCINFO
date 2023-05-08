@@ -1,6 +1,6 @@
 pkgbase = theharvester-git
 	pkgdesc = Gather emails, names, subdomains, IPs and URLs related to targets using public sources
-	pkgver = 4.2.0.r304.gd09392b
+	pkgver = 4.2.0.r307.gcaf21cb
 	pkgrel = 1
 	url = https://github.com/laramies/theHarvester
 	install = theHarvester.install

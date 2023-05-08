@@ -1,7 +1,7 @@
 # Maintainer: éclairevoyant
 
 pkgname=theharvester-git
-pkgver=4.2.0.r304.gd09392b
+pkgver=4.2.0.r307.gcaf21cb
 pkgrel=1
 pkgdesc="Gather emails, names, subdomains, IPs and URLs related to targets using public sources"
 arch=(any)
@@ -38,11 +38,6 @@ b2sums=('SKIP')
 pkgver() {
 	cd $pkgname
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-	# see laramies/theHarvester#1390
-	rm $pkgname/tests/discovery/test_qwantsearch.py
 }
 
 build() {
