@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BASiCS
-_pkgver=2.12.0
+_pkgver=2.12.1
 pkgname=r-${_pkgname,,}
-pkgver=2.12.0
+pkgver=2.12.1
 pkgrel=1
 pkgdesc='Bayesian Analysis of Single-Cell Sequencing data'
 arch=('x86_64')
@@ -43,7 +43,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e902f587a2d2df92cbc504f0344c8d9d3f34214d1cc093f555bfc1bd1129171e')
+sha256sums=('baf012266fc1a8310d4392629fb378996ff9182e6b9f5b52ea8268d03536772b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
