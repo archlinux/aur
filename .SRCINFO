@@ -1,0 +1,17 @@
+pkgbase = gitify-appimage
+	pkgdesc = GitHub notifications on your menu bar. Available on macOS, Windows & Linux.
+	pkgver = 4.3.1
+	pkgrel = 1
+	url = https://www.gitify.io/
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	options = !strip
+	source = gitify-4.3.1.AppImage::https://github.com/manosim/gitify/releases/download/v4.3.1/Gitify-4.3.1.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/manosim/gitify/main/LICENSE
+	sha256sums = 1632f1811d914f8a613553d0c5843cb751edf97383416783a67944179e159e84
+	sha256sums = 7f5456bd16b4821925351b713bc5f885f520994292e589982dd2a51bcebf3c14
+
+pkgname = gitify-appimage
