@@ -2,16 +2,16 @@
 # Contributor: Janis Jansons <aur@janhouse.lv>
 
 pkgname=cecdaemon-devel
-pkgver=r4.444ee75
-pkgrel=5
+pkgver=r6.fef7a4f
+pkgrel=1
 pkgdesc="CEC Daemon for linux media centers (development version)"
 arch=('any')
 url="https://github.com/simons-public/cecdaemon"
-license=('BSD')
-depends=('python' 'python-importlib-metadata' 'libcec' 'python-cec-git' 'python-uinput' 'python-pyudev')
+license=('custom')
+depends=('python' 'python-importlib-metadata' 'libcec' 'python-cec-git' 'python-uinput-patched' 'python-pyudev')
 provides=('cecdaemon')
 conflicts=('cecdaemon' 'cecdaemon-git')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 source=(
   'cecdaemon-devel::git+https://github.com/simons-public/cecdaemon.git'
   'modules-load.conf'
@@ -34,14 +34,16 @@ pkgver() {
 
 build() {
   cd "${pkgname}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${pkgname}"
-  python setup.py install --root="${pkgdir}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 
-  install -Dm0644 "${srcdir}/modules-load.conf" "${pkgdir}/usr/lib/modules-load.d/cecdaemon.conf"
-  install -Dm0644 "examples/cecdaemon.conf-example" "${pkgdir}/etc/cecdaemon.conf"
-  install -Dm0644 "examples/cecdaemon.service-example" "${pkgdir}/usr/lib/systemd/system/cecdaemon.service"
+  install -Dm644 "${srcdir}/modules-load.conf" "${pkgdir}/usr/lib/modules-load.d/cecdaemon.conf"
+  install -Dm644 "examples/cecdaemon.conf-example" "${pkgdir}/etc/cecdaemon.conf"
+  install -Dm644 "examples/cecdaemon.service-example" "${pkgdir}/usr/lib/systemd/system/cecdaemon.service"
+
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

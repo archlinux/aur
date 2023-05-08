@@ -1,5 +1,5 @@
+cecdaemon-devel/
 pkg/
 src/
-cecdaemon-git/
 *.pkg.tar
 *.pkg.tar.zst
