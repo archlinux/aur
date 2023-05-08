@@ -4,7 +4,7 @@ _pkgname=scattermore
 _pkgver=1.0
 pkgname=r-${_pkgname,,}
 pkgver=1.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Scatterplots with More Points'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,6 +13,12 @@ depends=(
   r
   r-ggplot2
   r-scales
+)
+optdepends=(
+  r-covr
+  r-knitr
+  r-rmarkdown
+  r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('a71d5d1ae06bc6b7d9a446293e3c12a5ce970754c24a0cc6f31ad0ea52cbaf91')
