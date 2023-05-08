@@ -1,6 +1,6 @@
 # Maintainer: Gonçalo Pereira <goncalo_pereira@outlook.pt>
 pkgname=python-cli-exit-tools
-_name=${pkgname#python-}
+_name=${pkgname#python-//-/_}
 pkgver=1.2.3.2
 pkgrel=1
 pkgdesc="Small toolset to properly exit a cli application"
