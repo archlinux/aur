@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-shell-extension-rounded-window-corners
 pkgver=11
-pkgrel=1
+pkgrel=2
 pkgdesc="A GNOME Shell extension that adds rounded corners for all windows"
 arch=('any')
 url="https://github.com/yilozt/rounded-window-corners"
@@ -14,7 +14,7 @@ sha256sums=('452bbe5a3ef4e9211b1a73f9ec8ded5a34611398bdbc7a85062d0b3d92181e9a')
 
 build() {
   cd "rounded-window-corners-$pkgver"
-  yarn config set cache-folder "$srcdir/yarn-cache"
+  export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
   yarn install
   yarn build
   yarn ext:pack
