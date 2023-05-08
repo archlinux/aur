@@ -1,12 +1,12 @@
 pkgname=ares-decrypt
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Automated decoding of encrypted text without knowing the key or ciphers used."
 arch=("x86_64")
 url="https://github.com/bee-san/Ares"
 license=("MIT")
 makedepends=("git" "rust")
-source=("git+${url}.git#tag=${pkgver}")
+source=("git+${url}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build(){
