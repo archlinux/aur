@@ -1,0 +1,15 @@
+pkgbase = brother-pt9800pcn
+	pkgdesc = Driver and CUPS wrapper for Brother PT-9800PCN label printer
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=9800neus
+	arch = x86_64
+	license = EULA
+	source = https://download.brother.com/welcome/dlfp100028/pt9800pcnlpr-1.0.1-1.i386.rpm
+	source = https://download.brother.com/welcome/dlfp100030/pt9800pcncupswrapper-1.0.1-1.i386.rpm
+	source = brother-pt9800pcn.patch
+	sha256sums = bab011139b20fec467869110a0fc3621ce37f9b94a97f51f50ec692f75d1efea
+	sha256sums = 68d4cbb72b0ef835837b05e77ef4fc5c487a105a75029625929282b19031098e
+	sha256sums = a66d72fe5cdb5aa87b194912657c41a9efd96c238eb66fc60556215298633e8c
+
+pkgname = brother-pt9800pcn

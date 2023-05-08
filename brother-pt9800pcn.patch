@@ -1,0 +1,210 @@
+--- oldcupswrapperpt9800pcn	2013-12-12 10:55:48.000000000 +0100
++++ cupswrapperpt9800pcn	2023-04-27 16:51:12.984179059 +0200
+@@ -25,101 +25,7 @@
+ device_model="PTouch"
+ tmp_filter=/var/tmp/brother_lpdwrapper_${printer_model}
+ 
+-if [ -d "/usr/share/cups/model" ]; then
+-    mkdir -p /usr/share/cups/model/Brother
+-else
+-    mkdir -p /usr/share/ppd/Brother
+-fi
+-
+-if [ -d "/usr/share/ppd" ]; then
+-    mkdir -p /usr/share/ppd/Brother
+-else
+-    mkdir -p /usr/share/cups/model/Brother
+-fi
+-
+-
+-# -e start
+-if [ "$1" = '-e' ]; then
+-#satyam comments
+-if [ -f /etc/debian_version ] ; then
+-    sudo rm -rf /var/lib/dpkg/info/${printer_model}cupswrapper*
+-fi
+-#satyam comments
+-#*********** Below line uncommented by MSAT on 20120830_1130am **********
+-    lpadmin -x ${device_name}
+-    rm -f /usr/share/cups/model/Brother/brother_${printer_model}_printer_en.ppd
+-    rm -f /usr/share/ppd/Brother/brother_${printer_model}_printer_en.ppd
+-#*********** Below line commented by MSAT on 20120830_1130am **********
+-#   rm -f /usr/lib/cups/backend/brusb_${printer_model}
+-#   rm -f /usr/lib/cups/backend/brserial_${printer_model}
+-#*********** Below line commented by MSAT on 20120830_1130am **********
+-#   rm -f /usr/lib64/cups/backend/brusb_${printer_model}
+-#   rm -f /usr/lib64/cups/backend/brserial_${printer_model}
+-    rm -f /usr/lib/cups/filter/brother_lpdwrapper_${printer_model}
+-    rm -f /usr/lib64/cups/filter/brother_lpdwrapper_${printer_model}
+-    rm -f /opt/brother/${device_model}/${printer_model}/cupswrapper/brcupsconfpt1
+-if [  -e /etc/init.d/cups ]; then
+-    /etc/init.d/cups restart
+-elif [  -e /etc/init.d/cupsys ]; then
+-    /etc/init.d/cupsys restart
+-fi
+-#   /etc/init.d/cups restart
+-    exit 0
+-fi
+-# -e end
+-
+-# -r start
+-if [ "$1" = "-r" ]; then
+-#*********** Below line uncommented by MSAT on 20120830_1130am **********
+-    lpadmin -x ${device_name}
+-if [  -e /etc/init.d/cups ]; then
+-    /etc/init.d/cups restart
+-elif [  -e /etc/init.d/cupsys ]; then
+-    /etc/init.d/cupsys restart
+-fi
+-#   /etc/init.d/cups restart
+-    exit 0
+-fi
+-# -r end
+-
+-# -h + -help start
+-if [ "$1" = "help" ] || [ "$1" = "-h" ]; then
+-  echo   'option -h : help'
+-  echo   '       -i : install'
+-  echo   '       -e : uninstall'
+-  echo   '       -r : remove printer'
+-  exit 0
+-fi
+-# -h + -help end
+-
+-#mkdir -p /opt/brother/${device_model}/${printer_model}/filter
+-#mkdir -p /usr/lib/cups/filter
+-
+-if [ -e "/opt/brother/${device_model}/${printer_model}/lpd/filter${printer_model}" ]; then
+-  :
+-else
+-  echo "ERROR : Brother LPD filter is not installed."
+-fi
+-
+-#satyam comments
+-if [ -f /etc/debian_version ] ; then 
+-    if [ -d /usr/share/cups/model ]; then
+-        rm -f /usr/share/cups/model/Brother/brother_${printer_model}_printer_en.ppd
+-        ppd_file_name=/usr/share/cups/model/Brother/brother_${printer_model}_printer_en.ppd
+-        ppd_file_name1=/usr/share/cups/model/Brother/brother_${printer_model}_printer_en.ppd
+-    fi
+-    if [ -d /usr/share/ppd ]; then
+-        rm -f /usr/share/ppd/Brother/brother_${printer_model}_printer_en.ppd
+-        ppd_file_name1=/usr/share/ppd/Brother/brother_${printer_model}_printer_en.ppd
+-    fi
+-else 
+-    rm -f /usr/share/cups/model/Brother/brother_${printer_model}_printer_en.ppd
+-    ppd_file_name=/usr/share/cups/model/Brother/brother_${printer_model}_printer_en.ppd
+-    ppd_file_name1=/usr/share/cups/model/Brother/brother_${printer_model}_printer_en.ppd
+-fi
+-#satyam comments
+-
+-cat <<ENDOFPPDFILE | tee $ppd_file_name >> $ppd_file_name1
++cat <<ENDOFPPDFILE > ppd_file
+ *PPD-Adobe: "4.3"
+ 
+ *%================================================
+@@ -718,19 +624,10 @@
+ 
+ ENDOFPPDFILE
+ 
+-brotherlpdwrapper=/usr/lib/cups/filter/brother_lpdwrapper_${printer_model}
+-brotherlpdwrapper64=/usr/lib64/cups/filter/brother_lpdwrapper_${printer_model}
+-#brotherlpdwrapper=/usr/lib/cups/backend/brusb_${printer_model}
+-#brotherlpdwrapper64=/usr/lib64/cups/backend/brusb_${printer_model}
+-
+-rm -f  $brotherlpdwrapper
+-#echo 'rm -f /usr/lib/cups/filter/brlpdwrapper${printer_model}'
+-
+-
+-cat <<!ENDOFWFILTER! >$brotherlpdwrapper
++cat <<!ENDOFWFILTER! > wrapper
+ #! /bin/sh
+ #
+-# Brother Print filter  >>  /usr/lib/cups/backend/brusb_${printer_model}
++# Brother Print filter
+ # Copyright (C) 2006-2013 Brother. Industries, Ltd.
+ #                                    Ver1.10
+ 
+@@ -891,82 +788,3 @@
+ exit $errorcode
+ 
+ !ENDOFWFILTER!
+-
+-chmod a+x $brotherlpdwrapper
+-if [ -e /usr/lib64/cups/backend ]; then
+-    cp $brotherlpdwrapper  $brotherlpdwrapper64
+-fi
+-
+-#chmod a+w /opt/brother/${device_model}/${printer_model}/inf/br${printer_model}rc
+-#chmod a+w /opt/brother/${device_model}/${printer_model}/inf
+-if [ -e /etc/init.d/lpd ]; then
+-   /etc/init.d/lpd stop
+-fi
+-if [  -e /etc/init.d/lprng ]; then
+-   /etc/init.d/lprng stop
+-fi
+-
+-#*********** Below line commented by MSAT on 20120830_1130am **********
+-#cp -f /opt/brother/${device_model}/${printer_model}/lpd/brusb_ql_lpr /usr/lib/cups/backend/brusb_${printer_model}
+-#cp -f /opt/brother/${device_model}/${printer_model}/lpd/brserial_${printer_model} /usr/lib/cups/backend/brserial_${printer_model}
+-#chmod 00777 /usr/lib/cups/backend/brusb_${printer_model}
+-#chmod 00777 /usr/lib/cups/backend/brserial_${printer_model}
+-
+-if [  -e /etc/init.d/cups ]; then
+-   /etc/init.d/cups restart
+-elif [  -e /etc/init.d/cupsys ]; then
+-   /etc/init.d/cupsys restart
+-fi
+-
+-sleep 2s
+-
+-uris=$(lpinfo -v)
+-
+-for uri in $uris
+-do
+-	URI=$(echo $uri | grep ${device_name} | grep usb)
+-	if [ "$URI" != '' ];then
+-		break;
+-	fi
+-done
+-
+-if [ "$URI" = '' ];then
+-	for uri in $uris
+-	do
+-		URI=$(echo $uri | grep ${device_name} )
+-		if [ "$URI" != '' ];then
+-			break;
+-		fi
+-	done
+-fi
+-
+-if [ "$URI" = '' ];then
+-	for uri in $uris
+-	do
+-		URI=$(echo $uri | grep -i Brother | grep usb )
+-		if [ "$URI" != '' ];then
+-			break;
+-		fi
+-	done
+-fi	
+-
+-if [ "$URI" = '' ];then
+-	for uri in $uris
+-	do
+-		URI=$(echo $uri | grep usb )
+-		if [ "$URI" != '' ];then
+-			break;
+-		fi
+-	done
+-fi
+-
+-
+-if [ "$URI" = '' ];then
+-	URI="usb:/dev/usb/lp0"
+-fi
+-
+-echo lpadmin -p ${device_name} -E -v $URI -P $ppd_file_name
+-lpadmin -p ${device_name} -E -v $URI -P $ppd_file_name
+-
+-exit 0
+-
