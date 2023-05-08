@@ -4,7 +4,7 @@
 
 pkgname=hypnotix
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An IPTV streaming application with support for live TV, movies and series."
 arch=('any')
 url="https://github.com/linuxmint/hypnotix"
