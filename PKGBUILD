@@ -2,10 +2,9 @@
 
 pkgname=deprioritize-makepkg
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Add a line to makepkg to deprioritize the build process."
 arch=(any)
-url="https://github.com/galatolofederico/pso"
 license=('GPL3')
 depends=('bash' 'grep' 'sed')
 groups=()
