@@ -36,8 +36,10 @@ package() {
 }
 `
 
-var v = ""
-var rel = 1
+var (
+	v   = ""
+	rel = 1
+)
 
 func main() {
 	switch len(os.Args) {
@@ -66,7 +68,7 @@ func main() {
 		println(err.Error())
 		return
 	}
-	pkg, _ := os.OpenFile("PKGBUILD", os.O_CREATE|os.O_WRONLY, 0644)
+	pkg, _ := os.OpenFile("PKGBUILD", os.O_CREATE|os.O_WRONLY, 0o644)
 	_, err = pkg.Write([]byte(content))
 	if err != nil {
 		println(err.Error())
