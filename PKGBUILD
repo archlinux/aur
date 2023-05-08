@@ -4,16 +4,10 @@ _pyname="tweetypy"
 _pkgname="${_pyname}"
 pkgname="${_pkgname}-fossil"
 pkgver=1.1+1+92a14d7d85.r47.20230211.92a14d7d85
-pkgrel=1
+pkgrel=2
 pkgdesc="A frequency excursion calculator and more. Sucessor of 'FEX'."
 arch=(
   'any'
-  ## Or, if binaries get compiled:
-  # 'aarch64'
-  # 'armv6h'
-  # 'armv7h'
-  # 'i686'
-  # 'x86_64'
 )
 url="http://code.jessemcclure.org/${_pyname}/"
 license=('custom: MIT')
@@ -97,25 +91,12 @@ package() {
     info.html
     README.rst
   )
-  _docdirs=()
-  _manfiles=()
-  _infofiles=()
   _licensefiles=(
     LICENSE.txt
   )
   printf '%s\n' " --> installing documentation ..."
   for _docfile in "${_docfiles[@]}"; do
     install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/$(basename "${_docfile}")"
-  done
-  for _docdir in "${_docdirs[@]}"; do
-    cp -rv "${_docdir}" "${pkgdir}/usr/share/doc/${_pkgname}/$(basename "${_docdir}")"
-  done
-  for _manfile in "${_manfiles[@]}"; do
-    _section="$(basename "${_manfile}" .gz | sed -E -e 's|^.*\.([^.]*)$|\1|')"
-    install -D -v -m644 "docs/build/man/${_manfile}" "${pkgdir}/usr/share/man/man${_section}/$(basename "${_manfile}")"
-  done
-  for _infofile in "${_infofiles[@]}"; do
-    install -D -v -m644 "${_infofile}" "${pkgdir}/usr/share/info/$(basename "${_infofile}")"
   done
   printf '%s\n' " --> installing license ..."
   for _licensefile in "${_licensefiles[@]}"; do
