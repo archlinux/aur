@@ -2,7 +2,7 @@
 # Maintainer: Pavle Portic <archlinux@theedgeofrage.com>
 
 pkgname=goose
-pkgver=3.11.0
+pkgver=3.11.2
 pkgrel=1
 pkgdesc='Database migration tool written in Go.'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('go')
 makedepends=('git' 'go')
 source=("https://github.com/pressly/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('7e0cb6863db15c04d8b25d9414516314181a533f04152ec9e63c55d5bf65ca8a')
+sha256sums=('5122148b9d482f5ec5811d1e98489150582e8db405cc92d2132d54c024a83a28')
 
 build() {
 	cd $pkgname-$pkgver
