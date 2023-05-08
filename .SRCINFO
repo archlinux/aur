@@ -1,0 +1,18 @@
+pkgbase = electrocrud-appimage
+	pkgdesc = Database CRUD Application Built on Electron | MySQL, Postgres, SQLite
+	pkgver = 2.8.0
+	pkgrel = 1
+	url = http://garrylachman.github.io/ElectroCRUD/
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = glibc
+	conflicts = electrocrud
+	options = !strip
+	source = electrocrud-2.8.0.AppImage::https://github.com/garrylachman/ElectroCRUD/releases/download/2.8.0/ElectroCRUD-2.8.0.AppImage
+	source = LICENSE.md::https://raw.githubusercontent.com/garrylachman/ElectroCRUD/master/LICENSE.md
+	sha256sums = a01bb3501feaf1ad3ee1a892a4f4038792eacce74d9aec75cdc4826447fc7661
+	sha256sums = a40da23a37667aca05673b4ec21034e61c7de9a9db12a2d15f5e3fd507d1a4bd
+
+pkgname = electrocrud-appimage
