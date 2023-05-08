@@ -1,7 +1,7 @@
 # Maintainer: oi_wtf <brainpower at mailbox dot org>
 
 pkgname=ashuffle
-pkgver=3.13.6
+pkgver=3.14.1
 pkgrel=1
 pkgdesc="Automatic library-wide shuffle for mpd."
 url="https://github.com/joshkunz/ashuffle"
@@ -14,15 +14,18 @@ makedepends=("meson" "gtest>=1.10")
 source=(
   "https://github.com/joshkunz/ashuffle/archive/v${pkgver}/ashuffle-${pkgver}.tar.gz"
 )
-sha256sums=('3bdba8c17c98d552ac2b12a0aa4cf5ca1616ab5dc04e1925169c819d321dbf2c')
+sha256sums=('4808596817ed1901fc6986955ad5f27dd9b3da4b5090a3cacc90b40180127c99')
 
 
-#prepare() {
-#  cd "ashuffle-${pkgver}"
-#}
+prepare() {
+  cd "ashuffle-${pkgver}"
+}
 
 build() {
   cd "ashuffle-${pkgver}"
+
+  # fix a build failure in tests where -Werror is set
+  export CXXFLAGS="$CXXFLAGS -Wno-error=unused-variable"
 
   arch-meson \
     -Dtests=enabled \
