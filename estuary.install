@@ -1,0 +1,11 @@
+post_install() {
+    echo "Don't forget to configure the service before running!"
+    echo "The configuration file is at /etc/estuary/estuary.env."
+    echo "After that, enable/start the systemd unit estuary.service."
+}
+
+post_remove() {
+    echo "Don't forget to clean up the configuration files"
+    echo "at /etc/estuary, as well as the data at"
+    echo "/var/lib/private/estuary (unless you changed the location)"
+}

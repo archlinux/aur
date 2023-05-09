@@ -1,0 +1,13 @@
+[Unit]
+Description=A registry for Rust crates
+After=network-online.target
+
+[Service]
+DynamicUser=yes
+StateDirectory=estuary
+EnvironmentFile=/etc/estuary/estuary.env
+ExecStart=/usr/bin/estuary
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
