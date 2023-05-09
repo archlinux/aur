@@ -1,0 +1,11 @@
+--- plugins/view/GeographicView/LeafletMaps.cpp	2023-03-22 23:30:22.000000000 +0100
++++ plugins/view/GeographicView/LeafletMaps.cpp	2023-05-09 12:28:17.822332583 +0200
+@@ -131,7 +131,7 @@
+ )";
+ 
+ LeafletMaps::LeafletMaps(const std::vector<MapLayer> &mapLayers)
+-    : QWEBVIEW(nullptr), mapLayers(mapLayers), currentLayer(0), inited(false) {
++    : QWEBVIEW(static_cast<QWidget*>(nullptr)), mapLayers(mapLayers), currentLayer(0), inited(false) {
+ #ifdef QT_HAS_WEBKIT
+   // disable output of "libpng warning: iCCP: known incorrect sRGB profile"
+   // due to QtWebKit ill-formed png files
