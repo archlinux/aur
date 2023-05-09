@@ -3,7 +3,7 @@
 
 _pkgname=python-pyghdl
 pkgname=$_pkgname-git
-pkgver=1.0.0.r946.7e41be2da
+pkgver=3.0.0.r193.97df73f72
 pkgrel=1
 pkgdesc='Python binding for GHDL and high-level APIs'
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL2')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 replaces=('pyghdl-git')
-depends=('ghdl-git' 'python' 'python-pyattributes' 'python-pytooling' 'python-pytooling-terminalui' 'python-pyvhdlmodel')
+depends=('ghdl-git' 'python' 'python-pyattributes' 'python-pytooling' 'python-pyvhdlmodel')
 makedepends=('python-setuptools' 'git')
 checkdepends=('python-pytest')
 

@@ -1,6 +1,6 @@
 pkgbase = python-pyghdl-git
 	pkgdesc = Python binding for GHDL and high-level APIs
-	pkgver = 1.0.0.r946.7e41be2da
+	pkgver = 3.0.0.r193.97df73f72
 	pkgrel = 1
 	url = https://github.com/ghdl/ghdl
 	arch = any
@@ -12,9 +12,8 @@ pkgbase = python-pyghdl-git
 	depends = python
 	depends = python-pyattributes
 	depends = python-pytooling
-	depends = python-pytooling-terminalui
 	depends = python-pyvhdlmodel
-	provides = python-pyghdl=1.0.0.r946.7e41be2da
+	provides = python-pyghdl=3.0.0.r193.97df73f72
 	conflicts = python-pyghdl
 	replaces = pyghdl-git
 	source = ghdl::git+https://github.com/ghdl/ghdl.git
