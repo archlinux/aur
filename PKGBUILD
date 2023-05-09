@@ -2,18 +2,17 @@
 # Contributor: Bart Ribbers <bribbers@disroot.org>
 
 pkgname=waydroid
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 pkgdesc="A container-based approach to boot a full Android system on a regular Linux system"
 arch=('any')
-url='https://github.com/waydroid'
+url='https://waydro.id/'
 license=('GPL')
 depends=('lxc' 'python-gbinder' 'python-gobject' 'nftables' 'dnsmasq' 'gtk3' 'dbus-python')
 makedepends=('git')
 optdepends=('python-pyclip: share clipboard with container')
-_commit="865e041af854e3f63eb8f72eb7aa4f5075e0b866" # tags/1.4.0
-source=("waydroid::git+https://github.com/waydroid/waydroid.git#commit=$_commit"
-        gbinder.conf)
+_commit="7ce2e28e8ea76c1e79b273d122921c1f394e842f" # tags/1.4.1
+source=("waydroid::git+https://github.com/waydroid/waydroid.git#commit=$_commit")
 
 pkgver() {
   cd "$pkgname"
@@ -24,5 +23,4 @@ package() {
   make -C waydroid install DESTDIR="$pkgdir" USE_NFTABLES=1
 }
 
-sha256sums=('SKIP'
-            '87a21d401281735ea026d715ea79b36e01f9af084198de2761b32d5b58a343dd')
+sha256sums=('SKIP')
