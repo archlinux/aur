@@ -1,11 +1,12 @@
 pkgbase = python-tweedledum-git
 	pkgdesc = A library for synthesizing and manipulating quantum circuits
-	pkgver = r260.e73beb23
-	pkgrel = 2
+	pkgver = r263.9d3a2fab
+	pkgrel = 1
 	url = https://github.com/boschmitt/tweedledum
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
+	makedepends = git
 	makedepends = ninja
 	makedepends = nlohmann-json
 	makedepends = python-scikit-build
@@ -13,6 +14,8 @@ pkgbase = python-tweedledum-git
 	provides = python-tweedledum
 	conflicts = python-tweedledum
 	source = git+https://github.com/boschmitt/tweedledum.git
-	sha256sums = SKIP
+	source = pybind11.tar.gz::https://github.com/pybind/pybind11/archive/refs/tags/v2.10.4.tar.gz
+	b2sums = SKIP
+	b2sums = 7b2d86e8262581b2cc6dd720b83336206e242ef8ca99b257b01a11141ed8b127d7f35d7d573bc763dd36f2fe8c8ac91766089deb63a76e9c10029c34eec2d6d3
 
 pkgname = python-tweedledum-git
