@@ -1,10 +1,10 @@
 # Maintainer: Hollow Man <hollowman at opensuse dot org>
 
 pkgname=kubescape
-pkgver=2.2.6
+pkgver=2.3.1
 _git2gover=33.0.9
 _libgit2ver=1.3.0
-pkgrel=1
+pkgrel=0
 epoch=0
 pkgdesc="An open-source Kubernetes security platform for your IDE, CI/CD pipelines, and clusters."
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'pentium4')
@@ -16,7 +16,7 @@ conflicts=('kubescape-bin')
 source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
   "https://github.com/libgit2/git2go/archive/v${_git2gover}/git2go-${_git2gover}.tar.gz"
   "https://github.com/libgit2/libgit2/archive/v${_libgit2ver}/libgit2-${_libgit2ver}.tar.gz")
-sha512sums=('1c695741c91d9bcac73454fbada9d386ba69715cb4f6f03dc454187f3814c75450df91f222cae0205948cc2a230904aa12e89f70e3bc660a608fb0571932da49'
+sha512sums=('5772dde92f9c80f9cf62ed267d7f7c1393ea9fd7440ba836641b1404b69428cf938d0749a8f98094fcc191a8d59ff814d143188f8315bf99b373f26783663b33'
   '07d13cfd11396d2c36bc69ef4177e4962596bf92da3604f035a85940f98ae0d3614718b88fc0631c4c7007841a51deebd7da8c570c1c637d9fb5905995837519'
   '842a648a67ff23ba9e6bf14b706ba9081164866e14000ebf3858442b7046925f05e1dbf00a7d740dc4bf32280e260730e23a9492e817094aa90736ae335ee76e')
 prepare() {
