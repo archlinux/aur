@@ -1,9 +1,0 @@
-[Desktop Entry]
-Exec=/opt/cadzinho/AppRun
-Icon=/opt/cadzinho/cadzinho.png
-Name=CadZinho
-Terminal=false
-Type=Application
-Categories=GNOME;GTK;Graphics
-Encoding=UTF-8
-Comment=CadZinho - Minimalist computer aided design (CAD) software
