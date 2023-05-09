@@ -1,10 +1,11 @@
 # Maintainer: Tim van Leuverden <tvanleuverden at gmail dot com>
 # Contributor: Joost Bremmer
 # Contributor: Mubashshir <ahmubashshir at gmail dot com>
+# Contributor: Evgeniy <evgfilim1 at gmail dot com>
 
 pkgname=trackma
 pkgver=0.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight and simple program for updating and using lists on several media tracking websites."
 url="https://z411.github.io/trackma/"
 arch=('any')
@@ -42,7 +43,7 @@ prepare() {
 
   git submodule init
   git config submodule."trackma/data/anime-relations".url $srcdir/anime-relations
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 package() {
