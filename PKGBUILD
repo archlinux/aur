@@ -4,14 +4,14 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=file-roller-git
-pkgver=43.0.r16.ge8a2899d
+pkgver=43.0.r161.ge37ab4ac
 pkgrel=1
 pkgdesc="Create and modify archives"
 url="https://wiki.gnome.org/Apps/FileRoller"
 arch=(i686 x86_64 armv7h aarch64)
 license=(GPL2)
-depends=(gtk3 libarchive file libnotify zip unzip libportal-gtk3)
-makedepends=(yelp-tools git libnautilus-extension meson appstream-glib)
+depends=(libadwaita libarchive libportal-gtk4 libnautilus-extension)
+makedepends=(git meson yelp-tools)
 optdepends=('p7zip: 7z, arj, exe and encrypted zip files support'
             'unrar: better RAR archive support'
             'unace: ACE archive support'
@@ -20,7 +20,7 @@ optdepends=('p7zip: 7z, arj, exe and encrypted zip files support'
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(gnome)
-source=("git+https://gitlab.gnome.org/GNOME/${pkgname%-git}")
+source=(git+https://gitlab.gnome.org/GNOME/${pkgname%-git})
 b2sums=('SKIP')
 
 pkgver() {
