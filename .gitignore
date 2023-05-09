@@ -1,0 +1,5 @@
+spofi/
+pkg/
+src/
+*.xz
+*.zst
