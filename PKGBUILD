@@ -11,20 +11,23 @@ depends=(bat)
 optdepends=('nvim: the recommended editor for power users')
 conflicts=(qed)
 source=(
-  "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst"
-  "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
-  )
+  "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz"
+)
 sha512sums=(
-  '728b66b7c5c03a6156aaf55164a2932b194fefd4739482b1f5b48e1a538e2ceef0b9f6dbd6867c34f46da070b9d9f6d0e92cebffd1059c086833308155869cc8'
-  'c5f3b673936f24261914ea7eae9612c7772c1d117ca2ba3194bc9791a3f5e6dac738b0a1456cb9a563f435f8564d3524c3b03fa6e52628f8b3fc5ca4caae5d83'
-  )
+  '1c72b9e7a1c91b440bb37b4a37bd24b9e76856c70103eb38d7d631934816f5f281140ab673c82cc19d65383c3150a28ce65b5834826c5e1f7c5c6ff5cb0ec3b1'
+)
 md5sums=(
-  '807cbc1d045824c3b33476ff3f040f76'
-  '37425790dcfba28f0f1a399e6dfc0029'
-  )
-validpgpkeys=('9A1F3F41DDA55A60331CB8DD3714CB0967D15980')
+  '0763a61e82829c150a127a019a422ac8'
+)
+validpgpkeys=(
+  '81BACEEBC3EA26E127166E4A819BB92A9A48160E'
+)
 
 package() {
-    install -Dm644 usr/share/licenses/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm755 usr/bin/* -t "${pkgdir}/usr/bin"
+
+  cd "$srcdir/${pkgname}-${pkgver}-${pkgrel}-${arch}" ||
+  cd "$srcdir/${pkgname}"
+
+  install -Dm644 usr/share/licenses/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 usr/bin/* -t "${pkgdir}/usr/bin"
 }
