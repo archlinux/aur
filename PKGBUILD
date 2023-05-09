@@ -9,9 +9,9 @@ _lang='de_DE'
 
 pkgname=dm-fotowelt
 pkgdesc='an offline client for creating photobooks, greeting cards, posters and more, uploading and ordering them at fotoparadies.de'
-sha256sums=('1fb826faad3dfa485348a05049b72714bec0fd6d1d7388f6dc6bb749db363c4b')
-pkgver=7.3.1
-pkgrel=2
+sha256sums=('59439496b0eb2ba6a139cc5a812285e14cbce9272da05fe56f3856d113e8220d')
+pkgver=7.3.3
+pkgrel=1
 url="https://www.fotoparadies.de/"
 license=("custom:eula")
 depends=('libx11' 'libjpeg' 'curl' 'wget' 'snappy' 'libxcrypt-compat' 'libtiff5')
@@ -25,7 +25,7 @@ options=(!strip)
 _installDir=/usr/share/$pkgname
 
 pkgver() {
-	grep 'my $HPS_VER' $srcdir/install.pl | grep -Po '[\d\.]+'
+	grep 'my $HPS_VER' $srcdir/install.pl | grep -Po '[[:digit:]\.]+'
 }
 
 package() {
