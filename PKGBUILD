@@ -21,7 +21,7 @@ _gitroot="git+https://github.com/kcning/${_gitname}.git"
 epoch=1
 _pkgver=2.0.0 # According to upstream, we are at version 2.0.0, but git tags say 1.0.2.
 pkgver=2.0.0.r170.20220515.cfb3b71
-pkgrel=1
+pkgrel=2
 pkgdesc='Libva support for partially hardware accelerated encode and decode on Haswell and newer'
 arch=(
   'x86_64'
