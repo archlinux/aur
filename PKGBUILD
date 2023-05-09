@@ -2,7 +2,7 @@
 
 pkgname=ares-emu
 pkgver=132
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-system emulator by Near with experimental Nintendo 64 and PlayStation support"
 arch=(x86_64 i686)
 url="https://ares-emu.net/"
@@ -12,9 +12,11 @@ makedepends=(mesa git)
 provides=(ares-emu)
 conflicts=(ares-emu)
 source=("https://github.com/ares-emulator/ares/archive/refs/tags/v${pkgver}.tar.gz"
-        "ares-paths.patch")
+        "ares-paths.patch"
+        "fix-build.patch")
 sha256sums=("d66ed6af17fb92579ab6224bbaba9494e9841e97e032b0b42b128df72ea21d1c"
-        "39ed148f2cdd2bc0afde9da6a03d752ed247e731dc6257ffef9e088ffd8c28db")
+        "39ed148f2cdd2bc0afde9da6a03d752ed247e731dc6257ffef9e088ffd8c28db"
+        "b86020263291bd239ac5e231d6abe27f1857e66ba3d7f7bda64ae462558bb382")
 
 prepare() {
   # Replace the placeholder with pkgver to automatically point at the source folder
@@ -22,6 +24,11 @@ prepare() {
 
   # Patch Ares so that it can look for its files that are installed system-wide here
   patch -Np1 -i "${srcdir}/ares-paths.patch"
+
+  # TODO: Only for v132, remove with next release
+  sed -i "s/PLACEHOLDER/${pkgver}/g" "${srcdir}/fix-build.patch"
+  patch -Np1 -i "${srcdir}/fix-build.patch"
+
 }
 
 build() {
