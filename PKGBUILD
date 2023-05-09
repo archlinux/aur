@@ -4,7 +4,7 @@ _pkgname=recount3
 _pkgver=1.10.2
 pkgname=r-${_pkgname,,}
 pkgver=1.10.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Explore and download data from the recount3 project'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -14,8 +14,8 @@ depends=(
   r-biocfilecache
   r-data.table
   r-genomicranges
+  r-httr
   r-r.utils
-  r-rcurl
   r-rtracklayer
   r-s4vectors
   r-sessioninfo
