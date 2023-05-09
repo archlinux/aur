@@ -1,55 +1,26 @@
-# $Id$
-# Maintainer: Christopher P. Fair<christopherpfair@comcast.net>
+# Maintainer: éclairevoyant
 
-origName=sphinx-intl
-pkgbase=python-$origName
-pkgname=$pkgbase
-pkgver=2.0.1
+_pkgname=sphinx-intl
+pkgname="python-$_pkgname"
+pkgver=2.1.0
 pkgrel=1
-arch=('any')
-pkgdesc='Sphinx utility that make it easy to translate and to apply translation.'
-url='https://pypi.org/project/sphinx-intl'
-license=('BSD')
-makedepends=(
-  'python-babel'
-  'python-click'
-  'python-setuptools'
-  'python-six'
-)
-optdepends=('transifex-client: for using transifix')
-source=("https://files.pythonhosted.org/packages/85/4b/4589077b71336e84d7ca06e717929437f3185f75ec5dece0a9926cf91c56/$origName-$pkgver.tar.gz")
-sha256sums=('b25a6ec169347909e8d983eefe2d8adecb3edc2f27760db79b965c69950638b4')
-
-prepare() {
-  # souce duplication is required because makefile modify source code
-  # setyp.py --build tricks don't works well
-  cp -a sphinx-intl-$pkgver sphinx-intl-${pkgver}-2
-  # change python2 interpreter
-  find sphinx-intl-${pkgver}-2 -type f -exec \
-    sed -i '1s,^#! \?/usr/bin/\(env \|\)python$,#!/usr/bin/python2,' {} \;
-  # change sphinx-binaries name in source code
-  find sphinx-intl-${pkgver}-2 -type f -name '*.py' -exec \
-    sed -ri 's,(sphinx-(:?build|apidoc|autogen|quickstart)),\12,' {} \;
-}
+pkgdesc='Sphinx utility to facilitate creating/applying translations'
+arch=(any)
+url="https://pypi.org/project/$_pkgname"
+license=(BSD)
+depends=(python-click python-importlib-metadata python-setuptools)
+makedepends=(python-babel python-click)
+optdepends=('transifex-client: for using transifex')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/sphinx-doc/$_pkgname/archive/refs/tags/$pkgver.tar.gz")
+b2sums=('2b2a8b2f0f2f381d563d69e1250d713604ae73ed9c4be1ac8f04674ef23b54817e4516d18e82390a9c538c362bfe26f2318e37048d90f68a05c65d85c44004bd')
 
 build() {
-  cd "$srcdir"/sphinx-intl-$pkgver
-  python3 setup.py build
+	cd $_pkgname-$pkgver
+	python setup.py build
 }
 
 package_python-sphinx-intl() {
-  
-  depends=(
-    'python-babel'
-    'python-click'
-    'python-setuptools'
-    'python-six'
-  )
-  
-  cd sphinx-intl-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-
-#install -Dm644 "$srcdir"/sphinx-intl-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/python-sphinx-intl/LICENSE
+	cd $_pkgname-$pkgver
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	install -vDm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
-
-

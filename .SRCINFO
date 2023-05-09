@@ -1,21 +1,17 @@
 pkgbase = python-sphinx-intl
-	pkgdesc = Sphinx utility that make it easy to translate and to apply translation.
-	pkgver = 2.0.1
+	pkgdesc = Sphinx utility to facilitate creating/applying translations
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://pypi.org/project/sphinx-intl
 	arch = any
 	license = BSD
 	makedepends = python-babel
 	makedepends = python-click
-	makedepends = python-setuptools
-	makedepends = python-six
-	optdepends = transifex-client: for using transifix
-	source = https://files.pythonhosted.org/packages/85/4b/4589077b71336e84d7ca06e717929437f3185f75ec5dece0a9926cf91c56/sphinx-intl-2.0.1.tar.gz
-	sha256sums = b25a6ec169347909e8d983eefe2d8adecb3edc2f27760db79b965c69950638b4
+	depends = python-click
+	depends = python-importlib-metadata
+	depends = python-setuptools
+	optdepends = transifex-client: for using transifex
+	source = python-sphinx-intl-2.1.0.tar.gz::https://github.com/sphinx-doc/sphinx-intl/archive/refs/tags/2.1.0.tar.gz
+	b2sums = 2b2a8b2f0f2f381d563d69e1250d713604ae73ed9c4be1ac8f04674ef23b54817e4516d18e82390a9c538c362bfe26f2318e37048d90f68a05c65d85c44004bd
 
 pkgname = python-sphinx-intl
-	depends = python-babel
-	depends = python-click
-	depends = python-setuptools
-	depends = python-six
-
