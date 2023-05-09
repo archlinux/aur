@@ -11,7 +11,7 @@
 
 _pack=splines
 pkgname=octave-${_pack}
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="Additional spline functions"
 arch=(any)
@@ -27,7 +27,7 @@ install=${pkgname}.install
 _archive=${_pack}-${pkgver}.tar.gz
 source=("https://downloads.sourceforge.net/octave/${_archive}")
 noextract=("${_archive}")
-sha512sums=('ca506df2b00acc94d291cc70a8601a950d73c3fe03308e4d6c1e9ababdd4f73312680e1e59a8769616300338b8623e687475d37815cf176d4eb9f32c4dedc6a0')
+sha512sums=('7ca0d9708e8ab863fdc9c41c1bf55c1f7d63cc45bee41da51797d6d058ea4c04250731d60a93cc3eb2f58f47b0f2d26610cda002a04ba826132892687d15aa9d')
 
 _octave_run() {
   octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
