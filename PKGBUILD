@@ -10,16 +10,21 @@ license=('MIT')
 depends=(mpv npm)
 install="yt-cli.install"
 source=(
-  "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst"
-  "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
+  "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz"
+  "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz.sig"
   )
 sha512sums=(
-  '00c24f046cd1752604bab3176ee88b3c1f4c124354321fa598e1905ce8405f9f62b3e9f71caa1aef70ba691bbe61092311bd57b03a6fe041f3d50c3b43b98e8a'
-  '46cbad3a6592c88db3daee0d810b3a20940b9f2057d21c9e1f138acf6e5fff9ab9efa73fe49b78e1e2c811352dd6215be3b6648e50938027aa2354237a6fbf22'
+  'c00ffd472ab904e8bf81fca5406d7f00befe664122b7c439940ee8d348604b7105ed3901b786d0252cb0ee65e31d9017afb12f0f3032daebf9e29c161b10c992'
+  'd8c68e0dc67146d0dc85fcd9c7f3d55e808f0375be01e4d7ea7edc6abecc63e400850aa8e44a2c69d5b85126516f9b2e2657d900f0ac06db1d3a1875cdc0780a'
   )
 md5sums=(
-  '429f2b65a5388788d73c8035b204fb0c'
-  '41974e993c498d6935563a210bc9dedb'
+  'b90889a64654c5a08f2585742e8a783b'
+  'd011df2e1d2fa85c692466e1896e6229'
+  )
+
+validpgpkeys=(
+  '81BACEEBC3EA26E127166E4A819BB92A9A48160E'
+  '689FE57F19CB77B8B6B9A8B12A049C6835A22075'
   )
 
 validpgpkeys=(
