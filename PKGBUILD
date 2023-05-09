@@ -15,7 +15,7 @@ arch=('aarch64')
 url='https://github.com/u-boot/u-boot'
 license=(GPL3)
 depends=()
-makedepends=('git' 'bc' 'vim')
+makedepends=('git' 'bc')
 source=(
   "git+https://github.com/u-boot/u-boot.git#tag=v${_pkgver}"
   'mt7xxx.h'

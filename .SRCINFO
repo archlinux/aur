@@ -8,7 +8,6 @@ pkgbase = bpir-uboot-git
 	license = GPL3
 	makedepends = git
 	makedepends = bc
-	makedepends = vim
 	source = git+https://github.com/u-boot/u-boot.git#tag=v2023.04
 	source = mt7xxx.h
 	source = clk-uclass-log_ret.patch
