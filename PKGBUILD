@@ -2,7 +2,7 @@
 
 pkgname=riseup-vpn-configurator
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="a simple command line tool to get RiseupVPN up and running"
 arch=('any')
 url="https://github.com/kmille/riseup-vpn-configurator"
