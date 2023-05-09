@@ -2,7 +2,7 @@
 _pkgname=Nagstamon
 pkgname=nagstamon
 pkgver=3.10.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Nagios status monitor for the desktop"
 depends=('python-pyqt6' 'qt6-multimedia' 'qt6-svg' 'python-requests' 'python-beautifulsoup4' 'python-keyring' 'python-psutil' 'python-requests-kerberos' 'python-lxml' 'python-dbus' 'python-dateutil' 'python-pysocks')
 optdepends=('python-requests-gssapi: Will be used instead of python-requests-kerberos for kerberos auth if present')
