@@ -14,20 +14,22 @@ optdepends=(
   'nodejs: to make use of lfps built in node actions manager'
   )
 source=(
-  "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst"
-  "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
-  )
+  "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz"
+)
 sha512sums=(
-  'fc1d2c8d0175cd35e725836b49eb7d0b0fd8327a3fb8dcce90bd472395daabd094cef69914c9ec2a25118f20216c08b36f32f35f22c5cf7903ad98fabf9228eb'
-  '03580ba06754ddcf71aeabf117b0c3a5694a7dd5ed2a7936f9d7a255c3f8adbad5ff83f7a5a4c9fe92ec5989f53e97086832a6595520ed1a718a6abb2d358020'
+  'b65cabad10f7f7c26bb92422fc4b45540f3ef08efd79585abc3bb08799ab9fac0293d2ec8de8fc40969c7c3bd89e197281509ce72107a8344d392108d4bb7990'
   )
 md5sums=(
-  'cb913e29281faf0d171a16c980ccc137'
-  '4352690a3fc357e0117c704cc6125c89'
+  'd37e1b9135e60a0adf0723a715d0c8c6'
   )
-validpgpkeys=('81BACEEBC3EA26E127166E4A819BB92A9A48160E')
+validpgpkeys=(
+  '81BACEEBC3EA26E127166E4A819BB92A9A48160E'
+  )
 
 package() {
+
+  cd "$srcdir/$pkgname/lfpreviewer"
+  python3 setup.py install --root="$pkgdir" --optimize=1
 
   cd "$srcdir/$pkgname"
   install -Dm755 usr/bin/* -t "${pkgdir}/usr/bin"
