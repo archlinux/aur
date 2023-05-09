@@ -1,0 +1,18 @@
+pkgbase = python-intake-avro
+	pkgdesc = avro extension for intake
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/intake/intake-avro
+	arch = any
+	license = BSD
+	provides = python-intake-avro=0.2.1
+	source = https://files.pythonhosted.org/packages/source/i/intake-avro/intake-avro-0.2.1.tar.gz
+	sha256sums = 741196488f0bc92b4d269a11f5d8fb502ff93d9eafde98d732ec7cd3a9e0daf3
+
+pkgname = python-intake-avro
+	depends = python>=3.8.0
+	depends = python-intake
+	depends = python-dask
+	depends = python-pandas
+	depends = python-fastavro
+	depends = python-uavro
