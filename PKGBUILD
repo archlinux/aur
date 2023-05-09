@@ -4,7 +4,7 @@
 _pkgname=citra
 pkgname=$_pkgname-canary-git
 pkgver=r9565.b43c06653
-pkgrel=1
+pkgrel=2
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 arch=('i686' 'x86_64')
 url='https://github.com/citra-emu/citra-canary'
@@ -12,7 +12,7 @@ options=("!lto") #Set LTO (disabled cause clang thin lto)
 provides=("citra" "citra-qt" "citra-canary" "citra-git" "citra-qt-git")
 conflicts=("citra" "citra-qt" "citra-canary" "citra-git" "citra-qt-git")
 license=('GPL2')
-depends=('sdl2' 'mbedtls' 'speexdsp' 'qt6-multimedia' 'ffmpeg' 'boost-libs' 'libfdk-aac' 'libusb' 'openssl' 'glibc' 'gcc-libs')
+depends=('sdl2' 'mbedtls' 'speexdsp' 'qt6-multimedia' 'ffmpeg' 'boost-libs' 'libfdk-aac' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'sndio')
 makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'boost' 'qt6-tools' 'clang') #Use clang until Issue 6500 is fixeo
 source=("$_pkgname::git+https://github.com/citra-emu/citra-canary.git"
         "boost::git+https://github.com/citra-emu/ext-boost.git"
