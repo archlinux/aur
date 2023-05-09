@@ -1,10 +1,10 @@
 pkgbase = lollypop-next-git
-	pkgdesc = Music player for GNOME (dev branch)
-	pkgver = 1.4.23.r3.g048238b13
-	pkgrel = 1
-	url = https://gitlab.gnome.org/gnumdk/lollypop
+	pkgdesc = Music player for GNOME, next branch
+	pkgver = 1.4.34.r1.g9b5393ca2
+	pkgrel = 2
+	url = https://gitlab.gnome.org/World/lollypop
 	arch = any
-	license = GPL
+	license = GPL3
 	makedepends = git
 	makedepends = gobject-introspection
 	makedepends = intltool
@@ -12,6 +12,8 @@ pkgbase = lollypop-next-git
 	makedepends = meson
 	depends = appstream-glib
 	depends = gst-plugins-base-libs
+	depends = gobject-introspection-runtime
+	depends = gdk-pixbuf2
 	depends = gtk3
 	depends = python-beautifulsoup4
 	depends = python-cairo
@@ -19,6 +21,7 @@ pkgbase = lollypop-next-git
 	depends = python-pillow
 	depends = gst-python
 	depends = libhandy
+	depends = libsoup
 	depends = totem-plparser
 	optdepends = easytag: Modify tags
 	optdepends = gst-libav: FFmpeg plugin for GStreamer
@@ -32,10 +35,9 @@ pkgbase = lollypop-next-git
 	optdepends = youtube-dl: Youtube support
 	provides = lollypop
 	conflicts = lollypop
-	conflicts = lollypop-git
-	conflicts = lollypop-stable-git
-	source = git+https://gitlab.gnome.org/World/lollypop#branch=next
-	md5sums = SKIP
+	source = git+https://gitlab.gnome.org/World/lollypop.git#branch=next
+	source = git+https://gitlab.gnome.org/gnumdk/lollypop-po.git
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = lollypop-next-git
-
