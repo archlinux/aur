@@ -5,11 +5,11 @@ pkgrel=1 # version of the backage
 #epoch=1 # the newest package, next time set epoch to 2 (this is to ensure that this is the latest package, it default pkg ver comparsion not working)
 pkgdesc="Git commit simulator using Conventional Commits conventions"
 arch=('x86_64')
-url="https://github.com/KunalSin9h/commit.git"
+url="https://github.com/KunalSin9h/git-commit.git"
 license=('MIT')
 depends=('gum') # Runtime dependency
 makedepends=('git') # build time dependency
-source=(git+https://github.com/KunalSin9h/commit.git)
+source=(git+https://github.com/KunalSin9h/git-commit.git)
 md5sums=('SKIP')
 
 package() {
