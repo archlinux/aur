@@ -3,7 +3,7 @@
 
 _pkgname=klassy
 pkgname=${_pkgname}-git
-pkgver=4.0.breeze5.25.80.r0.g9f2ad89c
+pkgver=4.2.breeze5.26.r1.g9994ee71
 pkgrel=1
 pkgdesc='Klassy is a highly customizable binary Window Decoration and Application Style plugin for recent versions of the KDE Plasma desktop. It provides the Klassy, Kite, Oxygen/Breeze, and Redmond icon styles.'
 arch=(x86_64)
@@ -13,7 +13,7 @@ replaces=(classik-git)
 depends=(frameworkintegration kdecoration breeze-icons kwayland kirigami2 hicolor-icon-theme)
 makedepends=(git extra-cmake-modules kcmutils)
 optdepends=('kcmutils: for klassy-settings')
-provides=()
+provides=(klassy)
 conflicts=()
 source=("${_pkgname}::git+https://github.com/paulmcauley/klassy.git#branch=master")
 sha256sums=('SKIP')
