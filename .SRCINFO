@@ -22,7 +22,9 @@ pkgbase = streamdeck-ui-git
 	conflicts = streamdeck-ui
 	source = streamdeck-ui::git+https://github.com/timothycrosley/streamdeck-ui.git
 	source = 60-streamdeck.rules
+	source = streamdeck.service
 	sha256sums = SKIP
 	sha256sums = f91b76a71ee5253bcc3dff2a096fb7c2cc8ec4f510c7a9adc4df1f0967ea3dd3
+	sha256sums = f3350b2db661c0eebd8bbe3305d81d0189aa24552c286a9302484a32845526e0
 
 pkgname = streamdeck-ui-git

@@ -37,10 +37,12 @@ conflicts=(${provides[@]})
 source=(
   "$_pkgname"::"git+https://github.com/timothycrosley/streamdeck-ui.git"
   "60-streamdeck.rules"
+  "streamdeck.service"
 )
 sha256sums=(
   'SKIP'
   'f91b76a71ee5253bcc3dff2a096fb7c2cc8ec4f510c7a9adc4df1f0967ea3dd3'
+  'f3350b2db661c0eebd8bbe3305d81d0189aa24552c286a9302484a32845526e0'
 )
 
 pkgver() {
@@ -58,6 +60,7 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm 644 "$srcdir/60-streamdeck.rules" -t "$pkgdir/usr/lib/udev/rules.d"
+  install -Dm 644 "$srcdir/streamdeck.service" -t "$pkgdir/usr/lib/systemd/user"
 
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
