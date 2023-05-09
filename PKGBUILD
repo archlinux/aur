@@ -6,7 +6,7 @@ pkgdesc="Calculate the difference hash (perceptual hash) for an image"
 url="https://github.com/Jetsetter/dhash"
 
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 
 arch=("any")
 license=("MIT")
