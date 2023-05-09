@@ -14,7 +14,7 @@ pkgname=(
 )
 epoch=1
 pkgver=23.0.0
-pkgrel=2
+pkgrel=3
 
 pkgdesc='GNAT Components Collection - Language and library bindings'
 url='https://github.com/AdaCore/gnatcoll-bindings'
@@ -25,10 +25,12 @@ depends=('gnatcoll-core')
 makedepends=('python' 'gprbuild' 'libiconv' 'syslog-ng')
 
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-        "0002-fix-python-don-t-cache-prefix-during-install.patch")
+        "0002-fix-python-don-t-cache-prefix-during-install.patch"
+        "python_support.c-patch")
 
 sha256sums=('d51a7d1d35b2689feb6b05568702c4a22226538902ffd658e6f98a5d69d7bd51'
-            '0655801612e6b69a81d240e6fff71262c7db73c4708766e24627c1329730c345')
+            '0655801612e6b69a81d240e6fff71262c7db73c4708766e24627c1329730c345'
+            '6ca238a94cbafb0eca0f95e23d055cf9f10c0bd75bcc6cb27075ec4861ee3a38')
 
 _source_dir="$pkgbase-$pkgver"
 
@@ -37,6 +39,7 @@ prepare()
 {
     cd "$srcdir/$_source_dir"
     patch -p1 < "$srcdir/0002-fix-python-don-t-cache-prefix-during-install.patch"
+    patch -p0 < "$srcdir/python_support.c-patch"
 }
 
 build()
