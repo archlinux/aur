@@ -1,5 +1,5 @@
 [Unit]
-Description=Tvheadend - a TV streaming server and DVR
+Description=Tvheadend - TV streaming server and DVR
 Wants=network.target
 
 [Service]

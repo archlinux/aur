@@ -1,102 +1,70 @@
-# Maintainer: Francois Menning <f.menning@pm.me>
+# Maintainer: willemw <willemw12@gmail.com>
+# Contributor: Francois Menning <f.menning@pm.me>
 # Contributor: Dan Ziemba <zman0900@gmail.com>
 # Contributor: Benjamin Hedrich <kiwisauce (a) pagenotfound (dot) de>
 
-_gitname='tvheadend-git'
 pkgname=tvheadend-git
-pkgver=4.3.r2028.g1c65e8b0f
+pkgver=4.3.r2120.g18effa8
 pkgrel=1
-pkgdesc="TV streaming server for Linux"
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="https://tvheadend.org/"
-license=('GPL3')
-depends=(
-  'avahi'
-  'ffmpeg4.4'
-  'libavresample'
-  'libdvbcsa'
-  'libfdk-aac'
-  'libhdhomerun'
-  'libogg'
-  'libtheora'
-  'libvorbis'
-  'libvpx'
-  'openssl'
-  'opus'
-  'pcre2'
-  'pngquant'
-  'uriparser'
-  'x264'
-  'x265'
-)
-makedepends=(
-  'git'
-  'python'
-)
-optdepends=(
-  'xmltv: For an alternative source of programme listings'
-)
-options=('!strip' 'emptydirs')
-provides=('tvheadend')
-conflicts=('tvheadend')
-source=(
-  "${_gitname}::git+https://github.com/tvheadend/tvheadend.git"
-  tvheadend.service
-  tmpfile.conf
-  user.conf
-  0001-use-ffmpeg4.4.patch
-)
-sha512sums=('SKIP'
-            'd29662ee47f2d0da98d444819f730a8c487999454d60d7397b0f67068300ab5111ffce18befc9fdef5ff8fa1925213716837ea44808fb934197e4a56f98de8a7'
-            '1080c8a2530d1f16ab5304cdd81c9c9da23b281e44a4874f4921905c843d876831214af481f9be91a74291ed4a6a10684dbdfb8f926b51bbb6895b92d493b201'
-            '5e0475cfe1f915bd3269ba3e9e0ca6cc7e492988bfd4f1feafcbbd3e8b0276c228f0b08a4116f3213d12c0ea940eff0dc71601a6e6ddcda934964cf51a665539'
-            'f381843e870723bffe34648e6427a5bbfb85076f59b2def1e89b58bc68db93f06dbd6fe20b508bb72daecf0e832094beae769425c121c632a9d017edd00b8575')
+pkgdesc='TV streaming server and DVR'
+#arch=(x86_64)
+arch=(aarch64 arm armv6h armv7h i686 x86_64)
+url=https://tvheadend.org/
+license=(GPL3)
+# NOTE: ffmpeg 6 is not supported (https://github.com/tvheadend/tvheadend/pull/1522)
+depends=(avahi ffmpeg4.4 libdvbcsa libfdk-aac libhdhomerun libogg libtheora libvorbis libvpx
+         openssl opus pcre2 pngquant uriparser x264 x265)
+makedepends=(git python)
+optdepends=('xmltv: alternative source of programme listings')
+options=('!strip' emptydirs)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git+https://github.com/tvheadend/tvheadend.git"
+        tmpfile.conf
+        tvheadend.service
+        user.conf)
+sha256sums=('SKIP'
+            'b01fa913421e67e40bc1aa5da079e30cb1d8c20913133ded1ad651d6ce84b9b6'
+            'a8e95cd2ec5626a47f49c0aa1f8524d6e155809cfbf6504b9a1484afdf62cfb7'
+            '35786e211d4cbf6de213f28e7382378f27f3bef17458e8533ad43fed06e7f202')
 
 pkgver() {
-  cd "${srcdir}/${_gitname}"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "${srcdir}/${_gitname}"
-  patch -Np1 -i ../0001-use-ffmpeg4.4.patch
+  git -C $pkgname describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/${_gitname}"
+  cd $pkgname
 
-  # Work-around for GCC 10
-  export CFLAGS="$CFLAGS -Wno-error=array-bounds -Wno-error=address"
+  export PKG_CONFIG_PATH=/usr/lib/ffmpeg4.4/pkgconfig
 
   ./configure \
-    --prefix=/usr \
     --datadir=/var/lib \
-    --mandir=/usr/share/man/man1 \
-    --python=python3 \
+    --disable-ffmpeg_static \
+    --disable-hdhomerun_static \
+    --disable-libfdkaac_static \
+    --disable-libogg_static \
+    --disable-libopus_static \
+    --disable-libtheora_static \
+    --disable-libvorbis_static \
+    --disable-libvpx_static \
+    --disable-libx264_static \
+    --disable-libx265_static \
     --enable-avahi \
-    --enable-zlib \
-    --enable-pngquant \
     --enable-libav \
-    --disable-ffmpeg_static --enable-ffmpeg \
-    --disable-libx264_static --enable-libx264 \
-    --disable-libx265_static --enable-libx265 \
-    --disable-libvpx_static --enable-libvpx \
-    --disable-libogg_static --enable-libogg \
-    --disable-libtheora_static --enable-libtheora \
-    --disable-libvorbis_static --enable-libvorbis \
-    --disable-libfdkaac_static --enable-libfdkaac \
-    --disable-libopus_static --enable-libopus \
-    --disable-hdhomerun_static --enable-hdhomerun_client
+    --enable-pngquant \
+    --enable-vaapi \
+    --enable-zlib \
+    --mandir=/usr/share/man/man1 \
+    --prefix=/usr \
+    --python=python3
 
   make
 }
 
 package() {
-  cd "${srcdir}/${_gitname}"
+  make -C $pkgname DESTDIR="$pkgdir/" install
 
-  make DESTDIR="$pkgdir/" install
-
-  install -Dm 644 "${srcdir}/tvheadend.service" -t "${pkgdir}/usr/lib/systemd/system"
-  install -Dm 644 "${srcdir}/user.conf" "${pkgdir}/usr/lib/sysusers.d/tvheadend.conf"
-  install -Dm 644 "${srcdir}/tmpfile.conf" "${pkgdir}/usr/lib/tmpfiles.d/tvheadend.conf"
+  install -Dm644 tmpfile.conf         "$pkgdir/usr/lib/tmpfiles.d/tvheadend.conf"
+  install -Dm644 tvheadend.service -t "$pkgdir/usr/lib/systemd/system"
+  install -Dm644 user.conf            "$pkgdir/usr/lib/sysusers.d/tvheadend.conf"
 }
