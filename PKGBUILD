@@ -1,7 +1,7 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=gallery-dl-git
-pkgver=1.25.2.r12.ge07ceb9
+pkgver=1.25.4.r0.g306e13a
 pkgrel=1
 pkgdesc='Command-line program to download image-galleries and collections from several image hosting sites (git)'
 arch=(any)
@@ -25,6 +25,11 @@ md5sums=('SKIP')
 
 pkgver() {
     git -C "${pkgname%-git}" describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    # Clean out old wheels etc.
+    git -C "${pkgname%-git}" clean -dfx
 }
 
 build() {
