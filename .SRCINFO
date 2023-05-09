@@ -1,7 +1,7 @@
 pkgbase = r-rms
 	pkgdesc = Regression Modeling Strategies
 	pkgver = 6.7.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=rms
 	arch = x86_64
 	license = GPL
@@ -13,13 +13,13 @@ pkgbase = r-rms
 	depends = r-hmisc
 	depends = r-htmltable
 	depends = r-htmltools
-	depends = r-kableextra
 	depends = r-knitr
 	depends = r-multcomp
 	depends = r-polspline
 	depends = r-quantreg
 	depends = r-sparsem
 	optdepends = r-boot
+	optdepends = r-kableextra
 	optdepends = r-lattice
 	optdepends = r-mice
 	optdepends = r-nnet

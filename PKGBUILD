@@ -4,7 +4,7 @@ _pkgname=rms
 _pkgver=6.7-0
 pkgname=r-${_pkgname,,}
 pkgver=6.7.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Regression Modeling Strategies'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,6 @@ depends=(
   r-hmisc
   r-htmltable
   r-htmltools
-  r-kableextra
   r-knitr
   r-multcomp
   r-polspline
@@ -26,6 +25,7 @@ depends=(
 )
 optdepends=(
   r-boot
+  r-kableextra
   r-lattice
   r-mice
   r-nnet
