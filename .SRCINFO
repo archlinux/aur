@@ -8,6 +8,7 @@ pkgbase = intel-hybrid-codec-driver-git
 	arch = x86_64
 	license = MIT
 	makedepends = autoconf
+	makedepends = automake
 	makedepends = git
 	depends = libva
 	depends = libcmrt

@@ -40,6 +40,7 @@ optdepends=(
 )
 makedepends=(
   'autoconf'
+  'automake'
   'git'
 )
 provides=(
