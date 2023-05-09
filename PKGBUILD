@@ -1,9 +1,10 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
+# Maintainer: Samuel Braun <dr.br web de>
 
 _pkgname=lssecret
 pkgname=${_pkgname}-git
 pkgver=r10.20fd771
-pkgrel=1
+pkgrel=2
 pkgdesc="utility to list all secret items in a secret service using libsecret"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/GrantMoyer/lssecret"
