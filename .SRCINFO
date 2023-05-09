@@ -1,0 +1,15 @@
+pkgbase = nintyfont-git
+	pkgdesc = Nintendo binary font editor
+	pkgver = 1.0.alpha.2.r2.g38af946
+	pkgrel = 1
+	url = https://github.com/hadashisora/NintyFont
+	arch = any
+	license = GPL3
+	makedepends = base-devel
+	makedepends = qt5-base
+	makedepends = cmake
+	makedepends = fmt
+	source = nintyfont::git+https://github.com/hadashisora/NintyFont.git
+	md5sums = SKIP
+
+pkgname = nintyfont-git
