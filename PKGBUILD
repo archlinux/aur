@@ -3,7 +3,7 @@
 _pkgname=decord
 pkgname=('python-decord' 'python-decord-cuda')
 pkgver=0.6.0
-pkgrel=4
+pkgrel=5
 pkgdesc="An efficient video loader for deep learning with smart shuffling that's super easy to digest"
 arch=('x86_64')
 url='https://github.com/dmlc/decord'
@@ -22,6 +22,7 @@ makedepends=(
   cmake
   cuda
   cython
+  gcc12
   git
   python-setuptools
 )
@@ -37,6 +38,9 @@ prepare() {
   sed -i "s,AVCodec \*dec,const AVCodec \*dec," "src/video/video_reader.cc"
   sed -i "165s,fmt_ctx_,(AVInputFormat\*)fmt_ctx_," "src/video/video_reader.cc"
   cp -a "${srcdir}/${_pkgname}-${pkgver}" "${srcdir}/${_pkgname}-cuda-${pkgver}"
+  # build with gcc12
+  export CC=gcc-12
+  export CXX=g++-12
 }
 
 build() {

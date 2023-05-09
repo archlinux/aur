@@ -1,7 +1,7 @@
 pkgbase = python-decord
 	pkgdesc = An efficient video loader for deep learning with smart shuffling that's super easy to digest
 	pkgver = 0.6.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/dmlc/decord
 	arch = x86_64
 	license = Apache
@@ -9,6 +9,7 @@ pkgbase = python-decord
 	makedepends = cmake
 	makedepends = cuda
 	makedepends = cython
+	makedepends = gcc12
 	makedepends = git
 	makedepends = python-setuptools
 	depends = ffmpeg
