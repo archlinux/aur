@@ -1,7 +1,7 @@
 # Maintainer: wankong <gomu012003@163.com>
 pkgname=gephgui-wry-git
 _pkgname=gephgui-wry
-pkgver=r104.a13d3e5
+pkgver=r109.4738937
 pkgrel=1
 pkgdesc="Geph connects you with the censorship-free Internet, even when nothing else works"
 arch=('x86_64')
