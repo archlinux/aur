@@ -1,9 +1,9 @@
 # Maintainer: Helg1980 <depositmail@rambler.ru>
 pkgname=cine-encoder
 _name=${pkgname}
-pkgver=3.5.4
+pkgver=3.5.5
 pkgrel=1
-pkgdesc="Cine Encoder 2022"
+pkgdesc="Cine Encoder 2023"
 arch=(x86_64)
 url="https://github.com/CineEncoder/cine-encoder.git"
 license=('GPL3')
@@ -11,8 +11,8 @@ depends=('gcc' 'qt5-base>=5.15' 'qt5-multimedia>=5.15' 'qt5-svg>=5.15'
   'qt5-x11extras>=5.15' 'libmediainfo>=20.03' 'libxext'
   'ffmpeg>=4.2' 'mkvtoolnix-cli>=49.0' 'intel-media-driver>=22.2'
   'libva-intel-driver>=2.4')
-source=("https://github.com/CineEncoder/cine-encoder/archive/3.5.4.tar.gz")
-md5sums=('015fef1f0c2c6acbcd520d776f6c6b26')
+source=("https://github.com/CineEncoder/cine-encoder/archive/3.5.5.tar.gz")
+md5sums=('6128d9389113822c1d5e77aa3db0d6e4')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
