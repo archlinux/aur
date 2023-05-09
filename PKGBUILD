@@ -1,7 +1,7 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@proton.me>
 pkgname=nodejs-emmet-ls
 _pkgname=${pkgname#nodejs-}
-pkgver=0.3.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='Emmet support by LSP'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('npm' 'jq')
 depends=('nodejs')
 source=("https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz")
-b2sums=('54993e3833fd50a7a1298cdb4b617e8f31582e3d6069c4f3dd0c3e0c12d9c7fb305ceb66428952d49ae05fe56f40f68847f3c50b7eb8ae1a45da0a90aa9fea6d')
+b2sums=('375c0ade058266d609234c4aeaee10754c993cebb76c81973fc83d9f5f84289f8a2fcf7be54f130199ee043a3bbf071b1aeba4b39be15584f701e04adf22ef10')
 noextract=("$_pkgname-$pkgver.tgz")
 
 package() {
