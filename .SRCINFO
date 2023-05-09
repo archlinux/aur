@@ -1,0 +1,15 @@
+pkgbase = mcvm-git
+	pkgdesc = A Minecraft version manager and launcher
+	pkgver = r199.3d1dfd6
+	pkgrel = 1
+	url = https://github.com/CarbonSmasher/mcvm
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cargo
+	provides = mcvm
+	conflicts = mcvm
+	source = mcvm::git+https://github.com/CarbonSmasher/mcvm.git
+	md5sums = SKIP
+
+pkgname = mcvm-git
