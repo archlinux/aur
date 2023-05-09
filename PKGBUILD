@@ -1,37 +1,49 @@
-# Maintainer: Abakus <java5@arcor.de>
-pkgname=nasm-git
-pkgver=20201104
-pkgrel=1
-pkgdesc="80x86 assembler designed for portability and modularity"
-arch=('i686' 'x86_64')
-url="https://www.nasm.us/"
-depends=('glibc')
-makedepends=('git' 'asciidoc')
-license=('GPL')
-provides=('nasm')
-conflicts=('nasm')
-source=('git://github.com/netwide-assembler/nasm.git')
-md5sums=('SKIP')
+# Maintainer: éclairevoyant
 
-_gitname="nasm"
+_pkgname=nasm
+pkgname="$_pkgname-git"
+pkgver=2.16.01.r9.a916e412
+pkgrel=1
+epoch=1
+pkgdesc="80x86 assembler designed for portability and modularity"
+arch=(i686 x86_64)
+url='https://www.nasm.us'
+depends=(glibc)
+makedepends=(
+	adobe-source-sans-pro-fonts
+	asciidoc
+	diffutils
+	fontconfig
+	ghostscript
+	git
+	perl-font-ttf
+	perl-sort-versions
+	ttf-liberation
+	xmlto
+)
+license=(BSD)
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+source=("git+https://github.com/netwide-assembler/$_pkgname.git")
+b2sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
-  git show -s --format="%ci" HEAD | sed -e 's/-//g' -e 's/ .*//'
+	git -C $_pkgname describe --long --tags | sed 's/^nasm-//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$_gitname"
+	cd $_pkgname
+	./autogen.sh
+	./configure --prefix=/usr
+	make everything
+}
 
-  ./autogen.sh
-  ./configure --prefix=/usr
-  make
-  make manpages
-  make strip
+check() {
+	make -j1 -C $_pkgname/test golden test diff
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-  make prefix="$pkgdir/usr" install
+	cd $_pkgname
+	make DESTDIR="$pkgdir" install install_doc
+	install -vDm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
 }
-          
