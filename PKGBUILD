@@ -1,50 +1,32 @@
-# Maintainer: NBonaparte <nbonaparte@protonmail.com>
-# Contributor: Edgard Castro <castro@edgard.org>
-# Contributor: James An <james@jamesan.ca>
-# Contributor: Helge Willum Larsen <helgesdk@gmail.com>
-# Contributor: Ng Oon-Ee <ngoonee.talk@gmail.com>
-# Contributor: Byron Clark <byron@theclarkfamily.name> (auto-disper-git)
-# Contributor: phillipberndt (maintainer of the current autorandr)
-# Contributor: wertarbyte (original author of auto-disper and autorandr)
+# Maintainer: éclairevoyant
 
-pkgname=autorandr-git
-pkgver=1.3.r0.gcbb5662
+_pkgname=autorandr
+pkgname="$_pkgname-git"
+pkgver=1.13.3.r8.g65a2b31
 pkgrel=1
-pkgdesc="Auto-detect the connect display hardware and load the appropiate X11 setup using xrandr. Formerly autodisper. No disper support."
-arch=('any')
-url="https://github.com/phillipberndt/${pkgname%-git}"
-license=('GPL3')
-depends=('python' 'xorg-xrandr')
-makedepends=('git')
+pkgdesc="Auto-detect connected display hardware and load appropiate X11 setup using xrandr"
+arch=(any)
+url="https://github.com/phillipberndt/$_pkgname"
+license=(GPL3)
+depends=(python xorg-xrandr)
+makedepends=(desktop-file-utils git)
 optdepends=(
-  "pm-utils: For changing autorandr profile on thaw/resume"
-  "python2: For using autorandr_monitor"
-  "xorg-xdpyinfo: For detecting the primary XRandR output"
+	"pm-utils: For changing autorandr profile on thaw/resume"
+	"python2: For using autorandr_monitor"
+	"xorg-xdpyinfo: For detecting the primary XRandR output"
 )
-provides=("${pkgname%-git}")
-conflicts=(
-  "${pkgname%-git}"
-  "auto-disper-git"
-  "autorandr-asch-git"
-  "autorandr-phillipberndt-git"
-)
-install="${pkgname}.install"
-source=(
-  "${pkgname}::git+${url}.git"
-  "${pkgname}.install"
-)
-sha256sums=('SKIP'
-            '60c035d6f433d388ef1d3acec084dcd021158cbec79e9807e78cc368cb499690')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("git+$url.git")
+b2sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
-  ( set -o pipefail
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  ) 2>/dev/null
+	git -C $_pkgname describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
-  make DESTDIR="${pkgdir}" PREFIX=/usr install
+	cd $_pkgname
+	make DESTDIR="$pkgdir" PREFIX=/usr install
+	install -vDm644 contrib/zsh_completion/_$_pkgname -t "$pkgdir/usr/share/zsh/site-functions/"
+	install -vDm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname/"
 }
