@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-ppsspp
 pkgname=$_pkgname-git
-pkgver=1.14.4.r1087.g668a6d63cb
+pkgver=1.15.3.r10.gba4f2837e7
 pkgrel=1
 pkgdesc="Sony PlayStation Portable core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -56,7 +56,7 @@ prepare() {
 }
 
 build() {
-	export PKG_CONFIG_PATH=/usr/lib/ffmpeg4.4/pkgconfig
+	export FFMPEG_DIR="/usr/include/ffmpeg4.4;/usr/lib/ffmpeg4.4"
 	cmake -S ppsspp -B build \
 		-DARMIPS_USE_STD_FILESYSTEM=ON \
 		-DCMAKE_BUILD_TYPE=Release \
