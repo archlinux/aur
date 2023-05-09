@@ -1,0 +1,17 @@
+pkgbase = webcord-appimage
+	pkgdesc = A Discord and SpaceBar electron-based client implemented without Discord API.
+	pkgver = 4.2.0
+	pkgrel = 1
+	url = https://github.com/SpacingBat3/WebCord
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	conflicts = webcord
+	options = !strip
+	source = webcord-4.2.0.AppImage::https://github.com/SpacingBat3/WebCord/releases/download/v4.2.0/WebCord-4.2.0-x64.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/SpacingBat3/WebCord/master/LICENSE
+	sha256sums = c64a7975a8403942e936dcb18e2f288cccbb194144fdd0de0f377631b060f291
+	sha256sums = 7e8ddf98c883358508999fe6c1296b44353e624f8a4f7b6754fcfcc9aafa4456
+
+pkgname = webcord-appimage
