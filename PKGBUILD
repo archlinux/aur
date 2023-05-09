@@ -9,9 +9,9 @@
 # NOTE: libtool requires rebuilt with each new gcc version
 
 pkgname=(gcc12 gcc12-libs gcc12-fortran)
-pkgver=12.2.1
+pkgver=12.3.0
 _majorver=${pkgver%%.*}
-_commit=abaa8f9cc4c06dcdae13a33be9253762861d8657
+_commit=8fc1a49c9312b05d925b7d21f1d2145d70818151
 pkgrel=1
 pkgdesc='The GNU Compiler Collection'
 arch=(x86_64)
