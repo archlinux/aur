@@ -132,10 +132,13 @@ if [ -f "$initrd" ];then
   ine="0x$(printf '%x\n' $(( $ins + $(du -b $initrd | cut -f1) )))"
   fdtput -tx "$atfdtb" "/chosen" "linux,initrd-end" "$ine"
   fdtput -tx "$atfdtb" "/chosen" "linux,initrd-start" "$ins"
-  initrdfile="$initrd"
 else
-  echo -n "" > "$tmp/initrd"
-  initrdfile="$tmp/initrd"
+  echo -n "EMPTYBYT" > "$tmp/initrd"
+  initrd="$tmp/initrd"
+fi
+if [ ! -f "$atfdtb" ];then
+  echo -n "EMPTYBYT" > "$tmp/atfdtb"
+  atfdtb="$tmp/atfdtb"
 fi
 
 ##############################
@@ -150,7 +153,7 @@ if [ -L ${fipdevicel} ]; then
   fiptool --verbose create $tmp/fip.bin $bl31 \
                --nt-fw "$linux" \
         --nt-fw-config "$atfdtb" \
-       --tos-fw-extra2 "$initrdfile"
+       --tos-fw-extra2 "$initrd"
   fiptool info $tmp/fip.bin
   echo Writing FIP to: ${fipdevicel}
   dd bs=1M of=${fipdevicel} if=/dev/zero 2>/dev/null
