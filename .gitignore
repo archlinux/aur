@@ -1,0 +1,6 @@
+*.zst
+*.log
+*.tar.gz
+netboard-git
+pkg
+src
