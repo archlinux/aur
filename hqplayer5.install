@@ -20,7 +20,7 @@ mkdir -p /etc/pki/tls/certs
 ln -s /etc/ssl/certs/ca-certificates.crt /etc/pki/tls/certs/ca-bundle.crt
 fi
 if [ ! -f "libsgllnx64-2.29.02.so" ]; then
-ln -s /opt/hqplayer4desktop/lib/libsgllnx64-2.29.02.so libsgllnx64-2.29.02.so
+ln -s /opt/hqplayer5desktop/lib/libsgllnx64-2.29.02.so libsgllnx64-2.29.02.so
 fi
 }
 
@@ -46,6 +46,6 @@ mkdir -p /etc/pki/tls/certs
 ln -s /etc/ssl/certs/ca-certificates.crt /etc/pki/tls/certs/ca-bundle.crt
 fi
 if [ ! -f "libsgllnx64-2.29.02.so" ]; then
-ln -s /opt/hqplayer4desktop/lib/libsgllnx64-2.29.02.so libsgllnx64-2.29.02.so
+ln -s /opt/hqplayer5desktop/lib/libsgllnx64-2.29.02.so libsgllnx64-2.29.02.so
 fi
 }
