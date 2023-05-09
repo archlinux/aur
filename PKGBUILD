@@ -4,7 +4,7 @@
 # Original author: Bennett Goble <nivardus at gmail dot com>
 
 pkgname=xdemorse
-pkgver=3.6.5
+pkgver=3.6.7
 pkgrel=1
 pkgdesc="An X/GTK+ application - decodes Morse Code signals into text."
 arch=('i686' 'x86_64')
@@ -57,9 +57,9 @@ package() {
 
 	rm $pkgdir/usr/share/doc/$pkgname/$pkgname.1.gz
 }
-md5sums=('be235ea4af07c3b77443937e484cc402'
+md5sums=('a265ce05e395264f2b1b31220642dbdf'
          'abb9f6e6510c9f747d70c738eeb5a824'
          '568d6a9bc01dc76a39408dc93ac094a1')
-sha256sums=('9d763eb303990038905412a846da7e836dbe865397cbc99e93227be6509691c6'
+sha256sums=('2d512d14047083175c621442684edfca8d86563faaddd44c27df86722f09adbf'
             '1a690f6c7fdb73be3ebcedb59390faf74fcfb5f71484290d9d5a682650d3c9b1'
             '8aead0451f0c0ef8158b89654882c27b9fe6836beac6ecf2e7e0840b4cd4ec39')
