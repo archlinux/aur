@@ -1,8 +1,8 @@
 # Maintainer: Derek J. Clark <derekjohn.clark@gmail.com>
 pkgname=opengamepadui-bin
 _pkgbase=opengamepadui
-pkgver=v0.10.1
-pkgrel=2
+pkgver=v0.11.0
+pkgrel=1
 pkgdesc="Open source game launcher"
 arch=('x86_64')
 url="https://github.com/ShadowBlip/OpenGamepadUI"
@@ -10,11 +10,12 @@ license=('GPL')
 depends=('glibc' 'gcc-libs' 'libx11' 'libxres' 'libxcb' 'libxext' 'libxau'
 	 'libxdmcp' 'gamescope' 'ryzenadj-git' 'networkmanager'
 	 )
+optdepends=('firejail' 'bubblewrap')
 provides=('opengamepadui')
 conflicts=('opengamepadui-git')
 source=(opengamepadui-$pkgver.tar.gz::https://github.com/ShadowBlip/OpenGamepadUI/releases/download/$pkgver/opengamepadui.tar.gz)
 
-sha256sums=('f4925396e53536ebd401950c03ae45c02867211cb28123b92b4544d50c9afbdb')
+sha256sums=('cccc41ea0cda8a74b465c2ad21ac88be924fa586415b9006bd24cbc05883c392')
 
 prepare() {
 	cd "$srcdir/${_pkgbase}"
@@ -35,7 +36,7 @@ package() {
 	install -Dm644 usr/lib/udev/hwdb.d/59-opengamepadui-handheld.hwdb ${pkgdir}/usr/lib/udev/hwdb.d/59-opengamepadui-handheld.hwdb
 
 	mkdir -p ${pkgdir}/usr/lib/udev/rules.d
-	install -Dm644 usr/lib/udev/rules.d/10-opengamepadui-handheld.rules ${pkgdir}/usr/lib/udev/rules.d/10-opengamepadui-handheld.rules
+	install -Dm644 usr/lib/udev/rules.d/61-opengamepadui-handheld.rules ${pkgdir}/usr/lib/udev/rules.d/61-opengamepadui-handheld.rules
 	
 	mkdir -p ${pkgdir}/usr/share/icons/hicolor/scalable/apps
 	install -Dm444 usr/share/icons/hicolor/scalable/apps/opengamepadui.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/opengamepadui.svg
@@ -52,3 +53,4 @@ package() {
 	mkdir -p ${pkgdir}/usr/share/polkit-1/actions
 	install -Dm644 usr/share/polkit-1/actions/org.shadowblip.powertools.policy ${pkgdir}/usr/share/polkit-1/actions
 }
+
