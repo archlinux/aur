@@ -39,7 +39,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         xdg-basedir.patch
         no-omnibox-suggestion-autocomplete.patch
         index.html)
-sha256sums=('76cec11dc13abe6703305b0300e1fe24c8f547c1ff313f7be09db0e23d12ee1e'
+sha256sums=('a4520b53c824d75bcbc80bcf5da0c3d6f213038c8e31904b8a3bfbe415893ba5'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '5f868cba9e4d387499711738adc6fd87ab9f1ef61f464016bc682660ae59206a'
             'd464eed4be4e9bf6187b4c40a759c523b7befefa25ba34ad6401b2a07649ca2a'
