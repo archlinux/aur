@@ -3,7 +3,7 @@
 pkgname=python-ping3
 _name=ping3
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/kyan001/ping3"
 license=('MIT')
