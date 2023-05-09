@@ -1,8 +1,8 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 
 pkgname=obs-studio-tytan652
-pkgver=29.1.0
-pkgrel=3
+pkgver=29.1.1
+pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus V4L2 devices by paths, my bind interface PR, and sometimes backported fixes"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -79,7 +79,6 @@ source=(
   "qr::git+https://github.com/nayuki/QR-Code-generator.git"
   "bind_iface.patch" # Based on https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4219.patch
   "v4l2_by-path.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/3437.patch
-  "0001-Enforce_-Wmaybe-uninitialized_never_turn_into_error.patch"
 )
 sha256sums=(
   "SKIP"
@@ -88,7 +87,6 @@ sha256sums=(
   "SKIP"
   "65116d10f03d390505fdb0bbf6fe649e8649500441dde91e029f2eb79bfdc80f"
   "ee54b9c6f7e17fcc62c6afc094e65f18b2e97963c2fe92289b2b91972ac206e5"
-  "9227a5f3439d19c2c75e369bc6701dc83c4ac54cc371b7f74e55c9e275512f6c"
 )
 
 if [[ $CARCH == 'x86_64' ]]; then
@@ -106,8 +104,6 @@ prepare() {
   git -c protocol.file.allow=always submodule update deps/qr
 
   cd "$srcdir/obs-studio"
-  patch -Np1 < "$srcdir/0001-Enforce_-Wmaybe-uninitialized_never_turn_into_error.patch"
-
   ## Add network interface binding for RTMP on Linux (https://github.com/obsproject/obs-studio/pull/4219)
   patch -Np1 < "$srcdir/bind_iface.patch"
 
