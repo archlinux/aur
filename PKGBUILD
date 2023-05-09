@@ -1,7 +1,7 @@
 # Maintainer: Derek J. Clark <derekjohn.clark@gmail.com>
 pkgname=opengamepadui-git
 _pkgbase=OpenGamepadUI
-pkgver=v0.10.1.r0.g2b9ad82
+pkgver=v0.11.0.r0.g372962d
 pkgrel=1
 pkgdesc="Open source game launcher"
 arch=('x86_64')
@@ -9,16 +9,16 @@ url="https://github.com/ShadowBlip/OpenGamepadUI"
 license=('GPL')
 groups=()
 depends=('glibc' 'gcc-libs' 'libx11' 'libxres' 'libxcb' 'libxext' 'libxau'
-	 'libxdmcp' 'gamescope' 'ryzenadj-git' 'firejail' 'networkmanager'
+	 'libxdmcp' 'gamescope' 'ryzenadj-git' 'networkmanager'
 	 )
-optdepends=()
+optdepends=('firejail' 'bubblewrap')
 makedepends=('godot' 'scons' 'pkgconf' 'gcc' 'libxcursor' 'libxinerama'
 	     'libxi' 'libxrandr' 'mesa' 'glu' 'libglvnd' 'alsa-lib' 'make'
 	     'unzip' 'wget' 'git'
 	     )
 provides=('opengamepadui')
 conflicts=('opengamepadui-bin')
-_tag=2b9ad82c7874311fd4ea190951dd3eb1a96ec5a5
+_tag=372962d98bd04929fe6d783b11492fcdae07c831
 source=("${_pkgbase}::git+https://github.com/ShadowBlip/${_pkgbase}.git#tag=${_tag}")
 sha256sums=('SKIP')
 
@@ -50,7 +50,7 @@ package() {
 	install -Dm644 rootfs/usr/lib/udev/hwdb.d/59-opengamepadui-handheld.hwdb ${pkgdir}/usr/lib/udev/hwdb.d/59-opengamepadui-handheld.hwdb
 
 	mkdir -p ${pkgdir}/usr/lib/udev/rules.d
-	install -Dm644 rootfs/usr/lib/udev/rules.d/10-opengamepadui-handheld.rules ${pkgdir}/usr/lib/udev/rules.d/10-opengamepadui-handheld.rules
+	install -Dm644 rootfs/usr/lib/udev/rules.d/61-opengamepadui-handheld.rules ${pkgdir}/usr/lib/udev/rules.d/61-opengamepadui-handheld.rules
 	
 	mkdir -p ${pkgdir}/usr/share/icons/hicolor/scalable/apps
 	install -Dm444 rootfs/usr/share/icons/hicolor/scalable/apps/opengamepadui.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/opengamepadui.svg
