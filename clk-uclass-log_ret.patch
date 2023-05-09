@@ -1,0 +1,18 @@
+diff -Naur a/drivers/clk/clk-uclass.c b/drivers/clk/clk-uclass.c
+--- a/drivers/clk/clk-uclass.c	2021-09-04 14:06:27.036885707 +0200
++++ b/drivers/clk/clk-uclass.c	2021-09-04 14:06:08.405490429 +0200
+@@ -512,11 +512,14 @@
+ 	if (!ops->get_rate)
+ 		return -ENOSYS;
+ 
++	return ops->get_rate(clk);
++/*
+ 	ret = ops->get_rate(clk);
+ 	if (ret)
+ 		return log_ret(ret);
+ 
+ 	return 0;
++*/
+ }
+ 
+ struct clk *clk_get_parent(struct clk *clk)

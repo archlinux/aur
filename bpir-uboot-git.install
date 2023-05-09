@@ -1,0 +1,31 @@
+post_upgrade() {
+  _partlabelroot=$(lsblk -plno partlabel $rootdev | grep -G '\-root$' )
+  [ -z "$_partlabelroot" ] && return
+  _target=$(echo $_partlabelroot | cut -d'-' -f1)
+  cp -vf /boot/u-boot-${_target}.bin /boot/u-boot.bin # This is the file that boots
+}
+
+post_install() {
+  _partlabelroot=$(lsblk -plno partlabel $rootdev | grep -G '\-root$' )
+  [ -z "$_partlabelroot" ] && return
+  mkdir -p /boot/extlinux
+  cat <<EOT | tee /boot/extlinux/extlinux.conf
+DEFAULT linux-bpir64-git
+  MENU title U-Boot menu
+  PROMPT 0
+  TIMEOUT 50
+LABEL linux-bpir64-git
+  MENU LABEL Archlinux AUR package BananaPi Routers
+  LINUX $(cat  /boot/bootcfg/linux   2>/dev/null | cut -c6-)
+  INITRD $(cat /boot/bootcfg/initrd  2>/dev/null | cut -c6-)
+  FDT $(cat    /boot/bootcfg/atfdtb  2>/dev/null | cut -c6-)
+  APPEND root=PARTLABEL=${_partlabelroot} $(cat /boot/bootcfg/cmdline 2>/dev/null)
+EOT
+  post_upgrade
+}
+
+post_remove() {
+ rm -vf  /boot/u-boot.bin
+ rm -vrf /boot/extlinux
+}
+
