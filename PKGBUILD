@@ -1,7 +1,7 @@
 # Maintainer: Naya Verdier <n at yaverdier dot com>
 pkgname=instater
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An easy solution for system/dotfile configuration'
 arch=('any')
 url=https://github.com/nayaverdier/instater

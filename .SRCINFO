@@ -1,7 +1,7 @@
 pkgbase = instater
 	pkgdesc = An easy solution for system/dotfile configuration
 	pkgver = 0.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nayaverdier/instater
 	arch = any
 	license = MIT
