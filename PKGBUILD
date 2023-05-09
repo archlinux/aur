@@ -10,7 +10,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium-xdg
-pkgver=113.0.5672.63
+pkgver=113.0.5672.92
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
