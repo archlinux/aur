@@ -1,7 +1,7 @@
 pkgbase = crmngr
 	pkgdesc = crmngr is a tool to aid with the management of a r10k-style control repository.
 	pkgver = 2.0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/vshn/crmngr
 	arch = any
 	license = BSD
@@ -15,4 +15,3 @@ pkgbase = crmngr
 	sha256sums = 69024a901a3faa48b8c1032b10d43a53816b10abfaee494377b545f7e4492323
 
 pkgname = crmngr
-
