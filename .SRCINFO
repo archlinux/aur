@@ -1,13 +1,13 @@
 pkgbase = pacnews
 	pkgdesc = Read Arch Linux News from your CLI
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/dottorblaster/pacnews
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = rust
-	source = https://github.com/dottorblaster/pacnews/archive/v2.2.0.tar.gz
-	md5sums = 8e394c619d904f6145e756d6ad06bf8a
+	source = https://github.com/dottorblaster/pacnews/archive/v2.3.0.tar.gz
+	md5sums = 77310b4abb16d3017489e5c1785dbf3f
 
 pkgname = pacnews
