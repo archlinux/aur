@@ -1,6 +1,6 @@
 pkgbase = apx
 	pkgdesc = Wrapper around multiple package managers to install packages and run commands inside a managed container
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/Vanilla-OS/apx
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = apx
 	makedepends = go
 	depends = distrobox
 	depends = glibc
-	source = apx-1.8.1.tar.gz::https://github.com/Vanilla-OS/apx/archive/refs/tags/1.8.1.tar.gz
-	b2sums = bfec4cd8f8b7e1a866344f2d146309edaf6744c99fea0cfce570a9a48054112db880a4dcafe8472aa44cf4e8ce17ce92b3d8c2ed1b22ec05be67eb30009ddaed
+	source = apx-1.8.2.tar.gz::https://github.com/Vanilla-OS/apx/archive/refs/tags/1.8.2.tar.gz
+	b2sums = 615f1fce06db9e84f7ce1a421d60af5f4b3ad6de6faa2accd913b0520f46ce70285d959277bd90ec94febabd114279a1035535cfebc2c99ebf86271ace795cd1
 
 pkgname = apx

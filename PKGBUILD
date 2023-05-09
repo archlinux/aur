@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=apx
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc='Wrapper around multiple package managers to install packages and run commands inside a managed container'
 arch=(x86_64 aarch64)
@@ -13,7 +13,7 @@ depends=(
 )
 makedepends=(go)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('bfec4cd8f8b7e1a866344f2d146309edaf6744c99fea0cfce570a9a48054112db880a4dcafe8472aa44cf4e8ce17ce92b3d8c2ed1b22ec05be67eb30009ddaed')
+b2sums=('615f1fce06db9e84f7ce1a421d60af5f4b3ad6de6faa2accd913b0520f46ce70285d959277bd90ec94febabd114279a1035535cfebc2c99ebf86271ace795cd1')
 
 prepare(){
 	cd "${pkgname}-${pkgver}"
