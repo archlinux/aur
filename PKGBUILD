@@ -1,11 +1,11 @@
 # Maintainer: a13xie <rostik.medved@gmail.com>
 pkgname='proidcm'
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 _filename="${pkgname}_${pkgver}-0_amd64"
 pkgdesc="Graphical utility for managing ProID Smart Cards"
 makedepends=(jq)
-depends=(libproidplus-gui)
+depends=(libproidplus-gui qt5-base)
 arch=('x86_64')
 url="https://proid.cz/"
 license=('custom:EULA')
