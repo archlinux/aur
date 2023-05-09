@@ -1,6 +1,6 @@
 pkgbase = ghdl-mcode-git
 	pkgdesc = VHDL simulator - mcode back-end
-	pkgver = 4.0.0dev.r8598.gca7532ce7
+	pkgver = 4.0.0dev.r8602.g97df73f72
 	pkgrel = 1
 	url = https://github.com/ghdl/ghdl
 	arch = x86_64
@@ -8,15 +8,14 @@ pkgbase = ghdl-mcode-git
 	arch = pentium4
 	license = GPL2
 	checkdepends = python-pytest
-	checkdepends = python-pydecor
 	checkdepends = python-pyvhdlmodel>=0.12
 	checkdepends = python-pytooling
 	checkdepends = python-pyattributes
 	makedepends = git
 	depends = gcc-ada
 	optdepends = python-pyghdl: python bindings and utilities
-	provides = ghdl=4.0.0dev.r8598.gca7532ce7
-	provides = ghdl-git=4.0.0dev.r8598.gca7532ce7
+	provides = ghdl=4.0.0dev.r8602.g97df73f72
+	provides = ghdl-git=4.0.0dev.r8602.g97df73f72
 	conflicts = ghdl
 	conflicts = ghdl-gcc-git
 	conflicts = ghdl-llvm-git

@@ -2,7 +2,7 @@
 # Maintainer: xiretza <xiretza+aur@xiretza.xyz>
 
 pkgname=ghdl-mcode-git
-pkgver=4.0.0dev.r8598.gca7532ce7
+pkgver=4.0.0dev.r8602.g97df73f72
 pkgrel=1
 arch=('x86_64' 'i686' 'pentium4')
 pkgdesc='VHDL simulator - mcode back-end'
@@ -14,7 +14,7 @@ conflicts=('ghdl' 'ghdl-gcc-git' 'ghdl-llvm-git')
 makedepends=('git')
 depends=('gcc-ada')
 checkdepends=(
-	'python-pytest' 'python-pydecor' 'python-pyvhdlmodel>=0.12'
+	'python-pytest' 'python-pyvhdlmodel>=0.12'
 	'python-pytooling' 'python-pyattributes'
 )
 optdepends=(
