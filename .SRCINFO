@@ -1,8 +1,8 @@
 pkgbase = mruby-full
     pkgdesc = Mruby with full gems
-    pkgver = 3.1.0
+    pkgver = 3.2.0
     pkgrel = 1
-    url = 'https://github.com/mruby/mruby'
+    url = https://github.com/mruby/mruby
     arch = x86_64
     license = MIT
     depends = readline
@@ -11,7 +11,7 @@ pkgbase = mruby-full
 	makedepends = ruby
     provides = mruby
 	conflicts = mruby
-    source = https://github.com/mruby/mruby/archive/3.1.0.tar.gz
-    sha1sums = d3e0a08b2034ef730fea9aa4fec82916e52d735b
+    source = https://github.com/mruby/mruby/archive/3.2.0.tar.gz
+    sha256sums = 3c198e4a31d31fe8524013066fac84a67fe6cd6067d92c25a1c79089744cb608
 
 pkgname = mruby-full

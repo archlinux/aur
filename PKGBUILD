@@ -1,5 +1,5 @@
 pkgname=mruby-full
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='Mruby with full gems'
 arch=(x86_64)
@@ -10,7 +10,7 @@ makedepends=(bison ruby ruby-rake)
 conflicts=(mruby)
 provides=(mruby)
 source=(mruby-$pkgver.tar.gz::https://github.com/mruby/mruby/archive/$pkgver.tar.gz)
-sha1sums=('d3e0a08b2034ef730fea9aa4fec82916e52d735b')
+sha256sums=('3c198e4a31d31fe8524013066fac84a67fe6cd6067d92c25a1c79089744cb608')
 
 build(){
     cd mruby-$pkgver
