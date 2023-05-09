@@ -2,7 +2,7 @@
 
 _pkgname=mmsegmentation
 pkgname=python-mmsegmentation
-pkgver=0.30.0
+pkgver=1.0.0
 pkgrel=1
 epoch=1
 pkgdesc='OpenMMLab Semantic Segmentation Toolbox and Benchmark'
@@ -11,27 +11,31 @@ url='https://github.com/open-mmlab/mmsegmentation'
 license=('Apache')
 depends=(
   python-matplotlib
-  python-mmclassification
+  python-mmpretrain
   python-mmcv
   python-numpy
   python-prettytable
 )
 makedepends=(
+  python-build
+  python-installer
   python-setuptools
+  python-wheel
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/open-mmlab/mmsegmentation/archive/v${pkgver}.tar.gz")
-sha512sums=('41e83eab33bd48efb05fdc98c9fb7e49106d40ba015ffa3be67a778ec8a67867f462b83157a43b40a69039e0a57939c72b9a4085b64592646d86258f43628ea4')
+sha512sums=('3555d52011d44f0aef1403ac630fc0a0137eb2b5b69bec02896cf04797789822e294f98582f0590521eacbbaff250c7e806dce664e3b714df76e3af969e8e915')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   cd "${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  # remove unneeded files
-  rm -rf "${pkgdir}${site_packages}/tests"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  # remove unused .mim and tests dir
+  rm -rfv "${pkgdir}${site_packages}/mmseg/.mim"
+  rm -rfv "${pkgdir}${site_packages}/tests"
 }
 # vim:set ts=2 sw=2 et:
