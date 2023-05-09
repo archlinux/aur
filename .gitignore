@@ -1,0 +1,4 @@
+tpm-*.tar.gz
+terraform-tpm-bin-*.pkg.tar.zst
+pkg/
+src/
