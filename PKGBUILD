@@ -1,28 +1,23 @@
 # Maintainer: aksr <aksr at t-com dot me>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
 pkgname=diakonos-git
-pkgver=0.9.1.r61.gc0eadfe
+pkgver=0.9.9.r38.g9d923f7
 pkgrel=1
 pkgdesc="A Linux console text editor for the masses."
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://diakonos.pist0s.ca/"
 license=('MIT')
-groups=()
-depends=('ruby' 'ruby-curses')
+depends=('ruby-curses')
 makedepends=('git')
-optdepends=()
 provides=('diakonos')
 conflicts=('diakonos')
-replaces=()
-backup=()
-options=()
-install=
 source=("$pkgname::git+https://github.com/Pistos/diakonos.git")
-noextract=()
 md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v//g'
+  printf %s.r%s $(head -4 CHANGELOG|tail -1) $(git describe --tags | cut -c8- | tr - .)
 }
 
 package() {
