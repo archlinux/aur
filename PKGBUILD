@@ -8,9 +8,9 @@
 
 pkgbase="joplin"
 pkgname=('joplin' 'joplin-desktop')
-pkgver=2.9.17
+pkgver=2.10.18
 groups=('joplin')
-pkgrel=2
+pkgrel=1
 install="joplin.install"
 depends=('electron' 'gtk3' 'libexif' 'libgsf' 'libjpeg-turbo' 'libwebp' 'libxss' 'nodejs>=17.3'
          'nss' 'orc' 'rsync' 'libvips')
@@ -24,7 +24,7 @@ source=("joplin.desktop" "joplin-desktop.sh" "joplin.sh"
 sha256sums=('c7c5d8b0ff9edb810ed901ea21352c9830bfa286f3c18b1292deca5b2f8febd2'
             'a450284fe66d89aa463d129ce8fff3a0a1a783a64209e4227ee47449d5737be8'
             '16aed6c4881efcef3fd86f7c07afb4c743e24d9da342438a8167346a015629e0'
-            '5a1d205bd52b86182b281f7c83b8a7b463941f5043729b4408490b249dfa0af8')
+            'd3f0d39596110926a7e557bd06783f5b4d24fff25ef2f14ee51afffaa4984a96')
 
 # local npm cache directory
 _yarn_cache="yarn-cache"
