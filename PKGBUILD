@@ -2,7 +2,7 @@
 
 pkgname=python-torchtext
 _pkgname=text
-pkgver=0.15.1
+pkgver=0.15.2
 pkgrel=1
 epoch=1
 pkgdesc='Data loaders and abstractions for text and NLP'
@@ -25,6 +25,7 @@ makedepends=(
   cmake
   git
   ninja
+  numactl
   python-build
   python-installer
   python-setuptools
