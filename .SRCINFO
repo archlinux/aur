@@ -1,14 +1,14 @@
 pkgbase = ahriman
 	pkgdesc = ArcH linux ReposItory MANager
 	pkgver = 2.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/arcan1s/ahriman
 	arch = any
 	license = GPL3
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = devtools
+	depends = devtools<=20230307
 	depends = git
 	depends = pyalpm
 	depends = python-cerberus
