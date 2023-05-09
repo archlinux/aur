@@ -3,13 +3,13 @@
 pkgname=python-tinytuya
 _pkgname=tinytuya
 pkgver=1.12.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Python module to interface with Tuya WiFi smart devices"
 arch=(x86_64)
 url="https://github.com/jasonacox/tinytuya"
 license=('MIT')
-depends=()
-makedepends=(python-build python-installer python-wheel)
+depends=(python-colorama python-pyaes python-requests)
+makedepends=(python-build python-installer python-wheel python-setuptools)
 checkdepends=()
 optdepends=()
 provides=()
