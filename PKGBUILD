@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=114.0a1+20230506.2+hca770a49d132
+pkgver=115.0a1+20230509.1+hfaf51404785d
 pkgrel=1
 pkgdesc="Development version of the popular Firefox web browser"
 url="https://www.mozilla.org/firefox/channel/#nightly"
@@ -69,7 +69,6 @@ source=(
   $pkgname.desktop
   identity-icons-brand.svg
   firefox-install-dir.patch
-  0001-Bug-1831691-Use-the-vendored-glean_parser-for-all-of.patch
 )
 validpgpkeys=(
   '14F26682D0916CDD81E37B6D61B7B526D98F0353'  # Mozilla Software Releases <release@mozilla.com>
@@ -77,13 +76,11 @@ validpgpkeys=(
 sha256sums=('SKIP'
             '7d90a9abacb5cc9870a31323ef31e361f620538c56609001d6d9e789b99b5e97'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
-            'c80937969086550237b0e89a02330d438ce17c3764e43cc5d030cb21c2abce5f'
-            'ac22441b4e10c3ae2071e91853948414763849ad43587de207462293f6b0db42')
+            'c80937969086550237b0e89a02330d438ce17c3764e43cc5d030cb21c2abce5f')
 b2sums=('SKIP'
         '3a7c8c5123349ea777ddb8f2f219f6048ce1f213b0a65edaad1fab42380be4e7b5cd27e4667f43786efeb13be827174936c3282607276f167b6eee0fd530af2a'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
-        'f76eb72c326f347991133c004b252ed2e037e72a7a436012fb1495668d2b9194d836765b58b01ba0bd9f5c4b888ee5ee715bdb458823a2a7822f1b299f4d1948'
-        '660aabc8f26b356a48863b070d4cf9569afa1c0b7565c0924699435f4d10a94310233742f8ee0f4f96ba7b93b59615d278d734a07c50267835dbf4cca0301d29')
+        'f76eb72c326f347991133c004b252ed2e037e72a7a436012fb1495668d2b9194d836765b58b01ba0bd9f5c4b888ee5ee715bdb458823a2a7822f1b299f4d1948')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -124,9 +121,6 @@ prepare() {
 
   # Change install dir from 'firefox' to 'firefox-nightly'
   patch -Np1 -i ../firefox-install-dir.patch
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1831691
-  patch -Np1 -i ../0001-Bug-1831691-Use-the-vendored-glean_parser-for-all-of.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
