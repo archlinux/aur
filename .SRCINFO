@@ -1,0 +1,31 @@
+pkgbase = python-intake
+	pkgdesc = A general interface for loading data
+	pkgver = 0.6.8
+	pkgrel = 1
+	url = https://intake.readthedocs.io/
+	arch = any
+	license = BSD
+	provides = python-intake=0.6.8
+	source = https://files.pythonhosted.org/packages/source/i/intake/intake-0.6.8.tar.gz
+	sha256sums = fcda7b572c63da20e5af39c30e0ff28cf7abad4c256e47dc6b5ce22edeb51a56
+
+pkgname = python-intake
+	depends = python>=3.8.0
+	depends = python-appdirs
+	depends = python-dask
+	depends = python-entrypoints
+	depends = python-fsspec>=2021.7.0
+	depends = python-jinja
+	depends = python-msgpack
+	depends = python-pyyaml
+	depends = python-requests
+	optdepends = python-tornado: For intake server
+	optdepends = python-snappy: For intake server
+	optdepends = python-msgpack: For intake server
+	optdepends = python-hvplot: For intake plot
+	optdepends = python-panel>=0.7.0: For intake plot
+	optdepends = python-bokeh: For intake plot
+	optdepends = python-dask: For intake dataframe
+	optdepends = python-msgpack-numpy: For intake dataframe
+	optdepends = python-pyarrow: For intake dataframe
+	optdepends = python-requests: For intake remote
