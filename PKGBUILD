@@ -55,7 +55,7 @@ if (( _manual_clone )); then
   makedepends+=('python-httplib2' 'python-pyparsing' 'python-six')
 fi
 
-provides="chromium=${pkgver}" "chromedriver=${pkgver}"
+provides=("chromium=${pkgver}" "chromedriver=${pkgver}")
 conflicts=('chromium' 'chromedriver')
 _uc_usr=ungoogled-software
 _uc_ver=$pkgver-1
