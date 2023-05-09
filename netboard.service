@@ -5,3 +5,6 @@ Description=netboard
 ExecStart=/usr/bin/netboard listen
 RestartSec=1s
 Restart=on-failure
+
+[Install]
+WantedBy=default.target

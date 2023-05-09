@@ -12,7 +12,7 @@ makedepends=(go)
 source=("https://github.com/primalmotion/netboard/archive/v${pkgver}.tar.gz"
 netboard.service)
 sha256sums=('534e85d0f42eea2aea901c2ffb4b030655f7db2d21f96664401495393a6b7767'
-            '7df348b72086d29366fc24cd75aca6d8565edbaabe7790e3acbc09631c28980b')
+            'fe470319810d17f929d983d1f8de2a474bcb9897e1cd1e68a33039c0d50d03e3')
 provides=("netboard")
 
 build() {
