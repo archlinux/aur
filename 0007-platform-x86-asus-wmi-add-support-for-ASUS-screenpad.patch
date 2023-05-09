@@ -1,0 +1,219 @@
+From 6f144cb34020fd81006680c6221f0ae5e44237ab Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Sun, 30 Apr 2023 10:56:34 +1200
+Subject: [PATCH 7/7] platform/x86: asus-wmi: add support for ASUS screenpad
+
+Add support for the WMI methods used to turn off and adjust the
+brightness of the secondary "screenpad" device found on some high-end
+ASUS laptops like the GX650P series and others.
+
+These methods are utilised in a new backlight device named:
+- asus_screenpad
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ drivers/platform/x86/asus-wmi.c            | 131 +++++++++++++++++++++
+ drivers/platform/x86/asus-wmi.h            |   1 +
+ include/linux/platform_data/x86/asus-wmi.h |   4 +
+ 3 files changed, 136 insertions(+)
+
+diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
+index 1038dfdcdd32..14a32e08f900 100644
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -25,6 +25,7 @@
+ #include <linux/input/sparse-keymap.h>
+ #include <linux/kernel.h>
+ #include <linux/leds.h>
++#include <linux/minmax.h>
+ #include <linux/module.h>
+ #include <linux/pci.h>
+ #include <linux/pci_hotplug.h>
+@@ -200,6 +201,7 @@ struct asus_wmi {
+ 
+ 	struct input_dev *inputdev;
+ 	struct backlight_device *backlight_device;
++	struct backlight_device *screenpad_backlight_device;
+ 	struct platform_device *platform_device;
+ 
+ 	struct led_classdev wlan_led;
+@@ -3208,6 +3210,127 @@ static int is_display_toggle(int code)
+ 	return 0;
+ }
+ 
++/* Screenpad backlight *******************************************************/
++
++static int read_screenpad_backlight_power(struct asus_wmi *asus)
++{
++	int ret = asus_wmi_get_devstate_simple(asus, ASUS_WMI_DEVID_SCREENPAD_POWER);
++
++	if (ret < 0)
++		return ret;
++	/* 1 == powered */
++	return ret ? FB_BLANK_UNBLANK : FB_BLANK_POWERDOWN;
++}
++
++static int read_screenpad_brightness(struct backlight_device *bd)
++{
++	struct asus_wmi *asus = bl_get_data(bd);
++	u32 retval;
++	int err;
++
++	err = read_screenpad_backlight_power(asus);
++	if (err < 0)
++		return err;
++	/* The device brightness can only be read if powered, so return stored */
++	if (err == FB_BLANK_POWERDOWN)
++		return asus->driver->screenpad_brightness;
++
++	err = asus_wmi_get_devstate(asus, ASUS_WMI_DEVID_SCREENPAD_LIGHT, &retval);
++	if (err < 0)
++		return err;
++
++	return retval & ASUS_WMI_DSTS_BRIGHTNESS_MASK;
++}
++
++static int update_screenpad_bl_status(struct backlight_device *bd)
++{
++	struct asus_wmi *asus = bl_get_data(bd);
++	int power, err = 0;
++	u32 ctrl_param;
++
++	power = read_screenpad_backlight_power(asus);
++	if (power == -ENODEV)
++		return err;
++	else if (power < 0)
++		return power;
++
++	if (bd->props.power != power) {
++		if (power != FB_BLANK_UNBLANK) {
++			/* Only brightness > 0 can power it back on */
++			ctrl_param = max(1, asus->driver->screenpad_brightness);
++			err = asus_wmi_set_devstate(ASUS_WMI_DEVID_SCREENPAD_LIGHT,
++						    ctrl_param, NULL);
++		} else {
++			err = asus_wmi_set_devstate(ASUS_WMI_DEVID_SCREENPAD_POWER, 0, NULL);
++		}
++	} else if (power == FB_BLANK_UNBLANK) {
++		/* Only set brightness if powered on or we get invalid/unsync state */
++		ctrl_param = bd->props.brightness;
++		err = asus_wmi_set_devstate(ASUS_WMI_DEVID_SCREENPAD_LIGHT, ctrl_param, NULL);
++	}
++
++	/* Ensure brightness is stored to turn back on with */
++	asus->driver->screenpad_brightness = bd->props.brightness;
++
++	return err;
++}
++
++static const struct backlight_ops asus_screenpad_bl_ops = {
++	.get_brightness = read_screenpad_brightness,
++	.update_status = update_screenpad_bl_status,
++	.options = BL_CORE_SUSPENDRESUME,
++};
++
++static int asus_screenpad_init(struct asus_wmi *asus)
++{
++	struct backlight_device *bd;
++	struct backlight_properties props;
++	int power, brightness;
++
++	power = read_screenpad_backlight_power(asus);
++	if (power == -ENODEV)
++		power = FB_BLANK_UNBLANK;
++	else if (power < 0)
++		return power;
++
++	memset(&props, 0, sizeof(struct backlight_properties));
++	props.type = BACKLIGHT_RAW; /* ensure this bd is last to be picked */
++	props.max_brightness = 255;
++	bd = backlight_device_register("asus_screenpad",
++				       &asus->platform_device->dev, asus,
++				       &asus_screenpad_bl_ops, &props);
++	if (IS_ERR(bd)) {
++		pr_err("Could not register backlight device\n");
++		return PTR_ERR(bd);
++	}
++
++	asus->screenpad_backlight_device = bd;
++
++	brightness = read_screenpad_brightness(bd);
++	if (brightness < 0)
++		return brightness;
++	/*
++	 * Counter an odd behaviour where default is set to < 13 if it was 0 on boot.
++	 * 60 is subjective, but accepted as a good compromise to retain visibility.
++	 */
++	if (brightness < 60)
++		brightness = 60;
++
++	asus->driver->screenpad_brightness = brightness;
++	bd->props.brightness = brightness;
++	bd->props.power = power;
++	backlight_update_status(bd);
++
++	return 0;
++}
++
++static void asus_screenpad_exit(struct asus_wmi *asus)
++{
++	backlight_device_unregister(asus->screenpad_backlight_device);
++
++	asus->screenpad_backlight_device = NULL;
++}
++
+ /* Fn-lock ********************************************************************/
+ 
+ static bool asus_wmi_has_fnlock_key(struct asus_wmi *asus)
+@@ -3823,6 +3946,13 @@ static int asus_wmi_add(struct platform_device *pdev)
+ 	} else if (asus->driver->quirks->wmi_backlight_set_devstate)
+ 		err = asus_wmi_set_devstate(ASUS_WMI_DEVID_BACKLIGHT, 2, NULL);
+ 
++	if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_SCREENPAD_LIGHT)) {
++		pr_warn("Begin asus_screenpad_init");
++		err = asus_screenpad_init(asus);
++		if (err && err != -ENODEV)
++			goto fail_backlight;
++	}
++
+ 	if (asus_wmi_has_fnlock_key(asus)) {
+ 		asus->fnlock_locked = fnlock_default;
+ 		asus_wmi_fnlock_update(asus);
+@@ -3844,6 +3974,7 @@ static int asus_wmi_add(struct platform_device *pdev)
+ 
+ fail_wmi_handler:
+ 	asus_wmi_backlight_exit(asus);
++	asus_screenpad_exit(asus);
+ fail_backlight:
+ 	asus_wmi_rfkill_exit(asus);
+ fail_rfkill:
+diff --git a/drivers/platform/x86/asus-wmi.h b/drivers/platform/x86/asus-wmi.h
+index a478ebfd34df..5fbdd0eafa02 100644
+--- a/drivers/platform/x86/asus-wmi.h
++++ b/drivers/platform/x86/asus-wmi.h
+@@ -57,6 +57,7 @@ struct quirk_entry {
+ struct asus_wmi_driver {
+ 	int			brightness;
+ 	int			panel_power;
++	int			screenpad_brightness;
+ 	int			wlan_ctrl_by_user;
+ 
+ 	const char		*name;
+diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
+index 28234dc9fa6a..a2d94adb5c80 100644
+--- a/include/linux/platform_data/x86/asus-wmi.h
++++ b/include/linux/platform_data/x86/asus-wmi.h
+@@ -58,6 +58,10 @@
+ #define ASUS_WMI_DEVID_KBD_BACKLIGHT	0x00050021
+ #define ASUS_WMI_DEVID_LIGHT_SENSOR	0x00050022 /* ?? */
+ #define ASUS_WMI_DEVID_LIGHTBAR		0x00050025
++/* This can only be used to disable the screen, not re-enable */
++#define ASUS_WMI_DEVID_SCREENPAD_POWER	0x00050031
++/* Writing a brightness re-enables the screen if disabled */
++#define ASUS_WMI_DEVID_SCREENPAD_LIGHT	0x00050032
+ #define ASUS_WMI_DEVID_FAN_BOOST_MODE	0x00110018
+ #define ASUS_WMI_DEVID_THROTTLE_THERMAL_POLICY 0x00120075
+ 
+-- 
+2.40.0
+

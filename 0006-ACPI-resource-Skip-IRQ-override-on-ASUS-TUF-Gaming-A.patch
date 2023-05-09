@@ -1,0 +1,34 @@
+From d3d4883ebc340388933d829a53fd61c834dadcb1 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Sun, 30 Apr 2023 10:56:34 +1200
+Subject: [PATCH 6/7] ACPI: resource: Skip IRQ override on ASUS TUF Gaming A16
+
+The TUF Gaming A16 FA617NS requires an irq override for full keyboard
+functionality.
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ drivers/acpi/resource.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/drivers/acpi/resource.c b/drivers/acpi/resource.c
+index 77b638974273..01a7befe9625 100644
+--- a/drivers/acpi/resource.c
++++ b/drivers/acpi/resource.c
+@@ -474,6 +474,13 @@ static const struct dmi_system_id asus_laptop[] = {
+ 			DMI_MATCH(DMI_BOARD_NAME, "FA507NV"),
+ 		},
+ 	},
++	{
++		.ident = "ASUS TUF Gaming A16 FA617NS",
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
++			DMI_MATCH(DMI_BOARD_NAME, "FA617NS"),
++		},
++	},
+ 	{ }
+ };
+ 
+-- 
+2.40.0
+

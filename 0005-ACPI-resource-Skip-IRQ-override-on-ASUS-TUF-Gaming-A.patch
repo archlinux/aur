@@ -1,0 +1,45 @@
+From 816e2a658a7714a7870b00923318fa064b466194 Mon Sep 17 00:00:00 2001
+From: hqp1203 <hqp1203hqp@163.com>
+Date: Tue, 14 Mar 2023 22:30:57 +0800
+Subject: [PATCH 5/7] ACPI: resource: Skip IRQ override on ASUS TUF Gaming A15
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+On that Linux kernel, my laptop's built-in keyboard isn't working. It is
+suspected that the architecture of higher vresion of AMD's chip(the spec
+ific CPU model is 7735h)conflicts with IRQ of the current Linux Kernel.
+The solution is to add my laptop model number under drivers/acpi/resourc-
+e.c to skip IRQ overrides. After modification, it was found that the key-
+board worked properly.
+My laptop model is the ASUS TUF Gaming A15, specifically FA507NV.
+
+Signed-off-by: hqp1203 <hqp1203hqp@163.com>
+
+要提交的变更：
+	修改：     drivers/acpi/resource.c
+---
+ drivers/acpi/resource.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/drivers/acpi/resource.c b/drivers/acpi/resource.c
+index e8492b3a393a..77b638974273 100644
+--- a/drivers/acpi/resource.c
++++ b/drivers/acpi/resource.c
+@@ -467,6 +467,13 @@ static const struct dmi_system_id asus_laptop[] = {
+ 			DMI_MATCH(DMI_BOARD_NAME, "B2502CBA"),
+ 		},
+ 	},
++	{
++		.ident = "Asus TUF Gaming A15 FA507NV",
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
++			DMI_MATCH(DMI_BOARD_NAME, "FA507NV"),
++		},
++	},
+ 	{ }
+ };
+ 
+-- 
+2.40.0
+

@@ -1,0 +1,68 @@
+diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
+index 1038dfdcdd32..7180d425a28f 100644
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -241,7 +241,7 @@ struct asus_wmi {
+ 	bool dgpu_disable_available;
+ 	bool gpu_mux_mode_available;
+ 
+-	bool kbd_rgb_mode_available;
++	u32 kbd_rgb_mode_available;
+ 	bool kbd_rgb_state_available;
+ 
+ 	bool throttle_thermal_policy_available;
+@@ -738,6 +738,7 @@ static ssize_t kbd_rgb_mode_store(struct device *dev,
+ 				 struct device_attribute *attr,
+ 				 const char *buf, size_t count)
+ {
++	struct asus_wmi *asus = dev_get_drvdata(dev);
+ 	u32 cmd, mode, r, g,  b,  speed;
+ 	int err;
+ 
+@@ -764,8 +765,14 @@ static ssize_t kbd_rgb_mode_store(struct device *dev,
+ 		speed = 0xeb;
+ 	}
+ 
+-	err = asus_wmi_evaluate_method3(ASUS_WMI_METHODID_DEVS, ASUS_WMI_DEVID_TUF_RGB_MODE,
++	if (asus->kbd_rgb_mode_available == 1) {
++		err = asus_wmi_evaluate_method3(ASUS_WMI_METHODID_DEVS, ASUS_WMI_DEVID_TUF_RGB_MODE,
++			cmd | (mode << 8) | (r << 16) | (g << 24), b | (speed << 8), NULL);
++	} else if (asus->kbd_rgb_mode_available == 2) {
++		err = asus_wmi_evaluate_method3(ASUS_WMI_METHODID_DEVS, ASUS_WMI_DEVID_TUF_RGB_MODE_2,
+ 			cmd | (mode << 8) | (r << 16) | (g << 24), b | (speed << 8), NULL);
++	}
++	
+ 	if (err)
+ 		return err;
+ 
+@@ -3760,9 +3767,15 @@ static int asus_wmi_add(struct platform_device *pdev)
+ 	asus->egpu_enable_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_EGPU);
+ 	asus->dgpu_disable_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_DGPU);
+ 	asus->gpu_mux_mode_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_GPU_MUX);
+-	asus->kbd_rgb_mode_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_MODE);
+-	asus->kbd_rgb_state_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_STATE);
+ 	asus->panel_overdrive_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_PANEL_OD);
++	if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_MODE)) {
++		asus->kbd_rgb_mode_available = 1;
++	} else if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_MODE_2)) {
++		asus->kbd_rgb_mode_available = 2;
++	} else {
++		asus->kbd_rgb_mode_available = 0;
++	}
++	asus->kbd_rgb_state_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_STATE);
+ 
+ 	err = fan_boost_mode_check_present(asus);
+ 	if (err)
+diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
+index 28234dc9fa6a..b299fd3ff914 100644
+--- a/include/linux/platform_data/x86/asus-wmi.h
++++ b/include/linux/platform_data/x86/asus-wmi.h
+@@ -106,6 +106,8 @@
+ 
+ /* TUF laptop RGB modes/colours */
+ #define ASUS_WMI_DEVID_TUF_RGB_MODE	0x00100056
++/* TUF laptop RGB modes/colours, new method on FX516P series */
++#define ASUS_WMI_DEVID_TUF_RGB_MODE_2	0x0010005A
+ 
+ /* TUF laptop RGB power/state */
+ #define ASUS_WMI_DEVID_TUF_RGB_STATE	0x00100057
