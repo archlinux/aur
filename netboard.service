@@ -1,0 +1,7 @@
+[Unit]
+Description=netboard
+
+[Service]
+ExecStart=/usr/bin/netboard listen
+RestartSec=1s
+Restart=on-failure

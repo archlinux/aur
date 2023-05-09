@@ -10,6 +10,8 @@ pkgbase = netboard
 	depends = wl-clipboard
 	provides = netboard
 	source = https://github.com/primalmotion/netboard/archive/v0.0.1.tar.gz
+	source = netboard.service
 	sha256sums = 534e85d0f42eea2aea901c2ffb4b030655f7db2d21f96664401495393a6b7767
+	sha256sums = 7df348b72086d29366fc24cd75aca6d8565edbaabe7790e3acbc09631c28980b
 
 pkgname = netboard
