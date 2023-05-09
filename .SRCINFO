@@ -1,13 +1,12 @@
 pkgbase = octetos-db-abstract
 	pkgdesc = API to access database, abstract component.
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/azaeldevel/octetos-db-abstract
 	arch = x86_64
 	license = GPL
 	depends = octetos-core
-	source = https://github.com/azaeldevel/octetos-db-abstract/archive/0.6.0-alpha.tar.gz
-	md5sums = 1ac1e74d3562078bf430c6570323501e
+	source = https://github.com/azaeldevel/octetos-db-abstract/archive/0.7.0-alpha.tar.gz
+	md5sums = c642a221336efa971845834febdf3c5d
 
 pkgname = octetos-db-abstract
-

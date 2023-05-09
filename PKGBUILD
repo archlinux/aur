@@ -1,8 +1,8 @@
 # Maintainer: Azael Reyes <azael.devel@gmail.com>
 
-
 pkgname=octetos-db-abstract
-pkgver=0.6.0
+pkgver=0.7.0
+phase=alpha
 pkgrel=1
 pkgdesc="API to access database, abstract component."
 arch=('x86_64')
@@ -10,17 +10,19 @@ license=('GPL')
 url="https://github.com/azaeldevel/octetos-db-abstract"
 depends=('octetos-core')
 #backup=('etc/nanorc')
-md5sums=('1ac1e74d3562078bf430c6570323501e')
-source=(https://github.com/azaeldevel/${pkgname}/archive/${pkgver}-alpha.tar.gz)
+md5sums=('c642a221336efa971845834febdf3c5d')
+source=(https://github.com/azaeldevel/${pkgname}/archive/${pkgver}-${phase}.tar.gz)
 
-build() {
-    cd ${pkgname}-${pkgver}-alpha
+build() 
+{
+    cd ${pkgname}-${pkgver}-${phase}
     autoreconf -fi
-    ./configure --prefix=/usr --sysconfdir=/etc
+    ./configure --with-archlinux --with-mediumword --prefix=/usr --sysconfdir=/etc
     make
 }
 
-package() {
-  cd ${pkgname}-${pkgver}-alpha
+package() 
+{
+  cd ${pkgname}-${pkgver}-${phase}
   make DESTDIR="${pkgdir}" install
 }
