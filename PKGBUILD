@@ -3,7 +3,7 @@
 _pkgname=ttach
 pkgname=python-ttach
 pkgver=0.0.3
-pkgrel=1
+pkgrel=3
 pkgdesc='Image Test Time Augmentation with PyTorch'
 arch=('any')
 url='https://github.com/qubvel/ttach'
@@ -15,6 +15,7 @@ checkdepends=(
   python-pytest
 )
 makedepends=(
+  numactl
   python-build
   python-installer
   python-setuptools
