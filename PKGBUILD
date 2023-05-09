@@ -3,7 +3,7 @@
 
 # Maintainer: Vincenzo Maffione <v.maffione@gmail.com>
 pkgname=qrun-git
-pkgver=r57.3a62205
+pkgver=r58.b4de532
 pkgrel=1
 pkgdesc="A command line tool to run QEMU in the most common configurations"
 arch=('any')
@@ -12,6 +12,8 @@ depends=('python' 'qemu' 'bridge-utils' 'iproute2')
 makedepends=('git')
 source=('git+https://github.com/vmaffione/qrun')
 md5sums=('SKIP')
+provides=('qrun')
+conflicts=('qrun' 'torque')
 
 pkgver() {
         cd "$srcdir/${pkgname%-git}"
