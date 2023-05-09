@@ -3,7 +3,7 @@
 _pkgname=ITK
 pkgname=(itk python-itk)
 pkgver=5.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='An open-source, cross-platform library that provides developers with an extensive suite of software tools for image analysis'
 arch=('x86_64')
 url='https://www.itk.org'
@@ -24,10 +24,11 @@ depends=(
 makedepends=(
   castxml
   cmake
+  gcc12
   git
   gtest
   subversion
-  swig
+#   swig
 )
 options=(!emptydirs !lto)
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/InsightSoftwareConsortium/ITK/archive/refs/tags/v${pkgver}.tar.gz"
@@ -45,6 +46,8 @@ build() {
     -DBUILD_SHARED_LIBS=ON
     -DBUILD_TESTING=OFF
     -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_CXX_COMPILER=g++-12
+    -DCMAKE_C_COMPILER=gcc-12
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_SKIP_INSTALL_RPATH=ON
     -DCMAKE_SKIP_RPATH=ON
@@ -60,10 +63,9 @@ build() {
     -DITK_USE_SYSTEM_GOOGLETEST=ON
     -DITK_USE_SYSTEM_HDF5=ON
     -DITK_USE_SYSTEM_JPEG=ON
-    -DITK_USE_SYSTEM_KWIML=ON
     -DITK_USE_SYSTEM_MINC=OFF
     -DITK_USE_SYSTEM_PNG=ON
-    -DITK_USE_SYSTEM_SWIG=ON
+    -DITK_USE_SYSTEM_SWIG=OFF
     -DITK_USE_SYSTEM_TIFF=ON
     -DITK_USE_SYSTEM_VXL=ON
     -DITK_USE_SYSTEM_ZLIB=ON
