@@ -1,13 +1,13 @@
 pkgbase = synology-drive
 	pkgdesc = Drive for PC, the desktop utility of the DSM add-on package, Drive, allows you to sync and share files owned by you or shared by others between a centralized Synology NAS and multiple client computers.
-	pkgver = 3.2.1_13272
+	pkgver = 3.3.0_15082
 	pkgrel = 1
 	url = https://www.synology.com
 	arch = x86_64
 	license = custom
 	depends = glibc
 	optdepends = nautilus: For nautilus integration
-	source_x86_64 = https://global.download.synology.com/download/Utility/SynologyDriveClient/3.2.1-13272/Ubuntu/Installer/x86_64/synology-drive-client-13272.x86_64.deb
-	md5sums_x86_64 = 9237ef0ba6ccecdb811c9e8497a6532d
+	source_x86_64 = https://global.download.synology.com/download/Utility/SynologyDriveClient/3.3.0-15082/Ubuntu/Installer/x86_64/synology-drive-client-15082.x86_64.deb
+	md5sums_x86_64 = 8566e08192283b395d057aa975a8437b
 
 pkgname = synology-drive
