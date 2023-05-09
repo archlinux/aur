@@ -1,7 +1,7 @@
 pkgbase = python-intake-xarray
-	pkgdesc = $extension extension for intake
+	pkgdesc = xarray extension for intake
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://intake-xarray.readthedocs.io
 	arch = any
 	license = BSD
