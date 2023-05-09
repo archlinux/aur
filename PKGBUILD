@@ -3,17 +3,17 @@
 
 _crate="crab-hole"
 pkgname="crab-hole"
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
-pkgdesc='A pihole clone written using Trust-DNS'
+pkgdesc='Pi-Hole clone written in rust using trust-dns '
 url='https://crates.io/crates/crab-hole'
 license=('AGPL')
 
 depends=('gcc-libs')
 makedepends=('cargo')
 
-source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/crab-hole/0.1.0/download")
-sha512sums=('f55360e5c694a502c89a4920c1273d6639584ba11b52cb31b1b21d2937379ee37ddf0fa1f470b1569e6cd7aee34f87c5cc55e7d987d3cb73d2a2da7e1b37a012')
+source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/crab-hole/0.1.1/download")
+sha512sums=('afb51ac08eec5fe6eed3518e8d1b2e67baac5f41b6758f15f7b1172ddd7b415c0a80a9e4ce1cf8018ebbd4a51f9a6a8e7dfb8307857ed6c08236d88473a882ce')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
