@@ -1,8 +1,8 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=gnome-shell-extension-wifiqrcode
-pkgver=1
-_commit=2f9b2197f033ec50a7ffd242a495a3ec7b7be96a
+pkgver=7
+_commit=798a0c5699f35a1721bd497bfb4836cad6a81daa
 pkgrel=1
 pkgdesc="This extension add a switch to the WiFi menu, in the GNOME system menu, that show a QrCode of the active connection."
 arch=('any')
