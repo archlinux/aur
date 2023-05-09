@@ -1,5 +1,6 @@
-# Maintainer: Francois Menning <f.menning@pm.me>
-# Contributer: Tony Lambiris <tony@libpcap.net>
+# Maintainer: Adam Maroti <jmarotiadam@gmail.com>
+# Contributor: Francois Menning <f.menning@pm.me>
+# Contributor: Tony Lambiris <tony@libpcap.net>
 
 pkgname=gnome-shell-extension-espresso
 pkgver=8
