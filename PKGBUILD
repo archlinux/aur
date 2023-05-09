@@ -4,7 +4,7 @@
 
 pkgname=ot-simian
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Drum synthesizer inspired by the Simmons SDS-V'
 arch=(aarch64 x86_64)
 url='https://punklabs.com/ot-simian'
@@ -27,7 +27,6 @@ _lv2_name="$_plugin_name.lv2"
 _lv2_libname="${_plugin_name// /}.so"
 _vst3_libpath="$_plugin_name.vst3/Contents/$(uname -m)-linux"
 _vst3_libname="$_plugin_name.so"
-
 
 prepare() {
   mkdir -p OneTrick-SIMIAN-${pkgver}
@@ -64,7 +63,7 @@ build() {
   python "$srcdir"/generate-manifest-ttl.py "$_lv2_name/$_lv2_libname" "$_lv2_name" "$_lv2_libname"
   # Build VST3 plugin
   dub build --build=release-nobounds --arch=$CARCH --compiler=ldc2 --combined --config=VST3
-  mv libonetrick_simian.so "$_vst3_libname.so"
+  mv libonetrick_simian.so "$_vst3_libname"
 }
 
 package() {
@@ -73,5 +72,5 @@ package() {
   install -Dm644 "$_lv2_name"/*.ttl -t "$pkgdir/usr/lib/lv2/$_lv2_name"
   install -Dm755 "$_lv2_name"/*.so -t "$pkgdir/usr/lib/lv2/$_lv2_name"
   # VST3 plugin bundle
-  install -Dm755 "$_vst3_libname.so" -t "$pkgdir/usr/lib/vst3/$_vst3_libpath"
+  install -Dm755 "$_vst3_libname" -t "$pkgdir/usr/lib/vst3/$_vst3_libpath"
 }
