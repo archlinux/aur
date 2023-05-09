@@ -13,10 +13,10 @@ source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz"
 )
 sha512sums=(
-  '9f4d02ae96ce7414ec1f8e5f3e563a273a21276737f7f14d6b80aff8aef4169032fa753f03220737c091f6d1d69890ddeca501e39808a867589235e609dfc23a'
+  '176548d4c707f73a36bfc1b7501a4bcec2e2461278208ba25dbd40f6197c7db0771ed82720c032cb2af335d1ab00bfc44ebe4e8de51bd67caa47e1c57c56b45e'
 )
 md5sums=(
-  '00dd3c84b511599a09538cf3e3494ae5'
+  'cf25e0919cd902c64c3eeeeaa70ccef4'
 )
 validpgpkeys=(
   '81BACEEBC3EA26E127166E4A819BB92A9A48160E'
@@ -32,9 +32,12 @@ package() {
   which yarn >/dev/null 2>&1 && yarn install || npm install
 
   cd ../../../../
+
   install -dm0755 "${pkgdir}"/usr/lib/node_modules/${pkgname}
-  install -Dm0755 usr/bin/* -t "${pkgdir}/usr/bin/"
   install -Dm0644 usr/share/licenses/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  [ -z `which ytcli` ] && install -Dm0755 usr/bin/* -t "${pkgdir}/usr/bin/" || install -Dm0755 usr/bin/${pkgname} "${pkgdir}/usr/bin/${pkgname}"
+
   cp -ar usr/lib/node_modules/${pkgname}/* "${pkgdir}"/usr/lib/node_modules/${pkgname}
 
 }
