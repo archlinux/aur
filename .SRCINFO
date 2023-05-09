@@ -1,0 +1,16 @@
+pkgbase = monokle-appimage
+	pkgdesc = Lets you create, analyze, and deploy YAML manifests with a visual UI, and provides policy validation and cluster management.
+	pkgver = 2.0.10
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	conflicts = monokle
+	options = !strip
+	source = monokle-2.0.10.AppImage::https://github.com/kubeshop/monokle/releases/download/v2.0.10/Monokle-linux-2.0.10-x86_64.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/kubeshop/monokle/main/LICENSE
+	sha256sums = ce80fc42d367847d4902d6e9a3ee8efb5fe4cfa7aaa2f421005c31193b19c5b3
+	sha256sums = 7a89ae90e9c88d5de936743c0432f43051d79d286aff3c4e669b2b3252b84528
+
+pkgname = monokle-appimage
