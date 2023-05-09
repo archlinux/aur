@@ -1,0 +1,19 @@
+pkgbase = dcrdex
+	pkgdesc = Self-custody multi-coin wallet with atomic swap capability, by Decred.
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://dex.decred.org
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	groups = decred
+	license = custom:BlueOak-1.0.0
+	makedepends = git
+	makedepends = go>=1.19
+	options = !strip
+	options = !emptydirs
+	source = git+https://github.com/decred/dcrdex.git#tag=v0.6.1
+	sha256sums = SKIP
+
+pkgname = dcrdex
