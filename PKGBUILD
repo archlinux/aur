@@ -1,54 +1,46 @@
 # Maintainer: jmcb <joelsgp@protonmail.com>
 pkgname=altirra
 pkgver=4.10
-pkgrel=1
-pkgdesc="An 8-bit Atari computer emulator, on Wine"
+pkgrel=2
+pkgdesc='An 8-bit Atari computer emulator, on Wine'
 arch=('any')
-url="https://www.virtualdub.org/altirra.html"
+url='https://www.virtualdub.org/altirra.html'
 license=('GPL2')
 depends=('wine'
          'wine-mono')
 optdepends=('wine-gecko: HTML help pages support')
 provides=('altirra')
 source=("https://www.virtualdub.org/downloads/Altirra-$pkgver.zip"
-        "http://www.emulators.com/freefile/pcxf380.zip"
-        "https://atariage.com/5200/roms/5200.zip"
-        "altirra"
-        "altirra.desktop"
-        "altirra.png"
-        "application-altirra.xml"
-        "firmware-setup.reg")
-noextract=('pcxf380.zip'
-           '5200.zip')
+        'http://atari.vjetnam.cz/dow/emuROMs.zip'
+        'altirra'
+        'altirra.desktop'
+        'altirra.png'
+        'application-altirra.xml')
 sha256sums=('98e59243dca8cf571d3cde4caeb7ba13e7fec9c0cb480e45b1fd45af25c1165e'
-            '2c0cf7e30ae8a486fc03903de4ebb1d7a40f0d9db3bfcb5dd4861e0cf5da67a5'
-            '20f220c18c0e1d649203c43743915cec76cb697ce113e8b06626eef64053ecc5'
-            'a83b433a36c398eab7cb80b38d7e9f6ca42a5f8e029423e1adc6b0fae181f3ca'
+            'f6bebc7d367d59dd1789fd17450c9a4eb329c27a5b5345f42d4854f412a45221'
+            'c6aab8083ed7e68c82ffc5b74497a87610f5f11a218ec42fe67fcf827d5a62c0'
             '713b375c8467da838f4c4c9f1eca2a947aecc6c429161bc67eeedecc7c81b620'
             '5319fd88751fa886683d955976ed74eb266e9ea462ae77431b6a6c457ce42dc1'
-            'cd3a40e290d999912767a70ffc8e4185019290251b350f887f4a2fa972b6c96b'
-            '656259516f099cfe23265217713dccce70bc437dffa2819cd0c9626d8e2d8b2f')
-
-prepare() {
-    bsdtar -xvf pcxf380.zip ATARIBAS.ROM ATARIOSB.ROM ATARIXL.ROM
-    bsdtar -xvf 5200.zip
-    mv 5200.rom 5200.ROM
-}
+            'cd3a40e290d999912767a70ffc8e4185019290251b350f887f4a2fa972b6c96b')
 
 package() {
-    dest="${pkgdir}"/opt/${pkgname}
+    _dest="${pkgdir}/opt/${pkgname}"
+    _share="${pkgdir}"/usr/share
+    _bin="${pkgdir}/usr/bin"
+
     # windows program files
-    install -Dm644 -t "${dest}"/ Additions.atr Altirra.chm Altirra64.exe firmware-setup.reg
+    # omits extras/
+    install -D -m644 -t "${_dest}"/ Additions.atr Altirra.chm Altirra64.exe extras/
     # shell script
-    install -m755 altirra "${dest}"/altirra
+    install -D -t "${_dest}" altirra
     # firmware roms
-    install -Dm644 -t "${dest}"/roms/ 5200.ROM ATARIBAS.ROM ATARIOSB.ROM ATARIXL.ROM
+    mv atari5200.rom 5200.ROM
+    install -D -m644 -t "${_dest}/roms/" 5200.ROM ATARIBAS.ROM ATARIOSB.ROM ATARIXL.ROM
     # desktop entry
-    share="${pkgdir}"/usr/share
-    install -Dm644 ${pkgname}.desktop "${share}"/applications/${pkgname}.desktop
-    install -Dm644 ${pkgname}.png "${share}"/pixmaps/${pkgname}.png
-    install -Dm644 application-${pkgname}.xml "${share}"/mime/packages/application-${pkgname}.xml
+    install -D -m644 -t "${_share}/applications" ${pkgname}.desktop
+    install -D -m644 -t "${_share}/applications" ${pkgname}.desktop
+    install -D -m644 -t "${_share}/mime/packages" application-${pkgname}.xml
     # PATH symlink
-    install -dm755 "${pkgdir}"/usr/bin/
-    ln -s /opt/${pkgname}/altirra "${pkgdir}"/usr/bin/altirra
+    install -d "${_bin}"
+    ln -s /opt/${pkgname}/${pkgname} "${_bin}/${pkgname}"
 }
