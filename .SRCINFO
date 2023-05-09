@@ -1,0 +1,21 @@
+pkgbase = python-intake-xarray
+	pkgdesc = $extension extension for intake
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://intake-xarray.readthedocs.io
+	arch = any
+	license = BSD
+	provides = python-intake-xarray=0.6.1
+	source = https://files.pythonhosted.org/packages/source/i/intake-xarray/intake-xarray-0.6.1.tar.gz
+	sha256sums = 63dc2a8b937d8f956255d8f8641f08ea654b2d9e88687ec3d1ccc66462fabf9e
+
+pkgname = python-intake-xarray
+	depends = python>=3.8.0
+	depends = python-intake>=0.6.6
+	depends = python-dask
+	depends = python-jinja
+	depends = python-msgpack
+	depends = python-requests
+	depends = python-xarray>=2022.01.0
+	depends = python-zarr
+	depends = python-netcdf4
