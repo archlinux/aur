@@ -1,0 +1,17 @@
+pkgbase = python-uavro
+	pkgdesc = Cython-optimized reader for tabular Avro data
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/martindurant/uavro/
+	arch = any
+	license = Apache
+	provides = python-uavro=0.1.2
+	source = https://files.pythonhosted.org/packages/source/u/uavro/uavro-0.1.2.tar.gz
+	sha256sums = 4c26012b9218ae07e81573958331c24a77e8964556fc768223aae4f11b647cdf
+
+pkgname = python-uavro
+	depends = python>=3.8.0
+	depends = python-pandas
+	depends = python-numpy>=1.11
+	depends = cython
+	depends = python-fastparquet
