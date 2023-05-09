@@ -1,9 +1,9 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 
 pkgname=obs-studio-rc
-_pkgver=29.1.0
+_pkgver=29.1.1
 pkgver=${_pkgver//-/_}
-pkgrel=3
+pkgrel=1
 epoch=6
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
@@ -79,14 +79,12 @@ source=(
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
   "obs-websocket::git+https://github.com/obsproject/obs-websocket.git"
   "qr::git+https://github.com/nayuki/QR-Code-generator.git"
-  "0001-Enforce_-Wmaybe-uninitialized_never_turn_into_error.patch"
 )
 sha256sums=(
   "SKIP"
   "SKIP"
   "SKIP"
   "SKIP"
-  "9227a5f3439d19c2c75e369bc6701dc83c4ac54cc371b7f74e55c9e275512f6c"
 )
 
 if [[ $CARCH == 'x86_64' ]]; then
@@ -102,9 +100,6 @@ prepare() {
   cd plugins/obs-websocket
   git config submodule.deps/qr.url $srcdir/qr
   git -c protocol.file.allow=always submodule update deps/qr
-
-  cd "$srcdir/obs-studio"
-  patch -Np1 < "$srcdir/0001-Enforce_-Wmaybe-uninitialized_never_turn_into_error.patch"
 }
 
 build() {
