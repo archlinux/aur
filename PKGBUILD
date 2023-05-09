@@ -7,7 +7,7 @@ pkgname=('wxwidgets-common-light'
          'wxwidgets-qt5-light'
          )
 pkgver=3.2.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="wxWidgets suite for Base, Qt5 and GTK3 toolkits (GNOME/GStreamer free!)"
 arch=('x86_64')
 url='http://wxwidgets.org'
@@ -162,11 +162,14 @@ pkgdesc="wxWidgets Qt5 Toolkit (GNOME/GStreamer free!)"
   rm -fr "${pkgdir}/usr/bin/"wxrc{,-3*}
   rm -fr "${pkgdir}/usr/include"
   rm -fr "${pkgdir}/usr/lib/"*base*
-  rm -fr "${pkgdir}/usr/lib/cmake"
+  mv "${pkgdir}/usr/lib/cmake/wxWidgets"{,Qt}
+  for _f in "${pkgdir}/usr/lib/cmake/wxWidgetsQt/"*; do
+    mv $_f $(dirname $_f)/$(basename $_f | sed -e 's/wxWidgets/wxWidgetsQt/')
+  done
   rm -fr "${pkgdir}/usr/share/bakefile"
   rm -fr "${pkgdir}/usr/share/"{aclocal,locale}
 
-  install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/wxwidgets-qt5-light/LICENSE"
+  install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_wxwidgets-gtk3-light() {
@@ -197,12 +200,15 @@ package_wxwidgets-gtk3-light() {
   rm -fr "${pkgdir}/usr/bin/"wxrc{,-3*}
   rm -fr "${pkgdir}/usr/include"
   rm -fr "${pkgdir}/usr/lib/"*base*
-  rm -fr "${pkgdir}/usr/lib/cmake"
+  mv "${pkgdir}/usr/lib/cmake/wxWidgets"{,GTK}
+  for _f in "${pkgdir}/usr/lib/cmake/wxWidgetsGTK/"*; do
+    mv $_f $(dirname $_f)/$(basename $_f | sed -e 's/wxWidgets/wxWidgetsGTK/')
+  done
   rm -fr "${pkgdir}/usr/share/bakefile"
   rm -fr "${pkgdir}/usr/share/"{aclocal,locale}
 
 
-  install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/wxwidgets-gtk3-light/LICENSE"
+  install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_wxwidgets-gtk4-light() {
@@ -227,18 +233,21 @@ package_wxwidgets-gtk4-light() {
             'wxgtk4'
             )
 
-  make -C build-gtk3 DESTDIR="${pkgdir}" install
+  make -C build-gtk4 DESTDIR="${pkgdir}" install
 
   ln -s wx-config "${pkgdir}/usr/bin/wx-config-gtk4"
-  rm -fr "${pkgdir}/usr/bin/"wxrc{,-3*}
+  rm -fr "${pkgdir}/usr/bin/"wxrc{,-4*}
   rm -fr "${pkgdir}/usr/include"
   rm -fr "${pkgdir}/usr/lib/"*base*
-  rm -fr "${pkgdir}/usr/lib/cmake"
+  mv "${pkgdir}/usr/lib/cmake/wxWidgets"{,GTK4}
+  for _f in "${pkgdir}/usr/lib/cmake/wxWidgetsGTK4/"*; do
+    mv $_f $(dirname $_f)/$(basename $_f | sed -e 's/wxWidgets/wxWidgetsGTK4/')
+  done
   rm -fr "${pkgdir}/usr/share/bakefile"
   rm -fr "${pkgdir}/usr/share/"{aclocal,locale}
 
 
-  install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/wxwidgets-gtk4-light/LICENSE"
+  install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_wxwidgets-common-light() {
