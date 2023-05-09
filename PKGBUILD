@@ -20,7 +20,8 @@ depends=('gtk3' 'libsoup' 'python-gobject' 'python-pyopenssl' 'hicolor-icon-them
          'python-pyasn1' 'python-nbxmpp-git' 'python-cairo' 'python-keyring'
          'python-distro' 'python-css-parser' 'python-precis_i18n' 'python-pillow'
          'python-omemo-dr' 'gtksourceview4' 'python-qrcode')
-makedepends=('git' 'python-setuptools' 'python-packaging' 'python-wheel' 'python-build')
+makedepends=('git' 'python-setuptools' 'python-packaging' 'python-wheel' 'python-build'
+	 'python-installer')
 optdepends=('python-dbus: for gajim-remote and zeroconf support'
             'farstream: for video/voice support'
             'gst-plugins-good: for video/voice support'

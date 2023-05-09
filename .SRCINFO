@@ -11,6 +11,7 @@ pkgbase = gajim-git
 	makedepends = python-packaging
 	makedepends = python-wheel
 	makedepends = python-build
+	makedepends = python-installer
 	depends = gtk3
 	depends = libsoup
 	depends = python-gobject
