@@ -5,6 +5,7 @@ pkgrel=1
 pkgdesc="A Windows/macOS/Linux GUI based on Clash and Electron（Chinese version.）."
 arch=("x86_64")
 url="https://github.com/Fndroid/clash_for_windows_pkg"
+_logo_url="https://raw.githubusercontent.com/Dreamacro/clash/master/docs/logo.png"
 _parch=$(echo ${arch} | sed "s/x86_64/x64/")
 install=clash-for-windows.install
 license=('custom')
