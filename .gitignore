@@ -6,5 +6,6 @@
 !embree.patch
 !SelectCudaComputeArch.patch
 !usd_python.patch
+!python11.patch
 !.SRCINFO
 !.gitignore

@@ -1,23 +1,24 @@
 diff --git a/build_files/cmake/Modules/FindEmbree.cmake b/build_files/cmake/Modules/FindEmbree.cmake
-index 90cf23d3e13..f625efaa542 100644
+index c7f9bc5b220..4e3bcdca897 100644
 --- a/build_files/cmake/Modules/FindEmbree.cmake
 +++ b/build_files/cmake/Modules/FindEmbree.cmake
-@@ -10,5 +10,8 @@
+@@ -10,6 +10,9 @@
  #  EMBREE_ROOT_DIR, The base directory to search for Embree.
  #                        This can also be an environment variable.
  #  EMBREEFOUND, If false, do not try to use Embree.
 +#
 +# also defined, but not for general use are
 +#  EMBREE_LIBRARY, where to find the Embree library.
-
- # If EMBREE_ROOT_DIR was defined in the environment, use it.
-@@ -63,14 +66,23 @@ FOREACH(COMPONENT ${_embree_FIND_COMPONENTS})
- ENDFOREACH()
  
+ # If EMBREE_ROOT_DIR was defined in the environment, use it.
+ IF(NOT EMBREE_ROOT_DIR AND NOT $ENV{EMBREE_ROOT_DIR} STREQUAL "")
+@@ -103,14 +106,23 @@ FOREACH(COMPONENT ${_embree_FIND_COMPONENTS})
+   LIST(APPEND _embree_LIBRARIES "${EMBREE_${UPPERCOMPONENT}_LIBRARY}")
+ ENDFOREACH()
  
 +FIND_LIBRARY(EMBREE_LIBRARY
 +  NAMES
-+    embree3
++    embree4
 +  HINTS
 +    ${_embree_SEARCH_DIRS}
 +  PATH_SUFFIXES
@@ -38,10 +39,10 @@ index 90cf23d3e13..f625efaa542 100644
  ENDIF()
  
 diff --git a/intern/cycles/blender/CMakeLists.txt b/intern/cycles/blender/CMakeLists.txt
-index 2316800e21e..591841152e2 100644
+index ceb024ba5e7..d3320545c1f 100644
 --- a/intern/cycles/blender/CMakeLists.txt
 +++ b/intern/cycles/blender/CMakeLists.txt
-@@ -67,6 +67,12 @@ if(WITH_CYCLES_LOGGING)
+@@ -80,6 +80,12 @@ if(WITH_CYCLES_LOGGING)
    )
  endif()
  

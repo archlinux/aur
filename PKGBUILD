@@ -3,7 +3,7 @@
 #shellcheck disable=SC2015
 
 pkgname=upbge-git
-pkgver=128141.37504273e18
+pkgver=129501.11ca6b54643
 pkgrel=1
 pkgdesc="Uchronia Project Blender Game Engine fork of Blender Game Engine"
 arch=("i686" "x86_64")
@@ -14,8 +14,16 @@ depends=("alembic" "embree" "libgl" "python" "python-numpy" "openjpeg2" "libharu
 optdepends=("cuda: CUDA support in Cycles"
          "optix>=7.1.0: OptiX support in Cycles"
          "openpgl: Path guiding support in Cycles"
+         "materialx: MaterialX materials"
+         "level-zero-headers: Intel OpenCL FPGA kernels (all four needed)"
+         "intel-compute-runtime: Intel OpenCL FPGA kernels (all four needed)"
+         "intel-graphics-compiler: Intel OpenCL FPGA kernels (all four needed)"
+         "intel-oneapi-basekit: Intel OpenCL FPGA kernels (all four needed)"
+         "gcc12: Compile CUDA support in Cycles"
+         "gcc12-libs: Compile CUDA support in Cycles"
+         "makepkg-cg: Control resources during compilation"
          "usd: USD export Scene")
-makedepends=("git" "subversion" "make" "cmake" "clang" "boost" "ninja" "mesa" "llvm" wayland{,-protocols} 
+makedepends=("git" "subversion" "cmake" "clang" "boost" "mesa" "llvm" wayland{,-protocols} 
          "libxkbcommon")
 provides=("blender")
 conflicts=("blender")
@@ -34,6 +42,7 @@ source=(
   "blender-translations.git::git+https://projects.blender.org/blender/blender-translations.git"
   "blender-dev-tools.git::git+https://projects.blender.org/blender/blender-dev-tools.git"
   upbge.desktop
+  python11.patch
   usd_python.patch
   SelectCudaComputeArch.patch
   embree.patch)
@@ -44,9 +53,10 @@ sha256sums=(
   "SKIP"
   "SKIP"
   "b5c9bf4fa265389db4b3f23e96d74cc86c51d908b8943eb80967614d8af1ea1a"
+  "ae81c77dd41736bbcf65e31fa77477979b214004be3423e10eddef7af3f12dff"
   "5b98624ec2ce39fdb33836527343d026edbb63c948850b20c1c20c019d24f434"
   "155c04f971d3f45618a89fa73d91e21ba493ae24029475e18192c49c3fcd8cb4"
-  "6e7392cfb159165dfd63e0cc7858e1ffdabc2aae4126288aca6a15082d3c7efc")
+  "e34fa6034ca065cdddc380ef7fb1ab094349203dc6d63b2526cdf4740b1eaf02")
 
 pkgver() {
 	cd "$srcdir/upbge"
@@ -61,22 +71,53 @@ prepare() {
   fi
   ((DISABLE_USD)) || git -C "$srcdir/upbge" apply -v "${srcdir}"/usd_python.patch
   git -C "$srcdir/upbge" apply -v "${srcdir}"/embree.patch
+  git -C "$srcdir/upbge" apply -v "${srcdir}"/python11.patch
 }
 
 build() {
   _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
   msg "Python version detected: ${_pyver}"
 
+  # determine whether we can install python modules
+  if [[ -n "$_pyver" ]]; then
+    _CMAKE_FLAGS+=( -DWITH_PYTHON=$_pyver \
+                    -DWITH_PYTHON_MODULE=OFF \
+                    -DWITH_PYTHON_INSTALL=ON \
+                    -DWITH_PYTHON_SAFETY=ON )
+  fi
+
+  export CC=`which gcc-12`
+  export CXX=`which g++-12`
+  export CUDAHOSTCXX="$CC"
+
+  _CMAKE_FLAGS+=( -DWITH_CLANG=ON \
+                  -DWITH_CYCLES=ON )
+
+  # check for oneapi
+  export _ONEAPI_CLANG=/opt/intel/oneapi/compiler/latest/linux/bin-llvm/clang
+  export _ONEAPI_CLANGXX=/opt/intel/oneapi/compiler/latest/linux/bin-llvm/clang++
+  [[ -f "$_ONEAPI_CLANG" ]] && (
+    _CMAKE_FLAGS+=( -DWITH_CYCLES_DEVICE_ONEAPI=ON \
+                    -DWITH_CYCLES_ONEAPI_BINARIES=ON \
+                    -DWITH_CLANG=ON )
+  )
+  [[ -f /opt/bin/clang ]] && _CMAKE_FLAGS+=( -DLLVM_ROOT_DIR=/opt/lib )
+
   # determine whether we can precompile CUDA kernels
   _CUDA_PKG=$(pacman -Qq cuda 2>/dev/null) || true
   if [ "$_CUDA_PKG" != "" ]; then
-    _CMAKE_FLAGS+=( -DWITH_CYCLES_CUDA_BINARIES=ON
-                    -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda )
-    [ -f "/usr/lib/ccache/bin/nvcc-ccache" ] && export CUDA_NVCC_EXECUTABLE=/usr/lib/ccache/bin/nvcc-ccache
+    CUDAHOSTCXX=`which gcc-12`
+    # https://wiki.blender.org/wiki/Building_Blender/GPU_Binaries
+    _CMAKE_FLAGS+=( -DWITH_CYCLES_CUDA_BINARIES=ON \
+                    -DWITH_COMPILER_ASAN=OFF \
+                    -DCMAKE_CUDA_HOST_COMPILER=`which gcc-12` )
+  fi
 
-    if _cuda_gcc=$(basename "$(readlink /opt/cuda/bin/gcc)") ; then
-      [ -L "/usr/lib/ccache/bin/$_cuda_gcc" ] && export CUDAHOSTCXX=/usr/lib/ccache/bin/"$_cuda_gcc"
-    fi
+  # check for materialx
+  _MX_PKG=$(pacman -Qq materialx 2>/dev/null) || true
+  if [ "$_MX_PKG" != "" ]; then
+    _CMAKE_FLAGS+=( -DWITH_MATERIALX=ON )
+    PATH="/usr/materialx:$PATH"  
   fi
 
   # check for optix
@@ -93,30 +134,45 @@ build() {
                     -DUSD_ROOT=/usr )
   fi
 
-  cmake -G "Ninja" -S "$srcdir/upbge" -B "$srcdir/build" \
-    -C "$srcdir/upbge/build_files/cmake/config/blender_release.cmake" \
-    -DWITH_GAMEENGINE=ON \
-    -DWITH_PLAYER=ON \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DWITH_INSTALL_PORTABLE=OFF \
-    -DWITH_SYSTEM_GLEW=ON \
-    -DWITH_PYTHON_INSTALL=OFF \
-    -DWITH_FFTW3=ON \
-    -DWITH_CODEC_FFMPEG=ON \
-    -DWITH_MOD_OCEANSIM=ON \
-    -DXR_OPENXR_SDK_ROOT_DIR=/usr \
-    -DPYTHON_VERSION="${_pyver}" \
-    "${_CMAKE_FLAGS[@]}"
-  export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
-# shellcheck disable=SC2086 # allow MAKEFLAGS to split when multiple flags provided.
-  ninja -C "$srcdir/build" ${MAKEFLAGS:--j$(nproc)}
+  (2>&1 CUDAHOSTCXX="$CUDAHOSTCXX" cmake -S "$srcdir/upbge" -B build --fresh \
+        -C "${srcdir}/upbge/build_files/cmake/config/blender_release.cmake" \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DWITH_STATIC_LIBS=OFF \
+        -DWITH_INSTALL_PORTABLE=OFF \
+        -DWITH_LIBS_PRECOMPILED=OFF \
+        -DWITH_GAMEENGINE=ON \
+        -DWITH_PLAYER=ON \
+        -DWITH_PYTHON_INSTALL=OFF \
+        -DWITH_FFTW3=ON \
+        -DWITH_CODEC_FFMPEG=ON \
+        -DWITH_MOD_OCEANSIM=ON \
+        -DXR_OPENXR_SDK_ROOT_DIR=/usr \
+        -DPYTHON_VERSION="${_pyver}" \
+        ${_CMAKE_FLAGS[@]}) #> "$srcdir/../cmake_out"
+        #--trace-expand \
+
+  cd build
+
+  MAKE_CMD="make ${MAKEFLAGS:--j1}"
+
+  USING_MAKEPKG_CG="$(systemctl --user -t slice | grep -o makepkg-cg-`id -u`-'[[:digit:]]\+'.slice'[[:space:]]\+'loaded'[[:space:]]\+'active)" || true
+  MAKEPKG_CG_WARNING=$(
+    cat << 'EOF'
+If you use systemd, consider trying `makepkg-cg`.
+This build is otherwise very likely to use more RAM than
+the system has, especially with a high `-j`!
+EOF
+  )
+  [[ -z "$USING_MAKEPKG_CG" ]] && warning "$MAKEPKG_CG_WARNING"
+  
+  $MAKE_CMD
 }
 
 package() {
   export DESTDIR="$pkgdir"
 
-  ninja -C "$srcdir/build" install
+  make -C "$srcdir/build" install
 
   #undo rpath clean in cmake_install ( faster than patching CMakeLists.txt)
   cp "$srcdir/build/bin/blender" "$pkgdir/usr/bin/blender"
