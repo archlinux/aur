@@ -6,7 +6,7 @@ pkgdesc="cython wrapper for khash-sets/maps, efficient implementation of isin an
 url="https://github.com/realead/cykhash/"
 
 pkgver=2.0.0
-pkgrel=3
+pkgrel=4
 
 arch=("x86_64")
 license=("MIT")
