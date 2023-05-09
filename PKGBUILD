@@ -2,17 +2,17 @@
 
 pkgname=aevol
 pkgver=5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="an open-source digital genetics platform that captures the evolutionary process"
 arch=('x86_64')
 url="https://www.aevol.fr/"
 license=('GPL3')
-depends=('boost' 'glibc' 'gcc-libs' 'zlib' 'libx11')
-makedepends=('cmake')
+depends=('boost-libs' 'glibc' 'gcc-libs' 'zlib' 'libx11')
+makedepends=('boost' 'cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.inria.fr/aevol/aevol/-/archive/v5.0/aevol-v${pkgver}.tar.gz"
         'automake.patch')
 b2sums=('fd056e9bfe272236ba3912584d5428fb2f08e34f89e57476297720c595910d24db4656d8bf0cecf1ba1aab58a3c9b1110eb35a7ff50c0c32e62c1f79873d799d'
-        'fb3a6f3deec5645aa2f0ae5c3b99d85ffff9a95f22bc0ae11be459a5ac5908df6acd0afe5b5c7182b6995f2ca2bda62e9d55852c3200681ab9b2393641ce952d')
+        '0d9c47d2e8f93461a8ab7ce1a87abe638e9f0a252b0009e63f6c4e95a6cb7b4b41906ded4e78102d05b1feeb41f60e2d1b68eb6984a2f7cedb5fb35147429791')
 
 prepare(){
   cp automake.patch "$pkgname-v$pkgver"/
@@ -24,7 +24,7 @@ prepare(){
 
 build() {
   cd "$pkgname-v$pkgver"
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --with-x
   make
   
 }
