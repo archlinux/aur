@@ -3,8 +3,8 @@
 _pkgbase=python-dbussy
 # _name=${_pkgbase#python-}
 pkgname="${_pkgbase}-git"
-pkgver=1.3.r2.g76fd5c8
-pkgrel=2
+pkgver=1.3.r24.g691a8a8
+pkgrel=1
 pkgdesc="Python binding for D-Bus using asyncio"
 arch=(any)
 url="https://github.com/ldo/dbussy"
