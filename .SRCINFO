@@ -1,6 +1,6 @@
 pkgbase = clash-for-windows-chinese-git
 	pkgdesc = clash_for_windows的中文版本，复刻自clash for windows chinese。The Chinese version of clash_for_windows, reproduced from "clash for windows chinese".
-	pkgver = 0.20.22
+	pkgver = 0.20.22_fix
 	pkgrel = 1
 	url = https://github.com/Fndroid/clash_for_windows_pkg
 	install = clash-for-windows.install
