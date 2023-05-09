@@ -1,7 +1,7 @@
 #!/bin/bash
 # vim: set ft=sh ts=4 sw=4 et:
 
-major_version=12
+major_version=13
 vers=
 
 set -e
