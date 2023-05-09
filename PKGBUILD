@@ -2,7 +2,7 @@
 #              Darjan Krijan [https://disc-kuraudo.eu]
 
 pkgname=scorep
-pkgver=8.0
+pkgver=8.1
 pkgrel=1
 pkgdesc="Highly scalable and easy-to-use tool suite for profiling, event tracing, and online analysis of HPC applications."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('cubew>=4.8' 'cubelib>=4.8' 'openmpi' 'otf2>=3.0' 'opari2>=2.0.7')
 options=('staticlibs')
 source=(http://perftools.pages.jsc.fz-juelich.de/cicd/${pkgname}/tags/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('4c0f34f20999f92ebe6ca1ff706d0846b8ce6cd537ffbedb49dfaef0faa66311')
+sha256sums=('3a40b481fce610871ddf6bdfb88a6d06b9e5eb38c6080faac6d5e44990060a37')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
