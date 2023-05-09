@@ -1,52 +1,39 @@
-# Maintainer: Maxime Dirksen <aur@emixam.be>
-# Co-Maintener: Supdrewin <supdrewin at outlook dot com>
-# Co-Maintainer: Andrey Kolchenko <andrey@kolchenko.me>
-# Co-Maintainer: Rui ZHAO <renyuneyun@gmail.com>
+# Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
+# Contributor: Maxime Dirksen <aur@emixam.be>
+# Contributor: Supdrewin <supdrewin at outlook dot com>
+# Contributor: Andrey Kolchenko <andrey@kolchenko.me>
+# Contributor: Rui ZHAO <renyuneyun@gmail.com>
 # Contributor: Antoine Bertin <ant.bertin@gmail.com>
-
 pkgname=linux-enable-ir-emitter
-pkgver=4.1.5
+pkgver=4.5.0
 pkgrel=1
-epoch=1
-pkgdesc="Enables infrared cameras that are not directly enabled out-of-the box."
-url='https://github.com/EmixamPP/linux-enable-ir-emitter'
-license=('MIT')
+pkgdesc="Enables infrared cameras that are not directly enabled out-of-the box"
 arch=('x86_64')
-
-provides=(linux-enable-ir-emitter)
-conflicts=(linux-enable-ir-emitter-git chicony-ir-toggle)
-
-depends=(python opencv fmt)
-
+url="https://github.com/EmixamPP/linux-enable-ir-emitter"
+license=('MIT')
+depends=(
+    "fmt"
+    "python"
+    "opencv"
+)
+makedepends=('meson')
+conflicts=(
+    "chicony-ir-toggle"
+    "linux-enable-ir-emitter-git"
+)
 install=linux-enable-ir-emitter.install
-
-source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('faa596625ad25b63ab24f7c3c973c229086bad306a92922cf5f07a91ff9440dd')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/EmixamPP/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+b2sums=('5b90cb2cc2abd8afd63b1ea689455402d57d2e16c530aae7610ee914bd792a72328cc562a694b2956b8ebb6fc0567be152a0b36ddf2eae4122119ca994e227cc')
 
 build() {
-    make -C "${srcdir}/${pkgname}-${pkgver}/sources/driver/"
+    cd "${srcdir}"
+    mkdir -p build
+    arch-meson $pkgname-$pkgver build
+    meson compile -C build
 }
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-
-    install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
-
-    # software
-    install -Dm 644 sources/*.py -t ${pkgdir}/usr/lib/linux-enable-ir-emitter/
-    install -Dm 644 sources/command/*.py -t ${pkgdir}/usr/lib/linux-enable-ir-emitter/command/
-    install -Dm 755 sources/driver/driver-generator -t ${pkgdir}/usr/lib/linux-enable-ir-emitter/driver/
-    install -Dm 755 sources/driver/execute-driver -t ${pkgdir}/usr/lib/linux-enable-ir-emitter/driver/
-
-    # executable
-    install -d "${pkgdir}"/usr/bin/
-    chmod 755 "${pkgdir}"/usr/lib/linux-enable-ir-emitter/linux-enable-ir-emitter.py
-    ln -fs /usr/lib/linux-enable-ir-emitter/linux-enable-ir-emitter.py \
-    "${pkgdir}"/usr/bin/linux-enable-ir-emitter
-
-    # auto complete for bash
-    install -Dm 644 sources/autocomplete/${pkgname} -t "${pkgdir}"/usr/share/bash-completion/completions/
-
-    # drivers folder
-    mkdir -p "${pkgdir}"/etc/${pkgname}/
+    meson install -C ../build --destdir "$pkgdir"
+    install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
