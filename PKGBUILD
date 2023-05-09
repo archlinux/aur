@@ -2,7 +2,7 @@
 
 pkgname=python-pasp-git
 _name=pasp
-pkgver=r203.ce327ca
+pkgver=r270.28a64dd
 pkgrel=1
 pkgdesc="Probabilistic answer set programming (install from git)"
 arch=("any")

@@ -1,6 +1,6 @@
 pkgbase = python-pasp-git
 	pkgdesc = Probabilistic answer set programming (install from git)
-	pkgver = r203.ce327ca
+	pkgver = r270.28a64dd
 	pkgrel = 1
 	url = https://RenatoGeh.github.io/pasp
 	arch = any
