@@ -1,7 +1,7 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=yt-dlp-git
-pkgver=2023.03.03.r6.g283a0b5bc
+pkgver=2023.03.04.r118.gef8fb7f02
 pkgrel=1
 pkgdesc='A youtube-dl fork with additional features and fixes (git)'
 arch=(any)
@@ -24,6 +24,11 @@ sha256sums=('SKIP')
 
 pkgver() {
     git -C "${pkgname%-git}" describe --long --tags --exclude=nightly | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    # Clean out old wheels etc.
+    git -C "${pkgname%-git}" clean -dfx
 }
 
 build() {
