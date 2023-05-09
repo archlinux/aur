@@ -3,9 +3,9 @@
 pkgname='python-ompython'
 _name=OMPython
 pkgver='3.4.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenModelica-Python API Interface"
-url="http://openmodelica.org/"
+url="https://openmodelica.org/"
 depends=('python' 'python-future' 'openmodelica-omc')
 makedepends=('python-setuptools')
 optdepends=('python-pyzmq')
