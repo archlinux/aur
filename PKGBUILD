@@ -6,8 +6,8 @@
 
 pkgbase=gdal-libkml
 pkgname=(gdal-libkml python-gdal-libkml)
-pkgver=3.5.1
-pkgrel=3
+pkgver=3.6.4
+pkgrel=0
 provides=('gdal')
 pkgdesc="A translator library for raster and vector geospatial data formats"
 arch=(x86_64)
@@ -15,7 +15,7 @@ url="https://gdal.org/"
 license=(custom)
 makedepends=(cmake opencl-headers python-setuptools python-numpy
              proj arrow blosc cfitsio curl crypto++ libdeflate expat libfreexl
-             libgeotiff geos giflib libheif hdf5 libjpeg-turbo json-c xz
+             libgeotiff geos giflib libheif hdf5 libjpeg-turbo json-c libjxl xz
              libxml2 lz4 mariadb-libs netcdf unixodbc ocl-icd openexr openjpeg2
              openssl pcre2 libpng podofo poppler postgresql-libs qhull
              libspatialite sqlite swig libtiff libwebp xerces-c zlib zstd libkml-git)
@@ -23,11 +23,12 @@ makedepends=(cmake opencl-headers python-setuptools python-numpy
 # ogdi
 changelog=gdal.changelog
 source=(https://download.osgeo.org/gdal/${pkgver}/gdal-${pkgver}.tar.xz)
-sha256sums=('d12c30a9eacdeaab493c0d1c9f88eb337c9cbb5bb40744c751bdd5a5af166ab6')
+sha256sums=('889894cfff348c04ac65b462f629d03efc53ea56cf04de7662fbe81a364e3df1')
 
 build() {
   cmake -B build -S gdal-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_CXX_STANDARD=17 \
     -DENABLE_IPO=ON \
     -DBUILD_PYTHON_BINDINGS=ON \
     -DGDAL_ENABLE_PLUGINS=ON \
@@ -47,6 +48,7 @@ build() {
     -DGDAL_USE_ICONV=ON \
     -DGDAL_USE_JPEG=ON \
     -DGDAL_USE_JSONC=ON \
+    -DGDAL_USE_JXL=ON \
     -DGDAL_USE_LIBLZMA=ON \
     -DGDAL_USE_LIBXML2=ON \
     -DGDAL_USE_LZ4=ON \
@@ -84,6 +86,7 @@ package_gdal-libkml () {
               'cfitsio: FITS support'
               'hdf5: HDF5 support'
               'libheif: HEIF support'
+              'libjxl: JPEG XL support'
               'mariadb-libs: MySQL support'
               'netcdf: netCDF support'
               'openexr: EXR support'

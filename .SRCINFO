@@ -1,7 +1,7 @@
 pkgbase = gdal-libkml
 	pkgdesc = A translator library for raster and vector geospatial data formats
-	pkgver = 3.5.1
-	pkgrel = 3
+	pkgver = 3.6.4
+	pkgrel = 0
 	url = https://gdal.org/
 	changelog = gdal.changelog
 	arch = x86_64
@@ -26,6 +26,7 @@ pkgbase = gdal-libkml
 	makedepends = hdf5
 	makedepends = libjpeg-turbo
 	makedepends = json-c
+	makedepends = libjxl
 	makedepends = xz
 	makedepends = libxml2
 	makedepends = lz4
@@ -52,8 +53,8 @@ pkgbase = gdal-libkml
 	makedepends = zstd
 	makedepends = libkml-git
 	provides = gdal
-	source = https://download.osgeo.org/gdal/3.5.1/gdal-3.5.1.tar.xz
-	sha256sums = d12c30a9eacdeaab493c0d1c9f88eb337c9cbb5bb40744c751bdd5a5af166ab6
+	source = https://download.osgeo.org/gdal/3.6.4/gdal-3.6.4.tar.xz
+	sha256sums = 889894cfff348c04ac65b462f629d03efc53ea56cf04de7662fbe81a364e3df1
 
 pkgname = gdal-libkml
 	depends = proj
@@ -88,6 +89,7 @@ pkgname = gdal-libkml
 	optdepends = cfitsio: FITS support
 	optdepends = hdf5: HDF5 support
 	optdepends = libheif: HEIF support
+	optdepends = libjxl: JPEG XL support
 	optdepends = mariadb-libs: MySQL support
 	optdepends = netcdf: netCDF support
 	optdepends = openexr: EXR support
@@ -102,7 +104,7 @@ pkgname = gdal-libkml
 
 pkgname = python-gdal-libkml
 	pkgdesc = Python bindings for GDAL
-	depends = gdal-libkml=3.5.1
+	depends = gdal-libkml=3.6.4
 	depends = python-numpy
 	provides = python-gdal
 	conflicts = python-gdal
