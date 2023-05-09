@@ -1,11 +1,11 @@
 # Maintainer: Bernardo Gameiro <projects@bgameiro.me>
-# Maintainer: Pierpaolo Valerio <gondsman@techgeek.co.in>
+# Contributor: Pierpaolo Valerio <gondsman@techgeek.co.in>
 # Contributor: Excitable Snowball <excitablesnowball@gmail.com>
 
 pkgbase='python-bokeh2'
 pkgname=('python-bokeh2')
 pkgver=2.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Interactive Web Plotting for Python'
 arch=('any')
 url='http://bokeh.pydata.org/'
