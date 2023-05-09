@@ -1,7 +1,7 @@
 pkgbase = gdgtui
 	pkgdesc = A simple battery saver tool
 	pkgver = 0.2.0
-	pkgrel = 1.0
+	pkgrel = 2.0
 	url = https://github.com/Decodetalkers/batteryasjusttui
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,7 @@ pkgbase = gdgtui
 	makedepends = git
 	makedepends = ninja
 	makedepends = meson
+	makedepends = rust
 	source = gdgtui-v0.2.0.tar.gz::https://github.com/Decodetalkers/batteryasjusttui/archive/refs/tags/v0.2.0.tar.gz
 	sha256sums = a6ea333959215987db3fcc4a17760b51c90967846df5f4c6583c175353563441
 
