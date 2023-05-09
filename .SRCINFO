@@ -1,6 +1,6 @@
 pkgbase = jdupes
 	pkgdesc = A program for identifying duplicate files residing within specified directories
-	pkgver = 1.22.0
+	pkgver = 1.23.0
 	pkgrel = 1
 	url = https://github.com/jbruchon/jdupes
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = jdupes
 	license = MIT
 	depends = glibc
 	depends = libjodycode
-	source = jdupes-1.22.0.tar.gz::https://github.com/jbruchon/jdupes/archive/v1.22.0.tar.gz
-	sha256sums = 945b69f1570d058b70c40d144c5dfa9d5769f43e9488e8ac4f47bbb9ac973df7
+	source = jdupes-1.23.0.tar.gz::https://github.com/jbruchon/jdupes/archive/v1.23.0.tar.gz
+	sha256sums = 5fdf7646518a26fefc322d7c9a5953c61db72d96626120ffa7f18197b59153d1
 
 pkgname = jdupes
