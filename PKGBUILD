@@ -17,10 +17,10 @@ source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz"
 )
 sha512sums=(
-  'b65cabad10f7f7c26bb92422fc4b45540f3ef08efd79585abc3bb08799ab9fac0293d2ec8de8fc40969c7c3bd89e197281509ce72107a8344d392108d4bb7990'
+  '310a61e0034f5782a37e69cd3da5eda1fd6bcc1cee1a272c45ffdb886dd387bd74fbc811d5b9c25c680d8a08dd9e85ebe162b717ab2603c846eb4ea29aa7c8a6'
   )
 md5sums=(
-  'd37e1b9135e60a0adf0723a715d0c8c6'
+  '950194f66968d8df6af819c985f44e8d'
   )
 validpgpkeys=(
   '81BACEEBC3EA26E127166E4A819BB92A9A48160E'
@@ -28,10 +28,14 @@ validpgpkeys=(
 
 package() {
 
-  cd "$srcdir/$pkgname/lfpreviewer"
+  cd "$srcdir/${pkgname}-${pkgver}-${pkgrel}-${arch}/lfpreviewer" ||
+  cd "$srcdir/${pkgname}/lfpreviewer"
+
   python3 setup.py install --root="$pkgdir" --optimize=1
 
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/${pkgname}-${pkgver}-${pkgrel}-${arch}" ||
+  cd "$srcdir/${pkgname}"
+
   install -Dm755 usr/bin/* -t "${pkgdir}/usr/bin"
   install -Dm755 usr/share/${pkgname}/{lfp,lfpcd,cleaner,scope} -t "${pkgdir}/usr/share/${pkgname}"
   install -Dm644 usr/share/${pkgname}/{lfp-icons,lfprc} -t "${pkgdir}/usr/share/${pkgname}"
