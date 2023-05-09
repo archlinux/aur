@@ -1,1 +1,4 @@
 v*.tar.gz
+pkg
+src
+*.pkg.*
