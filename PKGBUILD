@@ -3,7 +3,7 @@
 # Contributor: xantares
 
 pkgname=stargate
-pkgver=23.05.1
+pkgver=23.05.2
 pkgrel=1
 pkgdesc="A digital audio workstation (DAW) with a powerful pattern-based workflow"
 license=('GPL')
@@ -38,16 +38,19 @@ optdepends=(
     'vorbis-tools'
     'python-pyqt5: qt5 backend'
 )
-source=("https://github.com/stargateaudio/stargate/archive/refs/tags/release-${pkgver}.tar.gz")
-sha256sums=('d91de735ffa62b60aa261d33f3b187dbf1dbd0dbb5b623bb73145f5dcce9eb72')
+source=("https://github.com/stargateaudio/stargate/archive/refs/tags/release-${pkgver}.tar.gz"
+	"git+https://codeberg.org/soundtouch/soundtouch.git#commit=dd2252e9af3f2d6b749378173a4ae89551e06faf"
+	)
+sha256sums=('30559c431eb3c59ce74152d2150d4009b3f826ada136870da2f1fe8c8e12603f'
+  'SKIP'
+  )
 
 prepare(){
   cd stargate-release-${pkgver}
 	rm -rf src/vendor/soundtouch/
-	rm -rf src/vendor/portaudio-binaries/
-	git submodule init
-	git submodule update
-	cd src
+	cd src/vendor
+	cp -r ${srcdir}/soundtouch .
+	cd .. 
 	sed "/\binstall_symlinks:/s/:.*/:/" -i Makefile 
 }
 
@@ -59,8 +62,5 @@ build() {
 
 package() {
   cd stargate-release-${pkgver}/src
-	mkdir -p ${pkgdir}/usr/bin
-	mkdir -p ${pkgdir}/usr/share/{doc,applications,pixmaps}
-	mkdir -p ${pkgdir}/usr/share/mime/packages
   DESTDIR=${pkgdir} make install
 }
