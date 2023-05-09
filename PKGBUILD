@@ -10,8 +10,8 @@ arch=('x86_64')
 url='http://retroshare.cc/'
 license=('AGPL' 'GPL' 'LGPL')
 depends=('bzip2' 'libupnp' 'libxss' 'openssl-1.1' 'qt5-multimedia' 'qt5-x11extras' 'sqlcipher')
-provides=("${_pkgname}" "${_pkgname}-gui")
-conflicts=("${_pkgname}" "${_pkgname}-gui")
+provides=("${_pkgname}" "${_pkgname}-gui" "${_pkgname}-git")
+conflicts=("${_pkgname}" "${_pkgname}-gui" "${_pkgname}-git")
 options=('!strip')
 
 source_x86_64=("${pkgname}-${pkgver}-${_subver}-x86_64.pkg.tar.zst::https://download.opensuse.org/repositories/network:/retroshare/Arch_Community_standard/x86_64/${_pkgname}-gui-${pkgver}-${_subver}-x86_64.pkg.tar.zst"
