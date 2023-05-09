@@ -1,18 +1,18 @@
 # Maintainer: fuero <fuerob@gmail.com>
 _pkgname=bashhub-client
 pkgname=${_pkgname}
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=6
-pkgdesc='saves every terminal command entered across all sessions and systemto the cloud'
+pkgdesc='saves every terminal command entered across all sessions and system to the cloud'
 arch=('x86_64')
 _repo_prefix='github.com/rcaloras'
 _repo_name="${_pkgname}"
 url="https://${_repo_prefix}/${_repo_name}"
 source=(
-	${url}/archive/refs/tags/${pkgver}.tar.gz
+  ${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz
 )
 sha256sums=(
-  '70f2d70ee1a24ecca6f9bdf80256a93b488a10eb5cabf63de37ac5520f1cf6c9'
+  'cc9df8439cc969cf344f8ca1a9446dc11874c5b0812f26011169ccc98915dfe9'
 )
 license=('Apache')
 depends=(
@@ -34,8 +34,16 @@ checkdepends=(
 	python-mock
 )
 makedepends=(
-	python-build python-installer python-wheel python-setuptools
+	python-build
+    python-installer
+    python-wheel
+    python-setuptools
 )
+
+prepare() {
+  cd "$_pkgname-$pkgver"
+  sed -i -e "s/'__version__'/__version__/g" setup.py
+}
 
 build() {
   cd "$_pkgname-$pkgver"
@@ -49,6 +57,8 @@ package() {
   do
     install -Dm644 "${_file}" "${pkgdir}/usr/share/doc/${pkgname}/$(basename ${_file})"
   done
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  rm -rf "${pkgdir}${site_packages}/tests"
 
 }
 
