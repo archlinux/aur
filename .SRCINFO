@@ -6,12 +6,9 @@ pkgbase = snip
 	arch = any
 	license = MIT
 	depends = neovim
-	source = https://concise.cc/pkg/snip-1.1.3-1-any.pkg.tar.zst
-	source = https://concise.cc/pkg/snip-1.1.3-1-any.pkg.tar.zst.sig
+	source = https://concise.cc/pkg/snip-1.1.3-1-any.pkg.tar.xz
 	validpgpkeys = 81BACEEBC3EA26E127166E4A819BB92A9A48160E
-	md5sums = d26821a366feee5e3252cf443c859ad6
-	md5sums = a863be1ecfa37dc6aa68cc209b557f5e
-	sha512sums = 326a7e00bb768c6d134b1c220329344ec026cb4725c0b058441132ecd4818bc9f7ec6fcf9fbc9b20c190a0e72ecbbd05c4adbcde4287eb92a84804fe27d8d2d7
-	sha512sums = b7fd6cd806ff75fe1b34be7aa1cf21541f142347d64dbcfcbdce8bcbf9cf9fb12d48fbc16f683fb15a7305294485d9567148a790cf9912f6e45fad0183e16207
+	md5sums = f7ed0ba0d8a3ff79e34476d92fc7532f
+	sha512sums = 302e1175e1171caa30ea8cede49da99acb4a6e84e5a6a7ad2f6de3ecfcecf9c52bfd0b84819243920716ffc9f4e659dbd624ef6b6cffd883a351e29f63b48794
 
 pkgname = snip

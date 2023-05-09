@@ -9,20 +9,24 @@ url="https://gitlab.com/a4to/${pkgname}"
 license=('MIT')
 depends=(neovim)
 source=(
-  "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst"
-  "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
-  )
+  "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz"
+)
 sha512sums=(
-  '326a7e00bb768c6d134b1c220329344ec026cb4725c0b058441132ecd4818bc9f7ec6fcf9fbc9b20c190a0e72ecbbd05c4adbcde4287eb92a84804fe27d8d2d7'
-  'b7fd6cd806ff75fe1b34be7aa1cf21541f142347d64dbcfcbdce8bcbf9cf9fb12d48fbc16f683fb15a7305294485d9567148a790cf9912f6e45fad0183e16207'
+  '302e1175e1171caa30ea8cede49da99acb4a6e84e5a6a7ad2f6de3ecfcecf9c52bfd0b84819243920716ffc9f4e659dbd624ef6b6cffd883a351e29f63b48794'
   )
 md5sums=(
-  'd26821a366feee5e3252cf443c859ad6'
-  'a863be1ecfa37dc6aa68cc209b557f5e'
+  'f7ed0ba0d8a3ff79e34476d92fc7532f'
   )
-validpgpkeys=('81BACEEBC3EA26E127166E4A819BB92A9A48160E')
+validpgpkeys=(
+  '81BACEEBC3EA26E127166E4A819BB92A9A48160E'
+  )
 
 package() {
-    install -Dm644 usr/share/licenses/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm755 usr/bin/${pkgname} "${pkgdir}/usr/bin/${pkgname}"
+
+  cd "$srcdir/${pkgname}-${pkgver}-${pkgrel}-${arch}" ||
+  cd "$srcdir/${pkgname}"
+
+  install -Dm644 usr/share/licenses/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 usr/bin/${pkgname} "${pkgdir}/usr/bin/${pkgname}"
+
 }
