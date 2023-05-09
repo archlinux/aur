@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cargo-dist
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="Shippable application packaging for Rust"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('Apache' 'MIT')
 depends=('xz' 'bzip2')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3f286819b21ef4104f2f6b71550cb5f2d4fb207530220a257f9757c7027e552e')
+sha256sums=('3a71500807a17f6b391122b7501ea673534e737500a4ba1d0d685eb9b64830f5')
 options=('!lto')
 
 prepare() {
