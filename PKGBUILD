@@ -4,7 +4,7 @@ _CUDA_ARCH_LIST="52;53;60;61;62;70;72;75;80;86;89"
 pkgname=python-nvidia-dali
 _pkgname=dali
 pkgver=1.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A library containing both highly optimized building blocks and an execution engine for data pre-processing in deep learning applications'
 arch=('x86_64')
 url='https://github.com/NVIDIA/DALI'
@@ -22,6 +22,7 @@ makedepends=(
   cfitsio
   clang
   cmake
+  gcc12
   git
   python-setuptools
 )
@@ -39,6 +40,9 @@ prepare() {
   git submodule update --init --recursive
   # quick fix for https://github.com/archlinuxcn/repo/issues/2877
   export CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
+  # build with gcc 12
+  export CC=gcc-12
+  export CXX=g++-12
 }
 
 build() {
