@@ -1,3 +1,4 @@
+
 pkgname=ttf-gujrati-fonts
 pkgver=0.0
 pkgrel=0
@@ -14,11 +15,10 @@ source=(
 "http://gujarati.indiatyping.com/images/downloadfonts/Gujrati/Shree768.zip"
 )
 md5sums=(
-"31812c559691117d0d67da104bb8a16e"
-"07e02608f86c58adbe4faca233ab6e31"
-"db771843a551dea704ebf15b71341c78"
+"914af5f7de2149a0c9ea5500149faa75"
+"9d1a01da77cfd303fdd3f1093b20d42d"
+"d1a8d85c268df98876182368d2d4d0af"
 )
-
 
 package() {
   install -d "$pkgdir/usr/share/fonts/TTF"
