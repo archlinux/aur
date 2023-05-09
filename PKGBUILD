@@ -1,7 +1,7 @@
 # Maintainer: ThatOneCalculator (Kainoa Kanter) <kainoakanter@gmail.com>
 pkgname="nerdfetch"
-pkgver=5.0.2
-pkgrel=3
+pkgver=6.0.0
+pkgrel=1
 pkgdesc="A POSIX fetch using NerdFonts"
 arch=('any')
 url="https://codeberg.org/thatonecalculator/NerdFetch"

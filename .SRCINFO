@@ -1,12 +1,12 @@
 pkgbase = nerdfetch
 	pkgdesc = A POSIX fetch using NerdFonts
-	pkgver = 5.0.2
-	pkgrel = 3
+	pkgver = 6.0.0
+	pkgrel = 1
 	url = https://codeberg.org/thatonecalculator/NerdFetch
 	arch = any
 	license = GPL
 	makedepends = git
-	source = nerdfetch.tar.gz::https://codeberg.org/thatonecalculator/NerdFetch/archive/v5.0.2.tar.gz
+	source = nerdfetch.tar.gz::https://codeberg.org/thatonecalculator/NerdFetch/archive/v6.0.0.tar.gz
 	md5sums = SKIP
 
 pkgname = nerdfetch
