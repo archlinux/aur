@@ -13,14 +13,14 @@ source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz"
 )
 sha512sums=(
-  '4e1659992371dbd6e638717bf66aee88e087a57bfdf5016783e8fa435dbf5e204a68d7cfe9e811508c1da91bc3795fa99467b6e4f9a4fdadee5fd8e1b10d5d20'
-  )
+  '9f4d02ae96ce7414ec1f8e5f3e563a273a21276737f7f14d6b80aff8aef4169032fa753f03220737c091f6d1d69890ddeca501e39808a867589235e609dfc23a'
+)
 md5sums=(
-  'd5658508cd4b2ca74efad6c61885ad89'
-  )
+  '00dd3c84b511599a09538cf3e3494ae5'
+)
 validpgpkeys=(
   '81BACEEBC3EA26E127166E4A819BB92A9A48160E'
-  )
+)
 
 package() {
 
@@ -33,7 +33,7 @@ package() {
 
   cd ../../../../
   install -dm0755 "${pkgdir}"/usr/lib/node_modules/${pkgname}
-  install -Dm0755 usr/bin/${pkgname} "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm0755 usr/bin/* -t "${pkgdir}/usr/bin/"
   install -Dm0644 usr/share/licenses/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   cp -ar usr/lib/node_modules/${pkgname}/* "${pkgdir}"/usr/lib/node_modules/${pkgname}
 
