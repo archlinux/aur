@@ -6,14 +6,17 @@ _name="GeoAlchemy2"
 pkgdesc="Using SQLAlchemy with Spatial Databases"
 url="https://geoalchemy-2.readthedocs.io/"
 
-pkgver=0.8.4
-pkgrel=3
+pkgver=0.13.2
+pkgrel=1
 
 arch=("any")
 license=("MIT")
 
 makedepends=(
-    "python-setuptools"
+    "python-build"
+    "python-installer"
+    "python-setuptools-scm"
+    "python-wheel"
 )
 depends=(
     "python"
@@ -22,16 +25,16 @@ depends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=("d9336f17df3e7a10f94d1ea2488dcfb97a8bc23fe7f5edea425ddab553534b0a")
+b2sums=("b6855037c3818649426c36d15f8d71cadd8a0b476ac2c54b75b398d01234c2cf809d7bb4de53989adcb3be2cc03f1b697a5f6bd54f775b6b13da8bbcc8e1454e")
 
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "${srcdir}/${_name}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 
     install -Dm644 COPYING.rst "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
