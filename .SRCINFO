@@ -1,7 +1,7 @@
 pkgbase = python-tweedledum
 	pkgdesc = A library for synthesizing and manipulating quantum circuits
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/boschmitt/tweedledum
 	arch = x86_64
 	license = MIT
@@ -13,7 +13,9 @@ pkgbase = python-tweedledum
 	depends = gcc-libs
 	source = tweedledum-1.1.1.tar.gz::https://files.pythonhosted.org/packages/source/t/tweedledum/tweedledum-1.1.1.tar.gz
 	source = fix-build.patch::https://github.com/boschmitt/tweedledum/pull/170.patch
+	source = pybind11.tar.gz::https://github.com/pybind/pybind11/archive/refs/tags/v2.10.4.tar.gz
 	b2sums = 99da09829a70a316fdc582929bfe8ca5d805f0a7a6f049da3951c57c5e4bec24343a1021020e8d00791683ab5c140647d78ee0dde5dac95370b648e0eee44b04
 	b2sums = 24cb2303a6d3fdac0967c6c925bb49113cc317aa03524b024e9131180bdcd7f6dd812d0e2ebfe157f0331e366b0284c972cc1b2b780960af38365c7d70fa078c
+	b2sums = 7b2d86e8262581b2cc6dd720b83336206e242ef8ca99b257b01a11141ed8b127d7f35d7d573bc763dd36f2fe8c8ac91766089deb63a76e9c10029c34eec2d6d3
 
 pkgname = python-tweedledum
