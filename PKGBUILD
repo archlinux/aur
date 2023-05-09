@@ -28,13 +28,9 @@ source=(
 	"https://disc-kuraudo.eu/releases/${pkgname}-linux-${CARCH}-${pkgver}.tar.xz"
 	*.patch # Any (untracked) patches lying around
 )
-if   [ ${CARCH} == "x86_64" ]; then
-	sha256sums=('e17a6eefc55c2ecd0db16170f24861cf336c97e90104217234e1e24a76ea9aaf')
-elif [ ${CARCH} == "aarch64" ]; then
-	sha256sums=('b47493892de79886f66dba5cb5732fae2c90001a2ecf9eeb4efaa9fe0b235e9f')
-else
-	echo "Unsupported platform '${CARCH}', aborting."; exit 1
-fi
+[ ${CARCH} == "x86_64"  ] && sha256sums=('e17a6eefc55c2ecd0db16170f24861cf336c97e90104217234e1e24a76ea9aaf')
+[ ${CARCH} == "aarch64" ] && sha256sums=('b47493892de79886f66dba5cb5732fae2c90001a2ecf9eeb4efaa9fe0b235e9f')
+
 # Add SKIP for patches, if any
 if [ ${#source[@]} -ne ${#sha256sums[@]} ]; then
 	for i in $(seq $((${#source[@]} - ${#sha256sums[@]}))); do
