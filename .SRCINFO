@@ -1,10 +1,11 @@
 pkgbase = nsis-accesscontrol-bin
 	pkgdesc = NSIS plug-in that provides functions related to Windows NT ACL management.
 	pkgver = 1.0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nsis.sourceforge.io/AccessControl_plug-in
 	arch = any
 	license = custom
+	depends = nsis
 	source = AccessControl-1.0.8.3.zip::https://nsis.sourceforge.io/mediawiki/images/4/4a/AccessControl.zip
 	sha256sums = 9aa60f9c5c023fda2808af216514d8913d2673bc522d944ee771da032a1bdc10
 
