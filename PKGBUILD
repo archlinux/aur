@@ -28,6 +28,11 @@ pkgver() {
     git -C ${pkgname} describe --tags | sed 's/^v//'
 }
 
+prepare() {
+    # Clean out old wheels etc.
+    git -C "${pkgname%-git}" clean -dfx
+}
+
 build() {
     cd ${pkgname}
     make
