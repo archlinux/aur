@@ -32,7 +32,7 @@ else
 fi
 epoch=1
 pkgver=44.1+r2+g82bd40dcb
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64 aarch64)
