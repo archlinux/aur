@@ -4,7 +4,7 @@
 
 _pkgname=treesheets
 pkgname=$_pkgname-git
-pkgver=r369.a962f73
+pkgver=r451.3694b16
 pkgrel=1
 pkgdesc='A "hierarchical spreadsheet" as a replacement for spreadsheets, mind mappers, outliners, PIMs, text editors and small databases.'
 url="https://strlen.com/treesheets/"
@@ -20,10 +20,8 @@ source=(
   'myframe.patch'
 )
 
-sha512sums=(
-  'SKIP'
-  '7ea8b6947c334adebba774bcdd4db27670206a216de0c023c2b69aa3ad3b621165733a36f03f2e23bab1e7721982a24c29c4446754ba79c11c5735961ad04816'
-)
+sha512sums=('SKIP'
+            '8fc4872d8e430899d21e95d6009dea8dde50ba5854a245b4b78901cebf82e3275b23b92f5afe9c5e2f11c34e1d73cd1657d48a3f8aa937eedfc576f2e62bcd77')
 
 pkgver() {
   cd $_pkgname
@@ -34,7 +32,7 @@ pkgver() {
 prepare() {
   cd $_pkgname
 
-  patch -p1 < ../myframe.patch
+  patch --binary -p1 < ../myframe.patch
   find TS/images -type f ! -iname '*.png' -a ! -iname '*.svg' -delete
 }
 
