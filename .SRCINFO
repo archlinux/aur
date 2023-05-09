@@ -1,0 +1,18 @@
+pkgbase = exifcleaner-appimage
+	pkgdesc = Cross-platform desktop GUI app to clean image metadata
+	pkgver = 3.6.0
+	pkgrel = 1
+	url = https://exifcleaner.com/
+	arch = x86_64
+	license = MIT
+	depends = hicolor-icon-theme
+	depends = zlib
+	depends = glibc
+	conflicts = exifcleaner
+	options = !strip
+	source = exifcleaner-3.6.0.AppImage::https://github.com/szTheory/exifcleaner/releases/download/v3.6.0/ExifCleaner-3.6.0.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/szTheory/exifcleaner/master/LICENSE
+	sha256sums = 418144fff26801316edb093ebdcdee3e72a035343c06251323b86ab345ea154f
+	sha256sums = a74847d1e523991859009094dca82f704240d291dea5728a59de9e419cf104ac
+
+pkgname = exifcleaner-appimage
