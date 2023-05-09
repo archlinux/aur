@@ -1,6 +1,6 @@
 pkgbase = platypush-git
 	pkgdesc = Universal multi-platform command executor and automation manager
-	pkgver = 0.24.5.r0.7716a416
+	pkgver = 0.24.5.r0.ab2425eb
 	pkgrel = 1
 	url = https://git.platypush.tech/platypush/platypush
 	arch = any
@@ -96,6 +96,6 @@ pkgbase = platypush-git
 	conflicts = platypush
 	options = !strip
 	source = master.tar.gz::https://git.platypush.tech/platypush/platypush/archive/master.tar.gz
-	sha512sums = 20b3ae0e19fd14246e4fcbe3d86efc343ab688a518f3efebb92b19156d19e19954915853c2051156933eb068758fce5da84be4c2a55c2b66a861a77e6a3cf52c
+	sha512sums = 436e9ca9627cd3b8d7bc40bd09ca81e74ba659d7c6bf096da5443d77b143c19ecb9b7c5a51b6cae841fe3a3a811b1ffca3bd00c89bd2b64af41a03b4b41bc6d3
 
 pkgname = platypush-git
