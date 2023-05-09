@@ -1,7 +1,7 @@
 # Maintainer: jmcb <joelsgp@protonmail.com>
 pkgname=altirra
 pkgver=4.10
-pkgrel=2
+pkgrel=3
 pkgdesc='An 8-bit Atari computer emulator, on Wine'
 arch=('any')
 url='https://www.virtualdub.org/altirra.html'
@@ -30,7 +30,7 @@ package() {
 
     # windows program files
     # omits extras/
-    install -D -m644 -t "${_dest}"/ Additions.atr Altirra.chm Altirra64.exe extras/
+    install -D -m644 -t "${_dest}"/ Additions.atr Altirra.chm Altirra64.exe
     # shell script
     install -D -t "${_dest}" altirra
     # firmware roms
