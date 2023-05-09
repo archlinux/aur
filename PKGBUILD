@@ -1,4 +1,4 @@
-# Maintainer: Hollow Man <hollowman at opensuse dot org>
+# Maintainer: Kubescape Maintainers <cncf hyphen kubescape hyphen maintainers at lists dot cncf dot io>
 
 pkgname=kubescape
 pkgver=2.3.1
