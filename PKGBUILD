@@ -13,6 +13,7 @@ license=('BSD')
 source=("https://pypi.io/packages/source/b/bokeh/bokeh-${pkgver}.tar.gz")
 sha256sums=('ef33801161af379665ab7a34684f2209861e3aefd5c803a21fbbb99d94874b03')
 makedepends=('python-setuptools')
+provides=("python-bokeh=$pkgver")
 
 build() {
   cd "${srcdir}"/bokeh-$pkgver
