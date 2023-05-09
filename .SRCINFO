@@ -1,0 +1,13 @@
+pkgbase = commit
+	pkgdesc = Git commit simulator using Conventional Commits conventions
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/KunalSin9h/commit.git
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = gum
+	source = git+https://github.com/KunalSin9h/commit.git
+	md5sums = SKIP
+
+pkgname = commit
