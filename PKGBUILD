@@ -14,6 +14,7 @@ netboard.service)
 sha256sums=('SKIP'
             'fe470319810d17f929d983d1f8de2a474bcb9897e1cd1e68a33039c0d50d03e3')
 provides=("netboard")
+conflicts=(netboard)
 
 build() {
 	cd "${srcdir}/${pkgname}"

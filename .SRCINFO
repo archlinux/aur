@@ -9,6 +9,7 @@ pkgbase = netboard-git
 	makedepends = go
 	depends = wl-clipboard
 	provides = netboard
+	conflicts = netboard
 	source = netboard-git::git+https://github.com/primalmotion/netboard
 	source = netboard.service
 	sha256sums = SKIP
