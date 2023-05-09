@@ -1,7 +1,7 @@
 pkgbase = discimagecreator-bin
 	pkgdesc = DiscImageCreator, offical release with supplemental binaries and text files for full functionality.
 	pkgver = 20230413
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/saramibreak/DiscImageCreator
 	arch = x86_64
 	license = Apache

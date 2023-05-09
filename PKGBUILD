@@ -1,4 +1,5 @@
 # Maintainer: jswagner <jason-at-jason;s.wagner*dot,com>
+# Contributor: KickMeElmo
 _pkgname=DiscImageCreator
 pkgname=discimagecreator-bin
 url="https://github.com/saramibreak/DiscImageCreator"
@@ -7,7 +8,7 @@ pkgdesc="DiscImageCreator, offical release with supplemental binaries and text f
 provides=('discimagecreator')
 conflicts=('discimagecreator')
 pkgver=20230413
-pkgrel=1
+pkgrel=2
 license=('Apache')
 # Developer attaches links to the compiled builds in release notes so this entire URL must be replaced with every new build.
 source=("https://github.com/saramibreak/DiscImageCreator/files/11222269/DiscImageCreator_20230413.tar.gz")
@@ -17,9 +18,16 @@ sha256sums=('099cb574cacf7af444a938051248a7ac4e9dd6f5bd327487c879d950a2e64243')
 package() {
 	# install binaries
 	mkdir -p ${pkgdir}/usr/bin
-	install -Dm 755 ${srcdir}/${_pkgname}/DiscImageCreator_linux.out ${pkgdir}/usr/bin/DiscImageCreator
+	install -Dm 755 ${srcdir}/${_pkgname}/DiscImageCreator_linux.out ${pkgdir}/usr/bin/DiscImageCreator_linux.out
 	install -Dm 755 ${srcdir}/${_pkgname}/DVDAuth_linux.out ${pkgdir}/usr/bin/DVDAuth_linux.out
 	install -Dm 755 ${srcdir}/${_pkgname}/EccEdc_linux.out ${pkgdir}/usr/bin/EccEdc_linux.out
+	
+	# create symlinks for to deal with stupid idiot filenames for convenience; no, you can't just rename these,
+	# `DiscImageCreator` calls them during execution and the `_linux.out` suffix is hardcoded into the source.
+	# no, i'm not going to patch this trash.
+	ln -s DiscImageCreator_linux.out ${pkgdir}/usr/bin/DiscImageCreator
+	ln -s DVDAuth_linux.out ${pkgdir}/usr/bin/DVDAuth
+	ln -s EccEdc_linux.out ${pkgdir}/usr/bin/EccEdc
 
 	# install supplemental data files
 	mkdir -p ${pkgdir}/usr/lib/${_pkgname}
