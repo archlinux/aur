@@ -17,7 +17,7 @@ optdepends=('python: python support'
 backup=("etc/$pkgname/config.py")
 source=("http://www.salilab.org/modeller/$pkgver/$pkgname-$pkgver.tar.gz"{,.sign}
         "LICENSE")
-sha256sums=('c55686b733ed709cb6d3635c4d3067b07161d0cdba2241494cb3e6154f3df8d2'
+sha256sums=('ed08fcbbee1db095a2c243028b567569398e03dabfe2ad459dca1a5298bb8ac9'
             'SKIP'
             '7d1fb18e362298bc606d6d99852479dc107ad336e1bcd33362fdeef18cf207fe')
 validpgpkeys=('9F7FF1477E5A2463732EC9781CC7D059745E6093')
