@@ -1,18 +1,18 @@
 # Maintainer: Duncan Russell <duncan at anomalocaris dot xyz>
 
 pkgname=handlr-regex
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="Fork of handlr with regex support"
 arch=('x86_64')
 url="https://github.com/Anomalocaridid/handlr-regex"
 license=('MIT')
-depends=('gcc-libs')
+depends=('shared-mime-info' 'gcc-libs')
 makedepends=('cargo')
 provides=(handlr)
 conflicts=(handlr)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('4d9b9b630817563bd6732998cf313236706a566f579eb793d22710443d05903b0cf853071ddafdfdf820158841a243354601fb74794ae24d214a0ba44d86bb8a')
+b2sums=('28ddec077f788961ad1b6d3f5ed07c7986caf3b38a3371b06946be2278a191e385ce1514e08238085c217ee088f6a7921ac48d5e48c82e450245eb7b6eda6596')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"

@@ -1,15 +1,16 @@
 pkgbase = handlr-regex
 	pkgdesc = Fork of handlr with regex support
-	pkgver = 0.8.4
+	pkgver = 0.8.5
 	pkgrel = 1
 	url = https://github.com/Anomalocaridid/handlr-regex
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
+	depends = shared-mime-info
 	depends = gcc-libs
 	provides = handlr
 	conflicts = handlr
-	source = handlr-regex-0.8.4.tar.gz::https://github.com/Anomalocaridid/handlr-regex/archive/v0.8.4.tar.gz
-	b2sums = 4d9b9b630817563bd6732998cf313236706a566f579eb793d22710443d05903b0cf853071ddafdfdf820158841a243354601fb74794ae24d214a0ba44d86bb8a
+	source = handlr-regex-0.8.5.tar.gz::https://github.com/Anomalocaridid/handlr-regex/archive/v0.8.5.tar.gz
+	b2sums = 28ddec077f788961ad1b6d3f5ed07c7986caf3b38a3371b06946be2278a191e385ce1514e08238085c217ee088f6a7921ac48d5e48c82e450245eb7b6eda6596
 
 pkgname = handlr-regex
