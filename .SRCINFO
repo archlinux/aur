@@ -1,19 +1,18 @@
 pkgbase = sqlacodegen
 	pkgdesc = Automatic model code generator for SQLAlchemy
-	pkgver = 2.3.0.post1
-	pkgrel = 1
+	pkgver = 3.0.0rc2
+	pkgrel = 2
 	url = https://github.com/agronholm/sqlacodegen
 	arch = any
 	license = MIT
-	checkdepends = python-mysql-connector
-	checkdepends = python-psycopg2
-	checkdepends = python-pytest
-	checkdepends = python-pytest-cov
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	makedepends = python-pip
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
 	depends = python-inflect
 	depends = python-sqlalchemy
-	source = sqlacodegen-2.3.0.post1.tar.gz::https://files.pythonhosted.org/packages/source/s/sqlacodegen/sqlacodegen-2.3.0.post1.tar.gz
-	sha512sums = 6a888f57b584da1b318212582879bf0d03b9770432b4bc97a6eeb7a8671f1e365a55c4ca3b509c568ac44064201c8033a5e13ebcb8bb5d853c37001276d0b419
+	source = sqlacodegen-3.0.0rc2.tar.gz::https://github.com/agronholm/sqlacodegen/archive/refs/tags/3.0.0rc2.tar.gz
+	sha512sums = 90fb2da3f7ebffadb51798e1121e714e8239b949700e295ca9ce6a6b61503b356af0ae39002c59a2ab073eeaec42cba877752b5249ec19601421419602aeb2f7
 
 pkgname = sqlacodegen
