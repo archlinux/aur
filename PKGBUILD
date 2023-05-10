@@ -41,7 +41,8 @@ source=("$pkgname-$pkgver.tar.xz::$(_dl_url $_MAJOR $_MINOR $_PATCH)"
         "weewxd"
         "wunderfixer"
         "weewx.service"
-	"pillow-rect.patch")
+	"pillow-rect.patch"
+	"weewx-version.patch")
 sha512sums=('8fca9cd7720a29687a0d900e4d89ec2ce5ca5d2aa36bc5b5909ea14ecb849cdbdb6e699cf1c3a0d5505c89ad8c309517db32fd8dc4a0ae4704dfd5ed0cc5747f'
             'SKIP'
             'SKIP'
@@ -53,11 +54,13 @@ sha512sums=('8fca9cd7720a29687a0d900e4d89ec2ce5ca5d2aa36bc5b5909ea14ecb849cdbdb6
             'SKIP'
             'SKIP'
             'SKIP'
+	    'SKIP'
 	    'SKIP')
 _watch="http://www.weewx.com/downloads/"
 
 prepare() {
   cd "$srcdir/${pkgname}-${pkgver}"
+  patch --strip=1 --input="$srcdir/weewx-version.patch"
   patch --strip=1 --input="$srcdir/pillow-rect.patch"
 }
 
