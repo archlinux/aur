@@ -1,3 +1,10 @@
+## GE-Proton8-3
+
+* wine updated to latest bleeding edge -- fixes video playback regression introduced in 8-2
+* fixed issue with some applications swapping to windowed mode when alt+tabbing or focus lost
+* dxvk updated to latest git
+* vkd3d-proton updated to latest git
+
 ## GE-Proton8-2
 
 * wine updated to bleeding edge
