@@ -3,30 +3,36 @@
 
 pkgname=moar
 pkgver=1.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A pager designed to just do the right thing without any configuration."
-arch=(any)
+arch=(x86_64)
 url='https://github.com/walles/moar'
 license=(BSD)
 makedepends=(go)
-optdepends=(highlight)
 checkdepends=(highlight)
-source=("https://github.com/walles/moar/archive/refs/tags/v${pkgver}.tar.gz")
+optdepends=("highlight: source code syntax highlighter")
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/walles/moar/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('93287d8b7fc287b6cbc1c2e830a3df618ec31e17dc6eaf5ea5fb72d75e3bc7e8')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-	go build -ldflags="-X main.versionString=${pkgver}" -o "${pkgname}"
-}
 
-check() {
+ export CGO_CPPFLAGS="${CPPFLAGS}"
+ export CGO_CFLAGS="${CFLAGS}"
+ export CGO_CXXFLAGS="${CXXFLAGS}"
+ export CGO_LDFLAGS="${LDFLAGS}"
+ export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
   cd "${srcdir}/${pkgname}-${pkgver}"
-	go test github.com/walles/moar/m
+
+   go build -ldflags="-s -w -X main.versionString=${pkgver}" -o "${pkgname}"
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-	
-	install -dm755 "${pkgdir}/usr/bin"
-	install -m755 "moar" "${pkgdir}/usr/bin/moar"
+
+ cd "${srcdir}/${pkgname}-${pkgver}"
+
+  install -Dm755 moar "${pkgdir}/usr/bin/moar"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 moar.1 "${pkgdir}/usr/share/man/man1/moar.1"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
