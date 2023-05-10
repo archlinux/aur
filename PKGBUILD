@@ -2,8 +2,8 @@
 
 pkgname=python-aesara
 _name=${pkgname#python-}
-pkgver=2.8.12
-pkgrel=2
+pkgver=2.9.0
+pkgrel=1
 pkgdesc="Library for defining, optimizing, and efficiently evaluating mathematical expressions involving multi-dimensional arrays"
 arch=(any)
 url="https://github.com/aesara-devs/aesara"
@@ -16,10 +16,9 @@ makedepends=(
   python-hatch-vcs
 )
 depends=(
-  python-cons
   python-etuples
   python-filelock
-  python-numpy
+  python-minikanren
   python-scipy
   python-sympy
   python-typing_extensions
@@ -34,7 +33,7 @@ source=(
   "remove-bin-package.patch"
 )
 sha256sums=(
-  '497a9a0c2379f3453f33ccd8bb51414f3fc548390b8a1d9ac65ddbe27b5844bd'
+  '579ad9e4c7daeba22d2ae09892926d908e936a785e38db4a77195a7abb3f8b67'
   '26a048c151f022411e90ff6793b61b19b0a3bf5588086d7cf9572c312be75dad'
 )
 
