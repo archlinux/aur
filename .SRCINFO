@@ -1,0 +1,15 @@
+pkgbase = wire-desktop-appimage
+	pkgdesc = Wire for desktop
+	pkgver = 3.30.3018
+	pkgrel = 1
+	url = https://wire.com/download/
+	arch = x86_64
+	license = GPL3
+	depends = hicolor-icon-theme
+	depends = zlib
+	depends = glibc
+	options = !strip
+	source = wire-desktop-3.30.3018.AppImage::https://github.com/wireapp/wire-desktop/releases/download/linux%2F3.30.3018/Wire-3.30.3018_x86_64.AppImage
+	sha256sums = 492ba983bbf1638b5db99ef3f303a8044f295760581c959889b5f1a1802ed49b
+
+pkgname = wire-desktop-appimage
