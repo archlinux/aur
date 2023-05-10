@@ -2,3 +2,5 @@ pkg
 src
 *.pkg.tar.*
 plasma5-wallpapers-wallpaper-engine-git
+glslang
+*.log
