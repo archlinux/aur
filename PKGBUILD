@@ -1,17 +1,18 @@
+# Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
 # Contributor: xRemaLx <anton.komolov@gmail.com>
 
 pkgname=perl-ole-storage-lite
 _pkgname='OLE-Storage_Lite'
-pkgver=0.20
+pkgver=0.22
 pkgrel=1
-pkgdesc="Simple Class for OLE document interface"
+pkgdesc="Simple class for the OLE document interface"
 arch=('any')
-url="http://search.cpan.org/dist/OLE-Storage_Lite/"
+url="https://search.cpan.org/dist/${_pkgname}/"
 license=('GPL' 'PerlArtistic')
 depends=('perl')
 options=('!emptydirs')
-source=("http://search.cpan.org/CPAN/authors/id/J/JM/JMCNAMARA/${_pkgname}-$pkgver.tar.gz")
-sha256sums=('ab18a6171c0e08ea934eea14a0ab4f3a8909975dda9da42124922eb41e84f8ba')
+source=("https://search.cpan.org/CPAN/authors/id/J/JM/JMCNAMARA/${_pkgname}-$pkgver.tar.gz")
+sha256sums=('d0566d6c29d397ea736379dc515c36849f6b97107cf700ba8250505c984cf965')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -36,5 +37,5 @@ check() {
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "${pkgdir}" -name .packlist -o -name perllocal.pod -delete
 }
