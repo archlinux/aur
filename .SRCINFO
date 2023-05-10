@@ -1,6 +1,6 @@
 pkgbase = libvgm-git
 	pkgdesc = Library for decoding and playing VGM files
-	pkgver = r468.e925bad
+	pkgver = r541.669a756
 	pkgrel = 1
 	url = https://github.com/ValleyBell/libvgm
 	arch = x86_64
@@ -50,4 +50,3 @@ pkgname = vgmplayer-git
 	depends = libvgm-utils-git
 	depends = libvgm-player-git
 	depends = libvgm-audio-git
-
