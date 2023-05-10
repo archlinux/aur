@@ -1,0 +1,23 @@
+pkgbase = bazel5
+	pkgdesc = Correct, reproducible, and fast builds for everyone, version 5.x
+	pkgver = 5.4.1
+	pkgrel = 1
+	url = https://bazel.build/
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = protobuf
+	makedepends = python
+	makedepends = gcc12
+	depends = java-environment=11
+	depends = libarchive
+	depends = zip
+	depends = unzip
+	provides = bazel
+	conflicts = bazel
+	options = !distcc
+	options = !strip
+	source = https://github.com/bazelbuild/bazel/releases/download/5.4.1/bazel-5.4.1-dist.zip
+	b2sums = 5a5898b29ea14c7b660f8124a7f4aa795a3c2205a89aadd3d865c792dae59cd933ca376eb52d8bf3d53ed13704a3284e96bce2b9de702a84cb4f6d0b2b821380
+
+pkgname = bazel5
