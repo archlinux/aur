@@ -1,6 +1,6 @@
 pkgbase = codeberg-cli-git
 	pkgdesc = CLI Tool for Codeberg similar to gh and glab.
-	pkgver = 0.2.1.r0.ge7a3294
+	pkgver = 0.3.4.r0.g0a15b5e
 	pkgrel = 1
 	url = https://codeberg.org/RobWalt/codeberg-cli
 	arch = x86_64
