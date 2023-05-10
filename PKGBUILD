@@ -2,11 +2,11 @@
 pkgname=unifetch-git
 _pkgname=unifetch
 epoch=1
-pkgver=r5413.bdb34a5a
+pkgver=r5419.4587679e
 pkgrel=1
 pkgdesc="An unofficial inheritor of neofetch, fresh version."
 arch=('any')
-url="https://github.com/jin-asanami/"
+url="https://github.com/jin-asanami/unifetch"
 license=('MIT')
 depends=('bash')
 optdepends=(
@@ -27,7 +27,7 @@ makedepends=('git')
 checkdepends=('shellcheck')
 conflicts=("unifetch" "neofetch")
 provides=("unifetch" "neofetch")
-source=(${_pkgname}::"git+${url}/${_pkgname}.git")
+source=(${_pkgname}::"git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
