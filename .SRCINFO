@@ -1,0 +1,16 @@
+pkgbase = icloud-for-linux-git
+	pkgdesc = iCloud for Linux
+	pkgver = 0.11.8.g66d3cd9
+	pkgrel = 1
+	url = https://github.com/cross-platform/icloud-for-linux
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = npm
+	depends = nss
+	provides = icloud-for-linux
+	conflicts = icloud-for-linux
+	source = git+https://github.com/wmwnuk/icloud-for-linux
+	sha256sums = SKIP
+
+pkgname = icloud-for-linux-git
