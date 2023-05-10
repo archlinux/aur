@@ -5,15 +5,15 @@
 
 pkgname="proto"
 pkgdesc='A multi-language version and dependency manager'
-pkgver=0.8.2
-pkgrel=3
+pkgver=0.8.3
+pkgrel=1
 license=('MIT')
 url='https://github.com/moonrepo/proto'
 arch=('x86_64')
 makedepends=('cargo')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('dca0e4fb19e7219b1225f8ed3bccb6d517154e757cf537cc5617996a45174ef3717cbb70938bdf2a3018aa1bca79a37a15bddb8a9beaae71c42b369632ad923e')
+sha512sums=('d94183b42188a8d66e9d43a05059c3afbc47e5932a5f10641db6c06cd27a80e8975764f6c38f70f35410ad38ade2288b88da34ece91634aa7762221c8aa244e5')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
