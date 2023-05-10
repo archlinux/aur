@@ -6,7 +6,7 @@
 pkgname=whalebird-bin
 _name="${pkgname%-bin}"
 
-pkgver=5.0.1
+pkgver=5.0.5
 #_ver=4.6.0-rc.1
 #pkgver="${_ver/-}"
 pkgrel=1
@@ -21,9 +21,9 @@ conflicts=("$_name")
 
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk3')
 
-_url="https://github.com/h3poteto/$_name-desktop/releases/download/v$pkgver/${_name^}-$pkgver-linux-x64.rpm"
+_url="https://github.com/h3poteto/$_name-desktop/releases/download/v$pkgver/${_name^}-$pkgver-linux-x86_64.rpm"
 source=("$_url")
-sha256sums=('b0b824913e61456fed1875b3d10346307f9b2cdd3cc5a2b85eca66ef7ab12b16')
+sha256sums=('9fa1528da3c35f057d0db05991b23faaae194e34afe6c5f09a42a6dd28f1e59a')
 #_url="https://github.com/h3poteto/$_name-desktop/releases/download/$_ver/${_name^}-$_ver-linux-x64.rpm"
 #source=("$_url")
 #sha256sums=($(curl -sL "$_url.shasum" | grep "${_name^}-$_ver-linux-x64.rpm" | cut -d\  -f1))
@@ -39,3 +39,5 @@ package() {
 
 
 # vim: ts=2 sw=2 et ft=PKGBUILD:
+
+
