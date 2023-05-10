@@ -4,7 +4,7 @@
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 pkgname='mozc'
-pkgver=2.28.5080.102
+pkgver=2.28.5085.102
 pkgrel=1
 pkgdesc='The Open Source edition of Google Japanese Input'
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=('fcitx5-mozc-ut: Fcitx5 integration'
             'emacs-mozc: Emacs integration')
 conflicts=('mozc-ut')
 options=(!distcc !ccache)
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=7925e776f7964edb82846e54252bcedf82341d17")
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=4df261a9e81a813de20634617c8df6fdbbfeaa0e")
 sha256sums=('SKIP')
 
 prepare() {
@@ -38,9 +38,9 @@ build() {
 package() {
     cd ${pkgname}-git/src
 
-    install -Dm644 ../LICENSE                                   ${pkgdir}/usr/share/licenses/mozc/LICENSE
-    install -Dm644 data/installer/credits_en.html               ${pkgdir}/usr/share/licenses/mozc/Submodules
+    install -Dm644 ../LICENSE                                   "${pkgdir}"/usr/share/licenses/mozc/LICENSE
+    install -Dm644 data/installer/credits_en.html               "${pkgdir}"/usr/share/licenses/mozc/Submodules
 
-    install -Dm755 bazel-bin/server/mozc_server                 ${pkgdir}/usr/lib/mozc/mozc_server
-    install -Dm755 bazel-bin/gui/tool/mozc_tool                 ${pkgdir}/usr/lib/mozc/mozc_tool
+    install -Dm755 bazel-bin/server/mozc_server                 "${pkgdir}"/usr/lib/mozc/mozc_server
+    install -Dm755 bazel-bin/gui/tool/mozc_tool                 "${pkgdir}"/usr/lib/mozc/mozc_tool
 }
