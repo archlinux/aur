@@ -1,6 +1,6 @@
 pkgbase = tla-toolbox-nightly
 	pkgdesc = IDE for the TLA+ tools (nightly)
-	pkgver = 1.8.0.r8157.ga8f2f58
+	pkgver = 1.8.0.r8158.gef82c67
 	pkgrel = 1
 	url = https://github.com/tlaplus/tlaplus
 	arch = x86_64
