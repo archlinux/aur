@@ -1,6 +1,6 @@
 # Maintainer: bageljr <bageljr 897 at protonmail dot com>
 # Contributor: dmitmel <dmytro dot meleshko at gmail dot com>
-# Maintainer: Mahor1221 <mahor1221 at pm dot me>
+# Maintainer: Mahor Foruzesh <mahor1221 at gmail dot com>
 
 pkgname=codelldb-git
 _pkgname="${pkgname%-git}"
