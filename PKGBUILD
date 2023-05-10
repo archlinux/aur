@@ -2,7 +2,7 @@
 # Contributor: TimeTrap <zhaoyuanpan at gmail dot com>
 pkgname=cursor-bin
 _pkgname=Cursor
-pkgver=0.2.10
+pkgver=0.2.11
 pkgrel=1
 pkgdesc="Write, edit, and chat about your code with GPT-4.(AppImage)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('custom')
 options=('!strip')
 depends=('hicolor-icon-theme' 'zlib')
 source=("${_pkgname}-${pkgver}.AppImage::https://dl.todesktop.com/230313mzl4w4u92/linux/appImage/x64")
-sha256sums=('dcd22d0a020ac901e5d35cfff17999f1a213e9fb11c7d065eeaa342812fa3f1d')
+sha256sums=('2e0e7e7ebdf5b9bff02c1c9be6be6e6e99161d7ae0195144ccd7841dbaaaa279')
 _install_path="/opt/appimages"
 
 prepare() {
