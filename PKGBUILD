@@ -1,8 +1,8 @@
 # Maintainer: Rolv Apneseth <rolv.apneseth@gmail.com>
 
 pkgname=rofi-games
-pkgver=v1.0.2.r0.g3efcfa8
-pkgrel=2
+pkgver=v1.1.0.r2.g4a9f444
+pkgrel=1
 pkgdesc='A rofi plugin which adds a mode to list available games for launch along with their box art'
 arch=('x86_64')
 url='https://github.com/rolv-apneseth/rofi-games'
