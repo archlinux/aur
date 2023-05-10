@@ -2,7 +2,7 @@
 pkgname=bbprog-git
 _pkgname=${pkgname%-git}
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Backup a List of locations using rsync"
 arch=('x86_64')
 url="https://github.com/PatzminiHD/bbprog"
@@ -33,5 +33,5 @@ package() {
 
   cp -r $pkgname.tmp "$pkgdir/opt/$pkgname/"
   rm "$pkgdir/opt/$pkgname/bbprog.pdb"
-  ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$_pkgname"
+  ln -s "/opt/$pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
