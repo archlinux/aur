@@ -3,14 +3,14 @@
 # Contributor: Grey Christoforo <my first name [at] my last name [dot] net>
 
 pkgname=cura-binary-data
-pkgver=5.2.2
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="Binary data (firmwares and such) for cura"
 url="https://github.com/Ultimaker/${pkgname}"
 license=('AGPL')
 arch=('any')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/Ultimaker/${pkgname}/archive/${pkgver}.tar.gz)
-sha512sums=('3aa9ebda392f9349840456de0d74e648438c173583b46c8a0fcb31b72f8b65eeb3761f444d52aa62f75b1bcb78bf131f8239638c7eff76a0be07eb84f89546ab')
+sha512sums=('76082a0410410c04071cbec4b8a10b34b73ffe84ecd23b2e2ef9bcc2db7ae43ca8f8f849dfed0338f1379d3ff80dd2d92b3bc7af31511c91ceed6f6a636daa5f')
 
 package(){
   install -d "${pkgdir}/usr/share/"
