@@ -1,7 +1,7 @@
 # Maintainer: Kacper Zybała <zyperpl at gmail dot com>
 
 pkgname=ldtk
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Modern and efficient 2D level editor with a strong focus on user-friendliness"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('haxe' 'git' 'nodejs' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/deepnight/$pkgname/archive/v$pkgver.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('2c32cea4b8d0de7f2f535e805446ef016049cd3ad10fc592a5d051883407d77d'
+sha256sums=('c42a0efee32a3ae37af6fc87f60a91a508c612ec71775478806b044c8d84ef38'
             '5f15970200f2b14fd79eaaac03347e0b2d4845403347cb6ecfa57ee17e6642c0')
 options=('!strip' 'emptydirs' '!makeflags')
 
@@ -25,10 +25,10 @@ build() {
   haxelib git castle https://github.com/deepnight/castle d21c6243320643f1b0f6ef8e82c4d12731379b5c --always
   haxelib git heaps https://github.com/deepnight/heaps.git 506ab3a5c1beae5c8438e67558f0b061728c2124 --always
   haxelib git hxnodejs https://github.com/HaxeFoundation/hxnodejs.git 14bc6880d4557d70e567a21ed50dff5587083f21 --always
-  haxelib git electron https://github.com/tong/hxelectron.git cb59c2f84bc67ffd469f4802e515c50f328d2540 --always
-  haxelib git heaps-aseprite https://github.com/AustinEast/heaps-aseprite.git 81aee42a6c1548433003e3c589d58e9fdf01415e --always
-  haxelib git deepnightLibs https://github.com/deepnight/deepnightLibs.git 25c0040b1dc775f98eaa21cdd6250bd8132a4a1d --always
-  haxelib git ldtk-haxe-api https://github.com/deepnight/ldtk-haxe-api.git dbee6dd6d378c395c781cbae36136dfd599a94c2 --always
+  haxelib git electron https://github.com/tong/hxelectron.git cbef7c048ad7771be93795337da46879cf1ad32c --always
+  haxelib git heaps-aseprite https://github.com/AustinEast/heaps-aseprite.git 479faba0cce24fa395582bfebb8630b122dcc9e6 --always
+  haxelib git deepnightLibs https://github.com/deepnight/deepnightLibs.git 25d8a6152e9b0f10143db904c653de1613f362f5 --always
+  haxelib git ldtk-haxe-api https://github.com/deepnight/ldtk-haxe-api.git ad58dc850d8b3ea06e2b9c50023f8c7271456c52 --always
   haxelib list
   
   pushd app
