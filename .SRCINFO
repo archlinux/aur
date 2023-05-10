@@ -1,13 +1,13 @@
 pkgbase = subread
 	pkgdesc = a general-purpose read aligner which can align both genomic DNA-seq and RNA-seq reads, https://doi.org/10.1093/nar/gkt214
-	pkgver = 2.0.5
+	pkgver = 2.0.6
 	pkgrel = 1
 	url = https://subread.sourceforge.net/
 	arch = x86_64
 	license = GPL
 	depends = glibc
 	depends = zlib
-	source = subread-2.0.5.tar.gz::https://sourceforge.net/projects/subread/files/subread-2.0.5/subread-2.0.5-source.tar.gz
-	sha256sums = 7eb67377e215e08c5f3cae383d63a057dc8f44fa14077b263dbc680dc85b6927
+	source = subread-2.0.6.tar.gz::https://sourceforge.net/projects/subread/files/subread-2.0.6/subread-2.0.6-source.tar.gz
+	sha256sums = f0fdda6b98634d2946028948c220253e10a0f27c7fa5f24913b65b3ac6cbb045
 
 pkgname = subread
