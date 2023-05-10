@@ -1,0 +1,11 @@
+pre_install() {
+        if ! grep -q "^torguard:" /etc/group ; then groupadd --system torguard; fi
+}
+
+pre_upgrade() {
+        if ! grep -q "^torguard:" /etc/group ; then groupadd --system torguard; fi
+}
+
+post_remove() {
+}
+
