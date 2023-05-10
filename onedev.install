@@ -3,5 +3,5 @@ post_install() {
 }
 
 post_upgrade() {
-    /usr/bin/onedev-upgrade -r
+    /usr/bin/onedev-upgrade
 }
