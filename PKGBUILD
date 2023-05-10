@@ -6,10 +6,11 @@
 pkgname="proto"
 pkgdesc='A multi-language version and dependency manager'
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 license=('MIT')
 url='https://github.com/moonrepo/proto'
 arch=('x86_64')
+depends=('git')
 makedepends=('cargo')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
