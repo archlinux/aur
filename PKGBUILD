@@ -1,4 +1,4 @@
-# Maintainer: Mahor1221 <mahor1221 at pm dot me>
+# Maintainer: Mahor Foruzesh <mahor1221 at gmail dot com>
 
 pkgbase=juno-ocean-theme-git
 __pkgname="${pkgbase%-theme-git}"
