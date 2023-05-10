@@ -3,15 +3,13 @@
 _plug=soifunc
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=97.ddfc7b7
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/shssoichiro/soifunc'
 license=('MIT')
 depends=('vapoursynth'
-  'vapoursynth-plugin-neo_f3kdb-git'
   'vapoursynth-plugin-znedi3-git'
-  'vapoursynth-plugin-dfttest2-git'
   'vapoursynth-plugin-vstools-git'
   'vapoursynth-plugin-vsscale-git'
   'vapoursynth-plugin-vsdeband-git'
