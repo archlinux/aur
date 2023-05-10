@@ -1,0 +1,17 @@
+[Unit]
+Description=XMRig Daemon for xmrig-mo
+After=network.target
+
+[Service]
+User=xmrig
+Group=xmrig
+Type=forking
+ExecStart=/usr/bin/xmrig-mo -c xmrig-mo.conf -B
+WorkingDirectory=/etc/xmrig-mo
+Restart=on-failure
+RestartSec=20s
+StartLimitInterval=30min
+StartLimitBurst=30
+
+[Install]
+WantedBy=multi-user.target
