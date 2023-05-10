@@ -1,14 +1,14 @@
 # Maintainer: Magnus Groß, for email contact see AUR commit author email
 _pkgname=grandorgue
 pkgname="$_pkgname"-git
-pkgver=3.9.5.0.r15.g35287b7b
+pkgver=3.11.2.1.r0.g1a5832df
 pkgrel=1
 pkgdesc="Virtual Pipe Organ Software"
 arch=('i686' 'x86_64')
 url="https://github.com/GrandOrgue/$_pkgname"
 license=('GPL2+')
 depends=(wxwidgets-gtk3 wavpack fftw jack rtmidi rtaudio portaudio zita-convolver)
-makedepends=(git cmake rtaudio rtmidi docbook-xsl)
+makedepends=(git cmake ninja docbook-xsl imagemagick yaml-cpp)
 conflicts=(grandorgue grandorgue-bin)
 source=("git+$url.git")
 sha256sums=('SKIP')
@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
 	cd "$_pkgname"
-	cmake -B build -DCMAKE_INSTALL_PREFIX="/usr" -DUSE_INTERNAL_RTAUDIO=Off -DUSE_INTERNAL_PORTAUDIO=Off -DUSE_INTERNAL_ZITACONVOLVER=Off
+	cmake -B build -G Ninja -DCMAKE_INSTALL_PREFIX="/usr" -DUSE_INTERNAL_RTAUDIO=Off -DUSE_INTERNAL_PORTAUDIO=Off -DUSE_INTERNAL_ZITACONVOLVER=Off
 	cmake --build build
 }
 
