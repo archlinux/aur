@@ -1,7 +1,7 @@
 pkgbase = nni
 	pkgdesc = An open source AutoML toolkit for automate machine learning lifecycle, including feature engineering, neural architecture search, model compression and hyper-parameter tuning.
-	pkgver = 2.10
-	pkgrel = 2
+	pkgver = 3.0rc1
+	pkgrel = 1
 	url = https://github.com/microsoft/nni
 	arch = x86_64
 	arch = aarch64
@@ -19,7 +19,7 @@ pkgbase = nni
 	depends = python-schema
 	depends = python-typeguard
 	depends = python-websockets
-	source = https://github.com/microsoft/nni/archive/refs/tags/v2.10.tar.gz
-	md5sums = 05f88f640a2ef268217f21cf70ffabef
+	source = https://github.com/microsoft/nni/archive/refs/tags/v3.0rc1.tar.gz
+	md5sums = 9a114ccc924cc06279b36606d3b9bcdc
 
 pkgname = nni
