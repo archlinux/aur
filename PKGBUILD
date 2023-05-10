@@ -2,7 +2,7 @@
 
 pkgname=python-dvc-data
 _pkgname=${pkgname#python-}
-pkgver=0.48.0
+pkgver=0.48.1
 pkgrel=1
 pkgdesc='DVC’s data management subsystem'
 arch=(any)
@@ -19,7 +19,7 @@ makedepends=(python-{build,installer,wheel}
              python-setuptools-scm)
 _archive=("$_pkgname-$pkgver")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_archive.tar.gz")
-sha256sums=('fdea77516b47d6649cea43bf0a00b5b2cc78433f8637e7ad4f3c5bcd0eb51904')
+sha256sums=('cc088ac4aad822a456b664b288c8873a45882d37d6382d2cf3d71376a7f349b6')
 
 build() {
 	cd "$_archive"
