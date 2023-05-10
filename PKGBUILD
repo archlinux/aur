@@ -3,7 +3,7 @@
 
 _pkgname=upscayl
 pkgname=$_pkgname-bin
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc='Free and Open Source AI Image Upscaler'
 url='https://github.com/upscayl/upscayl'
@@ -15,7 +15,7 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 options=('!strip')
 source=("https://github.com/upscayl/upscayl/releases/download/v${pkgver}/upscayl-${pkgver}-linux.AppImage")
-sha512sums=('849082a27d46c846217732777b837890e9745872962207b86ab0db50dc3db56f316232ea18f28bcf9f875c3027d9bdc0cab1f3f9ec80f47fdd275f663148beb5')
+sha512sums=('7b8d651c9313c1b5e47e3cd956ad09fe866e66de262b3125ed6273e21e3414375ea97ea2af85ad82c299b350d71220d63c79c8df5ae7e1478687754acc233f84')
 
 prepare() {
   [[ -d squashfs-root ]] && rm -rf squashfs-root
