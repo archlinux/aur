@@ -1,7 +1,7 @@
 pkgbase = pcl
 	pkgdesc = A comprehensive open source library for n-D Point Clouds and 3D geometry processing
-	pkgver = 1.13.0
-	pkgrel = 2
+	pkgver = 1.13.1
+	pkgrel = 1
 	url = http://www.pointclouds.org
 	arch = x86_64
 	arch = i686
@@ -35,7 +35,7 @@ pkgbase = pcl
 	optdepends = openmp
 	optdepends = openni2
 	optdepends = qhull
-	source = https://github.com/PointCloudLibrary/pcl/archive/pcl-1.13.0.tar.gz
-	sha256sums = b6f6769b84d3d8313e48278388b923e32cf519e6a27a4876c2170d587b33721d
+	source = https://github.com/PointCloudLibrary/pcl/archive/pcl-1.13.1.tar.gz
+	sha256sums = 8ab98a9db371d822de0859084a375a74bdc7f31c96d674147710cf4101b79621
 
 pkgname = pcl
