@@ -2,31 +2,37 @@
 # Contributor: jackoneill <cantabile dot desu at gmail dot com>
 
 pkgname=vapoursynth-git
-pkgver=R57.63.g1e0c6cb9
+pkgver=R62.8.ga2a59c68
 pkgrel=1
 pkgdesc="A video processing framework with simplicity in mind. (GIT version)"
 arch=('x86_64')
 url='http://www.vapoursynth.com'
 license=('LGPL2.1' 'custom:OFL' 'custom:WFTPL')
-depends=('libzimg.so'
-         'python'
-         )
-makedepends=('git'
-             'cython'
-             'python-sphinx'
-             'python-sphinx_rtd_theme'
-             'zimg-git'
-             )
+depends=(
+  'libzimg.so'
+  'python'
+)
+makedepends=(
+  'git'
+  'cython'
+  'python-sphinx'
+  'python-sphinx_rtd_theme'
+  'zimg-git'
+)
 provides=('vapoursynth')
 conflicts=('vapoursynth')
-source=('git+https://github.com/vapoursynth/vapoursynth.git' #branch=doodle1'
-        'vapoursynth.xml'
-        'wtfpl.txt::http://www.wtfpl.net/txt/COPYING'
-        )
-sha256sums=('SKIP'
-            '8e51579547d20cd7cb9618a47b3ac508423d09d76649bf038d0ab9acb850b068'
-            '0356258391e190dc1d44ea01565cfe627fe44e27dad693a0a54c2483a7b223e5'
-            )
+source=(
+  'git+https://github.com/vapoursynth/vapoursynth.git' #branch=doodle1'
+  'https://github.com/vapoursynth/vapoursynth/pull/949.diff'
+  'vapoursynth.xml'
+  'wtfpl.txt::http://www.wtfpl.net/txt/COPYING'
+)
+sha256sums=(
+  'SKIP'
+  '178c4b28bcc80ce9ffaf46836614d11752c174272791187ca6f8f60c3e2a896a'
+  '8e51579547d20cd7cb9618a47b3ac508423d09d76649bf038d0ab9acb850b068'
+  '0356258391e190dc1d44ea01565cfe627fe44e27dad693a0a54c2483a7b223e5'
+)
 options=('debug')
 
 pkgver() {
@@ -37,6 +43,8 @@ pkgver() {
 prepare() {
   mkdir -p build
   mkdir -p vapoursynth/doc/_static
+
+  patch -d vapoursynth -p1 -i "${srcdir}/949.diff"
 }
 
 build() {
@@ -49,7 +57,10 @@ build() {
 
   make
 
-  make -C "${srcdir}/vapoursynth/doc" html man
+  (cd "${srcdir}/vapoursynth/doc"
+    sphinx-build -b html -d _build/doctrees . _build/html
+    sphinx-build -b man -d _build/doctrees . _build/man
+  )
 }
 
 check() {
