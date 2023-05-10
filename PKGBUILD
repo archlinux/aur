@@ -2,7 +2,7 @@
 # Based on testing/linux by Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-drm-xe-next-git
-pkgver=6.3.r1173416.0f9151f63f8c
+pkgver=6.3.r1173414.6d1561872582
 pkgrel=1
 pkgdesc='Linux kernel with bleeding-edge Intel Xe driver'
 _product="${pkgbase%-git}"
