@@ -4,8 +4,8 @@
 # Contributor: Roman Kupriyanov <mr.eshua@gmail.com>
 
 pkgname=jitsi-meet-desktop
-pkgver=2023.2.0
-pkgrel=2
+pkgver=2023.5.0
+pkgrel=1
 pkgdesc="Jitsi Meet desktop application"
 arch=('x86_64' 'aarch64')
 url="https://jitsi.org/jitsi-meet/"
@@ -13,7 +13,7 @@ license=('Apache')
 conflicts=('jitsi-meet-electron-bin'
            'jitsi-meet-electron')
 replaces=('jitsi-meet-electron')
-_electron_pkg="electron21"
+_electron_pkg="electron24"
 depends=('gtk3'
          'libxss'
          'nss'
@@ -24,12 +24,11 @@ makedepends=('coreutils'
              'png++'
              'libxtst'
              'nvm')
-_node_version="16"
 options=(!strip)
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/jitsi/jitsi-meet-electron/archive/v${pkgver}.tar.gz"
         'no_targets.patch'
         'jitsi-meet-desktop.desktop')
-sha256sums=('d9e0ce378a6600bd83592c816ffbed725935866b2a49cdc9a23289e53e9dcb31'
+sha256sums=('09137cc9a82b51175743316e83019bee2ca37675fe3c23a0e883d30eb75bbed0'
             'ab22749aa1570cc5d6050711011f849ec3f4fa49080231f98957255fa5250e36'
             '36a30a15613d53b2a01626a5551315c6970889ce3c2688bce71e26c3333081a4')
 
@@ -48,7 +47,7 @@ prepare() {
   cd jitsi-meet-electron-${pkgver}
   export npm_config_cache="${srcdir}/npm_cache"
   _ensure_local_nvm
-  nvm install ${_node_version}
+  nvm install
 
   # remove all hardcoded (x64) electron-builder targets
   # for some reason, it's not enough to explicitely specify the desired (dir)
@@ -63,9 +62,9 @@ prepare() {
 
 build() {
   cd jitsi-meet-electron-${pkgver}
-  export npm_config_cache="$srcdir/npm_cache"
+  export npm_config_cache="${srcdir}/npm_cache"
   _ensure_local_nvm
-  nvm use ${_node_version}
+  nvm install
 
   _electron_dist=/usr/lib/${_electron_pkg}
   _electron_ver=$(cat ${_electron_dist}/version)
@@ -88,7 +87,7 @@ package() {
   install -Dm644 -- resources/icon.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
 
-  cat << EOF > "$pkgdir"/usr/bin/$pkgname
+  cat << EOF > "$pkgdir/usr/bin/$pkgname"
 #!/bin/sh
 
 NODE_ENV=production ELECTRON_IS_DEV=false exec $_electron_pkg /opt/$pkgname/app.asar "\$@"
@@ -115,7 +114,7 @@ _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
 
     # The init script returns 3 if version specified
-    # in ./.nvrc is not (yet) installed in $NVM_DIR
+    # in ./.nvmrc is not (yet) installed in $NVM_DIR
     # but nvm itself still gets loaded ok
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
 }
