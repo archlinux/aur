@@ -4,7 +4,7 @@
 pkgname=directx-shader-compiler-git
 _pkgname=DirectXShaderCompiler
 pkgdesc="A compiler for HLSL to DXIL (DirectX Intermediate Language)."
-pkgver=r3851.364d5f9da
+pkgver=r3885.ba1b4cfbd
 pkgrel=1
 epoch=1
 arch=('x86_64')
@@ -44,12 +44,15 @@ build() {
   mkdir -p "$srcdir/${_pkgname}/build"
   cd "$srcdir/${_pkgname}/build"
 
+  #file to edit: 
+  sed -i '/#include \"llvm\/ADT\/StringRef.h\"/a#include <cstdint>\n' ../tools/clang/include/clang/Basic/Version.h
+
   # this project needs a specific compiler and a specific set of flags
   export CC="gcc"
   export CXX="g++"
-  export CFLAGS="-march=native -mtune=native -O2 -pipe -fno-plt -fexceptions \
+  export CFLAGS="-march=native -mtune=native -O2 -pipe -fno-plt -fexceptions -fPIC \
         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security \
-        -fstack-clash-protection -fcf-protection -Wno-error=restrict"
+        -fstack-clash-protection -fcf-protection -Wno-error=restrict -Wno-changes-meaning"
   export CXXFLAGS="$CFLAGS -Wp,-D_GLIBCXX_ASSERTIONS"
   export LDFLAGS="-Wl,-O2,--sort-common,--as-needed,-z,relro,-z,now"
 
