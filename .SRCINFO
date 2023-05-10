@@ -6,8 +6,7 @@ pkgbase = xcursor-numix
 	arch = any
 	license = GPL
 	depends = libxcursor
-	source = xcursor-numix-0.9.1.tar.gz::https://dl.opendesktop.org/api/files/downloadfile/id/1460735152/s/a044c4843b2f3ff059b96fdc7d098b01/t/1513931115/169299-numix-cursor.tar.gz
-	sha256sums = 99fa7c724f00e8b113468065ca202fa06105b90eaefc430a4871d66cb35475ac
+	source = xcursor-numix-0.9.1.tar.gz::https://github.com/uloco/numix-cursor/archive/1a236bbbb2eaeda027e4f0e4b096369db17a7224.tar.gz
+	sha256sums = b26d9c026a3aadfb54ccb62f30cec84ce5ad956ee2068a3177a0309e9c7b6f6b
 
 pkgname = xcursor-numix
-
