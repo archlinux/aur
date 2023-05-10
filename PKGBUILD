@@ -1,43 +1,49 @@
-# Maintainer: ZenTauro <zentauro at riseup dot net>
+# Maintainer: éclairevoyant
 
 pkgname=conduit
-pkgver=0.4.0
+pkgver=0.5.0
 epoch=1
-pkgrel=2
-pkgdesc='A simple, fast and reliable chat server powered by matrix'
+pkgrel=1
+pkgdesc='Simple, fast and reliable chat server powered by matrix'
 arch=(x86_64)
 url='https://conduit.rs/'
-license=(APACHE)
+license=(Apache)
 depends=(gcc-libs)
-makedepends=(git rust rocksdb clang)
-backup=(etc/matrix-conduit/conduit.toml)
-optdepends=()
-source=(
-  "git+https://gitlab.com/famedly/conduit.git#tag=v${pkgver}"
-  "conduit.service"
-  "conduit.sysusers"
-  "conduit.tmpfiles"
-  "conduit.toml"
-)
-sha512sums=(
-  'SKIP'
-  'dbec7d6db569de09c205ac35ff1b91cfea808c022c498ecca9dccbda0123c781a121089c03dd5c7491c5af102a7346d1c3491a9dcd2def850117334990421c0f'
-  'b20e4bad51c28ca268c7cf59406f09c1badb4e0688030e222d45a415822ac357a7e4674b3a1483935352f70d80da2c31004059f5acd7f0a522ace14539ad49f5'
-  '3da5d584492e7b586c4722327cd2f23d4abf814f2067b068741998582ce870fec26fac83d96a2a9c42e060475be0abdde0207daf2be08678be4cee77d6b778b1'
-  '5bd0813b0cbb1ed7e83a946ce9b5a321e057ccb2cce4ae4bebff21d4b87cac03fc424a771a959be64a12bd5da0a3a088f0dfb9a42028a4f3d5525d909e830431'
-)
+makedepends=(cargo clang git rust)
+backup=("etc/matrix-conduit/$pkgname.toml")
+source=("git+https://gitlab.com/famedly/$pkgname.git#commit=53f14a2c4c216b529cc63137d8704573197aed19"
+        $pkgname.{service,sysusers,tmpfiles,toml})
+b2sums=('SKIP'
+        '2164d78b7112e35b3410b1831a14ce32b44c170ef1596e75fcfbe4dad16c13cd5d427d242ae6ab7d1c44f540864064e88094df1c48d8f3c70547eba4fd1b230f'
+        'c03409ad8020072f60e12676091462f1987d504c6b30e63576fde49d99f9bd941354f288bf6cda743a8af634aa1323dd4681b55fd7928bc41bbee384cec574b9'
+        '907e983de7833f9f11693a063c0754cf8731ad6501f9088ae50c42cd88370213757506c4b5d10808f7abbfcec99056b6b9824189714da3338352cd67311949fe'
+        '8f0151083329a001264a3ceb01aea750e8d620a8993d4633c7aecdc8459e87f0c7ca06e53e2653beda267dcf387945fcb913a64ecc83464d9c9b577eabd1f67e')
+
+prepare() {
+	cd $pkgname
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
-  cd "${srcdir}/conduit"
-  cargo build --release
+	cd $pkgname
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	export RUST_BACKTRACE=1
+	export CARGO_PROFILE_RELEASE_BUILD_OVERRIDE_DEBUG=true
+	cargo build --frozen --release --all-features
+}
+
+check() {
+	cd $pkgname
+	export RUSTUP_TOOLCHAIN=stable
+	cargo test --frozen
 }
 
 package() {
-  install -Dm 755 "${srcdir}/conduit/target/release/conduit" "${pkgdir}/usr/bin/conduit-matrix"
-  install -Dm 644 "${srcdir}/conduit.service"             -t "${pkgdir}/usr/lib/systemd/system/"
-  install -Dm 644 "${srcdir}/conduit.sysusers"               "${pkgdir}/usr/lib/sysusers.d/conduit.conf"
-  install -Dm 644 "${srcdir}/conduit.tmpfiles"               "${pkgdir}/usr/lib/tmpfiles.d/conduit.conf"
-  install -Dm 644 "${srcdir}/conduit.toml"                   "${pkgdir}/etc/conduit-matrix/conduit.toml"
+	install -vDm755 $pkgname/target/release/$pkgname "$pkgdir/usr/bin/conduit-matrix"
+	install -vDm644 $pkgname.service -t "$pkgdir/usr/lib/systemd/system/"
+	install -vDm644 $pkgname.sysusers "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+	install -vDm644 $pkgname.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+	install -vDm644 $pkgname.toml -t "$pkgdir/etc/matrix-conduit/"
 }
-
-# vim: ts=2 sw=2 et
