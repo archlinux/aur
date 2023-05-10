@@ -3,7 +3,7 @@
 
 pkgbase=linux-drm-xe-next-git
 pkgver=6.3.r1173414.6d1561872582
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux kernel with bleeding-edge Intel Xe driver'
 _product="${pkgbase%-git}"
 _branch="${_product#linux-}"
@@ -24,7 +24,7 @@ source=(
   xe_drm.2.patch
 )
 sha256sums=('SKIP'
-            '1f1a2b0edbdc128f713eabda0242aade50568800acfcbc9a1527b36e02484e41'
+            '5557889ef70c6f8fdde93092b9f9a28cbdaaca2989a15147826825119c7aae0f'
             'd3da87754eb4e55de8e89d824deb29b62a96fcadaf6a4624aae2f317cf91cca7'
             '00575249e29bc7767a9ac1d0ebe4f005647c4b01d622bd25b79212a4331a530f')
 
