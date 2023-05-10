@@ -6,16 +6,16 @@
 _pkgname=proto
 pkgname="${_pkgname}-bin"
 pkgdesc='A multi-language version and dependency manager'
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 license=('MIT')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 url='https://github.com/moonrepo/proto'
 arch=('x86_64')
-_extdir="proto_cli-v${pkgver}-${arch[0]}-unknown-linux-gnu"
+_extdir="proto_cli-${arch[0]}-unknown-linux-gnu"
 source=("${_extdir}.tar.xz::${url}/releases/download/v${pkgver}/${_extdir}.tar.xz")
-sha512sums=('f5f65e00dcd89a8bcfa8b3bc37303fccdc76132e6b08a4fe3dc4e51f11546be860f169c8f2f6f10d35c3d59809f18dc381fdc803cb03e540cee8ac1ab6ad3faf')
+sha512sums=('393a35d1875fbb5ed88fa9b454d77bcf1b9e3e001f79b54d9a302a9144f03f3f8b16890624878caf12f1a2725cca6342019e3f7e11ff9c99f275451fcbcd9571')
 
 package() {
   cd "${_extdir}"
