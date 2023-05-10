@@ -1,8 +1,8 @@
 diff --git a/python/mujoco/CMakeLists.txt b/python/mujoco/CMakeLists.txt
-index 9160f4c..3237219 100644
+index 21ad154..42f6599 100644
 --- a/python/mujoco/CMakeLists.txt
 +++ b/python/mujoco/CMakeLists.txt
-@@ -120,7 +120,7 @@ endif()
+@@ -132,7 +132,7 @@ endif()
  set(MUJOCO_PYTHON_ABSL_TARGETS absl::core_headers absl::flat_hash_map absl::span)
  findorfetch(
    USE_SYSTEM_PACKAGE
@@ -11,7 +11,7 @@ index 9160f4c..3237219 100644
    PACKAGE_NAME
    absl
    LIBRARY_NAME
-@@ -153,7 +153,7 @@ endforeach()
+@@ -165,7 +165,7 @@ endforeach()
  add_compile_definitions(EIGEN_MPL2_ONLY)
  findorfetch(
    USE_SYSTEM_PACKAGE
@@ -20,7 +20,7 @@ index 9160f4c..3237219 100644
    PACKAGE_NAME
    Eigen3
    LIBRARY_NAME
-@@ -170,7 +170,7 @@ findorfetch(
+@@ -182,7 +182,7 @@ findorfetch(
  # ==================== PYBIND11 ================================================
  findorfetch(
    USE_SYSTEM_PACKAGE
@@ -30,10 +30,10 @@ index 9160f4c..3237219 100644
    pybind11
    LIBRARY_NAME
 diff --git a/python/mujoco/__init__.py b/python/mujoco/__init__.py
-index 3b2904b..5af302a 100644
+index d9e0e5c..9bf244e 100644
 --- a/python/mujoco/__init__.py
 +++ b/python/mujoco/__init__.py
-@@ -46,8 +46,8 @@ from mujoco._structs import *
+@@ -47,8 +47,8 @@ from mujoco._structs import *
  from mujoco.gl_context import *
  from mujoco.renderer import Renderer
  
@@ -45,10 +45,10 @@ index 3b2904b..5af302a 100644
  PLUGIN_HANDLES = []
  
 diff --git a/python/setup.py b/python/setup.py
-index 610b858..1b58438 100644
+index bafabfc..e11aa17 100644
 --- a/python/setup.py
 +++ b/python/setup.py
-@@ -150,15 +150,12 @@ class BuildCMakeExtension(build_ext.build_ext):
+@@ -153,15 +153,15 @@ class BuildCMakeExtension(build_ext.build_ext):
      (self._mujoco_library_path,
       self._mujoco_include_path,
       self._mujoco_plugins_path,
@@ -62,18 +62,29 @@ index 610b858..1b58438 100644
 -    self._copy_external_libraries()
 -    self._copy_mujoco_headers()
 -    self._copy_plugin_libraries()
++    #self._copy_external_libraries()
++    #self._copy_mujoco_headers()
++    #self._copy_plugin_libraries()
+     if self._is_apple:
+       self._copy_mjpython()
  
-   def _find_mujoco(self):
-     if MUJOCO_PATH not in os.environ:
 diff --git a/simulate/CMakeLists.txt b/simulate/CMakeLists.txt
-index c120a1f..c2f75c6 100644
+index 2358ef7..cae4aa4 100644
 --- a/simulate/CMakeLists.txt
 +++ b/simulate/CMakeLists.txt
-@@ -116,8 +116,13 @@ target_include_directories(
-   platform_ui_adapter
-   PUBLIC
-   ${CMAKE_CURRENT_SOURCE_DIR}
--  $<TARGET_PROPERTY:glfw,INTERFACE_INCLUDE_DIRECTORIES>
+@@ -80,6 +80,7 @@ if(MUJOCO_HARDEN)
+ endif()
+ 
+ # Fetch lodepng dependency.
++find_package(lodepng REQUIRED)
+ if(NOT TARGET lodepng)
+   FetchContent_Declare(
+     lodepng
+@@ -114,8 +115,13 @@ if(APPLE)
+ endif()
+ target_include_directories(
+   platform_ui_adapter PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
+-                             $<TARGET_PROPERTY:glfw,INTERFACE_INCLUDE_DIRECTORIES>
  )
 +# Upstream MuJoCo is carefully not linking glfw here, and so it is just include its directories
 +# to avoid dealing with two copies of glfw. In conda-forge (or in any C++/Python distribution)
