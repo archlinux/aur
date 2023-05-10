@@ -2,8 +2,8 @@
 # Contributor: Guoyi ("malcology") <guoyizhang@malacology.net>
 
 pkgname=raxml-ng-mpi
-pkgver=1.1.0
-pkgrel=19
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="A phylogenetic tree inference tool which uses maximum-likelihood (ML) optimality criterion. https://doi.org/10.1093/bioinformatics/btz305"
 url='https://github.com/amkozlov/raxml-ng'
 arch=('x86_64')
