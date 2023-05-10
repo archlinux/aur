@@ -5,7 +5,7 @@
 _pkgname=MyST-Parser
 pkgname=python-myst-parser018
 pkgver=0.18.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An extended commonmark compliant parser, with bridges to docutils/sphinx'
 arch=('any')
 url='https://github.com/executablebooks/MyST-Parser'
@@ -14,7 +14,7 @@ depends=('python-docutils' 'python-jinja' 'python-markdown-it-py' 'python-mdit_p
 optdepends=('python-linkify-it-py: linkify support')
 makedepends=('python-build' 'python-installer' 'python-flit-core' 'python-wheel')
 checkdepends=('python-beautifulsoup4' 'python-linkify-it-py' 'python-pytest' 'python-pytest-param-files' 'python-pytest-regressions' 'python-sphinx-pytest')
-conflicts=('python-myst-paresr')
+conflicts=('python-myst-parser')
 provides=("python-myst-parser=${pkgver}")
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
 sha512sums=('4bc3a89480f175779da4f093aaa99a1516f76ab4107dcf8747b6614f347e91739f8596693f95529d76aedbb0c84b4efde4262517bc445aa7027d51e05e8b48bc')
