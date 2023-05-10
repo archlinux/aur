@@ -2,13 +2,12 @@
 
 pkgname=python-pytensor
 _name=${pkgname#python-}
-pkgver=2.11.2
+pkgver=2.11.3
 pkgrel=1
 pkgdesc="Fork of Aesara -- Library for defining, optimizing, and efficiently evaluating mathematical expressions involving multi-dimensional arrays"
 arch=(x86_64)
 url="https://github.com/pymc-devs/pytensor"
 license=(custom)
-conflicts=(python-aesara)
 makedepends=(
   python-build
   python-installer
@@ -31,16 +30,22 @@ optdepends=(
   'python-jax: for graph transpilation compilation'
 )
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/rel-${pkgver}.tar.gz")
-sha256sums=('5195a3882bf3ab12446aba54d9182198f7558ee33f695284d0e0008798cfb313')
+source=(
+  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/rel-${pkgver}.tar.gz"
+  "remove-bin-package.patch"
+)
+sha256sums=(
+  'db02ade138d75cfc7e646a66426c17f2b136ef953bd93f978978519b8d047050'
+  '73360d53a5c5e5718a544c69218d3d64adc2390007a9b6781f7b61cc32415e59'
+)
 
 _archive="$_name-rel-$pkgver"
 
 prepare() {
-  cd "$_archive"
+  patch --directory="$_archive" --forward --strip=1 --input="$srcdir/remove-bin-package.patch"
 
+  cd "$_archive"
   cp doc/LICENSE.txt LICENSE.txt-copy
-  rm -r scripts/ doc/ bin/*.sh
 }
 
 build() {
