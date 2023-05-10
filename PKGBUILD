@@ -1,6 +1,6 @@
 # Maintainer: Fijxu <fijxu <at> zzls <dot> xyz>
 pkgname=dnsproxy-git
-pkgver=0.48.3.r753.5864a87
+pkgver=0.48.3.r755.4f1c527
 pkgrel=1
 pkgdesc="Simple DNS proxy with DoH, DoT, DoQ and DNSCrypt support (git version)"
 arch=('any')
