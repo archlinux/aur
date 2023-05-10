@@ -2,7 +2,7 @@
 pkgname=thc-hydra
 pkgver=9.4
 pkgrel=1
-pkgdesc=""
+pkgdesc="A parallelized network login cracker"
 arch=('any')
 url="https://github.com/vanhauser-thc/thc-hydra"
 license=('AGPL-3.0-or-later')
