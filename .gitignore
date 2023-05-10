@@ -16,3 +16,4 @@
 !weewx.service
 !weewxd
 !wunderfixer
+!pillow-rect.patch
