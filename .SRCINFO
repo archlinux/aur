@@ -16,8 +16,8 @@ pkgbase = linode-cli
 	optdepends = python-boto: Object Storage plugin
 	replaces = linode-cli-dev
 	source = linode-cli-5.37.0.tar.gz::https://github.com/linode/linode-cli/archive/v5.37.0.tar.gz
-	source = linode-cli-4.152.0-openapi.yaml::https://www.linode.com/docs/api/openapi.yaml
+	source = linode-cli-4.152.3-openapi.yaml::https://www.linode.com/docs/api/openapi.yaml
 	sha512sums = ab3e24a1ccf17f7ab69baec85235b3d4eb4b86bc3f25b941f9e5cdc5cbd74151ca1823e2167966710cff243e9fad0de09f4caddfd1382c5aa43ed15858124c83
-	sha512sums = e8860e4aa34e821ed9f8a5e59c276fc728c60dfff7987e3eea6cb8fdd1701340eb1afa3221d876e4b46e2257724b7ac83c3cfa193e96930190656ffeaa57bb52
+	sha512sums = d13443052c55f4f5ede8fc1220d5aecd74e73bf983349be4981100aa4fb1ff9c9d9da5a3450d1e0cf210044869a7e7e88c6403d03ba30ca82154b9471b728b56
 
 pkgname = linode-cli
