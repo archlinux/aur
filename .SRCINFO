@@ -1,16 +1,14 @@
 pkgbase = homeassistant-supervised
 	pkgdesc = Home Assistant Supervised
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://www.home-assistant.io/
 	install = .INSTALL
-	arch = x86_64
+	arch = any
 	license = APACHE
 	makedepends = git
 	depends = docker>=20.10
 	depends = systemd>=239
-	depends = networkmanager>=1.14.6
-	depends = apparmor
 	depends = jq
 	depends = wget
 	depends = curl
@@ -18,9 +16,11 @@ pkgbase = homeassistant-supervised
 	depends = glib2
 	depends = dbus
 	depends = homeassistant-osagent
+	optdepends = networkmanager: support for built-in network management
+	optdepends = apparmor: enhanced security
 	conflicts = docker-desktop
 	backup = etc/docker/daemon.json
-	source = git+https://github.com/home-assistant/supervised-installer.git#tag=730bf01008d67ba3b2936a274d0abbeabc807fa5
+	source = git+https://github.com/home-assistant/supervised-installer.git#tag=9eb7b0348be785559bc819e044bd4ced5986ec74
 	md5sums = SKIP
 
 pkgname = homeassistant-supervised

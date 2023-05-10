@@ -50,6 +50,7 @@ check_machine() {
         echo "MACHINE environment variable unknown! Please choose one of the following options:"
         echo " - generic-x86-64"
         echo " - odroid-c2"
+        echo " - odroid-c4"
         echo " - odroid-n2"
         echo " - odroid-xu"
         echo " - qemuarm"
@@ -70,10 +71,20 @@ check_machine() {
 }
 
 adjust_config() {
+    # Check and fix systemd-journal-gatewayd socket location
+    if [ ! -S "/run/systemd-journal-gatewayd.sock" ]; then
+        echo "Set up systemd-journal-gatewayd socket file"
+        if [ "$(systemctl is-active systemd-journal-gatewayd.socket)" = 'active' ]; then
+            systemctl stop systemd-journal-gatewayd.socket> /dev/null 2>&1;
+        fi
+        rm -rf "/run/systemd-journal-gatewayd.sock";
+    fi
+
+    # Revert default value
     if [ -f /usr/lib/systemd/system/systemd-journal-gatewayd.socket ]
     then
         if ! grep -q "ListenStream=/run/systemd-journal-gatewayd.sock" /usr/lib/systemd/system/systemd-journal-gatewayd.socket; then
-            sed -i.bak 's/^\[Socket\]/\[Socket\]\nListenStream=\/run\/systemd-journal-gatewayd.sock/' /usr/lib/systemd/system/systemd-journal-gatewayd.socket
+            sed -i.bak 's/ListenStream=\/run\/systemd-journal-gatewayd.sock/ListenStream=/' /usr/lib/systemd/system/systemd-journal-gatewayd.socket
         fi
     fi
 
@@ -87,6 +98,7 @@ adjust_config() {
     systemctl enable hassio-supervisor.service > /dev/null 2>&1;
 
     # Install AppArmor
+    mkdir -p "${DATA_SHARE}/apparmor"
     curl -sL ${URL_APPARMOR_PROFILE} > "${DATA_SHARE}/apparmor/hassio-supervisor"
     sed -i "s,%%HASSIO_CONFIG%%,${CONFIG},g" "${PREFIX}/bin/hassio-apparmor"
     sed -i -e "s,%%SERVICE_DOCKER%%,${SERVICE_DOCKER},g" \
@@ -106,9 +118,9 @@ pre_install() {
         if [[ $BYPASS_OS_CHECK != "true" ]]; then
             error "${CURRENT_OS} is not supported!"
         fi
-        warn "Bypassing OS check..."
-        warn "${CURRENT_OS} is not supported!"
-        warn "Please DO NOT report issues regarding this OS!"
+        echo "Bypassing OS check..."
+        echo "${CURRENT_OS} is not supported!"
+        echo "Please DO NOT report issues regarding this OS!"
     fi
 
     check_arch

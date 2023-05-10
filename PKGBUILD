@@ -1,16 +1,14 @@
 # Maintainer: Lucas Mindello <lucas at mindello dot com dot br>
 pkgname=homeassistant-supervised
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Home Assistant Supervised"
-arch=('x86_64')
+arch=('any')
 url="https://www.home-assistant.io/"
 license=('APACHE')
 depends=(
     'docker>=20.10'
     'systemd>=239'
-    'networkmanager>=1.14.6'
-    'apparmor'
     'jq'
     'wget'
     'curl'
@@ -19,11 +17,13 @@ depends=(
     'dbus'
     'homeassistant-osagent'
 )
+optdepends=("networkmanager: support for built-in network management"
+            "apparmor: enhanced security")
 makedepends=('git')
 conflicts=('docker-desktop')
 install=.INSTALL
 backup=(etc/docker/daemon.json)
-_tag=730bf01008d67ba3b2936a274d0abbeabc807fa5 # git rev-parse "$pkgver"
+_tag=9eb7b0348be785559bc819e044bd4ced5986ec74 # git rev-parse "$pkgver"
 source=("git+https://github.com/home-assistant/supervised-installer.git#tag=${_tag}")
 md5sums=('SKIP')
 
@@ -36,4 +36,5 @@ package() {
     install -Dm644 "${srcdir}/supervised-installer/homeassistant-supervised/etc/systemd/system/hassio-apparmor.service" "${pkgdir}/usr/lib/systemd/system/hassio-apparmor.service"
     install -Dm644 "${srcdir}/supervised-installer/homeassistant-supervised/etc/systemd/system/hassio-supervisor.service" "${pkgdir}/usr/lib/systemd/system/hassio-supervisor.service"
     install -Dm644 "${srcdir}/supervised-installer/homeassistant-supervised/usr/share/hassio/apparmor/hassio-supervisor" "${pkgdir}/usr/share/hassio/apparmor/hassio-supervisor"
+    install -Dm644 "${srcdir}/supervised-installer/homeassistant-supervised/etc/systemd/system/systemd-journal-gatewayd.socket.d/10-hassio-supervisor.conf" "${pkgdir}/etc/systemd/system/systemd-journal-gatewayd.socket.d/10-hassio-supervisor.conf"
 }
