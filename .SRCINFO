@@ -1,7 +1,7 @@
 pkgbase = python-imageio-ffmpeg
 	pkgdesc = FFMPEG wrapper for Python
 	pkgver = 0.4.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/imageio/imageio-ffmpeg
 	arch = any
 	license = BSD
@@ -9,6 +9,7 @@ pkgbase = python-imageio-ffmpeg
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
 	depends = ffmpeg
 	source = git+https://github.com/imageio/imageio-ffmpeg.git#tag=v0.4.8
