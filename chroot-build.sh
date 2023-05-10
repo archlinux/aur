@@ -33,6 +33,10 @@ elif [[ -d "$(pwd)/release-pkg" ]]; then
   export LOGDEST="$(pwd)/release-pkg"
 fi
 
+# use modprobed-db
+#cp $HOME/.config/modprobed.db ./
+#sed 's/#  modprobed-db/  modprobed-db/g' -i PKGBUILD
+#sed 's/# make LSMOD/_make LSMOD' -i PKGBUILD
 
 #
 # To send environment variable to a PKGBUILD call this script like this:
