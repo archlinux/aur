@@ -1,6 +1,6 @@
 pkgbase = v2mixer-bin
 	pkgdesc = v2mixer, the movie editor, video mixer
-	pkgver = 1.20221209
+	pkgver = 1.20230424
 	pkgrel = 1
 	url = http://v2mixer.livev2.com/
 	arch = x86_64
@@ -8,9 +8,7 @@ pkgbase = v2mixer-bin
 	arch = armv7h
 	arch = ppc64le
 	license = custom
-	makedepends = zip
 	depends = jre8-openjdk
-	depends = ffmpeg
 	source_x86_64 = https://v2mixer.livev2.com/f/cms/10/v2mixer-linux-x86_64.tgz
 	source_x86_64 = v2mixer.desktop
 	sha256sums_x86_64 = SKIP

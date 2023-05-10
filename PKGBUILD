@@ -2,14 +2,15 @@
 # Contributor: arliweng <arliweng@outlook.com>
 
 pkgname=v2mixer-bin
-pkgver=1.20221209
+pkgver=1.20230424
 pkgrel=1
 pkgdesc='v2mixer, the movie editor, video mixer'
 arch=('x86_64' 'aarch64' 'armv7h' 'ppc64le')
 license=('custom')
 url="http://v2mixer.livev2.com/"
-makedepends=('zip')
-depends=('jre8-openjdk' 'ffmpeg')
+#makedepends=('zip')
+depends=('jre8-openjdk')
+#depends=('jre8-openjdk' 'ffmpeg')
 
 source_x86_64=("https://v2mixer.livev2.com/f/cms/10/v2mixer-linux-x86_64.tgz"
 	'v2mixer.desktop')
@@ -33,9 +34,11 @@ sha256sums_ppc64le=('SKIP'
 
 build() {
 	rm -fr v2mixer/bin/jre
-	zip -d v2mixer/bin/com.livev2.v2mixer_lib/ffmpeg-linux-*.jar \
-		/org/bytedeco/ffmpeg/*/libav* \
-		/org/bytedeco/ffmpeg/*/libsw*
+# comment for ffmpeg 5 only, native 6 unsupported
+#
+#	zip -d v2mixer/bin/com.livev2.v2mixer_lib/ffmpeg-linux-*.jar \
+#		/org/bytedeco/ffmpeg/*/libav* \
+#		/org/bytedeco/ffmpeg/*/libsw*
 }
 
 package() {
