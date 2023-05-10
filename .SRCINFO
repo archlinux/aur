@@ -8,8 +8,8 @@ pkgbase = xfer9860
 	makedepends = scons
 	depends = libusb
 	source = https://downloads.sourceforge.net/project/xfer9860/xfer9860/0.2.2/xfer9860-0.2.2.tar.bz2
-	source = xfer9860-0.2.2.patch::https://github.com/sanjay900/xfer9860/commit/10cc090e363644be3aa070e6e795e1972bf28427.patch
+	source = xfer9860-0.2.2.patch
 	sha256sums = bc245995a6987fe4706144b4e95af6391d94d82e226ca2bf3d799b9ec733d7ac
-	sha256sums = 1283b75134ad42e9b67d5ba6ef8f0ecef5dcdc1de0be7a329b1bd8a3ddfbeee9
+	sha256sums = 199532c548b0e123b9db9d866c1d0bcdd3af5fbd9b2db498a454ec202a07faa6
 
 pkgname = xfer9860

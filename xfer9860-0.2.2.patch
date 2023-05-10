@@ -1,0 +1,142 @@
+Only in b: config.log
+Only in b: .sconf_temp
+Only in b: .sconsign.dblite
+Only in b: SConstruct.orig
+Only in b: SConstruct.rej
+Only in b/src: Casio9860.o
+Only in b/src: downloadfile.o
+Only in b/src: getinfo.o
+Only in b/src: optimizememory.o
+diff '--color=auto' --unified --recursive --text a/src/SConstruct b/src/SConstruct
+--- a/src/SConstruct	2023-05-10 20:24:53.017829272 +0100
++++ b/src/SConstruct	2023-05-10 20:24:41.417718309 +0100
+@@ -54,10 +54,10 @@
+ # Check for bin= flag, which enables static build and included binary on dist=
+ #
+ if ARGUMENTS.get('bin', 0):
+-	print '!!! You are building a binary release (static linked). NOT'
+-	print '!!! recommended for normal users. If you want to distribute the'
+-	print '!!! binary, you must include sources for libusb, to comply with'
+-	print '!!! libusb\'s licensing (LGPL)'
++	print('!!! You are building a binary release (static linked). NOT')
++	print('!!! recommended for normal users. If you want to distribute the')
++	print('!!! binary, you must include sources for libusb, to comply with')
++	print('!!! libusb\'s licensing (LGPL)')
+ 	default_env.Append(LINKFLAGS = '-static')
+ 	dist = bindist
+ 
+@@ -66,9 +66,9 @@
+ #
+ if ARGUMENTS.get('distclean', 0):
+ 	import os
+-	print '==== Cleaning %s with the version %s ====' % (dist, version)
++	print('==== Cleaning %s with the version %s ====' % (dist, version))
+ 	os.system('rm -rf /tmp/%s-%s*' % (dist, version))
+-	print 'Done'
++	print('Done')
+ 	Exit()
+ 
+ ########################################
+@@ -76,22 +76,22 @@
+ #
+ if ARGUMENTS.get('dist', 0):
+ 	import os
+-	print '!!! Making a dist requires that the code is downloaded through SVN.'
++	print('!!! Making a dist requires that the code is downloaded through SVN.')
+ 	if not os.path.exists('/tmp/'):
+-		print 'Cannot find /tmp, exiting!'
++		print('Cannot find /tmp, exiting!')
+ 		Exit()
+ 	os.system('rm -rf /tmp/%s-%s/' % (dist, version)) # delete possible old dists
+-	print 'Exporting sources to /tmp/%s-%s/...' % (dist, version)
++	print('Exporting sources to /tmp/%s-%s/...' (dist, version) )
+ 	os.system('svn export .. /tmp/%s-%s/' % (dist, version))
+ 	if ARGUMENTS.get('bin', 0): # include the actual binary, dist refers to xfer9860-bin here
+-		print 'Copying %s into bin/' % dist
++		print('Copying %s into bin/' % dist )
+ 		if not os.path.exists(dist):
+-			print '!!! Could not find binary, remember to compile with bin=1 first!'
++			print('!!! Could not find binary, remember to compile with bin=1 first!')
+ 			os.system('rm -rf /tmp/%s-%s/' % (dist, version)) # remove dir again
+ 			Exit()
+ 		os.system('mkdir /tmp/%s-%s/bin/' % (dist, version))
+ 		os.system('cp %s /tmp/%s-%s/bin/' % (dist, dist, version))
+-	print 'Done. Test dist directory before packing.'
++	print('Done. Test dist directory before packing.')
+ 	Exit()
+ 
+ ########################################
+@@ -101,30 +101,30 @@
+ 	import os
+ 	os.system('rm -rf /tmp/%s-%s.tar.bz2' % (dist, version)) # delete old packages
+ 	if not os.path.exists('/tmp/%s-%s/' % (dist, version)):
+-		print '!!! Could not find dist directory. Remember to dist first.'
++		print('!!! Could not find dist directory. Remember to dist first.')
+ 		Exit()
+ 	if ARGUMENTS.get('bin', 0) and not os.path.exists('/tmp/%s-%s/bin/' % (dist, version)):
+-		print '!!! Could not find bin directory, compile and dist with bin=1!'
++		print('!!! Could not find bin directory, compile and dist with bin=1!')
+ 		Exit()
+ 
+-	print 'Archiving distribution into /tmp/%s-%s.tar.bz2...' % (dist, version)
++	print('Archiving distribution into /tmp/%s-%s.tar.bz2...' % (dist, version))
+ 	os.system('tar -cjf /tmp/%s-%s.tar.bz2 -C /tmp %s-%s/' % (dist, version, dist, version) )
+-	print 'Done.'
++	print('Done.')
+ 	Exit()
+ 
+ ########################################
+ # Checks for required libs and includes
+ #
+ if not default_env.GetOption('clean'): # don't perform on clean
+-	print '==== Looking for required libraries ===='
++	print('==== Looking for required libraries ====')
+ 	conf = Configure(default_env)
+ 	# libraries with their headers
+ 	if not conf.CheckLibWithHeader('usb-1.0', 'libusb-1.0/libusb.h', 'C') \
+ 	:
+-		print 'Did not find the needed libraries or headers, exiting!'
++		print('Did not find the needed libraries or headers, exiting!')
+ 		Exit(1)
+ 	# general headers
+-	print '\n==== Looking for required includes ===='
++	print('\n==== Looking for required includes ====')
+ 	if not conf.CheckCHeader('unistd.h') \
+ 	or not conf.CheckCHeader('stdio.h') \
+ 	or not conf.CheckCHeader('string.h') \
+@@ -133,18 +133,18 @@
+ 	or not conf.CheckCHeader('sys/stat.h') \
+ 	or not conf.CheckCHeader('math.h') \
+ 	:
+-		print 'Did not find needed includes, exiting!'
++		print('Did not find needed includes, exiting!')
+ 		Exit(1)
+ 
+ 	default_env = conf.Finish()
+ 
+-print ''
++print('')
+ ########################################
+ # Enable macro def's in case of debug or snoop mode
+ #
+ debug = ARGUMENTS.get('debug', 0)
+ if int(debug):
+-	print '==== Compiling in DEBUG/SNOOP MODE! ===='
++	print('==== Compiling in DEBUG/SNOOP MODE! ====')
+ 	default_env.Append(CPPDEFINES = Split('DEBUG SNOOP'))
+ 
+ ########################################
+@@ -156,7 +156,7 @@
+ objlist = versioned.Object('xfer9860.c')
+ 
+ if not default_env.GetOption('clean'):
+-	print '==== Starting program compilation ===='
++	print('==== Starting program compilation ====')
+ xfer9860 = default_env.Program(target = dist, source = srclist + objlist, LIBS = liblist)
+ # makes sure to remove both binaries, and logfiles
+ Clean(xfer9860, [dist, bindist, 'config.log', '../config.log'])
+Only in b/src: uploadfile.o
+Only in b/src: usbio.o
+Only in b/src: xfer9860
+Only in b/src: xfer9860.o
+Only in b: xfer9860

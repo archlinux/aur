@@ -13,9 +13,9 @@ optdepends=()
 provides=()
 conflicts=()
 source=("https://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.bz2"
-        "$pkgname-$pkgver.patch::https://github.com/sanjay900/xfer9860/commit/10cc090e363644be3aa070e6e795e1972bf28427.patch")
+        "$pkgname-$pkgver.patch")
 sha256sums=('bc245995a6987fe4706144b4e95af6391d94d82e226ca2bf3d799b9ec733d7ac'
-            '1283b75134ad42e9b67d5ba6ef8f0ecef5dcdc1de0be7a329b1bd8a3ddfbeee9')
+            '199532c548b0e123b9db9d866c1d0bcdd3af5fbd9b2db498a454ec202a07faa6')
 
 prepare() {
   cd "$pkgname-$pkgver"
