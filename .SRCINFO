@@ -1,14 +1,15 @@
-pkgbase = echidna-src
-	pkgdesc = Echidna: A Fast Smart Contract Fuzzer
-	pkgver = v2.1.1
+pkgbase = echidna
+	pkgdesc = A Fast Smart Contract Fuzzer
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/crytic/echidna
 	arch = x86_64
 	license = AGPL
 	makedepends = stack>=2.0.0
-	makedepends = libsecp256k1
-	makedepends = python-pip
-	source = echidna-v2.1.1.tar.gz::https://github.com/crytic/echidna/archive/refs/tags/v2.1.1.tar.gz
+	makedepends = cmake
+	depends = libsecp256k1
+	depends = python-pip
+	source = echidna-2.1.1.tar.gz::https://github.com/crytic/echidna/archive/refs/tags/v2.1.1.tar.gz
 	sha256sums = 49236096e7b99c569cdb9d8a0976a32dbdfa910028af29391d7f5666da67977b
 
-pkgname = echidna-src
+pkgname = echidna
