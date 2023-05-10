@@ -1,7 +1,7 @@
 pkgbase = quadcastrgb
-	pkgdesc = Set RGB mode for the microphone HyperX Quadcast S
-	pkgver = 1.0.0
-	pkgrel = 1
+	pkgdesc = set RGB mode for the microphone HyperX Quadcast S
+	pkgver = 1.0.2
+	pkgrel = 2
 	url = https://gitlab.com/Ors1mer/QuadcastRGB.git
 	arch = x86_64
 	license = GPL
@@ -9,7 +9,6 @@ pkgbase = quadcastrgb
 	makedepends = gettext
 	depends = libusb
 	depends = glibc
-	optdepends = pandoc: generate man from md
 	source = git+https://gitlab.com/Ors1mer/QuadcastRGB.git
 	md5sums = SKIP
 
