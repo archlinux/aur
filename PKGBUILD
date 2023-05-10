@@ -3,15 +3,18 @@
 _pkgname=mmpretrain
 pkgname=python-mmpretrain
 pkgver=1.0.0rc7
-pkgrel=2
+pkgrel=4
 pkgdesc='OpenMMLab Pre-training Toolbox and Benchmark'
 arch=('any')
 url='https://github.com/open-mmlab/mmpretrain'
 license=('Apache')
 depends=(
+  python-einops
   python-matplotlib
   python-mmcv
+  python-model-index
   python-numpy
+  python-rich
   python-pytorch
 )
 makedepends=(
@@ -22,9 +25,9 @@ makedepends=(
 )
 optdepends=(
   python-albumentations
-  python-colorama
+  python-scikit-learn
+  python-grad-cam
   python-requests
-  python-rich
 )
 provides=(
   python-mmclassification
