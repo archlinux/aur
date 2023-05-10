@@ -33,7 +33,7 @@ depends=('python'
          'python-slugify'
          'python-dominate'
         )
-optdepends=('papis-rofi: integration with rofi' 'papis-zotero: imports from zotero' 'python-whoosh: whoosh database backend' 'python-jinja: jinja formatting' 'fzf: fzf picker')
+optdepends=('papis-rofi: integration with rofi' 'papis-zotero: imports from zotero' 'python-whoosh: whoosh database backend' 'python-jinja: jinja formatting' 'fzf: fzf picker' 'pdfjs: pdf reader in the web app')
 provides=("papis")
 conflicts=("papis")
 source=("git+https://github.com/papis/papis.git")
