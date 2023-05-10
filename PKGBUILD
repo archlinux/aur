@@ -4,22 +4,25 @@
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 pkgname='ibus-mozc'
-pkgver=2.28.5080.102
+pkgver=2.28.5085.102
 pkgrel=1
 pkgdesc='Mozc module for IBus'
 arch=('x86_64')
 url='https://github.com/google/mozc'
 license=('Apache' 'GPL' 'LGPL' 'MIT' 'custom')
-depends=('ibus>=1.4.1' 'mozc>=2.28.5080.102')
+depends=('ibus>=1.4.1' 'mozc>=2.28.5085.102')
 makedepends=('bazel' 'git' 'python' 'qt5-base')
 options=(!distcc !ccache)
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=7925e776f7964edb82846e54252bcedf82341d17")
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=4df261a9e81a813de20634617c8df6fdbbfeaa0e")
 sha256sums=('SKIP')
 
 prepare() {
     cd ${pkgname}-git/src
 
     git submodule update --init --recursive
+
+    # Temp build fix
+    sed -i '32 a #include <cstdint>' unix/ibus/ibus_wrapper.h
 }
 
 build() {
@@ -33,26 +36,26 @@ build() {
 package() {
     cd ${pkgname}-git/src
 
-    install -Dm644 ../LICENSE                                   ${pkgdir}/usr/share/licenses/ibus-mozc/LICENSE
-    install -Dm644 data/installer/credits_en.html               ${pkgdir}/usr/share/licenses/ibus-mozc/Submodules
+    install -Dm644 ../LICENSE                                   "${pkgdir}"/usr/share/licenses/ibus-mozc/LICENSE
+    install -Dm644 data/installer/credits_en.html               "${pkgdir}"/usr/share/licenses/ibus-mozc/Submodules
 
-    install -Dm755 bazel-bin/renderer/qt/mozc_renderer          ${pkgdir}/usr/lib/mozc/mozc_renderer
+    install -Dm755 bazel-bin/renderer/qt/mozc_renderer          "${pkgdir}"/usr/lib/mozc/mozc_renderer
 
-    install -Dm755 bazel-bin/unix/ibus/ibus_mozc                ${pkgdir}/usr/lib/ibus-mozc/ibus-engine-mozc
-    install -Dm644 bazel-bin/unix/ibus/mozc.xml                 ${pkgdir}/usr/share/ibus/component/mozc.xml
+    install -Dm755 bazel-bin/unix/ibus/ibus_mozc                "${pkgdir}"/usr/lib/ibus-mozc/ibus-engine-mozc
+    install -Dm644 bazel-bin/unix/ibus/mozc.xml                 "${pkgdir}"/usr/share/ibus/component/mozc.xml
 
     cd bazel-bin/unix
 
     unzip -o icons.zip
 
-    install -Dm644 mozc.png                                     ${pkgdir}/usr/share/ibus-mozc/product_icon.png
-    install -Dm644 alpha_full.svg                               ${pkgdir}/usr/share/ibus-mozc/alpha_full.svg
-    install -Dm644 alpha_half.svg                               ${pkgdir}/usr/share/ibus-mozc/alpha_half.svg
-    install -Dm644 direct.svg                                   ${pkgdir}/usr/share/ibus-mozc/direct.svg
-    install -Dm644 hiragana.svg                                 ${pkgdir}/usr/share/ibus-mozc/hiragana.svg
-    install -Dm644 katakana_full.svg                            ${pkgdir}/usr/share/ibus-mozc/katakana_full.svg
-    install -Dm644 katakana_half.svg                            ${pkgdir}/usr/share/ibus-mozc/katakana_half.svg
-    install -Dm644 outlined/dictionary.svg                      ${pkgdir}/usr/share/ibus-mozc/dictionary.svg
-    install -Dm644 outlined/properties.svg                      ${pkgdir}/usr/share/ibus-mozc/properties.svg
-    install -Dm644 outlined/tool.svg                            ${pkgdir}/usr/share/ibus-mozc/tool.svg
+    install -Dm644 mozc.png                                     "${pkgdir}"/usr/share/ibus-mozc/product_icon.png
+    install -Dm644 alpha_full.svg                               "${pkgdir}"/usr/share/ibus-mozc/alpha_full.svg
+    install -Dm644 alpha_half.svg                               "${pkgdir}"/usr/share/ibus-mozc/alpha_half.svg
+    install -Dm644 direct.svg                                   "${pkgdir}"/usr/share/ibus-mozc/direct.svg
+    install -Dm644 hiragana.svg                                 "${pkgdir}"/usr/share/ibus-mozc/hiragana.svg
+    install -Dm644 katakana_full.svg                            "${pkgdir}"/usr/share/ibus-mozc/katakana_full.svg
+    install -Dm644 katakana_half.svg                            "${pkgdir}"/usr/share/ibus-mozc/katakana_half.svg
+    install -Dm644 outlined/dictionary.svg                      "${pkgdir}"/usr/share/ibus-mozc/dictionary.svg
+    install -Dm644 outlined/properties.svg                      "${pkgdir}"/usr/share/ibus-mozc/properties.svg
+    install -Dm644 outlined/tool.svg                            "${pkgdir}"/usr/share/ibus-mozc/tool.svg
 }
