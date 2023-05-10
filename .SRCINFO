@@ -16,7 +16,8 @@ pkgbase = onioncircuits
 	depends = gobject-introspection
 	depends = python-pycountry
 	source = git+https://gitlab.tails.boum.org/tails/onioncircuits.git#commit=6efeff2e7cdbfbab7d73ea5825a64c002fa8e3b9
+	source = setuptools_fix.patch
 	sha256sums = SKIP
+	sha256sums = 6f2bab5e0337d0c62eb261b1a907e614f54e096b217e3c1e412d2a8086818f3d
 
 pkgname = onioncircuits
-
