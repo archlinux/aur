@@ -1,10 +1,11 @@
 pkgbase = r-mirlab
 	pkgdesc = Dry lab for exploring miRNA-mRNA relationships
-	pkgver = 1.28.0
+	pkgver = 1.30.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/miRLAB
 	arch = any
 	license = GPL
+	depends = gsl
 	depends = r
 	depends = r-category
 	depends = r-ctc
@@ -30,7 +31,7 @@ pkgbase = r-mirlab
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/miRLAB_1.28.0.tar.gz
-	sha256sums = 004b622bef00875b5b0d696a81d0b2c63220cbd983004ed02f869feaf9db48ba
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/miRLAB_1.30.0.tar.gz
+	sha256sums = b50c45692e349780111e717c53c87e641ee9992ec36abe24ee7a0579cea0d71d
 
 pkgname = r-mirlab
