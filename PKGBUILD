@@ -57,7 +57,14 @@ prepare() {
 	git submodule update --init --recursive
 
 	# Specify path for autostart file
-	sed -i -e "s#path: executablePath,#path: '/usr/bin/ferdium',#g" src/stores/AppStore.ts
+	if [ -f src/stores/AppStore.ts ]
+	then
+		sed -i -e "s#path: executablePath,#path: '/usr/bin/ferdium',#g" src/stores/AppStore.ts
+	fi
+	if [ -f src/stores/AppStore.js ]
+	then
+		sed -i -e "s#path: executablePath,#path: '/usr/bin/ferdium',#g" src/stores/AppStore.js
+	fi
 	# Set noUnusedLocals to false to avoid compilation error in AppStore.ts
 	sed -i -e 's#"noUnusedLocals": true#"noUnusedLocals": false#g' tsconfig.json
 }
