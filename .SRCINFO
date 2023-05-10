@@ -1,0 +1,21 @@
+pkgbase = python-radioactivedecay
+	pkgdesc = A Python package for radioactive decay modelling that supports 1252 radionuclides, decay chains, branching, and metastable states.
+	pkgver = 0.4.17
+	pkgrel = 1
+	url = https://radioactivedecay.github.io/
+	arch = any
+	license = MIT
+	license = custom:ICRP-07, AMDC
+	provides = python-radioactivedecay=0.4.17
+	source = https://files.pythonhosted.org/packages/source/r/radioactivedecay/radioactivedecay-0.4.17.tar.gz
+	sha256sums = dfe474d53f02755a39b40a1bbb189175284f693e0423f64e40878632cf1c0379
+
+pkgname = python-radioactivedecay
+	depends = python>=3.9.0
+	depends = python-matplotlib
+	depends = python-networkx
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-setuptools
+	depends = python-sympy
+	depends = python-importlib_resources>=1.4
