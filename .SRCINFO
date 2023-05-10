@@ -1,0 +1,14 @@
+pkgbase = thc-hydra
+	pkgver = 9.4
+	pkgrel = 1
+	url = https://github.com/vanhauser-thc/thc-hydra
+	arch = any
+	license = AGPL-3.0-or-later
+	depends = gtk3
+	depends = zlib
+	depends = openssl
+	provides = thc-hydra
+	source = https://github.com/vanhauser-thc/thc-hydra/archive/refs/tags/v9.4.tar.gz
+	sha512sums = de5a1e73673fdc2f193cfb1aeec337c9d8faad52b06524850f352a797a4a5ef08cba8fc51da96fed1db01d141127e58c2aa874027f51c40a94a474de778d5241
+
+pkgname = thc-hydra
