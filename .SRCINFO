@@ -34,7 +34,7 @@ pkgbase = ferdium
 	conflicts = ferdium-nightly-bin
 	conflicts = ferdium-nightly
 	conflicts = ferdium-git
-	source = ferdium::git+https://github.com/ferdium/ferdium-app#tag=6.2.7
+	source = ferdium::git+https://github.com/ferdium/ferdium-app#tag=v6.2.7
 	sha512sums = SKIP
 
 pkgname = ferdium
