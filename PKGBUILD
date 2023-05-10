@@ -2,7 +2,7 @@
 
 _plug=soifunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=96.ae10ce4
+pkgver=97.ddfc7b7
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -14,6 +14,7 @@ depends=('vapoursynth'
   'vapoursynth-plugin-dfttest2-git'
   'vapoursynth-plugin-vstools-git'
   'vapoursynth-plugin-vsscale-git'
+  'vapoursynth-plugin-vsdeband-git'
   'vapoursynth-plugin-vsdenoise-git'
   'vapoursynth-plugin-vsrgtools-git'
   'vapoursynth-plugin-vsmasktools-git'
