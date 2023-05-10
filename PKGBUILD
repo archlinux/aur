@@ -1,6 +1,6 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=downzemall
-pkgver=3.0.4
+pkgver=3.0.5
 pkgrel=1
 pkgdesc="A mass download manager that helps you to select, organize, prioritize and run your downloads in parallel."
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('libnotify: desktop notifications'
             'libappindicator-gtk3: tray icon')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/setvisible/DownZemAll/archive/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('2164e6588bf9725f25572e403fed5b63676f5349c0e3461e152327bbf21e74e0'
+sha256sums=('a293392f743d6b4e240f5ee262f13cac377b2741d66009c72b88b4c0b170b99a'
             '3cb8f2eefbd9f04dd4b3a706058d8ab82c42514db81fbfbdf213fc833ca01eff')
 
 prepare() {
