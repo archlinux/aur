@@ -1,17 +1,17 @@
 pkgbase = gnome-shell-extension-shuzhi-git
 	pkgdesc = A wallpaper generation extension for gnome shell, inspired by Jizhi
-	pkgver = 3.38.r15.ge0a5a95
+	pkgver = 44.0.r3.g9a71d66
 	pkgrel = 1
 	url = https://github.com/tuberry/shuzhi
 	arch = any
 	license = GPL3
 	checkdepends = fortune-mod
 	makedepends = git
-	makedepends = make
-	depends = gnome-shell>=3.38
+	makedepends = meson
+	depends = gnome-shell
 	provides = gnome-shell-extension-shuzhi
 	conflicts = gnome-shell-extension-shuzhi
 	source = git+https://github.com/tuberry/shuzhi.git
-	sha256sums = SKIP
+	b2sums = SKIP
 
 pkgname = gnome-shell-extension-shuzhi-git
