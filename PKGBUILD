@@ -1,8 +1,8 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
 
 pkgname=virtiofsd
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.6.1
+pkgrel=1
 pkgdesc="Vhost-user virtio-fs device backend written in Rust"
 arch=(x86_64)
 url="https://gitlab.com/virtio-fs/virtiofsd"
@@ -16,8 +16,8 @@ depends=(
 makedepends=(cargo)
 replaces=(qemu-virtiofsd)
 source=($url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
-sha512sums=('7036df9e576319bb599b4783b799ff0c2a56f8b17485314aec8f1663a659ce06b987362ddcb83b0eb2eb16b156ec547728584a5cc3939194ea23569dbcef77b1')
-b2sums=('212ec1c4a06aaa021b8c42d30a44c855a98ad8add7ddd5a9f5859b3e1e8e47446b9b675f0d6dfcef9ab194b9ad63a2cb84561d2f10766a35206c28fd8bff96c3')
+sha512sums=('ed398c96f16ef520546052bbebe65ae5b4e6818692d4389aa6ace4eb0a9d3cd4b9f3c6b00790b99c4215ceac9eead36a20ae2e18cc8298defb901d9916c241df')
+b2sums=('e1fad99baef1a6d2a399107422cfbeede365325d1f2e71e3944bc9db41578320a8c0272550597f05741a171ce4a6426338a3255adabcf948735704f3adc1156b')
 
 prepare() {
   cd $pkgname-v$pkgver
