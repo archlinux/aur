@@ -1,0 +1,437 @@
+{
+    "ada": {
+        "path": "/bin/ada",
+        "colors": [
+            "#000000",
+            "#001EC8",
+            "#14127B"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 62
+    },
+    "apl": {
+        "path": "/bin/apl",
+        "colors": [
+            "#1FA246",
+            "#DFFDE7"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 21
+    },
+    "bash": {
+        "path": "/bin/bash",
+        "colors": [
+            "#54AC25",
+            "#ffffff"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 44
+    },
+    "bqn": {
+        "path": "/bin/bqn",
+        "colors": [
+            "#2E5F60"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 0
+    },
+    "c#": {
+        "path": "/bin/dotnet",
+        "colors": [
+            "#A179DC",
+            "#390091",
+            "#280068"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 79
+    },
+    "clang": {
+        "path": "/bin/clang",
+        "colors": [
+            "#659AD2",
+            "#00599C",
+            "#004482"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 19
+    },
+    "clang++": {
+        "path": "/bin/clang++",
+        "colors": [
+            "#659AD2",
+            "#00599C",
+            "#004482"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 19
+    },
+    "clojure": {
+        "path": "/bin/clojure",
+        "colors": [
+            "#62AD37",
+            "#92DC4F",
+            "#5D80D0",
+            "#93B3FE"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 29
+    },
+    "crystal": {
+        "path": "/bin/crystal",
+        "colors": [
+            "#000000"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 10
+    },
+    "d": {
+        "path": "/bin/dmd",
+        "colors": [
+            "#B01C1C"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 40
+    },
+    "dart": {
+        "path": "/bin/dart",
+        "colors": [
+            "#0079B3",
+            "#00A4E4",
+            "#00D2B8",
+            "#55DDCA"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 32
+    },
+    "deno": {
+        "path": "/bin/deno",
+        "colors": [
+            "#ffffff"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 16
+    },
+    "elixir": {
+        "path": "/bin/elixir",
+        "colors": [
+            "#604B6E"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 24
+    },
+    "erlang": {
+        "path": "/bin/erl",
+        "colors": [
+            "#8C002F"
+        ],
+        "regex": "(\\d+\\.\\d)",
+        "version": "-version",
+        "popularity": 34
+    },
+    "f#": {
+        "path": "/bin/dotnet",
+        "colors": [
+            "#378BBA",
+            "#30B9DB"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 30
+    },
+    "fortran": {
+        "path": "/bin/gfortran",
+        "colors": [
+            "#744E97"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 77
+    },
+    "g++": {
+        "path": "/bin/g++",
+        "colors": [
+            "#659AD2",
+            "#00599C",
+            "#004482"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 48
+    },
+    "gcc": {
+        "path": "/bin/gcc",
+        "colors": [
+            "#659AD2",
+            "#00599C",
+            "#004482"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 48
+    },
+    "ghc": {
+        "path": "/bin/ghc",
+        "colors": [
+            "#5F5287",
+            "#453B60",
+            "#8D508B"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 15
+    },
+    "go": {
+        "path": "/bin/go",
+        "colors": [
+            "#00acd7"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "version",
+        "popularity": 55
+    },
+    "haskell": {
+        "path": "/bin/ghc",
+        "colors": [
+            "#5F5287",
+            "#453B60",
+            "#8D508B"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 52
+    },
+    "java": {
+        "path": "/bin/java",
+        "colors": [
+            "#1665BF",
+            "#F34336"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 116
+    },
+    "javascript": {
+        "path": "/bin/node",
+        "colors": [
+            "#EED94C"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 107
+    },
+    "julia": {
+        "path": "/bin/julia",
+        "colors": [
+            "#9259A3",
+            "#399746",
+            "#CA3C32"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 29
+    },
+    "kotlin": {
+        "path": "/bin/kotlin",
+        "colors": [
+            "#7170FF",
+            "#FE7959"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "-version",
+        "popularity": 41
+    },
+    "lua": {
+        "path": "/bin/lua",
+        "colors": [
+            "#00007f"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "-v",
+        "popularity": 68
+    },
+    "mariadb": {
+        "path": "/bin/mariadb",
+        "colors": [
+            "#003545"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 32
+    },
+    "mysql": {
+        "path": "/bin/mysql",
+        "colors": [
+            "#00627E"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 66
+    },
+    "nodejs": {
+        "path": "/bin/node",
+        "colors": [
+            "#8CC84B"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 48
+    },
+    "ocaml": {
+        "path": "/bin/ocaml",
+        "colors": [
+            "#EF7A06"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 31
+    },
+    "perl": {
+        "path": "/bin/perl",
+        "colors": [
+            "#393B5A"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 80
+    },
+    "php": {
+        "path": "/bin/php",
+        "colors": [
+            "#7479AF"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 113
+    },
+    "powershell": {
+        "path": "/bin/pwsh",
+        "colors": [
+            "#0274B9"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 32
+    },
+    "prolog": {
+        "path": "/bin/swipl",
+        "colors": [
+            "#E26E4D",
+            "#959DA3"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 58
+    },
+    "python": {
+        "path": "/bin/python",
+        "colors": [
+            "#ffd43B",
+            "#306998"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 106
+    },
+    "r": {
+        "path": "/bin/R",
+        "colors": [
+            "#2067B9",
+            "#9999A1"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 54
+    },
+    "raku": {
+        "path": "/bin/rakudo",
+        "colors": [
+            "#ffff00",
+            "#ff3366",
+            "#0000ff",
+            "#00ff00",
+            "#000000",
+            "#ffffff"
+        ],
+        "version": "--version",
+        "popularity": 16
+    },
+    "ruby": {
+        "path": "/bin/ruby",
+        "colors": [
+            "#d52420",
+            "#860600",
+            "#ffdddd"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 72
+    },
+    "rust": {
+        "path": "/bin/rustc",
+        "colors": [
+            "#cd5314"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 44
+    },
+    "sass": {
+        "path": "/bin/sass",
+        "colors": [
+            "#C36698"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 21
+    },
+    "scala": {
+        "path": "/bin/scala",
+        "colors": [
+            "#DD3330",
+            "#7E0B1C"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 41
+    },
+    "swift": {
+        "path": "/bin/swift",
+        "colors": [
+            "#FB3B26"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 45
+    },
+    "typescript": {
+        "path": "/bin/tsc",
+        "colors": [
+            "#2E77C4"
+        ],
+        "regex": "(\\d+\\.\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 35
+    },
+    "zsh": {
+        "path": "/bin/zsh",
+        "colors": [
+            "#F15A24"
+        ],
+        "regex": "(\\d+\\.\\d+)",
+        "version": "--version",
+        "popularity": 25
+    }
+}
