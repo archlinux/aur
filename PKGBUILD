@@ -16,7 +16,7 @@ pkgname=(
 	$_basename-server
 	$_basename-unixd-clients
 )
-pkgver=1.1.0_alpha.11
+pkgver=1.1.0_alpha.12
 _realver=${pkgver/_/-}
 pkgrel=1
 pkgdesc='A identity management service and clients.'
@@ -25,13 +25,13 @@ source=("$_basename-$pkgver.tar.gz::https://github.com/$_basename/$_basename/arc
 arch=(x86_64 aarch64)
 license=(MPL-2.0)
 makedepends=(cargo systemd)
-sha256sums=('78c12b14441c554edce8ff3801bd31878e25c474098d64d4bb4d06165c559027')
+sha256sums=('6c1e807278e1f90d2ede930dcc612c0da1b6f9e18ed4046771cbaa125af4d296')
 
 
 build () {
   cd ${pkgbase}-$_realver
 
-  export KANIDM_BUILD_PROFILE="release_suse_x86_64"
+  export KANIDM_BUILD_PROFILE="release_suse_generic"
   cargo build --locked --release --target-dir target
 }
 
@@ -47,6 +47,7 @@ package_kanidm () {
 package_kanidm-clients () {
   conflicts=("$_basename-clients-git")
   provides=("$_basename-clients")
+  depends=("libgit2")
   pkgdesc='kanidm client to interact with kanidm identity management server.'
   backup=("etc/kanidm/config")
 
@@ -64,6 +65,7 @@ package_kanidm-clients () {
 package_kanidm-server () {
   conflicts=("$_basename-server-git")
   provides=("$_basename-server")
+  depends=("libgit2")
   pkgdesc='kanidm server for idendity management, supports RADIUS, ssh key management.'
   backup=("etc/kanidm/server.toml")
 
@@ -73,6 +75,7 @@ package_kanidm-server () {
   install -Dm644 platform/opensuse/kanidmd.service "${pkgdir}/usr/lib/systemd/system/kanidmd.service"
 
   install -Dm755 target/release/kanidmd "${pkgdir}/usr/bin/kanidmd"
+  install -Dm755 target/release/kanidm-ipa-sync "${pkgdir}/usr/bin/kanidm-ipa-sync"
 
   install -Dm644 target/release/build/completions/_kanidmd "${pkgdir}/usr/share/zsh/site-functions/_kanidmd"
 
@@ -81,7 +84,7 @@ package_kanidm-server () {
 
   # add web-ui files
   install -dv "${pkgdir}/usr/share/kanidm/ui/"
-  cp -r kanidmd_web_ui/pkg "${pkgdir}/usr/share/kanidm/ui/"
+  cp -r server/web_ui/pkg "${pkgdir}/usr/share/kanidm/ui/"
 }
 
 package_kanidm-unixd-clients () {
@@ -99,23 +102,17 @@ package_kanidm-unixd-clients () {
   install -Dm755 target/release/libnss_kanidm.so "${pkgdir}/usr/lib/libnss_kanidm.so.2"
   install -Dm755 target/release/libpam_kanidm.so "${pkgdir}/usr/lib/security/pam_kanidm.so"
 
-  install -Dm755 target/release/kanidm_cache_clear "${pkgdir}/usr/bin/kanidm_cache_clear"
-  install -Dm755 target/release/kanidm_cache_invalidate "${pkgdir}/usr/bin/kanidm_cache_invalidate"
   install -Dm755 target/release/kanidm_ssh_authorizedkeys "${pkgdir}/usr/bin/kanidm_ssh_authorizedkeys"
   install -Dm755 target/release/kanidm_ssh_authorizedkeys_direct "${pkgdir}/usr/bin/kanidm_ssh_authorizedkeys_direct"
+  install -Dm755 target/release/kanidm-unix "${pkgdir}/usr/bin/kanidm-unix"
   install -Dm755 target/release/kanidm_unixd "${pkgdir}/usr/bin/kanidm_unixd"
-  install -Dm755 target/release/kanidm_unixd_status "${pkgdir}/usr/bin/kanidm_unixd_status"
   install -Dm755 target/release/kanidm_unixd_tasks "${pkgdir}/usr/bin/kanidm_unixd_tasks"
 
   install -Dm644 target/release/build/completions/_kanidm_ssh_authorizedkeys_direct "${pkgdir}/usr/share/zsh/site-functions/_kanidm_ssh_authorizedkeys_direct"
-  install -Dm644 target/release/build/completions/_kanidm_cache_clear "${pkgdir}/usr/share/zsh/site-functions/_kanidm_cache_clear"
-  install -Dm644 target/release/build/completions/_kanidm_cache_invalidate "${pkgdir}/usr/share/zsh/site-functions/_kanidm_cache_invalidate"
   install -Dm644 target/release/build/completions/_kanidm_ssh_authorizedkeys "${pkgdir}/usr/share/zsh/site-functions/_kanidm_ssh_authorizedkeys"
-  install -Dm644 target/release/build/completions/_kanidm_unixd_status "${pkgdir}/usr/share/zsh/site-functions/_kanidm_unixd_status"
+  install -Dm644 target/release/build/completions/_kanidm_unix "${pkgdir}/usr/share/zsh/site-functions/_kanidm_unix"
 
   install -Dm644 target/release/build/completions/kanidm_ssh_authorizedkeys_direct.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm_ssh_authorizedkeys_direct.sh"
-  install -Dm644 target/release/build/completions/kanidm_cache_clear.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm_cache_clear.sh"
-  install -Dm644 target/release/build/completions/kanidm_cache_invalidate.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm_cache_invalidate.sh"
   install -Dm644 target/release/build/completions/kanidm_ssh_authorizedkeys.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm_ssh_authorizedkeys.sh"
-  install -Dm644 target/release/build/completions/kanidm_unixd_status.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm_unixd_status.sh"
+  install -Dm644 target/release/build/completions/kanidm_unix.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm_unix.sh"
 }
