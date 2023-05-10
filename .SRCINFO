@@ -1,0 +1,14 @@
+pkgbase = knowledge-appimage
+	pkgdesc = A tool for saving, searching, accessing, and exploring all of your favorite websites, documents and files.
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/KnowledgeCanvas/knowledge
+	arch = x86_64
+	license = Apache
+	depends = zlib
+	depends = glibc
+	options = !strip
+	source = knowledge-0.7.1.AppImage::https://knowledge-canvas.s3.us-west-2.amazonaws.com/Knowledge-0.7.1.AppImage
+	sha256sums = fdcfe71e26a326218051638e86baa14d95f70bd881327034e1ddcde83a190769
+
+pkgname = knowledge-appimage
