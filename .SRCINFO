@@ -1,0 +1,17 @@
+pkgbase = foto-git
+	pkgdesc = Simple image viewer written in C - Git release
+	pkgver = v1.0.0.r2.g71cc5cd
+	pkgrel = 1
+	url = https://github.com/mekb-turtle/foto
+	arch = any
+	makedepends = git
+	makedepends = pandoc
+	depends = libbsd
+	depends = cairo
+	depends = devil
+	depends = libx11
+	depends = libxext
+	source = foto::git+https://github.com/mekb-turtle/foto.git
+	sha256sums = SKIP
+
+pkgname = foto-git
