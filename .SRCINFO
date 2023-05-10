@@ -1,16 +1,16 @@
 pkgbase = glab-bin
 	pkgdesc = Cli tool to help work seamlessly with Gitlab from the command line
-	pkgver = 1.28.0
+	pkgver = 1.29.1
 	pkgrel = 1
-	url = https://gitlab.com/gitlab-org/cli/-/releases/v1.28.0/downloads
+	url = https://gitlab.com/gitlab-org/cli/-/releases/v1.29.1/downloads
 	arch = x86_64
 	license = MIT
-	provides = glab=1.28.0
+	provides = glab=1.29.1
 	conflicts = glab
 	replaces = gitlab-glab-git
-	source = https://gitlab.com/gitlab-org/cli/-/releases/v1.28.0/downloads/glab_1.28.0_Linux_x86_64.deb
-	source = https://gitlab.com/gitlab-org/cli/-/releases/v1.28.0/downloads/checksums.txt
-	sha256sums = 953910f280bdfb3154d528396291f15ffb94df2700313e82cd9a3a1c810d4a14
-	sha256sums = b1e98746a0d311c88ff15a8e64314487f7823e405ac2a10d1bb306ce5f7286c5
+	source = https://gitlab.com/gitlab-org/cli/-/releases/v1.29.1/downloads/glab_1.29.1_Linux_x86_64.deb
+	source = https://gitlab.com/gitlab-org/cli/-/releases/v1.29.1/downloads/checksums.txt
+	sha256sums = b173d15a8855dfc1fa21edf4a8b3c679f846748a7d959e87d251ec9c21ff823f
+	sha256sums = bf1ba925465b115b19f5ac3c331ac7b089d12b4c44d760268f924570753d4abe
 
 pkgname = glab-bin
