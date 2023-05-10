@@ -1,0 +1,238 @@
+diff --color -aurN Kvantum/WhiteSur/WhiteSurDark.kvconfig Kvantum-patched/WhiteSur/WhiteSurDark.kvconfig
+--- Kvantum/WhiteSur/WhiteSurDark.kvconfig	2023-05-11 00:40:33.364715768 +0800
++++ Kvantum-patched/WhiteSur/WhiteSurDark.kvconfig	2023-05-11 00:38:05.624853645 +0800
+@@ -10,13 +10,13 @@
+ group_toolbar_buttons=false
+ spread_progressbar=true
+ composite=true
+-menu_shadow_depth=27
++menu_shadow_depth=1
+ spread_menuitems=false
+ tooltip_shadow_depth=6
+ scroll_width=12
+ scroll_arrows=false
+ scroll_min_extent=50
+-transient_scrollbar=false
++transient_scrollbar=true
+ slider_width=6
+ slider_handle_width=16
+ slider_handle_length=16
+@@ -58,10 +58,10 @@
+ respect_DE=true
+ scrollbar_in_view=false
+ spin_button_width=16
+-submenu_delay=250
++submenu_delay=-1
+ transient_groove=true
+ tree_branch_line=true
+-no_inactiveness=false
++no_inactiveness=true
+ reduce_menu_opacity=25
+ click_behavior=0
+ contrast=1.00
+@@ -71,8 +71,8 @@
+ scrollable_menu=true
+ shadowless_popup=false
+ drag_from_buttons=false
+-menu_blur_radius=9
+-tooltip_blur_radius=6
++menu_blur_radius=0
++tooltip_blur_radius=0
+ 
+ [GeneralColors]
+ window.color=#242424
+@@ -110,7 +110,7 @@
+ transparent_menutitle=true
+ respect_darkness=true
+ kcapacitybar_as_progressbar=true
+-force_size_grip=true
++force_size_grip=false
+ iconless_pushbutton=false
+ iconless_menu=false
+ disabled_icon_opacity=100
+diff --color -aurN Kvantum/WhiteSur/WhiteSur.kvconfig Kvantum-patched/WhiteSur/WhiteSur.kvconfig
+--- Kvantum/WhiteSur/WhiteSur.kvconfig	2023-05-11 00:40:33.363715769 +0800
++++ Kvantum-patched/WhiteSur/WhiteSur.kvconfig	2023-05-11 00:38:05.624853645 +0800
+@@ -10,13 +10,13 @@
+ group_toolbar_buttons=false
+ spread_progressbar=true
+ composite=true
+-menu_shadow_depth=27
++menu_shadow_depth=1
+ spread_menuitems=false
+ tooltip_shadow_depth=5
+ scroll_width=12
+ scroll_arrows=false
+ scroll_min_extent=50
+-transient_scrollbar=false
++transient_scrollbar=true
+ slider_width=6
+ slider_handle_width=16
+ slider_handle_length=16
+@@ -50,7 +50,7 @@
+ tooltip_delay=-1
+ button_contents_shift=false
+ animate_states=true
+-dark_titlebar=true
++dark_titlebar=false
+ hide_combo_checkboxes=false
+ layout_margin=4
+ no_window_pattern=false
+@@ -58,10 +58,10 @@
+ respect_DE=true
+ scrollbar_in_view=false
+ spin_button_width=16
+-submenu_delay=250
++submenu_delay=-1
+ transient_groove=true
+ tree_branch_line=true
+-no_inactiveness=false
++no_inactiveness=true
+ reduce_menu_opacity=25
+ click_behavior=0
+ contrast=1.00
+@@ -71,8 +71,8 @@
+ scrollable_menu=true
+ shadowless_popup=false
+ drag_from_buttons=false
+-menu_blur_radius=9
+-tooltip_blur_radius=6
++menu_blur_radius=0
++tooltip_blur_radius=0
+ 
+ [GeneralColors]
+ window.color=#f5f5f5
+@@ -110,7 +110,7 @@
+ transparent_menutitle=true
+ respect_darkness=false
+ kcapacitybar_as_progressbar=true
+-force_size_grip=true
++force_size_grip=false
+ iconless_pushbutton=false
+ iconless_menu=false
+ disabled_icon_opacity=100
+diff --color -aurN Kvantum/WhiteSur-solid/WhiteSur-solidDark.kvconfig Kvantum-patched/WhiteSur-solid/WhiteSur-solidDark.kvconfig
+--- Kvantum/WhiteSur-solid/WhiteSur-solidDark.kvconfig	2023-05-11 00:40:33.363715769 +0800
++++ Kvantum-patched/WhiteSur-solid/WhiteSur-solidDark.kvconfig	2023-05-11 00:38:05.623853646 +0800
+@@ -10,13 +10,13 @@
+ group_toolbar_buttons=false
+ spread_progressbar=true
+ composite=true
+-menu_shadow_depth=27
++menu_shadow_depth=1
+ spread_menuitems=false
+ tooltip_shadow_depth=6
+ scroll_width=12
+ scroll_arrows=false
+ scroll_min_extent=50
+-transient_scrollbar=false
++transient_scrollbar=true
+ slider_width=6
+ slider_handle_width=16
+ slider_handle_length=16
+@@ -58,10 +58,10 @@
+ respect_DE=true
+ scrollbar_in_view=false
+ spin_button_width=16
+-submenu_delay=250
++submenu_delay=-1
+ transient_groove=true
+ tree_branch_line=true
+-no_inactiveness=false
++no_inactiveness=true
+ reduce_menu_opacity=0
+ click_behavior=0
+ contrast=1.00
+@@ -72,6 +72,8 @@
+ shadowless_popup=false
+ splitter_width=1
+ drag_from_buttons=false
++menu_blur_radius=0
++tooltip_blur_radius=0
+ 
+ [GeneralColors]
+ window.color=#242424
+@@ -109,7 +111,7 @@
+ transparent_menutitle=true
+ respect_darkness=true
+ kcapacitybar_as_progressbar=true
+-force_size_grip=true
++force_size_grip=false
+ iconless_pushbutton=false
+ iconless_menu=false
+ disabled_icon_opacity=100
+@@ -126,6 +128,7 @@
+ kinetic_scrolling=false
+ noninteger_translucency=false
+ style_vertical_toolbars=false
++blur_only_active_window=false
+ 
+ [BaseWidget]
+ interior=true
+diff --color -aurN Kvantum/WhiteSur-solid/WhiteSur-solid.kvconfig Kvantum-patched/WhiteSur-solid/WhiteSur-solid.kvconfig
+--- Kvantum/WhiteSur-solid/WhiteSur-solid.kvconfig	2023-05-11 00:40:33.360715772 +0800
++++ Kvantum-patched/WhiteSur-solid/WhiteSur-solid.kvconfig	2023-05-11 00:38:05.623853646 +0800
+@@ -10,13 +10,13 @@
+ group_toolbar_buttons=false
+ spread_progressbar=true
+ composite=true
+-menu_shadow_depth=27
++menu_shadow_depth=1
+ spread_menuitems=false
+ tooltip_shadow_depth=5
+ scroll_width=12
+ scroll_arrows=false
+ scroll_min_extent=50
+-transient_scrollbar=false
++transient_scrollbar=true
+ slider_width=6
+ slider_handle_width=16
+ slider_handle_length=16
+@@ -50,7 +50,7 @@
+ tooltip_delay=-1
+ button_contents_shift=false
+ animate_states=true
+-dark_titlebar=true
++dark_titlebar=false
+ hide_combo_checkboxes=false
+ layout_margin=4
+ no_window_pattern=false
+@@ -58,10 +58,10 @@
+ respect_DE=true
+ scrollbar_in_view=false
+ spin_button_width=16
+-submenu_delay=250
++submenu_delay=-1
+ transient_groove=true
+ tree_branch_line=true
+-no_inactiveness=false
++no_inactiveness=true
+ reduce_menu_opacity=0
+ click_behavior=0
+ contrast=1.00
+@@ -72,6 +72,8 @@
+ shadowless_popup=false
+ drag_from_buttons=false
+ splitter_width=1
++menu_blur_radius=0
++tooltip_blur_radius=0
+ 
+ [GeneralColors]
+ window.color=#f5f5f5
+@@ -109,7 +111,7 @@
+ transparent_menutitle=true
+ respect_darkness=true
+ kcapacitybar_as_progressbar=true
+-force_size_grip=true
++force_size_grip=false
+ iconless_pushbutton=false
+ iconless_menu=false
+ disabled_icon_opacity=100
+@@ -126,6 +128,7 @@
+ kinetic_scrolling=false
+ noninteger_translucency=false
+ style_vertical_toolbars=false
++blur_only_active_window=false
+ 
+ [BaseWidget]
+ interior=true
