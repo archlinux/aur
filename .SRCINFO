@@ -1,10 +1,10 @@
 pkgbase = python-prefect
-	pkgdesc = A general interface for loading data
+	pkgdesc = Workflow orchestration and management.
 	pkgver = 2.10.8
-	pkgrel = 1
-	url = https://intake.readthedocs.io/
+	pkgrel = 2
+	url = https://www.prefect.io/
 	arch = any
-	license = BSD
+	license = Apache
 	provides = python-prefect=2.10.8
 	source = https://files.pythonhosted.org/packages/source/p/prefect/prefect-2.10.8.tar.gz
 	sha256sums = c82f07d32580ef9c274ddde36d50c48453c35494c17e94857d96f8bac88292c8

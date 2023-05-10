@@ -3,11 +3,11 @@
 pkgbase='python-prefect'
 pkgname=('python-prefect')
 pkgver=2.10.8
-pkgrel=1
-pkgdesc='A general interface for loading data'
+pkgrel=2
+pkgdesc='Workflow orchestration and management.'
 arch=('any')
-url='https://intake.readthedocs.io/'
-license=('BSD')
+url='https://www.prefect.io/'
+license=('Apache')
 source=("https://files.pythonhosted.org/packages/source/p/prefect/prefect-$pkgver.tar.gz")
 sha256sums=('c82f07d32580ef9c274ddde36d50c48453c35494c17e94857d96f8bac88292c8')
 provides=("python-prefect=$pkgver")
