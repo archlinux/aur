@@ -1,0 +1,24 @@
+pkgbase = whaler-git
+	pkgdesc = Mind-mapping application designed for Pantheon
+	pkgver = r59.133ac20
+	pkgrel = 1
+	url = https://github.com/sdv43/whaler
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vala
+	depends = glib2
+	depends = gtk3
+	depends = libgee
+	depends = gdk-pixbuf2
+	depends = granite
+	provides = whaler
+	provides = whaler-git
+	conflicts = whaler
+	source = git+https://github.com/sdv43/whaler.git
+	md5sums = SKIP
+
+pkgname = whaler-git
