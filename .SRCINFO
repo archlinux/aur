@@ -1,0 +1,11 @@
+pkgbase = vim-xterm-color-table
+	pkgdesc = All 256 xterm colors with their RGB equivalents, right in Vim!
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://www.vim.org/scripts/script.php?script_id=3412
+	arch = any
+	license = MIT
+	source = https://www.vim.org/scripts/download_script.php?src_id=15556
+	sha256sums = abd6245fdf35a9156db8e02f3053f5cdf85c06806a08d4362821b7c94b1ec147
+
+pkgname = vim-xterm-color-table
