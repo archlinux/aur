@@ -1,0 +1,14 @@
+pkgbase = wxwidgets-old-include-dir-shim
+	pkgdesc = Makes '/usr/include/wx-<WxVersion>/wx/' available as '/usr/include/wx/', as some old software expects.
+	pkgver = 3.2.2.1
+	pkgrel = 1
+	url = https://wxwidgets.org
+	arch = any
+	license = custom: Public Domain.
+	depends = wxwidgets-common
+	provides = wxwidgets-old-include-dir=3.2.2.1
+	conflicts = wxwidgets-old-include-dir
+	source = license-metapackage-pd.txt
+	sha256sums = af68dd29515606a94237214e4c33b0e3f4f2408ed92df3674a043bf2fa2c0078
+
+pkgname = wxwidgets-old-include-dir-shim
