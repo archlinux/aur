@@ -1,0 +1,13 @@
+pkgbase = ton
+	pkgdesc = The Open Network
+	pkgver = 0
+	pkgrel = 2
+	url = https://github.com/ton-blockchain/ton
+	arch = x86_64
+	license = LGPL2
+	depends = pacman>5
+	source = ton.zip::https://github.com/ton-blockchain/ton/releases/latest/download/ton-linux-x86_64.zip
+	sha256sums = SKIP
+
+pkgname = ton
+
