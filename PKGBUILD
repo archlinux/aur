@@ -2,9 +2,9 @@
 
 pkgname=twad-git
 _pkgname=twad
-pkgver=0.20.0
+pkgver=0.20.1
 pkgrel=1
-pkgdesc='Terminal wad launcher'
+pkgdesc='Manage DOOM engines and mods with the terminal wad launcher'
 arch=('any')
 url="https://github.com/zmnpl/twad"
 license=('MIT')
