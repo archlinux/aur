@@ -97,7 +97,9 @@ function helmrelease() {
         yaml=$(cat)
         shift
         ;;
-      -+([0-9]))
+      -[:digit:])
+        ;&
+      -[:digit:][:digit:])
         index="${1/-/}"
         shift
         ;;
@@ -135,10 +137,10 @@ function helmrelease() {
   elif [[ "$numberOfHelmReleases" -gt 1 ]]; then
     <<<"$yaml" | yq -erys '.[] | select(.kind != "HelmRelease") | select(.)' \
       | if [[ "$subCommand" = "template" ]]; then
-          cat -
-        elif [[ "$subCommand" = "diff" ]]; then
-          kubectl diff -f - || true
-        fi
+      cat -
+    elif [[ "$subCommand" = "diff" ]]; then
+      kubectl diff -f - || true
+    fi
     for index in {0..$((numberOfHelmReleases - 1))}; do
       if [[ "$subCommand" = "template" ]]; then
         echo ---
@@ -217,7 +219,20 @@ function helmrelease() {
             local chartVersion
             helmRepositoryUrl="$(<<< "$sourceResource" | yq -er .spec.url)"
             chartVersion="$(<<< "$helmReleaseYaml" | yq -er '.spec.chart.spec.version // "x.x.x"')"
-            KUBECONFIG="${REMOTE_KUBECONFIG:-$KUBECONFIG}" helm "${commands[@]}" --namespace $namespace --repo "$helmRepositoryUrl" $releaseName "$chartName" --version "$chartVersion" --values <(<<< "$values") "$@"
+            commands+=( $releaseName )
+            case "$helmRepositoryUrl" in
+              https://*)
+                commands+=( --repo "$helmRepositoryUrl" "$chartName" )
+                ;;
+              oci://*)
+                commands+=( "$helmRepositoryUrl/$chartName" )
+                ;;
+              *)
+                echo "'$helmRepositoryUrl' is not supported" > /dev/stderr
+                return 1
+                ;;
+            esac
+            KUBECONFIG="${REMOTE_KUBECONFIG:-$KUBECONFIG}" helm "${commands[@]}" --namespace $namespace --version "$chartVersion" --values <(<<< "$values") "$@"
             ;;
           *)
             echo "'$sourceKind' is not implemented" > /dev/stderr

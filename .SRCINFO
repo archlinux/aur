@@ -14,7 +14,7 @@ pkgbase = helmrelease-tools
 	conflicts = helmrelease-tools-git
 	source = helmrelease-tools.plugin.zsh
 	source = _helmrelease-tools
-	sha512sums = 24222826de7cda6ac5d230d41cd076728de6e87cb7915a3c465988b1c90c26a9b986f54022565e96e2835f882e92a4803db428999444f3d064e2471ad6f1d081
+	sha512sums = 055b4336a47292d4b73761933c9d0f1cd3aa26cdadda462dc7b1fe965c06681167f5b55f8e6fd1282e7aee1ccc06f9251799d7cb7ad8dc96e1493ee8f7b552cb
 	sha512sums = ff7a5fa4111c6e83a00b9e6731b6bfb6770600ed371d11f1347566fd81e7eb9e21993b9187012b426b4ae2080117953910bf75fc0b67ab1f345e7a702e3e2aa5
 
 pkgname = helmrelease-tools
