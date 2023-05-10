@@ -1,8 +1,8 @@
 # Maintainer: koyu <me@koyu.space>
 
 pkgname=teams-nativefier
-pkgver=1.2.0
-pkgrel=3
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="Microsoft Teams desktop app built with nativefier (electron)"
 arch=("armv7l" "i686" "x86_64")
 url="https://teams.microsoft.com"
@@ -32,6 +32,7 @@ build() {
     --verbose \
     --single-instance \
     --tray \
+    --electron-version 24.2.0 \
     "${url}"
 }
 
