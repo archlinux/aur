@@ -1,0 +1,12 @@
+pkgbase = xfer9860
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/sanjay900/xfer9860
+	arch = x86_64
+	license = GPL2
+	makedepends = scons2
+	depends = libusb
+	source = https://downloads.sourceforge.net/project/xfer9860/xfer9860/0.2.2/xfer9860-0.2.2.tar.bz2
+	sha256sums = bc245995a6987fe4706144b4e95af6391d94d82e226ca2bf3d799b9ec733d7ac
+
+pkgname = xfer9860
