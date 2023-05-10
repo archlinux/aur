@@ -1,0 +1,16 @@
+pkgbase = whalebird-appimage
+	pkgdesc = An Electron based Mastodon, Pleroma, and Misskey client
+	pkgver = 5.0.5
+	pkgrel = 1
+	url = https://whalebird.social/
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = glibc
+	conflicts = whalebird
+	conflicts = whalebird-desktop-git
+	options = !strip
+	source = whalebird-5.0.5.AppImage::https://github.com/h3poteto/whalebird-desktop/releases/download/v5.0.5/Whalebird-5.0.5-linux-x86_64.AppImage
+	sha256sums = c60da1d548f68531cc9b3ec02bc95b622af25aa803fdf762ae72cfa8dba74d5c
+
+pkgname = whalebird-appimage
