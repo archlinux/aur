@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="ttkmusicplayer-bin"
 pkgver=3.3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="TTKMusicPlayer that imitation Kugou music, the music player uses of qmmp core library based on Qt for windows and linux.(支持网易云音乐、酷我音乐、酷狗音乐)"
 arch=('x86_64')
 url="https://github.com/Greedysky/TTKMusicPlayer"
@@ -25,5 +25,6 @@ package() {
     rm -rf "${pkgdir}/opt/${pkgname%-bin}/Downloads"
     gendesk -f --icon "${pkgname%-bin}" --categories "AudioVideo;Player;Audio;Qt" --name "TTKMusicPlayer" --exec "/opt/${pkgname%-bin}/TTKMusicPlayer"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/deploy/share/pixmaps/ttkmusicplayer.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/deploy/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    chmod 755 "${pkgdir}/opt/${pkgname%-bin}/${pkgver}/QtWebEngineProcess"
 }
