@@ -1,13 +1,13 @@
 pkgbase = unmake
 	pkgdesc = a makefile linter
-	pkgver = 0.0.10
+	pkgver = 0.0.11
 	pkgrel = 1
 	url = https://github.com/mcandre/unmake
 	arch = x86_64
 	arch = aarch64
 	license = BSD
 	makedepends = cargo
-	source = unmake-0.0.10.tar.gz::https://github.com/mcandre/unmake/archive/refs/tags/v0.0.10.tar.gz
-	sha256sums = aa7fd65b02aff310b80cffc6a3ea9d55fcd8b85e434eb8303f99e70825324dbc
+	source = unmake-0.0.11.tar.gz::https://github.com/mcandre/unmake/archive/refs/tags/v0.0.11.tar.gz
+	sha256sums = 4fd0af4debd68ef9679fc7eda208fade835ba436f4586fcdba009b5ee200c3a2
 
 pkgname = unmake
