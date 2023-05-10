@@ -1,7 +1,7 @@
 # Maintainer: Onni Kukkonen <onni.kukkonen77@gmail.com>
 
 pkgname=opensteam-git
-pkgver=v0.0.2.beta.r2.g377802f
+pkgver=v0.0.2.beta.r11.gf2b0518
 pkgrel=1
 pkgdesc="Partially open-source alternative to the Steam Client application"
 arch=('x86_64')
@@ -10,6 +10,7 @@ license=('MIT')
 
 depends=(
     'qt6-base>=6.5'
+    'qt6-webengine>=6.5'
     'libarchive>=3.6'
     'qrencode>=4.1'
     'openssl>=3.0.8'

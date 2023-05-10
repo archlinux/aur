@@ -1,6 +1,6 @@
 pkgbase = opensteam-git
 	pkgdesc = Partially open-source alternative to the Steam Client application
-	pkgver = v0.0.2.beta.r2.g377802f
+	pkgver = v0.0.2.beta.r11.gf2b0518
 	pkgrel = 1
 	url = https://github.com/20PercentRendered/opensteamclient
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = opensteam-git
 	makedepends = nlohmann-json
 	makedepends = extra-cmake-modules
 	depends = qt6-base>=6.5
+	depends = qt6-webengine>=6.5
 	depends = libarchive>=3.6
 	depends = qrencode>=4.1
 	depends = openssl>=3.0.8
