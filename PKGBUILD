@@ -1,5 +1,5 @@
 # Maintainer: Aria Moradi <aria.moradi007 at gmail dot com>
-# Maintainer: Mahor1221 <mahor1221 at pm dot me>
+# Maintainer: Mahor Foruzesh <mahor1221 at gmail dot com>
 
 pkgname=tachidesk
 _pkgname=tachidesk-server
