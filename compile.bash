@@ -91,7 +91,7 @@ build() {
     AL_CMAKE_CONFIG=(
         -DLL_TESTS:BOOL=ON
         -DDISABLE_FATAL_WARNINGS=ON
-        -DUSE_LTO:BOOL=ON
+        -DUSE_LTO:BOOL=OFF
         -DVIEWER_CHANNEL="Alchemy Test"
     )
     # I could not find the documentation on how to handle BUILDENV/OPTION in
