@@ -69,7 +69,7 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
 pkgver=6.3.1
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
@@ -100,6 +100,7 @@ source=(
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
   "ck-hrtimer-$_commit.tar.gz::https://github.com/graysky2/linux-patches/archive/$_commit.tar.gz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-netfilter-nf_tables-deactivate-anonymous-set-from-pr.patch
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
@@ -110,7 +111,8 @@ sha256sums=('78620fb4a7d5e0db1d4eb8d5b1c6e207ba5d19564efa63967a59b6daf89b3f2a'
             '6b337a9d3cfdc00005589a80b8d36fa500f6a92ed21565a3aceec48d7202a7da'
             'f1d586e111932890ad5e0df15d092fb9b3f87bae4ea17812aae9b0ec98fe2db0'
             'f781da5ba492d8912c7d4cddac02f21c1799532182e23374c80c19ff0c617373'
-            '2e7592ff8fb3cd0c461abb6524bc9f097033abe7fb9d464702b307eab97bd58f')
+            '9346a69dad1c83417322551a5af677e5134da9097df6fc60897bf9d35c067df0'
+            '844c8e4c4b8c6f44a5f0e746c767092cbabf6522d9012d237397ae159ebc3ede')
 _make() {
   test -s version
   make KERNELRELEASE="$(<version)" "$@"
