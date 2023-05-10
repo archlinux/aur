@@ -1,12 +1,15 @@
 pkgbase = xfer9860
+	pkgdesc = A linux app for sending and recieving data from a casio calculator
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sanjay900/xfer9860
 	arch = x86_64
 	license = GPL2
-	makedepends = scons2
+	makedepends = scons
 	depends = libusb
 	source = https://downloads.sourceforge.net/project/xfer9860/xfer9860/0.2.2/xfer9860-0.2.2.tar.bz2
+	source = xfer9860-0.2.2.patch::https://github.com/sanjay900/xfer9860/commit/10cc090e363644be3aa070e6e795e1972bf28427.patch
 	sha256sums = bc245995a6987fe4706144b4e95af6391d94d82e226ca2bf3d799b9ec733d7ac
+	sha256sums = 1283b75134ad42e9b67d5ba6ef8f0ecef5dcdc1de0be7a329b1bd8a3ddfbeee9
 
 pkgname = xfer9860
