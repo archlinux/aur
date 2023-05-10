@@ -2,7 +2,7 @@
 pkgname=cs-nginx-bouncer
 _pkgname=crowdsec-nginx-bouncer
 pkgver=1.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="CrowdSec bouncer for Nginx"
 arch=('any')
 url="https://doc.crowdsec.net/docs/bouncers/nginx"
@@ -23,8 +23,12 @@ backup=(
 	etc/crowdsec/bouncers/crowdsec-nginx-bouncer.conf
 )
 install=cs-nginx-bouncer.install
-source=("$_pkgname-$pkgver.tar.gz::${_giturl}/releases/download/v${pkgver}/${_pkgname}.tgz")
-sha256sums=('2bb65903558598fc72c20de512267cbf0759d79f0e038c5a3b8ecf2626470d3f')
+source=(
+	"$_pkgname-$pkgver.tar.gz::${_giturl}/releases/download/v${pkgver}/${_pkgname}.tgz"
+	"cs-nginx-bouncer.install"
+)
+sha256sums=('2bb65903558598fc72c20de512267cbf0759d79f0e038c5a3b8ecf2626470d3f'
+            '5ea1545fd33ad3859ea2700161f40c1e266b6375743243156a74942f849311e1')
 
 prepare() {
 	cd "$_pkgname-v$pkgver"
