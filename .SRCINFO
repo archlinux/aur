@@ -1,0 +1,15 @@
+pkgbase = linked-appimage
+	pkgdesc = Daily journaling without distraction. An easy, distraction-free way to record your thoughts, declutter your mind and keep the things you want to remember.
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://uselinked.com/
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	options = !strip
+	source = linked-1.5.1.AppImage::https://github.com/lostdesign/linked/releases/download/v1.5.1/linked-1.5.1.AppImage
+	sha256sums = 2ee13dcbe5421271ff9dd341aae2407cbd85424d76b717aea994d535c56ff7da
+
+pkgname = linked-appimage
