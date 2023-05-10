@@ -1,7 +1,7 @@
 # Maintainer: sgar <swhaat in github>
 
 pkgname=veyon
-pkgver=4.7.5
+pkgver=4.8.0
 pkgrel=1
 pkgdesc="Open Source computer monitoring and classroom management"
 arch=('i686' 'x86_64')
@@ -26,9 +26,8 @@ depends=('qt5-base'
 	'x11vnc')
 optdepends=('kldap: KDE support')
 makedepends=('git' 'gcc' 'cmake' 'qt5-tools' 'procps-ng' 'kldap')
-_commit="36c58eb981cc6edc9ecd14e40974b863eaac1c8b"
+_commit="637f0d040aa19bd68aa5e1f1060a65e42a65c46b"
 source=("git+${url}/veyon.git#commit=${_commit}")
-
 sha256sums=('SKIP')
 
 prepare() {
@@ -42,24 +41,14 @@ prepare() {
 }
 
 build() {
-    cd build
-    cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_DATA_DIR=/usr/share/ \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        -DCMAKE_VEYON_X11VNC_EXTERNAL=ON \
-        -DSYSTEMD_SERVICE_INSTALL_DIR=/usr/lib/systemd/system/ \
-        -DCMAKE_BUILD_TYPE=release \
-	../"${pkgname}"
-    make
+  cmake -B build -S "$pkgname" \
+    -DCMAKE_BUILD_TYPE='RelWithDebInfo' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DSYSTEMD_SERVICE_INSTALL_DIR='/usr/lib/systemd/system' \
+    -Wno-dev
+  cmake --build build
 }
 
 package_veyon() {
-    cd build
-    make DESTDIR="${pkgdir}" install
-
-    cd ${pkgdir}/usr/lib/${pkgname}
-    for lib in $(ls *.so)
-    do
-       ln -s "/usr/lib/veyon/$lib" "${pkgdir}/usr/lib/$lib"
-    done
+    DESTDIR="$pkgdir" cmake --install build
 }
