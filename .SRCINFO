@@ -1,0 +1,18 @@
+pkgbase = gmail-desktop-appimage
+	pkgdesc = Nifty Gmail desktop app (nnofficial)
+	pkgver = 3.0.0.alpha.35
+	pkgrel = 1
+	url = https://github.com/timche/gmail-desktop
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = gmail-desktop
+	options = !strip
+	source = gmail-desktop-3.0.0.alpha.35.AppImage::https://github.com/timche/gmail-desktop/releases/download/v3.0.0-alpha.35/gmail-desktop-3.0.0-alpha.35-linux.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/timche/gmail-desktop/main/LICENSE
+	sha256sums = 6bd96180999f385c23c6d01438fd3f8f497c6d63e44db3694d658b629f6f6bdb
+	sha256sums = 056c7c1e5bf66eba0167d966d192c743f6b66ed854011c9b6dac04f959f8f5b5
+
+pkgname = gmail-desktop-appimage
