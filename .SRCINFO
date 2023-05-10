@@ -1,0 +1,18 @@
+pkgbase = tropy-appimage
+	pkgdesc = Research photo management
+	pkgver = 1.13.1
+	pkgrel = 1
+	url = https://tropy.org/
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	options = !strip
+	source = tropy-1.13.1.AppImage::https://github.com/tropy/tropy/releases/download/v1.13.1/Tropy-1.13.1-x86_64.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/tropy/tropy/main/LICENSE
+	sha256sums = acf081c6f44fbf5abeade136ba1fa84cc23833a590d671c76f121d7559c41fe1
+	sha256sums = 2406653c61846ad831e8cbb4b8908061e3f7a7a0c88f32617ea5cd92c919b1b3
+
+pkgname = tropy-appimage
