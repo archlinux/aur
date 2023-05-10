@@ -1,6 +1,6 @@
 pkgbase = vtm-git
 	pkgdesc = Terminal multiplexer with window manager and session sharing
-	pkgver = 0.8.0.r0.g253d039
+	pkgver = 0.9.9h.r0.g86418b1d
 	pkgrel = 1
 	url = https://github.com/netxs-group/vtm
 	arch = i686
