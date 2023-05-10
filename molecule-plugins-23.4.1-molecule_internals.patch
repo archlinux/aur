@@ -1,0 +1,118 @@
+From 6ee55c7b7a9e556fc18bbc14144b8ca1ee7be845 Mon Sep 17 00:00:00 2001
+From: Arnaud Patard <apatard@hupstream.com>
+Date: Thu, 27 Apr 2023 18:13:56 +0200
+Subject: [PATCH] src/molecule_plugins/vagrant/modules/vagrant.py: Get rid of
+ molecule dependency
+
+To avoid changes in molecule.util breaking the vagrant module, let's
+get rid of the dependency by:
+- embedded the recursive dict merge function
+- replace template handling by our own code.
+  (and keep the autoescaping enabled)
+
+Moreover, it will make it easier to use community.vagrant since molecule
+is not needed anymore.
+
+Signed-off-by: Arnaud Patard <apatard@hupstream.com>
+---
+ .../vagrant/modules/vagrant.py                | 41 +++++++++++++++----
+ 1 file changed, 33 insertions(+), 8 deletions(-)
+
+diff --git a/src/molecule_plugins/vagrant/modules/vagrant.py b/src/molecule_plugins/vagrant/modules/vagrant.py
+index 8232695..b8cb11f 100644
+--- a/src/molecule_plugins/vagrant/modules/vagrant.py
++++ b/src/molecule_plugins/vagrant/modules/vagrant.py
+@@ -22,16 +22,16 @@
+ 
+ 
+ import contextlib
++import copy
+ import datetime
+ import os
+ import subprocess
+ import sys
++from collections.abc import MutableMapping
+ 
++import jinja2
+ from ansible.module_utils.basic import AnsibleModule
+ 
+-import molecule
+-import molecule.util
+-
+ try:
+     import vagrant
+ except ImportError:
+@@ -199,6 +199,8 @@
+   {%- endfor -%}
+ {%- endmacro -%}
+ 
++# Ansible managed
++
+ Vagrant.configure('2') do |config|
+   if Vagrant.has_plugin?('vagrant-cachier')
+     {% if cachier is not none and cachier in [ "machine", "box" ] %}
+@@ -335,6 +337,27 @@
+ """
+ 
+ 
++# Taken from molecule.util.
++def merge_dicts(a: MutableMapping, b: MutableMapping) -> MutableMapping:
++    """Merge the values of b into a and returns a new dict.
++
++    This function uses the same algorithm as Ansible's `combine(recursive=True)` filter.
++
++    :param a: the target dictionary
++    :param b: the dictionary to import
++    :return: dict
++    """
++    result = copy.deepcopy(a)
++
++    for k, v in b.items():
++        if k in a and isinstance(a[k], dict) and isinstance(v, dict):
++            result[k] = merge_dicts(a[k], v)
++        else:
++            result[k] = v
++
++    return result
++
++
+ class VagrantClient:
+     def __init__(self, module) -> None:
+         self._module = module
+@@ -548,13 +571,15 @@ def _get_config(self):
+ 
+     def _write_vagrantfile(self):
+         instances = self._get_vagrant_config_dict()
+-        template = molecule.util.render_template(
+-            VAGRANTFILE_TEMPLATE,
++        j_env = jinja2.Environment(autoescape=True)
++        t = j_env.from_string(VAGRANTFILE_TEMPLATE)
++        template = t.render(
+             instances=instances,
+             cachier=self.cachier,
+             no_kvm=not os.path.exists("/dev/kvm"),
+         )
+-        molecule.util.write_file(self._vagrantfile, template)
++        with open(self._vagrantfile, "w") as f:
++            f.write(template)
+ 
+     def _write_configs(self):
+         self._write_vagrantfile()
+@@ -628,7 +653,7 @@ def _get_instance_vagrant_config_dict(self, instance):
+         }
+ 
+         d["config_options"].update(
+-            molecule.util.merge_dicts(
++            merge_dicts(
+                 d["config_options"],
+                 instance.get("config_options", {}),
+             ),
+@@ -640,7 +665,7 @@ def _get_instance_vagrant_config_dict(self, instance):
+             )
+ 
+         d["provider_options"].update(
+-            molecule.util.merge_dicts(
++            merge_dicts(
+                 d["provider_options"],
+                 instance.get("provider_options", {}),
+             ),
