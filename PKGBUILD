@@ -5,8 +5,8 @@
 # Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname=python-pika
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.3.2
+pkgrel=1
 pkgdesc="A pure-Python implementation of the AMQP 0-9-1 protocol"
 arch=('any')
 url="http://pika.readthedocs.org/"
@@ -15,7 +15,7 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-nose2' 'python-nose' 'python-gevent' 'python-twisted' 'python-tornado')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname#python-}/${pkgname#python-}/archive/${pkgver}/${pkgname#python-}-${pkgver}.tar.gz")
-sha256sums=('4f3bd9e90f1cfa48b8ef0230417fc7b3bc3a4cd8b27d2bb3a4c05e6d5f71210c')
+sha256sums=('5eb71b9a0047c77d99378e525a2041fc50aae4a177b060f9825b3e2fdcc96fc4')
 
 build() {
   cd "${pkgname#python-}-${pkgver}"
