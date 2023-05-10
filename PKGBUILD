@@ -9,7 +9,6 @@ arch=(x86_64)
 url='https://github.com/walles/moar'
 license=(BSD)
 makedepends=(go)
-checkdepends=(highlight)
 optdepends=("highlight: source code syntax highlighter")
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/walles/moar/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('93287d8b7fc287b6cbc1c2e830a3df618ec31e17dc6eaf5ea5fb72d75e3bc7e8')
