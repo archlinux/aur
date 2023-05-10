@@ -1,0 +1,15 @@
+pkgbase = rgssad-bin
+	pkgdesc = Extract rgssad/rgss2a/rgss3a files.
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/luxrck/rgssad
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = rgssad
+	conflicts = rgssad
+	source = https://github.com/luxrck/rgssad/releases/download/0.1.4/rgssad-linux-x64
+	md5sums = dd3db861fef94e81bd71069be0e5d5f5
+
+pkgname = rgssad-bin
