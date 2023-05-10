@@ -1,8 +1,9 @@
-# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Maintainer: BoBeR182 <aur AT nullvoid DOT com>
+# Contributor:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: max-k <max-kATpostDOTcom>
 
 pkgname=sonar-scanner
-pkgver=4.7.0.2747
+pkgver=4.8.0.2856
 pkgrel=1
 pkgdesc='Generic CLI tool to launch project analysis on SonarQube servers'
 arch=('any')
@@ -15,7 +16,7 @@ install="$pkgname.install"
 source=("https://binaries.sonarsource.com/Distribution/$pkgname-cli/$pkgname-cli-$pkgver.zip"
         "$pkgname.sh"
         "$pkgname.install")
-sha256sums=('8e116018669ac97cab0555d17145f6de9f0d8ab7a2521b378a19388d0625ec55'
+sha256sums=('642d3e189bcca51055bc17d349fc575bf6259df1b54f4077a9a6c586afd65bff'
             '70e67c19cc976f68c28b169647d335cbd803007279ff1c9e84b20ab0ac78d89f'
             '61f04a4f7771fe95e7f0a993d45002855a4c526cfaa3203845b922045c4ea5cf')
 
