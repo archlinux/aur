@@ -1,6 +1,6 @@
 # Maintainer: Bruno Miguel <bruno@privacyrequired.com>
 pkgname=codeberg-cli-git
-pkgver=0.3.4.r0.g0a15b5e
+pkgver=0.3.4.0a15b5e
 pkgrel=1
 pkgdesc='CLI Tool for Codeberg similar to gh and glab.'
 arch=(x86_64)
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$provides"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)//;s/-/./g'
 }
 
 build() {
