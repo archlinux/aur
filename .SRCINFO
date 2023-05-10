@@ -1,6 +1,6 @@
 pkgbase = python-holoviews
 	pkgdesc = With Holoviews, your data visualizes itself
-	pkgver = 1.15.4
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://holoviews.org
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-holoviews
 	depends = python-panel
 	depends = python-colorcet
 	optdepends = jupyter-nbconvert: for use holoviews command
-	source = holoviews-1.15.4.tar.gz::https://github.com/holoviz/holoviews/archive/v1.15.4.tar.gz
-	sha512sums = 7a9cf993762c7a4256da68de7171cb7dd00088b2a6a3fb1ec55a91336f5afdd4876914457d2d65ab86b4dad4e5b33c67270e500cd4c3ec97e10a7aada6ea9caf
+	source = holoviews-1.16.0.tar.gz::https://github.com/holoviz/holoviews/archive/v1.16.0.tar.gz
+	sha512sums = a5178fce98b5ae82c82eb91e1dd073517d5a024d44ceb9acfffed69f94dc7a2a00d191b3036280cbbc224ec7c680457115a471cf15212b4c552023abbc8f9aca
 
 pkgname = python-holoviews
