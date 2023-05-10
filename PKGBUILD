@@ -1,4 +1,4 @@
-# Maintainer: Mahor1221 <mahor1221 at pm dot me>
+# Maintainer: Mahor Foruzesh <mahor1221 at gmail dot com>
 
 pkgname=nix-zsh-completions
 pkgver=0.4.4
