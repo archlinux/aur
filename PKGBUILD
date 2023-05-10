@@ -5,8 +5,8 @@
 # Contributor: Fabio Zanini <iosonofabio@gmail.com>
 
 pkgname=modeller
-pkgver=10.2
-pkgrel=2
+pkgver=10.4
+pkgrel=1
 pkgdesc="3D Structure Homology Modeller"
 arch=('i686' 'x86_64')
 url="http://salilab.org/modeller/"
