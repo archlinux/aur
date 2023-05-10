@@ -1,7 +1,7 @@
 pkgbase = whaler-git
-	pkgdesc = Mind-mapping application designed for Pantheon
+	pkgdesc = Docker container management designed for Pantheon
 	pkgver = r59.133ac20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sdv43/whaler
 	arch = i686
 	arch = x86_64
