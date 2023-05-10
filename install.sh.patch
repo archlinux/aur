@@ -1,11 +1,11 @@
---- install.sh	2021-11-30 14:43:17.878132550 -0500
-+++ arch-install.sh	2021-11-30 14:46:14.478577902 -0500
-@@ -18,6 +18,8 @@
-         PKG="yum"
+--- install.sh	2023-05-04 04:21:05.000000000 -0400
++++ install.sh.new	2023-05-10 11:49:24.699432848 -0400
+@@ -20,6 +20,8 @@
+         zypper install -y "$pkg"
      elif [ -f /etc/debian_version ]; then
-         PKG="apt"
+         apt install -y "$pkg"
 +    elif [ -f /etc/arch-release ]; then
-+        PKG="pacman"
++        pacman -S --noconfirm "$pkg"
      else
-         echo "Distribution is not supported, exiting."
-         exit
+         msg warn "This distribution is not supported"
+         return 1
