@@ -18,7 +18,7 @@ ENABLED_DICTIONARIES=(
 )
 
 pkgname='mozc-ut'
-pkgver=2.28.5080.102.20230422
+pkgver=2.28.5085.102.20230510
 pkgrel=1
 pkgdesc='The Open Source edition of Google Japanese Input bundled with the UT dictionary'
 arch=('x86_64')
@@ -30,21 +30,21 @@ optdepends=('fcitx5-mozc-ut: Fcitx5 integration'
             'fcitx-mozc-ut: Fcitx integration'
             'ibus-mozc: IBus integration'
             'emacs-mozc: Emacs integration')
-provides=('mozc=2.28.5080.102')
+provides=('mozc=2.28.5085.102')
 conflicts=('mozc')
 options=(!distcc !ccache)
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=7925e776f7964edb82846e54252bcedf82341d17"
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=4df261a9e81a813de20634617c8df6fdbbfeaa0e"
         'git+https://github.com/utuhiro78/merge-ut-dictionaries.git#commit=e081fbb6ab46007325b3040ddc4f19f02891c2ac'
         'git+https://github.com/utuhiro78/mozcdic-ut-alt-cannadic.git#commit=f59287e569db3e226378380a34e71275654b46d0'
         'git+https://github.com/utuhiro78/mozcdic-ut-edict2.git#commit=a8e4249a718632d41c727ad242fe705658dba35f'
-        'git+https://github.com/utuhiro78/mozcdic-ut-jawiki.git#commit=62b611e53e9cc69f23ea38019533fb2eef9368ad'
+        'git+https://github.com/utuhiro78/mozcdic-ut-jawiki.git#commit=f929218debb595f20486231526b90ec3fbc38c51'
         'git+https://github.com/utuhiro78/mozcdic-ut-neologd.git#commit=90e59c7707a5fe250c992c10c6ceb08a7ce7e652'
-        'git+https://github.com/utuhiro78/mozcdic-ut-personal-names.git#commit=4b976fe9e45363b5745ba786e8305efb478ce34d'
-        'git+https://github.com/utuhiro78/mozcdic-ut-place-names.git#commit=a36b61923b7fc1d6e5bd5a0caac9c0cace8d838d'
+        'git+https://github.com/utuhiro78/mozcdic-ut-personal-names.git#commit=aae69d97c1ec815709c1e4195e214a01a4983fa4'
+        'git+https://github.com/utuhiro78/mozcdic-ut-place-names.git#commit=62f8e671fd76ca1cda8665be9e14ae86a4fb3ef0'
         'git+https://github.com/utuhiro78/mozcdic-ut-skk-jisyo.git#commit=43518e6ea033681580a515281668c85eb74a5b14'
         'git+https://github.com/utuhiro78/mozcdic-ut-sudachidict.git#commit=d09ff222f1562cce5c1f83b2d80c2d93097bf01e'
-        'https://dumps.wikimedia.org/jawiki/20230420/jawiki-20230420-all-titles-in-ns0.gz')
-noextract=('jawiki-20230420-all-titles-in-ns0.gz')
+        'https://dumps.wikimedia.org/jawiki/20230501/jawiki-20230501-all-titles-in-ns0.gz')
+noextract=('jawiki-20230501-all-titles-in-ns0.gz')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -55,10 +55,10 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '2b0398f093056a0b1c4c49861b1358011cc4126dd383c2e12600509abd20b58d')
+            'fee8acb34f9e3ed956a11e1a559c25cceec0a9ad0593f370846f0bc41e03fd39')
 
 prepare() {
-    cd "${pkgname}"-git/src
+    cd ${pkgname}-git/src
 
     git submodule update --init --recursive
 
@@ -70,7 +70,7 @@ prepare() {
     # Use a dated snapshot for the JAWiki dump data
     sed -i -e '/wget/d' count_word_hits.rb
     sed -i -e "s|filename = \"jawiki-|filename = \"${srcdir}/jawiki-|g" count_word_hits.rb
-    sed -i -e 's|jawiki-[a-z0-9]\{6,8\}|jawiki-20230420|g' count_word_hits.rb apply_word_hits.rb
+    sed -i -e 's|jawiki-[a-z0-9]\{6,8\}|jawiki-20230501|g' count_word_hits.rb apply_word_hits.rb
 
     # Compile the UT dictionary
     printf '\nCompiling the UT dictionary...\n\n'
@@ -79,8 +79,8 @@ prepare() {
 
     for dict in "${ENABLED_DICTIONARIES[@]}"
     do
-        tar -xf "${srcdir}"/mozcdic-ut-"${dict}"/mozcdic-ut-"${dict}".txt.tar.bz2
-        cat mozcdic-ut-"${dict}".txt >> mozcdic-ut.txt
+        tar -xf "${srcdir}"/mozcdic-ut-${dict}/mozcdic-ut-${dict}.txt.tar.bz2
+        cat mozcdic-ut-${dict}.txt >> mozcdic-ut.txt
     done
 
     ruby remove_duplicate_ut_entries.rb mozcdic-ut.txt
@@ -88,11 +88,11 @@ prepare() {
     ruby apply_word_hits.rb mozcdic-ut.txt
 
     # Append the UT dictionary
-    cat mozcdic-ut.txt >> "${srcdir}"/"${pkgname}"-git/src/data/dictionary_oss/dictionary00.txt
+    cat mozcdic-ut.txt >> "${srcdir}"/${pkgname}-git/src/data/dictionary_oss/dictionary00.txt
 }
 
 build() {
-    cd "${pkgname}"-git/src
+    cd ${pkgname}-git/src
 
     unset ANDROID_NDK_HOME
     export JAVA_HOME='/usr/lib/jvm/java-11-openjdk/'
@@ -100,7 +100,7 @@ build() {
 }
 
 package() {
-    cd "${pkgname}"-git/src
+    cd ${pkgname}-git/src
 
     install -Dm644 ../LICENSE                                   "${pkgdir}"/usr/share/licenses/mozc/LICENSE
     install -Dm644 data/installer/credits_en.html               "${pkgdir}"/usr/share/licenses/mozc/Submodules
