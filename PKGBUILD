@@ -1,9 +1,8 @@
-# Maintainer: Sebastian Stammler <base64 -d<<<aWFtQGRlY2VudHIuYWwK>
-# Co-Maintainer: Benjamin Schäfer <b-schaefer at posteo dot de>
+# Maintainer: Miroslav Jarý <mira.jary@gmail.com>
 
 _npmname=gitmoji-cli
 pkgname=nodejs-${_npmname}
-pkgver=8.2.0
+pkgver=8.2.2
 pkgrel=1
 pkgdesc='A gitmoji interactive client for using gitmojis on commit messages'
 arch=('any')
@@ -16,7 +15,7 @@ optdepends=('noto-fonts-emoji: emojis'
             'ttf-joypixels: emojis'
             'ttf-twemoji-color: emojis')
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
-sha256sums=('72cd1051b7079fb8eae7b4d37dd05214290954b8c0fa15de98803803944f0020')
+sha256sums=('7d5db8a88ed02ee61bf1611aa1aa59fdde57d2e4feb8cc56c8eb182dfecd5bbf')
 noextract=("${source[@]##*/}")
 
 prepare() {
