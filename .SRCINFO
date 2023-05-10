@@ -1,0 +1,16 @@
+pkgbase = rsyn
+	pkgdesc = [alpha] Wire-compatible rsync client in Rust
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/sourcefrog/rsyn/
+	arch = any
+	license = Apache
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	provides = rsyn
+	conflicts = rsyn-git
+	source = rsyn-0.0.1.tar.gz::https://github.com/sourcefrog/rsyn/archive/refs/tags/v0.0.1.tar.gz
+	sha256sums = f7fc062a63ebf1a6f35eae789028f238484881adacfc8828f2a4d7c1027456c0
+
+pkgname = rsyn
