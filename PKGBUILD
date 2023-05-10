@@ -1,4 +1,4 @@
-# Maintainer: Mahor1221 <mahor1221 at pm dot me>
+# Maintainer: Mahor Foruzesh <mahor1221 at gmail dot com>
 # Maintainer: Padya1201 <padya1201 at gmail dot com>
 
 pkgname=tachidesk-sorayomi
