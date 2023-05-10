@@ -1,13 +1,13 @@
 pkgbase = ttf-literation
 	pkgdesc = A ttf Nerd Font based on ttf-liberation
-	pkgver = 2.2.2
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
 	license = custom:SIL Open Font License Version 1.1
 	provides = ttf-font-nerd
 	provides = ttf-font
-	source = ttf-literation-2.2.2.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/LiberationMono.zip
-	sha256sums = 16a492fbc24aeb5e201fa7d21478c8b7629f96b49827fb5369e8b0d8a75c022b
+	source = ttf-literation-3.0.0.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.0/LiberationMono.zip
+	sha256sums = f66aa180b000671b5d0f6498b4065424115d4635538b03b03b083ded819350bd
 
 pkgname = ttf-literation

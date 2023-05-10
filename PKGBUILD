@@ -1,18 +1,18 @@
 # Maintainer: onemoresuza <aur at onemoresuza dot mailer dot me>
 pkgname='ttf-literation'
-pkgver=2.2.2
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A ttf Nerd Font based on ttf-liberation"
 arch=('any')
 url='https://github.com/ryanoasis/nerd-fonts'
 license=('custom:SIL Open Font License Version 1.1')
 provides=('ttf-font-nerd'
-          'ttf-font')
+	'ttf-font')
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/LiberationMono.zip")
-sha256sums=('16a492fbc24aeb5e201fa7d21478c8b7629f96b49827fb5369e8b0d8a75c022b')
+sha256sums=('f66aa180b000671b5d0f6498b4065424115d4635538b03b03b083ded819350bd')
 
 package() {
-  cd "${srcdir}"
-  install -Dm 0644 -t "${pkgdir}/usr/share/fonts/${pkgname}" ./*.ttf
-  install -Dm 0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+	cd "${srcdir}"
+	install -Dm 0644 -t "${pkgdir}/usr/share/fonts/${pkgname}" ./*.ttf
+	install -Dm 0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
