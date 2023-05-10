@@ -1,6 +1,6 @@
 pkgbase = mit8_30
 	pkgdesc = Программа для управления измерителями температуры серии МИТ 8.30 производства ООО ИзТех
-	pkgver = 1.1.12
+	pkgver = 1.1.13
 	pkgrel = 1
 	url = https://www.iztech.ru
 	arch = x86_64
@@ -11,10 +11,8 @@ pkgbase = mit8_30
 	depends = qt5-serialport
 	depends = qwt
 	depends = sqlite
-	conflicts = mit30
-	replaces = mit30
 	options = strip
 	source = https://www.iztech.ru/content/files/app/mit8_30-latest-x86_64.tar.gz
-	md5sums = d3997146dc984235c31308d29dbd3faf
+	md5sums = 331e941480c543fb82ca187793a704a8
 
 pkgname = mit8_30
