@@ -1,5 +1,5 @@
 # Maintainer: Brian Clemens <brian@teknik.io>
-# Maintainer: Mahor1221 <mahor1221 at pm dot me>
+# Maintainer: Mahor Foruzesh <mahor1221 at gmail dot com>
 
 pkgname=dict-freedict-jpn-eng
 pkgver=0.1
