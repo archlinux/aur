@@ -1,6 +1,6 @@
 # Maintainer: Alexander Minges <alexander.minges@gmail.com>
 pkgname=gemmi
-pkgver=0.5.8
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Macromolecular crystallography library and utilities"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MPL2')
 depends=('python')
 makedepends=('gcc-fortran')
 source=("https://github.com/project-gemmi/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b67c8f79d85c4fd6766ce5b0418c79f4cb54a62d9091de6d0a7c20bb6060070e')
+sha256sums=('fc1d7397ee77e94584c061a45a7d577128e794398efa6868a369ffec924f7bea')
 
 prepare() {
 	cd "$pkgname-$pkgver"
