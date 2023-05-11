@@ -13,6 +13,7 @@ pkgbase = verity-squash-root
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = age
+	depends = bash
 	depends = python
 	depends = binutils
 	depends = cryptsetup
