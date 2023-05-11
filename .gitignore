@@ -1,2 +1,2 @@
-dumpasn1.c
-dumpasn1.cfg
+dumpasn1*.c
+dumpasn1*.cfg

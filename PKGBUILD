@@ -2,12 +2,12 @@
 # Contributor: Nicolas Martyanoff <khaelin@gmail.com>
 pkgname=dumpasn1
 pkgver=20230322
-pkgrel=2
+pkgrel=3
 pkgdesc="ASN.1 analyze tool"
 url="http://www.cs.auckland.ac.nz/~pgut001"
 license=('custom')
-source=('https://www.cs.auckland.ac.nz/~pgut001/dumpasn1.c'
-        'https://www.cs.auckland.ac.nz/~pgut001/dumpasn1.cfg'
+source=(dumpasn1-$pkgver.c::'https://www.cs.auckland.ac.nz/~pgut001/dumpasn1.c'
+        dumpasn1-$pkgver.cfg::'https://www.cs.auckland.ac.nz/~pgut001/dumpasn1.cfg'
         'LICENSE')
 sha256sums=('8ce8fdbf2e9b11d410b0ab4e44a6b3f89c27080113f051ec1054d230e050a0b8'
             'ed1eaafb0ad865b97738dfe0b0e5d602c76dc0cde4c0cee4cdcdd11c28f480e5'
