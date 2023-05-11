@@ -1,6 +1,6 @@
 pkgbase = ton-bin
-	pkgdesc = The Open Network
-	pkgver = dev
+	pkgdesc = Ultra-scalable blockchain, designed by Telegram to onboard billions of users.
+	pkgver = 2023.04
 	pkgrel = 1
 	url = https://github.com/ton-blockchain/ton
 	arch = x86_64

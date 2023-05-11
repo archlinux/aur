@@ -1,5 +1,5 @@
 pkgname=ton-bin
-pkgver=dev
+pkgver=2023.04
 pkgrel=1
 pkgdesc="The Open Network"
 arch=('x86_64')
@@ -23,4 +23,3 @@ package() {
   # Fix permissions
   chmod -R go-w "${pkgdir}"
 }
-
