@@ -1,0 +1,14 @@
+pkgbase = fuse-unreliablefs-git
+	pkgdesc = A FUSE-based fault injection filesystem.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/ligurio/unreliablefs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	depends = fuse
+	source = unreliablefs::git+https://github.com/ligurio/unreliablefs
+	sha256sums = SKIP
+
+pkgname = fuse-unreliablefs-git
