@@ -1,0 +1,18 @@
+pkgbase = prospect-mail-appimage
+	pkgdesc = An Outlook mail desktop client powered by Electron
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/julian-alarcon/prospect-mail
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	conflicts = prospect-mail
+	conflicts = prospect-mail-electron
+	options = !strip
+	source = prospect-mail-0.4.0.AppImage::https://github.com/julian-alarcon/prospect-mail/releases/download/v0.4.0/Prospect-Mail-0.4.0.AppImage
+	source = LICENSE::https://github.com/julian-alarcon/prospect-mail/raw/main/LICENSE
+	sha256sums = f02340fc934a68dbff9e9f965969bf89085955dd56ea0bb654c58fe536857141
+	sha256sums = d0e5830cefea162e44ae617ea67300234f69b9fc9c2c9e220ad2b56f9cc189df
+
+pkgname = prospect-mail-appimage
