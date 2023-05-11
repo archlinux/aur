@@ -7,8 +7,8 @@
 # The source is about 200 MiB, with an extra ~11 GiB of dependencies downloaded in Setup.sh, and may take several hours to compile.
 # If you want additional options, there are switches below.
 pkgname=unreal-engine
-pkgver=5.1.1
-pkgrel=1
+pkgver=5.2
+pkgrel=0
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
@@ -72,34 +72,34 @@ then
   ## Architecture checks and compile flag adjustments - shellcheck throws a fit about the build function but it looks fine to me; checks for the highest available x64 support level and falls back to "native" if either not available
   if [ "$(uname -m)" == "x86_64" ]; then
     if [ "$(/lib/ld-linux-x86-64.so.2 --help | grep -w 'x86-64-v4' | cut -d ',' -f 1 | sed 's/^  //' | sed 's/ (/ - /')" == 'x86-64-v4 - supported' ]; then
-      export CFLAGS="${CFLAGS} -march=x86-64-v4 -mtune=x86-64-v4 -O3 -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -fsanitize=bounds,alignment,dir-size -fsanitize-undefined-trap-on-error -Wformat -Werror=format-security -Warray-bounds -Wvla -Wimplicit-fallthrough -Wno-unused-result -Wno-unneeded-internal-declaration"
+      export CFLAGS="${CFLAGS} -march=x86-64-v4 -mtune=x86-64-v4 -O3 -pipe -fPIC -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wformat -Werror=format-security"
       export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
-      export LDFLAGS="-Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
+      export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
     elif [ "$(/lib/ld-linux-x86-64.so.2 --help | grep -w 'x86-64-v3' | cut -d ',' -f 1 | sed 's/^  //' | sed 's/ (/ - /')" == 'x86-64-v3 - supported' ]; then
-      export CFLAGS="${CFLAGS} -march=x86-64-v3 -mtune=x86-64-v3 -O3 -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -fsanitize=bounds,alignment,dir-size -fsanitize-undefined-trap-on-error -Wformat -Werror=format-security -Warray-bounds -Wvla -Wimplicit-fallthrough -Wno-unused-result -Wno-unneeded-internal-declaration"
+      export CFLAGS="${CFLAGS} -march=x86-64-v3 -mtune=x86-64-v3 -O3 -pipe -fPIC -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wformat -Werror=format-security"
       export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
-      export LDFLAGS="-Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
+      export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
     elif [ "$(/lib/ld-linux-x86-64.so.2 --help | grep -w 'x86-64-v2' | cut -d ',' -f 1 | sed 's/^  //' | sed 's/ (/ - /')" == 'x86-64-v2 - supported' ]; then
-      export CFLAGS="${CFLAGS} -march=x86-64-v2 -mtune=x86-64-v2 -O3 -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -fsanitize=bounds,alignment,dir-size -fsanitize-undefined-trap-on-error -Wformat -Werror=format-security -Warray-bounds -Wvla -Wimplicit-fallthrough -Wno-unused-result -Wno-unneeded-internal-declaration"
+      export CFLAGS="${CFLAGS} -march=x86-64-v2 -mtune=x86-64-v2 -O3 -pipe -fPIC -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wformat -Werror=format-security"
       export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
-      export LDFLAGS="-Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
+      export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
     elif [ "$(/lib/ld-linux-x86-64.so.2 --help | grep 'x86_64' | grep 'supported' | cut -d ',' -f 1 | sed 's/^  //' | sed 's/ (/ - /' | grep -w '^x86_64 - supported')" == 'x86_64 - supported' ]; then
-      export CFLAGS="${CFLAGS} -march=x86-64 -mtune=x86-64 -O3 -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -fsanitize=bounds,alignment,dir-size -fsanitize-undefined-trap-on-error -Wformat -Werror=format-security -Warray-bounds -Wvla -Wimplicit-fallthrough -Wno-unused-result -Wno-unneeded-internal-declaration"
+      export CFLAGS="${CFLAGS} -march=x86-64 -mtune=x86-64 -O3 -pipe -fPIC -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wformat -Werror=format-security"
       export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
-      export LDFLAGS="-Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
+      export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
     fi
   elif [ "$(uname -m)" == "aarch64" ]; then
-    export CFLAGS="${CFLAGS} -march=aarch64 -mtune=aarch64 -O3 -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -fsanitize=bounds,alignment,dir-size -fsanitize-undefined-trap-on-error -Wformat -Werror=format-security -Warray-bounds -Wvla -Wimplicit-fallthrough -Wno-unused-result -Wno-unneeded-internal-declaration"
+    export CFLAGS="${CFLAGS} -march=aarch64 -mtune=aarch64 -O3 -pipe -fPIC -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wformat -Werror=format-security"
     export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
-    export LDFLAGS="-Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
+    export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
   else
     echo "Architecture '$(uname -m)' is not supported! Exiting."
     return
   fi
 elif [[ "${arch_auto}" == native ]]; then
-    export CFLAGS="${CFLAGS} -march=native -mtune=native -O3 -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -fsanitize=bounds,alignment,dir-size -fsanitize-undefined-trap-on-error -Wformat -Werror=format-security -Warray-bounds -Wvla -Wimplicit-fallthrough -Wno-unused-result -Wno-unneeded-internal-declaration"
+    export CFLAGS="${CFLAGS} -march=native -mtune=native -O3 -pipe -fPIC -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wformat -Werror=format-security"
     export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
-    export LDFLAGS="-Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
+    export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
 fi
 
 
