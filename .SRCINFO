@@ -1,6 +1,6 @@
 pkgbase = pyqt4
 	pkgver = 4.12.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://riverbankcomputing.com/software/pyqt/intro
 	arch = x86_64
 	license = GPL
@@ -13,7 +13,9 @@ pkgbase = pyqt4
 	makedepends = python2-opengl
 	makedepends = python2-dbus
 	source = https://downloads.sourceforge.net/project/pyqt/PyQt4/PyQt-4.12.3/PyQt4_gpl_x11-4.12.3.tar.gz
+	source = 0001-Fix-compilation-against-Python-3.11.patch
 	sha256sums = a00f5abef240a7b5852b7924fa5fdf5174569525dc076cd368a566619e56d472
+	sha256sums = ae6f13d26d8f94f30eb48058300a5b3d7fa9e7060a9f808abad61f25ba35ebe9
 
 pkgname = pyqt4-common
 	pkgdesc = Common PyQt files shared between python-pyqt4 and python2-pyqt4
@@ -42,4 +44,3 @@ pkgname = python2-pyqt4
 	provides = python2-pyqt=4.12.3
 	conflicts = python2-pyqt
 	replaces = python2-pyqt
-
