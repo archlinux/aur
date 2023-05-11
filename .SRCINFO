@@ -1,7 +1,7 @@
 pkgbase = system76-scheduler
 	pkgdesc = system76 userspace scheduler
-	pkgver = 2.0.0
-	pkgrel = 3
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://github.com/pop-os/system76-scheduler
 	install = install.sh
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = system76-scheduler
 	makedepends = rust
 	makedepends = just
 	makedepends = linux-headers
-	makedepends = pipewire
 	depends = bcc-tools
 	depends = python-bcc
+	depends = libpipewire
 	backup = etc/system76-scheduler/assignments/default.ron
-	source = system76-scheduler-2.0.0.tar.gz::https://github.com/pop-os/system76-scheduler/archive/refs/tags/2.0.0.tar.gz
+	source = system76-scheduler-2.0.1.tar.gz::https://github.com/pop-os/system76-scheduler/archive/refs/tags/2.0.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = system76-scheduler
