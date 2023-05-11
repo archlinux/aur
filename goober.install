@@ -1,0 +1,37 @@
+post_install()
+{
+  cat << EOF
+
+  Get started with goober using it's default config:
+
+    $ mkdir -p \$HOME/.config/goober
+    $ cp /usr/share/doc/goober/goober.conf \$HOME/.config/goober/
+
+  Choose & copy the appropriate eww config:
+
+    for bspwm, dk, herbstluftwm or i3
+
+    $ cp -r /usr/share/doc/goober/eww \$HOME/.config/eww
+
+    (the "eww" config is setup for dk, if using another wm
+    you'll need to change "goober -wm dk" as well as other specific
+    wm commands to match your chosen wm in "\$HOME/.config/eww/eww.yuck")
+
+    for sway
+
+    $ cp -r /usr/share/doc/goober/eww-wayland \$HOME/.config/eww
+
+  Starting goober:
+
+    You'll need to run "eww open bar" from either your wm's startup file
+    or you can simply run it from the terminal or your run command.
+
+    You can also run "goober -wm bspwm, dk, herbstluftwm, i3, or sway"
+    while running that wm to see goober's output that would be read by
+    eww.
+
+  For more information see:
+    https://bitbucket.org/troutcobbler/goober
+
+EOF
+}
