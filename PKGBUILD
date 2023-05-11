@@ -8,7 +8,7 @@
 
 _pkgname=babl
 pkgname="${_pkgname}-git"
-pkgver=0.1.89.r1694.6737d58
+pkgver=0.1.107.r1866.f36dc66
 pkgrel=1
 pkgdesc="Dynamic, any to any, pixel format translation library."
 arch=('x86_64')
@@ -37,7 +37,7 @@ prepare() {
 pkgver() {
   cd ${srcdir}/${_pkgname}
   printf "%s.r%s.%s" \
-    $(grep -ozP "(?s)^project\('babl'.*?version: *'\K[\d.]*" meson.build|tr '\0' '\n') \
+    $(grep -ozP "(?s)^project\('babl'.*?version: *'\K[0-9.]*" meson.build|tr '\0' '\n') \
     $(git rev-list --count HEAD) \
     $(git rev-parse --short HEAD)
 }

@@ -1,6 +1,6 @@
 pkgbase = babl-git
 	pkgdesc = Dynamic, any to any, pixel format translation library.
-	pkgver = 0.1.89.r1694.6737d58
+	pkgver = 0.1.107.r1866.f36dc66
 	pkgrel = 1
 	url = https://www.gegl.org/babl
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = babl-git
 	makedepends = vala
 	depends = glibc
 	depends = lcms2
-	provides = babl=0.1.89
+	provides = babl=0.1.107
 	conflicts = babl
 	options = !libtool
 	source = git+https://gitlab.gnome.org/GNOME/babl
