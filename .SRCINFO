@@ -10,6 +10,7 @@ pkgbase = flare
 	depends = libadwaita
 	depends = libsecret
 	depends = protobuf
+	optdepends = feedbackd: for vibrating notifications
 	options = !lto
 	source = https://gitlab.com/Schmiddiii/flare/-/archive/0.8.1/flare-0.8.1.tar.gz
 	sha256sums = 8de82f9af20a5acbd4bc3a19bbf9a3bb253311d2
