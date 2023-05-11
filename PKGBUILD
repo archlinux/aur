@@ -1,5 +1,5 @@
 pkgname=mingw-w64-vtk
-pkgver=9.2.2
+pkgver=9.2.6
 pkgrel=1
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization (mingw-w64)'
 arch=('any')
@@ -9,7 +9,7 @@ depends=('mingw-w64-crt' 'mingw-w64-qt5-base' 'mingw-w64-jsoncpp' 'mingw-w64-exp
 makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-utf8cpp' 'mingw-w64-wine' 'mingw-w64-pegtl2' 'mingw-w64-exprtk' 'mingw-w64-nlohmann-json')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("https://www.vtk.org/files/release/${pkgver:0:3}/VTK-${pkgver}.tar.gz")
-sha256sums=('1c5b0a2be71fac96ff4831af69e350f7a0ea3168981f790c000709dcf9121075')
+sha256sums=('06fc8d49c4e56f498c40fcb38a563ed8d4ec31358d0101e8988f0bb4d539dd12')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
