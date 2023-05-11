@@ -1,7 +1,7 @@
 pkgbase = leapp-appimage
-	pkgdesc = Secure, open source and community driven crypto wallet runs on all platforms and trusted by millions.
+	pkgdesc = the DevTool to access your cloud
 	pkgver = 0.17.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.leapp.cloud
 	arch = x86_64
 	license = MPL2

@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="leapp-appimage"
 pkgver=0.17.5
-pkgrel=1
-pkgdesc="Secure, open source and community driven crypto wallet runs on all platforms and trusted by millions."
+pkgrel=2
+pkgdesc="the DevTool to access your cloud"
 arch=('x86_64')
 url="https://www.leapp.cloud"
 _githuburl="https://github.com/Noovolari/leapp"
