@@ -12,13 +12,13 @@ provides=('openshift-pipelines-client')
 conflicts=('opc')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/openshift-pipelines/opc/releases/download/v1.10.0-rc1/opc_1.10.0-rc1_Linux_arm64.tar.gz")
-sha256sums_aarch64=('e3059d9ea533ece7b7c66849f71618fb26433e1852e99fe5916fb24dd8f2d05a')
+sha256sums_aarch64=('004919cfc11b2fa5814bc2e28319d26d6291ed97041b11c6bae13a8f31105974')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/openshift-pipelines/opc/releases/download/v1.10.0-rc1/opc_1.10.0-rc1_Linux_i386.tar.gz")
-sha256sums_i686=('2fc672ac7bc8bb2ac2888fe444954cdf488d449399a487232b981282f47c10b6')
+sha256sums_i686=('2d830efa971cb40cedf849f9e3c0a4a91923b1ae562ab4213eb381b55ad497e0')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/openshift-pipelines/opc/releases/download/v1.10.0-rc1/opc_1.10.0-rc1_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('995faa27b5150941a9a1c6d1416585102e05b0a6116f9319e8fc9ffc0f2a642b')
+sha256sums_x86_64=('d747bc6c58b1c92de1f87c14b7d21358e999eb06ca64ff04c870e13b449800bf')
 
 package() {
   # bin
