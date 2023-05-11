@@ -11,6 +11,7 @@ source=("foto::git+${url}.git#tag=v$pkgver")
 sha256sums=(SKIP)
 makedepends=('git' 'pandoc')
 depends=('libbsd' 'cairo' 'devil' 'libx11' 'libxext')
+provides=('foto')
 
 package() {
 	make RELEASE=1 INSTALL_DIR="$pkgdir/usr" -C "$srcdir/foto" install

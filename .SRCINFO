@@ -12,6 +12,7 @@ pkgbase = foto
 	depends = devil
 	depends = libx11
 	depends = libxext
+	provides = foto
 	source = foto::git+https://github.com/mekb-turtle/foto.git#tag=v1.1.1
 	sha256sums = SKIP
 
