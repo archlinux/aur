@@ -2,7 +2,7 @@
 
 pkgname=('clang-prefixed-release')
 #pkgver=15.0.7
-_pkgver=16.0.2
+_pkgver=16.0.3
 _pkg_suffix=
 _pkgver_suffix=${_pkgver}
 _pkgver_dash_suffix=${_pkgver}
@@ -23,7 +23,7 @@ checkdepends=("python-psutil")
 #source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/llvm-project-${pkgver}.src.tar.xz")
 source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${_pkgver_dash_suffix}/llvm-project-${_pkgver_suffix}.src.tar.xz")
 
-sha512sums=('4ca76aaaca8812a06a94071e7444a3213d85dca51ea86f6125f854776f69a3e088a92d0621e3911e526f280b35bfb778fb3742c6010d3ed1eba605c08720377c')
+sha512sums=('2eb5eca1cbee92a499d7fba5729b61f31186353bc0545b17eefa300cf2b27c8d9a2f307443b2c1c9fe1b0ba412abf5143fdd4d25aaeb33d975a9a834221d7602')
 
 prefix_path="/opt/clang"
 install_path="${prefix_path}/${pkgver}"
@@ -65,7 +65,14 @@ build() {
 }
 
 package() {
+    #rm -Rf ${pkgdir}
     DESTDIR="$pkgdir" ninja -C _build install | tee ${pkgname}-install.log
+
+    # time to fix broken bolt binary output
+    #hugify_path=$(find _build -name "libbolt_rt_hugify.a")
+    #hugify_dir=$(dirname ${hugify_path})
+    #mv ${hugify_dir}/*.a ${pkgdir}/${install_path}/lib
+    # end bolt workaround
 
     cd ${pkgdir}${prefix_path}
     ln -s ${pkgver} latest
