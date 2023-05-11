@@ -1,6 +1,6 @@
 # Maintainer: Martin Diehl <aur@martin-diehl.net>
 
-pkgver=0.38.5
+pkgver=0.39.0
 pkgrel=1
 pkgname=python-pyvista
 _name=${pkgname#python-}
@@ -12,7 +12,7 @@ depends=('python-numpy' 'python-imageio' 'python-pillow' 'python-appdirs' 'pytho
 makedepends=('python-build' 'python-installer' 'python-wheel')
 optdepends=('python-meshio')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('51d785259fa2a0ff79bfbb5b1db764a49c13724562e5882295ea05ce1100043c68a1f730bc2188df7e28f0f5d6a1958b9cadec021c58d046c1b586b38d1a469f')
+sha512sums=('10178ea7f793c43129f4dbee8386df7665bdc140dfa957ad00cc61d41d13baca76e658794df3d09d12437f4ac3073076a270f2aca63801b94a7f77dc8e4189bb')
 
 build() {
     cd "$_name-$pkgver"
