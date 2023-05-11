@@ -1,0 +1,17 @@
+pkgbase = intel-one-mono-fonts
+	pkgdesc = Expressive monospaced font family that’s built with clarity, legibility, and the needs of developers in mind
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/intel/intel-one-mono
+	arch = any
+	license = custom:OFL
+	source = https://github.com/intel/intel-one-mono/releases/download/V1.0.0/otf.zip
+	source = https://github.com/intel/intel-one-mono/releases/download/V1.0.0/ttf.zip
+	source = https://raw.githubusercontent.com/intel/intel-one-mono/main/license
+	sha256sums = 471bcbb966625f8a238f0d638cbc9622ac16d513064a124196798f62bc4c81ac
+	sha256sums = b247044d03a788a08785f6a3f5128e1f1bc32a60bddc08fd72e74b1bb2bcddb1
+	sha256sums = 1f232f7111c9c97b750652bfab9c8219285563f055275273df32ba019efc23fc
+
+pkgname = otf-intel-one-mono
+
+pkgname = ttf-intel-one-mono
