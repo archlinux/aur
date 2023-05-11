@@ -25,7 +25,7 @@ sha256sums=(
   'b27591dddef43b8fa47be5608e1ea8dc87db64adc74c953ee4210d3edbc84310'
   '29509b7609074e4702d1c0cdaf2ce7d52a781723554456b35ae1a44a1fb2632f'
   'a55dd07223e10313102367abc613dd2c20805523f58dd3784d88919e468506a8'
-  '1d3551d70a0971a039e625c8e93757aa312d8536e98db5a9d7154ccac702902b'
+  'cf6edcba4624a403da488b7f3457ca5e742b9013f1cd9da3f225ea675f70c5b7'
 )
 
 backup=("etc/default/${_pkgname}")
@@ -55,7 +55,7 @@ build () {
   export GOPATH="${srcdir}/go"
   export GOBIN="${GOPATH}/bin"
   export PATH="${GOBIN}:${PATH}"
-  go build -x -i -v \
+  go build -x -v \
 	-buildmode=pie \
 	-pkgdir=$(mktemp -d -p $(pwd)) \
 	-ldflags "\
