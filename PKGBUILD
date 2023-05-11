@@ -3,7 +3,7 @@
 pkgname=('lib32-mangohud' 'lib32-mangoapp')
 pkgbase=lib32-mangohud
 pkgver=0.6.9.1
-pkgrel=1
+pkgrel=2
 _imgui_ver=1.81
 _spdlog_ver=1.8.5
 _vulkan_ver=1.2.158
@@ -51,6 +51,9 @@ prepare() {
   # Use system lib32-cmocka instead of subproject
   sed -i "s/  cmocka = subproject('cmocka')//g" meson.build
   sed -i "s/cmocka_dep = cmocka.get_variable('cmocka_dep')/cmocka_dep = dependency('cmocka')/g" meson.build
+
+  # Fix build with GCC 13
+  git cherry-pick -n 3f8f036ee8773ae1af23dd0848b6ab487b5ac7de
 }
 
 build() {
