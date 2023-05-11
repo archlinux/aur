@@ -1,7 +1,7 @@
 pkgbase = lios-git
 	pkgdesc = Linux Intelligent OCR Solution is an easy to use OCR suite for tesseract and cuneiform
 	pkgver = 7eeed0be
-	pkgrel = 5
+	pkgrel = 6
 	url = https://gitlab.com/groups/Nalin-x-Linux
 	arch = any
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = lios-git
 	depends = imagemagick
 	depends = cuneiform
 	depends = python-sane
-	depends = espeak
+	depends = espeak-ng
 	depends = poppler
 	depends = python-pyenchant
 	depends = aspell-en
@@ -19,10 +19,10 @@ pkgbase = lios-git
 	depends = python-gobject
 	depends = python-cairo
 	depends = vte3
+	depends = gst-plugins-base-libs
 	provides = lios
 	conflicts = lios
 	source = git+https://gitlab.com/Nalin-x-Linux/lios-3.git
 	md5sums = SKIP
 
 pkgname = lios-git
-
