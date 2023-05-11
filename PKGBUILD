@@ -1,7 +1,7 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=nftables-geoip-db
 pkgver=2.2
-pkgrel=3
+pkgrel=4
 pkgdesc="GeoIP Database for nftables"
 arch=('any')
 license=('BSD' 'GPL')
