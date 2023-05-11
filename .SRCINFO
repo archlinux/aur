@@ -1,0 +1,18 @@
+pkgbase = bilibili-appimage
+	pkgdesc = Bilibili official desktop client.基于哔哩哔哩官方客户端移植的Linux版本,支持漫游
+	pkgver = 1.10.1
+	pkgrel = 1
+	url = https://github.com/msojocs/bilibili-linux
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = glibc
+	conflicts = bilibili
+	options = !strip
+	source = bilibili-1.10.1.AppImage::https://github.com/msojocs/bilibili-linux/releases/download/v1.10.1-1/bilibili-1.10.1.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/msojocs/bilibili-linux/master/license
+	sha256sums = 24ded14d3133b2cfe61ca1069055ddcfea1cb62d5a19d24b77587e296be2ab4f
+	sha256sums = 21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468
+
+pkgname = bilibili-appimage
