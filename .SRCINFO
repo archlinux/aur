@@ -14,6 +14,7 @@ pkgbase = clang-prefixed-release
 	makedepends = libxml2
 	makedepends = swig
 	makedepends = lld
+	makedepends = python
 	makedepends = ocl-icd
 	makedepends = opencl-headers
 	makedepends = z3
