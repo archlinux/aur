@@ -7,6 +7,7 @@
 # Contributor: Giorgio Azzinnaro <giorgio@azzinna.ro>
 
 pkgname=icaclient-beta
+artefactid=icaclient
 pkgver=23.5.0.38
 pkgrel=1
 pkgdesc="Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver) [Technology Preview]"
@@ -33,9 +34,9 @@ source=('citrix-configmgr.desktop'
         'citrix-workspace.desktop'
         'wfica.sh'
         'wfica_assoc.sh')
-source_x86_64=("$pkgname-x64-$pkgver.tar.gz::$_source64")
-source_i686=("$pkgname-x86-$pkgver.tar.gz::$_source32")
-source_armv7h=("$pkgname-armhf-$pkgver.tar.gz::$_sourcearmhf")
+source_x86_64=("$artefactid-x64-$pkgver.tar.gz::$_source64")
+source_i686=("$artefactid-x86-$pkgver.tar.gz::$_source32")
+source_armv7h=("$artefactid-armhf-$pkgver.tar.gz::$_sourcearmhf")
 sha256sums=('643427b6e04fc47cd7d514af2c2349948d3b45f536c434ba8682dcb1d4314736'
             '446bfe50e5e1cb027415b264a090cede1468dfbdc8b55e5ce14e9289b6134119'
             '1dc6d6592fa08c44fb6a4efa0dc238e9e78352bb799ef2e1a92358b390868064'
