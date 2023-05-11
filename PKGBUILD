@@ -2,8 +2,8 @@
 
 _pkgname='desitarget'
 pkgname=python-desitarget
-pkgver=0.22.0
-pkgrel=2
+pkgver=2.6.0
+pkgrel=1
 pkgdesc="Scripts and packages for selecting DESI targets from photometric catalogs"
 arch=(any)
 url="https://github.com/desihub/desitarget"
@@ -13,7 +13,12 @@ depends=('python-setuptools' 'python-requests' 'python-pytz' 'python-astropy'
          'python-fitsio' 'python-photutils' 'python-specter' 'python-desimodel')
 
 source=("$_pkgname-$pkgver"::"https://github.com/desihub/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('d6e6cad828d9762384352e7c9aa3c9bd7ce94023dc0789d92726565b1f8ba19d')
+sha256sums=('19eeda1dc928c2ad4e6e0b30030401371b58b580b60d9bab3899456bcb39d267')
+
+prepare() {
+  cd "$srcdir/${_pkgname}-$pkgver"
+  sed -e "s/^setup_keywords\['use_2to3'\]/#setup_keywords['use_2to3']/g" -i "setup.py"
+}
 
 build() {
   cd "$srcdir/${_pkgname}-$pkgver"
