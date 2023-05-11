@@ -1,7 +1,7 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
 pkgname=dolibarr
 pkgver=17.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Dolibarr ERP CRM: modern software package to manage your company"
 arch=('any')
 url="https://dolibarr.org/"
@@ -20,8 +20,8 @@ source=("http://downloads.sourceforge.net/project/$pkgname/Dolibarr%20ERP-CRM/$p
         nginx.conf.example
         apache.conf.example)
 b2sums=('06be067676cae8a2372f5082e10d9742372ce3fdc494e0b132de9872d70be4dc69ffdd8197930fee30a994774dd8d9f73a3c3666d41a0d6a4a5ae438fc05320b'
-        'a9735e32fb447b99f688b6121e7abe39133a2cda3de58dba32201b3688b1f8ce90ebbf676bafe2f877b5203ff61bb468657a6b8685829edb9a46d192d82edacc'
-        '243dcd12c4f02974d6775972e32c2fbe9648ed0844a1ab5253ba9954e76d29401f08a465116db7b2a56d4f7f78223690b382588b34341c608174188a8950278f')
+        'd167092d5622fc1c79dad91f358d29f517f798386af124c8900b1dfec9c0a181ea30ac6b8611c491e1aa1ff17b26a3bbf1786c1b09e75b6820e1778fc1010b24'
+        '8bb3823afee0515931cfbd4ddc8714ccab29f3d46fa249554670cce9d5ed79b8645515cc758edf3293c40bd9a7917bc1ae8664e3bd6b6a2a1502379b4257f499')
 
 prepare() {
 	sed -e "3,5d" \
