@@ -1,3 +1,11 @@
 evdev:input:b*v0B05p193Ee0111*
   KEYBOARD_KEY_10081=reserved
   KEYBOARD_KEY_10082=reserved
+  KEYBOARD_KEY_70070=reserved
+  KEYBOARD_KEY_70071=reserved
+  KEYBOARD_KEY_70072=reserved
+  KEYBOARD_KEY_70073=reserved
+  KEYBOARD_KEY_70074=reserved
+  KEYBOARD_KEY_70075=reserved
+  KEYBOARD_KEY_70076=reserved
+  KEYBOARD_KEY_70077=reserved
