@@ -3,7 +3,7 @@
 _name=pgzero
 pkgname=python-$_name
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A zero-boilerplate 2D games framework'
 url='https://pypi.org/project/pgzero/'
 license=(GPL)
@@ -15,7 +15,7 @@ sha256sums=('8cadc020f028cbac3e0cbd3bb9311a1c045f1deedac7917ff433f986c38e6106')
 
 prepare() {
   cd $_name-$pkgver
-  #sed -i -e "s|pygame[^']*|pygame|" setup.py
+  sed -i -e "s|pygame[^']*|pygame|" setup.py
 }
 
 build() {

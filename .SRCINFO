@@ -1,7 +1,7 @@
 pkgbase = python-pgzero
 	pkgdesc = A zero-boilerplate 2D games framework
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/pgzero/
 	arch = any
 	license = GPL
