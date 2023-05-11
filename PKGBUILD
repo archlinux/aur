@@ -17,7 +17,7 @@ _fragment="${FRAGMENT:-#branch=main}"
 [[ -v CUDA_ARCH ]] && _CMAKE_FLAGS+=(-DCYCLES_CUDA_BINARIES_ARCH="${CUDA_ARCH}")
 
 pkgname=blender-git
-pkgver=3.6.r123634.gae76fa2da36
+pkgver=3.6.r123909.g809a5aa4186
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
@@ -52,8 +52,9 @@ source=("blender::git+https://github.com/blender/blender${_fragment}"
         'blender/assets::svn+https://svn.blender.org/svnroot/bf-blender/trunk/lib/assets'
         # Patches...
         '0001-Use-github.com-for-make-update-git.patch'
-        '0003-usd_python.patch' #add missing python headers when building against python enabled usd.
         '0002-embree.patch' #add missing embree link.
+        '0003-usd_python.patch' #add missing python headers when building against python enabled usd.
+        '0004-fix-opencollada-pcre.patch' #fix broken search for opencollada pcre
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -62,8 +63,9 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '52da80b721efb6a6d579adf531640becfac1955a88857ca46ca16030a52c3b1c'
+            '1d88d87c97e953b21eb551016e8295954997f18cbb4998c230cd1f596a87b6f2'
             'c2db51a83a8d573aa76c760f10e541c84b108d64d05c9647681c4e633b3d0397'
-            '1d88d87c97e953b21eb551016e8295954997f18cbb4998c230cd1f596a87b6f2')
+            '6beedc541e33288a282f57cd2bd09860f333154027b6175e9f61cce49b8db5df')
 
 pkgver() {
   blender_version=$(grep -Po "BLENDER_VERSION \K[0-9]{3}" "$srcdir"/blender/source/blender/blenkernel/BKE_blender_version.h)
@@ -102,6 +104,7 @@ build() {
   export CC=`which clang`
   export CXX=`which clang++`
   export CUDAHOSTCXX="$CC"
+  export LDFLAGS="-Wl,--copy-dt-needed-entries $LDFLAGS"
 
   _CMAKE_FLAGS+=( -DWITH_CLANG=ON \
                   -DWITH_CYCLES=ON )
@@ -120,6 +123,7 @@ build() {
   _CUDA_PKG=$(pacman -Qq cuda 2>/dev/null) || true
   if [ "$_CUDA_PKG" != "" ]; then
     CUDAHOSTCXX=`which gcc-11`
+    PATH="/usr/lib/gcc/x86_64-pc-linux-gnu/11.3.0/:$PATH"
     # https://wiki.blender.org/wiki/Building_Blender/GPU_Binaries
     _CMAKE_FLAGS+=( -DWITH_CYCLES_CUDA_BINARIES=ON \
                     -DWITH_COMPILER_ASAN=OFF \
@@ -159,16 +163,14 @@ build() {
   (2>&1 CUDAHOSTCXX="$CUDAHOSTCXX" cmake -S "$srcdir/blender" -B build --fresh \
         -C "${srcdir}/blender/build_files/cmake/config/blender_release.cmake" \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DWITH_STATIC_LIBS=OFF \
         -DCMAKE_BUILD_TYPE=Release \
         -DWITH_INSTALL_PORTABLE=OFF \
         -DWITH_LIBS_PRECOMPILED=OFF \
+        -DWITH_STATIC_LIBS=ON \
         -DXR_OPENXR_SDK_ROOT_DIR=/usr \
         -DPYTHON_VERSION="${_pyver}" \
         ${_CMAKE_FLAGS[@]}) #> "$srcdir/../cmake_out"
         #--trace-expand \
-
-  cd build
 
   MAKE_CMD="make ${MAKEFLAGS:--j1}"
 
@@ -182,6 +184,7 @@ EOF
   )
   [[ -z "$USING_MAKEPKG_CG" ]] && warning "$MAKEPKG_CG_WARNING"
   
+  cd build
   $MAKE_CMD
 }
 
