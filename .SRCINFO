@@ -1,15 +1,15 @@
 pkgbase = komodo-engine
 	pkgdesc = Freeware version of the Komodo chess engine (~3394 Elo)
-	pkgver = 13.02
+	pkgver = 14.1
 	pkgrel = 1
 	url = https://komodochess.com
 	install = komodo-engine.install
 	arch = x86_64
 	license = custom
-	source = http://komodochess.com/pub/komodo-13.zip
+	source = http://komodochess.com/pub/komodo-14.zip
 	source = http://komodochess.com/pub/Komodo3-book.zip
 	source = COPYING
-	sha256sums = 34a7fc91ac3c28bc28df5ca9913b3122fa1e882f88cd25a7626b8ecf11cec98d
+	sha256sums = dbb073aa5cbfd859b7449f825d9748b2dc05409fa4710c880eeab25ab6a8b724
 	sha256sums = 3ada9836a4b8a8bdbc362c90bce1b63b9472fc0194e39d9d36119ba102e9e9cd
 	sha256sums = 0d81e7e34a9563047580052052646c5ebb656a39a4575043e0fef6f7704cb18b
 
