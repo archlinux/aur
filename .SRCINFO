@@ -1,0 +1,18 @@
+pkgbase = python-pymodes
+	pkgdesc = Python decoder for Mode S and ADS-B signals
+	pkgver = 2.16
+	pkgrel = 1
+	url = https://github.com/junzis/pyModeS
+	arch = any
+	license = GPL3
+	makedepends = python-installer
+	makedepends = python-poetry
+	makedepends = cython
+	depends = python
+	depends = python-numpy
+	depends = python-pyzmq
+	depends = python-pyrtlsdr
+	source = https://files.pythonhosted.org/packages/source/p/pymodes/pymodes-2.16.tar.gz
+	sha256sums = 9f11e17dd9113af6e09d9c834e6279057059a1a306aaf64712a4c4e6e823b605
+
+pkgname = python-pymodes
