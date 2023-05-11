@@ -1,10 +1,9 @@
 pkgbase = lxqt-menu-data-git
 	pkgdesc = LXQt menu files
 	pkgver = r10.616b94a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lxqt/lxqt-menu-data
 	arch = any
-	groups = lxqt
 	license = GPL
 	license = LGPL
 	makedepends = git

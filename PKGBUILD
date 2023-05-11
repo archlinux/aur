@@ -3,10 +3,10 @@
 _pkgname=lxqt-menu-data
 pkgname=$_pkgname-git
 pkgver=r10.616b94a
-pkgrel=1
+pkgrel=2
 pkgdesc='LXQt menu files'
 arch=(any)
-groups=(lxqt)
+#groups=(lxqt)
 url='https://github.com/lxqt/lxqt-menu-data'
 license=('GPL' 'LGPL')
 makedepends=(git cmake lxqt-build-tools-git qt5-tools)
