@@ -1,0 +1,15 @@
+pkgbase = geforcenow-electron-appimage
+	pkgdesc = Linux Desktop client for Nvidia's GeForce NOW game streaming service
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://github.com/hmlendea/gfn-electron
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = glibc
+	conflicts = geforcenow-electron
+	options = !strip
+	source = geforcenow-electron-1.10.0.AppImage::https://github.com/hmlendea/gfn-electron/releases/download/v1.10.0/geforcenow-electron_1.10.0_linux.AppImage
+	sha256sums = b7e22a519ae05e5cab9812791d8358ca7d13879adecdb83771ea4fc20e52f2d8
+
+pkgname = geforcenow-electron-appimage
