@@ -4,7 +4,7 @@
 pkgname=yuzu-mainline-bin
 pkgver=0.1426
 _ver=20230510-3da9b31cc
-pkgrel=1
+pkgrel=2
 pkgdesc="Nintendo Switch emulator - mainline branch"
 arch=('x86_64')
 url="https://github.com/yuzu-emu/yuzu-mainline"
@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('fuse2' 'libva' 'qt5-multimedia' 'hicolor-icon-theme')
 optdepends=('qt5-wayland: Wayland support')
 provides=('yuzu' 'yuzu-cmd')
-conflicts=('yuzu' 'yuzu-git' 'yuzu-canary-git' 'yuzu-mainline-git')
+conflicts=('yuzu')
 options=(!strip)
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/mainline-${pkgver/./-}/yuzu-linux-${_ver}.tar.xz"
         "yuzu.svg"
