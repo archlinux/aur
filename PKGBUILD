@@ -5,9 +5,9 @@
 _pkgname=pytorch
 pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
-pkgver=2.0.0
-_pkgver=2.0.0
-pkgrel=5
+pkgver=2.0.1
+_pkgver=2.0.1
+pkgrel=1
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -15,7 +15,7 @@ url="https://pytorch.org"
 license=('BSD')
 depends=('google-glog' 'gflags' 'opencv' 'openmp' 'nccl' 'pybind11' 'python' 'python-yaml' 'libuv'
          'python-numpy' 'python-sympy' 'protobuf' 'ffmpeg4.4' 'python-future' 'qt6-base'
-         'intel-oneapi-mkl' 'python-typing_extensions')
+         'intel-oneapi-mkl' 'python-typing_extensions' 'numactl')
 # Exclude the magma package here and add the corresponding {cuda, rocm/hip} version
 # to makedepends of the split packages.
 # The magma package does not allow to build the cuda and rocm/hip code at the same time,
