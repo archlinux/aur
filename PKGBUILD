@@ -1,6 +1,6 @@
-pkgname=ton
-pkgver=0
-pkgrel=2
+pkgname=ton-bin
+pkgver=dev
+pkgrel=v2023.04 #pkg_rel
 pkgdesc="The Open Network"
 arch=('x86_64')
 url="https://github.com/ton-blockchain/ton"
@@ -8,7 +8,7 @@ license=('LGPL2')
 depends=(
   'pacman>5'
 )
-source=("${pkgname}.zip::https://github.com/ton-blockchain/ton/releases/latest/download/ton-linux-x86_64.zip")
+source=("${pkgname}.tar.gz::https://github.com/neodiX42/rpm-repo/releases/latest/download/ton-linux-x86-64.tar.gz")
 sha256sums=('SKIP')
 
 package() {
