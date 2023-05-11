@@ -1,6 +1,6 @@
 pkgbase = r-qcmetrics
 	pkgdesc = A Framework for Quality Control
-	pkgver = 1.37.0
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/qcmetrics
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-qcmetrics
 	optdepends = r-msnbase
 	optdepends = r-mzr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/qcmetrics_1.37.0.tar.gz
-	sha256sums = 602d1b01bf717a7b0eafad31ff7c430984c2cb50c65242cd6d28debe27aec596
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/qcmetrics_1.38.0.tar.gz
+	sha256sums = 8aa3802655a245c943bd5d61193327e627e9410a3fb257771d56794d76a98198
 
 pkgname = r-qcmetrics
