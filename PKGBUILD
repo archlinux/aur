@@ -2,7 +2,7 @@
 # Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname=mclk.lv2
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='A MIDI clock and realtime-message generator LV2 plugin'
 arch=(x86_64 aarch64)
@@ -13,7 +13,7 @@ depends=(glibc)
 makedepends=(lv2)
 checkdepends=(lv2lint)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/x42/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('a591aabfee91250c4f7342fdc8ce2a75c8a79ae96af524856e63cc02daa2f977')
+sha256sums=('13140a27f022845374df5f3683fa1be15792fded01cde9540ab3b418c1628774')
 
 build() {
   cd $pkgname-$pkgver
