@@ -1,0 +1,16 @@
+_pkgname="dcvviewer"
+
+post_install() {
+  glib-compile-schemas /usr/share/${_pkgname}/schemas
+  gdk-pixbuf-query-loaders /usr/lib//${_pkgname}/gdk-pixbuf-2.0/2.10.0/loaders/*.so > /usr/lib/${_pkgname}/gdk-pixbuf-2.0/2.10.0/loaders.cache
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  rm /usr/lib/${_pkgname}/gdk-pixbuf-2.0/2.10.0/loaders.cache
+  rm /usr/share/${_pkgname}/schemas/gschemas.compiled
+}
+
