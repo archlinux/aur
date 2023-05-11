@@ -1,14 +1,14 @@
 pkgbase = blasphemer-wad
 	pkgdesc = A free Heretic game data file (IWAD)
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/Blasphemer/blasphemer
 	arch = any
 	license = BSD
 	replaces = blasphemer
-	source = https://github.com/Blasphemer/blasphemer/releases/download/v0.1.7/blasphem-0.1.7.zip
-	source = https://raw.githubusercontent.com/Blasphemer/blasphemer/v0.1.7/COPYING.md
-	sha256sums = 7c93e5b6d6133c83cefb171e47502d57d53ecefc1fe38b5a1d2a19160d011488
+	source = https://github.com/Blasphemer/blasphemer/releases/download/v0.1.8/blasphem-0.1.8.zip
+	source = https://raw.githubusercontent.com/Blasphemer/blasphemer/v0.1.8/COPYING.md
+	sha256sums = 5838d211add81e1696a621485c1e40771035daf6609d08bad7018f52acfa5e54
 	sha256sums = 1c985de26efb279ed42f5c8771201580674097eb107e43d385c8b09d13a3c2d2
 
 pkgname = blasphemer-wad
