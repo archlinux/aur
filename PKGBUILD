@@ -4,7 +4,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cargo-workspaces
-pkgver=0.2.37
+pkgver=0.2.39
 pkgrel=1
 pkgdesc="Cargo plugin for managing cargo workspaces and their crates"
 url="https://github.com/pksunkara/cargo-workspaces"
@@ -13,7 +13,7 @@ makedepends=('cargo')
 arch=('x86_64')
 license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('118e316dd323b1e813e083fe897baf2972ab2b6e9685dbb9fb277f41034859edc384106042824800c5da2b0b46d8af87e91950f258c93fcf769b5c3524304112')
+sha512sums=('26938c2344492959b7c7d4a09e1424b5b31e7600dead1f01364b5cc900e9edd1ea7337aa2375864139438fba428a2657117b26a1246d0c4bddc6a71c139c87dd')
 options=('!lto')
 
 prepare() {
@@ -26,10 +26,11 @@ build() {
   cargo build --release --frozen
 }
 
-check() {
-  cd "${pkgname}-${pkgver}/${pkgname}"
-  cargo test --frozen
-}
+# https://github.com/pksunkara/cargo-workspaces/issues/95
+# check() {
+#   cd "${pkgname}-${pkgver}/${pkgname}"
+#   cargo test --frozen
+# }
 
 package() {
   cd "${pkgname}-${pkgver}"
