@@ -4,7 +4,7 @@
 
 pkgbase=postgresql-lts
 pkgname=('postgresql-lts-libs' 'postgresql-lts-docs' 'postgresql-lts')
-pkgver=11.19
+pkgver=11.20
 _majorver=${pkgver%.*}
 pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS'
@@ -22,7 +22,7 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
         postgresql-check-db-dir
         postgresql-lts.sysusers
         postgresql-lts.tmpfiles)
-sha256sums=('13109e2b71f1139405c27201da3733a61ace72ee1c228d9c9f0320e06aee14c2'
+sha256sums=('3d7c8882f64a7e98534a044257dfee7abad77a5b7da12508d85d722b98b5acce'
             '8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9'
             'fa7cc63936bce336fedf8ce8d11c8a0e051d6424a10570b991164386e96058cb'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'

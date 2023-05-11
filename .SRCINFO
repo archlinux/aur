@@ -1,6 +1,6 @@
 pkgbase = postgresql-lts
 	pkgdesc = Sophisticated object-relational DBMS
-	pkgver = 11.19
+	pkgver = 11.20
 	pkgrel = 1
 	url = https://www.postgresql.org/
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = postgresql-lts
 	makedepends = libldap
 	makedepends = llvm
 	makedepends = clang
-	source = https://ftp.postgresql.org/pub/source/v11.19/postgresql-11.19.tar.bz2
+	source = https://ftp.postgresql.org/pub/source/v11.20/postgresql-11.20.tar.bz2
 	source = postgresql-run-socket.patch
 	source = postgresql-perl-rpath.patch
 	source = postgresql-lts.pam
@@ -27,7 +27,7 @@ pkgbase = postgresql-lts
 	source = postgresql-check-db-dir
 	source = postgresql-lts.sysusers
 	source = postgresql-lts.tmpfiles
-	sha256sums = 13109e2b71f1139405c27201da3733a61ace72ee1c228d9c9f0320e06aee14c2
+	sha256sums = 3d7c8882f64a7e98534a044257dfee7abad77a5b7da12508d85d722b98b5acce
 	sha256sums = 8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9
 	sha256sums = fa7cc63936bce336fedf8ce8d11c8a0e051d6424a10570b991164386e96058cb
 	sha256sums = 57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5
@@ -57,7 +57,7 @@ pkgname = postgresql-lts-docs
 
 pkgname = postgresql-lts
 	pkgdesc = Sophisticated object-relational DBMS
-	depends = postgresql-lts-libs>=11.19
+	depends = postgresql-lts-libs>=11.20
 	depends = krb5
 	depends = libxml2
 	depends = readline>=6.0
