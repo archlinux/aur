@@ -1,7 +1,7 @@
 # Maintainer: mekb https://github.com/mekb-turtle
 # shellcheck disable=SC2034
 pkgname=foto-git
-pkgver=v1.1.1.r0.g231737e
+pkgver=v1.1.1.r2.g7edd7bb
 pkgrel=1
 pkgdesc='Simple image viewer written in C - Git release'
 arch=('any')
@@ -11,6 +11,8 @@ source=("foto::git+${url}.git")
 sha256sums=(SKIP)
 makedepends=('git' 'pandoc')
 depends=('libbsd' 'cairo' 'devil' 'libx11' 'libxext')
+provides=('foto')
+conflicts=('foto')
 
 package() {
 	make RELEASE=1 INSTALL_DIR="$pkgdir/usr" -C "$srcdir/foto" install
