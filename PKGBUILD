@@ -1,36 +1,39 @@
 # Maintainer: Rod Kay   <rodakay5 at gmail dot com>
 
 pkgname=gnatstudio-bin
-pkgver=20220512
-pkgrel=4
+pkgver=20230501
+pkgrel=1
 pkgdesc="GNAT Programming Studio for Ada binary"
 
 arch=(i686 x86_64)
 url=https://github.com/AdaCore/gnatstudio
 license=(GPL3)
 
-depends=("python" "libxcrypt-compat")
+depends=("python")
 conflicts=("gnat-gps")
 
-source=(https://github.com/AdaCore/gnatstudio/releases/download/gnatstudio-cr-20220512/gnatstudio-23.0w-20220512-x86_64-linux-bin.tar.gz)
-sha256sums=(788bde77af2affb0797a783e2f158ca230d89858c0e4eb18355abd20e146baa0)
+source=(https://github.com/AdaCore/gnatstudio/releases/download/gnatstudio-cr-20230501/GNAT_Studio-x86_64.AppImage
+        COPYING3)
 
-
-prepare()
-{
-    cd $srcdir
-    tar -xvzf gnatstudio-23.0w-20220512-x86_64-linux-bin.tar.gz
-}
+sha256sums=(133673bf478c7f3393f32af9a05d49fa816d4491e063550effaaf09dff245116
+            8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903)
 
 
 package() 
 {
-    cd $srcdir/gnatstudio-23.0w-20220512-x86_64-linux-bin
+    options=(!strip)
+   
+    cd $srcdir
 
-    ./doinstall "$pkgdir/opt/gnatstudio"
-
-    # Install the license.
-    install -D -m644     \
-       "COPYING3"        \
+    ## Install the binary.
+    #
+    mkdir -p "$pkgdir/usr/bin"
+    chmod a+x GNAT_Studio-x86_64.AppImage
+    cp        GNAT_Studio-x86_64.AppImage "$pkgdir/usr/bin/gnatstudio"
+    
+    ## Install the license.
+    #
+    install -D -m644 \
+       "COPYING3"    \
        "$pkgdir/usr/share/licenses/$pkgname/COPYING3"
 }

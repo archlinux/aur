@@ -1,15 +1,17 @@
 pkgbase = gnatstudio-bin
 	pkgdesc = GNAT Programming Studio for Ada binary
-	pkgver = 20220512
-	pkgrel = 4
+	pkgver = 20230501
+	pkgrel = 1
 	url = https://github.com/AdaCore/gnatstudio
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = python
-	depends = libxcrypt-compat
 	conflicts = gnat-gps
-	source = https://github.com/AdaCore/gnatstudio/releases/download/gnatstudio-cr-20220512/gnatstudio-23.0w-20220512-x86_64-linux-bin.tar.gz
-	sha256sums = 788bde77af2affb0797a783e2f158ca230d89858c0e4eb18355abd20e146baa0
+	source = https://github.com/AdaCore/gnatstudio/releases/download/gnatstudio-cr-20230501/GNAT_Studio-x86_64.AppImage
+	source = COPYING3
+	sha256sums = 133673bf478c7f3393f32af9a05d49fa816d4491e063550effaaf09dff245116
+	sha256sums = 8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903
 
 pkgname = gnatstudio-bin
+	options = !strip
