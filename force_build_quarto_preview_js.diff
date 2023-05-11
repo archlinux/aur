@@ -1,0 +1,11 @@
+diff -ru quarto-cli-1.4.54.original/src/webui/quarto-preview/build.ts quarto-cli-1.4.54/src/webui/quarto-preview/build.ts
+--- quarto-cli-1.4.54.original/src/webui/quarto-preview/build.ts	2023-05-12 07:43:41.000000000 +1200
++++ quarto-cli-1.4.54/src/webui/quarto-preview/build.ts	2023-05-12 10:02:40.283708731 +1200
+@@ -11,6 +11,7 @@
+ let build = false;
+ try {
+   const command = new Deno.Command("git", { args: ["ls-files"] });
++  build = command.CommandStatus.code;
+   const output = new TextDecoder().decode((await command.output()).stdout);
+   const files = output.split("\n").filter((line) => line.length > 0);
+   build = files.some((file) => Deno.statSync(file).mtime!.valueOf() > jsBuildTime);
