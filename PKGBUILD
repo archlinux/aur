@@ -21,11 +21,6 @@ pkgver(){
   git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd $_pkgname || exit 1
-  make archy-dwm.desktop
-}
-
 build() {
   cd $_pkgname || exit 1
   make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
