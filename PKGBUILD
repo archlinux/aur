@@ -2,14 +2,15 @@
 
 _pkgname=superpaper
 pkgname=${_pkgname}-git
-pkgver=2.2.0+2+g299f7e5
+pkgver=2.2.1+2+gb068c8e
 pkgrel=1
 pkgdesc="Cross-platform multi monitor wallpaper manager"
 arch=('any')
 url="https://github.com/hhannine/Superpaper"
 license=('MIT')
 depends=('python-pillow>=7.0' 'python-screeninfo>=0.6.1' 'python-wxpython'
-         'python-system_hotkey>=5' 'python-xpybutil' 'python-numpy')
+         'python-system_hotkey>=5' 'python-xpybutil' 'python-numpy'
+         'python-dbus')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'git')
 provides=("${_pkgname}=${pkgver%%+}")
 conflicts=("${_pkgname}")
