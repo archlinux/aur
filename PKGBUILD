@@ -2,11 +2,11 @@
 
 _pkgbase="icloud-for-linux"
 pkgname="$_pkgbase-git"
-pkgver=0.11.8.g66d3cd9
+pkgver=r38.66d3cd9
 pkgrel=1
 pkgdesc="iCloud for Linux"
 arch=("x86_64")
-url="https://github.com/cross-platform/icloud-for-linux"
+url="https://github.com/wmwnuk/icloud-for-linux"
 license=("GPL")
 depends=('npm' 'nss')
 makedepends=('git')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd $_pkgbase
-	git describe --tags --long | sed 's/^v//;s/-/./g'
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
