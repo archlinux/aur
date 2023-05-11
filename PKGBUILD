@@ -1,14 +1,17 @@
-# Maintainer: Echo https://github.com/CallMeEchoCodes
+# Maintainer: CallMeEchoCodes <romanbarrettsarpi@pm.me>
 pkgname=fetcho
-pkgver=0.0.1
+pkgver=1.0.0
 pkgrel=1
-pkgdesc='A lightweight neofetch alternative!'
+pkgdesc='A simple fetch made in C++'
 arch=('any')
 url="https://github.com/CallMeEchoCodes/fetcho"
-license=('MIT')
+license=('MPL-2.0')
 provides=( fetcho )
-source=("fetcho::https://github.com/CallMeEchoCodes/fetcho/releases/download/$pkgver/fetcho")
-sha256sums=('933f6c8df148491090eacc09631e85b5a93383a0a905a113369f2b2676c6b9f8')
+source=("fetcho::git+${url}.git#tag=v$pkgver")
 package() {
-   install -Dm755 "$srcdir/fetcho" "$pkgdir/usr/bin/fetcho"
+   install -Dm755 "$srcdir/fetcho/build/release/bin/fetcho" "$pkgdir/usr/bin/fetcho"
 }
+build() {
+   make RELEASE=1 -C "$srcdir/fetcho" build
+}
+sha256sums=('SKIP')
