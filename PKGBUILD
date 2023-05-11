@@ -17,7 +17,7 @@ _cachy_config=${_cachy_config-y}
 # 'cfs' - select 'Completely Fair Scheduler'
 # 'tt' - select 'Task Type Scheduler by Hamad Marri'
 # 'hardened' - select 'BORE Scheduler hardened' ## kernel with hardened config and hardening patches with the bore scheduler
-# 'cachyos' - select EEVDF Scheduler with some CachyOS Optimizations. EEVDF does bring latency-nice as default
+# 'cachyos' - select EEVDF and BORE Scheduler with some CachyOS Optimizations. EEVDF does bring latency-nice as default
 _cpusched=${_cpusched-cachyos}
 
 ## Apply some suggested sysctl values from the bore developer
@@ -193,7 +193,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.3
-_minor=1
+_minor=2
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -835,9 +835,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('91c7ac2fb2bdeed323b6f0812582bd82c78f62ce3754063716a8769b30c41e35ae06b042ef27fb3c59a63ca17ec764313d7971ba2ddf84f8cf9fe5885ffe0644'
-        '911ed58549df8cba56a7976b3fea8904085ab3b15cbc11138e78a00a8efd06512b02cdfb8300f19e96a0a4a21c4ab63c3804ce4346ab61eb5a9de13abe922b46'
+b2sums=('848da561356e462406240d36321afecaaf0a7897f0a12fff08aa32c0e62999e0b641143713bfa0e8934b446efafc656b5118af35829b311c574589b5aad9efb3'
+        'caf4afe106b6f90f822640ab3848cf16cd97597a95e353ba005dd37f1fc775013f0c6483884206fd17f6b77f37a107ff8fba553dc54152db0eea06ed383fee20'
         '11d2003b7d71258c4ca71d71c6b388f00fe9a2ddddc0270e304148396dadfd787a6cac1363934f37d0bfb098c7f5851a02ecb770e9663ffe57ff60746d532bd0'
-        '944cc70d1593a6fef259ec6ca59001985c3e708a9447845c0dbba4cab6d386e265e240854f44cdf1ab68d3b62dbea02e9857175bd1d738462277ec895094fa1e'
-        '4ab7071f2b82fdfd4d1150c8dba798a5c3e2d6eca8c01515e935179559b36ed0d95b5fda9a63cc0704dba720633b3713eec0bf963fe7f56d43fb79b4631edea0'
-        '1f4434af752c94452edf717f8d4f05a59249beaf4fddd203a5848351bc4f08853017aff3de2f1afdf506b34d688913eb81586be2b7768099b5e7331dde3fbdf2')
+        '1c47af0f8732191c96d79990e8c13d1376e2d23410e12b183b2a78360a76fc141300934c9c0b1cfc5f37eb3891f3947977d569252d3e2c941992dacd4716da65'
+        '0c139248e26de862f5175b2951009acf0c9f8616398e7086f25bc76a815e41cd126f550fa14b60ad861e02ad1405f3b285d0121e79261535895338cfe4c86efd'
+        'ce755a852f02c929cce6386ecb02edc6a389626b4f42d9e055e4b0cdf96b04e3a79790a80fb956c02b463b3faddd52c24b3eb0628401ace9af00988e60293ba9')
