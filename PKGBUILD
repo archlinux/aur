@@ -4,7 +4,7 @@
 
 pkgname=lib32-gimp
 _pkgbase=gimp
-pkgver=2.10.32
+pkgver=2.10.34
 pkgrel=1
 pkgdesc='GNU Image Manipulation Program (32-bit)'
 url="https://www.gimp.org/"
@@ -18,7 +18,7 @@ depends=('lib32-dbus-glib' 'lib32-gegl' 'lib32-glib-networking'
 makedepends=('alsa-lib' 'curl' 'ghostscript' 'intltool' 'iso-codes')
 license=('GPL' 'LGPL')
 source=("https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgbase}-${pkgver}.tar.bz2")
-sha256sums=('3f15c70554af5dcc1b46e6dc68f3d8f0a6cc9fe56b6d78ac08c0fd859ab89a25')
+sha256sums=('84004642d351b398a4293cd7fd3592044a944f05bb52850ee6068f247c657aa3')
 
 prepare() {
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
@@ -50,6 +50,7 @@ build() {
     --disable-python \
     --with-bug-report-url='https://bugs.archlinux.org/?string=gimp' \
     --with-openexr \
+    --without-jpegxl \
     --without-aa
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
