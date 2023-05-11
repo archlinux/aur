@@ -1,6 +1,8 @@
+# Maintainer: Nara Díaz Viñolas <rdvdev2@gmail.com>
+
 pkgname=pixiecore-git
 _pkgname='pixiecore'
-pkgver=r350.fc2840f
+pkgver=r352.0e2ca55
 pkgrel=1
 pkgdesc="An all-in-one tool for easy netbooting"
 arch=('any')
@@ -9,7 +11,7 @@ license=('Apache')
 makedepends=('go' 'gcc' 'binutils')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${_pkgname}::git+https://github.com/danderson/netboot.git#branch=master")
+source=("${_pkgname}::git+https://github.com/danderson/netboot.git#branch=main")
 sha512sums=('SKIP')
 
 pkgver() {

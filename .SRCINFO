@@ -1,6 +1,6 @@
 pkgbase = pixiecore-git
 	pkgdesc = An all-in-one tool for easy netbooting
-	pkgver = r350.fc2840f
+	pkgver = r352.0e2ca55
 	pkgrel = 1
 	url = https://godoc.org/go.universe.tf/netboot/pixiecore
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = pixiecore-git
 	makedepends = binutils
 	provides = pixiecore
 	conflicts = pixiecore
-	source = pixiecore::git+https://github.com/danderson/netboot.git#branch=master
+	source = pixiecore::git+https://github.com/danderson/netboot.git#branch=main
 	sha512sums = SKIP
 
 pkgname = pixiecore-git
