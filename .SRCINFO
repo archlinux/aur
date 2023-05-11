@@ -8,6 +8,7 @@ pkgbase = ast-grep-bin
 	depends = gcc-libs
 	depends = glibc
 	provides = ast-grep
+	conflicts = ast-grep
 	source = https://raw.githubusercontent.com/ast-grep/ast-grep/c9aff6ace291c5a02e48446aa9be1d471b763ca2/LICENSE
 	b2sums = 84489d87909510ed8ec39fb743c9e0983ba6a4bce03dd299cc41404d5f9050d1b08c3e28dbca3c81a1e958c5aa08aaeb8638b25a92e30ae14df8936e6c949d9c
 	source_x86_64 = https://github.com/ast-grep/ast-grep/releases/download/0.4.1/sg-x86_64-unknown-linux-gnu.zip

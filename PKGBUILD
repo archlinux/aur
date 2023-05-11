@@ -12,6 +12,7 @@ source=(https://raw.githubusercontent.com/ast-grep/ast-grep/c9aff6ace291c5a02e48
 source_x86_64=("https://github.com/ast-grep/ast-grep/releases/download/$pkgver/sg-x86_64-unknown-linux-gnu.zip")
 provides=(ast-grep)
 depends=(gcc-libs glibc)
+conflicts=(ast-grep)
 b2sums=('84489d87909510ed8ec39fb743c9e0983ba6a4bce03dd299cc41404d5f9050d1b08c3e28dbca3c81a1e958c5aa08aaeb8638b25a92e30ae14df8936e6c949d9c')
 b2sums_x86_64=('23afe7997be4ff508afc9c1bb8d8d0b35a88f577fb7d6b8e145d2e4cbfc303469b25540805c29127941dc2f2eb520e32b3ba388ac1405cb3efb4513db3d7fc1d')
 options=()
