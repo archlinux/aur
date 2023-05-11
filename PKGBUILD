@@ -4,7 +4,7 @@
 
 pkgname=xdg-desktop-portal
 pkgver=1.16.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop integration portals for sandboxed apps"
 url="https://github.com/flatpak/xdg-desktop-portal"
 arch=(x86_64)
@@ -37,6 +37,10 @@ pkgver() {
 
 prepare() {
   cd $pkgname
+
+  # https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome/-/issues/74
+  # https://github.com/flatpak/xdg-desktop-portal/pull/985
+  git cherry-pick -n 2a219279997c2124c8a639b0d009c9946ec97b40
 }
 
 build() {
