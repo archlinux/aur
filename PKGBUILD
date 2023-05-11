@@ -6,13 +6,13 @@ pkgname=dosbox-gcc
 pkgver=13.1.0
 _target="i586-pc-msdosdjgpp"
 _djver=2.05
-pkgrel=4
+pkgrel=5
 pkgdesc="djgpp cross-compiler for the dosbox environment"
 arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"
 license=('GPL' 'LGPL' 'FDL' 'custom')
 groups=('djgpp')
-depends=('zlib' 'libisl' 'libmpc' 'dosbox-binutils')
+depends=('sed' 'zlib' 'libisl' 'libmpc' 'dosbox-binutils')
 makedepends=('unzip' 'tar' 'xz')
 optdepends=('dosbox-djcrx: headers and utilities')
 options=('!strip' 'staticlibs' '!emptydirs')
@@ -58,7 +58,6 @@ build() {
     --with-cpu=i586 \
     --with-isl \
     --with-system-zlib \
-    --disable-decimal-float \
     --disable-gcov \
     --disable-install-libiberty \
     --disable-libssp \
@@ -81,7 +80,6 @@ build() {
     --disable-libstdcxx-threads \
     --enable-cxx-flags="-O3 -fno-plt" \
     --enable-libstdcxx-filesystem-ts \
-    --enable-libstdcxx-time=no \
     --enable-checking=release
   make all-gcc
 
@@ -92,9 +90,6 @@ build() {
   ac_cv_lib_dl_dlopen=no \
   ac_cv_lib_svld_dlopen=no \
   ac_cv_lib_dld_dld_link=no \
-  enable_c99=yes \
-  glibcxx_cv_c99_math_cxx98=yes \
-  glibcxx_cv_c99_math_cxx11=yes \
   make all
 }
 
@@ -113,4 +108,25 @@ package_dosbox-gcc() {
   rm -rf $pkgdir/usr/share/{man,info,locale}
   rm -rf $pkgdir/usr/lib/gcc/$_target/$pkgver/include-fixed
   rm -f $pkgdir/usr/lib/libcc1.*
+
+  echo ...applying hacks
+  sed -i '/{ return __builtin_tanh(__x); }/a\
+\
+  using ::trunc;\
+\
+#ifndef __CORRECT_ISO_CPP_MATH_H_PROTO_FP\
+  constexpr float\
+  trunc(float __x)\
+  { return __builtin_truncf(__x); }\
+\
+  constexpr long double\
+  trunc(long double __x)\
+  { return __builtin_truncl(__x); }\
+#endif\
+\
+  template<typename _Tp>\
+    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value, \
+                                              double>::__type\
+    trunc(_Tp __x)\
+    { return __builtin_trunc(__x); }' $pkgdir/usr/$_target/include/c++/$pkgver/cmath
 }
