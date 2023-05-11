@@ -7,7 +7,7 @@ pkgdesc="A high performance MySQL backup tool."
 arch=("i686" "x86_64")
 url="https://github.com/maxbube/mydumper"
 license=('GPL')
-depends=("glib2" "libmariadbclient")
+depends=("glib2" "libmariadbclient" "pcre" "pcre2")
 makedepends=("cmake")
 
 source=("https://github.com/maxbube/mydumper/archive/v$pkgver-1/$pkgname-$pkgver-1.tar.gz")

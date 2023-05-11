@@ -9,6 +9,8 @@ pkgbase = mydumper
 	makedepends = cmake
 	depends = glib2
 	depends = libmariadbclient
+	depends = pcre
+	depends = pcre2
 	source = https://github.com/maxbube/mydumper/archive/v0.14.3-1/mydumper-0.14.3-1.tar.gz
 	sha256sums = aafb9c0914b720e175988a41d9c340271348e50e3a00556035a9c4afcf80c982
 
