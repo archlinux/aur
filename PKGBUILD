@@ -1,8 +1,8 @@
 # Maintainer: Ricardo Grim Cabrita <grim@kriegor.net>
 
 pkgname=kotlin-language-server
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.3.3
+pkgrel=1
 pkgdesc="Smart code completion, diagnostics and more for Kotlin using the Language Server Protocol"
 arch=(any)
 url="https://github.com/fwcd/KotlinLanguageServer"
@@ -12,7 +12,7 @@ provides=('kotlin-language-server')
 depends=('java-runtime>=11')
 makedepends=('java-environment>=11')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('a968e0079787f1a6d2f46b4dbd49b2394c266287c8573097f71a14cdb794223d')
+sha256sums=('11d405dc6d499fdb6c6c6fa0b58cce83af936c10b47d96dcc459ef0df9d97401')
 
 build() {
     jdk="$(find /usr/lib/jvm -maxdepth 1 -name "*1*jdk" | head -1)" &&
