@@ -1,0 +1,5 @@
+*.log
+pkg
+src
+*.pkg.tar.*
+uosc
