@@ -1,6 +1,6 @@
 pkgbase = r-jaspvisualmodeling
 	pkgdesc = Visual Modeling Module for JASP
-	pkgver = 0.17.1
+	pkgver = 0.17.2
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspVisualModeling
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-jaspvisualmodeling
 	depends = r-flexplot
 	depends = r-jaspbase
 	depends = r-jaspgraphs
-	source = jaspVisualModeling_0.17.1.tar.gz::https://github.com/jasp-stats/jaspVisualModeling/archive/refs/tags/v0.17.1.tar.gz
-	sha256sums = 869109365936c61abac362c90fbfe716a43acb300a7ce2b5606c6a22fbbb2a19
+	source = jaspVisualModeling_0.17.2.tar.gz::https://github.com/jasp-stats/jaspVisualModeling/archive/refs/tags/v0.17.2.tar.gz
+	sha256sums = 0648a91d4d0d6ba5aabcbb620cb54c04878a49c9c061dd791c3ed7efa3a3892a
 
 pkgname = r-jaspvisualmodeling
