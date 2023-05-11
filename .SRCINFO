@@ -1,6 +1,6 @@
 pkgbase = c2nim
 	pkgdesc = A tool to translate Ansi C code to Nim
-	pkgver = 0.9.18
+	pkgver = 0.9.19
 	pkgrel = 1
 	url = https://github.com/nim-lang/c2nim
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = c2nim
 	makedepends = nimble
 	depends = glibc
 	optdepends = nim: to compile generated Nim code
-	source = c2nim-0.9.18.tar.gz::https://github.com/nim-lang/c2nim/archive/refs/tags/0.9.18.tar.gz
-	sha256sums = f7e153935fa1e7169896e8d2b8150fa79757d308dec263a221d98cf81fc8fec1
+	source = c2nim-0.9.19.tar.gz::https://github.com/nim-lang/c2nim/archive/refs/tags/0.9.19.tar.gz
+	sha256sums = f63f99e684d62722b912c6bcf470d7ae7d32a92f6f11c356325ba2a1d916b90d
 
 pkgname = c2nim
