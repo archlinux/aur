@@ -1,7 +1,7 @@
 pkgbase = python-sewpy-git
 	pkgdesc = Python interface to SExtractor
 	pkgver = r87.67e36b7
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sewpy.readthedocs.io/en/latest
 	arch = any
 	license = GPL3
