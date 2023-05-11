@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=NanoStringQCPro
-_pkgver=1.31.1
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.31.1
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='Quality metrics and data processing methods for NanoString mRNA gene expression data'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2311cc7c51617cb54dc309af220cd4a9ff8a97b40fca5b76f6f942cfa111b7e2')
+sha256sums=('49f7a1b7ab510ef1620e0b273f240178c4c630eef604962a953e17d18c7e5a4c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
