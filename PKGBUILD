@@ -1,5 +1,5 @@
 pkgname=mingw-w64-vtk-git
-pkgver=r81218.8f51e3af756
+pkgver=r86085.4bb5405e7ef
 pkgrel=1
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization (mingw-w64)'
 arch=('any')
@@ -34,7 +34,7 @@ build() {
       -DVTK_USE_EXTERNAL=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_ioss=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_fmt=OFF \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_fastfloat=OFF \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_fast_float=OFF \
       -DVTK_BUILD_TESTING=OFF \
       ..
     WINEPATH="/usr/${_arch}/bin;${PWD}/bin" make
