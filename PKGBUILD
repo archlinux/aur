@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-x11gestures
 _uuid=x11gestures@joseexposito.github.io
-pkgver=15
+pkgver=17
 pkgrel=1
 pkgdesc="Enable GNOME Shell multi-touch gestures on X11"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(gnome-shell touchegg)
 install=$pkgname.install
 source=($_uuid-$pkgver.zip::https://github.com/JoseExposito/$pkgname/releases/download/$pkgver/$_uuid.zip)
 noextract=($_uuid-$pkgver.zip)
-sha256sums=(ee00ccd91fb84bddd47a4044e36d45b3a40ee3fec8d6179d7e85711f0a46619f)
+sha256sums=(f4a1ecd14406b31300536f20bc33e7f1746a05f40b5609b80382ba0b44b50b27)
 
 package() {
     bsdtar -xf "$srcdir"/$_uuid-$pkgver.zip \
