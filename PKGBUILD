@@ -39,7 +39,7 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G$pkgver"
         )
 sha256sums=('SKIP'
             '09b6d083ecfc42d8c355177b56b7073f387c968c162041507f2870c38e4b7259'
-            'bf06887c00bbc7176f452a3d18092e1b222731218e461782b2877cba938aaa26'
+            '6f16e62b796d8bc01da3a30f7b34bc57d2068b203b3b9f0adaa0052ef67a0277'
             '5a3b4ebefbd9e5dd3abdc9e694ef4dadcce6fcc93f9352ee30f1fcb639a227f6'
             '22e22f4ba6e74a5f33926f4665351c80c516470ac45716c27479147484dea855'
             '0120e01edb0bf3d42f4e0280345f2c44372b097739cd2ddb85fa69bb2233ebab'
