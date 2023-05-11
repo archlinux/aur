@@ -4,8 +4,8 @@
 # Contributor: Zhuoyun Wei <wzyboy@wzyboy.org>
 
 pkgname=nghttp2
-pkgver=1.52.0
-pkgrel=2
+pkgver=1.53.0
+pkgrel=1
 pkgdesc='Client, server and proxy programs from the nghttp2 library'
 arch=(x86_64)
 url='https://nghttp2.org/'
@@ -17,7 +17,7 @@ backup=(
   etc/nghttpx/nghttpx.conf
   etc/logrotate.d/nghttpx
 )
-sha512sums=('3af1ce13270f7afc8652bd3de71200d9632204617fe04d2be7156d60eeb1a5cc415573677791a399ae03577e8e3256939b1b05d27dbd98dee504d09ec5325d56')
+sha256sums=('b867184254e5a29b0ba68413aa14f8b0ce1142a371761374598dec092dabb809')
 
 build() {
   cd nghttp2-$pkgver
