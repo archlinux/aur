@@ -34,6 +34,7 @@ package() {
   install -dm 755 "${pkgdir}/usr/lib/"{initcpio,verity-squash-root}
   install -dm 755 "${pkgdir}/usr/lib/initcpio/install"
   install -dm 755 "${pkgdir}/usr/share/bash-completion/completions"
+  install -dm 755 "${pkgdir}/usr/share/licenses/verity-squash-root"
   install -dm 755 "${pkgdir}/usr/share/verity_squash_root/" "${pkgdir}/etc/verity_squash_root/"
   install -Dm 644 src/verity_squash_root/default_config.ini "${pkgdir}/usr/share/verity_squash_root/default.ini"
   install -Dm 600 src/verity_squash_root/default_config.ini "${pkgdir}/etc/verity_squash_root/config.ini"
@@ -46,4 +47,5 @@ package() {
   install -Dm 644 usr/lib/initcpio/install/verity-squash-root "${pkgdir}/usr/lib/initcpio/install"
   install -Dm 755 usr/share/bash-completion/completions/verity-squash-root \
     "${pkgdir}/usr/share/bash-completion/completions/"
+  install -Dm 644 LICENSE.txt "${pkgdir}/usr/share/licenses/verity-squash-root"
 }
