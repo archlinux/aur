@@ -2,7 +2,7 @@
 
 _pkgname=lbry-viewer
 pkgname=lbry-viewer-git
-pkgver=0.0.8.r0.g52bcf31
+pkgver=0.0.9.r3.g74b0da5
 pkgrel=1
 pkgdesc="A lightweight LBRY/Odysee client for Linux (CLI/GTK) (fork of pipe-viewer)"
 arch=('any')
