@@ -1,6 +1,6 @@
 pkgbase = python-box
 	pkgdesc = Advanced Python dictionaries with dot notation access
-	pkgver = 6.1.0
+	pkgver = 7.0.1
 	pkgrel = 1
 	url = https://github.com/cdgriffith/Box
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = python-box
 	optdepends = python-ruamel-yaml: YAML support
 	optdepends = python-toml: TOML support
 	optdepends = python-yaml: YAML support
-	source = python-box-6.1.0.tar.gz::https://files.pythonhosted.org/packages/source/p/python-box/python-box-6.1.0.tar.gz
-	sha256sums = 6e7c243b356cb36e2c0f0e5ed7850969fede6aa812a7f501de7768996c7744d7
+	source = python-box-7.0.1.tar.gz::https://files.pythonhosted.org/packages/source/p/python-box/python-box-7.0.1.tar.gz
+	sha256sums = dc6724f88255ccbc07092abd506281439cc2b75c6569c754ffc2b22580e7ae06
 
 pkgname = python-box
