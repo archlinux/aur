@@ -1,7 +1,7 @@
 pkgbase = r-spatstat.random
 	pkgdesc = Random Generation Functionality for the 'spatstat' Family
-	pkgver = 3.1.4
-	pkgrel = 3
+	pkgver = 3.1.5
+	pkgrel = 1
 	url = https://cran.r-project.org/package=spatstat.random
 	arch = x86_64
 	license = GPL
@@ -17,7 +17,7 @@ pkgbase = r-spatstat.random
 	optdepends = r-spatstat.explore
 	optdepends = r-spatstat.linnet
 	optdepends = r-spatstat.model
-	source = https://cran.r-project.org/src/contrib/spatstat.random_3.1-4.tar.gz
-	sha256sums = a6cd75e187a992fd8dae535f6745e12801635a344ca51bd2fe048debea3df7d3
+	source = https://cran.r-project.org/src/contrib/spatstat.random_3.1-5.tar.gz
+	sha256sums = a68694d61f8f2b56ccb229c7671da81e1b2947da7a415b5ba333974526aa1989
 
 pkgname = r-spatstat.random
