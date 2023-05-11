@@ -1,0 +1,14 @@
+pkgbase = archy-slstatus
+	pkgdesc = A suckless status monitor for archy linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/archy-linux/archy-slstatus
+	arch = i686
+	arch = x86_64
+	license = MIT
+	provides = archy-slstatus
+	conflicts = archy-slstatus
+	source = https://github.com/archy-linux/archy-slstatus/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = d7414e26f06ee565337791d75a502760a00ebff46319be636c150a3c3d78275d
+
+pkgname = archy-slstatus
