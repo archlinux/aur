@@ -1,6 +1,6 @@
 pkgbase = solidity
 	pkgdesc = Contract-Oriented Programming Language
-	pkgver = 0.8.19
+	pkgver = 0.8.20
 	pkgrel = 1
 	url = https://github.com/ethereum/solidity
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = solidity
 	makedepends = cmake
 	optdepends = z3: SMT checker
 	optdepends = cvc4: SMT checker
-	source = solidity_0.8.19.tar.gz::https://github.com/ethereum/solidity/releases/download/v0.8.19/solidity_0.8.19.tar.gz
-	sha512sums = bb4b9e69770e51b0559346670a840d8b5961be64aa128380607f754c193d8258c18b16adf90f6a5273ed482b28bbcd7f29d1f9bda1f5feb6b1225dd99d630855
+	source = solidity_0.8.20.tar.gz::https://github.com/ethereum/solidity/releases/download/v0.8.20/solidity_0.8.20.tar.gz
+	sha512sums = 5888269cf3e38288bd429c3e584966c2d69b313e31855802c2f6d5a7309f0303043afb30f2398661928f981977f90ca0a7fac4403a177cc8f3535a0c9336df30
 
 pkgname = solidity
