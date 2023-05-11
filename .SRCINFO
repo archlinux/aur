@@ -1,6 +1,6 @@
 pkgbase = python-speclite
 	pkgdesc = A set of lightweight utilities for working with spectroscopic data in astronomy
-	pkgver = 0.15
+	pkgver = 0.16
 	pkgrel = 1
 	url = https://github.com/desihub/speclite
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-speclite
 	depends = python-yaml
 	depends = python-setuptools
 	depends = python-astropy-helpers
-	source = speclite-0.15::https://github.com/desihub/speclite/archive/refs/tags/v0.15.tar.gz
-	sha256sums = 2d51e441eb62f987e26c4f7231b1a235e5254978cde9378c4d9cc2ebd9362c3a
+	source = speclite-0.16::https://github.com/desihub/speclite/archive/refs/tags/v0.16.tar.gz
+	sha256sums = fd63e04bb6ddb3e6e54c78252b42f048381296d447b55968708c46b17aac4bce
 
 pkgname = python-speclite

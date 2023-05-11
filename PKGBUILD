@@ -2,7 +2,7 @@
 
 _pkgname="speclite"
 pkgname=python-speclite
-pkgver=0.15
+pkgver=0.16
 pkgrel=1
 pkgdesc="A set of lightweight utilities for working with spectroscopic data in astronomy"
 arch=(any)
@@ -12,7 +12,7 @@ depends=('python-numpy' 'python-scipy' 'python-astropy' 'python-yaml' 'python-se
          'python-astropy-helpers')
 
 source=("$_pkgname-$pkgver"::"https://github.com/desihub/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2d51e441eb62f987e26c4f7231b1a235e5254978cde9378c4d9cc2ebd9362c3a')
+sha256sums=('fd63e04bb6ddb3e6e54c78252b42f048381296d447b55968708c46b17aac4bce')
 
 build() {
   cd "$srcdir/${_pkgname}-$pkgver"
