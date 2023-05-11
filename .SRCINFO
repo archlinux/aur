@@ -1,0 +1,13 @@
+pkgbase = fetcho-git
+	pkgdesc = A simple fetch made in C++
+	pkgver = v1.0.0.r0.g28237f9
+	pkgrel = 1
+	url = https://github.com/CallMeEchoCodes/fetcho
+	arch = any
+	license = MPL-2.0
+	depends = procps-ng
+	provides = fetcho
+	source = fetcho::git+https://github.com/CallMeEchoCodes/fetcho.git
+	sha256sums = SKIP
+
+pkgname = fetcho-git
