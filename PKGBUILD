@@ -1,14 +1,14 @@
-# Maintainer: Andreas Radke <andyrtr@archlinux.org>
+# Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
+# Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname=procmail
 pkgver=3.24
-pkgrel=1
+pkgrel=2
 pkgdesc="Highly configurable auto mail processing."
 arch=('x86_64')
 #url="http://www.procmail.org" # offline
-url="http://pm-doc.sourceforge.net/"
+url="https://github.com/BuGlessRB/procmail"
 license=('GPL' 'custom:Artistic')
-makedepends=('smtp-server')
 source=("https://github.com/BuGlessRB/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('514ea433339783e95df9321e794771e4887b9823ac55fdb2469702cf69bd3989')
 
