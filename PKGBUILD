@@ -39,7 +39,7 @@ package() {
 
   # Fix libs
   mv "${pkgdir}/usr/local/lib" "${pkgdir}/usr/lib"
-  rm -rf "${pkgdir}/usr/local" "${pkgdir}/usr/lib/libdnieremotepkcs11.so" "${pkgdir}/usr/lib/libdnieremotepkcs11.so.0"
+  rm -rf "${pkgdir}/usr/share/pixmaps" "${pkgdir}/usr/local" "${pkgdir}/usr/lib/libdnieremotepkcs11.so" "${pkgdir}/usr/lib/libdnieremotepkcs11.so.0"
   ln -fsT "libdnieremotepkcs11.so.0.0.4" "${pkgdir}/usr/lib/libdnieremotepkcs11.so.0"
   ln -fsT "libdnieremotepkcs11.so.0.0.4" "${pkgdir}/usr/lib/libdnieremotepkcs11.so"
 
