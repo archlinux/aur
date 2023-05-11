@@ -2,6 +2,12 @@
 read -r LOCALVER <<<"$(cat PKGBUILD | grep 'pkgver=' | sed 's/pkgver=//g')"
 read -r DOPPLERVER <<<"$(wget --quiet https://github.com/DopplerHQ/cli/releases/latest -O /dev/stdout | grep -Eo 'Release [0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,2}' | head -n 1 | sed 's/Release //g')"
 
+if [ "$DOPPLERVER" = "" ]; then
+  echo "Doppler version undefined: $DOPPLERVER"
+  echo "Exiting!"
+  exit 0
+fi
+
 if [ "$LOCALVER" == "$DOPPLERVER" ]; then
 	echo "No update available"
 	exit 0
