@@ -13,7 +13,7 @@ echo "##finish updating sources"
 ## probe configure.ac for dependencies versions
 # the rest have standard form of "[{dep_name}_raqured_version], [{version}]"
 for dep in ${deps[*]};do
-	dep_versions["_${dep}_version"]=$(grep -oP "dependency\('babl'.*version: *'>=\K.*(?='\))"  ${srcdir}/${_gitname}/meson.build)
+	dep_versions["_${dep}_version"]=$(grep -oPz "dep_ver = {\n  '$dep'\s*: '>=\K.*(?=')" ${srcdir}/${_gitname}/meson.build)
 done
 
 echo "##probed deps versions:" >&2
