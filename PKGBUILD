@@ -1,4 +1,4 @@
-pkgname=ton-bin
+pkgname=ton
 pkgver=v2023.04
 pkgrel=1
 pkgdesc="The Open Network"
