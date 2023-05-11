@@ -3,7 +3,7 @@
 
 pkgname=gzdoom
 pkgver=4.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Feature centric port for all Doom engine games'
 arch=('i686' 'x86_64' 'aarch64')
 url='http://www.zdoom.org/'
@@ -38,14 +38,17 @@ replaces=('gzdoom1' 'gzdoom-legacy')
 options=(!lto)
 source=("gzdoom::git+https://github.com/coelckers/gzdoom.git#tag=g${pkgver}"
         'gzdoom.desktop'
-        '0001-Fix-file-paths.patch')
+        '0001-Fix-file-paths.patch'
+        '0002-build-resolve-missing-includes-under-gcc-13.patch')
 sha256sums=('SKIP'
             '59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d'
-            'a37dde8274e1a9fd511af951da2e362d503ab4be72e79d4843e1ca3a0129549f')
+            'a37dde8274e1a9fd511af951da2e362d503ab4be72e79d4843e1ca3a0129549f'
+            'a5b1db9ddef99234db138bca534c13a769e25f5dd85e37b3604108a62a35c46e')
 
 prepare() {
     cd gzdoom
     patch -i "$srcdir"/0001-Fix-file-paths.patch -p 1
+    patch -i "$srcdir"/0002-build-resolve-missing-includes-under-gcc-13.patch -p 1
 }
 
 build() {
