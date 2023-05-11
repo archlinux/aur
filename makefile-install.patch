@@ -1,0 +1,11 @@
+--- Makefile.orig	2023-05-11 15:14:50.907559083 +0300
++++ Makefile	2023-05-11 15:17:28.760034035 +0300
+@@ -104,7 +104,7 @@
+ 	rm -f $(PREFIX)/share/mime/packages/recoil-mime.xml
+ 	update-mime-database $(PREFIX)/share/mime
+ 
+-install-thumbnailer: install-mime install-recoil2png
++install-thumbnailer:
+ 	mkdir -p $(PREFIX)/share/thumbnailers
+ 	xsltproc -o $(PREFIX)/share/thumbnailers/recoil.thumbnailer recoil.thumbnailer.xsl formats.xml
+ 

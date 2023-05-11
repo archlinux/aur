@@ -1,0 +1,27 @@
+pkgbase = recoil
+	pkgdesc = Converter for native picture formats of retro computers
+	pkgver = 6.3.4
+	pkgrel = 1
+	url = https://recoil.sourceforge.net
+	arch = x86_64
+	license = GPL2
+	makedepends = libxslt
+	depends = libpng
+	source = https://downloads.sourceforge.net/project/recoil/recoil/6.3.4/recoil-6.3.4.tar.gz
+	source = makefile-install.patch
+	b2sums = b27fbcc40bb996773fc5b8f62feb9d54cb29a28283ecb655127628610d7eb8474f3c3df05f656a527fdb620806d5617f831d16d1421fa2c861809623b4b60417
+	b2sums = 22cd6ef6399c040e2baf768ba3c69d8bce559f1b27d3d8d8a76519844f7a5bf9b000ddb1b6dc225bbe3aae2bbef2698ea8cb8d6b7277035b04c352e5629c7fb2
+
+pkgname = recoil2png
+	pkgdesc = Converter for native picture formats of retro computers (command line tool)
+
+pkgname = recoil-thumbnailer
+	pkgdesc = Converter for native picture formats of retro computers (GNOME thumbnailer)
+	depends = libpng
+	depends = recoil2png
+	depends = recoil-mime
+
+pkgname = recoil-mime
+	pkgdesc = Converter for native picture formats of retro computers (MIME file type descriptions)
+	depends = libpng
+	depends = shared-mime-info
