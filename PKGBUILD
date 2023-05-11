@@ -4,7 +4,7 @@
 # Contributor: Bjoern Franke <bjo+aur@schafweide.org>
 
 pkgname=pleroma
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc='A microblogging server software that can federate other servers that support ActivityPub'
 url='https://git.pleroma.social/pleroma/pleroma'
