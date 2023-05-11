@@ -2,15 +2,15 @@
 # Contributor: nightuser <nightuser.android@gmail.com>
 
 pkgname="stm32cubeide"
-pkgver=1.12.0
-_pkgver_ext=1.12.0_14980_20230301_1550
-_pkg_file_name=st-stm32cubeide_1.12.0_14980_20230301_1550_amd64.sh.zip
-pkgrel=3
+pkgver=1.12.1
+_pkgver_ext=1.12.1_16088_20230420_1057
+_pkg_file_name=en.st-stm32cubeide_1.12.1_16088_20230420_1057_amd64.sh.zip
+pkgrel=1
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
 makedepends=('imagemagick')
-depends=('java-runtime>=11' 'glibc' 'libusb' 'webkit2gtk' 'arm-none-eabi-gdb')
-optdepends=('jlink-software-and-documentation' 'stlink')
+depends=('glibc' 'libusb' 'arm-none-eabi-gdb')
+optdepends=('jlink-software-and-documentation' 'stlink' 'webkit2gtk')
 conflicts=()
 url="https://www.st.com/en/development-tools/stm32cubeide.html"
 license=('Commercial')
@@ -39,7 +39,7 @@ source=("${_pkg_file_name}"::"$_download_path"
 #	"99-jlink.rules.patch"
 	"https://www.st.com/resource/en/license/SLA0048_STM32CubeIDE.pdf"
 	)
-sha256sums=('287129ea5d1fc283ae34404ccb15891f8e767587d43f9c43504ee9cdb73d55f7'
+sha256sums=('896c6917ad0b0660e7fe7e15b94d464106c0259442564d0150cc090dc255d8c0'
 #	'0f3f69f7c980a701bf814e94595f5acb51a5d91be76b74e5b632220cfb0e7bb3'
 	'SKIP'
 )
