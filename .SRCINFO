@@ -1,6 +1,6 @@
 pkgbase = fetcho-git
 	pkgdesc = A simple fetch made in C++
-	pkgver = r5.a6328a5
+	pkgver = v1.0.0.r1.ga6328a5
 	pkgrel = 1
 	url = https://github.com/CallMeEchoCodes/fetcho
 	arch = any
