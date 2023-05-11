@@ -6,7 +6,7 @@
 
 pkgname=nnn-nerd
 pkgver=4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="The fastest terminal file manager ever written (with icon support using a patched nerd font)."
 arch=('x86_64')
 depends=('bash')
@@ -25,20 +25,20 @@ url="https://github.com/jarun/nnn"
 license=('BSD')
 provides=(nnn)
 conflicts=(nnn)
-source=("nnn-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('932e27ec1d7cd3db6ccba33edb3d1ad2620109cde3c4114b734eef3e04d6c6c22ddaa1c4727908dba2a107dd4cfe1f5193aec450f680a390671f48e63d0133bd')
+source=("nnn-efd5bc9db100d0489cfb3d982a69b04dacaff852.tar.gz::${url}/archive/efd5bc9db100d0489cfb3d982a69b04dacaff852.tar.gz")
+sha512sums=('bbc3ce50da793050b0f15aa892cbbfef8d150ef8d1425e40f2bebb1802ff6704bb7dfc4ffd8019209c7e549202258d00e476a16bba873acfac8239a50a2a8e46')
 
 prepare() {
-    sed -i 's/install: all/install:/' "${provides}-${pkgver}/Makefile"
+    sed -i 's/install: all/install:/' "${provides}-efd5bc9db100d0489cfb3d982a69b04dacaff852/Makefile"
 }
 
 build() {
-	cd "${provides}-${pkgver}"
+	cd "${provides}-efd5bc9db100d0489cfb3d982a69b04dacaff852"
 	make O_NERD=1
 }
 
 package() {
-    cd "${provides}-${pkgver}"
+    cd "${provides}-efd5bc9db100d0489cfb3d982a69b04dacaff852"
     make DESTDIR="${pkgdir}" PREFIX=/usr install
     make DESTDIR="${pkgdir}" PREFIX=/usr install-desktop
 
