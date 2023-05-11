@@ -1,0 +1,15 @@
+pkgbase = pod2pdf-git
+	pkgdesc = Convert POD to PDF, with syntax highlighting.
+	pkgver = 23.02.r21.g35b1c6b
+	pkgrel = 1
+	url = https://github.com/trizen/perl-scripts
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = perl>=5.10.0
+	depends = perl-pod-markdown
+	depends = markdown2pdf-git
+	source = git+https://github.com/trizen/perl-scripts.git
+	sha512sums = SKIP
+
+pkgname = pod2pdf-git
