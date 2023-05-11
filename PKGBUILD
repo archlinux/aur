@@ -1,7 +1,7 @@
 # Maintainer: Dino Morelli <dino@ui3.info>
 
 pkgname=systemd-failmsg
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc='A systemd service and script to send failure emails'
 arch=('any')
@@ -11,13 +11,12 @@ depends=('bash')
 makedepends=()
 source=("https://github.com/dino-/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 
-sha256sums=('b2bae2028d9f50f4e8a5aaf57b30f5a657ede16c065df4f32d570ae8e260c9cb')
+sha256sums=('393c9e91198075ac0a999c62dbf00231c06c8064751c281fc8f6155ecb38af61')
 
 
 # PKGBUILD functions
 
 package() {
    cd ${srcdir}/${pkgname}-${pkgver}
-   mkdir "${pkgdir}/usr"
-   cp -r * "${pkgdir}/usr"
+   cp -r * "${pkgdir}"
 }
