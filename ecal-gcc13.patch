@@ -1,0 +1,35 @@
+Subject: [PATCH] GCC13 compatibility: Explicitly include cstdint
+---
+Index: ecal/contrib/ecaltime/linuxptp/src/ecal_time_linuxptp.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ecal/contrib/ecaltime/linuxptp/src/ecal_time_linuxptp.h b/ecal/contrib/ecaltime/linuxptp/src/ecal_time_linuxptp.h
+--- a/ecal/contrib/ecaltime/linuxptp/src/ecal_time_linuxptp.h	(revision 6b2843ad29597e7de06a6f80e99572006eeb097a)
++++ b/ecal/contrib/ecaltime/linuxptp/src/ecal_time_linuxptp.h	(revision 044d473cfda4d70d57ac0a7c081cae0e2cc10ffb)
+@@ -21,6 +21,7 @@
+ 
+ #include <time.h>
+ #include <mutex>
++#include <string>
+ 
+ #define CLOCKFD 3
+ #define FD_TO_CLOCKID(fd)   ((~(clockid_t) (fd) << 3) | CLOCKFD)
+Index: ecal/ecal/core/src/topic2mcast.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ecal/ecal/core/src/topic2mcast.h b/ecal/ecal/core/src/topic2mcast.h
+--- a/ecal/ecal/core/src/topic2mcast.h	(revision 6b2843ad29597e7de06a6f80e99572006eeb097a)
++++ b/ecal/ecal/core/src/topic2mcast.h	(revision 044d473cfda4d70d57ac0a7c081cae0e2cc10ffb)
+@@ -23,6 +23,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <sstream>
+ #include <iostream>
+ #include <string>
+

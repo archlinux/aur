@@ -1,0 +1,21 @@
+Subject: [PATCH] GCC13 compatibility: Explicitly include cstdint
+
+See https://gcc.gnu.org/gcc-13/porting_to.html
+---
+Index: ecal/thirdparty/termcolor/include/termcolor/termcolor.hpp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ecal/thirdparty/termcolor/include/termcolor/termcolor.hpp b/ecal/thirdparty/termcolor/include/termcolor/termcolor.hpp
+--- a/ecal/thirdparty/termcolor/include/termcolor/termcolor.hpp	(revision b3cb0f365f8435588df7a6b12a82b2ac5fc1fe95)
++++ b/ecal/thirdparty/termcolor/include/termcolor/termcolor.hpp	(date 1683614533931)
+@@ -13,6 +13,7 @@
+ #define TERMCOLOR_HPP_
+ 
+ #include <iostream>
++#include <cstdint>
+ 
+ // Detect target's platform and set some macros in order to wrap platform
+ // specific code this library depends on.
+
