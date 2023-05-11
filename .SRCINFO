@@ -13,7 +13,6 @@ pkgbase = mingw-w64-vtk-git
 	makedepends = mingw-w64-pegtl2
 	makedepends = mingw-w64-exprtk
 	makedepends = mingw-w64-nlohmann-json
-	makedepends = mingw-w64-fast_float
 	depends = mingw-w64-crt
 	depends = mingw-w64-qt5-base
 	depends = mingw-w64-jsoncpp
