@@ -9,7 +9,7 @@
 
 _pkgname=gegl
 pkgname="${_pkgname}-git"
-pkgver=0.4.32.r10327.47a321f29
+pkgver=0.4.45.r10515.401c6d30b
 pkgrel=1
 pkgdesc="Graph based image processing framework"
 arch=('i686' 'x86_64')
@@ -52,7 +52,7 @@ prepare() {
 pkgver() {
   cd ${srcdir}/${_pkgname}
   printf "%s.r%s.%s" \
-    $(grep -ozP "(?s)^project\('gegl'.*?version: *'\K[\d.]*" meson.build|tr '\0' '\n') \
+    $(grep -ozP "(?s)^project\('gegl'.*?version: *'\K[0-9.]*" meson.build|tr '\0' '\n') \
     $(git rev-list --count HEAD) \
     $(git rev-parse --short HEAD)
 }
