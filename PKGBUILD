@@ -12,13 +12,8 @@ source=("${pkgname}.tar.gz::https://github.com/neodiX42/rpm-repo/releases/latest
 sha256sums=('SKIP')
 
 package() {
-  cd "$srcdir"
-  mkdir -p ${pkgdir}/usr/bin
-  cp -a bin/* ${pkgdir}/usr/bin
-  if [ -d lib ]; then
-    mkdir -p ${pkgdir}/usr/lib
-    cp -a lib/* ${pkgdir}/usr/lib;
-  fi
+  cd "$pkgdir"
+  tar xf "$srcdir/ton-bin.tar.gz"
 
   # Fix permissions
   chmod -R go-w "${pkgdir}"
