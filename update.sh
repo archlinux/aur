@@ -48,13 +48,13 @@ if [ "${initial}x" = "x" ] ; then
     cp repos/core-x86_64/{config,PKGBUILD} ..
     cd ..
 
-    sed -i -e "s/^pkgbase=.*/pkgbase=linux-bnx2x-2.5g/" PKGBUILD
-    sed -i -e '/^makedepends=/{N;n;d}' PKGBUILD
-    sed -i -e '/^source=/{N;s/$/\n  "bnx2x_warpcore+8727_2_5g_sgmii_arch.patch"/}' PKGBUILD
-    sed -i -e "/^sha256sums=/{s/$/\\n            'd655669179109ae8e801a259c35dbe442ca67a49b9ceb6ca3ef0e56f48149a7d'/}" PKGBUILD
-    sed -i -e "s/^  make htmldocs all.*/  make all/" PKGBUILD
-    sed -i -e '/^_package-docs() {/,/^}/d' PKGBUILD
-    sed -i -e '/^pkgname=/s/ "$pkgbase-docs"//' PKGBUILD
+    sed -i -e 's/^pkgbase=.*/pkgbase=linux-bnx2x-2.5g/' \
+           -e '/\s*# htmldocs/,/^)/{/^)/!d;}' \
+           -e '/^source=/{N;s/$/\n  "bnx2x_warpcore+8727_2_5g_sgmii_arch.patch"/}' \
+           -e "/^b2sums=/{s/$/\n        '94fd2e2fa31da0ce9d04e639b0fafc37128ad2f01f8ee38708c7128fdc1568e491aca9a8296316b0736f134dc7697b573e8203018d92c1e9b6ff40648501607a'/}" \
+           -e "s/^  _make htmldocs all.*/  _make all/" \
+           -e '/^_package-docs() {/,/^}/d' \
+           -e '/\s*"$pkgbase-docs"/d' PKGBUILD
 else
     cd ..
     echo "Building version $c_ver (initial)"
