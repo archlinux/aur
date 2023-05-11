@@ -1,0 +1,17 @@
+pkgbase = archy-slstatus-git
+	pkgdesc = A suckless status monitor for dwm
+	pkgver = 1.0.0.r1.g55b9d57
+	pkgrel = 1
+	url = https://github.com/archy-linux/archy-slstatus
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	depends = libx11
+	provides = archy-slstatus
+	conflicts = archy-slstatus
+	source = archy-slstatus::git+https://github.com/archy-linux/archy-slstatus.git
+	sha256sums = SKIP
+
+pkgname = archy-slstatus-git
