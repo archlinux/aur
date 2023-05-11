@@ -1,29 +1,38 @@
-# Maintainer: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
-# Maintainer: Christian Hesse <mail@eworm.de>
+# Fork from official ABS mariadb PKGBUILD by miryo, 2023/05/10 
+# Maintainer: miryo <miryo@vcup.moe>
+# Contributor: Bartłombiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Christian Hesse <mail@eworm.de>
 
-pkgbase=mariadb
-pkgname=('mariadb-libs' 'mariadb-clients' 'mariadb' 'mytop')
+pkgbase=mariadb-git2
+pkgname=('mariadb-libs-git2' 'mariadb-clients-git2' 'mariadb-git2' 'mytop-git2')
 pkgdesc='Fast SQL database server, derived from MySQL'
-pkgver=10.11.3
+pkgver=10.11.2.r376.g40a857c
 pkgrel=1
 arch=('x86_64')
 license=('GPL')
 url='https://mariadb.org/'
 makedepends=('boost' 'bzip2' 'cmake' 'cracklib' 'curl' 'jemalloc' 'judy' 'krb5' 'liburing'
              'libxcrypt' 'libxml2' 'lz4' 'openssl' 'systemd' 'zlib' 'zstd' 'xz')
-validpgpkeys=('177F4010FE56CA3336300305F1656F24C74CD1D8') # MariaDB Signing Key <signing-key@mariadb.org>
-# The default links with mirror redirection fail for signatures, specific
-# mirrors may be out of date every now and then. Let's use the upstream
-# rsync source via https and hope it does not hurt them too much.
-# https://mariadb.com/kb/en/library/mirror-sites-for-mariadb/
-source=("https://rsync.osuosl.org/pub/mariadb/mariadb-${pkgver}/source/mariadb-${pkgver}.tar.gz"{,.asc}
-        '0001-arch-specific.patch')
-sha256sums=('b065b0f32a6e9fd479e566fd6671450379886d8dda2d9a7ef930af1e5c26c0c7'
-            'SKIP'
-            '3289efb3452d199aec872115f35da3f1d6fd4ce774615076690e9bc8afae1460')
+conflicts=(${pkgbase%-git2})
+provides=(${pkgbase%-git2})
+source=(
+  "$pkgbase::git+https://github.com/MariaDB/server.git#branch=10.11"
+  '0001-arch-specific.patch'
+)
+sha256sums=(
+  'SKIP'
+  '3289efb3452d199aec872115f35da3f1d6fd4ce774615076690e9bc8afae1460'
+)
+
+pkgver() {
+  cd $pkgbase
+  git describe --long --abbrev=7 | sed 's/^mariadb-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
-  cd $pkgbase-$pkgver/
+  cd $pkgbase/
+
+  git submodule update --init --recursive
 
   # Arch Linux specific patches:
   #  * enable PrivateTmp for a little bit more security
@@ -86,10 +95,10 @@ build() {
     -DWITH_ZLIB=system
   )
 
-  mkdir build
+  mkdir -p build
   cd build
 
-  cmake ../"$pkgbase-$pkgver" "${_cmake_options[@]}"
+  cmake ../"$pkgbase" "${_cmake_options[@]}"
 
   make
 }
@@ -101,13 +110,13 @@ check() {
   #./mtr --parallel=5 --mem --force --max-test-fail=0
 }
 
-package_mariadb-libs() {
+package_mariadb-libs-git2() {
   pkgdesc='MariaDB libraries'
   depends=('liburing' 'libxcrypt' 'libcrypt.so' 'openssl' 'zlib' 'zstd')
   optdepends=('krb5: for gssapi authentication')
-  conflicts=('libmysqlclient' 'libmariadbclient' 'mariadb-connector-c')
-  provides=('libmariadbclient' 'mariadb-connector-c' 'libmariadb.so' 'libmariadbd.so')
-  replaces=('libmariadbclient')
+  conflicts=('mariadb-libs' 'libmysqlclient'{,-git} 'libmariadbclient'{,-git} 'mariadb-connector-c'{,-git})
+  provides=('mariadb-libs' 'libmariadbclient'{,-git2} 'mariadb-connector-c'{,-git2} 'libmariadb.so' 'libmariadbd.so')
+  replaces=('libmariadbclient-git2')
 
   cd build
 
@@ -123,20 +132,20 @@ package_mariadb-libs() {
   
   ln -s mariadb_config "$pkgdir"/usr/bin/mariadb-config
   ln -s mariadb_config "$pkgdir"/usr/bin/mysql_config
-  install -D -m0644 "$srcdir"/"$pkgbase-$pkgver"/man/mysql_config.1 "$pkgdir"/usr/share/man/man1/mysql_config.1
+  install -D -m0644 "$srcdir"/"$pkgbase"/man/mysql_config.1 "$pkgdir"/usr/share/man/man1/mysql_config.1
   ln -s mysql_config.1 "$pkgdir"/usr/share/man/man1/mariadb_config.1
   ln -s mysql_config.1 "$pkgdir"/usr/share/man/man1/mariadb-config.1
 
   install -D -m0644 support-files/mariadb.pc "$pkgdir"/usr/share/pkgconfig/mariadb.pc
-  install -D -m0644 "$srcdir"/"$pkgbase-$pkgver"/support-files/mysql.m4 "$pkgdir"/usr/share/aclocal/mysql.m4
+  install -D -m0644 "$srcdir"/"$pkgbase"/support-files/mysql.m4 "$pkgdir"/usr/share/aclocal/mysql.m4
 
 }
 
-package_mariadb-clients() {
+package_mariadb-clients-git2() {
   pkgdesc='MariaDB client tools'
-  depends=("mariadb-libs=${pkgver}" 'jemalloc' 'ncurses')
-  conflicts=('mysql-clients')
-  provides=("mysql-clients=$pkgver")
+  depends=("mariadb-libs-git2=${pkgver}" 'jemalloc' 'ncurses')
+  conflicts=('mysql-clients'{,-git})
+  provides=('mariadb-clients' "mysql-clients=$pkgver")
 
   make -C build/client DESTDIR="${pkgdir}" install
   
@@ -148,7 +157,7 @@ package_mariadb-clients() {
   done    
 }
 
-package_mariadb() {
+package_mariadb-git2() {
   pkgdesc='Fast SQL database server, derived from MySQL'
   backup=('etc/my.cnf'
           'etc/my.cnf.d/client.cnf'
@@ -162,7 +171,7 @@ package_mariadb() {
           'etc/my.cnf.d/spider.cnf'
           'etc/security/user_map.conf')
   install=mariadb.install
-  depends=("mariadb-clients=${pkgver}" 'bzip2' 'libxml2' 'lz4' 'systemd-libs' 'libxml2' 'zstd')
+  depends=("mariadb-clients-git2=${pkgver}" 'bzip2' 'libxml2' 'lz4' 'systemd-libs' 'libxml2' 'zstd')
   optdepends=('cracklib: for cracklib plugin'
               'curl: for ha_s3 plugin'
               'galera: for MariaDB cluster with Galera WSREP'
@@ -170,7 +179,7 @@ package_mariadb() {
               'perl-dbd-mariadb: for mariadb-hotcopy, mariadb-convert-table-format and mariadb-setpermission'
               'python-mysqlclient: for myrocks_hotbackup'
               'xz: lzma provider')
-  conflicts=('mysql')
+  conflicts=('mysql'{,-git})
   provides=("mysql=$pkgver")
   options=('emptydirs')
 
@@ -211,7 +220,7 @@ package_mariadb() {
   rm usr/lib/mysql/plugin/{auth_gssapi_client,caching_sha2_password,client_ed25519,dialog,mysql_clear_password,sha256_password,zstd}.so
 
   # provided by mariadb-clients
-  for bin in $(find "${pkgdir}"/../mariadb-clients/usr/bin/ ! -type d); do
+  for bin in $(find "${pkgdir}"/../mariadb-clients-git2/usr/bin/ ! -type d); do
     rm "${pkgdir}"/usr/bin/"$(basename "${bin}")" "${pkgdir}"/usr/share/man/man1/"$(basename "${bin}")".1
   done
 
@@ -223,7 +232,7 @@ package_mariadb() {
   rm usr/share/man/man1/mysql-test-run.pl.1
 }
 
-package_mytop() {
+package_mytop-git2() {
   pkgdesc='Top clone for MariaDB'
   depends=('perl' 'perl-dbd-mariadb' 'perl-term-readkey')
 

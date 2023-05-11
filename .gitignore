@@ -1,3 +1,5 @@
 src/
 pkg/
-mariadb*.pkg.tar.zst
+mariadb-git2/
+mariadb*git2*.pkg.tar.zst
+mytop-git2*.pkg.tar.zst

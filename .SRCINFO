@@ -1,0 +1,104 @@
+pkgbase = mariadb-git2
+	pkgdesc = Fast SQL database server, derived from MySQL
+	pkgver = 10.11.2.r376.g40a857c
+	pkgrel = 1
+	url = https://mariadb.org/
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	makedepends = bzip2
+	makedepends = cmake
+	makedepends = cracklib
+	makedepends = curl
+	makedepends = jemalloc
+	makedepends = judy
+	makedepends = krb5
+	makedepends = liburing
+	makedepends = libxcrypt
+	makedepends = libxml2
+	makedepends = lz4
+	makedepends = openssl
+	makedepends = systemd
+	makedepends = zlib
+	makedepends = zstd
+	makedepends = xz
+	provides = mariadb
+	conflicts = mariadb
+	source = mariadb-git2::git+https://github.com/MariaDB/server.git#branch=10.11
+	source = 0001-arch-specific.patch
+	sha256sums = SKIP
+	sha256sums = 3289efb3452d199aec872115f35da3f1d6fd4ce774615076690e9bc8afae1460
+
+pkgname = mariadb-libs-git2
+	pkgdesc = MariaDB libraries
+	depends = liburing
+	depends = libxcrypt
+	depends = libcrypt.so
+	depends = openssl
+	depends = zlib
+	depends = zstd
+	optdepends = krb5: for gssapi authentication
+	provides = mariadb-libs
+	provides = libmariadbclient
+	provides = libmariadbclient-git2
+	provides = mariadb-connector-c
+	provides = mariadb-connector-c-git2
+	provides = libmariadb.so
+	provides = libmariadbd.so
+	conflicts = mariadb-libs
+	conflicts = libmysqlclient
+	conflicts = libmysqlclient-git
+	conflicts = libmariadbclient
+	conflicts = libmariadbclient-git
+	conflicts = mariadb-connector-c
+	conflicts = mariadb-connector-c-git
+	replaces = libmariadbclient-git2
+
+pkgname = mariadb-clients-git2
+	pkgdesc = MariaDB client tools
+	depends = mariadb-libs-git2=10.11.2.r376.g40a857c
+	depends = jemalloc
+	depends = ncurses
+	provides = mariadb-clients
+	provides = mysql-clients=10.11.2.r376.g40a857c
+	conflicts = mysql-clients
+	conflicts = mysql-clients-git
+
+pkgname = mariadb-git2
+	pkgdesc = Fast SQL database server, derived from MySQL
+	install = mariadb.install
+	depends = mariadb-clients-git2=10.11.2.r376.g40a857c
+	depends = bzip2
+	depends = libxml2
+	depends = lz4
+	depends = systemd-libs
+	depends = libxml2
+	depends = zstd
+	optdepends = cracklib: for cracklib plugin
+	optdepends = curl: for ha_s3 plugin
+	optdepends = galera: for MariaDB cluster with Galera WSREP
+	optdepends = judy: for Open Query GRAPH (OQGraph) computation engine
+	optdepends = perl-dbd-mariadb: for mariadb-hotcopy, mariadb-convert-table-format and mariadb-setpermission
+	optdepends = python-mysqlclient: for myrocks_hotbackup
+	optdepends = xz: lzma provider
+	provides = mysql=10.11.2.r376.g40a857c
+	conflicts = mysql
+	conflicts = mysql-git
+	options = emptydirs
+	backup = etc/my.cnf
+	backup = etc/my.cnf.d/client.cnf
+	backup = etc/my.cnf.d/enable_encryption.preset
+	backup = etc/my.cnf.d/mysql-clients.cnf
+	backup = etc/my.cnf.d/provider_bzip2.cnf
+	backup = etc/my.cnf.d/provider_lz4.cnf
+	backup = etc/my.cnf.d/provider_lzma.cnf
+	backup = etc/my.cnf.d/s3.cnf
+	backup = etc/my.cnf.d/server.cnf
+	backup = etc/my.cnf.d/spider.cnf
+	backup = etc/security/user_map.conf
+
+pkgname = mytop-git2
+	pkgdesc = Top clone for MariaDB
+	depends = perl
+	depends = perl-dbd-mariadb
+	depends = perl-term-readkey
