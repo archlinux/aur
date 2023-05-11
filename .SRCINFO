@@ -1,0 +1,18 @@
+pkgbase = modv-appimage
+	pkgdesc = modular audio visualisation powered by JavaScript
+	pkgver = 3.27.0
+	pkgrel = 1
+	url = https://modv.vcync.gl/
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	provides = modv
+	conflicts = modv
+	options = !strip
+	source = modv-3.27.0.AppImage::https://github.com/vcync/modV/releases/download/3.27.0/modV-3.27.0.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/vcync/modv/next/LICENSE.txt
+	sha256sums = 8046d43310ccf3103046f54ce0c981c0d8e51b8a4150f2f813bf946068dddb3e
+	sha256sums = 4ff9462e56a52889b0005f007e0a66930c6b19687751f551bf7316b6ee35119e
+
+pkgname = modv-appimage
