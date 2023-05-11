@@ -3,8 +3,7 @@ pkgdesc='A CUDA backend for Torch7'
 pkgname='torch7-cutorch-git'
 pkgver=r1026.5e9d86c
 pkgrel=6
-makedepends=('cmake' 'git')
-depends=('torch7-git>=r819' 'cuda')
+makedepends=('cmake' 'git' 'torch7-git' 'cuda' 'gcc8')
 conflicts=('torch7-cutorch')
 provides=('torch7-cutorch')
 arch=('x86_64' 'i686')
