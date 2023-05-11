@@ -3,17 +3,21 @@
 # Maintainer: Ariel Popper <a@arielp.com>
 
 pkgname=postgresql-lts-old-upgrade
-pkgver=10.17
+pkgver=11.20
 _majorver=${pkgver%.*}
 pkgrel=1
 pkgdesc='PostgreSQL build for migrating between major versions with pg_upgrade'
 url='https://www.postgresql.org/'
 arch=('x86_64')
 license=('custom:PostgreSQL')
-depends=("postgresql-lts-libs>=${_majorver}" 'libxml2' 'openssl>=1.0.0' 'pam' 'zlib' 'icu' 'systemd-libs' 'libldap')
-makedepends=('krb5' 'python' 'python2' 'perl' 'tcl>=8.6.0' 'systemd')
+depends=("postgresql-libs>=${_majorver}" 'libxml2' 'openssl>=1.0.0' 'pam'
+         'zlib' 'icu' 'systemd-libs' 'libldap' 'krb5')
+makedepends=('python' 'perl' 'tcl>=8.6.0' 'systemd')
+optdepends=('python: for PL/Python 3 support'
+            'perl: for PL/Perl support'
+            'tcl: for PL/Tcl support')
 source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2)
-sha256sums=('5af28071606c9cd82212c19ba584657a9d240e1c4c2da28fc1f3998a2754b26c')
+sha256sums=('3d7c8882f64a7e98534a044257dfee7abad77a5b7da12508d85d722b98b5acce')
 
 build() {
   cd postgresql-${pkgver}
@@ -48,11 +52,11 @@ build() {
   cp -a contrib/hstore_plpython{,3}
   cp -a contrib/ltree_plpython{,3}
   cp -a src/Makefile.global{,.python3}
-  make distclean
+  make -s distclean
 
   # regular build with everything
   ./configure ${options[@]} \
-    PYTHON=/usr/bin/python2
+    PYTHON=/usr/bin/python3
   make -sC src all
   make -sC contrib all
 }
