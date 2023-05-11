@@ -1,41 +1,41 @@
 pkgbase = linux-bnx2x-2.5g
 	pkgdesc = Linux
-	pkgver = 6.2.13.arch1
+	pkgver = 6.3.1.arch2
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v6.2.13-arch1
+	url = https://github.com/archlinux/linux/commits/v6.3.1-arch2
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
+	makedepends = cpio
+	makedepends = gettext
+	makedepends = git
 	makedepends = libelf
 	makedepends = pahole
-	makedepends = cpio
 	makedepends = perl
 	makedepends = tar
 	makedepends = xz
-	makedepends = gettext
-	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.2.13-arch1
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.3.1-arch2
 	source = bnx2x_warpcore+8727_2_5g_sgmii_arch.patch
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
-	sha256sums = SKIP
-	sha256sums = d655669179109ae8e801a259c35dbe442ca67a49b9ceb6ca3ef0e56f48149a7d
-	sha256sums = de96ef80c3d883d03bce280ea1aebb1691aeebfcab82bf14a63d4ab5d9dca4b1
+	b2sums = SKIP
+	b2sums = 94fd2e2fa31da0ce9d04e639b0fafc37128ad2f01f8ee38708c7128fdc1568e491aca9a8296316b0736f134dc7697b573e8203018d92c1e9b6ff40648501607a
+	b2sums = e4998c4a144843cb6072ffc706baae3cf7530fc245fbf9cc4264aad119304944bdbb5aed9e5cfcefc87ab3e694067759e400dda669d5d734c439db288ad467c1
 
 pkgname = linux-bnx2x-2.5g
 	pkgdesc = The Linux kernel and modules
 	depends = coreutils
-	depends = kmod
 	depends = initramfs
+	depends = kmod
 	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
+	provides = KSMBD-MODULE
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
-	provides = KSMBD-MODULE
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
