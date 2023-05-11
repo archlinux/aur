@@ -1,6 +1,6 @@
 pkgbase = r-jaspequivalencettests
 	pkgdesc = Equivalence T-Tests Module for JASP
-	pkgver = 0.17.1
+	pkgver = 0.17.2
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspEquivalenceTTests
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-jaspequivalencettests
 	depends = r-metabma
 	depends = r-toster
 	depends = r-jaspttests
-	source = jaspEquivalenceTTests_0.17.1.tar.gz::https://github.com/jasp-stats/jaspEquivalenceTTests/archive/refs/tags/v0.17.1.tar.gz
-	sha256sums = 7a12e0dcf3cc0bb865a0c3304b8e156fd0c096c3520630cce455f140ea63862a
+	source = jaspEquivalenceTTests_0.17.2.tar.gz::https://github.com/jasp-stats/jaspEquivalenceTTests/archive/refs/tags/v0.17.2.tar.gz
+	sha256sums = 6e01260fcf554141b49f84eba04b4821d36ef391aef7a9358122a58a5527214b
 
 pkgname = r-jaspequivalencettests
