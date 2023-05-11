@@ -1,0 +1,17 @@
+pkgbase = primate-appimage
+	pkgdesc = A modern dashboard for Kong Gateway admins
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.getprimate.xyz/
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	options = !strip
+	source = primate-1.0.0.AppImage::https://github.com/getprimate/primate/releases/download/v1.0.0/Primate-v1.0.0-x64.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/getprimate/primate/main/LICENSE
+	sha256sums = e49382a1289baa44a1bb596a040ea99397801f4f7ee6ae6febfab57646e321a7
+	sha256sums = dd4c137b56da1d126c2aa91b11250f4b1c2973f4dec7f44ce904359bbb1d5612
+
+pkgname = primate-appimage
