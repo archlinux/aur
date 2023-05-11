@@ -10,7 +10,7 @@
 
 pkgname=osc-git
 _pkgname=osc
-pkgver=1.0.0b1.r4017.ef8c00af
+pkgver=1.1.3.r4474.d089e878
 pkgrel=1
 pkgdesc="Command line client for the openSUSE Build Service"
 arch=(any)
@@ -32,7 +32,8 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
-    echo $(head -1 NEWS).r$(git rev-list --count master).$(git rev-parse --short HEAD)
+    semver="$(head -1 NEWS|sed 's! !!g;s!-!!g')"
+    echo $semver.r$(git rev-list --count master).$(git rev-parse --short HEAD)
 }
 
 build() {
