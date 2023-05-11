@@ -1,0 +1,17 @@
+pkgbase = monit-appimage
+	pkgdesc = 展示各种信息的桌面小组件
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://monit.fzf404.art/
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	options = !strip
+	source = monit-0.8.0.AppImage::https://github.com/fzf404/Monit/releases/download/v0.8.0/Monit-0.8.0-linux-x86_64.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/fzf404/monit/main/LICENSE
+	sha256sums = b9bf71dcaccbea4b50ba691fa3628b2ab4b08cc3c4d2d648f6af667d48be81a4
+	sha256sums = a1d101c81e481ecb6e5ded277789b4fb293b489ac9d75953a18b37223ccb3709
+
+pkgname = monit-appimage
