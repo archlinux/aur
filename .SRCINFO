@@ -1,0 +1,25 @@
+pkgbase = vivaldi-stable-arm64
+	pkgdesc = Vivaldi ARM64 Linux
+	pkgver = 6.0.2979.18
+	pkgrel = 1
+	url = https://vivaldi.com/downloads
+	arch = aarch64
+	license = custom
+	makedepends = imagemagick
+	makedepends = w3m
+	depends = gtk3
+	depends = libcups
+	depends = nss
+	depends = alsa-lib
+	depends = libxss
+	depends = ttf-font
+	depends = desktop-file-utils
+	depends = shared-mime-info
+	depends = hicolor-icon-theme
+	optdepends = vivaldi-snapshot-ffmpeg-codecs: playback of proprietary video/audio
+	optdepends = libnotify: native notifications
+	noextract = vivaldi-stable_6.0.2979.18-1_arm64.deb
+	source = https://downloads.vivaldi.com/stable/vivaldi-stable_6.0.2979.18-1_arm64.deb
+	sha256sums = 4b76f49a65ac42158328fcf7e06cdbe74abec00511005344b7a22f0aaa3c08cb
+
+pkgname = vivaldi-stable-arm64
