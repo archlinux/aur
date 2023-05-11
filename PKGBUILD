@@ -1,8 +1,8 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=python-pyproject-parser
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc='Parser for pyproject.toml'
 arch=('any')
 url='https://github.com/repo-helper/pyproject-parser'
@@ -32,7 +32,7 @@ optdepends=(
   'python-readme-renderer: render markdown'
   'python-cmarkgfm: render markdown'
 )
-_commit='f9fc5a1cda7fff980abdb7b6f0215cf5887507ec'
+_commit='0e6b5d2a29e8c8bf180f7510debd8b1bf90a5b6f'
 source=("$pkgname::git+$url#commit=$_commit")
 b2sums=('SKIP')
 
