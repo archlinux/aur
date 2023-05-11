@@ -8,8 +8,9 @@ pkgbase = torch7-cutorch-git
 	license = BSD
 	makedepends = cmake
 	makedepends = git
-	depends = torch7-git>=r819
-	depends = cuda
+	makedepends = torch7-git
+	makedepends = cuda
+	makedepends = gcc8
 	provides = torch7-cutorch
 	conflicts = torch7-cutorch
 	source = torch7-cutorch-git::git+https://github.com/torch/cutorch
