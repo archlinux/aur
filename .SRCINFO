@@ -1,17 +1,18 @@
 pkgbase = lfortran
 	pkgdesc = Modern interactive LLVM-based Fortran compiler
-	pkgver = 0.18.0
-	pkgrel = 2
+	pkgver = 0.19.0
+	pkgrel = 1
 	url = https://lfortran.org
 	arch = x86_64
-	license = BSD
-	makedepends = llvm11
+	license = custom:BSD-3-clause
+	makedepends = llvm14
 	makedepends = cmake
+	makedepends = cppzmq
 	depends = clang
 	depends = zlib
 	depends = ncurses
-	depends = xeus2
-	source = https://lfortran.github.io/tarballs/release/lfortran-0.18.0.tar.gz
-	sha256sums = f796b242072d92fae36bcff2e6fddd649e89dccf877feaf99ecfab552e7e1e29
+	depends = xeus-zmq
+	source = https://lfortran.github.io/tarballs/release/lfortran-0.19.0.tar.gz
+	sha512sums = b70c71c537f6df29986b15e35fd45147267d459d5ee383aa45011cbad5eaed2d4bac9a465856b887181cd81e80fa2cfa7497956e3d5a04a173cd2e514d15291a
 
 pkgname = lfortran

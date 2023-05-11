@@ -1,50 +1,40 @@
-# Maintainer: Ciappi <marco.scopesi@gmail.com>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Ciappi <marco.scopesi@gmail.com>
 pkgname=lfortran
-pkgver=0.18.0
-pkgrel=2
+pkgver=0.19.0
+pkgrel=1
 pkgdesc="Modern interactive LLVM-based Fortran compiler"
 arch=('x86_64')
-url="https://lfortran.org"
-license=('BSD')
-groups=()
-depends=("clang" "zlib" "ncurses" "xeus2")
-makedepends=("llvm11" "cmake")
+url="https://${pkgname}.org"
+license=('custom:BSD-3-clause')
+depends=(clang zlib ncurses xeus-zmq)
+makedepends=(llvm14 cmake cppzmq)
 checkdepends=()
 optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://lfortran.github.io/tarballs/release/"$pkgname-$pkgver.tar.gz)
-sha256sums=('f796b242072d92fae36bcff2e6fddd649e89dccf877feaf99ecfab552e7e1e29')
-noextract=()
-
-prepare() {
-  cd "$pkgname-$pkgver"
-}
+source=(https://${pkgname}.github.io/tarballs/release/${pkgname}-${pkgver}.tar.gz)
+sha512sums=('b70c71c537f6df29986b15e35fd45147267d459d5ee383aa45011cbad5eaed2d4bac9a465856b887181cd81e80fa2cfa7497956e3d5a04a173cd2e514d15291a')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  cmake -DWITH_LLVM=yes -DWITH_XEUS=yes -DCMAKE_INSTALL_PREFIX=/usr .
-  make
+  cmake \
+    -S ${pkgname}-${pkgver} \
+    -B build \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_SHARED_LIBS=TRUE \
+    -DCMAKE_CXX_STANDARD=17 \
+    -DWITH_LLVM=yes \
+    -DWITH_RUNTIME_LIBRARY=yes \
+    -DWITH_XEUS=yes \
+    -DWITH_ZLIB=yes
+
+  cmake --build build --target all
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  make -k test
+  ctest --verbose --output-on-failure --test-dir build
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  make DESTDIR="$pkgdir/" install
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  DESTDIR="${pkgdir}" cmake --build build --target install
+  install -Dm 644 ${pkgname}-${pkgver}/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-
-# vim:set ts=2 sw=2 et:
-
