@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Sononym
+Version=1.0
+Terminal=false
+Icon=sononym
+Type=Application
+Categories=Audio
+Exec=sononym
