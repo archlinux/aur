@@ -1,0 +1,17 @@
+pkgbase = app-outlet-appimage
+	pkgdesc = A universal Linux app store
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = http://appoutlet.github.io/
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	conflicts = app-outlet
+	options = !strip
+	source = app-outlet-2.1.0.AppImage::https://github.com/AppOutlet/AppOutlet/releases/download/v2.1.0/App.Outlet-2.1.0.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/AppOutlet/AppOutlet/main/LICENSE
+	sha256sums = 42c576adda4df43130887fdc6f0a3d0b1579bf56e743be2a27a6816c785415e9
+	sha256sums = c24c91646674659de06c8dad229b589608a69be9403433b4b5efe856db4cecb8
+
+pkgname = app-outlet-appimage
