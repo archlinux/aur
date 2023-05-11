@@ -2,7 +2,7 @@
 
 pkgname=python-sewpy-git
 pkgver=r87.67e36b7
-pkgrel=2
+pkgrel=3
 pkgdesc="Python interface to SExtractor"
 arch=('any')
 url="http://sewpy.readthedocs.io/en/latest"
