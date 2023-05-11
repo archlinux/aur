@@ -1,7 +1,7 @@
 pkgbase = python-wslink
 	pkgdesc = Python/JavaScript library for communicating over WebSocket
 	pkgver = 1.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kitware/wslink
 	arch = any
 	license = custom:BSD-3-clause
