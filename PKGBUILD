@@ -43,6 +43,7 @@ package() {
   find "${pkgdir}/opt/${pkgname}" -type f -exec chmod a+r {} +
 
   # those files *must* be read-write for end-users; not my fault *grumble*
+  chmod a+rw "${pkgdir}/opt/${pkgname}" "${pkgdir}/opt/${pkgname}/.pub-preload-cache"
   chmod -R a+rw "${pkgdir}/opt/${pkgname}/version" "${pkgdir}/opt/${pkgname}/bin/cache" "${pkgdir}/opt/${pkgname}/.git"  
   find "${pkgdir}/opt/${pkgname}" -name "pubspec.lock" -exec chmod a+r+ {} +
 
