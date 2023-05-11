@@ -7,6 +7,7 @@ pkgbase = fetcho-git
 	license = MPL-2.0
 	depends = procps-ng
 	provides = fetcho
+	conflicts = fetcho
 	source = fetcho::git+https://github.com/CallMeEchoCodes/fetcho.git
 	sha256sums = SKIP
 

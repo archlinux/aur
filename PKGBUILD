@@ -1,12 +1,13 @@
 # Maintainer: CallMeEchoCodes <romanbarrettsarpi@pm.me>
 pkgname=fetcho-git
-pkgver=v1.0.0.r0.g28237f9
+pkgver=v1.0.0.r1.ga6328a5
 pkgrel=1
 pkgdesc='A simple fetch made in C++'
 arch=('any')
 url="https://github.com/CallMeEchoCodes/fetcho"
 license=('MPL-2.0')
 provides=( fetcho )
+conflicts=( "fetcho" )
 source=("fetcho::git+${url}.git")
 package() {
    install -Dm755 "$srcdir/fetcho/build/release/bin/fetcho" "$pkgdir/usr/bin/fetcho"
