@@ -5,7 +5,7 @@
 
 _pkgname=vinegar
 pkgname=vinegar-git
-pkgver=1.0.1.r2.ge817411
+pkgver=1.0.1.r5.gfc579cf
 pkgrel=1
 pkgdesc="A transparent wrapper for Roblox Player and Roblox Studio (Git version)"
 arch=("x86_64")
@@ -35,17 +35,6 @@ package() {
 
   # This does all the work (except for the optional LICENSE file)
   make VERSION="${pkgver}" DESTDIR="${pkgdir}" PREFIX="/usr" install
-
-  # Fix up the .desktop files (as I expected, Vinegar is a mess)
-  _player=io.github.vinegarhq.Vinegar.player.desktop
-  _studio=io.github.vinegarhq.Vinegar.studio.desktop
-  _playermime="x-scheme-handler/roblox;x-scheme-handler/roblox-player;"
-  _studiomime="application/x-roblox-rbxl;application/x-roblox-rbxlx;x-scheme-handler/roblox-studio;x-scheme-handler/roblox-studio-auth;"
-
-  desktop-file-edit --remove-key="MimeType" "${pkgdir}/usr/share/applications/${_player}"
-  desktop-file-edit --remove-key="MimeType" "${pkgdir}/usr/share/applications/${_studio}"
-  desktop-file-edit --set-key="MimeType" --set-value="${_playermime}" "${pkgdir}/usr/share/applications/${_player}"
-  desktop-file-edit --set-key="MimeType" --set-value="${_studiomime}" "${pkgdir}/usr/share/applications/${_studio}"
 
   # Install GPLv3 license (just in case)
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
