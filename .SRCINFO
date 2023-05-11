@@ -1,0 +1,15 @@
+pkgbase = ubports-installer-appimage
+	pkgdesc = A simple tool to install Ubuntu Touch on UBports devices
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/ubports/ubports-installer
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	options = !strip
+	source = ubports-installer-0.10.0.AppImage::https://github.com/ubports/ubports-installer/releases/download/0.10.0/ubports-installer_0.10.0_linux_x86_64.AppImage
+	sha256sums = 4664a29b874930242cc3e945375edd86e2f902a7c734bca20d842dccee60ca65
+
+pkgname = ubports-installer-appimage
