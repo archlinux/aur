@@ -1,7 +1,7 @@
 pkgbase = visual-paradigm-community
 	pkgdesc = UML design application
-	pkgver = 17.0
-	pkgrel = 20230401
+	pkgver = 17.0.20230401
+	pkgrel = 1
 	url = http://www.visual-paradigm.com/download/community.jsp
 	install = visual-paradigm-community.install
 	arch = x86_64

@@ -4,8 +4,8 @@
 # Contributor: Simonas Racinas <racinas at icloud.com>
 # Contributor: Rein Fernhout <me@levitati.ng>
 pkgname=visual-paradigm-community
-pkgver=17.0
-pkgrel=20230401
+pkgver=17.0.20230401
+pkgrel=1
 pkgdesc="UML design application"
 url='http://www.visual-paradigm.com/download/community.jsp'
 arch=('x86_64')
