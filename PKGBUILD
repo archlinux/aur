@@ -3,7 +3,7 @@ options=(!strip)  # Don't strip libs because there aren't any
 
 pkgname=hydrus
 _pkgname=hydrus
-pkgver=526
+pkgver=527
 pkgrel=1
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
@@ -31,15 +31,15 @@ optdepends=('ffmpeg: show duration and other information on video thumbnails'
             # 'python-pyparsing: currently unused'
             # 'speedcopy: may speed up file transfers'
             'swftools: to display SWF thumbnails')
-source=("${_pkgname}::git+https://github.com/hydrusnetwork/${_pkgname}.git#commit=7bfe474a5d7af0b5ea11343e7b91ec25fb7d0651"
+source=("${_pkgname}::git+https://github.com/hydrusnetwork/${_pkgname}.git#commit=4b2b15e152e4bed900aa972c7d4b27f7bf242f29"
         paths-in-opt.patch
         hydrus-client
         hydrus-server
         hydrus.desktop)
 sha256sums=('SKIP'
-            'b196485720ed874a22fe49a48ce92db423dda12824b2755071bbf47cfc891bc0'
-            'd2cb826ce0dd1892ab95fc3b14dbe6bd312210f653d0aea31938eeb7e361fdc5'
-            '463841cc16059b516cc327cfbc30d3383e2236b085ba2d503e82f5be39444806'
+            'c332728ca119b1ed4e9a4f40de79087fa90f8754535718b506954d375541f9f0'
+            '39d3404b75320be6a9e33dc256f4fc313c65fe11458e96bd5af6268c2f78eaf0'
+            '5956d418d29fe19f54263acf47adce7c6d134d19ec65e2810d4517ce83529480'
             '9b8c2603a8040ae80152ff9a718ad3e8803fdc3029a939e3c0e932ea35ded923')
 
 prepare() {
@@ -59,7 +59,7 @@ package() {
 
   # Create /opt/hydrus and copy hydrus files to there
   install -m755 -d "${pkgdir}/opt/hydrus"
-  cp -r hydrus static client.pyw server.py "${pkgdir}/opt/hydrus/"
+  cp -r hydrus static hydrus_client.py hydrus_server.py "${pkgdir}/opt/hydrus/"
 
   # Remove unit tests
   rm -rf "${pkgdir}/opt/hydrus/hydrus/test" "${pkgdir}/opt/hydrus/static/testing"
