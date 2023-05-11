@@ -1,6 +1,5 @@
 src/
 pkg/
 restview-*.tar.gz
-restview-*.pkg.tar.xz
-restview-*.pkg.tar.zst
+restview-*.pkg.tar.*
 restview-*.src.tar.gz

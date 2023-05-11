@@ -2,26 +2,24 @@
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 
 pkgname=restview
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
-pkgdesc="A viewer for ReStructuredText documents that renders them on the fly."
+pkgdesc='A viewer for ReStructuredText documents that renders them on the fly'
 arch=(any)
-url="http://mg.pov.lt/restview/"
-license=('GPL')
-depends=('python-docutils' 'python-pygments' 'python-readme-renderer' 'python-setuptools')
-options=(!emptydirs)
-source=(
-    "https://files.pythonhosted.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
-)
-sha256sums=('2b989610aaed2fd42da64f6cdc539cf3ee70ce370bcba872db72421ad515dd1e')
+url='https://mg.pov.lt/restview/'
+license=(GPL)
+depends=(python-docutils python-pygments python-readme-renderer)
+makedepends=(python-build python-installer python-setuptools python-wheel)
+source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz")
+sha256sums=('8c1a171c159d46d15d5569f77021828883a121d6f9baf758d641fc1e54b05ae5')
 
 
 build() {
-    cd "${srcdir}"/${pkgname}-${pkgver}
-    python setup.py build
+  cd $pkgname-$pkgver
+  python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}"/${pkgname}-${pkgver}
-    python setup.py install --skip-build --root="${pkgdir}"/ --optimize=1
+  cd $pkgname-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
