@@ -1,0 +1,16 @@
+pkgbase = python-reprint
+	pkgdesc = a Python 2/3 module for binding variables and refreshing multi-line output in terminal.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/Yinzo/reprint
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-colorama
+	depends = python-six
+	depends = python-backports.shutil_get_terminal_size
+	source = python-reprint::git+https://github.com/Yinzo/reprint.git?commit=f9e2669d40c70046e83962a9a5b4710d14f944a8
+	sha256sums = SKIP
+
+pkgname = python-reprint
