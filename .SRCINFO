@@ -1,6 +1,6 @@
 pkgbase = frame-eth-dev-appimage
 	pkgdesc = A privacy focused Ethereum wallet
-	pkgver = 0.6.5
+	pkgver = 0.6.6
 	pkgrel = 1
 	url = https://frame.sh/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = frame-eth-dev-appimage
 	provides = frame-eth
 	conflicts = frame-eth
 	conflicts = frame-eth-dev
-	noextract = frame-eth-dev-appimage-0.6.5.AppImage
+	noextract = frame-eth-dev-appimage-0.6.6.AppImage
 	options = !strip
-	source_x86_64 = frame-eth-dev-appimage-0.6.5.AppImage::https://github.com/floating/frame/releases/download/v0.6.5/Frame-0.6.5.AppImage
-	sha512sums_x86_64 = f6bd0a400785ee74be6430516a97078f94f4967af85d5043918c2fb0334193e5dc94fc955fe57bab3f8bc188cd314accd6af17d605c4088db43c6bdd7ac5cce9
+	source_x86_64 = frame-eth-dev-appimage-0.6.6.AppImage::https://github.com/floating/frame/releases/download/v0.6.6/Frame-0.6.6.AppImage
+	sha512sums_x86_64 = 57f90672fa8a13ee84b6b68072f9e863d8c2d6745efd3530ce6532c9e379437d74d620dd069f4013d1efccb9ea26ffbaa98fb8b8e8c5247b6b37330183468aca
 
 pkgname = frame-eth-dev-appimage
