@@ -2,11 +2,12 @@
 
 pkgname=ast-grep
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and easy tool for code searching, linting, rewriting at large scale"
 arch=('x86_64')
 url="https://github.com/ast-grep/ast-grep"
 license=('MIT')
+depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 b2sums=('6c0e26a8999437c4561b25364d86fd24b1c791b9d22d66b9804e60944a2bfd96fa8b2f25d6bcc0b6f247f420f1c59bf0681a47b6a74826979411d1e589af5001')
@@ -35,4 +36,5 @@ check() {
 package() {
     cd "$pkgname-$pkgver"
     install -Dm755 "target/release/sg" "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
