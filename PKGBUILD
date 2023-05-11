@@ -1,8 +1,8 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=python-dist-meta
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc='Parse and create Python distribution metadata'
 arch=('any')
 url='https://dist-meta.readthedocs.io/'
@@ -22,7 +22,7 @@ makedepends=(
 )
 #checkdepends=('')
 #optdepends=('')
-_commit='fc32a6abee90b5195eee4611a105e96f5b192245'
+_commit='6036a6fd75717632207677615f16c27da20258e9'
 source=("$pkgname::git+https://github.com/repo-helper/dist-meta#commit=$_commit")
 b2sums=('SKIP')
 
