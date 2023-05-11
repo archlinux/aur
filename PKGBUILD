@@ -1,7 +1,7 @@
 # Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
 pkgname=python-pyportfolioopt
 _pkgname=${pkgname:7}
-pkgver=1.5.4
+pkgver=1.5.5
 pkgrel=1
 pkgdesc="Financial portfolio optimization in python"
 arch=('any')
@@ -20,7 +20,7 @@ depends=(
     python-yfinance
 )
 source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
-sha256sums=('97cee69e6cd5a9ea597a510df3769032141c12fa0e34771ffe7eca7e11ee4189')
+sha256sums=('371ade1fed1deeea7042ba3178b3cf9aac9cd0b1700e949cab8a8c2e72e5566a')
 
 build() {
     cd ${srcdir}/${_pkgname}-${pkgver}

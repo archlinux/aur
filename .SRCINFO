@@ -1,6 +1,6 @@
 pkgbase = python-pyportfolioopt
 	pkgdesc = Financial portfolio optimization in python
-	pkgver = 1.5.4
+	pkgver = 1.5.5
 	pkgrel = 1
 	url = https://pypi.org/project/pyportfolioopt
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-pyportfolioopt
 	depends = python-scikit-learn
 	depends = python-scipy
 	depends = python-yfinance
-	source = https://files.pythonhosted.org/packages/source/p/pyportfolioopt/pyportfolioopt-1.5.4.tar.gz
-	sha256sums = 97cee69e6cd5a9ea597a510df3769032141c12fa0e34771ffe7eca7e11ee4189
+	source = https://files.pythonhosted.org/packages/source/p/pyportfolioopt/pyportfolioopt-1.5.5.tar.gz
+	sha256sums = 371ade1fed1deeea7042ba3178b3cf9aac9cd0b1700e949cab8a8c2e72e5566a
 
 pkgname = python-pyportfolioopt
