@@ -13,7 +13,7 @@ pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
 # https://github.com/buildbot/buildbot/releases
 pkgver=3.8.0
 _bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
-pkgrel=3
+pkgrel=4
 arch=(any)
 url='https://buildbot.net'
 license=(GPL2)
@@ -25,7 +25,7 @@ makedepends=(python-twisted python-jinja python-msgpack python-zope-interface py
              python-alembic python-dateutil python-txaio
              python-autobahn python-pyjwt python-yaml
              python-graphql-core python-hvac
-             python-influxdb libvirt-python python-novaclient python-pypugjs python-aiohttp
+             libvirt-python python-novaclient python-pypugjs python-aiohttp
              python-setuptools python-future
              python-sphinx-jinja
              python-sphinx_rtd_theme
@@ -162,7 +162,7 @@ package_buildbot() {
     'vault: to use HashiCorpVaultSecretProvider or HashiCorpVaultKvSecretProvider provider'
     'python-hvac: to use HashiCorpVaultKvSecretProvider provider'
     # statistics
-    'python-influxdb: for using InfluxDB to store statistics'
+    # 'python-influxdb: for using InfluxDB to store statistics'  # dead project, upstream github repo archived
     # steps
     'python-subunit: for SubunitShellCommand'
     'python-treq: for using HTTP requests as steps'
