@@ -14,7 +14,7 @@ pkgbase = nvhpc
 	options = !strip
 	source = https://developer.download.nvidia.com/hpc-sdk/23.3/nvhpc_2023_233_Linux_x86_64_cuda_12.0.tar.gz
 	source = nvhpc.sh
-	sha256sums = a01733a257995dc63a4f07b94dbad50b07f12d0515f7c7a9b2bebef3ac35750a
-	sha256sums = 8853cf0dcb2dec7acd25cedaf2e849993a8156165742a69381a44d4447ce19d5
+	sha256sums = 65c97207e7ac2d5f163bc50cb017a2c9519a7c9b2b3d12146d3dd433655963f2
+	sha256sums = 19e5c4b25dc1c5a41123a3e84b18db0668d33f08f1dd8cf0d6ab1ace346f535b
 
 pkgname = nvhpc
