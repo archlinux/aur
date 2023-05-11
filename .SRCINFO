@@ -1,7 +1,7 @@
 pkgbase = goober
 	pkgdesc = Workspace module generator for eww.
 	pkgver = 0.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bitbucket.org/troutcobbler/goober
 	install = goober.install
 	arch = x86_64
