@@ -81,12 +81,11 @@
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-_major=6.1
-_minor=9
+_major=6.3
+_minor=1
 _srcname=linux-${_major}
-_clr=${_major}.9-1255
-_gcc_more_v='20220315'
-_xanmod='4ba17e3181e82204446e7e3e1bec927028043558'
+_clr=${_major}.1-1311
+_gcc_more_v='20230105'
 pkgbase=linux-clear-cjktty
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -105,8 +104,6 @@ source=(
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-${pkgver}.xz"
   "$pkgbase::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_clr}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-pci-Enable-overrides-for-missing-ACS-capabilities-${_xanmod}.patch::https://raw.githubusercontent.com/xanmod/linux-patches/${_xanmod}/linux-6.1.y-xanmod/pci_acso/0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch"
-  "0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW-${_xanmod}.patch::https://raw.githubusercontent.com/xanmod/linux-patches/${_xanmod}/linux-6.1.y-xanmod/userns/0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch"
   "0001-CJKTTY.patch::https://raw.githubusercontent.com/zhmars/cjktty-patches/master/v6.x/cjktty-${_major}.patch"
 )
 
@@ -121,6 +118,11 @@ export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
+_make() {
+  test -s version
+  make KERNELRELEASE="$(<version)" "$@"
+}
+
 prepare() {
     cd ${_srcname}
 
@@ -130,24 +132,18 @@ prepare() {
 
     ### Setting version
     echo "Setting version..."
-    scripts/setlocalversion --save-scmversion
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
+    make defconfig
+    make -s kernelrelease > version
+    make mrproper
+
     ### Add Clearlinux patches
     for i in $(grep '^Patch' ${srcdir}/$pkgbase/linux.spec |\
-     grep -Ev '^Patch0132|^Patch0118|^Patch0402|^Patch0113' | sed -n 's/.*: //p'); do
+     grep -Ev '^Patch0132|^Patch0118|^Patch0113|^Patch0138|^Patch0402' | sed -n 's/.*: //p'); do
         echo "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/$pkgbase/${i}"
-    done
-
-    local src
-        for src in "${source[@]}"; do
-        src="${src%%::*}"
-        src="${src##*/}"
-        [[ $src = *.patch ]] || continue
-        echo "Applying patch $src..."
-        patch -Np1 < "../$src"
     done
 
     ### Setting config
@@ -159,88 +155,91 @@ prepare() {
 
     # General setup
     scripts/config --set-str DEFAULT_HOSTNAME archlinux \
-                   --enable IKCONFIG \
-                   --enable IKCONFIG_PROC \
-                   --undefine RT_GROUP_SCHED
+                   -e IKCONFIG \
+                   -e IKCONFIG_PROC \
+                   -u RT_GROUP_SCHED
 
     # Power management and ACPI options
-    scripts/config --enable ACPI_REV_OVERRIDE_POSSIBLE \
-                   --enable ACPI_TABLE_UPGRADE
+    scripts/config -e ACPI_REV_OVERRIDE_POSSIBLE \
+                   -e ACPI_TABLE_UPGRADE
+
+    # Virtualization
+    scripts/config -e KVM_SMM
 
     # General architecture-dependent options
-    scripts/config --enable KPROBES
+    scripts/config -e KPROBES
 
     # Enable loadable module support
-    scripts/config --undefine MODULE_SIG_FORCE \
-                   --enable MODULE_COMPRESS_ZSTD
+    scripts/config -u MODULE_SIG_FORCE \
+                   -e MODULE_COMPRESS_ZSTD
 
     # Networking support
-    scripts/config --enable NETFILTER_INGRESS
+    scripts/config -e NETFILTER_INGRESS
 
     # Device Drivers
-    scripts/config --enable FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER \
-                   --enable DELL_SMBIOS_SMM \
-                   --module PATA_JMICRON \
-                   --enable-after SOUND SOUND_OSS_CORE \
-                   --enable SND_OSSEMUL \
-                   --module-after SND_OSSEMUL SND_MIXER_OSS \
-                   --module-after SND_MIXER_OSS SND_PCM_OSS \
-                   --enable-after SND_PCM_OSS SND_PCM_OSS_PLUGINS \
-                   --module AGP --module-after AGP AGP_INTEL --module-after AGP_INTEL AGP_VIA
+    scripts/config -e FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER \
+                   -e DELL_SMBIOS_SMM \
+                   -m PATA_JMICRON \
+                   -E SOUND SOUND_OSS_CORE \
+                   -e SND_OSSEMUL \
+                   -M SND_OSSEMUL SND_MIXER_OSS \
+                   -M SND_MIXER_OSS SND_PCM_OSS \
+                   -E SND_PCM_OSS SND_PCM_OSS_PLUGINS \
+                   -m AGP -M AGP AGP_INTEL -M AGP_INTEL AGP_VIA
 
     # Kernel hacking -> Compile-time checks and compiler options -> Make section mismatch errors non-fatal
-    scripts/config --enable SECTION_MISMATCH_WARN_ONLY
+    scripts/config -e SECTION_MISMATCH_WARN_ONLY
 
     # File systems
-    scripts/config --module NTFS3_FS \
-                   --enable NTFS3_LZX_XPRESS \
-                   --enable NTFS3_FS_POSIX_ACL
+    scripts/config -m NTFS3_FS \
+                   -e NTFS3_LZX_XPRESS \
+                   -e NTFS3_FS_POSIX_ACL
 
-    scripts/config --module SMB_SERVER \
-                   --enable SMB_SERVER_SMBDIRECT \
-                   --enable SMB_SERVER_CHECK_CAP_NET_ADMIN \
-                   --enable SMB_SERVER_KERBEROS5
+    scripts/config -m SMB_SERVER \
+                   -e SMB_SERVER_SMBDIRECT \
+                   -e SMB_SERVER_CHECK_CAP_NET_ADMIN \
+                   -e SMB_SERVER_KERBEROS5
 
     # Security options
-    scripts/config --enable SECURITY_SELINUX \
-                   --enable SECURITY_SELINUX_BOOTPARAM \
-                   --enable SECURITY_SMACK \
-                   --enable SECURITY_SMACK_BRINGUP \
-                   --enable SECURITY_SMACK_NETFILTER \
-                   --enable SECURITY_SMACK_APPEND_SIGNALS \
-                   --enable SECURITY_TOMOYO \
-                   --enable SECURITY_APPARMOR \
-                   --enable SECURITY_YAMA
+    scripts/config -e SECURITY_SELINUX \
+                   -e SECURITY_SELINUX_BOOTPARAM \
+                   -e SECURITY_SMACK \
+                   -e SECURITY_SMACK_BRINGUP \
+                   -e SECURITY_SMACK_NETFILTER \
+                   -e SECURITY_SMACK_APPEND_SIGNALS \
+                   -e SECURITY_TOMOYO \
+                   -e SECURITY_APPARMOR \
+                   -e SECURITY_YAMA
 
     # Library routines
-    scripts/config --enable FONT_TER16x32
+    scripts/config -k -e FONT_TER16x32
 
     if [ -n "$_use_llvm_lto" ]; then
-        scripts/config --disable LTO_NONE \
-                       --enable LTO \
-                       --enable LTO_CLANG \
-                       --enable ARCH_SUPPORTS_LTO_CLANG \
-                       --enable ARCH_SUPPORTS_LTO_CLANG_THIN \
-                       --enable HAS_LTO_CLANG \
-                       --enable LTO_CLANG_THIN \
-                       --enable HAVE_GCC_PLUGINS
+        scripts/config -d LTO_NONE \
+                       -e LTO \
+                       -e LTO_CLANG \
+                       -e ARCH_SUPPORTS_LTO_CLANG \
+                       -e ARCH_SUPPORTS_LTO_CLANG_THIN \
+                       -e HAS_LTO_CLANG \
+                       -e LTO_CLANG_THIN \
+                       -e HAVE_GCC_PLUGINS
     fi
 
     if [ "$_debug" == "y" ]; then
-        scripts/config --enable DEBUG_INFO \
-                       --enable DEBUG_INFO_BTF \
-                       --enable DEBUG_INFO_DWARF4 \
-                       --enable PAHOLE_HAS_SPLIT_BTF \
-                       --enable DEBUG_INFO_BTF_MODULES
+        scripts/config -e DEBUG_INFO \
+                       -e DEBUG_INFO_BTF \
+                       -e DEBUG_INFO_DWARF4 \
+                       -e PAHOLE_HAS_SPLIT_BTF \
+                       -e DEBUG_INFO_BTF_MODULES
     elif [ "$_debug" == "n" ]; then
-        scripts/config --disable DEBUG_INFO \
-                       --disable DEBUG_INFO_BTF \
-                       --disable DEBUG_INFO_DWARF4 \
-                       --disable PAHOLE_HAS_SPLIT_BTF \
-                       --disable DEBUG_INFO_BTF_MODULES
+        scripts/config -d DEBUG_INFO \
+                       -d DEBUG_INFO_BTF \
+                       -d DEBUG_INFO_DWARF4 \
+                       -d PAHOLE_HAS_SPLIT_BTF \
+                       -d DEBUG_INFO_BTF_MODULES
     fi
 
-    make ${BUILD_FLAGS[*]} olddefconfig
+    _make ${BUILD_FLAGS[*]} olddefconfig
     diff -u $srcdir/$pkgbase/config .config || :
 
     # https://github.com/graysky2/kernel_compiler_patch
@@ -283,7 +282,6 @@ prepare() {
         fi
     fi
 
-    make ${BUILD_FLAGS[*]} -s kernelrelease > version
     echo "Prepared $pkgbase version $(<version)"
 
     [[ -z "$_makenconfig" ]] || make ${BUILD_FLAGS[*]} nconfig
@@ -294,7 +292,7 @@ prepare() {
 
 build() {
     cd ${_srcname}
-    make ${BUILD_FLAGS[*]} all
+    _make ${BUILD_FLAGS[*]} all
 }
 
 _package() {
@@ -308,19 +306,18 @@ _package() {
 
     cd $_srcname
 
-    local kernver="$(<version)"
-    local modulesdir="$pkgdir/usr/lib/modules/$kernver"
+    local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
     echo "Installing boot image..."
     # systemd expects to find the kernel here to allow hibernation
     # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-    install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+    install -Dm644 "$(_make -s image_name)" "$modulesdir/vmlinuz"
 
     # Used by mkinitcpio to name the kernel
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     echo "Installing modules..."
-    make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    _make ${BUILD_FLAGS[*]} INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
         DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
     # remove build and source links
@@ -419,16 +416,14 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
+sha256sums=('ba3491f5ed6bd270a370c440434e3d69085fcdd528922fa01e73d7657db73b1e'
             'SKIP'
-            '64e27f1de56225372d29ff92dc2d8fca6ae961e7470f2364e98c5af0aef261dc'
+            '49216a8d1d09f2e291b56a0e7cb4ea9bce0869719c7823011b3626e80f22f322'
             'SKIP'
-            '5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c'
-            '821136df8fffcb4ae612cdf88af57e294490c0552c55163f8b0f7485b0a035a1'
-            'b26bfbdb0981ffb387c06f4f18fc5a15cf5c590f011dea197e1fe9e27b60a422'
+            '802946f623c69ae1a636b63697c23ca48af31a099415ed837d2c1e168a272d23'
             'SKIP')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
-)
+)sa sa sa
