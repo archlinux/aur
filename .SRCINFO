@@ -1,7 +1,7 @@
 pkgbase = python-taxi
 	pkgdesc = Timesheeting tool that focuses on simplicity
 	pkgver = 6.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sephii/taxi
 	arch = any
 	license = custom
