@@ -24,6 +24,7 @@ package() {
       mkdir -p $pkgdir/usr/share/qt6ct/colors
       mkdir -p $pkgdir/usr/share/Kvantum
       mkdir -p $pkgdir/usr/share/icewm/themes
+      mkdir -p $pkgdir/usr/share/fluxbox/styles
 
 	# Main process
 	mv Dark $pkgdir/usr/share/themes/Modern-Dark
@@ -46,9 +47,12 @@ package() {
       cd '../../Kvantum'
         mv ModernKv $pkgdir/usr/share/Kvantum
 
-    # IceWM
+    # Window Managers
       cd '../Window Managers/IceWM'
         mv IceModern $pkgdir/usr/share/icewm/themes
+
+      cd '../Fluxbox'
+        mv FluxModern $pkgdir/usr/share/fluxbox/styles
 
 	find $pkgdir/usr/ -type f -exec chmod 644 {} \;
 	find $pkgdir/usr/ -type d -exec chmod 755 {} \;
