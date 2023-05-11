@@ -52,7 +52,7 @@ if [ "${initial}x" = "x" ] ; then
            -e '/\s*# htmldocs/,/^)/{/^)/!d;}' \
            -e '/^source=/{N;s/$/\n  "bnx2x_warpcore+8727_2_5g_sgmii_arch.patch"/}' \
            -e "/^b2sums=/{s/$/\n        '94fd2e2fa31da0ce9d04e639b0fafc37128ad2f01f8ee38708c7128fdc1568e491aca9a8296316b0736f134dc7697b573e8203018d92c1e9b6ff40648501607a'/}" \
-           -e "s/^  _make htmldocs all.*/  _make all/" \
+           -e "s/^  _make htmldocs all.*/  _make -j $(($(nproc)*2)) all/" \
            -e '/^_package-docs() {/,/^}/d' \
            -e '/\s*"$pkgbase-docs"/d' PKGBUILD
 else
