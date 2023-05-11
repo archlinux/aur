@@ -1,0 +1,2213 @@
+diff --git a/.github/workflows/stale.yml b/.github/workflows/stale.yml
+deleted file mode 100644
+index 7bbc050..0000000
+--- a/.github/workflows/stale.yml
++++ /dev/null
+@@ -1,19 +0,0 @@
+-name: Mark stale issues and pull requests
+-
+-on:
+-  schedule:
+-  - cron: "0 0 * * *"
+-
+-jobs:
+-  stale:
+-
+-    runs-on: ubuntu-latest
+-
+-    steps:
+-    - uses: actions/stale@v1
+-      with:
+-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+-        stale-issue-message: 'Stale issue message'
+-        stale-pr-message: 'Stale pull request message'
+-        stale-issue-label: 'no-issue-activity'
+-        stale-pr-label: 'no-pr-activity'
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 16996c9..791ae57 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -11,6 +11,7 @@ project(ixwebsocket C CXX)
+ set (CMAKE_CXX_STANDARD 11)
+ set (CXX_STANDARD_REQUIRED ON)
+ set (CMAKE_CXX_EXTENSIONS OFF)
++set (CMAKE_EXPORT_COMPILE_COMMANDS yes)
+ 
+ option (BUILD_DEMO OFF)
+ 
+@@ -135,6 +136,7 @@ if (USE_TLS)
+     else() # default to OpenSSL on all other platforms
+       if (NOT USE_MBED_TLS) # Unless mbedtls is requested
+         set(USE_OPEN_SSL ON)
++        set(requires "openssl")
+       endif()
+     endif()
+ 
+@@ -166,7 +168,8 @@ if(BUILD_SHARED_LIBS)
+     )
+     
+     # Set library version
+-    set_target_properties(ixwebsocket PROPERTIES VERSION 11.3.2)
++    set(version 11.3.2)
++    set_target_properties(ixwebsocket PROPERTIES VERSION ${version})
+ 
+ else()
+     # Static library
+@@ -250,7 +253,7 @@ if (WIN32)
+   endif()
+ endif()
+ 
+-if (UNIX)
++if (UNIX AND NOT APPLE)
+   set(THREADS_PREFER_PTHREAD_FLAG TRUE)
+   find_package(Threads)
+   target_link_libraries(ixwebsocket PRIVATE Threads::Threads)
+@@ -286,9 +289,13 @@ if (IXWEBSOCKET_INSTALL)
+           PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ixwebsocket/
+   )
+ 
+-  configure_file("${CMAKE_CURRENT_LIST_DIR}/ixwebsocket-config.cmake.in" "${CMAKE_BINARY_DIR}/ixwebsocket-config.cmake" @ONLY)
+-  install(FILES "${CMAKE_BINARY_DIR}/ixwebsocket-config.cmake" DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ixwebsocket")
++  configure_file("${CMAKE_CURRENT_LIST_DIR}/ixwebsocket-config.cmake.in" "${CMAKE_CURRENT_BINARY_DIR}/ixwebsocket-config.cmake" @ONLY)
++  install(FILES "${CMAKE_CURRENT_BINARY_DIR}/ixwebsocket-config.cmake" DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ixwebsocket")
+   
++  set(prefix ${CMAKE_INSTALL_PREFIX})
++  configure_file("${CMAKE_CURRENT_LIST_DIR}/ixwebsocket.pc.in" "${CMAKE_CURRENT_BINARY_DIR}/ixwebsocket.pc" @ONLY)
++  install(FILES "${CMAKE_CURRENT_BINARY_DIR}/ixwebsocket.pc" DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
++
+   install(EXPORT ixwebsocket
+           FILE ixwebsocket-targets.cmake
+           NAMESPACE ixwebsocket::
+diff --git a/README.md b/README.md
+index 62f86ec..a53024e 100644
+--- a/README.md
++++ b/README.md
+@@ -107,6 +107,7 @@ If your company or project is using this library, feel free to open an issue or
+ - [Teleport](http://teleportconnect.com/), Teleport is your own personal remote robot avatar
+ - [Abaddon](https://github.com/uowuo/abaddon), An alternative Discord client made with C++/gtkmm 
+ - [NovaCoin](https://github.com/novacoin-project/novacoin), a hybrid scrypt PoW + PoS based cryptocurrency.
++- [Candy](https://github.com/lanthora/candy), A WebSocket and TUN based VPN for Linux 
+ 
+ ## Alternative libraries
+ 
+diff --git a/docs/build.md b/docs/build.md
+index 09c6f4d..a07731d 100644
+--- a/docs/build.md
++++ b/docs/build.md
+@@ -54,7 +54,7 @@ To use the installed package within a cmake project, use the following:
+  # include headers
+  include_directories(${IXWEBSOCKET_INCLUDE_DIR})
+  # ...
+- target_link_libraries(${PROJECT_NAME} ... ${IXWEBSOCKET_LIBRARY}) # Cmake will automatically fail the generation if the lib was not found, i.e is set to NOTFOUNS
++ target_link_libraries(${PROJECT_NAME} ... ${IXWEBSOCKET_LIBRARY}) # Cmake will automatically fail the generation if the lib was not found, i.e is set to NOTFOUND
+ 
+ ```
+ 
+diff --git a/docs/usage.md b/docs/usage.md
+index 9255727..57799be 100644
+--- a/docs/usage.md
++++ b/docs/usage.md
+@@ -301,7 +301,9 @@ This api was actually changed to take a weak_ptr<WebSocket> as the first argumen
+ 
+ // Run a server on localhost at a given port.
+ // Bound host name, max connections and listen backlog can also be passed in as parameters.
+-ix::WebSocketServer server(port);
++int port = 8008;
++std::string host("127.0.0.1"); // If you need this server to be accessible on a different machine, use "0.0.0.0"
++ix::WebSocketServer server(port, host);
+ 
+ server.setOnConnectionCallback(
+     [&server](std::weak_ptr<WebSocket> webSocket,
+@@ -384,7 +386,9 @@ The webSocket reference is guaranteed to be always valid ; by design the callbac
+ 
+ // Run a server on localhost at a given port.
+ // Bound host name, max connections and listen backlog can also be passed in as parameters.
+-ix::WebSocketServer server(port);
++int port = 8008;
++std::string host("127.0.0.1"); // If you need this server to be accessible on a different machine, use "0.0.0.0"
++ix::WebSocketServer server(port, host);
+ 
+ server.setOnClientMessageCallback([](std::shared_ptr<ix::ConnectionState> connectionState, ix::WebSocket & webSocket, const ix::WebSocketMessagePtr & msg) {
+     // The ConnectionState object contains information about the connection,
+@@ -624,3 +628,5 @@ For a client, specifying `caFile` can be used if connecting to a server that use
+ For a server, specifying `caFile` implies that:
+ 1. You require clients to present a certificate
+ 1. It must be signed by one of the trusted roots in the file
++
++By default, a destination's hostname is always validated against the certificate that it presents. To accept certificates with any hostname, set `ix::SocketTLSOptions::disable_hostname_validation` to `true`.
+diff --git a/ixwebsocket.pc.in b/ixwebsocket.pc.in
+new file mode 100644
+index 0000000..d1c2813
+--- /dev/null
++++ b/ixwebsocket.pc.in
+@@ -0,0 +1,11 @@
++prefix=@prefix@
++exec_prefix=${prefix}
++libdir=${exec_prefix}/lib
++includedir=${prefix}/include
++
++Name: ixwebsocket
++Description: websocket and http client and server library, with TLS support and very few dependencies
++Version: @version@
++Libs: -L${libdir} -lixwebsocket
++Cflags: -I${includedir}
++Requires: @requires@
+diff --git a/ixwebsocket/IXBase64.h b/ixwebsocket/IXBase64.h
+index cdfdc04..5640646 100644
+--- a/ixwebsocket/IXBase64.h
++++ b/ixwebsocket/IXBase64.h
+@@ -25,6 +25,7 @@
+  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  */
+ 
++#include <cstdint>
+ #include <string>
+ 
+ namespace macaron {
+diff --git a/ixwebsocket/IXBench.h b/ixwebsocket/IXBench.h
+index c4f904b..a0cd1b7 100644
+--- a/ixwebsocket/IXBench.h
++++ b/ixwebsocket/IXBench.h
+@@ -6,7 +6,7 @@
+ #pragma once
+ 
+ #include <chrono>
+-#include <stdint.h>
++#include <cstdint>
+ #include <string>
+ 
+ namespace ix
+diff --git a/ixwebsocket/IXConnectionState.h b/ixwebsocket/IXConnectionState.h
+index b7530d0..aa08d38 100644
+--- a/ixwebsocket/IXConnectionState.h
++++ b/ixwebsocket/IXConnectionState.h
+@@ -7,9 +7,9 @@
+ #pragma once
+ 
+ #include <atomic>
++#include <cstdint>
+ #include <functional>
+ #include <memory>
+-#include <stdint.h>
+ #include <string>
+ 
+ namespace ix
+diff --git a/ixwebsocket/IXDNSLookup.cpp b/ixwebsocket/IXDNSLookup.cpp
+index 9a2874f..b0283af 100644
+--- a/ixwebsocket/IXDNSLookup.cpp
++++ b/ixwebsocket/IXDNSLookup.cpp
+@@ -23,6 +23,7 @@
+ #include <chrono>
+ #include <string.h>
+ #include <thread>
++#include <utility>
+ 
+ // mingw build quirks
+ #if defined(_WIN32) && defined(__GNUC__)
+@@ -44,7 +45,7 @@ namespace ix
+         ;
+     }
+ 
+-    struct addrinfo* DNSLookup::getAddrInfo(const std::string& hostname,
++    DNSLookup::AddrInfoPtr DNSLookup::getAddrInfo(const std::string& hostname,
+                                             int port,
+                                             std::string& errMsg)
+     {
+@@ -63,10 +64,10 @@ namespace ix
+             errMsg = gai_strerror(getaddrinfo_result);
+             res = nullptr;
+         }
+-        return res;
++        return AddrInfoPtr{ res, freeaddrinfo };
+     }
+ 
+-    struct addrinfo* DNSLookup::resolve(std::string& errMsg,
++    DNSLookup::AddrInfoPtr DNSLookup::resolve(std::string& errMsg,
+                                         const CancellationRequest& isCancellationRequested,
+                                         bool cancellable)
+     {
+@@ -74,12 +75,7 @@ namespace ix
+                            : resolveUnCancellable(errMsg, isCancellationRequested);
+     }
+ 
+-    void DNSLookup::release(struct addrinfo* addr)
+-    {
+-        freeaddrinfo(addr);
+-    }
+-
+-    struct addrinfo* DNSLookup::resolveUnCancellable(
++    DNSLookup::AddrInfoPtr DNSLookup::resolveUnCancellable(
+         std::string& errMsg, const CancellationRequest& isCancellationRequested)
+     {
+         errMsg = "no error";
+@@ -94,7 +90,7 @@ namespace ix
+         return getAddrInfo(_hostname, _port, errMsg);
+     }
+ 
+-    struct addrinfo* DNSLookup::resolveCancellable(
++    DNSLookup::AddrInfoPtr DNSLookup::resolveCancellable(
+         std::string& errMsg, const CancellationRequest& isCancellationRequested)
+     {
+         errMsg = "no error";
+@@ -157,7 +153,7 @@ namespace ix
+         // gone, so we use temporary variables (res) or we pass in by copy everything that
+         // getAddrInfo needs to work.
+         std::string errMsg;
+-        struct addrinfo* res = getAddrInfo(hostname, port, errMsg);
++        auto res = getAddrInfo(hostname, port, errMsg);
+ 
+         if (auto lock = self.lock())
+         {
+@@ -181,13 +177,13 @@ namespace ix
+         return _errMsg;
+     }
+ 
+-    void DNSLookup::setRes(struct addrinfo* addr)
++    void DNSLookup::setRes(DNSLookup::AddrInfoPtr addr)
+     {
+         std::lock_guard<std::mutex> lock(_resMutex);
+-        _res = addr;
++        _res = std::move(addr);
+     }
+ 
+-    struct addrinfo* DNSLookup::getRes()
++    DNSLookup::AddrInfoPtr DNSLookup::getRes()
+     {
+         std::lock_guard<std::mutex> lock(_resMutex);
+         return _res;
+diff --git a/ixwebsocket/IXDNSLookup.h b/ixwebsocket/IXDNSLookup.h
+index fcdd103..b0bbc18 100644
+--- a/ixwebsocket/IXDNSLookup.h
++++ b/ixwebsocket/IXDNSLookup.h
+@@ -12,6 +12,7 @@
+ 
+ #include "IXCancellationRequest.h"
+ #include <atomic>
++#include <cstdint>
+ #include <memory>
+ #include <mutex>
+ #include <set>
+@@ -24,22 +25,21 @@ namespace ix
+     class DNSLookup : public std::enable_shared_from_this<DNSLookup>
+     {
+     public:
++        using AddrInfoPtr = std::shared_ptr<addrinfo>;
+         DNSLookup(const std::string& hostname, int port, int64_t wait = DNSLookup::kDefaultWait);
+         ~DNSLookup() = default;
+ 
+-        struct addrinfo* resolve(std::string& errMsg,
++        AddrInfoPtr resolve(std::string& errMsg,
+                                  const CancellationRequest& isCancellationRequested,
+                                  bool cancellable = true);
+ 
+-        void release(struct addrinfo* addr);
+-
+     private:
+-        struct addrinfo* resolveCancellable(std::string& errMsg,
++        AddrInfoPtr resolveCancellable(std::string& errMsg,
+                                             const CancellationRequest& isCancellationRequested);
+-        struct addrinfo* resolveUnCancellable(std::string& errMsg,
++        AddrInfoPtr resolveUnCancellable(std::string& errMsg,
+                                               const CancellationRequest& isCancellationRequested);
+ 
+-        static struct addrinfo* getAddrInfo(const std::string& hostname,
++        AddrInfoPtr getAddrInfo(const std::string& hostname,
+                                             int port,
+                                             std::string& errMsg);
+ 
+@@ -48,15 +48,15 @@ namespace ix
+         void setErrMsg(const std::string& errMsg);
+         const std::string& getErrMsg();
+ 
+-        void setRes(struct addrinfo* addr);
+-        struct addrinfo* getRes();
++        void setRes(AddrInfoPtr addr);
++        AddrInfoPtr getRes();
+ 
+         std::string _hostname;
+         int _port;
+         int64_t _wait;
+         const static int64_t kDefaultWait;
+ 
+-        struct addrinfo* _res;
++        AddrInfoPtr _res;
+         std::mutex _resMutex;
+ 
+         std::string _errMsg;
+diff --git a/ixwebsocket/IXHttp.h b/ixwebsocket/IXHttp.h
+index 2cf4f29..c9fc0bf 100644
+--- a/ixwebsocket/IXHttp.h
++++ b/ixwebsocket/IXHttp.h
+@@ -9,6 +9,7 @@
+ #include "IXProgressCallback.h"
+ #include "IXWebSocketHttpHeaders.h"
+ #include <atomic>
++#include <cstdint>
+ #include <tuple>
+ #include <unordered_map>
+ 
+diff --git a/ixwebsocket/IXHttpClient.cpp b/ixwebsocket/IXHttpClient.cpp
+index 00cd952..871be33 100644
+--- a/ixwebsocket/IXHttpClient.cpp
++++ b/ixwebsocket/IXHttpClient.cpp
+@@ -12,6 +12,7 @@
+ #include "IXUserAgent.h"
+ #include "IXWebSocketHttpHeaders.h"
+ #include <assert.h>
++#include <cstdint>
+ #include <cstring>
+ #include <iomanip>
+ #include <random>
+@@ -139,8 +140,9 @@ namespace ix
+ 
+         std::string protocol, host, path, query;
+         int port;
++        bool isProtocolDefaultPort;
+ 
+-        if (!UrlParser::parse(url, protocol, host, path, query, port))
++        if (!UrlParser::parse(url, protocol, host, path, query, port, isProtocolDefaultPort))
+         {
+             std::stringstream ss;
+             ss << "Cannot parse url: " << url;
+@@ -173,7 +175,12 @@ namespace ix
+         // Build request string
+         std::stringstream ss;
+         ss << verb << " " << path << " HTTP/1.1\r\n";
+-        ss << "Host: " << host << "\r\n";
++        ss << "Host: " << host;
++        if (!isProtocolDefaultPort)
++        {
++            ss << ":" << port;
++        }
++        ss << "\r\n";
+ 
+ #ifdef IXWEBSOCKET_USE_ZLIB
+         if (args->compress && !args->onChunkCallback)
+@@ -202,6 +209,12 @@ namespace ix
+             ss << "User-Agent: " << userAgent() << "\r\n";
+         }
+ 
++        // Set an origin header if missing
++        if (args->extraHeaders.find("Origin") == args->extraHeaders.end())
++        {
++            ss << "Origin: " << protocol << "://" << host << ":" << port << "\r\n";
++        }
++
+         if (verb == kPost || verb == kPut || verb == kPatch || _forceBody)
+         {
+             // Set request compression header
+diff --git a/ixwebsocket/IXHttpServer.cpp b/ixwebsocket/IXHttpServer.cpp
+index 563dca9..c5c5f84 100644
+--- a/ixwebsocket/IXHttpServer.cpp
++++ b/ixwebsocket/IXHttpServer.cpp
+@@ -10,6 +10,7 @@
+ #include "IXNetSystem.h"
+ #include "IXSocketConnect.h"
+ #include "IXUserAgent.h"
++#include <cstdint>
+ #include <cstring>
+ #include <fstream>
+ #include <sstream>
+@@ -40,6 +41,29 @@ namespace
+         auto vec = res.second;
+         return std::make_pair(res.first, std::string(vec.begin(), vec.end()));
+     }
++
++    std::string response_head_file(const std::string& file_name){
++
++        if (std::string::npos != file_name.find(".html") || std::string::npos != file_name.find(".htm"))
++            return "text/html";
++        else if (std::string::npos != file_name.find(".css"))
++            return "text/css";
++        else if (std::string::npos != file_name.find(".js") || std::string::npos != file_name.find(".mjs"))
++            return "application/x-javascript";
++        else if (std::string::npos != file_name.find(".ico"))
++            return "image/x-icon";
++        else if (std::string::npos != file_name.find(".png"))
++            return "image/png";
++        else if (std::string::npos != file_name.find(".jpg") || std::string::npos != file_name.find(".jpeg"))
++            return "image/jpeg";
++        else if (std::string::npos != file_name.find(".gif"))
++            return "image/gif";
++        else if (std::string::npos != file_name.find(".svg"))
++            return "image/svg+xml";
++        else
++            return "application/octet-stream";
++    }
++
+ } // namespace
+ 
+ namespace ix
+@@ -51,28 +75,14 @@ namespace ix
+                            int backlog,
+                            size_t maxConnections,
+                            int addressFamily,
+-                           int timeoutSecs)
+-        : SocketServer(port, host, backlog, maxConnections, addressFamily)
+-        , _connectedClientsCount(0)
++                           int timeoutSecs,
++                           int handshakeTimeoutSecs)
++        : WebSocketServer(port, host, backlog, maxConnections, handshakeTimeoutSecs, addressFamily)
+         , _timeoutSecs(timeoutSecs)
+     {
+         setDefaultConnectionCallback();
+     }
+ 
+-    HttpServer::~HttpServer()
+-    {
+-        stop();
+-    }
+-
+-    void HttpServer::stop()
+-    {
+-        stopAcceptingConnections();
+-
+-        // FIXME: cancelling / closing active clients ...
+-
+-        SocketServer::stop();
+-    }
+-
+     void HttpServer::setOnConnectionCallback(const OnConnectionCallback& callback)
+     {
+         _onConnectionCallback = callback;
+@@ -81,34 +91,35 @@ namespace ix
+     void HttpServer::handleConnection(std::unique_ptr<Socket> socket,
+                                       std::shared_ptr<ConnectionState> connectionState)
+     {
+-        _connectedClientsCount++;
+-
+         auto ret = Http::parseRequest(socket, _timeoutSecs);
+         // FIXME: handle errors in parseRequest
+ 
+         if (std::get<0>(ret))
+         {
+-            auto response = _onConnectionCallback(std::get<2>(ret), connectionState);
+-            if (!Http::sendResponse(response, socket))
++            auto request = std::get<2>(ret);
++            std::shared_ptr<ix::HttpResponse> response;
++            if (request->headers["Upgrade"] == "websocket")
+             {
+-                logError("Cannot send response");
++                WebSocketServer::handleUpgrade(std::move(socket), connectionState, request);
++            }
++            else
++            {
++                auto response = _onConnectionCallback(request, connectionState);
++                if (!Http::sendResponse(response, socket))
++                {
++                    logError("Cannot send response");
++                }
+             }
+         }
+         connectionState->setTerminated();
+-
+-        _connectedClientsCount--;
+-    }
+-
+-    size_t HttpServer::getConnectedClientsCount()
+-    {
+-        return _connectedClientsCount;
+     }
+ 
+     void HttpServer::setDefaultConnectionCallback()
+     {
+         setOnConnectionCallback(
+             [this](HttpRequestPtr request,
+-                   std::shared_ptr<ConnectionState> connectionState) -> HttpResponsePtr {
++                   std::shared_ptr<ConnectionState> connectionState) -> HttpResponsePtr
++            {
+                 std::string uri(request->uri);
+                 if (uri.empty() || uri == "/")
+                 {
+@@ -117,6 +128,7 @@ namespace ix
+ 
+                 WebSocketHttpHeaders headers;
+                 headers["Server"] = userAgent();
++                headers["Content-Type"] = response_head_file(uri);
+ 
+                 std::string path("." + uri);
+                 auto res = readAsString(path);
+@@ -165,9 +177,9 @@ namespace ix
+         // See https://developer.mozilla.org/en-US/docs/Web/HTTP/Redirections
+         //
+         setOnConnectionCallback(
+-            [this,
+-             redirectUrl](HttpRequestPtr request,
+-                          std::shared_ptr<ConnectionState> connectionState) -> HttpResponsePtr {
++            [this, redirectUrl](HttpRequestPtr request,
++                                std::shared_ptr<ConnectionState> connectionState) -> HttpResponsePtr
++            {
+                 WebSocketHttpHeaders headers;
+                 headers["Server"] = userAgent();
+ 
+@@ -198,7 +210,8 @@ namespace ix
+     {
+         setOnConnectionCallback(
+             [this](HttpRequestPtr request,
+-                   std::shared_ptr<ConnectionState> connectionState) -> HttpResponsePtr {
++                   std::shared_ptr<ConnectionState> connectionState) -> HttpResponsePtr
++            {
+                 WebSocketHttpHeaders headers;
+                 headers["Server"] = userAgent();
+ 
+diff --git a/ixwebsocket/IXHttpServer.h b/ixwebsocket/IXHttpServer.h
+index 7de6763..0d74d70 100644
+--- a/ixwebsocket/IXHttpServer.h
++++ b/ixwebsocket/IXHttpServer.h
+@@ -7,8 +7,8 @@
+ #pragma once
+ 
+ #include "IXHttp.h"
+-#include "IXSocketServer.h"
+ #include "IXWebSocket.h"
++#include "IXWebSocketServer.h"
+ #include <functional>
+ #include <memory>
+ #include <mutex>
+@@ -19,7 +19,7 @@
+ 
+ namespace ix
+ {
+-    class HttpServer final : public SocketServer
++    class HttpServer final : public WebSocketServer
+     {
+     public:
+         using OnConnectionCallback =
+@@ -30,9 +30,8 @@ namespace ix
+                    int backlog = SocketServer::kDefaultTcpBacklog,
+                    size_t maxConnections = SocketServer::kDefaultMaxConnections,
+                    int addressFamily = SocketServer::kDefaultAddressFamily,
+-                   int timeoutSecs = HttpServer::kDefaultTimeoutSecs);
+-        virtual ~HttpServer();
+-        virtual void stop() final;
++                   int timeoutSecs = HttpServer::kDefaultTimeoutSecs,
++                   int handshakeTimeoutSecs = WebSocketServer::kDefaultHandShakeTimeoutSecs);
+ 
+         void setOnConnectionCallback(const OnConnectionCallback& callback);
+ 
+@@ -41,10 +40,10 @@ namespace ix
+         void makeDebugServer();
+ 
+         int getTimeoutSecs();
++
+     private:
+         // Member variables
+         OnConnectionCallback _onConnectionCallback;
+-        std::atomic<int> _connectedClientsCount;
+ 
+         const static int kDefaultTimeoutSecs;
+         int _timeoutSecs;
+@@ -52,7 +51,6 @@ namespace ix
+         // Methods
+         virtual void handleConnection(std::unique_ptr<Socket>,
+                                       std::shared_ptr<ConnectionState> connectionState) final;
+-        virtual size_t getConnectedClientsCount() final;
+ 
+         void setDefaultConnectionCallback();
+     };
+diff --git a/ixwebsocket/IXNetSystem.h b/ixwebsocket/IXNetSystem.h
+index 9639544..b6c3b9d 100644
+--- a/ixwebsocket/IXNetSystem.h
++++ b/ixwebsocket/IXNetSystem.h
+@@ -6,6 +6,12 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
++
++#ifdef __FreeBSD__
++#include <sys/types.h>
++#endif
++
+ #ifdef _WIN32
+ 
+ #ifndef WIN32_LEAN_AND_MEAN
+diff --git a/ixwebsocket/IXSelectInterrupt.h b/ixwebsocket/IXSelectInterrupt.h
+index de6db12..c4fda09 100644
+--- a/ixwebsocket/IXSelectInterrupt.h
++++ b/ixwebsocket/IXSelectInterrupt.h
+@@ -6,8 +6,8 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <memory>
+-#include <stdint.h>
+ #include <string>
+ 
+ namespace ix
+diff --git a/ixwebsocket/IXSelectInterruptEvent.h b/ixwebsocket/IXSelectInterruptEvent.h
+index d965661..fc8505f 100644
+--- a/ixwebsocket/IXSelectInterruptEvent.h
++++ b/ixwebsocket/IXSelectInterruptEvent.h
+@@ -5,8 +5,8 @@
+ #pragma once
+ 
+ #include "IXSelectInterrupt.h"
++#include <cstdint>
+ #include <mutex>
+-#include <stdint.h>
+ #include <string>
+ #include <deque>
+ #ifdef _WIN32
+diff --git a/ixwebsocket/IXSelectInterruptPipe.h b/ixwebsocket/IXSelectInterruptPipe.h
+index 7668915..26078b2 100644
+--- a/ixwebsocket/IXSelectInterruptPipe.h
++++ b/ixwebsocket/IXSelectInterruptPipe.h
+@@ -7,6 +7,7 @@
+ #pragma once
+ 
+ #include "IXSelectInterrupt.h"
++#include <cstdint>
+ #include <mutex>
+ #include <stdint.h>
+ #include <string>
+diff --git a/ixwebsocket/IXSocket.cpp b/ixwebsocket/IXSocket.cpp
+index dc14bc9..af604fa 100644
+--- a/ixwebsocket/IXSocket.cpp
++++ b/ixwebsocket/IXSocket.cpp
+@@ -14,7 +14,6 @@
+ #include <array>
+ #include <assert.h>
+ #include <fcntl.h>
+-#include <stdint.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+diff --git a/ixwebsocket/IXSocket.h b/ixwebsocket/IXSocket.h
+index d1fa969..af8bda0 100644
+--- a/ixwebsocket/IXSocket.h
++++ b/ixwebsocket/IXSocket.h
+@@ -7,6 +7,7 @@
+ #pragma once
+ 
+ #include <atomic>
++#include <cstdint>
+ #include <functional>
+ #include <memory>
+ #include <mutex>
+diff --git a/ixwebsocket/IXSocketAppleSSL.cpp b/ixwebsocket/IXSocketAppleSSL.cpp
+index f58e0c8..3a529dd 100644
+--- a/ixwebsocket/IXSocketAppleSSL.cpp
++++ b/ixwebsocket/IXSocketAppleSSL.cpp
+@@ -205,7 +205,9 @@ namespace ix
+                 _sslContext, SocketAppleSSL::readFromSocket, SocketAppleSSL::writeToSocket);
+             SSLSetConnection(_sslContext, (SSLConnectionRef)(long) _sockfd);
+             SSLSetProtocolVersionMin(_sslContext, kTLSProtocol12);
+-            SSLSetPeerDomainName(_sslContext, host.c_str(), host.size());
++
++            if (!_tlsOptions.disable_hostname_validation)
++                SSLSetPeerDomainName(_sslContext, host.c_str(), host.size());
+ 
+             if (_tlsOptions.isPeerVerifyDisabled())
+             {
+diff --git a/ixwebsocket/IXSocketConnect.cpp b/ixwebsocket/IXSocketConnect.cpp
+index 59ed76d..6c9a6d5 100644
+--- a/ixwebsocket/IXSocketConnect.cpp
++++ b/ixwebsocket/IXSocketConnect.cpp
+@@ -102,7 +102,7 @@ namespace ix
+         // First do DNS resolution
+         //
+         auto dnsLookup = std::make_shared<DNSLookup>(hostname, port);
+-        struct addrinfo* res = dnsLookup->resolve(errMsg, isCancellationRequested);
++        auto res = dnsLookup->resolve(errMsg, isCancellationRequested);
+         if (res == nullptr)
+         {
+             return -1;
+@@ -112,7 +112,7 @@ namespace ix
+ 
+         // iterate through the records to find a working peer
+         struct addrinfo* address;
+-        for (address = res; address != nullptr; address = address->ai_next)
++        for (address = res.get(); address != nullptr; address = address->ai_next)
+         {
+             //
+             // Second try to connect to the remote host
+@@ -124,7 +124,6 @@ namespace ix
+             }
+         }
+ 
+-        freeaddrinfo(res);
+         return sockfd;
+     }
+ 
+diff --git a/ixwebsocket/IXSocketMbedTLS.cpp b/ixwebsocket/IXSocketMbedTLS.cpp
+index 01f8c87..f5c0cf6 100644
+--- a/ixwebsocket/IXSocketMbedTLS.cpp
++++ b/ixwebsocket/IXSocketMbedTLS.cpp
+@@ -14,6 +14,7 @@
+ #include "IXNetSystem.h"
+ #include "IXSocket.h"
+ #include "IXSocketConnect.h"
++#include <cstdint>
+ #include <string.h>
+ 
+ #ifdef _WIN32
+@@ -48,7 +49,7 @@ namespace ix
+         mbedtls_pk_init(&_pkey);
+     }
+ 
+-    bool SocketMbedTLS::loadSystemCertificates(std::string& errorMsg)
++    bool SocketMbedTLS::loadSystemCertificates(std::string& /* errorMsg */)
+     {
+ #ifdef _WIN32
+         DWORD flags = CERT_STORE_READONLY_FLAG | CERT_STORE_OPEN_EXISTING_FLAG |
+@@ -195,10 +196,13 @@ namespace ix
+             return false;
+         }
+ 
+-        if (!host.empty() && mbedtls_ssl_set_hostname(&_ssl, host.c_str()) != 0)
++        if (!_tlsOptions.disable_hostname_validation)
+         {
+-            errMsg = "SNI setup failed";
+-            return false;
++            if (!host.empty() && mbedtls_ssl_set_hostname(&_ssl, host.c_str()) != 0)
++            {
++                errMsg = "SNI setup failed";
++                return false;
++            }
+         }
+ 
+         return true;
+diff --git a/ixwebsocket/IXSocketOpenSSL.cpp b/ixwebsocket/IXSocketOpenSSL.cpp
+index 7fb6f6d..12c9567 100644
+--- a/ixwebsocket/IXSocketOpenSSL.cpp
++++ b/ixwebsocket/IXSocketOpenSSL.cpp
+@@ -301,7 +301,11 @@ namespace ix
+     }
+ 
+     bool SocketOpenSSL::openSSLCheckServerCert(SSL* ssl,
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+                                                const std::string& hostname,
++#else
++                                               const std::string& /* hostname */,
++#endif
+                                                std::string& errMsg)
+     {
+         X509* server_cert = SSL_get_peer_certificate(ssl);
+@@ -390,6 +394,11 @@ namespace ix
+             int connect_result = SSL_connect(_ssl_connection);
+             if (connect_result == 1)
+             {
++                if (_tlsOptions.disable_hostname_validation)
++                {
++                    return true;
++                }
++
+                 return openSSLCheckServerCert(_ssl_connection, host, errMsg);
+             }
+             int reason = SSL_get_error(_ssl_connection, connect_result);
+@@ -754,8 +763,11 @@ namespace ix
+             // (The docs say that this should work from 1.0.2, and is the default from
+             // 1.1.0, but it does not. To be on the safe side, the manual test
+             // below is enabled for all versions prior to 1.1.0.)
+-            X509_VERIFY_PARAM* param = SSL_get0_param(_ssl_connection);
+-            X509_VERIFY_PARAM_set1_host(param, host.c_str(), host.size());
++            if (!_tlsOptions.disable_hostname_validation)
++            {
++                X509_VERIFY_PARAM* param = SSL_get0_param(_ssl_connection);
++                X509_VERIFY_PARAM_set1_host(param, host.c_str(), host.size());
++            }
+ #endif
+             handshakeSuccessful = openSSLClientHandshake(host, errMsg, isCancellationRequested);
+         }
+diff --git a/ixwebsocket/IXSocketServer.cpp b/ixwebsocket/IXSocketServer.cpp
+index 5d7512b..c4ea1af 100644
+--- a/ixwebsocket/IXSocketServer.cpp
++++ b/ixwebsocket/IXSocketServer.cpp
+@@ -219,6 +219,10 @@ namespace ix
+         if (_gcThread.joinable())
+         {
+             _stopGc = true;
++            {
++                std::lock_guard<std::mutex> lock{ _conditionVariableMutexGC };
++                _canContinueGC = true;
++            }
+             _conditionVariableGC.notify_one();
+             _gcThread.join();
+             _stopGc = false;
+@@ -451,7 +455,10 @@ namespace ix
+             if (!_stopGc)
+             {
+                 std::unique_lock<std::mutex> lock(_conditionVariableMutexGC);
+-                _conditionVariableGC.wait(lock);
++                if(!_canContinueGC) {
++                    _conditionVariableGC.wait(lock, [this]{ return _canContinueGC; });
++                }
++                _canContinueGC = false;
+             }
+         }
+     }
+@@ -465,6 +472,10 @@ namespace ix
+     {
+         // a connection got terminated, we can run the connection thread GC,
+         // so wake up the thread responsible for that
++        {
++            std::lock_guard<std::mutex> lock{ _conditionVariableMutexGC };
++            _canContinueGC = true;
++        }
+         _conditionVariableGC.notify_one();
+     }
+ 
+diff --git a/ixwebsocket/IXSocketServer.h b/ixwebsocket/IXSocketServer.h
+index fe0f7e2..c56b650 100644
+--- a/ixwebsocket/IXSocketServer.h
++++ b/ixwebsocket/IXSocketServer.h
+@@ -126,5 +126,6 @@ namespace ix
+         // as a connection
+         std::condition_variable _conditionVariableGC;
+         std::mutex _conditionVariableMutexGC;
++        bool _canContinueGC{ false };
+     };
+ } // namespace ix
+diff --git a/ixwebsocket/IXSocketTLSOptions.h b/ixwebsocket/IXSocketTLSOptions.h
+index e396b38..2b5793b 100644
+--- a/ixwebsocket/IXSocketTLSOptions.h
++++ b/ixwebsocket/IXSocketTLSOptions.h
+@@ -33,6 +33,9 @@ namespace ix
+         // whether tls is enabled, used for server code
+         bool tls = false;
+ 
++        // whether to skip validating the peer's hostname against the certificate presented
++        bool disable_hostname_validation = false;
++
+         bool hasCertAndKey() const;
+ 
+         bool isUsingSystemDefaults() const;
+diff --git a/ixwebsocket/IXUrlParser.cpp b/ixwebsocket/IXUrlParser.cpp
+index 9963052..aa1ef40 100644
+--- a/ixwebsocket/IXUrlParser.cpp
++++ b/ixwebsocket/IXUrlParser.cpp
+@@ -333,6 +333,19 @@ namespace
+ 
+         return Result;
+     }
++
++    int getProtocolPort(const std::string& protocol)
++    {
++        if (protocol == "ws" || protocol == "http")
++        {
++            return 80;
++        }
++        else if (protocol == "wss" || protocol == "https")
++        {
++            return 443;
++        }
++        return -1;
++    }
+ } // namespace
+ 
+ namespace ix
+@@ -343,6 +356,18 @@ namespace ix
+                           std::string& path,
+                           std::string& query,
+                           int& port)
++    {
++        bool isProtocolDefaultPort;
++        return parse(url, protocol, host, path, query, port, isProtocolDefaultPort);
++    }
++
++    bool UrlParser::parse(const std::string& url,
++                              std::string& protocol,
++                              std::string& host,
++                              std::string& path,
++                              std::string& query,
++                              int& port,
++                              bool& isProtocolDefaultPort)
+     {
+         clParseURL res = clParseURL::ParseURL(url);
+ 
+@@ -356,23 +381,12 @@ namespace ix
+         path = res.m_Path;
+         query = res.m_Query;
+ 
++        const auto protocolPort = getProtocolPort(protocol);
+         if (!res.GetPort(&port))
+         {
+-            if (protocol == "ws" || protocol == "http")
+-            {
+-                port = 80;
+-            }
+-            else if (protocol == "wss" || protocol == "https")
+-            {
+-                port = 443;
+-            }
+-            else
+-            {
+-                // Invalid protocol. Should be caught by regex check
+-                // but this missing branch trigger cpplint linter.
+-                return false;
+-            }
++            port = protocolPort;
+         }
++        isProtocolDefaultPort = port == protocolPort;
+ 
+         if (path.empty())
+         {
+diff --git a/ixwebsocket/IXUrlParser.h b/ixwebsocket/IXUrlParser.h
+index 40e6b6e..2737fa8 100644
+--- a/ixwebsocket/IXUrlParser.h
++++ b/ixwebsocket/IXUrlParser.h
+@@ -19,5 +19,13 @@ namespace ix
+                           std::string& path,
+                           std::string& query,
+                           int& port);
++
++        static bool parse(const std::string& url,
++                          std::string& protocol,
++                          std::string& host,
++                          std::string& path,
++                          std::string& query,
++                          int& port,
++                          bool& isProtocolDefaultPort);
+     };
+ } // namespace ix
+diff --git a/ixwebsocket/IXUuid.cpp b/ixwebsocket/IXUuid.cpp
+index 0d82ef7..94d0516 100644
+--- a/ixwebsocket/IXUuid.cpp
++++ b/ixwebsocket/IXUuid.cpp
+@@ -16,6 +16,7 @@
+ 
+ #include "IXUuid.h"
+ 
++#include <cstdint>
+ #include <iomanip>
+ #include <random>
+ #include <sstream>
+diff --git a/ixwebsocket/IXWebSocket.cpp b/ixwebsocket/IXWebSocket.cpp
+index 7aab790..1a879a7 100644
+--- a/ixwebsocket/IXWebSocket.cpp
++++ b/ixwebsocket/IXWebSocket.cpp
+@@ -13,6 +13,7 @@
+ #include "IXWebSocketHandshake.h"
+ #include <cassert>
+ #include <cmath>
++#include <cstdint>
+ 
+ 
+ namespace
+@@ -39,9 +40,11 @@ namespace ix
+         , _handshakeTimeoutSecs(kDefaultHandShakeTimeoutSecs)
+         , _enablePong(kDefaultEnablePong)
+         , _pingIntervalSecs(kDefaultPingIntervalSecs)
++        , _pingType(SendMessageKind::Ping)
+     {
+         _ws.setOnCloseCallback(
+-            [this](uint16_t code, const std::string& reason, size_t wireSize, bool remote) {
++            [this](uint16_t code, const std::string& reason, size_t wireSize, bool remote)
++            {
+                 _onMessageCallback(
+                     ix::make_unique<WebSocketMessage>(WebSocketMessageType::Close,
+                                                       emptyMsg,
+@@ -100,6 +103,17 @@ namespace ix
+         return _perMessageDeflateOptions;
+     }
+ 
++    void WebSocket::setPingMessage(const std::string& sendMessage, SendMessageKind pingType)
++    {
++        std::lock_guard<std::mutex> lock(_configMutex);
++        _pingMessage = sendMessage;
++        _ws.setPingMessage(_pingMessage, pingType);
++    }
++    const std::string WebSocket::getPingMessage() const
++    {
++        std::lock_guard<std::mutex> lock(_configMutex);
++        return _pingMessage;
++    }
+     void WebSocket::setPingInterval(int pingIntervalSecs)
+     {
+         std::lock_guard<std::mutex> lock(_configMutex);
+@@ -232,7 +246,7 @@ namespace ix
+         if (_pingIntervalSecs > 0)
+         {
+             // Send a heart beat right away
+-            _ws.sendHeartBeat();
++            _ws.sendHeartBeat(_pingType);
+         }
+ 
+         return status;
+@@ -240,7 +254,8 @@ namespace ix
+ 
+     WebSocketInitResult WebSocket::connectToSocket(std::unique_ptr<Socket> socket,
+                                                    int timeoutSecs,
+-                                                   bool enablePerMessageDeflate)
++                                                   bool enablePerMessageDeflate,
++                                                   HttpRequestPtr request)
+     {
+         {
+             std::lock_guard<std::mutex> lock(_configMutex);
+@@ -249,7 +264,7 @@ namespace ix
+         }
+ 
+         WebSocketInitResult status =
+-            _ws.connectToSocket(std::move(socket), timeoutSecs, enablePerMessageDeflate);
++            _ws.connectToSocket(std::move(socket), timeoutSecs, enablePerMessageDeflate, request);
+         if (!status.success)
+         {
+             return status;
+@@ -266,7 +281,7 @@ namespace ix
+         if (_pingIntervalSecs > 0)
+         {
+             // Send a heart beat right away
+-            _ws.sendHeartBeat();
++            _ws.sendHeartBeat(_pingType);
+         }
+ 
+         return status;
+@@ -384,8 +399,9 @@ namespace ix
+                 [this](const std::string& msg,
+                        size_t wireSize,
+                        bool decompressionError,
+-                       WebSocketTransport::MessageKind messageKind) {
+-                    WebSocketMessageType webSocketMessageType{WebSocketMessageType::Error};
++                       WebSocketTransport::MessageKind messageKind)
++                {
++                    WebSocketMessageType webSocketMessageType {WebSocketMessageType::Error};
+                     switch (messageKind)
+                     {
+                         case WebSocketTransport::MessageKind::MSG_TEXT:
+@@ -503,13 +519,13 @@ namespace ix
+         return sendMessage(text, SendMessageKind::Text, onProgressCallback);
+     }
+ 
+-    WebSocketSendInfo WebSocket::ping(const std::string& text)
++    WebSocketSendInfo WebSocket::ping(const std::string& text, SendMessageKind pingType)
+     {
+         // Standard limit ping message size
+         constexpr size_t pingMaxPayloadSize = 125;
+         if (text.size() > pingMaxPayloadSize) return WebSocketSendInfo(false);
+ 
+-        return sendMessage(text, SendMessageKind::Ping);
++        return sendMessage(text, pingType);
+     }
+ 
+     WebSocketSendInfo WebSocket::sendMessage(const IXWebSocketSendData& message,
+diff --git a/ixwebsocket/IXWebSocket.h b/ixwebsocket/IXWebSocket.h
+index 37df88c..7adfe16 100644
+--- a/ixwebsocket/IXWebSocket.h
++++ b/ixwebsocket/IXWebSocket.h
+@@ -16,11 +16,12 @@
+ #include "IXWebSocketHttpHeaders.h"
+ #include "IXWebSocketMessage.h"
+ #include "IXWebSocketPerMessageDeflateOptions.h"
+-#include "IXWebSocketSendInfo.h"
+ #include "IXWebSocketSendData.h"
++#include "IXWebSocketSendInfo.h"
+ #include "IXWebSocketTransport.h"
+ #include <atomic>
+ #include <condition_variable>
++#include <cstdint>
+ #include <mutex>
+ #include <string>
+ #include <thread>
+@@ -53,6 +54,8 @@ namespace ix
+         void setPerMessageDeflateOptions(
+             const WebSocketPerMessageDeflateOptions& perMessageDeflateOptions);
+         void setTLSOptions(const SocketTLSOptions& socketTLSOptions);
++        void setPingMessage(const std::string& sendMessage,
++                            SendMessageKind pingType = SendMessageKind::Ping);
+         void setPingInterval(int pingIntervalSecs);
+         void enablePong();
+         void disablePong();
+@@ -88,7 +91,7 @@ namespace ix
+                                        const OnProgressCallback& onProgressCallback = nullptr);
+         WebSocketSendInfo sendText(const std::string& text,
+                                    const OnProgressCallback& onProgressCallback = nullptr);
+-        WebSocketSendInfo ping(const std::string& text);
++        WebSocketSendInfo ping(const std::string& text,SendMessageKind pingType = SendMessageKind::Ping);
+ 
+         void close(uint16_t code = WebSocketCloseConstants::kNormalClosureCode,
+                    const std::string& reason = WebSocketCloseConstants::kNormalClosureMessage);
+@@ -103,6 +106,7 @@ namespace ix
+ 
+         const std::string getUrl() const;
+         const WebSocketPerMessageDeflateOptions getPerMessageDeflateOptions() const;
++        const std::string getPingMessage() const;
+         int getPingInterval() const;
+         size_t bufferedAmount() const;
+ 
+@@ -128,7 +132,8 @@ namespace ix
+         // Server
+         WebSocketInitResult connectToSocket(std::unique_ptr<Socket>,
+                                             int timeoutSecs,
+-                                            bool enablePerMessageDeflate);
++                                            bool enablePerMessageDeflate,
++                                            HttpRequestPtr request = nullptr);
+ 
+         WebSocketTransport _ws;
+ 
+@@ -169,6 +174,8 @@ namespace ix
+         // Optional ping and pong timeout
+         int _pingIntervalSecs;
+         int _pingTimeoutSecs;
++        std::string _pingMessage;
++        SendMessageKind _pingType;
+         static const int kDefaultPingIntervalSecs;
+         static const int kDefaultPingTimeoutSecs;
+ 
+diff --git a/ixwebsocket/IXWebSocketHandshake.cpp b/ixwebsocket/IXWebSocketHandshake.cpp
+index 53b3c80..206b079 100644
+--- a/ixwebsocket/IXWebSocketHandshake.cpp
++++ b/ixwebsocket/IXWebSocketHandshake.cpp
+@@ -87,6 +87,7 @@ namespace ix
+     WebSocketInitResult WebSocketHandshake::clientHandshake(
+         const std::string& url,
+         const WebSocketHttpHeaders& extraHeaders,
++        const std::string& protocol,
+         const std::string& host,
+         const std::string& path,
+         int port,
+@@ -125,6 +126,12 @@ namespace ix
+             ss << "User-Agent: " << userAgent() << "\r\n";
+         }
+ 
++        // Set an origin header if missing
++        if (extraHeaders.find("Origin") == extraHeaders.end())
++        {
++            ss << "Origin: " << protocol << "://" << host << ":" << port << "\r\n";
++        }
++
+         for (auto& it : extraHeaders)
+         {
+             ss << it.first << ": " << it.second << "\r\n";
+@@ -240,28 +247,42 @@ namespace ix
+     }
+ 
+     WebSocketInitResult WebSocketHandshake::serverHandshake(int timeoutSecs,
+-                                                            bool enablePerMessageDeflate)
++                                                            bool enablePerMessageDeflate,
++                                                            HttpRequestPtr request)
+     {
+         _requestInitCancellation = false;
+ 
+         auto isCancellationRequested =
+             makeCancellationRequestWithTimeout(timeoutSecs, _requestInitCancellation);
+ 
+-        // Read first line
+-        auto lineResult = _socket->readLine(isCancellationRequested);
+-        auto lineValid = lineResult.first;
+-        auto line = lineResult.second;
++        std::string method;
++        std::string uri;
++        std::string httpVersion;
+ 
+-        if (!lineValid)
++        if (request)
+         {
+-            return sendErrorResponse(400, "Error reading HTTP request line");
++            method = request->method;
++            uri = request->uri;
++            httpVersion = request->version;
+         }
++        else
++        {
++            // Read first line
++            auto lineResult = _socket->readLine(isCancellationRequested);
++            auto lineValid = lineResult.first;
++            auto line = lineResult.second;
++
++            if (!lineValid)
++            {
++                return sendErrorResponse(400, "Error reading HTTP request line");
++            }
+ 
+-        // Validate request line (GET /foo HTTP/1.1\r\n)
+-        auto requestLine = Http::parseRequestLine(line);
+-        auto method = std::get<0>(requestLine);
+-        auto uri = std::get<1>(requestLine);
+-        auto httpVersion = std::get<2>(requestLine);
++            // Validate request line (GET /foo HTTP/1.1\r\n)
++            auto requestLine = Http::parseRequestLine(line);
++            method = std::get<0>(requestLine);
++            uri = std::get<1>(requestLine);
++            httpVersion = std::get<2>(requestLine);
++        }
+ 
+         if (method != "GET")
+         {
+@@ -274,14 +295,22 @@ namespace ix
+                                      "Invalid HTTP version, need HTTP/1.1, got: " + httpVersion);
+         }
+ 
+-        // Retrieve and validate HTTP headers
+-        auto result = parseHttpHeaders(_socket, isCancellationRequested);
+-        auto headersValid = result.first;
+-        auto headers = result.second;
+-
+-        if (!headersValid)
++        WebSocketHttpHeaders headers;
++        if (request)
+         {
+-            return sendErrorResponse(400, "Error parsing HTTP headers");
++            headers = request->headers;
++        }
++        else
++        {
++            // Retrieve and validate HTTP headers
++            auto result = parseHttpHeaders(_socket, isCancellationRequested);
++            auto headersValid = result.first;
++            headers = result.second;
++
++            if (!headersValid)
++            {
++                return sendErrorResponse(400, "Error parsing HTTP headers");
++            }
+         }
+ 
+         if (headers.find("sec-websocket-key") == headers.end())
+diff --git a/ixwebsocket/IXWebSocketHandshake.h b/ixwebsocket/IXWebSocketHandshake.h
+index 0a275e4..a6bf2a1 100644
+--- a/ixwebsocket/IXWebSocketHandshake.h
++++ b/ixwebsocket/IXWebSocketHandshake.h
+@@ -7,6 +7,7 @@
+ #pragma once
+ 
+ #include "IXCancellationRequest.h"
++#include "IXHttp.h"
+ #include "IXSocket.h"
+ #include "IXWebSocketHttpHeaders.h"
+ #include "IXWebSocketInitResult.h"
+@@ -30,12 +31,15 @@ namespace ix
+ 
+         WebSocketInitResult clientHandshake(const std::string& url,
+                                             const WebSocketHttpHeaders& extraHeaders,
++                                            const std::string& protocol,
+                                             const std::string& host,
+                                             const std::string& path,
+                                             int port,
+                                             int timeoutSecs);
+ 
+-        WebSocketInitResult serverHandshake(int timeoutSecs, bool enablePerMessageDeflate);
++        WebSocketInitResult serverHandshake(int timeoutSecs,
++                                            bool enablePerMessageDeflate,
++                                            HttpRequestPtr request = nullptr);
+ 
+     private:
+         std::string genRandomString(const int len);
+diff --git a/ixwebsocket/IXWebSocketPerMessageDeflate.cpp b/ixwebsocket/IXWebSocketPerMessageDeflate.cpp
+index 1c5f195..d255f49 100644
+--- a/ixwebsocket/IXWebSocketPerMessageDeflate.cpp
++++ b/ixwebsocket/IXWebSocketPerMessageDeflate.cpp
+@@ -46,6 +46,8 @@
+  *
+  */
+ 
++#include <cstdint>
++
+ #include "IXWebSocketPerMessageDeflate.h"
+ 
+ #include "IXUniquePtr.h"
+diff --git a/ixwebsocket/IXWebSocketPerMessageDeflateCodec.h b/ixwebsocket/IXWebSocketPerMessageDeflateCodec.h
+index 8c0d6b1..f613e5a 100644
+--- a/ixwebsocket/IXWebSocketPerMessageDeflateCodec.h
++++ b/ixwebsocket/IXWebSocketPerMessageDeflateCodec.h
+@@ -10,6 +10,7 @@
+ #include "zlib.h"
+ #endif
+ #include <array>
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ #include "IXWebSocketSendData.h"
+diff --git a/ixwebsocket/IXWebSocketPerMessageDeflateOptions.h b/ixwebsocket/IXWebSocketPerMessageDeflateOptions.h
+index 7cd33c0..95751b6 100644
+--- a/ixwebsocket/IXWebSocketPerMessageDeflateOptions.h
++++ b/ixwebsocket/IXWebSocketPerMessageDeflateOptions.h
+@@ -6,6 +6,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <string>
+ 
+ namespace ix
+diff --git a/ixwebsocket/IXWebSocketSendData.h b/ixwebsocket/IXWebSocketSendData.h
+index 86031aa..0ca1d51 100644
+--- a/ixwebsocket/IXWebSocketSendData.h
++++ b/ixwebsocket/IXWebSocketSendData.h
+@@ -1,128 +1,129 @@
+-/*
+- *  IXWebSocketSendData.h
+- *
+- *  WebSocket (Binary/Text) send data buffer
+- */
+-
+-#pragma once
+-
+-#include <string>
+-#include <vector>
+-#include <iterator>
+-
+-namespace ix
+-{
+-    /*
+-    * IXWebSocketSendData implements a wrapper for std::string, std:vector<char/uint8_t> and char*.
+-    * It removes the necessarity to copy the data or string into a std::string 
+-    */
+-    class IXWebSocketSendData {
+-    public:
+-
+-        template<typename T>
+-        struct IXWebSocketSendData_const_iterator
+-            //: public std::iterator<std::forward_iterator_tag, T>
+-        {
+-            typedef IXWebSocketSendData_const_iterator<T> const_iterator;
+-
+-            using iterator_category = std::forward_iterator_tag;
+-            using difference_type = std::ptrdiff_t;
+-            using value_type = T;
+-            using pointer = value_type*;
+-            using reference = const value_type&;
+-
+-            pointer _ptr;
+-        public:
+-            IXWebSocketSendData_const_iterator() : _ptr(nullptr) {}
+-            IXWebSocketSendData_const_iterator(pointer ptr) : _ptr(ptr) {}
+-            ~IXWebSocketSendData_const_iterator() {}
+-
+-            const_iterator  operator++(int) { return const_iterator(_ptr++); }
+-            const_iterator& operator++() { ++_ptr; return *this; }
+-            reference       operator* () const { return *_ptr; }
+-            pointer         operator->() const { return _ptr; }
+-            const_iterator  operator+ (const difference_type offset) const { return const_iterator(_ptr + offset); }
+-            const_iterator  operator- (const difference_type offset) const { return const_iterator(_ptr - offset); }
+-            difference_type operator- (const const_iterator& rhs) const { return _ptr - rhs._ptr; }
+-            bool            operator==(const const_iterator& rhs) const { return _ptr == rhs._ptr; }
+-            bool            operator!=(const const_iterator& rhs) const { return _ptr != rhs._ptr; }
+-            const_iterator& operator+=(const difference_type offset) { _ptr += offset; return *this; }
+-            const_iterator& operator-=(const difference_type offset) { _ptr -= offset; return *this; }
+-        };
+-
+-        using const_iterator = IXWebSocketSendData_const_iterator<char>;
+-
+-        /* The assigned std::string must be kept alive for the lifetime of the input buffer */
+-        IXWebSocketSendData(const std::string& str)
+-            : _data(str.data())
+-            , _size(str.size())
+-        {
+-        }
+-
+-        /* The assigned std::vector must be kept alive for the lifetime of the input buffer */
+-        IXWebSocketSendData(const std::vector<char>& v)
+-            : _data(v.data())
+-            , _size(v.size())
+-        {
+-        }
+-
+-        /* The assigned std::vector must be kept alive for the lifetime of the input buffer */
+-        IXWebSocketSendData(const std::vector<uint8_t>& v)
+-            : _data(reinterpret_cast<const char*>(v.data()))
+-            , _size(v.size())
+-        {
+-        }
+-
+-        /* The assigned memory must be kept alive for the lifetime of the input buffer */
+-        IXWebSocketSendData(const char* data, size_t size)
+-            : _data(data)
+-            , _size(data == nullptr ? 0 : size)
+-        {
+-        }
+-
+-        bool empty() const
+-        {
+-            return _data == nullptr || _size == 0;
+-        }
+-
+-        const char* c_str() const
+-        {
+-            return _data;
+-        }
+-
+-        const char* data() const
+-        {
+-            return _data;
+-        }
+-
+-        size_t size() const
+-        {
+-            return _size;
+-        }
+-
+-        inline const_iterator begin() const
+-        {
+-            return const_iterator(const_cast<char*>(_data));
+-        }
+-
+-        inline const_iterator end() const
+-        {
+-            return const_iterator(const_cast<char*>(_data) + _size);
+-        }
+-
+-        inline const_iterator cbegin() const
+-        {
+-            return begin();
+-        }
+-
+-        inline const_iterator cend() const
+-        {
+-            return end();
+-        }
+-
+-    private:
+-        const char* _data;
+-        const size_t _size;
+-    };
+-
++/*
++ *  IXWebSocketSendData.h
++ *
++ *  WebSocket (Binary/Text) send data buffer
++ */
++
++#pragma once
++
++#include <cstdint>
++#include <string>
++#include <vector>
++#include <iterator>
++
++namespace ix
++{
++    /*
++    * IXWebSocketSendData implements a wrapper for std::string, std:vector<char/uint8_t> and char*.
++    * It removes the necessarity to copy the data or string into a std::string 
++    */
++    class IXWebSocketSendData {
++    public:
++
++        template<typename T>
++        struct IXWebSocketSendData_const_iterator
++            //: public std::iterator<std::forward_iterator_tag, T>
++        {
++            typedef IXWebSocketSendData_const_iterator<T> const_iterator;
++
++            using iterator_category = std::forward_iterator_tag;
++            using difference_type = std::ptrdiff_t;
++            using value_type = T;
++            using pointer = value_type*;
++            using reference = const value_type&;
++
++            pointer _ptr;
++        public:
++            IXWebSocketSendData_const_iterator() : _ptr(nullptr) {}
++            IXWebSocketSendData_const_iterator(pointer ptr) : _ptr(ptr) {}
++            ~IXWebSocketSendData_const_iterator() {}
++
++            const_iterator  operator++(int) { return const_iterator(_ptr++); }
++            const_iterator& operator++() { ++_ptr; return *this; }
++            reference       operator* () const { return *_ptr; }
++            pointer         operator->() const { return _ptr; }
++            const_iterator  operator+ (const difference_type offset) const { return const_iterator(_ptr + offset); }
++            const_iterator  operator- (const difference_type offset) const { return const_iterator(_ptr - offset); }
++            difference_type operator- (const const_iterator& rhs) const { return _ptr - rhs._ptr; }
++            bool            operator==(const const_iterator& rhs) const { return _ptr == rhs._ptr; }
++            bool            operator!=(const const_iterator& rhs) const { return _ptr != rhs._ptr; }
++            const_iterator& operator+=(const difference_type offset) { _ptr += offset; return *this; }
++            const_iterator& operator-=(const difference_type offset) { _ptr -= offset; return *this; }
++        };
++
++        using const_iterator = IXWebSocketSendData_const_iterator<char>;
++
++        /* The assigned std::string must be kept alive for the lifetime of the input buffer */
++        IXWebSocketSendData(const std::string& str)
++            : _data(str.data())
++            , _size(str.size())
++        {
++        }
++
++        /* The assigned std::vector must be kept alive for the lifetime of the input buffer */
++        IXWebSocketSendData(const std::vector<char>& v)
++            : _data(v.data())
++            , _size(v.size())
++        {
++        }
++
++        /* The assigned std::vector must be kept alive for the lifetime of the input buffer */
++        IXWebSocketSendData(const std::vector<uint8_t>& v)
++            : _data(reinterpret_cast<const char*>(v.data()))
++            , _size(v.size())
++        {
++        }
++
++        /* The assigned memory must be kept alive for the lifetime of the input buffer */
++        IXWebSocketSendData(const char* data, size_t size)
++            : _data(data)
++            , _size(data == nullptr ? 0 : size)
++        {
++        }
++
++        bool empty() const
++        {
++            return _data == nullptr || _size == 0;
++        }
++
++        const char* c_str() const
++        {
++            return _data;
++        }
++
++        const char* data() const
++        {
++            return _data;
++        }
++
++        size_t size() const
++        {
++            return _size;
++        }
++
++        inline const_iterator begin() const
++        {
++            return const_iterator(const_cast<char*>(_data));
++        }
++
++        inline const_iterator end() const
++        {
++            return const_iterator(const_cast<char*>(_data) + _size);
++        }
++
++        inline const_iterator cbegin() const
++        {
++            return begin();
++        }
++
++        inline const_iterator cend() const
++        {
++            return end();
++        }
++
++    private:
++        const char* _data;
++        const size_t _size;
++    };
++
+ }
+\ No newline at end of file
+diff --git a/ixwebsocket/IXWebSocketServer.cpp b/ixwebsocket/IXWebSocketServer.cpp
+index 90593d5..03b0ea5 100644
+--- a/ixwebsocket/IXWebSocketServer.cpp
++++ b/ixwebsocket/IXWebSocketServer.cpp
+@@ -78,6 +78,15 @@ namespace ix
+ 
+     void WebSocketServer::handleConnection(std::unique_ptr<Socket> socket,
+                                            std::shared_ptr<ConnectionState> connectionState)
++    {
++        handleUpgrade(std::move(socket), connectionState);
++
++        connectionState->setTerminated();
++    }
++
++    void WebSocketServer::handleUpgrade(std::unique_ptr<Socket> socket,
++                                        std::shared_ptr<ConnectionState> connectionState,
++                                        HttpRequestPtr request)
+     {
+         setThreadName("Srv:ws:" + connectionState->getId());
+ 
+@@ -89,7 +98,7 @@ namespace ix
+             if (!webSocket->isOnMessageCallbackRegistered())
+             {
+                 logError("WebSocketServer Application developer error: Server callback improperly "
+-                         "registerered.");
++                         "registered.");
+                 logError("Missing call to setOnMessageCallback inside setOnConnectionCallback.");
+                 connectionState->setTerminated();
+                 return;
+@@ -99,9 +108,8 @@ namespace ix
+         {
+             WebSocket* webSocketRawPtr = webSocket.get();
+             webSocket->setOnMessageCallback(
+-                [this, webSocketRawPtr, connectionState](const WebSocketMessagePtr& msg) {
+-                    _onClientMessageCallback(connectionState, *webSocketRawPtr, msg);
+-                });
++                [this, webSocketRawPtr, connectionState](const WebSocketMessagePtr& msg)
++                { _onClientMessageCallback(connectionState, *webSocketRawPtr, msg); });
+         }
+         else
+         {
+@@ -130,7 +138,7 @@ namespace ix
+         }
+ 
+         auto status = webSocket->connectToSocket(
+-            std::move(socket), _handshakeTimeoutSecs, _enablePerMessageDeflate);
++            std::move(socket), _handshakeTimeoutSecs, _enablePerMessageDeflate, request);
+         if (status.success)
+         {
+             // Process incoming messages and execute callbacks
+@@ -155,8 +163,6 @@ namespace ix
+                 logError("Cannot delete client");
+             }
+         }
+-
+-        connectionState->setTerminated();
+     }
+ 
+     std::set<std::shared_ptr<WebSocket>> WebSocketServer::getClients()
+@@ -176,28 +182,30 @@ namespace ix
+     //
+     void WebSocketServer::makeBroadcastServer()
+     {
+-        setOnClientMessageCallback([this](std::shared_ptr<ConnectionState> connectionState,
+-                                          WebSocket& webSocket,
+-                                          const WebSocketMessagePtr& msg) {
+-            auto remoteIp = connectionState->getRemoteIp();
+-            if (msg->type == ix::WebSocketMessageType::Message)
++        setOnClientMessageCallback(
++            [this](std::shared_ptr<ConnectionState> connectionState,
++                   WebSocket& webSocket,
++                   const WebSocketMessagePtr& msg)
+             {
+-                for (auto&& client : getClients())
++                auto remoteIp = connectionState->getRemoteIp();
++                if (msg->type == ix::WebSocketMessageType::Message)
+                 {
+-                    if (client.get() != &webSocket)
++                    for (auto&& client : getClients())
+                     {
+-                        client->send(msg->str, msg->binary);
+-
+-                        // Make sure the OS send buffer is flushed before moving on
+-                        do
++                        if (client.get() != &webSocket)
+                         {
+-                            std::chrono::duration<double, std::milli> duration(500);
+-                            std::this_thread::sleep_for(duration);
+-                        } while (client->bufferedAmount() != 0);
++                            client->send(msg->str, msg->binary);
++
++                            // Make sure the OS send buffer is flushed before moving on
++                            do
++                            {
++                                std::chrono::duration<double, std::milli> duration(500);
++                                std::this_thread::sleep_for(duration);
++                            } while (client->bufferedAmount() != 0);
++                        }
+                     }
+                 }
+-            }
+-        });
++            });
+     }
+ 
+     bool WebSocketServer::listenAndStart()
+diff --git a/ixwebsocket/IXWebSocketServer.h b/ixwebsocket/IXWebSocketServer.h
+index 6cae633..dcb21e8 100644
+--- a/ixwebsocket/IXWebSocketServer.h
++++ b/ixwebsocket/IXWebSocketServer.h
+@@ -55,6 +55,7 @@ namespace ix
+         int getHandshakeTimeoutSecs();
+         bool isPongEnabled();
+         bool isPerMessageDeflateEnabled();
++
+     private:
+         // Member variables
+         int _handshakeTimeoutSecs;
+@@ -73,5 +74,10 @@ namespace ix
+         virtual void handleConnection(std::unique_ptr<Socket> socket,
+                                       std::shared_ptr<ConnectionState> connectionState);
+         virtual size_t getConnectedClientsCount() final;
++
++    protected:
++        void handleUpgrade(std::unique_ptr<Socket> socket,
++                           std::shared_ptr<ConnectionState> connectionState,
++                           HttpRequestPtr request = nullptr);
+     };
+ } // namespace ix
+diff --git a/ixwebsocket/IXWebSocketTransport.cpp b/ixwebsocket/IXWebSocketTransport.cpp
+index 86ec52e..ec25465 100644
+--- a/ixwebsocket/IXWebSocketTransport.cpp
++++ b/ixwebsocket/IXWebSocketTransport.cpp
+@@ -45,7 +45,6 @@
+ #include <cstdarg>
+ #include <cstdlib>
+ #include <sstream>
+-#include <stdlib.h>
+ #include <string.h>
+ #include <string>
+ #include <thread>
+@@ -54,7 +53,6 @@
+ 
+ namespace ix
+ {
+-    const std::string WebSocketTransport::kPingMessage("ixwebsocket::heartbeat");
+     const int WebSocketTransport::kDefaultPingIntervalSecs(-1);
+     const bool WebSocketTransport::kDefaultEnablePong(true);
+     const int WebSocketTransport::kClosingMaximumWaitingDelayInMs(300);
+@@ -74,6 +72,9 @@ namespace ix
+         , _enablePong(kDefaultEnablePong)
+         , _pingIntervalSecs(kDefaultPingIntervalSecs)
+         , _pongReceived(false)
++        , _setCustomMessage(false)
++        , _kPingMessage("ixwebsocket::heartbeat")
++        , _pingType(SendMessageKind::Ping)
+         , _pingCount(0)
+         , _lastSendPingTimePoint(std::chrono::steady_clock::now())
+     {
+@@ -139,7 +140,7 @@ namespace ix
+                                                   _enablePerMessageDeflate);
+ 
+             result = webSocketHandshake.clientHandshake(
+-                remoteUrl, headers, host, path, port, timeoutSecs);
++                remoteUrl, headers, protocol, host, path, port, timeoutSecs);
+ 
+             if (result.http_status >= 300 && result.http_status < 400)
+             {
+@@ -170,7 +171,8 @@ namespace ix
+     // Server
+     WebSocketInitResult WebSocketTransport::connectToSocket(std::unique_ptr<Socket> socket,
+                                                             int timeoutSecs,
+-                                                            bool enablePerMessageDeflate)
++                                                            bool enablePerMessageDeflate,
++                                                            HttpRequestPtr request)
+     {
+         std::lock_guard<std::mutex> lock(_socketMutex);
+ 
+@@ -187,7 +189,8 @@ namespace ix
+                                               _perMessageDeflateOptions,
+                                               _enablePerMessageDeflate);
+ 
+-        auto result = webSocketHandshake.serverHandshake(timeoutSecs, enablePerMessageDeflate);
++        auto result =
++            webSocketHandshake.serverHandshake(timeoutSecs, enablePerMessageDeflate, request);
+         if (result.success)
+         {
+             setReadyState(ReadyState::OPEN);
+@@ -248,13 +251,51 @@ namespace ix
+         return now - _lastSendPingTimePoint > std::chrono::seconds(_pingIntervalSecs);
+     }
+ 
+-    WebSocketSendInfo WebSocketTransport::sendHeartBeat()
++    void WebSocketTransport::setPingMessage(const std::string& message, SendMessageKind pingType)
++    {
++        _setCustomMessage = true;
++        _kPingMessage = message;
++        _pingType = pingType;
++    }
++
++    WebSocketSendInfo WebSocketTransport::sendHeartBeat(SendMessageKind pingMessage)
+     {
+         _pongReceived = false;
+         std::stringstream ss;
+-        ss << kPingMessage << "::" << _pingIntervalSecs << "s"
+-           << "::" << _pingCount++;
+-        return sendPing(ss.str());
++
++        ss << _kPingMessage;
++        if (!_setCustomMessage)
++        {
++            ss << "::" << _pingIntervalSecs << "s"
++               << "::" << _pingCount++;
++        }
++        if (pingMessage == SendMessageKind::Ping)
++        {
++            return sendPing(ss.str());
++        }
++        else if (pingMessage == SendMessageKind::Binary)
++        {
++            WebSocketSendInfo info = sendBinary(ss.str(), nullptr);
++            if (info.success)
++            {
++                std::lock_guard<std::mutex> lck(_lastSendPingTimePointMutex);
++                _lastSendPingTimePoint = std::chrono::steady_clock::now();
++            }
++            return info;
++        }
++        else if (pingMessage == SendMessageKind::Text)
++        {
++            WebSocketSendInfo info = sendText(ss.str(), nullptr);
++            if (info.success)
++            {
++                std::lock_guard<std::mutex> lck(_lastSendPingTimePointMutex);
++                _lastSendPingTimePoint = std::chrono::steady_clock::now();
++            }
++            return info;
++        }
++
++        // unknow type ping message
++        return {};
+     }
+ 
+     bool WebSocketTransport::closingDelayExceeded()
+@@ -270,7 +311,9 @@ namespace ix
+         {
+             if (pingIntervalExceeded())
+             {
+-                if (!_pongReceived)
++                // If it is not a 'ping' message of ping type, there is no need to judge whether
++                // pong will receive it
++                if (_pingType == SendMessageKind::Ping && !_pongReceived)
+                 {
+                     // ping response (PONG) exceeds the maximum delay, close the connection
+                     close(WebSocketCloseConstants::kInternalErrorCode,
+@@ -278,7 +321,7 @@ namespace ix
+                 }
+                 else
+                 {
+-                    sendHeartBeat();
++                    sendHeartBeat(_pingType);
+                 }
+             }
+         }
+@@ -657,6 +700,7 @@ namespace ix
+                 if (_readyState != ReadyState::CLOSING)
+                 {
+                     // send back the CLOSE frame
++                    setReadyState(ReadyState::CLOSING);
+                     sendCloseFrame(code, reason);
+ 
+                     wakeUpFromPoll(SelectInterrupt::kCloseRequest);
+@@ -1029,7 +1073,10 @@ namespace ix
+             else if (ret <= 0)
+             {
+                 closeSocket();
+-                setReadyState(ReadyState::CLOSED);
++                if (_readyState != ReadyState::CLOSING)
++                {
++                    setReadyState(ReadyState::CLOSED);
++                }
+                 return false;
+             }
+             else
+diff --git a/ixwebsocket/IXWebSocketTransport.h b/ixwebsocket/IXWebSocketTransport.h
+index bdfd409..8473c55 100644
+--- a/ixwebsocket/IXWebSocketTransport.h
++++ b/ixwebsocket/IXWebSocketTransport.h
+@@ -18,9 +18,10 @@
+ #include "IXWebSocketHttpHeaders.h"
+ #include "IXWebSocketPerMessageDeflate.h"
+ #include "IXWebSocketPerMessageDeflateOptions.h"
+-#include "IXWebSocketSendInfo.h"
+ #include "IXWebSocketSendData.h"
++#include "IXWebSocketSendInfo.h"
+ #include <atomic>
++#include <cstdint>
+ #include <functional>
+ #include <list>
+ #include <memory>
+@@ -86,7 +87,8 @@ namespace ix
+         // Server
+         WebSocketInitResult connectToSocket(std::unique_ptr<Socket> socket,
+                                             int timeoutSecs,
+-                                            bool enablePerMessageDeflate);
++                                            bool enablePerMessageDeflate,
++                                            HttpRequestPtr request = nullptr);
+ 
+         PollResult poll();
+         WebSocketSendInfo sendBinary(const IXWebSocketSendData& message,
+@@ -108,8 +110,12 @@ namespace ix
+         void dispatch(PollResult pollResult, const OnMessageCallback& onMessageCallback);
+         size_t bufferedAmount() const;
+ 
++        // set ping heartbeat message
++        void setPingMessage(const std::string& message, SendMessageKind pingType);
++
+         // internal
+-        WebSocketSendInfo sendHeartBeat();
++        // send any type of ping packet, not only 'ping' type
++        WebSocketSendInfo sendHeartBeat(SendMessageKind pingType);
+ 
+     private:
+         std::string _url;
+@@ -214,7 +220,10 @@ namespace ix
+         std::atomic<bool> _pongReceived;
+ 
+         static const int kDefaultPingIntervalSecs;
+-        static const std::string kPingMessage;
++
++        bool _setCustomMessage;
++        std::string _kPingMessage;
++        SendMessageKind _pingType;
+         std::atomic<uint64_t> _pingCount;
+ 
+         // We record when ping are being sent so that we can know when to send the next one
+diff --git a/makefile.dev b/makefile.dev
+index e4c57c3..07929ba 100644
+--- a/makefile.dev
++++ b/makefile.dev
+@@ -13,16 +13,24 @@ all: brew
+ 
+ install: brew
+ 
++-DCMAKE_INSTALL_PREFIX=/opt/homebrew
++
+ # Use -DCMAKE_INSTALL_PREFIX= to install into another location
+ # on osx it is good practice to make /usr/local user writable
+ # sudo chown -R `whoami`/staff /usr/local
+ #
++# Those days (since Apple Silicon mac shipped), on macOS homebrew installs in /opt/homebrew, and /usr/local is readonly
++#
+ # Release, Debug, MinSizeRel, RelWithDebInfo are the build types
+ #
+ # Default rule does not use python as that requires first time users to have Python3 installed
+ #
+ brew:
++ifeq ($(shell uname),Darwin)
++	mkdir -p build && (cd build ; cmake -GNinja -DCMAKE_INSTALL_PREFIX=/opt/homebrew -DCMAKE_UNITY_BUILD=OFF -DCMAKE_INSTALL_MESSAGE=LAZY -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug -DUSE_TLS=1 -DUSE_WS=1 -DUSE_TEST=1 .. ; ninja install)
++else
+ 	mkdir -p build && (cd build ; cmake -GNinja -DCMAKE_UNITY_BUILD=OFF -DCMAKE_INSTALL_MESSAGE=LAZY -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug -DUSE_TLS=1 -DUSE_WS=1 -DUSE_TEST=1 .. ; ninja install)
++endif
+ 
+ # Docker default target. We've had problems with OpenSSL and TLS 1.3 (on the
+ # server side ?) and I can't work-around it easily, so we're using mbedtls on
+diff --git a/test/.certs/wrong-name-server-crt.pem b/test/.certs/wrong-name-server-crt.pem
+new file mode 100644
+index 0000000..24549fd
+--- /dev/null
++++ b/test/.certs/wrong-name-server-crt.pem
+@@ -0,0 +1,20 @@
++-----BEGIN CERTIFICATE-----
++MIIDNDCCAhwCFCl+O/rR8flqYKKvD0iwkucFwMaLMA0GCSqGSIb3DQEBCwUAMEEx
++FDASBgNVBAoMC21hY2hpbmV6b25lMRQwEgYDVQQKDAtJWFdlYlNvY2tldDETMBEG
++A1UEAwwKdHJ1c3RlZC1jYTAgFw0yMjA4MjMyMDM2MjVaGA80MjgxMDYwMTIwMzYy
++NVowajELMAkGA1UEBhMCVVMxCzAJBgNVBAgMAkNBMREwDwYDVQQHDAhCZXJrZWxl
++eTEbMBkGA1UECgwSRHVtbXkgT3JnYW5pemF0aW9uMR4wHAYDVQQDDBVub3QuYS52
++YWxpZC5ob3N0Lm5hbWUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC2
++9N806IjCvA82zfk9CPNwaEHOygNDJSXaZ38YDSI4C+Wf2imnMxrLQKaoccHUi+9L
++4rQN/hSCg+uTULQUZ0iyssGDaIh4IcAeoEcNlXYHTrgP+aAaby3q5zeZ80K3+6e4
++rqcuBPV2lLszJu3XXwEKbDSxW3De0gc2N8m9DN8Lx7i70DRf0F4m6RIMFF/kHXwa
++zZLeG7rZb4xL684lmmQsWtk5Z600CvrBtUE7fQ7bhy0QhSt66kdTSL8IKQrbWcGj
++q0tggFlOqeyZSi73gqUiAIuGO8/tRgmp4HygNyC24jpOB5nObOPPJTUEf5Mk1Bum
++kD5a+yL6YbVdhiaK17wbAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAKsLXGLfO1IZ
++LbofGc7/TCQwRayR3RdG4864PBy97KfJWyizg7Wm4X4yPFRG+6q3X5NKW32Ew9lI
++jXulXCTjWOiSxiG4Pk20uczkOhWVHFdnS9gZvykPC/ElxBKPalT6MMstZWxpElsk
++rCDKXj4LkD0po8bZrjlgSZQQQk6XMRkoRai2GWLJqIjaNCSF8nqb1wM/1OE1tAwi
++polO1eFMA24yypvlXcNrNXjqcQ7LaoQFQltmi/RV+uTk7EK2F2jgYVzJ/pe2ET0i
++RIMbGZTlAiemDGL9SpMsxftG6fSmP6QqDqYExmmPlZMLprb2da/2kelWFA+VkvdG
++zFrnIcyfMY4=
++-----END CERTIFICATE-----
+diff --git a/test/.certs/wrong-name-server-key.pem b/test/.certs/wrong-name-server-key.pem
+new file mode 100644
+index 0000000..b946f29
+--- /dev/null
++++ b/test/.certs/wrong-name-server-key.pem
+@@ -0,0 +1,27 @@
++-----BEGIN RSA PRIVATE KEY-----
++MIIEpAIBAAKCAQEAtvTfNOiIwrwPNs35PQjzcGhBzsoDQyUl2md/GA0iOAvln9op
++pzMay0CmqHHB1IvvS+K0Df4UgoPrk1C0FGdIsrLBg2iIeCHAHqBHDZV2B064D/mg
++Gm8t6uc3mfNCt/unuK6nLgT1dpS7Mybt118BCmw0sVtw3tIHNjfJvQzfC8e4u9A0
++X9BeJukSDBRf5B18Gs2S3hu62W+MS+vOJZpkLFrZOWetNAr6wbVBO30O24ctEIUr
++eupHU0i/CCkK21nBo6tLYIBZTqnsmUou94KlIgCLhjvP7UYJqeB8oDcgtuI6TgeZ
++zmzjzyU1BH+TJNQbppA+Wvsi+mG1XYYmite8GwIDAQABAoIBAGRzAXG9EglI01mV
++sPfvyCi5NRhiFXRyGtxU4pTD8TuwXHxtfV0NU/KwJlBpVLBrvBCAAbeE/qHB6D9T
++metx4ZorRs/tPrAmZ6LpANnWa50LfUdYGK0qyZ0lIYPm6YS2KJnfWm6LznEyq60j
++/IW45YthaXTO7aOI0OjVrG+dd4CxU1g1NtCQ9bdDMDjfXFVnoOifXIl8W22eRMoZ
++LzCz+0sI0R0LenXCPT566de21F0NDkIK7NaQ1l5BMX4PA+RsN3cZlzyruA1woPKI
++aBR2LQGNrBfDVGMATtUm89RpWAftb8FmXqYUsM7zAzTO6dViitiB7OFlw7Ax15YH
++MTj5zGECgYEA35ocEEMfyahBN70bjyiqOHlzKwFjDl9DsUf8xqHsNhYAL+GrOK9A
++8lN5ByzcnbV3TJtU4WYbPgQJld8gXFx4h3eS+SkA/ASkAdtgHfdMImZ1v7k3TIPf
++DXOCsHzELsQY6OgiI572Nwzx/Tl+0dFwaOfLjU9iEmmqL667j1Y4NiMCgYEA0Xch
++9K/vwZ1I9gM3ySvG40R2TRriC9Bf8jwrEWeRsWNvBcqtMMrgwAMsMCKDugSZR7n6
++o3WZV6mpvYVLFx0b93v07i7EpFP27kMw3gLNBKX62snR9JbqwAMK7tktgLds5pKM
++DvLHuAQ9XMMXMLX7WlSyhmtFeU7IDulTSHHqdakCgYEAywITCpy2xpKRK7bwx4gH
++C6EQc/IdahYJ0nHmSL0IRY6x+sbrelp7H8ezcVVEs5bmylGYvc/DWgm2XjCnI9P8
++xhlFAhw9PZJFCT6QRISaxfy6WSgi0cBEieTeubd9MmxtpT/khuyy5AZHyj0iLAL4
++CPayMwjopIj0r7f3p8qC3HsCgYBmq2kmYVI4aZrIkv02CtIatYTy+DlSJxnQRvOp
++PUWpWB6kDRrk7pxJIYT4NwKwG+7xvFQA6PR3hn7fmUUcGDWMEeMVGDFkho9ja+W4
++/FB3dc/Gi+PwakS4RwWF20e1brLfNXeXICMKrHFTVYC5bIm+VgOHZW8RLa9bt7wN
++p2CPuQKBgQCjW+rCODmMzEues/I143mYMDdZ1IschtWGiXBNrpkHm/DcZSutbacm
++5C7Kwv44pfA90NHDTjuaIgRgfeUTawkrl8uPXEuj80mW72agf5oS8lJzD+2jibCj
++Q4K52G+0LaTxHLZxufil28Rgja01c0mTcuLbhKtCgHl5EHP19wOKEg==
++-----END RSA PRIVATE KEY-----
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index c8822a4..36e2204 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -24,14 +24,13 @@ set (TEST_TARGET_NAMES
+   # IXWebSocketBroadcastTest ## FIXME was depending on cobra / take a broadcast server from ws
+   IXStrCaseCompareTest
+   IXExponentialBackoffTest
++  IXWebSocketCloseTest
+ )
+ 
+ # Some unittest don't work on windows yet
+ # Windows without TLS does not have hmac yet
+ if (UNIX)
+   list(APPEND TEST_TARGET_NAMES
+-    IXWebSocketCloseTest
+-
+     # Fail on Windows in CI probably because the pathing is wrong and
+     # some resource files cannot be found
+     IXHttpServerTest
+diff --git a/test/IXDNSLookupTest.cpp b/test/IXDNSLookupTest.cpp
+index a240504..6902b3f 100644
+--- a/test/IXDNSLookupTest.cpp
++++ b/test/IXDNSLookupTest.cpp
+@@ -19,13 +19,9 @@ TEST_CASE("dns", "[net]")
+         auto dnsLookup = std::make_shared<DNSLookup>("www.google.com", 80);
+ 
+         std::string errMsg;
+-        struct addrinfo* res;
+-
+-        res = dnsLookup->resolve(errMsg, [] { return false; });
++        auto res = dnsLookup->resolve(errMsg, [] { return false; });
+         std::cerr << "Error message: " << errMsg << std::endl;
+         REQUIRE(res != nullptr);
+-
+-        dnsLookup->release(res);
+     }
+ 
+     SECTION("Test resolving a non-existing hostname")
+@@ -33,7 +29,7 @@ TEST_CASE("dns", "[net]")
+         auto dnsLookup = std::make_shared<DNSLookup>("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww", 80);
+ 
+         std::string errMsg;
+-        struct addrinfo* res = dnsLookup->resolve(errMsg, [] { return false; });
++        auto res = dnsLookup->resolve(errMsg, [] { return false; });
+         std::cerr << "Error message: " << errMsg << std::endl;
+         REQUIRE(res == nullptr);
+     }
+@@ -44,7 +40,7 @@ TEST_CASE("dns", "[net]")
+ 
+         std::string errMsg;
+         // The callback returning true means we are requesting cancellation
+-        struct addrinfo* res = dnsLookup->resolve(errMsg, [] { return true; });
++        auto res = dnsLookup->resolve(errMsg, [] { return true; });
+         std::cerr << "Error message: " << errMsg << std::endl;
+         REQUIRE(res == nullptr);
+     }
+diff --git a/test/IXHttpClientTest.cpp b/test/IXHttpClientTest.cpp
+index 2f9899d..2bc5816 100644
+--- a/test/IXHttpClientTest.cpp
++++ b/test/IXHttpClientTest.cpp
+@@ -7,7 +7,9 @@
+ #include "catch.hpp"
+ #include <cstdint>
+ #include <iostream>
++#include <ixwebsocket/IXGetFreePort.h>
+ #include <ixwebsocket/IXHttpClient.h>
++#include <ixwebsocket/IXHttpServer.h>
+ 
+ using namespace ix;
+ 
+@@ -95,6 +97,52 @@ TEST_CASE("http_client", "[http]")
+     }
+ #endif
+ 
++#if defined(IXWEBSOCKET_USE_TLS) && !defined(IXWEBSOCKET_USE_SECURE_TRANSPORT)
++    SECTION("Disable hostname validation")
++    {
++        static auto test_cert_with_wrong_name = [](bool validate_hostname)
++        {
++            int port = getFreePort();
++            ix::HttpServer server(port, "127.0.0.1");
++
++            SocketTLSOptions tlsOptionsServer;
++            tlsOptionsServer.tls = true;
++            tlsOptionsServer.caFile = "NONE";
++            tlsOptionsServer.certFile = "./.certs/wrong-name-server-crt.pem";
++            tlsOptionsServer.keyFile = "./.certs/wrong-name-server-key.pem";
++            server.setTLSOptions(tlsOptionsServer);
++
++            auto res = server.listen();
++            REQUIRE(res.first);
++            server.start();
++
++            HttpClient httpClient;
++            SocketTLSOptions tlsOptionsClient;
++            tlsOptionsClient.caFile = "./.certs/trusted-ca-crt.pem";
++            tlsOptionsClient.disable_hostname_validation = validate_hostname;
++            httpClient.setTLSOptions(tlsOptionsClient);
++
++            std::string url("https://localhost:" + std::to_string(port));
++            auto args = httpClient.createRequest(url);
++            args->connectTimeout = 10;
++            args->transferTimeout = 10;
++
++            auto response = httpClient.get(url, args);
++
++            std::cerr << "Status: " << response->statusCode << std::endl;
++            std::cerr << "Error code: " << (int) response->errorCode << std::endl;
++            std::cerr << "Error message: " << response->errorMsg << std::endl;
++
++            server.stop();
++            return std::make_tuple(response->errorCode, response->statusCode);
++        };
++
++        REQUIRE(test_cert_with_wrong_name(false) ==
++                std::make_tuple(HttpErrorCode::CannotConnect, 0));
++        REQUIRE(test_cert_with_wrong_name(true) == std::make_tuple(HttpErrorCode::Ok, 404));
++    }
++#endif
++
+     SECTION("Async API, one call")
+     {
+         bool async = true;
+diff --git a/ws/ws.cpp b/ws/ws.cpp
+index 21288cf..4d64be4 100644
+--- a/ws/ws.cpp
++++ b/ws/ws.cpp
+@@ -77,24 +77,6 @@ namespace
+         return std::make_pair(res.first, std::string(vec.begin(), vec.end()));
+     }
+ 
+-    // Assume the file exists
+-    std::string readBytes(const std::string& path)
+-    {
+-        std::vector<uint8_t> memblock;
+-        std::ifstream file(path);
+-
+-        file.seekg(0, file.end);
+-        std::streamoff size = file.tellg();
+-        file.seekg(0, file.beg);
+-
+-        memblock.reserve((size_t) size);
+-        memblock.insert(
+-            memblock.begin(), std::istream_iterator<char>(file), std::istream_iterator<char>());
+-
+-        std::string bytes(memblock.begin(), memblock.end());
+-        return bytes;
+-    }
+-
+     std::string truncate(const std::string& str, size_t n)
+     {
+         if (str.size() < n)
+@@ -107,12 +89,6 @@ namespace
+         }
+     }
+ 
+-    bool fileExists(const std::string& fileName)
+-    {
+-        std::ifstream infile(fileName);
+-        return infile.good();
+-    }
+-
+     std::string extractFilename(const std::string& path)
+     {
+         std::string::size_type idx;
+@@ -916,9 +892,8 @@ namespace ix
+         auto dnsLookup = std::make_shared<DNSLookup>(hostname, 80);
+ 
+         std::string errMsg;
+-        struct addrinfo* res;
+ 
+-        res = dnsLookup->resolve(errMsg, [] { return false; });
++        auto res = dnsLookup->resolve(errMsg, [] { return false; });
+ 
+         auto addr = res->ai_addr;
+ 
+@@ -2486,10 +2461,8 @@ int main(int argc, char** argv)
+     bool verbose = false;
+     bool save = false;
+     bool quiet = false;
+-    bool fluentd = false;
+     bool compress = false;
+     bool compressRequest = false;
+-    bool stress = false;
+     bool disableAutomaticReconnection = false;
+     bool disablePerMessageDeflate = false;
+     bool greetings = false;
+@@ -2505,7 +2478,6 @@ int main(int argc, char** argv)
+     int transferTimeout = 1800;
+     int maxRedirects = 5;
+     int delayMs = -1;
+-    int count = 1;
+     int msgCount = 1000 * 1000;
+     uint32_t maxWaitBetweenReconnectionRetries = 10 * 1000; // 10 seconds
+     int pingIntervalSecs = 30;
+@@ -2529,6 +2501,7 @@ int main(int argc, char** argv)
+                         "A (comma/space/colon) separated list of ciphers to use for TLS");
+         app->add_flag("--tls", tlsOptions.tls, "Enable TLS (server only)");
+         app->add_flag("--verify_none", verifyNone, "Disable peer cert verification");
++        app->add_flag("--disable-hostname-validation", tlsOptions.disable_hostname_validation, "Disable validation of certificates' hostnames");
+     };
+ 
+     app.add_flag("--version", version, "Print ws version");
