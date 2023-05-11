@@ -5,10 +5,10 @@
 # Maintainer: Matheus <matheusgwdl@protonmail.com>
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
-readonly _version_frappe="v14.35.0"
+readonly _version_frappe="v14.36.0"
 
 pkgname="erpnext"
-pkgver="14.23.4"
+pkgver="14.24.0"
 pkgrel="1"
 pkgdesc="Free and open source Enterprise Resource Planning (ERP)."
 arch=("x86_64")
@@ -26,7 +26,7 @@ source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.g
     "${pkgname}.sh"
     "${pkgname}.sysusers"
     "${pkgname}.tmpfiles")
-sha512sums=("279e40ce1d53c4bf0ff353a1eab7b8e0470c8c1069e815b462aa6950eae9731f6f4fc62282ca4fc013d724b4763df2bb8ace5e4242a0f535818b0d1c3c5a4a8f"
+sha512sums=("cab3ad08841f8d750c5853de8e4ec09f3072defc862c917e87a2ab5b7582b0708ad5c1a4922db3b8d297955e586d73b502a8502a157bedb6f9191d04a06a4633"
     "70baf45505c3cd21886fd7c820b528c655c5fa8c382f7991092ea14846eb42f43a8899232610f2dc213ea6a3cc6ead43130c083de676ecd4c93caca9283aa36e"
     "d8614473bd72404bec058981d2c9c3a91ed08b931539236a5d22209e5fdc6dc044ea719c8ed336bd8e64a49508cd290a5431bf339b87b0331bd9ede1d055e8ce"
     "661ca81b73544884c3024ec2c5fad689101c72f7467cf7720934bdded67eecdb666096365c4f8abe20c2fd13a1a5c831a990490872024fe3093e35459be8d47b")
