@@ -1,7 +1,7 @@
 pkgbase = ton
 	pkgdesc = TON (The Open Network) binary artifacts - Ultra-scalable blockchain, designed by Telegram to onboard billions of users.
-	pkgver = dev
-	pkgrel = v2023.04 #pkg_rel
+	pkgver = v2023.04
+	pkgrel = 1
 	url = https://github.com/ton-blockchain/ton
 	arch = x86_64
 	license = LGPL2

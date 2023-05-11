@@ -1,6 +1,6 @@
 pkgname=ton-bin
-pkgver=dev
-pkgrel=v2023.04 #pkg_rel
+pkgver=v2023.04
+pkgrel=1
 pkgdesc="The Open Network"
 arch=('x86_64')
 url="https://github.com/ton-blockchain/ton"
