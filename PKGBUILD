@@ -2,7 +2,7 @@
 _target='compass-readonly-beta'
 _edition=' Readonly Beta'
 pkgname="mongodb-$_target"
-_pkgver='1.36.4-beta.1'
+_pkgver='1.37.0-beta.0'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - beta version'
@@ -20,7 +20,7 @@ source=(
 	'hadron-build.diff'
 	'fix-argv.diff'
 )
-sha512sums=('cad3a30ac1674e6a003f7ec2ecae31ad7017317e4a13e8654664312bb288b1ac48213650fe9eceeed5df7d581bfa44b8115c41a98fc19186d8b70bc8e96682b4'
+sha512sums=('81f82b21057ebfe13d1b66a8ab4f004d0810938bda774a9894fb682ba16d318e54b3284cb772f3b4639c87be6a7ee98ac44fbe0f976fe7704fcd0385abe8ea51'
             '18029ff1479cbacb413f7154d5ca7589855273c559ee15bb5b5006eed65b8edcb58fac64cc8deabd20c36e06f298dc4b7152f61391975d2a3ecb6351b787fae7'
             '1a2345b90196d3c856d0288d9406cfd667d0ebcce400e6886c7eba2825fa52d7813d45f2c375fcaf4e28d116b68107219e6f662b5bdbb12bf0e402ca61194cf7')
 
