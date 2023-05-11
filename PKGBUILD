@@ -2,7 +2,7 @@
 pkgname=archy-slstatus-git
 _pkgname=archy-slstatus
 pkgver=1.0.0.r1.g55b9d57
-pkgrel=2
+pkgrel=3
 pkgdesc="A suckless status monitor for dwm"
 url="https://github.com/archy-linux/$_pkgname"
 arch=('i686' 'x86_64')
@@ -32,5 +32,4 @@ package() {
   make PREFIX=/usr DESTDIR="$pkgdir" install
   install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -m644 -D README.md "$pkgdir/usr/share/doc/$pkgname/README"
-  install -m644 -D build/archy-dwm.desktop "$pkgdir/usr/share/xsessions/archy-dwm.desktop"
 }
