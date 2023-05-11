@@ -2,7 +2,7 @@
 pkgname=archy-slstatus-git
 _pkgname=archy-slstatus
 pkgver=1.0.0.r1.g55b9d57
-pkgrel=1
+pkgrel=2
 pkgdesc="A suckless status monitor for dwm"
 url="https://github.com/archy-linux/$_pkgname"
 arch=('i686' 'x86_64')
