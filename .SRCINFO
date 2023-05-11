@@ -1,8 +1,8 @@
 pkgbase = dolibarr
-	pkgdesc = ERP/CRM for small and medium companies
-	pkgver = 13.0.2
+	pkgdesc = Dolibarr ERP CRM: modern software package to manage your company
+	pkgver = 17.0.0
 	pkgrel = 1
-	url = http://www.dolibarr.org/
+	url = https://dolibarr.org/
 	install = dolibarr.install
 	arch = any
 	license = GPL3
@@ -10,13 +10,12 @@ pkgbase = dolibarr
 	optdepends = php-tcpdf: pdf export
 	options = !strip
 	options = emptydirs
-	backup = etc/webapps/dolibarr/conf.php
-	source = http://downloads.sourceforge.net/project/dolibarr/Dolibarr%20ERP-CRM/13.0.2/dolibarr-13.0.2.tgz
+	backup = etc/dolibarr/conf.php
+	source = http://downloads.sourceforge.net/project/dolibarr/Dolibarr%20ERP-CRM/17.0.0/dolibarr-17.0.0.tgz
 	source = nginx.conf.example
 	source = apache.conf.example
-	md5sums = 94955641ce3cb72c0111244c181b8c3a
-	md5sums = 4b36b8318edad5fe10fd9ef5ade92ed3
-	md5sums = d468572a7aa663d958c302b3e15147f1
+	b2sums = 06be067676cae8a2372f5082e10d9742372ce3fdc494e0b132de9872d70be4dc69ffdd8197930fee30a994774dd8d9f73a3c3666d41a0d6a4a5ae438fc05320b
+	b2sums = a9735e32fb447b99f688b6121e7abe39133a2cda3de58dba32201b3688b1f8ce90ebbf676bafe2f877b5203ff61bb468657a6b8685829edb9a46d192d82edacc
+	b2sums = 243dcd12c4f02974d6775972e32c2fbe9648ed0844a1ab5253ba9954e76d29401f08a465116db7b2a56d4f7f78223690b382588b34341c608174188a8950278f
 
 pkgname = dolibarr
-

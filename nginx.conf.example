@@ -1,7 +1,7 @@
 server {
         server_name     dolibarr.localdomain;
 
-        root    /usr/share/webapps/dolibarr/htdocs;
+        root    /usr/share/dolibarr/htdocs;
         index   index.php;
 
         location ~ [^/]\.php(/|$) {
