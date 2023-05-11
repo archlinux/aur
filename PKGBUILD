@@ -2,7 +2,7 @@
 
 pkgname=python-taxi-zebra
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Zebra backend for Taxi"
 arch=('any')
 license=('custom')
