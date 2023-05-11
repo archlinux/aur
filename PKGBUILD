@@ -2,9 +2,9 @@
 
 pkgname='openscad-threadlib-git'
 _gitname='threadlib'
-pkgver=r71.ad42e03
+pkgver=r82.950ee06
 pkgrel=1
-pkgdesc='Library containing standard threads for OpenSCAD'
+pkgdesc='Library containing standard threads for OpenSCAD (git version)'
 url='https://github.com/adrianschlatter/threadlib'
 license=(
  'BSD'
@@ -22,6 +22,12 @@ arch=(
 depends=(
  'openscad'
  'openscad-thread-profile-git'
+)
+provides=(
+ 'openscad-threadlib'
+)
+conflicts=(
+ 'openscad-threadlib'
 )
 
 pkgver() {
