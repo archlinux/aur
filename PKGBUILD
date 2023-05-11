@@ -1,29 +1,33 @@
 # Maintainer: Maurizio D'Addona <mauritiusdadd@gmail.com>
 
 _pkgname="redrock"
-_templatesver="0.7.2"
+_templatesver="0.8"
 pkgname=python-redrock
-pkgver=0.13.2
+pkgver=0.15.4
 pkgrel=2
 pkgdesc="Redshifting fitting for spectroperfectionism"
 arch=(any)
 url="https://github.com/desihub/redrock"
 license=('custom')
+
 depends=('python-fitsio' 'python-setuptools' 'python-numba' 'python-healpy'
-         'python-requests' 'python-desiutil' 'python-desispec')
-optdepends=("python-empca: for templates")
+         'python-requests')
+optdepends=("python-empca: for templates"
+            "python-desiutil: for extended functionality"
+            "python-desispec: for extended functionality")
 backup=('etc/redrock.module')
 
 source=("$_pkgname-$pkgver"::"https://github.com/desihub/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz"
 	"$_pkgname-templates-$_templatesver"::"https://github.com/desihub/${_pkgname}-templates/archive/refs/tags/${_templatesver}.tar.gz")
-sha256sums=('e6eab5c22b156a08596daa85f5a7dd1d79ee283cef87f604caf704e46b54da84'
-            '2befc641022121042e49e91d84e373a32e2252f2cf35f2e8f428b3bf97ad776b')
+sha256sums=('caefbf9206453c56a43892749a597963e5ad7ce75b1c905c5b1d40edd6ba5871'
+            '1013236eac8a4d45c73f83ef76f5f9bac882384d01becaa65d9683133acfcbdd')
 
 prepare()
 {
   cd "$srcdir/${_pkgname}-$pkgver"
   mkdir -p "py/redrock/templates"
   cp -rf "$srcdir/${_pkgname}-templates-${_templatesver}"/* "py/redrock/templates" 
+  sed -e "s/^setup_keywords\['use_2to3'\]/#setup_keywords['use_2to3']/g" -i "setup.py"
 }
 
 build()

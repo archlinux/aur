@@ -1,6 +1,6 @@
 pkgbase = python-redrock
 	pkgdesc = Redshifting fitting for spectroperfectionism
-	pkgver = 0.13.2
+	pkgver = 0.15.4
 	pkgrel = 2
 	url = https://github.com/desihub/redrock
 	arch = any
@@ -10,13 +10,13 @@ pkgbase = python-redrock
 	depends = python-numba
 	depends = python-healpy
 	depends = python-requests
-	depends = python-desiutil
-	depends = python-desispec
 	optdepends = python-empca: for templates
+	optdepends = python-desiutil: for extended functionality
+	optdepends = python-desispec: for extended functionality
 	backup = etc/redrock.module
-	source = redrock-0.13.2::https://github.com/desihub/redrock/archive/refs/tags/0.13.2.tar.gz
-	source = redrock-templates-0.7.2::https://github.com/desihub/redrock-templates/archive/refs/tags/0.7.2.tar.gz
-	sha256sums = e6eab5c22b156a08596daa85f5a7dd1d79ee283cef87f604caf704e46b54da84
-	sha256sums = 2befc641022121042e49e91d84e373a32e2252f2cf35f2e8f428b3bf97ad776b
+	source = redrock-0.15.4::https://github.com/desihub/redrock/archive/refs/tags/0.15.4.tar.gz
+	source = redrock-templates-0.8::https://github.com/desihub/redrock-templates/archive/refs/tags/0.8.tar.gz
+	sha256sums = caefbf9206453c56a43892749a597963e5ad7ce75b1c905c5b1d40edd6ba5871
+	sha256sums = 1013236eac8a4d45c73f83ef76f5f9bac882384d01becaa65d9683133acfcbdd
 
 pkgname = python-redrock
