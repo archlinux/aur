@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=monokle-appimage
 _appname=Monokle
-pkgver=2.0.10
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Lets you create, analyze, and deploy YAML manifests with a visual UI, and provides policy validation and cluster management."
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('zlib' 'glibc')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_appname}-linux-${pkgver}-x86_64.AppImage"
     "LICENSE::https://raw.githubusercontent.com/kubeshop/monokle/main/LICENSE")
-sha256sums=('ce80fc42d367847d4902d6e9a3ee8efb5fe4cfa7aaa2f421005c31193b19c5b3'
+sha256sums=('51010feb688d7bf455f41c56317a066ec6f587932892f5ca0e51b6c78d6f61e1'
             '7a89ae90e9c88d5de936743c0432f43051d79d286aff3c4e669b2b3252b84528')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
