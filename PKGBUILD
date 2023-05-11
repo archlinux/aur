@@ -3,12 +3,14 @@ pkgname=archy-dwm
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="A dynamic window manager for X with some patches applied"
-url="https://github.com/archy-linux/archy-dwm"
+url="https://github.com/archy-linux/$pkgname"
 arch=('i686' 'x86_64')
 license=('MIT')
 options=()
 depends=('libx11' 'libxinerama' 'libxft' 'freetype2' 'archy-slstatus' 'archy-dmenu')
 install=
+provides=("$pkgname")
+conflicts=("$pkgname")
 source=("https://github.com/archy-linux/$pkgname/archive/refs/tags/$pkgname_$pkgver.tar.gz")
 sha256sums=('4e56232bd78971e20a9e6fa7dda16f7047be086aa3a066f5c410c4e3ae5d7add')
 
