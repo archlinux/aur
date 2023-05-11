@@ -2,7 +2,7 @@
 # Co-Maintainer: Cedric Girard <cgirard [dot] archlinux [at] valinor [dot] fr>
 pkgname=aurutils
 pkgver=14
-pkgrel=1
+pkgrel=2
 pkgdesc='helper tools for the arch user repository'
 url='https://github.com/AladW/aurutils'
 arch=('any')
