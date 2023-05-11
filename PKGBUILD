@@ -3,8 +3,8 @@
 
 pkgname=lib32-gegl
 _pkgbase=gegl
-pkgver=0.4.40
-_commit=b3222c10c5ce8760bcd2a603dad2b3deb50fde6c  # tags/GEGL_0_4_40
+pkgver=0.4.44
+_commit=f58385300356e739491b4cf803e0f9591e34dd40  # tags/GEGL_0_4_44
 pkgrel=1
 pkgdesc="Graph based image processing framework (32-bit)"
 arch=('x86_64')
@@ -23,10 +23,8 @@ makedepends=('intltool' 'ruby' 'mesa' 'glu' 'exiv2' 'meson' 'vala'
              'xorgproto' 'shared-mime-info' 'lib32-gobject-introspection'
              'lib32-sdl2' 'python-gobject')
 source=("git+https://gitlab.gnome.org/GNOME/$_pkgbase.git#commit=$_commit"
-        "libraw-0.21.patch"
         "x86-linux-gnu")
 sha512sums=('SKIP'
-            '25a4b3792dbbe87782d76657e57638c23c8e6cd3b1badadb1d614222099bda0d66b0c79b066c9266ed4abf6427f15274b09d0a9e5205d8edb531c1ac36dfcd0d'
             '97c193bdf744a8853b4463dd9f995faea0e8b269b1b7ef3b9ffcf10c173aa44a0e6edcda5cb69be71af8a4a649332cb841ac5849ea8256f0cfeb5a3cedea251c')
 
 prepare() {
@@ -36,8 +34,6 @@ prepare() {
   for pkg in xproto.pc kbproto.pc xextproto.pc renderproto.pc shared-mime-info.pc; do
       cp "/usr/share/pkgconfig/$pkg" "$srcdir/"
   done
-  cd "$_pkgbase"
-  patch -p1 < "$srcdir"/libraw-0.21.patch
 }
 
 build() {
