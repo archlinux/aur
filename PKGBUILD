@@ -2,7 +2,7 @@
 # Maintainer: Openshift Pipelines <pipelines-dev@redhat.com>
 
 pkgname='opc-bin'
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='A CLI for OpenShift Pipeline'
 url='https://docs.openshift.com/container-platform/latest/cicd/pipelines/understanding-openshift-pipelines.html'
@@ -11,14 +11,14 @@ license=('Apache 2.0')
 provides=('openshift-pipelines-client')
 conflicts=('opc')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/openshift-pipelines/opc/releases/download/v1.10.0-rc1/opc_1.10.0-rc1_Linux_arm64.tar.gz")
-sha256sums_aarch64=('004919cfc11b2fa5814bc2e28319d26d6291ed97041b11c6bae13a8f31105974')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/openshift-pipelines/opc/releases/download/v1.11.0-rc1/opc_1.11.0-rc1_Linux_arm64.tar.gz")
+sha256sums_aarch64=('593ffa2f10dc893d72378bfd84138917ac83a8480fc5a17397de8d8d587b2941')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/openshift-pipelines/opc/releases/download/v1.10.0-rc1/opc_1.10.0-rc1_Linux_i386.tar.gz")
-sha256sums_i686=('2d830efa971cb40cedf849f9e3c0a4a91923b1ae562ab4213eb381b55ad497e0')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/openshift-pipelines/opc/releases/download/v1.11.0-rc1/opc_1.11.0-rc1_Linux_i386.tar.gz")
+sha256sums_i686=('8e3b823200625fe0c756b3d18c3d03c7c446bff246a15f552d442529953ca3ae')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/openshift-pipelines/opc/releases/download/v1.10.0-rc1/opc_1.10.0-rc1_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('d747bc6c58b1c92de1f87c14b7d21358e999eb06ca64ff04c870e13b449800bf')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/openshift-pipelines/opc/releases/download/v1.11.0-rc1/opc_1.11.0-rc1_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('21886e7e3c45f6a38e557363258c74816b2e100865bfb123d9f63cdcd4d281ae')
 
 package() {
   # bin
