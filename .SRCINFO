@@ -1,7 +1,7 @@
 pkgbase = python-altair
 	pkgdesc = Declarative statistical visualization library for Python
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://altair-viz.github.io/
 	arch = any
 	license = BSD3

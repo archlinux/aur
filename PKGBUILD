@@ -5,7 +5,7 @@ pkgbase=python-altair
 _pyname=altair
 pkgname=('python-altair')
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Declarative statistical visualization library for Python"
 arch=('any')
 url="https://altair-viz.github.io/"
@@ -27,6 +27,9 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
+  
+  # Remove unnecessary and wrongly installed files
+  rm -v "$pkgdir"/usr/lib/python3.11/site-packages/{README.md,LICENSE,pyproject.toml}
 }
 
 # vim:set et sw=2 ts=2 tw=79:
