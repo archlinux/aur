@@ -2,7 +2,7 @@
 
 pkgname=whisper-git
 _pkgname=whisper
-pkgver=r102.b5851c6
+pkgver=r115.248b6cb
 pkgrel=1
 pkgdesc="General-purpose speech recognition model by OpenAI"
 arch=('any')
@@ -38,7 +38,6 @@ package() {
     'python-tqdm'
 
     # AUR
-    'python-ffmpeg'
     'python-tiktoken'
   )
 
