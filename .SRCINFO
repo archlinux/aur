@@ -1,6 +1,6 @@
 pkgbase = airtame-application
 	pkgdesc = Airtame official screen streaming application.
-	pkgver = 4.5.3
+	pkgver = 4.6.3
 	pkgrel = 1
 	url = https://airtame.com
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = airtame-application
 	depends = libsecret
 	depends = libpulse
 	depends = opus
-	source = https://downloads.airtame.com/app/latest/linux/Airtame-4.5.3.deb
+	source = https://downloads.airtame.com/app/latest/linux/Airtame-4.6.3.deb
 	source = LICENSE.html::https://airtame.com/legal_page/terms-and-conditions/
-	sha1sums = fa75f4d1b823b4ea8d5a6baebc3ec6e2c3500881
+	sha1sums = 2f5139b15652448250c837b90661f3ff373fc138
 	sha1sums = SKIP
 
 pkgname = airtame-application
