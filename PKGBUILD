@@ -6,8 +6,8 @@
 # you share and what data stays private. Read more on docs.safing.io.
 #
 pkgname=portmaster-stub-bin
-pkgver=0.8.8
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc='Privacy Suite and Firewall: Installer to download the current binaries'
 arch=('x86_64')
 url='https://safing.io/portmaster'
@@ -25,11 +25,11 @@ source=("portmaster-start::https://updates.safing.io/linux_amd64/start/portmaste
 		'portmaster_logo.png'
 		"portmaster.service")
 noextract=('portmaster-start')
-sha256sums=('36fd91e85d69618cea4a8f4590ceb52893edad601f0231bfdf53ce3f5dddb37e'
-         '7b0c03e4552dd86caeff2d628b13346cfe70a646af11abac6555e348e46c28da'
-         '490b586f185218fdd947e8f12aa2dc412d78d89c8ce9b8ef5a75cb2e5ffb94ae'
-         'ecb02625952594af86d3b53762363c1e227c2b9604fc9c9423682fc87a92a957'
-         'bc26dd37e6953af018ad3676ee77570070e075f2b9f5df6fa59d65651a481468')
+sha256sums=('4cc5b2d82a4ea2aa5f5564f4f3e568b308b6e8c21fd67ef392451315f39f2b3d'
+            '7b0c03e4552dd86caeff2d628b13346cfe70a646af11abac6555e348e46c28da'
+            '490b586f185218fdd947e8f12aa2dc412d78d89c8ce9b8ef5a75cb2e5ffb94ae'
+            'ecb02625952594af86d3b53762363c1e227c2b9604fc9c9423682fc87a92a957'
+            'bc26dd37e6953af018ad3676ee77570070e075f2b9f5df6fa59d65651a481468')
 
 prepare() {
 	for res in 16 32 48 96 128 ; do
