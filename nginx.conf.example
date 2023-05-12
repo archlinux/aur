@@ -1,31 +1,47 @@
 server {
-        server_name     dolibarr.localdomain;
+    listen 80;
+    listen [::]:80;
+    server_name erp.example.com;
+    return 301 https://$server_name$request_uri;
+}
 
-        root    /usr/share/dolibarr/htdocs;
-        index   index.php;
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+    server_name erp.example.com;
+    ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/example.com/chain.pem;
+    include /etc/nginx/ocsp_params;
+    ssl_stapling_file /etc/nginx/ocsp/example.com.der;
+    include /etc/nginx/header_params;
+    root /usr/share/dolibarr/htdocs;
+    index index.php;
+    error_log /var/log/nginx/erp.example.com/error.log;
+    access_log /var/log/nginx/erp.example.com/access.log combined_ssl;
 
-        location ~ [^/]\.php(/|$) {
-                fastcgi_split_path_info ^(.+?\.php)(/.*)$;
-                if (!-f $document_root$fastcgi_script_name) {
-                        return 404;
-                }
+    location ~ [^/]\.php(/|$) {
+      fastcgi_split_path_info ^(.+?\.php)(/.*)$;
+      if (!-f $document_root$fastcgi_script_name) {
+        return 404;
+      }
 
-                # Mitigate https://httpoxy.org/ vulnerabilities
-                fastcgi_param HTTP_PROXY "";
+      # Mitigate https://httpoxy.org/ vulnerabilities
+      fastcgi_param HTTP_PROXY "";
 
-                fastcgi_pass   unix:/run/php-fpm/php-fpm.sock;
-                fastcgi_index  index.php;
-                include        fastcgi.conf;
-                fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
+      fastcgi_pass   unix:/run/php-fpm-legacy/php-fpm.sock;
+      fastcgi_index  index.php;
+      include        fastcgi.conf;
+      fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
 
-                # Dolibarr Rest API path support
-                fastcgi_param  PATH_INFO       $fastcgi_path_info;
-                fastcgi_param  PATH_TRANSLATED $document_root$fastcgi_script_name;
-                fastcgi_read_timeout 300;
-        }
+      # Dolibarr Rest API path support
+      fastcgi_param  PATH_INFO       $fastcgi_path_info;
+      fastcgi_param  PATH_TRANSLATED $document_root$fastcgi_script_name;
+      fastcgi_read_timeout 300;
+    }
 
-        # Pretty REST API URL
-        location ~ ^/api/(?!(index\.php))(.*) {
-                try_files $uri /api/index.php/$2?$query_string;
-        }
+    # Pretty REST API URL
+    location ~ ^/api/(?!(index\.php))(.*) {
+      try_files $uri /api/index.php/$2?$query_string;
+    }
 }
