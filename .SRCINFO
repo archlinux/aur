@@ -6,8 +6,7 @@ pkgbase = ffmpegthumbnailer-mp3
 	arch = any
 	makedepends = git
 	depends = ffmpeg
-	source = git://github.com/Marco98/ffmpegthumbnailer-mp3#tag=v1.1
+	source = git+https://github.com/Marco98/ffmpegthumbnailer-mp3.git#tag=v1.1
 	md5sums = SKIP
 
 pkgname = ffmpegthumbnailer-mp3
-
