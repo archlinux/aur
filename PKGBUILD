@@ -3,7 +3,7 @@
 pkgname=langkit
 epoch=1
 pkgver=23.0.0
-pkgrel=2
+pkgrel=4
 
 pkgdesc='Compiler for syntactic and semantic language analysis libraries.'
 url='https://github.com/AdaCore/langkit/'
@@ -21,8 +21,19 @@ makedepends=('gprbuild' 'texlive-bin'
 # 'python-types-docutils' 'python-types-gdb' 'python-yapf'
 
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=("50cb8b08fc180eab939a5747c52f68c073c7b77e6c12ef5c5aa488845d5c934c")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+        "0001-Replace-calls-to-inspect.getargspec-with-getfullargs.patch")
+        
+sha256sums=("50cb8b08fc180eab939a5747c52f68c073c7b77e6c12ef5c5aa488845d5c934c"
+            "dddf397b5a2de8b0bb45fb4d8cf49d6440911e92594cda8c1af1e045c348c547")
+
+prepare()
+{
+    cd "$srcdir/$pkgname-$pkgver"
+
+    patch -p1 -i ../0001-Replace-calls-to-inspect.getargspec-with-getfullargs.patch
+}
+
 
 build()
 {
@@ -41,6 +52,7 @@ build()
     python setup.py build
     make -C doc html
 }
+
 
 package()
 {
