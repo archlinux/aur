@@ -3,7 +3,7 @@
 _pkgname=flightgear-photoscenery-creatorscripts
 pkgname="${_pkgname}-git"
 pkgver=r70.20210117.14f98bf
-pkgrel=2
+pkgrel=3
 pkgdesc="Phtoscenery support (i.e. using satellite images instead of texture) for FlightGear. See documentation for usage."
 arch=('any')
 url="https://github.com/nathanielwarner/flightgear-photoscenery/"
@@ -29,7 +29,7 @@ conflicts=(
   "${_pkgname}"
 )
 source=(
-  "${_pkgname}::git+git://github.com/nathanielwarner/flightgear-photoscenery.git"
+  "${_pkgname}::git+https://github.com/nathanielwarner/flightgear-photoscenery.git"
   "fgfs-photoscenery-creator.sh"
   "fgfs-photoscenery-create_bbox.sh"
   "fgfs-photoscenery-create_dds.sh"

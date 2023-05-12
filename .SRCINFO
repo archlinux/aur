@@ -1,7 +1,7 @@
 pkgbase = flightgear-photoscenery-creatorscripts-git
 	pkgdesc = Phtoscenery support (i.e. using satellite images instead of texture) for FlightGear. See documentation for usage.
 	pkgver = r70.20210117.14f98bf
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nathanielwarner/flightgear-photoscenery/
 	arch = any
 	license = GPL2
@@ -15,7 +15,7 @@ pkgbase = flightgear-photoscenery-creatorscripts-git
 	optdepends = perl: To be able to use 'fgfs-photoscenery-create_bbox' (download by automatic bounding box calculation).
 	provides = flightgear-photoscenery-creatorscripts=r70.20210117.14f98bf
 	conflicts = flightgear-photoscenery-creatorscripts
-	source = flightgear-photoscenery-creatorscripts::git+git://github.com/nathanielwarner/flightgear-photoscenery.git
+	source = flightgear-photoscenery-creatorscripts::git+https://github.com/nathanielwarner/flightgear-photoscenery.git
 	source = fgfs-photoscenery-creator.sh
 	source = fgfs-photoscenery-create_bbox.sh
 	source = fgfs-photoscenery-create_dds.sh
@@ -25,4 +25,3 @@ pkgbase = flightgear-photoscenery-creatorscripts-git
 	sha256sums = 4dd90f205b7776c306c77d61bc9fede307d9630b4583ab688410835face1a5c5
 
 pkgname = flightgear-photoscenery-creatorscripts-git
-
