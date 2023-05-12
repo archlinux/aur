@@ -6,7 +6,7 @@ pkgbase = ton-bin
 	arch = x86_64
 	license = LGPL2
 	depends = pacman>5
-	source = ton-bin.tar.gz::https://github.com/neodiX42/rpm-repo/releases/latest/download/ton-linux-x86-64.tar.gz
+	source = ton-bin.tar.gz::https://github.com/neodiX42/packages/releases/latest/download/ton-linux-x86-64.tar.gz
 	sha256sums = SKIP
 
 pkgname = ton-bin
