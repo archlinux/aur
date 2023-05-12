@@ -1,8 +1,8 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=python-shippinglabel
-pkgver=1.4.1
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc='Utilities for handling Python packages'
 arch=('any')
 url='https://shippinglabel.readthedocs.io/'
@@ -26,7 +26,7 @@ makedepends=(
 )
 #checkdepends=('')
 #optdepends=('')
-_commit='c61c0a2060f13ce7e51d3c68b5a3f322bc4efbfd'
+_commit='b6add8beeaf906b45de96b156c6990182bec28c9'
 source=("$pkgname::git+https://github.com/domdfcoding/shippinglabel#commit=$_commit")
 b2sums=('SKIP')
 
