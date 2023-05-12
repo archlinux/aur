@@ -39,7 +39,7 @@ check() {
 	export RUSTUP_TOOLCHAIN=stable
 
 	# run servers required for integration tests as background processes
-	trap 'ret=$?; kill ${SERVER_PIDS[@]}; exit $ret' RETURN ERR EXIT
+	trap 'kill ${SERVER_PIDS[@]} && SERVER_PIDS=()' RETURN ERR EXIT
 	cd integration || return
 	{
 		python3 server.py &
