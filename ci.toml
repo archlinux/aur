@@ -1,0 +1,6 @@
+[source]
+type = "crates_io"
+crate = "crab-hole"
+
+[check]
+pkgver_regex = '^0(\.[0-9]+)+$'
