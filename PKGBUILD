@@ -1,8 +1,8 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=python-dom-toml
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.6.1
+pkgrel=1
 pkgdesc="Dom's tools for Tom's Obvious, Minimal Language"
 arch=('any')
 url='https://dom_toml.readthedocs.io/'
@@ -21,7 +21,7 @@ makedepends=(
 )
 #checkdepends=('')
 #optdepends=('')
-_commit='7066f70f13a5c6b15643a0a931d103f76cbb02d7'
+_commit='3f5a0d19225f29e8b5c3b982d61611693553ac89'
 source=("$pkgname::git+https://github.com/domdfcoding/dom_toml#commit=$_commit")
 b2sums=('SKIP')
 
