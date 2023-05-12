@@ -1,9 +1,9 @@
-# Maintainer: AzureZeng <weedycn@outlook.com>
+# Maintainer: AzureZeng <weedycn at outlook.com>
 # Contributor: Shiroko <hhx.xxm at gmail.com>
 # Contributor: Johnpoint <me at lvcshu.com>
 
 pkgname=clash-for-windows-bin
-pkgver=0.20.22
+pkgver=0.20.23
 pkgrel=1
 pkgdesc="A Windows/macOS/Linux GUI based on Clash and Electron."
 arch=("x86_64" "aarch64")
@@ -38,8 +38,8 @@ source_aarch64=(
 sha256sums=('0d48a2ea1ee05ad4579b6e6996889548fa8a61a5ff6c85a32f7622cddfcb5782'
             'd541a05f491ad5be9c90e0e8780757d5bc0a9199a7dce90bf451e2154f87ba70'
             'd2e4a78f2360b271f7c7e803e84707a71a8a386ccaf95c2bb0b5fa263b43d318')
-sha256sums_x86_64=('f47b8ce0835c0c10fcb14ec9ae36db11d60e573f594166654f82f0c3f2d743c4')
-sha256sums_aarch64=('5de212735432872b607e097559eae0245731547bc0ff67d97535ce5ff72f6eb1')
+sha256sums_x86_64=('6704315735adb0199b3c621ed4d3124880c2edaf415371a79f36590ea5047ba7')
+sha256sums_aarch64=('608087b8b3d358f1ee7389bb6e7c26d378a05169e12fa7a5465d0b57695a4fe6')
 
 package() {
     local parch=$(echo ${CARCH} | sed "s/x86_64/x64/;s/aarch64/arm64/")
