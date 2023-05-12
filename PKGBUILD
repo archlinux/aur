@@ -1,10 +1,11 @@
 #!/bin/bash
 # Maintainer: Fredrick R. Brennan <copypaste@kittens.ph>
-pkgname=brew
+pkgbase=brew
+pkgname=('brew' 'brew-doc')
 pkgver=4.0.17
 _installer_pkgname=Homebrew-AUR-installer
 _installer_pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='``The missing packager for macOS'\'\'' on Arch GNU/Linux'
 arch=(any)
 url="https://brew.sh/"
@@ -26,6 +27,7 @@ TEMPFILE=`mktemp`
 prepare() {
 	([ -d $srcdir/$_installer_pkgname-$_installer_pkgver/brew ] &&
 		rm -rf $srcdir/$_installer_pkgname-$_installer_pkgver/brew) || true
+	cd "$srcdir/brew"
 }
 
 _deltemp() {
@@ -48,10 +50,11 @@ build() {
 	3>&1 env
 	cd "$srcdir/brew"
 	cp "$srcdir/$_installer_pkgname-$_installer_pkgver/install.sh" .
+	git checkout $pkgver
 	BASH_ENV="$TEMPFILE" bash -i install.sh
 }
 
-package() {
+package_brew() {
 	rm -r "$pkgdir"
 	mkdir -p "$pkgdir"
 	cp -r "$srcdir/brew_pkg"/* "$pkgdir"
@@ -68,4 +71,15 @@ package() {
 	ln -s "$pkgdir/usr/bin/Homebrew/bin/brew" "$pkgdir/usr/bin/brew"
 	warning "Patching brew.sh… this AUR package is not officially supported upstream, obviously, they want you to know this."
 	patch -p3 "$pkgdir"/usr/bin/Homebrew/Library/Homebrew/brew.sh < ./0001-allow-usr-root.patch
+	rm -r "$pkgdir/usr/bin/Homebrew/docs" "$pkgdir/usr/bin/Homebrew/manpages"
+
+}
+
+package_brew-doc() {
+	provides=()
+	conflicts=()
+	mkdir -p "$srcdir/doc/brew"
+	mkdir -p "$pkgdir/usr/share/man/man1" "$pkgdir/usr/share/doc/brew"
+	mv "$srcdir/brew_pkg/Homebrew/manpages/brew.1" "$pkgdir/usr/share/man/man1/"
+	cp -r "$srcdir/brew_pkg/Homebrew/docs/"* "$pkgdir/usr/share/doc/brew/"
 }

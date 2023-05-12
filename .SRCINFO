@@ -1,7 +1,7 @@
 pkgbase = brew
 	pkgdesc = ``The missing packager for macOS'' on Arch GNU/Linux
 	pkgver = 4.0.17
-	pkgrel = 2
+	pkgrel = 3
 	url = https://brew.sh/
 	arch = any
 	license = BSD
@@ -19,3 +19,7 @@ pkgbase = brew
 	b2sums = b2909d5cb75a480309abc2a70400a86b33615bc57934148db0622cc578503d711825c4e5c8dabcef0c6660b5653b514d82d1b0e372230fa4d7e1799ecd5e68c3
 
 pkgname = brew
+
+pkgname = brew-doc
+	provides = 
+	conflicts = 
