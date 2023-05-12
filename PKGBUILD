@@ -1,9 +1,10 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Kai Jia <jia.kai66@gmail.com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Simone Riva <simone.rva@gmail.com>
 
 pkgname=python-rawpy
 _pkg="${pkgname#python-}"
-pkgver=0.17.2
+pkgver=0.18.1
 pkgrel=1
 pkgdesc="Python wrapper for the libraw library"
 arch=('x86_64')
@@ -21,7 +22,7 @@ makedepends=(
 	'python-wheel')
 checkdepends=('python-pytest' 'python-imageio' 'python-scikit-image')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('31d76329c231131b606bda0c0066ae69e0ed50839cd2ccd8c0bec278c1bb7a19')
+sha256sums=('a2d9b50697dc0bffc741d92c70dcf3b7ef3bdd4815b37a8377040b6ed21239e9')
 
 build() {
 	cd "$_pkg-$pkgver"
@@ -42,3 +43,5 @@ package() {
 	install -d "$pkgdir/usr/share/licenses/$pkgname/"
 	ln -s "$_site/$_pkg-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
+
+# vim: ft=sh
