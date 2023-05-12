@@ -1,8 +1,8 @@
 # Maintainer  : Chris Billington <chrisjbillington@gmail.com>
 pkgname=python-mkl-fft-bin
 _pkgname=mkl_fft
-_pkgver=1.3.1
-_build=py310h6feb928_0
+_pkgver=1.3.6
+_build=py311ha02d727_1
 pkgver="${_pkgver}.anaconda${_build##*_}"
 pkgrel=3
 epoch=1
@@ -15,7 +15,7 @@ conflicts=('python-mkl-fft')
 depends=('python-mkl-service' 'python-numpy')
 makedepends=('jq')
 source=("https://repo.anaconda.com/pkgs/main/linux-64/${_pkgname}-${_pkgver}-${_build}.tar.bz2")
-sha256sums=('013091bc2e0758257b67070aacb6225a1d5207989ead18d0d37c7bd027211159')
+sha256sums=('ca708f0195f2e0320f7bc11e3a7adea84a61fc7419bd7c563fcac77cf2a9ea2a')
 
 prepare() {
   # Prefix replacement
