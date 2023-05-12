@@ -3,37 +3,44 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=gtk3-no_deadkeys_underline
-pkgver=3.24.35
-pkgrel=2
+pkgver=3.24.37
+pkgrel=1
 epoch=1
 pkgdesc="Like gtk3 in extra but with a patch to disable dead keys having an underline below them while typing and also without tracker3"
 arch=(x86_64)
 url="https://www.gtk.org/"
 depends=(
   adwaita-icon-theme
-  at-spi2-atk
   atk
   cairo
   cantarell-fonts
   dconf
   desktop-file-utils
+  fontconfig
   fribidi
   gdk-pixbuf2
   gtk-update-icon-cache
+  glib2
+  harfbuzz
   iso-codes
   libcloudproviders
   libcolord
   libcups
+  libegl
   libepoxy
+  libgl
   librsvg
   libxcomposite
+  libx11
   libxcursor
   libxdamage
+  libxext
+  libxfixes
   libxi
   libxinerama
   libxkbcommon
   libxrandr
-  mesa
+  libxrender
   pango
   shared-mime-info
   wayland
@@ -54,7 +61,7 @@ replaces=("gtk3-print-backends<=3.22.26-1")
 license=(LGPL)
 options=(debug)
 install=gtk3.install
-_commit=14cf55f98ddd71ad3f91487eda1c7f14d67de119  # tags/3.24.35^0
+_commit=013b629a2e5420cc01647f859226eb1a37ebe661  # tags/3.24.37^0
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
         gtk-query-immodules-3.0.hook
         no_deadkeys_underline.patch
@@ -72,14 +79,6 @@ pkgver() {
 prepare() {
   cd gtk
   patch -p1 < ../no_deadkeys_underline.patch
-
-  # Crash in gnome-screenshot
-  # https://gitlab.gnome.org/GNOME/gtk/-/issues/4456
-  git cherry-pick -n e413f5c43259a22269aa1e75767dd545e10119b5
-
-  # https://bugs.archlinux.org/task/76651
-  # https://gitlab.gnome.org/GNOME/gtk/-/issues/5365
-  git cherry-pick -n 3f1536632f682c355d0c3abe1afc80cf975c2cce
 }
 
 build() {
