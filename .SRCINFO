@@ -1,5 +1,5 @@
 pkgbase = swaybg-spread
-	pkgdesc = Set wallpaper spanning multiple monitors on sway
+	pkgdesc = Set wallpaper spanning multiple monitors on sway.
 	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/fyodordev/swaybg-spread

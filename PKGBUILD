@@ -5,7 +5,7 @@
 pkgname=swaybg-spread
 pkgver=0.2.0
 pkgrel=1
-pkgdesc="Set wallpaper spanning multiple monitors on sway"
+pkgdesc="Set wallpaper spanning multiple monitors on sway."
 url="https://github.com/fyodordev/swaybg-spread"
 license=("GPL3")
 arch=("x86_64")
