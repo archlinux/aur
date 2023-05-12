@@ -1,0 +1,13 @@
+pkgbase = golang-sqlcmd
+	pkgdesc = CLI for SQL Server and Azure SQL
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/microsoft/go-sqlcmd
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = golang-sqlcmd-1.0.0.tar.gz::https://github.com/microsoft/go-sqlcmd/archive/refs/tags/v1.0.0.tar.gz
+	b2sums = e5e61e00c57ad56154c56346774fdd0eb24386afe9a7eaf563f5df54a0fea3e6932850596c3f82d6d96f406b1786a9d1cce42cbc39d444b0a79f2e13cefc7cda
+
+pkgname = golang-sqlcmd
