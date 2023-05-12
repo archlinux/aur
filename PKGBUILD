@@ -8,7 +8,7 @@ arch=(any)
 url="https://github.com/Kitware/${_base}"
 license=('custom:BSD-3-clause')
 depends=(python-trame-client paraview)
-makedepends=(python-setuptools)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('a48de3e7e6f0ba978dd936baa1821b9b8120f0206c53133c814d706bf69c18043c1236b22c7cc64d248c87e8a4ee61a30617642e4e66a4718a2cbeb4fdd3c679')
@@ -19,17 +19,19 @@ prepare() {
 
 build() {
   cd ${_base}-${pkgver}
-  python setup.py build
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
   cd ${_base}-${pkgver}
-  python -m pytest
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest
 }
 
 package() {
   cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   rm ${pkgdir}${site_packages}/trame/__init__.py
