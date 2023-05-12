@@ -3,7 +3,7 @@
 
 pkgname=procmail
 pkgver=3.24
-pkgrel=2
+pkgrel=3
 pkgdesc="Highly configurable auto mail processing."
 arch=('x86_64')
 #url="http://www.procmail.org" # offline
