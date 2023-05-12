@@ -1,8 +1,8 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=python-apeye-core
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.2
+pkgrel=1
 pkgdesc='Core (offline) functionality for the apeye library'
 arch=('any')
 url='https://github.com/domdfcoding/apeye-core'
@@ -20,7 +20,7 @@ makedepends=(
 )
 #checkdepends=('')
 #optdepends=('')
-_commit='6d41d1bf4f53f0a615f601f4f276d83a5d8dda1e'
+_commit='1cdc69645af33307bafc4089ab8ec8f761553e35'
 source=("$pkgname::git+https://github.com/domdfcoding/apeye-core#commit=$_commit")
 b2sums=('SKIP')
 
