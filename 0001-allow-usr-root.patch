@@ -1,0 +1,21 @@
+diff --git a/Homebrew/Library/Homebrew/brew.sh b/tmp/brew.sh
+index 35a7428..aa19b93 100644
+--- a/usr/bin/Homebrew/Library/Homebrew/brew.sh
++++ b/usr/bin/Homebrew/Library/Homebrew/brew.sh
+@@ -362,16 +362,6 @@ else
+   fi
+ fi
+ 
+-#####
+-##### odie as quickly as possible.
+-#####
+-
+-if [[ "${HOMEBREW_PREFIX}" == "/" || "${HOMEBREW_PREFIX}" == "/usr" ]]
+-then
+-  # it may work, but I only see pain this route and don't want to support it
+-  odie "Cowardly refusing to continue at this prefix: ${HOMEBREW_PREFIX}"
+-fi
+-
+ # Many Pathname operations use getwd when they shouldn't, and then throw
+ # odd exceptions. Reduce our support burden by showing a user-friendly error.
+ if [[ ! -d "$(pwd)" ]]

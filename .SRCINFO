@@ -1,0 +1,21 @@
+pkgbase = brew
+	pkgdesc = ``The missing packager for macOS'' on Arch GNU/Linux
+	pkgver = 4.0.17
+	pkgrel = 1
+	url = https://brew.sh/
+	arch = any
+	license = BSD
+	depends = ruby
+	optdepends = gcc: most casks require it
+	provides = homebrew
+	provides = linuxbrew
+	conflicts = homebrew
+	conflicts = linuxbrew
+	source = git+https://github.com/Homebrew/brew/#tag=4.0.17
+	source = https://github.com/ctrlcctrlv/Homebrew-AUR-installer/archive/refs/tags/1.0.tar.gz
+	source = 0001-allow-usr-root.patch
+	b2sums = SKIP
+	b2sums = 63d2579bd82b5a020d49496840f8ca510f94f9ab0db75efc9ed5f5edcaf6827c2eddbab1da98e3e4c014edff45fb233f42fe2db8da14e0fb3aa93de16bcf4976
+	b2sums = b2909d5cb75a480309abc2a70400a86b33615bc57934148db0622cc578503d711825c4e5c8dabcef0c6660b5653b514d82d1b0e372230fa4d7e1799ecd5e68c3
+
+pkgname = brew
