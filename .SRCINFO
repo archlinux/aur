@@ -1,6 +1,6 @@
 pkgbase = pyinstaller-hooks-contrib
 	pkgdesc = Community maintained hooks for PyInstaller
-	pkgver = 2023.2
+	pkgver = 2023.3
 	pkgrel = 1
 	url = https://github.com/pyinstaller/pyinstaller-hooks-contrib
 	arch = any
@@ -22,8 +22,8 @@ pkgbase = pyinstaller-hooks-contrib
 	optdepends = python-uvloop
 	optdepends = python-importlib-metadata
 	optdepends = python-importlib_resources
-	source = https://github.com/pyinstaller/pyinstaller-hooks-contrib/archive/refs/tags/v2023.2.tar.gz
-	sha512sums = 3e4b4c5237a525bea32be978c79dfd7b8832d97d3f96e0f9b314c2f125d39f64691b020d3a745aa8c55c374b2b8e4a31747c21da9231b0e1bac2a8bc45467f86
-	b2sums = 0c7171f6023a399144110b0ac70ba9af091fbb4678aa95f734984afc7cbdef6d9e0a90de62a16343e8429aee587ed987721c00eaf5957bd844ea231e7983eab0
+	source = https://github.com/pyinstaller/pyinstaller-hooks-contrib/archive/refs/tags/v2023.3.tar.gz
+	sha512sums = ccab0109b0422e6bb64399f584b88ac07405799b392405dc4b638d60e5bcb7371adda2ceb93f64a0f8b12105858aea9a83812c81896f170f97c2f647b6eb7c80
+	b2sums = 99df5c4cc4c54e4ef2fb1ea0762662b5c4a767f6f3040930949521a542c779340bd804aaf53b9179a20e3494100f27b1e3a58194ea13e85cf57864a7f05fad75
 
 pkgname = pyinstaller-hooks-contrib
