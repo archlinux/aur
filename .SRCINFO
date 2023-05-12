@@ -1,6 +1,6 @@
 pkgbase = openttd-jgrpp
 	pkgdesc = Engine for running Transport Tycoon Deluxe with JGR's patch pack
-	pkgver = 0.53.1
+	pkgver = 0.53.2
 	pkgrel = 1
 	url = http://www.tt-forums.net/viewtopic.php?f=33&t=73469
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = openttd-jgrpp
 	depends = fontconfig
 	depends = hicolor-icon-theme
 	depends = lzo
-	source = https://github.com/JGRennison/OpenTTD-patches/archive/jgrpp-0.53.1.tar.gz
-	b2sums = e5e98548767b643672497d6a6211971665ef1e1aa1a95b449f9fae36d17d55957ef5bf4a0b618e51a4b8e9c2460027924473ecc35241722b43f0d78999124e0b
+	source = https://github.com/JGRennison/OpenTTD-patches/archive/jgrpp-0.53.2.tar.gz
+	b2sums = af33bb54f6fa49417052953dd785d1df8606eb8069b041f5893cd822d39fd3644971cc246a144c8bc6735fb01651c1a5cd62021f505323f681757d4e11c5b30a
 
 pkgname = openttd-jgrpp
