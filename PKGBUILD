@@ -1,7 +1,7 @@
 # Maintainer: everyx <lunt.luo#gmail.com>
 
 pkgname=shadow-tls
-pkgver=0.2.21
+pkgver=0.2.22
 pkgrel=1
 
 pkgdesc='A proxy to expose real tls handshake to the firewall.'
@@ -12,7 +12,7 @@ license=('MIT' 'Apache')
 makedepends=('cargo-nightly')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e8b0eefd753c2203d4828e68a042a2195dd71c282845d40748d2b8f3c60e00db')
+sha256sums=('4b16f30d0655a952d9ed26c2fe0c0bf2b55e114ee07c3af8976f7e1660cc5fb6')
 
 prepare() {
     cd "$pkgname-$pkgver"
