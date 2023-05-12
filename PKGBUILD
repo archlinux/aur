@@ -3,7 +3,7 @@
 pkgname=tlsc
 _zimk_pkgname=zimk
 _zimk_commit=0def4fa
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="TLS connect daemon"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url="https://github.com/Zirias/tlsc"
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${_zimk_pkgname}::git+https://github.com/Zirias/${_zimk_pkgname}#commit=${_zimk_commit}")
-sha256sums=('90eb9315091f212d85afedb35d683e0ccf3ba692487caeeebb13986be75a4153'
+sha256sums=('37bdf6975d099e0481cab1270191254b8527e925e151b1ca94bf790db31b146e'
             'SKIP')
 
 prepare() {
