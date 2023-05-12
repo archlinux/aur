@@ -1,7 +1,7 @@
 # Maintainer: Peter Semiletov peter.semiletov at gmail dot com
 
 pkgname=drumrox
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Drumrox is the fork of DrMr drum machine featured to support modern Hydrogen drumkits.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('gtk2' 'cmake')
 optdepends=('gtk2: For the built-in GUI')
 provides=("drumrox")
 source=("https://github.com/psemiletov/drumrox/archive/${pkgver}.tar.gz")
-md5sums=('2848823553f4b4e517cf153daf7e4936')
+md5sums=('71655c1000b6a65d0dd8a78c737e608f')
 
 build() {
 	cd "${srcdir}/drumrox-${pkgver}"
