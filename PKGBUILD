@@ -4,7 +4,7 @@
 # Contributor: j1simon
 pkgname=buttercup-desktop
 _pkgexename=buttercup
-pkgver=2.19.1
+pkgver=2.20.2
 pkgrel=1
 pkgdesc='Javascript Password Vault - Multi-Platform Desktop Application'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
 	buttercup-desktop.desktop
 	arch_fix.patch)
 sha512sums=(
-	'1bbed8d453599e42489db73434fe2e41e8ab6ed55c4ad4a0faf53d29606d097d68988107d2d3e3bc00f86595c955693f55dc897327ac4ccea937c69d46ae4b81'
+	'0552a543489a2b961cf3f160589fd354dba5a0eb2fca155f45500b1647fe420ad0a4dda1326af387e43b18d8d92b219f587cc6796805b502cd0565f6c1597386'
 	SKIP
 	SKIP
 	SKIP)
