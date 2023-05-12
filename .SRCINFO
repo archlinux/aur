@@ -1,6 +1,6 @@
 pkgbase = libcgroup-git
 	pkgdesc = Library that abstracts the control group file system in Linux
-	pkgver = 2.0.r106.g3625e85
+	pkgver = 2.0.r828.g16fdb8c
 	pkgrel = 1
 	url = https://github.com/libcgroup/libcgroup
 	install = libcgroup.install

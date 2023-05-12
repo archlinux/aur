@@ -4,7 +4,7 @@
 
 pkgname=libcgroup-git
 _pkgname=libcgroup
-pkgver=2.0.r106.g3625e85
+pkgver=2.0.r828.g16fdb8c
 pkgrel=1
 pkgdesc='Library that abstracts the control group file system in Linux'
 arch=('i686' 'x86_64')
@@ -49,8 +49,8 @@ package() {
 
 	install -D -m0644 samples/config/cgconfig.conf "${pkgdir}/etc/cgconfig.conf"
 	install -D -m0644 samples/config/cgrules.conf "${pkgdir}/etc/cgrules.conf"
-	install -D -m0644 samples/config/cgsnapshot_blacklist.conf "${pkgdir}/etc/cgsnapshot_blacklist.conf"
-	install -D -m0644 samples/config/cgsnapshot_whitelist.conf "${pkgdir}/etc/cgsnapshot_whitelist.conf"
+	install -D -m0644 samples/config/cgsnapshot_denylist.conf "${pkgdir}/etc/cgsnapshot_denylist.conf"
+	install -D -m0644 samples/config/cgsnapshot_allowlist.conf "${pkgdir}/etc/cgsnapshot_allowlist.conf"
 
 	install -D -m0644 dist/cgconfig.service "${pkgdir}/usr/lib/systemd/system/cgconfig.service"
 	install -D -m0644 ${srcdir}/cgrules.service "${pkgdir}/usr/lib/systemd/system/cgrules.service"
