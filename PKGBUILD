@@ -6,7 +6,7 @@
 # will be on config.extra file.
 
 pkgbase=linux-git
-pkgver=v6.4.rc1.r12.16a8829130ca
+pkgver=v6.4.rc1.r109.cc3c44c9fda2
 pkgrel=1
 pkgdesc="Linus Torvalds' Mainline Linux"
 url="https://www.kernel.org"
@@ -39,11 +39,11 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('SKIP'
+sha256sums=('SKIP'                                                              # linux git source
             '6b337a9d3cfdc00005589a80b8d36fa500f6a92ed21565a3aceec48d7202a7da'  # config
             '6e41a729c2f2946d3606ca2c0cb3a058c9700b0f73110eed36dcba91a271e50f'  # config.extra
-            'efa6b2082cda719b01d15c5374331784c841a38648da63f95904eb7e1b195e62'  # config.user
-            'b5560bc5fb8967aec989b757af8eb4d2f5166a830abb732c8c880fb953dcb52f'  # remote
+            'SKIP'                                                              # config.user
+            'SKIP'                                                              # remote
             '986e39ee1cb41d342b19f1c5af8016d48afa1e182237dbdcc3f222ae4203ef2d'  # patches
 )
 
@@ -65,7 +65,7 @@ pkgver() {
 prepare() {
   cd $_srcname
 
-  [[ -f "$_userremote" ]] && source "$_userremote"
+  [[ -f "$_userremote" ]] && source "$_userremote" || source "../${_userremote##*/}"
   if [[ -n "$REMOTE" && -n "$COMMIT" ]]; then
     REMOTE_PREFIX=${source[0]##${_srcname}::git+}
     REMOTE_PREFIX=${REMOTE_PREFIX%%torvalds/linux}
@@ -113,6 +113,8 @@ prepare() {
   cat ../config ../config.extra > .config
   if [[ -f "$_userconfig" ]]; then
     cat $_userconfig >> .config
+  else
+    cat ../config.user >> .config
   fi
   make olddefconfig
   diff -u ../config .config || :
@@ -133,6 +135,7 @@ _package() {
               'linux-firmware: firmware images needed for some devices')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
   replaces=(virtualbox-guest-modules-arch wireguard-arch)
+  install="${pkgbase}.install"
 
   cd $_srcname
   local kernver="$(<version)"
