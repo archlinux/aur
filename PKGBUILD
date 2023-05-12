@@ -3,19 +3,19 @@
 pkgbase='ceph-bin'
 pkgname=('ceph-bin' 'ceph-libs-bin' 'ceph-mgr-bin')
 pkgver=17.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Distributed, fault-tolerant storage platform delivering object, block, and file system'
 arch=('x86_64')
 url='https://ceph.com/'
 license=('GPL')
 options=('emptydirs')
 _artifact=v${pkgver}-${pkgrel}
-source=("ceph-bin-${pkgver}-${pkgrel}.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/${_artifact}/ceph_linux_${arch}.tar.zstd"
-        "ceph-libs-bin-${pkgver}-${pkgrel}.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/${_artifact}/ceph_libs_linux_${arch}.tar.zstd"
-        "ceph-mgr-bin-${pkgver}-${pkgrel}.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/${_artifact}/ceph_mgr_linux_${arch}.tar.zstd")
-sha512sums=('df2e41c3463e9a49d563669e191c2bfcf000c66ed1eb1cc90cb73af19d36a940b77964bc956352b3d3b90e3a3ba6620f7ab586e88c42cefb941a19186e07a70a'
-            'd7e076588a1f8aea65ccc0a25a6ff3effef9af2fbccb7c5d3d2a453e84e8efbdfa8f3cfa019dede90cb908272731054060b8d1313a93be18dea8796a6504371a'
-            '6dce911736d534b2946ebd0d004a407b16ccd1635f3b72bcc2597152a43fd2a92b248bb9c6d8bfc5038bf2c8fb60aaf7af72d6c0546e5a48ec4853debd91ab15')
+source=("ceph-${pkgver}-${pkgrel}.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/${_artifact}/ceph_linux_${arch}.tar.zstd"
+        "ceph-libs-${pkgver}-${pkgrel}.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/${_artifact}/ceph_libs_linux_${arch}.tar.zstd"
+        "ceph-mgr-${pkgver}-${pkgrel}.tar.zst::https://github.com/bazaah/aur-ceph/releases/download/${_artifact}/ceph_mgr_linux_${arch}.tar.zstd")
+sha512sums=('db38d454ef9fda99fbe9a0954ccb4a8a7b66537f5cb1998dd552161049a6750a82a218d6e95f2bbc2a501637bf13f2f2d0fd6a12b367733cd294364722ba236c'
+            '2218b8d81ce8b94daa63ebd7674bd6d8e3da047ad46bbde1e1666eaa10d429a329ad1e6fa43d9f9d07ba5ce06b57dcc442ca3269eb482bffbb1c25d247d2ba1b'
+            '029f5fd11f30800a78fdc1e4c6541c413be498b284271ef93886268fd47002f6505df698c64a8118f1c2dcef22081c4fcc79e6047db7202d66f2e3e132830742')
 # Don't extract source archives
 noextract=("${source[@]%%::*}")
 
@@ -30,7 +30,7 @@ package_ceph-libs-bin() {
 
   cd "${srcdir}"
 
-  tar --exclude='.*' --zstd -xv -f ceph-libs-bin-${pkgver}-${pkgrel}.tar.zst -C "${pkgdir}"
+  tar --exclude='.*' --zstd -xv -f ceph-libs-${pkgver}-${pkgrel}.tar.zst -C "${pkgdir}"
 }
 
 package_ceph-bin() {
@@ -51,7 +51,7 @@ package_ceph-bin() {
 
   cd "${srcdir}"
 
-  tar --exclude='.*' --zstd -xv -f ceph-bin-${pkgver}-${pkgrel}.tar.zst -C "${pkgdir}"
+  tar --exclude='.*' --zstd -xv -f ceph-${pkgver}-${pkgrel}.tar.zst -C "${pkgdir}"
 }
 
 package_ceph-mgr-bin() {
@@ -71,7 +71,7 @@ package_ceph-mgr-bin() {
 
   cd "${srcdir}"
 
-  tar --exclude='.*' --zstd -xv -f ceph-mgr-bin-${pkgver}-${pkgrel}.tar.zst -C "${pkgdir}"
+  tar --exclude='.*' --zstd -xv -f ceph-mgr-${pkgver}-${pkgrel}.tar.zst -C "${pkgdir}"
 }
 
 # vim:set ts=2 sw=2 et:
