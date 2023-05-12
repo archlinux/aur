@@ -55,24 +55,27 @@ build() {
 }
 
 package_brew() {
-	rm -r "$pkgdir"
+	rm -rv "$pkgdir"
 	mkdir -p "$pkgdir"
-	cp -r "$srcdir/brew_pkg"/* "$pkgdir"
-	mkdir -p "$pkgdir/usr"
-	for dir in bin lib sbin; do
-		mv "$pkgdir/$dir" "$pkgdir/usr/$dir"
+	cp -LRv "$srcdir/brew_pkg"/* "$pkgdir" || true
+	rm -rv "$pkgdir/Homebrew/docs" "$pkgdir/Homebrew/manpages"
+	mkdir -pv "$pkgdir/usr"
+	BADHBDIRS=(bin lib sbin share)
+	for dir in ${BADHBDIRS[@]}; do
+		mv -v "$pkgdir/$dir" "$pkgdir/usr/$dir"
 	done
-	for dir in bin lib sbin; do
+	for dir in ${BADHBDIRS[@]}; do
 		find "$pkgdir" -empty -type d -exec bash -c 'rmdir {}' \; || true
 	done
 	find "$pkgdir" -name .git -type d -exec rm -r {} \; || true
-	mv "$pkgdir/Homebrew" "$pkgdir/usr/bin"
-	rm "$pkgdir/usr/bin/brew"
-	ln -s "$pkgdir/usr/bin/Homebrew/bin/brew" "$pkgdir/usr/bin/brew"
+	mv -v "$pkgdir/Homebrew" "$pkgdir/usr/bin"
+	rm -v "$pkgdir/usr/bin/brew"
+	ln -vs "$pkgdir/usr/bin/Homebrew/bin/brew" "$pkgdir/usr/bin/brew"
 	warning "Patching brew.sh… this AUR package is not officially supported upstream, obviously, they want you to know this."
 	patch -p3 "$pkgdir"/usr/bin/Homebrew/Library/Homebrew/brew.sh < ./0001-allow-usr-root.patch
-	rm -r "$pkgdir/usr/bin/Homebrew/docs" "$pkgdir/usr/bin/Homebrew/manpages"
-
+	rm -rfv "$pkgdir/usr/share/man/man1"
+	ln -vs /var "$pkgdir"/usr/var
+	warning 'NB: You'\''re gonna have to run `sudo chown -R $(whoami):$(whoami) /var/homebrew` after installing!'
 }
 
 package_brew-doc() {
@@ -80,6 +83,6 @@ package_brew-doc() {
 	conflicts=()
 	mkdir -p "$srcdir/doc/brew"
 	mkdir -p "$pkgdir/usr/share/man/man1" "$pkgdir/usr/share/doc/brew"
-	mv "$srcdir/brew_pkg/Homebrew/manpages/brew.1" "$pkgdir/usr/share/man/man1/"
+	cp "$srcdir/brew_pkg/Homebrew/manpages/brew.1" "$pkgdir/usr/share/man/man1/"
 	cp -r "$srcdir/brew_pkg/Homebrew/docs/"* "$pkgdir/usr/share/doc/brew/"
 }
