@@ -2,7 +2,7 @@
 pkgname=python-pyzor
 _pkgname=${pkgname#python-}
 pkgver=1.0.1b
-pkgrel=1
+pkgrel=2
 _gitrev=2be00c3
 pkgdesc='Spam-blocking networked system that uses spam signatures to identify spam'
 arch=('any')

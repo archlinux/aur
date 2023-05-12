@@ -1,7 +1,7 @@
 pkgbase = python-pyzor
 	pkgdesc = Spam-blocking networked system that uses spam signatures to identify spam
 	pkgver = 1.0.1b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SpamExperts/pyzor
 	arch = any
 	license = GPL
