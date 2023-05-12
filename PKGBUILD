@@ -39,6 +39,7 @@ sha256sums=('SKIP'
 prepare() {
   prepare_submodule
 # sed "/CXX_STANDARD/s/14/17/" -i "${srcdir}/${name}"/cmake/CMakeSetCompilerOptions.cmake
+  sed '35i #include <cstdint>' -i "${srcdir}/${name}"/plugins/core/IO/qE57IO/extern/libE57Format/include/E57Format.h
   git -C "${srcdir}/${name}" apply -v "${srcdir}"/tbb.2021.patch
 }
 
