@@ -4,7 +4,7 @@
 _pkgname=multibridge
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Evaluating Multinomial Order Restrictions with Bridge Sampling'
 arch=('x86_64')
