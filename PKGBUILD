@@ -2,18 +2,19 @@
 
 pkgname=imaginer-git
 _pkgname=Imaginer
-pkgver=0.1.3
+pkgver=0.1.5
 pkgrel=1
-pkgdesc="Imaginer with AI"
-arch=('x86_64')
-url="https://codeberg.org/Imaginer/Imaginer"
+pkgdesc="Imagine with AI"
+arch=('any')
+url="https://imaginer.codeberg.page"
 license=('GPL3')
-depends=('libadwaita' 'libsoup3' 'python-gobject' 'libportal-gtk4' 'python-lxml' 'python-openai' 'python-requests' 'python-pillow')
-makedepends=('git' 'meson' 'blueprint-compiler' 'gobject-introspection' )
+depends=('libadwaita' 'python-gobject' 'python-openai' 'python-pillow'
+         'python-requests')
+makedepends=('blueprint-compiler' 'meson')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=(git+$url.git)
+source=(git+https://codeberg.org/Imaginer/Imaginer.git)
 b2sums=('SKIP')
 
 pkgver() {
