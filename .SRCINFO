@@ -1,0 +1,12 @@
+pkgbase = mpremote
+	pkgdesc = This CLI tool provides an integrated set of utilities to remotely interact with and automate a MicroPython device over a serial connection
+	pkgver = 1.20.0
+	pkgrel = 1
+	url = https://github.com/micropython/micropython/tools/mpremote
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	makedepends = python-installer
+	depends = python-pyserial
+
+pkgname = mpremote
