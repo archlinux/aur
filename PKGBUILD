@@ -5,7 +5,7 @@
 # Based on: https://aur.archlinux.org/packages/simulide
 
 pkgname=simulide-bzr
-pkgver=r1540
+pkgver=r1666
 #_realver=${pkgver//.r*/}
 pkgrel=1
 pkgdesc="Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers). Development version."
@@ -32,6 +32,7 @@ depends=(
 
 makedepends=(
   "python-dulwich"
+  "bzr"
 )
 
 
