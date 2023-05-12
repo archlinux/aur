@@ -12,7 +12,8 @@ optdepends=('perl-x11-protocol: for computing optimal graphics parameters'
 	    'libvncserver: graphics hosted via VNC server'
 	    "${_gtk}: graphics hosted via ${_gtk}"
 	    'sdl2: graphics hosted via SDL2')
-makedepends=('perl-x11-protocol' 'libvncserver' "${_gtk}" 'sdl2')
+makedepends=('git' 'perl-x11-protocol' 'libvncserver' "${_gtk}" 'sdl2')
+provides=('tme')
 conflicts=('tme')
 source=("tme::git+https://scm.osdn.net/gitroot/nme/tme.git${_fragment}")
 sha256sums=('SKIP')
