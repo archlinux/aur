@@ -3,12 +3,15 @@
 
 _pkgbase=ocp
 pkgname=('ocp' 'ocp-sdl2')
-pkgver=0.2.103
-pkgrel=6
+pkgver=0.2.104
+pkgrel=1
 pkgdesc="Open Cubic Player"
 arch=('i686' 'x86_64')
 url="https://stian.cubic.org/project-ocp.php"
 license=('GPL')
+
+source=(${_pkgbase}::git+https://github.com/mywave82/opencubicplayer.git#tag=v${pkgver})
+sha256sums=('SKIP')
 
 optdepends=('libvorbis: Vorbis codec support'
 	    'libmad: MPEG codec support'
@@ -29,9 +32,6 @@ makedepends=('alsa-lib'
 	     'libjpeg-turbo'
 	     'libpng'
 	     'libvorbis')
-
-source=(${_pkgbase}::git+https://github.com/mywave82/opencubicplayer.git#tag=v${pkgver})
-sha256sums=('SKIP')
 
 prepare() {
 	echo -e "\033[1;31m##!! NOTICE !!##\033[0m"
