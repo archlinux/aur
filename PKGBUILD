@@ -1,13 +1,13 @@
-# Maintainer: Bipin Kumar <bipin@ccmb.res.in>
+# Maintainer: Bipin Kumar <kbipinkumar@pm.me>
 # Contributor: sukanka <su975853527 at gmail>
 # Contributor: Aaron Baker <aa{last name}99{at}gmail{dt}org>
 # Contributor: Georgios Amanakis <g_amanakis{at}yahoo{dt}com>
 
 pkgname=sra-tools
 _dep=ncbi-vdb
-pkgver=3.0.3
-_depver=3.0.2
-pkgrel=3
+pkgver=3.0.5
+_depver=3.0.5
+pkgrel=2
 pkgdesc='A collection of tools and libraries for using data in the INSDC Sequence Read Archives'
 url="https://github.com/ncbi/sra-tools"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ncbi/sra-tools/archive/refs/tags/$pkgver.tar.gz"
@@ -15,10 +15,11 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/ncbi/sra-tools/archive/refs
 license=('custom: Public Domain')
 provides=('ncbi-vdb')
 arch=(x86_64)
-depends=('hdf5' 'python' 'mbedtls' 'libxml2')
+depends=('hdf5' 'python' 'mbedtls' 'libxml2' 'glibc' 'gcc-libs')
+optdepends=('python-ngs')
 makedepends=('cmake'  'doxygen' 'java-runtime')
-sha256sums=('ea4b9a4b2e6e40e6b2bf36b01eb8df2b50280ef9dcdc66b504c1d1296600afbd'
-            '275ccb225ddb156688c8c71f772f73276cb18ebff773a51150f86f8002ed2d59')
+sha256sums=('6dca9889ca9cfa83e9ce1c39bf7ae5654576fc79c4f608e902272a49573a05e0'
+            'a32672d7f76507a77ceb29f023855eaf5bf4d150ddd21b55c013b499f3b83735')
 
 prepare(){
   cd ${srcdir}/"$pkgname-$pkgver"
@@ -69,16 +70,12 @@ package(){
   
   # remove symlinks       
   find "$pkgdir"/usr/bin  -type l -delete
-
   # Fix filenames: remove $pkgever suffix from end of binaries
-  for filename in "$pkgdir"/usr/bin/*
-    do [ -f "$filename" ] || continue
-    mv "$filename" "${filename//.${pkgver}/}"
+  for bin in "$pkgdir"/usr/bin/*
+    do [ -f "$bin" ] || continue
+    mv -n "$bin" "${bin//.${pkgver}/}"
   done
-
   # Fix filenames: remove -orig suffix from end of binaries
-  for filename in "$pkgdir"/usr/bin/*
-    do [ -f "$filename" ] || continue
-    mv -n "$filename" "${filename//-orig/}"
-  done
+  for file in "$pkgdir"/usr/bin/*-orig; do mv "$file" "${file%-orig}"; done
+ 
 }
