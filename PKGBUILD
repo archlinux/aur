@@ -3,7 +3,7 @@
 _reponame=Shipwright
 pkgbase=soh-git
 pkgname=(soh-git soh-otr-exporter-git)
-pkgver=7.0.0.r15.g1fbec4c69
+pkgver=7.0.1.r4.g7dff8b6ef
 pkgrel=1
 arch=("x86_64" "i686")
 url="https://shipofharkinian.com/"
@@ -15,18 +15,12 @@ source=("git+https://github.com/HarbourMasters/${_reponame}.git"
         "git+https://github.com/Kenix3/libultraship.git"
         "soh.desktop"
         "soh-misc-otr-patches.patch"
-        "lus-install-paths.patch"
-        "ZAPDTR-gcc-13-compatibility.patch::https://github.com/HarbourMasters/Shipwright/pull/2832.patch"
-        "OTRGui-gcc-13-compatibility.patch"
-        "otrgui-wrapper.sh")
+        "lus-install-paths.patch")
 sha256sums=('SKIP'
             'SKIP'
             '25aebd34f6ad49073d8a5ce6915b6fa290470fc6d62a8143abe07a25707ff4a2'
-            '4e5ff4c6fc0fc7daea80deb29d412d26c27769a0882ef86c2cb6cef0f60dc705'
-            '4dba7adcae469ef4caf5cb93844a32809ab983114cc296fb8721cc092f2af4c7'
-            'f0e06db0a3d94bafec2398853242c06f6982b5310a1a05e1a1768276e8f1e158'
-            'c10c0de9ca1ded2b4d21ec4ce18bd77d9843f182c4d26a9d59f96c39e40712b9'
-            '6e735877e7bba81f9f308f6eabbdfe5354f2c331a9acf9a16ab02a5681f2c25f')
+            'b7e06174915f8dc6bd8927c248fec32c1d15c943b6aaaed1c6fb7c37dcb55510'
+            '3cf1e6c6f014357b71d935a1dd8133ec5c2c20128b7d8ccd1b764e27f3cb4782')
 
 # NOTE: If compiling complains about missing headers, set __generate_headers below to 1
 # Changable options for debugging:
@@ -85,8 +79,6 @@ prepare() {
 
   patch -Np1 -i "${srcdir}/soh-misc-otr-patches.patch"
   patch -Np1 -i "${srcdir}/lus-install-paths.patch"
-  patch -Np1 -i "${srcdir}/ZAPDTR-gcc-13-compatibility.patch"
-  patch -Np1 -i "${srcdir}/OTRGui-gcc-13-compatibility.patch"
 }
 
 build() {
@@ -107,20 +99,20 @@ build() {
   if [ "$__generate_headers" = 1 ]; then
     cmake --build build --target ExtractAssetsHeaders
   else
-    cd OTRExporter
+    (
+        cd OTRExporter
 
-    rm -f soh.otr || true
-    rm -rf Extract || true
-    mkdir Extract
-    cp -r assets Extract/assets
+        rm -f soh.otr || true
+        rm -rf Extract || true
+        mkdir Extract
+        cp -r assets Extract/assets
 
-    ../build/ZAPD/ZAPD.out botr -se OTR --norom
-
-    cd ..
+        ../build/ZAPD/ZAPD.out botr -se OTR --norom
+    )
   fi
 
   cmake --build build --target soh --config $BUILD_TYPE
-  cmake --build build --target OTRGui --config $BUILD_TYPE
+  cmake --build build --target Assets
 }
 
 package_soh-git() {
@@ -138,35 +130,35 @@ package_soh-git() {
   DESTDIR="${pkgdir}" cmake --install build/soh
 
   install -dm755 "${pkgdir}/usr/bin/"
+
   ln -s /opt/soh/soh.elf "${pkgdir}/usr/bin/soh"
   install -Dm644 "${srcdir}/soh.desktop" -t "${pkgdir}/usr/share/applications"
   install -Dm644 soh/macosx/sohIcon.png "${pkgdir}/usr/share/pixmaps/soh.png"
 
   install -Dm644 OTRExporter/soh.otr "${pkgdir}/${SHIP_PREFIX}/soh.otr"
 
+  # Copy game documentation
   install -dm755 "${pkgdir}/usr/share/doc/soh" "${pkgdir}/usr/share/doc/soh/docs"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/soh"
-  find docs -exec install -Dm644 {} "${pkgdir}/usr/share/doc/soh/docs" \;
+  cp -r docs "${pkgdir}/usr/share/doc/soh/docs"
 }
 
 package_soh-otr-exporter-git() {
-  pkgdesc="OTR generation tools for SoH, including asset XML files and a simple GUI tool (git)"
+  pkgdesc="OTR generation tools for SoH. Includes asset XML files needed for generation. (git)"
   provides=("soh-otr-exporter")
   conflicts=("soh-otr-exporter")
   license=("MIT")
   depends=("${_depends_soh_otr_exporter[@]}")
-  optdepends=("zenity: OTRGui file chooser"
-              "kdialog: OTRGui file chooser (KDE)")
+  install=soh-otr-exporter.install
 
   cd "${srcdir}/${_reponame}"
 
   DESTDIR="${pkgdir}" cmake --install build/OTRGui
 
-  install -dm755 "${pkgdir}/usr/bin/"
-  install -Dm755 "${srcdir}/otrgui-wrapper.sh" "${pkgdir}/usr/bin/OTRGui"
+  install -dm755 "${pkgdir}/usr/bin/ZAPD"
   ln -s ${SHIP_PREFIX}/assets/extractor/ZAPD.out "${pkgdir}/usr/bin/ZAPD"
 
-  # Change the external xml folder path so that it always points to this package
+  # Change the external xml folder path so that it always points to this package's install path
   find "${pkgdir}/${SHIP_PREFIX}/assets/extractor" -maxdepth 1 -name Config_\*.xml -exec \
     sed -i "/ExternalXMLFolder/s,assets/extractor,${SHIP_PREFIX}/&," {} +
 
