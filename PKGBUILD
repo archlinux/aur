@@ -1,6 +1,6 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail dote com>
 pkgname=make-lvm-snapshot
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Make a consistent LVM snapshot of the root volume"
 arch=('any')
@@ -10,7 +10,7 @@ depends=("lvm2" "bc")
 install="$pkgname.install"
 source=("${url}/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         "$pkgname.install")
-sha256sums=('6af9afc4ab6860fb516cc17b80c658d8686b0915ed5cf442e0048466f1eba3f8'
+sha256sums=('29a9121b3279aa47c10d7fcb1f40e748a02a69d84cf9fe56207f8a0b1bbd2324'
             '98cebca98f1f94e33653fbb2b81c305877f466076298204413c3e929fa051443')
 
 package() {
