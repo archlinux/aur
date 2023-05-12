@@ -2,15 +2,15 @@
 # Contributor: katt <magunasu.b97@gmail.com>
 _pkgname=librw
 pkgname=$_pkgname-git
-pkgver=r551.d2f54a2
+pkgver=r557.05db81b
 pkgrel=1
 pkgdesc="A re-implementation of the RenderWare Graphics engine"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/aap/librw"
 license=('MIT')
-depends=('glfw>=3.3.7')
+depends=('gcc-libs' 'glfw>=3.3.7' 'glibc')
 makedepends=('cmake' 'git')
-provides=("$_pkgname=$pkgver" 'librw.so')
+provides=("$_pkgname=${pkgver#r}" 'librw.so')
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
 b2sums=('SKIP')
