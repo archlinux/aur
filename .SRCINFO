@@ -1,6 +1,6 @@
 pkgbase = foto-git
 	pkgdesc = Simple image viewer written in C - Git release
-	pkgver = v1.1.1.r2.g7edd7bb
+	pkgver = v1.1.2.r0.g724b9e5
 	pkgrel = 1
 	url = https://github.com/mekb-turtle/foto
 	arch = any
