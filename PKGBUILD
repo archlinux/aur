@@ -16,7 +16,7 @@ pkgname=(
   java11-openjfx-src
 )
 pkgver=11.0.19.u1
-pkgrel=2
+pkgrel=3
 pkgdesc='Java OpenJFX 11 client application platform (open-source implementation of JavaFX)'
 arch=(x86_64)
 url=https://wiki.openjdk.java.net/display/OpenJFX/Main
@@ -51,12 +51,14 @@ source=(
   java11-openjfx-flags.patch
   java11-openjfx-no-xlocale.patch
   java11-openjfx-gstreamer-lite-gcc10-compat.patch
+  gcc-13-fixes.patch
 )
 b2sums=('ac448da4b1a807333b5ef5e32878ff5cab0d10456388ec8fd7e7b55f868ac6a2a2bc8d2b81ddf9bb114f3205ab2d20e909032f090239e018c0502a3736b776cb'
         'a77fd8814a5978827de01a652f7b945f3439df04606434ced8998c8d77a82985292490e6965299aeb52f9da3d8069b4091d75519bd4ec8a15f70bc6d28b13498'
         '191de086c12e4ae8fd901a06c6382891544d1a336c51dbd491c76c0ecff808c042a2117e3f25239768809a38cceddcb17c32331715cc2bbdd057fe307b908df3'
         '13216615c01b8d48d17889ffa22668c38568870d83ab30c542eb5b5620db305f02efb1acb99d9b5e89eb0a73a134bb336cb301f4de4e8855cae50efb099e384e'
-        '119fa1cc5da2cdefa22bbe9b6f76581faa74e05fa7b6e5576470fc0251c6e257f122fbba03754cc01f7c7251145cfa1cab4ffc2f9d59ff0c175a121e943a0f64')
+        '119fa1cc5da2cdefa22bbe9b6f76581faa74e05fa7b6e5576470fc0251c6e257f122fbba03754cc01f7c7251145cfa1cab4ffc2f9d59ff0c175a121e943a0f64'
+        'd9837d5953706accc84345e32ef5cf6af6d9123147fbc6680a27e8bf7d35086ba21ceadd471961e7a1a09d7467e15d78b6e65a2e14a400d6de5beafed7036979')
 
 prepare() {
   cd jfx11u-${pkgver//.u/-}
@@ -65,6 +67,7 @@ prepare() {
   patch -Np1 -i ../java11-openjfx-flags.patch
   patch -Np1 -i ../java11-openjfx-no-xlocale.patch
   patch -Np1 -i ../java11-openjfx-gstreamer-lite-gcc10-compat.patch
+  patch -Np1 -i ../gcc-13-fixes.patch
 }
 
 build() {
@@ -73,6 +76,11 @@ build() {
   # build against ffmpeg4.4
   export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
 
+  unset JAVA_TOOL_OPTIONS
+  unset JDK_JAVA_OPTIONS
+  unset _JAVA_OPTIONS
+  export JAVA_HOME='/usr/lib/jvm/java-11-openjdk'
+  export JDK_HOME='/usr/lib/jvm/java-11-openjdk'
   gradle7 zips
 }
 

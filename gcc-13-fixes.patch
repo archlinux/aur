@@ -1,0 +1,38 @@
+diff --git a/modules/javafx.web/src/main/native/Source/bmalloc/bmalloc/Heap.cpp b/modules/javafx.web/src/main/native/Source/bmalloc/bmalloc/Heap.cpp
+index 4a1e1c1243..4e6ab08b3c 100644
+--- a/modules/javafx.web/src/main/native/Source/bmalloc/bmalloc/Heap.cpp
++++ b/modules/javafx.web/src/main/native/Source/bmalloc/bmalloc/Heap.cpp
+@@ -41,6 +41,7 @@
+ #include "bmalloc.h"
+ #include <thread>
+ #include <vector>
++#include <cstdio>
+
+ #if BOS(DARWIN)
+ #include "Zone.h"
+diff --git a/modules/javafx.web/src/main/native/Source/bmalloc/bmalloc/IsoHeapImplInlines.h b/modules/javafx.web/src/main/native/Source/bmalloc/bmalloc/IsoHeapImplInlines.h
+index d20f02d441..ebb6f8927e 100644
+--- a/modules/javafx.web/src/main/native/Source/bmalloc/bmalloc/IsoHeapImplInlines.h
++++ b/modules/javafx.web/src/main/native/Source/bmalloc/bmalloc/IsoHeapImplInlines.h
+@@ -30,6 +30,8 @@
+ #include "IsoSharedHeapInlines.h"
+ #include "IsoSharedPageInlines.h"
+
++#include <cstdio>
++
+ #if !BUSE(LIBPAS)
+
+ namespace bmalloc {
+diff --git a/modules/javafx.web/src/main/native/Source/bmalloc/bmalloc/IsoSharedPageInlines.h b/modules/javafx.web/src/main/native/Source/bmalloc/bmalloc/IsoSharedPageInlines.h
+index 80147afd02..7ad2eac710 100644
+--- a/modules/javafx.web/src/main/native/Source/bmalloc/bmalloc/IsoSharedPageInlines.h
++++ b/modules/javafx.web/src/main/native/Source/bmalloc/bmalloc/IsoSharedPageInlines.h
+@@ -29,6 +29,8 @@
+ #include "StdLibExtras.h"
+ #include "VMAllocate.h"
+
++#include <cstdio>
++
+ #if !BUSE(LIBPAS)
+
+ namespace bmalloc {
