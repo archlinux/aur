@@ -16,7 +16,7 @@ makedepends=('unzip' 'zip' 'diffutils' 'yasm' 'mesa' 'imake' 'inetutils' 'xorg-s
              'git')
 replaces=("waterfox-g4-kpe" "waterfox-g3-kpe")
 options=('!emptydirs' '!makeflags' 'zipman' '!lto')
-_filesrev=605d3ccc82cc846480b34f977e01c53572bdb98d
+_filesrev=20baadcd5c504e780c221a9640ccc37a04675d94
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-g-kpe
 source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G$pkgver"
         "waterfox-g.desktop::$_filesurl/waterfox-g.desktop"
@@ -36,6 +36,7 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G$pkgver"
         "fix-wayland-build.patch::$_filesurl/patches/fix-wayland-build.patch"
         "mach-depends.patch::$_filesurl/patches/mach-depends.patch"
         "Bug1811714.patch::$_filesurl/patches/Bug1811714.patch"
+        "Bug1777674.patch::$_filesurl/patches/ug1777674.patch"
         )
 sha256sums=('SKIP'
             '09b6d083ecfc42d8c355177b56b7073f387c968c162041507f2870c38e4b7259'
@@ -54,7 +55,8 @@ sha256sums=('SKIP'
             '2bb954aaac047c53b1d7fe779c95cf533ebac1f9f3cf175cf9caec8191c94a92'
             '46724a625f51c358abaee488a7ce75673078e96ba009459339120b8dd11dec25'
             '3f4514da71b9e5f1630b8ddc37b48594203ef907c8081d3e986217666814842a'
-            '789c0c8d7baa060bd8d8d3f4c9ab43cf75a41761ebb811ae81eee00bac0f706e')
+            '789c0c8d7baa060bd8d8d3f4c9ab43cf75a41761ebb811ae81eee00bac0f706e'
+            '95746f5a2bf8bd175c3c566b4ab83288495642547c4873d00ad5561ee955b564')
 
 prepare() {
 
@@ -74,6 +76,7 @@ prepare() {
 
   # Fix errors caused by changes provided with GCC 13
   patch -Np1 -i ../Bug1811714.patch
+  patch -Np1 -i ../Bug1777674.patch
 
   cat >../mozconfig <<END
 ac_add_options --enable-alsa
