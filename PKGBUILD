@@ -1,5 +1,7 @@
 # Maintainer: Fyodor Perejoguine <fyodordev@gmail.com>
 #
+# Contributor: Fabian <https://github.com/0xk1f0>
+#
 pkgname=swaybg-spread
 pkgver=0.2.0
 pkgrel=1
