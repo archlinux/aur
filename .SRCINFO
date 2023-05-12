@@ -1,6 +1,6 @@
 pkgbase = mutter-dynamic-buffering
 	pkgdesc = Window manager and compositor for GNOME (with dynamic triple/double buffering)
-	pkgver = 44.1
+	pkgver = 44.1+r2+g82bd40dcbc
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
@@ -9,10 +9,12 @@ pkgbase = mutter-dynamic-buffering
 	makedepends = gi-docgen
 	makedepends = git
 	makedepends = gobject-introspection
+	makedepends = gtk3
 	makedepends = meson
 	makedepends = sysprof
 	makedepends = wayland-protocols
 	makedepends = xorg-server
+	makedepends = xorg-server-xvfb
 	depends = colord
 	depends = dconf
 	depends = gnome-desktop-4
@@ -30,7 +32,7 @@ pkgbase = mutter-dynamic-buffering
 	depends = pipewire
 	depends = startup-notification
 	depends = xorg-xwayland
-	source = mutter-dynamic-buffering::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=28a6447ff060ae1fbac8f20a13908d6e230eddc2
+	source = mutter-dynamic-buffering::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=82bd40dcbcc3601da755678778f033bd9a30286d
 	source = mr1441.patch
 	sha256sums = SKIP
 	sha256sums = 3003d63a665d80cae58cdf3db37af25e214bcff5e322768fe2544acb51adcf9b
