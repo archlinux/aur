@@ -33,4 +33,7 @@ check() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
+
+  # fix binary permissions
+  chmod 0755 "$pkgdir/usr/bin/$pkgname"
 }
