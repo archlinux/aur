@@ -1,15 +1,17 @@
 # Maintainer: jmcb <joelsgp@protonmail.com>
 pkgname=distro-grub-themes-arch
 pkgver=3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A GRUB2 theme for Arch Linux"
 arch=('any')
 url="https://github.com/AdisonCavani/distro-grub-themes"
 license=('GPL3')
 provides=('distro-grub-theme-arch'
-		  'grub-theme-arch')
+		  'grub-theme-arch'
+		  'grub-theme')
 groups=()
 depends=('grub')
+optdepends=('grub-customizer: GUI tool to configure grub')
 
 _theme_distro="arch"
 
