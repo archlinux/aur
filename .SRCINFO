@@ -1,16 +1,14 @@
 pkgbase = shadowsocks-libev-qrcode
 	pkgdesc = Generate QR code from a shadowsocks-libev config file.
-	pkgver = r18.cb9dcb0
+	pkgver = r22.5402aea
 	pkgrel = 1
 	url = https://github.com/OriginCode/shadowsocks-libev-qrcode
 	arch = any
 	license = WTFPL
 	makedepends = git
 	depends = python-qrcode
-	depends = python-argparse
 	provides = ss-qrcode
 	source = git+https://github.com/OriginCode/shadowsocks-libev-qrcode
 	md5sums = SKIP
 
 pkgname = shadowsocks-libev-qrcode
-
