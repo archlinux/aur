@@ -2,14 +2,14 @@
 # Contributor: Lubosz Sarnecki <lubosz@gmail.com>
 _pkgname=libretro-mesen
 pkgname=$_pkgname-git
-pkgver=0.9.9.r275.gc89474c9
+pkgver=0.9.9.r282.gd0a48b6d
 pkgrel=1
 pkgdesc="Nintendo Entertainment System core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://www.mesen.ca/"
 license=('GPL3')
 groups=('libretro')
-depends=('gcc-libs' 'libretro-core-info')
+depends=('gcc-libs' 'glibc' 'libretro-core-info')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -17,8 +17,7 @@ source=("$_pkgname::git+https://github.com/libretro/Mesen.git")
 b2sums=('SKIP')
 
 pkgver() {
-	cd $_pkgname
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git -C $_pkgname describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

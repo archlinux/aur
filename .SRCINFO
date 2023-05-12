@@ -1,6 +1,6 @@
 pkgbase = libretro-mesen-git
 	pkgdesc = Nintendo Entertainment System core
-	pkgver = 0.9.9.r275.gc89474c9
+	pkgver = 0.9.9.r282.gd0a48b6d
 	pkgrel = 1
 	url = https://www.mesen.ca/
 	arch = aarch64
@@ -13,6 +13,7 @@ pkgbase = libretro-mesen-git
 	license = GPL3
 	makedepends = git
 	depends = gcc-libs
+	depends = glibc
 	depends = libretro-core-info
 	provides = libretro-mesen
 	conflicts = libretro-mesen
