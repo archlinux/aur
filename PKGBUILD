@@ -1,12 +1,13 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Bao Trinh <qubidt at gmail dot com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: ml <>
 
 # GPG keys: https://github.com/hurl-bot.gpg
 
 pkgname=hurl-rs
-pkgver=2.0.1
-_commit=0c73781
-pkgrel=2
+pkgver=3.0.0
+_commit=277393700b9dbc48aba28be8ccb7ea3e766cc0cb
+pkgrel=1
 pkgdesc='HTTP Client to run and test requests'
 arch=('x86_64')
 url='https://github.com/Orange-OpenSource/hurl'
