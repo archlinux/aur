@@ -1,17 +1,19 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=ocproxy-git
 _pkgname=ocproxy
-pkgver=1.60.r8.g8f15425
-pkgrel=3
+pkgver=1.60.r9.gc98f06d
+pkgrel=1
 epoch=
 pkgdesc="A user-level SOCKS and port forwarding proxy for OpenConnect based on lwIP"
-depends=('libevent')
+depends=('libevent' 'glibc')
 makedepends=('git')
 arch=('i686' 'x86_64')
 url="https://github.com/cernekee/ocproxy"
 license=('BSD')
-source=("git+https://github.com/cernekee/ocproxy.git")
-md5sums=('SKIP')
+source=("git+https://github.com/cernekee/ocproxy.git"
+"https://raw.githubusercontent.com/cernekee/ocproxy/6e2291b8fd120128873646156f8cb97b31a330fb/LICENSE")
+md5sums=('SKIP'
+         'c15ed9963411b4566976d06cdbc1f43f')
 
 pkgver() {
   cd "$_pkgname"
@@ -28,4 +30,5 @@ build() {
 package() {
   cd "$srcdir/$_pkgname"
   make DESTDIR="$pkgdir/" install
+  install -Dm644 $srcdir/LICENSE -t $pkgdir/usr/share/licenses/$pkgname/
 }
