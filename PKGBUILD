@@ -1,37 +1,59 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail.com>
 pkgname=matrix-commander-git
-pkgver=r82.06b4738
-pkgrel=1
-pkgdesc="Simple CLI-based Matrix client for sending and receiving"
+_name="${pkgname%-git}"
+pkgver=r324.dbf2829
+pkgrel=2
+pkgdesc="Simple CLI-based Matrix client (from git master)"
 arch=('any')
 url="https://github.com/8go/matrix-commander"
 license=('GPL')
-depends=( "python-aiohttp"
-					"python-aiofiles"
-					"python-argparse"
-					"python-markdown"
-					"python-matrix-nio"
-					"python-notify2"
-					"python-pillow"
-					"python-magic-ahupp")
+makedepends=(
+  "python-build"
+  "python-installer"
+  "python-wheel"
+)
+depends=(
+  # adapted from requirements.txt:
+  "python>3.7"
+  "python-aiohttp"
+  "python-aiofiles>=0.6.0"
+  # "python-argparse" part of python since 3.2
+  # "python-asyncio" part of python since 3.3
+  # "python-datetime" part of standard python
+  "python-emoji"
+  "python-markdown"
+  "python-matrix-nio>=0.14.1"
+  "python-pillow"
+  "python-magic"
+  "python-pyxdg"
+  # "python-uuid" part of standard python
+
+  # other dependencies:
+  "python-atomicwrites"  # optdepends of matrix-nio, but included because matrix-commander wants it for encryption
+  "python-cachetools"  # optdepends of matrix-nio, but included because matrix-commander wants it for encryption
+  "python-olm"  # optdepends of matrix-nio, but included because matrix-commander wants it for encryption
+  "python-peewee"  # optdepends of matrix-nio, but included because matrix-commander wants it for encryption
+)
+optdepends=(
+  "python-notify2: needed for notifications on desktop systems"
+)
 provides=("matrix-commander")
 conflicts=("matrix-commander")
-source=("${pkgname%-git}::git+https://github.com/8go/matrix-commander.git")
+source=("${_name}::git+https://github.com/8go/matrix-commander.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_name"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build() {
+  cd "$_name"
+  python -m build --wheel --no-isolation
+}
 
 package() {
-	local _site_packages
-	_site_packages="$(python -c "import site; print(site.getsitepackages()[0])")"
-	install -d "${pkgdir}${_site_packages}/${pkgname%-git}/bin/"
-	cd "${pkgname%-git}" || exit 1
-	install -D -m 755 "./matrix-commander.py" "${pkgdir}/${_site_packages}/${pkgname%-git}/bin/"
-	install -d "$pkgdir/usr/bin/"
-	cd "$pkgdir/usr/bin/" || exit 1
-	ln -s "${_site_packages}/${pkgname%-git}/bin/matrix-commander.py" "matrix-commander"
+  cd "$_name"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
+
