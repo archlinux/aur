@@ -1,4 +1,5 @@
-# Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
+# Maintainer: Florian Maunier <fmauneko@dissidence.ovh>
+# Contributor: Dušan Simić <dusan.simic1810@gmail.com>
 
 _electron=electron
 _appname=insomnia
