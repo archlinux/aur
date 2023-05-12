@@ -1,13 +1,12 @@
 pkgbase = mpd-muspy
 	pkgdesc = Sync artists of your MPD database with your MuSpy account.
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Anthony25/mpd-muspy
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python-appdirs
-	depends = python-argparse
 	depends = python-mpd2
 	depends = python-musicbrainzngs
 	depends = python-requests
@@ -17,4 +16,3 @@ pkgbase = mpd-muspy
 	sha256sums = e6b004424dd37cb467caa32ba921091da509e057d7451dcf6810a92858715b44
 
 pkgname = mpd-muspy
-

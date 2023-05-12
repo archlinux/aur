@@ -5,7 +5,7 @@
 
 pkgname=mpd-muspy
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Sync artists of your MPD database with your MuSpy account."
 arch=(any)
 url="https://github.com/Anthony25/mpd-muspy"
@@ -15,7 +15,6 @@ makedepends=(
 )
 depends=(
   python-appdirs
-  python-argparse
   python-mpd2
   python-musicbrainzngs
   python-requests
