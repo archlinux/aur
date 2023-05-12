@@ -1,7 +1,7 @@
 pkgbase = libpeas-lua51
 	pkgdesc = A GObject plugin library (with Lua 5.1 support)
 	pkgver = 1.36.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Projects/Libpeas
 	arch = x86_64
 	license = LGPL2.1
@@ -15,14 +15,18 @@ pkgbase = libpeas-lua51
 	makedepends = meson
 	makedepends = python-gobject
 	makedepends = vala
-	depends = gtk3
-	depends = hicolor-icon-theme
-	depends = gobject-introspection
 	optdepends = lua51-lgi: Lua 5.1 loader
 	optdepends = python-gobject: Python loader
-	provides = libpeas
-	conflicts = libpeas
 	source = https://download.gnome.org/sources/libpeas/1.36/libpeas-1.36.0.tar.xz
 	sha256sums = 297cb9c2cccd8e8617623d1a3e8415b4530b8e5a893e3527bbfd1edd13237b4c
 
 pkgname = libpeas-lua51
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = gobject-introspection
+	provides = libpeas
+	conflicts = libpeas
+
+pkgname = libpeas-lua51-docs
+	pkgdesc = A GObject plugin library (with Lua 5.1 support) (documentation)
+	depends = 
