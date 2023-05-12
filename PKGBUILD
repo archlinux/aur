@@ -14,7 +14,7 @@ source=(
 )
 sha256sums=('58d19b3cad05859411e4ce85cdc5e68a82cf5808e5b5c66c04d76d82af9a7ade'
             '61a78cb68d8e86ffbcb5e8a4328bd3581548531cc6fe5b02f6058176c97566b2'
-            '3f050e2934ad71d28acfb55a15b65d3dc269844e42b5f1707d449edce0290f54')
+            '24caa0995bb3454964db1f79afdec1eeb739da4ff00adf638578d99dfe8537e1')
 
 backup=("etc/tgp.toml")
 

@@ -9,7 +9,6 @@ stats_sock = /run/tgp.sock
 # Set socks5 proxy in case you need to use one
 socks5 = "127.0.0.1:9050"
 # Optional auth
-# Now empty password is not allowed. because of https://github.com/golang/go/issues/57285
 # socks5_user = "test"
 # socks5_pass = "test"
 # [users]
