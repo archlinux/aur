@@ -4,7 +4,7 @@
 # Contributor: Jonathon Fernyhough <jonathon_at_manjaro_dot_org>
 pkgname=rustup-git
 pkgver=1.26.0.r27.g4b29b79a
-pkgrel=1
+pkgrel=2
 pkgdesc="The Rust toolchain installer"
 arch=('x86_64')
 url="https://github.com/rust-lang/rustup"
@@ -20,7 +20,7 @@ replaces=('cargo-tree')
 install='post.install'
 source=("${pkgname}::git+https://github.com/rust-lang/rustup.git" "list-proxy-names.rs")
 sha512sums=('SKIP'
-            '9d76494abf00733a3a2456aa7fafe2ba67a2e7ee99cf7591841ecc50788da8f94acbfb10fec5e3b0350b20b035310651834a5ff8dc1779e235b2432845b63b80')
+            'fdc9750850e8265409f2fcacf3c7f59e82b619ed40cef0c82944e08c17266107327813fb283c909b3b0821501fac064d9e3618060d688aa7c76cf16a36244626')
 
 pkgver() {
     cd "$srcdir/${pkgname}"

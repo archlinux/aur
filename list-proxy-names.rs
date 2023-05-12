@@ -1,5 +1,5 @@
-use rustup::TOOLS;
+use rustup::{TOOLS, DUP_TOOLS};
 
 fn main() {
-    println!("{}", TOOLS.join(" "));
+    TOOLS.iter().chain(DUP_TOOLS).for_each(|s|print!("{s} "));
 }
