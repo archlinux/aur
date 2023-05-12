@@ -1,42 +1,44 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Alexandre Bouvier <contact@amb.tf>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Isho Antar <IshoAntar@protonmail.com>
 # Contributor: Michael Yang <ohmyarchlinux@pm.me>
-
-pkgname=fmt-git
-pkgver=9.0.0.r23.g81f1cc74
+_pkgname=fmt
+pkgname=$_pkgname-git
+pkgver=10.0.0.r13.g130b8fcd
 pkgrel=1
-pkgdesc='Open-source formatting library for C++'
-url='https://fmt.dev/'
-arch=('x86_64')
+pkgdesc="Open-source formatting library for C++"
+arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
+url="https://fmt.dev/"
 license=('MIT')
-depends=('gcc-libs')
-makedepends=('git' 'cmake')
-provides=("fmt=${pkgver%.r*}" 'libfmt.so')
-conflicts=('fmt')
-source=('fmt::git+https://github.com/fmtlib/fmt')
-sha512sums=('SKIP')
+depends=('gcc-libs' 'glibc')
+makedepends=('cmake' 'git')
+provides=("$_pkgname=$pkgver" 'libfmt.so')
+conflicts=("$_pkgname")
+source=("$_pkgname::git+https://github.com/fmtlib/fmt.git")
+b2sums=('SKIP')
 
 pkgver() {
-	git -C fmt describe --long --tags | sed 's/-/.r/;s/-/./'
+	git -C $_pkgname describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cmake \
-		-B build \
-		-S fmt \
-		-DFMT_DOC=OFF \
-		-DBUILD_SHARED_LIBS=TRUE \
+	cmake -S $_pkgname -B build \
+		-DBUILD_SHARED_LIBS=ON \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DFMT_DOC=OFF \
+		-DFMT_TEST="$CHECKFUNC" \
 		-Wno-dev
-	make -C build
+	cmake --build build
 }
 
 check() {
-	make -C build test
+	ctest --test-dir build
 }
 
 package() {
-	make -C build DESTDIR="${pkgdir}" install
-	install -Dm644 fmt/LICENSE.rst "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	# shellcheck disable=SC2154
+	DESTDIR="$pkgdir" cmake --install build
+	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname $_pkgname/LICENSE.rst
 }
