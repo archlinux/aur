@@ -1,8 +1,8 @@
 diff --git a/soh/soh/Extractor/Extract.cpp b/soh/soh/Extractor/Extract.cpp
-index b8031f01..93bdced9 100644
+index a9ddc4f4..f6d45fe2 100644
 --- a/soh/soh/Extractor/Extract.cpp
 +++ b/soh/soh/Extractor/Extract.cpp
-@@ -426,30 +426,27 @@ const char* Extractor::GetZapdVerStr() const {
+@@ -490,28 +490,27 @@ const char* Extractor::GetZapdVerStr() const {
  
  extern "C" int zapd_main(int argc, char** argv);
  
@@ -10,13 +10,11 @@ index b8031f01..93bdced9 100644
 +bool Extractor::CallZapd(std::string &assetPath) {
      constexpr int argc = 16;
 -    char xmlPath[100];
--    char baseromPath[100];
 -    char confPath[100];
      std::array<const char*, argc> argv;
      const char* version = GetZapdVerStr();
  
 -    snprintf(xmlPath, 100, "assets/extractor/xmls/%s", version);
--    snprintf(baseromPath, 100, "%s", mCurrentRomPath.c_str());
 -    snprintf(confPath, 100, "assets/extractor/Config_%s.xml", version);
 +    std::string xmlPath = assetPath + "/assets/extractor/xmls/" + version;
 +    std::string confPath = assetPath + "/assets/extractor/Config_" + version + ".xml";
@@ -28,8 +26,7 @@ index b8031f01..93bdced9 100644
 -    argv[3] = xmlPath;
 +    argv[3] = xmlPath.c_str();
      argv[4] = "-b";
--    argv[5] = baseromPath;
-+    argv[5] = mCurrentRomPath.c_str();
+     argv[5] = mCurrentRomPath.c_str();
      argv[6] = "-fl";
 -    argv[7] = "assets/extractor/filelists";
 +    argv[7] = fileListsPath.c_str();
@@ -43,33 +40,33 @@ index b8031f01..93bdced9 100644
      argv[13] = "OTR";
      argv[14] = "--otrfile";
 diff --git a/soh/soh/Extractor/Extract.h b/soh/soh/Extractor/Extract.h
-index 3ca23aaf..d7b80e68 100644
+index e4eb2e5b..3c95b025 100644
 --- a/soh/soh/Extractor/Extract.h
 +++ b/soh/soh/Extractor/Extract.h
-@@ -48,7 +48,7 @@ class Extractor {
-     static void ShowErrorBox(const char* title, const char* text);
+@@ -57,7 +57,7 @@ class Extractor {
+     bool IsMasterQuest() const;
  
-     bool Run();
+     bool Run(RomSearchMode searchMode = RomSearchMode::Both);
 -    bool CallZapd();
-+    bool CallZapd(std::string &assetPath);
++    bool CallZapd(std::string& assetPath);
      const char* GetZapdStr();
  };
  #endif
 diff --git a/soh/soh/OTRGlobals.cpp b/soh/soh/OTRGlobals.cpp
-index a3940504..369ad3b5 100644
+index d192de6a..45ddecd5 100644
 --- a/soh/soh/OTRGlobals.cpp
 +++ b/soh/soh/OTRGlobals.cpp
 @@ -201,11 +201,11 @@ const char* constCameraStrings[] = {
  
  OTRGlobals::OTRGlobals() {
      std::vector<std::string> OTRFiles;
--    std::string mqPath = Ship::Window::GetPathRelativeToAppDirectory("oot-mq.otr");
-+    std::string mqPath = Ship::Window::FindFileFromAllAppDirectories("oot-mq.otr");
+-    std::string mqPath = LUS::Context::GetPathRelativeToAppDirectory("oot-mq.otr");
++    std::string mqPath = LUS::Context::FindFileFromAllAppDirectories("oot-mq.otr");
      if (std::filesystem::exists(mqPath)) { 
          OTRFiles.push_back(mqPath);
      } 
--    std::string ootPath = Ship::Window::GetPathRelativeToAppDirectory("oot.otr");
-+    std::string ootPath = Ship::Window::FindFileFromAllAppDirectories("oot.otr");
+-    std::string ootPath = LUS::Context::GetPathRelativeToAppDirectory("oot.otr");
++    std::string ootPath = LUS::Context::FindFileFromAllAppDirectories("oot.otr");
      if (std::filesystem::exists(ootPath)) {
          OTRFiles.push_back(ootPath);
      }
@@ -77,21 +74,20 @@ index a3940504..369ad3b5 100644
      if (std::filesystem::exists(sohOtrPath)) {
          OTRFiles.push_back(sohOtrPath);
      }
--    std::string patchesPath = Ship::Window::GetPathRelativeToAppDirectory("mods");
-+    std::string patchesPath = Ship::Window::FindFileFromAllAppDirectories("mods");
+-    std::string patchesPath = LUS::Context::GetPathRelativeToAppDirectory("mods");
++    std::string patchesPath = LUS::Context::FindFileFromAllAppDirectories("mods");
      if (patchesPath.length() > 0 && std::filesystem::exists(patchesPath)) {
          if (std::filesystem::is_directory(patchesPath)) {
              for (const auto& p : std::filesystem::recursive_directory_iterator(patchesPath)) {
-@@ -708,24 +708,43 @@ extern "C" void OTRExtScanner() {
+@@ -709,8 +709,16 @@ extern "C" void OTRExtScanner() {
  
  extern "C" void InitOTR() {
  #if not defined (__SWITCH__) && not defined(__WIIU__)
--    if (!std::filesystem::exists(Ship::Window::GetPathRelativeToAppDirectory("oot-mq.otr")) &&
--        !std::filesystem::exists(Ship::Window::GetPathRelativeToAppDirectory("oot.otr"))){
-+    if (!std::filesystem::exists(Ship::Window::FindFileFromAllAppDirectories("oot-mq.otr")) &&
-+        !std::filesystem::exists(Ship::Window::FindFileFromAllAppDirectories("oot.otr"))){
-+
-+        std::string exporterAssetPath = Ship::Window::GetAppBundlePath();
+-    if (!std::filesystem::exists(LUS::Context::GetPathRelativeToAppDirectory("oot-mq.otr")) &&
+-        !std::filesystem::exists(LUS::Context::GetPathRelativeToAppDirectory("oot.otr"))){
++    if (!std::filesystem::exists(LUS::Context::FindFileFromAllAppDirectories("oot-mq.otr")) &&
++        !std::filesystem::exists(LUS::Context::FindFileFromAllAppDirectories("oot.otr"))){
++        std::string exporterAssetPath = LUS::Context::GetAppBundlePath();
 +        // if soh-otr-exporter is not installed:
 +        if (!std::filesystem::exists(exporterAssetPath + "/assets/extractor")) {
 +            Extractor::ShowErrorBox("Error", "No OTR files found. Cannot create OTR file without the files needed for the exporter.\n"
@@ -99,20 +95,20 @@ index a3940504..369ad3b5 100644
 +            exit(1);
 +        }
 +
+         bool generatedOtrIsMQ = false;
          if (Extractor::ShowYesNoBox("No OTR Files", "No OTR files found. Generate one now?") == IDYES) {
              Extractor extract;
-             if (!extract.Run()) {
+@@ -718,7 +726,7 @@ extern "C" void InitOTR() {
                  Extractor::ShowErrorBox("Error", "An error occured, no OTR file was generated. Exiting...");
                  exit(1);
              }
 -            extract.CallZapd();
 +            extract.CallZapd(exporterAssetPath);
-+        } else {
-+            exit(1);
-         }
-         if (Extractor::ShowYesNoBox("Extraction Complete", "ROM Extracted. Extract another?") == IDYES) {
-             Extractor extract;
-             if (!extract.Run()) {
+             generatedOtrIsMQ = extract.IsMasterQuest();
+         } else {
+             exit(1);
+@@ -728,9 +736,17 @@ extern "C" void InitOTR() {
+             if (!extract.Run(generatedOtrIsMQ ? RomSearchMode::Vanilla : RomSearchMode::MQ)) {
                  Extractor::ShowErrorBox("Error", "An error occured, an OTR file may have been generated by a different step. Continuing...");
              } else {
 -                extract.CallZapd();
@@ -122,11 +118,18 @@ index a3940504..369ad3b5 100644
 +
 +        // copy OTR to app configuration path
 +        if (std::filesystem::exists("oot-mq.otr")) {
-+            std::filesystem::copy("oot-mq.otr", Ship::Window::GetAppDirectoryPath());
++            std::filesystem::copy("oot-mq.otr", LUS::Context::GetAppDirectoryPath());
 +        }
 +        if (std::filesystem::exists("oot.otr")) {
-+            std::filesystem::copy("oot.otr", Ship::Window::GetAppDirectoryPath());
++            std::filesystem::copy("oot.otr", LUS::Context::GetAppDirectoryPath());
 +        }
      }
  #endif
  
+@@ -2018,4 +2034,4 @@ extern "C" void Gfx_RegisterBlendedTexture(const char* name, u8* mask, u8* repla
+ 
+ extern "C" void SaveManager_ThreadPoolWait() {
+     SaveManager::Instance->ThreadPoolWait();
+-}
+\ No newline at end of file
++}
