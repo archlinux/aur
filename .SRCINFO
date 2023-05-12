@@ -1,11 +1,12 @@
 pkgbase = python-monai
 	pkgdesc = AI Toolkit for Healthcare Imaging
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://monai.io
-	arch = x86_64
-	license = BSD
-	makedepends = python-pip
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-pytorch-cuda
