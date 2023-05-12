@@ -3,7 +3,7 @@
 
 pkgname=gnome-shell-extension-gtile-git
 pkgver=51.r20.gf19decf
-pkgrel=2
+pkgrel=3
 pkgdesc="A window tiling extension for GNOME"
 arch=('any')
 url="https://github.com/gTile/gTile"
@@ -23,8 +23,8 @@ pkgver() {
 prepare() {
   cd "$srcdir/${pkgname%-git}"
 
-  # Bump Bazel version:
-  sed -i 's/6.0.0/6.1.2/g' .bazelversion
+  # Ignore Bazel version requirement
+  rm -f .bazelversion
 }
 
 build() {
