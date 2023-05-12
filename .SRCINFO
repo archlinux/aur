@@ -1,6 +1,6 @@
 pkgbase = python-timm
 	pkgdesc = PyTorch Image Models
-	pkgver = 0.6.13
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://pypi.org/project/timm/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-timm
 	depends = python-pytorch
 	depends = python-torchvision
 	depends = python-yaml
-	source = timm-0.6.13.tar.gz::https://files.pythonhosted.org/packages/source/t/timm/timm-0.6.13.tar.gz
-	sha512sums = 115f6bef49fe2b5a33873942242b902bb811e2f58f95e741da316e2ce20926f8ae421561a71d4c4a54b4512cbf4d6bd8c7c74d1e14e30bc31111da1266674e7d
+	source = timm-0.9.0.tar.gz::https://files.pythonhosted.org/packages/source/t/timm/timm-0.9.0.tar.gz
+	sha512sums = 2acaebf71afb6914b2696010bf9e05341d3020d84751f37109a8e391d17a25ad4237ffedf21b8bdffbd668f9668e52c562a04b5396b6b4ed9b89ed7c0b4bd41c
 
 pkgname = python-timm
