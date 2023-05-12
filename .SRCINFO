@@ -1,6 +1,6 @@
 pkgbase = bootsplash-manager-bin
 	pkgdesc = Simple bootsplash manager
-	pkgver = 1.9
+	pkgver = 1.10
 	pkgrel = 1
 	url = https://github.com/parov0z/bootsplash-manager
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = bootsplash-manager-bin
 	depends = pamac
 	depends = sdl2
 	conflicts = bootsplash-manager
-	source = https://github.com/parov0z/bootsplash-manager/releases/download/1.9/bootsplash-manager-1.9.tar.gz
-	md5sums = f1ebc1e753ddbc94fc34a832e36b1e19
+	source = https://github.com/parov0z/bootsplash-manager/releases/download/1.10/bootsplash-manager-1.10.tar.gz
+	md5sums = 4d8b4d47b4fb0da7d72ecbe9c5689988
 
 pkgname = bootsplash-manager-bin
