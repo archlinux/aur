@@ -1,11 +1,11 @@
 # Maintainer: Echo https://github.com/CallMeEchoCodes
 pkgname=dossier
 pkgver=0.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight dotfile bootstrapper!'
 arch=('any')
 url="https://github.com/CallMeEchoCodes/dossier"
-license=('MIT')
+license=('MPL-2.0')
 depends=( jq gum )
 provides=( dossier )
 source=("dossier::https://github.com/CallMeEchoCodes/Dossier/releases/download/$pkgver/dossier")

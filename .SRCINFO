@@ -1,10 +1,10 @@
 pkgbase = dossier
 	pkgdesc = A lightweight dotfile bootstrapper!
 	pkgver = 0.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CallMeEchoCodes/dossier
 	arch = any
-	license = MIT
+	license = MPL-2.0
 	depends = jq
 	depends = gum
 	provides = dossier
