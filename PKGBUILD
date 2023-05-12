@@ -6,15 +6,13 @@
 pkgbase=mariadb-git2
 pkgname=('mariadb-libs-git2' 'mariadb-clients-git2' 'mariadb-git2' 'mytop-git2')
 pkgdesc='Fast SQL database server, derived from MySQL'
-pkgver=10.11.2.r376.g40a857c
+pkgver=10.11.3.r24.g7c9f275
 pkgrel=1
 arch=('x86_64')
 license=('GPL')
 url='https://mariadb.org/'
 makedepends=('boost' 'bzip2' 'cmake' 'cracklib' 'curl' 'jemalloc' 'judy' 'krb5' 'liburing'
              'libxcrypt' 'libxml2' 'lz4' 'openssl' 'systemd' 'zlib' 'zstd' 'xz')
-conflicts=(${pkgbase%-git2})
-provides=(${pkgbase%-git2})
 source=(
   "$pkgbase::git+https://github.com/MariaDB/server.git#branch=10.11"
   '0001-arch-specific.patch'
@@ -179,8 +177,8 @@ package_mariadb-git2() {
               'perl-dbd-mariadb: for mariadb-hotcopy, mariadb-convert-table-format and mariadb-setpermission'
               'python-mysqlclient: for myrocks_hotbackup'
               'xz: lzma provider')
-  conflicts=('mysql'{,-git})
-  provides=("mysql=$pkgver")
+  conflicts=('mariadb'{,-git} 'mysql'{,-git})
+  provides=('mariadb' "mysql=$pkgver")
   options=('emptydirs')
 
   cd build
