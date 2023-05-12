@@ -7,7 +7,7 @@ url="https://github.com/Marco98/ffmpegthumbnailer-mp3"
 depends=('ffmpeg')
 makedepends=('git')
 arch=('any')
-source=('git://github.com/Marco98/ffmpegthumbnailer-mp3#tag=v1.1')
+source=('git+https://github.com/Marco98/ffmpegthumbnailer-mp3.git#tag=v1.1')
 md5sums=('SKIP')
 
 package() {
