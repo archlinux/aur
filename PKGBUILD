@@ -1,7 +1,7 @@
 pkgname=ton-bin
 pkgver=2023.04
 pkgrel=1
-pkgdesc="The Open Network"
+pkgdesc="Ultra-scalable blockchain, designed by Telegram to onboard billions of users."
 arch=('x86_64')
 url="https://github.com/ton-blockchain/ton"
 license=('LGPL2')
