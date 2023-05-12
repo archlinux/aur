@@ -10,6 +10,7 @@ pkgbase = nostr-rs-relay
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
+	makedepends = protobuf
 	backup = etc/nostr-rs-relay/config.toml
 	source = https://git.sr.ht/~gheartsfield/nostr-rs-relay/archive/0.8.9.tar.gz
 	sha256sums = a497340760fc99745fdb42c7ea04013d25bc57e50ca4749887129361866a98fa

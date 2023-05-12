@@ -2,7 +2,7 @@
 pkgname=nostr-rs-relay
 pkgver=0.8.9
 pkgrel=1
-makedepends=('rust' 'cargo')
+makedepends=('rust' 'cargo' 'protobuf')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="A relay implementation for the Nostr protocol"
 url="https://sr.ht/~gheartsfield/nostr-rs-relay/"
