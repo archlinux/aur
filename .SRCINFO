@@ -1,7 +1,7 @@
 pkgbase = flightgear-photoscenery-creatorscripts-git
 	pkgdesc = Phtoscenery support (i.e. using satellite images instead of texture) for FlightGear. See documentation for usage.
-	pkgver = r70.20210117.14f98bf
-	pkgrel = 3
+	pkgver = r84.20221231.e0eae15
+	pkgrel = 1
 	url = https://github.com/nathanielwarner/flightgear-photoscenery/
 	arch = any
 	license = GPL2
@@ -13,7 +13,7 @@ pkgbase = flightgear-photoscenery-creatorscripts-git
 	optdepends = imagemagick: Needed for 'fgfs-photoscenery-create_dds' if 'nvcompress' is not available.
 	optdepends = nvidia-texture-tools: To use 'nvcompress' instead of ImageMagick in 'fgfs-photoscenery-create_dds'.
 	optdepends = perl: To be able to use 'fgfs-photoscenery-create_bbox' (download by automatic bounding box calculation).
-	provides = flightgear-photoscenery-creatorscripts=r70.20210117.14f98bf
+	provides = flightgear-photoscenery-creatorscripts=r84.20221231.e0eae15
 	conflicts = flightgear-photoscenery-creatorscripts
 	source = flightgear-photoscenery-creatorscripts::git+https://github.com/nathanielwarner/flightgear-photoscenery.git
 	source = fgfs-photoscenery-creator.sh

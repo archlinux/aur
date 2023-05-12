@@ -2,8 +2,8 @@
 
 _pkgname=flightgear-photoscenery-creatorscripts
 pkgname="${_pkgname}-git"
-pkgver=r70.20210117.14f98bf
-pkgrel=3
+pkgver=r84.20221231.e0eae15
+pkgrel=1
 pkgdesc="Phtoscenery support (i.e. using satellite images instead of texture) for FlightGear. See documentation for usage."
 arch=('any')
 url="https://github.com/nathanielwarner/flightgear-photoscenery/"
