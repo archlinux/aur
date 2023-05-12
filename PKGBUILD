@@ -1,39 +1,47 @@
-# Maintainer: nblock <nblock [/at\] archlinux DOT us>
+# Maintainer: ckvsoft@gmail.com
+# Contributor: soloturn@gmail.com
+# Contributor: nblock <nblock [/at\] archlinux DOT us>
 
-pkgname=qrk
-_pkgname=QRK
-pkgver=0.16.0523
+_basename=qrk
+pkgname="$_basename"
+pkgver=1.24.0.r5.gf10f78d
 pkgrel=1
 pkgdesc="A graphical cash register for small companies"
 arch=('i686' 'x86_64')
-url="http://www.ckvsoft.at/"
-license=('GPL3')
-makedepends=('qt5-declarative')
-depends=('qrencode'
-         'crypto++'
-         'pcsclite')
-source=("http://downloads.sourceforge.net/project/qrk-registrier-kasse/source/${_pkgname}_${pkgver}.source.tar.gz"
-        "${pkgname}.desktop")
+url="https://www.ckvsoft.at"
+license=('GPL')
+depends=('crypto++' 'qrencode' 'pcsclite')
+makedepends=('git' 'qt5-declarative' 'qt5-serialport')
+conflicts=("$_basename")
+provides=("$_basename")
 
-md5sums=('81783e5ed2bd7eac2feb083b924201ec'
-         '52c990903894fdecd440e2e2914c2f09')
-sha256sums=('60382dd5351690aa3af29d4a5d30b146d40fcc25c86bf3014703a48c9e968b6b'
-            'f71882aea62bd7c07e4806f0223d1699170ac89d59036f5fd5add1004eb93cd0')
+source=("$pkgname::git://git.code.sf.net/p/qrk-registrier-kasse/code")
+sha1sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${srcdir}/${pkgname}"
+  git submodule init
+  git -c protocol.file.allow=always submodule update
+}
 
 build() {
-  cd "${srcdir}/${_pkgname}_${pkgver}_source"
-
-  qmake-qt5 "${_pkgname}.pro"
+  cd "${srcdir}/${pkgname}"
+  _upper_basename=$(echo ${_basename} | tr '[:lower:]' '[:upper:]')
+  qmake-qt5 "${_upper_basename}.pro"
   make
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}_${pkgver}_source"
-
-  mkdir -p ${pkgdir}/usr/{bin,share/applications}
-  install -D -m755 "bin/$pkgname" "$pkgdir"/usr/bin/$pkgname
-  install -D -m644 "src/icons/logo.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
-  install -D -m644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  cd "${srcdir}/${pkgname}"
+  mkdir -p ${pkgdir}/usr/{bin,lib,share/applications}
+  install -D -m755 "bin/$_basename" "$pkgdir"/usr/bin/$_basename
+  cp qrkcore/libQrkCore.so* "$pkgdir"/usr/lib/
+  install -D -m644 "src/icons/logo.png" "$pkgdir/usr/share/pixmaps/$_basename.png"
+  install -D -m644 "$srcdir/../$_basename.desktop" "$pkgdir/usr/share/applications/$_basename.desktop"
 }
 
-# vim: set ts=2 sw=2 ft=sh noet:
