@@ -1,11 +1,11 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=python-domdf-python-tools
-pkgver=3.6.0
-pkgrel=2
+pkgver=3.6.1
+pkgrel=1
 pkgdesc='Helpful functions for Python'
 arch=('any')
-url='https://domdf_python_tools.readthedocs.io/'
+url='https://domdf-python-tools.readthedocs.io'
 license=('MIT')
 # double check if the importlib packages are actually required
 depends=(
@@ -23,7 +23,7 @@ makedepends=(
   'python-wheel'
   'python-setuptools'
 )
-_commit='8c9abd67c8669cfe21fefe5f4588a67dfe2e63af'
+_commit='d01397ae9995b0b72d5ca9f722bca36cda55b4ef'
 source=("$pkgname::git+https://github.com/domdfcoding/domdf_python_tools#commit=$_commit")
 b2sums=('SKIP')
 
