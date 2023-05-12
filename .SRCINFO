@@ -1,7 +1,7 @@
 pkgbase = ogr2osm-git
 	pkgdesc = A tool for converting ogr-readable files like shapefiles into .osm data
-	pkgver = r366.e9efa1a
-	pkgrel = 1
+	pkgver = r371.f7d2f33
+	pkgrel = 2
 	epoch = 2
 	url = https://github.com/roelderickx/ogr2osm
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = ogr2osm-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python>=3.7
+	depends = python>=3.11
 	depends = gdal
 	depends = python-gdal>=3.0.0
 	depends = python-lxml>=4.3.0

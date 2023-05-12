@@ -2,15 +2,15 @@
 # Contributor: jerry73204 <jerry73204 at gmail dot com>
 
 pkgname=ogr2osm-git
-pkgver=r366.e9efa1a
-pkgrel=1
+pkgver=r371.f7d2f33
+pkgrel=2
 epoch=2
 pkgdesc='A tool for converting ogr-readable files like shapefiles into .osm data'
 arch=('any')
 url='https://github.com/roelderickx/ogr2osm'
 license=('MIT')
 depends=(
-	'python>=3.7'
+	'python>=3.11'
 	gdal
 	'python-gdal>=3.0.0'
 	'python-lxml>=4.3.0'
@@ -40,7 +40,6 @@ pkgver() {
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	python -m build --wheel --no-isolation
-	#python3 setup.py build
 }
 
 package() {
