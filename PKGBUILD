@@ -1,7 +1,7 @@
 
 #Maintainer : Jonathan Dönszelmann <jonabent@gmail.com>
 pkgname="pointless"
-pkgver=1.6.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="An endless drawing canvas desktop app made with Tauri (Rust) and React"
 arch=(x86_64)
@@ -9,8 +9,8 @@ url="https://github.com/kkoomen/pointless"
 license=('GPL')
 depends=('nodejs')
 makedepends=()
-source=("https://github.com/kkoomen/pointless/releases/download/v1.6.0/pointless_1.6.0_amd64.deb")
-sha512sums=('15ec8443a282c5b62aa34cd13b5ebfd61e29bee11df8d78a581e12a8b8e4ece447b39f43e0bf0e83235faad204fdc4cbb051c3e4c7f150e2bc96b21955533831')
+source=("https://github.com/kkoomen/pointless/releases/download/v${pkgver}/pointless_${pkgver}_amd64.deb")
+sha512sums=('740390eceff5267e47f570d9b5a9baafcaf617a6a010ffad0b6613b73a9740c6e2c332530a9897af7aba1310000d0589d5146d1d34c9afc7969c8028ce56cda4')
 
 package() {
   bsdtar -xf "$srcdir/data.tar.gz" -C "$pkgdir"
