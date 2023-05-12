@@ -3,13 +3,14 @@
 
 pkgname=ratarmount
 pkgver=0.13.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Mount tar files via fusepy. Supports Recursive Mounting, Compressed Files, Read-Only Bind Mounting, Union Mounting and Write Overlays. A fast random access alternative to archivemount."
 arch=(any)
 url="https://github.com/mxmlnkn/$pkgname"
 conflict=("${_pkgname}-git")
 license=('MIT')
 depends=(
+	'python>=3.11'
 	'python-msgpack'
 	'python-rapidjson'
 	'python-ujson'
@@ -20,6 +21,7 @@ makedepends=(
 	'python-build'
 	'python-installer'
 	'python-wheel'
+	'python-setuptools'
 )
 optdepends=(
 	'pragzip: Option 1 for support for gzip-compressed tar files'
