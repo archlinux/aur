@@ -10,7 +10,7 @@ url="https://github.com/Petingoso/legion-fan-utils-linux"
 license=('GPL')
 depends=(
 		"python-psutil"
-		"python-argparse"
+		"python-argparse-shim"  # Arch bug report "https://bugs.archlinux.org/task/78484"
 		"lenovolegionlinux-git"
 		"acpid"
 )
@@ -41,11 +41,11 @@ package() {
 	mkdir -p "${pkgdir}/usr/local/bin/"
 	mkdir -p "${pkgdir}/etc/systemd/system"
 	mkdir -p "${pkgdir}/etc/acpi/events"
-	install -Dm755 service/profiles/* -t "${pkgdir}/etc/lenovo-fan-control/profiles"
+	install -Dm664 service/profiles/* -t "${pkgdir}/etc/lenovo-fan-control/profiles"
 	install -Dm755 service/fancurve-set.sh -t "${pkgdir}/etc/lenovo-fan-control"
 	install -Dm775 service/lenovo-legion-fan-service.py "${pkgdir}/usr/local/bin/"
 	install -Dm775 profile_man.py "${pkgdir}/usr/local/bin/lenovo-legion-manager.py"
-	install -Dm775 service/*.service "${pkgdir}/etc/systemd/system"
-	install -Dm775 service/*.path "${pkgdir}/etc/systemd/system"
+	install -Dm664 service/*.service "${pkgdir}/etc/systemd/system"
+	install -Dm664 service/*.path "${pkgdir}/etc/systemd/system"
 	install -Dm775 /service/ac_adapter_legion-fancurve "${pkgdir}/etc/acpi/events"
 }
