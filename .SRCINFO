@@ -1,16 +1,27 @@
 pkgbase = python-jaraco.packaging
 	pkgdesc = Tools to supplement packaging Python releases
-	pkgver = 9.1.2
+	pkgver = 9.2.0
 	pkgrel = 1
 	url = https://github.com/jaraco/jaraco.packaging
 	arch = any
 	license = MIT
+	checkdepends = python-pip
+	checkdepends = python-pytest
 	makedepends = python-installer
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
+	makedepends = python-rst.linker
+	makedepends = python-sphinx-furo
+	makedepends = python-sphinx-lint
 	depends = python
 	depends = python-build
-	source = https://files.pythonhosted.org/packages/source/j/jaraco.packaging/jaraco.packaging-9.1.2.tar.gz
-	sha256sums = 0aab5c32ce8c495dcc253028b46196d7e198f127b200a488d32b65cba8eee337
+	depends = python-jaraco.context
+	source = https://files.pythonhosted.org/packages/source/j/jaraco.packaging/jaraco.packaging-9.2.0.tar.gz
+	sha256sums = 1b06a2a700975c298e793264f07ca522cfec778c03eeae28395af97c3b1b23e3
 
 pkgname = python-jaraco.packaging
+	optdepends = python-jaraco.packaging-docs: offline docs
+
+pkgname = python-jaraco.packaging-docs
+	pkgdesc = Tools to supplement packaging Python releases (docs)
+	depends = 
