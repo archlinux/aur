@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=TuxPuck
+GenericName=TuxPuck
+Comment=Airhockey with tux (Shufflepuck Café clone)
+Exec=/usr/bin/tuxpuck
+Icon=/usr/share/pixmaps/tuxpuck.ico
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game;

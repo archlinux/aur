@@ -1,0 +1,12 @@
+--- Makefile.orig	2023-05-12 15:13:18.154870777 +0200
++++ Makefile	2023-05-12 15:27:01.299659718 +0200
+@@ -52,7 +52,7 @@
+ 	rm -Rf $(NAME)-$(VERSION)
+ 
+ install : $(NAME)
+-	install -d $(DESTDIR)/usr/games
++	install -d $(DESTDIR)/usr/bin
+ 	install -d $(DESTDIR)/usr/share/man/man6
+-	install -m755 $(NAME) $(DESTDIR)/usr/games
++	install -m755 $(NAME) $(DESTDIR)/usr/bin
+ 	install -m644 man/$(NAME).6.gz $(DESTDIR)/usr/share/man/man6
