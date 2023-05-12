@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 # Project: nwg-shell for sway, https://github.com/nwg-piotr/nwg-shell
 pkgname=('nwg-dock-hyprland-bin')
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="GTK3-based dock for Hyprland Wayland compositor"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('gtk3' 'gtk-layer-shell')
 optdepends=('nwg-drawer: default application launcher')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/nwg-dock-hyprland/releases/download/v"$pkgver"/nwg-dock-hyprland-v"$pkgver"_x86_64.tar.gz")
 
-md5sums=('ed9988f3465c9a4eb94eb7f62474b8d4')
+md5sums=('110066f262afbfd0f0df080dcbed8ad2')
 
 package() {
   cd "$srcdir"
