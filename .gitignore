@@ -7,9 +7,11 @@
 /llbuild/
 /llvm-project/
 /sourcekit-lsp/
+/swift-asn1/
 /swift-argument-parser/
 /swift-atomics/
-/swift-cmark-gfm/
+/swift-certificates/
+/swift-cmark/
 /swift-collections/
 /swift-corelibs-foundation/
 /swift-corelibs-libdispatch/
@@ -37,5 +39,6 @@
 /swift/
 /swiftpm/
 /yams/
+
 
 

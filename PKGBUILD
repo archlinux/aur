@@ -5,7 +5,7 @@
 # Contributor: Andrew Sun <adsun701@gmail.com>
 
 pkgname=swift-language-git
-pkgver=swift.DEVELOPMENT.SNAPSHOT.2023.02.03.a.r27.gc29abfb59
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2023.02.06.a.r12.g5d684fb67
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
@@ -18,10 +18,10 @@ source=(
     'git+https://github.com/apple/swift#branch=main'
     'cmark::git+https://github.com/apple/swift-cmark#branch=main'
     'llbuild::git+https://github.com/apple/swift-llbuild#branch=main'
-    'swift-argument-parser::git+https://github.com/apple/swift-argument-parser#commit=1.1.4'
+    'swift-argument-parser::git+https://github.com/apple/swift-argument-parser#commit=1.2.2'
     'swift-atomics::git+https://github.com/apple/swift-atomics#commit=1.0.2'
     'swift-collections::git+https://github.com/apple/swift-collections#commit=1.0.1'
-    'swift-crypto::git+https://github.com/apple/swift-crypto#commit=2.2.3'
+    'swift-crypto::git+https://github.com/apple/swift-crypto#commit=2.5.0'
     'swift-driver::git+https://github.com/apple/swift-driver#branch=main'
     'swift-numerics::git+https://github.com/apple/swift-numerics#commit=1.0.1'
     'swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#branch=main'
@@ -39,7 +39,9 @@ source=(
     'indexstore-db::git+https://github.com/apple/indexstore-db#branch=main'
     'yams::git+https://github.com/jpsim/Yams#commit=5.0.1'
     'sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#branch=main'
-    'swift-cmark-gfm::git+https://github.com/apple/swift-cmark#branch=gfm'
+    'swift-asn1::git+https://github.com/apple/swift-asn1#commit=0.7.0'
+    'swift-certificates::git+https://github.com/apple/swift-certificates#commit=0.4.1'
+    'swift-cmark::git+https://github.com/apple/swift-cmark#branch=gfm'
     'swift-docc::git+https://github.com/apple/swift-docc#branch=main'
     'swift-docc-render-artifact::git+https://github.com/apple/swift-docc-render-artifact#branch=main'
     'swift-docc-symbolkit::git+https://github.com/apple/swift-docc-symbolkit#branch=main'
@@ -55,6 +57,8 @@ source=(
 )
 noextract=()
 md5sums=(
+    'SKIP'
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'

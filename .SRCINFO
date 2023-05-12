@@ -1,6 +1,6 @@
 pkgbase = swift-language-git
 	pkgdesc = The Swift programming language, taken directly from the Apple repository
-	pkgver = swift.DEVELOPMENT.SNAPSHOT.2023.02.03.a.r27.gc29abfb59
+	pkgver = swift.DEVELOPMENT.SNAPSHOT.2023.02.06.a.r12.g5d684fb67
 	pkgrel = 1
 	url = https://swift.org/
 	arch = x86_64
@@ -24,10 +24,10 @@ pkgbase = swift-language-git
 	source = git+https://github.com/apple/swift#branch=main
 	source = cmark::git+https://github.com/apple/swift-cmark#branch=main
 	source = llbuild::git+https://github.com/apple/swift-llbuild#branch=main
-	source = swift-argument-parser::git+https://github.com/apple/swift-argument-parser#commit=1.1.4
+	source = swift-argument-parser::git+https://github.com/apple/swift-argument-parser#commit=1.2.2
 	source = swift-atomics::git+https://github.com/apple/swift-atomics#commit=1.0.2
 	source = swift-collections::git+https://github.com/apple/swift-collections#commit=1.0.1
-	source = swift-crypto::git+https://github.com/apple/swift-crypto#commit=2.2.3
+	source = swift-crypto::git+https://github.com/apple/swift-crypto#commit=2.5.0
 	source = swift-driver::git+https://github.com/apple/swift-driver#branch=main
 	source = swift-numerics::git+https://github.com/apple/swift-numerics#commit=1.0.1
 	source = swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#branch=main
@@ -45,7 +45,9 @@ pkgbase = swift-language-git
 	source = indexstore-db::git+https://github.com/apple/indexstore-db#branch=main
 	source = yams::git+https://github.com/jpsim/Yams#commit=5.0.1
 	source = sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#branch=main
-	source = swift-cmark-gfm::git+https://github.com/apple/swift-cmark#branch=gfm
+	source = swift-asn1::git+https://github.com/apple/swift-asn1#commit=0.7.0
+	source = swift-certificates::git+https://github.com/apple/swift-certificates#commit=0.4.1
+	source = swift-cmark::git+https://github.com/apple/swift-cmark#branch=gfm
 	source = swift-docc::git+https://github.com/apple/swift-docc#branch=main
 	source = swift-docc-render-artifact::git+https://github.com/apple/swift-docc-render-artifact#branch=main
 	source = swift-docc-symbolkit::git+https://github.com/apple/swift-docc-symbolkit#branch=main
@@ -58,6 +60,8 @@ pkgbase = swift-language-git
 	source = swift-nio-ssl::git+https://github.com/apple/swift-nio-ssl#commit=2.15.0
 	source = swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#branch=main
 	source = swift-xcode-playground-support::git+https://github.com/apple/swift-xcode-playground-support#branch=main
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
