@@ -1,7 +1,7 @@
 # Maintainer: Bin Jin <bjin@ctrl-d.org>
 
 pkgname=dprox
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="a lightweight DNS proxy server, compatible with dnsmasq-china-list"
 url="https://github.com/bjin/dprox"
@@ -9,10 +9,10 @@ license=("BSD")
 arch=('x86_64')
 depends=()
 optdepends=('dnsmasq-china-list-git: configuration file for easy deployment')
-source=("https://hackage.haskell.org/packages/archive/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+source=("https://github.com/bjin/dprox/archive/refs/tags/v${pkgver}.tar.gz")
 source_x86_64=("https://github.com/bjin/dprox/releases/download/v${pkgver}/dprox-${pkgver}-linux-x86_64-static.tar.gz")
-sha512sums=('2ab6598a79f72c5e9f9831e3a23f1b7abc014cf1f459a2687fb4ed3c42f0dcad158c7fc4d8938e2448533e4eacbc1db52e2745d78f902c1f88b069ad117d3e97')
-sha512sums_x86_64=('f1242d83a4e74c69b20716cd136f75adf3a2b7d7ac9b0e572c512e4b571a1b4358d15fb0dba962854115d1d585e00956c90424083e437e57354b73cab06186d2')
+sha512sums=('6f935a2d89c6fb29d5f5647d08adadef182344d9417042c31838be6d5dbb381af5b5da91bbb98301bb94d81056115b0322e97a2f2fabca17edbdbd9faa0208b4')
+sha512sums_x86_64=('aaf52b6cf0e83f80498472e5c35add18a0f6b853a7a929d278cf2668e6c9b032a35ff3f887edbfb99ea7a458c5e4bad7dadc6b12c4dd161f71ee1695e0549f82')
 
 package() {
     install -D -m755 "dprox" "${pkgdir}/usr/bin/dprox"
