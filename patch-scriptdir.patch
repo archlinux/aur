@@ -1,0 +1,12 @@
+diff -r -u blt2.5/library/Makefile.in blt2.5.patched/library/Makefile.in
+--- blt2.5/library/Makefile.in	2011-01-05 20:52:47.000000000 +0100
++++ blt2.5.patched/library/Makefile.in	2023-05-12 16:24:28.927881946 +0200
+@@ -60,7 +60,7 @@
+ 	for i in $(miscFiles) ; do \
+ 	    $(INSTALL_DATA) $(srcdir)/$$i $(INSTALL_ROOT)$(scriptdir) ; \
+ 	done 
+-	$(INSTALL_DATA) pkgIndex.tcl $(scriptdir)
++	$(INSTALL_DATA) pkgIndex.tcl $(INSTALL_ROOT)$(scriptdir)
+ 
+ mkdirs:
+ 	@for i in $(instdirs) ; do \

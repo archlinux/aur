@@ -1,0 +1,21 @@
+pkgbase = blt25
+	pkgdesc = Adds new commands and widgets to the Tcl interpreter.
+	pkgver = 2.5.3
+	pkgrel = 1
+	url = https://sourceforge.net/projects/wize/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = tk
+	conflicts = blt
+	conflicts = tkblt
+	source = https://sourceforge.net/projects/wize/files/blt-src-2.5.3.zip
+	source = patch-interp-errorLine.patch
+	source = patch-TkCopyAndGlobalEval.patch
+	source = patch-scriptdir.patch
+	sha256sums = 6ec778f58f60f17e241156d00e7e6ca79938ff40fd61df7d23cdedfe7ec49943
+	sha256sums = fe9490fa58ec12416abfbce9d1fca8bf847434cf0f4d051d848f1b9ab410b1a0
+	sha256sums = dfa1cde985511eb172c71df9540c69a40e450721004649038b659a6339f2e193
+	sha256sums = f613fe7c61655d81b3f9ce5de6fc9e89aac4f5999f6e5f1a59c51ab61419422e
+
+pkgname = blt25

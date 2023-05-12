@@ -1,0 +1,12 @@
+diff -r -u blt2.5/generic/bltTreeCmd.c blt2.5.patched/generic/bltTreeCmd.c
+--- blt2.5/generic/bltTreeCmd.c	2010-12-26 22:03:13.000000000 +0100
++++ blt2.5.patched/generic/bltTreeCmd.c	2023-05-12 14:36:26.273990029 +0200
+@@ -8560,7 +8560,7 @@
+         if (result == TCL_CONTINUE ) continue;
+ 	if (result == TCL_ERROR) {
+             Tcl_AppendResult(interp,
+-            "\n    (\"tree foreach\" body line ", Blt_Itoa(interp->errorLine), ")\n", 0);
++            "\n    (\"tree foreach\" body line ", Blt_Itoa(Tcl_GetErrorLine(interp)), ")\n", 0);
+              break;
+         }
+         if (result != TCL_OK) {
