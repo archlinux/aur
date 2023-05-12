@@ -3,7 +3,7 @@
 #               PirateJonno, lh, Cilyan Olowen, Shaffer, Brcha, Lyle Putnam, Det, Boohbah,
 #               Lara Maia, Padfoot, Jorge Barroso, carstene1ns, Sebastian Lau
 
-pkgname=plymouth-git
+pkgname=plymouth-fixed-git
 _pkgname=plymouth
 pkgver=22.02.122.r176.gf6b37f2f
 pkgrel=1

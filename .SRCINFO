@@ -1,4 +1,4 @@
-pkgbase = plymouth-git
+pkgbase = plymouth-fixed-git
 	pkgdesc = Graphical boot splash screen (git version)
 	pkgver = 22.02.122.r176.gf6b37f2f
 	pkgrel = 1
