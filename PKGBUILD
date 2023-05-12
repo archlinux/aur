@@ -1,11 +1,12 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Daniel Moch <daniel@danielmoch.com>
 
 ## GPG: https://github.com/lautat.gpg
 
 pkgname=python-blurhash
 _pkg=blurhash-python
-pkgver=1.1.3
+pkgver=1.2.0
 pkgrel=1
 epoch=1
 pkgdesc='Python implementation of the blurhash algorithm'
@@ -22,7 +23,7 @@ makedepends=(
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/b/$_pkg/$_pkg-$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::https://pypi.debian.net/$_pkg/$_pkg-$pkgver.tar.gz.asc")
-sha256sums=('0008733afb8f797aa84098a28ee2615e42192549b952260ee7dbca7dd40c2335'
+sha256sums=('4caf57039c386ef53fb17598cd90a5c3eca1c76f529c35b4d67166070b9d2de2'
             'SKIP')
 validpgpkeys=('C56C6BB7FF00720C6A24B28B6F166EDA7383AD7B') ## Atte Lautanala
 
