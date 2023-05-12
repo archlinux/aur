@@ -47,6 +47,7 @@ build() {
       -DPARAVIEW_BUILD_WITH_EXTERNAL=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_ioss=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_fmt=OFF \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_fast_float=OFF \
       ..
     WINEPATH="/usr/${_arch}/bin;${PWD}/bin" make
     popd
