@@ -9,6 +9,7 @@ pkgbase = craftos-pc-accelerated-bin
 	provides = craftos-pc-accelerated
 	conflicts = craftos-pc-accelerated
 	noextract = CraftOS-PC.x86_64.AppImage
+	options = !strip
 	source = craftos2-2.7.3-luajit.tar.gz::https://github.com/MCJack123/craftos2/archive/v2.7.3-luajit.tar.gz
 	source = CraftOS-PC_2.7.3-luajit.AppImage::https://github.com/MCJack123/craftos2/releases/download/v2.7.3-luajit/CraftOS-PC.x86_64.AppImage
 	sha256sums = 6bdc9bfef0c14958060ae3e2b639102ccf00c0c1b32eddcdc9c60eae752b9405
