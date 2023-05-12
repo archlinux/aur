@@ -1,19 +1,21 @@
 pkgbase = system-bridge
 	pkgdesc = Bridges your system to other systems, like Home Assistant
 	pkgver = 3.6.2
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/timmo001/system-bridge
 	arch = any
 	license = MIT
 	makedepends = yarn
 	makedepends = node-gyp
+	makedepends = python>=3.11
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = libxss
 	makedepends = gtk3
 	makedepends = nss
+	depends = python>=3.11
 	depends = lshw
 	depends = python-incremental>=22.10.0
 	depends = python-aiohttp>=3.8.3

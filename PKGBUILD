@@ -4,13 +4,14 @@
 _archive_extension='tar.gz'
 pkgname=system-bridge
 pkgver=3.6.2
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Bridges your system to other systems, like Home Assistant"
 arch=('any')
 url="https://github.com/timmo001/$pkgname"
 license=(MIT)
 depends=(
+	'python>=3.11'
 	'lshw'
 	# shared, backend, cli, connector, gui
 	'python-incremental>=22.10.0'
@@ -50,6 +51,7 @@ depends=(
 makedepends=(
 	yarn
 	node-gyp
+	'python>=3.11'
 	python-build
 	python-installer
 	python-wheel
