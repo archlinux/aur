@@ -1,11 +1,12 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail.com>
 pkgname=matrix-commander
 pkgver=7.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple CLI-based Matrix client"
 arch=('any')
 url="https://github.com/8go/matrix-commander"
 license=('GPL')
+makedepends=(python-build python-installer python-wheel)
 depends=(
   # adapted from requirements.txt:
   "python>3.7"
@@ -33,16 +34,16 @@ optdepends=(
 )
 provides=()
 conflicts=()
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b01f710247632c235f7651e50255bbd96056cf2af5c52fb38880a095b497127d')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
+sha256sums=('39fc5991dedd31a3a352a7837f0d62fc696522b1ec0ab102b2ad0450e591d88f')
+
+build() {
+  cd "$pkgname-$pkgver"
+  python -m build --wheel --no-isolation
+}
 
 package() {
-  # Note: sometimes its "matrix-commander" and sometimes "matrix_commander"...
-  local _site_packages
-  _site_packages="$(python -c "import site; print(site.getsitepackages()[0])")"
-  install -d "${pkgdir}${_site_packages}/${pkgname}/bin/"
-  install -D -m 755 "${pkgname}-${pkgver}/matrix_commander/matrix_commander.py" "${pkgdir}/${_site_packages}/${pkgname}/bin/"
-  install -d "${pkgdir}/usr/bin/"
-  ln -s "${_site_packages}/${pkgname}/bin/matrix_commander.py" "${pkgdir}/usr/bin/${pkgname}"
+  cd "$pkgname-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
