@@ -5,14 +5,20 @@
 
 pkgname=fortran-language-server
 pkgver=1.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fortran Language Server for the Language Server Protocol"
 arch=(any)
 url="https://github.com/hansec/fortran-language-server"
 license=('MIT')
-depends=(python-argparse python-future python-setuptools)
+depends=(python-future python-setuptools)
 source=("https://github.com/hansec/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('5cda6341b1d2365cce3d80ba40043346c5dcbd0b35f636bfa57cb34df789ff17')
+
+prepare() {
+	COLOR_RED='\033[0;31m'
+	COLOR_NONE='\033[0m'
+	echo -e "${COLOR_RED}fortran-language-server is not maintained anymore. Consider switching to fortls.${COLOR_NONE}"
+}
 
 build() {
 	cd "$pkgname-$pkgver"
