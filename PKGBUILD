@@ -60,7 +60,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=6.3.1.arch1
+pkgver=6.3.2.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -115,7 +115,7 @@ validpgpkeys=(
 )
 b2sums=('SKIP'
         'SKIP'
-        '1daa6af46977fc662eb9311f5274a9e32cc220370dd53bafa49a67ca632d1258cdf2dfa38285583363710111e75ba761857460396e12e1e5f323ec3b1e450cb8'
+        '47fe1d1b44880bbc36ab2ec2ec186f199f27c20091cb0fb0889a5d871ac13116deaeaaa37f859924e15b092e4cd9040ee1f81ea5c6eb2df16fd1716e2e6cfd4d'
         'c42cef71c3fa63db0c04466f68bbe0e47907742d3f2676508dd8144565f22bf36abbc5c891a6769a9059ee986b115379ee7074b24b7c1ef779012512e76ff5b6'
         '345311d842d02eb6419a305be0345a13ac4b7301da2d380c4ac0c1941cb4917f678611af02f3bfb9532e133b70be9239dd3903858fd3afc8a68fd088a2ae0dc3')
 
