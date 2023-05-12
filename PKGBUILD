@@ -3,14 +3,14 @@
 
 pkgbase=libdxvk
 pkgname=('libdxvk' 'lib32-libdxvk')
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="Native Linux port of DXVK to allow usage without WINE"
-arch=('x86_64')
+arch=(x86_64)
 url="https://github.com/doitsujin/dxvk"
-license=('ZLIB')
+license=(ZLIB)
 depends=(sdl2 vulkan-icd-loader lib32-sdl2 lib32-vulkan-icd-loader)
-makedepends=(git gcc meson glslang)
+makedepends=(git glslang meson)
 provides=(libdxvk libdxvk_dxgi.so libdxvk_d3d9.so libdxvk_d3d11.so)
 source=(
 	"git+$url.git?signed#tag=v$pkgver"

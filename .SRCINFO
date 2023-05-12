@@ -1,14 +1,13 @@
 pkgbase = libdxvk
 	pkgdesc = Native Linux port of DXVK to allow usage without WINE
-	pkgver = 2.1
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://github.com/doitsujin/dxvk
 	arch = x86_64
 	license = ZLIB
 	makedepends = git
-	makedepends = gcc
-	makedepends = meson
 	makedepends = glslang
+	makedepends = meson
 	depends = sdl2
 	depends = vulkan-icd-loader
 	depends = lib32-sdl2
@@ -17,7 +16,7 @@ pkgbase = libdxvk
 	provides = libdxvk_dxgi.so
 	provides = libdxvk_d3d9.so
 	provides = libdxvk_d3d11.so
-	source = git+https://github.com/doitsujin/dxvk.git?signed#tag=v2.1
+	source = git+https://github.com/doitsujin/dxvk.git?signed#tag=v2.2
 	source = git+https://github.com/Joshua-Ashton/mingw-directx-headers.git
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
