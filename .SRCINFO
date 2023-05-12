@@ -19,7 +19,7 @@ pkgbase = realmd
 	depends = polkit
 	optdepends = sssd: Active Directory, FreeIPA, LDAP client
 	optdepends = samba: traditional Active Directory client
-	source = https://github.com/freedesktop/realmd/archive/refs/tags/0.17.1.tar.gz
+	source = https://gitlab.freedesktop.org/realmd/realmd/-/archive/0.17.1/realmd-0.17.1.tar.gz
 	sha256sums = e8b51d5918418e9dc55006f0371831ab841f00a065baf2d001b6b5245f24a532
 
 pkgname = realmd

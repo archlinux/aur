@@ -12,7 +12,7 @@ depends=(adcli dbus krb5 openldap packagekit polkit)
 optdepends=('sssd: Active Directory, FreeIPA, LDAP client'
             'samba: traditional Active Directory client')
 makedepends=(docbook-xsl git intltool python xmlto)
-source=("https://github.com/freedesktop/$pkgname/archive/refs/tags/$pkgver.tar.gz")
+source=("https://gitlab.freedesktop.org/realmd/realmd/-/archive/${pkgver}/realmd-${pkgver}.tar.gz")
 sha256sums=('e8b51d5918418e9dc55006f0371831ab841f00a065baf2d001b6b5245f24a532')
 
 build() {
