@@ -3,7 +3,7 @@
 
 pkgname=crosswords
 pkgver=0.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Crossword player and editor for GNOME'
 arch=(x86_64 aarch64)
 url='https://gitlab.gnome.org/jrb/crosswords'
@@ -11,7 +11,6 @@ license=(GPL3)
 depends=(
 	libadwaita
 	libipuz
-	python-argparse
 	python-beautifulsoup4
 	python-lxml
 	python-puzpy
