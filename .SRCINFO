@@ -1,7 +1,7 @@
 pkgbase = opengamepadui-bin
 	pkgdesc = Open source game launcher
 	pkgver = v0.11.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ShadowBlip/OpenGamepadUI
 	arch = x86_64
 	license = GPL
