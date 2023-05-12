@@ -1,6 +1,6 @@
 pkgbase = audacity-qt-git
 	pkgdesc = Record and edit audio files-tracking the QT branch in git
-	pkgver = 3.3.0.0.r16557
+	pkgver = 3.3.0.0.r16783
 	pkgrel = 1
 	url = https://audacityteam.org
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = audacity-qt-git
 	makedepends = automake
 	makedepends = libtool
 	makedepends = git
-	makedepends = conan
+	makedepends = conan1
 	makedepends = catch2
 	depends = libmad
 	depends = libid3tag
