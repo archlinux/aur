@@ -1,8 +1,8 @@
 # Maintainer: Aleksandr Beliaev <trap000d at gmail dot com>
 
 pkgname=quarto-cli-pre-release
-pkgver=1.4.54
-pkgrel=2
+pkgver=1.4.57
+pkgrel=1
 _pkgbasename=quarto-cli
 _denodomver="0.1.35-alpha-artifacts"
 _deno_arch="deno-x86_64-unknown-linux-gnu"
@@ -20,19 +20,12 @@ source=("${_pkgbasename}-${pkgver}.tar.gz::https://github.com/quarto-dev/quarto-
         "https://github.com/b-fuze/deno-dom/archive/refs/tags/v${_denodomver}.tar.gz"
         "https://github.com/c4spar/deno-cliffy/archive/refs/tags/v0.25.7.tar.gz"
         "https://github.com/denoland/deno_std/archive/refs/tags/0.170.0.tar.gz"
-        "force_build_quarto_preview_js.diff"
        )
 
-sha256sums=('917a77a268e28d6e1aa1ebca8448b7985f57ff8da7339b63b13d38f59f6bc36f'
+sha256sums=('3c90b955a266128eed3f321ec8bd10c4c48ad2aa844191021911044a28fb54dc'
             '14fb042a6912041b9fda91fd643cf278764d075bc9539aa1e107475915cd896c'
             '519709be1dfcf4743930b7f21a513d8fbf3663380020eac8ba629081395f6cc0'
-            '369bc68b848532bedcb786a8fce5e52000624b9262f05ceeeb16bc851b6cf752'
-            '452836e2504941b760c7e54cf32d5c7e0b03e8f7eadcc13e80f5e5585420d760')
-
-prepare() {
-  cd "${srcdir}/${_pkgbasename}-${pkgver}"
-  patch -p1 < ../force_build_quarto_preview_js.diff
-}
+            '369bc68b848532bedcb786a8fce5e52000624b9262f05ceeeb16bc851b6cf752')
 
 build() {
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
