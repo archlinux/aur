@@ -1,14 +1,15 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=python-autodocsumm
-pkgver=0.2.10
-pkgrel=2
+pkgver=0.2.11
+pkgrel=1
 pkgdesc='Extending your autodoc API docs with a summary'
 arch=('any')
 url='https://github.com/Chilipp/autodocsumm'
 license=('Apache')
 depends=(
   'python'
+  'python-docutils'
   'python-sphinx'
 )
 makedepends=(
@@ -19,7 +20,7 @@ makedepends=(
   'python-setuptools'
   'python-versioneer'
 )
-_commit='8ce14128954192f2b23850e9d23a4ac83b82af1e'
+_commit='7009e5ec0de58ac2675269829ca602447113d6e2'
 source=("$pkgname::git+$url#commit=$_commit")
 b2sums=('SKIP')
 
