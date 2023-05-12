@@ -1,0 +1,15 @@
+pkgbase = ojg-git
+	pkgdesc = Optimized JSON for Go
+	pkgver = v1.18.5.r0.g2d0aafc
+	pkgrel = 1
+	url = https://github.com/ohler55/ojg
+	arch = any
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = oj
+	conflicts = ojg
+	source = git+https://github.com/ohler55/ojg.git
+	sha256sums = SKIP
+
+pkgname = ojg-git
