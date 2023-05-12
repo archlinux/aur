@@ -1,0 +1,125 @@
+From 52084ad85d3c0179036c563f3e332cdcd003c236 Mon Sep 17 00:00:00 2001
+From: Alfredo Tupone <tupone@gentoo.org>
+Date: Sat, 25 Feb 2023 19:09:15 +0100
+Subject: [PATCH] Replace calls to inspect.getargspec with getfullargspec
+
+The former is deprecated and will be removed in Python 3.11.
+
+From https://github.com/AdaCore/langkit/pull/646/files
+---
+ langkit/expressions/base.py        | 21 ++++++++++++---------
+ langkit/expressions/boolean.py     |  4 ++--
+ langkit/expressions/collections.py |  4 ++--
+ langkit/expressions/structs.py     |  4 ++--
+ 4 files changed, 18 insertions(+), 15 deletions(-)
+
+diff --git a/langkit/expressions/base.py b/langkit/expressions/base.py
+index 998f9d992..4606a9957 100644
+--- a/langkit/expressions/base.py
++++ b/langkit/expressions/base.py
+@@ -158,15 +158,18 @@ def expand_abstract_fn(fn):
+     fn_arguments = []
+     fn_expr = None
+ 
+-    argspec = inspect.getargspec(fn)
++    argspec = inspect.getfullargspec(fn)
+     defaults = argspec.defaults or []
+ 
+     check_multiple([
+-        (not argspec.varargs or not argspec.keywords, 'Invalid'
+-         ' function signature: no *args nor **kwargs allowed'),
+-
+-        (len(argspec.args) == len(defaults), 'All parameters '
+-         'must have an associated type as a default value')
++        (
++            not argspec.varargs or not argspec.varkw,
++            "Invalid function signature: no *args nor **kwargs allowed",
++        ),
++        (
++            len(argspec.args) == len(defaults),
++            "All parameters must have an associated type as a default value",
++        ),
+     ])
+ 
+     # Check that all parameters have declared types in default arguments
+@@ -2795,7 +2798,7 @@ class Let(AbstractExpression):
+             lambda_fn = None
+ 
+         else:
+-            argspec = inspect.getargspec(lambda_fn)
++            argspec = inspect.getfullargspec(lambda_fn)
+ 
+             var_names = argspec.args
+             var_exprs = argspec.defaults or []
+@@ -2816,10 +2819,10 @@ class Let(AbstractExpression):
+         if self.lambda_fn is None:
+             return
+ 
+-        argspec = inspect.getargspec(self.lambda_fn)
++        argspec = inspect.getfullargspec(self.lambda_fn)
+ 
+         check_multiple([
+-            (not argspec.varargs and not argspec.keywords,
++            (not argspec.varargs and not argspec.varkw,
+              'Invalid function for Let expression (*args and **kwargs '
+              'not accepted)'),
+ 
+diff --git a/langkit/expressions/boolean.py b/langkit/expressions/boolean.py
+index bdd386160..615b969f0 100644
+--- a/langkit/expressions/boolean.py
++++ b/langkit/expressions/boolean.py
+@@ -475,11 +475,11 @@ class Then(AbstractExpression):
+         if self.then_expr:
+             return
+ 
+-        argspec = inspect.getargspec(self.then_fn)
++        argspec = inspect.getfullargspec(self.then_fn)
+         check_source_language(
+             len(argspec.args) == 1
+             and not argspec.varargs
+-            and not argspec.keywords
++            and not argspec.varkw
+             and not argspec.defaults,
+             'Invalid lambda for Then expression: exactly one parameter is'
+             ' required, without a default value'
+diff --git a/langkit/expressions/collections.py b/langkit/expressions/collections.py
+index 4acc8b8e2..5985af0e4 100644
+--- a/langkit/expressions/collections.py
++++ b/langkit/expressions/collections.py
+@@ -265,13 +265,13 @@ class CollectionExpression(AbstractExpression):
+             " function"
+         )
+ 
+-        argspec = inspect.getargspec(expr_fn)
++        argspec = inspect.getfullargspec(expr_fn)
+ 
+         check_multiple([
+             (len(argspec.args) in (1, 2),
+              'Invalid collection iteration lambda: only one'
+              ' or two parameters expected'),
+-            (not argspec.varargs and not argspec.keywords,
++            (not argspec.varargs and not argspec.varkw,
+              'Invalid collection iteration lambda: no *args or **kwargs'),
+             (not argspec.defaults,
+              'Invalid collection iteration lambda: No default values allowed'
+diff --git a/langkit/expressions/structs.py b/langkit/expressions/structs.py
+index 5f6a50af2..2cc0eb9b4 100644
+--- a/langkit/expressions/structs.py
++++ b/langkit/expressions/structs.py
+@@ -1327,11 +1327,11 @@ class Match(AbstractExpression):
+         self.matchers = []
+ 
+         for i, match_fn in enumerate(self.matchers_functions):
+-            argspec = inspect.getargspec(match_fn)
++            argspec = inspect.getfullargspec(match_fn)
+             check_source_language(
+                 len(argspec.args) == 1 and
+                 not argspec.varargs and
+-                not argspec.keywords and
++                not argspec.varkw and
+                 (not argspec.defaults or len(argspec.defaults) < 2),
+                 'Invalid matcher lambda'
+             )
+-- 
+2.40.1
+
