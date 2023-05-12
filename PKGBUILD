@@ -2,13 +2,13 @@
 _extname=parle
 _pkgname=php-$_extname
 pkgname=$_pkgname-git
-pkgver=0.8.3.r1.gc06528f
+pkgver=0.8.3.r58.g980db69
 pkgrel=1
 pkgdesc="Parser and lexer for PHP"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/weltling/parle"
 license=('custom')
-depends=('php>=7.4')
+depends=('gcc-libs' 'glibc' 'php>=7.4')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
