@@ -4,13 +4,13 @@
 pkgname='stratis-cli'
 pkgver=3.4.0
 _pkgver=$pkgver
-pkgrel=2
+pkgrel=3
 pkgdesc='A CLI for the Stratis Project.'
 arch=('any')
 license=('Apache')
 url='https://stratis-storage.github.io/'
 depends=('python-dbus-client-gen' 'python-into-dbus' 'python-justbytes' 'python-dateutil' 'python-packaging' 'python-psutil' 'python-wcwidth')
-makedepends=('dbus-glib' 'git' 'mpfr' 'python-argparse' 'dbus-python' 'asciidoc' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('dbus-glib' 'git' 'mpfr' 'dbus-python' 'asciidoc' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 #checkdepends=('python-nose' 'python-hypothesis' 'stratisd')
 source=(
   "${pkgname}-${_pkgver}.tar.gz::https://github.com/stratis-storage/stratis-cli/archive/v${_pkgver}.tar.gz"
