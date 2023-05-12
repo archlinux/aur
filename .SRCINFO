@@ -1,7 +1,7 @@
 pkgbase = obs-rtspserver
 	pkgdesc = This is a plugin for obs-studio, encoding the output and publish rtsp stream
 	pkgver = 3.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://obsproject.com/forum/resources/obs-rtspserver.1037/
 	arch = x86_64
 	arch = aarch64

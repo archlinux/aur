@@ -2,7 +2,7 @@
 
 pkgname=obs-rtspserver
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="This is a plugin for obs-studio, encoding the output and publish rtsp stream"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/obs-rtspserver.1037/"
@@ -45,15 +45,10 @@ build() {
 
 package() {
   mkdir -p $pkgdir/usr/
-  mkdir -p $pkgdir/usr/
 
   cd $pkgname
 
-  _fake_install_dir="$srcdir/plugin-install"
+  make -C build install
 
-  make -C build DESTDIR="$_fake_install_dir/" install
-
-  cp -a $_fake_install_dir/build/$pkgname/src/$pkgname/release/* $pkgdir/usr/
-
-  rm -rf $_fake_install_dir
+  cp -a release/* $pkgdir/usr/
 }
