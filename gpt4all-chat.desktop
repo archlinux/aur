@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=GPT4All Chat
+GenericName=GPT4All Chat
+Comment=GUI for GPT4All versions
+Keywords=chat;gpt;ai;
+Exec=gpt4all-chat
+Icon=gpt4all-chat
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Office;InstantMessaging;

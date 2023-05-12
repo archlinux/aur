@@ -1,0 +1,18 @@
+pkgbase = gpt4all-chat-git
+	pkgdesc = Cross platform Qt based GUI for GPT4All versions
+	pkgver = r688.d56aada
+	pkgrel = 1
+	url = https://github.com/nomic-ai/gpt4all
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = qt6-base
+	provides = gpt4all-chat
+	conflicts = gpt4all-chat
+	source = gpt4all::git+https://github.com/nomic-ai/gpt4all.git
+	source = gpt4all-chat.desktop
+	sha256sums = SKIP
+	sha256sums = 968ade77776bd88735b8dc370d5619378a131333694b7d43318bde02627f4c2b
+
+pkgname = gpt4all-chat-git
