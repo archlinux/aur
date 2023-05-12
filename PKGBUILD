@@ -39,7 +39,7 @@ validpgpkeys=(
   C7E7849466FE2358343588377258734B41C31549  # David Runge <dvzrv@archlinux.org>
 )
 b2sums=('SKIP'
-        '1416580d89858027055ff78a8f207511ba462eb2ace9926de92add24f9b45c25e6cc4a2d1a53d0ca694d0425caeea6011624144d832d9693d04d06fa1aeb17ce')
+        '387a3c931c4fa4377cc02caea0f096ae02d49bddcc76c05c68ba701dc968a4578a5da538eef8045c2c15caa4220f33f4a734a932a57bbc975f744c11d82fdc11')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
