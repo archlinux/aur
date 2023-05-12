@@ -1,6 +1,6 @@
 pkgbase = gitlab-pages
 	pkgdesc = GitLab Pages daemon used to serve static websites for GitLab users
-	pkgver = 15.9.6
+	pkgver = 15.10.7
 	pkgrel = 1
 	url = https://gitlab.com/gitlab-org/gitlab-pages
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = gitlab-pages
 	makedepends = go
 	backup = etc/gitlab-pages/config.cfg
 	backup = etc/gitlab-pages/service.env
-	source = https://gitlab.com/gitlab-org/gitlab-pages/-/archive/v15.9.6/gitlab-pages-v15.9.6.tar.bz2
+	source = https://gitlab.com/gitlab-org/gitlab-pages/-/archive/v15.10.7/gitlab-pages-v15.10.7.tar.bz2
 	source = gitlab-pages.service
 	source = service.env
-	sha256sums = 8996ad10307cf12cc6d59421a466143184ea205089bce73dd7815224f2d3a6b9
+	sha256sums = 54fa25ea85aa66c602a8fad20c1a2e38239bf145fadce6f951da2601618ffc8d
 	sha256sums = df2bb3607f500daf95ac7c3ddf2470c794a72c66ba0770029753f859f1c53082
 	sha256sums = fd8f9b60e2247077ad00765904237b6b1c36b11a952cd3b1ad88e74417b82a96
 
