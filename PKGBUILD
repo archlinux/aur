@@ -1,16 +1,13 @@
 # Maintainer: OriginCode <origincoder@yahoo.com>
 
 pkgname=shadowsocks-libev-qrcode
-pkgver=r18.cb9dcb0
+pkgver=r22.5402aea
 pkgrel=1
 pkgdesc="Generate QR code from a shadowsocks-libev config file."
 arch=('any')
 url="https://github.com/OriginCode/shadowsocks-libev-qrcode"
 license=('WTFPL')
-depends=(
-	'python-qrcode'
-	'python-argparse'
-)
+depends=('python-qrcode')
 makedepends=('git')
 provides=('ss-qrcode')
 source=('git+https://github.com/OriginCode/shadowsocks-libev-qrcode')
