@@ -3,7 +3,7 @@
 
 pkgname=ratarmount-git
 _pkgname="${pkgname%-git}"
-pkgver=0.13.0.r6.g4906de6
+pkgver=0.13.0.r18.g8e6296c
 pkgrel=2
 epoch=1
 pkgdesc="Mount tar files via fusepy. Supports Recursive Mounting, Compressed Files, Read-Only Bind Mounting, Union Mounting and Write Overlays. A fast random access alternative to archivemount."
@@ -11,6 +11,7 @@ arch=('any')
 url="https://github.com/mxmlnkn/$_pkgname"
 license=('MIT')
 depends=(
+	'python>=3.11'
 	'python-fusepy'
 	'python-msgpack'
 	'python-rapidjson'
