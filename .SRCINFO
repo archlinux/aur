@@ -1,0 +1,17 @@
+pkgbase = r-jasppower
+	pkgdesc = Power Module for JASP
+	pkgver = 0.17.2
+	pkgrel = 1
+	url = https://github.com/jasp-stats/jaspPower
+	arch = any
+	groups = r-jasp
+	groups = r-jaspextra
+	license = GPL
+	depends = r
+	depends = r-pwr
+	depends = r-jaspbase
+	depends = r-jaspgraphs
+	source = jaspPower_0.17.2.tar.gz::https://github.com/jasp-stats/jaspPower/archive/refs/tags/v0.17.2.tar.gz
+	sha256sums = 6c4ad281639691e5f232730f61795f76631a81400b1ada56068f38cc98747fe4
+
+pkgname = r-jasppower
