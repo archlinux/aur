@@ -1,14 +1,14 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=nerdfix
-pkgver=0.2.3
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="nerdfix helps you to find/fix obsolete Nerd Font icons in your project."
 url="https://github.com/loichyan/$pkgname"
 arch=("x86_64")
 license=("MIT" "Apache")
 makedepends=("cargo")
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0a4587caaa2d9654ef41e48612267343c5f018387f3f36564688263114629cad')
+sha256sums=('03af7760d94bcb89f3de9a2b47294f0a9b1d0ae18580ab6ad0c1e4deec771e50')
 
 prepare()
 {
