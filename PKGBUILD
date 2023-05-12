@@ -2,7 +2,7 @@
 pkgname=python-mkl-service-bin
 _pkgname=mkl-service
 _pkgver=2.4.0
-_build=py310h7f8727e_0
+_build=py311h5eee18b_1
 pkgver="${_pkgver}.anaconda${_build##*_}"
 pkgrel=3
 epoch=1
@@ -15,7 +15,7 @@ conflicts=('python-mkl-service')
 depends=('python' 'intel-mkl')
 makedepends=('jq')
 source=("https://repo.anaconda.com/pkgs/main/linux-64/${_pkgname}-${_pkgver}-${_build}.tar.bz2")
-sha256sums=('6704d413c29ff9976ad9f08373806c21ef2444ce072a67663023a0d87d3de13f')
+sha256sums=('2aef0876d0df033f7fae8cddbd25d95fc1bfc067e60dd143bd8000fec0768b21')
 
 prepare() {
   # Prefix replacement
