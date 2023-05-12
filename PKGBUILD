@@ -36,7 +36,7 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G$pkgver"
         "fix-wayland-build.patch::$_filesurl/patches/fix-wayland-build.patch"
         "mach-depends.patch::$_filesurl/patches/mach-depends.patch"
         "Bug1811714.patch::$_filesurl/patches/Bug1811714.patch"
-        "Bug1777674.patch::$_filesurl/patches/ug1777674.patch"
+        "Bug1777674.patch::$_filesurl/patches/Bug1777674.patch"
         )
 sha256sums=('SKIP'
             '09b6d083ecfc42d8c355177b56b7073f387c968c162041507f2870c38e4b7259'
