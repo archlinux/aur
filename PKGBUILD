@@ -6,7 +6,7 @@ pkgname=dosbox-gcc
 pkgver=13.1.0
 _target="i586-pc-msdosdjgpp"
 _djver=2.05
-pkgrel=5
+pkgrel=6
 pkgdesc="djgpp cross-compiler for the dosbox environment"
 arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"
@@ -38,6 +38,28 @@ prepare() {
 
   # Other DJGPP related changes
   patch -Np1 < ../gcc-djgpp.diff
+
+  # hack the c_global/cmath header
+  sed -i '/{ return __builtin_tanh(__x); }/a\
+\
+  using ::trunc;\
+\
+#ifndef __CORRECT_ISO_CPP_MATH_H_PROTO_FP\
+  inline _GLIBCXX_CONSTEXPR float\
+  trunc(float __x)\
+  { return __builtin_truncf(__x); }\
+\
+  inline _GLIBCXX_CONSTEXPR long double\
+  trunc(long double __x)\
+  { return __builtin_truncl(__x); }\
+#endif\
+\
+  template<typename _Tp>\
+    inline _GLIBCXX_CONSTEXPR\
+    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,\
+                                    double>::__type\
+    trunc(_Tp __x)\
+    { return __builtin_trunc(__x); }' libstdc++-v3/include/c_global/cmath
 
   # extract bootstrap djcrx
   mkdir -p ../gcc-build-$_target/lib/gcc/$_target/$pkgver
@@ -108,25 +130,4 @@ package_dosbox-gcc() {
   rm -rf $pkgdir/usr/share/{man,info,locale}
   rm -rf $pkgdir/usr/lib/gcc/$_target/$pkgver/include-fixed
   rm -f $pkgdir/usr/lib/libcc1.*
-
-  echo ...applying hacks
-  sed -i '/{ return __builtin_tanh(__x); }/a\
-\
-  using ::trunc;\
-\
-#ifndef __CORRECT_ISO_CPP_MATH_H_PROTO_FP\
-  constexpr float\
-  trunc(float __x)\
-  { return __builtin_truncf(__x); }\
-\
-  constexpr long double\
-  trunc(long double __x)\
-  { return __builtin_truncl(__x); }\
-#endif\
-\
-  template<typename _Tp>\
-    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value, \
-                                              double>::__type\
-    trunc(_Tp __x)\
-    { return __builtin_trunc(__x); }' $pkgdir/usr/$_target/include/c++/$pkgver/cmath
 }

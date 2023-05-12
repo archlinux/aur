@@ -1,7 +1,7 @@
 pkgbase = dosbox-gcc
 	pkgdesc = djgpp cross-compiler for the dosbox environment
 	pkgver = 13.1.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://gcc.gnu.org
 	arch = i686
 	arch = x86_64
