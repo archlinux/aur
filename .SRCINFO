@@ -1,6 +1,6 @@
 pkgbase = tme-git
 	pkgdesc = The Machine Emulator, or tme, provides a general-purpose framework for computer emulation.
-	pkgver = 0.12latest
+	pkgver = r434.40dce40
 	pkgrel = 1
 	url = https://nme.osdn.io
 	install = tme-git.install
