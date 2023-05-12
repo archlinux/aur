@@ -1,0 +1,25 @@
+pkgbase = tme-git
+	pkgdesc = The Machine Emulator, or tme, provides a general-purpose framework for computer emulation.
+	pkgver = 0.12latest
+	pkgrel = 1
+	url = https://nme.osdn.io
+	install = tme-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = perl-x11-protocol
+	makedepends = libvncserver
+	makedepends = gtk4
+	makedepends = sdl2
+	optdepends = perl-x11-protocol: for computing optimal graphics parameters
+	optdepends = libvncserver: graphics hosted via VNC server
+	optdepends = gtk4: graphics hosted via gtk4
+	optdepends = sdl2: graphics hosted via SDL2
+	conflicts = tme
+	options = libtool
+	options = debug
+	options = !strip
+	source = tme::git+https://scm.osdn.net/gitroot/nme/tme.git#branch=main
+	sha256sums = SKIP
+
+pkgname = tme-git
