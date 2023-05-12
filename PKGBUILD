@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=crosswords-puzzle-sets-pzzl
-pkgver=4.0
+pkgver=4.1
 pkgrel=1
 pkgdesc='Dutch puzzles from De Telegraaf for the app Crosswords'
 arch=(any)
@@ -9,7 +9,6 @@ url='https://gitlab.gnome.org/philip.goto/puzzle-sets-pzzl'
 license=(GPL3)
 depends=(
 	crosswords
-	python-argparse
 	python-dateutil
 	python-requests
 )
@@ -17,7 +16,7 @@ makedepends=(meson)
 _commit=${pkgver}
 _srcdir="puzzle-sets-pzzl-${_commit}"
 source=("${url}/-/archive/${_commit}/${_srcdir}.tar.gz")
-b2sums=('8e9e024e9ad8b9735a10e113e2f8569707ced2674ede57d57be29a565959ece879bce8bd3322f24be1cb3450bccb004377c05357a0f5265492343ec5d761910c')
+b2sums=('60fddd207d670bf897c759d42aaa563d130400f013b8d921fdf52d628f3a74aceaf688db1552b17c98350c98d34e5445caedba4241cbd03c2c9ac0f94289b288')
 
 build() {
 	arch-meson "${_srcdir}" build
