@@ -2,17 +2,17 @@
 
 pkgname=imaginer
 _pkgname=Imaginer
-pkgver=0.1.3
-pkgrel=1
+pkgver=0.1.5
+pkgrel=2
 pkgdesc="Imagine with AI"
 arch=('any')
-url="https://codeberg.org/Imaginer/Imaginer"
+url="https://imaginer.codeberg.page"
 license=('GPL3')
 depends=('libadwaita' 'libsoup3' 'python-gobject' 'libportal-gtk4' 'python-lxml' 'python-openai' 'python-requests' 'python-pillow')
 makedepends=('meson' 'blueprint-compiler' 'gobject-introspection' )
 checkdepends=('appstream-glib')
-source=($url/archive/v${pkgver//_/-}.tar.gz)
-b2sums=('cbfe19289495d0a01684aac068622c1be290339a5e107f207aac874acbc750ff4e75a53f6894e94e1507a9cd975b18d1f38e203c462d70516bf105951b857c2b')
+source=(https://codeberg.org/Imaginer/Imaginer/archive/v${pkgver//_/-}.tar.gz)
+b2sums=('1309dbeadf5e749334939e5f94246bc7efaf0b7babf1fc18a0df3fa6021d66a8950e1ee45d65c873d95ee0765da2b21902706debb78615450ceb845ce99e13e8')
 
 build() {
   arch-meson "$pkgname" build
