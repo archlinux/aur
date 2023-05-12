@@ -8,7 +8,7 @@ pkgdesc="Imagine with AI"
 arch=('any')
 url="https://codeberg.org/Imaginer/Imaginer"
 license=('GPL3')
-depends=('libadwaita' 'python-gobject' 'python-openai' 'python-requests' 'python-pillow')
+depends=('libadwaita' 'libsoup3' 'python-gobject' 'libportal-gtk4' 'python-lxml' 'python-openai' 'python-requests' 'python-pillow')
 makedepends=('meson' 'blueprint-compiler' 'gobject-introspection' )
 checkdepends=('appstream-glib')
 source=($url/archive/v${pkgver//_/-}.tar.gz)
@@ -25,5 +25,7 @@ check() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
+
+  # fix binary permissions
   chmod 0755 "$pkgdir/usr/bin/$pkgname"
 }
