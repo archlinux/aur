@@ -1,6 +1,6 @@
 pkgbase = bootsplash-manager-git
 	pkgdesc = Simple bootsplash manager
-	pkgver = 1.9.r0.g4f83103
+	pkgver = 1.10.r0.g74dc223
 	pkgrel = 1
 	url = https://github.com/parov0z/bootsplash-manager
 	arch = x86_64

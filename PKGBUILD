@@ -2,7 +2,7 @@
 
 pkgname=bootsplash-manager-git
 _pkgname=${pkgname//-git}
-pkgver=1.9.r0.g4f83103
+pkgver=1.10.r0.g74dc223
 pkgrel=1
 pkgdesc="Simple bootsplash manager"
 url="https://github.com/parov0z/bootsplash-manager"
