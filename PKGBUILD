@@ -1,17 +1,17 @@
-# Maintainer: lmartinez-mirror
+# Contributor: lmartinez-mirror
 pkgname=mpv-sponsorblock-minimal-git
 _pkgname=${pkgname%-git}
-pkgver=r9.b297fba
+pkgver=r37.27dd1df
 pkgrel=1
 pkgdesc="A minimal script to skip sponsored segments of YouTube videos"
 arch=('any')
 url="https://codeberg.org/jouni/mpv_sponsorblock_minimal"
 license=('GPL3')
 depends=('mpv' 'curl')
+optdepends=('lua-curl: use native lua binding to libcurl')
 makedepends=('git')
 provides=('mpv-sponsorblock')
 conflicts=('mpv-sponsorblock')
-install=mpv-sponsorblock-minimal.install
 source=("$_pkgname::git+$url")
 sha256sums=('SKIP')
 
@@ -22,6 +22,8 @@ pkgver() {
 
 package() {
   cd "$_pkgname"
-  install -Dm 755 sponsorblock_minimal.lua "$pkgdir/usr/lib/mpv/sponsorblock-minimal.lua"
+  install -Dm644 sponsorblock_minimal.lua "$pkgdir/etc/mpv/scripts/sponsorblock-minimal.lua"
+  install -Dm644 README -t "$pkgdir/usr/share/doc/$_pkgname"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
 
