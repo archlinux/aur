@@ -9,8 +9,8 @@ url="https://github.com/ast-grep/ast-grep"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=('6c0e26a8999437c4561b25364d86fd24b1c791b9d22d66b9804e60944a2bfd96fa8b2f25d6bcc0b6f247f420f1c59bf0681a47b6a74826979411d1e589af5001')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+b2sums=('a20630120d98237269f98fe2e94c0767125b9550e346dfbbe0b24b23d26bbb0cf58e07932a483a4df39457cfd0ce6aa3d48263a3128f47fab580c1a26f25a9c8')
 options=('!lto')
 
 prepare() {
