@@ -1,6 +1,6 @@
 pkgbase = python-httpx-git
 	pkgdesc = A next generation HTTP client for Python
-	pkgver = 0.23.3.r18.ga934c36a
+	pkgver = 0.24.0.r19.gee432c0d
 	pkgrel = 1
 	url = https://github.com/encode/httpx
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = python-httpx-git
 	checkdepends = python-trustme
 	checkdepends = uvicorn
 	checkdepends = python-socksio
+	checkdepends = python-brotli
 	checkdepends = python-rich
 	checkdepends = python-chardet
 	makedepends = python-build
@@ -31,7 +32,7 @@ pkgbase = python-httpx-git
 	optdepends = python-click: command line client support
 	optdepends = python-rich: command line client support
 	optdepends = python-trio: alternative async library
-	provides = python-httpx=0.23.3.r18.ga934c36a
+	provides = python-httpx=0.24.0.r19.gee432c0d
 	conflicts = python-httpx
 	replaces = python-httpx
 	source = git+https://github.com/encode/httpx.git

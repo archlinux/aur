@@ -5,7 +5,7 @@
 pkgname=python-httpx-git
 _pkgname=httpx
 # https://github.com/encode/httpx/blob/master/CHANGELOG.md
-pkgver=0.23.3.r18.ga934c36a
+pkgver=0.24.0.r19.gee432c0d
 pkgrel=1
 pkgdesc="A next generation HTTP client for Python"
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   'python-trio: alternative async library'
 )
 makedepends=('python-build' 'python-installer' 'python-hatchling' 'python-hatch-fancy-pypi-readme' 'git')
-checkdepends=('python-pytest-asyncio' 'python-pytest-trio' 'python-typing_extensions' 'python-brotlicffi' 'python-h2' 'python-trustme' 'uvicorn' 'python-socksio'
+checkdepends=('python-pytest-asyncio' 'python-pytest-trio' 'python-typing_extensions' 'python-brotlicffi' 'python-h2' 'python-trustme' 'uvicorn' 'python-socksio' python-brotli
               'python-rich' 'python-chardet')
 provides=(python-httpx=$pkgver)
 conflicts=(python-httpx)
@@ -45,7 +45,7 @@ prepare() {
   patch -Np1 -i ../uvicorn-test-server-use-h11.diff
 
   # disable -Werror, which often causes failures due to newer dependencies in Arch
-  sed -i '/\berror\b/d' setup.cfg
+  #sed -i '/\berror\b/d' setup.cfg
 }
 
 build() {
