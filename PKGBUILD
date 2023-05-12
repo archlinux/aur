@@ -1,8 +1,8 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=python-whey
-pkgver=0.0.23
-pkgrel=2
+pkgver=0.0.24
+pkgrel=1
 pkgdesc='A simple Python wheel builder for simple projects'
 arch=('any')
 url='https://whey.readthedocs.io/'
@@ -33,7 +33,7 @@ optdepends=(
   'python-cmarkgfm: readme functionality'
   'python-editables: editable installs'
 )
-_commit='ceeaccf9e0524a6d66ba3bbe7c96d509dca0d640'
+_commit='fab291b973239e23c9bdc8a22d9714de43e6d0c9'
 source=("$pkgname::git+https://github.com/repo-helper/whey#commit=$_commit")
 b2sums=('SKIP')
 
