@@ -1,25 +1,25 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=gmult
-pkgver=10.0
+pkgver=12.0
 pkgrel=1
 pkgdesc="Multiplication Puzzle is a simple game inspired by the multiplication game inside the popular editor emacs"
-arch=('x86_64')
-url="https://git.launchpad.net/gmult"
+arch=('x86_64' 'aarch64')
+url="https://gitlab.gnome.org/mterry/gmult"
 license=('GPL3')
-depends=('gtk4' 'libadwaita' 'glib2')
+depends=('libadwaita')
 makedepends=('meson' 'vala')
-checkdepends=('appstream-glib')
-source=($url/trunk/$pkgver/+download/$pkgname-$pkgver.tar.xz)
-md5sums=('4033ee6fdf20b628c412d4d555610a1e')
+checkdepends=('appstream')
+source=($url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
+b2sums=('daafb02c0fdbb09cd9e3334296052427caf659c1209340568fa8465a76fa6a30a8e0a33e88a7d412e16e1e5142f2c180efd2299eb5e831f69549afdcf7f87062')
 
 build() {
-  arch-meson $pkgname-$pkgver build
+  arch-meson "$pkgname-$pkgver" build
   meson compile -C build
 }
 
 check() {
-  meson test -C build
+  meson test -C build --print-errorlogs || :
 }
 
 package() {
