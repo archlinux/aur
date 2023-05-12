@@ -1,6 +1,6 @@
 pkgbase = soh
 	pkgver = 7.0.1
-	pkgrel = 2
+	pkgrel = 1
 	url = https://shipofharkinian.com/
 	arch = x86_64
 	arch = i686
