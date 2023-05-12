@@ -8,7 +8,7 @@ arch=(any)
 url="https://github.com/Kitware/${_base}"
 license=(MIT)
 depends=(python-trame-client nodejs-lts-fermium npm)
-makedepends=(python-setuptools)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('ca497ab2ac6423bc4d3620b6b531b6d6307a00ef997426a3fab76c1bb1efc31eb34383a808688a2f7794412520f709b120a11dcc8d505d774a4ddc412aa4c5f8')
@@ -22,17 +22,19 @@ build() {
   npm install
   npm run build
   cd ${srcdir}/${_base}-${pkgver}
-  python setup.py build
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
   cd ${_base}-${pkgver}
-  python -m pytest
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest
 }
 
 package() {
   cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   rm ${pkgdir}${site_packages}/trame/__init__.py
