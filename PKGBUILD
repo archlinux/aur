@@ -3,8 +3,8 @@
 pkgname=brew
 pkgver=4.0.17
 _installer_pkgname=Homebrew-AUR-installer
-_installer_pkgver=1.0
-pkgrel=1
+_installer_pkgver=1.0.1
+pkgrel=2
 pkgdesc='``The missing packager for macOS'\'\'' on Arch GNU/Linux'
 arch=(any)
 url="https://brew.sh/"
@@ -18,7 +18,7 @@ source=("git+https://github.com/Homebrew/brew/#tag=$pkgver"
 	"https://github.com/ctrlcctrlv/$_installer_pkgname/archive/refs/tags/$_installer_pkgver.tar.gz"
 	"0001-allow-usr-root.patch")
 b2sums=('SKIP'
-        '63d2579bd82b5a020d49496840f8ca510f94f9ab0db75efc9ed5f5edcaf6827c2eddbab1da98e3e4c014edff45fb233f42fe2db8da14e0fb3aa93de16bcf4976'
+        'bf7e17cfcc8dece510bda87f03996bbbd179d5e4eed16694fb4f663df2c2b52983eea1f8e2c2dafd2721b75c16bc4dc84b5b08ec9738e9f302bc1ab8803f9dfc'
         'b2909d5cb75a480309abc2a70400a86b33615bc57934148db0622cc578503d711825c4e5c8dabcef0c6660b5653b514d82d1b0e372230fa4d7e1799ecd5e68c3')
 
 TEMPFILE=`mktemp`
