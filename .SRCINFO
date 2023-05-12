@@ -1,7 +1,7 @@
 pkgbase = ocp
 	pkgdesc = Open Cubic Player
-	pkgver = 0.2.103
-	pkgrel = 6
+	pkgver = 0.2.104
+	pkgrel = 1
 	url = https://stian.cubic.org/project-ocp.php
 	arch = i686
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = ocp
 	optdepends = libvorbis: Vorbis codec support
 	optdepends = libmad: MPEG codec support
 	optdepends = flac: FLAC codec support
-	source = ocp::git+https://github.com/mywave82/opencubicplayer.git#tag=v0.2.103
+	source = ocp::git+https://github.com/mywave82/opencubicplayer.git#tag=v0.2.104
 	sha256sums = SKIP
 
 pkgname = ocp
@@ -35,8 +35,8 @@ pkgname = ocp
 	depends = zlib
 	depends = libancient
 	depends = libdiscid
-	provides = ocp=0.2.103
-	provides = ocp-curses=0.2.103
+	provides = ocp=0.2.104
+	provides = ocp-curses=0.2.104
 	conflicts = ocp-curses
 	conflicts = ocp-sdl2
 
@@ -56,8 +56,8 @@ pkgname = ocp-sdl2
 	depends = libjpeg-turbo
 	depends = libpng
 	depends = ttf-unifont
-	provides = ocp=0.2.103
-	provides = ocp-sdl2=0.2.103
+	provides = ocp=0.2.104
+	provides = ocp-sdl2=0.2.104
 	conflicts = ocp
 	conflicts = ocp-sdl2
 	conflicts = ocp-curses
