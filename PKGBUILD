@@ -2,19 +2,19 @@
 
 pkgname=qimgv-qt6-kde-git
 _pkgname=qimgv
-pkgver=v1.0.2.r10.g359ac07
-pkgrel=1
+pkgver=v1.0.3.alpha.r85.g22a8f2e
+pkgrel=2
 pkgdesc="Qt6 image viewer. Fast, configurable, easy to use. Supports video playback."
-arch=('i686' 'x86_64')
+arch=(x86_64 i686 armv6h armv7h aarch64)
 url="https://github.com/easymodo/qimgv"
 license=('GPL3')
 depends=('qt6-base' 'qt6-imageformats' 'qt6-svg' 'qt6-5compat' 'mpv' 'exiv2' 'opencv')
-makedepends=('git' 'cmake' 'pkgconf' 'qt6-tools' 'mpv' 'exiv2' 'opencv')
-#checkdepends=()
+makedepends=('git' 'cmake' 'pkgconf' 'qt6-tools')
 optdepends=('kimageformats: support for more image formats'
-            # 'qt5-apng-plugin: apng support'
             'qtraw-git: RAW support'
-            # 'qt5-jpegxl-image-plugin: JPEG-XL support'
+            'qt6-jpegxl-image-plugin: JPEG-XL support'
+            # waiting for ports to qt6 for below packages
+            # 'qt5-apng-plugin: apng support'
             # 'qt5-avif-image-plugin-git: AVIF support'
             )
 provides=("qimgv")
