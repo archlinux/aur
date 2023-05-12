@@ -2,18 +2,18 @@
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 pkgname=picopt
 pkgdesc="A multi format lossless image optimizer that uses external tools"
-pkgver=3.2.5
-pkgrel=2
+pkgver=3.3.4
+pkgrel=1
 arch=(any)
 url="https://github.com/ajslater/${pkgname}"
-license=(GPL2)
-depends=(python-confuse python-humanize python-dateutil python-rarfile python-treestamps python-pillow python-argparse optipng)
-makedepends=(python-build python-installer python-setuptools python-wheel)
+license=(GPL3)
+depends=(python-confuse python-humanize python-dateutil python-rarfile python-treestamps python-pillow optipng)
+makedepends=(python-build python-installer python-poetry-core python-wheel)
 optdepends=('gifsicle: for animated GIFs support'
   'pngout: for optimize PNG images'
   'mozjpeg: for optimize JPEG images')
 source=(https://pypi.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('0e6bad21fcab9ed1ed29e9b32362b44f5b1e6e48ce390b90e945ac4d446e8fbd047f43ae112c61ffb5c4f901a11be51d2c500a2c3e2fd9e6f5b2ddfb33cbb917')
+sha512sums=('33adfa58b76ccde19903a946eb2ca7c51c1bd7480132c5e4603bd33e777e0400098cb8a53bc290201707f2f9589402d0b0391295490077709ca16f7a7b015ea9')
 
 build() {
   cd ${pkgname}-${pkgver}
