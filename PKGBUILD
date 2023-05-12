@@ -39,7 +39,7 @@ check() {
 	export RUSTUP_TOOLCHAIN=stable
 
 	# run servers required for integration tests as background processes
-	trap 'ret=$?; (( ${#SERVER_PIDS[@]} )) && kill ${SERVER_PIDS[@]}; exit $ret' EXIT
+	trap 'ret=$?; kill ${SERVER_PIDS[@]}; exit $ret' RETURN ERR EXIT
 	cd integration || return
 	{
 		python3 server.py &
@@ -62,7 +62,6 @@ check() {
 
 	# TODO: figure out why test_cookie_storage is failing
 	cargo test --frozen --all-features --workspace -- --skip http::tests::libcurl::test_cookie_storage
-	kill ${SERVER_PIDS[@]}; SERVER_PIDS=()
 }
 
 package() {
