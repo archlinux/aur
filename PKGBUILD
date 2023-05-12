@@ -6,7 +6,7 @@ pkgname=('marble-git'
          'libastro-git'
          'marble-data-git'
 	 'marble-common-git')
-pkgver=20.12.3.292.gc94802d40
+pkgver=20.12.3.427.ge1d1826c6
 pkgrel=1
 pkgdesc="Desktop Globe. (GIT version)"
 arch=('i686' 'x86_64')
@@ -25,18 +25,19 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
+   mkdir -p build
 
-  # only build the KDE app
-  sed -e '/mobile/d' \
-      -e '/qt/d'  \
-      -e '/Quick/d' \
-      -e '/touch/d' \
-      -i marble/src/apps/CMakeLists.txt
-}
+   # only build the KDE app
+   sed -e '/mobile/d' \
+       -e '/kde/d'  \
+       -e '/Quick/d' \
+       -e '/touch/d' \
+       -i marble/src/apps/CMakeLists.txt
+ }
 
 build() {
   cd build
+  LANG=C
   cmake ../marble \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -45,7 +46,7 @@ build() {
     -DBUILD_TESTING=OFF \
     -DBUILD_MARBLE_EXAMPLES=OFF \
     -DBUILD_MARBLE_TOOLS=ON \
-    -DBUILD_MARBLE_TESTS=OFF \
+    -DBUILD_MARBLE_TESTS=ON \
     -DMOBILE=OFF
   make
 }
