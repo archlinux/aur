@@ -1,7 +1,7 @@
 # Maintainer: sukanka <su975853527 [AT] gmail.com>
 pkgname=clash-for-windows-electron-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.20.22
+pkgver=0.20.23
 pkgrel=1
 pkgdesc="A Windows/macOS/Linux GUI based on Clash and Electron. Using system clash and electron"
 arch=("x86_64" "aarch64")
@@ -31,8 +31,8 @@ sha256sums=('9a84b05b718913d3d1fbe462a2da671abff2cb94bb2ded75a3af12204cebe32f'
             'db2e160e5d5cf82ed69d0926ac51c0eccb9efc541f89be3bb467d85be509f735'
             '4bea2fe6e8580a4316451ca5c8b921bd908422d839f8bd9ceaddd709f9178153'
             'd55c2f4088505116a5bad6d09f5ebe232e7c6a269ea6bf46daada02bc3a9f961')
-sha256sums_x86_64=('f47b8ce0835c0c10fcb14ec9ae36db11d60e573f594166654f82f0c3f2d743c4')
-sha256sums_aarch64=('5de212735432872b607e097559eae0245731547bc0ff67d97535ce5ff72f6eb1')
+sha256sums_x86_64=('6704315735adb0199b3c621ed4d3124880c2edaf415371a79f36590ea5047ba7')
+sha256sums_aarch64=('608087b8b3d358f1ee7389bb6e7c26d378a05169e12fa7a5465d0b57695a4fe6')
 
 _parch=$(echo ${arch} | sed "s/x86_64/x64/;s/aarch64/arm64/")
 build() {
