@@ -1,6 +1,6 @@
 pkgbase = tixeoclient
 	pkgdesc = Tixeo secure video conferencing client
-	pkgver = 17.0.0.0
+	pkgver = 17.0.1.1
 	pkgrel = 1
 	url = https://www.tixeo.com
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = tixeoclient
 	depends = xdg-utils
 	depends = org.freedesktop.secrets
 	optdepends = vlc: MediaPlayer
-	source = http://repos.tixeo.com/debian/pool/non-free/t/tixeoclient/tixeoclient_17.0.0.0_amd64.deb
-	md5sums = 8ddabfde3b091cd54e624308ecc11c83
+	source = http://repos.tixeo.com/debian/pool/non-free/t/tixeoclient/tixeoclient_17.0.1.1_amd64.deb
+	md5sums = 1eeff486b3f6317fe18b41e4e21f2d8a
 
 pkgname = tixeoclient
