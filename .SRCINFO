@@ -10,9 +10,9 @@ pkgbase = python-pyamdgpuinfo
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = python
 	depends = libdrm
-	source = python-pyamdgpuinfo-2.1.3.tar.gz::https://files.pythonhosted.org/packages/source/p/pyamdgpuinfo/pyamdgpuinfo-2.1.3.tar.gz
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pyamdgpuinfo/pyamdgpuinfo-2.1.3.tar.gz
 	sha256sums = 16bc70d84ce898144a76e5456a134a45944f8b1d12b2b351277c25bb566210eb
 
 pkgname = python-pyamdgpuinfo
