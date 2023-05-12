@@ -1,6 +1,6 @@
 pkgbase = r-mlr3misc
 	pkgdesc = Helper Functions for 'mlr3'
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=mlr3misc
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = r-mlr3misc
 	optdepends = r-evaluate
 	optdepends = r-paradox
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/mlr3misc_0.11.0.tar.gz
-	sha256sums = d1f558d2e1cb73410308d53ee9df2226508d0b9995376841e05451473f905d41
+	source = https://cran.r-project.org/src/contrib/mlr3misc_0.12.0.tar.gz
+	sha256sums = 5c8edd2b88b90a7ec6cf6be6d5b58b87ea2ae398f61b92b1093af8ed0ec40c09
 
 pkgname = r-mlr3misc
