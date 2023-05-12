@@ -1,6 +1,6 @@
 pkgbase = lia-git
 	pkgdesc = Compiler for LiA, a transpiled superset of TeX for writing LaTeX.
-	pkgver = 0.2.2
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/jaspwr/LiA
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = lia-git
 	license = GPL
 	makedepends = rust
 	makedepends = cargo
+	makedepends = git
 	source = lia-git::git+https://github.com/jaspwr/LiA#branch=main
 	sha256sums = SKIP
 
