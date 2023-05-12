@@ -1,0 +1,15 @@
+pkgbase = ruby-rbs
+	pkgdesc = Describe the structure of Ruby programs
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = http://solargraph.org/
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	depends = ruby
+	noextract = rbs-3.1.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rbs-3.1.0.gem
+	sha256sums = 4ef8f22f3452aad28ca2ff61ede65a2a98b604e0365058293e749de91a74d07d
+
+pkgname = ruby-rbs
