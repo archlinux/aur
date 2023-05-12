@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=crosswords-puzzle-sets-keesing
-pkgver=4.2
+pkgver=4.3
 pkgrel=1
 pkgdesc='Dutch and Flemish puzzles from Keesing.com for the app Crosswords'
 arch=(any)
@@ -9,7 +9,6 @@ url='https://gitlab.gnome.org/philip.goto/puzzle-sets-keesing'
 license=(GPL3)
 depends=(
 	crosswords
-	python-argparse
 	python-dateutil
 	python-requests
 	python-xmltodict
@@ -18,7 +17,7 @@ makedepends=(meson)
 _commit=${pkgver}
 _srcdir="puzzle-sets-keesing-${_commit}"
 source=("${url}/-/archive/${_commit}/${_srcdir}.tar.gz")
-b2sums=('fa7c2406a1f2e56270a2ec849dda092be8ad95d1c4d9ebc050c6a2591152421c5868e15010f8e494c93a35bd100130e3d2ee07047bafc3aa74f7dc869edba590')
+b2sums=('34f8e2fb9f2a8680574eb3a1a9a5db40d2f74e416c6c8b4a1a834d782a3fa6380788354851d27d3866a6ac040b223735da7abc3b5c2c7e4b2643bba8cb9ccf8c')
 
 build() {
 	arch-meson "${_srcdir}" build
