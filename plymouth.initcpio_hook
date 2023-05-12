@@ -1,0 +1,16 @@
+#!/usr/bin/ash
+
+run_hook() {
+  mkdir -m755 -p /dev/pts
+  mount -t devpts devpts /dev/pts -o nosuid,noexec,gid=5,mode=620
+  plymouthd --mode=boot --pid-file=/run/plymouth/pid --attach-to-session
+  plymouth show-splash
+}
+
+run_latehook(){
+  plymouth update-root-fs --new-root-dir=/new_root
+}
+
+run_emergencyhook(){
+  plymouth --wait quit
+}

@@ -1,0 +1,79 @@
+#!/bin/bash
+
+build() {
+  # get default theme settings
+  local PLYMOUTH_THEME_NAME=$(plymouth-set-default-theme)
+  local PLYMOUTH_THEME_DIR="/usr/share/plymouth/themes/$PLYMOUTH_THEME_NAME"
+  local PLYMOUTH_MODULE_NAME=$(sed -n "s/^ *ModuleName *= *//p" "$PLYMOUTH_THEME_DIR/$PLYMOUTH_THEME_NAME.plymouth")
+  local PLYMOUTH_IMAGE_DIR=$(sed -n "s/^ *ImageDir *= *//p" "$PLYMOUTH_THEME_DIR/$PLYMOUTH_THEME_NAME.plymouth")
+  local PLYMOUTH_FONT_NAME=$(sed -n "s/^ *Font *= *\([^ ]*\).*/\1/p" "$PLYMOUTH_THEME_DIR/$PLYMOUTH_THEME_NAME.plymouth")
+  local PLYMOUTH_FONT_PATH=$(fc-match -f %{file} "$PLYMOUTH_FONT_NAME")
+
+  # exit if no module exists on the system for the theme
+  if [ ! -f "/usr/lib/plymouth/$PLYMOUTH_MODULE_NAME.so" ]; then
+    error "The default plymouth plugin (%s) doesn't exist" "$PLYMOUTH_MODULE_NAME"
+    return 1
+  fi
+
+  # copy binaries and base plugins
+  map add_binary \
+    'plymouthd' \
+    'plymouth' \
+    '/usr/lib/plymouth/plymouthd-fd-escrow' \
+    '/usr/lib/plymouth/text.so' \
+    '/usr/lib/plymouth/details.so' \
+    '/usr/lib/plymouth/label-freetype.so' \
+    '/usr/lib/plymouth/label-pango.so' \
+    '/usr/lib/plymouth/renderers/drm.so' \
+    '/usr/lib/plymouth/renderers/frame-buffer.so' \
+    "/usr/lib/plymouth/$PLYMOUTH_MODULE_NAME.so"
+
+  # copy base themes and logo
+  map add_file \
+    '/usr/share/plymouth/themes/text/text.plymouth' \
+    '/usr/share/plymouth/themes/details/details.plymouth' \
+    '/usr/share/pixmaps/archlinux-logo.png' \
+    '/usr/share/plymouth/plymouthd.defaults' \
+    '/etc/plymouth/plymouthd.conf' \
+    "$PLYMOUTH_FONT_PATH"
+
+  # copy configured theme
+  if [ -d "$PLYMOUTH_THEME_DIR" ]; then
+    add_full_dir "$PLYMOUTH_THEME_DIR"
+  fi
+
+  # copy images for the configured theme
+  if [ "$PLYMOUTH_IMAGE_DIR" != "$PLYMOUTH_THEME_DIR" -a -d "$PLYMOUTH_IMAGE_DIR" ]; then
+    add_full_dir "$PLYMOUTH_IMAGE_DIR"
+  fi
+  
+  # adding this back in seems to help with getting the graphical password prompt so work
+  add_dir '/dev/pts'
+
+  # needed to access DRM devices
+  add_udev_rule '71-seat.rules'
+
+  # copy systemd unit files for systemd boot, otherwise use runscript
+  if command -v add_systemd_unit >/dev/null; then
+    map add_systemd_unit \
+      'plymouth-halt.service' \
+      'plymouth-kexec.service' \
+      'plymouth-poweroff.service' \
+      'plymouth-quit-wait.service' \
+      'plymouth-quit.service' \
+      'plymouth-reboot.service' \
+      'plymouth-start.service' \
+      'plymouth-switch-root.service' \
+      'systemd-ask-password-plymouth.path' \
+      'systemd-ask-password-plymouth.service'
+  else
+    add_runscript
+  fi
+}
+
+help() {
+  cat <<HELPEOF
+This hook includes Plymouth in initramfs. It shows a graphical splash screen
+during boot if the 'splash' kernel parameter is specified.
+HELPEOF
+}

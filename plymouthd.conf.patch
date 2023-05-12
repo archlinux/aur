@@ -1,0 +1,13 @@
+--- plymouth.src/src/plymouthd.defaults
++++ plymouth.patch/src/plymouthd.defaults
+@@ -1,6 +1,5 @@
+-# Distribution defaults. Changes to this file will get overwritten during
+-# upgrades.
+-[Daemon]
+-Theme=spinner
++# Set your plymouth configuration here.
++[Daemon]
++Theme=bgrt
+ ShowDelay=0
+ DeviceTimeout=8
+
