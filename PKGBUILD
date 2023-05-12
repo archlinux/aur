@@ -1,25 +1,40 @@
-# Maintainer: Christopher Fair  <christopherpfair at comcast dot net>
+# Maintainer: éclairevoyant
+
 pkgname=git-subrepo
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
-pkgdesc="Git Submodule Alternative"
-arch=('i686' 'x86_64')
-url="https://github.com/ingydotnet/git-subrepo.git"
-license=('MIT')
-depends=('git')
-makedepends=('git')
-source=("https://github.com/ingydotnet/git-subrepo/archive/${pkgver}.tar.gz")
-sha256sums=('bb2f139222cfecb85fe9983cd8f9d572942f60097d6d736e2e6b01d1292e0a8a')
+pkgdesc="Git submodule alternative"
+arch=(any)
+url="https://github.com/ingydotnet/$pkgname"
+license=(MIT)
+depends=(bash git)
+checkdepends=(perl)
+backup=("etc/profile.d/$pkgname.sh")
+source=("git+$url.git#commit=110b9eb13f259986fffcf11e8fb187b8cce50921")
+b2sums=('SKIP')
 
-package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
-  # git-subrepo
-  mkdir "${pkgdir}/opt"
-  cp -R . "${pkgdir}/opt/git-subrepo" 
-  install -D -m644 License "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  mkdir -p "${pkgdir}/etc/profile.d"
-  echo "source /opt/git-subrepo/.rc" > "${pkgdir}/etc/profile.d/git-subrepo.sh" 
-
+check() {
+	# TODO handle empty email/user in clean chroots
+	make -C $pkgname test
 }
 
+package() {
+	cd $pkgname
+
+	install -vdm755 "$pkgdir/opt/"
+	cp -R . "$pkgdir/opt/$pkgname"
+	rm -rf "$pkgdir/opt/$pkgname/"{.git{,attributes,ignore},ext/test-more-bash,man,test}
+
+	install -vdm755 "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -sf "/opt/$pkgname/License" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+	install -vDm644 man/man1/$pkgname.1 -t "$pkgdir/usr/share/man/man1/"
+	install -vDm755 /dev/stdin "$pkgdir/etc/profile.d/$pkgname.sh" <<eof
+source /opt/git-subrepo/.rc
+eof
+
+	#make DESTDIR="$pkgdir" PREFIX="/usr" install
+	#install -vDm755 lib/$pkgname -t "$pkgdir/usr/bin/"
+	#install -vDm644 completion.bash "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+	#install -vDm644 _$pkgname -t "$pkgdir/usr/share/zsh/site-functions/"
+}

@@ -1,15 +1,15 @@
 pkgbase = git-subrepo
-	pkgdesc = Git Submodule Alternative
-	pkgver = 0.4.5
+	pkgdesc = Git submodule alternative
+	pkgver = 0.4.6
 	pkgrel = 1
-	url = https://github.com/:wingydotnet/git-subrepo.git
-	arch = i686
-	arch = x86_64
+	url = https://github.com/ingydotnet/git-subrepo
+	arch = any
 	license = MIT
-	makedepends = git
+	checkdepends = perl
+	depends = bash
 	depends = git
-	source = https://github.com/ingydotnet/git-subrepo/archive/0.4.5.tar.gz
-	sha256sums = bb2f139222cfecb85fe9983cd8f9d572942f60097d6d736e2e6b01d1292e0a8a 
+	backup = etc/profile.d/git-subrepo.sh
+	source = git+https://github.com/ingydotnet/git-subrepo.git#commit=110b9eb13f259986fffcf11e8fb187b8cce50921
+	b2sums = SKIP
 
 pkgname = git-subrepo
-
