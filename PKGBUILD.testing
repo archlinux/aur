@@ -1,8 +1,8 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=dxvk-mingw
-pkgver=2.1
-_asyncver=2.1-2
+pkgver=2.2
+_asyncver=2.1-4
 pkgrel=2
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version'
 arch=('x86_64')
@@ -123,7 +123,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '40b6c486dc8936466672e2c013730368a2e19a6a118fca6924df07d60ea9fcbc'
+            'dca1a8f75f484beabad9d2a71fbb46460b514bef9e9c1a9abf48daaeff38ff15'
             'c9c2f02bce1e1e93d511aff73484208456835d4d7601a36ab4524939472fc401'
             'bcc15521e4c7f966a0192a1dabb7fb4935b33db39344ab5b861f9d81486f1362'
             '0f688815530ab5e8cc89b9b45d9b1d66cd8cd5a7770fb8249339af555a30dfe7'
