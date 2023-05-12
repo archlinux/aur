@@ -8,12 +8,12 @@ pkgbase = imaginer
 	checkdepends = appstream-glib
 	makedepends = meson
 	makedepends = blueprint-compiler
+	makedepends = gobject-introspection
 	depends = libadwaita
 	depends = python-gobject
 	depends = python-openai
 	depends = python-requests
 	depends = python-pillow
-	depends = gobject-introspection
 	source = https://codeberg.org/Imaginer/Imaginer/archive/v0.1.3.tar.gz
 	b2sums = cbfe19289495d0a01684aac068622c1be290339a5e107f207aac874acbc750ff4e75a53f6894e94e1507a9cd975b18d1f38e203c462d70516bf105951b857c2b
 
