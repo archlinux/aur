@@ -1,7 +1,7 @@
 pkgbase = stunserver
 	pkgdesc = STUN client and server
 	pkgver = 1.2.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.stunprotocol.org/
 	arch = x86_64
 	arch = i386
@@ -10,5 +10,4 @@ pkgbase = stunserver
 	sha256sums = 4479e1ae070651dfc4836a998267c7ac2fba4f011abcfdca3b8ccd7736d4fd26
 
 pkgname = stunserver
-
 pkgname = stunclient
