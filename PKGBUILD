@@ -1,7 +1,7 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail.com>
 pkgname=matrix-commander
 pkgver=7.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple CLI-based Matrix client"
 arch=('any')
 url="https://github.com/8go/matrix-commander"
@@ -11,7 +11,7 @@ depends=(
   "python>3.7"
   "python-aiohttp"
   "python-aiofiles>=0.6.0"
-  "python-argparse"
+  # "python-argparse" part of python since 3.2
   # "python-asyncio" part of python since 3.3
   # "python-datetime" part of standard python
   "python-emoji"
