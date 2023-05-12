@@ -1,0 +1,13 @@
+pkgbase = swaybg-spread
+	pkgdesc = Set wallpaper spanning multiple monitors on sway
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/fyodordev/swaybg-spread
+	arch = x86_64
+	license = GPL3
+	provides = swaybg-spread
+	conflicts = swaybg-spread
+	source = swaybg-spread-0.2.0.tar.gz::https://github.com/fyodordev/swaybg-spread/releases/download/v0.2.0/swaybg-spread-0.2.0.tar.gz
+	sha256sums = d5dba6f3db8940c1427d54d0521f09007e374369a2bf2346d09b851a82eb5390
+
+pkgname = swaybg-spread
