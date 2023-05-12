@@ -1,16 +1,14 @@
 pkgbase = torrents_dispatcher
 	pkgdesc = Dispatch your torrents between multiple torrent clients
 	pkgver = 0.0.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Anthony25/torrents_dispatcher
 	arch = any
 	license = BSD
 	depends = python-appdirs
-	depends = python-argparse
 	depends = python-bencodepy
 	depends = python-setuptools
 	source = https://github.com/Anthony25/torrents_dispatcher/archive/0.0.6.tar.gz
 	sha256sums = fa2f0cb2c1b574edf8b461971e4dd576c89d76ca5343a15f924c21da39c64c95
 
 pkgname = torrents_dispatcher
-
