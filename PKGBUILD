@@ -1,8 +1,8 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=python-dict2css
-pkgver=0.2.4
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc='A μ-library for constructing cascading style sheets from Python dictionaries'
 arch=('any')
 url='https://github.com/sphinx-toolbox/dict2css'
@@ -18,7 +18,7 @@ makedepends=(
   'python-installer'
   'python-whey'
 )
-_commit='5b1c598e0fbaa2bfef8c4749b26a46254bacc4a9'
+_commit='fe95ef7433306258a58b6a91b1e777c6c3628a1c'
 source=("$pkgname::git+$url#commit=$_commit")
 b2sums=('SKIP')
 
