@@ -1,7 +1,7 @@
 pkgbase = godot-export-templates-git
 	pkgdesc = Godot export templates
 	pkgver = 4.1.r53814.43bf0b5e04
-	pkgrel = 1
+	pkgrel = 2
 	url = https://godotengine.org/
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = godot-export-templates-git
 	makedepends = pkgconf
 	makedepends = xorg-xrandr
 	makedepends = yasm
+	makedepends = lld
 	optdepends = godot: use the templates
 	source = godot::git+https://github.com/godotengine/godot.git
 	sha256sums = SKIP

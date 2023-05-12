@@ -4,12 +4,12 @@ _pkgname=godot-export-templates
 pkgname=${_pkgname}-git
 _gitname=godot
 pkgver=4.1.r53814.43bf0b5e04
-pkgrel=1
+pkgrel=2
 pkgdesc='Godot export templates'
 url='https://godotengine.org/'
 license=('MIT')
 arch=('i686' 'x86_64')
-makedepends=('git' 'scons' 'pulseaudio' 'clang' 'pkgconf' 'xorg-xrandr' 'yasm')
+makedepends=('git' 'scons' 'pulseaudio' 'clang' 'pkgconf' 'xorg-xrandr' 'yasm' 'lld')
 optdepends=('godot: use the templates')
 
 source=(
