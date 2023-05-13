@@ -1,0 +1,18 @@
+pkgbase = inpla-git
+	pkgdesc = Interaction nets as a programming language (the current version)
+	pkgver = r336.89d402a
+	pkgrel = 1
+	url = https://github.com/inpla/inpla
+	arch = any
+	license = MIT
+	makedepends = flex
+	makedepends = bison
+	makedepends = git
+	makedepends = gcc
+	depends = glibc
+	provides = inpla
+	conflicts = inpla
+	source = git+https://github.com/inpla/inpla
+	sha256sums = SKIP
+
+pkgname = inpla-git
