@@ -1,0 +1,17 @@
+pkgbase = libbasswv
+	pkgdesc = BASS audio library WavPack plugin
+	pkgver = 2.4.7.3
+	pkgrel = 1
+	url = https://www.un4seen.com/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = custom
+	depends = alsa-lib
+	depends = libbass
+	source = libbasswv-2.4.7.3.zip::http://www.un4seen.com/files/basswv24-linux.zip
+	sha256sums = bdeab6044f87aab2eb5bb0c1b4c17cbeb2f3775988fca657fc4834491d755def
+
+pkgname = libbasswv
