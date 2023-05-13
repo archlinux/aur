@@ -4,9 +4,9 @@
 _pkgname="llm"
 pkgname="${_pkgname}-git"
 pkgver=r515.774d4c0
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc="Run inference for Large Language Models on CPU 🦀🚀🦙"
+pkgdesc="Run inference for Large Language Models on CPU, with Rust 🦀🚀🦙"
 arch=(any)
 url="https://github.com/rustformers/${_pkgname}"
 license=('MIT' 'APACHE')
