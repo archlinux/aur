@@ -1,8 +1,8 @@
 # Maintainer: Bruno Miguel <bruno@privacyrequired.com>
 
 pkgname=thunderbird-extension-xnote-git
-pkgver=3.2.1.r18.g8bb777c
-pkgrel=1
+pkgver=3.2.1.8bb777c
+pkgrel=2
 pkgdesc="Persistent sticky notes for Thunderbird associated to mails. You can email them/print/copy to clipboard."
 arch=('any')
 url='https://github.com/xnotepp/xnote'
@@ -13,7 +13,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd xnote
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)//;s/-/./g'
 }
 
 build() {
