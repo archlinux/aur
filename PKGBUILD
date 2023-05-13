@@ -2,20 +2,20 @@
 
 pkgname=bavarder-git
 _pkgname=Bavarder
-pkgver=0.1.7
-pkgrel=1
+pkgver=0.2.0
+pkgrel=2
 pkgdesc="Chit-Chat with AI"
-arch=('x86_64')
-url="https://codeberg.org/Bavarder/Bavarder"
+arch=('any')
+url="https://bavarder.codeberg.page"
 license=('GPL3')
-depends=('libadwaita' 'libsoup3' 'python-gobject' 'libportal-gtk4' 'python-lxml' 'python-openai' 'python-hgchat' 'python-gtts' 'python-baichat-py' 'python-googlebardpy')
-makedepends=('meson' 'blueprint-compiler' 'gobject-introspection' )
+depends=('libadwaita' 'python-gobject' 'python-openai' 'python-hgchat' 'python-gtts' 'python-baichat-py' 'python-googlebardpy'
+         'python-requests')
+makedepends=('blueprint-compiler' 'meson')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=( git+$url.git )
+source=(git+https://codeberg.org/Bavarder/Bavarder.git)
 b2sums=('SKIP')
-
 
 pkgver() {
   cd "${_pkgname%-git}"
@@ -33,4 +33,8 @@ check() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
+
+  # fix binary permissions
+  chmod 0755 "$pkgdir/usr/bin/$pkgname"
+
 }
