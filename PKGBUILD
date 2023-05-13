@@ -3,13 +3,13 @@
 _pkgname=cmake-build-extension
 pkgname="python-$_pkgname-git"
 pkgver=0.5.1.r3.gfea4503
-pkgrel=2
+pkgrel=3
 pkgdesc="Setuptools extension to build and package CMake projects"
 arch=(any)
 url="https://github.com/diegoferigo/cmake-build-extension"
 license=('MIT')
 depends=('python' 'python-gitpython' 'ninja' 'cmake')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-setuptools-scm')
 checkdepends=('python-pytest')
 provides=("python-$_pkgname=$pkgver")
 conflicts=("python-$_pkgname")
@@ -25,7 +25,7 @@ pkgver() {
 build() {
 	cd "$_pkgname"
 
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 check() {
@@ -37,7 +37,7 @@ check() {
 package() {
 	cd "$_pkgname"
 
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir" dist/*.whl
 
 	install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
