@@ -1,7 +1,7 @@
 # Maintainer: lantw44 (at) gmail (dot) com
 
 pkgname=guile-gnutls
-pkgver=3.7.11
+pkgver=3.7.12
 pkgrel=1
 pkgdesc='Guile bindings for the GnuTLS library'
 arch=('x86_64' 'i686' 'armv7h')
@@ -11,8 +11,8 @@ depends=('guile' 'gnutls')
 source=(
   "https://ftp.gnu.org/gnu/gnutls/${pkgname}-${pkgver}.tar.gz"{,.sig})
 sha256sums=(
-  '058eaa5c763e19fbf93e8b4eefc11280f8070535c138c99be11f00cd685613df'
-  '4f4ed40bff804dbdda4a98ef7590f197d327c7b5e9da15860d21b5ec5e947379')
+  '5d3af11573093de59f258415872e2c5b14cca9dd251a8b2ec1643d6e97fee336'
+  '3aa3bcdf69ff21d6f5e0ac9cfd820431edd04f0cb3d0f1a4db72bb33122a7e88')
 validpgpkeys=('B1D2BD1375BECB784CF4F8C4D73CF638C53C06BE')
 
 build() {
