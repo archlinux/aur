@@ -1,6 +1,6 @@
 pkgbase = ddd
 	pkgdesc = A graphical front-end for command-line debuggers such as GDB, JDB, pydb, perl debugger...
-	pkgver = 3.3.12
+	pkgver = 3.4.0
 	pkgrel = 12
 	url = http://www.gnu.org/software/ddd/
 	arch = x86_64
@@ -13,15 +13,7 @@ pkgbase = ddd
 	optdepends = java-runtime-openjdk: to use the Java debugger
 	optdepends = pydb: to use the Python debugger
 	optdepends = perl: to use the Perl debugger
-	source = http://ftp.gnu.org/gnu/ddd/ddd-3.3.12.tar.gz
-	source = http://ftp.gnu.org/gnu/ddd/ddd-3.3.12.tar.gz.sig
-	source = ddd-3.3.12-gcc44.patch
-	source = friends.patch
-	validpgpkeys = 4B286694DE99D517AA8DFF2D6656C593E5158D1A
-	sha1sums = b91d2dfb1145af409138bd34517a898341724e56
-	sha1sums = de155d812da6e11e55cc882292bb5c7b30bd31a1
-	sha1sums = 3d43c9d56347f248732b1d72f29c7bf799f03864
-	sha1sums = 4fcb220ed3f2b84b9f6a9090a7e147341ed98ee2
+	source = http://ftp.gnu.org/gnu/ddd/ddd-3.4.0.tar.gz
+	sha1sums = cf01bd6727a2b957ae27796bb807298bb34fbbb0
 
 pkgname = ddd
-
