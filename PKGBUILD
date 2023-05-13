@@ -2,20 +2,20 @@
 
 pkgname=bavarder
 _pkgname=Bavarder
-pkgver=0.1.7
-pkgrel=1
+pkgver=0.2.0
+pkgrel=2
 pkgdesc="Chit-Chat with AI"
-arch=('x86_64')
-url="https://codeberg.org/Bavarder/Bavarder"
+arch=('any')
+url="https://bavarder.codeberg.page"
 license=('GPL3')
-depends=('libadwaita' 'libsoup3' 'python-gobject' 'libportal-gtk4' 'python-lxml' 'python-openai' 'python-hgchat' 'python-gtts' 'python-baichat-py' 'python-googlebardpy')
-makedepends=('meson' 'blueprint-compiler' 'gobject-introspection' )
+depends=('libadwaita' 'python-gobject' 'python-openai' 'python-hgchat' 'python-gtts' 'python-baichat-py' 'python-googlebardpy'
+         'python-requests')
+makedepends=('blueprint-compiler' 'meson')
 checkdepends=('appstream-glib')
-source=($url/archive/${pkgver//_/-}.tar.gz)
-b2sums=('c869d0e4c8a4f1a452d24587970b994044493aecc028f8a2e4c0a26a7cd04b934afb17e2274a42ac8aac38deffe73e0ca6b6b12c4c8781b5eda6d3cb58768071')
+source=(https://codeberg.org/Bavarder/Bavarder/archive/${pkgver//_/-}.tar.gz)
+b2sums=('fced8887f711294f5191caeaf3e089d14b36943dbae90a30b99541a967ae2cb0d9a587e22a6948a84f600e8771f3173fc0774907a70560c257cda51f8d2e2cea')
 
 build() {
-  echo $(ls)
   arch-meson "$pkgname" build
   meson compile -C build
 }
@@ -26,4 +26,7 @@ check() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
+
+  # fix binary permissions
+  chmod 0755 "$pkgdir/usr/bin/$pkgname"
 }
