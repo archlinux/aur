@@ -1,7 +1,7 @@
 # Maintainer: Bruno Miguel <bruno@privacyrequired.com>
 
 pkgname=thunderbird-extension-send-later-git
-pkgver=9.2.8.r0.g28e8e60
+pkgver=9.2.9.0430643
 pkgrel=1
 pkgdesc=" Schedule messages to be sent at a specific time"
 arch=('any')
@@ -13,7 +13,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd send-later
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)//;s/-/./g'
 }
 
 build() {
