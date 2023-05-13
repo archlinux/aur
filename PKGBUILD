@@ -1,7 +1,7 @@
 # Maintainer: iamawacko <iamawacko@protonmail.com>
 pkgname='synth-git'
 pkgver=0.6.9.r10.g8b3b738
-pkgrel=1
+pkgrel=2
 pkgdesc='The Open Source Data Generator'
 url='https://getsynth.com/'
 arch=('any')
@@ -39,6 +39,6 @@ build() {
 
 package() {
 	cd "synth-git"
-	install -Dm0755 -t "$pkgdier/usr/bin/" "target/release/synth"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/synth"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/synth/LICENSE"
 }
