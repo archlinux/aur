@@ -8,7 +8,7 @@
 pkgname=dolfin
 pkgdesc="C++ interface of FEniCS"
 pkgver=2019.1.0.post0
-pkgrel=7
+pkgrel=8
 arch=('x86_64')
 url="https://bitbucket.org/fenics-project/${pkgname}"
 license=('LGPL3')
@@ -32,6 +32,8 @@ prepare() {
   sed -i '26 a #include <algorithm>' ${pkgname}-${pkgver}/${pkgname}/mesh/MeshFunction.h
   # https://bitbucket.org/fenics-project/dolfin/pull-requests/540/fix-hdf5-and-boost-deprecation-errors
   sed -i 's/ \ \ \ \ \ \ \ \ \ \ \ lapl_id);/ \ \ \ \ \ \ \ \ \ \ \ H5O_INFO_BASIC, lapl_id);/' ${pkgname}-${pkgver}/${pkgname}/io/HDF5Interface.cpp
+  # gcc 13 compatibility
+  sed -i '25 a #include <cstdint>' ${pkgname}-${pkgver}/${pkgname}/mesh/MeshConnectivity.h
   cd ${pkgname}-${pkgver}
   patch -p1 -i ../endian.patch
   patch -p1 -i ../pkg-config.patch
