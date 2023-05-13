@@ -2,7 +2,7 @@
 
 pkgname=puddletag
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An audio tag editor for GNU/Linux'
 url="https://docs.${pkgname}.net/"
 license=('GPL3')

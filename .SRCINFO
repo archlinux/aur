@@ -1,7 +1,7 @@
 pkgbase = puddletag
 	pkgdesc = An audio tag editor for GNU/Linux
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.puddletag.net/
 	arch = any
 	license = GPL3
