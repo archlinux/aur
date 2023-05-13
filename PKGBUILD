@@ -1,12 +1,13 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: HurricanePootis <hurricanepooits@protonmail.com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 ## GPG keys: https://github.com/randy408.gpg
 ## Note that they expired in 2020
 
 pkgname=libspng
-pkgver=0.7.2
-pkgrel=2
+pkgver=0.7.4
+pkgrel=1
 pkgdesc='Simple, modern libpng alternative'
 arch=('x86_64' 'aarch64')
 url='https://github.com/randy408/libspng'
