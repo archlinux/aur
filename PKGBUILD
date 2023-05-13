@@ -4,28 +4,20 @@
 _pkgname="llm"
 pkgname="${_pkgname}-git"
 pkgver=r515.774d4c0
-pkgrel=2
-epoch=
+pkgrel=3
 pkgdesc="Run inference for Large Language Models on CPU, with Rust 🦀🚀🦙"
 arch=(any)
 url="https://github.com/rustformers/${_pkgname}"
 license=('MIT' 'APACHE')
-groups=()
 depends=(glibc gcc-libs)
 makedepends=(git cargo)
-checkdepends=()
-optdepends=()
 provides=(llm)
 conflicts=(llm)
 replaces=(llama-cli)
-backup=()
-options=()
-install=
-changelog=
-source=("git+${url}")
-noextract=()
-sha256sums=('SKIP')
-validpgpkeys=()
+source=("git+${url}"
+        "git+https://github.com/ggerganov/ggml"
+        )
+sha256sums=('SKIP' 'SKIP')
 
 
 prepare() {
@@ -48,5 +40,5 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}"
     install -Dm755 target/release/llm -t "${pkgdir}/usr/bin/"
-    install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
+    install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}/"
 }
