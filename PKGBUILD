@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 pkgname=vulkan-caps-viewer-x11-bin
-pkgver=3.29
+pkgver=3.30
 pkgrel=1
 epoch=1
 pkgdesc="Vulkan Hardware Capability Viewer"
@@ -13,7 +13,7 @@ provides=("${pkgname%-*-*}")
 conflicts=("${pkgname%-*-*}")
 replaces=("${pkgname%-*-*}-bin")
 source=("https://vulkan.gpuinfo.org/downloads/vulkancapsviewer_${pkgver}_linux64.AppImage")
-sha256sums=('b2da1019afea2a96e24cb22ca8de1065234237b48bf3205dd8196851ff0a0d03')
+sha256sums=('2ec27d6ff7a4c20f7b65d0983de627f268b85e1cd11bf906adc43319fe0de303')
 
 prepare() {
   chmod +x *.AppImage
