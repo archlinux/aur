@@ -8,7 +8,7 @@ url="https://github.com/${_reponame}"
 license=('MIT')
 
 pkgver=1.0.7
-pkgrel=4
+pkgrel=5
 arch=('any')
 
 conflicts=('hacompanion-git')
@@ -32,6 +32,8 @@ sha256sums=('SKIP'
 backup=(
     'etc/hacompanion/config.toml'
     )
+
+install='hacompanion.install'
 
 prepare() {
   repodir="${srcdir}/${_pkgname}"
