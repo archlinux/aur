@@ -1,0 +1,16 @@
+pkgbase = ord-git
+	pkgdesc = an index, block explorer, and command-line wallet
+	pkgver = r706.52c4d57d
+	pkgrel = 1
+	url = https://github.com/casey/ord
+	arch = x86_64
+	license = CC0-1.0
+	makedepends = rust
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	provides = ord
+	source = git+https://github.com/casey/ord
+	md5sums = SKIP
+
+pkgname = ord-git
