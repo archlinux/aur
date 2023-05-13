@@ -1,11 +1,5 @@
-From: Sergej Pupykin <sergej@p5n.pp.ru>
-Date: Tues, 29 Nov 2022
-Subject: [PATCH] fix fde.lpi and main.pas
-
----
-
 diff --git a/fde.lpi b/fde.lpi
-index 447c2e6..ec46b9a 100644
+index c4c605c..84a2823 100644
 --- a/fde.lpi
 +++ b/fde.lpi
 @@ -1,11 +1,13 @@
@@ -24,56 +18,26 @@ index 447c2e6..ec46b9a 100644
        <Title Value="FreeDelta Editor"/>
        <Scaled Value="True"/>
        <ResourceType Value="res"/>
-@@ -43,28 +45,31 @@
+@@ -43,7 +45,7 @@
          <Mode0 Name="default"/>
        </Modes>
      </RunParams>
 -    <RequiredPackages Count="7">
 +    <RequiredPackages Count="8">
        <Item1>
--        <PackageName Value="richmemopackage"/>
-+        <PackageName Value="synfacilsyn"/>
+         <PackageName Value="richmemopackage"/>
        </Item1>
-       <Item2>
--        <PackageName Value="SynEdit"/>
-+        <PackageName Value="richmemopackage"/>
-       </Item2>
-       <Item3>
--        <PackageName Value="FrameViewer09"/>
-+        <PackageName Value="SynEdit"/>
-       </Item3>
-       <Item4>
--        <PackageName Value="TurboPowerIPro"/>
-+        <PackageName Value="FrameViewer09"/>
-       </Item4>
-       <Item5>
--        <PackageName Value="LazControls"/>
-+        <PackageName Value="TurboPowerIPro"/>
-       </Item5>
-       <Item6>
--        <PackageName Value="HistoryLazarus"/>
-+        <PackageName Value="LazControls"/>
-       </Item6>
+@@ -65,6 +67,9 @@
        <Item7>
--        <PackageName Value="LCL"/>
-+        <PackageName Value="HistoryLazarus"/>
+         <PackageName Value="LCL"/>
        </Item7>
 +      <Item8>
-+        <PackageName Value="LCL"/>
++        <PackageName Value="synfacilsyn"/>
 +      </Item8>
      </RequiredPackages>
-     <Units Count="17">
+     <Units Count="18">
        <Unit0>
-@@ -196,7 +201,7 @@
-     </Target>
-     <SearchPaths>
-       <IncludeFiles Value="$(ProjOutDir)"/>
--      <OtherUnitFiles Value="C:\lazarus\user\SynFacilSyn\"/>
-+      <OtherUnitFiles Value="C:\lazarus\user\SynFacilSyn"/>
-       <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
-     </SearchPaths>
-     <Linking>
-@@ -210,20 +215,4 @@
+@@ -218,20 +223,4 @@
        </Options>
      </Linking>
    </CompilerOptions>
@@ -95,10 +59,10 @@ index 447c2e6..ec46b9a 100644
 -  </Debugging>
  </CONFIG>
 diff --git a/main.pas b/main.pas
-index e6ee9d3..f885687 100644
+index 6bb8296..6e3c63d 100644
 --- a/main.pas
 +++ b/main.pas
-@@ -1558,7 +1558,7 @@ begin
+@@ -1633,7 +1633,7 @@ begin
    sPath := GetAppConfigDir(False);
    IniFile := TIniFile.Create(sPath + 'fde.ini');
    sLang := IniFile.ReadString('Options', 'Language', 'en'); // First default is English
@@ -107,7 +71,7 @@ index e6ee9d3..f885687 100644
    case sLang of
      'en':
      begin
-@@ -2525,7 +2525,7 @@ begin
+@@ -2650,7 +2650,7 @@ begin
    LanguageFrenchItem.Checked := False;
    sPath := GetAppConfigDir(False);
    IniFile := TIniFile.Create(sPath + 'fde.ini');
@@ -116,7 +80,7 @@ index e6ee9d3..f885687 100644
    IniFile.WriteString('Options', 'Language', 'en');
    IniFile.Free;
  end;
-@@ -2541,7 +2541,7 @@ begin
+@@ -2666,7 +2666,7 @@ begin
    LanguageEnglishItem.Checked := False;
    sPath := GetAppConfigDir(False);
    IniFile := TIniFile.Create(sPath + 'fde.ini');
@@ -125,7 +89,7 @@ index e6ee9d3..f885687 100644
    IniFile.WriteString('Options', 'Language', 'fr');
    IniFile.Free;
  end;
-@@ -2557,7 +2557,7 @@ begin
+@@ -2682,7 +2682,7 @@ begin
    LanguageFrenchItem.Checked := False;
    sPath := GetAppConfigDir(False);
    IniFile := TIniFile.Create(sPath + 'fde.ini');
