@@ -3,7 +3,7 @@
 
 _pkgname="llm"
 pkgname="${_pkgname}-git"
-pkgver=r470.38c0306
+pkgver=r515.774d4c0
 pkgrel=1
 epoch=
 pkgdesc="Run inference for Large Language Models on CPU 🦀🚀🦙"
@@ -22,10 +22,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+${url}"
-        "git+https://github.com/ggerganov/ggml")
+source=("git+${url}")
 noextract=()
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP')
 validpgpkeys=()
 
 
@@ -43,13 +42,11 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    cat LICENSE-* > LICENSE
     cargo build --release
 }
 
 package() {
     cd "${srcdir}/${_pkgname}"
     install -Dm755 target/release/llm -t "${pkgdir}/usr/bin/"
-    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }

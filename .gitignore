@@ -1,3 +1,7 @@
+*
+!/.gitignore
+!/PKGBUILD
+!/.SRCINFO
 pkg
 src
 *.zst
