@@ -3,7 +3,7 @@
 
 pkgname=nsxiv
 pkgver=31
-pkgrel=1
+pkgrel=2
 pkgdesc='Neo (or New or Not) Simple (or Small or Suckless) X Image Viewer'
 arch=('x86_64')
 license=('GPL2')
@@ -22,8 +22,6 @@ sha256sums=('035fbb3fb3ffec45555afd718947ec8a7d7dfac3c5abc7ba6863cc075720d7f2')
 prepare() {
   cd "$pkgname"
   [ ! -f config.h ] && cp config.def.h config.h
-  # TODO: upstream this
-  sed -i -e '/^install: / s|: all|:|' Makefile
 }
 
 build() {
