@@ -1,0 +1,17 @@
+pkgbase = libbassflac
+	pkgdesc = BASS audio library FLAC plugin
+	pkgver = 2.4.5.2
+	pkgrel = 1
+	url = https://www.un4seen.com/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = custom
+	depends = alsa-lib
+	depends = libbass
+	source = libbassflac-2.4.5.2.zip::http://www.un4seen.com/files/bassflac24-linux.zip
+	sha256sums = 322aeb03fa035334a08163ced9f8f91764bed8e29c77b0ac4d3f5efbddc59d88
+
+pkgname = libbassflac
