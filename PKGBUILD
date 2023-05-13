@@ -2,12 +2,12 @@
 
 pkgname=gepetto-viewer-corba
 pkgver=5.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical Interface for Pinocchio and HPP."
 arch=('i686' 'x86_64')
 url="https://github.com/gepetto/$pkgname"
 license=('BSD')
-depends=('gepetto-viewer' 'python-omniorbpy')
+depends=('gepetto-viewer' 'omniorbpy')
 makedepends=('cmake' 'boost')
 source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig})
 sha256sums=('79793619c55554be36b89ce348a0dd5bb84d6354363ca8b0ccc1bb2ffbae1f44'
