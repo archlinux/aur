@@ -5,7 +5,8 @@
 
 pkgname=dosbox-djcrx
 pkgver=2.05
-pkgrel=19
+pkgrel=20
+libmver=0.8.1
 pkgdesc="Headers and utilities for the djgpp dosbox cross-compiler"
 arch=('i686' 'x86_64')
 url="http://www.delorie.com/djgpp/"
@@ -13,19 +14,21 @@ depends=('glibc' 'gcc-libs')
 license=('GPL' 'LGPL' 'custom:djgpp')
 source=("ftp://www.delorie.com/pub/djgpp/current/v2/djcrx${pkgver//./}.zip"
         "ftp://www.delorie.com/pub/djgpp/current/v2/djlsr${pkgver//./}.zip"
+        "https://github.com/JuliaMath/openlibm/archive/refs/tags/v${libmver}.zip"
         ttyscrn.patch
         nmemalign.patch
         fseeko64.patch
         asm.patch
         dxegen.patch
-	djgpp-djcrx-gcccompat.patch)
+        djgpp-djcrx-gcccompat.patch)
 makedepends=('dosbox-gcc' 'bison' 'sed')
-sha256sums=('22274ed8d5ee57cf7ccf161f5e1684fd1c0192068724a7d34e1bde168041ca60'
-            '80690b6e44ff8bc6c6081fca1f4faeba1591c4490b76ef0ec8b35847baa5deea'
-            '83bc02407566c0613c2eeb86d78f2968c11256dfc8d3c2805a5488540e059124'
-            'ffdbab52eb13dde716fbcce54154f7c95644afd6333f4931b2cceeb95935c675'
-            '536684b0152f7ad77b99bcc5ea535ca8339832399c4582b944ccd882e4b261a1'
-            '693810c3242f4e23cdc55d3101281721da9407851e5d29459ad59405e534b916'
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP')
 options=('!buildflags' '!makeflags' '!strip')
@@ -50,18 +53,39 @@ prepare() {
 
   sed -i 's/ln/ln -f/' src/dxe/makefile.dxe
   sed -i 's/O2/O3/g;s/i[[:digit:]]86/i586/g;s/Werror/Wno-error/g' src/makefile src/makefile.cfg src/makefile.def src/dxe/makefile.dxe
+  sed -i 's/-I$(GCC_INC_DIR)/-isystem$(GCC_INC_DIR)/' src/makefile.inc
 
   # be verbose
   #sed -i '/@$(MISC) echo - / d; s/^\t@/\t/' src/makefile.inc src/libc/makefile src/utils/makefile
+
+  #
+  sed -i 's/override ARCH := i387//' openlibm-${libmver}/Make.inc
+  sed -i 's/ifneq ($(filter $(ARCH),i387 amd64/ifneq ($(filter $(ARCH),i586 amd64/' openlibm-${libmver}/Make.inc
+  sed -i 's/SUBDIRS = src $(ARCH) bsdsrc/SUBDIRS = src bsdsrc/' openlibm-${libmver}/Makefile
+  sed -i 's/ifneq ($(filter $(ARCH),i387 amd64),)/ifneq ($(filter $(ARCH),i586 amd64),)/' openlibm-${libmver}/Makefile
 }
 
 build() {
+  cd openlibm-${libmver}
+  CC=${_target}-gcc make ARCH=i586 MARCH=i586 libopenlibm.a
+  mv libopenlibm.a ../lib/
+  cp include/*.h ../include/
+  cd ..
+
   cd src
   make clean
   make -j1
 
   cd dxe
   make -f makefile.dxe
+
+  cd $srcdir/lib
+  mv libopenlibm.a libm.a
+
+  cd ../include
+  rm -f math.h complex.h
+  ln -s openlibm_math.h math.h
+  ln -s openlibm_complex.h complex.h
 }
 
 package() {
