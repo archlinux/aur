@@ -21,7 +21,6 @@ pkgver() {
 
 package() {
     cd "${srcdir}/acl4ssr"
-    # upstream misspelled "LICENSE" :facepalm:
     install -Dm644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/acl4ssr-acl/README.md"
 
