@@ -1,7 +1,7 @@
 # Maintainer: Dan Walsh <dan@danwalsh.ca>
 pkgname=redisinsight
-pkgver=2.22.1
-pkgrel=2
+pkgver=2.24.0
+pkgrel=1
 pkgdesc="Desktop manager that provides an intuitive and efficient GUI for Redis, allowing you to interact with your databases, monitor, and manage your data."
 arch=('x86_64')
 url='https://redis.com/redis-enterprise/redis-insight'
@@ -18,7 +18,7 @@ nvm
 jq
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RedisInsight/RedisInsight/archive/$pkgver.tar.gz")
-sha256sums=('8cc88a349ec4831f2fc3af5a49093164b5bba5913b3e0db11d89dff7fbd53af0')
+sha256sums=('7c01b4acf353c3d910e70cdd616baa5e2caf6b6f3f0f7c074442d67631757c6c')
 
 _ensure_local_nvm() {
     # let's be sure we are starting clean
