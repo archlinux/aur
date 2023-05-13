@@ -1,22 +1,22 @@
 # Maintainer: William Tang <galaxyking0419@gmail.com>
 
 pkgname=unreal-engine-bin
-pkgver=5.1.1
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="The world's most open and advanced real-time 3D creation tool"
 arch=('x86_64')
 url='https://www.unrealengine.com/'
 license=('custom')
 conflicts=('unreal-engine' 'unreal-engine-4' 'unreal-engine-git')
-provides=('unreal-engine=5.1')
-depends=('alsa-lib' 'at-spi2-atk' 'glu' 'libicu53' 'libxkbcommon' 'lttng-ust2.12' 'ncurses5-compat-libs' 'nss' 'pango' 'vulkan-driver')
+provides=('unreal-engine=5.2')
+depends=('alsa-lib' 'at-spi2-core' 'glu' 'libicu53' 'libxkbcommon' 'lttng-ust2.12' 'ncurses5-compat-libs' 'nss' 'pango' 'vulkan-driver')
 optdepends=('android-ndk: Android build support'
             'clion: CLion IDE support'
             'code: Visual Studio Code IDE support')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the zip file manually from https://www.unrealengine.com/linux')
 source=("manual://Linux_Unreal_Engine_${pkgver}.zip" 'unreal-engine.desktop' 'unreal-engine.xml' {16,24,32,48,64,256}.png)
-sha256sums=('7b55d1e71150b733086b0efd1643458058b3c735c3d8304f47d09951e5693874'
+sha256sums=('93a3d698e465641a5671d3b171e94853187cfe912ff87d4dc57651035df74f92'
             '8a71e10dee1d44ad6f85d993bdf25dd4835f6415e983125ac79a912ee0c3d905'
             '752dc3628639adb84ebda281040ec106227431eb7a5f92375511d96c6ceacf91'
             '16197bc88f2ec77ad2690fae280bf3584c54c7d7b018d8fa4086b7c00fd4effc'
@@ -28,6 +28,13 @@ sha256sums=('7b55d1e71150b733086b0efd1643458058b3c735c3d8304f47d09951e5693874'
 
 options=(staticlibs !strip)
 install='unreal-engine-bin.install'
+
+prepare() {
+    # Remove chmod commands for SetupDotnet.sh
+    chmod 777 "$srcdir"/Engine/Build/BatchFiles/Linux/SetupDotnet.sh
+    sed -i '/chmod/d' "$srcdir"/Engine/Build/BatchFiles/Linux/SetupDotnet.sh
+    chmod 555 "$srcdir"/Engine/Build/BatchFiles/Linux/SetupDotnet.sh
+}
 
 package() {
     # Application files
