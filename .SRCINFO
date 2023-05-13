@@ -1,7 +1,7 @@
 pkgbase = budgie-desktop-git
 	pkgdesc = A familiar, modern desktop environment - latest git
 	pkgver = 10.7.1.r30.gde1379f6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BuddiesOfBudgie/budgie-desktop
 	arch = x86_64
 	arch = armv7h

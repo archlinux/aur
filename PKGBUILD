@@ -2,7 +2,7 @@
 # Maintainer: Campbell Jones <dev at serebit dot com>
 
 pkgname=budgie-desktop-git
-pkgver=10.7.1.r30.gde1379f6
+pkgver=10.7.1.r33.ga018185c
 pkgrel=1
 pkgdesc="A familiar, modern desktop environment - latest git"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -37,7 +37,7 @@ prepare() {
 }
 
 build() {
-    arch-meson "$pkgname" build -Duse-old-zenity=true
+    arch-meson "$pkgname" build
     meson compile -C build
 }
 
