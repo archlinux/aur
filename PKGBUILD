@@ -1,13 +1,13 @@
 # Maintainer: Jake <aur@ja-ke.tech.de>
 
 pkgname=hyperion.ng-git
-pkgver=2.0.12.r4.17582ac3
-pkgrel=2
+pkgver=2.0.15.r12.2a17de37
+pkgrel=1
 pkgdesc="The reworked version (next generation) of Hyperion, ambient light software"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/hyperion-project/hyperion.ng"
 license=('MIT')
-depends=('libusb' 'libcec' 'protobuf' 'python' 'qt5-serialport' 'qt5-x11extras' 'avahi' 'mbedtls')
+depends=('libusb' 'libcec' 'protobuf' 'python' 'qt5-serialport' 'qt5-x11extras' 'avahi' 'mbedtls' 'flatbuffers')
 optdepends=('xorg-server: X11 grabbing')
 makedepends=('cmake')
 provides=("hyperion")
@@ -27,31 +27,34 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${pkgname%-git}"
+  sed 's#../../Mbed-TLS/mbedtls.git#https://github.com/Mbed-TLS/mbedtls.git#g' -i .gitmodules
+  sed 's#set(CMAKE_CXX_STANDARD 14)#set(CMAKE_CXX_STANDARD 17)#' -i CMakeLists.txt
   git submodule update --init --recursive
 }
 
 build() {
   cd "${srcdir}/${pkgname%-git}"
-  
+
   test -d build || mkdir build
   cd build
   cmake -DCMAKE_BUILD_TYPE=Release \
         -DPROTOBUF_PROTOC_EXECUTABLE=/usr/bin/protoc \
         -DUSE_SYSTEM_PROTO_LIBS=OFF \
         -DUSE_SYSTEM_MBEDTLS_LIBS=ON \
+        -DUSE_SYSTEM_FLATBUFFERS_LIBS=ON \
         ..
   make
 }
 
 package() {
   cd "${srcdir}/${pkgname%-git}"
-  
+
   install -d ${pkgdir}/usr/bin
   install -D build/bin/hyperion* ${pkgdir}/usr/bin
-  
+
   install -d ${pkgdir}/usr/share/hyperion/webconfig
-  cp -r assets/webconfig ${pkgdir}/usr/share/hyperion/  
-  
+  cp -r assets/webconfig ${pkgdir}/usr/share/hyperion/
+
   install -d "${pkgdir}/etc/hyperion/"
 
   install -Dm 644 ${srcdir}/hyperion.systemd "${pkgdir}/usr/lib/systemd/system/hyperiond@.service"
