@@ -1,7 +1,7 @@
 # Maintainer: Reto Brunner <brunnre8@gmail.com>
 # Maintainer: Maxime Poulin <maxpoulin64@gmail.com>
 pkgname=thelounge
-pkgver=4.3.1
+pkgver=4.4.0
 pkgsuffix="" #-rc.1
 pkgrel=1
 pkgdesc='Modern self-hosted web IRC client'
@@ -22,9 +22,9 @@ source=(
     'tmpfiles.d'
 )
 noextract=("$pkgname-${pkgver}${pkgsuffix}.tgz")
-sha256sums=('56ecc2d6907a3c87f325beb2480b84d66a5de3f8ab3454b06c909b197c7ef491'
-            '05c6aa520df62965b006ad6de413de4333fb67aac94047f6b93a98af20a200bf'
-            '72da99e31ff94381878bb9c3db9d7e95716db37cce7f689275837564226fc525'
+sha256sums=('0949c1c451496a790c3261517281405381823d174d36dbd820a4ac92324ac335'
+            '409c31aad182fcaab45d13ab56e82333eb47a846f42b184007c17756eb780684'
+            '976b1c9a3b22551f8b28b8ce152da1f71b0d32b4e0e08986549f9ff881b48875'
             'c92210f6ac8f01c1cd01b6b26793094cd2feea583ed21fab3564d6bcafdc7a20'
             'c609f3309f54bd6285e99ff29ca2464828bec7bbbca67243ee688bd2d605dbf0'
             '30fab63b8a4ffcfdda4c5b8d7c66822a323c4f1de6ca62b77fe9500f4befc0a5'
@@ -68,7 +68,7 @@ package() {
     echo /etc/thelounge > "$pkgdir/usr/lib/thelounge/node_modules/thelounge/.thelounge_home"
 
     # add default config
-    install -Dm 644 "$pkgdir/usr/lib/thelounge/node_modules/thelounge/defaults/config.js" "$pkgdir/etc/thelounge/config.js"
+    install -Dm 644 "$pkgdir/usr/lib/thelounge/node_modules/thelounge/dist/defaults/config.js" "$pkgdir/etc/thelounge/config.js"
 
     # services
     install -Dm644 "$srcdir/system.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
