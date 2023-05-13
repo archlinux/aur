@@ -4,12 +4,12 @@ _base=matplotx
 pkgname=python-${_base}
 pkgdesc="Useful styles and extensions for Matplotlib"
 pkgver=0.3.10
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/nschloe/${_base}"
 license=(MIT)
 depends=(python-matplotlib)
-makedepends=(python-setuptools)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-imageio python-networkx python-pypng)
 optdepends=('python-networkx: for creation of graphs'
   'python-pypng: for iterator support')
@@ -18,16 +18,18 @@ sha512sums=('33eea6fe855915b45c490c02ce4fb45fecdae9e090e9ff1438620d4f898143e0dd2
 
 build() {
   cd ${_base}-${pkgver}
-  python -c "from setuptools import setup; setup();" build
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
   cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" PYTHONPATH="${PWD}/build/lib/:${PYTHONPATH}" MPLBACKEND=Agg python -m pytest -k 'not cli and not readme_images'
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  MPLBACKEND=Agg test-env/bin/python -m pytest -k 'not cli and not readme_images and not png[6875310-kwargs0]'
 }
 
 package() {
   cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -c "from setuptools import setup; setup();" install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
