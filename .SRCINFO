@@ -14,6 +14,7 @@ pkgbase = goldendict-ng-git
 	depends = lzo
 	depends = zlib
 	depends = xz
+	depends = libeb
 	depends = opencc
 	depends = xapian-core
 	depends = qt6-svg
