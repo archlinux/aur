@@ -1,22 +1,31 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
-# Maintainer: Moon Sungjoon <sumoon at seoulsaram dot org>
+# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Moon Sungjoon <sumoon at seoulsaram dot org>
 # Contributor: Yurii Kolesnykov <root@yurikoles.com>
 
 pkgname=slack-electron
-pkgver=4.31.155
+pkgver=4.32.122
 pkgrel=1
 pkgdesc="Slack Desktop (Beta) for Linux, using the system Electron package"
-arch=('x86_64')
+arch=(x86_64)
 url="https://slack.com/downloads/linux"
-license=('custom:proprietary')
-depends=('electron')
+license=(custom:proprietary)
+depends=(
+  electron
+  libxkbfile
+)
 optdepends=('libappindicator-gtk3: for notification indicator in the status bar on GNOME')
-provides=("slack-desktop")
-conflicts=("slack-desktop")
-source=("$pkgname-$pkgver.deb::https://downloads.slack-edge.com/releases/linux/$pkgver/prod/x64/slack-desktop-$pkgver-amd64.deb"
-        'slack.sh')
-sha256sums=('e675afb8dbc0ad605b3532a97f93117ccfccbd034340815547d27005b12633ef'
-            '4db11d083626a561129ca40e9cce7cc613c42223f138bb0136c62064c57471fd')
+provides=(slack-desktop)
+conflicts=(slack-desktop)
+
+source=(
+  "$pkgname-$pkgver.deb::https://downloads.slack-edge.com/releases/linux/$pkgver/prod/x64/slack-desktop-$pkgver-amd64.deb"
+  'slack.sh'
+)
+sha256sums=(
+  '5622471bbb3bc6a9dab4d3acb3999f6bb1aaaa51db06b2c61c1cd3aaaa3b5bfc'
+  '4db11d083626a561129ca40e9cce7cc613c42223f138bb0136c62064c57471fd'
+)
 
 prepare() {
 	bsdtar -xf data.tar.xz
