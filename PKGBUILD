@@ -1,8 +1,9 @@
 # Maintainer: spyophobia <76800505+spyophobia@users.noreply.github.com>
 
 pkgname=acl4ssr-acl-git
-pkgver=r101.6f8e28d
-pkgrel=2
+pkgver=r28.3d9a2cd
+pkgrel=1
+epoch=1
 pkgdesc='Ad-removal & GFW-bypass ACL rules for Shadowsocks & SSR (git version)'
 arch=('any')
 url='https://github.com/ACL4SSR/ACL4SSR'
