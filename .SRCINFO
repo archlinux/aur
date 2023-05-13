@@ -1,6 +1,6 @@
 pkgbase = dtrx
 	pkgdesc = An intelligent archive extraction tool
-	pkgver = 8.5.0
+	pkgver = 8.5.3
 	pkgrel = 1
 	url = http://github.com/dtrx-py/dtrx
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = dtrx
 	optdepends = cabextract: to extract MS Cabinet archives
 	optdepends = unshield: to extract InstallShield archives
 	optdepends = lha: to extract lzh archives
-	source = dtrx-8.5.0.tar.gz::http://github.com/dtrx-py/dtrx/releases/download/8.5.0/dtrx-8.5.0.tar.gz
-	sha256sums = 88f32a3a0ea91adbd242f068be0b15ec3549dedb2a836cedf01aabfe7ce7edca
+	source = dtrx-8.5.3.tar.gz::http://github.com/dtrx-py/dtrx/releases/download/8.5.3/dtrx-8.5.3.tar.gz
+	sha256sums = eec67869b85068fac8406f5018d781aee5b55422f3b7698bfea43468b2cec67c
 
 pkgname = dtrx
