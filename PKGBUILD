@@ -10,7 +10,7 @@
 _pkgname=OpenSceneGraph
 pkgname="openscenegraph-dae"
 pkgver=3.6.5
-pkgrel=3
+pkgrel=4
 pkgdesc='Open Source, high performance real-time graphics toolkit'
 url='http://www.openscenegraph.org'
 arch=('x86_64')
@@ -18,12 +18,14 @@ license=('custom:OSGPL')
 depends=('giflib' 'jasper' 'librsvg' 'xine-lib' 'curl')
 makedepends=('cmake' 'libvncserver' 'qt5-base' 'ffmpeg' 'mesa')
 optdepends=('libvncserver' 'gdal' 'openexr' 'poppler-glib' 'qt5-base' 'ffmpeg')
-source=("https://github.com/${_pkgname}/${_pkgname}/archive/${_pkgname}-${pkgver}.tar.gz" "dae-only.patch")
+source=("https://github.com/${_pkgname}/${_pkgname}/archive/${_pkgname}-${pkgver}.tar.gz" "dae-only.patch" "no-postfix.patch")
 sha512sums=('7002fa30a3bcf6551d2e1050b4ca75a3736013fd190e4f50953717406864da1952deb09f530bc8c5ddf6e4b90204baec7dbc283f497829846d46d561f66feb4b'
-            'fa7fddc2abfd0d80c8ba01510fb899ee20029ef4425acead2747e983416e50734803cb3c6c50362b00b82d1c32b6bee4622c951fe38be24a80d38ae66e6c7a49')
+            'fa7fddc2abfd0d80c8ba01510fb899ee20029ef4425acead2747e983416e50734803cb3c6c50362b00b82d1c32b6bee4622c951fe38be24a80d38ae66e6c7a49'
+            '5937c5cd8bd916baaef4be97e9641f8023b535d7fc014765c33dd9667af601ec7f4cd45529b986e7abf2e3a78ee76d906a7a1fd8cb030f6d474415db20f97c7c')
 
 prepare() {
   patch -d "${_pkgname}-${_pkgname}-${pkgver}" -p0 -i "$srcdir/dae-only.patch"
+  patch -d "${_pkgname}-${_pkgname}-${pkgver}" -p0 -i "$srcdir/no-postfix.patch"
 }
 
 build() {
