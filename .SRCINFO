@@ -1,25 +1,28 @@
 pkgbase = brew
 	pkgdesc = ``The missing packager for macOS'' on Arch GNU/Linux
 	pkgver = 4.0.17
-	pkgrel = 3
+	pkgrel = 4
 	url = https://brew.sh/
 	arch = any
 	license = BSD
+	makedepends = git
 	depends = ruby
 	optdepends = gcc: most casks require it
 	provides = homebrew
 	provides = linuxbrew
 	conflicts = homebrew
 	conflicts = linuxbrew
-	source = git+https://github.com/Homebrew/brew/#tag=4.0.17
-	source = https://github.com/ctrlcctrlv/Homebrew-AUR-installer/archive/refs/tags/1.0.1.tar.gz
-	source = 0001-allow-usr-root.patch
+	source = git+https://github.com/Homebrew/brew/#tag=c0f8068573bbf886fdc78d3f9daca54d53e7e49e
+	source = core::git+https://github.com/Homebrew/homebrew-core
+	source = brew-doc-4.0.17.tar.gz::https://github.com/ctrlcctrlv/Homebrew-AUR-installer/archive/refs/tags/1.0.1.tar.gz
+	source = 0001-allow-usr-root.diff
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = bf7e17cfcc8dece510bda87f03996bbbd179d5e4eed16694fb4f663df2c2b52983eea1f8e2c2dafd2721b75c16bc4dc84b5b08ec9738e9f302bc1ab8803f9dfc
-	b2sums = b2909d5cb75a480309abc2a70400a86b33615bc57934148db0622cc578503d711825c4e5c8dabcef0c6660b5653b514d82d1b0e372230fa4d7e1799ecd5e68c3
-
-pkgname = brew
+	b2sums = 433d4ed6ac698ea220b72cc1c1e6b015fe77ffd6193ddc6e88e4e8ecef7dde21729e7a50e2cbd8af8021add68df1bedb1e876772cd78b8813312fd04cfa160dd
 
 pkgname = brew-doc
 	provides = 
 	conflicts = 
+
+pkgname = brew

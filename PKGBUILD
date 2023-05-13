@@ -1,65 +1,87 @@
 #!/bin/bash
 # Maintainer: Fredrick R. Brennan <copypaste@kittens.ph>
+# Contributor: éclairvoyant
+
 pkgbase=brew
-pkgname=('brew' 'brew-doc')
-pkgver=4.0.17
+pkgname=('brew-doc' 'brew')
 _installer_pkgname=Homebrew-AUR-installer
 _installer_pkgver=1.0.1
-pkgrel=3
+pkgver=4.0.17
+pkgrel=4
 pkgdesc='``The missing packager for macOS'\'\'' on Arch GNU/Linux'
 arch=(any)
 url="https://brew.sh/"
 license=('BSD')
 groups=()
 depends=(ruby)
+makedepends=(git)
 optdepends=('gcc: most casks require it')
 provides=(homebrew linuxbrew)
 conflicts=(homebrew linuxbrew)
-source=("git+https://github.com/Homebrew/brew/#tag=$pkgver"
-	"https://github.com/ctrlcctrlv/$_installer_pkgname/archive/refs/tags/$_installer_pkgver.tar.gz"
-	"0001-allow-usr-root.patch")
+_tag=c0f8068573bbf886fdc78d3f9daca54d53e7e49e #$(git rev-parse "$pkgver")
+source=("git+https://github.com/Homebrew/brew/#tag=$_tag"
+	"core::git+https://github.com/Homebrew/homebrew-core"
+	"$pkgname-$pkgver.tar.gz::https://github.com/ctrlcctrlv/$_installer_pkgname/archive/refs/tags/$_installer_pkgver.tar.gz"
+	"0001-allow-usr-root.diff")
 b2sums=('SKIP'
+        'SKIP'
         'bf7e17cfcc8dece510bda87f03996bbbd179d5e4eed16694fb4f663df2c2b52983eea1f8e2c2dafd2721b75c16bc4dc84b5b08ec9738e9f302bc1ab8803f9dfc'
-        'b2909d5cb75a480309abc2a70400a86b33615bc57934148db0622cc578503d711825c4e5c8dabcef0c6660b5653b514d82d1b0e372230fa4d7e1799ecd5e68c3')
+        '433d4ed6ac698ea220b72cc1c1e6b015fe77ffd6193ddc6e88e4e8ecef7dde21729e7a50e2cbd8af8021add68df1bedb1e876772cd78b8813312fd04cfa160dd')
 
-TEMPFILE=`mktemp`
-
-prepare() {
-	([ -d $srcdir/$_installer_pkgname-$_installer_pkgver/brew ] &&
-		rm -rf $srcdir/$_installer_pkgname-$_installer_pkgver/brew) || true
-	cd "$srcdir/brew"
-}
+# Used to hold an environment to pass to the install script.
+TEMPFILE=`mktemp --suffix=.env`
 
 _deltemp() {
 	rm "$TEMPFILE"
 }
 
+prepare() {
+	([ -d $srcdir/$_installer_pkgname-$_installer_pkgver/brew ] &&
+		rm -rf $srcdir/$_installer_pkgname-$_installer_pkgver/brew) || true
+	patch -p3 "$srcdir/brew/Library/Homebrew/brew.sh" "$srcdir/0001-allow-usr-root.diff" -o - > $srcdir/brew.sh
+}
+
 build() {
-	trap _deltemp INT
 	cd "$srcdir/$_installer_pkgname-$_installer_pkgver"
+	trap _deltemp INT
+	trap _deltemp EXIT
 
 	export NONINTERACTIVE="Y"
 	export HOMEBREW_PREFIX="$srcdir/brew_pkg"
-	mkdir "$HOMEBREW_PREFIX" || true
+	export HOMEBREW_CORE="$srcdir/core"
+	mkdir -p "$HOMEBREW_PREFIX"
+	mkdir -p "$HOMEBREW_PREFIX/Homebrew/Library/Taps/homebrew"
+	ln -s "$HOMEBREW_CORE" "$HOMEBREW_PREFIX/Homebrew/Library/Taps/homebrew/homebrew-core"
 	export HOMEBREW_SUPPRESS_PATH_WARNING="Y"
 	export HOMEBREW_INSTALL_VERSION=4.0.17
 	export HOMEBREW_ROOT_OKIE_DOKIE="Y"
 	export TEMPFILE=`mktemp`
-	echo "$TEMPFILE"
+
 	3<>$TEMPFILE && \
 	3>&1 env
+
 	cd "$srcdir/brew"
 	cp "$srcdir/$_installer_pkgname-$_installer_pkgver/install.sh" .
-	git checkout $pkgver
+	# Run brew installer.
 	BASH_ENV="$TEMPFILE" bash -i install.sh
 }
 
+package_brew-doc() {
+	provides=()
+	conflicts=()
+	mkdir -pv "$srcdir/doc/brew"
+	mkdir -pv "$pkgdir/usr/share/man/man1" "$pkgdir/usr/share/doc/brew"
+	cp -v "$srcdir/brew_pkg/Homebrew/manpages/brew.1" "$pkgdir/usr/share/man/man1/"
+	cp -rv "$srcdir/brew_pkg/Homebrew/docs/"* "$pkgdir/usr/share/doc/brew/"
+}
+
 package_brew() {
-	rm -rv "$pkgdir"
-	mkdir -p "$pkgdir"
+	# Resolve symlinks so we don't break them later.
 	cp -LRv "$srcdir/brew_pkg"/* "$pkgdir" || true
+	# These go in -doc package.
 	rm -rv "$pkgdir/Homebrew/docs" "$pkgdir/Homebrew/manpages"
 	mkdir -pv "$pkgdir/usr"
+	# Move /sbin to /usr/sbin etc.
 	BADHBDIRS=(bin lib sbin share)
 	for dir in ${BADHBDIRS[@]}; do
 		mv -v "$pkgdir/$dir" "$pkgdir/usr/$dir"
@@ -67,22 +89,23 @@ package_brew() {
 	for dir in ${BADHBDIRS[@]}; do
 		find "$pkgdir" -empty -type d -exec bash -c 'rmdir {}' \; || true
 	done
+	# Remove large unneeded .git repository.
 	find "$pkgdir" -name .git -type d -exec rm -r {} \; || true
+	# Otherwise /Homebrew'd be in sysroot lol
 	mv -v "$pkgdir/Homebrew" "$pkgdir/usr/bin"
+	# Relink main binary.
 	rm -v "$pkgdir/usr/bin/brew"
 	ln -vs "$pkgdir/usr/bin/Homebrew/bin/brew" "$pkgdir/usr/bin/brew"
-	warning "Patching brew.sh… this AUR package is not officially supported upstream, obviously, they want you to know this."
-	patch -p3 "$pkgdir"/usr/bin/Homebrew/Library/Homebrew/brew.sh < ./0001-allow-usr-root.patch
 	rm -rfv "$pkgdir/usr/share/man/man1"
 	ln -vs /var "$pkgdir"/usr/var
-	warning 'NB: You'\''re gonna have to run `sudo chown -R $(whoami):$(whoami) /var/homebrew` after installing!'
-}
+	mkdir -pv "$pkgdir/usr/share/licenses/brew"
+	install -m644 "$srcdir/brew_pkg/Homebrew/LICENSE.txt" "$pkgdir/usr/share/licenses/brew/LICENSE"
+	cp -v "$srcdir/brew.sh" "$pkgdir/usr/bin/Homebrew/Library/Homebrew/brew.sh"
 
-package_brew-doc() {
-	provides=()
-	conflicts=()
-	mkdir -p "$srcdir/doc/brew"
-	mkdir -p "$pkgdir/usr/share/man/man1" "$pkgdir/usr/share/doc/brew"
-	cp "$srcdir/brew_pkg/Homebrew/manpages/brew.1" "$pkgdir/usr/share/man/man1/"
-	cp -r "$srcdir/brew_pkg/Homebrew/docs/"* "$pkgdir/usr/share/doc/brew/"
+	# Finally, warnings.
+	warning "$(tput sgr0 setaf 1 bold)This AUR package is not officially supported upstream$(tput sgr0), obviously. $(tput setaf 8 sitm)They want you to know this.$(tput sgr0)"
+	msg "$(tput sgr0)"'NB: You'\''re gonna have to run `sudo chown -R $(whoami):$(whoami) /var/homebrew` after installing!''
+	'"$(tput setaf 8)I also recommend you always run with $(tput sgr0 setaf 2)HOMEBREW_NO_AUTO_UPDATE=1$(tput sgr0 setaf 8).$(tput sgr0)"
+	warning "$(tput sgr0 setab 52; echo -e "\e[4:3m")Be careful with "'`brew`, as it installs to /usr!'"$(tput sgr0) It's intended for building bottles."'
+             '"$(tput smul)"'You may prefer a local install.'"$(tput sgr0)"
 }

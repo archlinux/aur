@@ -1,7 +1,7 @@
-diff --git a/Homebrew/Library/Homebrew/brew.sh b/tmp/brew.sh
+diff --git a/brew.sh b/brew.sh
 index 35a7428..aa19b93 100644
---- a/usr/bin/Homebrew/Library/Homebrew/brew.sh
-+++ b/usr/bin/Homebrew/Library/Homebrew/brew.sh
+--- a/brew.sh
++++ b/brew.sh
 @@ -362,16 +362,6 @@ else
    fi
  fi
