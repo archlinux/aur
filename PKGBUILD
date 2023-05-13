@@ -5,7 +5,7 @@
 
 pkgname=rdiff-backup
 pkgver=2.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Reverse differential backup tool, over a network or locally"
 arch=(x86_64)
 url="https://github.com/rdiff-backup/rdiff-backup"
@@ -66,9 +66,11 @@ check() {
     --file "$srcdir/rdiff-backup-filesrepo-$_rdiff_backup_filesrepo_hash/rdiff-backup_testfiles.tar" \
     --directory "$srcdir"
 
+  python_version=$(python -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')
+
   python setup.py install --root=test-install --optimize=1 --skip-build
   export PATH="$PWD/test-install/usr/bin:$PATH"
-  export PYTHONPATH="$PWD/test-install/usr/lib/python3.11/site-packages"
+  export PYTHONPATH="$PWD/test-install/usr/lib/python$python_version/site-packages"
 
   # Must be the first command to setup the test environment
   python testing/commontest.py
