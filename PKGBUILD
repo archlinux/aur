@@ -1,13 +1,37 @@
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=treefetch
-pkgver="v1.2.1"
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="A lightning-fast system fetch tool built with Rust."
-url="https://github.com/angelofallars/treefetch.git"
+pkgdesc="A plant-based system fetch tool made with Rust"
 arch=("x86_64")
-license=('GPL3')
-md5sums=("c767dbb7ef831d405b7374d3997bcbac")
-source=("https://github.com/angelofallars/treefetch/releases/download/${pkgver}/treefetch")
+url="https://www.github.com/angelofallars/treefetch"
+license=('GPL')
+depends=("gcc-libs" "glibc")
+makedepends=("rust" "cargo")
+provides=("treefetch-bin" "treefetch-git")
+replaces=("treefetch-bin" "treefetch-git")
+changelog=
+source=("git+$url.git")
+sha256sums=('SKIP')
+validpgpkeys=()
+
+prepare() {
+	cd "$srcdir/treefetch"
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
+build() {
+	cd "$srcdir/treefetch"
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release --all-features
+}
+
+check() {
+	cd "$srcdir/treefetch"
+	cargo test --frozen --all-features
+}
 
 package() {
-  install -D "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	cd "$srcdir/treefetch/target/release"
+	install -Dm0755 -t "$pkgdir/usr/bin" "$pkgname"
 }
