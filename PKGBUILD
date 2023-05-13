@@ -1,11 +1,11 @@
-# Maintainer: JP Roemer <jp+aur@roemer.im>
+# Maintainer: Johnny Everman <johneverman08@gmail.com>
 # Contributor: Mees Valkenburg <`echo bWVlc3J1ZGlnZXJhcmRAbGl2ZS5ubAo= | base64 -d`>
 # Contributor: Kaiting Chen <kaitocracy@gmail.com>
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: rabyte <rabyte*gmail>
 
 pkgname='dtrx'
-pkgver='8.5.0'
+pkgver='8.5.3'
 pkgrel='1'
 pkgdesc='An intelligent archive extraction tool'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   'lha: to extract lzh archives'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('88f32a3a0ea91adbd242f068be0b15ec3549dedb2a836cedf01aabfe7ce7edca')
+sha256sums=('eec67869b85068fac8406f5018d781aee5b55422f3b7698bfea43468b2cec67c')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
