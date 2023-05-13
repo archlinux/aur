@@ -2,7 +2,7 @@
 # Contributor: Fredrik Strandin <fredrik@strandin.name>
 
 pkgname=libminizinc
-pkgver=2.7.3
+pkgver=2.7.4
 pkgrel=1
 pkgdesc="A modelling language for constraint programming problems"
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ license=('MPL2')
 conflicts=(minizinc-bin)
 provides=(minizinc)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MiniZinc/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('b8dcbaeaa4f684609829226d350c9b5885d546933e9abc7e2904110c728a362a')
+sha256sums=('012f8b1b995d2f93c6cb67f4e1e5321e8666ae51bd38e65337f7351f76468996')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" \
