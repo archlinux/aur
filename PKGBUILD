@@ -5,7 +5,7 @@
 
 pkgname=irssi-python
 pkgver=test5
-pkgrel=4
+pkgrel=5
 pkgdesc="Provides Python scripting support for Irssi"
 url="http://irssi.org/"
 arch=('x86_64')
@@ -22,7 +22,6 @@ build() {
     autoreconf -ivf -I.
     # Build
     ./configure --prefix=/usr
-    make -C src constants
     make
     libtool --finish /usr/lib/irssi/modules
 }
