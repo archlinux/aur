@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=yt-cli
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="An easy to use CLI YouTube client"
 arch=('any')
@@ -13,10 +13,10 @@ source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz"
 )
 sha512sums=(
-  '176548d4c707f73a36bfc1b7501a4bcec2e2461278208ba25dbd40f6197c7db0771ed82720c032cb2af335d1ab00bfc44ebe4e8de51bd67caa47e1c57c56b45e'
+  'bf66e858a6a9d7c9eaea9789ccea3e884594b27ea7413f63621c884e0ed447fe1fe30e8e2759faf59511815418ebf16156f02b5a8ca56ab9f28cbe0fcd340077'
 )
 md5sums=(
-  'cf25e0919cd902c64c3eeeeaa70ccef4'
+  'b03d7dfe9e2121cb24080b23dfe016bd'
 )
 validpgpkeys=(
   '81BACEEBC3EA26E127166E4A819BB92A9A48160E'
@@ -35,8 +35,10 @@ package() {
 
   install -dm0755 "${pkgdir}"/usr/lib/node_modules/${pkgname}
   install -Dm0644 usr/share/licenses/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm0644 usr/share/zsh/site-functions/_${pkgname} "$pkgdir/usr/share/zsh/site-functions/_${pkgname}"
 
-  [ -z `which ytcli` ] && install -Dm0755 usr/bin/* -t "${pkgdir}/usr/bin/" || install -Dm0755 usr/bin/${pkgname} "${pkgdir}/usr/bin/${pkgname}"
+  [ -z `which ytcli` ] && install -Dm0755 usr/bin/* -t "${pkgdir}/usr/bin/" ||
+    install -Dm0755 usr/bin/${pkgname} "${pkgdir}/usr/bin/${pkgname}"
 
   cp -ar usr/lib/node_modules/${pkgname}/* "${pkgdir}"/usr/lib/node_modules/${pkgname}
 

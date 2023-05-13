@@ -1,6 +1,6 @@
 pkgbase = yt-cli
 	pkgdesc = An easy to use CLI YouTube client
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://gitlab.com/a4to/yt-cli
 	install = yt-cli.install
@@ -8,9 +8,9 @@ pkgbase = yt-cli
 	license = MIT
 	depends = mpv
 	depends = npm
-	source = https://concise.cc/pkg/yt-cli-0.1.1-1-any.pkg.tar.xz
+	source = https://concise.cc/pkg/yt-cli-0.1.2-1-any.pkg.tar.xz
 	validpgpkeys = 81BACEEBC3EA26E127166E4A819BB92A9A48160E
-	md5sums = cf25e0919cd902c64c3eeeeaa70ccef4
-	sha512sums = 176548d4c707f73a36bfc1b7501a4bcec2e2461278208ba25dbd40f6197c7db0771ed82720c032cb2af335d1ab00bfc44ebe4e8de51bd67caa47e1c57c56b45e
+	md5sums = b03d7dfe9e2121cb24080b23dfe016bd
+	sha512sums = bf66e858a6a9d7c9eaea9789ccea3e884594b27ea7413f63621c884e0ed447fe1fe30e8e2759faf59511815418ebf16156f02b5a8ca56ab9f28cbe0fcd340077
 
 pkgname = yt-cli
