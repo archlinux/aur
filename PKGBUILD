@@ -1,7 +1,7 @@
 # Maintainer: Jan Trefil <hjantrefil@gmail.com>
 pkgname="rkvm"
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="Virtual KVM switch for Linux machines"
 # This is a conservative estimate.
 # Leave a comment if you get rkvm working on another arch and want to add it to the PKGBUILD.
@@ -9,10 +9,10 @@ arch=("x86_64")
 url="https://github.com/htrefil/rkvm"
 license=("MIT")
 depends=("libevdev>=1.9.0")
-makedepends=("cargo" "clang")
+makedepends=("cargo" "clang" "pkgconf")
 optdepends=("openssl: certificate generation")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/htrefil/rkvm/archive/refs/tags/$pkgver.tar.gz")
-md5sums=('ed7b648dc91872ddadc75195cf6b94d1')
+md5sums=('d41d8cd98f00b204e9800998ecf8427e')
 
 prepare() {
     cd "$pkgname-$pkgver"
