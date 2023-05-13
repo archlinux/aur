@@ -1,0 +1,23 @@
+pkgbase = overdrive-m4b-git
+	pkgdesc = A dirty script to convert OverDrive audiobooks to a single `.m4b` file. According to its author: use at your peril.
+	pkgver = 1.0.0.r4.80242f4
+	pkgrel = 1
+	url = https://github.com/pflouret/overdrive-m4b
+	arch = any
+	license = Apache-2.0
+	checkdepends = ruby-rspec
+	depends = ffmpeg
+	depends = grep
+	depends = id3lib
+	depends = libfdk-aac
+	depends = libmp4v2
+	depends = ruby
+	depends = ruby-id3tag
+	depends = ruby-nokogiri
+	depends = xidel
+	provides = overdrive-m4b
+	conflicts = overdrive-m4b
+	source = git+https://github.com/pflouret/overdrive-m4b.git
+	b2sums = SKIP
+
+pkgname = overdrive-m4b-git
