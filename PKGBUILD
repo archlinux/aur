@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=spatstat.explore
-_pkgver=3.1-0
+_pkgver=3.2-1
 pkgname=r-${_pkgname,,}
-pkgver=3.1.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="Exploratory Data Analysis for the 'spatstat' Family"
 arch=('x86_64')
@@ -31,7 +31,7 @@ optdepends=(
   r-spatstat.model
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('87ef4882652db3b834214bfc776dd7d23d931a9227de12f19722aeb1029d086e')
+sha256sums=('0b6ace6f327f286eb5949196c2f0d7e682355f3d351cb9dc543d9841eb22c60a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
