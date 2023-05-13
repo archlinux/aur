@@ -1,12 +1,12 @@
 # Maintainer: Florian Loitsch <florian@toit.io>
 pkgname=toit-git
 pkgver=VERSION
-pkgrel=8
+pkgrel=9
 pkgdesc="Toit programming language SDK"
 arch=('x86_64')
 url="https://toitlang.org"
 license=('LGPL')
-depends=('gcc-libs')
+depends=('gcc-libs' 'esptool')
 makedepends=(
 	'git'
 	'cmake'
@@ -14,10 +14,6 @@ makedepends=(
 	'go'
 	# For xxd.
 	'vim'
-	# For the esp-tool.
-	'python'
-	'python-pip'
-	'libusb'
 )
 provides=('toit')
 conflicts=('toit')
@@ -36,19 +32,14 @@ prepare() {
 	git submodule update --init .
 
 	cd third_party/esp-idf
-	# We only need mbedtls and esptool of the esp-idf submodule to build the host tools.
+	# We only need mbedtls of the esp-idf submodule to build the host tools.
 	# Don't bother initializing all the other components.
 	git submodule update --init components/mbedtls
-	git submodule update --init components/esptool_py
-	# This is really dirty, but when building the esptool, we source
-	# the esp-idf environment, which checks for the existence of the
-	# esp-idf tools.
-	./install.sh
 }
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	make -j1 all
+	make -j1 sdk
 }
 
 package() {
