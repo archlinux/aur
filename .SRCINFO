@@ -1,6 +1,6 @@
 pkgbase = emptty-git
 	pkgdesc = Dead simple CLI Display Manager on TTY
-	pkgver = 0.9.1.r12.32ce21b
+	pkgver = 0.10.0.r0.1e64fb8
 	pkgrel = 1
 	url = https://github.com/tvrzna/emptty
 	arch = x86_64
