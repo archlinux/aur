@@ -1,13 +1,13 @@
 # Maintainer: alexcoder04 <alexcoder04@protonmail.com>
 pkgname=nspire-merge
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Merging Lua source files and images for TI-Nspire projects"
 arch=('x86_64')
 url="https://github.com/alexcoder04/nspire-merge"
 license=('MIT')
 groups=()
-depends=(python python-glob2 python-pillow python-argparse)
+depends=(python python-glob2 python-pillow)
 makedepends=()
 optdepends=()
 provides=()
