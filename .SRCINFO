@@ -1,14 +1,16 @@
 pkgbase = llm-bin
 	pkgdesc = Run inference for Large Language Models on CPU, with Rust 🦀🚀🦙
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rustformers/llm
 	arch = x86_64
 	license = MIT
 	license = APACHE
 	depends = glibc
 	depends = gcc-libs
-	source = llm-bin-0.1.1.tar.xz::https://github.com/rustformers/llm/releases/download/v0.1.1/llm-bin-cli-x86_64-unknown-linux-gnu.tar.xz
+	provides = llm
+	conflicts = llm
+	source = llm-0.1.1.tar.xz::https://github.com/rustformers/llm/releases/download/v0.1.1/llm-cli-x86_64-unknown-linux-gnu.tar.xz
 	sha256sums = bc373197995c6a000fd5fe92a9286d88f0f8387f8cd6239f93f8921bfbeae8e7
 
 pkgname = llm-bin
