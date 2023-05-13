@@ -1,6 +1,6 @@
 # Maintainer: loupzeur <loup@loupzeur.net>
 pkgname=speedifyui
-_pkgver=13.2.1-10893
+_pkgver=13.3.0-10943
 pkgver=${_pkgver/-/.}
 pkgrel=0
 pkgdesc="Use multiple internet connections in parallel"
@@ -21,9 +21,9 @@ source_x86_64=(http://apt.connectify.me/pool/main/${pkgname:0:1}/${pkgname}/${pk
 source_aarch64=(http://apt.connectify.me/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${_pkgver}_arm64.deb)
 source_armv7h=(http://apt.connectify.me/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${_pkgver}_armhf.deb)
 # TODO: i386 is also supported
-md5sums_x86_64=('b6588cc0762415c2652bd97ec46cfe63')
-sha256sums_x86_64=('8de46d4c9c374ab6e46fd2b3e6bb28dc1213cb77648b1d0c1a13f99b14a49ff6')
-sha512sums_x86_64=('04f6d838056955861db7cbd8aeb69f7d215b0dbaf4ba8d64fd814d536de95492c2202a7f31e59a0969adb3a35a6fbbe1e4524d703d19adebf1eadf8419d709c4')
+md5sums_x86_64=('3d219ad8f1bd52602440b3d2d45a687d')
+sha256sums_x86_64=('eacb7fe47626f95fe464b1f2d23dae17815d1d10be73c5a08a61f923bfd09895')
+sha512sums_x86_64=('6684beaf0840ec0d79e06cfe3344f855b93cd0fb4aafb744237c29cc38332b84d924ae16338a8ae02d8a1343b09b546c11751211af52037af79fa79e6d9b3cb1')
 md5sums_aarch64=('SKIP')
 md5sums_armv7h=('SKIP')
 
