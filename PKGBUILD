@@ -2,11 +2,11 @@
 
 pkgname=pot-translation
 prjname=pot
-pkgver=null
+pkgver=0.3.0
 pkgrel=0
 pkgdesc="一个跨平台的划词翻译软件"
 arch=('x86_64')
-url="https://github.com/Pylogmon/pot"
+url="https://github.com/pot-app/pot-desktop"
 license=('GPL3')
 provides=("$pkgname")
 conflicts=("$pkgname-bin" "$pkgname-git")
@@ -15,7 +15,7 @@ makedepends=('nodejs' 'pnpm' 'rust')
 
 source=("${prjname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 
-sha512sums=('07bc6c99a1dae31214fc629250a3dcdb0135b55309b58e2451c34daa65330010678b2742a1729964fbaef0f42d2faf3ab9257b773fcb01ae2bf920ee96965014')
+sha512sums=('285c3ea3901d0949174a941bbad591092accb8739d1a20da9074f5f0a0e94ef614a1a580de6c3c453a33000e999a7e7202ffd71f8b6e42b425d039dd809ba7d9')
 
 build(){
     cd $srcdir/${prjname}-${pkgver}
