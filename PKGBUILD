@@ -3,25 +3,24 @@
 # Contributor: Alex 'AdUser' Z <ad_user@mail.ru>
 pkgname=rdfind
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Redundant data find - a program that finds duplicate files.'
 arch=('i686' 'x86_64')
 url='http://rdfind.pauldreik.se'
 license=('GPL2')
 depends=('nettle')
-changelog=Changelog
 source=("${url}/${pkgname}-${pkgver}.tar.gz"
 	"${url}/${pkgname}-${pkgver}.tar.gz.asc"
-	"https://github.com/pauldreik/rdfind/commit/61877de88d782b63b17458a61fcc078391499b29.patch"
+	"https://github.com/pauldreik/rdfind/commit/8c317f0fd5fde95a9aae2319053a196a166aec88.patch"
 )
 validpgpkeys=("CC3C51BA88205B19728A6F07C9D9A0EA44EAE0EB")
 sha256sums=('4150ed1256f7b12b928c65113c485761552b9496c433778aac3f9afc3e767080'
-	'SKIP'
-	'7b13344101bdadd91961929c38784675ff71b08d17b1370528858fe9f971a6c1')
+            'SKIP'
+            '9e7828fe2b4679e6c31320097f692c3af3eb9820850441dea86ae62c260225e0')
 
 prepare() {
 	cd "$pkgname-$pkgver"
-	patch --forward --strip=1 --input="${srcdir}/61877de88d782b63b17458a61fcc078391499b29.patch"
+	patch --forward --strip=1 --input="${srcdir}/8c317f0fd5fde95a9aae2319053a196a166aec88.patch"
 }
 
 build() {
