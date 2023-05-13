@@ -2,7 +2,7 @@
 
 pkgname=tblock-gui
 pkgver=1.3.2.rc.1
-pkgrel=1
+pkgrel=2
 _bin_ver=1.3.2
 _build_type=rc.1
 provides=("$pkgname")

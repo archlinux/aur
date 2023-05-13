@@ -1,7 +1,7 @@
 pkgbase = tblock-gui
 	pkgdesc = Official graphical user interface for the TBlock content blocker
 	pkgver = 1.3.2.rc.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tblock.codeberg.page
 	arch = any
 	license = GPL3
