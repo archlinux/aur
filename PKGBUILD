@@ -1,3 +1,4 @@
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 
 pkgname=apricots
