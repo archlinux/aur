@@ -1,8 +1,8 @@
 pkgbase = pot-translation-git
 	pkgdesc = 一个跨平台的划词翻译软件
-	pkgver = 0.1.9.r6.g9f89cfa
+	pkgver = 0.3.0
 	pkgrel = 1
-	url = https://github.com/Pylogmon/pot
+	url = https://github.com/pot-app/pot-desktop
 	arch = x86_64
 	license = GPL3
 	makedepends = nodejs
@@ -15,7 +15,7 @@ pkgbase = pot-translation-git
 	provides = pot-translation
 	conflicts = pot-translation
 	conflicts = pot-translation-bin
-	source = git+https://github.com/Pylogmon/pot.git
+	source = git+https://github.com/pot-app/pot-desktop.git
 	sha512sums = SKIP
 
 pkgname = pot-translation-git
