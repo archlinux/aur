@@ -1,12 +1,13 @@
 # Maintainer: theguy147
 pkgname=mhost-git
-pkgver=0.0.7.r289.g383d691
+pkgver=0.3.0.r25.g6e90de8
 pkgrel=1
 pkgdesc='A very fast and easy to use DNS lookup utility. (git version)'
 arch=('x86_64')
 url="https://github.com/lukasprustina/mhost"
 license=('MIT' 'Apache')
 makedepends=('cargo')
+depends=('glibc' 'gcc-libs')
 source=("${pkgname}::git+https://github.com/lukaspustina/mhost.git")
 sha512sums=('SKIP')
 

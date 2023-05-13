@@ -1,14 +1,15 @@
 pkgbase = mhost-git
 	pkgdesc = A very fast and easy to use DNS lookup utility. (git version)
-	pkgver = 0.0.7.r289.g383d691
+	pkgver = 0.3.0.r25.g6e90de8
 	pkgrel = 1
 	url = https://github.com/lukasprustina/mhost
 	arch = x86_64
 	license = MIT
 	license = Apache
 	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
 	source = mhost-git::git+https://github.com/lukaspustina/mhost.git
 	sha512sums = SKIP
 
 pkgname = mhost-git
-
