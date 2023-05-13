@@ -1,7 +1,7 @@
 # Maintainer: atomicfs
 pkgname=python-blkinfo
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A python library to list information about all available or the specified block devices"
 arch=('any')
 url="https://github.com/grinrag/blkinfo"
