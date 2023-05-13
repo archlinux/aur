@@ -2,14 +2,13 @@
 
 pkgname=crosswords-puzzle-sets-nienteperniente
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Italian puzzles from "BOOM!!! niente per niente" for the app Crosswords'
 arch=(any)
 url='https://gitlab.gnome.org/davide125/puzzle-sets-nienteperniente'
 license=(GPL3)
 depends=(
 	crosswords
-	python-argparse
 	python-puzpy
 	python-requests
 )
