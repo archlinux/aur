@@ -2,7 +2,7 @@
 # Contributor: aksel <aksel@akseltorgard.com>
 
 pkgname=aws-sam-cli-bin
-pkgver=1.82.0
+pkgver=1.83.0
 pkgrel=1
 pkgdesc="CLI tool to build, test, debug, and deploy Serverless applications using AWS SAM"
 arch=("x86_64")
@@ -12,7 +12,7 @@ optdepends=("docker")
 provides=("aws-sam-cli")
 conflicts=("aws-sam-cli")
 source=("aws-sam-cli-linux-$pkgver-x86_64.zip::https://github.com/aws/aws-sam-cli/releases/download/v$pkgver/aws-sam-cli-linux-x86_64.zip")
-sha256sums=("11fe5eb70d09db1197a7fce70c1d88c5255ad74366f589bf1fb0919d2a1a9231")
+sha256sums=("07144df04f8374269a968b2cf99476229ec680f4bf9f52c6b4a0e5c51cbc8ff5")
 
 _remove_pkgdir_from_link() {
   local current_target="$(readlink "$1")"
