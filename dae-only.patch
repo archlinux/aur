@@ -1,0 +1,275 @@
+--- src/osgPlugins/CMakeLists.txt.orig	2020-01-31 12:03:07.000000000 +0100
++++ src/osgPlugins/CMakeLists.txt	2023-05-13 13:05:45.904143144 +0200
+@@ -52,272 +52,6 @@
+     endif()
+ endmacro()
+ 
+-############################################################
+-#
+-#  NodeKit/Psudo loader plugins
+-#
+-ADD_PLUGIN_DIRECTORY(osga)
+-ADD_PLUGIN_DIRECTORY(rot)
+-ADD_PLUGIN_DIRECTORY(scale)
+-ADD_PLUGIN_DIRECTORY(trans)
+-ADD_PLUGIN_DIRECTORY(normals)
+-ADD_PLUGIN_DIRECTORY(revisions)
+-ADD_PLUGIN_DIRECTORY(view)
+-ADD_PLUGIN_DIRECTORY(shadow)
+-ADD_PLUGIN_DIRECTORY(terrain)
+-
+-############################################################
+-#
+-#  Main native plugins
+-#
+-ADD_PLUGIN_DIRECTORY(osg)
+-ADD_PLUGIN_DIRECTORY(ive)
+-
+-############################################################
+-#
+-#  Viewer plugins
+-#
+-ADD_PLUGIN_DIRECTORY(cfg)
+-
+-############################################################
+-#
+-#  Shader plugins
+-#
+-ADD_PLUGIN_DIRECTORY(glsl)
+-
+-############################################################
+-#
+-#  Image plugins
+-#
+-ADD_PLUGIN_DIRECTORY(rgb)
+-ADD_PLUGIN_DIRECTORY(bmp)
+-ADD_PLUGIN_DIRECTORY(pnm)
+-ADD_PLUGIN_DIRECTORY(dds)
+-ADD_PLUGIN_DIRECTORY(tga)
+-ADD_PLUGIN_DIRECTORY(hdr)
+-ADD_PLUGIN_DIRECTORY(dot)
+-ADD_PLUGIN_DIRECTORY(vtf)
+-ADD_PLUGIN_DIRECTORY(ktx)
+-
+-IF(JPEG_FOUND)
+-    ADD_PLUGIN_DIRECTORY(jpeg)
+-ENDIF()
+-IF(JASPER_FOUND)
+-    ADD_PLUGIN_DIRECTORY(jp2)
+-ENDIF()
+-IF(OPENEXR_FOUND AND ZLIB_FOUND AND OSG_CPP_EXCEPTIONS_AVAILABLE)
+-    ADD_PLUGIN_DIRECTORY(exr)
+-ENDIF()
+-IF(GIFLIB_FOUND)
+-    ADD_PLUGIN_DIRECTORY(gif)
+-ENDIF()
+-IF(PNG_FOUND AND OSG_CPP_EXCEPTIONS_AVAILABLE)
+-    ADD_PLUGIN_DIRECTORY(png)
+-ENDIF()
+-IF(TIFF_FOUND AND OSG_CPP_EXCEPTIONS_AVAILABLE)
+-    ADD_PLUGIN_DIRECTORY(tiff)
+-ENDIF()
+-IF(GDAL_FOUND)
+-    ADD_PLUGIN_DIRECTORY(gdal)
+-    ADD_PLUGIN_DIRECTORY(ogr)
+-ENDIF()
+-IF(GTA_FOUND AND OSG_CPP_EXCEPTIONS_AVAILABLE)
+-    ADD_PLUGIN_DIRECTORY(gta)
+-ENDIF()
+-
+-
+-############################################################
+-#
+-# 3D Image plugins
+-#
+-IF(DCMTK_FOUND AND ZLIB_FOUND)
+-    ADD_PLUGIN_DIRECTORY(dicom)
+-ELSE()
+-    IF(ITK_FOUND)
+-        ADD_PLUGIN_DIRECTORY(dicom)
+-    ENDIF()
+-ENDIF()
+-
+-############################################################
+-#
+-#  3rd party 3d plugins
+-#
+-
+-ADD_PLUGIN_DIRECTORY(3dc)
+-
+-ADD_PLUGIN_DIRECTORY(p3d)
+-
+-IF(CURL_FOUND)
+-    ADD_PLUGIN_DIRECTORY(curl)
+-ENDIF()
+-
+-IF(ZLIB_FOUND)
+-    ADD_PLUGIN_DIRECTORY(gz)
+-ENDIF()
+-
+-IF(NOT OSG_GLES1_AVAILABLE AND NOT OSG_GLES2_AVAILABLE)
+-    IF(INVENTOR_FOUND)
+-        ADD_PLUGIN_DIRECTORY(Inventor)
+-    ENDIF()
+-ENDIF()
+-
+ IF(COLLADA_FOUND AND OSG_CPP_EXCEPTIONS_AVAILABLE)
+     ADD_PLUGIN_DIRECTORY(dae)
+ ENDIF()
+-
+-IF(FBX_FOUND AND OSG_CPP_EXCEPTIONS_AVAILABLE)
+-    ADD_PLUGIN_DIRECTORY(fbx)
+-ENDIF()
+-
+-IF(OPENCASCADE_FOUND)
+-    ADD_PLUGIN_DIRECTORY(OpenCASCADE)
+-ENDIF()
+-
+-ADD_PLUGIN_DIRECTORY(bvh)
+-ADD_PLUGIN_DIRECTORY(x)
+-ADD_PLUGIN_DIRECTORY(dxf)
+-ADD_PLUGIN_DIRECTORY(OpenFlight)
+-
+-ADD_PLUGIN_DIRECTORY(obj)
+-
+-ADD_PLUGIN_DIRECTORY(pic)
+-ADD_PLUGIN_DIRECTORY(stl)
+-IF(NOT ANDROID)
+-    ADD_PLUGIN_DIRECTORY(3ds)
+-ENDIF()
+-ADD_PLUGIN_DIRECTORY(ac)
+-ADD_PLUGIN_DIRECTORY(pov)
+-
+-ADD_PLUGIN_DIRECTORY(logo)
+-ADD_PLUGIN_DIRECTORY(lws)
+-ADD_PLUGIN_DIRECTORY(md2)
+-ADD_PLUGIN_DIRECTORY(osgtgz)
+-ADD_PLUGIN_DIRECTORY(tgz)
+-
+-ADD_PLUGIN_DIRECTORY(shp)
+-ADD_PLUGIN_DIRECTORY(txf)
+-
+-ADD_PLUGIN_DIRECTORY(bsp)
+-ADD_PLUGIN_DIRECTORY(mdl)
+-
+-ADD_PLUGIN_DIRECTORY(gles)
+-ADD_PLUGIN_DIRECTORY(osgjs)
+-
+-IF(OSG_CPP_EXCEPTIONS_AVAILABLE)
+-    ADD_PLUGIN_DIRECTORY(lwo)
+-    ADD_PLUGIN_DIRECTORY(ply)
+-    ADD_PLUGIN_DIRECTORY(txp)
+-ENDIF()
+-
+-IF(FFMPEG_FOUND AND OSG_CPP_EXCEPTIONS_AVAILABLE)
+-    ADD_PLUGIN_DIRECTORY(ffmpeg)
+-ENDIF()
+-
+-IF(GSTREAMER_FOUND AND GLIB_FOUND)
+-    ADD_PLUGIN_DIRECTORY(gstreamer)
+-ENDIF()
+-
+-IF(DIRECTSHOW_FOUND)
+-    ADD_PLUGIN_DIRECTORY(directshow)
+-ENDIF()
+-
+-# IF(OPENAL_FOUND)
+-#    ADD_SUBDIRECTORY(OpenAL)
+-# ENDIF()
+-
+-IF(APPLE AND NOT ANDROID)
+-    ADD_PLUGIN_DIRECTORY(imageio)
+-ENDIF()
+-
+-IF(AV_FOUNDATION_FOUND)
+-    ADD_PLUGIN_DIRECTORY(avfoundation)
+-ENDIF()
+-
+-IF(QUICKTIME_FOUND)
+-    ADD_PLUGIN_DIRECTORY(quicktime)
+-ENDIF()
+-
+-IF(QTKIT_FOUND)
+-    ADD_PLUGIN_DIRECTORY(QTKit)
+-ENDIF()
+-
+-IF(NVTT_FOUND)
+-    ADD_PLUGIN_DIRECTORY(nvtt)
+-ENDIF()
+-
+-
+-IF(FREETYPE_FOUND)
+-    ADD_PLUGIN_DIRECTORY(freetype)
+-ENDIF()
+-
+-IF(ZLIB_FOUND)
+-    ADD_PLUGIN_DIRECTORY(zip)
+-ENDIF()
+-
+-IF(RSVG_FOUND)
+-    ADD_PLUGIN_DIRECTORY(svg)
+-ENDIF()
+-
+-IF(POPPLER_FOUND)
+-    ADD_PLUGIN_DIRECTORY(pdf)
+-ENDIF()
+-
+-IF(LIBVNCSERVER_FOUND)
+-    ADD_PLUGIN_DIRECTORY(vnc)
+-ENDIF()
+-
+-ADD_PLUGIN_DIRECTORY(pvr)
+-
+-ADD_PLUGIN_DIRECTORY(osc)
+-ADD_PLUGIN_DIRECTORY(trk)
+-ADD_PLUGIN_DIRECTORY(tf)
+-
+-IF(LIBLAS_FOUND)
+-    ADD_PLUGIN_DIRECTORY(las)
+-ENDIF()
+-
+-
+-####################################################
+-#
+-# ScriptEngines
+-#
+-IF ((LUA_LIBRARIES AND LUA_INCLUDE_DIR) OR (LUA_SOURCE_DIR AND LUA_INCLUDE_DIR) OR (OSG_USE_LOCAL_LUA_SOURCE))
+-    ADD_PLUGIN_DIRECTORY(lua)
+-ENDIF()
+-
+-
+-# V8 and Python plugins are tests for linking against these libraries but aren't functionality beyond this.
+-# IF (V8_FOUND)
+-#     ADD_PLUGIN_DIRECTORY(V8)
+-# ENDIF()
+-#
+-# IF (PYTHONLIBS_FOUND)
+-#     ADD_PLUGIN_DIRECTORY(python)
+-# ENDIF()
+-
+-####################################################
+-#
+-# Device integration plugins
+-#
+-IF   (SDL_FOUND)
+-    ADD_PLUGIN_DIRECTORY(sdl)
+-ENDIF(SDL_FOUND)
+-
+-IF(ASIO_FOUND)
+-    ADD_PLUGIN_DIRECTORY(RestHttpDevice)
+-ENDIF(ASIO_FOUND)
+-
+-
+-IF(ZEROCONF_FOUND)
+-    ADD_PLUGIN_DIRECTORY(ZeroConfDevice)
+-ENDIF()
+-
+-##########to get all the variables of Cmake
+-#GET_CMAKE_PROPERTY(MYVARS VARIABLES)
+-#FOREACH(myvar ${MYVARS})
+-#    FILE(APPEND ${CMAKE_CURRENT_BINARY_DIR}/AllVariables.txt
+-#        "${myvar} -->${${myvar}}<-\n"
+-#    )
+-#ENDFOREACH(myvar)
+-
+-

@@ -1,7 +1,7 @@
 pkgbase = openscenegraph-dae
 	pkgdesc = Open Source, high performance real-time graphics toolkit
 	pkgver = 3.6.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.openscenegraph.org
 	arch = x86_64
 	license = custom:OSGPL
@@ -15,16 +15,15 @@ pkgbase = openscenegraph-dae
 	depends = librsvg
 	depends = xine-lib
 	depends = curl
-	depends = pth
 	optdepends = libvncserver
 	optdepends = gdal
 	optdepends = openexr
 	optdepends = poppler-glib
 	optdepends = qt5-base
 	optdepends = ffmpeg
-	source = https://github.com/openscenegraph/OpenSceneGraph/archive/OpenSceneGraph-3.6.5.tar.gz
-	sha256sums = aea196550f02974d6d09291c5d83b51ca6a03b3767e234a8c0e21322927d1e12
+	source = https://github.com/OpenSceneGraph/OpenSceneGraph/archive/OpenSceneGraph-3.6.5.tar.gz
+	source = dae-only.patch
 	sha512sums = 7002fa30a3bcf6551d2e1050b4ca75a3736013fd190e4f50953717406864da1952deb09f530bc8c5ddf6e4b90204baec7dbc283f497829846d46d561f66feb4b
+	sha512sums = fa7fddc2abfd0d80c8ba01510fb899ee20029ef4425acead2747e983416e50734803cb3c6c50362b00b82d1c32b6bee4622c951fe38be24a80d38ae66e6c7a49
 
 pkgname = openscenegraph-dae
-
