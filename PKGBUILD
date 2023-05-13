@@ -2,8 +2,8 @@
 # Contributor: Linux Gamers <linuxgamers@protonmail.com>
 
 pkgname=yuzu-mainline-bin
-pkgver=0.1429
-_ver=20230512-dc0ea2f7f
+pkgver=0.1431
+_ver=20230513-a0bf08807
 pkgrel=1
 pkgdesc="Nintendo Switch emulator - mainline branch"
 arch=('x86_64')
@@ -17,7 +17,7 @@ options=(!strip)
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/mainline-${pkgver/./-}/yuzu-linux-${_ver}.tar.xz"
         "yuzu.svg"
         "yuzu.desktop")
-sha512sums=('cea885484de5121e03902357ff30e016861fbf85820d054804bbc52515a686eec72788697ac91df6ae131309ddfa81e6b5785df839f8970fb0a2d3b1054b8913'
+sha512sums=('9e2cbf93ca31fbf4a4352a48f6ee20c79ffb4e279c7759da3f22a2592f5ca1ee3d7d63b7bdbd23cdad867723491e28a8a51fb9d11cb98c7795a0edf18d0c2e83'
             '8e9f442436bd5f89a99c902960b51a3dd124ba17119422cca1ae792da0bcf3c757862bc88cb3d229b1f6a3b8b36c73f47f2c7266a11f91ebb38265777a2ba6b3'
             '5cb469f178e0a22f249240f8ce26027ba87ebf8b57fd584917c35eb51860a1bc49090d6abaa5d5dc1dded13f78236f15f28cd0e2697f9e509286cb573e1a20c2')
 
