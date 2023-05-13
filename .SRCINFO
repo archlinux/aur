@@ -1,6 +1,6 @@
 pkgbase = sphere-git
 	pkgdesc = Browser proxy app for registering different handlers for http/https URI schemes
-	pkgver = r4.98bd7ea
+	pkgver = 0.1.r1.gd2ead13
 	pkgrel = 1
 	url = https://github.com/vimpostor/sphere
 	arch = i686

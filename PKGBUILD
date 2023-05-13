@@ -1,7 +1,7 @@
 # Maintainer: Magnus Groß, for email contact see AUR commit author email
 _pkgname=sphere
 pkgname="$_pkgname"-git
-pkgver=r4.98bd7ea
+pkgver=0.1.r1.gd2ead13
 pkgrel=1
 pkgdesc="Browser proxy app for registering different handlers for http/https URI schemes"
 arch=('i686' 'x86_64')
