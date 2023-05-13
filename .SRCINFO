@@ -1,0 +1,16 @@
+pkgbase = clmath-git
+	pkgdesc = Commandline Math Tool and Calculator
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/comroid-git/clmath
+	arch = any
+	license = MIT
+	makedepends = dotnet-sdk-6.0
+	depends = dotnet-runtime-6.0
+	options = !strip
+	source = git+https://github.com/comroid-git/clmath.git
+	source = git+https://github.com/comroid-git/csapi.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = clmath-git
