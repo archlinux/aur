@@ -1,7 +1,7 @@
 pkgbase = python-spf-engine
 	pkgdesc = SPF (Sender Policy Framework) back-end for Postfix and Sendmail
 	pkgver = 3.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/spf-engine
 	arch = any
 	license = Apache
