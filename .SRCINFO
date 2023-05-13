@@ -1,7 +1,7 @@
 pkgbase = ydcv
 	pkgdesc = YouDao Console Version - Simple wrapper for Youdao online translate (Chinese <-> English) service API, as an alternative to the StarDict Console Version (sdcv)
 	pkgver = 0.7
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/felixonmars/ydcv
 	arch = any
 	license = GPL

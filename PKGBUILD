@@ -1,11 +1,12 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Xunhua Guo <xunhua.guo@gmail.com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor : Fernando "Firef0x" G.P. da Silva <firefgx { aT ) gmail [ d0t } com>
 
 pkgname=ydcv
 pkgdesc="YouDao Console Version - Simple wrapper for Youdao online translate (Chinese <-> English) service API, as an alternative to the StarDict Console Version (sdcv)"
 pkgver=0.7
 _commit=bd73c0a0b09587ef64794c593253a5b464e2e52e
-pkgrel=7
+pkgrel=8
 arch=("any")
 url="https://github.com/felixonmars/ydcv"
 license=("GPL")
