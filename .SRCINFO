@@ -1,7 +1,7 @@
 pkgbase = inspircd
 	pkgdesc = InspIRCd is a modular Internet Relay Chat (IRC) server written in C++ for Linux, BSD, Windows and macOS systems.
 	pkgver = 3.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.inspircd.org/
 	install = inspircd.install
 	arch = x86_64
@@ -18,6 +18,7 @@ pkgbase = inspircd
 	makedepends = postgresql-client
 	makedepends = re2
 	makedepends = tre
+	makedepends = pcre
 	makedepends = mbedtls
 	makedepends = pkg-config
 	depends = perl

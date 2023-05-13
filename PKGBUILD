@@ -7,7 +7,7 @@
 
 pkgname='inspircd'
 pkgver='3.16.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='InspIRCd is a modular Internet Relay Chat (IRC) server written in C++ for Linux, BSD, Windows and macOS systems.'
 arch=('x86_64' 'aarch64')
 url='https://www.inspircd.org/'
@@ -15,10 +15,24 @@ license=('GPL2')
 conflicts=('inspircd')
 provides=('inspircd')
 depends=('perl')
-makedepends=('libmariadbclient' 'sqlite3' 'libldap' 'geoip' 'libmaxminddb'
-    'gnutls' 'openssl' 'libgcrypt' 'postgresql-client'
-    're2' 'tre' 'mbedtls' 'pkg-config')
-optdepends=('gnutls: m_ssl_gnutls'
+makedepends=(
+    'libmariadbclient'
+    'sqlite3'
+    'libldap'
+    'geoip'
+    'libmaxminddb'
+    'gnutls'
+    'openssl'
+    'libgcrypt'
+    'postgresql-client'
+    're2'
+    'tre'
+    'pcre'
+    'mbedtls'
+    'pkg-config'
+)
+optdepends=(
+    'gnutls: m_ssl_gnutls'
     'libgcrypt: m_ssl_gnutls'
     'openssl: m_ssl_openssl'
     'libmariadbclient: m_mysql'
@@ -32,13 +46,17 @@ optdepends=('gnutls: m_ssl_gnutls'
     'tre: m_regex_tre'
     'mbedtls: m_ssl_mbedtls')
 install='inspircd.install'
-source=("https://github.com/inspircd/inspircd/archive/v$pkgver.tar.gz"
+
+source=(
+    "https://github.com/inspircd/inspircd/archive/v$pkgver.tar.gz"
     "$pkgname.service"
     "$pkgname.sysusers"
-    )
-sha512sums=('dfbdb306e79d9a7788cf6c474bfd1d0ce34ea6b3b08e2ab880985d272028a61a6d6257b7b573554f3edd5a51b8d3a29c364beca78caeddd79b251df11e369479'
-            '5a16a7c237693ffc6a108358f339b6aa2451fb16430561848ae869f890199b38fab6a13640bcc35cf1d07e32d7e5fff405d88668ee05ddaffc2ef61cb42ee832'
-            '90e7ae20a0d13cef2ff00c56382ea5cf1ed8843228937c49cab7fe0e2a34d02b9fac20dd55c6cd5e79533b5764a9d10d19e26b043a2d9c98a4384a7e1c2859c4')
+)
+sha512sums=(
+    'dfbdb306e79d9a7788cf6c474bfd1d0ce34ea6b3b08e2ab880985d272028a61a6d6257b7b573554f3edd5a51b8d3a29c364beca78caeddd79b251df11e369479'
+    '5a16a7c237693ffc6a108358f339b6aa2451fb16430561848ae869f890199b38fab6a13640bcc35cf1d07e32d7e5fff405d88668ee05ddaffc2ef61cb42ee832'
+    '90e7ae20a0d13cef2ff00c56382ea5cf1ed8843228937c49cab7fe0e2a34d02b9fac20dd55c6cd5e79533b5764a9d10d19e26b043a2d9c98a4384a7e1c2859c4'
+)
 
 prepare() {
     cd "${srcdir}/inspircd-${pkgver}"
