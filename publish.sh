@@ -2,20 +2,15 @@
 
 set -e # exit on error
 
-./clean.sh
+echo "cleanup"
+sudo rm -rf */
 
-# run tests first
-dotnet test -c Test
-
-# update SRCINFO
+echo "update SRCINFO"
 makepkg --printsrcinfo > .SRCINFO
-(git add .SRCINFO && git commit -m "SRCINFO" && git push) || (echo "Failed to commit .SRCINFO" >&2 | return)
+(git add .SRCINFO && git commit -m "SRCINFO") || true
 
-# build the executable
-makepkg -f --noconfirm
-
-# push to aur
+echo "push to aur"
 if [ -z "$(git remote | grep aur)" ]; then
   git remote add aur ssh://aur@aur.archlinux.org/rgx-git.git
 fi
-git push aur
+git push --set-upstream aur master

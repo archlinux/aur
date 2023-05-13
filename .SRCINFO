@@ -1,14 +1,16 @@
 pkgbase = rgx-git
-	pkgdesc = CLI RegExp Tool
+	pkgdesc = Commandline RegExp Tool
 	pkgver = 0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/comroid-git/rgx
 	arch = any
-	license = MIT
+	license = GPL-3.0
 	makedepends = dotnet-sdk-7.0
 	depends = dotnet-runtime-7.0
 	options = !strip
 	source = git+https://github.com/comroid-git/rgx.git
+	source = git+https://github.com/comroid-git/csapi.git
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = rgx-git
