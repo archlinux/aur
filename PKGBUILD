@@ -10,7 +10,7 @@ url='https://github.com/shadichy/grub-android-x86.git'
 depends=('grub' 'bash')
 source=('30_android-x86.sh')
 sha512sums=(
-	'3c35a20767b3c770b60774b0bbf2a06e5b2cd19e6654c9453e404df1fc519ad5abec2857d1c066fa39bd5f1c4e2bf97e23d3c10b34617770142bdad375de212d'
+	'4e5850d7bf6cc66ec5f9a2358b817aea0d10e65e9ff3a091657340943d44a6f021ef038d7ca47bb383b99091c806a5aa3ec10f4669200f160c00d84d88597d63'
 )
 
 package() {
