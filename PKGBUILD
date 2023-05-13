@@ -4,9 +4,9 @@ _CUDA_ARCH_LIST="6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6;8.6;8.9;9.0;9.0+PTX"
 pkgname=python-monai
 _pkgname=MONAI
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='AI Toolkit for Healthcare Imaging'
-arch=('any')
+arch=('x86_64')
 url='https://monai.io'
 license=('Apache')
 depends=(
@@ -14,6 +14,7 @@ depends=(
   python-numpy
 )
 makedepends=(
+  gcc10
   python-build
   python-installer
   python-setuptools
@@ -41,11 +42,11 @@ sha512sums=('df6e19b43e9f39052eca3107bbb39f67fa9559c4ad5c2e838423a6d035a580b92a4
 
 prepare() {
   # disable building MONAI extension due to nvcc issue
-  export BUILD_MONAI=0
+  export BUILD_MONAI=1
   export FORCE_CUDA=1
   export TORCH_CUDA_ARCH_LIST=${_CUDA_ARCH_LIST}
-  export CC=/opt/cuda/bin/gcc
-  export CXX=/opt/cuda/bin/g++
+  export CC=gcc-10
+  export CXX=g++-10
 }
 
 build() {
