@@ -3,7 +3,7 @@
 
 pkgname=python-bsdiff4
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary diff and patch using the BSDIFF4-format"
 arch=('x86_64')
 url="https://github.com/ilanschnell/${pkgname##*-}"
