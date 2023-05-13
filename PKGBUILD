@@ -1,7 +1,7 @@
 # Maintainer: Giovanni Harting <539@idlegandalf.com>
 
 pkgname=antidot
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='Cleans up your $HOME from those pesky dotfiles'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("https://github.com/doron-cohen/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('a203c50f8e5f407769d3897ac6965c01b8291757bc0b2ce2e2b6a0b996dabf9e0fed09e69c6db7157bed48171bdeb9d1fcb4dd6b6e2b2bbd5d6f7b3264f12202')
+b2sums=('d39b0f0faaf2359dc2d15244da124dfc482d8a9f82d76802facf23bec1812e100606f24e5c832815aaf9907c0d8982b93b3894d599c58443113b532fb37a672c')
 
 prepare(){
   cd "$pkgname-$pkgver"
