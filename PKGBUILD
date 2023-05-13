@@ -11,7 +11,7 @@ makedepends=("cargo" "meson")
 depends=("libadwaita" "libsecret" "protobuf")
 optdepends=("feedbackd: for vibrating notifications")
 source=("https://gitlab.com/Schmiddiii/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=("8de82f9af20a5acbd4bc3a19bbf9a3bb253311d2")
+sha256sums=("a6deb31d5759860c0a3e072313d90e71350c7abc8cafbb73c59af28ccf261f18")
 options=(!lto)
 
 build() {
