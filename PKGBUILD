@@ -2,7 +2,7 @@
 # Contributor: Snaipe
 
 pkgname=criterion
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="A cross-platform C and C++ unit testing framework for the 21th century"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gettext' 'nanomsg' 'libffi' 'libgit2')
 makedepends=('meson' 'cmake')
 checkdepends=('python-cram')
 source=("https://github.com/Snaipe/Criterion/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('d0f86a8fc868e2c7b83894ad058313023176d406501a4ee8863e5357e31a80e7')
+sha256sums=('e3c52fae0e90887aeefa1d45066b1fde64b82517d7750db7a0af9226ca6571c0')
 
 build() {
   cd "${pkgname}-${pkgver}"

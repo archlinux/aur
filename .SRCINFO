@@ -1,6 +1,6 @@
 pkgbase = criterion
 	pkgdesc = A cross-platform C and C++ unit testing framework for the 21th century
-	pkgver = 2.4.1
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://github.com/Snaipe/Criterion
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = criterion
 	depends = nanomsg
 	depends = libffi
 	depends = libgit2
-	source = https://github.com/Snaipe/Criterion/releases/download/v2.4.1/criterion-2.4.1.tar.xz
-	sha256sums = d0f86a8fc868e2c7b83894ad058313023176d406501a4ee8863e5357e31a80e7
+	source = https://github.com/Snaipe/Criterion/releases/download/v2.4.2/criterion-2.4.2.tar.xz
+	sha256sums = e3c52fae0e90887aeefa1d45066b1fde64b82517d7750db7a0af9226ca6571c0
 
 pkgname = criterion
