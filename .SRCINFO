@@ -1,7 +1,7 @@
 pkgbase = hexo-cli
 	pkgdesc = Command line interface for Hexo
-	pkgver = 4.3.0
-	pkgrel = 6
+	pkgver = 4.3.1
+	pkgrel = 1
 	url = https://www.npmjs.com/package/hexo-cli
 	install = newbie-hint.install
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = hexo-cli
 	conflicts = nodejs-hexo
 	conflicts = nodejs-hexo-cli
 	replaces = nodejs-hexo-cli
-	noextract = hexo-cli-4.3.0.tgz
-	source = https://registry.npmjs.org/hexo-cli/-/hexo-cli-4.3.0.tgz
-	sha256sums = 933c8495faa4393cf9cf2e120e49e33495820605b75738813918a086605ca20d
+	noextract = hexo-cli-4.3.1.tgz
+	source = https://registry.npmjs.org/hexo-cli/-/hexo-cli-4.3.1.tgz
+	sha256sums = 2a726576f5f596c919afd539bc91ac879e7eac4d4b72bac11e6acfe0b965ac93
 
 pkgname = hexo-cli
