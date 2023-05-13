@@ -1,16 +1,20 @@
 pkgbase = python-pyinstrument
 	pkgdesc = Call stack profiler for Python
-	pkgver = 4.1.1
-	pkgrel = 2
+	pkgver = 4.4.0
+	pkgrel = 1
 	url = https://github.com/joerick/pyinstrument
 	arch = x86_64
+	arch = aarch64
 	license = BSD
+	makedepends = ipython
 	makedepends = python-build
+	makedepends = python-django
 	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-typing_extensions
 	makedepends = python-wheel
 	depends = python>=3.7
-	source = python-pyinstrument-4.1.1.tar.gz::https://files.pythonhosted.org/packages/source/p/pyinstrument/pyinstrument-4.1.1.tar.gz
-	sha256sums = 1dc2791d2cd2fd3459cb55010004a5cc2a9a8b4625a0cbea45a4b1aebbe2c3a2
+	source = https://files.pythonhosted.org/packages/source/p/pyinstrument/pyinstrument-4.4.0.tar.gz
+	sha256sums = be34a2e8118c14a616a64538e02430d9099d5d67d8a370f2888e4ac71e52bbb7
 
 pkgname = python-pyinstrument
