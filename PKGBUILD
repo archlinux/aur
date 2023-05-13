@@ -3,15 +3,15 @@
 # vim: ts=4:sw=4
 
 
-_version='1.4'
-_filename='amidst-minetest-v1-4.jar'
+_version='1.4-3'
+_filename='amidst-minetest-v1-4-3.jar'
 _icon='master/src/main/resources/amidst/icon/amidst-128x128.png'
 _base='https://github.com/Treer/Amidst-for-Minetest'
 
 # https://raw.githubusercontent.com/Treer/Amidst-for-Minetest/master/src/main/resources/amidst/icon/amidst-128x128.png
 
 pkgname=amidst-for-minetest
-pkgver=${_version}
+pkgver=$(echo ${_version} | sed s/'-'/'.'/g)
 pkgrel=1
 pkgdesc='“Amidst for Minetest is the Amidst project converted to support Minetest”'
 
@@ -27,13 +27,13 @@ source=(
 )
 
 sha256sums=(
-    '3b05a98eb6bae923daedbdd6eb7db32cb681558ddca8b8bc2537e74166a71f92'
+    '885d34aef611fdde3f5a20e430d253c7e98ce4358f72249f8ba57066562bec21'
     'c07e10a062127c89ea4f676b4f9424f81532ded4cc1e4714cb743ab57739127d'
     'f95fe25144314541acfb749137a1ab7e1a56c3cb0c341b1a13eb4f429cae0b6a'
 )
 
 pkgver() {
-    echo ${_version}
+    echo "${_version}" | sed s/'-'/'.'/g
 }
 
 package() {
