@@ -3,18 +3,26 @@
 _pkgname=cmake-build-extension
 pkgname="python-$_pkgname-git"
 pkgver=0.5.1.r3.gfea4503
-pkgrel=3
+pkgrel=4
 pkgdesc="Setuptools extension to build and package CMake projects"
 arch=(any)
 url="https://github.com/diegoferigo/cmake-build-extension"
 license=('MIT')
-depends=('python' 'python-gitpython' 'ninja' 'cmake')
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-setuptools-scm')
+depends=('python' 'python-gitpython' 'python-setuptools-scm' 'ninja' 'cmake')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 checkdepends=('python-pytest')
 provides=("python-$_pkgname=$pkgver")
 conflicts=("python-$_pkgname")
-source=("git+$url.git")
-sha256sums=('SKIP')
+source=("git+$url.git"
+        "0001-setup.cfg-remove-bogus-wheel-dependencies.patch")
+sha256sums=('SKIP'
+            '906689aacab006680d3046e290b32bfdaca687de66b9524bb44af4733728613e')
+
+prepare() {
+	cd "$_pkgname"
+
+	patch -p1 < "$srcdir/0001-setup.cfg-remove-bogus-wheel-dependencies.patch"
+}
 
 pkgver() {
 	cd "$_pkgname"

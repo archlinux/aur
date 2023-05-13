@@ -1,0 +1,26 @@
+From ea5d0b508ddce6d1396f36a3419c007846879644 Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Sat, 13 May 2023 20:04:28 +0000
+Subject: [PATCH] setup.cfg: remove bogus wheel dependencies
+
+These are provided by system packages, not through python wheels.
+---
+ setup.cfg | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/setup.cfg b/setup.cfg
+index a507a47..787bf73 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -47,8 +47,6 @@ package_dir =
+     =src
+ python_requires = >=3.6
+ install_requires =
+-    cmake
+-    ninja
+     GitPython
+     setuptools_scm
+ 
+-- 
+2.40.1
+
