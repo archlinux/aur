@@ -7,7 +7,7 @@
 pkgname=wine-wayland
 __pkgnameadd__=${pkgname:4}
 pkgver=8.8
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 
@@ -21,6 +21,7 @@ pkgdesc="A compatibility layer for running Windows programs(Wayland Support)"
 url="https://www.winehq.org"
 arch=(x86_64)
 options=(staticlibs !lto)
+conflicts=('wine' 'wine-staging')
 license=(LGPL)
 depends=(
   fontconfig      lib32-fontconfig
