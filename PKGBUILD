@@ -3,7 +3,7 @@
 _pkgname=id3tag
 pkgname=ruby-$_pkgname
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Native Ruby ID3 tag reader that aims for 100% coverage of ID3v2.x and ID3v1.x standards"
 arch=("any")
 url="https://github.com/krists/id3tag"
