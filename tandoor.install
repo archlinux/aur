@@ -1,0 +1,17 @@
+post_install() {
+	echo You must now edit /etc/tandoor/tandoor.conf and setup a PostgreSQL
+        echo database and user, as explained here:
+	echo   https://docs.tandoor.dev/install/manual/#setup-postgresql
+	echo After that, either reinstall the package or follow: 
+	echo   https://docs.tandoor.dev/install/manual/#initialize-the-application
+}
+
+post_upgrade() {
+        cd "/usr/share/tandoor"
+	source venv/bin/activate
+        export $(cat /etc/tandoor/tandoor.conf |grep "^[^#]" | xargs)
+	python manage.py migrate
+        python manage.py collectstatic --no-input
+        python manage.py collectstatic_js_reverse
+}
+

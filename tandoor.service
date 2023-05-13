@@ -1,0 +1,23 @@
+[Unit]
+Description=gunicorn daemon for tandoor recipes
+Requires=tandoor.socket
+After=network.target
+
+[Service]
+Type=notify
+Restart=always
+RestartSec=3
+#User=tandoor
+#Group=tandoor
+DynamicUser=yes
+WorkingDirectory=/var/lib/tandoor
+ReadWritePaths=/var/lib/tandoor
+EnvironmentFile=/etc/tandoor/tandoor.conf
+ExecStart=/usr/share/tandoor/venv/bin/gunicorn --chdir /usr/share/tandoor --log-level debug recipes.wsgi:application
+ExecReload=/bin/kill -s HUP $MAINPID
+KillMode=mixed
+TimeoutStopSec=6
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

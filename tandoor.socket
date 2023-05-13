@@ -1,0 +1,14 @@
+[Unit]
+Description=tandoor recipes socket
+
+[Socket]
+ListenStream=/var/run/tandoor.socket
+# Our service won't need permissions for the socket, since it
+# inherits the file descriptor by socket activation
+# only the nginx daemon will need access to the socket
+SocketUser=http
+# Optionally restrict the socket permissions even more.
+SocketMode=600
+
+[Install]
+WantedBy=sockets.target
