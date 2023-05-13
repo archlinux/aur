@@ -5,7 +5,7 @@
 # Contributor: speps
 
 pkgname=pythonqt
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc='A dynamic Python binding for Qt applications'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ conflicts=("${pkgname}-svn" "${pkgname}-for-screencloud" 'qt5-python27-git')
 replaces=("${pkgname}-qt5")
 
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('99524931c1d1287340cf4186ea48b2969e990fe7e69cc680e5acafee73aff62a8f3b9a4d78c5e11393fa56f7dc2bdc0259c174bb1c3314d6d43a8fa52a0308c4')
+sha512sums=('6aa87282eeead1cbd9aaf549c5ecf7e5655a209e0fd705c69fc382cdf8e3fe4c251862efaa3429b558daaf0de2ffd16f96e3c66ad80be21e3ad6938c28ce3c50')
 
 build() {
     # Building package
