@@ -1,7 +1,7 @@
 pkgbase = wine-wayland
 	pkgdesc = A compatibility layer for running Windows programs(Wayland Support)
 	pkgver = 8.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.winehq.org
 	install = wine.install
 	arch = x86_64
@@ -111,6 +111,7 @@ pkgbase = wine-wayland
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
+	provides = wine
 	conflicts = wine
 	conflicts = wine-staging
 	options = staticlibs

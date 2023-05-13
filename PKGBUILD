@@ -7,7 +7,7 @@
 pkgname=wine-wayland
 __pkgnameadd__=${pkgname:4}
 pkgver=8.8
-pkgrel=2
+pkgrel=3
 
 _pkgbasever=${pkgver/rc/-rc}
 
@@ -22,6 +22,7 @@ url="https://www.winehq.org"
 arch=(x86_64)
 options=(staticlibs !lto)
 conflicts=('wine' 'wine-staging')
+provides=('wine')
 license=(LGPL)
 depends=(
   fontconfig      lib32-fontconfig
