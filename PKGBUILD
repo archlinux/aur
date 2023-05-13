@@ -3,7 +3,7 @@
 
 pkgname=python-pymilter
 pkgver=1.0.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Python bindings for libmilter API"
 arch=('x86_64')
 url="https://github.com/sdgathman/${pkgname##*-}"
