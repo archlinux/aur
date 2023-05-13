@@ -12,7 +12,14 @@ groups=('pro-audio')
 depends=('gtk3' 'gtk2' 'ffmpeg' 'portmidi' 'python' 'vst3sdk'
 'portaudio' 'jack')
 makedepends=('cmake' 'autoconf' 'automake' 'libtool' 'git' 'conan1' 'catch2')
-provides=("audacity")
+provides=(
+    audacity
+    ladspa-host
+    lv2-host
+    vamp-host
+    vst-host
+    vst3-host
+    )
 conflicts=("audacity")
 #
 source=("git+https://github.com/audacity/audacity.git")
