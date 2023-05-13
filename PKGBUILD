@@ -6,7 +6,7 @@ url='https://github.com/googlecartographer/cartographer_ros'
 pkgname='ros-noetic-cartographer-ros-msgs-git'
 pkgver=r584.151c563
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('Apache 2.0')
 provides=(${pkgname::-4})
 
@@ -30,7 +30,7 @@ ros_depends=(
 )
 depends=(${ros_depends[@]})
 
-source=($pkgname::git://github.com/cartographer-project/cartographer_ros.git)
+source=($pkgname::git+https://github.com/cartographer-project/cartographer_ros.git)
 sha256sums=('SKIP')
 
 pkgver() {

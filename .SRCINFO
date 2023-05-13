@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-cartographer-ros-msgs-git
 	pkgdesc = ROS - ROS messages for the cartographer_ros package.
 	pkgver = r584.151c563
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/googlecartographer/cartographer_ros
 	arch = i686
 	arch = x86_64
@@ -19,8 +19,7 @@ pkgbase = ros-noetic-cartographer-ros-msgs-git
 	depends = ros-noetic-geometry-msgs
 	depends = ros-noetic-std-msgs
 	provides = ros-noetic-cartographer-ros-msgs
-	source = ros-noetic-cartographer-ros-msgs-git::git://github.com/cartographer-project/cartographer_ros.git
+	source = ros-noetic-cartographer-ros-msgs-git::git+https://github.com/cartographer-project/cartographer_ros.git
 	sha256sums = SKIP
 
 pkgname = ros-noetic-cartographer-ros-msgs-git
-
