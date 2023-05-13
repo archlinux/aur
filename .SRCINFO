@@ -1,7 +1,7 @@
 pkgbase = synth
 	pkgdesc = The Open Source Data Generator
 	pkgver = 0.6.9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://getsynth.com/
 	arch = any
 	license = Apache-2.0
