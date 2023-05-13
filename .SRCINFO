@@ -1,0 +1,17 @@
+pkgbase = sphere-git
+	pkgdesc = Browser proxy app for registering different handlers for http/https URI schemes
+	pkgver = r1.ae65069
+	pkgrel = 1
+	url = https://github.com/vimpostor/sphere
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cabal-install
+	makedepends = uusi
+	depends = ghc
+	depends = haskell-regex-tdfa
+	source = git+https://github.com/vimpostor/sphere.git
+	sha256sums = SKIP
+
+pkgname = sphere-git
