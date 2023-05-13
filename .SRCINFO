@@ -1,7 +1,7 @@
 pkgbase = python-pyqt-qwt
 	pkgdesc = Python PyQt wrapper for Qwt 6
 	pkgver = 1.02.02.20210915
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/GauiStori/PyQt-Qwt
 	arch = x86_64
 	license = LGPL
