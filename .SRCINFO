@@ -3,11 +3,11 @@ pkgbase = rtl8xxxu-dkms-git
 	pkgver = git_c8bc376
 	pkgrel = 1
 	url = https://github.com/a5a5aa555oo/rtl8xxxu
-	arch = x86_64
+	arch = any
 	license = GPL2
-	license = custom
 	makedepends = git
 	depends = dkms
+	depends = linux-firmware
 	source = git+https://github.com/a5a5aa555oo/rtl8xxxu.git
 	sha256sums = SKIP
 
