@@ -1,8 +1,8 @@
 # Maintainer: Harold Cheng <niuchangcun@gmail.com>
 pkgname=kubevela
-pkgver=1.7.5
+pkgver=1.8.1
 pkgrel=1
-pkgdesc="The Modern Application Platform."
+pkgdesc="The Modern Application Platform. (CLI)"
 arch=("x86_64")
 url="https://github.com/kubevela/kubevela"
 license=('Apache')
@@ -19,19 +19,15 @@ install=
 changelog=
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-sha256sums=('aff27830121eb259b20a498f90de9ee3db720a5d02f7c969c052935367bd279d')
+sha256sums=('6f2bd0746a7864eb7d2093fbc027b5d5a4ca358d51fc6ec325e21d456c166799')
 
 build() {
   cd "$pkgname-$pkgver"
 
-  # copied from https://wiki.archlinux.org/title/Go_package_guidelines
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export CGO_ENABLED=0
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
-  go build -o bin/vela -a ./references/cmd/cli/main.go
+  go build -ldflags "-X github.com/oam-dev/kubevela/version.VelaVersion=$pkgver -linkmode external" -o bin/vela -a ./references/cmd/cli/main.go
 }
 
 package() {
