@@ -2,14 +2,13 @@
 
 pkgname=crosswords-puzzle-sets-oedipus
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Italian puzzles from Oedipus for the app Crosswords'
 arch=(any)
 url='https://gitlab.gnome.org/davide125/puzzle-sets-oedipus'
 license=(GPL3)
 depends=(
 	crosswords
-	python-argparse
 	python-puzpy
 	python-requests
 )

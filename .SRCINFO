@@ -1,13 +1,12 @@
 pkgbase = crosswords-puzzle-sets-oedipus
 	pkgdesc = Italian puzzles from Oedipus for the app Crosswords
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/davide125/puzzle-sets-oedipus
 	arch = any
 	license = GPL3
 	makedepends = meson
 	depends = crosswords
-	depends = python-argparse
 	depends = python-puzpy
 	depends = python-requests
 	source = https://gitlab.gnome.org/davide125/puzzle-sets-oedipus/-/archive/0.1.1/puzzle-sets-oedipus-0.1.1.tar.gz
