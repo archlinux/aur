@@ -2,8 +2,8 @@
 # Co-Maintainer: Martin Rys <https://rys.pw/contact>
 
 pkgname=loot
-pkgver=0.18.6
-_pkglibver=0.18.2
+pkgver=0.19.1
+_pkglibver=0.19.4
 pkgrel=4
 pkgdesc="A load order optimisation tool for the Elder Scrolls (Morrowind and later) and Fallout (3 and later) games."
 arch=('x86_64')
@@ -14,11 +14,19 @@ makedepends=('git' 'cmake' 'rust' 'cbindgen' 'boost')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz"
         "lib$pkgname-$_pkglibver.tar.gz::https://github.com/$pkgname/lib$pkgname/archive/$_pkglibver.tar.gz"
         'LOOT.desktop'
+        'tbb.patch' # https://github.com/loot/loot/issues/1864
 )
-sha256sums=('a93a5df1e34f3f54ec6023971433527776db6f8861be48e620e0f8c6a06169c5'
-            '1722cd816b302cae84bff26470831dc16c073236bc8a3728220f75cc3d19a3e0'
+sha256sums=('832c0a44f8f33963a90987d880e2527f0ae9a175b29451c47d486dfdf4d41df1'
+            '819c0c8a6986a612c81729cccf51a848dac7d83f46a75d93cfbb87587f86635e'
             '3dd063fdbe33dc82a4298bd5bcd3b4e7490adab4128389c153d12c6b074b27fb'
+            '333e1c20367124242ebc8cf1153ca6925574a1b8de8f595e75d56fb3d83aa01e'
 )
+
+
+prepare() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	patch -p1 < "${srcdir}/tbb.patch"
+}
 
 build() {
 	# libloot
@@ -56,5 +64,5 @@ package() {
 	# Install the icon
 	install -Dm644 "${_builddir}/../resources/icons/loot.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/loot.svg"
 	# Install desktop entry
-	install -Dm644 ${srcdir}/../LOOT.desktop ${pkgdir}/usr/share/applications/LOOT.desktop
+	install -Dm644 "${srcdir}/../LOOT.desktop" "${pkgdir}/usr/share/applications/LOOT.desktop"
 }

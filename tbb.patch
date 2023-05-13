@@ -1,0 +1,20 @@
+--- a/src/gui/state/game/game.h
++++ b/src/gui/state/game/game.h
+@@ -26,6 +26,8 @@
+ #ifndef LOOT_GUI_STATE_GAME_GAME
+ #define LOOT_GUI_STATE_GAME_GAME
+
++#undef emit
++
+ #include <execution>
+ #include <filesystem>
+ #include <functional>
+@@ -34,6 +36,8 @@
+ #include <string>
+ #include <variant>
+
++#define emit
++
+ #include "gui/state/game/game_settings.h"
+ #include "gui/state/logging.h"
+ #include "loot/api.h"

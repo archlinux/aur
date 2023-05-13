@@ -1,6 +1,6 @@
 pkgbase = loot
 	pkgdesc = A load order optimisation tool for the Elder Scrolls (Morrowind and later) and Fallout (3 and later) games.
-	pkgver = 0.18.6
+	pkgver = 0.19.1
 	pkgrel = 4
 	url = https://loot.github.io
 	arch = x86_64
@@ -23,11 +23,13 @@ pkgbase = loot
 	depends = libxss
 	depends = libxtst
 	depends = qt5-base
-	source = loot-0.18.6.tar.gz::https://github.com/loot/loot/archive/0.18.6.tar.gz
-	source = libloot-0.18.2.tar.gz::https://github.com/loot/libloot/archive/0.18.2.tar.gz
+	source = loot-0.19.1.tar.gz::https://github.com/loot/loot/archive/0.19.1.tar.gz
+	source = libloot-0.19.4.tar.gz::https://github.com/loot/libloot/archive/0.19.4.tar.gz
 	source = LOOT.desktop
-	sha256sums = a93a5df1e34f3f54ec6023971433527776db6f8861be48e620e0f8c6a06169c5
-	sha256sums = 1722cd816b302cae84bff26470831dc16c073236bc8a3728220f75cc3d19a3e0
+	source = tbb.patch
+	sha256sums = 832c0a44f8f33963a90987d880e2527f0ae9a175b29451c47d486dfdf4d41df1
+	sha256sums = 819c0c8a6986a612c81729cccf51a848dac7d83f46a75d93cfbb87587f86635e
 	sha256sums = 3dd063fdbe33dc82a4298bd5bcd3b4e7490adab4128389c153d12c6b074b27fb
+	sha256sums = 333e1c20367124242ebc8cf1153ca6925574a1b8de8f595e75d56fb3d83aa01e
 
 pkgname = loot
