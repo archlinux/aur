@@ -1,12 +1,12 @@
 --- a/osu.Game/OsuGameBase.cs
 +++ b/osu.Game/OsuGameBase.cs
-@@ -243,8 +243,7 @@
+@@ -242,8 +242,7 @@
          {
              try
              {
 -                using (var str = File.OpenRead(typeof(OsuGameBase).Assembly.Location))
 -                    VersionHash = str.ComputeMD5Hash();
-+                VersionHash = "5e9da4453f097e4cf8f8e08d19d0f406";
++                VersionHash = "b33fae056fb2f48d9c701d52ab13e6dc";
              }
              catch
              {
