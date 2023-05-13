@@ -10,8 +10,8 @@ license=("GPL-3.0")
 source=("git+https://github.com/alexkdeveloper/relaxator")
 url="https://github.com/alexkdeveloper/relaxator"
 
-pkgver=1.0.8.f2a7f3a
-pkgrel=2
+pkgver=1.0.8.86d93ca
+pkgrel=1
 
 depends=("gtk4" "libadwaita" "vala")
 makedepends=("meson" "ninja" "git")
