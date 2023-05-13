@@ -3,7 +3,7 @@
 
 pkgname="llm"
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Run inference for Large Language Models on CPU, with Rust 🦀🚀🦙"
 arch=(any)
@@ -13,7 +13,7 @@ depends=(glibc gcc-libs)
 makedepends=(git cargo)
 provides=(llm)
 conflicts=(llm)
-source=("git+${url}#v${pkgver}"
+source=("git+${url}#tag=v${pkgver}"
         "git+https://github.com/ggerganov/ggml"
         )
 sha256sums=('SKIP' 'SKIP')
