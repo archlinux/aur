@@ -4,7 +4,7 @@
 pkgname=loot
 pkgver=0.19.1
 _pkglibver=0.19.4
-pkgrel=4
+pkgrel=5
 pkgdesc="A load order optimisation tool for the Elder Scrolls (Morrowind and later) and Fallout (3 and later) games."
 arch=('x86_64')
 url="https://loot.github.io"
@@ -19,7 +19,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/$
 sha256sums=('832c0a44f8f33963a90987d880e2527f0ae9a175b29451c47d486dfdf4d41df1'
             '819c0c8a6986a612c81729cccf51a848dac7d83f46a75d93cfbb87587f86635e'
             '3dd063fdbe33dc82a4298bd5bcd3b4e7490adab4128389c153d12c6b074b27fb'
-            '333e1c20367124242ebc8cf1153ca6925574a1b8de8f595e75d56fb3d83aa01e'
+            '4c94372e800f764fb21218b7cbbf8421cadc60acd532e8ba66b734395f1bb343'
 )
 
 
