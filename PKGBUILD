@@ -1,9 +1,9 @@
-# Maintainer: Plague-doctor <plague at privacyrequired dot com>
+# Maintainer: txelu
 
 pkgname=dnglab-git
 _pkgname=dnglab
-pkgver=0.3.0
-pkgrel=1
+pkgver=0.5.1
+pkgrel=0
 pkgdesc="A camera RAW to DNG file format converter."
 arch=(any)
 url="https://github.com/dnglab/dnglab"
