@@ -1,7 +1,7 @@
 pkgbase = python-blkinfo
 	pkgdesc = A python library to list information about all available or the specified block devices
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/grinrag/blkinfo
 	arch = any
 	license = GPL3
