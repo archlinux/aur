@@ -1,7 +1,7 @@
 pkgbase = python-mdv-git
 	pkgdesc = Styled Terminal Markdown Viewer
 	pkgver = 1.6.3.r97.g435b688
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/axiros/terminal_markdown_viewer
 	arch = any
 	license = BSD
