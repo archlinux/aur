@@ -7,6 +7,7 @@ pkgbase = ruby-id3tag
 	license = MIT
 	checkdepends = ruby-rspec
 	depends = ruby
+	depends = ruby-nokogiri
 	source = https://github.com/krists/id3tag/archive/refs/tags/v1.1.0.zip
 	b2sums = 70a4ac60683d8a9b5025e720370b4c8911352d48e6b48caeda231b33c983476d3caba019a4b2d3319ab32501c8a6b18ae5548e521d731a8c12146d82557e39cd
 
