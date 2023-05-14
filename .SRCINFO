@@ -1,16 +1,25 @@
-pkgbase = clmath-git
-	pkgdesc = Commandline Math Tool and Calculator
+pkgbase = mc-server-hub-git
+	pkgdesc = A web-interface for managing Minecraft Servers
 	pkgver = 0.1
 	pkgrel = 1
-	url = https://github.com/comroid-git/clmath
+	url = https://github.com/comroid-git/mc-server-hub
 	arch = any
-	license = MIT
-	makedepends = dotnet-sdk-6.0
-	depends = dotnet-runtime-6.0
+	license = GPL-3.0
+	makedepends = java-environment>=17
+	makedepends = gradle>=7
+	depends = java-runtime>=17
+	depends = screen
+	depends = tar
+	depends = grep
+	depends = sed
+	depends = curl
+	depends = jq
+	depends = coreutils
+	depends = findutils
 	options = !strip
-	source = git+https://github.com/comroid-git/clmath.git
-	source = git+https://github.com/comroid-git/csapi.git
+	source = git+https://github.com/comroid-git/mc-server-hub.git
+	source = git+https://github.com/comroid-git/mc-server-hub-git.git
 	md5sums = SKIP
 	md5sums = SKIP
 
-pkgname = clmath-git
+pkgname = mc-server-hub-git
