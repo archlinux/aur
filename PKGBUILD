@@ -10,7 +10,7 @@ url="https://github.com/G-dH/${_srcname}"
 arch=('any')
 license=("GPL3")
 depends=( "gnome-shell" )
-makedepends=("git" "jq")
+makedepends=("git")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+${url}.git")
@@ -24,12 +24,23 @@ pkgver() {
 build() {
   cd "${_srcname}"
   glib-compile-schemas schemas
+  for infile in po/*.po; do
+    outdir=locale/${infile:3:-3}/LC_MESSAGES
+    mkdir --parents "${outdir}"
+    msgfmt --check --output "${outdir}/${_srcname}.mo" "$infile"
+  done
   mkdir build
-  mv --target-directory=build schemas lib metadata.json stylesheet.css *.js
+  mv --target-directory=build schemas lib locale metadata.json stylesheet.css *.js
 }
 
 package() {
   cd "${_srcname}"
   mkdir --parents "${pkgdir}/usr/share/gnome-shell/extensions"
-  cp --recursive build "${pkgdir}/usr/share/gnome-shell/extensions/$(jq -r .uuid "build/metadata.json")"
+  while read; do
+    if [[ $REPLY =~ ^[[:space:]]+\"uuid\":[[:space:]]\"(.*)\",$ ]]; then
+      uuid="${BASH_REMATCH[1]}"
+      break
+    fi
+  done < build/metadata.json
+  cp --recursive build "${pkgdir}/usr/share/gnome-shell/extensions/${uuid}"
 }
