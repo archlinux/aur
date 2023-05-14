@@ -1,0 +1,11 @@
+[Unit]
+Description=Ready-to-use RTSP / RTMP / LL-HLS server and proxy
+After=network.target
+
+[Service]
+Type=simple
+User=mediamtx
+ExecStart=/usr/bin/mediamtx /etc/mediamtx/mediamtx.yml
+
+[Install]
+WantedBy=multi-user.target
