@@ -2,13 +2,13 @@
 # Contributor: schw0reismus <schw0reismus@protonmail.com>
 
 pkgname=foliate-git
-pkgver=2.6.4.r98.g3a9e148
+pkgver=2.6.4.r103.g1613ac8
 pkgrel=2
 pkgdesc="Simple and modern GTK eBook reader"
 arch=(any)
 url="https://johnfactotum.github.io/foliate/"
 license=(GPL3)
-depends=(gjs gtk4 webkitgtk-6.0)
+depends=(gjs gtk4 libadwaita webkitgtk-6.0)
 makedepends=(meson ninja git)
 optdepends=('hyphen: Auto-hyphenation support'
 			'hyphen-en: Hyphenation rules for English; you may choose package for your language'
