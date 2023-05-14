@@ -8,7 +8,7 @@ pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
 pkgver=113.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
 license=(
@@ -249,10 +249,10 @@ END
     msg2 "Patch Devtools to bypass devtool detection"
     patch -Np1 -i ${_patches_dir}/devtools-bypass.patch
 
-    msg2 "KDE menu and unity menubar"
+    #msg2 "KDE menu and unity menubar"
     #patch -Np1 -i ${_patches_dir}/unity_kde/mozilla-kde.patch
-    patch -Np1 -i ${_patches_dir}/unity_kde/firefox-kde.patch
-    patch -Np1 -i ${_patches_dir}/unity_kde/unity-menubar.patch
+    #patch -Np1 -i ${_patches_dir}/unity_kde/firefox-kde.patch
+    #patch -Np1 -i ${_patches_dir}/unity_kde/unity-menubar.patch
     msg2 "mozilla-nongnome-proxies"
     patch -Np1 -i ${_patches_dir}/kde/mozilla-nongnome-proxies.patch
     msg2  "some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)"
