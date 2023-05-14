@@ -2,7 +2,7 @@
 
 pkgname=python-simplebitcoinfuncs
 pkgver=0.1.5
-pkgrel=5
+pkgrel=6
 pkgdesc='Simple and easy functions for common Bitcoin operations'
 arch=('any')
 url='https://github.com/maxweisspoker/simplebitcoinfuncs'
