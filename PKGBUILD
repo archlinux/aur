@@ -5,7 +5,7 @@
 
 pkgname=dosbox-djcrx
 pkgver=2.05
-pkgrel=23
+pkgrel=24
 libmver=0.8.1
 pkgdesc="Headers and utilities for the djgpp dosbox cross-compiler"
 arch=('i686' 'x86_64')
@@ -59,6 +59,7 @@ prepare() {
   #sed -i '/@$(MISC) echo - / d; s/^\t@/\t/' src/makefile.inc src/libc/makefile src/utils/makefile
 
   #
+  sed -i 's/-std=c99/-std=gnu99/' openlibm-${libmver}/Make.inc
   sed -i 's/override ARCH := i387//' openlibm-${libmver}/Make.inc
   sed -i 's/ifneq ($(filter $(ARCH),i387 amd64/ifneq ($(filter $(ARCH),i586 amd64/' openlibm-${libmver}/Make.inc
   sed -i 's/SUBDIRS = src $(ARCH) bsdsrc/SUBDIRS = src bsdsrc/' openlibm-${libmver}/Makefile
@@ -68,7 +69,7 @@ prepare() {
 build() {
   cd openlibm-${libmver}
   make clean
-  CC=${_target}-gcc make ARCH=i586 MARCH=i586 CFLAGS="-nostdinc -iquote . -isystem$srcdir/include -U__STRICT_ANSI__" libopenlibm.a
+  CC=${_target}-gcc make ARCH=i586 MARCH=i586 CFLAGS="-nostdinc -iquote . -isystem$srcdir/include" libopenlibm.a
   mv libopenlibm.a ../lib/
   cp include/*.h ../include/
   cd ..
