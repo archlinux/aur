@@ -2,18 +2,23 @@
 
 pkgname=python-winsspi
 _pkgname=winsspi
-pkgver=0.0.10
+pkgver=0.0.11
 pkgrel=1
 pkgdesc="Windows SSPI wrapper in pure python"
 url="https://pypi.org/project/winsspi"
 arch=('any')
 license=('MIT')
 depends=('python' 'python-minikerberos')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('2f5a8d2c4b9f459144426909e26a74e550512e23b6cf9af52c2a00003c7c3fdb')
+sha256sums=('0170ba489fa258f1aa4e6760a162846c3f2d0d451c836683eb4f613b66dd41f3')
+
+build() {
+    cd "${_pkgname}-${pkgver}"
+    python -m build --wheel --no-isolation
+}
 
 package() {
-  cd ${_pkgname}-${pkgver}
-  python setup.py install -O1 --root="${pkgdir}" --prefix=/usr
+    cd "${_pkgname}-${pkgver}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
