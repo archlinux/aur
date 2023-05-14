@@ -3,19 +3,18 @@
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=libclc-minimal-git
-pkgver=17.0.0_r457905.5e53e1bbc34f
-pkgrel=1
+pkgver=17.0.0_r460869.b2809b4811bd
+pkgrel=2
 pkgdesc="companion package to llvm-minimal-git,  Library requirements of the OpenCL C programming language"
 arch=('any')
 url="https://libclc.llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
-provides=('libclc')
-conflicts=('libclc')
-makedepends=('llvm-minimal-git' 'cmake' 'ninja' 'git' 'python' 'spirv-llvm-translator-minimal-git' 'llvm-libs<16')
-source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
-              libclc.patch)
-sha256sums=('SKIP'
-            '567e7467923835c1790322b0049efc7dd1962a0600afed66adbdfa545f8a0a8c')
+provides=(libclc)
+conflicts=(libclc)
+makedepends=(llvm-minimal-git clang-minimal-git cmake  git python spirv-llvm-translator-minimal-git 'llvm-libs<17')
+source=("git+https://github.com/llvm/llvm-project.git"
+)
+sha256sums=('SKIP')
 
 pkgver() {
     cd llvm-project/llvm
@@ -29,10 +28,6 @@ pkgver() {
              END { print "\n" }' \
              CMakeLists.txt)_r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
     echo "${_pkgver}"
-}
-
-prepare() {
-  patch --directory="llvm-project" --strip=1 --input="${srcdir}/libclc.patch"
 }
 
 build() {
