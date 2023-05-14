@@ -5,7 +5,7 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=brasero-git
-pkgver=3.12.2.r88.g25824317
+pkgver=3.12.3.r29.g03844860
 pkgrel=1
 pkgdesc="CD/DVD mastering tool"
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ url="https://wiki.gnome.org/Apps/Brasero"
 license=(GPL)
 groups=(gnome-extra)
 depends=(gtk3 gst-plugins-good totem-plparser cdrkit cdrdao shared-mime-info libcanberra
-         dvd+rw-tools dconf libsm tracker libnotify gvfs)
+         dvd+rw-tools dconf libsm tracker3 libnotify gvfs)
 makedepends=(gtk-doc yelp-tools gnome-common intltool libburn libisofs libnautilus-extension
              gobject-introspection itstool docbook-xsl git)
 optdepends=('libburn: alternative back-end'
@@ -24,21 +24,21 @@ provides=(brasero)
 conflicts=(brasero)
 replaces=(nautilus-cd-burner)
 options=(!emptydirs)
-source=("${pkgname%-git}::git+https://gitlab.gnome.org/GNOME/brasero.git/")
+source=("git+https://gitlab.gnome.org/GNOME/brasero.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
+  cd brasero
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "${pkgname%-git}"
+  cd brasero
   NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd "${pkgname%-git}"
+  cd brasero
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -50,7 +50,6 @@ build() {
 }
 
 package() {
-  cd "${pkgname%-git}"
+  cd brasero
   make DESTDIR=$pkgdir install
 }
-

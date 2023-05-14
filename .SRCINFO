@@ -1,6 +1,6 @@
 pkgbase = brasero-git
 	pkgdesc = CD/DVD mastering tool
-	pkgver = 3.12.2.r88.g25824317
+	pkgver = 3.12.3.r29.g03844860
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Brasero
 	arch = i686
@@ -28,7 +28,7 @@ pkgbase = brasero-git
 	depends = dvd+rw-tools
 	depends = dconf
 	depends = libsm
-	depends = tracker
+	depends = tracker3
 	depends = libnotify
 	depends = gvfs
 	optdepends = libburn: alternative back-end
@@ -39,8 +39,7 @@ pkgbase = brasero-git
 	conflicts = brasero
 	replaces = nautilus-cd-burner
 	options = !emptydirs
-	source = brasero::git+https://gitlab.gnome.org/GNOME/brasero.git/
+	source = git+https://gitlab.gnome.org/GNOME/brasero.git
 	sha256sums = SKIP
 
 pkgname = brasero-git
-
