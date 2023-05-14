@@ -1,7 +1,7 @@
 pkgbase = mc-server-hub-git
 	pkgdesc = A web-interface for managing Minecraft Servers
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/comroid-git/mc-server-hub
 	arch = any
 	license = GPL-3.0
