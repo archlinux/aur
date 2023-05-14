@@ -1,6 +1,6 @@
 pkgbase = dxreminders
 	pkgdesc = A simple program for reminders
-	pkgver = 1.21.1
+	pkgver = 1.21.2
 	pkgrel = 1
 	url = https://dxreminders.dxsolutions.org
 	install = dxreminders.install
@@ -9,7 +9,7 @@ pkgbase = dxreminders
 	license = GPL
 	makedepends = cmake
 	depends = wxwidgets-gtk3
-	source = https://files.dxsolutions.org/dxreminders-1.21.1.tar.gz
-	md5sums = fe1b64dd169d7f13cb89b5447fa6be8b
+	source = https://files.dxsolutions.org/dxreminders-1.21.2.tar.gz
+	md5sums = 1bb88e4508b7e112f94e7b122abda420
 
 pkgname = dxreminders
