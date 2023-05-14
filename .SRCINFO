@@ -1,6 +1,6 @@
 pkgbase = raspberrypi-devicetree-git
 	pkgdesc = Downstream devicetrees and overlays for Raspberry Pi
-	pkgver = 1.20230106
+	pkgver = 1.20230405
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/raspberrypi/firmware
