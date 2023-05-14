@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=pods
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="A Podman desktop application"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('libadwaita' 'libpanel' 'gtksourceview5' 'podman' 'vte4')
 makedepends=('meson' 'cargo')
 checkdepends=('appstream-glib')
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-b2sums=('a88f52128370bf6d590022b4076c8a7988bee2e0f1a73d1dfee26557249e7f9deb58e11c3a846663c40b2934c6607bfae42cf6183ead25c4f18867e045e63537')
+b2sums=('d76c4002c1d341d9dd9a44292494e485459981e0c685e38a60b5f9bab3945332254a56789425236fca7b7affa51c07fbf57c18da2bd8af96e1745ac2a321331a')
 
 prepare() {
   cd "$pkgname-$pkgver"
