@@ -1,7 +1,7 @@
 # Maintainer: mh4ckwascut <mh4ckt3mh4ckt1c4s@protonmail.com>
 
 pkgname=zsteg
-pkgver=0.2.12
+pkgver=0.2.13
 pkgrel=1
 pkgdesc="detect stegano-hidden data in PNG & BMP"
 arch=(any)
@@ -13,7 +13,7 @@ depends=(
         "ruby-iostruct"
 )
 source=("${pkgname}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("d5bc52b3dcfb750ef4d429c888d7f95452eac25f523063341561d4343b48995f")
+sha256sums=("7113fee4bba57df3eb9874ba2b4dbc00826b0bec72e77ac2af24fbdc356e3469")
 
 build() {
   cd "$pkgname-$pkgver"
