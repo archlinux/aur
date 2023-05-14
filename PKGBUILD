@@ -19,6 +19,7 @@ build() {
 }
 
 package() {
-    cp "mc-server-hub/build/dist/mc-server-hub.war" "${pkgdir}/usr/lib/mc-server-hub.war"
-    cp "mc-server-hub-git/mc-server-hub.service" "${pkgdir}/usr/lib/systemd/system/mc-server-hub.service"
+    install -d "/etc/mc-server-hub"
+    install -Dm755 "mc-server-hub/build/dist/mc-server-hub.war" "/usr/lib/mc-server-hub.war"
+    install -Dm644 "mc-server-hub-git/mc-server-hub.service" "/usr/lib/systemd/system/mc-server-hub.service"
 }
