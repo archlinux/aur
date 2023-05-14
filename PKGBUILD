@@ -4,9 +4,13 @@
 # Contributor: Simon Gardling <titaniumtown@gmail.com>
 # Contributor: Ricardo Liang (rliang) <ricardoliang@gmail.com>
 
-pkgname=mutter-git
 _pkgname=mutter
-pkgver=44.1+r21+g5cb4251a3
+pkgbase=mutter-git
+pkgname=(
+  mutter-git
+  mutter-docs-git
+)
+pkgver=44.1+r21+gae8307ab8
 pkgrel=1
 pkgdesc="A window manager compositor for GNOME"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -102,7 +106,7 @@ _pick() {
   done
 }
 
-package() {
+package_mutter-git() {
   provides=(mutter libmutter-12.so)
   conflicts=(mutter)
 
