@@ -1,6 +1,6 @@
 pkgbase = phosh
 	pkgdesc = A pure Wayland shell prototype for GNOME on mobile devices
-	pkgver = 0.24.0
+	pkgver = 0.27.0
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/Phosh/phosh
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = phosh
 	depends = polkit
 	depends = libadwaita
 	depends = evince
-	source = git+https://gitlab.gnome.org/World/Phosh/phosh.git#tag=81ec8c86
+	source = git+https://gitlab.gnome.org/World/Phosh/phosh.git#tag=v0.27.0
 	source = pam_phosh
 	sha256sums = SKIP
 	sha256sums = b7793f80c533e84ad8adfe8bb46c69f107575e724aa9b53b41f370baa37e4fd5
