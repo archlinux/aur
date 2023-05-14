@@ -7,7 +7,7 @@ sudo rm -rf */
 
 echo "update SRCINFO"
 makepkg --printsrcinfo > .SRCINFO
-(git add .SRCINFO && git commit -m "SRCINFO") || true
+(git add . && git commit -m "SRCINFO") || true
 
 echo "push to aur"
 if [ -z "$(git remote | grep aur)" ]; then
