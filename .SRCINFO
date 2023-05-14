@@ -1,7 +1,7 @@
 pkgbase = python-monty
 	pkgdesc = Monty is the missing complement to Python
 	pkgver = 2023.5.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/materialsvirtuallab/monty
 	arch = x86_64
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = python-monty
 	checkdepends = python-pydantic
 	checkdepends = python-ruamel-yaml
 	checkdepends = python-tqdm
+	checkdepends = python-torch
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
