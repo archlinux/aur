@@ -1,29 +1,51 @@
-# Maintainer: FFY00 <filipe.lains@gmail.com>
+# Maintainer:
+# Contributor: FFY00 <filipe.lains@gmail.com>
 
-pkgname=gr-limesdr-git
-pkgver=r79.0a1f587
+_pkgname='gr-limesdr'
+pkgname="$_pkgname-git"
+pkgver=3.0.1.r69.gd0fac85
 pkgrel=1
 pkgdesc='gr-limesdr Plugin for GNURadio'
 arch=('x86_64')
 url='https://github.com/myriadrf/gr-limesdr'
 license=('MIT')
-optdepends=('python: python bindings')
-depends=('boost' 'gnuradio' 'limesuite' 'swig' 'python' 'doxygen' 'graphviz')
-makedepends=('git' 'cmake')
-provides=('gr-limesdr')
-conflicts=('gr-limesdr')
-source=("git+$url#branch=gr-3.8")
-md5sums=('SKIP')
+depends=(
+  'boost'
+  'doxygen'
+  'gnuradio'
+  'graphviz'
+  'limesuite'
+  'python'
+  'swig'
+)
+makedepends=(
+  'cmake'
+  'git'
+  'pybind11'
+)
+optdepends=(
+  'python: python bindings'
+)
+provides=("$_pkgname")
+conflicts=(${provides[@]})
+source=(
+  "$_pkgname"::"git+$url#branch=gr-3.10"
+)
+sha256sums=(
+  'SKIP'
+)
 
 pkgver() {
-  cd gr-limesdr
+  cd "$srcdir/$_pkgname"
 
-  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  mkdir -p gr-limesdr/build
-  cd gr-limesdr/build
+  cd "$srcdir/$_pkgname"
+
+  mkdir -p build
+  cd build
 
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -33,9 +55,10 @@ build() {
 }
 
 package() {
-  cd gr-limesdr/build
+  cd "$srcdir/$_pkgname"
+  cd build
 
   make DESTDIR="$pkgdir" install
 
-  install -Dm 644 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm 644 ../LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
