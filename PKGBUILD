@@ -8,7 +8,7 @@
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
 pkgver=2023.5.2
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=(any)
 url=https://home-assistant.io/
@@ -91,6 +91,7 @@ prepare() {
 
 build() {
   cd home-assistant
+  python -m script.translations develop --all
   python -m build --wheel --no-isolation
 }
 
