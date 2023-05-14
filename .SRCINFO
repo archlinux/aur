@@ -1,7 +1,7 @@
 pkgbase = python-skimpy
 	pkgdesc = A light weight tool for creating summary statistics from dataframes
 	pkgver = 0.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aeturrell/skimpy
 	arch = any
 	license = MIT
