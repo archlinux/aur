@@ -1,0 +1,13 @@
+pkgbase = libminpack
+	pkgdesc = Software for solving nonlinear equations and nonlinear least squares problems
+	pkgver = 19961126+dfsg1.5
+	pkgrel = 1
+	url = https://salsa.debian.org/science-team/minpack
+	arch = x86_64
+	license = custom:BSD-4-clause-modified
+	makedepends = gcc-fortran
+	depends = gcc-libs
+	source = libminpack-19961126+dfsg1.5.tar.gz::https://salsa.debian.org/science-team/minpack/-/archive/debian/19961126+dfsg1-5/minpack-debian-19961126+dfsg1-5.tar.gz
+	sha256sums = a0be0155e812753871097b2032e62c9cc96abe5e8c906b932a9f18f862998063
+
+pkgname = libminpack
