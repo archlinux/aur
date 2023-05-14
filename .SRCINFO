@@ -3,7 +3,7 @@ pkgbase = unifetch-git
 	pkgver = r5419.4587679e
 	pkgrel = 1
 	epoch = 1
-	url = https://github.com/jin-asanami/unifetch
+	url = https://github.com/njb-fm/unifetch
 	arch = any
 	license = MIT
 	checkdepends = shellcheck
@@ -25,7 +25,7 @@ pkgbase = unifetch-git
 	provides = neofetch
 	conflicts = unifetch
 	conflicts = neofetch
-	source = unifetch::git+https://github.com/jin-asanami/unifetch.git
+	source = unifetch::git+https://github.com/njb-fm/unifetch.git
 	sha512sums = SKIP
 
 pkgname = unifetch-git
