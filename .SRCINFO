@@ -1,13 +1,13 @@
 pkgbase = bash-notes
 	pkgdesc = Simple delightful note taking, with more unix and less lock-in.
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/pimterry/notes
 	arch = any
 	license = MIT
 	depends = bash
 	conflicts = notes
-	source = notes-1.1.0.tar.gz::https://github.com/pimterry/notes/archive/refs/tags/1.1.0.tar.gz
-	sha256sums = 160f7d5a46c8a8654241a532a5e14e128d6c832b547bfd38653dc78f06964c03
+	source = notes-1.2.0.tar.gz::https://github.com/pimterry/notes/archive/refs/tags/1.2.0.tar.gz
+	sha256sums = 87f19055029428d8cb19df884089f06c7a1a93145fec8298f925e1e349b1f805
 
 pkgname = bash-notes
