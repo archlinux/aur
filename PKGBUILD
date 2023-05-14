@@ -1,6 +1,6 @@
 # Maintainer: Per Osbeck <per@osbeck.com>
 pkgname=globalping-cli
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Better understand your network routing, fix anycast issues, monitor your CDN and DNS performance, do uptime monitoring and build your own network tools for personal or public use."
 arch=(x86_64)
