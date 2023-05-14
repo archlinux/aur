@@ -3,7 +3,7 @@
 _pkgname=imap_tools
 pkgname=python-imap-tools
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Work with email and mailbox by IMAP"
 arch=('any')
 url="https://github.com/ikvk/imap_tools"
