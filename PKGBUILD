@@ -2,7 +2,7 @@
 # https://github.com/brokenpip3/my-pkgbuilds
 
 pkgname=driverkit
-pkgver=0.11.1
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Kit for building Falco drivers: kernel modules or eBPF probes"
 arch=('any')
