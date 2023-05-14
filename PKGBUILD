@@ -3,7 +3,7 @@
 pkgname=ruby-matrix
 _name=${pkgname#ruby-}
 pkgver=0.4.2
-pkgrel=3
+pkgrel=4
 pkgdesc='An implementation of Matrix and Vector classes'
 arch=(any)
 url='https://github.com/ruby/matrix'
@@ -11,6 +11,7 @@ license=('custom:BSD2')
 
 depends=(ruby)
 makedepends=(rubygems)
+checkdepends=(ruby-rake)
 options=(!emptydirs)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
