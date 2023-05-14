@@ -4,7 +4,7 @@
 
 pkgname=python-btchip-git
 pkgver=0.1.32
-pkgrel=3
+pkgrel=4
 pkgdesc="Python library to communicate with BTChip dongle"
 arch=('any')
 depends=('python-hidapi' 'libusb-compat' 'libusb' 'libsystemd')
