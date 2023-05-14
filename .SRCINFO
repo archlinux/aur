@@ -1,12 +1,13 @@
 pkgbase = dolibarr
 	pkgdesc = Dolibarr ERP CRM: modern software package to manage your company
 	pkgver = 17.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://dolibarr.org/
 	install = dolibarr.install
 	arch = any
 	license = GPL3
-	depends = php
+	depends = php-legacy
+	depends = php-legacy-gd
 	optdepends = php-tcpdf: pdf export
 	options = !strip
 	options = emptydirs

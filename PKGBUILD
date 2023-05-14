@@ -1,17 +1,15 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
 pkgname=dolibarr
 pkgver=17.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Dolibarr ERP CRM: modern software package to manage your company"
 arch=('any')
 url="https://dolibarr.org/"
 license=('GPL3')
-depends=('php')
+depends=('php-legacy' 'php-legacy-gd')
 optdepends=('mariadb-clients: MariaDB backend')
 optdepends=('postgresql: postgresql backend')
-optdepends=('php-gd: To display graphs')
-optdepends=('php-intl: Languages support')
-optdepends=('php-xsl: xlsx export')
+optdepends=('php-legacy-xsl: xlsx export')
 optdepends=('php-tcpdf: pdf export')
 options=('!strip' 'emptydirs')
 backup=("etc/$pkgname/conf.php")
