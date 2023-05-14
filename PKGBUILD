@@ -1,5 +1,6 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
-# Contributor: ml <>
+# Maintainer: Arthurmeade12 <s728c3ilp@relay.firefox.com>
+# Former Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Former Contributor: ml <>
 
 pkgname=alda
 pkgver=2.2.5
