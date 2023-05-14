@@ -11,8 +11,8 @@
 
 ### PACKAGE OPTIONS
 ## MERGE REQUESTS SELECTION
-# Merge Requests List: ('579' '1441' 'prio')
-_merge_requests_to_use=('1441' 'prio')
+# Merge Requests List: ('579' '1441' '2941' 'prio')
+_merge_requests_to_use=('1441' '2941' 'prio')
 
 ## Disable building the DOCS package (Enabled if not set)
 # Remember to unset this variable when producing .SRCINFO
@@ -32,7 +32,7 @@ else
 fi
 epoch=1
 pkgver=44.1+r5+g4f8bdda42
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64 aarch64)
@@ -49,9 +49,11 @@ fi
 _commit=4f8bdda42c7fc6c943c3b1213db79db1017d8b26  # tags/44.1^5
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch'
+        'mr2941.patch'
         'prio.patch')
 sha256sums=('SKIP'
             '3621acfed945773de4e107d4b077d8ff2b31eb4adc52d956ee6cc6bb245bac04'
+            '395072af4b44baa2831031fb3c85ef1fa999f6de66ab5c09082432c369e37b2d'
             'cca15ee32b5b4d942960672ab37403b2ccf5d249711fc321b333c3936d9ab897')
 
 pkgver() {
@@ -141,6 +143,14 @@ prepare() {
   # Status: 2 & 3
   # Comment: Help GPU frequencies to scale up but not currently working on Wayland.
   pick_mr '1441' 'mr1441.patch' 'patch'
+
+  # Title: Try unparenting client windows when fullscreen again
+  # Author: Jonas Ådahl <jadahl@gmail.com>
+  # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2941
+  # Type: 3
+  # Status: 2 & 3
+  # Comment: Avoid bugs like #2678 (closed) when we try to avoid blits in the X server for fullscreen windows.
+  pick_mr '2941' 'mr2941.patch' 'patch'
 
   # Title: [REVERT] backends/native: Use rtkit to get realtime priority
   # Author: Carlos Garnacho <carlosg@gnome.org>
