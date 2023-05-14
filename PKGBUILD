@@ -1,8 +1,8 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 _majorver=11
-_completever=11.0.13
-_updatever=8
+_completever=11.0.19
+_updatever=7
 _jdkver="$_completever.u$_updatever"
 
 _buildver=1
@@ -32,11 +32,11 @@ provides=("java-runtime-headless=$_majorver"
           "openjdk$_majorver-src=$_jdkver"
           "openjdk-src=$_jdkver")
 install=install_jdk11-microsoft-openjdk.sh
-source=("https://aka.ms/download-jdk/microsoft-jdk-${_jdkver/\.u/.}.$_buildver-linux-x64.tar.gz"
+source=("https://aka.ms/download-jdk/microsoft-jdk-$_completever-linux-x64.tar.gz"
         freedesktop-java.desktop
 				freedesktop-jconsole.desktop
 				freedesktop-jshell.desktop)
-sha256sums=('f775d2625a3194e85522c9ac5af6e51e4f4b9c2669e11a1303a1981faf4ae449'
+sha256sums=('f4780a350756cfb464fa19c8865c574a00a196808b32f85722d02ab08e1a0b7d'
             '30724948d6cf565285c2e6f16a83d29714e84614fb7c3e862bb45a0ca05dba28'
             '8ef0d8051bfb52283e8e33bd13770d7ed1d06ed9543a2e7d1d36f76aad22937c'
             '0ae3257e9fea03416a169d94119ca3374a072bd8e430fdd3fa074f254a67b586')

@@ -1,6 +1,6 @@
 pkgbase = jdk11-microsoft-openjdk
 	pkgdesc = Microsoft Build of OpenJDK 11
-	pkgver = 11.0.13.u8.b1
+	pkgver = 11.0.19.u7.b1
 	pkgrel = 1
 	url = https://www.microsoft.com/openjdk
 	install = install_jdk11-microsoft-openjdk.sh
@@ -16,23 +16,23 @@ pkgbase = jdk11-microsoft-openjdk
 	optdepends = gtk3: for the Gtk+ 3 look and fell
 	provides = java-runtime-headless=11
 	provides = java-runtime-headless-openjdk=11
-	provides = jre11-openjdk-headless=11.0.13.u8
-	provides = jre-openjdk-headless=11.0.13.u8
+	provides = jre11-openjdk-headless=11.0.19.u7
+	provides = jre-openjdk-headless=11.0.19.u7
 	provides = java-runtime=11
 	provides = java-runtime-openjdk=11
-	provides = jre11-openjdk=11.0.13.u8
-	provides = jre-openjdk=11.0.13.u8
+	provides = jre11-openjdk=11.0.19.u7
+	provides = jre-openjdk=11.0.19.u7
 	provides = java-environment=11
 	provides = java-environment-openjdk=11
-	provides = jdk11-openjdk=11.0.13.u8
-	provides = jdk-openjdk=11.0.13.u8
-	provides = openjdk11-src=11.0.13.u8
-	provides = openjdk-src=11.0.13.u8
-	source = https://aka.ms/download-jdk/microsoft-jdk-11.0.13.8.1-linux-x64.tar.gz
+	provides = jdk11-openjdk=11.0.19.u7
+	provides = jdk-openjdk=11.0.19.u7
+	provides = openjdk11-src=11.0.19.u7
+	provides = openjdk-src=11.0.19.u7
+	source = https://aka.ms/download-jdk/microsoft-jdk-11.0.19-linux-x64.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	sha256sums = f775d2625a3194e85522c9ac5af6e51e4f4b9c2669e11a1303a1981faf4ae449
+	sha256sums = f4780a350756cfb464fa19c8865c574a00a196808b32f85722d02ab08e1a0b7d
 	sha256sums = 30724948d6cf565285c2e6f16a83d29714e84614fb7c3e862bb45a0ca05dba28
 	sha256sums = 8ef0d8051bfb52283e8e33bd13770d7ed1d06ed9543a2e7d1d36f76aad22937c
 	sha256sums = 0ae3257e9fea03416a169d94119ca3374a072bd8e430fdd3fa074f254a67b586
