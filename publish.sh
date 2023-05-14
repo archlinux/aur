@@ -14,3 +14,4 @@ if [ -z "$(git remote | grep aur)" ]; then
   git remote add aur ssh://aur@aur.archlinux.org/mc-server-hub-git.git
 fi
 git push --set-upstream aur master
+git push --set-upstream origin master
