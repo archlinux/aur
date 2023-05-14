@@ -16,11 +16,6 @@ provides=('woeusb')
 source=("https://github.com/WoeUSB/WoeUSB/releases/download/v${pkgver}/woeusb-${pkgver}.bash")
 sha256sums=(0b9e502313c6461346cc4d150459b2e1341d30f9ffda005e160829ad9d5bfffc)
 
-prepare() {
-  chmod +x woeusb-$pkgver.bash
-  mv woeusb-$pkgver.bash woeusb
-}
-
 package() {
-  install -D -t "$pkgdir/usr/bin" "$srcdir/woeusb"
+  install -Dm755 "$srcdir/woeusb-$pkgver.bash" "$pkgdir/usr/bin/woeusb"
 }
