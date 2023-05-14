@@ -4,9 +4,9 @@ pkgname=mbed-studio-bin
 _archivename=MbedStudio
 _binname=${pkgname%%-bin}
 DOMAIN="https://studio.mbed.com"
-ARCHIVE_PATH="/installers/release-1.4.4/1.4.4.48dd03bc/linux/MbedStudio.tar.gz"
-pkgver=1.4.4
-pkgrel=13
+ARCHIVE_PATH="/installers/release-1.4.5/1.4.5.d5955e24/linux/MbedStudio.tar.gz"
+pkgver=1.4.5
+pkgrel=14
 pkgdesc="free IDE and toolchain for Mbed OS 5 application and library development"
 arch=('x86_64')
 url="https://os.mbed.com/studio/"
@@ -75,6 +75,6 @@ package() {
 	chmod +x "$EXEC_PATH"
 }
 
-md5sums=('092adeacf384a0bba6c3be456e9c2beb'
+md5sums=('be7dfb7b3dfda5a35c4552d6e255e33d'
          'ba5f16b0d7eeef5b124cd68078a38672'
          '7cf4ae1f6777f0c610125a59b0fefca6')

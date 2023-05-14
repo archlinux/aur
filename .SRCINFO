@@ -1,7 +1,7 @@
 pkgbase = mbed-studio-bin
 	pkgdesc = free IDE and toolchain for Mbed OS 5 application and library development
-	pkgver = 1.4.4
-	pkgrel = 13
+	pkgver = 1.4.5
+	pkgrel = 14
 	url = https://os.mbed.com/studio/
 	arch = x86_64
 	license = COMMERCIAL
@@ -9,10 +9,10 @@ pkgbase = mbed-studio-bin
 	depends = gnome-keyring
 	provides = mbed-studio
 	options = !strip
-	source = https://studio.mbed.com/installers/release-1.4.4/1.4.4.48dd03bc/linux/MbedStudio.tar.gz
+	source = https://studio.mbed.com/installers/release-1.4.5/1.4.5.d5955e24/linux/MbedStudio.tar.gz
 	source = mbed-studio-bin.sh
 	source = mbed-studio-bin.install
-	md5sums = 092adeacf384a0bba6c3be456e9c2beb
+	md5sums = be7dfb7b3dfda5a35c4552d6e255e33d
 	md5sums = ba5f16b0d7eeef5b124cd68078a38672
 	md5sums = 7cf4ae1f6777f0c610125a59b0fefca6
 
