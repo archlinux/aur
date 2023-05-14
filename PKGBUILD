@@ -2,7 +2,7 @@
 # Contributor: eduardosm
 
 pkgname=subtitleedit
-pkgver=3.6.12
+pkgver=3.6.13
 pkgrel=1
 pkgdesc='An advanced subtitle editor and converter'
 arch=('any')
@@ -11,30 +11,28 @@ license=('GPL3')
 depends=('mono')
 optdepends=('vlc: Video support'
             'mpv: Video support'
-            'tesseract: OCR support')
+            'tesseract: OCR support'
+            'ffmpeg: Waveform extraction')
 makedepends=('unzip')
 source=("https://github.com/SubtitleEdit/subtitleedit/releases/download/$pkgver/SE${pkgver//./}.zip"
         'subtitleedit'
         'subtitleedit.desktop'
         'subtitleedit.png')
-sha256sums=('b43b1cb2041810a321bb3e3719d2684a10e515b0e8bbebff9f28d9659eae79ec'
+sha256sums=('39a7ba25f8f50f55e5289c89a040b5a8c392714b2d7954694045022da2bf209e'
             '51ae2411ed70a40607a78dd863db98bf5692bfaff7f8c230ddf82f0dc78d1cc3'
             '54ffb47864611c6aebb29ecfabd49089cfe6decc320e3f25043c39ec7f27a5fb'
             '700d09858ac76341054d7edc79952fbfca70df674d2b567e3713579e5963f631')
-
 noextract=("SE${pkgver//./}.zip")
 
 package() {
-    install -dm755 "$pkgdir/opt/subtitleedit"
-    unzip "$srcdir/SE${pkgver//./}.zip" -d "$pkgdir/opt/subtitleedit"
+    install -dm755 "$pkgdir"/opt/subtitleedit
+    unzip "$srcdir"/SE${pkgver//./}.zip -d "$pkgdir"/opt/subtitleedit
 
-    rm -r "$pkgdir/opt/subtitleedit/Tesseract302"
-    rm "$pkgdir/opt/subtitleedit/Hunspell"{x86,x64}.dll
-    touch "$pkgdir/opt/subtitleedit/.PACKAGE-MANAGER"
+    rm -r "$pkgdir"/opt/subtitleedit/Tesseract302
+    rm "$pkgdir"/opt/subtitleedit/Hunspell{x86,x64}.dll
+    touch "$pkgdir"/opt/subtitleedit/.PACKAGE-MANAGER
 
-    install -Dm755 "$srcdir/subtitleedit" "$pkgdir/usr/bin/subtitleedit"
-
-    install -Dm644 "$srcdir/subtitleedit.desktop" "$pkgdir/usr/share/applications/subtitleedit.desktop"
-
-    install -Dm644 "$srcdir/subtitleedit.png" "$pkgdir/usr/share/pixmaps/subtitleedit.png"
+    install -Dm755 "$srcdir"/subtitleedit "$pkgdir"/usr/bin/subtitleedit
+    install -Dm644 "$srcdir"/subtitleedit.desktop "$pkgdir"/usr/share/applications/subtitleedit.desktop
+    install -Dm644 "$srcdir"/subtitleedit.png "$pkgdir"/usr/share/pixmaps/subtitleedit.png
 }
