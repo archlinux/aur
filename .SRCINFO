@@ -1,0 +1,16 @@
+pkgbase = llm-cli
+	pkgdesc = A CLI for running inference on supported Large Language Models. Powered by th...
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://crates.io/crates/llm-cli
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = llm-cli-0.1.1.tar.gz::https://crates.io/api/v1/crates/llm-cli/0.1.1/download
+	sha512sums = dd013d9b8f27001ed695a203b6f647e140c46bf6b7228b0c1b3d9b83abdff3e2f0060263e9cdd0ded967f7f13bdf568e1d2f2415b08679302911a894757e6a45
+
+pkgname = llm-cli
