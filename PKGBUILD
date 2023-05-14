@@ -9,7 +9,7 @@ url="https://github.com/materialsvirtuallab/${_base}"
 license=(MIT)
 depends=(python)
 makedepends=(python-build python-installer python-setuptools python-wheel)
-checkdepends=(python-pytest python-bson python-pandas python-pydantic python-ruamel-yaml python-tqdm python-torch)
+checkdepends=(python-pytest python-bson python-pandas python-pydantic python-ruamel-yaml python-tqdm python-pytorch)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('07c62bbafff0f13434594ea70efceb4cbc3803d4a1ef4feac48c2a057663e459f15421cfcce9c8e4bde10adaec8e02faae033611972dbfd3c9141de371ddd453')
 
