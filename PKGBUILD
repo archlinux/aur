@@ -1,7 +1,7 @@
 # Maintainer: Thomas Booker <tw.booker@outlook.com>
 
 pkgname=phosh-mobile-settings
-pkgver=0.24.1
+pkgver=0.27.0
 pkgrel=1
 pkgdesc='A settings app for mobile specific things'
 arch=(x86_64 aarch64 armv7h)
@@ -19,7 +19,7 @@ makedepends=(
 	wayland-protocols
 )
 source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('0cac466fe7ad18af331a9199d165d77a3d841efe36c9074cccad7038b552ba86')
+sha256sums=('285382e3c1b701240ba10cd0df376f9e16b4192798f2855082c3008697818148')
 
 build() {
 	arch-meson "${pkgname}-v${pkgver}" _build
