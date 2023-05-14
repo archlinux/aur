@@ -1,6 +1,6 @@
 pkgbase = obs-streamfx-unstable
 	pkgdesc = Bring your stream back to life with modern effects! (unstable/testing version)
-	pkgver = 0.12.0b202
+	pkgver = 0.12.0b275
 	pkgrel = 1
 	url = https://github.com/Xaymar/obs-StreamFX
 	arch = x86_64
@@ -27,9 +27,7 @@ pkgbase = obs-streamfx-unstable
 	depends = nlohmann-json
 	provides = obs-streamfx
 	conflicts = obs-streamfx
-	source = obs-StreamFX::git+https://github.com/Xaymar/obs-StreamFX.git#tag=0.12.0b202
-	source = 00001-fix-build-on-ffmpeg-6.patch
+	source = obs-StreamFX::git+https://github.com/Xaymar/obs-StreamFX.git#tag=0.12.0b275
 	md5sums = SKIP
-	md5sums = e532ab3c20aa2b40099706990ec92ba0
 
 pkgname = obs-streamfx-unstable

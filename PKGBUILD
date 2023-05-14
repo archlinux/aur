@@ -2,7 +2,7 @@
 # Contributor: Hugo Denizart <hugo at denizart dot pro>
 _pkgname=obs-StreamFX
 pkgname=${_pkgname,,}-unstable
-pkgver=0.12.0b202
+pkgver=0.12.0b275
 pkgrel=1
 pkgdesc="Bring your stream back to life with modern effects! (unstable/testing version)"
 arch=("x86_64")
@@ -16,15 +16,12 @@ makedepends=("cmake" "git" "libfdk-aac" "libxcomposite" "x264" "jack"
              "vlc" "swig" "luajit" "python" "ninja")
 provides=(${_pkgname,,})
 conflicts=(${_pkgname,,})
-source=("$_pkgname::git+$url.git#tag="$pkgver
-        "00001-fix-build-on-ffmpeg-6.patch")
-md5sums=("SKIP"
-         "e532ab3c20aa2b40099706990ec92ba0")
+source=("$_pkgname::git+$url.git#tag="$pkgver)
+md5sums=("SKIP")
 
 prepare() {
   cd $_pkgname
   git submodule update --init --recursive
-  git apply ../00001-fix-build-on-ffmpeg-6.patch
 }
 
 build() {
