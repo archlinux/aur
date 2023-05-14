@@ -11,6 +11,7 @@ pkgbase = f3d-git
 	makedepends = help2man
 	makedepends = pybind11
 	makedepends = jdk-openjdk
+	makedepends = nlohmann-json
 	depends = vtk
 	depends = glew
 	depends = netcdf
