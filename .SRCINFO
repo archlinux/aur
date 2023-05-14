@@ -8,12 +8,12 @@ pkgbase = abyss
 	license = GPL3
 	makedepends = boost
 	makedepends = sparsehash
-	depends = make
+	makedepends = make
+	makedepends = btllib
 	depends = openmpi
-	depends = sqlite
+	depends = make
 	optdepends = pigz: for parallel gzip
-	optdepends = samtools: to read BAM files
-	optdepends = zsh: to report time and memory usage
+	optdepends = samtools: for reading SAM files
 	source = abyss-2.3.6.tar.gz::https://github.com/bcgsc/abyss/archive/2.3.6.tar.gz
 	sha512sums = bc535f2676f6ed9929219680fb301787bffa527892c46f96c10d4e998cd7a7cf88df689f04e3bb4333d4a8ec7f098f6bd45b1a0e20877674d003c7f57eca5268
 
