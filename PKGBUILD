@@ -1,9 +1,9 @@
 # Maintainer: yukichan
 
 pkgname=yuki-iptv
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
-pkgdesc="IPTV player with EPG support"
+pkgdesc="IPTV player with EPG support (Astroncia IPTV fork)"
 arch=('any')
 url="https://github.com/yuki-iptv/yuki-iptv"
 license=('GPL3')
@@ -11,7 +11,7 @@ makedepends=('make')
 depends=('python' 'qt6-base' 'mpv' 'python-pyqt6' 'python-pillow' 'python-gobject' 'python-unidecode' 'python-requests' 'python-chardet' 'python-setproctitle' 'python-pydbus' 'ffmpeg')
 optdepends=('yt-dlp: YouTube channel support')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('1143e34c1b35195aadbd3a9b86cf2cb0a5bda89749716b83a94e485c1e031f86da5f36bb40cba3989986515b40ca931a94c60f6caff239dd29ffb83615bcb240')
+b2sums=('20b45eac9fbd72b950ecca1b3e4cdf1be246a965bbdbd56ffed757da0819d2a11495791f026b214456c2aa453a86af61feea276bedaa2e38d4a2505939a66c7d')
 
 prepare() {
         cd "${pkgname}-${pkgver}"
