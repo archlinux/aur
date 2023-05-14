@@ -1,13 +1,14 @@
 # Maintainer: taotieren <admin@taotieren.com>
+# Maintainer: wh201906 <wh201906@yandex.com>
 
 _pkgname=SerialTest
 pkgname=serialtest-git
-pkgver=0.2.r1.g4458a53
-pkgrel=0
-pkgdesc="A cross-platform serial port test tool."
+pkgver=0.3.r0.gf92197e
+pkgrel=1
+pkgdesc="A cross-platform test tool for serial port, Bluetooth, TCP and UDP."
 arch=('any')
 url="https://github.com/wh201906/SerialTest"
-license=('GPL2.1')
+license=('LGPL-3.0-only')
 provides=(${_pkgname})
 conflicts=(${pkgname%-git})
 #replaces=(${pkgname})
@@ -34,46 +35,15 @@ pkgver() {
 build() {
     cd "${srcdir}/${_pkgname}/src/"
     qmake
-    make
+    make -j4
 }
 
 package() {
     install -Dm0755 "${srcdir}/${_pkgname}/src/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-git}"
 
-    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/metainfo/io.github.wh201906.serialtest.metainfo.xml" << EOF
-<?xml version="1.0" encoding="UTF-8"?>
-<component type="desktop-application">
-  <id>io.github.wh201906.serialtest</id>
+    install -Dm0644 "${srcdir}/${_pkgname}/pack/aur/io.github.wh201906.serialtest.metainfo.xml" "${pkgdir}/usr/share/metainfo/io.github.wh201906.serialtest.metainfo.xml"
 
-  <name>SerialTest</name>
-  <summary>SerialTest</summary>
-
-  <metadata_license>MIT</metadata_license>
-  <project_license>GPL-2.0-or-later</project_license>
-
-  <description>
-    <p>
-      A cross-platform serial port test tool.
-    </p>
-  </description>
-
-  <launchable type="desktop-id">io.github.wh201906.serialtest.desktop</launchable>
-</component>
-EOF
-
-    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/io.github.wh201906.serialtest.desktop" << EOF
-[Desktop Entry]
-Version=1.0
-Type=Application
-
-Name=SerialTest
-Comment=SerialTest
-Categories=Development;Electronics;
-
-Icon=serialtest
-Exec=serialtest
-Terminal=false
-EOF
+    install -Dm0644 "${srcdir}/${_pkgname}/pack/aur/io.github.wh201906.serialtest.desktop" "${pkgdir}/usr/share/applications/io.github.wh201906.serialtest.desktop"
 
     install -Dm0644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "$srcdir/${_pkgname}/src/icon/icon.png" "$pkgdir/usr/share/pixmaps/${pkgname}.png"
