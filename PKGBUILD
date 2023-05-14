@@ -2,8 +2,8 @@
 # Co-Maintainer: Ricardo Gonçalves <ricardompgoncalves@gmail.com>
 
 pkgname=autenticacao-gov-pt-bin
-pkgver=3.9.1
-pkgrel=3
+pkgver=3.10.1
+pkgrel=1
 pkgdesc="Portuguese Citizen Card Application (Portugal eID) - version with pre compiled binaries by AMA"
 arch=('x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -34,7 +34,7 @@ replaces=('cartaodecidadao-bin')
 source_x86_64=("https://aplicacoes.autenticacao.gov.pt/apps/pteid-mw-linux.x86_64.flatpak"
  "autenticacao-gov-pt-bin.install")
 
-sha512sums_x86_64=('0260f89642c6743b37a9e0157d5e70276042820f2a70931dc8e271968c8ee40c29ddf1e845aa524aeaacaf53b94d3ebeab5793b220a43c8a233446e602521d00'
+sha512sums_x86_64=('399453dfa3a864a49cc7662b2035bfd13dfc281853720e56377cd0ad6ca2fb98e5c30e05c2eccd721057fefe09e1c31b4869ef09769c671f94b3a3b179411012'
                    'd38b9748f386fcf64f3f0cb717eccf7936c64f0e7b6370ae3b1b079902015ce56d3057afcf2877ca4eee38776269ac3642701803ba96b24a81cfccc9a4d3245f')
 
 install='autenticacao-gov-pt-bin.install'
@@ -69,4 +69,12 @@ package() {
   rm -rf "${pkgdir}"/usr/lib/pkgconfig/poppler.pc
   rm -rf "${pkgdir}"/usr/lib/pkgconfig/xerces-c.pc
   rm -rf "${pkgdir}"/usr/lib/pkgconfig/xml-security-c.pc
+  rm -rf "${pkgdir}"/usr/share/man/man3/libcurl*
+  rm -rf "${pkgdir}"/usr/share/man/man3/curl*
+  rm -rf "${pkgdir}"/usr/share/man/man3/CURL*
+  rm -rf "${pkgdir}"/usr/share/man/man1/curl*
+  rm -rf "${pkgdir}"/usr/share/aclocal/libcurl*
+  rm -rf "${pkgdir}"/usr/lib/libcurl*
+  rm -rf "${pkgdir}"/usr/lib/pkgconfig/libcjson.pc
+  rm -rf "${pkgdir}"/usr/lib/pkgconfig/libcurl.pc
 }
