@@ -3,7 +3,7 @@
 pkgname=ruby-matrix
 _name=${pkgname#ruby-}
 pkgver=0.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc='An implementation of Matrix and Vector classes'
 arch=(any)
 url='https://github.com/ruby/matrix'
@@ -16,15 +16,17 @@ options=(!emptydirs)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('6e88428e55cc58c574a8e1392212f7bb72cf43cd1a42116de2e6d6ca5ab1f804')
 
+_archive="${_name}-${pkgver}"
+
 prepare() {
-  cd "${_name}-${pkgver}"
+  cd "$_archive"
 
   # update gemspec/Gemfile to allow newer version of the dependencies
   sed --in-place --regexp-extended 's|~>|>=|g' "${_name}.gemspec"
 }
 
 build() {
-  cd "${_name}-${pkgver}"
+  cd "$_archive"
 
   local _gemdir="$(gem env gemdir)"
 
@@ -67,7 +69,7 @@ build() {
 }
 
 check() {
-  cd "${_name}-${pkgver}"
+  cd "$_archive"
 
   local _gemdir="$(gem env gemdir)"
 
@@ -75,7 +77,7 @@ check() {
 }
 
 package() {
-  cd "${_name}-${pkgver}"
+  cd "$_archive"
 
   cp --archive --verbose tmp_install/* "${pkgdir}"
 

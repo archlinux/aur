@@ -1,7 +1,7 @@
 pkgbase = ruby-matrix
 	pkgdesc = An implementation of Matrix and Vector classes
 	pkgver = 0.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ruby/matrix
 	arch = any
 	license = custom:BSD2
