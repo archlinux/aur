@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=certomancer
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Quickly construct, mock & deploy PKI test configurations"
 url="https://github.com/MatthiasValvekens/certomancer"
@@ -35,7 +35,7 @@ depends=(
   python-werkzeug
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0c2344676293ba8cbb078cc4e5970082df2a9b5f911e3169707ace6fa9c6aa73')
+sha256sums=('69d2c9ab951ef580d7c2fd671523fa6d06939c7f20c793eebcfccccbf728951c')
 
 _archive="$pkgname-$pkgver"
 

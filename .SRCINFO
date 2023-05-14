@@ -1,6 +1,6 @@
 pkgbase = certomancer
 	pkgdesc = Quickly construct, mock & deploy PKI test configurations
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/MatthiasValvekens/certomancer
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = certomancer
 	depends = python-requests-mock
 	depends = python-tzlocal
 	depends = python-werkzeug
-	source = certomancer-0.10.0.tar.gz::https://github.com/MatthiasValvekens/certomancer/archive/refs/tags/v0.10.0.tar.gz
-	sha256sums = 0c2344676293ba8cbb078cc4e5970082df2a9b5f911e3169707ace6fa9c6aa73
+	source = certomancer-0.11.0.tar.gz::https://github.com/MatthiasValvekens/certomancer/archive/refs/tags/v0.11.0.tar.gz
+	sha256sums = 69d2c9ab951ef580d7c2fd671523fa6d06939c7f20c793eebcfccccbf728951c
 
 pkgname = certomancer
