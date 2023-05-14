@@ -2,20 +2,24 @@
 
 pkgname=python-pypykatz
 _pkgname=pypykatz
-pkgver=0.5.7
-pkgrel=3
+pkgver=0.6.6
+pkgrel=1
 pkgdesc="Partial Mimikatz implementation in pure Python."
 url="https://pypi.org/project/pypykatz/"
 arch=('any')
 license=('MIT')
 depends=('python' 'python-minidump' 'python-minikerberos' 'python-msldap'
 	 'python-aiowinreg' 'python-aiosmb' 'python-aesedb' 'python-unicrypto')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('1be75b3fec6d447f1d214ef41db8a644957e7bfc98968d9db3938023351cc9d6')
+sha256sums=('7cf7842937d12f5e36448312431a41c88032d3db179660e32004e291cf3622ec')
+
+build() {
+    cd "${_pkgname}-${pkgver}"
+    python -m build --wheel --no-isolation
+}
 
 package() {
-  cd ${_pkgname}-${pkgver}
-  python setup.py install -O1 --root="${pkgdir}" --prefix=/usr
-  find "${pkgdir}/usr/lib/" -type d -name tests -exec rm -rf {} +
+    cd "${_pkgname}-${pkgver}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
