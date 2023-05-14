@@ -1,9 +1,10 @@
 # Maintainer: Groctel <aur@taxorubio.com>
 # Maintainer: Naveen M K <naveen521kk@gmail.com>
 
+_name=manim
 pkgbase=manimce
 pkgname=manim
-pkgver=0.17.2
+pkgver=0.17.3
 pkgrel=1
 pkgdesc="Animation engine for explanatory math videos (community edition)."
 
@@ -11,8 +12,8 @@ arch=('any')
 license=('MIT' 'custom')
 url="https://github.com/ManimCommunity/manim"
 
-source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('37660cfd6f08b27e5e62ba4f12fed3907ed246c6ce344e70c205396d155e3357ade667fe77c08aaf3391e7c22b70b11586972dd61c8069e2ffbeeb2cc138a8c4')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha512sums=('188fa537a2ee49b6d576ae191e0931dc71002a9ae1cfc8380ca51c03192ebc00e2c529dce1a2d210aa68d776274bace8aaa8691acfae78466970e553848e7f30')
 
 conflicts=('python-manimlib')
 
@@ -53,7 +54,10 @@ depends=(
 	'python-watchdog-git'
 )
 makedepends=(
-	'python-setuptools'
+	'python-build'
+	'python-installer'
+	'python-wheel'
+	'python-poetry-core'
 )
 optdepends=(
 	'jupyterlab: Jupyter something'
@@ -64,22 +68,19 @@ optdepends=(
 prepare ()
 {
 	cd "$srcdir/$pkgname-$pkgver"
-	sed -i 's/cloup>=0.13.0,<0.14.0/cloup/g' setup.py
-	sed -i 's/mapbox-earcut>=0.12.10,<0.13.0/mapbox-earcut/g' setup.py
-	sed -i 's/screeninfo>=0.6.7,<0.7.0/screeninfo/g' setup.py
-	sed -i 's/srt>=3.5.0,<4.0.0/srt/g' setup.py
+	sed -i 's/cloup = "^0.13.0"/cloup = "*"/g' pyproject.toml
 }
 
 build ()
 {
 	cd "$srcdir/$pkgname-$pkgver"
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 package ()
 {
 	cd "$srcdir/$pkgname-$pkgver"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -D -m644 LICENSE.community "$pkgdir/usr/share/licenses/$pkgname/LICENSE.community"
 }
