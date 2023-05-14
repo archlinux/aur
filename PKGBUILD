@@ -2,7 +2,7 @@
 # Contributor: ml <>
 
 pkgname=alda
-pkgver=2.2.4
+pkgver=2.2.5
 pkgrel=1
 pkgdesc='A music programming language for musicians'
 arch=('x86_64')
