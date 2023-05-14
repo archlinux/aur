@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=iotas
-pkgver=0.1.14
+pkgver=0.1.16
 pkgrel=1
 pkgdesc="Simple note taking"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('libadwaita' 'sqlite' 'org.freedesktop.secrets' 'gtksourceview5'
 makedepends=('meson' 'gobject-introspection')
 checkdepends=('appstream-glib')
 source=($url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('e12f50e52740670776232347aa865d61a0d8d6a174f607ac4772dc08bfc1cd945b77b7cb1c0a0b890c8b6b7af90425e711572c467fe1620b646fea08b8bc4150')
+b2sums=('c704f8c6a3d42c4db88dc2b432ddcbc7ccd163a66d1e9b8cb9d88bc7314491810f1c5a3e16e033407fb1de1b165aa1648ad95e8c17c74f10e1aca4686144831b')
 
 build() {
   arch-meson $pkgname-$pkgver build
