@@ -1,7 +1,7 @@
 # Maintainer: Christopher <archlinux-maintainer@christopherz.com>
 
 pkgname="proid"
-pkgver=r9.e8913fd
+pkgver=r11.480742a
 pkgrel=1
 pkgdesc="A tool to hide and show windows in X"
 arch=("any")
