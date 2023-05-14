@@ -1,0 +1,15 @@
+[Unit]
+Description=Minecraft Server Hub
+
+[Service]
+Type=simple
+
+WorkingDirectory=/etc/mc-server-hub
+ExecStart=java -jar /usr/lib/mc-server-hub.war
+KillSignal=SIGINT
+
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
