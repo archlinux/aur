@@ -6,7 +6,7 @@
 pkgname=archi
 _pkgver_major=5
 _pkgver_minor=0
-_pkgver_patch=0
+_pkgver_patch=2
 pkgver=${_pkgver_major}.${_pkgver_minor}.${_pkgver_patch}
 pkgrel=5
 pkgdesc="Free, open source, cross-platform tool and editor to create ArchiMate models."
@@ -18,23 +18,23 @@ optdepends=('webkitgtk2: hints view support')
 provides=('archi')
 
 source=("https://www.archimatetool.com/downloads/archi.php?/${pkgver}/Archi-Linux64-${pkgver}.tgz"
-        "${pkgname}.desktop"
-        "${pkgname}-launcher.sh"
-        "LICENSE")
-md5sums=('c441b8f2294785e3137828896ddba1d2'
-         '7b9a0cf8e67790ff9ca1afc6578e3adc'
-         'da5e0498fe923984150c6dbb08ae9bd8'
-         '66653b079752362c3e9fc7142027cb7e')
+  "${pkgname}.desktop"
+  "${pkgname}-launcher.sh"
+  "LICENSE")
+md5sums=('74a3102ff593f7e6374808eeb3a65f57'
+  '7b9a0cf8e67790ff9ca1afc6578e3adc'
+  'da5e0498fe923984150c6dbb08ae9bd8'
+  '66653b079752362c3e9fc7142027cb7e')
 
 package() {
   cd "${srcdir}"
 
   # Docs
   install -d "${pkgdir}/usr/share/doc/${pkgname}"
-  install -m644 Archi/docs/*       "${pkgdir}/usr/share/doc/${pkgname}/"
+  install -m644 Archi/docs/* "${pkgdir}/usr/share/doc/${pkgname}/"
 
   # Icon and desktop file
-  install -Dm644 Archi/icon.xpm     "${pkgdir}/usr/share/pixmaps/${pkgname}.xpm"
+  install -Dm644 Archi/icon.xpm "${pkgdir}/usr/share/pixmaps/${pkgname}.xpm"
   install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   # Launcher
@@ -50,4 +50,3 @@ package() {
   # Install license
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
