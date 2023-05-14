@@ -1,6 +1,6 @@
 pkgbase = phoc-embedded-wlroots
 	pkgdesc = A pure Wayland shell prototype for GNOME on mobile devices (wlroots embedded)
-	pkgver = 0.24.0
+	pkgver = 0.27.0
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/Phosh/phoc
 	arch = x86_64
@@ -23,10 +23,9 @@ pkgbase = phoc-embedded-wlroots
 	depends = xcb-util-renderutil
 	depends = glslang
 	provides = phoc
-	provides = wlroots
 	conflicts = phoc
 	conflicts = wlroots
-	source = git+https://gitlab.gnome.org/World/Phosh/phoc.git#tag=8af5ef8f
+	source = git+https://gitlab.gnome.org/World/Phosh/phoc.git#tag=v0.27.0
 	sha256sums = SKIP
 
 pkgname = phoc-embedded-wlroots
