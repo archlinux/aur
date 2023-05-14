@@ -2,8 +2,8 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=fblog-git
-pkgver=4.3.0.r0.g93da0f6
-pkgrel=2
+pkgver=4.4.0.r0.g27bdbfd
+pkgrel=1
 pkgdesc="Small command-line JSON log viewer (git)"
 arch=('x86_64')
 url="https://github.com/brocode/fblog"
