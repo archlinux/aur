@@ -1,4 +1,5 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Arne Brücher <archlinux@arne-bruecher.de>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Plague-doctor <plague at privacyrequired dot com>
 
 pkgname=standardnotes-bin
