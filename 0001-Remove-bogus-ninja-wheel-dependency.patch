@@ -1,0 +1,23 @@
+From 0c30de4681724c5531c24b1bfa44e055caa95e63 Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Sat, 13 May 2023 20:50:54 +0000
+Subject: [PATCH] Remove bogus ninja wheel dependency
+
+ninja is installed as a system package, not as a python wheel.
+---
+ pyproject.toml | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 2a5bc90..8bc6953 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -4,5 +4,4 @@ requires = [
+          "setuptools_scm[toml]>=3.4",
+          "setuptools-git",
+          "wheel",
+-         "ninja",
+          "cmake_build_extension"]
+-- 
+2.40.1
+

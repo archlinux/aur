@@ -1,6 +1,6 @@
 pkgbase = rapidyaml-git
 	pkgdesc = A library to parse and emit YAML, and do it fast.
-	pkgver = 0.2.3.r21.gefc8b0e
+	pkgver = 0.5.0.r14.g6a5a07f
 	pkgrel = 1
 	url = https://github.com/biojppm/rapidyaml
 	arch = x86_64
@@ -8,24 +8,35 @@ pkgbase = rapidyaml-git
 	checkdepends = python-pytest
 	makedepends = git
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = swig
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-git
 	makedepends = python-setuptools-scm
-	makedepends = python-cmake-build-extension
+	makedepends = python-cmake-build-extension-git
 	source = git+https://github.com/biojppm/rapidyaml.git
 	source = git+https://github.com/biojppm/c4core.git
 	source = git+https://github.com/biojppm/cmake.git
+	source = git+https://github.com/biojppm/debugbreak
+	source = git+https://github.com/fastfloat/fast_float
+	source = 0001-Remove-bogus-ninja-wheel-dependency.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = c12e283c0c0e970f7150068cf44f5106b4459f745f0b57513acd7bbfcbec897f
 
 pkgname = rapidyaml-git
-	provides = rapidyaml=0.2.3.r21.gefc8b0e
+	provides = rapidyaml=0.5.0.r14.g6a5a07f
 	provides = c4core
 	conflicts = rapidyaml
 	conflicts = c4core
 
 pkgname = python-rapidyaml-git
 	depends = python
-	provides = python-rapidyaml=0.2.3.r21.gefc8b0e
+	depends = python-deprecation
+	provides = python-rapidyaml=0.5.0.r14.g6a5a07f
 	conflicts = python-rapidyaml
