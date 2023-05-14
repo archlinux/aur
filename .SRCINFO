@@ -1,14 +1,17 @@
 pkgbase = gatk
-	pkgdesc = Variant discovery in high-throughput bioinformatics sequencing data
+	pkgdesc = Genome Analysis Toolkit https://doi.org/10.1101/gr.107524.110
 	pkgver = 4.4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://software.broadinstitute.org/gatk
 	arch = any
 	license = BSD
-	depends = java-runtime>=8
+	makedepends = git
+	makedepends = java-environment=17
+	makedepends = git-lfs
+	depends = java-runtime=17
 	depends = python
 	depends = r
-	source = https://github.com/broadinstitute/gatk/releases/download/4.4.0.0/gatk-4.4.0.0.zip
-	sha256sums = 444600f7b38b46ad0b3606b7d40ce921e0ff1910a50165872f1c73c7c4a1a390
+	source = gatk.sh
+	sha256sums = acc059e37c9e9e9053815095d3eecd00cd115d22f4c14bc4b97d7a5be13234c4
 
 pkgname = gatk

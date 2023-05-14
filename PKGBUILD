@@ -1,22 +1,32 @@
-# Maintainer: Clint Valentine <valentine.clint@gmail.com>
-# Contributer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
-
 pkgname=gatk
 pkgver=4.4.0.0
-pkgrel=1
-pkgdesc="Variant discovery in high-throughput bioinformatics sequencing data"
+pkgrel=2
+pkgdesc="Genome Analysis Toolkit https://doi.org/10.1101/gr.107524.110"
 arch=('any')
 url=https://software.broadinstitute.org/"${pkgname}"
 license=('BSD')
+makedepends=('git' 'java-environment=17' 'git-lfs')
+depends=('java-runtime=17' 'python' 'r')
+source=("gatk.sh")
+sha256sums=('acc059e37c9e9e9053815095d3eecd00cd115d22f4c14bc4b97d7a5be13234c4')
 
-depends=('java-runtime>=8' 'python' 'r')
-source=("https://github.com/broadinstitute/gatk/releases/download/${pkgver}/gatk-${pkgver}.zip")
-sha256sums=('444600f7b38b46ad0b3606b7d40ce921e0ff1910a50165872f1c73c7c4a1a390')
 
+prepare() {
+  cd "${srcdir}"
+  git clone https://github.com/broadinstitute/gatk.git "${pkgname}"
+  cd $pkgname
+  git checkout "${pkgver}"
+  git lfs install
+}
+
+build() {
+  cd "${srcdir}"/"${pkgname}"
+  ./gradlew localJar
+}
 
 package() {
-  cd "${srcdir}"/"${pkgname}"-"${pkgver}"
-  install -Dm755 gatk $pkgdir/usr/bin/$pkgname
-  install -Dm644 "gatk-package-${pkgver}-local.jar" "${pkgdir}/usr/share/java/${pkgname}/GenomeAnalysisTK.jar"
-  install -Dm644 "gatk-completion.sh" "${pkgdir}/usr/share/bash-completion/completions/gatk"
+  install -Dm755 gatk.sh "${pkgdir}"/usr/bin/gatk
+  cd "${srcdir}"/"${pkgname}"
+  install -Dm644 build/libs/gatk-package-"${pkgver}"-SNAPSHOT-local.jar "${pkgdir}"/usr/share/java/"${pkgname}"/GenomeAnalysisTK.jar
 }
+
