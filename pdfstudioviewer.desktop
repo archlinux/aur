@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=PDF Studio Viewer 2022
+Name=PDF Studio Viewer 2023
 Comment=Views and Edits Adobe PDF (acrobat) files
 Icon=pdfstudioviewer
 Exec=pdfstudioviewer %U
