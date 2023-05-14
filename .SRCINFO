@@ -20,7 +20,7 @@ pkgbase = craftos-pc
 	optdepends = libwebp: WebP screenshot/recording support
 	source = craftos2-2.7.4.tar.gz::https://github.com/MCJack123/craftos2/archive/v2.7.4.tar.gz
 	source = craftos2-lua-2.7.4.tar.gz::https://github.com/MCJack123/craftos2-lua/archive/v2.7.4.tar.gz
-	sha256sums = b0bd87353f1fb9144b616b8a7aef2989e71ced8269915e7d1e2424e2dec51b60
+	sha256sums = 8c8672468941ae75a591a2cce4adc6200029ae6cd1daed801d33e24d7286c49b
 	sha256sums = 2dd9bbd444391a3dbaf5ca25fb506f55ff04a563f0de528de44a1997b01ef465
 
 pkgname = craftos-pc
