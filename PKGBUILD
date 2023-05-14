@@ -1,7 +1,7 @@
 # Maintainer: GI Jack <gi_jack@hackermail.com>
 
 pkgname=python-blue-loader
-pkgver=0.1.41
+pkgver=0.1.47
 pkgrel=1
 pkgdesc="Python tools to communicate with Ledger Blue, Nano S and Nano X"
 arch=('any')
@@ -11,20 +11,17 @@ license=('Apache')
 depends=('python' 'python-hidapi' 'python-protobuf' 'python-pycryptodomex'
          'python-future' 'python-pillow' 'python-websocket-client' 'python-u2flib-host'
          'python-ecpy')
-makedepends=('python-setuptools')
-checkdepends=()
+makedepends=('python-build' 'python-installer' 'python-wheel')
 optdepends=('python-pyscard: smartcard')
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/LedgerHQ/blue-loader-python/archive/${pkgver}.tar.gz")
-sha256sums=('11ec087dacaea54415760b26839fc38d4f972477fd82ecdee45635a580e8b56a')
+sha256sums=('72b89018b81675a49323e97663928dffd5ce133dc2ae2a1e888100e2bb2b318d')
+
+build() {
+    cd "blue-loader-python-${pkgver}"
+    python -m build --wheel --no-isolation
+}
 
 package() {
-  cd blue-loader-python-${pkgver}
-  python setup.py install -O1 --root="${pkgdir}" --prefix=/usr
+    cd "blue-loader-python-${pkgver}"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
