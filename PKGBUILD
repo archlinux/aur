@@ -2,15 +2,15 @@
 # Contributor : Geraud Le Falher <daureg@gmail.com>
 
 pkgname=log4cpp
-pkgver=1.1.3
-pkgrel=4
+pkgver=1.1.4
+pkgrel=1
 pkgdesc="A library of C++ classes for flexible logging to files, syslog, IDSA and other destinations."
 arch=('x86_64')
 url="http://log4cpp.sourceforge.net/"
 license=('LGPL')
 depends=('gcc-libs' 'libnsl')
 source=(https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('2cbbea55a5d6895c9f0116a9a9ce3afb86df383cd05c9d6c1a4238e5e5c8f51d')
+sha256sums=('696113659e426540625274a8b251052cc04306d8ee5c42a0c7639f39ca90c9d6')
 
 build() {
   cd "$srcdir/$pkgname"
