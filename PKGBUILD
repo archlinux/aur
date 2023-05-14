@@ -1,8 +1,8 @@
 # Maintainer: Jelle van der Waa <jelle@archlinux.org>
 
 pkgname=python-keycloak
-pkgver=2.6.1
-pkgrel=2
+pkgver=2.7.0
+pkgrel=1
 pkgdesc='Python package providing access to the Keycloak API'
 arch=('any')
 url='https://github.com/marcospereirampj/python-keycloak'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'python-requests' 'python-requests-toolbelt' 'python-jose' 'python-urllib3')
 makedepends=(python-build python-installer python-wheel python-poetry-core)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/marcospereirampj/python-keycloak/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('78f13f7bba8dc0eecaea1c9070ce5c2c41df0a66a9d1fab50a523c28fc8ce8ad')
+sha256sums=('290df9db8bc8a39c1f35cc76614c49f0ec38caf8f0ad8e5e43c9e65ac8d20e9a')
 
 prepare() {
   cd "$pkgname-$pkgver"
