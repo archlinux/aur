@@ -1,7 +1,7 @@
 pkgbase = python-eduvpn-client
 	pkgdesc = Linux client and Python client API for eduVPN
 	pkgver = 4.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/eduvpn/python-eduvpn-client
 	arch = any
 	license = GPL
@@ -14,7 +14,6 @@ pkgbase = python-eduvpn-client
 	depends = dbus-python
 	depends = python-gobject
 	depends = hicolor-icon-theme
-	depends = python-argparse
 	depends = python-eduvpn_common
 	depends = python-pyqt5
 	depends = libibus
