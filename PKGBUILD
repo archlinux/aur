@@ -4,7 +4,7 @@
 # Contributor: Sam Whited <sam@samwhited.com>
 
 pkgname=feedbackd
-pkgver=0.0.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A daemon to provide haptic feedback on events'
 arch=(x86_64 aarch64)
@@ -25,10 +25,8 @@ makedepends=(
 	python-docutils
 )
 
-_tag=25913a6a
-# _tag=fca952f813124110c9dabd766e85255992187c32
 source=(
-	"git+${url}.git#tag=${_tag}"
+	"git+${url}.git#tag=v${pkgver}"
 )
 sha256sums=(
 	'SKIP'

@@ -5,3 +5,4 @@ src/
 *.tar.gz
 *.tar.xz
 *.tar.zstd
+feedbackd
