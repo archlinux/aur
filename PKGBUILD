@@ -4,10 +4,10 @@
 
 pkgname=lsyncd
 pkgver=2.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Live Syncing (Mirror) Daemon"
 arch=(x86_64)
-url="https://github.com/axkibe/lsyncd"
+url="https://github.com/lsyncd/lsyncd"
 license=(GPL2)
 depends=(
   rsync
@@ -19,7 +19,7 @@ makedepends=(
 )
 
 source=(
-  "$pkgname-$pkgver.tar.gz::https://github.com/lsyncd/lsyncd/archive/refs/tags/v$pkgver.tar.gz"
+  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   "lsyncd.service"
   "use-lua53.patch"
 )
