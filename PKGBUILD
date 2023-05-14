@@ -11,7 +11,7 @@ url='https://github.com/alda-lang/alda'
 license=('EPL')
 depends=('bash' 'java-runtime>=8')
 makedepends=('go' 'gradle')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/release-$pkgver.tar.gz"
+source=("$pkgname-release-$pkgver.tar.gz::$url/archive/release-$pkgver.tar.gz"
         alda-player)
 sha256sums=('9dc2fb0886e97be1906e6d0a96671ef9d0f52b9f91817e4c64741cd18bf8e0d1'
             '29550c5c69f95d6eba1155e3b45430e205e8a2502f597c8c36b7b5b5a126f900')
