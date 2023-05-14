@@ -8,7 +8,7 @@ license=('LGPL2')
 depends=(
   'pacman>5'
 )
-source=("${pkgname}.tar.gz::https://github.com/neodiX42/packages/releases/latest/download/ton-linux-x86-64.tar.gz")
+source=("${pkgname}.tar.gz::https://github.com/ton-blockchain/packages/releases/latest/download/ton-linux-x86-64.tar.gz")
 sha256sums=('SKIP')
 
 package() {
