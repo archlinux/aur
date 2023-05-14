@@ -1,7 +1,7 @@
 pkgbase = python-secp256k1-git
 	pkgdesc = Python FFI bindings for libsecp256k1
 	pkgver = 1.r0.g0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/rustyrussell/secp256k1-py
 	arch = any
 	license = MIT
