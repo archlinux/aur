@@ -3,7 +3,7 @@
 
 _pkgname=SerialTest
 pkgname=serialtest
-pkgver=0.2.1
+pkgver=0.3
 pkgrel=1
 pkgdesc="A cross-platform test tool for serial port, Bluetooth, TCP and UDP."
 arch=('any')
@@ -19,7 +19,7 @@ options=('!strip')
 install=${pkgname}.install
 source=("${_pkgname}-${pkgver}.tar.gz::https://ghproxy.com/${url}/archive/refs/tags/V${pkgver}.tar.gz"
         "${pkgname}.install")
-sha256sums=('4300724d5fe8368f50abcb45e24e01dc2fe1499f2a62151b263ea58d961a193b'
+sha256sums=('d5f79194b0801f730a4a2e59627e36e93e745f503f8bf81ee9fbf429b5801ab3'
             '303f34246c0d341e1093d6e486e2cbfdbbb0d122d751de649f562ebac37777b4')
 
 build() {

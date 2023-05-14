@@ -1,6 +1,6 @@
 pkgbase = serialtest
 	pkgdesc = A cross-platform test tool for serial port, Bluetooth, TCP and UDP.
-	pkgver = 0.2.1
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/wh201906/SerialTest
 	install = serialtest.install
@@ -13,9 +13,9 @@ pkgbase = serialtest
 	provides = SerialTest
 	conflicts = serialtest-git
 	options = !strip
-	source = SerialTest-0.2.1.tar.gz::https://ghproxy.com/https://github.com/wh201906/SerialTest/archive/refs/tags/V0.2.tar.gz
+	source = SerialTest-0.3.tar.gz::https://ghproxy.com/https://github.com/wh201906/SerialTest/archive/refs/tags/V0.3.tar.gz
 	source = serialtest.install
-	sha256sums = 4300724d5fe8368f50abcb45e24e01dc2fe1499f2a62151b263ea58d961a193b
+	sha256sums = d5f79194b0801f730a4a2e59627e36e93e745f503f8bf81ee9fbf429b5801ab3
 	sha256sums = 303f34246c0d341e1093d6e486e2cbfdbbb0d122d751de649f562ebac37777b4
 
 pkgname = serialtest
