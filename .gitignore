@@ -1,4 +1,4 @@
 pkg/
 src/
-vunit_hdl-*.tar.gz
+python-vunit_hdl-*.tar.gz
 *.pkg.tar*
