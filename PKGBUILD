@@ -7,7 +7,7 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=112.0.2
+pkgver=113.0.1
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
@@ -80,7 +80,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         "git+https://github.com/cachyos/cachyos-browser-settings.git"
         "git+https://github.com/cachyos/cachyos-browser-common.git"
         "match.patch")
-sha256sums=('e6a4819a3b82b1ca6c45296e50e6c9ab653306eeb540e50ba8683e339565992e'
+sha256sums=('c4f86ecbb3f418cf8f0000a3824c0decb6ef2253f468cf6e005c5fd1de33da4d'
             'SKIP'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
@@ -250,7 +250,7 @@ END
     patch -Np1 -i ${_patches_dir}/devtools-bypass.patch
 
     msg2 "KDE menu and unity menubar"
-    patch -Np1 -i ${_patches_dir}/unity_kde/mozilla-kde.patch
+    #patch -Np1 -i ${_patches_dir}/unity_kde/mozilla-kde.patch
     patch -Np1 -i ${_patches_dir}/unity_kde/firefox-kde.patch
     patch -Np1 -i ${_patches_dir}/unity_kde/unity-menubar.patch
     msg2 "mozilla-nongnome-proxies"
