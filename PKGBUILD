@@ -1,6 +1,6 @@
 # Maintainer: Ilya Zlobintsev <ilya.zl@protonmail.com>
 pkgname=lact
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 license=("MIT")
 pkgdesc="AMDGPU Controller application"
