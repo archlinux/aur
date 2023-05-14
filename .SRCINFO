@@ -1,7 +1,7 @@
 pkgbase = betterbird-bin
 	pkgdesc = EN-US // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will.
 	pkgver = 102.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.betterbird.eu/index.html
 	arch = x86_64
 	license = MPL2
@@ -9,7 +9,7 @@ pkgbase = betterbird-bin
 	provides = betterbird=102.11.0
 	source = https://www.betterbird.eu/downloads/LinuxArchive/betterbird-102.11.0-bb35.en-US.linux-x86_64.tar.bz2
 	source = betterbird.desktop
-	sha256sums = a542e5ebb67147911e8603bcdd7c6f10429254f806675de6b36942c4779b6a1b
+	sha256sums = c87d36857a2b3c711b32b08211c4fb6dcb92ad0ce552dbed8e9ba10620860209
 	sha256sums = 816a97383c4eba202d9993736d14d3f728064d1bea7301adc93ed1248a096ca8
 
 pkgname = betterbird-bin
