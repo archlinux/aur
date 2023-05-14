@@ -5,13 +5,13 @@
 pkgname=('teleport' 'teleport-client')
 _pkgname=teleport
 pkgver=13.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/gravitational/teleport"
 license=('Apache')
 depends=('glibc' 'libbpf')
-makedepends=('go>=1.17.0' 'rust' 'yarn' 'libbpf-static')
+makedepends=('go>=1.17.0' 'rust' 'yarn' 'libbpf-static>=1.2.0')
 provides=('tctl' 'tsh')
 
 _webassets_ref=8553f8c11de7932b9c347514820f7c95402471d2

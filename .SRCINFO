@@ -1,7 +1,7 @@
 pkgbase = teleport
 	pkgdesc = Modern SSH server for teams managing distributed infrastructure
 	pkgver = 13.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gravitational/teleport
 	arch = i386
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = teleport
 	makedepends = go>=1.17.0
 	makedepends = rust
 	makedepends = yarn
-	makedepends = libbpf-static
+	makedepends = libbpf-static>=1.2.0
 	depends = glibc
 	depends = libbpf
 	provides = tctl
