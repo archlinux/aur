@@ -3,7 +3,7 @@
 
 _srcname=vertical-workspaces
 pkgname=gnome-shell-extension-${_srcname}-git
-pkgver=r45.704c2f9
+pkgver=r542.e1fa64f
 pkgrel=1
 pkgdesc="Changes the horizontal layout of workspaces to vertical and adds customization of Activities Overview layout"
 url="https://github.com/G-dH/${_srcname}"
@@ -23,9 +23,9 @@ pkgver() {
 
 build() {
   cd "${_srcname}"
-  make schemas/gschemas.compiled
+  glib-compile-schemas schemas
   mkdir build
-  mv --target-directory=build schemas metadata.json *.js
+  mv --target-directory=build schemas lib metadata.json stylesheet.css *.js
 }
 
 package() {
