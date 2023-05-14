@@ -1,6 +1,6 @@
 pkgbase = bookstack
 	pkgdesc = A simple, self-hosted, easy-to-use platform for organising and storing information
-	pkgver = 23.05
+	pkgver = 23.05.1
 	pkgrel = 1
 	url = https://github.com/BookStackApp/BookStack
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = bookstack
 	depends = php-fpm
 	options = !strip
 	backup = etc/webapps/bookstack/config.env
-	source = bookstack-23.05.tar.gz::https://github.com/BookStackApp/BookStack/archive/v23.05.tar.gz
-	sha256sums = dd48fc6827247e24d373841328fdf1f6d1b495f431208794060c217133c6120c
+	source = bookstack-23.05.1.tar.gz::https://github.com/BookStackApp/BookStack/archive/v23.05.1.tar.gz
+	sha256sums = f78cf3035ee65d840ad4c11e58c09abe66c6af61a649d06f3efdcce38f5c5c42
 
 pkgname = bookstack

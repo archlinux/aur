@@ -2,7 +2,7 @@
 
 pkgname=bookstack
 _camelname=BookStack
-pkgver=23.05
+pkgver=23.05.1
 pkgrel=1
 pkgdesc='A simple, self-hosted, easy-to-use platform for organising and storing information'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=('composer')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/BookStackApp/BookStack/archive/v${pkgver}.tar.gz")
-sha256sums=('dd48fc6827247e24d373841328fdf1f6d1b495f431208794060c217133c6120c')
+sha256sums=('f78cf3035ee65d840ad4c11e58c09abe66c6af61a649d06f3efdcce38f5c5c42')
 options=('!strip')
 backup=("etc/webapps/$pkgname/config.env")
 
