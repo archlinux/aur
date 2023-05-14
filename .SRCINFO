@@ -1,18 +1,15 @@
 pkgbase = newrelic-php5
 	pkgdesc = PHP Monitoring Agent
-	pkgver = 10.3.0.315
+	pkgver = 10.9.0.324
 	pkgrel = 1
 	url = https://newrelic.com/php
 	install = newrelic-php5.install
 	arch = x86_64
-	arch = i686
 	license = Apache
 	depends = php
-	noextract = newrelic-php5-10.3.0.315.tar.gz
+	noextract = newrelic-php5-10.9.0.324.tar.gz
 	backup = etc/php/conf.d/newrelic.ini
-	source = newrelic-php5-10.3.0.315.tar.gz::https://download.newrelic.com/php_agent/archive/10.3.0.315/newrelic-php5-10.3.0.315-linux.tar.gz
-	source = newrelic-daemon.service
-	b2sums = dec058af592704078f1cc3cb95312127fb786fb8fde9bfa31c98bbbb12b7f9ebf98639e31952b7aec0c2671d084d51e97d2bce9b957a6772df8f4f3e75de5f43
-	b2sums = 02b3199ad7edf6ab14207b01f971c7fada8e69c351b04e74fd2d1847900b5ff48591c5f21e862afdf1cbfe3a10256238092a5535addbc554f4f26dd7cb19f5da
+	source = newrelic-php5-10.9.0.324.tar.gz::https://download.newrelic.com/php_agent/archive/10.9.0.324/newrelic-php5-10.9.0.324-linux.tar.gz
+	b2sums = aff4c634414cd8acd6588d92bea998b7d6b556fa4d6d208df0118180630e04387ca3da0b0af071b7099f15c282a64e04693c7831369d41da7462bd3f75ae49e2
 
 pkgname = newrelic-php5

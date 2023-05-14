@@ -1,6 +1,5 @@
 *
 !.gitignore
 !.SRCINFO
-!newrelic-daemon.service
 !newrelic-php5.install
 !PKGBUILD
