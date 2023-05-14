@@ -2,19 +2,23 @@
 
 pkgname=python-piplapis
 _pkgname=piplapis-python
-pkgver=5.2.2
+pkgver=5.2.3
 pkgrel=1
 pkgdesc="Python Library for interfacing with pipl.com"
 url="https://pypi.org/project/piplapis-python/"
 arch=('any')
 license=('Apache2')
 depends=('python-pytz')
-makedepends=('python-six' 'python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-six')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('c511498cd30be09e721e287c8d59ea956f7b97febc3d290cb53574c7b16c5968')
+sha256sums=('53effde6eb0e59401332f9f4a3a54666990782a50cde9d3f8f4d46d111f69f33')
 
-package() {
-  cd piplapis-python-${pkgver}
-  python setup.py install -O1 --root="${pkgdir}" --prefix=/usr
+build() {
+    cd "piplapis-python-${pkgver}"
+    python -m build --wheel --no-isolation
 }
 
+package() {
+    cd "piplapis-python-${pkgver}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+}
