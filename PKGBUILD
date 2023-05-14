@@ -3,14 +3,14 @@
 # Maintainer: Javier Herrera <javierherrera at posteo dot net>
 pkgname=tfenv
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Terraform version manager inspired by rbenv"
 arch=("any")
 url="https://github.com/tfutils/tfenv"
 license=('MIT')
 groups=()
-depends=(bash)
+depends=(bash unzip)
 makedepends=()
 checkdepends=()
 optdepends=()
