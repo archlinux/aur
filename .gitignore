@@ -1,4 +1,5 @@
-*
-!.gitignore
-!.SRCINFO
-!PKGBUILD
+/*
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
+!/000*.patch

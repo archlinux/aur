@@ -1,7 +1,7 @@
 pkgbase = python-pympv
 	pkgdesc = Python wrapper for libmpv
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/marcan/pympv
 	arch = x86_64
 	license = GPL3
@@ -11,6 +11,10 @@ pkgbase = python-pympv
 	depends = python
 	conflicts = python-mpv
 	source = python-pympv-0.7.1.tar.gz::https://github.com/marcan/pympv/archive/refs/tags/v0.7.1.tar.gz
+	source = 0003-Give-str-its-Python-3-meaning.patch
+	source = 0008-Update-to-libmpv-API-2.0.patch
 	b2sums = 57f9f0dbbf8d14714729642f0a646c0e9227134057b30c73c377c598c4c0b6e56147ec5a6ccc980e8b223775edd31072c2842f3d249a3698db5e83bbdc3f05ef
+	b2sums = d402ed389528472b4cbbae7bc78f95b67c7c3c353f08be2aded42ef209e66e612dea34896e0c435a02ba6e8b490a3d66ad2753be52bfa58f6fbbe8215c47e432
+	b2sums = fc1937d569a620820f80bdd308b5c3eabf31a7ca33250138b0f855be9787a46166e43085728300f12ac2f62fe31c77ab1207a3652860c1997af31f97101b3c9a
 
 pkgname = python-pympv
