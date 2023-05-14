@@ -1,10 +1,11 @@
 pkgbase = perl-crypt-rijndael
 	pkgdesc = AES/Rijndael Encryption Module
 	pkgver = 1.16
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/Crypt-Rijndael
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = PerlArtistic
 	license = GPL
 	makedepends = perl-test-manifest>=1.14
