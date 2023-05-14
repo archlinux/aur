@@ -1,12 +1,12 @@
 # Maintainer: Nikita Puzyryov <nekit1234007@gmail.com>
 pkgname=gixy-git
-pkgver=0.1.20.r8.g641060d
+pkgver=0.1.20.r10.ge9008dc
 pkgrel=1
 pkgdesc="Nginx configuration static analyzer"
 arch=(any)
 url="https://github.com/yandex/gixy"
 license=('MPL')
-depends=('python' 'python-six' 'python-pyparsing' 'python-cached-property' 'python-argparse' 'python-jinja' 'python-configargparse')
+depends=('python' 'python-six' 'python-pyparsing' 'python-cached-property' 'python-jinja' 'python-configargparse')
 provides=(gixy)
 conflicts=(gixy)
 options=(!emptydirs)

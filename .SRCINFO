@@ -1,6 +1,6 @@
 pkgbase = gixy-git
 	pkgdesc = Nginx configuration static analyzer
-	pkgver = 0.1.20.r8.g641060d
+	pkgver = 0.1.20.r10.ge9008dc
 	pkgrel = 1
 	url = https://github.com/yandex/gixy
 	arch = any
@@ -9,7 +9,6 @@ pkgbase = gixy-git
 	depends = python-six
 	depends = python-pyparsing
 	depends = python-cached-property
-	depends = python-argparse
 	depends = python-jinja
 	depends = python-configargparse
 	provides = gixy
