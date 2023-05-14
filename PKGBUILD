@@ -5,7 +5,7 @@
 
 pkgname=dosbox-djcrx
 pkgver=2.05
-pkgrel=21
+pkgrel=22
 libmver=0.8.1
 pkgdesc="Headers and utilities for the djgpp dosbox cross-compiler"
 arch=('i686' 'x86_64')
@@ -91,7 +91,7 @@ build() {
   ln -s openlibm_fenv.h fenv.h
 
   sed -i 's/\/\/typedef	__double_t	double_t/typedef	double	double_t/' math.h
-  sed -i 's/\/\/typedef	__float_t float_t/typedef	float	float_t/' math.h
+  sed -i 's/\/\/typedef	__float_t	float_t/typedef	float	float_t/' math.h
 }
 
 package() {
