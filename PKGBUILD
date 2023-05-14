@@ -12,7 +12,7 @@ pkgdesc="Server written in Java that allows users to share and edit geospatial d
 arch=("any")
 url="http://geoserver.org"
 license=("GPL2+")
-depends=("jre8-openjdk-headless")
+depends=("jre17-openjdk-headless")
 
 
 source=(
