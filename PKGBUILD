@@ -1,47 +1,38 @@
-# Maintainer: skydrome -at- protonmail
+# Merged with official ABS scrcpy PKGBUILD by João, 2023/05/14 (all respective contributors apply herein)
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
+# Contributor: skydrome -at- protonmail
 
 pkgname=scrcpy-git
-pkgver=1.17.r3.ged130e0
+pkgver=2.0_r2106.gcb20bcb1
 pkgrel=1
-pkgdesc='Display and control your Android device (development version)'
-arch=('i686' 'x86_64')
+pkgdesc='Display and control your Android device'
+arch=($CARCH)
 url='https://github.com/Genymobile/scrcpy'
-license=('Apache')
-depends=('ffmpeg' 'sdl2')
-makedepends=('meson' 'git')
-optdepends=('android-tools: required if adb is not already installed')
-provides=("scrcpy")
-conflicts=("scrcpy")
-noextract=("scrcpy-server"*)
-
-# Get latest tagged version
-_pkgver="$(curl -qILs -o /dev/null -w %{url_effective} "$url/releases/latest")"
-_pkgver="${_pkgver##*/}"
-
-source=("git+$url.git"
-        "$url/releases/download/$_pkgver/scrcpy-server-$_pkgver")
-sha256sums=('SKIP'
-            'SKIP')
+license=(Apache)
+depends=(android-tools ffmpeg sdl2)
+makedepends=(git meson)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+source=("git+https://github.com/Genymobile/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd scrcpy
-    git describe |sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd ${pkgname%-git}
+  _ver="$(git describe | sed 's/^v//;s/-.*//')"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd scrcpy
-    rm -rf build
-
-    arch-meson \
-        -D prebuilt_server="${srcdir}/scrcpy-server-${_pkgver}" \
-        build
-
-    ninja -C build
+  mkdir -p build
+  arch-meson build ${pkgname%-git} \
+    -D b_lto=true \
+    -D b_ndebug=true \
+    -D prebuilt_server=../$pkgname-server-v$pkgver \
+    --buildtype release
+  ninja -C build
 }
 
 package() {
-    cd scrcpy/build
-
-    DESTDIR="$pkgdir" ninja install
-    install -Dm644 ../LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  DESTDIR="$pkgdir" ninja -C build install
+  install -Dm644 ${pkgname%-git}/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }

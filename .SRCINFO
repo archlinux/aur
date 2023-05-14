@@ -1,22 +1,18 @@
 pkgbase = scrcpy-git
-	pkgdesc = Display and control your Android device (development version)
-	pkgver = 1.17.r3.ged130e0
+	pkgdesc = Display and control your Android device
+	pkgver = 2.0_r2106.gcb20bcb1
 	pkgrel = 1
 	url = https://github.com/Genymobile/scrcpy
-	arch = i686
 	arch = x86_64
 	license = Apache
-	makedepends = meson
 	makedepends = git
+	makedepends = meson
+	depends = android-tools
 	depends = ffmpeg
 	depends = sdl2
-	optdepends = android-tools: required if adb is not already installed
 	provides = scrcpy
 	conflicts = scrcpy
-	noextract = scrcpy-server-v1.17
 	source = git+https://github.com/Genymobile/scrcpy.git
-	source = https://github.com/Genymobile/scrcpy/releases/download/v1.17/scrcpy-server-v1.17
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = scrcpy-git
