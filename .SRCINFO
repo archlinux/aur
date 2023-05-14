@@ -1,7 +1,7 @@
 pkgbase = python-cmake-build-extension-git
 	pkgdesc = Setuptools extension to build and package CMake projects
 	pkgver = 0.5.1.r3.gfea4503
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/diegoferigo/cmake-build-extension
 	arch = any
 	license = MIT
@@ -20,7 +20,9 @@ pkgbase = python-cmake-build-extension-git
 	conflicts = python-cmake-build-extension
 	source = git+https://github.com/diegoferigo/cmake-build-extension.git
 	source = 0001-setup.cfg-remove-bogus-wheel-dependencies.patch
+	source = 0002-Fix-generated-cmake-command-line-argument-for-genera.patch
 	sha256sums = SKIP
 	sha256sums = 906689aacab006680d3046e290b32bfdaca687de66b9524bb44af4733728613e
+	sha256sums = 4078ac0c70420880b4f2072ec7b5dd500915df6b3a8e68f6523f5fc16f0e1df5
 
 pkgname = python-cmake-build-extension-git
