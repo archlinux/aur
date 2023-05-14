@@ -10,7 +10,7 @@
 
 _pkgbase=openocd
 pkgname=openocd-picoprobe
-pkgver=makepkg.0.g14c0d0d33
+pkgver=makepkg.0.g4f2ae6197
 pkgrel=1
 pkgdesc="Debugging, in-system programming and boundary-scan testing for embedded target devices (raspberry pi pico version)"
 arch=('i686' 'x86_64' 'arm' 'aarch64')

@@ -1,6 +1,6 @@
 pkgbase = openocd-picoprobe
 	pkgdesc = Debugging, in-system programming and boundary-scan testing for embedded target devices (raspberry pi pico version)
-	pkgver = makepkg.0.g14c0d0d33
+	pkgver = makepkg.0.g4f2ae6197
 	pkgrel = 1
 	url = http://openocd.org
 	arch = i686
@@ -27,4 +27,3 @@ pkgbase = openocd-picoprobe
 	sha1sums = SKIP
 
 pkgname = openocd-picoprobe
-
