@@ -2,14 +2,14 @@
 # Contributor: quininer
 
 pkgname=ruffle-git
-pkgver=r7815.96950f424
-pkgrel=1
+pkgver=r9265.ea78bf2d3
+pkgrel=2
 epoch=1
 pkgdesc="A Flash Player emulator written in Rust"
 arch=(x86_64)
 url="https://ruffle.rs/"
 license=(Apache MIT)
-depends=(alsa-lib libxcb  gtk3)
+depends=(alsa-lib gtk3)
 makedepends=(git cargo python jdk-openjdk at-spi2-core)
 provides=(ruffle)
 conflicts=(ruffle)
@@ -29,7 +29,7 @@ prepare() {
 
 build(){
   cd "ruffle/desktop"
-  cargo build --frozen --release --all-features
+  cargo build --frozen --release
 }
 
 package() {
