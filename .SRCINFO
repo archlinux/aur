@@ -1,12 +1,12 @@
 pkgbase = ipscan
 	pkgdesc = Angry IP Scanner (or simply ipscan) is an open-source and cross-platform network scanner designed to be fast and simple to use. It scans IP addresses and ports as well as has many other features.
 	pkgver = 3.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://angryip.org/
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	depends = java-runtime>=8
+	depends = java-runtime>=11
 	noextract = ipscan.png
 	noextract = ipscan
 	noextract = ipscan.desktop

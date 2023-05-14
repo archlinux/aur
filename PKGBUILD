@@ -4,12 +4,12 @@
 pkgname=ipscan
 pkgver=3.9.1
 _pkgintver=3.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Angry IP Scanner (or simply ipscan) is an open-source and cross-platform network scanner designed to be fast and simple to use. It scans IP addresses and ports as well as has many other features.'
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="https://angryip.org/"
-depends=('java-runtime>=8')
+depends=('java-runtime>=11')
 
 [[ $CARCH == "i686" ]] && _intarch=linux
 [[ $CARCH == "x86_64" ]] && _intarch=linux64
