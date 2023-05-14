@@ -1,36 +1,36 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: éclairevoyant
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Denis Kasak <dkasak AT termina DOT org DOT uk>
 
-## GPG key: https://github.com/jreese.gpg
-
-pkgname=python-aiomultiprocess
-_pkg=aiomultiprocess
+_pkgname=aiomultiprocess
+pkgname="python-$_pkgname"
 pkgver=0.9.0
 pkgrel=1
 pkgdesc="asyncio version of the standard multiprocessing module"
-url="https://github.com/jreese/aiomultiprocess"
-arch=('any')
-license=('MIT')
-depends=('python')
-makedepends=('git' 'python-build' 'python-flit-core' 'python-installer')
-source=("$pkgname::git+$url#tag=v$pkgver?signed")
-sha256sums=('SKIP')
-validpgpkeys=('9A24B14A6239AA5A450708B671FCFA26C45D960E') ## John Reese
+url="https://github.com/omnilib/$_pkgname"
+arch=(any)
+license=(MIT)
+depends=(python)
+makedepends=(git python-{build,installer,wheel} python-flit-core)
+source=("git+$url.git#tag=abaf2dbafa5582d80645eb0e40da4bc8a1c751a1?signed")
+b2sums=('SKIP')
+validpgpkeys=('9A24B14A6239AA5A450708B671FCFA26C45D960E') # John Reese <john@noswap.com>
+
+prepare() {
+	git -C $_pkgname clean -dfx
+}
 
 build() {
-    cd "$pkgname"
-    python -m build --wheel --no-isolation
+	cd $_pkgname
+	python -m build -wn
 }
 
 package() {
-    cd "$pkgname"
-    PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+	cd $_pkgname
+	PYTHONHASHSEED=0 python -m installer -d "$pkgdir" dist/*.whl
 
-    local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-    install -d "$pkgdir/usr/share/licenses/$pkgname/"
-    ln -s \
-        "$_site/$_pkg-$pkgver.dist-info/LICENSE" \
-        "$pkgdir/usr/share/licenses/$pkgname/"
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -vdm755 "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -vs $_site/$_pkg-$pkgver.dist-info/LICENSE \
+		"$pkgdir/usr/share/licenses/$pkgname/"
 }
-
-# vim:ts=4:sw=4:et:

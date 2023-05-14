@@ -2,16 +2,17 @@ pkgbase = python-aiomultiprocess
 	pkgdesc = asyncio version of the standard multiprocessing module
 	pkgver = 0.9.0
 	pkgrel = 1
-	url = https://github.com/jreese/aiomultiprocess
+	url = https://github.com/omnilib/aiomultiprocess
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python-build
-	makedepends = python-flit-core
 	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-flit-core
 	depends = python
-	source = python-aiomultiprocess::git+https://github.com/jreese/aiomultiprocess#tag=v0.9.0?signed
+	source = git+https://github.com/omnilib/aiomultiprocess.git#tag=abaf2dbafa5582d80645eb0e40da4bc8a1c751a1?signed
 	validpgpkeys = 9A24B14A6239AA5A450708B671FCFA26C45D960E
-	sha256sums = SKIP
+	b2sums = SKIP
 
 pkgname = python-aiomultiprocess
