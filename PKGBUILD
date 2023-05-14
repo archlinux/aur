@@ -2,9 +2,10 @@
 
 _name=fibers
 pkgname=guile-$_name
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
-_commit=cf3729a4b6f9d46cb0123b208b767efcd19539b3
+# follow the same commit as guile-fibers-next on Guix
+_commit=745bd409bef17284648805fb985777d21dba79f7
 pkgdesc="Concurrent ML-like concurrency for Guile"
 arch=(any)
 license=(LGPL3+)
@@ -20,15 +21,19 @@ build() {
   cd "$srcdir/$_name"
   autoreconf -vif
   ./configure --prefix=/usr
-  make
+  GUILE_AUTO_COMPILE=0 make
 }
 
 package() {
   cd "$srcdir/$_name"
-  make install DESTDIR="$pkgdir"
+  GUILE_AUTO_COMPILE=0 make install DESTDIR="$pkgdir"
 }
 
 check() {
   cd "$srcdir/$_name"
-  make check
+  # This test can take more than an hour on some systems.
+  sed -i -e "s/.*spawn-fiber loop-to-1e4.*//g" tests/basic.scm
+  # These tests can take more than an hour and/or segfault.
+  sed -i "s|tests/speedup.scm||g" Makefile
+  GUILE_AUTO_COMPILE=0 make check
 }

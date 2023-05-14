@@ -1,6 +1,6 @@
 pkgbase = guile-fibers
 	pkgdesc = Concurrent ML-like concurrency for Guile
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/wingo/fibers
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = guile-fibers
 	makedepends = git
 	depends = guile>=2.1.7
 	options = !strip
-	source = git+https://github.com/wingo/fibers.git#commit=cf3729a4b6f9d46cb0123b208b767efcd19539b3
+	source = git+https://github.com/wingo/fibers.git#commit=745bd409bef17284648805fb985777d21dba79f7
 	md5sums = SKIP
 
 pkgname = guile-fibers
