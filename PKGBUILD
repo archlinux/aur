@@ -1,15 +1,16 @@
 # Original Maintainer: Jonatan Bravo <zephrax@gmail.com>
 # Maintainer: Hendrik "T4cC0re" Meyer <aur@t4cc0.re>
+# Maintainer: Javier Herrera <javierherrera at posteo dot net>
 pkgname=tfenv
-pkgver=2.2.3
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 epoch=
 pkgdesc="Terraform version manager inspired by rbenv"
-arch=("x86_64")
+arch=("any")
 url="https://github.com/tfutils/tfenv"
 license=('MIT')
 groups=()
-depends=("unzip")
+depends=(bash)
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -27,8 +28,8 @@ package() {
 	mkdir -p "${pkgdir}/opt/tfenv/bin"
 
 	# This patches tfenv to use a separate dir for versions and the default version
-	sed -i 's:${TFENV_CONFIG_DIR}/version:/var/lib/tfenv/version:g' libexec/tfenv-*
-	sed -i 's:${TFENV_ROOT}/version:/var/lib/tfenv/version:g' libexec/tfenv-*
+	sed -i 's:${TFENV_CONFIG_DIR}/version:/var/lib/tfenv/version:g' {libexec/tfenv-*,lib/*.sh}
+	sed -i 's:${TFENV_ROOT}/version:/var/lib/tfenv/version:g' {libexec/tfenv-*,lib/*sh}
 
 	ln -s "/opt/tfenv/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 	ln -s "/opt/tfenv/bin/terraform" "${pkgdir}/usr/bin/terraform"
@@ -45,4 +46,4 @@ package() {
 	install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 LICENSE
 }
 
-sha512sums=(6f1d4fbdf5374e0070e3f9a2f98ccce7419c1633c8abaccf1078996b1e76e978108198b4ccd1eebfed7da9ff2bd2c7c31900050f1b52222383bb6cacb1930e68)
+sha512sums=(ea4e72616e9be3613c9bddbeb860736fac241f576a5137408364a826f18503bb9964b9d4a230a0eb1b5d147264000904362e72ace53922fa28aa6c039faaa97c)
