@@ -1,18 +1,13 @@
 pkgbase = ruby-cool.io
 	pkgdesc = Simple evented I/O for Ruby
 	pkgver = 1.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tarcieri/cool.io
 	arch = x86_64
 	license = MIT
-	checkdepends = ruby-rake
 	checkdepends = ruby-rspec
-	makedepends = ruby-rdoc
-	makedepends = ruby-bundler
-	makedepends = ruby-rake-compiler
+	makedepends = rubygems
 	depends = ruby
-	provides = cool.io_ext.so=1.7.1
-	provides = iobuffer_ext.so=1.7.1
 	options = !emptydirs
 	source = https://github.com/tarcieri/cool.io/archive/v1.7.1/cool.io-v1.7.1.tar.gz
 	sha256sums = 64d6921b052f9e5894eef42b5b2d053ce62a933fe57c79b6c51a928bd1d77c89
