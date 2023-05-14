@@ -1,7 +1,7 @@
 pkgbase = rstudio-bin
 	pkgdesc = An integrated development environment (IDE) for R (binary from RStudio official repository)
-	pkgver = 2023.03.0.386
-	pkgrel = 2
+	pkgver = 2023.03.1.446
+	pkgrel = 1
 	url = http://www.rstudio.org/
 	install = rstudio-bin.install
 	arch = x86_64
@@ -15,15 +15,14 @@ pkgbase = rstudio-bin
 	depends = postgresql-libs
 	depends = sqlite
 	depends = nss
-	depends = openssl-1.1
 	optdepends = clang: C/C++ and Rcpp support
-	provides = rstudio-desktop=2023.03.0.386
+	provides = rstudio-desktop=2023.03.1.446
 	conflicts = rstudio-desktop
 	conflicts = rstudio-desktop-git
 	conflicts = rstudio-desktop-preview-bin
 	conflicts = rstudio-desktop-bin
 	options = !strip
-	source_x86_64 = https://download1.rstudio.org/electron/bionic/amd64/rstudio-2023.03.0-386-amd64.deb
-	sha256sums_x86_64 = d71b670e3d0f5829d3cf107bba5d4da547ddcc010f62bccf758229891f1a16a4
+	source_x86_64 = https://download1.rstudio.org/electron/jammy/amd64/rstudio-2023.03.1-446-amd64.deb
+	sha256sums_x86_64 = 464038393a380321afb96793f8775852ce75f29340bd5d49a0c7ccbe77e411c0
 
 pkgname = rstudio-bin
