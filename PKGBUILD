@@ -3,17 +3,17 @@
 # Author: Matthias Blaicher <matthias at blaicher dot com>
 
 pkgname=disman-git
-pkgver=0.522.80_r1808.g431141e
-pkgrel=2
+pkgver=0.527.80_r1871.geb61ea1
+pkgrel=1
 pkgdesc='Qt/C++ display management library by the KWinFT project (libkscreen fork)'
 arch=($CARCH)
 url='https://gitlab.com/kwinft/disman'
 license=(LGPL)
-depends=(kcoreaddons qt5-x11extras)
-makedepends=(git extra-cmake-modules kwayland libxcb wrapland-git)
+depends=(kcoreaddons-git qt6-base)
+makedepends=(git extra-cmake-modules-git kwayland-git libxcb wrapland-git)
 optdepends=('libxcb: for the X11 backend plugin'
             'wrapland-git: for the KWinFT and wlroots backend plugins'
-            'kwayland: for the KDE output-management backend plugin')
+            'kwayland-git: for the KDE output-management backend plugin')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 source=("git+https://gitlab.com/kwinft/disman.git")
