@@ -1,5 +1,5 @@
 #!/bin/sh
 
 unset JAVA_HOME
-export PATH="/usr/lib/jvm/java-11-openjdk/bin:$PATH"
+export PATH="/usr/lib/jvm/java-17-openjdk/bin:$PATH"
 exec /opt/cytoscape/cytoscape.sh $@
