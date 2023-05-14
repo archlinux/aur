@@ -10,5 +10,5 @@ while IFS='=' read -r key value; do
 done < "$APPDIR/misc/AudioRelay.cfg"
 
 archlinux-java-run -a 17 -- "${java_options[*]}" \
-    -Djava.library.path=$APPDIR/misc \
-    -cp "$(eval echo "$app_classpath")" "$app_mainclass"
+    -Djava.library.path="$APPDIR/misc" \
+    -cp "$(eval echo "$app_classpath")" "$app_mainclass" "$@"
