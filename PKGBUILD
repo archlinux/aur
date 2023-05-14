@@ -2,7 +2,7 @@
 
 pkgname=mc-server-hub-git
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A web-interface for managing Minecraft Servers"
 arch=('any')
 url="https://github.com/comroid-git/mc-server-hub"
@@ -19,6 +19,7 @@ build() {
 }
 
 package() {
+    mkdir "/etc/mc-server-hub"
     install -d "/etc/mc-server-hub"
     install -Dm755 "mc-server-hub/build/dist/mc-server-hub.war" "/usr/lib/mc-server-hub.war"
     install -Dm644 "mc-server-hub-git/mc-server-hub.service" "/usr/lib/systemd/system/mc-server-hub.service"
