@@ -12,7 +12,7 @@ pkgname=(
 )
 pkgver=44.1+r21+gae8307ab8
 pkgrel=1
-pkgdesc="A window manager compositor for GNOME"
+pkgdesc="Window manager and compositor for GNOME"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
 license=(GPL)
