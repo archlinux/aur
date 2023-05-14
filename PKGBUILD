@@ -1,16 +1,16 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=phockup
-pkgver=1.9.2
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="Media sorting tool to organize photos and videos from your camera in folders by year, month and day."
 arch=(any)
 url="https://github.com/ivandokov/phockup"
 license=(MIT)
 depends=(python python-tqdm perl-image-exiftool)
-checkdepends=(python-pytest python-pytest-mock)
+checkdepends=(python-pytest python-pytest-mock python-pytest-socket)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ivandokov/phockup/archive/${pkgver}.tar.gz")
-sha256sums=('6604004b12ed47079b81f5948845b33a87b3449eacd51643e416c5bde93bcecf')
+sha256sums=('ae627d2638e5b8942d794ba23a382de214d5482c1fd4922949445d755b299379')
 
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -27,4 +27,3 @@ package() {
 
   install -D "${srcdir}/${pkgname}-${pkgver}/license" "${pkgdir}/usr/share/licenses/${pkgname}/MIT"
 }
-
