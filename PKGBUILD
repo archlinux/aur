@@ -10,7 +10,7 @@
 pkgname=pyinstaller
 _pkgbase="${pkgname%-git}"
 _pkgname="${_pkgbase#python-}"
-pkgver=5.10.1
+pkgver=5.11.0
 pkgrel=1
 pkgdesc="Bundles a Python application and all its dependencies into a single package"
 arch=('any')
@@ -65,9 +65,9 @@ source=(
   "https://github.com/$_pkgname/$_pkgname/archive/refs/tags/v$pkgver.tar.gz"
   "$_pkgname-5.7.0-bootloader-cmocka-fix.patch"
 )
-sha512sums=('18c9ef2d35e7dab273bcad0886ee59e859112610105ddb0915360c07dd364e0cd05b9a7270066d40872a3e47daabe93a302baad273cff5178bcbcddd42a21e85'
+sha512sums=('ec10ea0d27a8f195d6ff3d21a91dbfbb7c46bb678103230d689d9b4bc9b294b3e7a005784dc5a1188c78e4e13f6696b194faaf5b86bc319178196d0feb0e08ab'
             'ebee936836b68e6214cea72f65ec7e862fe8bac253913f57e7b36268a4c823219668b8f5d7295992b7cf0adb62954405ced2a588be7f1101995f7b0395c92f0c')
-b2sums=('11d974b08db6b478c7a9cbfafa37f7f7f5d051e435cd9e5f587b75e74d5f5e437870ebaa425f6071049d81674db47c856437044381e3127539ebed1958654d08'
+b2sums=('6c43ddb3b15c19c821812210130d71d47e0316685b9995c33649157ab8c9dbc8c510a0f4f1964f341df9f035245491692586ea112c4a57cfcba3272380680150'
         '863322c8ae832b6e609135c31496481d7c337a38316dbafd442c010a4dac94b2f21407c1367c5374b6170035ec1ffba97c522ee64679adfa93247b31bf87b998')
 
 prepare() {
