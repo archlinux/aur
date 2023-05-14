@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+/opt/ZyPlayer/ZyPlayer.AppImage --no-sandbox %U
