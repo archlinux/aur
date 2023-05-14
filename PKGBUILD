@@ -7,7 +7,7 @@ pkgver=13.1.0
 libmver=0.8.1
 _target="i586-pc-msdosdjgpp"
 _djver=2.05
-pkgrel=7
+pkgrel=8
 pkgdesc="djgpp cross-compiler for the dosbox environment"
 arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"
@@ -59,7 +59,7 @@ prepare() {
   ln -s openlibm_fenv.h fenv.h
 
   sed -i 's/\/\/typedef	__double_t	double_t/typedef	double	double_t/' math.h
-  sed -i 's/\/\/typedef	__float_t float_t/typedef	float	float_t/' math.h
+  sed -i 's/\/\/typedef	__float_t	float_t/typedef	float	float_t/' math.h
 }
 
 build() {
