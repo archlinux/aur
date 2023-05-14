@@ -16,7 +16,7 @@ depends=(
 )
 
 license=(
-    'unknown'
+    'GPL3'
 )
 source=(
     "https://github.com/Elvanos/fantasia-archive/releases/download/v${pkgver}/${zipname}"
