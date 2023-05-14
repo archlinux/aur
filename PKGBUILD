@@ -2,13 +2,13 @@
 # Contributor: Nikola Hadžić <nikola@firemail.cc>
 
 pkgname=gst-plugins-rs
-pkgver=0.10.6
+pkgver=0.10.7
 pkgrel=1
 pkgdesc="GStreamer plugins written in Rust"
 arch=(x86_64)
 url="https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs"
 license=(Apache LGPL2.1 MIT MPL2)
-depends=(gstreamer gtk4 dav1d libwebp)
+depends=(gstreamer gtk4 dav1d libwebp) #libsodium
 makedepends=(git rust meson cargo-c clang nasm python-tomli)
 options=(!lto)
 source=("git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git#tag=${pkgver}")
@@ -35,4 +35,3 @@ package() {
   DESTDIR="${pkgdir}" meson install -C build
   install -D LICENSE-* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
