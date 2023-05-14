@@ -1,12 +1,22 @@
 pkgbase = artemis
 	pkgdesc = A genome viewer and annotation tool that visualizes biological sequence features
 	pkgver = 18.2.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.sanger.ac.uk/science/tools/artemis
 	arch = x86_64
 	license = GPL2
-	depends = java-runtime>=1.6
-	source = artemis-18.2.0.tar.gz::https://github.com/sanger-pathogens/Artemis/releases/download/v18.2.0/artemis-unix-release-18.2.0.tar.gz
-	sha256sums = 06441e1abab139cb0a09d5844cb1b84ae727ace53a6c0efdd1eea8d8cfab8382
+	makedepends = java-environment
+	makedepends = maven
+	depends = java-runtime
+	source = artemis-18.2.0.tar.gz::https://github.com/sanger-pathogens/Artemis/archive/refs/tags/v18.2.0.tar.gz
+	source = act.desktop
+	source = artemis.desktop
+	source = bamview.desktop
+	source = dnaplotter.desktop
+	sha256sums = 842c055f5cce021adbaea4f076b2ea80335ab1e44fbaa34b2ab608df6314a18e
+	sha256sums = a7dda77f6518c98af6df88ba5d725f1b89d86aca125240f63a9c6e08afeb2a24
+	sha256sums = dea9a1cc47b110c4f6ebe17c1b698866082997ffd9e6008d89847ddf745a0789
+	sha256sums = 3ca519b00ffac02d635a62884996ad5b8c4580d8ffe8fcd427ee4edee1562f00
+	sha256sums = ef584b45f9c92da15511779f20a1a1449915315066662e4c142ea4cd92dd717c
 
 pkgname = artemis

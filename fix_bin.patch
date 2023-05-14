@@ -1,0 +1,362 @@
+Description: Simplifying the provided launchers
+ Many options or tricks are useless on a Debian system.
+ The paths are also adapted to the Debian install.
+Author: Pierre Gruet <pgt@debian.org>
+Forwarded: not-needed
+Last-Update: 2020-09-06
+
+--- a/act
++++ b/act
+@@ -38,36 +38,6 @@
+     exit 0
+ }
+ 
+-add_proxy_properties() {
+-
+-	if [[ "$http_proxy" = "" ]]
+-	then
+-		http_proxy=$HTTP_PROXY
+-	fi
+-	
+-	if [[ "$http_proxy" = "" ]]
+-	then
+-	 	http_proxy=$HTTP_proxy
+-	fi
+-	
+-	if [[ "$http_proxy" != "" ]]
+-	then
+-		APPLICATION_PROPERTIES="$APPLICATION_PROPERTIES -DproxySet=true "`echo $http_proxy | sed 's/http:\/\/\(.*\):\(.*\)/ -Dhttp.proxyHost=\1 -Dhttp.proxyPort=\2/'`
+-	fi
+-}
+-
+-#
+-# Resolve script path (inc symlinks)
+-#
+-SOURCE="${BASH_SOURCE[0]}"
+-while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+-    DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+-    SOURCE="$(readlink "$SOURCE")"
+-    [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+-done
+-APPLICATION_HOME="$( cd -P "$( dirname "$SOURCE" )" && pwd )"; # get final path of this script
+-
+-
+ # Special Sanger override on chado PGUSER
+ if [[ "$ARTEMIS_SANGER_DBUSER" != "" ]]
+ then
+@@ -93,28 +63,6 @@
+     shift
+ done
+ 
+-
+-JAR_NAME=act.jar
+-JAR_FILE_DEFAULT=$APPLICATION_HOME/target/jars/$JAR_NAME
+-JAR_FILE_INSTALLED=$APPLICATION_HOME/dist/$JAR_NAME
+-ARTEMIS_CP=$APPLICATION_HOME:$JAR_FILE_DEFAULT:$JAR_FILE_INSTALLED
+-
+-#
+-# Use a custom Java version if necessary
+-#
+-if [[ "$ARTEMIS_JAVA_JRE" = "" ]]
+-then
+-	JAVA=`which java`
+-else
+-	JAVA_HOME=$ARTEMIS_JAVA_JRE
+-	JAVA=$ARTEMIS_JAVA_JRE/bin/java
+-fi
+-
+-#
+-# Allow URLs to work from behind firewalls.
+-#
+-add_proxy_properties
+-
+ #
+ # "-mx2g" sets the maximum amount of memory to use. 
+ # This may need to be increased when dealing with large files
+@@ -132,20 +80,12 @@
+ #
+ FLAGS="$FLAGS --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED"
+ 
+-PLATTMP=`uname`
+-if [[ "$PLATTMP" = "Darwin" ]]
+-then
+-  	APPLICATION_PROPERTIES="$APPLICATION_PROPERTIES -Dapple.laf.useScreenMenuBar=true -Xdock:name=ACT"
+-  	JAR_FILE_MACAPP=$APPLICATION_HOME/Java/$JAR_NAME
+-  	ARTEMIS_CP="$JAR_FILE_MACAPP:$ARTEMIS_CP"
+-fi
+-
+ if [[ "$QUIET" = no ]]
+ then
+     echo "Starting ACT with arguments: $FLAGS $APPLICATION_PROPERTIES $*"
+ fi
+ 
+-$JAVA $FLAGS $APPLICATION_PROPERTIES -cp "$ARTEMIS_CP" uk.ac.sanger.artemis.components.ActMain $*
++java $FLAGS $APPLICATION_PROPERTIES -jar /usr/share/artemis/act.jar $*
+ result=$?
+ 
+ exit $result
+--- a/art
++++ b/art
+@@ -44,36 +44,6 @@
+     exit 0
+ }
+ 
+-add_proxy_properties() {
+-
+-	if [[ "$http_proxy" = "" ]]
+-	then
+-		http_proxy=$HTTP_PROXY
+-	fi
+-	
+-	if [[ "$http_proxy" = "" ]]
+-	then
+-	 	http_proxy=$HTTP_proxy
+-	fi
+-	
+-	if [[ "$http_proxy" != "" ]]
+-	then
+-		APPLICATION_PROPERTIES="$APPLICATION_PROPERTIES -DproxySet=true "`echo $http_proxy | sed 's/http:\/\/\(.*\):\(.*\)/ -Dhttp.proxyHost=\1 -Dhttp.proxyPort=\2/'`
+-	fi
+-}
+-
+-#
+-# Resolve script path (inc symlinks)
+-#
+-SOURCE="${BASH_SOURCE[0]}"
+-while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+-    DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+-    SOURCE="$(readlink "$SOURCE")"
+-    [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+-done
+-APPLICATION_HOME="$( cd -P "$( dirname "$SOURCE" )" && pwd )"; # get final path of this script
+-
+-
+ # Special Sanger override on chado PGUSER
+ if [[ "$ARTEMIS_SANGER_DBUSER" != "" ]]
+ then
+@@ -99,28 +69,6 @@
+     shift
+ done
+ 
+-
+-JAR_NAME=artemis.jar
+-JAR_FILE_DEFAULT=$APPLICATION_HOME/target/jars/$JAR_NAME
+-JAR_FILE_INSTALLED=$APPLICATION_HOME/dist/$JAR_NAME
+-ARTEMIS_CP=$APPLICATION_HOME:$JAR_FILE_DEFAULT:$JAR_FILE_INSTALLED
+-
+-#
+-# Use a custom Java version if necessary
+-#
+-if [[ "$ARTEMIS_JAVA_JRE" = "" ]]
+-then
+-	JAVA=`which java`
+-else
+-	JAVA_HOME=$ARTEMIS_JAVA_JRE
+-	JAVA=$ARTEMIS_JAVA_JRE/bin/java
+-fi
+-
+-#
+-# Allow URLs to work from behind firewalls.
+-#
+-add_proxy_properties
+-
+ #
+ # "-mx2g" sets the maximum amount of memory to use. 
+ # This may need to be increased when dealing with large files
+@@ -139,20 +87,12 @@
+ #
+ FLAGS="$FLAGS --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED"
+ 
+-PLATTMP=`uname`
+-if [[ "$PLATTMP" = "Darwin" ]]
+-then
+-  	APPLICATION_PROPERTIES="$APPLICATION_PROPERTIES -Dapple.laf.useScreenMenuBar=true -Xdock:name=Artemis"
+-  	JAR_FILE_MACAPP=$APPLICATION_HOME/Java/$JAR_NAME
+-  	ARTEMIS_CP="$JAR_FILE_MACAPP:$ARTEMIS_CP"
+-fi
+-
+ if [[ "$QUIET" = "no" ]]
+ then
+     echo "Starting Artemis with arguments: $FLAGS $APPLICATION_PROPERTIES $*"
+ fi
+ 
+-$JAVA $FLAGS $APPLICATION_PROPERTIES -cp "$ARTEMIS_CP" uk.ac.sanger.artemis.components.ArtemisMain $*
++java $FLAGS $APPLICATION_PROPERTIES -jar /usr/share/artemis/artemis.jar $*
+ result=$?
+ 
+ exit $result
+--- a/bamview
++++ b/bamview
+@@ -6,57 +6,7 @@
+ 
+ QUIET=no
+ 
+-add_proxy_properties() {
+-
+-	if [[ "$http_proxy" = "" ]]
+-	then
+-		http_proxy=$HTTP_PROXY
+-	fi
+-	
+-	if [[ "$http_proxy" = "" ]]
+-	then
+-	 	http_proxy=$HTTP_proxy
+-	fi
+-	
+-	if [[ "$http_proxy" != "" ]]
+-	then
+-		APPLICATION_PROPERTIES="$APPLICATION_PROPERTIES -DproxySet=true "`echo $http_proxy | sed 's/http:\/\/\(.*\):\(.*\)/ -Dhttp.proxyHost=\1 -Dhttp.proxyPort=\2/'`
+-	fi
+-}
+-
+-#
+-# Resolve script path (inc symlinks)
+-#
+-SOURCE="${BASH_SOURCE[0]}"
+-while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+-    DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+-    SOURCE="$(readlink "$SOURCE")"
+-    [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+-done
+-APPLICATION_HOME="$( cd -P "$( dirname "$SOURCE" )" && pwd )"; # get final path of this script
+-
+-
+ APPLICATION_PROPERTIES="-Djdbc.drivers=org.postgresql.Driver -Dartemis.environment=UNIX $SANGER_ARTEMIS_OPTIONS"
+-JAR_NAME=bamview.jar
+-JAR_FILE_DEFAULT=$APPLICATION_HOME/target/jars/$JAR_NAME
+-JAR_FILE_INSTALLED=$APPLICATION_HOME/dist/$JAR_NAME
+-ARTEMIS_CP=$APPLICATION_HOME:$JAR_FILE_DEFAULT:$JAR_FILE_INSTALLED
+-
+-#
+-# Use a custom Java version if necessary
+-#
+-if [[ "$ARTEMIS_JAVA_JRE" = "" ]]
+-then
+-	JAVA=`which java`
+-else
+-	JAVA_HOME=$ARTEMIS_JAVA_JRE
+-	JAVA=$ARTEMIS_JAVA_JRE/bin/java
+-fi
+-
+-#
+-# Allow URLs to work from behind firewalls.
+-#
+-add_proxy_properties
+ 
+ #
+ # "-mx2g" sets the maximum amount of memory to use. 
+@@ -69,20 +19,12 @@
+     FLAGS="$ARTEMIS_JVM_FLAGS -noverify"
+ fi
+ 
+-PLATTMP=`uname`
+-if [[ "$PLATTMP" = "Darwin" ]]
+-then
+-  	APPLICATION_PROPERTIES="$APPLICATION_PROPERTIES -Xdock:name=BamView"
+-  	JAR_FILE_MACAPP=$APPLICATION_HOME/Java/$JAR_NAME
+-  	ARTEMIS_CP="$JAR_FILE_MACAPP:$ARTEMIS_CP"
+-fi
+-
+ if [[ "$QUIET" = "no" ]]
+ then
+     echo "Starting BamView with arguments: $FLAGS $APPLICATION_PROPERTIES $*"
+ fi
+ 
+-$JAVA $FLAGS $APPLICATION_PROPERTIES -cp "$ARTEMIS_CP" uk.ac.sanger.artemis.components.alignment.BamView $*
++java $FLAGS $APPLICATION_PROPERTIES -jar /usr/share/artemis/bamview.jar $*
+ result=$?
+ 
+ exit $result
+--- a/dnaplotter
++++ b/dnaplotter
+@@ -25,37 +25,6 @@
+     exit 0
+ }
+ 
+-add_proxy_properties() {
+-
+-	if [[ "$http_proxy" = "" ]]
+-	then
+-		http_proxy=$HTTP_PROXY
+-	fi
+-	
+-	if [[ "$http_proxy" = "" ]]
+-	then
+-	 	http_proxy=$HTTP_proxy
+-	fi
+-	
+-	if [[ "$http_proxy" != "" ]]
+-	then
+-		APPLICATION_PROPERTIES="$APPLICATION_PROPERTIES -DproxySet=true "`echo $http_proxy | sed 's/http:\/\/\(.*\):\(.*\)/ -Dhttp.proxyHost=\1 -Dhttp.proxyPort=\2/'`
+-	fi
+-}
+-
+-
+-#
+-# Resolve script path (inc symlinks)
+-#
+-SOURCE="${BASH_SOURCE[0]}"
+-while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+-    DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+-    SOURCE="$(readlink "$SOURCE")"
+-    [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+-done
+-APPLICATION_HOME="$( cd -P "$( dirname "$SOURCE" )" && pwd )"; # get final path of this script
+-
+-
+ #
+ # Parse arguments.
+ #
+@@ -75,28 +44,6 @@
+     shift
+ done
+ 
+-
+-JAR_NAME=dnaplotter.jar
+-JAR_FILE_DEFAULT=$APPLICATION_HOME/target/jars/$JAR_NAME
+-JAR_FILE_INSTALLED=$APPLICATION_HOME/dist/$JAR_NAME
+-ARTEMIS_CP=$APPLICATION_HOME:$JAR_FILE_DEFAULT:$JAR_FILE_INSTALLED
+-
+-#
+-# Use a custom Java version if necessary
+-#
+-if [[ "$ARTEMIS_JAVA_JRE" = "" ]]
+-then
+-	JAVA=`which java`
+-else
+-	JAVA_HOME=$ARTEMIS_JAVA_JRE
+-	JAVA=$ARTEMIS_JAVA_JRE/bin/java
+-fi
+-
+-#
+-# Allow URLs to work from behind firewalls.
+-#
+-add_proxy_properties
+-
+ #
+ # "-mx2g" sets the maximum amount of memory to use. 
+ # This may need to be increased when dealing with large files
+@@ -108,20 +55,12 @@
+     FLAGS="$ARTEMIS_JVM_FLAGS -noverify"
+ fi
+ 
+-PLATTMP=`uname`
+-if [[ "$PLATTMP" = "Darwin" ]]
+-then
+-  	APPLICATION_PROPERTIES="$APPLICATION_PROPERTIES -Dapple.laf.useScreenMenuBar=true -Xdock:name=Circular-Plot"
+-  	JAR_FILE_MACAPP=$APPLICATION_HOME/Java/$JAR_NAME
+-  	ARTEMIS_CP="$JAR_FILE_MACAPP:$ARTEMIS_CP"
+-fi
+-
+ if [[ "$QUIET" = "no" ]]
+ then
+     echo "Starting DNA Plotter with arguments: $FLAGS $APPLICATION_PROPERTIES $TEMPLATE_FILE_ARG"
+ fi
+ 
+-$JAVA $FLAGS $APPLICATION_PROPERTIES -cp "$ARTEMIS_CP" uk.ac.sanger.artemis.circular.DNADraw $TEMPLATE_FILE_ARG
++java $FLAGS $APPLICATION_PROPERTIES -jar /usr/share/artemis/dnaplotter.jar $TEMPLATE_FILE_ARG
+ result=$?
+ 
+ exit $result
+
+

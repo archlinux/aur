@@ -1,0 +1,16 @@
+[Desktop Entry]
+Categories=
+Encoding=UTF-8
+Exec=act
+GenericName=
+Icon=act
+MimeType=
+Name=act
+ServiceTypes=
+SwallowExec=
+SwallowTitle=
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=root
