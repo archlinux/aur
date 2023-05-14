@@ -1,13 +1,12 @@
 pkgbase = transformers_ocr
 	pkgdesc = An OCR tool for manga using maim with Transformers.
-	pkgver = 0.12
+	pkgver = 0.13
 	pkgrel = 1
 	url = https://github.com/Ajatt-Tools/transformers_ocr
 	arch = any
 	license = GPL3
 	depends = python
 	depends = python-pip
-	depends = bash
 	depends = libnotify
 	optdepends = maim: taking screenshots on Xorg
 	optdepends = xclip: copying to the clipboard on Xorg
@@ -15,7 +14,7 @@ pkgbase = transformers_ocr
 	optdepends = slurp: selecting a region on Wayland
 	optdepends = wl-clipboard: copying to the clipboard on Wayland
 	optdepends = gnome-screenshot: copying text to the clipboard on GNOME
-	source = transformers_ocr-0.12.tar.gz::https://github.com/Ajatt-Tools/transformers_ocr/archive/refs/tags/v0.12.tar.gz
-	sha256sums = 1fc4c34e8f96b3eaa735f03e0f8c7d938dee4541d1dacb3e75a420d75e8e4cb2
+	source = transformers_ocr-0.13.tar.gz::https://github.com/Ajatt-Tools/transformers_ocr/archive/refs/tags/v0.13.tar.gz
+	sha256sums = 0e6cce5041d321e340be29940b1c48de020c1391ff94d9a7521caae32461c667
 
 pkgname = transformers_ocr
