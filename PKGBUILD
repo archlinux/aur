@@ -1,7 +1,7 @@
 # Contributor: David Vachulka <archdvx@dxsolutions.org>
 
 pkgname=xfce4-dxreminders-plugin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Reminders, date and time plugin for the Xfce4 panel"
 arch=('i686' 'x86_64')
