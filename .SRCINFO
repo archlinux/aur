@@ -1,7 +1,7 @@
 pkgbase = dosbox-djcrx
 	pkgdesc = Headers and utilities for the djgpp dosbox cross-compiler
 	pkgver = 2.05
-	pkgrel = 20
+	pkgrel = 21
 	url = http://www.delorie.com/djgpp/
 	arch = i686
 	arch = x86_64

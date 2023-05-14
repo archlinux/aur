@@ -5,7 +5,7 @@
 
 pkgname=dosbox-djcrx
 pkgver=2.05
-pkgrel=20
+pkgrel=21
 libmver=0.8.1
 pkgdesc="Headers and utilities for the djgpp dosbox cross-compiler"
 arch=('i686' 'x86_64')
@@ -67,6 +67,7 @@ prepare() {
 
 build() {
   cd openlibm-${libmver}
+  make clean
   CC=${_target}-gcc make ARCH=i586 MARCH=i586 libopenlibm.a
   mv libopenlibm.a ../lib/
   cp include/*.h ../include/
@@ -83,9 +84,14 @@ build() {
   mv libopenlibm.a libm.a
 
   cd ../include
-  rm -f math.h complex.h
+  rm -f math.h complex.h fenv.h libm/math.h
   ln -s openlibm_math.h math.h
+  ln -s openlibm_math.h libm/math.h
   ln -s openlibm_complex.h complex.h
+  ln -s openlibm_fenv.h fenv.h
+
+  sed -i 's/\/\/typedef	__double_t	double_t/typedef	double	double_t/' math.h
+  sed -i 's/\/\/typedef	__float_t float_t/typedef	float	float_t/' math.h
 }
 
 package() {
