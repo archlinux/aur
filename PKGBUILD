@@ -2,9 +2,8 @@
 
 _pkgname=crystal-dock
 pkgname=${_pkgname}-git
-pkgver=1.0.rc3
+pkgver=r107.g5e7f337
 pkgrel=1
-epoch=0
 arch=(x86_64)
 pkgdesc='A cool desktop panel for Linux desktop'
 arch=('x86_64')
@@ -15,7 +14,12 @@ conflicts=(crystal-dock)
 depends=(qt5-base kwin)
 makedepends=(cmake git extra-cmake-modules kcmutils)
 source=("${_pkgname}::git+https://github.com/dangvd/crystal-dock.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
+
+pkgver(){
+  cd "${srcdir}/${_pkgname}"
+  printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
   cd "${srcdir}/${_pkgname}"
