@@ -1,6 +1,6 @@
 pkgbase = proot
 	pkgdesc = chroot, mount --bind, and binfmt_misc without privilege/setup
-	pkgver = 5.3.1
+	pkgver = 5.4.0
 	pkgrel = 1
 	url = https://proot-me.github.io/
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = proot
 	makedepends = libxslt
 	depends = talloc
 	provides = proot
-	source = proot-v5.3.1.tar.gz::https://github.com/cedric-vincent/proot/archive/v5.3.1.tar.gz
-	sha256sums = 966afe32bf9a9d0e80836a8874d4dd829c51750060d9e0f30d330b1ed7eec8c2
+	source = proot-v5.4.0.tar.gz::https://github.com/cedric-vincent/proot/archive/v5.4.0.tar.gz
+	sha256sums = 29248aac2a7ce10c3bd5ee5602742ec33b2532310ff9cf73b79f3c133e5a5f68
 
 pkgname = proot

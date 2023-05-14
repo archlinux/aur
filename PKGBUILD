@@ -3,7 +3,7 @@
 
 pkgname=proot
 _pkgname=proot
-pkgver=5.3.1
+pkgver=5.4.0
 pkgrel=1
 pkgdesc="chroot, mount --bind, and binfmt_misc without privilege/setup"
 arch=('i686' 'x86_64')
@@ -13,13 +13,7 @@ provides=('proot')
 depends=('talloc')
 makedepends=('python-docutils' 'libxslt')
 source=(${pkgname}-v${pkgver}.tar.gz::https://github.com/cedric-vincent/${_pkgname}/archive/v${pkgver}.tar.gz)
-sha256sums=('966afe32bf9a9d0e80836a8874d4dd829c51750060d9e0f30d330b1ed7eec8c2')
-
-#prepare() {
-#  cd "${srcdir}/${pkgname}-5.1.0"
-#  patch -p1 -i ${srcdir}/0001-Fix-use-of-size.patch
-#}
-
+sha256sums=('29248aac2a7ce10c3bd5ee5602742ec33b2532310ff9cf73b79f3c133e5a5f68')
 
 build() {
 	cd "${srcdir}"/${_pkgname}-${pkgver}/src
@@ -46,5 +40,3 @@ package() {
 	install -m755 -d "${pkgdir}"/usr/share/doc/proot/stylesheets
 	install -m644 doc/proot/stylesheets/* "${pkgdir}"/usr/share/doc/proot/stylesheets
 }
-
-# vim: ft=sh syn=sh et
