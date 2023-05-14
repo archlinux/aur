@@ -1,5 +1,7 @@
 # Maintainer: MrDuartePT <gonegrier.duarte@gmail.com>
 # Maintainer: johnfanv2 <https://github.com/johnfanv2>
+
+
 _pkgname=lenovolegionlinux
 pkgname=${_pkgname}-git
 pkgver=r255.84de130
@@ -8,17 +10,20 @@ pkgdesc="LenovoLegionLinux (LLL) brings additional drivers and tools for Lenovo 
 arch=("x86_64")
 url="https://github.com/johnfanv2/LenovoLegionLinux"
 license=('GPL')
-makedepends=("git"
-		"python-build"
-		"python-pyqt5"
-		"python-yaml" 
-		"python-argcomplete"
-		"python-setuptools"
-)
+
+makedepends=(
+  git
+  python-build
+  python-pyqt5
+  python-yaml
+  python-argcomplete
+  python-setuptools
+ )
 optdepends=(
-		"legion-fan-utils-linux-git: Systemd service that will apply a given profile
-		lenovolegionlinux-dkms-git: DKMS module (install if your distro dosent patch in the kernel our you are not sure to haveit)"
+  "legion-fan-utils-linux-git: Systemd service that will apply a given profile"
+  "lenovolegionlinux-dkms-git: DKMS module"
 )
+
 source=("${_pkgname}::git+https://github.com/johnfanv2/LenovoLegionLinux")
 sha256sums=('SKIP')
 
@@ -34,20 +39,18 @@ prepare() {
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}/python/legion_linux"
-	python setup.py build
+ cd "${srcdir}/${_pkgname}/python/legion_linux"
+ python setup.py build
 	
 }
 package() {
-	mkdir -p $pkgdir/usr/{local,lib/modules/$(uname -r)/kernel/drivers/platform/x86/}
- 	mkdir -p $pkgdir/usr/share/{applications/,icons/,polkit-1/actions/}
- 	mkdir -p $pkgdir/etc/pacman.d/hooks
-	cd "${srcdir}/${_pkgname}/python/legion_linux"
-	install -Dm775 legion_gui.desktop "${pkgdir}/usr/share/applications/"
-	install -Dm644 legion_logo.png "${pkgdir}/usr/share/pixmaps/legion_logo.png"
-	install -Dm644 legion_gui.policy "${pkgdir}/usr/share/polkit-1/actions/"
+  mkdir -p $pkgdir/usr/share/{applications/,icons/,polkit-1/actions/}
+  cd "${srcdir}/${_pkgname}/python/legion_linux"
+  install -Dm775 legion_gui.desktop "${pkgdir}/usr/share/applications/"
+  install -Dm644 legion_logo.png "${pkgdir}/usr/share/pixmaps/legion_logo.png"
+  install -Dm644 legion_gui.policy "${pkgdir}/usr/share/polkit-1/actions/"
 	
-	cd "${srcdir}/${_pkgname}/python/legion_linux"
-	python setup.py install --root="$pkgdir" --optimize=1
-	mv $pkgdir/usr/bin $pkgdir/usr/local/ #move from /usr/bin to /usr/local/bin (for legion_gui.desktop to work)
+  cd "${srcdir}/${_pkgname}/python/legion_linux"
+  python setup.py install --root="$pkgdir" --optimize=1
+  mv $pkgdir/usr/bin $pkgdir/usr/local/
 }
