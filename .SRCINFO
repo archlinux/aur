@@ -1,26 +1,25 @@
 pkgbase = kde-gtk-config-git
-	pkgdesc = GTK2 and GTK3 Configurator for KDE (git version)
-	pkgver = 5.19.90.r10.g0e51688
+	pkgdesc = GTK2 and GTK3 Configurator for KDE
+	pkgver = 5.27.80_r991.g45672f2
 	pkgrel = 1
-	url = https://www.kde.org/workspaces/plasmadesktop/
+	url = https://kde.org/plasma-desktop/
 	arch = x86_64
+	groups = plasma-git
 	license = LGPL
 	makedepends = git
-	makedepends = extra-cmake-modules
-	makedepends = gtk2
+	makedepends = extra-cmake-modules-git
 	makedepends = gtk3
 	makedepends = sassc
 	depends = qt5-svg
-	depends = kdecoration
-	depends = kconfigwidgets
-	depends = kdbusaddons
-	optdepends = gtk2: GTK2 apps support
+	depends = kdecoration-git
+	depends = kconfigwidgets-git
+	depends = kdbusaddons-git
+	depends = kwindowsystem-git
 	optdepends = gtk3: GTK3 apps support
 	optdepends = xsettingsd: apply settings to GTK applications on the fly
 	provides = kde-gtk-config
 	conflicts = kde-gtk-config
-	source = git+https://anongit.kde.org/kde-gtk-config.git
+	source = git+https://github.com/KDE/kde-gtk-config.git
 	sha256sums = SKIP
 
 pkgname = kde-gtk-config-git
-

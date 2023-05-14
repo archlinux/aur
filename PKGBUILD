@@ -1,40 +1,37 @@
+# Merged with official ABS kde-gtk-config PKGBUILD by João, 2023/05/14 (all respective contributors apply herein)
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Maintainer : Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kde-gtk-config-git
-pkgver=5.19.90.r10.g0e51688
+pkgver=5.27.80_r991.g45672f2
 pkgrel=1
-pkgdesc='GTK2 and GTK3 Configurator for KDE (git version)'
-arch=('x86_64')
-url='https://www.kde.org/workspaces/plasmadesktop/'
-license=('LGPL')
-depends=('qt5-svg'  'kdecoration'  'kconfigwidgets'  'kdbusaddons')
-optdepends=('gtk2: GTK2 apps support'
-            'gtk3: GTK3 apps support'
-            'xsettingsd: apply settings to GTK applications on the fly')
-makedepends=('git' 'extra-cmake-modules' 'gtk2' 'gtk3' 'sassc')
-conflicts=('kde-gtk-config')
-provides=('kde-gtk-config')
-source=('git+https://anongit.kde.org/kde-gtk-config.git')
+pkgdesc='GTK2 and GTK3 Configurator for KDE'
+arch=($CARCH)
+url='https://kde.org/plasma-desktop/'
+license=(LGPL)
+depends=(qt5-svg kdecoration-git kconfigwidgets-git kdbusaddons-git kwindowsystem-git)
+makedepends=(git extra-cmake-modules-git gtk3 sassc)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+optdepends=('gtk3: GTK3 apps support' 'xsettingsd: apply settings to GTK applications on the fly')
+groups=(plasma-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    git -C kde-gtk-config describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 'set(PROJECT_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cmake -B build -S kde-gtk-config \
-        -DCMAKE_INSTALL_PREFIX='/usr' \
-        -DLIBEXEC_INSTALL_DIR='lib' \
-        -DBUILD_TESTING='ON' \
-        -Wno-dev
-    make -C build
-}
-
-check() {
-    make -C build test
+  cmake -B build -S ${pkgname%-git} \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-    make -C build DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
