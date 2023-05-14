@@ -1,7 +1,7 @@
 # Maintainer: Thomas Booker <tw.booker@outlook.com>
 
 pkgname=phosh-tour
-pkgver=0.24.0
+pkgver=0.25.0
 pkgrel=1
 pkgdesc='Simple tour through phosh'
 arch=(x86_64 aarch64 armv7h)
@@ -15,7 +15,7 @@ makedepends=(
 	meson
 )
 source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=("1f01ef314d1f76a04227a98fb262655122163ce5e2e8121801a4b07a37eb4b76")
+sha256sums=('aa9eefe42fc0a5b04bd128283c68e512eb080a9095520ef897d880c1ab70adc5')
 
 build() {
 	# TODO: -D brand
