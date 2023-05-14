@@ -1,15 +1,15 @@
 # Maintainer: Jonni Westphalen <jonny.westphalen@googlemail.com>
 pkgname=aurman
-pkgver=2.20.1
-pkgrel=2
+pkgver=2.21
+pkgrel=1
 pkgdesc="AUR helper with almost pacman syntax"
 arch=('any')
 url="https://github.com/polygamma/aurman"
 license=('MIT')
 depends=('python' 'expac' 'python-requests' 'git' 'python-regex' 'python-dateutil' 'pyalpm' 'python-feedparser' 'python-setuptools')
-source=("aurman_sources::git+https://github.com/polygamma/aurman.git?signed#tag=${pkgver}")
+source=('aurman_sources::git+https://github.com/polygamma/aurman.git?signed#tag=${pkgver}')
 md5sums=('SKIP')
-validpgpkeys=('4C3CE98F9579981C21CA1EC3465022E743D71E39') # Jonni Westphalen
+validpgpkeys=('F3FAE51DB14A292C5C0A5535910B8C499BED531B') # Jonni Westphalen
 
 package() {
     cd "$srcdir/aurman_sources"

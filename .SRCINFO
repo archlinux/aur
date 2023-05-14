@@ -1,7 +1,7 @@
 pkgbase = aurman
 	pkgdesc = AUR helper with almost pacman syntax
-	pkgver = 2.20.1
-	pkgrel = 2
+	pkgver = 2.21
+	pkgrel = 1
 	url = https://github.com/polygamma/aurman
 	arch = any
 	license = MIT
@@ -14,8 +14,8 @@ pkgbase = aurman
 	depends = pyalpm
 	depends = python-feedparser
 	depends = python-setuptools
-	source = aurman_sources::git+https://github.com/polygamma/aurman.git?signed#tag=2.20.1
-	validpgpkeys = 4C3CE98F9579981C21CA1EC3465022E743D71E39
+	source = aurman_sources::git+https://github.com/polygamma/aurman.git?signed#tag=${pkgver}
+	validpgpkeys = F3FAE51DB14A292C5C0A5535910B8C499BED531B
 	md5sums = SKIP
 
 pkgname = aurman
