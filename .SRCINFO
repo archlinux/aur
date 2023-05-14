@@ -1,6 +1,6 @@
 pkgbase = llvm-minimal-git
-	pkgver = 17.0.0_r457944.9ece8753d5e6
-	pkgrel = 2
+	pkgver = 17.0.0_r460868.6e19eea02bbe
+	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
 	license = custom:Apache 2.0 with LLVM Exception
@@ -13,33 +13,22 @@ pkgbase = llvm-minimal-git
 	makedepends = libxcrypt
 	makedepends = python
 	makedepends = python-setuptools
-	makedepends = spirv-headers-git
-	makedepends = spirv-tools-git
-	options = staticlibs
 	options = !lto
-	source = llvm-project::git+https://github.com/llvm/llvm-project.git
+	source = git+https://github.com/llvm/llvm-project.git
 	source = local://llvm-config.h
-	source = git+https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git
 	md5sums = SKIP
 	md5sums = 295c343dcd457dc534662f011d7cff1a
-	md5sums = SKIP
 	sha512sums = SKIP
 	sha512sums = 75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd
-	sha512sums = SKIP
 
 pkgname = llvm-minimal-git
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies
-	depends = llvm-libs-minimal-git=17.0.0_r457944.9ece8753d5e6-2
-	depends = clang-libs-minimal-git=17.0.0_r457944.9ece8753d5e6-2
-	depends = perl
+	depends = llvm-libs-minimal-git=17.0.0_r460868.6e19eea02bbe-1
+	depends = clang-libs-minimal-git=17.0.0_r460868.6e19eea02bbe-1
 	optdepends = python: for using lit (LLVM Integrated Tester)
 	optdepends = python-setuptools: for using lit
 	provides = llvm
-	provides = compiler-rt
-	provides = clang
 	conflicts = llvm
-	conflicts = compiler-rt
-	conflicts = clang
 
 pkgname = llvm-libs-minimal-git
 	pkgdesc = LLVM runtime libraries, trunk version
@@ -52,15 +41,23 @@ pkgname = llvm-libs-minimal-git
 	optdepends = llvm-libs: for LLVMgold linker
 	provides = llvm-libs
 
+pkgname = clang-minimal-git
+	pkgdesc = C language family frontend for LLVM (git version)
+	depends = llvm-libs-minimal-git
+	depends = clang-libs-minimal-git
+	depends = gcc
+	optdepends = openmp: OpenMP support in clang with -fopenmp
+	optdepends = python: for scan-view, scan-build, git-clang-format, clang-rename and python bindings
+	optdepends = llvm-minimal-git: referenced by some clang headers
+	provides = compiler-rt
+	provides = clang
+	provides = clang-analyzer
+	provides = clang-tools-extra
+	conflicts = compiler-rt
+	conflicts = clang
+
 pkgname = clang-libs-minimal-git
 	pkgdesc = clang runtime libraries, trunk version
-	depends = llvm-libs-minimal-git=17.0.0_r457944.9ece8753d5e6-2
+	depends = llvm-libs-minimal-git=17.0.0_r460868.6e19eea02bbe-1
 	provides = clang-libs
 	conflicts = clang-libs
-
-pkgname = spirv-llvm-translator-minimal-git
-	pkgdesc = Tool and a library for bi-directional translation between SPIR-V and LLVM IR, trunk version
-	depends = llvm-minimal-git=17.0.0_r457944.9ece8753d5e6-2
-	depends = spirv-tools-git
-	provides = spirv-llvm-translator
-	conflicts = spirv-llvm-translator

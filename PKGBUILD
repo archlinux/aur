@@ -1,4 +1,5 @@
 # Maintainer: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
+# Contributor:	blackmoon3  <https://github.com/blacksky3>
 # Contributor: yurikoles <root@yurikoles.com>
 # Contributor: bearoso <bearoso@gmail.com>
 # Contributor: Luchesar V. ILIEV <luchesar%2eiliev%40gmail%2ecom>
@@ -15,28 +16,25 @@
 
 
 pkgbase=llvm-minimal-git
-pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git' 'clang-libs-minimal-git' 'spirv-llvm-translator-minimal-git')
-pkgver=17.0.0_r457944.9ece8753d5e6
-pkgrel=2
+pkgname=(llvm-minimal-git llvm-libs-minimal-git clang-minimal-git clang-libs-minimal-git)
+pkgver=17.0.0_r460868.6e19eea02bbe
+pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
-makedepends=('git' 'cmake' 'libffi' 'libedit' 'ncurses' 'libxml2'
-             'libxcrypt' 'python' 'python-setuptools' 'spirv-headers-git' 'spirv-tools-git')
-source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
+makedepends=(git cmake libffi libedit ncurses libxml2
+             libxcrypt python python-setuptools)
+source=("git+https://github.com/llvm/llvm-project.git"
                 'local://llvm-config.h'
-                "git+https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git"
-                )
+)
                 
 md5sums=('SKIP'
-         '295c343dcd457dc534662f011d7cff1a'
-         'SKIP')
+         '295c343dcd457dc534662f011d7cff1a')
 sha512sums=('SKIP'
-            '75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd'
-            'SKIP')
+            '75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd')
             
 
-options=('staticlibs' '!lto')
+options=('!lto')
 # explicitly disable lto to reduce number of build hangs / test failures
 
 # LIT by default uses all available cores. this can lead to heavy stress on systems making them unresponsive.
@@ -92,11 +90,6 @@ build() {
         -D LLVM_ENABLE_BINDINGS=OFF \
         -D LLVM_ENABLE_PROJECTS="compiler-rt;clang-tools-extra;clang" \
         -D LLVM_ENABLE_DUMP=ON \
-        -D LLVM_EXTERNAL_PROJECTS="SPIRV-LLVM-Translator" \
-        -D LLVM_EXTERNAL_SPIRV_LLVM_TRANSLATOR_SOURCE_DIR="$srcdir"/SPIRV-LLVM-Translator \
-        -D LLVM_EXTERNAL_SPIRV_HEADERS_SOURCE_DIR=/usr/include/spirv/ \
-        -D LLVM_SPIRV_INCLUDE_TESTS=ON \
-        -D BASE_LLVM_VERSION=17.0.0 \
         -D LLVM_LIT_ARGS="$LITFLAGS"" -sv --ignore-fail" \
         -Wno-dev
 
@@ -107,14 +100,13 @@ check() {
     make -C _build check-llvm
     make -C _build check-clang
     make -C _build check-clang-tools
-    make -C _build check-llvm-spirv
 }
 
 package_llvm-minimal-git() {
     pkgdesc="Collection of modular and reusable compiler and toolchain technologies"
-    depends=(llvm-libs-minimal-git="$pkgver-$pkgrel" clang-libs-minimal-git="$pkgver-$pkgrel" 'perl')
-    provides=('llvm' 'compiler-rt' 'clang')
-    conflicts=('llvm' 'compiler-rt' 'clang')
+    depends=(llvm-libs-minimal-git="$pkgver-$pkgrel" clang-libs-minimal-git="$pkgver-$pkgrel")
+    provides=('llvm')
+    conflicts=('llvm')
     optdepends=('python: for using lit (LLVM Integrated Tester)'
                           'python-setuptools: for using lit'
     )
@@ -124,8 +116,9 @@ package_llvm-minimal-git() {
     # Include lit for running lit-based tests in other projects
     pushd "$srcdir"/llvm-project/llvm/utils/lit 
     python3 setup.py install --root="$pkgdir" -O1
+    # -O1 ensures the python files for lit will be optimized
     popd
-
+    
     # Remove files which conflict with repo llvm-libs
     rm "$pkgdir"/usr/lib/{LLVMgold,lib{LLVM,LTO}}.so
     rm "$pkgdir"/usr/lib/libRemarks.so
@@ -139,20 +132,19 @@ package_llvm-minimal-git() {
     # The clang runtime libraries go into clang-libs-minimal-git
     mv -f "$pkgdir"/usr/lib/libclang{,-cpp}.so* "$srcdir"/clang-libs/usr/lib
 
-    # all spirv-llvm-translator files go to spirv-llvm-translator-minimal-git
-    mv "$pkgdir"/usr/bin/llvm-spirv "$srcdir"/spirv-llvm-translator/usr/bin
-    mv "$pkgdir"/usr/include/LLVMSPIRVLib/* "$srcdir"/spirv-llvm-translator/usr/include/LLVMSPIRVLib/
-    mv "$pkgdir"/usr/lib/libLLVMSPIRVLib.a "$srcdir"/spirv-llvm-translator/usr/lib
-    mv "$pkgdir"/usr/lib/pkgconfig/LLVMSPIRVLib.pc "$srcdir"/spirv-llvm-translator/usr/lib/pkgconfig
-  
-    # llvm project uses /usr/libexec and setting CMAKE_INSTALL_LIBEXECDIR doesn't change that.
+    # clang-minimal-git files go to a separate package
+    mkdir -p "$srcdir"/clang/usr/{bin,include,lib,lib/cmake,share}
+    mv -f "$pkgdir"/usr/lib/{libear,libscanbuild,libclang*.a,clang} "$srcdir"/clang/usr/lib
+    mv -f "$pkgdir"/usr/lib/cmake/clang "$srcdir"/clang/usr/lib/cmake/
+    mv -f "$pkgdir"/usr/include/{clang,clang-tidy,clang-c} "$srcdir"/clang/usr/include/
+    # llvm project uses /usr/libexec and setting CMAKE_INSTALL_LIBEXECDIR doesn't affect that.
     # to comply with archlinux packaging standards we have to move some files manually
-    for libexec_file in "analyze-c++" "analyze-cc" "c++-analyzer" "ccc-analyzer" "intercept-c++" "intercept-cc"
-    do
-        mv "$pkgdir"/usr/libexec/$libexec_file "$pkgdir"/usr/lib/clang/$libexec_file
-    done
+    mv -f "$pkgdir"/usr/libexec/* "$srcdir"/clang/usr/lib/clang
     rmdir "$pkgdir"/usr/libexec
-    sed -i 's|libexec|lib/clang|' "$pkgdir"/usr/bin/scan-build
+    mv -f "$pkgdir"/usr/bin/{analyze-build,c-index-test,clang*,diagtool,find-all-symbols,git-clang-format,hmaptool,intercept-build,modularize,pp-trace,run-clang-tidy,scan-build,scan-build-py,scan-view} "$srcdir"/clang/usr/bin/
+    mv -f "$pkgdir"/usr/share/{clang,man,opt-viewer,scan-build,scan-view} "$srcdir"/clang/usr/share/
+    
+#    sed -i 's|libexec|lib/clang|' "$pkgdir"/usr/bin/scan-build
 
   
     if [[ $CARCH == x86_64 ]]; then
@@ -163,10 +155,7 @@ package_llvm-minimal-git() {
     fi
 
     install -Dm644 "$srcdir"/llvm-project/llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE.TXT
-    install -Dm644 "$srcdir"/llvm-project/compiler-rt/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/compiler-rt-LICENSE.TXT
-    install -Dm644 "$srcdir"/llvm-project/clang-tools-extra/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-tools-extra-LICENSE.TXT
-    install -Dm644 "$srcdir"/llvm-project/clang/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-LICENSE.TXT
-  
+    
 }
 
 package_llvm-libs-minimal-git() {
@@ -180,6 +169,42 @@ package_llvm-libs-minimal-git() {
     install -Dm644 "$srcdir"/llvm-project/llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.TXT
 }
 
+_python_optimize() {
+  python -m compileall "$@"
+  python -O -m compileall "$@"
+  python -OO -m compileall "$@"
+}
+
+package_clang-minimal-git(){
+  pkgdesc='C language family frontend for LLVM (git version)'
+  depends=(llvm-libs-minimal-git clang-libs-minimal-git gcc)
+  optdepends=('openmp: OpenMP support in clang with -fopenmp'
+              'python: for scan-view, scan-build, git-clang-format, clang-rename and python bindings'
+              'llvm-minimal-git: referenced by some clang headers')
+  conflicts=(compiler-rt clang)
+  provides=(compiler-rt clang clang-analyzer clang-tools-extra)
+
+    cp --preserve --recursive "$srcdir"/clang/* "$pkgdir"/
+
+    # Move scanbuild-py into site-packages
+    local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+    install -d "$pkgdir/$site_packages"
+    mv "$pkgdir"/usr/lib/{libear,libscanbuild} "$pkgdir/$site_packages/"
+
+    sed -i 's|libexec|lib/clang|' \
+        "$pkgdir/usr/bin/scan-build" \
+        "$pkgdir/$site_packages/libscanbuild/analyze.py"
+
+    # Compile Python scripts
+    _python_optimize "$pkgdir"/usr/share "$pkgdir"/$site_packages
+
+
+    install -Dm644 "$srcdir"/llvm-project/compiler-rt/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/compiler-rt-LICENSE.TXT
+    install -Dm644 "$srcdir"/llvm-project/clang-tools-extra/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-tools-extra-LICENSE.TXT
+    install -Dm644 "$srcdir"/llvm-project/clang/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-LICENSE.TXT
+
+}
+
 package_clang-libs-minimal-git() {
     pkgdesc="clang runtime libraries, trunk version"
     depends=(llvm-libs-minimal-git="$pkgver-$pkgrel")
@@ -191,15 +216,6 @@ package_clang-libs-minimal-git() {
     cp --preserve --recursive "$srcdir"/clang-libs/* "$pkgdir"/
 
     install -Dm644 "$srcdir"/llvm-project/llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.TXT
-}
-package_spirv-llvm-translator-minimal-git() {
-pkgdesc="Tool and a library for bi-directional translation between SPIR-V and LLVM IR, trunk version"
-depends=(llvm-minimal-git=$pkgver-$pkgrel 'spirv-tools-git')
-provides=('spirv-llvm-translator')
-conflicts=('spirv-llvm-translator')
-
-    cp --preserve --recursive "$srcdir"/spirv-llvm-translator/* "$pkgdir"/
-    install -Dm644 "$srcdir"/SPIRV-LLVM-Translator/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.TXT
 }
 
 
