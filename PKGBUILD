@@ -15,11 +15,6 @@ makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('20620498cf5e6794fea29ddcb46afbda8cbf714e3cf8e1da149699f03453637f')
 
-package() {
-  cd ${_pkgname}-${pkgver}
-  python setup.py install -O1 --root="${pkgdir}" --prefix=/usr
-}
-
 build() {
     cd "${_pkgname}-${pkgver}"
     python -m build --wheel --no-isolation
