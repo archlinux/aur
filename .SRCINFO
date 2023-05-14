@@ -6,7 +6,6 @@ pkgbase = zyplayer-appimage
 	arch = x86_64
 	arch = arm64
 	license = MIT
-	depends = electron
 	provides = ZyPlayer
 	options = !strip
 	source = https://github.com/Hiram-Wong/ZyPlayer/releases/download/v3.2.0/ZYPlayer-linux-3.2.0-x86_64.AppImage
