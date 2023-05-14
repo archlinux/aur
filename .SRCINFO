@@ -1,4 +1,4 @@
-pkgbase = mouseless
+pkgbase = mouseless-bin
 	pkgdesc = Control the mouse with your keyboard and remap keys
 	pkgver = 0.1.5
 	pkgrel = 1
@@ -8,4 +8,4 @@ pkgbase = mouseless
 	source = https://github.com/jbensmann/mouseless/releases/download/v0.1.5/mouseless-linux-amd64.tar.gz
 	sha256sums = 1bb6490820f2491cccb28d3968aa6f1f98c87f1f1416c7f524cc25b0b555d86c
 
-pkgname = mouseless
+pkgname = mouseless-bin

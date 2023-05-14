@@ -1,5 +1,5 @@
 # Maintainer: Johannes Bensmann <johannesbensmann@gmx.de>
-pkgname=mouseless
+pkgname=mouseless-bin
 pkgver=0.1.5
 pkgrel=1
 pkgdesc="Control the mouse with your keyboard and remap keys"
