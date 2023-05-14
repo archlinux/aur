@@ -1,6 +1,6 @@
 pkgbase = pdh
 	pkgdesc = Pagerduty CLI for humans
-	pkgver = 0.3.5
+	pkgver = 0.3.12
 	pkgrel = 1
 	url = https://github.com/mbovo/pdh
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = pdh
 	depends = python-rich
 	depends = python-pyaml
 	depends = python-pdpyras
-	source = https://files.pythonhosted.org/packages/source/p/pdh/pdh-0.3.5.tar.gz
-	sha256sums = 3ef01b0f246d43724ff582eeef37a4fc8bde4b4e6986137331ee3229cee8c384
+	source = https://files.pythonhosted.org/packages/source/p/pdh/pdh-0.3.12.tar.gz
+	sha256sums = aedd0dcbca39babab3bf854cef5fd1ba196a3ba1a73332deb8e207d735b24a7e
 
 pkgname = pdh
