@@ -1,22 +1,37 @@
-# Maintainer: Bachitter Chahal <bachitterch@pm.me>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Bachitter Chahal <bachitterch@pm.me>
 
 pkgname=pscale-cli
-_pkgname=pscale
-pkgver=0.113.0
-pkgrel=0
-pkgdesc='PlanetScale CLI client package for Arch'
-arch=('x86_64')
+pkgver=0.142.0
+pkgrel=1
+pkgdesc='PlanetScale CLI client'
+arch=(x86_64)
 url='https://github.com/planetscale/cli'
-license=('Apache')
-provides=('pscale')
-conflicts=('pscale' 'pscale-git' 'pscale-bin')
-backup=()
-install="pscale.install"
-source=("https://github.com/planetscale/cli/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('7bdf3aacf4e8553d03a57cad7b51cb434d07fc56400b407b1230a55c5a1ee9f7')
+license=(Apache)
+depends=(glibc)
+makedepends=(go staticcheck)
+provides=(pscale)
+conflicts=(pscale)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/planetscale/cli/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('63c181bfa56a1348ee1772b6f0471ba41d8f1e81a49b2b28305f849d2b1c1a88')
 
-package() {
-  install -Dm755 pscale ${pkgdir}/usr/bin/pscale
+build() {
+  cd "cli-${pkgver}/cmd/pscale"
+  go build \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+    .
 }
 
-# vim:set ts=2 sw=2 et:
+check() {
+  cd "cli-${pkgver}"
+  go test ./...
+}
+
+package() {
+  cd "cli-${pkgver}/cmd/pscale"
+  install -Dm755 pscale -t ${pkgdir}/usr/bin/pscale
+}
