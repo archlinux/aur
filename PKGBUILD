@@ -29,5 +29,5 @@ package() {
 
   make DESTDIR="$pkgdir/" install
 
-  install --verbose -D --mode=0644 debian/copyright --target-directory "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 debian/copyright "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
