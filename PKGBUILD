@@ -2,13 +2,13 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=akonadi-import-wizard-git
-pkgver=21.11.40_r1720.gf4ac9fa
+pkgver=23.07.40_r1935.gd61f2ee
 pkgrel=1
 pkgdesc="Import data from other mail clients to KMail"
 arch=($CARCH)
 url="https://kontact.kde.org"
 license=(GPL2)
-depends=(mailcommon-git)
+depends=(mailcommon-git qt6-5compat)
 makedepends=(git extra-cmake-modules-git boost kdoctools-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
