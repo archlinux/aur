@@ -1,6 +1,6 @@
 pkgbase = mariadb-git
 	pkgdesc = Fast SQL database server, derived from MySQL
-	pkgver = 10.9_r195162.g452672ab0e6
+	pkgver = 10.9.7_r197760.g717e3b3cfdb
 	pkgrel = 1
 	url = https://mariadb.org/
 	arch = x86_64
@@ -59,16 +59,16 @@ pkgname = mariadb-libs-git
 
 pkgname = mariadb-clients-git
 	pkgdesc = MariaDB client tools
-	depends = mariadb-libs-git=10.9_r195162.g452672ab0e6
+	depends = mariadb-libs-git=10.9.7_r197760.g717e3b3cfdb
 	depends = jemalloc
-	provides = mysql-clients=10.9_r195162.g452672ab0e6
+	provides = mysql-clients=10.9.7_r197760.g717e3b3cfdb
 	conflicts = mysql-clients
 	conflicts = mysql-clients-git
 
 pkgname = mariadb-git
 	pkgdesc = Fast SQL database server, derived from MySQL
 	install = mariadb.install
-	depends = mariadb-clients-git=10.9_r195162.g452672ab0e6
+	depends = mariadb-clients-git=10.9.7_r197760.g717e3b3cfdb
 	depends = systemd-libs
 	depends = libxml2
 	depends = zstd
@@ -77,7 +77,7 @@ pkgname = mariadb-git
 	optdepends = galera: for MariaDB cluster with Galera WSREP
 	optdepends = python-mysqlclient: for myrocks_hotbackup
 	optdepends = perl-dbd-mariadb: for mariadb-hotcopy, mariadb-convert-table-format and mariadb-setpermission
-	provides = mysql=10.9_r195162.g452672ab0e6
+	provides = mysql=10.9.7_r197760.g717e3b3cfdb
 	conflicts = mysql
 	conflicts = mysql-git
 	options = emptydirs

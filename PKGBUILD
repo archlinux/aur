@@ -6,7 +6,7 @@
 pkgbase=mariadb-git
 pkgname=(mariadb-libs-git mariadb-clients-git mariadb-git mytop-git)
 pkgdesc='Fast SQL database server, derived from MySQL'
-pkgver=10.9_r195162.g452672ab0e6
+pkgver=10.9.7_r197760.g717e3b3cfdb
 pkgrel=1
 arch=($CARCH)
 license=(GPL)
@@ -21,8 +21,10 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd $pkgbase
-  _ver="$(grep -m1 '^Source:' debian/control | cut -d '-' -f2 | tr - .)"
-  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  _major_ver="$(grep -m1 'MYSQL_VERSION_MAJOR' VERSION | cut -d '=' -f2)"
+  _minor_ver="$(grep -m1 'MYSQL_VERSION_MINOR' VERSION | cut -d '=' -f2)"
+  _micro_ver="$(grep -m1 'MYSQL_VERSION_PATCH' VERSION | cut -d '=' -f2)"
+  echo "${_major_ver}.${_minor_ver}.${_micro_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 prepare() {
