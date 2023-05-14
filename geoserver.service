@@ -8,6 +8,7 @@ User=geoserver
 Group=geoserver
 
 Environment="GEOSERVER_HOME=/opt/geoserver/{pkgver}/"
+Environment="JAVA_HOME=/usr/lib/jvm/java-{java_ver}-openjdk"
 ExecStart=/opt/geoserver/{pkgver}/bin/startup.sh
 ExecStop=/opt/geoserver/{pkgver}/bin/shutdown.sh
 RemainAfterExit=yes
