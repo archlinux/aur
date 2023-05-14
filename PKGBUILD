@@ -1,4 +1,4 @@
-# Maintainer: archbluxe  <archblux@126.com>
+# Maintainer: archblux  <archblux@126.com>
 
 pkgname=zyplayer-appimage
 pkgver=3.2.0
