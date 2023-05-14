@@ -1,7 +1,7 @@
 # Contributor: Richard Stöckl<richard.stoeckl@aon.at>
 pkgname=('libelektra' 'libelektra-docs')
-pkgver=0.9.9
-pkgrel=3
+pkgver=0.9.14
+pkgrel=1
 pkgdesc="A universal hierarchical configuration store"
 url="https://www.libelektra.org"
 license=('custom:BSD')
@@ -9,17 +9,16 @@ arch=('i686' 'x86_64')
 depends=('yajl' 'qt5-declarative' 'qt5-base' 'lua' 'python'
   'libuv' 'libgit2' 'libev' 'zeromq' 'gpgme' 'hicolor-icon-theme'
   'discount' 'yaml-cpp' 'java-runtime')
-optdepends=('ruby: for ruby bindings'
-  'python2: for python2-bindings')
-makedepends=('cmake' 'doxygen' 'git' 'swig' 'xerces-c')
+makedepends=('cmake' 'gcc12' 'doxygen' 'git' 'swig' 'xerces-c')
 provides=('libelektra' 'elektra')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ElektraInitiative/libelektra/archive/$pkgver.tar.gz")
-sha256sums=('12e94a58d1a707f8cf359d888c19c8f4e059b3bacc0c35c86dfc309ebd0a385b')
+sha256sums=('a1c840770ea7cf244d3e9da93734ff1256c6b0cbd28e6663b591359619815668')
 
 build() {
   cd "$pkgname-$pkgver"
   [[ -d build ]] || mkdir build
   cd build
+  export CC=gcc-12 CXX=g++-12
   JAVA_HOME="/usr/lib/jvm/$(archlinux-java get)"
   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr \
     -DCMAKE_INSTALL_RPATH:PATH=/usr/lib \

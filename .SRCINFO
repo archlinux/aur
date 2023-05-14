@@ -1,12 +1,13 @@
 pkgbase = libelektra
 	pkgdesc = A universal hierarchical configuration store
-	pkgver = 0.9.9
-	pkgrel = 3
+	pkgver = 0.9.14
+	pkgrel = 1
 	url = https://www.libelektra.org
 	arch = i686
 	arch = x86_64
 	license = custom:BSD
 	makedepends = cmake
+	makedepends = gcc12
 	makedepends = doxygen
 	makedepends = git
 	makedepends = swig
@@ -25,12 +26,10 @@ pkgbase = libelektra
 	depends = discount
 	depends = yaml-cpp
 	depends = java-runtime
-	optdepends = ruby: for ruby bindings
-	optdepends = python2: for python2-bindings
 	provides = libelektra
 	provides = elektra
-	source = libelektra-0.9.9.tar.gz::https://github.com/ElektraInitiative/libelektra/archive/0.9.9.tar.gz
-	sha256sums = 12e94a58d1a707f8cf359d888c19c8f4e059b3bacc0c35c86dfc309ebd0a385b
+	source = libelektra-0.9.14.tar.gz::https://github.com/ElektraInitiative/libelektra/archive/0.9.14.tar.gz
+	sha256sums = a1c840770ea7cf244d3e9da93734ff1256c6b0cbd28e6663b591359619815668
 
 pkgname = libelektra
 
