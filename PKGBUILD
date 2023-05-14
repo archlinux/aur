@@ -18,7 +18,6 @@ b2sums_x86_64=('3f35d9c21c51ffa54adbcf363788720bbe489f405fe199cf958ee1b37a3f0f52
 options=()
 
 package() {
-    find $srcdir -name "sg" -type f -exec install -Dm755 {} "$pkgdir/usr/bin/ast-grep" \;
-    install -Dm644 LICENSE -t $pkgdir/usr/share/licenses/$pkgname
+	find $srcdir -name "sg" -type f -exec install -Dm755 {} "$pkgdir/usr/bin/ast-grep" \;
+	install -Dm644 LICENSE -t $pkgdir/usr/share/licenses/$pkgname
 }
-
