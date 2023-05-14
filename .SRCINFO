@@ -11,7 +11,6 @@ pkgbase = xfce4-dxreminders-plugin
 	depends = xfce4-panel
 	depends = dxreminders>=1.20.0
 	source = https://files.dxsolutions.org/xfce4-dxreminders-plugin-1.0.0.tar.gz
-	md5sums = 4b3f30e152a7a9726caff360cb44d555
+	md5sums = 269348e663d93b78275467ed0cf0b376
 
 pkgname = xfce4-dxreminders-plugin
-

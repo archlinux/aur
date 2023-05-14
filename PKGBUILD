@@ -1,4 +1,4 @@
-# Contributor: David Vachulka <arch_dvx@users.sourceforge.net>
+# Contributor: David Vachulka <archdvx@dxsolutions.org>
 
 pkgname=xfce4-dxreminders-plugin
 pkgver=1.0.0
@@ -11,7 +11,7 @@ depends=('xfce4-panel' 'dxreminders>=1.20.0')
 makedepends=('cmake')
 install=${pkgname}.install
 source=(https://files.dxsolutions.org/$pkgname-$pkgver.tar.gz)
-md5sums=('4b3f30e152a7a9726caff360cb44d555')
+md5sums=('269348e663d93b78275467ed0cf0b376')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
