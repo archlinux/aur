@@ -1,13 +1,12 @@
 pkgbase = mplus-1-code-nerd-font
 	pkgdesc = M PLUS 1 Code Nerd Font
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
-	epoch = 1
 	url = https://www.nerdfonts.com/
 	arch = any
 	license = OFL
 	provides = mplus-1-code
-	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.0/MPlus.zip
-	sha256sums = b59ba3c6ca1b2231c2dc96103c6a5f737a1210893288dbe5ea28f64ad0a642a3
+	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/MPlus.zip
+	sha256sums = 64fd460cb16b8277dff3f1c00c8035ea56cfdf564e66ccdeb6ec070ef121e1fa
 
 pkgname = mplus-1-code-nerd-font
