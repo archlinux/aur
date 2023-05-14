@@ -6,19 +6,43 @@
 
 pkgname=mutter-git
 _pkgname=mutter
-pkgver=42.1+r113+gd1a85c34c
+pkgver=44.1+r21+g5cb4251a3
 pkgrel=1
-pkgdesc="A window manager for GNOME."
+pkgdesc="A window manager compositor for GNOME"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
 license=(GPL)
-depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
-         libcanberra startup-notification zenity libsm gnome-desktop upower
-         libxkbcommon-x11 gnome-settings-daemon libgudev libinput pipewire
-         xorg-xwayland graphene libxkbfile)
-makedepends=(gobject-introspection git egl-wayland meson xorg-server
-             xorg-server-xvfb wayland-protocols)
-conflicts=(mutter)
+depends=(
+  colord
+  dconf
+  gnome-desktop-4
+  gnome-settings-daemon
+  graphene
+  gsettings-desktop-schemas
+  lcms2
+  libcanberra
+  libgudev
+  libinput
+  libsm
+  libsysprof-capture
+  libxkbcommon-x11
+  libxkbfile
+  pipewire
+  startup-notification
+  xorg-xwayland
+)
+makedepends=(
+  egl-wayland
+  gi-docgen
+  git
+  gobject-introspection
+  gtk3
+  meson
+  sysprof
+  wayland-protocols
+  xorg-server
+  xorg-server-xvfb
+)
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git")
 sha256sums=('SKIP')
 
@@ -29,10 +53,6 @@ prepare() {
 pkgver() {
   cd $_pkgname
   git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
-}
-
-package() {
-  DESTDIR="$pkgdir" meson install -C build
 }
 
 prepare() {
@@ -82,16 +102,18 @@ _pick() {
   done
 }
 
-package_mutter() {
-  provides=(mutter libmutter-10.so)
-  groups=(gnome)
+package() {
+  provides=(mutter libmutter-12.so)
+  conflicts=(mutter)
 
   meson install -C build --destdir "$pkgdir"
 
   _pick docs "$pkgdir"/usr/share/mutter-*/doc
 }
 
-package_mutter-docs() {
+package_mutter-docs-git() {
+  provides=(mutter-docs)
+  conflicts=(mutter-docs)
   pkgdesc+=" (documentation)"
   depends=()
 
