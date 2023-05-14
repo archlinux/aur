@@ -1,7 +1,7 @@
 pkgbase = nerd-fonts-gabmus
 	pkgdesc = Selection of nerd-fonts curated by gabmus
 	pkgver = 3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ryanoasis/nerd-fonts/
 	arch = any
 	license = MIT

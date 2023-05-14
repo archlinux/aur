@@ -3,7 +3,7 @@
 
 pkgname=nerd-fonts-gabmus
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 depends=('fontconfig')
 conflicts=('nerd-fonts-git' 'nerd-fonts-complete-mono-glyphs' 'nerd-fonts-complete')
 pkgdesc="Selection of nerd-fonts curated by gabmus"
@@ -44,6 +44,5 @@ sha512sums=('a7f9f812e0df947da92f458c59483c2f04843749f2f6544c093e13de3acea02d0fb
 
 package() {
   install -m755 -d "${pkgdir}"/usr/share/fonts/"${pkgname}"
-  install -m644 *Complete*.*tf "${pkgdir}"/usr/share/fonts/"${pkgname}"
 }
 
