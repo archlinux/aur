@@ -10,7 +10,13 @@ arch=('any')
 url="https://github.com/sdispater/${_pkgname}"
 license=('MIT')
 depends=('python-clikit')
-makedepends=('python-pyproject2setuppy')
+makedepends=(
+	python-build
+	python-poetry-core
+	python-build
+	python-installer
+	python-wheel
+)
 checkdepends=('python-pytest' 'python-pytest-mock')
 provides=("python-cleo=$pkgver")
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
@@ -26,8 +32,7 @@ prepare() {
 		-exec sed -Ei 's/(from cleo)\s/\1_v0 /;s/cleo\./cleo_v0./' '{}' +
 }
 build(){
-    cd ${_pkgname}-${pkgver}
-    python -m pyproject2setuppy build
+    python -m build --no-isolation --wheel "${_pkgname}-${pkgver}"
 }
 
 check() {
@@ -38,6 +43,7 @@ check() {
 package() {
     cd ${_pkgname}-${pkgver}
 
-    python -m pyproject2setuppy install --root="$pkgdir" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" \
+		"$srcdir/$_pkgname-$pkgver/dist/${_pkgname}_v0-${pkgver%.r*}-py2.py3-none-any.whl"
     install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/${pkgname}/
 }

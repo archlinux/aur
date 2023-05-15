@@ -7,7 +7,11 @@ pkgbase = python-cleo-v0
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-pytest-mock
-	makedepends = python-pyproject2setuppy
+	makedepends = python-build
+	makedepends = python-poetry-core
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-clikit
 	provides = python-cleo=0.8.1
 	source = cleo-0.8.1.tar.gz::https://github.com/sdispater/cleo/archive/0.8.1.tar.gz
