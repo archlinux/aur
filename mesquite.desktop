@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Version=1.0
-Name=Mesquite
-Comment=A modular, extendible software for evolutionary biology, designed to help biologists organize and analyze comparative data about organisms.
-Exec=mesquite %U
-Icon=mesquite
-Terminal=false
-Categories=Java;Education;Science;Biology;

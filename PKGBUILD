@@ -5,7 +5,7 @@
 
 pkgbase=mesquite
 pkgname=('mesquite' 'mesquite-extra' 'mesquite-doc')
-pkgver=3.81_build955
+pkgver=3\.81_build955
 pkgrel=1
 arch=('any')
 url="http://mesquiteproject.org"
