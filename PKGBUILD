@@ -2,7 +2,7 @@
 
 pkgbase='black-magic-debug'
 pkgname=(black-magic-debug-app black-magic-debug-udev)
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc='Plug&Play in application debugger for microcontrollers'
 arch=('any')
@@ -10,7 +10,7 @@ url='https://black-magic.org'
 license=('GPL')
 makedepends=('git' 'hidapi' 'python')
 source=("${pkgbase}-${pkgver}::https://github.com/blackmagic-debug/blackmagic/releases/download/v${pkgver}/blackmagic-full-source-v${pkgver//./_}.tar.gz")
-sha256sums=('6050a7faef6d91560c10c3c28baf9beb2e79c799d936e477be149bb32a07d71f')
+sha256sums=('deafec2a7be349b7dc49423b7fdfa274659fcd0ed050d96ee535745568e4e8d9')
 
 build() {
   cd "blackmagic-full-source-v${pkgver//./_}"

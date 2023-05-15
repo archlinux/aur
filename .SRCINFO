@@ -1,6 +1,6 @@
 pkgbase = black-magic-debug
 	pkgdesc = Plug&Play in application debugger for microcontrollers
-	pkgver = 1.9.0
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://black-magic.org
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = black-magic-debug
 	makedepends = git
 	makedepends = hidapi
 	makedepends = python
-	source = black-magic-debug-1.9.0::https://github.com/blackmagic-debug/blackmagic/releases/download/v1.9.0/blackmagic-full-source-v1_9_0.tar.gz
-	sha256sums = 6050a7faef6d91560c10c3c28baf9beb2e79c799d936e477be149bb32a07d71f
+	source = black-magic-debug-1.9.1::https://github.com/blackmagic-debug/blackmagic/releases/download/v1.9.1/blackmagic-full-source-v1_9_1.tar.gz
+	sha256sums = deafec2a7be349b7dc49423b7fdfa274659fcd0ed050d96ee535745568e4e8d9
 
 pkgname = black-magic-debug-app
 	depends = libusb
