@@ -1,0 +1,11 @@
+pkgbase = canary-layout-git
+	pkgdesc = The Canary keyboard layout
+	pkgver = 35.1c694b0
+	pkgrel = 1
+	url = https://github.com/Apsu/Canary
+	arch = any
+	license = MIT
+	source = git+https://github.com/Apsu/Canary.git
+	sha256sums = SKIP
+
+pkgname = canary-layout-git

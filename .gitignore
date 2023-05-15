@@ -1,0 +1,4 @@
+Canary/
+*.tar.zst
+pkg/
+src/
