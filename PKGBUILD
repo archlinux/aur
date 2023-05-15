@@ -1,21 +1,34 @@
+# Maintainer: poly000 <pedajilao@163.com>
 pkgname=c2rust
-pkgurl="https://c2rust.com"
-pkgver=v0.17.0
+_pkgname=c2rust
+pkgver=0.17.0
 pkgrel=1
-
-arch=("any")
 pkgdesc="Migrate C code to Rust"
+url="https://github.com/immunant/c2rust"
 
-builddepends=("cargo" "clang" "cmake" "openssl" "python")
-depends=("llvm")
+conflicts=('c2rust-bin' 'c2rust-git')
 
+arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
+
+license=('Apache-2.0' 'MIT')
+depends=('llvm')
+makedepends=('cargo' 'llvm' 'clang' 'cmake' 'openssl' 'python')
+
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/immunant/c2rust/archive/v${pkgver}.tar.gz")
+
+sha256sums=('7a178ad0f858e6169aa5c0edc85e04c754b954de4d0c3336d90a98ec8f583512')
+
+build() {
+    cd "$srcdir/${_pkgname}-${pkgver}"
+
+    if [[ $CARCH != x86_64 ]]; then
+        export CARGO_PROFILE_RELEASE_LTO=off
+    fi
+
+    cargo build --locked --release --target-dir target
+}
 
 package() {
-	cd "$pkgname"
-	mkdir -p "$pkgdir/usr/bin"
-	cargo install --root $pkgdir/usr --version $pkgver c2rust
-
-	# remove dot files from installation dir
-	rm "$pkgdir/usr/.crates.toml"
-	rm "$pkgdir/usr/.crates2.json"
+    cd "$srcdir/${_pkgname}-${pkgver}"
+    install -vDm755 "target/release/${_pkgname}" -t "${pkgdir}/usr/bin/"
 }
