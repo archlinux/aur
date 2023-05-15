@@ -1,6 +1,6 @@
 pkgbase = luau-git
 	pkgdesc = A fast, small, safe, gradually typed embeddable scripting language derived from Lua
-	pkgver = 0.560.4a2e8013
+	pkgver = 0.576.97965c7c
 	pkgrel = 1
 	url = https://github.com/Roblox/luau
 	arch = any
