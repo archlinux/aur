@@ -15,8 +15,6 @@ pkgbase = python-cad_to_openmc
 	depends = moab
 	provides = CAD_to_OpenMC
 	source = git+https://github.com/openmsr/CAD_to_OpenMC.git
-	source = CAD_to_OpenMC.patch.0.2.2-1
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = python-cad_to_openmc
