@@ -6,7 +6,7 @@
 
 pkgname=buku
 pkgver=4.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Bookmark manager like a text-based mini-web"
 arch=('any')
 url="https://github.com/jarun/buku"
