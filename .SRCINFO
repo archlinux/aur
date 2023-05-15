@@ -1,5 +1,5 @@
 pkgbase = encircle
-	pkgdesc = A Xinerama X cursor monitor wrapper
+	pkgdesc = A Xinerama X11 cursor monitor wrapper
 	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/bakkeby/encircle
