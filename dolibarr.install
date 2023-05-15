@@ -1,9 +1,11 @@
 post_install() {
 	chown -R http:http var/lib/dolibarr
 	chown http:http etc/dolibarr/conf.php
-	echo 'Please configure your webserver. Example files are provided in /etc/dolibarr'
-	echo 'It could be necessary to add /var/lib/dolibarr/ to open_basedir in php.ini'
-	echo 'Finish installation by pointing your webbrowser to http://dolibarr.localdomain/install'
+	systemctl daemon-reload
+	systemctl restart php-fpm-legacy.service
+	echo 'Please configure your webserver. Example configuration files for nginx and apache are provided in /etc/dolibarr/contrib'
+	echo 'We restarted php-fpm-legacy.service for you at it was necessary to give write permission to /usr/share/dolibarr and /etc/dolibarr'
+	echo 'Finish installation by pointing your browser to https://erp.example.com where example.com will be replaced by the domain name you use'
 }
 
 post_upgrade() {
@@ -11,19 +13,19 @@ post_upgrade() {
 	new=`expr $1 : '\([0-9]*\.[0-9]*\.\)'`"0"
 	if [ $old == $new ]
 	then
-		if [ $old == '3.8.0' ]
+		if [ $old == '17.0.0' ]
 		then
-			old='3.7.0'
+			old='16.0.0'
 		fi	
 	fi
-	rm var/lib/dolibarr/install.lock
-	cd usr/share/dolibarr/htdocs/install
+	rm /var/lib/dolibarr/install.lock
+	cd /usr/share/dolibarr/htdocs/install
 	echo 'upgrade.php' $old $new
 	php upgrade.php $old $new > /dev/null
 	echo 'upgrade2.php' $old $new
 	php upgrade2.php $old $new > /dev/null
 	php step5.php $old $new > /dev/null
 	cd /
-	touch var/lib/dolibarr/install.lock
-	chmod 444 var/lib/dolibarr/install.lock
+	touch /var/lib/dolibarr/install.lock
+	chmod 444 /var/lib/dolibarr/install.lock
 }
