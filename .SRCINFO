@@ -1,7 +1,7 @@
 pkgbase = python-webdav4
 	pkgdesc = WebDAV client library with a fsspec based filesystem and a CLI.
 	pkgver = 0.9.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/skshetry/webdav4
 	arch = any
 	license = MIT
@@ -13,7 +13,6 @@ pkgbase = python-webdav4
 	depends = python-httpx
 	depends = python-dateutil
 	depends = python-colorama
-	depends = python-argparse
 	depends = python-typing_extensions
 	depends = python-fsspec
 	source = https://files.pythonhosted.org/packages/source/w/webdav4/webdav4-0.9.8.tar.gz
