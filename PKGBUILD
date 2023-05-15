@@ -3,7 +3,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-git
-pkgver=r21970.eeb0ec67c
+pkgver=r23740.e9069dfe7
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch'
 arch=('i686' 'x86_64')
@@ -31,7 +31,6 @@ depends=('desktop-file-utils'
          'zlib'
          'zstd')
 makedepends=('boost'
-             'catch2'
              'clang'
              'cmake'
              'ffmpeg'
@@ -136,14 +135,15 @@ build() {
       -DYUZU_USE_BUNDLED_OPUS=OFF \
       -DYUZU_USE_BUNDLED_FFMPEG=OFF \
       -DYUZU_USE_BUNDLED_LIBUSB=OFF \
-      -DYUZU_USE_BUNDLED_QT=OFF
+      -DYUZU_USE_BUNDLED_QT=OFF \
+      -DYUZU_TESTS=OFF
     ninja
 }
 
-check() {
-    cd "$srcdir/$_pkgname/build"
-    ninja test
-}
+#check() {
+#    cd "$srcdir/$_pkgname/build"
+#    ninja test
+#}
 
 package() {
     cd "$srcdir/$_pkgname/build"

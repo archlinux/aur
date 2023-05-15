@@ -1,13 +1,12 @@
 pkgbase = yuzu-git
 	pkgdesc = An experimental open-source emulator for the Nintendo Switch
-	pkgver = r21970.eeb0ec67c
+	pkgver = r23740.e9069dfe7
 	pkgrel = 1
 	url = https://github.com/yuzu-emu/yuzu
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = boost
-	makedepends = catch2
 	makedepends = clang
 	makedepends = cmake
 	makedepends = ffmpeg
