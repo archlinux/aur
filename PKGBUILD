@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="gptfusion-appimage"
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="GPT聚合版是一个聚合了多个GPT聊天机器人的跨平台聊天工具, 支持多个免费GPT镜像, 支持自定义导入镜像, 支持POE,文心一言等多个平台."
 arch=("x86_64")
@@ -13,8 +13,8 @@ provides=()
 conflicts=("${pkgname%-appimage}")
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/GPTFusion.AppImage"
-    "gptfusion.png::${url}/raw/main/build/appicon.png")
-sha256sums=('9ba0d4e587eb4bcad0493e3c5be7312ecc4b45c1cbfc3aad0d79735013164b87'
+    "gptfusion.png::https://raw.githubusercontent.com/lpdswing/GPTFusion/main/build/appicon.png")
+sha256sums=('dfd2a978a6e9001555b7aff58b666aa32d1f81edca33dddcdf41c1542a3277a5'
             '470456008e1b4054229e95b6fee0401321c514d39569fb9c76004a8e8b753034')
 
 package() {
