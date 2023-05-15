@@ -2,8 +2,8 @@
 # Contributor: Thiago Almeida <thiago.almeida@topgolf.com>
 pkgname=hcledit
 url=https://github.com/minamijoyo/hcledit
-pkgver=0.2.7
-pkgrel=2
+pkgver=0.2.8
+pkgrel=1
 pkgdesc="A command line editor for HCL"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 license=('MIT')
@@ -12,7 +12,7 @@ makedepends=('go')
 options=('!lto')
 changelog="${pkgname}.changelog"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/minamijoyo/hcledit/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('8e851f989dadf671af7082eca9e90055fbce94b22f50eb764e4ab10ebb04a2396ff1444de6f563968e1deca6f1098218ebbeb98e590d0b5ecf99be33128ed227')
+sha512sums=('60d38cbb17126dca34ca9f0ae7a41987dce96819903dd07028e592b91bb10fa646207c3803622b7e15dcfeda14b725aec4460bb0bdd9ba7a825e1cf673e98f8d')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -41,7 +41,7 @@ check() {
 
 package() {
   cd "${pkgname}-${pkgver}"
-  install -vDm755 "build/$pkgname" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
-  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+  install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
 }
