@@ -40,7 +40,7 @@ prepare() {
 
 build() {
  cd "${srcdir}/${_pkgname}/python/legion_linux"
- python -m build --wheel --no-isolation
+ python setup.py build
 	
 }
 package() {
@@ -51,6 +51,6 @@ package() {
   install -Dm644 legion_gui.policy "${pkgdir}/usr/share/polkit-1/actions/"
 	
   cd "${srcdir}/${_pkgname}/python/legion_linux"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  python setup.py install --root="$pkgdir" --optimize=1
   mv $pkgdir/usr/bin $pkgdir/usr/local/
 }
