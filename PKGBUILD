@@ -3,9 +3,9 @@
 pkgname=wayshot
 pkgver=1.2.2
 pkgrel=1
-arch=('x86_64')
-url="https://git.sr.ht/~shinyzenith/$pkgname"
 pkgdesc="Screenshot tool for wlroots compositors"
+arch=(x86_64)
+url="https://git.sr.ht/~shinyzenith/$pkgname"
 license=(BSD)
 optdepends=('slurp: for area selection')
 makedepends=(cargo git scdoc)
