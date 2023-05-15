@@ -1,7 +1,7 @@
 pkgbase = perl-test-http-localserver
 	pkgdesc = Test::HTTP::LocalServer - spawn a local HTTP server for testing
 	pkgver = 0.74
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Test-HTTP-LocalServer
 	arch = any
 	license = GPL

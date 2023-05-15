@@ -1,7 +1,7 @@
 # Maintainer: John Regan <john@jrjrtech.com>
 pkgname=perl-test-http-localserver
 pkgver=0.74
-pkgrel=1
+pkgrel=2
 pkgdesc='Test::HTTP::LocalServer - spawn a local HTTP server for testing'
 _dist=Test-HTTP-LocalServer
 arch=('any')
