@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="The OpenMC project aims to provide a fully-featured Monte Carlo particle 
 		 transport code based on modern methods."
 arch=('x86_64')
-url="https://github.com/openmc-dev/openmc"
+url="https://github.com/LukeLabrie/openmc"
 license=('MIT')
 
 source=("${pkgname}::git+${url}.git")
