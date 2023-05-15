@@ -1,10 +1,10 @@
-# Maintainer:  Alex Mekkering <amekkering at gmail dot com>
+# Maintainer:  Louis Tim Larsen <louis(a)louis.dk>, Alex Mekkering <amekkering at gmail dot com>
 # Contributor: Bjoern Franke <bjo@nord-west.org>
 
 pkgname=tvheadend
 
 pkgver=4.2.8
-pkgrel=4
+pkgrel=5
 pkgdesc="TV streaming server for Linux"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://tvheadend.org/projects/tvheadend"
@@ -22,10 +22,12 @@ install=tvheadend.install
 source=("https://github.com/tvheadend/tvheadend/archive/v$pkgver.tar.gz"
 	"tvheadend-service.patch"
 	"tvheadend-4.2.8-fno-common.patch"
+	"libhdhomerun-20180327.patch"
 )
 sha256sums=('1aef889373d5fad2a7bd2f139156d4d5e34a64b6d38b87b868a2df415f01f7ad'
             '23897afe6a6aa1382d0d37bf2c38bd4d04deabcb2bcc1f966b57323ffdc23f2c'
-            '79a6f04859050830f2b0a8f3c025841627d8ab91fe2f5f73109cd72b02bb4ea8')
+            '79a6f04859050830f2b0a8f3c025841627d8ab91fe2f5f73109cd72b02bb4ea8'
+            '6c03e7c6cc0d5af1053bf428b004886fcbcd658a9e59a504aa028137de1f0343')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -35,6 +37,9 @@ prepare() {
 
     # Fix building with -fno-common (default from GCC 10)
     patch -p1 -i "${srcdir}/tvheadend-4.2.8-fno-common.patch"
+
+    # Change libhdhomerun source from 20171221 to 20180327
+    patch -i "${srcdir}/libhdhomerun-20180327.patch"
 
     # detect libavresample and prepare for using it
     uselibav=""
@@ -58,6 +63,7 @@ prepare() {
 }
 
 build() {
+    CFLAGS="$CFLAGS -Wno-error=implicit-function-declaration -Wno-error=use-after-free"
     cd "${srcdir}/${pkgname}-${pkgver}"
     make
 }
