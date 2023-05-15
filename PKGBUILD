@@ -1,31 +1,39 @@
+# Maintainer: a821
 # Contributor: Alexandr Parkhomenko <it@52tour.ru>
 
-_author=pavlin-policar
-_pkgname=opentsne
-pkgname=python-$_pkgname-git
-pkgver=0.5.1
+pkgname=python-opentsne-git
+pkgver=0.7.1.r0.ga46fae0
 pkgrel=1
 pkgdesc="Extensible, parallel implementations of t-SNE"
 url="https://opentsne.readthedocs.io/en/latest/"
 arch=('x86_64')
 license=('BSD')
-depends=('fftw' 'python-scikit-learn' 'python-numba')
-makedepends=('python-setuptools')
-source=("git://github.com/$_author/$_pkgname")
+depends=('fftw' 'python-scikit-learn')
+makedepends=('cython' 'git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+optdepends=(
+  'python-pynndescent: for nearest neighbor descent search'
+  'python-hnswlib: for fast approximate nearest neightbors'
+)
+source=("git+https://github.com/pavlin-policar/openTSNE.git")
 sha256sums=('SKIP')
 
 pkgver () {
-  cd "$srcdir/$_pkgname"
-  git describe --tags `git rev-list --tags --max-count=1` | sed -r 's/^v//;s/-RC/RC/;s/([^-]*-g)/r\1/;s/-/./g' #| sed -r "s/0$/$COMMIT/"
+  cd "openTSNE"
+  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
 }
 
+prepare() {
+  cd "openTSNE"
+  sed -i 's/oldest-supported-//' pyproject.toml
+}
 
 build() {
-  cd "${srcdir}/$_pkgname"
-  python setup.py build
+  cd "openTSNE"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}/$_pkgname"
-  python setup.py install --root=${pkgdir} --optimize=1
+  cd "openTSNE"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
