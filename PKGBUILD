@@ -5,7 +5,7 @@
 pkgname=bilibili-electron
 _pkgname=${pkgname%-bin}
 pkgver=rolling
-pkgrel=2
+pkgrel=3
 pkgdesc="A Linux bilibili GUI. Use installed electron."
 arch=("x86_64" "aarch64")
 license=("MIT")
