@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-nettle
 	pkgdesc = A low-level cryptographic library (mingw-w64)
-	pkgver = 3.8.1
+	pkgver = 3.9
 	pkgrel = 1
 	url = http://www.lysator.liu.se/~nisse/nettle
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = mingw-w64-nettle
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = https://ftp.gnu.org/gnu/nettle/nettle-3.8.1.tar.gz
-	sha256sums = 364f3e2b77cd7dcde83fd7c45219c834e54b0c75e428b6f894a23d12dd41cbfe
+	source = https://ftp.gnu.org/gnu/nettle/nettle-3.9.tar.gz
+	sha256sums = 0ee7adf5a7201610bb7fe0acbb7c9b3be83be44904dd35ebbcd965cd896bfeaa
 
 pkgname = mingw-w64-nettle
