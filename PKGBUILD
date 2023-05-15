@@ -8,7 +8,7 @@
 _tcp_module_gitname=nginx_tcp_proxy_module
 pkgname=tengine-extra
 pkgver=2.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao. Some extra modules enabled.'
 arch=('x86_64')
 url='http://tengine.taobao.org'
@@ -99,6 +99,10 @@ build() {
         --with-stream_ssl_module \
         --with-stream_ssl_preread_module \
         --with-threads \
+        --add-module=./modules/ngx_http_proxy_connect_module \
+        --add-module=./modules/ngx_http_upstream_dynamic_module \
+        --add-module=./modules/ngx_http_upstream_session_sticky_module \
+        --add-module=./modules/ngx_http_upstream_vnswrr_module \
         --add-module=$srcdir/ngx_upstream_jdomain-${_jdomain_ver} \
         --add-dynamic-module=$srcdir/ngx_brotli-${_brotli_ver} \
         --add-dynamic-module=$srcdir/ngx_http_geoip2_module-${_geoip2_ver} \
