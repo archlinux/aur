@@ -1,6 +1,6 @@
 # Maintainer: Starry Wang <starry.wang@suse.com>
 pkgname=hangar-bin
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 epoch=
 pkgdesc="mirror multi-arch container images & generate image-list for Rancher."
@@ -14,7 +14,7 @@ source=(
     "https://github.com/cnrancher/hangar/releases/download/v$pkgver/hangar-linux-amd64-v$pkgver"
 )
 sha256sums=(
-    "7f3a46a23fde15ad2a9632ba01fb0b790a718aeb5364ceaeccdfa9bbc98957bf"
+    "5689eafd87a8a7a226224d4f86244f53c21ccb2938456f2bf537aa76fa34032c"
 )
 
 package() {
