@@ -1,0 +1,20 @@
+pkgbase = rlottie-paper-plane-git
+	pkgdesc = A platform independent standalone library that plays Lottie Animation (Version required by Paper Plane)
+	pkgver = r676.1dd47ce
+	pkgrel = 1
+	url = https://github.com/paper-plane-developers/rlottie
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = LGPL-v2.1
+	makedepends = meson
+	makedepends = git
+	depends = libpng
+	provides = rlottie
+	conflicts = rlottie
+	source = git+https://github.com/paper-plane-developers/rlottie#branch=main
+	sha256sums = SKIP
+
+pkgname = rlottie-paper-plane-git
