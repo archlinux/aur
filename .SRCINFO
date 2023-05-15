@@ -1,0 +1,16 @@
+pkgbase = sleipnirgroup-sleipnir-git
+	pkgdesc = A sparsity and linearity-exploiting interior-point solver, now with readable internals
+	pkgver = r228.f85c37e
+	pkgrel = 1
+	url = https://github.com/SleipnirGroup/Sleipnir
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = fmt
+	depends = eigen
+	options = !strip
+	options = staticlibs
+	source = git+https://github.com/SleipnirGroup/Sleipnir
+	md5sums = SKIP
+
+pkgname = sleipnirgroup-sleipnir-git
