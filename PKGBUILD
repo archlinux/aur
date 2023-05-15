@@ -23,12 +23,17 @@ makedepends=(
 
 _name="CAD_to_OpenMC"
 provides=("${_name%-pkgver}")
-source=("git+https://github.com/openmsr/CAD_to_OpenMC.git")
-md5sums=('SKIP')
+source=("git+https://github.com/openmsr/CAD_to_OpenMC.git" "CAD_to_OpenMC.patch.0.2.2-1")
+md5sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "$srcdir/${_name}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "$srcdir/${_name}"
+    patch --forward --strip=1 --input="${srcdir}/CAD_to_OpenMC.patch.0.2.2-1"
 }
 
 build() {
