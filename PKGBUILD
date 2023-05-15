@@ -3,7 +3,7 @@
 _pkgname=nvidia-utils
 pkgname=${_pkgname}-nvlax
 pkgver=530.41.03
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA drivers utilities with NVENC and NvFBC patched with nvlax"
 arch=('x86_64')
 license=('custom')
@@ -11,7 +11,7 @@ url="https://github.com/illnyang/nvlax/"
 depends=(
   'xorg-server' 'libglvnd' 'egl-wayland'
 )
-makedepends=('cmake' 'git' 'patchelf')
+makedepends=('cmake' 'git' 'patchelf' 'gcc12')
 optdepends=(
   "nvidia-settings=${pkgver}: configuration tool"
   'xorg-server-devel: nvidia-xconfig'
@@ -72,7 +72,7 @@ prepare() {
 
 build() {
   cd nvlax
-  cmake -B build
+  CXX=/usr/bin/g++-12 cmake -B build
   make -C build
 
   cd build
