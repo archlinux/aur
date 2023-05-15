@@ -1,7 +1,7 @@
 # Maintainer: mario.valderrama <mv-aur@ransomware.download>
 # Maintainer: matthias.lisin <ml-aur@ransomware.download>
 pkgname=ionosctl
-pkgver=6.6.2
+pkgver=6.6.3
 pkgrel=1
 pkgdesc='IONOS Cloud CLI'
 arch=('x86_64' 'i686' 'aarch64' 'arm' 'armv6h' 'armv7h')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('c346be9df3cc118fe829b1eb3862383833a411d5c4c539372c839241105afd1e')
+sha256sums=('c110410d3a0414b2ac5a17a927849d9c13b16e62be2086258f812411227b5cf4')
 
 build() {
   _commit=$(bsdcat "$pkgname-$pkgver.tar.gz" | git get-tar-commit-id)
