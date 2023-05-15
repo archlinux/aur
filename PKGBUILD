@@ -21,6 +21,6 @@ package() {
     #make PREFIX=/usr DESTDIR="$pkgdir" install
     install -Dm755 encircle "$pkgdir/usr/bin/encircle"
     install -Dm644 encircle.1 "$pkgdir/usr/share/man/man1/encircle.1"
-    sed -i "s/VERSION/1.0/g" "$pkgdir/usr/share/man/man1/encircle.1"
+    sed -i "s/VERSION/1.1/g" "$pkgdir/usr/share/man/man1/encircle.1"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
