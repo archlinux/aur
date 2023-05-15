@@ -2,7 +2,7 @@
 # Maintainer: amo <https://aur.archlinux.org/account/amo>
 
 pkgname="paperless-ngx"
-pkgver=1.14.4
+pkgver=1.14.5
 pkgrel=1
 pkgdesc="A supercharged version of paperless: scan, index and archive all your physical documents"
 url="https://github.com/paperless-ngx/paperless-ngx"
@@ -51,7 +51,6 @@ depends=("file"
          "python-django-extensions"
          "python-django-filter"
          "python-django-guardian"
-         "python-django-ipware"
          "python-django-picklefield"
          "python-django-rest-framework"
          "python-django-rest-framework-guardian"
@@ -67,6 +66,7 @@ depends=("file"
          "python-incremental"
          "python-inotify-simple"
          "python-inotifyrecursive"
+         "python-ipware"
          "python-joblib"
          "python-langdetect"
          "python-lxml"
@@ -127,7 +127,7 @@ source=("$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.xz"
         "paperless-scheduler.service"
         "paperless-task-queue.service"
         "paperless-webserver.service")
-sha256sums=('4e70f3307b627363a92b809840edb9ea411f70e4aa2abb21d862eff4477adb6b'
+sha256sums=('355a5760cbc967c2bd6dcaf89f577aefd5acedd908361377976e04e17c95a8f9'
             '4e2ca67d7eedf14ba839af852907e1d76aa0a5ee5f4f740a3aee786c24035ace'
             'a002bd55b8e5b1ef89a10b907483c56df99d52d03951d464472d8c375e9835d6'
             '3971deb5721eb4e01c2cc0348546cc22a861a1e84458061fce4fbd2cf01b2a1e'
