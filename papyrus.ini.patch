@@ -5,7 +5,7 @@
  --launcher.defaultAction
  openFile
 --vm
--plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_11.0.14.v20220314-1349/jre/bin
+-plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_11.0.18.v20230129-1042/jre/bin
  -vmargs
  -Xms256m
  -Xmx1024m
