@@ -1,6 +1,6 @@
 pkgbase = piclist-appimage
 	pkgdesc = a cloud storage platform management and file upload tool based on PicGo, which has been deeply redeveloped.一款云储存/图床管理和文件上传客户端工具,基于PicGo深度二次开发.
-	pkgver = 1.9.0
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://piclist.cn/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = piclist-appimage
 	depends = zlib
 	depends = glibc
 	options = !strip
-	source = piclist-1.9.0.AppImage::https://github.com/Kuingsmile/PicList/releases/download/v1.9.0/PicList-1.9.0.AppImage
+	source = piclist-1.9.1.AppImage::https://github.com/Kuingsmile/PicList/releases/download/v1.9.1/PicList-1.9.1.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/Kuingsmile/PicList/dev/LICENSE
-	sha256sums = c414c09060200d60a2eb8f69e9e75c9156b66042e4fca6d1bb4f2e6c5711d47d
+	sha256sums = afdeba25187a8a815c87b9c976c56bb24423778185363b5a72ccc4162a2584f6
 	sha256sums = cddebc59798c76d191fc65eb4176d960e4e157177c9d81db80eaff8d84d86a1c
 
 pkgname = piclist-appimage
