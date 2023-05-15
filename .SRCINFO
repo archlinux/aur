@@ -1,0 +1,16 @@
+pkgbase = wayshot
+	pkgdesc = Screenshot tool for wlroots compositors
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://git.sr.ht/~shinyzenith/wayshot
+	arch = x86_64
+	license = BSD
+	makedepends = cargo
+	makedepends = git
+	makedepends = scdoc
+	optdepends = slurp: for area selection
+	source = git+https://git.sr.ht/~shinyzenith/wayshot#commit=31baff5229bc8f5bd835b1b7b649513b437dfe5e?signed
+	validpgpkeys = C18E2B48B8DA9B624C8B72D66DD485917B553B7B
+	b2sums = SKIP
+
+pkgname = wayshot
