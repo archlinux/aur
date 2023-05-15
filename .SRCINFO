@@ -1,7 +1,7 @@
 pkgbase = anki
 	pkgdesc = Helps you remember facts (like words/phrases in a foreign language) efficiently
-	pkgver = 2.1.62
-	pkgrel = 2
+	pkgver = 2.1.63
+	pkgrel = 1
 	url = https://apps.ankiweb.net/
 	arch = x86_64
 	license = AGPL3
@@ -33,17 +33,15 @@ pkgbase = anki
 	optdepends = mpv: play sound. prefered over mplayer
 	optdepends = mplayer: play sound
 	optdepends = texlive-most: render LaTex in cards
-	provides = anki-debug
 	conflicts = anki-bin
 	conflicts = anki-git
 	conflicts = anki-official-binary-bundle
 	conflicts = anki-qt5
-	conflicts = anki-qt5-debug
 	options = !lto
-	source = anki::git+https://github.com/ankitects/anki#tag=2fa41836272c034af40f59b263429d246a7b47af?signed
+	source = anki::git+https://github.com/ankitects/anki#tag=064ea0ee08715edae868b84e48b29bd7e15d7b49?signed
 	source = no-update.patch
 	validpgpkeys = 814EA4E90C34AF39A712DE703F5566A2D16899FB
 	sha256sums = SKIP
-	sha256sums = 137827586d2a72adddaaf98599afa9fc80cdd73492d7f5cbcf4d2f6082e5f797
+	sha256sums = f934553a5ce9e046a0b8253e10da16e661b27375e2b54d6bb915267f32aff807
 
 pkgname = anki
