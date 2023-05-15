@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-sentry_sdk
 _name=sentry-sdk
-pkgver=1.22.2
+pkgver=1.23.0
 pkgrel=1
 pkgdesc="The new Python SDK for Sentry.io"
 arch=('any')
@@ -22,6 +22,7 @@ optdepends=('python-aiohttp: adds support for the AIOHTTP-Server Web Framework'
             'python-grpcio: gRPC integration'
             'python-httpx: HTTPX integration'
             'python-huey: Huey Integration'
+            'python-loguru: Loguru Integration'
             'python-multipart: Optional dependency of Starlette to parse form data'
             'python-opentelemetry-distro: adds support for OpenTelemetry'
             'python-pymongo: PyMongo integration'
@@ -39,7 +40,7 @@ optdepends=('python-aiohttp: adds support for the AIOHTTP-Server Web Framework'
             'python-pure_eval: for richer stacktraces & additional variables'
             'python-executing: for richer stacktraces & better function names')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('5932c092c6e6035584eb74d77064e4bce3b7935dfc4a331349719a40db265840')
+sha256sums=('58f4ff9e76c21bc7172eeec9f1bccb3ff2247c74c71d5590438ce36c803f46ea')
 
 build() {
   cd "$_name-$pkgver"

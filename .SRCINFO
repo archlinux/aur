@@ -1,6 +1,6 @@
 pkgbase = python-sentry_sdk
 	pkgdesc = The new Python SDK for Sentry.io
-	pkgver = 1.22.2
+	pkgver = 1.23.0
 	pkgrel = 1
 	url = https://sentry.io/for/python
 	arch = any
@@ -24,6 +24,7 @@ pkgbase = python-sentry_sdk
 	optdepends = python-grpcio: gRPC integration
 	optdepends = python-httpx: HTTPX integration
 	optdepends = python-huey: Huey Integration
+	optdepends = python-loguru: Loguru Integration
 	optdepends = python-multipart: Optional dependency of Starlette to parse form data
 	optdepends = python-opentelemetry-distro: adds support for OpenTelemetry
 	optdepends = python-pymongo: PyMongo integration
@@ -40,7 +41,7 @@ pkgbase = python-sentry_sdk
 	optdepends = python-trytond: adds support for the Tryton Framework Server
 	optdepends = python-pure_eval: for richer stacktraces & additional variables
 	optdepends = python-executing: for richer stacktraces & better function names
-	source = https://files.pythonhosted.org/packages/source/s/sentry-sdk/sentry-sdk-1.22.2.tar.gz
-	sha256sums = 5932c092c6e6035584eb74d77064e4bce3b7935dfc4a331349719a40db265840
+	source = https://files.pythonhosted.org/packages/source/s/sentry-sdk/sentry-sdk-1.23.0.tar.gz
+	sha256sums = 58f4ff9e76c21bc7172eeec9f1bccb3ff2247c74c71d5590438ce36c803f46ea
 
 pkgname = python-sentry_sdk
