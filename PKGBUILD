@@ -1,10 +1,9 @@
+# Maintainer: Justus Tartz <aur at jrtberlin dot de>
 # https://aur.archlinux.org/packages/steam-boilr-gui
-groups=('modified')
-
 pkgname=steam-boilr-gui
 _app_id=io.github.philipk.boilr
 pkgver=1.7.22
-pkgrel=1
+pkgrel=2
 pkgdesc="Synchronize games from other platforms into your Steam library"
 arch=('x86_64')
 url="https://github.com/PhilipK/BoilR"

@@ -1,10 +1,9 @@
 pkgbase = steam-boilr-gui
 	pkgdesc = Synchronize games from other platforms into your Steam library
 	pkgver = 1.7.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PhilipK/BoilR
 	arch = x86_64
-	groups = modified
 	license = Apache
 	license = MIT
 	checkdepends = desktop-file-utils
