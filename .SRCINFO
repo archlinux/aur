@@ -1,0 +1,19 @@
+pkgbase = kitsune-git
+	pkgdesc = :fox_face: ActivityPub-federated microblogging
+	pkgver = v0.0.1.pre.0.r23.g40ee7d0
+	pkgrel = 1
+	url = https://joinkitsune.org/
+	arch = any
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	depends = zlib
+	provides = kitsune
+	conflicts = kitsune
+	source = git+https://github.com/kitsune-soc/kitsune.git
+	sha256sums = SKIP
+
+pkgname = kitsune-git
