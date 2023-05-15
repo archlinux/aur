@@ -48,13 +48,13 @@ conflicts=(
   'simple-ccsm'
 )
 provides=(
-  "ccsm=${pkgver}"
-  "compiz-bcop=${pkgver}"
-  "compiz-core=${pkgver}"
-  "compiz-plugins-extra=${pkgver}"
-  "compiz-plugins-main=${pkgver}"
-  "compizconfig-python=${pkgver}"
-  "libcompizconfig=${pkgver}"
+  "ccsm=$pkgver"
+  "compiz-bcop=$pkgver"
+  "compiz-core=$pkgver"
+  "compiz-plugins-extra=$pkgver"
+  "compiz-plugins-main=$pkgver"
+  "compizconfig-python=$pkgver"
+  "libcompizconfig=$pkgver"
 )
 source=(
   "https://launchpad.net/${pkgname}/${pkgver:0:6}/${pkgver}/+download/${pkgname}-${pkgver}.tar.xz"
@@ -74,29 +74,30 @@ sha256sums=(
 )
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  cd "$srcdir/$pkgname-$pkgver"
 
   # Reverse Unity specific configuration patches
-  patch -p1 -i "${srcdir}/reverse-unity-config.patch"
+  patch -p1 -i "$srcdir/reverse-unity-config.patch"
 
   # Set focus prevention level to off which means that new windows will always get focus
-  patch -p1 -i "${srcdir}/focus-prevention-disable.patch"
+  patch -p1 -i "$srcdir/focus-prevention-disable.patch"
 
   # Fix incorrect extents for GTK+ tooltips, csd etc
-  patch -p1 -i "${srcdir}/gtk-extents.patch"
+  patch -p1 -i "$srcdir/gtk-extents.patch"
 
   # Fix application launching for the screenshot plugin
-  patch -p1 -i "${srcdir}/screenshot-launch-fix.patch"
+  patch -p1 -i "$srcdir/screenshot-launch-fix.patch"
 
   # Don't try to compile gschemas during make install
-  patch -p1 -i "${srcdir}/no-compile-gschemas.patch"
+  patch -p1 -i "$srcdir/no-compile-gschemas.patch"
 
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "$srcdir/$pkgname-$pkgver"
 
-  mkdir build; cd build
+  mkdir -p build
+  cd build
 
   cmake .. \
     -DCMAKE_BUILD_TYPE="Release" \
@@ -116,26 +117,28 @@ build() {
 }
 
 package() {
-  cd "${pkgname}-${pkgver}/build"
-  make DESTDIR="${pkgdir}" install
+  cd "$srcdir/$pkgname-$pkgver"
+  cd build
+
+  make DESTDIR="$pkgdir" install
 
   # findcompiz_install needs COMPIZ_DESTDIR and install needs DESTDIR
   # make findcompiz_install
   CMAKE_DIR=$(cmake --system-information | grep '^CMAKE_ROOT' | awk -F\" '{print $2}')
-  install -dm755 "${pkgdir}${CMAKE_DIR}/Modules/"
-  install -m644 ../cmake/FindCompiz.cmake "${pkgdir}${CMAKE_DIR}/Modules/"
+  install -Dm644 ../cmake/FindCompiz.cmake \
+    -t "${pkgdir}${CMAKE_DIR}/Modules/"
 
   # Add documentation
-  install -dm755 "${pkgdir}/usr/share/doc/compiz/"
-  install ../{AUTHORS,NEWS,README} "${pkgdir}/usr/share/doc/compiz/"
+  install -Dm644 ../{AUTHORS,NEWS,README} \
+    -t "$pkgdir/usr/share/doc/compiz/"
 
   # Add the gsettings schema files
   if ls generated/glib-2.0/schemas/ | grep -qm1 .gschema.xml; then
-    install -dm755 "${pkgdir}/usr/share/glib-2.0/schemas/"
-    install -m644 generated/glib-2.0/schemas/*.gschema.xml "${pkgdir}/usr/share/glib-2.0/schemas/"
+    install -Dm644 generated/glib-2.0/schemas/*.gschema.xml \
+      -t "$pkgdir/usr/share/glib-2.0/schemas/"
   fi
 
   # Install licenses
-  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m644 "${srcdir}/${pkgname}-${pkgver}"/{COPYING,COPYING.GPL,COPYING.LGPL,COPYING.MIT} "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 "$srcdir/$pkgname-$pkgver"/{COPYING,COPYING.GPL,COPYING.LGPL,COPYING.MIT} \
+    -t "$pkgdir/usr/share/licenses/$pkgname"
 }
