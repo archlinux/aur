@@ -2,8 +2,8 @@
 
 _pkgname='xorgxrdp'
 pkgname="$_pkgname-nvidia"
-pkgver='0.2.18.r41.ga07c9c8'
-pkgrel='1'
+pkgver=0.2.18.r42.g5f6177d
+pkgrel=1
 pkgdesc='Xorg drivers for xrdp, with NVIDIA GPU support.'
 arch=('i686' 'x86_64')
 url='https://github.com/neutrinolabs/xorgxrdp'
@@ -11,7 +11,7 @@ license=('MIT')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 depends=('NVIDIA-MODULE')
-makedepends=('nasm' 'xorg-server-devel' 'xrdp')
+makedepends=('nasm' 'xorg-server-devel' 'xrdp-git')
 options=('staticlibs')
 source=("git+$url#branch=devel"
         "nvidia.patch::$url/pull/220.diff")
@@ -29,8 +29,6 @@ prepare() {
   cd "$srcdir/$_pkgname"
 
   patch -p1 -i"$srcdir/nvidia.patch"
-
-  perl -i -pe 's/(?<=xrdp >= )[\d.]+/0.9.21/' configure.ac
 
   busid=$(nvidia-xconfig --query-gpu-info | grep -im1 busid | awk '{print $NF}')
   perl -i -pe 's/(?<=BusID ").+(?=")/'"$busid"'/' xrdpdev/xorg_nvidia.conf

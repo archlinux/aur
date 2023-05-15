@@ -1,6 +1,6 @@
 pkgbase = xorgxrdp-nvidia
 	pkgdesc = Xorg drivers for xrdp, with NVIDIA GPU support.
-	pkgver = 0.2.18.r41.ga07c9c8
+	pkgver = 0.2.18.r42.g5f6177d
 	pkgrel = 1
 	url = https://github.com/neutrinolabs/xorgxrdp
 	install = xorgxrdp-nvidia.install
@@ -9,7 +9,7 @@ pkgbase = xorgxrdp-nvidia
 	license = MIT
 	makedepends = nasm
 	makedepends = xorg-server-devel
-	makedepends = xrdp
+	makedepends = xrdp-git
 	depends = NVIDIA-MODULE
 	provides = xorgxrdp
 	conflicts = xorgxrdp
