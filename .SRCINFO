@@ -1,7 +1,7 @@
 pkgbase = bookletimposer
 	pkgdesc = Achieve some basic imposition on PDF documents
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://kjo.herbesfolles.org/bookletimposer/
 	install = bookletimposer.install
@@ -11,6 +11,7 @@ pkgbase = bookletimposer
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-distutils-extra
+	makedepends = python-setuptools
 	makedepends = pandoc
 	depends = python>=3.5
 	depends = python-pypdf2>=1.26
