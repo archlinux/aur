@@ -2,7 +2,7 @@
 
 _name='pycma'
 pkgname="python-${_name}-git"
-pkgver=r249.038bcb3
+pkgver=r796.6080396
 pkgrel=1
 pkgdesc="Python implementation of CMA-ES"
 provides=(python-${_name})
@@ -23,6 +23,7 @@ sha256sums=('SKIP')
 
 build() {
 	cd "${srcdir}/${_name}"
+	sed -i '/^__version__ =/ s/modified//' "cma/__init__.py"
 	python setup.py build
 }
 
