@@ -1,7 +1,7 @@
 # Maintainer: Dario Ostuni <dario.ostuni@gmail.com>
 pkgname=lean4
 _pkgver=4.0.0
-_pkgm=m3
+_pkgm=m5
 _pkgpver=v${_pkgver}-${_pkgm}
 pkgver=${_pkgver}.${_pkgm}
 pkgrel=1

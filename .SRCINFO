@@ -1,6 +1,6 @@
 pkgbase = lean4
 	pkgdesc = Lean 4 programming language and theorem prover
-	pkgver = 4.0.0.m3
+	pkgver = 4.0.0.m5
 	pkgrel = 1
 	url = https://github.com/leanprover/lean4
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = lean4
 	license = APACHE2
 	makedepends = cmake
 	depends = gmp
-	source = lean4-4.0.0.m3::git+https://github.com/leanprover/lean4.git#commit=v4.0.0-m3
+	source = lean4-4.0.0.m5::git+https://github.com/leanprover/lean4.git#commit=v4.0.0-m5
 	b2sums = SKIP
 
 pkgname = lean4
