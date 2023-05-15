@@ -1,14 +1,14 @@
 # Maintainer: Charlie Stanton <charlie@shtanton.com>
 pkgname=gmi2html
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="Translate text/gemini to HTML"
 arch=("x86_64")
 url="https://github.com/shtanton/gmi2html"
 license=("MIT")
-makedepends=("zig>=0.9.0" "zig<0.10.0" "scdoc")
+makedepends=("zig>=0.10.0" "zig<0.11.0" "scdoc")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/shtanton/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=("ad0ca913ed2ecb169b95f399230dd9c4")
+md5sums=("25ad1d57b18d04831521d7b06326d069")
 
 build() {
     cd "$pkgname-$pkgver"
