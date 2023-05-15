@@ -1,4 +1,4 @@
-pkg/
-src/
-*.pkg.*
-prelocked-git/
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore

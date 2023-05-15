@@ -1,7 +1,7 @@
 pkgbase = prelockd
 	pkgdesc = Lock executables, shared libraries in memory to improve responsiveness
 	pkgver = 0.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hakavlad/prelockd
 	arch = any
 	license = MIT
