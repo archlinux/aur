@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.3.1.arch2
+pkgver=6.3.2.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -107,7 +107,7 @@ if [ -z ${_microarchitecture+x} ]; then
   _microarchitecture=93
 fi
 if [ -z ${Microarchitecture+x} ]; then
-  Microarchitecture="CONFIG_GENERIC_CPU3"
+  Microarchitecture='CONFIG_GENERIC_CPU3'
 fi
 
 export KBUILD_BUILD_HOST=archlinux
@@ -153,6 +153,11 @@ prepare() {
   sed 's|^CONFIG_GENERIC_CPU2=y|# CONFIG_GENERIC_CPU2 is not set|g' -i .config
   sed "s|^# $Microarchitecture is not set|$Microarchitecture=y|g" -i .config
   
+  ## Make use of modprobed-db, if installed
+  ## To do this, you need to enable copy the database into this directory and enable the relevant lines 
+  ## at the top of this file!
+  # _make LSMOD=../modprobed.db localmodconfig 
+  
   ## this needs to run *after* `make olddefconfig` so that our newly added configuration macros exist
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
  
@@ -160,11 +165,6 @@ prepare() {
   
   ## Here comes a section where you can uncomment additional modules that you do not need on your machine
   ## in order to speed up building the kernel
-  
-  ## Make use of modprobed-db, if installed
-  ## To do this, you need to enable copy the database into this directory and enable the relevant lines 
-  ## at the top of this file!
-  # make LSMOD=../modprobed.db localmodconfig 
   
   ## Enable this, if your systems is ALL AMD
   # scripts/config --disable CONFIG_DRM_I915 \

@@ -1,6 +1,6 @@
 pkgbase = linux-g14
 	pkgdesc = Linux
-	pkgver = 6.3.1.arch2
+	pkgver = 6.3.2.arch1
 	pkgrel = 1
 	url = https://gitlab.com/dragonn/linux-g14.git
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = linux-g14
 	makedepends = xz
 	makedepends = python
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.3.1-arch2
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.3.2-arch1
 	source = config
 	source = choose-gcc-optimization.sh
 	source = sys-kernel_arch-sources-g14_files-0004-5.17+--more-uarches-for-kernel.patch::https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-5.17+.patch

@@ -34,9 +34,13 @@ elif [[ -d "$(pwd)/release-pkg" ]]; then
 fi
 
 # use modprobed-db
-#cp $HOME/.config/modprobed.db ./
-#sed 's/#  modprobed-db/  modprobed-db/g' -i PKGBUILD
-#sed 's/# make LSMOD/_make LSMOD' -i PKGBUILD
+cp PKGBUILD .PKGBUILD
+cp $HOME/.config/modprobed.db "$(dirname "$(readlink -f -- "$0")")"
+sed 's/#  modprobed-db/  modprobed-db/g' -i PKGBUILD
+sed 's/#  modprobed.db/  modprobed.db/g' -i PKGBUILD
+sed 's/# _make LSMOD/_make LSMOD/' -i PKGBUILD
+sed 's/_microarchitecture=93/_microarchitecture=15/' -i PKGBUILD
+sed "s//Microarchitecture='CONFIG_GENERIC_CPU3'/Microarchitecture='CONFIG_MZEN3'/" -i PKGBUILD 
 
 #
 # To send environment variable to a PKGBUILD call this script like this:
@@ -44,3 +48,6 @@ fi
 #
 
 makechrootpkg -c -r "${CHROOT}" "$@"
+
+rm PKGBUILD
+mv .PKGBUILD PKGBUILD
