@@ -2,10 +2,10 @@
 
 pkgname=onedev
 pkgver=8.2.3
-pkgrel=1
+pkgrel=2
 _buildid=3641
 arch=('x86_64')
-depends=('java-runtime-headless>11.0.0' 'git>2.11.1' 'fontconfig' 'ttf-dejavu')
+depends=('java-runtime-headless=17' 'git>2.11.1' 'fontconfig' 'ttf-dejavu')
 url="https://code.onedev.io/onedev/server"
 license=('MIT' 'BSD' 'Apache' 'LGPL2.1' 'MPL2' 'custom:Oracle Technology Network License'
          'custom:Microsoft Software License' 'custom:Sun Microsystems Inc Binary Code License'

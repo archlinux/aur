@@ -1,6 +1,6 @@
 pkgbase = onedev
 	pkgver = 8.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.onedev.io/onedev/server
 	install = onedev.install
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = onedev
 	license = custom:Microsoft Software License
 	license = custom:Sun Microsystems Inc Binary Code License
 	license = custom:Jetty License
-	depends = java-runtime-headless>11.0.0
+	depends = java-runtime-headless=17
 	depends = git>2.11.1
 	depends = fontconfig
 	depends = ttf-dejavu
