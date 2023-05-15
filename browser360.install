@@ -1,0 +1,10 @@
+post_install() {
+    echo ""
+    echo "Browser 360 has been installed."
+    echo "You should do this to make it run normally:"
+    echo "    $ sudo -i && /opt/apps/com.360.browser-stable/files/browser360"
+    echo "Then you can press CTRL+C to stop the program and exit."
+    echo "Next time you can run it normally."
+    echo "It's the program's bug,it need root to run dmidecode."
+    echo ""
+}
