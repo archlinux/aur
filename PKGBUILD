@@ -25,11 +25,12 @@ makedepends=(
 )
 
 provides=("${pkgname%-pkgver}")
-source=('https://ftp.mcs.anl.gov/pub/fathom/moab-5.3.0.tar.gz')
-md5sums=('7ae3967f297f7d6fddf38de576e98758')
+conflicts=(moab-git)
+source=('https://ftp.mcs.anl.gov/pub/fathom/moab-5.3.0.tar.gz' 'moab-5.3.0-p.1.patch')
+md5sums=('7ae3967f297f7d6fddf38de576e98758' 'SKIP')
 prepare() {
 cd "$pkgname-$pkgver"
-patch --forward --input="../../moab-5.3.0-p.1.patch"
+patch --forward --input="${srcdir}/moab-5.3.0-p.1.patch"
 }
 build() {
 	cd $srcdir
