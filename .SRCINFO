@@ -35,7 +35,6 @@ pkgbase = yuzu-git
 	depends = zlib
 	depends = zstd
 	provides = yuzu
-	provides = yuzu-cmd
 	conflicts = yuzu
 	source = yuzu::git+https://github.com/yuzu-emu/yuzu
 	source = git+https://github.com/lsalzman/enet.git

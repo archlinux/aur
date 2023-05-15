@@ -9,7 +9,7 @@ pkgdesc='An experimental open-source emulator for the Nintendo Switch'
 arch=('i686' 'x86_64')
 url='https://github.com/yuzu-emu/yuzu'
 license=('GPL2')
-provides=('yuzu' 'yuzu-cmd')
+provides=('yuzu')
 conflicts=('yuzu')
 depends=('desktop-file-utils'
          'fmt'
