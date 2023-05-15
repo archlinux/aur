@@ -4,7 +4,7 @@
 # https://lists.gnu.org/archive/html/emacs-devel/2021-09/msg02290.html
 
 pkgname=emacs28-git
-pkgver=28.1.50.151319
+pkgver=28.3.151685
 pkgrel=1
 pkgdesc='The extensible, customizable, self-documenting real-time display editor, emacs-28 release branch'
 arch=(x86_64)
@@ -21,8 +21,7 @@ b2sums=(SKIP)
 pkgver() {
 	cd "$srcdir/$pkgname"
 	printf '%s.%s'                                                  \
-	    "$(grep AC_INIT configure.ac |                              \
-	    sed -e 's/^.\+\ \([0-9]\+\.[0-9]\+\.[0-9]\+\?\).\+$/\1/')"  \
+	    "$(awk -F ', ' '/AC_INIT/ { print $2 }' configure.ac )"     \
 	    "$(git rev-list --count HEAD)"
 }
 
