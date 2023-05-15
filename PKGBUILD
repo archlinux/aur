@@ -3,7 +3,7 @@
 
 pkgname=mcomix
 # Might want to move to date-based versions.
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="A user-friendly, customizable image viewer specifically designed to handle comic books"
 arch=('any')
@@ -11,14 +11,16 @@ url="https://sourceforge.net/p/mcomix/wiki/Home/"
 license=('GPL')
 depends=('gtk3' 'python-cairo' 'python-gobject' 'python-pillow')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-optdepends=('libunrar: for rar compressed comics'
-            'p7zip: for 7z compressed comics'
-            'unrar: for rar compressed comics'
-            'unzip: for zip compressed comics'
-            'lhasa: for lha compressed comics'
-            'mupdf-tools: for PDF comics')
+optdepends=(
+  'lhasa: for lha compressed comics'
+  'libunrar: for rar compressed comics'
+  'mupdf-tools: for PDF comics'
+  'p7zip: for 7z compressed comics'
+  'unrar: for rar compressed comics'
+  'unzip: for zip compressed comics'
+)
 source=("https://downloads.sourceforge.net/project/${pkgname}/MComix-${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('368938a2a4deccef38abd20366f822df765e29f44bfada60ed01039a9d996695')
+sha256sums=('3faa22ca77392c9496e686706193219c8d2435c213ed52ae69212e0def7060d5')
 
 build(){
   cd "${pkgname}-${pkgver}"
