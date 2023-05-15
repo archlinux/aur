@@ -1,6 +1,7 @@
 # Maintainer: Felix Singer <felixsinger@posteo.net>
 
-_targets="i386 x64 arm aarch64 riscv ppc64 nds32le clang"
+_gcc_targets="i386 x64 arm aarch64 riscv ppc64 nds32le"
+_is_clang_enabled=1
 _commit='465fbbe93ee01b4576689a90b7ddbeec23cdace2'
 
 pkgbase='coreboot-toolchain'
@@ -22,9 +23,13 @@ sha256sums=(
 )
 
 
-for target in ${_targets}; do
+for target in ${_gcc_targets}; do
   pkgname+=("${pkgbase}-${target}")
 done
+
+if [ ${_is_clang_enabled} -eq 1 ]; then
+  pkgname+=("${pkgbase}-clang")
+fi
 
 
 build() {
@@ -32,14 +37,11 @@ build() {
   export CFLAGS=${CFLAGS/-Werror=format-security/}
   export CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
-  is_clang_enabled=0
-
-  for target in ${_targets}; do
-    [ "${target}" = "clang" ] && is_clang_enabled=1 && continue
+  for target in ${_gcc_targets}; do
     make crossgcc-${target} CPUS=$(nproc) DEST="${srcdir}/${target}"
   done
 
-  if [ ${is_clang_enabled} -eq 1 ]; then
+  if [ ${_is_clang_enabled} -eq 1 ]; then
     for component in "clang iasl nasm"; do
       make ${component} CPUS=$(nproc) DEST="${srcdir}/${target}"
     done
