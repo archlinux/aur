@@ -1,0 +1,12 @@
+pkgbase = stylish-icon-theme-color
+	pkgdesc = Modern icon theme for Linux Desktops with KDE ColorScheme
+	pkgver = 23.05
+	pkgrel = 1
+	url = https://github.com/kuroehanako/Stylish-icon-theme
+	arch = any
+	license = GPLv3
+	depends = stylish-icon-theme
+	source = stylish-icon-theme-color-23.05.tar.gz::https://github.com/kuroehanako/Stylish-icon-theme/releases/download/23.05/Stylish-Color.tar.gz
+	sha256sums = 12b2b0a67bc48d12120287896cff96bf9eec3ef1a8bd435ca16a1de4bea50203
+
+pkgname = stylish-icon-theme-color
