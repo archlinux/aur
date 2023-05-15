@@ -2,7 +2,7 @@
 pkgname=c2rust
 _pkgname=c2rust
 pkgver=0.17.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Migrate C code to Rust"
 url="https://github.com/immunant/c2rust"
 
@@ -30,7 +30,8 @@ build() {
 
 package() {
     cd "$srcdir/${_pkgname}-${pkgver}"
-    install -vDm644 "target/release/${_pkgname}" -t "${pkgdir}/usr/bin/"
+    install -vDm755 "target/release/${_pkgname}" -t "${pkgdir}/usr/bin/"
+    echo deleting...
     find "target/release" -type f -name "*-*.d" -print -delete 
     cp -av "target/release/${_pkgname}-"* "${pkgdir}/usr/bin/"
 } 

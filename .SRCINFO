@@ -1,7 +1,7 @@
 pkgbase = c2rust
 	pkgdesc = Migrate C code to Rust
 	pkgver = 0.17.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/immunant/c2rust
 	arch = i686
 	arch = pentium4
