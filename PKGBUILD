@@ -30,5 +30,7 @@ build() {
 
 package() {
     cd "$srcdir/${_pkgname}-${pkgver}"
-    install -vDm755 "target/release/${_pkgname}" -t "${pkgdir}/usr/bin/"
-}
+    install -vDm644 "target/release/${_pkgname}" -t "${pkgdir}/usr/bin/"
+    find "target/release" -type f -name "*-*.d" -print -delete 
+    cp -av "target/release/${_pkgname}-"* "${pkgdir}/usr/bin/"
+} 
