@@ -1,7 +1,7 @@
 # Maintainer: Dušan Mitrović <dusan@dusanmitrovic.xyz>
 pkgname=supersonic-desktop
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight cross-platform desktop client for Subsonic music servers"
 _pkgname="${pkgname//-desktop/}"
 arch=('x86_64')
@@ -9,6 +9,10 @@ url="https://github.com/dweymouth/supersonic"
 license=('GPL3')
 depends=(
     'mpv'
+)
+optdepends=(
+    "libappindicator-gtk3: Systray indicator support"
+    "org.freedesktop.secrets: Keyring password store support"
 )
 provides=('supersonic-desktop')
 makedepends=('go>=1.17')
