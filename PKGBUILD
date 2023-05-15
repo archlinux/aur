@@ -1,6 +1,6 @@
 # Maintainer: Stein Gunnar Bakkeby <bakkeby@gmail.com>
 pkgname="encircle"
-pkgver="1.0"
+pkgver="1.1"
 pkgrel=1
 pkgdesc="A Xinerama X cursor monitor wrapper"
 url="https://github.com/bakkeby/encircle"
