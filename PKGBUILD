@@ -17,8 +17,8 @@ makedepends=(
   python-pyqt5
   python-yaml
   python-argcomplete
-  python-setuptools
- )
+  python-installer
+)
 optdepends=(
   "legion-fan-utils-linux-git: Systemd service that will apply a given profile"
   "lenovolegionlinux-dkms-git: DKMS module"
@@ -40,7 +40,7 @@ prepare() {
 
 build() {
  cd "${srcdir}/${_pkgname}/python/legion_linux"
- python setup.py build
+ python -m build --wheel --no-isolation
 	
 }
 package() {
@@ -51,6 +51,6 @@ package() {
   install -Dm644 legion_gui.policy "${pkgdir}/usr/share/polkit-1/actions/"
 	
   cd "${srcdir}/${_pkgname}/python/legion_linux"
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
   mv $pkgdir/usr/bin $pkgdir/usr/local/
 }
