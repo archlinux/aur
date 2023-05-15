@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="yank-note-appimage"
-pkgver=3.52.1
+pkgver=3.53.3
 pkgrel=1
 pkgdesc="A Hackable Markdown Note Application for Programmers."
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-appimage}")
 depends=('hicolor-icon-theme' 'zlib' 'glibc')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Yank-Note-linux-x86_64-${pkgver}.AppImage")
-sha256sums=('4ac0c73adafbc96500f4b22b3ed11b67455e827adc8c21e9860f0fc1d4bf0243')
+sha256sums=('1b744867ccc0aba095fe88b09835adf7177c7a00074e09c4f199d41cc1895003')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
