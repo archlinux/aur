@@ -3,12 +3,12 @@
 
 pkgname=bombsquad
 pkgver=1.7.19
-pkgrel=1
+pkgrel=2
 pkgdesc='An explosive arcade-style party game'
 arch=('x86_64' 'aarch64')
 url='http://www.froemling.net/apps/bombsquad'
 license=('unknown')
-depends=('openal' 'libgl' 'sdl2' 'libvorbis' 'libogg' 'python')
+depends=('openal' 'libgl' 'sdl2' 'libvorbis' 'libogg' 'python310')
 source=(
   "https://files.ballistica.net/bombsquad/promo/BombSquadIcon.png"
   'bombsquad.sh'

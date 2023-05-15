@@ -1,7 +1,7 @@
 pkgbase = bombsquad
 	pkgdesc = An explosive arcade-style party game
 	pkgver = 1.7.19
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.froemling.net/apps/bombsquad
 	arch = x86_64
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = bombsquad
 	depends = sdl2
 	depends = libvorbis
 	depends = libogg
-	depends = python
+	depends = python310
 	source = https://files.ballistica.net/bombsquad/promo/BombSquadIcon.png
 	source = bombsquad.sh
 	source = bombsquad.desktop
