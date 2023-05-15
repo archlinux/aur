@@ -49,6 +49,8 @@ build() {
               --enable-256-colors \
               --enable-html-highlight \
               --enable-exmode
+  # need -j1 to disable parallelism, which fixes "ld: no input files" error
+  # see https://github.com/rkd77/elinks/issues/209
   make -j1
 }
 
