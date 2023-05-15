@@ -1,6 +1,6 @@
 pkgbase = ryujinx
 	pkgdesc = Experimental Nintendo Switch Emulator written in C#
-	pkgver = 1.1.763
+	pkgver = 1.1.800
 	pkgrel = 1
 	url = https://github.com/Ryujinx/Ryujinx
 	install = ryujinx.install
@@ -11,10 +11,10 @@ pkgbase = ryujinx
 	provides = Ryujinx
 	conflicts = ryujinx-git
 	options = !strip
-	source = git+https://github.com/Ryujinx/Ryujinx#commit=4c3d2d5d75c46a522d55c0a3ae6820255294517c
+	source = https://github.com/Ryujinx/Ryujinx/archive/refs/tags/1.1.800.tar.gz
 	source = ryujinx.install
-	source = dotnet-sdk.tar.gz::https://dotnetcli.azureedge.net/dotnet/Sdk/7.0.200/dotnet-sdk-7.0.200-linux-x64.tar.gz
-	b2sums = SKIP
+	source = https://dotnetcli.azureedge.net/dotnet/Sdk/7.0.200/dotnet-sdk-7.0.200-linux-x64.tar.gz
+	b2sums = 46b83f14c1081a6fddc3c1ff65da4880ad2a0eced6a619991a93feff4be35126b5259b0934378591097929ff8f3e13cb5bfafb2d0bf5f7ee39296bcd48ec2d20
 	b2sums = 5e7013a31c2163a8baa71bfc36ef2da3d7580b31966abb13b54271f23f3eda9e591d56c7d448a6c18933e1f21560bbd4d3db62f38f2aae37220ffb4318edfe49
 	b2sums = 100af2f1e3fda195542f383a449473b1e52a7c5c1ff40b3ee666305a883885e1440996be7e588d8ccad44702917cf8d5e87900a59d80b8a43f9ba76a8e602927
 

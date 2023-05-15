@@ -1,10 +1,9 @@
 # Maintainer: Marco Rubin <marco.rubin@protonmail.com>
 
-# check $srcdir/Ryujinx/global.json for the dotnet (SDK and runtime) version required
+# check $srcdir/$_name-$pkgver/global.json for the dotnet (SDK and runtime) version required
 _name=Ryujinx
 pkgname=ryujinx
-pkgver=1.1.763
-_commit=4c3d2d5d75c46a522d55c0a3ae6820255294517c
+pkgver=1.1.800
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 arch=(x86_64)
@@ -16,23 +15,17 @@ provides=($_name)
 conflicts=(ryujinx-git)
 options=(!strip)
 install=ryujinx.install
-source=("git+$url#commit=$_commit"
-        "ryujinx.install"
-		"dotnet-sdk.tar.gz::https://dotnetcli.azureedge.net/dotnet/Sdk/7.0.200/dotnet-sdk-7.0.200-linux-x64.tar.gz")
-b2sums=('SKIP'
+source=("$url/archive/refs/tags/$pkgver.tar.gz"
+		"ryujinx.install"
+		"https://dotnetcli.azureedge.net/dotnet/Sdk/7.0.200/dotnet-sdk-7.0.200-linux-x64.tar.gz")
+b2sums=('46b83f14c1081a6fddc3c1ff65da4880ad2a0eced6a619991a93feff4be35126b5259b0934378591097929ff8f3e13cb5bfafb2d0bf5f7ee39296bcd48ec2d20'
         '5e7013a31c2163a8baa71bfc36ef2da3d7580b31966abb13b54271f23f3eda9e591d56c7d448a6c18933e1f21560bbd4d3db62f38f2aae37220ffb4318edfe49'
         '100af2f1e3fda195542f383a449473b1e52a7c5c1ff40b3ee666305a883885e1440996be7e588d8ccad44702917cf8d5e87900a59d80b8a43f9ba76a8e602927')
 
-# pkgver() {
-# 	cd $_name
-# 	# changelog is $url/wiki/Changelog, needs python-html2text
-# 	_commit_msg=$(git log -1 --pretty=%B | awk '{$NF=""}1') # remove PR number in parentheses
-# 	html2text ../Changelog | grep -B 4 "${_commit_msg::length - 1}" | head -n 1 | awk '{print $2}'
-# }
-
 build() {
-	cd $_name
+	cd $_name-$pkgver
 
+	export PATH="$srcdir:$PATH"
 	export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 	_args="-c Release                           \
@@ -42,12 +35,12 @@ build() {
 		-p:Version=$pkgver                      \
 		-r linux-x64                            \
 		--self-contained true"
-	../dotnet publish $_args src/Ryujinx
-	../dotnet publish $_args src/Ryujinx.Ava
+	dotnet publish $_args src/Ryujinx
+	dotnet publish $_args src/Ryujinx.Ava
 }
 
 package() {
-	cd $_name
+	cd $_name-$pkgver
 
 	mkdir -p "$pkgdir/opt/ryujinx"
 	cp -R src/Ryujinx/bin/Release/net7.0/linux-x64/publish/*     "$pkgdir/opt/ryujinx/"
