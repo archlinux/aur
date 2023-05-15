@@ -18,7 +18,10 @@ pkgbase = moab
 	depends = blas
 	depends = lapack
 	provides = moab
+	conflicts = moab-git
 	source = https://ftp.mcs.anl.gov/pub/fathom/moab-5.3.0.tar.gz
+	source = moab-5.3.0-p.1.patch
 	md5sums = 7ae3967f297f7d6fddf38de576e98758
+	md5sums = SKIP
 
 pkgname = moab
