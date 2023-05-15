@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=S4Arrays
-_pkgver=1.0.1
+_pkgver=1.0.4
 pkgname=r-${_pkgname,,}
-pkgver=1.0.1
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Foundation of array-like containers in Bioconductor'
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5a0e9d7bdf9fecc2408c8a2c3b90cc40acb617714c15bba85bd361c1d06fcb16')
+sha256sums=('4f78eae50abe599061466ee9e7a0a2184a1bf4faf8b1fef6207ba34cd25d93df')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

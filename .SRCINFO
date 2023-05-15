@@ -1,6 +1,6 @@
 pkgbase = r-s4arrays
 	pkgdesc = Foundation of array-like containers in Bioconductor
-	pkgver = 1.0.1
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://bioconductor.org/packages/S4Arrays
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = r-s4arrays
 	optdepends = r-rmarkdown
 	optdepends = r-sparsearray
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/S4Arrays_1.0.1.tar.gz
-	sha256sums = 5a0e9d7bdf9fecc2408c8a2c3b90cc40acb617714c15bba85bd361c1d06fcb16
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/S4Arrays_1.0.4.tar.gz
+	sha256sums = 4f78eae50abe599061466ee9e7a0a2184a1bf4faf8b1fef6207ba34cd25d93df
 
 pkgname = r-s4arrays
