@@ -92,7 +92,7 @@ parse_params() {
 
 upgrade_onedev() {
   "${src_dir}"/bin/upgrade.sh "${dest_dir}"
-  chown -R onedev:onedev "${dest_dir}"
+  chown -R 663:663 "${dest_dir}"
 }
 
 parse_params "$@"
