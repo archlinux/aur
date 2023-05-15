@@ -7,15 +7,15 @@
 # Contributor: Dave Pretty <david dot pretty at gmail dot com>
 
 pkgname=anki-qt5
-pkgver=2.1.62
-_tag=2fa41836272c034af40f59b263429d246a7b47af #git rev-parse $pkgver
-pkgrel=2
+pkgver=2.1.63
+_tag=064ea0ee08715edae868b84e48b29bd7e15d7b49 #git rev-parse $pkgver
+pkgrel=1
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) - Qt5 Build"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
 arch=('x86_64')
-provides=('anki' anki-debug)
-conflicts=('anki' 'anki-bin' 'anki-git' 'anki-official-binary-bundle' 'anki-debug')
+provides=('anki')
+conflicts=('anki' 'anki-bin' 'anki-git' 'anki-official-binary-bundle')
 options=('!lto')
 depends=(
     # anki & aqt
@@ -64,7 +64,7 @@ source=("$pkgname::git+https://github.com/ankitects/anki#tag=${_tag}?signed"
 "force_qt5.patch"
 )
 sha256sums=('SKIP'
-'137827586d2a72adddaaf98599afa9fc80cdd73492d7f5cbcf4d2f6082e5f797'
+'f934553a5ce9e046a0b8253e10da16e661b27375e2b54d6bb915267f32aff807'
 'c5e6e1b2ed7999e9ef7f855aed4c97c4ace846237421507f408a64a8258a09fd'
 )
 
@@ -82,6 +82,12 @@ prepare(){
 
 build() {
     cd "$pkgname"
+
+    #use local binaries instead of downloading them as well for python and protoc
+    export PYTHON_BINARY=$(type python | cut -d' ' -f1,2  --complement)
+    export PROTOC_BINARY=$(type protoc | cut -d' ' -f1,2  --complement)
+    #export NODE_BINARY=$(type node | cut -d' ' -f1,2  --complement) # does not yet compile
+
     ./tools/build
 }
 
