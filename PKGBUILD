@@ -7,8 +7,8 @@
 
 _pkgname=elinks
 pkgname=${_pkgname}-git
-pkgver=v0.15.0.r500.g0df4ef05
-pkgrel=1
+pkgver=v0.16.0.r249.g748407de
+pkgrel=2
 pkgdesc="An advanced and well-established feature-rich text mode web browser. Git version, JavaScript disabled."
 arch=(i686 x86_64 armv6h armv7h aarch64)
 url="https://github.com/rkd77/elinks"
@@ -49,7 +49,7 @@ build() {
               --enable-256-colors \
               --enable-html-highlight \
               --enable-exmode
-  make
+  make -j1
 }
 
 package() {

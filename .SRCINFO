@@ -1,7 +1,7 @@
 pkgbase = elinks-git
 	pkgdesc = An advanced and well-established feature-rich text mode web browser. Git version, JavaScript disabled.
-	pkgver = v0.15.0.r500.g0df4ef05
-	pkgrel = 1
+	pkgver = v0.16.0.r249.g748407de
+	pkgrel = 2
 	url = https://github.com/rkd77/elinks
 	arch = i686
 	arch = x86_64
