@@ -1,10 +1,10 @@
 # Contributor: John Regan <john@jrjrtech.com>
 pkgname=perl-file-tee
 pkgver=0.07
-pkgrel=2
+pkgrel=3
 pkgdesc='File::Tee'
 _dist=File-Tee
-arch=('x86_64' 'i686')
+arch=('any')
 url="https://metacpan.org/release/$_dist"
 license=('GPL' 'PerlArtistic')
 depends=(perl)
