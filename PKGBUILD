@@ -4,15 +4,17 @@
 
 pkgname=papi-cuda
 pkgver=7.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Performance Application Programming Interface (with CUDA componet)'
 arch=('x86_64')
 url='http://icl.cs.utk.edu/papi/'
 license=('BSD')
 provides=("papi=${pkgver}")
 conflicts=('papi' 'libpfm4')
-depends=('python-argparse' 'gcc-fortran' 'cuda')
-optdepends=('openmpi: for MPI applications')
+depends=('cuda')
+makedepends=('gcc-fortran' 'cuda' 'openmpi')
+optdepends=('openmpi: for MPI applications'
+            'gcc-fortran: for Fortran applications')
 source=("http://icl.cs.utk.edu/projects/papi/downloads/papi-${pkgver}.tar.gz"
         'cuda-component-build-targets.patch'
         'sde-ldflags.patch')
@@ -50,7 +52,7 @@ build() {
     --with-perf-events \
     --with-components="sde cuda"
 
-  make
+  DBG="" make
 }
 
 ## XXX the tests run for a *very* long time, so I've disabled this step for the moment

@@ -1,14 +1,16 @@
 pkgbase = papi-cuda
 	pkgdesc = Performance Application Programming Interface (with CUDA componet)
 	pkgver = 7.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://icl.cs.utk.edu/papi/
 	arch = x86_64
 	license = BSD
-	depends = python-argparse
-	depends = gcc-fortran
+	makedepends = gcc-fortran
+	makedepends = cuda
+	makedepends = openmpi
 	depends = cuda
 	optdepends = openmpi: for MPI applications
+	optdepends = gcc-fortran: for Fortran applications
 	provides = papi=7.0.1
 	conflicts = papi
 	conflicts = libpfm4
