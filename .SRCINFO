@@ -1,0 +1,16 @@
+pkgbase = perl-perlx-maybe-xs
+	pkgdesc = Perl PerlX::Maybe::XS CPAN module
+	pkgver = 1.001
+	pkgrel = 1
+	url = https://metacpan.org/release/PerlX-Maybe-XS
+	arch = x86_64
+	arch = i686
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/PerlX-Maybe-XS-1.001.tar.gz
+	md5sums = 4cf8b5fdd8d7d4c7ed013a7b37963049
+
+pkgname = perl-perlx-maybe-xs
