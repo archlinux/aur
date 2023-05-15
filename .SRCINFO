@@ -1,7 +1,7 @@
 pkgbase = python-desktop-notifier
 	pkgdesc = Python library for cross-platform desktop notifications
 	pkgver = 3.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SamSchott/desktop-notifier
 	arch = any
 	license = MIT
