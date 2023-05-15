@@ -11,12 +11,14 @@ arch=("x86_64")
 url="https://github.com/johnfanv2/LenovoLegionLinux"
 license=('GPL')
 
+depends=(
+  python-argcomplete
+  python-yaml
+  python-pyqt5
+)
 makedepends=(
   git
   python-build
-  python-pyqt5
-  python-yaml
-  python-argcomplete
   python-installer
 )
 optdepends=(
