@@ -2,12 +2,12 @@
 
 pkgname=cider-bin
 _pkgname=Cider
-pkgver=1.5.9
-pkgrel=1
+pkgver=1.6.1
+pkgrel=2
 pkgdesc="Project Cider. An open-source Apple Music client built from the ground up with Vue.js and Electron. Installed using the debian release builds from CircleCI."
 arch=("armv7h" "i686" "x86_64")
 url="https://github.com/CiderApp/${_pkgname}.git"
-_url="https://api.github.com/repos/ciderapp/cider-releases/releases/latest"
+_url="https://api.github.com/repos/ciderapp/cider/releases/latest"
 license=('GPL')
 depends=('gtk3' 'nss' 'wget')
 optdepends=('libnotify: Playback notifications')
