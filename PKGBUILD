@@ -2,7 +2,7 @@
 # from: git
 
 pkgname=hid-shanwan-dkms-git
-pkgver=r4.ec33e56
+pkgver=r5.698e2a5
 pkgrel=1
 pkgdesc="Kernel module for the Shanwan USB WirelessGamepad gamepad. (2563:0575)"
 url="https://github.com/hbiyik/hid-shanwan"
@@ -12,7 +12,7 @@ depends=('dkms')
 makedepends=(git)
 provides=("HID-SHANWAN=$pkgver-$pkgrel")
 conflicts=(HID-SHANWAN)
-source=("git+https://github.com/hbiyik/hid-shanwan.git" dkms.conf)
+source=("git+https://github.com/ahm-forks/hid-shanwan.git" dkms.conf)
 sha256sums=('SKIP'
             '3fdc3eb59989b92cd180896275053df85fc62d0a64c7187a885ec03772bc98d7')
 
