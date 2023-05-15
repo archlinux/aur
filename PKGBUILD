@@ -1,10 +1,10 @@
 # Maintainer: Jack Roehr <jack@seatgull.com>
 
 pkgname=bombardier
-pkgver=1.2.5
+pkgver=1.2.6
 pkgrel=1
 pkgdesc="Crossplatform HTTP benchmarking tool written in Go"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/codesenberg/bombardier"
 license=('MIT')
 makedepends=('go')
