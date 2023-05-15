@@ -1,8 +1,8 @@
 pkgbase = jddiff
 	pkgdesc = A graphical cross platform diff viewer
-	pkgver = 1.3
+	pkgver = 1.4
 	pkgrel = 1
-	url = https://gitlab.com/JakobDev/jdDiff
+	url = https://codeberg.org/JakobDev/jdDiff
 	arch = any
 	license = GPL3
 	makedepends = qt5-tools
@@ -12,7 +12,7 @@ pkgbase = jddiff
 	depends = python
 	depends = python-setuptools
 	depends = python-pyqt6
-	source = jddiff-1.3.tar.gz::https://gitlab.com/JakobDev/jdDiff/-/archive/1.3/jdDiff-1.3.tar.gz
-	sha256sums = 1cf73a2117db3c628a333e0fcfe08d80ab13b841b97adfb8be78e4fe2c0f584a
+	source = jddiff-1.4.tar.gz::https://codeberg.org/JakobDev/jdDiff/archive/1.4.tar.gz
+	sha256sums = 658704c4db8c67ecdfa202dce71c8bafde5e136baaf620aa4007c317aa346c5f
 
 pkgname = jddiff
