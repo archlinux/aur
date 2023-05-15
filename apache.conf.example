@@ -1,0 +1,7 @@
+Alias /dolibarr "/usr/share/dolibarr"
+<Directory "/usr/share/dolibarr/htdocs">
+  DirectoryIndex index.html index.php
+  AllowOverride All
+  Options FollowSymlinks
+  Require all granted
+</Directory>
