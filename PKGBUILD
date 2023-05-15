@@ -6,6 +6,7 @@ pkgdesc="Free and open source real-time stenography engine"
 pkgver=4.0.0.dev12
 pkgrel=1
 arch=(any)
+url="https://www.openstenoproject.org/plover/"
 license=(GPL2)
 depends=(
 	dbus
@@ -32,7 +33,6 @@ checkdepends=(
 	python-pytest-qt
 	python-pytest-xvfb
 )
-url="https://www.openstenoproject.org/plover/"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/openstenoproject/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 b2sums=('36b1bf4c30623e5ccb76fe3c2afbac43ba1407b1dcf1b654383c660aaf4f9d73d7ee9be2fae5616bd38f9746abc13bb2d8f66f553684fcf2b3fd91b489ee2503')
 
@@ -40,7 +40,6 @@ build() {
 	cd $pkgname-$pkgver
 	python -m build -wn
 }
-
 
 check() {
 	cd $pkgname-$pkgver
