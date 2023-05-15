@@ -2,7 +2,7 @@
 # Contributor: Hugo Denizart <hugo at denizart dot pro>
 _pkgname=obs-StreamFX
 pkgname=${_pkgname,,}-unstable
-pkgver=0.12.0b275
+pkgver=0.12.0b278
 pkgrel=1
 pkgdesc="Bring your stream back to life with modern effects! (unstable/testing version)"
 arch=("x86_64")
