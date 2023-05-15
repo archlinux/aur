@@ -1,5 +1,5 @@
 pkgname=casaos-ui
-pkgver=0.4.0
+pkgver=0.4.2-2
 pkgrel=1
 pkgdesc="The front-end of CasaOS,build with VueJS."
 arch=('any')
