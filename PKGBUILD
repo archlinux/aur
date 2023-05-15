@@ -3,15 +3,15 @@
 _pkgname=overdrive-m4b
 pkgbase=$_pkgname-git
 pkgname=$pkgbase
-_pkgver=1.0.0
-pkgver=$_pkgver.r4.80242f4
-pkgrel=1
+pkgver=1.0.0.r4.g80242f4
+pkgrel=2
 pkgdesc='A dirty script to convert OverDrive audiobooks to a single `.m4b` file. According to its author: use at your peril.'
 arch=("any")
 url="https://github.com/pflouret/$_pkgname"
-license=('Apache-2.0')
+license=('Apache')
 checkdepends=(ruby-rspec)
 depends=(ffmpeg grep id3lib libfdk-aac libmp4v2 ruby ruby-id3tag ruby-nokogiri xidel)
+makedepends=(git)
 source=("git+https://github.com/pflouret/$_pkgname.git")
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -21,7 +21,7 @@ b2sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -45,7 +45,7 @@ build() {
     --no-user-install \
     --install-dir "tmp_install/${_gemdir}" \
     --bindir "tmp_install/usr/bin" \
-    "${_pkgname}-${_pkgver}.gem"
+    "${_pkgname}-${pkgver%%.r*}.gem"
 
   # remove unrepreducible files
   rm --force --recursive --verbose \
