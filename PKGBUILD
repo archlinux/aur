@@ -3,14 +3,14 @@
 _pkgname=id3tag
 pkgname=ruby-$_pkgname
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Native Ruby ID3 tag reader that aims for 100% coverage of ID3v2.x and ID3v1.x standards"
 arch=("any")
 url="https://github.com/krists/id3tag"
 license=('MIT')
 checkdepends=(ruby-rspec)
 depends=(ruby ruby-nokogiri)
-source=("https://github.com/krists/$_pkgname/archive/refs/tags/v$pkgver.zip")
+source=("$pkgname-$pkgver.zip::https://github.com/krists/$_pkgname/archive/refs/tags/v$pkgver.zip")
 b2sums=('70a4ac60683d8a9b5025e720370b4c8911352d48e6b48caeda231b33c983476d3caba019a4b2d3319ab32501c8a6b18ae5548e521d731a8c12146d82557e39cd')
 
 # Most of this file comes from https://wiki.archlinux.org/title/Ruby_package_guidelines
