@@ -1,6 +1,6 @@
 pkgbase = encircle
 	pkgdesc = A Xinerama X cursor monitor wrapper
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/bakkeby/encircle
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = encircle
 	makedepends = make
 	depends = libxinerama
 	depends = libxi
-	source = encircle-1.0.tar.gz::https://github.com/bakkeby/encircle/archive/refs/tags/1.0.tar.gz
-	sha256sums = b6e239e72da8618df0ad6848da47c3c923ed365dc9fe4a9a5cce26ad490ef4f0
+	source = encircle-1.1.tar.gz::https://github.com/bakkeby/encircle/archive/refs/tags/1.1.tar.gz
+	sha256sums = 7997dd45565401ef0b76c2c5a22dbc193a4a35aca94e05329588c28c518686e0
 
 pkgname = encircle
