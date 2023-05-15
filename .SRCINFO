@@ -9,6 +9,7 @@ pkgbase = gat
 	provides = gat
 	conflicts = gat
 	conflicts = gat-git
+	conflicts = gat-bin
 	source = gat::git+https://github.com/koki-develop/gat.git#tag=v0.8.2
 	sha256sums = SKIP
 

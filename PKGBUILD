@@ -11,7 +11,7 @@ makedepends=('go')
 source=("$pkgname::git+https://github.com/koki-develop/gat.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 provides=('gat')
-conflicts=('gat' 'gat-git')
+conflicts=('gat' 'gat-git' 'gat-bin')
 
 prepare(){
   cd "$pkgname"
