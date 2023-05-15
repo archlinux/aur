@@ -1,7 +1,7 @@
 # Contributor: John Regan <john@jrjrtech.com>
 pkgname=perl-file-tee
 pkgver=0.07
-pkgrel=1
+pkgrel=2
 pkgdesc='File::Tee'
 _dist=File-Tee
 arch=('x86_64' 'i686')
