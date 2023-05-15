@@ -1,7 +1,7 @@
 # Maintainer: Philip Jones <philj56@gmail.com>
 pkgname=tofi
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tiny rofi / dmenu replacement for wlroots-based Wayland compositors."
 arch=("x86_64")
 url="https://github.com/philj56/tofi"
@@ -21,11 +21,15 @@ sha512sums=(a14ab5ecf2c6e1ecb0ec3366c436140aa422995d464de513e81e454df0f303fc9661
 
 prepare() {
 	rm -rf build
-        meson setup "${pkgname}-${pkgver}" build --prefix /usr -Dbuildtype=release
+        CFLAGS=$CFLAGS LDFLAGS=$LDFLAGS meson setup "${pkgname}-${pkgver}" build --prefix /usr -Dbuildtype=release
 }
 
 build() {
         ninja -C build
+}
+
+check() {
+	ninja -C build test
 }
 
 package() {
