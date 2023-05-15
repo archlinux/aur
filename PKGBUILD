@@ -1,11 +1,11 @@
 # Maintainer: Felix Singer <felixsinger@posteo.net>
 
 _targets="i386 x64 arm aarch64 riscv ppc64 nds32le clang"
-_commit='4d661eebe95b06acae7d99777ed36ba56a560112'
+_commit='465fbbe93ee01b4576689a90b7ddbeec23cdace2'
 
 pkgbase='coreboot-toolchain'
 pkgname=()
-pkgver=4.19
+pkgver=4.20
 pkgrel=1
 pkgdesc='Used to build coreboot'
 url='https://www.coreboot.org'
