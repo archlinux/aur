@@ -3,7 +3,7 @@
 
 pkgname=compiler-rt14
 pkgver=14.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Compiler runtime libraries for clang 14"
 arch=('x86_64')
 url="https://compiler-rt.llvm.org/"
