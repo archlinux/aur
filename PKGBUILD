@@ -1,6 +1,6 @@
 # Maintainer: Kamui
 pkgname=gazou-git
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A Japanese and Chinese OCR application for linux"
 arch=("i686" "x86_64")
