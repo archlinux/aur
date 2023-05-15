@@ -1,16 +1,15 @@
 pkgbase = perl-perlx-maybe
-	pkgdesc = return a given list only if they are all defined
-	pkgver = 0.004
+	pkgdesc = PerlX::Maybe - return a pair only if they are both defined
+	pkgver = 1.202
 	pkgrel = 1
-	url = http://search.cpan.org/dist/PerlX-Maybe
+	url = http://metacpan.cpan.org/dist/_
 	arch = any
-	license = PerlArtistic
 	license = GPL
-	depends = perl>=5.008
+	license = PerlArtistic
+	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/PerlX-Maybe-0.004.tar.gz
-	md5sums = a9eeaeed0d4a5c6f5abf5709dabb418e
-	sha512sums = f03225a9025082bbda85412724d7eba4e90ae54f630fe29c081ce1f7eae77908e1cfedf619fd8a485f5ed67539a8d135e02df3eb136c4d1f53ffabeb97fe032f
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/PerlX-Maybe-1.202.tar.gz
+	md5sums = d0af9cfe92f94a0b6adcba163f4e95a4
 
 pkgname = perl-perlx-maybe
-
