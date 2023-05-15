@@ -1,6 +1,6 @@
 pkgbase = drumrox
 	pkgdesc = Drumrox is the fork of DrMr drum machine featured to support modern Hydrogen drumkits.
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/psemiletov/drumrox
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = drumrox
 	depends = lv2
 	optdepends = gtk2: For the built-in GUI
 	provides = drumrox
-	source = https://github.com/psemiletov/drumrox/archive/1.1.0.tar.gz
-	md5sums = 0dc08745fedfbbfe43b50847a62595c6
+	source = https://github.com/psemiletov/drumrox/archive/1.1.1.tar.gz
+	md5sums = b2f6fd306af70484db74b746b4594734
 
 pkgname = drumrox
