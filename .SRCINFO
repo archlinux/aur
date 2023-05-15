@@ -1,0 +1,14 @@
+pkgbase = gat-bin
+	pkgdesc = Cat alternative written in Go. Binary Version
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/koki-develop/gat
+	arch = x86_64
+	license = MIT
+	provides = gat
+	conflicts = gat
+	conflicts = gat-git
+	source = gat-bin.tar.gz::https://github.com/koki-develop/gat/releases/download/v0.8.2/gat_Linux_x86_64.tar.gz
+	sha256sums = d65bf87eabee3014c357d76a9c768acbde312fbb3ec1c152a13c3a252f668206
+
+pkgname = gat-bin
