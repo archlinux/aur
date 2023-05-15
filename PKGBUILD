@@ -33,6 +33,7 @@ depends=(
 	dagmc-git
 	nuclear-data
 	python-cad_to_openmc
+        hdf5-git
 )
 makedepends=(
     cmake

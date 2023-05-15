@@ -26,6 +26,7 @@ pkgbase = openmc-git
 	depends = dagmc-git
 	depends = nuclear-data
 	depends = python-cad_to_openmc
+	depends = hdf5-git
 	provides = openmc-git
 	conflicts = openmc-git
 	source = openmc-git::git+https://github.com/openmc-dev/openmc.git
