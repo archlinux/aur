@@ -2,7 +2,7 @@
 # Contributor: Patrick McCarty <pnorcks at gmail dot com>
 
 pkgname=git-buildpackage
-pkgver=0.9.25
+pkgver=0.9.30
 pkgrel=1
 pkgdesc="Tools from Debian to integrate the package build system with Git"
 arch=(any)
@@ -51,5 +51,4 @@ package() {
   python setup.py install --root="$pkgdir" --prefix=/usr -O1
   install -m 644 -D -T "gbp.conf" "$pkgdir/etc/git-buildpackage/gbp.conf"
   install -m 644 -D -T debian/gbp.completion "$pkgdir/usr/share/bash-completion/completions/gbp"
-  install -m 644 -D -T debian/git-buildpackage.zsh-completion "$pkgdir/usr/share/zsh/site-functions/_gbp"
 }
