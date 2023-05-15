@@ -2,7 +2,7 @@
 pkgname="eudic-ting-en-appimage"
 _appname=ting_en
 pkgver=9.6.2.114
-pkgrel=3
+pkgrel=4
 pkgdesc="听力统计、笔记同步、语音高亮跟随，让您轻松愉快学英语"
 arch=('x86_64')
 url="http://dict.eudic.net/ting/"
@@ -14,7 +14,7 @@ _install_path="/opt/appimages"
 source=("${pkgname%-en-appimage}-${pkgver}.AppImage::https://static.frdic.com/pkg/${_appname}/${_appname}.AppImage"
     "LICENSE.html::https://www.eudic.net/v4/home/privacy")
 sha256sums=('c01e4231fc4b6c0b0f9bac3b9a4451bad0689e1b83426a04398f838e58ec4081'
-            '3781d50b87b64059ea24d8e38b0a95888104eec2d1113b469d623ac87f232ffd')
+            '08681fd71b5fef70aa1f672f962f8e72aee935a7224d57e16e8ad2b03c69e7f3')
 prepare() {
     chmod a+x "${pkgname%-en-appimage}-${pkgver}.AppImage"
     "./${pkgname%-en-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
