@@ -2,7 +2,7 @@
 # Maintainer: CountMurphy <spartan1086@gmail.com>
 pkgname=mediatracker
 __pkgname="MediaTracker"
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=0
 arch=('i686' 'x86_64')
 url="https://github.com/bonukai/MediaTracker.git"
@@ -12,7 +12,7 @@ depends=('nodejs' 'sqlite')
 conflicts=(mediatracker-git)
 makedepends=('npm')
 source=("https://github.com/bonukai/MediaTracker/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=(35128aba5cc20e0b1d086591890d4393)
+md5sums=(754204aa38fdb4deb9af4512cab42a2e)
 
 
 build() {
