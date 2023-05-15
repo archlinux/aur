@@ -4,8 +4,8 @@
 # Icon based on https://github.com/Peternal
 pkgname=bilibili-electron
 _pkgname=${pkgname%-bin}
-pkgver=rolling
-pkgrel=3
+pkgver=1.10.1
+pkgrel=1
 pkgdesc="A Linux bilibili GUI. Use installed electron."
 arch=("x86_64" "aarch64")
 license=("MIT")
