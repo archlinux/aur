@@ -10,7 +10,7 @@ depends=("gtk4" "hwdata" "clang")
 arch=('x86_64' 'aarch64')
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b5b5da66c1c151460ef56cf0a289b0eb126e4615e7ee2ded915cdc1dadff6184')
+sha256sums=('9b0079c8f94154279a820386c7a3d0cae2c8eb7aa8d6acf2112c9a566cda38a8')
 build() {
     cd LACT-${pkgver}
     make
