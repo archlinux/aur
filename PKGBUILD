@@ -1,5 +1,6 @@
-# Maintainer: Robert Brzozowski <robson75@linux.pl>
-# Maintainer: Charles Bos <charlesbos1 AT gmail>
+# Maintainer:
+# Contributor: Robert Brzozowski <robson75@linux.pl>
+# Contributor: Charles Bos <charlesbos1 AT gmail>
 # Contributor: Rob McCathie <archaur at rmcc dot com dot au
 # Contributor: /dev/rs0 <rs0@secretco.de.com>
 # Contributor: Iven Hsu <ivenvd AT gmail>
@@ -7,30 +8,70 @@
 
 pkgname=compiz
 pkgver=0.9.14.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/compiz"
 license=('GPL' 'LGPL' 'MIT')
-depends=('boost-libs' 'xorg-server' 'fuse2' 'glibmm' 'libwnck3' 'python-gobject' 'python-cairo' 'protobuf' 'metacity' 'glu')
-makedepends=('boost' 'cmake' 'intltool' 'cython')
+depends=(
+  'boost-libs'
+  'xorg-server'
+  'fuse2'
+  'glibmm'
+  'libwnck3'
+  'python-gobject'
+  'python-cairo'
+  'protobuf'
+  'metacity'
+  'glu'
+  'libxslt'
+)
+makedepends=(
+  'boost'
+  'cmake'
+  'intltool'
+  'cython'
+)
 optdepends=(
   'xorg-xprop: grab various window properties for use in window matching rules'
 )
-conflicts=('compiz-core' 'compiz-gtk' 'compiz-bcop' 'ccsm' 'compiz-fusion-plugins-main' 'compiz-fusion-plugins-extra' 'compiz-fusion-plugins-experimental' 'compizconfig-python' 'libcompizconfig' 'simple-ccsm')
-provides=("compiz-core=${pkgver}" "compiz-bcop=${pkgver}" "ccsm=${pkgver}" "compiz-plugins-main=${pkgver}" "compiz-plugins-extra=${pkgver}" "compizconfig-python=${pkgver}" "libcompizconfig=${pkgver}")
-source=("https://launchpad.net/${pkgname}/${pkgver:0:6}/${pkgver}/+download/${pkgname}-${pkgver}.tar.xz"
-        "focus-prevention-disable.patch"
-        "gtk-extents.patch"
-        "reverse-unity-config.patch"
-        "screenshot-launch-fix.patch"
-        "no-compile-gschemas.patch")
-sha256sums=('cfa061e93b032275ff9e7041f582a8f6d5ae271cf8a89e6bc74e3d3635999d3c'
-            'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
-            '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9'
-            '6ec9c04540ca1649c687d9ab2c8311caea7075831e2cffe719ec7958c9ebab7b'
-            '89ee91a8ea6b1424ef76661ea9a2db43412366aacddc12d24a7adf5e04bfbc61'
-            '4ab3277da201314b3f65e30128bc30704ddee584fdbbfc8d0d83c7e0de91fa9a')
+conflicts=(
+  'ccsm'
+  'compiz-bcop'
+  'compiz-core'
+  'compiz-fusion-plugins-experimental'
+  'compiz-fusion-plugins-extra'
+  'compiz-fusion-plugins-main'
+  'compiz-gtk'
+  'compizconfig-python'
+  'libcompizconfig'
+  'simple-ccsm'
+)
+provides=(
+  "ccsm=${pkgver}"
+  "compiz-bcop=${pkgver}"
+  "compiz-core=${pkgver}"
+  "compiz-plugins-extra=${pkgver}"
+  "compiz-plugins-main=${pkgver}"
+  "compizconfig-python=${pkgver}"
+  "libcompizconfig=${pkgver}"
+)
+source=(
+  "https://launchpad.net/${pkgname}/${pkgver:0:6}/${pkgver}/+download/${pkgname}-${pkgver}.tar.xz"
+  "focus-prevention-disable.patch"
+  "gtk-extents.patch"
+  "reverse-unity-config.patch"
+  "screenshot-launch-fix.patch"
+  "no-compile-gschemas.patch"
+)
+sha256sums=(
+  'cfa061e93b032275ff9e7041f582a8f6d5ae271cf8a89e6bc74e3d3635999d3c'
+  'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
+  '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9'
+  '6ec9c04540ca1649c687d9ab2c8311caea7075831e2cffe719ec7958c9ebab7b'
+  '89ee91a8ea6b1424ef76661ea9a2db43412366aacddc12d24a7adf5e04bfbc61'
+  '4ab3277da201314b3f65e30128bc30704ddee584fdbbfc8d0d83c7e0de91fa9a'
+)
 
 prepare() {
   cd "${pkgname}-${pkgver}"

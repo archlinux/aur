@@ -1,7 +1,7 @@
 pkgbase = compiz
 	pkgdesc = Composite manager for Aiglx and Xgl, with plugins and CCSM
 	pkgver = 0.9.14.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/compiz
 	arch = i686
 	arch = x86_64
@@ -22,21 +22,22 @@ pkgbase = compiz
 	depends = protobuf
 	depends = metacity
 	depends = glu
+	depends = libxslt
 	optdepends = xorg-xprop: grab various window properties for use in window matching rules
-	provides = compiz-core=0.9.14.2
-	provides = compiz-bcop=0.9.14.2
 	provides = ccsm=0.9.14.2
-	provides = compiz-plugins-main=0.9.14.2
+	provides = compiz-bcop=0.9.14.2
+	provides = compiz-core=0.9.14.2
 	provides = compiz-plugins-extra=0.9.14.2
+	provides = compiz-plugins-main=0.9.14.2
 	provides = compizconfig-python=0.9.14.2
 	provides = libcompizconfig=0.9.14.2
-	conflicts = compiz-core
-	conflicts = compiz-gtk
-	conflicts = compiz-bcop
 	conflicts = ccsm
-	conflicts = compiz-fusion-plugins-main
-	conflicts = compiz-fusion-plugins-extra
+	conflicts = compiz-bcop
+	conflicts = compiz-core
 	conflicts = compiz-fusion-plugins-experimental
+	conflicts = compiz-fusion-plugins-extra
+	conflicts = compiz-fusion-plugins-main
+	conflicts = compiz-gtk
 	conflicts = compizconfig-python
 	conflicts = libcompizconfig
 	conflicts = simple-ccsm
