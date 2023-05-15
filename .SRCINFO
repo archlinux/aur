@@ -1,8 +1,7 @@
 pkgbase = xrdp-git
-	pkgdesc = An open source remote desktop protocol (RDP) server - GIT version
-	pkgver = 0.9.18.r35.ge1c6afa3
+	pkgdesc = An open source remote desktop protocol (RDP) server. Git version, devel branch.
+	pkgver = 0.9.18.r482.g4b37e1a5
 	pkgrel = 1
-	epoch = 1
 	url = https://github.com/neutrinolabs/xrdp
 	install = xrdp-git.install
 	arch = i686
@@ -11,24 +10,26 @@ pkgbase = xrdp-git
 	arch = armv7l
 	arch = aarch64
 	license = Apache
-	makedepends = git
+	checkdepends = check
 	makedepends = nasm
-	depends = tigervnc
 	depends = libxrandr
 	depends = fuse
 	depends = libfdk-aac
 	depends = ffmpeg
 	depends = imlib2
-	provides = xrdp=0.9.18-1
+	optdepends = tigervnc
+	optdepends = tightvnc
+	optdepends = realvnc-vnc-server
+	provides = xrdp
 	conflicts = xrdp
 	backup = etc/xrdp/sesman.ini
 	backup = etc/xrdp/xrdp.ini
 	backup = etc/xrdp/cert.pem
 	backup = etc/xrdp/key.pem
 	backup = etc/xrdp/startwm.sh
-	source = xrdp-git::git+https://github.com/neutrinolabs/xrdp.git#branch=devel
+	source = git+https://github.com/neutrinolabs/xrdp#branch=devel
 	source = arch-config.diff
 	sha256sums = SKIP
-	sha256sums = 30fc3ab273bbde55966eadc117e02a85ae331ce6136995fd34309cc3c57ea619
+	sha256sums = dea15a32e498332a83a3835bda013863ff3be5713f3de63553a0e881513d9fcb
 
 pkgname = xrdp-git
