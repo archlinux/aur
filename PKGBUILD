@@ -53,5 +53,5 @@ package() {
 	
   cd "${srcdir}/${_pkgname}/python/legion_linux"
   python -m installer --destdir="$pkgdir" dist/*.whl
-  ln -s $pkgdir/usr/bin/legion_gui $pkgdir/usr/local/bin/legion_gui 
+  ln -s $pkgdir/usr/bin/legion_gui $pkgdir/usr/local/bin/legion_gui #fix dektop file
 }
