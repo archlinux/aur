@@ -3,7 +3,7 @@
 pkgname='plugdata-bin'
 _name='plugdata'
 pkgdesc='Plugin wrapper around PureData with a new GUI made with JUCE, allowing patching in DAWs'
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=4
 groups=('lv2-plugins' 'vst3-plugins' 'clap-plugins' 'pro-audio')
 depends=('freetype2' 'libx11' 'libxrandr' 'libxext' 'libxinerama' 'webkit2gtk' 'libxrender' 'libxinerama' 'libxcursor' 'alsa-lib' 'curl')
@@ -12,7 +12,7 @@ optdepends=()
 conflicts=('plugdata-git')
 replaces=('plugdata-git')
 arch=('x86_64' 'aarch64')
-url='https://github.com/timothyschoen/PlugData'
+url='https://github.com/plugdata-team/plugdata'
 license=('GPL3')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/plugdata-team/plugdata/releases/download/v${pkgver}/plugdata-Arch-x64.tar.gz")
 sha512sums=('SKIP')
