@@ -1,6 +1,6 @@
 pkgbase = yuki-iptv-git
 	pkgdesc = IPTV player with EPG support (Astroncia IPTV fork)
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/yuki-iptv/yuki-iptv
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = yuki-iptv-git
 	depends = qt6-base
 	depends = mpv
 	depends = python-pyqt6
-	depends = python-pillow
+	depends = python-wand
 	depends = python-gobject
 	depends = python-unidecode
 	depends = python-requests
