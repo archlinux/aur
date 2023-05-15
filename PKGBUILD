@@ -2,7 +2,7 @@
 
 pkgname=mesa-rusticl-git
 pkgdesc="An open-source implementation of the OpenGL specification, with Rusticl"
-pkgver=23.2.0_devel.170360.0c6dc49a41a.d41d8cd98f00b204e9800998ecf8427e
+pkgver=23.2.0_devel.171191.3ff77e0f631.d41d8cd98f00b204e9800998ecf8427e
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
@@ -26,7 +26,7 @@ conflicts=('vulkan-mesa-layers' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vu
 
 url="https://www.mesa3d.org"
 license=('custom')
-source=('mesa::git+https://gitlab.freedesktop.org/karolherbst/mesa.git#branch=rusticl/mem_leaks'
+source=('mesa::git+https://gitlab.freedesktop.org/karolherbst/mesa.git#branch=rusticl/ext_handling'
         'LICENSE'
 #        'zink_hack.patch'
         )
@@ -90,7 +90,7 @@ build () {
        -D b_lto=true \
        -D platforms=auto \
        -D gallium-drivers=r300,r600,radeonsi,i915,crocus,iris,nouveau,d3d12,zink,svga,virgl,swrast \
-       -D vulkan-drivers=amd,intel_hasvk,intel,microsoft-experimental,virtio-experimental,swrast \
+       -D vulkan-drivers=amd,intel,intel_hasvk,microsoft-experimental,virtio,swrast \
        -D vulkan-layers=device-select,intel-nullhw,overlay \
        -D dri3=enabled \
        -D egl=enabled \
