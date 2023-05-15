@@ -5,7 +5,7 @@
 
 pkgname=bibletime-git
 _gitname="bibletime"
-pkgver=v3.0_rc1.r1114.g8230d9362
+pkgver=v3.0_rc1.r1427.g49a313b4c
 pkgrel=1
 epoch=2
 pkgdesc="A Bible study application based on the Sword library and Qt toolkit."
@@ -13,7 +13,7 @@ arch=('x86_64' 'i686')
 url="https://bibletime.info/"
 license=('GPL2')
 depends=('sword>=1.8.1' 'qt5-webengine>=5.15')
-makedepends=('git' 'po4a' 'docbook-xsl' 'docbook-xml' 'fop' 'clucene>=2.0' 'cmake>=3.10')
+makedepends=('git' 'po4a' 'docbook-xsl' 'docbook-xml' 'clucene>=2.0' 'cmake>=3.10')
 provides=('bibletime')
 conflicts=('bibletime')
 source=("git+https://github.com/bibletime/bibletime.git")
@@ -36,9 +36,9 @@ build() {
 	cmake -DCMAKE_INSTALL_PREFIX=/usr \
 	      -DCMAKE_BUILD_TYPE=Release \
 	      -DBUILD_HANDBOOK_HTML=ON \
-	      -DBUILD_HANDBOOK_PDF=ON \
+	      -DBUILD_HANDBOOK_PDF=OFF \
 	      -DBUILD_HOWTO_HTML=ON \
-	      -DBUILD_HOWTO_PDF=ON \
+	      -DBUILD_HOWTO_PDF=OFF \
 	      -DBT_DOCBOOK_XSL_HTML_CHUNK_XSL=$_xslstylespath/html/chunk.xsl \
 	      -DBT_DOCBOOK_XSL_PDF_DOCBOOK_XSL=$_xslstylespath/fo/docbook.xsl \
 	      ..
