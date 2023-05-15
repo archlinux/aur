@@ -2,13 +2,13 @@
 
 pkgname=doppler-cli-bin
 pkgver=3.60.1
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI utility for Doppler, environment and secrets manager."
 arch=("x86_64")
 license=('Apache')
 depends=()
 url=https://doppler.com
-source=("$pkgname.$pkgver.tar.gz::https://cli.doppler.com/download?os=linux&arch=amd64&format=tar")
+source=("$pkgname.$pkgver.tar.gz::https://github.com/DopplerHQ/cli/releases/download/$pkvger/doppler_$pkvger_linux_amd64.tar.gz")
 sha256sums=('ff5f27a00c78af0db1bc55efdcae2fc68cac5cbde0cddd7ba0136b5c127ed733')
 _sourcedir=(".")
 
