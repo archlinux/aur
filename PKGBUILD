@@ -1,7 +1,7 @@
 # Maintainer: Gregor Kaelin <kaelingre at gmail dot com>
 
 pkgname=xeus-zmq
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="ZeroMQ-based middleware for xeus"
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('xeus' 'zeromq')
 makedepends=('cmake' 'cppzmq')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jupyter-xeus/xeus-zmq/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('f19b0b803d2414b44cf650fcd4d0cfecb82e51e7765fe22a7a8f6a899f0ae10c')
+sha256sums=('b6419690d2b21b8666d9333140e9eaabe67347e4624904756ca1fec0757913bc')
 options=(staticlibs)
 
 build() {
