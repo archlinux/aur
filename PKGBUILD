@@ -85,19 +85,19 @@ prepare() {
   cd "$srcdir/$_pkgname"
 
   # Reverse Unity specific configuration patches
-  patch -p1 -i "${srcdir}/reverse-unity-config.patch"
+  patch -p1 -i "$srcdir/reverse-unity-config.patch"
 
   # Set focus prevention level to off which means that new windows will always get focus
-  patch -p1 -i "${srcdir}/focus-prevention-disable.patch"
+  patch -p1 -i "$srcdir/focus-prevention-disable.patch"
 
   # Fix incorrect extents for GTK+ tooltips, csd etc
-  patch -p1 -i "${srcdir}/gtk-extents.patch"
+  patch -p1 -i "$srcdir/gtk-extents.patch"
 
   # Fix application launching for the screenshot plugin
-  patch -p1 -i "${srcdir}/screenshot-launch-fix.patch"
+  patch -p1 -i "$srcdir/screenshot-launch-fix.patch"
 
   # Don't try to compile gschemas during make install
-  patch -p1 -i "${srcdir}/no-compile-gschemas.patch"
+  patch -p1 -i "$srcdir/no-compile-gschemas.patch"
 }
 
 build() {
