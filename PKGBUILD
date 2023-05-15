@@ -46,9 +46,9 @@ build() {
 package() {
   mkdir -p $pkgdir/usr/share/{applications/,icons/,polkit-1/actions/}
   cd "${srcdir}/${_pkgname}/python/legion_linux"
-  install -Dm775 legion_gui.desktop "${pkgdir}/usr/share/applications/"
-  install -Dm644 legion_logo.png "${pkgdir}/usr/share/pixmaps/legion_logo.png"
-  install -Dm644 legion_gui.policy "${pkgdir}/usr/share/polkit-1/actions/"
+  install -Dm775 legion_linux/legion_gui.desktop "${pkgdir}/usr/share/applications/"
+  install -Dm644 legion_linux/legion_logo.png "${pkgdir}/usr/share/pixmaps/legion_logo.png"
+  install -Dm644 legion_linux/legion_gui.policy "${pkgdir}/usr/share/polkit-1/actions/"
 	
   cd "${srcdir}/${_pkgname}/python/legion_linux"
   python -m installer --destdir="$pkgdir" dist/*.whl
