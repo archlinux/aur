@@ -4,7 +4,7 @@
 
 pkgname=dev86
 pkgver=0.16.21
-pkgrel=6
+pkgrel=7
 pkgdesc="Simple C compiler to generate 8086 code"
 arch=('x86_64')
 url='https://v3.sk/~lkundrak/dev86/'
