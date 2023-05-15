@@ -14,8 +14,12 @@ arch=(x86_64 aarch64 riscv)
 depends=() # TODO
 makedepends=('python3' 'gcc-ada') # TODO
 options=('buildflags')
-source=("git+https://review.coreboot.org/coreboot#commit=${_commit}")
-sha256sums=('SKIP')
+source=(
+  "git+https://review.coreboot.org/coreboot#commit=${_commit}"
+)
+sha256sums=(
+  'SKIP'
+)
 
 
 for target in ${_targets}; do
