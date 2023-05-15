@@ -4,7 +4,7 @@
 
 pkgname=scrcpy-git
 pkgver=2.0_r2106.gcb20bcb1
-pkgrel=1
+pkgrel=2
 pkgdesc='Display and control your Android device'
 arch=($CARCH)
 url='https://github.com/Genymobile/scrcpy'
@@ -13,8 +13,10 @@ depends=(android-tools ffmpeg sdl2)
 makedepends=(git meson)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-source=("git+https://github.com/Genymobile/${pkgname%-git}.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/Genymobile/${pkgname%-git}.git"
+        "$url/releases/download/v${pkgver%_*}/${pkgname%-git}-server-v${pkgver%_*}")
+sha256sums=('SKIP'
+            '9e241615f578cd690bb43311000debdecf6a9c50a7082b001952f18f6f21ddc2')
 
 pkgver() {
   cd ${pkgname%-git}
@@ -27,7 +29,7 @@ build() {
   arch-meson build ${pkgname%-git} \
     -D b_lto=true \
     -D b_ndebug=true \
-    -D prebuilt_server=../$pkgname-server-v$pkgver \
+    -D prebuilt_server=../${pkgname%-git}-server-v${pkgver%_*} \
     --buildtype release
   ninja -C build
 }
