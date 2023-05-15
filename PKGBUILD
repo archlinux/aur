@@ -2,7 +2,7 @@
 pkgname=c2rust
 _pkgname=c2rust
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Migrate C code to Rust"
 url="https://github.com/immunant/c2rust"
 
