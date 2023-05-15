@@ -1,7 +1,7 @@
 pkgbase = python-wxpython-dev
 	pkgdesc = Cross-platform GUI toolkit. Developer version
 	pkgver = 4.2.1a1.dev5556+2f2624b1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wxpython.org
 	arch = x86_64
 	license = custom:wxWindows

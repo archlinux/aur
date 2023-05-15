@@ -7,7 +7,7 @@
 pkgname=python-wxpython-dev
 _pkgname=wxPython
 pkgver=4.2.1a1.dev5556+2f2624b1
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform GUI toolkit. Developer version'
 arch=('x86_64')
 license=('custom:wxWindows')
@@ -23,7 +23,7 @@ sha512sums=('95c1eda2431129521c4a0b05344d249d14da252dc91653c12617973144c8e96602f
 
 build() {
   cd "$_pkgname-$pkgver"
-  python build.py build --release
+  python build.py dox etg --nodoc build --release
 }
 
 check() {
