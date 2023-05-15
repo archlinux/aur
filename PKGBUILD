@@ -1,7 +1,7 @@
 # Maintainer: Ilaï Deutel <PlMWPh1WSmypRv0JQljz> (echo ... | tr 'A-Za-z' 'l-za-kL-ZA-K' | base64 -d)
 
 pkgname=cargo-lock
-pkgver=8.0.3
+pkgver=9.0.0
 pkgrel=1
 pkgdesc="Self-contained Cargo.lock parser"
 url="https://github.com/rustsec/rustsec/tree/main/cargo-lock"
@@ -10,7 +10,7 @@ makedepends=('cargo')
 arch=('x86_64')
 license=('MIT' 'APACHE')
 source=("https://github.com/rustsec/rustsec/archive/${pkgname}/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('4612708a00b85d7790f2a74fc29c1308f5f1f263d85113e251899f8de6f6e850')
+sha256sums=('c34f89734a91d46f5e48234a35022399d4d7cf5ec9323ad5857ae8a4f009face')
 
 build() {
   cd "rustsec-${pkgname}-v${pkgver}/${pkgname}"
