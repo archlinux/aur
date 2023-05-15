@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=micmac-git
-pkgver=1.0.beta14.r761.g2a4685757
+pkgver=1.0.beta14.r1048.g43022f9ac
 pkgrel=1
 pkgdesc="Free open-source photogrammetry software tools - Version GIT"
 arch=('i686' 'x86_64')
@@ -14,12 +14,18 @@ optdepends=('opencl-headers' 'qt5-base' 'imagemagick' 'exiv2' 'proj')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!staticlibs')
-source=("git+https://github.com/micmacIGN/micmac.git")
-md5sums=('SKIP')
+source=("git+https://github.com/micmacIGN/micmac.git" missing_comma.patch)
+md5sums=('SKIP'
+         '66d1958f0670b5bd0b0c23cce43bb2be')
 
 pkgver() {
   cd ${pkgname%-git}
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd ${pkgname%-git}
+  git apply "$srcdir"/missing_comma.patch
 }
 
 build() {
@@ -36,6 +42,7 @@ build() {
   -DWITH_ETALONPOLY=ON \
   -DWITH_HEADER_PRECOMP=ON \
   -DWITH_OPENCL=OFF \
+  -DWITH_CCACHE=OFF \
   -DWITH_OPEN_MP=OFF ..
   make
 }
