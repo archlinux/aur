@@ -8,8 +8,8 @@ pkgbase = mountpoint-s3-git
 	makedepends = cargo
 	makedepends = git
 	depends = fuse3
-	provides = mount-s3
-	conflicts = mount-s3
+	provides = mountpoint-s3
+	conflicts = mountpoint-s3
 	source = mountpoint-s3-git::git+https://github.com/awslabs/mountpoint-s3.git#branch=main
 	sha256sums = SKIP
 

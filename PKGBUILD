@@ -8,8 +8,8 @@ url="https://github.com/awslabs/mountpoint-s3"
 arch=("x86_64")
 makedepends=("cargo" "git")
 depends=("fuse3")
-provides=("mount-s3")
-conflicts=("mount-s3")
+provides=("mountpoint-s3")
+conflicts=("mountpoint-s3")
 license=("Apache")
 source=("$pkgname::git+$url.git#branch=main")
 sha256sums=("SKIP")
@@ -26,7 +26,6 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --release --locked
