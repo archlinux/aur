@@ -1,0 +1,24 @@
+pkgbase = dbeaver-arm
+	pkgdesc = Free universal SQL Client for developers and database administrators. Community Edition. Linux ARM version.
+	pkgver = 23.0.4
+	pkgrel = 0
+	url = https://dbeaver.io/
+	install = dbeaver-arm.install
+	arch = aarch64
+	license = Apache
+	depends = jre-openjdk-headless
+	depends = gtk3
+	depends = gtk-update-icon-cache
+	depends = libsecret
+	source = dbeaver-arm-23.0.4.tar.gz::https://dbeaver.io/files/dbeaver-ce-latest-linux.gtk.aarch64-nojdk.tar.gz
+	source = dbeaver-arm.desktop
+	source = dbeaver-arm.sh
+	source = dbeaver-arm.hook
+	source = dbeaver-arm.install
+	sha256sums = fb38650ffed8412d8873a586a51849b8d6ef0b201e3010c5db68c63f6c3a6e9b
+	sha256sums = a346f25f8bbedec5af99d2d5ea913770363cd1cca97a95431db91993b572f427
+	sha256sums = c3e7edcb5427de0c8d3d62a7ba98946090bbb69ce969f2b5d2f5e3a0d7064199
+	sha256sums = 6189acf8d2a76ed924064b515bc2db591455fcaa84efb8914214905785f48180
+	sha256sums = b8569fc7971b37542a0ce1e7d31607f860fcd33b7f39e5d0570b8607f83410e3
+
+pkgname = dbeaver-arm

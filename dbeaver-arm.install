@@ -1,0 +1,4 @@
+pre_remove() {
+  # Remove bundles.info managed from the hook
+  rm /etc/dbeaver/bundles.info
+}
