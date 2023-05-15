@@ -1,7 +1,7 @@
 pkgbase = hardinfo-git
 	pkgdesc = A system information and benchmark tool.
-	pkgver = 0.6.alpha.1392.g6ecebbd
-	pkgrel = 4
+	pkgver = 0.6.alpha.1413.gb3c1f91
+	pkgrel = 1
 	url = https://github.com/lpereira/hardinfo
 	arch = x86_64
 	license = GPL2
@@ -17,7 +17,6 @@ pkgbase = hardinfo-git
 	optdepends = usbutils: USB Devices module
 	provides = hardinfo
 	conflicts = hardinfo
-	options = debug
 	source = git+https://github.com/lpereira/hardinfo.git
 	source = benchmark.patch
 	sha256sums = SKIP

@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Eric Bélanger <eric at archlinux dot org>
 pkgname=hardinfo-git
-pkgver=0.6.alpha.1392.g6ecebbd
-pkgrel=4
+pkgver=0.6.alpha.1413.gb3c1f91
+pkgrel=1
 pkgdesc="A system information and benchmark tool."
 arch=('x86_64')
 url="https://github.com/lpereira/hardinfo"
@@ -17,7 +17,6 @@ optdepends=('dmidecode: Memory Devices module'
             'usbutils: USB Devices module')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-options=('debug')
 source=('git+https://github.com/lpereira/hardinfo.git'
         'benchmark.patch')
 sha256sums=('SKIP'
@@ -31,11 +30,9 @@ pkgver() {
 prepare() {
   cd "$srcdir/${pkgname%-git}"
 
+  # https://github.com/lpereira/hardinfo/issues/640
+  # https://github.com/lpereira/hardinfo/pull/646
   patch -Np1 -i ../benchmark.patch
-
-  # ignore odr-violation errors
-#  setconf "${pkgname%-git}.desktop.cmake" Exec \
-#    "sh -c 'env ASAN_OPTIONS=detect_odr_violation=0 @CMAKE_INSTALL_FULL_BINDIR@/hardinfo'"
 }
 
 build() {
