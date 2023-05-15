@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="leapp-appimage"
-pkgver=0.17.5
-pkgrel=2
+pkgver=0.17.6
+pkgrel=1
 pkgdesc="the DevTool to access your cloud"
 arch=('x86_64')
 url="https://www.leapp.cloud"
@@ -13,7 +13,7 @@ depends=('zlib' 'glibc' 'hicolor-icon-theme')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::https://asset.noovolari.com/latest/Leapp-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/Noovolari/leapp/master/LICENSE")
-sha256sums=('988373f5a9a8807829dbe2f481a04c895042911fb56fed0e3878dbd37100ef5a'
+sha256sums=('0d97a0172fd6b14d69fb569ef88eefb68ef0adce1ddaf9d0f4725819741b011a'
             'a830016911a348a54e89bd54f2f8b0d8fffdeac20aecfba8e36ebbf38a03f5ff')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"

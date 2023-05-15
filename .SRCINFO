@@ -1,7 +1,7 @@
 pkgbase = leapp-appimage
 	pkgdesc = the DevTool to access your cloud
-	pkgver = 0.17.5
-	pkgrel = 2
+	pkgver = 0.17.6
+	pkgrel = 1
 	url = https://www.leapp.cloud
 	arch = x86_64
 	license = MPL2
@@ -10,9 +10,9 @@ pkgbase = leapp-appimage
 	depends = hicolor-icon-theme
 	conflicts = leapp
 	options = !strip
-	source = leapp-0.17.5.AppImage::https://asset.noovolari.com/latest/Leapp-0.17.5.AppImage
+	source = leapp-0.17.6.AppImage::https://asset.noovolari.com/latest/Leapp-0.17.6.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/Noovolari/leapp/master/LICENSE
-	sha256sums = 988373f5a9a8807829dbe2f481a04c895042911fb56fed0e3878dbd37100ef5a
+	sha256sums = 0d97a0172fd6b14d69fb569ef88eefb68ef0adce1ddaf9d0f4725819741b011a
 	sha256sums = a830016911a348a54e89bd54f2f8b0d8fffdeac20aecfba8e36ebbf38a03f5ff
 
 pkgname = leapp-appimage
