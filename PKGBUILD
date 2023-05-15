@@ -2,7 +2,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=mockery
 pkgname="golang-${_pkgname}"
-pkgver=2.26.1
+pkgver=2.27.1
 pkgrel=1
 pkgdesc='A mock code autogenerator for golang'
 arch=('aarch64' 'x86_64')
@@ -11,7 +11,7 @@ license=("BSD")
 depends=('glibc')
 makedepends=('go')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e0e361cc3b0acc02a856829145d3d7561f5d4cdfcba1a27210089457e3e919fe')
+sha256sums=('fa556a62cdea41b7fd6685e2da481882751d9740c7c1f4d450147c935b42fde8')
 
 build() {
   cd "${_pkgname}"-"${pkgver}"
