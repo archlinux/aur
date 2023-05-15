@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=buttercup-desktop-appimage
-pkgver=2.19.1
+pkgver=2.20.2
 pkgrel=1
 pkgdesc="Cross-Platform Passwords & Secrets Vault"
 arch=('x86_64')
@@ -11,7 +11,7 @@ options=(!strip)
 conflits=("${pkgname%-appimage}")
 depends=('zlib' 'glibc' 'hicolor-icon-theme')
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Buttercup-linux-x86_64.AppImage")
-sha256sums=('10b2573e7af99451c8803b2a8db19b72da3424bb22d75b0c7bb5233a48b9c900')
+sha256sums=('7dc58b9c952fb12c032c72fc4e26041a7410f8a824999206b961b85dabdbc792')
 _install_path="/opt/appimages"
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
