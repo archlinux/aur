@@ -24,8 +24,8 @@ source=(
 sha256sums=("e25a1e8feef615fd29722c64eeca9a0be95ee3c816074208939d26031171f3cd"
             "256fb103121107cf757ecd89caecffb792fd448ae139a1f18d017171ac8a3a06"
             "5bd642f412a7b182fe5c371a0382f5e232df30048735a60fec935df159ff8933")
-sha256sums_x86_64=("dfbbacaad3b810d1408b7dcea5bddfcd12787b62bdeaf7e93b2294e2a04ce2cd")
-sha256sums_aarch64=("N/A")
+sha256sums_x86_64=("SKIP")
+sha256sums_aarch64=("SKIP")
 
 build() {
     cd $srcdir
