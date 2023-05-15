@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=armcord-appimage
-pkgver=3.1.7
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="A custom client designed to enhance your Discord experience while keeping everything lightweight."
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('zlib' 'glibc' 'hicolor-icon-theme')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/ArmCord-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/ArmCord/ArmCord/dev/LICENSE")
-sha256sums=('36da06c597b586ebfc9ae423753b8b8e40c077e6b6549979e672d270a6dacc9f'
+sha256sums=('634fb3786c31d28a8c92df7d09582ca16445a6857466ca1eb3fb0cc147aa5bc0'
             'c2cba32542cf3a65813e83fdbd259020d6d62b6833aa18f38aec983837dc9e4d')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
