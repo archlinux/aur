@@ -10,40 +10,40 @@ pkgbase = compiz-git
 	license = MIT
 	makedepends = boost
 	makedepends = cmake
+	makedepends = cython
 	makedepends = git
 	makedepends = intltool
-	makedepends = cython
 	depends = boost-libs
-	depends = xorg-server
 	depends = fuse2
 	depends = glibmm
-	depends = libwnck3
-	depends = python-gobject
-	depends = python-cairo
-	depends = protobuf
-	depends = metacity
 	depends = glu
+	depends = libwnck3
+	depends = libxslt
+	depends = metacity
+	depends = protobuf
+	depends = python-cairo
+	depends = python-gobject
+	depends = xorg-server
 	optdepends = xorg-xprop: grab various window properties for use in window matching rules
-	provides = compiz=0.9.14
-	provides = compiz-core=0.9.14
-	provides = compiz-bcop=0.9.14
 	provides = ccsm=0.9.14
-	provides = compiz-plugins-main=0.9.14
+	provides = compiz-bcop=0.9.14
+	provides = compiz-core=0.9.14
 	provides = compiz-plugins-extra=0.9.14
+	provides = compiz-plugins-main=0.9.14
+	provides = compiz=0.9.14
 	provides = compizconfig-python=0.9.14
 	provides = libcompizconfig=0.9.14
-	conflicts = compiz
-	conflicts = compiz-core
-	conflicts = compiz-gtk
-	conflicts = compiz-bcop
 	conflicts = ccsm
-	conflicts = compiz-fusion-plugins-main
-	conflicts = compiz-fusion-plugins-extra
+	conflicts = compiz
+	conflicts = compiz-bcop
+	conflicts = compiz-core
 	conflicts = compiz-fusion-plugins-experimental
+	conflicts = compiz-fusion-plugins-extra
+	conflicts = compiz-fusion-plugins-main
+	conflicts = compiz-gtk
 	conflicts = compizconfig-python
 	conflicts = libcompizconfig
 	conflicts = simple-ccsm
-	replaces = compiz-bzr
 	source = git+https://git.launchpad.net/compiz
 	source = focus-prevention-disable.patch
 	source = gtk-extents.patch
