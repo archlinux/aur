@@ -2,7 +2,7 @@
 # Author: Kjö Hansi Glaz <kjo@a4nancy.net.eu.org>
 
 pkgname=bookletimposer
-pkgver=0.3
+pkgver=0.3.1
 pkgrel=1
 epoch=1
 pkgdesc="Achieve some basic imposition on PDF documents"
@@ -12,8 +12,8 @@ license=('GPLv3+')
 depends=('python>=3.5' 'python-pypdf2>=1.26' python-gobject desktop-file-utils)
 makedepends=(python-build python-installer python-wheel python-distutils-extra pandoc)
 install=bookletimposer.install
-source=("https://kjo.herbesfolles.org/$pkgname/archive/$pkgname-$pkgver.tar.gz")
-b2sums=('c78bf2e8c11e6003beba9e8565002037aec6089868b82aacf2f3a0b6184c96ce3cbb7cfa53b45f992f12f7496cca5c6ca177394cdca2c15a16682456775a721b')
+source=("http://deb.debian.org/debian/pool/main/b/${pkgname}/${pkgname}_${pkgver}.orig.tar.xz")
+b2sums=('64831443421b3d3cdc337091111bcbb76fdae7c2ab3ad459a36ef89ad1c289619a8a1e85a490cf94f43843dc55de25fa26baee30b566c1f7786931a7bb7dbda0')
 
 build() {
         cd "$pkgname-$pkgver"
