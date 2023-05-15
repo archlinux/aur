@@ -9,7 +9,8 @@ url='https://chamsyslighting.com/products/magicq'
 groups=()
 options=('!strip') # Binaries are already stripped.
 
-source=('http://files.magicq.co.uk/v1_9_3_7/magicq_ubuntu_v1_9_3_7.deb')
+_pkgver="${pkgver//[^[:alnum:]]/_}"
+source=("http://files.magicq.co.uk/v${_pkgver}/magicq_ubuntu_v${_pkgver}.deb")
 sha256sums=('044440c3ff5737f306efaa1c6fed6e0f74592e85c5bf62a19697e3589abf7f17')
 
 # I've been unable to find any formal license for Magicq. The website only
