@@ -2,15 +2,15 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=perseus
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="The CLI for the Perseus frontend framework"
 arch=('x86_64')
-url="https://github.com/arctic-hen7/perseus"
+url="https://github.com/framesurge/perseus"
 license=('MIT')
 makedepends=('cargo' 'bonnie' 'npm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0c8ef894409e6812f09cdf6e011f6b18a67fe5b00d9d95965ef9fde7daebd9b0')
+sha256sums=('1844625d167315eea2bce8f5f2689c61034fe5950f2ee295ed991a38f59678a2')
 options=('!lto')
 
 prepare() {
