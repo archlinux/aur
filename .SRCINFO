@@ -1,0 +1,13 @@
+pkgbase = solidity-language-server
+	pkgdesc = A language server for the Solidity programming language.
+	pkgver = 0.6.14
+	pkgrel = 1
+	url = https://github.com/NomicFoundation/hardhat-vscode
+	arch = any
+	license = MIT
+	makedepends = npm
+	noextract = solidity-language-server-0.6.14.tgz
+	source = https://registry.npmjs.org/@ignored/solidity-language-server/-/solidity-language-server-0.6.14.tgz
+	sha256sums = b754c441d59285dfb45a07529f7cd8d0e22fce5029d31bd458dc6e7053f836ab
+
+pkgname = solidity-language-server
