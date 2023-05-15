@@ -1,9 +1,10 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Jeremy Gust	<jeremy AT plasticsoup DOT net>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 
 pkgname=python-desktop-notifier
 _pkg="${pkgname#python-}"
-pkgver=3.4.2
+pkgver=3.5.3
 pkgrel=1
 pkgdesc='Python library for cross-platform desktop notifications'
 arch=('any')
@@ -19,7 +20,7 @@ makedepends=(
 	'python-sphinx_rtd_theme'
 	'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('952420e0280555b31775e8b7fa00ea97cb9fd065353dca6f672ea1c2fca97851')
+sha256sums=('1aef415c4f01d859cb311f044b4489b860bfb2b2203aa9b1a2ecf797ad6f6c3c')
 
 prepare() {
 	cd "$_pkg-$pkgver"
