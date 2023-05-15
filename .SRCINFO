@@ -1,6 +1,6 @@
 pkgbase = nextcloud-app-files_automatedtagging
 	pkgdesc = Nextcloud app that assigns tags to newly uploaded files based on some conditions
-	pkgver = 1.16.1
+	pkgver = 1.17.0
 	pkgrel = 1
 	url = https://github.com/nextcloud/files_automatedtagging
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = nextcloud-app-files_automatedtagging
 	makedepends = npm
 	makedepends = yq
 	makedepends = rsync
-	source = files_automatedtagging-1.16.1.tar.gz::https://github.com/nextcloud/files_automatedtagging/archive/v1.16.1.tar.gz
-	sha512sums = 6c695f31a0bfcab6099266137a4fba4c078acf3f00244bd6261d39ea713c3ee1931a95714c6735cd560a91d15339357bc19351c62791ef6d9860ce882a228671
+	source = files_automatedtagging-1.17.0.tar.gz::https://github.com/nextcloud/files_automatedtagging/archive/v1.17.0.tar.gz
+	sha512sums = df80cdcbf0660949139a78d00e5f47263ec59f5cb1f4b35343c3212ac600e10b99ff0bc68b7b8491e0658747b73c4e9f772b227885dd19e48ee215f449a85ae0
 
 pkgname = nextcloud-app-files_automatedtagging
 	depends = nextcloud>=
