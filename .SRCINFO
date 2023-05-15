@@ -1,16 +1,19 @@
 pkgbase = xmcl-launcher-bin
-	pkgdesc = X Minecraft Launcher - 一个现代化的 Minecraft 启动器
+	pkgdesc = X Minecraft Launcher - Modern Minecraft Launcher
 	pkgver = 0.34.1
 	pkgrel = 1
 	url = https://xmcl.app/
 	arch = x86_64
 	license = MIT
-	optdepends = jre8-openjdk: 启动低版本游戏的最低要求
-	optdepends = jre11-openjdk: 推荐使用此版本Java启动1.12(17w13a)-1.17(21w18a)
-	optdepends = jre17-openjdk: 推荐使用此Java版本启动1.17(21w19a)及以上的版本
-	source = https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.34.1/xmcl-0.34.1-amd64.deb
+	depends = electron
+	optdepends = jre8-openjdk: For old versions of minecraft
+	optdepends = jre11-openjdk: Recommended for Minecraft 1.12(17w13a)-1.17(21w18a)
+	optdepends = jre17-openjdk: Recommended for Minecraft above 1.17(21w19a)
+	source = https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.34.1/app-0.34.1-linux.asar
 	source = xmcl.png
-	sha256sums = 36b334921f83f6b32fcef0e0a4b174454cfac3fb67a91fb8ebbed1248bca3390
+	source = xmcl.desktop
+	sha256sums = b98fe9f8cb9797961bce691da9a8d54d5f9236c0ebca9c2b61377d6f0f578259
 	sha256sums = 7292bbcf951bba1e34d265925c1ca5f786198a3b289a081e134e0e59b743e742
+	sha256sums = e253e7e922f496ff6800b639ebc8cdbdc1c984b25d0598a0d175d07f0aa1dc67
 
 pkgname = xmcl-launcher-bin

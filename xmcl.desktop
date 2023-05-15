@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=X Minecraft Launcher
+Exec=/usr/bin/electron /usr/lib/xmcl/xmcl.asar
+Terminal=false
+Type=Application
+Icon=xmcl
+StartupWMClass=X Minecraft Launcher
+MimeType=x-scheme-handler/xmcl;
+Comment=A great minecraft launcher in the future
+Categories=Game;
