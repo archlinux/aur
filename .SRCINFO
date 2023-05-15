@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-obs
 	pkgdesc = Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD
 	pkgver = 6.0.r12.ga6dc929
-	pkgrel = 3
+	pkgrel = 4
 	url = https://ffmpeg.org/
 	arch = i686
 	arch = x86_64
@@ -74,7 +74,7 @@ pkgbase = ffmpeg-obs
 	depends = zimg
 	depends = zlib
 	depends = librist>=0.2.7
-	depends = svt-av1>=1.1
+	depends = svt-av1>=1.5
 	depends = vmaf>=2
 	optdepends = avisynthplus: AviSynthPlus support
 	optdepends = ladspa: LADSPA filters
