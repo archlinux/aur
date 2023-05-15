@@ -21,7 +21,7 @@ source=("git+https://github.com/poly000/${_pkgname}.git"
 )
 
 sha256sums=('SKIP'
-    '9d8223c94936148093b23489b91d3ab14d460d4b0447ef874d4d42cd7c165bd1')
+            'bd954c5c3e274c5d297168287483dbb06943efddab982be4b2ead359e0c39ba1')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"

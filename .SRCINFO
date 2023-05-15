@@ -20,6 +20,6 @@ pkgbase = waylyrics-git
 	source = git+https://github.com/poly000/waylyrics.git
 	source = io.poly000.waylyrics.desktop
 	sha256sums = SKIP
-	sha256sums = 9d8223c94936148093b23489b91d3ab14d460d4b0447ef874d4d42cd7c165bd1
+	sha256sums = bd954c5c3e274c5d297168287483dbb06943efddab982be4b2ead359e0c39ba1
 
 pkgname = waylyrics-git
