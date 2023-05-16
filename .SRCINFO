@@ -10,10 +10,11 @@ pkgbase = imaginer
 	makedepends = meson
 	depends = libadwaita
 	depends = python-gobject
+	depends = python-lxml
 	depends = python-openai
 	depends = python-pillow
 	depends = python-requests
 	source = https://codeberg.org/Imaginer/Imaginer/archive/v0.1.5.tar.gz
-	b2sums = 1309dbeadf5e749334939e5f94246bc7efaf0b7babf1fc18a0df3fa6021d66a8950e1ee45d65c873d95ee0765da2b21902706debb78615450ceb845ce99e13e8
+	b2sums = b81a709585bdba2f48d01698021e184aa872ac13c104e20af5533030368556ce8c5a383c23a3db828a95f9a8da4f2a52faf81b782581480971e8598c14396f87
 
 pkgname = imaginer
