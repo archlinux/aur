@@ -1,7 +1,7 @@
 # Maintainer: Bozo Kopic <bozo@kopic.xyz>
 
 pkgname=hat-syslog
-pkgver=0.7.5
+pkgver=0.7.6
 pkgrel=1
 pkgdesc="Syslog server and clients"
 url="https://github.com/hat-open/hat-syslog"
@@ -12,7 +12,7 @@ depends=('python-appdirs' 'python-hat-aio' 'python-hat-json'
 makedepends=('python-hat-doit' 'python-installer' 'yarn'
              'python-sphinxcontrib-plantuml' 'python-sphinxcontrib-programoutput')
 source=("https://github.com/hat-open/hat-syslog/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8d762b2e5fae0b4496024b4afc7386d053684f946aad98207e159e578237ae30')
+sha256sums=('4ecda026b63fce6bc289fe74d91b585c7dff8f12bb22ee5f549c08639ae85e5f')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
