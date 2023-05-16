@@ -88,7 +88,7 @@ build() {
 
 package_trilium() {
 	depends=("electron$_electron_version")
-	optdepends=('trilium-dumpdb: Independent tool that allows emergency dump of notes to single files in the filesystem')
+	optdepends=('trilium-dumpdb: Standalone tool that allows emergency dump of notes to single files in the filesystem')
 
 	cd "$pkgname-$pkgver"
 
@@ -107,9 +107,9 @@ package_trilium() {
 package_trilium-server() {
 	pkgdesc="A hierarchical note taking application with focus on building large personal knowledge bases - Server version"
 	depends=("nodejs$_nodejs_lts_version")
-	optdepends=('trilium-dumpdb: Independent tool that allows emergency dump of notes to single files in the filesystem')
+	optdepends=('trilium-dumpdb: Standalone tool that allows emergency dump of notes to single files in the filesystem')
 	backup=("etc/${pkgname}.conf"
-	        'etc/logrotate.d/${pkgname}')
+	        "etc/logrotate.d/${pkgname}")
 
 	cd "$pkgbase-$pkgver"
 
