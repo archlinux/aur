@@ -1,0 +1,16 @@
+pkgbase = wf-shadow-git
+	pkgdesc = Script to make instant-replay easy on wl-roots based compositors, git version
+	pkgver = 0.0.0
+	pkgrel = 1
+	arch = x86_64
+	arch = arm
+	license = GPL3+
+	depends = wofi
+	depends = wf-recorder
+	depends = bash
+	source = https://codeberg.org/cobra/wf-shadow/raw/branch/main/wf-shadow
+	source = https://codeberg.org/cobra/wf-shadow/raw/branch/main/doc/wf-shadow.1
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = wf-shadow-git
