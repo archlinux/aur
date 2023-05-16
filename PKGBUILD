@@ -3,7 +3,7 @@
 pkgname=python-django-channels-redis
 _pypi_pkgname=channels_redis
 pkgver=4.1.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Redis-backed ASGI channel layer implementation"
 arch=(any)
 url=" http://github.com/django/channels_redis/"
