@@ -1,6 +1,6 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=ardupilot-copter-sitl
-pkgver=4.2.2
+pkgver=4.3.6
 pkgdesc="Advanced, Fully-Featured, and Reliable Autopilot Software (Copter,
 SITL)"
 url='https://ardupilot.org'
@@ -30,7 +30,6 @@ sitl_depends=(
     csfml
     sfml
     python-yaml
-    python-argparse
     python-wxpython
 )
 px4_depends=()
@@ -78,7 +77,7 @@ source=("${pkgname}-${pkgver}::git+https://github.com/ArduPilot/ardupilot.git#ta
         "${pkgname}-pydronecan::git+https://github.com/DroneCAN/pydronecan.git"
         "${pkgname}-dronecan_dsdlc::git+https://github.com/DroneCAN/dronecan_dsdlc.git"
         "${pkgname}-libcanard::git+https://github.com/DroneCAN/libcanard.git"
-        "uninitialized.patch::https://patch-diff.githubusercontent.com/raw/ArduPilot/ardupilot/pull/21183.patch"
+        "uint16_t.patch::https://github.com/ArduPilot/ardupilot/pull/23803.patch"
 )
 sha256sums=('SKIP'
             'SKIP'
@@ -114,9 +113,9 @@ prepare() {
     git config submodule."modules/DroneCAN/dronecan_dsdlc".url "${srcdir}/${pkgname}"-dronecan_dsdlc
     git config submodule."modules/DroneCAN/libcanard".url "${srcdir}/${pkgname}"-libcanard
 
-    git submodule update --init --recursive
+    git -c protocol.file.allow=always submodule update --init --recursive
 
-    patch -Np1 -i "${srcdir}"/uninitialized.patch
+    patch -Np1 -i "${srcdir}"/uint16_t.patch
 }
 
 build() {
