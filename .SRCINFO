@@ -7,7 +7,6 @@ pkgbase = gmetronome
 	arch = x86_64
 	license = GPL3
 	depends = gtkmm3
-	depends = hicolor-icon-theme
 	depends = libpulse
 	depends = alsa-lib
 	source = https://gitlab.gnome.org/dqpb/gmetronome/-/releases/0.2.1/downloads/gmetronome-0.2.1.tar.bz2
