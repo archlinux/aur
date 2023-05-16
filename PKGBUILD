@@ -6,7 +6,7 @@
 # will be on config.extra file.
 
 pkgbase=linux-git
-pkgver=v6.3.1.r0.a83b81b7392d.patched.stable.linux
+pkgver=v6.4.rc2.r0.f1fcbaa18b28
 pkgrel=1
 pkgdesc="Linus Torvalds' Mainline Linux"
 url="https://www.kernel.org"
@@ -76,7 +76,9 @@ pkgver() {
 prepare() {
   cd $_srcname
 
-  [[ -f "$_userremote" ]] && source "$_userremote" || source "../${_userremote##*/}"
+  if [[ -z ${IGNORE_USER_CUSTOM} ]]; then
+    [[ -f "$_userremote" ]] && source "$_userremote" || source "../${_userremote##*/}"
+  fi
   if [[ -n "$REMOTE" && -n "$COMMIT" ]]; then
     REMOTE_PREFIX=${source[0]##${_srcname}::git+}
     REMOTE_PREFIX=${REMOTE_PREFIX%%torvalds/linux}
@@ -110,7 +112,9 @@ prepare() {
     patch -Np1 < "../$src"
   done
 
-  [[ -f "$_userpatches" ]] && source "$_userpatches"
+  if [[ -z ${IGNORE_USER_CUSTOM} ]]; then
+    [[ -f "$_userpatches" ]] && source "$_userpatches"
+  fi
   PATCHES_PREFIX=${_userpatches%%patches}
   _USER_PATCHES="0"
   for src in "${PATCHES}"; do
@@ -121,14 +125,16 @@ prepare() {
   done
 
   # Let user see the patches were applied before proceed with the build
-  [[ ${_USER_PATCHES} = "1" ]] && sleep 2
+  [[ ${_USER_PATCHES} = "1" ]] && sleep 5
 
   echo "Setting config..."
   cat ../config ../config.extra > .config
-  if [[ -f "$_userconfig" ]]; then
-    cat $_userconfig >> .config
-  else
-    cat ../config.user >> .config
+  if [[ -z ${IGNORE_USER_CUSTOM} ]]; then
+    if [[ -f "$_userconfig" ]]; then
+      cat $_userconfig >> .config
+    else
+      cat ../config.user >> .config
+    fi
   fi
   _make olddefconfig
   diff -u ../config .config || :

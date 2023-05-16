@@ -18,3 +18,7 @@ case using the current Linux mainline is not desired:
   installation, you can copy the patches to the directory
   /etc/linux-git/patches and follow the instructions included on
   /etc/linux-git/patches/patches file.
+
+Set env variable IGNORE_USER_CUSTOM to build package ignoring current
+customizations in place:
+$ IGNORE_USER_CUSTOM=1 makepkg
