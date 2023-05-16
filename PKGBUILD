@@ -1,12 +1,13 @@
 # Maintainer: icxes <dev.null@need.moe>
 pkgname=copyparty
-pkgver="1.7.0"
-pkgrel=3
+pkgver="1.7.2"
+pkgrel=1
 pkgdesc="Portable file sharing hub"
 arch=("any")
 url="https://github.com/9001/${pkgname}"
 license=('MIT')
 depends=("python" "lsof" "python-jinja")
+makedepends=("python-wheel" "python-setuptools" "python-build" "python-installer" "make" "pigz")
 optdepends=("ffmpeg: thumbnails for videos, images (slower) and audio, music tags"
             "python-mutagen: music tags (alternative)" 
             "python-pillow: thumbnails for images" 
@@ -18,10 +19,16 @@ optdepends=("ffmpeg: thumbnails for videos, images (slower) and audio, music tag
 )
 source=("https://github.com/9001/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 backup=("etc/${pkgname}.d/init" )
-sha256sums=("782e62eb1378e8d9d50af3fa1c18b95d11bb4721df93b4525beba80f14d55661")
+sha256sums=("fb261d45ce7cf146a3f620d1e3109eb5c584f8950e61a872e2d92d7b7447bae0")
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    
+    pushd copyparty/web
+    make -j$(nproc)
+    rm Makefile
+    popd
+    
     python3 -m build -wn
 }
 
