@@ -7,6 +7,17 @@ pkgdesc='Roguelike deck-building game. GOG version.'
 arch=('x86_64')
 url='https://www.inscryption.com/'
 license=('custom')
+depends=(
+  'bash'
+  'cairo'
+  'gcc-libs'
+  'gdk-pixbuf2'
+  'glib2'
+  'glibc'
+  'gtk2'
+  'pango'
+  'zlib'
+)
 makedepends=('lgogdownloader')
 conflicts=('gog-inscryption-demo')
 options=('!strip')
