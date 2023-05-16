@@ -1,14 +1,14 @@
 # Maintainer: Wellington <wellingtonwallace@gmail.com>
 
 pkgname=fastgame-git
-pkgver=0.2.0.r2.ga8cae63
+pkgver=0.2.0.r18.g5273f9c
 pkgrel=1
 pkgdesc='Optimize system performance for games'
 arch=(x86_64 i686)
 url='https://github.com/wwmm/fastgame'
 license=('GPL3')
 depends=('boost-libs' 'gtk4' 'glib2' 'fmt' 'libsigc++-3.0' 'libadwaita' 'udisks2')
-makedepends=('meson' 'boost' 'itstool')
+makedepends=('meson' 'boost' 'itstool' 'cmake')
 source=("git+https://github.com/wwmm/fastgame.git")
 conflicts=(fastgame)
 provides=(fastgame)

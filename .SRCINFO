@@ -1,6 +1,6 @@
 pkgbase = fastgame-git
 	pkgdesc = Optimize system performance for games
-	pkgver = 0.2.0.r2.ga8cae63
+	pkgver = 0.2.0.r18.g5273f9c
 	pkgrel = 1
 	url = https://github.com/wwmm/fastgame
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = fastgame-git
 	makedepends = meson
 	makedepends = boost
 	makedepends = itstool
+	makedepends = cmake
 	depends = boost-libs
 	depends = gtk4
 	depends = glib2
