@@ -1,6 +1,6 @@
 pkgbase = nodejs-cross-seed
 	pkgdesc = Download torrents that you can cross seed based on your existing torrents.
-	pkgver = 5.0.1
+	pkgver = 5.0.2
 	pkgrel = 1
 	url = https://github.com/mmgoodnow/cross-seed
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = nodejs-cross-seed
 	depends = npm
 	optdepends = qbittorrent
 	optdepends = rtorrent
-	noextract = cross-seed-5.0.1.tgz
-	source = http://registry.npmjs.org/cross-seed/-/cross-seed-5.0.1.tgz
-	sha512sums = 21e96637f885889525b195dc88862ba40f8508902cc9e6fdde51a05ce0c26954bd26a3acda4f6fd76c3b6cfd3b0ac691fc75706e84be01c845a770750fe3ba8a
+	noextract = cross-seed-5.0.2.tgz
+	source = http://registry.npmjs.org/cross-seed/-/cross-seed-5.0.2.tgz
+	sha512sums = 103bc8714bf4a17010ac60691705ee1a787d0e6953d6331c19000601b6110288b4bdbe16a085c19e706e0d43b9031e75a1601a64b2a2e73a3c42c5720f5f9f71
 
 pkgname = nodejs-cross-seed
