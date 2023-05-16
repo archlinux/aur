@@ -2,24 +2,14 @@
 
 pkgname=gmetronome
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A tempo measurement tool for composers and musicians"
 arch=('i686' 'x86_64')
 url="https://gitlab.gnome.org/dqpb/gmetronome"
 license=('GPL3')
 depends=(
-    'gtk3'
-    'glib2'
     'gtkmm3'
-    'libsigc++'
-    'glibmm'
-    'pangomm'
-    'atkmm'
-    'cairomm'
-    'dconf'
     'hicolor-icon-theme'
-    'glibc'
-    'gcc-libs'
     'libpulse'
     'alsa-lib'
 )
