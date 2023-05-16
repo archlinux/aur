@@ -1,6 +1,6 @@
 # Maintainer: CodeXYZ <jesusbalbastro@gmail.com>
 # Maintainer: Mateusz Gozdek <mgozdekof@gmail.com>
-# Contributor: Rein Fernhout <public@reinfernhout.xyz>
+# Contributor: Rein Fernhout <me@levitati.ng>
 # Past Contributor: James An <james@jamesan.ca>
 
 pkgbase=droidcam
