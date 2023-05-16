@@ -1,6 +1,6 @@
 pkgbase = glances-git
 	pkgdesc = CLI curses-based monitoring tool (git)
-	pkgver = 3.3.0.4.r65.gea60836c
+	pkgver = 3.4.0.r91.g16b04fd
 	pkgrel = 1
 	url = https://github.com/nicolargo/glances
 	arch = any

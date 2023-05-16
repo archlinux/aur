@@ -5,7 +5,7 @@
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=glances-git
-pkgver=3.3.0.4.r65.gea60836c
+pkgver=3.4.0.r91.g16b04fd
 pkgrel=1
 pkgdesc='CLI curses-based monitoring tool (git)'
 arch=(any)
@@ -28,7 +28,12 @@ sha512sums=('SKIP'
             '49f0d185a37a5c5837e5beb463770c943ede40b2f1b8405e338129e897e97d9fc58373a8586fabc506266e6343cfea3c91b9787ac6832cc97a1ab63d6ad058d4')
 
 pkgver() {
-    git -C "${pkgname%-git}" describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git -C "${pkgname%-git}" describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    # Clean out old wheels etc.
+    git -C "${pkgname%-git}" clean -dfx
 }
 
 build() {
