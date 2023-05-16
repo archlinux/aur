@@ -1,7 +1,7 @@
 pkgbase = zoho-cliq
 	pkgdesc = Zoho Cliq communication software
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.zoho.com/cliq/desktop/linux.html
 	arch = x86_64
 	license = Proprietary
