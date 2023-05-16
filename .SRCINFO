@@ -1,7 +1,7 @@
 pkgbase = alchemy-next-viewer-bin
 	pkgdesc = This is the next generation of Alchemy Viewer! - Binary Project build
 	pkgver = 6.11.1989
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.alchemyviewer.org
 	install = alchemy.install
 	arch = x86_64
@@ -36,7 +36,7 @@ pkgbase = alchemy-next-viewer-bin
 	optdepends = wine: More up-to-date, less buggy SLVoice support
 	provides = alchemy-viewer
 	options = !strip
-	source = Alchemy_Project_DynamicDingo_6_11_1989_x86_64.tar.bz2::https://git.alchemyviewer.org/api/v4/projects/78/packages/generic/Alchemy_Project_DynamicDingo/6.11.1989/Alchemy_Project_DynamicDingo_6_11_1989_x86_64.tar.bz2
+	source = https://git.alchemyviewer.org/api/v4/projects/78/packages/generic/Alchemy_Project_DynamicDingo/6.11.1989/Alchemy_Project_DynamicDingo_6_11_1989_x86_64.tar.xz
 	sha1sums = dca7af7bd7cff9a8d2da4c12f74c3d8751281105
 	b2sums = 553cb26a0ad0df35edbcff7e696241e31776422088e07c09d00ecb8ecf2bcc55188b5118e3b4350806a311b7f4ed709b39fcae83b64828d2fb560b5bf50f58f9
 

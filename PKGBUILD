@@ -1,10 +1,11 @@
-# Author: Xenhat Hex (me@xenh.at)
+#!/bin/bash
+## Author: Xenhat Hex (me@xenh.at)
 # Maintainers: Xenhat Hex (me@xenh.at), Justin Jagieniak <justin@jagieniak.net>
 
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-next-viewer-bin
 pkgver=6.11.1989
-pkgrel=1
+pkgrel=2
 _ci_build_id=1808
 _releasename="Alchemy Project DynamicDingo"
 _releasename_underscored="${_releasename// /_}"
@@ -35,7 +36,7 @@ optdepends=(
 'wine: More up-to-date, less buggy SLVoice support')
 provides=('alchemy-viewer')
 # The release url format changes often, please keep this comment for easy switching.
-source=("${_pkgfolder}.tar.bz2"::'https://git.alchemyviewer.org/api/v4/projects/78/packages/generic/'"${_releasename_underscored}/${pkgver}/${_pkgfolder}.tar.bz2")
+source=('https://git.alchemyviewer.org/api/v4/projects/78/packages/generic/'"${_releasename_underscored}/${pkgver}/${_pkgfolder}.tar.xz")
 # source=("${_pkgfolder}.tar.bz2"::'https://git.alchemyviewer.org/alchemy/alchemy-next/-/package_files/'"${_ci_build_id}"'/download')
 sha1sums=('dca7af7bd7cff9a8d2da4c12f74c3d8751281105')
 b2sums=('553cb26a0ad0df35edbcff7e696241e31776422088e07c09d00ecb8ecf2bcc55188b5118e3b4350806a311b7f4ed709b39fcae83b64828d2fb560b5bf50f58f9')
