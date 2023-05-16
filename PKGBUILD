@@ -3,7 +3,7 @@
 pkgname=python-pysmb
 _pypi_pkgname=pysmb
 pkgver=1.2.9.1
-pkgrel=0
+pkgrel=1
 pkgdesc="An experimental SMB/CIFS library written in Python"
 arch=(any)
 url="https://miketeo.net/wp/index.php/projects/pysmb"
