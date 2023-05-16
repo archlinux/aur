@@ -1,7 +1,7 @@
 pkgbase = btllib
 	pkgdesc = Bioinformatics Technology Lab common code library https://doi.org/10.21105/joss.04720
 	pkgver = 1.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bcgsc/btllib
 	arch = any
 	license = GPL3

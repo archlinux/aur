@@ -1,6 +1,6 @@
 pkgname=btllib
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Bioinformatics Technology Lab common code library https://doi.org/10.21105/joss.04720"
 arch=(any)
 url="https://github.com/bcgsc/btllib"
@@ -15,15 +15,14 @@ prepare() {
   git submodule update --init --recursive
 }
 
-#build() {
-#  cd $srcdir/$pkgname
-#  arch-meson build \
-#  --buildtype      release
-#  ninja -C build
-#}
+build() {
+  cd $srcdir/$pkgname
+  arch-meson build \
+  --buildtype      release
+  ninja -C build
+}
 
 package() {
   cd $srcdir/$pkgname
-  ./compile --prefix=$pkgdir/usr
-#  DESTDIR="${pkgdir}" ninja -C build install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
