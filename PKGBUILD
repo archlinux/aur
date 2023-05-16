@@ -6,7 +6,7 @@
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=lib32-pam
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc='Pluggable Authentication Modules'
 arch=(x86_64)
@@ -52,7 +52,9 @@ build() {
     --prefix=/usr \
     --libdir=/usr/lib32 \
     --sbindir=/usr/bin \
-    --disable-db
+    --enable-logind \
+    --disable-db \
+    --disable-doc
   make
 }
 
