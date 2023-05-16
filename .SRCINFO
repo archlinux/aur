@@ -1,6 +1,6 @@
 pkgbase = soh-git
 	pkgver = 7.0.1.r4.g7dff8b6ef
-	pkgrel = 1
+	pkgrel = 2
 	url = https://shipofharkinian.com/
 	arch = x86_64
 	arch = i686
@@ -20,6 +20,8 @@ pkgbase = soh-git
 	depends = glew
 	depends = zenity
 	depends = libpng
+	options = debug
+	options = strip
 	source = git+https://github.com/HarbourMasters/Shipwright.git
 	source = git+https://github.com/Kenix3/libultraship.git
 	source = soh.desktop
@@ -29,7 +31,7 @@ pkgbase = soh-git
 	sha256sums = SKIP
 	sha256sums = 25aebd34f6ad49073d8a5ce6915b6fa290470fc6d62a8143abe07a25707ff4a2
 	sha256sums = b7e06174915f8dc6bd8927c248fec32c1d15c943b6aaaed1c6fb7c37dcb55510
-	sha256sums = 3cf1e6c6f014357b71d935a1dd8133ec5c2c20128b7d8ccd1b764e27f3cb4782
+	sha256sums = 81541684e21435ff1aa9fc49435c853bfec2c45115a572ff5184415035413745
 
 pkgname = soh-git
 	pkgdesc = An unofficial port of The Legend of Zelda Ocarina of Time for PC, Wii U, and Switch (git)

@@ -1,68 +1,42 @@
-Submodule libultraship contains modified content
-diff --git a/libultraship/src/CMakeLists.txt b/libultraship/src/CMakeLists.txt
-index f95c3c9..5b967b9 100644
---- a/libultraship/src/CMakeLists.txt
-+++ b/libultraship/src/CMakeLists.txt
-@@ -74,7 +74,10 @@ target_sources(libultraship PRIVATE ${Source_Files__Controller})
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index f95c3c9..6040470 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -85,6 +85,11 @@ set(Source_Files__Core
  
- #=================== Core ===================
+ source_group("Core" FILES ${Source_Files__Core})
  
-+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/install_config.h.in ${CMAKE_BINARY_DIR}/install_config.h @ONLY)
++if (DEFINED SHIP_BIN_DIR)
++set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/core/Context.cpp
++    PROPERTIES COMPILE_DEFINITIONS SHIP_BIN_DIR="${SHIP_BIN_DIR}")
++endif()
 +
- set(Source_Files__Core
-+    ${CMAKE_BINARY_DIR}/install_config.h
-     ${CMAKE_CURRENT_SOURCE_DIR}/core/Window.h
-     ${CMAKE_CURRENT_SOURCE_DIR}/core/Window.cpp
-     ${CMAKE_CURRENT_SOURCE_DIR}/core/ConsoleVariable.h
-@@ -329,7 +332,7 @@ endif()
- #=================== Packages & Includes ===================
- 
- target_include_directories(libultraship
--    PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../extern
-+    PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../extern ${CMAKE_BINARY_DIR}
-     PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${INCLUDE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/../extern/spdlog/include ${CMAKE_CURRENT_SOURCE_DIR}/../extern/stb
- )
- 
-diff --git a/libultraship/src/core/Context.cpp b/libultraship/src/core/Context.cpp
-index 776333e..fa546e6 100644
---- a/libultraship/src/core/Context.cpp
-+++ b/libultraship/src/core/Context.cpp
-@@ -14,6 +14,7 @@
- #elif defined(__WIIU__)
- #include "port/wiiu/WiiUImpl.h"
- #endif
-+#include "install_config.h"
- 
- namespace LUS {
- std::weak_ptr<Context> Context::mContext;
-@@ -281,6 +282,18 @@ std::string Context::GetShortName() {
+ set(Source_Files__Core__Libultra
+     ${CMAKE_CURRENT_SOURCE_DIR}/core/libultra/os.h
+     ${CMAKE_CURRENT_SOURCE_DIR}/core/libultra/os.cpp
+diff --git a/src/core/Context.cpp b/src/core/Context.cpp
+index 776333e..02eabe6 100644
+--- a/src/core/Context.cpp
++++ b/src/core/Context.cpp
+@@ -281,6 +281,9 @@ std::string Context::GetShortName() {
  }
  
  std::string Context::GetAppBundlePath() {
-+#ifdef CMAKE_INSTALL_PREFIX
-+    static const std::string fpath = CMAKE_INSTALL_PREFIX;
-+    static int exists = -1;
-+
-+    if (exists == -1) {
-+        exists = fpath.size() > 0 && std::filesystem::is_directory(fpath);
-+    }
-+
-+    if (exists) {
-+        return fpath;
-+    }
++#ifdef SHIP_BIN_DIR
++    return SHIP_BIN_DIR;
 +#else
  #ifdef __APPLE__
      FolderManager folderManager;
      return folderManager.getMainBundlePath();
-@@ -291,6 +304,7 @@ std::string Context::GetAppBundlePath() {
-     if (fpath != NULL) {
-         return std::string(fpath);
-     }
-+#endif
+@@ -294,6 +297,7 @@ std::string Context::GetAppBundlePath() {
  #endif
  
      return ".";
-@@ -304,6 +318,13 @@ std::string Context::GetAppDirectoryPath() {
++#endif
+ }
+ 
+ std::string Context::GetAppDirectoryPath() {
+@@ -304,6 +308,13 @@ std::string Context::GetAppDirectoryPath() {
      }
  #endif
  
@@ -76,7 +50,7 @@ index 776333e..fa546e6 100644
      return ".";
  }
  
-@@ -315,7 +336,24 @@ std::string Context::GetPathRelativeToAppDirectory(const char* path) {
+@@ -315,7 +326,24 @@ std::string Context::GetPathRelativeToAppDirectory(const char* path) {
      return GetAppDirectoryPath() + "/" + path;
  }
  
@@ -103,10 +77,10 @@ index 776333e..fa546e6 100644
 -} // namespace LUS
 \ No newline at end of file
 +} // namespace LUS
-diff --git a/libultraship/src/core/Context.h b/libultraship/src/core/Context.h
+diff --git a/src/core/Context.h b/src/core/Context.h
 index c32f4dd..a9f1639 100644
---- a/libultraship/src/core/Context.h
-+++ b/libultraship/src/core/Context.h
+--- a/src/core/Context.h
++++ b/src/core/Context.h
 @@ -26,6 +26,7 @@ class Context {
      static std::string GetAppDirectoryPath();
      static std::string GetPathRelativeToAppDirectory(const char* path);
@@ -115,17 +89,17 @@ index c32f4dd..a9f1639 100644
  
      Context(std::string name, std::string shortName);
  
-diff --git a/libultraship/src/core/libultra/os.cpp b/libultraship/src/core/libultra/os.cpp
-index 9058fe1..7d9387e 100644
---- a/libultraship/src/core/libultra/os.cpp
-+++ b/libultraship/src/core/libultra/os.cpp
+diff --git a/src/core/libultra/os.cpp b/src/core/libultra/os.cpp
+index 9058fe1..2956b7f 100644
+--- a/src/core/libultra/os.cpp
++++ b/src/core/libultra/os.cpp
 @@ -21,8 +21,8 @@ int32_t osContInit(OSMesgQueue* mq, uint8_t* controllerBits, OSContStatus* statu
      }
  
  #ifndef __SWITCH__
 -    const char* controllerDb = "gamecontrollerdb.txt";
 -    int mappingsAdded = SDL_GameControllerAddMappingsFromFile(controllerDb);
-+    std::string controllerDb = LUS::Context::GetPathRelativeToAppBundle("gamecontrollerdb.txt");
++    std::string controllerDb = LUS::Context::FindFileFromAllAppDirectories("gamecontrollerdb.txt");
 +    int mappingsAdded = SDL_GameControllerAddMappingsFromFile(controllerDb.c_str());
      if (mappingsAdded >= 0) {
          SPDLOG_INFO("Added SDL game controllers from \"{}\" ({})", controllerDb, mappingsAdded);
@@ -137,10 +111,3 @@ index 9058fe1..7d9387e 100644
 -}
 \ No newline at end of file
 +}
-diff --git a/libultraship/src/install_config.h.in b/libultraship/src/install_config.h.in
-new file mode 100644
-index 0000000..029753c
---- /dev/null
-+++ b/libultraship/src/install_config.h.in
-@@ -0,0 +1 @@
-+#cmakedefine CMAKE_INSTALL_PREFIX "@CMAKE_INSTALL_PREFIX@"
