@@ -8,14 +8,13 @@ pkgbase = logseq-desktop-bin
 	provides = logseq-desktop
 	conflicts = logseq-desktop-git
 	conflicts = logseq-desktop
-	source = https://github.com/logseq/logseq/releases/download/0.9.4/logseq-linux-x64-0.9.4.zip
+	source = https://github.com/logseq/logseq/releases/download/0.9.6/logseq-linux-x64-0.9.6.zip
 	source = logseq-desktop.desktop
 	source = logseq-desktop.install
 	source = logseq-desktop.sh
-	sha256sums = c8205c91cf97b83e66d334f112945952da796ca68439ea3247c6cdd05b2c4d31
+	sha256sums = 21e30a2b478c420fd5121f6cf134af28d8e007d767b6e99a077cc519db5d8807
 	sha256sums = fb4a2e59859b96c157f4da410cc66d8b6fff6e80fbc004577c238bc7d0b43258
 	sha256sums = ad9bb5c0c7f9df5686201ed13c3f5566dcec65357bce33a7d143f160b59a9988
 	sha256sums = 79749ee5011f229810343fb4a4eeb60de986d541617ead4242ccf0057b263a55
-	sha256sums = 21e30a2b478c420fd5121f6cf134af28d8e007d767b6e99a077cc519db5d8807
 
 pkgname = logseq-desktop-bin
