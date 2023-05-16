@@ -2,8 +2,8 @@
 # Maintainer: Bruno Pagani <archange@archlinux.org>
 
 pkgname=keepassxc-allow-aur-extension-origin
-pkgver=2.7.4
-pkgrel=2
+pkgver=2.7.5
+pkgrel=1
 pkgdesc="Cross-platform community-driven port of Keepass password manager"
 arch=(x86_64)
 url="https://keepassxc.org/"
@@ -18,7 +18,7 @@ provides=(org.freedesktop.secrets keepassxc)
 conflicts=(keepassxc)
 source=(https://github.com/keepassxreboot/keepassxc/releases/download/$pkgver/keepassxc-$pkgver-src.tar.xz
         add-aur-extension-build-to-allowed-origins.patch)
-sha256sums=('560052961da0389327e759171f660230dfa4e0f4e1fab6139600fb85c6e5dece'
+sha256sums=('ede24800901816c49569aa4f8bc7180a40cb8b554617fa2a2a2653caac13000c'
             'a150f3ce0d9d8827b6c767aa673be4af298aafd6f46ddd10373e32b832dd2017')
 # List of signing keys can be found at https://keepassxc.org/verifying-signatures/
 # validpgpkeys=(BF5A669F2272CF4324C1FDA8CFB4C2166397D0D2
