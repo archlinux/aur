@@ -1,7 +1,7 @@
 pkgbase = python-trame-client
 	pkgdesc = Internal client of trame
-	pkgver = 2.7.5
-	pkgrel = 2
+	pkgver = 2.7.7
+	pkgrel = 1
 	url = https://github.com/Kitware/trame-client
 	arch = any
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = python-trame-client
 	makedepends = nodejs-lts-fermium
 	makedepends = npm
 	depends = python
-	source = trame-client-2.7.5.tar.gz::https://github.com/Kitware/trame-client/archive/v2.7.5.tar.gz
-	sha512sums = e72038e020f6bc1e378e4ce4fcd2d2c4ace1bc8dd88ef6bb503cc10052ed81c8566df142ee7e7bae55d93fceec4c03896cce8f9b59777755325b4e15a8265d0d
+	source = trame-client-2.7.7.tar.gz::https://github.com/Kitware/trame-client/archive/v2.7.7.tar.gz
+	sha512sums = 75546898a8822003e217182f6820b79e1e89db43d4c14bf2ee7b9ca5f72f986be583d3774d478b88ae7f90a84e240bdf9e23fdbd0f0c61065cc500df93085c09
 
 pkgname = python-trame-client
