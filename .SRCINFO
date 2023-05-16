@@ -1,6 +1,6 @@
 pkgbase = libretro-chailove-git
 	pkgdesc = ChaiScript core
-	pkgver = 1.2.0.r7.ga98cd8c
+	pkgver = 1.2.1.r27.g9677b14
 	pkgrel = 1
 	url = https://github.com/libretro/libretro-chailove
 	arch = aarch64
@@ -15,6 +15,7 @@ pkgbase = libretro-chailove-git
 	makedepends = cppcodec
 	makedepends = git
 	depends = gcc-libs
+	depends = glibc
 	depends = libretro-core-info
 	provides = libretro-chailove
 	conflicts = libretro-chailove

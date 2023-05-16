@@ -1,14 +1,14 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-chailove
 pkgname=$_pkgname-git
-pkgver=1.2.0.r7.ga98cd8c
+pkgver=1.2.1.r27.g9677b14
 pkgrel=1
 pkgdesc="ChaiScript core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/libretro/libretro-chailove"
 license=('MIT')
 groups=('libretro')
-depends=('gcc-libs' 'libretro-core-info')
+depends=('gcc-libs' 'glibc' 'libretro-core-info')
 makedepends=('chaiscript' 'cppcodec' 'git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
