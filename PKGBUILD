@@ -2,7 +2,7 @@
 
 pkgname=dfzitarev1
 _plugin_uri="https://chrisarndt.de/plugins/$pkgname"
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A feedback-delay-network reverb LV2 and VST3 plugin'
 arch=(x86_64 aarch64)
@@ -11,12 +11,13 @@ license=(MIT)
 depends=(gcc-libs)
 checkdepends=(kxstudio-lv2-extensions lv2lint)
 optdepends=(
+  'clap-host: for loading the CLAP plugin'
   'lv2-host: for loading the LV2 plugin'
   'vst3-host: for loading VST3 plugin'
 )
 groups=(lv2-plugins pro-audio vst2-plugins)
 source=("https://github.com/SpotlightKid/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver-source.tar.gz")
-sha256sums=('e74a386834cb7779b5ada8227253c472be95564773642298a583cd2ddd3e8404')
+sha256sums=('649b96b2494a662231e69cbdaeb2ed7c4766312a5bb8d44c1bfbf30284a82aab')
 
 build() {
   cd $pkgname-$pkgver
