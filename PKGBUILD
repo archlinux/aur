@@ -3,7 +3,7 @@
 pkgname=dpp
 _pkgname=DPP
 pkgver=10.0.23
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight and Scalable C++ Discord API Bot Library"
 arch=('x86_64')
 url="https://dpp.dev/"
@@ -18,6 +18,7 @@ sha256sums=('8f9db61c3586a492ada378235300c509e3bc2fc090cef32de0a8241741038df0')
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 	rm -rf "include/dpp/nlohmann"
+	sed -i -E "s/(#pragma once)/\1\n#include <cstdint>/" "include/dpp/sslclient.h"
 }
 
 build() {

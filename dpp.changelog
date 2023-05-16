@@ -1,3 +1,10 @@
+# 10.0.23-2 / 2023-05-16
+
+* quick patch for gcc13 compatibility
+	* one of the headers depended on transient include
+	* gcc13 broke it
+	* already fixed upstream
+
 # 10.0.23-1 / 2023-03-01
 
 * bump to new library version
