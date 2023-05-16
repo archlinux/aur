@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# But not these files...
+!PKGBUILD
+!.SRCINFO
+!log-path.diff
+!mautrix-whatsapp.service
+!mautrix-whatsapp.tmpfiles
+!sysusers-mautrix-whatsapp.conf
