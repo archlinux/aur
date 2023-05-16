@@ -2,8 +2,8 @@
 pkgname=murex
 replaces=('murex-git')
 pkgver=4.1.5200
-pkgrel=11
-pkgdesc="A smarter shell designed for greater commandline productivity and safer shell scripts"
+pkgrel=12
+pkgdesc="A smarter shell and scripting environment with advanced features designed for usability, safety and productivity (eg smarter DevOps tooling)"
 arch=('i686' 'x86_64')
 url="https://github.com/lmorg/murex"
 license=('GPL2')
