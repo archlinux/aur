@@ -1,9 +1,13 @@
 pkgbase = python-pyqt5-sip4
 	pkgdesc = A set of Python bindings for the Qt5 toolkit
 	pkgver = 5.15.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://riverbankcomputing.com/software/pyqt/intro
+	arch = i686
 	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = GPL
 	makedepends = sip
 	makedepends = pyqt-builder
