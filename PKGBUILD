@@ -2,7 +2,7 @@
 pkgname=fedistar-bin
 _name="${pkgname%-bin}"
 
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Multi-column Mastodon and Pleroma client for desktop"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('curl' 'wget' 'tar')
 provides=("$_name")
 conflicts=("$_name")
 source=("https://github.com/h3poteto/fedistar/releases/download/v${pkgver}/${_name}_${pkgver}_amd64.deb")
-md5sums=('2f3869b44178025978e6902157f55ede')
+md5sums=('e679d9acc858ad05d1a15df76fa3e832')
 
 prepare() {
     ar x "${_name}_${pkgver}_amd64.deb"
