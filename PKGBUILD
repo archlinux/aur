@@ -2,7 +2,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=mod_auth_openidc
-pkgver=2.4.13.2
+pkgver=2.4.14
 pkgrel=1
 pkgdesc='OpenID Connect Relying Party implementation for Apache 2.x'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(apr-util cjose curl openssl pcre2)
 _archive="$pkgname-$pkgver"
 makedepends=(apache jansson)
 source=("https://github.com/zmartzone/$pkgname/releases/download/v$pkgver/$_archive.tar.gz")
-sha256sums=('a70ed74e6611f5ae08be88d37ebfb52075ab5f855c12fa9dd36a154fa2b65677')
+sha256sums=('8e4fdc9570673582b44651136414665eb14a981571cd0f1800c02fabe63d0441')
 
 build() {
 	cd "$_archive"
