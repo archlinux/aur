@@ -1,0 +1,9 @@
+pkgbase = python-externally-managed
+	pkgdesc = Mark Python base environment as externally managed - PEP 668
+	pkgver = 3.11
+	pkgrel = 1
+	arch = any
+	source = EXTERNALLY-MANAGED
+	sha256sums = c07b94bf7dcbe7be5ba0cee29971a005a5be65002cbfb59c5a8f661fa92aa82f
+
+pkgname = python-externally-managed
