@@ -8,7 +8,7 @@ pkgdesc="Chit-Chat with AI"
 arch=('any')
 url="https://bavarder.codeberg.page"
 license=('GPL3')
-depends=('libadwaita' 'python-gobject' 'python-openai' 'python-hgchat' 'python-gtts' 'python-baichat-py' 'python-googlebardpy'
+depends=('libadwaita' 'python-gobject'  'python-lxml'  'python-openai' 'python-hgchat' 'python-gtts' 'python-baichat-py' 'python-googlebardpy'
          'python-requests')
 makedepends=('blueprint-compiler' 'meson')
 checkdepends=('appstream-glib')

@@ -10,6 +10,7 @@ pkgbase = bavarder-git
 	makedepends = meson
 	depends = libadwaita
 	depends = python-gobject
+	depends = python-lxml
 	depends = python-openai
 	depends = python-hgchat
 	depends = python-gtts
