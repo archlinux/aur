@@ -8,7 +8,7 @@ pkgdesc="Imagine with AI"
 arch=('any')
 url="https://imaginer.codeberg.page"
 license=('GPL3')
-depends=('libadwaita' 'python-gobject' 'python-openai' 'python-pillow'
+depends=('libadwaita' 'python-gobject' 'python-lxml' 'python-openai' 'python-pillow'
          'python-requests')
 makedepends=('blueprint-compiler' 'meson')
 checkdepends=('appstream-glib')
