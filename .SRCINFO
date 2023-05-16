@@ -14,6 +14,6 @@ pkgbase = python-lsp-ruff
 	depends = python-lsprotocol
 	depends = python-tomli
 	source = python-lsp-ruff-1.4.0.tar.gz::https://github.com/python-lsp/python-lsp-ruff/archive/refs/tags/v1.4.0.tar.gz
-	sha256sums = 12ac866172b2d3c38b0666ac9696e051a2429d8e367d3142c78cab46fed0cd9c
+	sha256sums = c343d474006176c9991e2e347f7e94ecc747cbd0fc6d9c112ef843b0722b9206
 
 pkgname = python-lsp-ruff
