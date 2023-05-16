@@ -8,10 +8,11 @@ arch=('i686' 'x86_64')
 pkgdesc="SDR++ module for demodulating TETRA"
 license=('GPL')
 depends=('sdrpp-git' 'sdrpp-headers-git')
-makedepends=('git' 'cmake' 'make')
+makedepends=('git' 'cmake' 'base-devel')
 provides=('sdrpp-tetra-demodulator')
 conflicts=('sdrpp-tetra-demodulator')
 source=("git+https://github.com/cropinghigh/sdrpp-tetra-demodulator")
+url="https://github.com/cropinghigh/sdrpp-tetra-demodulator"
 md5sums=('SKIP')
 
 pkgver() {
