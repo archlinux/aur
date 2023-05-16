@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="teams-for-linux-appimage"
-pkgver=1.0.88
+pkgver=1.0.90
 pkgrel=1
 pkgdesc="Unofficial Microsoft Teams for Linux client"
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'hicolor-icon-theme' 'glibc')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}.AppImage")
-sha256sums=('e8b451def2aa0125a4a263003e392e5f0788fd4a28c05b4f441e11711f0bb5bb')
+sha256sums=('3bdda7f1fceb4bab932d6044ad209b49480c2a84a9c7738369ec853b874624cf')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
