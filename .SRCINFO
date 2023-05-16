@@ -1,13 +1,13 @@
 pkgbase = python-circuitbreaker
 	pkgdesc = Python implementation of the Circuit Breaker pattern
-	pkgver = 1.4.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/fabfuel/circuitbreaker
 	arch = x86_64
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	source = python-circuitbreaker-1.4.0.tar.gz::https://github.com/fabfuel/circuitbreaker/archive/refs/tags/1.4.0.tar.gz
-	sha256sums = 30f24b32edf964ff2ea7c3c18959e2e3e08b6259b85ab442ea825e3f240323ab
+	source = python-circuitbreaker-2.0.0.tar.gz::https://github.com/fabfuel/circuitbreaker/archive/refs/tags/2.0.0.tar.gz
+	sha256sums = ec71e88317e48e2e41727d6fb0f7df4392b16b3e0e50646843323a37acee6883
 
 pkgname = python-circuitbreaker
