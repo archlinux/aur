@@ -1,13 +1,13 @@
 pkgbase = nouveau-fw
 	pkgdesc = This package provides video & pgraph firmwares for all NVIDIA chipsets that need them
-	pkgver = 340.108
+	pkgver = 325.15
 	pkgrel = 1
 	url = http://nouveau.freedesktop.org/wiki/
 	arch = any
 	license = custom
 	makedepends = python3
 	source = https://raw.githubusercontent.com/envytools/firmware/master/extract_firmware.py
-	source = http://us.download.nvidia.com/XFree86/Linux-x86_64/340.108/NVIDIA-Linux-x86_64-340.108.run
+	source = http://us.download.nvidia.com/XFree86/Linux-x86_64/325.15/NVIDIA-Linux-x86_64-325.15.run
 	md5sums = SKIP
 	md5sums = SKIP
 	sha256sums = SKIP

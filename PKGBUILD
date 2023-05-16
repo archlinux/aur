@@ -3,7 +3,7 @@
 # Contributor: Timothée Ravier <tim[at]siosm[dot]fr>
 
 pkgname=nouveau-fw
-pkgver=340.108
+pkgver=325.15
 pkgrel=1
 pkgdesc="This package provides video & pgraph firmwares for all NVIDIA chipsets that need them"
 url='http://nouveau.freedesktop.org/wiki/'
