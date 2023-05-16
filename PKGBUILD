@@ -1,7 +1,7 @@
 # Maintainer:   Razer <razer[AT]neuf[DOT]fr>
 pkgname=python-rf24
 pkgver=1.4.6
-pkgrel=0
+pkgrel=1
 pkgdesc='Python bindings for RF24 radio modules'
 arch=(any)
 url='http://tmrh20.github.io/RF24/'

@@ -1,7 +1,7 @@
 pkgbase = python-rf24
 	pkgdesc = Python bindings for RF24 radio modules
 	pkgver = 1.4.6
-	pkgrel = 0
+	pkgrel = 1
 	url = http://tmrh20.github.io/RF24/
 	arch = any
 	license = GPL2
