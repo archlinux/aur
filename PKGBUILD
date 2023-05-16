@@ -3,7 +3,7 @@
 
 pkgname="llm"
 pkgver=0.1.1
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Run inference for Large Language Models on CPU, with Rust 🦀🚀🦙"
 arch=(any)
@@ -28,6 +28,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgname}"
+    cat LICENSE-* > LICENSE
     cargo build --release
 }
 
@@ -35,4 +36,5 @@ package() {
     cd "${srcdir}/${pkgname}"
     install -Dm755 target/release/llm -t "${pkgdir}/usr/bin/"
     install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

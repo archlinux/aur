@@ -1,7 +1,7 @@
 pkgbase = llm
 	pkgdesc = Run inference for Large Language Models on CPU, with Rust 🦀🚀🦙
 	pkgver = 0.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/rustformers/llm
 	arch = any
 	license = MIT
