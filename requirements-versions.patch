@@ -1,19 +1,19 @@
 diff --unified --recursive --text a/setup.py b/setup.py
---- a/setup.py	2020-03-12 11:51:30.759503274 +0200
-+++ b/setup.py	2020-03-12 11:51:46.215411606 +0200
+--- a/setup.py	2023-05-16 11:25:58.026066441 +0300
++++ b/setup.py	2023-05-16 11:26:20.499671832 +0300
 @@ -12,8 +12,8 @@
      url = 'https://github.com/blakev/python-syncthing',
      license = 'The MIT License',
      install_requires = [
--        'python-dateutil==2.6.1',
--        'requests==2.18.4'
+-        'python-dateutil==2.8.1',
+-        'requests==2.24.0'
 +        'python-dateutil',
 +        'requests'
      ],
      extras_require = {
          'dev': [
-@@ -43,4 +43,4 @@
-         'Programming Language :: Python :: 3.7',
+@@ -44,4 +44,4 @@
+         'Programming Language :: Python :: 3.8',
          'Topic :: System :: Archiving :: Mirroring'
      ],
 -)
