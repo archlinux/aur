@@ -1,0 +1,8 @@
+/var/log/trilium-server/*.log {
+   su triliumserver triliumserver
+   # Trilium "rotates" its own logs daily
+   rotate -1
+   # Arch's default is to rotate the logs weekly and to keep 4 rotations (we try to achieve the same without rotation)
+   maxage 30
+   missingok
+}

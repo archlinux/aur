@@ -1,1 +1,1 @@
-u triliumserver - "Trilium server daemon user" /var/lib/trilium-server /usr/bin/nologin
+u triliumserver - "Trilium Server user" /var/lib/trilium-server /usr/bin/nologin

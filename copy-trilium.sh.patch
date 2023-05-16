@@ -1,5 +1,5 @@
 8c8
-< n exec 16.19.0 npm run webpack
+< n exec 16.19.1 npm run webpack
 ---
 > npm run webpack
 13c13
@@ -7,7 +7,7 @@
 ---
 > mkdir -p $DIR
 30c30
-< (cd $DIR && n exec 16.19.0 npm install --only=prod)
+< (cd $DIR && n exec 16.19.1 npm install --only=prod)
 ---
 > (cd $DIR && npm install --only=prod)
 34c34

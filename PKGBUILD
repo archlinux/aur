@@ -4,7 +4,7 @@ _electron_version=16
 _nodejs_lts_version=-lts-gallium
 
 pkgname=('trilium' 'trilium-server' 'trilium-dumpdb')
-pkgver=0.58.7
+pkgver=0.59.4
 pkgrel=1
 pkgdesc="A hierarchical note taking application with focus on building large personal knowledge bases."
 arch=('x86_64')
@@ -19,20 +19,22 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/zadam/trilium/archive/refs/
 	"trilium-server.sh"
 	"trilium-dumpdb.sh"
 	"trilium.desktop"
+	"trilium-server.logrotate"
 	"trilium-server.service"
 	"trilium-server.sysusers"
 	"trilium-server.tmpfiles")
 
-sha512sums=('5bdf4407c9338c9bf6ca65efd2e3a8a1481899f1d13e6a7528543292c4299d907f4e359497fe7030b58a6c8ba06c7b6ca0bd56a4abb70ee7e997e0752011ae86'
-	    '06e89cd98dda5a52d72f5d8114d4b4444dad3f934e18477d875e6dd3214f20359aff6fb24cdfcdca3cdffa74cccac845d98af485686d3f6fd5c34e8861149132'
+sha512sums=('96a4788574f66a830515eb8fe11bdc87e1083f04c3f409d095cdde2515c008c2ba32a0554d7e5cda4602c2b20861e5b442e022f3c1be4fd3397c0f9e4d24eae2'
+	    'e9eebad02a0ee4cc385d9ec5054bb468649c61f7b788b247aa6f2ff3a6a2e0438a0088dd834efec013509eaf70b3b24a4e738ee5171ea3934440b4dd20dc2dc3'
 	    'b073a15731cced053d34534a7c34ce39b6b54bc9c818e1792d6d5fe0ef86ba83f255b75fd7a630dedad2ec0f51403dc68969d1fa3dab7472a2fc628d83c16bdd'
 	    '6b03a7cce3836966d00e282d012cce944b8b56e29200fa06e64563a95e4edde591c0018715639a5e2acdbfd11a73ccb8283fbad19efc7dff218e8398c7e12d30'
 	    '14a97f1fab392dd9a55440712bf3f2976de20e9c09789392984313455af77d9900445bd06cf2c3a3879a94cab893e83bd4093060f9214b2c201af89d7f62f663'
 	    'e1fa62cdc2ecde41f5c5336bca3dd2d2b9e65de1a3162ef4ed336aaa7660c2b1c23793df7cdbd09e8b020890de0ba2d58c8704d2d1f0916da1212167c4820c0f'
 	    'b0e42a91b5990e5d919277eb3039df52f8177f199946eeb631464b6c2a0941000df8d698907482992a11a890a495b8e0447180ab653445f4130e945f562d1054'
-	    '302809fbc030c8de8c0dced345aaf8630121461e3c2be23a163bb3a6fe6401b6109b415f7efbce2736706cb87e4962c2d40eeb26a12133452880beae6ff1ddd4'
-	    '3c211189cd033040df7b042f8e95e229693eb3086d0dcfa377bbf49dd6958bcd8ae71e2129259166c62872e5c98f4b11886a02cd16ba760df40f1e657939ac27'
-	    '70430e1887ae9dc979ffc2d6bfee7d83c1b276c70972f98ab07a77e39aaf3b4b35081e8ec2b43da3c95f055b4872b5b3a9752c378c8c88f63aa3dfee888b3e7d')
+	    '26686715395a4de148210310170a3eaf7c5be489d855558065dc0d3e8651701879895917999087b6a773d59ca8ed17934a84014425907143e1b2a715e5675623'
+	    '952cec6f8156bab96a763b9304c61844a42cfe95ff1377be67b307c8f08307a9174c47e0e3839f2e729a0a04bc6138574edb8040dbc2b6e0cf21068db2105398'
+	    '91199f2bbbadc76c1520e84cc1e4d9c44e3ab483202a31fba521935f6258ea286ed798155783cd61bd7afe3560d76ae44841a16946a35de060749d432879b828'
+	    '6157c1e7146bceabc63a338a65d1d9b32af6acf0a2c16321a51a3929d1a09f2a4e8855588e81fc646e49d2814770e791984443a7d9190b4ea143ac85d61e679b')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -52,7 +54,7 @@ build() {
 	export npm_config_cache="$srcdir/npm_cache"
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 	npm install --build-from-source
-	
+
 	# Building trilium (desktop)
 	./bin/copy-trilium.sh $_trilium_desktop_src_dir
 	rm -rf $_trilium_desktop_src_dir/dump-db
@@ -67,13 +69,13 @@ build() {
 	# Building trilium-server
 	grep -v electron package.json > package-server.json
 	mv package-server.json package.json
-	
+
 	./bin/copy-trilium.sh $_trilium_server_src_dir
 	rm -rf $_trilium_server_src_dir/dump-db
-	
+
 	mkdir $_trilium_server_src_dir/node_modules/better-sqlite3/build/Release
 	cp ./node_modules/better-sqlite3/build/Release/better_sqlite3.node $_trilium_server_src_dir/node_modules/better-sqlite3/build/Release/better_sqlite3.node
-	
+
 	rm -r $_trilium_server_src_dir/webpack*
 	rm -r $_trilium_server_src_dir/electron.js
 
@@ -106,6 +108,8 @@ package_trilium-server() {
 	pkgdesc="A hierarchical note taking application with focus on building large personal knowledge bases - Server version"
 	depends=("nodejs$_nodejs_lts_version")
 	optdepends=('trilium-dumpdb: Independent tool that allows emergency dump of notes to single files in the filesystem')
+	backup=("etc/${pkgname}.conf"
+	        'etc/logrotate.d/${pkgname}')
 
 	cd "$pkgbase-$pkgver"
 
@@ -115,7 +119,10 @@ package_trilium-server() {
 	install -vDm644 $_trilium_server_src_dir/package.json -t "${pkgdir}/usr/share/webapps/${pkgname}"
 	install -vDm644 bin/tpl/anonymize-database.sql -t "${pkgdir}/usr/share/webapps/${pkgname}"
 
-	install -vDm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/trilium-server"
+	install -vDm644 config-sample.ini "${pkgdir}/etc/${pkgname}.conf"
+
+	install -vDm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+	install -vDm644 "${srcdir}"/${pkgname}.logrotate "${pkgdir}/etc/logrotate.d/${pkgname}"
 	install -vDm644 "${srcdir}"/${pkgname}.service -t "${pkgdir}/usr/lib/systemd/system"
 	install -vDm644 "${srcdir}"/${pkgname}.sysusers "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
 	install -vDm644 "${srcdir}"/${pkgname}.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"

@@ -6,14 +6,16 @@ After=syslog.target network.target
 User=triliumserver
 Group=triliumserver
 Type=simple
-Environment=TRILIUM_DATA_DIR=trilium-data/
+Environment=TRILIUM_DATA_DIR=/var/lib/trilium-server
+Environment=TRILIUM_CONFIG_INI_PATH=/etc/trilium-server.conf
+Environment=TRILIUM_LOG_DIR=/var/log/trilium-server
 ExecStart=/usr/bin/trilium-server
 WorkingDirectory=/var/lib/trilium-server
 
-# Security
+# Sandboxing
 ProtectProc=invisible
 ProtectSystem=strict
-ReadWritePaths=/var/lib/trilium-server
+ReadWritePaths=/var/lib/trilium-server /var/log/trilium-server
 ProtectHome=yes
 PrivateTmp=yes
 PrivateDevices=yes
