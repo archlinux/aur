@@ -5,10 +5,8 @@ pkgbase = ledger-live
 	url = https://github.com/LedgerHQ/ledger-live
 	arch = x86_64
 	license = MIT
-	makedepends = python>=3.5
 	makedepends = node-gyp
-	makedepends = fnm
-	makedepends = pnpm
+	makedepends = proto
 	depends = ledger-udev
 	depends = electron23
 	source = ledger-live-desktop-2.58.0.tar.gz::https://github.com/LedgerHQ/ledger-live/archive/refs/tags/@ledgerhq/live-desktop@2.58.0.tar.gz
