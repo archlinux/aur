@@ -5,13 +5,13 @@
 
 pkgname='python-hydra-core'
 pkgver='1.3.2'
-pkgrel=1
+pkgrel=2
 pkgdesc='A framework for elegantly configuring complex applications'
 arch=('any')
 url='https://hydra.cc'
 license=('MIT')
 depends=('python-omegaconf' 'python-antlr4' 'java-environment')
-makedepends=('antlr4' 'java-runtime>=11', 'python' 'python-build' 'python-installer' 'python-wheel'
+makedepends=('antlr4' 'java-runtime>=11' 'python' 'python-build' 'python-installer' 'python-wheel'
              'python-setuptools' 'python-packaging')
 source=("$pkgname-$pkgver::https://github.com/facebookresearch/hydra/archive/refs/tags/v${pkgver}.tar.gz"
         "antlr4-jar.patch")

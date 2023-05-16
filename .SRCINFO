@@ -1,12 +1,12 @@
 pkgbase = python-hydra-core
 	pkgdesc = A framework for elegantly configuring complex applications
 	pkgver = 1.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hydra.cc
 	arch = any
 	license = MIT
 	makedepends = antlr4
-	makedepends = java-runtime>=11,
+	makedepends = java-runtime>=11
 	makedepends = python
 	makedepends = python-build
 	makedepends = python-installer
