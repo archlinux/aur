@@ -2,7 +2,7 @@
 pkgname=python-pylint-django
 _pypi_pkgname=pylint-django
 pkgver=2.5.3
-pkgrel=0
+pkgrel=1
 pkgdesc="A Pylint plugin to help Pylint understand the Django web framework"
 arch=('any')
 url="https://github.com/landscapeio/pylint-django"
