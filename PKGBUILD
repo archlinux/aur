@@ -1,47 +1,33 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Leon <aur@adigitoleo.dissimulo.com>
-
-pkgname=python-bytecode
-_pkg=bytecode
-pkgver=0.13.0
+_base=bytecode
+pkgname=python-${_base}
+pkgver=0.14.1
 pkgrel=1
-pkgdesc="Python module to modify bytecode"
-arch=('any')
-url="https://github.com/MatthieuDartiailh/bytecode"
-license=('MIT')
-depends=('python')
-makedepends=(
-	'python-build'
-	'python-installer'
-	'python-setuptools'
-	'python-sphinx'
-	'python-wheel')
-checkdepends=('python-pytest')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/b/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('6af3c2f0a31ce05dce41f7eea5cc380e33f5e8fbb7dcee3b52467a00acd52fcd')
-
-prepare() {
-	cd "$_pkg-$pkgver"
-	sed -i '72c\"packages": ["bytecode"],' setup.py
-	sed -i '/extensions/d;/html_theme/d' doc/conf.py
-}
+pkgdesc="Python module to generate and modify bytecode"
+arch=(any)
+url="https://github.com/MatthieuDartiailh/${_base}"
+license=(MIT)
+depends=(python)
+makedepends=(python-build python-installer python-setuptools python-wheel)
+checkdepends=(python-pytest)
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('81bf5b548b49602556b31ef22286b44571b8006a869b43f8c8b50c83f38ff8986c30cff58c32a747f5fe63d9120fff70a1e8163da66f5b253d1324cbba13596f')
 
 build() {
-	cd "$_pkg-$pkgver"
-	python -m build --wheel --no-isolation
-	make -C doc man
+  cd ${_base}-${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
-	cd "$_pkg-$pkgver"
-	PYTHONPATH="$PWD" pytest -x
+  cd ${_base}-${pkgver}
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest tests
 }
 
 package() {
-	cd "$_pkg-$pkgver"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
-	install -Dm644 doc/build/man/bytecode.1 -t "$pkgdir/usr/share/man/man1/"
-	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s "$_site/$_pkg-$pkgver.dist-info/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
 }
