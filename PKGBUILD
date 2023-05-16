@@ -3,7 +3,7 @@
 pkgname=python-adafruit-circuitpython-st7735
 _pypi_pkgname=adafruit-circuitpython-st7735
 pkgver=1.2.8
-pkgrel=0
+pkgrel=1
 pkgdesc="CircuitPython library for SSD1306 OLED displays"
 arch=('any')
 url="https://github.com/adafruit/Adafruit_CircuitPython_ssd1306"
