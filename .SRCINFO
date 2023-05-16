@@ -33,14 +33,14 @@ pkgbase = trilium
 
 pkgname = trilium
 	depends = electron16
-	optdepends = trilium-dumpdb: Independent tool that allows emergency dump of notes to single files in the filesystem
+	optdepends = trilium-dumpdb: Standalone tool that allows emergency dump of notes to single files in the filesystem
 
 pkgname = trilium-server
 	pkgdesc = A hierarchical note taking application with focus on building large personal knowledge bases - Server version
 	depends = nodejs-lts-gallium
-	optdepends = trilium-dumpdb: Independent tool that allows emergency dump of notes to single files in the filesystem
+	optdepends = trilium-dumpdb: Standalone tool that allows emergency dump of notes to single files in the filesystem
 	backup = etc/trilium-server.conf
-	backup = etc/logrotate.d/${pkgname}
+	backup = etc/logrotate.d/trilium-server
 
 pkgname = trilium-dumpdb
 	pkgdesc = An emergency tool to extract notes from the database where they're stored to plain files on the filesystem
