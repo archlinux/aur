@@ -1,6 +1,6 @@
 pkgbase = python-baseband
 	pkgdesc = Package to read and write radio baseband data
-	pkgver = 4.1.2
+	pkgver = 4.1.3
 	pkgrel = 1
 	url = https://baseband.readthedocs.io
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = python-baseband
 	makedepends = python-sphinx-astropy
 	makedepends = python-astropy
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/b/baseband/baseband-4.1.2.tar.gz
-	md5sums = eee68a26b3874a5e9e32c493e56277e6
+	source = https://files.pythonhosted.org/packages/source/b/baseband/baseband-4.1.3.tar.gz
+	md5sums = c0c0250eb67cc1c83b343ff7e9b9a650
 
 pkgname = python-baseband
 	depends = python-numpy>=1.17
