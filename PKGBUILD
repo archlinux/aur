@@ -1,7 +1,7 @@
 # Maintainer: Bruno Miguel <bruno@privacyrequired.com>
 pkgname=codeberg-cli-git
 pkgver=0.3.4.0a15b5e
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI Tool for Codeberg similar to gh and glab.'
 arch=(x86_64)
 url='https://codeberg.org/RobWalt/codeberg-cli'
@@ -21,11 +21,10 @@ pkgver() {
 
 build() {
 	cd "$provides"
-	cargo build 
+	cargo build --all-features
 }
 
 package() {
-	cd "$srcdir"
-	install -Dm0755 -t "$pkgdir/usr/bin/" "$provides/target/debug/berg"
+	install -Dm755 "$srcdir/$provides/target/debug/berg" "$pkgdir/usr/bin/codeberg-cli"
 }
 
