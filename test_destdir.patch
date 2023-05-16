@@ -1,0 +1,13 @@
+--- a/data/Makefile.am
++++ b/data/Makefile.am
+@@ -85,7 +85,9 @@ install-data-local: install-gsettings-schemas
+ mostlyclean-local: clean-gsettings-schemas
+ 
+ install-data-hook:
+-	touch $(datadir)/icons/hicolor
++	if test -z "$(DESTDIR)"; then	\
++		touch $(datadir)/icons/hicolor; \
++	fi
+ 
+ CLEANFILES = \
+ 	$(desktop_file) \
