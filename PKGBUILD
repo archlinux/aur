@@ -1,7 +1,8 @@
 # Maintainer: Jakub 'Eremiell' Marek <eremiell at eremiell dot net>
+# See also https://github.com/eremiell-aur/pokeclicker-scripts-bin
 pkgname=pokeclicker-scripts-bin
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Game about catching Pokémon, defeating gym leaders, and watching numbers get bigger (Scripts version)"
 arch=('x86_64')
 url="https://github.com/Ephenia/Pokeclicker-Scripts"
@@ -14,7 +15,7 @@ conflicts=("${pkgname%-scripts-bin}")
 install="${pkgname}.install"
 changelog="${pkgname}.changelog"
 source=("https://github.com/RedSparr0w/Pokeclicker-desktop/releases/download/v${pkgver}/${pkgname%-scripts-bin}-desktop_${pkgver}_amd64.deb"
-	"scripts::git+https://github.com/Ephenia/Pokeclicker-Scripts.git#commit=02d7f09c07648c5c66be953af162ae448b40b04d"
+	"scripts::git+https://github.com/Ephenia/Pokeclicker-Scripts.git#commit=701ec3ffbc36411fded056613547ff0e5f620bdd"
 	"LICENSE")
 sha512sums=('3b0e5a602d5c5a289802065b264f38dc361969efd11d958a848a5565514c293a266656bdaaa733c30a31d8bfb5d919046d46497b45c28cb6aec67162bc3be5d0'
 			'SKIP'

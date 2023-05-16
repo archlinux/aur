@@ -1,12 +1,15 @@
 pkgbase = pokeclicker-scripts-bin
 	pkgdesc = Game about catching Pokémon, defeating gym leaders, and watching numbers get bigger (Scripts version)
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ephenia/Pokeclicker-Scripts
+	install = pokeclicker-scripts-bin.install
+	changelog = pokeclicker-scripts-bin.changelog
 	arch = x86_64
 	license = ISC
 	license = GPL3
 	makedepends = git
+	makedepends = asar
 	depends = gtk3
 	depends = libnotify
 	depends = nss
@@ -22,7 +25,7 @@ pkgbase = pokeclicker-scripts-bin
 	provides = pokeclicker
 	conflicts = pokeclicker
 	source = https://github.com/RedSparr0w/Pokeclicker-desktop/releases/download/v1.2.0/pokeclicker-desktop_1.2.0_amd64.deb
-	source = git+https://github.com/Ephenia/Pokeclicker-Scripts.git#commit=4ed5906cbeb7f3ba27c06ec4bdf35d4c55b786a8
+	source = scripts::git+https://github.com/Ephenia/Pokeclicker-Scripts.git#commit=701ec3ffbc36411fded056613547ff0e5f620bdd
 	source = LICENSE
 	sha512sums = 3b0e5a602d5c5a289802065b264f38dc361969efd11d958a848a5565514c293a266656bdaaa733c30a31d8bfb5d919046d46497b45c28cb6aec67162bc3be5d0
 	sha512sums = SKIP
