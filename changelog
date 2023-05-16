@@ -1,4 +1,5 @@
-### Fixed
-
-* bad or missing 'content-length' HTTP header fields are now handled without errors.
-* the "All" patch level returned by Tukui is now supported when checking the updated details of an addon.
+* issue #402, fixed a freezing bug in the search results, introduced in 5.1.0 (2022-03-02).
+    - if the 'full' catalogue were selected, searching and selecting a result would freeze the GUI.
+        - it may possibly have disabled mouse events as well, depending on your window manager.
+    - No definite cause found, however the bug was quacking suspicously like a deadlock/livelock.
+    - Thanks to @sergen213 for their help and feedback.
