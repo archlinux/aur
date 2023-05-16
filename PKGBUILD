@@ -3,7 +3,7 @@
 pkgname=python-adafruit-pureio
 _pypi_pkgname=adafruit-pureio
 pkgver=1.1.10
-pkgrel=0
+pkgrel=1
 pkgdesc="Pure python (i.e. no native extensions) access to Linux IO including I2C and SPI. Drop in replacement for smbus and spidev modules"
 arch=('any')
 url="https://github.com/adafruit/Adafruit_Python_PureIO"

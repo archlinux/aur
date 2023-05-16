@@ -1,7 +1,7 @@
 pkgbase = python-adafruit-pureio
 	pkgdesc = Pure python (i.e. no native extensions) access to Linux IO including I2C and SPI. Drop in replacement for smbus and spidev modules
 	pkgver = 1.1.10
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/adafruit/Adafruit_Python_PureIO
 	arch = any
 	license = MIT
