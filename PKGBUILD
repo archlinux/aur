@@ -1,17 +1,18 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Maintainer: Antonio Vázquez Blanco <antoniovazquezblanco@gmail.com>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 pkgname=sigdigger-git
-pkgver=r18.286b1d2
+pkgver=r930.5097e66
 pkgrel=1
 pkgdesc="Qt-based digital signal analyzer, using Suscan core and Sigutils DSP library"
 arch=(any)
 license=('custom')
 url="https://github.com/BatchDrake/SigDigger"
-depends=('qt5-base' 'sigutils' 'suscan' 'suwidgets')
+depends=('qt6-base' 'sigutils' 'suscan' 'suwidgets')
 makedepends=('git' 'gcc')
 provides=('sigdigger')
 conflicts=('sigdigger')
-source=("$pkgname::git+https://github.com/BatchDrake/SigDigger.git")
+source=("$pkgname::git+https://github.com/BatchDrake/SigDigger.git#branch=develop")
 sha1sums=('SKIP')
 
 pkgver() {
@@ -21,7 +22,7 @@ pkgver() {
 
 prepare() {
   cd ${pkgname}
-  qmake SigDigger.pro
+  qmake6 SigDigger.pro
 }
 
 build() {
