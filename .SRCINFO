@@ -19,7 +19,6 @@ pkgbase = gnome-critical-packages
 	depends = gnome-text-editor
 	depends = nautilus
 	depends = sushi
-	depends = tracker3-miners
 	depends = xdg-user-dirs-gtk
 
 pkgname = gnome-critical-packages
