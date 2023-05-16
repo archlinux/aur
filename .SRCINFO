@@ -1,7 +1,7 @@
 pkgbase = elasticsearch
 	pkgdesc = Free and Open, Distributed, RESTful Search Engine
 	pkgver = 8.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.elastic.co/elasticsearch/
 	arch = x86_64
 	license = custom:Elastic-2.0

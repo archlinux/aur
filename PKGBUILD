@@ -2,7 +2,7 @@
 
 pkgname=elasticsearch
 pkgver=8.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and Open, Distributed, RESTful Search Engine"
 arch=('x86_64')
 url="https://www.elastic.co/elasticsearch/"
@@ -56,7 +56,7 @@ package() {
 
   ln -s /etc/elasticsearch "$pkgdir"/usr/share/elasticsearch/config
   ln -s /var/log/elasticsearch "$pkgdir"/usr/share/elasticsearch/logs
-  ln -s /usr/lib/jvm/java-19-openjdk "$pkgdir"/usr/share/elasticsearch/jdk
+  ln -s /usr/lib/jvm/java-20-openjdk "$pkgdir"/usr/share/elasticsearch/jdk
 
   install -Dm644 "$srcdir"/elasticsearch.service "$pkgdir"/usr/lib/systemd/system/elasticsearch.service
   install -Dm644 "$srcdir"/elasticsearch@.service "$pkgdir"/usr/lib/systemd/system/elasticsearch@.service
