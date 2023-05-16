@@ -1,0 +1,24 @@
+commit 62ca5e37776f5cecb27e83c1fbd5d685a173095d
+Author: Jan Tilly <jan.tilly@quantco.com>
+Date:   Sun May 14 15:37:18 2023 +0200
+
+    Remove extra files in site-packages from wheel (#3057)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 18068338..727690b2 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -93,12 +93,7 @@ path = "altair/__init__.py"
+ allow-direct-references = true
+ 
+ [tool.hatch.build]
+-include = [
+-    "/altair",
+-    "README.md",
+-    "LICENSE",
+-    "pyproject.toml"
+-]
++include = ["/altair"]
+ 
+ [tool.hatch.envs.default]
+ features = ["dev"]
