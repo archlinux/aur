@@ -9,7 +9,6 @@ url="https://gitlab.gnome.org/dqpb/gmetronome"
 license=('GPL3')
 depends=(
     'gtkmm3'
-    'hicolor-icon-theme'
     'libpulse'
     'alsa-lib'
 )
