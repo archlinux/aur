@@ -7,16 +7,15 @@
 
 pkgname=sqlite-jdbc
 pkgver=3.41.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='JDBC driver for SQLite'
 arch=('x86_64')
 url='https://github.com/xerial/sqlite-jdbc'
 license=('Apache')
 depends=('java-runtime>=8')
 makedepends=('maven')
-source=("https://github.com/xerial/sqlite-jdbc/archive/${pkgver}.tar.gz" java.version.8.patch)
-sha256sums=('e9f33a7128cb821cc6c0d54577b6db7b736acb1f610b01b935ee0e9a96431198'
-            'baae5d865d256b5224d1eab52a15238ef3bf3cb828900ac87bab2f4a3934c8b3')
+source=("https://github.com/xerial/sqlite-jdbc/archive/${pkgver}.tar.gz")
+sha256sums=('e9f33a7128cb821cc6c0d54577b6db7b736acb1f610b01b935ee0e9a96431198')
 
 prepare() {
   # remove unused sqlite binaries
@@ -26,7 +25,6 @@ prepare() {
 }
 
 build() {
-  patch -p0 <  java.version.8.patch
   cd ${pkgname}-${pkgver}
   mvn package -DskipTests
 }
