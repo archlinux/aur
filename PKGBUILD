@@ -3,8 +3,8 @@
 
 pkgname='mdsilo-bin'
 _pkgname="${pkgname%%-bin}"
-pkgver=0.5.5
-pkgrel=2
+pkgver=0.5.6
+pkgrel=1
 pkgdesc='Local-first, lightweight personal wiki, RSS and podcast client (pre-compiled)'
 arch=('x86_64')
 #url='https://mdsilo.com/'
@@ -33,13 +33,13 @@ package() {
 }
 
 sha256sums=(
-  '6fba1765bc02654a31f12058097d608c140d7047c73bac85b3bea55e7cbf656a'
+  'f99bff54e64c8bd93528f77eca10ceecc947649ac1fc1f7127896ff0f57707cc'
 )
 sha512sums=(
-  'dd78e1bb8a8f4554d16a898f7272921dfbcdb66bf42aab89aa09dac8cd8b64bd552dced39236feba7e4074096e6f6d560600e78d74474a043ed9bcaf43224e8b'
+  'db7117c9ce5cb3fb956ebddc2afce37a70090e132d5162fd132665282b1fb27e30416e4cb36fe28763c8fcf69d5ac5be0b275d2e032522e98c4c393d9a1ee4ec'
 )
 b2sums=(
-  '668e3e094ddf259823e44f47ba534d29adf136fa2f41652d1ce620b1d8b0d5a5791d0711cd9a1fd60e1d761c13c9c588a7c1d74d51879d8e78c2e31925395bec'
+  'bc283abaac7f5865bc23dc639f9d95833f7fded877a938054a98f4a604dfd5a614cf1391def4540cc4f90a91d950ca39b1bda0454ffd77956ccc6779292cb13d'
 )
 
 # eof
