@@ -1,0 +1,135 @@
+diff --unified --recursive --text a/ddcci/ddcci.c b/ddcci/ddcci.c
+--- a/ddcci/ddcci.c
++++ b/ddcci/ddcci.c
+@@ -35,11 +35,16 @@
+ static unsigned int delay = 60;
+ static unsigned short autoprobe_addrs[127] = {0xF0, 0xF2, 0xF4, 0xF6, 0xF8};
+ static int autoprobe_addr_count = 5;
++static bool is_registered;
+ 
+ static dev_t ddcci_cdev_first;
+ static dev_t ddcci_cdev_next;
+ static dev_t ddcci_cdev_end;
+-static DEFINE_SEMAPHORE(core_lock);
++static DEFINE_SEMAPHORE(core_lock
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 4, 0)
++                        , 1
++#endif
++                        );
+ 
+ struct bus_type ddcci_bus_type;
+ EXPORT_SYMBOL_GPL(ddcci_bus_type);
+@@ -931,7 +936,7 @@
+ 
+ /* DDC/CI bus */
+ 
+-static int ddcci_device_uevent(struct device *dev, struct kobj_uevent_env *env)
++static int ddcci_device_uevent(CSTRUCT device *dev, struct kobj_uevent_env *env)
+ {
+ 	struct ddcci_device	*device = to_ddcci_device(dev);
+ 	char model[ARRAY_SIZE(device->model)];
+@@ -1011,7 +1016,7 @@
+ 	kfree(device);
+ }
+ 
+-static char *ddcci_devnode(struct device *dev,
++static char *ddcci_devnode(CSTRUCT device *dev,
+ 			 umode_t *mode, kuid_t *uid, kgid_t *gid)
+ {
+ 	struct ddcci_device *device;
+@@ -1021,7 +1026,7 @@
+ 			 device->i2c_client->adapter->nr);
+ }
+ 
+-static char *ddcci_dependent_devnode(struct device *dev,
++static char *ddcci_dependent_devnode(CSTRUCT device *dev,
+ 			 umode_t *mode, kuid_t *uid, kgid_t *gid)
+ {
+ 	struct ddcci_device *device;
+@@ -1065,7 +1070,7 @@
+  * ddcci_verify_device - return parameter as ddcci_device, or NULL
+  * @dev: device, probably from some driver model iterator
+  */
+-struct ddcci_device *ddcci_verify_device(struct device *dev)
++struct ddcci_device *ddcci_verify_device(CSTRUCT device *dev)
+ {
+ 	if (unlikely(!dev))
+ 		return NULL;
+@@ -1100,7 +1105,7 @@
+ 	int ret;
+ 
+ 	/* Can't register until after driver model init */
+-	if (unlikely(WARN_ON(!ddcci_bus_type.p)))
++	if (unlikely(WARN_ON(!is_registered)))
+ 		return -EAGAIN;
+ 
+ 	pr_debug("registering driver [%s]\n", driver->driver.name);
+@@ -1672,8 +1676,15 @@
+ }
+ 
+ /* I2C probe function */
+-static int ddcci_probe(struct i2c_client *client, const struct i2c_device_id *id)
++static int ddcci_probe(struct i2c_client *client
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 3, 0)
++                       , const struct i2c_device_id *id)
+ {
++#else
++                      )
++{
++	const struct i2c_device_id *id = i2c_client_get_device_id(client);
++#endif
+ 	int i, ret = -ENODEV, tmp;
+ 	unsigned char main_addr, addr;
+ 	struct ddcci_bus_drv_data *drv_data;
+@@ -1857,6 +1868,7 @@
+ 		goto err_drvreg;
+ 	}
+ 
++	is_registered = true;
+ 	pr_debug("ddcci driver initialized\n");
+ 
+ 	return 0;
+@@ -1886,6 +1898,7 @@
+ 
+ 	i2c_del_driver(&ddcci_driver);
+ 	bus_unregister(&ddcci_bus_type);
++	is_registered = false;
+ 	unregister_chrdev_region(ddcci_cdev_first, 128);
+ }
+ 
+diff --unified --recursive --text a/dkms.conf b/dkms.conf
+--- a/dkms.conf	2023-03-13
++++ b/dkms.conf	2023-05-16
+@@ -7,5 +7,5 @@
+ BUILT_MODULE_LOCATION[1]="ddcci-backlight/"
+ DEST_MODULE_LOCATION[0]="/extra"
+ DEST_MODULE_LOCATION[1]="/extra"
+-MAKE[0]="make KVER=$kernelver -C ${dkms_tree}/${PACKAGE_NAME}/${PACKAGE_VERSION}/build"
++MAKE[0]="make KVER=$kernelver"
+ AUTOINSTALL="yes"
+diff --unified --recursive --text a/include/linux/ddcci.h b/include/linux/ddcci.h
+--- a/include/linux/ddcci.h
++++ b/include/linux/ddcci.h
+@@ -17,6 +17,13 @@
+ #include <linux/mod_devicetable.h>
+ #include <linux/device.h>
+ #include <linux/cdev.h>
++#include <linux/version.h>
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 2, 0)
++#define CSTRUCT const struct
++#else
++#define CSTRUCT struct
++#endif
++
+ 
+ #define DDCCI_MODULE_PREFIX "ddcci:"
+ 
+@@ -132,7 +139,7 @@
+ 	ddcci_register_driver(THIS_MODULE, driver)
+ void ddcci_del_driver(struct ddcci_driver *driver);
+ 
+-struct ddcci_device *ddcci_verify_device(struct device *dev);
++struct ddcci_device *ddcci_verify_device(CSTRUCT device *dev);
+ 
+ #define module_ddcci_driver(__ddcci_driver) \
+ 	module_driver(__ddcci_driver, ddcci_add_driver, \

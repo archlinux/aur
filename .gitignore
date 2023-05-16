@@ -1,3 +1,5 @@
-*.tar.gz
-*.zst
-ddcci-driver-linux-v*.*.*/
+*
+!/.gitignore
+!/PKGBUILD
+!/.SRCINFO
+!/*.patch
