@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="imhex-appimage"
 pkgver=1.28.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Hex Editor for Reverse Engineers, Programmers and people who value their retinas when working at 3 AM."
 arch=("x86_64")
 url="https://imhex.werwolv.net/"
@@ -17,7 +17,7 @@ sha256sums=('b63fe185a70b8a6b8b4f895ece7e7801c397ec265391ae6a6d84b6c16dd48249')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's|Exec=imhex|Exec=/opt/appimages/iamhex.AppImage|g' -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
+    sed 's|Exec=imhex|Exec=/opt/appimages/imhex.AppImage|g' -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
  
 package() {
