@@ -3,7 +3,7 @@
 pkgname=python-adafruit-circuitpython-busdevice
 _pypi_pkgname=adafruit-circuitpython-busdevice
 pkgver=5.2.4
-pkgrel=0
+pkgrel=1
 pkgdesc="CircuitPython bus device classes to manage bus sharing"
 arch=('armv6h' 'armv7h')
 url="https://github.com/adafruit/Adafruit_CircuitPython_BusDevice"
