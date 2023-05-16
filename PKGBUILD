@@ -2,8 +2,8 @@
 
 pkgname=rnalysis
 _name=RNAlysis
-pkgver=3.3.0
-pkgrel=1
+pkgver=3.8.0
+pkgrel=2
 pkgdesc='Python-based software for analyzing RNA sequencing data. https://doi.org/10.1101/2022.11.25.517851'
 _pkgdesc='Python-based software with GUI for analyzing RNA sequencing data'
 arch=(any)
@@ -24,12 +24,19 @@ depends=(
          'python-tqdm'
          'python-appdirs'
          'python-yaml'
-         'python-typing_extensions'
          'python-pyqt5'
          'python-qdarkstyle'
-         'r'
+         'qt5-imageformats'
+         'python-aiodns'
+         'python-defusedxml'
+         'python-aiohttp'
+         'python-brotli'
+         'python-networkx'
+         'python-typing_extensions'
          'graphviz'
          'python-graphviz'
+         'r'
+         'cutadapt'
          'python-numba'
          'python-hdbscan'
          'python-matplotlib-venn'
@@ -40,37 +47,35 @@ depends=(
          'python-xlmhg'
          'python-plotly'
          'python-pairwisedist'
-         'cutadapt'
-         'qt5-imageformats'
+         'python-aiolimiter'
+         'python-pyvis'
         )
 
 makedepends=(
              'python-pip'
              'gendesk'
+             'twine'
              'python-setuptools'
              'python-setuptools-scm'
              'python-sphinx'
              'python-wheel'
              'python-installer'
              'python-build'
-            )
-
-checkdepends=(
+             'python-sphinx_rtd_theme'
             'python-pytest-runner'
             'python-pytest'
             'python-anyio'
             'python-pytest-xvfb'
             'python-pytest-qt'
+            'python-coverage'
              )
 
 source=(${_name}-${pkgver}.tar.gz::https://github.com/GuyTeichman/RNAlysis/archive/refs/tags/V"${pkgver}".tar.gz
-        'RNAlysis.svg')
+        )
 
-sha256sums=('19c5676ad1b1cb128f87298f008e9057bd555544de2acc7c48aec48efd3737c0'
-            '4c2fbbcaeb012c14e12b4aa2d8c9c9b2f50107b3255c2f448aa8577e96fc754c')
+sha256sums=('7a6eae706ba43b0468241ef40fc77a1b7adf05e30a946290a65c86982387ce0d')
 
 prepare() {
-    cp RNAlysis.svg "$_name-$pkgver"/
     cd "$_name-$pkgver"
     gendesk --exec='/usr/bin/rnalysis-gui' --pkgname "$_name" --pkgdesc "$_pkgdesc" -n --icon=RNAlysis --categories=Science
 }
@@ -91,10 +96,7 @@ package() {
 
     cd "$_name-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    # workaround for version 3.3.0. remove for version 3.4.0
-    rm -Rf "$pkgdir"/usr/lib/python3.10/site-packages/tests
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm644 RNAlysis.desktop -t "$pkgdir"/usr/share/applications/
-    install -Dm644 RNAlysis.svg -t "$pkgdir"/usr/share/pixmaps/
+    install -Dm644 docs/source/RNAlysis.svg -t "$pkgdir"/usr/share/pixmaps/
 }
-
