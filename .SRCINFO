@@ -1,7 +1,7 @@
 pkgbase = python-adafruit-circuitpython-bitmap-font
 	pkgdesc = Loads bitmap fonts into CircuitPython displayio
-	pkgver = 1.5.11
-	pkgrel = 1
+	pkgver = 2.0.0
+	pkgrel = 0
 	url = https://github.com/adafruit/Adafruit_CircuitPython_Bitmap_Font
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = python-adafruit-circuitpython-bitmap-font
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools-scm
-	source = https://pypi.io/packages/source/a/adafruit-circuitpython-bitmap_font/adafruit-circuitpython-bitmap_font-1.5.11.tar.gz
-	sha256sums = bdd6aa0d3702053fce4cc4e097a035ed05644c6fac7ff7c3e1418a9188c95616
+	source = https://pypi.io/packages/source/a/adafruit-circuitpython-bitmap_font/adafruit-circuitpython-bitmap_font-2.0.0.tar.gz
+	sha256sums = af4968788bab1506791bb6f091bcc4b4c35417910c63020b9c6d83bbd230b4d5
 
 pkgname = python-adafruit-circuitpython-bitmap-font
