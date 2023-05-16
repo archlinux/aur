@@ -2,7 +2,7 @@
 
 pkgname=rav1e-bin
 pkgver=0.6.6
-pkgrel=3
+pkgrel=4
 pkgdesc="The fastest and safest AV1 encoder"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/xiph/rav1e"
@@ -31,5 +31,5 @@ sha256sums_aarch64=('c74e6de887aa6fa179ec9954dd63ee8b0fafca08b2fdefa181212aef9b5
 package() {
   install -Dm755 "$srcdir/rav1e" -t "$pkgdir/usr/bin"
   mv "$srcdir"/{include,lib} -t "$pkgdir/usr"
-  install -Dm644 {LICENSE,PATENTS} -t "$pkgdir/usr/share/licenses/rav1e"
+  install -Dm644 "$srcdir"/{LICENSE,PATENTS} -t "$pkgdir/usr/share/licenses/rav1e"
 }
