@@ -63,7 +63,7 @@ package() {
                         "$pkgdir/usr/bin/grass"
 
   # Get python lib path
-  pylib=$(python -c "import sys; print(sys.path[-1]")
+  pylib=$(python -c "import sys; print(sys.path[-1])")
   # Link pygrass to main python site-packages
   mkdir -p "$pkgdir$pylib"
   ln -s "$pkgdir/opt/grass/etc/python/grass" "$pkgdir$pylib"
