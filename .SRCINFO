@@ -1,0 +1,16 @@
+pkgbase = cider-appimage
+	pkgdesc = A new cross-platform Apple Music experience based on Electron and Vue.js written from scratch with performance in mind.
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://cider.sh/
+	arch = any
+	license = AGPL3
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = cider
+	options = !strip
+	source = cider-1.6.1.AppImage::https://github.com/ciderapp/Cider/releases/download/v1.6.1/Cider-1.6.1.AppImage
+	sha256sums = 800c768337caac4459270c8cc7bce0d1885a25bf75a91a1150c8a88c4327eb11
+
+pkgname = cider-appimage
