@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# But not these files...
+!PKGBUILD
+!.SRCINFO
+!log-path.diff
+!mautrix-discord.service
+!mautrix-discord.tmpfiles
+!sysusers-mautrix-discord.conf
