@@ -1,15 +1,17 @@
 pkgbase = python-cleanurl
 	pkgdesc = Removes clutter from URLs
-	pkgver = 0.1.12
+	pkgver = 0.1.15
 	pkgrel = 1
 	url = https://github.com/xojoc/cleanurl
 	arch = any
 	license = AGPL3
-	makedepends = python-poetry-core
 	makedepends = python-build
 	makedepends = python-installer
-	depends = python>=3.9
-	source = python-cleanurl-0.1.12.tar.gz::https://files.pythonhosted.org/packages/source/c/cleanurl/cleanurl-0.1.12.tar.gz
-	sha256sums = 935d1f99dc4ea162cbd075f3196c9a41cf4a94472203ac3a5bbff3c299afcea2
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	depends = python-langcodes
+	source = https://pypi.org/packages/source/c/cleanurl/cleanurl-0.1.15.tar.gz
+	sha512sums = 52d1f3159ed56203bc7374310dc48205a9567a3c5df595bc15e7647d0d0ab1c4fc01affd6c741d3b14e6ecfa2f4660b45c1814943cdf9d574adb7d619edb7dc1
 
 pkgname = python-cleanurl
