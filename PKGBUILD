@@ -2,25 +2,24 @@
 
 pkgname=python-botoy
 _gitname=${pkgname#python-}
-pkgver=8.5
+pkgver=9.0
 pkgrel=1
 pkgdesc="OPQ/IOTQQ/IOTBot的一个Python开发助手"
 arch=('any')
 url="https://github.com/opq-osc/botoy"
 license=('MIT')
 depends=('python-httpx'
-         'python-socketio4'
-         'python-engineio3'
-         'python-websocket-client'
+         'python-websockets'
          'python-loguru'
          'python-click'
-         'python-aiohttp'
          'python-prettytable'
          'python-apscheduler'
          'python-pydantic'
-         'python-colorama')
+         'python-colorama'
+         'fastapi'
+         'uvicorn')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xiyaowong/botoy/archive/v${pkgver}.tar.gz")
-sha256sums=('69ce8882f292c9d566d3b72bdaf60b188dfe7491de33cf8cd600852a66e07c09')
+sha256sums=('b75c726a33ea9852b287d038f4194d01b99997ab90bd7092e16f3c5d20e878ee')
 
 build() {
   cd ${_gitname}-${pkgver}
