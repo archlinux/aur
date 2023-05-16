@@ -3,7 +3,7 @@
 pkgname=python-adafruit-circuitpython-ssd1306
 _pypi_pkgname=adafruit-circuitpython-ssd1306
 pkgver=2.12.12
-pkgrel=0
+pkgrel=1
 pkgdesc="CircuitPython library for SSD1306 OLED displays"
 arch=('armv6h' 'armv7h' 'aarch64')
 url="https://github.com/adafruit/Adafruit_CircuitPython_ssd1306"
