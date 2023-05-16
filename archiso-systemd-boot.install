@@ -1,0 +1,9 @@
+post_install() {
+  cat << EOF
+In order to boot with the archiso image a new loader must be added to
+ESP/loader/entries/, this must be done manually as the UUID of the ESP
+partition must be set in the loader. There is an example in
+/usr/share/doc/archiso-systemd-boot where the text esp-uuid must be changed
+to the corresponding UUID.
+EOF
+}

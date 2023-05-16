@@ -1,0 +1,6 @@
+*
+!archiso-systemd-boot.install
+!arch-rescue.conf
+!.gitignore
+!PKGBUILD
+!.SRCINFO
