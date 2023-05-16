@@ -3,12 +3,12 @@
 pkgname=sysrqd
 pkgver=17
 pkgrel=1
-pkgdesc="A small daemon intended to manage Linux Sysrq over network."
+pkgdesc="A small daemon intended to manage Linux SysRq over network"
 arch=('i686' 'x86_64')
 url="http://julien.danjou.info/software/$pkgname"
 license=("GPL")
 install="${pkgname}.install"
-conflicts=('sysrqd')
+conflicts=('sysrqd-git')
 provides=("sysrqd=v${pkgver}")
 
 #_gitroot="$_pkgname::git+https://github.com/jd/sysrqd"
