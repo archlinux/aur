@@ -3,7 +3,7 @@
 pkgname=python-pyserial-asyncio
 _pypi_pkgname=pyserial-asyncio
 pkgver=0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Asyncio extension package for pyserial"
 arch=(any)
 url="https://github.com/pyserial/pyserial-asyncio"
