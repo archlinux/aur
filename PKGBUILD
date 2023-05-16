@@ -1,7 +1,7 @@
 #Maintainer: Rein Fernhout (LevitatingBusinessMan) <me@levitati.ng>
 
 pkgname=openai-cli
-pkgver=r24.f5ba2b9
+pkgver=r27.e66bf5d
 arch=("x86_64")
 pkgrel=1
 pkgdesc="CLI for the GPT model"
@@ -14,6 +14,11 @@ sha256sums=("SKIP")
 pkgver() {
 	cd "$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd "${srcdir}/${pkgname}"
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
