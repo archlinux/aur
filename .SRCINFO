@@ -1,0 +1,15 @@
+pkgbase = chat-gpt-appimage
+	pkgdesc = ChatGPT Desktop Application (Mac, Windows and Linux)
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://nofwl.com/
+	arch = x86_64
+	license = AGPL3
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	options = !strip
+	source = chat-gpt-0.12.0.tar.gz::https://github.com/lencx/ChatGPT/releases/download/v0.12.0/ChatGPT_0.12.0_linux_x86_64.AppImage.tar.gz
+	sha256sums = 5bbc128ee8ff7c6be11248a035a9dcba70b05c0491d34c591d49994f828e9f7c
+
+pkgname = chat-gpt-appimage
