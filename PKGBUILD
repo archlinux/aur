@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="apifox-bin"
-pkgver=2.2.37
+pkgver=2.2.39
 pkgrel=1
 pkgdesc="Apifox=Postman+Swagger+Mock+JMeter.API 文档、API 调试、API Mock、API 自动化测试"
 arch=('x86_64')
@@ -14,8 +14,8 @@ depends=('gtk3' 'lib32-gcc-libs' 'nodejs' 'nss' 'at-spi2-core' 'java-runtime' 'a
 options=(!strip)
 source=("${pkgname%-bin}-deb-${pkgver}.zip::https://cdn.apifox.cn/download/Apifox-linux-deb-latest.zip"
   "LICENSE.html::${url}/help/app/faq/")
-sha256sums=('5b802d7d267aab5a816b4fb9e89eaae2cbff4d61368af67ab9850e2d90bbe7e0'
-            '2dab3c28971f44b6ff16da799706d98188a91ecdc3be46deb9c1dc2b359de341')
+sha256sums=('8271d07a86ec7bce6394e6163ea8ab0b5a49e56824325806a80236402580b5fb'
+            '36857a2ac78843dbd76627c08ffbc3451accb39ba20d66bdda7d52b195cec0e0')
    
 package() {
     ar -x "${pkgname%-bin}_${pkgver}_amd64.deb"
