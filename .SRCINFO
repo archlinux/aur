@@ -5,6 +5,7 @@ pkgbase = termscp-bin
 	url = https://github.com/veeso/termscp
 	arch = x86_64
 	license = MIT
+	depends = smbclient
 	source = termscp-bin-0.12.0::https://github.com/veeso/termscp/releases/download/v0.12.0/termscp-v0.12.0-x86_64-unknown-linux-gnu.tar.gz
 	source = https://raw.githubusercontent.com/veeso/termscp/main/LICENSE
 	sha256sums = 36982c920d108249c1843971b6a3663a57de7d95a9d7c0db227bd768e2c49995
