@@ -1,6 +1,6 @@
 pkgbase = imaginer
 	pkgdesc = Imagine with AI
-	pkgver = 0.1.5
+	pkgver = 0.2.0
 	pkgrel = 2
 	url = https://imaginer.codeberg.page
 	arch = any

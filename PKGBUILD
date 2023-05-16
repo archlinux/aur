@@ -2,7 +2,7 @@
 
 pkgname=imaginer
 _pkgname=Imaginer
-pkgver=0.1.5
+pkgver=0.2.0
 pkgrel=2
 pkgdesc="Imagine with AI"
 arch=('any')
