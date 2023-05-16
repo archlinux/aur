@@ -3,7 +3,7 @@
 
 pkgname=crowdsec
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source and collaborative IPS"
 arch=('any')
 url="https://crowdsec.net"
@@ -31,8 +31,8 @@ provides=('crowdsec')
 build(){
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	# Adjust the Makefile to show the proper build version
-        sed -ie "s/^BUILD_VERSION.*$/BUILD_VERSION = v${pkgver}/g" platform/unix_common.mk
-	sed -ie "s/^BUILD_TAG.*$/BUILD_TAG = arch/g" platform/unix_common.mk 
+        sed -ie "s/^BUILD_VERSION.*$/BUILD_VERSION = v${pkgver}/g" mk/platform/unix_common.mk
+	sed -ie "s/^BUILD_TAG.*$/BUILD_TAG = arch/g" mk/platform/unix_common.mk 
 
 	make -f Makefile -s build
 	make -f Makefile -s package
@@ -44,4 +44,4 @@ package() {
 }
 
 sha256sums=('5fc2d62d7dbc4b33e3575e060616e825f3fffd0658916c95aecd67ff1a33617d'
-            '53c852472e10709426a7b1d246493493cdbd9b6ffe80737e725a82dee9e220ab')
+            '2dcf86fdb4a38fc76725986b0fe23c9a8f25b9ab9ed0aa6274082370fa45bbca')

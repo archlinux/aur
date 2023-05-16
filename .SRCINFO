@@ -1,7 +1,7 @@
 pkgbase = crowdsec
 	pkgdesc = The open-source and collaborative IPS
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://crowdsec.net
 	install = crowdsec.install
 	arch = any
@@ -16,6 +16,6 @@ pkgbase = crowdsec
 	source = crowdsec-v1.5.0.tgz::https://github.com/crowdsecurity/crowdsec/archive/refs/tags/v1.5.0.tar.gz
 	source = crowdsec.install
 	sha256sums = 5fc2d62d7dbc4b33e3575e060616e825f3fffd0658916c95aecd67ff1a33617d
-	sha256sums = 53c852472e10709426a7b1d246493493cdbd9b6ffe80737e725a82dee9e220ab
+	sha256sums = 2dcf86fdb4a38fc76725986b0fe23c9a8f25b9ab9ed0aa6274082370fa45bbca
 
 pkgname = crowdsec
