@@ -1,13 +1,13 @@
 pkgbase = totalmapper-bin
 	pkgdesc = A simple utility for remapping keys using the Linux event handling system.
-	pkgver = 1.3.14
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/ellbur/totalmapper
 	arch = x86_64
 	license = GPL3
 	provides = totalmapper
 	conflicts = totalmapper
-	source = totalmapper-static-linux-amd64-1.3.14.tar.gz::https://github.com/ellbur/totalmapper/releases/download/v1.3.14/totalmapper-static-linux-amd64-1.3.14.tar.gz
-	sha512sums = da60c1312b6382e2171c7b99addd819c99548c1ad46c353c0b4640adeb0431f36495b6d22b0996ce5649f19168b4d25c749ca9f3b6f03e02d93f71cb5016513e
+	source = totalmapper-static-linux-amd64-1.4.3.tar.gz::https://github.com/ellbur/totalmapper/releases/download/v1.4.3/totalmapper-static-linux-amd64-1.4.3.tar.gz
+	sha512sums = 18e5ca7f6744854caa64678606d9d80c4cabcb0296db5d0fd30e1a92caaca28aeaa00851f9e93489f300030b9f16c374823e140861e83b0e41760128c2833fb2
 
 pkgname = totalmapper-bin
