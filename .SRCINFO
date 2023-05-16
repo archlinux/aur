@@ -1,7 +1,7 @@
 pkgbase = python-django-celery-beat
 	pkgdesc = django-celery-beat enables you to store the periodic task schedule in the django database
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/django_celery_beat
 	arch = any
 	license = BSD
