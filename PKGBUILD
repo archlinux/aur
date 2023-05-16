@@ -3,7 +3,7 @@
 pkgname=python-adafruit-circuitpython-bme280
 _pypi_pkgname=adafruit-circuitpython-bme280
 pkgver=2.6.20
-pkgrel=0
+pkgrel=1
 pkgdesc="CircuitPython library for the Bosch BME280 temperature/humidity/pressure sensor"
 arch=('any')
 url="https://github.com/adafruit/Adafruit_CircuitPython_BME280"
