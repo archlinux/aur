@@ -1,6 +1,6 @@
 # Maintainer: RadioLogic
 pkgname=sliver
-pkgver=1.5.38
+pkgver=1.5.39
 pkgrel=2
 pkgdesc="Sliver is a an opensource C2 framework designed by bishop fox"
 url="https://github.com/BishopFox/sliver"
@@ -12,7 +12,7 @@ license=('BSD-3-Clause')
 provides=("${pkgname}")
 install=
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BishopFox/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('43635b0f77fbdfc4ac66232fff761a4d4ce6ecaf572fe456c09e9929b61ec59a')
+sha256sums=('cf623b7d1a05b9c2b9b629cd6f414ed002f3bb02972c69ae072a0aea5fd5ce9c')
 
 build() {
 	cd "$srcdir/${pkgname}-${pkgver}"
