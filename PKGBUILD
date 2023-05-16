@@ -2,7 +2,7 @@
 # Maintainer: oldNo.7 <oldNo.7@archlinux.org>
 
 pkgname=newm-atha-git
-pkgver=r731.f4c6a9f.r564.4bfa3c7
+pkgver=r738.20eed46.r567.f61b027
 pkgrel=1
 license=('MIT')
 pkgdesc="Wayland compositor"
