@@ -3,7 +3,7 @@
 
 _name=git
 pkgname=$_name-git
-pkgver=2.40.1.r476.g69c786637d
+pkgver=2.41.0.rc0.r0.g0df2c18090
 pkgrel=1
 pkgdesc='A fast distributed version control system'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url='https://git-scm.com/'
 license=('GPL2')
 depends=('curl' 'expat' 'perl-error' 'perl' 'openssl'
          'perl-mailtools' 'pcre2' 'grep' 'shadow' 'zlib')
-makedepends=('python' 'xmlto' 'asciidoc' 'libgnome-keyring' 'git')
+makedepends=('python' 'xmlto' 'asciidoc' 'git')
 optdepends=('tk: gitk and git gui'
             'perl-libwww: git svn'
             'perl-term-readkey: git svn and interactive.singlekey setting'
@@ -66,7 +66,6 @@ build() {
     "${_make_options[@]}" \
     all man
 
-  make -C contrib/credential/gnome-keyring
   make -C contrib/credential/libsecret
   make -C contrib/subtree "${_make_paths[@]}" all man
   make -C contrib/mw-to-git "${_make_paths[@]}" all
@@ -109,11 +108,6 @@ package() {
   # fancy git prompt
   mkdir -p "$pkgdir"/usr/share/git/
   install -m0644 ./contrib/completion/git-prompt.sh "$pkgdir"/usr/share/git/git-prompt.sh
-
-  # gnome credentials helper
-  install -m0755 contrib/credential/gnome-keyring/git-credential-gnome-keyring \
-      "$pkgdir"/usr/lib/git-core/git-credential-gnome-keyring
-  make -C contrib/credential/gnome-keyring clean
 
   # libsecret credentials helper
   install -m0755 contrib/credential/libsecret/git-credential-libsecret \
