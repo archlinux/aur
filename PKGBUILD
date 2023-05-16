@@ -84,9 +84,9 @@ build() {
     cd "$pkgname"
 
     #use local binaries instead of downloading them as well for python and protoc
-    export PYTHON_BINARY=$(type python | cut -d' ' -f1,2  --complement)
-    export PROTOC_BINARY=$(type protoc | cut -d' ' -f1,2  --complement)
-    #export NODE_BINARY=$(type node | cut -d' ' -f1,2  --complement) # does not yet compile
+    export PYTHON_BINARY=$(which python)
+    export PROTOC_BINARY=$(which protoc)
+    #export NODE_BINARY=$(which node) # does not yet compile
 
     ./tools/build
 }
