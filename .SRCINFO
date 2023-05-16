@@ -1,6 +1,6 @@
 pkgbase = bavarder
 	pkgdesc = Chit-Chat with AI
-	pkgver = 0.2.0
+	pkgver = 0.2.2
 	pkgrel = 2
 	url = https://bavarder.codeberg.page
 	arch = any
@@ -10,13 +10,14 @@ pkgbase = bavarder
 	makedepends = meson
 	depends = libadwaita
 	depends = python-gobject
+	depends = python-lxml
 	depends = python-openai
 	depends = python-hgchat
 	depends = python-gtts
 	depends = python-baichat-py
 	depends = python-googlebardpy
 	depends = python-requests
-	source = https://codeberg.org/Bavarder/Bavarder/archive/0.2.0.tar.gz
-	b2sums = fced8887f711294f5191caeaf3e089d14b36943dbae90a30b99541a967ae2cb0d9a587e22a6948a84f600e8771f3173fc0774907a70560c257cda51f8d2e2cea
+	source = https://codeberg.org/Bavarder/Bavarder/archive/0.2.2.tar.gz
+	b2sums = 6feb5212bf052fdb8f87525df4277ba990b6a536df45412bebf6ef8e0251662e837e4d5b87c8e898e2644664744982e2cdbe16ed1f980ffb5027b5dda3af6d8c
 
 pkgname = bavarder
