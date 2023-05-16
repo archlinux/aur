@@ -2,7 +2,7 @@
 
 pkgname="gog-inscryption"
 pkgver=1.10.57447
-pkgrel=1
+pkgrel=2
 pkgdesc='Roguelike deck-building game. GOG version.'
 arch=('x86_64')
 url='https://www.inscryption.com/'
@@ -33,6 +33,12 @@ sha512sums=(
 
 DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
 PKGEXT=.pkg.tar
+
+prepare() {
+  # Remove unneeded 32-bit executable
+  # Fixes false alarm in rebuild-detector
+  rm -rfv "${srcdir}/data/noarch/support/yad/32"
+}
 
 package() {
   echo >&2 'Packaging license'

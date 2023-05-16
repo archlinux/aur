@@ -1,7 +1,7 @@
 pkgbase = gog-inscryption
 	pkgdesc = Roguelike deck-building game. GOG version.
 	pkgver = 1.10.57447
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.inscryption.com/
 	arch = x86_64
 	license = custom
