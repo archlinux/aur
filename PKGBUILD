@@ -3,7 +3,7 @@
 
 pkgname=asleap
 pkgver=2.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Actively recover LEAP/PPTP passwords."
 arch=("x86_64" "i686" "armv6h" "armv7h" "aarch64")
 url="https://www.willhackforsushi.com/?page_id=41"
@@ -20,7 +20,7 @@ md5sums=("a1d06729fb2addcc5b09bfc14f9b3173"
 
 # Dynamically generate sources and skip sums
 _arch=("amd64" "i386" "armel" "armhf" "arm64")
-_repo="http://deb.debian.org/debian/pool/main/libx/libxcrypt/"
+_repo="http://archive.debian.org/debian/pool/main/libx/libxcrypt/"
 _vers="2.4-4"
 _pkgs=("libxcrypt1" "libxcrypt-dev")
 for _i in "${!arch[@]}"; do
