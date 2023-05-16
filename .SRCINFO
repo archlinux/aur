@@ -1,6 +1,6 @@
 pkgbase = openrc
 	pkgdesc = Dependency based init system that works with sysvinit and systemd or on its own.
-	pkgver = 0.46
+	pkgver = 0.47.1
 	pkgrel = 1
 	url = https://github.com/OpenRC/openrc
 	arch = i686
@@ -37,9 +37,9 @@ pkgbase = openrc
 	backup = etc/openrc/conf.d/netmount
 	backup = etc/openrc/conf.d/network
 	backup = etc/openrc/conf.d/staticroute
-	source = https://github.com/OpenRC/openrc/archive/0.46.tar.gz
+	source = https://github.com/OpenRC/openrc/archive/0.47.1.tar.gz
 	source = openrc.logrotate
-	b2sums = 55490afc179e1e56a58408e8a2b7ebd5376ffee25cb61f2838a47cc97ad1e4eadabcc7f74e5cc2a2d9217917eb42517cf01766de2e82b50a3500bdbe263b0d88
+	b2sums = 3b5afa7e2b0d20801bf2a172b592180fd84d0653f97064ef6b25ed37d33a39c91f02a3fd8a542bd058b33f90d1a8a215a81d2bd3409594151c531b7da2c4fe3b
 	b2sums = f283de20b5a07e3c5d21a28b9de72f0a71fd2cc1b70a5567db80373c7144aec0e6ac217eef77acbbb05eff2134c22ee6746b7f248abc4587042c456ed0a32a31
 
 pkgname = openrc
