@@ -2,7 +2,7 @@
 
 pkgname=python-rf24-network
 pkgver=1.0.17
-pkgrel=0
+pkgrel=1
 pkgdesc='Python bindings for networking with RF24 radio modules'
 arch=(any)
 url='http://tmrh20.github.io/RF24Network/'
