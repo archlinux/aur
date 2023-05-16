@@ -1,3 +1,4 @@
-pkg/*
-src/*
-git-subrepo*
+/*
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
