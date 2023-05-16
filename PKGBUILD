@@ -1,4 +1,5 @@
-# Maintainer: skrewball <aur at joickle dot com> gitlab.com/skrewball/aur
+# Maintainer: Nathaniel van Diepen <eeems@eeems.email>
+# Contributor: skrewball <aur at joickle dot com> gitlab.com/skrewball/aur
 
 _pkgname=openweather
 pkgname=gnome-shell-extension-openweather
