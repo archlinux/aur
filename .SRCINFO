@@ -1,7 +1,7 @@
 pkgbase = python-django-timezone-field
 	pkgdesc = A Django app providing database and form fields for pytz timezone objects
 	pkgver = 5.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/mfogel/django-timezone-field/
 	arch = any
 	license = BSD

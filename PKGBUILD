@@ -3,7 +3,7 @@
 pkgname=python-django-timezone-field
 _pypi_pkgname=django-timezone-field
 pkgver=5.0
-pkgrel=0
+pkgrel=1
 pkgdesc="A Django app providing database and form fields for pytz timezone objects"
 arch=(any)
 url="https://github.com/mfogel/django-timezone-field/"
