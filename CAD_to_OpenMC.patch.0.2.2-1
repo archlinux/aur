@@ -1,30 +1,15 @@
-diff --color --unified --recursive --text CAD_to_OpenMC.orig/pyproject.toml CAD_to_OpenMC.new/pyproject.toml
---- CAD_to_OpenMC.orig/pyproject.toml	2023-05-15 15:55:52.038775092 +0200
-+++ CAD_to_OpenMC.new/pyproject.toml	2023-05-15 15:57:23.628776305 +0200
-@@ -16,9 +16,9 @@
- ]
- dependencies=[
-         'gmsh',
--        'pyparsing==2.4',
--        'cadquery==2.2.0b2',
--        'cadquery-ocp==7.6.3a0',
-+        'pyparsing',
-+        'cadquery==2.2.0',
-+        'cadquery-ocp==7.7.0',
-         'numpy',
-         'OCP',
-         'meshio',
+Only in CAD_to_OpenMC.new: --color
 diff --color --unified --recursive --text CAD_to_OpenMC.orig/requirements.txt CAD_to_OpenMC.new/requirements.txt
---- CAD_to_OpenMC.orig/requirements.txt	2023-05-15 15:55:52.038775092 +0200
-+++ CAD_to_OpenMC.new/requirements.txt	2023-05-15 15:56:50.172109198 +0200
+--- CAD_to_OpenMC.orig/requirements.txt	2023-05-16 13:50:45.596488480 +0200
++++ CAD_to_OpenMC.new/requirements.txt	2023-05-16 13:51:30.729822440 +0200
 @@ -1,7 +1,7 @@
  gmsh
 -pyparsing == 2.4
 -cadquery == 2.2.0b2
 -cadquery-ocp == 7.6.3a0
 +pyparsing
-+cadquery == 2.2.0
-+cadquery-ocp == 7.7.0
++git+https://github.com/CadQuery/cadquery.git
++cadquery-ocp
  numpy
  OCP
  meshio
