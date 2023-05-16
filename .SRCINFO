@@ -1,7 +1,7 @@
 pkgbase = grass
 	pkgdesc = Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and visualization
 	pkgver = 8.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://grass.osgeo.org/
 	arch = i686
 	arch = x86_64
