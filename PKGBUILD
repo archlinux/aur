@@ -3,7 +3,7 @@
 pkgname=python-adafruit-ssd1306
 _pypi_pkgname=adafruit-ssd1306
 pkgver=1.6.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Python library to use SSD1306-based 128x64 or 128x32 pixel OLED displays with a Raspberry Pi or Beaglebone Black"
 arch=(any)
 url="https://github.com/adafruit/Adafruit_Python_SSD1306/"
