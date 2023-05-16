@@ -1,7 +1,7 @@
 pkgbase = linuxqq-appimage
 	pkgdesc = New Linux QQ based on Electron
 	pkgver = 3.1.1_11223
-	pkgrel = 2
+	pkgrel = 3
 	url = https://im.qq.com/linuxqq/
 	arch = x86_64
 	arch = aarch64
@@ -11,6 +11,8 @@ pkgbase = linuxqq-appimage
 	depends = fuse2
 	provides = qq
 	provides = linuxqq
+	conflicts = linuxqq
+	conflicts = linuxqq-nt-bwrap
 	noextract = Linuxqq-3.1.1_11223-x86_64.AppImage
 	options = !strip
 	source_x86_64 = Linuxqq-3.1.1_11223-x86_64.AppImage::https://dldir1.qq.com/qqfile/qq/QQNT/2355235c/linuxqq_3.1.1-11223_x86_64.AppImage
