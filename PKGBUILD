@@ -1,41 +1,41 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Robert Kubosz <kubosz.robert@gmail.com>
-
-pkgname=python-uqbar
-_pkg="${pkgname#python-}"
-pkgver=0.6.3
+_base=uqbar
+pkgname=python-${_base}
+pkgver=0.6.9
 pkgrel=1
-pkgdesc='Tools for building documentation with Sphinx, Graphviz and LaTeX'
-arch=('any')
-url="https://github.com/josiah-wolf-oberholtzer/uqbar"
-license=('MIT')
-depends=('python>=3.7' 'python-sphinx' 'python-unidecode' 'python-black')
-makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest' 'python-pytest-cov')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('df5d6ad2202aea1555aff2c156d4253a2958e34bbef5482a19d0bf72b25dcc24')
+pkgdesc="Tools for building documentation with Sphinx, Graphviz and LaTeX"
+arch=(any)
+url="https://github.com/josiah-wolf-oberholtzer/${_base}"
+license=(MIT)
+depends=(python-sphinx python-unidecode python-black)
+makedepends=(python-build python-installer python-setuptools python-wheel)
+checkdepends=(python-pytest-cov graphviz)
+source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('bd992f9578bbf0411b0129a0646bbcf521104323737781e082e06d33bd3305a867cf3015e8710b139053cdcd3097f4ae42481e2a8abec753d9c740016ad2ee20')
 
 prepare() {
-	cd "$_pkg-$pkgver"
-	sed -i '/sphinx_immaterial/d' docs/source/conf.py
+  cd ${_base}-${pkgver}
+  sed -i '/sphinx_immaterial/d' docs/source/conf.py
 }
 
 build() {
-	cd "$_pkg-$pkgver"
-	python -m build --wheel --no-isolation
-	PYTHONPATH="$PWD" make -C docs man
+  cd ${_base}-${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
+  PYTHONPATH="$PWD" make -C docs man
 }
 
 check() {
-	cd "$_pkg-$pkgver"
-	PYTHONPATH="$PWD" pytest --disable-warnings || true
+  cd ${_base}-${pkgver}
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest tests -k 'not find_executable and not sphinx_book_text_broken_strict'
 }
 
 package() {
-	cd "$_pkg-$pkgver"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
-	install -Dm644 "docs/build/man/$_pkg.1" -t "$pkgdir/usr/share/man/man1/"
-	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s "$_site/$_pkg-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm644 "docs/build/man/${_base}.1" -t "${pkgdir}/usr/share/man/man1/"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
