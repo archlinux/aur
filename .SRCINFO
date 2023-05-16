@@ -1,6 +1,6 @@
 pkgbase = aspeak-bin
 	pkgdesc = A simple text-to-speech client for Azure TTS API
-	pkgver = 5.0.0
+	pkgver = 5.2.0
 	pkgrel = 1
 	url = https://github.com/kxxt/aspeak
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = aspeak-bin
 	depends = gcc-libs
 	provides = aspeak
 	conflicts = aspeak
-	source = aspeak-bin-5.0.0.tar.gz::https://github.com/kxxt/aspeak/releases/download/v5.0.0/aspeak-x86_64-unknown-linux-gnu.tar.gz
-	b2sums = f5d11fab9643b37821466a2ded62a306e2a9de92ca7fa915b5cbc97ced181cdcf795b416aa22950f14ff8a17a43d6caf375d75799ad64f0b9f3e62e7357ef948
+	source = aspeak-bin-5.2.0.tar.gz::https://github.com/kxxt/aspeak/releases/download/v5.2.0/aspeak-x86_64-unknown-linux-gnu.tar.gz
+	b2sums = 381630d6d8c6163c4002fbe795ae4dfd27cd13c04b85ead5bf33d6ffcc6ee92b6672c6b5cd47cf905547ff3567a87194c20b797e573c92315a692f2cc488dee0
 
 pkgname = aspeak-bin
