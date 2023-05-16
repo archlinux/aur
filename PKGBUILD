@@ -1,8 +1,9 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Maintainer: Antonio Vázquez Blanco <antoniovazquezblanco@gmail.com>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Julio Diez <juliosddr@gmail.com>
 
 pkgname=suscan-git
-pkgver=r480.29625cb
+pkgver=r1047.dd48ec0
 pkgrel=1
 pkgdesc="SUScan is a graphical signal analysis tool"
 arch=("any")
@@ -13,7 +14,7 @@ makedepends=("git" "cmake")
 optdepends=("libvolk")
 provides=("suscan")
 conflicts=("suscan")
-source=($pkgname::git+https://github.com/BatchDrake/suscan.git)
+source=("$pkgname::git+https://github.com/BatchDrake/suscan.git#branch=develop")
 md5sums=('SKIP')
 
 pkgver() {
