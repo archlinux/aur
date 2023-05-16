@@ -1,5 +1,5 @@
 pkgbase = java17-jetbrains-imfix
-	pkgver = 17.0.6.b829.5
+	pkgver = 17.0.7.b953.1
 	pkgrel = 1
 	url = https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = java17-jetbrains-imfix
 	makedepends = jcef-jetbrains
 	makedepends = git
 	options = !lto
-	source = git+https://github.com/JetBrains/JetBrainsRuntime.git#tag=jb17.0.6-b829.5
+	source = git+https://github.com/JetBrains/JetBrainsRuntime.git#tag=jb17.0.7-b953.1
 	source = idea.patch
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
@@ -70,7 +70,7 @@ pkgname = jre17-jetbrains-imfix
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=17
 	provides = java-runtime-jetbrains=17
-	provides = jre17-jetbrains=17.0.6.b829.5-1
+	provides = jre17-jetbrains=17.0.7.b953.1-1
 	conflicts = jre17-jetbrains
 	backup = etc/java17-jetbrains/logging.properties
 	backup = etc/java17-jetbrains/management/jmxremote.access
@@ -90,7 +90,7 @@ pkgname = jre17-jetbrains-imfix
 pkgname = jdk17-jetbrains-imfix
 	pkgdesc = JetBrains Java 17 development kit
 	install = install_jdk-jetbrains.sh
-	depends = jre17-jetbrains=17.0.6.b829.5-1
+	depends = jre17-jetbrains=17.0.7.b953.1-1
 	depends = java-environment-common=3
 	depends = hicolor-icon-theme
 	depends = libelf
@@ -98,5 +98,5 @@ pkgname = jdk17-jetbrains-imfix
 	depends = gcc-libs
 	provides = java-environment=17
 	provides = java-environment-jetbrains=17
-	provides = jdk17-jetbrains=17.0.6.b829.5-1
+	provides = jdk17-jetbrains=17.0.7.b953.1-1
 	conflicts = jdk17-jetbrains
