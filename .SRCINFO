@@ -1,12 +1,12 @@
 pkgbase = papeer
-	pkgdesc = Go modules analysis tool
+	pkgdesc = Scrape the web in the eink era. Convert websites into ebooks and markdown.
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lapwat/papeer
 	arch = x86_64
 	license = GPL
 	makedepends = go
-	makedepends = git
+	depends = glibc
 	source = papeer-0.7.1.tar.gz::https://github.com/lapwat/papeer/archive/v0.7.1.tar.gz
 	sha256sums = 942372a818899b8419592d7a5ea2f8c3b11ca6814b1ef0ad976eedad66327141
 
