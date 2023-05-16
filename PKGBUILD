@@ -5,7 +5,7 @@ _pkgname=linuxqq
 _Pkgname=Linuxqq
 _disname=qq
 
-pkgname="${_pkgname}"-appimage
+pkgname="${_pkgname}"-appimage-fix
 pkgver=3.1.1_11223
 pkgrel=3
 pkgdesc="New Linux QQ based on Electron"
@@ -14,6 +14,7 @@ url="https://im.qq.com/linuxqq/"
 license=('custom')
 options=(!strip)
 depends=('zlib' 'hicolor-icon-theme' 'fuse2')
+makedepends=('appimagetool')
 provides=('qq' 'linuxqq')
 conflicts=('linuxqq' 'linuxqq-nt-bwrap')
 
@@ -31,6 +32,21 @@ prepare() {
 }
 
 build() {
+    # Fix AppImage
+    rm -r squashfs-root/resources/app/sharp-lib
+    sed -i \
+        -e "s|Icon=.*|Icon=/usr/share/icons/hicolor/512x512/apps/qq|" \
+        "${srcdir}/squashfs-root/${_disname}.desktop"
+
+    # save and unset SOURCE_DATE_EPOCH for appimagetool
+    _SOURCE_DATE_EPOCH=$SOURCE_DATE_EPOCH
+    unset SOURCE_DATE_EPOCH
+
+    appimagetool ${srcdir}/squashfs-root ${srcdir}/${pkgname}.AppImage
+
+    # restore SOURCE_DATE_EPOCH
+    export SOURCE_DATE_EPOCH=$_SOURCE_DATE_EPOCH
+
     # Adjust .desktop so it will work outside of AppImage container
     sed -i \
         -e "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|" \
@@ -43,7 +59,7 @@ build() {
 
 package() {
     # AppImage
-    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
+    install -Dm755 "${srcdir}/${pkgname}.AppImage" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
     install -Dm644 "${srcdir}/squashfs-root/LICENSE.electron.txt" "${pkgdir}/opt/${pkgname}/LICENSE"
 
     # Desktop file
