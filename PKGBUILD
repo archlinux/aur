@@ -2,7 +2,7 @@
 
 pkgname=clifm-bin
 _pkgname="${pkgname%-bin}"
-pkgver=1.11
+pkgver=1.12
 pkgrel=1
 pkgdesc="The command line file manager (binary version)"
 arch=('i686' 'x86_64' 'armv7h')
@@ -26,7 +26,7 @@ optdepends=(
 source_x86_64=("${_pkgname}-${pkgver}-linux-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.tar.gz")
 #source_i686=("${_pkgname}-${pkgver}-linux-i686.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-i686.tar.gz")
 #source_armv7h=("${_pkgname}-${pkgver}-linux-armv7h.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-armv7h.tar.gz")
-sha256sums_x86_64=('c906bd301fa976a98f9ef82a6e55ff388eb4916142dfde6c4dbf86851f48ea21')
+sha256sums_x86_64=('faf93ad980a7226f4c222cfccd2a6f5004db1aacd9dcdf1ede16c283bc0ec9fb')
 #sha256sums_i686=('13e06aae37ff7b0d611b0d56f3a053095c7585424185c696a9960760f7920ef6')
 #sha256sums_armv7h=('ba1946d76f8a75164cc4398910e877ce698e54781c65173586114003125c8f0a')
 
@@ -36,11 +36,13 @@ package() {
 	cp -r --preserve=mode -- files/* "${pkgdir}/usr/share/${_pkgname}"
 	install -m 0755 -d "${pkgdir}/usr/share/bash-completion/completions"
 	install -m 0755 -d "${pkgdir}/usr/share/zsh/site-functions"
+	install -m 0755 -d "${pkgdir}/usr/share/fish/vendor_completions.d"
 	install -m 0755 -d "${pkgdir}/usr/share/applications"
 	install -m 0755 -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
 	install -m 0755 -d "${pkgdir}/usr/share/man/man1"
 	install -m 0644 completions.bash "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
 	install -m 0644 completions.zsh "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
+	install -m 0644 completions.fish "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
 	install -m 0644 ${_pkgname}.desktop "${pkgdir}/usr/share/applications"
 	install -m 0644 ${_pkgname}.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
 	install -m 0644 ${_pkgname}.1.gz "${pkgdir}/usr/share/man/man1"
