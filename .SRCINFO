@@ -8,6 +8,7 @@ pkgbase = moodle-dl-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = git
 	depends = python
 	depends = ffmpeg
 	depends = python-sentry_sdk
