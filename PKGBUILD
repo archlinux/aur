@@ -6,7 +6,7 @@
 # will be on config.extra file.
 
 pkgbase=linux-git
-pkgver=v6.4.rc2.r0.f1fcbaa18b28
+pkgver=v6.3.2.r0.5729a900a07b.patched.stable.linux
 pkgrel=1
 pkgdesc="Linus Torvalds' Mainline Linux"
 url="https://www.kernel.org"
@@ -113,19 +113,21 @@ prepare() {
   done
 
   if [[ -z ${IGNORE_USER_CUSTOM} ]]; then
+    echo
+    echo "====================================== User Patches ======================================"
     [[ -f "$_userpatches" ]] && source "$_userpatches"
+    PATCHES_PREFIX=${_userpatches%%patches}
+    for src in "${PATCHES[@]}"; do
+      [[ $src = *.patch ]] || continue
+      echo " -> Applying user patch $src..."
+      patch -Np1 < "${PATCHES_PREFIX}$src"
+      _USER_PATCHES="1"
+    done
+    echo "=========================================================================================="
+    echo
+    # Let user see the patches were applied before proceed with the build
+    [[ ! -z ${_USER_PATCHES} ]] && sleep 5
   fi
-  PATCHES_PREFIX=${_userpatches%%patches}
-  _USER_PATCHES="0"
-  for src in "${PATCHES}"; do
-    [[ $src = *.patch ]] || continue
-    echo "Applying user patch $src..."
-    patch -Np1 < "${PATCHES_PREFIX}$src"
-    _USER_PATCHES="1"
-  done
-
-  # Let user see the patches were applied before proceed with the build
-  [[ ${_USER_PATCHES} = "1" ]] && sleep 5
 
   echo "Setting config..."
   cat ../config ../config.extra > .config
