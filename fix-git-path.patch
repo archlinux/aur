@@ -1,0 +1,12 @@
+diff -aur src/nano/autogen.sh src.new/nano/autogen.sh
+--- src/nano/autogen.sh	2023-05-15 21:56:29.401819347 -0400
++++ src.new/nano/autogen.sh	2023-05-15 21:59:58.642887499 -0400
+@@ -1,7 +1,7 @@
+ #!/bin/sh
+ # Generate configure & friends for GIT users.
+ 
+-gnulib_url="git://git.sv.gnu.org/gnulib.git"
++gnulib_url="https://git.savannah.gnu.org/git/gnulib.git"
+ gnulib_hash="2cf7f442f52f70b3df6eb396eb93ea08e54883c5"
+ 
+ modules="
