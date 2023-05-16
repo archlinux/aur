@@ -5,7 +5,7 @@ pkgbase = mkgmap
 	url = http://www.mkgmap.org.uk
 	arch = any
 	license = GPL2
-	depends = java-runtime=8
+	depends = java-runtime>=8
 	optdepends = splitter
 	conflicts = mkgmap-svn
 	source = mkgmap
