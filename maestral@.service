@@ -1,6 +1,6 @@
 [Unit]
 Description = Maestral daemon for config %i
-Documentation = https://github.com/SamSchott/maestral-dropbox/wiki
+Documentation = https://maestral.app
 
 [Service]
 Type = notify
