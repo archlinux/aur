@@ -1,4 +1,4 @@
-# Maintainer:  <belt@cheyenne-mtn>
+# Maintainer: beltsmith <aur@alexgirdler.com>
 pkgname='terraform-variables-generator'
 pkgver=0.0.2
 pkgrel=1
