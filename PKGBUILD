@@ -3,7 +3,7 @@
 pkgname=python-asgi-ipc
 _pypi_pkgname=asgi_ipc
 pkgver=1.4.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Posix IPC-backed ASGI channel layer implementation"
 arch=(any)
 url=" https://pypi.python.org/pypi/asgi_ipc"
