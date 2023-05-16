@@ -1,13 +1,13 @@
 pkgbase = mazter
 	pkgdesc = Mazes in your terminal
-	pkgver = 0.4.1
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/canop/mazter
+	url = https://github.com/canop/
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = mazter-0.4.1.tar.gz::https://static.crates.io/crates/mazter/mazter-0.4.1.crate
-	sha256sums = 75a4cb6b9b2df3da849f08e587ea0bd74c7a5aaf8a99d078a3b9adec1342102b
+	source = mazter-1.0.0.tar.gz::https://static.crates.io/crates/mazter/mazter-1.0.0.crate
+	sha512sums = 024b496104ee393ea175523bef74578d627530a98a603eab013b1ca1567f3317c567da426e561656c8f7ee243a7e4298fb0766914be73146752ed2405935086c
 
 pkgname = mazter
