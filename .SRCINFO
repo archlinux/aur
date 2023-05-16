@@ -1,7 +1,7 @@
 pkgbase = python-adafruit-circuitpython-displayio-ssd1306
 	pkgdesc = DisplayIO driver for SSD1306 monochrome displays
 	pkgver = 1.6.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/adafruit/Adafruit_CircuitPython_DisplayIO_SSD1306
 	arch = armv6h
 	arch = armv7h
