@@ -4,7 +4,7 @@
 
 _pkgname=sonarqube
 pkgname=sonarqube-bin
-pkgver=9.9.0.65466
+pkgver=10.0.0.68432
 pkgrel=1
 pkgdesc="An open source platform for continuous inspection of code quality"
 arch=('x86_64')
@@ -17,8 +17,7 @@ optdepends=('apache: a fully featured webserver'
             'maven: a java project management and project comprehension tool'
             'postgresql: A sophisticated object-relational DBMS')
 
-backup=("etc/webapps/${_pkgname}/sonar.properties"
-        "etc/webapps/${_pkgname}/wrapper.conf")
+backup=("etc/webapps/${_pkgname}/sonar.properties")
 
 conflicts=("${_pkgname}-lts")
 provides=("${_pkgname}")
@@ -31,7 +30,7 @@ source=("https://binaries.sonarsource.com/Distribution/${_pkgname}/${_pkgname}-$
         "${_pkgname}-user.conf"
         "99-${_pkgname}.conf")
 
-sha256sums=('f5b3045ac40b99dfc2ab45c0990074f4b15e426bdb91533d77f3b94b73d3d411'
+sha256sums=('e04bc9e78cad3f4137fb89b8527963d01587ed9a6fce4f4ac7b370fe21bac199'
             'cbea7066125c5e1b1ca093b73ccfaa4a477dc8a8431c4619de356bd36a6a44a9'
             '2d908a2965df90a74feb0e734dabb27543f5a375ce94ce2a26b4682f462e3ea5'
             '43ff10bbb495827e952225dce79da79bb800627eaa6f1d933f8f7fb408aafe6d'
