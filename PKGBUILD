@@ -3,8 +3,8 @@
 
 _pkgname="llm"
 pkgname="${_pkgname}-git"
-pkgver=r515.774d4c0
-pkgrel=3
+pkgver=r548.25942f9
+pkgrel=1
 pkgdesc="Run inference for Large Language Models on CPU, with Rust 🦀🚀🦙"
 arch=(any)
 url="https://github.com/rustformers/${_pkgname}"
@@ -35,10 +35,12 @@ pkgver() {
 build() {
     cd "${srcdir}/${_pkgname}"
     cargo build --release
+    cat LICENSE-* > LICENSE
 }
 
 package() {
     cd "${srcdir}/${_pkgname}"
     install -Dm755 target/release/llm -t "${pkgdir}/usr/bin/"
     install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}/"
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
