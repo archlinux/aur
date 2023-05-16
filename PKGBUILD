@@ -3,7 +3,7 @@
 pkgname=python-networkmanager
 _pypi_pkgname=python-networkmanager
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy communication with NetworkManager"
 arch=(any)
 url="https://github.com/seveas/python-networkmanager"
