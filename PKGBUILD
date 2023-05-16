@@ -3,7 +3,7 @@
 pkgname='python-unrar-cffi'
 _pkgname=${pkgname#python-}
 pkgver=0.2.2
-pkgrel=4
+pkgrel=5
 pkgdesc='Exposes unrar library functionality through a zipfile-like interface.'
 arch=('any')
 url='https://github.com/davide-romanini/unrar-cffi'
@@ -12,6 +12,8 @@ depends=(
   'python-cffi'
 )
 makedepends=(
+  'python-build'
+  'python-installer'
   'python-setuptools-scm'
   'python-pytest'
   'python-pytest-runner'
