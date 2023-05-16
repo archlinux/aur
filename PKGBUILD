@@ -2,7 +2,7 @@
 
 pkgname=dataexplorer
 pkgver=3.7.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Graphical tool to analyze data, gathered from various hardware devices."
 url="http://savannah.nongnu.org/projects/dataexplorer"
 arch=("i686" "x86_64")
