@@ -1,0 +1,1 @@
+KERNEL=="ttyUSB*", PORT=="0", ATTRS{idVendor}=="9710", NAME="ttyUSB00%n"

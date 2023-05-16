@@ -1,0 +1,1 @@
+BUS=="usb", SYSFS{idVendor}=="067b", NAME="ttyUSB005"
