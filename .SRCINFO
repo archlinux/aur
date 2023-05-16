@@ -1,7 +1,7 @@
 pkgbase = mac-optimised
 	pkgdesc = APE codec and decompressor with optimised build flags
 	pkgver = 10.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://monkeysaudio.com/
 	arch = x86_64
 	license = custom: Monkey's Audio License Agreement

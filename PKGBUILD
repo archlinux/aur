@@ -1,8 +1,9 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
+# Contributor: Dakeryas <mrdakeryas at gmail dot com>
 pkgname=mac-optimised
 pkgver=10.11
 _pkgver="${pkgver//./}"
-pkgrel=1
+pkgrel=2
 pkgdesc="APE codec and decompressor with optimised build flags"
 arch=('x86_64')
 url="https://monkeysaudio.com/"
