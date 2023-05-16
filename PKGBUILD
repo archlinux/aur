@@ -3,13 +3,12 @@
 pkgname=typstudio
 pkgver=0.1.0dev.18
 _pkgver=${pkgver/dev/-dev}
-pkgrel=1
+pkgrel=2
 pkgdesc='desktop application for typst'
 url="https://github.com/Cubxity/$pkgname"
 arch=(x86_64)
 license=(GPL3)
 depends=(libsoup
-         typst
          webkit2gtk)
 makedepends=(cargo
              cargo-tauri
