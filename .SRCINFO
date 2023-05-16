@@ -1,0 +1,13 @@
+pkgbase = bashplus
+	pkgdesc = Collection of useful Bash functions
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ingydotnet/bashplus
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	source = git+https://github.com/ingydotnet/bashplus.git?commit=030d196bf621e971e223e95e73c235e6992b85e0
+	b2sums = SKIP
+
+pkgname = bashplus
