@@ -1,4 +1,11 @@
-# 2023-03-01 / 1.2.0
+# 1.2.0-2 / 2023-05-16
+
+* Fix in install script
+	* One of the strings got parsed wrong by bash, oops
+	* I somehow completely missed this in testing
+	* Randomly noticed while reinstalling
+
+# 1.2.0-1 / 2023-03-01
 
 * First build on AUR
 	* Built from official deb release

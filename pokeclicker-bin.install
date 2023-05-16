@@ -1,7 +1,7 @@
 post_install() {
-	echo -e "\e[1;33mExecutable is called pokeclicker.\e[0m"
+	echo -e '\e[1;33mExecutable is called pokeclicker.\e[0m'
 	echo ""
-	echo -e "\e[1;32mYou can import your save from web if you have one.\e[0m"
+	echo -e '\e[1;32mYou can import your save from web if you have one.\e[0m'
 	echo ""
-	echo -e "\e[1;31mHave fun!\e[0m"
+	echo -e '\e[1;31mHave fun!\e[0m'
 }

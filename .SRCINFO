@@ -1,8 +1,10 @@
 pkgbase = pokeclicker-bin
 	pkgdesc = Game about catching Pokémon, defeating gym leaders, and watching numbers get bigger
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.pokeclicker.com/
+	install = pokeclicker-bin.install
+	changelog = pokeclicker-bin.changelog
 	arch = x86_64
 	license = ISC
 	depends = gtk3

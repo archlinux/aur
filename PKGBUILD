@@ -1,7 +1,8 @@
 # Maintainer: Jakub 'Eremiell' Marek <eremiell at eremiell dot net>
+# See also https://github.com/eremiell-aur/pokeclicker-bin
 pkgname=pokeclicker-bin
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Game about catching Pokémon, defeating gym leaders, and watching numbers get bigger"
 arch=('x86_64')
 url="https://www.pokeclicker.com/"
