@@ -1,6 +1,6 @@
 pkgbase = pdudaemon-git
 	pkgdesc = Daemon for controlling PDUs (Power Distribution Units)
-	pkgver = r176.e6b47d5
+	pkgver = r205.17eeacb
 	pkgrel = 1
 	url = https://github.com/pdudaemon/pdudaemon
 	arch = any
@@ -16,6 +16,7 @@ pkgbase = pdudaemon-git
 	depends = python-pysnmp
 	depends = python-pycryptodomex
 	depends = python-pyusb
+	depends = python-aiohttp
 	provides = pdudaemon
 	conflicts = pdudaemon
 	backup = etc/pdudaemon/pdudaemon.conf
