@@ -13,7 +13,7 @@ url='https://www.coreboot.org'
 license=(BSD2 BSD3 GPL2 LGPL2Plus GPL3Plus)
 arch=(x86_64 aarch64 riscv)
 depends=() # TODO
-makedepends=('python3' 'gcc-ada') # TODO
+makedepends=('gcc-ada' 'python') # TODO
 options=('buildflags')
 sources_gcc=(
   'https://ftpmirror.gnu.org/gmp/gmp-6.2.1.tar.xz'

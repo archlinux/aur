@@ -11,8 +11,8 @@ pkgbase = coreboot-toolchain
 	license = GPL2
 	license = LGPL2Plus
 	license = GPL3Plus
-	makedepends = python3
 	makedepends = gcc-ada
+	makedepends = python
 	noextract = coreboot#commit=465fbbe93ee01b4576689a90b7ddbeec23cdace2
 	noextract = R10_20_22.tar.gz
 	noextract = nasm-2.15.05.tar.bz2
