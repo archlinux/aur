@@ -1,6 +1,6 @@
 # Maintainer:  kxxt <rsworktech at outlook dot com>
 pkgname=aspeak
-pkgver=5.0.0
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="A simple text-to-speech client for Azure TTS API"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ backup=()
 options=()
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 noextract=()
-b2sums=('4f38d123dbee2abc945235d86aa37d8ad7bc5fe7edd3d781a8c70e9db2a7e7be42a2c817fc41149d0b1a454111891411619933108b8141b0cd82dba459a1bba8')
+b2sums=('994b181f52a48fbad9a6eb1f4720d415c795597b0ee9cd91ac1c85838323b6ce2187df010591056677fc65149029ccab03b4108339cee98f0348aaea65f762c0')
 
 prepare() {
 	cd "$pkgname-$pkgver"
