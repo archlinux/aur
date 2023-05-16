@@ -1,7 +1,7 @@
 pkgbase = python-pyspf
 	pkgdesc = Python implementation of the Sender Policy Framework (SPF) protocol
 	pkgver = 2.0.14
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.python.org/pypi/pyspf
 	arch = any
 	license = PSF
@@ -12,4 +12,3 @@ pkgbase = python-pyspf
 	sha256sums = 57a7ef01bda090173aafb6af0106251686ed73f03db4e911fcd34c57fc347186
 
 pkgname = python-pyspf
-

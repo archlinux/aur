@@ -3,7 +3,7 @@
 # Contributor: Samed Beyribey <ras0ir AT eventualis DOT org>
 pkgname=python-pyspf
 pkgver=2.0.14
-pkgrel=2
+pkgrel=3
 pkgdesc="Python implementation of the Sender Policy Framework (SPF) protocol"
 arch=('any')
 url="https://pypi.python.org/pypi/pyspf"
