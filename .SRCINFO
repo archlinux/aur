@@ -1,7 +1,7 @@
 pkgbase = python-adafruit-circuitpython-display-text
 	pkgdesc = Displays text using CircuitPython's displayio
 	pkgver = 2.28.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/adafruit/Adafruit_CircuitPython_Display_Text
 	arch = any
 	license = MIT

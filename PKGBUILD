@@ -3,7 +3,7 @@
 pkgname=python-adafruit-circuitpython-display-text
 _pypi_pkgname=adafruit-circuitpython-display-text
 pkgver=2.28.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Displays text using CircuitPython's displayio"
 arch=('any')
 url="https://github.com/adafruit/Adafruit_CircuitPython_Display_Text"
