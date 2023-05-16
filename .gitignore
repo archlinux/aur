@@ -2,3 +2,4 @@
 !/.gitignore
 !/.SRCINFO
 !/PKGBUILD
+!/0001-hardcode-path-to-bashplus.patch
