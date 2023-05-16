@@ -1,7 +1,7 @@
 pkgname=archiso-systemd-boot
 pkgver=2023.05.03
 pkgrel=1
-pkgdesc='ArchISO as systemd-boot loader entry'
+pkgdesc='archiso as systemd-boot loader entry'
 arch=('x86_64')
 url='https://archlinux.org/download/'
 license=('GPL')

@@ -1,5 +1,5 @@
 pkgbase = archiso-systemd-boot
-	pkgdesc = ArchISO as systemd-boot loader entry
+	pkgdesc = archiso as systemd-boot loader entry
 	pkgver = 2023.05.03
 	pkgrel = 1
 	url = https://archlinux.org/download/
