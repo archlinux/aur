@@ -1,8 +1,9 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Maintainter: Antonio Vázquez Blanco <antoniovazquezblanco@gmail.com>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Julio Diez <juliosddr@gmail.com>
 
 pkgname=sigutils-git
-pkgver=r204.2555138
+pkgver=r464.bd4295d
 pkgrel=1
 pkgdesc="Digital signal processing library"
 arch=("any")
@@ -13,7 +14,7 @@ makedepends=("git" "cmake>=3.7.2")
 optdepends=("libvolk")
 provides=("sigutils")
 conflicts=("sigutils")
-source=(${pkgname}::git+https://github.com/BatchDrake/sigutils.git)
+source=("${pkgname}::git+https://github.com/BatchDrake/sigutils.git#branch=develop")
 md5sums=('SKIP')
 
 pkgver() {
