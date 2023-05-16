@@ -1,6 +1,6 @@
 pkgbase = droidcam
 	pkgdesc = A tool for using your android device as a wireless/usb webcam
-	pkgver = 1.8.2
+	pkgver = 2.0.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/aramg/droidcam
@@ -13,11 +13,11 @@ pkgbase = droidcam
 	source = droidcam.desktop
 	source = dkms.conf
 	source = droidcam.conf
-	source = droidcam-1.8.2.zip::https://github.com/aramg/droidcam/archive/v1.8.2.zip
+	source = droidcam-2.0.0.zip::https://github.com/aramg/droidcam/archive/v2.0.0.zip
 	sha256sums = 90dd73cf146fae0de0c11b46e97412d2aaca50ec879e1be2d793261e853dd0d3
 	sha256sums = 1e91f58ae83d433d32b483b14f1bb39cc245d2ace711b12c894de27dd2ea3413
 	sha256sums = 1d4b3ff98b4af9de77a24d1b6fad6e004deadf1f157eb800aa878ba1e7693dac
-	sha256sums = a5a5601efc60ae5e60e189f9ec8c73dab5579e6fdeebdcb9b809b6befb416ecc
+	sha256sums = a81a0b31c5693f63c56cf29484639c7b827ea8ce458a367bfba1e4c850beba4e
 
 pkgname = droidcam
 	depends = alsa-lib
