@@ -1,8 +1,9 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Jeremy Gust <jeremy AT plasticsoup DOT net>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 
 pkgname=maestral-qt
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc='Qt interface for Maestral'
 arch=('any')
@@ -15,11 +16,10 @@ depends=(
 	'python-packaging'
 	'python-pyqt6'
 	'qt6-svg')
-optdepends=('gnome-shell-extension-appindicator: Gnome integration')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-changelog=CHANGELOG.md
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/m/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('ea487da376092307eeb6ca32135a3d7e383546a7fbf142adc84f69f6f24f6525')
+optdepends=('gnome-shell-extension-appindicator: Gnome integration')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('6cbceabd45e0e291ebfd9268ce59f0abdc2a6a4910cdf939e445b3f940e59405')
 
 build() {
 	cd "$pkgname-$pkgver"
