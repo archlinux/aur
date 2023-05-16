@@ -2,14 +2,14 @@
 
 _extension=return-youtube-dislike
 pkgname=chromium-extension-$_extension-bin
-pkgver=3.0.0.8
+pkgver=3.0.0.9
 pkgrel=1
 pkgdesc="Return YouTube Dislike - chromium extension (binary version)"
 arch=('any')
 url="https://github.com/noahvogt/$_extension-aur"
 license=('custom:none')
 source=("$url/releases/download/$pkgver-$pkgrel/${pkgname%-*}-$pkgver-$pkgrel-any.pkg.tar.zst")
-sha256sums=('193a897c9c7fef28f6cca8eac243e021ff0acd5774a3ecb1fd9931c3ee75a178')
+sha256sums=('94c14c1f7007e961434011da240e2151e4639523594133e835668577d573a901')
 provides=("chromium-extension-$_extension")
 conflicts=("chromium-extension-$_extension")
 
