@@ -6,7 +6,7 @@
 # will be on config.extra file.
 
 pkgbase=linux-git
-pkgver=v6.4.rc1.r109.cc3c44c9fda2
+pkgver=v6.3.1.r0.a83b81b7392d.patched.stable.linux
 pkgrel=1
 pkgdesc="Linus Torvalds' Mainline Linux"
 url="https://www.kernel.org"
@@ -45,14 +45,14 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('SKIP'                                                              # linux git source
-            '6b337a9d3cfdc00005589a80b8d36fa500f6a92ed21565a3aceec48d7202a7da'  # config
-            '6e41a729c2f2946d3606ca2c0cb3a058c9700b0f73110eed36dcba91a271e50f'  # config.extra
-            'SKIP'                                                              # config.user
-            'SKIP'                                                              # remote
-            '986e39ee1cb41d342b19f1c5af8016d48afa1e182237dbdcc3f222ae4203ef2d'  # patches
+b2sums=(
+  'SKIP'                                                                                                                              # linux git source
+  'e4998c4a144843cb6072ffc706baae3cf7530fc245fbf9cc4264aad119304944bdbb5aed9e5cfcefc87ab3e694067759e400dda669d5d734c439db288ad467c1'  # config
+  '249bec61fed688345a0f41245af9e8e189af3149e66a3c0dcc8e833151428232a701a35ed760ef93ceb5f25d9378c44f903f380a7051a65fb9a203c6fb51ebcd'  # config.extra
+  'SKIP'                                                                                                                              # config.user
+  'SKIP'                                                                                                                              # remote
+  'a483bfcc2f7926def88842a1b5da5170ed50e941d82e5389521c71e82015f1b1d8503efda1517f85105a5ed218bd4ca282f4381b16926cdc774c85b8b5a11615'  # patches
 )
-
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
