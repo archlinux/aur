@@ -3,7 +3,7 @@
 pkgname=python-sockjs-tornado
 _pypi_pkgname=sockjs-tornado
 pkgver=1.0.7
-pkgrel=3
+pkgrel=4
 pkgdesc="SockJS python server implementation on top of Tornado framework"
 url="http://github.com/mrjoes/sockjs-tornado/"
 depends=('python' 'python-tornado')
