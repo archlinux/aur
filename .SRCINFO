@@ -1,7 +1,7 @@
 pkgbase = python-xbee
 	pkgdesc = Python tools for working with XBee radios
 	pkgver = 2.3.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pypi.python.org/pypi/XBee
 	arch = any
 	license = MIT

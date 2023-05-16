@@ -1,7 +1,7 @@
 # Maintainer: razer <razer[at]neuf[dot]fr>
 pkgname=python-xbee
 pkgver=2.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Python tools for working with XBee radios'
 url='https://pypi.python.org/pypi/XBee'
 arch=('any')
