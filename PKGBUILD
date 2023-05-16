@@ -2,9 +2,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=ECOSolveR
-_pkgver=0.5.4
+_pkgver=0.5.5
 pkgname=r-${_pkgname,,}
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc='Embedded Conic Solver in R'
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5d7489e8176c1df3f3f1290732243429280efca4f837916e6b6faa6dc8a8e324')
+sha256sums=('2594ed1602b2fe159cc9aff3475e9cba7c1927b496c3daeabc1c0d227943ecc7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
