@@ -1,12 +1,12 @@
 pkgbase = python-ffmpeg-progress-yield
 	pkgdesc = Run an ffmpeg command with its progress yielded.
 	pkgver = 0.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/slhck/ffmpeg-progress-yield
 	arch = any
 	license = MIT
+	checkdepends = ffmpeg
 	checkdepends = python-pytest
-	depends = ffmpeg
 	depends = python-colorama
 	depends = python-setuptools
 	depends = python-tqdm
