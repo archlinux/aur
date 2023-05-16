@@ -2,14 +2,14 @@
 
 _pkgname=cpu
 pkgname=$_pkgname-git
-pkgver=20221109
+pkgver=20230428
 pkgrel=1
 pkgdesc='cpu command in Go, inspired by the Plan 9 cpu command'
 arch=('any')
 license=('BSD')
 makedepends=(git go)
 url='https://github.com/u-root/cpu'
-source=("git+$url#commit=e56bb27760c3393a37787e3ef079df0d47532768")
+source=("git+$url#commit=2234e7ae112eba7813158c2d98948e99d17efbc1")
 b2sums=('SKIP')
 
 prepare() {
