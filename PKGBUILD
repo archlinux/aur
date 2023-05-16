@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="pulsar-appimage"
-pkgver=1.104.0
+pkgver=1.105.0
 pkgrel=1
 pkgdesc="A Community-led Hyper-Hackable Text Editor"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('zlib' 'glibc' 'hicolor-icon-theme')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Linux.Pulsar-${pkgver}.AppImage"
     "LICENSE.md::https://raw.githubusercontent.com/pulsar-edit/pulsar/master/LICENSE.md")
-sha256sums=('7cbdc08ce62ee87fe4f3e730169d31d5cee9335b5c41f65c37a41130064c1f5e'
+sha256sums=('07699d6cb547e4f01becdeed6816b97f4a499d44b4f9839cccff350f78f4cd3e'
             '8228c15bb222358232dfd2aad1153a1fff0a44ca9155bc382858e286a9ef1182')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
