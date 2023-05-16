@@ -1,6 +1,6 @@
 pkgbase = naken_asm
 	pkgdesc = Assembler for MSP430, dsPIC, ARM, MIPS, 65xx, 68000, 8051/8052, Atmel AVR8, and others
-	pkgver = 2022.04.16
+	pkgver = 2023.01.11
 	pkgrel = 1
 	url = http://www.mikekohn.net/micro/naken_asm.php
 	arch = i686
@@ -8,7 +8,8 @@ pkgbase = naken_asm
 	license = GPL3
 	depends = readline
 	conflicts = naken_asm-git
-	source = http://www.mikekohn.net/downloads/naken_asm/naken_asm-2022-04-16.tar.gz
-	b2sums = cbd6170c8acf63ce79d24d3dd4630d1236a8b1abc1166b22fa412f15be87c02e5f7599c1102390a8834aa6cd86eff1b012969b069f19bb73aae56d317320e405
+	options = !lto
+	source = http://www.mikekohn.net/downloads/naken_asm/naken_asm-2023-01-11.tar.gz
+	b2sums = 593182a596585cc0aefa3bee837bf19dfc9cf33a9233aa1b98128b06cf0869c5b803b310e32d2b9304378f508e95a6b49a68eb54cf48591e02df576758eede39
 
 pkgname = naken_asm
