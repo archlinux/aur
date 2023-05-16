@@ -1,6 +1,6 @@
 # Maintainer: Gabriel Jensen <gabrielbjensen@icloud.com>
 pkgname=zp-git
-pkgver=1.0.0_dev.66.35b8d60
+pkgver=1.0.0_70.3d14a58
 pkgrel=1
 pkgdesc="Low-level system and algorithmics library."
 arch=("any")
@@ -15,7 +15,7 @@ license=("MPL2")
 sha512sums=("SKIP")
 pkgver() {
 	cd "${srcdir}/zp"
-	printf "%s.%s.%s" "$(git describe --tags --abbrev=0)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" | sed "s/-/_/g"
+	printf "%s_%s.%s" "$(git describe --tags --abbrev=0)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" | sed "s/-dev//g"
 }
 build() {
 	cd "${srcdir}/zp"

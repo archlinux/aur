@@ -1,6 +1,6 @@
 pkgbase = zp-git
 	pkgdesc = Low-level system and algorithmics library.
-	pkgver = 1.0.0_dev.66.35b8d60
+	pkgver = 1.0.0_70.3d14a58
 	pkgrel = 1
 	url = https://mandelbrot.dk/zp
 	arch = any
