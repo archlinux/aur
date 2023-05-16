@@ -3,9 +3,9 @@
 pkgname='perl-data-entropy'
 _dist='Data-Entropy'
 pkgver='0.007'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Contains the Data::Entropy module, a collection of fundamental algorithms that use entropy."
-arch=('x86_64')
+arch=('x86_64' 'armv7h')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-crypt-rijndael' 'perl-http-lite' 'perl-data-float' 'perl-params-classify')
