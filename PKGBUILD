@@ -1,6 +1,6 @@
 # Maintainer: Hoream <2175223953@qq.com>
 pkgname=totalmapper
-pkgver=1.3.14
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="A simple utility for remapping keys using the Linux event handling system."
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=()
 makedepends=('cargo')
 source=("v${pkgver}.tar.gz::https://github.com/ellbur/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('03cf70ce8bbc3ee742c583681389dff96654c5ab5a1f3270452d2c09a61f191e9893494d19db95edb178590291fd64f217fa4c542952ab49e8264cadb877ff53')
+sha512sums=('3e7aee60556a9697b228ee1a1dcfbbeb715ab0a098bbf18c8f5e08c206c7d3433c5d1b8bd9471591a0cd8cd167cde2ef275ee044328a6b54dd12b774cf9d3d1b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
