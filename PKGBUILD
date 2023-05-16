@@ -9,7 +9,7 @@
 
 pkgname=mkgmap
 pkgver=4907
-pkgrel=1
+pkgrel=2
 pkgdesc='Create maps for Garmin GPS devices from OpenStreetMap (OSM) data.'
 url='http://www.mkgmap.org.uk'
 license=(GPL2)
