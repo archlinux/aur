@@ -2,16 +2,17 @@
 # Maintainer: cropinghigh <joinmark60@gmail.com>
 # Author: Ryzerth
 pkgname=sdrpp-headers-git
-pkgver=r1120.79a15ed
+pkgver=r1365.a9f882e
 pkgrel=1
 arch=('i686' 'x86_64')
-pkgdesc="SDR++ headers for building modules"
-license=('GPL')
+pkgdesc="SDR++ headers for building out-of-tree modules"
+license=('GPL3')
 depends=('sdrpp-git')
 makedepends=('git')
 provides=('sdrpp-headers')
 conflicts=('sdrpp-headers')
 source=("git+https://github.com/AlexandreRouma/SDRPlusPlus")
+url="https://github.com/AlexandreRouma/SDRPlusPlus"
 md5sums=('SKIP')
 
 pkgver() {
