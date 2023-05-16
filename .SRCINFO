@@ -10,9 +10,9 @@ pkgbase = dbschema
 	depends = java-openjfx
 	source = dbschema-9.3.0.tar.gz::https://www.dbschema.com/download/DbSchema_unix_9_3_0.tar.gz
 	source = dbschema.desktop
-	md5sums = 8e35fff08e3846fef6ed2e2b8781ff28
+	md5sums = d781012f6f4a74db3e08ca4a6d324d9c
 	md5sums = 6ee4511b39884a2e6fdd63fd6bbdea8e
-	sha512sums = a7cdc53503d81ab649a09d90be6ba38ea6b558d76aabb7c933e0ad6f29821017e7a0a64d0c1a353cd111032dc72fdb9a1e639ada015bcfa5a38ad81ee26c4a67
+	sha512sums = 5337b3a5d97a054852e8b7b49fbdc824b2e2bfe960ba646ed23a7968d0e963935157e9114f55bdb610ca7c7c449ac473a0a1329af25d1d8999f579ac8bbca802
 	sha512sums = 1f82da894596bc44d77a179e56750e86628ed522cee68755ef348d4ba7cd53776783acf87592a1fa238eee09eb377a52406c04bd56e88701decb0c8ca985bbb3
 
 pkgname = dbschema
