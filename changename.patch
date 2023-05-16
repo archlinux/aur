@@ -1,0 +1,20 @@
+--- canary	2023-05-15 18:17:15.000000000 -0700
++++ canary-edit	2023-05-15 18:20:38.637975054 -0700
+@@ -5,7 +5,7 @@
+ xkb_symbols "basic" {
+     include "us(basic)"
+ 
+-    name[Group1] = "Canary";
++    name[Group1] = "English (Canary)";
+ 
+     key <AD01> {[ w, W ]};
+     key <AD02> {[ l, L ]};
+@@ -46,7 +46,7 @@
+ 
+     include "canary"
+ 
+-    name[Group1] = "Canary (Without Angle Mod)";
++    name[Group1] = "English (Canary, No Angle Mod)";
+  
+     key <AD01> {[ w, W ]};
+     key <AD02> {[ l, L ]};
