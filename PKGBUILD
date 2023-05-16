@@ -3,9 +3,9 @@
 pkgname='perl-data-float'
 _dist='Data-Float'
 pkgver='0.013'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Contains the Data::Float module, native floating point numerical data type"
-arch=('x86_64')
+arch=('x86_64' 'armv7h')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')

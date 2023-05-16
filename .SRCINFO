@@ -1,9 +1,10 @@
 pkgbase = perl-data-float
 	pkgdesc = Contains the Data::Float module, native floating point numerical data type
 	pkgver = 0.013
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Data-Float
 	arch = x86_64
+	arch = armv7h
 	license = PerlArtistic
 	license = GPL
 	makedepends = perl-module-build
