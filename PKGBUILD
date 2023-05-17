@@ -1,7 +1,7 @@
 # Maintainer: eNV25 <env252525@gmail.com>
 
 pkgname=keyd
-pkgver=2.4.2
+pkgver=2.4.3
 pkgrel=3
 arch=('x86_64' 'aarch64')
 pkgdesc="A key remapping daemon for linux. "
@@ -12,7 +12,7 @@ optdepends=(
 	'python3: for keyd-application-mapper'
 )
 # https://github.com/rvaiya/keyd/tags
-_commit=aa4c5cf1d48d995b13e59c274547ae5603f0e0e9
+_commit=5e4ef41b41ce02f7d6a9f2e51298810d84589e76
 source=("git+$url.git#tag=$_commit")
 sha256sums=('SKIP')
 

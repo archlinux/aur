@@ -1,6 +1,6 @@
 pkgbase = keyd
 	pkgdesc = A key remapping daemon for linux.
-	pkgver = 2.4.2
+	pkgver = 2.4.3
 	pkgrel = 3
 	url = https://github.com/rvaiya/keyd
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = keyd
 	license = MIT
 	makedepends = git
 	optdepends = python3: for keyd-application-mapper
-	source = git+https://github.com/rvaiya/keyd.git#tag=aa4c5cf1d48d995b13e59c274547ae5603f0e0e9
+	source = git+https://github.com/rvaiya/keyd.git#tag=5e4ef41b41ce02f7d6a9f2e51298810d84589e76
 	sha256sums = SKIP
 
 pkgname = keyd
