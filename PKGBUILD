@@ -2,7 +2,7 @@
 pkgname=routedns-git
 _pkgname=routedns
 pkgver=0.1.20.r58.gc3dde97
-pkgrel=2
+pkgrel=3
 pkgdesc="DNS stub resolver, proxy and router (git version)"
 arch=('any')
 url="https://github.com/folbricht/routedns"
@@ -30,7 +30,7 @@ build() {
 
 package() {
     cd "$srcdir/$_pkgname"
-
+    mkdir -p /etc/routedns
     install -Dm755 cmd/routedns/routedns "$pkgdir"/usr/bin/routedns
     install -Dm644 LICENSE "$pkgdir"/usr/share/license/routedns/LICENSE
     install -Dm644 README.md "$pkgdir"/usr/share/doc/routedns/README.md
