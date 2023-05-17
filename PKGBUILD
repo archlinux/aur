@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ENmix
-_pkgver=1.36.0
+_pkgver=1.36.01
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
+pkgver=1.36.01
 pkgrel=1
 pkgdesc='Quality control and analysis tools for Illumina DNA methylation BeadChip'
 arch=('any')
@@ -41,7 +41,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('818393cb604414e932cf06fa50722fa247edb693935ed0ec0a2a9b65732192b3')
+sha256sums=('2f1443c8e49efdf57044546b52ce38830a918287b2e0c2e01c7ba34101adaf38')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
