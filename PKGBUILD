@@ -25,7 +25,7 @@ sha256sums=('efc81aad2ca3c636349cb529516ae4cc92b91731ce22827d82e133e9a0771700'
             '2d785d3b556ecd4659d8664ed6399ce252cf370f2bbbd9f25dc01b93283a7881')
 
 build() {
-    javac "OperatingSystemUtil.java"
+    javac -d "$srcdir/classes" "OperatingSystemUtil.java"
     unzip -p "bin/bookman-${pkgver}.jar" 'de/bookman/resources/icons/bookman.png' > bookman.png
 }
 
@@ -43,8 +43,9 @@ package() {
     cp -a "${srcdir}/bin/bookman-${pkgver}.jar" "$target/jars"
     cp -a "${srcdir}/install4j-runtime-9.0.7.jar" "$target/jars"
 
-    install -dm755 "$target/override/de/bookman/util"
-    install -m755 "${srcdir}/OperatingSystemUtil.class" "$target/override/de/bookman/util"
+    cp -a "${srcdir}/classes" "$target/override"
+    find "$target/override" -type d -exec chown 755 "{}" \;
+    find "$target/override" -type f -exec chown 644 "{}" \;
     install -m644 "${srcdir}/logback.xml" "$target/override"
 
     local icondir="${pkgdir}/usr/share/icons/hicolor/256x256/apps"
