@@ -1,6 +1,6 @@
 pkgname=mastercard-pkcs11-tools
-pkgver=2.5.0
-pkgrel=2
+pkgver=2.5.1
+pkgrel=1
 pkgdesc="Tools to manage objects on PKCS#11 cryptographic tokens"
 url="https://github.com/Mastercard/pkcs11-tools"
 arch=(x86_64)
@@ -10,7 +10,7 @@ makedepends=(
   bison
   flex
 )
-_commit=v2.5.0
+_commit=v2.5.1
 source=("git+https://github.com/Mastercard/pkcs11-tools#commit=$_commit"
         "git+https://git.savannah.gnu.org/git/gnulib.git"
         "oasis-pkcs11::git+https://github.com/oasis-tcs/pkcs11")
@@ -31,6 +31,8 @@ prepare() {
 
   git submodule set-url .gnulib "$srcdir/gnulib"
   git submodule set-url include/oasis-pkcs11 "$srcdir/oasis-pkcs11"
+
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
