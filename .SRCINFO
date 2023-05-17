@@ -1,6 +1,6 @@
 pkgbase = ladybird-git
 	pkgdesc = Web browser built from scratch using the SerenityOS LibWeb engine
-	pkgver = r49797.fe40a7b664
+	pkgver = r50376.5312a140fe
 	pkgrel = 1
 	url = https://github.com/SerenityOS/serenity
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = ladybird-git
 	depends = libgl
 	depends = python
 	depends = qt6-base
+	depends = qt6-svg
 	depends = qt6-wayland
 	provides = ladybird
 	conflicts = ladybird

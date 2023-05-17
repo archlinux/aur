@@ -3,13 +3,13 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r49797.fe40a7b664
+pkgver=r50376.5312a140fe
 pkgrel=1
 pkgdesc='Web browser built from scratch using the SerenityOS LibWeb engine'
 arch=(x86_64)
 url='https://github.com/SerenityOS/serenity'
 license=(BSD)
-depends=(brotli less libgl python qt6-base qt6-wayland)
+depends=(brotli less libgl python qt6-base qt6-svg qt6-wayland)
 conflicts=(ladybird)
 provides=(ladybird)
 makedepends=(cmake git ninja qt6-tools unzip)
