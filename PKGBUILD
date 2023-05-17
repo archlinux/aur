@@ -3,13 +3,13 @@
 _pkgname=matrix-reminder-bot
 pkgname=python-matrix-reminder-bot
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Matrix bot to remind you about stuff."
 url="https://github.com/anoadragon453/matrix-reminder-bot"
 depends=('python' 'python-matrix-nio' 'python-markdown' 'python-yaml'
          'python-dateparser' 'python-readabledelta' 'python-apscheduler' 'python-pytz'
          'python-arrow' 'python-pretty-cron')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 optdepends=('python-psycopg2')
 license=('Apache')
 arch=('any')
@@ -22,13 +22,12 @@ sha256sums=('4cc8372e5ca5f814f0a71b2fa1cf28155475542da0e70b523b5bc85aaf1ef295'
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
-   install -Dm644 ${_pkgname}.service "$pkgdir"/usr/lib/systemd/system/${_pkgname}.service
+    install -Dm644 ${_pkgname}.service "$pkgdir"/usr/lib/systemd/system/${_pkgname}.service
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-    install -Dm644 sample.config.yaml ${pkgdir}/etc/${_pkgname}/config.yaml
+    python -m installer --destdir="${pkgdir}" dist/*.whl
     install -Dm644 sample.config.yaml ${pkgdir}/etc/${_pkgname}/config.yaml
 }

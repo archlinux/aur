@@ -1,10 +1,13 @@
 pkgbase = python-matrix-reminder-bot
 	pkgdesc = Matrix bot to remind you about stuff.
 	pkgver = 0.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/anoadragon453/matrix-reminder-bot
 	arch = any
 	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
 	depends = python-matrix-nio
