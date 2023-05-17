@@ -30,7 +30,7 @@ build() {
 
 package() {
     cd "$srcdir/$_pkgname"
-    mkdir -p /etc/routedns
+    mkdir -p "$pkgdir"/etc/routedns
     install -Dm755 cmd/routedns/routedns "$pkgdir"/usr/bin/routedns
     install -Dm644 LICENSE "$pkgdir"/usr/share/license/routedns/LICENSE
     install -Dm644 README.md "$pkgdir"/usr/share/doc/routedns/README.md
