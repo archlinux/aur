@@ -1,6 +1,6 @@
 # Maintainer: Adrien Wu <adrien.sf.wu@gmail.com>
 pkgname=mailio
-pkgver=0.21.0
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="A cross platform C++ library for MIME format and SMTP, POP3 and IMAP protocols."
 url="https://github.com/karastojko/mailio"
@@ -9,7 +9,7 @@ provides=('mailio')
 makedepends=('cmake' 'boost' 'openssl' 'doxygen')
 depends=('boost' 'openssl')
 source=("https://github.com/karastojko/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('8f58dfc8bcbe01224c788f22c544c27611e3c411ed5a2097488fbb32a3c0fb3d')
+sha256sums=('e177522f0479f33b6cbc7085268ca385140457eb752b45f07e5d6b41e314ece9')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
