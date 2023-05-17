@@ -10,7 +10,7 @@ pkgname='kea_config'
 pkgdesc='Manage kea dhcp4 configs from single source config'
 _gitname='kea_config'
 
-pkgver=4.4.1
+pkgver=4.4.2
 pkgrel=1
 url="https://github.com/gene-git/kea_config"
 
@@ -23,13 +23,8 @@ depends=('python>3.9' 'python-packaging' 'python-netaddr'
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-poetry' 'rsync')
 # See mkpkg https://github.com/gene-git/Arch-mkpkg
 _mkpkg_depends=('python>minor')
-source=("git+https://github.com/gene-git/${_gitname}")
+source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
 sha512sums=('SKIP')
-
-pkgver() {
-     cd "${_gitname}"
-     git describe --tags --abbrev=0
-}
 
 build() {
     cd "${_gitname}"
