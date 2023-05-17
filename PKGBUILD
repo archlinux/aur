@@ -12,10 +12,10 @@ depends=('python' 'python-pyqt5' 'portaudio' 'python-numpy')
 source=($pkgname::"git+$url.git")
 sha256sums=('SKIP')
 
-# pkgver() {
-#    cd "$srcdir/$pkgname"
-#    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-#}
+ pkgver() {
+    cd "$srcdir/$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
   cd $srcdir/$pkgname
