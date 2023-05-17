@@ -7,7 +7,7 @@ pkgbase="iio-hyprland"
 
 pkgver=r27.5c79b98
 
-pkgrel=1
+pkgrel=1.1
 
 pkgdesc="Reads iio-proxy-sensor output to enable automatic touchscreen rotation in Hyprland"
 
