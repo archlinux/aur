@@ -1,6 +1,6 @@
 pkgbase = basilisk
 	pkgdesc = A XUL-based web-browser demonstrating the Unified XUL Platform (UXP)
-	pkgver = 2023.05.01
+	pkgver = 2023.05.17
 	pkgrel = 1
 	url = https://www.basilisk-browser.org/
 	arch = x86_64
@@ -23,13 +23,11 @@ pkgbase = basilisk
 	depends = ffmpeg
 	depends = ttf-font
 	options = !emptydirs
-	source = https://repo.palemoon.org/Basilisk-Dev/Basilisk/archive/v2023.05.01.tar.gz
-	source = https://repo.palemoon.org/MoonchildProductions/UXP/archive/RB_20230417.tar.gz
+	source = https://repo.palemoon.org/Basilisk-Dev/Basilisk/archive/v2023.05.17.tar.gz
+	source = https://repo.palemoon.org/MoonchildProductions/UXP/archive/RB_20230515.tar.gz
 	source = https://repo.palemoon.org/mcp-graveyard/Pale-Moon/raw/commit/54aeb54828aba7ab47d6ec4a2ee432589efa2b4f/palemoon/branding/unofficial/browser.desktop
-	source = https://repo.palemoon.org/MoonchildProductions/UXP/pulls/2177.patch
-	sha256sums = 7d072841627a263ccb02ee7de49ffa03cce147f69a6626240eec9996870fe9bc
-	sha256sums = b866d4ae65d95d7827411e5e40096c0bb83c8b510ea233b4d256a211e6476d7c
+	sha256sums = 1a780b6828345e8c976a0d7a8bacd23a7fe2075b0f9418107d70ef05c35f7f8a
+	sha256sums = 49b55e53ff77f6944d433df25a9daa64520ac60716c4e28ba64f9088f731a728
 	sha256sums = 9ffbaa46c277e3c9addc2ce61b17e8eccffd3860706ca75d4fd70eeaa6f5e380
-	sha256sums = 1b779cef12b4171d19b0f5e8a3cc89729c051575bf81c238c67933091751dedd
 
 pkgname = basilisk

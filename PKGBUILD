@@ -3,8 +3,8 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 pkgname=basilisk
-pkgver=2023.05.01
-platform=RB_20230417
+pkgver=2023.05.17
+platform=RB_20230515
 pkgrel=1
 pkgdesc="A XUL-based web-browser demonstrating the Unified XUL Platform (UXP)"
 arch=('x86_64')
@@ -15,12 +15,10 @@ makedepends=('unzip' 'zip' 'python2' 'python2-dbus' 'yasm' 'mesa' 'autoconf2.13'
 options=('!emptydirs')
 source=("https://repo.palemoon.org/Basilisk-Dev/Basilisk/archive/v${pkgver}.tar.gz"
         "https://repo.palemoon.org/MoonchildProductions/UXP/archive/${platform}.tar.gz"
-        "https://repo.palemoon.org/mcp-graveyard/Pale-Moon/raw/commit/54aeb54828aba7ab47d6ec4a2ee432589efa2b4f/palemoon/branding/unofficial/browser.desktop"
-        "https://repo.palemoon.org/MoonchildProductions/UXP/pulls/2177.patch")
-sha256sums=('7d072841627a263ccb02ee7de49ffa03cce147f69a6626240eec9996870fe9bc'
-            'b866d4ae65d95d7827411e5e40096c0bb83c8b510ea233b4d256a211e6476d7c'
-            '9ffbaa46c277e3c9addc2ce61b17e8eccffd3860706ca75d4fd70eeaa6f5e380'
-            '1b779cef12b4171d19b0f5e8a3cc89729c051575bf81c238c67933091751dedd')
+        "https://repo.palemoon.org/mcp-graveyard/Pale-Moon/raw/commit/54aeb54828aba7ab47d6ec4a2ee432589efa2b4f/palemoon/branding/unofficial/browser.desktop")
+sha256sums=('1a780b6828345e8c976a0d7a8bacd23a7fe2075b0f9418107d70ef05c35f7f8a'
+            '49b55e53ff77f6944d433df25a9daa64520ac60716c4e28ba64f9088f731a728'
+            '9ffbaa46c277e3c9addc2ce61b17e8eccffd3860706ca75d4fd70eeaa6f5e380')
 
 prepare() {
   cd "$srcdir/$pkgname"
@@ -97,11 +95,6 @@ ac_add_options --disable-maintenance-service
 #mk_add_options MOZ_MAKE_FLAGS="-j4"
 #mk_add_options PYTHON=/usr/bin/python2
 EOF
-
-  # Issue #2175 - Fix build bustage in WebRTC. #2177
-  # https://repo.palemoon.org/MoonchildProductions/UXP/pulls/2177
-  cd platform
-  patch -Np1 -i ../../2177.patch
 }
 
 build() {
