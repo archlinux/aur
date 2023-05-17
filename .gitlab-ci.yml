@@ -6,7 +6,7 @@ build:
   stage: build
   image: registry.stefanwimmer128.io/stefanwimmer128/archlinux-chaotic-paru-user:latest
   before_script:
-    - gpg --keyserver keys.openpgp.org --recv-keys 14F26682D0916CDD81E37B6D61B7B526D98F0353
+    - gpg --keyserver keys.openpgp.org --recv-key 14F26682D0916CDD81E37B6D61B7B526D98F0353
     - paru -Syu --noconfirm
   script:
     - makepkg -s --noconfirm
