@@ -2,16 +2,16 @@
 # Contributor Peri Vance <perivance@posteo.net>
 
 pkgname=unofficial-homestuck-collection
-pkgver=2.0.5
-pkgrel=2
+pkgver=2.0.7
+pkgrel=1
 pkgdesc="The Unofficial Homestuck Collection"
 arch=('x86_64')
 url="https://bambosh.github.io/unofficial-homestuck-collection/"
 license=('custom:chrome' 'custom:electron')
 depends=('libvips')
-makedepends=('gendesk' 'yarn' 'electron')
-source=("https://github.com/Bambosh/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('530f6aee01f53c92007f9b38d2d4e3587cc66ee5b27bb4684ff6503a602c5973451bd43210668f911733ae8921db4a5557ee5cdc3fc9a804e74cfa4e072a388f')
+makedepends=('nodejs-lts-fermium' 'gendesk' 'yarn' 'electron')
+source=("https://github.com/Bambosh/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('79dd52c709c56a385fecc1d64a700208bab752140201edfd0d4a1c0054e59f252ea2310bc31e26027204629277ecfa1387f6573669c59faed5ac728d25924b7f')
 
 prepare() {
     gendesk -f \
@@ -24,7 +24,7 @@ prepare() {
 
 build() {
     cd "${pkgname}-${pkgver}"
-    SHARP_IGNORE_GLOBAL_LIBVIPS=true make publish
+    make build
 }
 
 package() {
