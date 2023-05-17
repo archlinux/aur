@@ -1,6 +1,6 @@
 # Maintainer: LeSnake04 <dev.lesnake@posteo.de>
 pkgname=wire-desktop-appimage
-pkgver=3.30.3018
+pkgver=3.31.3060
 pkgrel=1
 pkgdesc="Wire for desktop"
 arch=("x86_64")
@@ -11,8 +11,8 @@ depends=('hicolor-icon-theme' 'zlib' 'glibc')
 options=(!strip)
 conflit=("${pkgname%-appimage}")
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/linux%2F${pkgver}/Wire-${pkgver}_x86_64.AppImage")
-sha256sums=('492ba983bbf1638b5db99ef3f303a8044f295760581c959889b5f1a1802ed49b')
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/linux%2F${pkgver}/Wire-${pkgver}_${arch}.AppImage")
+sha256sums=('717357a1c4be410005d45191f482dc2eb090f521ad08558250799540cd47d1c6')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null

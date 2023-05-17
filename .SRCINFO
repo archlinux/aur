@@ -1,6 +1,6 @@
 pkgbase = wire-desktop-appimage
 	pkgdesc = Wire for desktop
-	pkgver = 3.30.3018
+	pkgver = 3.31.3060
 	pkgrel = 1
 	url = https://wire.com/download/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = wire-desktop-appimage
 	depends = zlib
 	depends = glibc
 	options = !strip
-	source = wire-desktop-3.30.3018.AppImage::https://github.com/wireapp/wire-desktop/releases/download/linux%2F3.30.3018/Wire-3.30.3018_x86_64.AppImage
-	sha256sums = 492ba983bbf1638b5db99ef3f303a8044f295760581c959889b5f1a1802ed49b
+	source = wire-desktop-3.31.3060.AppImage::https://github.com/wireapp/wire-desktop/releases/download/linux%2F3.31.3060/Wire-3.31.3060_x86_64.AppImage
+	sha256sums = 717357a1c4be410005d45191f482dc2eb090f521ad08558250799540cd47d1c6
 
 pkgname = wire-desktop-appimage
