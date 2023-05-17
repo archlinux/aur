@@ -6,7 +6,6 @@ _year='23'
 _prevyear="$(( ${_year} - 1 ))"
 
 _pkgname="idos-timetable-data-chaps-trains-europe-20${_year}"
-_replaces="idos-timetable-data-chaps-trains-cz-20${_prevyear}"
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2023_05_17
@@ -49,7 +48,6 @@ provides=(
 )
 
 replaces=(
-  "${_replaces}"
   'idos-timetable-data-chaps-trains-europe-latest'
 )
 
