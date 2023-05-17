@@ -1,7 +1,7 @@
 pkgbase = inform7
 	pkgdesc = A design system for interactive fiction based on natural language
 	pkgver = 10.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ganelson.github.io/inform
 	arch = aarch64
 	arch = arm
@@ -13,6 +13,7 @@ pkgbase = inform7
 	arch = x86_64
 	groups = inform
 	license = Artistic2.0
+	makedepends = clang
 	makedepends = rsync
 	provides = inform
 	provides = inform7

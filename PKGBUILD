@@ -6,12 +6,12 @@ _pkgname=inform
 pkgver=10.1.2
 _inwebver=7.2.0
 _intestver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A design system for interactive fiction based on natural language"
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://ganelson.github.io/inform"
 license=('Artistic2.0')
-makedepends=('rsync')
+makedepends=('clang' 'rsync')
 provides=('inform' 'inform7')
 groups=(inform)
 options=(!buildflags !makeflags)
@@ -32,6 +32,8 @@ build() {
   cd "$srcdir"
   mv "inweb-$_inwebver" inweb
   mv "intest-$_intestver" intest
+
+  export CC=clang
 
   bash inweb/scripts/first.sh linux
   bash intest/scripts/first.sh
