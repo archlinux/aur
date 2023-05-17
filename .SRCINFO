@@ -1,7 +1,7 @@
 pkgbase = bicep-bin
 	pkgdesc = A declarative language for describing and deploying Azure resources
 	pkgver = 0.17.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Azure/bicep
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = bicep-bin
 	depends = zlib
 	provides = bicep
 	conflicts = bicep
+	options = !strip
 	source = bicep-bin-0.17.1::https://github.com/Azure/bicep/releases/download/v0.17.1/bicep-linux-x64
 	source = LICENSE-bicep-bin-0.17.1::https://raw.githubusercontent.com/Azure/bicep/v0.17.1/LICENSE
 	sha256sums = 7e1dc4c215dbe5228599719b77d8af776e6e9e491f62b29cd69d76bef1276211

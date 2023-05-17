@@ -4,7 +4,7 @@
 pkgname=bicep-bin
 _name=${pkgname%-bin}
 pkgver=0.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A declarative language for describing and deploying Azure resources'
 arch=(x86_64)
 url='https://github.com/Azure/bicep'
@@ -15,6 +15,7 @@ depends=(
   gcc-libs
   zlib
 )
+options=(!strip)
 
 source=(
   "${pkgname}-${pkgver}::https://github.com/Azure/${_name}/releases/download/v${pkgver}/${_name}-linux-x64"
