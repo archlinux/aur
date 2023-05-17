@@ -1,8 +1,8 @@
-pkgbase = not1mm
+pkgbase = not1mm-git
 	pkgdesc = Not1MM != N1MM, An amateur radio contest logger for Linux.
 	pkgver = 23.5.15
 	pkgrel = 1
-	url = https://github.com/mbridak/not1mm
+	url = https://github.com/mbridak/not1mm-git
 	arch = any
 	license = GPL3
 	makedepends = python-pip
@@ -12,7 +12,7 @@ pkgbase = not1mm
 	depends = python-pyqt5
 	depends = portaudio
 	depends = python-numpy
-	source = not1mm::git+https://github.com/mbridak/not1mm.git
+	source = not1mm-git::git+https://github.com/mbridak/not1mm-git.git
 	sha256sums = SKIP
 
-pkgname = not1mm
+pkgname = not1mm-git

@@ -1,12 +1,12 @@
 # Maintainer: f4iey <f4iey@f4iey.fr>	
 
-pkgname=not1mm
+pkgname=not1mm-git
 pkgver=23.5.15
 pkgrel=1
 pkgdesc="Not1MM != N1MM, An amateur radio contest logger for Linux."
 arch=('any')
 license=('GPL3')
-url="https://github.com/mbridak/not1mm"
+url="https://github.com/mbridak/not1mm-git"
 makedepends=('python-pip' 'python-setuptools' 'python-build')
 depends=('python' 'python-pyqt5' 'portaudio' 'python-numpy')
 source=($pkgname::"git+$url.git")
