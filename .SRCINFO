@@ -1,7 +1,7 @@
 pkgbase = r-scattermore
 	pkgdesc = Scatterplots with More Points
-	pkgver = 1.0
-	pkgrel = 3
+	pkgver = 1.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=scattermore
 	arch = x86_64
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = r-scattermore
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/scattermore_1.0.tar.gz
-	sha256sums = a71d5d1ae06bc6b7d9a446293e3c12a5ce970754c24a0cc6f31ad0ea52cbaf91
+	source = https://cran.r-project.org/src/contrib/scattermore_1.1.tar.gz
+	sha256sums = 63e9c0b80a3a1643b8a16c067e0e1144055c8bee5b15370c3266868982cf51c5
 
 pkgname = r-scattermore
