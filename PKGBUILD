@@ -2,13 +2,13 @@
 
 pkgname=bstone
 pkgver=1.2.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Unofficial source port for Blake Stone series (Aliens Of Gold and Planet Strike)."
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/bibendovsky/bstone"
 license=('GPL2')
 depends=("sdl2")
-makedepends=('cmake')
+makedepends=('cmake' 'gcc-12')
 optdepends=()
 provides=("${pkgname}")
 conflicts=("${pkgname}")
@@ -21,6 +21,8 @@ build() {
   mkdir -p build && cd build
   cmake -B. -H.. \
     -DCMAKE_INSTALL_PREFIX='/usr/bin' \
+    -DCMAKE_C_COMPILER=gcc-12 \
+    -DCMAKE_CXX_COMPILER=g++-12 \
     -DCMAKE_BUILD_TYPE='RelWithDebInfo'
   make
 }
