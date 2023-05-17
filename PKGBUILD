@@ -2,7 +2,7 @@
 
 pkgname=electron-cash-bin
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=4.2.14
+pkgver=4.3.0
 pkgrel=1
 pkgbin=electron-cash
 url='http://www.electroncash.org/'
@@ -24,7 +24,7 @@ source_x86_64=(
 	"${appimage}.asc::${github}/releases/download/${pkgver}/${appimage}.asc"
 	)
 
-sha256sums_x86_64=('af3036c7bb561f131cb3a94e0c4faa3084404f72907a8825cb6919ddc07419a3'
+sha256sums_x86_64=('cadafe571bf55190e49a14d8ec38e894ecf38ce41b25594c08b708c5fa89434e'
                    'SKIP')
 
 package() {
