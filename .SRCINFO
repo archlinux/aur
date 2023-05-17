@@ -20,6 +20,7 @@ pkgbase = onivim2-nightly-bin
 	depends = nodejs
 	depends = libxkbfile
 	depends = libjpeg6-turbo
+	depends = fuse2
 	provides = onivim2
 	conflicts = onivim2
 	options = !strip
