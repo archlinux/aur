@@ -5,7 +5,7 @@
 _pkgname=idos-timetable-additionalinfo-chaps-trains
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2021_12_13
+pkgver=2022_12_10
 pkgrel=1
 pkgdesc="Links for additional information on Czech trains and railway stations, to be used with the timetable search engines by CHAPS."
 arch=('any')
@@ -55,7 +55,7 @@ sha256sums=(
 )
 
 pkgver() {
-  wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File C1.ZIP\(.*\)Zip/C1.ZIP.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+'
+  wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File C1.ZIP\(.*\)Zip/C1.ZIP.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+' | sed -E -e 's|_([0-9])_|_0\1_|g' -e 's|_([0-9])$|_0\1|g'
 }
 
 
