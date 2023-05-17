@@ -1,6 +1,6 @@
 post_install() {
 	echo ""
 	echo "==> To start using routedns, copy any configuration file of your own preference from /usr/share/doc/routedns/example-config to /etc/routedns/config.toml"
-	echo "==> This package also provides a config.toml.example file inside /usr/share/doc/routedns/example-config that you can use to start doing your configuration with less confusion"
+	echo "==> This package also provides a config.toml file inside /etc/routedns/ that you can use to start doing your configuration with less confusion"
 	echo ""
 }
