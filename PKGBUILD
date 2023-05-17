@@ -2,7 +2,7 @@
 
 _pkgname=paper-plane
 pkgname=paper-plane-git
-pkgver=0.1.0.beta.1.r6.g83df76b
+pkgver=0.1.0.beta.1.r0.g83df76b
 pkgrel=1
 pkgdesc='Chat over Telegram on a modern and elegant client'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -22,9 +22,12 @@ pkgver() {
 }
 
 build() {
+  # The API ID and hash provided here are for use with Paper Plane only.
+  # For other projects, please get your own API ID and hash at https://my.telegram.org/apps
+
   arch-meson "$_pkgname" build \
-    -Dtg_api_id=611335 \
-    -Dtg_api_hash=d524b414d21f4d37f08684c1df41ac9c
+    -Dtg_api_id=22303002 \
+    -Dtg_api_hash=3cc0969992690f032197e6609b296599
 
   meson compile -C build
 }
