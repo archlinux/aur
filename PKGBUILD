@@ -1,7 +1,7 @@
 # Maintainer: Joey Holtzman <joeyholtzman0507 at gmail dot com>
 
 pkgname=pacman-venv
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="A tool to create virtual environments for Pacman"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/jdholtz/pacman-venv"
 license=('MIT')
 depends=('bash' 'pacman' 'sudo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jdholtz/pacman-venv/archive/v${pkgver}.tar.gz")
-sha512sums=(0a774a82a0bd6dbb29000533cb325e8c6479b2454f750d691d4e34fcf4cf91b8a196f7eaaccd604c0802cba487eb24645e6c4f899b6d1fe599813cf73d7fe11d)
+sha512sums=(64374ad173cbdbebc3af0fbc2b62a9eb1ca6b787f8ecf02bb613a550a6d50f8c1eb5fc513cf9555d8c201292ba1edd7a7beee9535a31ea6dc4028a0d96ce1d2f)
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
