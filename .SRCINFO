@@ -1,7 +1,7 @@
 pkgbase = monokle-bin
 	pkgdesc = Lets you create, analyze, and deploy YAML manifests with a visual UI, and provides policy validation and cluster management.
-	pkgver = 2.1.0
-	pkgrel = 2
+	pkgver = 2.1.1
+	pkgrel = 1
 	arch = x86_64
 	license = MIT
 	depends = zlib
@@ -35,9 +35,9 @@ pkgbase = monokle-bin
 	conflicts = monokle
 	conflicts = monokle-appimage
 	options = !strip
-	source = monokle-2.1.0.deb::https://github.com/kubeshop/monokle/releases/download/v2.1.0/Monokle-linux-2.1.0-amd64.deb
+	source = monokle-2.1.1.deb::https://github.com/kubeshop/monokle/releases/download/v2.1.1/Monokle-linux-2.1.1-amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/kubeshop/monokle/main/LICENSE
-	sha256sums = b55a1630d4bd2828c37c5ee6ee5f76354fc7662d7279e4f4203ce5e256260267
+	sha256sums = 4fdc9ea8a6f6b90a87dc9859db64f48aeccc23f19f6735f363d9917bcee02dce
 	sha256sums = 7a89ae90e9c88d5de936743c0432f43051d79d286aff3c4e669b2b3252b84528
 
 pkgname = monokle-bin
