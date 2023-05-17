@@ -9,7 +9,6 @@ url="https://github.com/folbricht/routedns"
 license=('BSD')
 makedepends=('git' 'go')
 provides=('routedns')
-conflicts=(routedns-git)
 install=$pkgname.install
 # backup=(etc/routedns/config.toml)
 source=("git+https://github.com/folbricht/routedns"
@@ -25,7 +24,7 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/$_pkgname/cmd/routedns"
     go build -v
 }
 

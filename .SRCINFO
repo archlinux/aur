@@ -9,7 +9,6 @@ pkgbase = routedns-git
 	makedepends = git
 	makedepends = go
 	provides = routedns
-	conflicts = routedns-git
 	source = git+https://github.com/folbricht/routedns
 	source = routedns.service
 	source = config.toml.example
