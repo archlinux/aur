@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-data-chaps-trains-common-latest
 	pkgdesc = Common files needed for train timetable data for the timetable search engines by CHAPS.
-	pkgver = 2022_5_4
-	pkgrel = 2
+	pkgver = 2023_05_17
+	pkgrel = 1
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvatt
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = idos-timetable-data-chaps-trains-common-latest
 	license = custom
 	makedepends = wget
 	depends = idos-timetable-browser
-	provides = idos-timetable-data-chaps-trains-common=2022_5_4
-	provides = idos-timetable-data-trains-common=2022_5_4
+	provides = idos-timetable-data-chaps-trains-common=2023_05_17
+	provides = idos-timetable-data-trains-common=2023_05_17
 	conflicts = idos-timetable-data-chaps-trains-common
-	source = vlak22c.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAK22C.ZIP
+	source = vlak23c.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAK23C.ZIP
 	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf
 	source = license-dummy.txt
 	sha256sums = SKIP
