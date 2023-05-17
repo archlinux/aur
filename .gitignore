@@ -1,0 +1,7 @@
+# 忽略所有文件和目录
+/*
+
+# 不忽略 PKGBUILD 和 .sh 文件
+!/PKGBUILD
+!/.gitignore
+!/.SRCINFO
