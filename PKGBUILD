@@ -38,7 +38,6 @@ package_x16-emulator-bin() {
 	conflicts=('x16-emulator')
 
 	install -Dm755 x16emu "$pkgdir/usr/bin/x16emu"
-	#install -Dm644 docs/github-pandoc.css "$pkgdir/usr/share/doc/${pkgname%-bin}/github-pandoc.css"
 	install -Dm644 $srcdir/README.pdf "$pkgdir/usr/share/doc/${pkgname%-bin}/README.pdf"
 	install -Dm644 logo.png "$pkgdir/usr/share/pixmaps/${pkgname%-bin}.png"
 	install -Dm644 "${pkgname%-bin}.desktop" "$pkgdir/usr/share/applications/${pkgname%-bin}.desktop"
@@ -51,8 +50,6 @@ package_x16-rom-bin() {
 
 	install -Dm644 rom.bin "$pkgdir/usr/share/x16-rom/rom.bin"
 	install -Dm644 *.sym "$pkgdir/usr/share/x16-rom/"
-	#install -Dm644 docs/github-pandoc.css "$pkgdir/usr/share/doc/x16-rom/github-pandoc.css"
-	#install -Dm644 docs/KERNAL-BASIC.html "$pkgdir/usr/share/doc/x16-rom/KERNAL-BASIC.html"
 }
 
 package_x16-docs-bin() {
@@ -60,7 +57,6 @@ package_x16-docs-bin() {
 	provides=('x16-docs')
 	conflicts=('x16-docs')
 
-	#install -Dm644 docs/github-pandoc.css "$pkgdir/usr/share/doc/x16-docs/github-pandoc.css"
 	install -Dm644 $srcdir/"Commander X16 Programmer's Reference Guide.pdf" "$pkgdir/usr/share/doc/x16-docs/Commander X16 Programmer's Reference Guide.pdf"
 	install -Dm644 $srcdir/"VERA Programmer's Reference.pdf" "$pkgdir/usr/share/doc/x16-docs/VERA Programmer's Reference.pdf"
 }
