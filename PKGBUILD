@@ -1,6 +1,6 @@
 # Maintainer: solnce <echo c29sbmNlQHJhdGFqY3phay5vbmU= | base64 -d>
 pkgname=pacdef
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='multi-backend declarative package manager for Linux'
 url='https://github.com/steven-omaha/pacdef'
@@ -9,7 +9,7 @@ arch=('x86_64')
 license=('GPL3')
 depends=('gcc-libs')
 makedepends=('rust')
-sha256sums=('c8532e12f33018ccc05a7043d03bc4bfa89314e0d9350912bda248d2a396a92e')
+sha256sums=('988ab7f34b7221f7b1a8507698c2e388f256c4baa0681f25a2798318d40b5b8d')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
