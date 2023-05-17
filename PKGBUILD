@@ -10,7 +10,7 @@ pkgname='dns_tools'
 pkgdesc='DNS Tools for managing DNSSEC aka easy dnssec'
 _gitname='dns_tools'
 
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 url="https://github.com/gene-git/dns_tools"
 
@@ -20,13 +20,8 @@ license=(MIT)
 depends=('python>3.9' 'python-tomli' 'ldns')
 makedepends=('git' 'python-pip' 'python-wheel' 'python-poetry' 'rsync')
 _mkpkg_depends=('python>minor')
-source=("git+https://github.com/gene-git/${_gitname}")
+source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
 sha512sums=('SKIP')
-
-pkgver() {
-     cd "${_gitname}"
-     git describe --tags --abbrev=0
-}
 
 build() {
     cd "${_gitname}"
