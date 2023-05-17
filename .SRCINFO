@@ -1,6 +1,6 @@
 pkgbase = commas-bin
 	pkgdesc = A hackable, pluggable terminal, and also a command runner.
-	pkgver = 0.25.1
+	pkgver = 0.26.0
 	pkgrel = 1
 	url = https://github.com/CyanSalt/commas
 	arch = x86_64
@@ -33,9 +33,9 @@ pkgbase = commas-bin
 	depends = libx11
 	conflicts = commas
 	options = !strip
-	source = commas-0.25.1.zip::https://github.com/CyanSalt/commas/releases/download/v0.25.1/Commas-linux-x64.zip
+	source = commas-0.26.0.zip::https://github.com/CyanSalt/commas/releases/download/v0.26.0/Commas-linux-x64.zip
 	source = commas.png::https://raw.githubusercontent.com/CyanSalt/commas/master/resources/images/icon.png
-	sha256sums = ccf0080f24b460f26526702abe58b0b66ffdea7a67d0e0464d1a8d7e353b01e9
+	sha256sums = 52a032e42d748a14c7e852469b31092614d88e7b37d6024bba96b41374d15872
 	sha256sums = 65b65c25d8d68549dc271f7c755426ba8884f6ae9fb3a8061eec65c241345f48
 
 pkgname = commas-bin

@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="commas-bin"
-pkgver=0.25.1
+pkgver=0.26.0
 pkgrel=1
 pkgdesc="A hackable, pluggable terminal, and also a command runner."
 arch=("x86_64")
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-bin}")
 options=(!strip)
 source=("${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/Commas-linux-x64.zip"
     "${pkgname%-bin}.png::https://raw.githubusercontent.com/CyanSalt/commas/master/resources/images/icon.png")
-sha256sums=('ccf0080f24b460f26526702abe58b0b66ffdea7a67d0e0464d1a8d7e353b01e9'
+sha256sums=('52a032e42d748a14c7e852469b31092614d88e7b37d6024bba96b41374d15872'
             '65b65c25d8d68549dc271f7c755426ba8884f6ae9fb3a8061eec65c241345f48')
 package() {
     install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
