@@ -1,0 +1,16 @@
+pkgbase = chrolog-appimage
+	pkgdesc = A automated time tracking tool
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/Lukylix/Chrolog
+	arch = x86_64
+	license = custom
+	depends = zlib
+	depends = glibc
+	depends = logkeys
+	conflicts = chrolog
+	options = !strip
+	source = chrolog-1.1.AppImage::https://github.com/Lukylix/Chrolog/releases/download/v1.1/chrolog-1.1.0.AppImage
+	sha256sums = fdeea3eaefeeefca6c5f413d3a7850842e530e4a32d8ce0c931740522bfc2aa3
+
+pkgname = chrolog-appimage
