@@ -86,7 +86,8 @@ check() {
     tests/fsck-tests/052-init-csum-tree \
     tests/fsck-tests/056-raid56-false-alerts \
     tests/fsck-tests/057-seed-false-alerts \
-    tests/fsck-tests/059-shrunk-device
+    tests/fsck-tests/059-shrunk-device \
+    tests/fsck-tests/060-degraded-check
 
   make test-fsck
 
