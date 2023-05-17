@@ -1,7 +1,7 @@
 pkgbase = rmw
 	pkgdesc = trash/recycle bin utility for the command line
-	pkgver = 0.9.0
-	pkgrel = 2
+	pkgver = 0.9.1
+	pkgrel = 1
 	url = https://theimpossibleastronaut.com/rmw-website/
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = rmw
 	depends = ncurses
 	optdepends = gettext
 	optdepends = canfigger
-	source = https://github.com/theimpossibleastronaut/rmw/releases/download/v0.9.0/rmw-0.9.0.tar.xz
-	sha256sums = cc9d20733c9f9945054041ee6aeac7f4a4b7a675f297ffe388e4863fb84ed4a1
+	source = https://github.com/theimpossibleastronaut/rmw/releases/download/v0.9.1/rmw-0.9.1.tar.xz
+	sha256sums = 9a7b93e8530a0ffcd49f1a880e0a717b3112d0ec1773db7349bac416ee1a42b3
 
 pkgname = rmw
