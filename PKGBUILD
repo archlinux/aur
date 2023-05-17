@@ -13,7 +13,7 @@ provides=(paper-plane)
 conflicts=(paper-plane)
 
 _commit=83df76b6eb0fae5b51079d80258a96664f686236  # tags/v0.1.0-beta.1^0
-source=("git+$url.git")
+source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {

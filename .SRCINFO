@@ -20,7 +20,7 @@ pkgbase = paper-plane
 	depends = libtdjson.so
 	provides = paper-plane
 	conflicts = paper-plane
-	source = git+https://github.com/paper-plane-developers/paper-plane.git
+	source = git+https://github.com/paper-plane-developers/paper-plane.git#commit=83df76b6eb0fae5b51079d80258a96664f686236
 	sha256sums = SKIP
 
 pkgname = paper-plane
