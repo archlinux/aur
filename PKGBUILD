@@ -2,7 +2,7 @@
 # Maintainer: shilka <shilkazx at gmail dot com>
 
 pkgname=tencent-docs-bin
-pkgver=3.0.0
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="腾讯文档 Tencent Docs - 让协作更高效，创作更轻松"
 arch=("x86_64" "aarch64")
@@ -15,8 +15,8 @@ source_x86_64=("${pkgname}-${pkgver}-${pkgrel}-x86_64.deb::https://github.com/V0
 source_aarch64=("${pkgname}-${pkgver}-${pkgrel}-aarch64.deb::https://github.com/V0IDPlusPlus/Tencent-Docs-Debian-Package-Archive/releases/download/v${pkgver}-${pkgrel}/LinuxTencentDocsArm64.deb")
 
 sha256sums=("7dd7432ece74ddd5d5fd6de07e6b521a4b84206a8fa099b754f2a994641404d7")
-sha256sums_x86_64=("9892f3ebfedaa7a02c7080602b46a73444b8dde31e1f8afaf96b7dfc976fae40")
-sha256sums_aarch64=("2aeefcaf82372dea95f90021fd98214ae8d932671fd0244c7f8c9197b8a0652f")
+sha256sums_x86_64=("28a2e61128b91d3503018a48dc3544a5eb66715ea8d15fea8e47fcd5ccacc9c7")
+sha256sums_aarch64=("4782b83ad698000029e2611fd6e78d955d9ff5dac5cbbc7e6ae4c07f3f065d8a")
 
 package() {
     tar xpf data.tar.xz -C ${pkgdir}
