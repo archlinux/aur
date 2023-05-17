@@ -1,22 +1,22 @@
 pkgbase = lib32-nvidia-525xx-utils
 	pkgdesc = NVIDIA x32 libs for Linux, 525 branch
-	pkgver = 525.116.03
+	pkgver = 525.116.04
 	pkgrel = 1
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom
 	options = !strip
-	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/525.116.03/NVIDIA-Linux-x86_64-525.116.03.run
-	sha512sums = 684c2eddb621a18dddf047cc7d89521a4841fedbfad674e6ccb0bac7dba141a6e8e3ee77b6f2a692dab6d6e3310a88d38ea14f8198e94b21a299927e69234114
+	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/525.116.04/NVIDIA-Linux-x86_64-525.116.04.run
+	sha512sums = 8e511e4965f11c849ae0bb3f399bc79eb004bb3a15612b35e6c7b9ec236a73085b58cc4e8cb37b5ffde7e7fe202928a08618b5dd3328235795bb942bde339195
 
 pkgname = lib32-nvidia-525xx-utils
 	pkgdesc = NVIDIA drivers utilities (32-bit), 525 branch
 	depends = lib32-zlib
 	depends = lib32-gcc-libs
 	depends = lib32-libglvnd
-	depends = nvidia-utils=525.116.03
+	depends = nvidia-utils=525.116.04
 	optdepends = lib32-opencl-nvidia
-	provides = lib32-nvidia-utils=525.116.03
+	provides = lib32-nvidia-utils=525.116.04
 	provides = lib32-vulkan-driver
 	provides = lib32-opengl-driver
 	provides = lib32-nvidia-libgl
