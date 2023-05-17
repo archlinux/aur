@@ -1,7 +1,7 @@
 pkgbase = electron-cash
 	pkgdesc = Lightweight Bitcoin Cash wallet
-	pkgver = 4.2.14
-	pkgrel = 2
+	pkgver = 4.3.0
+	pkgrel = 1
 	url = http://www.electroncash.org/
 	arch = any
 	license = MIT
@@ -41,13 +41,12 @@ pkgbase = electron-cash
 	optdepends = python-rpyc: send commands to Electrum Python console from an external script
 	optdepends = python-trezor: Trezor hardware wallet support
 	optdepends = python-keepkey: Trezor hardware wallet support
-	optdepends = python-web3: LNS support
 	optdepends = zbar: QR code reading support
 	provides = electron-cash
 	conflicts = electron-cash
-	source = electron-cash-4.2.14.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/4.2.14.tar.gz
+	source = electron-cash-4.3.0.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/4.3.0.tar.gz
 	source = secp256k1-0.20.9.tar.gz::https://github.com/Bitcoin-ABC/secp256k1/archive/v0.20.9.tar.gz
-	sha256sums = 65e227bf34c329730660281f5db4b893b69b6d9f1fefe3061eeebb6fb7d78dec
+	sha256sums = b01c9cf7ecd0d190cc2ed7b28ca4c3f56f8089e43d0733f8355fd07fafe710c5
 	sha256sums = 68e84775e57da77e19ccb6b0dde6ca0882377bdd48ecc6da0047a70201ec64c8
 
 pkgname = electron-cash
