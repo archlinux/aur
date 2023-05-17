@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="chrolog-appimage"
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A automated time tracking tool"
 arch=("x86_64")
 url="https://github.com/Lukylix/Chrolog"
@@ -15,7 +15,7 @@ sha256sums=('fdeea3eaefeeefca6c5f413d3a7850842e530e4a32d8ce0c931740522bfc2aa3')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's|AppRun|/opt/appimages/chrolog.AppImage|g;s|Productivity|Utility|g' -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
+    sed 's|AppRun|/opt/appimages/chrolog.AppImage|g' -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
     
 package() {
