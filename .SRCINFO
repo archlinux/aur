@@ -1,0 +1,17 @@
+pkgbase = goofcord-appimage
+	pkgdesc = Take control of your Discord experience with GoofCord – the highly configurable and privacy first discord client.
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/Milkshiift/GoofCord
+	arch = x86_64
+	license = custom:OSL3
+	depends = zlib
+	depends = glibc
+	conflicts = goofcord
+	options = !strip
+	source = goofcord-0.5.1.AppImage::https://github.com/Milkshiift/GoofCord/releases/download/v0.5.1/GoofCord-0.5.1.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/Milkshiift/GoofCord/main/LICENSE
+	sha256sums = 20a38422e837acb873d65fa963f0dd233fcc9d5f0dde5859d60aa328289e91fe
+	sha256sums = 4e7f66aa93929feee2db20f14f871e7ddcc69236b0ecfb79a19ade9b859daf51
+
+pkgname = goofcord-appimage
