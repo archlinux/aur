@@ -1,0 +1,15 @@
+pkgbase = mp3guessenc-beta
+	pkgdesc = A program which guesses which MP3 encoder was used to encode a given MP3 file
+	pkgver = 0.27.6
+	pkgrel = 1
+	url = http://mp3guessenc.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	provides = mp3guessenc
+	conflicts = mp3guessenc
+	source = https://sourceforge.net/projects/mp3guessenc/files/mp3guessenc-0.27/mp3guessenc-0.27.6beta.tar.gz
+	sha256sums = 3562d6a0bda623411d2655844dbb55650e9e3d8612dbb02743869ef38cafbe4a
+
+pkgname = mp3guessenc-beta
