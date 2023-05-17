@@ -1,0 +1,18 @@
+pkgbase = ledger-udev-git
+	pkgdesc = Udev rules to support Ledger devices on Linux (git-latest)
+	pkgver = r14.9bf0cbb
+	pkgrel = 1
+	url = https://github.com/LedgerHQ/udev-rules
+	install = ledger-udev.install
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = udev
+	provides = ledger-udev
+	conflicts = ledger-udev
+	source = ledger-udev-git::git+https://github.com/LedgerHQ/udev-rules
+	source = add_udev_rules.patch
+	sha512sums = SKIP
+	sha512sums = e0f82a8fe257cba13585d926e3633efb8c219853bea4b1d018fee9f5469a72a0d05695760718cece0a9a9cbaa0da12441f05ff33ba53a293d3ffca3b384e025c
+
+pkgname = ledger-udev-git

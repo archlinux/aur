@@ -1,0 +1,15 @@
+--- add_udev_rules.sh	2023-05-17 17:08:52.201822140 +0700
++++ add_udev_rules_new.sh	2023-05-17 16:53:36.797871383 +0700
+@@ -1,5 +1,5 @@
+ #!/bin/bash
+-cat <<EOF > /etc/udev/rules.d/20-hw1.rules
++cat <<EOF > 20-hw1.rules
+ # HW.1 / Nano
+ SUBSYSTEMS=="usb", ATTRS{idVendor}=="2581", ATTRS{idProduct}=="1b7c|2b7c|3b7c|4b7c", TAG+="uaccess", TAG+="udev-acl"
+ # Blue
+@@ -18,5 +18,3 @@
+ SUBSYSTEMS=="usb", ATTRS{idVendor}=="2c97", ATTRS{idProduct}=="6011", TAG+="uaccess", TAG+="udev-acl"
+ EOF
+ 
+-udevadm trigger
+-udevadm control --reload-rules
