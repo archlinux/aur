@@ -21,7 +21,8 @@ prepare() {
 build() {
         cd "WALC-$pkgver"
         npm install
-        npm run dev
+        npm install whatsapp-web-electron.js # Reinstall to prevent build from failing
+        npm run dist # Create a production build
 }
 
 package() {
