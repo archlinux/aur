@@ -5,7 +5,6 @@ Categories=Game
 Name=ZDL
 Icon=zdl
 NoDisplay=false
-Path[$e]=
 StartupNotify=true
 Terminal=0
 TerminalOptions=
