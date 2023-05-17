@@ -193,7 +193,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.1
-_minor=24
+_minor=29
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -209,7 +209,7 @@ arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
 license=('GPL2')
 options=('!strip')
-makedepends=('bc' 'libelf' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'zstd' 'gcc' 'gcc-libs' 'glibc' 'binutils' 'make' 'patch')
+makedepends=('bc' 'libelf' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'zstd' 'gcc' 'gcc-libs' 'glibc' 'binutils' 'make' 'patch' 'python')
 # LLVM makedepends
 if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] || [ -n "$_use_kcfi" ]; then
     makedepends+=(clang llvm lld python)
@@ -230,7 +230,7 @@ source=(
 # ZFS support
 if [ -n "$_build_zfs" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=33003ecc93ef532e41255a6f91c585b26f871ec0")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=e25f9131d679692704c11dc0c1df6d4585b70c35")
 fi
 
 ## Latency NICE Support
@@ -242,7 +242,8 @@ fi
 
 case "$_cpusched" in
     pds|bmq) # BMQ/PDS scheduler
-        source+=("${_patchsource}/sched/0001-prjc-cachy.patch");;
+        source+=("${_patchsource}/sched/0001-prjc-cachy.patch"
+                 linux-cachyos-prjc.install);;
     tt) ## TT Scheduler
         source+=("${_patchsource}/sched/0001-tt-cachy.patch");;
     bore) ## BORE Scheduler with latency_nice
@@ -841,10 +842,10 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('aae6a7e38e33589011f5a5c0d7e087c8a26e3daf8d434432ee975ead90546504'
+sha256sums=('1e736cc9bd6036379a1d915e518abd4c2c94ad0fd1ea0da961c3489308b8fcfb'
             '4c756bc4cc45c4cbea8e59398612f8582b68b3276fc9c78f0f34a1c903a99e81'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
-            'f4f4489ac2229fc71a8d8edfb1c1a7493015406f63a01d5f8a450bd9d0e2cab0'
+            '0e0407321ff805d253a2d81a47e0df0a8087869d3c5902af03b7d12ee6981147'
             'f3978876414beee18d6e80995b01b3d3dca1bb6bca9beacf8ac28e2ec6b08ede'
             '69f88ce35468d190badf5e781120f16f44b416c580d22d79194d52ee29e6ce6f'
             '944b736d518210b5a433e1a300ecccbdb450e79904d72e9f98fadfdafca2f3d8')
