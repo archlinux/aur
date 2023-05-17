@@ -1,7 +1,7 @@
 pkgbase = deemix-gui-git
 	pkgdesc = A gui electron app for the deemix lib
 	pkgver = r222.5d447b6035
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/RemixDev/deemix-gui
 	arch = x86_64
 	license = gpl3
@@ -13,9 +13,9 @@ pkgbase = deemix-gui-git
 	source = deemix-webui::git+https://gitlab.com/RemixDev/deemix-webui
 	source = deemix-gui.desktop
 	source = deemix-gui.sh
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = 89b112a6469203b6596ddd6a7efc91a6
-	md5sums = 99c9ff0e767cb8554658c6465e239d5c
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 87ae7b086c91a3ee8c9c29c5e920680416a1ca92d33b05c9276abb8d2bc4da3b
+	sha256sums = 8c85c9833520f22b8bd0e62bd2e5673a731e737fa896f35b5c944258b39d5e31
 
 pkgname = deemix-gui-git

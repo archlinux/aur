@@ -1,9 +1,10 @@
-# Maintainer: RemixDev <RemixDev64@gmail.com>
+# Maintainer: Martin Rys <rys.pw/contact>
+# Previous Maintainer: RemixDev <RemixDev64@gmail.com>
 
 pkgname="deemix-gui-git"
 _pkgname="deemix-gui"
 pkgver=r222.5d447b6035
-pkgrel=1
+pkgrel=2
 pkgdesc="A gui electron app for the deemix lib"
 arch=('x86_64')
 url="https://gitlab.com/RemixDev/$_pkgname"
@@ -13,9 +14,9 @@ makedepends=('git' 'yarn')
 provides=('deemix-gui')
 source=("${_pkgname}::git+https://gitlab.com/RemixDev/$_pkgname" "deemix-webui::git+https://gitlab.com/RemixDev/deemix-webui"
         "$_pkgname.desktop" "$_pkgname.sh")
-md5sums=('SKIP' 'SKIP'
-         '89b112a6469203b6596ddd6a7efc91a6'
-         '99c9ff0e767cb8554658c6465e239d5c')
+sha256sums=('SKIP' 'SKIP'
+            '87ae7b086c91a3ee8c9c29c5e920680416a1ca92d33b05c9276abb8d2bc4da3b'
+            '8c85c9833520f22b8bd0e62bd2e5673a731e737fa896f35b5c944258b39d5e31')
 
 pkgver() {
   cd "${srcdir}/$_pkgname"
