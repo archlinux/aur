@@ -8,7 +8,7 @@ pkgdesc="Native, lightweight modal code editor."
 arch=('x86_64')
 url="https://github.com/santilococo/oni2"
 license=('MIT')
-depends=("glu" "python" "gtk3" "nodejs" "libxkbfile" "libjpeg6-turbo")
+depends=("glu" "python" "gtk3" "nodejs" "libxkbfile" "libjpeg6-turbo" "fuse2")
 makedepends=("glib2" "acl" "libxcursor" "libxrandr" "libxi" "libxinerama" 
              "fontconfig" "ncurses" "harfbuzz")
 provides=('onivim2')
