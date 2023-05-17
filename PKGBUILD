@@ -2,14 +2,14 @@
 
 _pkgname=paper-plane
 pkgname=paper-plane-git
-pkgver=r1324.d455349
+pkgver=0.1.0.beta.1.r6.g83df76b
 pkgrel=1
 pkgdesc='Chat over Telegram on a modern and elegant client'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/paper-plane-developers/paper-plane'
 license=(GPL3)
 depends=(gtk4-paper-plane libadwaita-git libtd-dev rlottie-paper-plane-git libtdjson.so)
-makedepends=(git meson rust blueprint-compiler)
+makedepends=(git meson rust blueprint-compiler appstream-glib)
 provides=(paper-plane)
 conflicts=(paper-plane)
 
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
