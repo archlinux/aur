@@ -1,8 +1,8 @@
-# Maintainer: Morteza NourelahiAlamdari <m@0t1.me>
+# Maintainer: Josh Sixsmith <josh dot sixsmith at gmail dot com>
 
 pkgname=tiledb
 _pkgname=TileDB
-pkgver=2.15.0
+pkgver=2.15.2
 pkgrel=1
 pkgdesc="The Universal Storage Engine"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('make')
 depends=('gcc' 'cmake' 'lz4' 'bzip2' 'zstd' 'zlib' 'libwebp')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TileDB-Inc/TileDB/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('99d89f6fece0f14904b6b215721d3da0d7ab2d98145793d9256a0a1edf01c12d')
+sha256sums=('2242b40148e7ec42668c035708d3a92b3dd22b604ca36b0429787f99f1d08f20')
 
 build() {
   ls
