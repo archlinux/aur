@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 6.1.28 Kernel Configuration
+# Linux/arm64 6.1.29 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 12.1.0"
 CONFIG_CC_IS_GCC=y
@@ -7251,6 +7251,7 @@ CONFIG_SND_SOC_RT1015=m
 CONFIG_SND_SOC_RT1015P=m
 # CONFIG_SND_SOC_RT1308_SDW is not set
 # CONFIG_SND_SOC_RT1316_SDW is not set
+# CONFIG_SND_SOC_RT1318_SDW is not set
 CONFIG_SND_SOC_RT5514=m
 CONFIG_SND_SOC_RT5514_SPI=m
 # CONFIG_SND_SOC_RT5616 is not set
