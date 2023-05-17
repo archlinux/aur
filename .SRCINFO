@@ -1,0 +1,11 @@
+pkgbase = rxxr2-git
+	pkgdesc = regular expression static analyzer
+	pkgver = r34.0eea5e9
+	pkgrel = 1
+	arch = x86_64
+	makedepends = ocaml
+	makedepends = opam
+	source = rxxr2-git::git+https://github.com/superhuman/rxxr2.git
+	sha256sums = SKIP
+
+pkgname = rxxr2-git
