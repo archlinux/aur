@@ -3,13 +3,13 @@
 pkgname=inform7-git
 _pkgname=inform7
 _gitpkg=inform
-pkgver=10.2.0_beta+6V50
+pkgver=10.2.0_beta+6W49
 pkgrel=1
 pkgdesc="A design system for interactive fiction based on natural language (git version)"
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://ganelson.github.io/inform"
 license=('Artistic2.0')
-makedepends=('git' 'rsync')
+makedepends=('clang' 'git' 'rsync')
 provides=('inform' 'inform7')
 conflicts=('inform7')
 groups=(inform)
@@ -34,6 +34,8 @@ pkgver() {
 
 build() {
   cd "$srcdir"
+
+  export CC=clang
 
   bash inweb/scripts/first.sh linux
   bash intest/scripts/first.sh
