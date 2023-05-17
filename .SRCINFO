@@ -1,6 +1,6 @@
 pkgbase = fahcontrol-gtk3-git
 	pkgdesc = Graphical monitor and control utility for the Folding@home client (python3/GTK3 fork)
-	pkgver = r183.f8cee6d
+	pkgver = r191.17c0252
 	pkgrel = 1
 	url = https://foldingathome.org
 	arch = any

@@ -1,9 +1,9 @@
-# Maintainer: gardenapple <gardenapple@posteo.net>
+# Maintainer: gardenapple <mailbox@appl.garden>
 # Contributor: katt <magunasu.b97@gmail.com>
 # Contributor: merlock <mlmatlock@gmail.com>
 
 pkgname=fahcontrol-gtk3-git
-pkgver=r185.2b57930
+pkgver=r191.17c0252
 pkgrel=1
 pkgdesc='Graphical monitor and control utility for the Folding@home client (python3/GTK3 fork)'
 url='https://foldingathome.org'
