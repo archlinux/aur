@@ -1,6 +1,6 @@
 pkgbase = polar-appimage
 	pkgdesc = One-click Bitcoin Lightning networks for local app development & testing
-	pkgver = 1.4.1
+	pkgver = 2.0.0rc3
 	pkgrel = 1
 	url = https://lightningpolar.com/
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = polar-appimage
 	provides = polar
 	conflicts = polar
 	options = !strip
-	source = polar-1.4.1.AppImage::https://github.com/jamaljsr/polar/releases/download/v1.4.1/polar-linux-x86_64-V1.4.1.AppImage
+	source = polar-2.0.0rc3.AppImage::https://github.com/jamaljsr/polar/releases/download/v2.0.0-rc3/polar-linux-x86_64-V2.0.0-rc3.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/jamaljsr/polar/master/LICENSE
-	sha256sums = 8ce976a640ceec9247da1da0ae50e956957f66e50a7dd86f93e3ffce2fa144bf
+	sha256sums = e80f26b5963d30a1c556db0f15b14ce8c8deef810a3b094c2865518a00dba27b
 	sha256sums = 971e947b52af09847d493b326953f2cbc91669441eab0d5e74eac38b8e162904
 
 pkgname = polar-appimage

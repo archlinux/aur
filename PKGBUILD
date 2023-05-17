@@ -1,6 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="polar-appimage"
-pkgver=1.4.1
+pkgver=2.0.0rc3
+_appver=2.0.0-rc3
 pkgrel=1
 pkgdesc="One-click Bitcoin Lightning networks for local app development & testing"
 arch=("x86_64")
@@ -12,9 +13,9 @@ options=(!strip)
 provides=("${pkgname%-appimage}")
 conflicts=("${pkgname%-appimage}")
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}-linux-x86_64-V${pkgver}.AppImage"
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${_appver}/${pkgname%-appimage}-linux-x86_64-V${_appver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/jamaljsr/polar/master/LICENSE")
-sha256sums=('8ce976a640ceec9247da1da0ae50e956957f66e50a7dd86f93e3ffce2fa144bf'
+sha256sums=('e80f26b5963d30a1c556db0f15b14ce8c8deef810a3b094c2865518a00dba27b'
             '971e947b52af09847d493b326953f2cbc91669441eab0d5e74eac38b8e162904')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
