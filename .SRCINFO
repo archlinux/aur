@@ -1,0 +1,13 @@
+pkgbase = svlint
+	pkgdesc = SystemVerilog linter compliant with IEEE1800-2017
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/dalance/svlint
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = svlint-0.7.2.tar.gz::https://github.com/dalance/svlint/archive/v0.7.2.tar.gz
+	sha256sums = 08294af18f775c81a0701e398d90e73d708f032c12baf575442ac4dc0cdd2d33
+
+pkgname = svlint
