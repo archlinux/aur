@@ -1,0 +1,14 @@
+pkgbase = rescue
+	pkgdesc = An automated tool for the detection of regexes' slow-matching vulnerabilities.
+	pkgver = 20180910
+	pkgrel = 1
+	url = https://github.com/2bdenny/ReScue
+	arch = x86_64
+	license = GPL2
+	depends = java-runtime
+	source = https://github.com/2bdenny/ReScue/raw/master/release/ReScue.jar
+	source = rescue
+	sha256sums = 5f2724cd2793c7cd568be1a1d8b990d0663117efbfaae44a2465f5904a4bed46
+	sha256sums = 4590dec58db8048c7027b0143c40badbc66ee5575ee05a7671653eb964b66594
+
+pkgname = rescue
