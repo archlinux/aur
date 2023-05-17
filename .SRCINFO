@@ -1,6 +1,6 @@
 pkgbase = micmac-git
 	pkgdesc = Free open-source photogrammetry software tools - Version GIT
-	pkgver = 1.0.beta14.r1048.g43022f9ac
+	pkgver = 1.0.beta14.r1051.g8925a62d5
 	pkgrel = 1
 	url = http://micmac.ensg.eu
 	arch = i686
@@ -20,8 +20,6 @@ pkgbase = micmac-git
 	conflicts = micmac
 	options = !staticlibs
 	source = git+https://github.com/micmacIGN/micmac.git
-	source = missing_comma.patch
 	md5sums = SKIP
-	md5sums = 66d1958f0670b5bd0b0c23cce43bb2be
 
 pkgname = micmac-git
