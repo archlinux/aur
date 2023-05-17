@@ -6,11 +6,10 @@ _year='23'
 _prevyear="$(( ${_year} - 1 ))"
 
 _pkgname="idos-timetable-data-chaps-trains-cz-20${_year}"
-_replaces="idos-timetable-data-chaps-trains-cz-20${_prevyear}"
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2023_05_17
-pkgrel=1
+pkgrel=2
 pkgdesc="20${_prevyear}/20${_year} Timetable data for the timetable search engines by CHAPS: Czech trains."
 arch=(any)
 url="http://chaps.cz/eng/download/idos/zip#kotvatt"
@@ -43,7 +42,6 @@ provides=(
 )
 
 replaces=(
-  "${_replaces}"
   'idos-timetable-data-chaps-trains-cz-latest'
 )
 
