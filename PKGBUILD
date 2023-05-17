@@ -1,7 +1,7 @@
 # Maintainer: Phillip Schichtel <phillip@schich.tel>
 pkgname=bookman-cockpit
 pkgver=1.12.2
-pkgrel=1
+pkgrel=2
 options=(!strip)
 pkgdesc="Bookman Cockpit"
 arch=(any)

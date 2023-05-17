@@ -1,7 +1,7 @@
 pkgbase = bookman-cockpit
 	pkgdesc = Bookman Cockpit
 	pkgver = 1.12.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.bookman.de/
 	arch = any
 	license = custom
