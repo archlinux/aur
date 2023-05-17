@@ -1,0 +1,15 @@
+pkgbase = alephium-wallet-appimage
+	pkgdesc = The official Alephium wallet for desktop
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://alephium.org/
+	arch = x86_64
+	license = LGPL3
+	depends = zlib
+	depends = glibc
+	conflicts = alephium-wallet
+	options = !strip
+	source = alephium-wallet-2.0.1.AppImage::https://github.com/alephium/desktop-wallet/releases/download/v2.0.1/Alephium-2.0.1.AppImage
+	sha256sums = b25e0f60593b684f815dd75a0291f863b9943dd9be1207b48f2e9da7984dee21
+
+pkgname = alephium-wallet-appimage
