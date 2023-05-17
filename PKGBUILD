@@ -1,4 +1,4 @@
-# Maintainer: stefanwimmer128 <info at stefanwimmer128 dot eu>
+# Maintainer: stefanwimmer128 <info at stefanwimmer128 dot io>
 # Contributor: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 # Contributor: Peter Jung <admin@ptr1337.dev>
 # Contributor: vnepogodin
