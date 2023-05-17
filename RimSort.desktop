@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=RimSort
+Comment=A Mod Manager For Rimworld game
+GenericName=Mod Manager
+Exec=/opt/rimsort/RimSort.bin
+Icon=RimSort
+Type=Application
+Categories=Game
+Path=/opt/rimsort
