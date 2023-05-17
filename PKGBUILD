@@ -1,8 +1,8 @@
-# Maintainer: Yurii <yu hrysh at posteo dot net>
+# Maintainer: gardenapple <mailbox@appl.garden>
 
 pkgname=lbry-sync-ytdl
 _author=gardenappl
-pkgver=1.8.2
+pkgver=1.8.3
 pkgrel=1
 pkgdesc='Sync content to LBRY using youtube-dl'
 arch=('any')
@@ -10,7 +10,7 @@ url="https://gitlab.com/$_author/$pkgname"
 license=('GPL3')
 depends=('jq' 'curl' 'lbrynet')
 makedepends=('perl')
-optdepends=('youtube-dl: Standard youtube-dl' 'yt-dlp: Improved fork of youtube-dl')
+optdepends=('youtube-dl' 'yt-dlp: will be preferred instead of youtube-dl if installed')
 source=("https://gitlab.com/$_author/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 
 build() {
@@ -20,5 +20,5 @@ build() {
 package() {
 	make DESTDIR="$pkgdir" -C "$pkgname-v$pkgver" install
 }
-sha256sums=('b4671cf21d2828bed5c71eae1247d8e722ca372847a7f5dea67854d6231f839f')
-b2sums=('a356682303ffb9a8bb37f1ce26430db52ff6d9371fa0c14fd2b90bf070a52aaa61a3e160bc49c8d0c1d546f61d3f24d8c40ad992b4936a3f8f8d3a956ba08935')
+sha256sums=('40c6f6db493e37cfc1310cc2d931eee19b80c251dec57736f045dc11efcba0fb')
+b2sums=('0e59140605bfbbc32004efd5ef356eb7733e3032cec7c5a64faf94ed46c367d28c88d5bc22f1f8c4bcea23ae4b8bb0dcf860b663fd45774691dd662b80ac3a75')
