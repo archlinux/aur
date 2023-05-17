@@ -1,38 +1,29 @@
 diff -up src/xrdp/instfiles/xrdp.service.in.orig src/xrdp/instfiles/xrdp.service.in
 --- src/xrdp/instfiles/xrdp.service.in.orig	2020-06-26 05:13:58.000000000 -0600
 +++ src/xrdp/instfiles/xrdp.service.in	2021-05-12 17:06:31.680000000 -0600
-@@ -6,11 +6,9 @@ After=network.target xrdp-sesman.service
+@@ -6,9 +6,7 @@ After=network.target xrdp-sesman.service
 
  [Service]
- Type=forking
--PIDFile=@localstatedir@/run/xrdp.pid
+ Type=exec
 -EnvironmentFile=-@sysconfdir@/sysconfig/xrdp
 -EnvironmentFile=-@sysconfdir@/default/xrdp
--ExecStart=@sbindir@/xrdp $XRDP_OPTIONS
--ExecStop=@sbindir@/xrdp $XRDP_OPTIONS --kill
-+PIDFile=/run/xrdp.pid
-+ExecStart=@sbindir@/xrdp
-+ExecStop=@sbindir@/xrdp --kill
+-ExecStart=@sbindir@/xrdp $XRDP_OPTIONS --nodaemon
++ExecStart=@sbindir@/xrdp --nodaemon
 
  [Install]
  WantedBy=multi-user.target
 diff -up src/xrdp/instfiles/xrdp-sesman.service.in.orig src/xrdp/instfiles/xrdp-sesman.service.in
 --- src/xrdp/instfiles/xrdp-sesman.service.in.orig	2020-06-26 05:13:58.000000000 -0600
 +++ src/xrdp/instfiles/xrdp-sesman.service.in	2021-05-12 17:06:31.690000000 -0600
-@@ -7,12 +7,10 @@ BindsTo=xrdp.service
+@@ -7,10 +7,8 @@ BindsTo=xrdp.service
 
  [Service]
- Type=forking
--PIDFile=@localstatedir@/run/xrdp-sesman.pid
+ Type=exec
 -EnvironmentFile=-@sysconfdir@/sysconfig/xrdp
 -EnvironmentFile=-@sysconfdir@/default/xrdp
--ExecStart=@sbindir@/xrdp-sesman $SESMAN_OPTIONS
--ExecStop=@sbindir@/xrdp-sesman $SESMAN_OPTIONS --kill
--ExecReload=@sbindir@/xrdp-sesman $SESMAN_OPTIONS --reload
-+PIDFile=/run/xrdp-sesman.pid
-+ExecStart=@sbindir@/xrdp-sesman
-+ExecStop=@sbindir@/xrdp-sesman --kill
-+ExecReload=@sbindir@/xrdp-sesman --reload
+-ExecStart=@sbindir@/xrdp-sesman $SESMAN_OPTIONS --nodaemon
++ExecStart=@sbindir@/xrdp-sesman --nodaemon
+ ExecReload=kill -HUP $MAINPID
 
  [Install]
  WantedBy=multi-user.target
