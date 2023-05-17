@@ -1,6 +1,6 @@
 pkgbase = decent-sampler-bin
 	pkgdesc = a sampling plugin that allows you to play samples in the Decent Sampler format
-	pkgver = 1.8.11
+	pkgver = 1.8.12
 	pkgrel = 1
 	url = https://www.decentsamples.com/product/decent-sampler-plugin/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = decent-sampler-bin
 	depends = alsa-lib
 	depends = freetype2
 	provides = decent-sampler
-	source = https://www.dropbox.com/sh/dwyry6xpy5uut07/AAAEZPS4s35V1eUlainGQgEva/Decent_Sampler-1.8.11-Linux-Static-x86_64.tar.gz
+	source = https://www.dropbox.com/sh/dwyry6xpy5uut07/AADhKQCQZt9HYZhXL1d-6pICa/Decent_Sampler-1.8.12-Linux-Static-x86_64.tar.gz
 	source = decent-sampler.png
 	source = decent-sampler.desktop
 	source = application-decent-sampler.xml
