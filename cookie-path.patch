@@ -1,0 +1,12 @@
+diff -wbBur nginx_totp_auth/server.cc nginx_totp_auth.my/server.cc
+--- nginx_totp_auth/server.cc	2023-05-17 03:15:09.487989927 +0300
++++ nginx_totp_auth.my/server.cc	2023-05-17 03:14:59.097989696 +0300
+@@ -174,7 +174,7 @@
+ 
+ 					// Render a redirect page to the redirect address (+cookie)
+ 					std::string token = create_cookie(user);
+-					return "Status: 302\r\nSet-Cookie: authentication-token=" + token +
++					return "Status: 302\r\nSet-Cookie: authentication-token=" + token + "; path=/"
+ 					       "\r\nLocation: " + stripnl(rpage) + "\r\n\r\n";
+ 				}
+ 				else {

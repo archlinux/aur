@@ -10,15 +10,22 @@ makedepends=('git' 'python')
 source=('git+https://github.com/davidgfnet/nginx_totp_auth.git'
 	'nginx-totp-auth.service'
 	'nginx-totp-only-auth.service'
+	'cookie-path.patch'
 	'remove-password.patch')
 sha256sums=('SKIP'
             'cfdf3cbd84be9791800124cd87e1b5ff1d430a7d38309e4b6052e105f51ca245'
             'e24859e92386dbb50661063328d3ac66975367a2772def43e075114667ec35d8'
+            'b465ace0dc5ca31afc3e4d515544ae2ba2d4652ec03a2b561e87a49b4412b4ad'
             '814119238c3030f00f408d7f1e42718c1b31351a55ad7cb96579e41f995488bd')
 
 pkgver() {
 	cd "$srcdir/nginx_totp_auth"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd "$srcdir/nginx_totp_auth"
+	patch -p1 <../cookie-path.patch
 }
 
 build() {
