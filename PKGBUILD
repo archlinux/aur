@@ -7,7 +7,7 @@
 
 pkgname='electron-cash-git'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=4.2.14.r38.g3149f0ae6
+pkgver=4.3.0.r1.gb6fbb5555
 pkgrel=1
 url='http://www.electroncash.org/'
 arch=('any')
@@ -52,7 +52,6 @@ optdepends=(
   'python-rpyc: send commands to Electrum Python console from an external script'
   'python-trezor: Trezor hardware wallet support'
   'python-keepkey: Trezor hardware wallet support'
-  'python-web3: LNS support'
   'zbar: QR code reading support'
 )
 provides=("${pkgname/-git/}")
