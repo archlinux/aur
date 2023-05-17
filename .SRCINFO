@@ -1,6 +1,6 @@
 pkgbase = nvidia-525xx-settings
 	pkgdesc = Tool for configuring the NVIDIA graphics driver, 525 branch
-	pkgver = 525.116.03
+	pkgver = 525.116.04
 	pkgrel = 1
 	url = https://github.com/NVIDIA/nvidia-settings
 	arch = x86_64
@@ -10,12 +10,12 @@ pkgbase = nvidia-525xx-settings
 	makedepends = gtk3
 	makedepends = libxv
 	makedepends = libvdpau
-	makedepends = nvidia-utils=525.116.03
+	makedepends = nvidia-utils=525.116.04
 	makedepends = libxext
 	options = staticlibs
-	source = nvidia-settings-525.116.03.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/525.116.03.tar.gz
+	source = nvidia-settings-525.116.04.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/525.116.04.tar.gz
 	source = nvidia-settings-libxnvctrl_so.patch
-	sha512sums = f31d4578d3b83a1fd763ae5ab086534960a48f4c70f427ff2fb0612a789614bc68da256e975916ba7d8cafc4efcd8d0a3c806e2c0caf09e738dfc39706ded291
+	sha512sums = ff63dc50479022866f2e9bc8fba798b88fc819595517d839125dac1fb7e4c20f0027640c4dc7f7b0c544eba984190d4b204b4306ef36c55740681621be4e6fb3
 	sha512sums = 0303fe615d6ef4e14112998c531a17613b94776f9a6a027ddb81e400fddd5f2ff15583da8b8631c2306aca854edf2f54a8007eb36f1732b4c064c857aaf268ae
 
 pkgname = nvidia-525xx-settings
@@ -23,14 +23,14 @@ pkgname = nvidia-525xx-settings
 	depends = gtk3
 	depends = libxv
 	depends = libvdpau
-	depends = nvidia-utils=525.116.03
-	depends = libxnvctrl=525.116.03
-	provides = nvidia-settings=525.116.03
+	depends = nvidia-utils=525.116.04
+	depends = libxnvctrl=525.116.04
+	provides = nvidia-settings=525.116.04
 	conflicts = nvidia-settings
 
 pkgname = libxnvctrl-525xx
 	pkgdesc = NVIDIA NV-CONTROL X extension
 	depends = libxext
-	provides = libxnvctrl=525.116.03
+	provides = libxnvctrl=525.116.04
 	provides = libXNVCtrl.so
 	conflicts = libxnvctrl
