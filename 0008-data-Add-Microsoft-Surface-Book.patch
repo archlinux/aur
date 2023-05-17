@@ -1,4 +1,4 @@
-From 1f047efd4bd7ab1d77b99d079bde082463ee47f0 Mon Sep 17 00:00:00 2001
+From 45d559ed17e818fd4bd26966c3b4c3fb833ad23b Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Tue, 18 Aug 2020 20:19:38 +0200
 Subject: [PATCH 08/12] data: Add Microsoft Surface Book
@@ -29,5 +29,5 @@ index 0000000..e2a5401
 +Touch=true
 +Buttons=0
 -- 
-2.39.1
+2.40.1
 

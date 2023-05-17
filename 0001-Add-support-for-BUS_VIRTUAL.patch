@@ -1,4 +1,4 @@
-From a7475cd68d1e76d74bdb192652bdd5b7a879f1d7 Mon Sep 17 00:00:00 2001
+From 6fe89a80a28042bc57fd625ad82181e4092b95f2 Mon Sep 17 00:00:00 2001
 From: Dorian Stoll <dorian.stoll@tmsp.io>
 Date: Sat, 27 Jun 2020 18:21:11 +0200
 Subject: [PATCH 01/12] Add support for BUS_VIRTUAL
@@ -16,8 +16,8 @@ Signed-off-by: Dorian Stoll <dorian.stoll@tmsp.io>
  libwacom/libwacom.c          | 5 +++++
  libwacom/libwacom.h          | 1 +
  test/test-tablet-validity.c  | 1 +
- test/test_data_files.py      | 2 +-
- 5 files changed, 12 insertions(+), 1 deletion(-)
+ test/test_data_files.py      | 1 +
+ 5 files changed, 12 insertions(+)
 
 diff --git a/libwacom/libwacom-database.c b/libwacom/libwacom-database.c
 index 804ac3d..96aaa5e 100644
@@ -89,18 +89,17 @@ index 2095089..da5fe07 100644
  			g_assert_cmpint(pid, >, 0);
  			break;
 diff --git a/test/test_data_files.py b/test/test_data_files.py
-index d732bd1..4b21b6a 100755
+index c2db899..476aeca 100755
 --- a/test/test_data_files.py
 +++ b/test/test_data_files.py
-@@ -41,7 +41,7 @@ def test_device_match(tabletfile):
-             continue
- 
-         bus, vid, pid = match.split(':')[:3]  # skip the name part of the match
--        assert bus in ['usb', 'bluetooth', 'i2c', 'serial'], f'{tabletfile}: unknown bus type'
-+        assert bus in ['usb', 'bluetooth', 'i2c', 'serial', 'virt'], f'{tabletfile}: unknown bus type'
-         assert re.match('[0-9a-f]{4}', vid), f'{tabletfile}: {vid} must be lowercase hex'
-         assert re.match('[0-9a-f]{4}', pid), f'{tabletfile}: {pid} must be lowercase hex'
- 
+@@ -46,6 +46,7 @@ def test_device_match(tabletfile):
+             "bluetooth",
+             "i2c",
+             "serial",
++            "virt",
+         ], f"{tabletfile}: unknown bus type"
+         assert re.match(
+             "[0-9a-f]{4}", vid
 -- 
-2.39.1
+2.40.1
 

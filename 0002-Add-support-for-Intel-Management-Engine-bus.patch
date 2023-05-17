@@ -1,4 +1,4 @@
-From df9f3dc3b76fac2dae92e53250cc5ed8ed8f4c8a Mon Sep 17 00:00:00 2001
+From 10ef0701cdde200063a73b3db5bfb305a12909c2 Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Sat, 1 Jun 2019 21:17:15 +0200
 Subject: [PATCH 02/12] Add support for Intel Management Engine bus
@@ -11,8 +11,8 @@ the Microsoft Surface Books, Surface Pro 5 and 6, and Surface Laptops.
  libwacom/libwacom.c          | 5 +++++
  libwacom/libwacom.h          | 1 +
  test/test-tablet-validity.c  | 1 +
- test/test_data_files.py      | 2 +-
- 5 files changed, 12 insertions(+), 1 deletion(-)
+ test/test_data_files.py      | 1 +
+ 5 files changed, 12 insertions(+)
 
 diff --git a/libwacom/libwacom-database.c b/libwacom/libwacom-database.c
 index 96aaa5e..cc3ecfd 100644
@@ -84,18 +84,17 @@ index da5fe07..6b45597 100644
  			g_assert_cmpint(pid, >, 0);
  			break;
 diff --git a/test/test_data_files.py b/test/test_data_files.py
-index 4b21b6a..04a1310 100755
+index 476aeca..cc739dd 100755
 --- a/test/test_data_files.py
 +++ b/test/test_data_files.py
-@@ -41,7 +41,7 @@ def test_device_match(tabletfile):
-             continue
- 
-         bus, vid, pid = match.split(':')[:3]  # skip the name part of the match
--        assert bus in ['usb', 'bluetooth', 'i2c', 'serial', 'virt'], f'{tabletfile}: unknown bus type'
-+        assert bus in ['usb', 'bluetooth', 'i2c', 'serial', 'virt', 'mei'], f'{tabletfile}: unknown bus type'
-         assert re.match('[0-9a-f]{4}', vid), f'{tabletfile}: {vid} must be lowercase hex'
-         assert re.match('[0-9a-f]{4}', pid), f'{tabletfile}: {pid} must be lowercase hex'
- 
+@@ -47,6 +47,7 @@ def test_device_match(tabletfile):
+             "i2c",
+             "serial",
+             "virt",
++            "mei",
+         ], f"{tabletfile}: unknown bus type"
+         assert re.match(
+             "[0-9a-f]{4}", vid
 -- 
-2.39.1
+2.40.1
 
