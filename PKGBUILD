@@ -6,7 +6,7 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=112.0.2
+pkgver=113.0.1
 pkgrel=1
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3 aarch64)
@@ -42,14 +42,14 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
   "librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git"
   "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git"
   "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git")
-sha256sums=('e6a4819a3b82b1ca6c45296e50e6c9ab653306eeb540e50ba8683e339565992e'
-  'SKIP'
-  '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP')
+sha256sums=('c4f86ecbb3f418cf8f0000a3824c0decb6ef2253f468cf6e005c5fd1de33da4d'
+            'SKIP'
+            '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 # sha256sums_aarch64=()
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
@@ -174,10 +174,8 @@ END
   patch -Np1 -i "${_librewolf_patches_dir}"/remove_addons.patch
 
   # KDE menu and unity menubar
-  patch -Np1 -i "${_cachyos_patches_dir}"/unity_kde/mozilla-kde.patch
   patch -Np1 -i "${_cachyos_patches_dir}"/unity_kde/firefox-kde.patch
-  patch -Np1 -i "${_cachyos_patches_dir}"/unity_kde/unity-menubar.patch
-  patch -Np1 -i "${_cachyos_patches_dir}"/kde/mozilla-nongnome-proxies.patch
+  patch -Np1 -i "${_patches_dir}"/kde-upstream/unity-menubar.patch
 
   # Disabling Pocket
   patch -Np1 -i "${_librewolf_patches_dir}"/sed-patches/disable-pocket.patch
