@@ -1,0 +1,15 @@
+pkgbase = crankshaft-appimage
+	pkgdesc = A sensible krunker client written in typescript
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/KraXen72/crankshaft
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = glibc
+	conflicts = crankshaft
+	options = !strip
+	source = crankshaft-1.7.0.AppImage::https://github.com/KraXen72/crankshaft/releases/download/1.7.0/crankshaft-portable-linux-x86_64.AppImage
+	sha256sums = d8843ac48f695d7e6e0e280f3446997395705c04a0514d979297c1e56aa7a9a2
+
+pkgname = crankshaft-appimage
