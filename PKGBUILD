@@ -2,7 +2,7 @@
 # Contributor: sergej@aur.archlinux.org
 
 pkgname=slack-libpurple-git
-pkgver=r369.b0453c7
+pkgver=r372.1cfcf66
 pkgver() {
   cd "$srcdir/slack-libpurple/"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -15,7 +15,7 @@ license=('GPL3')
 makedepends=('git')
 options=(!strip)
 depends=('libpurple')
-source=('slack-libpurple::git+https://github.com/dylex/slack-libpurple.git#branch=finduserhack')
+source=('slack-libpurple::git+https://github.com/dylex/slack-libpurple.git')
 sha256sums=('SKIP')
 
 build() {
