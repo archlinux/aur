@@ -1,7 +1,7 @@
 pkgbase = fs2es-indexer
 	pkgdesc = File system indexer for Elasticsearch
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ellerhold/fs2es-indexer
 	arch = any
 	makedepends = python-setuptools
