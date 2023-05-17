@@ -22,9 +22,12 @@ pkgver() {
 }
 
 build() {
+  # The API ID and hash provided here are for use with Paper Plane only.
+  # For other projects, please get your own API ID and hash at https://my.telegram.org/apps
+
   arch-meson "$pkgname" build \
-    -Dtg_api_id=611335 \
-    -Dtg_api_hash=d524b414d21f4d37f08684c1df41ac9c
+    -Dtg_api_id=22303002 \
+    -Dtg_api_hash=3cc0969992690f032197e6609b296599
 
   meson compile -C build
 }
