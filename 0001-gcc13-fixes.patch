@@ -1,0 +1,194 @@
+From e6603d6299737d4cb83d716dd9bb21b2d662ec35 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=A9clairevoyant?=
+ <848000+eclairevoyant@users.noreply.github.com>
+Date: Wed, 17 May 2023 00:45:40 -0400
+Subject: [PATCH] gcc13 fixes
+
+---
+ data/plugins/generated/compressor.lv2/compressor.cpp             | 1 +
+ data/plugins/generated/cubic_distortion.lv2/cubic_distortion.cpp | 1 +
+ data/plugins/generated/flanger.lv2/flanger.cpp                   | 1 +
+ data/plugins/generated/gate_stereo.lv2/gate_stereo.cpp           | 1 +
+ data/plugins/generated/highpass_filter.lv2/highpass_filter.cpp   | 1 +
+ data/plugins/generated/lowpass_filter.lv2/lowpass_filter.cpp     | 1 +
+ data/plugins/generated/parametric_eq.lv2/parametric_eq.cpp       | 1 +
+ data/plugins/generated/peak_limiter.lv2/peak_limiter.cpp         | 1 +
+ data/plugins/generated/phaser.lv2/phaser.cpp                     | 1 +
+ data/plugins/generated/smooth_delay.lv2/smooth_delay.cpp         | 1 +
+ data/plugins/generated/triple_synth.lv2/triple_synth.cpp         | 1 +
+ data/plugins/generated/wah4.lv2/wah4.cpp                         | 1 +
+ data/plugins/generated/white_noise.lv2/white_noise.cpp           | 1 +
+ data/plugins/generated/zita_rev1.lv2/zita_rev1.cpp               | 1 +
+ 14 files changed, 14 insertions(+)
+
+diff --git a/data/plugins/generated/compressor.lv2/compressor.cpp b/data/plugins/generated/compressor.lv2/compressor.cpp
+index 93d898728..75ce6c37a 100644
+--- a/data/plugins/generated/compressor.lv2/compressor.cpp
++++ b/data/plugins/generated/compressor.lv2/compressor.cpp
+@@ -42,6 +42,7 @@ Compilation options: -a /usr/share/faust/lv2.cpp -lang cpp -i -cn compressor -es
+ 
+ #include <stdlib.h>
+ #include <string.h>
++#include <cstdint>
+ #include <math.h>
+ #include <list>
+ #include <map>
+diff --git a/data/plugins/generated/cubic_distortion.lv2/cubic_distortion.cpp b/data/plugins/generated/cubic_distortion.lv2/cubic_distortion.cpp
+index 8b8493458..c2c3dd48d 100644
+--- a/data/plugins/generated/cubic_distortion.lv2/cubic_distortion.cpp
++++ b/data/plugins/generated/cubic_distortion.lv2/cubic_distortion.cpp
+@@ -42,6 +42,7 @@ Compilation options: -a /usr/share/faust/lv2.cpp -lang cpp -i -cn cubic_distorti
+ 
+ #include <stdlib.h>
+ #include <string.h>
++#include <cstdint>
+ #include <math.h>
+ #include <list>
+ #include <map>
+diff --git a/data/plugins/generated/flanger.lv2/flanger.cpp b/data/plugins/generated/flanger.lv2/flanger.cpp
+index 29765e8c0..190e211ef 100644
+--- a/data/plugins/generated/flanger.lv2/flanger.cpp
++++ b/data/plugins/generated/flanger.lv2/flanger.cpp
+@@ -42,6 +42,7 @@ Compilation options: -a /usr/share/faust/lv2.cpp -lang cpp -i -cn flanger -es 1
+ 
+ #include <stdlib.h>
+ #include <string.h>
++#include <cstdint>
+ #include <math.h>
+ #include <list>
+ #include <map>
+diff --git a/data/plugins/generated/gate_stereo.lv2/gate_stereo.cpp b/data/plugins/generated/gate_stereo.lv2/gate_stereo.cpp
+index 7b201633b..049930d60 100644
+--- a/data/plugins/generated/gate_stereo.lv2/gate_stereo.cpp
++++ b/data/plugins/generated/gate_stereo.lv2/gate_stereo.cpp
+@@ -42,6 +42,7 @@ Compilation options: -a /usr/share/faust/lv2.cpp -lang cpp -i -cn gate_stereo -e
+ 
+ #include <stdlib.h>
+ #include <string.h>
++#include <cstdint>
+ #include <math.h>
+ #include <list>
+ #include <map>
+diff --git a/data/plugins/generated/highpass_filter.lv2/highpass_filter.cpp b/data/plugins/generated/highpass_filter.lv2/highpass_filter.cpp
+index d34d20cf2..32e7898d3 100644
+--- a/data/plugins/generated/highpass_filter.lv2/highpass_filter.cpp
++++ b/data/plugins/generated/highpass_filter.lv2/highpass_filter.cpp
+@@ -42,6 +42,7 @@ Compilation options: -a /usr/share/faust/lv2.cpp -lang cpp -i -cn highpass_filte
+ 
+ #include <stdlib.h>
+ #include <string.h>
++#include <cstdint>
+ #include <math.h>
+ #include <list>
+ #include <map>
+diff --git a/data/plugins/generated/lowpass_filter.lv2/lowpass_filter.cpp b/data/plugins/generated/lowpass_filter.lv2/lowpass_filter.cpp
+index 6e1816b7a..c4496734f 100644
+--- a/data/plugins/generated/lowpass_filter.lv2/lowpass_filter.cpp
++++ b/data/plugins/generated/lowpass_filter.lv2/lowpass_filter.cpp
+@@ -42,6 +42,7 @@ Compilation options: -a /usr/share/faust/lv2.cpp -lang cpp -i -cn lowpass_filter
+ 
+ #include <stdlib.h>
+ #include <string.h>
++#include <cstdint>
+ #include <math.h>
+ #include <list>
+ #include <map>
+diff --git a/data/plugins/generated/parametric_eq.lv2/parametric_eq.cpp b/data/plugins/generated/parametric_eq.lv2/parametric_eq.cpp
+index 648e6f243..1b734f9b4 100644
+--- a/data/plugins/generated/parametric_eq.lv2/parametric_eq.cpp
++++ b/data/plugins/generated/parametric_eq.lv2/parametric_eq.cpp
+@@ -42,6 +42,7 @@ Compilation options: -a /usr/share/faust/lv2.cpp -lang cpp -i -cn parametric_eq
+ 
+ #include <stdlib.h>
+ #include <string.h>
++#include <cstdint>
+ #include <math.h>
+ #include <list>
+ #include <map>
+diff --git a/data/plugins/generated/peak_limiter.lv2/peak_limiter.cpp b/data/plugins/generated/peak_limiter.lv2/peak_limiter.cpp
+index 4f3ff80e4..0dfb82e08 100644
+--- a/data/plugins/generated/peak_limiter.lv2/peak_limiter.cpp
++++ b/data/plugins/generated/peak_limiter.lv2/peak_limiter.cpp
+@@ -42,6 +42,7 @@ Compilation options: -a /usr/share/faust/lv2.cpp -lang cpp -i -cn peak_limiter -
+ 
+ #include <stdlib.h>
+ #include <string.h>
++#include <cstdint>
+ #include <math.h>
+ #include <list>
+ #include <map>
+diff --git a/data/plugins/generated/phaser.lv2/phaser.cpp b/data/plugins/generated/phaser.lv2/phaser.cpp
+index e270fd3c2..9d25ed6aa 100644
+--- a/data/plugins/generated/phaser.lv2/phaser.cpp
++++ b/data/plugins/generated/phaser.lv2/phaser.cpp
+@@ -42,6 +42,7 @@ Compilation options: -a /usr/share/faust/lv2.cpp -lang cpp -i -cn phaser -es 1 -
+ 
+ #include <stdlib.h>
+ #include <string.h>
++#include <cstdint>
+ #include <math.h>
+ #include <list>
+ #include <map>
+diff --git a/data/plugins/generated/smooth_delay.lv2/smooth_delay.cpp b/data/plugins/generated/smooth_delay.lv2/smooth_delay.cpp
+index a1a97142b..21e5cd14a 100644
+--- a/data/plugins/generated/smooth_delay.lv2/smooth_delay.cpp
++++ b/data/plugins/generated/smooth_delay.lv2/smooth_delay.cpp
+@@ -42,6 +42,7 @@ Compilation options: -a /usr/share/faust/lv2.cpp -lang cpp -i -cn smooth_delay -
+ 
+ #include <stdlib.h>
+ #include <string.h>
++#include <cstdint>
+ #include <math.h>
+ #include <list>
+ #include <map>
+diff --git a/data/plugins/generated/triple_synth.lv2/triple_synth.cpp b/data/plugins/generated/triple_synth.lv2/triple_synth.cpp
+index 2bbd61ab0..c7ec746f3 100644
+--- a/data/plugins/generated/triple_synth.lv2/triple_synth.cpp
++++ b/data/plugins/generated/triple_synth.lv2/triple_synth.cpp
+@@ -42,6 +42,7 @@ Compilation options: -a /usr/share/faust/lv2.cpp -lang cpp -i -cn triple_synth -
+ 
+ #include <stdlib.h>
+ #include <string.h>
++#include <cstdint>
+ #include <math.h>
+ #include <list>
+ #include <map>
+diff --git a/data/plugins/generated/wah4.lv2/wah4.cpp b/data/plugins/generated/wah4.lv2/wah4.cpp
+index 4413d1c5f..297fe6032 100644
+--- a/data/plugins/generated/wah4.lv2/wah4.cpp
++++ b/data/plugins/generated/wah4.lv2/wah4.cpp
+@@ -42,6 +42,7 @@ Compilation options: -a /usr/share/faust/lv2.cpp -lang cpp -i -cn wah4 -es 1 -mc
+ 
+ #include <stdlib.h>
+ #include <string.h>
++#include <cstdint>
+ #include <math.h>
+ #include <list>
+ #include <map>
+diff --git a/data/plugins/generated/white_noise.lv2/white_noise.cpp b/data/plugins/generated/white_noise.lv2/white_noise.cpp
+index 9e11a222a..f83e88db5 100644
+--- a/data/plugins/generated/white_noise.lv2/white_noise.cpp
++++ b/data/plugins/generated/white_noise.lv2/white_noise.cpp
+@@ -42,6 +42,7 @@ Compilation options: -a /usr/share/faust/lv2.cpp -lang cpp -i -cn white_noise -e
+ 
+ #include <stdlib.h>
+ #include <string.h>
++#include <cstdint>
+ #include <math.h>
+ #include <list>
+ #include <map>
+diff --git a/data/plugins/generated/zita_rev1.lv2/zita_rev1.cpp b/data/plugins/generated/zita_rev1.lv2/zita_rev1.cpp
+index 2ab7f7996..be11f80f8 100644
+--- a/data/plugins/generated/zita_rev1.lv2/zita_rev1.cpp
++++ b/data/plugins/generated/zita_rev1.lv2/zita_rev1.cpp
+@@ -42,6 +42,7 @@ Compilation options: -a /usr/share/faust/lv2.cpp -lang cpp -i -cn zita_rev1 -es
+ 
+ #include <stdlib.h>
+ #include <string.h>
++#include <cstdint>
+ #include <math.h>
+ #include <list>
+ #include <map>
+-- 
+2.40.1
+

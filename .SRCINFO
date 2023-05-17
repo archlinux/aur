@@ -1,6 +1,6 @@
 pkgbase = zrythm
 	pkgdesc = Highly automated and intuitive digital audio workstation
-	pkgver = 1.0.0.beta.4.8.1
+	pkgver = 1.0.0.beta.4.9.1
 	pkgrel = 1
 	url = https://www.zrythm.org
 	arch = x86_64
@@ -48,12 +48,14 @@ pkgbase = zrythm
 	depends = lilv
 	optdepends = realtime-privileges: allow memory locking
 	options = debug
-	source = https://www.zrythm.org/releases/zrythm-1.0.0-beta.4.8.1.tar.xz
-	source = https://www.zrythm.org/releases/zrythm-1.0.0-beta.4.8.1.tar.xz.asc
+	source = https://www.zrythm.org/releases/zrythm-1.0.0-beta.4.9.1.tar.xz
+	source = https://www.zrythm.org/releases/zrythm-1.0.0-beta.4.9.1.tar.xz.asc
 	source = git+https://github.com/drobilla/zix.git
+	source = 0001-gcc13-fixes.patch
 	validpgpkeys = 48132384AD3DF7D86E254B83022EAE42313D70F3
-	sha256sums = c981432f793efe1a62f6f4345dee9ef5533f4a628316de5574b745b73dcda777
+	sha256sums = 0dea655ebf91826292b5e89e88b0ecd50c6958969127eecb0965137e17596d6a
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = bb93eea519020e491f85c38ab3901ac530bbf747c4e7acc3aaea39f402091653
 
 pkgname = zrythm

@@ -1,4 +1,5 @@
-*
-!.gitignore
-!.SRCINFO
-!PKGBUILD
+/*
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
+!/0001-gcc13-fixes.patch
