@@ -1,0 +1,56 @@
+diff --git a/src/discord_rpc.rs b/src/discord_rpc.rs
+index 0d7416c..18413ea 100644
+--- a/src/discord_rpc.rs
++++ b/src/discord_rpc.rs
+@@ -52,6 +52,9 @@ impl DiscordRpc {
+                 let mut connected = false;
+ 
+                 while let Ok(update) = receiver.recv() {
++                    // NOTE: Panicing closes the channel, which causes issues furether down the line
++                    // I replaced them with code from core::result::unwrap_failed
++                    // I hope upstream finds a better way to handle these errors.
+                     match update {
+                         RpcUpdates::Connect => {
+                             if !connected {
+@@ -60,7 +63,9 @@ impl DiscordRpc {
+                                 client.connect().expect("Failed to connect to discord");
+ 
+                                 client.set_activity(Self::get_activity(&params))
+-                                    .expect("Failed to update discord rpc activity");
++                                    .unwrap_or_else(|error| {
++                                        eprintln!("Failed to update discord rpc activity: {error:?}")
++                                    });
+                             }
+                         }
+ 
+@@ -68,7 +73,9 @@ impl DiscordRpc {
+                             if connected {
+                                 connected = false;
+ 
+-                                client.close().expect("Failed to disconnect from discord");
++                                client.close().unwrap_or_else(|error| {
++                                    eprintln!("Failed to disconnect from discord: {error:?}")
++                                });
+                             }
+                         }
+ 
+@@ -79,13 +86,17 @@ impl DiscordRpc {
+ 
+                             if connected {
+                                 client.set_activity(Self::get_activity(&params))
+-                                    .expect("Failed to update discord rpc activity");
++                                    .unwrap_or_else(|error| {
++                                        eprintln!("Failed to update discord rpc activity: {error:?}")
++                                    })
+                             }
+                         }
+ 
+                         RpcUpdates::ClearActivity => {
+                             if connected {
+-                                client.clear_activity().expect("Failed to clear discord rpc activity");
++                                client.clear_activity().unwrap_or_else(|error| {
++                                    eprintln!("Failed to clear discord rpc activity: {error:?}")
++                                });
+                             }
+                         }
+                     }

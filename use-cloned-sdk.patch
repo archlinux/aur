@@ -1,0 +1,19 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index 005f69c..3bf4ae6 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -16,11 +16,11 @@ opt-level = "s"
+ glib-build-tools = "0.17"
+ 
+ [dependencies.anime-launcher-sdk]
+-git = "https://github.com/an-anime-team/anime-launcher-sdk"
++#git = "https://github.com/an-anime-team/anime-launcher-sdk"
+-tag = "1.2.1"
++#tag = "1.2.1"
+ features = ["all", "genshin"]
+ 
+-# path = "../anime-launcher-sdk" # ! for dev purposes only
++path = "../anime-launcher-sdk" # ! for dev purposes only
+ 
+ [dependencies]
+ relm4 = { version = "0.6.0-beta.1", features = ["macros", "libadwaita"] }

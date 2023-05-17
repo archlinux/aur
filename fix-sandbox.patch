@@ -1,0 +1,69 @@
+diff --git a/src/config/schema_blanks/sandbox/mod.rs b/src/config/schema_blanks/sandbox/mod.rs
+index a6b3590..36305d9 100644
+--- a/src/config/schema_blanks/sandbox/mod.rs
++++ b/src/config/schema_blanks/sandbox/mod.rs
+@@ -1,5 +1,6 @@
+ use serde::{Serialize, Deserialize};
+ use serde_json::Value as JsonValue;
++use std::fs::metadata;
+ 
+ mod mounts;
+ 
+@@ -141,15 +142,53 @@ impl Sandbox {
+         }
+ 
+         if self.isolate_home {
+-            command.push_str(" --tmpfs /home");
+-            command.push_str(" --tmpfs /var/home");
++            match metadata("/home") {
++                Ok(meta) => {
++                    if meta.is_dir() {
++                        command.push_str(" --tmpfs /home");
++                    } else {
++                        tracing::info!("/var/home is not a directory.")
++                    }
++                },
++                Err(_) => tracing::info!("/home does not exist.")
++            }
++            match metadata("/var/home") {
++                Ok(meta) => {
++                    if meta.is_dir() {
++                        command.push_str(" --tmpfs /var/home");
++                    } else {
++                        tracing::info!("/var/home is not a directory.")
++                    }
++                },
++                Err(_) => tracing::info!("/var/home does not exist.")
++            }
+ 
+             if let Ok(user) = std::env::var("USER") {
+-                command += &format!(" --tmpfs '/var/home/{}'", user.trim());
++                let dir = format!("/var/home/{}", user.trim());
++                match metadata(&dir) {
++                    Ok(meta) => {
++                        if meta.is_dir() {
++                            command += &format!(" --tmpfs '{}'", dir);
++                        } else {
++                            tracing::info!("{} is not a directory.", dir)
++                        }
++                    },
++                    Err(_) => tracing::info!("{} does not exist.", dir)
++                }
+             }
+ 
+             if let Ok(home) = std::env::var("HOME") {
+-                command += &format!(" --tmpfs '{}'", home.trim());
++                let dir = home.trim();
++                match metadata(dir) {
++                    Ok(meta) => {
++                        if meta.is_dir() {
++                            command += &format!(" --tmpfs '{}'", dir);
++                        } else {
++                            tracing::info!("{} is not a directory.", dir)
++                        }
++                    },
++                    Err(_) => tracing::info!("{} does not exist.", dir)
++                }
+             }
+         }
+ 
