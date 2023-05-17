@@ -1,0 +1,16 @@
+pkgbase = casterr-appimage
+	pkgdesc = Screen recorder with the main goal of easing the process of recording and clipping your best moments in-game.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://casterr.sbond.co/
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = casterr
+	options = !strip
+	source = casterr-1.4.0.AppImage::https://github.com/sbondCo/Casterr/releases/download/v1.4.0/Casterr-1.4.0.AppImage
+	sha256sums = 00dc61292ca49a7a7c88f9f20d8effacc34d9e4fb547fa1c7a717a13fbec8138
+
+pkgname = casterr-appimage
