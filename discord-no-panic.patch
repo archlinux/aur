@@ -1,8 +1,8 @@
 diff --git a/src/discord_rpc.rs b/src/discord_rpc.rs
-index 0d7416c..18413ea 100644
+index 0d7416c..8880760 100644
 --- a/src/discord_rpc.rs
 +++ b/src/discord_rpc.rs
-@@ -52,6 +52,9 @@ impl DiscordRpc {
+@@ -52,15 +52,22 @@ impl DiscordRpc {
                  let mut connected = false;
  
                  while let Ok(update) = receiver.recv() {
@@ -12,18 +12,26 @@ index 0d7416c..18413ea 100644
                      match update {
                          RpcUpdates::Connect => {
                              if !connected {
-@@ -60,7 +63,9 @@ impl DiscordRpc {
-                                 client.connect().expect("Failed to connect to discord");
- 
-                                 client.set_activity(Self::get_activity(&params))
+-                                connected = true;
+-
+-                                client.connect().expect("Failed to connect to discord");
+-
+-                                client.set_activity(Self::get_activity(&params))
 -                                    .expect("Failed to update discord rpc activity");
-+                                    .unwrap_or_else(|error| {
-+                                        eprintln!("Failed to update discord rpc activity: {error:?}")
-+                                    });
++                                match client.connect() {
++                                    Ok(_) => {
++                                        connected = true;
++                                        client.set_activity(Self::get_activity(&params))
++                                            .unwrap_or_else(|error| {
++                                                eprintln!("Failed to update discord rpc activity: {error:?}")
++                                            });
++                                    }
++                                    Err(error) => eprintln!("Failed to connect to discord: {error:?}")
++                                };
                              }
                          }
  
-@@ -68,7 +73,9 @@ impl DiscordRpc {
+@@ -68,7 +75,9 @@ impl DiscordRpc {
                              if connected {
                                  connected = false;
  
@@ -34,7 +42,7 @@ index 0d7416c..18413ea 100644
                              }
                          }
  
-@@ -79,13 +86,17 @@ impl DiscordRpc {
+@@ -79,13 +88,17 @@ impl DiscordRpc {
  
                              if connected {
                                  client.set_activity(Self::get_activity(&params))
