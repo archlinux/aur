@@ -8,7 +8,7 @@ arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/paper-plane-developers/paper-plane'
 license=(GPL3)
 depends=(gtk4-paper-plane libadwaita-git libtd-dev rlottie-paper-plane-git libtdjson.so)
-makedepends=(git meson rust blueprint-compiler appstream-glib)
+makedepends=(git meson rust blueprint-compiler appstream)
 provides=(paper-plane)
 conflicts=(paper-plane)
 
