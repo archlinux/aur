@@ -1,0 +1,20 @@
+pkgbase = python-mortgage_calculator-git
+	pkgdesc = Helps with understanding and managing loans/mortgages
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/greyltc/mortgage_calculator
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	depends = python-humanfriendly
+	depends = python-scipy
+	depends = python-fpdf2
+	source = git+https://github.com/greyltc/mortgage_calculator
+	md5sums = SKIP
+
+pkgname = python-mortgage_calculator-git
