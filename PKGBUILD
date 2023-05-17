@@ -5,14 +5,14 @@ _shortpkgname=meowfetch
 pkgdesc=' minimal, fast and customizable system information program written in go.'
 arch=('x86_64')
 url='https://github.com/Itsnexn/meowfetch'
-pkgrel=2
+pkgrel=3
 license=('MIT')
 makedepends=('go' 'git')
 source=('git+https://github.com/Itsnexn/meowfetch')
 md5sums=('SKIP')
 provides=($_shortpkgname)
 conflicts=($_shortpkgname)
-pkgver=1.0.1.r4.ge5424be
+pkgver=1.0.1.e5424be
 
 pkgver() {
 	cd meowfetch
