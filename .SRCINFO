@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-data-chaps-trains-europe-2023-latest
 	pkgdesc = 2022/2023 Timetable data for the timetable search engines by CHAPS: European trains.
 	pkgver = 2023_05_17
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvatt
 	arch = any

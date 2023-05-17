@@ -1,6 +1,6 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2022-11-14.
+# PKGBUILD last time manually edited: At least on 2023-05-17.
 
 _year='23'
 _prevyear="$(( ${_year} - 1 ))"
@@ -9,7 +9,7 @@ _pkgname="idos-timetable-data-chaps-trains-europe-20${_year}"
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2023_05_17
-pkgrel=2
+pkgrel=3
 pkgdesc="20${_prevyear}/20${_year} Timetable data for the timetable search engines by CHAPS: European trains."
 arch=(any)
 url="http://chaps.cz/eng/download/idos/zip#kotvatt"
