@@ -2,8 +2,8 @@
 # Contributor: Julien Savard <juju@juju2143.ca>
 pkgname=('x16-emulator-bin' 'x16-rom-bin' 'x16-docs-bin')
 pkgbase=x16-emulator-bin
-pkgver=r42
-pkgrel=2
+pkgver=r43
+pkgrel=1
 pkgdesc="An emulator for The 8-Bit Guy's Commander X16 (release package)"
 arch=('any')
 url="http://commanderx16.com/"
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://github.com/X16Community/x16-emulator/releases/download/$pkgver/x16emu_linux-x86_64-$pkgver.zip"
 	"https://raw.githubusercontent.com/X16Community/x16-emulator/$pkgver/.gh/logo.png")
-sha256sums=('171ec7fdfec2676a9bd9204bf0f805264eb20ce0476748e9caef3e79111e59e1'
+sha256sums=('1158f0acda7148805a4b0c9a8e24ae6d99fca10f48d3c22d68329a232a2ffde1'
             'd6765978fb80bea04c774d58667ea2c974395958506ef7add48fcd7f4ceb8988')
 
 prepare() {
@@ -38,8 +38,8 @@ package_x16-emulator-bin() {
 	conflicts=('x16-emulator')
 
 	install -Dm755 x16emu "$pkgdir/usr/bin/x16emu"
-	install -Dm644 docs/github-pandoc.css "$pkgdir/usr/share/doc/${pkgname%-bin}/github-pandoc.css"
-	install -Dm644 docs/README.html "$pkgdir/usr/share/doc/${pkgname%-bin}/README.html"
+	#install -Dm644 docs/github-pandoc.css "$pkgdir/usr/share/doc/${pkgname%-bin}/github-pandoc.css"
+	install -Dm644 $srcdir/README.pdf "$pkgdir/usr/share/doc/${pkgname%-bin}/README.pdf"
 	install -Dm644 logo.png "$pkgdir/usr/share/pixmaps/${pkgname%-bin}.png"
 	install -Dm644 "${pkgname%-bin}.desktop" "$pkgdir/usr/share/applications/${pkgname%-bin}.desktop"
 }
@@ -51,7 +51,7 @@ package_x16-rom-bin() {
 
 	install -Dm644 rom.bin "$pkgdir/usr/share/x16-rom/rom.bin"
 	install -Dm644 *.sym "$pkgdir/usr/share/x16-rom/"
-	install -Dm644 docs/github-pandoc.css "$pkgdir/usr/share/doc/x16-rom/github-pandoc.css"
+	#install -Dm644 docs/github-pandoc.css "$pkgdir/usr/share/doc/x16-rom/github-pandoc.css"
 	#install -Dm644 docs/KERNAL-BASIC.html "$pkgdir/usr/share/doc/x16-rom/KERNAL-BASIC.html"
 }
 
@@ -60,8 +60,8 @@ package_x16-docs-bin() {
 	provides=('x16-docs')
 	conflicts=('x16-docs')
 
-	install -Dm644 docs/github-pandoc.css "$pkgdir/usr/share/doc/x16-docs/github-pandoc.css"
-	install -Dm644 docs/Commander\ X16\ Programmer\'s\ Reference\ Guide.html "$pkgdir/usr/share/doc/x16-docs/Commander X16 Programmer's Reference Guide.html"
-	install -Dm644 docs/VERA\ Programmer\'s\ Reference.html "$pkgdir/usr/share/doc/x16-docs/VERA Programmer's Reference.html"
+	#install -Dm644 docs/github-pandoc.css "$pkgdir/usr/share/doc/x16-docs/github-pandoc.css"
+	install -Dm644 $srcdir/"Commander X16 Programmer's Reference Guide.pdf" "$pkgdir/usr/share/doc/x16-docs/Commander X16 Programmer's Reference Guide.pdf"
+	install -Dm644 $srcdir/"VERA Programmer's Reference.pdf" "$pkgdir/usr/share/doc/x16-docs/VERA Programmer's Reference.pdf"
 }
 
