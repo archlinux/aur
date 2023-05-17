@@ -13,11 +13,6 @@
 #   'y' - apply this patch
 #   'noast' - apply this patch with parse comments without AST
 #
-# Support macro evaluation on hover (D148457)
-# CLANGD_MACROEVAL:
-#   'n' - do not apply this patch
-#   'y' - apply this patch
-#
 # Resolve forwarded parameters in hover (D130265)
 # CLANGD_RESOLVEFWDPARAMS:
 #   'n' - do not apply this patch
@@ -62,7 +57,7 @@
 : ${CLANGD_HOVERINHEX:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt
-pkgver=17.r10631.g5ec62943ac18
+pkgver=17.r11538.g7ce3d9228ff1
 pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
@@ -74,7 +69,6 @@ options=('staticlibs' '!lto') # Getting thousands of test failures with LTO
 source=('git+https://github.com/llvm/llvm-project.git'
         'hover-doxygen-noast.patch'
         'hover-doxygen.patch'
-        'hover-macro-eval.patch'
         'hover-resolve-forward-params.patch'
         'lsp-codelens.patch'
         'postfix-completion.patch'
@@ -84,7 +78,6 @@ source=('git+https://github.com/llvm/llvm-project.git'
 sha256sums=('SKIP'
             '843bf80065da5929276e070a5e66cd2a8391090bba2ac2f9c48be0a9bb35d315'
             'b00ed1cef0ee45f7db596d268bb1e0af6da986590830ee33c7da7596a3c32fc0'
-            'bc3f392c87560c4e42d317e28d3524f8a6052efa31b6091186139d14b2a8368d'
             '9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7'
             '9bb8d1d27e3b5a184af71a5aad310da3971e77279f65d7bf804d619ce907280a'
             'e684219a4a7d457395296fdd38354a03fc51658ddd38d6d835fe347fc25d2a53' # postfix-completion
@@ -109,9 +102,6 @@ prepare() {
         else
             patch -p1 -i ${srcdir}/hover-doxygen.patch
         fi
-    fi
-    if [ "$CLANGD_MACROEVAL" != "n" ]; then
-        patch -p1 -i ${srcdir}/hover-macro-eval.patch
     fi
     if [ "$CLANGD_RESOLVEFWDPARAMS" != "n" ]; then
         patch -p1 -i ${srcdir}/hover-resolve-forward-params.patch
