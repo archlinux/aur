@@ -1,6 +1,6 @@
 # Maintainer: Emanuel Couto <unit73e@gmail.com>
 pkgname=cnijfilter2
-pkgver=6.40
+pkgver=6.50
 pkgrel=1
 pkgdesc="Canon IJ Printer Driver for Linux"
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ depends=('cups' 'libxml2' 'ghostscript')
 makedepends=('automake' 'autoconf')
 provides=('tocanonij' 'tocnpwg' 'cnijlgmon3')
 conflicts=('cnijfilter' 'cnijfilter-mg3600')
-source=("https://gdlp01.c-wss.com/gds/1/0100011381/01/$pkgname-source-$pkgver-1.tar.gz")
-md5sums=('1c942b1200f420d4b64b734b75b85956')
+source=("https://gdlp01.c-wss.com/gds/9/0100011639/01/$pkgname-source-$pkgver-1.tar.gz")
+sha256sums=('1f240ee60adbd03f8706bd80f6f2f964b803facbb2e03f0ffbd68cc4ed77724e')
 
 prepare() {
 	cd "$pkgname-source-$pkgver-1"
