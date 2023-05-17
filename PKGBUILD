@@ -10,7 +10,7 @@ pkgname='nginx_passwd'
 pkgdesc='Basic Auth Password File Manager for nginx'
 _gitname='nginx_passwd'
 
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 url="https://github.com/gene-git/nginx_passwd"
 
@@ -20,13 +20,8 @@ license=(MIT)
 depends=('python>3.9' 'python-packaging' 'openssl' )
 makedepends=('git' 'python-pip' 'python-wheel' 'python-poetry' 'rsync')
 _mkpkg_depends=('python>minor')
-source=("git+https://github.com/gene-git/${_gitname}")
+source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
 sha512sums=('SKIP')
-
-pkgver() {
-     cd "${_gitname}"
-     git describe --tags --abbrev=0
-}
 
 build() {
     cd "${_gitname}"
