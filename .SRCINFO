@@ -1,0 +1,18 @@
+pkgbase = tesler-appimage
+	pkgdesc = TesLEr - The Tesla Sentinel Viewer
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/j-catania/TeslaSentinelViewer
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = tesler
+	options = !strip
+	source = tesler-0.2.3.AppImage::https://github.com/j-catania/TeslaSentinelViewer/releases/download/v0.2.3/TesLEr-0.2.3.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/j-catania/TeslaSentinelViewer/main/LICENSE
+	sha256sums = 5447e01520ad757fdbb4130e764a863c9d282c5dd48cf2fabbd33e171a2decfd
+	sha256sums = 29eee3e9d9c5dd67213ec3ab4a7eef57a1224750e2e9aab3a278177a9444a355
+
+pkgname = tesler-appimage
