@@ -1,0 +1,17 @@
+pkgbase = diebahn
+	pkgdesc = GTK4 frontend for the travel information of the german railway
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://gitlab.com/Schmiddiii/diebahn
+	arch = any
+	license = AGPL3
+	makedepends = cargo
+	makedepends = meson
+	depends = libadwaita
+	depends = libsecret
+	depends = protobuf
+	options = !lto
+	source = https://gitlab.com/Schmiddiii/diebahn/-/archive/1.3.0/diebahn-1.3.0.tar.gz
+	sha256sums = 97739b7c7458471e8ac61d9b534b617e47243df9102dc7064e61a8cf6a21e6a7
+
+pkgname = diebahn
