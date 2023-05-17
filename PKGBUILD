@@ -13,8 +13,8 @@ conflicts=('qzdl')
 makedepends=('git' 'cmake')
 source=("git+https://github.com/qbasicer/qzdl.git"
 "zdl.desktop")
-sha256sums=("SKIP"
-"ba17717a3dee6043696e349ea56951fa2848d8fc5271b0ce3d4ac8fafdd711a7")
+sha256sums=('SKIP'
+            'bd483515ba49b08a60ba7551e9f0b92e4cdb3ace902952f2af35d0608ad51add')
 
 pkgver() {
   cd "$SRCDEST/qzdl"
