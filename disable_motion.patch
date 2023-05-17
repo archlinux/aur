@@ -1,0 +1,32 @@
+diff --git a/main.c b/main.c
+index 735b61c..e0f0178 100644
+--- a/main.c
++++ b/main.c
+@@ -152,6 +152,8 @@ const char *blank_dpms_state = "off";
+ int saver_reset_on_auth_close = 0;
+ //! Delay we should wait before starting mapping windows to let children run.
+ int saver_delay_ms = 0;
++//! Whether disable mouse motion to wake up auth
++int disable_mouse_motion = 0;
+ 
+ //! The PID of a currently running notify command, or 0 if none is running.
+ pid_t notify_command_pid = 0;
+@@ -441,6 +443,7 @@ void LoadDefaults() {
+   saver_reset_on_auth_close =
+       GetIntSetting("XSECURELOCK_SAVER_RESET_ON_AUTH_CLOSE", 0);
+   saver_delay_ms = GetIntSetting("XSECURELOCK_SAVER_DELAY_MS", 0);
++  disable_mouse_motion = GetIntSetting("XSECURELOCK_DISABLE_MOUSE_MOTION", 0);
+ }
+ 
+ /*! \brief Parse the command line arguments, or exit in case of failure.
+@@ -1325,6 +1328,10 @@ int main(int argc, char **argv) {
+           }
+           break;
+         case MotionNotify:
++            if (disable_mouse_motion) {
++              // if disable_mouse_motion = 1, ignore MotionNotify
++              break;
++           }
+         case ButtonPress:
+           // Mouse events launch the auth child.
+           ScreenNoLongerBlanked(display);

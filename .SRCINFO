@@ -1,0 +1,27 @@
+pkgbase = xsecurelock-no-mouse-motion
+	pkgdesc = X11 screen lock utility with security in mind, patched with ignore mouse motion option
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/google/xsecurelock
+	install = xsecurelock-no-mouse-motion.install
+	arch = x86_64
+	license = APACHE
+	makedepends = xorg-xset
+	depends = pam
+	depends = libxcomposite
+	depends = libxmu
+	depends = libxft
+	depends = libxrandr
+	depends = libxss
+	optdepends = mplayer: for the saver_mplayer module
+	optdepends = mpv: for the saver_mpv module
+	optdepends = imagemagick: for the auth_pamtester module
+	optdepends = pamtester: for the auth_pamtester module
+	optdepends = xorg-xset: for the saver_blank module
+	optdepends = xscreensaver: for the saver_xscreensaver module
+	provides = xsecurelock
+	conflicts = xsecurelock
+	source = https://github.com/google/xsecurelock/archive/v1.8.0.tar.gz
+	sha512sums = c98aa9e5a5574a90a8b0cb8d41b67489c34689b489b9a079aa16493435d9dafdc090ac2e8ba5fa766d6ce2b3ee8ff12c09caa9eb851359be315f9d14563c8556
+
+pkgname = xsecurelock-no-mouse-motion
