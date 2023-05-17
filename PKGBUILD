@@ -2,13 +2,13 @@
 
 _pkgname="holehe"
 pkgname="${_pkgname}-git"
-pkgver=r405.bbc0ef7
+pkgver=r424.2b6868f
 pkgrel=1
 pkgdesc="Efficiently finding registered accounts from emails."
 arch=("any")
 url="https://github.com/megadose/holehe"
 license=("GPL")
-_pydeps=("termcolor" "bs4" "httpx" "trio" "argparse" "tqdm" "colorama")
+_pydeps=("termcolor" "beautifulsoup4" "httpx" "trio" "tqdm" "colorama")
 depends=("python" ${_pydeps[@]/#/python-})
 makedepends=("git" "python-setuptools")
 provides=("holehe")
