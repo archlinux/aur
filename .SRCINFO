@@ -1,0 +1,26 @@
+pkgbase = paper-plane
+	pkgdesc = Chat over Telegram on a modern and elegant client
+	pkgver = 0.1.0.beta.1
+	pkgrel = 1
+	url = https://github.com/paper-plane-developers/paper-plane
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = rust
+	makedepends = blueprint-compiler
+	makedepends = appstream-glib
+	depends = gtk4-paper-plane
+	depends = libadwaita-git
+	depends = libtd-dev
+	depends = rlottie-paper-plane-git
+	depends = libtdjson.so
+	provides = paper-plane
+	conflicts = paper-plane
+	source = git+https://github.com/paper-plane-developers/paper-plane.git
+	sha256sums = SKIP
+
+pkgname = paper-plane
