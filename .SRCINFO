@@ -1,0 +1,15 @@
+pkgbase = weakauras-companion-appimage
+	pkgdesc = A cross-platform application built to provide the missing link between Wago.io and World of Warcraft
+	pkgver = 5.0.1
+	pkgrel = 1
+	url = https://weakauras.wtf/
+	arch = x86_64
+	license = GPL2
+	depends = zlib
+	depends = glibc
+	conflicts = weakauras-companion
+	options = !strip
+	source = weakauras-companion-5.0.1.AppImage::https://github.com/WeakAuras/WeakAuras-Companion/releases/download/v5.0.1/WeakAuras-Companion-5.0.1.AppImage
+	sha256sums = 1e65f65d2d81ffb958cf10f084397d95a24b44e0ec1ff03df0adbaf0535b4bb1
+
+pkgname = weakauras-companion-appimage
