@@ -1,6 +1,6 @@
 pkgbase = python-nh3
 	pkgdesc = Ammonia HTML sanitizer Python binding
-	pkgver = 0.2.8
+	pkgver = 0.2.11
 	pkgrel = 1
 	url = https://pypi.org/project/nh3/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = python-nh3
 	makedepends = maturin
 	makedepends = rust
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/n/nh3/nh3-0.2.8.tar.gz
-	sha256sums = 83814e5725f22eccc7f601b58846a7860d2490455777ad107fdc4b7127218920
+	source = https://files.pythonhosted.org/packages/source/n/nh3/nh3-0.2.11.tar.gz
+	sha256sums = 3ed2624ca0a1cec3128e8f915e9954dbf6d0e71e76b29813c699fb2d46d01b8f
 
 pkgname = python-nh3
