@@ -1,6 +1,6 @@
 pkgbase = idos-timetable-maps-chaps-all-latest
 	pkgdesc = Map data for the timetable search engines by CHAPS: European railway, Czech/Slovak trains + bus, Czech public transport. Note that some timetables need the purchased version of IDOS to run.
-	pkgver = 2022_4_30
+	pkgver = 2023_05_09
 	pkgrel = 1
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvamap
@@ -9,26 +9,26 @@ pkgbase = idos-timetable-maps-chaps-all-latest
 	license = custom
 	makedepends = wget
 	depends = idos-timetable-data
-	provides = idos-timetable-maps-chaps-all=2022_4_30
-	provides = idos-timetable-maps=2022_4_30
-	provides = idos-timetable-maps-trains=2022_4_30
-	provides = idos-timetable-maps-bus=2022_4_30
-	provides = idos-timetable-maps-mhd=2022_4_30
-	provides = idos-timetable-maps-mhd-cz=2022_4_30
-	provides = idos-timetable-maps-trains-cz=2022_4_30
-	provides = idos-timetable-maps-trains-sk=2022_4_30
-	provides = idos-timetable-maps-trains-europe=2022_4_30
-	provides = idos-timetable-maps-bus-cz=2022_4_30
-	provides = idos-timetable-maps-bus-sk=2022_4_30
-	provides = idos-timetable-maps-mhd-idsjmk=2022_4_30
-	provides = idos-timetable-maps-mhd-ceskebudejovice=2022_4_30
-	provides = idos-timetable-maps-mhd-jihlava=2022_4_30
-	provides = idos-timetable-maps-mhd-olomouc=2022_4_30
-	provides = idos-timetable-maps-mhd-odis=2022_4_30
-	provides = idos-timetable-maps-mhd-pid=2022_4_30
-	provides = idos-timetable-maps-mhd-trebic=2022_4_30
-	provides = idos-timetable-maps-mhd-ustinl=2022_4_30
-	provides = idos-timetable-maps-mhd-zlin=2022_4_30
+	provides = idos-timetable-maps-chaps-all=2023_05_09
+	provides = idos-timetable-maps=2023_05_09
+	provides = idos-timetable-maps-trains=2023_05_09
+	provides = idos-timetable-maps-bus=2023_05_09
+	provides = idos-timetable-maps-mhd=2023_05_09
+	provides = idos-timetable-maps-mhd-cz=2023_05_09
+	provides = idos-timetable-maps-trains-cz=2023_05_09
+	provides = idos-timetable-maps-trains-sk=2023_05_09
+	provides = idos-timetable-maps-trains-europe=2023_05_09
+	provides = idos-timetable-maps-bus-cz=2023_05_09
+	provides = idos-timetable-maps-bus-sk=2023_05_09
+	provides = idos-timetable-maps-mhd-idsjmk=2023_05_09
+	provides = idos-timetable-maps-mhd-ceskebudejovice=2023_05_09
+	provides = idos-timetable-maps-mhd-jihlava=2023_05_09
+	provides = idos-timetable-maps-mhd-olomouc=2023_05_09
+	provides = idos-timetable-maps-mhd-odis=2023_05_09
+	provides = idos-timetable-maps-mhd-pid=2023_05_09
+	provides = idos-timetable-maps-mhd-trebic=2023_05_09
+	provides = idos-timetable-maps-mhd-ustinl=2023_05_09
+	provides = idos-timetable-maps-mhd-zlin=2023_05_09
 	conflicts = idos-timetable-maps-chaps-all
 	conflicts = idos-timetable-maps-chaps-trains-europe
 	conflicts = idos-timetable-maps-chaps-trains-cz
