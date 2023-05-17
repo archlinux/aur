@@ -10,7 +10,7 @@ pkgname='dual-root'
 pkgdesc='Dual Root Tools for Managing dual esp systems'
 _gitname='dual-root'
 
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 url="https://github.com/gene-git/dual-root"
 
@@ -23,13 +23,8 @@ makedepends=('git')
 
 # See mkpkg https://github.com/gene-git/Arch-mkpkg
 _mkpkg_depends=('python>minor')
-source=("git+https://github.com/gene-git/${_gitname}")
+source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
 sha512sums=('SKIP')
-
-pkgver() {
-     cd "${_gitname}"
-     git describe --tags --abbrev=0
-}
 
 package() {
     cd "${_gitname}"
