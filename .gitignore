@@ -1,2 +1,4 @@
-/wasm-micro-runtime/
-/*.pkg.*
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
