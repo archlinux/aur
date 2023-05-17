@@ -1,11 +1,11 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2022-05-04.
+# PKGBUILD last time manually edited: At least on 2023-05-17.
 
 _pkgname=idos-timetable-tariff-chaps-all
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2022_5_3
+pkgver=2023_05_17
 pkgrel=1
 pkgdesc="Tariff data for the timetable search engines by CHAPS: Czech/Slovak trains + bus, Czech public transport. Note that some data need the purchased version of IDOS to run."
 arch=(any)
@@ -255,7 +255,7 @@ sha256sums=(
 )
 
 pkgver() {
-  wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File KOMPLET_P.ZIP\(.*\)Zip/KOMPLET_P.ZIP.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+'
+  wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File KOMPLET_P.ZIP\(.*\)Zip/KOMPLET_P.ZIP.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+' | sed -E -e 's|_([0-9])_|_0\1_|g' -e 's|_([0-9])$|_0\1|g'
 }
 
 
