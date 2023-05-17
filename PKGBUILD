@@ -1,6 +1,6 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2021-05-04.
+# PKGBUILD last time manually edited: At least on 2023-05-17.
 ### WARNING 2022-05-04: There does not seem to be flight data anymore available upstream. Download of LETADLA.ZIP gives error 404 not found.
 
 
@@ -8,7 +8,7 @@ _pkgname=idos-timetable-data-chaps-flights
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2021_6_30
-pkgrel=2
+pkgrel=3
 pkgdesc="Flight timetable data from Galileo to be used with IDOS timetable browser"
 arch=(any)
 url="http://chaps.cz/eng/download/idos/zip#kotvatt"
@@ -53,7 +53,7 @@ sha256sums=(
 )
 
 pkgver() {
-  wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File '"${_zipfile}"'\(.*\)Zip/'"${_zipfile}"'.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+'
+  wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File '"${_zipfile}"'\(.*\)Zip/'"${_zipfile}"'.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+' | sed -E -e 's|_([0-9])_|_0\1_|g' -e 's|_([0-9])$|_0\1|g'
 }
 
 

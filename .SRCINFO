@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-data-chaps-flights-latest
 	pkgdesc = Flight timetable data from Galileo to be used with IDOS timetable browser
 	pkgver = 2021_6_30
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvatt
 	arch = any
