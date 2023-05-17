@@ -2,7 +2,7 @@
 
 pkgname=sequoia-wot
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An implementation of OpenPGP's web of trust"
 arch=(x86_64)
 url="https://gitlab.com/sequoia-pgp/sequoia-wot"
@@ -50,5 +50,4 @@ package() {
   install -vDm 644 target/release/build/${pkgname}*/out/sq-wot.bash "$pkgdir/usr/share/bash-completion/completions/sq-wot"
   install -vDm 644 target/release/build/${pkgname}*/out/sq-wot.fish -t "$pkgdir/usr/share/fish/completions/"
   install -vDm 644 target/release/build/${pkgname}*/out/_sq-wot -t "$pkgdir/usr/share/zsh/site-functions/"
-  install -vDm 644 target/release/build/${pkgname}*/out/sq-wot*.1 -t "$pkgdir/usr/share/man/man1/"
 }
