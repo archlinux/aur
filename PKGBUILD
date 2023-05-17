@@ -10,7 +10,7 @@ pkgname='wg_tool'
 pkgdesc='Tool to manage wireguard server and user configs'
 _gitname='wg_tool'
 
-pkgver=4.5.1
+pkgver=4.5.2
 pkgrel=1
 url="https://github.com/gene-git/wg_tool"
 
@@ -23,13 +23,8 @@ depends=('python>3.9' 'python-packaging' 'python-netaddr'
         )
 makedepends=('git' 'python-pip' 'python-wheel' 'python-poetry' 'rsync')
 _mkpkg_depends=('python>minor')
-source=("git+https://github.com/gene-git/${_gitname}")
+source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
 sha512sums=('SKIP')
-
-pkgver() {
-     cd "${_gitname}"
-     git describe --tags --abbrev=0
-}
 
 build() {
     cd "${_gitname}"
