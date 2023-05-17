@@ -1,0 +1,31 @@
+# Simple example config. Domains in this configuration
+# are used just for example, change them to your own preferences.
+
+# For getting the domain name in DoQ and DoH
+[bootstrap-resolver]
+address = "76.76.2.0:53"
+protocol = "udp"
+
+# DoQ
+[resolvers.doq]
+address = "dns.nextdns.io:853"
+protocol = "doq"
+
+# DoH
+[resolvers.doh]
+address = "https://cloudflare-dns.com/dns-query"
+protocol = "doh"
+transport = "quic"
+
+# This will cache results
+[groups.cache]
+type = "cache"
+resolvers = ["doq"]
+cache-size = 1000
+cache-negative-ttl = 10
+cache-answer-shuffle = "round-robin"
+
+[listeners.local-udp]
+address = "127.0.0.1:53"
+protocol = "udp"
+resolver = "cache"
