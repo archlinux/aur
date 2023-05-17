@@ -1,12 +1,12 @@
 pkgbase = nvidia-525xx
 	pkgdesc = NVIDIA drivers for linux, 525 branch
-	pkgver = 525.116.03
-	pkgrel = 3
+	pkgver = 525.116.04
+	pkgrel = 1
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
 	makedepends = linux-headers
-	makedepends = nvidia-dkms=525.116.03
+	makedepends = nvidia-dkms=525.116.04
 	provides = nvidia
 	provides = NVIDIA-MODULE
 	conflicts = nvidia
@@ -14,5 +14,5 @@ pkgbase = nvidia-525xx
 
 pkgname = nvidia-525xx
 	depends = linux
-	depends = nvidia-utils=525.116.03
+	depends = nvidia-utils=525.116.04
 	depends = libglvnd
