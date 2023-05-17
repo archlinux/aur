@@ -7,7 +7,7 @@ _pkgname=V8
 _pkgver=4.3.0
 pkgname=r-${_pkgname,,}
 pkgver=4.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Embedded JavaScript and WebAssembly Engine for R'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
