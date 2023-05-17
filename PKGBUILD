@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=113.0.5672.92
+pkgver=113.0.5672.126
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -47,7 +47,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         random-fixes-for-gcc13.patch
         disable-GlobalMediaControlsCastStartStop.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('a4520b53c824d75bcbc80bcf5da0c3d6f213038c8e31904b8a3bfbe415893ba5'
+sha256sums=('0def7cd594304d7675821d42a4207377af98e321a78a91ee5200aea55adc2d93'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '5f868cba9e4d387499711738adc6fd87ab9f1ef61f464016bc682660ae59206a'
             '208f2ebcef5c690207e6e798ffbf9e92214e9d35f415c2f6b93efebad831b7e2'
