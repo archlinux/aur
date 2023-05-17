@@ -6,7 +6,7 @@
 
 pkgname=btrfs-progs-git
 _gitname=${pkgname%-git}
-pkgver=6156_6.0_r0_g3db75635
+pkgver=6454_6.3_r0_gfba31d63
 pkgrel=1
 pkgdesc="Btrfs filesystem utilities"
 arch=("i686" "x86_64")
