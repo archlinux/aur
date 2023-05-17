@@ -1,12 +1,12 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2022-05-04.
+# PKGBUILD last time manually edited: At least on 2023-05-17.
 
 _pkgname=idos-timetable-browser
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=1.30_lib2.10.0.2_date2021_12_14
-pkgrel=2
+pkgver=1.30_lib2.10.0.4_date2022_06_15
+pkgrel=1
 pkgdesc="Offline railway and other public transport timetable search engine by CHAPS. (Czech language by default.)"
 arch=('i686' 'x86_64')
 url="http://chaps.cz/eng/download/idos/zip#kotvaprg"
@@ -70,7 +70,7 @@ sha256sums=(
 
 pkgver() {
   _ver="$(wget -nv -O- "${url}" | grep 'Timetable browser, version' | head -n 1 | sed -r 's|^.*Timetable browser, version ([0-9\.]+),.*library version ([0-9\.]+).*$|\1_lib\2|g')"
-  _date="$(wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File '"${_zipfile}"'\(.*\)Zip/'"${_zipfile}"'.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+')"
+  _date="$(wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File '"${_zipfile}"'\(.*\)Zip/'"${_zipfile}"'.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+' | sed -E -e 's|_([0-9])_|_0\1_|g' -e 's|_([0-9])$|_0\1|g')"
   printf '%s\n' "${_ver}_date${_date}"
 }
 
