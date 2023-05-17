@@ -1,6 +1,6 @@
 pkgbase = ytdownloader-appimage
 	pkgdesc = A modern GUI App for downloading Videos and Audios from hundreds of sites
-	pkgver = 3.13.0
+	pkgver = 3.14.0
 	pkgrel = 1
 	url = https://ytdn.netlify.app/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = ytdownloader-appimage
 	conflicts = ytdownloader
 	conflicts = ytdownloader-gui
 	options = !strip
-	source = ytdownloader-3.13.0.AppImage::https://github.com/aandrew-me/ytDownloader/releases/download/v3.13.0/YTDownloader.AppImage
-	sha256sums = a479c7eb54cc77406ba92f6a28cca9f767a226fffc63c0af15b777f6da033603
+	source = ytdownloader-3.14.0.AppImage::https://github.com/aandrew-me/ytDownloader/releases/download/v3.14.0/YTDownloader_Linux.AppImage
+	sha256sums = 64653246cf2c6bf1d9b22bec1e247c5520eb7ec5f8a2500b2c4d997b4f164aa9
 
 pkgname = ytdownloader-appimage

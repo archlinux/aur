@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="ytdownloader-appimage"
-pkgver=3.13.0
+pkgver=3.14.0
 pkgrel=1
 pkgdesc="A modern GUI App for downloading Videos and Audios from hundreds of sites"
 arch=("x86_64")
@@ -11,8 +11,8 @@ depends=('zlib' 'glibc' 'hicolor-icon-theme')
 options=(!strip)
 conflicts=("${pkgname%-appimage}" "${pkgname%-appimage}-gui")
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/YTDownloader.AppImage")
-sha256sums=('a479c7eb54cc77406ba92f6a28cca9f767a226fffc63c0af15b777f6da033603')
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/YTDownloader_Linux.AppImage")
+sha256sums=('64653246cf2c6bf1d9b22bec1e247c5520eb7ec5f8a2500b2c4d997b4f164aa9')
         
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
