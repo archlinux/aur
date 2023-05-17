@@ -4,7 +4,7 @@
 # Contributor: xduugu
 
 pkgname=perl-docs
-pkgver=5.36.0
+pkgver=5.36.1
 pkgrel=1
 pkgdesc="Set of HTML documentation for Perl."
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl')
 options=(docs !strip)
 source=("https://github.com/adrien1018/perldoc-html-generator/releases/download/0.1-$pkgver/perldoc-html-$pkgver.tar.xz")
-sha256sums=('2123c8cbf3b6622612a2b7e16e707ffc31cd853dc1ba746c96a93eac64b5f742')
+sha256sums=('52ac356c0ec0b4e0643a2447ec6fa5dcdd582a0d2e1cd863e349a6a684d24e48')
 
 package() {
   cd "$srcdir/perldoc-html-$pkgver"
