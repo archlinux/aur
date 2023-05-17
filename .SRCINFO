@@ -1,0 +1,19 @@
+pkgbase = pathbomb-git
+	pkgdesc = Deploy files to known locations using predefined methods
+	pkgver = 0.1.2.r0.0ef5691
+	pkgrel = 1
+	url = https://git.sr.ht/~jmcantrell/pathbomb
+	arch = any
+	license = GPL3
+	checkdepends = parallel
+	checkdepends = diffutils
+	makedepends = git
+	makedepends = scdoc
+	optdepends = stow: symlink method
+	optdepends = age: decrypt method
+	provides = pathbomb
+	conflicts = pathbomb
+	source = git+https://git.sr.ht/~jmcantrell/pathbomb
+	md5sums = SKIP
+
+pkgname = pathbomb-git
