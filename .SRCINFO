@@ -1,7 +1,7 @@
 pkgbase = rgx-git
 	pkgdesc = Commandline RegExp Tool
-	pkgver = 0.2
-	pkgrel = 3
+	pkgver = 0.3
+	pkgrel = 1
 	url = https://github.com/comroid-git/rgx
 	arch = any
 	license = GPL-3.0
