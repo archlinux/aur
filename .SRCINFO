@@ -1,0 +1,14 @@
+pkgbase = bwa-mem2
+	pkgdesc = The next version of Burrows-Wheeler Aligner MEM algorithm
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://github.com/bwa-mem2/bwa-mem2
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	source = bwa-mem2-2.2.1.tar.gz::https://github.com/bwa-mem2/bwa-mem2/releases/download/v2.2.1/Source_code_including_submodules.tar.gz
+	source = gcc_rdtsc.patch
+	sha256sums = 9b001bdc7666ee3f14f3698b21673714d429af50438b894313b05bc4688b1f6d
+	sha256sums = 50556ad538edb98bbdcaae4338dc42873e6aae27ab7ab4a090cd0442818072f9
+
+pkgname = bwa-mem2
