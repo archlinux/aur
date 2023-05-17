@@ -1,7 +1,7 @@
 pkgbase = nvidia-525xx
 	pkgdesc = NVIDIA drivers for linux, 525 branch
 	pkgver = 525.116.03
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
