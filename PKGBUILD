@@ -1,7 +1,7 @@
 # Maintainer: BrainDamage
 
 pkgname=python-metpy
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 _basename="MetPy"
 _dirname="${_basename}-${pkgver}"
@@ -11,28 +11,33 @@ url="https://unidata.github.io/MetPy"
 license=('BSD')
 depends=('python' 'python-matplotlib' 'python-numpy' 'python-scipy'
 	'python-pandas' 'python-pint' 'python-pooch' 'python-xarray'
-	'python-pyproj' 'python-traitlets')
-optdepends=('python-cartopy: for the examples' 'python-shapely: for the examples')
-makedepends=('python-setuptools' 'python-setuptools-scm')
+	'python-pyproj' 'python-traitlets' 'python-importlib_resources')
+optdepends=(
+	'python-cartopy: for the examples'
+	'python-shapely: for the examples'
+	'python-geopandas: for the examples'
+)
 # documentation dependencies
 #makedepends+=('python-sphinx' 'python-sphinx-gallery' 'python-myst-parser' 'python-netcdf4')
+makedepends+=(python-build python-installer python-wheel)
 checkdepends=('python-pytest' 'python-pytest-mpl' 'python-cartopy' 'python-shapely' 'python-netcdf4')
-source=("${pkgname}-${pkgver}::https://github.com/Unidata/${_basename}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c8f0c6a449386844a3712b5bd95262ddb755aeceba7a68b429798ccaa3eb8699')
+source=("${pkgname}-${pkgver}::https://files.pythonhosted.org/packages/source/${_basename::1}/${_basename}/${_basename}-${pkgver}.tar.gz")
+sha256sums=('1897b276097053aeda615e3e23bf497b7704e4536b1f8e2788bb02911646353d')
+
 
 build() {
 	cd "${srcdir}/${_dirname}"
-	export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
 	export PYTHONHASHSEED=0
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
-
 
 package() {
 	cd "${srcdir}/${_dirname}"
-	python setup.py install --optimize=1 --skip-build --root="${pkgdir}/" --prefix="/usr"
+	find dist -name '*.whl' -exec python -m installer --compile-bytecode 1 --destdir="${pkgdir}" {} \;
 	# not necessary for every package, but for those who it is, it'd generate conflict with others otherwise
 	rm -rf "${pkgdir}/$(python -c 'import site; print(site.getsitepackages()[0])')/tests/"
+	find . -maxdepth 1 -iname 'README*' -exec install -Dvm 644 {} -t "${pkgdir}/usr/share/doc/${_basename}" \;
+	find . -maxdepth 1 -iname 'LICENSE*' -exec install -Dvm 644 {} -t "${pkgdir}/usr/share/licenses/${_basename}" \;
 }
 
 
