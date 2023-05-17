@@ -1,0 +1,16 @@
+pkgbase = promethium-appimage
+	pkgdesc = Extensible, fast, and innovative Electron based web browser with Material UI design elements and built-in AdBlock.
+	pkgver = 6.1.6
+	pkgrel = 1
+	url = https://github.com/Alex313031/promethium
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = promethium
+	options = !strip
+	source = promethium-6.1.6.AppImage::https://github.com/Alex313031/promethium/releases/download/v6.1.6/Promethium_6.1.6_x86_64.AppImage
+	sha256sums = c0eee71501b4f6e5530db964b00ed0a97898b6b01a53c905559fdc2636d75903
+
+pkgname = promethium-appimage
