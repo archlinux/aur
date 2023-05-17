@@ -1,7 +1,7 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=woof-doom
 _pkgname=woof
-pkgver=11.0.0
+pkgver=11.1.1
 pkgrel=2
 pkgdesc="Woof! is a continuation of Lee Killough's Doom source port MBF targeted at modern systems"
 arch=(x86_64)
@@ -18,14 +18,7 @@ install=install.sh
 makedepends=(cmake python3)
 conflicts=(woof-git)
 source=("https://github.com/fabiangreffrath/${_pkgname}/archive/refs/tags/${_pkgname}_${pkgver}.tar.gz")
-sha256sums=(434f78fefb24a99a1dd693e67f8587d4b4c0ad0c2e3e97073ef8ef563a95bd05)
-
-# fix crash on Linux+FluidSynth w/no soundfonts: https://github.com/fabiangreffrath/woof/pull/1035
-source+=(https://github.com/fabiangreffrath/woof/commit/8eb510840f0b510af3bf5a0cd79bb6d2e1cd2474.patch)
-sha256sums+=(3c69a746a61ca55716d84f4224f381b6f37cc621a4b191c3caa0780c9bbcdd3e)
-prepare() {
-    patch -d "${_pkgname}-${_pkgname}_${pkgver}" -Np1 -i ../8eb510840f0b510af3bf5a0cd79bb6d2e1cd2474.patch
-}
+sha256sums=(ffbf5662a4d30b017e62a62a00a485d0af57571d98a6e056cf129e73ca971ad9)
 
 build() {
     # Use `-ffile-prefix-map` to avoid 'WARNING: Package contains reference to $srcdir' due to assert(...)
