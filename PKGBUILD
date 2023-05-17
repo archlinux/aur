@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=algernon
-pkgver=1.14.0
+pkgver=1.15.1
 pkgrel=1
 pkgdesc='Web server with Lua, Markdown, QUIC, Redis and PostgreSQL support'
 arch=(x86_64)
@@ -11,7 +11,7 @@ makedepends=(go)
 optdepends=('mariadb: For using the MariaDB/MySQL database backend'
             'postgresql: For using the PostgreSQL database backend'
             'redis: For using the Redis database backend')
-source=("git+https://github.com/xyproto/algernon#commit=195ea285e297f0a3951598ebf878f1223c9fbf2d") # tag: v1.14.0
+source=("git+https://github.com/xyproto/algernon#commit=a759b348260c3bdc9108d73847d7d03b8f6ca2d5") # tag: v1.15.1
 b2sums=(SKIP)
 
 prepare() {
