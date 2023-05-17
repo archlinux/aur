@@ -2,14 +2,14 @@
 
 _pkgname=epiphany
 pkgname=$_pkgname-git
-pkgver=43.0+47+g2340606e6
+pkgver=44.0+67+gd591ec71b
 pkgrel=1
 pkgdesc="A GNOME web browser based on the WebKit rendering engine."
 url="https://wiki.gnome.org/Apps/Web"
 arch=('x86_64')
 license=('GPL')
-depends=(webkit2gtk-5.0 gcr-4 gtk4 libdazzle libhandy libarchive libportal-gtk4 libadwaita)
-makedepends=(docbook-xml startup-notification lsb-release gobject-introspection
+depends=(webkitgtk-6.0 gcr-4 gtk4 libdazzle libhandy libarchive libportal-gtk4 libadwaita)
+makedepends=(cmake docbook-xml startup-notification lsb-release gobject-introspection
              yelp-tools git meson)
 checkdepends=(xorg-server-xvfb aspell hspell hunspell nuspell libvoikko)
 groups=(gnome)
