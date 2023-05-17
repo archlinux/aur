@@ -1,33 +1,28 @@
-# Maintainer: Sebastian Gsänger <sebastian_gsaenger@web.de>
-# Maintainer: chn <g897331845@gmail.com>
-
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Sebastian Gsänger <sebastian_gsaenger@web.de>
+# Contributor: chn <g897331845@gmail.com>
 pkgname=xwidgets
-pkgver=0.25.0
+pkgver=0.28.0
 pkgrel=1
-pkgdesc="The C++ backend for Jupyter interactive widgets."
-arch=('x86_64')
-url="https://github.com/jupyter-xeus/xwidgets"
-license=('BSD')
-depends=('xtl' 'xproperty=0.11.0' 'xeus' 'nlohmann-json' 'jupyter-widgetsnbextension')
+pkgdesc="C++ backend for Jupyter interactive widgets"
+arch=(x86_64)
+url="https://github.com/jupyter-xeus/${pkgname}"
+license=('custom:BSD-3-clause')
+depends=(xtl xeus xproperty nlohmann-json jupyter-widgetsnbextension)
 makedepends=()
-source=("https://github.com/jupyter-xeus/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('17727978842c3625c1d23bb42c165420')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/jupyter-xeus/${pkgname}/archive/${pkgver}.tar.gz)
+sha512sums=('31447d0430906249a73093e20376003d6f4c1f0b43c009269c7378f6f0d53b2fb1a2941735fb33d1e4846fded04821c2ea03886b02e16bc1800160155d2dff3b')
 
 build() {
-    cd "$pkgname-$pkgver"
-    mkdir build
-    cd build
-
-    cmake -D CMAKE_INSTALL_PREFIX=/usr -D CMAKE_BUILD_TYPE=Release ..
-    make
+  cmake \
+    -S ${pkgname}-${pkgver} \
+    -B build \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build build --target all
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-    cd "build"
-
-    make DESTDIR="$pkgdir" install
+  DESTDIR="${pkgdir}" cmake --build build --target install
+  install -Dm 644 ${pkgname}-${pkgver}/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
