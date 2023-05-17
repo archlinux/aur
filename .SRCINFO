@@ -1,6 +1,6 @@
 pkgbase = vscodium-git
 	pkgdesc = Free/Libre Open Source Software Binaries of VSCode (git build from latest commit).
-	pkgver = 1.77.0.23095.r4.g6137a9f
+	pkgver = 1.78.1.23131.r0.g272f67d
 	pkgrel = 1
 	url = https://github.com/VSCodium/vscodium.git
 	arch = x86_64

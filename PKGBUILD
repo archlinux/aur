@@ -2,7 +2,7 @@
 # Inspired from the PKGBUILD for vscodium-bin and code-stable-git.
 
 pkgname=vscodium-git
-pkgver=1.77.0.23095.r4.g6137a9f
+pkgver=1.78.1.23131.r0.g272f67d
 pkgrel=1
 pkgdesc="Free/Libre Open Source Software Binaries of VSCode (git build from latest commit)."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -106,11 +106,21 @@ build() {
     nvm use
 
     # Check if the correct version of node is being used
-    if [[ "$(node --version)" != "$(cat .nvmrc)" ]]
+    nvmrc_version="$(cat .nvmrc)"
+    if [[ "$nvmrc_version" != "v"* ]]
     then
-        echo "Using the wrong version of NodeJS! Expected ["$(cat .nvmrc)"] but using ["$(node --version)"]."
-        exit 1
+        # Add the v prefix, because it seems to be missing in .nvmrc
+        echo "Configured .nvmrc version is [$nvmrc_version], adding the v prefix before checking if it matches with the node command."
+        nvmrc_version="v$nvmrc_version"
     fi
+
+    # Now check if the version matches exactly, or at least starts with the same prefix
+    if [[ "$(node --version)" != "$nvmrc_version"* ]]
+    then
+    	echo "Using the wrong version of NodeJS! Expected ["$nvmrc_version"] but using ["$(node --version)"]."
+    	exit 1
+    fi
+    echo "Installed version of node ["$(node --version)"] matches required version ["$nvmrc_version"], continuing."
 
     # Remove old build
     if [ -d "vscode" ]; then
