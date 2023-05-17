@@ -360,6 +360,7 @@ _make_ceph_packages() {
       $bin/ceph-conf \
       $lib/ceph/ceph_common.sh \
       $lib/ceph/libceph-common.so.2 \
+      $lib/ceph/extblkdev/libceph_ebd_vdo.so \
       $lib/ceph/denc/* \
       $share/doc/ceph/sample.ceph.conf \
       $man/man8/crushtool.8 \
@@ -439,7 +440,8 @@ _make_ceph_packages() {
       $share/bash-completion/completions/radosgw-admin \
       $man/man8/radosgw{,-admin}.8 \
       $man/man8/rgw-orphan-list.8 \
-      $man/man8/ceph-diff-sorted.8
+      $man/man8/ceph-diff-sorted.8 \
+      $man/man8/rgw-policy-check.8
 
     ###############################################
     #         Ceph clients / applications         #
@@ -447,7 +449,7 @@ _make_ceph_packages() {
 
     _package librbd \
       $inc/rbd/* \
-      $lib/librbd.so{,.1,.1.17.0} \
+      $lib/librbd.so{,.1,.1.18.0} \
       $lib/ceph/librbd/*
 
     _package ceph-rbd \
@@ -478,10 +480,10 @@ _make_ceph_packages() {
       $man/man8/cephfs-*
 
     _package librgw \
-      $lib/libradosgw.so{,.2,.2.0.0} \
       $lib/librgw.so{,.2,.2.0.0}
 
     _package ceph-cephadm \
+      $bin/cephadm \
       $man/man8/cephadm.8
 
     _package ceph-volume \
@@ -961,10 +963,6 @@ package_ceph-cephadm() {
   )
 
   mv __pkg__/$pkgname/* "$pkgdir"
-
-  install -Dm755 "${srcdir}/${pkgbase}-${pkgver}/src/cephadm/cephadm" \
-    "${pkgdir}/usr/bin/cephadm"
-
   _print
 }
 
