@@ -1,7 +1,7 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=python-lief
-pkgver=0.12.2
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Cross-platform library for parsing, modifying, and abstracting binary formats"
 arch=('x86_64')
@@ -9,15 +9,21 @@ url="https://github.com/lief-project/lief"
 license=('Apache')
 depends=('python')
 makedepends=('cmake' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
-source=("$pkgname-$pkgver.zip::https://files.pythonhosted.org/packages/source/l/lief/lief-$pkgver.zip")
-sha256sums=('d6fbab6a7cd4c30db83646c893aa4f43b15628e635711c2cf20e9a27be963469')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/lief-project/LIEF/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('8834e2ccfeefd1003527887357950173fe55e9a712004aa638af67378e28ef55')
+
+prepare() {
+  cd LIEF-${pkgver}
+  # fix for https://github.com/lief-project/LIEF/issues/918
+  sed -i '1 i\#include <cstdint>' include/LIEF/DEX/Field.hpp
+}
 
 build() {
-	cd "lief-$pkgver"
-	PYTHONPATH="$PWD" python -m build --wheel --no-isolation
+  cd LIEF-${pkgver}
+  PYTHONPATH="$PWD" python -m build api/python --wheel --no-isolation
 }
 
 package() {
-	cd "lief-$pkgver"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+  cd LIEF-${pkgver}
+  PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" api/python/dist/*.whl
 }
