@@ -6,23 +6,23 @@
 
 pkgbase=java-openj9
 pkgname=('jre-openj9-headless' 'jre-openj9' 'jdk-openj9' 'openj9-src' 'openj9-doc')
-_majorver=18
+_majorver=20
 _minorver=0
-_securityver=2
+_securityver=1
 _updatever=9
-_openj9ver=0.33.1
+_openj9ver=0.39.0
 pkgrel=1
-pkgver=${_majorver}${_minorver:+.${_minorver}}${_securityver:+.${_securityver}}.u${_updatever}_openj9_${_openj9ver}
+pkgver=${_majorver}${_minorver:+.${_minorver}}${_securityver:+.${_securityver}}.u${_updatever}_openj9_${_openj9ver}_pre20230517
 arch=('x86_64')
 url='http://www.eclipse.org/openj9/'
 license=('custom')
-makedepends=('java-environment>=11' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx11'
+makedepends=("java-environment>=$((_majorver-1))" 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx11'
              'libxrender' 'libxtst' 'libxt' 'libxext' 'libxrandr' 'alsa-lib'
              'graphviz' 'freetype2' 'libjpeg-turbo' 'giflib' 'libpng' 'lcms2'
              'libnet' 'bash' 'harfbuzz' 'gcc-libs' 'glibc' 'numactl' 'nasm' 'cmake')
-_openjdk_sha=8406c39ea29b99058d740398c9c07dccba04bc12
-_openj9_sha=1d9d16830f713e97410e8eeed1c350e58f34fadb
-_openj9omr_sha=b58aa2708c095efadf522f67aaef9f7de2a7cbc7
+_openjdk_sha=c6bbabab95ea24e30cf8c1225db464cff3e12594
+_openj9_sha=8b5fd99a8d71561e94dcbdf84af681ef7d1bb701
+_openj9omr_sha=e4f52d2e479f7e64e092dcec573f1fae864395cb
 options=(!lto)
 source=(openj9-openjdk-jdk${_majorver}-${_openjdk_sha:0:7}.tar.gz::https://github.com/ibmruntimes/openj9-openjdk-jdk${_majorver}/archive/${_openjdk_sha}.tar.gz
         openj9-${_openj9_sha:0:7}.tar.gz::https://github.com/eclipse/openj9/archive/${_openj9_sha}.tar.gz
@@ -32,9 +32,9 @@ source=(openj9-openjdk-jdk${_majorver}-${_openjdk_sha:0:7}.tar.gz::https://githu
         freedesktop-jshell.desktop
         omr-omrstr-iconv-failure-overflow.patch
         openj9-openjdk-override-version.patch)
-sha256sums=('8d3fce68bfed0b75c83e668227a87e7bf91d494c8e30819b4d20ac6334f98d7e'
-            'fa32d99c786b3901ad01f1aa2cfc4b995820c1574c80f74f87b51d86314389d5'
-            'a8b5eba25141d50b6f57c1b92ef7340718e2052d5e1192b3f9d4260e4b53d023'
+sha256sums=('dd590d1a30d5e8ebabc8dde557997bd6af898fa9cbe256afcb028d518311a2b9'
+            'd0c1d158569e68858b977087e9010942e98755cead82d1ad08a05541df54b44c'
+            '4f962ec233a814f0f8ffb46834e9a12d18233a508502bc876526cb845073b1bd'
             '7cb89746dbbcf498dd43b53fee59b124f42e3ea0d8b7134ab803cc2bd6b50230'
             'bf76024528d050fd912f72d73e18a814a930df3478b132a99a887fbbdc0c9dfd'
             'bd2d4da78a65eec20dc32e21fd4fe134a2483b0bbe2dfb940d66755acc237975'
@@ -251,7 +251,7 @@ package_jdk-openj9() {
 
   install -dm 755 "${pkgdir}${_jvmdir}"
 
-  cp -a bin demo include jmods lib \
+  cp -a bin include jmods lib \
     "${pkgdir}${_jvmdir}"
 
   rm "${pkgdir}${_jvmdir}/lib/src.zip"
@@ -302,7 +302,7 @@ package_openj9-src() {
   pkgdesc="OpenJDK Java ${_majorver} sources"
   # Depends on JDK to get license files
   depends=("jdk${_majorver}-openj9=${pkgver}-${pkgrel}")
-  provides=("openj9${_majorver}-src=${pkgver}-${pkgrel}")
+  provides=("openj9-${_majorver}-src=${pkgver}-${pkgrel}")
 
   install -Dm 644 -t "${pkgdir}${_jvmdir}/lib" ${_imgdir}/jdk/lib/src.zip
 
@@ -314,7 +314,7 @@ package_openj9-doc() {
   pkgdesc="OpenJDK Java ${_majorver} documentation"
   # Depends on JDK to get license files
   depends=("jdk${_majorver}-openj9=${pkgver}-${pkgrel}")
-  provides=("openj9${_majorver}-doc=${pkgver}-${pkgrel}")
+  provides=("openj9-${_majorver}-doc=${pkgver}-${pkgrel}")
 
   install -dm 755 "${pkgdir}/usr/share/doc"
   cp -r ${_imgdir}/docs "${pkgdir}/usr/share/doc/${pkgbase}"
