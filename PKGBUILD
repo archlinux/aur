@@ -1,13 +1,13 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2021-07-04.
+# PKGBUILD last time manually edited: At least on 2023-05-17.
 
 _pkgname=idos-timetable-additionalinfo-chaps-all
 pkgname="${_pkgname}"
 epoch=0
 _pkgver=1.0
 pkgver="${_pkgver}"
-pkgrel=5
+pkgrel=6
 pkgdesc="Metapackage depending on all the idos-timetable-additionalinfo-chaps-* additional information packages."
 arch=('any')
 url="http://chaps.cz/eng/download/idos/zip#kotvainf"
