@@ -1,0 +1,16 @@
+pkgbase = rofi-adi1090x
+	pkgdesc = A huge collection of Rofi based custom Applets, Launchers & Powermenus.
+	pkgver = r74.60685ab
+	pkgrel = 1
+	url = https://github.com/adi1090x/rofi
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = rofi
+	provides = rofi-adi1090x
+	conflicts = rofi-adi1090x
+	backup = usr/share/sddm/themes/tokyo-night-sddm/theme.conf
+	source = git+https://github.com/adi1090x/rofi.git
+	sha256sums = SKIP
+
+pkgname = rofi-adi1090x
