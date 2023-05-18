@@ -2,7 +2,7 @@
 pkgbase=python-photutils
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Astropy Affiliated package for image photometry utilities"
 arch=('i686' 'x86_64')
@@ -26,7 +26,8 @@ checkdepends=('python-pytest-astropy-header'
               'python-pytest-doctestplus'
               'python-pytest-remotedata'
               'python-matplotlib'
-              'python-gwcs')    # scipy scikit-image scikit-learn already in makedepends
+              'python-gwcs'
+              'python-shapely')    # scipy scikit-image scikit-learn rasterio already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/M6707HH.fits"
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/SA112-SF1-001R1.fit.gz"
@@ -39,7 +40,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/spitzer_example_catalog.xml"
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/spitzer_example_image.fits"
 #       'datasets-use-local.patch')
-md5sums=('e88e47072199e1b41c7cbb083c4b3e81')
+md5sums=('25357b20b648e6a2a0a170c20a33a3e4')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -68,12 +69,12 @@ check() {
 }
 
 package_python-photutils() {
-    depends=('python>=3.8' 'python-numpy>=1.20' 'python-astropy>=5.0')
-    optdepends=('python-scipy>=1.6.0: To power a variety of features in several modules (strongly recommended)'
-                'python-scikit-image>=0.18.0: Used in deblend_sources for deblending segmented sources'
+    depends=('python>=3.8' 'python-numpy>=1.21' 'python-astropy>=5.0')
+    optdepends=('python-scipy>=1.7.0: To power a variety of features in several modules (strongly recommended)'
+                'python-scikit-image>=0.19.0: Used in deblend_sources for deblending segmented sources'
                 'python-scikit-learn>=1.0:  Used in DBSCANGroup to create star groups'
-                'python-matplotlib>=3.3.0: To power a variety of plotting features (e.g. plotting apertures'
-                'python-gwcs>=0.16: Used in make_gwcs to create a simple celestial gwcs object'
+                'python-matplotlib>=3.5.0: To power a variety of plotting features (e.g. plotting apertures'
+                'python-gwcs>=0.18: Used in make_gwcs to create a simple celestial gwcs object'
                 'python-photutils-doc: Documentation for python-photutils'
                 'python-bottleneck: Improves the performance of sigma clipping and other functionality that may require computing statistics on arrays with NaN values'
                 'python-tqdm: Used to display optional progress bars'

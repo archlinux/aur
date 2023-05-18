@@ -1,6 +1,6 @@
 pkgbase = python-photutils
 	pkgdesc = Astropy Affiliated package for image photometry utilities
-	pkgver = 1.7.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = http://photutils.readthedocs.io
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = python-photutils
 	checkdepends = python-pytest-remotedata
 	checkdepends = python-matplotlib
 	checkdepends = python-gwcs
+	checkdepends = python-shapely
 	makedepends = cython>=0.29.30
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
@@ -25,18 +26,18 @@ pkgbase = python-photutils
 	makedepends = python-scikit-learn
 	makedepends = python-scikit-image
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/p/photutils/photutils-1.7.0.tar.gz
-	md5sums = e88e47072199e1b41c7cbb083c4b3e81
+	source = https://files.pythonhosted.org/packages/source/p/photutils/photutils-1.8.0.tar.gz
+	md5sums = 25357b20b648e6a2a0a170c20a33a3e4
 
 pkgname = python-photutils
 	depends = python>=3.8
-	depends = python-numpy>=1.20
+	depends = python-numpy>=1.21
 	depends = python-astropy>=5.0
-	optdepends = python-scipy>=1.6.0: To power a variety of features in several modules (strongly recommended)
-	optdepends = python-scikit-image>=0.18.0: Used in deblend_sources for deblending segmented sources
+	optdepends = python-scipy>=1.7.0: To power a variety of features in several modules (strongly recommended)
+	optdepends = python-scikit-image>=0.19.0: Used in deblend_sources for deblending segmented sources
 	optdepends = python-scikit-learn>=1.0: Used in DBSCANGroup to create star groups
-	optdepends = python-matplotlib>=3.3.0: To power a variety of plotting features (e.g. plotting apertures
-	optdepends = python-gwcs>=0.16: Used in make_gwcs to create a simple celestial gwcs object
+	optdepends = python-matplotlib>=3.5.0: To power a variety of plotting features (e.g. plotting apertures
+	optdepends = python-gwcs>=0.18: Used in make_gwcs to create a simple celestial gwcs object
 	optdepends = python-photutils-doc: Documentation for python-photutils
 	optdepends = python-bottleneck: Improves the performance of sigma clipping and other functionality that may require computing statistics on arrays with NaN values
 	optdepends = python-tqdm: Used to display optional progress bars
