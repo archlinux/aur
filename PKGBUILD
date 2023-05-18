@@ -1,7 +1,7 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=pacman-systemd-inhibit
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Inhibit system shutdown, reboot etc. when pacman is upgrading the system'
 arch=('x86_64')
 url="https://github.com/amishmm/pacman-systemd-inhibit"
