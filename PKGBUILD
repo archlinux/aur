@@ -3,7 +3,7 @@
 
 _pkgname="llm"
 pkgname="${_pkgname}-git"
-pkgver=r548.25942f9
+pkgver=r572.8a8076f
 pkgrel=1
 pkgdesc="Run inference for Large Language Models on CPU, with Rust 🦀🚀🦙"
 arch=(any)
