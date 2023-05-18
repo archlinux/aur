@@ -10,7 +10,7 @@ pkgname='mkpkg'
 pkgdesc='Tool to rebuild packages based on dependency triggers'
 _gitname='Arch-mkpkg'
 
-pkgver=4.5.3
+pkgver=4.5.4
 pkgrel=1
 url="https://github.com/gene-git/Arch-mkpkg"
 
@@ -18,7 +18,7 @@ arch=(any)
 license=(MIT)
 # tomli only needed for python < 3.11
 depends=('python>3.9' 'python-packaging' 'python-tomli' 'python-tomli-w')
-makedepends=('git' 'python-build' 'python-pip' 'python-wheel' 'python-poetry' 'rsync')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-poetry' 'rsync')
 _mkpkg_depends=('python>minor')
 source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
 sha512sums=('SKIP')
