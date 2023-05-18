@@ -4,7 +4,7 @@ _pkgname=lua-format
 _patch=(g4)
 pkgname=$_pkgname-ext
 pkgver=1.3.6
-pkgrel=3
+pkgrel=4
 pkgdesc='LuaFormatter with extended identifiers'
 arch=(x86_64 aarch64)
 url=https://github.com/tkkcc/LuaFormatter
@@ -33,7 +33,7 @@ build() {
   cd $_srcname
   java -jar ../antlr4.jar -Dlanguage=Cpp -no-listener -visitor -o generated Lua.g4
   cmake -D BUILD_TESTS=OFF -D COVERAGE=OFF .
-  make
+  cmake --build .
 }
 package() {
   install -Dm644 $_srcname/LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
