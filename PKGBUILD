@@ -2,7 +2,7 @@
 
 pkgname='ztoim'
 _pkgname='ztoim'
-pkgver='8.18.1';
+pkgver='8.19.17.8';
 _major="${pkgver%%.*}"
 pkgrel='1'
 pkgdesc="ZTO BAOHE ${_major}"
@@ -10,13 +10,13 @@ arch=('x86_64')
 url='https://baohe.zto.com'
 license=('custom')
 provides=()
-_filename=CgRReWQvsAiABn3OBfppPw5flgk.AppIma
+_filename=CgRRbWQvw8eAEzLpBfppS6v8lzk.AppIma
 source=(
-  "https://fscdn.zto.com/fs41/M05/D9/54/${_filename}"
+  "https://fscdn.zto.com/fs41/M07/6A/A5/${_filename}"
 )
 
-md5sums=('3a1a8ad0e78d58e1fb5a41123a9c18bc')
-sha256sums=('1e271dabdc481a3c6fbe9ef902f16beeffada1e54b07b3c2f6833dffef19d017')
+md5sums=('413be6890c4a1d28719cb84d5ccc7b8d')
+sha256sums=('19cf722fa0c122009af403fcd7e2632f99f0d92ddf22e6bc38ba392d13c1c846')
 
 options=(!strip)
 prepare() {

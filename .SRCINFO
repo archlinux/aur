@@ -1,12 +1,12 @@
 pkgbase = ztoim
 
 	pkgdesc = ZTO BAOHE 8
-	pkgver = 8.18.1 
+	pkgver = 8.19.17.8 
 	pkgrel = 1
 	url = https://baohe.zto.com
 	arch = x86_64
 	license = custom
-	source = https://fscdn.zto.com/fs41/M08/C0/C9/CgRReWQlXGyABqwLBfmYf8VW6Qo.AppIma 
-    md5sums = 3a1a8ad0e78d58e1fb5a41123a9c18bc
-    sha256sums = 1e271dabdc481a3c6fbe9ef902f16beeffada1e54b07b3c2f6833dffef19d017
+	source =  
+    md5sums = 413be6890c4a1d28719cb84d5ccc7b8d
+    sha256sums = 19cf722fa0c122009af403fcd7e2632f99f0d92ddf22e6bc38ba392d13c1c846
 pkgname = ztoim
