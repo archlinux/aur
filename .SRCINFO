@@ -1,7 +1,7 @@
 pkgbase = rock-paper-scissors-git
 	pkgdesc = an rock paper scissor game for linux
-	pkgver = r7.07947de
-	pkgrel = 2
+	pkgver = r47.97718f4
+	pkgrel = 1
 	url = https://github.com/kybe236/rock-paper-scissor
 	arch = any
 	license = MIT
