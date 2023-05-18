@@ -1,7 +1,7 @@
 # Maintainer: Hans-Nikolai Viessmann <hans AT viess DOT mn>
 rpkgname=ledmon
 pkgname=ledmonutils
-pkgver=0.96
+pkgver=0.97
 pkgrel=1
 pkgdesc="Enclosure LED Utilities"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('ledmon')
 depends=('sg3_utils' 'systemd-libs' 'pciutils')
 makedepends=('systemd')
 source=("https://github.com/intel/$rpkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('97534302a60f03b90e69228a6a56096cf3fdfc8eb31fea52a974445268fdf5d9')
+sha256sums=('40ee7e462b78c77468cc2ef356a06c5b6db44747d596dc11532f7b6f378d2d4b')
 
 prepare() {
 	cd "$rpkgname-$pkgver"

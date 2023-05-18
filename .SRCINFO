@@ -1,6 +1,6 @@
 pkgbase = ledmonutils
 	pkgdesc = Enclosure LED Utilities
-	pkgver = 0.96
+	pkgver = 0.97
 	pkgrel = 1
 	url = https://github.com/intel/ledmon
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ledmonutils
 	depends = systemd-libs
 	depends = pciutils
 	provides = ledmon
-	source = https://github.com/intel/ledmon/archive/refs/tags/v0.96.tar.gz
-	sha256sums = 97534302a60f03b90e69228a6a56096cf3fdfc8eb31fea52a974445268fdf5d9
+	source = https://github.com/intel/ledmon/archive/refs/tags/v0.97.tar.gz
+	sha256sums = 40ee7e462b78c77468cc2ef356a06c5b6db44747d596dc11532f7b6f378d2d4b
 
 pkgname = ledmonutils
