@@ -3,7 +3,7 @@
 
 pkgname=gnome-shell-extension-tiling-assistant
 _pkgname=Tiling-Assistant
-pkgver=40
+pkgver=41
 pkgrel=1
 pkgdesc="A GNOME Shell extension to expand GNOME's native 2 column design."
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('gnome-shell')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=("*tiling-assistant@leleat-on-github*")
-b2sums=('07d0d4b40050d55fd81c0cda199351caf5d9010546a8c6913d99c7e125645c3e929785aa0180c865fa8fbc1d5a09a0c0ee30ec435336f547d690f2dd6df2e7a1')
+b2sums=('bbf0e11c2509b88b7cb05e54180e5b5ab0258a8e98bacafec3e19414829eacb55d06a8a85369877d2b052ab46b6edcfe289dde87a61b29adfe5377191b95306c')
 _uuid=tiling-assistant@leleat-on-github
 
 build() {
