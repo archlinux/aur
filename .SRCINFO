@@ -47,7 +47,7 @@ pkgbase = pyside2-git
 	provides = pyside2
 	conflicts = python-pyside2
 	conflicts = pyside2
-	source = pyside2-git::git+https://code.qt.io/pyside/pyside-setup.git#commit=72d32f66685fbb7fefc41eee629e63f4824cb10b
+	source = pyside2::git+https://code.qt.io/pyside/pyside-setup.git#commit=72d32f66685fbb7fefc41eee629e63f4824cb10b
 	sha256sums = SKIP
 
 pkgname = pyside2-git

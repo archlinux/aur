@@ -7,6 +7,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Jan-Erik Meyer-Luetgens <nyan at meyer-luetgens dot de>
 
+_pkgname=pyside2
 pkgname=pyside2-git
 pkgver=5.15.3
 pkgrel=1
@@ -37,29 +38,35 @@ optdepends=('qt5-svg: QtSvg bindings'
 conflicts=(python-pyside2 pyside2)
 provides=(python-pyside2 pyside2)
 _commit=72d32f66685fbb7fefc41eee629e63f4824cb10b  # tags/v5.15.3-lts-lgpl^0
-source=("$pkgname::git+https://code.qt.io/pyside/pyside-setup.git#commit=$_commit")
+source=("$_pkgname::git+https://code.qt.io/pyside/pyside-setup.git#commit=$_commit")
 sha256sums=('SKIP')
 
 prepare() {
-  cd "${srcdir}/${pkgname}"
-
-  mkdir -p build
+  cd "$_pkgname"
 }
 
 _python=/usr/bin/python3.9
 
 build() {
-  cd "${srcdir}/${pkgname}/build"
+  # make a venv which has setuptools available
+  "$_python" -m venv --system-site-packages pkg-venv
 
-  cmake ../sources/pyside2 \
+  cmake -B build -S "$_pkgname/sources/pyside2" \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=None \
     -DBUILD_TESTS=OFF \
     -DPYTHON_EXECUTABLE="$_python"
-  make
+  cmake --build build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}/build"
+  DESTDIR="$pkgdir" cmake --install build
 
-  make DESTDIR="${pkgdir}" install
+  # Install egg-info
+  source pkg-venv/bin/activate
+  cd "$_pkgname"
+  python setup.py egg_info --build-type=pyside2
+  _pythonpath=$("$_python" -c "from sysconfig import get_path; print(get_path('platlib'))")
+  cp -r PySide2.egg-info "$pkgdir"/$_pythonpath
+  deactivate
 }
