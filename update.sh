@@ -4,9 +4,10 @@ then
 	git clone "https://github.com/gisogrimm/ov-client.git"
 fi
 cd ov-client
-git checkout development
+git checkout master
+git pull
 make gitupdate
-VER=$(./showver | sed 's/ovclient-\([^-]*\)-.*/\1/')
+VER=$(make -s ver | sed 's/\([^-]*\)-.*/\1/')
 COMMIT=$(git show | grep -e "^commit" | sed 's/commit //' | sed 's/ .*$//')
 echo "$COMMIT"
 cd ..
