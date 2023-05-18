@@ -1,7 +1,7 @@
 # Maintainer: David Grimm < david[dot]grimm [replace this with the swirly a sign] vegri[dot]net >
 pkgname=ov-client
 pkgver="0.20.452"
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Client to share and receive spatial realtime Audio"
 arch=('x86_64'
@@ -22,8 +22,6 @@ depends=('jack2'
 		 'cairomm'
 		 'hicolor-icon-theme'
 		 'xerces-c'
-		 'curl'
-		 'bash'
 		 'glibmm'
 		 'atkmm'
 		 'libsamplerate'
@@ -33,17 +31,22 @@ depends=('jack2'
 		 'glibmm'
 		 'glibc'
 		 'glib2'
+		 'nlohmann-json'
 		 'realtime-privileges'
+		 'eigen'
+		 'boost'
+		 'libxml++2.6'
+		 'curl'
+		 'nodejs'
 		)
 makedepends=('git'
+			 'bash'
 			 'make'
 			 'gcc'
-			 'pkg-config'
-			 'eigen'
-			 'boost'
-			 'libxml++2.6')
+			 'vim'
+			 'pkg-config')
 checkdepends=()
-optdepends=('node-js: Web Mixer')
+optdepends=()
 provides=('ov-client'
 		  'ovbox')
 conflicts=()
