@@ -20,11 +20,6 @@ makedepends=('rust' 'git' 'meson' 'clang')
 source=("git+https://gitlab.gnome.org/GNOME/fractal.git")
 md5sums=('SKIP')
 
-prepare() {
-   cd "$_gitname"
-   git tag -d 4.4.2-beta1 # upstream made a mistake and tagged this on main
-}
-
 pkgver() {
 	cd "$_gitname"
 	git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
