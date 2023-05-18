@@ -2,10 +2,10 @@
 
 pkgname='emborg'
 pkgver=1.36
-pkgrel=1
+pkgrel=2
 pkgdesc="Front-end to Borg backup"
 arch=('any')
-depends=('borg' 'python-appdirs' 'python-arrow' 'python-docopt'  'python-inform' 'python-quantiphy' 'python-requests')
+depends=('borg' 'python-appdirs' 'python-arrow' 'python-docopt'  'python-inform' 'python-quantiphy' 'python-requests' 'python-nestedtext')
 makedepends=('python-build' 'python-installer' 'python-flit-core')
 url="https://github.com/KenKundert/${pkgname}"
 license=('GPL3')
