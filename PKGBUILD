@@ -1,15 +1,15 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 # Contributor: Julien Savard <juju@juju2143.ca>
 pkgname=x16-emulator
-pkgver=r42
-pkgrel=2
+pkgver=r43
+pkgrel=1
 pkgdesc="An emulator for The 8-Bit Guy's Commander X16"
 arch=('x86_64')
 url="http://commanderx16.com/"
 license=('BSD')
 groups=('commander-x16')
 depends=('sdl2' "x16-rom=${pkgver}")
-makedepends=('clang' 'pandoc' 'gendesk')
+makedepends=('clang' 'gendesk' 'pandoc')
 
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/X16Community/$pkgname/archive/$pkgver.tar.gz"
@@ -18,7 +18,7 @@ source=(
 )
 
 md5sums=(
-    '3cc24b8783c2c11890dc284d9d55219e'
+    '4b4f8f2aa02d074b4c7f1686dca65ea5'
     'c0b5ba5190ef5ee4dd8e58433f261e35'
     '5cd0550d2af1b4267c9b9f30eed9691e'
 )
