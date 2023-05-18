@@ -1,15 +1,15 @@
 pkgbase = urbit
 	pkgdesc = An operating function
-	pkgver = 2.5
+	pkgver = 2.6
 	pkgrel = 1
 	url = https://github.com/urbit/urbit
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	conflicts = urbit-git
-	source_x86_64 = https://bootstrap.urbit.org/vere/live/v2.5/vere-v2.5-linux-x86_64
-	sha256sums_x86_64 = 86642f390f75c632b68a51859c925df1ed518f1e8ea70ab6419c47b4e30c907d
-	source_aarch64 = https://bootstrap.urbit.org/vere/live/v2.5/vere-v2.5-linux-aarch64
-	sha256sums_aarch64 = ee4602a81de0b067dabfb2b5c3f097dd0e38fcdb1dee38bf8db93e533b06e5f8
+	source_x86_64 = https://bootstrap.urbit.org/vere/live/v2.6/vere-v2.6-linux-x86_64
+	sha256sums_x86_64 = 23aa5bf1fabb80b4721a84cf679a28ab6ffccccb97a20b4cd198c3c8cd962d7f
+	source_aarch64 = https://bootstrap.urbit.org/vere/live/v2.6/vere-v2.6-linux-aarch64
+	sha256sums_aarch64 = a7ad150393fc1b34dde9925e884e055e3a2b48c8b6407cc1bb1d689962b6d140
 
 pkgname = urbit
