@@ -1,6 +1,6 @@
 # Maintainer: razer <razer[at]neuf[dot]fr>
 pkgname=python-pylint-plugin-utils
-_pypi_pkgname=pylint-plugin-utils
+_pypi_pkgname=pylint_plugin_utils
 pkgver=0.8.1
 pkgrel=0
 pkgdesc="Utilities and helpers for writing Pylint plugins"

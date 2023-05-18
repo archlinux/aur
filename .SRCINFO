@@ -8,7 +8,7 @@ pkgbase = python-pylint-plugin-utils
 	makedepends = python-setuptools
 	makedepends = python-pylint
 	depends = python
-	source = https://pypi.io/packages/source/p/pylint-plugin-utils/pylint-plugin-utils-0.8.1.tar.gz
+	source = https://pypi.io/packages/source/p/pylint_plugin_utils/pylint_plugin_utils-0.8.1.tar.gz
 	sha256sums = a595517d238d2ebe586fd867325cc656d4fac8d22b99421ff4cfb51b8c823a93
 
 pkgname = python-pylint-plugin-utils
