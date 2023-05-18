@@ -1,6 +1,6 @@
 pkgbase = r-nullranges
 	pkgdesc = Generation of null ranges via bootstrapping or covariate matching
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/nullranges
 	arch = any
@@ -40,7 +40,7 @@ pkgbase = r-nullranges
 	optdepends = r-testthat
 	optdepends = r-tidyr
 	optdepends = r-tidysummarizedexperiment
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/nullranges_1.6.0.tar.gz
-	sha256sums = 2788390f9b2d2975655fc5a3de691d3838274083036a0cbd89e99dd043ca9dd4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/nullranges_1.6.1.tar.gz
+	sha256sums = 4f4b8c1e805821085bcf81b4ddf302616182e0ef183a8cb2ec744ddcc6c5896a
 
 pkgname = r-nullranges
