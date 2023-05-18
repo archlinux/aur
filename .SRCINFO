@@ -1,0 +1,15 @@
+pkgbase = quba-appimage
+	pkgdesc = A viewer for electronic invoices
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/ZUGFeRD/quba-viewer
+	arch = x86_64
+	license = Apache
+	depends = zlib
+	depends = glibc
+	conflicts = quba
+	options = !strip
+	source = quba-1.2.1.AppImage::https://github.com/ZUGFeRD/quba-viewer/releases/download/v1.2.1/Quba-1.2.1.AppImage
+	sha256sums = e32fda4c8967538647a6f546e3ccee3f437ce8cf75bb7793dc7349fe90dcbf97
+
+pkgname = quba-appimage
