@@ -1,7 +1,7 @@
 pkgbase = aeon-bin
 	pkgdesc = Scan the internet for your personal information and modify or remove it
 	pkgver = 0.2.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aeon.technology/
 	arch = x86_64
 	license = EUPL
