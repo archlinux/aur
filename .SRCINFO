@@ -10,7 +10,6 @@ pkgbase = python-treecorr
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	makedepends = python-sphinx
 	depends = python-numpy
 	depends = python-cffi
 	depends = python-yaml

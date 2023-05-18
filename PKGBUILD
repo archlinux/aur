@@ -11,7 +11,7 @@ arch=('x86_64')
 url="https://github.com/rmjarvis/${_base}"
 license=('BSD')
 depends=(python-numpy python-cffi python-yaml python-coord)
-makedepends=(python-build python-installer python-setuptools python-wheel python-sphinx)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 optdepends=('python-fitsio: reads FITS catalogs or writes to FITS output files'
   'python-pandas: speeds up reading from ASCII catalogs'
   'python-h5py: reads HDF5 catalogs')
@@ -22,8 +22,6 @@ sha512sums=('9474e1539b13b5e4e588714b5a099542e35895d83d08912c335586120777e2edebb
 build() {
   cd ${_base}-${pkgver}
   python -m build --wheel --skip-dependency-check --no-isolation
-  local _pyversion=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
-  PYTHONPATH="${PWD}/build/lib.linux-$CARCH-cpython-${_pyversion}" make -C docs man
 }
 
 check() {
@@ -37,5 +35,4 @@ package() {
   cd ${_base}-${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 ${_base}_LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm644 docs/_build/man/${_base}.1 -t "${pkgdir}/usr/share/man/man1/"
 }
