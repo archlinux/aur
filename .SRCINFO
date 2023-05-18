@@ -1,0 +1,26 @@
+pkgbase = epy-ereader-git
+	pkgdesc = CLI Ebook Reader
+	pkgver = r286.c7a87f3
+	pkgrel = 1
+	url = https://github.com/wustho/epy
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = epy-ereader
+	conflicts = epy-ereader
+	source = epy-ereader::git+https://github.com/wustho/epy
+	source = Downloads.png::https://static.pepy.tech/personalized-badge/epy-reader?period=month&units=none&left_color=grey&right_color=brightgreen&left_text=downloads/month
+	source = screenshot.png::https://raw.githubusercontent.com/wustho/epy/master/screenshot.png
+	source = image.png::https://user-images.githubusercontent.com/108401269/198876974-c8420de1-b256-42fd-9a09-3a69c5019608.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = edb914542d56192ab1d9d4d9b60cab9785e19744651076021f7fd737bd12d9cf
+	sha256sums = 7c690a566598cb5ba1f2389860b95707b18f89e4cf45fe1bc049237eefbfd57e
+
+pkgname = epy-ereader-git
