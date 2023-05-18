@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 # Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=ja2-stracciatella-git
-pkgver=v0.20.0.r147.g42628dc4d
+pkgver=v0.20.0.r179.g0fa963e2d
 pkgrel=1
 pkgdesc='Jagged Alliance 2 Stracciatella'
 arch=('x86_64')
@@ -12,9 +12,9 @@ provides=('ja2-stracciatella')
 depends=('sdl2' 'sdl2>2.0.6' 'lua53')
 optdepends=('fltk: GUI launcher')
 makedepends=('git' 'cargo' 'cmake' 'ninja' 'string-theory' 'sol2' 'fltk')
-_magic_enum_ver='0.7.3'
-# This is version 0.11.1; miniaudio doesn't do tags apparently
-_miniaudio_commit='c153a947919808419b0bf3f56b6f2ee606d6c5f4'
+_magic_enum_ver='0.8.2'
+# This is version 0.11.9; miniaudio doesn't do tags apparently
+_miniaudio_commit='4dfe7c4c31df46e78d9a1cc0d2d6f1aef5a5d58c'
 source=(
     'git+https://github.com/ja2-stracciatella/ja2-stracciatella.git'
     # Header-only dependencies of JA2
@@ -22,11 +22,11 @@ source=(
     "https://github.com/mackron/miniaudio/archive/${_miniaudio_commit}.tar.gz"
 )
 sha256sums=('SKIP'
-    '903f026fedfff836619b78e10ce4a352fff314ba801aba672a4b509735e38540'
-    '5feb82b4ed59196aabac7325339621b49caddc078b86399d1a0b5425177462a9')
+            '903f026fedfff836619b78e10ce4a352fff314ba801aba672a4b509735e38540'
+            '76c154a60e320ae2054ac0e93480f2dffc12a5129bdb2ed4a62e0cce8d345c36')
 b2sums=('SKIP'
-    '054a8de35818f3217b157601b3402ed8bc62c203e726f74ca5c696a36520429d05213fc742c675e6c7980226a9604c2ed7602b1284834fb7bf9fae6fac9fc2dd'
-    '8518478e2adc5f7c0e122b82abb576b3795d1fc7918df09e1d2a0f9a0d31b46f9d1d57536119baf73981af487b51d9336ba753d83e9ecd0a19e9d7f391b27de6')
+        '054a8de35818f3217b157601b3402ed8bc62c203e726f74ca5c696a36520429d05213fc742c675e6c7980226a9604c2ed7602b1284834fb7bf9fae6fac9fc2dd'
+        'c579cb515633aaf947112ba66223ef2041e3d15aa66ca262b6afaa8a90f032a90ad06599ce16be4fc8b05ddab3b51e7e2dce8d66852ccb6fb0c7ae55cc94deb3')
 
 pkgver() {
     cd "${srcdir}/ja2-stracciatella"
