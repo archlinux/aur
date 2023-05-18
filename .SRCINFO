@@ -1,0 +1,12 @@
+pkgbase = fakeit
+	pkgdesc = A simple yet very expressive, headers only library for c++ mocking
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/eranpeer/FakeIt
+	arch = any
+	license = MIT
+	makedepends = cmake
+	source = fakeit-2.4.0.tar.gz::https://github.com/eranpeer/FakeIt/archive/2.4.0.tar.gz
+	b2sums = 23039cb5189d54cfdf6c50bfe8aed426de8b7ff8af683ff1ec7532d2768159c470921628808162ddcf5ddf641132054beacca883aa7de80190795015fd59c9ff
+
+pkgname = fakeit
