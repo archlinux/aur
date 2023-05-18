@@ -1,0 +1,27 @@
+include:
+- project: "common/gitlab-helper"
+  ref: master
+  file: "ci-helper.yml"
+
+workflow: !reference [ .common, workflow ]
+
+variables:
+  PKG_NAME: "cdsclient"
+
+stages:
+- containerize
+- build
+- test
+- deploy
+
+build-cdsclient:
+  extends: .arch-build
+  image: $CI_REGISTRY/common/gitlab-helper/archlinux-yay:master
+    
+test-cdsclient:
+  extends: .arch-test
+  needs: ["build-cdsclient"]
+  image: $CI_REGISTRY/common/gitlab-helper/archlinux-yay:master
+
+deploy-cdsclient:
+  extends: .arch-deploy

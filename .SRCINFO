@@ -1,12 +1,16 @@
 pkgbase = cdsclient
 	pkgdesc = a set of C and csh routines o query some databases located at CDS or on mirrors over the network
 	pkgver = 3.84
-	pkgrel = 1
-	url = http://cds.u-strasbg.fr/resources/doku.php?id=cdsclient#cdsclients
+	pkgrel = 2
+	url = https://vizier.cds.unistra.fr/vizier/doc/cdsclient.html
 	arch = x86_64
-	license = GPL
-	source = http://cdsarc.u-strasbg.fr/ftp/pub/sw/cdsclient.tar.gz
-	sha1sums = f568af0011ed803808b343ba60bad0e0d81330b5
+	license = GPL3
+	depends = glibc
+	optdepends = sh
+	optdepends = tcsh
+	source = cdsclient-3.84.tar.gz::http://cdsarc.cds.unistra.fr/ftp/pub/sw/cdsclient.tar.gz
+	source = cdsclient-3.84.patch
+	sha512sums = 2d7abf0079189b9dd19cb8919061445fd19ea9f7dfd54e8ceee26b743218cf62ab00eba0147abe82d9294223927f04b4cc3328620dfc9184a7049f8d515b29e4
+	sha512sums = d51aac0fc5f578aa2e09a4b59fe71cfd5e3b08ca19f4913ffe73e120e2e0bc1eb3eca56ade221f98605d3a47b7b0cfcf2f49d74921127ac404eda208897acfb5
 
 pkgname = cdsclient
-
