@@ -1,5 +1,5 @@
 pkgbase = rye
-	pkgdesc = an experimental alternative to poetry, pip, pipenv, venv, virtualenv, pdm, hatch, …
+	pkgdesc = An experimental alternative to poetry, pip, pipenv, venv, virtualenv, pdm, hatch, …
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/mitsuhiko/rye
