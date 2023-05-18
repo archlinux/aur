@@ -3,8 +3,8 @@
 
 pkgname=('jed-git')
 _pkgname="${pkgname/-git/}"
-pkgver=0.99.20.r177.g33f4757
-pkgrel=2
+pkgver=0.99.20.r180.g68f0c75
+pkgrel=1
 pkgdesc='Powerful editor designed for use by programmers (built from latest git commit)'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://www.jedsoft.org/jed/'
@@ -16,7 +16,14 @@ license=('GPL')
 provides=('jed' 'xjed' 'rgrep')
 conflicts=('jed' 'xjed' 'rgrep')
 options=('lto')
-depends=('gpm' 'slang' 'libxft')
+depends=(
+  'fontconfig'
+  'glibc'
+  'gpm'
+  'slang'
+  'libx11'
+  'libxft'
+)
 makedepends=('git' 'libxext' 'libxt')
 install="$pkgname.install"
 
