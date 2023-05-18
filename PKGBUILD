@@ -1,7 +1,7 @@
 # Maintainer: Core_UK <dev@coredev.uk>
 
 pkgname=cider
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=6
 pkgdesc="Project Cider. An open-source Apple Music client built from the ground up with Vue.js and Electron. Compiled from the GitHub repositories ${_pkgbranch} branch."
 arch=("armv7h" "i686" "x86_64")
