@@ -1,4 +1,5 @@
-# Maintainer: Jesse Spangenberger <azulephoenix@gmail.com>
+# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Contributor: Jesse Spangenberger <azulephoenix@gmail.com>
 
 pkgname=private-internet-access-vpn
 pkgver=3.4
@@ -24,14 +25,14 @@ sha256sums=('bc38427782aedc90cb65b322cd6f9d74af4e988cc5b3c884e43236ed7a5e4491'
             'SKIP')
 
 source=("default-$pkgver-$pkgrel.zip::https://www.privateinternetaccess.com/openvpn/openvpn.zip"
-	      "strong-$pkgver-$pkgrel.zip::https://www.privateinternetaccess.com/openvpn/openvpn-strong.zip"
+        "strong-$pkgver-$pkgrel.zip::https://www.privateinternetaccess.com/openvpn/openvpn-strong.zip"
         "login-example.conf"
-	      "pia-example.conf"
-	      "restart.conf"
-	      "vpn.sh"
-	      "pia.8.gz"
-	      "git+https://github.com/flamusdiu/python-pia.git#tag=v${pkgver}"
-	      "git+https://github.com/masterkorp/openvpn-update-resolv-conf.git")
+        "pia-example.conf"
+        "restart.conf"
+        "vpn.sh"
+        "pia.8.gz"
+        "git+https://github.com/flamusdiu/python-pia.git#tag=v${pkgver}"
+        "git+https://github.com/masterkorp/openvpn-update-resolv-conf.git")
 
 noextract=("default-$pkgver-$pkgrel.zip"
            "strong-$pkgver-$pkgrel.zip"
