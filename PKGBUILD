@@ -1,12 +1,12 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=autobrr
-pkgver=1.24.1
+pkgver=1.26.2
 pkgrel=1
 pkgdesc='The modern download automation tool for torrents'
 arch=('x86_64')
 url='https://autobrr.com'
-license=('unknown') # TODO https://github.com/autobrr/autobrr/issues/416
+license=('GPL2')
 depends=('glibc')
 makedepends=('git' 'go' 'yarn')
 optdepends=(
@@ -20,7 +20,7 @@ optdepends=(
   'lidarr'
 )
 options=('!lto')
-_commit='7f05dd1efdefda4e24dc3e5bc9139414aa47ce1f'
+_commit='43ccf404da109827c8ca1de0cb6054f0f7fe1c31'
 source=(
   "$pkgname::git+https://github.com/autobrr/autobrr#commit=$_commit"
   'systemd.service'
@@ -45,6 +45,7 @@ prepare() {
   mkdir build
 
   # download go dependencies
+  export GOPATH="${srcdir}"
   go mod download
 
   # download yarn dependencies
@@ -55,11 +56,6 @@ prepare() {
 build() {
   cd "$pkgname"
 
-  # set Go flags
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-
   # ensure build date is reproducible
   local _build_date="$(date --utc --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y-%m-%d)"
 
@@ -68,13 +64,20 @@ build() {
   yarn build
   popd
 
+  # set Go flags
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOPATH="${srcdir}"
+
   # build binaries
   go build -v \
-    -trimpath \
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags "-linkmode external -extldflags ${LDFLAGS} \
+    -ldflags "-compressdwarf=false \
+    -linkmode external \
+    -extldflags ${LDFLAGS} \
     -X main.version=$pkgver \
     -X main.commit=$_commit \
     -X main.date=$_build_date" \
