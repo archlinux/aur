@@ -1,11 +1,12 @@
 pkgbase = python-pafy-git
 	pkgdesc = Python API for YouTube - Download videos and retrieve metadata from YouTube.
-	pkgver = 0.5.4.r16.g7c31503
-	pkgrel = 1
+	pkgver = 0.5.5.r17.g0580c72
+	pkgrel = 2
 	url = https://github.com/mps-youtube/pafy
 	arch = any
 	license = LGPL3
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python
 	depends = youtube-dl
 	provides = python-pafy
@@ -14,4 +15,3 @@ pkgbase = python-pafy-git
 	md5sums = SKIP
 
 pkgname = python-pafy-git
-
