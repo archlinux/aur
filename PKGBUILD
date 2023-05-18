@@ -179,6 +179,7 @@ END
 
   # KDE menu and unity menubar
   patch -Np1 -i "${_cachyos_patches_dir}"/unity_kde/firefox-kde.patch
+  patch -Np1 -i "${_patches_dir}"/kde-upstream/mozilla-kde.patch
   patch -Np1 -i "${_patches_dir}"/kde-upstream/unity-menubar.patch
 
   # Disabling Pocket
