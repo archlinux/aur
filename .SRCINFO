@@ -1,13 +1,13 @@
 pkgbase = piow-bin
 	pkgdesc = Put Icons On your sway Workspaces
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/KuabeM/piow
 	arch = x86_64
 	license = MIT
 	provides = piow
 	conflicts = piow
-	source = https://github.com/KuabeM/piow/releases/download/v0.4.1/piow-0.4.1-x86_64.tar.gz
-	sha256sums = 9425458abe8e7f811ed5fba4b2bfdec2a7112694b79eb9a5744ba1b5a35c7a5f
+	source = https://github.com/KuabeM/piow/releases/download/v0.5.0/piow-0.5.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = a781e196225b004c07b4794acebc06b35495bdf6980816ca3c16fc61c00e32bd
 
 pkgname = piow-bin
