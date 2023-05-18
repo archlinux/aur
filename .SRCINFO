@@ -1,7 +1,7 @@
 pkgbase = python-pygmsh
 	pkgdesc = Gmsh for Python
 	pkgver = 7.1.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nschloe/pygmsh
 	arch = x86_64
 	license = GPL3
