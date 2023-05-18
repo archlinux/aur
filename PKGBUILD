@@ -2,7 +2,7 @@
 
 pkgname=plasma5-applet-awesome-widgets
 _pkgname=awesome-widgets
-pkgver=3.5.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Collection of minimalistic Plasmoids which look like Awesome WM widgets (ex-PyTextMonitor)"
 arch=('x86_64')
@@ -16,7 +16,6 @@ optdepends=("hddtemp: for HDD temperature monitor"
 makedepends=('cmake' 'extra-cmake-modules' 'python')
 source=(https://github.com/arcan1s/awesome-widgets/releases/download/${pkgver}/${_pkgname}-${pkgver}-src.tar.xz)
 install=${pkgname}.install
-sha256sums=('b604f658784c1f79fb9a0e0fe9e6d8a3951808557c3998060bf4b69170ef5a1b')
 backup=('etc/xdg/plasma-dataengine-extsysmon.conf')
 
 prepare() {
@@ -38,3 +37,5 @@ package() {
   cd "${srcdir}/build"
   make DESTDIR="${pkgdir}" install
 }
+
+sha256sums=('35d657b5ad7d41f8d1bf77a84bce75615bf13cd3aca37060057c26b09487d72e')
