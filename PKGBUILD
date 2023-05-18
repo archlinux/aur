@@ -4,7 +4,7 @@
 
 pkgname=unvanquished
 pkgver=0.54.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A team-based, fast-paced, fps/rts hybrid game which pits aliens against humans.'
 arch=('x86_64')
 url='https://www.unvanquished.net'
@@ -86,6 +86,12 @@ prepare() {
 
 	# Link the NaCL SDK in the Dæmon source tree.
 	ln -sfr "${_naclsdk}"            "${_daemon}/external_deps/${_naclsdk}"
+
+	# Work around a compilation failure.
+        sed -i '/#include "common\/using_std_string.h"/a #include <cstring>' \
+		"./breakpad-${_suffix}/src/client/linux/handler/minidump_descriptor.h"
+        sed -i '/#include <cstring>/a #include <cstdint>' \
+		"./breakpad-${_suffix}/src/client/linux/handler/minidump_descriptor.h"
 }
 
 build() {
