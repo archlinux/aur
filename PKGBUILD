@@ -10,6 +10,7 @@ pkgbase=electron-blur-me-not
 pkgname=(
   '1password-blur-me-not'
   # 'code' -- create a `code-flags.conf` file instead
+  # 'discord' -- create a `discord-flags.conf` file instead
   'rambox-pro-bin-blur-me-not'
   'signal-desktop-blur-me-not'
   'spotify-blur-me-not'
