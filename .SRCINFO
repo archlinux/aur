@@ -1,7 +1,7 @@
 pkgbase = python-eduvpn_common
 	pkgdesc = EduVPN common library for python clients
-	pkgver = 1.0.0
-	pkgrel = 4
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/eduvpn/eduvpn-common
 	arch = x86_64
 	license = MIT
@@ -11,10 +11,10 @@ pkgbase = python-eduvpn_common
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/eduvpn/eduvpn-common/releases/download/1.0.0/eduvpn-common-1.0.0.tar.xz
-	source = https://github.com/eduvpn/eduvpn-common/releases/download/1.0.0/eduvpn-common-1.0.0.tar.xz.asc
+	source = https://github.com/eduvpn/eduvpn-common/releases/download/1.1.0/eduvpn-common-1.1.0.tar.xz
+	source = https://github.com/eduvpn/eduvpn-common/releases/download/1.1.0/eduvpn-common-1.1.0.tar.xz.asc
 	validpgpkeys = 227FF3F8F829D9A9314D9EBA02BB8048BBFF222C
-	sha256sums = 9f26c11b0c8f6bec7443c96b3c177786ab6156313d540a6f3ab97d69aa84ee4e
+	sha256sums = 7a2ea1157f6f840cd9fe73deb642524cfe93a93d55af4ca26d46866f4f953dc0
 	sha256sums = SKIP
 
 pkgname = python-eduvpn_common
