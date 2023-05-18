@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DiagrammeR
-_pkgver=1.0.9
+_pkgver=1.0.10
 pkgname=r-${_pkgname,,}
-pkgver=1.0.9
-pkgrel=3
+pkgver=1.0.10
+pkgrel=1
 pkgdesc='Graph/Network Visualization'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -40,7 +40,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('64a426fe27110dddd8b0c1223ae4c397a2e553ae5e81ddd4ff67c026cfc40abf')
+sha256sums=('72f6a89708ae15277acbbab2dded5f461b6bdc9c5893112860fb34c8df3ff890')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
