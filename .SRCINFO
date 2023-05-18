@@ -1,7 +1,7 @@
 pkgbase = casacore
 	pkgdesc = Suite of C++ libraries for radio astronomy data processing
 	pkgver = 3.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/casacore/casacore
 	arch = x86_64
 	license = GPL
@@ -18,8 +18,8 @@ pkgbase = casacore
 	depends = wcslib
 	depends = python-numpy
 	optdepends = sofa: only for testing casacore measures
-	optdepends = hdf5
-	optdepends = ncurses
+	optdepends = hdf5:
+	optdepends = ncurses:
 	provides = libcasa_casa.so=6-64
 	provides = libcasa_coordinates.so=6-64
 	provides = libcasa_derivedmscal.so=6-64
@@ -36,6 +36,8 @@ pkgbase = casacore
 	provides = libcasa_scimath.so=6-64
 	provides = libcasa_tables.so=6-64
 	source = casacore-3.5.0.tar.gz::https://github.com/casacore/casacore/archive/v3.5.0.tar.gz
-	sha256sums = 63f1c8eff932b0fcbd38c598a5811e6e5397b72835b637d6f426105a183b3f91
+	source = gcc-13-compatility.patch::https://github.com/casacore/casacore/pull/1309.patch
+	sha512sums = 5ec72450dc60b833864416850e08a4a0903f02b9917e0218aafcef15475dedce88318ea526f44e27b214acad14d31542fed7ea2462d6b9590d178c1085466db4
+	sha512sums = 3f764c8d01c4f9e2a7cec65fe33367d003e49bc31f3e777ab4e5821541dcf3b89ecacc7178800455b1b212e168dc9655d52ac8d3747cb9afa3b634ed0a896710
 
 pkgname = casacore
