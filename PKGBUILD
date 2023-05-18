@@ -10,7 +10,7 @@ pkgname='nginx_passwd'
 pkgdesc='Basic Auth Password File Manager for nginx'
 _gitname='nginx_passwd'
 
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 url="https://github.com/gene-git/nginx_passwd"
 
@@ -18,7 +18,7 @@ arch=(any)
 license=(MIT)
 # tomli only needed for python < 3.11
 depends=('python>3.9' 'python-packaging' 'openssl' )
-makedepends=('git' 'python-pip' 'python-wheel' 'python-poetry' 'rsync')
+makedepends=('git' 'python-build' 'python-pip' 'python-wheel' 'python-poetry' 'rsync')
 _mkpkg_depends=('python>minor')
 source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
 sha512sums=('SKIP')
@@ -26,7 +26,7 @@ sha512sums=('SKIP')
 build() {
     cd "${_gitname}"
     /usr/bin/rm -f dist/*
-    /usr/bin/poetry build --format wheel
+    /usr/bin/python -m build --wheel --no-isolation
 }
 
 package() {
