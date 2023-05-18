@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=firefly-desktop-appimage
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="The official IOTA and Shimmer wallet"
 arch=('x86_64')
