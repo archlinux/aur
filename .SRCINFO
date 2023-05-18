@@ -1,6 +1,6 @@
 pkgbase = rye
 	pkgdesc = An experimental alternative to poetry, pip, pipenv, venv, virtualenv, pdm, hatch, …
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/mitsuhiko/rye
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = rye
 	depends = libxcrypt-compat
 	provides = rye
 	conflicts = rye
-	source = rye-0.1.0.tar.gz::https://github.com/mitsuhiko/rye/archive/refs/tags/0.1.0.tar.gz
-	sha256sums = 0359c6989cf751836d611824185b4a469e3cda509ffd4401b0bd3cb36a6fb00a
+	source = rye-0.1.1.tar.gz::https://github.com/mitsuhiko/rye/archive/refs/tags/0.1.1.tar.gz
+	sha256sums = 2951176225cbd8921880d34641cf94598658a835b90db813923c0bf58319f93f
 
 pkgname = rye
