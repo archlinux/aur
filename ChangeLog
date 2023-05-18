@@ -2,6 +2,9 @@
 ChangeLog for PG2PLplot PKGBUILD
 http://pg2plplot.sourceforge.net/
 
+* libsufr-5.13.1-1 (2023-05-18 - AstroFloyd)
+	Version bump to 5.13.1.
+
 * libsufr-5.13.0-1 (2021-06-13 - AstroFloyd)
 	Version bump to 5.13.0.
 
