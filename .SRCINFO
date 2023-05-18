@@ -1,0 +1,17 @@
+pkgbase = uyou-todo-appimage
+	pkgdesc = This is a todo list with electron
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/tonylu110/uyou-todo-electron
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	conflicts = uyou-todo
+	options = !strip
+	source = uyou-todo-1.3.1.AppImage::https://github.com/tonylu110/uyou-todo-electron/releases/download/1.3.1/uyou.ToDo-1.3.1.AppImage
+	source = https://raw.githubusercontent.com/tonylu110/uyou-todo-electron/main/LICENSE
+	sha256sums = 31bfe94e62c5000ea1a8f41f62c28b111b94c11afee45c9fe659c6b488e789a0
+	sha256sums = 39db5a38eec57377569ab296b6a804062b8e7a72908db228ae1d6d91bcbb61d3
+
+pkgname = uyou-todo-appimage
