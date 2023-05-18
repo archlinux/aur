@@ -1,4 +1,5 @@
-Math-BigInt-Lite-*.tar.gz
-perl-math-bigint-lite-*.log
-perl-math-bigint-lite-*.pkg.tar.xz
-perl-math-bigint-lite-*.pkg.tar.xz.sig
+/Math-BigInt-Lite-*.tar.gz
+/perl-math-bigint-lite-*.log
+/perl-math-bigint-lite-*.pkg.tar.xz
+/perl-math-bigint-lite-*.pkg.tar.xz.sig
+/src/

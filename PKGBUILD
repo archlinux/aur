@@ -3,7 +3,7 @@
 cpaname=Math-BigInt-Lite
 cpanauthor=PJACKLAM
 pkgname='perl-math-bigint-lite'
-pkgver=0.19
+pkgver=0.27
 pkgrel=1
 pkgdesc="What Math::BigInts are before they become big"
 arch=('any')
@@ -15,9 +15,9 @@ depends=(
 )
 url=http://search.cpan.org/dist/${cpaname}
 source=("http://search.cpan.org/CPAN/authors/id/${cpanauthor::1}/${cpanauthor::2}/${cpanauthor}/${cpaname}-${pkgver}.tar.gz")
-md5sums=('495b9c476965cc9ce629e2a10dfb89bc')
-sha256sums=('30f6034bf5d25c02813c84a8e5a2a98af86e2dbca8149c25a9277718df26151a')
-sha512sums=('a0babaa718678c278a3c0a9a74d687563355460aa1c76d8b67adff68232e3dfb96ed56feb72b599a99e65adc228bf0296481773d20489390cc40564da01301d4')
+md5sums=('bfbbdcbdfa4a1bf27bd7cc8f469b6222')
+sha256sums=('f264a54b8d0380e7d3fb35854e90f634b5278e75e259fb303a6321ad42a66925')
+sha512sums=('c6d99a394ae9d4ac3b9a420d0e702f4da02d879a115875fee4d5ef61e22ebf1e8b5454b0674efa3c85690ff412c1a9edda52cabd6f994457100c16981911e368')
 
 build() {
   cd "${srcdir}/${cpaname}-${pkgver}"
