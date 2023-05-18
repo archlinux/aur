@@ -1,11 +1,11 @@
-#!/usr/bin/env bash
+# Maintainer: stefanwimmer128 <info at stefanwimmer128 dot io>
 
 __pkgname=firedragon
 _pkgname=$__pkgname-unsigned-extensions
 pkgname=$_pkgname-bin
-_pkgver=112.0.2-1
+_pkgver=113.0.1-1
 pkgver=${_pkgver//-/.r}
-pkgrel=2
+pkgrel=1
 pkgdesc="FireDragon modified to allow installation of unsigned extensions"
 _arch=x86_64
 arch=($_arch)
