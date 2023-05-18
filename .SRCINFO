@@ -1,14 +1,14 @@
 pkgbase = shopware-cli
 	pkgdesc = A cli which contains handy helpful commands for daily Shopware tasks
-	pkgver = 0.1.70
+	pkgver = 0.1.71
 	pkgrel = 1
 	url = https://github.com/FriendsOfShopware/shopware-cli
 	arch = x86_64
 	license = MIT
 	optdepends = dart-sass-embedded: For building admin SCSS using esbuild
-	source = shopware-cli-0.1.70.tar.gz::https://github.com/FriendsOfShopware/shopware-cli/releases/download/0.1.70/shopware-cli_Linux_x86_64.tar.gz
-	source = LICENSE-0.1.70::https://raw.githubusercontent.com/FriendsOfShopware/shopware-cli/main/LICENSE
-	sha256sums = 853a6f34442c25c6aae74f413c61e19286116453b3c03f33da65d1935b059871
+	source = shopware-cli-0.1.71.tar.gz::https://github.com/FriendsOfShopware/shopware-cli/releases/download/0.1.71/shopware-cli_Linux_x86_64.tar.gz
+	source = LICENSE-0.1.71::https://raw.githubusercontent.com/FriendsOfShopware/shopware-cli/0.1.71/LICENSE
+	sha256sums = a6e962bbd0f6b2b41a598624d3a9746b70a714231d3bd80f4c11056f593499d5
 	sha256sums = d7aa16ba3040471c1f8958214ca26e957586f6a95434adc476edbaa9ca3a46ae
 
 pkgname = shopware-cli
