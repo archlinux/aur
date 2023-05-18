@@ -1,7 +1,7 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=pam_geoip
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Pluggable Authentication Module (PAM) for GeoIP based access'
 arch=('i686' 'x86_64')
 url="https://github.com/amishmm/pam_geoip"

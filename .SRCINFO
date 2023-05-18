@@ -1,7 +1,7 @@
 pkgbase = pam_geoip
 	pkgdesc = A Pluggable Authentication Module (PAM) for GeoIP based access
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/amishmm/pam_geoip
 	arch = i686
 	arch = x86_64
@@ -13,4 +13,3 @@ pkgbase = pam_geoip
 	md5sums = 33667872f8fa6080011e762c165f5421
 
 pkgname = pam_geoip
-
