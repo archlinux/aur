@@ -2,26 +2,28 @@
 
 pkgname=python-linuxfd
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Bindings for the Linux eventfd/signalfd/timerfd/inotify syscalls"
 arch=('x86_64')
 license=('LGPL3')
 url='https://pypi.python.org/pypi/linuxfd/'
 depends=('python')
-options=(!emptydirs)
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+
+_pypi=linuxfd
 source=(
-  "https://files.pythonhosted.org/packages/source/l/linuxfd/linuxfd-$pkgver.tar.gz"
+  "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
   'b8c00109724b68e093f9b556edd78e41ed65fb8d969fd0e83186a97b5d3139b4'
 )
 
 build() {
-	cd "$srcdir/linuxfd-$pkgver"
-	python setup.py build
+  cd "$srcdir/$_pypi-$pkgver"
+  python -m build --no-isolation --wheel
 }
 
 package() {
-	cd "$srcdir/linuxfd-$pkgver"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  cd "$srcdir/linuxfd-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
