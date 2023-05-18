@@ -1,6 +1,6 @@
 # Maintainer: Martynas Mickevičius <self at 2m dot lt>
 pkgname=ucm-bin
-pkgver=M4
+pkgver=M4i
 pkgrel=1
 pkgdesc='Unison language code manager'
 arch=('x86_64')
@@ -10,8 +10,8 @@ depends=('gmp' 'zlib')
 
 source=("ucm-$pkgver::https://github.com/unisonweb/unison/releases/download/release%2F$pkgver/ucm-linux.tar.gz"
         "https://raw.githubusercontent.com/unisonweb/unison/release/$pkgver/LICENSE")
-sha256sums=('3aab4988a02c79fc367d58e1b6c6147bea8b3ea5c13c590751a321dba109049e'
-            'b509f7dd073911b831418b6f6f654d16c43abd0fac5c9f12402873ec08849fa4')
+sha256sums=('431f2f3bf55acf455d0865f023045022e325a78e21c42ae843b9bb63e9bb6979'
+            '83b0f93a80eeb42f9894851822623bdd5c88cc63fa127d09f0a76d9799913d08')
 
 package() {
   install -D -m755 ucm "$pkgdir/usr/bin/ucm"
