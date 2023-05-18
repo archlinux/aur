@@ -1,0 +1,5 @@
+RealDebridClient.zip
+pkg/
+*.tar.zst
+src/
+
