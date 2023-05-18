@@ -1,0 +1,17 @@
+pkgbase = ynot3
+	pkgdesc = An image annotator for Xorg & Wayland using pygame
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/fdev31/ynot3
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	provides = ynot3
+	conflicts = ynot3
+	source = git+https://github.com/fdev31/ynot3.git#tag=1.0.0
+	md5sums = SKIP
+
+pkgname = ynot3
