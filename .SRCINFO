@@ -1,7 +1,7 @@
 pkgbase = ov-client
 	pkgdesc = Client to share and receive spatial realtime Audio
-	pkgver = 0.20.452
-	pkgrel = 3
+	pkgver = 0.20.2
+	pkgrel = 1
 	url = https://ovbox.de
 	arch = x86_64
 	arch = arm64
