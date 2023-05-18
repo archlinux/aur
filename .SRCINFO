@@ -5,7 +5,6 @@ pkgbase = python-treecorr
 	url = https://github.com/rmjarvis/TreeCorr
 	arch = x86_64
 	license = BSD
-	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
