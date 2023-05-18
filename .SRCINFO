@@ -1,14 +1,13 @@
 pkgbase = streamdock-appimage
 	pkgdesc = Streaming service viewer.
 	pkgver = 2.0.0
-	pkgrel = 3
+	pkgrel = 2
 	url = https://github.com/jtvberg/StreamDock
 	arch = x86_64
 	license = MIT
 	depends = zlib
 	depends = glibc
 	depends = hicolor-icon-theme
-	provides = icidasset
 	conflicts = streamdock
 	options = !strip
 	source = streamdock-2.0.0.AppImage::https://github.com/jtvberg/StreamDock/releases/download/v2.0.0/StreamDock-2.0.0.AppImage

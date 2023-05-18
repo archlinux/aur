@@ -1,14 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="streamdock-appimage"
 pkgver=2.0.0
-pkgrel=3
+pkgrel=2
 pkgdesc="Streaming service viewer."
 arch=('x86_64')
 url="https://github.com/jtvberg/StreamDock"
 license=("MIT")
 depends=('zlib' 'glibc' 'hicolor-icon-theme')
 options=(!strip)
-provides=(icidasset)
 conflicts=("${pkgname%-appimage}")
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/StreamDock-${pkgver}.AppImage"
