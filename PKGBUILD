@@ -10,7 +10,7 @@ pkgname='dns_tools'
 pkgdesc='DNS Tools for managing DNSSEC aka easy dnssec'
 _gitname='dns_tools'
 
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 url="https://github.com/gene-git/dns_tools"
 
@@ -26,7 +26,8 @@ sha512sums=('SKIP')
 build() {
     cd "${_gitname}"
     /usr/bin/rm -f dist/*
-    /usr/bin/poetry build --format wheel
+    #/usr/bin/poetry build --format wheel
+    /usr/bin/python -m build --wheel --no-isolation
 }
 
 package() {
