@@ -1,12 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=atom-ng-bin
 pkgver=1.66.10
-pkgrel=1
+pkgrel=2
 pkgdesc="The hyper-hackable text editor. Community maintained fork with compiler optimizations."
 arch=('x86_64')
 url="https://thorium.rocks/atom-ng/"
 _githuburl="https://github.com/Alex313031/atom-ng"
 license=('MIT')
+provides=(atom atom-ng)
 conflicts=("${pkgname%-bin}" "${pkgname%-ng-bin}")
 depends=('nspr' 'perl' 'libxdamage' 'at-spi2-core' 'glib2' 'libxcomposite' 'sh' 'gtk3' 'glibc' 'curl' 'libxfixes' 'dbus' 'nss' 'python' 'alsa-lib' 'libxext' \
     'libxrandr' 'gcc-libs' 'nodejs' 'libdrm' 'openssl-1.1' 'libsecret' 'pango' 'libxkbfile' 'expat' 'python-setuptools' 'gdk-pixbuf2' 'libxcb' 'zlib' 'libx11' \
