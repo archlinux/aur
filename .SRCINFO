@@ -1,12 +1,12 @@
 pkgbase = nmctl
 	pkgdesc = cli to control netmaker, a platform for modern, blazing fast wg virtual networks
-	pkgver = 0.19.0
+	pkgver = 0.20.0
 	pkgrel = 0
 	url = https://github.com/gravitl/netmaker
 	arch = x86_64
 	license = SSPL
 	makedepends = go
-	source = 0.19.0-0.tar.gz::https://github.com/gravitl/netmaker/archive/refs/tags/v0.19.0.tar.gz
-	sha256sums = 3e60d307bfcdcac956632c05832e4e89d2f40f1eab416bb9411537ca9c3eca18
+	source = 0.20.0-0.tar.gz::https://github.com/gravitl/netmaker/archive/refs/tags/v0.20.0.tar.gz
+	sha256sums = 61a2c2e623beeb0e48af37ff22caf3540858be0016d613e236c83d88e07803a0
 
 pkgname = nmctl
