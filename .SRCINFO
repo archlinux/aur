@@ -1,0 +1,23 @@
+pkgbase = dahliaos-settings-git
+	pkgdesc = dahliaOS Settings application.
+	pkgver = r26.2f11201
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/dahliaOS/settings
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = flutter>=3.10.0
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = imagemagick
+	makedepends = clang>=11.0.0
+	depends = gtk3
+	provides = dahliaos-settings
+	conflicts = dahliaos-settings
+	source = git+https://github.com/dahliaOS/settings.git
+	source = dahliaos-settings.desktop
+	sha256sums = SKIP
+	sha256sums = e8f2cbf3cb466cb55845582f9b690767d37c7e87d24e037f4c0a85ce22478836
+
+pkgname = dahliaos-settings-git

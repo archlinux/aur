@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=dahliaOS Settings
+Exec=/opt/dahliaos-settings/settings
+Terminal=false
+Hidden=false
+Categories=Utility;
+Comment=dahliaOS Settings application
