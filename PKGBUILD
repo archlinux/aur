@@ -13,7 +13,7 @@ makedepends=('git'
              'ruby'
              'doxygen'
              )
-provides=("opencl-headers=${pkgver}")
+provides=("opencl-headers=2:${pkgver}")
 conflicts=('opencl-headers')
 source=('git+https://github.com/KhronosGroup/OpenCL-Headers.git')
 sha256sums=('SKIP')
