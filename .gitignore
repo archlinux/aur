@@ -1,0 +1,6 @@
+/*
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
+!/0001-include-format-specifier-in-printf.patch
+!/tty-clock.LICENSE

@@ -1,0 +1,11 @@
+--- a/ttyclock.c	2023-05-18 17:40:41.952705459 -0400
++++ b/ttyclock.c	2023-05-18 17:45:32.900566109 -0400
+@@ -275,7 +275,7 @@
+      if (ttyclock->option.date)
+      {
+           wbkgdset(ttyclock->datewin, (COLOR_PAIR(2)));
+-          mvwprintw(ttyclock->datewin, (DATEWINH / 2), 1, ttyclock->date.datestr);
++          mvwprintw(ttyclock->datewin, (DATEWINH / 2), 1, "%s", ttyclock->date.datestr);
+           wrefresh(ttyclock->datewin);
+      }
+ 
