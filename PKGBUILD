@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RNifti
-_pkgver=1.4.5
+_pkgver=1.5.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.5
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Fast R and C++ Access to NIfTI Images'
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=(
   r-tractor.base
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a277a849cdfeba3a104fd4ac2764c655d5cf8a71d8e64fa212d359fe60934628')
+sha256sums=('32e4dfd35643932e0f2021b22cfc26cedff51dff13b940d9a3abe6282bf5e905')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

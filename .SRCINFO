@@ -1,6 +1,6 @@
 pkgbase = r-rnifti
 	pkgdesc = Fast R and C++ Access to NIfTI Images
-	pkgver = 1.4.5
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=RNifti
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = r-rnifti
 	optdepends = r-shades
 	optdepends = r-testthat
 	optdepends = r-tractor.base
-	source = https://cran.r-project.org/src/contrib/RNifti_1.4.5.tar.gz
-	sha256sums = a277a849cdfeba3a104fd4ac2764c655d5cf8a71d8e64fa212d359fe60934628
+	source = https://cran.r-project.org/src/contrib/RNifti_1.5.0.tar.gz
+	sha256sums = 32e4dfd35643932e0f2021b22cfc26cedff51dff13b940d9a3abe6282bf5e905
 
 pkgname = r-rnifti
