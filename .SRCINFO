@@ -1,18 +1,18 @@
 pkgbase = zyplayer-appimage
 	pkgdesc = 跨平台桌面端视频资源播放器,免费高颜值
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Hiram-Wong/ZyPlayer
 	arch = x86_64
-	arch = arm64
 	license = MIT
-	provides = ZyPlayer
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = zyplayer
 	options = !strip
-	source = https://github.com/Hiram-Wong/ZyPlayer/releases/download/v3.2.0/ZYPlayer-linux-3.2.0-x86_64.AppImage
-	source = ZyPlayer
-	source = ZyPlayer.desktop
-	md5sums = 403792098e58af6b3fc575a4c12b5b3b
-	md5sums = a0075fe2ae27fad2ca6cfff1e1e10620
-	md5sums = ce47af03c780c02b086c9b8f576c3419
+	source = zyplayer-3.2.0.AppImage::https://github.com/Hiram-Wong/ZyPlayer/releases/download/v3.2.0/ZYPlayer-linux-3.2.0-x86_64.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/Hiram-Wong/ZyPlayer/main/LICENSE
+	sha256sums = 08598f2106bb8dc8b50934fec76af6807739b2f93f63d831a7a30f15eba6191c
+	sha256sums = 84378c42abc60e52c641be1d9d3b5b74e587adbfce6a1be75276524120055edd
 
 pkgname = zyplayer-appimage
