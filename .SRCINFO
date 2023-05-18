@@ -1,12 +1,12 @@
 pkgbase = todour
 	pkgdesc = An application for handling todo.txt files.
-	pkgver = 2.21
+	pkgver = 2.22
 	pkgrel = 1
 	url = https://nerdur.com/todour-pl/
 	arch = x86_64
 	license = GPL
 	depends = qt5-base
-	source = git+https://github.com/SverrirValgeirsson/Todour.git?tag=v2.21,
+	source = git+https://github.com/SverrirValgeirsson/Todour.git?tag=v2.22,
 	source = todour.desktop
 	md5sums = SKIP
 	md5sums = 1c2c52be2c88a64ad58d8ac935b08aae
