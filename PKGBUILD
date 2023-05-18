@@ -1,8 +1,9 @@
 # Maintainer: Yardena Cohen <yardenack at gmail dot com>
 
-gitname=unpaywall
-pkgname=chromium-${gitname}-git
-pkgver=279.c683b42
+shortname=unpaywall
+gitname=${shortname}-extension
+pkgname=chromium-${shortname}-git
+pkgver=293.ba7d152
 pkgrel=1
 pkgdesc="Chromium extension to find free journal articles"
 arch=('any')
@@ -18,7 +19,7 @@ pkgver() {
     printf "%s" "${ver//-/.}"
 }
 package() {
-    mkdir -p "${pkgdir}/usr/share/chromium/${gitname}"
+    mkdir -p "${pkgdir}/usr/share/chromium/${shortname}"
     shopt -u dotglob
-    cp -dr --no-preserve=ownership "${srcdir}/${gitname}"/extension/* "${pkgdir}/usr/share/chromium/${gitname}/"
+    cp -dr --no-preserve=ownership "${srcdir}/${gitname}"/extension/* "${pkgdir}/usr/share/chromium/${shortname}/"
 }
