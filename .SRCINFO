@@ -1,0 +1,16 @@
+pkgbase = neanes-appimage
+	pkgdesc = A free and open source scorewriter for notating Byzantine chant in Byzantine notation.
+	pkgver = 0.3.0beta.19
+	pkgrel = 1
+	url = https://danielgarthur.github.io/neanes/
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = neanes
+	options = !strip
+	source = neanes-0.3.0beta.19.AppImage::https://github.com/danielgarthur/neanes/releases/download/v0.3.0-beta.19/Neanes-0.3.0-beta.19.AppImage
+	sha256sums = 08b20e6cd9b3581304a84c10296a9e2260c4374dc0d56150f946bb9d9b4ef293
+
+pkgname = neanes-appimage
