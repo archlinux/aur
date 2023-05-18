@@ -1,6 +1,6 @@
 # Maintainer: matt kasun <matt  at netmaker.io>
 pkgname=netclient
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=0
 pkgdesc="netclient daemon - a platform for modern, blazing fast wireguard virtual networks"
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=('Apache')
 makedepends=(go)
 
 source=("${pkgver}-${pkgrel}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b462f35f05c6881c3ab3ae87c5eea760a5491c95f1c06444f260d91feff64cd7')
+sha256sums=('25d249af3a1b553fdee744a6aaee1dbdfc54c52a3afbaf0785c0af9fc92452e6')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
