@@ -3,14 +3,14 @@
 
 _gui=true
 _gitname=simc
-pkgver=r49242.50800a203f
+pkgver=r54809.615bbc2ea6
 pkgrel=1
 pkgname=simulationcraft-git
 pkgdesc="A tool to explore combat mechanics in the popular MMO RPG World of Warcraft (tm). Multi-player event-driven simulator written in C++ that models raid damage."
 url="https://github.com/simulationcraft/simc"
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('qt5-webkit' 'openssl' 'qt5-webkit' 'qt5-webengine')
+depends=('openssl' 'qt5-webengine')
 makedepends=('cmake' 'git')
 provides=("${pkgname%-git}" "${pkgname%-git}-gui")
 conflicts=("${pkgname%-git}" "${pkgname%-git}-gui")
