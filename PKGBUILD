@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Harsh Barsaiyan <hbarsaiyan at gmail dot com>
 pkgname=youtube-music-bin
-pkgver=1.19.0
-pkgrel=4
+pkgver=1.20.0
+pkgrel=1
 pkgdesc="YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"
 arch=('x86_64')
 url="https://th-ch.github.io/youtube-music"
@@ -17,9 +17,9 @@ install="${pkgname%-bin}.install"
 source=("https://github.com/th-ch/youtube-music/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_amd64.deb"
         "https://github.com/th-ch/youtube-music/raw/v$pkgver/license"
         "${pkgname%-bin}.sh")
-sha256sums=('f8bebf16cd24463dd830bdf3dbd59cc6a4f44a5422a2b995f1ef8bb260325beb'
+sha256sums=('dbefcfdcab7df20be27690b9ecb0762816be61988b0371af7b2f0afb24b66494'
             'e7e14b3b771ecadb23f6ee0b6f99d1553e385e35cdb44fc8e36ee7c878dacd08'
-            '5bd19a45a4f328db82a10fa89b3d1fcf2c30424372cc0824f348972f2ef873bf')
+            '2bfe32e43f012456fc6b8b5e2e3d1ab38edef2cd688e75b2792ee7a52ab1588e')
 
 package(){
   bsdtar xfv data.tar.xz -C "$pkgdir"
