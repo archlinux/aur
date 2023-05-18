@@ -1,7 +1,7 @@
 # Maintainer: David Grimm < david[dot]grimm [replace this with the swirly a sign] vegri[dot]net >
 pkgname=ov-client
 pkgver="0.20.452"
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Client to share and receive spatial realtime Audio"
 arch=('x86_64'
@@ -33,6 +33,7 @@ depends=('jack2'
 		 'glibmm'
 		 'glibc'
 		 'glib2'
+		 'realtime-privileges'
 		)
 makedepends=('git'
 			 'make'
@@ -86,4 +87,12 @@ build() {
 package() {
 	cd ov-client
 	make PREFIX="${pkgdir}/usr" install
+	echo "
+INFO:
+To use OV-Client, please create an account at https://box.orlandoviols.com
+To use a different server, start with the option \"-s [URL]\"
+
+For minimal stuttering, please enable realtime privileges:
+$ usermod -a -G realtime \$USER
+"
 }
