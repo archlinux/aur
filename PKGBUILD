@@ -2,9 +2,9 @@
 
 pkgname=tokentool
 _pkgname=TokenTool
-pkgver=2.1
+pkgver=2.2.1
 pkgrel=2
-pkgdesc="A Token creation tool to create png images suitable for Virtual Table Tops."
+pkgdesc="A free tool written in Java for building digital avatars, focussed around Virtual Tabletops."
 arch=('x86_64')
 url="https://rptools.net/toolbox/token-tool"
 license=('AGPL3')

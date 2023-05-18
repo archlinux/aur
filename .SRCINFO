@@ -1,6 +1,6 @@
 pkgbase = tokentool
 	pkgdesc = A Token creation tool to create png images suitable for Virtual Table Tops.
-	pkgver = 2.1
+	pkgver = 2.2.1
 	pkgrel = 2
 	url = https://rptools.net/toolbox/token-tool
 	arch = x86_64
