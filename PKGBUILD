@@ -1,6 +1,6 @@
 # Maintainer: Thomas Frans <franske2000 at gmail dot com>
 pkgname=wiki-tui
-pkgver=0.6.4
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A simple and easy to use Wikipedia Text User Interface"
 arch=('x86_64')
@@ -33,6 +33,6 @@ check() {
 package() {
 	cd "$pkgname-$pkgver"
     install -Dm 755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm 644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm 644 "logo.png" "${pkgdir}/usr/share/pixmaps/wiki-tui.png"
 }
