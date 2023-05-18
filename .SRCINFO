@@ -1,6 +1,6 @@
 pkgbase = linux-bpir64-git
-	pkgver = 6.2.7.bpir
-	pkgrel = 2
+	pkgver = 6.3.3.bpi
+	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = aarch64
 	license = GPL2
@@ -18,10 +18,6 @@ pkgbase = linux-bpir64-git
 	source = mkinitcpio.build
 	source = bpir-flash2emmc
 	source = src/configfs.c::https://github.com/Xilinx/linux-xlnx/raw/master/drivers/of/configfs.c
-	source = src/mt7986a-bananapi-bpi-r3.dts::https://github.com/torvalds/linux/raw/master/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-	source = src/mt7986a.dtsi::https://github.com/torvalds/linux/raw/master/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-	md5sums = SKIP
-	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
@@ -39,7 +35,7 @@ pkgname = linux-bpir64-git
 	depends = linux-firmware
 	depends = kmod
 	optdepends = mkinitcpio>=0.7
-	provides = linux=6.2.7.bpir
+	provides = linux=6.3.3.bpi
 	provides = WIREGUARD-MODULE
 	conflicts = linux
 	replaces = linux-armv8
@@ -47,5 +43,5 @@ pkgname = linux-bpir64-git
 
 pkgname = linux-bpir64-git-headers
 	pkgdesc = Header files and scripts for building modules for linux kernel - AArch64 kernel for BPI-R64 and BPI-R3
-	provides = linux-headers=6.2.7.bpir
+	provides = linux-headers=6.3.3.bpi
 	conflicts = linux-headers

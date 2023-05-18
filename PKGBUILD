@@ -3,6 +3,9 @@
 
 # PKGBUILD: https://github.com/archlinuxarm/PKGBUILDs/tree/master/core/linux-aarch64
 
+# Succesfull boot also depends on devictree-overlays from:
+# https://github.com/ericwoud/buildR64arch
+
 pkgbase=linux-bpir64-git
 _srcname=linux
 _gitroot="https://git.kernel.org/pub/scm/linux/kernel/git/stable/${_srcname}"
@@ -10,8 +13,8 @@ _gitbranch="linux-rolling-stable"
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for BPI-R64 and BPI-R3"
 #_lto="true"  # Uncomment this line to enable CLANG-LTO
-pkgver=6.2.7.bpir
-pkgrel=2
+pkgver=6.3.3.bpi
+pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -27,10 +30,11 @@ source=('defconfig'
         'mkinitcpio.build'
         'bpir-flash2emmc'
         "src/configfs.c::https://github.com/Xilinx/linux-xlnx/raw/master/drivers/of/configfs.c"
-        "src/mt7986a-bananapi-bpi-r3.dts::https://github.com/torvalds/linux/raw/master/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts"
-        "src/mt7986a.dtsi::https://github.com/torvalds/linux/raw/master/arch/arm64/boot/dts/mediatek/mt7986a.dtsi"
 )
-md5sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
+# Need this for kernel 6.2
+#       "src/mt7986a-bananapi-bpi-r3.dts::https://github.com/torvalds/linux/raw/master/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts"
+#       "src/mt7986a.dtsi::https://github.com/torvalds/linux/raw/master/arch/arm64/boot/dts/mediatek/mt7986a.dtsi"
+md5sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
 
 export LOCALVERSION=""
 
@@ -57,13 +61,14 @@ prepare() {
   fi
   cd "${srcdir}/${_srcname}/"
 
-  cp -vf "${srcdir}/mt7986a-bananapi-bpi-r3.dts" "./arch/arm64/boot/dts/mediatek/"
-  cp -vf "${srcdir}/mt7986a.dtsi"                "./arch/arm64/boot/dts/mediatek/"
-  sed -i 's/mt6795-sony-xperia-m5/mt7986a-bananapi-bpi-r3/g' ./arch/arm64/boot/dts/mediatek/Makefile
+# Need this for kernel 6.2
+#  cp -vf "${srcdir}/mt7986a-bananapi-bpi-r3.dts" "./arch/arm64/boot/dts/mediatek/"
+#  cp -vf "${srcdir}/mt7986a.dtsi"                "./arch/arm64/boot/dts/mediatek/"
+#  sed -i 's/mt6795-sony-xperia-m5/mt7986a-bananapi-bpi-r3/g' ./arch/arm64/boot/dts/mediatek/Makefile
 
-  cp -vf ${startdir}/defconfig ./arch/arm64/configs/bpir64_defconfig
-  make ${MAKEFLAGS} $_llvm bpir64_defconfig
-  rm -vf ./arch/arm64/configs/bpir64_defconfig
+  cp -vf ${startdir}/defconfig ./arch/arm64/configs/bpir_defconfig
+  make ${MAKEFLAGS} $_llvm bpir_defconfig
+  rm -vf ./arch/arm64/configs/bpir_defconfig
 
   if [ ! -z "$(cat .config | grep CONFIG_OF_OVERLAY=y)" ]; then
     cp -vf "${srcdir}/configfs.c" "./drivers/of/"

@@ -5,6 +5,6 @@ post_upgrade() {
 }
 
 post_remove() {
-  rm -f boot/initramfs-linux-bpir64-git.img
-  rm -f boot/initramfs-linux-bpir64-git-fallback.img
+  rm -f /boot/initramfs-linux-bpir64-git.img
+  rm -f /boot/initramfs-linux-bpir64-git-fallback.img
 }
