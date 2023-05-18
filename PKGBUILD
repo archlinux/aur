@@ -10,7 +10,7 @@ pkgdesc="Matrix messaging app for GNOME written in Rust"
 arch=('i686' 'x86_64')
 license=('GPL3')
 url="https://gitlab.gnome.org/GNOME/fractal"
-depends=('gtk4' 'gtksourceview5' 'gst-plugins-base-libs' 'gst-editing-services' 'gspell'
+depends=('gtk4' 'gtksourceview5' 'gst-plugins-base-libs' 'gst-editing-services'
          'libadwaita>=1:1.3alpha' 'pipewire' 'libshumate' 'org.freedesktop.secrets'
          'xdg-desktop-portal')
 conflicts=('fractal')

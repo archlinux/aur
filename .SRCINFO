@@ -15,7 +15,6 @@ pkgbase = fractal-git
 	depends = gtksourceview5
 	depends = gst-plugins-base-libs
 	depends = gst-editing-services
-	depends = gspell
 	depends = libadwaita>=1:1.3alpha
 	depends = pipewire
 	depends = libshumate
