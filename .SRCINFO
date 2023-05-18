@@ -1,6 +1,6 @@
 pkgbase = obs-advanced-scene-switcher
 	pkgdesc = An automated scene switcher for OBS Studio
-	pkgver = 1.21.1
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://obsproject.com/forum/resources/advanced-scene-switcher.395/
 	arch = x86_64
@@ -9,16 +9,29 @@ pkgbase = obs-advanced-scene-switcher
 	makedepends = cmake
 	makedepends = git
 	makedepends = asio
+	makedepends = curl
+	makedepends = libxss
+	makedepends = libxtst
+	makedepends = openvr
 	makedepends = websocketpp
 	depends = obs-studio>=28
-	depends = libxss
-	depends = libxtst
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = glibc
+	depends = jack
+	depends = leptonica
+	depends = libx11
 	depends = opencv
-	depends = openvr
 	depends = procps
+	depends = qt6-base
+	depends = tesseract
+	optdepends = curl: Remote file access feature
+	optdepends = libxss: X screensaver related features
+	optdepends = libxtst: X key press related features
+	optdepends = openvr: OpenVR features
 	options = debug
-	source = obs-advanced-scene-switcher::git+https://github.com/WarmUpTill/SceneSwitcher.git#tag=1.21.1
-	source = obs-websocket::git+https://github.com/obsproject/obs-websocket.git
+	source = obs-advanced-scene-switcher::git+https://github.com/WarmUpTill/SceneSwitcher.git#tag=1.22.0
+	source = libremidi::git+https://github.com/jcelerier/libremidi.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 

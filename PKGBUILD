@@ -1,21 +1,30 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-advanced-scene-switcher
-pkgver=1.21.1
+pkgver=1.22.0
 pkgrel=1
 pkgdesc="An automated scene switcher for OBS Studio"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/advanced-scene-switcher.395/"
 license=("GPL2")
 depends=(
-  "obs-studio>=28" "libxss" "libxtst" "opencv" "openvr"
-  "procps"
+  "obs-studio>=28" "alsa-lib" "gcc-libs" "glibc" "jack" "leptonica"
+  "libx11" "opencv" "procps" "qt6-base" "tesseract"
 )
-makedepends=("cmake" "git" "asio" "websocketpp")
+makedepends=(
+  "cmake" "git" "asio" "curl" "libxss" "libxtst"
+  "openvr" "websocketpp"
+)
+optdepends=(
+  "curl: Remote file access feature"
+  "libxss: X screensaver related features"
+  "libxtst: X key press related features"
+  "openvr: OpenVR features"
+)
 options=('debug')
 source=(
   "$pkgname::git+https://github.com/WarmUpTill/SceneSwitcher.git#tag=$pkgver"
-  "obs-websocket::git+https://github.com/obsproject/obs-websocket.git"
+  "libremidi::git+https://github.com/jcelerier/libremidi.git"
 )
 sha256sums=(
   "SKIP"
@@ -25,24 +34,22 @@ sha256sums=(
 prepare() {
   cd $pkgname
 
-  git config submodule.deps/obs-websocket.url $srcdir/obs-websocket
+  git config submodule.deps/libremidi.url $srcdir/libremidi
   git -c protocol.file.allow=always submodule update
 }
 
 build() {
-  cd $pkgname
-
-  cmake -B build \
-  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+  cmake -B build -S $pkgname \
+  -DCMAKE_BUILD_TYPE=None \
   -DCMAKE_INSTALL_PREFIX='/usr' \
   -DCMAKE_INSTALL_LIBDIR=lib \
   -DLINUX_PORTABLE=OFF \
-  -DQT_VERSION=6
+  -DQT_VERSION=6 \
+  -Wno-dev
 
-  make -C build
+  cmake --build build
 }
 
 package() {
-  cd $pkgname
-  make -C build DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir" cmake --install build
 }
