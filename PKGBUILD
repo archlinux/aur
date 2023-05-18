@@ -1,5 +1,5 @@
 pkgname=drpm
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="A small library for fetching information from deltarpm packages"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ depends=('bzip2' 'openssl' 'rpm-tools' 'xz' 'zlib' 'zstd')
 makedepends=('cmake>=3.13' 'doxygen')
 checkdepends=('cmocka')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('9e07c0eb3cdfb766d97224b3379ffe60fdb5ac4e04e2a32bb0a00ee2f7458fb6')
+sha256sums=('33767a4029f707ac974cbbc6cdf02d12a8574a9647eb1b7c2424195e1784f054')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -21,20 +21,20 @@ build() {
 	      -DCMAKE_INSTALL_LIBDIR=lib \
 	      -DWITH_ZSTD=ON
 
-	make -C build VERBOSE=1
-	make -C build doc
+	cmake --build build
+	cmake --build build --target doc
 }
 
 check() {
 	cd "$pkgname-$pkgver"
 
-	make -C build ARGS="-V" test
+	ctest --test-dir build --output-on-failure
 }
 
 package() {
 	cd "$pkgname-$pkgver"
 
-	make -C build DESTDIR="$pkgdir/" install
+	DESTDIR="$pkgdir" cmake --install build
 
 	mkdir -p "$pkgdir"/usr/share/doc/$pkgname
 	cp -Rp build/doc/html "$pkgdir"/usr/share/doc/$pkgname/html

@@ -1,6 +1,6 @@
 pkgbase = drpm
 	pkgdesc = A small library for fetching information from deltarpm packages
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/rpm-software-management/drpm
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = drpm
 	depends = xz
 	depends = zlib
 	depends = zstd
-	source = https://github.com/rpm-software-management/drpm/archive/0.5.1/drpm-0.5.1.tar.gz
-	sha256sums = 9e07c0eb3cdfb766d97224b3379ffe60fdb5ac4e04e2a32bb0a00ee2f7458fb6
+	source = https://github.com/rpm-software-management/drpm/archive/0.5.2/drpm-0.5.2.tar.gz
+	sha256sums = 33767a4029f707ac974cbbc6cdf02d12a8574a9647eb1b7c2424195e1784f054
 
 pkgname = drpm
