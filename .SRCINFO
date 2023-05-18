@@ -1,7 +1,7 @@
 pkgbase = interception-caps2esc-arrow-git
 	pkgdesc = Interception plugin: Capslock tap for escape key, Capslock + hjkl for arrow keys.
 	pkgver = r13.beab74c
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/akarsh1995/interception-caps2esc-hjkl-arrow
 	install = post.install
 	arch = x86_64

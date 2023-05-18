@@ -2,7 +2,7 @@
 
 pkgname=interception-caps2esc-arrow-git
 pkgver=r13.beab74c
-pkgrel=2
+pkgrel=3
 pkgdesc='Interception plugin: Capslock tap for escape key, Capslock + hjkl for arrow keys.'
 arch=('x86_64')
 license=('MIT')
