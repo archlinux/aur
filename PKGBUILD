@@ -4,8 +4,8 @@
 pkgname=fractal-git
 _gitname=fractal
 epoch=1
-pkgver=5.alpha1.r313.g64cffbba
-pkgrel=1
+pkgver=5.beta1.r6.g5816bdbb
+pkgrel=2
 pkgdesc="Matrix messaging app for GNOME written in Rust"
 arch=('i686' 'x86_64')
 license=('GPL3')
