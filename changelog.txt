@@ -1,1 +1,7 @@
-refactor 天(U+5929), 方(U+65b9)
+Features
+    add build command (f4b300d)
+Bug Fixes
+    extra space (6a64852)
+    typo in readme (ce235fc)
+    煞(U+715E) (9594d4e)
+    隹(U+96B9) (315af94)
