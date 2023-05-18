@@ -3,13 +3,13 @@
 
 pkgname=private-internet-access-vpn
 pkgver=3.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=("any")
 url="https://www.privateinternetaccess.com/"
 license=('GPL')
-depends=('python' 'python-setuptools' 'python-docopt' 'openvpn')
-makedepends=('git')
+depends=('openvpn' 'python' 'python-docopt' 'python-setuptools')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 optdepends=('networkmanager: Enables PIA for Network Manager (needs a openvpn plugin)'
             'connman: Enables PIA for Connman')
 conflicts=('xawtv') # Both packages install a `pia` executable
@@ -60,7 +60,15 @@ prepare() {
     sed 's/_/ /g;s/.ovpn//;s/: /,/;s/[^ ]\+/\L\u&/g;s/\b\([a-z]\{2\}\)\s/\U&/gi' \
     >> ../vpn-hosts.txt
 
+  echo >&2 "Resetting python-pia repository..."
+  git -C "${srcdir}/python-pia" clean -dfx
+
   echo >&2 "Done."
+}
+
+build() {
+  cd "${srcdir}/python-pia"
+  python -m build --wheel --no-isolation
 }
 
 package() {
@@ -82,6 +90,6 @@ package() {
   install -D -m 755 openvpn-update-resolv-conf/update-resolv-conf.sh "${pkgdir}/etc/openvpn/update-resolv-conf.sh"
 
   cd "python-pia"
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  python -I -m installer --destdir="${pkgdir}" dist/*.whl
 
 }
