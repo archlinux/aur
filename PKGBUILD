@@ -4,14 +4,21 @@
 pkgname=(backintime backintime-cli)
 _pkgname="backintime"
 pkgver=1.3.3
-pkgrel=3
+pkgrel=4
 arch=(any)
 url="https://github.com/bit-team/backintime"
 license=(GPL)
 makedepends=(python)
 checkdepends=(openssh python-dbus rsync systemd python-pyfakefs oxygen-icons)
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/bit-team/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('d9fc2434e5accf957c0fe0ed7daf7e1a2acb8c1d683612889b277e02be159ec15ed606e7e551e5955e3aa73af7e26f01c26c734d6882cfb926f2d6de2ae79d46')
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/bit-team/$_pkgname/archive/refs/tags/v$pkgver.tar.gz"
+        python311-fix.patch)
+b2sums=('d9fc2434e5accf957c0fe0ed7daf7e1a2acb8c1d683612889b277e02be159ec15ed606e7e551e5955e3aa73af7e26f01c26c734d6882cfb926f2d6de2ae79d46'
+        'fd6bf99aab7297811ee756c4a20bf32fac9c4fd2afabd6a927aaf61b9c21f8c207f5583d0fb3ff71509bb168fedac2273fe50a3784b51b590568a17b971f08b0')
+
+prepare() {
+  cd "$_pkgname-$pkgver"
+  patch -p1 -i ../python311-fix.patch
+}
 
 build() {
   cd "$_pkgname-$pkgver/common"
