@@ -1,0 +1,17 @@
+pkgbase = bbg-appimage
+	pkgdesc = A static blog generator based on Electron Technology
+	pkgver = 20230505
+	pkgrel = 1
+	url = https://bbg.nekomoe.xyz/
+	arch = x86_64
+	license = Unlicense
+	depends = zlib
+	depends = glibc
+	conflicts = bbg
+	options = !strip
+	source = bbg-20230505.AppImage::https://github.com/bbg-contributors/bbg/releases/download/20230505/bbg-20230505-x86_64.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/bbg-contributors/bbg/master/LICENSE
+	sha256sums = 4cc00ed7dac0257f9079d14fb60c52d2f2b0608a18500ea18f79cbb475dd9f60
+	sha256sums = 436a6d536138f203ac333858cff92a568be62797752b3adb94bcaa0f6ffe7ef6
+
+pkgname = bbg-appimage
