@@ -8,4 +8,5 @@ if [[ -f "$XDG_CONFIG_HOME/youtube-music-flags.conf" ]]; then
 fi
 
 # Launch
-exec electron20 /usr/lib/youtube-music/app.asar $YOUTUBE_MUSIC_USER_FLAGS "$@"
+export ELECTRON_IS_DEV=0
+exec electron22 /usr/lib/youtube-music/app.asar $YOUTUBE_MUSIC_USER_FLAGS "$@"

@@ -1,21 +1,21 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=youtube-music
-pkgver=1.19.0
-pkgrel=6
-_electronversion=20
+pkgver=1.20.0
+pkgrel=1
+_electronversion=22
 pkgdesc="YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"
 arch=('x86_64')
 url="https://th-ch.github.io/youtube-music"
 license=('MIT')
 depends=("electron${_electronversion}" 'libsecret')
-makedepends=('git' 'nodejs>=14.0.0' 'npm' 'yarn')
+makedepends=('git' 'nodejs>=16.0.0' 'npm' 'yarn')
 optdepends=('libnotify: desktop notifications')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/th-ch/youtube-music/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('75219ae6a709e39369b1801ba2f6beafcf6ca4a346bfb4ee01415c103dc4cbb8'
-            '217090eddc48a197e434afbf19ef4e41d70f80fcb4589f8fc3c2694837e4e125'
+sha256sums=('d88b52a59f68a9024b36c635c1b02bf625e806ae50469b912b8f55c7cc5373f9'
+            'ab2ce0c5e63b886ef2480924eaabd78c25ed1e89e5f97591515e57938ae43067'
             '07af59376e13e5dae2e7e38fa09d734a5147d5c344b3aed84c2f3afe22b8af79')
 
 build() {
