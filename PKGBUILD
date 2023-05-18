@@ -8,14 +8,14 @@
 # Contributor: Jan-Erik Meyer-Luetgens <nyan at meyer-luetgens dot de>
 
 pkgname=pyside2-git
-pkgver=r7237.d526f801c
+pkgver=5.15.3
 pkgrel=1
 arch=(x86_64)
 url='https://www.qt.io'
 license=(LGPL)
 pkgdesc='Enables the use of Qt5 APIs in Python applications (git version)'
-depends=(python-shiboken2 qt5-declarative)
-makedepends=(shiboken2 cmake git
+depends=(python-shiboken2-git qt5-declarative)
+makedepends=(shiboken2-git cmake python39 git
              qt5-multimedia qt5-tools qt5-sensors qt5-charts qt5-webengine qt5-datavis3d
              qt5-websockets qt5-speech qt5-3d qt5-svg qt5-script qt5-scxml qt5-x11extras
              qt5-quickcontrols2 qt5-serialport qt5-remoteobjects qt5-xmlpatterns)
@@ -36,14 +36,9 @@ optdepends=('qt5-svg: QtSvg bindings'
             'qt5-quickcontrols2: QtQuickControls2 bindings')
 conflicts=(python-pyside2 pyside2)
 provides=(python-pyside2 pyside2)
-source=("$pkgname::git+https://code.qt.io/pyside/pyside-setup.git#branch=5.15")
+_commit=72d32f66685fbb7fefc41eee629e63f4824cb10b  # tags/v5.15.3-lts-lgpl^0
+source=("$pkgname::git+https://code.qt.io/pyside/pyside-setup.git#commit=$_commit")
 sha256sums=('SKIP')
-
-pkgver() {
-  cd "${srcdir}/${pkgname}"
-
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 prepare() {
   cd "${srcdir}/${pkgname}"
@@ -51,13 +46,15 @@ prepare() {
   mkdir -p build
 }
 
+_python=/usr/bin/python3.9
+
 build() {
   cd "${srcdir}/${pkgname}/build"
 
   cmake ../sources/pyside2 \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_TESTS=OFF \
-    -DPYTHON_EXECUTABLE=/usr/bin/python
+    -DPYTHON_EXECUTABLE="$_python"
   make
 }
 
