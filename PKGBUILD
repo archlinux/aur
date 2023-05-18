@@ -6,8 +6,8 @@ pkgdesc="Build Caddy with plugins"
 arch=('x86_64' 'aarch64')
 url="https://github.com/caddyserver/xcaddy"
 license=('Apache-2.0')
-makedepends=('go')
-source=("git+$url.git")
+makedepends=('go' 'git')
+source=("git+$url.git#tag=v$pkgver")
 sha512sums=('SKIP')
 
 build() {
