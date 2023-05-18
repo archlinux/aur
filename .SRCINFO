@@ -1,0 +1,17 @@
+pkgbase = svelte-electron-boilerplate-appimage
+	pkgdesc = Create a desktop app with this user-friendly Svelte boilerplate for electron
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://npmjs.com/package/@ptkdev/svelte-electron-boilerplate
+	arch = x86_64
+	license = custom
+	depends = zlib
+	depends = glibc
+	conflicts = svelte-electron-boilerplate
+	options = !strip
+	source = svelte-electron-boilerplate-2.0.0.AppImage::https://github.com/ptkdev-boilerplate/svelte-electron-boilerplate/releases/download/2.0.0/svelte-electron-boilerplate-2.0.0-linux_x86_64.AppImage
+	source = LICENSE.md::https://raw.githubusercontent.com/ptkdev-boilerplate/svelte-electron-boilerplate/main/LICENSE
+	sha256sums = 03975d1687475d9c260f2f4ffb469b01b4df49e5ef19bc3af0caa586a512ce80
+	sha256sums = 092c16bb68f5e405a27270b722dff33bddb5c66c3c08e18f10e9def1aa8200a9
+
+pkgname = svelte-electron-boilerplate-appimage
