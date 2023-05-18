@@ -11,7 +11,7 @@ depends=('java-environment=17' 'java17-openjfx')
 makedepends=('jdk17-openjdk' 'unzip')
 # the bit.ly link looks suspicious, but that's what they use on their website.
 # Also the download is not versioned, so this will eventuelly break due to integrity checks failing.
-source=("installer.exe::https://bit.ly/3eMJh3j"
+source=("installer-${pkgver}.exe::https://bit.ly/3eMJh3j"
         "https://maven.ej-technologies.com/repository/com/install4j/install4j-runtime/9.0.7/install4j-runtime-9.0.7.jar"
         "OperatingSystemUtil.java"
         "logback.xml"
