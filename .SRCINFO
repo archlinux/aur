@@ -1,7 +1,7 @@
 pkgbase = ov-client
 	pkgdesc = Client to share and receive spatial realtime Audio
 	pkgver = 0.20.452
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ovbox.de
 	arch = x86_64
 	arch = arm64
@@ -36,6 +36,7 @@ pkgbase = ov-client
 	depends = glibmm
 	depends = glibc
 	depends = glib2
+	depends = realtime-privileges
 	optdepends = node-js: Web Mixer
 	provides = ov-client
 	provides = ovbox
