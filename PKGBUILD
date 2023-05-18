@@ -1,7 +1,7 @@
 # Maintainer: Bruno Van de Velde <bruno@texus.me>
 
 pkgname=tgui-git
-pkgver=nightly_build.r0.g8719a201
+pkgver=nightly_build.r41.g6f3cbdd6
 pkgrel=1
 pkgdesc="Cross-platform modern c++ GUI library"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ provides=('tgui')
 conflicts=('tgui')
 replaces=()
 
-source=("git+https://github.com/texus/TGUI.git#branch=0.10"
+source=("git+https://github.com/texus/TGUI.git#branch=1.x"
         tgui-gui-builder.desktop
         TexusGUI_48x48.png)
 sha256sums=('SKIP'
