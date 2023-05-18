@@ -5,7 +5,6 @@
 pacman -Q | grep sqlite
 echo "Enter new version: "
 read -r version
-#version=3.41.2
 
 # check version
 if [ -z "$version" ]; then
