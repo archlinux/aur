@@ -1,0 +1,7 @@
+*
+!.gitignore
+!PKGBUILD
+!*.sh
+!.SRCINFO
+!*.desktop
+!*.patch
