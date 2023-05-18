@@ -23,10 +23,6 @@ prepare() {
   patch -d ${pkgname}-${pkgver} -p1 -i ../96b8fd080aab08cda355290835ebb812b519fcfd.patch
 }
 
-prepare() {
-# Disable boost-stacktrace_backtrace, requires an optional boost lib that isn't built on Arch.
-  sed -i 's/ COMPONENTS stacktrace_backtrace//' ${pkgname}-${pkgver}/CMakeLists.txt
-}
 build() {
   mkdir -p "${pkgname}-build"
   cd "${pkgname}-build"
