@@ -1,5 +1,5 @@
 pkgbase = fakeit
-	pkgdesc = A simple yet very expressive, headers only library for c++ mocking
+	pkgdesc = C++ mocking made easy. A simple yet very expressive, headers only library for c++ mocking
 	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/eranpeer/FakeIt
