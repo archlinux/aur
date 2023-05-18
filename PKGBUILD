@@ -1,27 +1,27 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=html2md
-pkgver=0.2.2
-pkgrel=2
-pkgdesc="HTML to Markdown converter"
+pkgver=1.1.0
+pkgrel=1
+pkgdesc='HTML to Markdown converter'
 arch=('x86_64')
-url="https://github.com/suntong/html2md"
+url='https://github.com/suntong/html2md'
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
 options=('!lto')
-_commit='ed1b03f99d79b4a4ecd499d1d4636402343193e3'
+_commit='d16838c89887a1a5efd6856f043ccb43c9391ce0'
 source=(
   "$pkgname::git+$url.git#commit=$_commit"
   'go.mod'
   'go.sum'
 )
 sha512sums=('SKIP'
-            'a49b0ed0f475fcd16b18be9115c98fa1ac1b77c90c902e1e12edf786b1104c32b93beda2617aded21956731a1bbebf7dd20e4cec554ee465c899935c207f8911'
-            '56cf6feccfc7acb68609953cd2e407edfb25c00b682dcc6143a2d6663ce6d2043504b41ecc4c6d1a99be1f73ead31cd6c066300467b18e9d4b684d6565181523')
+            '2851262e88d4c0ed1f265c33171e4e7467023e3285eb763b870c16cff940d9c4c269eaf844f2c84867dba164ba2af8aeec0e2b5e304db47f31f6e7060a2d0b43'
+            'e176d6c70f32a6ead1f5826ab784ee4007458a1ecb2c72d54f36e4637c8083f60c759dcc48071681f8a04285a6031170609ddef4c1429527e59a5812de457197')
 b2sums=('SKIP'
-        '46367ab71522030278b89393f8f978252d8135c3f0b2a5cc13a38b680bf204c9014674e22d11306775b33bbc9478b974c58211f79f23293f6224178ab4aa0f4f'
-        '89bba593434e6f94fb4ab6fc563665319b5f79c8b608713062e12d66308ef5eaa22f722d20f33fb38eae693b3dcf30d28f72c226dfd5a34a2c46bdb86b5f388e')
+        '203b9b58242acddb6b3bda3f85c18720eff765a2ecf842fc68b8e977892ecc37c91c808982a4ee2fcfde271e6d884d6b31f128c2776783c715bd60dbd908b750'
+        '0532b55eec0c94b37b22a282604b3013104ecdcf0cac6a8f53f67182790298612a25061f733f0bc10d9882480306700d21ea42f70c882893dea452ff7fbd27ca')
 
 pkgver() {
   cd "$pkgname"
@@ -64,7 +64,6 @@ build() {
     -mod=readonly \
     -modcacherw \
     -ldflags "-linkmode external -extldflags ${LDFLAGS}" \
-    -o build \
     .
 }
 
@@ -78,7 +77,7 @@ package() {
   cd "$pkgname"
 
   # binary
-  install -vDm755 -t "$pkgdir/usr/bin" build/html2md
+  install -vDm755 -t "$pkgdir/usr/bin" html2md
 
   # documentation
   install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
