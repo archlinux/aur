@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=opencl-headers-git
-pkgver=2022.09.30.4.ga86f4e7
+pkgver=2023.04.17.1.ge049b16
 pkgrel=1
 pkgdesc='OpenCL (Open Computing Language) header files. (GIT Version)'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('git'
              'ruby'
              'doxygen'
              )
-provides=('opencl-headers')
+provides=("opencl-headers=${pkgver}")
 conflicts=('opencl-headers')
 source=('git+https://github.com/KhronosGroup/OpenCL-Headers.git')
 sha256sums=('SKIP')
