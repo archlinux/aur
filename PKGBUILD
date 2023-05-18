@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 # Contributor: Julien Savard <juju@juju2143.ca>
 pkgname=x16-rom
-pkgver=r42
+pkgver=r43
 pkgrel=1
 pkgdesc="ROM files for The 8-Bit Guy's Commander X16"
 arch=('any')
@@ -19,14 +19,14 @@ source=(
 )
 
 md5sums=(
-    '74ce9ec43fbc664598eab9acb0f17d66'
+    'a69ffa10519cbf060879cf327346b488'
     '3accdbadaf70264c743b1f655f5dc146'
 )
 
 build() {
     cd "$pkgname-$pkgver"
     _pkgver1=${pkgver#r}
-    make PRERELEASE_VERSION=${_pkgver1%%[^0-9]*}
+    make PRERELEASE_VERSION="${_pkgver1%%[^0-9]*}"
     pandoc --from gfm --to html -c github-pandoc.css --standalone --metadata pagetitle="X16 KERNAL/BASIC/DOS ROM" README.md --output KERNAL-BASIC.html
 }
 
