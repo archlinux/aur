@@ -4,10 +4,9 @@ post_install() {
     if [[ $(systemctl is-enabled udevmon.service | grep disabled) ]]; then
         systemctl enable udevmon.service
         echo enabled udevmon.service
-    elif [[ $(systemctl is-active udevmon.service | grep inactive) ]]; then
-        systemctl start udevmon.service
-        echo restarting udevmon.service
-    fi
+    # restart udevmon
+    systemctl restart udevmon.service
+    echo restarting udevmon.service
 }
 
 post_upgrade() {
