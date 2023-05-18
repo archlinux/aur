@@ -1,6 +1,6 @@
 # Maintainer: OpenSorcerer <alex cat opensourcery dog eu>
 pkgname=xcaddy
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Build Caddy with plugins"
 arch=('x86_64' 'aarch64')
