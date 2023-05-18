@@ -2,14 +2,14 @@
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=pyprland
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Easy scratchpads, smart monitor placement and more Hyprland tweaks"
 arch=(any)
 url="https://github.com/fdev31/pyprland"
 license=('MIT')
 groups=()
 depends=('python')
-makedepends=('git' 'python-build')
+makedepends=('git' 'python-build' 'python-installer')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 replaces=()
