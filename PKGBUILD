@@ -1,5 +1,5 @@
 pkgname=dnf-plugins-core
-pkgver=4.4.0
+pkgver=4.4.1
 pkgrel=1
 pkgdesc="Core DNF Plugins"
 arch=('any')
@@ -22,7 +22,7 @@ backup=('etc/dnf/plugins/copr.conf'
         'etc/dnf/plugins/versionlock.list')
 options=('!emptydirs')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('e2fbaa81e5f512c3ec8a4a3e4a7e5a92bf0d7e122becc7ed2b6b756fec76a017')
+sha256sums=('ae00921b98b2e5cb6454d47907f1516612f991ad6a4a0a2adbb01446208a70f9')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -40,21 +40,21 @@ build() {
 	      -DCMAKE_INSTALL_PREFIX=/usr \
 	      -DPYTHON_DESIRED=3
 
-	make -C build
-	make -C build doc-man
+	cmake --build build
+	cmake --build build --target doc-man
 }
 
 check() {
 	cd "$pkgname-$pkgver"
 
 	# Tests fail with non-english locales
-	LC_ALL=en_US.UTF-8 ctest -VV --test-dir build
+	LC_ALL=en_US.UTF-8 ctest --test-dir build --output-on-failure
 }
 
 package() {
 	cd "$pkgname-$pkgver"
 
-	make -C build DESTDIR="$pkgdir/" install
+	DESTDIR="$pkgdir" cmake --install build
 
 	install -Dp -m644 README.rst "$pkgdir/usr/share/doc/$pkgname/README.rst"
 
