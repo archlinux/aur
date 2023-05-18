@@ -1,6 +1,6 @@
 pkgbase = newm-atha-git
 	pkgdesc = Wayland compositor
-	pkgver = r738.20eed46.r567.f61b027
+	pkgver = r739.cacafde.r567.f61b027
 	pkgrel = 1
 	url = https://git.sr.ht/~atha/newm-atha
 	arch = any
