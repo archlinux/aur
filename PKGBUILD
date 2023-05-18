@@ -3,7 +3,7 @@
 # Contributor: catniptwinz <chris@peargrowersseries.com>
 
 pkgname="front-panel-designer"
-pkgver="6.3.5"
+pkgver="6.3.6"
 pkgrel="1"
 pkgdesc="Free CAD software that lets you design and order custom front panels and enclosures exactly to your specification."
 arch=("x86_64")
@@ -12,7 +12,7 @@ license=("custom")
 depends=("glu" "gtk2")
 source=("https://assets.frontpanelexpress.com/fpd/Version-$pkgver/FrontDesign-US-$pkgver-amd64.deb")
 options=("!strip")
-sha256sums=("e03656419b5647e9aaa7088b8b1556ab6f43f9223199770f37fbd0a5730ea4af")
+sha256sums=("1473d5072f4217348e932fa0e216b40432072e3b97b5c9b995597058a31ed612")
 
 package() {
   tar xf data.tar.xz -C "$pkgdir"
@@ -20,6 +20,6 @@ package() {
   mv "$pkgdir/usr/local/bin" "$pkgdir/usr/bin"
   rmdir "$pkgdir/usr/local"
 
-  mkdir -p "$pkgdir/usr/share/licenses"
-  ln -s /opt/FrontDesign/share/FrontDesign/License "$pkgdir/usr/share/licenses/$pkgname"
+  install -D -m 644 -t "$pkgdir/usr/share/licenses/$pkgname" \
+    "$pkgdir/opt/FrontDesign/share/FrontDesign/License"/*
 }
