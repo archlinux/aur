@@ -13,16 +13,19 @@ makedepends=('clang' 'pandoc' 'gendesk')
 
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/X16Community/$pkgname/archive/$pkgver.tar.gz"
+    "fix-git-rev.patch"
     "modify-base-path.patch"
 )
 
 md5sums=(
     '3cc24b8783c2c11890dc284d9d55219e'
+    'c0b5ba5190ef5ee4dd8e58433f261e35'
     '5cd0550d2af1b4267c9b9f30eed9691e'
 )
 
 prepare() {
     cd "$pkgname-$pkgver"
+    patch -uN < ../fix-git-rev.patch
     patch -uN src/main.c ../modify-base-path.patch
     sed -i -e 's/^\(LDFLAGS=.*\)/\1 '"${LDFLAGS}/" Makefile
     gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name "X16 Emulator" --icon "$pkgname" --exec "x16emu" --categories "Game;Emulator"

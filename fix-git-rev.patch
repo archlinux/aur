@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 6b1f4fe..ee65ed2 100644
+--- a/Makefile
++++ b/Makefile
+@@ -42,7 +42,7 @@ endif
+ X16_OUTPUT=x16emu
+ MAKECART_OUTPUT=makecart
+ 
+-GIT_REV=$(shell git diff --quiet && echo -n $$(git rev-parse --short=8 HEAD || /bin/echo "00000000") || /bin/echo -n $$( /bin/echo -n $$(git rev-parse --short=7 HEAD || /bin/echo "0000000"); /bin/echo -n '+'))
++GIT_REV=0000000
+ 
+ CFLAGS+=-D GIT_REV='"$(GIT_REV)"'
+ 
