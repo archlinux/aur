@@ -79,7 +79,7 @@ check() {
     # This grabs the Packages sha512 hash from the Release file
     echo "$(grep -E '^\s?[a-f0-9]{128}\s+[0-9]+\s+main/binary-amd64/Packages$' ${pkgname}-${pkgver}-${pkgrel}-Release | tail -n 2 | head -n 1 | awk '{print $1}') ${pkgname}-${pkgver}-${pkgrel}-x86_64-Packages" > ${PKGHASH}
 
-    # This grabs the .deb sha5125 hash from the Packages file
+    # This grabs the .deb sha512 hash from the Packages file
     echo "$(grep -E '(Version|SHA512)' ${pkgname}-${pkgver}-${pkgrel}-x86_64-Packages | grep -E -A1 ${pkgver} | tail -n1 | awk '{print $2}') ${pkgname}-${pkgver}-x86_64.deb" > ${DEBHASH}
 
     echo "==> Validating package checksums"
