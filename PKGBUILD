@@ -1,6 +1,6 @@
 pkgname=mqttui-bin
 pkgver=0.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Subscribe to a MQTT Topic or publish something quickly from the terminal"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/EdJoPaTo/${pkgname/-bin/}"
@@ -20,11 +20,11 @@ sha256sums_armv6h=('68176e4c797f70e6a4785f731d709ae147180c2c976b0744bf4461f5b060
 sha256sums_armv7h=('297a0c0fc86144cd5a902bc2e62ffffadf7b6c7e7d43b851ab018b05e5c138bb')
 
 package() {
-  install -Dm755 "${pkgname/-bin/}" "${pkgdir}/usr/bin/${pkgname/-bin/}"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname/-bin/}/LICENSE"
-  install -Dm644 README.md -t "$pkgdir"/usr/share/doc/$pkgname
+	install -Dm755 "${pkgname/-bin/}" -t "${pkgdir}/usr/bin/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname/-bin/}/"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/${pkgname/-bin/}/"
 
-  install -Dm644 "completions/${pkgname/-bin/}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname/-bin/}.bash"
-  install -Dm644 "completions/${pkgname/-bin/}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname/-bin/}.fish"
-  install -Dm644 "completions/_${pkgname/-bin/}" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname/-bin/}"
+	install -Dm644 "completions/${pkgname/-bin/}.bash" -t "${pkgdir}/usr/share/bash-completion/completions/"
+	install -Dm644 "completions/${pkgname/-bin/}.fish" -t "${pkgdir}/usr/share/fish/vendor_completions.d/"
+	install -Dm644 "completions/_${pkgname/-bin/}" -t "${pkgdir}/usr/share/zsh/site-functions/"
 }
