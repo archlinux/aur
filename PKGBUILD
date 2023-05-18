@@ -1,6 +1,6 @@
 pkgname=website-stalker
 pkgver=0.20.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Track changes on websites via git"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/EdJoPaTo/${pkgname}"
@@ -20,13 +20,14 @@ build() {
 
 package() {
 	cd $pkgname-$pkgver
-	install -Dm755 target/release/$pkgname -t "${pkgdir}/usr/bin"
-	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-	install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+	install -Dm755 target/release/$pkgname -t "${pkgdir}/usr/bin/"
+	install -Dm644 CHANGELOG.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
+	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 
-	install -Dm644 "target/completions/${pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}.bash"
-	install -Dm644 "target/completions/${pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
-	install -Dm644 "target/completions/_${pkgname}" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+	install -Dm644 "target/completions/${pkgname}.bash" -t "${pkgdir}/usr/share/bash-completion/completions/"
+	install -Dm644 "target/completions/${pkgname}.fish" -t "${pkgdir}/usr/share/fish/vendor_completions.d/"
+	install -Dm644 "target/completions/_${pkgname}" -t "${pkgdir}/usr/share/zsh/site-functions/"
 
 	install -Dm644 "systemd/system/service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 	install -Dm644 "systemd/system/timer" "${pkgdir}/usr/lib/systemd/system/${pkgname}.timer"
