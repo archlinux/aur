@@ -1,0 +1,17 @@
+pkgbase = tess-appimage
+	pkgdesc = A hackable, simple, rapid and beautiful terminal for the new era of technology.
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://tessapp.dev/discord
+	arch = x86_64
+	license = MPL2
+	depends = zlib
+	depends = glibc
+	conflicts = tess
+	options = !strip
+	source = tess-0.6.3.AppImage::https://github.com/SquitchYT/Tess/releases/download/0.6.3/tess_0.6.3.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/SquitchYT/tess/main/LICENSE
+	sha256sums = 1331c536773d76c90e582b9f56d94878920dbe19efb0373a0f562733f7ac7c72
+	sha256sums = 1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5
+
+pkgname = tess-appimage
