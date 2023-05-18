@@ -10,8 +10,15 @@ pkgdesc="CLI Ebook Reader"
 arch=('any')
 url='https://github.com/wustho/epy'
 license=("GPL3")
-provides=("$_pkgname")
+provides=(
+  "$_pkgname"
+  'epy'
+)
 conflicts=(${provides[@]})
+replaces=(
+  'epy'
+  'epy-git'
+)
 depends=(
   'python'
 )

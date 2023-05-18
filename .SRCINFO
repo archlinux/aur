@@ -13,7 +13,11 @@ pkgbase = epy-ereader-git
 	makedepends = python-wheel
 	depends = python
 	provides = epy-ereader
+	provides = epy
 	conflicts = epy-ereader
+	conflicts = epy
+	replaces = epy
+	replaces = epy-git
 	source = epy-ereader::git+https://github.com/wustho/epy
 	source = Downloads.png::https://static.pepy.tech/personalized-badge/epy-reader?period=month&units=none&left_color=grey&right_color=brightgreen&left_text=downloads/month
 	source = screenshot.png::https://raw.githubusercontent.com/wustho/epy/master/screenshot.png
