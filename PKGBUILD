@@ -1,9 +1,9 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 _npmname=cross-seed
-_npmver=5.0.2
+_npmver=5.0.3
 pkgname=nodejs-cross-seed # All lowercase
-pkgver=5.0.2
+pkgver=5.0.3
 pkgrel=1
 pkgdesc="Download torrents that you can cross seed based on your existing torrents."
 arch=(any)
@@ -16,7 +16,7 @@ optdepends=(
 )
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha512sums=('103bc8714bf4a17010ac60691705ee1a787d0e6953d6331c19000601b6110288b4bdbe16a085c19e706e0d43b9031e75a1601a64b2a2e73a3c42c5720f5f9f71')
+sha512sums=('80da0422d0eb820ee46ae99c7ac56c2b4d3b7d60aa886213d4d33c3d1df86874a966188186dbbf9959035ddc0d59abd7fe980184a88e603dea9f41c4f36197f3')
 
 package() {
   cd "$srcdir"
