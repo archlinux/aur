@@ -22,7 +22,7 @@ sha512sums=("a03472f4600d1536b2681953625b3c8fc167ac9628585842be68344d6727e007fff
 build() {
     cd ${srcdir}/${_hkgname}-${pkgver}
     
-    runhaskell Setup configure -O ${PKGBUILD_HASKELL_ENABLE_PROFILING:+-p } --enable-split-objs --enable-shared \
+    runhaskell Setup configure -O ${PKGBUILD_HASKELL_ENABLE_PROFILING:+-p } --enable-shared \
         --prefix=/usr --docdir=/usr/share/doc/${pkgname} \
         --libsubdir=\$compiler/site-local/\$pkgid
     runhaskell Setup build
