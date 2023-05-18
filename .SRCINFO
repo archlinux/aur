@@ -1,23 +1,23 @@
 pkgbase = shiboken2-git
 	pkgdesc = Generates bindings for C++ libraries using CPython source code (git version)
-	pkgver = r6554.6eb583d7
-	pkgrel = 2
+	pkgver = 5.15.3
+	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
 	license = GPL2
 	license = LGPL
-	makedepends = clang
+	makedepends = clang=15.0.7
 	makedepends = llvm
 	makedepends = cmake
 	makedepends = git
 	makedepends = libxslt
 	makedepends = qt5-xmlpatterns
-	makedepends = python-sphinx
-	source = shiboken2-git::git+https://code.qt.io/pyside/pyside-setup.git
+	makedepends = python39
+	source = shiboken2-git::git+https://code.qt.io/pyside/pyside-setup.git#commit=72d32f66685fbb7fefc41eee629e63f4824cb10b
 	sha256sums = SKIP
 
 pkgname = shiboken2-git
-	depends = clang=9.0.1
+	depends = clang=15.0.7
 	depends = llvm
 	depends = libxslt
 	depends = qt5-xmlpatterns
@@ -25,7 +25,6 @@ pkgname = shiboken2-git
 	conflicts = shiboken2
 
 pkgname = python-shiboken2-git
-	depends = python
+	depends = python39
 	provides = python-shiboken2
 	conflicts = python-shiboken2
-
