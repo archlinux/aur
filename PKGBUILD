@@ -1,18 +1,19 @@
-# Maintainer: Simon Tas <simon.tas.st@gmail.com>
+# Maintainer: Martin Rys <rys.pw/contact>
+# Previous maintainer: Simon Tas <simon.tas.st@gmail.com>
 
 pkgname="deemix-git"
 _pkgname="deemix-py"
-pkgver=r641.9906043b31
-pkgrel=2
+pkgver=r675.5f978acec7
+pkgrel=1
 pkgdesc="a deezer downloader built from the ashes of Deezloader Remix."
 arch=('any')
-url="https://git.freezerapp.xyz/RemixDev/$_pkgname"
+url="https://gitlab.com/RemixDev/$_pkgname"
 license=('gpl3')
-depends=('python>=3.7' 'python-click' 'python-pycryptodomex' 'python-mutagen' 'python-requests'  'python-spotipy' 'python-eventlet' 'python-deezer-py')
+depends=('python>=3.7' 'python-click' 'python-pycryptodomex' 'python-mutagen' 'python-requests' 'python-spotipy' 'python-eventlet' 'python-deezer-py')
 conflicts=('deemix')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 provides=('deemix')
-source=("${_pkgname}::git+https://git.freezerapp.xyz/RemixDev/$_pkgname")
+source=("${_pkgname}::git+https://gitlab.com/RemixDev/$_pkgname")
 md5sums=('SKIP')
 
 pkgver() {
@@ -22,7 +23,7 @@ pkgver() {
 
 build() {
 	cd ${srcdir}/${_pkgname}
-		python setup.py build
+	python setup.py build
 }
 
 package() {
