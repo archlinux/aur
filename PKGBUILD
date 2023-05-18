@@ -1,6 +1,6 @@
 # Maintainer: Julian Schmidhuber <aur at schmiddi dot anonaddy dot com>
 pkgname=tubefeeder
-pkgver=1.9.3
+pkgver=1.9.6
 pkgrel=1
 pkgdesc="A Youtube, Lbry and Peertube client made for the Pinephone"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ options=()
 install=
 source=("$pkgname.tar.xz::https://github.com/Tubefeeder/Tubefeeder/releases/download/v$pkgver/tubefeeder-$pkgver.tar.xz")
 noextract=()
-md5sums=('08cc72b29f2a232ce8373ff9ad6e0445')
+md5sums=('f2391fc0b0207476653555e0258f76a4')
 
 build() {
         arch-meson $pkgname-$pkgver build
