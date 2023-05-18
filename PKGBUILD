@@ -2,7 +2,7 @@
 
 pkgname=autosuspend
 pkgver=4.3.0
-pkgrel=1
+pkgrel=3
 pkgdesc="A daemon to suspend and wake up a system based on configurable checks"
 arch=(any)
 url="https://github.com/languitar/autosuspend"
@@ -36,8 +36,8 @@ backup=('etc/autosuspend.conf'
 build() {
     cd "$pkgname-${pkgver}"
     export PYTHONPATH=$(pwd)/src
-    python3 setup.py build_sphinx -a -b html
-    python3 setup.py build_sphinx -a -b man
+    # python3 setup.py build_sphinx -a -b html
+    # python3 setup.py build_sphinx -a -b man
 }
 
 package() {
@@ -47,13 +47,13 @@ package() {
     # filesystem hierarchy. Do things manually instead.
     mv "$pkgdir/usr/etc" "$pkgdir"
 
-    # man pages
-    mkdir -p "${pkgdir}/usr/share/man/man1"
-    cp doc/build/man/autosuspend.1 "${pkgdir}/usr/share/man/man1"
-    mkdir -p "${pkgdir}/usr/share/man/man5"
-    cp doc/build/man/autosuspend.conf.5 "${pkgdir}/usr/share/man/man5"
+    # # man pages
+    # mkdir -p "${pkgdir}/usr/share/man/man1"
+    # cp doc/build/man/autosuspend.1 "${pkgdir}/usr/share/man/man1"
+    # mkdir -p "${pkgdir}/usr/share/man/man5"
+    # cp doc/build/man/autosuspend.conf.5 "${pkgdir}/usr/share/man/man5"
 
-    # HTML help
-    mkdir -p "${pkgdir}/usr/share/doc"
-    cp -R doc/build/html "${pkgdir}/usr/share/doc/${pkgname}"
+    # # HTML help
+    # mkdir -p "${pkgdir}/usr/share/doc"
+    # cp -R doc/build/html "${pkgdir}/usr/share/doc/${pkgname}"
 }
