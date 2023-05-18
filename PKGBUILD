@@ -3,15 +3,15 @@
 # Contributor: Aaron DeVore <aaron.devore@gmail.com>
 
 pkgname=python-roman
-pkgver=3.3
-pkgrel=2
+pkgver=4.0
+pkgrel=1
 pkgdesc="Integer to Roman numerals converter"
 url="https://github.com/zopefoundation/roman"
 makedepends=('python-setuptools')
 license=('PSF')
 arch=('any')
 source=("roman-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('8846a7491dd9f59dc6bce1a950e055253804c6fcf11d14a088b4e2a7d6e4d29e')
+sha256sums=('c4fc8d17a45a2b6560a0a8e0d113c2fb61c25b7a54b63368e99d56e6d0bce45b')
 
 build() {
   cd "${srcdir}/roman-${pkgver}"

@@ -1,13 +1,12 @@
 pkgbase = python-roman
 	pkgdesc = Integer to Roman numerals converter
-	pkgver = 3.3
-	pkgrel = 2
+	pkgver = 4.0
+	pkgrel = 1
 	url = https://github.com/zopefoundation/roman
 	arch = any
 	license = PSF
 	makedepends = python-setuptools
-	source = roman-3.3.tar.gz::https://github.com/zopefoundation/roman/archive/3.3.tar.gz
-	sha256sums = 8846a7491dd9f59dc6bce1a950e055253804c6fcf11d14a088b4e2a7d6e4d29e
+	source = roman-4.0.tar.gz::https://github.com/zopefoundation/roman/archive/4.0.tar.gz
+	sha256sums = c4fc8d17a45a2b6560a0a8e0d113c2fb61c25b7a54b63368e99d56e6d0bce45b
 
 pkgname = python-roman
-
