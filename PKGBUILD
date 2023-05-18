@@ -1,6 +1,6 @@
 pkgname=mqttui
 pkgver=0.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Subscribe to a MQTT Topic or publish something quickly from the terminal"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/EdJoPaTo/${pkgname}"
@@ -20,8 +20,9 @@ build() {
 package() {
 	cd $pkgname-$pkgver
 	install -Dm755 target/release/$pkgname -t "${pkgdir}/usr/bin"
+	install -Dm644 CHANGELOG.md -t "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-	install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+	install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
 	install -Dm644 "target/completions/${pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}.bash"
 	install -Dm644 "target/completions/${pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
