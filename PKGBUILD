@@ -1,13 +1,13 @@
 # Maintainer: Dmitry Lyashuk <lyashuk.voxx at gmail dot com>
 pkgname=doom2df-bin
 pkgver=0.667
-pkgrel=13
+pkgrel=16
 pkgdesc="Doom-themed platformer with network play (binaries-only)"
 arch=(x86_64 i686)
 url="https://doom2d.org/"
 license=('GPL3')
 group=(doom2df-full)
-depends=(doom2df-res sdl2 sdl2_mixer enet libgl openal xmp libxmp libvorbis opus opusfile libgme miniupnpc)
+depends=(doom2df-res sdl2 sdl2_mixer enet libgl openal xmp libxmp libvorbis opus opusfile libgme timidity miniupnpc)
 makedepends=(git fpc)
 optdepends=('doom2df-editor: map editor for game')
 provides=(doom2df)
@@ -73,7 +73,7 @@ build() {
   rm -r ../../tmp && mkdir ../../tmp
 
   # Second - headless binary (for dedicated server)
-  fpc -g -gl -FU../../tmp -dUSE_SYSSTUB -dUSE_OPENAL -dUSE_SDL2 -dUSE_VORBIS -dUSE_MODPLUG -dUSE_XMP -dUSE_MPG123 -dUSE_OPUS -dUSE_GME -dUSE_MINIUPNPC -dHEADLESS -oDoom2DF_H Doom2DF.lpr
+  fpc -g -gl -FU../../tmp -dUSE_SYSSTUB -dUSE_SDLMIXER -dUSE_MINIUPNPC -dHEADLESS -oDoom2DF_H Doom2DF.lpr
   
   cp Doom2DF ../../../
   cp Doom2DF_H ../../../

@@ -1,7 +1,7 @@
 pkgbase = doom2df-bin
 	pkgdesc = Doom-themed platformer with network play (binaries-only)
 	pkgver = 0.667
-	pkgrel = 13
+	pkgrel = 16
 	url = https://doom2d.org/
 	install = doom2df-bin.install
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = doom2df-bin
 	depends = opus
 	depends = opusfile
 	depends = libgme
+	depends = timidity
 	depends = miniupnpc
 	optdepends = doom2df-editor: map editor for game
 	provides = doom2df
