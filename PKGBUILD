@@ -10,7 +10,7 @@ pkgname='kea_config'
 pkgdesc='Manage kea dhcp4 configs from single source config'
 _gitname='kea_config'
 
-pkgver=4.4.2
+pkgver=4.4.3
 pkgrel=1
 url="https://github.com/gene-git/kea_config"
 
@@ -29,7 +29,7 @@ sha512sums=('SKIP')
 build() {
     cd "${_gitname}"
     /usr/bin/rm -f dist/*
-    /usr/bin/poetry build --format wheel
+    python -m build --wheel --no-isolation
 }
 
 package() {
