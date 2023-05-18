@@ -1,0 +1,17 @@
+pkgbase = netswine-git
+	pkgdesc = a small network data metric tool that runs as a daemon. Collects network traffic data, then groups it by process, so can be analized later. GIT version
+	pkgver = alpha0.r2.gf8215e8
+	pkgrel = 1
+	url = https://github.com/DiedByDisgust/netswine
+	arch = x86_64
+	license = GPLv2
+	makedepends = git
+	depends = nethogs-git
+	depends = ncurses
+	depends = sqlite3
+	provides = netswine=alpha0.r2.gf8215e8
+	conflicts = netswine-git
+	source = netswine::git+https://github.com/DiedByDisgust/netswine#branch=main
+	md5sums = SKIP
+
+pkgname = netswine-git
