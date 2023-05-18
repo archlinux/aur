@@ -6,6 +6,7 @@
 # Contributor: Hugo Osvaldo Barrera <hugo@barrera.io>
 # Contributor: Matthias Maennich <arch@maennich.net>
 
+_pkgbase=shiboken2
 pkgbase=shiboken2-git
 pkgname=(shiboken2-git python-shiboken2-git)
 _clangver=15.0.7
@@ -13,40 +14,39 @@ pkgver=5.15.3
 pkgrel=1
 arch=(x86_64)
 url='https://www.qt.io'
-license=(GPL2 LGPL)
-pkgdesc='Generates bindings for C++ libraries using CPython source code (git version)'
+license=(LGPL)
 makedepends=(clang=$_clangver llvm cmake git libxslt qt5-xmlpatterns python39)
 _commit=72d32f66685fbb7fefc41eee629e63f4824cb10b  # tags/v5.15.3-lts-lgpl^0
-source=("$pkgbase::git+https://code.qt.io/pyside/pyside-setup.git#commit=$_commit")
+source=("$_pkgbase::git+https://code.qt.io/pyside/pyside-setup.git#commit=$_commit")
 sha256sums=('SKIP')
 
 prepare() {
-  cd "${srcdir}/${pkgbase}"
+  cd "$_pkgbase"
 
   mkdir -p build
-  sed -e 's|0307FFFF|0308FFFF|' -i sources/shiboken2/libshiboken/pep384impl.h # Support python 3.8
 }
 
 _python=/usr/bin/python3.9
 
 build() {
-  cd "${srcdir}/${pkgbase}/build"
+  # make a venv which has setuptools available
+  "$_python" -m venv --system-site-packages pkg-venv
 
-  cmake ../sources/shiboken2 \
+  cmake -B build -S "$_pkgbase/sources/shiboken2" \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=None \
     -DBUILD_TESTS=OFF \
-    -DUSE_PYTHON_VERSION=3 \
     -DPYTHON_EXECUTABLE=$_python
-  make
+  cmake --build build
 }
 
 package_shiboken2-git() {
+  pkgdesc='Generates bindings for C++ libraries using CPython source code (git version)'
   depends=(clang=$_clangver llvm libxslt qt5-xmlpatterns)
   conflicts=(shiboken2)
-  provides=(shiboken2)
+  provides=(shiboken2=$pkgver)
 
-  cd "${srcdir}/${pkgbase}/build"
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 # Provided in python-shiboken2
   rm -r "$pkgdir"/usr/lib/{python*,libshiboken*}
 # Conflicts with shiboken6 and doesn't work anyway
@@ -54,12 +54,20 @@ package_shiboken2-git() {
 }
 
 package_python-shiboken2-git() {
+  pkgdesc='Python bindings for shiboken2 (git version)'
   depends=(python39)
   conflicts=(python-shiboken2)
-  provides=(python-shiboken2)
+  provides=(python-shiboken2=$pkgver)
 
-  cd "${srcdir}/${pkgbase}/build"
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 # Provided in shiboken2
   rm -r "$pkgdir"/usr/{bin,include,lib/{cmake,pkgconfig}}
+
+# Install egg-info
+  source pkg-venv/bin/activate
+  cd "$_pkgbase"
+  python setup.py egg_info --build-type=shiboken2
+  _pythonpath=$("$_python" -c "from sysconfig import get_path; print(get_path('platlib'))")
+  cp -r shiboken2.egg-info "$pkgdir"/$_pythonpath
+  deactivate
 }
