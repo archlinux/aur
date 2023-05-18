@@ -1,12 +1,12 @@
 pkgbase = astromatic-missfits
 	pkgdesc = manipulates astronomical fits files
 	pkgver = 2.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.astromatic.net/software/missfits
 	arch = x86_64
-	license = GPL
-	source = https://www.astromatic.net/download/missfits/missfits-2.8.0.tar.gz
-	sha256sums = 65772902ec29c33768bd579aefa577acbd93b671423e5edb2621ffaddd695912
+	license = GPL3
+	depends = glibc
+	source = missfits-2.8.0.tar.gz::https://github.com/astromatic/missfits/archive/refs/tags/2.8.0.tar.gz
+	sha512sums = 1e9e517f1d6fd39140eb5eaddde500ed1d386d322540667d14c2490f7a64e202fb3da11214a6123fd4e29cc5562448721e0acce530ed16ee827a9edccb9bda2f
 
 pkgname = astromatic-missfits
-

@@ -1,0 +1,26 @@
+include:
+- project: "common/gitlab-helper"
+  ref: master
+  file: "ci-helper.yml"
+
+workflow: !reference [ .common, workflow ]
+
+variables:
+  PKG_NAME: "astromatic-missfits"
+
+stages:
+- build
+- test
+- deploy
+
+build-astromatic-missfits:
+  extends: .arch-build
+  image: $CI_REGISTRY/common/gitlab-helper/archlinux-yay:master
+    
+test-astromatic-missfits:
+  extends: .arch-test
+  needs: ["build-astromatic-missfits"]
+  image: $CI_REGISTRY/common/gitlab-helper/archlinux-yay:master
+
+deploy-astromatic-missfits:
+  extends: .arch-deploy
