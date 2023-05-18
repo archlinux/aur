@@ -1,0 +1,13 @@
+pkgbase = powersupply
+	pkgdesc = GTK3 app to display power status of phones
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://gitlab.com/MartijnBraam/powersupply
+	arch = any
+	license = AGPL3
+	makedepends = meson
+	depends = libhandy
+	source = https://gitlab.com/MartijnBraam/powersupply/-/archive/0.8.0/powersupply-0.8.0.tar.gz
+	sha256sums = 2bcd5c7a33a041edf29de2c7270f089c8551ca8025fe8afc45f5bb822abe8172
+
+pkgname = powersupply
