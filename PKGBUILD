@@ -2,7 +2,7 @@
 # Contributor: Icaro Perseo <icaroperseo[at]protonmail[dot]com>
 
 pkgname=nodejs-browser-sync
-pkgver=2.29.0
+pkgver=2.29.1
 pkgrel=1
 pkgdesc="Live CSS Reload & Browser Syncing"
 arch=('any')
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('nodejs')
 makedepends=('npm>=7.4.0' 'jq')
 source=("${pkgname}-${pkgver}.tgz::http://registry.npmjs.org/${pkgname#nodejs-}/-/${pkgname#nodejs-}-${pkgver}.tgz")
-sha256sums=('661de72e187a3b64b738b08702a050125cc05e0ab0957f6fb3d8388ecd346c7a')
+sha256sums=('1dc4312ad95db7a785c522d4df8bfc829567ae58dd6dae4900586b69e0ca7899')
 noextract=("${pkgname}-${pkgver}.tgz")
 
 package() {
