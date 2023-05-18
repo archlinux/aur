@@ -1,4 +1,4 @@
-# Maintainer: Vincent Post <cent@spline.de>
+# Maintainer: Marcanicus <marcanicus@proton.me>
 pkgname=xivlauncher-rb
 pkgver=1.0.3
 pkgrel=1
