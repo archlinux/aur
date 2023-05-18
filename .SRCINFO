@@ -1,6 +1,6 @@
 pkgbase = craftbukkit-spigot
 	pkgdesc = CraftBukkit, Spigot, and vanilla Minecraft servers
-	pkgver = 1.19.3.3658
+	pkgver = 1.19.4.3694
 	pkgrel = 1
 	url = https://www.spigotmc.org/
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = craftbukkit-spigot
 	depends = java-runtime-headless-openjdk<21
 	depends = fontconfig
 	optdepends = mcrcon: Notify users before shutdown and consistent backups
-	provides = craftbukkit=1.19.3
-	provides = minecraft-server=1.19.3
+	provides = craftbukkit=1.19.4
+	provides = minecraft-server=1.19.4
 	conflicts = bukkit
 	conflicts = craftbukkit
 	conflicts = craftbukkit-stable
