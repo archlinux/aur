@@ -19,6 +19,7 @@ pkgbase = arianna
 	makedepends = qt5-websockets
 	makedepends = qt5-webengine
 	depends = kirigami-addons
+	depends = kquickcharts
 	depends = hicolor-icon-theme
 	provides = arianna
 	conflicts = arianna
