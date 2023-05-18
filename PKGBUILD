@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=playdate-sdk
-pkgver=1.13.3
+pkgver=1.13.7
 pkgrel=1
 pkgdesc='SDK for the Playdate console with Lua and C APIs, docs, and a simulator'
 arch=('x86_64')
@@ -22,7 +22,7 @@ depends=(
 )
 makedepends=('curl' 'jq')
 optdepends=(
-  'python: to run the firmware_symbolizer.py utility'
+  'python-click: to run the firmware_symbolizer.py utility'
   'wayland: for Wayland compatibility'
   'zeal: read the Playdate SDK docset offline'
 )
@@ -38,7 +38,7 @@ source=(
 )
 
 sha512sums=(
-  'c36232d3ae8bcc710f14460813e9e38269c6931d4b10e270b721a721018fa1b24fc3e9b112196584778bced7fa5aa5f7beccf4bda644a87538856060b04f7c1b'
+  '82e5d08ec3c3ca3e6101c2a3fb81aac2296f0d14256a0238ce3e2e00e5fa8358d47a632d861400b6f68a5bbd6be428d04079feb6f75300955c40febac01e2a8f'
   '7286f35bff63253ff430860ce6a3ce52dfd88bcd90e6dd6cfcbeb90a76b38d2341d4fc428259d00eac7b67c2b94e0319e3d438a67e76e8016d8cd36be1123677'
   'ed30d6745f686e985bd54cd23c5a8e9bee95bad7209d065871bf461dc8321dea032583d6a3da9fa9909efca2969dde0954777a55ba42b4974c49ed1993101c92'
   '2a909f7d290489e23a5dd1648269e8575e3912057d03649d898fa23a6ff74185bd1080c6366db1b840bce4cb72482c72e218f88bb1aac4d91eec6f89205573cb'
