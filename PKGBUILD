@@ -10,7 +10,7 @@ pkgname='dmarc_report'
 pkgdesc='Generate nice reports from one or more DMARC report files'
 _gitname='dmarc_report'
 
-pkgver=3.6.1
+pkgver=3.6.2
 pkgrel=1
 url="https://github.com/gene-git/dmarc_report"
 
@@ -26,7 +26,8 @@ sha512sums=('SKIP')
 build() {
     cd "${_gitname}"
     /usr/bin/rm -f dist/*
-    /usr/bin/poetry build --format wheel
+    #/usr/bin/poetry build --format wheel
+    /usr/bin/python -m build --wheel --no-isolation
 }
 
 package() {
