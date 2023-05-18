@@ -33,18 +33,21 @@ arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
 conflicts=('firefox-nightly')
 depends=('dbus-glib' 'gtk3' 'libxt' 'nss' 'mime-types' 'python')
-optdepends=('pulseaudio: audio support'
-            'ffmpeg: h.264 video'
-            'hunspell: spell checking'
-            'hyphen: hyphenation'
-            'libnotify: notification integration'
-            'networkmanager: location detection via available WiFi networks'
-            'speech-dispatcher: text-to-speech'
-            'startup-notification: support for FreeDesktop Startup Notification')
+optdepends=(
+  'pulseaudio: audio support'
+  'ffmpeg: h.264 video'
+  'hunspell: spell checking'
+  'hyphen: hyphenation'
+  'libnotify: notification integration'
+  'networkmanager: location detection via available WiFi networks'
+  'speech-dispatcher: text-to-speech'
+  'startup-notification: support for FreeDesktop Startup Notification'
+)
 provides=("${_pkgname}")
 _url="${_base_url}/${_build_id[year]}/${_build_id[month]}/${_build_id[year]}-${_build_id[month]}-${_build_id[day]}-${_build_id[hour]}-${_build_id[min]}-${_build_id[sec]}-mozilla-central-l10n"
 _src="${_name}-${_version}.${_lang}.linux-${CARCH}"
 _filename="${_build_id[date]}-${_build_id[time]}-${_src}"
+options=('!debug')
 source=('firefox-nightly.desktop'
         'policies.json'
         "${_filename}.tar.bz2::${_url}/${_src}.tar.bz2"
