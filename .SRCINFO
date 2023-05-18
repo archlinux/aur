@@ -1,0 +1,14 @@
+pkgbase = wljoywake
+	pkgdesc = Wayland idle inhibit on joystick input
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/nowrep/wljoywake
+	arch = x86_64
+	license = GPL2
+	makedepends = meson
+	makedepends = wayland-protocols
+	depends = wayland
+	source = https://github.com/nowrep/wljoywake/archive/refs/tags/v0.2.tar.gz
+	b2sums = 795a426fc4041ad87fe51cbf6286f951cb4b0731292f9c34e9ed4eaed5adf2fe037638e86cc191797e604e798db467fafe1ea11eab8655d3dce2436fbd39b377
+
+pkgname = wljoywake
