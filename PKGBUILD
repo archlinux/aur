@@ -10,7 +10,7 @@ pkgname='dmarc_report'
 pkgdesc='Generate nice reports from one or more DMARC report files'
 _gitname='dmarc_report'
 
-pkgver=3.6.2
+pkgver=3.6.3
 pkgrel=1
 url="https://github.com/gene-git/dmarc_report"
 
@@ -18,7 +18,7 @@ arch=(any)
 license=(MIT)
 # tomli only needed if python version < 3.11
 depends=('python>3.9' 'python-netaddr' 'python-tomli')
-makedepends=('git' 'python-pip' 'python-wheel' 'python-poetry' 'rsync')
+makedepends=('git' 'python-pip' 'python-build' 'python-wheel' 'python-poetry' 'rsync')
 _mkpkg_depends=('python>minor')
 source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
 sha512sums=('SKIP')
@@ -26,7 +26,6 @@ sha512sums=('SKIP')
 build() {
     cd "${_gitname}"
     /usr/bin/rm -f dist/*
-    #/usr/bin/poetry build --format wheel
     /usr/bin/python -m build --wheel --no-isolation
 }
 
