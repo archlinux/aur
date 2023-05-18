@@ -1,6 +1,6 @@
 pkgbase = python-pylint-plugin-utils
 	pkgdesc = Utilities and helpers for writing Pylint plugins
-	pkgver = 0.8.1
+	pkgver = 0.8
 	pkgrel = 0
 	url = https://github.com/landscapeio/pylint-plugin-utils
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-pylint-plugin-utils
 	makedepends = python-setuptools
 	makedepends = python-pylint
 	depends = python
-	source = https://pypi.io/packages/source/p/pylint_plugin_utils/pylint_plugin_utils-0.8.1.tar.gz
-	sha256sums = a595517d238d2ebe586fd867325cc656d4fac8d22b99421ff4cfb51b8c823a93
+	source = https://github.com/PyCQA/pylint-plugin-utils/archive/refs/tags/0.8.tar.gz
+	sha256sums = f16f35d96534919df9e019b15fb10206585492a6daae24cd9daed9439903cb79
 
 pkgname = python-pylint-plugin-utils
