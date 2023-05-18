@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=python-flake8-annotations
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='A flake8 extension that checks type annotations'
 arch=('any')
@@ -20,7 +20,7 @@ checkdepends=(
   'python-pytest-cov'
   'python-colorama'
 )
-_commit='c63884c1b02ef914ec7d4e3abc7c2ebf2e3d60b2'
+_commit='d831807bedbda4b084b184032daa9262705f2b71'
 source=("$pkgname::git+$url.git#commit=$_commit")
 b2sums=('SKIP')
 
