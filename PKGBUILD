@@ -1,13 +1,14 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 pkgname=ja2-stracciatella
 pkgver=0.20.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Jagged Alliance 2 Stracciatella"
 arch=('x86_64')
 url="https://github.com/ja2-stracciatella/ja2-stracciatella"
 license=('custom')
-depends=('sdl2>2.0.6' 'fltk' 'rapidjson' 'lua53' 'sol2')
-makedepends=('cargo' 'cmake' 'ninja' 'string-theory')
+depends=('sdl2>2.0.6' 'lua53')
+optdepends=('fltk: GUI launcher')
+makedepends=('cargo' 'cmake' 'ninja' 'string-theory' 'rapidjson' 'sol2' 'fltk')
 _magic_enum_ver='0.7.3'
 # This is version 0.11.1; miniaudio doesn't do tags apparently
 _miniaudio_commit='c153a947919808419b0bf3f56b6f2ee606d6c5f4'
