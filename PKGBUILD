@@ -2,7 +2,7 @@
 
 pkgname=wayward-git
 _realname=wayward
-pkgver=1.1.0
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Fast GTK shell and compositor for wayland and weston."
 arch=('x86_64')
