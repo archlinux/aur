@@ -1,6 +1,6 @@
-# Maintainer: John Doe <kitterhuff@gmail.com>
-# Previous Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
-# Contributor: Matthew Spangler <mattspangler@protonmail.com>
+# Maintainer: Matthew Spangler <mattspangler@protonmail.com>
+# Previous Maintainer: John Doe <kitterhuff@gmail.com>
+# Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 # Contributor: Thomas S Hatch <thatch45@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
