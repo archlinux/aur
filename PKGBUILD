@@ -86,7 +86,7 @@ source=(${source[@]}
         chromium-112-gcc-13-0023-gcc-incomplete-type-v8-subtype.patch
         chromium-113-gcc-13-vulkan-build-fixes.patch)
 sha256sums=(${sha256sums[@]}
-            'ad7a3169d95f182df748940349e2c25868a201949486257829fdb42c69a83a51'
+            'b36ecce88a380b760c468592c1bb69be4b5dbae20b084ae0aba01236720b3690'
             'e9e8d3a82da818f0a67d4a09be4ecff5680b0534d7f0198befb3654e9fab5b69'
             'e742cc5227b6ad6c3e0c2026edd561c6d3151e7bf0afb618578ede181451b307'
             'be8d3475427553feb5bd46665ead3086301ed93c9a41cf6cc2644811c5bda51c'
