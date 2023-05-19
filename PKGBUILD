@@ -15,13 +15,11 @@ checkdepends=('mingw-w64-gtest' 'mingw-w64-wine')
 arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
-sha256sums=(
-	'SKIP'
-	'9e1582918e7ca6ece1ee4faba15403f649b51ab65a66453b3c643ad03dca1d76'
-)
+sha256sums=('SKIP'
+            '9e1582918e7ca6ece1ee4faba15403f649b51ab65a66453b3c643ad03dca1d76')
 source=(
 	"git+${url}.git"
-	'test-fix.patch'
+	'yamc-test-fix.patch'
 )
 
 _dir="${_pkgname}"
@@ -31,7 +29,9 @@ _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DND
 prepare() {
 	cd "${_dir}"
 	
-	patch -uNp1 -i '../test-fix.patch'
+	patch -uNp1 -i '../yamc-test-fix.patch'
+	sed -i 's/set(CMAKE_CXX_STANDARD 11)/set(CMAKE_CXX_STANDARD 20)/' 'CMakeLists.txt'
+	sed -i 's/set(CMAKE_CXX_STANDARD 11)/set(CMAKE_CXX_STANDARD 20)/' 'tests/CMakeLists.txt'
 }
 
 pkgver() {
