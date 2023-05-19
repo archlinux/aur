@@ -5,7 +5,7 @@
 pkgname=python-plexapi
 _name="PlexAPI"
 pkgver=4.13.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for the Plex API."
 arch=('any')
 url="https://github.com/pkkid/python-plexapi"

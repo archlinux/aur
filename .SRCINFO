@@ -1,7 +1,7 @@
 pkgbase = python-plexapi
 	pkgdesc = Python bindings for the Plex API.
 	pkgver = 4.13.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pkkid/python-plexapi
 	arch = any
 	license = BSD
