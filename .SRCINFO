@@ -2,7 +2,6 @@ pkgbase = dahliaos-settings-git
 	pkgdesc = dahliaOS Settings application.
 	pkgver = r26.2f11201
 	pkgrel = 1
-	epoch = 1
 	url = https://github.com/dahliaOS/settings
 	arch = x86_64
 	license = Apache

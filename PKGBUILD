@@ -1,9 +1,7 @@
 # Maintainer: Dee.H.Y <dongfengweixiao at hotmail dot com>
-# Contributor: Dee.H.Y <dongfengweixiao at hotmail dot com>
 pkgname=dahliaos-settings-git
 pkgver=r26.2f11201
 pkgrel=1
-epoch=1
 pkgdesc="dahliaOS Settings application."
 arch=('x86_64')
 url="https://github.com/dahliaOS/settings"
