@@ -11,14 +11,17 @@ fi
 
 _pluginname=tuna
 pkgname=obs-$_pluginname
-pkgver=1.9.5
+pkgver=1.9.6
 pkgrel=1
 arch=("x86_64" "aarch64")
 pkgdesc="Get song info from right within obs"
 url="https://obsproject.com/forum/resources/tuna.843/"
 license=('GPL2')
-depends=("obs-studio>=28" "libmpdclient" "taglib")
-makedepends=("cmake" "vlc" "git")
+depends=(
+  "obs-studio>=28" "curl" "dbus" "gcc-libs" "glibc" "libmpdclient"
+  "qt6-base" "taglib"
+)
+makedepends=("cmake" "git" "vlc")
 conflicts=("obs-plugin-tuna-bin" "obs-plugin-tuna-git")
 options=('debug')
 source=(
@@ -44,20 +47,19 @@ prepare() {
 }
 
 build() {
-  cd $_pluginname
-  cmake -B build \
-  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+  cmake -B build -S $_pluginname \
+  -DCMAKE_BUILD_TYPE=None \
   -DCMAKE_INSTALL_PREFIX='/usr' \
   -DCMAKE_INSTALL_LIBDIR=lib \
   -DLINUX_PORTABLE=OFF \
   -DQT_VERSION=6 \
   -DCREDS="$SPOTIFY_TOKEN" \
-  -DLASTFM_CREDS="$LASTFM_KEY"
+  -DLASTFM_CREDS="$LASTFM_KEY" \
+  -Wno-dev
 
-  make -C build
+  cmake --build build
 }
 
 package() {
-  cd $_pluginname
-  make -C build DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir" cmake --install build
 }
