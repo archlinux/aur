@@ -8,7 +8,7 @@ _prevyear="$(( ${_year} - 1 ))"
 _pkgname="idos-timetable-data-chaps-trains-pid-20${_year}"
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2023_05_17
+pkgver=2023_05_19
 pkgrel=1
 pkgdesc="20${_prevyear}/20${_year} Timetable data for the timetable search engines by CHAPS: Trains in Praha public transport reagion (PID)."
 arch=(any)
@@ -50,6 +50,7 @@ replaces=(
 
 conflicts=(
   "${_pkgname}"
+  'idos-timetable-data-trains-pid' # Conflicts via `/opt/idos-timetable/Data3/Vlak.ttr`.
   ### The conflict will be handled by idos-timetable-data-chaps-all, if needed. Sometimes idos-timetable-data-chaps-all does not provide the train data, and then idos-timetable-data-chaps-all will depend on this package, thus this package should not have idos-timetable-data-chaps-all as conflict.
   # "idos-timetable-data-chaps-all"
 )
