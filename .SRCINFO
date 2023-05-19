@@ -1,7 +1,7 @@
 pkgbase = aladin
 	pkgdesc = Interactive software sky atlas
-	pkgver = 12.001
-	pkgrel = 2
+	pkgver = 12.060
+	pkgrel = 1
 	url = http://aladin.u-strasbg.fr/aladin.gml
 	arch = any
 	license = GPL3

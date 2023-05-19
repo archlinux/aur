@@ -1,8 +1,8 @@
 # Contributor: XaBz <xabz.2k5@gmail.com>
 # Maintainer: Simon Conseil <contact+aur at saimon dot org>
 pkgname=aladin
-pkgver=12.001
-pkgrel=2
+pkgver=12.060
+pkgrel=1
 pkgdesc="Interactive software sky atlas"
 arch=('any')
 url="http://aladin.u-strasbg.fr/aladin.gml"
