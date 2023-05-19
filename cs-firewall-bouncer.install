@@ -9,7 +9,7 @@ post_install() {
 	fi
 	echo "Running cs-firewall-bouncer installation script"
 	cd /usr/local/installers/cs-firewall-bouncer
-	sh ./install.sh 
+	source ./install.sh 
 	echo  -ne "\n"
 	echo "cs-firewall-bouncer installer files have been saved to /usr/local/installers"
 	echo "It's recommended to keep these in place for proper package removal"
@@ -34,9 +34,9 @@ pre_install(){
         # The install script will create multiple configurations and 
 	# that isn't needed. 	
 	#
-	INSTANCES="`cscli bouncers list | grep cs-firewall-bouncer | awk '{print $1}'`"
-	if [[ ${#INSTANCES[@]} != 0 ]]; then
-		echo "Error: cscli reports existing iptables bouncer"
+	INSTANCES="`sudo cscli bouncers list 2>&1  | grep cs-firewall-bouncer | wc -l`"
+	if [[ ${INSTANCES} != 0 ]]; then
+		echo "Error: cscli reports existing cs-firewall-bouncer"
 		echo "Please remove that before continuing package install"
 	       	exit 2
 	fi
@@ -50,7 +50,7 @@ pre_remove(){
 	#
 	for i in `sudo cscli bouncers list | grep cs-firewall-bouncer | awk '{print $1}'`
 	do 
-	   cscli bouncers delete $i
+	   sudo cscli bouncers delete $i
 	done
 	#
         # Run the official uninstall script

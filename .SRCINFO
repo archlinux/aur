@@ -1,6 +1,6 @@
 pkgbase = cs-firewall-bouncer
 	pkgdesc = Use the CrowdSec API to create a dynamic blocklist used by supported firewalls.
-	pkgver = 0.0.26
+	pkgver = 0.0.27
 	pkgrel = 1
 	url = https://hub.crowdsec.net/author/crowdsecurity/bouncers/cs-firewall-bouncer
 	install = cs-firewall-bouncer.install
@@ -14,11 +14,11 @@ pkgbase = cs-firewall-bouncer
 	optdepends = nftables: netfilter tables userspace tools
 	provides = cs-firewall-bouncer
 	provides = crowdsec-firewall-bouncer
-	source = cs-firewall-bouncer-0.0.26-source.tgz::https://github.com/crowdsecurity/cs-firewall-bouncer/archive/refs/tags/v0.0.26.tar.gz
+	source = cs-firewall-bouncer-0.0.27-source.tgz::https://github.com/crowdsecurity/cs-firewall-bouncer/archive/refs/tags/v0.0.27.tar.gz
 	source = cs-firewall-bouncer.install
 	source = install.sh.patch
-	sha256sums = 2325df3f8d01e2c9b52db212a796b15b4992a135d5d278441277e97db353b2a7
+	sha256sums = 2516e700c88e46e6aa58100ff6f343257cc1befdb555d6ab9e124f217ec46ca0
 	sha256sums = c312a49e55b9fc1d4c5f70db9e666695e2db18d848191d5c714a93020b290dc9
-	sha256sums = 7639c8b37eeb2bc14c3814579f20fb2e23975f44e3e3ea32426d29975776b742
+	sha256sums = af3bad2dc1912dc30d04301e4d921a4f5b84c860f8889abcdfef1e904947fedc
 
 pkgname = cs-firewall-bouncer

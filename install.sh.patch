@@ -9,3 +9,22 @@
      else
          msg warn "This distribution is not supported"
          return 1
+
+@@ -52,6 +52,16 @@
+         nftables="false"
+     fi
+
++    #### Inserted for cs-firewall-bouncer pkgbuild installation
++    #### If iptables-nft and nftables are installed, then nftables should be used instead
++    #### of using iptables.
++    if command -v iptables-nft >/dev/null; then
++       msg warn "iptables-nft detected. Assuming nftables for backend."
++       iptables="false"
++       nftables="true"
++    fi
++    ####
++
+     if [ "$nftables" = "false" ] && [ "$iptables" = "false" ]; then
+         printf '%s ' "No firewall found, do you want to install nftables (Y/n) ?"
+         read -r answer
+

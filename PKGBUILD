@@ -2,9 +2,9 @@
 
 pkgname=cs-firewall-bouncer
 _altpkgname=crowdsec-firewall-bouncer
-pkgver=0.0.26
-pkgrel=2
-_gitpkgrel=0.0.26
+pkgver=0.0.27
+pkgrel=7
+_gitpkgrel=0.0.27
 pkgdesc="Use the CrowdSec API to create a dynamic blocklist used by supported firewalls."
 arch=('any')
 url="https://hub.crowdsec.net/author/crowdsecurity/bouncers/cs-firewall-bouncer"
@@ -45,7 +45,6 @@ build(){
 	make -s release 
 	cd ${_altpkgname}-${_gitpkgrel}
 	# This appears to be needed with the 0.0.26 release
-        mkdir scripts
         cp -r ../scripts/_bouncer.sh scripts
 	# Add archlinux to allowed platforms
         patch install.sh < ${srcdir}/install.sh.patch
@@ -55,6 +54,6 @@ package() {
 	mkdir -p ${pkgdir}/usr/local/installers/${pkgname}
 	cp -R ${srcdir}/${pkgname}-${_gitpkgrel}/${_altpkgname}-${_gitpkgrel}/* ${pkgdir}/usr/local/installers/${pkgname}
 }
-sha256sums=('2325df3f8d01e2c9b52db212a796b15b4992a135d5d278441277e97db353b2a7'
-            'c312a49e55b9fc1d4c5f70db9e666695e2db18d848191d5c714a93020b290dc9'
-            'af3bad2dc1912dc30d04301e4d921a4f5b84c860f8889abcdfef1e904947fedc')
+sha256sums=('2516e700c88e46e6aa58100ff6f343257cc1befdb555d6ab9e124f217ec46ca0'
+            'f5354b4e609355af90738bc02a905ed95d69c11877a8b20f5935c6f58700fc27'
+            'ba497cc11b456853604dcf38492580369f9557550944acaa56b0a99fc3028800')
