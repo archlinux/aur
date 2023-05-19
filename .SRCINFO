@@ -1,6 +1,6 @@
 pkgbase = dahliaos-clock-git
 	pkgdesc = dahliaOS built-in clock and alarms application.
-	pkgver = r101.4166d0a
+	pkgver = r39.5889188
 	pkgrel = 1
 	url = https://github.com/dahliaOS/clock
 	arch = x86_64
@@ -17,6 +17,6 @@ pkgbase = dahliaos-clock-git
 	source = git+https://github.com/dahliaOS/clock.git
 	source = dahliaos-clock.desktop
 	sha256sums = SKIP
-	sha256sums = 41a11b723315c19014d21c4b177c513251d03ea773783ab674296035fb52d13c
+	sha256sums = 0f974e8e9c49f61aa068254fe7fc31b1b38e1382011176f71f5da6c6318fde51
 
 pkgname = dahliaos-clock-git
