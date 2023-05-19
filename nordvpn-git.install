@@ -6,6 +6,16 @@ post_install() {
   echo "     sudo gpasswd -a USERNAME nordvpn"
   echo ':: You then have to restart for the group to be created:'
   echo "     reboot"
+  #  remove some .dat files that might exist from nordvpn-bin
+  #  https://github.com/NordSecurity/nordvpn-linux/issues/3#issuecomment-1551021304
+  if [ -f "/var/lib/nordvpn/data/install.dat" ]; then
+     echo "Removing /var/lib/nordvpn/data/install.dat";
+     rm /var/lib/nordvpn/data/install.dat;
+  fi;
+  if [ -f "/var/lib/nordvpn/data/settings.dat" ]; then
+     echo "Removing /var/lib/nordvpn/data/settings.dat";
+     rm /var/lib/nordvpn/data/settings.dat;
+  fi;
 }
 
 post_upgrade() {
