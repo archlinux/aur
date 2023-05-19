@@ -1,6 +1,6 @@
 pkgbase = torbrowser-launcher-git
 	pkgdesc = Securely and easily download, verify, install and launch Tor Browser
-	pkgver = 0.3.2.r49.g0e020dc
+	pkgver = 0.3.6.r6.gac85ac4
 	pkgrel = 1
 	url = https://github.com/micahflee/torbrowser-launcher
 	arch = any
@@ -20,12 +20,7 @@ pkgbase = torbrowser-launcher-git
 	optdepends = apparmor: support for apparmor profiles
 	provides = torbrowser-launcher
 	conflicts = torbrowser-launcher
-	source = git+https://github.com/micahflee/torbrowser-launcher.git#branch=develop
-	source = https://github.com/micahflee/torbrowser-launcher/pull/470/commits/b8774d7a4f3e23f01c2c772aa9f3de7b98e8e932.patch
-	source = https://sources.debian.org/data/main/t/torbrowser-launcher/0.3.3-3/debian/patches/05-Fix-use-case-that-enforce-install-of-EN-version-on-n.patch
+	source = git+https://github.com/micahflee/torbrowser-launcher.git#branch=main
 	sha256sums = SKIP
-	sha256sums = c8b3ca9054b018ac08c1fc20b0f8cf13ce9ba328c95712c4f58b9b0e256c3af1
-	sha256sums = 319d287d6a3e9850e4499912761ec2ac8294e8cb0ebc543d2bc83313afd1e5ab
 
 pkgname = torbrowser-launcher-git
-
