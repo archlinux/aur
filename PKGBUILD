@@ -15,13 +15,11 @@ makedepends=('cmake' 'cppzmq')
 source=("https://github.com/jupyter-xeus/$pkgname/archive/$pkgver.tar.gz"
         "0001-Rename-kernels.patch"
         "0002-Use-llvm-from-cling.patch"
-        "0003-put-config-file-at-etc.patch"
-        "0004-fix-build.patch")
+        "0003-put-config-file-at-etc.patch")
 md5sums=('8d99920a167b1ca6b2ff4a3ef0bd1ded'
          'e03c81c3701e4f0dea249955051c2ddf'
-         '30e86ddf8e4996352eb456e12ec686bb'
-         'fb1bf5fdaa53af1c010b9da9d29f63b6'
-         'c492a7955f6bd8315fd8a100e2457744')
+         'a5e1fb609303da1710a125e440f2c9a8'
+         'fb1bf5fdaa53af1c010b9da9d29f63b6')
 
 prepare() {
     cd "$pkgname-$pkgver"

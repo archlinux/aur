@@ -1,10 +1,9 @@
-diff --unified --recursive --text xeus-cling-0.10.0/CMakeLists.txt xeus-cling-0.10.0-fixed/CMakeLists.txt
---- xeus-cling-0.10.0/CMakeLists.txt	2020-08-29 00:08:47.000000000 +0200
-+++ xeus-cling-0.10.0-fixed/CMakeLists.txt	2020-09-23 17:00:45.525608638 +0200
-@@ -46,58 +46,6 @@
+--- xeus-cling-0.15.0/CMakeLists.txt    2023-01-30 21:26:07.000000000 +0100
++++ xeus-cling-0.15.0-fixed/CMakeLists.txt  2023-02-01 18:35:36.914901732 +0100
+@@ -50,59 +50,6 @@
      "${CMAKE_CURRENT_SOURCE_DIR}/share/jupyter/kernels/xcpp17/kernel.json"
  )
- 
+
 -#######################
 -# Rely on llvm-config #
 -#######################
@@ -57,26 +56,27 @@ diff --unified --recursive --text xeus-cling-0.10.0/CMakeLists.txt xeus-cling-0.
 -include_directories(${LLVM_MAIN_INCLUDE_DIR})
 -link_directories(${LLVM_LIBRARY_DIR})
 -add_definitions(-DLLVM_DIR="${LLVM_BINARY_DIR}")
- 
+-
  ################
  # Dependencies #
-@@ -110,8 +58,10 @@
- find_package(cppzmq ${cppzmq_REQUIRED_VERSION} REQUIRED)
+ ################
+@@ -112,8 +59,10 @@
+ find_package(xeus-zmq ${xeus-zmq_REQUIRED_VERSION} REQUIRED)
  find_package(pugixml REQUIRED)
- 
+
 -find_package(Clang REQUIRED)
  find_package(Cling REQUIRED)
 +find_package(Clang REQUIRED)
 +find_package(LLVM REQUIRED)
 +add_definitions(-DLLVM_DIR="${LLVM_INSTALL_PREFIX}")
- find_package(cxxopts REQUIRED)
- 
+ find_package(argparse REQUIRED)
+
  #########
-@@ -228,6 +178,7 @@
- 
+@@ -219,6 +168,7 @@
+
  target_include_directories(xeus-cling
                             PUBLIC
-+                           $<BUILD_INTERFACE:${LLVM_INCLUDE_DIR}>
++                          $<BUILD_INTERFACE:${LLVM_INCLUDE_DIR}>
                             $<BUILD_INTERFACE:${XEUS_CLING_INCLUDE_DIR}>
                             $<INSTALL_INTERFACE:include>)
- target_link_libraries(xeus-cling PUBLIC clingInterpreter clingMetaProcessor clingUtils xeus pugixml cxxopts::cxxopts)
+ target_link_libraries(xeus-cling PUBLIC clingInterpreter clingMetaProcessor clingUtils xeus-zmq pugixml argparse::argparse)
