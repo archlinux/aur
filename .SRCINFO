@@ -1,0 +1,18 @@
+pkgbase = hack-nf-mono-git
+	pkgdesc = A typeface designed for source code. Patched with Nerd Fonts iconics.
+	pkgver = 20230517
+	pkgrel = 1
+	url = https://github.com/ryanoasis/nerd-fonts
+	arch = any
+	license = MIT
+	depends = fontconfig
+	source = HackNerdFontMono-Bold.ttf::https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Bold/HackNerdFontMono-Bold.ttf
+	source = HackNerdFontMono-BoldItalic.ttf::https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/BoldItalic/HackNerdFontMono-BoldItalic.ttf
+	source = HackNerdFontMono-Regular.ttf::https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/HackNerdFontMono-Regular.ttf
+	source = HackNerdFontMono-Italic.ttf::https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Italic/HackNerdFontMono-Italic.ttf
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = hack-nf-mono-git
