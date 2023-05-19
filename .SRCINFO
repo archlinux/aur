@@ -9,12 +9,14 @@ pkgbase = casaos-gateway
 	groups = casaos
 	license = APACHE
 	backup = etc/casaos/gateway.ini
-	sha256sums = SKIP
 	source_x86_64 = https://github.com/IceWhaleTech/CasaOS-Gateway/releases/download/v0.4.2/linux-amd64-casaos-gateway-v0.4.2.tar.gz
 	source_x86_64 = https://github.com/IceWhaleTech/CasaOS-Gateway/releases/download/v0.4.2/linux-amd64-casaos-gateway-migration-tool-v0.4.2.tar.gz
+	sha256sums_x86_64 = SKIP
 	source_aarch64 = https://github.com/IceWhaleTech/CasaOS-Gateway/releases/download/v0.4.2/linux-arm64-casaos-gateway-v0.4.2.tar.gz
 	source_aarch64 = https://github.com/IceWhaleTech/CasaOS-Gateway/releases/download/v0.4.2/linux-arm64-casaos-gateway-migration-tool-v0.4.2.tar.gz
+	sha256sums_aarch64 = SKIP
 	source_armv7h = https://github.com/IceWhaleTech/CasaOS-Gateway/releases/download/v0.4.2/linux-arm-7-casaos-gateway-v0.4.2.tar.gz
 	source_armv7h = https://github.com/IceWhaleTech/CasaOS-Gateway/releases/download/v0.4.2/linux-arm-7-casaos-gateway-migration-tool-v0.4.2.tar.gz
+	sha256sums_armv7h = SKIP
 
 pkgname = casaos-gateway
