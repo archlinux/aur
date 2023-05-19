@@ -3,7 +3,7 @@
 _libname='aprilasr'
 _reponame='april-asr'
 pkgname="${_libname}-git"
-pkgver='r116.cb135ef'
+pkgver='r137.1bb4289'
 pkgrel=1
 pkgdesc='A minimal offline speech-to-text library written in C'
 arch=('x86_64')
