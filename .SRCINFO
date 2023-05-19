@@ -1,0 +1,18 @@
+pkgbase = moyu-appimage
+	pkgdesc = 基于 Vue 和 Electron 的在线协同api接口管理工具。接口文档管理工具、接口工具、接口文档、api文档、api工具、快乐摸鱼
+	pkgver = 0.8.0beta
+	pkgrel = 1
+	url = https://online.jobtool.cn/
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = moyu
+	options = !strip
+	source = moyu-0.8.0beta.AppImage::https://github.com/trueleaf/moyu/releases/download/0.8.0-beta/moyu-0.8.0.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/trueleaf/moyu/master/LICENSE
+	sha256sums = 0dab0db5b1492b06f52104dcc4ebe7acce3817fb8b6abb3d9523bff69a2dcb19
+	sha256sums = bbef3f01685fbef2be49493df601daf55815b3a044fb7361e160c9074ea515f7
+
+pkgname = moyu-appimage
