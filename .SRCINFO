@@ -1,7 +1,7 @@
 pkgbase = wlr-layout-ui
 	pkgdesc = Provides a simple graphical front end for wlr-randr
 	pkgver = r10.b2762da
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/fdev31/wlr-layout-ui
 	arch = any
 	license = MIT
@@ -10,6 +10,9 @@ pkgbase = wlr-layout-ui
 	depends = python
 	depends = python-pygame
 	depends = wlr-randr
+	depends = python-build
+	depends = python-installer
+	depends = python-poetry
 	provides = wlr-layout-ui
 	conflicts = wlr-layout-ui
 	source = git+https://github.com/fdev31/wlr-layout-ui.git#branch=main
