@@ -1,5 +1,5 @@
 pkgname=erlang_ls
-pkgver=0.44.1
+pkgver=0.46.2
 pkgrel=2
 pkgdesc='The Erlang Language Server'
 arch=(x86_64)
