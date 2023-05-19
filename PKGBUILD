@@ -106,4 +106,10 @@ package() {
   install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname COPYING
 }
 
+check() {
+  cd "$srcdir/$pkgname"
+  make -f Makefile.autotools install DESTDIR="$srcdir/test"
+  echo '#include <vgmstream/vgmstream.h>' | gcc -E - -I "$srcdir/test/usr/include" -o /dev/null
+}
+
 # vim:set sw=2 et:
