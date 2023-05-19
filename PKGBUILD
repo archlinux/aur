@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-nordic-git
-pkgver=r141.c348fba
+pkgver=r168.cd55278
 pkgrel=1
 pkgdesc="Nord-esque colorscheme for Neovim"
 arch=('any')

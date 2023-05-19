@@ -1,6 +1,6 @@
 pkgbase = neovim-nordic-git
 	pkgdesc = Nord-esque colorscheme for Neovim
-	pkgver = r141.c348fba
+	pkgver = r168.cd55278
 	pkgrel = 1
 	url = https://github.com/andersevenrud/nordic.nvim
 	install = nordic.install
