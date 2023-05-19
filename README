@@ -1,0 +1,1 @@
+This package was forked from the Arch Linux community repo to add a pkg-config file (mhash.pc) so that AIDE can compile with mhash support.
