@@ -1,9 +1,10 @@
-# Maintainer: txelu
+# Maintainer: Jose Luis <joseluis.tirado@gmail.com>
+# Maintainer: Plague-doctor <plague at privacyrequired dot com>
 
 pkgname=dnglab-git
 _pkgname=dnglab
 pkgver=0.5.1
-pkgrel=0
+pkgrel=1
 pkgdesc="A camera RAW to DNG file format converter."
 arch=(any)
 url="https://github.com/dnglab/dnglab"
