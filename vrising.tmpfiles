@@ -2,11 +2,8 @@
 d        /opt/vrising-server                      0755    root       root
 d        /opt/vrising-server/ServerData/Saves     0755    vrising    vrising
 d        /opt/vrising-server/ServerData/Settings  0755    vrising    vrising
-d        /opt/vrising-server/ServerData/logs      0755    vrising    vrising
-D        /opt/vrising-server/ServerData/config    0755    vrising    vrising
-D        /opt/vrising-server/ServerData/appcache  0755    vrising    vrising
-D        /opt/vrising-server/ServerData/.cache    0755    vrising    vrising
-D        /opt/vrising-server/ServerData/.local    0755    vrising    vrising
-D        /opt/vrising-server/ServerData/.wine     0755    vrising    vrising
-D        /opt/vrising-server/ServerData/.config   0755    vrising    vrising
-D        /opt/vrising-server/ServerData/.steam    0755    vrising    vrising
+D        /opt/vrising-server/.cache               0755    vrising    vrising
+D        /opt/vrising-server/.local               0755    vrising    vrising
+D        /opt/vrising-server/.wine                0755    vrising    vrising
+D        /opt/vrising-server/.config              0755    vrising    vrising
+D        /opt/vrising-server/.steam               0755    vrising    vrising
