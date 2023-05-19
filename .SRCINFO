@@ -1,0 +1,16 @@
+pkgbase = perl-test-future-io-impl
+	pkgdesc = Future-returning IO methods
+	pkgver = 0.14
+	pkgrel = 1
+	url = https://metacpan.org/release/Test-Future-IO-Impl
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test2-suite
+	makedepends = perl-module-build
+	depends = perl
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Test-Future-IO-Impl-0.14.tar.gz
+	b2sums = 701235a6ad922f237f6d8c051ac5ff71064617b07dc0488f787894064ff7293222fb79c7452213f7dc8f2340ee6c45e732bef72369a2fe9203c94b153b83396d
+
+pkgname = perl-test-future-io-impl
