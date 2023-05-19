@@ -1,7 +1,7 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=wdsaver
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Prevent hard drive from too frequent head parking'
 arch=('x86_64')
 url="https://github.com/amishmm/wdsaver"
