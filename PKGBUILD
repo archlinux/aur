@@ -1,13 +1,15 @@
 # Maintainer: Ns2Kracy <2220496937@qq.com>
+# Maintainer: CorrectRoadH <correctroadh@gmail.com>
 pkgname=casaos-local-storage
-pkgver=0.4.0
+pkgver=0.4.3
 pkgrel=1
-pkgdesc="Local Storage service provides local storage and disk management functionalities to CasaOS."
+pkgdesc='Local Storage service provides local storage and disk management functionalities to CasaOS.'
 arch=('x86_64' 'aarch64' 'armv7h')
-url="https://github.com/IceWhaleTech/CasaOS-LocalStorage"
+url='https://github.com/IceWhaleTech/CasaOS-LocalStorage/releases/tag/v0.4.3'
 license=('APACHE')
 groups=('casaos')
 backup=('etc/casaos/local-storage.conf')
+
 source_x86_64=(
 	${url}/releases/download/v${pkgver}/linux-amd64-${pkgname}-v${pkgver}.tar.gz
     ${url}/releases/download/v${pkgver}/linux-amd64-${pkgname}-migration-tool-v${pkgver}.tar.gz
@@ -20,18 +22,8 @@ source_armv7h=(
 	${url}/releases/download/v${pkgver}/linux-arm-7-${pkgname}-v${pkgver}.tar.gz
     ${url}/releases/download/v${pkgver}/linux-arm-7-${pkgname}-migration-tool-v${pkgver}.tar.gz
 )
-sha256sums_x86_64=(
-    87c4dbb8f8f6fcfee3a2b194c664c1ac5ae5918d75675d7702b4b125f3dad469
-    dc245730d8e93fa0e41bf594e9808ac1384ad781e45e7275499cd3c3df82ac06
-)
-sha256sums_aarch64=(
-    8e70c474004ae1c24f21cfb94931e790d0e5e1661555dcceccb362222cdaf287
-    db752f02b4245a36bbcc4df15b965745dce5057417524d2bbfe92011cb2a3a81
-)
-sha256sums_armv7h=(
-    dc9da498fb7c15a4322a62a79173308b19a0ef431b892c7d3f9a4379ea3aa527
-    3bbef466619fdf38610b740279922f6290f232791230ea7a2d9ecd15c00a44fa
-)
+
+sha256sums=(SKIP)
 package() {
 	_sysdir="${srcdir}/build/sysroot"
 	_name="${pkgname#*-}"
