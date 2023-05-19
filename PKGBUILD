@@ -3,7 +3,7 @@
 _pkgname=xdman8
 pkgname=$_pkgname-bin
 pkgver=8.0.25
-pkgrel=2
+pkgrel=3
 pkgdesc="Powerfull download accelerator and video downloader (binary release)"
 arch=('x86_64')
 url="https://github.com/subhra74/xdm-experimental-binaries"
@@ -24,6 +24,5 @@ package() {
   cp -r opt/xdman "$pkgdir/opt/xdman"
   ln -s /opt/xdman/xdm-app "$pkgdir/usr/bin/$_pkgname"
   ln -s /opt/xdman/xdm-app.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
-  ln -s /opt/xdman/xdm-logo.svg -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
+  ln -s /opt/xdman/xdm-logo.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
 }
-
