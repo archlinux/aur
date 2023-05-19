@@ -5,7 +5,7 @@ pkgver=0.4.2
 pkgrel=1
 pkgdesc='A command-line tool to interact with CasaOS for testing and diagnosing purpose'
 arch=('x86_64' 'aarch64' 'armv7h')
-url='https://github.com/IceWhaleTech/CasaOS-CLI/releases/tag/v0.4.2'
+url='https://github.com/IceWhaleTech/CasaOS-CLI'
 license=('APACHE')
 groups=('casaos')
 
