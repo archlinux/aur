@@ -1,0 +1,19 @@
+pkgbase = botflix-git
+	pkgdesc = 🎥 Stream your favorite movie from the terminal!
+	pkgver = r149.f865b94
+	pkgrel = 1
+	url = https://github.com/kaboussi/Botflix
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = nodejs
+	depends = npm
+	depends = python
+	depends = python-pip
+	provides = botflix
+	conflicts = botflix
+	source = botflix::git+https://github.com/kaboussi/Botflix.git
+	md5sums = SKIP
+	sha512sums = SKIP
+
+pkgname = botflix-git
