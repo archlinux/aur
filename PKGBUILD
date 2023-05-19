@@ -1,6 +1,6 @@
 #Maintainer: Musikolo<musikolo {at} hotmail [dot] com>
 pkgname=pact-cli-bin
-pkgver=2.0.0
+pkgver=2.0.1
 pkgdesc="A standalone client for the Pact Broker and Pactflow."
 pkgrel=1
 arch=(x86_64)
@@ -11,8 +11,8 @@ depends=(libxcrypt-compat)
 options=()
 source=("https://github.com/pact-foundation/pact-ruby-standalone/releases/download/v${pkgver}/pact-${pkgver}-linux-${arch}.tar.gz"
         "https://github.com/pact-foundation/pact-ruby-standalone/releases/download/v${pkgver}/pact-${pkgver}-linux-${arch}.tar.gz.checksum")
-sha1sums=('94ea52ef7d6c9dacf431dde7138717d96714131a'
-          'eabbc72d8a67cf3a815101e088c7521d3ea9ba13')
+sha1sums=('d04e74baae795fc0a6b59fa64f6282933a1d6211'
+          '4a9be2da8ef2d4cdab5d1cf86d9ae64101c4fb40')
 
 prepare() {
    msg2 "Verifying integrity..."
