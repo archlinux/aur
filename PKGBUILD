@@ -2,7 +2,7 @@
 # Co-maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-openai
 _name=${pkgname#python-}
-pkgver=0.27.6
+pkgver=0.27.7
 pkgrel=1
 pkgdesc="Python client library for the OpenAI API"
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=('python-numpy: Needed for CLI fine-tuning data preparation tool'
             'python-plotly: embeddings'
             'python-scipy: embeddings')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('63ca9f6ac619daef8c1ddec6d987fe6aa1c87a9bfdce31ff253204d077222375')
+sha256sums=('bca95fd4c3054ef38924def096396122130454442ec52005915ecf8269626b1d')
 
 build() {
   cd "${_name}-$pkgver"
