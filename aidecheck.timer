@@ -1,9 +1,10 @@
 [Unit]
-Description=Aide check every day at 5AM
+Description=Daily AIDE check
 
 [Timer]
-OnCalendar=*-*-* 05:00:00
-Unit=aidecheck.service
+OnCalendar=*-*-* 01:50:00
+RandomizedDelaySec=2h
+Persistent=true
 
 [Install]
 WantedBy=multi-user.target

@@ -1,24 +1,29 @@
 # Maintainer: John Doe <kitterhuff@gmail.com>
 # Previous Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
+# Contributor: Matthew Spangler <mattspangler@protonmail.com>
 # Contributor: Thomas S Hatch <thatch45@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=aide
-pkgver=0.18.2
-pkgrel=3
+pkgver=0.18.3
+pkgrel=4
 pkgdesc='A file integrity checker and intrusion detection program.'
 arch=('x86_64')
 url="https://aide.github.io/"
 license=('GPL')
 depends=('acl' 'e2fsprogs' 'libelf' 'mhash' 'pcre')
 backup=('etc/aide.conf')
+install='.INSTALL'
 source=("https://github.com/aide/aide/releases/download/v${pkgver}/aide-${pkgver}.tar.gz"{,.asc} \
-        "aide.conf")
-sha256sums=('758ff586c703930129e0a1e8c292ff5127e116fc10d0ffdbea8bf2c1087ca7e4' # aide-${pkgver}.tar.gz sha256sum
-             'SKIP'
-             'dd8f40a6e0a298dd0f457e6d814bc29c3fd5e5061cc9007386e2c2c3c7887f1a' # aide.conf chksum
-             )
+        "aide.conf"
+        "aidecheck.service"
+        "aidecheck.timer")
+sha256sums=('d47da12c4bf085bfdf1828e087a1db5195a4d217ff4c89f40dbd94e2a887a6a2'
+            'SKIP'
+            '47a8fced6e1f2afae07d521b3701dbd280b3039254d84c8342f981b9a6d943d4'
+            'fc7bd68dccc0e8694bb5a001fb6a80514f1380e41b95742e19d19b3172b22878'
+            '1eeb977faa98e4e5f6f6b111f4e933c162b6e72d4c65adef85430cf2f34ad9c5')
 
 validpgpkeys=('2BBBD30FAAB29B3253BCFBA6F6947DAB68E7B931') # Hannes von Haugwitz <hannes@vonhaugwitz.com>
 
@@ -43,4 +48,3 @@ package() {
 	install -D -m644 $srcdir/aidecheck.service $pkgdir/usr/lib/systemd/system/aidecheck.service
 	install -D -m644 $srcdir/aidecheck.timer $pkgdir/usr/lib/systemd/system/aidecheck.timer
 }
-

@@ -1,0 +1,4 @@
+post_upgrade() {
+        # AIDE crashes on init/first run if this folder doesn't exist:
+        mkdir -p /var/lib/aide
+}
