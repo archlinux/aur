@@ -2,7 +2,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=vivaldi-snapshot-ffmpeg-codecs
-pkgver=112.0.5615.49
+pkgver=114.0.5735.26
 _vivaldi_major_version=6.1
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for vivaldi"
@@ -11,12 +11,12 @@ url="https://ffmpeg.org/"
 license=('LGPL2.1')
 depends=('glibc')
 makedepends=(
-  'gn' 'ninja' 'python' 'gtk3' 'nss' 'libva'
+  'gn' 'ninja' 'python' 'gtk3' 'nss' 'libva' 'libevdev'
 )
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
 )
-sha512sums=('48387f8b960a33520da70953912076582e83263b2194fdb8afddf888f5e4d31ade0bf41e19fbdc8c2827c3371228428072520fdda41c229c78e2d71c341961e0')
+sha512sums=('d0fb9d5a8961f10f768127d8d33c89488eb9ee89a6228d2b0da89abfa708cf342640cf0fab78859cd857ad099e3d7784bce0fbec33b39adc911ea55d2716bd59')
 
 #prepare() {
   #cd "$srcdir/chromium-$pkgver"
@@ -44,6 +44,7 @@ build() {
 
   # chromium clang
   python tools/clang/scripts/update.py
+  python tools/rust/update_rust.py
   export PATH="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin:$PATH"
 
   export CC="clang"
