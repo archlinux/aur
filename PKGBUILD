@@ -1,8 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-# Contributor: Yamato Kobayashi <yk.ymadd@gmail.com>
 pkgname=youtube-music-appimage
-pkgver=1.19.0
-pkgrel=2
+pkgver=1.20.0
+pkgrel=1
 pkgdesc="YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"
 arch=('any')
 url="https://th-ch.github.io/youtube-music/"
@@ -13,7 +12,7 @@ _install_path="/opt/appimages"
 options=(!strip)
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/YouTube-Music-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/th-ch/youtube-music/master/license")
-sha256sums=('a3f6bee8428f11c13dc1a5d02b7871b69ec53eaa24b5ea1402dd2238993c6d8c'
+sha256sums=('7933d62c3f4a52cd99b0b6d84649279f1e6e0f2acd49b1473f2bfa814fb02ff7'
             'e7e14b3b771ecadb23f6ee0b6f99d1553e385e35cdb44fc8e36ee7c878dacd08')
 
 prepare() {
