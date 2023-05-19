@@ -11,10 +11,11 @@ if [ -z "${QQ_DOWNLOAD_DIR}" ]; then
     fi
     QQ_DOWNLOAD_DIR="${XDG_DOWNLOAD_DIR:-$HOME/Downloads}"
 fi
+
+# 从 flags 文件中加载参数
+
 set -euo pipefail
-
 flags_file="${XDG_CONFIG_HOME}/qq-electron-flags.conf"
-
 declare -a flags
 
 if [[ -f "${flags_file}" ]]; then
@@ -28,18 +29,26 @@ for line in "${MAPFILE[@]}"; do
 done
 
 QQ_HOTUPDATE_DIR="${QQ_APP_DIR}/versions"
-QQ_HOTUPDATE_VERSION="3.1.1-11223"
-QQ_PREVIOUS_VERSIONS=("2.0.1-429" "2.0.1-453" "2.0.2-510" "2.0.3-543" "3.0.0-565" "3.0.0-571" "3.1.0-9332" "3.1.0-9572")
+QQ_HOTUPDATE_VERSION="3.1.2-12912"
+QQ_PREVIOUS_VERSIONS=("2.0.1-429" "2.0.1-453" "2.0.2-510" "2.0.3-543" "3.0.0-565" "3.0.0-571" "3.1.0-9332" "3.1.0-9572" "3.1.1-11223")
 
 
 if [ "${QQ_DOWNLOAD_DIR%*/}" == "${HOME}" ]; then
     QQ_DOWNLOAD_DIR="${HOME}/Downloads"
-    if [ ! -d "${QQ_DOWNLOAD_DIR}" ]; then mkdir -p "${QQ_DOWNLOAD_DIR}"; fi
+    # if [ ! -d "${QQ_DOWNLOAD_DIR}" ]; then mkdir -p "${QQ_DOWNLOAD_DIR}"; fi
+    # 还是不自动建立为好
 fi
 
 if [ ! -d "${QQ_APP_DIR}" ]; then mkdir -p "${QQ_APP_DIR}"; fi
-if [ ! -d "${QQ_APP_DIR}/versions" ]; then mkdir -p "${QQ_APP_DIR}/versions"; fi
-if [ ! -d "${QQ_HOTUPDATE_DIR}/${QQ_HOTUPDATE_VERSION}" ]; then ln -sfd "/opt/QQ/resources/app" "${QQ_HOTUPDATE_DIR}/${QQ_HOTUPDATE_VERSION}"; fi
+if [ ! -d "${QQ_HOTUPDATE_DIR}" ]; then mkdir -p "${QQ_HOTUPDATE_DIR}"; fi
+if [ ! -L "${QQ_HOTUPDATE_DIR}/${QQ_HOTUPDATE_VERSION}" ]; then
+    # 删除 QQ 自动下载的热更新包，因为其中可能包含 libvips 等有问题的库
+    rm -rf "${QQ_HOTUPDATE_DIR}/${QQ_HOTUPDATE_VERSION}"
+fi
+if [ ! -d "${QQ_HOTUPDATE_DIR}/${QQ_HOTUPDATE_VERSION}" ]; then
+    # 将本包内的 app 链接到热更新文件夹下
+    ln -sfd "/opt/QQ/resources/app" "${QQ_HOTUPDATE_DIR}/${QQ_HOTUPDATE_VERSION}"
+fi
 rm -rf "${QQ_HOTUPDATE_DIR}/"**".zip"
 
 # 处理 config.json

@@ -1,11 +1,16 @@
 # Maintainer: Yidaozhan Ya <yidaozhan_ya@outlook.com>
+
 _pkgname=linuxqq
+_base_pkgver=3.1.1_11223
+_update_pkgver=3.1.2_12912
+_base_pkgver_hash=2355235c
+_update_pkgver_hash=5f0d6d75
+
 pkgname=linuxqq-nt-bwrap
-pkgver=3.1.1_11223
-_pkgver_hash=2355235c
+pkgver="${_update_pkgver}"
 pkgrel=1
 pkgdesc="New Linux QQ based on Electron, with bubblewrap sandbox and some tweaks"
-arch=('x86_64' 'aarch64')
+arch=('x86_64' 'aarch64')  # 龙架构版本停留在 3.1.0 未更新，故不纳入此包中
 url='https://im.qq.com/linuxqq/index.shtml'
 license=('custom')
 depends=('at-spi2-core' 'alsa-lib' 'desktop-file-utils' 'gtk3' 'gtk-update-icon-cache' 'libnotify' 'nss' 'gnutls' 'bubblewrap' 'xdg-user-dirs' 'flatpak-xdg-utils' 'snapd-xdg-open-git' 'libvips' 'openslide' 'autoconf')
@@ -16,25 +21,25 @@ provides=('qq' 'linuxqq')
 conflicts=('linuxqq')
 options=('!strip' '!emptydirs')
 install="${pkgname}.install"
-source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_pkgver_hash}/linuxqq_${pkgver//_/-}_amd64.deb" )  # 底包
-               # "https://qqpatch.gtimg.cn/hotUpdate_new/release/linux-x64/${pkgver//_/-}/${pkgver//_/-}.zip.zip" )  # 热更新补丁
-source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_pkgver_hash}/linuxqq_${pkgver//_/-}_arm64.deb" )  # 底包
-                # "https://qqpatch.gtimg.cn/hotUpdate_new/release/linux-arm64/${pkgver//_/-}/${pkgver//_/-}.zip.zip" )  # 热更新补丁
+source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_base_pkgver_hash}/linuxqq_${_base_pkgver//_/-}_amd64.deb"  # 底包
+               "https://qqpatch.gtimg.cn/hotUpdate_new/release/linux-x64/${pkgver//_/-}/${_update_pkgver_hash}/${pkgver//_/-}.zip.zip" )  # 热更新补丁
+source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_base_pkgver_hash}/linuxqq_${_base_pkgver//_/-}_arm64.deb"  # 底包
+                "https://qqpatch.gtimg.cn/hotUpdate_new/release/linux-arm64/${pkgver//_/-}/${_update_pkgver_hash}/${pkgver//_/-}.zip.zip" )  # 热更新补丁
 source=('start.sh' 'config.json' 'xdg-open.sh')
-sha256sums_x86_64=('4c1810ef357e8ee077292808217bafc67626be79ccff5ff05341248a8a48aaf6' )  # 底包
-                   # 'e9d7d27c6df425dfface9398be2b14c24f32ae9d880e344ce599593f2919f6dd')  # 热更新补丁
-sha256sums_aarch64=('d5b6bf200ffe5ffb3b8d4b48861dceb011d4ecc3e0806ac04ac04fc7c7ae041b' )  # 底包
-                    # 'f17bbff10be65135130c7a4cd05ac5f6e324e560a5dafe27113f05a9e7bbc3d5')  # 热更新补丁
-sha256sums=('d3decdf850a9d9f49fc2114b5cf027eb023eb23079ac0b6f919781f79dbfe824'  # start.sh
-            'bf180fbc93d95cb08608f97896cd5fe99323b7f5e4666844343f6065cf5f8528'  # config.json
+sha256sums_x86_64=('4c1810ef357e8ee077292808217bafc67626be79ccff5ff05341248a8a48aaf6'  # 底包
+                   '0449dd2c169f401b6a4489bafde51e9206388e690b34dd6c15273e232b61f67f')  # 热更新补丁
+sha256sums_aarch64=('d5b6bf200ffe5ffb3b8d4b48861dceb011d4ecc3e0806ac04ac04fc7c7ae041b'   # 底包
+                    '78a78fb466c0f0a63068f6de233b994ebcfb74d58b3fa793c264af48228754e3')  # 热更新补丁
+sha256sums=('0fed32df5f53574d8c602a56ae126459dc0ece444434eb3e94d09eea0595df5f'  # start.sh
+            '72c4a432acc4c06490e9a9a5fe8b6e3f4e3f62edc94878161aebe84fa81655cd'  # config.json
             '78a573867355fb4c3e728d0c8ac0746d47fa7d64f90ee2b62ee9f0ccae095edb')  # xdg-open.sh
 
 package() {
 	# 解压程序包
 	tar -xJ -f "data.tar.xz" -C "${pkgdir}"
-	# rm -rf "${pkgdir}/opt/QQ/resources/app"
-	# 7z x "${pkgver//_/-}.zip" -aoa -o"${pkgdir}/opt/QQ/resources/app"
-	# chmod 755 "${pkgdir}/opt/QQ/resources/app"
+	rm -rf "${pkgdir}/opt/QQ/resources/app"
+	7z x "${pkgver//_/-}.zip" -aoa -o"${pkgdir}/opt/QQ/resources/app"
+	chmod 755 "${pkgdir}/opt/QQ/resources/app"
 
 	mv "${pkgdir}/opt/QQ/qq" "${pkgdir}/opt/QQ/electron"
 

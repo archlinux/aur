@@ -1,9 +1,9 @@
 {
-  "baseVersion": "3.1.1-11223",
-  "currentVersion": "3.1.1-11223",
-  "buildVersion": "11223",
-  "skippedVersions": [
-  ],
+  "baseVersion": "3.1.2-12912",
+  "currentVersion": "3.1.2-12912",
+  "previousVersion": "",
+  "buildVersion": "12912",
+  "skippedVersions": [],
   "inUsePkg": "",
   "hasRan": false
 }
