@@ -1,1 +1,4 @@
-*.pkg.tar.xz
+*
+!PKGBUILD
+!.SRCINFO
+!zsh-autopair.install

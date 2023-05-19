@@ -1,9 +1,10 @@
+# Maintainer: Yuandi <realyuandi42@gmail.com>
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Sebastian Reuße <seb@wirrsal.net>
 
 pkgname=zsh-autopair-git
 _name="${pkgname%-git}"
-pkgver=1.0.r1.g9d003fc
+pkgver=1.0.r3.g396c38a
 pkgrel=1
 pkgdesc="Auto-close and delete matching delimiters in Zsh"
 arch=('any')
