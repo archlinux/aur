@@ -1,7 +1,7 @@
 # Maintainer: Vladislav Nepogodin <nepogodin.vlad@gmail.com>
 
 pkgname=contour-git
-pkgver=0.3.12.r3620.92f36466
+pkgver=0.3.12.r3689.cdc5d1ee
 pkgrel=1
 pkgdesc="Modern C++ Terminal Emulator"
 arch=(x86_64 aarch64)
@@ -35,7 +35,7 @@ build() {
         -GNinja \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCONTOUR_BUILD_WITH_QT6=ON
+        -DCONTOUR_QT_VERSION=6
   cmake --build build --parallel $_cpuCount
 }
 
