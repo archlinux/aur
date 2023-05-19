@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="wubi-dict-editor"
-pkgver=1.18
+pkgver=1.19
 pkgrel=1
 pkgdesc="五笔码表助手 for Rime ( Windows、macOS、Ubuntu ) 基于 electron 开发."
 arch=("x86_64")
@@ -15,7 +15,7 @@ noextract=()
 options=(!strip)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.png::https://user-images.githubusercontent.com/12215982/139462759-e6d8ebc6-180d-4d18-8c3c-68234f0ff1c0.png")
-sha256sums=('6826e76cec7acd07414d337fd52f77d6f77c78472154901fae793a75180dbef1'
+sha256sums=('7a1dff1ff728ed9e3471a16e3c13644bbeff416f06c8a0cdb4e80874af00d396'
             'b70f00f133517296d81cb0f546a70539b46ebaf82baeab7adec13056bc42ec12')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
