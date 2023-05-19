@@ -1,0 +1,17 @@
+pkgbase = coal-launcher-appimage
+	pkgdesc = A client to view and play games from the AB Coal website
+	pkgver = 1.2.6
+	pkgrel = 1
+	url = https://bobuxstation.github.io/Coal-Web/launcher.html
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	conflicts = coal-launcher
+	options = !strip
+	source = coal-launcher-1.2.6.AppImage::https://github.com/Bobuxstation/Coal-Launcher/releases/download/v1.2.6/coal-launcher-1.2.6-x86_64.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/Bobuxstation/Coal-Launcher/main/LICENSE
+	sha256sums = b6a783a458e7bd173154cae71cf0264f9805105a80c621eea34e730e171062f0
+	sha256sums = 0133c8e5890f9f848adde48b40a9c61dcff249ea3c0f5bcf6567901e7a697c49
+
+pkgname = coal-launcher-appimage
