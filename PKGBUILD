@@ -4,7 +4,7 @@
 
 pkgname=mrtg
 pkgver=2.17.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi Router Traffic Grapher."
 arch=('x86_64')
 url="http://oss.oetiker.ch/mrtg/"
