@@ -1,3 +1,8 @@
+This package is a fork of: https://aur.archlinux.org/packages/aide
+
+Here is the message from the original README:
+
+```
 Hello!
 I'm the current maintainer of the package, 
 on my machine, aide with mhash capabilities enabled is not compiling 
@@ -10,3 +15,4 @@ You'll have to uncomment the relevant line in the PKGBUILD.
 I'm hoping this can be resolved ASAP, until then here's my "fix"
 Regards,
 John
+```
