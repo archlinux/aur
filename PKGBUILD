@@ -1,7 +1,8 @@
 # Maintainer: tarball <bootctl@gmail.com>
+# Contributor: brody <archfan@brodix.de>
 
 pkgname=netbird
-pkgver=0.20.2
+pkgver=0.20.3
 pkgrel=1
 pkgdesc='A WireGuard-based mesh network that connects your devices into a single private network'
 url='https://netbird.io'
@@ -9,17 +10,16 @@ arch=(i686 pentium4 x86_64 arm armv7h armv6h aarch64 riscv64)
 license=(BSD)
 
 depends=(glibc)
-makedepends=('go>=1.19')
+makedepends=('go>=1.20')
 optdepends=('resolvconf: Private DNS')
 replaces=(wiretrustee)
-options=('!emptydirs')
 
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/netbirdio/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
   'environment'
   'netbird@.service'
 )
-sha256sums=('fce01733c541c7d33525502538e9d539ae689fceead712c296e65cd652af2b12'
+sha256sums=('2fa27147bea3a15b71bc6973f1123fe0acb136fa156f41c0464b15b7aa33d96b'
             '128e36e1f814a12886f3122a1809a404be17f81481275b6624e66937941f5269'
             '3bd6d2692dc6d08cfabce1ba2514c02f4463294ebbdb63828baca5d9e4c9daa9')
 
