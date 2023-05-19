@@ -10,7 +10,7 @@
 # Contributor: Samuel Tardieu <sam@rfc1149.net>
 
 pkgname=openocd-esp32
-pkgver=v0.11.0_esp32_20220706
+pkgver=v0.12.0_esp32_20230419
 pkgrel=1
 pkgdesc='Fork of OpenOCD that has ESP32 support'
 arch=('i686' 'x86_64' 'arm')
@@ -19,16 +19,8 @@ license=('GPL')
 depends=('libftdi' 'libftdi-compat' 'libusb' 'libusb-compat' 'hidapi' )
 makedepends=('git' 'automake>=1.11' 'autoconf' 'libtool' 'tcl')
 options=(!strip)
-
-source=(
-    "$pkgname-$pkgver::git+https://github.com/espressif/openocd-esp32.git#tag=${pkgver//_/-}"
-    )
-md5sums=(
-    'SKIP'
-    )
-sha1sums=(
-    'SKIP'
-    )
+source=("$pkgname-$pkgver::git+https://github.com/espressif/openocd-esp32.git#tag=${pkgver//_/-}")
+sha1sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname-$pkgver"
