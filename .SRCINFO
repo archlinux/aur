@@ -1,7 +1,7 @@
 pkgbase = xdman8-bin
 	pkgdesc = Powerfull download accelerator and video downloader (binary release)
 	pkgver = 8.0.25
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/subhra74/xdm-experimental-binaries
 	arch = x86_64
 	license = GPL3
