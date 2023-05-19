@@ -1,0 +1,13 @@
+pkgbase = kdenlive-appimage
+	pkgdesc = Open source RGB lighting control that doesn't depend on manufacturer software.
+	pkgver = 0.8
+	pkgrel = 0
+	arch = x86_64
+	license = GPL
+	provides = openrgb
+	conflicts = openrgb
+	options = !strip
+	source = https://openrgb.org/releases/release_0.8/OpenRGB_0.8_x86_64_fb88964.AppImage
+	md5sums = e5ac2df43c8dfb0312e7b84942968852
+
+pkgname = openrgb-appimage
