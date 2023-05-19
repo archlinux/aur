@@ -1,5 +1,5 @@
 pkgname=vgmstream-git
-pkgver=r1050.4812.g8424dcc5
+pkgver=r1050.4959.g59ba5706
 pkgrel=1
 pkgdesc='Library for playback of various streamed audio formats used in video games'
 arch=(x86_64)
@@ -18,7 +18,7 @@ source=(${pkgname}::git+https://github.com/vgmstream/vgmstream.git
 sha256sums=('SKIP'
             'a991dff4a9e0772ede0881d81cdc7ac559148c2194885cbdd534fe4af43779da'
             'c94d4d34f5a2caa1574b1a94869202cacd959b55f643a8bafe0660008acad9c3'
-            '63806b578f1aa33ebc37e8449b96704588a71d97d68f8c5cf699a38d124b954c')
+            'fc87f18898268f5ff5329b0146bae4ecb1c8835fbb3ea326b4013fa38f0f56f8')
 
 pkgver() {
   cd "$srcdir/$pkgname"
