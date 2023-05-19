@@ -1,8 +1,8 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=alfae
-pkgver=1.4.0
-pkgrel=3
+pkgver=1.4.1
+pkgrel=1
 pkgdesc="An Itch.io/Epic Games/GOG launcher that works through plugins"
 arch=('any')
 url="https://github.com/suchmememanyskill/Alfae"
@@ -12,7 +12,7 @@ makedepends=('dotnet-sdk')
 options=('!strip')
 _desktop=alfae.desktop
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('94f9b547aecb635244d788de3a3a2c317061bf6fff99eaa747f79c067f1825de')
+sha256sums=('43e0e678fac1313de4db5f2722708c97402acee1ff4afbd481ff01712463c191')
 
 prepare() {
   # Create a shortcut
