@@ -3,13 +3,13 @@
 
 _pkgname=pcmanfm-qt
 pkgname=$_pkgname-git
-pkgver=0.13.0.191.g150d8fb
-pkgrel=2
+pkgver=1.3.0.8.g8a7e4b6d
+pkgrel=1
 pkgdesc="The LXQt file manager, Qt port of PCManFM"
 arch=("i686" "x86_64")
 url="https://lxqt.org"
 license=("GPL2")
-depends=("libfm-qt-git" "lxmenu-data" "qt5-x11extras")
+depends=("libfm-qt-git" "qt5-x11extras")
 makedepends=("git" "cmake" "qt5-tools" "lxqt-build-tools-git")
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
