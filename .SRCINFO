@@ -12,6 +12,6 @@ pkgbase = notesnook-bin
 	conflicts = notesnook
 	options = !strip
 	source = notesnook_linux_x86_64.AppImage::https://github.com/streetwriters/notesnook/releases/download/v2.4.11/notesnook_linux_x86_64.AppImage
-	sha256sums = 27fb287afeb27fc72a866b96b357cd665d2c37e39c7cd439585c3fbb1bb5996b
+	sha256sums = b6e241b6f12ea47ce3bebc988e47e0188b0b358ce191db4932acfe765ffe1f15
 
 pkgname = notesnook-bin

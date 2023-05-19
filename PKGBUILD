@@ -15,7 +15,7 @@ conflicts=("${pkgname%-bin}")
 depends=('glibc' 'hicolor-icon-theme' 'zlib')
 _appimage="${pkgname%-bin}_linux_x86_64.AppImage"
 source=("${_appimage}-$pkgver-$pkgrel::${_githuburl}/releases/download/v${pkgver}/${_appimage}")
-sha256sums=('27fb287afeb27fc72a866b96b357cd665d2c37e39c7cd439585c3fbb1bb5996b')
+sha256sums=('b6e241b6f12ea47ce3bebc988e47e0188b0b358ce191db4932acfe765ffe1f15')
 
 prepare() {
 	chmod +x "${_appimage}"
