@@ -1,0 +1,18 @@
+pkgbase = thedesk-appimage
+	pkgdesc = Mastodon Client for PC.
+	pkgver = 24.1.2
+	pkgrel = 1
+	url = https://thedesk.top/
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	provides = thedesk
+	conflicts = thedesk
+	conflicts = thedesk-patterns
+	options = !strip
+	source = thedesk-24.1.2.AppImage::https://github.com/cutls/TheDesk/releases/download/v24.1.2/TheDesk-24.1.2.AppImage
+	sha256sums = 640c2ccaa79e96166e2bf9fde819cb14b043ee3703f95d44b0e220f728d60c3e
+
+pkgname = thedesk-appimage
