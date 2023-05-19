@@ -38,8 +38,10 @@ package()
   _sizes=('256x256' '128x128' '64x64' '48x48' '32x32' '16x16')
   for _size in ${_sizes[@]}; do
   install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_size}/apps/frappe-books.png" "${pkgdir}/usr/share/icons/hicolor/${_size}/apps/frappe-books.png"
-  #Integrate desktop shortcut
+
+  #Modify and integrate desktop shortcut
   install -Dm644 "${srcdir}/squashfs-root/frappe-books.desktop" "${pkgdir}/usr/share/applications/frappe-books.desktop"  
+  sed -i 's/Exec=AppRun --no-sandbox %U/Exec=Frappe-Books %U/g' "${pkgdir}/usr/share/applications/frappe-books.desktop"
 
 done
 }
