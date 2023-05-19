@@ -1,0 +1,14 @@
+pkgbase = nginx-mainline-mod-zip
+	pkgdesc = Streaming ZIP archiver for nginx (module for mainline nginx)
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/evanmiller/mod_zip
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = nginx-mainline-src
+	depends = nginx-mainline
+	source = https://github.com/evanmiller/mod_zip/archive/1.3.0/1.3.0.tar.gz
+	sha256sums = 5e7f24b6b4efb8258d92ec921ade9df69e4bad36f833a39b47ee947b3d637f22
+
+pkgname = nginx-mainline-mod-zip
