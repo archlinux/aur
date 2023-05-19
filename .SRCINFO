@@ -1,4 +1,4 @@
-pkgbase = kdenlive-appimage
+pkgbase = openrgb-appimage
 	pkgdesc = Open source RGB lighting control that doesn't depend on manufacturer software.
 	pkgver = 0.8
 	pkgrel = 0
