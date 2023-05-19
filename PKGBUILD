@@ -19,9 +19,9 @@ conflicts=("$_pkgname")
 options=(strip emptydirs zipman)
 _appimage=${_pkgname}-${pkgver}.AppImage
 source=("$_appimage::${_url}/releases/download/v${pkgver}/Fluent.Reader.${pkgver}.AppImage"
-        "$_pkgname.sh")
+		"$_pkgname.sh")
 sha256sums=('0b3be139a59f678aedd8798bff2bfa3fb23110f2e8cae0617ed3b172374c2275'
-            '9887decd3a128b84f10ffdd1cda7a201d4e156f56928d2a8f31685d713829b92')
+			'9887decd3a128b84f10ffdd1cda7a201d4e156f56928d2a8f31685d713829b92')
 
 prepare() {
 	# making .AppImage file executable
@@ -34,8 +34,8 @@ prepare() {
 build() {
 	# modifying .desktop file
 	sed -i -E "s|^Exec=AppRun --no-sandbox|Exec=/usr/bin/${_pkgname}|" "squashfs-root/${_pkgname}.desktop"
-
-  sed -i -E "s|ASAR|/usr/lib/$_pkgname/app.asar|" "$srcdir/$_pkgname.sh"
+	# modifying .sh file
+	sed -i -E "s|ASAR|/usr/lib/$_pkgname/app.asar|" "$srcdir/$_pkgname.sh"
 }
 
 package() {
