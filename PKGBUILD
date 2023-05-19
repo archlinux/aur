@@ -3,11 +3,11 @@
 # Maintainer: peeweep <peeweep at 0x0 dot ee>
 
 pkgname=neovide-git
-pkgver=0.10.4.r2.gdaf5307
+pkgver=0.10.4.r6.g4b3c234
 pkgrel=1
 pkgdesc='No Nonsense Neovim Client in Rust'
 arch=('x86_64')
-url='https://github.com/Kethku/neovide'
+url='https://github.com/neovide/neovide'
 license=('MIT')
 depends=('neovim' 'fontconfig' 'freetype2' 'libglvnd' 'sndio')
 makedepends=('git' 'cargo' 'gtk3' 'cmake' 'sdl2' 'make' 'python')
