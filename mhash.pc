@@ -1,0 +1,9 @@
+Name: mhash
+Description: The mhash library provides an easy way to access strong hashes such as MD5, SHA1 and other algorithms.
+Version: 0.9.9.9-5
+Cflags: -I${includedir}
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+Libs: -L$(libdir) -lmhash

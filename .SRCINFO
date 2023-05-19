@@ -1,15 +1,14 @@
-pkgbase = pkgbase
-	pkgdesc = Slovak -> English dictionary for dictd et al. from Freedict.org
-	pkgver = 0.2
+pkgbase = mhash-pkg-config
+	pkgdesc = A fork of the community repo's mhash package with a pkg-config file included.
+	pkgver = 0.9.9.9
 	pkgrel = 1
-	url = https://freedict.org/
-	install = install.sh
-	arch = any
-	license = GPL
-	makedepends = dictd
-	makedepends = freedict-tools
-	optdepends = dictd: dict client and server
-	source = https://download.freedict.org/dictionaries/slk-eng/0.2.1/freedict-slk-eng-0.2.1.src.tar.xz
-	sha512sums = ba7669020a12f64f7d2e2b6dfa90f1376df4a2fe764273bdb06f1e04998ee6dac9584b47f20f8e14cbaae5bf7271dd221032bcc34bd1ff7c93a93cf9de4429ac
+	url = http://mhash.sourceforge.net/
+	arch = x86_64
+	license = LGPL
+	depends = glibc
+	source = https://downloads.sourceforge.net/sourceforge/mhash/mhash-0.9.9.9.tar.bz2
+	source = mhash.pc
+	sha512sums = 3b063d258cb0e7c2fa21ed30abae97bd6f3630ecd1cb4698afb826aa747555f3cf884828f24ac5e2b203730d0c7c0ecc9ef1e724ad9d85769a2f66128f3072eb
+	sha512sums = d98888f54ee33faefaa9abdd830c70a7a87f518cb0125a1b7d87ed0731300e0cf67cd21993f9ff070010c1ebe9efad41431f6e18233d170cae82142d03c8c4f7
 
-pkgname = dict-freedict-slk-eng
+pkgname = mhash-pkg-config

@@ -1,36 +1,32 @@
-# Maintainer : Juraj Matuš <matus.juraj at yandex dot com>
+# Maintainer: Matthew Spangler <mattspangler@protonmail.com>
+# Contributor: gregor <gregor@archlinux.org>
+# Contributor: Tom Newsom <Jeepster@gmx.co.uk>
+# Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
-_lang=slk-eng
-pkgname=dict-freedict-${_lang}
-pkgver=0.2
+pkgname=mhash-pkg-config
+_srcname=mhash
+pkgver=0.9.9.9
 pkgrel=1
-pkgdesc="Slovak -> English dictionary for dictd et al. from Freedict.org"
-arch=('any')
-url="https://freedict.org/"
-license=('GPL')
-optdepends=('dictd: dict client and server')
-makedepends=('dictd' 'freedict-tools')
-install=install.sh
-source=("https://download.freedict.org/dictionaries/${_lang}/${pkgver}.${pkgrel}/freedict-${_lang}-${pkgver}.${pkgrel}.src.tar.xz")
-sha512sums=('ba7669020a12f64f7d2e2b6dfa90f1376df4a2fe764273bdb06f1e04998ee6dac9584b47f20f8e14cbaae5bf7271dd221032bcc34bd1ff7c93a93cf9de4429ac')
+pkgdesc="A fork of the community repo's mhash package with a pkg-config file included."
+arch=('x86_64')
+url="http://mhash.sourceforge.net/"
+license=('LGPL')
+depends=('glibc')
+conficts=('mhash')
+source=("https://downloads.sourceforge.net/sourceforge/mhash/${_srcname}-${pkgver}.tar.bz2"
+        "mhash.pc")
+sha512sums=('3b063d258cb0e7c2fa21ed30abae97bd6f3630ecd1cb4698afb826aa747555f3cf884828f24ac5e2b203730d0c7c0ecc9ef1e724ad9d85769a2f66128f3072eb'
+            'd98888f54ee33faefaa9abdd830c70a7a87f518cb0125a1b7d87ed0731300e0cf67cd21993f9ff070010c1ebe9efad41431f6e18233d170cae82142d03c8c4f7')
 
-build()
-{
-	cd $_lang
-	make FREEDICT_TOOLS=/usr/lib/freedict-tools build-dictd
+build() {
+  cd ${_srcname}-${pkgver}
+  ./configure --prefix=/usr
+  make
 }
 
-package()
-{
-	install -m 755 -d "${pkgdir}/usr/share/dictd"
-	install -m 644 -t "${pkgdir}/usr/share/dictd/" \
-		${_lang}/build/dictd/${_lang}.{dict.dz,index}
-
-	for file in ${_lang}/{AUTHORS,README,NEWS,ChangeLog}
-	do
-		if test -f ${file}
-		then
-			install -m 644 -Dt "${pkgdir}/usr/share/doc/freedict/${_lang}/" ${file}
-		fi
-	done
+package() {
+  cd ${_srcname}-${pkgver}
+  make DESTDIR="${pkgdir}" install
+  install -D -m644 $srcdir/mhash.pc $pkgdir/usr/lib/pkgconfig/mhash.pc
 }
+
