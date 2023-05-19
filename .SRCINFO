@@ -1,8 +1,8 @@
 pkgbase = nano-syntax-highlighting-git
 	pkgdesc = improved nano syntax highlighting files
-	pkgver = 2019.10.17.r8.g6bee1b2
+	pkgver = 2022.11.02.r2.ga9c6844
 	pkgrel = 1
-	url = https://github.com/scopatz/nanorc
+	url = https://github.com/galenguyer/nano-syntax-highlighting
 	install = nano-syntax-highlighting.install
 	arch = any
 	license = GPL3
@@ -10,8 +10,7 @@ pkgbase = nano-syntax-highlighting-git
 	depends = nano
 	provides = nano-syntax-highlighting
 	conflicts = nano-syntax-highlighting
-	source = nano-syntax-highlighting::git+https://github.com/scopatz/nanorc.git
+	source = nano-syntax-highlighting::git+https://github.com/galenguyer/nano-syntax-highlighting.git
 	md5sums = SKIP
 
 pkgname = nano-syntax-highlighting-git
-
