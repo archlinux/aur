@@ -1,30 +1,42 @@
 pkgbase = python-easyocr-git
 	pkgdesc = Ready-to-use OCR with 40+ languages supported including Chinese, Japanese, Korean and Thai
-	pkgver = 1.1.6.r297.a36bb9e
+	pkgver = 1.6.2.r594.19db7ba
 	pkgrel = 1
 	url = https://github.com/JaidedAI/EasyOCR
 	install = python-easyocr-git.install
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	makedepends = python-setuptools
 	makedepends = git
+	makedepends = ninja
 	depends = python-torchvision>=0.5
 	depends = python-scikit-image
 	depends = python-pytorch
-	depends = opencv
-	depends = hdf5
+	depends = python-opencv
+	depends = python-bidi
+	depends = python-pillow
+	depends = python-numpy
+	depends = python-yaml
+	depends = python-shapely
+	depends = python-pyclipper
+	depends = python-scipy
 	optdepends = python-torchvision-cuda>=0.5
 	provides = python-easyocr
 	conflicts = python-easyocr
 	replaces = python-easyocr
-	source = git+https://github.com/JaidedAI/EasyOCR.git
+	source = git+https://github.com/JaidedAI/EasyOCR.git#commit=19db7ba78903d79ffc7d789bd0427e8023525a02
 	sha256sums = SKIP
 
 pkgname = python-easyocr-git
 	depends = python-torchvision>=0.5
 	depends = python-scikit-image
 	depends = python-pytorch
-	depends = opencv
-	depends = hdf5
+	depends = python-opencv
+	depends = python-bidi
+	depends = python-pillow
+	depends = python-numpy
+	depends = python-yaml
+	depends = python-shapely
+	depends = python-pyclipper
+	depends = python-scipy
 	depends = python
-
