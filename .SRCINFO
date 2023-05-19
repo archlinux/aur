@@ -1,6 +1,6 @@
 pkgbase = manuskript-git
 	pkgdesc = Manuskript is an open-source tool for writers (git version).
-	pkgver = 0.14.0.r1.gaecdc21
+	pkgver = 0.15.0.r1.g2f93c2f6
 	pkgrel = 1
 	url = https://www.theologeek.ch/manuskript
 	arch = any
