@@ -1,6 +1,6 @@
 pkgbase = rtl8xxxu-dkms-git
-	pkgdesc = Driver for Realtek RTL8XXXXU wifi chips
-	pkgver = r18.bfb6595
+	pkgdesc = Driver for Realtek RTL8XXXXU usb wifi chips
+	pkgver = r19.76a2b4b
 	pkgrel = 1
 	url = https://github.com/a5a5aa555oo/rtl8xxxu
 	arch = any
