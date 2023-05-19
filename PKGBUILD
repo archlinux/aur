@@ -7,7 +7,7 @@
 pkgname=emacs-org-mode
 _srcname=org-mode-release
 pkgver=9.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Emacs Org Mode"
 arch=('any')
 url="http://orgmode.org/"
