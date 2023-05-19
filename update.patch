@@ -1,0 +1,53 @@
+diff --git a/PKGBUILD b/PKGBUILD
+old mode 100755
+new mode 100644
+index 9f4215a..917bae2
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -5,8 +5,8 @@
+ # Previous Maintainer: gryffyn <aur@evan.mp>
+
+ pkgname=emacs-org-mode
+-_srcname=org
+-pkgver=9.5.0
++_srcname=org-mode-release
++pkgver=9.6.1
+ pkgrel=1
+ pkgdesc="Emacs Org Mode"
+ arch=('any')
+@@ -16,26 +16,24 @@ optdepends=('java-runtime: For using ditaa.jar in the contrib directory'
+        'zsh: for using dir2org.zsh in the contrib directory')
+ license=('GPL')
+ install=emacs-org-mode.install
+-source=("http://orgmode.org/$_srcname-$pkgver.tar.gz")
+-sha256sums=('028be6615587693698e50d8d51186da87766547b37fd84af6f5c2e2146b2324a')
++source=("https://git.savannah.gnu.org/cgit/emacs/org-mode.git/snapshot/${_srcname}_${pkgver}.tar.gz")
++sha256sums=('946843b98bfb3109cbb6dcbdb2bf01d0d63807ea0699005c60b08fe4bacfba25')
+
+ build() {
+-  cd "$_srcname-$pkgver"
+-  make
++  cd "${_srcname}_${pkgver}"
++  make autoloads
+ }
+
+ package() {
+-  cd "$_srcname-$pkgver"
++  cd "${_srcname}_${pkgver}"
+   make DESTDIR="$pkgdir" install
+
+-  ## by default now we install also the contrib directory
+-  install -d -m755 "$pkgdir"/usr/share/emacs/site-lisp/org_contrib
+-  cp -r contrib/* "$pkgdir"/usr/share/emacs/site-lisp/org_contrib
++  ls
+
+   ##! proper install of info files (thanks mdev)
+   ##! replace "orgmode" with "org" in the following lines if you want
+   ##! to replace emacs own org's info files. You also need to change the  .install.
+-  install -D -m644 doc/org "$pkgdir"/usr/share/info/orgmode
+-  gzip -9 "$pkgdir"/usr/share/info/orgmode
+-  rm "$pkgdir"/usr/share/info/org
++  install -D -m644 doc/org.info "$pkgdir"/usr/share/info/orgmode.info
++  gzip -9 "$pkgdir"/usr/share/info/orgmode.info
++  rm "$pkgdir"/usr/share/info/org.info
+ }
