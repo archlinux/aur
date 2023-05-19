@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Wright <jon@than.io>
 
 pkgname=terraform-tpm-bin
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A package manager for Terraform providers"
 arch=('x86_64' 'arm64')
@@ -11,7 +11,7 @@ makedepends=('unzip')
 optdepends=()
 
 source=("tpm-Linux-x86_64.tar.gz::${pkgurl}/releases/download/v${pkgver}/tpm_Linux_x86_64.tar.gz")
-sha512sums=('9719c6b7378b68b9b290f9a603ac9be4f5f90e77e6c4d39d6d9d422708c654d7f3ed535b276f6714b9883576f655942ed2e8aefda3c48245cd94073bc7e4b5e0')
+sha512sums=('e0c7acc22d76233fc97d51f7a7aeaf18d27315e339108ca2aa73ffc62d36363a97c36dc4e02c3a21cda9f224117575eaef83c0c30d3c9cc08a80231e8924a533')
 
 package() {
 	install -D -g root -m 0755 -o root "${srcdir}/tpm" "${pkgdir}/usr/bin/tpm"
