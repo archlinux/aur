@@ -15,6 +15,7 @@ url="https://aide.github.io/"
 license=('GPL')
 depends=('acl' 'e2fsprogs' 'libelf' 'mhash-pkg-config' 'pcre')
 backup=('etc/aide.conf')
+conficts=('aide')
 install='.INSTALL'
 source=("https://github.com/aide/aide/releases/download/v${pkgver}/aide-${pkgver}.tar.gz"{,.asc} \
         "aide.conf"

@@ -1,5 +1,5 @@
-pkgbase = aide
-	pkgdesc = A file integrity checker and intrusion detection program.
+pkgbase = aide-mhash
+	pkgdesc = A file integrity checker and intrusion detection program, compiled with mhash support.
 	pkgver = 0.18.3
 	pkgrel = 4
 	url = https://aide.github.io/
@@ -24,4 +24,4 @@ pkgbase = aide
 	sha256sums = fc7bd68dccc0e8694bb5a001fb6a80514f1380e41b95742e19d19b3172b22878
 	sha256sums = 1eeb977faa98e4e5f6f6b111f4e933c162b6e72d4c65adef85430cf2f34ad9c5
 
-pkgname = aide
+pkgname = aide-mhash
