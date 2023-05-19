@@ -1,6 +1,6 @@
 # Maintainer: Alex Butler <alexheretic@gmail.com>
 pkgname=vimg
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="CLI for video images. Generate animated video contact sheets fast."
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo'
              'git'
              'lld')
 source=("https://github.com/alexheretic/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('ff5c4758a74b022a61d9479602679b933201158a22773c55bcab341bf3f0df3c')
+sha256sums=('0e6c39c69b88121b7bc463a087bc5ca5b1054a4ff6fb12da96dc61d6e413ebe1')
 
 build() {
   cd "$pkgname-$pkgver"
