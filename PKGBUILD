@@ -12,7 +12,7 @@ makedepends=('git')
 provides=("sddm-theme-mountain")
 conflicts=("sddm-theme-mountain")
 backup=('usr/share/sddm/themes/mountain/theme.conf')
-source=('mountain::git+https://github.com/c0rydoras/sddm-mountain-theme.git')
+source=('sddm-mountain-theme::git+https://github.com/c0rydoras/sddm-mountain-theme.git')
 sha256sums=('SKIP')
 
 pkgver() {
