@@ -13,8 +13,8 @@ options=(!strip)
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 depends=('glibc' 'hicolor-icon-theme' 'zlib')
-_appimage="${pkgname%-bin}_linux_x86_64.AppImage"
-source=("${_appimage}-$pkgver-$pkgrel::${_githuburl}/releases/download/v${pkgver}/${_appimage}")
+_appimage="${pkgname%-bin}_${pkgver}_${pkgrel}_linux_x86_64.AppImage"
+source=("${_appimage}::${_githuburl}/releases/download/v${pkgver}/${_appimage}")
 sha256sums=('b6e241b6f12ea47ce3bebc988e47e0188b0b358ce191db4932acfe765ffe1f15')
 
 prepare() {
