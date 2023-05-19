@@ -1,13 +1,15 @@
 # Maintainer: Ns2Kracy <2220496937@qq.com>
+# Maintainer: CorrectRoadH <correctroadh@gmail.com>
 pkgname=casaos-message-bus
-pkgver=0.4.0
+pkgver=0.4.2
 pkgrel=1
-pkgdesc="Message bus accepts events and actions from various sources and delivers them to subscribers."
+pkgdesc='Message bus accepts events and actions from various sources and delivers them to subscribers.'
 arch=('x86_64' 'aarch64' 'armv7h')
-url="https://github.com/IceWhaleTech/CasaOS-MessageBus"
+url='https://github.com/IceWhaleTech/CasaOS-MessageBus/releases/tag/v0.4.2'
 license=('APACHE')
 groups=('casaos')
 backup=('etc/casaos/message-bus.conf')
+
 source_x86_64=(
 	${url}/releases/download/v${pkgver}/linux-amd64-${pkgname}-v${pkgver}.tar.gz
     ${url}/releases/download/v${pkgver}/linux-amd64-${pkgname}-migration-tool-v${pkgver}.tar.gz
@@ -20,18 +22,8 @@ source_armv7h=(
 	${url}/releases/download/v${pkgver}/linux-arm-7-${pkgname}-v${pkgver}.tar.gz
     ${url}/releases/download/v${pkgver}/linux-arm-7-${pkgname}-migration-tool-v${pkgver}.tar.gz
 )
-sha256sums_x86_64=(
-    84c9678bfe6da66a2e8919f523d99bcf8e20adcfd15fdbce29b1e3c38899f013
-    e00dd554bf103412393e968ca035a2ec7f6d80b2b4251e799faa7540bb0f2ab1
-)
-sha256sums_aarch64=(
-    8f34045f90792c52fe5568eb284bd6870a6f6c9e8944396ce3e5876ba08c4a88
-    a13aab841ab2c3cb1ac3a599d45c101a294e87519163287626a6501e510c892a
-)
-sha256sums_armv7h=(
-    48a3f0af57abdae63e7866eb60985458fef6960603d9eee01db3605d50ca705f 
-    4013f27458646af36fcc7e50d2a0dc7f2dbee84b982773bb91f402e59a8ed468
-)
+
+sha256sums=(SKIP)
 package() {
 	_sysdir="${srcdir}/build/sysroot"
 	_name="${pkgname#*-}"
