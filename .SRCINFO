@@ -9,12 +9,11 @@ pkgbase = opentimelineio0.14
 	makedepends = python-pip
 	makedepends = python-setuptools
 	makedepends = pybind11
-	makedepends = git
 	depends = python-aaf2
 	provides = opentimelineio
 	conflicts = opentimelineio
 	source = https://github.com/PixarAnimationStudios/OpenTimelineIO/archive/v0.14.1/opentimelineio0.14-0.14.1.tar.gz
-	source = git+https://github.com/Tencent/rapidjson#commit=66eb606
+	source = rapidjson-00dbcf2c6e03c47d6c399338b6de060c71356464.tar.gz::https://github.com/Tencent/rapidjson/archive/00dbcf2c6e03c47d6c399338b6de060c71356464.tar.gz
 	source = opentimelineio-c++17.patch
 	sha256sums = 04c0a5c2f0639a0a1e9745d40cdb9e86f966c85f19880e8ca614699175a93554
 	sha256sums = SKIP
