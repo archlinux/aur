@@ -1,17 +1,22 @@
+# Maintainer: Ns2Kracy <2220496937@qq.com>
+# Maintainer: CorrectRoadH <correctroadh@gmail.com>
 pkgname=casaos-ui
-pkgver=0.4.0
+pkgver=0.4.2
 pkgrel=1
-pkgdesc="The front-end of CasaOS,build with VueJS."
+pkgdesc='The front-end of CasaOS,build with VueJS.'
 arch=('any')
-url="https://github.com/IceWhaleTech/CasaOS-UI"
+url='https://github.com/IceWhaleTech/CasaOS-UI/releases/tag/v0.4.2-2'
 license=('unknown')
 groups=('casaos')
+
 source=(
     ${url}/releases/download/v${pkgver}/linux-all-casaos-v${pkgver}.tar.gz
 )
+
 sha256sums=(SKIP)
 package() {
     _sysdir="${srcdir}/build/sysroot"
     mkdir -p "${pkgdir}/var/lib/casaos"
     mv "${_sysdir}/var/lib/casaos/www" "${pkgdir}/var/lib/casaos/"
 }
+
