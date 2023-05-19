@@ -1,0 +1,18 @@
+pkgbase = woocommerce-pos-appimage
+	pkgdesc = Electron Desktop App for WooCommerce POS
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/wcpos/electron
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = woocommerce-pos
+	options = !strip
+	source = woocommerce-pos-1.0.3.AppImage::https://github.com/wcpos/electron/releases/download/v1.0.3/WooCommerce-POS-1.0.3.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/wcpos/electron/main/LICENSE
+	sha256sums = 668122fb8ab42c062ae3ca2b5a5d64cc8d4205b95a578b80c5d3a39c19134c63
+	sha256sums = d8a5569300a1a9624f8e32056d771809676dc7dcaf3ed1ba900c635c426f28e7
+
+pkgname = woocommerce-pos-appimage
