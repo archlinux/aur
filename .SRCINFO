@@ -1,6 +1,6 @@
 pkgbase = vivictpp
 	pkgdesc = An easy to use tool for subjective comparison of the visual quality of different encodings of the same video source.
-	pkgver = 0.2.4
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/vivictorg/vivictpp
 	arch = x86_64
@@ -9,9 +9,15 @@ pkgbase = vivictpp
 	makedepends = meson
 	depends = sdl2_ttf
 	depends = ffmpeg
+	depends = freetype2
+	depends = zlib
 	provides = vivictpp
 	conflicts = vivictpp
-	source = https://github.com/vivictorg/vivictpp/archive/refs/tags/v0.2.4.zip
-	sha256sums = c05fdec2936c7e0b0d2c3447ffe700835abad359b6064cac60a524472b14d97c
+	source = https://github.com/vivictorg/vivictpp/archive/refs/tags/v0.3.1.zip
+	source = meson_build.patch
+	source = VideoInputMessage.patch
+	sha256sums = 8706f0911747729b33afc5c7845cae2044b8030bc33473cb57af9f2c083d3631
+	sha256sums = 51766406570144fac60b77ae9adc7ba459775c02482d1cde85db50e73bb8366c
+	sha256sums = d9cee025ae4ccc65c3fac77b68922336bef00fa0f1b0de98e3e398ef74afa0ca
 
 pkgname = vivictpp

@@ -1,0 +1,24 @@
+diff '--color=auto' --unified --recursive --text --color src/vivictpp-0.3.1-original/meson.build src/vivictpp-0.3.1/meson.build
+--- src/vivictpp-0.3.1-original/meson.build	2023-05-19 12:56:35.674821846 +0200
++++ src/vivictpp-0.3.1/meson.build	2023-05-19 13:14:37.148825157 +0200
+@@ -10,8 +10,6 @@
+ spdlog_proj = subproject('spdlog', default_options: 'warning_level=0')
+ cli11_proj = subproject('cli11', default_options: 'warning_level=0')
+ catch2_proj = subproject('catch2', default_options: 'warning_level=0')
+-freetype2_proj = subproject('freetype2', default_options: 'warning_level=0')
+-zlib_proj = subproject('zlib', default_options: 'warning_level=0')
+ 
+ if build_machine.system() == 'windows'
+ 
+@@ -61,9 +59,8 @@
+ deps = [
+   sdl2_dep,
+   sdl2_ttf_dep,
+-  #  dependency('freetype2', version: '>=2.8.1'),
+-  zlib_proj.get_variable('zlib_dep'),
+-  #  freetype2_proj.get_variable('freetype2_dep'),
++  dependency('freetype2', version: '>=2.8.1'),
++  dependency('zlib'),
+   dependency('threads'),
+   libavformat_dep,
+   libavcodec_dep,

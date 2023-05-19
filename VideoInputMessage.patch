@@ -1,0 +1,11 @@
+diff '--color=auto' --unified --recursive --text --color src/vivictpp-0.3.1-original/include/workers/VideoInputMessage.hh src/vivictpp-0.3.1/include/workers/VideoInputMessage.hh
+--- src/vivictpp-0.3.1-original/include/workers/VideoInputMessage.hh	2023-05-19 12:56:35.683822444 +0200
++++ src/vivictpp-0.3.1/include/workers/VideoInputMessage.hh	2023-05-19 12:57:35.496794950 +0200
+@@ -12,6 +12,7 @@
+ #include <atomic>
+ #include <condition_variable>
+ #include <functional>
++#include <stdexcept>
+ 
+ namespace vivictpp {
+ namespace workers {
