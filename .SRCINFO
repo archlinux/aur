@@ -1,0 +1,19 @@
+pkgbase = bulkurlopener-appimage
+	pkgdesc = An application that provides the user with multiple utilities to help with managing and using large amounts of urls
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://bulkurlopener.com/
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	provides = bulkurlopener
+	conflicts = bulkurlopener
+	options = !strip
+	source = bulkurlopener-1.12.0.AppImage::https://github.com/EuanRiggans/BulkURLOpener/releases/download/1.12.0/bulkurlopener-1.12.0-linux.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/EuanRiggans/BulkURLOpener/master/LICENSE
+	sha256sums = 6906481932f46525fe16ebbea8f34ec4346bca869c8f58a9a91b798fa1fd6aea
+	sha256sums = 02fee1b93a53fbf997a300a147ea7efb5fe2deee2f0d0c6d2f66862a7b7079c7
+
+pkgname = bulkurlopener-appimage
