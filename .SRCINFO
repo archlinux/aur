@@ -1,0 +1,17 @@
+pkgbase = fairshare-appimage
+	pkgdesc = Simplifying the curation and sharing of biomedical research data and software according to applicable FAIR guidelines
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://fairdataihub.org/fairshare
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	conflicts = fairshare
+	options = !strip
+	source = fairshare-2.0.0.AppImage::https://github.com/fairdataihub/FAIRshare/releases/download/v2.0.0/FAIRshare-2.0.0.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/fairdataihub/FAIRshare/main/LICENSE
+	sha256sums = 094900dbaa0fd7d896063d9f7e9032f36a5ac8e6b8ac58bd490edfd91f047f6a
+	sha256sums = f53ab2779598ebdd8bef9425c402eed3cac0e2a6dc3ec5cbda5a07de0bdcf7dc
+
+pkgname = fairshare-appimage
