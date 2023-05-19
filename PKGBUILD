@@ -27,7 +27,7 @@ prepare() {
 build() {
     cd "$srcdir"
     cmake -B build-fastdeploy -S FastDeploy-$_fastdeploy_ref \
-        -DCMAKE_CXX_FLAGS=-fPIC\ -fmacro-prefix-map="$srcdir"=/ \
+        -DCMAKE_CXX_FLAGS=-fPIC\ -fmacro-prefix-map="$srcdir"= \
         -DCMAKE_BUILD_TYPE=None \
         -DBUILD_SHARED_LIBS=ON \
         -DCMAKE_INSTALL_PREFIX="$srcdir"/installed/usr
@@ -40,7 +40,7 @@ build() {
     cmake -B build -S MaaAssistantArknights-${_pkgver#v} \
         -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_PREFIX_PATH="$srcdir"/installed/usr \
-        -DCMAKE_CXX_FLAGS=-isystem\ "$srcdir"/installed/usr/include\ -fmacro-prefix-map="$srcdir"=/ \
+        -DCMAKE_CXX_FLAGS=-isystem\ "$srcdir"/installed/usr/include\ -fmacro-prefix-map="$srcdir"= \
         -DUSE_MAADEPS=OFF \
         -DINSTALL_THIRD_LIBS=ON \
         -DINSTALL_RESOURCE=ON \
