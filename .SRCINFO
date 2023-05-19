@@ -1,0 +1,18 @@
+pkgbase = sbe-appimage
+	pkgdesc = An unofficial Scrapbox desktop app
+	pkgver = 3.4.0
+	pkgrel = 1
+	url = https://github.com/kondoumh/sbe
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = sbe
+	options = !strip
+	source = sbe-3.4.0.AppImage::https://github.com/kondoumh/sbe/releases/download/v3.4.0/sbe-3.4.0.AppImage
+	source = https://raw.githubusercontent.com/kondoumh/sbe/master/LICENSE
+	sha256sums = 0e1c0f7a8b7db2919490432b7c01d94af54f22b3470389049b24e48a0e5bc0b9
+	sha256sums = 0c0557908ff74a92af66c9b4435403c14e230c11e56eace0016fcfb7151187d2
+
+pkgname = sbe-appimage
