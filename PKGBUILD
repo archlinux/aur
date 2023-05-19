@@ -5,7 +5,7 @@ pkgver=0.4.2
 pkgrel=1
 pkgdesc='The front-end of CasaOS,build with VueJS.'
 arch=('any')
-url='https://github.com/IceWhaleTech/CasaOS-UI/releases/tag/v0.4.2-2'
+url='https://github.com/IceWhaleTech/CasaOS-UI'
 license=('unknown')
 groups=('casaos')
 
