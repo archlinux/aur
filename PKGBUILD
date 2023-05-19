@@ -2,7 +2,7 @@
 pkgname=ocaml-libvirt-git
 _pkgname=libvirt-ocaml
 pkgver=r185.94a93bd
-pkgrel=2
+pkgrel=3
 pkgdesc="OCaml bindings for libvirt"
 arch=('i686' 'x86_64')
 url="https://libvirt.org/"
@@ -20,6 +20,8 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" 
 }
 
+OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
+
 build() {
   cd "${srcdir}/${_pkgname}"
   autoreconf -i
@@ -31,8 +33,11 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  make DESTDIR="${pkgdir}" install
+  mkdir -p "$OCAMLFIND_DESTDIR"
 
+  env DESTDIR="${pkgdir}" OCAMLFIND_DESTDIR="$OCAMLFIND_DESTDIR" make install
+
+  #make DESTDIR="${pkgdir}" install
   #install -dm755 "${pkgdir}/usr/share/"
   #mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
