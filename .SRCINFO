@@ -24,7 +24,7 @@ pkgbase = python-easyocr-git
 	provides = python-easyocr
 	conflicts = python-easyocr
 	replaces = python-easyocr
-	source = git+https://github.com/JaidedAI/EasyOCR.git#commit=19db7ba78903d79ffc7d789bd0427e8023525a02
+	source = python-easyocr-git::git+https://github.com/JaidedAI/EasyOCR.git
 	sha256sums = SKIP
 
 pkgname = python-easyocr-git

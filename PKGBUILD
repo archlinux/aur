@@ -1,8 +1,6 @@
 # Maintainer: WhiredPlanck
 
 pkgname=python-easyocr-git
-_name=EasyOCR
-_commit=19db7ba78903d79ffc7d789bd0427e8023525a02
 pkgver=1.6.2.r594.19db7ba
 pkgrel=1
 pkgdesc="Ready-to-use OCR with 40+ languages supported including Chinese, Japanese, Korean and Thai"
@@ -21,12 +19,17 @@ optdepends=('python-torchvision-cuda>=0.5')
 provides=('python-easyocr')
 conflicts=('python-easyocr')
 replaces=('python-easyocr')
-source=("git+https://github.com/JaidedAI/EasyOCR.git#commit=${_commit}")
+source=("${pkgname}::git+https://github.com/JaidedAI/EasyOCR.git")
 sha256sums=('SKIP')
 install=${pkgname}.install
 
+pkgver() {
+    cd "$pkgname"
+    git describe --long --tags | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 # prepare() {
-#     cd "$srcdir"/${_name} # -${pkgver}
+#     cd "$srcdir"/${pkgname} # -${pkgver}
 #     sed -i "s/opencv-python//g" requirements.txt
 #     #sed -i 's/Pillow<7.0/Pillow/g' setup.py
 #     cd easyocr
@@ -34,13 +37,13 @@ install=${pkgname}.install
 # }
 
 build() {
-    cd "$srcdir"/${_name}
+    cd "$srcdir"/${pkgname}
     python setup.py build
 }
 
 package() {
     depends+=('python')
-    cd ${_name} #-${pkgver}
+    cd ${pkgname} #-${pkgver}
     python setup.py install --root="${pkgdir}"
     install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
