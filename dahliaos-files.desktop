@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Icon=dahliaos-files
+Name=dahliaOS Files
+Exec=/opt/dahliaos-files/files
+Terminal=false
+Hidden=false
+Categories=Utility;
+Comment=dahliaOS Files application

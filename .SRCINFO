@@ -1,0 +1,22 @@
+pkgbase = dahliaos-files-git
+	pkgdesc = File manager application for dahliaOS.
+	pkgver = r101.4166d0a
+	pkgrel = 1
+	url = https://github.com/dahliaOS/files
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = flutter>=3.10.0
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = imagemagick
+	makedepends = clang>=11.0.0
+	depends = gtk3
+	provides = dahliaos-files
+	conflicts = dahliaos-files
+	source = git+https://github.com/dahliaOS/files.git
+	source = dahliaos-files.desktop
+	sha256sums = SKIP
+	sha256sums = 41a11b723315c19014d21c4b177c513251d03ea773783ab674296035fb52d13c
+
+pkgname = dahliaos-files-git
