@@ -5,10 +5,11 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
-pkgname=aide
+pkgname=aide-mhash
+_srcname=aide
 pkgver=0.18.3
 pkgrel=4
-pkgdesc='A file integrity checker and intrusion detection program.'
+pkgdesc='A file integrity checker and intrusion detection program, compiled with mhash support.'
 arch=('x86_64')
 url="https://aide.github.io/"
 license=('GPL')
@@ -28,7 +29,7 @@ sha256sums=('d47da12c4bf085bfdf1828e087a1db5195a4d217ff4c89f40dbd94e2a887a6a2'
 validpgpkeys=('2BBBD30FAAB29B3253BCFBA6F6947DAB68E7B931') # Hannes von Haugwitz <hannes@vonhaugwitz.com>
 
 build() {
-	cd $srcdir/$pkgname-$pkgver
+	cd $srcdir/$_srcname-$pkgver
 	./configure \
         --prefix=/usr \
         --sysconfdir=/etc \
@@ -43,7 +44,7 @@ build() {
 }
 
 package() {
-	cd $srcdir/$pkgname-$pkgver
+	cd $srcdir/$_srcname-$pkgver
 	make DESTDIR=$pkgdir install
 	install -D -m644 $srcdir/aide.conf $pkgdir/etc/aide.conf
 	install -D -m644 $srcdir/aidecheck.service $pkgdir/usr/lib/systemd/system/aidecheck.service
