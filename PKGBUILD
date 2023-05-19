@@ -3,7 +3,7 @@
 _pkgbase=intel-one-mono
 pkgbase=intel-one-mono-fonts
 pkgname=(otf-$_pkgbase ttf-$_pkgbase)
-pkgver=1.0.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Expressive monospaced font family that’s built with clarity, legibility, and the needs of developers in mind"
 url="https://github.com/intel/intel-one-mono"
@@ -12,8 +12,8 @@ license=(custom:OFL)
 source=(https://github.com/intel/$_pkgbase/releases/download/V$pkgver/otf.zip
         https://github.com/intel/$_pkgbase/releases/download/V$pkgver/ttf.zip
         https://raw.githubusercontent.com/intel/$_pkgbase/main/license)
-sha256sums=('471bcbb966625f8a238f0d638cbc9622ac16d513064a124196798f62bc4c81ac'
-            'b247044d03a788a08785f6a3f5128e1f1bc32a60bddc08fd72e74b1bb2bcddb1'
+sha256sums=('5675c8696efb7515ef5c1d55af4d714500cc10296dc3317f44ca868005a7bb93'
+            '91acf40de3de3bc9ef295a2760986ce5fdbea6cff95e8e69b23835868c736a25'
             '1f232f7111c9c97b750652bfab9c8219285563f055275273df32ba019efc23fc')
 
 package_otf-intel-one-mono() {
