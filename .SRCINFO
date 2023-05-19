@@ -1,0 +1,15 @@
+pkgbase = positron-appimage
+	pkgdesc = Desktop application that allows you to manage your movie and show watchlist. It is built using Electron and React.
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/arjunindia/positron
+	arch = x86_64
+	license = custom
+	depends = zlib
+	depends = glibc
+	conflicts = positron
+	options = !strip
+	source = positron-0.0.3.AppImage::https://github.com/arjunindia/positron/releases/download/v0.0.3/positron-1.0.0.AppImage
+	sha256sums = 967a5045ba4fa26fc95bf1a220194e1a0021c4366012d83f3a9b6d6d4281f0f8
+
+pkgname = positron-appimage
