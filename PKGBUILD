@@ -12,7 +12,7 @@ pkgdesc='A file integrity checker and intrusion detection program.'
 arch=('x86_64')
 url="https://aide.github.io/"
 license=('GPL')
-depends=('acl' 'e2fsprogs' 'libelf' 'mhash' 'pcre')
+depends=('acl' 'e2fsprogs' 'libelf' 'mhash-pkg-config' 'pcre')
 backup=('etc/aide.conf')
 install='.INSTALL'
 source=("https://github.com/aide/aide/releases/download/v${pkgver}/aide-${pkgver}.tar.gz"{,.asc} \
@@ -26,11 +26,6 @@ sha256sums=('d47da12c4bf085bfdf1828e087a1db5195a4d217ff4c89f40dbd94e2a887a6a2'
             '1eeb977faa98e4e5f6f6b111f4e933c162b6e72d4c65adef85430cf2f34ad9c5')
 
 validpgpkeys=('2BBBD30FAAB29B3253BCFBA6F6947DAB68E7B931') # Hannes von Haugwitz <hannes@vonhaugwitz.com>
-
-# mhash is missing mhash.pc, and it's required to build with AIDE.
-prepare() {
-
-}
 
 build() {
 	cd $srcdir/$pkgname-$pkgver

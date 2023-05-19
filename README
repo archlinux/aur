@@ -6,5 +6,4 @@ The purposes of this fork are:
 - to fix the source fork which cannot build properly due to missing sha256sums
 - to provide a more expanded aide.conf file than the source fork
 
-Other notes:
-mhash.pc gets dropped in: /usr/lib/pkgconfig/
+The build of mhash that this package depends on is hosted on Github here: https://github.com/matthewspangler/mhash-pkg-config
