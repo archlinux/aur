@@ -29,11 +29,14 @@ pkgbase = casaos
 	source_x86_64 = https://github.com/IceWhaleTech/CasaOS/releases/download/v0.4.3/linux-amd64-casaos-v0.4.3.tar.gz
 	source_x86_64 = https://github.com/IceWhaleTech/CasaOS/releases/download/v0.4.3/linux-amd64-casaos-migration-tool-v0.4.3.tar.gz
 	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
 	source_aarch64 = https://github.com/IceWhaleTech/CasaOS/releases/download/v0.4.3/linux-arm64-casaos-v0.4.3.tar.gz
 	source_aarch64 = https://github.com/IceWhaleTech/CasaOS/releases/download/v0.4.3/linux-arm64-casaos-migration-tool-v0.4.3.tar.gz
 	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = SKIP
 	source_armv7h = https://github.com/IceWhaleTech/CasaOS/releases/download/v0.4.3/linux-arm-7-casaos-v0.4.3.tar.gz
 	source_armv7h = https://github.com/IceWhaleTech/CasaOS/releases/download/v0.4.3/linux-arm-7-casaos-migration-tool-v0.4.3.tar.gz
+	sha256sums_armv7h = SKIP
 	sha256sums_armv7h = SKIP
 
 pkgname = casaos
