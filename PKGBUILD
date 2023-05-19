@@ -9,7 +9,7 @@ _pkgname="idos-timetable-data-chaps-trains-pid-20${_year}"
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2023_12_07
-pkgrel=1
+pkgrel=2
 pkgdesc="20${_prevyear}/20${_year} Timetable data for the timetable search engines by CHAPS: Trains in Praha public transport reagion (PID)."
 arch=(any)
 url="http://chaps.cz/eng/download/idos/zip#kotvatt"
@@ -45,6 +45,7 @@ provides=(
 
 replaces=(
   'idos-timetable-data-chaps-trains-pid-latest'
+  'idos-timetable-data-trains-pid'
   "${_pkgname}<=${pkgver}"
 )
 
