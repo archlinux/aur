@@ -4,7 +4,7 @@
 
 _name=generic
 pkgname=python-${_name}
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Library for Generic programming, also known as Multiple dispatch"
 arch=('any')
@@ -15,8 +15,8 @@ license=('BSD')
 depends=('python' 'python-exceptiongroup')
 makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('131843202f5580df2469ce6272fa99bd3ad62c36d7ab49088de4572e04dc13c3')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('89cc894fbc3b5def6ba5c3a60877e226cc368613efdee560356bcfb13267678a')
 
 build() {
 	cd "${_name}-${pkgver}"
