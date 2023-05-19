@@ -16,13 +16,13 @@ source=('sddm-mountain-theme::git+https://github.com/c0rydoras/sddm-mountain-the
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/mountain"
+  cd "$srcdir/sddm-mountain-theme"
   git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 
 package() {
-  cd "$srcdir/mountain"
+  cd "$srcdir/sddm-mountain-theme"
   install -Dm644 "Main.qml" "$pkgdir/usr/share/sddm/themes/mountain/Main.qml"
   install -Dm644 "theme.conf" "$pkgdir/usr/share/sddm/themes/mountain/theme.conf"
   install -Dm644 "metadata.desktop" "$pkgdir/usr/share/sddm/themes/mountain/metadata.desktop"
