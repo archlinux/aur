@@ -6,7 +6,7 @@
 
 basename=gnome-shell
 pkgname=$basename-xrdesktop-git
-pkgver=43.0
+pkgver=44.1
 pkgrel=1
 epoch=1
 conflicts=($basename)
@@ -29,7 +29,7 @@ optdepends=('gnome-control-center: System settings'
 groups=(gnome)
 provides=(gnome-shell=$pkgver)
 options=(debug)
-_branch="43.0-xrdesktop"  # tags/43.0^0
+_branch="44.1-xrdesktop"  # tags/44.1^0
 source=("git+https://gitlab.freedesktop.org/xrdesktop/gnome-shell.git#branch=${_branch}"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'
@@ -57,7 +57,7 @@ build() {
 }
 
 package() {
-  depends+=(libmutter-11.so)
+  depends+=(libmutter-12.so)
   meson install -C build --destdir "$pkgdir"
 }
 
