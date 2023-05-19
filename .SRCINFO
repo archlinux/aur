@@ -1,0 +1,18 @@
+pkgbase = thinreports-section-editor-appimage
+	pkgdesc = A template editor for Thinreports to edit Section Format templates
+	pkgver = 1.0.0.dev
+	pkgrel = 1
+	url = https://github.com/thinreports/thinreports
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = thinreports-section-editor
+	options = !strip
+	source = thinreports-section-editor-1.0.0.dev.AppImage::https://github.com/thinreports/thinreports-section-editor/releases/download/v1.0.0-dev/thinreports-section-editor-1.0.0-dev-linux-20221031-0b5119.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/thinreports/thinreports-section-editor/main/LICENSE
+	sha256sums = 818e3b1fdf4fb1ed1fdbe47cc58a034074a652577a887b168edfb033f47b6aeb
+	sha256sums = 2d416fa05a32860094f618f477a982dd77676b236dc710f2a4df289b7e43ae0c
+
+pkgname = thinreports-section-editor-appimage
