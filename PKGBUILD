@@ -7,7 +7,7 @@
 
 _pkgname=gtest
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.12.1
+pkgver=1.13.0
 pkgrel=1
 pkgdesc='Google Test - C++ testing utility based on the xUnit framework (like JUnit) (mingw-w64)'
 arch=('any')
@@ -17,14 +17,14 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 checkdepends=('mingw-w64-wine' 'mingw-w64-python')
 options=(!buildflags staticlibs !strip)
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/google/googletest/archive/release-${pkgver}.tar.gz")
-sha512sums=('a9104dc6c53747e36e7dd7bb93dfce51a558bd31b487a9ef08def095518e1296da140e0db263e0644d9055dbd903c0cb69380cb2322941dbfb04780ef247df9c')
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/google/googletest/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('70c0cfb1b4147bdecb467ecb22ae5b5529eec0abc085763213a796b7cdbd81d1761d12b342060539b936fa54f345d33f060601544874d6213fdde79111fa813e')
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 _flags=(
-	-Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DNDEBUG'
+	-Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG'
 	-Dgtest_hide_internal_symbols=ON -Dgtest_force_shared_crt=ON )
-_srcdir="googletest-release-${pkgver}"
+_srcdir="googletest-${pkgver}"
 
 prepare() {
 	cd "${_srcdir}"
@@ -34,7 +34,8 @@ prepare() {
 
 build() {
 	for _arch in "${_architectures[@]}"; do
-		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" -Dgtest_build_tests=OFF -Dgmock_build_tests=OFF -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
+		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" -Dgtest_build_tests=OFF -Dgmock_build_tests=OFF \
+			-DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
 		cmake --build "build-${_arch}-static"
 		
 		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -Dgtest_build_tests=OFF -Dgmock_build_tests=OFF
