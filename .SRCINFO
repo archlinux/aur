@@ -1,12 +1,12 @@
 pkgbase = plus-jakarta-sans-font
 	pkgdesc = an open-source font designed for Jakarta "City of collaboration" program in 2020
-	pkgver = 2.6
+	pkgver = 2.7
 	pkgrel = 1
 	url = https://github.com/tokotype/PlusJakartaSans
 	arch = any
 	license = OFL
-	source = https://github.com/tokotype/PlusJakartaSans/releases/download/2.6/PlusJakartaSans-2.6.zip
-	sha256sums = f1d21a6c99a5e7744574162dafc56e5c0895507fd9250ae04acbb1027733bee3
+	source = https://github.com/tokotype/PlusJakartaSans/releases/download/2.7/PlusJakartaSans-2.7.zip
+	sha256sums = 85fe1405e02e04b8732c75e625c8b1ba511015bcf73ca7dd767f9e256727d919
 
 pkgname = ttf-plus-jakarta-sans
 	provides = plus-jakarta-sans-font
