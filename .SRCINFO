@@ -1,6 +1,6 @@
 pkgbase = x-minecraft-launcher
 	pkgdesc = A Minecraft launcher dedicated to providing modern UX and efficient Mod management
-	pkgver = 0.33.1
+	pkgver = 0.35.4
 	pkgrel = 1
 	url = https://xmcl.app
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = x-minecraft-launcher
 	conflicts = xmcl-bin
 	conflicts = xmcl-launcher
 	conflicts = xmcl-launcher-bin
-	source = x-minecraft-launcher::git+https://github.com/Voxelum/x-minecraft-launcher.git#tag=v0.33.1
+	source = x-minecraft-launcher::git+https://github.com/Voxelum/x-minecraft-launcher.git#tag=v0.35.4
 	sha256sums = SKIP
 
 pkgname = x-minecraft-launcher
