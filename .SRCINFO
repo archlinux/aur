@@ -1,0 +1,16 @@
+pkgbase = mmseqs2-search-appimage
+	pkgdesc = MMseqs2 app to run on your workstation or servers
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://search.mmseqs.com/
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = mmseqs2-search
+	options = !strip
+	source = mmseqs2-search-1.7.0.AppImage::https://github.com/soedinglab/MMseqs2-App/releases/download/v7-8e1704f/MMseqs2-Search-1.7.0.AppImage
+	sha256sums = 8741f3c9bb4ba43586c8e3abd8ff4438cb2a750fe0abb7c5d5afa23c80f98f03
+
+pkgname = mmseqs2-search-appimage
