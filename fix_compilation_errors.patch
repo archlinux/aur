@@ -1,0 +1,37 @@
+From 942e3e1bd29f6e35501f8caa846decd9ce6708ae Mon Sep 17 00:00:00 2001
+From: Evgeny Pokhilko <software@evpo.net>
+Date: Fri, 19 May 2023 22:56:40 +1000
+Subject: [PATCH] Fix the new compilation errors in the compiler
+
+---
+ deps/libencryptmsg/src/lib/emsg_constants.h  | 1 +
+ deps/libencryptmsg/src/lib/packet_writer.cpp | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/deps/libencryptmsg/src/lib/emsg_constants.h b/deps/libencryptmsg/src/lib/emsg_constants.h
+index 1d1b362..b47daf5 100644
+--- a/deps/libencryptmsg/src/lib/emsg_constants.h
++++ b/deps/libencryptmsg/src/lib/emsg_constants.h
+@@ -6,6 +6,7 @@
+ //**********************************************************************************
+ #pragma once
+ #include <cstddef>
++#include <cstdint>
+ #include <limits>
+ #include "algo_spec.h"
+ 
+diff --git a/deps/libencryptmsg/src/lib/packet_writer.cpp b/deps/libencryptmsg/src/lib/packet_writer.cpp
+index 5680fdb..bebfbb6 100644
+--- a/deps/libencryptmsg/src/lib/packet_writer.cpp
++++ b/deps/libencryptmsg/src/lib/packet_writer.cpp
+@@ -6,6 +6,7 @@
+ //**********************************************************************************
+ #include "packet_writer.h"
+ #include <memory>
++#include <stdexcept>
+ #include "assert.h"
+ #include "botan/compression.h"
+ #include "botan/hash.h"
+-- 
+2.35.3
+

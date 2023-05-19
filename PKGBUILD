@@ -3,18 +3,23 @@
 _pkgname=encryptpad
 pkgname=${_pkgname}
 pkgver=0.5.0.2
-pkgrel=10
+pkgrel=11
 pkgdesc="Minimalist secure text editor and file encryptor that implements RFC 4880 Open PGP format"
 arch=(i686 x86_64)
 url="https://github.com/evpo/${_pkgname}"
 license=('GPL2')
-depends=('qt5-base' 'hicolor-icon-theme' 'python' 'botan' 'zlib' 'bzip2')
+depends=('qt5-base' 'hicolor-icon-theme' 'python' 'botan2' 'zlib' 'bzip2')
 makedepends=('git')
 options=('!makeflags')
 validpgpkeys=('634BFC0CCC426C74389D89310F1CFF71A2813E85')
-source=("https://github.com/evpo/EncryptPad/releases/download/v${pkgver}/encryptpad$(echo -n $pkgver | sed -r 's/\./_/g')_src.tar.gz"{,.asc})
+source=("https://github.com/evpo/EncryptPad/releases/download/v${pkgver}/encryptpad$(echo -n $pkgver | sed -r 's/\./_/g')_src.tar.gz"{,.asc} fix_compilation_errors.patch)
 
-sha1sums=('SKIP' 'SKIP')
+sha1sums=('SKIP' 'SKIP' 'SKIP')
+
+prepare() {
+  cd "$srcdir/encryptpad$(echo -n $pkgver | sed -r 's/\./_/g')_src"
+  patch --forward --strip=1 --input="${srcdir}/fix_compilation_errors.patch"
+}
 
 build() {
   cd "$srcdir/encryptpad$(echo -n $pkgver | sed -r 's/\./_/g')_src"
