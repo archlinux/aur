@@ -2,8 +2,8 @@
 
 pkgname=mingw-w64-uvwasi
 _pkgname=uvwasi
-pkgver=0.0.14
-pkgrel=4
+pkgver=0.0.18
+pkgrel=1
 pkgdesc="WASI syscall API built atop libuv (mingw-w64)"
 arch=('any')
 url="https://github.com/nodejs/uvwasi"
@@ -13,7 +13,7 @@ depends=('mingw-w64-crt' 'mingw-w64-libuv=1.44.2')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://github.com/nodejs/uvwasi/archive/v${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         "cmake_install.patch")
-sha512sums=('7e18ab10bb3a8cbfffca7c025a05784b92dde6785cd5251766e07dc683adee671195f15e168596a99e2654ed837ab835777c1f06bee0f0504497c609a1716965'
+sha512sums=('e0624489166836d7909030e037fe5b302695e02c61fe3fdeed8db771266907302b005b2b5108dcfc9af6361f95f28f477b706f9e2fc31f629b934571843a0089'
             'SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"

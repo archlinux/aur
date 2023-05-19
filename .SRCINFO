@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-uvwasi
 	pkgdesc = WASI syscall API built atop libuv (mingw-w64)
-	pkgver = 0.0.14
-	pkgrel = 4
+	pkgver = 0.0.18
+	pkgrel = 1
 	url = https://github.com/nodejs/uvwasi
 	arch = any
 	license = MIT
@@ -11,9 +11,9 @@ pkgbase = mingw-w64-uvwasi
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/nodejs/uvwasi/archive/v0.0.14/uvwasi-0.0.14.tar.gz
+	source = https://github.com/nodejs/uvwasi/archive/v0.0.18/uvwasi-0.0.18.tar.gz
 	source = cmake_install.patch
-	sha512sums = 7e18ab10bb3a8cbfffca7c025a05784b92dde6785cd5251766e07dc683adee671195f15e168596a99e2654ed837ab835777c1f06bee0f0504497c609a1716965
+	sha512sums = e0624489166836d7909030e037fe5b302695e02c61fe3fdeed8db771266907302b005b2b5108dcfc9af6361f95f28f477b706f9e2fc31f629b934571843a0089
 	sha512sums = SKIP
 
 pkgname = mingw-w64-uvwasi
