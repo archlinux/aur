@@ -1,3 +1,8 @@
+# Note that the upstream source is unmaintained as of 2022, see:
+# https://github.com/kode54/Game_Music_Emu/issues/22#issuecomment-1005423330
+#
+# libgme-git (or, when released, libgme >= 0.7.0) should be used instead.
+
 pkgname=game_music_emu-kode54-git
 pkgver=r192.fd803c8
 pkgrel=1
