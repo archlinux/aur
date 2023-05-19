@@ -1,0 +1,17 @@
+pkgbase = nodeflow-appimage
+	pkgdesc = An Editor for creating simple or complex OCR workflows
+	pkgver = 0.0.2alpha
+	pkgrel = 1
+	url = https://github.com/maxnth/NodeFlow
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	conflicts = nodeflow
+	options = !strip
+	source = nodeflow-0.0.2alpha.AppImage::https://github.com/maxnth/NodeFlow/releases/download/0.0.2-alpha/NodeFlow-0.0.2.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/maxnth/NodeFlow/master/License
+	sha256sums = fd1bb578d47245a95ba7c206f7f64aa013e56afe2247511dea48e62190d4a545
+	sha256sums = 2fa2313855f0dfa9399163896c8a91747298ae501fb1f915e6a8479dc60f3791
+
+pkgname = nodeflow-appimage
