@@ -2,7 +2,7 @@
 pkgbase=python-sherpa
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=4.15.0
+pkgver=4.15.1
 pkgrel=1
 pkgdesc="Modeling and fitting package for scientific data analysis"
 arch=('i686' 'x86_64')
@@ -20,12 +20,14 @@ makedepends=('python-setuptools'
              'python-nbsphinx>=0.8.6'
              'pandoc')
 #'gcc-fortran')
-checkdepends=('python-pytest-xvfb'
+checkdepends=('python-pytest'
               'python-astropy'
               'python-matplotlib')
+#             'ds9'
+#             'stk')-xvfb
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'sherpa_local_fftw.patch')
-md5sums=('4ea372d76411d184e0f4bd0cf1f7459a'
+md5sums=('2682eb18db97fb2efaf02a1b63753b6e'
          'd1823cc7683442d92450fadff7aed362')
 
 get_pyver() {
@@ -47,8 +49,7 @@ build() {
     python -m build --wheel --no-isolation
 
     msg "Building Docs"
-    cd ${srcdir}/${_pyname}-${pkgver}/docs
-    PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make html
+    PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make -C docs html
 }
 
 check() {
@@ -58,7 +59,7 @@ check() {
 }
 
 package_python-sherpa() {
-    depends=('python>=3.7' 'python-numpy>=1.20.0' 'fftw')
+    depends=('python>=3.9' 'python-numpy>=1.21.0' 'fftw')
     optdepends=('python-matplotlib: Graphical output'
                 'python-astropy>=3.2.1: Data I/O support'
                 'ds9: Imaging requires'
