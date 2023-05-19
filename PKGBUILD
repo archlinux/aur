@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-types-setuptools
 _name=${pkgname#python-}
-pkgver=67.7.0.2
+pkgver=67.7.0.3
 pkgrel=1
 pkgdesc="Typing stubs for setuptools"
 arch=('any')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('python' 'python-types-docutils')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('155789e85e79d5682b0d341919d4beb6140408ae52bac922af25b54e36ab25c0')
+sha256sums=('b3c82ef86c2ff8be238bcec10ba37c194a679f7f8bb075e8d064d8b530b4181e')
 
 build() {
   cd "$_name-$pkgver"
