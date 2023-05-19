@@ -3,10 +3,10 @@
 
 pkgname=etesync-dav
 pkgver=0.32.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A CalDAV and CardDAV adapter for EteSync"
 arch=('any')
-url="https://pypi.python.org/pypi/${pkgname}/"
+url="https://github.com/etesync/etesync-dav/"
 license=('GPL')
 depends=('python-appdirs'
          'python-etesync'
@@ -16,28 +16,29 @@ depends=('python-appdirs'
          'python-flask-wtf'
 )
 replaces=('python-radicale-storage-etesync')
-makedepends=('python-setuptools')
-source=("https://pypi.org/packages/source/e/${pkgname}/${pkgname}-${pkgver}.tar.gz"
-        "etesync-dav.service")
-sha256sums=('a4e2ee83932755d29ac39c1e74005ec289880fd2d4d2164f09fe2464a294d720'
-            'f1a76ba3038f89019c4d3f206824dc5e471d3707ab5b2fb27802215ea6d6bc8c')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+        "add-missing-comma-in-setup.py.patch")
+sha256sums=('ba79f3cac8c1b73258bf18bf766530756783248572d4dce805e6cb4a17164c7f'
+            '98d3d69d368eedd073245ac0943882455405e519304044e2b571f97bc8487954')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  patch -p1 < "$srcdir/add-missing-comma-in-setup.py.patch"
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
-  python setup.py install --skip-build \
-    --optimize=1 \
-    --prefix=/usr \
-    --root="${pkgdir}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
   install -t "${pkgdir}/usr/share/doc/${pkgname}" \
     -vDm644 {DESCRIPTION.rst,README.md}
 
-# FIXME: replace with the one in the etesync-dav repo once released
-  mkdir -p "${pkgdir}/usr/lib/systemd/user/"
-  install -Dm644 ../etesync-dav.service "${pkgdir}/usr/lib/systemd/user/"
+  install -Dm644 examples/systemd-user/etesync-dav.service "${pkgdir}/usr/lib/systemd/user/etesync-dav.service"
 }
 
