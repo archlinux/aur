@@ -1,7 +1,7 @@
 pkgbase = pam_abl
 	pkgdesc = Automated blacklisting on repeated failed authentication attempts
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/amishmm/pam_abl
 	install = pam_abl.install
 	arch = i686
@@ -21,4 +21,3 @@ pkgbase = pam_abl
 	sha512sums = 581b86314b221a19db18cac5f85189d6d6446641c065be6543e926aaf09829902b84fb782a791ffbe74bcf90feaf438bb5a693a2405453988820e5598d285a1b
 
 pkgname = pam_abl
-
