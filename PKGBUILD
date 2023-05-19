@@ -1,7 +1,7 @@
 # Maintainer: Pedro A. López-Valencia <https://aur.archlinux.org/user/toropisco>
 pkgname=('ttf-literata' 'ttf-literata-opticals' 'ttf-literata-webfonts' 'ttf-literata-webfonts-opticals')
 pkgbase=ttf-literata
-pkgver=3.102
+pkgver=3.103
 pkgrel=1
 pkgdesc="Google's contemporary serif typeface family for long-form reading; default typeface for Play Books. Truetype, open source (OFL) distribution."
 arch=('any')
@@ -11,7 +11,7 @@ conflicts=('otf-literata')
 replaces=('otf-literata')
 source=("literata-$pkgver.zip::https://github.com/googlefonts/literata/releases/download/$pkgver/$pkgver.zip"
         "https://raw.githubusercontent.com/googlefonts/literata/main/OFL.txt")
-b2sums=('e774350210d7b6988fb792a8b64b363d020051555831e2ae8313c23f9972c3ef368c01b635d41cff88a943cc98325eef76bb7f14403901ab3b226571efd74be1'
+b2sums=('d626f872310c6e857d0ba2d8751cbade216d3b232457bb16dc1268ea6529476b78ac71a12038bc6a775d2d474bc2d64559d65987250a3b384eb8566f60466cbe'
         '2a91a436d60192c0794f4114ef755a23f99a062b1485f96ee4196f862cd8c022079cbb2310d3406dc5059a01d6986663e7ecf2411a52d2d5425cbe07301bc2d6')
 
 package_ttf-literata() {
