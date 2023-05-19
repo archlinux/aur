@@ -1,6 +1,6 @@
 pkgbase = r-bambu
 	pkgdesc = Reference-guided isoform reconstruction and quantification for long read RNA-Seq data
-	pkgver = 3.2.2
+	pkgver = 3.2.3
 	pkgrel = 1
 	url = https://bioconductor.org/packages/bambu
 	arch = x86_64
@@ -44,7 +44,7 @@ pkgbase = r-bambu
 	optdepends = r-testthat
 	optdepends = r-txdb.hsapiens.ucsc.hg38.knowngene
 	optdepends = r-utils
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/bambu_3.2.2.tar.gz
-	sha256sums = 2ba6cbc1abdbaeac92994cfe3f51ecb14e51f4d3e888dbd59a6d05eab5f5ae6e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/bambu_3.2.3.tar.gz
+	sha256sums = cd5458cb1dda189a014ddaee42be78ce9cd7376e0f9c5589f550ba72a4afbfac
 
 pkgname = r-bambu
