@@ -23,9 +23,9 @@ source_aarch64=("${_pkgname}-aarch64-${pkgver}.zip::https://image.lceda.cn/files
 source_loong64=("${_pkgname}-loong64-${pkgver}.zip::https://image.lceda.cn/files/lceda-pro-linux-loong64-${pkgver}.zip")
 sha256sums=('e1c6b9641b73a56d5bffe42d8db2107af8f2c51aa5cd11c79aa998321a5e0190'
             'f8c3c7f65443801b8a70e40de7cdceade5dcd75974945695dd5a1bfb1f862e1a')
-sha256sums_x86_64=('dbd33de19d87735958cbfb9e99383ebd69bcc23573446c9c64a5b9788f0342a2')
-sha256sums_aarch64=('387c3fec8888b34a0e77ed058138aa8f3b2896bfb64c8e22d49fada2028c0c2e')
-sha256sums_loong64=('38f2c494b85ca5c708bfcd156368246be48c7f9a322ccbf361b6734b6d0ddeef')
+sha256sums_x86_64=('537df63944484c2d70ecca3f19da1a0ba484dd2e3f3d0dd37df8e986db3d9a1a')
+sha256sums_aarch64=('aea2d6c7a8fcbe1b9a5280583f33f7f7c8000e515de86fa9efee81228d6b3573')
+sha256sums_loong64=('71e334f80571b085afcd90647d4f8dbfcc62b94ec14f17f3ec3e5be342576bb5')
 
 package() {
     export LC_CTYPE="zh_CN.UTF-8"
