@@ -1,7 +1,7 @@
-diff -ruN Python-3.10.5/Makefile.pre.in Python-3.10.5.new/Makefile.pre.in
---- Python-3.10.5/Makefile.pre.in	2022-06-06 16:23:30.000000000 +0430
-+++ Python-3.10.5.new/Makefile.pre.in	2022-08-05 17:00:11.809493442 +0430
-@@ -1372,15 +1372,15 @@
+diff -ruN Python-3.11.3/Makefile.pre.in Python-3.11.3.new/Makefile.pre.in
+--- Python-3.11.3/Makefile.pre.in	2023-04-05 01:52:17.000000000 +0330
++++ Python-3.11.3.new/Makefile.pre.in	2023-05-19 09:34:30.419545166 +0330
+@@ -1850,15 +1850,15 @@
  	fi
  	(cd $(DESTDIR)$(BINDIR); $(LN) -s python$(VERSION)$(EXE) python3$(EXE))
  	-if test "$(VERSION)" != "$(LDVERSION)"; then \
@@ -20,7 +20,7 @@ diff -ruN Python-3.10.5/Makefile.pre.in Python-3.10.5.new/Makefile.pre.in
  	-rm -f $(DESTDIR)$(LIBPC)/python3.pc
  	(cd $(DESTDIR)$(LIBPC); $(LN) -s python-$(VERSION).pc python3.pc)
  	-rm -f $(DESTDIR)$(LIBPC)/python3-embed.pc
-@@ -1639,12 +1639,12 @@
+@@ -2123,12 +2123,12 @@
  	@ # is not available in configure
  	sed -e "s,@EXENAME@,$(BINDIR)/python$(LDVERSION)$(EXE)," < $(srcdir)/Misc/python-config.in >python-config.py
  	@ # Replace makefile compat. variable references with shell script compat. ones; $(VAR) -> ${VAR}
@@ -35,7 +35,7 @@ diff -ruN Python-3.10.5/Makefile.pre.in Python-3.10.5.new/Makefile.pre.in
  	fi
  
  
-@@ -1726,7 +1726,7 @@
+@@ -2212,7 +2212,7 @@
  	$(INSTALL_SCRIPT) $(srcdir)/Modules/makesetup $(DESTDIR)$(LIBPL)/makesetup
  	$(INSTALL_SCRIPT) $(srcdir)/install-sh $(DESTDIR)$(LIBPL)/install-sh
  	$(INSTALL_SCRIPT) python-config.py $(DESTDIR)$(LIBPL)/python-config.py
@@ -44,7 +44,7 @@ diff -ruN Python-3.10.5/Makefile.pre.in Python-3.10.5.new/Makefile.pre.in
  	@if [ -s Modules/python.exp -a \
  		"`echo $(MACHDEP) | sed 's/^\(...\).*/\1/'`" = "aix" ]; then \
  		echo; echo "Installing support files for building shared extension modules on AIX:"; \
-@@ -1937,7 +1937,7 @@
+@@ -2435,7 +2435,7 @@
  		config.cache config.log pyconfig.h Modules/config.c
  	-rm -rf build platform
  	-rm -rf $(PYTHONFRAMEWORKDIR)

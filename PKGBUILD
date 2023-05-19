@@ -2,9 +2,9 @@
 # Contributor: Andrew Sun <adsun701@gmail.com>
 
 pkgname=lib32-python
-pkgver=3.10.9
+pkgver=3.11.3
 pkgrel=1
-_pybasever=3.10
+_pybasever=3.11
 pkgdesc="Next generation of the python high-level scripting language"
 arch=('x86_64')
 license=('custom')
@@ -18,10 +18,10 @@ provides=('lib32-python3')
 source=("https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz"{,.asc}
         "lib32-distutils-sysconfig.patch"
         "python-config-32.patch")
-sha512sums=('d66ea8adeb6dc4951e612175f8838b3092967ff275b7a3470f2d86f470036aa2221e722c3144d90bcd230b88efd53dde204213f72f703e524e4b833e2ccc68e2'
+sha512sums=('a3bba4b69322a47bfeefe42ba0fd7331b5b67fd2ab41441e2219d16ef8c6f307f1a48977afd073c18cfd24ec6cb1bfe0c4bb4b273031eb524dc7e9fb5fbcc3b6'
             'SKIP'
-            'e541d608b809ee04d9249a8b1a952c02a8d024efc87458bb96a999b8952cefc50be66e36e9f821b96691460b41792fea4b045c51a1aa064d66d0cf32eb3472c9'
-            'cba0c7204239abbbc20754e6f66717d2b6ac9f10f4af03bc170c71dfc02310fd03005d9e771fb38d4d672ed01b79ef68e87d3111f9e1145047a650d18568e0d5')
+            'b7f06fef88b88463d0d4fb8dea00e1e1c3516bd71d521eb44fa65b2cb70d98d3c468bc12131d76cabbe95f86c96c60e21c0e1b889628de0639c766fd3e0c21b2'
+            'aa6af1208e93aa412e9839721c851dbb463a7e7f40eb72b253eacde2e59569708e1820a6d2fdba1dfee1b475244f47cd40b49204da182e8738058125829a936d')
 validpgpkeys=('0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D'  # Ned Deily (Python release signing key) <nad@python.org>
               'E3FF2839C048B25C084DEBE9B26995E310250568'  # Łukasz Langa (GPG langa.pl) <lukasz@langa.pl>
               'A035C8C19219BA821ECEA86B64E628F8D684696D') # Pablo Galindo Salgado <pablogsal@gmail.com>

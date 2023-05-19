@@ -1,16 +1,16 @@
-diff -ruN Python-3.10.5/Lib/distutils/sysconfig.py Python-3.10.5.new/Lib/distutils/sysconfig.py
---- Python-3.10.5/Lib/distutils/sysconfig.py	2022-06-06 16:23:30.000000000 +0430
-+++ Python-3.10.5.new/Lib/distutils/sysconfig.py	2022-08-05 16:49:54.486224272 +0430
-@@ -292,7 +292,7 @@
+diff -ruN Python-3.11.3/Lib/distutils/sysconfig.py Python-3.11.3.new/Lib/distutils/sysconfig.py
+--- Python-3.11.3/Lib/distutils/sysconfig.py	2023-04-05 01:52:17.000000000 +0330
++++ Python-3.11.3.new/Lib/distutils/sysconfig.py	2023-05-19 09:38:35.066967919 +0330
+@@ -287,7 +287,7 @@
                  incdir = os.path.join(get_config_var('srcdir'), 'Include')
                  return os.path.normpath(incdir)
          python_dir = 'python' + get_python_version() + build_flags
 -        return os.path.join(prefix, "include", python_dir)
-+        return os.path.join(prefix, "lib32/python3.10/include", python_dir)
++        return os.path.join(prefix, "lib32/python3.11/include", python_dir)
      elif os.name == "nt":
          if python_build:
              # Include both the include and PC dir to ensure we can find
-@@ -333,7 +333,7 @@
+@@ -328,7 +328,7 @@
              libdir = sys.platlibdir
          else:
              # Pure Python
