@@ -1,0 +1,20 @@
+pkgbase = sddm-theme-mountain-git
+	pkgdesc = Mountain theme for SDDM.
+	pkgver = 1.1.0.r0.gd6d9b20
+	pkgrel = 1
+	url = https://github.com/c0rydoras/sddm-mountain-theme.git
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = sddm
+	depends = qt5-graphicaleffects
+	depends = qt5-quickcontrols2
+	depends = qt5-svg
+	depends = ttf-droid
+	provides = sddm-theme-mountain
+	conflicts = sddm-theme-mountain
+	backup = usr/share/sddm/themes/mountain/theme.conf
+	source = mountain::git+https://github.com/c0rydoras/sddm-mountain-theme.git
+	sha256sums = SKIP
+
+pkgname = sddm-theme-mountain-git
