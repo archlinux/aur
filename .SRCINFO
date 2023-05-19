@@ -1,10 +1,22 @@
 pkgbase = art-rawconverter-bin
 	pkgdesc = Raw image Converter forked from RawTherapee with ease of use in mind (including blackfoxx-theme)
-	pkgver = 1.19.3
+	pkgver = 1.20
 	pkgrel = 1
 	url = https://bitbucket.org/agriggio/art
 	arch = x86_64
 	license = GPL3
+	optdepends = art-rawconverter-imageio: add support for additional image formats
+	optdepends = perl-image-exiftool: metadata support for CR3 images
+	provides = art-rawconverter
+	conflicts = art-rawconverter
+	options = !strip
+	options = !debug
+	source = art-rawconverter-1.20.tar.xz::https://bitbucket.org/agriggio/art/downloads/ART-1.20-linux64.tar.xz
+	source = bft_20.zip::https://discuss.pixls.us/uploads/short-url/fG7iCaIWBWBem30O67V15EfO521.zip
+	sha256sums = bba6bc335bfd337e2805cac435c51d3493d1a8271b78ba4355920403b8771e90
+	sha256sums = 7381c57e48b1437bec6b775029370f99f6fc14eced53678972e9f0b7e02a4346
+
+pkgname = art-rawconverter-bin
 	depends = desktop-file-utils
 	depends = exiv2
 	depends = fftw
@@ -16,13 +28,3 @@ pkgbase = art-rawconverter-bin
 	depends = libcanberra
 	depends = libiptcdata
 	depends = libraw
-	optdepends = art-rawconverter-imageio: add support for additional image formats
-	optdepends = perl-image-exiftool: metadata support for CR3 images
-	provides = art-rawconverter
-	conflicts = art-rawconverter
-	source = art-rawconverter-1.19.3.tar.xz::https://bitbucket.org/agriggio/art/downloads/ART-1.19.3-linux64.tar.xz
-	source = bft_20.zip::https://discuss.pixls.us/uploads/short-url/fG7iCaIWBWBem30O67V15EfO521.zip
-	sha256sums = 36ff594aaf3db0e9095f64e6ee3747ae9730e1a16109fcdea804ca242fd29dfe
-	sha256sums = 7381c57e48b1437bec6b775029370f99f6fc14eced53678972e9f0b7e02a4346
-
-pkgname = art-rawconverter-bin
