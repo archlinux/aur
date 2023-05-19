@@ -1,0 +1,21 @@
+pkgbase = vita-parse-core-git
+	pkgdesc = Vita Parse Core Python Program
+	pkgver = 28.644b5f0
+	pkgrel = 1
+	url = https://github.com/xyzz/vita-parse-core
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-pyelftools
+	depends = psvita-sdk
+	provides = vita-parse-core-git
+	conflicts = vita-parse-core-git
+	source = git+https://github.com/xyzz/vita-parse-core.git
+	source = 0001-Fixed-util.py.patch
+	source = main
+	sha256sums = SKIP
+	sha256sums = c65c44c28945f6cba41081f21d0239ed5c57f5e071c17771a294884e1a2ac0b0
+	sha256sums = d960f31fe65bb36e52fa6d1cac8f00cbe16cfb60763ee4d2a8c9437c031843c2
+
+pkgname = vita-parse-core-git
