@@ -1,5 +1,5 @@
 pkgbase = vita-parse-core-git
-	pkgdesc = Vita Parse Core Python Program
+	pkgdesc = Sony PS Vita core dump parser
 	pkgver = 28.644b5f0
 	pkgrel = 1
 	url = https://github.com/xyzz/vita-parse-core
