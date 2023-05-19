@@ -9,8 +9,9 @@ arch=('any')
 url="http://www.nand2tetris.org/"
 license=('GPL')
 depends=('java-runtime')
-makedepends=('unzip')
-source=(n2tCPUEmulator.run
+makedepends=('git')
+source=('nand2tetris::git+https://github.com/oconnor663/nand2tetris.git'
+        n2tCPUEmulator.run
         n2tVMEmulator.run
         n2tJackCompiler.run
         n2tHardwareSimulator.run
@@ -20,9 +21,8 @@ source=(n2tCPUEmulator.run
         n2tHardwareSimulator.desktop
         n2tAssembler.desktop
 )
-_nand2teris_source="nand2tetris.zip"
-_nand2teris_url="https://www.nand2tetris.org/software"
-sha256sums=('f93e4c08ed6af6a687f8d144598f998a19ac544d9fe6da05c162932d00f6a592'
+sha256sums=(SKIP
+            'f93e4c08ed6af6a687f8d144598f998a19ac544d9fe6da05c162932d00f6a592'
             'f05fbcd9d86e7151c2e16682792586fd51086fa4864695ff8600256c15eb83d4'
             '838dda39a97694ef1635ebbb0f6aa850623e281f70ef1e699930ee72e4934361'
             '38884a770a7535e35363ffffb8918a13ff83f67281c71e42b488f645608564cc'
@@ -32,21 +32,11 @@ sha256sums=('f93e4c08ed6af6a687f8d144598f998a19ac544d9fe6da05c162932d00f6a592'
             '054d1883e9eeaef754d9c4f15868d3722c08672a34a8d7dcdb242620ed22ba51'
             '2cd1b2c93dd68de97b7c3d9504dc850f4b60774065a70aa8496ba82c7889dc89')
 
-prepare() {
-  if [[ ! -f "${_nand2teris_source}" ]]
-  then
-    echo "Download ${_nand2teris_source} from ${_nand2teris_url} and place in ${srcdir}"
-    exit 1
-  fi
-
-  echo "d2cb160ad64ccb792158907d720976fb4fef8b8610bf9160dca38368153edbd9  ${_nand2teris_source}" | sha256sum -c --quiet
-  if [[ ! $? -eq 0 ]]
-  then
-    echo "Integrity check failed for ${_nand2teris_source}"
-  fi
-
-  unzip ${_nand2teris_source}
+pkgver() {
+	cd "$srcdir/${pkgname%-VCS}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
 
 package() {
   cd ${srcdir}/${pkgname}
