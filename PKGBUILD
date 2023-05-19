@@ -1,7 +1,7 @@
 # Maintainer: WhiredPlanck <whiredplanck at outlook dot com>
 
 pkgname=x-minecraft-launcher
-pkgver=0.33.1
+pkgver=0.35.4
 pkgrel=1
 pkgdesc="A Minecraft launcher dedicated to providing modern UX and efficient Mod management"
 arch=("x86_64")
