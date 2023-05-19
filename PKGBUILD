@@ -2,8 +2,8 @@
 
 _pkgname=alfae
 pkgname=$_pkgname-bin
-pkgver=1.4.0
-pkgrel=3
+pkgver=1.4.1
+pkgrel=1
 pkgdesc="An Itch.io/Epic Games/GOG launcher that works through plugins (binary release)"
 arch=('x86_64')
 url="https://github.com/suchmememanyskill/Alfae"
@@ -12,15 +12,16 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 options=('!strip')
 _desktop=alfae.desktop
-_url2=https://raw.githubusercontent.com/suchmememanyskill/Alfae/600ce4d27bda86a2848442b5912786b6735c3664
+_url2=https://raw.githubusercontent.com/suchmememanyskill/Alfae/$_commit
+_commit=7258cb358497197d1ffd35e3289455b2323fe81a
 source=("$url/releases/download/$pkgver/Linux.zip"
         "$_url2/Launcher/Assets/icon.png"
         "$_url2/README.md"
         "$_url2/LICENSE")
-sha256sums=('5c7516dd44a26ca24fd31e1fd0ef572fc16999ca67ef1ff6fdb18cf4c68a1bba'
-            '776e6aa9151e508ecd2dc2a54bfa8f149974e96b945371c112befdd97e370a9b'
-            '18184d4f84bdfbb16d3df4d199556ce8b1988f8b20161c6b32ce033016adbcf5'
-            '8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903')
+sha256sums=('33027a73c17561776e938f9b7c5ca83a8a3a0d3bf000e147dbe60b7d0996c4e9'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 prepare() {
   # Create a shortcut
