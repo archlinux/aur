@@ -2,7 +2,7 @@
 # Contributor: Steven Hiscocks <steven[at]hiscocks[dot]me[dot]uk>
 pkgname=milter-greylist
 pkgver=4.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A stand-alone milter written in C that implements the greylist filtering method."
 url="http://hcpnet.free.fr/milter-greylist/"
 arch=('x86_64' 'i686')
