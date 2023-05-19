@@ -1,8 +1,8 @@
 # Maintainer: FirstAirBender <noblechuk5[at]web[dot]de>
 pkgname=find-broken-desktop
 pkgver=1.0
-pkgrel=1
-pkgdesc="Find .desktop files with invalid executables"
+pkgrel=2
+pkgdesc="Find desktop entries files with broken executables. Has similar functionality to fbrokendesktop"
 arch=("any")
 license=('MIT')
 depends=('python' 'python-pyxdg')

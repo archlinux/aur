@@ -1,7 +1,7 @@
 pkgbase = find-broken-desktop
-	pkgdesc = Find .desktop files with invalid executables
+	pkgdesc = Find desktop entries files with broken executables
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = MIT
 	depends = python
