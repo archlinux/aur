@@ -1,13 +1,14 @@
 pkgbase = align
 	pkgdesc = A general purpose application for aligning text
 	pkgver = 1.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Guitarbum722/align
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
+	conflicts = festival
 	source = align-1.1.3.tar.gz::https://github.com/Guitarbum722/align/archive/v1.1.3.tar.gz
-	sha256sums = b386fd179d3c6fb7a2b5e65aee98e9eeaf0108741fe249bd9fce40c506d59819
+	sha512sums = c27f9c295eecaf68923208105913cf92651fbbad607f107d544eb2abe22196e70ccc10985a8bbbd19b429cae33a2ad89c415fa8c267439a7c4115bdbf5f9e0a6
 
 pkgname = align
