@@ -3,7 +3,7 @@
 pkgname=vita-parse-core-git
 pkgver=28.644b5f0
 pkgrel=1
-pkgdesc="Vita Parse Core Python Program"
+pkgdesc="Sony PS Vita core dump parser"
 arch=('any')
 url="https://github.com/xyzz/vita-parse-core"
 license=('MIT')
