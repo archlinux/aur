@@ -2,14 +2,14 @@
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=ynot3
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An image annotator for Xorg & Wayland using pygame"
 arch=(any)
 url="https://github.com/fdev31/${pkgname}"
 license=('MIT')
 groups=()
 depends=('python')
-makedepends=('git' 'python-build' 'python-installer')
+makedepends=('git' 'python-build' 'python-installer' 'python-poetry')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 replaces=()
