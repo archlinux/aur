@@ -1,0 +1,15 @@
+pkgbase = holo-gs-auto-update
+	pkgdesc = A script to automatically update gamescope-session after it is updated for holoiso
+	pkgver = r1.1713b2e
+	pkgrel = 1
+	url = https://github.com/mengmeet/holo-auto-modify-gamescope-session
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = holo-gs-auto-update
+	conflicts = holo-gs-auto-update
+	options = !strip
+	source = git+https://github.com/mengmeet/holo-auto-modify-gamescope-session
+	sha256sums = SKIP
+
+pkgname = holo-gs-auto-update
