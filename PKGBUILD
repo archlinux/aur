@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=biclust
-_pkgver=2.0.3
+_pkgver=2.0.3.1
 pkgname=r-${_pkgname,,}
-pkgver=2.0.3
-pkgrel=4
+pkgver=2.0.3.1
+pkgrel=1
 pkgdesc='BiCluster Algorithms'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -21,7 +21,7 @@ optdepends=(
   r-isa2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('97b6927e580a188b218377a37bb37cbfe9de54bee8a8c759311936029c60fe51')
+sha256sums=('871114003a7c42fbad2f65a650c944d6a3384abe17290d11f5e67f5abe59cc85')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
