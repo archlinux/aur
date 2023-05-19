@@ -1,8 +1,8 @@
 # Maintainer: solsTiCe d'Hiver <solstice.dhiver@gmail.com>
 pkgname=ocaml-libvirt-git
 _pkgname=libvirt-ocaml
-pkgver=r177.53bf916
-pkgrel=1
+pkgver=r185.94a93bd
+pkgrel=2
 pkgdesc="OCaml bindings for libvirt"
 arch=('i686' 'x86_64')
 url="https://libvirt.org/"
@@ -24,6 +24,7 @@ build() {
   cd "${srcdir}/${_pkgname}"
   autoreconf -i
   ./configure --prefix /usr# --libdir /usr/lib/ocaml
+  make clean # to remove obsolete .cmi file
   make
 }
 
