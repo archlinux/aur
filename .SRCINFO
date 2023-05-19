@@ -1,7 +1,7 @@
 pkgbase = flemozi-bin
 	pkgdesc = An advanced Emoji Picker written with Flutter (binary release)
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KRTirtho/flemozi
 	arch = x86_64
 	license = GPL3
