@@ -1,6 +1,6 @@
 pkgbase = python-pyhmmer
 	pkgdesc = Cython bindings and Python interface to HMMER3
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/althonos/pyhmmer
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = python-pyhmmer
 	makedepends = python-installer
 	depends = python
 	depends = python-psutil
-	source = https://files.pythonhosted.org/packages/source/p/pyhmmer/pyhmmer-0.8.0.tar.gz
-	sha256sums = 9d3ddfe2115c5ed089b87599a64a4882608228e51f12a7d7793792f02ef5ba64
+	source = https://files.pythonhosted.org/packages/source/p/pyhmmer/pyhmmer-0.8.1.tar.gz
+	sha256sums = d090d07c35b03265e4f6f47f05d4fd3206eb633478b692066364e46622b5db11
 
 pkgname = python-pyhmmer
