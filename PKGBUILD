@@ -27,6 +27,11 @@ sha256sums=('d47da12c4bf085bfdf1828e087a1db5195a4d217ff4c89f40dbd94e2a887a6a2'
 
 validpgpkeys=('2BBBD30FAAB29B3253BCFBA6F6947DAB68E7B931') # Hannes von Haugwitz <hannes@vonhaugwitz.com>
 
+# mhash is missing mhash.pc, and it's required to build with AIDE.
+prepare() {
+
+}
+
 build() {
 	cd $srcdir/$pkgname-$pkgver
 	./configure \
@@ -37,7 +42,8 @@ build() {
         --with-xattr \
         --with-zlib \
         --with-e2fsattrs \
-        --disable-static
+        --disable-static \
+        --with-mhash
 	make
 }
 
