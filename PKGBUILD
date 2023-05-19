@@ -1,5 +1,5 @@
 pkgname=nordvpn-git
-pkgver=r34.9319a81
+pkgver=r53.6986e6d
 pkgrel=1
 pkgdesc="NordVPN client for Linux (Git version)"
 arch=('x86_64' 'arm64')
@@ -25,6 +25,11 @@ prepare() {
 build() {
     cd "${pkgname}"
     cp .env.sample .env
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
     mage
     mage build:binaries
 }
