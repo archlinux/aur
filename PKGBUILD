@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mqttx-appimage
-pkgver=1.9.2
+pkgver=1.9.3
 pkgrel=1
 pkgdesc="Powerful cross-platform MQTT 5.0 Desktop, CLI, and WebSocket client tools"
 arch=('x86_64')
@@ -12,7 +12,7 @@ _install_path="/opt/appimages"
 options=(!strip)
 conflicts=("${pkgname%-appimage}")
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/MQTTX-${pkgver}.AppImage")
-sha256sums=('8878186b19f901141e964b035ffabdcc5c416780965763b1100f720d36706fc4')
+sha256sums=('2444302ea38ffa4385233bf1377813488ceaf43322c08a12d798fdb46f72bd5a')
 
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"

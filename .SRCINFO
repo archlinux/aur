@@ -1,6 +1,6 @@
 pkgbase = mqttx-appimage
 	pkgdesc = Powerful cross-platform MQTT 5.0 Desktop, CLI, and WebSocket client tools
-	pkgver = 1.9.2
+	pkgver = 1.9.3
 	pkgrel = 1
 	url = https://mqttx.app/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = mqttx-appimage
 	depends = glibc
 	conflicts = mqttx
 	options = !strip
-	source = mqttx-1.9.2.AppImage::https://github.com/emqx/MQTTX/releases/download/v1.9.2/MQTTX-1.9.2.AppImage
-	sha256sums = 8878186b19f901141e964b035ffabdcc5c416780965763b1100f720d36706fc4
+	source = mqttx-1.9.3.AppImage::https://github.com/emqx/MQTTX/releases/download/v1.9.3/MQTTX-1.9.3.AppImage
+	sha256sums = 2444302ea38ffa4385233bf1377813488ceaf43322c08a12d798fdb46f72bd5a
 
 pkgname = mqttx-appimage
