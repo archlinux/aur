@@ -23,4 +23,6 @@ source_armv7h=(
     ${url}/releases/download/v${pkgver}/linux-arm-7-${pkgname}-migration-tool-v${pkgver}.tar.gz
 )
 
-sha256sums=(SKIP)
+sha256sums_x86_64=(SKIP)
+sha256sums_aarch64=(SKIP)
+sha256sums_armv7h=(SKIP)
