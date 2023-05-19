@@ -1,7 +1,7 @@
 # Maintainer: Dee.H.Y <dongfengweixiao at hotmail dot com>
 pkgname=dahliaos-files-git
 pkgver=r101.4166d0a
-pkgrel=1
+pkgrel=2
 pkgdesc="File manager application for dahliaOS."
 arch=('x86_64')
 url="https://github.com/dahliaOS/files"
@@ -32,7 +32,7 @@ package() {
   cp -r * "$pkgdir/opt/${pkgname%-git}"
 
   install -d "$pkgdir/usr/bin"
-  ln -s "/opt/${pkgname%-git}/settings" "$pkgdir/usr/bin/${pkgname%-git}"
+  ln -s "/opt/${pkgname%-git}/files" "$pkgdir/usr/bin/${pkgname%-git}"
 
   install -Dm644 "$srcdir/files/dahliaOS/files.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
   install -Dm644 "$srcdir/${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications"

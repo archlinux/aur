@@ -1,7 +1,7 @@
 pkgbase = dahliaos-files-git
 	pkgdesc = File manager application for dahliaOS.
 	pkgver = r101.4166d0a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dahliaOS/files
 	arch = x86_64
 	license = Apache
