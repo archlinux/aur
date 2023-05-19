@@ -1,0 +1,19 @@
+pkgbase = python-python-lzo-git
+	pkgdesc = Python bindings for the LZO data compression library
+	pkgver = v1.16
+	pkgrel = 1
+	url = https://github.com/jd-boyd/python-lzo
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = lzo
+	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	provides = python-python-lzo
+	source = git+https://github.com/jd-boyd/python-lzo
+	sha256sums = SKIP
+
+pkgname = python-python-lzo-git
