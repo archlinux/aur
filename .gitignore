@@ -3,3 +3,5 @@ src/
 pkg/
 *.bash
 *.tar.*
+.envrc
+.trunk

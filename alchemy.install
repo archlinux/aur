@@ -1,8 +1,8 @@
 #!/bin/bash
 post_install() {
-    bash /opt/alchemy-next-viewer-git/etc/refresh_desktop_app_entry.sh "/opt/alchemy-next-viewer-git" "/usr/local/share/applications/"
-    bash /opt/alchemy-next-viewer-git/etc/register_secondlifeprotocol.sh
+  bash /opt/alchemy-next-viewer-git/etc/refresh_desktop_app_entry.sh "/opt/alchemy-next-viewer-git" "/usr/local/share/applications/"
+  bash /opt/alchemy-next-viewer-git/etc/register_secondlifeprotocol.sh
 }
 post_upgrade() {
-    post_install $1
+  post_install "$1"
 }
