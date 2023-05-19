@@ -1,7 +1,7 @@
 pkgbase = opentimelineio0.14
 	pkgdesc = Open Source API and interchange format for editorial timeline information
 	pkgver = 0.14.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://opentimeline.io/
 	arch = x86_64
 	license = Apache
