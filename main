@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-cd /usr/share/python-vita-parse-core
 export PATH="$PATH:/opt/vitasdk/bin/"
-python main.py "$@"
+python /usr/share/python-vita-parse-core/main.py "$@"
 
