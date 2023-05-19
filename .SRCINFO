@@ -1,0 +1,13 @@
+pkgbase = ytfind
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/305a385/ytfind/releases/tag/Release
+	arch = x86_64
+	license = AGPL3
+	makedepends = git
+	depends = curl
+	noextract = ytfind
+	source = https://github.com/305a385/ytfind/releases/download/v1.0/ytfind
+	sha256sums = 3d3d34bc8706794c735e26240f4a50ef1b7dd26abd8afbad695fe6b2bd4bf1ee
+
+pkgname = ytfind
