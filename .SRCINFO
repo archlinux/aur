@@ -1,0 +1,24 @@
+pkgbase = candy-git
+	pkgdesc = A WebSocket and TUN based VPN for Linux
+	pkgver = 1.10.r1.g10721db
+	pkgrel = 1
+	url = https://github.com/lanthora/candy
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = riscv64
+	license = MIT
+	makedepends = cmake
+	makedepends = make
+	makedepends = pkgconf
+	makedepends = clang
+	depends = spdlog
+	depends = openssl
+	depends = libconfig
+	depends = uriparser
+	conflicts = candy
+	backup = etc/candy.conf
+	source = candy-git::git+https://github.com/lanthora/candy.git
+	sha256sums = SKIP
+
+pkgname = candy-git
