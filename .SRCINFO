@@ -11,6 +11,7 @@ pkgbase = python-python-lzo-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
 	provides = python-python-lzo
 	source = git+https://github.com/jd-boyd/python-lzo
