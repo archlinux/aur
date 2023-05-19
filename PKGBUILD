@@ -1,6 +1,6 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=python-gettext
-pkgver=4.1
+pkgver=5.0
 pkgrel=1
 pkgdesc="Python implementation of Gettext"
 arch=('any')
@@ -9,12 +9,7 @@ license=('GPL3')
 depends=(python)
 makedepends=(python-setuptools)
 source=("https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('bd06f141d585db3258390e2381678cb0efde586a36bf3ab6aee5ced7dc8d6ffb')
-
-build() {
-    cd "$pkgname-$pkgver"
-    python setup.py build
-}
+sha256sums=('869af1ea45e3dab6180557259824c2a62f1800e1286226af912431fe75c5084c')
 
 package() {
     cd "$pkgname-$pkgver"
