@@ -2,18 +2,18 @@
 
 _dist=Future-IO
 pkgname=perl-future-io
-pkgver=0.13
+pkgver=0.14
 pkgrel=1
 pkgdesc="Future-returning IO methods"
-arch=('any')
-license=('PerlArtistic' 'GPL')
+arch=(any)
+license=(GPL PerlArtistic)
 options=('!emptydirs')
-depends=('perl-future' 'perl-struct-dumb' 'perl>=5.010')
-makedepends=('perl-module-build')
-checkdepends=('perl-test2-suite')
+depends=('perl>=5.010' perl-future perl-struct-dumb)
+makedepends=(perl-module-build)
+checkdepends=(perl-test2-suite perl-test-future-io-impl)
 url="https://metacpan.org/release/$_dist"
 source=("https://cpan.metacpan.org/authors/id/P/PE/PEVANS/$_dist-$pkgver.tar.gz")
-b2sums=('f165fab97da297a0202e8a323bc731438957d248270e4a95ad9374b770c18a287aaa7aef2bb27948832ffde5b14dbde5e0c9fbb3d81225c473bfa8c6637e6557')
+b2sums=('562e10a67bd45cb7d36471eee2d31a8cfa5e873fe73a4e4876da377f7eaf161fb55fcd4b60f1725632cb8898591e7559704c737c38ad1754209fc5cbb42f597b')
 
 build() {
   cd $_dist-$pkgver
