@@ -1,9 +1,13 @@
 post_install() {
   cat <<EOF
 To make use of X48ng you will need a HP-48 ROM.
-To initialize it, run as user :
+To initialize it, run this script as user :
   /usr/share/x48ng/setup-x48ng-home.sh
+Or use the native way :
+  x48ng -rom /usr/share/x48ng/ROMs/gxrom-r -initialize
+  x48ng -rom /usr/share/x48ng/ROMs/sxrom-j -initialize
 
 If xorg-mkfontscale and/or xorg-fonts-misc were just installed as dependencies, you need to logout and login back before running x48ng or setup.
+
 EOF
 }
