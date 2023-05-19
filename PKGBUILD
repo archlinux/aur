@@ -26,3 +26,11 @@ source_armv7h=(
 sha256sums_x86_64=(SKIP SKIP)
 sha256sums_aarch64=(SKIP SKIP)
 sha256sums_armv7h=(SKIP SKIP)
+package() {
+    _sysdir="${srcdir}/build/sysroot"
+	_name="${pkgname#*-}"
+	install -Dm755 "${_sysdir}/usr/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm755 "${_sysdir}/usr/bin/${pkgname}-migration-tool" "${pkgdir}/usr/bin/${pkgname}-migration-tool"
+	install -Dm644 "${_sysdir}/etc/casaos/${_name}.conf.sample" "${pkgdir}/etc/casaos/${_name}.conf"
+	install -Dm644 "${_sysdir}/usr/lib/systemd/system/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+}
