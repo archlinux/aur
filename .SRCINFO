@@ -1,6 +1,6 @@
 pkgbase = damask-wallpaper
 	pkgdesc = Automatically set wallpaper images from Internet sources
-	pkgver = 0.1.5
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://gitlab.gnome.org/subpop/damask
 	arch = x86_64
@@ -9,11 +9,13 @@ pkgbase = damask-wallpaper
 	makedepends = blueprint-compiler
 	makedepends = meson
 	makedepends = vala
+	depends = json-glib
 	depends = libadwaita
 	depends = libgee
 	depends = libportal-gtk4
+	depends = libsoup3
 	depends = xdg-desktop-portal
-	source = https://gitlab.gnome.org/subpop/damask/-/archive/v0.1.5/damask-v0.1.5.tar.gz
-	sha256sums = 6644efafbcc5f1231b29f8e4083c6e63837756b3cd8517445aa6a1d6bf7cb7a0
+	source = https://gitlab.gnome.org/subpop/damask/-/archive/v0.2.0/damask-v0.2.0.tar.gz
+	sha256sums = cf6946277733805c9954a69945b878ffb5b05f63c28c0391a7f660b33b5d9407
 
 pkgname = damask-wallpaper
