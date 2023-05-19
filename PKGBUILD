@@ -13,13 +13,13 @@ options=(!strip)
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 depends=('glibc' 'hicolor-icon-theme' 'zlib')
-_appimage="${pkgname%-bin}_${pkgver}_${pkgrel}_linux_x86_64.AppImage"
-source=("${_appimage}::${_githuburl}/releases/download/v${pkgver}/${_appimage}")
+_appimage="${pkgname%-bin}_linux_x86_64.AppImage"
+source=("${_appimage}_${pkgver}_${pkgrel}::${_githuburl}/releases/download/v${pkgver}/${_appimage}")
 sha256sums=('b6e241b6f12ea47ce3bebc988e47e0188b0b358ce191db4932acfe765ffe1f15')
 
 prepare() {
-	chmod +x "${_appimage}"
-	"./${_appimage}" --appimage-extract > /dev/null
+	chmod +x "${_appimage}_${pkgver}_${pkgrel}"
+	"./${_appimage}_${pkgver}_${pkgrel}" --appimage-extract > /dev/null
 }
 
 build() {
@@ -28,11 +28,11 @@ build() {
 
 package() {
 	# Install AppImage
-	install -Dm 755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${_appimage}"
+	install -Dm 755 "${srcdir}/${_appimage}_${pkgver}_${pkgrel}" "${pkgdir}/opt/${pkgname}/${_appimage}_${pkgver}_${pkgrel}"
 
 	#  Install a Symlink
 	install -dm755 -d "${pkgdir}/usr/bin"
-	ln -sf "/opt/${pkgname}/${_appimage}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+	ln -sf "/opt/${pkgname}/${_appimage}_${pkgver}_${pkgrel}" "${pkgdir}/usr/bin/${pkgname%-bin}"
 
 	# Install Icons
 	for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
