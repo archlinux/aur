@@ -2,7 +2,9 @@
 pkgname=find-broken-desktop
 pkgver=1.0
 pkgrel=3
-pkgdesc="Find desktop entries files with broken executables. Has similar functionality to fbrokendesktop"
+pkgdesc="Find desktop entries files with broken executables.
+Similar in functionality to fbrokendesktop, but written in python to avoid some
+of the shortcomings of parsing .desktop files with shell scripts"
 arch=("any")
 license=('MIT')
 depends=('python' 'python-pyxdg')

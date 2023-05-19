@@ -1,5 +1,5 @@
 pkgbase = find-broken-desktop
-	pkgdesc = Find desktop entries files with broken executables. Has similar functionality to fbrokendesktop
+	pkgdesc = Find desktop entries files with broken executables. Similar in functionality to fbrokendesktop, but written in python to avoid some of the shortcomings of parsing .desktop files with shell scripts
 	pkgver = 1.0
 	pkgrel = 3
 	arch = any
