@@ -1,16 +1,16 @@
 # Maintainer: Yorick Peterse <aur AT yorickpeterse DOT com>
 
 pkgname=inko-git
-pkgver=0.10.0.r2.gcfc2dce6
+pkgver=0.11.0.r1.g72160419
 pkgrel=1
-pkgdesc="A language for building concurrent software with confidence"
+pkgdesc="A language for building concurrent software with confidence "
 url="https://inko-lang.org"
 license=(MPL2)
 arch=(x86_64)
-depends=('libffi>=3.2.0')
-makedepends=('rust>=1.62' make)
+depends=('llvm>=15.0.0' 'llvm<=16.0.0' git base-devel)
+makedepends=('rust>=1.63' make)
 provides=(inko)
-conflicts=(inko inko-bin)
+conflicts=(inko)
 options=(strip !docs !libtool !staticlibs)
 source=('inko::git+https://github.com/inko-lang/inko.git')
 sha256sums=('SKIP')
@@ -22,10 +22,7 @@ pkgver() {
 
 build() {
     cd inko
-
-    # Enable the libffi-system feature so the system libffy is used, instead of
-    # compiling it from source.
-    make build FEATURES='libffi-system' PREFIX='/usr'
+    make build PREFIX='/usr'
 }
 
 package() {
