@@ -1,14 +1,15 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=collision
 _app_id=dev.geopjr.Collision
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Check hashes for your files. A simple GUI tool to generate, compare and verify MD5, SHA1 & SHA256 hashes"
 arch=('x86_64')
 url="https://collision.geopjr.dev"
 license=('BSD')
-depends=('libadwaita' 'libyaml')
+depends=('gc' 'libadwaita' 'pcre' 'python-gobject')
 makedepends=('crystal' 'gobject-introspection' 'shards' 'spglib')
 checkdepends=('appstream-glib')
 optdepends=('python-nautilus: Add a shortcut to the Nautilus right-click menu')
