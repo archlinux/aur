@@ -1,0 +1,17 @@
+pkgbase = escambo
+	pkgdesc = An HTTP-based APIs test application for GNOME
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/CleoMenezesJr/escambo
+	arch = any
+	license = GPL3
+	makedepends = blueprint-compiler
+	makedepends = meson
+	depends = gtksourceview5
+	depends = libadwaita
+	depends = python-gobject
+	depends = python-requests
+	source = escambo-0.1.0.tar.gz::https://github.com/CleoMenezesJr/escambo/archive/refs/tags/0.1.0.tar.gz
+	sha512sums = 69b80d8781409df11090f3b2ed6dd350375c4bd6446315d50fe3d1ce7e003321dd45d2de2c9b2ac70e4e68d25384dfce0f625c4947475fb5f904c1995fa85840
+
+pkgname = escambo
