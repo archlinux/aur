@@ -1,0 +1,20 @@
+pkgbase = batch-explorer-appimage
+	pkgdesc = A client tool to help create, debug and monitor Azure Batch Applications
+	pkgver = 2.17.0stable.801
+	pkgrel = 1
+	url = https://azure.github.io/BatchExplorer/
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	provides = batch-explorer
+	conflicts = batch-explorer
+	conflicts = batch-explorer-patterns
+	options = !strip
+	source = batch-explorer-2.17.0stable.801.AppImage::https://github.com/Azure/BatchExplorer/releases/download/v2.17.0-stable.801/BatchExplorer-2.17.0-stable.801.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/Azure/BatchExplorer/main/LICENSE
+	sha256sums = 42a50088a2d7a4db1cf2779e985e9b0c25d678910ce1f4ae2a83e6cfee19e4a6
+	sha256sums = 0b9ebab8a849f3ae8ed5bd7a35022bff9dce901efeeb53e855e91c02c8500ab0
+
+pkgname = batch-explorer-appimage
