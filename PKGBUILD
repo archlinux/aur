@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=PlotTools
-_pkgver=0.1.0
+_pkgver=0.2.0
 pkgname=r-${_pkgname,,}
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Add Continuous Legends to Plots'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9b7b664b134418d9c2d471cd09a6963a9db6d4964478af261c36ffa32bbc9eb7')
+sha256sums=('e0279af52bfb92da74771ca0b9cf499cf8c592b594e4a0c020996b64ed44a902')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
