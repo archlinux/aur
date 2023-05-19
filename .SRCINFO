@@ -1,0 +1,18 @@
+pkgbase = animos-appimage
+	pkgdesc = Clean and minimal Anime-streaming desktop application without any ads.
+	pkgver = 0.5.8
+	pkgrel = 1
+	url = https://animos.cf/
+	arch = x86_64
+	license = custom
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	provides = animos
+	conflicts = animos
+	conflicts = animos-patterns
+	options = !strip
+	source = animos-0.5.8.AppImage::https://github.com/keerthivasansa/animos/releases/download/v0.5.8/Animos-0.5.8.AppImage
+	sha256sums = 91c6ff65c927a1e8d5955789eb716ee52882baabc5ee8f69d99c2c702eadff0e
+
+pkgname = animos-appimage
