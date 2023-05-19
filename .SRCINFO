@@ -1,6 +1,6 @@
 pkgbase = graylog
 	pkgdesc = Free and open source log management platform
-	pkgver = 5.0.6
+	pkgver = 5.0.7
 	pkgrel = 1
 	url = https://github.com/graylog2/graylog2-server
 	changelog = UPGRADING.md
@@ -11,10 +11,10 @@ pkgbase = graylog
 	optdepends = mongodb>=5
 	optdepends = opensearch
 	backup = etc/graylog/server/server.conf
-	source = graylog-5.0.6.tar.gz::https://packages.graylog2.org/releases/graylog/graylog-5.0.6.tgz
+	source = graylog-5.0.7.tar.gz::https://packages.graylog2.org/releases/graylog/graylog-5.0.7.tgz
 	source = graylog-tmpfiles.conf
 	source = graylog.service
-	sha256sums = 18ec621b1d81538c7803d5b493de20a97961470a22c66d162b451937e2d79324
+	sha256sums = c06c3b8f5bc16b4c5ca327eb2bbc652c6284945d525768a39feb90f023a3f3b6
 	sha256sums = 4d3c0bb83c7a02a5a902670b060d045068f5201728194a4473b2c2ba99bbd43d
 	sha256sums = 42340980c59327d40354863da7431c4f92b45a19cea2cdccf2f2ae26e0adc38c
 
