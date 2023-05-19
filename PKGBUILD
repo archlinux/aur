@@ -3,12 +3,12 @@
 pkgname=wayward-git
 _realname=wayward
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast GTK shell and compositor for wayland and weston."
 arch=('x86_64')
 license=('GPL')
 url="https://github.com/varmd/wayward"
-depends=('weston' 'wayland' 'ttf-droid' 'adwaita-icon-theme' 'librsvg' 'sudo' 'alsa-lib')
+depends=('weston' 'wayland' 'ttf-droid' 'sudo' 'alsa-lib')
 makedepends=('wayland' 'gcc' 'fakeroot')
 options=(!emptydirs)
 source=("git+https://github.com/varmd/$_realname.git")
