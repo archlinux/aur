@@ -1,13 +1,13 @@
 pkgbase = git-xargs
 	pkgdesc = git-xargs is a command-line tool (CLI) for making updates across multiple Github repositories with a single command.
-	pkgver = 0.1.4
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/gruntwork-io/git-xargs
 	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = go
-	source = https://github.com/gruntwork-io/git-xargs/archive/refs/tags/v0.1.4.tar.gz
-	b2sums = 0c60f400fa3a3629c98f9175ddf56a19270d8423d15a401e3f8cf7b8907d226f5dcc6836d7a64d46c9f924dacc2630df6583e1b7ca7819f14d060e80a7ca9bd3
+	source = https://github.com/gruntwork-io/git-xargs/archive/refs/tags/v0.1.7.tar.gz
+	b2sums = 900273067e1928fbe6491d8248007878711161b3ed0b906f486c75a3ebd1cc9958792c149d00e59842a986936abd5ce981874916abeb9100cdfee17e15324a65
 
 pkgname = git-xargs
