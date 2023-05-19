@@ -1,0 +1,18 @@
+pkgbase = devsidecar-appimage
+	pkgdesc = 开发者边车，github打不开，github加速，git clone加速，git release下载加速，stackoverflow加速
+	pkgver = 1.7.3
+	pkgrel = 1
+	url = https://github.com/docmirror/dev-sidecar
+	arch = x86_64
+	license = MPL2
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = devsidecar
+	options = !strip
+	source = devsidecar-1.7.3.AppImage::https://github.com/docmirror/dev-sidecar/releases/download/v1.7.3/DevSidecar-1.7.3.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/docmirror/dev-sidecar/master/LICENSE
+	sha256sums = 4a611ca14165fe1b84b4d8d02bc0db0c15cf3446193def69ff3f474e2b8128e3
+	sha256sums = 1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5
+
+pkgname = devsidecar-appimage
