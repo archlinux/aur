@@ -1,4 +1,4 @@
-# Maintainer: JaydneDev <jdev0894@gmail.com>
+# Maintainer: JaydenDev <jdev0894@gmail.com>
 # Contributor: Davor Balder <dbalder@ozemail.com.au>
 # Contributor: Jiyunatori <tori_LEAVETHISOUT_@0xc29.net>
 # Contributor: mdev
@@ -17,7 +17,7 @@ optdepends=('java-runtime: For using ditaa.jar in the contrib directory'
 license=('GPL')
 install=emacs-org-mode.install
 source=("https://git.savannah.gnu.org/cgit/emacs/org-mode.git/snapshot/${_srcname}_${pkgver}.tar.gz")
-sha256sums=('946843b98bfb3109cbb6dcbdb2bf01d0d63807ea0699005c60b08fe4bacfba25')
+sha256sums=('788aa5c07ae6f4952f3455093dea34903f5ed7a49c86f41dae192c80be477216')
 
 build() {
   cd "${_srcname}_${pkgver}"
