@@ -3,7 +3,7 @@
 # Upstream: https://git.metalpunks.info/arch-ports
 
 pkgname=lbreakouthd
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Scalable 16:9 remake of LBreakout2"
 arch=('i686' 'x86_64' 'aarch64')
@@ -12,11 +12,11 @@ license=('GPL3')
 makedepends=('automake')
 depends=('sdl2' 'sdl2_ttf' 'sdl2_image' 'sdl2_mixer')
 source=("https://downloads.sourceforge.net/project/lgames/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('7caef0e6e4bbccf2676c4998dd8a71a00f5c1aea2841b5650c1f4cbbac81f21c')
+sha256sums=('069179f377f689fe05789d858bff06658ba1e53dfb19774dabf5b0e0b33ae706')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  cp /usr/share/automake*/config.guess .
+  cp $(ls -td /usr/share/automake-* | head -n1)/config.guess .
   sed -i 's|-Wno-format||g' configure
 }
 
