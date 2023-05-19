@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=soundux
 pkgver=0.2.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform soundboard - stable version"
 arch=('any')
 url="https://soundux.rocks"
@@ -13,13 +13,16 @@ source=("https://github.com/Soundux/Soundux/releases/download/$pkgver/soundux-$p
 sha256sums=('017003fc96f49df30575975f3904c0d8a500e325a9d2bca8c3dc69fed0cab0a7')
 
 prepare() {
-  sed -i /-Werror/d "$srcdir/Soundux/CMakeLists.txt"
+  echo "add_definitions(-Wno-deprecated)" >> "$srcdir/Soundux/CMakeLists.txt"
+  sed -i "/pthread.h/c\#include <pthread.h>\n#include <cstdint>" "$srcdir/Soundux/lib/guardpp/guard/include/core/linux/guard.hpp"
+  sed -i "/target_compile_options/c\add_definitions(-w)" "$srcdir/Soundux/src/ui/impl/webview/lib/webviewpp/CMakeLists.txt"
 }
 
 build() {
   cd "${srcdir}/Soundux"
   mkdir -p build
   cd build
+  
   cmake -GNinja -DCMAKE_BUILD_TYPE=Release ..
   ninja
 }
