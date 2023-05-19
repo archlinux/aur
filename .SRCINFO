@@ -1,0 +1,22 @@
+pkgbase = dahliaos-clock-git
+	pkgdesc = dahliaOS built-in clock and alarms application.
+	pkgver = r101.4166d0a
+	pkgrel = 1
+	url = https://github.com/dahliaOS/clock
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = flutter>=3.10.0
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = imagemagick
+	makedepends = clang>=11.0.0
+	depends = gtk3
+	provides = dahliaos-clock
+	conflicts = dahliaos-clock
+	source = git+https://github.com/dahliaOS/clock.git
+	source = dahliaos-clock.desktop
+	sha256sums = SKIP
+	sha256sums = 41a11b723315c19014d21c4b177c513251d03ea773783ab674296035fb52d13c
+
+pkgname = dahliaos-clock-git

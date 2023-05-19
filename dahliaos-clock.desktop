@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Icon=dahliaos-clock
+Name=dahliaOS Clock
+Exec=/opt/dahliaos-clock/clock
+Terminal=false
+Hidden=false
+Categories=Utility;
+Comment=dahliaOS Clock application
