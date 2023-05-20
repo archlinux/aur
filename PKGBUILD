@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python>=3.8')
 makedepends=(python-{build,installer,wheel} 'python-maturin>=0.14' 'python-maturin<0.15')
 checkdepends=('python-pytest>=7')
-source=("https://files.pythonhosted.org/packages/sources/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('0de7e0fe110650a79c1e1fca10a188da5b6fc6b2f3730c69dc411782e3b4923a')
 build() {
   cd "$_name-$pkgver"
