@@ -1,3 +1,4 @@
 vkd3d-proton-*.tar*
 src/
 pkg/
+*.log
