@@ -2,7 +2,7 @@
 
 pkgname=cloudsend
 pkgver=2.2.8
-pkgrel=2
+pkgrel=4
 pkgdesc="Bash script that uses curl to send files to a nextcloud/owncloud shared folder"
 url="https://github.com/tavinus/cloudsend.sh"
 license=("AGPL-3.0")
