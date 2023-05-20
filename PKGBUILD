@@ -1,7 +1,7 @@
 # Maintainer: Donald Carr <sirspudd at gmail dot com>
 
 pkgname=('clang-prefixed-git')
-pkgver=17.0.0_r461666.ac73c48e091c
+pkgver=17.0.0_r463221.eecaeb6f100a
 pkgrel=2
 arch=('x86_64')
 url="https://llvm.org/"
@@ -11,10 +11,34 @@ makedepends=('git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2'
              'ocl-icd' 'opencl-headers' 'z3' 'jsoncpp' 'clang')
 checkdepends=("python-psutil")
 source=("git+https://github.com/llvm/llvm-project.git")
+if [[ -n ${LOCAL_LLVM_REPO} ]]; then
+source=("git+file://${LOCAL_LLVM_REPO}#branch=main")
+fi
 sha512sums=('SKIP')
+install=clang.install
+static_build=true
 
 prefix_path="/opt/clang"
 install_path="${prefix_path}/${pkgver}"
+
+shared_library_build_options="
+            -DCMAKE_EXE_LINKER_FLAGS=-Wl,-Bsymbolic-functions \
+            -DCMAKE_SHARED_LINKER_FLAGS=-Wl,-Bsymbolic-functions \
+            -DLLVM_LINK_LLVM_DYLIB=ON \
+            -DCLANG_LINK_CLANG_DYLIB=ON \
+	"
+
+additional_build_options=""
+
+if ! $static_build; then
+	additional_build_options="${additional_build_options} ${shared_library_build_options}"
+fi
+
+_prepare_install_script() {
+	cp ${startdir}/.clang.install ${startdir}/clang.install
+	sed -i "s,CLANG_PREFIX,${prefix_path},g" ${startdir}/clang.install
+	sed -i "s,CLANG_VERSION,${pkgver},g" ${startdir}/clang.install
+}
 
 pkgver() {
     cd llvm-project/llvm
@@ -55,11 +79,7 @@ build() {
             -DCMAKE_C_COMPILER=clang \
             -DCMAKE_CXX_COMPILER=clang++ \
             -DCMAKE_INSTALL_PREFIX:PATH=${install_path} \
-            -DCMAKE_EXE_LINKER_FLAGS=-Wl,-Bsymbolic-functions \
-            -DCMAKE_SHARED_LINKER_FLAGS=-Wl,-Bsymbolic-functions \
             -DLLVM_ENABLE_LTO=Thin \
-            -DLLVM_LINK_LLVM_DYLIB=ON \
-            -DCLANG_LINK_CLANG_DYLIB=ON \
             -DLLVM_ENABLE_PROJECTS="bolt;clang;clang-tools-extra;libc;libclc;lld;lldb;openmp;polly;pstl;compiler-rt" \
             -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;libunwind" \
             -DCMAKE_BUILD_TYPE=Release \
@@ -69,14 +89,9 @@ build() {
 }
 
 package() {
+	_prepare_install_script
     cd llvm-project/llvm
 
     #rm -Rf ${pkgdir}
     DESTDIR="$pkgdir" ninja -C _build install | tee ${pkgname}-install.log
-
-    # time to fix broken bolt binary output
-    #hugify_path=$(find _build -name "libbolt_rt_hugify.a")
-    #hugify_dir=$(dirname ${hugify_path})
-    #mv ${hugify_dir}/*.a ${pkgdir}/${install_path}/lib
-    # end bolt workaround
 }
