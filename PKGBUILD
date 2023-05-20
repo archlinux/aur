@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=conntrack-tools-git
-pkgver=1.4.7.r9.ga6ec82b
+pkgver=1.4.7.r10.g7b899cb
 pkgrel=1
 pkgdesc="A tool to view and manage the in-kernel connection tracking state table from userspace"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ provides=("conntrack-tools=$pkgver")
 conflicts=('conntrack-tools')
 backup=('etc/conntrackd.conf')
 source=("git://git.netfilter.org/conntrack-tools"
-        "conntrackd.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/conntrack-tools/trunk/conntrackd.service")
+        "conntrackd.service::https://gitlab.archlinux.org/archlinux/packaging/packages/conntrack-tools/-/raw/main/conntrackd.service")
 sha256sums=('SKIP'
             'SKIP')
 
