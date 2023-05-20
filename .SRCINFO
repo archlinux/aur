@@ -21,6 +21,7 @@ pkgbase = unreal-engine
 	depends = python
 	depends = dotnet-runtime
 	depends = dotnet-sdk
+	depends = vulkan-icd-loader
 	depends = lld
 	depends = xdg-user-dirs
 	depends = dos2unix
