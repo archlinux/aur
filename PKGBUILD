@@ -1,18 +1,16 @@
 # Maintainer : Victor Savcenco <victor dot sav at linux dot com>
 
-DLAGENTS=('https::/usr/bin/curl -gqb "" -A "Mozilla/5.0" -fLC - --retry 3 --retry-delay 3 -o %o %u')
-
 pkgname=uqm-megamod-addon-vols-remix
 _pkgname=uqm-megamod
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
-pkgdesc="Volasaurus' complete remix Pack for the Ur-Quan Masters MegaMod by Serosis."
+pkgdesc="Volasaurus' complete remix Pack for the Ur-Quan Masters MegaMod by JHGuitarFreak (Kohr-Ah Death)."
 arch=("any")
-url="https://github.com/Serosis/UQM-MegaMod-Content"
+url="https://github.com/JHGuitarFreak/UQM-MegaMod-Content"
 license=("custom:CC BY-NC-SA 2.5")
 
 source=(
-  "mm-${pkgver}-vols-remix.uqm::https://files.serosis.net/MegaMod/${pkgver}/mm-${pkgver}-vols-remix.uqm"
+  "mm-${pkgver}-vols-remix.uqm::https://phoenixnap.dl.sourceforge.net/project/uqm-mods/MegaMod/${pkgver}/Content/Addons/mm-vols-remix.uqm"
   "LICENSE.txt::https://raw.githubusercontent.com/Serosis/UQM-MegaMod-Content/master/addons/volasaurus-remix-pack/LICENSE.txt"
   LICENSE
 )
