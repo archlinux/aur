@@ -1,0 +1,57 @@
+pkgbase = linux-sched-ext-git
+	pkgdesc = Linux Kernel based on the sched_ext branch
+	pkgver = 3.1.r921111.g7130c7d74aa3
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = libelf
+	makedepends = git
+	makedepends = pahole
+	makedepends = cpio
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
+	makedepends = python
+	options = !strip
+	source = git+https://github.com/sched-ext/sched_ext.git#branch=sched_ext
+	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/6.3/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+	source = config
+	source = https://mirror.cachyos.org/bpf-sched/scx_atropos
+	source = https://mirror.cachyos.org/bpf-sched/scx-example/scx_example_central
+	source = https://mirror.cachyos.org/bpf-sched/scx-example/scx_example_flatcg
+	source = https://mirror.cachyos.org/bpf-sched/scx-example/scx_example_pair
+	source = https://mirror.cachyos.org/bpf-sched/scx-example/scx_example_qmap
+	source = https://mirror.cachyos.org/bpf-sched/scx-example/scx_example_simple
+	source = https://mirror.cachyos.org/bpf-sched/scx-example/scx_example_userland
+	b2sums = SKIP
+	b2sums = 07b4e2f4ce58c29fa811799b4caabbf4a73cb95db2637a3c4f980cbf169aad76963d5add3cc9956d0a9abd6b66bf0b27f5dd1a9cec6211596d711017636f9a4e
+	b2sums = 3ebf9af689982e628b9bbef3d998183b02350f96ea70dcf6077f3e4dd6eb4b972c2a8f6fae59de9bcd156cf529f1ddbeb8942826d6cbd2f3dac15dc2f2bde80f
+	b2sums = d13ab55728b87f18e16f23831aed6d5677f14a77733f030a2477514bfb46fd6eb8f108e060e349c9232349ff225284b8c6e3516c6a9d9afe64514b49f52d4352
+	b2sums = a6d9c881ab2ce1fa9c5ce1fb0cd1fadd76e3bcbe1b09572aca561b49ccb373ca94e2127cfdb6dc64b517d531108390f3dcb8684a2be4f17899db8c92232a48ef
+	b2sums = 98c81b50f301c5c409de53ff5466189ddc3aa33cc924685ddec92cf7137d7f8bfd0fd8d7658f4ae5504bea162b330f3b973c408acf873f5958ef73da745a9c79
+	b2sums = 9ce29ea136cdbaf7bbaed771a9218ac8bd80da199ff10f92e15cd66894d82ae4f4408b4b71f6315559a5e3a9ffc3131279ab084fe697579fb7871909a58c6551
+	b2sums = a530b5ce84c91eb57a64b7f6f07b8f20eabd823cf67154da5c9d4d18a14ad8a661a68f241babf3ce7515c25f5ecfabaf06a922e58bd5fa5ec405ff956c4aecf2
+	b2sums = 87afb2f3b2d220444be1879d46d6de562f549c35344153ced9a8af282e8693ff4c5db6493fec174bf35f762b024de4f7a1f33fb78e407b60a1b48c56242d7702
+	b2sums = 4f0c708c49eb54709a646962c93d35426d5beb0ff53460ebe3601d9832cbd71664cfad9c5e18d8097d616674c6dd2067926dae90866f83319e354c4376e96463
+
+pkgname = linux-sched-ext-git
+	pkgdesc = The Linux Kernel based on the sched_ext branch kernel and modules
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	provides = KSMBD-MODULE
+
+pkgname = linux-sched-ext-git-headers
+	pkgdesc = Headers and scripts for building modules for the Linux Kernel based on the sched_ext branch kernel
+	depends = linux-sched-ext-git
+	depends = pahole
+
+pkgname = linux-sched-ext-git-scheduler
+	pkgdesc = Precompiled Schedulers for Linux Kernel based on the sched_ext branch kernel
