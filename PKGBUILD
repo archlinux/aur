@@ -3,7 +3,7 @@
 
 pkgbase=dxvk-async-git
 pkgname=('dxvk-async-git')
-pkgver=2.1.r59.g6b779206
+pkgver=2.2.r7.gf2bb1d4b
 pkgrel=1
 pkgdesc="A Vulkan-based compatibility layer for Direct3D 9/10/11 which allows running 3D applications on Linux using Wine. Windows DLL version)"
 arch=('x86_64')
@@ -43,7 +43,7 @@ prepare() {
     git config submodule.include/spirv.url "$srcdir/SPIRV-Headers"
     git -c protocol.file.allow=always submodule update include/{native/directx,vulkan,spirv}
 
-    patch --forward --strip=1 --input="${srcdir}/dxvk-gplasync/dxvk-gplasync-2.1-2.patch"
+    patch --forward --strip=1 --input="${srcdir}/dxvk-gplasync/dxvk-gplasync-2.2-1.patch"
 }
 
 build() {
