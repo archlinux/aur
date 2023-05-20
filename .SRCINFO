@@ -1,5 +1,5 @@
 pkgbase = python-ubi_reader-git
-	pkgdesc = Python bindings for the LZO data compression library
+	pkgdesc = Scripts for reading information about and extracting data from UBI and UBIFS images.
 	pkgver = v0.8.6.r2.gdc9075c
 	pkgrel = 1
 	url = https://github.com/onekey-sec/ubi_reader
@@ -15,7 +15,7 @@ pkgbase = python-ubi_reader-git
 	makedepends = python-pytest
 	makedepends = python-pytest-cov
 	depends = python
-	provides = ubi_reader
+	provides = python-ubi_reader
 	source = git+https://github.com/onekey-sec/ubi_reader
 	sha256sums = SKIP
 
