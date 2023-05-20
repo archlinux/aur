@@ -3,12 +3,12 @@
 _base=holoviews
 pkgname=python-${_base}
 pkgver=1.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="With Holoviews, your data visualizes itself"
 arch=(any)
 url="https://${_base}.org"
 license=('custom:BSD-3-clause')
-depends=(python-pandas python-panel python-colorcet)
+depends=(python-panel python-colorcet)
 makedepends=(python-build python-installer)
 optdepends=('jupyter-nbconvert: for use holoviews command')
 source=(${_base}-${pkgver}.tar.gz::https://github.com/holoviz/${_base}/archive/v${pkgver}.tar.gz)
@@ -29,5 +29,4 @@ package() {
   ln -s "${site_packages}/${_base}-${pkgver}.dist-info/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
-  rm "${pkgdir}$(python -c "import site; print(site.getsitepackages()[0])")"/${_base}/.version
 }
