@@ -13,7 +13,8 @@ _py_deps=(arpy
           click
           cstruct
           dissect.cstruct
-          hyperscan
+          pyperscan # pyperscan replaces hyperscan 
+          # see : https://github.com/onekey-sec/unblob/pull/411#issuecomment-1555961215
           jefferson
           lark
           lief
