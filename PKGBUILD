@@ -1,7 +1,7 @@
 # Maintainer: Mia Sireneva <mia_sireneva@riseup.net>
 
 pkgname=mediamtx-bin
-pkgver=0.23.0
+pkgver=0.23.1
 pkgrel=1
 pkgdesc='Also known as rtsp-simple-server. ready-to-use RTSP / RTMP / LL-HLS / WebRTC server and proxy that allows to read, publish and proxy video and audio streams.'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -27,9 +27,9 @@ sha256sums=(
 	'7e3736dfad3141a3f263fb29a05885670961f07dfbdad8bdbb5de41e3433f3b0'
 )
 
-sha256sums_x86_64=('bbc98d81808c94a707ad0564463a62a3d183e8de178f711e04400b18d0514ef7')
-sha256sums_armv7h=('995517ae982750d844a31253e33af7a0c3e8bd192f296d4d805d1a0184b80b88')
-sha256sums_aarch64=('723e78b8c2dbad3b0cf686c18e293c9496479bb6bec01e548f4561591edd15ed')
+sha256sums_x86_64=('4f4088af1ccb260fccc3821ed016e18ece07c4812161617f038203bc4d43ae3a')
+sha256sums_armv7h=('b9762874b7e0ef824ca455b85a0c021a5eee5d1a52da197060445a46dea78b3a')
+sha256sums_aarch64=('0635525e43d95b0d2243f63f314250c9ab6e0386c1b99fbf4492e62027a5df77')
 
 package() {
 	cd "$srcdir"
