@@ -1,5 +1,5 @@
 pkgbase = reposilite
-	pkgdesc = Reposilite (formerly NanoMaven) - lightweight repository manager for Maven artifacts. It is a simple solution to replace managers like Nexus, Archiva or Artifactory.
+	pkgdesc = Lightweight repository manager for Maven artifacts. It is a simple solution to replace managers like Nexus, Archiva or Artifactory.
 	pkgver = 3.4.4
 	pkgrel = 1
 	url = https://reposilite.com
@@ -9,6 +9,7 @@ pkgbase = reposilite
 	makedepends = nodejs-lts-hydrogen
 	makedepends = npm
 	depends = java-runtime-headless>=18
+	depends = bash
 	backup = etc/reposilite/configuration.cdn
 	backup = etc/reposilite/default.env
 	source = reposilite-3.4.4.tar.gz::https://github.com/dzikoysk/reposilite/archive/3.4.4.tar.gz

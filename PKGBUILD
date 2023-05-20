@@ -4,11 +4,11 @@
 pkgname=reposilite
 pkgver=3.4.4
 pkgrel=1
-pkgdesc="Reposilite (formerly NanoMaven) - lightweight repository manager for Maven artifacts. It is a simple solution to replace managers like Nexus, Archiva or Artifactory."
+pkgdesc="Lightweight repository manager for Maven artifacts. It is a simple solution to replace managers like Nexus, Archiva or Artifactory."
 arch=(any)
 url="https://reposilite.com"
 license=('Apache')
-depends=('java-runtime-headless>=18')
+depends=('java-runtime-headless>=18' 'bash')
 makedepends=('java-environment=18' 'nodejs-lts-hydrogen' 'npm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dzikoysk/reposilite/archive/$pkgver.tar.gz"
         "$pkgname.service"
