@@ -36,7 +36,7 @@ pkgbase = ytmdl
 	depends = python-pycryptodome
 	optdepends = tensorflow: Trim Support
 	provides = ytmdl
-	conflicts = ytmdl-git
+	conflicts = ytmdl
 	source = https://files.pythonhosted.org/packages/ef/99/a7de28eb06797d63126c5655590998d1389adf81547e4a876e678d1904f7/ytmdl-2023.2.28.tar.gz
 	md5sums = SKIP
 
