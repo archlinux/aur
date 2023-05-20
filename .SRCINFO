@@ -1,0 +1,32 @@
+pkgbase = python-pyperscan
+	pkgdesc = A hyperscan binding for Python, which supports vectorscan
+	pkgver = 0.2.2.r18.ge807359
+	pkgrel = 1
+	url = https://github.com/onekey-sec/pyperscan
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	makedepends = ragel
+	makedepends = clang
+	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-maturin>=0.14
+	makedepends = python-maturin<0.15
+	depends = python
+	provides = python-pyperscan
+	source = git+https://github.com/vlaci/pyperscan.git
+	source = git+https://github.com/VectorCamp/vectorscan#commit=b4bba94b1a250603b0b198e0394946e32f6c3f30
+	source = git+https://github.com/intel/hyperscan#commit=bc3b191ab56055e8560c7cdc161c289c4d76e3d2
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = python-pyperscan
