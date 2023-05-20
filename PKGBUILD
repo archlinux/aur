@@ -19,8 +19,8 @@ options=('staticlibs')
 install="$pkgname.install"
 source=('graalvm-ee-rebuild-libpolyglot.hook')
 sha256sums=('7dc37bd3703ebebcd6efa39534e6bb6e3ec9c8ee0d97e46d6df5349739c7d2ca')
-sha256sums_x86_64=('da5fa968adcbcd142df18ebbbd09dde9dee0dc8e8a56a62a0dd95c35029d0b7c')
-sha256sums_aarch64=('d32ccbe8e71cae2415f035c638b6336f8a4d3078daefdf053dcb448f07caeb1f')
+sha256sums_x86_64=('ae68313e87e6fba2295321066bab859a847b6a9a180f55f0d22f989e59c8abfc')
+sha256sums_aarch64=('1490bbb7f0b10f47fcb93cc7c4970cab426c8d9c16265c064d2dc026e2ea19b3')
 source_x86_64=("https://oca.opensource.oracle.com/gds/GRAALVM_EE_JAVA${java_}_${pkgver//./_}/graalvm-ee-java${java_}-linux-amd64-${pkgver}.tar.gz")
 source_aarch64=("https://oca.opensource.oracle.com/gds/GRAALVM_EE_JAVA${java_}_${pkgver//./_}/graalvm-ee-java${java_}-linux-aarch64-${pkgver}.tar.gz")
 
