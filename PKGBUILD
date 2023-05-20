@@ -79,7 +79,4 @@ package() {
     #hugify_dir=$(dirname ${hugify_path})
     #mv ${hugify_dir}/*.a ${pkgdir}/${install_path}/lib
     # end bolt workaround
-
-    cd ${pkgdir}${prefix_path}
-    ln -s ${pkgver} latest
 }
