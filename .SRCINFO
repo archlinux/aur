@@ -1,6 +1,6 @@
 pkgbase = slepc
 	pkgdesc = Scalable library for Eigenvalue problem computations
-	pkgver = 3.19.0
+	pkgver = 3.19.1
 	pkgrel = 1
 	url = https://slepc.upv.es
 	install = slepc.install
@@ -8,7 +8,7 @@ pkgbase = slepc
 	license = custom
 	makedepends = gcc-fortran
 	depends = petsc>=3.19
-	source = https://slepc.upv.es/download/distrib/slepc-3.19.0.tar.gz
-	md5sums = 0854f2c05f0474748943041547881554
+	source = https://slepc.upv.es/download/distrib/slepc-3.19.1.tar.gz
+	md5sums = 00c1fa02e573e3a2f43fecb9298a00a3
 
 pkgname = slepc
