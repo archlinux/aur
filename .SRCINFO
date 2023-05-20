@@ -1,6 +1,6 @@
 pkgbase = icecast-git
 	pkgdesc = A streaming media (audio/video) server
-	pkgver = 2.5.0.beta.3.r1.g4628ee97
+	pkgver = 2.4.3.r1091.g57093def
 	pkgrel = 1
 	url = https://www.icecast.org/
 	arch = i686
@@ -14,15 +14,15 @@ pkgbase = icecast-git
 	depends = libvorbis
 	depends = speex
 	depends = libkate
-	provides = icecast=2.5.0.beta.3.r1.g4628ee97
+	provides = icecast=2.4.3.r1091.g57093def
 	conflicts = icecast
 	backup = etc/icecast.xml
 	backup = etc/logrotate.d/icecast
 	source = git+https://gitlab.xiph.org/xiph/icecast-server.git
-	source = icecast.logrotate::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/icecast/trunk/icecast.logrotate
-	source = icecast.service::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/icecast/trunk/icecast.service
-	source = icecast.sysusers::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/icecast/trunk/icecast.sysusers
-	source = icecast.tmpfiles::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/icecast/trunk/icecast.tmpfiles
+	source = icecast.logrotate::https://gitlab.archlinux.org/archlinux/packaging/packages/icecast/-/raw/main/icecast.logrotate
+	source = icecast.service::https://gitlab.archlinux.org/archlinux/packaging/packages/icecast/-/raw/main/icecast.service
+	source = icecast.sysusers::https://gitlab.archlinux.org/archlinux/packaging/packages/icecast/-/raw/main/icecast.sysusers
+	source = icecast.tmpfiles::https://gitlab.archlinux.org/archlinux/packaging/packages/icecast/-/raw/main/icecast.tmpfiles
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

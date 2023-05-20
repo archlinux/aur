@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=icecast-git
-pkgver=2.5.0.beta.3.r1.g4628ee97
+pkgver=2.4.3.r1091.g57093def
 pkgrel=1
 pkgdesc="A streaming media (audio/video) server"
 arch=('i686' 'x86_64')
@@ -14,10 +14,10 @@ conflicts=('icecast')
 backup=('etc/icecast.xml'
         'etc/logrotate.d/icecast')
 source=("git+https://gitlab.xiph.org/xiph/icecast-server.git"
-        "icecast.logrotate::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/icecast/trunk/icecast.logrotate"
-        "icecast.service::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/icecast/trunk/icecast.service"
-        "icecast.sysusers::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/icecast/trunk/icecast.sysusers"
-        "icecast.tmpfiles::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/icecast/trunk/icecast.tmpfiles")
+        "icecast.logrotate::https://gitlab.archlinux.org/archlinux/packaging/packages/icecast/-/raw/main/icecast.logrotate"
+        "icecast.service::https://gitlab.archlinux.org/archlinux/packaging/packages/icecast/-/raw/main/icecast.service"
+        "icecast.sysusers::https://gitlab.archlinux.org/archlinux/packaging/packages/icecast/-/raw/main/icecast.sysusers"
+        "icecast.tmpfiles::https://gitlab.archlinux.org/archlinux/packaging/packages/icecast/-/raw/main/icecast.tmpfiles")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -36,7 +36,10 @@ prepare() {
 pkgver() {
   cd "icecast-server"
 
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
