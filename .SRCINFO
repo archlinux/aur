@@ -1,0 +1,22 @@
+pkgbase = python-dissect.cstruct-git
+	pkgdesc = A Dissect module implementing a parser for C-like structures.
+	pkgver = 3.6.r2.gfeb6476
+	pkgrel = 1
+	url = https://github.com/fox-it/dissect.cstruct
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = lzo
+	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python
+	provides = python-dissect.cstruct
+	source = git+https://github.com/fox-it/dissect.cstruct
+	sha256sums = SKIP
+
+pkgname = python-dissect.cstruct-git
