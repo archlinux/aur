@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=dropbear-git
-pkgver=2022.83.r33.g2cdc7d6
+pkgver=2022.83.r41.g5040f21
 pkgrel=1
 pkgdesc="Small SSH server and client"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ makedepends=('git')
 provides=("dropbear=$pkgver")
 conflicts=('dropbear')
 source=("git+https://github.com/mkj/dropbear.git"
-        "dropbear.service::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/dropbear/trunk/dropbear.service"
-        "localoptions.h::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/dropbear/trunk/localoptions.h")
+        "dropbear.service::https://gitlab.archlinux.org/archlinux/packaging/packages/dropbear/-/raw/main/dropbear.service"
+        "localoptions.h::https://gitlab.archlinux.org/archlinux/packaging/packages/dropbear/-/raw/main/localoptions.h")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')

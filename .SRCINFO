@@ -1,6 +1,6 @@
 pkgbase = dropbear-git
 	pkgdesc = Small SSH server and client
-	pkgver = 2022.83.r33.g2cdc7d6
+	pkgver = 2022.83.r41.g5040f21
 	pkgrel = 1
 	url = https://matt.ucc.asn.au/dropbear/dropbear.html
 	arch = i686
@@ -10,11 +10,11 @@ pkgbase = dropbear-git
 	depends = glibc
 	depends = pam
 	depends = zlib
-	provides = dropbear=2022.83.r33.g2cdc7d6
+	provides = dropbear=2022.83.r41.g5040f21
 	conflicts = dropbear
 	source = git+https://github.com/mkj/dropbear.git
-	source = dropbear.service::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/dropbear/trunk/dropbear.service
-	source = localoptions.h::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/dropbear/trunk/localoptions.h
+	source = dropbear.service::https://gitlab.archlinux.org/archlinux/packaging/packages/dropbear/-/raw/main/dropbear.service
+	source = localoptions.h::https://gitlab.archlinux.org/archlinux/packaging/packages/dropbear/-/raw/main/localoptions.h
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
