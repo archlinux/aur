@@ -1,6 +1,6 @@
 pkgbase = apache-git
 	pkgdesc = Provides useful functions commonly found on BSD systems
-	pkgver = 2.4.57.r11194.gabeee9dc35
+	pkgver = 2.4.57.r11251.g14aa4f56d7
 	pkgrel = 1
 	url = https://httpd.apache.org/
 	arch = i686
@@ -26,7 +26,7 @@ pkgbase = apache-git
 	optdepends = lynx: apachectl status
 	optdepends = perl: for apxs and dbmmanage
 	optdepends = uwsgi: for mod_proxy_uwsgi module
-	provides = apache=2.4.57.r11194.gabeee9dc35
+	provides = apache=2.4.57.r11251.g14aa4f56d7
 	conflicts = apache
 	backup = etc/httpd/conf/httpd.conf
 	backup = etc/httpd/conf/extra/httpd-autoindex.conf
@@ -45,10 +45,10 @@ pkgbase = apache-git
 	backup = etc/httpd/conf/magic
 	backup = etc/logrotate.d/httpd
 	source = git+https://github.com/apache/httpd.git
-	source = apache.tmpfiles.conf::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/apache/trunk/apache.tmpfiles.conf
-	source = arch.layout::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/apache/trunk/arch.layout
-	source = httpd.logrotate::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/apache/trunk/httpd.logrotate
-	source = httpd.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/apache/trunk/httpd.service
+	source = apache.tmpfiles.conf::https://gitlab.archlinux.org/archlinux/packaging/packages/apache/-/raw/main/apache.tmpfiles.conf
+	source = arch.layout::https://gitlab.archlinux.org/archlinux/packaging/packages/apache/-/raw/main/arch.layout
+	source = httpd.logrotate::https://gitlab.archlinux.org/archlinux/packaging/packages/apache/-/raw/main/httpd.logrotate
+	source = httpd.service::https://gitlab.archlinux.org/archlinux/packaging/packages/apache/-/raw/main/httpd.service
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

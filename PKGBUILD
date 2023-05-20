@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=apache-git
-pkgver=2.4.57.r11194.gabeee9dc35
+pkgver=2.4.57.r11251.g14aa4f56d7
 pkgrel=1
 pkgdesc="Provides useful functions commonly found on BSD systems"
 arch=('i686' 'x86_64')
@@ -25,10 +25,10 @@ backup=('etc/httpd/conf/httpd.conf'
         'etc/httpd/conf'/{mime.types,magic}
         'etc/logrotate.d/httpd')
 source=("git+https://github.com/apache/httpd.git"
-        "apache.tmpfiles.conf::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/apache/trunk/apache.tmpfiles.conf"
-        "arch.layout::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/apache/trunk/arch.layout"
-        "httpd.logrotate::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/apache/trunk/httpd.logrotate"
-        "httpd.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/apache/trunk/httpd.service")
+        "apache.tmpfiles.conf::https://gitlab.archlinux.org/archlinux/packaging/packages/apache/-/raw/main/apache.tmpfiles.conf"
+        "arch.layout::https://gitlab.archlinux.org/archlinux/packaging/packages/apache/-/raw/main/arch.layout"
+        "httpd.logrotate::https://gitlab.archlinux.org/archlinux/packaging/packages/apache/-/raw/main/httpd.logrotate"
+        "httpd.service::https://gitlab.archlinux.org/archlinux/packaging/packages/apache/-/raw/main/httpd.service")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
