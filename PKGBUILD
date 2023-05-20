@@ -1,6 +1,6 @@
 # Maintainer: KirottuM <arnovaara@gmail.com>
 pkgname="kidex"
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A simple file indexing service"
 arch=("x86_64")
@@ -8,7 +8,7 @@ url="github.com/Kirottu/kidex"
 license=('GPL3')
 makedepends=(git cargo)
 source=("https://github.com/Kirottu/kidex/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2bc29befccb6c9980367d4c38b5091787e43905440e0ca8c17c071770170226c')
+sha256sums=('02ca4c85b5e796df9c9587870da39a4df014247a4cc6a356e9000976decc674e')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"

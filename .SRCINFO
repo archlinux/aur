@@ -1,13 +1,13 @@
 pkgbase = kidex
 	pkgdesc = A simple file indexing service
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = github.com/Kirottu/kidex
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = cargo
-	source = https://github.com/Kirottu/kidex/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 2bc29befccb6c9980367d4c38b5091787e43905440e0ca8c17c071770170226c
+	source = https://github.com/Kirottu/kidex/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 02ca4c85b5e796df9c9587870da39a4df014247a4cc6a356e9000976decc674e
 
 pkgname = kidex
