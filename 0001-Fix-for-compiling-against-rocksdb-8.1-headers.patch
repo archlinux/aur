@@ -1,0 +1,29 @@
+From f97b607a198e4d7f52550f062b9379d6a17303b4 Mon Sep 17 00:00:00 2001
+From: Calin Culianu <calin.culianu@gmail.com>
+Date: Tue, 25 Apr 2023 08:33:07 -0500
+Subject: [PATCH] Fix for compiling against rocksdb 8.1 headers.
+
+They moved the `Cache` class to `<rocksdb/advanced_cache.h>`, so
+compiling broke.  Added conditional including of this file if it exists.
+---
+ src/Storage.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/Storage.cpp b/src/Storage.cpp
+index ab29b6b..7996a9a 100644
+--- a/src/Storage.cpp
++++ b/src/Storage.cpp
+@@ -33,6 +33,10 @@
+ 
+ #include "robin_hood/robin_hood.h"
+ 
++#if __has_include(<rocksdb/advanced_cache.h>)
++// Newer rocksdb 8.1 defines the `Cache` class in this header. :/
++#include <rocksdb/advanced_cache.h>
++#endif
+ #include <rocksdb/cache.h>
+ #include <rocksdb/db.h>
+ #include <rocksdb/iterator.h>
+-- 
+2.40.1
+
