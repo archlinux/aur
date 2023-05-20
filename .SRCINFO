@@ -1,4 +1,4 @@
-pkgbase = python-ubi_reader-git
+pkgbase = python-ubi-reader-git
 	pkgdesc = Scripts for reading information about and extracting data from UBI and UBIFS images.
 	pkgver = v0.8.6.r2.gdc9075c
 	pkgrel = 1
@@ -15,8 +15,8 @@ pkgbase = python-ubi_reader-git
 	makedepends = python-pytest
 	makedepends = python-pytest-cov
 	depends = python
-	provides = python-ubi_reader
+	provides = python-ubi-reader
 	source = git+https://github.com/onekey-sec/ubi_reader
 	sha256sums = SKIP
 
-pkgname = python-ubi_reader-git
+pkgname = python-ubi-reader-git

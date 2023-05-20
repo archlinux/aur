@@ -1,7 +1,7 @@
 # Maintainer: AkechiShiro <akechishiro-aur at lahfa dot xyz>
 
 _pyname=ubi_reader
-pkgname=python-${_pyname}-git
+pkgname=python-${_pyname//_/-}-git
 pkgver=v0.8.6.r2.gdc9075c
 pkgrel=1
 pkgdesc='Scripts for reading information about and extracting data from UBI and UBIFS images.'
@@ -10,7 +10,7 @@ url="https://github.com/onekey-sec/$_pyname"
 license=(GPL)
 depends=(python)
 conflicts=()
-provides=(python-ubi_reader)
+provides=(python-ubi-reader)
 makedepends=(git python-pip python-build python-installer python-wheel python-setuptools python-poetry python-pytest python-pytest-cov)
 checkdepends=()
 source=("git+https://github.com/onekey-sec/$_pyname")
