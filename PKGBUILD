@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=miniupnpd-git
-pkgver=2.3.3.r0.ge439318
+pkgver=2.3.3.r5.g49991e0
 pkgrel=1
 pkgdesc="Lightweight UPnP IGD daemon (git)"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ provides=("miniupnpd=$pkgver")
 conflicts=('miniupnpd')
 backup=('etc/miniupnpd/miniupnpd.conf')
 source=("git+https://github.com/miniupnp/miniupnp.git"
-        "miniupnpd.service::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/miniupnpd/trunk/miniupnpd.service")
+        "miniupnpd.service::https://gitlab.archlinux.org/archlinux/packaging/packages/miniupnpd/-/raw/main/miniupnpd.service")
 sha256sums=('SKIP'
             'SKIP')
 
