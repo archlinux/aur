@@ -6,6 +6,7 @@ pkgbase = python-parallel-ssh
 	arch = any
 	license = LGPL
 	makedepends = python-setuptools
+	makedepends = python-jinja-time
 	depends = python-gevent
 	depends = python-ssh2
 	source = python-parallel-ssh-2.12.0.tar.gz::https://github.com/ParallelSSH/parallel-ssh/archive/refs/tags/2.12.0.tar.gz
