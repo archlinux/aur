@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=freeipmi-git
-pkgver=1.6.10.r247.gd0a36affc
+pkgver=1.6.10.r262.g900ddc1cb
 pkgrel=1
 pkgdesc="Provides in-band and out-of-band IPMI software"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ conflicts=('freeipmi')
 backup=(etc/freeipmi/{freeipmi,freeipmi_interpret_sel,freeipmi_interpret_sensor,ipmidetect,ipmidetectd,ipmiseld,libipmiconsole}.conf)
 options=('staticlibs')
 source=("git+https://git.savannah.gnu.org/git/freeipmi.git"
-        "tmpfiles.conf::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/freeipmi/trunk/tmpfiles.conf")
+        "tmpfiles.conf::https://gitlab.archlinux.org/archlinux/packaging/packages/freeipmi/-/raw/main/tmpfiles.conf")
 sha256sums=('SKIP'
             'SKIP')
 
