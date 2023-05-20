@@ -22,6 +22,7 @@
 /swift-format/
 /swift-installer-scripts/
 /swift-integration-tests/
+/swift-lmdb/
 /swift-markdown/
 /swift-nio-ssl/
 /swift-nio/
