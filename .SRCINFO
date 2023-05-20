@@ -1,6 +1,6 @@
 pkgbase = xwaylandvideobridge-bin
 	pkgdesc = A tool to make it easy to stream wayland windows and screens to Xwayland applicatons that don't have native pipewire support.
-	pkgver = j888697
+	pkgver = j962676
 	pkgrel = 1
 	url = https://invent.kde.org/system/xwaylandvideobridge
 	arch = x86_64
@@ -23,9 +23,9 @@ pkgbase = xwaylandvideobridge-bin
 	optdepends = pkgconf
 	provides = xwaylandvideobridge
 	provides = pwbypass
-	source = https://invent.kde.org/system/xwaylandvideobridge/-/jobs/888697/artifacts/raw/xwaylandvideobridge.flatpak
+	source = https://invent.kde.org/system/xwaylandvideobridge/-/jobs/962676/artifacts/raw/xwaylandvideobridge.flatpak
 	source = xwaylandvideobridge.sh
-	sha512sums = 5e56c52098f9d719b4fda1ff905b7239747ad8250abf1f036659b87c4ecc8c6daaf353b44225a28c6971c453567da91836c185e2f403109bd7cbd20a9733e757
+	sha512sums = 98021ab440688551c32a3f2588b79e58cbf68c4a9d4d400ff8185bc05107ba319fdefba2e7c13186a32105c414ec8c9933a2d544bd8713151633bb4da3302d80
 	sha512sums = 71a5a0abff0ae6d6c8b4ff94ce1f343864b33a8e403d9f7c8d1fd7b07c0981468917f1589af7acf1e6296aa20697eda0a99fc8f2afea86cff06849a166e94d53
 
 pkgname = xwaylandvideobridge-bin

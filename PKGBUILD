@@ -1,5 +1,5 @@
 # Maintainer: Dominik Adrian Grzywak <starterx4 at gmail dot com>
-_job=888697
+_job=962676
 _name=xwaylandvideobridge
 pkgname=${_name}-bin
 pkgver=j${_job}
@@ -14,8 +14,8 @@ makedepends=('git' 'ostree')
 optdepends=('freetype2' 'fontconfig' 'pkgconf')
 source=("${url}/-/jobs/${_job}/artifacts/raw/${_name}.flatpak"
 		xwaylandvideobridge.sh)
-sha512sums=('5e56c52098f9d719b4fda1ff905b7239747ad8250abf1f036659b87c4ecc8c6daaf353b44225a28c6971c453567da91836c185e2f403109bd7cbd20a9733e757'
-			'71a5a0abff0ae6d6c8b4ff94ce1f343864b33a8e403d9f7c8d1fd7b07c0981468917f1589af7acf1e6296aa20697eda0a99fc8f2afea86cff06849a166e94d53')
+sha512sums=('98021ab440688551c32a3f2588b79e58cbf68c4a9d4d400ff8185bc05107ba319fdefba2e7c13186a32105c414ec8c9933a2d544bd8713151633bb4da3302d80'
+            '71a5a0abff0ae6d6c8b4ff94ce1f343864b33a8e403d9f7c8d1fd7b07c0981468917f1589af7acf1e6296aa20697eda0a99fc8f2afea86cff06849a166e94d53')
 
 prepare(){
 	ostree init --repo=repo --mode=archive

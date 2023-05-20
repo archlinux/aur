@@ -1,0 +1,7 @@
+*.flatpak
+*.pkg.tar.*
+*.part
+*.kate-swp
+src/
+pkg/
+outdir/
