@@ -1,4 +1,5 @@
-# Maintainer: Daniele Basso <daniele05 dot bass at gmail dot com>
+# Maintainer: Behnam Lal <dev at behnamlal dot xyz>
+# Contributor: Daniele Basso <daniele05 dot bass at gmail dot com>
 # Contributor: Zanny <lordzanny@gmail.com>
 
 pkgname=oda-file-converter
