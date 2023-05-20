@@ -2,7 +2,7 @@
 
 _name=sysrsync
 pkgname=python-sysrsync
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Simple and safe native rsync wrapper for Python 3'
 arch=(any)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(python rsync python-tomli python-toml)
 makedepends=(python-setuptools)
 source=($pkgname-$pkgver.tar.gz::"https://github.com/gchamon/sysrsync/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('aed423238f42109bc32f91e9fae330215fe6564b5e673789c4c61941c2778568ea9ab50dd74ba89583532a02f09cd1ea1c0018c2ba81a20b29eef3b3aa4f4339')
+b2sums=('7a48ce8058c53e36fc1072b113a3990dc6026526dc6c7164403b207fba32d6f885d02e394c73aefa7b664a7809739d5e176be48e31174cdb18bcdfd921083dcf')
 
 build() {
 	cd $_name-$pkgver
