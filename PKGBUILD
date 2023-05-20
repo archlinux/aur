@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=sudo-hg
-pkgver=r14698.59e0b245c776
+pkgver=r14753.990cbd169a37
 pkgrel=1
 pkgdesc="Run commands as root or another user"
 arch=('i686' 'x86_64')
@@ -16,8 +16,8 @@ backup=('etc/pam.d/sudo'
         'etc/sudo_logsrvd.conf'
         'etc/sudoers')
 source=("hg+https://www.sudo.ws/repos/sudo/"
-        "sudo.pam::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/sudo/trunk/sudo.pam"
-        "sudo_logsrvd.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/sudo/trunk/sudo_logsrvd.service")
+        "sudo.pam::https://gitlab.archlinux.org/archlinux/packaging/packages/sudo/-/raw/main/sudo.pam"
+        "sudo_logsrvd.service::https://gitlab.archlinux.org/archlinux/packaging/packages/sudo/-/raw/main/sudo_logsrvd.service")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')
