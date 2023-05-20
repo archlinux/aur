@@ -1,9 +1,11 @@
 # Maintainer: Fabian Bornschein <fabiscafe-cat-mailbox-dog-org>
 # Fediverse: @fabiscafe@mstdn.social
+# Contributor: Luna Jernberg <lunajernberg@gnome.org>
+# Fediverse: @bittin@social.vivaldi.net
 
 pkgname=tuba
-pkgver=0.2.0
-pkgrel=1
+pkgver=0.3.0
+pkgrel=0.1
 pkgdesc='Browse the Fediverse'
 arch=(
   aarch64 #ALARM
@@ -30,7 +32,7 @@ optdepends=(
   ## https://github.com/GeopJr/Tuba/issues/32#issuecomment-1483280966
   'webp-pixbuf-loader: calckey support (webp)'
 )
-_commit=85e8c02b387a30f0d3627cb7d95def456f64d796 # tags/0.2.0^0
+_commit=c11992a3acd510c9acfa46632a461fb25613b520 # tags/0.3.0^0
 source=("git+https://github.com/GeopJr/Tuba.git#commit=$_commit")
 sha256sums=('SKIP')
 
