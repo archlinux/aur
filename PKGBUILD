@@ -8,7 +8,7 @@
 
 pkgname=toxcore-git
 pkgver=0.2.18.r36.g172f279dc
-pkgrel=1
+pkgrel=2
 pkgdesc="Peer to peer (serverless) instant messenger core"
 arch=('i686' 'x86_64')
 url="https://tox.chat/"
@@ -20,8 +20,8 @@ conflicts=('toxcore' 'tox')
 backup=('etc/tox-bootstrapd.conf')
 options=('staticlibs')
 source=("git+https://github.com/TokTok/c-toxcore.git"
-        "toxcore.conf::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/toxcore/trunk/toxcore.conf"
-        "toxcore.tmpfiles::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/toxcore/trunk/toxcore.tmpfiles")
+        "toxcore.conf::https://gitlab.archlinux.org/archlinux/packaging/packages/toxcore/-/raw/main/toxcore.conf"
+        "toxcore.tmpfiles::https://gitlab.archlinux.org/archlinux/packaging/packages/toxcore/-/raw/main/toxcore.tmpfiles")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')
