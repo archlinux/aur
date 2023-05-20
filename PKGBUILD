@@ -2,7 +2,7 @@
 
 pkgname=uget-git
 pkgver=r628.g0c5b01f
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight yet powerful download manager"
 arch=('i686' 'x86_64')
 url="https://ugetdm.com"
@@ -13,7 +13,7 @@ optdepends=('aria2: alternative backend')
 provides=("uget=$pkgver")
 conflicts=('uget')
 source=("git+https://git.code.sf.net/p/urlget/uget2"
-        "uget-gtk.appdata.xml::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/uget/trunk/uget-gtk.appdata.xml")
+        "uget-gtk.appdata.xml::https://gitlab.archlinux.org/archlinux/packaging/packages/uget/-/raw/main/uget-gtk.appdata.xml")
 sha256sums=('SKIP'
             'SKIP')
 
