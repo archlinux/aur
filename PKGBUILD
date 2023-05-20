@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=rp-pppoe-git
-pkgver=r35.g3c9ac2b
+pkgver=4.0.r2.g5cd6616
 pkgrel=1
 pkgdesc="PPPoE client, relay and server for Linux"
 arch=('i686' 'x86_64')
@@ -11,12 +11,12 @@ depends=('glibc' 'iproute2' 'ppp' 'sh')
 makedepends=('git')
 provides=("rp-pppoe=$pkgver")
 conflicts=('rp-pppoe')
-backup=(etc/ppp/firewall-masq
-        etc/ppp/firewall-standalone
-        etc/ppp/pppoe.conf
-        etc/ppp/pppoe-server-options)
+backup=('etc/ppp/firewall-masq'
+        'etc/ppp/firewall-standalone'
+        'etc/ppp/pppoe.conf'
+        'etc/ppp/pppoe-server-options')
 source=("git+https://github.com/dfskoll/rp-pppoe.git"
-        "adsl.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/rp-pppoe/trunk/adsl.service")
+        "adsl.service::https://gitlab.archlinux.org/archlinux/packaging/packages/rp-pppoe/-/raw/main/adsl.service")
 sha256sums=('SKIP'
             'SKIP')
 
@@ -24,9 +24,10 @@ sha256sums=('SKIP'
 pkgver() {
   cd "rp-pppoe"
 
-  _rev=$(git rev-list --count --all)
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "r%s.g%s" "$_rev" "$_hash"
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
