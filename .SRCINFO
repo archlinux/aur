@@ -1,7 +1,7 @@
 pkgbase = dhcpcd8-git
 	pkgdesc = A DHCP and DHCPv6 client (8.x releases)
 	pkgver = 8.1.9.r7.g9095f26a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://roy.marples.name/projects/dhcpcd/
 	arch = i686
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = dhcpcd8-git
 	options = emptydirs
 	backup = etc/dhcpcd.conf
 	source = git+https://github.com/NetworkConfiguration/dhcpcd.git#branch=dhcpcd-8
-	source = dhcpcd.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/dhcpcd/trunk/dhcpcd.service
-	source = dhcpcd_.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/dhcpcd/trunk/dhcpcd_.service
+	source = dhcpcd.service::https://gitlab.archlinux.org/archlinux/packaging/packages/dhcpcd/-/raw/main/dhcpcd.service
+	source = dhcpcd_.service::https://gitlab.archlinux.org/archlinux/packaging/packages/dhcpcd/-/raw/main/dhcpcd_.service
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

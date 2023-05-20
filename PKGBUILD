@@ -2,7 +2,7 @@
 
 pkgname=dhcpcd8-git
 pkgver=8.1.9.r7.g9095f26a
-pkgrel=1
+pkgrel=2
 pkgdesc="A DHCP and DHCPv6 client (8.x releases)"
 arch=('i686' 'x86_64')
 url="https://roy.marples.name/projects/dhcpcd/"
@@ -15,8 +15,8 @@ conflicts=('dhcpcd')
 backup=('etc/dhcpcd.conf')
 options=('emptydirs')
 source=("git+https://github.com/NetworkConfiguration/dhcpcd.git#branch=dhcpcd-8"
-        "dhcpcd.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/dhcpcd/trunk/dhcpcd.service"
-        "dhcpcd_.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/dhcpcd/trunk/dhcpcd_.service")
+        "dhcpcd.service::https://gitlab.archlinux.org/archlinux/packaging/packages/dhcpcd/-/raw/main/dhcpcd.service"
+        "dhcpcd_.service::https://gitlab.archlinux.org/archlinux/packaging/packages/dhcpcd/-/raw/main/dhcpcd_.service")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')
@@ -25,7 +25,10 @@ sha256sums=('SKIP'
 pkgver() {
   cd "dhcpcd"
 
-  git describe --long --tags | sed 's/^dhcpcd-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v8[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
