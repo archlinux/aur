@@ -1,25 +1,26 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: redfish <redfish@galactica.pw>
-
-pkgname=python-coincurve
+_base=coincurve
+pkgname=python-${_base}
 pkgver=17.0.0
 pkgrel=2
-pkgdesc='Cross-platform Python CFFI bindings for libsecp256k1'
-arch=('x86_64')
-url="https://github.com/ofek/coincurve"
-license=('GPL')
-depends=('python-cffi' 'python-requests' 'libsecp256k1')
-makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/c/coincurve/coincurve-$pkgver.tar.gz")
-sha256sums=('68da55aff898702952fda3ee04fd6ed60bb6b91f919c69270786ed766b548b93')
+pkgdesc="Cross-platform Python CFFI bindings for libsecp256k1"
+arch=(x86_64)
+url="https://github.com/ofek/${_base}"
+license=(Apache MIT)
+depends=(python-asn1crypto python-cffi libsecp256k1)
+makedepends=(python-build python-installer python-setuptools python-wheel python-requests)
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('15bc998469a243bc1f6d0f9308061c64b7000727f662827da57a82e23739bc7a3dce0c8b3d33d1a3daeadbba2759d5726b792726daf9d4d5e842e53a28855954')
 
 build() {
-	cd "coincurve-$pkgver"
-	python -m build --wheel --no-isolation
+  cd ${_base}-${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
-	export PYTHONHASHSEED=0
-	cd "coincurve-$pkgver"
-	python -m installer --destdir="$pkgdir/" dist/*.whl
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm 644 LICENSE-{APACHE,MIT} -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
