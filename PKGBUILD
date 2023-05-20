@@ -11,8 +11,8 @@ license=(GPL)
 depends=(python)
 conflicts=()
 provides=(python-ubi-reader)
-makedepends=(git python-pip python-build python-installer python-wheel python-setuptools python-poetry python-pytest python-pytest-cov)
-checkdepends=()
+makedepends=(git python-pip python-build python-installer python-wheel python-setuptools python-poetry)
+checkdepends=(python-pytest python-pytest-cov)
 source=("git+https://github.com/onekey-sec/$_pyname")
 sha256sums=(SKIP)
 
@@ -29,13 +29,6 @@ build() {
     cd "$_pyname"
     python -m build --wheel --no-isolation
 }
-
-# Not working, tests should be made post_install I believe
-#check(){
-#    cd "$srcdir/$_pyname"
-#    # For pytest
-#    pytest
-#}
 
 package() {
     cd "$_pyname"
