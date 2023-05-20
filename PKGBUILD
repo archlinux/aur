@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=wpa_supplicant-git
-pkgver=2.10.r1083.g302d761a8
+pkgver=2.10.r1120.gcc8a09a48
 pkgrel=1
 pkgdesc="A daemon program controlling the wireless connection"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('git')
 provides=("wpa_supplicant=$pkgver")
 conflicts=('wpa_supplicant')
 source=("git+https://w1.fi/hostap.git"
-        "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/wpa_supplicant/trunk/wpa_supplicant_config")
+        "config::https://gitlab.archlinux.org/archlinux/packaging/packages/wpa_supplicant/-/raw/main/wpa_supplicant_config")
 sha256sums=('SKIP'
             'SKIP')
 
