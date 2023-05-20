@@ -1,7 +1,7 @@
 pkgbase = pot-translation-git
 	pkgdesc = 一个跨平台的划词翻译软件
-	pkgver = 0.3.0
-	pkgrel = 0
+	pkgver = 0.3.4
+	pkgrel = 1
 	url = https://github.com/pot-app/pot-desktop
 	arch = x86_64
 	license = GPL3
@@ -12,6 +12,7 @@ pkgbase = pot-translation-git
 	depends = webkit2gtk
 	depends = gtk3
 	depends = libayatana-appindicator
+	depends = xdotool
 	provides = pot-translation
 	conflicts = pot-translation
 	conflicts = pot-translation-bin
