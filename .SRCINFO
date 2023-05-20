@@ -1,7 +1,7 @@
 pkgbase = sunshine-bin
 	pkgdesc = Sunshine is a self-hosted game stream host for Moonlight.
-	pkgver = 0.19.1
-	pkgrel = 4
+	pkgver = 0.20.0
+	pkgrel = 1
 	url = https://app.lizardbyte.dev
 	arch = x86_64
 	license = GPL3
@@ -28,9 +28,9 @@ pkgbase = sunshine-bin
 	optdepends = libdrm
 	provides = sunshine
 	conflicts = sunshine
-	source = https://github.com/LizardByte/Sunshine/releases/download/v0.19.1/sunshine.pkg.tar.zst
-	source = sunshine-0.19.1.desktop::https://raw.githubusercontent.com/LizardByte/Sunshine/v0.19.1/packaging/linux/sunshine.desktop
-	b2sums = 7321ad9099eeef7491587e93ca56ea48a2580c3e4626743deb82eafaf0a59b60d0e7dea35c9a04f27e6115eaea7bb12bbd59ce229df7b06e92ce71608aa64bb5
+	source = sunshine-0.20.0.pkg.tar.zst::https://github.com/LizardByte/Sunshine/releases/download/v0.20.0/sunshine.pkg.tar.zst
+	source = sunshine-0.20.0.desktop::https://raw.githubusercontent.com/LizardByte/Sunshine/v0.20.0/packaging/linux/sunshine.desktop
+	b2sums = c4e7a2886e1440cad9341ad48e109fca393647cb507f9331f282734478a1beb00a897421c46f3ed638b87182449757c0ef0451a6d2a216fd4a9bb49f44663738
 	b2sums = 2357c2a97a4f49ede3cb15f271a2e3c3696bdc91b65ce0d0f684026afdd9f9af293ec754231500cf8bc490379d8fa39df9bb6380aee318d98151050ef30aefa0
 
 pkgname = sunshine-bin
