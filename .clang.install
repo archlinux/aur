@@ -1,0 +1,42 @@
+_create_latest_symlink() {
+  echo "Creating latest symlink"
+
+  cd CLANG_PREFIX
+  ln -fs CLANG_VERSION latest
+}
+
+## arg 1:  the new package version
+pre_install() {
+    echo ""
+}
+
+## arg 1:  the new package version
+post_install() {
+    echo ""
+	_create_latest_symlink
+}
+#post_install
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+pre_upgrade() {
+    echo ""
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+    echo ""
+	_create_latest_symlink
+}
+
+## arg 1:  the old package version
+pre_remove() {
+    echo ""
+}
+#pre_remove
+
+## arg 1:  the old package version
+post_remove() {
+    echo ""
+}

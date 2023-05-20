@@ -10,8 +10,8 @@ if [[ -n ${_pkg_suffix} ]]; then
     _pkgver_suffix=${_pkgver_suffix}${_pkg_suffix}
     _pkgver_dash_suffix=${_pkgver_dash_suffix}-${_pkg_suffix}
 fi
-pkgver=${_pkgver}${_pkg_suffix}
-pkgrel=1
+pkgver=${_pkgver_suffix}
+pkgrel=2
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -24,9 +24,16 @@ checkdepends=("python-psutil")
 source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${_pkgver_dash_suffix}/llvm-project-${_pkgver_suffix}.src.tar.xz")
 
 sha512sums=('2eb5eca1cbee92a499d7fba5729b61f31186353bc0545b17eefa300cf2b27c8d9a2f307443b2c1c9fe1b0ba412abf5143fdd4d25aaeb33d975a9a834221d7602')
+install=clang.install
 
 prefix_path="/opt/clang"
 install_path="${prefix_path}/${pkgver}"
+
+_prepare_install_script() {
+	cp ${startdir}/.clang.install ${startdir}/clang.install
+	sed -i "s,CLANG_PREFIX,${prefix_path},g" ${startdir}/clang.install
+	sed -i "s,CLANG_VERSION,${_pkgver},g" ${startdir}/clang.install
+}
 
 build() {
     unset CFLAGS
@@ -65,6 +72,8 @@ build() {
 }
 
 package() {
+	_prepare_install_script
+
     #rm -Rf ${pkgdir}
     DESTDIR="$pkgdir" ninja -C _build install | tee ${pkgname}-install.log
 }
