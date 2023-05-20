@@ -21,7 +21,7 @@ else
 	echo $CARCH is unsupported
 	exit
 fi
-source=("https://github.com/aandrew-me/tgpt/releases/download/v${pkgver}/tgpt-linux-${ARCHY}")
+source=("tgpt-linux::https://github.com/aandrew-me/tgpt/releases/download/v${pkgver}/tgpt-linux-${ARCHY}")
 md5sums=('SKIP')
 
 #pkgver() {
@@ -34,18 +34,5 @@ md5sums=('SKIP')
 
 package() {
     cd "$srcdir"
-    if [ $CARCH == "x86_64" ]
-    then
-    	ARCHY=amd64
-    elif [ $CARCH == "aarch64" ]
-    then
-    	ARCHY=arm64
-    elif [ $CARCH == "i386" ]
-    then
-    	ARCHY=i386
-    else
-    	echo $CARCH is unsupported
-    	exit
-    fi
-    install -Dm755 tgpt-linux-${ARCHY} "$pkgdir/usr/bin/tgpt"
+    install -Dm755 tgpt-linux "$pkgdir/usr/bin/tgpt"
 }
