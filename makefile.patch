@@ -1,8 +1,0 @@
-diff --git Makefile Makefile
-new file mode 100644
---- /dev/null
-+++ Makefile
-@@ -0,0 +1,3 @@
-+CFLAGS += -fPIC -DEMU_COMPILE -DEMU_LITTLE_ENDIAN -DLSB_FIRST
-+libaopsf.so: eng_psf.o eng_psf2.o psx.o psx_hw.o r3000dis.o spu/spu.o spu/spucore.o
-+	$(CC) -shared -o $@ $^
