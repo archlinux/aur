@@ -1,55 +1,38 @@
 # Maintainer: genofire <geno+dev@fireorbit.de>
+# Maintainer: Julian <juliannfairfax@protonmail.com>
 # Contributor: la Fleur <lafleur at boum dot org>
 
 _pkgname="purism-chatty"
-pkgname="${_pkgname}-git" # '-bzr', '-git', '-hg' or '-svn'
-pkgver=0.5.0_beta3.r1.g73caf3d
+pkgname="${_pkgname}-git"
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="XMPP and SMS messaging via libpurple and Modemmanager"
 url="https://source.puri.sm/Librem5/chatty"
-license=("LGPL2.1")
+license=("GPL3")
 arch=("i686" "x86_64" "armv6h" "armv7h" "aarch64")
 depends=("evolution-data-server"
-         "feedbackd"
-         "gtk4"
-         "libhandy"
-         "libpurple"
-         "gspell"
-         "libmm-glib")
-optdepends=("libpurple-carbons: XMPP Carbon Copy - Live multiple device support"
-            "libpurple-lurch: message encryption when using OMEMO"
-            "mmsd-tng: support MMS send/receive"
-            "purple-telegram: Telegram support"
-            "purple-matrix: Matrix support")
-makedepends=("git" "pkg-config" "meson" "libolm")
+	"feedbackd"
+	"libolm" 
+	"libpurple")
+optdepends=("libpurple-carbons: XMPP XEP-0280 Message Carbons plugin"
+	"libpurple-lurch: XEP-0384 OMEMO Encryption plugin"
+	"purple-xmpp-http-upload: HTTP File Upload plugin")
+makedepends=("itstool"
+	"meson"
+	"pkg-config")
 provides=("purism-chatty")
 conflicts=("purism-chatty")
-# Keep the source in a version-independent directory, so on update we simply
-# git pull into it.
-source=(
-    "${_pkgname}::git+https://source.puri.sm/Librem5/chatty.git"
-    "latest_olm.patch"
-)
-md5sums=(SKIP c934d64deacfdec2592cea05d1a7f8cc)
-
-pkgver() {
-    git -C ${_pkgname} describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-    patch --directory=${_pkgname} --forward --strip=1 --input=${srcdir}/latest_olm.patch
-}
+source=("git+https://source.puri.sm/Librem5/chatty.git")
+sha256sums=("SKIP")
 
 build() {
-    # Only setup the build directory if it doesn't exist :
-    test -d build || arch-meson ${_pkgname} build
-    ninja -C build
-}
-
-check() {
-	ninja -C build test
+	cd chatty
+	git submodule update --init
+	arch-meson build
+	ninja -C build
 }
 
 package() {
-    DESTDIR="${pkgdir}" ninja -C build install
+    cd chatty
+	DESTDIR="${pkgdir}" ninja -C build install
 }
