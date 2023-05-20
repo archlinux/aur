@@ -1,0 +1,25 @@
+pkgbase = python-jefferson
+	pkgdesc = JFFS2 filesystem extraction tool.
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/onekey-sec/jefferson
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	makedepends = git
+	makedepends = python-poetry
+	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-click
+	makedepends = python-cstruct
+	makedepends = python-lzallright
+	depends = python
+	provides = python-jefferson
+	source = https://files.pythonhosted.org/packages/source/j/jefferson/jefferson-0.4.3.tar.gz
+	sha256sums = 01ba63de040ae28be8f28cd9136c02c9f4660df7e84b028c6c78e08fb1675ff8
+
+pkgname = python-jefferson
