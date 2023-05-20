@@ -1,6 +1,6 @@
 pkgbase = ov-bin
 	pkgdesc = Feature-rich terminal-based text viewer. It is a so-called terminal pager.
-	pkgver = 0.14.1
+	pkgver = 0.23.0
 	pkgrel = 1
 	url = https://github.com/noborus/ov
 	install = ov-bin.install
@@ -9,11 +9,11 @@ pkgbase = ov-bin
 	arch = aarch64
 	license = MIT
 	conflicts = ov
-	source_x86_64 = ov-bin-0.14.1.zip::https://github.com/noborus/ov/releases/download/v0.14.1/ov_0.14.1_linux_amd64.zip
-	sha256sums_x86_64 = 27015ce0ad77bf38346c153491e73682e64f18d7630c08fb0a53f670d46a9d4e
-	source_armv7h = ov-bin-0.14.1.zip::https://github.com/noborus/ov/releases/download/v0.14.1/ov_0.14.1_linux_arm.zip
-	sha256sums_armv7h = 00caad0ca48bb243987af2e7c07864b5093c18a247d4b1fa65f891218fc6e9c7
-	source_aarch64 = ov-bin-0.14.1.zip::https://github.com/noborus/ov/releases/download/v0.14.1/ov_0.14.1_linux_arm64.zip
-	sha256sums_aarch64 = c486c7dc889023f6536c2596686f48fdc784c7172561a81b8e4c89fa39df06cc
+	source_x86_64 = ov-bin-0.23.0.zip::https://github.com/noborus/ov/releases/download/v0.23.0/ov_0.23.0_linux_amd64.zip
+	sha256sums_x86_64 = 422d8e9171dffbfa2edc0ee984d41903a40e90aa6a1b20d4f2bcb7dcbbd5028c
+	source_armv7h = ov-bin-0.23.0.zip::https://github.com/noborus/ov/releases/download/v0.23.0/ov_0.23.0_linux_arm.zip
+	sha256sums_armv7h = 5be8244d9727a876fbc6895a273c61429fbf0a14990a7e4bbe2f1c5d6e093158
+	source_aarch64 = ov-bin-0.23.0.zip::https://github.com/noborus/ov/releases/download/v0.23.0/ov_0.23.0_linux_arm64.zip
+	sha256sums_aarch64 = 6509d0699a6a4e72aaaa10aa7414b098ef7a9de80b219c53bc83d80a77d4c8e2
 
 pkgname = ov-bin
