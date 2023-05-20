@@ -1,6 +1,6 @@
 pkgbase = dhcpcd-git
 	pkgdesc = A DHCP and DHCPv6 client
-	pkgver = 9.4.0.r155.g293f2af6
+	pkgver = 10.0.1.r25.g6a369c6d
 	pkgrel = 1
 	url = https://roy.marples.name/projects/dhcpcd/
 	arch = i686
@@ -11,16 +11,16 @@ pkgbase = dhcpcd-git
 	depends = sh
 	depends = systemd-libs
 	optdepends = openresolv: resolvconf support
-	provides = dhcpcd=9.4.0.r155.g293f2af6
+	provides = dhcpcd=10.0.1.r25.g6a369c6d
 	provides = dhcp-client
 	conflicts = dhcpcd
 	options = emptydirs
 	backup = etc/dhcpcd.conf
 	source = git+https://github.com/rsmarples/dhcpcd.git
-	source = dhcpcd.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/dhcpcd/trunk/dhcpcd.service
-	source = dhcpcd.sysusers::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/dhcpcd/trunk/dhcpcd.sysusers
-	source = dhcpcd.tmpfiles::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/dhcpcd/trunk/dhcpcd.tmpfiles
-	source = dhcpcd_.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/dhcpcd/trunk/dhcpcd_.service
+	source = dhcpcd.service::https://gitlab.archlinux.org/archlinux/packaging/packages/dhcpcd/-/raw/main/dhcpcd.service
+	source = dhcpcd.sysusers::https://gitlab.archlinux.org/archlinux/packaging/packages/dhcpcd/-/raw/main/dhcpcd.sysusers
+	source = dhcpcd.tmpfiles::https://gitlab.archlinux.org/archlinux/packaging/packages/dhcpcd/-/raw/main/dhcpcd.tmpfiles
+	source = dhcpcd_.service::https://gitlab.archlinux.org/archlinux/packaging/packages/dhcpcd/-/raw/main/dhcpcd_.service
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

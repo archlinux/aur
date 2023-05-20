@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=dhcpcd-git
-pkgver=9.4.0.r155.g293f2af6
+pkgver=10.0.1.r25.g6a369c6d
 pkgrel=1
 pkgdesc="A DHCP and DHCPv6 client"
 arch=('i686' 'x86_64')
@@ -15,10 +15,10 @@ conflicts=('dhcpcd')
 backup=('etc/dhcpcd.conf')
 options=('emptydirs')
 source=("git+https://github.com/rsmarples/dhcpcd.git"
-        "dhcpcd.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/dhcpcd/trunk/dhcpcd.service"
-        "dhcpcd.sysusers::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/dhcpcd/trunk/dhcpcd.sysusers"
-        "dhcpcd.tmpfiles::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/dhcpcd/trunk/dhcpcd.tmpfiles"
-        "dhcpcd_.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/dhcpcd/trunk/dhcpcd_.service")
+        "dhcpcd.service::https://gitlab.archlinux.org/archlinux/packaging/packages/dhcpcd/-/raw/main/dhcpcd.service"
+        "dhcpcd.sysusers::https://gitlab.archlinux.org/archlinux/packaging/packages/dhcpcd/-/raw/main/dhcpcd.sysusers"
+        "dhcpcd.tmpfiles::https://gitlab.archlinux.org/archlinux/packaging/packages/dhcpcd/-/raw/main/dhcpcd.tmpfiles"
+        "dhcpcd_.service::https://gitlab.archlinux.org/archlinux/packaging/packages/dhcpcd/-/raw/main/dhcpcd_.service")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -29,7 +29,10 @@ sha256sums=('SKIP'
 pkgver() {
   cd "dhcpcd"
 
-  git describe --long --tags | sed 's/^dhcpcd-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
