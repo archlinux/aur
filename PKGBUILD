@@ -1,9 +1,10 @@
+# Maintainer: Tzu-Yu Lee <leejuyuu at gmail dot com>
 # Maintainer: pu <pu.mb@qq.com>
 # Contributor: Dmytro Meleshko <qzlgeb.zryrfuxb@tznvy.pbz(rot13)>
 _pkgname=ltex-ls
 pkgname="${_pkgname}-bin"
-pkgver=15.2.0
-pkgrel=2
+pkgver=16.0.0
+pkgrel=1
 pkgdesc="LTeX Language Server: LSP language server for LanguageTool with support for LaTeX, Markdown, and others"
 arch=('any')
 url="https://github.com/valentjn/ltex-ls"
@@ -12,7 +13,7 @@ depends=('java-runtime>=11' 'bash')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('ca08c216361a3fd2dce412ee3877b9fa5c9a2a97c3862711efcdec924060a3b2')
+sha256sums=('956d537d3724aa10a686372f76e21263da8074a3ccff47286f16c8ac2ab92644')
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
