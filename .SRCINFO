@@ -12,6 +12,7 @@ pkgbase = cobib-git
 	depends = python-ruamel-yaml
 	depends = python-pylatexenc
 	depends = python-requests
+	depends = python-requests-oauthlib
 	depends = python-rich
 	depends = python-textual
 	depends = python-markdown-it-py
