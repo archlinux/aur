@@ -2,33 +2,27 @@
 
 _pkgbase=quodlibet
 pkgname=(exfalso)
-pkgver=4.4.0
-pkgrel=3
+pkgver=4.5.0
+pkgrel=1
 pkgdesc="Music player and music library manager"
 arch=(any)
 url="https://quodlibet.readthedocs.io/"
 license=(GPL2)
-depends=(dbus-python gtk3 python-cairo python-feedparser python-gobject python-mutagen)
+depends=(dbus-python gtk3 libsoup python-cairo python-feedparser python-gobject python-mutagen)
 makedepends=(python-sphinx_rtd_theme)
 # python-raven python-senf are currently vendored
 checkdepends=(gst-plugins-base gst-plugins-good python-pytest python-xvfbwrapper)
 source=(
 	"https://github.com/${_pkgbase}/${_pkgbase}/releases/download/release-${pkgver}/${_pkgbase}-${pkgver}.tar.gz"{,.sig}
-	python310.patch
-	disableUtimeTests.patch
 )
-sha256sums=('a03318d2767e4959551763d0a87fad977387af712608fe572714176a24bbf367'
-            'SKIP'
-            'ae075d9b5fb88b58b010b76c2d5e3eb40805556d9de92ca6adb8e62d6f052b01'
-            '6cf7d436a77cd33143ced18f074941dbf7fc1acd461bf5e2ae05681e7da496b6')
+sha256sums=('301615829f652cbafedb35539237162a58bc1ee71a567d249f7789d9268245bc'
+            'SKIP')
 validpgpkeys=(0EBF782C5D53F7E5FB02A66746BD761F7A49B0EC) # Christoph Reiter <reiter.christoph@gmail.com>
 
 prepare() {
   cd ${_pkgbase}-${pkgver}
   # Fix zsh completions dir
   sed -e 's|vendor-completions|site-functions|' -i gdist/zsh_completions.py
-  patch -p5 < ../python310.patch
-  patch -p2 < ../disableUtimeTests.patch
 }
 
 build() {
@@ -38,9 +32,13 @@ build() {
 
 check() {
   cd ${_pkgbase}-${pkgver}
-  export PYTHONPATH="build:${PYTHONPATH}"
+  export PYTHONPATH="${PWD}/build"
   # not running useless linter checks
-  pytest -v -k 'not TFlake8'
+  # TOperonEdit.test_remove_all: https://github.com/quodlibet/quodlibet/issues/3966
+  # TCoverManager.test_invalid_glob: https://github.com/quodlibet/quodlibet/issues/4021
+  pytest -v --color=yes -k 'not TFlake8' \
+    --deselect tests/test_operon.py::TOperonEdit::test_remove_all \
+    --deselect tests/test_util_cover.py::TCoverManager::test_invalid_glob
 }
 
 package_exfalso() {
@@ -50,8 +48,10 @@ package_exfalso() {
               'python-musicbrainzngs: MusicBrainz Lookup, MusicBrainz Sync plugins')
   conflicts=("${_pkgbase}")
 
+
   cd ${_pkgbase}-${pkgver}
   python setup.py install --root="${pkgdir}" --skip-build --optimize=1
+
 
   # Remove Quod Libet
   internal_name="io.github.${_pkgbase}.QuodLibet"
