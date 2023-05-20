@@ -1,0 +1,17 @@
+pkgbase = pclish-git
+	pkgdesc = Python Command-Line Shell
+	pkgver = 0.8.0.6d5e6c4
+	pkgrel = 1
+	url = https://github.com/jdev082/pclish
+	arch = x86_64
+	arch = arm
+	license = MIT
+	depends = python
+	depends = bash
+	depends = python-psutil
+	depends = python-colorama
+	conflicts = pclish
+	source = https://github.com/jdev082/pclish/archive/refs/heads/master.tar.gz
+	sha256sums = SKIP
+
+pkgname = pclish-git
