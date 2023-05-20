@@ -9,7 +9,7 @@ license=("AGPL-3.0")
 arch=('any')
 depends=('bash' 'curl')
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha512sums=('7ea9e8de2803d948deb928b78e26bca0a1b3d96117210c4a079aea1fbb711a74f4a6680220f9bcdf867f0b9b62085e211389943191d100fc4887446070cd1a4a')
 
 package() {
