@@ -1,25 +1,25 @@
-# Maintainer: algebro <algebro at tuta dot io>
-
-_pkgname=eth-typing
-pkgname=python-$_pkgname
-pkgver=2.2.1
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: algebro <algebro at tuta dot io>
+_base=eth-typing
+pkgname=python-${_base}
+pkgver=3.3.0
 pkgrel=1
-pkgdesc="Python types for type hinting commonly used Ethereum types."
-arch=('x86_64')
-url="https://github.com/ethereum/eth-typing"
-license=('MIT')
-depends=('python')
-makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ethereum/eth-typing/archive/v${pkgver}.tar.gz")
-sha256sums=('6c20477dbd8d2ccc482e8baec00dad129f768bb5d5282f1d1466a90a0e49001d')
+pkgdesc="Common type annotations for ethereum python packages"
+arch=(x86_64)
+url="https://github.com/ethereum/${_base}"
+license=(MIT)
+depends=(python)
+makedepends=(python-build python-installer python-setuptools python-wheel)
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('1a17723291ef15f5e16f881ccaeab669a957a1557e276907ec970d5af7e59f821f4ae8e8a993e72d37929ab85d54ba4360fbca9699dcd74e43ad218f3b689e72')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py build
+  cd ${_base}-${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
