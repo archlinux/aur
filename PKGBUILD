@@ -3,7 +3,7 @@ pkgbase=python-gammapy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A Python package for gamma-ray astronomy"
 arch=('i686' 'x86_64')
@@ -37,7 +37,7 @@ checkdepends=('python-pytest-astropy-header'
 #             'jupyter-nbformat'
 #             'python-sphinx'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('33db5efaddc89cda27045c2c8cf9e666')
+md5sums=('4294a87c34a161d4021c7bb7d11bf6f5')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -67,7 +67,7 @@ check() {
 }
 
 package_python-gammapy() {
-    depends=('python>=3.8' 'python-scipy>=1.4' 'python-yaml>=5.1' 'python-astropy>=5.0' 'python-regions>=0.5.0' 'python-click>=7.0' 'python-pydantic>=1.4' 'python-iminuit>=2.8.0' 'python-matplotlib>=3.4')
+    depends=('python>=3.8' 'python-scipy>1.10' 'python-yaml>=5.1' 'python-astropy>=5.0' 'python-regions>=0.5.0' 'python-click>=7.0' 'python-pydantic>=1.4' 'python-iminuit>=2.8.0' 'python-matplotlib>=3.4')
     optdepends=('python-pandas: For working with tables'
                 'python-emcee: For fitting by MCMC sampling'
                 'python-corner: For MCMC corner plots'
