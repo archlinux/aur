@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=mercurial-stable-hg
-pkgver=r50390.81c7d04f4722
+pkgver=r50369.558d08dc7dd4
 pkgrel=1
 pkgdesc="Distributed source control management tool (development stable branch)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ provides=("mercurial=$pkgver")
 conflicts=('mercurial')
 backup=('etc/mercurial/hgrc')
 source=("hg+https://www.mercurial-scm.org/repo/hg#branch=stable"
-        "mercurial.profile::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/mercurial/trunk/mercurial.profile")
+        "mercurial.profile::https://gitlab.archlinux.org/archlinux/packaging/packages/mercurial/-/raw/main/mercurial.profile")
 sha256sums=('SKIP'
             'SKIP')
 
