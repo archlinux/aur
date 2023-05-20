@@ -2,7 +2,7 @@
 
 pkgname=readline-git
 pkgver=8.2.r1.g7274faa
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU readline library"
 arch=('i686' 'x86_64')
 url="https://tiswww.case.edu/php/chet/readline/rltop.html"
@@ -13,7 +13,7 @@ provides=("readline=$pkgver" 'libhistory.so' 'libreadline.so')
 conflicts=('readline')
 options=('!emptydirs' 'staticlibs')
 source=("git+https://git.savannah.gnu.org/git/readline.git"
-        "https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/readline/trunk/inputrc")
+        "inputrc::https://gitlab.archlinux.org/archlinux/packaging/packages/readline/-/raw/main/inputrc")
 sha256sums=('SKIP'
             'SKIP')
 
