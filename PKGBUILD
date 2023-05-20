@@ -1,45 +1,52 @@
-# Maintainer: Dāvis Mosāns <davispuh at gmail dot com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
+# Contributor: Dāvis Mosāns <davispuh at gmail dot com>
 
-_pkgname=qt5-webkit
-pkgname=$_pkgname-git
-pkgver=v5.212.0.alpha2.r16.gbeaeeb998
+pkgname=qt5-webkit-git
+pkgver=5.212.0.alpha4.r13.gac8ebc6c3
 pkgrel=1
+arch=(x86_64)
+url='https://github.com/qtwebkit/qtwebkit'
+license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Classes for a WebKit2 based implementation and a new QML API'
-arch=('i686' 'x86_64')
-url='https://code.qt.io/cgit/qt/qtwebkit.git'
-license=('GPL3' 'LGPL' 'FDL')
-depends=('qt5-sensors-git' 'qt5-location-git' 'qt5-webchannel-git' 'gst-plugins-base' 'libxslt' 'libxcomposite')
-optdepends=('gst-plugins-good: Webm codec support' 'libwebp: WebP codec support')
-makedepends=('git' 'python2' 'gperf' 'libwebp' 'pkgconf')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("$_pkgname::git+https://code.qt.io/qt/qtwebkit.git#branch=dev")
-sha256sums=('SKIP')
+source=("qt5-webkit::git+https://code.qt.io/qt/qtwebkit.git#branch=5.212"
+        "https://src.fedoraproject.org/rpms/qt5-qtwebkit/raw/rawhide/f/qtwebkit-cstdint.patch"
+         icu68.patch
+         glib-2.68.patch)
+depends=(qt5-location qt5-sensors qt5-webchannel libwebp libxslt libxcomposite gst-plugins-base hyphen woff2)
+makedepends=(git cmake ruby gperf python qt5-doc qt5-tools)
+optdepends=('gst-plugins-good: Webm codec support')
+provides=(qt5-webkit)
+conflicts=(qt5-webkit)
+options=(!lto)
+sha256sums=('SKIP'
+            '4c71c958eae45cae65c9f002024eb1369d06029b668e595158138ff7971e64f1'
+            '0b40ed924f03ff6081af610bb0ee01560b7bd1fb68f8af02053304a01d4ccdf0'
+            '4969dd03e482155e2490b50307dada81dda7bbc9e5398e3a53c20bc474f7c04e')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/qt5-webkit"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "$srcdir"
-    mkdir -p build
-
-    # Use python2 for Python 2.x
-    find "./$_pkgname" -name '*.py' -exec sed -i \
-        's|#![ ]*/usr/bin/python$|&2|;s|#![ ]*/usr/bin/env python$|&2|;1 s|#[ ].*$|#!/usr/bin/python2|' {} +
-    find "./$_pkgname" -type f \( -name "*.pr?" -o -name "*.make" \) -exec sed -i -e "s|python |python2 |" {} +
+  cd "$srcdir/qt5-webkit"
+  patch -p0 -i ../icu68.patch # Fix build with ICU 68.x
+  patch -p1 -i ../glib-2.68.patch # https://github.com/qtwebkit/qtwebkit/issues/1057
+  patch -p1 -i ../qtwebkit-cstdint.patch # gcc 11.1
 }
 
 build() {
-    cd "$srcdir/build"
-
-    qmake "$srcdir/$_pkgname"
-    make
+  cmake -B build -S qt5-webkit \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_CXX_FLAGS="${CXXFLAGS} -DNDEBUG" \
+    -DPORT=Qt \
+    -DENABLE_TOOLS=OFF
+  cmake --build build
 }
 
 package() {
-    cd "$srcdir/build"
+  DESTDIR="$pkgdir" cmake --install build
 
-    make INSTALL_ROOT="$pkgdir" install
+  install -d "$pkgdir"/usr/share/licenses
+  ln -s /usr/share/licenses/qt5-base "$pkgdir"/usr/share/licenses/${pkgname}
 }

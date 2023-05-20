@@ -1,30 +1,40 @@
 pkgbase = qt5-webkit-git
 	pkgdesc = Classes for a WebKit2 based implementation and a new QML API
-	pkgver = v5.212.0.alpha2.r16.gbeaeeb998
+	pkgver = 5.212.0.alpha4.r13.gac8ebc6c3
 	pkgrel = 1
-	url = https://code.qt.io/cgit/qt/qtwebkit.git
-	arch = i686
+	url = https://github.com/qtwebkit/qtwebkit
 	arch = x86_64
 	license = GPL3
-	license = LGPL
+	license = LGPL3
 	license = FDL
+	license = custom
 	makedepends = git
-	makedepends = python2
+	makedepends = cmake
+	makedepends = ruby
 	makedepends = gperf
-	makedepends = libwebp
-	makedepends = pkgconf
-	depends = qt5-sensors-git
-	depends = qt5-location-git
-	depends = qt5-webchannel-git
-	depends = gst-plugins-base
+	makedepends = python
+	makedepends = qt5-doc
+	makedepends = qt5-tools
+	depends = qt5-location
+	depends = qt5-sensors
+	depends = qt5-webchannel
+	depends = libwebp
 	depends = libxslt
 	depends = libxcomposite
+	depends = gst-plugins-base
+	depends = hyphen
+	depends = woff2
 	optdepends = gst-plugins-good: Webm codec support
-	optdepends = libwebp: WebP codec support
 	provides = qt5-webkit
 	conflicts = qt5-webkit
-	source = qt5-webkit::git+https://code.qt.io/qt/qtwebkit.git#branch=dev
+	options = !lto
+	source = qt5-webkit::git+https://code.qt.io/qt/qtwebkit.git#branch=5.212
+	source = https://src.fedoraproject.org/rpms/qt5-qtwebkit/raw/rawhide/f/qtwebkit-cstdint.patch
+	source = icu68.patch
+	source = glib-2.68.patch
 	sha256sums = SKIP
+	sha256sums = 4c71c958eae45cae65c9f002024eb1369d06029b668e595158138ff7971e64f1
+	sha256sums = 0b40ed924f03ff6081af610bb0ee01560b7bd1fb68f8af02053304a01d4ccdf0
+	sha256sums = 4969dd03e482155e2490b50307dada81dda7bbc9e5398e3a53c20bc474f7c04e
 
 pkgname = qt5-webkit-git
-
