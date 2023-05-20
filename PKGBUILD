@@ -1,5 +1,5 @@
 pkgname=ton-bin
-pkgver=2023.04
+pkgver=2023.05
 pkgrel=1
 pkgdesc="Ultra-scalable blockchain, designed by Telegram to onboard billions of users."
 arch=('x86_64')
