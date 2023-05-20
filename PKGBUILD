@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=tcsh-git
-pkgver=6.24.8.r7.g253e085
+pkgver=6.24.10.r0.gca05dea
 pkgrel=1
 pkgdesc="C shell with file name completion and command line editing"
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ backup=('etc/csh.cshrc'
         'etc/csh.login')
 install=tcsh.install
 source=("git+https://github.com/tcsh-org/tcsh.git"
-        "csh.cshrc::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/tcsh/trunk/csh.cshrc"
-        "csh.login::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/tcsh/trunk/csh.login")
+        "csh.cshrc::https://gitlab.archlinux.org/archlinux/packaging/packages/tcsh/-/raw/main/csh.cshrc"
+        "csh.login::https://gitlab.archlinux.org/archlinux/packaging/packages/tcsh/-/raw/main/csh.login")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')
