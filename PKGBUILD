@@ -6,7 +6,7 @@
 # Contributor: Aaron Griffin <aaron@archlinux.org>
 
 pkgname=bash-devel-git
-pkgver=5.2.r1161.gec9447ce
+pkgver=5.2.r1171.ge44e3d50
 pkgrel=1
 pkgdesc="The GNU Bourne Again shell (development version)"
 arch=('i686' 'x86_64')
@@ -19,11 +19,11 @@ provides=("bash=$pkgver" 'sh')
 conflicts=('bash')
 backup=(etc/bash.bash{rc,_logout} etc/skel/.bash{rc,_profile,_logout})
 source=("git+https://git.savannah.gnu.org/git/bash.git#branch=devel"
-        "dot.bash_logout::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/bash/trunk/dot.bash_logout"
-        "dot.bash_profile::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/bash/trunk/dot.bash_profile"
-        "dot.bashrc::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/bash/trunk/dot.bashrc"
-        "system.bash_logout::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/bash/trunk/system.bash_logout"
-        "system.bashrc::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/bash/trunk/system.bashrc")
+        "dot.bash_logout::https://gitlab.archlinux.org/archlinux/packaging/packages/bash/-/raw/main/dot.bash_logout"
+        "dot.bash_profile::https://gitlab.archlinux.org/archlinux/packaging/packages/bash/-/raw/main/dot.bash_profile"
+        "dot.bashrc::https://gitlab.archlinux.org/archlinux/packaging/packages/bash/-/raw/main/dot.bashrc"
+        "system.bash_logout::https://gitlab.archlinux.org/archlinux/packaging/packages/bash/-/raw/main/system.bash_logout"
+        "system.bashrc::https://gitlab.archlinux.org/archlinux/packaging/packages/bash/-/raw/main/system.bashrc")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
