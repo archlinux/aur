@@ -1,6 +1,6 @@
 pkgname=passy-git
 _pkgshortname=passy
-pkgver=1.4.1.r0.gce63fb6
+pkgver=1.5.0.r0.gb4689bf
 pkgrel=1
 pkgdesc='Offline password manager with cross-platform synchronization'
 arch=('x86_64')
@@ -24,6 +24,7 @@ build() {
   git submodule init
   git submodule update
   $_flutter config --no-analytics
+  export PATH="$(pwd)/submodules/flutter/bin/cache/dart-sdk/bin:$PATH"
   $_flutter build linux --dart-define=UPDATES_POPUP_ENABLED=false
   cd ..
 
