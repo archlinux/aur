@@ -2,7 +2,7 @@
 
 pkgname=mlocate-git
 pkgver=0.26.r14.gc98bf65
-pkgrel=2
+pkgrel=3
 pkgdesc="A locate/updatedb implementation"
 arch=('i686' 'x86_64')
 url="https://pagure.io/mlocate"
@@ -14,10 +14,10 @@ conflicts=('mlocate')
 backup=('etc/updatedb.conf')
 source=("git+https://pagure.io/mlocate.git"
         "git+https://git.savannah.gnu.org/git/gnulib.git#commit=5861339993f3014cfad1b94fc7fe366fc2573598"
-        "sysusers.d::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/mlocate/trunk/sysusers.d"
-        "updatedb.conf::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/mlocate/trunk/updatedb.conf"
-        "updatedb.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/mlocate/trunk/updatedb.service"
-        "updatedb.timer::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/mlocate/trunk/updatedb.timer")
+        "sysusers.d::https://gitlab.archlinux.org/archlinux/packaging/packages/mlocate/-/raw/main/sysusers.d"
+        "updatedb.conf::https://gitlab.archlinux.org/archlinux/packaging/packages/mlocate/-/raw/main/updatedb.conf"
+        "updatedb.service::https://gitlab.archlinux.org/archlinux/packaging/packages/mlocate/-/raw/main/updatedb.service"
+        "updatedb.timer::https://gitlab.archlinux.org/archlinux/packaging/packages/mlocate/-/raw/main/updatedb.timer")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'

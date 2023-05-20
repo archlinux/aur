@@ -1,7 +1,7 @@
 pkgbase = mlocate-git
 	pkgdesc = A locate/updatedb implementation
 	pkgver = 0.26.r14.gc98bf65
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pagure.io/mlocate
 	arch = i686
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = mlocate-git
 	backup = etc/updatedb.conf
 	source = git+https://pagure.io/mlocate.git
 	source = git+https://git.savannah.gnu.org/git/gnulib.git#commit=5861339993f3014cfad1b94fc7fe366fc2573598
-	source = sysusers.d::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/mlocate/trunk/sysusers.d
-	source = updatedb.conf::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/mlocate/trunk/updatedb.conf
-	source = updatedb.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/mlocate/trunk/updatedb.service
-	source = updatedb.timer::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/mlocate/trunk/updatedb.timer
+	source = sysusers.d::https://gitlab.archlinux.org/archlinux/packaging/packages/mlocate/-/raw/main/sysusers.d
+	source = updatedb.conf::https://gitlab.archlinux.org/archlinux/packaging/packages/mlocate/-/raw/main/updatedb.conf
+	source = updatedb.service::https://gitlab.archlinux.org/archlinux/packaging/packages/mlocate/-/raw/main/updatedb.service
+	source = updatedb.timer::https://gitlab.archlinux.org/archlinux/packaging/packages/mlocate/-/raw/main/updatedb.timer
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
