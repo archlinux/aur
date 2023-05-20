@@ -10,7 +10,7 @@ url="https://github.com/pyviz/${_base}"
 license=('custom:BSD-3-clause')
 depends=(python-cartopy python-holoviews)
 makedepends=(python-build python-installer python-setuptools python-wheel npm)
-checkdepends=(python-pytest python-geopandas python-spatialpandas) # python-nbsmoke python-xarray
+checkdepends=(python-pytest python-geopandas python-spatialpandas) # python-xarray
 # optdepends=('python-datashader: for '
 #   'python-geopandas: for '
 #   'python-osgeo: for ' # gdal
