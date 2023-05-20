@@ -2,7 +2,7 @@
 
 pkgname="sing-box-bin"
 _pkgname="sing-box"
-pkgver="1.2.6"
+pkgver="1.2.7"
 pkgrel="1"
 pkgdesc="The universal proxy platform."
 provides=("sing-box")
@@ -16,17 +16,19 @@ backup=("etc/$_pkgname/config.json")
 source=("$_pkgname.service"
         "$_pkgname@.service"
         "$_pkgname.sysusers"
+        "$_pkgname.tmpfiles"
         "config.json")
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-amd64.tar.gz")
 source_armv7h=("$_pkgname-$pkgver-armv7h.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-armv7.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-arm64.tar.gz")
-sha512sums=('d6eaf407ccf6239f05bb5da0c962be8ef0855c18f5bf342d0721a54ee4246ba541a5a9481858daeb02491afe9dd1e7546477b4d6554c9111506a445034eacd02'
-            '6cb7f8d44a06a2d61febf25813c536eb63e79142b0bbe1b964f232080df6cdc45a70c7ca6a5834cba23280684650a51ba6a5535a03664a49d18e518b394087dc'
-            '8ec720c3f9cc1bd5ec2ad118dd3d1c27d86f39062e8d623713c4d841d7cf42e9b3b1552dbe9d66a90737cbece36a3e20cd568b82cd34f3faf82a745a5e59a680'
+sha512sums=('b5e5b8dad736b628a2761cc883b7e8439d604b5b1612447020ac7c143747e57acaf7dc8211cb50beb9d727f6d618cbe481874d012837fb3b2f089cd08299e1d2'
+            '84dbbd0e7a9f67072bcfd836440ad002c2a46ebb0c9cb54310e13774b63890b6245e13472574e226cfe278c2f9d586fa28f3441a0defca0d35c3653684d07d97'
+            '0541f144ee33bb4cb182231794065babae530260b95bff26cbeb5491ab856d40e247895d130629f9dbef58dcd6652f0c69d3e28f57f3bae916d36294565399b0'
+            'c97518ba1e9b865239cedbba7bf6c5b9af0e0c873972fa6df7169aac43a8b500f9d063b382530faa326c0b5f135876cb9eb601a7922a6d0f53adaa9ba27e6816'
             'a3eb0e5789f04069fc7fd55ff09c437e394ae370110a43d6a1000759a524ac7d1b9f8b664656c2c9fb94fc9eca4852fb338a24186d9e3da30aed02773edbab86')
-sha512sums_x86_64=('98d22ae9b6472cb196bb79d6bd69b97ff49ab3ba6e2beed3f9783ccca07cf1b89b0827a81cd2e9d0c864758945e7c564e64aacf34e10b2ddfe82777b842a6d34')
-sha512sums_armv7h=('691182186823a333f068a4a8af10d36e785134a28773c8f16e212370fcd9d115b4d31c0d0b9b8bb20b2e3eaaaa07bbbefe73d1675c0648d81cf72b14ec1fed95')
-sha512sums_aarch64=('804e96977205aba9b6a5e56c56dc234de26287b5beb0827bef5f82839afe8d85a1a903a05d8251c4681a07992737c3a8435b8fa01e8ac7b5a02b9645a7df6aeb')
+sha512sums_x86_64=('90a57eb8d937a2d9726ed4a9c43c8bc2bc0d50a82bdbdbea0a72d1643269a382caae76480743857c923f61f8ce38bc38506cd771ae48d562e0d0346e935dfc7e')
+sha512sums_armv7h=('2fa46c6646d04b94b9751ae8c319c15cbe6a81516c0893b4a9e9ec4405afe390f9e3bfeed667b58fa6547cf7552198eb0746ca2145462fd55087dd9f540f7862')
+sha512sums_aarch64=('0d943c03b6dcd9fb4888587e0a2c73ad6092a2b5c1a1ce9c06a188c6924cc9ec72c2ca75a0228d955478d438eb57cd337a37c2f6f1285a1c96bd9fa3fce81170')
 
 package() {
     declare -A ARCH_MAP
@@ -36,6 +38,7 @@ package() {
     install -Dm644 "$_pkgname.service" -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 "$_pkgname@.service" -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 "$_pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
+    install -Dm644 "$_pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
     install -Dm644 "config.json" -t "$pkgdir/etc/$_pkgname"
 
     cd "$_pkgname-$pkgver-linux-${ARCH_MAP[$CARCH]}"
