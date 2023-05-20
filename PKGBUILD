@@ -3,12 +3,15 @@
 
 _pkgbase=ocp
 pkgname=('ocp-git' 'ocp-sdl2-git')
-pkgver=0.2.102.r40.3e1a320
+pkgver=0.2.105.r3.f9a4f71
 pkgrel=1
 pkgdesc="Open Cubic Player (GIT Version)"
 arch=('i686' 'x86_64')
 url="https://stian.cubic.org/project-ocp.php"
 license=('GPL')
+
+source=(${_pkgbase}::git+https://github.com/mywave82/opencubicplayer.git)
+sha256sums=('SKIP')
 
 optdepends=('libvorbis: Vorbis codec support'
 	    'libmad: MPEG codec support'
@@ -30,20 +33,12 @@ makedepends=('alsa-lib'
 	     'libpng'
 	     'libvorbis')
 
-source=(${_pkgbase}::git+https://github.com/mywave82/opencubicplayer.git)
-sha256sums=('SKIP')
-
 pkgver() {
     	cd $_pkgbase
 	echo "$(git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./')"
 }
 
 prepare() {
-	echo -e "\033[1;31m##!! NOTICE !!##\033[0m"
-	echo -e "\033[0;33mStarting with ocp 0.2.103, the ocp-git package has been split into two meta packages."
-	echo "Depending upon which features you use, no action will need to be taken."
-	echo -e "X11/SDL2 functionality is now provided by the ocp-sdl2-git meta package.\033[0m"
-	echo  "Thanks for flying ocp-git in the AUR! :)"
         cd $_pkgbase
 	git submodule init
 	git submodule update --init --recursive
