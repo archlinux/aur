@@ -1,40 +1,48 @@
-# Maintainer: DaZ <daz.root+arch@gmail.com>
+# Maintainer: éclairevoyant
+# Contributor: Caleb Maclennan <caleb at alerque dot com>
+# Contributor: DaZ <daz dot root+arch at gmail dot com>
 
-pkgname=gnvim-git
-url="https://github.com/vhakulinen/gnvim"
-pkgdesc="GUI for neovim, without any web bloat"
-pkgver=r193.4f7c547
+_pkgname=gnvim
+pkgname="$_pkgname-git"
+pkgver=0.3.1.r2.3705700
 pkgrel=1
-arch=('i686' 'x86_64')
-license=('MIT')
-depends=('neovim' 'gtk3' 'webkit2gtk')
-makedepends=('git' 'cargo' 'rust')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("${pkgname}::git+https://github.com/vhakulinen/gnvim.git")
-md5sums=('SKIP')
-
-check() {
-    cd "$srcdir/${pkgname}"
-    cargo test
-}
+pkgdesc="Opinionated GTK4 Neovim GUI"
+arch=(x86_64 aarch64 i686)
+url="https://github.com/vhakulinen/$_pkgname"
+license=(MIT)
+depends=(gtk4 'neovim>=0.9')
+makedepends=(cargo git)
+checkdepends=(xorg-server-xvfb)
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+source=("git+$url.git")
+b2sums=(SKIP)
 
 prepare() {
-    cd "$srcdir/${pkgname}"
-    sed -i s';/usr/local/share/gnvim/runtime;/usr/share/gnvim/runtime;' src/main.rs
+	cd $_pkgname
+	export RUSTUP_TOOLCHAIN=stable
+
+	sed -i 's|/usr/local|/usr|' ui/src/arguments.rs
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 pkgver() {
-    cd "$srcdir/${pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git -C $_pkgname describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$srcdir/${pkgname}"
-    make
+	cd $_pkgname
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release --all-features
+}
+
+check() {
+	cd $_pkgname
+	export RUSTUP_TOOLCHAIN=stable
+	xvfb-run cargo test --frozen --all-features
 }
 
 package() {
-    cd "$srcdir/${pkgname}"
-    make PREFIX="/usr" DESTDIR="$pkgdir/" install
+	make -C $_pkgname PREFIX="/usr" DESTDIR="$pkgdir" install
 }
