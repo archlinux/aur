@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=dnsmasq-git
-pkgver=2.89.r27.gb14aa76
-pkgrel=2
+pkgver=2.89.r39.g1d6fe0e
+pkgrel=1
 pkgdesc="Lightweight, easy to configure DNS forwarder and DHCP server"
 arch=('i686' 'x86_64')
 url="https://thekelleys.org.uk/dnsmasq/doc.html"
@@ -13,8 +13,8 @@ provides=("dnsmasq=$pkgver")
 conflicts=('dnsmasq')
 backup=('etc/dnsmasq.conf')
 source=("git+https://thekelleys.org.uk/git/dnsmasq.git"
-        "dnsmasq-sysusers.conf::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/dnsmasq/trunk/dnsmasq-sysusers.conf"
-        "dnsmasq.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/dnsmasq/trunk/dnsmasq.service")
+        "dnsmasq-sysusers.conf::https://gitlab.archlinux.org/archlinux/packaging/packages/dnsmasq/-/raw/main/dnsmasq-sysusers.conf"
+        "dnsmasq.service::https://gitlab.archlinux.org/archlinux/packaging/packages/dnsmasq/-/raw/main/dnsmasq.service")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')
