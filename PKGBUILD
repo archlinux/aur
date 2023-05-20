@@ -2,7 +2,7 @@
 
 pkgname=tftp-hpa-git
 pkgver=5.2.r10.gb2b34ce
-pkgrel=2
+pkgrel=3
 pkgdesc="Official tftp server"
 arch=('i686' 'x86_64')
 url="https://git.kernel.org/pub/scm/network/tftp/tftp-hpa.git"
@@ -13,9 +13,9 @@ provides=("tftp-hpa=$pkgver")
 conflicts=('tftp-hpa')
 backup=('etc/conf.d/tftpd')
 source=("git+https://git.kernel.org/pub/scm/network/tftp/tftp-hpa.git"
-        "tftpd.conf::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/tftp-hpa/trunk/tftpd.conf"
-        "tftpd.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/tftp-hpa/trunk/tftpd.service"
-        "tftpd.socket::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/tftp-hpa/trunk/tftpd.socket")
+        "tftpd.conf::https://gitlab.archlinux.org/archlinux/packaging/packages/tftp-hpa/-/raw/main/tftpd.conf"
+        "tftpd.service::https://gitlab.archlinux.org/archlinux/packaging/packages/tftp-hpa/-/raw/main/tftpd.service"
+        "tftpd.socket::https://gitlab.archlinux.org/archlinux/packaging/packages/tftp-hpa/-/raw/main/tftpd.socket")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
