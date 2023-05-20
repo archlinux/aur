@@ -12,7 +12,7 @@ makedepends=('cargo' 'git')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8c7358f472a4665300ce7b2668a27b591224325269869baf5f0e6c7e145c59b1')
+sha256sums=('c4d5c5675882eb549d7058d9bd9031dab8a2bde983e783a989f6844b3bbffcf1')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
