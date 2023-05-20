@@ -2,7 +2,7 @@
 
 pkgname=ebtables-git
 pkgver=2.0.11.r7.g916d420
-pkgrel=1
+pkgrel=2
 pkgdesc="A filtering tool for a Linux-based bridging firewall"
 arch=('i686' 'x86_64')
 url="https://ebtables.netfilter.org/"
@@ -13,7 +13,7 @@ provides=("ebtables=$pkgver")
 conflicts=('ebtables')
 backup=('etc/ebtables.conf')
 source=("git://git.netfilter.org/ebtables"
-        "ebtables.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/master/iptables/trunk/ebtables.service")
+        "ebtables.service::https://gitlab.archlinux.org/archlinux/packaging/packages/iptables/-/raw/main/ebtables.service")
 sha256sums=('SKIP'
             'SKIP')
 
