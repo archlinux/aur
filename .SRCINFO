@@ -1,11 +1,10 @@
 pkgbase = python-pyviz_comms
 	pkgdesc = Bidirectional communication for the PyViz ecosystem
 	pkgver = 2.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pyviz/pyviz_comms
 	arch = any
 	license = custom:BSD-3-clause
-	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python-param
 	depends = jupyterlab

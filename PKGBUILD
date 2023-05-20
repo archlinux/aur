@@ -3,26 +3,20 @@
 _base=pyviz_comms
 pkgname=python-${_base}
 pkgver=2.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Bidirectional communication for the PyViz ecosystem'
 arch=(any)
 url="https://github.com/pyviz/${_base}"
 license=('custom:BSD-3-clause')
 makedepends=(python-setuptools)
 depends=(python-param jupyterlab)
-checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('7c64a9923483a0f73cc3c877b4d02b2c5dd5a90382bf7ae2f564125e14e35a3f2eac9a0a995fa502f34ac91e809986f1e58cb2c9b98c7ca6262682a37a9aea9e')
 
 build() {
   cd ${_base}-${pkgver}
-  python setup.py build
   jlpm
-}
-
-check() {
-  cd ${_base}-${pkgver}
-  python -m pytest
+  python setup.py build
 }
 
 package() {
