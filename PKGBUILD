@@ -67,13 +67,4 @@ build() {
 package() {
     #rm -Rf ${pkgdir}
     DESTDIR="$pkgdir" ninja -C _build install | tee ${pkgname}-install.log
-
-    # time to fix broken bolt binary output
-    #hugify_path=$(find _build -name "libbolt_rt_hugify.a")
-    #hugify_dir=$(dirname ${hugify_path})
-    #mv ${hugify_dir}/*.a ${pkgdir}/${install_path}/lib
-    # end bolt workaround
-
-    cd ${pkgdir}${prefix_path}
-    ln -s ${pkgver} latest
 }
