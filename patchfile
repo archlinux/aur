@@ -1,5 +1,5 @@
 diff --git a/dmenu.1 b/dmenu.1
-index 323f93c..cf68d5b 100644
+index 323f93c..6b83752 100644
 --- a/dmenu.1
 +++ b/dmenu.1
 @@ -22,6 +22,16 @@ dmenu \- dynamic menu
@@ -19,7 +19,7 @@ index 323f93c..cf68d5b 100644
  .P
  .BR dmenu_run " ..."
  .SH DESCRIPTION
-@@ -80,11 +90,25 @@ prints version information to stdout, then exits.
+@@ -80,11 +90,26 @@ prints version information to stdout, then exits.
  .TP
  .BI \-w " windowid"
  embed into windowid.
@@ -35,6 +35,7 @@ index 323f93c..cf68d5b 100644
 +.TP
 +.BI \-H " position"
 +override automatic height of the menu.
++.TP
 +.BI \-F " filter"
 +filter will be pre entered as text.
  .SH USAGE
