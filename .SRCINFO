@@ -13,7 +13,7 @@ pkgbase = python-lzallright
 	makedepends = python-maturin>=0.14
 	makedepends = python-maturin<0.15
 	depends = python>=3.8
-	source = https://files.pythonhosted.org/packages/sources/l/lzallright/lzallright-0.1.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/l/lzallright/lzallright-0.1.0.tar.gz
 	sha256sums = 0de7e0fe110650a79c1e1fca10a188da5b6fc6b2f3730c69dc411782e3b4923a
 
 pkgname = python-lzallright
