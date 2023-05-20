@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=lmdb-git
-pkgver=0.9.30.r22949.gf7e6c71e1
+pkgver=0.9.30.r22965.g6b77544ab
 pkgrel=1
 pkgdesc="Extraordinarily fast, memory-efficient database"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ provides=("lmdb=$pkgver")
 conflicts=('lmdb')
 options=('staticlibs')
 source=("git+https://git.openldap.org/openldap/openldap.git"
-        "https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/lmdb/trunk/lmdb.pc")
+        "https://gitlab.archlinux.org/archlinux/packaging/packages/lmdb/-/raw/main/lmdb.pc")
 sha256sums=('SKIP'
             'SKIP')
 
