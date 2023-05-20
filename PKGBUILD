@@ -2,7 +2,7 @@
 
 pkgname=dhcpcd8
 pkgver=8.1.9
-pkgrel=3
+pkgrel=4
 pkgdesc="A DHCP and DHCPv6 client (8.x releases)"
 arch=('i686' 'x86_64')
 url="https://roy.marples.name/projects/dhcpcd/"
@@ -13,16 +13,16 @@ provides=("dhcpcd=$pkgver")
 conflicts=('dhcpcd')
 backup=('etc/dhcpcd.conf')
 options=('emptydirs')
-source=("$pkgname-$pkgver-src.tar.gz::https://github.com/NetworkConfiguration/dhcpcd/archive/refs/tags/dhcpcd-$pkgver.tar.gz"
+source=("$pkgname-$pkgver-src.tar.gz::https://github.com/NetworkConfiguration/dhcpcd/archive/refs/tags/v$pkgver.tar.gz"
         "dhcpcd.service::https://gitlab.archlinux.org/archlinux/packaging/packages/dhcpcd/-/raw/main/dhcpcd.service"
         "dhcpcd_.service::https://gitlab.archlinux.org/archlinux/packaging/packages/dhcpcd/-/raw/main/dhcpcd_.service")
-sha256sums=('951ec48cb5a5113cccfcdc713e909023df08f17adca3f74c52afc1d16c519398'
-            '20bccbf8a05b1bc2be365c8b4b526c38c752f48229ba53c3be113ac5b634f210'
-            '37acd53a589711f5e1db2fcaebb4ccf1c90dc4bcd309626bde25beb7b630a545')
+sha256sums=('aa62732df3bfa26b0610a70e4f696e49a9d198896876b5e721dbaa6f7097dd29'
+            '843913ee4cd77ca51ab1f1d21eb13650df3791db2b8526a9b0c9acf2d6b9c63f'
+            'a2495b4a4632f9ee6d5d40877eb9667aaa3f64e035dbd8ccfc029a3a2339f069')
 
 
 build() {
-  cd "dhcpcd-dhcpcd-$pkgver"
+  cd "dhcpcd-$pkgver"
 
   ./configure \
     --prefix="/usr" \
@@ -35,13 +35,13 @@ build() {
 }
 
 check() {
-  cd "dhcpcd-dhcpcd-$pkgver"
+  cd "dhcpcd-$pkgver"
 
   make test
 }
 
 package() {
-  cd "dhcpcd-dhcpcd-$pkgver"
+  cd "dhcpcd-$pkgver"
 
   make DESTDIR="$pkgdir" install
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/dhcpcd"
