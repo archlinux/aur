@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=ppp-git
-pkgver=2.5.0.r0.g760ce18
-pkgrel=2
+pkgver=2.5.0.r5.gba45e71
+pkgrel=1
 pkgdesc="A package which implements the Point-to-Point Protocol"
 arch=('i686' 'x86_64')
 url="https://ppp.samba.org/"
@@ -13,18 +13,16 @@ provides=("ppp=$pkgver")
 conflicts=('ppp')
 backup=(etc/ppp/{chap-secrets,ip-down,ip-down.d/00-dns.sh,ip-up,ip-up.d/00-dns.sh,ipv6-down,ipv6-up,ipv6-up.d/00-iface-config.sh,options,pap-secrets})
 source=("git+https://github.com/paulusmack/ppp.git"
-        "ip-down::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/ppp/trunk/ip-down"
-        "ip-down.d.dns.sh::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/ppp/trunk/ip-down.d.dns.sh"
-        "ip-up::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/ppp/trunk/ip-up"
-        "ip-up.d.dns.sh::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/ppp/trunk/ip-up.d.dns.sh"
-        "ipv6-down::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/ppp/trunk/ipv6-down"
-        "ipv6-up::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/ppp/trunk/ipv6-up"
-        "ipv6-up.d.iface-config.sh::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/ppp/trunk/ipv6-up.d.iface-config.sh"
-        "options::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/ppp/trunk/options"
-        "ppp.systemd::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/ppp/trunk/ppp.systemd"
-        "0001-Detect-whether-sockaddr_ll-is-defined.patch::https://github.com/Chocobo1/ppp/commit/bbf65165fa6c642ced13e6970b3b3e04cfcff9f5.patch")
+        "ip-down::https://gitlab.archlinux.org/archlinux/packaging/packages/ppp/-/raw/main/ip-down"
+        "ip-down.d.dns.sh::https://gitlab.archlinux.org/archlinux/packaging/packages/ppp/-/raw/main/ip-down.d.dns.sh"
+        "ip-up::https://gitlab.archlinux.org/archlinux/packaging/packages/ppp/-/raw/main/ip-up"
+        "ip-up.d.dns.sh::https://gitlab.archlinux.org/archlinux/packaging/packages/ppp/-/raw/main/ip-up.d.dns.sh"
+        "ipv6-down::https://gitlab.archlinux.org/archlinux/packaging/packages/ppp/-/raw/main/ipv6-down"
+        "ipv6-up::https://gitlab.archlinux.org/archlinux/packaging/packages/ppp/-/raw/main/ipv6-up"
+        "ipv6-up.d.iface-config.sh::https://gitlab.archlinux.org/archlinux/packaging/packages/ppp/-/raw/main/ipv6-up.d.iface-config.sh"
+        "options::https://gitlab.archlinux.org/archlinux/packaging/packages/ppp/-/raw/main/options"
+        "ppp.systemd::https://gitlab.archlinux.org/archlinux/packaging/packages/ppp/-/raw/main/ppp.systemd")
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -40,8 +38,6 @@ prepare() {
   cd "ppp"
 
   sed -i --follow-symlinks 's/noipx/#noipx/' "$srcdir/options"
-
-  patch -Np1 -i "$srcdir/0001-Detect-whether-sockaddr_ll-is-defined.patch"
 }
 
 pkgver() {
