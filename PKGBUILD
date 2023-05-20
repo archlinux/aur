@@ -1,17 +1,21 @@
 # Maintainer:  JP-Ellis <josh@jpellis.me>
 pkgname=python-habanero
 _name=${pkgname#python-}
-pkgver=1.0.0
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Habanero is a low level client for working with Crossref's search API."
 arch=('any')
 url="https://pypi.org/project/habanero/"
 license=('GPL')
-depends=('python')
+depends=(
+  'python'
+  'python-requests'
+  'python-tqdm'
+)
 makedepends=('python-setuptools')
 optdepends=()
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('2763debc455841e28715ff20c9884249e1b2eecfd22c20967928e1eb657a0fe5')
+sha256sums=('196f9e01b42dad2cd829dc5d0bbe466232daf6ad5f1b0ee7098a57927b17e908')
 noextract=()
 
 build() {
