@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=rng-tools-git
-pkgver=6.16.r8.g0e56029
+pkgver=6.16.r10.g15c4eed
 pkgrel=1
 pkgdesc="Random number generator daemon"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ provides=("rng-tools=$pkgver")
 conflicts=('rng-tools')
 backup=('etc/conf.d/rngd')
 source=("git+https://github.com/nhorman/rng-tools.git"
-        "rngd.conf::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/rng-tools/trunk/rngd.conf")
+        "rngd.conf::https://gitlab.archlinux.org/archlinux/packaging/packages/rng-tools/-/raw/main/rngd.conf")
 sha256sums=('SKIP'
             'SKIP')
 
