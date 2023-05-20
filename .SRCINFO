@@ -1,6 +1,6 @@
 pkgbase = miktex-fix
 	pkgdesc = a distribution of the TeX/LaTeX typesetting system(Fix the issue of command not found)
-	pkgver = 23.4
+	pkgver = 23.5
 	pkgrel = 1
 	url = https://miktex.org
 	arch = x86_64
@@ -49,7 +49,7 @@ pkgbase = miktex-fix
 	conflicts = miktex
 	conflicts = texlive-bin
 	options = !buildflags
-	source = https://github.com/MiKTeX/miktex/archive/23.4.tar.gz
-	md5sums = 85010ca98be292b849cb93b73a92ffd0
+	source = https://github.com/MiKTeX/miktex/archive/23.5.tar.gz
+	md5sums = bf09f5734954e11f21db534d84ea56ce
 
 pkgname = miktex-fix
