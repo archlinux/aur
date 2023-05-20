@@ -2,4 +2,4 @@ pkg
 src
 *.pkg.tar.*
 Icalingua
-
+*.log

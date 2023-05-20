@@ -3,12 +3,12 @@
 # Contributor: Clansty <i at gao4 dot pw>
 
 pkgname=("icalingua++-git" "icalingua++-electron-git")
-pkgver=2.8.10.r6.gc165f483
+pkgver=2.9.12.r1.gb626dcdf
 pkgrel=1
 pkgdesc='A Linux client for QQ and more(fork to upgrading)'
 license=('AGPL')
 depends=('ffmpeg' 'libappindicator-gtk3' 'libvips')
-makedepends=('git' 'node-gyp')
+makedepends=('git' 'node-gyp' 'nodejs-lts-gallium')
 optdepends=('mongodb: Provides storage'
             'redis: Provides storage')
 arch=('aarch64' 'x86_64' 'i686')
@@ -28,10 +28,16 @@ pkgver(){
 build(){
     cd "${srcdir}/Icalingua"
     export NODE_OPTIONS=--openssl-legacy-provider
-    node /usr/lib/node_modules/corepack/dist/pnpm.js install
-    chmod +x node_modules/ts-node/dist/bin.js
+    export PATH="$HOME/.local/bin:$PATH"
+    mkdir -p "$HOME/.local/bin"
+    corepack enable --install-directory "$HOME/.local/bin"
+    pnpm install
+    if [[ -f node_modules/ts-node/dist/bin.js ]]
+    then
+        chmod +x node_modules/ts-node/dist/bin.js
+    fi
     cd icalingua
-    node /usr/lib/node_modules/corepack/dist/pnpm.js run build:dir
+    pnpm run build:dir
 }
 package_icalingua++-git(){
     case ${CARCH} in
