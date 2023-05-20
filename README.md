@@ -1,4 +1,4 @@
-# ARCH-Linux - AUR - Package python-torchvision-rocm
+# Arch-Linux - AUR Package python-torchvision-rocm
 
 Either build from source, or add
 
