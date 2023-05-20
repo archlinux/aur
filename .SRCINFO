@@ -1,7 +1,7 @@
 pkgbase = bitcoin-cash-node
 	pkgdesc = Bitcoin Cash Node with bitcoind, bitcoin-tx, bitcoin-seeder and bitcoin-cli
 	pkgver = 26.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://bitcoincashnode.org
 	install = bitcoin.install
 	arch = i686
@@ -41,6 +41,6 @@ pkgbase = bitcoin-cash-node
 	sha256sums = 497dbeefb9cd9792757a9b6e1fbfd92710d19990ee2959add6c30533ae40b6f6
 	sha256sums = 1579ff8d965eb3700276586e27e9e2e49e8e2721ece1c8a14924b4ce236b6eb8
 	sha256sums = 4b374456a28d1172933aad0b285aa7dd4e9d67058b9b9958dd0065c6c46acba1
-	sha256sums = a668667fdcb86ea13b14e4fe3d8878e08f1eb0b0c23eaa1c4e251f93dac7194d
+	sha256sums = bf5753db44af2fae6e864d01f0ad2791c84f5207217c6d37469d35dcebdd1553
 
 pkgname = bitcoin-cash-node

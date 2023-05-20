@@ -22,3 +22,33 @@ index 99ab618e23..4fd04a7dc2 100644
  #include <limits>
  #include <list>
  #include <optional>
+--- src/support/lockedpool.h
++++ src/support/lockedpool.h
+@@ -11,6 +11,7 @@
+ #include <memory>
+ #include <mutex>
+ #include <unordered_map>
++#include <stdexcept>
+ 
+ /**
+  * OS-dependent allocation and deallocation of locked/pinned memory pages.
+--- src/tinyformat.h
++++ src/tinyformat.h
+@@ -138,6 +138,7 @@
+ #include <locale>
+ #include <sstream>
+ #include <stdexcept>
++#include <cstdint>
+ 
+ #ifndef TINYFORMAT_ERROR
+ #define TINYFORMAT_ERROR(reason) assert(0 && reason)
+--- src/base58.h
++++ src/base58.h
+@@ -20,6 +20,7 @@
+ 
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ /**
+  * Encode a byte sequence as a base58-encoded string.
