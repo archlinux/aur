@@ -3,7 +3,7 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=openssl-git
-pkgver=3.1.0.beta1.r2594.gf309b3f608
+pkgver=3.1.0.beta1.r2821.g56a51b5a1e
 pkgrel=1
 pkgdesc="Toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ conflicts=('openssl')
 backup=('etc/ssl/openssl.cnf')
 options=('staticlibs')
 source=("git+https://github.com/openssl/openssl.git"
-        "ca-dir.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/openssl/trunk/ca-dir.patch")
+        "ca-dir.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/openssl/-/raw/main/ca-dir.patch")
 sha256sums=('SKIP'
             'SKIP')
 
