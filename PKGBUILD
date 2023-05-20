@@ -2,7 +2,7 @@
 
 pkgname=gpm-git
 pkgver=1.20.7.r38.ge82d1a6
-pkgrel=2
+pkgrel=3
 pkgdesc="General purpose mouse daemon"
 arch=('i686' 'x86_64')
 url="https://www.nico.schottelius.org/software/gpm/"
@@ -13,8 +13,8 @@ provides=("gpm=$pkgver" 'libgpm.so')
 conflicts=('gpm')
 options=('staticlibs')
 source=("git+https://github.com/telmich/gpm.git"
-        "https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/gpm/trunk/gpm.service"
-        "https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/gpm/trunk/gpm.sh")
+        "https://gitlab.archlinux.org/archlinux/packaging/packages/gpm/-/raw/main/gpm.service"
+        "https://gitlab.archlinux.org/archlinux/packaging/packages/gpm/-/raw/main/gpm.sh")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')
