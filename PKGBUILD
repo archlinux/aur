@@ -1,6 +1,6 @@
 # Maintainer: Callum Osmotherly <acheronfail@gmail.com>
 pkgname=istat
-pkgver=0.1.1
+pkgver="0.1.2"
 pkgrel=1
 pkgdesc="A lightweight and batteries-included status_command for i3 and sway"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=('gcc-libs')
 makedepends=('cargo' 'clang' 'libpulse')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('13cfca3507b1a537ec6fff6168486c02b896486ff65071926ae6b92a83bfdad426cd2148dd073dff285d9f101d8a7f1821be772ed85e63be0ea584a7395ead88')
+sha512sums=('73bc3374c48c6f9ad6b1a107ed5060003175493707a99cdb81ac48465c70a398ad26cff806cdd488218a23352f5046462926cae7e71d073517098e5a793a2644')
 
 build() {
   cd "$pkgname-$pkgver"
