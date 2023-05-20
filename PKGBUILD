@@ -1,27 +1,25 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
-
-pkgname=python-eciespy
-_pkg="${pkgname#python-}"
-pkgver=0.3.12
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
+_base=eciespy
+pkgname=python-${_base}
+pkgver=0.3.13
 pkgrel=1
-pkgdesc="Elliptic curve integrated encryption scheme for secp256k1"
-arch=('any')
-url="https://github.com/ecies/py"
-license=('MIT')
-depends=('python-coincurve' 'python-eth-keys' 'python-pycryptodome')
-makedepends=('python-poetry-core' 'python-build' 'python-installer')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/e/eciespy/eciespy-$pkgver.tar.gz")
-sha256sums=('4702135fa24971d96ebef04806e342bbbc6e3a809ba99afea8dc5a5aff8f275d')
+pkgdesc="Elliptic Curve Integrated Encryption Scheme for secp256k1 in Python"
+arch=(any)
+url="https://github.com/${_base/sp/s\/p}"
+license=(MIT)
+depends=(python-coincurve python-eth-keys)
+makedepends=(python-build python-installer python-poetry-core python-wheel)
+source=(py-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('8e8eadb89f7d6d640a4b6013cb74014db31557a96e1cc3e09c5aa7bf2f3bd69ef4aacb475c9bfbe73436e5249d71a88f15a9fbbc0694401dbf291de0ece248fc')
 
 build() {
-	cd "$_pkg-$pkgver"
-	python -m build --wheel --no-isolation
+  cd py-${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
-	cd "$_pkg-$pkgver"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
-	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s "$_site/$_pkg-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+  cd py-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
