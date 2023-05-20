@@ -1,20 +1,13 @@
 post_install() {
   cat <<EOF
-
-To make use of X48 you will need a HP-48 ROM.
-
-In 2000 Hewlett-Packard released the 48SX/GX ROMS to the
-public. The roms for the hp48sx and the hp48gx are included in
-this package.
-
-The first the time program is run, as user, use either
+To make use of X48ng you will need a HP-48 ROM.
+To initialize it, run this script as user :
+  /usr/share/x48ng/setup-x48ng-home.sh
+Or use the native way :
   x48ng -rom /usr/share/x48ng/ROMs/gxrom-r -initialize
-or
   x48ng -rom /usr/share/x48ng/ROMs/sxrom-j -initialize
-to have X48 place the ROM for the desired emulator in \$HOME/.x48ng
-for subsequent use.
 
-If fonts isn't installed, you need to logout and login back before launching x48ng.
+If xorg-mkfontscale and/or xorg-fonts-misc were just installed as dependencies, you need to logout and login back before running x48ng or setup.
 
 EOF
 }
