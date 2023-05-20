@@ -1,0 +1,16 @@
+pkgbase = libhvl-git
+	pkgdesc = Hively Tracker as a library (HVL and AHX audio format support)
+	pkgver = r1.05b83b7
+	pkgrel = 1
+	url = https://github.com/Deewiant/libhvl.git
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	provides = libhvl
+	conflicts = libhvl
+	source = git+https://github.com/Deewiant/libhvl.git
+	source = git+https://github.com/pete-gordon/hivelytracker.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = libhvl-git
