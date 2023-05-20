@@ -1,12 +1,12 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=sleipnirgroup-sleipnir-git
-pkgver=r228.f85c37e
+pkgver=r233.a9119f7
 pkgrel=1
 pkgdesc="A sparsity and linearity-exploiting interior-point solver, now with readable internals"
 arch=('x86_64')
 url='https://github.com/SleipnirGroup/Sleipnir'
-depends=('fmt' 'eigen')
+depends=('eigen' 'fmt')
 makedepends=('cmake')
 license=('BSD')
 options=('!strip' 'staticlibs')
@@ -22,7 +22,11 @@ pkgver() {
 }
 
 build() {
-  cmake -B build -S "Sleipnir" -DBUILD_BENCHMARKING=OFF -DCMAKE_INSTALL_PREFIX='/usr'
+  cmake -B build -S "Sleipnir" \
+    -DBUILD_BENCHMARKING=OFF \
+    -DUSE_SYSTEM_EIGEN=ON \
+    -DUSE_SYSTEM_FMT=ON \
+    -DCMAKE_INSTALL_PREFIX='/usr'
   cmake --build build
 }
 
@@ -33,12 +37,4 @@ check() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-
-  # Delete dependency installs
-  rm -r "$pkgdir"/usr/include/eigen3
-  rm -r "$pkgdir"/usr/include/fmt
-  rm -r "$pkgdir"/usr/lib/cmake/fmt
-  rm -r "$pkgdir"/usr/lib/libfmt.so*
-  rm -r "$pkgdir"/usr/lib/pkgconfig
-  rm -r "$pkgdir"/usr/share
 }
