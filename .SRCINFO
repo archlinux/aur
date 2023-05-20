@@ -1,0 +1,20 @@
+pkgbase = python-lark-git
+	pkgdesc = Parsing toolkit built with a focus on ergonomics, performance and modularity.
+	pkgver = 1.1.5.r51.gccca874
+	pkgrel = 1
+	url = https://github.com/lark-parser/lark
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = python-lark
+	source = git+https://github.com/lark-parser/lark
+	sha256sums = SKIP
+
+pkgname = python-lark-git
