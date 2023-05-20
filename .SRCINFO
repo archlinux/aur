@@ -1,7 +1,7 @@
 pkgbase = ipset-git
 	pkgdesc = Administration tool for IP sets
 	pkgver = 7.17.r10.g989d5a5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ipset.netfilter.org/
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = ipset-git
 	options = staticlibs
 	backup = etc/ipset.conf
 	source = git://git.netfilter.org/ipset
-	source = ipset.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/ipset/trunk/ipset.service
+	source = ipset.service::https://gitlab.archlinux.org/archlinux/packaging/packages/ipset/-/raw/main/ipset.service
 	sha256sums = SKIP
 	sha256sums = SKIP
 

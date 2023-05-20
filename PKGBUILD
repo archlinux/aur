@@ -2,7 +2,7 @@
 
 pkgname=ipset-git
 pkgver=7.17.r10.g989d5a5
-pkgrel=1
+pkgrel=2
 pkgdesc="Administration tool for IP sets"
 arch=('i686' 'x86_64')
 url="https://ipset.netfilter.org/"
@@ -14,7 +14,7 @@ conflicts=('ipset')
 backup=('etc/ipset.conf')
 options=('staticlibs')
 source=("git://git.netfilter.org/ipset"
-        "ipset.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/ipset/trunk/ipset.service")
+        "ipset.service::https://gitlab.archlinux.org/archlinux/packaging/packages/ipset/-/raw/main/ipset.service")
 sha256sums=('SKIP'
             'SKIP')
 
