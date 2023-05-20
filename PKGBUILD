@@ -1,6 +1,6 @@
 # Maintainer: honjow
 pkgname=holo-gs-auto-update
-pkgver=r1.0ba7e24
+pkgver=r14.6505e88
 pkgrel=1
 pkgdesc="A script to automatically update gamescope-session after it is updated for holoiso"
 arch=('any')
