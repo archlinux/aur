@@ -2,7 +2,7 @@
 
 pkgname=dhcpcd8
 pkgver=8.1.9
-pkgrel=2
+pkgrel=3
 pkgdesc="A DHCP and DHCPv6 client (8.x releases)"
 arch=('i686' 'x86_64')
 url="https://roy.marples.name/projects/dhcpcd/"
@@ -14,8 +14,8 @@ conflicts=('dhcpcd')
 backup=('etc/dhcpcd.conf')
 options=('emptydirs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/NetworkConfiguration/dhcpcd/archive/refs/tags/dhcpcd-$pkgver.tar.gz"
-        "dhcpcd.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/dhcpcd/trunk/dhcpcd.service"
-        "dhcpcd_.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/dhcpcd/trunk/dhcpcd_.service")
+        "dhcpcd.service::https://gitlab.archlinux.org/archlinux/packaging/packages/dhcpcd/-/raw/main/dhcpcd.service"
+        "dhcpcd_.service::https://gitlab.archlinux.org/archlinux/packaging/packages/dhcpcd/-/raw/main/dhcpcd_.service")
 sha256sums=('951ec48cb5a5113cccfcdc713e909023df08f17adca3f74c52afc1d16c519398'
             '20bccbf8a05b1bc2be365c8b4b526c38c752f48229ba53c3be113ac5b634f210'
             '37acd53a589711f5e1db2fcaebb4ccf1c90dc4bcd309626bde25beb7b630a545')
