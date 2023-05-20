@@ -17,5 +17,6 @@ pkgbase = chimeraos-device-quirks-git
 	depends = ryzenadj-controller-git
 	source = chimeraos-device-quirks::git+https://github.com/ChimeraOS/device-quirks.git
 	md5sums = SKIP
+	backup = etc/device-quirks.conf
 
 pkgname = chimeraos-device-quirks-git

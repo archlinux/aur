@@ -1,7 +1,7 @@
 # Maintainer: Samsagax <samsagax at gmail dot com>
 _pkgbase=chimeraos-device-quirks
 pkgname=${_pkgbase}-git
-pkgver=r79.d82771a
+pkgver=r81.2196f3d
 pkgrel=1
 pkgdesc="A collection of device specific configuration files"
 arch=('any')
@@ -19,6 +19,7 @@ makedepends=('python-build'
              'git')
 source=("${_pkgbase}::git+https://github.com/ChimeraOS/device-quirks.git")
 md5sums=('SKIP')
+backup=("etc/device-quirks.conf")
 
 pkgver() {
 	cd "$srcdir/${_pkgbase}"
