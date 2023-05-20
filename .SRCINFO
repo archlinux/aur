@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-vertical-overview-gdh-fork-git
+	pkgdesc = Gnome 44 Vertical workspaces
+	pkgver = v6.r0.g832fb87
+	pkgrel = 1
+	url = https://github.com/G-dH/vertical-workspaces
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = jq
+	depends = gnome-shell
+	source = gnome-shell-extension-vertical-overview-gdh-fork-git::git+https://github.com/G-dH/vertical-workspaces.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-vertical-overview-gdh-fork-git
