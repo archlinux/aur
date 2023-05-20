@@ -1,46 +1,39 @@
 pre_install() {
     if [[ ! -f "/usr/share/gtk-4.0/settings.ini" ]]
     then
-        echo "### ERROR: /usr/share/gtk-4.0/settings.ini doesn't exist."
+        echo "ERROR: /usr/share/gtk-4.0/settings.ini doesn't exist."
         exit 1
     fi
 }
 
 post_install() {
-    # GTK 4
-    if [[ ! -f "/usr/share/gtk-4.0/settings-old.ini" ]]
-    then
-        echo "> Renaming gtk-4.0/settings.ini to gtk-4.0/settings-old.ini."
-        mv /usr/share/gtk-4.0/settings.ini /usr/share/gtk-4.0/settings-old.ini
-    fi
+    already_contains=$(grep -q "gtk-hint-font-metrics=true" /usr/share/gtk-4.0/settings.ini && echo true || echo false)
 
-    echo "> Installing modified config to gtk-4.0/settings.ini."
-    cp /etc/blurry-text-fix/gtk-4.0/settings.ini /usr/share/gtk-4.0/settings.ini
+    # GTK 4
+    if [[ "$already_contains" == false ]]
+    then
+        echo "gtk-hint-font-metrics=true" >> /usr/share/gtk-4.0/settings.ini
+    fi
 
     if [[ -f "/usr/bin/flatpak" ]]
     then
-        echo "> Overriding flatpak"
-        flatpak override --filesystem=xdg-config/gtk-4.0
-        flatpak override --filesystem=xdg-config/gtk-3.0
+        echo "Flatpak found! Overriding flatpak"
+        flatpak override --filesystem=xdg-config/gtk-4.0 || exit 1
+        flatpak override --filesystem=xdg-config/gtk-3.0 || exit 1
     fi
     
-    echo "INFO: Your backup file is in /usr/share/gtk-<version>/settings-old.ini"
-    echo "INFO: If you want to edit settings.ini, then edit this file /etc/blurry-text-fix and then run blurry-text-fix-reinstall"
-    echo "### Done. Please relog to apply changes."
+    echo "SUCCESS: Settings have been written to '/usr/share/gtk-4.0/settings.ini'"
+    echo "Please relog to apply changes."
 
 }
 
 post_upgrade() {
-    echo "### Please ignore the file information warnings."
     post_install
 }
 
 post_remove() {
-    echo "> Removing modified gtk-4.0/settings.ini."
-    rm /usr/share/gtk-4.0/settings.ini
-    echo "> Restoring old gtk-4.0/settings.ini."
-    mv /usr/share/gtk-4.0/settings-old.ini /usr/share/gtk-4.0/settings.ini
+    sed -e "s/gtk-hint-font-metrics=true//g" -i /usr/share/gtk-4.0/settings.ini
 
-    echo "INFO: The old config file is stored in /usr/share/gtk-<version>/settings.ini."
-    echo "### Done. Please relog to apply changes."
+    echo "SUCCESS: Settings have been removed from '/usr/share/gtk-4.0/settings.ini'"
+    echo "Please relog to apply changes."
 }
