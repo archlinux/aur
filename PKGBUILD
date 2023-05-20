@@ -2,7 +2,7 @@
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=ludusavi
 _app_id="com.github.mtkennerly.$pkgname"
-pkgver=0.17.1
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Backup tool for PC game saves"
 arch=('x86_64')
@@ -11,11 +11,12 @@ license=('MIT')
 depends=('bzip2' 'fontconfig' 'gcc-libs' 'hicolor-icon-theme')
 makedepends=('cargo' 'git' 'libx11' 'libxcb' 'python')
 checkdepends=('appstream-glib' 'desktop-file-utils')
+optdepends=('rclone: upload backups to the cloud')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$url/releases/download/v$pkgver/$pkgname-v$pkgver-legal.zip")
-sha256sums=('808eaadc2437dfed4cc6300a579bb9a9fd49c72581a6d96b2187920b632d2135'
-            'd3083999e4df192aa6454dc71666860479c3469244e18863589776149996b079')
+sha256sums=('5e8a4db347d5ce18213cf829c0c4c03b2eb34fda1a5764009d41305c50b46622'
+            'e52e90a50f6fb888140c326e0c82e861631142b71873b451fcb1cf329a78fe88')
 
 prepare() {
   cd "$pkgname-$pkgver"
