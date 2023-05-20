@@ -2,7 +2,7 @@
 
 pkgname=desktop-file-utils-git
 pkgver=0.26.r5.g56d220d
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line utilities for working with desktop entries"
 arch=('i686' 'x86_64')
 url="https://www.freedesktop.org/wiki/Software/desktop-file-utils/"
@@ -12,7 +12,7 @@ makedepends=('git')
 provides=("desktop-file-utils=$pkgver")
 conflicts=('desktop-file-utils')
 source=("git+https://gitlab.freedesktop.org/xdg/desktop-file-utils.git"
-        "update-desktop-database.hook::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/desktop-file-utils/trunk/update-desktop-database.hook")
+        "update-desktop-database.hook::https://gitlab.archlinux.org/archlinux/packaging/packages/desktop-file-utils/-/raw/main/update-desktop-database.hook")
 sha256sums=('SKIP'
             'SKIP')
 
