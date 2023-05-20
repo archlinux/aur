@@ -1,13 +1,15 @@
 # Maintainer: Samsagax <samsagax at gmail dot com>
 _pkgbase=chimeraos-device-quirks
 pkgname=${_pkgbase}-git
-pkgver=r40.255d19f
+pkgver=r79.d82771a
 pkgrel=1
 pkgdesc="A collection of device specific configuration files"
 arch=('any')
 url="https://github.com/ChimeraOS/device-quirks"
 license=('MIT')
-depends=('systemd'
+depends=('acpica'
+         'cpio'
+         'systemd'
          'swh-plugins'
          'ryzenadj-controller-git')
 makedepends=('python-build'
@@ -54,8 +56,12 @@ package() {
 	install -v -m644 -D -t "${pkgdir}/usr/lib/sysctl.d/" usr/lib/sysctl.d/*
 
 	#Install scripts
-	mkdir -p "${pkgdir}/etc/device-quirks"
-	cp -rv etc/device-quirks/* "${pkgdir}/etc/device-quirks/."
+	mkdir -p "${pkgdir}/usr/share/device-quirks"
+	cp -rv usr/share/device-quirks/* "${pkgdir}/usr/share/device-quirks/."
+	
+	#Install device-quirks config
+	mkdir -p "${pkgdir}/etc/"
+	cp etc/device-quirks.conf "${pkgdir}/etc/"
 
 	# Install license
 	install -v -m644 -D -t "${pkgdir}/usr/share/licenses/${_pkgbase}/" LICENSE
