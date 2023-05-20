@@ -1,0 +1,22 @@
+pkgbase = python-ubi_reader-git
+	pkgdesc = Python bindings for the LZO data compression library
+	pkgver = v0.8.6.r2.gdc9075c
+	pkgrel = 1
+	url = https://github.com/onekey-sec/ubi_reader
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-poetry
+	makedepends = python-pytest
+	makedepends = python-pytest-cov
+	depends = python
+	provides = ubi_reader
+	source = git+https://github.com/onekey-sec/ubi_reader
+	sha256sums = SKIP
+
+pkgname = python-ubi_reader-git
