@@ -42,6 +42,7 @@ pkgbase = swift-language-git
 	source = llvm-project::git+https://github.com/apple/llvm-project#branch=stable/20220421
 	source = swift-llvm-bindings::git+https://github.com/apple/swift-llvm-bindings#branch=stable/20220421
 	source = 0001-arch-aur-patches.patch
+	source = 0002-stdint.patch
 	source = indexstore-db::git+https://github.com/apple/indexstore-db#branch=main
 	source = yams::git+https://github.com/jpsim/Yams#commit=5.0.1
 	source = sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#branch=main
@@ -60,6 +61,7 @@ pkgbase = swift-language-git
 	source = swift-nio-ssl::git+https://github.com/apple/swift-nio-ssl#commit=2.15.0
 	source = swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#branch=main
 	source = swift-xcode-playground-support::git+https://github.com/apple/swift-xcode-playground-support#branch=main
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP

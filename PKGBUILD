@@ -36,6 +36,7 @@ source=(
     'llvm-project::git+https://github.com/apple/llvm-project#branch=stable/20220421'
     'swift-llvm-bindings::git+https://github.com/apple/swift-llvm-bindings#branch=stable/20220421'
     '0001-arch-aur-patches.patch'
+    '0002-stdint.patch'
     'indexstore-db::git+https://github.com/apple/indexstore-db#branch=main'
     'yams::git+https://github.com/jpsim/Yams#commit=5.0.1'
     'sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#branch=main'
@@ -96,6 +97,7 @@ md5sums=(
     'SKIP'
     'SKIP'
     'SKIP'
+    'SKIP'
 )
 
 
@@ -108,6 +110,7 @@ options=(!strip)
 
 prepare () {
     ( cd swift && patch -p1 -i "$srcdir/0001-arch-aur-patches.patch" )
+    ( cd llvm-project && patch -p1 -i "$srcdir/0002-stdint.patch" )
 }
 
 pkgver() {
