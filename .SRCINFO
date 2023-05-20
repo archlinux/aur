@@ -1,6 +1,6 @@
 pkgbase = traefik-git
 	pkgdesc = The cloud native edge router
-	pkgver = 3.0.0.beta2.r81.g817486077
+	pkgver = 3.0.0.beta2.r120.gcf1cbb24d
 	pkgrel = 1
 	url = https://containo.us/traefik/
 	arch = i686
@@ -10,14 +10,14 @@ pkgbase = traefik-git
 	makedepends = go
 	makedepends = go-bindata
 	depends = glibc
-	provides = traefik=3.0.0.beta2.r81.g817486077
+	provides = traefik=3.0.0.beta2.r120.gcf1cbb24d
 	conflicts = traefik
 	backup = etc/traefik/traefik.toml
 	backup = etc/traefik/traefik.yaml
 	backup = etc/traefik/traefik.yml
 	source = git+https://github.com/containous/traefik.git
-	source = traefik.service::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/traefik/trunk/traefik.service
-	source = traefik.sysusers::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/traefik/trunk/traefik.sysusers
+	source = traefik.service::https://gitlab.archlinux.org/archlinux/packaging/packages/traefik/-/raw/main/traefik.service
+	source = traefik.sysusers::https://gitlab.archlinux.org/archlinux/packaging/packages/traefik/-/raw/main/traefik.sysusers
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

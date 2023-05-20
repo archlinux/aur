@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=traefik-git
-pkgver=3.0.0.beta2.r81.g817486077
+pkgver=3.0.0.beta2.r120.gcf1cbb24d
 pkgrel=1
 pkgdesc="The cloud native edge router"
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ backup=('etc/traefik/traefik.toml'
         'etc/traefik/traefik.yaml'
         'etc/traefik/traefik.yml')
 source=("git+https://github.com/containous/traefik.git"
-        "traefik.service::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/traefik/trunk/traefik.service"
-        "traefik.sysusers::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/traefik/trunk/traefik.sysusers")
+        "traefik.service::https://gitlab.archlinux.org/archlinux/packaging/packages/traefik/-/raw/main/traefik.service"
+        "traefik.sysusers::https://gitlab.archlinux.org/archlinux/packaging/packages/traefik/-/raw/main/traefik.sysusers")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')
