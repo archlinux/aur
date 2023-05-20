@@ -28,7 +28,6 @@ pkgbase = unblob-git
 	depends = python-rarfile
 	depends = python-structlog
 	depends = python-ubi-reader
-	depends = python-yaffshiv
 	source = git+https://github.com/onekey-sec/unblob.git
 	sha256sums = SKIP
 
