@@ -1,36 +1,32 @@
-# Maintainer : Juraj Matuš <matus.juraj at yandex dot com>
+# Maintainer : Victor Savcenco <victor dot sav at linux dot com>
 
-_lang=slk-eng
-pkgname=dict-freedict-${_lang}
-pkgver=0.2
+pkgname=uqm-megamod-addon-classic-hd
+_pkgname=uqm-megamod
+pkgver=0.8.2
 pkgrel=1
-pkgdesc="Slovak -> English dictionary for dictd et al. from Freedict.org"
-arch=('any')
-url="https://freedict.org/"
-license=('GPL')
-optdepends=('dictd: dict client and server')
-makedepends=('dictd' 'freedict-tools')
-install=install.sh
-source=("https://download.freedict.org/dictionaries/${_lang}/${pkgver}.${pkgrel}/freedict-${_lang}-${pkgver}.${pkgrel}.src.tar.xz")
-sha512sums=('ba7669020a12f64f7d2e2b6dfa90f1376df4a2fe764273bdb06f1e04998ee6dac9584b47f20f8e14cbaae5bf7271dd221032bcc34bd1ff7c93a93cf9de4429ac')
+pkgdesc="Classic HD-mod styled textures and UI for the Ur-Quan Masters MegaMod's HD mode by JHGuitarFreak (Kohr-Ah Death)."
+arch=("any")
+url="https://github.com/JHGuitarFreak/UQM-MegaMod-Content"
+license=("custom:CC BY-NC-SA 2.5")
 
-build()
-{
-	cd $_lang
-	make FREEDICT_TOOLS=/usr/lib/freedict-tools build-dictd
-}
+depends=("uqm-megamod-addon-hd")
 
-package()
-{
-	install -m 755 -d "${pkgdir}/usr/share/dictd"
-	install -m 644 -t "${pkgdir}/usr/share/dictd/" \
-		${_lang}/build/dictd/${_lang}.{dict.dz,index}
+source=(
+  "mm-${pkgver}-hd-classic-pack.uqm::https://versaweb.dl.sourceforge.net/project/uqm-mods/MegaMod/${pkgver}/Content/Addons/mm-hd-classic-pack.uqm"
+  "ATTRIBUTION.txt::https://raw.githubusercontent.com/JHGuitarFreak/UQM-MegaMod-Content/master/addons/mm-hd/ATTRIBUTION.txt"
+  LICENSE
+)
 
-	for file in ${_lang}/{AUTHORS,README,NEWS,ChangeLog}
-	do
-		if test -f ${file}
-		then
-			install -m 644 -Dt "${pkgdir}/usr/share/doc/freedict/${_lang}/" ${file}
-		fi
-	done
+md5sums=(
+  "fed748f65e7d2bb7dcb6ed30bda7aa9e"
+  "ff908319ce20057293c3c350854b390d"
+  "4f30efe3d129bd9a8bddd0d455c849f7"
+)
+
+noextract=("mm-${pkgver}-hd.uqm")
+
+package() {
+  install -Dm644 "${srcdir}/mm-${pkgver}-hd-classic-pack.uqm" "${pkgdir}/usr/share/uqm-megamod/content/addons/mm-${pkgver}-hd-classic-pack.uqm"
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/ATTRIBUTION.txt" "${pkgdir}/usr/share/licenses/${pkgname}/ATTRIBUTION.txt"
 }
