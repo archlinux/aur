@@ -1,12 +1,12 @@
 pkgbase = uqm-megamod-addon-sol-textures
-	pkgdesc = Improved textures for the planets in the Sol System for the Ur-Quan Masters MegaMod by Serosis.
-	pkgver = 0.8.1
+	pkgdesc = Improved textures for the planets in the Sol System for the Ur-Quan Masters MegaMod by JHGuitarFreak (Kohr-Ah Death).
+	pkgver = 0.8.2
 	pkgrel = 1
-	url = https://github.com/Serosis/UQM-MegaMod-Content
+	url = https://github.com/JHGuitarFreak/UQM-MegaMod-Content
 	arch = any
 	license = custom:CC BY-NC-SA 2.5
-	noextract = mm-0.8.1-sol-textures.uqm
-	source = mm-0.8.1-sol-textures.uqm::https://files.serosis.net/MegaMod/0.8.1/mm-0.8.1-sol-textures.uqm
+	noextract = mm-0.8.2-sol-textures.uqm
+	source = mm-0.8.2-sol-textures.uqm::https://master.dl.sourceforge.net/project/uqm-mods/MegaMod/0.8.2/Content/Addons/mm-sol-textures.uqm?viasf=1
 	source = LICENSE
 	md5sums = d6c19401e94c826a4a5c7b92758a681b
 	md5sums = 4f30efe3d129bd9a8bddd0d455c849f7
