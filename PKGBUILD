@@ -93,7 +93,7 @@ prepare() {
     # If you wish to include a fix or a feature from one of vedgy's pull requests
     # (https://github.com/goldendict/goldendict/pulls?q=is%3Apr+is%3Aopen+sort%3Aupdated-desc+author%3Avedgy),
     # uncomment and possibly modify one or more of the following lines:
-    # _pull_we add-toggle-scan-popup-cmd-line-option
+    # _pull_we add-zoom-cmd-line-options
     # _pull_we wip-pronounce-stop-if-playing-and-from-next-dictionary
     # _pull_we all-my-fixes
 
