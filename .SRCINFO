@@ -1,0 +1,23 @@
+pkgbase = halftone
+	pkgdesc = Give your images that pixel art-like style
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/tfuxu/Halftone
+	arch = any
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = blueprint-compiler
+	depends = gtk4
+	depends = libadwaita
+	depends = imagemagick
+	depends = python
+	depends = python-gobject
+	depends = python-wand
+	optdepends = webp-pixbuf-loader: support more image formats
+	source = git+https://github.com/tfuxu/Halftone.git#commit=150ac2c64454491a80141f97de5cb6f1d65fdb0c
+	sha256sums = SKIP
+
+pkgname = halftone
