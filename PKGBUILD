@@ -1,36 +1,27 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
-
-pkgname=python-cryptolyzer
-pkgver=0.8.0
+_base=CryptoLyzer
+pkgname=python-${_base,,}
+pkgver=0.9.0
 pkgrel=1
-pkgdesc='Fast and flexible server cryptographic (TLS/SSL) settings analyzer library'
-arch=('any')
-url='https://gitlab.com/coroner/cryptolyzer'
-license=('MPL2')
-depends=(
-  'python-attrs'
-  'python-certvalidator' ## AUR
-  'python-cryptoparser' ## AUR
-  'python-dateutil'
-  'python-requests'
-  'python-six'
-  'python-urllib3')
-makedepends=('python-setuptools')
-changelog=CHANGELOG.md
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/c/cryptolyzer/CryptoLyzer-$pkgver.tar.gz")
-sha256sums=('fa82f408de355da029acf37a282a38cb50b2b46cbeb10f9c08a7d814072d26c0')
+pkgdesc="Fast and flexible server cryptographic (TLS/SSL) settings analyzer library"
+arch=(any)
+url="https://gitlab.com/coroner/${_base}"
+license=(MPL2)
+depends=(python-attrs python-certvalidator python-cryptoparser python-dateutil python-requests python-urllib3)
+makedepends=(python-build python-installer python-setuptools python-wheel)
+source=(https://gitlab.com/coroner/${_base}/-/archive/v${pkgver}/${_base,,}-v${pkgver}.tar.gz)
+sha512sums=('831c7953071b4a3fd71739b7b6724dbf0e1ddeb902a58797a6d4fb619a7402758ace50ef3f824caf3984eba47f79b17fa40054a63a368e3969137ffa0c671fec')
 
 build() {
-  cd "CryptoLyzer-$pkgver"
-  python setup.py build
+  cd ${_base,,}-v${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
-  export PYTHONHASHSEED=0
-  cd "CryptoLyzer-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  cd ${_base,,}-v${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
-
-# vim:set ts=2 sw=2 et:
