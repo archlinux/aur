@@ -2,7 +2,7 @@
 
 pkgname=bigsh0t-plugins-release-git
 _srcname=bigsh0t
-pkgver=2.5.1.r0.gdd6b0f7
+pkgver=2.6.r0.gd973312
 pkgrel=1
 pkgdesc='360 equirectangular VR Video Stitching and Manipulation filters for free video editors'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('git' 'opencv')
 optdepends=('opencv')
 provides=('bigsh0t-plugins')
 conflicts=('bigsh0t-plugins')
-source=('git+https://bitbucket.org/leo_sutic/bigsh0t.git#branch=rel-2.5')
+source=('git+https://bitbucket.org/leo_sutic/bigsh0t.git#tag=2.6')
 sha256sums=('SKIP')
 
 prepare() {
