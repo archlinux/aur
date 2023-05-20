@@ -4,7 +4,7 @@
 # Maintainer: Quey-Liang Kao <s101062801@m101.nthu.edu.tw>
 
 pkgname=openscap
-pkgver=1.3.6
+pkgver=1.3.7
 pkgrel=1
 pkgdesc="Open Source Security Compliance Solution"
 
@@ -18,20 +18,19 @@ license=('GPL')
 # here for now.
 # packege missing: libselinux-devel
 depends=('swig' 'python' 'acl' 'libcap' 'curl' 'libgcrypt' 'libxml2' 'libxslt'
-         'libldap' 'pcre' 'bzip2' 'procps-ng' 'gconf' 'perl' 'perl-xml-parser'
-         'perl-xml-xpath' 'xmlsec')
+	'libldap' 'pcre' 'bzip2' 'procps-ng' 'gconf' 'perl' 'perl-xml-parser'
+	'perl-xml-xpath' 'xmlsec')
 optdepends=()
 makedepends=('doxygen' 'cmake')
 source=("https://github.com/OpenSCAP/openscap/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('5e4d6c4addc15b2a0245b5caef80fda3020f1cac83ed4aa436ef3f1703d1d761060c931c2536fa68de7ad5bab002b79c8b2d1e5f7695d46249f4562f5a1569a0')
-
+sha512sums=('64dcceadbbb5b6045d2ebaca89287c80c26e05d7247fc0dd31cd9bff98398c7a26d6ed0e9191dcd2fd01f0711181f15d34fe9784bd043ccd0854baa17397cd88')
 
 build() {
-  cd "$pkgname-$pkgver"
-  mkdir -p build
-  cd build
-  cmake ../
-  make
+	cd "$pkgname-$pkgver"
+	mkdir -p build
+	cd build
+	cmake ../
+	make
 }
 
 # Notice: It may take a long time to complete the check.
@@ -41,6 +40,6 @@ build() {
 #}
 
 package() {
-  cd "$srcdir/${pkgname}-${pkgver}/build"
-  make DESTDIR="$pkgdir/" install
+	cd "$srcdir/${pkgname}-${pkgver}/build"
+	make DESTDIR="$pkgdir/" install
 }
