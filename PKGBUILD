@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=dbus-git
-pkgver=1.15.0.r3.gb5172c3b
+pkgver=1.15.4.r31.ga6654eae
 pkgrel=1
 pkgdesc="Message bus system"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ provides=("dbus=$pkgver" 'libdbus')
 conflicts=('dbus' 'libdbus')
 options=('staticlibs')
 source=("git+https://gitlab.freedesktop.org/dbus/dbus.git"
-        "dbus-reload.hook::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/dbus/trunk/dbus-reload.hook")
+        "dbus-reload.hook::https://gitlab.archlinux.org/archlinux/packaging/packages/dbus/-/raw/main/dbus-reload.hook")
 sha256sums=('SKIP'
             'SKIP')
 

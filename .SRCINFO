@@ -1,6 +1,6 @@
 pkgbase = dbus-git
 	pkgdesc = Message bus system
-	pkgver = 1.15.0.r3.gb5172c3b
+	pkgver = 1.15.4.r31.ga6654eae
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/dbus/
 	arch = i686
@@ -14,13 +14,13 @@ pkgbase = dbus-git
 	depends = audit
 	depends = expat
 	depends = systemd-libs
-	provides = dbus=1.15.0.r3.gb5172c3b
+	provides = dbus=1.15.4.r31.ga6654eae
 	provides = libdbus
 	conflicts = dbus
 	conflicts = libdbus
 	options = staticlibs
 	source = git+https://gitlab.freedesktop.org/dbus/dbus.git
-	source = dbus-reload.hook::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/dbus/trunk/dbus-reload.hook
+	source = dbus-reload.hook::https://gitlab.archlinux.org/archlinux/packaging/packages/dbus/-/raw/main/dbus-reload.hook
 	sha256sums = SKIP
 	sha256sums = SKIP
 
