@@ -1,7 +1,7 @@
 # Maintainer: mehalter <micah at mehalter.com>
 
 pkgname=astronvim
-_pkgver=3.15.3
+_pkgver=3.15.10
 pkgver="v${_pkgver}"
 pkgrel=1
 pkgdesc="AstroNvim is an aesthetic and feature-rich neovim config that is extensible and easy to use with a great set of plugins"
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=("neovim>=0.8.0" "xclip")
 source=("https://github.com/${pkgname}/${pkgname}/archive/refs/tags/${pkgver}.zip" "astronvim.vim.template")
 sha256sums=(
-	'f236ee3b590e15981e578f89e2050280b63da322403e7f4aa3462995316783c8'
+	'406c9feaf391de17c3ebe7626c81e800259f34c1e1e35dbe83544f54d9b037d4'
 	'a11c032b23e3892e9022aa32264cec022eddd25d39c874c36e70ed345ad05218'
 )
 conflicts=("${pkgname}")
