@@ -2,7 +2,7 @@
 # Former maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 pkgname=binaryen-git
-pkgver=112.r115.g0578862dc
+pkgver=113.r9.g97178d08d
 pkgrel=1
 pkgdesc="Compiler infrastructure and toolchain library for WebAssembly"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('git' 'cmake')
 provides=("binaryen=$pkgver")
 conflicts=('binaryen')
 source=("git+https://github.com/WebAssembly/binaryen.git"
-        "binaryen.sh::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/binaryen/trunk/binaryen.sh")
+        "binaryen.sh::https://gitlab.archlinux.org/archlinux/packaging/packages/binaryen/-/raw/main/binaryen.sh")
 sha256sums=('SKIP'
             'SKIP')
 
