@@ -1,6 +1,6 @@
 pkgbase = rpm-tools-git
 	pkgdesc = RPM Package Manager
-	pkgver = 4.18.1.r463.g589fb0e3a
+	pkgver = 4.18.1.r492.g021a7d3aa
 	pkgrel = 1
 	url = https://rpm.org/
 	arch = i686
@@ -18,12 +18,12 @@ pkgbase = rpm-tools-git
 	depends = nss
 	depends = popt
 	depends = zstd
-	provides = rpm-tools=4.18.1.r463.g589fb0e3a
+	provides = rpm-tools=4.18.1.r492.g021a7d3aa
 	provides = rpmextract
 	conflicts = rpm-tools
 	conflicts = rpmextract
 	source = git+https://github.com/rpm-software-management/rpm.git
-	source = https://raw.githubusercontent.com/archlinux/svntogit-community/packages/rpm-tools/trunk/rpmextract.sh
+	source = rpmextract.sh::https://gitlab.archlinux.org/archlinux/packaging/packages/rpm-tools/-/raw/main/rpmextract.sh
 	sha256sums = SKIP
 	sha256sums = SKIP
 

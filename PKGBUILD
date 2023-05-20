@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=rpm-tools-git
-pkgver=4.18.1.r463.g589fb0e3a
+pkgver=4.18.1.r492.g021a7d3aa
 pkgrel=1
 pkgdesc="RPM Package Manager"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('git' 'python')
 provides=("rpm-tools=$pkgver" 'rpmextract')
 conflicts=('rpm-tools' 'rpmextract')
 source=("git+https://github.com/rpm-software-management/rpm.git"
-        "https://raw.githubusercontent.com/archlinux/svntogit-community/packages/rpm-tools/trunk/rpmextract.sh")
+        "rpmextract.sh::https://gitlab.archlinux.org/archlinux/packaging/packages/rpm-tools/-/raw/main/rpmextract.sh")
 sha256sums=('SKIP'
             'SKIP')
 
