@@ -1,6 +1,6 @@
 pkgbase = joycond-cemuhook-git
 	pkgdesc = Support for cemuhook's UDP protocol for joycond devices
-	pkgver = r116.d488022
+	pkgver = r118.4844332
 	pkgrel = 1
 	url = https://github.com/joaorb64/joycond-cemuhook
 	arch = any
@@ -14,7 +14,6 @@ pkgbase = joycond-cemuhook-git
 	depends = python-termcolor
 	depends = python-evdev
 	depends = python-dbus-common
-	depends = python-argparse
 	depends = python-pyudev
 	depends = upower
 	depends = systemd-libs
