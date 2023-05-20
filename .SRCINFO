@@ -1,6 +1,6 @@
 pkgbase = apptainer-git
 	pkgdesc = Application containers for Linux
-	pkgver = 1.1.7.r536.g9d77c63a2
+	pkgver = 1.1.8.r612.g64a245163
 	pkgrel = 1
 	url = https://apptainer.org/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = apptainer-git
 	depends = glibc
 	depends = libseccomp
 	depends = squashfs-tools
-	provides = apptainer=1.1.7.r536.g9d77c63a2
+	provides = apptainer=1.1.8.r612.g64a245163
 	provides = singularity-container
 	conflicts = apptainer
 	conflicts = singularity-container
@@ -31,7 +31,7 @@ pkgbase = apptainer-git
 	backup = etc/singularity/seccomp-profiles/default.json
 	backup = etc/singularity/singularity.conf
 	source = git+https://github.com/apptainer/apptainer.git
-	source = tmpfiles.conf::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/apptainer/trunk/tmpfiles.conf
+	source = tmpfiles.conf::https://gitlab.archlinux.org/archlinux/packaging/packages/apptainer/-/raw/main/tmpfiles.conf
 	sha256sums = SKIP
 	sha256sums = SKIP
 

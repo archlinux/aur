@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=apptainer-git
-pkgver=1.1.7.r536.g9d77c63a2
+pkgver=1.1.8.r612.g64a245163
 pkgrel=1
 pkgdesc="Application containers for Linux"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ backup=('etc/singularity/capability.json'
         'etc/singularity/seccomp-profiles/default.json'
         'etc/singularity/singularity.conf')
 source=("git+https://github.com/apptainer/apptainer.git"
-        "tmpfiles.conf::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/apptainer/trunk/tmpfiles.conf")
+        "tmpfiles.conf::https://gitlab.archlinux.org/archlinux/packaging/packages/apptainer/-/raw/main/tmpfiles.conf")
 sha256sums=('SKIP'
             'SKIP')
 
