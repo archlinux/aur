@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=ufw-git
-pkgver=0.36.1.r85.g506546a
+pkgver=0.36.2.r105.g76adc7a
 pkgrel=1
 pkgdesc="Uncomplicated firewall"
 arch=('any')
@@ -22,7 +22,7 @@ backup=('etc/default/ufw'
         'etc/ufw/user.rules'
         'etc/ufw/user6.rules')
 source=("git+https://git.launchpad.net/ufw"
-        "ufw.service::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/ufw/trunk/service")
+        "ufw.service::https://gitlab.archlinux.org/archlinux/packaging/packages/ufw/-/raw/main/service")
 sha256sums=('SKIP'
             'SKIP')
 
