@@ -1,0 +1,15 @@
+pkgbase = jdp-git
+	pkgdesc = jdev082 package manager
+	pkgver = 0.1.0.9d32b50
+	pkgrel = 1
+	url = https://github.com/jdev082/jdp
+	arch = x86_64
+	arch = arm
+	license = MIT
+	depends = bash
+	depends = make
+	depends = git
+	source = https://github.com/jdev082/jdp/archive/refs/heads/master.tar.gz
+	sha256sums = SKIP
+
+pkgname = jdp-git
