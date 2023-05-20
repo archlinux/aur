@@ -143,14 +143,6 @@ prepare() {
 
 build() {
 
-  # More than 18 cores full my 128Gb Ram rig :/
-  _nproc="$(nproc)"
-  if [[ ${_nproc} -gt 18 ]]; then
-    _nproc=18
-  else
-    _nproc="${_nproc}"
-  fi
-
   if [[ ${_ENABLE_CUDA} = 1 ]]; then
     export CC="/opt/cuda/bin/gcc"
     export CXX="/opt/cuda/bin/g++"
@@ -193,7 +185,6 @@ build() {
       -Donnxruntime_CUDA_HOME=/opt/cuda
       -Donnxruntime_CUDNN_HOME=/usr
       -Donnxruntime_USE_NCCL=ON
-      -Donnxruntime_NVCC_THREADS="${_nproc}"
     )
   fi
 
