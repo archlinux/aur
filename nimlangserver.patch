@@ -1,0 +1,12 @@
+diff '--color=auto' --unified --recursive --text --color src/nimlangserver-orig/nimlangserver.nim src/nimlangserver/nimlangserver.nim
+--- src/nimlangserver-orig/nimlangserver.nim	2023-05-25 14:56:42.996481704 +0200
++++ src/nimlangserver/nimlangserver.nim	2023-05-25 14:56:51.320521779 +0200
+@@ -2,7 +2,7 @@
+   faststreams/asynctools_adapters, faststreams/inputs, faststreams/outputs,
+   json_rpc/streamconnection, os, sugar, sequtils, hashes, osproc,
+   suggestapi, protocol/enums, protocol/types, with, tables, strutils, sets,
+-  ./utils, ./pipes, chronicles, std/re, uri, "$nim/compiler/pathutils"
++  ./utils, ./pipes, chronicles, std/re, uri, "$lib/compiler/pathutils"
+ 
+ const
+   RESTART_COMMAND = "nimlangserver.restart"

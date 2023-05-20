@@ -1,0 +1,16 @@
+pkgbase = nimlangserver-git
+	pkgver = latest.r9.gf7b32fa
+	pkgrel = 1
+	url = https://github.com/nim-lang/langserver
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = nim>=1.0.0
+	provides = nimlangserver
+	conflicts = nimlangserver
+	source = nimlangserver::git+https://github.com/nim-lang/langserver.git
+	source = nimlangserver.patch
+	sha256sums = SKIP
+	sha256sums = 76a987077dea6a224a6337a08f172f92da1734af6c7e31e8674d131654aba07c
+
+pkgname = nimlangserver-git
