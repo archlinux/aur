@@ -1,7 +1,7 @@
 pkgbase = pinentry-git
 	pkgdesc = A small collection of dialog programs that allow GnuPG to read passphrases and PIN numbers in a secure manner
 	pkgver = 1.2.1.r21.g21e8533
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gnupg.org/software/pinentry/index.html
 	arch = i686
 	arch = x86_64
@@ -20,8 +20,8 @@ pkgbase = pinentry-git
 	provides = pinentry=1.2.1.r21.g21e8533
 	conflicts = pinentry
 	source = git+https://dev.gnupg.org/source/pinentry.git
-	source = pinentry.bin::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/pinentry/trunk/pinentry
-	source = preexec::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/pinentry/trunk/preexec
+	source = pinentry.bin::https://gitlab.archlinux.org/archlinux/packaging/packages/pinentry/-/raw/main/pinentry
+	source = preexec::https://gitlab.archlinux.org/archlinux/packaging/packages/pinentry/-/raw/main/preexec
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
