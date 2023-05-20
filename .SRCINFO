@@ -1,20 +1,21 @@
 pkgbase = t-twitter-cli
 	pkgdesc = A command-line power tool for Twitter
-	pkgver = 3.1.0.git20200213
-	pkgrel = 3
+	pkgver = 4.0.0.git20230513
+	pkgrel = 1
 	url = https://github.com/sferik/t
 	arch = x86_64
 	license = custom
 	makedepends = git
-	depends = ruby2.7
+	depends = ruby
+	depends = ruby-bundler
 	options = !emptydirs
-	source = t::git+https://github.com/sferik/t.git#commit=d8b549fc1c78427f16de31a75d0f56cbca32536d
+	source = t::git+https://github.com/sferik/t.git#commit=50f67a663385f9fe49ce2419f2531925ed90392c
 	source = Gemfile.lock
-	source = http-ruby27.patch::https://github.com/httprb/http/commit/2d9921b45e1afcd1adac5eafe97be521a54d464f.patch?full_index=1
-	source = twitter-procnew.patch::https://github.com/sferik/twitter/commit/adb918178295de0eaf022241f71d0544123b83ab.patch?full_index=1
-	sha512sums = SKIP
-	sha512sums = 04f26b59753276e91f3a9065210cd18b95f5a61272d9022d04a0beae495c824ec6f359d6af321deff3dbc7fab0197e8c3a57ebdcdd64559a72ec8b17e6cc6d43
-	sha512sums = c669b94b859afea0f3d5d8f40b5cd036ca217934e22b50a50958e251efa8388a1da9e99085b05d5291870cc1c2398254977241b60d68d6c3026075f450e76234
-	sha512sums = 6ec76e33c9faff7c59a0e36d7d1ebc0162ea115bee5789600b67f25912dbb9b928e717c52e472c4677bd783930aad0c0b6bd7ee3d3751087398e2d977b713efb
+	source = https://rubygems.org/downloads/ffi-compiler-1.0.1.gem
+	source = multipart-post.cert::https://raw.githubusercontent.com/socketry/multipart-post/v2.3.0/release.cert
+	sha256sums = SKIP
+	sha256sums = f0613f7d070689e97bee1ef28c81ab0c4910b41628a8deeff706b09fa5a041e0
+	sha256sums = 019f389b078a2fec9de7f4f65771095f80a447e34436b4588bcb629e2a564c30
+	sha256sums = ae573a274f46958b348670e8b97678fbfe7e99693c69f22b30f4d8e581e15eee
 
 pkgname = t-twitter-cli

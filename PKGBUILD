@@ -4,28 +4,26 @@
 _exename=t
 
 _reponame=t
-_commit=d8b549fc1c78427f16de31a75d0f56cbca32536d
+_commit=50f67a663385f9fe49ce2419f2531925ed90392c
 pkgname=t-twitter-cli
-pkgver=3.1.0.git20200213
-pkgrel=3
+pkgver=4.0.0.git20230513
+pkgrel=1
 pkgdesc="A command-line power tool for Twitter"
 arch=('x86_64')
 url="https://github.com/sferik/t"
 license=('custom')
-depends=('ruby2.7')
-_bundler=/usr/bin/bundle-2.7
-#depends=('ruby' 'ruby-bundler')
-#_bundler=/usr/bin/bundle
+depends=('ruby' 'ruby-bundler')
+_bundler=/usr/bin/bundle
 makedepends=('git')
 options=('!emptydirs')
 source=("${_reponame}::git+https://github.com/sferik/t.git#commit=${_commit}"
         Gemfile.lock
-        "http-ruby27.patch::https://github.com/httprb/http/commit/2d9921b45e1afcd1adac5eafe97be521a54d464f.patch?full_index=1"
-        "twitter-procnew.patch::https://github.com/sferik/twitter/commit/adb918178295de0eaf022241f71d0544123b83ab.patch?full_index=1")
-sha512sums=('SKIP'
-            '04f26b59753276e91f3a9065210cd18b95f5a61272d9022d04a0beae495c824ec6f359d6af321deff3dbc7fab0197e8c3a57ebdcdd64559a72ec8b17e6cc6d43'
-            'c669b94b859afea0f3d5d8f40b5cd036ca217934e22b50a50958e251efa8388a1da9e99085b05d5291870cc1c2398254977241b60d68d6c3026075f450e76234'
-            '6ec76e33c9faff7c59a0e36d7d1ebc0162ea115bee5789600b67f25912dbb9b928e717c52e472c4677bd783930aad0c0b6bd7ee3d3751087398e2d977b713efb')
+        'https://rubygems.org/downloads/ffi-compiler-1.0.1.gem'
+        'multipart-post.cert::https://raw.githubusercontent.com/socketry/multipart-post/v2.3.0/release.cert')
+sha256sums=('SKIP'
+            'f0613f7d070689e97bee1ef28c81ab0c4910b41628a8deeff706b09fa5a041e0'
+            '019f389b078a2fec9de7f4f65771095f80a447e34436b4588bcb629e2a564c30'
+            'ae573a274f46958b348670e8b97678fbfe7e99693c69f22b30f4d8e581e15eee')
 
 prepare() {
   cd "$srcdir/$_reponame"
@@ -35,7 +33,7 @@ prepare() {
   $_bundler config set --local path vendor/bundle
   $_bundler config set --local deployment true
 
-  sed -i "/_t()\|complete /s/\b\(_\?\)t\b/\1$_exename/g"  etc/t-completion.sh
+  sed -i "/_t()\|complete /s/\b\(_\?\)t\b/\1$_exename/g" etc/t-completion.sh
   sed -i "s/\(^#compdef \|\b__\?\)t\(_\|\b\)/\1$_exename\2/g" \
     etc/t-completion.zsh
 }
@@ -43,11 +41,14 @@ prepare() {
 build() {
   cd "$srcdir/$_reponame"
 
-  $_bundler install --trust-policy=MediumSecurity
+  # install ffi-compiler-1.0.1 separately, as it cannot be installed with any trust policy set
+  local ruby_abi="$(/usr/bin/ruby -e '$><<RUBY_VERSION.sub(/\.\d+$/,".0")' )"
+  /usr/bin/gem install --norc --install-dir=vendor/bundle/ruby/$ruby_abi --no-user-install --ignore-dependencies ../ffi-compiler-1.0.1.gem
 
-  patch -d vendor/bundle/ruby/*/gems/http-[0-9]* -p1 <../http-ruby27.patch
-  patch -d vendor/bundle/ruby/*/gems/twitter-[0-9]* -p1 \
-    < <(sed 's/finished?/last?/' ../twitter-procnew.patch)
+  # override $HOME so the cert doesn't persist in user home directory
+  env HOME=../fakehome /usr/bin/gem cert --add ../multipart-post.cert
+
+  env HOME=../fakehome $_bundler install --trust-policy=MediumSecurity
 }
 
 package() {
@@ -58,7 +59,7 @@ package() {
     "$pkgdir/usr/lib/$pkgname/"
 
   rm -rf "$pkgdir/usr/lib/$pkgname/vendor/bundle/ruby/"*/cache
-  rm -rf "$pkgdir/usr/lib/$pkgname/vendor/bundle/ruby/"*/gems/{http_parser.rb,unf_ext}-*/ext
+  rm -rf "$pkgdir/usr/lib/$pkgname/vendor/bundle/ruby/"*/gems/{ffi,unf_ext}-*/ext
   rm -f "$pkgdir/usr/lib/$pkgname/vendor/bundle/ruby/"*/extensions/*/*/*/gem_make.out
 
   install -d "$pkgdir/usr/bin"
