@@ -18,9 +18,9 @@ depends=(
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'mujs'
         'libdvdnav' 'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive'
         'zlib' 'vapoursynth' 'openal' 'vulkan-icd-loader' 'shaderc'
-        'libplacebo' 'libxpresent' 'pipewire' 'zimg' 'ffmpeg' 'sndio' 'libsixel'
+        'libxpresent' 'pipewire' 'zimg' 'ffmpeg' 'sndio' 'libsixel'
     # AUR:
-        'spirv-cross'
+        'spirv-cross' 'libplacebo-git'
 )
 makedepends=('git' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
              'wayland-protocols' 'meson')
@@ -49,8 +49,6 @@ pkgver() {
 }
 
 build() {
-    # TODO Reenable libplacebo-next when its arch package
-    # reaches the required version
     arch-meson mpv build \
         -Dgpl='true' \
         -Dcplayer='true' \
@@ -118,7 +116,7 @@ build() {
         -Dgl-x11='enabled' \
         -Djpeg='enabled' \
         -Dlibplacebo='enabled' \
-        -Dlibplacebo-next='disabled' \
+        -Dlibplacebo-next='enabled' \
         -Drpi='disabled' \
         -Dsdl2-video='enabled' \
         -Dshaderc='enabled' \
