@@ -1,37 +1,40 @@
 # Maintainer:  JP-Ellis <josh@jpellis.me>
 pkgname=papis
-pkgver=0.12
+pkgver=0.13
 pkgrel=1
 pkgdesc="Papis is a powerful and highly extensible command-line based document and bibliography manager."
 arch=('any')
 url="https://github.com/papis/papis"
 license=('GPL')
 depends=('python'
-         'python-requests'
-         'python-filetype'
-         'python-pyparsing'
-         # 'python-configparser' This dependency from setup.py is part of the standard library in Python 3.10
-         'python-arxiv2bib'
          'python-pyaml'
-         'python-chardet'
+         'python-arxiv2bib'
          'python-beautifulsoup4'
-         'python-colorama'
          'python-bibtexparser'
+         'python-chardet'
          'python-click'
+         'python-colorama'
+         'python-dominate'
+         'python-filetype'
          'python-habanero'
          'python-isbnlib'
-         'python-prompt_toolkit'
-         'python-tqdm'
-         'python-pygments'
-         'python-stevedore'
-         'python-doi'
-         'python-typing_extensions'
          'python-lxml'
+         'python-prompt_toolkit'
+         'python-pygments'
+         'python-pyparsing'
+         'python-doi'
          'python-slugify'
+         'python-requests'
+         'python-stevedore'
+         'python-tqdm'
+         'python-typing_extensions'
         )
-optdepends=('papis-rofi: integration with rofi')
+optdepends=(
+  'papis-rofi: integration with rofi'
+  'python-whoosh'
+)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('9005ff51ec27c2ebf542c9c6f2a987e77060c53dce12a57de8ce39afb3deb483')
+sha256sums=('f35a6aa938361bb67c5b77d916ac8cec587638ad7d86dc87a917ac608ec965a7')
 noextract=()
 
 prepare() {
