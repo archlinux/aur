@@ -1,6 +1,6 @@
 pkgbase = iptables-git
 	pkgdesc = Userspace command line program used to configure the packet filtering ruleset
-	pkgver = 1.8.9.r33.g0c2dcbf9
+	pkgver = 1.8.9.r41.g4c923250
 	pkgrel = 1
 	url = https://www.netfilter.org/projects/iptables/index.html
 	arch = i686
@@ -12,10 +12,10 @@ pkgbase = iptables-git
 	depends = libmnl
 	depends = libnftnl
 	depends = libpcap
-	provides = arptables=1.8.9.r33.g0c2dcbf9
-	provides = ebtables=1.8.9.r33.g0c2dcbf9
-	provides = iptables=1.8.9.r33.g0c2dcbf9
-	provides = iptables-nft=1.8.9.r33.g0c2dcbf9
+	provides = arptables=1.8.9.r41.g4c923250
+	provides = ebtables=1.8.9.r41.g4c923250
+	provides = iptables=1.8.9.r41.g4c923250
+	provides = iptables-nft=1.8.9.r41.g4c923250
 	conflicts = arptables
 	conflicts = ebtables
 	conflicts = iptables
@@ -24,19 +24,19 @@ pkgbase = iptables-git
 	backup = etc/iptables/iptables.rules
 	backup = etc/iptables/ip6tables.rules
 	source = git://git.netfilter.org/iptables
-	source = arptables.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/iptables/trunk/arptables.service
-	source = ebtables.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/iptables/trunk/ebtables.service
-	source = empty-filter.rules::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/iptables/trunk/empty-filter.rules
-	source = empty-mangle.rules::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/iptables/trunk/empty-mangle.rules
-	source = empty-nat.rules::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/iptables/trunk/empty-nat.rules
-	source = empty-raw.rules::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/iptables/trunk/empty-raw.rules
-	source = empty-security.rules::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/iptables/trunk/empty-security.rules
-	source = empty.rules::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/iptables/trunk/empty.rules
-	source = ip6tables.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/iptables/trunk/ip6tables.service
-	source = iptables-legacy-flush::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/iptables/trunk/iptables-legacy-flush
-	source = iptables-nft-flush::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/iptables/trunk/iptables-nft-flush
-	source = iptables.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/iptables/trunk/iptables.service
-	source = simple_firewall.rules::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/iptables/trunk/simple_firewall.rules
+	source = arptables.service::https://gitlab.archlinux.org/archlinux/packaging/packages/iptables/-/raw/main/arptables.service
+	source = ebtables.service::https://gitlab.archlinux.org/archlinux/packaging/packages/iptables/-/raw/main/ebtables.service
+	source = empty-filter.rules::https://gitlab.archlinux.org/archlinux/packaging/packages/iptables/-/raw/main/empty-filter.rules
+	source = empty-mangle.rules::https://gitlab.archlinux.org/archlinux/packaging/packages/iptables/-/raw/main/empty-mangle.rules
+	source = empty-nat.rules::https://gitlab.archlinux.org/archlinux/packaging/packages/iptables/-/raw/main/empty-nat.rules
+	source = empty-raw.rules::https://gitlab.archlinux.org/archlinux/packaging/packages/iptables/-/raw/main/empty-raw.rules
+	source = empty-security.rules::https://gitlab.archlinux.org/archlinux/packaging/packages/iptables/-/raw/main/empty-security.rules
+	source = empty.rules::https://gitlab.archlinux.org/archlinux/packaging/packages/iptables/-/raw/main/empty.rules
+	source = ip6tables.service::https://gitlab.archlinux.org/archlinux/packaging/packages/iptables/-/raw/main/ip6tables.service
+	source = iptables-legacy-flush::https://gitlab.archlinux.org/archlinux/packaging/packages/iptables/-/raw/main/iptables-legacy-flush
+	source = iptables-nft-flush::https://gitlab.archlinux.org/archlinux/packaging/packages/iptables/-/raw/main/iptables-nft-flush
+	source = iptables.service::https://gitlab.archlinux.org/archlinux/packaging/packages/iptables/-/raw/main/iptables.service
+	source = simple_firewall.rules::https://gitlab.archlinux.org/archlinux/packaging/packages/iptables/-/raw/main/simple_firewall.rules
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
