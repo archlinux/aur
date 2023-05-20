@@ -2,7 +2,7 @@
 
 pkgname=sops-git
 pkgver=3.7.3.r32.g912478393
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and flexible tool for managing secrets"
 arch=('i686' 'x86_64')
 url="https://github.com/mozilla/sops"
@@ -12,8 +12,8 @@ makedepends=('git' 'go')
 provides=("sops=$pkgver")
 conflicts=('sops')
 source=("git+https://github.com/mozilla/sops.git#branch=develop"
-        "bash_autocomplete::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/sops/trunk/bash_autocomplete"
-        "zsh_autocomplete::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/sops/trunk/zsh_autocomplete")
+        "bash_autocomplete::https://gitlab.archlinux.org/archlinux/packaging/packages/sops/-/raw/main/bash_autocomplete"
+        "zsh_autocomplete::https://gitlab.archlinux.org/archlinux/packaging/packages/sops/-/raw/main/zsh_autocomplete")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')
