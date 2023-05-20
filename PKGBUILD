@@ -1,26 +1,24 @@
 # Maintainer : Victor Savcenco <victor dot sav at linux dot com>
 
-DLAGENTS=('https::/usr/bin/curl -gqb "" -A "Mozilla/5.0" -fLC - --retry 3 --retry-delay 3 -o %o %u')
-
 pkgname=uqm-megamod-data
 _pkgname=uqm-megamod
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
-pkgdesc="Base content for the Ur-Quan Masters MegaMod by Serosis."
+pkgdesc="Base content for the Ur-Quan Masters MegaMod by JHGuitarFreak (Kohr-Ah Death)."
 arch=("any")
-url="https://github.com/Serosis/UQM-MegaMod-Content"
+url="https://github.com/JHGuitarFreak/UQM-MegaMod-Content"
 license=("custom:CC BY-NC-SA 2.5")
 
 source=(
-  "mm-${pkgver}-content.uqm::https://files.serosis.net/MegaMod/${pkgver}/mm-${pkgver}-content.uqm"
+  "mm-${pkgver}-content.uqm::https://gigenet.dl.sourceforge.net/project/uqm-mods/MegaMod/${pkgver}/Content/mm-${pkgver}-content.uqm"
   LICENSE
-  version
+  version.in
 )
 
 md5sums=(
-  "6ca00a5a2c7db3d60a0d5828bd921ce8"
+  "6f21ae41751b4bed4ae98244730b9f97"
   "4f30efe3d129bd9a8bddd0d455c849f7"
-  "b2732e9de2e18b31eeb50030ade062f7"
+  "c97a84d6a166d2e3a8815694162b80a8"
 )
 
 noextract=("mm-${pkgver}-content.uqm")
@@ -32,6 +30,7 @@ package() {
     "${pkgdir}/usr/share/uqm-megamod/content/base" \
     "${pkgdir}/usr/share/uqm-megamod/content/packages"
   
+  sed 's/\${pkgver}/'"${pkgver}"'/g' "${srcdir}/version.in" > "${srcdir}/version"
   install -Dm644 "${srcdir}/version" "${pkgdir}/usr/share/uqm-megamod/content/version"
   install -Dm644 "${srcdir}/mm-${pkgver}-content.uqm" "${pkgdir}/usr/share/uqm-megamod/content/packages/mm-${pkgver}-content.uqm"
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

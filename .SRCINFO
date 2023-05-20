@@ -1,16 +1,16 @@
 pkgbase = uqm-megamod-data
-	pkgdesc = Base content for the Ur-Quan Masters MegaMod by Serosis.
-	pkgver = 0.8.1
+	pkgdesc = Base content for the Ur-Quan Masters MegaMod by JHGuitarFreak (Kohr-Ah Death).
+	pkgver = 0.8.2
 	pkgrel = 1
-	url = https://github.com/Serosis/UQM-MegaMod-Content
+	url = https://github.com/JHGuitarFreak/UQM-MegaMod-Content
 	arch = any
 	license = custom:CC BY-NC-SA 2.5
-	noextract = mm-0.8.1-content.uqm
-	source = mm-0.8.1-content.uqm::https://files.serosis.net/MegaMod/0.8.1/mm-0.8.1-content.uqm
+	noextract = mm-0.8.2-content.uqm
+	source = mm-0.8.2-content.uqm::https://gigenet.dl.sourceforge.net/project/uqm-mods/MegaMod/0.8.2/Content/mm-0.8.2-content.uqm
 	source = LICENSE
-	source = version
-	md5sums = 6ca00a5a2c7db3d60a0d5828bd921ce8
+	source = version.in
+	md5sums = 6f21ae41751b4bed4ae98244730b9f97
 	md5sums = 4f30efe3d129bd9a8bddd0d455c849f7
-	md5sums = b2732e9de2e18b31eeb50030ade062f7
+	md5sums = c97a84d6a166d2e3a8815694162b80a8
 
 pkgname = uqm-megamod-data
