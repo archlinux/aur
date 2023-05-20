@@ -9,7 +9,8 @@ to your package sources, they have (upon other packages)
 a prebuild python-torchvision-rocm binary build from this source available.
 
 - This **usually** works for manjaro too
-    - but will most likely **break** after every update to ROCM underlying libraries until updated in manjaro
+    - but will most likely **break** after every update to pytorch underlying libraries until updated in manjaro
+    - please refrain from creating issues related to this, thank you!
 
 ### Runing pytorch/torchvision on an old/custom build ROCM stack
 
