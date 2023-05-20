@@ -1,7 +1,7 @@
 # Maintainer: Julian <juliannfairfax@protonmail.com>
 
 pkgname=diebahn
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="GTK4 frontend for the travel information of the german railway"
 url="https://gitlab.com/Schmiddiii/$pkgname"
@@ -10,7 +10,7 @@ license=("GPL3")
 makedepends=("cargo" "meson")
 depends=("libadwaita" "libsecret" "protobuf")
 source=("https://gitlab.com/Schmiddiii/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=("97739b7c7458471e8ac61d9b534b617e47243df9102dc7064e61a8cf6a21e6a7")
+sha256sums=("bd4d50d62de9db5e0540c67dc8fce95f682b0459d6a87976f90bcbe13ea36389")
 options=(!lto)
 
 build() {
