@@ -1,14 +1,18 @@
 pkgbase = lib32-xcb-util-image
-	pkgdesc = 32bit xcb-util-image
-	pkgver = 0.4.0
+	pkgdesc = Utility libraries for XC Binding - Port of Xlib's XImage and XShmImage functions. (32-bits)
+	pkgver = 0.4.1
 	pkgrel = 1
-	url = http://xcb.freedesktop.org/
+	url = https://xcb.freedesktop.org
 	arch = x86_64
 	license = custom
+	makedepends = xorg-util-macros
 	depends = lib32-libxcb
-	depends = xcb-util-image
-	source = https://www.archlinux.org/packages/extra/i686/xcb-util-image/download/#xcb-util-image-i686.pkg.tar.xz
-	md5sums = SKIP
+	depends = xcb-util-image=0.4.1
+	options = debug
+	source = https://xorg.freedesktop.org/archive/individual/lib/xcb-util-image-0.4.1.tar.xz
+	source = https://xorg.freedesktop.org/archive/individual/lib/xcb-util-image-0.4.1.tar.xz.sig
+	validpgpkeys = 4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E
+	sha512sums = 9b47ba38b91196d76541b6ccabeaf291d3b91036f15422909cd6a79b3fd1a9786d5b1728e411bc41cfdf3d60a253485f4ef7c65ffa6ae646fa93439ec782746e
+	sha512sums = SKIP
 
 pkgname = lib32-xcb-util-image
-
