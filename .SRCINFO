@@ -1,16 +1,16 @@
 pkgbase = octave-communications
 	pkgdesc = Digital Communications, Error Correcting Codes (Channel Code), Source Code functions, Modulation and Galois Fields
-	pkgver = 1.2.5
+	pkgver = 1.2.6
 	pkgrel = 1
-	url = http://octave.sourceforge.net/communications/
+	url = https://gnu-octave.github.io/packages/communications
 	install = octave-communications.install
 	arch = any
 	groups = octave-forge
 	license = GPL3
 	depends = octave>=4.4.0
 	depends = octave-signal>=1.1.3
-	noextract = communications-1.2.5.tar.gz
-	source = http://downloads.sourceforge.net/octave/communications-1.2.5.tar.gz
-	md5sums = ffe748509875530bda482a1a7435b217
+	noextract = communications-1.2.6.tar.gz
+	source = http://downloads.sourceforge.net/octave/communications-1.2.6.tar.gz
+	sha512sums = 562b85370d377d6e940430bf0531cf812ac1907e55f2d0a7ca4380876befbe4fa2a44bfcf6484505c9f17c67e44993bf1e3ae29b881320a048259172273bb8ec
 
 pkgname = octave-communications
