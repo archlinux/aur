@@ -1,0 +1,14 @@
+pkgbase = sm-git
+	pkgdesc = A reverse engineered implementation of Super Metroid
+	pkgver = r94.578f90b
+	pkgrel = 1
+	url = https://github.com/snesrev/sm
+	arch = any
+	license = MIT
+	depends = sdl2
+	source = git+https://github.com/snesrev/sm.git
+	source = local://sm.smc
+	sha1sums = SKIP
+	sha1sums = da957f0d63d14cb441d215462904c4fa8519c613
+
+pkgname = sm-git
