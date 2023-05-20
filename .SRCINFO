@@ -1,0 +1,12 @@
+pkgbase = boost-libs_v180
+	pkgdesc = Older boost-libs version for old soft support (like anbox-git)
+	pkgver = 1.80.0
+	pkgrel = 1
+	url = https://boost.org
+	arch = x86_64
+	license = custom:BSL
+	provides = boost-libs
+	source = https://archive.archlinux.org/packages/b/boost-libs/boost-libs-1.80.0-3-x86_64.pkg.tar.zst
+	sha512sums = SKIP
+
+pkgname = boost-libs_v180
