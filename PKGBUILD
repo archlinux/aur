@@ -11,7 +11,7 @@ pkgbase='nim-git'
 pkgname=('nim-git' 'nimble-git' 'nimsuggest-git' 'nimpretty-git' 'nim-gdb-git')
 pkgdesc='Nim is a statically typed compiled systems programming language. It combines successful concepts from mature languages like Python, Ada and Modula. Its design focuses on efficiency, expressiveness, and elegance (in that order of priority).'
 epoch=1
-pkgver=1.6.8.r1070.9afb466d73
+pkgver=1.6.8.r1359.a852b2e9cf
 pkgrel=1
 arch=('x86_64')
 groups=('nim')
@@ -86,6 +86,9 @@ build() {
   cd Nim
 
   /usr/bin/env sh build_all.sh
+
+  # for install.sh and deinstall.sh
+  ./koch distrohelper
 }
 
 package_nim-git() {
@@ -100,26 +103,9 @@ package_nim-git() {
   # License
   install -dm 755 "${pkgdir}/usr/share/licenses/nim"
   install -m 644 "copying.txt" "${pkgdir}/usr/share/licenses/nim/LICENSE"
-
-  # Docs
-  install -dm 755 "${pkgdir}/usr/share/doc/nim"
-  cp -dpr --no-preserve=ownership \
-    doc/*                         \
-    -t "${pkgdir}/usr/share/doc/nim"
-
+  
   # Nim
-  ./koch install "${pkgdir}"
-  install -Dm 755 bin/{nim,nimgrep} -t "$pkgdir/usr/bin"
-
-  cd "${pkgdir}/nim"
-  install -dm 755 "${pkgdir}"/{etc/nim,usr/lib/nim}
-  find lib -mindepth 1 -maxdepth 1 -exec \
-    cp -dpr --no-preserve=ownership '{}' -t "$pkgdir/usr/lib/nim" \;
-  find config -mindepth 1 -maxdepth 1 -exec \
-    cp -dpr --no-preserve=ownership '{}' -t "$pkgdir/etc/nim" \;
-  cp -dpr --no-preserve=ownership \
-    "$srcdir/Nim/lib/packages"    \
-    -t "$pkgdir/usr/lib/nim"
+  env DESTDIR=${pkgdir} sh ./install.sh /usr/bin
 
   # Workaround Nim's nonstandard header file placement
   # (https://bugs.archlinux.org/task/50252):
@@ -132,7 +118,6 @@ package_nim-git() {
   ln -s "/usr/lib/nim/libnimrtl.so" "$pkgdir/usr/lib/libnimrtl.so"
 
   # Clean up $pkgdir
-  rm -rf "$pkgdir/nim"
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
   find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
