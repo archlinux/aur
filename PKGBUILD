@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=dpkg-git
-pkgver=1.21.20.r152.g329d06a62
+pkgver=1.21.20.r208.gb118d11f7
 pkgrel=1
 pkgdesc="Debian package management system"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ provides=("dpkg=$pkgver")
 conflicts=('dpkg')
 options=('staticlibs')
 source=("git+https://git.dpkg.org/git/dpkg/dpkg.git"
-        "origin.archlinux::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/dpkg/trunk/origin.archlinux")
+        "origin.archlinux::https://gitlab.archlinux.org/archlinux/packaging/packages/dpkg/-/raw/main/origin.archlinux")
 sha256sums=('SKIP'
             'SKIP')
 
