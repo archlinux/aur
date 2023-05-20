@@ -1,7 +1,7 @@
 pkgbase = soft-serve-git
 	pkgdesc = A tasty, self-hostable Git server for the command line
-	pkgver = 0.3.2.r14.g76cedbf
-	pkgrel = 2
+	pkgver = 0.5.4.r1.gdb3bc9b
+	pkgrel = 1
 	url = https://github.com/charmbracelet/soft-serve
 	arch = i686
 	arch = x86_64
@@ -9,14 +9,14 @@ pkgbase = soft-serve-git
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	provides = soft-serve=0.3.2.r14.g76cedbf
+	provides = soft-serve=0.5.4.r1.gdb3bc9b
 	conflicts = soft-serve
 	backup = etc/soft-serve.conf
 	source = git+https://github.com/charmbracelet/soft-serve.git
-	source = soft-serve.conf::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/soft-serve/trunk/soft-serve.conf
-	source = systemd.service::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/soft-serve/trunk/systemd.service
-	source = sysusers.conf::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/soft-serve/trunk/sysusers.conf
-	source = tmpfiles.conf::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/soft-serve/trunk/tmpfiles.conf
+	source = soft-serve.conf::https://gitlab.archlinux.org/archlinux/packaging/packages/soft-serve/-/raw/main/soft-serve.conf
+	source = systemd.service::https://gitlab.archlinux.org/archlinux/packaging/packages/soft-serve/-/raw/main/systemd.service
+	source = sysusers.conf::https://gitlab.archlinux.org/archlinux/packaging/packages/soft-serve/-/raw/main/sysusers.conf
+	source = tmpfiles.conf::https://gitlab.archlinux.org/archlinux/packaging/packages/soft-serve/-/raw/main/tmpfiles.conf
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

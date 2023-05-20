@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=soft-serve-git
-pkgver=0.3.2.r14.g76cedbf
-pkgrel=2
+pkgver=0.5.4.r1.gdb3bc9b
+pkgrel=1
 pkgdesc="A tasty, self-hostable Git server for the command line"
 arch=('i686' 'x86_64')
 url="https://github.com/charmbracelet/soft-serve"
@@ -13,10 +13,10 @@ provides=("soft-serve=$pkgver")
 conflicts=('soft-serve')
 backup=('etc/soft-serve.conf')
 source=("git+https://github.com/charmbracelet/soft-serve.git"
-        "soft-serve.conf::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/soft-serve/trunk/soft-serve.conf"
-        "systemd.service::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/soft-serve/trunk/systemd.service"
-        "sysusers.conf::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/soft-serve/trunk/sysusers.conf"
-        "tmpfiles.conf::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/soft-serve/trunk/tmpfiles.conf")
+        "soft-serve.conf::https://gitlab.archlinux.org/archlinux/packaging/packages/soft-serve/-/raw/main/soft-serve.conf"
+        "systemd.service::https://gitlab.archlinux.org/archlinux/packaging/packages/soft-serve/-/raw/main/systemd.service"
+        "sysusers.conf::https://gitlab.archlinux.org/archlinux/packaging/packages/soft-serve/-/raw/main/sysusers.conf"
+        "tmpfiles.conf::https://gitlab.archlinux.org/archlinux/packaging/packages/soft-serve/-/raw/main/tmpfiles.conf")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
