@@ -1,7 +1,7 @@
 pkgbase = pclish
 	pkgdesc = Python Command-Line Shell
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jdev082/pclish
 	arch = x86_64
 	arch = arm
@@ -10,6 +10,7 @@ pkgbase = pclish
 	depends = bash
 	depends = python-psutil
 	depends = python-colorama
+	conflicts = pclish-git
 	source = https://github.com/jdev082/pclish/archive/refs/tags/v0.7.0.tar.gz
 	sha256sums = 3c946dd9c980be968600ccf21ce0328c17d955b2f21cd6c36ae2a54ac1ac6ea0
 
