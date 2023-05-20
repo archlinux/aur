@@ -22,3 +22,59 @@ index 99ab618e23..4fd04a7dc2 100644
  #include <limits>
  #include <list>
  #include <optional>
+--- src/support/lockedpool.h
++++ src/support/lockedpool.h
+@@ -11,6 +11,7 @@
+ #include <memory>
+ #include <mutex>
+ #include <unordered_map>
++#include <stdexcept>
+ 
+ /**
+  * OS-dependent allocation and deallocation of locked/pinned memory pages.
+--- src/tinyformat.h
++++ src/tinyformat.h
+@@ -138,6 +138,7 @@
+ #include <locale>
+ #include <sstream>
+ #include <stdexcept>
++#include <cstdint>
+ 
+ #ifndef TINYFORMAT_ERROR
+ #define TINYFORMAT_ERROR(reason) assert(0 && reason)
+--- src/base58.h
++++ src/base58.h
+@@ -20,6 +20,7 @@
+ 
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ /**
+  * Encode a byte sequence as a base58-encoded string.
+--- src/wallet/test/wallet_tests.cpp
++++ src/wallet/test/wallet_tests.cpp
+@@ -607,7 +607,22 @@
+     BOOST_CHECK_EQUAL(CalculateP2PKHInputSize(true), DUMMY_P2PKH_INPUT_SIZE);
+ }
+ 
+-BOOST_FIXTURE_TEST_CASE(wallet_bip69, ListCoinsTestingSetup) {
++struct Upgrade9NotActivatedTestingSetup : ListCoinsTestingSetup {
++    Upgrade9NotActivatedTestingSetup() : ListCoinsTestingSetup() {
++        gArgs.ForceSetArg("-upgrade9activationtime", "9223372036854775807"); // force activation always off for this test fixture
++        LOCK(cs_main);
++        // Ensure upgrade 9 (tokens) is not active for next block and mempool
++        BOOST_CHECK(!IsUpgrade9Enabled(::GetConfig().GetChainParams().GetConsensus(), ::ChainActive().Tip()));
++    }
++    ~Upgrade9NotActivatedTestingSetup() {
++        gArgs.ClearArg("-upgrade9activationtime");
++    }
++};
++
++BOOST_FIXTURE_TEST_CASE(wallet_bip69, Upgrade9NotActivatedTestingSetup) {
++    // Note: The entire point of this test is to *just* test tx sorting with/without bip69 enabled when token data is
++    // present/absent, and as such we didn't bother creating consensus-respecting CashToken txns for this test (which
++    // is why this test requires upgrade9 be disabled).
+     Defer d([]{
+         // undo forceSetArg
+         gArgs.ClearArg("-usebip69");
