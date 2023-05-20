@@ -1,0 +1,17 @@
+pkgbase = onlyoffice-appimage
+	pkgdesc = An office suite that combines text, spreadsheet and presentation editors.
+	pkgver = 7.3.3
+	pkgrel = 1
+	url = https://www.onlyoffice.com/
+	arch = x86_64
+	license = AGPL3
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = glibc
+	provides = onlyoffice
+	conflicts = onlyoffice
+	options = !strip
+	source = onlyoffice-7.3.3.AppImage::https://github.com/ONLYOFFICE/DesktopEditors/releases/download/v7.3.3/DesktopEditors-x86_64.AppImage
+	sha256sums = f3636b51e53b1917266405e110d0635b0a8aa37341e159d7b61de48f8da807e8
+
+pkgname = onlyoffice-appimage
