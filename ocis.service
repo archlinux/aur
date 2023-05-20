@@ -1,0 +1,41 @@
+[Unit]
+Description=OCIS daemon
+After=syslog.target network.target
+
+[Service]
+User=ocis
+Group=ocis
+Type=simple
+Environment=OCIS_BASE_DATA_PATH=/var/lib/ocis
+Environment=OCIS_CONFIG_DIR=/etc/ocis
+EnvironmentFile=/etc/ocis.env
+ExecStart=/usr/bin/ocis server
+WorkingDirectory=/var/lib/ocis
+
+# Sandboxing
+ProtectProc=invisible
+ProtectSystem=strict
+ReadWritePaths=/var/lib/ocis
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+PrivateIPC=yes
+PrivateUsers=yes
+ProtectHostname=yes
+ProtectClock=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+RestrictNamespaces=yes
+LockPersonality=yes
+RestrictSUIDSGID=yes
+RemoveIPC=yes
+NoNewPrivileges=yes
+SystemCallArchitectures=native
+
+TimeoutStopSec=120
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

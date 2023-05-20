@@ -1,0 +1,8 @@
+90c90
+< 	go install -v -tags '$(TAGS)' -ldflags '$(LDFLAGS)' ./cmd/$(NAME)
+---
+> 	go install -v -tags '$(TAGS)' ./cmd/$(NAME)
+102c102
+< 	$(GOBUILD) -v -tags '$(TAGS)' -ldflags '$(LDFLAGS)' -o $@ ./cmd/$(NAME)
+---
+> 	$(GOBUILD) -v -tags '$(TAGS)' -o $@ ./cmd/$(NAME)
