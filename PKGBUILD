@@ -24,8 +24,8 @@ _py_deps=(arpy
           python-magic
           rarfile
           structlog
-          ubi-reader
-          yaffshiv)
+          ubi-reader)
+# yaffshiv removed see : https://github.com/onekey-sec/unblob/pull/513
 depends=(python
          "${_py_deps[@]/#/python-}")
 makedepends=(git
