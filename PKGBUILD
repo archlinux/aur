@@ -16,6 +16,7 @@ arch=('x86_64')
 url='http://pike.lysator.liu.se'
 license=('GPL2' 'LGPL' 'MPL')
 depends=('sane' 'libzip' 'libmariadbclient' 'gtkglarea' 'nettle')
+options=('!makeflags')
 source=("${url}/pub/${pkgname}/all/${pkgver}/Pike-v${pkgver}.tar.gz"
         "${pkgname}.patch")
 sha256sums=('1033bc90621896ef6145df448b48fdfa342dbdf01b48fd9ae8acf64f6a31b92a'
@@ -35,9 +36,7 @@ build() {
     --libdir=/usr/lib \
     --disable-make_conf \
     --disable-noopty-retry \
-    --without-cdebug \
     --without-bundles \
-    --without-copt \
     --without-libpdf \
     --without-ssleay \
     --with-crypt \
