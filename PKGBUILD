@@ -2,7 +2,7 @@
 
 pkgname=lame-altivec
 pkgver=3.100
-pkgrel=4
+pkgrel=5
 pkgdesc="AltiVec/SSE optimized LAME encoder"
 arch=('i686' 'x86_64')
 url="https://tmkk.undo.jp/lame/index_e.html"
@@ -13,11 +13,11 @@ provides=("lame=$pkgver")
 conflicts=('lame')
 options=('staticlibs')
 source=("https://downloads.sourceforge.net/project/lame/lame/$pkgver/lame-$pkgver.tar.gz"
-        "lame.pc.in::https://gitlab.archlinux.org/archlinux/packaging/packages/lame/-/raw/main/lame.pc.in"
-        "https://tmkk.undo.jp/lame/lame-3.100-sse-20171014.diff")
+        "https://tmkk.undo.jp/lame/lame-3.100-sse-20171014.diff"
+        "lame.pc.in::https://gitlab.archlinux.org/archlinux/packaging/packages/lame/-/raw/main/lame.pc.in")
 sha256sums=('ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e'
-            '5b746f51caeb202ae4fe3f09fc2db0b38096598d9496945d7fdfdd23c5868e93'
-            '8c32c706f7fce0da8150a5fa0a4e7efadc77cc39e0375c05dc2737331a584662')
+            '8c32c706f7fce0da8150a5fa0a4e7efadc77cc39e0375c05dc2737331a584662'
+            'SKIP')
 
 
 prepare() {
