@@ -1,8 +1,8 @@
 # Maintainer: Tristan Hill
 
 pkgname=changedetection.io
-pkgver=0.41.1
-pkgrel=2
+pkgver=0.42
+pkgrel=1
 pkgdesc='change monitoring of web pages'
 arch=('any')
 url='https://github.com/dgtlmoon/changedetection.io'
@@ -17,6 +17,7 @@ depends=(# ordered per https://github.com/dgtlmoon/changedetection.io/blob/maste
          'python-feedgen'
          'python-flask-compress'
          'python-flask-login'
+         'python-flask-paginate'
          'python-flask-expects-json'
          'python-flask-restful'
          'python-flask-wtf'
@@ -41,7 +42,7 @@ source=("https://github.com/dgtlmoon/changedetection.io/archive/refs/tags/$pkgve
         'sysusers'
         'tmpfiles'
         'service')
-sha512sums=('f8f7a54d1441e66fce85262ec135e334900313dbc7068df6141c12fbcba81726f4108704919609811d66f9e2030c880eb09cbc48a8c2bff8dc0cdf8bf2819d28'
+sha512sums=('470debf9b8221ad6209b28dd1eb6b14f2738b694def6312f16a31e4aaf8ba681a04d5f628df8620aa55a64d47b38c8c9715783b0fbb602f64e10b3218f6c046e'
             '5ef8b215bddc02b04d55d3699f27ad043461d8771591be2ebf0ed6390c58ab881426214173c8e1cc8bb36ecd7acebc5d69d760fc65b8a3b191b2116150748f53'
             '62a684e35c3b479b8ab139b2d79f83f408bede0d4e0f1e500ee75f13126456fa5b574d8cb826c8c56ff0da488dec4ed3562854d0f05d44814beaa3b726bcd318'
             '5dba78fafd77fe41b69d73849529ed4f086879cd3a6e4ada126a320d249bb730bcf6a0b49e5b987699a2420e7083c7c6d1a0b921c49c932ec33f30bda083b506')
