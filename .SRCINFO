@@ -1,6 +1,6 @@
 pkgbase = ytfind
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/305a385/ytfind/
 	arch = x86_64
 	license = AGPL3
