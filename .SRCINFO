@@ -30,6 +30,6 @@ pkgbase = unblob-git
 	depends = python-structlog
 	depends = python-ubi-reader
 	depends = python-treelib
-	depends = python-blob-native
+	depends = python-unblob-native
 
 pkgname = unblob-git

@@ -27,7 +27,7 @@ _py_deps=(arpy
           structlog
           ubi-reader
           treelib
-          blob-native)
+          unblob-native)
 # yaffshiv removed see : https://github.com/onekey-sec/unblob/pull/513
 depends=(python
          "${_py_deps[@]/#/python-}")
