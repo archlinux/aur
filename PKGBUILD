@@ -11,7 +11,7 @@ _pkgname='vision'
 pkgbase='python-torchvision-rocm'
 pkgname=('torchvision-rocm' 'python-torchvision-rocm')
 pkgver=0.15.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Datasets, transforms, and models specific to computer vision (with ROCM support)'
 arch=('x86_64')
 url='https://github.com/pytorch/vision'
@@ -85,8 +85,7 @@ build() {
   # fix bin/hipcc not found, because ROCM_HOME is lost
   # https://github.com/pytorch/vision/issues/6707#issuecomment-1269640873
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  FORCE_CUDA=1 \
-    ROCM_HOME=/opt/rocm/ \
+  ROCM_HOME=/opt/rocm/ \
     TORCHVISION_INCLUDE=${srcdir} \
     TORCHVISION_LIBRARY=/usr/lib \
     TORCHVISION_USE_NVJPEG=0 \
