@@ -3,7 +3,7 @@
 _pkgname=Frappe-Books
 pkgname=frappebooks-appimage
 pkgver=0.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Frappe Books is a simple, well-designed, desktop accounting software for freelancers and small businesses ."
 arch=('x86_64')
 #url="https://frappebooks.com/"

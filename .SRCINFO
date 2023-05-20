@@ -1,13 +1,13 @@
 pkgbase = frappebooks-appimage
 	pkgdesc = Frappe-Books is a simple, well-designed, desktop accounting software for freelancers and small businesses 
 	pkgver = 0.14.1
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = CC-BY-SA 3.0
 	provides = Frappe-Books
 	conflicts = Frappe-Books
 	options = !strip
-	source = https://github.com/frappe/books/releases/download/v0.8.0/Frappe-Books-0.8.0.AppImage
+	source = https://github.com/frappe/books/releases/download/v0.14.1/Frappe-Books-0.14.1.AppImage
 	md5sums = 32b800cddc16ffd9b585b75ff057b2ff
 
 pkgname = frappebooks-appimage
