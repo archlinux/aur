@@ -3,13 +3,14 @@
 pkgname=uqm-megamod
 pkgver=0.8.2
 _pkgver=0.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A fork of The Ur-Quan Masters that remasters the HD mod with a veritable smorgasbord of extra features and options by JHGuitarFreak (Kohr-Ah Death)."
 arch=("x86_64")
 url="https://github.com/JHGuitarFreak/UQM-MegaMod"
 license=("GPL2")
 
-depends=("libogg" "libpng" "libvorbis" "libgl" "sdl2" "zlib" "glu" "libmikmod" "lua" "lua52" "uqm-megamod-data")
+makedepends=("pkgconf" "lua")
+depends=("libogg" "libpng" "libvorbis" "libgl" "sdl2" "zlib" "glu" "libmikmod" "lua52" "uqm-megamod-data")
 optdepends=(
   "uqm-megamod-addon-hd: For HD assets"
   "uqm-megamod-addon-classic-hd: For Classic HD-mod styled textures"
