@@ -5,10 +5,13 @@ pkgbase = python-pyviz_comms
 	url = https://github.com/pyviz/pyviz_comms
 	arch = any
 	license = custom:BSD-3-clause
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-param
 	depends = jupyterlab
-	source = pyviz_comms-2.2.1.tar.gz::https://github.com/pyviz/pyviz_comms/archive/v2.2.1.tar.gz
-	sha512sums = 7c64a9923483a0f73cc3c877b4d02b2c5dd5a90382bf7ae2f564125e14e35a3f2eac9a0a995fa502f34ac91e809986f1e58cb2c9b98c7ca6262682a37a9aea9e
+	source = https://pypi.org/packages/source/p/pyviz_comms/pyviz_comms-2.2.1.tar.gz
+	sha512sums = 5f66b3a0582a42163feaec078f6d8826126d985677bce21049a6613ea12c1f49cb54b2e3050cd16cadf055734b90280b43a4643329e9e89d76ca3bcb2794767c
 
 pkgname = python-pyviz_comms
