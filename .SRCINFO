@@ -1,7 +1,7 @@
 pkgbase = dmenu-bud
 	pkgdesc = Generic menu for X. Patched to fit i3menu
 	pkgver = 5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/budRich/dmenu
 	arch = x86_64
 	license = MIT
@@ -19,8 +19,8 @@ pkgbase = dmenu-bud
 	source = https://dl.suckless.org/tools/dmenu-5.2.tar.gz
 	source = patchfile
 	sha512sums = 7be9bb76b11225ec86a30e643e9b884f6d13af581526085212cb7401383d448a72fe4dffc3ce84ffb8319dbf36ca8384597a89070cd27d39d5618f239a2da6e3
-	sha512sums = 07438ece4124a81b568445fc6f747e5bc924c05ee2a99c3eecb45aee824f65dc0f1b61ce79502fb02a72272ac42c15760aabb2b330a0a1bb2717051b384d48d9
+	sha512sums = d9ca2a491804144fa80bbd46d80f11883be8bb84395e748129b1062193243b6b604d2cb065c32c90a8e49073eda406ef88652a254654250cc2fff4d7933048dc
 	b2sums = f827f0d0d935f9da8103dbb73ed8b67818f1213d2f8e5a406de5e8c9496ea0479b4ccb50d3a29004abc1e4e679cac177163c02458ed144d323bb50fc120f936d
-	b2sums = 412593f2724e4f426883e5964abf10b4d763b42289ce351e4d924353e6ad3dbc659269331653d0377f76de0ff6f49e642e2bac177e23c9fcdfec7287d8c59fa8
+	b2sums = aff1060fe22d7169b27162d7ce4d65bdcc73f9cb6d2fa62a2d47de44939ae8d090debf9041b9556fb6d674f7adb4fe09217cfa1223c607f21e0bac539008472d
 
 pkgname = dmenu-bud
