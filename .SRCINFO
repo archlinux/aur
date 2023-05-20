@@ -1,7 +1,7 @@
 pkgbase = lame-altivec
 	pkgdesc = AltiVec/SSE optimized LAME encoder
 	pkgver = 3.100
-	pkgrel = 3
+	pkgrel = 4
 	url = https://tmkk.undo.jp/lame/index_e.html
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = lame-altivec
 	conflicts = lame
 	options = staticlibs
 	source = https://downloads.sourceforge.net/project/lame/lame/3.100/lame-3.100.tar.gz
-	source = lame.pc.in::https://raw.githubusercontent.com/archlinux/svntogit-packages/master/lame/trunk/lame.pc.in
+	source = lame.pc.in::https://gitlab.archlinux.org/archlinux/packaging/packages/lame/-/raw/main/lame.pc.in
 	source = https://tmkk.undo.jp/lame/lame-3.100-sse-20171014.diff
 	sha256sums = ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e
 	sha256sums = 5b746f51caeb202ae4fe3f09fc2db0b38096598d9496945d7fdfdd23c5868e93
