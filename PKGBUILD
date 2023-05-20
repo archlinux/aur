@@ -4,14 +4,14 @@ pkgname=pot-translation-bin
 _pkgname=pot-translation
 prjname=pot
 pkgver=0.3.4
-pkgrel=0
+pkgrel=1
 pkgdesc="一个跨平台的划词翻译软件"
 arch=('x86_64')
 url="https://github.com/pot-app/pot-desktop"
 license=('GPL3')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-git")
-depends=('libappindicator-gtk3' 'webkit2gtk' 'gtk3' 'libayatana-appindicator')
+depends=('libappindicator-gtk3' 'webkit2gtk' 'gtk3' 'libayatana-appindicator' 'xdotool')
 
 source=("${prjname}-${pkgver}-${arch}.deb::${url}/releases/download/${pkgver}/${prjname}_${pkgver}_amd64.deb")
 
