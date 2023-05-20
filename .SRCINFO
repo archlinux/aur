@@ -1,13 +1,13 @@
 pkgbase = waycorner
 	pkgdesc = Hot corners for Wayland. Create anchors in the corners of your monitors and execute a command of your choice.
-	pkgver = 0.1.4
+	pkgver = 0.2.0
 	pkgrel = 2
 	url = https://github.com/AndreasBackx/waycorner
 	arch = any
 	license = MIT
 	makedepends = cargo
-	source = waycorner-0.1.4.tar.gz::https://github.com/AndreasBackx/waycorner/archive/0.1.4.tar.gz
-	sha256sums = 0cf4415be71b6d2c9c7b7a836a3909f06b4cd9b356e21ed9f0856fff87e220b9
+	source = waycorner-0.2.0.tar.gz::https://github.com/AndreasBackx/waycorner/archive/0.2.0.tar.gz
+	sha256sums = c17e30889692d759240f56bfae6e96b19d0b9db3e1db5f649e46c4954d316549
 
 pkgname = waycorner
 
