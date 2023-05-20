@@ -1,25 +1,25 @@
-# Maintainer: algebro <algebro at tuta dot io>
-
-_pkgname=eth-utils
-pkgname=python-$_pkgname
-pkgver=1.8.4
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: algebro <algebro at tuta dot io>
+_base=eth-utils
+pkgname=python-$_base
+pkgver=2.1.0
 pkgrel=1
-pkgdesc="Utility functions for working with Ethereum related codebases."
-arch=('x86_64')
-url="https://github.com/ethereum/eth-utils"
-license=('MIT')
-depends=('python' 'python-eth-hash' 'python-eth-typing' 'python-toolz' 'python-cytoolz')
-makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ethereum/eth-utils/archive/v${pkgver}.tar.gz")
-sha256sums=('46d20f5b2157ea60e5e91e1dc4cc70351e70345ee9644c2ba85e11f613222a06')
+pkgdesc="Common utility functions for python code that interacts with Ethereum"
+arch=(x86_64)
+url="https://github.com/ethereum/${_base}"
+license=(MIT)
+depends=(python-eth-hash python-eth-typing python-cytoolz)
+makedepends=(python-build python-installer python-setuptools python-wheel)
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('aec131682186d9393663a84c93700610e37ffe6dab5a6b7e80ceca1c14b38b8b26a10b0bb6658526069e34ecddca8f9af1b037e741733731b7e42d6dd61c63aa')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py build
+  cd ${_base}-${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
