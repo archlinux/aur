@@ -1,0 +1,14 @@
+pkgbase = gdrive2
+	pkgdesc = Google Drive CLI Client (version 2)
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/prasmussen/gdrive
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	options = !strip
+	source = https://github.com/prasmussen/gdrive/archive/2.1.1/gdrive-2.1.1.tar.gz
+	sha256sums = 9092cb356acf58f2938954784605911e146497a18681199d0c0edc65b833a672
+
+pkgname = gdrive2
