@@ -1,24 +1,22 @@
 # Maintainer : Victor Savcenco <victor dot sav at linux dot com>
 
-DLAGENTS=('https::/usr/bin/curl -gqb "" -A "Mozilla/5.0" -fLC - --retry 3 --retry-delay 3 -o %o %u')
-
 pkgname=uqm-megamod-addon-hd
 _pkgname=uqm-megamod
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
-pkgdesc="HD Graphics package for the Ur-Quan Masters MegaMod by Serosis."
+pkgdesc="HD Graphics package for the Ur-Quan Masters MegaMod by JHGuitarFreak (Kohr-Ah Death)."
 arch=("any")
-url="https://github.com/Serosis/UQM-MegaMod-Content"
+url="https://github.com/JHGuitarFreak/UQM-MegaMod-Content"
 license=("custom:CC BY-NC-SA 2.5")
 
 source=(
-  "mm-${pkgver}-hd.uqm::https://files.serosis.net/MegaMod/${pkgver}/mm-${pkgver}-hd.uqm"
-  "ATTRIBUTION.txt::https://raw.githubusercontent.com/Serosis/UQM-MegaMod-Content/master/addons/mm-hd/ATTRIBUTION.txt"
+  "mm-${pkgver}-hd.uqm::https://versaweb.dl.sourceforge.net/project/uqm-mods/MegaMod/${pkgver}/Content/mm-${pkgver}-hd.uqm"
+  "ATTRIBUTION.txt::https://raw.githubusercontent.com/JHGuitarFreak/UQM-MegaMod-Content/master/addons/mm-hd/ATTRIBUTION.txt"
   LICENSE
 )
 
 md5sums=(
-  "98f4b2cee09fb59f13661b5cafd017ec"
+  "37d1918188df4c60f9f1bb2b0a273e00"
   "ff908319ce20057293c3c350854b390d"
   "4f30efe3d129bd9a8bddd0d455c849f7"
 )

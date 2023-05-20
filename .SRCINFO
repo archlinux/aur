@@ -1,16 +1,16 @@
 pkgbase = uqm-megamod-addon-hd
-	pkgdesc = HD Graphics package for the Ur-Quan Masters MegaMod by Serosis.
-	pkgver = 0.8.1
+	pkgdesc = HD Graphics package for the Ur-Quan Masters MegaMod by JHGuitarFreak (Kohr-Ah Death).
+	pkgver = 0.8.2
 	pkgrel = 1
-	url = https://github.com/Serosis/UQM-MegaMod-Content
+	url = https://github.com/JHGuitarFreak/UQM-MegaMod-Content
 	arch = any
 	license = custom:CC BY-NC-SA 2.5
-	noextract = mm-0.8.1-hd.uqm
-	source = mm-0.8.1-hd.uqm::https://files.serosis.net/MegaMod/0.8.1/mm-0.8.1-hd.uqm
-	source = ATTRIBUTION.txt::https://raw.githubusercontent.com/Serosis/UQM-MegaMod-Content/master/addons/mm-hd/ATTRIBUTION.txt
+	noextract = mm-0.8.2-hd.uqm
+	source = mm-0.8.2-hd.uqm::https://versaweb.dl.sourceforge.net/project/uqm-mods/MegaMod/0.8.2/Content/mm-0.8.2-hd.uqm
+	source = ATTRIBUTION.txt::https://raw.githubusercontent.com/JHGuitarFreak/UQM-MegaMod-Content/master/addons/mm-hd/ATTRIBUTION.txt
 	source = LICENSE
-	md5sums = 98f4b2cee09fb59f13661b5cafd017ec
-	md5sums = e4bd4924cef83fd3594ea4154d141e7a
+	md5sums = 37d1918188df4c60f9f1bb2b0a273e00
+	md5sums = ff908319ce20057293c3c350854b390d
 	md5sums = 4f30efe3d129bd9a8bddd0d455c849f7
 
 pkgname = uqm-megamod-addon-hd
