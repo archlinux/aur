@@ -2,7 +2,7 @@
 
 pkgname=fossil-fossil
 pkgver=r15951.1e919d6
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple, high-reliability, distributed software configuration management system"
 arch=('i686' 'x86_64')
 url="https://fossil-scm.org/home/doc/trunk/www/index.wiki"
@@ -14,9 +14,9 @@ provides=("fossil=$pkgver")
 conflicts=('fossil')
 backup=('etc/xinetd.d/fossil')
 source=("fossil.fossil::fossil+https://fossil-scm.org/home"
-        "fossil-xinetd::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/fossil/trunk/fossil-xinetd"
-        "fossil@.service::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/fossil/trunk/fossil.service"
-        "fossil.socket::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/fossil/trunk/fossil.socket")
+        "fossil-xinetd::https://gitlab.archlinux.org/archlinux/packaging/packages/fossil/-/raw/main/fossil-xinetd"
+        "fossil@.service::https://gitlab.archlinux.org/archlinux/packaging/packages/fossil/-/raw/main/fossil.service"
+        "fossil.socket::https://gitlab.archlinux.org/archlinux/packaging/packages/fossil/-/raw/main/fossil.socket")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
