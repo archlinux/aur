@@ -1,6 +1,3 @@
-# Maintainer: Brad Erhart <tocusso underscore malty at aleeas dot com>
-
-pkgbase=python-flask-paginate
 pkgname=python-flask-paginate
 _name=${pkgname#python-}
 pkgver=2022.1.8
