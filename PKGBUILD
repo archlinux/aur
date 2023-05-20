@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=plocate-git
-pkgver=1.1.16.r7.g31641da
+pkgver=1.1.18.r5.gca28328
 pkgrel=1
 pkgdesc="A locate(1) based on posting lists, completely replacing mlocate with a much faster (and smaller) index"
 arch=('i686' 'x86_64')
@@ -13,9 +13,9 @@ provides=("plocate=$pkgver")
 conflicts=('plocate' 'mlocate')
 backup=('etc/updatedb.conf')
 source=("git+https://git.sesse.net/plocate"
-        "plocate.sysusers::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/plocate/trunk/plocate.sysusers"
-        "plocate.tmpfiles::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/plocate/trunk/plocate.tmpfiles"
-        "updatedb.conf::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/plocate/trunk/updatedb.conf")
+        "plocate.sysusers::https://gitlab.archlinux.org/archlinux/packaging/packages/plocate/-/raw/main/plocate.sysusers"
+        "plocate.tmpfiles::https://gitlab.archlinux.org/archlinux/packaging/packages/plocate/-/raw/main/plocate.tmpfiles"
+        "updatedb.conf::https://gitlab.archlinux.org/archlinux/packaging/packages/plocate/-/raw/main/updatedb.conf")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
