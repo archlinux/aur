@@ -1,0 +1,20 @@
+pkgbase = python-python-magic-git
+	pkgdesc = A python wrapper for libmagic
+	pkgver = 0.4.27.r15.g3ab9608
+	pkgrel = 1
+	url = https://github.com/ahupp/python-magic
+	arch = any
+	license = GPL
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = python-python-magic
+	source = git+https://github.com/ahupp/python-magic
+	sha256sums = SKIP
+
+pkgname = python-python-magic-git
