@@ -1,0 +1,23 @@
+pkgbase = python-unblob-native-git
+	pkgdesc = Performance critical parts of Unblob
+	pkgver = v0.1.1
+	pkgrel = 1
+	url = https://github.com/onekey-sec/unblob-native
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	makedepends = git
+	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = maturin
+	makedepends = python-maturin
+	depends = python
+	provides = python-unblob-native
+	source = git+https://github.com/onekey-sec/unblob-native
+	sha256sums = SKIP
+
+pkgname = python-unblob-native-git
