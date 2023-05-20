@@ -1,7 +1,7 @@
 pkgbase = lmdb-git
 	pkgdesc = Extraordinarily fast, memory-efficient database
 	pkgver = 0.9.30.r22965.g6b77544ab
-	pkgrel = 1
+	pkgrel = 2
 	url = https://symas.com/lmdb/
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = lmdb-git
 	conflicts = lmdb
 	options = staticlibs
 	source = git+https://git.openldap.org/openldap/openldap.git
-	source = https://gitlab.archlinux.org/archlinux/packaging/packages/lmdb/-/raw/main/lmdb.pc
+	source = lmdb.pc::https://gitlab.archlinux.org/archlinux/packaging/packages/lmdb/-/raw/main/lmdb.pc
 	sha256sums = SKIP
 	sha256sums = SKIP
 
