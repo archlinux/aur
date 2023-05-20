@@ -1,4 +1,5 @@
-# Maintainer: Yuuki Galaxy <galaxy001@gmail.com>
+# Maintainer: Clive Wright <seawright27@gmail.com>
+# Contributor: Yuuki Galaxy <galaxy001@gmail.com>
 # Contributor: Alex Wiggins <alex.d.wiggins@gmail.com>
 # Contributor: Damian Nowak <damian.nowak@atlashost.eu>
 # Contributor: Julian Rother <julian@toksik.org>
