@@ -1,7 +1,7 @@
 # Maintainer: AkechiShiro <akechishiro-aur at lahfa dot xyz>
 
 _pyname=pyperscan
-pkgname=python-${_pyname}
+pkgname=python-${_pyname}-git
 pkgver=0.2.2.r18.ge807359
 pkgrel=1
 pkgdesc='A hyperscan binding for Python, which supports vectorscan'

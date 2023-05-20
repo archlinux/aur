@@ -1,4 +1,4 @@
-pkgbase = python-pyperscan
+pkgbase = python-pyperscan-git
 	pkgdesc = A hyperscan binding for Python, which supports vectorscan
 	pkgver = 0.2.2.r18.ge807359
 	pkgrel = 1
@@ -29,4 +29,4 @@ pkgbase = python-pyperscan
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = python-pyperscan
+pkgname = python-pyperscan-git
