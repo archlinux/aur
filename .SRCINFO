@@ -10,7 +10,7 @@ pkgbase = tgpt-bin
 	license = GPL-3.0
 	conflicts = tgpt
 	conflicts = tgpt-git
-	source = tgpt-linux::https://github.com/aandrew-me/tgpt/releases/download/v1.6.1/tgpt-linux-amd64
+	source = tgpt-linux-1.6.1::https://github.com/aandrew-me/tgpt/releases/download/v1.6.1/tgpt-linux-amd64
 	md5sums = SKIP
 
 pkgname = tgpt-bin

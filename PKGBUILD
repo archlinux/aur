@@ -21,7 +21,7 @@ else
 	echo $CARCH is unsupported
 	exit
 fi
-source=("tgpt-linux::https://github.com/aandrew-me/tgpt/releases/download/v${pkgver}/tgpt-linux-${ARCHY}")
+source=("tgpt-linux-${pkgver}::https://github.com/aandrew-me/tgpt/releases/download/v${pkgver}/tgpt-linux-${ARCHY}")
 md5sums=('SKIP')
 
 #pkgver() {
@@ -34,5 +34,5 @@ md5sums=('SKIP')
 
 package() {
     cd "$srcdir"
-    install -Dm755 tgpt-linux "$pkgdir/usr/bin/tgpt"
+    install -Dm755 tgpt-linux-${pkgver} "$pkgdir/usr/bin/tgpt"
 }
