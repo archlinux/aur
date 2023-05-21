@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="sheikah-witnet-wallet-appimage"
-pkgver=1.11.7
+pkgver=1.11.8
 pkgrel=1
 pkgdesc="A Witnet compatible desktop wallet and smart contracts development environment"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('zlib' 'glibc' 'hicolor-icon-theme')
 options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Sheikah-Witnet-wallet-${pkgver}.AppImage")
-sha256sums=('872b2d6eea402ad47e4e632ea3fcae589cead3ef4fbb41bde4cae0739eb8cf5f')
+sha256sums=('8e0f77aff01c23148e7d0b9a9fda7cd2bc4e2c0a60fcdeaad48ddee4a7afba6b')
      
 prepare() {
     chmod a+x "sheikah-witnet-wallet-${pkgver}.AppImage"
