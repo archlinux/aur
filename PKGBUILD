@@ -3,7 +3,7 @@
 
 pkgname=openmsx
 pkgver=18.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The MSX emulator that aims for perfection."
 arch=('i686' 'x86_64')
 url="http://openmsx.org/"
@@ -13,11 +13,15 @@ optdepends=('python' 'jack-audio-connection-kit')
 install=${pkgname}.install
 provides=("openmsx")
 conflicts=("openmsx-git")
-source=("https://github.com/openMSX/openMSX/releases/download/RELEASE_${pkgver//./_}/${pkgname}-${pkgver}.tar.gz")
+source=("https://github.com/openMSX/openMSX/releases/download/RELEASE_${pkgver//./_}/${pkgname}-${pkgver}.tar.gz"
+    "gcc13.patch")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  
+
+  # Fix for GCC13
+  patch -p1 -i "${srcdir}/gcc13.patch"
+
   # Changing some default configurations...
   sed -i 's@SYMLINK_FOR_BINARY:=true@SYMLINK_FOR_BINARY:=false@' build/custom.mk
   sed -i 's@INSTALL_BASE:=/opt/openMSX@INSTALL_BASE:=/usr/share/openmsx@' build/custom.mk
@@ -40,4 +44,5 @@ package() {
   install -m 644 "${pkgdir}/usr/share/doc/openmsx/cbios.txt" "${pkgdir}/usr/share/licenses/openmsx/"
 }
 
-md5sums=('4e92b65c457ef0cca0c5b335a8dd37ae')
+md5sums=('4e92b65c457ef0cca0c5b335a8dd37ae'
+	 'c6a7fd7704b1b5e4c42ae80f9115547a')

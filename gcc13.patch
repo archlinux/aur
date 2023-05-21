@@ -1,0 +1,11 @@
+diff '--color=auto' -ruN a/src/utils/hash_set.hh b/src/utils/hash_set.hh
+--- a/src/utils/hash_set.hh	2023-05-21 17:38:31.430011379 -0300
++++ b/src/utils/hash_set.hh	2023-05-21 17:39:13.114014521 -0300
+@@ -10,6 +10,7 @@
+ #include "unreachable.hh"
+ #include "xrange.hh"
+ #include <cassert>
++#include <cstdint>
+ #include <cstdlib>
+ #include <functional>
+ #include <initializer_list>

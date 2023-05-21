@@ -1,7 +1,7 @@
 pkgbase = openmsx
 	pkgdesc = The MSX emulator that aims for perfection.
 	pkgver = 18.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://openmsx.org/
 	install = openmsx.install
 	arch = i686
@@ -21,6 +21,8 @@ pkgbase = openmsx
 	provides = openmsx
 	conflicts = openmsx-git
 	source = https://github.com/openMSX/openMSX/releases/download/RELEASE_18_0/openmsx-18.0.tar.gz
+	source = gcc13.patch
 	md5sums = 4e92b65c457ef0cca0c5b335a8dd37ae
+	md5sums = c6a7fd7704b1b5e4c42ae80f9115547a
 
 pkgname = openmsx
