@@ -1,0 +1,23 @@
+pkgbase = caddy-naiveproxy-bin
+	pkgdesc = Caddy web server
+	pkgver = 2.6.4
+	pkgrel = 1
+	url = https://github.com/caddyserver/caddy
+	arch = x86_64
+	license = Apache-2.0
+	provides = caddy
+	conflicts = caddy
+	source = https://github.com/klzgrad/forwardproxy/releases/download/v2.6.4-caddy2-naive/caddy-forwardproxy-naive.tar.xz
+	source = Caddyfile
+	source = caddy.service
+	source = caddy.sysusers
+	source = caddy.tmpfiles
+	source = Caddyfile-example
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = caddy-naiveproxy-bin
