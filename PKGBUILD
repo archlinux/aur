@@ -3,7 +3,7 @@
 pkgname=mediamtx-bin
 pkgver=0.23.2
 pkgrel=1
-pkgdesc='Also known as rtsp-simple-server. ready-to-use RTSP / RTMP / LL-HLS / WebRTC server and proxy that allows to read, publish and proxy video and audio streams.'
+pkgdesc='Also known as rtsp-simple-server. Ready-to-use RTSP / RTMP / LL-HLS / WebRTC server and proxy that allows to read, publish and proxy video and audio streams'
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/aler9/${pkgname%-bin}"
 license=('MIT')
