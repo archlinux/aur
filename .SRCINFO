@@ -1,6 +1,6 @@
 pkgbase = libretro-virtualxt-git
 	pkgdesc = IBM PC/XT core
-	pkgver = 0.7.r258.ga481610
+	pkgver = 0.7.r358.g467fdf2
 	pkgrel = 1
 	url = https://virtualxt.org/
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = libretro-virtualxt-git
 	makedepends = git
 	depends = glibc
 	depends = libretro-core-info>=1.15.0.r1
-	provides = libretro-virtualxt=0.7.r258.ga481610
+	provides = libretro-virtualxt=0.7.r358.g467fdf2
 	conflicts = libretro-virtualxt
 	source = virtualxt::git+https://github.com/andreas-jonsson/virtualxt.git
 	b2sums = SKIP

@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-virtualxt
 pkgname=$_pkgname-git
-pkgver=0.7.r258.ga481610
+pkgver=0.7.r358.g467fdf2
 pkgrel=1
 pkgdesc="IBM PC/XT core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -23,6 +23,7 @@ pkgver() {
 prepare() {
 	cd virtualxt
 	sed -i 's/-O[0123s]//;s/-Ofast//' tools/package/libretro/Makefile
+	sed -i '$a CFLAGS += -I$(CORE_DIR)/front/common' tools/package/libretro/Makefile
 }
 
 build() {
@@ -33,6 +34,6 @@ build() {
 package() {
 	cd virtualxt
 	# shellcheck disable=SC2154
-	install -Dm644 -t "$pkgdir"/usr/lib/libretro tools/package/libretro/virtualxt_libretro.so
+	install -D -t "$pkgdir"/usr/lib/libretro tools/package/libretro/virtualxt_libretro.so
 	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
 }
