@@ -1,7 +1,7 @@
 # Maintainer: bretello <bretello@distruzione.org>
 pkgname=bretellofier
-pkgver=0.4.2
-pkgrel=3
+pkgver=0.4.3
+pkgrel=1
 pkgdesc="Command line telegram notifier"
 arch=(any)
 url="https://git.decapod.one/brethil/bretellofier"
@@ -16,12 +16,21 @@ pkgver() {
     python -m setuptools_scm
 }
 
-build() {
-    cd "$pkgname"
-    python -m build --wheel --no-isolation
-}
-
 package() {
     cd "$pkgname"
-    pip install dist/*whl
+    pip install .
+}
+
+
+post_install() {
+    echo "bretellofier cane be configured by creating ~/.bretellofier.conf with the following contents"
+    echo "[telegram]
+token = XXXXXXXXX:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+[users]
+name = 66666666
+"
+    echo "replace token and name lines with your bot's token and telegram id"
+    echo "Environment variables can also be used. See the README".
+
 }
