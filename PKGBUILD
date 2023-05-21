@@ -9,14 +9,13 @@
 pkgname=anki-qt5
 pkgver=2.1.63
 _tag=064ea0ee08715edae868b84e48b29bd7e15d7b49 #git rev-parse $pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) - Qt5 Build"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
 arch=('x86_64')
 provides=('anki')
 conflicts=('anki' 'anki-bin' 'anki-git' 'anki-official-binary-bundle')
-options=('!lto')
 depends=(
     # anki & aqt
     'python>=3.9'
@@ -49,6 +48,8 @@ makedepends=(
     'python-installer'
     'libxcrypt-compat'
     'nodejs'
+    'yarn'
+    'mold'
 )
 optdepends=(
     'lame: record sound'
@@ -61,10 +62,12 @@ optdepends=(
 # the '.git' folder is not included in those but is required for a sucessful build
 source=("$pkgname::git+https://github.com/ankitects/anki#tag=${_tag}?signed"
 "no-update.patch"
+"optimize_more.patch"
 "force_qt5.patch"
 )
 sha256sums=('SKIP'
 'f934553a5ce9e046a0b8253e10da16e661b27375e2b54d6bb915267f32aff807'
+'213a7c6ab75dc332e79f089364f10bc7fe0c0bb6860a549a42b7e3d75970bc7d'
 'c5e6e1b2ed7999e9ef7f855aed4c97c4ace846237421507f408a64a8258a09fd'
 )
 
@@ -76,19 +79,22 @@ prepare(){
     cd "$pkgname"
     # pro-actively prevent "module not found" error
     [ -d ts/node_modules ] && rm -r ts/node_modules
-    patch -p1 < "$srcdir/no-update.patch"
     patch -p1 < "$srcdir/force_qt5.patch"
+    patch -p1 < "$srcdir/no-update.patch"
+    patch -p1 < "$srcdir/optimize_more.patch"
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
     cd "$pkgname"
-
-    #use local binaries instead of downloading them as well for python and protoc
+    #use local binaries instead of downloading them
     export PYTHON_BINARY=$(which python)
     export PROTOC_BINARY=$(which protoc)
-    #export NODE_BINARY=$(which node) # does not yet compile
+    export NODE_BINARY=$(which node)
+    export YARN_BINARY=$(which yarn)
 
-    ./tools/build
+    export RELEASE=1
+    mold -run ./ninja wheels # use mold as linker to allow for LTO
 }
 
 pkgver(){
