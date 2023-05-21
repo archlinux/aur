@@ -1,7 +1,7 @@
 # Maintainer: Vladimir Gorbunov <truedaemon@gmail.com>
 pkgname=xkeysnail
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Yet another keyboard remapping tool for X environment."
 arch=('any')
 url="https://github.com/mooz/xkeysnail"
