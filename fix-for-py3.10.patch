@@ -1,0 +1,12 @@
+--- a/slam/utils.py	2018-12-12 17:31:03.000000000 +0800
++++ b/slam/utils.py	2023-05-21 18:14:57.324104970 +0800
+@@ -23,7 +23,8 @@
+ 
+ """
+ import sys
+-from collections import OrderedDict, Set, Mapping, deque
++from collections import OrderedDict, deque
++from collections.abc import Set, Mapping
+ from numbers import Number
+ 
+ import numpy as np
