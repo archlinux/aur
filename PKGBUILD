@@ -12,7 +12,7 @@ conflicts=("tori")
 depends=("mpv" "pipewire")
 optdepends=("yt-dlp" "cava")
 source=("https://github.com/LeoRiether/tori/releases/download/v$pkgver/tori-$pkgver-x86_64.tar.gz")
-sha256sums=('4eac3f566ccc99fabe490681f4330a06f8c139e19c581b91cf90d58d79f90fe6')
+sha256sums=('242c6bc092169cac1b5db0fcd78d65c0be85edf34591d91f7188dcb11ccc64ff')
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
