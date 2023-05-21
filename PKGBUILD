@@ -3,7 +3,7 @@
 
 pkgname=sing-box-git
 _pkgname=sing-box
-pkgver=1.2.0.r15.g89cc8c3
+pkgver=1.3beta11.r13.g9ee0f0e
 pkgrel=1
 
 pkgdesc='The universal proxy platform (git version).'
@@ -51,7 +51,9 @@ build(){
             -linkmode=external" \
         ./cmd/sing-box
 
-    sed -i "/^\[Service\]$/a User=$_pkgname" release/config/$_pkgname*.service
+    sed -i "/^\[Service\]$/a StateDirectory=$_pkgname"    release/config/$_pkgname.service
+    sed -i "/^\[Service\]$/a StateDirectory=$_pkgname-%i" release/config/$_pkgname@.service
+    sed -i "/^\[Service\]$/a User=$_pkgname"              release/config/$_pkgname*.service
 
     echo 'u sing-box - "Sing-box Service" - -' > "release/config/$_pkgname.sysusers"
 }
