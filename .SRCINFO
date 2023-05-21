@@ -1,6 +1,6 @@
 pkgbase = structure-appimage
 	pkgdesc = A knowledge management tool
-	pkgver = 0.23.0
+	pkgver = 0.23.1
 	pkgrel = 1
 	url = https://structure.love/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = structure-appimage
 	depends = hicolor-icon-theme
 	conflicts = structure
 	options = !strip
-	source = structure-0.23.0.AppImage::https://github.com/neopostmodern/structure/releases/download/v0.23.0/structure-0.23.0-linux-x86_64.AppImage
-	sha256sums = 093451d43f8da4ca004a160d7630096ae401d596e1bf571053944d778068de57
+	source = structure-0.23.1.AppImage::https://github.com/neopostmodern/structure/releases/download/v0.23.1/structure-0.23.1-linux-x86_64.AppImage
+	sha256sums = 4eed0d77b6506dac70078eecf8426aa81634250d1950e8d118435d09787dd2f6
 
 pkgname = structure-appimage

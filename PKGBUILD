@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="structure-appimage"
-pkgver=0.23.0
+pkgver=0.23.1
 pkgrel=1
 pkgdesc="A knowledge management tool"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'glibc' 'hicolor-icon-theme')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}-linux-${arch}.AppImage")
-sha256sums=('093451d43f8da4ca004a160d7630096ae401d596e1bf571053944d778068de57')
+sha256sums=('4eed0d77b6506dac70078eecf8426aa81634250d1950e8d118435d09787dd2f6')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
