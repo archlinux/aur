@@ -1,11 +1,11 @@
 # Contributor: Matthew Bauer <mjbauer95@gmail.com>
 # Contributor: TingPing <tingping@fedoraproject.org>
 # Contributor: Christopher Eby <kreed@kreed.org>
-# Maintainer: Steven Allen <steven@stebalien.com>
+# Contributor: Steven Allen <steven@stebalien.com>
 
 pkgname=pithos
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.6.1
+pkgrel=1
 pkgdesc='Native Pandora Radio client'
 arch=('any')
 url="https://pithos.github.io/"
@@ -21,7 +21,7 @@ source=(
   "https://github.com/pithos/pithos/releases/download/${pkgver}/pithos-${pkgver}.tar.xz"
   "systemd.service"
 )
-sha256sums=('55c92b423d8bb23d1fc1c14e3cde95460b4f8ef59a375f9864827e126ac010ed'
+sha256sums=('02c7c18951d9760f54f3de0313a37273778779101bfe58bdc273a0e113f2ce2d'
             '6d29178697384fb046d9d25c6c2482f353a4484ec4f0a5b9080d1a26aa24f839')
 
 prepare() {
