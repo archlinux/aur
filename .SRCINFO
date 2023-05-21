@@ -1,6 +1,6 @@
 pkgbase = astroid-git
 	pkgdesc = a graphical threads-with-tags style, lightweight and fast, email client for notmuch, inspired by sup and others
-	pkgver = v0.16.r1.g4d6b06a
+	pkgver = v0.16.r2.g7c2022f
 	pkgrel = 1
 	url = https://github.com/astroidmail/astroid
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = astroid-git
 	depends = notmuch
 	depends = boost
 	depends = boost-libs
-	depends = gmime
+	depends = gmime3
 	depends = gtkmm3
 	depends = webkit2gtk
 	depends = libsass

@@ -2,13 +2,13 @@
 # Maintainer: Alad Wenter <alad@archlinux.org>
 pkgname=astroid-git
 _pkgname=astroid
-pkgver=v0.16.r1.g4d6b06a
+pkgver=v0.16.r2.g7c2022f
 pkgrel=1
 pkgdesc="a graphical threads-with-tags style, lightweight and fast, email client for notmuch, inspired by sup and others"
 arch=('x86_64' 'i686')
 url="https://github.com/astroidmail/astroid"
 license=('GPL')
-depends=('notmuch' 'boost' 'boost-libs' 'gmime' 'gtkmm3' 'webkit2gtk' 'libsass'
+depends=('notmuch' 'boost' 'boost-libs' 'gmime3' 'gtkmm3' 'webkit2gtk' 'libsass'
          'libpeas' 'gobject-introspection' 'protobuf' 'gtk-update-icon-cache')
 makedepends=('cmake' 'ninja' 'git' 'pkg-config' 'python-gobject' 'cmark' 'ruby-ronn')
 checkdepends=('notmuch-runtime' 'w3m')
