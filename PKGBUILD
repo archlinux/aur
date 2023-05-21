@@ -1,48 +1,36 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
-
-pkgname=python-daft
-_pkg="${pkgname#python-}"
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
+_base=daft
+pkgname=python-${_base}
 pkgver=0.1.2
 pkgrel=3
 pkgdesc="Render probabilistic graphical models using matplotlib"
-arch=('any')
-url='https://github.com/daft-dev/daft'
-license=('MIT')
-depends=('python-numpy' 'python-matplotlib')
-makedepends=(
-	'python-build'
-	'python-installer'
-	'python-setuptools'
-	'python-setuptools-scm'
-	'python-wheel'
-	# 'python-sphinx'
-	# 'python-myst-nb'
-	# 'python-myst-parser'
-	# 'python-jupytext'
-)
-checkdepends=('python-pytest')
-changelog=HISTORY.rst
-# source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ab1873bd2409d7ca88f88a9534d9c82b1f0885e7d5c018bf33e0a9c8228c7282')
+arch=(any)
+url="https://github.com/daft-dev/${_base}"
+license=(MIT)
+depends=(python-matplotlib)
+makedepends=(python-build python-installer python-setuptools-scm python-wheel python-myst-nb)
+checkdepends=(python-pytest)
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('a00c1f44e8b3c0366348a4c3c3ecf40850e59d79c1e1d76154c63a27abe21e5e6dbd388a503bf96be57508ec8144d710d27fb9e00ab01825615a9b1ec1359551')
 
 build() {
-	cd "$_pkg-$pkgver"
-	SETUPTOOLS_SCM_PRETEND_VERSION="$pkgver" python -m build --wheel --no-isolation
-	## FIXME: requires python-myst-parser=0.18
-	# PYTHONPATH="$PWD" make -C docs man
+  cd ${_base}-${pkgver}
+  export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
+  PYTHONPATH="${PWD}" make -C docs man
 }
 
-## examples fail with Arch's python-matplotlib; exclude them
 check() {
-	cd "$_pkg-$pkgver"
-	PYTHONPATH="$PWD" pytest -x --disable-warnings test/test_daft.py
+  cd ${_base}-${pkgver}
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest --ignore=test/test_examples.py
 }
 
 package() {
-	cd "$_pkg-$pkgver"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
-	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s "$_site/daft-$pkgver.dist-info/LICENSE.rst" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
