@@ -2,18 +2,22 @@
 
 _name=pyocd
 pkgname=python-pyocd
-pkgver=0.34.3
-pkgrel=3
+pkgver=0.35.1
+pkgrel=1
 pkgdesc="Programming and debugging Arm Cortex-M microcontrollers"
 arch=(any)
 url="https://github.com/pyocd/pyOCD"
 license=(Apache)
 depends=(
+  python
   python-capstone
   python-cmsis-pack-manager
   python-colorama
+  python-importlib-metadata
+  python-importlib-resources
   python-intelhex
   python-intervaltree
+  python-lark
   python-natsort
   python-prettytable
   python-pyelftools
@@ -23,8 +27,18 @@ depends=(
   python-six
   python-typing-extensions
 )
-makedepends=(python-build python-installer python-setuptools python-setuptools-scm python-toml python-wheel)
-checkdepends=(python-pytest python-typing-extensions)
+makedepends=(
+  python-build
+  python-installer
+  python-setuptools
+  python-setuptools-scm
+  python-toml
+  python-wheel
+)
+checkdepends=(
+  python-pytest
+  python-typing-extensions
+)
 optdepends=('python-setuptools: for plugin support')
 provides=(pyocd)
 conflicts=(pyocd)
@@ -33,9 +47,9 @@ source=(
   https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz
   $pkgname-0.33.1-optional_libusb_package.patch
 )
-sha512sums=('f1ba67bc4ebdd3c3fefab462d647b65cc4f026f76752de6cd6c1042fe1857d29f4fd8cb348b9b98faf670b8e4d9d3a0a3750b0dcbbec532fd246c342f2af9308'
+sha512sums=('ee2e7e7f97003553023d46d1e2078173329c4cef82a230f37aedcbd1ca53e22220d699d2a042e6297f0c9173c40d185a4a735fa2ba07b9ebab619f185c1f01a3'
             'cbcf65ead4f72025c28e9d42e7947db9671c8de62a797dc27d1198dbdb164afe51b5cafb83224e5c0797b5ae6ea8a9f91080aae81f00934309645a47d0154eaf')
-b2sums=('4a9563b10fa00c91f3cea4829154dc7f5f495a58fc50d8e4179c0ec4351454a23a4430cff95a18c476ea4dbf71ee8ab13ef5b0be616015d5ec300ee19d2348d8'
+b2sums=('1226ceb0d3d62cc63a90e649c2956e05be7a4b1baf1602c5295aaa4be70d53909b037ba930df92ae863681e950a6b245568c93bd6e9197eefff9e6d93b5334ba'
         'dfed46c4e852cf28029573acd49aef06e51a3280851111ebc40bd7110c1900f480e77ade970c9b4d5574e9966cab996014b503991fdb8879aa9113f9d8091edb')
 
 prepare() {
