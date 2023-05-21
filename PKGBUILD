@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simple-icons
-pkgver=8.14.0
+pkgver=8.15.0
 pkgrel=1
 pkgdesc="Free SVG icons for popular brands"
 arch=('any')
@@ -13,7 +13,7 @@ conflicts=("${pkgname}")
 options=(!strip)
 source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/${pkgver}.tar.gz"
     "LICENSE.md::https://raw.githubusercontent.com/simple-icons/simple-icons/develop/LICENSE.md")
-sha256sums=('0f322c82e5abd609a188f51350dc98f5d961b3c0803f2848647a9f27791397ec'
+sha256sums=('48de17f541313fde0df695908cb0949051034a79d387359009a1852abc0e744e'
             '4674b210d8a1a0926e070843950aef43367cf44dcac86081c25540e03c089e58')
  
 package() {
