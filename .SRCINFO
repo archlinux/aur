@@ -1,7 +1,7 @@
 pkgbase = dumpasn1
 	pkgdesc = ASN.1 analyze tool
 	pkgver = 20230322
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.cs.auckland.ac.nz/~pgut001
 	arch = i686
 	arch = x86_64

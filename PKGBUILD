@@ -2,7 +2,7 @@
 # Contributor: Nicolas Martyanoff <khaelin@gmail.com>
 pkgname=dumpasn1
 pkgver=20230322
-pkgrel=3
+pkgrel=4
 pkgdesc="ASN.1 analyze tool"
 url="http://www.cs.auckland.ac.nz/~pgut001"
 license=('custom')
@@ -18,11 +18,11 @@ depends=(glibc)
 
 build() {
   cd "${srcdir}"
-  gcc $CPPFLAGS $CFLAGS $LDFLAGS -o dumpasn1 dumpasn1.c
+  gcc $CPPFLAGS $CFLAGS $LDFLAGS -o dumpasn1 dumpasn1-$pkgver.c
 }
 
 package(){
   install -D -m755 "${srcdir}/dumpasn1" "${pkgdir}/usr/bin/dumpasn1"
-  install -D -m644 "${srcdir}/dumpasn1.cfg" "${pkgdir}/etc/dumpasn1/dumpasn1.cfg"
+  install -D -m644 "${srcdir}/dumpasn1-$pkgver.cfg" "${pkgdir}/etc/dumpasn1/dumpasn1.cfg"
   install -D -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
