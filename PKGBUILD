@@ -1,7 +1,7 @@
 # Maintainer: everyx <lunt.luo#gmail.com>
 
 pkgname=sing-box
-pkgver=1.2.6
+pkgver=1.2.7
 pkgrel=1
 
 pkgdesc='The universal proxy platform.'
@@ -12,7 +12,7 @@ license=('GPL3 with name use or association addition')
 makedepends=('go')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/SagerNet/sing-box/archive/v$pkgver.tar.gz")
-sha256sums=('8f7adf55ed9afe6ec0dd8b04ed64dd3a6243578ee779f909dfb3778fa2dbda10')
+sha256sums=('49b829f4cf148b59789eeaf8d01987e7526a44d0290cf608a6350c57562ae177')
 
 conflicts=("$pkgname-git" "$pkgname-beta")
 optdepends=('sing-geosite: sing-geosite database'
@@ -41,7 +41,9 @@ build(){
             -s -w -buildid= -linkmode=external" \
         ./cmd/sing-box
 
-    sed -i "/^\[Service\]$/a User=$pkgname" release/config/$pkgname*.service
+    sed -i "/^\[Service\]$/a StateDirectory=$pkgname"    release/config/$pkgname.service
+    sed -i "/^\[Service\]$/a StateDirectory=$pkgname-%i" release/config/$pkgname@.service
+    sed -i "/^\[Service\]$/a User=$pkgname"              release/config/$pkgname*.service
 
     echo "u $pkgname - \"Sing-box Service\" - -" > "release/config/$pkgname.sysusers"
 }
