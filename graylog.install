@@ -1,0 +1,10 @@
+pre_install() {
+	useradd -c 'Graylog user' -d /usr/lib/graylog -M -U -r -s /usr/bin/nologin graylog
+}
+post_install() {
+	chown -R graylog:graylog /etc/graylog
+}
+post_remove() {
+	userdel graylog
+	rm -rf /run/graylog
+}
