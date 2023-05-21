@@ -10,7 +10,7 @@ license=("MPL-2.0")
 arch=("x86_64" "i686" "armv7h" "aarch64")
 conflicts=(sunamu sunamu-bin)
 makedepends=("git" "npm" "yarn" "node-gyp" "nvm")
-depends=("electron19" "libvips")
+depends=("electron" "libvips")
 
 source=("${_pkgname}::git+https://github.com/NyaomiDEV/Sunamu"
         "${_pkgname}.desktop"
@@ -29,7 +29,7 @@ build() {
 
   # use system electron version
   # see: https://wiki.archlinux.org/index.php/Electron_package_guidelines
-  electronDist="/usr/lib/electron19"
+  electronDist="/usr/lib/electron"
   electronVer=$(pacman -Q $(pacman -Qqo $electronDist) | cut -d " " -f2 | cut -d "-" -f1)
 
   # use nvm but isolate it for this shell
