@@ -15,7 +15,7 @@ depends=('libappindicator-gtk3' 'webkit2gtk' 'gtk3' 'libayatana-appindicator' 'x
 
 source=("${prjname}-${pkgver}-${arch}.deb::${url}/releases/download/${pkgver}/${prjname}_${pkgver}_amd64.deb")
 
-sha512sums=('0bcd316e7e180b5b6e3a1596e117b6d45675c6d53878c5b0cc5849a6d19d3327be2d2111eb1503f01dcd391cc4892927b7af00ac58b5e6904082b2974a2a0fba')
+sha512sums=('79c194b75d3068606037cd3e3351ba459b60a9ff19ac0e1f18d3664137251f41f121de6e3e93201e78a1c3ffd14bf8de4b273af42ef8b6e246b303bed389f47b')
 
 package() {
     tar xpf data.tar.gz -C ${pkgdir}
