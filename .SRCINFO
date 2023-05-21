@@ -1,6 +1,6 @@
 pkgbase = ungoogled-chromium
 	pkgdesc = A lightweight approach to removing Google web service dependency
-	pkgver = 113.0.5672.92
+	pkgver = 113.0.5672.126
 	pkgrel = 1
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
@@ -57,12 +57,12 @@ pkgbase = ungoogled-chromium
 	optdepends = qt5-base: enable Qt5 with --enable-features=AllowQt
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
-	provides = chromium=113.0.5672.92
-	provides = chromedriver=113.0.5672.92
+	provides = chromium=113.0.5672.126
+	provides = chromedriver=113.0.5672.126
 	conflicts = chromium
 	conflicts = chromedriver
 	options = !lto
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-113.0.5672.92.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-113.0.5672.126.tar.xz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
 	source = add-cstring-for-std-strlen-in-web_view_impl.cc.patch
 	source = swiftshader-add-cstdint-for-uint64_t.patch
@@ -86,11 +86,11 @@ pkgbase = ungoogled-chromium
 	source = random-fixes-for-gcc13.patch
 	source = disable-GlobalMediaControlsCastStartStop.patch
 	source = use-oauth2-client-switches-as-default.patch
-	source = ungoogled-chromium-113.0.5672.92-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/113.0.5672.92-1.tar.gz
+	source = ungoogled-chromium-113.0.5672.126-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/113.0.5672.126-1.tar.gz
 	source = ozone-add-va-api-support-to-wayland.patch
 	source = vaapi-add-av1-support.patch
 	source = remove-main-main10-profile-limit.patch
-	sha256sums = a4520b53c824d75bcbc80bcf5da0c3d6f213038c8e31904b8a3bfbe415893ba5
+	sha256sums = 0def7cd594304d7675821d42a4207377af98e321a78a91ee5200aea55adc2d93
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
 	sha256sums = 5f868cba9e4d387499711738adc6fd87ab9f1ef61f464016bc682660ae59206a
 	sha256sums = 208f2ebcef5c690207e6e798ffbf9e92214e9d35f415c2f6b93efebad831b7e2
@@ -114,7 +114,7 @@ pkgbase = ungoogled-chromium
 	sha256sums = 6359d8f891f860d2ae49e1dc3d2ae972e251c24ffb19ff2f8e64523b2d8234c4
 	sha256sums = 7f3b1b22d6a271431c1f9fc92b6eb49c6d80b8b3f868bdee07a6a1a16630a302
 	sha256sums = e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711
-	sha256sums = b36ecce88a380b760c468592c1bb69be4b5dbae20b084ae0aba01236720b3690
+	sha256sums = 1025329c38041b3b8b200fe3405d4b873345e87cba6333e036b83ad2f0000d3e
 	sha256sums = e9e8d3a82da818f0a67d4a09be4ecff5680b0534d7f0198befb3654e9fab5b69
 	sha256sums = e742cc5227b6ad6c3e0c2026edd561c6d3151e7bf0afb618578ede181451b307
 	sha256sums = be8d3475427553feb5bd46665ead3086301ed93c9a41cf6cc2644811c5bda51c
