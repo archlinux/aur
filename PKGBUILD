@@ -9,7 +9,7 @@ url="https://github.com/chisui/zsh-nix-shell"
 license=(BSD)
 depends=(zsh)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('8355cc6c80b902c0dc64570da3b914d2c631dda64f4ba685996063714823135066b7ae727a92efc8a8b8d1de2a6fea9adb7d60cf96fdef4c9b795223b91f51f0')
+b2sums=('353aa72fbd1c8dde9da00239a285b37bf0b884ac0536b72b2e093207896043f0538cee4e864c93eb36b7210acee32314870d90c56e4a3a963badb1fdb931a43e')
 
 package() {
 	cd $pkgname-$pkgver
