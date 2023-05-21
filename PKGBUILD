@@ -5,12 +5,12 @@
 
 pkgname=nghttp2
 pkgver=1.53.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Client, server and proxy programs from the nghttp2 library'
 arch=(x86_64)
 url='https://nghttp2.org/'
 license=(MIT)
-depends=(python libev libxml2 jansson jemalloc c-ares "libnghttp2=$pkgver" systemd-libs)
+depends=(python libev libxml2 jansson jemalloc c-ares "libnghttp2>=$pkgver" systemd-libs)
 options=(!emptydirs)
 source=(https://github.com/nghttp2/nghttp2/releases/download/v$pkgver/nghttp2-$pkgver.tar.xz)
 backup=(
