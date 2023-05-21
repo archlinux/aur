@@ -1,6 +1,6 @@
 pkgbase = libretro-mupen64plus-next-git
 	pkgdesc = Nintendo 64 core
-	pkgver = r467.4353b0ae
+	pkgver = r468.90dae29e
 	pkgrel = 1
 	url = https://github.com/libretro/mupen64plus-libretro-nx
 	arch = aarch64
@@ -12,17 +12,16 @@ pkgbase = libretro-mupen64plus-next-git
 	groups = libretro
 	license = GPL2
 	makedepends = git
-	makedepends = libglvnd
+	makedepends = libgl
 	makedepends = minizip
 	makedepends = nasm
 	makedepends = xxhash
 	depends = gcc-libs
 	depends = glibc
-	depends = libgl
 	depends = libpng
 	depends = libretro-core-info
 	depends = zlib
-	provides = libretro-mupen64plus-next=1:467.4353b0ae
+	provides = libretro-mupen64plus-next=1:468.90dae29e
 	conflicts = libretro-mupen64plus-next
 	replaces = libretro-mupen64plus-nx-git
 	options = !lto
@@ -30,3 +29,9 @@ pkgbase = libretro-mupen64plus-next-git
 	b2sums = SKIP
 
 pkgname = libretro-mupen64plus-next-git
+	depends = gcc-libs
+	depends = glibc
+	depends = libpng
+	depends = libretro-core-info
+	depends = zlib
+	depends = libGL.so
