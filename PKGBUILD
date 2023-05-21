@@ -5,7 +5,7 @@
 # Contributor: Lauri Niskanen <ape@ape3000.com>
 _pkgname=libretro-gambatte
 pkgname=$_pkgname-git
-pkgver=r995.9574b6e
+pkgver=r996.e9b8013
 pkgrel=1
 epoch=1
 pkgdesc="Nintendo Game Boy/Game Boy Color core"
@@ -35,5 +35,5 @@ build() {
 
 package() {
 	# shellcheck disable=SC2154
-	install -Dm644 -t "$pkgdir"/usr/lib/libretro $_pkgname/gambatte_libretro.so
+	install -D -t "$pkgdir"/usr/lib/libretro $_pkgname/gambatte_libretro.so
 }
