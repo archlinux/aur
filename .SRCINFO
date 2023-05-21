@@ -7,6 +7,8 @@ pkgbase = libinklevel
 	arch = x86_64
 	license = GPL
 	depends = libusb
+	depends = libxml2
+	depends = glibc
 	provides = libinklevel.so=5-64
 	source = libinklevel-0.9.5.tar.gz::https://downloads.sourceforge.net/libinklevel/libinklevel-0.9.5.tar.gz
 	sha256sums = 3e889cf7e3400524f514084775d653eeae0b1b7320f28741a343cbc95d7c980a

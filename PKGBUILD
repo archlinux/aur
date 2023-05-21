@@ -11,7 +11,7 @@ pkgdesc="A library for checking the ink level of your printer"
 arch=('i686' 'x86_64')
 url="http://libinklevel.sourceforge.net/"
 license=('GPL')
-depends=('libusb')
+depends=('libusb' 'libxml2' 'glibc')
 provides=('libinklevel.so=5-64')
 source=("$pkgname-$pkgver.tar.gz::https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('3e889cf7e3400524f514084775d653eeae0b1b7320f28741a343cbc95d7c980a')
