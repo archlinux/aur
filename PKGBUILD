@@ -1,12 +1,12 @@
+#!/bin/bash
 # Maintainer: Fredrick R. Brennan <copypaste@kittens.ph>
 # Contributor: Arley Henostroza <arllk10@gmail.com>
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 
 _svt_hevc_ver='6cca5b932623d3a1953b165ae6b093ca1325ac44'
-_svt_vp9_ver='15bd454a0ce53d1432a4f8a89df08774a26237e3'
 
 pkgname=ffmpeg-intel-full-git
-pkgver=6.1.r110537.g1eed7f6562
+pkgver=6.1.r110700.ge684967e74
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for intel; git version) (based on dbermond package)'
 arch=('x86_64')
@@ -47,29 +47,29 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libswresample.so' 'ffmpeg' 'ffmpeg-full' 'ffmpeg-git' 'ffmpeg-intel')
 conflicts=('ffmpeg')
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
-	'000-OwO-whats-this.patch'
-	"010-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/master-0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
+        '000-OwO-whats-this.patch'
+        "010-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/master-0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
         "020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
-        "030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
+        "030-ffmpeg-add-svt-vp9.patch"
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
         '050-ffmpeg-pocketsphinx-arch.patch'
         'LICENSE')
 
-sha256sums=('SKIP'
-            'ba06eaf3ddf2d0e05710b2fd3b6c286a31f3a816d1705f32d85a2eff8e9f9efc'
-            'e8fdc940474f3819b9a8d30cab8164774584c051322acb6194bcb03d56e8175a'
-            'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
-            'd8b91ea5f07d0208cbe0290567083808708014a1953fda322d13cb619349c9ee'
-            '91973c465f01446a999f278f0c2a3763304994dba1ac35de0e4c72f12f39409e'
-            'a16caf2bab313f56e77ef2ac66181bfab0a5179163dd86a1965a0857657c5402'
-            '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
+b2sums=('SKIP'
+        '5941f3be231a8d6c4fd6070d410bf6e8e1e1f10a2b60ab172db23b96ef809cc446ed6b1a477e80bbb26fe506d720d105b64b0b390003bc8215ee0bf2bbe7521e'
+        '5e04d2ce4e7ffaf7b5d3ff573967f9f42d55021b170ae46a13f615b0b702a4827dc05a511909050dc489205a3d166e83edfd4195923cea4a6524d88fa4c70d08'
+        'e611b388d6b62adeb1b0d0afd7606955d6452e70a37a4e0a955068f46beb313fd6f1c6b696273441390ae31de47a5bcb0bf2fc97e208dae1c1fa7a145f808c61'
+        '170f7db4f24747fbddfc1910fb26b9c3ad8165f40753f710ed51f934ef5c26a2bbdb40bc62b3167954c24a16fe4be370fa9564ef6866125c3235ee6a3fc94790'
+        '3f2ee7606500fa9444380d138959cd2bccfbba7d34629a17f4f6288c6bde29e931bbe922a7c25d861f057ddd4ba0b095bbd675c1930754746d5dd476b3ccbc13'
+        '7a9c12a8aeeaf018785cd583166413d67d2121894eabdb2542000690d3720e38ef4f3a5b412f6f8ebb3d584bbd728168487510d6ffc9cab1fb7f8548d6ae20bf'
+        '9e26a2e62682b86449496bbdef7e4ace46d407e369d6f64013093af9098f5944b11e00670a1e652550281bdb7d8be70235bbf986c58d4f9fd32c0216116d7abf')
 
 prepare() {
     rm -f ffmpeg/libavcodec/libsvt_{hevc,vp9}.c
     patch -d ffmpeg -Np1 -F2 -i "${srcdir}/000-OwO-whats-this.patch"
     patch -d ffmpeg -Np1 -F2 -i "${srcdir}/010-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
     patch -d ffmpeg -Np1 -F2 -i "${srcdir}/020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
-    patch -d ffmpeg -Np1 -F3 -i "${srcdir}/030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
+    patch -d ffmpeg -Np1 -F3 -i "${srcdir}/030-ffmpeg-add-svt-vp9.patch"
     patch -d ffmpeg -Np1 -F3 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
     # ffmpeg is as yet incompatible with pocketsphinx 5.0.
     # Let me know if this changes.
@@ -224,3 +224,5 @@ package() {
     install -D -m755 ffmpeg/tools/qt-faststart -t "${pkgdir}/usr/bin"
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
+
+# vim: syntax=bash et ts=4 sw=4
