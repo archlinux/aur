@@ -35,8 +35,6 @@ pkgver() {
 }
 
 build() {
-  export CFLAGS="$CFLAGS -Wno-deprecated-declarations"
-
   #python -m venv build
   export XDG_CACHE_HOME=cache/pip
   VIRTUALENV_OVERRIDE_APP_DATA=cache/virtualenv virtualenv build
