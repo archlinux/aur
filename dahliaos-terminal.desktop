@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Icon=dahliaos-terminal
+Name=dahliaOS Terminal
+Exec=/opt/dahliaos-terminal/terminal
+Terminal=false
+Hidden=false
+Categories=Utility;
+Comment=dahliaOS Terminal application
