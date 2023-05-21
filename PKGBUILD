@@ -1,8 +1,8 @@
 # Maintainer: Rafael <rafaelrc7@gmail.com>
 _pkgname=zsh-git-prompt
 pkgname="${_pkgname}-hs-git"
-pkgver=v0.5.r0.g0a6c8b6
-pkgrel=1
+pkgver=0.5.r0.g0a6c8b6
+pkgrel=2
 pkgdesc="Informative git prompt for zsh (haskell support only)"
 arch=('x86_64')
 url="https://github.com/olivierverdier/zsh-git-prompt"
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "${_pkgname}"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
