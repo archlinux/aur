@@ -2,7 +2,7 @@
 _pkgname=libretro-minivmac
 pkgname=$_pkgname-git
 pkgver=r63.45edc82
-pkgrel=1
+pkgrel=2
 pkgdesc="Apple Macintosh II core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/libretro/libretro-minivmac"
@@ -39,5 +39,5 @@ build() {
 
 package() {
 	# shellcheck disable=SC2154
-	install -Dm644 -t "$pkgdir"/usr/lib/libretro $_pkgname/minivmac_libretro.so
+	install -D -t "$pkgdir"/usr/lib/libretro $_pkgname/minivmac_libretro.so
 }
