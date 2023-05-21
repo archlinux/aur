@@ -31,6 +31,7 @@ check() {
 package() {
   cd ${_base}-${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm644 docs/_build/man/${_base}.1 -t "$pkgdir/usr/share/man/man1/"
   install -Dm644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
