@@ -1,0 +1,13 @@
+diff --git a/src/xwaylandvideobridge.cpp b/src/xwaylandvideobridge.cpp
+index 7ec7d6a..d0c3bed 100644
+--- a/src/xwaylandvideobridge.cpp
++++ b/src/xwaylandvideobridge.cpp
+@@ -125,7 +125,7 @@ void XwaylandVideoBridge::startStream(const QDBusObjectPath& path)
+         { QLatin1String("handle_token"), m_handleToken },
+         { QLatin1String("types"), iface->availableSourceTypes() },
+         { QLatin1String("multiple"), false }, //for now?
+-        { QLatin1String("cursor_mode"), uint(Metadata) }
++        { QLatin1String("cursor_mode"), uint(Embedded) }
+     };
+ 
+     auto reply = iface->SelectSources(m_path, sourcesParameters);
