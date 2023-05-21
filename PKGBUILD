@@ -2,13 +2,13 @@
 # Contributor Will Price <will.price94+aur@gmail.com>
 
 pkgname=0verkill-git
-pkgver=r148.1f36624
+pkgver=r149.cfcb3fd
 pkgrel=1
 pkgdesc="Bloody 2D action deathmatch-like game in ASCII-ART"
 arch=('i686' 'x86_64')
 url="https://github.com/hackndev/0verkill"
 license=('GPL2')
-depends=('xorgproto' 'libx11')
+depends=('xorgproto' 'libx11' 'libxpm')
 makedepends=('git')
 provides=('0verkill')
 source=('git+https://github.com/patlefort/0verkill.git')
