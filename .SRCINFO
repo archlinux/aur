@@ -1,0 +1,18 @@
+pkgbase = poi-appimage
+	pkgdesc = Scalable KanColle browser and tool.
+	pkgver = 10.9.2
+	pkgrel = 1
+	url = https://poi.moe/
+	arch = x86_64
+	license = MIT
+	depends = hicolor-icon-theme
+	depends = zlib
+	depends = glibc
+	conflicts = poi
+	options = !strip
+	source = poi-10.9.2.AppImage::https://github.com/poooi/poi/releases/download/v10.9.2/poi-10.9.2.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/poooi/poi/master/LICENSE
+	sha256sums = 117af5e2e116c78daedfc91053762b73e782e02b18817d324974be77a4c35722
+	sha256sums = 618eb41743df522a98a3b8873899d31d2cc39ae7dae6edcee50207461f0bbfc2
+
+pkgname = poi-appimage
