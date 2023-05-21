@@ -1,7 +1,7 @@
 pkgbase = libretro-numero-git
 	pkgdesc = Texas Instruments TI-83 series core
 	pkgver = r36.19354c9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nbarkhina/numero
 	arch = aarch64
 	arch = armv7h

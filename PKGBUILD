@@ -2,7 +2,7 @@
 _pkgname=libretro-numero
 pkgname=$_pkgname-git
 pkgver=r36.19354c9
-pkgrel=1
+pkgrel=2
 pkgdesc="Texas Instruments TI-83 series core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/nbarkhina/numero"
@@ -30,5 +30,5 @@ build() {
 
 package() {
 	# shellcheck disable=SC2154
-	install -Dm644 -t "$pkgdir"/usr/lib/libretro $_pkgname/numero_libretro.so
+	install -D -t "$pkgdir"/usr/lib/libretro $_pkgname/numero_libretro.so
 }
