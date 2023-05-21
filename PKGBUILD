@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="etherealengine-control-center-appimage"
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="One stop solution for all your Metaverse needs. A desktop app for managing Ethereal Engine cluster. "
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('zlib' 'glibc' 'hicolor-icon-theme')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Ethereal-Engine-Control-Center-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/EtherealEngine/etherealengine-control-center/master/LICENSE")
-sha256sums=('ddc6c86776165d5cb32d2b867e68f88c42a090964fd3c2954e585694afda95d1'
+sha256sums=('fa176a27e2d11cb23dbee92686c8aa0e810453a92e37bbb54be3d95d71bfd00b'
             'd346da664afe040f323eb3aecc74d5bb2a8b6d61a7ff53ccfaf1611add61a41d')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
