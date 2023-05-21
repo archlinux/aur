@@ -4,7 +4,7 @@
 
 pkgname=sopwith
 _pkgname="sdl-${pkgname}"
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Sidescrolling shoot 'em up game"
 url="https://fragglet.github.io/sdl-sopwith/sshot.html"
@@ -13,7 +13,7 @@ license=('GPL')
 depends=('sdl')
 makedepends=('autoconf')
 source=("https://github.com/fragglet/sdl-sopwith/archive/refs/tags/sdl-sopwith-${pkgver}.tar.gz")
-sha256sums=('45d452ba0c557e55fa087a398b60f206617b1bdf7fc34d7c52ae7cc3f9c488e4')
+sha256sums=('de322507d03259b7afb5818400894d1fa18850abad10c46d4736b2dfd07231d8')
 
 build() {
   cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}"
