@@ -1,6 +1,6 @@
 pkgbase = neper
 	pkgdesc = Polycrystal generation and meshing
-	pkgver = 4.5.0
+	pkgver = 4.6.0
 	pkgrel = 1
 	url = https://neper.info
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = neper
 	depends = gmsh
 	depends = scotch
 	depends = gsl
-	source = https://github.com/rquey/neper/archive/v4.5.0.tar.gz
-	sha256sums = db80dd89e02207e9b056b05fb9fbe493199ce7c3736b2039104c595b4dcd02a9
+	source = https://github.com/rquey/neper/archive/v4.6.0.tar.gz
+	sha256sums = 3239962a4bb420a8baefa4d28e584c1278dc678b2ef28754700633647bda1ce0
 
 pkgname = neper
