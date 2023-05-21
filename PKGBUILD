@@ -2,7 +2,7 @@
 # Contributor: Oliver Jaksch <arch-aur@com-in.de>
 _pkgname=libretro-cap32
 pkgname=$_pkgname-git
-pkgver=4.5.3.r1.gef0ee89
+pkgver=4.5.3.r104.g0e3edf8
 pkgrel=1
 epoch=1
 pkgdesc="Amstrad CPC core"
@@ -32,5 +32,5 @@ build() {
 
 package() {
 	# shellcheck disable=SC2154
-	install -Dm644 -t "$pkgdir"/usr/lib/libretro $_pkgname/cap32_libretro.so
+	install -D -t "$pkgdir"/usr/lib/libretro $_pkgname/cap32_libretro.so
 }
