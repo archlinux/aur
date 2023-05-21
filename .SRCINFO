@@ -1,7 +1,7 @@
 pkgbase = urbackup2-client
 	pkgdesc = Client Server backup system
 	pkgver = 2.5.24
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.urbackup.org/
 	arch = i686
 	arch = x86_64
@@ -30,6 +30,7 @@ pkgbase = urbackup2-client
 	source = lvm_create_filesystem_snapshot
 	source = lvm_remove_filesystem_snapshot
 	source = md5-bytes.patch
+	source = uintptr_t.patch
 	sha512sums = 4ea34c708fecb77774d63c596182fad3d5be2a11b8ae44247e1401299cb712faca8e124d245136f220ffc2c790f65adfd8ab0cf2c9bdccafabc17a3f7c25feb8
 	sha512sums = 416fb8f5f3687a3c369cc2b199d4c8b4170494f0a119566a91ac6a0c2f202dc5049804c10508b66ba657011b39be5ddd055091cd531a665b4398899f404086ca
 	sha512sums = 860021ce5b8d92ff58e8286991162c7bab45493c3b9c87577a43764f6b416397448bb99b8fcb850c4c5853927cb0a8637792b75ff53ee7ee257da3f5d29ae3a7
@@ -39,5 +40,6 @@ pkgbase = urbackup2-client
 	sha512sums = a2d4ba03ae15582d2cd74ff68c38ff0f90d75a6eb5c241f9a022b0652fa2dc9b184439f6bda9a9538645925f739503ee7b3fc7bb232589583cdeb6dc27d74e5c
 	sha512sums = 9bdfefccdd9d6e37a77975324a7c417f3de2aa59e6da0bfde3c318b8c6f3d7f4629f3a41eebee548b9c572b8ed39640434cc08bd020d25362fddffc4426438de
 	sha512sums = 34e25c868cf4572414fbc6c693877127152f9a97edf8865b4263a55cf16f71a5045ba96b1a9af8244ed49c35cab56e3fdb44348d191e9f85e2efb66392907132
+	sha512sums = 46a89313447c2aee40943e800bb79d05e30bb9f89fcd48e37ca1a0f9226efbfed20b0ff02cc88e03ed904069b98008525a66856568dbe57d1380389d74e4b091
 
 pkgname = urbackup2-client

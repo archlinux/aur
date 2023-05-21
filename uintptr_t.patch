@@ -1,0 +1,12 @@
+diff -ur urbackup-client-2.5.24.0/blockalign_src/crc.cpp urbackup-client-2.5.24.0-new/blockalign_src/crc.cpp
+--- urbackup-client-2.5.24.0/blockalign_src/crc.cpp	2022-08-21 10:45:31.000000000 +0200
++++ urbackup-client-2.5.24.0-new/blockalign_src/crc.cpp	2023-05-21 15:37:32.101668783 +0200
+@@ -118,6 +118,8 @@
+ # include <stdint.h>
+ #elif defined(_MSC_VER) && (_MSC_VER < 1700)
+ # include <stddef.h>
++#else
++# include <cstdint>
+ #endif
+ 
+ #if CRYPTOPP_BOOL_SSE4_INTRINSICS_AVAILABLE
