@@ -10,7 +10,7 @@
 
 pkgname=lilypond-devel
 _pkgname=lilypond
-pkgver=2.25.4
+pkgver=2.25.5
 pkgrel=1
 pkgdesc="Lilypond music engraving program (development release)"
 arch=('x86_64')
@@ -30,8 +30,8 @@ optdepends=(
 provides=('lilypond=${pkgver}')
 conflicts=('lilypond')
 source=("https://lilypond.org/downloads/sources/v${pkgver%.*}/$_pkgname-$pkgver.tar.gz")
-sha512sums=('8e239e001c36ab4204e948f4a7f9a5c53a12b27ebcb2161acf7eda23f4af029a0187929c6388d370de9f0fef8f368a5c27ae0c0143fe23c5d13aefee2d202ff7')
-b2sums=('c0a24982f731788f98c6f5c610d0cf7b3d858d4bb0562ef62049ddec42bbf505bc66f09d75559ce1e96b6d4a53765e474ff49eccb6a922b8cc72171718e8e125')
+sha512sums=('0a2a7cd11e805a97d0172589220e17666178441fc0e180c38b663495314dd66e13c8c1daee48221eedc306d04ddd787c259df1173f68ef0fbb19a47c2c17f772')
+b2sums=('d41ce8cccf1ab409ec646f37eec01433bd696ac681858329fc7691fa6dc506208c8813cec6b57be7a7586c8139c110b594abf3e547ef3a65bec156173f3642a3')
 
 prepare() {
   cd "$_pkgname-$pkgver"
