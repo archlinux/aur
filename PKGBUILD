@@ -1,7 +1,7 @@
 # Maintainer: Brenton Horne <brentonhorne77@gmail.com>
 
 pkgname=openra-wts-git
-pkgver=29355.git.8f511a3
+pkgver=29396.git.211f716
 pkgrel=1
 pkgdesc="OpenRA built from latest git commit and with the experimental Tiberian Sun mod included."
 arch=('x86_64')
@@ -14,9 +14,11 @@ makedepends=('git' 'unzip' 'mono-msbuild')
 conflicts=('openra' 'openra-bleed' 'openra-git')
 options=(!strip)
 source=("git+https://github.com/OpenRA/OpenRA.git"
-"https://raw.githubusercontent.com/wiki/OpenRA/OpenRA/Changelog.md")
+"https://raw.githubusercontent.com/wiki/OpenRA/OpenRA/Changelog.md"
+"patch-build.patch")
 sha256sums=('SKIP'
-            'f69d05f297ddb4a2b2fbb59a0632d7ff20efe73843f3e0e49b9e3043a559f443')
+            'f69d05f297ddb4a2b2fbb59a0632d7ff20efe73843f3e0e49b9e3043a559f443'
+            '5614c32c70b8e3c798cfcdcee42a6c707871e6691134d6d7f24bf99247ca0e15')
 
 pkgver() {
     cd $srcdir/OpenRA
@@ -25,6 +27,11 @@ pkgver() {
     version="${no}.git.${hash}"
     make version VERSION="${version}"
     printf "$version"
+}
+
+prepare() {
+	cd $srcdir/OpenRA
+	patch -Np1 -i $srcdir/patch-build.patch
 }
 
 build() {
