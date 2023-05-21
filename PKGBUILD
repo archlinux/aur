@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="woocommerce-pos-appimage"
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Electron Desktop App for WooCommerce POS"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('zlib' 'glibc' 'hicolor-icon-theme')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/WooCommerce-POS-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/wcpos/electron/main/LICENSE")
-sha256sums=('668122fb8ab42c062ae3ca2b5a5d64cc8d4205b95a578b80c5d3a39c19134c63'
+sha256sums=('9141ddb0056d1025cbd0d3bd615e6b028f219531590bb113d44b15dde295e168'
             'd8a5569300a1a9624f8e32056d771809676dc7dcaf3ed1ba900c635c426f28e7')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
