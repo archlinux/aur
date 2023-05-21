@@ -1,6 +1,6 @@
 pkgbase = neopassmenu
 	pkgdesc = Dmenu front end in POSIX shell for pass with navigation, selection from multi-line files, and support for dmenu equivalents
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://notabug.org/BezierQuadratic/neopassmenu
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = neopassmenu
 	optdepends = xdotool: simulate keypresses (X11)
 	optdepends = ydotool: simulate keypresses (Wayland)
 	optdepends = sharutils: generate passwords
-	source = https://notabug.org/BezierQuadratic/neopassmenu/archive/1.0.4.tar.gz
-	md5sums = d3962b1b1462fab6c9451060d18b254a
+	source = https://notabug.org/BezierQuadratic/neopassmenu/archive/1.0.5.tar.gz
+	md5sums = a8f2a212f0fd9b95593fa4d241991147
 
 pkgname = neopassmenu
