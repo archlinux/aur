@@ -1,6 +1,6 @@
 pkgbase = koodo-reader-appimage
 	pkgdesc = A modern ebook manager and reader with sync and backup capacities
-	pkgver = 1.5.4
+	pkgver = 1.5.5
 	pkgrel = 1
 	url = https://github.com/troyeguo/koodo-reader
 	arch = x86_64
@@ -8,10 +8,9 @@ pkgbase = koodo-reader-appimage
 	depends = zlib
 	depends = hicolor-icon-theme
 	depends = glibc
-	provides = troyeguo
 	conflicts = koodo-reader
 	options = !strip
-	source = koodo-reader-1.5.4.AppImage::https://github.com/troyeguo/koodo-reader/releases/download/v1.5.4/Koodo-Reader-1.5.4-x86_64.AppImage
-	sha256sums = 646e7ec2023350874981c9936f60a7eb7d2d5d2b7d409b09759916ce28d64f5a
+	source = koodo-reader-1.5.5.AppImage::https://github.com/troyeguo/koodo-reader/releases/download/v1.5.5/Koodo-Reader-1.5.5-x86_64.AppImage
+	sha256sums = 5194ca2fa396bd16f24c790c1788de66fabba28025652ecc9a24e0338eec947e
 
 pkgname = koodo-reader-appimage
