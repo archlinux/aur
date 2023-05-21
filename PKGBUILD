@@ -2,7 +2,7 @@
 
 _pkgname=zsh-nix-shell
 pkgname="${_pkgname}-git"
-pkgver=v0.4.0.r1.gf8574f2
+pkgver=0.7.0.r0.gdf48366
 pkgrel=1
 pkgdesc="zsh plugin that lets you use zsh in nix-shell shells."
 arch=('any')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
