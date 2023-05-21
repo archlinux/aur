@@ -1,61 +1,41 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
-
-pkgname=python-pgmpy
-_pkg="${pkgname#python-}"
-pkgver=0.1.20
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
+_base=pgmpy
+pkgname=python-${_base}
+pkgver=0.1.22
 pkgrel=1
-pkgdesc="Probabilistic Graphical Model library"
-arch=('any')
-url="https://github.com/pgmpy/pgmpy"
-license=('MIT')
-depends=(
-	'python>=3.7'
-	'python-joblib'
-	'python-networkx'
-	'python-numpy'
-	'python-opt_einsum'
-	'python-pandas'
-	'python-pyparsing'
-	'python-scipy'
-	'python-scikit-learn'
-	'python-statsmodels'
-	'python-pytorch'
-	'python-tqdm')
+pkgdesc="A library for Probabilistic Graphical Models"
+arch=(any)
+url="https://github.com/${_base}/${_base}"
+license=(MIT)
+depends=(python-networkx python-scikit-learn python-pytorch python-statsmodels python-tqdm python-joblib python-opt_einsum)
 optdepends=('python-daft' 'python-lxml')
-makedepends=(
-	'python-setuptools'
-	'python-build'
-	'python-installer'
-	'python-wheel'
-	'python-sphinx'
-	'python-nbsphinx'
-	'python-sphinx_rtd_theme')
-checkdepends=('python-pytest' 'python-mock' 'python-daft')
-changelog=CHANGELOG.md
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5069daaa472be8de392ba3f5798fe639fc8b6204d3d50baa2bd8d35390ab7250')
+makedepends=(python-build python-installer python-setuptools python-wheel python-nbsphinx python-sphinx_rtd_theme)
+checkdepends=(python-pytest python-mock python-daft)
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('adf2e1ad1c42b0f468d281d2b40634c04cfe0cb7fefd05892b843bdc6c32a03a2522b156746168c185d98c1d0a3486c4e1b12fefa73e468b96da56e7f290591c')
 
 prepare() {
-	cd "$_pkg-$pkgver"
-	sed -i '/"tests"/s/tests/*tests*/' setup.py
+  sed -i '/"tests"/s/tests/*tests*/' ${_base}-${pkgver}/setup.py
 }
 
 build() {
-	cd "$_pkg-$pkgver"
-	python -m build --wheel --no-isolation
-	make -C docs man BUILDDIR=_build
+  cd ${_base}-${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
+  make -C docs man BUILDDIR=_build
 }
 
 check() {
-	cd "$_pkg-$pkgver"
-	pytest -x --disable-warnings
+  cd ${_base}-${pkgver}
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest
 }
 
 package() {
-	cd "$_pkg-$pkgver"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
-	install -Dm644 docs/_build/man/pgmpy.1 -t "$pkgdir/usr/share/man/man1/"
-	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s "$_site/pgmpy-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm644 docs/_build/man/${_base}.1 -t "$pkgdir/usr/share/man/man1/"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
