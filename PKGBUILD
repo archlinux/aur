@@ -4,7 +4,7 @@
 
 pkgname=graylog
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Free and open source log management platform'
 arch=('any')
 url="https://github.com/graylog2/graylog2-server"
@@ -13,6 +13,7 @@ depends=('java-runtime>=17')
 optdepends=('elasticsearch>=7' 'mongodb>=5' 'opensearch')
 changelog=UPGRADING.md
 backup=('etc/graylog/server/server.conf')
+install=graylog.install
 source=(
 	"$pkgname-$pkgver.tar.gz::https://packages.graylog2.org/releases/$pkgname/$pkgname-${pkgver/_/-}.tgz"
 	graylog-tmpfiles.conf

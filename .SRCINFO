@@ -1,8 +1,9 @@
 pkgbase = graylog
 	pkgdesc = Free and open source log management platform
 	pkgver = 5.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/graylog2/graylog2-server
+	install = graylog.install
 	changelog = UPGRADING.md
 	arch = any
 	license = custom:SSPL
