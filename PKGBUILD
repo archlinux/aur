@@ -1,6 +1,6 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=python-berliner-git
-pkgver=2020.1221.0.r8.gbab6c91
+pkgver=2020.1221.0.r11.g9c78338
 pkgrel=1
 pkgdesc="Tools for stellar tracks & isochrones"
 arch=('i686' 'x86_64')
@@ -10,6 +10,7 @@ makedepends=('git' 'python-setuptools')
 depends=('python-scipy' 'python-regli' 'python-joblib')
 optdepends=('python-astropy: For testing')
 #checkdepends=('python-pytest' 'python-astropy')
+checkdepends=('python-nose')
 conflicts=('python-berliner')
 provides=('python-berliner')
 source=("git+https://github.com/hypergravity/berliner.git")
@@ -31,11 +32,11 @@ build() {
     python setup.py build
 }
 
-#check() {
-#    cd ${srcdir}/${_gitname}
-#
-#    python setup.py test
-#}
+check() {
+    cd ${srcdir}/${_gitname}
+
+    nosetests || warning "Tests failed"
+}
 
 package() {
     cd ${srcdir}/${_gitname}

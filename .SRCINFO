@@ -1,11 +1,12 @@
 pkgbase = python-berliner-git
 	pkgdesc = Tools for stellar tracks & isochrones
-	pkgver = 2020.1221.0.r8.gbab6c91
+	pkgver = 2020.1221.0.r11.g9c78338
 	pkgrel = 1
 	url = https://github.com/hypergravity/berliner
 	arch = i686
 	arch = x86_64
 	license = MIT
+	checkdepends = python-nose
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python-scipy
