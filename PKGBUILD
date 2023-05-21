@@ -6,20 +6,20 @@
 
 pkgname=wine-wow64
 _name=wine
-pkgver=8.7
+pkgver=8.8
 pkgrel=1
 provides=("wine")
 conflicts=("wine")
 source=(https://dl.winehq.org/wine/source/8.x/$_name-$pkgver.tar.xz
         30-win32-aliases.conf
         wine-binfmt.conf)
-sha512sums=('0a7fe9ad86cf931527c2149207473bf4671d1098af7c21f1b740dfaa84486a8e235fea99b1cad035ff9c3eb20810caab53d51051d63efe626514b79309904d93'
+sha512sums=('e56427680c940970153b1996841c70d540a0a2572ab980c4d77cf7225efd7c26c91ef9b0548b73d51e78afa55a7e324d5d93f6211f5eb5d5698ab9ff421e26de'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
             'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285')
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://www.winehq.org"
 arch=(x86_64)
-options=(staticlibs) # !lto)
+options=(staticlibs !lto)
 license=(LGPL)
 depends=(
   fontconfig      #lib32-fontconfig
@@ -71,20 +71,17 @@ optdepends=(
 makedepends=(${makedepends[@]} ${depends[@]})
 install=wine.install
 
-# prepare() {
-#   # Doesn't compile without remove these flags as of 4.10
-#   export CFLAGS="${CFLAGS/-fno-plt/} -ffat-lto-objects"
-#   export LDFLAGS="${LDFLAGS/,-z,now/}"
-# }
-
 build() {
+  # Doesn't compile without remove these flags as of 4.10
+  export CFLAGS="${CFLAGS/-fno-plt/} -ffat-lto-objects"
+  export LDFLAGS="${LDFLAGS/,-z,now/}"
   mkdir -p $srcdir/$_name-$pkgver/build
   cd $srcdir/$_name-$pkgver/build
   ../configure \
     --prefix=/usr \
     --libdir=/usr/lib \
     --enable-archs=x86_64,i386
-  make
+  make -j16
 }
 
 package() {
