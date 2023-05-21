@@ -15,7 +15,6 @@ url="https://apps.ankiweb.net/"
 license=('AGPL3')
 arch=('x86_64')
 conflicts=('anki-bin' 'anki-git' 'anki-official-binary-bundle' 'anki-qt5')
-options=('!lto')
 depends=(
     # anki & aqt
     'python>=3.9'
@@ -49,6 +48,7 @@ makedepends=(
     'libxcrypt-compat'
     'nodejs'
     'yarn'
+    'mold'
 )
 optdepends=(
     'lame: record sound'
@@ -60,9 +60,11 @@ optdepends=(
 # the '.git' folder is not included in those but is required for a sucessful build
 source=("$pkgname::git+https://github.com/ankitects/anki#tag=${_tag}?signed"
 "no-update.patch"
+"optimize_more.patch"
 )
 sha256sums=('SKIP'
 'f934553a5ce9e046a0b8253e10da16e661b27375e2b54d6bb915267f32aff807'
+'213a7c6ab75dc332e79f089364f10bc7fe0c0bb6860a549a42b7e3d75970bc7d'
 )
 
 validpgpkeys=(
@@ -73,7 +75,9 @@ prepare(){
     cd "$pkgname"
     # pro-actively prevent "module not found" error (TODO: verify whether still required)
     [ -d ts/node_modules ] && rm -r ts/node_modules
+
     patch -p1 < "$srcdir/no-update.patch"
+    patch -p1 < "$srcdir/optimize_more.patch"
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -85,7 +89,8 @@ build() {
     export NODE_BINARY=$(which node)
     export YARN_BINARY=$(which yarn)
 
-    ./tools/build
+    export RELEASE=1
+    mold -run ./ninja wheels # use mold as linker to allow for LTO
 }
 
 pkgver(){

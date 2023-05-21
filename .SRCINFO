@@ -13,6 +13,7 @@ pkgbase = anki
 	makedepends = libxcrypt-compat
 	makedepends = nodejs
 	makedepends = yarn
+	makedepends = mold
 	depends = python>=3.9
 	depends = python-beautifulsoup4
 	depends = python-waitress>=2.0.0
@@ -38,11 +39,12 @@ pkgbase = anki
 	conflicts = anki-git
 	conflicts = anki-official-binary-bundle
 	conflicts = anki-qt5
-	options = !lto
 	source = anki::git+https://github.com/ankitects/anki#tag=064ea0ee08715edae868b84e48b29bd7e15d7b49?signed
 	source = no-update.patch
+	source = optimize_more.patch
 	validpgpkeys = 814EA4E90C34AF39A712DE703F5566A2D16899FB
 	sha256sums = SKIP
 	sha256sums = f934553a5ce9e046a0b8253e10da16e661b27375e2b54d6bb915267f32aff807
+	sha256sums = 213a7c6ab75dc332e79f089364f10bc7fe0c0bb6860a549a42b7e3d75970bc7d
 
 pkgname = anki
