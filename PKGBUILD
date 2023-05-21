@@ -4,7 +4,7 @@
 
 pkgname=python-torchaudio-rocm
 _pkgname=audio
-pkgver=2.0.1
+pkgver=2.0.2
 _sox_ver=14.4.2
 pkgrel=1
 pkgdesc="Data manipulation and transformation for audio signal processing, powered by PyTorch (ROCm Support)"

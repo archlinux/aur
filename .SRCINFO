@@ -1,6 +1,6 @@
 pkgbase = python-torchaudio-rocm
 	pkgdesc = Data manipulation and transformation for audio signal processing, powered by PyTorch (ROCm Support)
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/pytorch/audio
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = python-torchaudio-rocm
 	optdepends = python-kaldi-io
 	conflicts = python-torchaudio-git
 	conflicts = python-torchaudio
-	source = git+https://github.com/pytorch/audio#tag=v2.0.1
+	source = git+https://github.com/pytorch/audio#tag=v2.0.2
 	source = git+https://github.com/kaldi-asr/kaldi.git
 	source = git+https://github.com/kpu/kenlm.git
 	source = flashlight-text::git+https://github.com/flashlight/text.git
