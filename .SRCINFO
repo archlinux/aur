@@ -1,7 +1,7 @@
 pkgbase = python-regli
 	pkgdesc = REgular Grid Linear Interpolator
 	pkgver = 2022.722.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hypergravity/regli
 	arch = any
 	license = MIT
@@ -10,6 +10,8 @@ pkgbase = python-regli
 	depends = python-astroslam
 	depends = python-laspec
 	source = https://files.pythonhosted.org/packages/source/r/regli/regli-2022.722.0.tar.gz
+	source = fix-for-numpy1.24.patch
 	md5sums = 8ff5c5518d64aaa4d09d3ff517e679d8
+	md5sums = 9a92308088c1527b548bbe0d9ca52401
 
 pkgname = python-regli

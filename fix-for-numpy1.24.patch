@@ -1,0 +1,36 @@
+diff --color -ura a/regli/ezmcmc.py b/regli/ezmcmc.py
+--- a/regli/ezmcmc.py	2019-08-11 18:05:09.000000000 +0800
++++ b/regli/ezmcmc.py	2023-05-21 20:02:25.389034416 +0800
+@@ -116,7 +116,7 @@
+         print("@Regli: using user-defined *lnprior* function...")
+ 
+         def lnpost(*_args, **_kwargs):
+-            lnpost_value = np.float(
++            lnpost_value = np.float64(
+                 lnprior(_args[0], **_kwargs["lnprior_kwargs"])) + \
+                            lnlike(*_args, **_kwargs["lnlike_kwargs"])
+             if np.isfinite(lnpost_value):
+diff --color -ura a/regli/mcmc.py b/regli/mcmc.py
+--- a/regli/mcmc.py	2018-12-13 19:31:09.000000000 +0800
++++ b/regli/mcmc.py	2023-05-21 20:02:25.399034025 +0800
+@@ -23,7 +23,7 @@
+     ndim = flatchain.shape[1]
+ 
+     # initiate cov_
+-    cov_ = np.zeros((ndim, ndim), np.float)
++    cov_ = np.zeros((ndim, ndim), np.float64)
+ 
+     ind_tril = np.tril_indices(ndim)
+     for irow, icol in zip(*ind_tril):
+diff --color -ura a/regli/regli.py b/regli/regli.py
+--- a/regli/regli.py	2021-05-01 16:14:57.000000000 +0800
++++ b/regli/regli.py	2023-05-21 20:02:25.399034025 +0800
+@@ -403,7 +403,7 @@
+             print("@Regli: using user-defined *lnprior* function...")
+ 
+             def lnpost(*_args, **_kwargs):
+-                lnpost_value = np.float(lnprior(_args[0], **_kwargs["lnprior_kwargs"])) + \
++                lnpost_value = np.float64(lnprior(_args[0], **_kwargs["lnprior_kwargs"])) + \
+                                lnlike(*_args, **_kwargs["lnlike_kwargs"])
+                 if np.isfinite(lnpost_value):
+                     return lnpost_value
