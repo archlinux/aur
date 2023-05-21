@@ -1,0 +1,18 @@
+pkgbase = nora-appimage
+	pkgdesc = An elegant music player built using Electron and React. Inspired by Oto Music for Android by Piyush Mamidwar.
+	pkgver = 2.2.0stable
+	pkgrel = 1
+	url = https://github.com/Sandakan/Nora
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = glibc
+	conflicts = nora
+	options = !strip
+	source = nora-2.2.0stable.AppImage::https://github.com/Sandakan/Nora/releases/download/v2.2.0-stable/Nora-Setup-2.2.0-stable-linux-x86_64.AppImage
+	source = LICENSE.txt::https://raw.githubusercontent.com/Sandakan/Nora/master/LICENSE.txt
+	sha256sums = 59d5ab673b447032a0006e43bc4c2e7928fbbde9a42ff7a2b1f117cf51241049
+	sha256sums = 7c27f3771d31e4ba1a227b2aec04ff8892512ba80dd0fb9435115a6523e2980e
+
+pkgname = nora-appimage
