@@ -2,17 +2,17 @@
 # ex-Maintainer: workonfire <kolucki62@gmail.com>
 
 pkgname=contrast
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc='Checks whether the contrast between two colors meet the WCAG requirements'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://gitlab.gnome.org/World/design/contrast'
 license=('GPL3')
 depends=('libadwaita')
 makedepends=('meson' 'cargo')
 checkdepends=('appstream-glib')
 source=($url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('aab52c9ec721d97a287200b3e168ddc91458aab1380f3da6708327835717d69aec06a42a3d5fb2521f61baa6d2ffe1765e03710db5c301805a8bee3de49dcbc7')
+b2sums=('521e21d426fd222ed7698ebb9573ecd3a174119f32208b98594891d2d601621baf8ff00726358b6bbaa2c98ff52900f7d0319717af3d5a6978420c296a633bd8')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
