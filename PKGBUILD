@@ -2,7 +2,7 @@
 
 pkgname=multimc-bin
 _pkgname=multimc
-pkgver=0.7.0.3734
+pkgver=0.7.0.3759
 pkgrel=1
 pkgdesc="A custom launcher for Minecraft that allows you to easily manage multiple installations of Minecraft at once."
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("$_pkgname-$pkgver.tar.gz::https://files.multimc.org/downloads/mmc-devel
         "multimc.svg"
         "multimc.desktop"
         "wrapper.sh")
-sha256sums=('31f1e0777e4dc9b82e639e5b00dc0011380a43e86f831ae299731f0b27988309'
+sha256sums=('8db41142d79dcb944023d656cc3df75dc14b85b495ac373e4d23d67110db9f1a'
             '8c2c1ff1f4ce4ca7a7453ec1f7f666087f4319db7c654f81a7827a34f0c17e33'
             '6d12903a5630c9ff7aa35769566f29a8b4b591024cc61be826f4a3b1e8bea3bc'
             '53c3044ae1e7c28a5458f51c00395a14c1a9dc43a0235c882e524da499e0aef8')
