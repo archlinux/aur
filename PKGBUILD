@@ -3,7 +3,7 @@
 # Contributor: Tomasz Paś <kierek93@gmail.com>
 _pkgname=libretro-melonds
 pkgname=$_pkgname-git
-pkgver=r2012.0e1f06da
+pkgver=r2014.c6488c88
 pkgrel=1
 epoch=1
 pkgdesc="Nintendo DS core"
@@ -11,8 +11,8 @@ arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/libretro/melonDS"
 license=('GPL3')
 groups=('libretro')
-depends=('gcc-libs' 'glibc' 'libgl' 'libretro-core-info')
-makedepends=('git')
+depends=('gcc-libs' 'glibc' 'libretro-core-info')
+makedepends=('git' 'libgl')
 provides=("$_pkgname=${pkgver#r}")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
@@ -34,6 +34,7 @@ build() {
 }
 
 package() {
+	depends+=('libGL.so')
 	# shellcheck disable=SC2154
-	install -Dm644 -t "$pkgdir"/usr/lib/libretro $_pkgname/melonds_libretro.so
+	install -D -t "$pkgdir"/usr/lib/libretro $_pkgname/melonds_libretro.so
 }
