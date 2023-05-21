@@ -1,7 +1,7 @@
 pkgbase = imhex-appimage
 	pkgdesc = A Hex Editor for Reverse Engineers, Programmers and people who value their retinas when working at 3 AM.
-	pkgver = 1.28.0
-	pkgrel = 2
+	pkgver = 1.29.0
+	pkgrel = 1
 	url = https://imhex.werwolv.net/
 	arch = x86_64
 	license = GPL2
@@ -11,7 +11,7 @@ pkgbase = imhex-appimage
 	conflicts = imhex
 	conflicts = imhex-patterns
 	options = !strip
-	source = imhex-1.28.0.AppImage::https://github.com/WerWolv/ImHex/releases/download/v1.28.0/imhex-1.28.0-x86_64.AppImage
-	sha256sums = b63fe185a70b8a6b8b4f895ece7e7801c397ec265391ae6a6d84b6c16dd48249
+	source = imhex-1.29.0.AppImage::https://github.com/WerWolv/ImHex/releases/download/v1.29.0/imhex-1.29.0-x86_64.AppImage
+	sha256sums = fba24484f7b932a0cb42b1f64ba49670ffe9d0bdcb5eb5b50b4a256905409d35
 
 pkgname = imhex-appimage
