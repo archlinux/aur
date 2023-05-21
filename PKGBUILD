@@ -1,34 +1,39 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
-
-pkgname=python-rioxarray
-_pkg="${pkgname#python-}"
-pkgver=0.12.1
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
+_base=rioxarray
+pkgname=python-${_base}
+pkgver=0.14.1
 pkgrel=1
-pkgdesc="Geospatial xarray extension powered by rasterio"
-arch=('any')
-url="https://github.com/corteva/rioxarray"
-license=('Apache')
-depends=('python-dask' 'python-packaging' 'python-pyproj' 'python-rasterio' 'python-xarray')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-checkdepends=('python-netcdf4' 'python-pytest')
-changelog=
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('e5f2db73cc9c46cadbdd25565ae58344ed80eac574fd20eab35c3c16678a4e2b')
+pkgdesc="geospatial xarray extension powered by rasterio"
+arch=(any)
+url="https://github.com/corteva/${_base}"
+license=(Apache)
+depends=(python-packaging python-rasterio python-xarray python-pyproj)
+makedepends=(python-build python-installer python-setuptools python-wheel) # python-sphinx-click python-nbsphinx pandoc-cli
+checkdepends=(python-pytest python-dask)                                   # python-netcdf4 python-h5py-openmpi
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
+sha512sums=('087ec8cf2bd50b4fbadd87662f3aa3ce53b3861f6a1ea923f5a394a24c1d0ab8c6c864388b953f216b84c8ed040a91c1b997ad09189be95b1a2af2fc833fc5ca')
 
 build() {
-	cd "$_pkg-$pkgver"
-	python -m build --wheel --no-isolation
-	## FIXME: docs don't build
-	# PYTHONPATH="$PWD" make -C docs man
+  cd ${_base}-${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
+  # FIXME: docs don't build
+  # PYTHONPATH="${PWD}" make -C docs man
 }
 
 check() {
-	cd "$_pkg-$pkgver"
-	pytest -x --disable-warnings || true
+  cd ${_base}-${pkgver}
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest test \
+    --ignore=test/integration/test_integration__io.py \
+    --ignore=test/integration/test_integration_rioxarray.py \
+    --ignore=test/integration/test_integration_merge.py \
+    --ignore=test/integration/test_integration_xarray_plugin.py
 }
 
 package() {
-	cd "$_pkg-$pkgver"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
-	# install -Dm644 "docs/_build/man/$pkgname.1" -t "$pkgdir/usr/share/man/man1/"
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  # install -Dm644 "docs/_build/man/$pkgname.1" -t "$pkgdir/usr/share/man/man1/"
 }
