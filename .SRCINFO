@@ -1,0 +1,13 @@
+pkgbase = bretellofier
+	pkgdesc = Command line telegram notifier
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://git.decapod.one/brethil/bretellofier
+	arch = any
+	license = dowhateverthefuckyouwant
+	makedepends = python-wheel
+	depends = python
+	source = git+https://git.decapod.one/brethil/bretellofier
+	sha256sums = SKIP
+
+pkgname = bretellofier
