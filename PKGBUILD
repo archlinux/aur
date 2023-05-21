@@ -2,14 +2,14 @@
 # Contributor: Daniel Menelkir <menelkir@itroll.org>
 _pkgname=libretro-beetle-lynx
 pkgname=$_pkgname-git
-pkgver=r734.26d9469
+pkgver=r761.ebe72aa
 pkgrel=1
 pkgdesc="Atari Lynx core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/libretro/beetle-lynx-libretro"
 license=('GPL2')
 groups=('libretro')
-depends=('gcc-libs' 'libretro-core-info')
+depends=('gcc-libs' 'glibc' 'libretro-core-info')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
