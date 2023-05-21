@@ -6,8 +6,8 @@ pkgrel=1
 pkgdesc="A simple GTK system tray volume controller applet."
 depends=('gtk3' 'pulseaudio')
 makedepends=('rust' 'cargo' 'git')
-license=('GPL')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+license=('GPL3')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/jaspwr/vol-applet"
 
 source=("$pkgname::git+https://github.com/jaspwr/vol-applet#branch=main")
