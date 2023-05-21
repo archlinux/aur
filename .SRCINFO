@@ -1,0 +1,17 @@
+pkgbase = firetv-toolkit-appimage
+	pkgdesc = A cross platform desktop app written in Typescript/Node using React and Electron. Android-Toolkit is a GUI for adb and can be used to modify android devices such as firesticks and google TVs.
+	pkgver = 1.3.6
+	pkgrel = 1
+	url = https://github.com/AnthonyGress/Android-Toolkit
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	options = !strip
+	source = firetv-toolkit-1.3.6.AppImage::https://github.com/AnthonyGress/Android-Toolkit/releases/download/v1.3.6/FireTV-Toolkit-1.3.6.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/AnthonyGress/Android-Toolkit/main/LICENSE
+	sha256sums = df55dde70545319466df6e7830a712241ffbe71af9873b5879001b68871c98e1
+	sha256sums = 65cb0d2fdca7e4375a2ab466fb1e37fef2514eb10c88c5cf8998893a77295176
+
+pkgname = firetv-toolkit-appimage
