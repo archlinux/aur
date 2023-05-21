@@ -1,32 +1,25 @@
-From 457106b700371e66d701efd6668d0f59083c5925 Mon Sep 17 00:00:00 2001
+From 70b78112938e5c8def03baa65588e63674008490 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Sat, 17 Sep 2022 16:27:17 +0200
 Subject: [PATCH 2/2] makepkg: Remove extraneous compiler flags
 
 ---
- lib/CMakeLists.txt | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ lib/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/lib/CMakeLists.txt b/lib/CMakeLists.txt
-index e1a1384..14eb593 100644
+index c3bbdb9..64c3306 100644
 --- a/lib/CMakeLists.txt
 +++ b/lib/CMakeLists.txt
-@@ -34,7 +34,7 @@ add_library(libpl ${LIBRARY_TYPE}
-         source/pl/lib/std/random.cpp
+@@ -35,7 +35,7 @@ add_library(libpl ${LIBRARY_TYPE}
  )
  
--target_compile_options(libpl PRIVATE -Wall -Wextra -Werror -Wpedantic -Wno-unknown-pragmas -Wno-stringop-overread -Wno-stringop-overflow -Wno-array-bounds)
-+target_compile_options(libpl PRIVATE -Wno-unknown-pragmas -Wno-stringop-overread -Wno-stringop-overflow -Wno-array-bounds)
- 
- target_include_directories(libpl PUBLIC include)
- target_link_libraries(libpl PRIVATE fmt::fmt-header-only)
-@@ -46,4 +46,4 @@ set_target_properties(libpl PROPERTIES PREFIX "")
- 
- if (LIBPL_SHARED_LIBRARY)
-     install(TARGETS libpl DESTINATION lib)
--endif ()
-\ No newline at end of file
-+endif ()
+ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+-    target_compile_options(libpl PRIVATE -Wall -Wextra -Werror -Wpedantic -Wno-unknown-pragmas -Wno-array-bounds)
++    target_compile_options(libpl PRIVATE -Wno-unknown-pragmas -Wno-array-bounds)
+     if(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+         target_compile_options(libpl PRIVATE -Wno-stringop-overflow)
+     endif()
 -- 
-2.40.0
+2.40.1
 
