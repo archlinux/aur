@@ -4,7 +4,7 @@
 
 pkgname=humnumsort
 _pkgname=hns
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Human-sorts lines (i.e. x10\n comes after x1\n)'
 provides=('hns' 'hns+' 'hxs')
@@ -13,7 +13,7 @@ arch=('x86_64' 'armv6h' 'armv7h')
 license=('Apache-2.0')
 url='https://github.com/ctrlcctrlv/humnumsort'
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5052b506ce892209f1832931f603f63d07f55dddb29ef7813f6a99d419c7590b')
+b2sums=(05b4a10f2f083a2b2e61077a5a1765ddcd212423e36fda2ffc0ef48060cc64083d8321eea90876b08599a388454b3f225671b43fc2a14d08f6950d97b85ca367)
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}/bin"
