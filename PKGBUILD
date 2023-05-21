@@ -2,8 +2,8 @@
 
 _name=pythonfinder
 pkgname=python-pythonfinder
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.0.3
+pkgrel=1
 pkgdesc="Cross Platform Search Tool for Finding Pythons"
 arch=(any)
 url="https://github.com/sarugaku/pythonfinder"
@@ -27,8 +27,8 @@ checkdepends=(
 )
 optdepends=('python-click: for CLI')
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha512sums=('341058947d8bf1f71a60ca48e2da67a5fbf5a920cc00fc875fa5fe6b966fffc8ae81d5031fe08da69248ea8d6f75063c9c67069839235be2bf2dce87454dd20a')
-b2sums=('2b7666a2796a3f7b364f63b22a7e98b05abe01877d42e6dab2b99b1b545aa33f1ecb096d8585d7f8459d67d889821ba07f3d2f4be237766063581d704c88803e')
+sha512sums=('4997ccaca04e2fd05497d6161f865501eec932598d9a2b46c4387ae8079ad88c73d10563244f956bf416e61a01cbd31cdbc3b0b48fdba351e2541439d8b3bfc4')
+b2sums=('3615be98c8ca0ab5d91dfed16dc56dc226e365628fc65d6532b4c475f5c55a5c0414f637d8909ba82e10de20bc7230178d15e23d9d4bc03ffbb2831e1441a548')
 
 build() {
   cd $_name-$pkgver
