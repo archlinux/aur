@@ -1,7 +1,7 @@
 pkgbase = penguins-eggs
 	pkgdesc = A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE
 	pkgver = 9.4.11
-	pkgrel = 0
+	pkgrel = 1
 	url = https://penguins-eggs.net
 	arch = any
 	license = GPL2
