@@ -1,7 +1,7 @@
 pkgbase = libei-git
 	pkgdesc = library for Emulated Input
-	pkgver = 0.4.1
-	pkgrel = 0
+	pkgver = 0.99.1.r19.gcf932d1
+	pkgrel = 1
 	url = https://gitlab.freedesktop.org/libinput/libei/
 	arch = x86_64
 	license = MIT
@@ -11,9 +11,9 @@ pkgbase = libei-git
 	depends = libevdev
 	depends = systemd
 	depends = libxkbcommon
-	provides = libei=0.4.1
+	provides = libei
 	conflicts = libei
-	source = libei::git+https://gitlab.freedesktop.org/libinput/libei#tag=0.4.1
+	source = libei::git+https://gitlab.freedesktop.org/libinput/libei.git/
 	md5sums = SKIP
 
 pkgname = libei-git
