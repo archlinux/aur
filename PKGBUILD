@@ -2,7 +2,7 @@
 
 pkgname=freekill
 _upper_pkgname=FreeKill
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/Notify-ctrl/FreeKill'
@@ -11,9 +11,9 @@ pkgdesc='A Bang-like card game'
 depends=('qt6-declarative' 'qt6-multimedia' 'qt6-5compat'
   'qt6-shadertools' 'libgit2' 'lua' 'sqlite' 'openssl'
   'readline' )
-makedepends=('cmake' 'flex' 'bison' 'qt6-tools' 'swig' 'clang')
+makedepends=('cmake' 'qt6-tools' 'swig' 'clang')
 source=("${url}/releases/download/v${pkgver}/FreeKill-${pkgver}-source.tar.gz")
-sha256sums=('7a6445d1989c0054e4f842ca333262bd1f2021db1f1d67d4eb8fbd86496903c5')
+sha256sums=('1e6063123d2f54880cfbca2655a438a3bcdbb67ce2c4f51d524db4bd57779769')
 
 prepare() {
   cd ${srcdir}/${_upper_pkgname}-${pkgver}
@@ -36,7 +36,7 @@ package() {
   cd ${srcdir}/${_upper_pkgname}-${pkgver}
   cmake --install build --prefix ${pkgdir}/usr --config Release
 
-  cp -r audio fonts image lua packages qml server fk_ver build/zh_CN.qm \
+  cp -r audio fonts image lua packages Fk server fk_ver build/zh_CN.qm \
     ${pkgdir}/usr/share/${_upper_pkgname}
   install -Dm644 image/icon.png ${pkgdir}/usr/share/icons/freekill_logo.png
   install -Dm644 freekill.desktop ${pkgdir}/usr/share/applications/freekill.desktop
