@@ -2,7 +2,7 @@
 # Contributor: Oliver Jaksch <arch-aur@com-in.de>
 _pkgname=libretro-virtualjaguar
 pkgname=$_pkgname-git
-pkgver=r311.263c979
+pkgver=r313.2cc0689
 pkgrel=1
 epoch=1
 pkgdesc="Atari Jaguar core"
@@ -32,5 +32,5 @@ build() {
 
 package() {
 	# shellcheck disable=SC2154
-	install -Dm644 -t "$pkgdir"/usr/lib/libretro $_pkgname/virtualjaguar_libretro.so
+	install -D -t "$pkgdir"/usr/lib/libretro $_pkgname/virtualjaguar_libretro.so
 }
