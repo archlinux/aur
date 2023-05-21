@@ -1,4 +1,3 @@
-#!/bin/bash
 # Maintainer: Xenhat Hex (aur@xenh.at)
 # Contributor: Justin Jagieniak <justin@jagieniak.net>
 # Contributor: Rye Mutt
