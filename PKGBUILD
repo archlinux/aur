@@ -7,7 +7,7 @@ arch=(any)
 url="https://git.decapod.one/brethil/bretellofier"
 license=('dowhateverthefuckyouwant')
 depends=(python)
-makedepends=(python-wheel)
+makedepends=(python-wheel python-installer)
 source=("git+https://git.decapod.one/brethil/bretellofier")
 sha256sums=(SKIP)
 
