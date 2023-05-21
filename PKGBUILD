@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="revealed-bin"
-pkgver=2.0.0alpha.9
-_appver=2.0.0-alpha.9
+pkgver=2.0.0alpha.13
+_appver=2.0.0-alpha.13
 pkgrel=1
 pkgdesc="A platform and store for apps, games, and more!"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('libcups' 'expat' 'libxcb' 'glib2' 'alsa-lib' 'gcc-libs' 'libxdamage' '
     'libx11' 'libxfixes' 'libxcomposite')
 options=(!strip)
 source=("${pkgname%-appimage}-${pkgver}.pacman::${_githuburl}/releases/download/v${_appver}/Revealed.pacman")
-sha256sums=('96e158e6bef4894b6b1d149ebff4b19c6c2f9e292a1ae1a31fbd5690d644bf36')
+sha256sums=('8320c907a182bce73f0049d22ae450d86e3614c7e02c1251c7b9b7ee83d6d7a2')
   
 package() {
     cp --parents -a {opt,usr} "${pkgdir}"

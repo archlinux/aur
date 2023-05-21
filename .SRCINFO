@@ -1,6 +1,6 @@
 pkgbase = revealed-bin
 	pkgdesc = A platform and store for apps, games, and more!
-	pkgver = 2.0.0alpha.9
+	pkgver = 2.0.0alpha.13
 	pkgrel = 1
 	url = https://www.appsrevealed.com/
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = revealed-bin
 	conflicts = revealed
 	conflicts = revealed-appimage
 	options = !strip
-	source = revealed-bin-2.0.0alpha.9.pacman::https://github.com/BunnyStrike/revealed/releases/download/v2.0.0-alpha.9/Revealed.pacman
-	sha256sums = 96e158e6bef4894b6b1d149ebff4b19c6c2f9e292a1ae1a31fbd5690d644bf36
+	source = revealed-bin-2.0.0alpha.13.pacman::https://github.com/BunnyStrike/revealed/releases/download/v2.0.0-alpha.13/Revealed.pacman
+	sha256sums = 8320c907a182bce73f0049d22ae450d86e3614c7e02c1251c7b9b7ee83d6d7a2
 
 pkgname = revealed-bin
