@@ -9,7 +9,7 @@
 pkgname=anki
 pkgver=2.1.63
 _tag=064ea0ee08715edae868b84e48b29bd7e15d7b49 #git rev-parse $pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
@@ -48,6 +48,7 @@ makedepends=(
     'python-installer'
     'libxcrypt-compat'
     'nodejs'
+    'yarn'
 )
 optdepends=(
     'lame: record sound'
@@ -73,15 +74,16 @@ prepare(){
     # pro-actively prevent "module not found" error (TODO: verify whether still required)
     [ -d ts/node_modules ] && rm -r ts/node_modules
     patch -p1 < "$srcdir/no-update.patch"
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
     cd "$pkgname"
-
-    #use local binaries instead of downloading them as well for python and protoc
+    #use local binaries instead of downloading them
     export PYTHON_BINARY=$(which python)
     export PROTOC_BINARY=$(which protoc)
-    #export NODE_BINARY=$(which node) # does not yet compile
+    export NODE_BINARY=$(which node)
+    export YARN_BINARY=$(which yarn)
 
     ./tools/build
 }
