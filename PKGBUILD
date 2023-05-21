@@ -2,7 +2,7 @@
 
 pkgname=fortune-mod-ibash
 pkgver=2022.10
-pkgrel=3
+pkgrel=4
 pkgdesc="A collection of quotes for fortune-mod from http://ibash.org.ru"
 url="http://ibash.org.ru"
 license=("unknown")
@@ -16,6 +16,7 @@ sha256sums=('SKIP')
 build() {
     cd "${srcdir}/${pkgname}"
     python main.py -ft fortunes -o ibash
+    sed 's/[[:blank:]]*$//' -i ibash
     strfile ibash
 }
 

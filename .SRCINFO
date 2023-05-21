@@ -1,7 +1,7 @@
 pkgbase = fortune-mod-ibash
 	pkgdesc = A collection of quotes for fortune-mod from http://ibash.org.ru
 	pkgver = 2022.10
-	pkgrel = 3
+	pkgrel = 4
 	url = http://ibash.org.ru
 	arch = any
 	groups = fortune-mods
