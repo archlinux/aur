@@ -1,7 +1,7 @@
 pkgbase = typstudio
 	pkgdesc = desktop application for typst
-	pkgver = 0.1.0dev.18
-	pkgrel = 2
+	pkgver = 0.1.0dev.19
+	pkgrel = 1
 	url = https://github.com/Cubxity/typstudio
 	arch = x86_64
 	license = GPL3
@@ -12,7 +12,7 @@ pkgbase = typstudio
 	makedepends = pnpm
 	depends = libsoup
 	depends = webkit2gtk
-	source = https://github.com/Cubxity/typstudio/archive/refs/tags/v0.1.0-dev.18/typstudio-0.1.0-dev.18.tar.gz
-	sha256sums = a59398096e1cc65809949af335a77c1126e844d65863b2486c919f3b65ce21b0
+	source = https://github.com/Cubxity/typstudio/archive/refs/tags/v0.1.0-dev.19/typstudio-0.1.0-dev.19.tar.gz
+	sha256sums = 1e3e54ec3f79592cc95195df86093918fc3a5f0813634688f9c2b9acf7e450b4
 
 pkgname = typstudio

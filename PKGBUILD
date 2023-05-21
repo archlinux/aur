@@ -1,9 +1,9 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=typstudio
-pkgver=0.1.0dev.18
+pkgver=0.1.0dev.19
 _pkgver=${pkgver/dev/-dev}
-pkgrel=2
+pkgrel=1
 pkgdesc='desktop application for typst'
 url="https://github.com/Cubxity/$pkgname"
 arch=(x86_64)
@@ -17,7 +17,7 @@ makedepends=(cargo
              pnpm)
 _archive="$pkgname-$_pkgver"
 source=("$url/archive/refs/tags/v$_pkgver/$_archive.tar.gz")
-sha256sums=('a59398096e1cc65809949af335a77c1126e844d65863b2486c919f3b65ce21b0')
+sha256sums=('1e3e54ec3f79592cc95195df86093918fc3a5f0813634688f9c2b9acf7e450b4')
 
 prepare() {
 	cd "$_archive"
