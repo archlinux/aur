@@ -1,19 +1,16 @@
 pkgbase = python-selectolax
-	pkgdesc = HTML5 parser with CSS selectors
-	pkgver = 0.3.12
+	pkgdesc = Fast HTML5 parser with CSS selectors
+	pkgver = 0.3.13
 	pkgrel = 1
 	url = https://github.com/rushter/selectolax
-	changelog = CHANGES.rst
 	arch = x86_64
 	license = MIT
-	checkdepends = python-pytest
-	makedepends = cython
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = python
-	source = python-selectolax-0.3.12.tar.gz::https://files.pythonhosted.org/packages/source/s/selectolax/selectolax-0.3.12.tar.gz
-	sha256sums = e90473656f9c0e3f760712b965e1f2398109afd0faf416be52d2afbad3fe5791
+	depends = cython
+	source = https://pypi.org/packages/source/s/selectolax/selectolax-0.3.13.tar.gz
+	sha512sums = 3a40c2f47eeccf349d8c495463d250f2e79dce29509039b8416dc979bba31b0154e54197699d8895fa674c78c50f30319acf370200df28a9d6550c1152aa6ef0
 
 pkgname = python-selectolax

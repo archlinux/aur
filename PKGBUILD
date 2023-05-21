@@ -1,41 +1,24 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
-
-pkgname=python-selectolax
-_pkg="${pkgname#python-}"
-pkgver=0.3.12
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
+_base=selectolax
+pkgname=python-${_base}
+pkgver=0.3.13
 pkgrel=1
-pkgdesc="HTML5 parser with CSS selectors"
-arch=('x86_64')
-url="https://github.com/rushter/selectolax"
-license=('MIT')
-depends=('python')
-makedepends=(
-	'cython'
-	'python-build'
-	'python-installer'
-	'python-setuptools'
-	'python-wheel')
-checkdepends=('python-pytest')
-changelog=CHANGES.rst
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/s/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('e90473656f9c0e3f760712b965e1f2398109afd0faf416be52d2afbad3fe5791')
+pkgdesc="Fast HTML5 parser with CSS selectors"
+arch=(x86_64)
+url="https://github.com/rushter/${_base}"
+license=(MIT)
+depends=(cython)
+makedepends=(python-build python-installer python-setuptools python-wheel)
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('3a40c2f47eeccf349d8c495463d250f2e79dce29509039b8416dc979bba31b0154e54197699d8895fa674c78c50f30319acf370200df28a9d6550c1152aa6ef0')
 
 build() {
-	cd "$_pkg-$pkgver"
-	python -m build --wheel --no-isolation
+  cd ${_base}-${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
-## FIXME: cannot run due to circular imports
-# check() {
-# 	cd "selectolax-$pkgver"
-# 	local _version="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
-# 	PYTHONPATH="$PWD/build/lib.linux-$CARCH-$_version" pytest -x
-# }
-
 package() {
-	cd "$_pkg-$pkgver"
-	python -m installer --destdir="$pkgdir/" dist/*.whl
-	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -sv "$_site/$_pkg-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
 }
