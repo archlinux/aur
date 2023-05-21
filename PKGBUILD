@@ -4,7 +4,7 @@ pkgname=xnviewmp-system-libs
 _pkgname=xnviewmp
 pkgver=1.4.5
 srcrel=1 # Incremented when there is a new release for the same version number
-pkgrel=1
+pkgrel=2
 pkgdesc="An efficient multimedia viewer, browser and converter (using system libraries)."
 url="https://www.xnview.com/en/xnviewmp/"
 
@@ -91,7 +91,7 @@ package() {
   # linker paths). Create symlinks as needed.
   install -d -m755 "${pkg_opt_dir}/Plugins"
   ln -s /usr/lib/libwebp.so "${pkg_opt_dir}/Plugins/libwebp.so"
-  ln -s /usr/lib/libIlmImf.so "${pkg_opt_dir}/Plugins/IlmImf.so"
+  ln -s /usr/lib/libOpenEXR.so "${pkg_opt_dir}/Plugins/libOpenEXR.so"
   ln -s /usr/lib/libopenjp2.so "${pkg_opt_dir}/Plugins/openjp2.so"
 
   # Using the system libraw doesn't seem to work (assertion failure in libc when
