@@ -1,6 +1,6 @@
 pkgbase = pikaur-git
 	pkgdesc = AUR helper which asks all questions before installing/building. Inspired by pacaur, yaourt and yay.
-	pkgver = 1.15.1
+	pkgver = 1.15.2
 	pkgrel = 1
 	url = https://github.com/actionless/pikaur
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = pikaur-git
 	makedepends = python-markdown-it-py
 	depends = pyalpm
 	depends = git
-	optdepends = asp: for ABS support in -G/--getpkgbuild operation
+	optdepends = devtools: for Arch Pkgs support in -G/--getpkgbuild operation
 	optdepends = python-pysocks: for socks5 proxy support
 	optdepends = python-defusedxml: securely wrap Arch news replies
 	provides = pikaur
