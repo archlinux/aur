@@ -2,7 +2,7 @@
 _pkgname=libretro-mesen-s
 pkgname=$_pkgname-git
 pkgver=0.4.0.r201.g32a7adf
-pkgrel=2
+pkgrel=3
 pkgdesc="Super Nintendo Entertainment System core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://www.mesen.ca/"
@@ -30,5 +30,5 @@ build() {
 
 package() {
 	# shellcheck disable=SC2154
-	install -Dm644 -t "$pkgdir"/usr/lib/libretro $_pkgname/Libretro/mesen-s_libretro.so
+	install -D -t "$pkgdir"/usr/lib/libretro $_pkgname/Libretro/mesen-s_libretro.so
 }
