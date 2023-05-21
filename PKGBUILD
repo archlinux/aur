@@ -1,6 +1,6 @@
 # Maintainer: Bhanupong Petchlert <bpetlert@gmail.com>
 pkgname=pacman-mirrorup
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="A program to retrieve the best and latest Pacman mirror list based on user's geography"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bpetlert/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('a41c8d8eee0cd66082149be454ac9411a6cd6070785836bbf2d45d9f08695475')
+sha256sums=('75b0a42662b231b2704517e39221c334b7f74a4ba9a5098011591cafb6b2271a')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
