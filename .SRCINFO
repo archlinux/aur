@@ -1,6 +1,6 @@
 pkgbase = rubick-bin
 	pkgdesc = Electron based open source toolbox, free integration of rich plug-ins. 基于 electron 的开源工具箱，自由集成丰富插件。
-	pkgver = 2.2.2
+	pkgver = 2.2.5
 	pkgrel = 1
 	url = https://rubickcenter.github.io/rubick/
 	install = rubick-bin.install
@@ -37,9 +37,9 @@ pkgbase = rubick-bin
 	conflicts = rubick
 	options = !strip
 	options = !emptydirs
-	source = rubick-2.2.2.deb::https://github.com/rubickCenter/rubick/releases/download/v2.2.2/rubick_2.2.2_amd64.deb
-	source = LICENSE::https://github.com/rubickCenter/rubick/raw/master/LICENSE
-	sha256sums = 88041de1374cd5a92411181a53f2b6298be41df6780897f602fc6d6945bab6ee
+	source = rubick-2.2.5.deb::https://github.com/rubickCenter/rubick/releases/download/v2.2.5/rubick_2.2.5_amd64.deb
+	source = LICENSE::https://raw.githubusercontent.com/rubickCenter/rubick/master/LICENSE
+	sha256sums = f18c905880fbdf4fe5d9568ce030244cfe24e242ee7345dbd4521cf51a83e781
 	sha256sums = 98ec3482acc93db8661b6a794744e5eaca088cf75312d15f196abb5db7e52b77
 
 pkgname = rubick-bin
