@@ -2,7 +2,8 @@
 # Contributor: Codist <countstarlight@gmail.com>
 
 pkgname=deepin-wine-tim
-pkgver=3.4.6.22077
+_pkgver=3.4.7
+pkgver="$_pkgver".22084
 _debpkgver=9.3.2deepin20
 _debpkgname="com.qq.im.deepin"
 _timpkgname="com.qq.office.deepin"
@@ -16,44 +17,38 @@ conflicts=('wine-tim' 'deepin.com.qq.office' 'deepin-tim-for-arch')
 install="deepin-wine-tim.install"
 _mirror="https://com-store-packages.uniontech.com"
 source=("$_mirror/appstore/pool/appstore/c/${_debpkgname}/${_debpkgname}_${_debpkgver}_i386.deb"
-  "https://dldir1.qq.com/qqfile/qq/TIM3.4.6/TIM${pkgver}.exe"
-  "run.sh"
-  "share.7z")
+	"https://dldir1.qq.com/qqfile/qq/TIM${_pkgver}/TIM${pkgver}.exe"
+	"run.sh"
+	"share.7z")
 md5sums=('5fdc20e614d945bd2ba5251420872479'
-         'f6402d994bccad43236ef0dba03c7ced'
-         '325e8182c7aa56e5e99a04e3a326510e'
+         '5c24f3ba95d574766a58b1cd6535a69d'
+         '27448cfd4fe8e6a655192175e505abaa'
          '479ae2a04a9c5dcc08c67c7b1395a944')
 
 build() {
-  printf "Extracting DPKG package ...\n"
-  install -d "${srcdir}/dpkgdir"
-  tar -xvpf data.tar.xz -C "${srcdir}/dpkgdir"
-  #sed "s/\(Categories.*$\)/\1Network;/" -i "${srcdir}/dpkgdir/usr/share/applications/deepin.com.qq.office.desktop"
-  #sed "13s/TIM.exe/tim.exe/" -i "${srcdir}/dpkgdir/usr/share/applications/deepin.com.qq.office.desktop"
-  printf "Extracting Deepin Wine QQ archive ...\n"
-  # https://sourceforge.net/p/sevenzip/bugs/2356/
-  7z x -aoa -snl "${srcdir}/dpkgdir/opt/apps/${_debpkgname}/files/files.7z" -o"${srcdir}/deepintimdir"
-  printf "Cleaning up the original package directory ...\n"
-  rm -r "${srcdir}/deepintimdir/drive_c/Program Files/Tencent/QQ"
-  #printf "Patching reg files ..."
-  #patch -p1 -d "${srcdir}/deepintimdir/" < "${srcdir}/reg.patch"
-  printf "Creating font file link ...\n"
-  ln -sf "/usr/share/fonts/wenquanyi/wqy-microhei/wqy-microhei.ttc" "${srcdir}/deepintimdir/drive_c/windows/Fonts/wqy-microhei.ttc"
-  printf "Copying latest TIM installer to ${srcdir}/deepintimdir/drive_c/Program Files/Tencent/ ...\n"
-  install -m644 "${srcdir}/TIM${pkgver}.exe" "${srcdir}/deepintimdir/drive_c/Program Files/Tencent/"
-  printf "Repackaging app archive ...\n"
-  7z a -t7z -r "${srcdir}/files.7z" "${srcdir}/deepintimdir/*"
+	printf "Extracting DPKG package ...\n"
+	install -d "${srcdir}/dpkgdir"
+	tar -xvpf data.tar.xz -C "${srcdir}/dpkgdir"
+	printf "Extracting Deepin Wine QQ archive ...\n"
+	# https://sourceforge.net/p/sevenzip/bugs/2356/
+	7z x -aoa -snl "${srcdir}/dpkgdir/opt/apps/${_debpkgname}/files/files.7z" -o"${srcdir}/deepintimdir"
+	printf "Cleaning up the original package directory ...\n"
+	rm -r "${srcdir}/deepintimdir/drive_c/Program Files/Tencent/QQ"
+	printf "Creating font file link ...\n"
+	ln -sf "/usr/share/fonts/wenquanyi/wqy-microhei/wqy-microhei.ttc" "${srcdir}/deepintimdir/drive_c/windows/Fonts/wqy-microhei.ttc"
+	printf "Copying latest TIM installer to ${srcdir}/deepintimdir/drive_c/Program Files/Tencent/ ...\n"
+	install -m644 "${srcdir}/TIM${pkgver}.exe" "${srcdir}/deepintimdir/drive_c/Program Files/Tencent/"
+	printf "Repackaging app archive ...\n"
+	7z a -t7z -r "${srcdir}/files.7z" "${srcdir}/deepintimdir/*"
 }
 
 package() {
-  printf "Preparing icons ...\n"
-  install -d "${pkgdir}/usr/share"
-  7z x -aoa "${srcdir}/share.7z" -o"${srcdir}/"
-  cp -a ${srcdir}/share/* "${pkgdir}/usr/share/"
-  printf "Copying deepin files ...\n"
-  install -Dm644 "files.7z" -t "${pkgdir}/opt/apps/${_timpkgname}/files/"
-  # cp ${srcdir}/dpkgdir/opt/apps/${_debpkgname}/files/helper_archive* "${pkgdir}/opt/apps/${_timpkgname}/files/"
-  #install -m755 "${srcdir}/dpkgdir/opt/apps/${_debpkgname}/files/gtkGetFileNameDlg" "${pkgdir}/opt/apps/${_timpkgname}/files/"
-  md5sum "${srcdir}/files.7z" | awk '{ print $1 }' > "${pkgdir}/opt/apps/${_timpkgname}/files/files.md5sum"
-  install -Dm755 "run.sh" -t "${pkgdir}/opt/apps/${_timpkgname}/files/"
+	printf "Preparing icons ...\n"
+	install -d "${pkgdir}/usr/share"
+	7z x -aoa "${srcdir}/share.7z" -o"${srcdir}/"
+	cp -av ${srcdir}/share/* "${pkgdir}/usr/share/"
+	printf "Copying deepin files ...\n"
+	install -Dm644 "files.7z" -t "${pkgdir}/opt/apps/${_timpkgname}/files/"
+	md5sum "${srcdir}/files.7z" | awk '{ print $1 }' >"${pkgdir}/opt/apps/${_timpkgname}/files/files.md5sum"
+	install -Dm755 "run.sh" -t "${pkgdir}/opt/apps/${_timpkgname}/files/"
 }
