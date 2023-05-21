@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=normcap
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="OCR powered screen-capture tool to capture information instead of images"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=('qt6-wayland: Required in Wayland sessions'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dynobo/normcap/archive/refs/tags/v$pkgver.tar.gz"
 #        "https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('2131a0df12a885e164c0c9c4451fab4ddb045ce783026e916e728c1530fb19c3'
+sha256sums=('d940a0a241106890b44884880b6c77aa5c07aee4a10edd8620a4f5ea471aa07a'
             '29992fdb19773faa7582e44fe4394d4772984d5b7b9b7b347617c387f0a260f9')
 
 build() {
