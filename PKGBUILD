@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-pcsx2
 pkgname=$_pkgname-git
-pkgver=r16923.479d7da85
+pkgver=r17006.5112943bb
 pkgrel=1
 pkgdesc="Sony PlayStation 2 core"
 arch=('x86_64')
@@ -9,26 +9,26 @@ url="https://github.com/libretro/pcsx2"
 license=('GPL3')
 groups=('libretro')
 depends=(
-	'fmt'
 	'gcc-libs'
 	'glibc'
-	'libaio'
-	'libchdr'
 	'libpng'
 	'libretro-core-info'
-	'libzip'
-	'rapidyaml'
-	'systemd-libs'
-	'xz'
 	'zlib'
-	'zstd'
 )
 makedepends=(
 	'cmake'
 	'fast_float'
+	'fmt'
 	'git'
+	'libaio'
+	'libchdr'
 	'libglvnd'
 	'libpcap'
+	'libzip'
+	'rapidyaml'
+	'systemd-libs'
+	'xz'
+	'zstd'
 )
 provides=("$_pkgname=${pkgver#r}")
 conflicts=("$_pkgname")
@@ -75,6 +75,16 @@ build() {
 }
 
 package() {
+	depends+=(
+		'libaio.so'
+		'libchdr.so'
+		'libfmt.so'
+		'liblzma.so'
+		'libryml.so'
+		'libudev.so'
+		'libzip.so'
+		'libzstd.so'
+	)
 	# shellcheck disable=SC2154
-	install -Dm644 -t "$pkgdir"/usr/lib/libretro build/bin/pcsx2_libretro.so
+	install -D -t "$pkgdir"/usr/lib/libretro build/bin/pcsx2_libretro.so
 }
