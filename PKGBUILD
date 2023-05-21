@@ -1,7 +1,7 @@
 # Maintainer: Shell Chen <aur@sorz.org>
 pkgname=minissdpd
-pkgver=1.5.20211105
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="MiniSSDPd - daemon keeping track of UPnP devices up"
 arch=('x86_64' 'i686')
 url="https://miniupnp.tuxfamily.org/minissdpd.html"
@@ -10,7 +10,7 @@ depends=('libnfnetlink')
 optdepends=('minissdpd-openrc: for OpenRC based systems')
 source=("http://miniupnp.tuxfamily.org/files/$pkgname-$pkgver.tar.gz"
         'minissdpd@.service')
-sha256sums=('a073be9c6d9194feaeccf31cd986c48afd2212426b6594e75166cedff1c461aa'
+sha256sums=('f4c2dea6a472e0a5cc9dca2dc4c1fc36ba5538eacf8d793825293251725546bd'
             '47a6eadc93cb759ea4030f50776bd5e71c701c38f4346df53c299a4ff51edd76')
 
 build() {
