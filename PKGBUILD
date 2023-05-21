@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-ppsspp
 pkgname=$_pkgname-git
-pkgver=1.15.3.r10.gba4f2837e7
+pkgver=1.15.3.r54.g30b11e8ada
 pkgrel=1
 pkgdesc="Sony PlayStation Portable core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -9,20 +9,24 @@ url="https://www.ppsspp.org/"
 license=('GPL2')
 groups=('libretro')
 depends=(
-	'ffmpeg4.4' # https://github.com/hrydgard/ppsspp/issues/15308
 	'gcc-libs'
-	'glew'
 	'glibc'
-	'libgl'
 	'libpng'
 	'libretro-core-info'
-	'libzip'
-	'miniupnpc'
 	'snappy'
 	'zlib'
+)
+makedepends=(
+	'cmake'
+	'ffmpeg4.4' # https://github.com/hrydgard/ppsspp/issues/15308
+	'git'
+	'glew'
+	'libgl'
+	'libzip'
+	'miniupnpc'
+	'python'
 	'zstd'
 )
-makedepends=('cmake' 'git' 'python')
 optdepends=('ppsspp-assets')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -74,6 +78,18 @@ build() {
 }
 
 package() {
+	depends+=(
+		'libavcodec.so'
+		'libavformat.so'
+		'libavutil.so'
+		'libGLEW.so'
+		'libminiupnpc.so'
+		'libOpenGL.so'
+		'libswresample.so'
+		'libswscale.so'
+		'libzip.so'
+		'libzstd.so'
+	)
 	# shellcheck disable=SC2154
-	install -Dm644 -t "$pkgdir"/usr/lib/libretro build/lib/ppsspp_libretro.so
+	install -D -t "$pkgdir"/usr/lib/libretro build/lib/ppsspp_libretro.so
 }
