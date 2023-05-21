@@ -5,7 +5,7 @@ _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
 pkgver=2022.804.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A toolkit for LAMOST spectra."
 arch=('any')
 url="https://laspec.readthedocs.io"
@@ -16,8 +16,16 @@ makedepends=('python-setuptools')
 #            'python-installer'
 #            'python-sphinx')
 checkdepends=('python-nose')
-source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('e5fc7714df52020fbdd1c8e382026bd9')
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
+        'fix-for-numpy1.24.patch')
+md5sums=('e5fc7714df52020fbdd1c8e382026bd9'
+         'e8f097e46b0014e23456869256f156ed')
+
+prepare() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    patch -Np1 -i "${srcdir}/fix-for-numpy1.24.patch"
+}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}

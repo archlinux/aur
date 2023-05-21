@@ -1,14 +1,16 @@
 pkgbase = python-laspec
 	pkgdesc = A toolkit for LAMOST spectra.
 	pkgver = 2022.804.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://laspec.readthedocs.io
 	arch = any
 	license = MIT
 	checkdepends = python-nose
 	makedepends = python-setuptools
 	source = https://files.pythonhosted.org/packages/source/l/laspec/laspec-2022.804.0.tar.gz
+	source = fix-for-numpy1.24.patch
 	md5sums = e5fc7714df52020fbdd1c8e382026bd9
+	md5sums = e8f097e46b0014e23456869256f156ed
 
 pkgname = python-laspec
 	depends = python>=3.7

@@ -1,0 +1,559 @@
+--- a/laspec/ccf2.py	2022-07-19 13:20:13.000000000 +0800
++++ b/laspec/ccf2.py	2023-05-21 20:49:16.029992710 +0800
+@@ -256,7 +256,7 @@
+     # RV grid --> CCF grid
+     rv_grid = np.asarray(rv_grid)
+     # nz = len(z_grid)
+-    ccf_grid = np.ones_like(rv_grid, np.float)
++    ccf_grid = np.ones_like(rv_grid, np.float64)
+ 
+     # calculate CCF
+     for i_rv, this_rv in enumerate(rv_grid):
+@@ -376,9 +376,9 @@
+         # determine number of models
+         if 0 < nmod < 1:
+             assert self.nmod * nmod >= 1
+-            nmod = np.int(self.nmod*nmod)
++            nmod = np.int_(self.nmod*nmod)
+         elif nmod > 1:
+-            nmod = np.int(nmod)
++            nmod = np.int_(nmod)
+         else:
+             raise ValueError("Invalid nmod value: {}".format(nmod))
+         # determine ind of new models
+@@ -465,8 +465,8 @@
+         opt = minimize(xcorr_spec_cost, x0=rv_best,
+                        args=(wave_obs, flux_obs, self.wave_mod, self.flux_mod[imod]),
+                        method=method)  # Powell
+-        result = dict(rv_opt=np.float(opt.x),
+-                      rv_err=np.float(opt.hess_inv) if method == "BFGS" else np.nan,
++        result = dict(rv_opt=np.float64(opt.x),
++                      rv_err=np.float64(opt.hess_inv) if method == "BFGS" else np.nan,
+                       rv_best=rv_best,
+                       ccfmax=-opt["fun"],
+                       success=opt.success,
+@@ -598,7 +598,7 @@
+                            method=method)  # Powell
+             # store single star result
+             this_res = dict(n_spec=n_spec)
+-            this_res["rv1_opt_{}".format(cache_name)] = np.float(opt.x)
++            this_res["rv1_opt_{}".format(cache_name)] = np.float64(opt.x)
+             this_res["rv1_best_{}".format(cache_name)] = rv_best_grid
+             this_res["ccfmax1_{}".format(cache_name)] = -opt["fun"]
+             this_res["imod_{}".format(cache_name)] = imod_selected
+@@ -620,11 +620,11 @@
+                         method=method)
+                     x_mc[i] = opt.x
+                 this_res["rv1_pct_{}".format(cache_name)] = np.percentile(x_mc, [16, 50, 84])
+-                this_res["rv1_err_{}".format(cache_name)] = np.float(opt.hess_inv) \
++                this_res["rv1_err_{}".format(cache_name)] = np.float64(opt.hess_inv) \
+                     if method == "BFGS" else np.mean(np.diff(this_res["rv1_pct_{}".format(cache_name)]))
+             else:
+                 flux_err_obs = None
+-                this_res["rv1_err_{}".format(cache_name)] = np.float(opt.hess_inv) if method == "BFGS" else np.nan
++                this_res["rv1_err_{}".format(cache_name)] = np.float64(opt.hess_inv) if method == "BFGS" else np.nan
+ 
+             # measure double components
+             """ given a template, optimize (rv1, drv, eta) """
+@@ -816,8 +816,8 @@
+         # opt = minimize(ccf_cost_interp, x0=rv_best, args=(wave_obs, flux_obs, wave_mod, flux_mod[imod_best]),
+         # method="Powell")
+         # x = np.interp(wave, wave_obs/(1+opt.x/SOL_kms), flux_obs).reshape(1, -1)
+-        return dict(rv_opt=np.float(opt.x),
+-                    rv_err=np.float(opt.hess_inv) if method == "BFGS" else np.nan,
++        return dict(rv_opt=np.float64(opt.x),
++                    rv_err=np.float64(opt.hess_inv) if method == "BFGS" else np.nan,
+                     rv_best=rv_best,
+                     ccfmax=ccfmax,
+                     success=opt.success,
+--- a/laspec/ccf.py	2022-07-19 13:12:12.000000000 +0800
++++ b/laspec/ccf.py	2023-05-21 20:49:16.029992710 +0800
+@@ -311,7 +311,7 @@
+ 
+ def calculate_local_variance(flux, npix_lv: int = 5) -> np.ndarray:
+     """ calculate local variance """
+-    weight = np.zeros_like(flux, dtype=np.float)
++    weight = np.zeros_like(flux, dtype=np.float64)
+     npix = len(flux)
+     for ipix in range(npix_lv, npix - npix_lv):
+         weight[ipix] = np.var(flux[ipix - npix_lv:ipix + 1 + npix_lv])
+@@ -356,7 +356,7 @@
+         # record shapes
+         self.nparam = self.pmod.shape[1]
+         self.nmod, self.npix = self.flux_mod.shape
+-        self.npix_lv = np.int(np.abs(npix_lv))
++        self.npix_lv = np.int_(np.abs(npix_lv))
+         # initialize weights
+         # assert w_mod is "lv"
+         # currently there is only one option
+@@ -430,9 +430,9 @@
+         # determine number of models
+         if 0 < nmod < 1:
+             assert self.nmod * nmod >= 1
+-            nmod = np.int(self.nmod*nmod)
++            nmod = np.int_(self.nmod*nmod)
+         elif nmod > 1:
+-            nmod = np.int(nmod)
++            nmod = np.int_(nmod)
+         else:
+             raise ValueError("Invalid nmod value: {}".format(nmod))
+         # determine ind of new models
+@@ -542,8 +542,8 @@
+                        args=(wave_obs, flux_obs, self.wave_mod, self.flux_mod[imod],
+                              w_mod[imod], w_obs),
+                        method=method)  # Powell
+-        result = dict(rv_opt=np.float(opt.x),
+-                      rv_err=np.float(opt.hess_inv) if method == "BFGS" else np.nan,
++        result = dict(rv_opt=np.float64(opt.x),
++                      rv_err=np.float64(opt.hess_inv) if method == "BFGS" else np.nan,
+                       rv_best=rv_best,
+                       ccfmax=-opt["fun"],
+                       success=opt.success,
+@@ -739,8 +739,8 @@
+                        args=(wave_obs, flux_obs, self.wave_mod, self.flux_mod[imod], pw), method=method)
+         # opt = minimize(ccf_cost_interp, x0=rv_best, args=(wave_obs, flux_obs, wave_mod, flux_mod[imod_best]), method="Powell")
+         # x = np.interp(wave, wave_obs/(1+opt.x/SOL_kms), flux_obs).reshape(1, -1)
+-        return dict(rv_opt=np.float(opt.x),
+-                    rv_err=np.float(opt.hess_inv) if method == "BFGS" else np.nan,
++        return dict(rv_opt=np.float64(opt.x),
++                    rv_err=np.float64(opt.hess_inv) if method == "BFGS" else np.nan,
+                     rv_best=rv_best,
+                     ccfmax=ccfmax,
+                     success=opt.success,
+--- a/laspec/convolution.py	2021-01-24 01:25:27.000000000 +0800
++++ b/laspec/convolution.py	2023-05-21 20:49:16.029992710 +0800
+@@ -72,7 +72,7 @@
+     # determine wave_step_min
+     wave_step_min = wave_start / R_
+     # wave guess
+-    wave_step_guess = np.zeros(np.int((wave_stop-wave_start)/wave_step_min))
++    wave_step_guess = np.zeros(np.int_((wave_stop-wave_start)/wave_step_min))
+     wave_guess = np.zeros_like(wave_step_guess)
+     wave_step_guess[0] = wave_step_min
+     wave_guess[0] = wave_start
+@@ -92,7 +92,7 @@
+     R_test = over_sample * R(wave_test)
+     wave_step_min = np.min(wave_test / R_test)
+     # wave guess
+-    wave_guess = np.zeros(np.int(np.ceil((wave_stop-wave_start)/wave_step_min)))
++    wave_guess = np.zeros(np.int_(np.ceil((wave_stop-wave_start)/wave_step_min)))
+     wave_guess[0] = wave_start
+     # iterate for real # single side R !!!
+     for i in np.arange(1, len(wave_guess)):
+@@ -412,7 +412,7 @@
+     gk_array = generate_gaussian_kernel_array(over_sample,
+                                               gaussian_kernel_sigma_num)
+     # gk_len = len(gk_array)
+-    # gk_len_half = np.int((gk_len - 1) / 2.)
++    # gk_len_half = np.int_((gk_len - 1) / 2.)
+ 
+     # 6. convolution
+     if verbose:
+--- a/laspec/extern/interpolate.py	2018-12-12 17:31:03.000000000 +0800
++++ b/laspec/extern/interpolate.py	2023-05-21 20:50:38.626218701 +0800
+@@ -79,8 +79,8 @@
+        Cambridge University Press ISBN-13: 9780521880688
+     """
+     try:
+-        window_size = np.abs(np.int(window_size))
+-        order = np.abs(np.int(order))
++        window_size = np.abs(np.int_(window_size))
++        order = np.abs(np.int_(order))
+     except ValueError:
+         raise ValueError("window_size and order have to be of type int")
+     if window_size % 2 != 1 or window_size < 1:
+@@ -224,7 +224,7 @@
+     exps = [(k - n, n) for k in range(order + 1) for n in range(k + 1)]
+ 
+     # coordinates of points
+-    ind = np.arange(-half_size, half_size + 1, dtype=np.float)
++    ind = np.arange(-half_size, half_size + 1, dtype=np.float64)
+     dx = np.repeat(ind, window_size)
+     dy = np.tile(ind, [window_size, 1]).reshape(window_size ** 2, )
+ 
+@@ -572,7 +572,7 @@
+         # ndy = y.ndim
+         szy = y.shape
+ 
+-        nd = np.int(prod(szy[:-1]))  ## modified by Bo Zhang
++        nd = np.int_(prod(szy[:-1]))  ## modified by Bo Zhang
+         ny = szy[-1]
+ 
+         if n < 2:
+--- a/laspec/lamost_kits.py	2022-08-04 17:34:33.000000000 +0800
++++ b/laspec/lamost_kits.py	2023-05-21 20:49:16.033326026 +0800
+@@ -166,8 +166,8 @@
+             a = np.arange(a, dtype=int)
+         n_el = len(a)
+         if n_jobs is not None:
+-            chunksize = np.int(np.ceil(n_el / n_jobs))
+-        n_chunks = np.int(np.ceil(n_el / chunksize))
++            chunksize = np.int_(np.ceil(n_el / n_jobs))
++        n_chunks = np.int_(np.ceil(n_el / chunksize))
+         a_scattered = [a[chunksize * i_chunk:np.min((chunksize * (i_chunk + 1), n_el))] for i_chunk in range(n_chunks)]
+         return a_scattered
+ 
+--- a/laspec/mrs.py	2022-07-23 08:24:07.000000000 +0800
++++ b/laspec/mrs.py	2023-05-21 20:49:16.033326026 +0800
+@@ -97,18 +97,18 @@
+     """ MRS spectrum """
+     name = ""
+     # original quantities
+-    wave = np.array([], dtype=np.float)
+-    flux = np.array([], dtype=np.float)
+-    ivar = np.array([], dtype=np.float)
+-    mask = np.array([], dtype=np.bool)  # True for problematic
+-    flux_err = np.array([], dtype=np.float)
+-    indcr = np.array([], dtype=np.float)  # cosmic ray index
++    wave = np.array([], dtype=np.float64)
++    flux = np.array([], dtype=np.float64)
++    ivar = np.array([], dtype=np.float64)
++    mask = np.array([], dtype=np.bool_)  # True for problematic
++    flux_err = np.array([], dtype=np.float64)
++    indcr = np.array([], dtype=np.float64)  # cosmic ray index
+ 
+     # normalized quantities
+-    flux_norm = np.array([], dtype=np.float)
+-    flux_cont = np.array([], dtype=np.float)
+-    ivar_norm = np.array([], dtype=np.float)
+-    flux_norm_err = np.array([], dtype=np.float)
++    flux_norm = np.array([], dtype=np.float64)
++    flux_cont = np.array([], dtype=np.float64)
++    ivar_norm = np.array([], dtype=np.float64)
++    flux_norm_err = np.array([], dtype=np.float64)
+ 
+     # other information (optional)
+     info = {}
+@@ -187,16 +187,16 @@
+             self.isempty = False
+         else:
+             # a null spec
+-            self.wave = np.array([], dtype=np.float)
+-            self.flux = np.array([], dtype=np.float)
++            self.wave = np.array([], dtype=np.float64)
++            self.flux = np.array([], dtype=np.float64)
+             self.isempty = True
+         # ivar and mask is optional for spec
+         if ivar is None:
+-            self.ivar = np.ones_like(self.flux, dtype=np.float)
++            self.ivar = np.ones_like(self.flux, dtype=np.float64)
+         else:
+             self.ivar = ivar
+         if mask is None:
+-            self.mask = np.zeros_like(self.flux, dtype=np.bool)
++            self.mask = np.zeros_like(self.flux, dtype=np.bool_)
+             self.npix_bad = 0
+         else:
+             self.mask = mask
+@@ -264,9 +264,9 @@
+             # get meta info
+             info = dict(
+                 name=get_kwd_safe(hdu.header, "EXTNAME", ""),
+-                lmjm=np.int(get_kwd_safe(hdu.header, "LMJM", 0)),
+-                exptime=np.float(get_kwd_safe(hdu.header, "EXPTIME", 0.)),
+-                snr=np.float(get_kwd_safe(hdu.header, "SNR", 0.)),
++                lmjm=np.int_(get_kwd_safe(hdu.header, "LMJM", 0)),
++                exptime=np.float64(get_kwd_safe(hdu.header, "EXPTIME", 0.)),
++                snr=np.float64(get_kwd_safe(hdu.header, "SNR", 0.)),
+                 lamplist=get_kwd_safe(hdu.header, "LAMPLIST", "")
+             )
+ 
+@@ -345,20 +345,20 @@
+                 self.norm_type = norm_type
+                 self.norm_kwargs.update(norm_kwargs)
+                 # normalize spectrum
+-                self.flux_norm = np.array([], dtype=np.float)
+-                self.flux_cont = np.array([], dtype=np.float)
+-                self.ivar_norm = np.array([], dtype=np.float)
+-                self.flux_norm_err = np.array([], dtype=np.float)
++                self.flux_norm = np.array([], dtype=np.float64)
++                self.flux_cont = np.array([], dtype=np.float64)
++                self.ivar_norm = np.array([], dtype=np.float64)
++                self.flux_norm_err = np.array([], dtype=np.float64)
+ 
+         else:
+             # for empty spec
+             # update norm kwargs
+             self.norm_kwargs.update(norm_kwargs)
+             # normalize spectrum
+-            self.flux_norm = np.array([], dtype=np.float)
+-            self.flux_cont = np.array([], dtype=np.float)
+-            self.ivar_norm = np.array([], dtype=np.float)
+-            self.flux_norm_err = np.array([], dtype=np.float)
++            self.flux_norm = np.array([], dtype=np.float64)
++            self.flux_cont = np.array([], dtype=np.float64)
++            self.ivar_norm = np.array([], dtype=np.float64)
++            self.flux_norm_err = np.array([], dtype=np.float64)
+             return
+ 
+     def wave_rv(self, rv=None):
+@@ -533,16 +533,16 @@
+     jdmid_delta = 0.
+     bjdmid = 0.
+ 
+-    wave = np.array([], dtype=np.float)
+-    flux = np.array([], dtype=np.float)
+-    ivar = np.array([], dtype=np.float)
+-    mask = np.array([], dtype=np.int)
+-    flux_err = np.array([], dtype=np.float)
+-
+-    flux_norm = np.array([], dtype=np.float)
+-    ivar_norm = np.array([], dtype=np.float)
+-    flux_cont = np.array([], dtype=np.float)
+-    flux_norm_err = np.array([], dtype=np.float)
++    wave = np.array([], dtype=np.float64)
++    flux = np.array([], dtype=np.float64)
++    ivar = np.array([], dtype=np.float64)
++    mask = np.array([], dtype=np.int_)
++    flux_err = np.array([], dtype=np.float64)
++
++    flux_norm = np.array([], dtype=np.float64)
++    ivar_norm = np.array([], dtype=np.float64)
++    flux_cont = np.array([], dtype=np.float64)
++    flux_norm_err = np.array([], dtype=np.float64)
+ 
+     # # default settings for normalize_spectrum_iter/poly
+     norm_kwargs = {}
+@@ -611,16 +611,16 @@
+             self.__setattr__("flux_norm_err_{}".format(self.specnames[i_spec]), self.speclist[i_spec].flux_norm_err)
+ 
+         # combined attributes
+-        self.wave = np.array([], dtype=np.float)
+-        self.flux = np.array([], dtype=np.float)
+-        self.ivar = np.array([], dtype=np.float)
+-        self.mask = np.array([], dtype=np.int)
+-        self.flux_err = np.array([], dtype=np.float)
+-
+-        self.flux_norm = np.array([], dtype=np.float)
+-        self.ivar_norm = np.array([], dtype=np.float)
+-        self.flux_cont = np.array([], dtype=np.float)
+-        self.flux_norm_err = np.array([], dtype=np.float)
++        self.wave = np.array([], dtype=np.float64)
++        self.flux = np.array([], dtype=np.float64)
++        self.ivar = np.array([], dtype=np.float64)
++        self.mask = np.array([], dtype=np.int_)
++        self.flux_err = np.array([], dtype=np.float64)
++
++        self.flux_norm = np.array([], dtype=np.float64)
++        self.ivar_norm = np.array([], dtype=np.float64)
++        self.flux_cont = np.array([], dtype=np.float64)
++        self.flux_norm_err = np.array([], dtype=np.float64)
+ 
+         # concatenate into one epoch spec
+         for i_spec in range(self.nspec):
+@@ -756,20 +756,20 @@
+         self.hdunames = [hdu.name for hdu in self]
+         self.ulmjm = []
+ 
+-        self.isB = np.zeros(self.nhdu, dtype=np.bool)
+-        self.isR = np.zeros(self.nhdu, dtype=np.bool)
+-        self.isEpoch = np.zeros(self.nhdu, dtype=np.bool)
+-        self.isCoadd = np.zeros(self.nhdu, dtype=np.bool)
+-        self.lmjm = np.zeros(self.nhdu, dtype=np.int)
++        self.isB = np.zeros(self.nhdu, dtype=np.bool_)
++        self.isR = np.zeros(self.nhdu, dtype=np.bool_)
++        self.isEpoch = np.zeros(self.nhdu, dtype=np.bool_)
++        self.isCoadd = np.zeros(self.nhdu, dtype=np.bool_)
++        self.lmjm = np.zeros(self.nhdu, dtype=np.int_)
+         for i in range(self.nhdu):
+             if self.hdunames[i].startswith("B-"):
+                 self.isB[i] = True
+                 self.isEpoch[i] = True
+-                self.lmjm[i] = np.int(self.hdunames[i][2:])
++                self.lmjm[i] = np.int_(self.hdunames[i][2:])
+             elif self.hdunames[i].startswith("R-"):
+                 self.isR[i] = True
+                 self.isEpoch[i] = True
+-                self.lmjm[i] = np.int(self.hdunames[i][2:])
++                self.lmjm[i] = np.int_(self.hdunames[i][2:])
+             elif self.hdunames[i] == "COADD_B":
+                 self.isB[i] = True
+                 self.isCoadd[i] = True
+@@ -814,7 +814,7 @@
+         try:
+             if isinstance(lmjm, str):
+                 assert lmjm == "COADD"
+-            if isinstance(lmjm, np.int):
++            if isinstance(lmjm, np.int_):
+                 assert lmjm in self.lmjm
+         except AssertionError:
+             raise AssertionError("@MrsFits: lmjm={} is not found in this file!".format(lmjm))
+@@ -902,7 +902,7 @@
+ 
+     @property
+     def snr(self):
+-        _snr = np.zeros((self.nhdu,), dtype=np.float)
++        _snr = np.zeros((self.nhdu,), dtype=np.float64)
+         for i in range(self.nhdu):
+             if "SNR" in self[i].header.keys():
+                 _snr[i] = self[i].header["SNR"]
+@@ -916,11 +916,11 @@
+ 
+     @property
+     def snr(self):
+-        return np.array([_.snr for _ in self], dtype=np.float)
++        return np.array([_.snr for _ in self], dtype=np.float64)
+ 
+     @property
+     def epoch(self):
+-        return np.array([_.epoch for _ in self], dtype=np.float)
++        return np.array([_.epoch for _ in self], dtype=np.float64)
+ 
+     @property
+     def nepoch(self):
+@@ -928,7 +928,7 @@
+ 
+     @property
+     def rv(self):
+-        return np.array([_.rv for _ in self], dtype=np.float)
++        return np.array([_.rv for _ in self], dtype=np.float64)
+ 
+     def __new__(cls, data, name="", norm_type=None, **norm_kwargs):
+         # prepare
+--- a/laspec/neural_network.py	2021-11-08 16:39:08.000000000 +0800
++++ b/laspec/neural_network.py	2023-05-21 20:49:16.033326026 +0800
+@@ -456,7 +456,7 @@
+ #
+ #     nn = NN(kind="nn", ninput=1, nhidden=(100,50), noutput=1, activation_hidden=("relu", "relu"), activation_output="tanh")
+ #     nn.set_callbacks(patience_earlystopping=100, patience_reducelronplateau=100, filepath="/tmp/cvsearch.h5")
+-#     nn.train(x[:,0], y, y*0+1, test_size=0.1, epochs=10000, batch_size=np.int(x.shape[0]/20),
++#     nn.train(x[:,0], y, y*0+1, test_size=0.1, epochs=10000, batch_size=np.int_(x.shape[0]/20),
+ #              loss="mse", metrics="mae", optimizer=optimizers.Adam(lr=1e-1))
+ #     nn.model = load_model(filepath="/tmp/cvsearch.h5")
+ #     nn.predict(x[:,0])
+--- a/laspec/normalization.py	2021-11-17 13:39:05.000000000 +0800
++++ b/laspec/normalization.py	2023-05-21 20:49:16.033326026 +0800
+@@ -78,7 +78,7 @@
+     assert 0. < q < 1.
+ 
+     # n_iter = len(p)
+-    n_bin = np.int(np.fix(np.diff(norm_range) / dwave) + 1)
++    n_bin = np.int_(np.fix(np.diff(norm_range) / dwave) + 1)
+     wave1 = norm_range[0]
+ 
+     # SMOOTH 1
+@@ -87,7 +87,7 @@
+         ind_good_init = 1. * (ivar > 0.) * (flux > 0.)
+     else:
+         ind_good_init = 1. * (flux > 0.)
+-    ind_good_init = ind_good_init.astype(np.bool)
++    ind_good_init = ind_good_init.astype(np.bool_)
+     # print("@Cham: sum(ind_good_init)", np.sum(ind_good_init))
+ 
+     flux_smoothed1 = SmoothSpline(wave[ind_good_init], flux[ind_good_init],
+@@ -95,7 +95,7 @@
+     dflux = flux - flux_smoothed1
+ 
+     # collecting continuum pixels --> ITERATION 1
+-    ind_good = np.zeros(wave.shape, dtype=np.bool)
++    ind_good = np.zeros(wave.shape, dtype=np.bool_)
+     for i_bin in range(n_bin):
+         ind_bin = np.logical_and(wave > wave1 + (i_bin - 0.5) * dwave,
+                                  wave <= wave1 + (i_bin + 0.5) * dwave)
+@@ -115,7 +115,7 @@
+         assert np.sum(ind_good) > 0
+     except AssertionError:
+         Warning("@Keenan.normalize_spectrum(): unable to find continuum!")
+-        ind_good = np.ones(wave.shape, dtype=np.bool)
++        ind_good = np.ones(wave.shape, dtype=np.bool_)
+ 
+     # SMOOTH 2
+     # continuum flux
+@@ -181,7 +181,7 @@
+     # check q region
+     # assert 0. <= q <= 1.
+ 
+-    nbins = np.int(np.ceil((wave[-1] - wave[0]) / binwidth) + 1)
++    nbins = np.int_(np.ceil((wave[-1] - wave[0]) / binwidth) + 1)
+     bincenters = np.linspace(wave[0], wave[-1], nbins)
+ 
+     # iteratively smoothing
+@@ -213,7 +213,7 @@
+             assert np.sum(ind_good) > 0
+         except AssertionError:
+             Warning("@normalize_spectrum_iter: unable to find continuum!")
+-            ind_good = np.ones(wave.shape, dtype=np.bool)
++            ind_good = np.ones(wave.shape, dtype=np.bool_)
+ 
+     # final smoothing
+     flux_smoothed2 = SmoothSpline(
+@@ -341,7 +341,7 @@
+     # check q region
+     assert 0. <= q <= 1.
+ 
+-    nbins = np.int(np.ceil((wave[-1] - wave[0]) / binwidth) + 1)
++    nbins = np.int_(np.ceil((wave[-1] - wave[0]) / binwidth) + 1)
+     bincenters = np.linspace(wave[0], wave[-1], nbins)
+ 
+     # iteratively smoothing
+@@ -374,7 +374,7 @@
+             assert np.sum(ind_good) > 0
+         except AssertionError:
+             Warning("@normalize_spectrum_iter: unable to find continuum!")
+-            ind_good = np.ones(wave.shape, dtype=np.bool)
++            ind_good = np.ones(wave.shape, dtype=np.bool_)
+ 
+     # final smoothing
+     flux_smoothed2 = PolySmooth(wave[ind_good], flux[ind_good], deg=deg, pw=pw)(wave)
+--- a/laspec/old/spec_quick_view.py	2021-01-23 17:08:32.000000000 +0800
++++ b/laspec/old/spec_quick_view.py	2023-05-21 20:50:38.629552016 +0800
+@@ -125,8 +125,8 @@
+         raise ValueError('@Cham: xtick_label_type is wrong!')
+ 
+     for i_chunk in xrange(n_chunks):
+-        n_xtick_l = np.int(np.abs((wave_centers[i_chunk] - wave_intervals[i_chunk][0]) / xtick_pos_step[i_chunk]))
+-        n_xtick_r = np.int(np.abs((wave_centers[i_chunk] - wave_intervals[i_chunk][1]) / xtick_pos_step[i_chunk]))
++        n_xtick_l = np.int_(np.abs((wave_centers[i_chunk] - wave_intervals[i_chunk][0]) / xtick_pos_step[i_chunk]))
++        n_xtick_r = np.int_(np.abs((wave_centers[i_chunk] - wave_intervals[i_chunk][1]) / xtick_pos_step[i_chunk]))
+         xtick_pos_, xtick_lab_ = _generate_chunk_xtick_pos_lab(
+             n_xtick_l,
+             n_xtick_r,
+--- a/laspec/optimize.py	2021-01-24 01:31:21.000000000 +0800
++++ b/laspec/optimize.py	2023-05-21 20:49:16.033326026 +0800
+@@ -45,7 +45,7 @@
+         self.xhist = []
+ 
+     def __call__(self, x):
+-        return np.float(self.fun(np.array(x), *self.args, **self.kwargs))
++        return np.float64(self.fun(np.array(x), *self.args, **self.kwargs))
+ 
+     def run(self, fun=None, x0=None, dx=None, maxiter=None, args=None,
+             kwargs=None, optind=None, verbose=None, random=None):
+--- a/laspec/qconv.py	2019-12-03 22:17:16.000000000 +0800
++++ b/laspec/qconv.py	2023-05-21 20:49:16.033326026 +0800
+@@ -27,7 +27,7 @@
+     sigma = dRV_Gk/dRV_sampling/(2*np.sqrt(2*np.log(2)))
+     
+     # determine X
+-    npix_half = np.int(sigma*n_sigma_Gk)
++    npix_half = np.int_(sigma*n_sigma_Gk)
+     # npix = 2 * npix_half + 1
+     x = np.arange(-npix_half, npix_half+1)
+         
+@@ -56,10 +56,10 @@
+     rotation kernel
+ 
+     """
+-    osr_kernel = np.int(np.floor(osr_kernel / 2)) * 2 + 1  # an odd number
++    osr_kernel = np.int_(np.floor(osr_kernel / 2)) * 2 + 1  # an odd number
+     # determine X
+-    npix_half = np.int(np.floor(vsini / dRV_sampling))
+-    npix_half = np.int(npix_half * osr_kernel + 0.5 * (osr_kernel - 1))
++    npix_half = np.int_(np.floor(vsini / dRV_sampling))
++    npix_half = np.int_(npix_half * osr_kernel + 0.5 * (osr_kernel - 1))
+     # npix = 2 * npix_half + 1
+     vvl = np.arange(-npix_half, npix_half + 1) / osr_kernel * dRV_sampling / vsini
+ 
+--- a/laspec/wavelength.py	2020-03-24 18:16:15.000000000 +0800
++++ b/laspec/wavelength.py	2023-05-21 20:49:16.036659343 +0800
+@@ -72,7 +72,7 @@
+ 
+     """
+     if dwave is not None:
+-        npix = np.int(np.ptp(wave) / dwave * osr_ext + 1)
++        npix = np.int_(np.ptp(wave) / dwave * osr_ext + 1)
+     else:
+-        npix = np.int(len(wave) * osr_ext + 1)
++        npix = np.int_(len(wave) * osr_ext + 1)
+     return np.logspace(np.log10(np.min(wave)), np.log10(np.max(wave)), npix, base=10.0)
+\ 文件末尾没有换行符
