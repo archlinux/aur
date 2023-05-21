@@ -1,0 +1,12 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = nodejs
+Target = corepacker
+
+[Action]
+Description = Enable Corepack
+When = PostTransaction
+Exec = /bin/corepack enable
+Depends = nodejs
