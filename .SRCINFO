@@ -1,7 +1,7 @@
 pkgbase = nextinspace
 	pkgdesc = Print upcoming space-related events to your terminal
 	pkgver = 2.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gideonshaked/nextinspace
 	arch = any
 	license = GPL3
