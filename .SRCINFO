@@ -10,6 +10,7 @@ pkgbase = python-quicktions
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = cython
+	depends = python
 	depends = glibc
 	source = quicktions-1.14.tar.gz::https://github.com/scoder/quicktions/archive/1.14.tar.gz
 	sha512sums = e3fc652919b1eb95783d7860ba2481238b72e86ecc71ab5431fde4ec9e51d281d66f2f5f97d5b42089dde384b04bf92eea2edca859ce680cf16483224b7c0513
