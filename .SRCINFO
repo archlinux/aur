@@ -1,7 +1,7 @@
 pkgbase = zulip-desktop-electron
 	pkgdesc = Real-time team chat based on the email threading model
-	pkgver = 5.9.4
-	pkgrel = 2
+	pkgver = 5.10.0
+	pkgrel = 1
 	url = https://zulip.com
 	arch = x86_64
 	license = Apache
@@ -12,10 +12,10 @@ pkgbase = zulip-desktop-electron
 	depends = libxss
 	provides = zulip-desktop
 	conflicts = zulip-desktop
-	source = zulip-desktop-5.9.4.tar.gz::https://github.com/zulip/zulip-desktop/archive/v5.9.4.tar.gz
+	source = zulip-desktop-5.10.0.tar.gz::https://github.com/zulip/zulip-desktop/archive/v5.10.0.tar.gz
 	source = zulip-desktop.desktop
 	source = zulip-desktop.sh.in
-	sha256sums = 4127a6a9bfef2acb8a6e9865e8d5d1e4033857029dad609a1cfa6cd4e68a278d
+	sha256sums = 03dde91bc8f8e8d750dcc0a240f0efda65578fb7d99ced0a04a47ec88bbc1f2e
 	sha256sums = 8f3440dc9195c6763de16f8b13409a5c130bdf417015e7e27bb64fdb227f4f10
 	sha256sums = 70ed0f08158c6ea8ef99dbbe360861e2c63911c2fadc74c0154bd6567abc8979
 

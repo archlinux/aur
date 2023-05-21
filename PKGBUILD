@@ -2,8 +2,8 @@
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: aspen <aspen@aspenuwu.me>
 pkgname=zulip-desktop-electron
-pkgver=5.9.4
-pkgrel=2
+pkgver=5.10.0
+pkgrel=1
 _electronversion=22
 pkgdesc="Real-time team chat based on the email threading model"
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=("${pkgname%-*}")
 source=("${pkgname%-*}-$pkgver.tar.gz::https://github.com/zulip/zulip-desktop/archive/v$pkgver.tar.gz"
         "${pkgname%-*}.desktop"
         "${pkgname%-*}.sh.in")
-sha256sums=('4127a6a9bfef2acb8a6e9865e8d5d1e4033857029dad609a1cfa6cd4e68a278d'
+sha256sums=('03dde91bc8f8e8d750dcc0a240f0efda65578fb7d99ced0a04a47ec88bbc1f2e'
             '8f3440dc9195c6763de16f8b13409a5c130bdf417015e7e27bb64fdb227f4f10'
             '70ed0f08158c6ea8ef99dbbe360861e2c63911c2fadc74c0154bd6567abc8979')
 
@@ -26,9 +26,8 @@ build() {
   electronVer="$(sed s/^v// $electronDist/version)"
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1
   HOME="$srcdir/.electron-gyp" npm install --cache "$srcdir/npm-cache"
-  ./node_modules/.bin/tsc
-  ./node_modules/.bin/electron-builder --linux --x64 --dir \
-    $dist -c.electronDist=$electronDist -c.electronVersion=$electronVer
+  npm run pack -- --linux --x64 \
+    -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
 
 package() {
