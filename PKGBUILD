@@ -1,9 +1,9 @@
 # Maintainer: Hartmut Seichter <hartmut@technotecture.com>
 
 pkgname=hfsprescue
-pkgver=3.5
+pkgver=3.6
 pkgdesc="hfsprescue is a program to recover files from a HFS+ formatted partition"
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 provides=(${pkgname})
 conflicts=('hfsprescue-bin')
@@ -13,7 +13,7 @@ makedepends=()
 depends=(glibc)
 source=("https://download.plop.at/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 
-sha256sums=('3dd589c518021f8eed2ab4b9d983381897f9ed4450d44361e1eaf599e3fdaf83')
+sha256sums=('75283ef3cd22193a9b7654262f128a30fe0c9006a90986a13cfe8b017026dfad')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
