@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="coal-launcher-appimage"
-pkgver=1.2.6
+pkgver=1.2.7
 pkgrel=1
 pkgdesc="A client to view and play games from the AB Coal website"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('zlib' 'glibc')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}-${arch}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/Bobuxstation/Coal-Launcher/main/LICENSE")
-sha256sums=('b6a783a458e7bd173154cae71cf0264f9805105a80c621eea34e730e171062f0'
+sha256sums=('901900b2bdadc7986d3f3e79c2c9456f28333e1e93080072315c8ce2e17b285c'
             '0133c8e5890f9f848adde48b40a9c61dcff249ea3c0f5bcf6567901e7a697c49')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
