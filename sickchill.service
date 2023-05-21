@@ -8,6 +8,7 @@ User=sickchill
 Group=sickchill
 
 Type=simple
+#ExecStart=/var/lib/sickchill/app/bin/SickChill --quiet --nolaunch --datadir=/var/lib/sickchill/data
 ExecStart=/opt/sickchill/app/bin/SickChill --quiet --nolaunch --datadir=/opt/sickchill/data
 
 [Install]

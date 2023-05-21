@@ -8,7 +8,7 @@
 # That is the only reason why this package ends on -git.
 
 pkgname=sickchill-git
-pkgver=2022.7.20.r0
+pkgver=2023.1.2.r0
 pkgrel=1
 pkgdesc="Automatic video library manager for TV shows"
 arch=('any')
@@ -17,15 +17,15 @@ license=('GPL3')
 makedepends=('jq' 'python-virtualenv')
 optdepends=('libmediainfo: determine the resolution of MKV and AVI files with no resolution in the filename'
             'unrar: for RAR files')
-provides=(${pkgname%-git})
-conflicts=(${pkgname%-git})
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 options=('!strip')
 install=$pkgname.install
 source=('sickchill.service'
         'sickchill.sysusers'
         'sickchill.tmpfiles')
-sha256sums=('a7bb9f2406721f9d5eb66dab954bfc54f6bfe74fa6efd646e1006903e3e42bc8'
-            '1467f3613f5f25e678e373465dc09a28230f7cdf07af23875a0896a509c3b850'
+sha256sums=('b417284472d804e634c0dcaac2876ca164ad9a485f947e0f05798d0ce1136d59'
+            'aaeb298c9717da8b28853ed15509fb8428d975ae49e8737ebcec15caab9f0978'
             '2069f15e18fc7dd0f0f25b623f2067fc9028b1ca4122021a62364aa39914f88f')
 
 pkgver() {
@@ -35,6 +35,8 @@ pkgver() {
 }
 
 build() {
+  export CFLAGS="$CFLAGS -Wno-deprecated-declarations"
+
   #python -m venv build
   export XDG_CACHE_HOME=cache/pip
   VIRTUALENV_OVERRIDE_APP_DATA=cache/virtualenv virtualenv build
@@ -54,4 +56,3 @@ package() {
   install -dm755 "$pkgdir/opt/sickchill"
   cp -a build "$pkgdir/opt/sickchill/app"
 }
-
