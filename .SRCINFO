@@ -1,0 +1,16 @@
+pkgbase = jimud-appimage
+	pkgdesc = MUD client for ShadowMUD.com, based on webclient
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://www.shadowmud.com/
+	arch = x86_64
+	license = custom
+	depends = hicolor-icon-theme
+	depends = zlib
+	depends = glibc
+	conflicts = jimud
+	options = !strip
+	source = jimud-1.0.1.AppImage::https://github.com/icewolfz/jiMUD/releases/download/v1.0.1/jiMUD-1.0.1.AppImage
+	sha256sums = 7e24dce93e0d0501111539ad8a0991e9e3186dd4b0a19530354a09a65915693a
+
+pkgname = jimud-appimage
