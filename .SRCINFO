@@ -1,6 +1,6 @@
 pkgbase = tori-bin
 	pkgdesc = The frictionless music player for the terminal
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/LeoRiether/tori
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = tori-bin
 	optdepends = cava
 	provides = tori
 	conflicts = tori
-	source = https://github.com/LeoRiether/tori/releases/download/v0.2.0/tori-0.2.0-x86_64.tar.gz
-	sha256sums = 873488a37ef70fe14edf2e596b5cc8d5e47842df0e0dd683994972715c642f72
+	source = https://github.com/LeoRiether/tori/releases/download/v0.2.1/tori-0.2.1-x86_64.tar.gz
+	sha256sums = 4eac3f566ccc99fabe490681f4330a06f8c139e19c581b91cf90d58d79f90fe6
 
 pkgname = tori-bin
