@@ -1,7 +1,7 @@
 # Maintainer: Jason Papakostas <vithos@gmail.com>
 
 pkgname=passmark-performancetest-bin
-pkgver=v10.2.1003
+pkgver=v11.0.1000
 pkgrel=1
 pkgdesc="PassMark PerformanceTest Linux - Fast, easy to use, Linux system speed testing and benchmarking."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('ncurses5-compat-libs' 'curl')
 changelog=CHANGELOG
 source=("pt_linux_x64_$pkgver.zip::https://www.passmark.com/downloads/pt_linux_x64.zip")
-sha256sums=('1fd22eb2e0e4c85443e0b55c205e5e195b087988330a408d251f9e65a82a40e7')
+sha256sums=('464852705e708ba2c7e13bce51d77758a3cf2d25bfa12372508297ea3ca1ef4d')
 
 prepare() {
 	cd "PerformanceTest" || exit

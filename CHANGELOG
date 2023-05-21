@@ -1,3 +1,16 @@
+11.0 Build 1000 - 1st May 2023
+
+ - Updated version number to 11 to match current Windows release
+ - Added extra timeout lengths based on test thread count to CPU test (30 seconds for >200, 60 seconds for >500)
+
+10.2 Build 1003 - 27th June 2022
+
+- Remove (TM) and (R) from CPU name
+
+10.2 Build 1002 - 17th May 2022
+
+- Fixed baseline uploading that was broken due to passmark.com moving to a new webserver
+
 10.2 Build 1001 - 2nd March 2022
 
 - Add support for locales other than English
@@ -9,8 +22,8 @@
 
 10.1 Build 1005 - 20th October 2021
 
-- Linux and Mac (command line tool): Added flag to enable debugging "-debug"
-- Mac (command line tool): Added ability to specify which test suite(s) to autorun "-r [1-3]" [CPU, Memory, All tests]
+- Linux and Mac (command line tool): Added flag to enable debugging "-debug" </li>
+- Mac (command line tool): Added ability to specify which test suite(s) to autorun "-r [1-3]" [CPU, Memory, All tests]</li>
 
 10.1 Build 1004 - 27th August 2021
 
