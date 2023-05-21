@@ -2,8 +2,8 @@
 
 pkgname=sweet-theme-full-git
 _pkgname=sweet
-pkgver=r282.6870965
-pkgrel=3
+pkgver=r316.4361631
+pkgrel=2
 pkgdesc="Sweet KDE Plasma theme"
 arch=('x86_64')
 url="https://github.com/EliverLara/$_pkgname"
@@ -71,36 +71,45 @@ build() {
 }
 
 package() {
-    cd $_pkgname/kde
-    install -d $pkgdir/usr/share
+    cd $srcdir/$_pkgname/kde
+    mkdir -p $pkgdir/usr/share
     
     # Workaround: https://github.com/EliverLara/Sweet/issues/78 + fix for splashscreen
     mkdir -p aurorae/themes
-    mv aurorae/Sweet-Dark aurorae/themes/Sweet-Dark
-    mv aurorae/Sweet-Dark-transparent aurorae/themes/Sweet-Dark-transparent
+    mv -f aurorae/Sweet-Dark aurorae/themes/Sweet-Dark
+    mv -f aurorae/Sweet-Dark-transparent aurorae/themes/Sweet-Dark-transparent
     rm aurorae/.shade.svg
-    mv colorschemes color-schemes
+    mv -f colorschemes color-schemes
     mkdir -p plasma/look-and-feel
-    mv look-and-feel plasma/look-and-feel/Sweet
-    mv sddm sddm-Sweet
+    mv -f look-and-feel plasma/look-and-feel/Sweet
+    mv -f sddm sddm-Sweet
     mkdir -p sddm/themes
-    mv sddm-Sweet sddm/themes/Sweet
-
-    # cursors
-	install -d $pkgdir/usr/share/icons
-    mv cursors/Sweet-cursors $pkgdir/usr/share/icons
-
-    # kvantum
-    cp -r Kvantum $pkgdir/usr/share
-
-    # GTK
-    mkdir -p $pkgdir/usr/share/themes/$_pkgname
-	cp -a $srcdir/$_pkgname/* $pkgdir/usr/share/themes/$_pkgname/
+    mv -f sddm-Sweet sddm/themes/Sweet
 
     # KDE theme
-    cp -r aurorae $pkgdir/usr/share
-    cp -r color-schemes $pkgdir/usr/share
-    cp -r konsole $pkgdir/usr/share
-    cp -r plasma $pkgdir/usr/share
-    cp -r sddm $pkgdir/usr/share
+    mv -f aurorae $pkgdir/usr/share
+    mv -f color-schemes $pkgdir/usr/share
+    mv -f konsole $pkgdir/usr/share
+    mv -f plasma $pkgdir/usr/share
+    mv -f sddm $pkgdir/usr/share
+
+    # cursors
+	mkdir -p $pkgdir/usr/share/icons
+    mv -f cursors/Sweet-cursors $pkgdir/usr/share/icons
+
+    # kvantum
+    mv -f Kvantum $pkgdir/usr/share
+
+    # GTK
+	cd $srcdir/$_pkgname
+    mkdir -p $pkgdir/usr/share/themes/$_pkgname
+	mv -f assets $pkgdir/usr/share/themes/$_pkgname/
+	mv -f cinnamon $pkgdir/usr/share/themes/$_pkgname/
+	mv -f gnome-shell $pkgdir/usr/share/themes/$_pkgname/
+	mv -f gtk-2.0 $pkgdir/usr/share/themes/$_pkgname/
+	mv -f gtk-3.0 $pkgdir/usr/share/themes/$_pkgname/
+	mv -f gtk-4.0 $pkgdir/usr/share/themes/$_pkgname/
+	mv -f metacity-1 $pkgdir/usr/share/themes/$_pkgname/
+	mv -f xfwm4 $pkgdir/usr/share/themes/$_pkgname/
+	mv -f index.theme $pkgdir/usr/share/themes/$_pkgname/
 }
