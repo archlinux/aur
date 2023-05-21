@@ -644,3 +644,16 @@ New Features:
 
 Improvements:
 - We're in the mood to celebrate all you achieve! Based on many requests, we've removed limits on confetti. When you mark a task as complete, prepare to see confetti every time. 🎉
+
+
+=== Morgen 2.7.1
+New Features:
+- More customization options.
+
+Fixes:
+- We've resolved an issue that was preventing right-click functionality on a calendar slot.
+- The bug causing the event details panel to vanish upon editing the date has been fixed.
+- A hiccup that was making it impossible to connect certain CalDAV calendars powered by SOGo has been addressed.
+- We've corrected some minor issues with the new Command Bar: tasks now properly adhere to calendar and privacy settings.
+- The date picker now correctly observes the 'First Day of the Week' across all locales.
+
