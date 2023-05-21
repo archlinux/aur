@@ -1,40 +1,36 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Andres Alejandro Navarro Alsina <aanavarroa@unal.edu.co>
 # Contributor: M. Jarvis
-
-pkgname=python-coord
-_pkg=Coord
+_base=Coord
+pkgname=python-${_base,,}
 pkgver=1.2.3
 pkgrel=1
 pkgdesc="Python module for handling angle and celestial coordinates"
 arch=('x86_64')
-url="https://github.com/LSSTDESC/Coord"
-license=('BSD')
-depends=('libffi' 'python-cffi' 'python-future' 'python-numpy')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-sphinx' 'python-wheel')
-checkdepends=('python-nose' 'python-astropy')
-changelog=CHANGELOG.rst
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4fa4cab15dff39a1ca71cfe4af7afc72ef6ab9a74b3071a7d899d3061cb0c585')
+url="https://github.com/LSSTDESC/${_base}"
+license=(MIT)
+depends=(libffi python-cffi python-future python-numpy)
+makedepends=(python-build python-installer python-setuptools python-wheel python-sphinx)
+checkdepends=(python-pytest python-astropy)
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('6e1168254864529edfb8090b38926c482a50b19bcc2a6268e6a92d8dd4881bcd6999dc0f2b8a067fd0ce8b8217673844ac23cfa8feec3652ceeb8235dac19ee9')
 
 build() {
-	cd "$_pkg-$pkgver"
-	python -m build --wheel --no-isolation
-	PYTHONPATH="$PWD" make -C docs man
+  cd ${_base}-${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
+  PYTHONPATH="$PWD" make -C docs man
 }
 
 check() {
-	cd "$_pkg-$pkgver"
-	nosetests
+  cd ${_base}-${pkgver}
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest
 }
 
 package() {
-	cd "$_pkg-$pkgver"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
-	install -Dm644 docs/_build/man/coord.1 -t "$pkgdir/usr/share/man/man1/"
-	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s \
-		"$_site/LSSTDESC.Coord-$pkgver.dist-info/LICENSE" \
-		"$pkgdir/usr/share/licenses/$pkgname/"
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm644 docs/_build/man/${_base,,}.1 -t "$pkgdir/usr/share/man/man1/"
 }
