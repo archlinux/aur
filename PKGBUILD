@@ -1,14 +1,14 @@
 # Maintainer: Julian Brost <julian@0x4a42.net>
 
 pkgname=icinga-php-library
-pkgver=0.11.1
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Bundle for all Icinga PHP libraries"
 arch=(any)
 url="https://github.com/Icinga/icinga-php-library"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Icinga/icinga-php-library/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a0d38ae2ab669acc72bed41c9761a0951ea738180a9bd3005ec754560fec1961')
+sha256sums=('5fb52dc7cd863cfc17dee0aba485e995f90f2ca1dfb41a5663ddb9dd642c9c44')
 
 package() {
 	cd "$pkgname-$pkgver"
