@@ -1,0 +1,22 @@
+diff '--color=auto' -ruN scryer-prolog-0.9.1/Cargo.lock scryer-prolog-patch/Cargo.lock
+--- scryer-prolog-0.9.1/Cargo.lock	2022-11-10 07:18:10.000000000 +0100
++++ scryer-prolog-patch/Cargo.lock	2023-05-21 23:14:00.856225501 +0200
+@@ -1826,6 +1826,7 @@
+  "futures",
+  "fxhash",
+  "git-version",
++ "gmp-mpfr-sys",
+  "hostname",
+  "hyper",
+  "hyper-tls",
+diff '--color=auto' -ruN scryer-prolog-0.9.1/Cargo.toml scryer-prolog-patch/Cargo.toml
+--- scryer-prolog-0.9.1/Cargo.toml	2022-11-10 07:18:10.000000000 +0100
++++ scryer-prolog-patch/Cargo.toml	2023-05-21 23:13:33.615869412 +0200
+@@ -63,6 +63,7 @@
+ hyper-tls = "0.5.0"
+ tokio = { version = "1", features = ["full"] }
+ futures = "0.3"
++gmp-mpfr-sys = { version = "*", features=["use-system-libs"] }
+ 
+ [dev-dependencies]
+ assert_cmd = "1.0.3"
