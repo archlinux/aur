@@ -4,7 +4,7 @@ pkgname=sing-box-beta
 _pkgname=sing-box
 _version="1.3-beta11"
 pkgver="${_version//-/.}"
-pkgrel=1
+pkgrel=2
 
 pkgdesc='The universal proxy platform (beta version).'
 arch=('x86_64' 'i686')
@@ -43,7 +43,9 @@ build(){
         -ldflags "-s -w -buildid= -X github.com/sagernet/sing-box/constant.Version=v$_version -linkmode=external" \
         ./cmd/sing-box
 
-    sed -i "/^\[Service\]$/a User=$_pkgname" release/config/$_pkgname*.service
+    sed -i "/^\[Service\]$/a StateDirectory=$_pkgname"    release/config/$_pkgname.service
+    sed -i "/^\[Service\]$/a StateDirectory=$_pkgname-%i" release/config/$_pkgname@.service
+    sed -i "/^\[Service\]$/a User=$_pkgname"              release/config/$_pkgname*.service
 
     echo "u $_pkgname - \"Sing-box Service\" - -" > "release/config/$_pkgname.sysusers"
 }
