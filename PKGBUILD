@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fishpi-bin
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="摸鱼派新版客户端"
 arch=('x86_64')
@@ -12,11 +12,11 @@ makedepends=('gendesk')
 conflicts=("${pkgname%-bin}")
 options=(!strip)
 source=("${pkgname%-bin}-${pkgver}.tar.gz::${_githuburl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-linux.tar.gz"
-    "LICENSE.html::${url}/privacy"
-    "${pkgname%-bin}.png::https://raw.githubusercontent.com/imlinhanchao/fishpi-desktop/master/build/icons/256x256.png")
-sha256sums=('504330c557c1e910eaeb5bf98752c7ff54b20d85e8a5efedf4abef2805a704a1'
-            '5b2501e73a2085cdadd8df62677ae1c4927b9d81117152c75e8d76880e3fd12d'
-            'f787ad13f4b9a416cb40a8562ddd0868a42e24c0f70f52c34ee87f7435dcbba0')
+    "${pkgname%-bin}.png::https://raw.githubusercontent.com/imlinhanchao/fishpi-desktop/master/build/icons/256x256.png"
+    "LICENSE.html::${url}/privacy")
+sha256sums=('5c010e73af3991917ec8f0ee7b8025171ef1636e4d8cbc58b4b90b9c9351cdaf'
+            'f787ad13f4b9a416cb40a8562ddd0868a42e24c0f70f52c34ee87f7435dcbba0'
+            '2dc66d4484d4f15e017ae68954fca5e8a23aadbfc4413b5f7f636bc67a728742')
  
 package() {
    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
