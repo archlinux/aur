@@ -2,7 +2,7 @@
 # Contributor: Lubosz Sarnecki <lubosz@gmail.com>
 _pkgname=libretro-mesen
 pkgname=$_pkgname-git
-pkgver=0.9.9.r282.gd0a48b6d
+pkgver=0.9.9.r324.gd25d60fc
 pkgrel=1
 pkgdesc="Nintendo Entertainment System core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -30,5 +30,5 @@ build() {
 
 package() {
 	# shellcheck disable=SC2154
-	install -Dm644 -t "$pkgdir"/usr/lib/libretro $_pkgname/Libretro/mesen_libretro.so
+	install -D -t "$pkgdir"/usr/lib/libretro $_pkgname/Libretro/mesen_libretro.so
 }
