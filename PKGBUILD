@@ -1,6 +1,6 @@
 # Maintainer: Manuel Kauschinger <admin at bruzzzla dot de>
 pkgname=iota-firefly-wallet
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="The IOTA Firefly Wallet"
 arch=(x86_64)
