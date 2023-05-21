@@ -6,10 +6,10 @@ _srcname='mlt'
 pkgbase=$_gitname-git
 pkgname=('mlt-git')
 pkgdesc='Multimedia Framework'
-pkgver=r5946.1673114203.0b1d574c 
+pkgver=7.16.0.r16.56b1f62f 
 pkgrel=1
 arch=('i686' 'x86_64')
-url="https://github.com/mltframework/${_srcname}" license=('GPL2')
+url="https://github.com/mltframework/${_srcname}" license=('LGPL2.1')
 depends=( 	'libsamplerate'
 		'sox'
 		'ffmpeg'
@@ -43,13 +43,9 @@ source=(	"${_gitname}::git+${url}.git"
 		)
 sha512sums=(	'SKIP' 'SKIP'
 		)
-pkgver(){ 	cd "${srcdir}/${_gitname}"
-		printf 'r%s.%s.%s\n' \
-		"$( git rev-list --count 'HEAD' )" \
-    		"$( git log --max-count='1' --pretty='format:%ct' )" \
-    		"$( git rev-parse --short 'HEAD' )"
+pkgver() {
+   		 git -C $_gitname describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 		}
-
 prepare(){ 	cd "${srcdir}/${_gitname}"
 
 		echo "Initialize Submodules"
@@ -60,12 +56,6 @@ prepare(){ 	cd "${srcdir}/${_gitname}"
 
 		echo "Updating git submodules"
 		git -c protocol.file.allow=always submodule update
-
-## Thanks to darling-git packager showing me how to do submodules. 
-## There are some examples on how to deal with recursion in there too.
-# Old way of doing the submodule
-#		cd ${srcdir}/${_gitname}/src/modules/glaxnimate
-#		git submodule update
 		}
 
 build(){ 	rm -rf build

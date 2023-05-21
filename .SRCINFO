@@ -1,11 +1,11 @@
 pkgbase = mlt-git
 	pkgdesc = Multimedia Framework
-	pkgver = r5946.1673114203.0b1d574c
+	pkgver = 7.16.0.r16.56b1f62f
 	pkgrel = 1
 	url = https://github.com/mltframework/mlt
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = LGPL2.1
 	makedepends = ladspa
 	makedepends = frei0r-plugins
 	makedepends = sdl_image
