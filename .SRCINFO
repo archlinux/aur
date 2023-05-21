@@ -5,15 +5,12 @@ pkgbase = python-decorators
 	url = https://github.com/jaymon/decorators
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = python-decorators-2.0.7.tar.gz::https://files.pythonhosted.org/packages/source/d/decorators/decorators-2.0.7.tar.gz
-	source = LICENSE::https://github.com/jaymon/decorators/raw/master/LICENSE.txt
-	sha256sums = 9cf26202d6170a5cdca8a9cf6cd4b467c10601d4a9076470bceb9d282a5fa28a
-	sha256sums = 9fd61e97b164020abd86853f13e58609a0053046f8963fd01a32adef7defa2c8
+	makedepends = python-wheel
+	depends = python
+	source = https://pypi.org/packages/source/d/decorators/decorators-2.0.7.tar.gz
+	sha512sums = 476414898610a1a2a65bb7044d3a1dabd1232ec471da93500909a158ab0cb2df7d21ae4c47c5a5bdb8ab02f4595715811c3b091b4d14613b716e67bdcfe5d4e1
 
 pkgname = python-decorators
-	depends = python
-
-pkgname = python2-decorators
-	depends = python2

@@ -1,46 +1,27 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Jameson Pugh <imntreal@gmail.com>
-
-pkgname=('python-decorators' 'python2-decorators')
+_base=decorators
+pkgname=python-${_base}
 pkgver=2.0.7
 pkgrel=1
-pkgdesc="Quickly create flexible Python decorators"
-arch=('any')
-url="https://github.com/jaymon/decorators"
-license=('MIT')
-makedepends=('python-setuptools' 'python2-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/d/decorators/decorators-$pkgver.tar.gz"
-        "LICENSE::$url/raw/master/LICENSE.txt")
-sha256sums=('9cf26202d6170a5cdca8a9cf6cd4b467c10601d4a9076470bceb9d282a5fa28a'
-            '9fd61e97b164020abd86853f13e58609a0053046f8963fd01a32adef7defa2c8')
-
-prepare() {
-  cp -a "decorators-$pkgver" "decorators-$pkgver-py2"
-}
+pkgdesc="Quickly create flexible Python ${_base}"
+arch=(any)
+url="https://github.com/jaymon/${_base}"
+license=(MIT)
+depends=(python)
+makedepends=(python-build python-installer python-setuptools python-wheel)
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('476414898610a1a2a65bb7044d3a1dabd1232ec471da93500909a158ab0cb2df7d21ae4c47c5a5bdb8ab02f4595715811c3b091b4d14613b716e67bdcfe5d4e1')
 
 build() {
-  ( cd "decorators-$pkgver"
-    python setup.py build )
-  ( cd "decorators-$pkgver-py2"
-    python2 setup.py build )
+  cd ${_base}-${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
-package_python2-decorators() {
-  depends=('python2')
-
-  cd "decorators-$pkgver-py2"
-  PYTHONHASHSEED=0 python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-  install -Dm644 "$srcdir/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+package() {
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
-
-package_python-decorators() {
-  depends=('python')
-
-  cd "decorators-$pkgver"
-  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-  install -Dm644 "$srcdir/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
-}
-
-# vim:set ts=2 sw=2 et:
