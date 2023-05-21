@@ -1,0 +1,20 @@
+pkgbase = ronin-engine-unstable-git
+	pkgdesc = RGE - RoninGameEngine minimal game-world simulator (dev-state, unstable, alpha-version)
+	pkgver = 0.0
+	pkgrel = 0
+	url = https://github.com/badcast/ronin-engine
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	depends = sdl2
+	depends = sdl2_gfx
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = sdl2_ttf
+	source = git+https://github.com/badcast/ronin-engine.git
+	md5sums = SKIP
+
+pkgname = ronin-engine-unstable-git
