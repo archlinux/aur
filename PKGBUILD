@@ -5,7 +5,7 @@
 _base=Coord
 pkgname=python-${_base,,}
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python module for handling angle and celestial coordinates"
 arch=('x86_64')
 url="https://github.com/LSSTDESC/${_base}"
