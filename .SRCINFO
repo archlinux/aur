@@ -6,6 +6,7 @@ pkgbase = bretellofier
 	arch = any
 	license = dowhateverthefuckyouwant
 	makedepends = python-wheel
+	makedepends = python-installer
 	depends = python
 	source = git+https://git.decapod.one/brethil/bretellofier
 	sha256sums = SKIP
