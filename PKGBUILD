@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="goofcord-appimage"
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Take control of your Discord experience with GoofCord – the highly configurable and privacy first discord client."
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=("${pkgname%-appimage}")
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/GoofCord-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/Milkshiift/GoofCord/main/LICENSE")
-sha256sums=('20a38422e837acb873d65fa963f0dd233fcc9d5f0dde5859d60aa328289e91fe'
+sha256sums=('67b0434a6983a578bfd4b7ae46e983a14d6b7aa85384ed1bbe1f598d0c42f542'
             '4e7f66aa93929feee2db20f14f871e7ddcc69236b0ecfb79a19ade9b859daf51')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
