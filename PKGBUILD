@@ -3,7 +3,7 @@
 
 pkgname=dra-bin
 pkgver=0.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line tool to download assets from GitHub releases"
 arch=('x86_64')
 url="https://github.com/devmatteini/dra"
