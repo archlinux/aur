@@ -4,7 +4,7 @@
 # Fediverse: @bittin@social.vivaldi.net
 
 pkgname=tuba
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=0.1
 pkgdesc='Browse the Fediverse'
 arch=(
@@ -32,7 +32,7 @@ optdepends=(
   ## https://github.com/GeopJr/Tuba/issues/32#issuecomment-1483280966
   'webp-pixbuf-loader: calckey support (webp)'
 )
-_commit=825dbced1179f947d5c01f769a0e81c6098727a1 # tags/0.3.1^0
+_commit=5414d3b42aa9d5a01ac5c002010292144be920ea # tags/0.3.2^0
 source=("git+https://github.com/GeopJr/Tuba.git#commit=$_commit")
 sha256sums=('SKIP')
 
