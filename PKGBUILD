@@ -1,7 +1,7 @@
 # Maintainer: éclairevoyant
 
 pkgname=zsh-nix-shell
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="zsh plugin to use zsh in nix-shell shells"
 arch=(any)
@@ -15,7 +15,7 @@ package() {
 	cd $pkgname-$pkgver
 
 	install -Dm644 nix-shell.plugin.zsh -t "$pkgdir/usr/share/zsh/plugins/$pkgname/"
-	install -Dm755 ./scripts/buildShellShim -t "$pkgdir/usr/share/zsh/plugins/$pkgname/scripts/"
+	install -Dm755 scripts/buildShellShim -t "$pkgdir/usr/share/zsh/plugins/$pkgname/scripts/"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
