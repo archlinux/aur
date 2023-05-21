@@ -1,5 +1,7 @@
 pkg/
 src/
+yas/
 
 *.pkg.*
+*.onnx
 
