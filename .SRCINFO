@@ -1,0 +1,17 @@
+pkgbase = beaker-ng-appimage
+	pkgdesc = An experimental peer-to-peer Web browser - Compiler optimized, community maintained fork.
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/Alex313031/beaker-ng
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	options = !strip
+	source = beaker-ng-1.2.3.AppImage::https://github.com/Alex313031/beaker-ng/releases/download/1.2.3/Beaker_Browser_1.2.3_x86_64.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/Alex313031/beaker-ng/master/LICENSE
+	sha256sums = cd00c161609fcc885098f1ffa98802bd6c65fe65d248a0e7331475b27490c5ca
+	sha256sums = eb791f2db5b80ad689773f5a5087942dabc577d5a22b5f5618d9c19f82facc17
+
+pkgname = beaker-ng-appimage
