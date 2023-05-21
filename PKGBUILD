@@ -11,7 +11,7 @@ license=(GPL3)
 depends=(
 	glibc
 	hicolor-icon-theme
-	gtk3-no-tracker
+	gtk3
 	glib2
 	pango
 	gdk-pixbuf2
