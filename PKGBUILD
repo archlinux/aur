@@ -1,13 +1,13 @@
 # Maintainer: Marvin Dalheimer <me@marvin-dalheimer.de>
 pkgname=godot-mono
-pkgver=4.0.2
+pkgver=4.0.3
 pkgrel=1
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine."
 arch=('i686' 'x86_64')
 url="https://godotengine.org/"
 license=('MIT')
-depends=('mono>=6.12.0' 'mono-msbuild')
-optdepends=('dotnet-core')
+depends=("dotnet-sdk" "msbuild")
+optdepends=()
 makedepends=(
     'git'
     'scons>=3.0' 

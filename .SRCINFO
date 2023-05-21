@@ -1,6 +1,6 @@
 pkgbase = godot-mono
 	pkgdesc = An advanced, feature packed, multi-platform 2D and 3D game engine.
-	pkgver = 4.0.2
+	pkgver = 4.0.3
 	pkgrel = 1
 	url = https://godotengine.org/
 	arch = i686
@@ -24,9 +24,8 @@ pkgbase = godot-mono
 	makedepends = rsync
 	makedepends = nuget
 	makedepends = xorg-server-xvfb
-	depends = mono>=6.12.0
-	depends = mono-msbuild
-	optdepends = dotnet-core
+	depends = dotnet-sdk
+	depends = msbuild
 	provides = godot-mono
 	conflicts = godot-mono-bin
 	source = godot-mono::git+https://github.com/godotengine/godot.git
