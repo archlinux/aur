@@ -1,13 +1,13 @@
 pkgbase = pipes-rs-git
 	pkgdesc = An over-engineered rewrite of pipes.sh in Rust
-	pkgver = v1.4.7.r0.g2187012
+	pkgver = v1.6.1.r7.g979eef7
 	pkgrel = 1
 	url = https://github.com/CookieCoder15/pipes-rs
 	arch = any
 	license = MIT
 	license = APACHE
 	makedepends = git
-	makedepends = cargo
+	makedepends = rust
 	provides = pipes-rs
 	options = !lto
 	source = pipes-rs-git::git+https://github.com/CookieCoder15/pipes-rs.git

@@ -1,12 +1,12 @@
 # Maintainer: Arne Beer <arne@twobeer.de>
 
 pkgname=pipes-rs-git
-pkgver=v1.4.7.r0.g2187012
+pkgver=v1.6.1.r7.g979eef7
 pkgrel=1
 arch=('any')
 pkgdesc='An over-engineered rewrite of pipes.sh in Rust'
 license=('MIT' 'APACHE')
-makedepends=('git' 'cargo')
+makedepends=('git' 'rust')
 conflicts=()
 provides=('pipes-rs')
 options=(!lto)
@@ -30,6 +30,6 @@ package() {
     # Install binaries
     install -Dm755 "target/release/pipes-rs" "${pkgdir}/usr/bin/pipes-rs"
 
-    # Install License
-    install -Dm644 "LICENSE-MIT" "${pkgdir}/usr/share/licenses/pipes-rs/LICENSE"
+    # Install license
+    install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/pipes-rs/LICENSE"
 }
