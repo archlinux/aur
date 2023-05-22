@@ -1,7 +1,7 @@
 pkgbase = r-corpus
 	pkgdesc = Text Corpus Analysis
 	pkgver = 0.10.2
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=corpus
 	arch = x86_64
 	license = Apache
@@ -13,7 +13,7 @@ pkgbase = r-corpus
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tm
-	source = https://cran.r-project.org/src/contrib/corpus_0.10.2.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/corpus/corpus_0.10.2.tar.gz
 	sha256sums = c4647fae59d7acf9d4397a5126d386c8d323ad469df9800184de95b63a1aaa3b
 
 pkgname = r-corpus
