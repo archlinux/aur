@@ -1,7 +1,7 @@
 pkgbase = r-distinct
 	pkgdesc = distinct: a method for differential analyses via hierarchical permutation tests
 	pkgver = 1.12.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/distinct
 	arch = x86_64
 	license = GPL
@@ -17,6 +17,7 @@ pkgbase = r-distinct
 	depends = r-singlecellexperiment
 	depends = r-summarizedexperiment
 	depends = r-rfast
+	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat

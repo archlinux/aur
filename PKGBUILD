@@ -5,7 +5,7 @@ _pkgname=distinct
 _pkgver=1.12.2
 pkgname=r-${_pkgname,,}
 pkgver=1.12.2
-pkgrel=1
+pkgrel=3
 pkgdesc='distinct: a method for differential analyses via hierarchical permutation tests'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -25,6 +25,7 @@ depends=(
   r-rfast
 )
 optdepends=(
+  r-biocstyle
   r-knitr
   r-rmarkdown
   r-testthat
