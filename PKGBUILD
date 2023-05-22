@@ -11,7 +11,7 @@ url="https://github.com/Lakshmipathi/dduper"
 license=(GPL2)
 arch=(x86_64)
 makedepends=('git')
-depends=('libutil-linux' 'lzo' 'zlib' 'zstd' 'libgcrypt' 'python-numpy' 'python-prettytable')
+depends=('glibc' 'util-linux-libs' 'lzo' 'zlib' 'zstd' 'libgcrypt' 'python' 'python-numpy' 'python-prettytable')
 source=(
 	"$_pkgname::git+https://github.com/Lakshmipathi/dduper.git"
 	"https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v$btrfsprogsver.tar."{sign,xz}
