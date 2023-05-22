@@ -1,7 +1,7 @@
 pkgbase = ocaml-uuseg
 	pkgdesc = Unicode text segmentation for OCaml
 	pkgver = 15.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://erratique.ch/software/uuseg
 	arch = x86_64
 	arch = i486
@@ -19,7 +19,7 @@ pkgbase = ocaml-uuseg
 	depends = ocaml-uucp>=15.0.0
 	depends = ocaml-uutf>=1.0.0
 	options = !strip
-	source = ocaml-uuseg-15.0.0-2.tar.gz::https://github.com/dbuenzli/uuseg/archive/v15.0.0.tar.gz
+	source = ocaml-uuseg-15.0.0-3.tar.gz::https://github.com/dbuenzli/uuseg/archive/v15.0.0.tar.gz
 	sha512sums = c117868d52ca8f5de3104b0ea25ea011c19cefd53018c4d9bdf900185d04f74c097b7f129b75366a8da905a79dac3cbf8e6c66ff6c20fee1c2e42b9cdd6a9fa6
 
 pkgname = ocaml-uuseg
