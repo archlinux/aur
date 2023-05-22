@@ -1,6 +1,6 @@
 pkgname=wsjtz
 pkgver=2.5.4
-pkgrel=1.22
+pkgrel=1.33
 pkgdesc="Fork of WSJT-X with automation features"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://sourceforge.net/projects/wsjt-z/"

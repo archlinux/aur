@@ -1,7 +1,7 @@
 pkgbase = wsjtz
 	pkgdesc = Fork of WSJT-X with automation features
 	pkgver = 2.5.4
-	pkgrel = 1.22
+	pkgrel = 1.33
 	url = https://sourceforge.net/projects/wsjt-z/
 	arch = i686
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = wsjtz
 	depends = fftw
 	provides = wsjtx
 	conflicts = wsjtx
-	source = https://netcologne.dl.sourceforge.net/project/wsjt-z/Source/wsjtz-2.5.4-1.22.zip
+	source = https://netcologne.dl.sourceforge.net/project/wsjt-z/Source/wsjtz-2.5.4-1.33.zip
 	sha512sums = SKIP
 
 pkgname = wsjtz
