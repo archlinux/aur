@@ -1,6 +1,6 @@
 pkgbase = mopidy-iris
 	pkgdesc = A Mopidy Web client that utilizes the Spotify and EchoNest frameworks. (Formerly Spotmop)
-	pkgver = 3.66.1
+	pkgver = 3.67.0
 	pkgrel = 1
 	url = https://github.com/jaedb/iris
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = mopidy-iris
 	depends = python-setuptools
 	optdepends = mopidy-local: local library support
 	optdepends = mopidy-spotify: spotify support
-	source = Mopidy-Iris-3.66.1.tar.gz::https://files.pythonhosted.org/packages/source/M/Mopidy-Iris/Mopidy-Iris-3.66.1.tar.gz
-	sha256sums = 73cd9e1e473f304abc0620c7b03dab710f7f2642d180381d103ae402c04d5667
+	source = Mopidy-Iris-3.67.0.tar.gz::https://files.pythonhosted.org/packages/source/M/Mopidy-Iris/Mopidy-Iris-3.67.0.tar.gz
+	sha256sums = b06e39ea4f80d84e0f62f632f01c8aaec8842c75095f5ea5c066138a70f4de4e
 
 pkgname = mopidy-iris
