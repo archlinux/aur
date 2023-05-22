@@ -9,6 +9,7 @@ arch=('any')
 url='https://github.com/Irrational-Encoding-Wizardry/vs-aa.git'
 license=('MIT')
 depends=(
+  'vapoursynth'
   'vapoursynth-plugin-vstools-git'
   'vapoursynth-plugin-vskernels-git'
   'vapoursynth-plugin-vsexprtools-git'

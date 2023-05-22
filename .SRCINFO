@@ -9,6 +9,7 @@ pkgbase = vapoursynth-plugin-vsaa-git
 	makedepends = python-build
 	makedepends = python-wheel
 	makedepends = python-installer
+	depends = vapoursynth
 	depends = vapoursynth-plugin-vstools-git
 	depends = vapoursynth-plugin-vskernels-git
 	depends = vapoursynth-plugin-vsexprtools-git
