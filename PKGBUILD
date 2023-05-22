@@ -1,6 +1,6 @@
 # Maintainer: Twor <i@twor.me>
 pkgname=xmcl-launcher
-pkgver=0.35.5
+pkgver=0.35.6
 pkgrel=1
 pkgdesc="X Minecraft Launcher - 一个现代化的 Minecraft 启动器"
 arch=('x86_64')
