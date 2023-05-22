@@ -2,7 +2,7 @@
 _projectname='dtoa'
 pkgname="ocaml-$_projectname"
 pkgver='0.3.3'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='double-to-ascii ocaml implementation'
 arch=('x86_64' 'i486' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/flow/$pkgname"
