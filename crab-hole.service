@@ -6,6 +6,8 @@ After=network-online.target
 [Service]
 User=crab-hole
 DynamicUser=yes
+CacheDirectory=crab-hole
+Environment="XDG_CACHE_HOME=/var/cache"
 ExecStart=/usr/bin/crab-hole
 AmbientCapabilities=CAP_NET_BIND_SERVICE
 CapabilityBoundingSet=CAP_NET_BIND_SERVICE
