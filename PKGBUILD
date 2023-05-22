@@ -2,19 +2,23 @@
 
 _plug=vskernels
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=2.2.4.0.g2c5f807
+pkgver=2.4.0.2.ga9c085a
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Irrational-Encoding-Wizardry/vs-kernels.git'
 license=('MIT')
-depends=('vapoursynth'
-         'vapoursynth-plugin-vstools-git'
-         )
-makedepends=('git'
-             'python-pip'
-             'python-wheel'
-             )
+depends=(
+  'vapoursynth'
+  'vapoursynth-plugin-vstools-git'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-wheel'
+  'python-installer'
+  'python-setuptools'
+)
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/Irrational-Encoding-Wizardry/vs-kernels.git")
@@ -27,12 +31,12 @@ pkgver() {
 
 build() {
   cd "${_plug}"
-  pip wheel --no-deps . -w dist
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${_plug}"
-  pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
