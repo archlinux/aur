@@ -1,0 +1,17 @@
+pkgbase = otf-bona-nova
+	pkgdesc = The Bona Nova font is a remake of the Bona serif typeface designed in 1971 by Andrzej Heidrich, the creator of Polish banknotes
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/kosmynkab/Bona-Nova
+	arch = any
+	license = custom:SIL Open Font License v1.1
+	source = BonaNova-Regular-1.0.0.otf::https://github.com/kosmynkab/Bona-Nova/raw/a5cbdfb8741af20ea5bfe252f0128beed6c8beed/fonts/otf/BonaNova-Regular.otf
+	source = BonaNova-Bold-1.0.0.otf::https://github.com/kosmynkab/Bona-Nova/raw/a5cbdfb8741af20ea5bfe252f0128beed6c8beed/fonts/otf/BonaNova-Bold.otf
+	source = BonaNova-Italic-1.0.0.otf::https://github.com/kosmynkab/Bona-Nova/raw/a5cbdfb8741af20ea5bfe252f0128beed6c8beed/fonts/otf/BonaNova-Italic.otf
+	source = OFL.txt::https://github.com/kosmynkab/Bona-Nova/raw/a5cbdfb8741af20ea5bfe252f0128beed6c8beed/OFL.txt
+	sha256sums = ea2894617ead5481de801d7246e9bbeed12601c7cd2d7c6991e4649e0aad8033
+	sha256sums = dc312544a4dd4c5fcabac4883179ac806b727c12fee9e481289a84c98ce65cee
+	sha256sums = c5afc99bde6adfaa6a526104da287aaedc8bd04bc52e236e68c3d703fb89d7d4
+	sha256sums = 38f7dca74a98bbcc13858c9f56e9c7d86e12b4242f2a5ccbecf6e9277c9fd363
+
+pkgname = otf-bona-nova
