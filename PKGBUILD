@@ -8,13 +8,25 @@ pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Irrational-Encoding-Wizardry/vsmask.git'
 license=('MIT')
-depends=('vapoursynth'
-         'vapoursynth-plugin-vsutil-git'
-         )
-makedepends=('git'
-             'python-pip'
-             'python-wheel'
-             )
+depends=(
+  'vapoursynth'
+  'vapoursynth-plugin-vstools-git'
+  'vapoursynth-plugin-vskernels-git'
+  'vapoursynth-plugin-vsexprtools-git'
+  'vapoursynth-plugin-vsrgtools-git'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-wheel'
+  'python-installer'
+  'python-setuptools'
+)
+optdepends=('vapoursynth-plugin-tcanny-git'
+            'vapoursynth-plugin-tedgemask-git'
+            'vapoursynth-plugin-awarpsharp2-git'
+            'vapoursynth-plugin-awarpsharp2sf-git'
+            )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/Irrational-Encoding-Wizardry/vsmask.git")
@@ -27,12 +39,12 @@ pkgver() {
 
 build() {
   cd "${_plug}"
-  pip wheel --no-deps . -w dist
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${_plug}"
-  pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
