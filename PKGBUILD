@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=qdapTools
-_pkgver=1.3.5
+_pkgver=1.3.7
 pkgname=r-${_pkgname,,}
-pkgver=1.3.5
-pkgrel=8
+pkgver=1.3.7
+pkgrel=1
 pkgdesc="Tools for the 'qdap' Package"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -19,8 +19,8 @@ depends=(
 optdepends=(
   r-testthat
 )
-source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8c8828877ab63ad705b69e187c01d7c7098a88989bdde9e956ac559cc6de7e25')
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('57ea66524f4e96dc5359e019974b76358202d9252450e901544241fc3b15c4b1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
