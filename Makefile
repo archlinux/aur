@@ -5,7 +5,7 @@ build: clean
 	docker run --rm -v $(shell pwd):/build --name build-byndid build-byndid:latest
 
 test:
-	docker run --rm -v $(shell pwd):/build --name build-byndid build-byndid:latest /bin/sh -c "namcap -i /build/*.pkg.tar.zst"
+	docker run --rm -v $(shell pwd):/build --name build-byndid build-byndid:latest /bin/sh -c "namcap /build/*.pkg.tar.zst"
 
 run:
 	docker run -it --rm -v $(shell pwd):/build --name build-byndid build-byndid:latest /bin/bash
