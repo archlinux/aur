@@ -2,15 +2,15 @@
 # Contributor: Oliver Jaksch <arch-aur at com-in dot de>
 _pkgname=libretro-neocd
 pkgname=$_pkgname-git
-pkgver=r135.327aece
+pkgver=r145.2070f52
 pkgrel=1
 pkgdesc="SNK Neo Geo CD core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/libretro/neocd_libretro"
 license=('LGPL3')
 groups=('libretro')
-depends=('gcc-libs' 'libchdr' 'libretro-core-info' 'libvorbis' 'zlib')
-makedepends=('git')
+depends=('gcc-libs' 'glibc' 'libretro-core-info' 'zlib')
+makedepends=('git' 'libchdr' 'libvorbis')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
@@ -39,6 +39,7 @@ build() {
 }
 
 package() {
+	depends+=('libchdr.so' 'libvorbisfile.so')
 	# shellcheck disable=SC2154
-	install -Dm644 -t "$pkgdir"/usr/lib/libretro $_pkgname/neocd_libretro.so
+	install -D -t "$pkgdir"/usr/lib/libretro $_pkgname/neocd_libretro.so
 }
