@@ -2,20 +2,25 @@
 
 _plug=vsdfft
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.0.0.6.g22299a7
+pkgver=1.0.0.9.g1e17bc2
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Irrational-Encoding-Wizardry/vs-dfft.git'
 license=('MIT')
-depends=('vapoursynth'
-         'python-numpy'
-         'python-pyfftw'
-         )
-makedepends=('git'
-             'python-pip'
-             'python-wheel'
-             )
+depends=(
+  'vapoursynth'
+  'python-numpy'
+  'python-pyfftw'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-wheel'
+  'python-installer'
+  'python-setuptools'
+)
+optdepends=('python-cupy: GPU')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/Irrational-Encoding-Wizardry/vs-dfft.git")
@@ -28,12 +33,12 @@ pkgver() {
 
 build() {
   cd "${_plug}"
-  pip wheel --no-deps . -w dist
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${_plug}"
-  pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
