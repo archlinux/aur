@@ -1,23 +1,32 @@
-# Maintainer: Christian Mauderer <oss@c-mauderer.de>
+# Maintainer: Jan-Niklas Burfeind <eq3bt-aur@aiyionpri.me>
+# Previous maintainer: Christian Mauderer <oss@c-mauderer.de>
 
 pkgname='python-eq3bt'
-pkgver='0.1.11'
-pkgrel=2
+pkgver='0.2'
+pkgrel=1
 pkgdesc='Python library and command-line tool for EQ3 Smart Bluetooth thermostats.'
 arch=('any')
 url='https://github.com/rytilahti/python-eq3bt'
 license=('MIT')
-depends=('python' 'python-click-datetime' 'python-construct' 'python-bluepy')
-makedepends=('python-setuptools')
-source=("https://github.com/rytilahti/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('70a272629b0a27b7492b2d3e681bb0fb78e1163cbf447c1aa5eb34f76da41a936d73eb0ad6088f819e8efe6668237e672f7b28a171f0dc28a0c8d54a6d38e6ef')
+depends=('python' 'python-click' 'python-construct' 'python-bleak')
+checkdepends=('python-pytest')
+optdepends=('python-gattlib' 'python-bluepy')
+makedepends=('python-installer' 'python-build' 'python-poetry')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/rytilahti/${pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('d3813d35bc671e6f14338baf1bee824dec9be4b44df94f5cd931580b46900a8ae3e49fe05de72b98f246069889569431dc2e862f2afdcf26353298e2af1dda68')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    python setup.py build
+    python -m build --wheel --no-isolation
+}
+
+check() {
+    cd "$srcdir/$pkgname-$pkgver"
+    python -m pytest eq3bt/tests
 }
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    python setup.py install -O1 --skip-build --prefix=/usr --root="${pkgdir}"
+    python -m installer --destdir="$pkgdir" "dist/python_eq3bt-${pkgver}-py3-none-${arch}.whl"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }

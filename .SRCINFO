@@ -1,17 +1,21 @@
 pkgbase = python-eq3bt
 	pkgdesc = Python library and command-line tool for EQ3 Smart Bluetooth thermostats.
-	pkgver = 0.1.11
-	pkgrel = 2
+	pkgver = 0.2
+	pkgrel = 1
 	url = https://github.com/rytilahti/python-eq3bt
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	checkdepends = python-pytest
+	makedepends = python-installer
+	makedepends = python-build
+	makedepends = python-poetry
 	depends = python
-	depends = python-click-datetime
+	depends = python-click
 	depends = python-construct
-	depends = python-bluepy
-	source = https://github.com/rytilahti/python-eq3bt/archive/0.1.11.tar.gz
-	sha512sums = 70a272629b0a27b7492b2d3e681bb0fb78e1163cbf447c1aa5eb34f76da41a936d73eb0ad6088f819e8efe6668237e672f7b28a171f0dc28a0c8d54a6d38e6ef
+	depends = python-bleak
+	optdepends = python-gattlib
+	optdepends = python-bluepy
+	source = python-eq3bt-0.2.tar.gz::https://github.com/rytilahti/python-eq3bt/archive/0.2.tar.gz
+	sha512sums = d3813d35bc671e6f14338baf1bee824dec9be4b44df94f5cd931580b46900a8ae3e49fe05de72b98f246069889569431dc2e862f2afdcf26353298e2af1dda68
 
 pkgname = python-eq3bt
-
