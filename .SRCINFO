@@ -1,0 +1,17 @@
+pkgbase = yacd-meta-ghp-bin
+	pkgdesc = Yet Another Clash Dashboard (prebuild gh-pages)
+	pkgver = 20230520.1
+	pkgrel = 1
+	url = https://github.com/MetaCubeX/Yacd-meta
+	arch = any
+	license = MIT
+	makedepends = git
+	optdepends = clash: A rule-based tunnel in Go
+	optdepends = sing-box: The universal proxy platform
+	optdepends = clash-meta: Another Clash Kernel by MetaCubeX
+	provides = Yacd-meta
+	conflicts = Yacd-meta
+	source = Yacd-meta::git+https://github.com/MetaCubeX/Yacd-meta.git#branch=gh-pages
+	sha256sums = SKIP
+
+pkgname = yacd-meta-ghp-bin
