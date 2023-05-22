@@ -1,19 +1,19 @@
 pkgbase = ncp-bin
 	pkgdesc = NCP is a file transfer utility that enables efficient copying of files to and from an NFS server.
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://ncp.lmno.pk
 	license = MIT
 	conflicts = ncp
 	provides = ncp
 	arch = aarch64
-	source_aarch64 = https://github.com/kha7iq/ncp/releases/download/v0.1.1/ncp_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 8e4c0bc7a7f65ce7ca9e3612a66cdfb208f7290e6bf4dcc35ae541e27e42e49d
+	source_aarch64 = https://github.com/kha7iq/ncp/releases/download/v0.1.2/ncp_Linux_arm64.tar.gz
+	sha256sums_aarch64 = cef5d485e8da9a30f7377e87c74ca0efd355f06f49b7cc62b2ec4065e41d5fc3
 	arch = armv7h
-	source_armv7h = https://github.com/kha7iq/ncp/releases/download/v0.1.1/ncp_Linux_arm.tar.gz
-	sha256sums_armv7h = 835fd85309c16985d4b13fdbb842db548e00ecddee92522f6c6a1a31d7254135
+	source_armv7h = https://github.com/kha7iq/ncp/releases/download/v0.1.2/ncp_Linux_arm.tar.gz
+	sha256sums_armv7h = b96d67114cc7af7038125195e934b872d606baf45d757aea74d7161aa63ddd80
 	arch = x86_64
-	source_x86_64 = https://github.com/kha7iq/ncp/releases/download/v0.1.1/ncp_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = db89c545fc82c493bfd154c489a30835cfa8da04008e35f42bfd6ed05e346ffd
+	source_x86_64 = https://github.com/kha7iq/ncp/releases/download/v0.1.2/ncp_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = c7d500d41d5f963b8740189a1ab688e7fc66bbcae98e6628d21d9fc78cfc671d
 	
 pkgname = ncp-bin
