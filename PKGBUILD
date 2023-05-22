@@ -3,7 +3,7 @@
 _projectname='ocplib-endian'
 pkgname="ocaml-$_projectname"
 pkgver='1.2'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Optimised functions to read and write int16/32/64 from strings, bytes and bigarrays'
 # If you're running on i486, i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the cppo AUR dependency
 arch=('x86_64' 'i486' 'i686' 'pentium4' 'armv7h' 'aarch64')
