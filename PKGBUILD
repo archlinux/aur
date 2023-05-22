@@ -7,7 +7,7 @@ xplus_tfe=SamTFE-XPLUS.tar.xz
 xplus_tse=SamTSE-XPLUS.tar.xz
 pkgver=1.10.4
 _srcname="SeriousSamClassic-VK-$pkgver"
-pkgrel=5
+pkgrel=6
 pkgdesc="Serious Sam Classic native Linux version with Vulkan support and XPLUS Modification."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SeriousSamClassic-VK"
@@ -30,7 +30,8 @@ source=("https://github.com/tx00100xt/SeriousSamClassic-VK/archive/refs/tags/v$p
     "serioussam-tse.sh"
     "tfe-vk-last-update.patch"
     "tse-vk-last-update.patch"
-    "fix-thunder.patch")
+    "fix-thunder.patch"
+    "fix_sdl2_vk_fullscreen_on_gnome44.patch")
 noextract=("SamTFE-XPLUS.tar.xz.partaa"
 	"SamTFE-XPLUS.tar.xz.partab"
 	"SamTFE-XPLUS.tar.xz.partac"
@@ -47,11 +48,12 @@ sha256sums=('951fea8274cf795c1bdcff708e1dffbef78cd7993585144b565aefba93433e08'
             '8e9f0d7138ab5da6b4b899f39234f6e3c48d0d47970c6b12372e33e86e39d606'
             '134bbc9088b8c323c9a17a7ea8a39942e4cf4b83e149cb4f89e161adf7290122'
             '1fd56e04072372e1e8dab0bae40da1519d82a28895cbe5661b18561ee9ea47b4'
-            '649c2a4f2c0dfa1a096192cd6a24206fba19512a1b8094663b9cfb21a93a2d35'
-            'd1938c4422ad9f4b00703b29edfb4bb39aa7e5c6b4ad64a38cd530d88cec46f3'
+            '092d0806cba13368419c63887dec4dd556ffc63d0421634e268c544260f78b1f'
+            '6332bcfe309be35f5381bdf3dc7c334674a936b3793ac0840dc9992e9a98d6a3'
             '08cb78b2c5a487e8d644971729dd391851ec476b3e92d683d9d4f256b229dbac'
             'a82821d12ebadb5ecade4b0169ff9497b6d00d6b0a9c4a0112a5915be1057542'
-            'ad07c6b9d29a0d8a1a276b0c00d07e2d24d8c63c425efa21daa31ec3c1d366df')
+            'ad07c6b9d29a0d8a1a276b0c00d07e2d24d8c63c425efa21daa31ec3c1d366df'
+            '7962e50f6c1781a3240647b77e72f588c6be772261be0d3753039dd3acc18c7d')
 if [[ $CARCH = "i686" ]]; then
   _bits="32"
 else
@@ -63,6 +65,7 @@ prepare(){
   cat tfe-vk-last-update.patch > "$srcdir/$_srcname/tfe-vk-last-update.patch"
   cat tse-vk-last-update.patch > "$srcdir/$_srcname/tse-vk-last-update.patch"
   cat fix-thunder.patch > "$srcdir/$_srcname/fix-thunder.patch"
+  cat fix_sdl2_vk_fullscreen_on_gnome44.patch > "$srcdir/$_srcname/fix_sdl2_vk_fullscreen_on_gnome44.patch"
 
   # Prepare XPLUS archive
   cat "$xplus_tfe".part* > "$xplus_tfe"
@@ -99,6 +102,8 @@ prepare(){
   patch -p1 < tfe-vk-last-update.patch || return 1
   patch -p1 < tse-vk-last-update.patch || return 1
   patch -p1 < fix-thunder.patch || return 1
+  # gnone44 sdl2 patch
+  patch -p1 < fix_sdl2_vk_fullscreen_on_gnome44.patch || return 1
 }
 
 build(){
