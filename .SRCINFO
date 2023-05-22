@@ -1,6 +1,6 @@
 pkgbase = flow-git
 	pkgdesc = A static type checker for JavaScript - git version
-	pkgver = 0.201.0.r15454.gb43df2306
+	pkgver = 0.206.0.r15984.g30855cad7
 	pkgrel = 1
 	url = https://flow.org
 	arch = x86_64

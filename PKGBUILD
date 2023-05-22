@@ -5,7 +5,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 _pkgname='flow'
 pkgname="$_pkgname-git"
-pkgver='0.201.0.r15454.gb43df2306'
+pkgver='0.206.0.r15984.g30855cad7'
 pkgrel='1'
 pkgdesc='A static type checker for JavaScript - git version'
 # If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the cppo, ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
