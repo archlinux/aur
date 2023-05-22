@@ -13,7 +13,7 @@ depends=(sdl2 vulkan-icd-loader lib32-sdl2 lib32-vulkan-icd-loader)
 makedepends=(git glslang meson)
 provides=(libdxvk libdxvk_dxgi.so libdxvk_d3d9.so libdxvk_d3d11.so)
 source=(
-	"git+$url.git?signed#tag=v$pkgver"
+	"git+$url.git?signed#tag=922ce7b2ded0b8142a8fa428ac19c2ab265d963f"
 	"git+https://github.com/Joshua-Ashton/mingw-directx-headers.git"
 	"git+https://github.com/KhronosGroup/Vulkan-Headers.git"
 	"git+https://github.com/KhronosGroup/SPIRV-Headers.git"
