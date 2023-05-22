@@ -2,7 +2,7 @@
 _projectname='logs'
 pkgname="ocaml-$_projectname"
 pkgver='0.7.0'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Logging infrastructure for OCaml'
 # If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the cppo, ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
 # If you're running on pentium4, armv7h or aarch64, you have to add it to the arch array of the ocaml-cmdliner AUR dependency
