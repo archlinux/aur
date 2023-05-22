@@ -1,10 +1,10 @@
 pkgbase = fastahack
 	pkgdesc = utilities for indexing and sequence extraction from FASTA files
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ekg/fastahack
 	arch = x86_64
-	license = GPL3
+	license = MIT
 	depends = glibc
 	depends = gcc-libs
 	source = fastahack-1.0.0.tar.gz::https://github.com/ekg/fastahack/archive/refs/tags/v1.0.0.tar.gz
