@@ -1,0 +1,4 @@
+src/
+pkg/
+borgtui/
+*.tar.zst

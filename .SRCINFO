@@ -1,0 +1,22 @@
+pkgbase = borgtui-git
+	pkgdesc = Like borgomatic, but with a TUI to help automate borg backups :^)
+	pkgver = r57.bf01f9c
+	pkgrel = 1
+	url = https://www.github.com/borgtui-org/borgtui
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL3
+	makedepends = rustup
+	makedepends = cargo
+	makedepends = git
+	depends = borg
+	depends = glibc
+	depends = gcc-libs
+	provides = borgtui
+	conflicts = borgtui
+	source = git+https://github.com/dpbriggs/borgtui
+	sha256sums = SKIP
+
+pkgname = borgtui-git
