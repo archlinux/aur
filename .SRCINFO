@@ -1,7 +1,7 @@
 pkgbase = plymouth-fixed-git
-	pkgdesc = Graphical boot splash screen (git version)
+	pkgdesc = Graphical boot splash screen (git version). I made this because i am too lazy to install base-devel :-P
 	pkgver = 22.02.122.r176.gf6b37f2f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freedesktop.org/wiki/Software/Plymouth/
 	install = plymouth.install
 	arch = i686
@@ -16,6 +16,7 @@ pkgbase = plymouth-fixed-git
 	makedepends = gcc
 	makedepends = cmake
 	makedepends = pkgconf
+	makedepends = fakeroot
 	depends = bash
 	depends = cairo
 	depends = cantarell-fonts

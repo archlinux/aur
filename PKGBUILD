@@ -6,13 +6,13 @@
 pkgname=plymouth-fixed-git
 _pkgname=plymouth
 pkgver=22.02.122.r176.gf6b37f2f
-pkgrel=1
-pkgdesc='Graphical boot splash screen (git version)'
+pkgrel=2
+pkgdesc='Graphical boot splash screen (git version). I made this because i am too lazy to install base-devel :-P'
 arch=('i686' 'x86_64')
 url='https://www.freedesktop.org/wiki/Software/Plymouth/'
 license=('GPL2')
 depends=('bash' 'cairo' 'cantarell-fonts' 'filesystem' 'glib2' 'glibc' 'libdrm' 'libpng' 'pango' 'systemd-libs' 'libevdev')
-makedepends=('gtk3' 'docbook-xsl' 'git' 'meson' 'make' 'patch' 'gcc' 'cmake' 'pkgconf')
+makedepends=('gtk3' 'docbook-xsl' 'git' 'meson' 'make' 'patch' 'gcc' 'cmake' 'pkgconf' 'fakeroot')
 optdepends=('gtk3: x11 renderer')
 provides=('plymouth')
 conflicts=('plymouth')
