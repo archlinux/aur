@@ -1,0 +1,26 @@
+pkgbase = qk-git
+	pkgdesc = A GTK-based text editor designed for use by programmers.
+	pkgver = 201612081042
+	pkgrel = 1
+	url = https://github.com/sde-gui/qk
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = txt2tags
+	makedepends = python2
+	makedepends = automake
+	makedepends = intltool
+	makedepends = libtool
+	makedepends = pkgconfig
+	makedepends = git
+	depends = gtk2>=2.24.0
+	depends = libsm
+	depends = sde-reverse-meta-git
+	optdepends = ctags: Show functions in the open document
+	provides = qk
+	conflicts = qk
+	options = !libtool
+	source = git+https://github.com/sde-gui/qk.git
+	md5sums = SKIP
+
+pkgname = qk-git
