@@ -1,7 +1,7 @@
 pkgbase = nanosaur
 	pkgdesc = Play as a cybernetic dinosaur in this third-person shooter
 	pkgver = 1.4.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/jorio/Nanosaur
 	arch = x86_64
 	license = custom:pangea
@@ -14,7 +14,7 @@ pkgbase = nanosaur
 	depends = sdl2
 	depends = hicolor-icon-theme
 	source = nanosaur::git+https://github.com/jorio/Nanosaur.git#commit=3a56f8a0e5ea6d442ab86c33c1d033c76222b7ac
-	source = git+https://github.com/jorio/Pomme.git
+	source = github.com-jorio-Pomme::git+https://github.com/jorio/Pomme
 	source = nanosaur.desktop
 	source = nanosaur.sh
 	source = LICENSE

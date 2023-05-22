@@ -2,9 +2,9 @@
 
 pkgname=nanosaur
 pkgver=1.4.4
-pkgrel=1
+pkgrel=3
 pkgdesc="Play as a cybernetic dinosaur in this third-person shooter"
-arch=(x86_64)
+arch=('x86_64')
 url="https://github.com/jorio/Nanosaur"
 license=('custom:pangea' 'custom:CC-BY-NC-SA-4.0')
 # License sourced from http://www.pangeasoft.net/nano/nanosource.html
@@ -20,7 +20,7 @@ makedepends=('git' 'cmake')
 _commit='3a56f8a0e5ea6d442ab86c33c1d033c76222b7ac'
 source=(
   "$pkgname::git+https://github.com/jorio/Nanosaur.git#commit=$_commit"
-  'git+https://github.com/jorio/Pomme.git'
+  'github.com-jorio-Pomme::git+https://github.com/jorio/Pomme'
   "$pkgname.desktop"
   "$pkgname.sh"
   'LICENSE'
@@ -47,17 +47,23 @@ prepare() {
 
   # setup git submodules
   git submodule init
-  git config submodule.Pomme.url ../Pomme
-  git submodule update
+  git config submodule.Pomme.url "$srcdir/github.com-jorio-Pomme"
+  git -c protocol.file.allow=always submodule update
+
+  # ftbfs: gcc 13 & cstdint headers
+  cd extern/Pomme
+  git cherry-pick --no-commit d57c28e205462e51063e787f9ebddaadff592f1e
 }
 
 build() {
+  cd "$pkgname"
+
   cmake \
-    -S "$pkgname" \
+    -S . \
     -B build \
-    -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -Wno-dev
+    -D CMAKE_BUILD_TYPE=None \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -W no-dev
 
   cmake --build build
 }
@@ -69,7 +75,7 @@ package() {
     "$pkgdir/usr/share/doc/$pkgname"
 
   # binary & assets
-  cp -vr build/{Data,Nanosaur} "$pkgdir/usr/lib/$pkgname"
+  cp -vr "$pkgname"/build/{Data,Nanosaur} "$pkgdir/usr/lib/$pkgname"
 
   # wrapper script for $PATH execution
   install -vDm755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
