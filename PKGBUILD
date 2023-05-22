@@ -34,7 +34,7 @@ check() {
   cd numpy-$pkgver
   python setup.py install --root="$PWD/tmp_install" --optimize=1
   cd "$PWD/tmp_install"
-  PATH="$PWD/usr/bin:$PATH" PYTHONPATH="$PWD/usr/lib/python3.10/site-packages:$PYTHONPATH" python -c 'import numpy; numpy.test()'
+  PATH="$PWD/usr/bin:$PATH" PYTHONPATH="$PWD/usr/lib/python3.11/site-packages:$PYTHONPATH" python -c 'import numpy; numpy.test()'
 }
 
 package() {
