@@ -1,5 +1,5 @@
 pkgbase = alchemy-next-viewer-nosystemd-git
-	pkgdesc = A Second Life client with focus on performance and code correctness. - Git Source build
+	pkgdesc = A Second Life client with focus on performance and code correctness.
 	pkgver = 6.11.50933.b7b3c99172
 	pkgrel = 2
 	url = https://www.alchemyviewer.org
@@ -28,6 +28,7 @@ pkgbase = alchemy-next-viewer-nosystemd-git
 	depends = vlc
 	depends = xdg-desktop-portal
 	depends = zlib
+	depends = libelogind
 	optdepends = alsa-lib: ALSA support
 	optdepends = freealut: OpenAL support
 	optdepends = gamemode: Gamemode support
@@ -41,13 +42,11 @@ pkgbase = alchemy-next-viewer-nosystemd-git
 	optdepends = nvidia-utils: NVIDIA support
 	optdepends = wine: More up-to-date, less buggy SLVoice support
 	provides = alchemy-viewer
-	replaces = alchemy-viewer-git
+	conflicts = alchemy-next-viewer-systemd-git
 	options = !buildflags
 	options = !lto
 	options = !strip
 	source = alchemy-next-viewer-nosystemd-git::git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch=main
-	source = compile.bash
 	sha256sums = SKIP
-	sha256sums = 20e5299ddbb96e46caf9ed211a912141c6a792f3a4aa7f82e56b1f98fe02c4fa
 
 pkgname = alchemy-next-viewer-nosystemd-git
