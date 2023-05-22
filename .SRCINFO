@@ -1,6 +1,6 @@
 pkgbase = sch-rnd
 	pkgdesc = simple, modular, scriptable schematics editor
-	pkgver = 0.9.4
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = http://www.repo.hu/projects/pcb-rnd/
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = sch-rnd
 	depends = libxml2
 	optdepends = freetype2: import_ttf plugin
 	optdepends = fungw
-	source = http://www.repo.hu/projects/sch-rnd/releases/sch-rnd-0.9.4.tar.gz
-	sha256sums = fbb5c43c6e9efebb983660fb21f0df2dd5484d5d40ceac297d921ceb1b1f862e
+	source = http://www.repo.hu/projects/sch-rnd/releases/sch-rnd-1.0.0.tar.gz
+	sha256sums = e459b8c5515eb98baa087cea744dc6339641f2aadbc5196fbd8c5d52802fe15f
 
 pkgname = sch-rnd
