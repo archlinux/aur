@@ -11,6 +11,8 @@ pkgbase = pinterest-downloader-git
 	depends = python-requests
 	depends = python-termcolor
 	depends = python-pysocks
+	depends = python-fake-useragent
+	depends = python-brotli
 	source = git+https://github.com/limkokhole/pinterest-downloader.git
 	sha256sums = SKIP
 
