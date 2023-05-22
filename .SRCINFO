@@ -1,7 +1,7 @@
 pkgbase = r-diagrammer
 	pkgdesc = Graph/Network Visualization
 	pkgver = 1.0.10
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=DiagrammeR
 	arch = any
 	license = MIT
@@ -12,7 +12,6 @@ pkgbase = r-diagrammer
 	depends = r-htmltools
 	depends = r-htmlwidgets
 	depends = r-igraph
-	depends = r-influencer
 	depends = r-magrittr
 	depends = r-purrr
 	depends = r-rcolorbrewer

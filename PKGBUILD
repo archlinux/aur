@@ -4,7 +4,7 @@ _pkgname=DiagrammeR
 _pkgver=1.0.10
 pkgname=r-${_pkgname,,}
 pkgver=1.0.10
-pkgrel=1
+pkgrel=3
 pkgdesc='Graph/Network Visualization'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,6 @@ depends=(
   r-htmltools
   r-htmlwidgets
   r-igraph
-  r-influencer
   r-magrittr
   r-purrr
   r-rcolorbrewer
