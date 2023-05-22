@@ -1,7 +1,7 @@
 pkgbase = cro-mag-rally
 	pkgdesc = The wildest racing game since man invented the wheel!
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jorio/CroMagRally
 	arch = x86_64
 	license = custom:CC-BY-NC-SA-4.0
@@ -11,7 +11,7 @@ pkgbase = cro-mag-rally
 	depends = glu
 	depends = hicolor-icon-theme
 	source = cro-mag-rally::git+https://github.com/jorio/CroMagRally.git#commit=b05c1428a5c25c0bef7d4c6fe9323d14780e82f2
-	source = git+https://github.com/jorio/Pomme.git
+	source = github.com-jorio-Pomme::git+https://github.com/jorio/Pomme
 	source = cro-mag-rally.desktop
 	source = cro-mag-rally.sh
 	b2sums = SKIP
