@@ -3,7 +3,7 @@
 _projectname='gen'
 pkgname="ocaml-$_projectname"
 pkgver='1.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Simple, efficient iterators for OCaml'
 arch=('x86_64' 'i486' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/c-cube/$_projectname"
