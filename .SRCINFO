@@ -1,16 +1,18 @@
 pkgbase = cherry-kde-git
 	pkgdesc = Clean, Flat, Δ Theme for KDE Plasma Desktop
-	pkgver = 1.6.r6.gf464d54
+	pkgver = 1.6.r9.gd622329
 	pkgrel = 1
 	url = https://github.com/nullxception/cherry-kde
 	arch = any
 	license = GPL3
 	makedepends = git
-	optdepends = kvantum-qt5: For the Qt application style
-	provides = cherry-kde-theme
 	conflicts = cherry-kde-theme
 	options = !strip
-	source = cherry-kde-git::git+https://github.com/nullxception/cherry-kde.git
+	source = git+https://github.com/nullxception/cherry-kde.git
 	sha256sums = SKIP
 
 pkgname = cherry-kde-git
+	optdepends = kvantum-theme-cherry-git: Cherry theme for Kvantum Qt style (recommended)
+
+pkgname = kvantum-theme-cherry-git
+	depends = kvantum-qt5
