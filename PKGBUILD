@@ -5,22 +5,25 @@
 
 _pkgname=arx-libertatis
 pkgname=$_pkgname-git
-pkgver=1.2.r1.g2bde37522
+pkgver=1.2.r2523.g685710296
 pkgrel=1
 pkgdesc='Cross-platform port of Arx Fatalis, a first-person role-playing game (executables only) (Git)'
 url='https://arx-libertatis.org/'
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('sdl' 'zlib' 'boost-libs' 'glm' 'freetype2' 'openal' 'glew')
+depends=('sdl2' 'zlib' 'freetype2' 'openal' 'glew' 'libepoxy')
 optdepends=('qt5-tools: enable built-in crash handler (Qt5 version; recompile needed)'
             'qt4: enable built-in crash handler (Qt4 version; recompile needed)'
             'curl: enable built-in crash handler. (recompile needed)'
             'gdb: generate detailed crash reports'
             'arx-fatalis-data-demo: game data from official freeware demo'
             'arx-fatalis-data-gog: game data from gog.com installer'
-            'arx-fatalis-data-copy: gamedata from existing Windows installation')
-makedepends=('boost' 'cmake' 'git')
+            'arx-fatalis-data-copy: gamedata from existing Windows installation'
+            'blender: Blender plugin to import/export Arx model files')
+makedepends=('boost' 'cmake' 'git' 'glm')
+checkdepends=('cppunit')
 provides=('arx')
+conflicts=('arx')
 source=("git+https://github.com/arx/ArxLibertatis.git"
         "git+https://github.com/arx/ArxLibertatisData.git")
 sha512sums=('SKIP'
@@ -36,17 +39,21 @@ pkgver() {
 }
 
 build() {
-  cmake -S "ArxLibertatis" -B "build" \
+  cmake -S 'ArxLibertatis' -B 'build' \
           -DCMAKE_INSTALL_PREFIX=/usr \
           -DCMAKE_INSTALL_LIBEXECDIR=lib/arx \
           -DCMAKE_BUILD_TYPE=Release \
-          -DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
+          -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG' \
           -DICONDIR=/usr/share/icons/hicolor/128x128/apps \
+          -DRUNTIME_DATADIR='' \
           -DINSTALL_SCRIPTS=ON \
           -DSTRICT_USE=ON \
           -DUSE_NATIVE_FS=ON \
           -DUSE_OPENAL=ON \
           -DUSE_OPENGL=ON \
+          -DBUILD_TESTS=OFF \
+          -DWITH_SDL=2 \
+          -DWITH_OPENGL=epoxy \
           -DDATA_FILES=../ArxLibertatisData
   
   # UNITY_BUILD
@@ -58,7 +65,13 @@ build() {
   #   which will run signifincantly slower but enables more runtime
   #   checks and generates better crash reports.
   
-  cmake --build "build"
+  cmake --build 'build'
+}
+
+check() {
+	cmake -S 'ArxLibertatis' -B 'build' -DBUILD_TESTS=ON
+	cmake --build 'build'
+	cmake --build 'build' --target test
 }
 
 package() {
