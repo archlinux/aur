@@ -2,7 +2,7 @@
 _projectname='time_now'
 pkgname="ocaml-$_projectname"
 pkgver='0.15.0'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Reports the current time'
 # If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
