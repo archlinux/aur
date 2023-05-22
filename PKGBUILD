@@ -1,6 +1,6 @@
 # Maintainer: acuteenvy
 pkgname=tldrtool
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Automate contributing to tldr"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=(
     'xdg-utils: open a browser to create pull requests'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('e326eccca8a4b6a5dac8a141ccd2757c78961a45f9238827d257625198a7a733bb48cc4775e020da94305ecd1022297d5a47807c40f6c7cf7dbe3187b073bf8e')
+b2sums=('58605c17ff5c83127046548ca7492405c943dab1bf5f890c000295c8ae0825823d40575540ae1694ee706ed494c4d177d1fbfedc3074d827af48215e8dd6cf5e')
 
 prepare() {
     cd "$pkgname-$pkgver"
