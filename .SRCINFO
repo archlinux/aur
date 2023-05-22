@@ -1,6 +1,6 @@
 pkgbase = splashtop-business
 	pkgdesc = Splashtop Business. Remotely access your desktop from any device from anywhere!
-	pkgver = 3.0.4.1
+	pkgver = 3.5.2.0
 	pkgrel = 1
 	url = https://www.splashtop.com/business
 	install = splashtop-business.install
@@ -27,7 +27,7 @@ pkgbase = splashtop-business
 	depends = uriparser
 	provides = splashtop-business
 	options = !strip
-	source = https://download.splashtop.com/linux/splashtop-business_Ubuntu_v3.0.4.1_amd64.tar.gz
-	sha512sums = a0ddbdfc50d8da1e528165580993bfc4ef10bf973c8fd84b53eca0ede910efd715ad14ca48fef4db81a0922c5cf18bbe34c460039e738222aba2594cffbcd075
+	source = https://download.splashtop.com/linuxclient/splashtop-business_Ubuntu_v3.5.2.0_amd64.tar.gz
+	sha512sums = ad307b322704f2996ce16bf82842c14ba687f118367fb3da980018d53773bcd92ab7eadb69f7526f5ef1a2115f84e125573eed9b56e2d0c07ac44b32a8f8598f
 
 pkgname = splashtop-business

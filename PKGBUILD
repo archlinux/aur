@@ -1,6 +1,6 @@
 # Maintainer: Tab Fitts <tfitts [at] spryservers [dot] net>
 pkgname=splashtop-business
-pkgver=3.0.4.1
+pkgver=3.5.2.0
 pkgrel=1
 pkgdesc="Splashtop Business. Remotely access your desktop from any device from anywhere!"
 arch=('x86_64')
@@ -10,8 +10,8 @@ depends=('bash-completion' 'curl>=7.47.0' 'ffmpeg' 'gcc>=3.0' 'hicolor-icon-them
 provides=('splashtop-business')
 options=('!strip')
 install=${pkgname}.install
-source=("https://download.splashtop.com/linux/${pkgname}_Ubuntu_v${pkgver}_amd64.tar.gz")
-sha512sums=('a0ddbdfc50d8da1e528165580993bfc4ef10bf973c8fd84b53eca0ede910efd715ad14ca48fef4db81a0922c5cf18bbe34c460039e738222aba2594cffbcd075')
+source=("https://download.splashtop.com/linuxclient/${pkgname}_Ubuntu_v${pkgver}_amd64.tar.gz")
+sha512sums=('ad307b322704f2996ce16bf82842c14ba687f118367fb3da980018d53773bcd92ab7eadb69f7526f5ef1a2115f84e125573eed9b56e2d0c07ac44b32a8f8598f')
 
 prepare(){
     tar xzf ${pkgname}_Ubuntu_v${pkgver}_amd64.tar.gz
