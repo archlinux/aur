@@ -21,6 +21,7 @@ makedepends=(
   'python-build'
   'python-wheel'
   'python-installer'
+  'python-setuptools'
 )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
