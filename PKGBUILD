@@ -3,7 +3,7 @@
 # Contributor: Rye Mutt
 #
 # shellcheck disable=2034,3030,2154
-pkgname=alchemy-next-viewer-git
+pkgname=alchemy-next-viewer-nosystemd-git
 pkgver=6.11.50933.b7b3c99172
 pkgrel=2
 pkgdesc="A Second Life client with focus on performance and code correctness. - Git Source build"
