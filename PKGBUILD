@@ -2,7 +2,7 @@
 
 pkgname=billy-frontier
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An arcade action game with a "cowboys in space" theme'
 arch=('x86_64')
 url='https://github.com/jorio/BillyFrontier'
@@ -12,7 +12,7 @@ makedepends=('cmake' 'git')
 _commit='337fa270b6d97b0384a2b5e1da84b6778223e556'
 source=(
   "$pkgname::git+$url.git#commit=$_commit"
-  'git+https://github.com/jorio/Pomme.git'
+  'github.com-jorio-Pomme::git+https://github.com/jorio/Pomme'
   "$pkgname.desktop"
   "$pkgname.sh"
 )
@@ -30,10 +30,14 @@ pkgver() {
 prepare() {
   cd "$pkgname"
 
-  # setup Git submodules
+  # setup git submodules
   git submodule init
-  git config submodule.Pomme.url ../Pomme
+  git config submodule.extern/Pomme.url "$srcdir/github.com-jorio-Pomme"
   git -c protocol.file.allow=always submodule update
+
+  # ftbfs: gcc 13 & cstdint headers
+  cd extern/Pomme
+  git cherry-pick --no-commit d57c28e205462e51063e787f9ebddaadff592f1e
 }
 
 build() {

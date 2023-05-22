@@ -1,7 +1,7 @@
 pkgbase = billy-frontier
 	pkgdesc = An arcade action game with a "cowboys in space" theme
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jorio/BillyFrontier
 	arch = x86_64
 	license = custom:CC-BY-NC-SA-4.0
@@ -11,7 +11,7 @@ pkgbase = billy-frontier
 	depends = glu
 	depends = hicolor-icon-theme
 	source = billy-frontier::git+https://github.com/jorio/BillyFrontier.git#commit=337fa270b6d97b0384a2b5e1da84b6778223e556
-	source = git+https://github.com/jorio/Pomme.git
+	source = github.com-jorio-Pomme::git+https://github.com/jorio/Pomme
 	source = billy-frontier.desktop
 	source = billy-frontier.sh
 	b2sums = SKIP
