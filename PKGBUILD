@@ -42,8 +42,8 @@ package() {
 	local _modname=AMDPowerProfiler
 	local _modver=$(cat bin/AMDPowerProfilerVersion)
 	tar zxf bin/AMDPowerProfilerDriverSource.tar.gz -C "${srcdir}"
-	# Fix issue for kernel 6.3
 	cd "${srcdir}"/${_modname}-${_modver}
+	# Fix issue for kernel 6.3
 	patch -Np1 < "${srcdir}/PwrProfSharedMemOps_linux_6.3.patch"
 	mkdir -p "${pkgdir}"/usr/src/${_modname}-${_modver}
 	cp -dr --no-preserve=ownership {inc/,src/,AMDPowerProfilerVersion,dkms.conf,Makefile} \
