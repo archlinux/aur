@@ -1,25 +1,25 @@
-# Maintainer: nightuser <nightuser.android@gmail.com>
+# Maintainer: Bao Trinh <qubidt at gmail dot com>
+# Contributor: nightuser <nightuser.android@gmail.com>
 
 pkgname=dduper-git
 _pkgname=${pkgname%'-git'}
-pkgver=0.01.r48.g496897d
-btrfsprogsver=5.6.1
+pkgver=0.01.r69.g11b7855
+btrfsprogsver=6.1
 pkgrel=1
 pkgdesc='Block-level out-of-band BTRFS dedupe tool'
 url="https://github.com/Lakshmipathi/dduper"
 license=(GPL2)
 arch=(x86_64)
 makedepends=('git')
-depends=('libutil-linux' 'lzo' 'zlib' 'zstd' 'libgcrypt' 'python-numpy' 'python-ptable')
+depends=('libutil-linux' 'lzo' 'zlib' 'zstd' 'libgcrypt' 'python-numpy' 'python-prettytable')
 source=(
 	"$_pkgname::git+https://github.com/Lakshmipathi/dduper.git"
 	"https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v$btrfsprogsver.tar."{sign,xz}
 	'0001-Change-the-path-to-patched-btrfs.patch')
-sha256sums=(
-	'SKIP'
-	'SKIP'
-	'50ccf556b887018f35937626f9a6e799c1e69692778b2bb090d2a56c9bdc96db'
-	'e00b2c85b3905155ebbedfe0b985e390915ee0576136137937687e008a2de352')
+sha256sums=('SKIP'
+            'SKIP'
+            '378bcafabdb64c453ac64fef3d4cf8c8d5e47f310319743f580667f9c1114657'
+            'e00b2c85b3905155ebbedfe0b985e390915ee0576136137937687e008a2de352')
 validpgpkeys=(
 	'F2B41200C54EFB30380C1756C565D5F9D76D583B')
 
