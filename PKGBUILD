@@ -7,7 +7,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=iproute2-selinux
-pkgver=6.2.0
+pkgver=6.3.0
 pkgrel=2
 pkgdesc='IP Routing Utilities with SELinux support'
 arch=('x86_64' 'aarch64')
@@ -35,13 +35,11 @@ options=('staticlibs')
 validpgpkeys=('9F6FC345B05BE7E766B83C8F80A77F6095CDE47E') # Stephen Hemminger
 source=("https://www.kernel.org/pub/linux/utils/net/${pkgname/-selinux}/${pkgname/-selinux}-${pkgver}.tar."{xz,sign}
         '0001-make-iproute2-fhs-compliant.patch'
-        '0002-bdb-5-3.patch'
-        '0003-tc-add-missing-separator.patch')
-sha256sums=('4d72730200ec5b2aabaa1a2f20553c6748292f065d9a154c7d5e22559df9fd62'
+        '0002-bdb-5-3.patch')
+sha256sums=('dfb2a98db96e7a653cffc6693335a1a466e29a34b6ac528be48f35e1d2766732'
             'SKIP'
             '758b82bd61ed7512d215efafd5fab5ae7a28fbfa6161b85e2ce7373285e56a5d'
-            '611c1ad7946aab226a5f4059922d9430f51b3377e33911427f8fdf7f7d31f7d6'
-            '4732160a99a5ded4357c3eca8d0f67108296c957986488c7d02b6e7f08400382')
+            '611c1ad7946aab226a5f4059922d9430f51b3377e33911427f8fdf7f7d31f7d6')
 
 prepare() {
   cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
@@ -51,9 +49,6 @@ prepare() {
 
   # use Berkeley DB 5.3
   patch -Np1 -i "${srcdir}"/0002-bdb-5-3.patch
-
-  # tc: add missing separator
-  patch -Np1 -i "${srcdir}"/0003-tc-add-missing-separator.patch
 
   # do not treat warnings as errors
   sed -i 's/-Werror//' Makefile
