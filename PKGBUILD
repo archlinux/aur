@@ -12,8 +12,9 @@ depends=('vapoursynth'
          'vapoursynth-plugin-vstools-git'
          )
 makedepends=('git'
-             'python-pip'
+             'python-build'
              'python-wheel'
+             'python-installer'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -27,12 +28,12 @@ pkgver() {
 
 build() {
   cd "${_plug}"
-  pip wheel --no-deps . -w dist
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${_plug}"
-  pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
