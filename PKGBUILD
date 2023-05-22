@@ -29,7 +29,7 @@ prepare() {
 }
 
 build() {
-  arch-meson --buildtype=release -Denable-fake-gnome-software=true $srcdir/pamac-v$pkgver build
+  arch-meson -Denable-fake-gnome-software=true $srcdir/pamac-v$pkgver build
   meson compile -C build
 }
 
