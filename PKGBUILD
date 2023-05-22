@@ -2,7 +2,7 @@
 _projectname='wtf8'
 pkgname="ocaml-$_projectname"
 pkgver='1.0.2'
-pkgrel='8'
+pkgrel='9'
 pkgdesc='An ocaml library that implements a WTF-8 encoder and decoder'
 arch=('x86_64' 'i486' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/flow/$pkgname"
