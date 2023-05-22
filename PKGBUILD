@@ -4,12 +4,12 @@
 # shellcheck disable=2034,2154
 
 pkgname=lix
-pkgver=0.10.8
+pkgver=0.10.9
 pkgrel=1
 changelog=.CHANGELOG
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/SimonN/LixD/archive/v$pkgver.tar.gz"
-        "$pkgname-music-2.zip::https://www.lixgame.com/dow/lix-music.zip")
-sha512sums=('0e95187d4d56d57d661b75e4b8b09ffc3175ae9bbf883c45a4ab99459a0ad30deeb1633d73e2656c3f89f30e1c4ab03ee8b6b1f43bf1ef223ae782d56e08c633'
+        "$pkgname-music-1.1.zip::https://www.lixgame.com/dow/lix-music.zip")
+sha512sums=('a76428e45868397ba5a74b6f1255b86af56f2f60da6acd6d10c6e74b114a7e1e345d9aa169135042bbff33c7c7f1fd06ba070aace55b6e55fd859f7791cfe058'
             '280fd25a479ac8dd24475b014234270a12ab34edca7fb2f7ce4b768259111b1e7626d3ba37ac13d810f0653d23d7c9f212776e94d2c0b31a0de580864771ce9f')
 
 _gitname=LixD
@@ -24,10 +24,8 @@ _dubv=( "4.0.4+5.2.0"   # allegro
         "4.2.0"         # derelict-enet
         "3.0.0-beta.2"  # derelict-util
         "0.4.2"         # enumap
-        "1.2.2"         # libinputvisitor
         "1.3.0"         # optional
         "0.10.6"        # sdlang-d
-        "1.0.2"         # silly
         "0.11.22"       # taggedalgebraic
         "0.7.55"        # unit-threaded
         )
@@ -41,12 +39,10 @@ source+=(   "$pkgname-allegro::git+https://github.com/SiegeLord/DAllegro5.git#ta
             "$pkgname-derelict-enet::git+https://github.com/DerelictOrg/DerelictENet.git#tag=v${_dubv[2]}"
             "$pkgname-derelict-util::git+https://github.com/DerelictOrg/DerelictUtil.git#tag=v${_dubv[3]}"
             "$pkgname-enumap::git+https://github.com/rcorre/enumap.git#tag=v${_dubv[4]}"
-            "$pkgname-libinputvisitor::git+https://github.com/Abscissa/libInputVisitor.git#tag=v${_dubv[5]}"
-            "$pkgname-optional::git+https://github.com/aliak00/optional.git#tag=v${_dubv[6]}"
-            "$pkgname-sdlang-d::git+https://github.com/Abscissa/SDLang-D.git#tag=v${_dubv[7]}"
-            "$pkgname-silly::git+https://gitlab.com/AntonMeep/silly.git#tag=v${_dubv[8]}"
-            "$pkgname-taggedalgebraic::git+https://github.com/s-ludwig/taggedalgebraic.git#tag=v${_dubv[9]}"
-            "$pkgname-unit-threaded::git+https://github.com/atilaneves/unit-threaded.git#tag=v${_dubv[10]}"
+            "$pkgname-optional::git+https://github.com/aliak00/optional.git#tag=v${_dubv[5]}"
+            "$pkgname-sdlang-d::git+https://github.com/Abscissa/SDLang-D.git#tag=v${_dubv[6]}"
+            "$pkgname-taggedalgebraic::git+https://github.com/s-ludwig/taggedalgebraic.git#tag=v${_dubv[7]}"
+            "$pkgname-unit-threaded::git+https://github.com/atilaneves/unit-threaded.git#tag=v${_dubv[8]}"
             )
 sha512sums+=(   'SKIP'
                 'SKIP'
@@ -57,9 +53,7 @@ sha512sums+=(   'SKIP'
                 'SKIP'
                 'SKIP'
                 'SKIP'
-                'SKIP'
-                'SKIP'
-                )
+            )
 
 _build() {
     _r=0

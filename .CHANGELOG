@@ -1,6 +1,34 @@
 Version history
 ===============
 
+0.10.9
+------
+
+2023-05-01
+
+Fix radio buttons: It was possible to select multiple radio buttons by
+clicking the squares, not the labels. Now, only one button is ever active.
+
+Add the 6 singleplayer levels from Lemmings Forums's Level Design Contest 27
+by me and geoo in misc/contests/2023/: Bumper Cave, Inside Your Router,
+Pommes Schranke, Rhizome, Hanabi, The Last Shall Be First.
+
+Add Catalan translation of the Lix user interface.
+Thanks for the translation, Rampoina!
+
+Reduced the filesize of the SVG icon data/images/lix_logo.svg from 3.4 MB
+to 30 KB. It looks practically the same. Thanks for re-tracing, Rampoina!
+
+Allow longer description in the level editor's topology menu for wrap options.
+Paint the size warning (level too large can crash 32-bit Lix) in red, possibly
+overlapping the descriptions of the wrap checkboxes when both the description
+and the warning texts are long.
+
+Clarify "Alt+Tab is fast" in the options menu. Now the tooltip says:
+"Switching windows (e.g., with Alt+Tab) works quickly."
+
+
+
 0.10.8
 ------
 
