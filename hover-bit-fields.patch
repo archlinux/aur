@@ -1,8 +1,8 @@
 diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
-index d1f6f3a7b06c..c8141ffeaf3f 100644
+index d1f6f3a7b06c..1416848d2da5 100644
 --- a/clang-tools-extra/clangd/Hover.cpp
 +++ b/clang-tools-extra/clangd/Hover.cpp
-@@ -1008,12 +1008,16 @@ void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
+@@ -1008,12 +1008,15 @@ void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
      const auto *Record = FD->getParent();
      if (Record)
        Record = Record->getDefinition();
@@ -10,16 +10,54 @@ index d1f6f3a7b06c..c8141ffeaf3f 100644
 -        !FD->isBitField()) {
 +    if (Record && !Record->isInvalidDecl() && !Record->isDependentType()) {
        const ASTRecordLayout &Layout = Ctx.getASTRecordLayout(Record);
--      HI.Offset = Layout.getFieldOffset(FD->getFieldIndex()) / 8;
+       HI.Offset = Layout.getFieldOffset(FD->getFieldIndex()) / 8;
 -      if (auto Size = Ctx.getTypeSizeInCharsIfKnown(FD->getType())) {
-+      const auto OffsetInBits = Layout.getFieldOffset(FD->getFieldIndex());
-+      if (auto Size = Ctx.getTypeSizeInCharsIfKnown(FD->getType()))
++      if (FD->isBitField()) {
++        const auto SizeInBits = FD->getBitWidthValue(Ctx);
++        HI.Size = (SizeInBits + 7) >> 3;
++      } else if (auto Size = Ctx.getTypeSizeInCharsIfKnown(FD->getType()))
          HI.Size = FD->isZeroSize(Ctx) ? 0 : Size->getQuantity();
-+      if (FD->isBitField())
-+        HI.Offset = (OffsetInBits - (OffsetInBits % (*HI.Size * 8))) / 8;
-+      else
-+        HI.Offset = OffsetInBits / 8;
 +      if (HI.Size) {
          unsigned EndOfField = *HI.Offset + *HI.Size;
  
          // Calculate padding following the field.
+diff --git a/clang-tools-extra/clangd/unittests/HoverTests.cpp b/clang-tools-extra/clangd/unittests/HoverTests.cpp
+index 135fdfc4c23b..b59bba790ebd 100644
+--- a/clang-tools-extra/clangd/unittests/HoverTests.cpp
++++ b/clang-tools-extra/clangd/unittests/HoverTests.cpp
+@@ -125,6 +125,8 @@ TEST(Hover, Structured) {
+          HI.Kind = index::SymbolKind::Field;
+          HI.Definition = "int x : 1";
+          HI.Type = "int";
++         HI.Offset = 0;
++         HI.Size = 1;
+          HI.AccessSpecifier = "public";
+        }},
+       // Local to class method.
+@@ -1285,6 +1287,26 @@ class Foo final {})cpp";
+          HI.Kind = index::SymbolKind::Field;
+          HI.Definition = "m_int arr[Size]";
+          HI.Type = {"m_int[Size]", "int[Size]"};
++       }},
++      {// Bitfield offset, size and padding
++       R"cpp(
++            struct Foo {
++              char x;
++              char [[^y]] : 1;
++              int z;
++            };
++          )cpp",
++       [](HoverInfo &HI) {
++         HI.NamespaceScope = "";
++         HI.LocalScope = "Foo::";
++         HI.Name = "y";
++         HI.Kind = index::SymbolKind::Field;
++         HI.Definition = "char y : 1";
++         HI.Type = "char";
++         HI.Offset = 1;
++         HI.Size = 1;
++         HI.Padding = 2;
++         HI.AccessSpecifier = "public";
+        }}};
+   for (const auto &Case : Cases) {
+     SCOPED_TRACE(Case.Code);

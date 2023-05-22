@@ -63,7 +63,7 @@
 : ${CLANGD_HOVERBITFIELDS:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt
-pkgver=17.r12037.g6b50e87f21e1
+pkgver=17.r12061.gd39a7844028b
 pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
@@ -91,7 +91,7 @@ sha256sums=('SKIP'
             'f719fb52edee98f54ba40786d2ecac6ef63f56797c8f52d4d7ce76a3825966eb'  # refactor-extract-function
             '2db1f319f850858ecebdcda1c1600d6dd523f171c5b019740298d43607d5fa00'  # inlay-hints-paddings
             '346483b0d5823fba409785c2df471ca8a659112d630ee66e53b1a3e36e46e981'  # hover-hex-formats
-            '04bfc737e6e5f362571a36f984637ea69946b08200904a285fa89b9bc6678fc0') # hover-bit-fields
+            '16c560576c974b86a3cae52ea45f3c03200712f12c208f689526ee1d2155132e') # hover-bit-fields
 
 pkgver() {
     cd llvm-project
