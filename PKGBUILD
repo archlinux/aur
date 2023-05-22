@@ -1,4 +1,4 @@
-# Maintainer:  ghesy <ehsan at disroot dot org>
+# Maintainer:  koonix <me at koonix dot org>
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: dcelasun
 # Contributor: David Phillips <dbphillipsnz gmail dot com>
@@ -6,9 +6,9 @@
 _name=wkhtmltopdf
 pkgname=${_name}-static
 
-_version=0.12.6.1-2
+_version=0.12.6.1-3
 pkgver=${_version%-*}_r${_version##*-}
-pkgrel=3
+pkgrel=1
 
 pkgdesc='Shell utility to convert HTML to PDF using Webkit and Qt (upstream static build)'
 url='https://github.com/wkhtmltopdf/packaging'
@@ -31,14 +31,14 @@ options=('!strip')
 #
 #   Forky       TBD
 #   Trixie      TBD
-#   Bookworm    TBD
+#   Bookworm    2023
 #   Bullseye    2021
 #   Buster      2019
 #   Stretch     2017
 #
-_release='bullseye'
+_release='bookworm'
 _source=(
-	"${_name}-${_version}-@ARCH@.deb::${url}/releases/download/${_version}/wkhtmltox_${_version}.${_release}_@SRCARCH@.deb"
+	"${_name}-${_version}-${_release}-@ARCH@.deb::${url}/releases/download/${_version}/wkhtmltox_${_version}.${_release}_@SRCARCH@.deb"
 )
 
 # architectures and their counterparts used in the source URL
@@ -65,7 +65,7 @@ for _a in "${!_archmap[@]}"; do
 	declare -ag "source_${_a}="'("${_s[@]}")'
 done
 
-sha256sums_i386=('35ff064a6bfdd39aa5a193b021de09d5add48ff1cb99e2e881bb81b880358779')
-sha256sums_aarch64=('3344e3a72f4cb4c1218cf48ac5fa9e88bef62aa7fa6f2295be7d5bc1fef100b1')
-sha256sums_ppc64le=('82a9845aad7a76fdf386156407ab41242c9c6ee686d4f5fa02b3383f7c553c37')
-sha256sums_x86_64=('50a3c5334d1fb21349f8ec965fc233840026c376185e3aa75373e6e7aa3ff74d')
+sha256sums_i386=('79ac95fe69bb7ef356b88884a3659c0f03ce679711a78869f0f877f80f20d26c')
+sha256sums_aarch64=('b6606157b27c13e044d0abbe670301f88de4e1782afca4f9c06a5817f3e03a9c')
+sha256sums_ppc64le=('0f2afa1fbcdad7a5a288ae38fbaf8e1f256be8557084cc56f66cac0bd2af332b')
+sha256sums_x86_64=('98ba0d157b50d36f23bd0dedf4c0aa28c7b0c50fcdcdc54aa5b6bbba81a3941d')
