@@ -1,6 +1,6 @@
 pkgbase = cruiser
 	pkgdesc = Map and navigation application using offline vector maps
-	pkgver = 3.0.19
+	pkgver = 3.0.20
 	pkgrel = 1
 	url = http://wiki.openstreetmap.org/wiki/Cruiser
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = cruiser
 	replaces = atlas-maps
 	replaces = atlas-maps-bin
 	replaces = atlas-maps-beta-bin
-	noextract = cruiser-3.0.19.zip
-	source = https://github.com/devemux86/cruiser/releases/download/3.0.19/cruiser-3.0.19.zip
-	md5sums = 319c6c703dfe41f4ae1fe53cd1bcbd79
+	noextract = cruiser-3.0.20.zip
+	source = https://github.com/devemux86/cruiser/releases/download/3.0.20/cruiser-3.0.20.zip
+	md5sums = e01537570e2a2cd062f76b3fe05e6763
 
 pkgname = cruiser
