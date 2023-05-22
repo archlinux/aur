@@ -3,7 +3,7 @@
 _projectname='lwt_log'
 pkgname="ocaml-$_projectname"
 pkgver='1.1.2'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Lwt-friendly logger'
 # If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the cppo, ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
