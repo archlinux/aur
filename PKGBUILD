@@ -1,14 +1,17 @@
-# Maintainer: Salo Shp <support@salosh.org>
-pkgname=jockey
+# Maintainer: salosh <support[at]salosh[dot]org>
+
+_name="jockey"
+pkgbase="$_name"
+pkgname=("$pkgbase")
 pkgver=0.0.1
 pkgrel=1
-epoch=1
+epoch=3
 pkgdesc="Data J0ckey"
 arch=(any)
 url="https://github.com/salosh/jockey.git"
-license=(GPLv3)
+license=('MIT')
 groups=()
-depends=()
+depends=('go')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -24,10 +27,12 @@ md5sums=()
 validpgpkeys=()
 
 build() {
-  /bin/true
+  echo "bin: ${pkgdir}/usr/bin/jockey"
 }
 
-package() {
-  sitepackages=jockey
-  mkdir -p $pkgdir/"$sitepackages"
+package_jockey() {
+  echo '#!/usr/bin/jockey' > "${srcdir}/jockey.sh"
+  mkdir -p "${pkgdir}/usr/bin"
+  cp "${srcdir}/jockey.sh" "${pkgdir}/usr/bin/jockey.sh"
+  chmod +x "${pkgdir}/usr/bin/jockey.sh"
 }
