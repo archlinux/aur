@@ -1,7 +1,7 @@
 pkgbase = statifier
 	pkgdesc = Create portable, self-containing Linux executables: Creates from dynamically linked executables and all it's libraries one file. Note: Does not play well with VDSO, which most modern kernels have activated.
 	pkgver = 1.7.4
-	pkgrel = 4
+	pkgrel = 5
 	url = http://statifier.sourceforge.net/
 	arch = i386
 	arch = i486
@@ -9,6 +9,7 @@ pkgbase = statifier
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	depends = bash
 	depends = gcc-libs
 	depends = glibc
 	source = statifier-1.7.4.tar.gz::https://sourceforge.net/projects/statifier/files/statifier/1.7.4/statifier-1.7.4.tar.gz/download
@@ -17,4 +18,3 @@ pkgbase = statifier
 	depends_x86_64 = lib32-glibc
 
 pkgname = statifier
-
