@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.3.2.arch1
+pkgver=6.3.3.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -49,6 +49,7 @@ source=(
   0029-patch02_gu604v_wmi_keys.patch
 
   0031-FX516PE-rgb-mode.patch
+  0032-Bluetooth-btusb-Add-a-new-PID-VID-0489-e0f6-for-MT7922.patch
 
   0001-HID-asus-Add-support-for-ASUS-ROG-Z13-keyboard.patch
   0002-HID-asus-add-keycodes-for-0x6a-0x4b-and-0xc7.patch
@@ -72,7 +73,7 @@ validpgpkeys=(
 
 sha256sums=('SKIP'
             '6b337a9d3cfdc00005589a80b8d36fa500f6a92ed21565a3aceec48d7202a7da'
-            '38dd8add41aa2dc75a3da9d51358e28c2bd4510bd9abc54b6494d61e4a317fc2'
+            'bc8b5f303e3507c01d8543fb4352ed7dcdb9ed4eb2854788d39510f88d67f454'
             '81ad663925a0aa5b5332a69bae7227393664bb81ee2e57a283e7f16e9ff75efe'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
             'd45e2ae1d21b1dc8e0de94a4fa58e9a53d72306843f87d3cc49f5f641399d8e3'
@@ -84,6 +85,7 @@ sha256sums=('SKIP'
             '8614c92567822e38ac7a0893e93776f39bbb6d373797f4b713cef5b3c060c8f1'
             'cdbcec3031878cdb7ffab32034e4ee31bbd0ec214088f95dc446a13320985631'
             'ec3cced4d3d5de4827e07430a77fcba755d84b9cfded09dc0b6be46e28427f22'
+            'a8e1e11a4ab1995cc4975c9b134a43ddfe7054ef0c965e52a7d8f9223e15c3e0'
             '14f695b481e1afc4ac8c79ef48f0613267c86d1862f3293d889f6f68e1b84188'
             '93b7ad2dd6b172d487d5e37847027f5854cae0c7291bc643d890045692903bab'
             '04167065497211326a3a6f83519111e2f81273c848143d300e7e3e91062c061b'
@@ -145,19 +147,13 @@ prepare() {
   cp ../config .config
   _make olddefconfig
   diff -u ../config .config || :
-
-  ## let user choose microarchitecture optimization in GCC
-  ## but beause the script below does NOT work in a clean chroot, set the default here, and only 
-  ## change through the script if it works...
-  sed 's|^CONFIG_GENERIC_CPU=y|# CONFIG_GENERIC_CPU is not set|g' -i .config
-  sed 's|^CONFIG_GENERIC_CPU2=y|# CONFIG_GENERIC_CPU2 is not set|g' -i .config
-  sed "s|^# $Microarchitecture is not set|$Microarchitecture=y|g" -i .config
   
   ## Make use of modprobed-db, if installed
   ## To do this, you need to enable copy the database into this directory and enable the relevant lines 
   ## at the top of this file!
   # _make LSMOD=../modprobed.db localmodconfig 
-  
+
+  ## let user choose microarchitecture optimization in GCC  
   ## this needs to run *after* `make olddefconfig` so that our newly added configuration macros exist
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
  

@@ -135,6 +135,7 @@ sleep 5
 
 sed 's|^CONFIG_GENERIC_CPU=y|# CONFIG_GENERIC_CPU is not set|g' -i .config
 sed 's|^CONFIG_GENERIC_CPU2=y|# CONFIG_GENERIC_CPU2 is not set|g' -i .config
+sed 's|^CONFIG_GENERIC_CPU3=y|# CONFIG_GENERIC_CPU3 is not set|g' -i .config
 sed "s|^# $Microarchitecture is not set|$Microarchitecture=y|g" -i .config
 
 echo
