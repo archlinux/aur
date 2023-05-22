@@ -1,0 +1,25 @@
+diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
+index d1f6f3a7b06c..c8141ffeaf3f 100644
+--- a/clang-tools-extra/clangd/Hover.cpp
++++ b/clang-tools-extra/clangd/Hover.cpp
+@@ -1008,12 +1008,16 @@ void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
+     const auto *Record = FD->getParent();
+     if (Record)
+       Record = Record->getDefinition();
+-    if (Record && !Record->isInvalidDecl() && !Record->isDependentType() &&
+-        !FD->isBitField()) {
++    if (Record && !Record->isInvalidDecl() && !Record->isDependentType()) {
+       const ASTRecordLayout &Layout = Ctx.getASTRecordLayout(Record);
+-      HI.Offset = Layout.getFieldOffset(FD->getFieldIndex()) / 8;
+-      if (auto Size = Ctx.getTypeSizeInCharsIfKnown(FD->getType())) {
++      const auto OffsetInBits = Layout.getFieldOffset(FD->getFieldIndex());
++      if (auto Size = Ctx.getTypeSizeInCharsIfKnown(FD->getType()))
+         HI.Size = FD->isZeroSize(Ctx) ? 0 : Size->getQuantity();
++      if (FD->isBitField())
++        HI.Offset = (OffsetInBits - (OffsetInBits % (*HI.Size * 8))) / 8;
++      else
++        HI.Offset = OffsetInBits / 8;
++      if (HI.Size) {
+         unsigned EndOfField = *HI.Offset + *HI.Size;
+ 
+         // Calculate padding following the field.
