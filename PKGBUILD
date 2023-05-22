@@ -28,8 +28,8 @@
 
 pkgname=vivado-lab-edition
 _srcname=Xilinx_Vivado_Lab_Lin
-pkgver=2021.1
-_more_ver=0610_2318
+pkgver=2022.2
+_more_ver=1014_8888
 pkgrel=1
 pkgdesc="FPGA/CPLD Lab Tools for Xilinx devices"
 url="https://www.xilinx.com/products/design-tools/vivado.html"
@@ -44,7 +44,7 @@ source=("file:///${_srcname}_${pkgver}_${_more_ver}.tar.gz"
         'spoof_homedir.c')
 
 # checksum from https://www.xilinx.com/support/download.html
-md5sums=('2548424763ce4358dcb89258e89e5824'
+md5sums=('13f808b0a82d7ae0faef72b30cd5a28f'
          '69d14ad64f6ec44e041eaa8ffcb6f87c')
 
 # takes forever for probably minimal gain
@@ -65,7 +65,7 @@ package() {
 	# LD_PRELOAD already contains libfakeroot.so, add our own library before that
 	LD_PRELOAD="$srcdir/spoof_homedir.so:$LD_PRELOAD" ./xsetup \
 		--batch Install \
-		--agree XilinxEULA,3rdPartyEULA,WebTalkTerms \
+		--agree XilinxEULA,3rdPartyEULA \
 		--edition 'Vivado Lab Edition (Standalone)' \
 		--location "$pkgdir/opt/Xilinx"
 
