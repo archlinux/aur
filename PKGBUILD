@@ -1,18 +1,19 @@
 # Maintainer: Kendall G. <kgarner at duck dot com>
 
 pkgname=feishin-appimage
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Sonixd Rewrite"
 arch=('x86_64')
 url="https://github.com/jeffvli/feishin"
+provides=("feishin")
 license=('GPL3')
 depends=('fuse2' 'mpv')
 options=(!strip) # necessary otherwise the AppImage file in the package is truncated
 conflicts=("feishin-bin")
 _filename=Feishin-${pkgver//_/-}-linux-$CARCH.AppImage
 source=("${url}/releases/download/v${pkgver//_/-}/${_filename}")
-sha256sums=("891218c2257bde4f1152bbaaa8b0fd8e17512cb186b336de3b52e2f57d9860f3")
+sha256sums=("1fae2792ce6367d408f4525f9e2f6b6d95427fa03f044febb8b1f4c97a114e4b")
 INSTALL_PATH="/opt/${pkgname}/${_filename}"
 
 prepare() {
