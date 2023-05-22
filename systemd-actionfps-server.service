@@ -1,0 +1,18 @@
+[Unit]
+Description=ActionFPS server.
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=actionfps
+
+ExecStart=actionfps-server
+
+ProtectHostname=true
+ProtectClock=true
+NoNewPrivileges=yes
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target
