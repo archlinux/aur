@@ -1,0 +1,5 @@
+*.ttf
+OFL.txt
+*.tar.zst
+src
+pkg
