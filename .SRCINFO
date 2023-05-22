@@ -1,0 +1,13 @@
+pkgbase = nautilus-open-in-blackbox
+	pkgdesc = Open current directory in BlackBox from Nautilus context menu
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ppvan/nautilus-open-in-blackbox
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python-nautilus>=4.0
+	source = git+https://github.com/ppvan/nautilus-open-in-blackbox#commit=e69a0093311d6b89b25a55044d4f820d16de72c9
+	sha256sums = SKIP
+
+pkgname = nautilus-open-in-blackbox
