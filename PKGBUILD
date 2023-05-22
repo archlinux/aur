@@ -2,7 +2,7 @@
 _projectname='jst-config'
 pkgname="ocaml-$_projectname"
 pkgver='0.15.1'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Compile-time configuration for Jane Street libraries'
 # If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
