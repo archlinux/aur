@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Anni Workspace GUI
+GenericName=AnniWSGUI
+Comment=Anni workspace GUI
+Exec=/usr/bin/anni-ws-gui %F
+Icon=/usr/share/pixmaps/anni-ws-gui.png
+Terminal=false
+Type=Application
