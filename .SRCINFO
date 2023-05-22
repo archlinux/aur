@@ -1,6 +1,6 @@
 pkgbase = qucs-s
 	pkgdesc = A spin-off of Qucs that supports other free SPICE circuit simulators like ngspice with the same Qucs GUI
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://ra3xdh.github.io
 	arch = x86_64
@@ -14,8 +14,7 @@ pkgbase = qucs-s
 	optdepends = qucs: for Qucsator simulation backend
 	optdepends = xyce-serial: a SPICE-compatible simulation backend
 	optdepends = spiceopus: a general purpose simulation backend for optimization loops
-	options = !makeflags
-	source = https://github.com/ra3xdh/qucs_s/releases/download/1.0.1/qucs-s-1.0.1.tar.gz
-	sha256sums = 6ba278a91fab96d6a3d2f17d590997725146f415030217bc3e7f3cf2c5f7c14b
+	source = https://github.com/ra3xdh/qucs_s/releases/download/1.0.2/qucs-s-1.0.2.tar.gz
+	sha256sums = 9ad700c4d83f08ae0a8a8c8b3f02e13d4b0b96082cd2cc877cbc036df31d1abb
 
 pkgname = qucs-s
