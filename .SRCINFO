@@ -1,0 +1,20 @@
+pkgbase = pragtical-git
+	pkgdesc = The practical and pragmatic code editor.
+	pkgver = 3.0.0.testing.r0.ge8ec9cc
+	pkgrel = 1
+	url = https://github.com/pragtical/pragtical
+	arch = x86_64
+	license = MIT
+	makedepends = meson>=0.58
+	depends = luajit
+	depends = sdl2
+	depends = freetype2
+	depends = pcre2
+	depends = uchardet
+	depends = hicolor-icon-theme
+	provides = pragtical
+	conflicts = pragtical
+	source = git+https://github.com/pragtical/pragtical
+	sha256sums = SKIP
+
+pkgname = pragtical-git
