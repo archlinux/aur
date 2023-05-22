@@ -1,7 +1,7 @@
 pkgbase = bugdom
 	pkgdesc = Save Bugdom from Thorax's evil Fire Ants
 	pkgver = 1.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jorio/Bugdom
 	arch = x86_64
 	license = custom:CC-BY-NC-SA-4.0
@@ -11,7 +11,7 @@ pkgbase = bugdom
 	depends = glu
 	depends = hicolor-icon-theme
 	source = bugdom::git+https://github.com/jorio/Bugdom.git#commit=85e88ea7cde3cd63f94fbd0cac6358f7d33b1c66
-	source = git+https://github.com/jorio/Pomme.git
+	source = github.com-jorio-Pomme::git+https://github.com/jorio/Pomme
 	source = bugdom.desktop
 	source = bugdom.sh
 	b2sums = SKIP
