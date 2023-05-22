@@ -12,10 +12,10 @@ pkgname=('systemd-selinux'
          'systemd-resolvconf-selinux'
          'systemd-sysvcompat-selinux'
          'systemd-ukify-selinux')
-_tag='54e993e2389ccdf43189f89dd7c5d5ec34f31d6b' # git rev-parse v${_tag_name}
-_tag_name=253.3
+_tag='884b34747beaab5909cd65f36ff48afc86377d48' # git rev-parse v${_tag_name}
+_tag_name=253.4
 pkgver="${_tag_name/-/}"
-pkgrel=3
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url='https://www.github.com/systemd/systemd'
 groups=('selinux')

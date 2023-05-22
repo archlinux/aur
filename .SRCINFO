@@ -1,6 +1,6 @@
 pkgbase = systemd-selinux
-	pkgver = 253.3
-	pkgrel = 3
+	pkgver = 253.4
+	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
 	arch = aarch64
@@ -50,7 +50,7 @@ pkgbase = systemd-selinux
 	makedepends = gnutls
 	makedepends = libselinux
 	options = strip
-	source = git+https://github.com/systemd/systemd-stable#tag=54e993e2389ccdf43189f89dd7c5d5ec34f31d6b?signed
+	source = git+https://github.com/systemd/systemd-stable#tag=884b34747beaab5909cd65f36ff48afc86377d48?signed
 	source = git+https://github.com/systemd/systemd#tag=v253?signed
 	source = 0001-Use-Arch-Linux-device-access-groups.patch
 	source = initcpio-hook-udev
@@ -146,9 +146,9 @@ pkgname = systemd-selinux
 	optdepends = libp11-kit: support PKCS#11
 	optdepends = tpm2-tss: unlocking LUKS2 volumes with TPM2
 	provides = nss-myhostname
-	provides = systemd-tools=253.3
-	provides = udev=253.3
-	provides = systemd=253.3-3
+	provides = systemd-tools=253.4
+	provides = udev=253.4
+	provides = systemd=253.4-1
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -186,7 +186,7 @@ pkgname = systemd-libs-selinux
 	provides = libsystemd.so
 	provides = libudev.so
 	provides = libsystemd-selinux
-	provides = systemd-libs=253.3-3
+	provides = systemd-libs=253.4-1
 	conflicts = libsystemd
 	conflicts = libsystemd-selinux
 	conflicts = systemd-libs
@@ -198,16 +198,16 @@ pkgname = systemd-resolvconf-selinux
 	depends = systemd-selinux
 	provides = openresolv
 	provides = resolvconf
-	provides = systemd-resolvconf=253.3-3
+	provides = systemd-resolvconf=253.4-1
 	conflicts = openresolv
-	conflicts = systemd-resolvconf=253.3-3
+	conflicts = systemd-resolvconf=253.4-1
 
 pkgname = systemd-sysvcompat-selinux
 	pkgdesc = sysvinit compat for systemd with SELinux support
 	license = GPL2
 	depends = systemd-selinux
-	provides = systemd-sysvcompat=253.3-3
-	provides = selinux-systemd-sysvcompat=253.3-3
+	provides = systemd-sysvcompat=253.4-1
+	provides = selinux-systemd-sysvcompat=253.4-1
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 	conflicts = selinux-systemd-sysvcompat
@@ -221,4 +221,4 @@ pkgname = systemd-ukify-selinux
 	optdepends = python-pillow: Show the size of splash image
 	optdepends = sbsigntools: Sign the embedded kernel
 	provides = ukify
-	provides = systemd-ukify=253.3-3
+	provides = systemd-ukify=253.4-1
