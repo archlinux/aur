@@ -11,11 +11,11 @@ license=('ZLIB' 'custom')
 depends=('zlib' 'gcc-libs')
 makedepends=('mesa' 'clang' 'sdl2' 'sdl2_image' 'openal' 'libvorbis' 'libgl')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/assaultcube/AC/archive/refs/tags/v${pkgver}.tar.gz"
-        'assaultcube'
-        'assaultcube-server'
-        'assaultcube.desktop'
+        "${pkgbase}"
+        "${pkgbase}-server"
+        "${pkgbase}.desktop"
         'systemd-sysuser.conf'
-        'systemd-assaultcube-server.service')
+        "systemd-${pkgbase}-server.service")
 sha512sums=('8488c399036532859f7c83d094ac1443c52aa6367d106cc5889b80353ff1d501f7b8ae3b51e34b03215cc88dacc5f29488635047ce90291c601f8f7582498685'
             '6ecfb0320f8f63d3c220032a0e267bd81f89ed33d415991a83e7a662769eec6dcdf374fcf0d4f7e893c0dcd58598379d49cc52550b5907769fdbc6c428013d91'
             '363fbee6e2561677eb7bc1f9d77e1431758063f3ceaf86fd0878c0e376fb9921ad90285dc961b6afaf9b40fa545f9cbb659aaf039e134b8b4c85510916d1a4e2'
@@ -26,9 +26,9 @@ sha512sums=('8488c399036532859f7c83d094ac1443c52aa6367d106cc5889b80353ff1d501f7b
 _srcdir="AC-${pkgver}"
 
 _cflags=${CLANG_CFLAGS:-}
-check_option 'lto' 'y' && _cflags+=' -flto=thin'
+check_option 'lto' 'y' && _cflags+=' -flto=auto'
 _cxxflags=${CLANG_CXXFLAGS:-}
-check_option 'lto' 'y' && _cxxflags+=' -flto=thin'
+check_option 'lto' 'y' && _cxxflags+=' -flto=auto'
 
 prepare() {
 	cd "${_srcdir}"
@@ -47,43 +47,43 @@ build() {
 }
 
 package_assaultcube-common() {
-	install -dm755 "${pkgdir}/usr/share/games/assaultcube"
+	install -dm755 "${pkgdir}/usr/share/games/${pkgbase}"
 	
-	cp -r "${_srcdir}"/{config,docs,bot} "${pkgdir}/usr/share/games/assaultcube"
+	cp -r "${_srcdir}"/{config,docs,bot} "${pkgdir}/usr/share/games/${pkgbase}"
 	
-	rm "${pkgdir}/usr/share/games/assaultcube/config/servercmdline.txt"
-	find "${pkgdir}/usr/share/games/assaultcube/docs" -type f -exec chmod -R 0644 '{}' \;
-	find "${pkgdir}/usr/share/games/assaultcube/docs" -type d -exec chmod -R 0755 '{}' \;
+	rm "${pkgdir}/usr/share/games/${pkgbase}/config/servercmdline.txt"
+	find "${pkgdir}/usr/share/games/${pkgbase}/docs" -type f -exec chmod -R 0644 '{}' \;
+	find "${pkgdir}/usr/share/games/${pkgbase}/docs" -type d -exec chmod -R 0755 '{}' \;
 	
-	install -Dm644 "${_srcdir}"/{README.html,README.md,SECURITY.md,GOVERNANCE.md} -t "${pkgdir}/usr/share/games/assaultcube"
+	install -Dm644 "${_srcdir}"/{README.html,README.md,SECURITY.md,GOVERNANCE.md} -t "${pkgdir}/usr/share/games/${pkgbase}"
 	install -Dm644 "${_srcdir}/docs/package_copyrights.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_assaultcube-client() {
 	depends=('assaultcube-common' 'sdl2' 'sdl2_image' 'openal' 'libvorbis' 'libgl')
 	
-	install -dm755 "${pkgdir}/usr/share/games/assaultcube"
-	install -Dm755 "${_srcdir}"/{assaultcube.sh,check_install.sh,install_or_remove_menuitem.sh} \
-		-t "${pkgdir}/usr/share/games/assaultcube"
-	install -Dm755 "${_srcdir}/bin_unix"/*_client "${pkgdir}/usr/share/games/assaultcube/bin_unix/native_client"
-	cp -r "${_srcdir}"/{demos,mods,packages} "${pkgdir}/usr/share/games/assaultcube"
-	install -Dm644 "${_srcdir}/packages/misc/icon.png" "${pkgdir}/usr/share/pixmaps/assaultcube.png"
-	install -Dm644 'assaultcube.desktop' "${pkgdir}/usr/share/applications/assaultcube.desktop"
-	install -Dm755 'assaultcube' "${pkgdir}/usr/bin/assaultcube"
+	install -dm755 "${pkgdir}/usr/share/games/${pkgbase}"
+	install -Dm755 "${_srcdir}"/{${pkgbase}.sh,check_install.sh,install_or_remove_menuitem.sh} \
+		-t "${pkgdir}/usr/share/games/${pkgbase}"
+	install -Dm755 "${_srcdir}/bin_unix"/*_client "${pkgdir}/usr/share/games/${pkgbase}/bin_unix/native_client"
+	cp -r "${_srcdir}"/{demos,mods,packages} "${pkgdir}/usr/share/games/${pkgbase}"
+	install -Dm644 "${_srcdir}/packages/misc/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgbase}.png"
+	install -Dm644 "${pkgbase}.desktop" "${pkgdir}/usr/share/applications/${pkgbase}.desktop"
+	install -Dm755 "${pkgbase}" "${pkgdir}/usr/bin/${pkgbase}"
 }
 
 package_assaultcube-server() {
 	depends=('assaultcube-common' 'systemd')
 	backup=('etc/assaultcube/servercmdline.txt')
 	
-	install -Dm755 'assaultcube-server' "${pkgdir}/usr/bin/assaultcube-server"
+	install -Dm755 "${pkgbase}-server" "${pkgdir}/usr/bin/${pkgbase}-server"
 	
-	install -dm755 "${pkgdir}/usr/share/games/assaultcube/config"
-	install -Dm644 "${_srcdir}/config/servercmdline.txt" "${pkgdir}/etc/assaultcube/servercmdline.txt"
+	install -dm755 "${pkgdir}/usr/share/games/${pkgbase}/config"
+	install -Dm644 "${_srcdir}/config/servercmdline.txt" "${pkgdir}/etc/${pkgbase}/servercmdline.txt"
 	
-	install -Dm755 "${_srcdir}/bin_unix"/*_server "${pkgdir}/usr/share/games/assaultcube/bin_unix/native_server"
-	install -Dm755 "${_srcdir}"/{server.sh,server_wizard.sh} -t "${pkgdir}/usr/share/games/assaultcube"
+	install -Dm755 "${_srcdir}/bin_unix"/*_server "${pkgdir}/usr/share/games/${pkgbase}/bin_unix/native_server"
+	install -Dm755 "${_srcdir}"/{server.sh,server_wizard.sh} -t "${pkgdir}/usr/share/games/${pkgbase}"
 	
-	install -Dm644 "systemd-sysuser.conf" "${pkgdir}/usr/lib/sysusers.d/assaultcube.conf"
-	install -Dm644 "systemd-assaultcube-server.service" "${pkgdir}/usr/lib/systemd/system/assaultcube-server.service"
+	install -Dm644 "systemd-sysuser.conf" "${pkgdir}/usr/lib/sysusers.d/${pkgbase}.conf"
+	install -Dm644 "systemd-${pkgbase}-server.service" "${pkgdir}/usr/lib/systemd/system/${pkgbase}-server.service"
 }
