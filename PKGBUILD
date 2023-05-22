@@ -2,7 +2,7 @@
 
 _plug=vsdenoise
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.2.0.0.g1830790
+pkgver=2.2.0.30.g2d7fed4
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -16,11 +16,13 @@ depends=('vapoursynth'
          'vapoursynth-plugin-vsaa-git'
          'vapoursynth-plugin-vsscale-git'
          )
-makedepends=('git'
-             'python-pip'
-             'python-wheel'
-             'python-setuptools'
-             )
+makedepends=(
+  'git'
+  'python-build'
+  'python-wheel'
+  'python-installer'
+  'python-setuptools'
+)
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/Irrational-Encoding-Wizardry/vs-denoise.git")
