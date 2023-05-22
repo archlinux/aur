@@ -2,7 +2,7 @@
 pkgname=tldrtool-bin
 _pkgname=tldrtool
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Automate contributing to tldr"
 arch=('x86_64')
 url="https://github.com/acuteenvy/$_pkgname"
@@ -15,7 +15,7 @@ optdepends=(
 conflicts=('tldrtool')
 provides=('tldrtool')
 source=("$url/releases/download/v$pkgver/$_pkgname-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-b2sums=('5825310f08d6a68f48b11f30d90b42a899f4859dc74c4af4d9e1ba44f78bf9050b93e8e3c2c549e6dbc692e4fae5f6b134fdecdab41233d08aed1f633a8556da')
+b2sums=('0a4a0613e52263050c364900e96a99216667033136ef78cde3796c412d24e469d6418a5db2b24c2ced80e36d0c2864265552276ca3018b4599fd84ef12dd75a3')
 
 package() {
     install -Dm755 tlt -t "$pkgdir/usr/bin"
