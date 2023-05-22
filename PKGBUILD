@@ -3,7 +3,7 @@
 _projectname='ppx_inline_test'
 pkgname="ocaml-$_projectname"
 pkgver='0.15.1'
-pkgrel='1'
+pkgrel='2'
 epoch='1'
 pkgdesc='Syntax extension for writing in-line tests in ocaml code'
 # If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
