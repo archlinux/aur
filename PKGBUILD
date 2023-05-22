@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 # Contributor: Robert Greener <me@r0bert.dev>
 _pkgname=cNORM
-_pkgver=3.0.2
+_pkgver=3.0.3
 pkgname=r-${_pkgname,,}
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc='Continuous Norming'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('31231a0612915ee5171676b28273f82acdc8914bd6385fc9e7b17f930e66c91a')
+sha256sums=('7c40128dc071e93907af57df292e484ad7f1323849a1e87da743b9775e6bb02d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
