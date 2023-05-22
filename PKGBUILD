@@ -1,7 +1,7 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=folder-color-nemo
 _pkgname=${pkgname%-nemo}
-pkgver=0.2.7
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Change your folder color in Nemo"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('git' 'dpkg' 'python-build' 'python-distutils-extra' 'python-instal
              'python-setuptools' 'python-wheel')
 conflicts=("$_pkgname-bzr" 'folder-color-common')
 replaces=('folder-color-common')
-_commit=f75be7281db5d77ee0231dccc440f69838628805  # 0.2.7
+_commit=b52534562cc4a69eb56982bc9c14e0efc61fd0ee  # 0.3.2
 source=("git+https://github.com/costales/folder-color.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -21,13 +21,13 @@ pkgver() {
   dpkg-parsechangelog --show-field Version
 }
 
-prepare() {
-  cd "$srcdir/$_pkgname/install_scripts"
-  ./nemo.sh
-}
-
 build() {
   cd "$srcdir/$_pkgname"
+
+  pushd install-scripts
+  ./nemo.sh GTK3
+  popd
+
   python -m build --wheel --no-isolation
 }
 
