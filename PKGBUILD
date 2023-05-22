@@ -8,14 +8,16 @@ pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Irrational-Encoding-Wizardry/vs-denoise'
 license=('MIT')
-depends=('vapoursynth'
-         'vapoursynth-plugin-vstools-git'
-         'vapoursynth-plugin-vskernels-git'
-         'vapoursynth-plugin-vsexprtools-git'
-         'vapoursynth-plugin-vsrgtools-git'
-         'vapoursynth-plugin-vsaa-git'
-         'vapoursynth-plugin-vsscale-git'
-         )
+depends=(
+  'vapoursynth'
+  'vapoursynth-plugin-vstools-git'
+  'vapoursynth-plugin-vskernels-git'
+  'vapoursynth-plugin-vsexprtools-git'
+  'vapoursynth-plugin-vsrgtools-git'
+  'vapoursynth-plugin-vsmask-git'
+  'vapoursynth-plugin-vsaa-git'
+  'vapoursynth-plugin-vsscale-git'
+)
 makedepends=(
   'git'
   'python-build'
@@ -35,12 +37,12 @@ pkgver() {
 
 build() {
   cd "${_plug}"
-  pip wheel --no-deps . -w dist
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${_plug}"
-  pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/tools/${_plug}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

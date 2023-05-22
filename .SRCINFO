@@ -15,6 +15,7 @@ pkgbase = vapoursynth-plugin-vsdenoise-git
 	depends = vapoursynth-plugin-vskernels-git
 	depends = vapoursynth-plugin-vsexprtools-git
 	depends = vapoursynth-plugin-vsrgtools-git
+	depends = vapoursynth-plugin-vsmask-git
 	depends = vapoursynth-plugin-vsaa-git
 	depends = vapoursynth-plugin-vsscale-git
 	provides = vapoursynth-plugin-vsdenoise
