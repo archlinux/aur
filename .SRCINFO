@@ -1,6 +1,6 @@
 pkgbase = not1mm-git
 	pkgdesc = Not1MM != N1MM, An amateur radio contest logger for Linux.
-	pkgver = r557.86c9f0e
+	pkgver = r584.ef6dfd3
 	pkgrel = 1
 	url = https://github.com/mbridak/not1mm
 	arch = any

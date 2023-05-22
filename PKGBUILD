@@ -1,7 +1,7 @@
 # Maintainer: f4iey <f4iey@f4iey.fr>	
 
 pkgname=not1mm-git
-pkgver=r557.86c9f0e
+pkgver=r584.ef6dfd3
 pkgrel=1
 pkgdesc="Not1MM != N1MM, An amateur radio contest logger for Linux."
 arch=('any')
@@ -41,4 +41,8 @@ build() {
 package() {
   cd $srcdir/$pkgname
   python -m installer --destdir="$pkgdir" dist/*.whl
+  # Desktop icon
+  install -Dm755 "not1mm/data/k6gte-not1mm.desktop" "$pkgdir/usr/share/applications/k6gte-not1mm.desktop"
+  install -Dm755 "not1mm/data/k6gte.not1mm.svg" "$pkgdir/usr/share/pixmaps/k6gte-not1mm.svg"
+
 }
