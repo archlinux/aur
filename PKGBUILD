@@ -2,12 +2,12 @@
 
 pkgname='ahriman'
 pkgver=2.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ArcH linux ReposItory MANager"
 arch=('any')
 url="https://github.com/arcan1s/ahriman"
 license=('GPL3')
-depends=('devtools>=1:1.0.0' 'git' 'pyalpm' 'python-cerberus' 'python-inflection' 'python-passlib' 'python-requests' 'python-setuptools' 'python-srcinfo')
+depends=('devtools>=1:1.0.0' 'git' 'pyalpm' 'python-cerberus' 'python-inflection' 'python-passlib' 'python-requests' 'python-srcinfo')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 optdepends=('breezy: -bzr packages support'
             'darcs: -darcs packages support'

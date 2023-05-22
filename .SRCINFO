@@ -1,7 +1,7 @@
 pkgbase = ahriman
 	pkgdesc = ArcH linux ReposItory MANager
 	pkgver = 2.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/arcan1s/ahriman
 	install = ahriman.install
 	arch = any
@@ -16,7 +16,6 @@ pkgbase = ahriman
 	depends = python-inflection
 	depends = python-passlib
 	depends = python-requests
-	depends = python-setuptools
 	depends = python-srcinfo
 	optdepends = breezy: -bzr packages support
 	optdepends = darcs: -darcs packages support
