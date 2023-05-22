@@ -2,7 +2,7 @@
 # Contributor: Maxime "pep" Buquet <archlinux@bouah.net>
 
 _pkgname=git-pw
-_tag=2.4.0
+_tag=2.5.0
 pkgname=${_pkgname}
 pkgver=${_tag}
 pkgrel=1
