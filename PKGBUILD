@@ -8,7 +8,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=pam-selinux
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="SELinux aware PAM (Pluggable Authentication Modules) library"
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=('libpam.so' 'libpamc.so' 'libpam_misc.so'
           "${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
-backup=(etc/security/{access.conf,faillock.conf,group.conf,limits.conf,namespace.conf,namespace.init,pam_env.conf,time.conf} etc/environment)
+backup=(etc/security/{access.conf,faillock.conf,group.conf,limits.conf,namespace.conf,namespace.pwhistory.conf,namespace.init,pam_env.conf,time.conf} etc/environment)
 groups=('selinux')
 source=(https://github.com/linux-pam/linux-pam/releases/download/v$pkgver/Linux-PAM-$pkgver.tar.xz{,.asc}
         ${pkgname/-selinux}.tmpfiles)
@@ -29,7 +29,7 @@ validpgpkeys=(
         '296D6F29A020808E8717A8842DB5BD89A340AEB7' #Dimitry V. Levin <ldv@altlinux.org>
 )
 
-sha256sums=('e4ec7131a91da44512574268f493c6d8ca105c87091691b8e9b56ca685d4f94d'
+sha256sums=('7ac4b50feee004a9fa88f1dfd2d2fa738a82896763050cd773b3c54b0a818283'
             'SKIP'
             '5631f224e90c4f0459361c2a5b250112e3a91ba849754bb6f67d69d683a2e5ac')
 
@@ -43,6 +43,7 @@ build() {
   ./configure \
     --libdir=/usr/lib \
     --sbindir=/usr/bin \
+    --enable-logind \
     --disable-db \
     --enable-selinux \
     --enable-tally2
@@ -56,10 +57,6 @@ package() {
 
   # set unix_chkpwd uid
   chmod +s "$pkgdir"/usr/bin/unix_chkpwd
-
-  # remove doc which is not used anymore
-  # FS #40749
-  rm "$pkgdir"/usr/share/doc/Linux-PAM/sag-pam_userdb.html
 }
 
 # vim: ts=2 sw=2 et:
