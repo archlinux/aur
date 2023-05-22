@@ -1,7 +1,7 @@
 pkgbase = python-pyrobuf
 	pkgdesc = An alternative to Google's Python Protobuf library.
 	pkgver = 0.9.3
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/appnexus/pyrobuf
 	arch = x86_64
 	license = Apache
