@@ -1,6 +1,6 @@
 pkgbase = zotero-beta-bin
 	pkgdesc = Zotero is a free, easy-to-use tool to help you collect, organize, cite, and share research.
-	pkgver = 6.0.27beta.3+3e12f3f20
+	pkgver = 7.0.0beta.1+c653449cc
 	pkgrel = 1
 	url = https://www.zotero.org/support/dev_builds
 	arch = x86_64
@@ -14,12 +14,10 @@ pkgbase = zotero-beta-bin
 	provides = zotero
 	conflicts = zotero
 	source = zotero-absolute-path-fix.patch
-	source = zotero-disable-update.patch
-	sha256sums = 7b23d5238430701c1f5cc6f81dfd9b9f67cc643d506e42aa0e62aba5a58191fa
-	sha256sums = 94211568bbd206d10f1c1e0a2565905fcd27c8586835b7aef6458e657caa8213
-	source_x86_64 = Zotero-6.0.27-beta.3+3e12f3f20_linux-x86_64.tar.bz2::https://download.zotero.org/client/beta/6.0.27-beta.3%2B3e12f3f20/Zotero-6.0.27-beta.3%2B3e12f3f20_linux-x86_64.tar.bz2
-	sha256sums_x86_64 = 34562dc879fac528fbb8b2014e6665ea6a42063d7d3434c8ec8cf2b5f1519436
-	source_i686 = Zotero-6.0.27-beta.3+3e12f3f20_linux-x86_64.tar.bz2::https://download.zotero.org/client/beta/6.0.27-beta.3%2B3e12f3f20/Zotero-6.0.27-beta.3%2B3e12f3f20_linux-x86_64.tar.bz2
-	sha256sums_i686 = 34562dc879fac528fbb8b2014e6665ea6a42063d7d3434c8ec8cf2b5f1519436
+	sha256sums = 6f5218281d6c1b384269fcede93cba9b50a4b1907805231098ac6554133a8504
+	source_x86_64 = Zotero-7.0.0-beta.1+c653449cc_linux-x86_64.tar.bz2::https://download.zotero.org/client/beta/7.0.0-beta.1%2Bc653449cc/Zotero-7.0.0-beta.1%2Bc653449cc_linux-x86_64.tar.bz2
+	sha256sums_x86_64 = 8a8b702c68fdae97ade27e7cf37438cda61779d0379aeee40ffc84ed3927f94b
+	source_i686 = Zotero-7.0.0-beta.1+c653449cc_linux-x86_64.tar.bz2::https://download.zotero.org/client/beta/7.0.0-beta.1%2Bc653449cc/Zotero-7.0.0-beta.1%2Bc653449cc_linux-x86_64.tar.bz2
+	sha256sums_i686 = 8a8b702c68fdae97ade27e7cf37438cda61779d0379aeee40ffc84ed3927f94b
 
 pkgname = zotero-beta-bin
