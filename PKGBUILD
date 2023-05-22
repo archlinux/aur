@@ -3,7 +3,7 @@
 _projectname='visitors'
 pkgname="ocaml-$_projectname"
 pkgver='20210608'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='An OCaml syntax extension for generating visitor classes'
 # If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the cppo, ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
