@@ -4,7 +4,7 @@ pkgbase=python-griffe
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.28.0
+pkgver=0.28.1
 pkgrel=1
 pkgdesc="Signatures for entire Python programs"
 arch=('any')
@@ -20,7 +20,7 @@ checkdepends=('python-pytest'
 #source=("https://github.com/oprypin/markdown-callouts/archive/refs/tags/v${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "${pkgver}-schema.json::https://github.com/mkdocstrings/griffe/raw/${pkgver}/docs/schema.json")
-md5sums=('031f1b8c8febd208d73e2a3abedfcc89'
+md5sums=('27b7e7aaa3471cc1abcd3fbd541314b2'
          'bfe51f53db056100353171d2fd53346c')
 
 prepare() {
@@ -45,7 +45,7 @@ check() {
 
     mkdir -p dist/lib
     bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
-    PYTHONPATH="dist/lib" || warning "Tests failed" # -vv --color=yes
+    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv --color=yes
 }
 
 package_python-griffe() {
