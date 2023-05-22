@@ -5,7 +5,7 @@
 # Contributor: IgnorantGuru http://igurublog.wordpress.com/contact-ignorantguru/
 # Contributor: ridikulus_rat <the.ridikulus.rat@gmail.com>
 
-pkgname=spacefm-gtk2-git
+pkgname=spacefm
 pkgver=1.0.6
 pkgrel=3
 pkgdesc='Multi-panel tabbed file manager'
