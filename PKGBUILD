@@ -8,14 +8,17 @@ pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Irrational-Encoding-Wizardry/vs-exprtools.git'
 license=('MIT')
-depends=('vapoursynth'
-         'vapoursynth-plugin-vstools-git'
-         )
-makedepends=('git'
-             'python-build'
-             'python-wheel'
-             'python-installer'
-             )
+depends=(
+  'vapoursynth'
+  'vapoursynth-plugin-vstools-git'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-wheel'
+  'python-installer'
+  'python-setuptools'
+)
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/Irrational-Encoding-Wizardry/vs-exprtools.git")
