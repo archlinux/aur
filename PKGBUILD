@@ -1,20 +1,23 @@
 pkgname=jdsimpleautostart
-pkgver=1.1
+pkgver=1.3
 pkgrel=1
 pkgdesc="Edit autostart entries"
 arch=("any")
-url="https://gitlab.com/JakobDev/jdSimpleAutostart"
+url="https://codeberg.org/JakobDev/jdSimpleAutostart"
 license=("GPL3")
-depends=("python" "python-setuptools" "python-pyqt6" "python-desktop-entry-lib")
-makedepends=("qt5-tools")
-source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/JakobDev/jdSimpleAutostart/-/archive/${pkgver}/jdSimpleAutostart-${pkgver}.tar.gz")
-sha256sums=("4a6bef0181da32f8a3717060ffe724f8c8ad5f2e245c5dc7380f6dfe95c280c0")
+depends=("python"  "python-pyqt6" "python-desktop-entry-lib")
+makedepends=("qt5-tools"  "python-build" "python-setuptools" "python-installer" "python-wheel")
+source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/JakobDev/jdSimpleAutostart/archive/${pkgver}.tar.gz")
+sha256sums=("a4877c8ba05bf14e2dbd4b9c6b38acff6b75d6b6f2f01c05178ce65d50822d77")
+
+build() {
+      cd "jdsimpleautostart"
+      python -m build --wheel --no-isolation
+}
 
 package() {
-    cd "jdSimpleAutostart-${pkgver}"
-    python setup.py install --root="$pkgdir/" --optimize=1
-    install -Dm644 "jdSimpleAutostart/Icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/io.gitlab.JakobDev.jdSimpleAutostart.svg"
-    install -Dm644 "deploy/io.gitlab.JakobDev.jdSimpleAutostart.metainfo.xml" -t "${pkgdir}/usr/share/metainfo"
-    install -Dm644 "deploy/io.gitlab.JakobDev.jdSimpleAutostart.desktop" -t "${pkgdir}/usr/share/applications"
+    cd "jdsimpleautostart"
+    python -m installer --destdir "$pkgdir" dist/*.whl
+    python install-unix-datafiles.py --prefix "${pkgdir}/usr"
     install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 } 

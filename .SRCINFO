@@ -1,16 +1,19 @@
 pkgbase = jdsimpleautostart
 	pkgdesc = Edit autostart entries
-	pkgver = 1.1
+	pkgver = 1.3
 	pkgrel = 1
-	url = https://gitlab.com/JakobDev/jdSimpleAutostart
+	url = https://codeberg.org/JakobDev/jdSimpleAutostart
 	arch = any
 	license = GPL3
 	makedepends = qt5-tools
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
-	depends = python-setuptools
 	depends = python-pyqt6
 	depends = python-desktop-entry-lib
-	source = jdsimpleautostart-1.1.tar.gz::https://gitlab.com/JakobDev/jdSimpleAutostart/-/archive/1.1/jdSimpleAutostart-1.1.tar.gz
-	sha256sums = 4a6bef0181da32f8a3717060ffe724f8c8ad5f2e245c5dc7380f6dfe95c280c0
+	source = jdsimpleautostart-1.3.tar.gz::https://codeberg.org/JakobDev/jdSimpleAutostart/archive/1.3.tar.gz
+	sha256sums = a4877c8ba05bf14e2dbd4b9c6b38acff6b75d6b6f2f01c05178ce65d50822d77
 
 pkgname = jdsimpleautostart
