@@ -1,7 +1,7 @@
 # Maintainer: Michael Dressel <mdrslmr@kloenplatz.de>
 _hkgname=MultipletCombiner
 pkgname=haskell-multipletcombiner
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="A Haskell implementation for combining SU(n) multiplets"
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=('haskell-hunit: for unit tests')
 #changelog=
 source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
 #noextract=()
-sha512sums=(ca22b4efcaff4001b1b41f406fac0077b60ef6b56e97c969deb5bc806471a88f501ead757542573412b55f74c593c271923131a23b17b0ab7c969303dba9147e)
+sha512sums=(c97996bab6bc598623757d9d0ae2b9fb6851cdc2fa511d3a96be3b19d5063a134729c1e32918a9b5861bf033e67c5674e452787e5db96aa2c45408edb0aa448b)
 
 build() {
     cd $_hkgname-$pkgver
