@@ -1,0 +1,22 @@
+pkgbase = rainbow-cm-git
+	pkgdesc = A lightweight clipboard manager for X11
+	pkgver = 202305221225
+	pkgrel = 1
+	url = https://github.com/sde-gui/rainbow-cm
+	install = rainbow-cm.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = intltool
+	makedepends = pkg-config
+	makedepends = automake
+	depends = gtk2
+	depends = desktop-file-utils
+	depends = sde-reverse-meta-git
+	provides = rainbow-cm
+	conflicts = rainbow-cm
+	source = git+https://github.com/sde-gui/rainbow-cm.git
+	md5sums = SKIP
+
+pkgname = rainbow-cm-git
