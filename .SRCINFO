@@ -1,8 +1,8 @@
 pkgbase = linux-pds
 	pkgdesc = Linux
-	pkgver = 6.3.2.arch1
+	pkgver = 6.3.3.arch1
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v6.3.2-arch1
+	url = https://github.com/archlinux/linux/commits/v6.3.3-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -20,10 +20,10 @@ pkgbase = linux-pds
 	makedepends = texlive-latexextra
 	makedepends = xmlto
 	options = !strip
-	source = linux-archlinux::git+https://github.com/archlinux/linux.git?signed#tag=v6.3.2-arch1
+	source = linux-archlinux::git+https://github.com/archlinux/linux.git?signed#tag=v6.3.3-arch1
 	source = git+https://github.com/graysky2/kernel_compiler_patch.git
 	source = config
-	source = 0009-prjc_v6.3-r0.patch
+	source = 0009-prjc_v6.3-r1.patch
 	source = 0005-glitched-pds.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
@@ -31,8 +31,8 @@ pkgbase = linux-pds
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = 47fe1d1b44880bbc36ab2ec2ec186f199f27c20091cb0fb0889a5d871ac13116deaeaaa37f859924e15b092e4cd9040ee1f81ea5c6eb2df16fd1716e2e6cfd4d
-	b2sums = c42cef71c3fa63db0c04466f68bbe0e47907742d3f2676508dd8144565f22bf36abbc5c891a6769a9059ee986b115379ee7074b24b7c1ef779012512e76ff5b6
+	b2sums = abacce322b1d0fbf6e4792f113d7985eece4e0a1ea29421a00d89f82795a385c10bcdeca50418a6567691cfb3eecd77fc58fcac3fe7d22ff57ed06f12537d0de
+	b2sums = d2e152fe2720f70cdf8b505d8c4437436204984a35ba3a8bc0765d28feee64ab014bcb283217ef683f95e0a0b4e3356c2d77f3a32789bd39b3b592888d5d87f2
 	b2sums = 345311d842d02eb6419a305be0345a13ac4b7301da2d380c4ac0c1941cb4917f678611af02f3bfb9532e133b70be9239dd3903858fd3afc8a68fd088a2ae0dc3
 
 pkgname = linux-pds
