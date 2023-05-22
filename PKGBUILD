@@ -9,7 +9,7 @@
 
 pkgname=pam-selinux
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="SELinux aware PAM (Pluggable Authentication Modules) library"
 arch=('x86_64' 'aarch64')
 license=('GPL2')
@@ -20,7 +20,7 @@ conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=('libpam.so' 'libpamc.so' 'libpam_misc.so'
           "${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
-backup=(etc/security/{access.conf,faillock.conf,group.conf,limits.conf,namespace.conf,namespace.pwhistory.conf,namespace.init,pam_env.conf,time.conf} etc/environment)
+backup=(etc/security/{access.conf,faillock.conf,group.conf,limits.conf,namespace.conf,namespace.init,pwhistory.conf,pam_env.conf,time.conf} etc/environment)
 groups=('selinux')
 source=(https://github.com/linux-pam/linux-pam/releases/download/v$pkgver/Linux-PAM-$pkgver.tar.xz{,.asc}
         ${pkgname/-selinux}.tmpfiles)

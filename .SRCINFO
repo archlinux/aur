@@ -1,7 +1,7 @@
 pkgbase = pam-selinux
 	pkgdesc = SELinux aware PAM (Pluggable Authentication Modules) library
 	pkgver = 1.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://linux-pam.org
 	arch = x86_64
 	arch = aarch64
@@ -22,8 +22,8 @@ pkgbase = pam-selinux
 	provides = libpam.so
 	provides = libpamc.so
 	provides = libpam_misc.so
-	provides = pam=1.5.3-1
-	provides = selinux-pam=1.5.3-1
+	provides = pam=1.5.3-2
+	provides = selinux-pam=1.5.3-2
 	conflicts = pam
 	conflicts = selinux-pam
 	options = !emptydirs
@@ -32,8 +32,8 @@ pkgbase = pam-selinux
 	backup = etc/security/group.conf
 	backup = etc/security/limits.conf
 	backup = etc/security/namespace.conf
-	backup = etc/security/namespace.pwhistory.conf
 	backup = etc/security/namespace.init
+	backup = etc/security/pwhistory.conf
 	backup = etc/security/pam_env.conf
 	backup = etc/security/time.conf
 	backup = etc/environment
