@@ -2,11 +2,11 @@
 
 pkgname='yarsync'
 pkgver='0.2.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet Another Rsync is a file synchronization and backup tool"
 url="https://github.com/ynikitenko/yarsync"
 depends=('python>=3.6')
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-build python-installer python-wheel rsync python-setuptools python-pytest python-pytest-mock)
 license=('GPL3')
 arch=('any')
 install="yarsync.install"
