@@ -1,7 +1,7 @@
 pkgbase = ocaml-uucd
 	pkgdesc = Unicode character database decoder for OCaml
 	pkgver = 15.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://erratique.ch/software/uucd
 	arch = x86_64
 	arch = i486
@@ -17,7 +17,7 @@ pkgbase = ocaml-uucd
 	depends = ocaml>=4.01.0
 	depends = ocaml-xmlm
 	options = !strip
-	source = ocaml-uucd-15.0.0-2.tar.gz::https://github.com/dbuenzli/uucd/archive/v15.0.0.tar.gz
+	source = ocaml-uucd-15.0.0-3.tar.gz::https://github.com/dbuenzli/uucd/archive/v15.0.0.tar.gz
 	sha512sums = 771d877e2d1a61b0db637c4ff7b1e820786739226254facec2bdac97fd7b9f6ac9ed5041d310e425b941bfcc47912c806d0d2db4168a69fb0bd418c0025817bb
 
 pkgname = ocaml-uucd
