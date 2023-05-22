@@ -1,0 +1,14 @@
+pkgbase = pino-pretty
+	pkgdesc = A basic ndjson formatter for pino logging format
+	pkgver = 10.0.0
+	pkgrel = 1
+	url = https://github.com/pinojs/pino-pretty
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = pino-pretty-10.0.0.tgz
+	source = pino-pretty-10.0.0.tgz::https://registry.npmjs.org/pino-pretty/-/pino-pretty-10.0.0.tgz
+	sha256sums = 7f766a922720ae2c8719ef0fa2a5c0fa0338d80fdd43a4f3238b63cf1f46ec5b
+
+pkgname = pino-pretty
