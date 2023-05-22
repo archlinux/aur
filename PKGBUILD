@@ -2,7 +2,7 @@
 
 pkgname=morewaita-git
 _reponame=MoreWaita
-pkgver=44.r2.g70390da
+pkgver=44.1.r54.g79fd860
 pkgrel=1
 pkgdesc='An Adwaita style extra icons theme for Gnome Shell.'
 arch=(any)
@@ -21,8 +21,16 @@ pkgver() {
 }
 
 package() {
-	install -d "$pkgdir/usr/share/icons"
+	local themedir="$pkgdir/usr/share/icons/MoreWaita"
+	install -d "$themedir"
 
-	rm -rf "$_reponame/.git"
-	cp -r "$_reponame" "$pkgdir/usr/share/icons"
+	cp -r "$_reponame/apps"      "$themedir/apps"
+	cp -r "$_reponame/mimes"     "$themedir/mimes"
+	cp -r "$_reponame/panel"     "$themedir/panel"
+	cp -r "$_reponame/places"    "$themedir/places"
+	cp -P "$_reponame/apps@2x"   "$themedir/apps@2x"
+	cp -P "$_reponame/mimes@2x"  "$themedir/mimes@2x"
+	cp -P "$_reponame/panel@2x"  "$themedir/panel@2x"
+	cp -P "$_reponame/places@2x" "$themedir/places@2x"
+	cp "$_reponame/index.theme"  "$themedir/index.theme"
 }
