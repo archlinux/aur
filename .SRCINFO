@@ -1,16 +1,18 @@
 pkgbase = amdgpu-fan
 	pkgdesc = Python daemon for controlling the fans on AMDGPU cards
 	pkgver = 0.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/zzkW35/amdgpu-fan
 	arch = any
 	license = GPL2
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
-	depends = python-yaml
 	depends = python-numpy
-	source = amdgpu-fan-0.1.0.tar.gz::https://github.com/zzkW35/amdgpu-fan/archive/0.1.0.tar.gz
-	md5sums = SKIP
+	depends = python-yaml
+	source = https://github.com/zzkW35/amdgpu-fan/archive/0.1.0.tar.gz
+	sha256sums = f2c1546aede4559d99f870531b317d0c2726013ae9dbf2ec4298f1e92c9684a4
 
 pkgname = amdgpu-fan
-

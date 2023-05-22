@@ -1,9 +1,0 @@
-[Unit]
-Description=AMDGPU fan controller
-
-[Service]
-ExecStart=/usr/bin/amdgpu-fan
-Restart=always
-
-[Install]
-WantedBy=sysinit.target
