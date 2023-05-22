@@ -2,7 +2,7 @@
 
 pkgname=mightymike
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='High Powered Action Rescue in a Toy Store Gone Mad'
 arch=('x86_64')
 url='https://github.com/jorio/mightymike'
@@ -30,9 +30,14 @@ pkgver() {
 prepare() {
   cd "$pkgname"
 
+  # setup git submodules
   git submodule init
   git config submodule.extern/Pomme.url "$srcdir/github.com-jorio-Pomme"
   git -c protocol.file.allow=always submodule update
+
+  # ftbfs: gcc 13 & cstdint headers
+  cd extern/Pomme
+  git cherry-pick --no-commit d57c28e205462e51063e787f9ebddaadff592f1e
 }
 
 build() {
@@ -41,9 +46,9 @@ build() {
   cmake \
     -S . \
     -B build \
-    -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -Wno-dev
+    -D CMAKE_BUILD_TYPE=None \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -W no-dev
 
   cmake --build build
 }

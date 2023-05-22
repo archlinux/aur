@@ -1,7 +1,7 @@
 pkgbase = mightymike
 	pkgdesc = High Powered Action Rescue in a Toy Store Gone Mad
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jorio/mightymike
 	arch = x86_64
 	license = custom:CC-BY-NC-SA-4.0
