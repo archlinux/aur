@@ -3,7 +3,7 @@
 _projectname='ppx_typerep_conv'
 pkgname="ocaml-$_projectname"
 pkgver='0.15.0'
-pkgrel='3'
+pkgrel='4'
 epoch='1'
 pkgdesc='Generation of runtime types from type declarations'
 # If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
