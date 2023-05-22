@@ -2,7 +2,7 @@
 
 pkgname=nanosaur2
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Sequel to the original Nanosaur'
 arch=('x86_64')
 url='https://github.com/jorio/Nanosaur2'
@@ -18,7 +18,7 @@ makedepends=('git' 'cmake')
 _commit='3739005d3a505f6072b6b4e5b2d1874a4bd34acb'
 source=(
   "$pkgname::git+https://github.com/jorio/Nanosaur2.git#commit=$_commit"
-  'git+https://github.com/jorio/Pomme.git'
+  'github.com-jorio-Pomme::git+https://github.com/jorio/Pomme'
   "$pkgname.desktop"
   "$pkgname.sh"
 )
@@ -42,17 +42,23 @@ prepare() {
 
   # setup git submodules
   git submodule init
-  git config submodule.Pomme.url ../Pomme
+  git config submodule.Pomme.url "$srcdir/github.com-jorio-Pomme"
   git -c protocol.file.allow=always submodule update
+
+  # ftbfs: gcc 13 & cstdint headers
+  cd extern/Pomme
+  git cherry-pick --no-commit d57c28e205462e51063e787f9ebddaadff592f1e
 }
 
 build() {
+  cd "$pkgname"
+
   cmake \
-    -S "$pkgname" \
+    -S . \
     -B build \
-    -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -Wno-dev
+    -D CMAKE_BUILD_TYPE=None \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -W no-dev
 
   cmake --build build
 }
@@ -60,7 +66,7 @@ build() {
 package() {
   # binary & assets
   install -dv "$pkgdir/usr/lib/$pkgname"
-  cp -vr build/{Data,Nanosaur2} "$pkgdir/usr/lib/$pkgname"
+  cp -vr "$pkgname"/build/{Data,Nanosaur2} "$pkgdir/usr/lib/$pkgname"
 
   # wrapper script for $PATH execution
   install -vDm755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
