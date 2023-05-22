@@ -1,7 +1,7 @@
 pkgbase = tldrtool
 	pkgdesc = Automate contributing to tldr
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/acuteenvy/tldrtool
 	arch = x86_64
 	license = MIT
@@ -10,6 +10,6 @@ pkgbase = tldrtool
 	optdepends = tldr: view pages using a client
 	optdepends = xdg-utils: open a browser to create pull requests
 	source = tldrtool-1.0.1.tar.gz::https://github.com/acuteenvy/tldrtool/archive/v1.0.1.tar.gz
-	b2sums = 58605c17ff5c83127046548ca7492405c943dab1bf5f890c000295c8ae0825823d40575540ae1694ee706ed494c4d177d1fbfedc3074d827af48215e8dd6cf5e
+	b2sums = 4ce7ece2323d433e051f89a40bef20d7ba366517be3d5bcd1cad7dada1c0da4c37e0880acf58df99098f28e11a1b9ba9549b1644ae0cece456cc6b598bbf6543
 
 pkgname = tldrtool
