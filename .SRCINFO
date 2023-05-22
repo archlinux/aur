@@ -1,18 +1,18 @@
 pkgbase = orcaqm
 	pkgdesc = Ab initio, DFT, and semi-empirical SCF-MO package
-	pkgver = 5.0.3
+	pkgver = 5.0.4
 	pkgrel = 1
 	url = https://orcaforum.kofo.mpg.de/app.php/portal
 	arch = x86_64
 	license = custom
 	makedepends = xz
 	depends = openmpi
-	noextract = orca_5_0_3_linux_x86-64_shared_openmpi411.tar.xz
+	noextract = orca_5_0_4_linux_x86-64_shared_openmpi411.tar.xz
 	options = staticlibs
 	options = !strip
-	source = local://orca_5_0_3_linux_x86-64_shared_openmpi411.tar.xz
+	source = local://orca_5_0_4_linux_x86-64_shared_openmpi411.tar.xz
 	source = orcaqm
-	sha1sums = cd858d96f4aa14159263375fba722acc10be739c
+	sha1sums = acadf007856a774439ee2c572d02671a317576ef
 	sha1sums = dd42dc249e1327cf99cd09dc1cda459a6fc48df6
 
 pkgname = orcaqm

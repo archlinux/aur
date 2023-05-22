@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 pkgname=orcaqm
-pkgver=5.0.3
+pkgver=5.0.4
 _openmpi_ver=4.1.1
 pkgrel=1
 pkgdesc="Ab initio, DFT, and semi-empirical SCF-MO package"
@@ -14,7 +14,7 @@ makedepends=(xz)
 source=("local://orca_${pkgver//./_}_linux_x86-64_shared_openmpi${_openmpi_ver//./}.tar.xz"
         "orcaqm")
 noextract=("orca_${pkgver//./_}_linux_x86-64_shared_openmpi${_openmpi_ver//./}.tar.xz")
-sha1sums=('cd858d96f4aa14159263375fba722acc10be739c'
+sha1sums=('acadf007856a774439ee2c572d02671a317576ef'
           'dd42dc249e1327cf99cd09dc1cda459a6fc48df6')
 options=(staticlibs !strip)
 
