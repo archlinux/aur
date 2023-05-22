@@ -1,7 +1,7 @@
 pkgbase = libretro-tic-80-git
 	pkgdesc = TIC-80 core
 	pkgver = 1.0.2164.r13.gbd6ce86
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tic80.com/
 	arch = aarch64
 	arch = armv7h
@@ -14,6 +14,7 @@ pkgbase = libretro-tic-80-git
 	makedepends = cmake
 	makedepends = git
 	depends = gcc-libs
+	depends = glibc
 	depends = libretro-core-info
 	provides = libretro-tic-80
 	conflicts = libretro-tic-80

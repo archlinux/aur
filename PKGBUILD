@@ -3,13 +3,13 @@
 _pkgname=libretro-tic-80
 pkgname=$_pkgname-git
 pkgver=1.0.2164.r13.gbd6ce86
-pkgrel=2
+pkgrel=3
 pkgdesc="TIC-80 core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://tic80.com/"
 license=('MIT')
 groups=('libretro')
-depends=('gcc-libs' 'libretro-core-info')
+depends=('gcc-libs' 'glibc' 'libretro-core-info')
 makedepends=('cmake' 'git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -97,6 +97,6 @@ build() {
 
 package() {
 	# shellcheck disable=SC2154
-	install -Dm644 -t "$pkgdir"/usr/lib/libretro build/lib/tic80_libretro.so
+	install -D -t "$pkgdir"/usr/lib/libretro build/lib/tic80_libretro.so
 	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname $_pkgname/LICENSE
 }
