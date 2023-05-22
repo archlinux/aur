@@ -14,7 +14,7 @@ source=("$pkgbase-$pkgver.tar.gz::https://github.com/assaultcube/AC/archive/refs
         "${pkgbase}"
         "${pkgbase}-server"
         "${pkgbase}.desktop"
-        'systemd-sysuser.conf'
+        "systemd-${pkgbase}-sysuser.conf"
         "systemd-${pkgbase}-server.service")
 sha512sums=('8488c399036532859f7c83d094ac1443c52aa6367d106cc5889b80353ff1d501f7b8ae3b51e34b03215cc88dacc5f29488635047ce90291c601f8f7582498685'
             '6ecfb0320f8f63d3c220032a0e267bd81f89ed33d415991a83e7a662769eec6dcdf374fcf0d4f7e893c0dcd58598379d49cc52550b5907769fdbc6c428013d91'
@@ -84,6 +84,6 @@ package_assaultcube-server() {
 	install -Dm755 "${_srcdir}/bin_unix"/*_server "${pkgdir}/usr/share/games/${pkgbase}/bin_unix/native_server"
 	install -Dm755 "${_srcdir}"/{server.sh,server_wizard.sh} -t "${pkgdir}/usr/share/games/${pkgbase}"
 	
-	install -Dm644 "systemd-sysuser.conf" "${pkgdir}/usr/lib/sysusers.d/${pkgbase}.conf"
+	install -Dm644 "systemd-${pkgbase}-sysuser.conf" "${pkgdir}/usr/lib/sysusers.d/${pkgbase}.conf"
 	install -Dm644 "systemd-${pkgbase}-server.service" "${pkgdir}/usr/lib/systemd/system/${pkgbase}-server.service"
 }
