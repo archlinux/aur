@@ -3,7 +3,7 @@
 _projectname='parsexp'
 pkgname="ocaml-$_projectname"
 pkgver='0.15.0'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='S-expression parsing library'
 arch=('x86_64' 'i486' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
