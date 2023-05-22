@@ -1,18 +1,19 @@
 pkgbase = r-basilisk.utils
 	pkgdesc = Basilisk Installation Utilities
-	pkgver = 1.12.0
+	pkgver = 1.12.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/basilisk.utils
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-dir.expiry
+	optdepends = r-basilisk
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-reticulate
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/basilisk.utils_1.12.0.tar.gz
-	sha256sums = e475131097eb3ff9d72aaa90af98e54feaad2f260e69b9cb89486ac0ab706e61
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/basilisk.utils_1.12.1.tar.gz
+	sha256sums = f30cdb37c85b5ccedfe5561188c7cde5654b8877aac1f44ea5f2f3a4ecbeaa3c
 
 pkgname = r-basilisk.utils
