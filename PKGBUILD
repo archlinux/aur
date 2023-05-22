@@ -69,23 +69,23 @@ build() {
 package() {
 	mkdir -p "$pkgdir/usr/lib"
 
-	cd "$srcdir/$_reponame/_RELEASE"
-	install -Dm644 "Assets/Open Hexagon Assets License.txt" -t "$pkgdir/usr/share/licenses/open-hexagon/"
-
-	# Move libraries to separate dir
-	rm -f *.bat *.dll *.lib
-	mkdir -p _deps/
-	mv *.so _deps/
 
 	cd "$srcdir/$_reponame"
 	cp -r "_RELEASE" "$pkgdir/usr/lib/open-hexagon"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/open-hexagon/"
 
 	# Install CMake-pulled dependencies
+	mkdir -p "$pkgdir/usr/lib/open-hexagon/_deps"
 	find buildlx/_deps/*-build/ \( -name '*.so.*' -o -name '*.so' \) \
 		-execdir mv -- '{}' "$pkgdir/usr/lib/open-hexagon/_deps" \;
 	
+
 	cd "$pkgdir/usr/lib/open-hexagon"
+
+	# Move libraries to separate dir
+	rm -f *.bat *.dll *.lib
+	mv *.so _deps/
+	rm _deps/libz.so*
 
 	# Dirty hack to allow writing data to shared /var/ directory rather than current directory
 	# (also see .install file)
@@ -96,8 +96,10 @@ package() {
 	done
 
 	# Misc. cleanup
+	mv "Assets/Open Hexagon Assets License.txt" "$pkgdir/usr/share/licenses/open-hexagon/"
 	install -Dm644 "luadocs.md" -t "$pkgdir/usr/share/doc/open-hexagon/"
-	rm luadocs.md "Assets/Open Hexagon Assets License.txt" _deps/libz.so* *.sh users.json scores.json
+	rm luadocs.md *.sh users.json scores.json
+
 
 	# Executables
 	install -Dm755 "$srcdir/open-hexagon" -t "$pkgdir/usr/bin"
