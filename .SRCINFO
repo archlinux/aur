@@ -1,0 +1,14 @@
+pkgbase = parvanka
+	pkgdesc = Distributed data management
+	pkgver = 0.0.1
+	pkgrel = 1
+	epoch = 5
+	url = https://github.com/salosh/parvanka.git
+	arch = any
+	license = MIT
+	depends = go
+	source = parvanka::git+https://github.com/salosh/parvanka.git
+	sha512sums = SKIP
+	b2sums = SKIP
+
+pkgname = parvanka
