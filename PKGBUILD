@@ -5,7 +5,7 @@
 pkgname=('teleport' 'teleport-client')
 _pkgname=teleport
 pkgver=13.0.2
-pkgrel=2
+pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/gravitational/teleport"
