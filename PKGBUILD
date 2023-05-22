@@ -3,7 +3,7 @@
 _projectname='ppx_pipebang'
 pkgname="ocaml-$_projectname"
 pkgver='0.15.0'
-pkgrel='3'
+pkgrel='4'
 epoch='1'
 pkgdesc='A ppx rewriter that inlines reverse application operators |> and |!'
 # If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
