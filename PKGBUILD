@@ -2,7 +2,7 @@
 
 _plug=vsexprtools
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.3.2.0.gf5dfa41
+pkgver=1.4.4.0.ge27c5f8
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
