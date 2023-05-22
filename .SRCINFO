@@ -1,13 +1,13 @@
 pkgbase = eww-git
 	pkgdesc = ElKowar's wacky widgets
 	pkgver = 0.4.0.r28.ge762068
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/elkowar/eww
 	install = eww-git.install
 	arch = x86_64
 	license = MIT
+	makedepends = cargo-nightly
 	makedepends = git
-	makedepends = rustup
 	depends = gtk3
 	depends = gtk-layer-shell
 	provides = eww
@@ -17,4 +17,11 @@ pkgbase = eww-git
 	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
 	b2sums = SKIP
 
-pkgname = eww-git
+pkgname = eww-x11-git
+	pkgdesc = ElKowar's wacky widgets (X11 backend)
+	depends = gtk3
+
+pkgname = eww-wayland-git
+	pkgdesc = ElKowar's wacky widgets (Wayland backend)
+	depends = gtk3
+	depends = gtk-layer-shell
