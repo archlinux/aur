@@ -2,7 +2,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=lazygit-git
-pkgver=0.34.r331.c087dca6
+pkgver=0.38.2.r89.ec5075104
 pkgrel=1
 pkgdesc='A simple terminal UI for git commands'
 arch=('x86_64')
@@ -41,7 +41,7 @@ build () {
   cd "${srcdir}/src/${_repo_prefix}/${_repo_name}"
   export GOPATH="${srcdir}"
   export PATH="${PATH}:${GOPATH}/bin"
-  go build -x -i -v -ldflags "-extldflags '${LDFLAGS}' -X main.commit=$(git rev-parse --short HEAD) -X main.date=$(date -u +%Y%m%d.%H%M%S) -X main.version=$(git describe --always --tags --abbrev=0).$(git rev-parse --short HEAD)" -o "${_repo_name}.bin"
+  go build -x -v -ldflags "-extldflags '${LDFLAGS}' -X main.commit=$(git rev-parse --short HEAD) -X main.date=$(date -u +%Y%m%d.%H%M%S) -X main.version=$(git describe --always --tags --abbrev=0).$(git rev-parse --short HEAD)" -o "${_repo_name}.bin"
 }
 
 package () {

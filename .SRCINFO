@@ -1,6 +1,6 @@
 pkgbase = lazygit-git
 	pkgdesc = A simple terminal UI for git commands
-	pkgver = 0.34.r331.c087dca6
+	pkgver = 0.38.2.r89.ec5075104
 	pkgrel = 1
 	url = https://github.com/jesseduffield/lazygit
 	arch = x86_64
