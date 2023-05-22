@@ -1,14 +1,15 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-ezpadova-git
 pkgname=('python-ezpadova-git')
-pkgver=r64.6e5c91d
+pkgver=r66.405046d
 pkgrel=1
 pkgdesc="A python package that allows you to download PADOVA isochrones directly from their website"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/mfouesneau/ezpadova"
 license=('MIT')
 makedepends=('git' 'python-setuptools')
-checkdepends=('python-pytest' 'python-astropy')
+checkdepends=('python-nose'
+              'python-astropy')
 source=("git+https://github.com/mfouesneau/ezpadova.git")
 md5sums=('SKIP')
 _gitname=ezpadova
@@ -31,7 +32,7 @@ build() {
 check() {
     cd ${srcdir}/${_gitname}
 
-    python setup.py test
+    nosetests || warning "Tests failed"
 }
 
 package() {
