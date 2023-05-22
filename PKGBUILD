@@ -3,7 +3,7 @@
 pkgbase=libjxl
 pkgname=('libjxl' 'libjxl-doc')
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='JPEG XL image format reference implementation'
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
@@ -49,6 +49,7 @@ build() {
     export CFLAGS+=' -DNDEBUG -ffat-lto-objects'
     export CXXFLAGS+=' -DNDEBUG -ffat-lto-objects -Wp,-U_GLIBCXX_ASSERTIONS'
     cmake -B build -S libjxl \
+        -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DJPEGXL_ENABLE_BENCHMARK:BOOL='false' \
@@ -62,11 +63,12 @@ build() {
         -DJPEGXL_BUNDLE_LIBPNG:BOOL='NO' \
         -DJPEGXL_INSTALL_JARDIR='/usr/share/java' \
         -Wno-dev
-    make -C build all doc
+    cmake --build build
+    make -C build doc
 }
 
 check() {
-    make -C build test
+    ctest --test-dir build --output-on-failure
 }
 
 package_libjxl() {
