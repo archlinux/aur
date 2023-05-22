@@ -5,7 +5,7 @@
 _projectname='re'
 pkgname="ocaml-$_projectname"
 pkgver='1.10.4'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Pure OCaml regular expressions, with support for Perl and POSIX-style strings'
 arch=('x86_64' 'i486' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/ocaml/$pkgname"
