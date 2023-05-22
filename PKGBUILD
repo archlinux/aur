@@ -1,5 +1,5 @@
 pkgname=d2launcher
-pkgver=3.6.2
+pkgver=3.6.3
 pkgrel=1
 pkgdesc="Launcher for Diablo 2, Median XL and D2 Stats"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('unknown')
 depends=(wine zenity curl p7zip unrar jq wmctrl fuse2 zip xdelta3)
 optdepends=('lutris-wine-meta: Install in case of graphic issues')
 source=("d2launcher.desktop" "${pkgname}-${pkgver}.tar.gz::https://github.com/murkl/d2launcher/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('SKIP' '6d316548babebd5f3628bfadbfc51623af69ff39de5919a61f689679a713a951')
+sha256sums=('SKIP' '8ccfe116c8ffb43fbe4a7f588abfde88f9e593a5770ae9b63a14c9972bca8a1c')
 
 package() {
     mkdir -p "${pkgdir}/opt/d2launcher"
