@@ -3,12 +3,12 @@
 _pkgname=paperbush
 pkgname="python-$_pkgname"
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Super concise argument parsing tool'
 arch=(any)
 url="https://github.com/trag1c/$_pkgname"
 license=('MIT')
-depends=('python>=3.8' 'python-argparse')
+depends=('python>=3.8')
 makedepends=('python-build' 'python-installer' 'python-poetry-core')
 checkdepends=()
 optdepends=()
