@@ -2,7 +2,7 @@
 
 pkgname=ottomatic
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Save Earth from the clutches of The Giant Brain from Planet X'
 arch=('x86_64')
 url='https://github.com/jorio/ottomatic'
@@ -34,6 +34,10 @@ prepare() {
   git submodule init
   git config submodule.Pomme.url "$srcdir/github.com-jorio-Pomme"
   git -c protocol.file.allow=always submodule update
+
+  # ftbfs: gcc 13 & cstdint headers
+  cd extern/Pomme
+  git cherry-pick --no-commit d57c28e205462e51063e787f9ebddaadff592f1e
 }
 
 build() {

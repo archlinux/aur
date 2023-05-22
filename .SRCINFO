@@ -1,7 +1,7 @@
 pkgbase = ottomatic
 	pkgdesc = Save Earth from the clutches of The Giant Brain from Planet X
 	pkgver = 4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jorio/ottomatic
 	arch = x86_64
 	license = custom:CC-BY-NC-SA-4.0
