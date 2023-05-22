@@ -25,6 +25,8 @@ md5sums=('608759396137d4d10edce94f1c6e4230') #generate with 'makepkg -g'
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/src"
+  sed -i 's/uint32_t/wxInt32/g' sopprotocol.h
+  sed -i 's/uint32_t/wxInt32/g' sopprotocol.cpp
   mkdir -p build
   cd build
   if [ -f '/usr/bin/wx-config-gtk3' ]
