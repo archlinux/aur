@@ -63,12 +63,12 @@ package_assaultcube-client() {
 	depends=('assaultcube-common' 'sdl2' 'sdl2_image' 'openal' 'libvorbis' 'libgl')
 	
 	install -dm755 "${pkgdir}/usr/share/games/${pkgbase}"
-	install -Dm755 "${_srcdir}"/{${pkgbase}.sh,check_install.sh,install_or_remove_menuitem.sh} \
+	install -Dm755 "${_srcdir}"/{assaultcube.sh,check_install.sh,install_or_remove_menuitem.sh} \
 		-t "${pkgdir}/usr/share/games/${pkgbase}"
 	install -Dm755 "${_srcdir}/bin_unix"/*_client "${pkgdir}/usr/share/games/${pkgbase}/bin_unix/native_client"
 	cp -r "${_srcdir}"/{demos,mods,packages} "${pkgdir}/usr/share/games/${pkgbase}"
 	install -Dm644 "${_srcdir}/packages/misc/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgbase}.png"
-	install -Dm644 "${pkgbase}.desktop" "${pkgdir}/usr/share/applications/${pkgbase}.desktop"
+	install -Dm644 "${pkgbase}.desktop" -t "${pkgdir}/usr/share/applications"
 	install -Dm755 "${pkgbase}" "${pkgdir}/usr/bin/${pkgbase}"
 }
 
@@ -76,10 +76,8 @@ package_assaultcube-server() {
 	depends=('assaultcube-common' 'systemd')
 	backup=('etc/assaultcube/servercmdline.txt')
 	
-	install -Dm755 "${pkgbase}-server" "${pkgdir}/usr/bin/${pkgbase}-server"
-	
-	install -dm755 "${pkgdir}/usr/share/games/${pkgbase}/config"
-	install -Dm644 "${_srcdir}/config/servercmdline.txt" "${pkgdir}/etc/${pkgbase}/servercmdline.txt"
+	install -Dm755 "${pkgbase}-server" -t "${pkgdir}/usr/bin"
+	install -Dm644 "${_srcdir}/config/servercmdline.txt" -t "${pkgdir}/etc/${pkgbase}"
 	
 	install -Dm755 "${_srcdir}/bin_unix"/*_server "${pkgdir}/usr/share/games/${pkgbase}/bin_unix/native_server"
 	install -Dm755 "${_srcdir}"/{server.sh,server_wizard.sh} -t "${pkgdir}/usr/share/games/${pkgbase}"
