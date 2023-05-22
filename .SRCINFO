@@ -28,6 +28,7 @@ pkgbase = alchemy-next-viewer-git
 	depends = vlc
 	depends = xdg-desktop-portal
 	depends = zlib
+	depends = systemd-libs
 	optdepends = alsa-lib: ALSA support
 	optdepends = freealut: OpenAL support
 	optdepends = gamemode: Gamemode support
