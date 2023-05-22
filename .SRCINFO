@@ -1,19 +1,19 @@
 pkgbase = optivorbis-bin
 	pkgdesc = Application for lossless, format-preserving, two-pass optimization and repair of Vorbis data
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://optivorbis.github.io/OptiVorbis/
-	arch = x86_64
 	arch = aarch64
+	arch = x86_64
 	license = AGPL3
 	license = BSD
-	provides = optivorbis=0.1.2
+	provides = optivorbis=0.1.3
 	conflicts = optivorbis
 	source = https://raw.githubusercontent.com/OptiVorbis/OptiVorbis/master/LICENSE.BSD-3-Clause
 	sha256sums = SKIP
-	source_x86_64 = https://github.com/OptiVorbis/OptiVorbis/releases/download/v0.1.2/OptiVorbis.CLI.x86_64-unknown-linux-musl.zip
-	sha256sums_x86_64 = be1e5db7895dd1bd453b25209fb97eca3e09483d76362ecafea51eeb4e032a7c
-	source_aarch64 = https://github.com/OptiVorbis/OptiVorbis/releases/download/v0.1.2/OptiVorbis.CLI.aarch64-unknown-linux-musl.zip
-	sha256sums_aarch64 = e7af312c7b569a24a67cb13afd008b07751404991988d4b62e1e79bd80c36297
+	source_aarch64 = https://github.com/OptiVorbis/OptiVorbis/releases/download/v0.1.3/OptiVorbis.CLI.aarch64-unknown-linux-musl.zip
+	sha256sums_aarch64 = 53e4dcedf966304897962d935fc63029ff4436c7acda8b20c856914b05f5b58e
+	source_x86_64 = https://github.com/OptiVorbis/OptiVorbis/releases/download/v0.1.3/OptiVorbis.CLI.x86_64-unknown-linux-musl.zip
+	sha256sums_x86_64 = 26cee18afde2741345f2212a062b7f86efe45a5936d21e844c1f456946377cdf
 
 pkgname = optivorbis-bin
