@@ -2,9 +2,10 @@ pkgbase = jockey
 	pkgdesc = Data J0ckey
 	pkgver = 0.0.1
 	pkgrel = 1
-	epoch = 1
+	epoch = 3
 	url = https://github.com/salosh/jockey.git
 	arch = any
-	license = GPLv3
+	license = MIT
+	depends = go
 
 pkgname = jockey
