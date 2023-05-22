@@ -1,14 +1,14 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-ecwolf
 pkgname=$_pkgname-git
-pkgver=r1758.1c82ef9
+pkgver=r1760.f098da0
 pkgrel=1
 pkgdesc="Wolfenstein 3D core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/libretro/ecwolf"
 license=('BSD' 'LGPL')
 groups=('libretro')
-depends=('gcc-libs' 'libretro-core-info')
+depends=('gcc-libs' 'glibc' 'libretro-core-info')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -39,6 +39,6 @@ build() {
 package() {
 	cd $_pkgname
 	# shellcheck disable=SC2154
-	install -Dm644 -t "$pkgdir"/usr/lib/libretro src/libretro/ecwolf_libretro.so
+	install -D -t "$pkgdir"/usr/lib/libretro src/libretro/ecwolf_libretro.so
 	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname docs/license-{id,mame}.txt
 }
