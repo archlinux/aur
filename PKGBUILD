@@ -11,7 +11,7 @@ arch=('x86_64')
 license=('LGPL')
 options=('!buildflags' '!lto' '!strip')
 url="https://www.alchemyviewer.org"
-depends=(dbus-glib glu gtk3 libgl libiconv libidn libjpeg-turbo libpng libxss libxml2 mesa nss openal sdl2 vlc xdg-desktop-portal zlib)
+depends=(glu libgl libiconv libidn libjpeg-turbo libpng libxss libxml2 mesa nss openal sdl2 vlc xdg-desktop-portal zlib)
 makedepends=('gcc' 'python-virtualenv' 'python-pip' 'git' 'xz')
 optdepends=(
   'alsa-lib: ALSA support'
@@ -36,6 +36,7 @@ _distname="Alchemy-Config-Simple"
 
 # template start; name=systemd-git; version=1.0;
 _distdir="${_distname}-${pkgver}"
+depends+=(systemd-libs)
 conflicts+=("alchemy-next-viewer-nosystemd-git")
 
 pkgver() {
