@@ -3,7 +3,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=r23626.2506594c5
+pkgver=r23770.f82efe9f6
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ depends=('fmt'
 makedepends=('boost'
              'llvm'
              'catch2'
-             'gcc'
+             'clang'
              'cmake'
              'ffmpeg'
              'git'
@@ -38,14 +38,14 @@ optdepends=("qt5-wayland: Wayland support")
 source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-mainline"
         'git+https://github.com/lsalzman/enet.git'
         'git+https://github.com/benhoyt/inih.git'
-        'git+https://github.com/kinetiknz/cubeb.git'
+        'git+https://github.com/mozilla/cubeb.git'
         'git+https://github.com/MerryMage/dynarmic.git'
         'libressl::git+https://github.com/citra-emu/ext-libressl-portable.git'
         'git+https://github.com/libusb/libusb.git'
         'git+https://github.com/yuzu-emu/discord-rpc.git'
         'git+https://github.com/KhronosGroup/Vulkan-Headers.git'
         'git+https://github.com/yuzu-emu/sirit'
-        'git+https://github.com/yuzu-emu/mbedtls'
+        'git+https://github.com/yuzu-emu/mbedtls.git'
         'git+https://github.com/herumi/xbyak.git'
         'git+https://github.com/xiph/opus.git'
         'git+https://git.ffmpeg.org/ffmpeg.git'
@@ -115,10 +115,10 @@ build() {
     cmake -S $_pkgname -B build \
       -GNinja \
       -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_C_COMPILER=gcc \
-      -DCMAKE_CXX_COMPILER=g++ \
-      -DCMAKE_C_FLAGS="$CFLAGS -flto=auto" \
-      -DCMAKE_CXX_FLAGS="$CXXFLAGS -flto=auto" \
+      -DCMAKE_C_COMPILER=clang \
+      -DCMAKE_CXX_COMPILER=clang++ \
+      -DCMAKE_C_FLAGS="$CFLAGS -flto=thin" \
+      -DCMAKE_CXX_FLAGS="$CXXFLAGS -flto=thin" \
       -DCMAKE_BUILD_TYPE=RelWithDebInfo \
       -DYUZU_USE_QT_WEB_ENGINE=ON \
       -DYUZU_USE_QT_MULTIMEDIA=ON \
