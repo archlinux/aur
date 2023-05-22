@@ -1,6 +1,6 @@
 # Maintainer: relrel <relrelbachar@gmail.com>
 pkgname=ruffle-nightly-bin
-pkgver=2023.05.21
+pkgver=2023.05.22
 pkgrel=1
 pkgdesc="A Flash Player emulator written in Rust"
 arch=('x86_64')
