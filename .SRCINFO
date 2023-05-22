@@ -1,0 +1,13 @@
+pkgbase = ntf
+	pkgdesc = Brings notification to your shell
+	pkgver = v1.0.1.r3.gd52a786
+	pkgrel = 1
+	url = https://github.com/hrntknr/ntf
+	arch = any
+	license = GPL3
+	makedepends = go
+	provides = ntf-git
+	source = git+https://github.com/hrntknr/ntf.git
+	sha256sums = SKIP
+
+pkgname = ntf-git
