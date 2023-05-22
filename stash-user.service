@@ -1,0 +1,10 @@
+[Unit]
+Description=Stash AV Media Server
+After=network.target local-fs.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/stash --nobrowser
+
+[Install]
+WantedBy=default.target
