@@ -1,0 +1,11 @@
+pkgbase = sde-reverse-meta-git
+	pkgdesc = Reverse meta package for Simple Desktop Environment
+	pkgver = 202304221538
+	pkgrel = 1
+	url = https://github.com/sde-gui
+	arch = any
+	license = GPL
+	provides = sde-reverse-meta
+	conflicts = sde-reverse-meta
+
+pkgname = sde-reverse-meta-git
