@@ -15,6 +15,8 @@ depends=(
 	"python-requests"
 	"python-termcolor"
 	"python-pysocks"
+    "python-fake-useragent"
+    "python-brotli"
 )
 makedepends=("git")
 provides=()
