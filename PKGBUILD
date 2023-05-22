@@ -2,8 +2,8 @@
 # Adapted from zellij-git https://aur.archlinux.org/packages/zellij-git
 pkgname=borgtui-git
 _pkgname=borgtui
-pkgver=r57.bf01f9c
-_pkgver=0.3.0
+pkgver=r58.9992e9a
+_pkgver=0.3.1
 pkgrel=1
 epoch=
 pkgdesc="Like borgomatic, but with a TUI to help automate borg backups :^)"
