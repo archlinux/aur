@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=folder-color-nautilus
 _pkgname=${pkgname%-nautilus}
 pkgver=0.3.2
