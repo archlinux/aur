@@ -1,13 +1,13 @@
 pkgbase = assistant
 	pkgdesc = Secure remote access to computers over a local network or over the Internet.
-	pkgver = 5.3
+	pkgver = 5.4
 	pkgrel = 1
 	url = https://xn--80akicokc0aablc.xn--p1ai/
 	arch = x86_64
 	license = custom:SAFIB LTD
 	depends = bash
 	depends = gtk2
-	source = https://xn--80akicokc0aablc.xn--p1ai/%D1%81%D0%BA%D0%B0%D1%87%D0%B0%D1%82%D1%8C/Download/772
-	md5sums = 85506800cf1b54783d0a3bd55479e14f
+	source = https://xn--80akicokc0aablc.xn--p1ai/%D1%81%D0%BA%D0%B0%D1%87%D0%B0%D1%82%D1%8C/Download/791
+	md5sums = ffa24a3041c1ff4399e177dc35a620d6
 
 pkgname = assistant
