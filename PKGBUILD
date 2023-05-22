@@ -5,7 +5,7 @@ pkgbase=python-neo
 #pkgname=('python-neo' 'python2-neo')
 pkgname=('python-neo')
 _name=${pkgbase#python-}
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Neo is a package for representing electrophysiology data in Python, together with support for reading a wide range of neurophysiology file formats"
 arch=('any')
@@ -15,7 +15,7 @@ license=("custom")
 conflicts=("python2-neo")
 depends=("python-quantities" "python-setuptools")
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('cdf8e1324a3fbbd1efd5618dcd37cfc497b1997923bd710b598472c1d846674a')
+sha256sums=('3b6ca4fc05dfdb4e953e253e70994bfbbc8fe2e90958fbda7fa5860caf3fa63a')
 
 package_python-neo() {
   depends+=('python' 'python-numpy')
