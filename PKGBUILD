@@ -6,8 +6,8 @@ pkgname=(
   'zed'
   'zq'
 )
-pkgver=1.7.0
-_commit='e5ad1f9998f654496b3038bb9433ca154d01edbc'
+pkgver=1.8.0
+_commit='c2973197f1cb093aba306d0d69c3902c7e2d9d21'
 pkgrel=1
 pkgdesc='Tooling for super-structured data'
 arch=('x86_64')
@@ -23,6 +23,10 @@ pkgver() {
   cd "$pkgbase"
 
   git describe --tags | sed 's/^v//'
+}
+
+_pkgver() {
+  curl -fs https://api.github.com/repos/brimdata/$pkgname/git/ref/tags/v$pkgver | jq -r .object.sha
 }
 
 prepare() {
