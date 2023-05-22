@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=D2DF Map Editor
+Name[ru]= Редактор карт D2DF
+Exec=Doom2DF_E
+Icon=doom2df-editor
+Terminal=false
+Type=Application
+Categories=Game;Shooter;ActionGame
+Comment=Powerful map editor for Doom 2D Forever.
+Comment[ru]=Мощный редактор карт для Doom 2D Forever.
+Keywords=Doom;Doom2D;Doom2D Forever;Forever;Shooter;Doom 2D;
