@@ -1,0 +1,25 @@
+post_upgrade() {
+    local breakpoints=(
+        2.9.0-1
+    )
+
+    for v in "${breakpoints[@]}"; do
+        if [[ $(vercmp "$v" "$2") -eq 1 ]]; then
+            "_${v//[.-]/_}_changes"
+        fi
+    done
+}
+
+_2_9_0_1_changes() {
+    cat << EOF
+It was found that you were upgrading from old-devtools package to the new one, which requires manual intervention:
+
+* make sure that devtools are upgraded to the latest release;
+* merge service configuration if required;
+* run setup command (i.e. sudo ahriman service-setup) with the same arguments as you did before;
+* remove build chroot: sudo rm -r /var/lib/ahriman/chroot/ahriman-x86_64/;
+* update local databases: sudo -u ahriman ahriman update --no-aur --no-local --no-manual -yy;
+
+For more information kindly refer to changelog https://github.com/arcan1s/ahriman/releases/tag/2.9.0
+EOF
+}
