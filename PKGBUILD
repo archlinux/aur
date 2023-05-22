@@ -10,12 +10,21 @@ license=('GPL3' 'BSD')
 depends=('wine' 'bash')
 optdepends=('ttf-ms-win11: or font data on a windows partiion'
             'ttf-ms-win11-auto: another choice')
+makedepends=('imagemagick' 'gendesk' 'icoutils')
 source=('https://www.sumatrapdfreader.org/dl/rel/3.4.6/SumatraPDF-3.4.6-64.zip'
         'https://raw.githubusercontent.com/sumatrapdfreader/sumatrapdf/3.4.6rel/COPYING.BSD'
         'sumatrapdf.sh')
 sha256sums=('2bb05aa8b74bc748bc1f6a2b6f6ec4ba22bd5b1eaeec767d0a7f97cfd436d40d'
             'ff33648659aa06892ed13a731588a57006fafee2f848d35f70bf273a13cf9d27'
             '9113c6a594fe9b2f2dc800345396c97c3516d42d40bbc1ace6b34d805c0a3d7b')
+
+build() {
+  wrestool -x -t 14 "SumatraPDF-${pkgver}-64.exe" > "${pkgname}.ico"
+  convert "${pkgname}.ico" "$srcdir/$pkgname.png"
+  rm $pkgname.ico
+
+  gendesk -n -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name="SumatraPDF" --genericname "Application" --exec "/usr/bin/sumatrapdf" --icon "$srcdir/${pkgname}-3.png" --categories "Viewer;Wine;Graphics;Office" --mimetypes "application/pdf;application/epub+zip;application/x-mobipocket-ebook;image/vnd.djvu;image/vnd.djvu+multipage;application/vnd.ms-xpsdocument;application/oxps"
+}
 
 package() {
   # license
@@ -24,6 +33,9 @@ package() {
   install -Dm755 "SumatraPDF-${pkgver}-64.exe" "$pkgdir/usr/share/$pkgname/sumatrapdf.exe"
   touch "$pkgdir/usr/share/$pkgname/SumatraPDF-settings.txt"
   install -Dm755 "$srcdir/sumatrapdf.sh" "$pkgdir/usr/bin/$pkgname"
+
+  # desktop entry
+  install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 
   echo "You may need MS fonts for non-latin characters."
 }
