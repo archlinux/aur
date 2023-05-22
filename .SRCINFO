@@ -1,7 +1,7 @@
 pkgbase = r-bootnet
 	pkgdesc = Bootstrap Methods for Various Network Estimation Routines
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=bootnet
 	arch = any
 	license = GPL
@@ -24,6 +24,7 @@ pkgbase = r-bootnet
 	depends = r-snow
 	depends = r-tibble
 	depends = r-tidyr
+	depends = r-tidyselect
 	optdepends = r-bdgraph
 	optdepends = r-ggmncv
 	optdepends = r-glasso
