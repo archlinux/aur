@@ -1,0 +1,24 @@
+diff -aurN a/SamTFE/Sources/SeriousSam/MainWindow.cpp b/SamTFE/Sources/SeriousSam/MainWindow.cpp
+--- a/SamTFE/Sources/SeriousSam/MainWindow.cpp	2023-05-12 17:44:37.195187204 +0300
++++ b/SamTFE/Sources/SeriousSam/MainWindow.cpp	2023-05-22 17:24:45.608842154 +0300
+@@ -285,7 +285,7 @@
+ #else
+   SDL_snprintf( achWindowTitle, sizeof (achWindowTitle), TRANSV("Serious Sam (FullScreen %dx%d)"), pixSizeI, pixSizeJ);
+   //CPrintF((const char*)"--- %s ---\n",achWindowTitle);
+-  _hwndMain = SDL_CreateWindow((const char*)strWindow1251ToUtf8(achWindowTitle), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, pixSizeI, pixSizeJ, SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN);
++  _hwndMain = SDL_CreateWindow((const char*)strWindow1251ToUtf8(achWindowTitle), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, pixSizeI, pixSizeJ, SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN | SDL_WINDOW_BORDERLESS);
+   if( _hwndMain==NULL) FatalError(TRANSV("Cannot open main window!"));
+   SE_UpdateWindowHandle( _hwndMain);
+   _pixLastSizeI = pixSizeI;
+diff -aurN a/SamTSE/Sources/SeriousSam/MainWindow.cpp b/SamTSE/Sources/SeriousSam/MainWindow.cpp
+--- a/SamTSE/Sources/SeriousSam/MainWindow.cpp	2023-05-12 17:44:37.375188656 +0300
++++ b/SamTSE/Sources/SeriousSam/MainWindow.cpp	2023-05-22 17:25:10.229068219 +0300
+@@ -285,7 +285,7 @@
+ #else
+   SDL_snprintf( achWindowTitle, sizeof (achWindowTitle), TRANSV("Serious Sam (FullScreen %dx%d)"), pixSizeI, pixSizeJ);
+   //CPrintF((const char*)"--- %s ---\n",achWindowTitle);
+-  _hwndMain = SDL_CreateWindow((const char*)strWindow1251ToUtf8(achWindowTitle), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, pixSizeI, pixSizeJ, SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN);
++  _hwndMain = SDL_CreateWindow((const char*)strWindow1251ToUtf8(achWindowTitle), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, pixSizeI, pixSizeJ, SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN | SDL_WINDOW_BORDERLESS);
+   if( _hwndMain==NULL) FatalError(TRANSV("Cannot open main window!"));
+   SE_UpdateWindowHandle( _hwndMain);
+   _pixLastSizeI = pixSizeI;
