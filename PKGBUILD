@@ -2,7 +2,7 @@
 
 _pkgname=spacy-transformers
 pkgname=python-${_pkgname}
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="spaCy pipelines for pre-trained BERT and other transformers"
 arch=(x86_64 aarch64)
@@ -22,7 +22,7 @@ makedepends=(
 	python-setuptools
 )
 source=("https://github.com/explosion/${_pkgname}/archive/refs/tags/v${pkgver}.zip")
-b2sums=("884a184e04add20500e156c5802dace4cf97dfe24ab3c619f02765b447a95ac465220b8d6af25d66ee084877be9b5e0b2d450fb2246f407630ff0b9339b641a1")
+b2sums=("2398d2963a8cae658550c5407e559a2f1dbbce76cbb2abecb2a637551e21e77db442e1ff238f3e006d0f4b032f5bd779a6a0a48f83c63d470fe9f1be22017934")
 
 build() {
     cd "${_pkgname}-${pkgver}"
