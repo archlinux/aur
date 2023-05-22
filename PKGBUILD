@@ -23,7 +23,8 @@ pkgver() {
 package() {
   cd "$srcdir/$_pkgbase"
 
-  install -Dm755 i3bard "$pkgdir"/usr/bin/i3bard
-  install -Dm644 i3bard.service "$pkgdir"/usr/lib/systemd/user/i3bard.service
-  install -Dm644 i3bard.socket "$pkgdir"/usr/lib/systemd/user/i3bard.socket
+  install -D -m 755 i3bard "$pkgdir"/usr/bin/i3bard
+  install -D -m 644 -t /usr/lib/cmdlets cmdlets/*.py
+  install -D -m 644 i3bard.service "$pkgdir"/usr/lib/systemd/user/i3bard.service
+  install -D -m 644 i3bard.socket "$pkgdir"/usr/lib/systemd/user/i3bard.socket
 }
