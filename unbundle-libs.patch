@@ -1,5 +1,5 @@
 diff --git a/core/cd_hw/cdd.h b/core/cd_hw/cdd.h
-index f3e8002..f68c2b6 100644
+index b9bbf6b..c88b934 100644
 --- a/core/cd_hw/cdd.h
 +++ b/core/cd_hw/cdd.h
 @@ -47,8 +47,8 @@
@@ -14,7 +14,7 @@ index f3e8002..f68c2b6 100644
  
  #define cdd scd.cdd_hw
 diff --git a/libretro/Makefile.common b/libretro/Makefile.common
-index a527d47..f8d99b2 100644
+index ac77aca..a0c0aa6 100644
 --- a/libretro/Makefile.common
 +++ b/libretro/Makefile.common
 @@ -22,26 +22,8 @@ ifeq ($(HOOK_CPU), 1)
@@ -46,16 +46,19 @@ index a527d47..f8d99b2 100644
  endif
  
  SOURCES_C += $(foreach dir,$(GENPLUS_SRC_DIR),$(wildcard $(dir)/*.c))
-@@ -74,12 +56,6 @@ SOURCES_C += \
+@@ -74,13 +56,8 @@ SOURCES_C += \
  				 $(LIBRETRO_COMM_DIR)/cdrom/cdrom.c \
  				 $(LIBRETRO_COMM_DIR)/vfs/vfs_implementation_cdrom.c
  endif
 -SOURCES_C += \
 -             $(LIBRETRO_DEPS_DIR)/zlib-1.2.11/adler32.c \
+-             $(LIBRETRO_DEPS_DIR)/zlib-1.2.11/crc32.c \
 -             $(LIBRETRO_DEPS_DIR)/zlib-1.2.11/inffast.c \
 -             $(LIBRETRO_DEPS_DIR)/zlib-1.2.11/inflate.c \
 -             $(LIBRETRO_DEPS_DIR)/zlib-1.2.11/inftrees.c \
 -             $(LIBRETRO_DEPS_DIR)/zlib-1.2.11/zutil.c
++INCFLAGS += $(shell pkg-config --cflags zlib)
++LIBS += $(shell pkg-config --libs zlib)
  
  endif
  
