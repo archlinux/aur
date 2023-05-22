@@ -3,7 +3,7 @@
 _projectname='sedlex'
 pkgname="ocaml-$_projectname"
 pkgver='3.1'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Unicode-friendly OCaml lexer generator'
 # If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
