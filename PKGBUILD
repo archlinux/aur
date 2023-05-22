@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="japreader-bin"
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An Electron app that helps you read Japanese text."
 arch=('x86_64')
 url="https://github.com/marisukukise/japReader"
@@ -16,8 +16,8 @@ sha256sums=('09e3b7a7a374139371925d777951fe6c756f97fded82568c35f3c9a8381ee756')
  
 package() {
     bsdtar -xf "${srcdir}/data.tar.zst"
-    install -Dm755 -d "${pkgdir}/opt" "${pkgdir}/usr"
+    install -Dm755 -d "${pkgdir}/opt" "${pkgdir}/usr/bin"
     cp -r "${srcdir}/usr/lib/"* "${pkgdir}/opt"
     cp -r "${srcdir}/usr/share" "${pkgdir}/usr"
-    sed 's|Exec=japreader|Exec=/opt/japreader/japreader|g' -i "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    ln -s "/opt/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
 }
