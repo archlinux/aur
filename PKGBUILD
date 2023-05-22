@@ -1,7 +1,7 @@
 # Maintainer: Mahor Foruzesh <mahor1221 at gmail dot com>
 
 pkgname=rye
-pkgver=0.1.1
+pkgver=0.1.2
 _pkgname="$pkgname"
 _pkg="$_pkgname-$pkgver"
 pkgrel=1
@@ -20,7 +20,7 @@ makedepends=(cargo)
 provides=(rye)
 conflicts=(rye)
 source=("$_pkg.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('2951176225cbd8921880d34641cf94598658a835b90db813923c0bf58319f93f')
+sha256sums=('7ae00b1e377ee279eae74d4b4a6d63ec4fe89ec70d408926912faa11b42ace46')
 
 prepare() {
   cd "$_pkg/"
