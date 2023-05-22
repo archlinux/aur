@@ -2,7 +2,7 @@
 # Contributor: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 
 pkgname=open-hexagon-git
-pkgver=2.0.6.r467.g27112a56
+pkgver=2.0.6.r468.g1e2cba71
 _assetsver=1
 pkgrel=1
 epoch=1
@@ -33,8 +33,8 @@ source=('git+https://github.com/SuperV1234/SSVOpenHexagon.git'
 install="$pkgname.install"
 sha512sums=('SKIP'
             '5733647987d84887ce65717f8787629a4a4cf2de1af4ef15a06158988aa706e5392cae7b1ff3fd29e9387b9dc7dd1b35c6da059360a508c3e4746b66217631d2'
-            '669f9b6016f911ec8e44461e7a81dc557637c600c4b1b58a83ef3ea7d046c83d9ff5064c1dca3fe6fc29653d79d293b82b58de91f5db197489e1f088741b4a54'
-            '4c3f5f25d766efb749eb52016fa03460628d6b9c7d417d6e250a598fd43041e02fc144b135b359244973cee63eaf37620e5d5ec2b907ac8cffdcf45b4153020f'
+            '445788e067bdc5e73f804189952495a4f086ac662e4e213528fc0e48dfee7ebb3200f51989100b1c1a3b29378c91a0b540300f17cd6ec087427973223919f0a4'
+            '79cdfbfe7a5a7963c7c21e8bf5815475afb8348c53b464d51bcc9ac14b8135d0c3608078a9db42046fbb8fab77d1341967821732b532b1e6ba2528e7ac066644'
             'bc7d1e1a420a439283b4fcf2f06a8a50ca06d3934b79f6a93ff4ad4d269d6b246eb6a1824381c36bbb73fc7d24e9883281ab66eab05b2cc2fdbac3ed14a775d5')
 
 _reponame="SSVOpenHexagon"
@@ -55,6 +55,10 @@ build() {
 	git submodule update
 	cd buildlx/
 	cmake ..
+	(	# patch for latest GCC
+		cd _deps/sfml-src/include/SFML/
+		sed -i '1i #include <cstdint>' System/Utf.hpp System/String.hpp Network/Packet.hpp
+	)
 	make
 	mv SSVOpenHexagon ../_RELEASE
 
@@ -75,7 +79,7 @@ package() {
 
 	cd "$srcdir/$_reponame"
 	cp -r "_RELEASE" "$pkgdir/usr/lib/open-hexagon"
-	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/open-hexagon/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/open-hexagon/"
 
 	# Install CMake-pulled dependencies
 	find buildlx/_deps/*-build/ \( -name '*.so.*' -o -name '*.so' \) \
@@ -83,7 +87,7 @@ package() {
 	
 	cd "$pkgdir/usr/lib/open-hexagon"
 
-	# Dirty hack to allow writing data to current directory
+	# Dirty hack to allow writing data to shared /var/ directory rather than current directory
 	# (also see .install file)
 	rm -rf Profiles Replays
 	mkdir -p "$pkgdir/var/lib/open-hexagon"
@@ -93,7 +97,7 @@ package() {
 
 	# Misc. cleanup
 	install -Dm644 "luadocs.md" -t "$pkgdir/usr/share/doc/open-hexagon/"
-	rm luadocs.md _deps/libz.so* *.sh users.json scores.json
+	rm luadocs.md "Assets/Open Hexagon Assets License.txt" _deps/libz.so* *.sh users.json scores.json
 
 	# Executables
 	install -Dm755 "$srcdir/open-hexagon" -t "$pkgdir/usr/bin"

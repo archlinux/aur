@@ -3,6 +3,9 @@
 if id --name --groups --zero | grep --quiet --null-data --line-regexp --fixed-strings 'games'; then
 	cd /usr/lib/open-hexagon
 	LD_LIBRARY_PATH=/usr/lib/open-hexagon/_deps ./SSVOpenHexagon
+
+	# Allow other users in 'games' group to write in shared dirs
+	find /var/lib/open-hexagon/Replays/ -user "$USER" -type d -exec chmod g+w '{}' +
 else
 	zenity --error --text="Your user must be a member of the 'games' group."
 	exit 1

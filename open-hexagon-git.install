@@ -3,29 +3,20 @@ _create_files() {
 	cd /var/lib/open-hexagon/
 
 	mkdir -p Replays
-	chmod 1775 Replays
-	chown root:games Replays
+	chmod 2775 Replays
+	chown :games -R Replays
 
 	mkdir -p Profiles
-	chmod 1775 Profiles
-	chown root:games Profiles
+	chmod 2775 Profiles
+	chown :games -R Profiles
 
 	touch log.txt
 	chmod 664 log.txt
-	chown root:games log.txt
+	chown :games log.txt
 
 	touch config.json
 	chmod 664 config.json
-	chown root:games config.json
-
-	# These are unused as far as I know
-	#touch scores.json
-	#chmod 664 scores.json
-	#chown root:games scores.json
-
-	#touch users.json
-	#chmod 664 users.json
-	#chown root:games users.json
+	chown :games config.json
 }
 post_upgrade() {
 	_create_files
