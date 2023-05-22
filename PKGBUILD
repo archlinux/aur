@@ -2,7 +2,7 @@
 _pkgname=libretro-lrps2
 pkgname=$_pkgname-git
 pkgver=r13104.f3c8743d6
-pkgrel=1
+pkgrel=2
 pkgdesc="Sony PlayStation 2 core (fork of PCSX2)"
 arch=('x86_64')
 url="https://github.com/libretro/LRPS2"
@@ -11,15 +11,19 @@ groups=('libretro')
 depends=(
 	'gcc-libs'
 	'glibc'
+	'libretro-core-info'
+	'wxwidgets'
+	'zlib'
+)
+makedepends=(
+	'cmake'
+	'git'
 	'libaio'
 	'libchdr'
 	'libgl'
-	'libretro-core-info'
-	'wxwidgets'
+	'xxd'
 	'yaml-cpp'
-	'zlib'
 )
-makedepends=('cmake' 'git' 'xxd')
 provides=("$_pkgname=${pkgver#r}" 'libretro-pcsx2')
 conflicts=("$_pkgname" 'libretro-pcsx2')
 source=(
@@ -43,6 +47,9 @@ prepare() {
 	patch -Np1 < ../fix-lto.patch
 	patch -Np1 < ../use-system-libs.patch
 	sed -i '/ccache/d' CMakeLists.txt
+	sed -i '/include <vector>/a #include <string>' pcsx2/CDVD/CDVDdiscReader.h
+	sed -i '/include <thread>/a #include <system_error>' pcsx2/CDVD/CDVDdiscThread.cpp
+	sed -i '/include <vector>/a #include <cstdint>' pcsx2/MemoryPatchDatabase.h
 }
 
 build() {
@@ -55,6 +62,12 @@ build() {
 }
 
 package() {
+	depends+=(
+		'libaio.so'
+		'libchdr.so'
+		'libOpenGL.so'
+		'libyaml-cpp.so'
+	)
 	# shellcheck disable=SC2154
-	install -Dm644 -t "$pkgdir"/usr/lib/libretro build/pcsx2/pcsx2_libretro.so
+	install -D -t "$pkgdir"/usr/lib/libretro build/pcsx2/pcsx2_libretro.so
 }
