@@ -9,6 +9,7 @@ pkgbase = ukmm-git
 	makedepends = git
 	makedepends = coreutils
 	makedepends = sed
+	makedepends = cmake
 	depends = gtk3
 	options = !lto
 	options = !strip
