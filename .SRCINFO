@@ -1,14 +1,14 @@
 pkgbase = vapoursynth-plugin-vsdehalo-git
 	pkgdesc = Plugin for Vapoursynth: vsdehalo (GIT version)
-	pkgver = 1.4.0.0.gc9427a8
+	pkgver = 1.7.0.2.g753aa14
 	pkgrel = 1
 	url = https://github.com/Irrational-Encoding-Wizardry/vs-dehalo
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = python-pip
+	makedepends = python-build
 	makedepends = python-wheel
-	makedepends = python-setuptools
+	makedepends = python-installer
 	depends = vapoursynth
 	depends = vapoursynth-plugin-vstools-git
 	depends = vapoursynth-plugin-vskernels-git
