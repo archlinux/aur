@@ -1,7 +1,7 @@
 pkgbase = maya
 	pkgdesc = Autodesk Maya 3D Animation, Modelling, Simulation and Rendering Software
-	pkgver = 2024.0
-	pkgrel = 2
+	pkgver = 2024.1
+	pkgrel = 1
 	url = http://www.autodesk.com/products/maya/overview
 	install = maya.install
 	arch = x86_64
@@ -30,9 +30,9 @@ pkgbase = maya
 	optdepends = maya-substance: Maya Substance Material Plugin
 	optdepends = maya-usd: Maya Universal Scene Description Plugin
 	options = !strip
-	source = manual://Maya2024_64-2024.0-4640.x86_64.rpm
+	source = manual://Maya2024_64-2024.1-4816.x86_64.rpm
 	source = application-home-workaround.patch
-	sha256sums = 0a0d1c056ec821b31d8dd33c9a4d0866772a3bd98a2637bd9f9c24585a095e36
+	sha256sums = 3a351d0a36d729b6f4db84721b86c42653a5e7d2e56edec4ecfdcbcf48d90555
 	sha256sums = 0bac864b64db2cdc7be5de574e404bc36f80959bc867988f6a67cdbaf32abb1a
 
 pkgname = maya
