@@ -1,0 +1,14 @@
+--- a/src/PwrProfSharedMemOps.c	2023-05-22 09:25:25.497609732 +0200
++++ b/src/PwrProfSharedMemOps.c	2023-05-22 09:27:59.994309381 +0200
+@@ -219,7 +219,11 @@
+     if (NULL != file && NULL != vma)
+     {
+         vma->vm_ops          = &sharedBuffer_mmap_vm_ops1;
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 3, 0)
++        vm_flags_set(vma, VM_RESERVED);
++#else
+         vma->vm_flags       |= VM_RESERVED;
++#endif
+         vma->vm_private_data = file->private_data;
+
+         pp_anon_inode_mmap_open(vma);
