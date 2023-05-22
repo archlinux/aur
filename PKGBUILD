@@ -3,7 +3,7 @@
 
 pkgname=dduper-git
 _pkgname=${pkgname%'-git'}
-pkgver=0.01.r69.g11b7855
+pkgver=0.04.r23.g11b7855
 btrfsprogsver=6.1
 pkgrel=1
 pkgdesc='Block-level out-of-band BTRFS dedupe tool'
@@ -25,7 +25,7 @@ validpgpkeys=(
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
