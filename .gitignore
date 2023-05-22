@@ -1,4 +1,4 @@
-/Feishin-0.0.1-alpha6-linux-x64.tar.xz
-/feishin-bin-0.0.1_alpha6-1-x86_64.pkg.tar.zst
 /pkg/
 /src/
+*.tar.zst
+*.tar.xz
