@@ -4,7 +4,7 @@ _pkgname=esetVis
 _pkgver=1.26.1
 pkgname=r-${_pkgname,,}
 pkgver=1.26.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Visualizations of expressionSet Bioconductor object'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -23,6 +23,7 @@ optdepends=(
   r-ggplot2
   r-ggrepel
   r-ggvis
+  r-go.db
   r-hgu95av2.db
   r-knitr
   r-pander

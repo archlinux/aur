@@ -1,7 +1,7 @@
 pkgbase = r-esetvis
 	pkgdesc = Visualizations of expressionSet Bioconductor object
 	pkgver = 1.26.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/esetVis
 	arch = any
 	license = GPL
@@ -16,6 +16,7 @@ pkgbase = r-esetvis
 	optdepends = r-ggplot2
 	optdepends = r-ggrepel
 	optdepends = r-ggvis
+	optdepends = r-go.db
 	optdepends = r-hgu95av2.db
 	optdepends = r-knitr
 	optdepends = r-pander
