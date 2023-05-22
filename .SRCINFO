@@ -1,7 +1,7 @@
 pkgbase = pacdef
 	pkgdesc = multi-backend declarative package manager for Linux
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/steven-omaha/pacdef
 	arch = x86_64
 	license = GPL3

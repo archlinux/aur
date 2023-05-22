@@ -1,7 +1,7 @@
 # Maintainer: solnce <echo c29sbmNlQHJhdGFqY3phay5vbmU= | base64 -d>
 pkgname=pacdef
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='multi-backend declarative package manager for Linux'
 url='https://github.com/steven-omaha/pacdef'
 source=("${pkgname}-${pkgver}.tar.gz::https://crates.io/api/v1/crates/${pkgname}/${pkgver}/download")
@@ -18,7 +18,7 @@ build() {
 
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  cargo test --workspace --features arch
+  cargo test --release --workspace --features arch
 }
 
 package() {
