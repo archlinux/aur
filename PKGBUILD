@@ -5,7 +5,7 @@
 
 pkgname=seafile-server
 pkgver=10.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Seafile server core'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='https://github.com/haiwen/seafile-server'
@@ -56,7 +56,7 @@ build() {
         --enable-ldap
     make
 
-    # Goland file-server
+    # Build Go packages
     export GOPATH="$srcdir"
     export CGO_CPPFLAGS="$CPPFLAGS"
     export CGO_CFLAGS="$CFLAGS"
@@ -71,8 +71,11 @@ build() {
     GOFLAGS+=' -modcacherw'
     export GOFLAGS
 
-    cd ./fileserver
-    go build .
+    for pkg in fileserver notification-server; do
+        pushd "$pkg"
+        go build .
+        popd
+    done
 }
 
 package() {
@@ -87,7 +90,10 @@ package() {
     # The scripts needs this bin directory.
     ln -s /usr/bin/ "$pkgdir/usr/share/$pkgname/seafile/bin"
 
-    install -Dm755 ./fileserver/fileserver "$pkgdir/usr/bin/fileserver"
+    # Install Go binaries
+    for bin in fileserver notification-server; do
+        install -Dm755 "$bin/$bin" "$pkgdir/usr/bin/$bin"
+    done
 
     # Systemd
     install -Dm644 \
