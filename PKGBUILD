@@ -5,7 +5,7 @@
 _projectname='utop'
 pkgname="ocaml-$_projectname"
 pkgver='2.12.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Universal toplevel for OCaml'
 # If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the cppo, ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
 # If you're running on pentium4, armv7h or aarch64, you have to add it to the arch array of the ocaml-cmdliner, ocaml-uchar and ocaml-uutf AUR dependencies
