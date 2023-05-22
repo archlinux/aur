@@ -2,7 +2,7 @@
 
 _pkgname=ixia
 pkgname="python-$_pkgname"
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 epoch=
 pkgdesc="A library connecting secrets' security with random's versatility"
@@ -14,7 +14,7 @@ makedepends=('python-build' 'python-installer' 'python-poetry-core')
 checkdepends=()
 optdepends=()
 source=("$_pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('dfc5b801b1ea61df4d992dc73b637f20aad737506f6fcaa89e59a8ba8ce9fbc39230e485ae40c9d265be422b4dbde6f03ace997e2485947c6dbb44c9f93d8a52')
+sha512sums=('bb87633e4b55bf7d60c2a49da1e3133f7efd6b28e028bdc02b966a26e043fadfb86c1c86ace489b91ef39a2552c833996963c8cc822c6c83eba0aae8771969a9')
 
 build() {
 	cd ..
