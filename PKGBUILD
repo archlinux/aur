@@ -82,7 +82,7 @@ sha256sums=('SKIP'
             '9bb8d1d27e3b5a184af71a5aad310da3971e77279f65d7bf804d619ce907280a'  # lsp-codelens
             '9509b620b3c1d80985fd27029f4922ee65c6479921bb92117eb1b88f560f180b'  # postfix-completion
             'f719fb52edee98f54ba40786d2ecac6ef63f56797c8f52d4d7ce76a3825966eb'  # refactor-extract-function
-            '7f976dbd593cbabddec98c23656c9c63ef08a4fdef9d9ca29090933a87e6d5a0'  # inlay-hints-paddings
+            '2db1f319f850858ecebdcda1c1600d6dd523f171c5b019740298d43607d5fa00'  # inlay-hints-paddings
             '346483b0d5823fba409785c2df471ca8a659112d630ee66e53b1a3e36e46e981') # hover-hex-formats
 
 pkgver() {
