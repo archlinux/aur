@@ -2,7 +2,7 @@
 pkgname=jockey
 pkgver=0.0.1
 pkgrel=1
-epoch=
+epoch=1
 pkgdesc="Data J0ckey"
 arch=(any)
 url="https://github.com/salosh/jockey.git"
