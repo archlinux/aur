@@ -5,7 +5,7 @@ _electron=electron
 _appname=insomnia
 pkgname="$_appname-electron"
 _dirname="$_appname-core"
-pkgver=2023.2.0
+pkgver=2023.2.2
 pkgrel=1
 pkgdesc='Cross-platform HTTP and GraphQL Client'
 arch=(any)
@@ -19,7 +19,7 @@ source=("$url/archive/core@$pkgver.tar.gz"
         "$_appname.sh"
         "$_appname.desktop"
         "electron_target.patch")
-sha256sums=('ee40d718b52ce9732f52fc622d747381a9ac9c6a92a3a9ad5c31da9cdf100666'
+sha256sums=('944e44a2382c155fae7af733e99826160b402423ad2620d05a7e57d86af05f72'
             'b490182126b4e05287156066ca41697f2ebf982c5d7b5c8e06fcfce0ce49aac2'
             '790a02378c36db77797669e6b58a426a037664c2680e8b29b9f606c6bb517e94'
             '33e5bc9c5e0a88f93d147006e8878ee59842d171398fd19e3a502a61fc7d9691')
