@@ -40,4 +40,4 @@ pkgbase = plymouth-fixed-git
 	sha256sums = 8397a0703339cc11c0e7304b8e7d5e798f9d76acac7a36d54b7460c0a4f19c07
 	sha256sums = cfd0c754437d582bbc8d2cbb545a777b00b5c77a6302522577e9d88b169e2f59
 
-pkgname = plymouth-git
+pkgname = plymouth-fixed-git
