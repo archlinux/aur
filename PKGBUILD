@@ -1,30 +1,35 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 pkgname=voltdb
-pkgver=10.0
+pkgver=11.0
 pkgrel=1
 pkgdesc="An in-memory database with pre-compiled Java stored procedures (Community Edition)"
 arch=('i686' 'x86_64')
 url="http://voltdb.com/"
 license=('AGPL3')
-depends=('python2' 'java-environment-openjdk=8')
-makedepends=('apache-ant' 'python2-virtualenv' 'cmake')
+depends=('python2' 'jdk8-openjdk')
+makedepends=('apache-ant' 'cmake')
 conflicts=('voltdb-enterprise')
 source=("https://github.com/${pkgname}/${pkgname}/archive/${pkgname}-${pkgver}.tar.gz")
-md5sums=('8f7439f4ac24d23da6134f68abfbaa6d')
-build() {
+md5sums=('511ad9e6e83d10e5f1b32dea31537ec1')
+prepare() {
   cd "${srcdir}"/${pkgname}-${pkgname}-${pkgver}
-  
-  # python2 stuff
-  /usr/bin/virtualenv2 voltdb_env
-  source voltdb_env/bin/activate
   
   find . -type f -exec sed -i 's|^#!/usr/bin/env python\s*$|#!/usr/bin/env python2|' {} \;
   find . -type f -exec sed -i 's|^#!/usr/bin/python\s*$|#!/usr/bin/python2|' {} \;
+}
 
-  export PATH=/usr/lib/jvm/java-8-openjdk/jre/bin:/usr/lib/jvm/java-8-openjdk/jre/bin:$PATH
+build() {
+  cd "${srcdir}"/${pkgname}-${pkgname}-${pkgver}
+
+  export PATH=/usr/lib/jvm/java-8-openjdk/bin:$PATH
+  export PATH="${srcdir}"/${pkgname}-${pkgname}-${pkgver}/bin:$PATH
   
   # GCC 10/11 is buggy: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=94335
   sed -i 's/-Werror//g' "${srcdir}"/voltdb-voltdb-${pkgver}/tools/VoltDBCompilation.cmake
+
+  # python2 stuff
+  /usr/bin/virtualenv -p 2.7 voltdb_env
+  source voltdb_env/bin/activate
 
   ant clean
   ant -Djmemcheck=NO_MEMCHECK dist
