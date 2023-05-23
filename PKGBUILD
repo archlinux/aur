@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="crankshaft-appimage"
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="A sensible krunker client written in typescript"
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'glibc')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${pkgname%-appimage}-portable-linux-${arch}.AppImage")
-sha256sums=('d8843ac48f695d7e6e0e280f3446997395705c04a0514d979297c1e56aa7a9a2')
+sha256sums=('c42b3f2dbe292d9c7500aad535fc79bcc02ed19ea441743e87cbdf2e460fc8c6')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
