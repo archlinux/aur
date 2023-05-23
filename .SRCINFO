@@ -20,6 +20,7 @@ pkgbase = openscad-git
 	depends = qt5-gamepad
 	depends = qt5-multimedia
 	depends = qt5-svg
+	depends = tbb
 	provides = openscad
 	conflicts = openscad
 	source = openscad::git+https://github.com/openscad/openscad

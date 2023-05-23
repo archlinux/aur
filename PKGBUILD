@@ -4,8 +4,8 @@
 
 pkgname=openscad-git
 _pkg="${pkgname%-git}"
-pkgver=2019.05.r2561.gbc21c1263
-pkgrel=1
+pkgver=2019.05.r2660.gab30ab63b
+pkgrel=2
 pkgdesc="The programmers solid 3D CAD modeller"
 arch=('x86_64')
 license=('GPL2')
@@ -21,7 +21,8 @@ depends=(
 	'qt5-base'
 	'qt5-gamepad'
 	'qt5-multimedia'
-	'qt5-svg')
+	'qt5-svg'
+	'tbb')
 makedepends=('git' 'boost' 'cmake' 'eigen' 'imagemagick' 'python')
 source=("$_pkg::git+$url"
         'MCAD::git+https://github.com/openscad/MCAD'
@@ -41,6 +42,7 @@ prepare() {
 	git config submodule.libraries/MCAD.url "$srcdir/MCAD"
 	git -c protocol.file.allow=always submodule update
 	sed -i 's/ping files.openscad.org/ping archlinux.org/' resources/CMakeLists.txt
+	git submodule update --init --recursive
 }
 
 build() {
