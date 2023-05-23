@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=catdata
-_pkgver=1.2.2
+_pkgver=1.2.3
 pkgname=r-${_pkgname,,}
-pkgver=1.2.2
-pkgrel=4
+pkgver=1.2.3
+pkgrel=1
 pkgdesc='Categorical Data'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -39,7 +39,7 @@ optdepends=(
   r-vgam
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7297062e6b1bd3a3046b8762fee8832b5c66ec434b2bc913f4cd6c06a23f7d92')
+sha256sums=('9dce26fee1a3260c31e2ee0d43af30a2bbd6088addb4f43084f2598169b39fb4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
