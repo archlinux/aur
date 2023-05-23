@@ -1,31 +1,38 @@
-# NOTE: This is just a dummy module to satisfy dependencies, uchar is provided
-# directly by ocaml since 4.03.
-pkgname=ocaml-uchar
-_pkgname=uchar
-pkgver=0.0.2
-pkgrel=1
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
+# Contributor: mortzu
+_projectname='uchar'
+pkgname="ocaml-$_projectname"
+pkgver='0.0.2'
+pkgrel='2'
 pkgdesc="Compatibility library for OCaml's Uchar module"
-url="https://github.com/ocaml/uchar"
-arch=('i686' 'x86_64')
-license=('LGPL-2.1-WITH-linking-exception')
-depends=('ocaml')
-makedepends=('ocaml' 'ocamlbuild' 'opam')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ocaml/uchar/archive/v$pkgver.tar.gz")
-sha512sums=("487a9706cf9dfc9b9c94442a51766cc211687d6ebcb4dd3c94d09cb1ed6d7fd61e966e91a4121fe2d1681b2fd6bfee9079d3bccccdb6d65ba2111524ab5dd1bc")
+arch=('x86_64' 'i486' 'i686' 'pentium4' 'armv7h' 'aarch64')
+url="https://github.com/ocaml/$_projectname"
+license=('custom:LGPL2.1 with linking exception')
+depends=('ocaml>=3.12.0')
+makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-topkg' 'opam')
+options=('!strip')
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/ocaml/$_projectname/archive/v$pkgver.tar.gz")
+sha512sums=('487a9706cf9dfc9b9c94442a51766cc211687d6ebcb4dd3c94d09cb1ed6d7fd61e966e91a4121fe2d1681b2fd6bfee9079d3bccccdb6d65ba2111524ab5dd1bc')
+
+_sourcedirectory="$_projectname-$pkgver"
+
+prepare() {
+	cd "$srcdir/$_sourcedirectory/"
+
+	# Replace topkg watermarks
+	find . -type f -exec sed -i "s/%%NAME%%/$_projectname/g" {} +
+	find . -type f -exec sed -i "s/%%VERSION%%/$pkgver/g" {} +
+}
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
-
-  ocaml pkg/build.ml \
-    native=true \
-    native-dynlink=true
+	cd "$srcdir/$_sourcedirectory/"
+	ocaml 'pkg/build.ml' 'native=true' 'native-dynlink=true'
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+	cd "$srcdir/$_sourcedirectory/"
+	opam-installer --prefix="$pkgdir/usr" --libdir='lib/ocaml' --docdir='share/doc'
 
-  opam-installer -i \
-    --prefix="$pkgdir/usr" \
-    --libdir="$pkgdir/usr/lib/ocaml" \
-    $_pkgname.install
+	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
