@@ -70,25 +70,36 @@ _subarch=36
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=6.2.12
+pkgver=6.3.3
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
 arch=(x86_64)
 license=(GPL2)
-makedepends=(bc libelf cpio perl tar xz)
-[[ -n "$_clangbuild" ]] && makedepends+=(clang llvm lld python)
+makedepends=(
+  bc
+  cpio
+  gettext
+  git
+  libelf
+  pahole
+  python
+  perl
+  tar
+  xz
+)
+[[ -n "$_clangbuild" ]] && makedepends+=(clang llvm lld)
 options=('!strip')
 _srcname=linux-${pkgver}
-_kernel_base_commit=e0ee50101346ca9cef52da75e3fb4380c27c042a
+_kernel_base_commit=170014a900a54d2c44ba6aacd3acda1733018c69
 _kernel_arch_tag=${pkgver}-arch1
-_arch_config_commit=4147a4eb953d37533021ae84e306502faa6a7c5f
-_prjc_version=6.2-r1
+_arch_config_commit=25637d0b52cb75a6671203f279eead72df146cfd
+_prjc_version=6.3-r1
 _prjc_patch="prjc_v${_prjc_version}.patch"
 _gcc_more_v=20230105
 source=(
   "https://www.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar".{xz,sign}
-  "${pkgbase}-${pkgver}-config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
+  "${pkgbase}-${pkgver}-config::https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/${_arch_config_commit}/config"
   "${_prjc_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_prjc_version%-*}/${_prjc_patch}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
   "0001-${pkgbase}-${pkgver}-v${_kernel_arch_tag}.patch::https://github.com/archlinux/linux/compare/${_kernel_base_commit}..v${_kernel_arch_tag}.patch"
@@ -98,12 +109,12 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('669486eb86f7c64eea6dac582ab1b49eb8f13ffeff74317dcf3a26cba386b138f5a14d2a3589399a30b1b70d511a7dd3080a47aabf35c92ca8b1dc621099eda5'
+b2sums=('b1557f391ff50df4e2d722c223b88f54d603b9d03e8fd2d3216c0b96bccbceb1e3ddbb55967df894f38a896e189ed4a149bc371b10fd808862e99cc199e6a3c8'
         'SKIP'
-        '648a0a7250bc9674080a99af5516a0949c100af2c23f43575294832884a71afa5f27d6186d100499c57a6dce973edd89f88f6b439ddab6eff1b17918f4e0c8a0'
-        '602086c465010f53d0b3f47441de52f6c552b6fd2e6c3b311a9e8610960d3ea0ba9fb3ff813c9ea5ddc5cacee20ce983d3503ba4ec35270d0ad0bc303423a619'
+        'c2d1c69265adc041dc0364e448f6e86dc4c9ca1207c84071abc1675dd820534a8ab5a230e579e68bfb1bf2b861f23ad34e090f8ceaef5e265ea95e2bc6946013'
+        '05891ca269ef1e1134695ac93cec3fe334b443df35246abf024a91b1cb0cea028a49a8e7dd9116e684d7698e3ce91f223669e1b0ce95591815e1344c03e39674'
         'd178dad69501967382d5c841f65e4f57651042bee8117041a9baa35ab3fa73af8174b8b999ae9e72ec381c52744ccaaabb77944d59f123c04b6ed5626432d843'
-        'e56521f32e6996b3704073c6207e21a4347f5221a6b92bea13db4c1de1d2db5b39ef9ecd849bf887cf5268fb2b4dc861444eeecdaca9ed307368fa71b2a59c5f')
+        '173040e6deb97c3f02f5d9f472cfa1334cd78323a96c7282fc765f6158cfa3e6b4436a182ada42faa5943139c1fb1d71e1ed4438e1caff2fdcdbdc33c587dc19')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-prjc}
@@ -112,13 +123,20 @@ export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
+_make() {
+  test -s version
+  make KERNELRELEASE="$(<version)" "$@"
+}
+
 prepare() {
   cd $_srcname
 
   echo "Setting version..."
-  scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "$_kernelname" > localversion.20-pkgname
+  make defconfig
+  make -s kernelrelease > version
+  make mrproper
 
   local src
   for src in "${source[@]}"; do
@@ -154,6 +172,10 @@ prepare() {
   # https://bugzilla.kernel.org/show_bug.cgi?id=207173#c6
   scripts/config --disable CONFIG_KVM_WERROR
 
+  # https://gitlab.com/alfredchen/linux-prjc/-/issues/81
+  # Disable mellanox module
+  scripts/config --disable CONFIG_MLX5_CORE
+
   echo "Applying patch ${_prjc_patch}..."
   patch -Np1 -i "$srcdir/${_prjc_patch}"
 
@@ -168,7 +190,7 @@ prepare() {
 
   # non-interactively apply prjc default options
   # this isn't redundant if we want a clean selection of subarch below
-  make LLVM=$_LLVM LLVM_IAS=$_LLVM olddefconfig
+  _make LLVM=$_LLVM LLVM_IAS=$_LLVM olddefconfig
   # diff -u ../${pkgbase}-${pkgver}-config .config || :
 
   # https://github.com/graysky2/kernel_gcc_patch
@@ -178,10 +200,10 @@ prepare() {
 
   if [ -n "$_subarch" ]; then
     # user wants a subarch so apply choice defined above interactively via 'yes'
-    yes "$_subarch" | make LLVM=$_LLVM LLVM_IAS=$_LLVM oldconfig
+    yes "$_subarch" | _make LLVM=$_LLVM LLVM_IAS=$_LLVM oldconfig
   else
     # no subarch defined so allow user to pick one
-    make LLVM=$_LLVM LLVM_IAS=$_LLVM oldconfig
+    _make LLVM=$_LLVM LLVM_IAS=$_LLVM oldconfig
   fi
 
   ### Optionally load needed modules for the make localmodconfig
@@ -189,17 +211,16 @@ prepare() {
   if [ -n "$_localmodcfg" ]; then
     if [ -f $HOME/.config/modprobed.db ]; then
       echo "Running Steven Rostedt's make localmodconfig now"
-      make LLVM=$_LLVM LLVM_IAS=$_LLVM LSMOD="$HOME/.config/modprobed.db" localmodconfig
+      _make LLVM=$_LLVM LLVM_IAS=$_LLVM LSMOD="$HOME/.config/modprobed.db" localmodconfig
     else
       echo "No modprobed.db data found"
       exit
     fi
   fi
 
-  make -s kernelrelease > version
   echo "Prepared ${pkgbase} version $(<version)"
 
-  [[ -z "$_makenconfig" ]] || make LLVM=$_LLVM LLVM_IAS=$_LLVM nconfig
+  [[ -z "$_makenconfig" ]] || _make LLVM=$_LLVM LLVM_IAS=$_LLVM nconfig
 
   # uncomment if you want to build with distcc
   ### sed -i '/HAVE_GCC_PLUGINS/d' arch/x86/Kconfig
@@ -207,29 +228,34 @@ prepare() {
 
 build() {
   cd $_srcname
-  make LLVM=$_LLVM LLVM_IAS=$_LLVM all EXTRAVERSION=""
+  _make LLVM=$_LLVM LLVM_IAS=$_LLVM all EXTRAVERSION=""
 }
 
 _package() {
   pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the Project C patch set"
-  depends=(coreutils kmod initramfs)
-  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
-              'linux-firmware: firmware images needed for some devices')
+  depends=(
+    coreutils
+    initramfs
+    kmod
+  )
+  optdepends=(
+    'wireless-regdb: to set the correct wireless channels of your country'
+    'linux-firmware: firmware images needed for some devices'
+  )
 
   cd $_srcname
-  local kernver="$(<version)"
-  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
+  local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
   echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$(_make -s image_name)" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make LLVM=$_LLVM LLVM_IAS=$_LLVM INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+  _make LLVM=$_LLVM LLVM_IAS=$_LLVM INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
@@ -320,7 +346,10 @@ _package-headers() {
 
 }
 
-pkgname=("$pkgbase" "$pkgbase-headers")
+pkgname=(
+  "$pkgbase"
+  "$pkgbase-headers"
+)
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
