@@ -1,6 +1,6 @@
 pkgbase = nextcloud-app-twofactor-webauthn
 	pkgdesc = WebAuthn Two-Factor Provider for Nextcloud
-	pkgver = 1.1.2
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://apps.nextcloud.com/apps/twofactor_webauthn
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = nextcloud-app-twofactor-webauthn
 	makedepends = nextcloud
 	makedepends = yq
 	options = !strip
-	source = nextcloud-app-twofactor-webauthn-1.1.2.tar.gz::https://github.com/nextcloud-releases/twofactor_webauthn/releases/download/v1.1.2/twofactor_webauthn-v1.1.2.tar.gz
-	sha512sums = 893481490699d10dc3077054faa88edde54afde76c3b0b707ffd3591545c85072b49a19fa56d606351dc45038dfbd041d9b06ae00d09f7f77c98d1c5d2171c31
+	source = nextcloud-app-twofactor-webauthn-1.2.0.tar.gz::https://github.com/nextcloud-releases/twofactor_webauthn/releases/download/v1.2.0/twofactor_webauthn-v1.2.0.tar.gz
+	sha512sums = 9814179dbdc1803b0116cf859726c9f23581c219703b4e2c0e7f29a77bc8898a961338f060e364cb5d33567aec8240a68957b4a6087347642252bc697bf448bc
 
 pkgname = nextcloud-app-twofactor-webauthn
