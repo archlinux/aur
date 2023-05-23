@@ -2,19 +2,19 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_bin_prot'
 pkgname="ocaml-$_projectname"
-pkgver='0.15.0'
-pkgrel='4'
+pkgver='0.16.0'
+pkgrel='1'
 epoch='1'
 pkgdesc='Generation of bin_prot readers and writers from types'
-# If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
-arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
+# If you're running on aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
+arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0' 'ocaml-bin_prot>=0.15.0' 'ocaml-ppx_here>=0.15.0' 'ocaml-ppxlib>=0.23.0')
+depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-bin_prot>=0.16.0' 'ocaml-ppx_here>=0.16.0' 'ocaml-ppxlib>=0.28.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('3fdc7e9431458b752d553f093762e3ed3c96af3a789eceeb94895284de961a887e358d137c21da372cadf6c0e6329628f6c698499581f672e0e1913b3274cc14')
+sha512sums=('b6e4f1a1ea1dfcfb2c23f34b0842097ad85535a22a767b2f47aa3a5812a112a60768c7b94bfce2602721f165b8ffec1e5282e83a008b2c6684bb102093467f3c')
 
 _sourcedirectory="$_projectname-$pkgver"
 
