@@ -2,7 +2,7 @@
 
 _pkgname=libheif
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.16.1
+pkgver=1.16.2
 pkgrel=1
 pkgdesc='HEIF file format decoder and encoder (mingw-w64)'
 url='https://github.com/strukturag/libheif'
@@ -17,13 +17,14 @@ depends=(
 	'mingw-w64-rav1e'
 	'mingw-w64-dav1d'
 	'mingw-w64-zlib'
+	'mingw-w64-libwebp'
 	'mingw-w64-svt-av1' # Only for x86_64
 )
 makedepends=('mingw-w64-cmake')
 arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
-sha256sums=('005e337d60436759af80deaf25c7dcf3a98d976b1c8c30117c830aae3452afe5')
+sha256sums=('d207f2ff5c86e6af3621c237f186130b985b7a9ff657875944b58ac5d27ba71c')
 source=(
 	"$_pkgname-$pkgver.tar.gz::https://github.com/strukturag/libheif/archive/v${pkgver}.tar.gz"
 )
@@ -34,13 +35,26 @@ _flags=(
 	-Wno-dev
 	-DCMAKE_BUILD_TYPE=Release
 	-DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG'
-	-DCMAKE_CXX_STANDARD_LIBRARIES='-lws2_32 -lwsock32 -luserenv'
-	-DWITH_RAV1E=OFF
+	-DWITH_RAV1E=ON
+	-DWITH_RAV1E_PLUGIN=OFF
 	-DWITH_SvtEnc=ON # Only supported on 64 bits platforms
 	-DWITH_SvtEnc_PLUGIN=OFF
 	-DWITH_EXAMPLES=OFF
 	-DWITH_REDUCED_VISIBILITY=ON
 	-DWITH_DEFLATE_HEADER_COMPRESSION=ON )
+
+prepare() {
+	cd "${_srcdir}"
+	
+	(cat << EOF
+include(LibFindMacros)
+libfind_pkg_check_modules(RAV1E rav1e)
+message(STATUS \${RAV1E_LDFLAGS})
+EOF
+	) > 'cmake/modules/FindRAV1E.cmake'
+
+  sed -i 's/${${varName}_INCLUDE_DIR}/${${varName}_INCLUDE_DIRS}/' 'libheif/plugins/CMakeLists.txt'
+}
 
 build() {
 	for _arch in ${_architectures}; do
