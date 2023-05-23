@@ -1,14 +1,15 @@
 # Maintainer: Emad Elsaid <emad.elsaid.hamed@gmail.com>
 pkgname=xlog-git
 _pkgname="xlog"
-pkgver=0.41.0.r8.g6f0e0a1
+pkgver=0.82.0.r0.g74a83b7
 pkgrel=1
 pkgdesc="Xlog is a static site generator for digital gardening written in Go"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/emad-elsaid/xlog"
 license=('MIT')
 depends=('git')
-makedepends=('go>=1.19')
+optdepends=('pandoc-cli: To support extra formats')
+makedepends=('go>=1.20')
 provides=('xlog')
 conflicts=('xlog')
 source=(xlog::git+https://github.com/emad-elsaid/xlog.git#branch=master)
