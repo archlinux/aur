@@ -11,6 +11,14 @@ makedepends=('cargo' 'clang' 'libpulse')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 sha512sums=('90131481ac920c9fc7dce13c07db6503d3ba06968c7849b65d4cf6f739d35ff1a5d79630d1f34c78de7397962e4b07077419376e5972f1d57561171bc1ed37a1')
 
+# this is effectively a no-op for standard usages of the PKGBUILD, but it exists for
+# local testing of the PKGBUILD itself in the upstream repository (when the build version
+# doesn't match the PKGBUILD because it hasn't been released yet)
+prepare() {
+  _dirname=$(bsdtar -tf "${source[0]%%::*}" | awk -F / '{print $1; exit}')
+  mv "$_dirname" $pkgname-$pkgver
+}
+
 build() {
   cd "$pkgname-$pkgver"
 
