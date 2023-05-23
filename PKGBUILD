@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="onekey-wallet-appimage"
-pkgver=4.5.0
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="Secure, open source and community driven crypto wallet runs on all platforms and trusted by millions."
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'glibc')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/OneKey-Wallet-${pkgver}-linux-x86_64.AppImage")
-sha256sums=('12f6a4e5745d57a7cdff9df22ce6a52eea44eed6226c96f13f7637d0ddda12e1')
+sha256sums=('9bad4223c4a7f6df51c83857cd79feb107a1eb2c7d4a260911daaf378f91d63a')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
