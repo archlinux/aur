@@ -1,7 +1,7 @@
 pkgbase = beetcamp
 	pkgdesc = Plugin for beets to use Bandcamp as an autotagger source
-	pkgver = 0.16.3
-	pkgrel = 3
+	pkgver = 0.17.1
+	pkgrel = 1
 	url = https://github.com/snejus/beetcamp
 	arch = any
 	license = GPL2
@@ -10,7 +10,8 @@ pkgbase = beetcamp
 	depends = beets
 	depends = python-pycountry
 	depends = python-requests
-	source = beetcamp-0.16.3.tar.gz::https://github.com/snejus/beetcamp/archive/refs/tags/0.16.3.tar.gz
-	b2sums = ee427bed4d8b12fc0b447de2f85861258e8def8dcc97fbfafc507bed22afa2de2d404fba2f4ac221f6a6ddcc449c26fb8d0675faebf486dc708d31317d811415
+	depends = python-ordered-set
+	source = beetcamp-0.17.1.tar.gz::https://github.com/snejus/beetcamp/archive/refs/tags/0.17.1.tar.gz
+	b2sums = f299cfb6eda4f719aa25570000c82b0d240818c40e68a297bd7e24ef9c777bfacec2c6fc839f88e779494f73d91d69867b1add5d3a6b546eb62108bef8d5f442
 
 pkgname = beetcamp
