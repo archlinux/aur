@@ -1,11 +1,13 @@
-# Maintainer: joelvaz0x01 <joelvaz dot whitehat at gmail dot com>
-# Contributer: Dawid Weglarz <dawid.weglarz95@gmail.com>
-# Contributer: candroid_man <candroid_man@protonmail.com>
-# Contributer: Ada <adadonderr@gmail.com>
+# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+# Contributor: joelvaz0x01 <joelvaz dot whitehat at gmail dot com>
+# Contributor: Dawid Weglarz <dawid.weglarz95@gmail.com>
+# Contributor: candroid_man <candroid_man@protonmail.com>
+# Contributor: Ada <adadonderr@gmail.com>
 # Contributor: Christian Finnberg <christian@finnberg.net>
 
+
 pkgname=notesnook
-pkgver=2.4.7
+pkgver=2.4.11
 pkgrel=1
 _electronversion=21
 pkgdesc="Take private notes, capture ideas, make lists & sync them anywhere"
@@ -17,10 +19,10 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 depends=("electron$_electronversion" 'gtk3' 'libxss' 'libnotify' 'libappindicator-gtk3')
 makedepends=('nvm' 'git' 'yarn')
-source=(notesnook::git+https://github.com/streetwriters/notesnook.git
-        ${pkgname}.desktop)
-sha512sums=('SKIP'
-            '3b321b067f3123884bd8bd15cfcaea3d9d5745f82c8ee60ece7a6606f39f0113310544f8e93244cc620f3ee97fa47cc8b62496387d553a6b6c69c9deaf48382b')
+source=("notesnook::git+https://github.com/streetwriters/notesnook.git"
+        "${pkgname}.desktop")
+sha256sums=('SKIP'
+            'f0e084aa6dae51e4f18962f5ca2b83c4150dc26dfad69301f0e8d2d0d0d876b5')
 
 prepare() {
   source /usr/share/nvm/init-nvm.sh && nvm install lts/gallium

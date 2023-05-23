@@ -1,6 +1,6 @@
 pkgbase = notesnook
 	pkgdesc = Take private notes, capture ideas, make lists & sync them anywhere
-	pkgver = 2.4.7
+	pkgver = 2.4.11
 	pkgrel = 1
 	url = https://notesnook.com/
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = notesnook
 	options = !strip
 	source = notesnook::git+https://github.com/streetwriters/notesnook.git
 	source = notesnook.desktop
-	sha512sums = SKIP
-	sha512sums = 3b321b067f3123884bd8bd15cfcaea3d9d5745f82c8ee60ece7a6606f39f0113310544f8e93244cc620f3ee97fa47cc8b62496387d553a6b6c69c9deaf48382b
+	sha256sums = SKIP
+	sha256sums = f0e084aa6dae51e4f18962f5ca2b83c4150dc26dfad69301f0e8d2d0d0d876b5
 
 pkgname = notesnook
