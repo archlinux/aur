@@ -4,7 +4,7 @@
 
 pkgname=vitables
 pkgver=3.0.2
-pkgrel=5
+pkgrel=6
 pkgdesc="A GUI browser and editor for PyTables/HDF5 files"
 arch=(any)
 url=https://vitables.org
