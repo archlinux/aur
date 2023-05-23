@@ -1,6 +1,6 @@
 pkgbase = altair-bin
 	pkgdesc = A beautiful feature-rich GraphQL Client for all platforms.
-	pkgver = 5.0.24
+	pkgver = 5.0.25
 	pkgrel = 1
 	url = https://altairgraphql.dev/
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = altair-bin
 	depends = libxext
 	depends = alsa-lib
 	options = !strip
-	source = altair-5.0.24.deb::https://github.com/altair-graphql/altair/releases/download/v5.0.24/altair_5.0.24_amd64_linux.deb
-	sha256sums = 99dbf551d6cda467847e0095ba129c3413f2a71b10bcbb90719e3f918f4083f1
+	source = altair-5.0.25.deb::https://github.com/altair-graphql/altair/releases/download/v5.0.25/altair_5.0.25_amd64_linux.deb
+	sha256sums = 7ac17feccc7112ac53828b5c8c73b938b497a79a4d877a02574005eeadac2b25
 
 pkgname = altair-bin
