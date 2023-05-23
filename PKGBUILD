@@ -2,7 +2,7 @@
 
 pkgname='siki'
 pkgver=0.15.19
-pkgrel=3
+pkgrel=4
 pkgdesc='An Electrom-based application for browsing and posting to message boards'
 arch=('x86_64')
 url='https://sikiapp.net'
@@ -30,7 +30,7 @@ build() {
         -e "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /opt/${pkgname}/${pkgname}.AppImage|" \
         "squashfs-root/${pkgname}.desktop"
   chmod -R a-x+rX squashfs-root/usr
-  _copyright=$(curl -sL https://sikiapp.net/license | sed -n 's/<p>\(Copyright.*\)<\/p>/\1/p')
+  _copyright=$(curl -sL ${url}/license | sed -n 's/<p>\(Copyright.*\)<\/p>/\1/p')
   sed "1i ${_copyright}\n" ./squashfs-root/LICENSE.electron.txt > LICENSE
 }
 
