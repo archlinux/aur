@@ -5,7 +5,7 @@ pkgbase=python-glymur
 _pyname=${pkgbase#python-}
 #_pyname=Glymur
 pkgname=('python-glymur' 'python-glymur-doc')
-pkgver=0.12.6.post1
+pkgver=0.12.7
 pkgrel=1
 pkgdesc="Tools for accessing JPEG2000 files"
 arch=('any')
@@ -22,8 +22,9 @@ checkdepends=('python-pytest'
               'python-lxml'
 #             'openjpeg2'   # <- pillow <- skimage
               'python-scikit-image'
-              'python-gdal'
-              'python-imagecodecs')
+              'python-gdal')
+#              'python-imagecodecs')
+
 #source=("https://github.com/quintusdias/glymur/archive/refs/tags/v${pkgver}.tar.gz")
 source=("https://github.com/quintusdias/glymur/archive/refs/tags/v${pkgver/.p/p}.tar.gz")
 #source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
@@ -37,7 +38,7 @@ source=("https://github.com/quintusdias/glymur/archive/refs/tags/v${pkgver/.p/p}
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.10.rst"
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.11.rst"
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.12.rst")
-md5sums=('9bed715fa1d94f743e1a72850d723b01')
+md5sums=('59051fe1893bd6c8c8a50d2b26d2e30d')
 #        'SKIP'
 #        'SKIP'
 #        'SKIP'
