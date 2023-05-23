@@ -7,7 +7,7 @@ pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
 pkgver=2.0.1
 _pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -15,7 +15,8 @@ url="https://pytorch.org"
 license=('BSD')
 depends=('google-glog' 'gflags' 'opencv' 'openmp' 'nccl' 'pybind11' 'python' 'python-yaml' 'libuv'
          'python-numpy' 'python-sympy' 'protobuf' 'ffmpeg4.4' 'python-future' 'qt6-base'
-         'intel-oneapi-mkl' 'python-typing_extensions' 'numactl')
+         'intel-oneapi-mkl' 'python-typing_extensions' 'numactl' 'python-jinja'
+         'python-networkx' 'python-filelock')
 # Exclude the magma package here and add the corresponding {cuda, rocm/hip} version
 # to makedepends of the split packages.
 # The magma package does not allow to build the cuda and rocm/hip code at the same time,
@@ -23,7 +24,7 @@ depends=('google-glog' 'gflags' 'opencv' 'openmp' 'nccl' 'pybind11' 'python' 'py
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda'
              'cudnn' 'git' 'rocm-hip-sdk' 'roctracer' 'miopen'
              'ninja' 'pkgconfig' 'doxygen' 'vulkan-headers' 'shaderc')
-source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
+source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         # generated using parse-submodules
         "${pkgname}-ARM_NEON_2_x86_SSE::git+https://github.com/intel/ARM_NEON_2_x86_SSE.git"
         "${pkgname}-FP16::git+https://github.com/Maratyszcza/FP16.git"
@@ -135,7 +136,7 @@ get_pyver () {
 }
 
 prepare() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}"
 
   # generated using parse-submodules
   git submodule init
@@ -213,11 +214,11 @@ prepare() {
 
   cd "${srcdir}"
 
-  cp -r "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-opt"
-  cp -r "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-cuda"
-  cp -r "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-opt-cuda"
-  cp -r "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-rocm"
-  cp -r "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-opt-rocm"
+  cp -r "${_pkgname}" "${_pkgname}-opt"
+  cp -r "${_pkgname}" "${_pkgname}-cuda"
+  cp -r "${_pkgname}" "${_pkgname}-opt-cuda"
+  cp -r "${_pkgname}" "${_pkgname}-rocm"
+  cp -r "${_pkgname}" "${_pkgname}-opt-rocm"
 }
 
 # Common build configuration, called in all package() functions.
@@ -312,7 +313,7 @@ _package() {
 package_python-pytorch() {
   pkgdesc="${_pkgdesc}"
 
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}"
   echo "Building without cuda or rocm and without non-x86-64 optimizations"
   _prepare
   export USE_CUDA=0
@@ -332,7 +333,7 @@ package_python-pytorch-opt() {
   conflicts=(python-pytorch)
   provides=(python-pytorch)
 
-  cd "${srcdir}/${_pkgname}-${pkgver}-opt"
+  cd "${srcdir}/${_pkgname}-opt"
   echo "Building without cuda or rocm and with non-x86-64 optimizations"
   _prepare
   export USE_CUDA=0
@@ -351,13 +352,13 @@ package_python-pytorch-cuda() {
   conflicts=(python-pytorch)
   provides=(python-pytorch)
 
-  cd "${srcdir}/${_pkgname}-${pkgver}-cuda"
+  cd "${srcdir}/${_pkgname}-cuda"
   echo "Building with cuda and without non-x86-64 optimizations"
   _prepare
   export USE_CUDA=1
   export USE_CUDNN=1
   export USE_ROCM=0
-  cd "${srcdir}/${_pkgname}-${pkgver}-cuda"
+  cd "${srcdir}/${_pkgname}-cuda"
   echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
   # same horrible hack as above
   python setup.py build || python setup.py build
@@ -374,7 +375,7 @@ package_python-pytorch-opt-cuda() {
   conflicts=(python-pytorch)
   provides=(python-pytorch python-pytorch-cuda)
 
-  cd "${srcdir}/${_pkgname}-${pkgver}-opt-cuda"
+  cd "${srcdir}/${_pkgname}-opt-cuda"
   echo "Building with cuda and with non-x86-64 optimizations"
   export USE_CUDA=1
   export USE_CUDNN=1
@@ -395,7 +396,7 @@ package_python-pytorch-rocm() {
   conflicts=(python-pytorch)
   provides=(python-pytorch)
 
-  cd "${srcdir}/${_pkgname}-${pkgver}-rocm"
+  cd "${srcdir}/${_pkgname}-rocm"
   echo "Building with rocm and without non-x86-64 optimizations"
   _prepare
   export USE_CUDA=0
@@ -418,7 +419,7 @@ package_python-pytorch-opt-rocm() {
   conflicts=(python-pytorch)
   provides=(python-pytorch python-pytorch-rocm)
 
-  cd "${srcdir}/${_pkgname}-${pkgver}-opt-rocm"
+  cd "${srcdir}/${_pkgname}-opt-rocm"
   echo "Building with rocm and with non-x86-64 optimizations"
   _prepare
   export USE_CUDA=0
