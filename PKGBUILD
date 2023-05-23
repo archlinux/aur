@@ -1,24 +1,25 @@
-# Maintainer: Gabriele Musco <emaildigabry@gmail.com>
-# Upstream URL: https://github.com/jath03/openrgb-python
+# Maintainer: éclairevoyant
+# Contributor: Gabriele Musco <emaildigabry at gmail dot com>
 
 pkgname=python-openrgb
-pkgver=0.0.5
+pkgver=0.2.15
 pkgrel=1
-pkgdesc="A python client for the OpenRGB SDK"
-arch=('any')
-url="https://github.com/jath03/openrgb-python"
-license=('GPL-3.0')
-makedepends=('python-setuptools' 'git')
-depends=('openrgb' 'python')
-conflicts=('python-openrgb-git')
-source=("python-openrgb-${pkgver}::git+$url#tag=v${pkgver}")
-sha256sums=('SKIP')
+pkgdesc="Python client for the OpenRGB SDK"
+arch=(any)
+_gitname=openrgb-python
+url="https://github.com/jath03/$_gitname"
+license=(GPL3)
+depends=(openrgb python)
+makedepends=(git python-setuptools)
+source=("git+$url.git#tag=eb47399716a643cbd9ac5e307457c08256a9bc64")
+b2sums=('SKIP')
 
-prepare() {
-    cd python-openrgb-${pkgver}
+build() {
+	cd $_gitname
+	python setup.py build
 }
 
 package() {
-  cd "${srcdir}/python-openrgb-${pkgver}"
-  python setup.py install --root="${pkgdir}"
+	cd $_gitname
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
