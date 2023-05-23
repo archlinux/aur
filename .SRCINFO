@@ -1,13 +1,13 @@
 pkgbase = peazip-qt-bin
 	pkgdesc = PeaZip file manager and archiver (Qt5)
-	pkgver = 9.1.0
+	pkgver = 9.2.0
 	pkgrel = 1
 	url = https://peazip.github.io
 	changelog = changelog.txt
 	arch = x86_64
 	license = LGPL3
 	depends = qt5pas
-	optdepends = p7zip: Command-line file archiver with high compression ratio
+	optdepends = 7-zip: File archiver with a high compression ratio
 	optdepends = quad: High-performance file compressor that utilizes an advanced LZ-based compression algorithm
 	optdepends = arc: Arc file archiver and compressor
 	optdepends = zpaq: Programmable file compressor, library and utilities
@@ -18,7 +18,7 @@ pkgbase = peazip-qt-bin
 	conflicts = peazip-qt5
 	conflicts = peazip-qt5-bin
 	options = !emptydirs
-	source = https://github.com/peazip/PeaZip/releases/download/9.1.0/peazip-9.1.0.LINUX.Qt5-1.x86_64.rpm
-	sha256sums = f2abd125f3f50c2f99e007f59940a2a17cd5a26f2b7b064a2dc579d58e92e880
+	source = https://github.com/peazip/PeaZip/releases/download/9.2.0/peazip-9.2.0.LINUX.Qt5-1.x86_64.rpm
+	sha256sums = c8ebcacdba92685fd1a769c74a7df224e5dee1c0c63d1f42450e380cf9b7f279
 
 pkgname = peazip-qt-bin

@@ -1,3 +1,13 @@
+* Tue May 23 2023 Siavash Askari Nasr - 9.5.0
+  PeaZip 9.2.0 improves the GUI with more customization options for address bar and tab
+  bar, and re-organizes support section, with easier access to online resources,
+  documentation, issue tracker, and to settings relevant to privacy and security.  Under
+  the hood the support for editing non-canonical archive types was improved, and it is now
+  possible to try different methods to manage unsupported file types.  On Windows, McMilk
+  codecs and sfx modules were updated, to support extra compression methods for .7z format
+  (Brotli, FLZMA2, Lizard, Zstandard...), and on all platforms it is now possible to set
+  an alias for 7z / p7zip backend to easily switch between alternative binaries.
+
 * Sat Mar 11 2023 Vladimir Svyatski <vsvyatski@yandex.ru> - 9.1.0-1
   PeaZip 9.1.0 brings a major restyle in application's look & feel and themes, and many
   usability improvements for the file manager, and archiving/extraction screens.
