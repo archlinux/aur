@@ -1,18 +1,18 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='ppx_log'
 pkgname="ocaml-$_projectname"
-pkgver='0.15.0'
-pkgrel='4'
+pkgver='0.16.0'
+pkgrel='1'
 pkgdesc='Ppx_sexp_message-like extension nodes for lazily rendering log messages'
-# If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
-arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
+# If you're running on aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
+arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0' 'ocaml-ppx_here>=0.15.0' 'ocaml-ppx_sexp_conv>=0.15.0' 'ocaml-ppx_sexp_message>=0.15.0' 'ocaml-sexplib>=0.15.0' 'ocaml-ppxlib>=0.23.0')
+depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-ppx_here>=0.16.0' 'ocaml-ppx_sexp_conv>=0.16.0' 'ocaml-ppx_sexp_message>=0.16.0' 'ocaml-sexplib>=0.16.0' 'ocaml-ppxlib>=0.28.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('1585f82615def2fc1c94853e9a1b9e3ebd2ef8193067f229f24580ea124c06736a2b361377801b9a44b7347e1938da051ed652764142e2270de3d3e8f375bf46')
+sha512sums=('6560720e4c329d8859850f06aa9c80f9446f361221ce57223ee2872944928079898bb644bf762d4907673368a18857390346a94d450ba4d2787abac77dea9e87')
 
 _sourcedirectory="$_projectname-$pkgver"
 
