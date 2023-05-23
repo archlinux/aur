@@ -2,19 +2,19 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_bench'
 pkgname="ocaml-$_projectname"
-pkgver='0.15.1'
-pkgrel='2'
+pkgver='0.16.0'
+pkgrel='1'
 epoch='1'
 pkgdesc='Syntax extension for writing in-line benchmarks in ocaml code'
-# If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
-arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
+# If you're running on aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
+arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.08.0' 'ocaml-ppx_inline_test>=0.15.0' 'ocaml-ppxlib>=0.23.0')
+depends=('ocaml>=4.14.0' 'ocaml-ppx_inline_test>=0.16.0' 'ocaml-ppxlib>=0.28.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('3eb9eb071e0effd451e8733b7eb883e44c246ad75c8990cffba3596c1ec95784f57ac63c4cf3966004b83afca4dbf5728fd497e21b1a454116fbba41ff7b24ae')
+sha512sums=('4644d7088647bffa24e380dcf52adfc4034fccddc0f3e75112c71542d6a4515904d465f15789705ac1861d267fab52af2791dc0a2ddedf83585c5f62c0f18aed')
 
 _sourcedirectory="$_projectname-$pkgver"
 
