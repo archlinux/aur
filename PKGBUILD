@@ -1,20 +1,19 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="ocat-appimage"
-pkgver=20230019
-pkgrel=4
+pkgver=20230020
+pkgrel=1
 pkgdesc="OpenCore Auxiliary Tools is a GUI-based Configurator for editing config.plist files for Acidanthera's OpenCore Boot Manager."
 arch=("x86_64")
 url="https://github.com/ic005k/OCAuxiliaryTools"
-license=(MIT)
+license=("MIT")
 depends=('hicolor-icon-theme' 'zlib' 'glibc')
 options=(!strip)
 conflit=("${pkgname%-appimage}")
-providers=("${pkgname%-appimage}")
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/OCAT-Linux-x86_64.AppImage"
-        "LICENSE::${url}/raw/master/LICENSE")
-sha256sums=('95de6a299d218f26d3ef3d2b2ff48f669e0d23ab9f025fd498f5a48dff62356e'
-            'bd3712bc99be8022441e1b3f3d473848abef0b814ae1cb1b2d65abbe3ed6a71f')
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/OCAT-Linux-${arch}.AppImage"
+        "LICENSE::https://raw.githubusercontent.com/ic005k/OCAuxiliaryTools/master/LICENSE")
+sha256sums=('9f2a83c06cdfedc935efa153f824e9f76a84498be8f9a373b555680d701ee784'
+            '3515a1c9e2ce8df51e80f0a03a0ffca92430c7dca6989ff20b16031d676a652b')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
