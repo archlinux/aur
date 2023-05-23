@@ -2,7 +2,7 @@
 
 pkgname=geeqie15
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight image viewer (version 1.5)'
 arch=('x86_64')
 url="http://www.geeqie.org/"
@@ -33,7 +33,7 @@ prepare() {
 build() {
     cd "${srcdir}/geeqie-${pkgver}"
 
-    CFLAGS=-fcommon
+    CFLAGS="-fcommon -Wno-unused-result"
     
     ./configure \
         --prefix=/usr \
