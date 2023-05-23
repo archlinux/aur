@@ -27,12 +27,6 @@ prepare() {
 	# This test breaks for some people but not for others,
 	# see comments from oriba, crave and pha-qu on the AUR page
 	sed -i '/test_mcast "mcast-join-loop"/d' 'test/unix/test_mcast.ml'
-
-	# I was unable to persuade dune to not build lwt_domain (which
-	# we don't want to build as there's no ocaml-multicore package),
-	# so let's just delete it until I figure out what's going on
-	rm -rf 'lwt_domain.opam'
-	rm -rf {'src','test'}'/domain/'
 }
 
 build() {
