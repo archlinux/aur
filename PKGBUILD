@@ -2,19 +2,19 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_sexp_message'
 pkgname="ocaml-$_projectname"
-pkgver='0.15.0'
-pkgrel='4'
+pkgver='0.16.0'
+pkgrel='1'
 epoch='1'
 pkgdesc='A ppx rewriter for easy construction of s-expressions'
-# If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
-arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
+# If you're running on aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
+arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0' 'ocaml-ppx_here>=0.15.0' 'ocaml-ppx_sexp_conv>=0.15.0' 'ocaml-ppxlib>=0.23.0')
+depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-ppx_here>=0.16.0' 'ocaml-ppx_sexp_conv>=0.16.0' 'ocaml-ppxlib>=0.28.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('2b671a1fa020c785ffb02b67998653dedcce892ab68fc23665ce8c88534ae9f5e1df2f148e1f9ea965444f4a48d896735e2bdc313db2787101a5aee2e5f9f025')
+sha512sums=('2442d9d2e46bcfce17e7d017865dcf52daa5fd62500981f3d97a37373799a5b9abd6c52b4e8f720cc2df419b2d2450258e0bd78fe8e12090805e1c8e37d62285')
 
 _sourcedirectory="$_projectname-$pkgver"
 
