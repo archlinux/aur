@@ -2,10 +2,10 @@
 
 _githubuser=aarnt
 _githubrepo=octopi
-_gitcommit=a92868cbb3df8ca87380800bf29827482baed18b
+_gitcommit=d0a30a9eca187fa6c7ba34ddb57606d2591cbc92
 
 pkgname=octopi-dev
-pkgver=0.14.0.r1.a92868c
+pkgver=0.14.0.r2.d0a30a9
 pkgrel=1
 pkgdesc='This is Octopi, a powerful Pacman frontend using Qt libs'
 arch=('any')
