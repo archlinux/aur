@@ -1,15 +1,15 @@
 # Maintainer: Vincenzo Maffione <v.maffione at gmail dot com>
 
 pkgname=openucx
-pkgver=1.14.0
-pkgrel=2
+pkgver=1.14.1
+pkgrel=1
 pkgdesc="Unified Communication X (http://www.openucx.org)"
 arch=('any')
 url="http://www.openucx.org"
 license=('BSD')
 depends=('numactl' 'rdma-core')
 makedepends=('git')
-source=('git+https://github.com/openucx/ucx.git#tag=v1.14.0')
+source=('git+https://github.com/openucx/ucx.git#tag=v1.14.1')
 noextract=()
 md5sums=('SKIP')
 
