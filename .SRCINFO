@@ -2,6 +2,7 @@ pkgbase = aacs-keydb
 	pkgdesc = Contains the Key Database for the AACS Library
 	pkgver = 1.0
 	pkgrel = 1
+	url = http://fvonline-db.bplaced.net/
 	arch = any
 	depends = libaacs
 	source = http://fvonline-db.bplaced.net/export/keydb_eng.zip
