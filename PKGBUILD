@@ -3,7 +3,7 @@
 pkgname=python-text2digits
 _pyname=${pkgname#python-}
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A small library to convert text numbers to digits in a string'
 arch=(x86_64)
 url="https://github.com/ShailChoksi/$_pyname"
