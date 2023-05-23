@@ -1,28 +1,34 @@
-# This utillity is for configuring coreboot options on Starlabs Labtop's running coreboot firmware.
-# As this is an unofficial build script, StarLabsLtd is not responsible for this AUR build.
+# Maintainer: Alexander Rosenberg <zanderpkg at pm dot me>
 
-# Maintainer: Daniel Jongepier <djongepier@gmail.com>
-pkgname=coreboot-configurator-git
 _pkgname=coreboot-configurator
-pkgver=6.f
-pkgrel=3
-pkgdesc="Graphical user interface to configure Starlabs Systems Labtop series"
-arch=('i686' 'x86_64')
-url="https://github.com/StarLabsLtd/coreboot-configurator"
-license=('GPL3')
-depends=("nvramtool-git" "qt5-base" "hicolor-icon-theme")
-makedepends=("qt5-quickcontrols" "inkscape" "meson")
-provides=("coreboot-configurator")
-conflicts=("coreboot-configurator")
-source=("https://github.com/StarLabsLtd/coreboot-configurator/archive/refs/tags/6.f.tar.gz")
-sha256sums=("c82d282d45d120421e7045f68afd596679a610f07aaf72f473a80216d01f7a6b")
+pkgname=$_pkgname-git
+pkgver=11.0.gb27400d
+pkgrel=1
+pkgdesc="A simple GUI to change settings in coreboot's CBFS, via the nvramtool utility"
+url='https://github.com/StarLabsLtd/coreboot-configurator'
+arch=('x86_64')
+provides=("$_pkgname")
+license=('GPL2')
+makedepends=('ninja' 'meson' 'git')
+depends=('nvramtool' 'yaml-cpp' 'qt5-base')
+source=('git+https://github.com/StarLabsLtd/coreboot-configurator.git')
+sha256sums=('SKIP')
+
+pkgver(){
+  cd "$_pkgname"
+  git describe --tags --long | sed 's#-#.#g'
+}
 
 build() {
-	cd "$_pkgname-$pkgver"
-	meson build
+    cd "$_pkgname"
+
+    meson setup build/
+    ninja -C build all
 }
 
 package() {
-	cd "$_pkgname-$pkgver"
-	ninja -C build install
+    cd "$_pkgname"
+
+    export DESTDIR="$pkgdir"
+    ninja -C build install
 }
