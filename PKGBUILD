@@ -11,7 +11,7 @@
 
 # Maintainer: alecksandr <sansepiol26@gmail.com>
 pkgname=unittest-c
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 epoch=
 pkgdesc="unittest c is a fast and simple macro-based unit testing framework for C.
