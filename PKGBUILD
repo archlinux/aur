@@ -1,7 +1,7 @@
 # Maintainer: Bao Trinh <qubidt@gmail.com>
 # Contributor: Jonatan Bravo <zephrax@gmail.com>
 pkgname=envconsul
-pkgver=0.13.1
+pkgver=0.13.2
 pkgrel=2
 pkgdesc="Launch a subprocess with environment variables using data from @HashiCorp Consul and Vault."
 arch=('i686' 'x86_64' 'arm' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go')
 changelog="${pkgname}.changelog"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}/v${pkgname}-${pkgver}.tar.gz")
-sha512sums=('69a82bc7f1f50a274824ec02598b7bcd54197b29f073ffe72c1ea0604c084d53f5e68522b59c9709fc3227d17544426de1bce52176fbcf4a9b5b333f88599731')
+sha512sums=('dacc65e19553de897195397126664882e3dedd4b9929c83c519311010ff1ab62663425556261a2ce3f37035576b63b4f26c4a0219dfd663d05e852c4cee2e6bb')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -52,5 +52,5 @@ package() {
   cd "${pkgname}-${pkgver}"
   install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
 }
