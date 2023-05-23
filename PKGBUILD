@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=deepin-wine-weiyunsync
 _officalname=WeiyunSync
-pkgver=3.0.0.630
+pkgver=3.0.0.634
 _sparkpkgname=com.weiyunsync.spark
 _sparkver=3.0.0spark1
 pkgrel=1
@@ -17,13 +17,13 @@ conflicts=()
 provides=("${_provides}")
 install="${pkgname}.install"
 source=("${_sparkpkgname}_${_sparkver}_i386.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/network/${_sparkpkgname}/${_sparkpkgname}_${_sparkver}_i386.deb"
-    "${_officalname}-${pkgver}.exe::https://dldir1.qq.com/weiyun/${_officalname}Install_Beta_1_${pkgver}_20230413_145539_r0.exe"
+    "${_officalname}-${pkgver}.exe::https://dldir1.qq.com/weiyun/${_officalname}Install_Beta_1_${pkgver}_20230516_205623_r0.exe"
     "LICENSE::${url}/xy.html"
     "${pkgname}.install"
     "run.sh")
 sha256sums=('1c9361a9070ad2bfc85236397c75201c8e63374cc311514b68eae25877cadf84'
-            '41c90c4587f7ae2801422f4ba29314550beaac2ae672cffb6110559e82f7c801'
-            '2ac93d3863409e8feb3aac829601c916d63cb3a22419b28b597480d9651b83b7'
+            '87a5009f0878e7e6af12466a4ecfd28aa9d51788264a8c784a9854d6d96b6587'
+            '9735f044a7424c9ccc919e8a00b8b47cea0890f6958b91163dd3d8e20040c468'
             '5176064feb5ba3a08e99ef4be8bf440957bdc3eae13b274d23cba1a9b4c951c1'
             '9ff3917c0e0b5af83d10aca9e012df0a84b11d3d972b9e992cddf8cd630f9677')
    
