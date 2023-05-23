@@ -5,7 +5,7 @@
 
 pkgname=dosbox-djcrx
 pkgver=2.05
-pkgrel=24
+pkgrel=25
 libmver=0.8.1
 pkgdesc="Headers and utilities for the djgpp dosbox cross-compiler"
 arch=('i686' 'x86_64')
@@ -69,7 +69,7 @@ prepare() {
 build() {
   cd openlibm-${libmver}
   make clean
-  CC=${_target}-gcc make ARCH=i586 MARCH=i586 CFLAGS="-nostdinc -iquote . -isystem$srcdir/include" libopenlibm.a
+  CC=${_target}-gcc make ARCH=i586 MARCH=i586 CFLAGS="-nostdinc -isystem$srcdir/include -s" libopenlibm.a
   mv libopenlibm.a ../lib/
   cp include/*.h ../include/
   cd ..
@@ -116,4 +116,6 @@ package() {
 
   cd $srcdir
   install -Dm644 copying.dj $pkgdir/usr/share/licenses/$pkgname/copying.dj
+
+  #${_target}-strip -s $pkgdir/usr/$_target/lib/*.a
 }
