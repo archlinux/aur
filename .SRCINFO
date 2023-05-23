@@ -4,9 +4,6 @@ pkgbase = ocaml-ounit
 	pkgrel = 2
 	url = https://github.com/gildor478/ounit
 	arch = x86_64
-	arch = i686
-	arch = pentium4
-	arch = armv7h
 	arch = aarch64
 	license = MIT
 	makedepends = dune>=3.0.0
