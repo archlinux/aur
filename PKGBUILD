@@ -10,7 +10,7 @@ pkgbase=nginx-mainline
 pkgname=(nginx-mainline nginx-mainline-src)
 # update tests revision too
 pkgver=1.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release'
 arch=('x86_64')
 url='https://nginx.org'
@@ -69,6 +69,7 @@ _common_flags=(
   --with-http_stub_status_module
   --with-http_sub_module
   --with-http_v2_module
+  --with-http_v3_module
   --with-mail
   --with-mail_ssl_module
   --with-pcre-jit
