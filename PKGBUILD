@@ -1,31 +1,28 @@
-# Maintainer: Ludvig Holtze <ludvig dot holtze at protonmail dot com>
+# Maintainer: Alexander Rosenberg <zanderpkg at pm dot me>
 
-pkgname=nvramtool-git
-pkgver=latest
+_pkgname='nvramtool'
+pkgname=$_pkgname-git
+pkgver=4.20.78.g78881e1006
 pkgrel=1
-pkgdesc="A utility for interfacing with CMOS/NVRAM on Coreboot systems"
-url="https://www.coreboot.org/Nvramtool"
+pkgdesc='Reads and writes coreboot parameters and displays information from the coreboot table in CMOS/NVRAM'
+url='https://coreboot.org'
+arch=('x86_64')
 license=('GPL2')
-arch=('i686' 'x86_64')
-makedepends=('git')
-conflicts=('nvramtool')
 provides=('nvramtool')
-source=('git+https://review.coreboot.org/coreboot')
+makedepends=('git')
+source=('git+https://github.com/coreboot/coreboot.git')
 sha256sums=('SKIP')
 
-pkgver() {
-	cd "$srcdir/coreboot"
-	echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+pkgver(){
+  cd "coreboot"
+  git describe --tags --long | sed 's#-#.#g'
 }
 
 build() {
-	cd "$srcdir/coreboot/util/nvramtool"
-	make
+    make -C 'coreboot/util/nvramtool'
 }
 
 package() {
-	cd "$srcdir/coreboot/util/nvramtool"
-	install -d "$pkgdir/usr/bin" "$pkgdir/usr/share/man/man8"
-	install -m755 nvramtool "$pkgdir/usr/bin/nvramtool"
-	install -m644 cli/nvramtool.8 "$pkgdir/usr/share/man/man8"
+    install -Dt "$pkgdir/usr/bin/" "coreboot/util/nvramtool/nvramtool"
+    install -Dt "$pkgdir/usr/share/man/man8" "coreboot/util/nvramtool/cli/nvramtool.8"
 }
