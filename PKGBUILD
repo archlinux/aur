@@ -6,7 +6,7 @@ pkgdesc="Pick the most common user-agents on the Internet"
 url="https://github.com/lobstrio/shadow-useragent"
 
 pkgver=0.0.17
-pkgrel=6
+pkgrel=7
 
 arch=("any")
 license=("MIT")

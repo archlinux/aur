@@ -1,7 +1,7 @@
 pkgbase = python-shadow-useragent
 	pkgdesc = Pick the most common user-agents on the Internet
 	pkgver = 0.0.17
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/lobstrio/shadow-useragent
 	arch = any
 	license = MIT
