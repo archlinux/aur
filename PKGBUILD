@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=n-m3u8dl-re-bin
-pkgver=0.1.5_beta
+pkgver=0.1.5.3_beta
 pkgrel=0
 epoch=
 pkgdesc="Cross-Platform, beautiful and powerful stream downloader for DASH/HLS. "
@@ -15,8 +15,9 @@ depends=(curl zlib krb5)
 makedepends=()
 backup=()
 options=('!strip')
-source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver/_/-}/N_m3u8DL-RE_Beta_linux-x64_20221212.tar.gz")
-sha256sums=('5f39c3b5642b07fb5940f71607d3baeb0a1b16cb182544dc4ecb536e9ec0c9d5')
+_time=20230323
+source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver/_/-}/N_m3u8DL-RE_Beta_linux-x64_${_time}.tar.gz")
+sha256sums=('906219641176ad40ac9cefde26a40c34a414aa82d6173e2cdaeb8c301cef4f52')
 
 package() {
     install -Dm755 "${srcdir}/N_m3u8DL-RE_Beta_linux-x64/N_m3u8DL-RE"  "${pkgdir}/usr/bin/${pkgbase%-bin}"
