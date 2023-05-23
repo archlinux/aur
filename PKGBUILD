@@ -2,19 +2,19 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_sexp_conv'
 pkgname="ocaml-$_projectname"
-pkgver='0.15.1'
-pkgrel='4'
+pkgver='0.16.0'
+pkgrel='1'
 epoch='1'
 pkgdesc='Generation of S-expression conversion functions from type definitions'
-# If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
-arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
+# If you're running on aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
+arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0' 'ocaml-ppxlib>=0.26.0' 'ocaml-sexplib0>=0.15.0')
+depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-ppxlib>=0.26.0' 'ocaml-sexplib0>=0.16.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('f2b669e7c7bbbc8dd4978b47b73662dd0195ae85cdd71596485211cb5ab4daedcae9be4b33796674320e0d324b7ee9f90d3b219212be98ed792e3a89ccf8c41b')
+sha512sums=('ceacd17683c8e739d2e5eaabb585c01615a11b18c1bef7df85b48820885d344cbae94c1351a6a2522e016a1bd41fc3997928d6b2b2169aeda72ea6626eb1f7a0')
 
 _sourcedirectory="$_projectname-$pkgver"
 
