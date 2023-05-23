@@ -1,7 +1,7 @@
 pkgbase = ghidra-fidb-repo
 	pkgdesc = Ghidra Function ID dataset repository
 	pkgver = 20200530
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/threatrack/ghidra-fidb-repo
 	arch = any
 	license = MIT
