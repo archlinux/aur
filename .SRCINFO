@@ -1,7 +1,7 @@
 pkgbase = serioussam-hno
 	pkgdesc = Serious Sam Classic HNO native Linux
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tx00100xt/SE1-TSE-HNO
 	arch = i686
 	arch = x86_64
