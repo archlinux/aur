@@ -2,19 +2,19 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='core_kernel'
 pkgname="ocaml-$_projectname"
-pkgver='0.15.0'
-pkgrel='5'
+pkgver='0.16.0'
+pkgrel='1'
 epoch='1'
 pkgdesc="Industrial strength alternative to OCaml's standard library (system-independent part)"
-# If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
-arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
+# If you're running on aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
+arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0' 'ocaml-core>=0.15.0' 'ocaml-int_repr>=0.15.0' 'ocaml-ppx_jane>=0.15.0')
+depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-core>=0.16.0' 'ocaml-int_repr>=0.16.0' 'ocaml-ppx_jane>=0.16.0' 'ocaml-ppx_optcomp>=0.16.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('da28f11374fda2e869b5ef3f7131461c6d896b52413654f2aeb7c74bc77ba4a8e2a25830eb3e3ef393e0bbae903db20f54773b356c53cab75c1bba1b9ce265bc')
+sha512sums=('a6cf486694514ea4393aa6b2bf688b4a21fd97238d22ddfa99af30ee478be23255d67f87c16115df03ceb3a7bf4726e92d0c01be0abb2308f36c027a5ab4bc04')
 
 _sourcedirectory="$_projectname-$pkgver"
 
