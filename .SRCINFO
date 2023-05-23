@@ -4,9 +4,6 @@ pkgbase = ocaml-lwt_log
 	pkgrel = 2
 	url = https://github.com/ocsigen/lwt_log
 	arch = x86_64
-	arch = i686
-	arch = pentium4
-	arch = armv7h
 	arch = aarch64
 	license = custom:LGPL2.1 with linking exception
 	makedepends = dune>=1.0.0
