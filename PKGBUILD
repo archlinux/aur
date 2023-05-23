@@ -1,18 +1,18 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='ppx_module_timer'
 pkgname="ocaml-$_projectname"
-pkgver='0.15.0'
-pkgrel='4'
+pkgver='0.16.0'
+pkgrel='1'
 pkgdesc='Ppx rewriter that records top-level module startup times'
-# If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
-arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
+# If you're running on aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
+arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0' 'ocaml-ppx_base>=0.15.0' 'ocaml-ppxlib>=0.23.0' 'ocaml-stdio>=0.15.0' 'ocaml-time_now>=0.15.0')
+depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-ppx_base>=0.16.0' 'ocaml-ppxlib>=0.28.0' 'ocaml-stdio>=0.16.0' 'ocaml-time_now>=0.16.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('4cd55dce6872cbed1d34c34043500651e605c406747914173584cee1d8f3ff298a75efeb8a4beb7840df76b5d7c7db98d15399d3c4a3a5dca2a11d57339df6de')
+sha512sums=('6125aec05e91bb11d1b41fc4fb9a1030561403c7f27ea9d9512a6050da4cfdc796cfe3acb1d96e5333f65b6beab6f5b16b044529ccc6e99e90c019923adf85d9')
 
 _sourcedirectory="$_projectname-$pkgver"
 
