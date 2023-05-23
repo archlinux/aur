@@ -13,7 +13,7 @@ options=("!strip")
 provides=("siyuan")
 depends=('fuse2')
 optdepends=('pandoc: docx export')
-source=("${_pkgname}::https://release.b3log.org/siyuan/${_pkgname}")
+source=("${_pkgname}::https://github.com/siyuan-note/siyuan/releases/download/v2.8.9/${_pkgname}")
 sha256sums=("c42109173a73e3c65a23c407d19194d79ea951dea9cb8cab851d71ec0e852b3f")
 
 _installdir=/opt/appimages
