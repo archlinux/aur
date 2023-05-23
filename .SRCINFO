@@ -1,7 +1,7 @@
 pkgbase = guile-g-golf
 	pkgdesc = A library for developing modern applications (GTK) in Guile Scheme.
 	pkgver = 0.8.0.a.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/g-golf/learn.html
 	arch = x86_64
 	license = LGPL

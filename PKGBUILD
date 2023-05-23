@@ -3,7 +3,7 @@ pkgname=guile-g-golf
 _pkgname=g-golf
 pkgver=0.8.0.a.4
 _pkgver=0.8.0-a.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for developing modern applications (GTK) in Guile Scheme."
 arch=('x86_64')
 url="https://www.gnu.org/software/g-golf/learn.html"
@@ -22,7 +22,7 @@ validpgpkeys=('842265459B413377EEAC91DEF374FD93A3057AD7')
 build() {
   cd "$srcdir/${_pkgname}-${_pkgver}"
 
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --with-guile-site=yes
   make
 }
 
