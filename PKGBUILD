@@ -1,7 +1,7 @@
 # Maintainer: solnce <echo c29sbmNlQHJhdGFqY3phay5vbmU= | base64 -d>
 pkgname=pacdef-git
 _pkgname=pacdef
-pkgver=1.2.0+r0.g9a66a03
+pkgver=1.2.0+r4.g9f4a5e4
 pkgrel=1
 pkgdesc='multi-backend declarative package manager for Linux'
 url="https://github.com/steven-omaha/${_pkgname}"
@@ -21,7 +21,7 @@ build() {
 
 check() {
   cd "${srcdir}/${_pkgname}"
-  cargo test --workspace --features arch
+  cargo test --release --workspace --features arch
 }
 
 package() {
