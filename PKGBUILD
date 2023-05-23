@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="notesnook-appimage"
 pkgver=2.4.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote."
 arch=('x86_64')
 url="https://notesnook.com/"
@@ -13,7 +13,7 @@ depends=('hicolor-icon-theme' 'zlib' 'glibc')
 options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}_linux_${arch}.AppImage")
-sha256sums=('27fb287afeb27fc72a866b96b357cd665d2c37e39c7cd439585c3fbb1bb5996b')
+sha256sums=('b6e241b6f12ea47ce3bebc988e47e0188b0b358ce191db4932acfe765ffe1f15')
     
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
@@ -28,4 +28,6 @@ package() {
       -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm755 -d "${pkgdir}/usr/bin"
+    ln -s "${_install_path}/${pkgname%-appimage}.AppImage" "${pkgdir}/usr/bin/${pkgname%-appimage}"
 }
