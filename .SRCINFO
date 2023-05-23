@@ -1,6 +1,6 @@
 pkgbase = vivado-lab-edition
 	pkgdesc = FPGA/CPLD Lab Tools for Xilinx devices
-	pkgver = 2022.2
+	pkgver = 2023.1
 	pkgrel = 1
 	url = https://www.xilinx.com/products/design-tools/vivado.html
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = vivado-lab-edition
 	optdepends = digilent.adept.utilities
 	conflicts = vivado
 	options = !strip
-	source = file:///Xilinx_Vivado_Lab_Lin_2022.2_1014_8888.tar.gz
+	source = file:///Xilinx_Vivado_Lab_Lin_2023.1_0507_1903.tar.gz
 	source = spoof_homedir.c
-	md5sums = 13f808b0a82d7ae0faef72b30cd5a28f
+	md5sums = 459eec8932e5c492bf0b4109de4f73c2
 	md5sums = 69d14ad64f6ec44e041eaa8ffcb6f87c
 
 pkgname = vivado-lab-edition
