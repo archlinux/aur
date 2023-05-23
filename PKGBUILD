@@ -2,19 +2,19 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='core'
 pkgname="ocaml-$_projectname"
-pkgver='0.15.1'
-pkgrel='2'
+pkgver='0.16.0'
+pkgrel='1'
 epoch='1'
 pkgdesc="Industrial strength alternative to OCaml's standard library"
-# If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
-arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
+# If you're running on aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
+arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.11.0' 'ocaml-base>=0.15.1' 'ocaml-base_bigstring>=0.15.0' 'ocaml-base_quickcheck>=0.15.0' 'ocaml-bin_prot>=0.15.0' 'ocaml-fieldslib>=0.15.0' 'ocaml-jane-street-headers>=0.15.0' 'ocaml-jst-config>=0.15.0' 'ocaml-ppx_assert>=0.15.0' 'ocaml-ppx_base>=0.15.0' 'ocaml-ppx_hash>=0.15.0' 'ocaml-ppx_inline_test>=0.15.0' 'ocaml-ppx_jane>=0.15.0' 'ocaml-ppx_sexp_conv>=0.15.0' 'ocaml-ppx_sexp_message>=0.15.0' 'ocaml-sexplib>=0.15.0' 'ocaml-splittable_random>=0.15.0' 'ocaml-stdio>=0.15.0' 'ocaml-time_now>=0.15.0' 'ocaml-typerep>=0.15.0' 'ocaml-variantslib>=0.15.0')
+depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-base_bigstring>=0.16.0' 'ocaml-base_quickcheck>=0.16.0' 'ocaml-bin_prot>=0.16.0' 'ocaml-fieldslib>=0.16.0' 'ocaml-jane-street-headers>=0.16.0' 'ocaml-jst-config>=0.16.0' 'ocaml-ppx_assert>=0.16.0' 'ocaml-ppx_base>=0.16.0' 'ocaml-ppx_hash>=0.16.0' 'ocaml-ppx_inline_test>=0.16.0' 'ocaml-ppx_jane>=0.16.0' 'ocaml-ppx_optcomp>=0.16.0' 'ocaml-ppx_sexp_conv>=0.16.0' 'ocaml-ppx_sexp_message>=0.16.0' 'ocaml-sexplib>=0.16.0' 'ocaml-splittable_random>=0.16.0' 'ocaml-stdio>=0.16.0' 'ocaml-time_now>=0.16.0' 'ocaml-typerep>=0.16.0' 'ocaml-variantslib>=0.16.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('2c04fdd989d016faaa2dee4b13372d3e228f0011151ae5f747c1eb6206820a61779a87eb7e2ecc6e1ddf77872a69a07636a93d24df61b4a2ba2a1b745f499b16')
+sha512sums=('2483cec4f5c5984203fc203b121bf1236cf8dff3713dba3fe127a419cc397179ad0b7cb4d1e5072e8dc155ec8a20d5d9aa6a112db1e24e68a11536a54f6819a1')
 
 _sourcedirectory="$_projectname-$pkgver"
 
