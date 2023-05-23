@@ -3,7 +3,7 @@
 # Contributor: xantares
 
 pkgname=stargate
-pkgver=23.05.3
+pkgver=23.06.1
 pkgrel=1
 pkgdesc="A digital audio workstation (DAW) with a powerful pattern-based workflow"
 license=('GPL')
@@ -40,9 +40,11 @@ optdepends=(
 )
 source=("https://github.com/stargateaudio/stargate/archive/refs/tags/release-${pkgver}.tar.gz"
 	"git+https://codeberg.org/soundtouch/soundtouch.git#commit=dd2252e9af3f2d6b749378173a4ae89551e06faf"
+	"git+https://github.com/stargatedaw/stargate-sbsms.git"
 	)
-sha256sums=('3bec884aabf749a264d4e0b0827528d2836c52680b6241bacf6f4956fd687a96'
+sha256sums=('2231243ef03245cf6dc996102887c6bccc009fc8ced8f018e98770f3b74853ff'
   'SKIP'
+	'SKIP'
   )
 
 prepare(){
@@ -50,6 +52,7 @@ prepare(){
 	rm -rf src/vendor/soundtouch/
 	cd src/vendor
 	cp -r ${srcdir}/soundtouch .
+	cp -r ${srcdir}/stargate-sbsms/* sbsms/
 	cd .. 
 	sed "/\binstall_symlinks:/s/:.*/:/" -i Makefile 
 }
