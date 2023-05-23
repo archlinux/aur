@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-plugins-base
-pkgver=1.22.2
+pkgver=1.22.3
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Base Plugins (mingw-w64)"
 arch=(any)
@@ -18,7 +18,7 @@ optdepends=(
 options=('!strip' '!buildflags' 'staticlibs')
 
 source=("${url}src/gst-plugins-base/gst-plugins-base-${pkgver}.tar.xz")
-sha256sums=('eb65120c4ee79b7a153c3c1972d5c0158c2151877cc51ec7725bba5749679d49')
+sha256sums=('1c596289a0d4207380233eba8c36a932c4d1aceba19932937d9b57c24cef89f3')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
