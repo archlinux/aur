@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Malcat Lite
+Comment=Malcat Lite Edition
+Exec=malcat
+Icon=malcat-lite
+Categories=Development;Utility;
+Terminal=false
