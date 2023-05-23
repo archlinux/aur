@@ -9,7 +9,7 @@ arch=(any)
 url="https://github.com/${pkgname}/${_base}"
 depends=(python-zict python-tornado python-toolz python-six lzo snappy python-setuptools)
 makedepends=(python-build python-installer python-wheel)
-checkdepends=(python-pytest python-pandas python-distributed python-flaky python-networkx python-graphviz) # python-dask
+# checkdepends=(python-pytest python-pandas python-distributed python-flaky python-networkx python-graphviz) # python-dask
 optdepends=('python-pandas: for supports streams of Pandas dataframes or Pandas series'
   'python-graphviz: for visualize the stream graph'
   'python-networkx: for visualize the stream graph') # 'python-cudf: for for supports streams of cudf dataframes or cudf series'
