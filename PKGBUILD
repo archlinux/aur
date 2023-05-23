@@ -18,7 +18,7 @@ source=("http://downloads.sourceforge.net/$pkgname/Bombermaaan_${pkgver}_${_pkgd
         "Bombermaan_levels_pack.zip"
         "$pkgname.png"
         "$pkgname.desktop"
-        "print.patch")
+        "$pkgname-print.patch")
 sha256sums=('fb0b6d59569d436ac10b452857b8800b831513ab888b29a66c2dc0ada12d045d'
             '48c702d42a87b44606cbed2da88b49b250f66c6a65067d1dc43b25980ef1c74a'
             '7a73655f609096271434d20e8a9c33b9af71c547a4a1fc312fbd85866f6c8519'
@@ -40,7 +40,7 @@ prepare() {
   # add our cflags/ldflags
   sed "s|SDL_CFLAGS :=|& $CXXFLAGS |;s|SDL_LDFLAGS :=|& $LDFLAGS |" -i Makefile
   
-  patch -N -i "${srcdir}/print.patch"
+  patch -N -i "${srcdir}/$pkgname-print.patch"
 }
 
 build() {
