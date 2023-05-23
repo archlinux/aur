@@ -1,6 +1,6 @@
 pkgbase = r-future.apply
 	pkgdesc = Apply Function to Elements in Parallel using Futures
-	pkgver = 1.10.0
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=future.apply
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-future.apply
 	optdepends = r-listenv>=0.8.0
 	optdepends = r-r.rsp
 	optdepends = r-markdown
-	source = https://cran.r-project.org/src/contrib/future.apply_1.10.0.tar.gz
-	b2sums = 532f977f5416624f5ec10e9da5dfc7891f628fe1923115b33a22214046586136d5dfb165a3f7056289ac41d58b29e18e4685269d26c64f7853373b5619f1210b
+	source = https://cran.r-project.org/src/contrib/future.apply_1.11.0.tar.gz
+	b2sums = 94570b6aa84fa044566f7956392ef812bfe66e92edaf773b95eb0fa176584c66c40f128e6158afb6daa802831251bf183ffb4178fbd4223e9faf5c0ef5eea1b5
 
 pkgname = r-future.apply
