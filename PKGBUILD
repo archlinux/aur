@@ -2,17 +2,17 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='parsexp'
 pkgname="ocaml-$_projectname"
-pkgver='0.15.0'
-pkgrel='4'
+pkgver='0.16.0'
+pkgrel='1'
 pkgdesc='S-expression parsing library'
-arch=('x86_64' 'i486' 'i686' 'pentium4' 'armv7h' 'aarch64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0' 'ocaml-sexplib0>=0.15.0')
+depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-sexplib0>=0.16.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('aad464435747228f7168e2700fc8d5d3a9f212196a5e9afa24dd26d6f596dd96b68ecc77eddf862990df93d74d9a935038f602b1bbeecb545651d61b70f47d3f')
+sha512sums=('54a59c12ef9cafe69f5dab79d51a7115205f0becef97db1d0051cb50c3ff004a56e43e9607a3869e4928f8653df5a2b9e3366e4ac0d8d7483752fa5287352791')
 
 _sourcedirectory="$_projectname-$pkgver"
 
