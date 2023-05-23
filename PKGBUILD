@@ -66,6 +66,10 @@ package() {
   echo "Name=LR2oraja" >> "$desktopEntry"
   echo "Categories=Games;" >> "$desktopEntry"
   echo "Icon=lr2oraja-icon" >> "$desktopEntry"
+  
+  if [ -z "$XDG_CONFIG_HOME" ]; then
+    XDG_CONFIG_HOME="$HOME/.config"
+  fi
 
   # Create config symlink
   ln -sfn "$pkgdir/opt/beatoraja" "$XDG_CONFIG_HOME/beatoraja"
