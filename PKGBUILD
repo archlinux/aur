@@ -13,16 +13,6 @@ makedepends=('python-setuptools')
 source=("https://github.com/openrazer/openrazer/releases/download/v$pkgver/openrazer-$pkgver.tar.xz")
 sha256sums=('bbb33fc3fbe329d178793fe3e24e60cbe5369c5996b8e1546de2950669ef675b')
 
-prepare() {
-  # Do a sanity check in the environment of the builder so the build process doesn't place files into a wrong directory.
-  # If you think this is incorrect you can always remove this from the PKGBUILD, but then please don't complain if it doesn't work.
-  if [ "$(which python3)" != "/usr/bin/python3" ]; then
-    echo "ERROR: Your 'python3' does not point to /usr/bin/python3 but to $(which python3), likely a custom environment like anaconda."
-    echo "Please build this package in a clean chroot (e.g. with https://wiki.archlinux.org/title/DeveloperWiki:Building_in_a_clean_chroot) or point your PATH variable to prefer /usr/bin/ temporarily."
-    return 1
-  fi
-}
-
 package_python-openrazer() {
   pkgdesc="Python library for accessing the Razer daemon from Python."
   depends=('openrazer-daemon' 'python-numpy')
