@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-xrdesktop-git
 	pkgdesc = Next generation desktop shell - with patches for xrdesktop.
-	pkgver = 43.0
+	pkgver = 44.1
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.freedesktop.org/xrdesktop
@@ -43,10 +43,10 @@ pkgbase = gnome-shell-xrdesktop-git
 	optdepends = gst-plugins-good: Screen recording
 	optdepends = gst-plugin-pipewire: Screen recording
 	optdepends = gnome-bluetooth-3.0: Bluetooth support
-	provides = gnome-shell=43.0
+	provides = gnome-shell=44.1
 	conflicts = gnome-shell
 	options = debug
-	source = git+https://gitlab.freedesktop.org/xrdesktop/gnome-shell.git#branch=43.0-xrdesktop
+	source = git+https://gitlab.freedesktop.org/xrdesktop/gnome-shell.git#branch=44.1-xrdesktop
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -73,4 +73,4 @@ pkgname = gnome-shell-xrdesktop-git
 	depends = libgweather-4
 	depends = xrdesktop-git
 	depends = libinputsynth-git
-	depends = libmutter-11.so
+	depends = libmutter-12.so
