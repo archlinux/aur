@@ -4,10 +4,6 @@ pkgbase = ocaml-dtoa
 	pkgrel = 2
 	url = https://github.com/flow/ocaml-dtoa
 	arch = x86_64
-	arch = i486
-	arch = i686
-	arch = pentium4
-	arch = armv7h
 	arch = aarch64
 	license = MIT
 	checkdepends = ocaml-ounit>=2.0.0
