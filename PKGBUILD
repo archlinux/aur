@@ -1,4 +1,5 @@
 # Maintainer: Bruno Pagani <archange@archlinux.org>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 _use_suffix=1
 pkgver=20.3.12
