@@ -28,7 +28,6 @@ sha512sums_x86_64=('e4ad90512a48d7d8235c1fcb4a7fba8f797d88508c7f0b3c0cc78a6546ef
 sha512sums_aarch64=('09625ca11fbb80a8ff094b3b39b9e8b1d76059d55cbe819f20e9734e9a47ee754a4f9f000b00b99ca96bb213a065778343c2ca7e5c74cb14067ca335ba11c3ff')
 
 prepare() {
-  ls -l
   mkdir -p brave
   tar xf data.tar.xz -C brave
   # Delete unneeded cron job
