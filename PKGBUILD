@@ -1,7 +1,7 @@
 # Maintainer: Pfych <contact at pfy dot ch>
 pkgname=lr2oraja
 pkgver=build4501107977 
-pkgrel=1
+pkgrel=2
 pkgdesc="The latest build of beatoraja, but compiled using LR2 judges and gauges."
 arch=('x86_64')
 depends=('liberica-jre-8-full-bin')
@@ -66,6 +66,10 @@ package() {
   echo "Name=LR2oraja" >> "$desktopEntry"
   echo "Categories=Games;" >> "$desktopEntry"
   echo "Icon=lr2oraja-icon" >> "$desktopEntry"
+  
+  if [ -z "$XDG_CONFIG_HOME" ]; then
+    XDG_CONFIG_HOME="$HOME/.config"
+  fi
 
   # Create config symlink
   ln -sfn "$pkgdir/opt/beatoraja" "$XDG_CONFIG_HOME/beatoraja"
