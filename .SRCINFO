@@ -1,17 +1,17 @@
 pkgbase = bdf-unifont-extra
 	pkgdesc = GNU Unifont Glyphs (bold and italic versions)
-	pkgver = 15.0.01
+	pkgver = 15.0.03
 	pkgrel = 1
 	url = https://unifoundry.com/unifont.html
 	arch = any
 	license = GPL2
 	license = custom:OFL
 	makedepends = mkbold-mkitalic
-	source = https://ftp.gnu.org/gnu/unifont/unifont-15.0.01/unifont-15.0.01.bdf.gz
-	source = https://ftp.gnu.org/gnu/unifont/unifont-15.0.01/unifont-15.0.01.bdf.gz.sig
+	source = https://ftp.gnu.org/gnu/unifont/unifont-15.0.03/unifont-15.0.03.bdf.gz
+	source = https://ftp.gnu.org/gnu/unifont/unifont-15.0.03/unifont-15.0.03.bdf.gz.sig
 	source = https://unifoundry.com/LICENSE.txt
 	validpgpkeys = 95D2E9AB8740D8046387FD151A09227B1F435A33
-	sha256sums = 1fddba900a36b8a067bf2177b05c4a2482a0f7ca1545cf531c03509f47ce1590
+	sha256sums = 071529a473fe282191294977a10368556d9d0ecd24003c5d9189df83c2569347
 	sha256sums = SKIP
 	sha256sums = 1e74cb82bf476843e97c2596297b04219b1a7e51f7238944a8c031cb9401fa87
 
