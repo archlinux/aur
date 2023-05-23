@@ -123,7 +123,7 @@ prepare() {
   git -C mcpelauncher-manifest/mcpelauncher-linker config submodule.core.url "$srcdir/android_core"
   git -C mcpelauncher-manifest/mcpelauncher-linker -c protocol.file.allow=always submodule init
   git -C mcpelauncher-manifest/mcpelauncher-linker -c protocol.file.allow=always submodule update bionic
-  GIT_DIR="$PWD/mcpelauncher-manifest/mcpelauncher-linker/core/.git" git -C mcpelauncher-manifest/mcpelauncher-linker/core -c protocol.file.allow=always fetch "$srcdir/android_core" HEAD && git -C mcpelauncher-manifest/mcpelauncher-linker/core checkout FETCH_HEAD || git -C mcpelauncher-manifest/mcpelauncher-linker -c protocol.file.allow=always clone "$srcdir/android_core" .
+  GIT_DIR="$PWD/mcpelauncher-manifest/mcpelauncher-linker/core/.git" git -C mcpelauncher-manifest/mcpelauncher-linker/core -c protocol.file.allow=always fetch "$srcdir/android_core" HEAD && git -C mcpelauncher-manifest/mcpelauncher-linker/core checkout FETCH_HEAD || git -c protocol.file.allow=always clone "$srcdir/android_core" mcpelauncher-manifest/mcpelauncher-linker/core
 }
 
 build() {
