@@ -1,7 +1,7 @@
 # Maintainer: Jeremy M. Reed <reeje76@gmail.com>
 pkgname=image-file-name-fixer
 pkgver=0.0.3
-pkgrel=2
+pkgrel=1
 pkgdesc="A tool to enforce a consistent naming scheme for image files."
 arch=('x86_64')
 url="https://github.com/jeremymreed/image-file-name-fixer"
