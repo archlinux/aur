@@ -13,7 +13,7 @@ pkgbase = irreader1.5.9
 	depends = bash
 	depends = electron11
 	options = !strip
-	source = irreader Setup 1.5.9.exe::https://ipfs.io/ipfs/QmTuCHDhHVYTuyYvEKQW4pf1ZTyZYUNFGCtKdiJ4Tz4m8N?filename=irreader%20Setup%201.5.9.exe
+	source = irreader Setup 1.5.9.exe::https://github.com/wuyudi/Use-irreader-on-linux/raw/master/irreader%20Setup%201.5.9.exe
 	source = patch
 	source = irreader1.5.9.desktop
 	sha256sums = 5cf058020acf85478b263ca367a66ea6e943860c1532132e0c7dbab401374702

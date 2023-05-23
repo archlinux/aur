@@ -24,7 +24,7 @@ backup=()
 options=(!strip)
 install=
 changelog=
-source=("irreader Setup 1.5.9.exe::https://ipfs.io/ipfs/QmTuCHDhHVYTuyYvEKQW4pf1ZTyZYUNFGCtKdiJ4Tz4m8N?filename=irreader%20Setup%201.5.9.exe"
+source=("irreader Setup 1.5.9.exe::https://github.com/wuyudi/Use-irreader-on-linux/raw/master/irreader%20Setup%201.5.9.exe"
 	patch
     $pkgname.desktop)
 source_x86_64=("https://github.com/TryGhost/node-sqlite3/releases/download/v5.1.6/napi-v6-linux-glibc-x64.tar.gz")
