@@ -3,9 +3,9 @@
 # Contributor: Simon Perry <aur [at] sanxion [dot] net>
 
 pkgname=klystrack-git
-pkgver=1.7.6.make.fix.r12.gfe6e746
-pkgrel=3
-pkgdesc="Tracker for making chiptune-like music on a modern computer"
+pkgver=0.10.0.alpha3.r21.gd037cfb
+pkgrel=1
+pkgdesc="Tracker for making chiptune-like music on a modern computer (aka klystrack-plus)"
 arch=('i686' 'x86_64')
 url="http://kometbomb.github.io/klystrack/"
 license=('MIT')
@@ -14,7 +14,7 @@ depends=('sdl2_image' 'sdl2_mixer')
 makedepends=('git')
 provides=('klystrack')
 conflicts=('klystrack')
-source=('git+https://github.com/kometbomb/klystrack' 'git+https://github.com/kometbomb/klystron')
+source=('git+https://github.com/LTVA1/klystrack' 'git+https://github.com/LTVA1/klystron')
 md5sums=('SKIP' 'SKIP')
 
 _gitname='klystrack'
@@ -33,8 +33,9 @@ prepare() {
   git -c protocol.file.allow=always submodule update
   # path to default song
   sed -i 's/Default.kt/\/usr\/share\/klystrack\/Default\.kt/' "$srcdir/klystrack/src/main.c"
-  # CFLAGS needed until https://github.com/kometbomb/klystrack/issues/292 is resolved
-  sed -i '/CFLAGS :=/ a CFLAGS += -fcommon' Makefile
+  # Uncomment the following line if you have trouble compiling
+  # See https://github.com/kometbomb/klystrack/issues/292
+  #sed -i '/CFLAGS :=/ a CFLAGS += -fcommon' Makefile
 }
 
 build() {

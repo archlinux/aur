@@ -1,7 +1,7 @@
 pkgbase = klystrack-git
-	pkgdesc = Tracker for making chiptune-like music on a modern computer
-	pkgver = 1.7.6.make.fix.r12.gfe6e746
-	pkgrel = 3
+	pkgdesc = Tracker for making chiptune-like music on a modern computer (aka klystrack-plus)
+	pkgver = 0.10.0.alpha3.r21.gd037cfb
+	pkgrel = 1
 	url = http://kometbomb.github.io/klystrack/
 	arch = i686
 	arch = x86_64
@@ -11,11 +11,9 @@ pkgbase = klystrack-git
 	depends = sdl2_mixer
 	provides = klystrack
 	conflicts = klystrack
-	options = !makeflags
-	source = git://github.com/kometbomb/klystrack
-	source = git://github.com/kometbomb/klystron
+	source = git+https://github.com/LTVA1/klystrack
+	source = git+https://github.com/LTVA1/klystron
 	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = klystrack-git
-
