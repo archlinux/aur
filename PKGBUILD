@@ -3,7 +3,7 @@
 _pkgname=telegraph
 pkgname=$_pkgname-git
 pkgdesc='Write and decode morse (latest commit)'
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 arch=('any')
 url="https://github.com/fkinoshita/Telegraph"
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd Telegraph
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/\1/;s/-/./g'
 }
 
 build() {
