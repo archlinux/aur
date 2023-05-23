@@ -10,7 +10,7 @@ pkgdesc='A binary protocol generator'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-ppx_compare>=0.16.0' 'ocaml-ppx_custom_printf>=0.16.0' 'ocaml-ppx_fields_conv>=0.16.0' 'ocaml-ppx_optcomp>=0.16.0' 'ocaml-ppx_sexp_conv>=0.16.0' 'ocaml-ppx_variants_conv>=0.16.0')
+depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-ppx_compare>=0.16.0' 'ocaml-ppx_custom_printf>=0.16.0' 'ocaml-ppx_fields_conv>=0.16.0' 'ocaml-ppx_optcomp>=0.16.0' 'ocaml-ppx_sexp_conv>=0.16.0' 'ocaml-ppx_stable_witness>=0.16.0' 'ocaml-ppx_variants_conv>=0.16.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
