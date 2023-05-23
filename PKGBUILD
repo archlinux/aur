@@ -7,7 +7,7 @@ pkgname="ocaml-$_projectname"
 pkgver='3.3.1'
 pkgrel='3'
 pkgdesc='Terminal manipulation library for OCaml'
-# If you're running on aarch64, you have to add it to the arch array of the cppo, ocaml-biniou, ocaml-cmdliner, ocaml-easy-format, ocaml-uchar, ocaml-uutf and ocaml-yojson AUR dependencies
+# If you're running on aarch64, you have to add it to the arch array of the cppo, ocaml-biniou, ocaml-cmdliner, ocaml-easy-format and ocaml-yojson AUR dependencies
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-community/$_projectname"
 license=('BSD')
