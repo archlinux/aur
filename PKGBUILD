@@ -2,7 +2,7 @@
 # Contributer: Paul <paul@mrarm.io>
 
 pkgname=mcpelauncher-linux-git
-pkgver=v0.9.0.qt6.r5.g03036fd-1
+pkgver=v0.9.0.qt6.r5.g03036fd
 pkgrel=1
 pkgdesc="Minecraft: Pocket Edition launcher for Linux"
 arch=('x86_64' 'i686')
