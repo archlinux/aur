@@ -1,23 +1,20 @@
 pkgbase = ocaml-splittable_random
 	pkgdesc = PRNG that can be split into independent streams
-	pkgver = 0.15.0
-	pkgrel = 4
+	pkgver = 0.16.0
+	pkgrel = 1
 	url = https://github.com/janestreet/splittable_random
 	arch = x86_64
-	arch = i686
-	arch = pentium4
-	arch = armv7h
 	arch = aarch64
 	license = MIT
 	makedepends = dune>=2.0.0
-	depends = ocaml>=4.08.0
-	depends = ocaml-base>=0.15.0
-	depends = ocaml-ppx_assert>=0.15.0
-	depends = ocaml-ppx_bench>=0.15.0
-	depends = ocaml-ppx_inline_test>=0.15.0
-	depends = ocaml-ppx_sexp_message>=0.15.0
+	depends = ocaml>=4.14.0
+	depends = ocaml-base>=0.16.0
+	depends = ocaml-ppx_assert>=0.16.0
+	depends = ocaml-ppx_bench>=0.16.0
+	depends = ocaml-ppx_inline_test>=0.16.0
+	depends = ocaml-ppx_sexp_message>=0.16.0
 	options = !strip
-	source = ocaml-splittable_random-0.15.0-4.tar.gz::https://github.com/janestreet/splittable_random/archive/v0.15.0.tar.gz
-	sha512sums = 10adeedcda260301f8866a8f128d2f6a59ebbb70898fd82bf2c9db9b40cb1bc24bdb9706d0d0983e8abd8c4a4a920b06d16a3196dc6ba522b13af5c4b9302811
+	source = ocaml-splittable_random-0.16.0-1.tar.gz::https://github.com/janestreet/splittable_random/archive/v0.16.0.tar.gz
+	sha512sums = eeb58de6cf8ee6fda61997ad06e9a3d807eb4e296320b2fcb17bf2ce41dc9ca4dc75ff1caf257dcbb94bd6f205ea2f9b1e2d91a42cf4ee34964ba91f8a0bebd3
 
 pkgname = ocaml-splittable_random
