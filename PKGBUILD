@@ -2,19 +2,19 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_pipebang'
 pkgname="ocaml-$_projectname"
-pkgver='0.15.0'
-pkgrel='4'
+pkgver='0.16.0'
+pkgrel='1'
 epoch='1'
 pkgdesc='A ppx rewriter that inlines reverse application operators |> and |!'
-# If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
-arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
+# If you're running on aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
+arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.08.0' 'ocaml-ppxlib>=0.23.0')
+depends=('ocaml>=4.14.0' 'ocaml-ppxlib>=0.28.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('778dae2cd6176f9ce18f20486e16f6f76e9137095759b29ddc10fee15d8a21f51fff94245c4a750ae68cd75edbd06b9cad6ff1b56aacb38ac9e6d7d71c0bf701')
+sha512sums=('b333d189c2705b3c7175af5636bd63c38ed434b3828227c7db8d2cb0fe9bd4caa05975d5d28d8fb4d61656bd3d7a15e2db2b36a1672107c1557c5012c19cb445')
 
 _sourcedirectory="$_projectname-$pkgver"
 
