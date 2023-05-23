@@ -2,19 +2,19 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='bin_prot'
 pkgname="ocaml-$_projectname"
-pkgver='0.15.0'
-pkgrel='4'
+pkgver='0.16.0'
+pkgrel='1'
 epoch='1'
 pkgdesc='A binary protocol generator'
-# If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
-arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
+# If you're running on aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
+arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0' 'ocaml-ppx_compare>=0.15.0' 'ocaml-ppx_custom_printf>=0.15.0' 'ocaml-ppx_fields_conv>=0.15.0' 'ocaml-ppx_optcomp>=0.15.0' 'ocaml-ppx_sexp_conv>=0.15.0' 'ocaml-ppx_variants_conv>=0.15.0')
+depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-ppx_compare>=0.16.0' 'ocaml-ppx_custom_printf>=0.16.0' 'ocaml-ppx_fields_conv>=0.16.0' 'ocaml-ppx_optcomp>=0.16.0' 'ocaml-ppx_sexp_conv>=0.16.0' 'ocaml-ppx_variants_conv>=0.16.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('8e912988568c69b412937eaea7aee54ee3fe8bd751979df37bcbc827ced92b14004dcfd761e3d46c98602d53884a5151a1a6f11f2a5ebb1107571fb80bc11780')
+sha512sums=('e6e2b4c2984fc89fc7ceb57cae7b7f796e6a0441e4d37da1b6bc1f167d8900b1c4bc0174d5d9de5669b7539d9256293365242e9875ef78fccbda226635c63b5d')
 
 _sourcedirectory="$_projectname-$pkgver"
 
