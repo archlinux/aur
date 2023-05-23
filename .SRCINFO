@@ -1,7 +1,7 @@
 pkgbase = python-topojson
 	pkgdesc = Encode spatial data as topology in Python
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mattijn.github.io/topojson/
 	arch = any
 	license = BSD
