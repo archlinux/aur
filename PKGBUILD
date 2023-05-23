@@ -1,18 +1,18 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='ppx_fixed_literal'
 pkgname="ocaml-$_projectname"
-pkgver='0.15.0'
-pkgrel='4'
+pkgver='0.16.0'
+pkgrel='1'
 pkgdesc='Simpler notation for fixed point literals'
-# If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
-arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
+# If you're running on aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
+arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0' 'ocaml-ppxlib>=0.23.0')
+depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-ppxlib>=0.28.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('3842162928f6a87b39abaea15cbed8c8f59349b20711d6f8af011cd0dec48a75f59e422db6907425203fc98f438dd758a3e8973900844b60cbf47f27bc9ac394')
+sha512sums=('9d83d578fb34b3fb2c5351c3934d5f35e509f66a72ba75126a44362b7e4de07c4d43a33b4eb8630999a7010410a8300c7740cc79bf16609ce1144ad90fc38751')
 
 _sourcedirectory="$_projectname-$pkgver"
 
