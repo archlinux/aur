@@ -11,7 +11,7 @@ url="https://github.com/$_pkgname/$_pkgname"
 license=('APACHE')
 provides=(oro)
 depends=(gcc-libs glibc openssl-1.1)
-source=(https://github.com/orogene/orogene/releases/download/v0.3.27/orogene-x86_64-unknown-linux-gnu.tar.gz)
+source=(https://github.com/orogene/orogene/releases/download/v$pkgver/orogene-x86_64-unknown-linux-gnu.tar.gz)
 sha256sums=('ae55be5a89cfe61ae74be7ba4abcef5354481e6228d4880f60648b666aba4670')
 
 package() {
