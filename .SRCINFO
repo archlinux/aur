@@ -1,0 +1,16 @@
+pkgbase = ghidra-extension-ghidrathon
+	pkgdesc = https://github.com/mandiant/Ghidrathon
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/mandiant/Ghidrathon
+	arch = any
+	license = Apache
+	makedepends = gradle>=7.3
+	makedepends = unzip
+	depends = ghidra>=10.2
+	depends = python-jep>=4.1.1
+	depends = python>=3.7
+	source = ghidra-extension-ghidrathon-2.1.0.tar.gz::https://github.com/mandiant/Ghidrathon/archive/refs/tags/v2.1.0.tar.gz
+	sha256sums = a5d52e2cca7ff8626dc82280d94c3b5bdb48e5951ed9ff65f49a7b3652d9f5ed
+
+pkgname = ghidra-extension-ghidrathon
