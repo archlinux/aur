@@ -1,12 +1,11 @@
 pkgbase = btanks-data
-	pkgdesc = Fast 2d tank arcade game with multiplayer and split-screen modes.
+	pkgdesc = Fast 2d tank arcade game with multiplayer and split-screen modes (data).
 	pkgver = 0.9.8083
-	pkgrel = 3
-	url = http://btanks.sourceforge.net
+	pkgrel = 4
+	url = https://btanks.sourceforge.net
 	arch = any
 	license = GPL
-	source = http://downloads.sourceforge.net/btanks/btanks-0.9.8083.tar.bz2
-	md5sums = 49cb95c0eec47d3436c4fdf65e7c9d12
+	source = https://downloads.sourceforge.net/btanks/btanks-0.9.8083.tar.bz2
+	sha256sums = 3fd2ce6a2b45f7a60c3b114fa9aff13cb3dd9fbb6a65cdc9798b76c4fa2c4341
 
 pkgname = btanks-data
-
