@@ -10,8 +10,22 @@ pkgdesc='High performance message passing library (MPI)'
 arch=(x86_64)
 url='https://www.open-mpi.org'
 license=('custom:OpenMPI')
-depends=(gcc-libs glibc hwloc libevent libnl openpmix openssh zlib)
-makedepends=(cuda gcc-fortran inetutils valgrind)
+depends=(
+  gcc-libs
+  glibc
+  hwloc
+  libevent
+  libnl
+  openpmix
+  openssh
+  zlib
+)
+makedepends=(
+  cuda
+  gcc-fortran
+  inetutils
+  valgrind
+)
 optdepends=(
   'cuda: cuda support'
   'gcc-fortran: fortran support'
