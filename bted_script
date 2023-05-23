@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env sh
 #This is the script for running the actual bted executable
 
-cd /usr/share/btanks/
+cd /usr/share/games/btanks/
 export LD_LIBRARY_PATH=/usr/lib/btanks
-exec ./bted
+./bted "$@"

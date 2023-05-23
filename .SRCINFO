@@ -1,8 +1,8 @@
 pkgbase = btanks
 	pkgdesc = Fast 2d tank arcade game with multiplayer and split-screen modes.
 	pkgver = 0.9.8083
-	pkgrel = 8
-	url = http://btanks.sourceforge.net
+	pkgrel = 9
+	url = https://btanks.sourceforge.net
 	install = btanks.install
 	arch = x86_64
 	license = GPL
@@ -17,19 +17,18 @@ pkgbase = btanks
 	depends = openal
 	depends = sdl
 	depends = sdl_image
-	depends = smpeg
+	depends = smpeg0
 	depends = glu
 	depends = btanks-data=0.9.8083
-	source = http://downloads.sourceforge.net/btanks/btanks-0.9.8083.tar.bz2
+	source = https://downloads.sourceforge.net/btanks/btanks-0.9.8083.tar.bz2
 	source = btanks_desktop
 	source = btanks_script
 	source = bted_script
 	source = gcc-4.6.patch
-	md5sums = 49cb95c0eec47d3436c4fdf65e7c9d12
-	md5sums = a2ddeb1e79dff8d3fd702984c8d3aab5
-	md5sums = 07657cfa71b1de1d008cc5e3ade9749b
-	md5sums = 91a61c0f581ea27281bdaecb7a3cd58b
-	md5sums = b816c5f3ae2d6cd954c15569d4baf123
+	sha256sums = 3fd2ce6a2b45f7a60c3b114fa9aff13cb3dd9fbb6a65cdc9798b76c4fa2c4341
+	sha256sums = 1e886fd87aed83ad628e412a3d311d59bd7a747701635dc6bc79c055a4b6b845
+	sha256sums = 9698b21c33f425e615818b9dfca2ffe7a19cacebc94f3965203d52f46705bd95
+	sha256sums = 29417bc87cc97760d682ea5e996a3d29a355c60f4e5ac02174c2adc5ff674cff
+	sha256sums = 61e9430ef57d91b3beaef10c5b882a113878af244a1130d71f2611767a4bf82a
 
 pkgname = btanks
-

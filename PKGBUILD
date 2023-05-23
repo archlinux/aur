@@ -1,28 +1,28 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Nick B <Shirakawasuna at gmail _dot_ com>
 
 pkgname=btanks
 pkgver=0.9.8083
-pkgrel=8
+pkgrel=9
 pkgdesc="Fast 2d tank arcade game with multiplayer and split-screen modes."
 arch=('x86_64')
-url="http://btanks.sourceforge.net"
+url="https://${pkgname}.sourceforge.net"
 license=('GPL')
 depends=('expat' 'libgl' 'libsigc++2.0' 'libvorbis' 'lua51' 'openal' 'sdl' 'sdl_image'
-	 'smpeg' 'glu' "btanks-data=$pkgver")
+	 'smpeg0' 'glu' "${pkgname}-data=$pkgver")
 makedepends=('python2-scons' 'chrpath' 'mesa')
-source=(http://downloads.sourceforge.net/btanks/btanks-$pkgver.tar.bz2
-	btanks_desktop
-	btanks_script
+source=("https://downloads.sourceforge.net/${pkgname}/${pkgname}-$pkgver.tar.bz2"
+	${pkgname}_desktop
+	${pkgname}_script
 	bted_script
 	gcc-4.6.patch)
-install=btanks.install
-md5sums=('49cb95c0eec47d3436c4fdf65e7c9d12'
-         'a2ddeb1e79dff8d3fd702984c8d3aab5'
-         '07657cfa71b1de1d008cc5e3ade9749b'
-         '91a61c0f581ea27281bdaecb7a3cd58b'
-         'b816c5f3ae2d6cd954c15569d4baf123')
+install=${pkgname}.install
+sha256sums=('3fd2ce6a2b45f7a60c3b114fa9aff13cb3dd9fbb6a65cdc9798b76c4fa2c4341'
+            '1e886fd87aed83ad628e412a3d311d59bd7a747701635dc6bc79c055a4b6b845'
+            '9698b21c33f425e615818b9dfca2ffe7a19cacebc94f3965203d52f46705bd95'
+            '29417bc87cc97760d682ea5e996a3d29a355c60f4e5ac02174c2adc5ff674cff'
+            '61e9430ef57d91b3beaef10c5b882a113878af244a1130d71f2611767a4bf82a')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
@@ -43,40 +43,40 @@ build() {
 package() {
   cd "$srcdir"/$pkgname-$pkgver
 
-  mkdir -p "$pkgdir"/usr/share/btanks
-  cp *.so btanks bted "$pkgdir"/usr/share/btanks/
+  mkdir -p "$pkgdir"/usr/share/games/${pkgname}
+  cp *.so ${pkgname} bted "$pkgdir"/usr/share/games/${pkgname}/
 
   # Install script
   install -D -m755 "$srcdir"/bted_script "$pkgdir"/usr/bin/bted
-  install -D -m755 "$srcdir"/btanks_script "$pkgdir"/usr/bin/btanks
+  install -D -m755 "$srcdir"/${pkgname}_script "$pkgdir"/usr/bin/${pkgname}
 
   # Install desktop file
-  install -D -m644 "$srcdir"/btanks_desktop "$pkgdir"/usr/share/applications/btanks.desktop
+  install -D -m644 "$srcdir"/${pkgname}_desktop "$pkgdir"/usr/share/applications/${pkgname}.desktop
 
   # Install icon
-  install -D -m644 "$srcdir"/$pkgname-$pkgver/data/tiles/icon.png "$pkgdir"/usr/share/pixmaps/btanks.png
+  install -D -m644 "$srcdir"/$pkgname-$pkgver/data/tiles/icon.png "$pkgdir"/usr/share/pixmaps/${pkgname}.png
 
   # Make settings saveable
-  touch "$pkgdir"/usr/share/btanks/bt.xml
-  chown :games "$pkgdir"/usr/share/btanks/bt.xml
-  chmod 664 "$pkgdir"/usr/share/btanks/bt.xml
+  touch "$pkgdir"/usr/share/games/${pkgname}/bt.xml
+  chown :games "$pkgdir"/usr/share/games/${pkgname}/bt.xml
+  chmod 664 "$pkgdir"/usr/share/games/${pkgname}/bt.xml
 
   # move executables, fix rpath
-  cd "$pkgdir"/usr/share/btanks
-  mkdir -p "$pkgdir"/usr/bin "$pkgdir"/usr/lib/btanks
+  cd "$pkgdir"/usr/share/games/${pkgname}
+  mkdir -p "$pkgdir"/usr/bin "$pkgdir"/usr/lib/${pkgname}
 
-  mv btanks "$pkgdir"/usr/bin/btanks-bin
-  mv bted "$pkgdir"/usr/bin/bted-bin
-  mv *.so "$pkgdir"/usr/lib/btanks/
+  mv -f ${pkgname} "$pkgdir"/usr/bin/${pkgname}-bin
+  mv -f bted "$pkgdir"/usr/bin/bted-bin
+  mv -f *.so "$pkgdir"/usr/lib/${pkgname}/
 
-  ln -s /usr/bin/btanks-bin ./btanks
+  ln -s /usr/bin/${pkgname}-bin ./${pkgname}
   ln -s /usr/bin/bted-bin ./bted
 
-  ls -1 "$pkgdir"/usr/lib/btanks/ | while read A; do
-    ln -s /usr/lib/btanks/$A ./$A
+  ls -1 "$pkgdir"/usr/lib/${pkgname}/ | while read A; do
+    ln -s /usr/lib/${pkgname}/$A ./$A
   done
 
   chrpath -d "$pkgdir"/usr/bin/bted-bin
-  chrpath -d "$pkgdir"/usr/bin/btanks-bin
-  chrpath -d "$pkgdir"/usr/lib/btanks/*.so
+  chrpath -d "$pkgdir"/usr/bin/${pkgname}-bin
+  chrpath -d "$pkgdir"/usr/lib/${pkgname}/*.so
 }
