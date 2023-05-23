@@ -1,0 +1,17 @@
+pkgbase = uboot-riscv64-qemu
+	pkgdesc = uboot binary for qemu riscv64 guest linux guest operating systems
+	pkgver = 2023.01
+	pkgrel = 1
+	url = https://github.com/qemu/u-boot
+	arch = any
+	license = GPL
+	makedepends = riscv64-linux-gnu-gcc
+	makedepends = bc
+	makedepends = dtc
+	makedepends = python
+	options = !distcc
+	source = https://github.com/qemu/u-boot/archive/refs/tags/v2023.01.tar.gz
+	md5sums = 709202a61294d9c3f003187123dd5626
+	sha256sums = 6214cfb022f1b99b1a021eae1e09a9671c464bfa012c43e440f49c19e3595c09
+
+pkgname = uboot-riscv64-qemu
