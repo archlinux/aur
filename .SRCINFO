@@ -1,0 +1,19 @@
+pkgbase = serioussam-hno
+	pkgdesc = Serious Sam Classic HNO native Linux
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/tx00100xt/SE1-TSE-HNO
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = make
+	makedepends = sed
+	depends = sdl2
+	depends = python
+	depends = bash
+	source = https://github.com/tx00100xt/SE1-TSE-HNO/archive/refs/tags/v1.0.1.tar.gz
+	sha512sums = c71e94b56731a28874cb0c3afc156a7d96827108e6a0a01701530c9b3a4b81daa0ca0ed8e2be6a457d1cac8e6dad0392d738481e09fcc1a4911530a6284fb2c5
+
+pkgname = serioussam-hno
+
