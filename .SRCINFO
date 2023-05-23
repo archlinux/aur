@@ -1,11 +1,15 @@
 pkgbase = kdiff3-git
 	pkgdesc = A KDE file comparator/merge tool
-	pkgver = 1.8.70.r1305.ab3a79d
+	pkgver = 1.10.70.r2400.7d7a73b4
 	pkgrel = 1
-	url = https://cgit.kde.org/kdiff3.git
+	url = https://invent.kde.org/sdk/kdiff3
 	arch = i686
 	arch = x86_64
-	license = GPL
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPLv2
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = git
@@ -16,8 +20,7 @@ pkgbase = kdiff3-git
 	conflicts = kdiff3
 	conflicts = kdiff3-kf5-git
 	conflicts = kdiff3-qt
-	source = git+https://github.com/KDE/kdiff3.git
+	source = git+https://invent.kde.org/sdk/kdiff3
 	sha512sums = SKIP
 
 pkgname = kdiff3-git
-
