@@ -1,7 +1,8 @@
-# Maintainer: Marco Obaid <marco.obaid@gmail.com>
+# Maintainer: Aditya Sirish <aditya at saky dot in>
+# Contributor: Marco Obaid <marco.obaid@gmail.com>
 
 pkgname=oh-my-bash-git
-pkgver=r90.89e5054
+pkgver=r461.dd7807f
 pkgrel=1
 pkgdesc="A delightful community-driven framework for managing your bash configuration, and an auto-update tool so that makes it easy to keep up with the latest updates from the community"
 arch=('x86_64')
@@ -17,7 +18,7 @@ optdepends=('ruby: for some plugin functionality'
 
 install=${pkgname}.install
 
-source=("${pkgname}::git+git://github.com/ohmybash/oh-my-bash.git"
+source=("${pkgname}::git+${url}"
         '0001-bashrc.patch')
 
 sha256sums=('SKIP'

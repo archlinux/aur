@@ -5,3 +5,6 @@ setup-git-v*.sh
 *.gz
 *.zst
 *.xz
+oh-my-bash-git/
+pkg/
+src/

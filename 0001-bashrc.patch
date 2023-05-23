@@ -1,14 +1,16 @@
 --- a/bashrc
 +++ b/bashrc
-@@ -1,5 +1,5 @@
+@@ -5,7 +5,7 @@ case $- in
+ esac
+ 
  # Path to your oh-my-bash installation.
--export OSH=$HOME/.oh-my-bash
-+OSH=/usr/share/oh-my-bash
+-export OSH=~/.oh-my-bash
++export OSH=/usr/share/oh-my-bash
  
  # Set name of the theme to load. Optionally, if you set this to "random"
  # it'll load a random theme each time that oh-my-bash is loaded.
-@@ -13,7 +13,7 @@
- # HYPHEN_INSENSITIVE="true"
+@@ -19,7 +19,7 @@ OSH_THEME="font"
+ # OMB_HYPHEN_SENSITIVE="false"
  
  # Uncomment the following line to disable bi-weekly auto-update checks.
 -# DISABLE_AUTO_UPDATE="true"
@@ -16,23 +18,56 @@
  
  # Uncomment the following line to change how often to auto-update (in days).
  # export UPDATE_OSH_DAYS=13
-@@ -70,7 +70,7 @@
-   bashmarks
- )
+@@ -72,11 +72,11 @@ OMB_USE_SUDO=true
+ # Custom completions may be added to ~/.oh-my-bash/custom/completions/
+ # Example format: completions=(ssh git bundler gem pip pip3)
+ # Add wisely, as too many completions slow down shell startup.
+-completions=(
+-  git
+-  composer
+-  ssh
+-)
++# completions=(
++#   git
++#   composer
++#   ssh
++# )
  
--source $OSH/oh-my-bash.sh
-+
+ # Which aliases would you like to load? (aliases can be found in ~/.oh-my-bash/aliases/*)
+ # Custom aliases may be added to ~/.oh-my-bash/custom/aliases/
+@@ -90,10 +90,10 @@ aliases=(
+ # Custom plugins may be added to ~/.oh-my-bash/custom/plugins/
+ # Example format: plugins=(rails git textmate ruby lighthouse)
+ # Add wisely, as too many plugins slow down shell startup.
+-plugins=(
+-  git
+-  bashmarks
+-)
++# plugins=(
++#   git
++#   bashmarks
++# )
  
+ # Which plugins would you like to conditionally load? (plugins can be found in ~/.oh-my-bash/plugins/*)
+ # Custom plugins may be added to ~/.oh-my-bash/custom/plugins/
+@@ -102,8 +102,6 @@ plugins=(
+ #      plugins+=(tmux-autoattach)
+ #  fi
+ 
+-source "$OSH"/oh-my-bash.sh
+-
  # User configuration
  # export MANPATH="/usr/local/man:$MANPATH"
-@@ -99,3 +99,9 @@
+ 
+@@ -131,3 +129,11 @@ source "$OSH"/oh-my-bash.sh
  # Example aliases
  # alias bashconfig="mate ~/.bashrc"
  # alias ohmybash="mate ~/.oh-my-bash"
 +
 +BASH_CACHE_DIR=$HOME/.cache/oh-my-bash
 +if [[ ! -d $BASH_CACHE_DIR ]]; then
-+   mkdir $BASH_CACHE_DIR
++	mkdir $BASH_CACHE_DIR
 +fi
-+source $OSH/oh-my-bash.sh
-
++
++source "$OSH"/oh-my-bash.sh
++
