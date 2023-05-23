@@ -3,7 +3,7 @@
 
 pkgname=comictagger
 pkgver=1.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Application for writing metadata to digital comics, written in Python and PyQt'
 arch=(any)
 url='https://github.com/comictagger/comictagger'
