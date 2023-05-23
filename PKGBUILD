@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 pkgname=python-orbax
 _pkgname=${pkgname#python-}
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.7
+pkgrel=1
 pkgdesc='Orbax is a library providing common utilities for JAX users.'
 arch=('any')
 url='https://github.com/google/orbax'
@@ -22,7 +22,7 @@ depends=(
 makedepends=('python-build' 'python-flit-core' 'python-installer')
 optdepends=('python-flax: Deep learning library from Google')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/google/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6b4abf572c0f049ba346c052441c73d0fe0dae25e7631b2d02b360376d736660')
+sha256sums=('322c1e8670a65e52dd71c12f9e3e7204c7db5ce9d7e651503a5c7702e2640908')
 
 build() {
     find $_pkgname-$pkgver/$_pkgname -iname '*.md' -delete

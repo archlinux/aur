@@ -1,7 +1,7 @@
 pkgbase = python-orbax
 	pkgdesc = Orbax is a library providing common utilities for JAX users.
-	pkgver = 0.1.1
-	pkgrel = 2
+	pkgver = 0.1.7
+	pkgrel = 1
 	url = https://github.com/google/orbax
 	arch = any
 	groups = jax
@@ -19,7 +19,7 @@ pkgbase = python-orbax
 	depends = python-tensorstore
 	depends = python-yaml
 	optdepends = python-flax: Deep learning library from Google
-	source = python-orbax-0.1.1.tar.gz::https://github.com/google/orbax/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 6b4abf572c0f049ba346c052441c73d0fe0dae25e7631b2d02b360376d736660
+	source = python-orbax-0.1.7.tar.gz::https://github.com/google/orbax/archive/refs/tags/v0.1.7.tar.gz
+	sha256sums = 322c1e8670a65e52dd71c12f9e3e7204c7db5ce9d7e651503a5c7702e2640908
 
 pkgname = python-orbax
