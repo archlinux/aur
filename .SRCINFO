@@ -4,10 +4,6 @@ pkgbase = ocaml-fileutils
 	pkgrel = 2
 	url = https://github.com/gildor478/ocaml-fileutils
 	arch = x86_64
-	arch = i486
-	arch = i686
-	arch = pentium4
-	arch = armv7h
 	arch = aarch64
 	license = custom:LGPL2.1 with linking exception
 	checkdepends = ocaml-ounit>=2.0.0
