@@ -1,13 +1,13 @@
 pkgname=candy
-pkgver=1.11
+pkgver=1.12
 pkgrel=1
 pkgdesc="A WebSocket and TUN based VPN for Linux"
 url="https://github.com/lanthora/candy"
 license=('MIT')
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
 source=("https://github.com/lanthora/candy/archive/refs/tags/v$pkgver.tar.gz" )
-sha256sums=('49d81865ba7b109ebc15226a516efbed233df1a33fe5eceb7a70c6010b05e1e0')
-makedepends=('cmake' 'make' 'pkgconf' 'clang')
+sha256sums=('f3eaa3faa039e0971d586a9892dfbdb316d71fcd19673baeb9ad15638bfd6aa5')
+makedepends=('cmake' 'make' 'pkgconf' 'gcc')
 depends=('spdlog' 'openssl' 'libconfig' 'uriparser')
 backup=('etc/candy.conf')
 
