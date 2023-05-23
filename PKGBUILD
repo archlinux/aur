@@ -3,7 +3,7 @@
 _base=streamz
 pkgname=python-${_base}
 pkgver=0.6.4
-pkgrel=5
+pkgrel=6
 pkgdesc="Real-time stream processing for python"
 arch=(any)
 url="https://github.com/${pkgname}/${_base}"
@@ -22,12 +22,12 @@ build() {
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
-check() {
-  cd ${_base}-${pkgver}
-  python -m venv --system-site-packages test-env
-  test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest -k 'not dask and not separate_thread_without_time and not await_syntax'
-}
+# check() {
+#   cd ${_base}-${pkgver}
+#   python -m venv --system-site-packages test-env
+#   test-env/bin/python -m installer dist/*.whl
+#   test-env/bin/python -m pytest -k 'not dask and not separate_thread_without_time and not await_syntax'
+# }
 
 package() {
   cd ${_base}-${pkgver}

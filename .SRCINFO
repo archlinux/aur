@@ -1,7 +1,7 @@
 pkgbase = python-streamz
 	pkgdesc = Real-time stream processing for python
 	pkgver = 0.6.4
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/python-streamz/streamz
 	arch = any
 	license = custom:BSD-3-clause
