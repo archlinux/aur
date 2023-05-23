@@ -14,6 +14,7 @@ pkgbase = qlog-git
 	depends = qtkeychain-qt5
 	depends = qt5-serialport
 	depends = hamlib
+	optdepends = org.freedesktop.secrets: keyring/password support
 	provides = qlog
 	conflicts = qlog
 	source = qlog::git+https://github.com/foldynl/QLog

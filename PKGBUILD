@@ -1,3 +1,4 @@
+# Maintainer:
 # Contributor: Thomas Gatzweiler <thomas.gatzweiler@gmail.com>
 
 _pkgname=qlog
@@ -20,8 +21,13 @@ makedepends=(
   'git'
   'qt5-tools'
 )
+optdepends=(
+  'org.freedesktop.secrets: keyring/password support'
+)
+
 provides=("$_pkgname")
 conflicts=(${provides[@]})
+
 source=(
   "$_pkgname"::"git+$url"
 
