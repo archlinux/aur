@@ -1,0 +1,18 @@
+pkgbase = duskplayer-appimage
+	pkgdesc = A minimal music player built on electron.
+	pkgver = 7.0.0
+	pkgrel = 1
+	url = https://github.com/Aveek-Saha/DuskPlayer
+	arch = x86_64
+	license = MIT
+	depends = hicolor-icon-theme
+	depends = zlib
+	depends = glibc
+	conflicts = duskplayer
+	options = !strip
+	source = duskplayer-7.0.0.AppImage::https://github.com/Aveek-Saha/DuskPlayer/releases/download/v7.0.0/DuskPlayer-7.0.0.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/Aveek-Saha/DuskPlayer/master/LICENSE
+	sha256sums = 7499e9b41e240b71c801b47c2145ef471308b07463251e3f912a9b6e98ea5e1e
+	sha256sums = 634de9f3cc2e60e2040fb2162e8722d13ee3d863d9b5a1c65c3e08a6149bee1c
+
+pkgname = duskplayer-appimage
