@@ -6,7 +6,7 @@ url='https://wiki.ros.org/rosgraph'
 pkgname='ros-noetic-rosgraph'
 pkgver='1.16.0'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -30,11 +30,14 @@ depends=(
 )
 
 _dir="ros_comm-${pkgver}/tools/rosgraph"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
-sha256sums=('0a51857a50cf646db4af85469cb0e4877b1484f7aa0c00ec65a8be7ff574a886')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz"
+        "frame.patch"::"https://github.com/ros/ros_comm/pull/2331.patch")
+sha256sums=('0a51857a50cf646db4af85469cb0e4877b1484f7aa0c00ec65a8be7ff574a886'
+            'SKIP')
 
 prepare() {
-  cd "${srcdir}/${_dir}"
+  cd "${srcdir}/ros_comm-${pkgver}"
+  patch -Np1 -i "${srcdir}/frame.patch"
 }
 
 
