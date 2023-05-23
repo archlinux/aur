@@ -1,6 +1,6 @@
 pkgbase = git-pair-bin
 	pkgdesc = A simple CLI app to make it easier for pairing for co-authoring commits
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/inverse/git-pair/
 	license = MIT
@@ -8,13 +8,13 @@ pkgbase = git-pair-bin
 	conflicts = git-pair
 	provides = git-pair
 	arch = aarch64
-	source_aarch64 = https://github.com/inverse/git-pair/releases/download/v0.1.3/git-pair_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 37d9e7c0087bd5fce1e47c1520da46bfad889c62129475fab438b502fddfc922
+	source_aarch64 = https://github.com/inverse/git-pair/releases/download/v0.1.4/git-pair_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 0a39c7949d2c9fafbb1b5e4908a6cbf5b9abcf710a46b08a74065f3cb0f4d998
 	arch = i686
-	source_i686 = https://github.com/inverse/git-pair/releases/download/v0.1.3/git-pair_Linux_i386.tar.gz
-	sha256sums_i686 = d1663bfbdcc4e24d615d6a0e31040db4ab1a495d65a9268cc6c61108e95566f4
+	source_i686 = https://github.com/inverse/git-pair/releases/download/v0.1.4/git-pair_Linux_i386.tar.gz
+	sha256sums_i686 = 6c09f873e12a490cc557b735e8a6bfa15aed2de23ca0ce8d6cccb8c719a0cc39
 	arch = x86_64
-	source_x86_64 = https://github.com/inverse/git-pair/releases/download/v0.1.3/git-pair_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 1b220093f39215b0670fba36b558376c9dfb2d6a5f335f6d1cccc81f7ce8464c
+	source_x86_64 = https://github.com/inverse/git-pair/releases/download/v0.1.4/git-pair_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = e9fcca3b9958f8f41217cfdc897da8c15418c7b077925e42e632dcb7ce24c478
 	
 pkgname = git-pair-bin
