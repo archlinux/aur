@@ -2,7 +2,7 @@
 
 _pkgname='xrdp'
 pkgname="$_pkgname-git"
-pkgver=0.9.18.r490.g2fa92be3
+pkgver=0.9.18.r492.g8535f8e0
 pkgrel=1
 pkgdesc='An open source remote desktop protocol (RDP) server. Git version, devel branch.'
 url='https://github.com/neutrinolabs/xrdp'
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7l' 'aarch64')
 license=('Apache')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-makedepends=('nasm')
+makedepends=('nasm' 'cmocka')
 depends=('libxrandr' 'fuse' 'libfdk-aac' 'ffmpeg' 'imlib2')
 checkdepends=('check')
 optdepends=('tigervnc' 'tightvnc' 'realvnc-vnc-server')
