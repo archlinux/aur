@@ -1,7 +1,7 @@
 # Maintainer: maple
 pkgname=wl-clip-persist-git
 pkgver=r2.aea59e7
-pkgrel=2
+pkgrel=3
 pkgdesc="Keep Wayland clipboard even after programs close"
 arch=('any')
 url="https://github.com/Linus789/wl-clip-persist"
@@ -20,6 +20,7 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
+  export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 

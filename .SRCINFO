@@ -1,7 +1,7 @@
 pkgbase = wl-clip-persist-git
 	pkgdesc = Keep Wayland clipboard even after programs close
 	pkgver = r2.aea59e7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Linus789/wl-clip-persist
 	arch = any
 	license = MIT
