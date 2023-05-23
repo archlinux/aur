@@ -1,21 +1,20 @@
 pkgbase = python-sep
 	pkgdesc = Astronomical source extraction and photometry library
-	pkgver = 1.0.3
-	pkgrel = 00
+	pkgver = 1.2.1
+	pkgrel = 1
 	url = https://github.com/kbarbary/sep
 	arch = x86_64
+	license = MIT
 	license = LGPL3
-	makedepends = python-pip
+	checkdepends = python-pytest
+	checkdepends = python-astropy
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
-	makedepends = swig
-	depends = python
+	makedepends = cython
 	depends = python-numpy
-	source = PKGBUILD_EXTRAS
-	source = https://files.pythonhosted.org/packages/e1/a5/ee7e82c7e32eb74ec86048c2f9007b169c66d7eb4a3593bfca40a566aacc/sep-1.0.3.tar.gz
-	source = LICENSE
-	md5sums = SKIP
-	md5sums = 9b899ce70b1f050a937efbdb4fbd3356
-	md5sums = 27f314f169c690b73a55106a4f40e7f5
+	source = sep-1.2.1.tar.gz::https://github.com/kbarbary/sep/archive/v1.2.1.tar.gz
+	sha512sums = 2f5815363a11bfff67093e80a3fd5ba8b790e52226d1df39eee18a6a4195caaf82317712668c64ba2bc108b29a60dca2bdda87e920291aa28cde9633b73ff1b6
 
 pkgname = python-sep
-
