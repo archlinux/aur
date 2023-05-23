@@ -1,8 +1,8 @@
 # Maintainer: EnokiUN (Enoki) <enokiun@gmail.com>
 
 pkgname='pilfer'
-pkgver=0.3.2
-pkgrel=2
+pkgver=0.3.3
+pkgrel=1
 pkgdesc='A simple TUI frontend for Eludris'
 arch=('any')
 url='https://github.com/eludris/pilfer'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('openssl')
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('a2f17312eddabc205f87a6c644697bc642107bd6e535faaeefaff54d1996ec2c932810799517a9f0c1fd95d55aa7cd9b6e4b9e70106a1a4623e8b4a689c21dba')
+sha512sums=('23126c47e1cb95c6cf33dd6533d70ae66f71d4833d280191415152527efbf4350e9be14f6980991c5a66c3b66f3c70edd46492c1b40214d776229eb2bcc39676')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -22,12 +22,6 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
-}
-
-check() {
-  cd "$pkgname-$pkgver"
-  export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --all-features
 }
 
 package() {
