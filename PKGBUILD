@@ -4,7 +4,7 @@
 
 pkgname="huenicorn"
 arch=('i686' 'x86_64')
-pkgver=v1.0.1.r0.gb1567b6
+pkgver=v1.0.2
 pkgrel=1
 pkgdesc="Free ambilight driver for Philips Hue™ devices"
 url='https://gitlab.com/openjowelsofts/huenicorn'
