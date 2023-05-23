@@ -3,7 +3,7 @@ _officalname=quarkclouddrive
 pkgname="deepin-wine-${_officalname}"
 _pkgdownloadname=QuarkCloudDrive
 _installpkgpath=quark-cloud-drive
-pkgver=2.5.25
+pkgver=2.5.31
 _sparkpkgname=cn.quarkclouddrive.spark
 _sparkver=2.5.1spark1
 pkgrel=1
@@ -19,16 +19,16 @@ provides=("Quark")
 install="${pkgname}.install"
 source=(
     "${_sparkpkgname}_${_sparkver}_amd64.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/network/${_sparkpkgname}/${_sparkpkgname}_${_sparkver}_amd64.deb"
-    "${_installpkgpath}-${pkgver}.exe::https://pdds.quark.cn/download/stfile/ddjemdljmdehdflfm/${_pkgdownloadname}-v${pkgver}-release-pckk@other_ch-20230425171601.exe"
+    "${_installpkgpath}-${pkgver}.exe::https://pdds.quark.cn/download/stfile/ddjemdljmdehdflfm/${_pkgdownloadname}-v${pkgver}-release-pckk%40other_ch-20230511181042.exe"
     "LICENSE::https://broccoli.uc.cn/apps/quark_icloud_pay/routes/service_help?uc_param_str=dsdnfrpfbivesscpgimibtbmnijblauputogpintnwktprchmt&uc_biz_str=S%3Acustom|C%3Atitlebar_hover_2"
     "${pkgname}.install"
     "run.sh"
     )
 sha256sums=('a7426b5b1fac66aa464b62d81740d5c86067f6bd00d64d0dd9708f2b05b91b04'
             '2df021c009ed9bbfb44c3d7ba8cddbb1e7bfb2c8908b032ab5cc72cfc15e57ff'
-            '8513cd7e060c53ddca91825dfd8253abb5b1d77cce61f86ceac191033323ae0e'
+            '6945865faa45a3012d2dfeace67ef589d79e11988d23d7cbce6e55af469bfe3c'
             'd7f46cae43addb386fd3dddf469530b6942143c2a4ce00e1b92d7f256ed90b70'
-            '5dabb4f52c46aaebc5d7e2709f083afeb8526caebca2dcaf0ba29a29bc6ad96e')
+            'ab9e0d1d1cbb7b6c5ee5379eeec12b956fff3b747989f4e5256b29cc6b449863')
    
 prepare() {
     bsdtar -xf data.tar.xz
