@@ -1,0 +1,12 @@
+ 
+[Desktop Entry]
+Name=Sunshine
+GenericName=Sunshine
+Comment=A self-hosted game stream host for Moonlight with ipv6 patch.
+Comment[zh_CN]=带有 ipv6 补丁的 Moonlight 主机串流程序。
+Exec=/usr/bin/sunshine %U
+Terminal=false
+Type=Application
+Icon=sunshine
+Keywords=sunshine,moonlight,ipv6,stream,game;
+Categories=AudioVideo;Recorder;

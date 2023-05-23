@@ -1,6 +1,6 @@
 pkgbase = sunshine-ipv6
 	pkgdesc = A self-hosted game stream host for Moonlight with ipv6 patch.
-	pkgver = 0.18.4
+	pkgver = 0.19.1
 	pkgrel = 1
 	url = https://app.lizardbyte.dev
 	install = sunshine.install
@@ -16,6 +16,7 @@ pkgbase = sunshine-ipv6
 	depends = avahi
 	depends = boost-libs
 	depends = curl
+	depends = libappindicator-gtk3
 	depends = libevdev
 	depends = libmfx
 	depends = libpulse
@@ -37,9 +38,9 @@ pkgbase = sunshine-ipv6
 	conflicts = sunshine
 	conflicts = sunshine-nox
 	conflicts = sunshine-git
-	source = sunshine::git+https://github.com/LizardByte/Sunshine.git#tag=v0.18.4
-	source = ipv6.patch
+	source = sunshine.desktop
+	source = sunshine::git+https://github.com/HexJacaranda/Sunshine.git#branch=feature/ipv6_randomize
+	sha256sums = 05013785251e864fc0d6603e714e256b03f9f2d57e80239bc2f528b1903b068a
 	sha256sums = SKIP
-	sha256sums = 870976b2481e9a3b77a48f85a5dbaef9ad7b133dc31915ec735edcc1c1f7a789
 
 pkgname = sunshine-ipv6
