@@ -2,7 +2,7 @@
 # Maintainer: javsanpar <javsanpar@riseup.net>
 pkgname=abaddon-git
 _pkgname=abaddon
-pkgver=0.1.9.r32.gc5af6ed
+pkgver=0.1.10.r7.g8e9fb27
 pkgrel=1
 pkgdesc='An alternative Discord client made with C++/gtkmm'
 url='https://github.com/uowuo/abaddon'
@@ -34,6 +34,8 @@ package() {
   install -Dm755 build/abaddon "$pkgdir"/usr/bin/abaddon
 
   install -Dm644 "$_pkgname"/res/css/* -t "$pkgdir"/usr/share/abaddon/css
+  install -Dm644 "$_pkgname"/res/res/sound/* -t "$pkgdir"/usr/share/abaddon/res/sound
+  rm -r "$_pkgname"/res/res/sound/
   install -Dm644 "$_pkgname"/res/res/* -t "$pkgdir"/usr/share/abaddon/res
 
   install -Dm755 abaddon.desktop \
