@@ -24,12 +24,8 @@ depends=(
 	'qt5-svg'
 	'tbb')
 makedepends=('git' 'boost' 'cmake' 'eigen' 'imagemagick' 'python')
-source=("$_pkg::git+$url"
-        'MCAD::git+https://github.com/openscad/MCAD'
-        'mimalloc::git+https://github.com/microsoft/mimalloc')
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
+source=("$_pkg::git+$url")
+sha256sums=('SKIP')
 
 pkgver() {
 	git -C "$_pkg" describe --long --tags | sed 's/^openscad-//;s/-/.r/;s/-/./'

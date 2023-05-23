@@ -1,7 +1,7 @@
 pkgbase = openscad-git
 	pkgdesc = The programmers solid 3D CAD modeller
-	pkgver = 2019.05.r2561.gbc21c1263
-	pkgrel = 1
+	pkgver = 2019.05.r2660.gab30ab63b
+	pkgrel = 2
 	url = https://github.com/openscad/openscad
 	arch = x86_64
 	license = GPL2
@@ -24,10 +24,6 @@ pkgbase = openscad-git
 	provides = openscad
 	conflicts = openscad
 	source = openscad::git+https://github.com/openscad/openscad
-	source = MCAD::git+https://github.com/openscad/MCAD
-	source = mimalloc::git+https://github.com/microsoft/mimalloc
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = openscad-git
