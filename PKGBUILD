@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 _base=evtx
-pkgname=python-${_base}
+pkgname=python-py${_base}
 pkgver=0.8.2
 pkgrel=1
 pkgdesc="Python bindings for ${_base}"
