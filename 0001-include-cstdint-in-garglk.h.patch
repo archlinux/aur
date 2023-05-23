@@ -1,0 +1,25 @@
+From fe740ed7f180af5b8c431e460c7834f9a41e5446 Mon Sep 17 00:00:00 2001
+From: Autumn <autumn@cyfox.net>
+Date: Tue, 23 May 2023 13:17:44 -0700
+Subject: [PATCH] include <cstdint> in garglk.h
+
+this fixes a build error.
+---
+ garglk/garglk.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/garglk/garglk.h b/garglk/garglk.h
+index e5565a14..dc7efaed 100644
+--- a/garglk/garglk.h
++++ b/garglk/garglk.h
+@@ -30,6 +30,7 @@
+ #include <array>
+ #include <cmath>
+ #include <cstddef>
++#include <cstdint>
+ #include <cstdio>
+ #include <cstring>
+ #include <deque>
+-- 
+2.40.1
+

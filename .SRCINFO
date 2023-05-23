@@ -33,6 +33,8 @@ pkgbase = gargoyle
 	replaces = gargoyle-mod
 	backup = etc/garglk.ini
 	source = gargoyle-2023.1.tar.gz::https://github.com/garglk/garglk/archive/2023.1.tar.gz
+	source = 0001-include-cstdint-in-garglk.h.patch
 	sha512sums = d8624f8a8492f64adfdb638811419ebef5b77457708a5d07a3891faf97966237839170914af4d416f42aca7e6d9d0643384ef60be30a2ba22ed52fee4938683a
+	sha512sums = 0db975cdb44cd155e0962a4a141eba7b5990175ccb65bbb71b7f504bc140e29079da5a7f23bdd429dd68c75b6b2fff320f0ea5cb689aaa5c79dae1642d94cf4f
 
 pkgname = gargoyle
