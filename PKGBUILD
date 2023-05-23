@@ -2,19 +2,19 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_expect'
 pkgname="ocaml-$_projectname"
-pkgver='0.15.1'
-pkgrel='2'
+pkgver='0.16.0'
+pkgrel='1'
 epoch='1'
 pkgdesc='Cram like framework for OCaml'
-# If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
-arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
+# If you're running on aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
+arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0' 'ocaml-ppx_here>=0.15.0' 'ocaml-ppx_inline_test>=0.15.0' 'ocaml-ppxlib>=0.23.0' 'ocaml-re>=1.8.0' 'ocaml-stdio>=0.15.0')
+depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-ppx_here>=0.16.0' 'ocaml-ppx_inline_test>=0.16.0' 'ocaml-ppxlib>=0.28.0' 'ocaml-re>=1.8.0' 'ocaml-stdio>=0.16.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('483c320dcfa628a1140d727e63fe4c5e2b298d9c58ab9975f8b3b5fcfbb3348f04a901d8b4a8d8288b14959fddbf2578a8b48de7352e4ce90439e26a27026780')
+sha512sums=('fdc8cb76afc9c9b436cbf8627b0c6543ae64fc51e92bf25db99ace10646aef3be3d1a3659dedb3e888494ab4e380e387b92557a584fa3e1eca79e19751a0b950')
 
 _sourcedirectory="$_projectname-$pkgver"
 
