@@ -2,18 +2,18 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='variantslib'
 pkgname="ocaml-$_projectname"
-pkgver='0.15.0'
-pkgrel='4'
+pkgver='0.16.0'
+pkgrel='1'
 epoch='1'
 pkgdesc='OCaml variants as first class values'
-arch=('x86_64' 'i486' 'i686' 'pentium4' 'armv7h' 'aarch64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0')
+depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('cf52e19fb16f2021e06ce92799275717401f4959f89f0219c62df1386c036cbaaa1213eed1b80f9e4147681e613bffc5ca8d50987ca45aac791fe3c723e3d692')
+sha512sums=('c20cedbf6599b66028d77a5ce0d54a8fa1d2b8302344a434f9714ebd4714b159df143966bc480852e8ac54b44bd59f66646ba614419ea7cffa6710228e7a6fd6')
 
 _sourcedirectory="$_projectname-$pkgver"
 
