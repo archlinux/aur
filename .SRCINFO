@@ -1,0 +1,17 @@
+pkgbase = python-sxdes
+	pkgdesc = run the sep code on images with DES settings
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/esheldon/sxdes
+	arch = x86_64
+	license = GPL3
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-sep
+	source = sxdes-0.3.0.tar.gz::https://github.com/esheldon/sxdes/archive/0.3.0.tar.gz
+	sha512sums = f6ebb957c688f738762612fc0152b51d0fced4564b486d89aea44ba48ff6de06b0506809e31a2eb669067a3a41adc810646983ca9ddabc2d28a65d65584b3e27
+
+pkgname = python-sxdes
