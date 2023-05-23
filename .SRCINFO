@@ -1,20 +1,17 @@
 pkgbase = ocaml-ppx_cold
 	pkgdesc = Expands [@Cold] into [@inline never][@specialise never][@Local never]
-	pkgver = 0.15.0
-	pkgrel = 4
+	pkgver = 0.16.0
+	pkgrel = 1
 	url = https://github.com/janestreet/ppx_cold
 	arch = x86_64
-	arch = i686
-	arch = pentium4
-	arch = armv7h
 	arch = aarch64
 	license = MIT
 	makedepends = dune>=2.0.0
-	depends = ocaml>=4.08.0
-	depends = ocaml-base>=0.15.0
-	depends = ocaml-ppxlib>=0.23.0
+	depends = ocaml>=4.14.0
+	depends = ocaml-base>=0.16.0
+	depends = ocaml-ppxlib>=0.28.0
 	options = !strip
-	source = ocaml-ppx_cold-0.15.0-4.tar.gz::https://github.com/janestreet/ppx_cold/archive/v0.15.0.tar.gz
-	sha512sums = 239b78e8c03d47973be4d72d4879a0290367f96033b9d3a5d723a1c35e02121af86d5e41fd08dcf4746a8c6d521c94cf41eff6b4a439a204e0a5a3a0c49d9bf1
+	source = ocaml-ppx_cold-0.16.0-1.tar.gz::https://github.com/janestreet/ppx_cold/archive/v0.16.0.tar.gz
+	sha512sums = 816358747bf4e4d92b6d5fa7bc31691897f6fb88336000a5e40b86250911b2efa203f6465d77b24f0147312bfd779de49822c5ea7a2a87df49d754b8c6e30821
 
 pkgname = ocaml-ppx_cold

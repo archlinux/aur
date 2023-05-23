@@ -1,18 +1,18 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='ppx_cold'
 pkgname="ocaml-$_projectname"
-pkgver='0.15.0'
-pkgrel='4'
+pkgver='0.16.0'
+pkgrel='1'
 pkgdesc='Expands [@Cold] into [@inline never][@specialise never][@Local never]'
-# If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
-arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
+# If you're running on aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
+arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0' 'ocaml-ppxlib>=0.23.0')
+depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-ppxlib>=0.28.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('239b78e8c03d47973be4d72d4879a0290367f96033b9d3a5d723a1c35e02121af86d5e41fd08dcf4746a8c6d521c94cf41eff6b4a439a204e0a5a3a0c49d9bf1')
+sha512sums=('816358747bf4e4d92b6d5fa7bc31691897f6fb88336000a5e40b86250911b2efa203f6465d77b24f0147312bfd779de49822c5ea7a2a87df49d754b8c6e30821')
 
 _sourcedirectory="$_projectname-$pkgver"
 
