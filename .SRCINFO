@@ -1,6 +1,6 @@
 pkgbase = okular-vim-colemak
 	pkgdesc = Document Viewer with colemak vim-binding
-	pkgver = 23.04.0
+	pkgver = 23.04.1
 	pkgrel = 1
 	url = https://apps.kde.org/okular/
 	arch = x86_64
@@ -39,7 +39,7 @@ pkgbase = okular-vim-colemak
 	optdepends = plasma-workspace: to configure web shortcuts
 	conflicts = okular
 	options = !zipman
-	source = https://download.kde.org/stable/release-service/23.04.0/src/okular-23.04.0.tar.xz
-	sha256sums = 6c0dff299abf86df88d86e7d31d1dac2633775a2cca801ab3ca5104fafbcd40c
+	source = https://download.kde.org/stable/release-service/23.04.1/src/okular-23.04.1.tar.xz
+	sha256sums = 1cc470f8695d9ac53163071aa8b78885efe813df77fb6456cd0946d3309c1db7
 
 pkgname = okular-vim-colemak
