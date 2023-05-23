@@ -3,8 +3,8 @@
 
 _pkgname=citra
 pkgname=$_pkgname-canary-git
-pkgver=r9565.b43c06653
-pkgrel=2
+pkgver=r9577.399ed10f3
+pkgrel=1
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 arch=('i686' 'x86_64')
 url='https://github.com/citra-emu/citra-canary'
@@ -43,8 +43,11 @@ source=("$_pkgname::git+https://github.com/citra-emu/citra-canary.git"
         "git+https://github.com/arsenm/sanitizers-cmake"
         #dynarmic's zydis submodule
         "zycore::git+https://github.com/zyantific/zycore-c"
+        #sirit's submodules
+        "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
         )
 md5sums=('SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -93,6 +96,10 @@ prepare() {
 
     cd "$srcdir/$_pkgname/externals/dynarmic/externals/zydis"
     git config --file=.gitmodules submodule.dependencies/zycore.url "$srcdir/zycore"
+    git -c protocol.file.allow=always submodule update --init
+
+    cd "$srcdir/$_pkgname/externals/sirit/"
+    git config --file=.gitmodules submodule.externals/SPIRV-Headers.url "$srcdir/SPIRV-Headers"
     git -c protocol.file.allow=always submodule update --init
 }
 
