@@ -1,7 +1,7 @@
 pkgbase = lib32-libheif
 	pkgdesc = HEIF file format decoder and encoder (32-bit)
-	pkgver = 1.16.1
-	pkgrel = 2
+	pkgver = 1.16.2
+	pkgrel = 1
 	url = https://github.com/strukturag/libheif
 	arch = x86_64
 	license = GPL3
@@ -17,7 +17,7 @@ pkgbase = lib32-libheif
 	makedepends = lib32-aom
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
-	depends = libheif=1.16.1
+	depends = libheif=1.16.2
 	optdepends = lib32-libjpeg: for heif-convert-32 and heif-enc-32
 	optdepends = lib32-libpng: for heif-convert-32 and heif-enc-32
 	optdepends = lib32-svt-av1: svt-av1 encoder
@@ -27,13 +27,13 @@ pkgbase = lib32-libheif
 	optdepends = lib32-aom: AOM plugin
 	optdepends = lib32-libdav1d: DAV1D encoder
 	provides = libheif.so
-	source = https://github.com/strukturag/libheif/releases/download/v1.16.1/libheif-1.16.1.tar.gz
-	sha256sums = ac15b54b6d7c315710e156d119b8a1bfc89f29621e99222b2750b1f31c9c3558
+	source = https://github.com/strukturag/libheif/releases/download/v1.16.2/libheif-1.16.2.tar.gz
+	sha256sums = 7f97e4205c0bd9f9b8560536c8bd2e841d1c9a6d610401eb3eb87ed9cdfe78ea
 
 pkgname = lib32-libheif
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
-	depends = libheif=1.16.1
+	depends = libheif=1.16.2
 	depends = lib32-gdk-pixbuf2
 	depends = libgdk_pixbuf-2.0.so
 	depends = libglib-2.0.so
