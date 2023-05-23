@@ -29,7 +29,7 @@ validpgpkeys=(
 
 sha256sums=('SKIP'
             '165ebef778236af6407bd50ce99add5e247295b65073257c95514a09cc82d74a'
-            'bc43ef34a131fd2f99047a8aca491f24fa0a36010dcb90166e73c49f58a1928d')
+            '875ed8a3f782904d26619155f27f94e35d1fde02eb2948c463dd2c8441e0f450')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
