@@ -1,21 +1,18 @@
 pkgbase = ocaml-ppx_string
 	pkgdesc = Ppx extension for string interpolation
-	pkgver = 0.15.0
-	pkgrel = 4
+	pkgver = 0.16.0
+	pkgrel = 1
 	url = https://github.com/janestreet/ppx_string
 	arch = x86_64
-	arch = i686
-	arch = pentium4
-	arch = armv7h
 	arch = aarch64
 	license = MIT
 	makedepends = dune>=2.0.0
-	depends = ocaml>=4.08.0
-	depends = ocaml-base>=0.15.0
-	depends = ocaml-ppx_base>=0.15.0
-	depends = ocaml-ppxlib>=0.23.0
+	depends = ocaml>=4.14.0
+	depends = ocaml-base>=0.16.0
+	depends = ocaml-ppx_base>=0.16.0
+	depends = ocaml-ppxlib>=0.28.0
 	options = !strip
-	source = ocaml-ppx_string-0.15.0-4.tar.gz::https://github.com/janestreet/ppx_string/archive/v0.15.0.tar.gz
-	sha512sums = bb1819017a6c25d581854e8487a0e5535fe282ec421c91e662c310c0d0aa7704be65484b3f2e721b29409e0eb68f72528e60380e036af066b3b1f1f11ea6cd5e
+	source = ocaml-ppx_string-0.16.0-1.tar.gz::https://github.com/janestreet/ppx_string/archive/v0.16.0.tar.gz
+	sha512sums = b1310551e1548fee5b99e64635139189139791f2ea2da93a4751b04c78a5519c5f3833c515d93a25e9d7aa23945414cbe690e5cd3f34630cdca4819c3d8ec1bc
 
 pkgname = ocaml-ppx_string
