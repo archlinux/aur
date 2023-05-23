@@ -2,19 +2,19 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_assert'
 pkgname="ocaml-$_projectname"
-pkgver='0.15.0'
-pkgrel='4'
+pkgver='0.16.0'
+pkgrel='1'
 epoch='1'
 pkgdesc='Assert-like extension nodes that raise useful errors on failure'
-# If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
-arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
+# If you're running on aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
+arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0' 'ocaml-ppx_cold>=0.15.0' 'ocaml-ppx_compare>=0.15.0' 'ocaml-ppx_here>=0.15.0' 'ocaml-ppx_sexp_conv>=0.15.0' 'ocaml-ppxlib>=0.23.0')
+depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-ppx_cold>=0.16.0' 'ocaml-ppx_compare>=0.16.0' 'ocaml-ppx_here>=0.16.0' 'ocaml-ppx_sexp_conv>=0.16.0' 'ocaml-ppxlib>=0.28.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('54d28c8fc9c1ecff9e7b616aa4013d09f6554f6b59b62ef9db0f18fb4a8e0b36f31241f522324140a9f680ad46ac57257a28baca00daa901c264f40d61fd510d')
+sha512sums=('cceddea9172535ca72990fabe455b503a28a5b7519dc635ba1e6e3aff9d0c5f71a794f3ce05466165bab843b7385c23b0d879917d15589ad9b9592718dd46063')
 
 _sourcedirectory="$_projectname-$pkgver"
 
