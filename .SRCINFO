@@ -4,9 +4,6 @@ pkgbase = ocaml-utop
 	pkgrel = 2
 	url = https://github.com/ocaml-community/utop
 	arch = x86_64
-	arch = i686
-	arch = pentium4
-	arch = armv7h
 	arch = aarch64
 	license = BSD
 	makedepends = cppo>=1.1.2
