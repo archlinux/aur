@@ -1,6 +1,6 @@
 pkgbase = fpm
 	pkgdesc = Effing package management! Build packages for multiple platforms (deb, rpm, etc) with great ease and sanity.
-	pkgver = 1.15.0
+	pkgver = 1.15.1
 	pkgrel = 1
 	url = https://github.com/jordansissel/fpm
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = fpm
 	depends = ruby-pleaserun
 	depends = ruby-stud
 	options = !emptydirs
-	source = https://github.com/jordansissel/fpm/archive/v1.15.0.tar.gz
-	sha256sums = 648abcd8d0004429b81cd6ff2fe79ae5a9e84bfed880c3a7e4ba41c0f88061ce
+	source = https://github.com/jordansissel/fpm/archive/v1.15.1.tar.gz
+	sha256sums = 7de3512d17dc5b6229993813e3036489129cc7b9ebc35b3e5e7fe10cdb2051de
 
 pkgname = fpm
