@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="chrolog-appimage"
-pkgver=1.1
-pkgrel=2
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="A automated time tracking tool"
 arch=("x86_64")
 url="https://github.com/Lukylix/Chrolog"
@@ -10,8 +10,8 @@ depends=('zlib' 'glibc' 'logkeys')
 options=(!strip)
 conflicts=("${pkgname%-appimage}")
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}.0.AppImage")
-sha256sums=('fdeea3eaefeeefca6c5f413d3a7850842e530e4a32d8ce0c931740522bfc2aa3')
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${pkgname%-appimage}-${pkgver}.AppImage")
+sha256sums=('7f19f3ed147e4c205bb7d8f1fd5a877c24980302132c1a072ac3400906ec9b93')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
