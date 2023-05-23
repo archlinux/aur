@@ -1,6 +1,6 @@
 pkgbase = emacs29-pgtk-trampolines-git
 	pkgdesc = An extensible, customizable, free/libre text editor - and more (emacs-29 release branch).
-	pkgver = 29.0.91.166361
+	pkgver = 29.0.91.r34.a347b26
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	arch = x86_64
@@ -36,12 +36,7 @@ pkgbase = emacs29-pgtk-trampolines-git
 	depends = zlib
 	provides = emacs
 	conflicts = emacs
-	conflicts = emacs-nox
-	conflicts = emacs-git
-	replaces = emacs
-	replaces = emacs-nox
-	replaces = emacs-git
 	source = emacs29-pgtk-trampolines-git::git+https://git.savannah.gnu.org/git/emacs.git#branch=emacs-29
-	b2sums = SKIP
+	sha256sums = SKIP
 
 pkgname = emacs29-pgtk-trampolines-git

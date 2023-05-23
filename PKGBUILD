@@ -6,7 +6,7 @@
 # https://lists.gnu.org/archive/html/emacs-devel/2022-11/msg01774.html
 
 pkgname=emacs29-pgtk-trampolines-git
-pkgver=29.0.91.166361
+pkgver=29.0.91.r35.117b29c
 pkgrel=1
 pkgdesc='An extensible, customizable, free/libre text editor - and more (emacs-29 release branch).'
 arch=(x86_64)
@@ -46,16 +46,15 @@ makedepends=(
 	texlive-core
 )
 provides=(emacs)
-conflicts=(emacs emacs-nox emacs-git)
-replaces=(emacs emacs-nox emacs-git)
+conflicts=(emacs)
 source=($pkgname::git+https://git.savannah.gnu.org/git/emacs.git#branch=emacs-29)
-b2sums=(SKIP)
+sha256sums=(SKIP)
+
 
 pkgver() {
 	cd "$srcdir/$pkgname"
-	printf '%s.%s'                                                  \
-		"$(awk -F ', ' '/AC_INIT/ { print $2 }' configure.ac )"		\
-		"$(git rev-list --count HEAD)"
+	printf '%s'                                                \
+		"$(git describe --long --abbrev=7 | sed 's/^emacs.//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
