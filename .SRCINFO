@@ -4,9 +4,6 @@ pkgbase = flow
 	pkgrel = 2
 	url = https://flow.org
 	arch = x86_64
-	arch = i686
-	arch = pentium4
-	arch = armv7h
 	arch = aarch64
 	license = MIT
 	makedepends = ocaml>=4.14.0
