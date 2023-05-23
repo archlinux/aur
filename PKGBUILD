@@ -1,18 +1,18 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='jst-config'
 pkgname="ocaml-$_projectname"
-pkgver='0.15.1'
-pkgrel='4'
+pkgver='0.16.0'
+pkgrel='1'
 pkgdesc='Compile-time configuration for Jane Street libraries'
-# If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
-arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
+# If you're running on aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
+arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0' 'ocaml-ppx_assert>=0.15.0')
+depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-ppx_assert>=0.16.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('389854aad6775756fd51374a036c748947f186eae4b48a4863549e7d8efafee25bdfc7c525dd2c466d9f0e0265b48a6e7b950042b6c9014051f8288393173147')
+sha512sums=('379446360c454c90ee80ed08dda3c34aff05d7026e77f868c33eb2fe93921e1ae9412bb69a5c92d54179d5465e0a1aab38cbf8ad55a86b2d164784015152c4ac')
 
 _sourcedirectory="$_projectname-$pkgver"
 
