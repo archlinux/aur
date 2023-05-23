@@ -1,24 +1,24 @@
 pkgbase = snagboot
 	pkgdesc = Generic recovery and reflashing tool for embedded platforms
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bootlin/snagboot
 	arch = any
 	license = GPL2
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = dtc
+	depends = dtc>=1.7.0
 	depends = python>=3.8
-	depends = python-crccheck
-	depends = python-hid
-	depends = python-pyserial
-	depends = python-pyusb
-	depends = python-six
-	depends = python-tftpy
-	depends = python-xmodem
-	depends = python-yaml
-	depends = swig
+	depends = python-crccheck>=1.1
+	depends = python-hid>=1.0.4
+	depends = python-pyserial>=3.5
+	depends = python-pyusb>=1.2.1
+	depends = python-six>=1.16.0
+	depends = python-tftpy>=0.8.2
+	depends = python-xmodem>=0.4.6
+	depends = python-yaml>=6.0
+	depends = swig>=4.1.1
 	source = https://github.com/bootlin/snagboot/archive/refs/tags/v1.0.tar.gz
 	b2sums = e8c0486b42fb31587ec9401ab4dd678d4649025ba943d2d2c8f59dd8da4dacd91e5b8edaa321a447a7fc44d345d2c4f68fc0d5939c31842302c8cdc7e73f2457
 
