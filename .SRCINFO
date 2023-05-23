@@ -1,0 +1,11 @@
+pkgbase = neurodeskapp-bin
+	pkgdesc = NeurodeskApp, based on JupyterLab desktop application, based on Electron.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/NeuroDesk/neurodesk-app
+	arch = x86_64
+	license = BSD-3-Clause
+	source = https://github.com/NeuroDesk/neurodesk-app/releases/download/v0.1.0/NeurodeskApp-Setup-Debian.deb
+	sha256sums = 4846f5ba4a2dc22f8e1ecaef64f3fd415b9d7e3d09943ddabf0ba1f7c2ffaef9
+
+pkgname = neurodeskapp-bin
