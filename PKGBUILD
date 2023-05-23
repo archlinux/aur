@@ -7,8 +7,8 @@
 
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=2023.5.2
-pkgrel=2
+pkgver=2023.5.3
+pkgrel=1
 epoch=1
 arch=(any)
 url=https://home-assistant.io/
@@ -66,7 +66,7 @@ optdepends=(
   'python-lxml: Meteo France integration'
   'python-paho-mqtt: mqtt integration'
 )
-_tag=e904edb12e7ff5b96ee86741fcb52bffd72fc498
+_tag=e0a97ec90d11d78647501848e987485f48ac319a
 source=(
   git+https://github.com/home-assistant/home-assistant.git#tag=${_tag}
   home-assistant.service
