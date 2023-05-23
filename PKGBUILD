@@ -1,6 +1,6 @@
 # Maintainer: Taufik Hidayat <tfkhdyt@proton.me>
 pkgname=prayermate-id
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 epoch=
 pkgdesc="Command line based Muslim prayer reminder - Indonesia"
@@ -32,6 +32,7 @@ package() {
 	install -Dm644 _prayermate.zsh "$pkgdir/usr/share/zsh/site-functions/_prayermate"
 	install -Dm644 prayermate.fish "$pkgdir/usr/share/fish/vendor_completions.d/prayermate.fish"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/prayermate-id/LICENSE"
+  install -Dm644 prayermate-notify.service "$pkgdir/usr/lib/systemd/system/prayermate-notify.service"
   mkdir -p "$pkgdir/usr/share/prayermate"
 	cp -R assets "$pkgdir/usr/share/prayermate"
 }
