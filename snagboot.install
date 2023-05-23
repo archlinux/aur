@@ -1,0 +1,3 @@
+post_install() {
+    echo 'Add yourself to the "plugdev" group to be able to read and write to the supported USB devices'
+}
