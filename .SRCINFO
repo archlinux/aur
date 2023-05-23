@@ -1,0 +1,15 @@
+pkgbase = orogene-bin
+	pkgdesc = A next-generation platform and package manager for Node.js-compatible and frontend JavaScript projects
+	pkgver = 0.3.27
+	pkgrel = 1
+	url = https://github.com/orogene/orogene
+	arch = x86_64
+	license = APACHE
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl-1.1
+	provides = oro
+	source = https://github.com/orogene/orogene/releases/download/v0.3.27/orogene-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = ae55be5a89cfe61ae74be7ba4abcef5354481e6228d4880f60648b666aba4670
+
+pkgname = orogene-bin
