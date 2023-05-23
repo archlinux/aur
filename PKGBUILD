@@ -3,7 +3,7 @@
 _projectname='ocplib-endian'
 pkgname="ocaml-$_projectname"
 pkgver='1.2'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='Optimised functions to read and write int16/32/64 from strings, bytes and bigarrays'
 # If you're running on i486, i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the cppo AUR dependency
 arch=('x86_64' 'i486' 'i686' 'pentium4' 'armv7h' 'aarch64')
@@ -12,10 +12,21 @@ license=('custom:LGPL2.1 with linking exception')
 depends=('ocaml>=4.03.0')
 makedepends=('cppo' 'dune>=1.0.0')
 options=('!strip')
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('2e70be5f3d6e377485c60664a0e235c3b9b24a8d6b6a03895d092c6e40d53810bfe1f292ee69e5181ce6daa8a582bfe3d59f3af889f417134f658812be5b8b85')
+source=(
+	"$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz"
+	"$pkgname-$pkgver-$pkgrel-remove-bytes-dep.diff::$url/pull/26.diff"
+)
+sha512sums=('2e70be5f3d6e377485c60664a0e235c3b9b24a8d6b6a03895d092c6e40d53810bfe1f292ee69e5181ce6daa8a582bfe3d59f3af889f417134f658812be5b8b85'
+            '6199b7032bb3939513de1376966c595fc47e8204f2ba96d6909897378ed18f88e39d81bdabb09c4669c092eacdb8c600fccde733d61677890093b2a50bb90bf0')
 
 _sourcedirectory="$_projectname-$pkgver"
+
+prepare() {
+	cd "$srcdir/$_sourcedirectory/"
+
+	# Make sure we don't directly depend on bytes, as that stopped working in ocaml 5.0 (https://github.com/OCamlPro/ocplib-endian/pull/26)
+	patch --forward -p1 < "../$pkgname-$pkgver-$pkgrel-remove-bytes-dep.diff"
+}
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
