@@ -1,12 +1,12 @@
 pkgbase = nodejs-docs
 	pkgdesc = Node.js API documentation.
-	pkgver = 19.3.0
+	pkgver = 20.2.0
 	pkgrel = 1
 	url = https://nodejs.org/en/docs/
 	arch = any
 	license = MIT
 	options = docs
-	source = https://nodejs.org/dist/v19.3.0/node-v19.3.0.tar.gz
-	sha256sums = 4dc4c4e0c510913ed6c4f37b516243ab96a2d98eff1b7d78cf8f8f8b6d415b98
+	source = https://nodejs.org/dist/v20.2.0/node-v20.2.0.tar.gz
+	sha256sums = cd1b0eb67fffe83112034fbdc64b363287e017f835251702f041982633e4b6aa
 
 pkgname = nodejs-docs
