@@ -3,12 +3,12 @@
 
 pkgname=caveexpress
 pkgver=2.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Classic 2D platformer with physics-based gameplay and dozens of levels"
 arch=('i686' 'x86_64')
 url="http://www.caveproductions.org"
 license=('GPL3' 'CCPL')
-depends=('sdl2_mixer' 'sdl2_image' 'sdl2_net' 'sqlite3' 'lua52' 'box2d' 'yajl')
+depends=('sdl2_mixer' 'sdl2_image' 'sdl2_net' 'sqlite3' 'box2d' 'yajl' 'lua')
 makedepends=('cmake' 'glm')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/mgerhardy/$pkgname/archive/$pkgver.tar.gz"
         $pkgname-installation-paths.patch)
@@ -19,11 +19,14 @@ prepare() {
   # packaging fixes
   cd "$pkgname-$pkgver/cmake"
   patch -N -i "${srcdir}/$pkgname-installation-paths.patch"
+  
+  cd '..'
+  sed -i 's/@APP@-icon/@APP@/' 'contrib/installer/linux/desktop.in'
 }
 
 build() {
   cmake -S "$pkgname-$pkgver" -B "build" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
-    -DPKGDATADIR=/usr/share -DCAVEPACKER=on -DUNITTESTS=off
+    -DPKGDATADIR=/usr/share/games -DCAVEPACKER=on -DUNITTESTS=off
   cmake --build "build"
 }
 
@@ -34,6 +37,8 @@ package() {
   cd "$pkgname-$pkgver"
   install -d "$pkgdir"/usr/share/doc
   cp -rup docs/$pkgname "$pkgdir"/usr/share/doc
+  
+  rm -f "$pkgdir"/usr/share/applications/*.yaml
   
   install -Dpm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
