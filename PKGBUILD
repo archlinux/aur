@@ -2,7 +2,7 @@
 pkgname=deepin-wine-welink
 _pkgname=com.huaweicloud.welink.spark
 _appname=WeLink
-pkgver=7.27.3.447
+pkgver=7.28.8.455
 _sparkver=7.21.3.403
 pkgrel=1
 epoch=
@@ -23,11 +23,11 @@ source=(
     "LICENSE.html::https://www.huaweicloud.com/declaration/sa_cua_computing.html"
     "run.sh")
 sha256sums=('56273fdd2c74d0b310a4513c49cfb2ee07ab89f97312ff871c1b6d9c6b25279c'
-            '70ece1ee1325f7bb74e2bec8fa006c66df085135d4c5151433cde650929c968c'
+            '40286a8ca06f5ea39df0aa429e4c3b166ede910d08774adb7f485faf76a7f62a'
             '3e2ed9203a5ce3b2f00b6c942d8fac6b24e7a6e7b1ebc863cee2e27d3ff487db'
             'd3f310b0d94bc630700afec6d0786edc1176ca28def75b518167deba1965288a'
-            '3229f0c183cbc9414b3e54517e4359cf8d440cfb7e48576fa883cc65a68ec569'
-            '27c1cefd6a511873be8c2fcee41d303547d07fc70d7cd7702018c60b6f5bcd82')
+            '79d082ab7892bfd5dc700ad495f2d07b91989cd7c7d21df0701b06fea4ff2e7b'
+            'd06c77ba5bfd3d695800eb3fc37ccdc3a40945b238bb4c444e7004bf06818c74')
  
 package() {
     bsdtar -xf data.tar.xz -C "${pkgdir}" --gname root --uname root
