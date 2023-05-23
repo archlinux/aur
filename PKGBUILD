@@ -3,7 +3,7 @@
 
 pkgname=argc-git
 pkgver=1.2.0.r1.g7b0178a
-pkgrel=1
+pkgrel=2
 pkgdesc="An elegant command-line options, arguments and sub-commands parser for bash (git)"
 arch=('x86_64')
 url="https://github.com/sigoden/argc"
@@ -36,11 +36,10 @@ build() {
   $compgen zsh  > "completions/${pkgname%-git}.zsh"
 }
 
-# https://github.com/sigoden/argc/issues/113
-# check() {
-#   cd "${pkgname%-git}"
-#   cargo test --frozen
-# }
+check() {
+  cd "${pkgname%-git}"
+  cargo test --frozen
+}
 
 package() {
   cd "${pkgname%-git}"
