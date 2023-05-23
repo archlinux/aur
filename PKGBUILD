@@ -2,19 +2,19 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_compare'
 pkgname="ocaml-$_projectname"
-pkgver='0.15.0'
-pkgrel='4'
+pkgver='0.16.0'
+pkgrel='1'
 epoch='1'
 pkgdesc='Generation of comparison functions from types'
-# If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
-arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
+# If you're running on aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
+arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0' 'ocaml-ppxlib>=0.23.0')
+depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-ppxlib>=0.28.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('2c2ae8bdaf08a478bcabdcdcd724abb53773c8633273d3d7a9f8a8eab01d04c281d11299f2890a2f9919adcf38a65bcfcfd79c613f27325e536e2d7cf0527781')
+sha512sums=('8acbb52a841012fc81efa0f8c1df4d8f0595bddbaf723aed4702d0f7917552ac4c08f6b971c1aaf765460a512f2fca46fe8bbe14fb1b021a3fe3be4181bdb030')
 
 _sourcedirectory="$_projectname-$pkgver"
 
