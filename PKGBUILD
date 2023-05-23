@@ -3,7 +3,7 @@
 pkgname=python-wordninja
 _pyname=${pkgname#python-}
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Probabilistically split concatenated words using NLP based on English Wikipedia unigram frequencies'
 arch=(x86_64)
 url="https://github.com/keredson/$_pyname"
