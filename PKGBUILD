@@ -2,15 +2,15 @@
 
 pkgname=telegraph
 pkgdesc='Write and decode morse'
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 arch=('any')
 url="https://github.com/fkinoshita/Telegraph"
-license=(GPL3)
+license=('GPL3')
 depends=('python' 'libadwaita')
 makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
-_commit=3885f03e3c0263bc343034137f15f7a80558bbba
+_commit=75e77946099f04d42e30472ef283b98f56d5362f
 source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
