@@ -2,7 +2,7 @@
 # Contributer: Paul <paul@mrarm.io>
 
 pkgname=mcpelauncher-linux-git
-pkgver=v0.7.0.qt6.r1.ge643112
+pkgver=v0.9.0.qt6.r5.g03036fd-1
 pkgrel=1
 pkgdesc="Minecraft: Pocket Edition launcher for Linux"
 arch=('x86_64' 'i686')
@@ -44,7 +44,9 @@ source=(
   'git+https://github.com/minecraft-linux/properties-parser'
   'git+https://github.com/MCMrARM/simple-ipc'
   'git+https://github.com/minecraft-linux/android_bionic'
-  'git+https://android.googlesource.com/platform/system/core'
+  # Temporary override of 'git+https://android.googlesource.com/platform/system/core'
+  # git clone --mirror timed out on archlinux while it still works on ubuntu 22.04, the history has been truncated due to large files
+  'git+https://github.com/minecraft-linux/android_core'
 )
 
 md5sums=(
@@ -115,8 +117,13 @@ prepare() {
   git -C mcpelauncher-manifest config submodule.simple-ipc.url "$srcdir/simple-ipc"
   git -C mcpelauncher-manifest -c protocol.file.allow=always submodule update
   git -C mcpelauncher-manifest/mcpelauncher-linker config submodule.bionic.url "$srcdir/android_bionic"
-  git -C mcpelauncher-manifest/mcpelauncher-linker config submodule.core.url "$srcdir/core"
-  git -C mcpelauncher-manifest/mcpelauncher-linker -c protocol.file.allow=always submodule update
+  # Workaround of git clone --mirror timeout commit sha of core doesn't match git repo
+  #git -C mcpelauncher-manifest/mcpelauncher-linker config submodule.core.url "$srcdir/core"
+  #git -C mcpelauncher-manifest/mcpelauncher-linker -c protocol.file.allow=always submodule update
+  git -C mcpelauncher-manifest/mcpelauncher-linker config submodule.core.url "$srcdir/android_core"
+  git -C mcpelauncher-manifest/mcpelauncher-linker -c protocol.file.allow=always submodule init
+  git -C mcpelauncher-manifest/mcpelauncher-linker -c protocol.file.allow=always submodule update bionic
+  GIT_DIR="$PWD/mcpelauncher-manifest/mcpelauncher-linker/core/.git" git -C mcpelauncher-manifest/mcpelauncher-linker/core -c protocol.file.allow=always fetch "$srcdir/android_core" HEAD && git -C mcpelauncher-manifest/mcpelauncher-linker/core checkout FETCH_HEAD || git -C mcpelauncher-manifest/mcpelauncher-linker -c protocol.file.allow=always clone "$srcdir/android_core" .
 }
 
 build() {
