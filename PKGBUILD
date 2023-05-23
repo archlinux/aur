@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=orbiton
-pkgver=2.61.0
+pkgver=2.62.0
 pkgrel=1
 pkgdesc='Text editor and minimalistic IDE'
 arch=(x86_64)
@@ -11,7 +11,7 @@ makedepends=(git go vte3)
 conflicts=(o)
 replaces=(o)
 provides=(o)
-source=("git+$url#commit=81afb48057e2e6c7dabc175c1aacb11c6402829b") # tag: v2.61.0
+source=("git+$url#commit=7d4982372dd120f088b11ea8bedae6566d263b72") # tag: v2.62.0
 optdepends=('asciidoctor: for writing man pages'
             'agda: for compiling Agda'
             'astyle: for formatting C#'
