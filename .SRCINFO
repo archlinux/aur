@@ -1,7 +1,7 @@
 pkgbase = n-m3u8dl-re-bin
 	pkgdesc = Cross-Platform, beautiful and powerful stream downloader for DASH/HLS.
-	pkgver = 0.1.2_beta
-	pkgrel = 1
+	pkgver = 0.1.3_beta
+	pkgrel = 0
 	url = https://github.com/nilaoda/N_m3u8DL-RE
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = n-m3u8dl-re-bin
 	depends = krb5
 	provides = n-m3u8dl-re
 	conflicts = n-m3u8dl-re
-	source = n-m3u8dl-re-0.1.2_beta.tar.gz::https://github.com/nilaoda/N_m3u8DL-RE/releases/download/v0.1.2-beta/N_m3u8DL-RE_Beta_linux-x64_20221117.tar.gz
-	sha256sums = ccd351cea1dcb644644e579ae37d7a381665410e70202d7baae717be8d89c9cf
+	source = n-m3u8dl-re-0.1.3_beta.tar.gz::https://github.com/nilaoda/N_m3u8DL-RE/releases/download/v0.1.3-beta/N_m3u8DL-RE_Beta_linux-x64_20221202.tar.gz
+	sha256sums = 506b0ceeb9c51af1d260a08cb26cc2be3500754d6641fe129711cae44add721b
 
 pkgname = n-m3u8dl-re-bin
