@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=altair-appimage
-pkgver=5.0.24
+pkgver=5.0.25
 pkgrel=1
 pkgdesc="A beautiful feature-rich GraphQL Client for all platforms."
 arch=('x86_64')
@@ -11,7 +11,7 @@ options=(!strip)
 conflits=("${pkgname%-appimage}" "${pkgname%-appimage}-electron")
 depends=('zlib' 'glibc' 'hicolor-icon-theme')
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}_${pkgver}_x86_64_linux.AppImage")
-sha256sums=('cc697f1e86c3963d099b821ffd74a84fb28f71d14b3b6cb555b1b8fd6a1594af')
+sha256sums=('b832233654fdddf295d03b6926e6b9f6151c1c5f747c376f354b75fcf0358086')
 _install_path="/opt/appimages" 
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"

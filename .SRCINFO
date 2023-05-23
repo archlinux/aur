@@ -1,6 +1,6 @@
 pkgbase = altair-appimage
 	pkgdesc = A beautiful feature-rich GraphQL Client for all platforms.
-	pkgver = 5.0.24
+	pkgver = 5.0.25
 	pkgrel = 1
 	url = https://altairgraphql.dev/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = altair-appimage
 	depends = glibc
 	depends = hicolor-icon-theme
 	options = !strip
-	source = altair-5.0.24.AppImage::https://github.com/altair-graphql/altair/releases/download/v5.0.24/altair_5.0.24_x86_64_linux.AppImage
-	sha256sums = cc697f1e86c3963d099b821ffd74a84fb28f71d14b3b6cb555b1b8fd6a1594af
+	source = altair-5.0.25.AppImage::https://github.com/altair-graphql/altair/releases/download/v5.0.25/altair_5.0.25_x86_64_linux.AppImage
+	sha256sums = b832233654fdddf295d03b6926e6b9f6151c1c5f747c376f354b75fcf0358086
 
 pkgname = altair-appimage
