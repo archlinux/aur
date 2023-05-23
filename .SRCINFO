@@ -1,21 +1,18 @@
 pkgbase = ocaml-ppx_here
 	pkgdesc = Expands [%here] into its location
-	pkgver = 0.15.0
-	pkgrel = 4
+	pkgver = 0.16.0
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/janestreet/ppx_here
 	arch = x86_64
-	arch = i686
-	arch = pentium4
-	arch = armv7h
 	arch = aarch64
 	license = MIT
 	makedepends = dune>=2.0.0
-	depends = ocaml>=4.08.0
-	depends = ocaml-base>=0.15.0
-	depends = ocaml-ppxlib>=0.23.0
+	depends = ocaml>=4.14.0
+	depends = ocaml-base>=0.16.0
+	depends = ocaml-ppxlib>=0.28.0
 	options = !strip
-	source = ocaml-ppx_here-1:0.15.0-4.tar.gz::https://github.com/janestreet/ppx_here/archive/v0.15.0.tar.gz
-	sha512sums = 708bd2edf9390f251e1c76e63462692c01372c7d7c7b54e45347e87ee7da999392148b61a187f2106fbc37d626663260d331982a005bd2f98f9bd6bc8f326cf5
+	source = ocaml-ppx_here-1:0.16.0-1.tar.gz::https://github.com/janestreet/ppx_here/archive/v0.16.0.tar.gz
+	sha512sums = 8729ad57caaf512de4735a3017272d052f322be0847f051ab17bc687ce54f24c398dde8e6ffa10126e035750ec5268e9ce1ee678da7588b718144239fcc90bc8
 
 pkgname = ocaml-ppx_here
