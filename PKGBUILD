@@ -199,7 +199,7 @@ build() {
   "${_cmake_args[@]}" \
   "$@"
 
-  cmake --build build -j${_nproc} -v
+  cmake --build build -v
 
   (
   cd build;
