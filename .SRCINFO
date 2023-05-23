@@ -1,0 +1,18 @@
+pkgbase = python-esutil
+	pkgdesc = Erin Sheldons Python Utilities
+	pkgver = 0.6.10
+	pkgrel = 1
+	url = https://pypi.org/project/esutil
+	arch = any
+	license = GPL
+	checkdepends = python-pytest
+	checkdepends = python-scipy
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-numpy
+	source = https://pypi.org/packages/source/e/esutil/esutil-0.6.10.tar.gz
+	sha512sums = 32a608bce04d237ac096ee0474d172e29d2d42fa5d588bc83d8e087b8140c6e45446a6051d18a23a7ec252287a3b890de4375a7e980a61b1be70946aadb64876
+
+pkgname = python-esutil
