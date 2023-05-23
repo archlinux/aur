@@ -12,14 +12,18 @@ provides=('xwaylandvideobridge' 'pwbypass')
 depends=('qt5-base' 'qt5-x11extras' 'qt5-declarative' 'kcoreaddons' 'kwindowsystem' 'kwidgetsaddons' 'knotifications' 'ki18n' 'gettext' 'xdg-desktop-portal' 'libxcb')
 makedepends=('git' 'ostree')
 optdepends=('freetype2' 'fontconfig' 'pkgconf')
-source=("${url}/-/jobs/${_job}/artifacts/raw/${_name}.flatpak"
+source=("$_name-$pkgver.flatpak::${url}/-/jobs/${_job}/artifacts/raw/${_name}.flatpak"
 		xwaylandvideobridge.sh)
 sha512sums=('98021ab440688551c32a3f2588b79e58cbf68c4a9d4d400ff8185bc05107ba319fdefba2e7c13186a32105c414ec8c9933a2d544bd8713151633bb4da3302d80'
             '71a5a0abff0ae6d6c8b4ff94ce1f343864b33a8e403d9f7c8d1fd7b07c0981468917f1589af7acf1e6296aa20697eda0a99fc8f2afea86cff06849a166e94d53')
 
 prepare(){
+	if [ -d "${srcdir}/outdir" ]; then
+  		# Cleanings for past builds #
+  		rm -r "${srcdir}/outdir"
+	fi
 	ostree init --repo=repo --mode=archive
-	ostree static-delta apply-offline --repo=repo xwaylandvideobridge.flatpak
+	ostree static-delta apply-offline --repo=repo "xwaylandvideobridge-$pkgver.flatpak"
 	ostree checkout --repo=repo -U $(basename $(echo repo/objects/*/*.commit | cut -d/ -f3- --output-delimiter=) .commit) outdir
 }
 
