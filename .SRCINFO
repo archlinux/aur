@@ -1,7 +1,7 @@
 pkgbase = ghidra-extension-ghidrathon
-	pkgdesc = https://github.com/mandiant/Ghidrathon
+	pkgdesc = The FLARE team's open-source extension to add Python 3 scripting to Ghidra.
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mandiant/Ghidrathon
 	arch = any
 	license = Apache

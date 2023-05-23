@@ -1,8 +1,8 @@
 # Maintainer: Tommy Jerry Mairo <tjm@member.fsf.org>
 pkgname=ghidra-extension-ghidrathon
 pkgver=2.1.0
-pkgrel=1
-pkgdesc="https://github.com/mandiant/Ghidrathon"
+pkgrel=2
+pkgdesc="The FLARE team's open-source extension to add Python 3 scripting to Ghidra."
 arch=("any")
 url="https://github.com/mandiant/Ghidrathon"
 license=("Apache")
