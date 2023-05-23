@@ -4,7 +4,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=gtk3-patched-filechooser-icon-view
-pkgver=3.24.37
+pkgver=3.24.38
 pkgrel=1
 epoch=1
 pkgdesc="GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch."
@@ -68,26 +68,27 @@ conflicts=(gtk3 gtk3-print-backends)
 replaces=('gtk3-print-backends<=3.22.26-1')
 license=(LGPL)
 install=gtk3.install
-_commit=013b629a2e5420cc01647f859226eb1a37ebe661  # tags/3.24.37^0
+# workaround weirdness with clones not working
+#_commit=3e6fd55ee00d4209ce2f2af292829e4d6f674adc  # tags/3.24.38^0
 source=(
-  "git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
+  "https://gitlab.gnome.org/GNOME/gtk/-/archive/${pkgver}/gtk-${pkgver}.tar.gz"
   gtk-query-immodules-3.0.hook
   gtk3-filechooser-icon-view.patch
 )
-sha256sums=('SKIP'
+sha256sums=('6cdf7189322b8465745fbb30249044d05b792a8f006746ccce9213db671ec16d'
             'a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229'
             '7a1730f08649b769cbaf24432ec176cefb55a5e81dc969a8242152718cb72eea')
 
-pkgver() {
-  cd gtk
-  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
-}
+#pkgver() {
+#  cd gtk
+#  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
+#}
 
 prepare() {
-  cd gtk
+  cd gtk-${pkgver}
 
   # apply icon-view patch
-  git apply -3 ../gtk3-filechooser-icon-view.patch
+  patch -Np1 -i ../gtk3-filechooser-icon-view.patch
 }
 
 build() {
@@ -103,7 +104,7 @@ build() {
   )
 
   CFLAGS+=" -DG_DISABLE_CAST_CHECKS"
-  arch-meson gtk build "${meson_options[@]}"
+  arch-meson gtk-${pkgver} build "${meson_options[@]}"
   meson compile -C build
 }
 
