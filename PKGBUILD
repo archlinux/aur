@@ -33,10 +33,6 @@ pkgver() {
 
 prepare() {
 	cd "$_pkg"
-	git submodule init
-	git config submodule.mimalloc.url "$srcdir/mimalloc"
-	git config submodule.libraries/MCAD.url "$srcdir/MCAD"
-	git -c protocol.file.allow=always submodule update
 	sed -i 's/ping files.openscad.org/ping archlinux.org/' resources/CMakeLists.txt
 	git submodule update --init --recursive
 }
