@@ -5,17 +5,26 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 pkgname='flow'
 pkgver='0.206.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='A static type checker for JavaScript'
 # If you're running on aarch64, you have to add it to the arch array of the cppo, ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
 arch=('x86_64' 'aarch64')
 url="https://$pkgname.org"
 license=('MIT')
-makedepends=('ocaml>=4.14.0' 'dune>=3.0.0' 'ocaml-base>=0.14.1' 'ocaml-core_kernel>=0.14.1' 'ocaml-dtoa>=0.3.2' 'ocaml-fileutils>=0.6.3' 'ocaml-inotify>=2.4.1' 'ocaml-lwt>=5.4.0' 'ocaml-lwt_log>=1.1.1' 'ocaml-ppx_deriving' 'ocaml-ppx_gen_rec' 'ocaml-ppx_let>=0.14.0' 'ocaml-ppxlib' 'ocaml-sedlex>=2.3' 'ocaml-visitors' 'ocaml-wtf8')
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/facebook/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('309a82bda3ede14f73dd814445a0d9616540087283466c232dd106931ba62c5900fe883b8e8f1593fbb4b11f2b1a421159a8b5991c35fcbcf5a63dc698675570')
+makedepends=('ocaml>=4.14.0' 'camlp-streams' 'dune>=3.0.0' 'ocaml-base>=0.14.1' 'ocaml-core_kernel>=0.14.1' 'ocaml-dtoa>=0.3.2' 'ocaml-fileutils>=0.6.3' 'ocaml-inotify>=2.4.1' 'ocaml-lwt>=5.4.0' 'ocaml-lwt_log>=1.1.1' 'ocaml-ppx_deriving' 'ocaml-ppx_gen_rec' 'ocaml-ppx_let>=0.14.0' 'ocaml-ppxlib' 'ocaml-sedlex>=2.3' 'ocaml-visitors' 'ocaml-wtf8')
+source=(
+	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/facebook/$pkgname/archive/v$pkgver.tar.gz"
+	'add-streams-dep.diff'
+)
+sha512sums=('309a82bda3ede14f73dd814445a0d9616540087283466c232dd106931ba62c5900fe883b8e8f1593fbb4b11f2b1a421159a8b5991c35fcbcf5a63dc698675570'
+            '0b7359e263c113bf1e411a648d8ea754872cc7eef0c171d78a3053cf236642cb55314da5c1c283607fd08c0c3583d8e2f9d9536e9ff1b1892cd3ce6d5bb5c21a')
 
 _sourcedirectory="$pkgname-$pkgver"
+
+prepare() {
+	cd "$srcdir/$_sourcedirectory/"
+	patch --forward -p1 < '../add-streams-dep.diff'
+}
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"

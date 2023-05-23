@@ -1,0 +1,32 @@
+diff --git a/flow_parser.opam b/flow_parser.opam
+index 68e0ab4b5..73f5f8976 100644
+--- a/flow_parser.opam
++++ b/flow_parser.opam
+@@ -15,6 +15,7 @@ depends: [
+   "ppx_gen_rec" {build}
+   "sedlex" {>= "2.3"}
+   "wtf8"
++  "camlp-streams"
+ ]
+ dev-repo: "git+https://github.com/facebook/flow.git"
+ synopsis: "The Flow parser is a JavaScript parser written in OCaml"
+diff --git a/src/third-party/ocaml-sourcemaps/src/dune b/src/third-party/ocaml-sourcemaps/src/dune
+index 9b920401d..fde1d33c6 100644
+--- a/src/third-party/ocaml-sourcemaps/src/dune
++++ b/src/third-party/ocaml-sourcemaps/src/dune
+@@ -1,4 +1,4 @@
+ (library
+  (name flow_third_party_sourcemaps)
+  (wrapped false)
+- (libraries flow_third_party_vlq))
++ (libraries flow_third_party_vlq camlp-streams))
+diff --git a/src/third-party/ocaml-vlq/src/dune b/src/third-party/ocaml-vlq/src/dune
+index ba49dfba4..70f766b39 100644
+--- a/src/third-party/ocaml-vlq/src/dune
++++ b/src/third-party/ocaml-vlq/src/dune
+@@ -1,3 +1,4 @@
+ (library
+  (name flow_third_party_vlq)
+- (wrapped false))
++ (wrapped false)
++ (libraries camlp-streams))
