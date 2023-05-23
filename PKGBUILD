@@ -5,7 +5,7 @@
 
 pkgname=bombermaaan
 pkgver=1.4.0.627
-pkgrel=8
+pkgrel=9
 _pkgdate=20081018
 pkgdesc="A classic Bomberman-like game with multiplayer support"
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ url="https://$pkgname.sourceforge.net"
 license=('GPL3' 'custom:Proprietary')
 depends=('sdl_mixer')
 install=$pkgname.install
-source=("http://downloads.sourceforge.net/$pkgname/Bombermaaan_${pkgver}_${_pkgdate}_src.tar.gz"
-        "http://downloads.sourceforge.net/$pkgname/Bombermaaan_${pkgver}_${_pkgdate}_res.tar.gz"
+source=("https://downloads.sourceforge.net/$pkgname/Bombermaaan_${pkgver}_${_pkgdate}_src.tar.gz"
+        "https://downloads.sourceforge.net/$pkgname/Bombermaaan_${pkgver}_${_pkgdate}_res.tar.gz"
         "Bombermaan_levels_pack.zip"
         "$pkgname.png"
         "$pkgname.desktop"
@@ -35,8 +35,6 @@ prepare() {
   cd "Bombermaaan"
   # type fix
   sed "s|\tchar \*backslash|\tconst char \*backslash|" -i winreplace.cpp
-  # adapt directory to arch standards
-  sed "s|share/games/bombermaaan|share/bombermaaan|" -i CGame.cpp
   # add our cflags/ldflags
   sed "s|SDL_CFLAGS :=|& $CXXFLAGS |;s|SDL_LDFLAGS :=|& $LDFLAGS |" -i Makefile
   
@@ -60,8 +58,8 @@ package() {
   install -Dm644 Readme.html "$pkgdir"/usr/share/doc/$pkgname/README.html
   cd ..
   # level pack by feillyne: http://www.moddb.com/games/bombermaaan/addons/level-pack-151-levels
-  install -d "$pkgdir"/usr/share/$pkgname/Levels
-  install -m644 Levels/* "$pkgdir"/usr/share/$pkgname/Levels
+  install -d "$pkgdir"/usr/share/games/$pkgname/Levels
+  install -m644 Levels/* "$pkgdir"/usr/share/games/$pkgname/Levels
   # .desktop entry
   install -Dm644 $pkgname.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
   install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
