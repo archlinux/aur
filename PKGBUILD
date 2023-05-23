@@ -3,7 +3,7 @@ _job=962676
 _name=xwaylandvideobridge
 pkgname=${_name}-bin
 pkgver=j${_job}
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to make it easy to stream wayland windows and screens to Xwayland applicatons that don't have native pipewire support."
 arch=(x86_64)
 url="https://invent.kde.org/system/${_name}"
@@ -19,7 +19,7 @@ sha512sums=('98021ab440688551c32a3f2588b79e58cbf68c4a9d4d400ff8185bc05107ba319fd
 
 prepare(){
 	if [ -d "${srcdir}/outdir" ]; then
-  		# Cleanings for past builds #
+  		# Clean the past builds #
   		rm -r "${srcdir}/outdir"
 	fi
 	ostree init --repo=repo --mode=archive
