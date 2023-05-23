@@ -2,19 +2,19 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_jane'
 pkgname="ocaml-$_projectname"
-pkgver='0.15.0'
-pkgrel='4'
+pkgver='0.16.0'
+pkgrel='1'
 epoch='1'
 pkgdesc='Standard Jane Street ppx rewriters'
-# If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
-arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
+# If you're running on aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
+arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.08.0' 'ocaml-base_quickcheck>=0.15.0' 'ocaml-ppx_assert>=0.15.0' 'ocaml-ppx_base>=0.15.0' 'ocaml-ppx_bench>=0.15.0' 'ocaml-ppx_bin_prot>=0.15.0' 'ocaml-ppx_custom_printf>=0.15.0' 'ocaml-ppx_disable_unused_warnings>=0.15.0' 'ocaml-ppx_expect>=0.15.0' 'ocaml-ppx_fields_conv>=0.15.0' 'ocaml-ppx_fixed_literal' 'ocaml-ppx_here>=0.15.0' 'ocaml-ppx_ignore_instrumentation>=0.15.0' 'ocaml-ppx_inline_test>=0.15.0' 'ocaml-ppx_let>=0.15.0' 'ocaml-ppx_log>=0.15.0' 'ocaml-ppx_module_timer>=0.15.0' 'ocaml-ppx_optcomp>=0.15.0' 'ocaml-ppx_optional>=0.15.0' 'ocaml-ppx_pipebang>=0.15.0' 'ocaml-ppx_sexp_message>=0.15.0' 'ocaml-ppx_sexp_value>=0.15.0' 'ocaml-ppx_stable>=0.15.0' 'ocaml-ppx_string>=0.15.0' 'ocaml-ppx_typerep_conv>=0.15.0' 'ocaml-ppx_variants_conv>=0.15.0' 'ocaml-ppxlib>=0.23.0')
+depends=('ocaml>=4.14.0' 'ocaml-base_quickcheck>=0.16.0' 'ocaml-ppx_assert>=0.16.0' 'ocaml-ppx_base>=0.16.0' 'ocaml-ppx_bench>=0.16.0' 'ocaml-ppx_bin_prot>=0.16.0' 'ocaml-ppx_custom_printf>=0.16.0' 'ocaml-ppx_disable_unused_warnings>=0.16.0' 'ocaml-ppx_expect>=0.16.0' 'ocaml-ppx_fields_conv>=0.16.0' 'ocaml-ppx_fixed_literal>=0.16.0' 'ocaml-ppx_here>=0.16.0' 'ocaml-ppx_ignore_instrumentation>=0.16.0' 'ocaml-ppx_inline_test>=0.16.0' 'ocaml-ppx_let>=0.16.0' 'ocaml-ppx_log>=0.16.0' 'ocaml-ppx_module_timer>=0.16.0' 'ocaml-ppx_optional>=0.16.0' 'ocaml-ppx_pipebang>=0.16.0' 'ocaml-ppx_sexp_message>=0.16.0' 'ocaml-ppx_sexp_value>=0.16.0' 'ocaml-ppx_stable>=0.16.0' 'ocaml-ppx_stable_witness>=0.16.0' 'ocaml-ppx_string>=0.16.0' 'ocaml-ppx_tydi>=0.16.0' 'ocaml-ppx_typerep_conv>=0.16.0' 'ocaml-ppx_variants_conv>=0.16.0' 'ocaml-ppxlib>=0.28.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('e594a0caea66e0f976615b2a1db50aad89389888678d9ec7c023b2adb3211817a841a5065de9a65956bde0cb6088ce1b0b3afed6b57b618b9b50e5c07684e3fa')
+sha512sums=('8bb5997eb33a2f8ef7ec88d5a31c03828cc6f7070641463ad5af318b865fe8638b1affa359db07e8880364598b43ad19621882cf4c3311e38cf0638a59271652')
 
 _sourcedirectory="$_projectname-$pkgver"
 
