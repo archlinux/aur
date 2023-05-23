@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=BeatSaberModManager
+Comment=Yet another mod installer for Beat Saber, heavily inspired by ModAssistant.
+Type=Application
+Icon=beat-saber-mod-manager
+Exec=BeatSaberModManager
+Categories=Games;
