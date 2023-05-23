@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="eudic-appimage"
 pkgver=12.7.1
-pkgrel=4
+pkgrel=5
 pkgdesc="权威的英语词典软件,英语学习者必备的工具,支持学习笔记、生词本多平台同步,让你随时随地学英语."
 arch=('x86_64')
 url="https://www.eudic.net/v4/en/app/eudic"
@@ -13,8 +13,8 @@ depends=('zlib' 'glibc')
 _install_path="/opt/appimages"
 options=(!strip)
 source=("${pkgname%-appimage}-${pkgver}.AppImage::https://static-main.frdic.com/pkg/${pkgname%-appimage}.AppImage?v=2023-04-12"
-    "LICENSE.html::https://www.eudic.net/v4/home/privacy")
-sha256sums=('7fb7d6dabc1faf46d7c09cb428d7728ad88372bbb690a48b4a140884e787ba1a'
+    "LICENSE.html")
+sha256sums=('e2ef1e75571cd74e88928db7cbad43d8d2dffd0a0a6bdf35032403d09677a681'
             '08681fd71b5fef70aa1f672f962f8e72aee935a7224d57e16e8ad2b03c69e7f3')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
