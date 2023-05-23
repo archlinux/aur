@@ -1,10 +1,10 @@
 pkgbase = python-gradio-client
 	pkgdesc = Create UIs for your machine learning model in Python in 3 minutes
-	pkgver = 0.1.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/gradio-app/gradio
 	arch = x86_64
-	license = custom
+	license = Apache-2.0
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -18,7 +18,7 @@ pkgbase = python-gradio-client
 	depends = python-huggingface-hub
 	depends = python-typing-extensions
 	depends = python-httpx
-	source = https://files.pythonhosted.org/packages/74/f2/12a939404a7bc395acc3f31094522156437168ddcb594c2a02ff9eaec695/gradio_client-0.1.4.tar.gz
-	sha512sums = 188b86bc3f60ab913b322d303949c12eac822781ca54b859e6a1c971b5a7edfd35290c7b6e4f29ff2e8b35c3beb25b9a84c4204ebf5ef29d3fa7a6edf04dc536
+	source = https://files.pythonhosted.org/packages/a7/fc/98c3aecadd3b20de21ce1685059a79dab8c4b655ab7f7b742181fffd16df/gradio_client-0.2.5.tar.gz
+	sha512sums = 70959dacf4ce5f13c798724c203732851e46c9d118adf648ece200ced55529a22362cba73e9cbf3ce43fa42ba9c22b058e3d62208fa5226cacc42f8bdda0a877
 
 pkgname = python-gradio-client
