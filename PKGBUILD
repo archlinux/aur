@@ -1,5 +1,7 @@
+# Maintainer: Edgar <Edgar{at}AnotherFoxGuy.com>
+
 pkgname=caelum-git
-pkgver=0.6.3.r38.g7763bff
+pkgver=0.6.3.r49.g4bd1b05
 pkgrel=1
 pkgdesc="Library for OGRE targeted at helping to create nice-looking atmospheric effects."
 arch=('i686' 'x86_64')
@@ -21,10 +23,10 @@ build() {
   cd ${srcdir}/ogre-caelum
 
   # get a clean build dir
-  # [[ -d build ]] && rm -rf build
-  # mkdir build && cd build
+  [[ -d build ]] && rm -rf build
+  mkdir build && cd build
 
-  cmake . \
+  cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release
 
@@ -32,6 +34,6 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/ogre-caelum
+  cd ${srcdir}/ogre-caelum/build
   make DESTDIR=${pkgdir} install
 }

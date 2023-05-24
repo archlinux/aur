@@ -1,6 +1,6 @@
 pkgbase = caelum-git
 	pkgdesc = Library for OGRE targeted at helping to create nice-looking atmospheric effects.
-	pkgver = 0.6.3.r38.g7763bff
+	pkgver = 0.6.3.r49.g4bd1b05
 	pkgrel = 1
 	url = https://ogrecave.github.io/ogre-caelum/
 	arch = i686
