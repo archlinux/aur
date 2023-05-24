@@ -2,7 +2,7 @@
 pkgname=ocaml-libvirt-git
 _pkgname=libvirt-ocaml
 pkgver=r185.94a93bd
-pkgrel=3
+pkgrel=4
 pkgdesc="OCaml bindings for libvirt"
 arch=('i686' 'x86_64')
 url="https://libvirt.org/"
@@ -26,7 +26,6 @@ build() {
   cd "${srcdir}/${_pkgname}"
   autoreconf -i
   ./configure --prefix /usr# --libdir /usr/lib/ocaml
-  make clean # to remove obsolete .cmi file
   make
 }
 
