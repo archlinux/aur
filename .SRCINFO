@@ -1,7 +1,7 @@
 pkgbase = kcc
 	pkgdesc = Kindle Comic Converter converts comic files or folders to ePub or Panel View MOBI
-	pkgver = 5.6.1
-	pkgrel = 3
+	pkgver = 5.6.2
+	pkgrel = 1
 	url = https://github.com/ciromattia/kcc
 	arch = any
 	license = ISC
@@ -16,10 +16,10 @@ pkgbase = kcc
 	optdepends = kindlegen>=2.9: for .mobi generation
 	optdepends = p7zip: for zip/CBZ, rar/CBZ, 7z/CB7 support
 	source = kindlecomicconverter.desktop
-	source = https://github.com/ciromattia/kcc/archive/refs/tags/v5.6.1.tar.gz
+	source = https://github.com/ciromattia/kcc/archive/refs/tags/v5.6.2.tar.gz
 	md5sums = f25b30fbc1bc1db491173215fe411789
-	md5sums = e670d4cbfc56b4d086dba16d834adff8
+	md5sums = 7521672ecdf3b47903642613003a77d5
 	sha256sums = 3502c38d756f5a812ac06f63fe25e062d8720f620ffd7d25641e6accef9fdd9f
-	sha256sums = 9cad85fa8d35ade0d3cff18f5df163eebcf3c6d11443efe881066f365222d547
+	sha256sums = ca33654383c246ab37ba9123346fea47773913d472a6c2c8db9f7fd89795f9b9
 
 pkgname = kcc
