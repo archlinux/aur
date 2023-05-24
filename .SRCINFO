@@ -1,0 +1,16 @@
+pkgbase = ostara-appimage
+	pkgdesc = A desktop application that provides various features to monitor and interact with Spring Boot Applications via Actuator.
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://ostara.dev/
+	arch = x86_64
+	license = Apache
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = glibc
+	conflicts = ostara
+	options = !strip
+	source = ostara-0.9.0.AppImage::https://github.com/krud-dev/ostara/releases/download/v0.9.0/Ostara-0.9.0.AppImage
+	sha256sums = 3c3977e2407920ad9f6dca8e0dde304beaf8c1fe8b6a490c4102d244dc8747b2
+
+pkgname = ostara-appimage
