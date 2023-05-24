@@ -1,0 +1,15 @@
+pkgbase = vikunja-desktop-appimage
+	pkgdesc = The open-source, self-hostable to-do app.Organize everything, on all platforms.
+	pkgver = 0.20.3
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = vikunja-desktop
+	options = !strip
+	source = vikunja-desktop-0.20.3.AppImage::https://dl.vikunja.io/desktop/0.20.3/Vikunja%20Desktop-0.20.3.AppImage
+	sha256sums = 905c55196f2fb3234d90a05cef16210def5c105b5a06826275f4832bdbde05c2
+
+pkgname = vikunja-desktop-appimage
