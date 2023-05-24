@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-extension-burn-my-windows
 	pkgdesc = Disintegrate your apps the old-school way.
-	pkgver = 31
+	pkgver = 32
 	pkgrel = 1
 	url = https://github.com/Schneegans/Burn-My-Windows
 	arch = any
 	license = GPL3
 	makedepends = zip
 	depends = gnome-shell
-	source = https://github.com/Schneegans/Burn-My-Windows/archive/v31.tar.gz
-	b2sums = 1a941ef0dce5d7ccb142c8907cf138addce1dfb47aac4b1fc2be1ee87f10df318daf45018e95d2f7df4be14c28b17e50c90471cb7462dc6af6dbbb4627dfab91
+	source = https://github.com/Schneegans/Burn-My-Windows/archive/v32.tar.gz
+	b2sums = 5039fed6f21f0b24cdf76524f836009e42bedfaa7b79608f6c9dba9eb9867976a0210c14e2c218ea9aa7a2f7dd51d6bc0318fbdc2ded96de45406a85fb0efebb
 
 pkgname = gnome-shell-extension-burn-my-windows
