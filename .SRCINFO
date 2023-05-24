@@ -1,14 +1,16 @@
 pkgbase = python-string-utils
-	pkgdesc = Utility functions for strings checking and manipulation
-	pkgver = 0.6.0
+	pkgdesc = Utility functions for strings validation and manipulation
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/openshift/openshift-restclient-python
+	url = https://pypi.org/project/python-string-utils/
 	arch = any
 	license = APACHE
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/python-string-utils/python-string-utils-0.6.0.tar.gz
-	md5sums = 76ae6911f4bf0f1e76cd9be749c16745
+	source = https://files.pythonhosted.org/packages/source/p/python-string-utils/python-string-utils-1.0.0.tar.gz
+	sha256sums = dcf9060b03f07647c0a603408dc8b03f807f3b54a05c6e19eb14460256fac0cb
 
 pkgname = python-string-utils
-

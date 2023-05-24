@@ -1,22 +1,25 @@
-# Maintainer: Giacomo Longo <gabibbo97@gmail.com>
+# Maintainer: Cedric Girard <cgirard [dot] archlinux [at] valinor [dot] fr>
+# Contributor: Giacomo Longo <gabibbo97@gmail.com>
 pkgname=python-string-utils
-pkgver=0.6.0
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="Utility functions for strings checking and manipulation"
-url="https://github.com/openshift/openshift-restclient-python"
+pkgdesc="Utility functions for strings validation and manipulation"
+url="https://pypi.org/project/python-string-utils/"
 license=('APACHE')
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 arch=('any')
-makedepends=('python-setuptools')
+makedepends=(python-build python-installer python-wheel python-setuptools)
 depends=('python')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('dcf9060b03f07647c0a603408dc8b03f807f3b54a05c6e19eb14460256fac0cb')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python setup.py build
+    cd "$srcdir/$pkgname-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    cd "$srcdir/$pkgname-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    rm "$pkgdir"/usr/README/README.md
+    rmdir "$pkgdir"/usr/README
 }
-md5sums=('76ae6911f4bf0f1e76cd9be749c16745')
