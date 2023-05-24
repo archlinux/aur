@@ -1,7 +1,7 @@
 pkgbase = curl-http3-ngtcp2
-	pkgdesc = An URL retrieval utility and library - compiled with HTTP/3 support (using ngtcp2 and nghttp3)
-	pkgver = 8.0.1
-	pkgrel = 4
+	pkgdesc = command line tool and library for transferring data with URLs - compiled with HTTP/3 support (using ngtcp2 and nghttp3)
+	pkgver = 8.1.1
+	pkgrel = 1
 	url = https://curl.se/
 	arch = x86_64
 	license = MIT
@@ -27,13 +27,29 @@ pkgbase = curl-http3-ngtcp2
 	depends = libnghttp3.so
 	depends = ngtcp2
 	depends = libngtcp2.so
-	provides = curl
+	provides = curl=8.1.1
 	provides = libcurl.so
 	conflicts = curl
-	source = git+https://github.com/curl/curl.git?signed#tag=6b77e19466486b37f93d07d2107579f9508a6645
-	source = ngtcp2-refactor.patch
+	source = git+https://github.com/curl/curl.git?signed#tag=4ac817f9884c538e1343219facae19d93a42778c
+	source = ngtcp2-refactor-r3898.patch
 	validpgpkeys = 27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2
 	sha512sums = SKIP
-	sha512sums = fd0496462866aa67b86bd536a9d051dcab9f546a4bda80bd21a28a93aaac57d0d15ed8d19a36ade9642e10ae41922cb0bb63d56a96b4d79e69dda202fd686da5
+	sha512sums = 45cc856dbba9c74e778d39c77293b12d5cecedbcb75b4a2c4634681078fcc4dd541be1331be1bb6af4ce926c78bbe48b62524fedf0adec9c28cf01fafccae5f2
 
 pkgname = curl-http3-ngtcp2
+
+pkgname = libcurl-http3-ngtcp2-compat
+	pkgdesc = command line tool and library for transferring data with URLs (no versioned symbols)
+	depends = curl-http3-ngtcp2
+	depends = openssl
+	provides = libcurl-compat=8.1.1
+	provides = libcurl-compat.so
+	conflicts = libcurl-compat
+
+pkgname = libcurl-http3-ngtcp2-gnutls
+	pkgdesc = command line tool and library for transferring data with URLs (no versioned symbols, linked against gnutls)
+	depends = curl-http3-ngtcp2
+	depends = gnutls
+	provides = libcurl-gnutls=8.1.1
+	provides = libcurl-gnutls.so
+	conflicts = libcurl-gnutls
