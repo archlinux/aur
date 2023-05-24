@@ -6,18 +6,18 @@
 ### Info ###
 pkgname=ukbprep-bin
 _pkgname=${pkgname%-bin}
-pkgver=2022.03.27
+pkgver=2023.03.09
 pkgrel=1
 pkgdesc='UK Biobank file handlers'
 arch=(x86_64)
 url='https://biobank.ndph.ox.ac.uk'
-_url_util="$url/showcase/util"
+_url_util="$url/ukb/util"
 license=('unknown')
 optdepends=('ukbprep-docs: documentation to help getting started accessing UK Biobank data')
 provides=('dconvert' 'ukbprep' 'gfetch' 'ukbconv' 'ukbfetch' 'ukblink' 'ukbmd5' 'ukbunpack')
 source=(
     "dconvert-$pkgver::$_url_util/dconvert"
-    "encoding-$pkgver.ukb::$_url_util/encoding.ukb"
+    "encoding-$pkgver.dat::$url/ukb/ukb/utilx/encoding.dat"
     "gfetch_linkset-$pkgver.tar::$_url_util/gfetch_linkset.tar"
     "ukbconv-$pkgver::$_url_util/ukbconv"
     "ukbfetch_linkset-$pkgver.tar::$_url_util/ukbfetch_linkset.tar"
@@ -31,7 +31,7 @@ noextract=(
     ukblink_linkset-$pkgver.tar
 )
 md5sums=('9e41ff00bc5ed334cff3e7360705e00e'
-         '6c61630600068911994b48d54f5b7a87'
+         '188fd07589a8658ebe0fc6eb07b6dac6'
          '9530c628fa41c9e3fe7441ac63d9ab84'
          '06b5b39ab608a093b1dd264e27280316'
          '3499b767a6809f96f446d6db28665115'
@@ -85,5 +85,5 @@ package() {
     ln -fs /usr/bin/gfetch "$pkgdir"/usr/bin/ukbgfetch
 
     ## Encoding File ##
-    install -Dm0644 encoding-$pkgver.ukb "$pkgdir"/usr/share/$_pkgname/encoding.ukb
+    install -Dm0644 encoding-$pkgver.dat "$pkgdir"/usr/share/$_pkgname/encoding.dat
 }
