@@ -107,7 +107,7 @@ else
 pkgname="emacs-pgtk-git"
 fi
 pkgver=30.0.50.166368
-pkgrel=3
+pkgrel=4
 pkgdesc="GNU Emacs. Development branch, with PGTK and native json-rpc enabled"
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -252,7 +252,9 @@ pkgver() {
 # Doing so, breaks incremental compilation.
 prepare() {
   cd "$srcdir/emacs-git"
-  git apply $srcdir/json-rpc-lsp-mode.patch
+  # Don't apply this patch for now.
+  # It make Emacs consume a lot of resources but not function well.
+  # git apply $srcdir/json-rpc-lsp-mode.patch
   [[ -x configure ]] || ( ./autogen.sh git && ./autogen.sh autoconf )
 }
 
