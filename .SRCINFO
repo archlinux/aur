@@ -1,0 +1,18 @@
+pkgbase = python-miniballcpp
+	pkgdesc = Smallest Enclosing Balls of Points
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/weddige/miniball
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/M/MiniballCpp/MiniballCpp-0.2.3.tar.gz
+	md5sums = fba99a497f17b7caf27d55036a524ada
+
+pkgname = python-miniballcpp
+	depends = python
