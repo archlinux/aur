@@ -1,6 +1,6 @@
 # Maintainer: Marcin Kocur <marcin2006@gmail.com>
 pkgname="audio_async_loopback-git"
-pkgver=r7.75b8c97
+pkgver=r11.d7af319
 pkgrel=1
 pkgdesc="Real-time S/PDIF PCM/AC3 capture and playback"
 arch=('x86_64')
