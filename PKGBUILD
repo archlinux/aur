@@ -4,7 +4,7 @@
 # Contributor: Chocobo1 <chocobo1@archlinux.net>
 
 pkgname=mingw-w64-rav1e
-pkgver=0.6.3
+pkgver=0.6.6
 pkgrel=1
 pkgdesc='An AV1 encoder focused on speed and safety (mingw-w64)'
 arch=(any)
@@ -22,13 +22,13 @@ makedepends=(
   mingw-w64-rust
   mingw-w64-wine
 )
-_tag=bc155a5801a0d402b16cd42ca1392168d299b70b
+_tag=7c9db10494c2fffa98a572027d756e55bf754036
 source=(
   git+https://github.com/xiph/rav1e.git#tag=${_tag}
   Cargo-rav1e-${pkgver}.lock::https://github.com/xiph/rav1e/releases/download/v${pkgver}/Cargo.lock
 )
 b2sums=('SKIP'
-        '8a4c208534dcc2b6f272eb154aad5b01767b6d09c82735109646173efdda5cf4ed2d4775d437af5aa70cbc3e937d4f5c55eac4738c52441c3fdec7ee7e65ac38')
+        'c7d1f548e9cd194c98685827b178f923d7cb1b4e4c20c4cab4779bc1e56a59b84655731cd0e8e60dfb9d3a3dad6f9bd25aee903601f7a2c5214285584b1a3977')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgver() {
@@ -93,11 +93,15 @@ build() {
     cargo build \
       --release \
       --frozen \
+      --no-default-features \
+      --features binaries,asm,threading,signal_support \
       --manifest-path ./Cargo.toml
 
     cargo cbuild \
       --release \
       --frozen \
+      --no-default-features \
+      --features binaries,asm,threading,signal_support \
       --target $CARGO_BUILD_TARGET \
       --dlltool ${_arch}-dlltool \
       --prefix=/usr/${_arch} \
@@ -128,6 +132,8 @@ check() {
     cargo test \
       --release \
       --frozen \
+      --no-default-features \
+      --features binaries,asm,threading,signal_support \
       --manifest-path ./Cargo.toml
   done
 }
@@ -155,6 +161,8 @@ package() {
 
     cargo install \
       --frozen \
+      --no-default-features \
+      --features binaries,asm,threading,signal_support \
       --offline \
       --no-track \
       --path . \
@@ -162,6 +170,8 @@ package() {
     cargo cinstall \
       --release \
       --frozen \
+      --no-default-features \
+      --features binaries,asm,threading,signal_support \
       --target $CARGO_BUILD_TARGET \
       --dlltool ${_arch}-dlltool \
       --prefix /usr/${_arch} \
