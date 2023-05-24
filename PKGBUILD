@@ -1,7 +1,7 @@
 # Maintainer: traumweh <contact@traumweh.dev>
 
 pkgname="duckypad_daemon"
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A profile autoswitcher daemon for dekuNukem's duckypad"
 arch=("x86_64")
@@ -11,7 +11,7 @@ provides=("duckypad_daemon")
 depends=("libusb" "duckypad-udev")
 makedepends=("cargo")
 source=("https://github.com/traumweh/duckypad_daemon/releases/download/$pkgver/$pkgname-$pkgver-$arch.tar.gz")
-sha512sums=("8c9f0653516a2e7ac5f0f9c45d45ab38a96e3a4301c0040e226f43cbd10ec6ea3cfeacb310c5e5288dd663d5fb5b7f0d024559cd3a4955117aa67136fbc99b58")
+sha512sums=("253f414c61f5d409949b6cea59e65eee54a58d615746d5222fd717bfd86ba76e8de7930235ea386b7fb7a258a33e8787971be03f8c8b5e03745eac390d07c17f")
 
 prepare() {
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
