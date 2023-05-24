@@ -5,7 +5,7 @@ _pkgname=junction
 pkgname=junction-zhfix
 pkgver=1.6
 _tag=v$pkgver
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="Application/browser chooser"
 arch=('x86_64')
@@ -33,7 +33,7 @@ prepare() {
 
   # fix fail to start in none flatpak environment
   pushd src
-  sed -i 's|XDG_DATA_DIRS.*e |FLATPAK_ID=fromAUR XDG_DATA_DIRS=${XDG_DATA_DIRS}:/usr/share |' bin.js
+  sed -i 's|XDG_DATA_DIRS.*e |FLATPAK_ID=fromAUR |' bin.js
   popd
 
   git submodule update --init --recursive
