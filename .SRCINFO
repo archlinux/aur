@@ -1,0 +1,20 @@
+pkgbase = mygui-ogre
+	pkgdesc = A library for creating Graphical User Interfaces for games and 3D applications (Build with the OGRE rendersystem)
+	pkgver = 3.4.2
+	pkgrel = 1
+	url = http://mygui.info/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = ttf-dejavu
+	depends = ogre
+	provides = mygui-ogre
+	conflicts = mygui
+	conflicts = mygui-svn
+	source = https://github.com/MyGUI/mygui/archive/MyGUI3.4.2.tar.gz
+	sha512sums = 202f3df35f0767778b5a91b71dbd1ad3409d0a1977d5fbe3f0d48db430276c71b84edc5a28dd1fdb8e60245b56f2bda99872a4d860b83585f08406b28fb850fe
+
+pkgname = mygui-ogre
