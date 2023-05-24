@@ -1,0 +1,16 @@
+pkgbase = git-good-appimage
+	pkgdesc = Just a simple git client using electron and nodegit, focus on lightweight and performance
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/weedz/git-good
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = glibc
+	conflicts = git-good
+	options = !strip
+	source = git-good-0.1.1.AppImage::https://github.com/weedz/git-good/releases/download/v0.1.1/git-good-0.1.1.AppImage
+	sha256sums = 916b9835670c6c67a7fde5f41e67fe85a94b5db1e8590a9c14d89db3ddc8e2be
+
+pkgname = git-good-appimage
