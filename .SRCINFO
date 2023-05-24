@@ -1,0 +1,19 @@
+pkgbase = simple-music-appimage
+	pkgdesc = Light music.轻音乐
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://simple-music.netlify.app/
+	arch = x86_64
+	license = MIT
+	makedepends = gendesk
+	makedepends = yarn
+	makedepends = npm
+	depends = zlib
+	depends = glibc
+	conflicts = simple-music
+	conflicts = simple-music-bin
+	options = !strip
+	source = simple-music-0.3.3.tar.gz::https://github.com/joey2217/simple-music/archive/refs/tags/v0.3.3.tar.gz
+	sha256sums = a2ab2e85f9d60e4c1ac8d95d2f4d7578fa864b9e602c201036cf344282d2bc74
+
+pkgname = simple-music-appimage
