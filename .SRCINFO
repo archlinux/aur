@@ -1,6 +1,6 @@
 pkgbase = open-ai-translator-appimage
 	pkgdesc = 基于 ChatGPT API 的划词翻译浏览器插件和跨平台桌面端应用 - Browser extension and cross-platform desktop application for translation based on ChatGPT API.
-	pkgver = 0.0.44
+	pkgver = 0.0.46
 	pkgrel = 1
 	url = https://github.com/yetone/openai-translator
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = open-ai-translator-appimage
 	conflicts = open-ai-translator
 	conflicts = openai-translator-bin
 	options = !strip
-	source = open-ai-translator-0.0.44.AppImage::https://github.com/yetone/openai-translator/releases/download/v0.0.44/open-ai-translator_0.0.44_amd64.AppImage
-	sha256sums = 29817e80abb987b77cae6cadf733d1b99fa0404d3bb8576fcc09bb4894ffba4f
+	source = open-ai-translator-0.0.46.AppImage::https://github.com/yetone/openai-translator/releases/download/v0.0.46/open-ai-translator_0.0.46_amd64.AppImage
+	sha256sums = 9e898d1376e1a49a8f577e3677f8f2332387a6c8d04324d914459d08b6406c32
 
 pkgname = open-ai-translator-appimage
