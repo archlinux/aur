@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=python-gnocchiclient
-pkgver=7.0.7
+pkgver=7.0.8
 pkgrel=1
 pkgdesc='Python bindings to the Gnocchi API'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python-pbr' 'python-cliff' 'python-ujson' 'python-keystoneauth1'
 checkdepends=('python-testtools' 'python-fixtures' 'python-openstackclient'
               'python-pytest' 'python-pytest-xdist')
 source=("https://github.com/gnocchixyz/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('c5177ec2f41cee5043d360aa0a71ecc2eab07d3aae24f8d317e9026adadf39dea37df13140b2c07dd6ee1dd7714aef0eb8e88b82a321a45203dc1b715a7d48ed')
+sha512sums=('a840301898cc6ea5ffaeabedee56b9651baf96ea3af247c1f99d7c79ad99cda5c9c4a566d90f65f6e4f4e5888e324b1c65209d9a14f290d5ab4b76739103d2a0')
 
 export PBR_VERSION=$pkgver
 
