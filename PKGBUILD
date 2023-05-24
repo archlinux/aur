@@ -94,6 +94,9 @@ package() {
   # bash completion
   mkdir -p "$pkgdir"/usr/share/bash-completion/completions/
   install -m 0644 ./contrib/completion/git-completion.bash "$pkgdir"/usr/share/bash-completion/completions/git
+  # zsh completion
+  mkdir -p "$pkgdir"/usr/share/zsh/site-functions/
+  install -m 0644 ./contrib/completion/git-completion.zsh "$pkgdir"/usr/share/zsh/site-functions/_git
   # fancy git prompt
   mkdir -p "$pkgdir"/usr/share/git/
   install -m 0644 ./contrib/completion/git-prompt.sh "$pkgdir"/usr/share/git/git-prompt.sh
