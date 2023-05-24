@@ -33,4 +33,4 @@ package() {
   install -Dm755 micr0fetch "$pkgdir/usr/bin/micr0fetch"
 }
 
-sha256sums=('5bb077b90e4f0e90cc93103fa67902d9622cd0d14b358f2ee800b8ccac6b893a')
+sha256sums=('9495aa72622f86cabf2190e877446d17aeeb7dc1a4b1bd12fc622ba9572cd24a')
