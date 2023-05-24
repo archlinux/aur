@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=conserve
-pkgver=23.1.1
+pkgver=23.5.0
 pkgrel=1
 pkgdesc="Robust portable backup tool written in Rust"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('49f96aeb971bc3cf8316662b7109c935c016a77761becd14c0de9f69a6524d504f3191d7abc32f885fe90e3755f5fcac577ac315d4ac6827a9828fc60b912fe4')
+sha512sums=('839786ec7d67d45f164e7be3284354195e0daac5dc8d9aedca28f6bbdc125110e90bf9eb8b7a2d7fa2672fd99c68c277d7e2120f1c6766bdfaed93d35e85795c')
 
 prepare() {
   cd "$pkgname-$pkgver"
