@@ -2,8 +2,6 @@
 # Contributor: Peter Richard Lewis <plewis@aur.archlinux.org>
 # Contributor: Emiliano Vavassori <syntaxerrormmm@gmail.com>
 
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
-
 pkgname=ruby-highline
 pkgver=2.1.0
 _commit=33cee8a7a7946e27b3be8459721f69c73eee7694
