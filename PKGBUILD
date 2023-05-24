@@ -4,28 +4,25 @@
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 pkgname='fcitx5-mozc-ut'
-pkgver=2.28.5085.102
+pkgver=2.28.5105.102
 pkgrel=1
 pkgdesc='Mozc module for Fcitx5'
 arch=('x86_64')
 url='https://github.com/fcitx/mozc'
 license=('Apache' 'GPL' 'LGPL' 'MIT' 'custom')
-depends=('fcitx5' 'mozc>=2.28.5085.102')
+depends=('fcitx5' 'mozc>=2.28.5105.102')
 makedepends=('bazel' 'git' 'python' 'qt5-base')
 optdepends=('fcitx5-configtool')
-provides=('fcitx5-mozc=2.28.5085.102')
+provides=('fcitx5-mozc=2.28.5105.102')
 conflicts=('fcitx5-mozc')
 options=(!distcc !ccache)
-source=("${pkgname}-git::git+https://github.com/fcitx/mozc.git#commit=505e20e5653ef912f87b521b78054a197acd2357")
+source=("${pkgname}-git::git+https://github.com/fcitx/mozc.git#commit=cb56b6b0695d0ed248e6ec0e7fe0a24d18b00ea4")
 sha256sums=('SKIP')
 
 prepare() {
     cd ${pkgname}-git/src
 
     git submodule update --init --recursive
-
-    # Temp build fix
-    sed -i -e 's|cc_binary_mozc|mozc_cc_binary|g' unix/fcitx5/BUILD
 }
 
 build() {
