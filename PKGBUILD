@@ -8,28 +8,28 @@ pkgdesc="CLI for the GPT model written in Rust"
 license=("MIT")
 makedepends=("rust" "git")
 url="https://github.com/LevitatingBusinessMan/openai-cli"
-source=("git+https://github.com/LevitatingBusinessMan/openai-cli")
+source=("$pkgname::git+https://github.com/LevitatingBusinessMan/openai-cli")
 sha256sums=("SKIP")
 
 pkgver() {
-	cd "${srcdir}/openai-cli"
+	cd "$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "${srcdir}/openai-cli"
+	cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-	cd "${srcdir}/openai-cli"
+	cd "$pkgname"
 	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target1
+	export CARGO_TARGET_DIR=target
 	cargo build --frozen --release --all-features
 }
 
 package() {
-	cd "${srcdir}/openai-cli"
+	cd "$pkgname"
 	install -Dm755 target/release/openai-cli $pkgdir/usr/bin/openai-cli
 }
