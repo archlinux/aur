@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Jelly Drift
+Comment=Free racing game made by the youtuber Dani.
+Exec=/usr/share/JellyDrift/JellyDriftLinux.x86_64
+Icon=/usr/share/JellyDrift/JellyDriftLinux_Data/Resources/UnityPlayer.png
+Terminal=false
+Type=Application
+Categories=Game;

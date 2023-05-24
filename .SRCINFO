@@ -1,0 +1,14 @@
+pkgbase = jelly-drift-bin
+	pkgdesc = car go vroom zoom skrrrt
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://danidev.itch.io/jelly-drift
+	arch = x86_64
+	license = unknown
+	makedepends = tar
+	source = jelly-drift.desktop
+	source = https://raw.githubusercontent.com/DaniD3v/jelly-drift-bin-aur-package/main/JellyDrift.tar.xz
+	sha256sums = 266c995944ef99f3ef086e2fd914528fce71a4a83531000ed896b69cbfbac0e9
+	sha256sums = df92c9317470e73f934628c61643ba53f05a3bd7441e55a9f61f117f502d08dd
+
+pkgname = jelly-drift-bin
