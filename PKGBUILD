@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=converter
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Converter is a GTK4+libadwaita application that allows you to convert and manipulate a given image. It is a front-end for ImageMagick."
 arch=('x86_64' 'aarch64')

@@ -1,6 +1,6 @@
 pkgbase = converter
 	pkgdesc = Converter is a GTK4+libadwaita application that allows you to convert and manipulate a given image. It is a front-end for ImageMagick.
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://gitlab.com/adhami3310/Converter
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = converter
 	makedepends = cargo
 	depends = libadwaita
 	depends = imagemagick
-	source = converter::git+https://gitlab.com/adhami3310/Converter.git#tag=v1.6.0
+	source = converter::git+https://gitlab.com/adhami3310/Converter.git#tag=v1.6.1
 	b2sums = SKIP
 
 pkgname = converter
