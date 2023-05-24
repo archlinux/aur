@@ -5,7 +5,7 @@ pkgdesc="Free racing game made by the youtuber Dani"
 url="https://danidev.itch.io/jelly-drift"
 
 pkgver="1.0.0"
-pkgrel="4"
+pkgrel="5"
 
 license=("unknown")
 
