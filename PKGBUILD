@@ -10,16 +10,8 @@ license=(MIT)
 depends=(openmpi openmp metis gperftools)
 makedepends=(cmake)
 optdepends=('gurobi: for ILP solver in ilp_improve')
-source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
-  gcc-13-compatibility.patch::${url}/pull/124.patch)
-sha512sums=('3e06a2fd205facc1bd7e19a89ccfc8bb31e66565afff09c7709e9ce0759da3219992c846ba51b900c4b8192dc9fcc037d7ac39d150c9f1b64f53b0a68cd1d67b'
-  '984553f2a992d8d84c586fa1367ce21b7c71168240302a8d5a4379d356030951dbb0494d01937221b901139f9b364052596c5c1cfeb3f2042a8de8d411bd5d05')
-
-prepare() {
-  cd ${_base}-${pkgver}
-  # https://github.com/KaHIP/KaHIP/pull/124
-  patch -p1 -i ../gcc-13-compatibility.patch
-}
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('3e06a2fd205facc1bd7e19a89ccfc8bb31e66565afff09c7709e9ce0759da3219992c846ba51b900c4b8192dc9fcc037d7ac39d150c9f1b64f53b0a68cd1d67b')
 
 build() {
   cmake \
