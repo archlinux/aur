@@ -1,6 +1,6 @@
 pkgbase = neovim-tokyonight-git
 	pkgdesc = Dark and light theme ported from VSCode's TokyoNight
-	pkgver = 1.10.0.r0.g1b0c880
+	pkgver = 1.20.0.r0.gd0baf68
 	pkgrel = 1
 	url = https://github.com/folke/tokyonight.nvim
 	install = neovim-tokyonight-git.install

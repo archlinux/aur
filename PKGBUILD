@@ -1,8 +1,9 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: spiritomb <spiritomb at protonmail dot com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-tokyonight-git
 _pkg="${pkgname%-git}"
-pkgver=1.10.0.r0.g1b0c880
+pkgver=1.20.0.r0.gd0baf68
 pkgrel=1
 pkgdesc="Dark and light theme ported from VSCode's TokyoNight"
 arch=('any')
