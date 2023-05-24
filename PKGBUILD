@@ -39,9 +39,6 @@ depends=(
 
 	# pyqt6
 	'qt6-svg'
-
-	# workaround
-	'python-certifi'
 )
 makedepends=(
 	'python-installer'
