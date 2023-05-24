@@ -1,6 +1,6 @@
 pkgbase = r-tcgautils
 	pkgdesc = TCGA utility functions for data management
-	pkgver = 1.20.0
+	pkgver = 1.20.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/TCGAutils
 	arch = any
@@ -43,7 +43,7 @@ pkgbase = r-tcgautils
 	optdepends = r-testthat
 	optdepends = r-txdb.hsapiens.ucsc.hg18.knowngene
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/TCGAutils_1.20.0.tar.gz
-	sha256sums = 1d4830c228ca525017165a3587fb8516e1a6c8b36a5ce4f7654db2372ed8e572
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TCGAutils_1.20.2.tar.gz
+	sha256sums = 36d49ccf84ad3ecf39d86947461ea4c2766aa34ce7ef1f9b4a31d6d14bcbce5a
 
 pkgname = r-tcgautils
