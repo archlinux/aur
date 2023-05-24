@@ -1,6 +1,6 @@
 pkgbase = ungoogled-chromium-xdg
 	pkgdesc = A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory
-	pkgver = 113.0.5672.92
+	pkgver = 113.0.5672.126
 	pkgrel = 1
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
@@ -56,12 +56,12 @@ pkgbase = ungoogled-chromium-xdg
 	optdepends = qt5-base: enable Qt5 with --enable-features=AllowQt
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
-	provides = chromium=113.0.5672.92
-	provides = chromedriver=113.0.5672.92
+	provides = chromium=113.0.5672.126
+	provides = chromedriver=113.0.5672.126
 	conflicts = chromium
 	conflicts = chromedriver
 	options = !lto
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-113.0.5672.92.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-113.0.5672.126.tar.xz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
 	source = add-cstring-for-std-strlen-in-web_view_impl.cc.patch
 	source = download-bubble-typename.patch
@@ -71,7 +71,7 @@ pkgbase = ungoogled-chromium-xdg
 	source = xdg-basedir.patch
 	source = no-omnibox-suggestion-autocomplete.patch
 	source = index.html
-	source = ungoogled-chromium-113.0.5672.92-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/113.0.5672.92-1.tar.gz
+	source = ungoogled-chromium-113.0.5672.126-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/113.0.5672.126-1.tar.gz
 	source = ozone-add-va-api-support-to-wayland.patch
 	source = vaapi-add-av1-support.patch
 	source = remove-main-main10-profile-limit.patch
@@ -96,7 +96,7 @@ pkgbase = ungoogled-chromium-xdg
 	source = chromium-112-gcc-13-0022-gcc-ambiguous-ViewTransitionElementId-type.patch
 	source = chromium-112-gcc-13-0023-gcc-incomplete-type-v8-subtype.patch
 	source = chromium-113-gcc-13-vulkan-build-fixes.patch
-	sha256sums = a4520b53c824d75bcbc80bcf5da0c3d6f213038c8e31904b8a3bfbe415893ba5
+	sha256sums = 0def7cd594304d7675821d42a4207377af98e321a78a91ee5200aea55adc2d93
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
 	sha256sums = 5f868cba9e4d387499711738adc6fd87ab9f1ef61f464016bc682660ae59206a
 	sha256sums = d464eed4be4e9bf6187b4c40a759c523b7befefa25ba34ad6401b2a07649ca2a
@@ -106,7 +106,7 @@ pkgbase = ungoogled-chromium-xdg
 	sha256sums = f97e6cd3c4d2e04f5d9a0ea234fe768d6ba0fa9f4ecd5c7b2ca91030a1249078
 	sha256sums = ff1591fa38e0ede7e883dc7494b813641b7a1a7cb1ded00d9baaee987c1dbea8
 	sha256sums = a4cdd2b86f32d5302c2792be841ff40d982b19bb58a4e63df9d77f4c706b8665
-	sha256sums = b36ecce88a380b760c468592c1bb69be4b5dbae20b084ae0aba01236720b3690
+	sha256sums = 1025329c38041b3b8b200fe3405d4b873345e87cba6333e036b83ad2f0000d3e
 	sha256sums = e9e8d3a82da818f0a67d4a09be4ecff5680b0534d7f0198befb3654e9fab5b69
 	sha256sums = e742cc5227b6ad6c3e0c2026edd561c6d3151e7bf0afb618578ede181451b307
 	sha256sums = be8d3475427553feb5bd46665ead3086301ed93c9a41cf6cc2644811c5bda51c
