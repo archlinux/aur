@@ -1,14 +1,14 @@
-# Maintainer: wolftankk <wolftankk@gmail.com>
+# Maintainer: Maxim Novikov <the.mlex@gmail.com>
 pkgname=php-zephir-parser
-pkgver=1.2.0
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="The Zephir Parser delivered as a C extension for the PHP language."
-url="https://github.com/phalcon/php-zephir-parser"
+url="https://github.com/zephir-lang/php-zephir-parser"
 arch=('x86_64' 'i686')
 license=('MIT')
-depends=('re2c')
-makedepends=('php>=5.5' 'gcc' 'pcre' 'autoconf')
-backup=('etc/php/conf.d/php-zephir.ini')
+depends=('php>=7.0')
+makedepends=('php>=7.0' 'gcc' 'pcre' 'autoconf' 're2c')
+backup=('etc/php/conf.d/zephir_parser.ini')
 
 if [[ $CARCH = "i686" ]]; then
   makedepends+=('lib32-pcre');
@@ -18,7 +18,7 @@ source=(
     "https://github.com/phalcon/php-zephir-parser/archive/v${pkgver}.tar.gz"
 )
 
-sha256sums=('3b3ec08d668fae62ea34c95ea4d3f7ee8c0aba792ca79f5ca7aae3c2aef8054f')
+sha256sums=('aea5e29c6b11d559cce08b5506697b4e973c5b274651b18d67f5845a0d8eb77b')
 
 #get php version
 PHP_FULL_VERSION=`php-config --version`
