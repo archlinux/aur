@@ -1,6 +1,6 @@
 pkgbase = par2cmdline-turbo
 	pkgdesc = A faster PAR 2.0 compatible file verification and repair tool, forked from par2cmdline
-	pkgver = 0.9.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/animetosho/par2cmdline-turbo
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = par2cmdline-turbo
 	depends = gcc-libs
 	provides = par2cmdline
 	conflicts = par2cmdline
-	source = par2cmdline-turbo-0.9.0.tar.gz::https://github.com/animetosho/par2cmdline-turbo/archive/refs/tags/v0.9.0.tar.gz
-	sha512sums = 29b7d2a5a32d714eb8f883512883d2a999f3f728f5cbbfff9837b3b03fda7b7e1a334ca8701443f2dc1c650793f81260ec4337452094b07d4760288295eaf760
+	source = par2cmdline-turbo-1.0.0.tar.gz::https://github.com/animetosho/par2cmdline-turbo/archive/refs/tags/v1.0.0.tar.gz
+	sha512sums = d05cf96a8943aff8f1ae00ecc910603bb9c623c13f427964897ad00a67b60707efd5d6fcbae7d5d7b324062bf69738cdb0fac18e2747fcfaf59d30b61262af6b
 
 pkgname = par2cmdline-turbo

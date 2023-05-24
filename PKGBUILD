@@ -4,7 +4,7 @@
 # Contributor: Sébastien Luttringer <seblu@aur.archlinux.org
 
 pkgname=par2cmdline-turbo
-pkgver=0.9.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='A faster PAR 2.0 compatible file verification and repair tool, forked from par2cmdline'
 url='https://github.com/animetosho/par2cmdline-turbo'
@@ -12,7 +12,7 @@ license=('GPL2')
 arch=('x86_64')
 depends=('gcc-libs')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/animetosho/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('29b7d2a5a32d714eb8f883512883d2a999f3f728f5cbbfff9837b3b03fda7b7e1a334ca8701443f2dc1c650793f81260ec4337452094b07d4760288295eaf760')
+sha512sums=('d05cf96a8943aff8f1ae00ecc910603bb9c623c13f427964897ad00a67b60707efd5d6fcbae7d5d7b324062bf69738cdb0fac18e2747fcfaf59d30b61262af6b')
 provides=('par2cmdline')
 conflicts=('par2cmdline')
 
