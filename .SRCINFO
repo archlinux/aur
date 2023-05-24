@@ -1,7 +1,7 @@
 pkgbase = lact
 	pkgdesc = AMDGPU Controller application
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ilya-zlobintsev/LACT
 	arch = x86_64
 	arch = aarch64
