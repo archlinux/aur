@@ -1,11 +1,11 @@
 # Maintainer: DaniD3v <nichtdu.login@gmail.com>
 
 pkgname="jelly-drift-bin"
-pkgdesc="car go vroom zoom skrrrt"
+pkgdesc="Free racing game made by the youtuber Dani"
 url="https://danidev.itch.io/jelly-drift"
 
 pkgver="1.0.0"
-pkgrel="2"
+pkgrel="3"
 
 license=("unknown")
 

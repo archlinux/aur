@@ -1,7 +1,7 @@
 pkgbase = jelly-drift-bin
-	pkgdesc = car go vroom zoom skrrrt
+	pkgdesc = Free racing game made by the youtuber Dani
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://danidev.itch.io/jelly-drift
 	arch = x86_64
 	license = unknown
