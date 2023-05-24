@@ -4,13 +4,13 @@
 _pkgname=exaile
 pkgname=${_pkgname}-git
 epoch=1
-pkgver=4.1.3beta2+8+g863673ce
+pkgver=4.1.3beta3+11+g1994772c
 pkgrel=1
 pkgdesc="music player for gnome, similar to KDEs amarok"
 arch=('any')
 url="https://www.exaile.org"
 license=('GPL')
-depends=('gtk3' 'python-bsddb' 'python-mutagen' 'python-dbus' 'python-gobject' 
+depends=('gtk3' 'python-bsddb' 'python-mutagen' 'dbus-python' 'python-gobject' 
          'python-cairo' 'udisks2' 'librsvg' 'gst-plugins-good')
 makedepends=('git' 'help2man')
 optdepends=('python-feedparser: podcasts plugin'
@@ -32,8 +32,7 @@ optdepends=('python-feedparser: podcasts plugin'
             'gst-plugins-bad: Additional audio codecs'
             'gst-plugins-ugly: Additional audio codecs'
             'spydaap-git: DAAP server/client')
-checkdepends=('python-mox3'
-              'python-pytest')
+checkdepends=('python-pytest')
 provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}"::git+https://github.com/exaile/exaile.git)

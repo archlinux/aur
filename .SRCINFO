@@ -1,19 +1,18 @@
 pkgbase = exaile-git
 	pkgdesc = music player for gnome, similar to KDEs amarok
-	pkgver = 4.1.3beta2+8+g863673ce
+	pkgver = 4.1.3beta3+11+g1994772c
 	pkgrel = 1
 	epoch = 1
 	url = https://www.exaile.org
 	arch = any
 	license = GPL
-	checkdepends = python-mox3
 	checkdepends = python-pytest
 	makedepends = git
 	makedepends = help2man
 	depends = gtk3
 	depends = python-bsddb
 	depends = python-mutagen
-	depends = python-dbus
+	depends = dbus-python
 	depends = python-gobject
 	depends = python-cairo
 	depends = udisks2
@@ -38,7 +37,7 @@ pkgbase = exaile-git
 	optdepends = gst-plugins-bad: Additional audio codecs
 	optdepends = gst-plugins-ugly: Additional audio codecs
 	optdepends = spydaap-git: DAAP server/client
-	provides = exaile=4.1.3beta2
+	provides = exaile=4.1.3beta3
 	conflicts = exaile
 	source = exaile::git+https://github.com/exaile/exaile.git
 	sha256sums = SKIP
