@@ -1,7 +1,7 @@
 # Maintainer: Zacharias Knudsen <zachasme@gmail.com>
 pkgname=gog-unreal-tournament-goty
 pkgver=469c
-pkgrel=2
+pkgrel=3
 pkgdesc="Unreal Tournament (99): Game of the Year Edition. GOG Version."
 arch=('x86_64')
 url="https://www.gog.com/game/unreal_tournament_goty"
@@ -20,18 +20,26 @@ sha256sums=("4cc257d54d97659c5062f2bf186d0a8c6959561d11e42d8fcf2eac07f1926803"
             "518a904603b3971eb516d0c5198031345dd2d3b5e6d87d12e02dccfe169a9505")
 
 # If you want to use lgogdownloader add the following to /etc/makepkg.conf
-# DLAGENTS+=('goggogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
+# DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
 DLAGENTS+=("gogdownloader::./fallback_dlagent.sh")
 
 # see
 # https://github.com/OldUnreal/UnrealTournamentPatches#linux-installation
 prepare() {
-  innoextract --extract --exclude-temp "setup_ut_goty.exe"
-
+  # Unpack [the] patch into an empty directory, which we will refer to as the game directory.
   tar --extract --file "patch-${pkgver}.tar.bz2" --one-top-level=unreal
 
-  cp --recursive "app/Music" "app/Sounds" "app/Maps" "unreal/"
-  cp --no-clobber app/Textures/* "unreal/Textures/"
+  # Mount the UT (GOTY) cd/image or unpack the GOG distribution with the innoextract tool. We will refer to the root directory of your game cd/image or GOG distribution as the distribution directory.
+  innoextract --extract --exclude-temp "setup_ut_goty.exe"
+
+  # Copy the Music and Sounds directories from the distribution directory into the game directory.
+  cp --recursive "app/Music" "app/Sounds" "unreal/"
+
+  # Copy the contents of the Textures directory from the distribution directory into the existing Textures directory within your game directory WITHOUT REPLACING the existing files.
+  cp --no-clobber app/Textures/* "unreal/Textures/" || true # existing files will give exit code 1
+
+  # Create a Maps directory within the game directory and copy over the unpacked Maps (i.e., map files with a .unr extension) from the distribution directory.
+  cp --recursive "app/Maps" "unreal/"
 
   # Remove prebuilt libraries in favor of arch/AUR packages
   rm \
@@ -43,7 +51,7 @@ prepare() {
   # To put extra content (extra levels/mods) into the game
   #   create an "addons/" folder next to the PKGBUILD.
   # Whatever is in there will get copied to the root of the game's directory.
-  cp --archive ${startdir}/addons/* "unreal" 2>/dev/null || :
+  cp --archive ${startdir}/addons/* "unreal" 2>/dev/null || true # allow no `addons/` folder
 }
 
 package() {
