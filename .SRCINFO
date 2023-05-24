@@ -1,0 +1,16 @@
+pkgbase = geoip-http
+	pkgdesc = GeoIP lookup server over HTTP
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/cdown/geoip-http
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = geoip-http-0.1.0.tar.gz::https://github.com/cdown/geoip-http/archive/0.1.0.tar.gz
+	sha256sums = f1fc14b2757f61be20d79bb748d8533d4c8b06294fbc55924cadbfe775f92045
+
+pkgname = geoip-http
