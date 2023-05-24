@@ -50,7 +50,7 @@ MOLD="YES"        # Use the mold linker.
                   # This is the default linker.
                   # Notice that it will always be used.
 
-JIT="YES"         # Enable native just-in-time compilation. Use libgccjit,
+JIT=              # Enable native just-in-time compilation. Use libgccjit,
                   # which is in testing repo for now.
                   #
                   # This compiles only performance critical elisp files.
@@ -59,7 +59,7 @@ JIT="YES"         # Enable native just-in-time compilation. Use libgccjit,
                   #    (setq comp-deferred-compilation t)
                   # to your .emacs file.
 
-AOT="YES"         # Precompile all included elisp. It takes a long time.
+AOT=              # Precompile all included elisp. It takes a long time.
                   # You still need to enable on-demand compilation
                   # for your own packages.
 
@@ -107,7 +107,7 @@ else
 pkgname="emacs-pgtk-git"
 fi
 pkgver=30.0.50.166368
-pkgrel=2
+pkgrel=3
 pkgdesc="GNU Emacs. Development branch, with PGTK and native json-rpc enabled"
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
