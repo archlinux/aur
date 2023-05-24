@@ -2,17 +2,18 @@
 # Maintainer: Thomas Bork <sudoBash418@gmail.com>
 pkgname=strawberry-qt5
 pkgver=1.0.17
-pkgrel=1
+pkgrel=2
 pkgdesc="A music player aimed at audio enthusiasts and music collectors (Qt5 version)"
 arch=(x86_64)
 url="https://strawberrymusicplayer.org/"
 license=(GPL3)
 
-depends=(chromaprint
+depends=(qt5-base
+         qt5-x11extras
+         chromaprint
          protobuf
          gst-plugins-base
          gst-plugins-good
-         qt5-x11extras
          udisks2
          libcdio
          libgpod
@@ -36,7 +37,8 @@ build() {
 	cmake -B build -S "strawberry-${pkgver}" \
 			-DCMAKE_INSTALL_PREFIX=/usr \
 			-DBUILD_WITH_QT5=on \
-			-DENABLE_VLC=off
+			-DENABLE_VLC=off \
+			-DCMAKE_CXX_FLAGS="$CXXFLAGS -DQT_NO_DEBUG_OUTPUT"
 	cmake --build build
 }
 
