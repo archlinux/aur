@@ -3,7 +3,7 @@
 pkgname=yewtube-git
 _pkgname=yewtube
 pkgver=2.10.2.r3.g60a526c
-pkgrel=2
+pkgrel=3
 pkgdesc="Terminal based YouTube player and downloader. No Youtube API key required."
 url='https://github.com/mps-youtube/yewtube'
 arch=('any')
@@ -11,8 +11,9 @@ license=('GPL3')
 depends=(
     python
     python-brotli
-    python-httpx-git # only until their next release
+    python-httpx
     python-pafy
+    python-pip
     python-pycryptodomex
     python-pylast
     python-pyperclip
