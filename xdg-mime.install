@@ -1,0 +1,19 @@
+
+post_install() {
+  echo ""
+  echo "Arch Linux not shipping a default list of inode/directory MIME type handlers"
+  echo ""
+  echo "use:"
+  echo "xdg-mime default org.gnome.Nautilus.desktop inode/directory"
+  echo ""
+  echo "To reset the default."
+  echo ""
+  echo "============================================================================="
+  echo "https://github.com/micheleg/dash-to-dock/issues/2016"
+  echo "https://gitlab.gnome.org/World/amberol/-/issues/240"
+  echo "============================================================================="
+}
+
+post_upgrade() {
+   post_install
+}

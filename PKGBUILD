@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=amberol
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=1
 pkgdesc="Plays music, and nothing else"
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ license=('GPL3')
 depends=('libadwaita' 'libportal-gtk4' 'gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gst-plugins-good')
 makedepends=('git' 'meson' 'cargo')
 checkdepends=('appstream-glib' 'reuse')
-_commit=a11feabf354bc39816b77aabf4aa1376153fbd1e  # tags/0.10.2^0
-source=("git+https://gitlab.gnome.org/World/amberol.git#commit=$_commit")
+install='xdg-mime.install'
+source=("git+https://gitlab.gnome.org/World/amberol.git#tag=$pkgver")
 options=('!lto')
 b2sums=('SKIP')
 
