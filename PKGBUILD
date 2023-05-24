@@ -2,7 +2,7 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=python-databricks-cli
 _pkgname=databricks-cli
-pkgver=0.17.6
+pkgver=0.17.7
 pkgrel=3
 pkgdesc='Command Line Interface for Databricks'
 arch=('any')
@@ -16,6 +16,7 @@ depends=(
   "python-requests>=2.17.3" "python-requests<2.30.0" # https://github.com/databricks/databricks-cli/issues/636
   'python-tabulate>=0.7.7'
   'python-six>=1.10.0'
+  'python-urllib3>=1.26.7' 'python-urllib3<2.0.0'
 )
 makedepends=(python-build python-installer python-wheel)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/databricks/databricks-cli/archive/$pkgver.tar.gz")
