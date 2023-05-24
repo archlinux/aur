@@ -96,7 +96,7 @@ prepare() {
     patch -p1 < "$srcdir/strip-type-checking-deps.patch"
     patch -p1 < "$srcdir/disable-git-checks.patch"
     sed -i 's/opt-level = 1$/opt-level= 3/' Cargo.toml	# optimize more
-    sed -i 's/channel = [0-9\.]*$/channel = "stable"/' rust-toolchain.toml # use most recent stable rust toolchain
+    sed -i 's/channel = "[0-9\.]*"$/channel = "stable"/' rust-toolchain.toml # use most recent stable rust toolchain
     # Build process wants .git/HEAD to be present. Workaround to be able to use tarballs
     # (together with disable-git-checks.patch)
     mkdir -p .git
