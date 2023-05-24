@@ -1,32 +1,30 @@
 #Maintainer: Rein Fernhout (LevitatingBusinessMan) <me@levitati.ng>
 
 pkgname=openai-cli
-pkgver=r27.e66bf5d
+pkgver=0.2.0
 arch=("x86_64")
 pkgrel=1
 pkgdesc="CLI for the GPT model"
 license=("MIT")
-makedepends=("rust" "git")
+makedepends=("cargo")
 url="https://github.com/LevitatingBusinessMan/$pkgname"
-source=("git+https://github.com/LevitatingBusinessMan/$pkgname")
-sha256sums=("SKIP")
-
-pkgver() {
-	cd "$pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
+sha256sums=("244ec9d01eddc7fc39085570fe80dfed1864d2c7c1f83623f4af7b56c4ecef6c")
 
 prepare() {
-	cd "${srcdir}/${pkgname}"
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cd "${srcdir}/${pkgname}-${pkgver}"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-	cd "${srcdir}/${pkgname}"
-	cargo build --release
+	cd "${srcdir}/${pkgname}-${pkgver}"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --all-features
 }
 
 package() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 	install -Dm755 target/release/$pkgname $pkgdir/usr/bin/$pkgname
 }
