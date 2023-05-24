@@ -19,10 +19,10 @@ arch=('x86_64')
 url='http://www.dolphin-emu.org/'
 license=('GPL2')
 depends=(
-  'alsa-lib' 'bluez-libs' 'enet' 'hidapi' 'libevdev' 'libgl' 'libpng'
-  'libpulse' 'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls' 'pugixml' 'qt5-base'
-  'sfml' 'zlib'
-  'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libcurl.so'
+  'alsa-lib' 'bluez-libs' 'cubeb' 'enet' 'hidapi' 'libevdev' 'libgl' 'libmgba'
+  'libpulse' 'libspng' 'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls' 'minizip-ng'
+  'pugixml' 'qt6-base' 'sfml' 'zlib'
+  'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libcurl.so' 'libfmt.so'
   'libminiupnpc.so' 'libswscale.so' 'libudev.so' 'libusb-1.0.so'
 )
 makedepends=('cmake' 'git' 'ninja' 'python')
