@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-fribidi
 	pkgdesc = A Free Implementation of the Unicode Bidirectional Algorithm (mingw-w64)
-	pkgver = 1.0.12
+	pkgver = 1.0.13
 	pkgrel = 1
 	url = http://fribidi.org
 	arch = any
@@ -14,9 +14,9 @@ pkgbase = mingw-w64-fribidi
 	options = !buildflags
 	options = !libtool
 	options = staticlibs
-	source = git+https://github.com/fribidi/fribidi#commit=6428d8469e536bcbb6e12c7b79ba6659371c435a
+	source = git+https://github.com/fribidi/fribidi#commit=b54871c339dabb7434718da3fed2fa63320997e5
 	source = testrunnerwine.patch
-	sha256sums = SKIP
-	sha256sums = 5bdbddcec6ef0a092d49dacec149b5219da12033b76787b3e65c0f9b338045d7
+	b2sums = SKIP
+	b2sums = b4a3a06cfbedf92959b2d5ceb7714957c7f42cd9b7bb02cebcf867c929cdc2922f836310e3464e10bbc89f6788ea9bbaf2f20914db78db7169801cffdffd98af
 
 pkgname = mingw-w64-fribidi

@@ -1,7 +1,7 @@
 # Maintainer: Karl-Felix Glatzer <karl[dot]glatzer[at]gmx[dot]de>
 
 pkgname=mingw-w64-fribidi
-pkgver=1.0.12
+pkgver=1.0.13
 pkgrel=1
 pkgdesc="A Free Implementation of the Unicode Bidirectional Algorithm (mingw-w64)"
 arch=('any')
@@ -10,11 +10,11 @@ url="http://fribidi.org"
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' '!libtool' 'staticlibs')
 makedepends=('mingw-w64-gcc' 'mingw-w64-meson' 'mingw-w64-wine' 'git')
-_commit=6428d8469e536bcbb6e12c7b79ba6659371c435a  # tags/v1.0.12^0
+_commit=b54871c339dabb7434718da3fed2fa63320997e5  # tags/v1.0.13^0
 source=("git+https://github.com/fribidi/fribidi#commit=$_commit"
         "testrunnerwine.patch")
-sha256sums=('SKIP'
-            '5bdbddcec6ef0a092d49dacec149b5219da12033b76787b3e65c0f9b338045d7')
+b2sums=('SKIP'
+        'b4a3a06cfbedf92959b2d5ceb7714957c7f42cd9b7bb02cebcf867c929cdc2922f836310e3464e10bbc89f6788ea9bbaf2f20914db78db7169801cffdffd98af')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
@@ -24,10 +24,14 @@ prepare() {
 
 build() {
   export NEED_WINE=1
+  local meson_options=(
+    -D docs=false
+  )
+
   for _arch in ${_architectures}; do
     mkdir -p ${srcdir}/fribidi/build-${_arch} && cd ${srcdir}/fribidi/build-${_arch}
 
-    ${_arch}-meson .. --default-library both -D docs=false
+    ${_arch}-meson .. --default-library both "${meson_options[@]}"
     meson compile
   done
 }
@@ -53,3 +57,4 @@ package() {
     ${_arch}-strip -g ${pkgdir}/usr/${_arch}/lib/*.a
   done
 }
+# vim:set sw=2 sts=-1 et:
