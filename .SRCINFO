@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-plotjuggler
 	pkgdesc = ROS - PlotJuggler: juggle with data
-	pkgver = 3.4.5
+	pkgver = 3.7.1
 	pkgrel = 1
 	url = https://www.plotjuggler.io
 	arch = i686
@@ -21,7 +21,9 @@ pkgbase = ros-noetic-plotjuggler
 	depends = binutils
 	depends = boost
 	depends = zeromq
-	source = ros-noetic-plotjuggler-3.4.5.tar.gz::https://github.com/facontidavide/PlotJuggler/archive/3.4.5.tar.gz
-	sha256sums = 95b8ac03637f3bbc98c179c07b8e3b2a3c6a3cd9028f1d0878e70b159b63ba18
+	source = ros-noetic-plotjuggler-3.7.1.tar.gz::https://github.com/facontidavide/PlotJuggler/archive/3.7.1.tar.gz
+	source = cstdint.patch::https://github.com/facontidavide/PlotJuggler/pull/830.patch
+	sha256sums = 3260f4c3cc5c562e99bc65920f9e4fc072ad2621a02e0a9cfe74b1706b7d767b
+	sha256sums = SKIP
 
 pkgname = ros-noetic-plotjuggler
