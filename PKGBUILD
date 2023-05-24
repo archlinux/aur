@@ -10,34 +10,43 @@
 # then please put 'unknown'.
 
 # Maintainer: alecksandr <sansepiol26@gmail.com>
+
+# Move to the build directory
 pkgname=unittest-c
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="unittest c is a fast and simple macro-based unit testing framework for C.
 It's inspired by the Python unittest module and designed to reduce boilerplate code.
 With macros and a built-in test runner, it's ideal for large test suites."
-arch=(x86_64)
-url="https://github.com/alecksandr26/unittest-c"
+arch=('x86_64')
+url="https://github.com/alecksandr26/unittest-c/archive/refs/tags/v1.1.0.tar.gz"
 license=('MIT License')
 depends=()
 makedepends=(gcc git make binutils coreutils c-exceptions)
 optdepends=(valgrind)
-source=("git+$url")
+source=("$pkgname-$pkgver.tar.gz::$url")
 md5sums=('SKIP')
+basedir=$(pwd)
 
 # Compile the source code 
-build () {
-    cd $pkgname/
-    make compile
+build() {
+    tar -xf "$basedir/$pkgname-$pkgver.tar.gz"
+    cd $srcdir/$pkgname-$pkgver
+    make compile		# Compile the unittest library
 }
 
 # Set the compiled files to create the package
 # in this specific order to be able to be installed
 package() {
-    cd $pkgdir
-    mkdir -p usr
-    mkdir -p usr/lib
-    cp -r ../../src/$pkgname/lib usr/
-    cp -r ../../src/$pkgname/include usr/
+    cd $srcdir/$pkgname-$pkgver
+    # Create the folders
+    mkdir -p $pkgdir/usr
+    mkdir -p $pkgdir/usr/include
+    mkdir -p $pkgdir/usr/lib
+    
+    # Install into the package the program
+    install $srcdir/$pkgname-$pkgver/include/* $pkgdir/usr/include
+    install $srcdir/$pkgname-$pkgver/lib/* $pkgdir/usr/lib
+
 }
