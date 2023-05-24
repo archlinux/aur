@@ -1,0 +1,21 @@
+pkgbase = rtl8852cu-git
+	pkgdesc = Linux Driver for USB WiFi Adapters that use the RTL8852CU and RTL8832CU Chipsets
+	pkgver = 1.0.0.3.a246437
+	pkgrel = 1
+	url = https://github.com/lwfinger/rtw8852cu
+	install = rtl8852cu-git.install
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = make
+	makedepends = linux-headers
+	depends = linux-headers
+	depends = git
+	conflicts = rtl8852cu
+	conflicts = rtl8852cu-dkms-git
+	source = git+https://github.com/lwfinger/rtw8852cu.git
+	source = rtl8852cu-git.install
+	sha256sums = SKIP
+	sha256sums = d2cb3097b37379c34a483b6a91517c18d8eaf95db8a50418310648dd43040f82
+
+pkgname = rtl8852cu-git

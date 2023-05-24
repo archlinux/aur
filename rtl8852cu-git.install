@@ -1,0 +1,15 @@
+post_install() {
+   echo "Installing the module 8852cu"
+   depmod -a
+   modprobe 8852cu
+}
+
+post_upgrade() {
+   depmod -a
+}
+
+post_remove() {
+   echo "Module removal 8852cu"
+   rmmod 8852cu
+   depmod -a
+}
