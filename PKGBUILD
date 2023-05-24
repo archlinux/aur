@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="chrolog-appimage"
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="A automated time tracking tool"
 arch=("x86_64")
@@ -11,7 +11,7 @@ options=(!strip)
 conflicts=("${pkgname%-appimage}")
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}.AppImage")
-sha256sums=('f17add9dc1d12d509264d074086f30e065502d44a9185992dafb216b435c6a97')
+sha256sums=('468ef89b324082f06a6b4fd7afbfcd35c29012aca311b62424402f5370619201')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
