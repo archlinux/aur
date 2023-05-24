@@ -1,7 +1,7 @@
 # Maintainer: Martin Larralde <martin.larralde@ens-paris-saclay.fr>
 
 pkgname=ontodev-robot
-pkgver=1.9.3
+pkgver=1.9.4
 pkgrel=1
 pkgdesc="ROBOT is an OBO Tool"
 url="http://robot.obolibrary.org/"
@@ -20,7 +20,7 @@ install=
 changelog=
 source=("https://github.com/ontodev/robot/releases/download/v${pkgver}/robot.jar")
 noextract=("robot.jar")
-sha256sums=('2bca2909e5ac9d78c2961fac79f03f707105206ef147f4e8edc75d13336b0eb5')
+sha256sums=('b74df7d2a421be677f52065a040539e87737751e827856119e0488caec4fed6d')
 
 build() {
     cat > ${srcdir}/robot <<-EOF
