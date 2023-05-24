@@ -18,7 +18,7 @@ ENABLED_DICTIONARIES=(
 )
 
 pkgname='mozc-ut'
-pkgver=2.28.5085.102.20230510
+pkgver=2.28.5105.102.20230524
 pkgrel=1
 pkgdesc='The Open Source edition of Google Japanese Input bundled with the UT dictionary'
 arch=('x86_64')
@@ -30,21 +30,21 @@ optdepends=('fcitx5-mozc-ut: Fcitx5 integration'
             'fcitx-mozc-ut: Fcitx integration'
             'ibus-mozc: IBus integration'
             'emacs-mozc: Emacs integration')
-provides=('mozc=2.28.5085.102')
+provides=('mozc=2.28.5105.102')
 conflicts=('mozc')
 options=(!distcc !ccache)
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=4df261a9e81a813de20634617c8df6fdbbfeaa0e"
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=4081973241bcd600ecc9e0dcdccc299fe53ca005"
         'git+https://github.com/utuhiro78/merge-ut-dictionaries.git#commit=e081fbb6ab46007325b3040ddc4f19f02891c2ac'
         'git+https://github.com/utuhiro78/mozcdic-ut-alt-cannadic.git#commit=f59287e569db3e226378380a34e71275654b46d0'
-        'git+https://github.com/utuhiro78/mozcdic-ut-edict2.git#commit=a8e4249a718632d41c727ad242fe705658dba35f'
-        'git+https://github.com/utuhiro78/mozcdic-ut-jawiki.git#commit=f929218debb595f20486231526b90ec3fbc38c51'
+        'git+https://github.com/utuhiro78/mozcdic-ut-edict2.git#commit=bcf388b5285da33c3aa4b7051b0f742a23aab6b9'
+        'git+https://github.com/utuhiro78/mozcdic-ut-jawiki.git#commit=558582f5c86ca68feac87e6f8d6ab291cb032738'
         'git+https://github.com/utuhiro78/mozcdic-ut-neologd.git#commit=90e59c7707a5fe250c992c10c6ceb08a7ce7e652'
-        'git+https://github.com/utuhiro78/mozcdic-ut-personal-names.git#commit=aae69d97c1ec815709c1e4195e214a01a4983fa4'
+        'git+https://github.com/utuhiro78/mozcdic-ut-personal-names.git#commit=77c367a4e83bfc7608f72365ed75b98680407af5'
         'git+https://github.com/utuhiro78/mozcdic-ut-place-names.git#commit=62f8e671fd76ca1cda8665be9e14ae86a4fb3ef0'
         'git+https://github.com/utuhiro78/mozcdic-ut-skk-jisyo.git#commit=43518e6ea033681580a515281668c85eb74a5b14'
         'git+https://github.com/utuhiro78/mozcdic-ut-sudachidict.git#commit=d09ff222f1562cce5c1f83b2d80c2d93097bf01e'
-        'https://dumps.wikimedia.org/jawiki/20230501/jawiki-20230501-all-titles-in-ns0.gz')
-noextract=('jawiki-20230501-all-titles-in-ns0.gz')
+        'https://dumps.wikimedia.org/jawiki/20230520/jawiki-20230520-all-titles-in-ns0.gz')
+noextract=('jawiki-20230520-all-titles-in-ns0.gz')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -55,7 +55,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'fee8acb34f9e3ed956a11e1a559c25cceec0a9ad0593f370846f0bc41e03fd39')
+            '33613a96368bcac007acd912e19e4cbce1c3aba7825fca80ca4bcc0ee7171cd5')
 
 prepare() {
     cd ${pkgname}-git/src
@@ -70,7 +70,7 @@ prepare() {
     # Use a dated snapshot for the JAWiki dump data
     sed -i -e '/wget/d' count_word_hits.rb
     sed -i -e "s|filename = \"jawiki-|filename = \"${srcdir}/jawiki-|g" count_word_hits.rb
-    sed -i -e 's|jawiki-[a-z0-9]\{6,8\}|jawiki-20230501|g' count_word_hits.rb apply_word_hits.rb
+    sed -i -e 's|jawiki-[a-z0-9]\{6,8\}|jawiki-20230520|g' count_word_hits.rb apply_word_hits.rb
 
     # Compile the UT dictionary
     printf '\nCompiling the UT dictionary...\n\n'
