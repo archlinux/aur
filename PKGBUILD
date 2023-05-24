@@ -4,13 +4,13 @@
 pkgname=loot
 pkgver=0.19.1
 _pkglibver=0.19.4
-pkgrel=5
+pkgrel=6
 pkgdesc="A load order optimisation tool for the Elder Scrolls (Morrowind and later) and Fallout (3 and later) games."
 arch=('x86_64')
 url="https://loot.github.io"
 license=('GPL3')
 depends=('boost-libs' 'libssh2' 'alsa-lib' 'nss' 'pango' 'atk' 'libxdamage' 'libxcomposite' 'libxcursor' 'libxrandr' 'libxss' 'libxtst' 'qt5-base')
-makedepends=('git' 'cmake' 'rust' 'cbindgen' 'boost')
+makedepends=('git' 'cmake' 'rust' 'cbindgen' 'boost' 'onetbb')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz"
         "lib$pkgname-$_pkglibver.tar.gz::https://github.com/$pkgname/lib$pkgname/archive/$_pkglibver.tar.gz"
         'LOOT.desktop'

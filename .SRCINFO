@@ -1,7 +1,7 @@
 pkgbase = loot
 	pkgdesc = A load order optimisation tool for the Elder Scrolls (Morrowind and later) and Fallout (3 and later) games.
 	pkgver = 0.19.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://loot.github.io
 	arch = x86_64
 	license = GPL3
@@ -10,6 +10,7 @@ pkgbase = loot
 	makedepends = rust
 	makedepends = cbindgen
 	makedepends = boost
+	makedepends = onetbb
 	depends = boost-libs
 	depends = libssh2
 	depends = alsa-lib
