@@ -1,7 +1,7 @@
 # Maintainer: Yann Büchau <nobodyinperson at posteo de>
 # Contributor: Thomas Jost <schnouki@schnouki.net>
 pkgname=git-annex-standalone-nightly
-pkgver=10.20230329+ge6a337e8e
+pkgver=10.20230408+g250194b7d
 pkgrel=1
 pkgdesc="Manage files with git, without checking their contents into git. Standalone nightly autobuild version, with no Haskell dependency."
 arch=(x86_64 aarch64)
@@ -27,7 +27,7 @@ source=(
     "git-annex-standalone-${_arch}.tar.gz::$_tarball_url"
     git-annex.desktop
 )
-sha256sums=('87417606f28651d440f9df7531aab09e6fcb8d00710297ae6b659fdb502246a2'
+sha256sums=('SKIP'
             '39c60aea8b8be8bab6639614542de02c4014f43867ee2afe75737f772484178d')
 
 pkgver() {
