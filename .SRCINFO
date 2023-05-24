@@ -1,12 +1,13 @@
 pkgbase = catppuccin-kde-theme-git
 	pkgdesc = Soothing pastel theme for KDE
-	pkgver = 0.2.3.r0.g06c8e8f
+	pkgver = 0.2.4.r7.g1f42d60
 	pkgrel = 2
 	url = https://github.com/catppuccin/kde
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = kpackage
+	depends = plasma-desktop
 	provides = catppuccin-kde-theme
 	source = catppuccin-kde-theme-git::git+https://github.com/catppuccin/kde.git
 	source = color.sh
