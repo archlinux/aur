@@ -1,4 +1,5 @@
-# Maintainer: alexisph@gmail.com
+# Maintainer: Masahiro Kitagawa <arctica0316@gmail.com>
+# Contributor: alexisph@gmail.com
 # Contributor: <trash@ps3zone.org>
 # Contributor: Rikles <style.boubou@gmail.com>
 # Contributor: N30N <archlinux@alunamation.com>
@@ -7,19 +8,19 @@ pkgname=lightzone
 pkgver=4.2.4
 pkgrel=1
 pkgdesc="Open-source professional-level digital darkroom software"
-url="http://lightzoneproject.org/"
+url="https://github.com/ktgw0316/LightZone/"
 license=("custom:BSD-3-Clause")
 arch=("x86_64")
 conflicts=('lightzone-git')
 provides=('lightzone')
-depends=('java-runtime>11'
+depends=('java-runtime>=17'
     'javahelp2'
     'lcms2'
     'lensfun'
     'libjpeg-turbo'
     'libtiff'
     'libxml2')
-makedepends=('java-environment>11'
+makedepends=('java-environment=17'
     'ant'
     'autoconf'
     'gcc'
@@ -33,23 +34,30 @@ makedepends=('java-environment>11'
     'libjpeg-turbo'
     'libtiff')
 
-source=("https://github.com/ktgw0316/LightZone/archive/${pkgver}.zip")
-md5sums=('b1d18105ca726aadb0fe223242587b46')
+git_url=${url}
+patch_name="4.2.4..4ec2b1ab1bff86698bc2a38e21b2c295acda210a.patch"
+source=("${git_url}/archive/${pkgver}.zip"
+        "${git_url}/compare/${patch_name}")
+md5sums=('b1d18105ca726aadb0fe223242587b46'
+         '5c095641f8969212caa22ba68422caea')
+
+prepare() {
+  cd "${srcdir}/LightZone-${pkgver}/"
+  patch -Np1 -i "${srcdir}/${patch_name}"
+}
 
 build() {
   if [ -d /usr/lib/jvm/java-17-openjdk ]; then
     export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
-  elif [ -d /usr/lib/jvm/java-15-openjdk ]; then
-    export JAVA_HOME=/usr/lib/jvm/java-15-openjdk
   else
     export JAVA_HOME=/usr/lib/jvm/default
   fi
+  echo $JAVA_HOME
 
   # https://github.com/Aries85/LightZone/issues/218#issuecomment-357868376
   MAKEFLAGS="-j1"
 
   cd "${srcdir}/LightZone-${pkgver}/"
-  # sed -i 's|http://repo2|https://repo1|' lightcrafts/build.xml
   ant -f linux/build.xml jar
 }
 
