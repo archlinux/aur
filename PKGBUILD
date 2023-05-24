@@ -4,16 +4,16 @@
 _electron='electron22'
 
 pkgname="ferdium-electron"
-pkgver=6.2.6
+pkgver=6.2.7
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest release) - System-wide Electron edition'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://ferdium.org/"
 license=('Apache')
 depends=("$_electron")
-makedepends=('git' 'python' 'pnpm' 'jq' 'asar'
+makedepends=('git' 'python' 'jq' 'asar'
+             'pnpm'
              'nodejs-lts-gallium')
-             # 'nodejs')
 provides=('ferdium')
 conflicts=('ferdium')
 source=("$pkgname::git+https://github.com/ferdium/ferdium-app#tag=v$pkgver"
@@ -52,12 +52,12 @@ build() {
 
   export CI=true
 
-  pnpm install || true
-  pnpm run prepare-code || true
+  pnpm install --no-frozen-lockfile
+  pnpm run prepare-code
 
   cd "recipes"
 
-  pnpm install || true
+  pnpm install --no-frozen-lockfile
   pnpm run package
 
   cd ..
