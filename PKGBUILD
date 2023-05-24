@@ -37,7 +37,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	TOIT_GIT_VERSION=v$pkgver make -j1 sdk
+	TOIT_GIT_VERSION=$_tag make -j1 sdk
 }
 
 package() {
