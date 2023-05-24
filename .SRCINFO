@@ -1,5 +1,5 @@
 pkgbase = openai-cli-git
-	pkgdesc = CLI for the GPT model
+	pkgdesc = CLI for the GPT model written in Rust
 	pkgver = r27.e66bf5d
 	pkgrel = 1
 	url = https://github.com/LevitatingBusinessMan/openai-cli
@@ -7,7 +7,7 @@ pkgbase = openai-cli-git
 	license = MIT
 	makedepends = rust
 	makedepends = git
-	source = git+https://github.com/LevitatingBusinessMan/openai-cli
+	source = openai-cli-git::git+https://github.com/LevitatingBusinessMan/openai-cli
 	sha256sums = SKIP
 
 pkgname = openai-cli-git
