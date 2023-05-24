@@ -1,24 +1,38 @@
 # Maintainer: bretello <bretello@distruzione.org>
 pkgname=bretellofier
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line telegram notifier"
 arch=(any)
 url="https://git.decapod.one/brethil/bretellofier"
 license=('dowhateverthefuckyouwant')
 depends=(python)
-makedepends=(python-build python-setuptools-scm)
+makedepends=(python-build python-setuptools-scm python-installer)
 source=("git+https://git.decapod.one/brethil/bretellofier")
 sha256sums=(SKIP)
+
+
+prepare() {
+  # Do a sanity check in the environment of the builder so the build process doesn't place files into a wrong directory.
+  if [[ -n $VIRTUAL_ENV ]]; then
+    echo "It seems a virtualenv is enabled. Please deactivate it before building this package."
+    return 1
+  fi
+}
 
 pkgver() {
     cd "$pkgname"
     python -m setuptools_scm
 }
 
+build() {
+    cd "$pkgname"
+    python -m build --no-isolation --wheel
+}
+
 package() {
     cd "$pkgname"
-    pip install .
+	python -m installer --destdir "$pkgdir" dist/*.whl
 }
 
 
