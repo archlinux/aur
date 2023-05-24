@@ -3,25 +3,27 @@
 
 pkgname=('python-crccheck')
 _module=${pkgname#python-}
-pkgver='1.1'
-pkgrel=2
+pkgver='1.3.0'
+pkgrel=1
 pkgdesc="Calculation library for CRCs and checksums"
-url="https://sourceforge.net/projects/crccheck"
+url="https://github.com/MartinScharrer/crccheck"
 depends=('python')
-makedepends=('python-setuptools')
-license=('GPL3')
+makedepends=(python-build python-installer python-setuptools python-wheel)
+license=('MIT')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/${_module}/${_module}-${pkgver}.tar.gz")
-sha256sums=('45962231cab62b82d05160553eebd9b60ef3ae79dc39527caef52e27f979fa96')
+source=("${url}/releases/download/v${pkgver}/${_module}-${pkgver}.tar.gz")
+sha256sums=('5384f437de610ade5c3d8689efc80ccd1267b8c452ade83411fd8500a1024f3e')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py build
+    python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
     cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-    python_version="$(python -c "import sys;v=sys.version_info;print(f'{v[0]}.{v[1]}')")"
-    rm -r ${pkgdir}/usr/lib/python${python_version}/site-packages/tests/
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+    local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+    install -d ${pkgdir}/usr/share/licenses/${pkgname}
+    ln -s "${site_packages}/${_module}-${pkgver}.dist-info/LICENSE.txt" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
