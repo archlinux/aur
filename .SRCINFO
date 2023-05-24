@@ -1,0 +1,14 @@
+pkgbase = jq-lsp-git
+	pkgdesc = jq language server
+	pkgver = r29.e962d87
+	pkgrel = 1
+	url = https://github.com/wader/jq-lsp
+	arch = x86
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = MIT
+	source = git+https://github.com/wader/jq-lsp
+	sha256sums = SKIP
+
+pkgname = jq-lsp-git
