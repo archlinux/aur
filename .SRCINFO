@@ -1,0 +1,24 @@
+pkgbase = com.microsoft.word.deepin
+	pkgdesc = Microsoft Word on Deepin Wine
+	pkgver = 2007deepin1
+	pkgrel = 1
+	url = https://www.microsoft.com/en/microsoft-365/previous-versions/download-office-2007
+	arch = x86_64
+	license = custom
+	depends = deepin-wine5
+	depends = glib2
+	depends = at-spi2-core
+	depends = libx11
+	depends = fontconfig
+	depends = xdg-utils
+	depends = gdk-pixbuf2
+	depends = pango
+	depends = gtk2
+	depends = glibc
+	depends = bash
+	depends = cairo
+	depends = freetype2
+	source = https://com-store-packages.uniontech.com/appstore/pool/appstore/c/com.microsoft.word.deepin/com.microsoft.word.deepin_2007deepin1_i386.deb
+	sha256sums = 3ea0c26e380f5f31d6cc9f4386784465942de83ce614f2d22a6eb819d5d8d5ce
+
+pkgname = com.microsoft.word.deepin
