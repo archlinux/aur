@@ -2,7 +2,7 @@
 
 pkgname=python-apex-git
 _pkgname=apex
-pkgver=22.03.r102.g21e41547
+pkgver=22.03.r180.g8b7a1ff1
 pkgrel=1
 pkgdesc="A PyTorch Extension: Tools for easy mixed precision and distributed training in Pytorch"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/NVIDIA/apex"
 _github='NVIDIA/apex'
 license=('BSD')
 depends=('python' 'cuda' 'python-pytorch-cuda' 'python-sympy')
-makedepends=('git' 'python-setuptools' 'python-pip')
+makedepends=('gcc11' 'git' 'numactl' 'python-setuptools' 'python-pip')
 provides=('python-apex')
 conflicts=('python-apex')
 source=("git+$url")
@@ -22,9 +22,8 @@ pkgver () {
 }
 
 build() {
-  msg "Building Python 3"
   cd "$srcdir/${_pkgname}"
-  CC=/opt/cuda/bin/gcc CXX=/opt/cuda/bin/g++ \
+  CC=gcc-11 CXX=g++-11 \
   python setup.py build --cuda_ext --cpp_ext
 }
 
