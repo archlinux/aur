@@ -4,7 +4,7 @@
 pkgname=loot
 pkgver=0.19.1
 _pkglibver=0.19.4
-pkgrel=6
+pkgrel=7
 pkgdesc="A load order optimisation tool for the Elder Scrolls (Morrowind and later) and Fallout (3 and later) games."
 arch=('x86_64')
 url="https://loot.github.io"
@@ -64,5 +64,5 @@ package() {
 	# Install the icon
 	install -Dm644 "${_builddir}/../resources/icons/loot.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/loot.svg"
 	# Install desktop entry
-	install -Dm644 "${srcdir}/../LOOT.desktop" "${pkgdir}/usr/share/applications/LOOT.desktop"
+	install -Dm644 "${srcdir}/LOOT.desktop" "${pkgdir}/usr/share/applications/LOOT.desktop"
 }
