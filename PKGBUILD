@@ -22,6 +22,12 @@ prepare () {
   git submodule update --init subprojects/ixwebsocket/
   git submodule update --init subprojects/keychain/
   git submodule update --init subprojects/miniaudio/
+
+  # Temporal workaround to fix compilation issues with the commit used in
+  # release v0.1.10
+  pushd subprojects/ixwebsocket
+  git checkout bc765e7
+  popd
 }
 
 build () {
