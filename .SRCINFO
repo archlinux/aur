@@ -1,0 +1,17 @@
+pkgbase = guard-bin
+	pkgdesc = Guard by AppsCode - Kubernetes Authentication WebHook Server
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://appscode.com/products/guard/
+	arch = x86_64
+	arch = aarch64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = Apache
+	provides = guard
+	provides = guard-bin
+	source = guard-0.13.0-amd64.tar.gz::https://github.com/kubeguard/guard/releases/download/v0.13.0/guard-linux-amd64.tar.gz
+	sha256sums = 83f57233057c7fed0de56f92807be477b421a8f3893486913253749b532dde4c
+
+pkgname = guard-bin
