@@ -106,8 +106,8 @@ if [[ $CLI == "YES" ]] ; then
 else
 pkgname="emacs-pgtk-git"
 fi
-pkgver=30.0.50.166356
-pkgrel=2
+pkgver=30.0.50.166368
+pkgrel=1
 pkgdesc="GNU Emacs. Development branch, with PGTK and native json-rpc enabled"
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -118,13 +118,15 @@ makedepends=('git' 'mold')
 provides=('emacs')
 conflicts=('emacs')
 replaces=('emacs')
-source=("emacs-git::git+https://git.savannah.gnu.org/git/emacs.git")
+source=("emacs-git::git+https://git.savannah.gnu.org/git/emacs.git"
+       json-rpc-lsp-mode.patch)
 # If Savannah fails for reasons, use Github's mirror
 #source=("emacs-git::git+https://github.com/emacs-mirror/emacs.git#commit=3f076a8e44b652691ffd4a2a07b04ab956ed4668")
 
 options=(!strip)
 install=emacs-git.install
-b2sums=('SKIP')
+b2sums=('SKIP'
+       'SKIP')
 ################################################################################
 
 ################################################################################
@@ -250,7 +252,7 @@ pkgver() {
 # Doing so, breaks incremental compilation.
 prepare() {
   cd "$srcdir/emacs-git"
-  git apply json-rpc-lsp-mode.patch
+  git apply $srcdir/json-rpc-lsp-mode.patch
   [[ -x configure ]] || ( ./autogen.sh git && ./autogen.sh autoconf )
 }
 
