@@ -2,7 +2,7 @@
 # Contributor: Mihai Bişog <mihai.bisog@gmail.com>
 
 pkgname=tsduck
-_pkgver=3.33-3139
+_pkgver=3.34-3197
 pkgver=${_pkgver/-/_}
 pkgrel=1
 pkgdesc="An extensible toolkit for MPEG/DVB transport streams"
@@ -11,11 +11,11 @@ url="https://tsduck.io/"
 license=('BSD')
 depends=(git git-lfs make gcc cmake dos2unix which inetutils net-tools curl tar zip doxygen graphviz linux-api-headers libedit libusb pcsclite srt python jdk-openjdk)
 source=("$pkgname-${_pkgver}.tar.gz::https://github.com/tsduck/tsduck/archive/v${_pkgver}.tar.gz")
-sha256sums=('d7cdad9e46bf454cf7c952f23cd4b18f7690671ee8e0829d3a5da11db94b6201')
+sha256sums=('5e58f220063a5284080a612cc0f62e7f99329a1b2b1d5763f4b014b2578c95c2')
 
 build() {
     cd "$pkgname-${_pkgver}"
-    make NOTEST=true NOGITHUB=true
+    make NOTEST=1 NOGITHUB=1
 }
 
 package() {
