@@ -8,8 +8,8 @@ pkgname=(
     lib32-gst-plugins-bad-libs
     lib32-gst-plugins-bad
 )
-pkgver=1.22.2
-pkgrel=2
+pkgver=1.22.3
+pkgrel=1
 pkgdesc="Multimedia graph framework (32-bit)"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
@@ -172,7 +172,7 @@ _cleanup() {
 
 package_lib32-gst-libav() {
   pkgdesc+=" - libav plugin"
-  depends=("lib32-gst-plugins-base-libs=$pkgver" lib32-ffmpeg)
+  depends=("lib32-gst-plugins-base-libs>=$pkgver" lib32-ffmpeg)
   provides=("lib32-gst-ffmpeg=$pkgver")
   replaces=('lib32-gst-libav-latest')
 
@@ -185,7 +185,7 @@ package_lib32-gst-plugins-bad() {
   pkgdesc+=" - bad plugins"
   replaces=('lib32-gst-plugins-bad-latest')
   depends=(
-    "lib32-gst-plugins-bad-libs=$pkgver" lib32-aom lib32-libass
+    "lib32-gst-plugins-bad-libs>=$pkgver" lib32-aom lib32-libass
     lib32-libbs2b lib32-bzip2 lib32-chromaprint lib32-pango lib32-lcms2
     lib32-curl lib32-libxml2 lib32-libdc1394 lib32-libde265 lib32-openssl
     lib32-libdca lib32-faac lib32-faad2 lib32-libfdk-aac lib32-fluidsynth
@@ -204,7 +204,7 @@ package_lib32-gst-plugins-bad() {
 package_lib32-gst-plugins-bad-libs() {
   pkgdesc+=" - bad"
   depends=(
-    "lib32-gst-plugins-base-libs=$pkgver" lib32-libxkbcommon-x11 lib32-orc
+    "lib32-gst-plugins-base-libs>=$pkgver" lib32-libxkbcommon-x11 lib32-orc
     lib32-libva lib32-libdrm lib32-libx11 lib32-libgudev lib32-libusb
   )
   replaces=('lib32-gst-plugins-bad-libs-latest')
@@ -242,7 +242,7 @@ package_lib32-gst-plugins-bad-libs() {
 package_lib32-gst-plugins-ugly() {
   pkgdesc+=" - ugly plugins"
   depends=(
-    "lib32-gst-plugins-base-libs=$pkgver"
+    "lib32-gst-plugins-base-libs>=$pkgver"
     lib32-libdvdread lib32-libmpeg2 lib32-a52dec lib32-libsidplay lib32-libcdio lib32-x264 lib32-opencore-amr
   )
   replaces=('lib32-gst-plugins-ugly-latest')
