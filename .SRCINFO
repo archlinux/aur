@@ -1,7 +1,7 @@
 pkgbase = git-fc
 	pkgdesc = Fork of Junio's git for users
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	install = git.install
 	arch = x86_64
 	license = GPL2
