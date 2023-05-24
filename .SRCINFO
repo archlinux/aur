@@ -1,0 +1,22 @@
+pkgbase = junction-zhfix
+	pkgdesc = Application/browser chooser
+	pkgver = 1.6
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/sonnyp/Junction
+	arch = x86_64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	makedepends = python-gobject
+	makedepends = blueprint-compiler
+	depends = libadwaita
+	depends = libportal-gtk4
+	depends = gjs
+	source = junction-1.6::git+https://github.com/sonnyp/Junction.git#tag=v1.6
+	source = git+https://github.com/sonnyp/troll.git#commit=fb2d7f26233cea295b23215fd38ecf12a02dbbd0
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = junction-zhfix
