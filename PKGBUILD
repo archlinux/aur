@@ -1,4 +1,4 @@
-# Maintainer: Vitaly Ankh <https://aur.archlinux.org/account/VitalyAnkh>
+# Maintainer: VitalyR <https://aur.archlinux.org/account/VitalyR>
 # Maintainer of emacs-git: Pedro A. López-Valencia <https://aur.archlinux.org/users/vorbote>
 # Maintainer of emacs-pgtk-native-comp: Andrew Whatson <https://aur.archlinux.org/account/flatwhatson>
 
@@ -12,7 +12,7 @@
 # - enalbe JIT and AOT compilation of emacs-lisp, which
 #   means built-in packages and your own packages are 
 #   native compiled by default.
-# - use lsp-mode's json-rpc patch: https://github.com/emacs-lsp/emacs
+# - use lsp-mode's json-rpc patch: https://github.com/emacs-lsp/emacs.
 ################################################################################
 
 ################################################################################
@@ -107,7 +107,7 @@ else
 pkgname="emacs-pgtk-git"
 fi
 pkgver=30.0.50.166368
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Emacs. Development branch, with PGTK and native json-rpc enabled"
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -119,14 +119,14 @@ provides=('emacs')
 conflicts=('emacs')
 replaces=('emacs')
 source=("emacs-git::git+https://git.savannah.gnu.org/git/emacs.git"
-       json-rpc-lsp-mode.patch)
+        json-rpc-lsp-mode.patch)
 # If Savannah fails for reasons, use Github's mirror
 #source=("emacs-git::git+https://github.com/emacs-mirror/emacs.git#commit=3f076a8e44b652691ffd4a2a07b04ab956ed4668")
 
 options=(!strip)
 install=emacs-git.install
-b2sums=('SKIP'
-       'SKIP')
+b2sums=("SKIP"
+        "SKIP")
 ################################################################################
 
 ################################################################################
