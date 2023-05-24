@@ -14,7 +14,7 @@ source=(
   "LICENSE"
 )
 install="${pkgname}.install"
-sha256sums=('5d16d2571ed029ce94a8dfcec2f50a280f9c896a1454eb93014474841861aa01'
+sha256sums=('2cd47ba93dca22121eabd58f757546b27bb3cd7378cdefe3b83329b7529efc0d'
             'faad499ee7fe2e75e18565c6b6b5cf43a3dc97a6eebffbfa5840d9205339fa9b')
 
 package() {
