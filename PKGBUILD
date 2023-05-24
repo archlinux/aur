@@ -1,23 +1,22 @@
-# Maintainer: wolftankk <wolftankk@gmail.com>
+# Maintainer: Maxim Novikov <the.mlex@gmail.com>
 pkgname=zephir
-pkgver=0.11.12
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="Zephir is a compiled high level language aimed to the creation of C-extensions for PHP http://zephir-lang.com/"
-url="https://github.com/phalcon/zephir"
+url="https://github.com/zephir-lang/zephir"
 arch=('x86_64' 'i686')
 license=('MIT')
-depends=('php-zephir-parser')
-makedepends=('php')
+depends=('php-zephir-parser' 'php')
 
 if [[ $CARCH = "i686" ]]; then
   makedepends+=('lib32-pcre');
 fi
 
 source=(
-	"https://github.com/phalcon/zephir/releases/download/${pkgver}/zephir.phar"
+	"https://github.com/zephir-lang/zephir/releases/download/${pkgver}/zephir.phar"
 )
 
-sha256sums=('9224a5f3429d2565948dc2d1a6c1f467268c103b9205d01f277608c64bf514e2')
+sha256sums=('d20d9e340b5b7c395b30a96101496e8139fb14ba478a5322f5e7a018a36ed373')
 
 package() {
   ZEPHIRDIR=/opt/$pkgname
