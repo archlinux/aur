@@ -4,9 +4,9 @@
 # Contributor: getzze <getzze@gmail.com>
 
 _pkgname=rgeos
-_pkgver=0.6-2
+_pkgver=0.6-3
 pkgname=r-${_pkgname,,}
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Interface to Geometry Engine - Open Source ('GEOS')"
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
   r-xml
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2ee2bb8b0c20d7908ac55d4d1cf8292c624ab836e02599ce1871a249a59fe0af')
+sha256sums=('1ebc5a99fdcf7d293811ce26379ba1525a2b9f23b11f1fb4a9c582bf27fc2b3c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
