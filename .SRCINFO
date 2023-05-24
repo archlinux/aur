@@ -1,7 +1,7 @@
 pkgbase = jelly-drift-bin
 	pkgdesc = Free racing game made by the youtuber Dani
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://danidev.itch.io/jelly-drift
 	arch = x86_64
 	license = unknown
