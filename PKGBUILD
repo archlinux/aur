@@ -1,11 +1,11 @@
 #Maintainer: Rein Fernhout (LevitatingBusinessMan) <me@levitati.ng>
-
 pkgname=neofetch-port
-pkgver=r2.0fc08c9
+pkgver=r4.118e0f6
 arch=("x86_64")
 pkgrel=1
 pkgdesc="A port that just reponse with the output of neofetch..."
 license=("MIT")
+depends=("neofetch")
 makedepends=("make")
 url="https://github.com/LevitatingBusinessMan/$pkgname"
 source=("git+https://github.com/LevitatingBusinessMan/$pkgname.git" "neofetch-port.service")
