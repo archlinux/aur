@@ -4,7 +4,7 @@
 # Contributor: Adrià Cereto i Massagué <ssorgatem at gmail.com>
 
 pkgname=amdvlk-git
-pkgver=2022.Q4.4.r0.3aecd9d
+pkgver=2023.Q2.2.r0.ec40bda
 pkgrel=1
 pkgdesc="AMD's standalone Vulkan driver"
 arch=(x86_64)
@@ -14,8 +14,8 @@ depends=('vulkan-icd-loader')
 provides=('vulkan-amdvlk' 'amdvlk' 'vulkan-driver')
 conflicts=('vulkan-amdvlk' 'amdvlk')
 makedepends=('xorgproto' 'xorg-server-devel' 'libxrandr' 'cmake' 'python' 'libxml2' 'wayland' 'libdrm' 'git' 'ninja' 'repo' 'directx-shader-compiler')
-source=()
-sha512sums=()
+source=('https://patch-diff.githubusercontent.com/raw/GPUOpen-Drivers/pal/pull/94.patch')
+sha256sums=('df333990b3ebd39f7b5e5d36ca74e0c1814329c64ca942fb03ae037e75e8c5bb')
 
 pkgver() {
   pushd .repo/manifests/ > /dev/null
@@ -33,7 +33,8 @@ prepare() {
     sed -i "s/-Werror//g" "$srcdir"/$i
   done
 
-  msg 'No patches to apply...'
+  msg 'Applying https://github.com/GPUOpen-Drivers/pal/pull/94'
+  patch -p1 -d drivers/pal < "$srcdir/94.patch"
 }
 
 build() {

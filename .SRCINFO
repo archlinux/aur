@@ -1,6 +1,6 @@
 pkgbase = amdvlk-git
 	pkgdesc = AMD's standalone Vulkan driver
-	pkgver = 2022.Q4.4.r0.3aecd9d
+	pkgver = 2023.Q2.2.r0.ec40bda
 	pkgrel = 1
 	url = https://github.com/GPUOpen-Drivers
 	arch = x86_64
@@ -23,5 +23,7 @@ pkgbase = amdvlk-git
 	provides = vulkan-driver
 	conflicts = vulkan-amdvlk
 	conflicts = amdvlk
+	source = https://patch-diff.githubusercontent.com/raw/GPUOpen-Drivers/pal/pull/94.patch
+	sha256sums = df333990b3ebd39f7b5e5d36ca74e0c1814329c64ca942fb03ae037e75e8c5bb
 
 pkgname = amdvlk-git
