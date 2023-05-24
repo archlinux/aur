@@ -1,7 +1,7 @@
 pkgbase = git-review
 	pkgdesc = Tool to submit code to Gerrit
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opendev.org/opendev/git-review
 	arch = any
 	license = APACHE
