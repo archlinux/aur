@@ -1,7 +1,10 @@
+# Maintainer:
+
+_reduce_size="false"
 
 _pkgname='pcsx2'
 pkgname="$_pkgname-bin"
-pkgver=1.7.4239
+pkgver=1.7.4529
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -11,11 +14,11 @@ license=(
   'GPL3'
   'LGPL3'
 )
+options=(!strip !debug)
 
 depends=()
 makedepends=(
   'jq'
-  'aria2'
 )
 
 provides=(
@@ -25,23 +28,30 @@ provides=(
 )
 conflicts=(${provides[@]})
 
-source=()
-sha256sums=()
+_appimage="pcsx2-v${pkgver%.[a-z]*}-linux-AppImage-64bit-Qt.AppImage"
+source=(
+  "$_appimage"::"$url/releases/download/v${pkgver%.[a-z]*}/$_appimage"
+  'rm_libs'
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+)
 
 pkgver() {
-  curl --silent "https://api.github.com/repos/PCSX2/pcsx2/tags" | jq -r 'first | .name' | sed 's/^v//'
+  local _pkgver=$(curl --silent "https://api.github.com/repos/PCSX2/pcsx2/tags" | jq -r 'first | .name' | sed 's/^v//')
+
+  if [ "$_reduce_size" == "true" ] ; then
+    printf "%s.%s" \
+      "$_pkgver" \
+      "small"
+  else
+    printf "%s" \
+      "$_pkgver"
+  fi
 }
 
 build() {
-  _appimage="pcsx2-v$pkgver-linux-AppImage-64bit-Qt.AppImage"
-
-  # download latest appimage
-  if [ -f "../$_appimage" ] ; then
-    ln "../$_appimage" .
-  else
-    aria2c "$url/releases/download/v$pkgver/$_appimage"
-  fi
-
   # extract appimage
   chmod +x "$_appimage"
   "./$_appimage" --appimage-extract
@@ -51,9 +61,6 @@ build() {
 }
 
 package() {
-  depends+=(
-  )
-
   cd "$srcdir"
 
   install -Dm755 "$srcdir/squashfs-root/AppRun" "$pkgdir/usr/bin/pcsx2-qt"
@@ -64,4 +71,10 @@ package() {
 
   mkdir -p "$pkgdir/opt"
   mv "$srcdir/squashfs-root" "$pkgdir/opt/pcsx2"
+
+  # reduce size
+  if [ "$_reduce_size" == "true" ] ; then
+    xargs -i rm -rf "$pkgdir/opt/pcsx2/usr/lib/{}" < rm_libs
+    hardlink -fmp "$pkgdir"
+  fi
 }
