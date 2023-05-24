@@ -1,13 +1,15 @@
 pkgbase = python-pysimdjson
 	pkgdesc = Python bindings for the simdjson project, a SIMD-accelerated JSON parser.
-	pkgver = 4.0.3
+	pkgver = 5.0.2
 	pkgrel = 1
 	url = http://github.com/TkTech/pysimdjson
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = cython
-	source = https://files.pythonhosted.org/packages/source/p/pysimdjson/pysimdjson-4.0.3.tar.gz
-	sha256sums = 61900992d7f992b073a8c5f93cafa4af9bfd3209624baa775699b0fdd6f67517
+	depends = glibc
+	depends = gcc-libs
+	source = https://files.pythonhosted.org/packages/source/p/pysimdjson/pysimdjson-5.0.2.tar.gz
+	sha256sums = 83010f07f9ca38e4557b61860acfeb0a897b416f06f73182ffaffa94bdb7394d
 
 pkgname = python-pysimdjson
