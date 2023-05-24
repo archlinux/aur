@@ -2,7 +2,7 @@ pkgdesc="ROS - Messages for transmitting audio via ROS."
 url='https://wiki.ros.org/audio_common_msgs'
 
 pkgname='ros-noetic-audio-common-msgs'
-pkgver='0.3.11'
+pkgver='0.3.16'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -26,7 +26,7 @@ depends=(
 
 _dir="audio_common-${pkgver}/audio_common_msgs"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/audio_common/archive/${pkgver}.tar.gz")
-sha256sums=('0c72196d0d551bb1b9a1c9c134bbfd1b3073529c93a495c4d829911c38db3b1d')
+sha256sums=('579b8bfa0834fa931f846a76360eb891f28e352e8405e949763dc40ad38d87a0')
 
 build() {
   # Use ROS environment variables

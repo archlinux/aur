@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-audio-common-msgs
 	pkgdesc = ROS - Messages for transmitting audio via ROS.
-	pkgver = 0.3.11
+	pkgver = 0.3.16
 	pkgrel = 1
 	url = https://wiki.ros.org/audio_common_msgs
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = ros-noetic-audio-common-msgs
 	makedepends = ros-noetic-catkin
 	makedepends = ros-noetic-message-generation
 	depends = ros-noetic-message-runtime
-	source = ros-noetic-audio-common-msgs-0.3.11.tar.gz::https://github.com/ros-drivers/audio_common/archive/0.3.11.tar.gz
-	sha256sums = 0c72196d0d551bb1b9a1c9c134bbfd1b3073529c93a495c4d829911c38db3b1d
+	source = ros-noetic-audio-common-msgs-0.3.16.tar.gz::https://github.com/ros-drivers/audio_common/archive/0.3.16.tar.gz
+	sha256sums = 579b8bfa0834fa931f846a76360eb891f28e352e8405e949763dc40ad38d87a0
 
 pkgname = ros-noetic-audio-common-msgs
