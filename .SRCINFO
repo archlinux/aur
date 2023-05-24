@@ -4,7 +4,6 @@ pkgbase = junction-zhfix
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/sonnyp/Junction
-	install = junction.install
 	arch = x86_64
 	license = GPL3
 	checkdepends = appstream-glib
@@ -17,8 +16,6 @@ pkgbase = junction-zhfix
 	depends = gjs
 	provides = junction
 	source = junction-1.6::git+https://github.com/sonnyp/Junction.git#tag=v1.6
-	source = git+https://github.com/sonnyp/troll.git#commit=fb2d7f26233cea295b23215fd38ecf12a02dbbd0
-	b2sums = SKIP
 	b2sums = SKIP
 
 pkgname = junction-zhfix
