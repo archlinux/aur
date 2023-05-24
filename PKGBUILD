@@ -4,7 +4,7 @@ _reponame=Shipwright
 _libultraship_commit=57660fbb186d85923a1f771bfaafe241c209e579
 pkgbase=soh
 pkgname=(soh soh-otr-exporter)
-pkgver=7.0.1
+pkgver=7.0.2
 pkgrel=1
 arch=("x86_64" "i686")
 url="https://shipofharkinian.com/"
@@ -17,7 +17,7 @@ source=("${_reponame}-${pkgver}.tar.gz::https://github.com/HarbourMasters/${_rep
         "soh.desktop"
         "soh-misc-otr-patches.patch"
         "lus-install-paths.patch")
-sha256sums=('67e2ec113b141fd2923cfc6e4115b06b342ce0f6d403be1246d99c5d5bdbdea8'
+sha256sums=('d8e0ff35cf5a1e8ef5a77d9e71e1fe3060039a7d6ae5e08d035f8b991fe47487'
             'a32064431e75f9e3621209088888a1758015d7d5a46af34ea994e8f2f475531e'
             '25aebd34f6ad49073d8a5ce6915b6fa290470fc6d62a8143abe07a25707ff4a2'
             'b7e06174915f8dc6bd8927c248fec32c1d15c943b6aaaed1c6fb7c37dcb55510'
