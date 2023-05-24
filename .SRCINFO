@@ -1,6 +1,6 @@
 pkgbase = revealed-appimage
 	pkgdesc = A platform and store for apps, games, and more!
-	pkgver = 2.0.0alpha.13
+	pkgver = 2.0.0alpha.14
 	pkgrel = 1
 	url = https://www.appsrevealed.com/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = revealed-appimage
 	depends = hicolor-icon-theme
 	conflicts = revealed
 	options = !strip
-	source = revealed-2.0.0alpha.13.AppImage::https://github.com/BunnyStrike/revealed/releases/download/v2.0.0-alpha.13/Revealed.AppImage
-	sha256sums = d4ae320e06436a7d0857d40928962e16c6d2671e1c464f24064c2150d2ac9417
+	source = revealed-2.0.0alpha.14.AppImage::https://github.com/BunnyStrike/revealed/releases/download/v2.0.0-alpha.14/Revealed.AppImage
+	sha256sums = c23362cff5ea0bc1d6e6f0289a9a81db67e4ceae135f373230899215fa5026e7
 
 pkgname = revealed-appimage
