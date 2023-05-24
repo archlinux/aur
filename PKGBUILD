@@ -1,6 +1,6 @@
 # Maintainer: bretello <bretello@distruzione.org>
 pkgname=bretellofier
-pkgver=0.4.3
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Command line telegram notifier"
 arch=(any)
@@ -23,14 +23,7 @@ package() {
 
 
 post_install() {
-    echo "bretellofier cane be configured by creating ~/.bretellofier.conf with the following contents"
-    echo "[telegram]
-token = XXXXXXXXX:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-
-[users]
-name = 66666666
-"
-    echo "replace token and name lines with your bot's token and telegram id"
-    echo "Environment variables can also be used. See the README".
-
+    echo "Run \"bretellofier --generate-config > ~/.bretellofier.conf\" to generate a sample config."
+    echo "Replace token and name lines with your bot's token and telegram id"
+    echo "Command line flags/environment variables can also be used. See bretellofier --help".
 }

@@ -1,6 +1,6 @@
 pkgbase = bretellofier
 	pkgdesc = Command line telegram notifier
-	pkgver = 0.4.3
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://git.decapod.one/brethil/bretellofier
 	arch = any
