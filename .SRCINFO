@@ -6,15 +6,13 @@ pkgbase = python-influxdb-client
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python
-	depends = python-dateutil
-	depends = python-six
-	depends = python-pytz
-	depends = python-rx
-	depends = python-certifi
-	depends = python-urllib3
+	depends = python>=3.7
+	depends = python-dateutil>=2.5.3
+	depends = python-reactivex>=4.0.4
+	depends = python-certifi>=14.05.14
+	depends = python-urllib3>=1.26.0
 	optdepends = influxdb
-	optdepends = python-ciso8601
+	optdepends = python-ciso8601>=2.1.1
 	options = !emptydirs
 	source = python-influxdb-client-1.36.1.tar.gz::https://github.com/influxdata/influxdb-client-python/archive/v1.36.1.tar.gz
 	sha512sums = ef7a16ec0935ac2397fe21fb671758d181939df6c7624a11c505b97de23b366623ef718bdcf6a39ad902e1fe1ef880ac535352dafc636326b9c533b5ec1b4b83
