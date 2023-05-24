@@ -1,0 +1,11 @@
+[Unit]
+Description=TurnSoundBlasterX-H6 LED ON at startup and OFF at Shutdown Service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/sbx-h6-ctl -c "ff0000" -b 255 041e:3255
+ExecStop=/usr/bin/sbx-h6-ctl -c "ff0000" -b 0 041e:3255
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
