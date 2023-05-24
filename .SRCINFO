@@ -1,0 +1,21 @@
+pkgbase = rtl8852cu-dkms-git
+	pkgdesc = Kernel module for USB WiFi Adapters that use the RTL8852CU and RTL8832CU Chipsets
+	pkgver = 1.0.0.3.a246437
+	pkgrel = 1
+	url = https://github.com/lwfinger/rtw8852cu
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = make
+	makedepends = linux-headers
+	depends = dkms
+	depends = linux-headers
+	depends = git
+	conflicts = rtl8852cu
+	conflicts = rtl8852cu-git
+	source = git+https://github.com/lwfinger/rtw8852cu.git
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = e22dcac4ccd9b5db371cc7eb0e947e7ce51b3adcfb64224a638244159331f5ca
+
+pkgname = rtl8852cu-dkms-git
