@@ -1,13 +1,15 @@
 pkgbase = actionlint
 	pkgdesc = Static checker for GitHub Actions workflow files
 	pkgver = 1.6.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rhysd/actionlint
 	arch = any
 	license = MIT
 	makedepends = go
 	makedepends = git
-	source = actionlint-1.6.24-1.tar.gz::https://github.com/rhysd/actionlint/archive/refs/tags/v1.6.24.tar.gz
+	optdepends = python-pyflakes
+	optdepends = shellcheck
+	source = actionlint-1.6.24-2.tar.gz::https://github.com/rhysd/actionlint/archive/refs/tags/v1.6.24.tar.gz
 	sha256sums = 0dc8b31c8541a719486b5678e6f0401c8c13ce7baf79013570f3799f380c1dc1
 
 pkgname = actionlint
