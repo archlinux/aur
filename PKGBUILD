@@ -3,7 +3,7 @@
 
 _pkgname=drupal-check
 pkgname=${_pkgname}
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc="Check Drupal code for deprecations and discover bugs via static analysis."
 arch=('any')
