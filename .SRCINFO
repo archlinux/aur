@@ -6,7 +6,7 @@ pkgbase = clean-chroot-manager
 	install = ccm.install
 	arch = any
 	license = MIT
-	depends = devtools>=20190821-1
+	depends = devtools>=1:1.0.0-1
 	depends = rsync
 	depends = libarchive>=3.3.3
 	depends = pacman>=6.0.2-7
