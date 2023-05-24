@@ -1,6 +1,6 @@
 pkgbase = audio_async_loopback-git
 	pkgdesc = Real-time S/PDIF PCM/AC3 capture and playback
-	pkgver = r7.75b8c97
+	pkgver = r11.d7af319
 	pkgrel = 1
 	url = https://github.com/jakemoroni/audio_async_loopback
 	arch = x86_64
