@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scatterpie
-_pkgver=0.1.9
+_pkgver=0.2.0
 pkgname=r-${_pkgname,,}
-pkgver=0.1.9
-pkgrel=3
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='Scatter Pie Plot'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -26,7 +26,7 @@ optdepends=(
   r-scales
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('517fd6cc297aa33f0fbb2643e35ca41dc971166ea2e8ed78460bd4ef7a77a687')
+sha256sums=('499da655502d91f3f2eae03e33eb54ef18ef6a35aaf0107d462ff2a9a86f9919')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
