@@ -1,8 +1,9 @@
-# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Maintainer: spiritomb <spiritomb@protonmail.com>
+# Contributor: Chih-Hsuan Yen <yan12125@gmail.com>
 # Contributor: YuutaW <i@yuuta.moe>
 
 pkgname=rsshub-git
-pkgver=r7724.d4a196333
+pkgver=r9177.93498412b
 pkgrel=1
 pkgdesc="Everything is RSSible"
 # The built package bundles native Node.js extensions like OpenCC
