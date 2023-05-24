@@ -3,11 +3,16 @@
 _name=nbmerge
 pkgname=$_name
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to merge / concatenate Jupyter (IPython) notebooks "
 url="https://github.com/jbn/nbmerge"
-depends=('jupyter-nbformat')
-makedepends=('python-setuptools')
+depends=(
+    'jupyter-nbformat'
+    'python'
+)
+makedepends=(
+    'python-setuptools'     # namcap expects this to be a runtime dep, but it shouldn't
+)
 license=('MIT')
 arch=('any')
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
