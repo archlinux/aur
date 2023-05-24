@@ -1,13 +1,12 @@
 pkgbase = outils
 	pkgdesc = A port of some non-standard OpenBSD tools to Linux
 	pkgver = 0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/leahneukirchen/outils
 	arch = x86_64
 	license = BSD
 	depends = glibc
 	provides = apply
-	provides = calendar
 	provides = ou-cksum
 	provides = jot
 	provides = lam
