@@ -1,0 +1,16 @@
+pkgbase = better-osu-skills-appimage
+	pkgdesc = Gets results from the osu!Skills training page and PMs them on osu! using your own IRC credentials
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/straightcurve/better-osuskills
+	arch = x86_64
+	license = custom
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = better-osu-skills
+	options = !strip
+	source = better-osu-skills-1.0.6.AppImage::https://github.com/straightcurve/better-osuskills/releases/download/v1.0.6/better-osu-skills-1.0.6.AppImage
+	sha256sums = 8fe449e2e93f061a3446aa2fd346eaeb0982b83529ed381834b059c7bb1f7d28
+
+pkgname = better-osu-skills-appimage
