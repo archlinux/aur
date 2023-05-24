@@ -3,10 +3,10 @@
 
 pkgname='slang-snapshot'
 _pkgname="${pkgname%-snapshot}"
-_pkgver='2.3.4-7'
+_pkgver='2.3.4-8'
 _prever="pre$_pkgver"
 pkgver="${_pkgver/-/.}"
-pkgrel=2
+pkgrel=1
 pkgdesc='S-Lang is a powerful interpreted language (development snapshot)'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 provides=('slang')
@@ -14,21 +14,26 @@ conflicts=('slang')
 url='https://jedsoft.org/snapshots/'
 license=('GPL')
 depends=(
+  'glibc'
   'libpng'
   'oniguruma'
   'pcre'
+  'zlib'
 )
 backup=('etc/slsh.rc')
 options=('lto' '!makeflags')
 source=("${url}slang-$_prever.tar.gz")
 validpgpkeys=('AE962A02D29BFE4A4BB2805FDE401E0D5873000A')  # John E. Davis
 # Taken from $url
-md5sums=('21e4c33194a26d8fb2304afea107e88b')
+md5sums=('c740ca7ded82fa29849046ca33c572b1')
 
 build() {
   cd "${_pkgname}-${_prever}" || exit 1
 
-  export CFLAGS="$CFLAGS -ffat-lto-objects"
+  case "$CLAGS" in
+    *-ffat-lto-objects* ) : pass ;;
+    * ) export CFLAGS="$CFLAGS -ffat-lto-objects" ;;
+  esac
 
   ./configure --prefix=/usr --sysconfdir=/etc
   make
@@ -48,13 +53,10 @@ package() {
 
 # Calculated
 sha256sums=(
-  '7c773efa3c258ed916de152c3c29fe360cefca7ffaea1e6fd8f386085f096872'
+  'bd2de566dba919a0cc230b970236c89b095d693cc15344e28f7f9d4e646b9a6b'
 )
 sha512sums=(
-  'aaa75ba4b3849a5438cc179ab88df29f539f9b332d26df75c80ac6a7e6bf79c49754ace82207e10fc981558d2f1348d479bb7266999dd18d05071d65e7d9a8ff'
-)
-b2sums=(
-  '48d228f9c6ed848b1c7210c89f626fa60a0bb80168fa78fee2682ead0bda5aa47e8871d27c75987aa8a9db68f4640cbcd75b6375145a0ee09280752f36454f7d'
+  'bca104861f947b8a7a318c0cf4128be236eea603f0ca73125d7609d6ff4a7a425d99388e6df64f2d5b1f92a1e32bddb655dcaaa85acd397507559cdf11daf98b'
 )
 
 # eof
