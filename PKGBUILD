@@ -1,5 +1,5 @@
 pkgname=micr0fetch
-pkgver=0.4
+pkgver=1.0
 pkgrel=1
 epoch=
 pkgdesc="Tool that pulls and displays system information"

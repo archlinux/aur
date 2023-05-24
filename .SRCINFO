@@ -1,13 +1,13 @@
 pkgbase = micr0fetch
 	pkgdesc = Tool that pulls and displays system information
-	pkgver = 0.4
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/MiraslauKavaliou/micr0fetch
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = micr0fetch-0.4.tar.gz::https://github.com/MiraslauKavaliou/micr0fetch/archive/refs/tags/v0.4.tar.gz
+	source = micr0fetch-1.0.tar.gz::https://github.com/MiraslauKavaliou/micr0fetch/archive/refs/tags/v1.0.tar.gz
 	sha256sums = 5bb077b90e4f0e90cc93103fa67902d9622cd0d14b358f2ee800b8ccac6b893a
 
 pkgname = micr0fetch
