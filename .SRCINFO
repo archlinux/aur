@@ -1,0 +1,15 @@
+pkgbase = electron-react-boilerplate-appimage
+	pkgdesc = A Foundation for Scalable Cross-Platform Apps
+	pkgver = 4.6.0
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = electron-react-boilerplate
+	options = !strip
+	source = electron-react-boilerplate-4.6.0.AppImage::https://github.com/electron-react-boilerplate/electron-react-boilerplate/releases/download/v4.6.0/ElectronReact-4.6.0.AppImage
+	sha256sums = cd8f574f85865c8d64475e70a4efc21ac405b1a93db2f8c462932e9df008b71f
+
+pkgname = electron-react-boilerplate-appimage
