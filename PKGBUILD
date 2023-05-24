@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=python-troveclient
-pkgver=7.3.0
+pkgver=8.1.0
 pkgrel=1
 pkgdesc='Client library for OpenStack DBaaS API'
 arch=('any')
@@ -15,7 +15,7 @@ checkdepends=('python-fixtures' 'python-oslotest' 'python-openstackclient'
               'python-testtools' 'python-mock' 'python-httplib2')
 source=("https://github.com/openstack/$pkgname/archive/$pkgver.tar.gz"
         'trove.bash_completion')
-sha512sums=('52a80ff368a3ef2b1f44e1e18ed26af5946008cea53b1209ea4647bc2b5d16a175ed34533f582cf2a932d34d47b189dc956f459945c72df1fd701aabeb6ab32e'
+sha512sums=('eb4209713ef06d711e61820212ac0d7318e32bce85280432883a1182cf57a9c8de8b504318330985d0e32dafbda0fb258298216b3b5e4ded7412140f0b137013'
             '53a8603e7add596e847fcfcea9b454168956af581fb48794ab0ac08f6dce1d8c71ef47682e8b974bf184fc19e8473d362c75e9d70cd99d761ca7e113ea1f0ee9')
 
 export PBR_VERSION=$pkgver
