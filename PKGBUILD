@@ -16,6 +16,8 @@ md5sums=('1eeff486b3f6317fe18b41e4e21f2d8a')
 package() {
 	tar -C "${pkgdir}" -xf data.tar.gz
 
+    find $pkgdir -exec chmod go-w {} \;
+
 	install -d -m755 "${pkgdir}/usr/bin"
 	ln -s "/opt/tixeoclient/tixeoclient" "${pkgdir}/usr/bin/tixeoclient"
 
