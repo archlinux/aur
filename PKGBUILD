@@ -21,6 +21,7 @@ prepare () {
 
   git submodule update --init subprojects/ixwebsocket/
   git submodule update --init subprojects/keychain/
+  git submodule update --init subprojects/miniaudio/
 }
 
 build () {
