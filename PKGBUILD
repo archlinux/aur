@@ -230,8 +230,6 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include/linux"
   cp include/linux/inotify.h "${pkgdir}/usr/lib/modules/${_kernver}/build/include/linux/"
 
-  cp -R include/generated "${pkgdir}/usr/lib/modules/${_kernver}/build/include/generated"
-
   # add wireless headers
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/net/mac80211/"
   cp net/mac80211/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/net/mac80211/"
