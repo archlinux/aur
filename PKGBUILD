@@ -1,6 +1,6 @@
 # Maintainer: Jeremy M. Reed <reeje76@gmail.com>
 pkgname=image-file-name-fixer
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="A tool to enforce a consistent naming scheme for image files."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('cargo' 'pandoc-cli')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jeremymreed/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('5f7283ea3e11939d5ec266fbce6fb8b02f05a3f63603c33bb60024ef51bc5107fcdd805f0a1ed64a9f75edf8a0ceddeb11679be77be60aaf14b1ba69234cd268')
+sha512sums=('f1905fdac44362e105115fdee8827cf227a6c5db1b9afc10d817f13341f9ea3ab6ae7d274486c24dc85672306406d226692260803ab014b186d31e800fe20fa5')
 
 build() {
   cd "$pkgname-$pkgver"
