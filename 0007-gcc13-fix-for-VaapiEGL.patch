@@ -1,0 +1,25 @@
+From 2511caa37c5cb0023bb9726be8cecfb05b44ee53 Mon Sep 17 00:00:00 2001
+From: egnappahz <egnappah@gmail.com>
+Date: Wed, 24 May 2023 18:39:16 +0200
+Subject: [PATCH] gcc13 fix for VaapiEGL
+
+Signed-off-by: egnappahz <egnappah@gmail.com>
+---
+ xbmc/cores/VideoPlayer/VideoRenderers/HwDecRender/VaapiEGL.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/xbmc/cores/VideoPlayer/VideoRenderers/HwDecRender/VaapiEGL.h b/xbmc/cores/VideoPlayer/VideoRenderers/HwDecRender/VaapiEGL.h
+index 994a4d063b..834e8c18c4 100644
+--- a/xbmc/cores/VideoPlayer/VideoRenderers/HwDecRender/VaapiEGL.h
++++ b/xbmc/cores/VideoPlayer/VideoRenderers/HwDecRender/VaapiEGL.h
+@@ -8,6 +8,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <array>
+ 
+ #if defined(HAS_GL)
+-- 
+2.40.1
+

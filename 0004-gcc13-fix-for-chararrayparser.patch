@@ -1,0 +1,25 @@
+From 8b86ef2bfc9b39c81a6b360af14e7bae1478136a Mon Sep 17 00:00:00 2001
+From: egnappahz <egnappah@gmail.com>
+Date: Wed, 24 May 2023 18:25:56 +0200
+Subject: [PATCH] gcc13 fix for chararrayparser
+
+Signed-off-by: egnappahz <egnappah@gmail.com>
+---
+ xbmc/utils/CharArrayParser.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/xbmc/utils/CharArrayParser.h b/xbmc/utils/CharArrayParser.h
+index 7e5e314161..3430946dd3 100644
+--- a/xbmc/utils/CharArrayParser.h
++++ b/xbmc/utils/CharArrayParser.h
+@@ -8,6 +8,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <string>
+ 
+ /*!
+-- 
+2.40.1
+

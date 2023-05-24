@@ -1,0 +1,25 @@
+From 77fbb896cdcca1f443843afc204db57f91fc1627 Mon Sep 17 00:00:00 2001
+From: egnappahz <egnappah@gmail.com>
+Date: Wed, 24 May 2023 18:09:49 +0200
+Subject: [PATCH] gcc13 fix
+
+Signed-off-by: egnappahz <egnappah@gmail.com>
+---
+ xbmc/cores/RetroPlayer/cheevos/Cheevos.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/xbmc/cores/RetroPlayer/cheevos/Cheevos.h b/xbmc/cores/RetroPlayer/cheevos/Cheevos.h
+index 71c5ed5896..70ffe41ed8 100644
+--- a/xbmc/cores/RetroPlayer/cheevos/Cheevos.h
++++ b/xbmc/cores/RetroPlayer/cheevos/Cheevos.h
+@@ -10,6 +10,7 @@
+ 
+ #include "RConsoleIDs.h"
+ 
++#include <cstdint>
+ #include <map>
+ #include <string>
+ 
+-- 
+2.40.1
+

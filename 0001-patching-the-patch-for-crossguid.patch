@@ -1,0 +1,32 @@
+From eb85b965931b322ccbf0ec41ad92709048c88f09 Mon Sep 17 00:00:00 2001
+From: egnappahz <egnappah@gmail.com>
+Date: Wed, 24 May 2023 17:56:16 +0200
+Subject: [PATCH] patching the patch
+
+Signed-off-by: egnappahz <egnappah@gmail.com>
+---
+ .../target/crossguid/002-disable-Wall-error.patch     | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/tools/depends/target/crossguid/002-disable-Wall-error.patch b/tools/depends/target/crossguid/002-disable-Wall-error.patch
+index daef659bcd..207054ad0e 100644
+--- a/tools/depends/target/crossguid/002-disable-Wall-error.patch
++++ b/tools/depends/target/crossguid/002-disable-Wall-error.patch
+@@ -16,3 +16,14 @@
+  
+  set_target_properties(crossguid
+  					  PROPERTIES
++
++--- a/include/crossguid/guid.hpp
+++++ b/include/crossguid/guid.hpp
++@@ -36,6 +36,7 @@ THE SOFTWARE.
++ #include <string_view>
++ #include <utility>
++ #include <iomanip>
+++#include <cstdint>
++ 
++ #define BEGIN_XG_NAMESPACE namespace xg {
++ #define END_XG_NAMESPACE }
+-- 
+2.40.1
+

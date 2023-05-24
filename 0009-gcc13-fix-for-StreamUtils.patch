@@ -1,0 +1,25 @@
+From 0c6c5437b4874e5e955d4aedeee9da4c011b97dd Mon Sep 17 00:00:00 2001
+From: egnappahz <egnappah@gmail.com>
+Date: Wed, 24 May 2023 18:46:54 +0200
+Subject: [PATCH] gcc13 fix for StreamUtils
+
+Signed-off-by: egnappahz <egnappah@gmail.com>
+---
+ xbmc/utils/StreamUtils.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/xbmc/utils/StreamUtils.h b/xbmc/utils/StreamUtils.h
+index 079cfa3f5c..3d16e8a222 100644
+--- a/xbmc/utils/StreamUtils.h
++++ b/xbmc/utils/StreamUtils.h
+@@ -8,6 +8,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <string>
+ 
+ static constexpr int MP4_BOX_HEADER_SIZE = 8;
+-- 
+2.40.1
+

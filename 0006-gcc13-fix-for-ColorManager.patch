@@ -1,0 +1,26 @@
+From 21bb007e4cecb147e02a3cf8ada5a6a8ac8b6ca5 Mon Sep 17 00:00:00 2001
+From: egnappahz <egnappah@gmail.com>
+Date: Wed, 24 May 2023 18:38:13 +0200
+Subject: [PATCH] gcc13 fix for ColorManager
+
+Signed-off-by: egnappahz <egnappah@gmail.com>
+---
+ xbmc/cores/VideoPlayer/VideoRenderers/ColorManager.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/xbmc/cores/VideoPlayer/VideoRenderers/ColorManager.h b/xbmc/cores/VideoPlayer/VideoRenderers/ColorManager.h
+index b23da958d9..18e9585ce1 100644
+--- a/xbmc/cores/VideoPlayer/VideoRenderers/ColorManager.h
++++ b/xbmc/cores/VideoPlayer/VideoRenderers/ColorManager.h
+@@ -11,7 +11,7 @@
+ #if defined(HAVE_LCMS2)
+ #include <lcms2.h>
+ #endif
+-
++#include <cstdint>
+ #include <string>
+ 
+ extern "C"
+-- 
+2.40.1
+

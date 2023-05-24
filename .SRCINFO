@@ -1,6 +1,6 @@
 pkgbase = kodi-eggz
 	pkgver = 20.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
@@ -59,8 +59,28 @@ pkgbase = kodi-eggz
 	depends = shairplay
 	source = git+https://github.com/xbmc/xbmc.git#tag=20.1-Nexus
 	source = git+https://github.com/xbmc/vfs.rar.git#tag=20.1.0-Nexus
+	source = 0001-patching-the-patch-for-crossguid.patch
+	source = 0002-gcc13-fix-cheevos.patch
+	source = 0003-gcc13-fix-for-picture.patch
+	source = 0004-gcc13-fix-for-chararrayparser.patch
+	source = 0005-gcc13-fix-for-CSSUtils.patch
+	source = 0006-gcc13-fix-for-ColorManager.patch
+	source = 0007-gcc13-fix-for-VaapiEGL.patch
+	source = 0008-gcc13-fix-for-Filesystem.patch
+	source = 0009-gcc13-fix-for-StreamUtils.patch
+	source = 0010-gcc13-fix-for-DRMHelpers.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = c5f89b5149b3f9fef7f138a0795402bcda1b6b097fe47e35b661f997fc5eebfd
+	sha256sums = 9d803af68ba613e77490a94a20339a62eec512b96d6e8b3691dbf57a1a8e3ada
+	sha256sums = 8ad1ff33eedb46a89210d62e788ddef68865e7cd7bcac1500e081c32bb009dcc
+	sha256sums = 4ced2587a41d877ae76e1b6ba0b19646b4c7d4e26efa507ba0e2032b7a52dbd9
+	sha256sums = a49508ca05cbd31b21f5942a087ff813d99ad20af503485f55312dd74ca93f6e
+	sha256sums = 9a8aa680d8e74cd07db434fac9a4e8b25884db44d7b393a0d7ab858f8ebbf6f0
+	sha256sums = dd9af3457b281e514921429972eb910b0e558efe76ef8683523c69b736c45dfd
+	sha256sums = 538fc74c2a3712f96269dfdc747ab26c755f50a937051b87e3a6a0eaf6c221ff
+	sha256sums = 4184379ade94fe2d220af451521556d87d524977b34ba807ea2351d2033d170e
+	sha256sums = 5946db48a14a5bca5312a9dd2df42514872da4558b23c654ef45409006cf7435
 
 pkgname = kodi-eggz
 	pkgdesc = Latest stable-ish kodi build with VFS automaticly installed

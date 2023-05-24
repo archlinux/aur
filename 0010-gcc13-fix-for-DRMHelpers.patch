@@ -1,0 +1,25 @@
+From 70a5e456c3f758ba4c64d598dce542cd60618487 Mon Sep 17 00:00:00 2001
+From: egnappahz <egnappah@gmail.com>
+Date: Wed, 24 May 2023 18:51:45 +0200
+Subject: [PATCH] gcc13 fix for DRMHelpers
+
+Signed-off-by: egnappahz <egnappah@gmail.com>
+---
+ xbmc/utils/DRMHelpers.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/xbmc/utils/DRMHelpers.h b/xbmc/utils/DRMHelpers.h
+index ea45823179..dcc7f502f3 100644
+--- a/xbmc/utils/DRMHelpers.h
++++ b/xbmc/utils/DRMHelpers.h
+@@ -8,6 +8,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <string>
+ 
+ namespace DRMHELPERS
+-- 
+2.40.1
+
