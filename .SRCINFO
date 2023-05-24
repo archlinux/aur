@@ -1,13 +1,13 @@
 pkgbase = kathara
 	pkgdesc = Lightweight network emulation system based on Docker containers.
 	pkgver = 3.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kathara.org/
 	install = kathara.install
 	changelog = kathara.changelog
 	arch = any
 	license = GPL3
-	makedepends = python
+	makedepends = python310
 	makedepends = chrpath
 	makedepends = patchelf
 	makedepends = make

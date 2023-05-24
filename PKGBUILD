@@ -1,6 +1,6 @@
 pkgname=kathara
 pkgver=3.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight network emulation system based on Docker containers."
 arch=('any')
 url="https://www.kathara.org/"
@@ -8,7 +8,7 @@ license=('GPL3')
 install="kathara.install"
 changelog="kathara.changelog"
 makedepends=(
-	'python'
+	'python310'
     'chrpath'
     'patchelf'
     'make'

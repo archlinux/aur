@@ -1,4 +1,4 @@
-Wed, 24 May 2023 08:56:58 +0000 Kathara Team <******@kathara.org>
+Wed, 24 May 2023 09:04:36 +0000 Kathara Team <******@kathara.org>
 
 * Release v3.5.5
     * (Docker) Raise a custom exception when a binary is not found in the container image
