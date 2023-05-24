@@ -2,7 +2,7 @@
 
 _realname="CPyCppyy"
 pkgname="cpycppyy"
-pkgver=1.12.0
+pkgver=1.12.13
 pkgrel=1
 pkgdesc="Cling-based Python-C++ bindings for CPython"
 arch=('any')
@@ -10,8 +10,8 @@ url="https://cppyy.readthedocs.io/en/latest/index.html"
 license=('LBNL BSD')
 depends=('python' 'cppyy-cling' 'cppyy-backend' 'python-wheel')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/88/12/ff773a4743a1d147f17299c49e3cc65039f2fd4d790421c7b5c695ae9d89/${_realname}-${pkgver}.tar.gz")
-sha256sums=('b10a91f837ea6d894ba1cdf1c37c7b8b044a9926cf917e6e97e337ef81baa26c')
+source=("https://files.pythonhosted.org/packages/7f/7b/bda6c9f3b72051114db4d9eedb70075548103baadfd86c487ac925dc4d5d/${_realname}-${pkgver}.tar.gz")
+sha256sums=('f8c8c05b1eb8f0ccaed07b5069efabecff791bbe5e1b5be86767d32974e833d4')
 
 build() {
   cd $srcdir/${_realname}-${pkgver}
