@@ -3,15 +3,15 @@
 
 pkgname='simplex-chat-bin'
 _pkgname="${pkgname%%-bin}"
-pkgver=5.0.0
+pkgver=5.1.0
 pkgrel=1
 pkgdesc='A 100% private-by-design chat platform (pre-compiled)'
 arch=('x86_64')
-_platform='ubuntu-20_04-x86-64'
+_platform='ubuntu-22_04-x86-64'
 url='https://simplex.chat/'
 _rawurl='https://raw.githubusercontent.com/simplex-chat/simplex-chat/master'
 source=(
-  "$_pkgname-$pkgver::https://github.com/$_pkgname/$_pkgname/releases/download/v$pkgver/$_pkgname-$_platform"
+"$_pkgname-$pkgver::https://github.com/$_pkgname/$_pkgname/releases/download/v$pkgver/$_pkgname-$_platform"
   "$_rawurl/PRIVACY.md"
   "$_rawurl/README.md"
   "$_rawurl/docs/CLI.md"
@@ -27,7 +27,7 @@ depends=(
   'glibc'
   'gmp'
   'hicolor-icon-theme'
-  'openssl-1.1'
+  'openssl'
   'zlib'
 )
 provides=('simplex-chat')
@@ -62,15 +62,11 @@ package() {
 }
 
 sha256sums=(
-  '049178f730ff01c1505d5762c503e5439c59cb4217cf93d2e5d519ef202baf8a'
+  '8fe0af0a2bbf6ccec93434cdc21072d9afe241fbd0758caa014202f941b675e4'
   'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 )
 sha512sums=(
-  'fa8601efb8cc116650cf2c998b7766f0d75989c9afde375d733eb4bd7fdda404816497af345da11a8da8e41fe9e0ff8821b2091259c4a08a3eb6f93bc1741be1'
-  'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-)
-b2sums=(
-  '941e3d042dbb3a56b9c9399c915484e18fd95e234546fcf1c29e9bcd45b57189296c8162aec9edb5ffd862a8fbee9baa2ad4a99a5987ca44525c5671f27fb9f9'
+  'dd905adc6010d4feaa6d0d6f91226cf3dc32f62c95fc8b0479954866a2a5fc69eb8335a434a7c14259a60445770d24fa928f481d2b0d1912720a3ad6a8ab2492'
   'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 )
 
