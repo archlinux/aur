@@ -3,7 +3,7 @@
 # Contributor: Plague-doctor <plague at privacyrequired dot com>
 
 pkgname=standardnotes-bin
-pkgver=3.160.1
+pkgver=3.160.11
 pkgrel=1
 pkgdesc='Free, open-source encrypted notes app'
 arch=('x86_64' 'aarch64')
@@ -18,9 +18,10 @@ install=standardnotes.install
 source=("standard-notes.sh")
 source_x86_64=("$pkgname-$pkgver-x86_64.AppImage::$url/releases/download/%40standardnotes%2Fdesktop%40$pkgver/standard-notes-$pkgver-linux-x86_64.AppImage")
 source_aarch64=("$pkgname-$pkgver-aarch64.AppImage::$url/releases/download/%40standardnotes%2Fdesktop%40$pkgver/standard-notes-$pkgver-linux-arm64.AppImage")
+
 sha256sums=('71f0811526d428b541ef39ee804b257ed60b1b9b5d620436c79ed77e17eb4d16')
-sha256sums_x86_64=('45c156955701f96c84db909dd4e26d16112e68959838aab281b102912aecf190')
-sha256sums_aarch64=('8a897bfab54854016d2c72913bcc454d9b5fad545000b69602791ebbb6d18ba6')
+sha256sums_x86_64=('5bf08fa6fe996e4698328cb70a312f24506341b38698eed9e589aa5931c731f5')
+sha256sums_aarch64=('8eb3fab03799a602ab0061ed323004ce4b65f63136f8e2f675d5b6e1ca061d6a')
 
 prepare() {
 	chmod +x "$pkgname-$pkgver-$CARCH.AppImage"
