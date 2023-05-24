@@ -12,6 +12,7 @@
 # - enalbe JIT and AOT compilation of emacs-lisp, which
 #   means built-in packages and your own packages are 
 #   native compiled by default.
+# - use lsp-mode's json-rpc patch: https://github.com/emacs-lsp/emacs
 ################################################################################
 
 ################################################################################
@@ -105,9 +106,9 @@ if [[ $CLI == "YES" ]] ; then
 else
 pkgname="emacs-pgtk-git"
 fi
-pkgver=30.0.50.165738
-pkgrel=1
-pkgdesc="GNU Emacs. Development branch, with PGTK enabled."
+pkgver=30.0.50.166356
+pkgrel=2
+pkgdesc="GNU Emacs. Development branch, with PGTK and native json-rpc enabled"
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL3')
@@ -249,6 +250,7 @@ pkgver() {
 # Doing so, breaks incremental compilation.
 prepare() {
   cd "$srcdir/emacs-git"
+  git apply json-rpc-lsp-mode.patch
   [[ -x configure ]] || ( ./autogen.sh git && ./autogen.sh autoconf )
 }
 
