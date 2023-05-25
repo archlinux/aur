@@ -2,13 +2,13 @@ pkgbase = cherry-kde-git
 	pkgdesc = Clean, Flat, Δ Theme for KDE Plasma Desktop
 	pkgver = 2.1.r0.gc6d4082
 	pkgrel = 1
-	url = https://github.com/nullxception/cherry-kde
+	url = https://github.com/asyncmash/cherry-kde
 	arch = any
 	license = GPL3
 	makedepends = git
 	conflicts = cherry-kde-theme
 	options = !strip
-	source = git+https://github.com/nullxception/cherry-kde.git
+	source = git+https://github.com/asyncmash/cherry-kde.git
 	sha256sums = SKIP
 
 pkgname = cherry-kde-git
