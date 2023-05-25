@@ -3,7 +3,7 @@
 # Maintainer: Daniele Fucini <dfucini@gmail.com>
 
 pkgname=simple_backup
-pkgver=3.2.4.r0.ga07fce1
+pkgver=3.2.5.r0.g7684bc4
 pkgrel=1
 pkgdesc='Simple backup script that uses rsync to copy files'
 arch=('any')
@@ -17,7 +17,8 @@ makedepends=('git'
 depends=('python'
          'rsync'
          'python-dotenv')
-optdepends=('python-systemd: use systemd log')
+optdepends=('python-systemd: use systemd log'
+            'python-dbus: for desktop notifications')
 install=${pkgname}.install
 source=(git+https://github.com/Fuxino/${pkgname}.git)
 sha256sums=('SKIP')
