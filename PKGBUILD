@@ -2,11 +2,11 @@
 
 pkgname=glab-bin
 pkgver=1.30.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Cli tool to help work seamlessly with Gitlab from the command line'
 arch=(x86_64)
-url="https://gitlab.com/gitlab-org/cli/-/releases/v${pkgver}/downloads"
-source=("${url}/glab_${pkgver}_Linux_${arch}.deb" "${url}/checksums.txt")
+url="https://gitlab.com/gitlab-org/cli/-/releases"
+source=("${url}/v${pkgver}/downloads/glab_${pkgver}_Linux_${arch}.deb" "${url}/v${pkgver}/downloads/checksums.txt")
 license=(MIT)
 provides=("glab=$pkgver")
 conflicts=(glab)
