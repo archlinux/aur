@@ -3,7 +3,7 @@
 _pkgname=obs-StreamFX
 pkgname=${_pkgname,,}-unstable
 pkgver=0.12.0b299
-pkgrel=2
+pkgrel=3
 pkgdesc="Bring your stream back to life with modern effects! (unstable/testing version)"
 arch=("x86_64")
 url="https://github.com/Xaymar/$_pkgname"
@@ -16,12 +16,39 @@ makedepends=("cmake" "git" "libfdk-aac" "libxcomposite" "x264" "jack"
              "vlc" "swig" "luajit" "python" "ninja")
 provides=(${_pkgname,,})
 conflicts=(${_pkgname,,})
-source=("$_pkgname::git+$url.git#tag="$pkgver)
-md5sums=("SKIP")
+source=("$_pkgname::git+$url.git#tag="$pkgver
+        'Xaymar-cmake-clang::git+https://github.com/Xaymar/cmake-clang.git'
+        'Xaymar-cmake-version::git+https://github.com/Xaymar/cmake-version.git'
+        'Xaymar-msvc-redist-helper::git+https://github.com/Xaymar/msvc-redist-helper.git'
+        'git+https://github.com/NVIDIA/MAXINE-AR-SDK.git'
+        'git+https://github.com/NVIDIA/MAXINE-VFX-SDK.git'
+        'git+https://github.com/obsproject/obs-studio.git')
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 
 prepare() {
   cd $_pkgname
-  git submodule update --init --recursive
+
+  # Use packaged copy of nlohmann-json header
+  git rm third-party/nlohmann-json
+  mkdir -p third-party/nlohmann-json
+  ln -s /usr/include/nlohmann third-party/nlohmann-json/single_include
+
+  # Use local clones of submodules
+  git submodule init
+  git config submodule.cmake/clang.url "$srcdir/Xaymar-cmake-clang"
+  git config submodule.cmake/version.url "$srcdir/Xaymar-cmake-version"
+  git config submodule.third-party/msvc-redist-helper.url "$srcdir/Xaymar-msvc-redist-helper"
+  git config submodule.third-party/nvidia-maxine-ar-sdk.url "$srcdir/MAXINE-AR-SDK"
+  git config submodule.third-party/nvidia-maxine-vfx-sdk.url "$srcdir/MAXINE-VFX-SDK"
+  git config submodule.third-party/obs-studio.url "$srcdir/obs-studio"
+
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
