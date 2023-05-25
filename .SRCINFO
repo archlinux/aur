@@ -19,7 +19,7 @@ pkgbase = python-translate-shell
 	optdepends = espeak-ng: speaker support
 	optdepends = festival: speaker support
 	conflicts = translate-shell
-	source = https://github.com/Freed-Wu/translate-shell/releases/download/0.0.26/translate_shell-0.0.26-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/t/translate-shell/translate_shell-0.0.26-py3-none-any.whl
 	sha256sums = da0abf008488fc9cd55777fc7dd043a8ca18e679ab41ab47012b212fb4935388
 
 pkgname = python-translate-shell

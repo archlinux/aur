@@ -23,9 +23,8 @@ optdepends=(
 )
 conflicts=("$_pkgname")
 license=(GPL3)
-source=(
-	"$url/releases/download/$pkgver/${_pkgname//-/_}-$pkgver-py3-none-any.whl"
-)
+_py=py3
+source=("https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-none-any.whl")
 sha256sums=('da0abf008488fc9cd55777fc7dd043a8ca18e679ab41ab47012b212fb4935388')
 
 package() {
