@@ -22,7 +22,8 @@ pkgver() {
 
 package() {
   mkdir -p "${pkgdir}/usr/share"
-  mkdir -p "${pkgdir}/usr/bin"
+  mkdir "${pkgdir}/usr/bin"
+  mkdir "${pkgdir}/etc"
 
   cp -R "${srcdir}/akkufetch" "${pkgdir}/usr/share"
 
