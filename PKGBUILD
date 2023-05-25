@@ -1,7 +1,7 @@
 # Maintainer: Hoream <2175223953@qq.com>
 _pkgname="go-musicfox"
 pkgname="${_pkgname}-git"
-pkgver=4.0.6.r8.gd63897e
+pkgver=4.1.0.r1.gc2dff1f
 _pkgver=4.0.2
 pkgrel=1
 pkgdesc='Command-line Netease Cloud Music written in Go (git version).'
