@@ -2,8 +2,8 @@
 # Contributer: DrakeTDL <everyone@disroot.org>
 _pkgname="an-anime-game-launcher"
 pkgname="$_pkgname-patched-git"
-pkgver=3.6.0.r2.g1795386
-pkgrel=2
+pkgver=3.7.0.r0.g7bae189
+pkgrel=1
 pkgdesc="A Launcher for a specific anime game with auto-patching, discord rpc and time tracking (with a couple of fixes)"
 arch=("x86_64")
 url="https://github.com/an-anime-team/an-anime-game-launcher"
@@ -20,7 +20,7 @@ depends=(
   unzip
   xdelta3
 )
-makedepends=(cargo)
+makedepends=(cargo python python-toml)
 optdepends=(
   "mangohud: FPS Hud/GUI"
   "gamemode: Game Optimizations"
@@ -32,7 +32,6 @@ source=(
   "git+https://github.com/an-anime-team/anime-launcher-sdk"
   "${_pkgname}.desktop"
   "use-cloned-sdk.patch"
-  "fix-sandbox.patch"
   "discord-no-panic.patch"
 )
 noextract=()
@@ -41,7 +40,6 @@ sha256sums=(
   SKIP
   "3bb15b29fd47e60ead712a67046daf42bd0ba5547d379ead6ea9bba37ea7b137"
   "41bf614e86d2b439dde5dd60ea2e1384f420656d24cc5f075e2b4e9d0fb2b31d"
-  "7a60bb9654dd6cf9c5612a9297c540b3334a16ef61048c54132b34dd5202d75b"
   "207069d6510fbfa09a157f942da48c2985cb05780aa44c00f1ba9909201dacb1"
 )
 
@@ -54,13 +52,25 @@ prepare() {
   cd "${_pkgname}"
   git submodule update --init --recursive --single-branch
 
-  sdkver=$(grep -Pazo '(?s)\[dependencies\.anime-launcher-sdk\]\ngit = "\S+"\ntag = "\S+"' Cargo.toml | tail -n 1 | cut -d '"' -f 2)
+  #sdkver=$(grep -Pazo '(?s)\[dependencies\.anime-launcher-sdk\]\ngit = "\S+"\ntag = "\S+"' Cargo.toml | tail -n 1 | cut -d '"' -f 2)
   # Use cloned anime-launcher-sdk
-  patch -up1 -i "../use-cloned-sdk.patch"
+  #patch -up1 -i "../use-cloned-sdk.patch"
+  code='import toml
+with open("Cargo.toml", "rt") as file:
+  cargo = toml.load(file)
+cargo["dependencies"]["anime-launcher-sdk"].pop("git")
+ver = cargo["dependencies"]["anime-launcher-sdk"].pop("tag")
+cargo["dependencies"]["anime-launcher-sdk"]["path"] = "../anime-launcher-sdk"
+with open("Cargo.toml", "wt") as file:
+  toml.dump(cargo, file)
+print(f"sdkver={ver}")
+'
+  export $(echo "$code" | python)
+  if [ -z "$sdkver" ];  then
+    false
+  fi
   cd "../anime-launcher-sdk"
   git switch --detach $sdkver
-  # Fix launching game w/ sandboxing and w/o /var/home
-  patch -up1 -i "../fix-sandbox.patch"
   # Don't panic when not connected to Discord rpc
   patch -up1 -i "../discord-no-panic.patch"
 }
