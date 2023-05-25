@@ -1,13 +1,13 @@
 pkgbase = nodejs-csso
 	pkgdesc = CSS minifier with structural optimisations
-	pkgver = 5.0.3
+	pkgver = 5.0.5
 	pkgrel = 1
 	url = https://github.com/css/csso
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	source = https://registry.npmjs.org/csso/-/csso-5.0.3.tgz
-	sha256sums = a6ee6c6b6c2d09abe59bb5f435ce20156f96fd84043c52d02e20032363689afe
+	source = https://registry.npmjs.org/csso/-/csso-5.0.5.tgz
+	sha256sums = f7605918aff2de20dd00b741edbc888f0f8ec0f79c060745c987a1ef50e54fd8
 
 pkgname = nodejs-csso

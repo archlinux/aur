@@ -2,7 +2,7 @@
 
 pkgname=nodejs-csso
 _npmname=csso
-pkgver=5.0.3
+pkgver=5.0.5
 pkgrel=1
 pkgdesc="CSS minifier with structural optimisations"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
-sha256sums=('a6ee6c6b6c2d09abe59bb5f435ce20156f96fd84043c52d02e20032363689afe')
+sha256sums=('f7605918aff2de20dd00b741edbc888f0f8ec0f79c060745c987a1ef50e54fd8')
 
 package() {
   npm install -g --prefix "$pkgdir"/usr --cache "${srcdir}/npm-cache" "$srcdir"/$_npmname-$pkgver.tgz
