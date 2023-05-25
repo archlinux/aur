@@ -9,7 +9,7 @@ license=('GPLv2')
 depends=('kparts' 'hicolor-icon-theme')
 conflicts=("${_pkgname}" "${_pkgname}-kf5-git" "${_pkgname}-qt")
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'kdoctools' 'boost')
-source=("git+${url}")
+source=("git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {

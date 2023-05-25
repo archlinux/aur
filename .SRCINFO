@@ -20,7 +20,7 @@ pkgbase = kdiff3-git
 	conflicts = kdiff3
 	conflicts = kdiff3-kf5-git
 	conflicts = kdiff3-qt
-	source = git+https://invent.kde.org/sdk/kdiff3
+	source = git+https://invent.kde.org/sdk/kdiff3.git
 	sha512sums = SKIP
 
 pkgname = kdiff3-git
