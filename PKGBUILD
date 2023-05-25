@@ -10,7 +10,7 @@ _albugst_ver=1.0.1
 _alforuma_ver=1.0.1
 _alforumk_ver=1.0.1
 _alman_ver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of Web Extensions that adds ArchLinux (bug tracker, forum, packages, wiki, AUR) as a search engine to the Firefox browser."
 arch=('any')
 url="https://github.com/noraj/firefox-extension-arch-search"
@@ -54,7 +54,7 @@ package() {
   install -Dm644 "archlinux_forum_by_keywords_search-$_alforumk_ver-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchForumK@archlinux.org.xpi"
   install -Dm644 "archlinux_packages_search-$_alpkgs_ver-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchPkgs@archlinux.org.xpi"
   install -Dm644 "archlinux_wiki_search-$_alwiki_ver-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchWiki@archlinux.org.xpi"
-  install -Dm644 "archlinux_manual_pages_search-$_alman_ver-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchMan@archlinux.org"
+  install -Dm644 "archlinux_manual_pages_search-$_alman_ver-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchMan@archlinux.org.xpi"
 
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }

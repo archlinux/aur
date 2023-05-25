@@ -1,7 +1,7 @@
 pkgbase = firefox-extension-arch-search
 	pkgdesc = A set of Web Extensions that adds ArchLinux (bug tracker, forum, packages, wiki, AUR) as a search engine to the Firefox browser.
 	pkgver = 1.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/noraj/firefox-extension-arch-search
 	arch = any
 	groups = firefox-addons
