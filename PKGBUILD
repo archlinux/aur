@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=treemap
-_pkgver=2.4-3
+_pkgver=2.4-4
 pkgname=r-${_pkgname,,}
-pkgver=2.4.3
-pkgrel=4
+pkgver=2.4.4
+pkgrel=1
 pkgdesc='Treemap Visualization'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -24,7 +24,7 @@ optdepends=(
   r-markdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('040f9f104f70e22097bd71636e2a7568b39da3e8592d31acaea7a3c19f7fe8b9')
+sha256sums=('c55a8b271f16405a283978cd4e0bef7192840b397aa7bb6fbbf9233b875677c0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
