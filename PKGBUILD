@@ -3,7 +3,7 @@
 pkgname=python-databricks-cli
 _pkgname=databricks-cli
 pkgver=0.17.7
-pkgrel=3
+pkgrel=4
 pkgdesc='Command Line Interface for Databricks'
 arch=('any')
 url='https://github.com/databricks/databricks-cli'
@@ -20,7 +20,7 @@ depends=(
 )
 makedepends=(python-build python-installer python-wheel)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/databricks/databricks-cli/archive/$pkgver.tar.gz")
-sha512sums=('e77b499fdaba7884b05a7e87db1c8089902d964edca2f1276fc0e3021d1a3c2a2cd8d1236f4d8db888b51f0c5b145448512b777962091542c43431fdfea2d2d0')
+sha512sums=('18719493b3c42cd0bab5a98c372134e74a89a3522ab42d15822f11ab7d500558fd6dfd36717d21477d7e3a1eda789ede5c943387110d446a96f304a3845ae0ee')
 
 
 build() {
