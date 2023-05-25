@@ -1,0 +1,12 @@
+pkgbase = ninvaders-git
+	pkgdesc = Ncurses based space invaders clone
+	pkgver = r2.98cab46
+	pkgrel = 1
+	url = http://ninvaders.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = ninvaders::git+https://git.code.sf.net/p/ninvaders0/code
+	sha256sums = SKIP
+
+pkgname = ninvaders-git
