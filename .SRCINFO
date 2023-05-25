@@ -1,6 +1,6 @@
 pkgbase = r-gsean
 	pkgdesc = Gene Set Enrichment Analysis with Networks
-	pkgver = 1.20.0
+	pkgver = 1.20.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/gsean
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-gsean
 	optdepends = r-rmarkdown
 	optdepends = r-summarizedexperiment
 	optdepends = r-wgcna
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/gsean_1.20.0.tar.gz
-	sha256sums = dc08987866bffc6059bb4babce2563e28336a9088117eccd354ec31c070141aa
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/gsean_1.20.2.tar.gz
+	sha256sums = e35d30f9eaa1624ab9a4a48923b31b9d942c6e4fbdbabbd310b66f92b6dfb131
 
 pkgname = r-gsean
