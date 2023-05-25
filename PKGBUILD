@@ -1,6 +1,6 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='beekeeper-studio'
-pkgver='3.9.9'
+pkgver='3.9.11.0'
 pkgrel='1'
 epoch='1'
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
@@ -10,20 +10,19 @@ url="https://github.com/$pkgname/$pkgname"
 license=('GPL3')
 _electronpkg='electron18'
 depends=("$_electronpkg")
-makedepends=('git' 'libxcrypt-compat' 'nodejs>=16.0.0' 'nodejs<19.0.0' 'npm' 'python' 'yarn')
+makedepends=('git' 'libxcrypt-compat' 'nodejs' 'npm' 'python' 'yarn')
 source=(
 	"$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz"
 	'electron-builder-config.diff'
 	'configure-environment.diff'
 	'fix-argv.diff'
 )
-sha512sums=('dbf681cc2a81960eca8eb8cb3c4a57dc6ef55b641c86db053615de670b5409aa355365d8c6b601221f085807467327a312d97b6059755033a9420ed1b6aeb228'
+sha512sums=('ff4e1f254437cbba6d5ef9fb1bb7de5a74149f32a2a549c4ffe408345f675fceb1a69751807f2e50b8aa8ce9e9b6db6d1ca68be151ab415cf7a69373a0fe6917'
             '2bc5d50b17ecc90d9bbe99b528f1ea323e7afda75a92faf645a33ad296e4cdf8fb13e2d4853dcc369571fca131e8c4bf94bda8c6464536c67c434bc589fec4b2'
             '1a631deaee10d876c875b215cb47d02f86949438bbcf0c1625b1a899d5ddfc10876cdd46460107a36cf5ee2171b7da26acf9fe7015baa279f5d5b3618ed4eddc'
             'e74d6d85fe4ddd2606efb49834e37f81e44a79270f0be79ea7ea33cfe2759c906a49d6a8bfb761b7877c4511dc6b7ca92484ef3fa15c7f30178cf0b71c56d52d')
 
 _sourcedirectory="$pkgname-$pkgver"
-
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
@@ -35,12 +34,18 @@ prepare() {
 	sed -i "s|%%ELECTRON_DIST%%|/usr/lib/$_electronpkg|g" 'apps/studio/vue.config.js'
 	sed -i "s|%%ELECTRON_VERSION%%|$(cat "/usr/lib/$_electronpkg/version")|g" 'apps/studio/vue.config.js'
 
-	yarn install --ignore-engines
+	# Update node-sass and sass-loader to be compatible with current node and Linux version
+	cd "$srcdir/$_sourcedirectory/apps/studio/"
+	yarn add 'node-sass@8.0.0' 'sass-loader@10.4.1' --ignore-engines
+
+	# Install dependencies
+	cd "$srcdir/$_sourcedirectory/"
+	NODE_OPTIONS='--openssl-legacy-provider' yarn install --ignore-engines
 }
 
 build() {
 	cd "$srcdir/$_sourcedirectory/apps/studio/"
-	NODE_OPTIONS='--openssl-legacy-provider' yarn run vue-cli-service electron:build
+	yarn run vue-cli-service electron:build
 }
 
 package() {
@@ -59,7 +64,7 @@ EOF
 
 	# Extract pacman archive and copy files
 	mkdir -p "$srcdir/$pkgname-$pkgver-$pkgrel-pacman/"
-	tar -xf "$pkgname-$pkgver.pacman" --directory "$srcdir/$pkgname-$pkgver-$pkgrel-pacman/"
+	tar -xf "$pkgname-$(printf "$pkgver" | sed 's/.0$//').pacman" --directory "$srcdir/$pkgname-$pkgver-$pkgrel-pacman/"
 	cd "$srcdir/$pkgname-$pkgver-$pkgrel-pacman/"
 
 	install -dm755 "$pkgdir/usr/share/"
