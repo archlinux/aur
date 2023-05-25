@@ -3,7 +3,7 @@
 
 pkgname=openzwave
 pkgver=1.6
-pkgrel=5
+pkgrel=6
 pkgdesc='A C++ library to control Z-Wave Networks via a USB Z-Wave Controller'
 arch=(x86_64)
 url=http://www.openzwave.net
@@ -13,7 +13,7 @@ depends=(
   gcc-libs
   glibc
   libhidapi-libusb.so
-  libusb-1.0.so
+  libusb
   tinyxml
 )
 makedepends=(
