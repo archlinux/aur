@@ -8,12 +8,12 @@ pkgbase = ncp-bin
 	provides = ncp
 	arch = aarch64
 	source_aarch64 = https://github.com/kha7iq/ncp/releases/download/v0.1.4/ncp_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 6c901204149e971532742d2bc449dd268006612460969a796125f045d6a1fb68
+	sha256sums_aarch64 = 421b27060d68aaed4cf4413ed5a271ea93bd7a416d320e6c8d2565d8bc66a6f5
 	arch = armv7h
 	source_armv7h = https://github.com/kha7iq/ncp/releases/download/v0.1.4/ncp_Linux_arm.tar.gz
-	sha256sums_armv7h = fdbf8eca9d10cd9c255a93d57152631c553c289254dd7cc62151dcea5f0a02c1
+	sha256sums_armv7h = 996451ad6f1a99cb7e4766f800fb4f961990cbb3b473854d8dd9f156f7ca74eb
 	arch = x86_64
 	source_x86_64 = https://github.com/kha7iq/ncp/releases/download/v0.1.4/ncp_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 886e1c4e2e3d1334468e32daf83c574738a56a2b1d817e6c9b2f4da147242b4a
+	sha256sums_x86_64 = a94c6771c9d24782f746b1b51d19c71e480a3ca1a741e09eb361ac79c22e66ac
 	
 pkgname = ncp-bin
