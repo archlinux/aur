@@ -5,6 +5,8 @@ pkgdesc="RT_Thread env!"
 arch=("x86_64")
 license=("custom")
 depends=('git' 'scons' 'python')
+url="https://github.com/RT-Thread/env"
+
 source=(env::git+https://github.com/RT-Thread/env.git
 	packages::git+https://github.com/RT-Thread/packages.git)
 sha512sums=(SKIP SKIP)
