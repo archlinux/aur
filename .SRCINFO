@@ -1,0 +1,27 @@
+pkgbase = python-abg
+	pkgdesc = common python utilities
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = https://github.com/agurvich/abg_python
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-scipy
+	checkdepends = python-h5py
+	checkdepends = python-matplotlib
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/a/abg_python/abg_python-1.1.3.tar.gz
+	md5sums = d41fd59f0947880b58dd751b3f302811
+
+pkgname = python-abg
+	depends = python-scipy
+	depends = python-h5py
+	depends = python-pandas
+	depends = python-matplotlib
+	provides = python-abg-python
+	provides = python-abg_python
+	conflicts = python-abg-python
+	conflicts = python-abg_python
