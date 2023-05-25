@@ -3,10 +3,10 @@ pre_install() {
 }
 
 post_install() {
-	grep -qle '/bin/ksh$' '/etc/shells' || echo $'/usr/bin/ksh\n/bin/ksh' >> '/etc/shells'
-	grep -qle '/bin/ksh93$' '/etc/shells' || echo $'/usr/bin/ksh93\n/bin/ksh93' >> '/etc/shells'
-	grep -qle '/bin/rksh$' '/etc/shells' || echo $'/usr/bin/rksh\n/bin/rksh' >> '/etc/shells'
-	grep -qle '/bin/rksh93$' '/etc/shells' || echo $'/usr/bin/rksh93\n/bin/rksh93' >> '/etc/shells'
+	for _ksh in ksh ksh93 rksh rksh93; do
+		grep -qle "^/bin/${_ksh}$" /etc/shells || echo "/bin/${_ksh}" >> '/etc/shells'
+		grep -qle "^/usr/bin/${_ksh}$" /etc/shells || echo "/usr/bin/${_ksh}" >> '/etc/shells'
+	done
 }
 
 pre_upgrade() {
