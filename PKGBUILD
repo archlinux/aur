@@ -2,12 +2,12 @@
 
 _pkgname=cask-server
 pkgname=$_pkgname-git
-pkgver=0.6.0.r0.g006f893
+pkgver=0.6.6.r0.g006f893
 pkgrel=1
 pkgdesc='Public server and API to interface with Cask features'
 url='https://github.com/Nitrux/cask-server'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
-license=(GPL3)
+license=(BSD-2-Clause custom:CC0 LGPL)
 depends=(qt5-base)
 makedepends=(git extra-cmake-modules)
 groups=(maui)
@@ -34,4 +34,5 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 $_pkgname/licenses/* -t "${pkgdir}"/usr/share/licenses/$_pkgname
 }
