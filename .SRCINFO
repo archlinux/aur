@@ -1,11 +1,11 @@
 pkgbase = scala-cli
 	pkgdesc = A command-line tool to interact with the Scala language
-	pkgver = 1.0.0rc2
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://scala-cli.virtuslab.org
 	arch = x86_64
 	license = Apache
-	source = scala-cli-1.0.0rc2.gz::https://github.com/VirtusLab/scala-cli/releases/download/v1.0.0-RC2/scala-cli-x86_64-pc-linux.gz
-	sha256sums = ce3a0b4b5a29346b9ee088c77e52e676316629dbb0290b299f43a2eece0f7392
+	source = scala-cli-1.0.0.gz::https://github.com/VirtusLab/scala-cli/releases/download/v1.0.0/scala-cli-x86_64-pc-linux.gz
+	sha256sums = 085350e6bf8d72fa5dda97061e4274db339fbda91b24acbe043775d4fdd5247d
 
 pkgname = scala-cli
