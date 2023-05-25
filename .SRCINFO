@@ -1,6 +1,6 @@
 pkgbase = dfshow
 	pkgdesc = An interactive directory/file browser written for Unix-like systems.
-	pkgver = 0.9.7
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/roberthawdon/dfshow
 	arch = i686
@@ -11,11 +11,12 @@ pkgbase = dfshow
 	makedepends = automake
 	makedepends = libconfig
 	makedepends = acl
+	makedepends = gettext
 	depends = ncurses
 	depends = libconfig
 	options = !buildflags
 	options = !makeflags
-	source = https://github.com/roberthawdon/dfshow/archive/v0.9.7-beta.tar.gz
-	sha1sums = c77edb8b922974c15567cf1aac5d5927f911a553
+	source = https://github.com/roberthawdon/dfshow/archive/v0.10.0-beta.tar.gz
+	sha1sums = 86a6b0ab5629f88880bb76ee5ee935ff39d42a2d
 
 pkgname = dfshow
