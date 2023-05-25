@@ -1,7 +1,7 @@
 # Maintainer: iamawacko <iamawacko@protonmail.com>
 # Contributor: Francesco La Camera <fm@lacamera.org>
 pkgname=neovim-nightly
-pkgver=0.9.0.dev.20230306
+pkgver=0.10.0.dev.20230525
 pkgrel=1
 pkgdesc='hyperextensible Vim-based text editor'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64' 'pentium4')
@@ -22,7 +22,7 @@ conflicts=('neovim')
 sha256sums=('SKIP')
 
 pkgver() {
-	printf "0.9.0.dev.%s" "$(date +%Y%m%d)"	
+	printf "0.10.0.dev.%s" "$(date +%Y%m%d)"	
 }
 
 build() {
