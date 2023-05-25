@@ -5,8 +5,8 @@
 # Contributor: Yosef Or Boczko <yoseforb@gnome.org>
 
 pkgname=gnome-software-snapd
-pkgver=43.1
-pkgrel=2
+pkgver=44.1
+pkgrel=1
 pkgdesc="GNOME Software Tools with snapd"
 url="https://wiki.gnome.org/Apps/Software/"
 arch=(x86_64)
@@ -17,7 +17,7 @@ makedepends=(appstream gsettings-desktop-schemas libpackagekit-glib flatpak
              libsysprof-capture libglib-testing libsoup3)
 provides=(gnome-software)
 conflicts=(gnome-software)
-_commit=e2bbfd3ad749755e15e1463d0e1cff6385ed52a7  # tags/43.1^0
+_commit=9afc9643998f39817b9c70f772535178da45b95d  # tags/44.1^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/gnome-software.git#commit=$_commit"
   "git+https://gitlab.gnome.org/mwleeds/gnome-pwa-list.git"

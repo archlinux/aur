@@ -1,7 +1,7 @@
 pkgbase = gnome-software-snapd
 	pkgdesc = GNOME Software Tools with snapd
-	pkgver = 43.1
-	pkgrel = 2
+	pkgver = 44.1
+	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Software/
 	arch = x86_64
 	license = GPL
@@ -25,7 +25,7 @@ pkgbase = gnome-software-snapd
 	makedepends = libsoup3
 	provides = gnome-software
 	conflicts = gnome-software
-	source = git+https://gitlab.gnome.org/GNOME/gnome-software.git#commit=e2bbfd3ad749755e15e1463d0e1cff6385ed52a7
+	source = git+https://gitlab.gnome.org/GNOME/gnome-software.git#commit=9afc9643998f39817b9c70f772535178da45b95d
 	source = git+https://gitlab.gnome.org/mwleeds/gnome-pwa-list.git
 	sha256sums = SKIP
 	sha256sums = SKIP
