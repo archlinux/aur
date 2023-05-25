@@ -1,0 +1,21 @@
+pkgbase = r-xaringanextra
+	pkgdesc = Extras and Extensions for 'xaringan' Slides
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=xaringanExtra
+	arch = any
+	license = MIT
+	license = custom
+	depends = r>=2.10
+	depends = r-htmltools
+	depends = r-jsonlite
+	depends = r-knitr
+	depends = r-uuid
+	optdepends = r-testthat>=2.1.0
+	optdepends = r-callr
+	optdepends = r-rmarkdown
+	optdepends = r-xaringan
+	source = https://cran.r-project.org/src/contrib/xaringanExtra_0.7.0.tar.gz
+	sha256sums = 04591fcd8a236799e392bbeb3182ab70bf237bbca22e3c5a0ac4f65a9c27d2ea
+
+pkgname = r-xaringanextra
