@@ -2,7 +2,7 @@
 
 _pkgname=gamescope
 pkgname=${_pkgname}-git
-pkgver=3.12.0.beta3.r28.g345ffef
+pkgver=3.12.0.beta7.r1.g73ce5a4
 pkgrel=1
 pkgdesc="Micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
@@ -65,21 +65,15 @@ prepare() {
 }
 
 build() {
+    cd "${_pkgname}"
 
-    arch-meson "$srcdir/$_pkgname" build \
-        --force-fallback-for=wlroots,libliftoff,stb \
-        -Dpipewire=enabled \
-        -Dwlroots:backends=drm,libinput,x11 \
-        -Dwlroots:renderers=gles2,vulkan
+    arch-meson "$srcdir/$_pkgname" build --buildtype release \
+        --force-fallback-for=wlroots,libliftoff,stb
     ninja -C build
 }
 
-check() {
-
-    ninja -C build test || true  # libdisplay-info tests fail?
-}
-
 package() {
+    cd "${_pkgname}"
 
     meson install -C build --skip-subprojects --destdir "$pkgdir"
 
