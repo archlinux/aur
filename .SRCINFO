@@ -1,7 +1,7 @@
 pkgbase = emacs-pgtk-git
 	pkgdesc = GNU Emacs. Development branch, with PGTK and native json-rpc enabled
-	pkgver = 30.0.50.166368
-	pkgrel = 4
+	pkgver = 30.0.50.166373
+	pkgrel = 5
 	url = http://www.gnu.org/software/emacs/
 	install = emacs-git.install
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = emacs-pgtk-git
 	depends = libxml2
 	depends = jansson
 	depends = harfbuzz
+	depends = libgccjit
 	depends = gtk3
 	depends = libjpeg-turbo
 	depends = libpng
