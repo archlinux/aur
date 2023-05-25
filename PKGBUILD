@@ -3,7 +3,7 @@
 
 pkgname=pihpsdr-git
 _pkgname=pihpsdr
-pkgver=r1524.380b614
+pkgver=r1597.1558689
 pkgrel=1
 pkgdesc='SDR software for HPSDR radios like Anan and Hermes Lite 2'
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ source=(
   "desktop_file.patch"
 )
 sha512sums=('SKIP'
-            'cf80ce2d6457cd2d041de4a70e5a82bb8cddd6f51cd0c2851ae3b39755bed65e034b106c8a0734903ca54ef058155c9ef42121190a8d29ab7b350819b163d767'
+            '25c4fdbde922a4baae687487a4032d679b44fadb34787a56c51b4b89d8f5a72cd02dc3f7613ef97130e596aab7d5fff35dce3ab9b888ae24948f38bc078a2558'
             'ea09a0de3fc5fcc684f06273790720ca4087127cf633511c596ed44dc8f1c35330f393a98da59e90d6834b33888b92966f25b051bcb3d0716d4e7d832de52cb4')
 
 pkgver() {
