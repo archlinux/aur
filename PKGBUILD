@@ -1,31 +1,32 @@
 # Maintainer: Wüstengecko <1579756+Wuestengecko@users.noreply.github.com>
 pkgname=python-datauri
 _name=${pkgname}
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A li'l class for data URI manipulation in Python"
 arch=(any)
 url="https://github.com/fcurella/python-datauri"
 license=('Unlicense')
 depends=(python)
-makedepends=(python-setuptools)
+makedepends=(python-build python-installer python-poetry-core python-wheel)
+checkdepends=(python-pydantic python-pytest)
 options=(!strip)
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('939c43fd2b4610d0fd4d754ec3078bd997745076b7901800c12a25504041d3c6')
+sha256sums=('f22c1b477e10cd1d5f7a12c329640112997a5aad5c5a5678c46ae0c2b5059a87')
 
 build() {
   cd "$_name-$pkgver"
-  python setup.py build
+  PYTHONHASHSEED=0 python -m build --wheel --no-isolation
 }
 
 check() {
   cd "$_name-$pkgver"
-  python -m unittest
+  PYTHONPATH="$PWD" pytest
 }
 
 package() {
   cd "$_name-$pkgver"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
   rm -rf "$pkgdir"/usr/lib/python*/site-packages/tests
 }
