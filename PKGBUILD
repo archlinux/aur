@@ -3,7 +3,7 @@
 
 pkgname=nessus-agent
 _pkgname=nessus_agent
-pkgver=10.3.2
+pkgver=10.4.0
 pkgrel=1
 pkgdesc="Nessus vulnerability scanner agent"
 arch=('x86_64')
@@ -13,9 +13,9 @@ license=('custom')
 options=(!strip debug)
 url="https://www.tenable.com/downloads/nessus-agents"
 install="$pkgname.install"
-source=("NessusAgent-$pkgver-fc34.$arch.rpm::https://www.tenable.com/downloads/api/v1/public/pages/nessus-agents/downloads/19054/download?i_agree_to_tenable_license_agreement=true"
+source=("NessusAgent-$pkgver-fc34.$arch.rpm::https://www.tenable.com/downloads/api/v1/public/pages/nessus-agents/downloads/19428/download?i_agree_to_tenable_license_agreement=true"
         LICENSE)
-b2sums=('5bb2dd0c586467e24a95355b605ab56eb5feeb17f026244c399517d517ade9673c153a58a67a2bb6d9fd891f6c4cc8d85428bf4f9c8dc714b5b2ae669761390f'
+b2sums=('60f795e2c1a1960a2384836160771da4d8a76f08da4365bcec4f51147f535bfee63b496c5ed3ee2c656c20c937d5021aeabac8a06239362205ab16a1bd6895a8'
         '2c68d4f30686a711fbf5c77b70d9b307f9fdcc8095cea79d8c310edfeea87563d94b9106fce35fc53685e6703afb729b9d81f504a1983c367621605690ea03e1')
 conflicts=('nessus') # due to /etc/ld.so.conf.d/nessus.conf
 
