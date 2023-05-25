@@ -3,7 +3,7 @@
 pkgname=enchant-pure
 
 _pkgname=enchant
-pkgver=2.3.4
+pkgver=2.5.0
 pkgrel=1
 
 pkgdesc="A wrapper library for pure and generic spell checking for all languages, supporting Aspell and Myspell/Hunspell backend engines"
@@ -16,7 +16,7 @@ depends=('aspell>=0.50.0' 'glib2' 'hunspell')
 provides=("${_pkgname}" "libenchant-2.so")
 conflicts=("${_pkgname}")
 source=("https://github.com/AbiWord/enchant/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('d109ab320ed84d6c9eec6c558c72a54d71ad30237c2bf11650b0e4030fbd9990a5ccf06a20851e46b6530279e1a9916b891cd394eefabc8812f7f92da62cbe1a')
+sha512sums=('3ab209b0b87b7cd8f94dd2bceed126d0e36252a1ede7a30b1550169555242784a631c0f259b0fe6591771da491ab934cac48f833029ba78dd779fc1ed91341fe')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
