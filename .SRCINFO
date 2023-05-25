@@ -11,6 +11,7 @@ pkgbase = websurfx-edge-git
 	depends = cargo
 	depends = redis
 	provides = websurfx-edge-git
+	conflicts = websurfx-git
 	source = git+https://github.com/neon-mmd/websurfx.git
 	md5sums = SKIP
 
