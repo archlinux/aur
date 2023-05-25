@@ -1,0 +1,16 @@
+pkgbase = rt-env
+	pkgdesc = RT_Thread env!
+	pkgver = 0.0.1
+	pkgrel = 1
+	install = rt-env.install
+	arch = x86_64
+	license = custom
+	depends = git
+	depends = scons
+	depends = python
+	source = env::git+https://github.com/RT-Thread/env.git
+	source = packages::git+https://github.com/RT-Thread/packages.git
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = rt-env
