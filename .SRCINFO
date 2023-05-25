@@ -17,7 +17,6 @@ pkgbase = python-lmfit-git
 	optdepends = python-corner
 	optdepends = python-emcee
 	optdepends = python-pandas
-	optdepends = python-jupyter
 	optdepends = python-matplotlib
 	optdepends = python-dill
 	optdepends = python-numdifftools

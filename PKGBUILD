@@ -13,7 +13,6 @@ optdepends=(
     'python-corner'
     'python-emcee'
     'python-pandas'
-    'python-jupyter'
     'python-matplotlib'
     'python-dill'
     'python-numdifftools'
