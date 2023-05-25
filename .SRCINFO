@@ -1,5 +1,5 @@
 pkgbase = garu
-	pkgdesc = Garu Assists Repository Users. Yet anothe AUR helper
+	pkgdesc = Garu Assists Repository Users. Yet another AUR helper
 	pkgver = 1.0
 	pkgrel = 1.0
 	url = https://github.com/Dannan21/garu
