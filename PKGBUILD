@@ -1,7 +1,7 @@
 # Maintainer: noprobelm@protonmail.com
 pkgname=nay
-pkgver=0.1.r267.05b9614
-pkgrel=2
+pkgver=0.1.r399.8e49952
+pkgrel=1
 pkgdesc="A wrapper for pacman extended to support AUR packages"
 arch=(any)
 url="https://github.com/noprobelm/nay.git"

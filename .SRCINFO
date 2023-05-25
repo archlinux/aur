@@ -1,6 +1,6 @@
 pkgbase = nay
 	pkgdesc = A wrapper for pacman extended to support AUR packages
-	pkgver = 0.1.r267.05b9614
+	pkgver = 0.1.r399.8e49952
 	pkgrel = 1
 	url = https://github.com/noprobelm/nay.git
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = nay
 	depends = python-rich
 	depends = python-requests
 	depends = pyalpm
+	depends = python-networkx
 	provides = nay
 	source = nay::git+https://github.com/noprobelm/nay.git
 	md5sums = SKIP
