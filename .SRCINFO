@@ -1,7 +1,7 @@
 pkgbase = r-rcpp
 	pkgdesc = Seamless R and C++ Integration
 	pkgver = 1.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=Rcpp
 	arch = i686
 	arch = x86_64
