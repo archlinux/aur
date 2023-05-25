@@ -7,13 +7,13 @@ _pkgbin=ledger-live-desktop
 _pkgname=ledger-live
 pkgname="${_pkgname}-git"
 pkgdesc="Ledger Live - Desktop (git-main)"
-pkgver=2.58.0.r0.ga1089ae
+pkgver=2.59.0.r0.gaf7634d
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
 license=('MIT')
 depends=('ledger-udev' 'electron23')
-makedepends=('git' 'node-gyp' 'proto')
+makedepends=('git' 'node-gyp' 'fnm' 'pnpm')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${pkgname}::git+${url}#branch=main"
@@ -21,16 +21,17 @@ source=("${pkgname}::git+${url}#branch=main"
 sha512sums=('SKIP'
             '15f6703121d1f2df2dab494efd645ef27830b5cff41184483c75a21545d79b183ababb47bebc8571c7f77e562497efc2453c3e41b59e40ad03be2baacf20148e')
 
-_proto_use() {
-  export PROTO_ROOT="${srcdir}/.proto"
-  export PATH="${PROTO_ROOT}/bin:${PATH}"
-  proto use
+_fnm_use() {
+  export FNM_DIR="${srcdir}/.fnm"
+  eval "$(fnm env --shell bash)"
+  version="$(awk -F "=" '/node/ {print $2}' .prototools | xargs)"
+  fnm use "${version}" --install-if-missing
 }
 
 build() {
   cd "${pkgname}"
 
-  _proto_use
+  _fnm_use
 
   pnpm i --filter="ledger-live-desktop..." --filter="ledger-live" --frozen-lockfile --unsafe-perm
   pnpm build:lld

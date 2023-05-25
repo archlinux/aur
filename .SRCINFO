@@ -1,13 +1,14 @@
 pkgbase = ledger-live-git
 	pkgdesc = Ledger Live - Desktop (git-main)
-	pkgver = 2.58.0.r0.ga1089ae
+	pkgver = 2.59.0.r0.gaf7634d
 	pkgrel = 1
 	url = https://github.com/LedgerHQ/ledger-live
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = node-gyp
-	makedepends = proto
+	makedepends = fnm
+	makedepends = pnpm
 	depends = ledger-udev
 	depends = electron23
 	provides = ledger-live
