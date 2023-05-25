@@ -1,7 +1,7 @@
 # Maintainer: Pham Phuc <phuclaplace@gmail.com>
 
 pkgname=nautilus-open-in-blackbox
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Open current directory in BlackBox from Nautilus context menu"
 arch=('any')
