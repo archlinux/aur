@@ -1,0 +1,27 @@
+pkgbase = stuntrally-git
+	pkgdesc = A 3D racing game based on VDrift and OGRE with track editor
+	pkgver = 2.7.r37.g747b901d
+	pkgrel = 1
+	url = https://stuntrally.tuxfamily.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = cmake>=2.8
+	makedepends = git
+	depends = boost
+	depends = ogre-legacy
+	depends = mygui-ogre
+	depends = sdl2
+	depends = libvorbis
+	depends = enet
+	depends = bullet
+	depends = openal
+	depends = tinyxml
+	depends = tinyxml2
+	provides = stuntrally
+	conflicts = stuntrally-bin
+	source = git+https://github.com/stuntrally/stuntrally.git
+	sha512sums = SKIP
+
+pkgname = stuntrally-git
