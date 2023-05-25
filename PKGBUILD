@@ -1,6 +1,6 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='beekeeper-studio'
-pkgver='3.9.11.0'
+pkgver='3.9.14'
 pkgrel='1'
 epoch='1'
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
@@ -17,7 +17,7 @@ source=(
 	'configure-environment.diff'
 	'fix-argv.diff'
 )
-sha512sums=('ff4e1f254437cbba6d5ef9fb1bb7de5a74149f32a2a549c4ffe408345f675fceb1a69751807f2e50b8aa8ce9e9b6db6d1ca68be151ab415cf7a69373a0fe6917'
+sha512sums=('602d39d9e8a127676b9f0fb86c31272b2937c7ab2265e2a2ca9fa0532723b2da563b84e8dbb145801f2da1902e4c3057f5e673695a6afb8e73f83209e97eaa73'
             '2bc5d50b17ecc90d9bbe99b528f1ea323e7afda75a92faf645a33ad296e4cdf8fb13e2d4853dcc369571fca131e8c4bf94bda8c6464536c67c434bc589fec4b2'
             '1a631deaee10d876c875b215cb47d02f86949438bbcf0c1625b1a899d5ddfc10876cdd46460107a36cf5ee2171b7da26acf9fe7015baa279f5d5b3618ed4eddc'
             'e74d6d85fe4ddd2606efb49834e37f81e44a79270f0be79ea7ea33cfe2759c906a49d6a8bfb761b7877c4511dc6b7ca92484ef3fa15c7f30178cf0b71c56d52d')
@@ -64,7 +64,7 @@ EOF
 
 	# Extract pacman archive and copy files
 	mkdir -p "$srcdir/$pkgname-$pkgver-$pkgrel-pacman/"
-	tar -xf "$pkgname-$(printf "$pkgver" | sed 's/.0$//').pacman" --directory "$srcdir/$pkgname-$pkgver-$pkgrel-pacman/"
+	tar -xf "$pkgname-$pkgver.pacman" --directory "$srcdir/$pkgname-$pkgver-$pkgrel-pacman/"
 	cd "$srcdir/$pkgname-$pkgver-$pkgrel-pacman/"
 
 	install -dm755 "$pkgdir/usr/share/"
