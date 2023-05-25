@@ -5,7 +5,7 @@
 pkgname=garu
 pkgver=1.0
 pkgrel=1.0
-pkgdesc="Garu Assists Repository Users. Yet anothe AUR helper"
+pkgdesc="Garu Assists Repository Users. Yet another AUR helper"
 url="https://github.com/Dannan21/garu"
 arch=("x86_64")
 license=("MIT")
