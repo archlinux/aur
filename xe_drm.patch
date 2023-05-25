@@ -1,4 +1,4 @@
-From 6fc58d5a87d64426992a9fb17609f10740633b90 Mon Sep 17 00:00:00 2001
+From de1d2165b1a8068f89dd6e866cff455f46fe22cc Mon Sep 17 00:00:00 2001
 From: Christopher Snowhill <kode54@gmail.com>
 Date: Sun, 21 May 2023 19:54:43 -0700
 Subject: [PATCH v2 1/2] drm/xe: Add explicit padding to uAPI definition

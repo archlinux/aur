@@ -1,7 +1,10 @@
-From 6f2f3ab022ec68a6381c9f353f11d674eda99dd6 Mon Sep 17 00:00:00 2001
+From 6835e7c20136988f20055efaa9c850812f037936 Mon Sep 17 00:00:00 2001
 From: Christopher Snowhill <kode54@gmail.com>
 Date: Sun, 21 May 2023 19:58:19 -0700
 Subject: [PATCH v2 2/2] drm/xe: Validate uAPI padding and reserved fields
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
 Padding and reserved fields are declared such that they must be
 zeroed, so verify that they're all zero in the respective ioctl

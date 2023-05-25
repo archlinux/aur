@@ -2,7 +2,7 @@
 # Based on testing/linux by Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-drm-xe-next-git
-pkgver=6.3.r1173456.48a7045a0879
+pkgver=6.3.r1173453.c6e45ef45683
 pkgrel=1
 pkgdesc='Linux kernel with bleeding-edge Intel Xe driver'
 _product="${pkgbase%-git}"
@@ -22,11 +22,13 @@ source=(
   config         # the main kernel config file
   xe_drm.patch
   xe_drm.2.patch
+  upstreaming-pt1.patch
 )
 sha256sums=('SKIP'
             '5557889ef70c6f8fdde93092b9f9a28cbdaaca2989a15147826825119c7aae0f'
-            'becbbddc31c2c7bcbf1d500134e057d65052a6852179df33971bb72bccab2f00'
-            'b8d6e454047c11003310e3e30ab4ee3e943fa3a70bc36e30d23b77b5979e9cb0')
+            '8f6de8c8251658481a35b2643e8888ab227251a91c0d78efcf3fa0f4406598a9'
+            '9d51e3c7d4dff9fac6a257e6489869cf4796b06fea5113c3febbb9c2ea41a4f0'
+            'c0f8a43b0e4f632034dc408eea35aa5a3a0966cc3af3bddeb22ff4c378ca05a8')
 
 pkgver() {
   cd $_srcname
