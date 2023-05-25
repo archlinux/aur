@@ -2,12 +2,12 @@
 
 _pkgname=mauikit-documents
 pkgname=$_pkgname-git
-pkgver=1.0.1.r0.g3c5a5f8
+pkgver=1.1.0.r1.gad9185a
 pkgrel=1
 pkgdesc='MauiKit Documents components'
 url='https://invent.kde.org/maui/mauikit-documents'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
-license=(GPL3)
+license=(BSD-2-Clause custom:CC0 LGPL)
 depends=(karchive
          kconfig
          kcoreaddons
@@ -47,4 +47,5 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 $_pkgname/LICENSES/* -t "${pkgdir}"/usr/share/licenses/$_pkgname
 }
