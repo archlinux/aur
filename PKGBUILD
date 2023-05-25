@@ -4,7 +4,7 @@
 # $ updaurpkg --apply
 _repo=YuriyLisovskiy/pynotifier
 _source_type=pypi-releases
-_upstreamver='0.3.2'
+_upstreamver='0.5.0'
 _pkgname=py-notifier
 _pypi_package=$_pkgname
 
@@ -19,7 +19,7 @@ depends=(libnotify)
 license=(MIT)
 _py=py3
 source=("https://files.pythonhosted.org/packages/$_py/${_pkgname:0:1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-none-any.whl")
-sha256sums=('c22a577e0b8ecb73e93d545489d3c65cc50e96fa9348885602fcd20a44f05909')
+sha256sums=('cb75a4ae1ed7839b5794dc94c0dd5b38e791c32f53041e99c64f71d9a1dfb8d3')
 
 package() {
 	cd "$srcdir" || return 1
