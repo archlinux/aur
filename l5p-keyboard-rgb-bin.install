@@ -1,0 +1,17 @@
+post_install() {
+	udevadm control --reload-rules &> /dev/null
+	udevadm trigger &> /dev/null
+	cat << EOF
+In case you have to execute with sudo to make it detect your keyboard,
+please execute: sudo udevadm control --reload-rules && sudo udevadm trigger
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  udevadm control --reload-rules &> /dev/null
+	udevadm trigger &> /dev/null
+}
