@@ -3,8 +3,8 @@
 
 _name=EasyOCR
 pkgname=python-easyocr
-pkgver=1.6.2
-pkgrel=5
+pkgver=1.7.0
+pkgrel=1
 pkgdesc="End-to-End Multi-Lingual Optical Character Recognition (OCR) Solution"
 arch=("any")
 url="https://github.com/JaidedAI/EasyOCR"
@@ -16,7 +16,7 @@ depends=(
     'python-bidi'
     'python-numpy'
     'python-opencv'
-    'python-torchvision'
+    'python-torchvision>=0.5'
     'python-pillow'
     'python-pyaml'
     'python-pyclipper'
@@ -27,11 +27,10 @@ depends=(
 )
 makedepends=('python-setuptools')
 checkdepends=(${depends[*]} 'python-pytorch-cuda')
-provides=('python-easyocr')
 conflicts=('python-easyocr-git')
 replaces=('python-easyocr-git')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0ed5af2b739ce2303c5173d520b631df311d54a9aa58a80e09fe33d44c0a8115')
+b2sums=('5348be3e75a9b174b1881b134068d26ab7544db6084d1c97d29787ce1aefd550b95ed9f85a88a51d03ad22e7ae9d42c847ac3277c06e9bfa8f203ed3ac1ad558')
 
 build() {
     cd "$_name-$pkgver"
