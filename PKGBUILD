@@ -2,14 +2,14 @@
 pkgname="steamdepotdownloadergui-appimage"
 _appname=SteamDepotDownloaderGUI
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Easily download older versions of games from Steam using DepotDownloader"
 arch=('x86_64')
 url="https://github.com/mmvanheusden/SteamDepotDownloaderGUI"
 license=('GPL3')
 options=(!strip)
 conflicts=("${pkgname%-appimage}")
-depends=('zlib' 'glibc' 'hicolor-icon-theme')
+depends=('zlib' 'glibc' 'hicolor-icon-theme' 'dotnet-sdk-6.0')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}-x64.AppImage")
 sha256sums=('d12724f5bfdeb03e8c83ecc9a7ac197f99a324144a3a39446f14299bd8d09e4d')

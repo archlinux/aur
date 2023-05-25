@@ -1,13 +1,14 @@
 pkgbase = steamdepotdownloadergui-appimage
 	pkgdesc = Easily download older versions of games from Steam using DepotDownloader
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mmvanheusden/SteamDepotDownloaderGUI
 	arch = x86_64
 	license = GPL3
 	depends = zlib
 	depends = glibc
 	depends = hicolor-icon-theme
+	depends = dotnet-sdk-6.0
 	conflicts = steamdepotdownloadergui
 	options = !strip
 	source = steamdepotdownloadergui-2.1.1.AppImage::https://github.com/mmvanheusden/SteamDepotDownloaderGUI/releases/download/v2.1.1/SteamDepotDownloaderGUI-2.1.1-x64.AppImage
