@@ -45,5 +45,5 @@ package() {
     tar xvf data.tar.xz
 
     mkdir -p $pkgdir/usr/share/fonts/TTF/fonts-gb-deepin
-    find $srcdir -name "*.ttf" -exec install -Dm644 {} $pkgdir/usr/share/fonts/TTF/fonts-gb-deepin/{} \;
+    find $srcdir -name "*.ttf" -exec install -Dm644 {} -t $pkgdir/usr/share/fonts/TTF/fonts-gb-deepin \;
 }
