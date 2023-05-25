@@ -1,10 +1,11 @@
-# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Maintainer: Samega 7Cattac <samega7cattac@gmail.com>
+# Contributor: Vincent Grande <shoober420@gmail.com>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 _pkgbasename=openssl
 pkgname=lib32-$_pkgbasename-hardened
 epoch=1
-_ver=1.1.1s
+_ver=3.1.0
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 pkgrel=1
@@ -16,17 +17,18 @@ depends=('lib32-glibc' "${_pkgbasename}")
 optdepends=('ca-certificates')
 provides=(lib32-openssl)
 conflicts=(lib32-openssl)
-source=("https://artfiles.org/openssl.org/source/openssl-${_ver}.tar.gz"
-        'ca-dir.patch')
-sha256sums=('c5ac01e760ee6ff0dab61d6b2bbd30146724d063eb322180c6f18a6f74e4b6aa'
-            '0938c8d68110768db4f350a7ec641070686904f2fe7ba630ac94399d7dc8cc5e')
+source=("https://artfiles.org/openssl.org/source/openssl-${_ver}.tar.gz")
+# the tests are currently not being used
+#        'ca-dir.patch')
+sha256sums=('aaa925ad9828745c4cad9d9efeb273deca820f2cdcf2c3ac7d7c1212b7c497b4')
+#            '0938c8d68110768db4f350a7ec641070686904f2fe7ba630ac94399d7dc8cc5e')
 
-prepare() {
-	cd "$srcdir"/$_pkgbasename-$_ver
+#prepare() {
+#	cd "$srcdir"/$_pkgbasename-$_ver
 
 	# set ca dir to /etc/ssl by default
-	patch -p0 -i "$srcdir"/ca-dir.patch
-}
+#	patch -p0 -i "$srcdir"/ca-dir.patch
+#}
 
 build() {
 	export CC="gcc -m32"
@@ -37,7 +39,7 @@ build() {
 
 	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
 	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib32 \
-		shared no-ssl3-method linux-elf no-ssl2 no-ssl3 no-weak-ssl-ciphers no-ssl no-deprecated no-tls1 no-tls1-method no-tls1_1 no-tls1_1-method no-tls1_2 \
+		shared no-ssl3-method linux-elf no-ssl3 no-weak-ssl-ciphers no-ssl no-deprecated no-tls1 no-tls1-method no-tls1_1 no-tls1_1-method no-tls1_2 \
                 no-tls1_2-method enable-tls1_3 no-rc2 no-rc4 no-idea no-seed -DOPENSSL_USE_IPV6=0 \
 	"-Wa,--noexecstack ${CPPFLAGS} ${CFLAGS} ${LDFLAGS}"
 
