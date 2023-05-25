@@ -1,13 +1,14 @@
 pkgbase = akkufetch-git
 	pkgdesc = Neofetch for laptop batteries
 	pkgver = 20230525
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/mrHeavenli/akkufetch
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	depends = python-colorama
 	depends = upower
+	depends = dbus-python
 	depends = python
 	source = akkufetch.sh
 	source = git+https://github.com/mrHeavenli/akkufetch.git
