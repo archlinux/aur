@@ -1,8 +1,6 @@
 pkgname="rt-env"
-_envver=`cd env && git describe --long --tags | sed 's/-/\./g; s/^v//; s/g.*$//'`
-_packagesver=`cd packages && git rev-list --count HEAD`
-pkgver=${_envver}${_packagesver}
-pkgrel="1"
+pkgver=1.1.2.218.3447
+pkgrel=1
 pkgdesc="RT_Thread env!"
 arch=("x86_64")
 license=("Apache-2.0" "GPL-2.0")
@@ -17,7 +15,14 @@ ENV_ROOT="${HOME}/.env"
 ENV_CMD_ROOT="${ENV_ROOT}/tools/scripts"
 PKGS_ROOT="${ENV_ROOT}/packages/packages"
 
+pkgver() {
+	_envver=`cd env && git describe --long --tags | sed 's/-/\./g; s/^v//; s/g.*$//'`
+	_packagesver=`cd packages && git rev-list --count HEAD`
+	echo $_envver$_packagesver
+}
+
 build() {
+
 	mkdir -p "${srcdir}${PKGS_ROOT}"
 	mkdir -p "${srcdir}${ENV_CMD_ROOT}"
 	mkdir -p "${srcdir}${ENV_ROOT}/local_pkgs"
