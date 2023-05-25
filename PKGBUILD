@@ -18,10 +18,10 @@ source_aarch64=("${url}/releases/download/v${pkgver}/sdr-trunk-linux-aarch64-v${
                 "sdrtrunk.desktop")
 
 b2sums_x86_64=('4c07b9d3772f80babb8b7f174499f8ad5388f097cda0c693c1fd31b73d2d7e9d6f0a5e4d9e3d53f713af915de8093be7746a644e12b587ad271efe22a031fce4'
-               '8be385adc3a2772c18f77ef4ec2b44a8986010d80263c529c6676bf8565b3460a718a94fed8ec4a1b77775db02e40dd182ef6ec91ca4324f2638e8867cd31c81')
+               '8e5ae51bf3acf88582913d8c1c120ce2ecc5082d0f74abe6f4cfeefc9222b1507ce18de089e5d7fd64f2cf80ce98be95cdc64629f5ebc2aaa1bbb34e9d9bf306')
 
 b2sums_aarch64=('39280dabaaacbe8130135a37d85c0805ef7bc5fa4d751023d47b706a2209e2e6a7299eb35a10de52cd8ce0b496d251fe8038123b8c96949897714350d395631d'
-                '8be385adc3a2772c18f77ef4ec2b44a8986010d80263c529c6676bf8565b3460a718a94fed8ec4a1b77775db02e40dd182ef6ec91ca4324f2638e8867cd31c81')
+                '8e5ae51bf3acf88582913d8c1c120ce2ecc5082d0f74abe6f4cfeefc9222b1507ce18de089e5d7fd64f2cf80ce98be95cdc64629f5ebc2aaa1bbb34e9d9bf306')
 
 package() {
     install -Dm644 sdrtrunk.desktop "${pkgdir}/usr/share/applications/sdrtrunk.desktop"
