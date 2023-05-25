@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _cranname=gifski
-_cranver=1.6.6-1
+_cranver=1.12.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ depends=(r)
 makedepends=(rust)
 optdepends=(r-ggplot2 r-gapminder)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('13056bdb8e61ef9189d1e18f820f0b255575a02bc2e981caf24d53165378d0e1')
+sha256sums=('f8741330bbd14d8191acdbfdefe80d89ac5f81021bad95868b3cc33cd9dc6416')
 
 build() {
   mkdir -p build
