@@ -6,7 +6,7 @@ pkginstdir=serioussam
 ssa=SeriousSamAlphaRemake_v1.5.tar.xz
 pkgver=1.5
 _srcname="SeriousSamAlphaRemake-$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc="Serious Sam Classic Alpha Reamake native Linux."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SeriousSamAlphaRemake"
@@ -53,6 +53,7 @@ prepare(){
   tar -xJvf "$srcdir/$ssa" -C "$srcdir/$_srcname/SamTFE/"
   rm -f "$srcdir/$_srcname/SamTFE/Mods/SSA/Bin/libGame.so" || return 1
   rm -f "$srcdir/$_srcname/SamTFE/Mods/SSA/Bin/libEntities.so" || return 1
+  rm -f "$srcdir/$_srcname/SamTFE/Mods/SSA/Data/Translations/engine.txt" || return 1
   chmod -R o=rx "$srcdir/$_srcname/SamTFE/Mods/SSA"
   chmod -R g=rx "$srcdir/$_srcname/SamTFE/Mods/SSA"
 

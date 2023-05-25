@@ -1,7 +1,7 @@
 pkgbase = serioussam-alpha
 	pkgdesc = Serious Sam Classic Alpha Reamake native Linux.
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tx00100xt/SeriousSamAlphaRemake
 	arch = i686
 	arch = x86_64
