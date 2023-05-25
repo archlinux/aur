@@ -1,6 +1,6 @@
 pkgbase = rt-env
 	pkgdesc = RT_Thread env!
-	pkgver = 0.0.1
+	pkgver = 1.1.2.218.3447
 	pkgrel = 1
 	url = https://github.com/RT-Thread/env
 	arch = x86_64

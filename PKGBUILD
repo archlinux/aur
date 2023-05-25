@@ -1,5 +1,7 @@
 pkgname="rt-env"
-pkgver="0.0.1"
+_envver=`cd env && git describe --long --tags | sed 's/-/\./g; s/^v//; s/g.*$//'`
+_packagesver=`cd packages && git rev-list --count HEAD`
+pkgver=${_envver}${_packagesver}
 pkgrel="1"
 pkgdesc="RT_Thread env!"
 arch=("x86_64")
