@@ -1,6 +1,6 @@
 pkgbase = art-rawconverter-imageio
 	pkgdesc = add on for ART raw converter to support more image formats
-	pkgver = 20221226
+	pkgver = 20230524
 	pkgrel = 1
 	url = https://bitbucket.org/agriggio/art-imageio/src/main/
 	arch = i686
@@ -16,12 +16,11 @@ pkgbase = art-rawconverter-imageio
 	depends = libjxl
 	depends = python-numpy
 	depends = python-tifffile
-	depends = python-exiv2
 	depends = python-openexr
 	depends = perl-image-exiftool
 	depends = siril
 	depends = libavif
-	source = art-rawconverter-imageio_20221226::git+https://bitbucket.org/agriggio/art-imageio.git
+	source = art-rawconverter-imageio_20230524::git+https://bitbucket.org/agriggio/art-imageio.git#commit=8708b21e54b61d31ba698c134ed8d3819b516e3c
 	sha256sums = SKIP
 
 pkgname = art-rawconverter-imageio
