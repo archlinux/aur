@@ -1,18 +1,18 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=flightcore
-pkgver=1.16.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc="A Northstar installer, updater, and mod-manager"
 arch=('x86_64')
 url="https://github.com/R2NorthstarTools/FlightCore"
 license=('MIT')
-depends=('gtk3' 'webkit2gtk-4.1' 'libappindicator-gtk3' 'librsvg')
+depends=('git' 'gtk3' 'webkit2gtk-4.1' 'libappindicator-gtk3' 'librsvg')
 makedepends=('cargo' 'npm')
 optdepends=('sccache: compiler caching for faster compiling')
 _desktop=flightcore.desktop
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('790c8184a9cad6ac4177d6d693ed8735b9e0432bf2d0a15d10da1950918bbac1')
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 prepare() {
   # Create a shortcut
@@ -25,28 +25,31 @@ prepare() {
   sed -i '1 i\Exec=flightcore %U' $_desktop
   sed -i '1 i\Name=FlightCore' $_desktop
   sed -i '1 i\[Desktop Entry]' $_desktop
-  mv $_desktop FlightCore-$pkgver
+  mv $_desktop FlightCore
 
   # Only build the excutable
-  cd FlightCore-$pkgver/src-tauri
+  cd FlightCore/src-tauri
   sed -i '18s/.*/      "active": false,/' tauri.conf.json
   # Disable the updater
   sed -i '54s/.*/      "active": false,/' tauri.conf.json
+  cd ..
+
+  # Switch tag version
+  git checkout tags/v${pkgver}
 
   # Install npm dependencies
-  cd ..
   npm install
   cd src-vue
   npm install
 }
 
 build() {
-  cd FlightCore-$pkgver
+  cd FlightCore
   npm run tauri build
 }
 
 package() {
-  cd FlightCore-$pkgver
+  cd FlightCore
   install -Dm644 docs/assets/Square310x310Logo.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
   install -Dm644 ${_desktop} "$pkgdir/usr/share/applications/$_desktop"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
