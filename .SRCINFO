@@ -1,6 +1,6 @@
 pkgbase = swaylock-fprintd-git
-	pkgdesc =  with integrated fingerprint support via fprintd
-	pkgver = r314.ffd639a-1
+	pkgdesc = Screen locker for Wayland with integrated fingerprint support via fprintd
+	pkgver = r314.ffd639a
 	pkgrel = 1
 	url = https://github.com/SL-RU/swaylock-fprintd
 	arch = i686
@@ -17,11 +17,11 @@ pkgbase = swaylock-fprintd-git
 	depends = pam
 	depends = cairo
 	depends = gdk-pixbuf2
-        depends = dbus
-        depends = fprintd
+	depends = dbus
+	depends = fprintd
 	provides = swaylock
 	conflicts = swaylock
-	source = swaylock::git+https://github.com/SL-RU/swaylock-fprintd
+	source = swaylock-fprintd::git+https://github.com/SL-RU/swaylock-fprintd
 	sha1sums = SKIP
 
 pkgname = swaylock-fprintd-git
