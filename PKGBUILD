@@ -1,12 +1,12 @@
 # Maintainer: Adrián Pérez de Castro
 pkgdesc='Flexible terminal-based text editor'
 pkgname=mle-git
-pkgver=r503.e4dc431
+pkgver=r555.f84cadd
 pkgrel=1
 url='https://github.com/adsr/mle'
 license=(Apache)
 arch=(x86_64)
-depends=(pcre lua)
+depends=(pcre2 lua)
 makedepends=(git uthash)
 source=("${pkgname}::git+${url}")
 sha512sums=(SKIP)
@@ -21,15 +21,10 @@ pkgver () {
 }
 
 prepare () {
-	cd "${pkgname}"
-    # Avoid locale-dependent assertion
-    # See https://github.com/adsr/mle/commit/e4dc4314b02a324701d9ae9873461d34cce041e5
-    sed -i '/0wv/d' tests/unit/test_bline_insert.c
-
 	# The Arch Linux Lua package does not have an include/lua5.4 subdir,
 	# per-version subdirs are only available for the older releases; but
 	# mle.h wants to use lua5.4/lua*.h nevertheless.
-	ln -snf /usr/include lua5.4
+	ln -snf /usr/include "${pkgname}/lua5.4"
 }
 
 build () {
