@@ -25,6 +25,9 @@ package() {
   mkdir -p "${pkgdir}/usr/bin"
 
   cp -R "${srcdir}/akkufetch" "${pkgdir}/usr/share"
-  cp "${srcdir}/akkufetch.sh" "${pkgdir}/usr/bin/akkufetch"
-  chmod +x "${pkgdir}/usr/bin/akkufetch.sh"
+
+  cp "${srcdir}/akkufetch.sh" "${pkgdir}/usr/bin"
+  mv "${pkgdir}/usr/bin/akkufetch.sh" "${pkgdir}/usr/bin/akkufetch"
+
+  chmod +x "${pkgdir}/usr/bin/akkufetch"
 }
