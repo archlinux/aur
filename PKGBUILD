@@ -5,7 +5,7 @@ pkgdesc="Free racing game made by the youtuber Dani"
 url="https://danidev.itch.io/jelly-drift"
 
 pkgver="1.0.0"
-pkgrel="6"
+pkgrel=7
 
 license=("unknown")
 
@@ -17,6 +17,6 @@ sha256sums=('56279e3d77e2126a5886856923005d965c20b57d792142606badb71744423ab2' '
 package() {
   mkdir -p "${pkgdir}/usr/share/applications"
 
-  mv "${srcdir}/JellyDrift" "${pkgdir}/usr/share"
-  mv "${srcdir}/jelly-drift.desktop" "${pkgdir}/usr/share/applications"
+  cp -R "${srcdir}/JellyDrift" "${pkgdir}/usr/share"
+  cp "${srcdir}/jelly-drift.desktop" "${pkgdir}/usr/share/applications"
 }
