@@ -1,7 +1,7 @@
 pkgbase = libfranka
 	pkgdesc = C++ library for Franka Emika research robots
-	pkgver = 0.8.0
-	pkgrel = 3
+	pkgver = 0.10.0
+	pkgrel = 1
 	url = http://wiki.ros.org/libfranka
 	arch = i686
 	arch = x86_64
@@ -16,11 +16,8 @@ pkgbase = libfranka
 	provides = libfranka
 	conflicts = libfranka
 	source = git+https://github.com/frankaemika/libfranka-common.git
-	source = git+https://github.com/frankaemika/libfranka.git#tag=0.8.0
-	source = fix_missing_includes.patch
-	sha256sums = SKIP
+	source = https://github.com/frankaemika/libfranka/archive/refs/tags/0.10.0.tar.gz
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = libfranka
-

@@ -1,6 +1,6 @@
 pkgname="libfranka"
-pkgver="0.8.0"
-pkgrel=3
+pkgver="0.10.0"
+pkgrel=1
 pkgdesc="C++ library for Franka Emika research robots "
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 url="http://wiki.ros.org/libfranka"
@@ -12,12 +12,10 @@ conflicts=($pkgname)
 
 source=(
     "git+https://github.com/frankaemika/libfranka-common.git"
-    "git+https://github.com/frankaemika/libfranka.git#tag=$pkgver"
-    "fix_missing_includes.patch"
+    "https://github.com/frankaemika/libfranka/archive/refs/tags/$pkgver.tar.gz"
 )
 
 sha256sums=(
-    SKIP
     SKIP
     SKIP
 )
@@ -28,12 +26,8 @@ prepare() {
     cd ${srcdir}/libfranka
     git submodule init
     git config submodule.common.url $srcdir/libfranka-common
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 
-    # fix missing string include
-    cd ${srcdir}/libfranka
-    patch --forward --strip=1 --input="${srcdir}/fix_missing_includes.patch"
-    
 }
 
 build() {
@@ -44,7 +38,8 @@ build() {
 	# Build project
 	cmake ${srcdir}/libfranka \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DBUILD_TESTS=OFF
 	cmake --build .
 }
 
