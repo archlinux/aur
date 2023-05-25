@@ -8,6 +8,7 @@ pkgbase = llama.cpp-git
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
+	makedepends = git
 	provides = llama.cpp
 	conflicts = llama.cpp
 	source = llama.cpp::git+https://github.com/ggerganov/llama.cpp
