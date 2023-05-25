@@ -8,9 +8,9 @@ warn() {
 }
 
 post_install() {
-  warn "If you want to use the upgraded version immediately, please stop your beyond-identity services by:"
-  warn "killall --verbose --quiet byndid"
-  warn "Running 'beyond-identity --help' will restore them."
+  warn "If you're having issues with DBus denying access to tpm2-abrmd daemon"
+  warn "please add your user to the tss group:"
+  warn "useradd -aG tss <your_username>"
 }
 
 post_upgrade() {
