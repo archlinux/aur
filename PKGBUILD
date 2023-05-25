@@ -4,7 +4,7 @@
 # Contributor: Adrià Cereto i Massagué <ssorgatem at gmail.com>
 
 pkgname=amdvlk-git
-pkgver=2023.Q2.2.r0.ec40bda
+pkgver=2023.Q2.2.r0.ff6b9ba
 pkgrel=1
 pkgdesc="AMD's standalone Vulkan driver"
 arch=(x86_64)
@@ -14,8 +14,8 @@ depends=('vulkan-icd-loader')
 provides=('vulkan-amdvlk' 'amdvlk' 'vulkan-driver')
 conflicts=('vulkan-amdvlk' 'amdvlk')
 makedepends=('xorgproto' 'xorg-server-devel' 'libxrandr' 'cmake' 'python' 'libxml2' 'wayland' 'libdrm' 'git' 'ninja' 'repo' 'directx-shader-compiler')
-source=('https://patch-diff.githubusercontent.com/raw/GPUOpen-Drivers/pal/pull/94.patch')
-sha256sums=('df333990b3ebd39f7b5e5d36ca74e0c1814329c64ca942fb03ae037e75e8c5bb')
+source=('0001-rdf-Include-cstdint-header-explicitly-for-std-int64_.patch')
+sha256sums=('0943859eeab66bf24598cfba99e07d839bb018360e93ffb8b5c94b45ab36d389')
 
 pkgver() {
   pushd .repo/manifests/ > /dev/null
@@ -34,7 +34,7 @@ prepare() {
   done
 
   msg 'Applying https://github.com/GPUOpen-Drivers/pal/pull/94'
-  patch -p1 -d drivers/pal < "$srcdir/94.patch"
+  git -C drivers/pal am "$srcdir/0001-rdf-Include-cstdint-header-explicitly-for-std-int64_.patch"
 }
 
 build() {

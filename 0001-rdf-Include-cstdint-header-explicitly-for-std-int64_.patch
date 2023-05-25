@@ -1,0 +1,40 @@
+From 56868b78dddddd975f2c1dfe671646f7b434d29b Mon Sep 17 00:00:00 2001
+From: Marijn Suijten <marijns95@gmail.com>
+Date: Tue, 23 May 2023 10:23:10 +0200
+Subject: [PATCH] rdf: Include `cstdint` header explicitly for `std::int64_t`
+ and friends
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+On gcc-13 these integer types appear to no longer be included via
+`(c)string` or other `std` headers (according to a [similar fix]),
+resulting in many of the following compiler errors in `amdrdf.{cpp,h}`:
+
+    In file included from pal/src/core/imported/rdf/rdf/src/amdrdf.cpp:25:
+    pal/src/core/imported/rdf/rdf/inc/amdrdf.h:112:39: error: ‘int64_t’ in namespace ‘std’ does not name a type
+      112 |     int (*Read)(void* ctx, const std::int64_t count, void* buffer, std::int64_t* bytesRead);
+          |                                       ^~~~~~~
+
+Solve this by including `cstdint` explicitly.
+
+[similar fix]: https://github.com/google/breakpad/commit/7ea7ded187b4d739239f3ab7082fcd5a2ccc1eaa
+---
+ src/core/imported/rdf/rdf/inc/amdrdf.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/core/imported/rdf/rdf/inc/amdrdf.h b/src/core/imported/rdf/rdf/inc/amdrdf.h
+index 2ac8b1ce..cbee874d 100644
+--- a/src/core/imported/rdf/rdf/inc/amdrdf.h
++++ b/src/core/imported/rdf/rdf/inc/amdrdf.h
+@@ -25,6 +25,7 @@
+ #pragma once
+ 
+ #include <cstddef>
++#include <cstdint>
+ #include <cstring>
+ #include <functional>
+ #include <memory>
+-- 
+2.40.1
+
