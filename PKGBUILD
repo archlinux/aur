@@ -2,7 +2,7 @@
 # Maintainer: Abdul Khaliq <a.khaliq@outlook.my>
 
 pkgname='ncp-bin'
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='NCP is a file transfer utility that enables efficient copying of files to and from an NFS server.'
 url='https://ncp.lmno.pk'
@@ -11,14 +11,14 @@ license=('MIT')
 provides=('ncp')
 conflicts=('ncp')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/kha7iq/ncp/releases/download/v0.1.3/ncp_Linux_arm64.tar.gz")
-sha256sums_aarch64=('688ceabcbd21b52405d0c0d888b8eceb36e4615c99b02661ad98c4e3964a6cad')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/kha7iq/ncp/releases/download/v0.1.4/ncp_Linux_arm64.tar.gz")
+sha256sums_aarch64=('6c901204149e971532742d2bc449dd268006612460969a796125f045d6a1fb68')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/kha7iq/ncp/releases/download/v0.1.3/ncp_Linux_arm.tar.gz")
-sha256sums_armv7h=('01a83c66558dacb256fecf5662c7c30ac3b3753ab89c74540119f353b5773bd1')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/kha7iq/ncp/releases/download/v0.1.4/ncp_Linux_arm.tar.gz")
+sha256sums_armv7h=('fdbf8eca9d10cd9c255a93d57152631c553c289254dd7cc62151dcea5f0a02c1')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/kha7iq/ncp/releases/download/v0.1.3/ncp_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('66b2352df1567d366ffe7fed92aef4c949a0189f289701e81c9e46dff633504d')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/kha7iq/ncp/releases/download/v0.1.4/ncp_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('886e1c4e2e3d1334468e32daf83c574738a56a2b1d817e6c9b2f4da147242b4a')
 
 package() {
   # bin
