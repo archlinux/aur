@@ -1,8 +1,8 @@
 # Maintainer: Munzir Taha <munzirtaha@gmail.com>
 
 pkgname=chessx
-pkgver=1.5.8
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="Cross-platform chess database and PGN viewer"
 arch=(x86_64)
 url=http://chessx.sourceforge.net
@@ -10,13 +10,14 @@ license=(GPL2)
 depends=(qt5-svg qt5-speech)
 makedepends=(qt5-tools)
 conflicts=($pkgname-svn)
-source=("https://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/$pkgname-$pkgver.tgz")
-sha256sums=('7affad2b50872c5b7f46f9b3c8f559d9cd27c5f470c1bf647bbb939a6ed111a3')
+source=("https://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/$pkgname-$pkgver.tgz"
+        "chessx.patch")
+sha256sums=('efa60e7b55a907ebdd12810a1931de69624ba42544e11a3262ed562f2dc3c618'
+            'ed2464acb0547596017c38be8a4531206e3ff15d28b4f68d96ed26b0ffde3154')
 
 prepare() {
-  cd $pkgname-$pkgver
-  sed -i '/QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);/a\
-    QCoreApplication::setAttribute(Qt::AA_DontUseNativeDialogs);' src/gui/main.cpp
+    cd "$srcdir"
+    patch --forward --strip=1 --input="${srcdir}/chessx.patch"
 }
 
 build() {

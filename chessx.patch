@@ -1,0 +1,116 @@
+diff --unified --recursive --text chessx-1.6.0.orig/chessx-1.6.0/src/dialogs/preferences.cpp chessx-1.6.0.new/chessx-1.6.0/src/dialogs/preferences.cpp
+--- chessx-1.6.0.orig/chessx-1.6.0/src/dialogs/preferences.cpp	2023-05-08 23:22:12.000000000 +0300
++++ chessx-1.6.0.new/chessx-1.6.0/src/dialogs/preferences.cpp	2023-05-25 14:07:01.102444724 +0300
+@@ -667,11 +669,6 @@
+ 
+ #if defined(USE_SOUND) || defined(USE_SPEECH)
+     ui.cbSoundOn->setCurrentIndex(AppSettings->getValue("Move").toInt());
+-
+-    QStringList voiceNames = ChessXSettings::availableVoices(lang);
+-    ui.cbVoice->addItems(voiceNames);
+-
+-    ui.cbVoice->setCurrentText(AppSettings->getValue("Voice").toString());
+     ui.volume->setValue(AppSettings->getValue("Volume").toInt());
+     ui.cbScreenReader->setChecked(AppSettings->getValue("ScreenReader").toBool());
+     ui.cbMoveSound->setChecked(AppSettings->getValue("MoveSound").toBool());
+@@ -679,11 +676,16 @@
+     ui.delayReadAhead->setValue(AppSettings->getValue("DelayReadAhead").toInt());
+ 
+ #ifdef USE_SPEECH
++    QStringList voiceNames = ChessXSettings::availableVoices(lang);
++    ui.cbVoice->addItems(voiceNames);
++    ui.cbVoice->setCurrentText(AppSettings->getValue("Voice").toString());
+     if (!QTextToSpeech::availableEngines().count())
+     {
++        ui.cbVoice->setEnabled(false);
+         ui.cbScreenReader->setChecked(false);
+         ui.plyReadAhead->setEnabled(false);
+         ui.delayReadAhead->setEnabled(false);
++        ui.cbScreenReader->setEnabled(false);
+     }
+ #endif
+ 
+diff --unified --recursive --text chessx-1.6.0.orig/chessx-1.6.0/src/gui/chessxsettings.cpp chessx-1.6.0.new/chessx-1.6.0/src/gui/chessxsettings.cpp
+--- chessx-1.6.0.orig/chessx-1.6.0/src/gui/chessxsettings.cpp	2023-05-08 23:22:12.000000000 +0300
++++ chessx-1.6.0.new/chessx-1.6.0/src/gui/chessxsettings.cpp	2023-05-25 13:59:13.477536676 +0300
+@@ -19,7 +19,9 @@
+ #include <QWidget>
+ #include <QMainWindow>
+ #include <QSplitter>
++#ifdef USE_SPEECH
+ #include <QTextToSpeech>
++#endif
+ #include <QLayout>
+ 
+ using namespace chessx;
+@@ -161,9 +163,9 @@
+     return valid;
+ }
+ 
++#ifdef USE_SPEECH
+ void ChessXSettings::configureSpeech(QTextToSpeech* speech)
+ {
+-#ifdef USE_SPEECH
+     speech->setLocale(ChessXSettings::locale());
+ 
+     QVector<QVoice> voices = speech->availableVoices();
+@@ -180,8 +182,8 @@
+             break;
+         }
+     }
+-#endif
+ }
++#endif
+ 
+ QLocale ChessXSettings::locale()
+ {
+@@ -190,10 +192,11 @@
+     return cxLocale;
+ }
+ 
++#ifdef USE_SPEECH
+ QStringList ChessXSettings::availableVoices(QString lang)
+ {
+     QStringList list;
+-#ifdef USE_SPEECH
++
+     QLocale cxLocale(lang);
+ 
+     QTextToSpeech* speech = new QTextToSpeech();
+@@ -204,9 +207,10 @@
+     for (const QVoice &voice : qAsConst(voices)) {
+         list << voice.name();
+     }
+-#endif
++
+     return list;
+ }
++#endif
+ 
+ void ChessXSettings::setLayout(const QWidget* w)
+ {
+diff --unified --recursive --text chessx-1.6.0.orig/chessx-1.6.0/src/gui/chessxsettings.h chessx-1.6.0.new/chessx-1.6.0/src/gui/chessxsettings.h
+--- chessx-1.6.0.orig/chessx-1.6.0/src/gui/chessxsettings.h	2023-05-08 23:22:12.000000000 +0300
++++ chessx-1.6.0.new/chessx-1.6.0/src/gui/chessxsettings.h	2023-05-25 13:59:08.350853518 +0300
+@@ -5,7 +5,10 @@
+ #include <QStringList>
+ #include <QLocale>
+ 
++#ifdef USE_SPEECH
+ class QTextToSpeech;
++#endif
++
+ class Widget;
+ 
+ class ChessXSettings : public Settings
+diff --unified --recursive --text chessx-1.6.0.orig/chessx-1.6.0/src/gui/main.cpp chessx-1.6.0.new/chessx-1.6.0/src/gui/main.cpp
+--- chessx-1.6.0.orig/chessx-1.6.0/src/gui/main.cpp	2023-05-08 23:22:12.000000000 +0300
++++ chessx-1.6.0.new/chessx-1.6.0/src/gui/main.cpp	2023-05-25 14:00:52.787860196 +0300
+@@ -98,6 +98,7 @@
+ #if QT_VERSION < 0x060000
+     QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);     // HiDPI support
+     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);  // Windows Surface Book
++    QCoreApplication::setAttribute(Qt::AA_DontUseNativeDialogs);
+ #endif
+ 
+     QApplication app(argc, argv);
