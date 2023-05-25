@@ -2,7 +2,7 @@
 _pkgname=translate-shell
 pkgname=python-$_pkgname
 pkgver=0.0.25
-pkgrel=1
+pkgrel=2
 pkgdesc="Translate text by google, bing, youdaozhiyun, haici, stardict, etc at same time from CLI, GUI (GNU/Linux, Android, macOS and Windows), REPL, python, shell and vim."
 arch=(any)
 url=https://github.com/Freed-Wu/translate-shell
@@ -14,7 +14,7 @@ optdepends=(
 	'python-yaml: output yaml format'
 	'python-keyring: store APP secrets securely'
 	'python-langdetect: detect language automatically for offline dictionary'
-	'python-pystardict: offline dictionary'
+	'python-pystardict>=0.5.0: offline dictionary'
 	'python-py-notifier: GUI notification'
 	'xsel: clipboard support'
 	'xclip: clipboard support'
