@@ -1,8 +1,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 _pkgname=translate-shell
 pkgname=python-$_pkgname
-pkgver=0.0.25
-pkgrel=2
+pkgver=0.0.26
+pkgrel=1
 pkgdesc="Translate text by google, bing, youdaozhiyun, haici, stardict, etc at same time from CLI, GUI (GNU/Linux, Android, macOS and Windows), REPL, python, shell and vim."
 arch=(any)
 url=https://github.com/Freed-Wu/translate-shell
@@ -26,7 +26,7 @@ license=(GPL3)
 source=(
 	"$url/releases/download/$pkgver/${_pkgname//-/_}-$pkgver-py3-none-any.whl"
 )
-sha256sums=('bfc0bdddac50e045a159344b87991a2505787894c5404b045fa9328a68805d3d')
+sha256sums=('7683c981ace46958012f33b246e05ac7536f3e9d5ee19e4c3428161947f794a3')
 
 package() {
 	cd "$srcdir" || return 1
