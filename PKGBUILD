@@ -3,7 +3,7 @@ pkgver="0.0.1"
 pkgrel="1"
 pkgdesc="RT_Thread env!"
 arch=("x86_64")
-license=("custom")
+license=("Apache-2.0" "GPL-2.0")
 depends=('git' 'scons' 'python')
 url="https://github.com/RT-Thread/env"
 
