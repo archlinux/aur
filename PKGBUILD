@@ -1,10 +1,10 @@
-# Maintainer: darkelectron <darkelectron(dot)aur(at)tutanota.com
+# Maintainer: darkelectron <darkelectron(at)mailfence.com>
 # Contributor: Aoibhinn Nic Aoidh <oibind@pm.me>
 # Contributor: Dany Marcoux <danymarcoux+archlinux@gmail.com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=lf-bin
-pkgver=29
+pkgver=30
 pkgrel=1
 pkgdesc='A terminal file manager inspired by ranger (Precompiled binary from official repository)'
 arch=('i686' 'x86_64' 'armv7h')
@@ -14,9 +14,9 @@ options=('!strip' '!emptydirs')
 source_i686=("lf-$pkgver-linux-386.tar.gz::${url}/releases/download/r${pkgver}/lf-linux-386.tar.gz")
 source_x86_64=("lf-$pkgver-linux-amd64.tar.gz::${url}/releases/download/r${pkgver}/lf-linux-amd64.tar.gz")
 source_armv7h=("lf-$pkgver.linux-arm.tar.gz::${url}/releases/download/r${pkgver}/lf-linux-arm.tar.gz")
-sha256sums_i686=('3761baaf780c6ba5510b9d2fbf6a86cf302b19a8ca927c0d88a1a54f40ff16cf')
-sha256sums_x86_64=('34e9b57b2487fc251fbf93e662ca39e82f6ecfab1e7b8b012b9dfd45413f1555')
-sha256sums_armv7h=('74d17aec0fbcd434aac61da756ab02ec2563a09eaf6f261a9d9fb86aa1d53289')
+sha256sums_i686=('d0c493576f469a50b682942eab5efeaa0d1007e253fc5057f1f0717e5683b44b')
+sha256sums_x86_64=('8185b7838f84c3f8a9355b76229d24daf155f9001cfd3e3666ead546560d87d7')
+sha256sums_armv7h=('5eeb67a57a647b7b9eefadee229474c589fbd598468c3890bce65966e6ecd788')
 provides=('lf')
 conflicts=('lf' 'lf-git' 'lf-sixel-git')
 
