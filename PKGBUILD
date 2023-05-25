@@ -3,7 +3,7 @@
 _pkgname=Trezor-Suite
 _upkgname=trezor-suite
 pkgname=trezor-suite-appimage
-pkgver=23.4.2
+pkgver=23.5.2
 pkgrel=1
 pkgdesc="desktop app for Trezor hardware wallets"
 arch=('x86_64' 'arm64')
@@ -16,7 +16,7 @@ options=('!strip')
 validpgpkeys=('EB483B26B078A4AA1B6F425EE21B6950A2ECB65C')
 
 source=("https://github.com/trezor/trezor-suite/releases/download/v$pkgver/$_pkgname-$pkgver-linux-$arch.AppImage"{,.asc})
-sha256sums=('d1acbb6bf26b7c3edf0f94b319f54ef80e355f274cca30f73769a509b3ddf1ce'
+sha256sums=('0bbb1842ce5b533330998c5a6f0660a508ae1e4e7e48732d9bbff055d484b07c'
             'SKIP')
 
 prepare() {
