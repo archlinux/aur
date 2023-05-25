@@ -3,10 +3,10 @@
 # Contributor: Bitts311 <oceanmail311@gmail.com>
 
 _pkgname=Qogir-theme
-_pkgver=2023-02-27
+_pkgver=2023-05-24
 pkgname="qogir-gtk-theme"
 pkgver=${_pkgver//-/.}
-pkgrel=9
+pkgrel=1
 pkgdesc="Qogir is a flat Design theme for GTK"
 arch=('any')
 url="https://github.com/vinceliuice/Qogir-theme"
@@ -27,7 +27,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/vinceliuice/$_pkgname/archive/$_pkgver.tar.gz"
     "options.txt"
 )
-sha256sums=('211d2d7e027fe595e7512ca346b63a9314ee59e3ddee875bc1c06aeef9e5b9bb'
+sha256sums=('e4c681f10cd9c9ff829f0e9c7b56f857120ec4fd5638203494db3a9b188b8796'
             'fabf821acfe0641fd233d4d7a42a536aedc369516de62f877e83a1070c73327e')
 
 package() {
