@@ -1,6 +1,6 @@
 pkgbase = sdrtrunk-bin
 	pkgdesc = A cross-platform java application for decoding, monitoring, recording and streaming trunked mobile and related radio protocols using SDR
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/DSheirer/sdrtrunk
 	arch = aarch64
@@ -14,13 +14,13 @@ pkgbase = sdrtrunk-bin
 	conflicts = sdrtrunk
 	conflicts = sdrtrunk-git
 	conflicts = sdrtrunk-bin
-	source_aarch64 = https://github.com/DSheirer/sdrtrunk/releases/download/v0.5.2/sdr-trunk-linux-aarch64-v0.5.2.zip
+	source_aarch64 = https://github.com/DSheirer/sdrtrunk/releases/download/v0.5.3/sdr-trunk-linux-aarch64-v0.5.3.zip
 	source_aarch64 = sdrtrunk.desktop
-	b2sums_aarch64 = fd8aa4489fb1734081788c5e198b849f82898bbf50ca12a95f0865c2913f68979967d15c2b81f3118e9fe8cf523b2e47443bc072a4a913d0d157514750ec7d9f
+	b2sums_aarch64 = 39280dabaaacbe8130135a37d85c0805ef7bc5fa4d751023d47b706a2209e2e6a7299eb35a10de52cd8ce0b496d251fe8038123b8c96949897714350d395631d
 	b2sums_aarch64 = 8be385adc3a2772c18f77ef4ec2b44a8986010d80263c529c6676bf8565b3460a718a94fed8ec4a1b77775db02e40dd182ef6ec91ca4324f2638e8867cd31c81
-	source_x86_64 = https://github.com/DSheirer/sdrtrunk/releases/download/v0.5.2/sdr-trunk-linux-x86_64-v0.5.2.zip
+	source_x86_64 = https://github.com/DSheirer/sdrtrunk/releases/download/v0.5.3/sdr-trunk-linux-x86_64-v0.5.3.zip
 	source_x86_64 = sdrtrunk.desktop
-	b2sums_x86_64 = 99b8b5cec0f5b500fbb5a311e5dc9a35f9bf37e218b65507806701ab07098e591b48ff8276e1dd91478230c85534f6fe0e81764d7222bc4e51b9de63ad2a6ae1
+	b2sums_x86_64 = 4c07b9d3772f80babb8b7f174499f8ad5388f097cda0c693c1fd31b73d2d7e9d6f0a5e4d9e3d53f713af915de8093be7746a644e12b587ad271efe22a031fce4
 	b2sums_x86_64 = 8be385adc3a2772c18f77ef4ec2b44a8986010d80263c529c6676bf8565b3460a718a94fed8ec4a1b77775db02e40dd182ef6ec91ca4324f2638e8867cd31c81
 
 pkgname = sdrtrunk-bin
