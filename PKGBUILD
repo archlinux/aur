@@ -1,10 +1,11 @@
-# Maintainer:
+# Maintainer: Bao Trinh <qubidt@gmail.com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _name=rapidfuzz_capi
 pkgname=python-${_name/_/-}
 pkgver=1.0.5
-pkgrel=4
+pkgrel=5
 pkgdesc='C-API of RapidFuzz, which can be used to extend RapidFuzz from separate packages'
 arch=(any)
 url='https://github.com/maxbachmann/rapidfuzz_capi'

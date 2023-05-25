@@ -1,7 +1,7 @@
 pkgbase = python-rapidfuzz-capi
 	pkgdesc = C-API of RapidFuzz, which can be used to extend RapidFuzz from separate packages
 	pkgver = 1.0.5
-	pkgrel = 2
+	pkgrel = 5
 	url = https://github.com/maxbachmann/rapidfuzz_capi
 	arch = any
 	license = MIT
