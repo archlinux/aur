@@ -12,13 +12,13 @@ provides=('ncp')
 conflicts=('ncp')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/kha7iq/ncp/releases/download/v0.1.4/ncp_Linux_arm64.tar.gz")
-sha256sums_aarch64=('421b27060d68aaed4cf4413ed5a271ea93bd7a416d320e6c8d2565d8bc66a6f5')
+sha256sums_aarch64=('05b120828f2c9d10a37b23cc06751f7bce8064b2ccbf4947a8bdc83d70d81320')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/kha7iq/ncp/releases/download/v0.1.4/ncp_Linux_arm.tar.gz")
-sha256sums_armv7h=('996451ad6f1a99cb7e4766f800fb4f961990cbb3b473854d8dd9f156f7ca74eb')
+sha256sums_armv7h=('54953478b6b74d37f1c60ebe0e836f23d105f02566d087e3c50d79300cf114d3')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/kha7iq/ncp/releases/download/v0.1.4/ncp_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('a94c6771c9d24782f746b1b51d19c71e480a3ca1a741e09eb361ac79c22e66ac')
+sha256sums_x86_64=('752ccd4ab3194b2b4edbd1d504446ec2a0a5e9ee53d8b56f7b4140ee6f79e144')
 
 package() {
   # bin
