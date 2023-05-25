@@ -1,7 +1,7 @@
 # Maintainer: liborw
 
 pkgname=python-mqttools
-pkgver=0.36.0
+pkgver=0.50.0
 pkgrel=1
 pkgdesc="MQTT version 5.0 client and broker using asyncio"
 url="https://github.com/eerimoq/mqttools"
@@ -10,7 +10,7 @@ arch=("any")
 depends=('python' 'python-bitstruct' 'python-humanfriendly')
 makedepends=('python')
 source=("mqttools-$pkgver.tar.gz::https://github.com/eerimoq/mqttools/archive/$pkgver.tar.gz")
-sha256sums=('911cc21d347f2def9c165f5186d18f7381c163e83115680694992c4c831af472')
+sha256sums=('7e6cafe56ef74b28a262e99ba1a6be38bb600dc7406be5a7f2ff67906a3ae4f3')
 
 build() {
   cd $srcdir/mqttools-$pkgver
