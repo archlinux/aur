@@ -1,0 +1,29 @@
+pkgbase = python-firefly
+	pkgdesc = A browser-based particle visualization platform
+	pkgver = 3.2.3
+	pkgrel = 1
+	url = https://docs.sunpy.org/projects/ndcube
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	checkdepends = python-h5py
+	checkdepends = python-pandas
+	checkdepends = python-requests
+	checkdepends = python-matplotlib
+	checkdepends = python-abg
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/f/firefly/firefly-3.2.3.tar.gz
+	md5sums = de3dd25218bf2dea4c2d84bc202c7038
+
+pkgname = python-firefly
+	depends = python>=3.6
+	depends = python-eventlet
+	depends = python-flask
+	depends = python-flask-socketio
+	depends = python-h5py
+	depends = python-pandas
+	depends = python-requests
+	depends = python-abg
