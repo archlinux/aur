@@ -1,6 +1,6 @@
 pkgbase = openssl-hardened
 	pkgdesc = The Open Source toolkit for Secure Sockets Layer and Transport Layer Security
-	pkgver = 1.1.1.s
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://www.openssl.org
 	arch = x86_64
@@ -14,9 +14,7 @@ pkgbase = openssl-hardened
 	replaces = openssl-perl
 	replaces = openssl-doc
 	backup = etc/ssl/openssl.cnf
-	source = https://artfiles.org/openssl.org/source/openssl-1.1.1s.tar.gz
-	source = ca-dir.patch
-	sha256sums = c5ac01e760ee6ff0dab61d6b2bbd30146724d063eb322180c6f18a6f74e4b6aa
-	sha256sums = 75aa8c2c638c8a3ebfd9fa146fc61c7ff878fc997dc6aa10d39e4b2415d669b2
+	source = https://artfiles.org/openssl.org/source/openssl-3.1.0.tar.gz
+	sha256sums = aaa925ad9828745c4cad9d9efeb273deca820f2cdcf2c3ac7d7c1212b7c497b4
 
 pkgname = openssl-hardened
