@@ -1,9 +1,9 @@
-# Maintainer: Dan Johansen <strit at manjaro dot org>
+# Maintainer: Dan Johansen <strit@strits.dk>
 
 pkgname=gpu-viewer
 _pkgname=GPU-Viewer
-pkgver=2.28
-pkgrel=2
+pkgver=2.29
+pkgrel=1
 pkgdesc="A frontend to glxinfo and vulkaninfo."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/arunsivaramanneo/GPU-Viewer/"
@@ -34,4 +34,4 @@ package() {
     DESTDIR="$pkgdir" ninja install
 }
 
-md5sums=('4b953c0be398bbc8f633451b161f6d75')
+md5sums=('b4fe734aa7f2cae8b059b89117b75734')
