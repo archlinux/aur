@@ -1,8 +1,26 @@
 diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
-index d1f6f3a7b06c..1416848d2da5 100644
+index d1f6f3a7b06c..0b8abeca6aa0 100644
 --- a/clang-tools-extra/clangd/Hover.cpp
 +++ b/clang-tools-extra/clangd/Hover.cpp
-@@ -1008,12 +1008,15 @@ void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
+@@ -866,7 +866,7 @@ HoverInfo getStringLiteralContents(const StringLiteral *SL,
+   HoverInfo HI;
+ 
+   HI.Name = "string-literal";
+-  HI.Size = (SL->getLength() + 1) * SL->getCharByteWidth();
++  HI.Size = (SL->getLength() + 1) * SL->getCharByteWidth() * 8;
+   HI.Type = SL->getType().getAsString(PP).c_str();
+ 
+   return HI;
+@@ -1000,7 +1000,7 @@ void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
+   const auto &Ctx = ND.getASTContext();
+   if (auto *RD = llvm::dyn_cast<RecordDecl>(&ND)) {
+     if (auto Size = Ctx.getTypeSizeInCharsIfKnown(RD->getTypeForDecl()))
+-      HI.Size = Size->getQuantity();
++      HI.Size = Size->getQuantity() * 8;
+     return;
+   }
+ 
+@@ -1008,25 +1008,26 @@ void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
      const auto *Record = FD->getParent();
      if (Record)
        Record = Record->getDefinition();
@@ -10,21 +28,113 @@ index d1f6f3a7b06c..1416848d2da5 100644
 -        !FD->isBitField()) {
 +    if (Record && !Record->isInvalidDecl() && !Record->isDependentType()) {
        const ASTRecordLayout &Layout = Ctx.getASTRecordLayout(Record);
-       HI.Offset = Layout.getFieldOffset(FD->getFieldIndex()) / 8;
+-      HI.Offset = Layout.getFieldOffset(FD->getFieldIndex()) / 8;
 -      if (auto Size = Ctx.getTypeSizeInCharsIfKnown(FD->getType())) {
-+      if (FD->isBitField()) {
-+        const auto SizeInBits = FD->getBitWidthValue(Ctx);
-+        HI.Size = (SizeInBits + 7) >> 3;
-+      } else if (auto Size = Ctx.getTypeSizeInCharsIfKnown(FD->getType()))
-         HI.Size = FD->isZeroSize(Ctx) ? 0 : Size->getQuantity();
+-        HI.Size = FD->isZeroSize(Ctx) ? 0 : Size->getQuantity();
++      HI.Offset = Layout.getFieldOffset(FD->getFieldIndex());
++      if (FD->isBitField())
++        HI.Size = FD->getBitWidthValue(Ctx);
++      else if (auto Size = Ctx.getTypeSizeInCharsIfKnown(FD->getType()))
++        HI.Size = FD->isZeroSize(Ctx) ? 0 : Size->getQuantity() * 8;
 +      if (HI.Size) {
          unsigned EndOfField = *HI.Offset + *HI.Size;
  
          // Calculate padding following the field.
+         if (!Record->isUnion() &&
+             FD->getFieldIndex() + 1 < Layout.getFieldCount()) {
+           // Measure padding up to the next class field.
+-          unsigned NextOffset =
+-              Layout.getFieldOffset(FD->getFieldIndex() + 1) / 8;
++          unsigned NextOffset = Layout.getFieldOffset(FD->getFieldIndex() + 1);
+           if (NextOffset >= EndOfField) // next field could be a bitfield!
+             HI.Padding = NextOffset - EndOfField;
+         } else {
+           // Measure padding up to the end of the object.
+-          HI.Padding = Layout.getSize().getQuantity() - EndOfField;
++          HI.Padding = Layout.getSize().getQuantity() * 8 - EndOfField;
+         }
+       }
+       // Offset in a union is always zero, so not really useful to report.
+@@ -1463,15 +1464,32 @@ markup::Document HoverInfo::present() const {
+     P.appendCode(*Value);
+   }
+ 
+-  if (Offset)
+-    Output.addParagraph().appendText(
+-        llvm::formatv("Offset: {0} byte{1}", *Offset, *Offset == 1 ? "" : "s")
+-            .str());
++  const auto FormatSize = [](uint64_t Bits) {
++    uint64_t Value = Bits % 8 == 0 ? Bits / 8 : Bits;
++    const char *Unit = Value != 0 && Value == Bits ? "bit" : "byte";
++    return llvm::formatv("{0} {1}{2}", Value, Unit, Value == 1 ? "" : "s")
++        .str();
++  };
++
++  if (Offset) {
++    const auto Bytes = *Offset / 8;
++    const auto Bits = *Offset % 8;
++    auto &P = Output.addParagraph().appendText("Offset: ");
++    if (Bytes != 0 || Bits == 0)
++      P.appendText(FormatSize(Bytes * 8));
++    if (Bits != 0) {
++      if (Bytes != 0)
++        P.appendText(" and ");
++      P.appendText(FormatSize(Bits));
++    }
++  }
+   if (Size) {
+-    auto &P = Output.addParagraph().appendText(
+-        llvm::formatv("Size: {0} byte{1}", *Size, *Size == 1 ? "" : "s").str());
+-    if (Padding && *Padding != 0)
+-      P.appendText(llvm::formatv(" (+{0} padding)", *Padding).str());
++    auto &P = Output.addParagraph().appendText("Size: ");
++    P.appendText(FormatSize(*Size));
++    if (Padding && *Padding != 0) {
++      P.appendText(
++          llvm::formatv(" (+{0} padding)", FormatSize(*Padding)).str());
++    }
+   }
+ 
+   if (CalleeArgInfo) {
+diff --git a/clang-tools-extra/clangd/Hover.h b/clang-tools-extra/clangd/Hover.h
+index 891a9d9ec554..6a6110091291 100644
+--- a/clang-tools-extra/clangd/Hover.h
++++ b/clang-tools-extra/clangd/Hover.h
+@@ -91,7 +91,7 @@ struct HoverInfo {
+   std::optional<std::vector<Param>> TemplateParameters;
+   /// Contains the evaluated value of the symbol if available.
+   std::optional<std::string> Value;
+-  /// Contains the byte-size of fields and types where it's interesting.
++  /// Contains the bit-size of fields and types where it's interesting.
+   std::optional<uint64_t> Size;
+   /// Contains the offset of fields within the enclosing class.
+   std::optional<uint64_t> Offset;
 diff --git a/clang-tools-extra/clangd/unittests/HoverTests.cpp b/clang-tools-extra/clangd/unittests/HoverTests.cpp
-index 135fdfc4c23b..b59bba790ebd 100644
+index 135fdfc4c23b..27883ec9b6be 100644
 --- a/clang-tools-extra/clangd/unittests/HoverTests.cpp
 +++ b/clang-tools-extra/clangd/unittests/HoverTests.cpp
+@@ -89,8 +89,8 @@ TEST(Hover, Structured) {
+          HI.Definition = "char bar";
+          HI.Type = "char";
+          HI.Offset = 0;
+-         HI.Size = 1;
+-         HI.Padding = 7;
++         HI.Size = 8;
++         HI.Padding = 56;
+          HI.AccessSpecifier = "private";
+        }},
+       // Union field
+@@ -107,8 +107,8 @@ TEST(Hover, Structured) {
+          HI.Kind = index::SymbolKind::Field;
+          HI.Definition = "char bar";
+          HI.Type = "char";
+-         HI.Size = 1;
+-         HI.Padding = 15;
++         HI.Size = 8;
++         HI.Padding = 120;
+          HI.AccessSpecifier = "public";
+        }},
+       // Bitfield
 @@ -125,6 +125,8 @@ TEST(Hover, Structured) {
           HI.Kind = index::SymbolKind::Field;
           HI.Definition = "int x : 1";
@@ -34,6 +144,24 @@ index 135fdfc4c23b..b59bba790ebd 100644
           HI.AccessSpecifier = "public";
         }},
        // Local to class method.
+@@ -188,7 +190,7 @@ TEST(Hover, Structured) {
+          HI.Definition = "char bar";
+          HI.Type = "char";
+          HI.Offset = 0;
+-         HI.Size = 1;
++         HI.Size = 8;
+          HI.AccessSpecifier = "public";
+        }},
+       // Struct definition shows size.
+@@ -200,7 +202,7 @@ TEST(Hover, Structured) {
+          HI.Name = "X";
+          HI.Kind = index::SymbolKind::Struct;
+          HI.Definition = "struct X {}";
+-         HI.Size = 1;
++         HI.Size = 8;
+        }},
+       // Variable with template type
+       {R"cpp(
 @@ -1285,6 +1287,26 @@ class Foo final {})cpp";
           HI.Kind = index::SymbolKind::Field;
           HI.Definition = "m_int arr[Size]";
@@ -54,10 +182,49 @@ index 135fdfc4c23b..b59bba790ebd 100644
 +         HI.Kind = index::SymbolKind::Field;
 +         HI.Definition = "char y : 1";
 +         HI.Type = "char";
-+         HI.Offset = 1;
++         HI.Offset = 8;
 +         HI.Size = 1;
-+         HI.Padding = 2;
++         HI.Padding = 23;
 +         HI.AccessSpecifier = "public";
         }}};
    for (const auto &Case : Cases) {
      SCOPED_TRACE(Case.Code);
+@@ -1508,7 +1530,7 @@ TEST(Hover, All) {
+       {"auto s = ^[[\"Hello, world!\"]]; // string literal",
+        [](HoverInfo &HI) {
+          HI.Name = "string-literal";
+-         HI.Size = 14;
++         HI.Size = 112;
+          HI.Type = "const char[14]";
+        }},
+       {
+@@ -3218,7 +3240,7 @@ TEST(Hover, Present) {
+       {
+           [](HoverInfo &HI) {
+             HI.Kind = index::SymbolKind::Class;
+-            HI.Size = 10;
++            HI.Size = 80;
+             HI.TemplateParameters = {
+                 {{"typename"}, std::string("T"), std::nullopt},
+                 {{"typename"}, std::string("C"), std::string("bool")},
+@@ -3274,16 +3296,16 @@ template <typename T, typename C = bool> class Foo {})",
+             HI.Name = "foo";
+             HI.Type = {"type", "can_type"};
+             HI.Definition = "def";
+-            HI.Size = 4;
+-            HI.Offset = 12;
+-            HI.Padding = 4;
++            HI.Size = 32;
++            HI.Offset = 96;
++            HI.Padding = 32;
+           },
+           R"(field foo
+ 
+ Type: type (aka can_type)
+ Value = value
+ Offset: 12 bytes
+-Size: 4 bytes (+4 padding)
++Size: 4 bytes (+4 bytes padding)
+ 
+ // In test::Bar
+ def)",

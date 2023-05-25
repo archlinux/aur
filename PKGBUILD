@@ -63,7 +63,7 @@
 : ${CLANGD_HOVERBITFIELDS:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt
-pkgver=17.r12061.gd39a7844028b
+pkgver=17.r12560.g330a232ae761
 pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
@@ -81,6 +81,7 @@ source=('git+https://github.com/llvm/llvm-project.git'
         'refactor-extract-function.patch'
         'inlay-hints-paddings.patch'
         'hover-hex-formats.patch'
+        'hover-hex-formats-bits-patch.patch'
         'hover-bit-fields.patch')
 sha256sums=('SKIP'
             '843bf80065da5929276e070a5e66cd2a8391090bba2ac2f9c48be0a9bb35d315'  # hover-doxygen-noast
@@ -91,7 +92,8 @@ sha256sums=('SKIP'
             'f719fb52edee98f54ba40786d2ecac6ef63f56797c8f52d4d7ce76a3825966eb'  # refactor-extract-function
             '2db1f319f850858ecebdcda1c1600d6dd523f171c5b019740298d43607d5fa00'  # inlay-hints-paddings
             '346483b0d5823fba409785c2df471ca8a659112d630ee66e53b1a3e36e46e981'  # hover-hex-formats
-            '16c560576c974b86a3cae52ea45f3c03200712f12c208f689526ee1d2155132e') # hover-bit-fields
+            'ec5e9ff589c658b7ea82a9aa1e9cdc1296446a918cfda9cb870442a93e14454a'  # hover-hex-formats-bits-patch
+            'd1ecb75928639823e0fa2d6ffb39992ef40c7b95f71fd7def4a2353fedd7ff69') # hover-bit-fields
 
 pkgver() {
     cd llvm-project
@@ -114,11 +116,15 @@ prepare() {
     if [ "$CLANGD_RESOLVEFWDPARAMS" != "n" ]; then
         patch -p1 -i ${srcdir}/hover-resolve-forward-params.patch
     fi
-    if [ "$CLANGD_HOVERINHEX" != "n" ]; then
-        patch -p1 -i ${srcdir}/hover-hex-formats.patch
-    fi
     if [ "$CLANGD_HOVERBITFIELDS" != "n" ]; then
         patch -p1 -i ${srcdir}/hover-bit-fields.patch
+    fi
+    if [ "$CLANGD_HOVERINHEX" != "n" ]; then
+        if [ "$CLANGD_HOVERBITFIELDS" != "n" ]; then
+            patch -p1 -i ${srcdir}/hover-hex-formats-bits-patch.patch
+        else
+            patch -p1 -i ${srcdir}/hover-hex-formats.patch
+        fi
     fi
     
     # LSP patches

@@ -1,0 +1,14 @@
+diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
+index 0b8abeca6aa0..7d9604e1cb00 100644
+--- a/clang-tools-extra/clangd/Hover.cpp
++++ b/clang-tools-extra/clangd/Hover.cpp
+@@ -1467,6 +1467,9 @@ markup::Document HoverInfo::present() const {
+   const auto FormatSize = [](uint64_t Bits) {
+     uint64_t Value = Bits % 8 == 0 ? Bits / 8 : Bits;
+     const char *Unit = Value != 0 && Value == Bits ? "bit" : "byte";
++    if (Value > 10 && Value != Bits)
++      return llvm::formatv("{0} ({0:x}) {1}{2}", Value, Unit, Value == 1 ? "" : "s")
++          .str();
+     return llvm::formatv("{0} {1}{2}", Value, Unit, Value == 1 ? "" : "s")
+         .str();
+   };
