@@ -1,3 +1,27 @@
+From 6fc58d5a87d64426992a9fb17609f10740633b90 Mon Sep 17 00:00:00 2001
+From: Christopher Snowhill <kode54@gmail.com>
+Date: Sun, 21 May 2023 19:54:43 -0700
+Subject: [PATCH v2 1/2] drm/xe: Add explicit padding to uAPI definition
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Pad the uAPI definition so that it would align identically between
+64-bit and 32-bit uarch, so consumers using this header will work
+correctly from 32-bit compat userspace on a 64-bit kernel. Do it
+in a minimally invasive way, so that 64-bit userspace will still
+work with the previous header, and so that no fields suddenly
+change sizes.
+
+Originally inspired by mlankhorst.
+
+Signed-off-by: Christopher Snowhill <kode54@gmail.com>
+Reviewed-by: José Roberto de Souza <jose.souza@intel.com>
+Reviewed-by: Lucas De Marchi <lucas.demarchi@intel.com>
+---
+ include/uapi/drm/xe_drm.h | 34 +++++++++++++++++++++++++++++++++-
+ 1 file changed, 33 insertions(+), 1 deletion(-)
+
 diff --git a/include/uapi/drm/xe_drm.h b/include/uapi/drm/xe_drm.h
 index b0b80aae3ee8..d5fc54b5be74 100644
 --- a/include/uapi/drm/xe_drm.h
@@ -120,3 +144,6 @@ index b0b80aae3ee8..d5fc54b5be74 100644
  	/** @value: property value */
  	__u64 value;
  
+-- 
+2.40.1
+
