@@ -1,4 +1,3 @@
-pkg
-src
-super_unko
-*.pkg.tar.gz
+!PKGBUILD
+!.SRCINFO
+*
