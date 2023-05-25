@@ -8,9 +8,7 @@ depends=('git' 'scons' 'python')
 source=(env::git+https://github.com/RT-Thread/env.git
 	packages::git+https://github.com/RT-Thread/packages.git)
 sha512sums=(SKIP SKIP)
-install=${pkgname}.install
 
-# rt_env_path="/etc/profile.d/rt-env.sh"
 ENV_ROOT="${HOME}/.env"
 ENV_CMD_ROOT="${ENV_ROOT}/tools/scripts"
 PKGS_ROOT="${ENV_ROOT}/packages/packages"
