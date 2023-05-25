@@ -55,7 +55,7 @@ build() {
     #    CCS_INFO: error message: dlsym(acl_get_fd): /usr/lib32/libfakeroot/libfakeroot.so: undefined symbol: acl_get_fd
     # NOTE: ti_cgt_c2000_16.9.3.LTS_linux_installer_x86.bin is executed under fakeroot, this error is simply printed,
     #       but is not fatal. But, when the whole CCS installer is run under fakeroot is
-    ./ccs_setup_${pkgver}.run --mode unattended --prefix $srcdir/$_installpath
+    HOME="$srcdir/fakehome" ./ccs_setup_${pkgver}.run --mode unattended --prefix $srcdir/$_installpath
 
 }
 
