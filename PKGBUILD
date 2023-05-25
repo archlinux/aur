@@ -3,7 +3,7 @@
 # Maintainer: Daniele Fucini <dfucini@gmail.com>
 
 pkgname=simple_backup
-pkgver=3.2.3.r1.ga42ade4
+pkgver=3.2.4.r0.ga07fce1
 pkgrel=1
 pkgdesc='Simple backup script that uses rsync to copy files'
 arch=('any')
