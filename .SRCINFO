@@ -1,6 +1,6 @@
 pkgbase = mauikit-calendar-git
 	pkgdesc = MauiKit Calendar components
-	pkgver = 1.0.1.r0.g889ebdb
+	pkgver = 1.1.0.r3.gbf900e3
 	pkgrel = 1
 	url = https://invent.kde.org/maui/mauikit-calendar
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = mauikit-calendar-git
 	arch = armv7h
 	arch = aarch64
 	groups = maui
-	license = GPL3
+	license = LGPL3
 	makedepends = git
 	makedepends = extra-cmake-modules
 	depends = akonadi-contacts

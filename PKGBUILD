@@ -2,12 +2,12 @@
 
 _pkgname=mauikit-calendar
 pkgname=$_pkgname-git
-pkgver=1.0.1.r0.g889ebdb
+pkgver=1.1.0.r3.gbf900e3
 pkgrel=1
 pkgdesc='MauiKit Calendar components'
 url='https://invent.kde.org/maui/mauikit-calendar'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
-license=(GPL3)
+license=(LGPL3)
 depends=(akonadi-contacts
          calendarsupport
          eventviews
@@ -45,4 +45,5 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 "${srcdir}/$_pkgname/licenses/"* -t "${pkgdir}/usr/share/licenses/$_pkgname"
 }
