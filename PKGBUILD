@@ -2,13 +2,13 @@
 # Contributor: Karol Babioch <karol@babioch.de>
 
 pkgname=python-tika
-pkgver=1.24
-pkgrel=2
+pkgver=2.6.0
+pkgrel=1
 pkgdesc="Apache Tika Python library"
 arch=('any')
 url="http://github.com/chrismattmann/tika-python"
 license=('Apache')
-depends=('python')
+depends=('python' 'python-requests' 'python-pyaml')
 makedepends=('git' 'python-setuptools')
 source=("git+https://github.com/chrismattmann/tika-python#tag=$pkgver")
 sha256sums=('SKIP')
