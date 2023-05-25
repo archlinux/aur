@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-plotjuggler-ros
 	pkgdesc = ROS - PlotJuggler plugin for ROS
-	pkgver = 1.7.2
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://www.plotjuggler.io
 	arch = i686
@@ -29,7 +29,7 @@ pkgbase = ros-noetic-plotjuggler-ros
 	depends = qt5-svg
 	depends = qt5-websockets
 	depends = boost
-	source = ros-noetic-plotjuggler-ros-1.7.2.tar.gz::https://github.com/PlotJuggler/plotjuggler-ros-plugins/archive/1.7.2.tar.gz
-	sha256sums = ee3bf7114434b9ea669689adc8d6853d8d1817f93f6f2cd7d44c08d740205515
+	source = ros-noetic-plotjuggler-ros-1.7.3.tar.gz::https://github.com/PlotJuggler/plotjuggler-ros-plugins/archive/1.7.3.tar.gz
+	sha256sums = 2b61bd1409e586a819f7c7a6c720395d9b9bdda650351afe16a1cdd57fde0f82
 
 pkgname = ros-noetic-plotjuggler-ros
