@@ -3,7 +3,7 @@
 # Contributor: Nover <novares.x@gmail.com>
 # Contributor: agentcobra <agentcobra@free.fr>
 pkgname=shadow-tech
-pkgver=8.0.10097
+pkgver=8.0.10101
 pkgrel=1
 pkgdesc="Desktop client for Shadow Tech cloud gaming service."
 arch=('x86_64')
