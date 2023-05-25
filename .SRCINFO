@@ -1,6 +1,6 @@
 pkgbase = python-opentsne-git
 	pkgdesc = Extensible, parallel implementations of t-SNE
-	pkgver = 0.7.1.r0.ga46fae0
+	pkgver = 1.0.0.r1.gb9662b5
 	pkgrel = 1
 	url = https://opentsne.readthedocs.io/en/latest/
 	arch = x86_64
@@ -15,6 +15,8 @@ pkgbase = python-opentsne-git
 	depends = python-scikit-learn
 	optdepends = python-pynndescent: for nearest neighbor descent search
 	optdepends = python-hnswlib: for fast approximate nearest neightbors
+	provides = python-opentsne
+	conflicts = python-opentsne
 	source = git+https://github.com/pavlin-policar/openTSNE.git
 	sha256sums = SKIP
 

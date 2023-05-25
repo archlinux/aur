@@ -2,7 +2,7 @@
 # Contributor: Alexandr Parkhomenko <it@52tour.ru>
 
 pkgname=python-opentsne-git
-pkgver=0.7.1.r0.ga46fae0
+pkgver=1.0.0.r1.gb9662b5
 pkgrel=1
 pkgdesc="Extensible, parallel implementations of t-SNE"
 url="https://opentsne.readthedocs.io/en/latest/"
@@ -14,6 +14,8 @@ optdepends=(
   'python-pynndescent: for nearest neighbor descent search'
   'python-hnswlib: for fast approximate nearest neightbors'
 )
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("git+https://github.com/pavlin-policar/openTSNE.git")
 sha256sums=('SKIP')
 
