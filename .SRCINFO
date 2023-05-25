@@ -1,17 +1,17 @@
 pkgbase = jupyter-bash_kernel
 	pkgdesc = A Jupyter kernel for bash
-	pkgver = 0.7.2
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/takluyver/bash_kernel
 	arch = any
 	license = BSD
-	makedepends = python-setuptools
-	depends = jupyter
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = jupyter-notebook
 	depends = bash
 	depends = python-pexpect
-	source = https://files.pythonhosted.org/packages/source/b/bash_kernel/bash_kernel-0.7.2.tar.gz
-	sha256sums = a08c84eddd8179de5234105821fd5cc210015671a0bd3cd0bc4f631c475e1670
+	source = https://files.pythonhosted.org/packages/source/b/bash_kernel/bash_kernel-0.9.0.tar.gz
+	sha256sums = 0423f0512ef6f83a654e1439a369718899a38f27948fe21b665b2df1dbf3a7c7
 
 pkgname = jupyter-bash_kernel
-
