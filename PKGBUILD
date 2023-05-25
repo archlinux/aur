@@ -4,7 +4,7 @@ _reduce_size="false"
 
 _pkgname='pcsx2'
 pkgname="$_pkgname-bin"
-pkgver=1.7.4529
+pkgver=1.7.4534
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -28,13 +28,10 @@ provides=(
 )
 conflicts=(${provides[@]})
 
-_appimage="pcsx2-v${pkgver%.[a-z]*}-linux-AppImage-64bit-Qt.AppImage"
 source=(
-  "$_appimage"::"$url/releases/download/v${pkgver%.[a-z]*}/$_appimage"
   'rm_libs'
 )
 sha256sums=(
-  'SKIP'
   'SKIP'
 )
 
@@ -52,6 +49,21 @@ pkgver() {
 }
 
 build() {
+  cd "$srcdir"
+
+  _appimage="pcsx2-v${pkgver%.[a-z]*}-linux-AppImage-64bit-Qt.AppImage"
+
+  # find or download latest appimage
+  if [ -f "$_appimage" ] ; then
+    : # already exists, nothing to do
+  elif [ -f "../$_appimage" ] ; then
+    ln -sf "../$_appimage" ./
+  else
+    # note: download in build because prepare runs before pkgver
+    curl -L -o "$_appimage" \
+      "$url/releases/download/v${pkgver%.[a-z]*}/$_appimage"
+  fi
+
   # extract appimage
   chmod +x "$_appimage"
   "./$_appimage" --appimage-extract
