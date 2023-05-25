@@ -1,10 +1,11 @@
-# Maintainer:
+# Maintainer: Bao Trinh <qubidt@gmail.com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _name=jarowinkler
 pkgname=python-$_name
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A library for fast approximate string matching using Jaro and Jaro-Winkler similarity'
 arch=(x86_64)
 url='https://github.com/maxbachmann/JaroWinkler'
@@ -13,8 +14,14 @@ depends=(python)
 #makedepends=(jarowinkler-cpp python-rapidfuzz-capi python-scikit-build)
 makedepends=(python-build python-installer python-setuptools python-scikit-build python-rapidfuzz-capi ninja)
 checkdepends=(python-hypothesis python-pytest)
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('af28ea284cfbd1b21b29ff94b759f20e94e4f7c06f424b0b4702e701c2a21668')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
+        "scikit-build.patch")
+sha256sums=('af28ea284cfbd1b21b29ff94b759f20e94e4f7c06f424b0b4702e701c2a21668'
+            'd74321eed1e4b41ad8dcd81e2412ac5b84602fce147a212ddad32a9ebab3288e')
+
+prepare() {
+  patch --directory="${_name}-${pkgver}" --forward --strip=1 --input="${srcdir}/scikit-build.patch"
+}
 
 build() {
   cd $_name-$pkgver
