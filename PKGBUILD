@@ -1,6 +1,6 @@
 pkgname="libfranka"
 pkgver="0.10.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ library for Franka Emika research robots "
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 url="http://wiki.ros.org/libfranka"
@@ -12,7 +12,7 @@ conflicts=($pkgname)
 
 source=(
     "git+https://github.com/frankaemika/libfranka-common.git"
-    "https://github.com/frankaemika/libfranka/archive/refs/tags/$pkgver.tar.gz"
+    "git+https://github.com/frankaemika/libfranka.git#tag=$pkgver"
 )
 
 sha256sums=(
