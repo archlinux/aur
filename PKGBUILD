@@ -4,7 +4,7 @@
 
 _pkgname=renpy
 pkgname=${_pkgname}-git
-pkgver=14144.7917173b0
+pkgver=14267.fe2d76bdd
 pkgrel=1
 pkgdesc="Visual novel engine Ren'Py along with its platdeps libs (dev channel)"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url='http://www.renpy.org'
 depends=(
 	'ffmpeg' 'fribidi'
 	'python-pygame_sdl2-git' 'sdl2_image' 'sdl2_mixer' 
-	'sdl2_gfx' 'sdl2_ttf' 'python-ecdsa' 'python-future')
+	'sdl2_gfx' 'sdl2_ttf' 'python-ecdsa' 'python-future' 'python-pefile')
 makedepends=(
 	'cython' 'python-setuptools-scm' 'python-sphinx' 'python-sphinx_rtd_dark_mode' 
 	'python-sphinx_rtd_theme' 'git' 'python-build' 'python-installer' 'python-wheel')
@@ -61,10 +61,13 @@ package() {
 	install -D -m644 "${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
 
 	cd "$srcdir/$_pkgname"
-	cp -r 'sdk-fonts' 'launcher' 'renpy' 'renpy.py' 'the_question' 'tutorial' "$pkgdir/usr/share/$_pkgname"
+	cp -r 'sdk-fonts' 'launcher' 'renpy' 'renpy.py' 'the_question' 'tutorial' 'gui' "$pkgdir/usr/share/$_pkgname"
 	cp -r doc/* "$pkgdir/usr/share/doc/$_pkgname"
 	install -D -m644 'launcher/game/images/logo.png' "$pkgdir/usr/share/pixmaps/${_pkgname}.png"
 	install -D -m644 'sphinx/source/license.rst' "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+	
+	install -d -m755 "$pkgdir/usr/share/renpy/lib/py3-linux-x86_64"
+	ln -s '/usr/bin/renpy' "$pkgdir/usr/share/renpy/lib/py3-linux-x86_64"
 
 	chgrp -R games "$pkgdir"/usr/share/renpy/{the_question,tutorial}
 	chmod g+w "$pkgdir"/usr/share/renpy/{the_question,tutorial}

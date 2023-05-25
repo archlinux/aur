@@ -1,6 +1,6 @@
 pkgbase = renpy-git
 	pkgdesc = Visual novel engine Ren'Py along with its platdeps libs (dev channel)
-	pkgver = 14144.7917173b0
+	pkgver = 14267.fe2d76bdd
 	pkgrel = 1
 	url = http://www.renpy.org
 	install = renpy.install
@@ -25,6 +25,7 @@ pkgbase = renpy-git
 	depends = sdl2_ttf
 	depends = python-ecdsa
 	depends = python-future
+	depends = python-pefile
 	provides = renpy
 	provides = python-renpy
 	conflicts = renpy
