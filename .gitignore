@@ -1,7 +1,4 @@
-/.mypy_cache/
-/.venv/
 /i3bard/
 /pkg/
 /src/
-__pycache__/
-*.sock
+*.log

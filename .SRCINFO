@@ -1,5 +1,5 @@
 pkgbase = i3bard-git
-	pkgdesc = async i3blocks clone that can synchronize multiple instances
+	pkgdesc = async i3bar status_command generator that can synchronize multiple instances
 	pkgver = r40.bcd373d
 	pkgrel = 1
 	url = https://gitlab.com/chrooti/i3bard
