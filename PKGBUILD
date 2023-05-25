@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=llama.cpp-git
-pkgver=master.02c5b27
+pkgver=master.ac7876a
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
