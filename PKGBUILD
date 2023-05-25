@@ -5,7 +5,7 @@
 
 _pkgname=ugene
 pkgname=('ugene' 'ugene-cuda')
-pkgver=46.0
+pkgver=47.0
 pkgrel=1
 pkgdesc='A free open-source cross-platform bioinformatics software'
 arch=('x86_64')
@@ -22,11 +22,15 @@ makedepends=(
   qt5-tools
   opencl-headers
 )
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/ugeneunipro/ugene/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('a7d7c1018072fdada9dc602afd65445825a87d6953d3e96d61613ad8c096ccb0')
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/ugeneunipro/ugene/archive/refs/tags/${pkgver}.tar.gz"
+	"$pkgname.patch::https://github.com/ugeneunipro/ugene/pull/1270.patch")
+sha256sums=('55f2638b9817281053f99b6e87d988fa72475ca67899b84d85036b7e9e17a202'
+            '165656a1cb04f2f88175623c8a6830f63ed606fa4d1f28ab77153da11e12d48e')
 
 prepare() {
-  sed -i "s#16384#16384l#" "${_pkgname}-${pkgver}/src/libs_3rdparty/breakpad/src/client/linux/handler/exception_handler.cc"
+  cd ${_pkgname}-${pkgver}
+  patch -p1 < $srcdir/$pkgname.patch
+  cd ${srcdir}
   cp -a ${_pkgname}-${pkgver} ${_pkgname}-cuda-${pkgver}
 }
 
