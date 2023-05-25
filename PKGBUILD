@@ -6,7 +6,7 @@ pkgname=ccstudio
 _semver=12.3.0
 _bldver=00005
 pkgver=$_semver.$_bldver
-pkgrel=1
+pkgrel=2
 pkgdesc="Texas Instruments Code Composer Studio IDE"
 arch=('x86_64')
 url="http://www.ti.com/tool/ccstudio"
@@ -78,7 +78,7 @@ package() {
     # Bug corrections
     find $srcdir/$_installpath/ccs/eclipse/ccstudio.ini -print0 | xargs -0 sed -i '1,2d'
 
-    install -D -m0755 "$srcdir/$_installpath/$_desktop" $pkgdir/usr/share/applications/$pkgname.desktop
+    install -D -m0644 "$srcdir/$_installpath/$_desktop" $pkgdir/usr/share/applications/$pkgname.desktop
 
     # Hardlink to avoid time and space overhead
     cp -ral $srcdir/$_installdir/$_destdir $pkgdir/
