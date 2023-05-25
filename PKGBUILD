@@ -1,7 +1,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 _pkgname=translate-shell
 pkgname=python-$_pkgname
-pkgver=0.0.17
+pkgver=0.0.18
 pkgrel=1
 pkgdesc="Translate text by google, bing, youdaozhiyun, haici, stardict, etc at same time from CLI, GUI (GNU/Linux, Android, macOS and Windows), REPL, python, shell and vim."
 arch=(any)
@@ -25,7 +25,7 @@ conflicts=("$_pkgname")
 license=(GPL3)
 _py=py3
 source=("https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-none-any.whl")
-sha256sums=('0e3f7ffa0939f876c8d11a82075197cb416b7f9a4965bf8d9fe803a5c4444593')
+sha256sums=('5821b9842a7d35a6732da3420278bcab47e32de24032f2f8c8757e3ea80184f5')
 
 package() {
 	cd "$srcdir" || return 1
