@@ -1,13 +1,14 @@
 pkgbase = python-mouser
 	pkgdesc = Mouser Python API
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sparkmicro/mouser-api/
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-poetry
 	depends = python
 	depends = python-click
 	depends = python-requests
