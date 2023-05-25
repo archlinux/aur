@@ -3,7 +3,7 @@
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=libclc-minimal-git
-pkgver=17.0.0_r460869.b2809b4811bd
+pkgver=17.0.0_r462218.51572c2cd720
 pkgrel=2
 pkgdesc="companion package to llvm-minimal-git,  Library requirements of the OpenCL C programming language"
 arch=('any')
@@ -15,6 +15,21 @@ makedepends=(llvm-minimal-git clang-minimal-git cmake  git python spirv-llvm-tra
 source=("git+https://github.com/llvm/llvm-project.git"
 )
 sha256sums=('SKIP')
+
+prepare() {
+  cd llvm-project
+  local _commit_hash=$(echo $(pacman -Q llvm-minimal-git) | cut -d' ' -f2 |  cut -d'-' -f1 | cut -d'.' -f4)
+  # makepkg installs deps after processing the body of the PKGBUI:LD. 
+  # This prevents using _commit_hash in the source= array unless llvm-minimal-git is installed before build starts.
+  # best alternative seems to be to use git reset in prepare() .
+  # example how the command works
+  # pacman -Q llvm-minimal-git output =   llvm-minimal-git 17.0.0_r461863.8064caf83fb1-1
+  # the first cut removes (pkgname) llvm-minimal-git
+  # the 2nd cut removes (pkgrel) 1
+  # the 3rd removes (revision count) r461863 so only (the commit hash) 8064caf83fb1 remains
+
+  git reset --hard $_commit_hash
+}
 
 pkgver() {
     cd llvm-project/llvm
