@@ -1,6 +1,6 @@
 pkgbase = sc-controller
 	pkgdesc = User-mode driver and GTK3 based GUI for Steam Controller
-	pkgver = 0.4.8.10
+	pkgver = 0.4.8.11
 	pkgrel = 1
 	url = https://github.com/Ryochan7/sc-controller
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = sc-controller
 	depends = xorg-xinput
 	optdepends = gtk-layer-shell: wayland OSD support
 	conflicts = sc-controller-git
-	source = sc-controller-0.4.8.10.tar.gz::https://github.com/Ryochan7/sc-controller/archive/v0.4.8.10.tar.gz
-	sha256sums = 1f55e89a441e911d98d534a5f29deb5f133cdfa4593fd85238356cf6cc781312
+	source = sc-controller-0.4.8.11.tar.gz::https://github.com/Ryochan7/sc-controller/archive/v0.4.8.11.tar.gz
+	sha256sums = 6811411d01f6da90f1c7ffc61a8eaf8a99bebdf2aedaa4a3c95b5119dcb76f88
 
 pkgname = sc-controller
