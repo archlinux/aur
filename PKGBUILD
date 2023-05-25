@@ -5,7 +5,7 @@ pkgdesc="Neofetch for laptop batteries"
 url="https://github.com/mrHeavenli/akkufetch"
 
 pkgver=20230525
-pkgrel=5
+pkgrel=6
 
 license=("GPL3")
 depends=("python-colorama" "upower" "python")
