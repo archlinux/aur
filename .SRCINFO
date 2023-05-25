@@ -9,6 +9,7 @@ pkgbase = websurfx-edge-git
 	makedepends = git
 	depends = rustup
 	depends = cargo
+	depends = redis
 	provides = websurfx-edge-git
 	source = git+https://github.com/neon-mmd/websurfx.git
 	md5sums = SKIP
