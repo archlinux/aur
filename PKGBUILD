@@ -5,7 +5,7 @@ pkgdesc="Neofetch for laptop batteries"
 url="https://github.com/mrHeavenli/akkufetch"
 
 pkgver=20230525
-pkgrel=4
+pkgrel=5
 
 license=("GPL3")
 depends=("python-colorama" "upower" "python")
@@ -30,4 +30,6 @@ package() {
   mv "${pkgdir}/usr/bin/akkufetch.sh" "${pkgdir}/usr/bin/akkufetch"
 
   chmod +x "${pkgdir}/usr/bin/akkufetch"
+
+  mv "${srcdir}/akkufetch/default_config.json" "${pkgdir}/etc/akkufetch.config"
 }
