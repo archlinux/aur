@@ -2,7 +2,7 @@
 _pkgname=translate-shell
 pkgname=python-$_pkgname
 pkgver=0.0.26
-pkgrel=1
+pkgrel=2
 pkgdesc="Translate text by google, bing, youdaozhiyun, haici, stardict, etc at same time from CLI, GUI (GNU/Linux, Android, macOS and Windows), REPL, python, shell and vim."
 arch=(any)
 url=https://github.com/Freed-Wu/translate-shell
@@ -26,7 +26,7 @@ license=(GPL3)
 source=(
 	"$url/releases/download/$pkgver/${_pkgname//-/_}-$pkgver-py3-none-any.whl"
 )
-sha256sums=('7683c981ace46958012f33b246e05ac7536f3e9d5ee19e4c3428161947f794a3')
+sha256sums=('da0abf008488fc9cd55777fc7dd043a8ca18e679ab41ab47012b212fb4935388')
 
 package() {
 	cd "$srcdir" || return 1
