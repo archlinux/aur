@@ -57,7 +57,7 @@ sha256sums=(
 )
 
 for target in ${_gcc_targets}; do
-  pkgname+=("${pkgbase}-${target}")
+  pkgname+=("${pkgbase}-gcc-${target}")
 done
 
 if [ ${_is_clang_enabled} -eq 1 ]; then
@@ -92,7 +92,7 @@ build() {
   export CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
   for target in ${_gcc_targets}; do
-    make crossgcc-${target} CPUS=$(nproc) DEST="${srcdir}/${target}"
+    make crossgcc-${target} CPUS=$(nproc) DEST="${srcdir}/gcc-${target}"
   done
 
   if [ ${_is_clang_enabled} -eq 1 ]; then
@@ -103,12 +103,12 @@ build() {
 }
 
 do_package_gcc() {
-  target="$(echo ${pkgname} | cut -d '-' -f 3)"
+  target="$(echo ${pkgname} | cut -d '-' -f 4)"
 
   toolchain_dir="usr/${target}-coreboot-gnu"
   dest_path="${pkgdir}/${toolchain_dir}"
   mkdir -p ${dest_path}
-  mv ${srcdir}/${target}/* "${dest_path}"
+  mv "${srcdir}/gcc-${target}"/* "${dest_path}"
 }
 
 do_package_clang() {
@@ -118,31 +118,31 @@ do_package_clang() {
   mv ${srcdir}/clang/* "${dest_path}"/
 }
 
-package_coreboot-toolchain-i386() {
+package_coreboot-toolchain-gcc-i386() {
   do_package_gcc
 }
 
-package_coreboot-toolchain-x64() {
+package_coreboot-toolchain-gcc-x64() {
   do_package_gcc
 }
 
-package_coreboot-toolchain-arm() {
+package_coreboot-toolchain-gcc-arm() {
   do_package_gcc
 }
 
-package_coreboot-toolchain-aarch64() {
+package_coreboot-toolchain-gcc-aarch64() {
   do_package_gcc
 }
 
-package_coreboot-toolchain-riscv() {
+package_coreboot-toolchain-gcc-riscv() {
   do_package_gcc
 }
 
-package_coreboot-toolchain-ppc64() {
+package_coreboot-toolchain-gcc-ppc64() {
   do_package_gcc
 }
 
-package_coreboot-toolchain-nds32le() {
+package_coreboot-toolchain-gcc-nds32le() {
   do_package_gcc
 }
 

@@ -58,18 +58,18 @@ pkgbase = coreboot-toolchain
 	sha256sums = 809a2ef46d46be3b83ca389356404ac041fa6d8f5496cb02ec35d252afb64fd1
 	sha256sums = bbd8d39217509d163cb544a40d6428ac666ddc83e22905d3e52c925781f0f659
 
-pkgname = coreboot-toolchain-i386
+pkgname = coreboot-toolchain-gcc-i386
 
-pkgname = coreboot-toolchain-x64
+pkgname = coreboot-toolchain-gcc-x64
 
-pkgname = coreboot-toolchain-arm
+pkgname = coreboot-toolchain-gcc-arm
 
-pkgname = coreboot-toolchain-aarch64
+pkgname = coreboot-toolchain-gcc-aarch64
 
-pkgname = coreboot-toolchain-riscv
+pkgname = coreboot-toolchain-gcc-riscv
 
-pkgname = coreboot-toolchain-ppc64
+pkgname = coreboot-toolchain-gcc-ppc64
 
-pkgname = coreboot-toolchain-nds32le
+pkgname = coreboot-toolchain-gcc-nds32le
 
 pkgname = coreboot-toolchain-clang
