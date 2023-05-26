@@ -7,7 +7,7 @@ pkgver=3.2.3
 pkgrel=1
 pkgdesc="A browser-based particle visualization platform"
 arch=('any')
-url="https://docs.sunpy.org/projects/ndcube"
+url="http://www.firefly-viz.com"
 license=('BSD')
 makedepends=('python-setuptools-scm'
              'python-wheel'
