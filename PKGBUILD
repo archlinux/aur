@@ -5,12 +5,12 @@ pkgbase=hepmc
 pkgname=("${pkgbase}" "${pkgbase}-docs")
 _pkgname=HepMC3
 pkgver=3.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A particle physics package for storing collision events from Monte Carlo generators"
 arch=('x86_64')
 url="http://hepmc.web.cern.ch/"
 license=('GPL3')
-makedepends=('cmake' 'doxygen' 'gcc-fortran' 'graphviz' 'hepmc2' 'pythia8' 'python' 'root')
+makedepends=('cmake' 'doxygen' 'gcc-fortran' 'graphviz' 'hepmc2' 'pythia8' 'python' 'root' 'protobuf')
 source=("${pkgbase}-${pkgver}.tar.gz::http://hepmc.web.cern.ch/${pkgbase}/releases/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('248f3b5b36dd773844cbe73d51f60891458334b986b259754c59dbf4bbf1d525')
 
@@ -34,6 +34,7 @@ build() {
     -D HEPMC3_ENABLE_TEST=ON
     -D HEPMC3_INSTALL_INTERFACES=ON
     -D HEPMC3_PYTHON_VERSIONS='3.X'
+    -D HEPMC3_ENABLE_PROTOBUFIO=ON
     -D USE_INTERFACE_FROM_PYTHIA8=ON
     -D PYTHIA8_XMLDOC_DIR=/usr/share/pythia8/xmldoc
     -S $_pkgname-$pkgver
@@ -59,6 +60,7 @@ package_hepmc() {
     'pythia8: Pythia support'
     'python: Python interface'
     'root: ROOT I/O'
+    'protobuf: Protocol Buffers I/O'
   )
 
   DESTDIR="$pkgdir" cmake --install build
