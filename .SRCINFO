@@ -10,7 +10,7 @@ pkgbase = yt-cli
 	depends = npm
 	source = https://concise.cc/pkg/yt-cli-0.2.1-1-any.pkg.tar.xz
 	validpgpkeys = 81BACEEBC3EA26E127166E4A819BB92A9A48160E
-	md5sums = f06d926c8fc41fe03ddcaa5e47be9a44
-	sha512sums = 71781d7a30884b3596ede5ca9258022f5edd7a59bb11c4b4b2654d68b5a1150637094c6e1f8ac18ba404186168c72e287559d2eb2a24b8bbf1df6fd1d8cfbb08
+	md5sums = 78e9bc1f5fc978cebbdc70b21f29e1bd
+	sha512sums = e8a228bf73ee84dfcdf23469c5b1ba7b4a8ebbc1478df9fc33eb2c0c241e069ec995890c50caf99bfced29f47568764b56bd24dad15dc72395bef7f9cecb1ead
 
 pkgname = yt-cli
