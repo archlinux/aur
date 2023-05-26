@@ -1,0 +1,22 @@
+pkgbase = stapxs-qq-lite-webpage-git
+	pkgdesc = 一个兼容 oicq-http 的非官方网页版 QQ 客户端，使用 Vue 重制的全新版本。
+	pkgver = 2.5.7.r6.g94d8162
+	pkgrel = 1
+	url = https://github.com/Stapxs/Stapxs-QQ-Lite-2.0
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = yarn
+	makedepends = nodejs-lts-gallium
+	optdepends = oicq-http2: For running locally
+	optdepends = go-cqhhttp: For running locally
+	optdepends = nginx: For webserver serves this
+	optdepends = caddy: For webserver serves this
+	provides = staptxs-qq-lite-webpage
+	conflicts = staptxs-qq-lite-webpage
+	source = StapxsQQLite::git+https://github.com/Stapxs/Stapxs-QQ-Lite-2.0.git
+	source = stapxs-qq-lite-webpage.hook
+	sha256sums = SKIP
+	sha256sums = 8ded610cc0a466e42249c9b9f5827d188ffea051602a22d2a8679b436a90d0b1
+
+pkgname = stapxs-qq-lite-webpage-git

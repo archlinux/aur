@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = stapxs-qq-lite-webpage-git
+
+[Action]
+Description = Notifying user about manual operation...
+When = PostTransaction
+Exec = /usr/bin/echo "Please update your webserver to use new files of stapxs-qq-lite"
