@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=system76-power-git
-pkgver=1.1.24.r13.gda1ba01
+pkgver=1.1.24.r14.g4ebf3fd
 pkgrel=1
 pkgdesc="System76 Power Management"
 arch=('any')
