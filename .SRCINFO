@@ -1,6 +1,6 @@
 pkgbase = maui-settings-git
 	pkgdesc = Maui Settings Manager is a settings manager for the Maui DE
-	pkgver = 1.0.2.r0.g6fbfe69
+	pkgver = 1.1.0.r0.g4fe5218
 	pkgrel = 1
 	url = https://github.com/Nitrux/maui-settings
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = maui-settings-git
 	depends = ki18n
 	depends = kiconthemes
 	depends = maui-core-git
+	depends = mauikit-filebrowsing
 	depends = mauikit-git
 	depends = mauiman-git
 	depends = qt5-base
