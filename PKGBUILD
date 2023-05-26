@@ -18,9 +18,7 @@ md5sums=('30641c43126404c387940a88dc766705'
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	install -d "$pkgdir/usr/lib/$pkgname"
-	cp -rfa * "$pkgdir/usr/lib/$pkgname"
-	# Remove uneeded files
-	rm -rf "$pkgdir/usr/lib/$pkgname"/{scripts,LICENSE,README.md,screenshot.png}
+	cp -ra theme userChrome.css userContent.css "$pkgdir/usr/lib/$pkgname"
 	# Install docs & license
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 	install -Dm644 "$srcdir/INSTALL.md" "$pkgdir/usr/share/doc/$pkgname/INSTALL.md"
