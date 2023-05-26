@@ -1,14 +1,16 @@
 # Maintainer: Jeremy Cantrell <jmcantrell at gmail dot com>
 
 pkgname=pathbomb-git
-pkgver=0.1.2.r0.0ef5691
+pkgver=0.2.0.r0.c01b834
 pkgrel=1
 pkgdesc="Deploy files to known locations using predefined methods"
 arch=('any')
 url="https://git.sr.ht/~jmcantrell/${pkgname%-git}"
-license=('GPL3')
+license=('MIT')
 optdepends=(
+    'rsync: copy method'
     'stow: symlink method'
+    'gettext: template method'
     'age: decrypt method'
 )
 makedepends=('git' 'scdoc')
@@ -45,5 +47,5 @@ build() {
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    DEST_DIR=$pkgdir PREFIX=/usr ./scripts/install
+    DEST_DIR=$pkgdir PREFIX=/usr ETC_PREFIX=/ ./scripts/install
 }
