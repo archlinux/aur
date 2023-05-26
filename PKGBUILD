@@ -45,7 +45,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_sourcedirectory/apps/studio/"
-	yarn run vue-cli-service electron:build
+	NODE_OPTIONS='--openssl-legacy-provider' yarn run vue-cli-service electron:build
 }
 
 package() {
