@@ -1,7 +1,4 @@
-# Maintainer : Raphaël Doursenaud <rdoursenaud@gpcsolutions.fr>
-# Previous Maintainer : kuri <sysegv at gmail dot com>
-# Contributor : Kevin C <kiven at kiven dot fr>
-# Contributor: Alex 'AdUser' Z
+# Maintainer:  Novikov Maxim <the.mlex@gmail.com>
 pkgname=fusioninventory-agent-bin
 _pkgname="FusionInventory-Agent"
 pkgver=2.6
