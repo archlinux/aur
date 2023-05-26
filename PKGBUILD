@@ -3,8 +3,8 @@
 
 _pkgname=mmc-utils
 pkgname=${_pkgname}-git
-pkgver=r109.145c74a
-pkgrel=1
+pkgver=r113.9582278
+pkgrel=2
 epoch=1
 pkgdesc="Userspace tools for MMC/SD devices"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
@@ -13,23 +13,12 @@ license=('GPL')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=(
-	'git+https://git.kernel.org/pub/scm/utils/mmc/mmc-utils.git'
-	'append-CFLAGS.patch'
-)
-sha256sums=(
-	'SKIP'
-	'0ec2d5ed066dd0797b9d32fadea8c64e4fe509f3585cdbeeb3640c3a1cda9dfc'
-)
+source=('git+https://git.kernel.org/pub/scm/utils/mmc/mmc-utils.git')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "${_pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-	cd "${_pkgname}"
-	patch --forward --strip=1 --input="${srcdir}/append-CFLAGS.patch"
 }
 
 build() {
