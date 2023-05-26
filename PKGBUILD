@@ -9,7 +9,7 @@ url="https://github.com/styfenschaer/${_base}"
 license=('custom:BSD-3-clause')
 depends=(python-numba)
 makedepends=(python-build python-installer python-setuptools python-wheel)
-checkdepends=(python-pytest)
+checkdepends=(python-pytest python-scipy)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('b81b7079b69cbb3b0dd2a433c4ec7178353f8301acdcde9a0c04853010a0e03e7c49b343b25beb76cfbfb8b7efeefbad794a397c08089231ee1609dcc25a4903')
 

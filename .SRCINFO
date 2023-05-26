@@ -6,6 +6,7 @@ pkgbase = python-rocket-fft
 	arch = any
 	license = custom:BSD-3-clause
 	checkdepends = python-pytest
+	checkdepends = python-scipy
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
