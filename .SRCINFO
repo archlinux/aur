@@ -1,7 +1,7 @@
 pkgbase = sensu-backend
 	pkgdesc = Sensu Go Backend
-	pkgver = 6.9.2
-	pkgrel = 1
+	pkgver = 6.10.0
+	pkgrel = 0
 	url = https://sensu.io
 	install = sensu-backend.install
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = sensu-backend
 	source = backend.yml.example
 	sha256sums = 57c4e7835da2d58186e8e36518dc9e0b7cee93bd018619ec2a7210bf212d0d27
 	sha256sums = 29cf533a6b324ede8f2d774954bdbf879d0bf4470244cba5e7fbe1b935c1c4e9
-	source_x86_64 = sensu-backend-6.9.2_x86_64.tar.gz::https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.9.2/sensu-go_6.9.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 2e6548db8071c751ebea096afda3fbcfd8f3ddc57804ac31048d89be774b1e13
-	source_armv7h = sensu-backend-6.9.2_armv7h.tar.gz::https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.9.2/sensu-go_6.9.2_linux_armv7.tar.gz
-	sha256sums_armv7h = 35b7132a4c58f3ef84173ab59c1f2efdcf46d730d0d3076e69da639d58271e2b
-	source_aarch64 = sensu-backend-6.9.2_aarch64.tar.gz::https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.9.2/sensu-go_6.9.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = 57a19d809d6bb437ecd99348e7dbb686374ee6096e39641ef71dc362b3f95d36
+	source_x86_64 = sensu-backend-6.10.0_x86_64.tar.gz::https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.10.0/sensu-go_6.10.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = bdf866b3558b77ed6b764f6b52148fba89290cc0393f451ade03d255ff0dc429
+	source_armv7h = sensu-backend-6.10.0_armv7h.tar.gz::https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.10.0/sensu-go_6.10.0_linux_armv7.tar.gz
+	sha256sums_armv7h = a7be4ecbfd8c9c9dafc2f8a7f9840fde12362ea83cc02ca4556e99498a04b45c
+	source_aarch64 = sensu-backend-6.10.0_aarch64.tar.gz::https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.10.0/sensu-go_6.10.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 21e5d3283c8b30eaa9e86e0d43f52a663644c115526585d0050a2f2c0d30e30b
 
 pkgname = sensu-backend
