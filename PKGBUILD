@@ -105,7 +105,7 @@ build() {
 do_package_gcc() {
   target="$(echo ${pkgname} | cut -d '-' -f 4)"
 
-  toolchain_dir="usr/${target}-coreboot-gnu"
+  toolchain_dir="usr/${target}-coreboot-gcc"
   dest_path="${pkgdir}/${toolchain_dir}"
   mkdir -p ${dest_path}
   mv "${srcdir}/gcc-${target}"/* "${dest_path}"
