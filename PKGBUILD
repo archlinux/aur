@@ -23,10 +23,7 @@ build() {
   # Patch for https://gcc.gnu.org/onlinedocs/gcc-8.1.0/gcc/Warning-Options.html#index-Wstringop_002dtruncation
   # sed -i 's/strncpy/memcpy/' bjnp-commands.c
 
-  # Remove always-true comparison '(printer_id != NULL)'
-  sed -i '188d;191d' bjnp-commands.c
-
-  ./configure --prefix='/usr'
+  ./configure --prefix='/usr' --disable-Werror
   make
 }
 
