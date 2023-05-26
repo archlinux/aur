@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-intel-full-git
 	pkgdesc = Complete solution to record, convert and stream audio and video (all possible features for intel; git version) (based on dbermond package)
-	pkgver = 6.1.r110700.ge684967e74
+	pkgver = 6.1.r110779.g82278e8749
 	pkgrel = 1
 	url = https://www.ffmpeg.org/
 	arch = x86_64

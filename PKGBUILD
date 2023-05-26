@@ -6,7 +6,7 @@
 _svt_hevc_ver='6cca5b932623d3a1953b165ae6b093ca1325ac44'
 
 pkgname=ffmpeg-intel-full-git
-pkgver=6.1.r110700.ge684967e74
+pkgver=6.1.r110779.g82278e8749
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for intel; git version) (based on dbermond package)'
 arch=('x86_64')
