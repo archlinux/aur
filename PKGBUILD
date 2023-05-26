@@ -2,7 +2,7 @@
 # Contributor: https://github.com/shempignon/scaramanga/graphs/contributors
 
 pkgname=scaramanga
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Pacman Mirrorlist generator wrapper written in Rust'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('rust' 'cargo')
 conflicts=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/shempignon/scaramanga/archive/refs/tags/v$pkgver.tar.gz")
 backup=("etc/scaramanga/config.toml")
-sha512sums=('7b66293c5719b698803a23d2b0600d86c1c9ebfeea2f0639c90f0cb250b63cb0740bcfd85396a64385d40c4e4228c17c92dafa942b3ccd84c9c7f174500e0a22')
+sha512sums=('d5830ea75dbe9d9d388d003415a6c783897081c53c77df1027893a56eed599b6a1dd79eab7cab855757adbea4f4f1aa7fa60173d14c5e6a1f62fb0e57c9fa48e')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
