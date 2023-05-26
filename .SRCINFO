@@ -1,0 +1,27 @@
+pkgbase = turtle-git
+	pkgdesc = A gtk4 + libadwaita frontend for pygit2 with nautilus plugin support.
+	pkgver = 0.2.r14.gd647dce
+	pkgrel = 1
+	url = https://gitlab.gnome.org/philippun1/turtlegit
+	arch = any
+	license = GPL3
+	checkdepends = appstream-glib
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = libadwaita
+	depends = python-gobject
+	depends = python-nautilus
+	depends = python-pygit2
+	optdepends = meld: diff tool
+	provides = turtle
+	conflicts = turtle
+	conflicts = turtlegit
+	replaces = turtlegit-git
+	source = git+https://gitlab.gnome.org/philippun1/turtlegit.git
+	sha256sums = SKIP
+
+pkgname = turtle-git
