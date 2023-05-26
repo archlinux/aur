@@ -1,10 +1,11 @@
 # Maintainer: Vladislav Tyulbashev <vtyulb@vtyulb.ru>
 
 pkgname=bsa-analytics-git
-pkgver=20170304
+pkgbase=bsa-analytics
+pkgver=20230512
 pkgrel=1
 pkgdesc="PRAO BSA telescope data viewer, pulsar searching & analytics software"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/vtyulb/BSA-Analytics"
 license=('GPL')
 depends=('qt5-base')
