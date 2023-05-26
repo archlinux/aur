@@ -3,14 +3,14 @@
 pkgname=obs-studio-rc
 _pkgver=29.1.1
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 epoch=6
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
 license=("GPL3")
 # To manage dependency rebuild easily, this will prevent you to rebuild OBS on non-updated system
-_mbedtlsver=2.28
+_mbedtlsver=3.4
 _pythonver=3.11
 depends=(
   "jack" "gtk-update-icon-cache" "x264" "rnnoise" "pciutils" "qt6-svg"
