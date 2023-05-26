@@ -3,7 +3,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=cosmic-epoch-git
-pkgver=r62.bdf225c
+pkgver=r66.0ffc5ae
 pkgrel=1
 pkgdesc="desktop environment in Rust, Iced. GNOME inspired, by System76, Pop! OS."
 arch=('x86_64' 'aarch64')
