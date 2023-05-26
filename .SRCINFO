@@ -1,16 +1,21 @@
 pkgbase = python-delorean
 	pkgdesc = Library providing a more convenient use of datetimes
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://delorean.readthedocs.org/
 	arch = any
 	license = custom:MIT
+	checkdepends = python-nose
+	checkdepends = python-mock
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-pytz
 	depends = python-dateutil
 	depends = python-humanize
 	depends = python-tzlocal
+	depends = python-babel
 	source = https://pypi.python.org/packages/source/D/Delorean/Delorean-1.0.0.tar.gz
 	sha512sums = 7514145d0084d8f0697b7ae078e35087b64d723ef6d20b105a72bf84a5f122eb69693aec59c7d574a1b57f114ba4269f31931bdfc54cfeac32a98add9eec05e3
 
 pkgname = python-delorean
-
