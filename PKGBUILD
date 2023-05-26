@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Cantrell <jmcantrell at gmail dot com>
 
 pkgname=pathbomb
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Deploy files to known locations using predefined methods"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=(
 makedepends=('scdoc')
 checkdepends=('parallel' 'diffutils')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c2c8fcf84cbb5f9815d127c4efd9344088bf3d733fcf1db89ec72c7473b1b6e6')
+sha256sums=('be4af35410560c5c62c0d61df3a4531c13d040c1f7b77771a36f33466439f949')
 
 check() {
     cd "$srcdir/$pkgname-refs/tags/v$pkgver"

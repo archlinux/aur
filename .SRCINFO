@@ -1,6 +1,6 @@
 pkgbase = pathbomb
 	pkgdesc = Deploy files to known locations using predefined methods
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://git.sr.ht/~jmcantrell/pathbomb
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = pathbomb
 	optdepends = stow: symlink method
 	optdepends = gettext: template method
 	optdepends = age: decrypt method
-	source = https://git.sr.ht/~jmcantrell/pathbomb/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = c2c8fcf84cbb5f9815d127c4efd9344088bf3d733fcf1db89ec72c7473b1b6e6
+	source = https://git.sr.ht/~jmcantrell/pathbomb/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = be4af35410560c5c62c0d61df3a4531c13d040c1f7b77771a36f33466439f949
 
 pkgname = pathbomb
