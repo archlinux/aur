@@ -1,6 +1,6 @@
 pkgname="wf-shadow"
-pkgver="1.5.5"
-pkgrel="1"
+pkgver="2.0.0"
+pkgrel="2"
 pkgdesc="Script to make instant-replay easy on wl-roots based compositors"
 arch=("x86_64" "arm")
 depends=("wofi" "wf-recorder" "bash")
