@@ -1,13 +1,13 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=sf
-_cranver=1.0-12
+_cranver=1.0-13
 pkgname=r-${_cranname,,}
 pkgdesc="Simple Features for R"
 url="https://cran.r-project.org/package=sf"
 license=("GPL-2 | MIT")
 pkgver=${_cranver//[:-]/.}
-pkgrel=4
+pkgrel=1
 
 arch=("i686" "x86_64")
 depends=(
@@ -52,7 +52,6 @@ optdepends=(
     "r-spatstat.utils"
     "r-stars>=0.2.0"
     "r-terra"
-    "r-testthat>=3.0.0"
     "r-tibble>=1.4.1"
     "r-tidyr>=1.2.0"
     "r-tidyselect>=1.0.0"
@@ -75,23 +74,23 @@ optdepends=(
 # the build chroot), uncomment the lines defining `checkdepends`, below,
 # as well as the `check()` function further down
 
-# checkdepends=(
-#     "${optdepends[@]}"
-#     "r-testthat>=3.0.0"
-# )
+checkdepends=(
+    "${optdepends[@]}"
+    "r-testthat>=3.0.0"
+)
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("c7c4b9c95e9b2f3a60a9ba561a0db8b4361ad9be83506b64a8bb5456d71ef436295c3a7af5629b4e65d33243f9829580389f2fa23455bf9e00a76d7ea15a117f")
+b2sums=('37fc7bb56d77b6e5fb583086d03f2358978ad55bb86a0c9236f156078a63377478ebfd64c84797eb982d415dc422d0ee445eb2e5a98be25502ad81b37085429f')
 
 build() {
     mkdir -p "${srcdir}/build/"
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build/"
 }
 
-# check() {
-#     export R_LIBS="build/"
-#     R CMD check --no-manual "${_cranname}"
-# }
+check() {
+    export R_LIBS="build/"
+    R CMD check --no-manual "${_cranname}"
+}
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
