@@ -97,7 +97,7 @@ build() {
 
   if [ ${_is_clang_enabled} -eq 1 ]; then
     for component in "clang iasl nasm"; do
-      make ${component} CPUS=$(nproc) DEST="${srcdir}/${target}"
+      make ${component} CPUS=$(nproc) DEST="${srcdir}/clang"
     done
   fi
 }
