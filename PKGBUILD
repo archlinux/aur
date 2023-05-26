@@ -13,10 +13,10 @@ source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz"
 )
 sha512sums=(
-  'c9c8aece0b45229244a15c2eaa7b7be290cba5d24d789bcf98d680a06b14be6d8218c93eddeadbc79b3d75e145545db0de13238457b48ea3f338fedd7fd6a03a'
+  'bfad8891f555da4d521fa142409593acf69be4b37b8832c0dbb0f4808d152881e599cd3c2b9831c9040f7bb43a25370901f6157273921fa0738212660d721190'
 )
 md5sums=(
-  'ca167114e10405d4ead6075b6b560a90'
+  '5445de2605d275ab55d55067c039baf5'
 )
 validpgpkeys=(
   '81BACEEBC3EA26E127166E4A819BB92A9A48160E'
@@ -24,22 +24,12 @@ validpgpkeys=(
 
 package() {
 
-  echo "${srcdir}/${pkgname}-${pkgver}-${pkgrel}-${arch}/usr/lib/node_modules/${pkgname}"
-  [ -d "${srcdir}/${pkgname}-${pkgver}-${pkgrel}-${arch}/usr/lib/node_modules/${pkgname}" ] &&
-    cd "${srcdir}/${pkgname}-${pkgver}-${pkgrel}-${arch}/usr/lib/node_modules/${pkgname}" ||
-    cd "${srcdir}/${pkgname}/usr/lib/node_modules/${pkgname}"
+  echo "${srcdir}/${pkgname}-${pkgver}-${pkgrel}-${arch}"
+  [ -d "${srcdir}/${pkgname}-${pkgver}-${pkgrel}-${arch}" ] &&
+    cd "${srcdir}/${pkgname}-${pkgver}-${pkgrel}-${arch}" ||
+    cd "${srcdir}/${pkgname}"
 
-  which yarn >/dev/null 2>&1 && yarn install || npm install
+  make install PKGDIR="${pkgdir}" || return 1
 
-  cd ../../../../
-
-  install -dm0755 "${pkgdir}"/usr/lib/node_modules/${pkgname}
-  install -Dm0644 usr/share/licenses/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm0644 usr/share/zsh/site-functions/_${pkgname} "$pkgdir/usr/share/zsh/site-functions/_${pkgname}"
-
-  [ -z `which ytcli` ] && install -Dm0755 usr/bin/* -t "${pkgdir}/usr/bin/" ||
-    install -Dm0755 usr/bin/${pkgname} "${pkgdir}/usr/bin/${pkgname}"
-
-  cp -ar usr/lib/node_modules/${pkgname}/* "${pkgdir}"/usr/lib/node_modules/${pkgname}
 
 }
