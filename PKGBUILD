@@ -11,7 +11,7 @@
 
 _android_arch=aarch64
 pkgname=android-aarch64-qt6-base
-_qtver=6.5.0
+_qtver=6.5.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -40,19 +40,19 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
         '0010-Fix-dependency-of-xcb-image-on-xcb-util.patch'
         '0011-Allow-using-properties-of-PkgConfig-targets-for-glib.patch'
         '0012-Allow-using-properties-of-PkgConfig-targets-for-Wayl.patch')
-sha256sums=('fde1aa7b4fbe64ec1b4fc576a57f4688ad1453d2fab59cbadd948a10a6eaf5ef'
-            '0cb9c1a10d04575b36b0abe4a422af1e7279b3e07249b2af5fa7631dcc93d262'
-            'a26661954e7c1b1c74bb1563d8d269f8b7dfda196640e30eded9c03be27656e1'
-            '61fd2877aff4ba0d471ec88cf85c08dac8e522d0a0312739c134fb1a483474f0'
-            '95d18cb173cc0c13323a8394f8c536c2f78157928d6ddc959f20031a913f3960'
-            '004a09d1e475f3288f599f83c6ec183e479ba58ed8e12286e0050935428ee470'
-            'e3ea83b5c934ff3f5f8d9c48ecc3831eb66379f134247d61664a10837107bd46'
-            'fb3b3e2c49d0e3466410dd03a936dc127b7669e5de7e11dbbe721baed8544043'
-            '32f80d7cedbb4b32e4689c28b4d0ddb64ea4e4d74612738a56c771d9179eecf7'
-            'a2d54f21fa6205fb4273dd8f7b51b679c9c20f91021af46ccfd251addce775b8'
-            '4c8f6c5aec035a6fbe59973e88adb0817b24464881f958d70eff030c42884072'
-            '3bdbbab00cbef3915031f7eb1d174e54107fee8b326f17c8291d5129ba0d606f'
-            '0908f24881d7ae5c09abe58a1d5a1ca81a6f8139fcf15924cae9fc9feb6eb4dc')
+sha256sums=('db56fa1f4303a1189fe33418d25d1924931c7aef237f89eea9de58e858eebfed'
+            '787b2aad23232c3dcec9ca737ca841f2bfc0375a84fdba6eeb605fc53e78b28c'
+            '3b37c244f12f1778d85af398bd27483bece3f5794e31aedabfb9622ed4ae02df'
+            '2b2e907d9b2e3ef1f1da241755db2f79433c71e919fe11f0c88261dc027e4fd5'
+            '841639befa60ada8e183190c1e30eea919a91e8548c123abe67b165f67db3b00'
+            '388df37ef99eba651c08910bbe8244ca9a44074051e3a0128dc90bede45fa449'
+            'dc272b9f35e93c97d5498ca9e7678193e3885a03b303b69985dea15c2e97c579'
+            '1ff55c21a407eb4193836caf51e45676155854ab43258dab819b675e6bbd357d'
+            'c817b9b638c808b2c49bb20462b26637a311d040b4dfeff03be907ed9a0999dc'
+            'cf691503f23eec594751f68da47bd96abf2b398144f79a625b0b338fef443406'
+            '9bfb7349bcf46792ec57a191355556d698655b9368de744c3f848da5d66cac23'
+            '2c7e228997ac3cf2d3ad6f9e373ab298643f3e2620e4e0038816567664f66e0d'
+            '65f5749461e0de6483fa684577947591a750336f6c2cd74fdd0c128e5ee25f25')
 
 prepare () {
   cd $_pkgfqn
