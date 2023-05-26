@@ -5,7 +5,7 @@
 
 pkgname=scim-chewing
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Traditional Chinese input method module for SCIM'
 url='https://chewing.im/'
 license=('GPL')
@@ -26,6 +26,7 @@ prepare() {
 build() {
   cd ${pkgname}-${pkgver}
   ./configure --prefix=/usr
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
