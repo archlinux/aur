@@ -1,6 +1,6 @@
 pkgbase = yuzu-mainline-git
 	pkgdesc = An experimental open-source emulator for the Nintendo Switch (newest features)
-	pkgver = r23770.f82efe9f6
+	pkgver = r23801.fbe86b889
 	pkgrel = 1
 	url = https://github.com/yuzu-emu/yuzu-mainline
 	arch = i686
@@ -17,6 +17,7 @@ pkgbase = yuzu-mainline-git
 	makedepends = nlohmann-json
 	makedepends = qt5-tools
 	makedepends = robin-map
+	makedepends = vulkan-headers
 	makedepends = rapidjson
 	depends = fmt
 	depends = cubeb
