@@ -1,10 +1,10 @@
 pkgbase = swaystatus
 	pkgdesc = Generate a status line for swaybar
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://git.sr.ht/~jmcantrell/swaystatus
 	arch = any
-	license = GPL3
+	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-pytest-cov
 	makedepends = git
@@ -15,7 +15,7 @@ pkgbase = swaystatus
 	depends = python
 	depends = python-toml
 	optdepends = python-systemd: systemd journal logging
-	source = https://files.pythonhosted.org/packages/source/s/swaystatus/swaystatus-0.3.3.tar.gz
-	md5sums = dccd9d98406b37fd4761ed922819ca27
+	source = https://files.pythonhosted.org/packages/source/s/swaystatus/swaystatus-0.3.4.tar.gz
+	md5sums = ca9fd52244c51b5822ffb4d3f8018e3c
 
 pkgname = swaystatus
