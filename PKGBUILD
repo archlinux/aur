@@ -9,8 +9,8 @@
 
 _pkgname=scidavis
 pkgname=scidavis-qt5
-pkgver=2.9.0
-_commit=9eece990c9beed36f36ceadd35fcad92d8f07ca7
+pkgver=2.9.2
+_commit=0d218b8dab3342d5e50d95b5a1099f3b3fa06578
 _commit_liborigin=a92f26f28e531f64684b66a2731dd617bea3cb45
 _commit_qwtplot3d=b2655743d30ed3185f3c0e2626b33a1d29655216
 pkgrel=1
@@ -34,7 +34,7 @@ source=(
    "liborigin-${_commit_liborigin}.zip::https://github.com/SciDAVis/liborigin/archive/${_commit_liborigin}.zip"
    "qwtplot3d-${_commit_qwtplot3d}.zip::https://github.com/SciDAVis/qwtplot3d/archive/${_commit_qwtplot3d}.zip"
 )
-sha512sums=('8dd969bd5cb0ae2507e2c511a4c2ff9ba7ab4dca30f45f4807e539bdfa7c7468682aff269817d7046cdc5317ab42cd43e5b66174796425685d3e99016dcbc434'
+sha512sums=('8dd32d43d692aab73ca90310a6064fb5a4d385dbcf41445b5e451c8fa153cf6493edae1a0b489310934ad882ab533b9a2edabbed8521042492708fb7f289f37e'
             'aa63824a62cb4abf15241d35091c697c143ea0185e7efedbf3931c4cb427c5646606e15a6dc1cdeb2e143d6d77476b9fdd877cff3cc797d7439a5cba953a450c'
             '5784fe55b11ee6437b765964b87522dd60a1e84e4424982ca3f3f3c6b09d986c5d5f8f0dfa593d70027f614865261eee27c7827c4d194cbe2f678d60ae4bf0b7')
 
