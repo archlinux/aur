@@ -1,12 +1,12 @@
 # Maintainer: Jeremy Cantrell <jmcantrell at gmail dot com>
 
 pkgname=swaystatus-git
-pkgver=0.2.4.r2.e48ac91
+pkgver=0.3.4.r1.5fe0338
 pkgrel=1
 pkgdesc="Generate a status line for swaybar"
 arch=('any')
 url="https://git.sr.ht/~jmcantrell/${pkgname%-git}"
-license=('GPL3')
+license=('MIT')
 depends=('python' 'python-toml')
 optdepends=('python-systemd: systemd journal logging')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-hatchling')
