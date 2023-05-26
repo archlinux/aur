@@ -1,5 +1,5 @@
 pkgname=harrison-xt-plugins-bin
-pkgver=8.2.154
+pkgver=9.0.1
 pkgrel=1
 pkgdesc="Harrison Consoles LV2 XT Plugin Suite"
 arch=('x86_64')
