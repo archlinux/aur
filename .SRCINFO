@@ -1,6 +1,6 @@
 pkgbase = airdcpp-webclient
 	pkgdesc = A peer-to-peer file sharing client with web user interface
-	pkgver = 2.11.4
+	pkgver = 2.12.1
 	pkgrel = 1
 	url = https://github.com/airdcpp-web/airdcpp-webclient
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = airdcpp-webclient
 	depends = websocketpp
 	depends = libnatpmp
 	depends = intel-tbb
-	source = https://github.com/airdcpp-web/airdcpp-webclient/archive/2.11.4.tar.gz
-	md5sums = 3bc21f30c66971c1d15ece24989498ba
+	source = https://github.com/airdcpp-web/airdcpp-webclient/archive/2.12.1.tar.gz
+	md5sums = bb60490919e1ed6c1b45d1b469ae731e
 
 pkgname = airdcpp-webclient
