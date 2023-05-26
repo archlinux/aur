@@ -2,16 +2,19 @@
 
 pkgname=garage
 pkgver=0.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Garage, an S3-compatible distributed object store for self-hosted deployments"
 url="https://garagehq.deuxfleurs.fr"
 license=('AGPL')
 arch=('x86_64' 'i686' 'arm' 'aarch64')
-depends=('gcc-libs' 'libsodium' 'zstd')
-makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::https://git.deuxfleurs.fr/Deuxfleurs/garage/archive/v$pkgver.tar.gz")
-sha256sums=('f39ea1a8bd64ff3b4cf6ab9ab09b2bc71aa0a374d0f11039d08f8e13672a256a')
-b2sums=('e82a3d32e6f2eb56319c866e82281b7538b384c5f2fa91109729f26e1bda344b0207262d4c36f61daf2c1ed6c3d0cb6f6788dc3110ec657526702f05adc3d259')
+depends=('gcc-libs' 'libsodium' 'zstd' 'lmdb')
+makedepends=('cargo' 'pkgconf')
+source=("$pkgname-$pkgver.tar.gz::https://git.deuxfleurs.fr/Deuxfleurs/garage/archive/v$pkgver.tar.gz"
+        liblmdb.pc)
+sha256sums=('f39ea1a8bd64ff3b4cf6ab9ab09b2bc71aa0a374d0f11039d08f8e13672a256a'
+            'e7f16dd36b51b3c6f16aece988428952c01aca1fefb3687942dfccc03ef62a10')
+b2sums=('e82a3d32e6f2eb56319c866e82281b7538b384c5f2fa91109729f26e1bda344b0207262d4c36f61daf2c1ed6c3d0cb6f6788dc3110ec657526702f05adc3d259'
+        '70d030159429fba38f766164a2a6317feb60a7ce0ea7995a54691c5acedd2492f44cd26509d7c268cc58211bcb13d0d6dd861f2722cb04c4a76374393e67f1f4')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 
@@ -32,7 +35,8 @@ build() {
   cd "$pkgname"
 
   CARGO_TARGET_DIR='target' \
-    cargo build --frozen --release --no-default-features --features 'system-libs,metrics,k2v'
+  PKG_CONFIG_PATH="$srcdir" \
+    cargo build --frozen --release --no-default-features --features 'system-libs,metrics,k2v,lmdb'
 }
 
 package() {
