@@ -1,0 +1,18 @@
+pkgbase = firefox-gnome-theme
+	pkgdesc = A GNOME theme for Firefox
+	pkgver = 113
+	pkgrel = 1
+	url = https://github.com/rafaelmardojai/firefox-gnome-theme
+	install = firefox-gnome-theme.install
+	arch = any
+	license = Unlicense
+	makedepends = git
+	optdepends = firefox: primary compatible browser
+	optdepends = librewolf: alternative compatible browser
+	conflicts = firefox-gnome-theme-git
+	source = firefox-gnome-theme.tar.gz::https://github.com/rafaelmardojai/firefox-gnome-theme/archive/refs/tags/v113.tar.gz
+	source = INSTALL.md
+	md5sums = 30641c43126404c387940a88dc766705
+	md5sums = 07005689cf01618e0f8788e7b40c884d
+
+pkgname = firefox-gnome-theme

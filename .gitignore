@@ -1,0 +1,6 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!firefox-gnome-theme.install
+!INSTALL.md
