@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scmap
-_pkgver=1.22.1
+_pkgver=1.22.3
 pkgname=r-${_pkgname,,}
-pkgver=1.22.1
+pkgver=1.22.3
 pkgrel=1
 pkgdesc='A tool for unsupervised projection of single cell RNA-seq data'
 arch=('x86_64')
@@ -32,7 +32,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('094c8b84e4b0b490a60c361e4d48d66c78be63263b3cd17952eb9894c2b88da0')
+sha256sums=('b5e13613996c43ac261b6023011b961f1cefce5752d09aa6b28ff1e5ffc9231a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
