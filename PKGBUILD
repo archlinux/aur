@@ -1,5 +1,5 @@
 pkgname=vgmstream-git
-pkgver=r1050.4959.g59ba5706
+pkgver=r1831.53.g59ba5706
 pkgrel=1
 pkgdesc='Library for playback of various streamed audio formats used in video games'
 arch=(x86_64)
@@ -22,11 +22,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  ( set -o pipefail
-    git describe --tags --exact-match 2>/dev/null | tr - . ||
-      git describe --long | tr - . ||
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --tags --long | tr - .
 }
 
 prepare() {
