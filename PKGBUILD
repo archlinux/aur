@@ -1,4 +1,4 @@
-# Maintainer: Arne Brücher <archlinux@arne-bruecher.de>
+# Maintainer: Arne Brücher <archlinux [at] arne-bruecher [dot] de>
 # Contributor: Matthew of Boswell <mattboswell at lockmail dot us>
 # Contributor: Sébastien Luttringer <seblu@aur.archlinux.org>
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
