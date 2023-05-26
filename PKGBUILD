@@ -35,9 +35,7 @@ build() {
 #   python -m build --wheel --no-isolation
 
     msg "Building Docs"
-    python setup.py build_sphinx
-#   cd ${srcdir}/${_pyname}-${pkgver}/doc
-#   PYTHONPATH="../build/lib" make SPHINXOPTS="" html
+    PYTHONPATH="../build/lib" make SPHINXOPTS="" -C doc html
 
 }
 
@@ -61,7 +59,7 @@ package_python-echo() {
 
 package_python-echo-doc() {
     pkgdesc="Documentation for Python echo module"
-    cd ${srcdir}/${_pyname}-${pkgver}/build/sphinx
+    cd ${srcdir}/${_pyname}-${pkgver}/doc/_build
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../LICENSE
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
