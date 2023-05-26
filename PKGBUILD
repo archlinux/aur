@@ -5,7 +5,7 @@
 
 pkgname=untrunc-git
 pkgver=r183.10fd251
-pkgrel=1
+pkgrel=2
 libav_version=12.3
 pkgdesc="restore a damaged (truncated) mp4, m4v, mov, 3gp video"
 arch=('x86_64' 'i686')
@@ -23,7 +23,7 @@ noextract=("libav-${libav_version}.tar.gz")
 
 prepare() {
   cd $srcdir/$pkgname
-  tar xf ../libav-${libav_version}.tar.xz
+  tar xf ../libav-${libav_version}.tar.gz
 }
 
 build() {
