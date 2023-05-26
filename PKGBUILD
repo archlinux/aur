@@ -3,21 +3,21 @@
 
 _base=textual
 pkgname=python-${_base}
-pkgver=0.24.1
+pkgver=0.26.0
 pkgrel=1
 pkgdesc="Modern Text User Interface framework"
 arch=(any)
 url="https://github.com/Textualize/${_base}"
 license=(MIT)
-depends=(python-rich python-importlib-metadata python-typing_extensions)
+depends=(python-rich python-importlib-metadata python-typing_extensions python-aiohttp python-click python-msgpack)
 makedepends=(python-build python-installer python-poetry-core)
-# checkdepends=(python-pytest python-exceptiongroup python-aiohttp python-msgpack python-jinja python-syrupy python-click python-time-machine)
+# checkdepends=(python-pytest python-exceptiongroup python-jinja python-syrupy python-time-machine)
 # python-pytest-aiohttp python-pytest-asyncio
 optdepends=('python-aiohttp: for HTTP server'
   'python-click: for click event as mouse button'
   'python-msgpack: for MessagePack serializer')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('2852b0af4baaf84d2f70f1010064f3d3fe09497f1f0c006ed2319c21b80b6826fc8147c248fcd0b560bc97a2da1d4207869a1ede8dbd23d728e8df2ced498f59')
+sha512sums=('fa7af248802cbab12620a805503e7bc203d58e1d86e34608e36ae38c186b1b4f004d305c0146e08f2e914dc6f87a762d09392fb85418fa43b165c6a8c56d699e')
 
 build() {
   cd ${_base}-${pkgver}
