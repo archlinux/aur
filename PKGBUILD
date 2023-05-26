@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=yt-cli
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="An easy to use CLI YouTube client"
 arch=('any')
@@ -13,10 +13,10 @@ source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz"
 )
 sha512sums=(
-  '6a916775535ea36e67fa169d4724b0eba0fc2b5057688d96543b806fcfc6544fa401ae54a4b6c412d080992d22bda85a5396a8517469f287b5b65dae9acdae8a'
+  'bc2637f2fcce89d4d8e73b7eb763610a9e2df01c01afd1e9e3fa4990623762236b411621049678e5454ac2cdcfc6929210c0ff3367cb12096c3fe3610e11a85f'
 )
 md5sums=(
-  '26b11441da51d99602ec08d31b9c5c97'
+  'fdd16605ae0ea569cd1185ecfc3e60ef'
 )
 validpgpkeys=(
   '81BACEEBC3EA26E127166E4A819BB92A9A48160E'
@@ -24,12 +24,22 @@ validpgpkeys=(
 
 package() {
 
-  echo "${srcdir}/${pkgname}-${pkgver}-${pkgrel}-${arch}"
-  [ -d "${srcdir}/${pkgname}-${pkgver}-${pkgrel}-${arch}" ] &&
-    cd "${srcdir}/${pkgname}-${pkgver}-${pkgrel}-${arch}" ||
-    cd "${srcdir}/${pkgname}"
+  echo "${srcdir}/${pkgname}-${pkgver}-${pkgrel}-${arch}/usr/lib/node_modules/${pkgname}"
+  [ -d "${srcdir}/${pkgname}-${pkgver}-${pkgrel}-${arch}/usr/lib/node_modules/${pkgname}" ] &&
+    cd "${srcdir}/${pkgname}-${pkgver}-${pkgrel}-${arch}/usr/lib/node_modules/${pkgname}" ||
+    cd "${srcdir}/${pkgname}/usr/lib/node_modules/${pkgname}"
 
-  make install PKGDIR="${pkgdir}" || return 1
+  which yarn >/dev/null 2>&1 && yarn install || npm install
 
+  cd ../../../../
+
+  install -dm0755 "${pkgdir}"/usr/lib/node_modules/${pkgname}
+  install -Dm0644 usr/share/licenses/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm0644 usr/share/zsh/site-functions/_${pkgname} "$pkgdir/usr/share/zsh/site-functions/_${pkgname}"
+
+  !which ytcli >/dev/null 2>&1 && install -Dm0755 usr/bin/* -t "${pkgdir}/usr/bin/" ||
+    install -Dm0755 usr/bin/${pkgname} "${pkgdir}/usr/bin/${pkgname}"
+
+  cp -ar usr/lib/node_modules/${pkgname}/* "${pkgdir}"/usr/lib/node_modules/${pkgname}
 
 }
