@@ -1,4 +1,4 @@
-# Maintainer: Arne Brücher <archlinux@arne-bruecher.de>
+# Maintainer: Arne Brücher <archlinux [at] arne-bruecher[dot] de>
 # Contributor: Jonathon Fernyhough <jonathon+m2x+dev>
 # Contributor: Aitor Alonso <mail@aalonso.pw>
 # Contributor: Andrew Chen <andrew.chuanye.chen@gmail.com>
