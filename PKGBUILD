@@ -1,6 +1,6 @@
 # Maintainer: Arne Brücher <archlinux [at] arne-bruecher [dot] de>
 
-pkgname=project-black-pearl
+pkgname=project-black-pearl-bin
 pkgver=0.3.0
 pkgrel=1
 pkgdesc='Free and open-source tool for managing game sources using community-made modules.'
