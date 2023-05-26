@@ -9,7 +9,6 @@ arch=('any')
 url="https://github.com/rafaelmardojai/$pkgname"
 license=('Unlicense')
 optdepends=('firefox: primary compatible browser' 'librewolf: alternative compatible browser')
-makedepends=('git')
 conflicts=("$pkgname-git")
 install="$pkgname.install"
 source=("$pkgname.tar.gz::https://github.com/rafaelmardojai/$pkgname/archive/refs/tags/v${pkgver}.tar.gz" "INSTALL.md")
