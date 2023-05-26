@@ -17,7 +17,7 @@ makedepends=('stack>=2.0.0'
 depends=('libsecp256k1'
 	'python-pip')
 source=("echidna-$pkgver.tar.gz::https://github.com/crytic/echidna/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('49236096e7b99c569cdb9d8a0976a32dbdfa910028af29391d7f5666da67977b')
+sha256sums=('919a46d5820acdc26c119d2dc36b2abadb2383217a801ba07b1335aac1d07ee1')
 
 build() {
 	cd "./$pkgname-$pkgver"
