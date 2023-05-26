@@ -10,6 +10,10 @@ pkgbase = wf-shadow-git
 	depends = bash
 	source = https://codeberg.org/cobra/wf-shadow/raw/branch/main/wf-shadow
 	source = https://codeberg.org/cobra/wf-shadow/raw/branch/main/doc/wf-shadow.1
+	source = https://codeberg.org/cobra/wf-shadow/raw/branch/main/wf-shadow-tui
+	source = https://codeberg.org/cobra/wf-shadow/raw/branch/main/doc/wf-shadow-tui.1
+	sha512sums = SKIP
+	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 
