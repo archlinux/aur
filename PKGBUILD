@@ -18,17 +18,17 @@ source=('git+https://gitlab.gnome.org/philippun1/turtlegit.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/turtlegit"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/turtlegit"
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/turtlegit"
   PYTHONPATH=./ pytest
 
   appstream-util validate-relax --nonet "data/${_app_id}.metainfo.xml"
@@ -36,7 +36,7 @@ check() {
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/turtlegit"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 "data/icons/hicolor/scalable/apps/${_app_id}.svg" -t \
