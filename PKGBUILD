@@ -1,9 +1,9 @@
-# Maintainer: Arne Brücher <archlinux@arne-bruecher.de>
+# Maintainer: Arne Brücher <archlinux [at] arne-bruecher [dot] de>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Plague-doctor <plague at privacyrequired dot com>
 
 pkgname=standardnotes-bin
-pkgver=3.160.11
+pkgver=3.160.16
 pkgrel=1
 pkgdesc='Free, open-source encrypted notes app'
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ source_x86_64=("$pkgname-$pkgver-x86_64.AppImage::$url/releases/download/%40stan
 source_aarch64=("$pkgname-$pkgver-aarch64.AppImage::$url/releases/download/%40standardnotes%2Fdesktop%40$pkgver/standard-notes-$pkgver-linux-arm64.AppImage")
 
 sha256sums=('71f0811526d428b541ef39ee804b257ed60b1b9b5d620436c79ed77e17eb4d16')
-sha256sums_x86_64=('5bf08fa6fe996e4698328cb70a312f24506341b38698eed9e589aa5931c731f5')
-sha256sums_aarch64=('8eb3fab03799a602ab0061ed323004ce4b65f63136f8e2f675d5b6e1ca061d6a')
+sha256sums_x86_64=('c4644c31ab13e06dcc5e863eb90f1469a55324b3c18bb481c6ceb5f12693e5db')
+sha256sums_aarch64=('158ec842bc04e1aceeb1e6fe15af47477eb96c21e07500f22ea4034322d81769')
 
 prepare() {
 	chmod +x "$pkgname-$pkgver-$CARCH.AppImage"
