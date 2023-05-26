@@ -3,7 +3,7 @@
 pkgname=python-libthumbor
 _name=${pkgname#python-}
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python's extensions to thumbor"
 arch=(any)
 url="https://github.com/thumbor/libthumbor"
@@ -15,7 +15,7 @@ b2sums=('7682aeff1b7ea0cb026d08c16e73ffed2f3b9d59aa2329ca7d3fcb910860c9f495de53c
 
 build() {
     cd "$_name-$pkgver"
-    python -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
