@@ -1,5 +1,5 @@
 /pkg
 /src
-/ydb
+/ydb*
 /*.zst
 
