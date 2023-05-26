@@ -2,14 +2,14 @@
 _base=py-pde
 pkgname=python-${_base}
 pkgdesc="Python package for solving partial differential equations"
-pkgver=0.29.0
+pkgver=0.30.1
 pkgrel=1
 arch=(any)
 url="https://github.com/zwicker-group/${_base}"
 license=(MIT)
 depends=(python-matplotlib python-numba python-scipy python-sympy python-tqdm)
 makedepends=(python-build python-installer python-setuptools-scm python-wheel)
-# checkdepends=(python-pytest python-h5py python-pandas napari)
+checkdepends=(python-pytest-cov python-h5py python-pandas) # jupyter-notebook napari
 optdepends=('python-h5py: for storing data in the hierarchical file format'
   'python-pandas: for handling tabular data'
   'napari: for displaying images interactively'
@@ -17,7 +17,7 @@ optdepends=('python-h5py: for storing data in the hierarchical file format'
   'python-numba-mpi: for njittable MPI wrapper'
   'python-mpi4py: for parallel processing using MPI')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('ecd0b257135455c8bf8ed4eb63898812ff9de2d288dfc417b32bf2dbed7a27c54ad1e4c0f6d5d038c2840137c1f3f8407f7bc0f7c4b0d6ffacc3dd491a6d4ef5')
+sha512sums=('d44b442bb24640d28db7e75a5bd2b30f003238c100eac588d02c3dca282cc47c195df0f4a5b091c35f74052bfe52bf57301eacfd4843913d0fb04da7ff41f9a2')
 
 build() {
   cd ${_base}-${pkgver}
@@ -25,12 +25,12 @@ build() {
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
-# check() {
-# cd ${_base}-${pkgver}/scripts
-# python -m venv --system-site-packages test-env
-# test-env/bin/python -m installer dist/*.whl
-# MPLBACKEND=Agg NUMBA_WARNINGS=1 test-env/bin/python run_tests.py --unit # --use_mpi
-# }
+check() {
+  cd ${_base}-${pkgver}/scripts
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer ../dist/*.whl
+  MPLBACKEND=Agg NUMBA_WARNINGS=1 test-env/bin/python run_tests.py --unit # --use_mpi
+}
 
 package() {
   cd ${_base}-${pkgver}
