@@ -1,7 +1,8 @@
 # Contributor: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Asuka Minato
 
 pkgname=typstudio-bin
-pkgver=0.1.0dev.19
+pkgver=0.1.0dev.20
 _pkgver=${pkgver/dev/-dev}
 pkgrel=1
 pkgdesc='desktop application for typst'
@@ -20,8 +21,8 @@ depends=(
 	libsoup
 	webkit2gtk)
 makedepends=()
-source=("https://github.com/Cubxity/typstudio/releases/download/v${_pkgver}/typstudio_0.1.0_amd64.deb")
-sha256sums=('efb3ade4a07f7fd2b3b3c29b884ef7e54b652c5cb33b24e3cd73c0b819b33e03')
+source=("$pkgname-$pkgver.deb::https://github.com/Cubxity/typstudio/releases/download/v${_pkgver}/typstudio_0.1.0_amd64.deb")
+sha256sums=('b9fad3eab676029c721a25b50abdcc7612896f39692318b5d3e4660c4b79fd12')
 
 package() {
 	tar -xvpf data.tar.* -C $pkgdir
