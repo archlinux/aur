@@ -12,8 +12,7 @@ optdepends=('firefox: primary compatible browser' 'librewolf: alternative compat
 conflicts=("$pkgname-git")
 install="$pkgname.install"
 source=("$pkgname.tar.gz::https://github.com/rafaelmardojai/$pkgname/archive/refs/tags/v${pkgver}.tar.gz" "INSTALL.md")
-md5sums=('30641c43126404c387940a88dc766705'
-         '07005689cf01618e0f8788e7b40c884d')
+md5sums=('30641c43126404c387940a88dc766705' '07005689cf01618e0f8788e7b40c884d')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
