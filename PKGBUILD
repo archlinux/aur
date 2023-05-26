@@ -2,8 +2,8 @@
 # Contributor: Johannes Sjölund <j.sjolund+aur@gmail.com>
 
 pkgname=glslang-git
-pkgver=11.8.0.r20.g538231d8
-pkgrel=2
+pkgver=12.2.0.r7.g48a467b4
+pkgrel=1
 pkgdesc='OpenGL and OpenGL ES shader front end and validator, git version'
 arch=('x86_64' 'i686')
 url='https://github.com/KhronosGroup/glslang'
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  git describe --long --tags --exclude master-tot --exclude sdk\* --exclude SDK-candidate\* --exclude untagged\* | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --exclude main-tot --exclude sdk\* --exclude SDK-candidate\* --exclude untagged\* | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
