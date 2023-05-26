@@ -2,7 +2,7 @@
 # Contributor: Pawel Mosakowski <pawel at mosakowski dot net>
 
 pkgname=appgate-sdp
-pkgver=6.1.3
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="Appgate SDP (Software Defined Perimeter) desktop client"
 arch=("x86_64")
@@ -17,12 +17,10 @@ provides=("${pkgname}")
 options=(staticlibs !strip !emptydirs)
 source=(
   "https://bin.${pkgname}.com/${pkgver%.*}/client/${pkgname}_${pkgver}_amd64.deb"
-  "${pkgname%%-*}driver.service.patch"
   "10-appgate-tun.network"
 )
 sha256sums=(
-  "ba4efe5c12ad4c69d7fdb1c142db66c65bbdfa02af16abb7561cc2eee21808d4"
-  "0789aa07d6a7af44187e407696d930e78c50370c19b8399722ebecb0655ffcdb"
+  "aace21ae14063cc61f873f79cbc94d10270319bb2fca954de433d22ac1e1885b"
   "2eb0daa10429e67d703cceccd34069da3044d99c5652658ec73c7a01c88b64e9"
 )
 
@@ -31,8 +29,6 @@ prepare() {
   cd "${srcdir}/${pkgname}"
 
   bsdtar -xf "${srcdir}/data.tar.xz" -C .
-
-  patch -Np1 -i "${srcdir}/${pkgname%%-*}driver.service.patch"
 
   # Remove unnecessary .deb related directory
   rm -rf "${srcdir}/${pkgname}/etc/init.d"
