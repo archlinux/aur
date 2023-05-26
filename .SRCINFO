@@ -1,7 +1,7 @@
 pkgbase = tal-filter2
 	pkgdesc = A Filter By TAL Software V2
 	pkgver = 3.1.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://tal-software.com/products/tal-filter
 	arch = x86_64
 	groups = pro-audio
@@ -9,6 +9,6 @@ pkgbase = tal-filter2
 	groups = vst3-plugins
 	license = EULA
 	source = https://tal-software.com/downloads/plugins/TAL-Filter-2_64_linux.zip
-	md5sums = b1285c7075d468a04f8f8803cceaaa22
+	sha256sums = b987c6fd5cc34ae441db93c753701dce049f2d12ab14e3890a4a3b52201b563f
 
 pkgname = tal-filter2-bin
