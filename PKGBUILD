@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chat-gpt-appimage
-pkgver=0.12.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="ChatGPT Desktop Application (Mac, Windows and Linux)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflits=("${pkgname%-appimage}" "chatgpt-desktop-bin")
 depends=('zlib' 'glibc' 'hicolor-icon-theme')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.tar.gz::${_githuburl}/releases/download/v${pkgver}/ChatGPT_${pkgver}_linux_x86_64.AppImage.tar.gz")
-sha256sums=('5bbc128ee8ff7c6be11248a035a9dcba70b05c0491d34c591d49994f828e9f7c')
+sha256sums=('aac475e3d44e7104d66a9c26ff1333df14f8188d9e4d6a29b6052622930021d8')
 prepare() {
     chmod a+x "${pkgname%-appimage}_${pkgver}_amd64.AppImage"
     "./${pkgname%-appimage}_${pkgver}_amd64.AppImage" --appimage-extract > /dev/null
