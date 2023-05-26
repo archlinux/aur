@@ -1,6 +1,6 @@
 pkgbase = python-translate-shell
 	pkgdesc = Translate text by google, bing, youdaozhiyun, haici, stardict, etc at same time from CLI, GUI (GNU/Linux, Android, macOS and Windows), REPL, python, shell and vim.
-	pkgver = 0.0.18
+	pkgver = 0.0.17
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/translate-shell
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-translate-shell
 	optdepends = espeak-ng: speaker support
 	optdepends = festival: speaker support
 	conflicts = translate-shell
-	source = https://files.pythonhosted.org/packages/py3/t/translate-shell/translate_shell-0.0.18-py3-none-any.whl
-	sha256sums = 5821b9842a7d35a6732da3420278bcab47e32de24032f2f8c8757e3ea80184f5
+	source = https://files.pythonhosted.org/packages/py3/t/translate-shell/translate_shell-0.0.17-py3-none-any.whl
+	sha256sums = 0e3f7ffa0939f876c8d11a82075197cb416b7f9a4965bf8d9fe803a5c4444593
 
 pkgname = python-translate-shell
