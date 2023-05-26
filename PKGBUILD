@@ -5,7 +5,7 @@
 # Contributor: Maximilian Kindshofer <maximilian@kindshofer.net>
 
 pkgname=(kitty-bitmap)
-pkgver=0.19.3
+pkgver=0.28.1
 pkgrel=1
 pkgdesc="A modern, hackable, featureful, OpenGL-based terminal emulator. Patched to support bitmap fonts."
 arch=('x86_64')
@@ -17,7 +17,8 @@ optdepends=('imagemagick: viewing images with icat')
 provides=('kitty')
 conflicts=('kitty')
 source=("${pkgname/-bitmap}-${pkgver}.tar.gz::https://github.com/kovidgoyal/${pkgname/-bitmap/}/archive/v$pkgver.tar.gz" "Allow-bitmap-fonts.patch")
-sha512sums=('225b7a4409c5199d556bd57f4253074608a6d3602d874082c991d13e5db73b7dd68e549d954e5a77fb271f4d2c5fa9a3de45a48247e2f3f162af0b9946628990' 'SKIP')
+sha512sums=('75462ac6e6b3c23de9966f73a40faad31a7583e30881a07e1906ca591f0865e0d762c5f59422ae8f66255d904ea80c54c709e52770587a3b5394b779fc39d861'
+            'SKIP')
 
 prepare() {
   cd "$srcdir/${pkgname/-bitmap}-$pkgver"

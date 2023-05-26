@@ -28,6 +28,7 @@ index 7156d9ee..6444d6bc 100644
  
  static PyObject*
  fc_list(PyObject UNUSED *self, PyObject *args) {
+     ensure_initialized();
 -    int allow_bitmapped_fonts = 0, spacing = -1;
 +    int allow_bitmapped_fonts = 1, spacing = -1;
      PyObject *ans = NULL;
