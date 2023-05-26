@@ -5,7 +5,7 @@ pkgname="mongodb44-bin"
 pkgver="4.4.21"
 _basever="4.4"
 _basedist="focal"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64" "aarch64")
 url="https://www.mongodb.com/"
@@ -42,7 +42,7 @@ sha256sums_x86_64=('740c85bd863638b6c408d0b97b92f1f09f0529d7ea337fd6e91c3aac523c
                    'eb12c8d366e807b56c0c6434a97e67bce5ea0fb066a16783aadfecf18bb9d1a9'
                    'a5e4d88cfee23b4cc2697f494d979eaca6255294ed194a239a7cd80dc7377727')
 sha256sums_aarch64=('b9376de74a7b4b1181ddbcb5727d24b6d91f3ad054479dd99618a9eae5991161'
-                    '9e1c0c6edd9f48afb35597f051803c1f4e749680cd7b87fb1f9c40c25453614a'
+                    '363989d9cfb738134d27f7f626b54813665eca1183baab4fd902c1510917999d'
                     '9e1c0c6edd9f48afb35597f051803c1f4e749680cd7b87fb1f9c40c25453614a')
 
 prepare() {

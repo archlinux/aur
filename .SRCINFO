@@ -1,7 +1,7 @@
 pkgbase = mongodb44-bin
 	pkgdesc = A high-performance, open source, schema-free document-oriented database
 	pkgver = 4.4.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mongodb.com/
 	arch = x86_64
 	arch = aarch64
@@ -32,7 +32,7 @@ pkgbase = mongodb44-bin
 	source_aarch64 = mongodb-org-server_4.4.21_aarch64.deb::https://repo.mongodb.org/apt/ubuntu/dists/focal/mongodb-org/4.4/multiverse/binary-arm64/mongodb-org-server_4.4.21_arm64.deb
 	source_aarch64 = mongodb-org-mongos_4.4.21_aarch64.deb::https://repo.mongodb.org/apt/ubuntu/dists/focal/mongodb-org/4.4/multiverse/binary-arm64/mongodb-org-mongos_4.4.21_arm64.deb
 	sha256sums_aarch64 = b9376de74a7b4b1181ddbcb5727d24b6d91f3ad054479dd99618a9eae5991161
-	sha256sums_aarch64 = 9e1c0c6edd9f48afb35597f051803c1f4e749680cd7b87fb1f9c40c25453614a
+	sha256sums_aarch64 = 363989d9cfb738134d27f7f626b54813665eca1183baab4fd902c1510917999d
 	sha256sums_aarch64 = 9e1c0c6edd9f48afb35597f051803c1f4e749680cd7b87fb1f9c40c25453614a
 
 pkgname = mongodb44-bin
