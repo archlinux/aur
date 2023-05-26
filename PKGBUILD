@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=ooniprobe-desktop
-pkgver=3.8.3
-_cliver=3.16.6
+pkgver=3.9.0
+_cliver=3.17.2
 pkgrel=1
 pkgdesc="The next generation OONI Probe desktop app"
 arch=('x86_64')
@@ -14,9 +14,9 @@ replaces=("${pkgname%-desktop}")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ooni/probe-desktop/archive/v$pkgver.tar.gz"
         "${pkgname%-desktop}-${_cliver}-linux-amd64::https://github.com/ooni/probe-cli/releases/download/v$_cliver/${pkgname%-desktop}-linux-amd64"
         "$pkgname.desktop")
-sha256sums=('3867d767447947628322f7858aa54c79d5c3eb996f3ef413bdc63434c27c854c'
-            'c8298d196a786c8df2e7008cb9d6370bce2e6c46972fd9d0506f2fb6c305973e'
-            '77f39a9c8d017b391f61686ac38131a9e31435635de4b72d0f20930165404915')
+sha256sums=('32e9344280a4d67e3322c4c41d739fb75f4db6b1081039c52a26f4bae78c869a'
+            '35c3a9928ba49503f3df7e94bbf69ae57685663687bc9641587e00c85a503513'
+            '96a4ceb5ec8184908d9c2c29104fe3c35444f16b2fabe82d61d344453acee588')
 
 prepare() {
   cd "${pkgname#ooni}-$pkgver"
@@ -51,16 +51,16 @@ package() {
   install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications"
 
   for icon_size in 16 48; do
-    icons_dir=/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
-    install -d $pkgdir/${icons_dir}
-    install -m644 dist/.icon-set/icon_${icon_size}x${icon_size}.png \
-      ${pkgdir}${icons_dir}/$pkgname.png
+    icons_dir="/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps"
+    install -d "$pkgdir/${icons_dir}"
+    install -m644 "dist/.icon-set/icon_${icon_size}x${icon_size}.png" \
+      "${pkgdir}${icons_dir}/$pkgname.png"
   done
 
   for icon_size in 32 64 128 256 512 1024; do
-    icons_dir=/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
-    install -d $pkgdir/$icons_dir
-    install -m644 dist/.icon-set/app_${icon_size}.png \
-      ${pkgdir}${icons_dir}/$pkgname.png
+    icons_dir="/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps"
+    install -d "$pkgdir/$icons_dir"
+    install -m644 "dist/.icon-set/app_${icon_size}.png" \
+      "${pkgdir}${icons_dir}/$pkgname.png"
   done
 }
