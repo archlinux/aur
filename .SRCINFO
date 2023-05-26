@@ -1,6 +1,6 @@
 pkgbase = bfdev-devel-git
 	pkgdesc = An open source development library
-	pkgver = r229.048f0c7
+	pkgver = r588.9fcfee7
 	pkgrel = 1
 	url = https://github.com/openbfdev/bfdev.git
 	arch = any
