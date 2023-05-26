@@ -1,12 +1,12 @@
 # Maintainer: Jeremy Cantrell <jmcantrell at gmail dot com>
 
 pkgname=btrfs-snapshots-git
-pkgver=0.8.1.r0.92d862f
+pkgver=0.8.2.r0.4142166
 pkgrel=1
 pkgdesc="Manage timestamped collections of btrfs snapshots"
 arch=('any')
 url="https://git.sr.ht/~jmcantrell/${pkgname%-git}"
-license=('GPL3')
+license=('MIT')
 depends=('btrfs-progs')
 makedepends=('git' 'scdoc')
 checkdepends=('parallel' 'diffutils')
@@ -42,5 +42,5 @@ build() {
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    DESTDIR=$pkgdir PREFIX=/usr ./scripts/install
+    DEST_DIR=$pkgdir PREFIX=/usr ./scripts/install
 }

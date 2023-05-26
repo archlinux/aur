@@ -1,10 +1,10 @@
 pkgbase = btrfs-snapshots-git
 	pkgdesc = Manage timestamped collections of btrfs snapshots
-	pkgver = 0.8.1.r0.92d862f
+	pkgver = 0.8.2.r0.4142166
 	pkgrel = 1
 	url = https://git.sr.ht/~jmcantrell/btrfs-snapshots
 	arch = any
-	license = GPL3
+	license = MIT
 	checkdepends = parallel
 	checkdepends = diffutils
 	makedepends = git
