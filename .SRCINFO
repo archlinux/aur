@@ -1,0 +1,21 @@
+pkgbase = project-black-pearl-git
+	pkgdesc = Free and open-source tool for managing game sources using community-made modules.
+	pkgver = r348.cc2818f
+	pkgrel = 1
+	url = https://github.com/ProjectBlackPearl/project_black_pearl
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = yarn
+	makedepends = cargo-tauri
+	makedepends = rust
+	makedepends = webkit2gtk
+	depends = libayatana-appindicator
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	provides = project-black-pearl
+	conflicts = project-black-pearl
+	source = git+https://github.com/ProjectBlackPearl/project_black_pearl
+	sha256sums = SKIP
+
+pkgname = project-black-pearl-git
