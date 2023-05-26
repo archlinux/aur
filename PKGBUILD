@@ -4,13 +4,13 @@
 
 pkgname=caribou
 pkgver=0.4.21+75+g8ad9883
-pkgrel=4
+pkgrel=5
 pkgdesc="A text entry and UI navigation application (on-screen keyboard)"
 url="https://wiki.gnome.org/Projects/Caribou"
 arch=(x86_64)
 license=(LGPL)
 depends=(at-spi2-atk python-atspi python-gobject gtk3 libxklavier libgee clutter dconf)
-makedepends=(intltool docbook-xsl gtk2 gobject-introspection vala git gnome-common)
+makedepends=(intltool docbook-xsl gobject-introspection vala git gnome-common)
 options=(!emptydirs)
 _commit=8ad9883ace9b38905af9ff1dd1a8c19cdc560141  # master
 source=("git+https://gitlab.gnome.org/GNOME/caribou.git#commit=$_commit"
@@ -45,6 +45,7 @@ build() {
     --sysconfdir=/etc \
     --localstatedir=/var \
     --libexecdir=/usr/lib \
+    --disable-gtk2-module \
     --disable-static \
     --disable-schemas-compile
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
