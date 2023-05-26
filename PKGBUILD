@@ -4,7 +4,7 @@
 _pkgname='arangodb'
 pkgname="${_pkgname}-bin"
 pkgdesc="Arangodb binary from deb."
-pkgver=3.10.0
+pkgver=3.10.6
 pkgrel=1
 arch=('x86_64')
 url="https://www.arangodb.com/"
@@ -14,12 +14,11 @@ conflicts=(
     "${_pkgname}"
     "${_pkgname}-client-bin"
 )
-source=(
-    https://download.arangodb.com/arangodb$(echo "${pkgver}" | cut -d '.' -f1-2 | tr -d '.')/Community/Linux/arangodb3_${pkgver}-1_amd64.deb
-)
+source=("https://download.arangodb.com/arangodb$(echo "${pkgver}" | cut -d '.' -f1-2 | tr -d '.')/Community/Linux/arangodb3_${pkgver}-1_amd64.deb")
 validpgpkeys=("CD8CB0F1E0AD5B52E93F41E7EA93F5E56E751E9B") # Frank Celler (ArangoDB Debian Repository) <info@arangodb.com>
-sha256sums=('0a785bb625cd883d00819260a0ac1102222d7e83acb7c33720ce0e7ef0d64994')
+sha256sums=('ceb5d51f4cafbe1d2817b6204941890fd25300c0d3dc3f9c1c2bb9b533f82234')
 install=arangodb.install
+
 package() {
     msg2 "Extracting the data.tar.gz..."
     tar -xf "data.tar.gz" -C $pkgdir
