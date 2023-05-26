@@ -6,7 +6,7 @@ _githuborg=${FORK:-$_projectname}
 pkgdesc="Skywire Mainnet Node implementation. Skycoin.com"
 _pkggopath=github.com/${_githuborg}/${_pkgname}
 pkgver='1.3.8'
-pkgrel='4'
+pkgrel='5'
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -21,7 +21,6 @@ _script=("skywire-autoconfig")
 _desktop=("skywire.desktop" "skywirevpn.desktop")
 _icon=("skywirevpn.png" "skywire.png")
 _service=("skywire.service" "skywire-autoconfig.service")
-_logrotate=("skywire.logrotate")
 _key=("skycoin")
 _source=("skywire-bin::git+https://aur.archlinux.org/skywire-bin")
 source=("skywire-${_tag_ver}.tar.gz::${url}/archive/refs/tags/${_tag_ver}.tar.gz"
@@ -69,19 +68,11 @@ BUILDINFO="${BUILDINFO_VERSION} ${BUILDINFO_DATE} ${BUILDINFO_COMMIT}"
 cd "${srcdir}"/go/src/${_pkggopath} || exit
 _cmddir="${srcdir}"/go/src/${_pkggopath}/cmd
 #static compilation with 'musl' avoids glibc runtime deps which cause binary to fail if correct glibc / libc6 is not found on the system
-cd "${_cmddir}"/apps || exit
-_app="$(ls)"
-for _i in ${_app}; do
-_msg2 "building ${_i} binary"
-cd "${_cmddir}/apps/${_i}" || exit
-go build -trimpath --ldflags="" --ldflags "${BUILDINFO} -s -w -linkmode external -extldflags '-static' -buildid=" -o $_GOAPPS .
-done
-_msg2 "building skywire-visor binary"
+_msg2 "building app binaries"
+go build -trimpath --ldflags="" --ldflags "${BUILDINFO} -s -w -linkmode external -extldflags '-static' -buildid=" -o $_GOAPPS "${_cmddir}"/apps/...
+_msg2 "building skywire binaries"
 cd "${_cmddir}"/skywire-visor || exit
-go build -trimpath --ldflags="" --ldflags "${BUILDINFO} -s -w -linkmode external -extldflags '-static' -buildid=" -o $GOBIN .
-_msg2 "building skywire-cli binary"
-cd "${_cmddir}"/skywire-cli || exit
-go build -trimpath --ldflags="" --ldflags "${BUILDINFO} -s -w -linkmode external -extldflags '-static' -buildid=" -o $GOBIN .
+go build -trimpath --ldflags="" --ldflags "${BUILDINFO} -s -w -linkmode external -extldflags '-static' -buildid=" -o $GOBIN "${_cmddir}"/skywire-visor/... "${_cmddir}"/skywire-cli/...
 #binary transparency
 cd "$GOBIN" || exit
 _msg2 'binary sha256sums'
@@ -137,18 +128,12 @@ _msg2 'Symlink skywire-visor to skywire'
 ln -rTsf "${_pkgdir}/${_bin}/${_pkgname}-visor" "${_pkgdir}/usr/bin/${_pkgname}"
 _msg2 'installing dmsghttp-config.json'
 install -Dm644 "${srcdir}/dmsghttp-config.json" "${_pkgdir}/${_dir}/dmsghttp-config.json" || install -Dm644 "${srcdir}/skywire/dmsghttp-config.json" "${_pkgdir}/${_dir}/dmsghttp-config.json" || install -Dm644 "${srcdir}/skywire-${_pkgver}/dmsghttp-config.json" "${_pkgdir}/${_dir}/dmsghttp-config.json"
-_msg2 'installing skycoin.asc'
-install -Dm644 "${srcdir}/skycoin" "${_pkgdir}/${_dir}/skycoin.asc" || install -Dm644 "${srcdir}/skywire/skycoin.asc" "${_pkgdir}/${_dir}/skycoin.asc"  || install -Dm644 "${srcdir}/skywire-${_pkgver}/skycoin.asc" "${_pkgdir}/${_dir}/dmsghttp-config.json"
 _msg2 'Installing systemd services'
 for _i in "${_service[@]}" ; do
   _msg3 ${_i}
   install -Dm644 "${srcdir}/${_skywirebin}${_i}" "${_pkgdir}/${_systemddir}/${_i}"
   install -Dm644 "${srcdir}/${_skywirebin}${_i}" "${_pkgdir}/etc/skel/.config/systemd/user/${_i}"
 done
-#for _i in "${_logrotate[@]}" ; do
-#  _msg3 ${_i}
-#  install -Dm644 "${srcdir}/${_skywirebin}${_i}" "${_pkgdir}/etc/logrotate.d/${_i/.logrotate}"
-#done
 _msg2 'installing desktop files and icons'
 mkdir -p "${_pkgdir}/usr/share/applications/" "${_pkgdir}/usr/share/icons/hicolor/48x48/apps/"
 for _i in "${_desktop[@]}" ; do
