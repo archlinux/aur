@@ -28,8 +28,8 @@ pkgbase = lightzone
 	provides = lightzone
 	conflicts = lightzone-git
 	source = https://github.com/ktgw0316/LightZone//archive/4.2.4.zip
-	source = https://github.com/ktgw0316/LightZone//compare/4.2.4..4ec2b1ab1bff86698bc2a38e21b2c295acda210a.patch
+	source = https://github.com/ktgw0316/LightZone//compare/4.2.4..ad9ba8c637b602eeb409ab76a5e279b7d29cfd2f.patch
 	md5sums = b1d18105ca726aadb0fe223242587b46
-	md5sums = 5c095641f8969212caa22ba68422caea
+	md5sums = 48b63697cc353ee6f3010aa98356291f
 
 pkgname = lightzone
