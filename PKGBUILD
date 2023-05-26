@@ -1,7 +1,7 @@
 # Maintainer: Wüstengecko <1579756+Wuestengecko@users.noreply.github.com>
 pkgname=python-datauri
 _name=${pkgname}
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A li'l class for data URI manipulation in Python"
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=(python-build python-installer python-poetry-core python-wheel)
 checkdepends=(python-pydantic python-pytest)
 options=(!strip)
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f22c1b477e10cd1d5f7a12c329640112997a5aad5c5a5678c46ae0c2b5059a87')
+sha256sums=('b9bf580af915c6a66370a3217b50b82bd231f0424429736f12f2a42467cee9d1')
 
 build() {
   cd "$_name-$pkgver"
