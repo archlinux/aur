@@ -1,4 +1,4 @@
-# Maintainer: Arne Brücher <archlinux@arne-bruecher.de>
+# Maintainer: Arne Brücher <archlinux [at] arne-bruecher [dot] de>
 # Contributer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=fspviewer
