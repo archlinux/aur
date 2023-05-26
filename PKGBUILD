@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=jamesdsp-git
-pkgver=2.4.r124.gd46304d
-pkgrel=2
+pkgver=2.4.r135.g027bb59
+pkgrel=1
 pkgdesc="An audio effect processor for PipeWire clients"
 arch=('x86_64')
 url="https://github.com/Audio4Linux/JDSP4Linux"
@@ -17,15 +17,13 @@ source=('git+https://github.com/Audio4Linux/JDSP4Linux.git'
         'git+https://github.com/ThePBone/GraphicEQWidget.git'
         'git+https://github.com/ThePBone/FlatTabWidget.git'
         'git+https://github.com/ThePBone/LiquidEqualizerWidget.git'
-        'jamesdsp.desktop'
-        'gcc13.patch')
+        'jamesdsp.desktop')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'c6496e6981471aa3f8d1593673991e422d243ff3efe595b3230de713588599c3'
-            '55588ee09012aeb3def9f32265b78570a2ffbcbba4a975d43b8d94673ecfb285')
+            'c6496e6981471aa3f8d1593673991e422d243ff3efe595b3230de713588599c3')
 
 pkgver() {
   cd "$srcdir/JDSP4Linux"
@@ -42,9 +40,6 @@ prepare() {
   done
 
   mkdir -p build
-
-  # Fix build with GCC 13
-  patch -Np1 -i ../gcc13.patch
 }
 
 build() {
