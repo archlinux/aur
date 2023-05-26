@@ -1,7 +1,7 @@
 pkgname="bbdown-bin"
-pkgver="1.5.4"
+pkgver="1.5.5"
 pkgrel="1"
-_uploaddate="20221019"
+_uploaddate="20230526"
 pkgdesc="一款命令行式哔哩哔哩下载器. Bilibili Downloader."
 arch=("x86_64" "aarch64")
 url="https://github.com/nilaoda/BBDown"
@@ -10,9 +10,9 @@ depends=("zlib" "gcc-libs" "ffmpeg")
 provides=("bbdown")
 conflicts=("bbdown")
 source_x86_64=("https://github.com/nilaoda/BBDown/releases/download/${pkgver}/BBDown_${pkgver}_${_uploaddate}_linux-x64.zip")
-md5sums_x86_64=("a559010e199c91c2080e118cd91af18e")
+md5sums_x86_64=("307c25cadfed4776264c01aa1ca76de9")
 source_aarch64=("https://github.com/nilaoda/BBDown/releases/download/${pkgver}/BBDown_${pkgver}_${_uploaddate}_linux-arm64.zip")
-md5sums_aarch64=("dd199b3791af8a8069291d603a587539")
+md5sums_aarch64=("dbe956d1c1b3cff7edc6f2e97338b912")
 
 build() {
 	chmod +x BBDown
