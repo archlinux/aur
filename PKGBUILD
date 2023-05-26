@@ -1,4 +1,4 @@
-# Maintainer: Arne Brücher <archlinux@arne-bruecher.de>
+# Maintainer: Arne Brücher <archlinux [at] arne-bruecher [dot] de>
 
 pkgname=infinite-storage-glitch
 pkgver=1.0.0
