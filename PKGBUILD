@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=gnome-shell-extension-system76-power-git
-pkgver=2.0.6.r1.g5878e02
+pkgver=2.0.6.r2.g255ec7e
 pkgrel=1
 pkgdesc="Gnome shell extension for System76 power management"
 arch=('any')
