@@ -2,7 +2,7 @@
 # Co-Maintainer: Tony Lambiris <tony@libpcap.net>
 # Contributor: Shaleen Jain <shaleen(at)jain(dot)sh>
 pkgname=system76-dkms-git
-pkgver=1.0.13.r2.g78ede46
+pkgver=1.0.13.r4.g8c2ff21
 pkgrel=1
 pkgdesc="On newer System76 laptops, this driver controls some of the hotkeys and allows for custom fan control."
 arch=('x86_64')
