@@ -5,7 +5,7 @@
 
 # Maintainer: Mathias Scherer <scherer.mat@gmail.com>
 pkgname=echidna
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 epoch=
 pkgdesc="A Fast Smart Contract Fuzzer"
