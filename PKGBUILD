@@ -3,7 +3,7 @@
 pkgname=hepmc2
 _pkgname=hepmc
 pkgver=2.06.11
-pkgrel=2
+pkgrel=3
 pkgdesc="A particle physics package for storing collision events from Monte Carlo generators"
 arch=('x86_64')
 url="http://hepmc.web.cern.ch/"
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('bash')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::http://hepmc.web.cern.ch/${_pkgname}/releases/${_pkgname}${pkgver}.tgz")
-sha256sums=('86b66ea0278f803cde5774de8bd187dd42c870367f1cbf6cdaec8dc7cf6afc10')
+b2sums=('ac8eef250cb330a167c9e0f4bd1aaf8df82e0ffec3557ab5cdaf8bc5b0b7333d6a45f73710ce63abab52d2c5758d5663c15c2a7c940a09504b3ef2fd4517aa0b')
 
 build() {
     mkdir build
