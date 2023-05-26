@@ -6,7 +6,6 @@ pkgbase = firefox-gnome-theme
 	install = firefox-gnome-theme.install
 	arch = any
 	license = Unlicense
-	makedepends = git
 	optdepends = firefox: primary compatible browser
 	optdepends = librewolf: alternative compatible browser
 	conflicts = firefox-gnome-theme-git
