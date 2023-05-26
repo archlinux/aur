@@ -2,7 +2,7 @@
 # Contributor: fkxxyz <fkxxyz@163.com>
 pkgname="youdao-dict-bin"
 pkgver=6.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="YouDao Dictionary"
 arch=('x86_64')
 license=('GPL3')
@@ -10,7 +10,7 @@ conflicts=("${pkgname%-bin}")
 url="http://cidian.youdao.com/"
 depends=('sqlite' 'python-lxml' 'python-webob' 'glib2' 'python-opengl' 'python-gobject' 'hicolor-icon-theme' 'python-xlib' 'python-pillow' \
     'python>=3' 'python-requests' 'gstreamer' 'python-pyquery' 'python-pyqt5-webkit' 'gobject-introspection-runtime' 'python-cssselect' \
-    'glibc' 'gstreamer0.10' 'python-pyxdg')
+    'glibc' 'gstreamer0.10' 'python-pyxdg' 'qt5-webkit')
 source=("${pkgname%-bin}-${pkgver}.deb::http://codown.youdao.com/cidian/linux/${pkgname%-bin}_${pkgver}-0-deepin_amd64.deb")
 sha256sums=('7e2ac620b1be2774192f8cacee4cdbdd2820d979061fcc733b1654c811e8fb15')
 package(){
@@ -21,5 +21,6 @@ package(){
     sed -i '644s|self.move(x, y)|self.move(int(x), int(y))|g' "${pkgdir}/opt/${pkgname%-bin}/dae/window.py"
     sed 's|usr/share|opt|g' -i "${pkgdir}/usr/share/dbus-1/services/com.youdao.backend.service"
     rm -rf "${pkgdir}/usr/bin/${pkgname%-bin}"
-    ln -sf "${pkgdir}/opt/${pkgname%-bin}/main.py" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    ln -sf "/opt/${pkgname%-bin}/main.py" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    sed 's|getargspec|getfullargspec|g' -i "${pkgdir}/opt/${pkgname%-bin}/app/plugins/${pkgname%-dict-bin}/pyquery/pyquery.py"
 }
