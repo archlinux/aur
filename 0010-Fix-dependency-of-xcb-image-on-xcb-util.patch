@@ -1,4 +1,4 @@
-From 2400cc9196d3d472ea2632c9541f8878d4698f58 Mon Sep 17 00:00:00 2001
+From 6b7eb6cfc9b704d7c343967db11025a95d5386e6 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 24 Apr 2022 23:49:36 +0200
 Subject: [PATCH 10/12] Fix dependency of xcb-image on xcb-util
@@ -44,5 +44,5 @@ index dc60289401..3dd06d4cd0 100644
  set(XCB_XFIXES_component_deps XCB RENDER SHAPE)
  set(XCB_XVMC_component_deps XCB XV)
 -- 
-2.40.0
+2.40.1
 
