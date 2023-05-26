@@ -1,0 +1,24 @@
+pkgbase = python-psd2svg
+	pkgdesc = Convert PSD file to SVG file
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/kyamagu/psd2svg
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-tox
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pytest-runner
+	makedepends = python-wheel
+	depends = python>=3.6
+	depends = python-future
+	depends = python-numpy
+	depends = python-pillow
+	depends = python-psd-tools>=1.8.11
+	depends = python-svgwrite
+	source = git+https://github.com/kyamagu/psd2svg#commit=324b625f8ffdae2ef6374cf85a0982418b3ca399
+	b2sums = SKIP
+
+pkgname = python-psd2svg
