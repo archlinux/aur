@@ -4,7 +4,7 @@ pkgbase=mkdocstrings-python
 _pyname=("${pkgbase//-/_}")
 pkgname=("${pkgbase}")
 #"${pkgbase}-doc")
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A Python handler for mkdocstrings"
 url="https://mkdocstrings.github.io"
@@ -19,7 +19,7 @@ checkdepends=('python-pytest'
               'mkdocs-material')
 #source=("https://github.com/mkdocstrings/mkdocstrings/archive/refs/tags/${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('b89d849df990204f909d5452548b6936a185f912da06208a93909bebe25d6e67')
+sha256sums=('00cca5e47bf63eb2aece08b9887421b6828bdb939a13a481e4e8b495569e8101')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
