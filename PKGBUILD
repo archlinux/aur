@@ -26,9 +26,6 @@ build() {
   # Remove always-true comparison '(printer_id != NULL)'
   sed -i '188d;191d' bjnp-commands.c
 
-  # Fix storing address of local variable "in" in "next"
-  sed -e 's/next = in/strcpy(next, in)/' -i bjnp-levels.c
-
   ./configure --prefix='/usr'
   make
 }
