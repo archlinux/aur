@@ -14,7 +14,7 @@ RuntimeDirectory=mysterium-node
 RuntimeDirectoryMode=0750
 LogsDirectory=mysterium-node
 
-ExecStart=/usr/bin/myst --config-dir=/etc/mysterium-node --data-dir=/var/lib/mysterium-node --runtime-dir=/var/run/mysterium-node --keystore.lightweight daemon
+ExecStart=/usr/bin/myst --consumer --config-dir=/etc/mysterium-node --data-dir=/var/lib/mysterium-node --runtime-dir=/var/run/mysterium-node --keystore.lightweight daemon
 KillMode=process
 TimeoutStopSec=10
 SendSIGKILL=yes
