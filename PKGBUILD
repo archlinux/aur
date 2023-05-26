@@ -2,15 +2,16 @@
 
 pkgname=albert-git
 _pkgname=${pkgname%-git}
-pkgver=0.20.13.r1.g2782fb00
+pkgver=0.20.14.r13.gee101532
 pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher"
 arch=('x86_64')
 url="https://github.com/albertlauncher"
 license=('GPL')
 depends=('hicolor-icon-theme' 'qt6-scxml' 'qt6-svg')
-makedepends=('cmake' 'git' 'muparser' 'pybind11' 'python' 'libqalculate')
-optdepends=('muparser: calculator plugin'
+makedepends=('cmake' 'git' 'libqalculate' 'muparser' 'pybind11' 'python')
+optdepends=('libqalculate: calculator plugin'
+            'muparser: another calculator plugin'
             'python: python extension'
             'python-urllib3: python web plugins')
 provides=("${pkgname%-git}")
@@ -34,7 +35,8 @@ prepare() {
   mkdir -p build
 
   cd "$srcdir/albert"
-  git submodule init
+  git submodule sync
+  git submodule update --init --recursive --remote
 
   git config submodule.plugins.url "$srcdir/plugins"
   git -c protocol.file.allow=always submodule update plugins
