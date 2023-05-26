@@ -7,6 +7,7 @@ pkgbase = qtwebkit-bin
 	license = LGPL2.1
 	license = GPL3
 	makedepends = mesa
+	depends = qt4
 	depends = systemd
 	depends = gst-plugins-base-libs
 	provides = qtwebkit
