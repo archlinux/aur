@@ -2,7 +2,7 @@
 # Contributor: Tony Lambiris <tony@libpcap.net>
 
 pkgname=nordic-theme-git
-pkgver=2.1.0.r42.g81c9976
+pkgver=2.2.0.r52.g75dd1fc
 pkgrel=1
 pkgdesc="Nord-derived themes for GTK and other platforms"
 arch=("any")
