@@ -2,7 +2,7 @@
 
 pkgname=otis-theme-git
 _pkgname=Otis
-pkgver=r88.3c586cb
+pkgver=r95.15e1d06
 pkgrel=1
 pkgdesc="An elegant dark theme for gnome"
 arch=("any")
