@@ -1,6 +1,6 @@
 pkgbase = tal-vocoder
 	pkgdesc = A Phase Vocoder By TAL Software
-	pkgver = 2.2.1
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://tal-software.com/products/tal-vocoder
 	arch = x86_64
@@ -12,6 +12,6 @@ pkgbase = tal-vocoder
 	depends = libcurl-gnutls
 	depends = glibc
 	source = https://tal-software.com/downloads/plugins/TAL-Vocoder-2_64_linux.zip
-	md5sums = e91cb165b3866a47714361eaa29ceded
+	md5sums = 3750f395f0f551249c04622230126997
 
 pkgname = tal-vocoder-bin

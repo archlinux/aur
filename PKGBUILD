@@ -1,6 +1,6 @@
 pkgbase=tal-vocoder
 pkgname=("${pkgbase}-bin")
-pkgver=2.2.1
+pkgver=3.0.2
 pkgrel=1
 arch=('x86_64')
 groups=('pro-audio' 'clap-plugins' 'vst-plugins' 'vst3-plugins')
@@ -9,7 +9,7 @@ url="https://tal-software.com/products/tal-vocoder"
 license=('EULA')
 depends=('libcurl-gnutls' 'glibc')
 source=('https://tal-software.com/downloads/plugins/TAL-Vocoder-2_64_linux.zip')
-md5sums=('e91cb165b3866a47714361eaa29ceded')
+md5sums=('3750f395f0f551249c04622230126997')
 
 package_tal-vocoder-bin() {
   ## VST2 Plugin
