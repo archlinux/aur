@@ -3,36 +3,28 @@
 
 _pkgname=adwaita-icon-theme
 pkgbase="$_pkgname-git"
-pkgname=("$pkgbase" 'adwaita-cursors-git')
-pkgver=43.r68.g855de98ff
+pkgname=("$pkgbase" adwaita-cursors-git)
+pkgver=44.0.r44.ge1528589b
 pkgrel=1
 pkgdesc='GNOME standard icons'
-arch=('any')
+arch=(any)
 url="https://gitlab.gnome.org/GNOME/$_pkgname"
-license=('LGPL3' 'CCPL:by-sa')
-depends=('hicolor-icon-theme' 'gtk-update-icon-cache' 'librsvg')
-makedepends=('git' 'gtk3')
+license=(LGPL3 CCPL:by-sa)
+depends=(gtk-update-icon-cache hicolor-icon-theme librsvg)
+makedepends=(git gtk3 meson)
 source=("git+$url.git")
 b2sums=('SKIP')
 
 pkgver() {
-	cd $_pkgname
-	git describe --long --tags | sed 's/[^-]*-g/r&/;s/-/./g'
+	git -C $_pkgname describe --long --tags | sed 's/[^-]*-g/r&/;s/-/./g'
 }
 
 prepare() {
-	cd $_pkgname
-	autoreconf -fvi
+	arch-meson $_pkgname build
 }
 
 build() {
-	cd $_pkgname
-	./configure --prefix=/usr
-	make
-}
-
-check() {
-	make -C $_pkgname check
+	meson compile -C build
 }
 
 package_adwaita-icon-theme-git() {
@@ -40,7 +32,7 @@ package_adwaita-icon-theme-git() {
 	provides=("$_pkgname")
 	conflicts=("$_pkgname")
 
-	make -C $_pkgname DESTDIR="$pkgdir" install
+	meson install -C build --destdir "$pkgdir"
 	rm -rf "$pkgdir/usr/share/icons/Adwaita/cursors/"
 }
 
