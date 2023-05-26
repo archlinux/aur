@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=yt-cli
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="An easy to use CLI YouTube client"
 arch=('any')
@@ -13,10 +13,10 @@ source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz"
 )
 sha512sums=(
-  'e8a228bf73ee84dfcdf23469c5b1ba7b4a8ebbc1478df9fc33eb2c0c241e069ec995890c50caf99bfced29f47568764b56bd24dad15dc72395bef7f9cecb1ead'
+  'c9c8aece0b45229244a15c2eaa7b7be290cba5d24d789bcf98d680a06b14be6d8218c93eddeadbc79b3d75e145545db0de13238457b48ea3f338fedd7fd6a03a'
 )
 md5sums=(
-  '78e9bc1f5fc978cebbdc70b21f29e1bd'
+  'ca167114e10405d4ead6075b6b560a90'
 )
 validpgpkeys=(
   '81BACEEBC3EA26E127166E4A819BB92A9A48160E'
