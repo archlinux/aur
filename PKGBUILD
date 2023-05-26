@@ -3,7 +3,7 @@ _target='compass-readonly'
 _edition=' Readonly'
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
-pkgver='r15468.g1dbe8415e'
+pkgver='r15837.g12a547bd8'
 pkgrel='1'
 epoch='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - git version'
@@ -14,19 +14,21 @@ url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
 _electronpkg='electron'
 depends=("$_electronpkg>=22.0.0" 'krb5' 'libsecret' 'lsb-release')
-makedepends=('git' 'nodejs>=16.0.0' 'npm>=8.0.0' 'python' 'unzip')
+makedepends=('git' 'nodejs>=16.15.1' 'npm>=8.19.2' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
 	"$pkgname::git+https://github.com/mongodb-js/compass"
-	'hadron-build.diff'
+	'hadron-build-ffmpeg.diff'
+	'hadron-build-os-dns-native.diff'
 	'fix-argv.diff'
 
 )
 sha512sums=('SKIP'
-            '18029ff1479cbacb413f7154d5ca7589855273c559ee15bb5b5006eed65b8edcb58fac64cc8deabd20c36e06f298dc4b7152f61391975d2a3ecb6351b787fae7'
-            '1a2345b90196d3c856d0288d9406cfd667d0ebcce400e6886c7eba2825fa52d7813d45f2c375fcaf4e28d116b68107219e6f662b5bdbb12bf0e402ca61194cf7')
+            '54faea6c77fc7ac6ffcd81667d85103d0dcbe51b2358480e3e47fa4b0db70cdd87578da412d101d1d6b5f85039c4f3119caad9dc327fe6da1510d145bafb476b'
+            'e1082fd804ba72ccf3e53576077562f8b159b76e6aa07fa2324e31dd45c0d863d844fbb8be139be427e2cdd0401a2c4b8e6279ee9305c5507fbd73c5bc0df65d'
+            '105c55cc9449b999e9ce1542dc50e88d314b9e71e58ffaa3376fbd641a18b7975196420bf8a4ced51e56e9299a9551868ec6942129efe0333e758cabd5c5b468')
 
 _sourcedirectory="$pkgname"
 
@@ -36,14 +38,21 @@ prepare() {
 	# Disable husky command
 	sed -i '/husky install/d' 'package.json'
 
+	# Loosen npm version restriction until the version of npm in repos is updated to >= 8.19.4
+	sed -E -i "s|\"npm\": \">=8.19.4\"|\"npm\": \">=$(npm -v)\"|" 'package.json' 'package-lock.json'
+
 	# Set system Electron version for ABI compatibility
 	sed -E -i 's|("electron": ").*"|\1'"$(cat "/usr/lib/$_electronpkg/version")"'"|' {'configs','packages'}'/'*'/package.json'
 
 	# Force the newest version of electron-to-chromium
 	sed -E -i 's|(.*)("electron": ")|\1"electron-to-chromium": "'"$(npm view 'electron-to-chromium@latest' version)"'",\n\1\2|' 'packages/compass/package.json'
 
-	# Apply hadron-build fixes
-	patch --forward -p1 < "$srcdir/hadron-build.diff"
+	# Use a fork of os-dns-native (as there are issues with the path not being in the main node_modules directory, a local copy is not used)
+	sed -E -i "s|(.*)\"os-dns-native\": \".*\",|\1\"os-dns-native\": \"dpeukert/os-dns-native\",|" 'packages/compass/package.json'
+	patch --forward -p1 < "$srcdir/hadron-build-os-dns-native.diff"
+
+	# Don't use the bundled ffmpeg
+	patch --forward -p1 < "$srcdir/hadron-build-ffmpeg.diff"
 
 	# Apply argv fixes
 	patch --forward -p1 < "$srcdir/fix-argv.diff"
@@ -68,7 +77,7 @@ build() {
 	# and let electron-packager use it for building
 	# https://github.com/electron/electron-packager/issues/187
 
-	HADRON_DISTRIBUTION="$_target" NODE_OPTIONS='--openssl-legacy-provider' npm run package-compass --openssl_fips=''
+	HADRON_DISTRIBUTION="$_target" HADRON_SKIP_INSTALLER='true' NODE_OPTIONS='--openssl-legacy-provider' npm run package-compass
 }
 
 package() {
