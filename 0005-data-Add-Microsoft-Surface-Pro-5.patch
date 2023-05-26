@@ -1,7 +1,7 @@
 From c1e48260b343e6616f1106ff4769ad11e9a0948b Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Tue, 18 Aug 2020 20:19:02 +0200
-Subject: [PATCH 05/12] data: Add Microsoft Surface Pro 5
+Subject: [PATCH 05/13] data: Add Microsoft Surface Pro 5
 
 ---
  data/surface-pro5.tablet | 14 ++++++++++++++

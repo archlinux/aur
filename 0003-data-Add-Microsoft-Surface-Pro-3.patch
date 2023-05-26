@@ -1,7 +1,7 @@
 From 77664bc3c0be343b8e6acddb5bcb18bfb591da24 Mon Sep 17 00:00:00 2001
 From: "Antony Jordan (Tablet)" <wiccan.two@gmail.com>
 Date: Wed, 8 Jun 2022 22:03:33 +0200
-Subject: [PATCH 03/12] data: Add Microsoft Surface Pro 3
+Subject: [PATCH 03/13] data: Add Microsoft Surface Pro 3
 
 ---
  data/surface-pro3.tablet | 14 ++++++++++++++

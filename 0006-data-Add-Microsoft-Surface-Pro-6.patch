@@ -1,7 +1,7 @@
 From ccacedf0af12ab54bfaacb7f286cf7611d52f2c4 Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Tue, 18 Aug 2020 20:19:07 +0200
-Subject: [PATCH 06/12] data: Add Microsoft Surface Pro 6
+Subject: [PATCH 06/13] data: Add Microsoft Surface Pro 6
 
 ---
  data/surface-pro6.tablet | 14 ++++++++++++++

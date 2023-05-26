@@ -1,7 +1,7 @@
 From 9f0d51ad149595a1c9189222e556efb57412842b Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Tue, 18 Aug 2020 20:20:42 +0200
-Subject: [PATCH 12/12] data: Add Microsoft Surface Book 3 (15")
+Subject: [PATCH 12/13] data: Add Microsoft Surface Book 3 (15")
 
 ---
  data/surface-book3-15.tablet | 14 ++++++++++++++

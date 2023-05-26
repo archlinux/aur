@@ -1,7 +1,7 @@
 From fa3a6c733c16529098f5a5066eb8fd3051177d8f Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Tue, 18 Aug 2020 20:18:55 +0200
-Subject: [PATCH 04/12] data: Add Microsoft Surface Pro 4
+Subject: [PATCH 04/13] data: Add Microsoft Surface Pro 4
 
 ---
  data/surface-pro4.tablet | 14 ++++++++++++++

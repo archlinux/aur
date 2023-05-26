@@ -1,7 +1,7 @@
 From 21fa2ae7428ae749938aef68a8498f23017bf4d0 Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Tue, 18 Aug 2020 20:19:13 +0200
-Subject: [PATCH 07/12] data: Add Microsoft Surface Pro 7
+Subject: [PATCH 07/13] data: Add Microsoft Surface Pro 7
 
 ---
  data/surface-pro7.tablet | 14 ++++++++++++++

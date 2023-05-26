@@ -1,7 +1,7 @@
 From cad8b471eb747cdc53da8a8a16976352921e6fe2 Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Tue, 18 Aug 2020 20:20:04 +0200
-Subject: [PATCH 09/12] data: Add Microsoft Surface Book 2 (13.5")
+Subject: [PATCH 09/13] data: Add Microsoft Surface Book 2 (13.5")
 
 ---
  data/surface-book2-13.tablet | 14 ++++++++++++++

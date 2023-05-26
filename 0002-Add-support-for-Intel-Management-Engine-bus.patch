@@ -1,7 +1,7 @@
 From 10ef0701cdde200063a73b3db5bfb305a12909c2 Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Sat, 1 Jun 2019 21:17:15 +0200
-Subject: [PATCH 02/12] Add support for Intel Management Engine bus
+Subject: [PATCH 02/13] Add support for Intel Management Engine bus
 
 Add support for devices connected via the Intel Management Engine (MEI).
 This is required to support IPTS based devices, such as (among others)
