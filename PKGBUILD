@@ -14,12 +14,11 @@ optdepends=(
 	'imagemagick: edit input images'
 	'sox: audio record'
 	'ffmpeg: audio record'
-	'fold: wrap output at spaces'
-	'xdg-open: open images'
-	'open: open images'
+	'coreutils: wrap output at spaces (fold)'
+	'xdg-utils: open images (xdg-open, open)'
 	'xsel: copy output to clipboard'
 	'xclip: copy output to clipboard'
-	'tiktoken: count input tokens (python)'
+	'python: count input tokens (tiktoken)'
 )
 source=("${pkgname}-${pkgver}::git+${url}.git#commit=${_commit}")
 sha256sums=('SKIP')

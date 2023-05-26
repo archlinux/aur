@@ -12,12 +12,11 @@ pkgbase = chatgpt.sh
 	optdepends = imagemagick: edit input images
 	optdepends = sox: audio record
 	optdepends = ffmpeg: audio record
-	optdepends = fold: wrap output at spaces
-	optdepends = xdg-open: open images
-	optdepends = open: open images
+	optdepends = coreutils: wrap output at spaces (fold)
+	optdepends = xdg-utils: open images (xdg-open, open)
 	optdepends = xsel: copy output to clipboard
 	optdepends = xclip: copy output to clipboard
-	optdepends = tiktoken: count input tokens (python)
+	optdepends = python: count input tokens (tiktoken)
 	provides = chatgpt.sh
 	source = chatgpt.sh-0.14.2::git+https://github.com/mountaineerbr/shellChatGPT.git#commit=d2b584bdbc6ff121832ad5521b14a519b42726d3
 	sha256sums = SKIP
