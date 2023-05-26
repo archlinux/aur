@@ -1,0 +1,20 @@
+diff --git a/packages/hadron-build/lib/target.js b/packages/hadron-build/lib/target.js
+index 39ed422ab..959ce16c9 100644
+--- a/packages/hadron-build/lib/target.js
++++ b/packages/hadron-build/lib/target.js
+@@ -10,7 +10,6 @@ const path = require('path');
+ const { promisify } = require('util');
+ const normalizePkg = require('normalize-package-data');
+ const parseGitHubRepoURL = require('parse-github-repo-url');
+-const ffmpegAfterExtract = require('electron-packager-plugin-non-proprietary-codecs-ffmpeg').default;
+ const windowsInstallerVersion = require('./windows-installer-version');
+ const debug = require('debug')('hadron-build:target');
+ const execFile = promisify(childProcess.execFile);
+@@ -227,7 +226,6 @@ class Target {
+       arch: this.arch,
+       electronVersion: this.electronVersion,
+       sign: null,
+-      afterExtract: [ffmpegAfterExtract]
+     };
+ 
+     if (this.platform === 'win32') {
