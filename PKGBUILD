@@ -4,12 +4,11 @@
 # Contributor: Alex 'AdUser' Z
 pkgname=fusioninventory-agent-bin
 _pkgname="FusionInventory-Agent"
-pkgver=2.3.21
-pkgrel=2
+pkgver=2.6
+pkgrel=1
 pkgdesc="An application for keeping track of the hardware and software"
 arch=(any)
-url="http://fusioninventory.org"
-_watch="http://debian.fusioninventory.org/downloads"
+url="https://github.com/fusioninventory/fusioninventory-agent"
 license=('GPL')
 provides=('fusioninventory-agent')
 conflicts=('fusioninventory-agent')
@@ -27,10 +26,10 @@ depends=(
   'perl-data-structure-util'
   #'perl-proc-daemon'
 )
-source=("http://debian.fusioninventory.org/downloads/fusioninventory-agent_${pkgver}-2_all.deb"
+source=("https://github.com/fusioninventory/fusioninventory-agent/releases/download/${pkgver}/fusioninventory-agent_${pkgver}-${pkgrel}_all.deb"
   "agent.cfg"
 )
-md5sums=('6ede95612470907f1964fa9f00732c4f'
+md5sums=('6a7599a355f03192cf16ef852bc93944'
   'eaf2c13c8adb7e57da038f3ae521ab35'
 )
 
@@ -39,10 +38,10 @@ package() {
   tar xf ${srcdir}/data.tar.xz
     
   # Clear
-  unlink ${srcdir}/control.tar.gz
+  unlink ${srcdir}/control.tar.xz
   unlink ${srcdir}/data.tar.xz
   unlink ${srcdir}/debian-binary
-  unlink ${srcdir}/fusioninventory-agent_${pkgver}-2_all.deb
+  unlink ${srcdir}/fusioninventory-agent_${pkgver}-${pkgrel}_all.deb
   
   cp -a ${srcdir}/etc/ $pkgdir/etc/
   cp -a ${srcdir}/usr/ $pkgdir/usr/
