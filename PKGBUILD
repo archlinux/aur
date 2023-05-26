@@ -21,6 +21,7 @@ depends=(
 	libsoup
 	webkit2gtk)
 makedepends=()
+conflicts=(typstudio{-git,})
 source=("$pkgname-$pkgver.deb::https://github.com/Cubxity/typstudio/releases/download/v${_pkgver}/typstudio_0.1.0_amd64.deb")
 sha256sums=('b9fad3eab676029c721a25b50abdcc7612896f39692318b5d3e4660c4b79fd12')
 

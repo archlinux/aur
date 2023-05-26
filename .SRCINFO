@@ -15,6 +15,8 @@ pkgbase = typstudio-bin
 	depends = gcc-libs
 	depends = libsoup
 	depends = webkit2gtk
+	conflicts = typstudio-git
+	conflicts = typstudio
 	source = typstudio-bin-0.1.0dev.20.deb::https://github.com/Cubxity/typstudio/releases/download/v0.1.0-dev.20/typstudio_0.1.0_amd64.deb
 	sha256sums = b9fad3eab676029c721a25b50abdcc7612896f39692318b5d3e4660c4b79fd12
 
