@@ -2,12 +2,12 @@
 
 _pkgname=maui-shell
 pkgname=$_pkgname-git
-pkgver=0.6.0.r0.g180d437
+pkgver=0.6.6.r0.gccc2224
 pkgrel=1
 pkgdesc='Maui Shell is a convergent shell for desktops, tablets, and phones.'
 url='https://github.com/Nitrux/maui-shell'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
-license=(GPL3)
+license=(LGPL3)
 depends=(bluedevil
          cask-server-git
          fontconfig
@@ -81,4 +81,5 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 $_pkgname/LICENSE -t "${pkgdir}"/usr/share/licenses/$_pkgname
 }
