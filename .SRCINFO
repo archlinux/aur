@@ -1,18 +1,19 @@
-pkgbase = project-black-pearl-bin
+pkgbase = project-black-pearl
 	pkgdesc = Free and open-source tool for managing game sources using community-made modules.
 	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/ProjectBlackPearl/project_black_pearl
 	arch = x86_64
 	license = BSD
-	makedepends = binutils
-	makedepends = tar
+	makedepends = yarn
+	makedepends = cargo-tauri
+	makedepends = rust
 	depends = libayatana-appindicator
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	provides = project-black-pearl
 	conflicts = project-black-pearl
-	source = https://github.com/ProjectBlackPearl/project_black_pearl/releases/download/pbp-stable-v0.3.0/project-black-pearl-bin_0.3.0_amd64.deb
-	sha256sums = 412123582fb25cc42c4331619a63379a6abc00d5e1344f2f84ae820938462acd
+	source = https://github.com/ProjectBlackPearl/project_black_pearl/archive/refs/tags/pbp-stable-v0.3.0.tar.gz
+	sha256sums = 27cda670348bc6b2388a29e925dcb6ac96ff9dd0fe06690288f369f0b01b3f78
 
-pkgname = project-black-pearl-bin
+pkgname = project-black-pearl
