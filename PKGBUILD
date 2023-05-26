@@ -23,7 +23,7 @@ build () {
 
 package () {
    cd "$srcdir/project_black_pearl-pbp-stable-v0.3.0/src-tauri/target/release/bundle/deb/project-black-pearl_0.3.0_amd64/data/"
-   install -Dv "/usr/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
+   install -Dv "./usr/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
    install -Dv "./usr/share/applications/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
    install -Dv "./usr/share/icons/hicolor/32x32/apps/$pkgname.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/$pkgname.png"
    install -Dv "./usr/share/icons/hicolor/128x128/apps/$pkgname.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
