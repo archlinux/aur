@@ -35,11 +35,11 @@ makedepends=('java-environment=17'
     'libtiff')
 
 git_url=${url}
-patch_name="4.2.4..203d3b371a8e4ff79deac44922cd7c7551c3fa2e.patch"
+patch_name="4.2.4..c4a6bf715b7bce3fac2524c4943fd3a8fa6b486d.patch"
 source=("${git_url}/archive/${pkgver}.zip"
         "${git_url}/compare/${patch_name}")
 md5sums=('b1d18105ca726aadb0fe223242587b46'
-         '36035153999397b3e9a53ee86e3ab89e')
+         'ed8150a7f783fee958e7273fa8121408')
 
 prepare() {
   cd "${srcdir}/LightZone-${pkgver}/"
