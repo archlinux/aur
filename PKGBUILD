@@ -1,4 +1,4 @@
-# Maintainer: Arne Brücher <archlinux@arne-bruecher.de>
+# Maintainer: Arne Brücher <archlinux [at] arne-bruecher [dot] de>
 
 pkgname=protonup-rs-bin
 pkgver=0.5.0
