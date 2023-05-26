@@ -1,6 +1,6 @@
 # Maintainer: Hendrik 'T4cC0re' Meyer <aur@t4cc0.re>
 pkgname=curl-http3
-pkgver=8.0.1
+pkgver=8.1.1
 pkgrel=1
 pkgdesc="An URL retrieval utility and library - compiled with HTTP/3 support - binary is called curl3"
 arch=('x86_64')
@@ -79,7 +79,7 @@ package() {
   install -Dm644 quiche/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING-quiche"
   install -Dm644 quiche/quiche/deps/boringssl/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-boringssl"
 }
-sha512sums=('87d945e65176613c6296f8b130bd6c5355e3ca3c62ee4010edd481950cad9760482fd3be8a84e51501c118c29ebc284b8f87c49b06f9d248e9da5819fda38f8f'
+sha512sums=('95aeaca94ec78284102d1f5f8d0e24d7a084f2431356a08e7f6baf79c13c56040f2600571877d74e45b53b9f61ef493d201ed85808233c24b4dcbf45cdb6e762'
             'SKIP'
             'SKIP'
             'SKIP')
