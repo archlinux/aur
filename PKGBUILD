@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="spacemesh-appimage"
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="Spacemesh App (Smesher + Wallet)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'glibc' 'hicolor-icon-theme')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::https://storage.googleapis.com/smapp/v${pkgver}/Spacemesh-${pkgver}.AppImage")
-sha256sums=('5de9fe090ecb297b5395e50ce9a5d0ffb78e9b58e99f332d253fb8ac1b9627f0')
+sha256sums=('07979d84ed6f4d210e4942d875f008e105b47c7e8562ae6e9576821f98f006c9')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
