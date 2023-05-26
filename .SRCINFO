@@ -1,0 +1,22 @@
+pkgbase = python-psd-tools
+	pkgdesc = Python package for working with Adobe Photoshop PSD files
+	pkgver = 1.9.24
+	pkgrel = 1
+	url = https://github.com/psd-tools/psd-tools
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.7
+	depends = python-docopt>=0.5
+	depends = python-attrs>=19.2.0
+	depends = python-pillow>=6.2.0
+	depends = python-aggdraw
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-scikit-image
+	source = https://github.com/psd-tools/psd-tools/archive/v1.9.24.tar.gz
+	b2sums = 466fa1117b4b1445d227e679b88bfa2c51b040f7eefa5e342f552fb674ff597299bb70f4a4db72683d8ac8d992039e453d7bad3fb7ac0f6726e8b5763fdc5abd
+
+pkgname = python-psd-tools
