@@ -3,9 +3,9 @@
 # For Issues, Pull Requests
 # https://github.com/phnx47/pkgbuilds
 
-pkgname="proto"
+pkgname=proto
 pkgdesc='A multi-language version and dependency manager'
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 license=('MIT')
 url='https://github.com/moonrepo/proto'
@@ -14,7 +14,7 @@ depends=('git')
 makedepends=('cargo')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('4f5dbf8c1a191cec24d5c97ebb16bba572b6fab94dab55e989c27161c2582860d4e111878baa17b819f6db7daa7c1dc84f14898250e6ee7b774108dd84a56db2')
+sha512sums=('536616efe4f0a8afaeae1a09e333d869476e80c2eeebea33cb41d035043f0ed7dbfeb19bdf37900bb9032222989525adef6351cda20ffa0d163536894375a370')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
