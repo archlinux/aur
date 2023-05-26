@@ -1,7 +1,7 @@
 # Maintainer: mahe29 <mahe@quantentunnel.de>
 
 pkgname=seh-utn
-pkgver=3.3.5
+pkgver=3.3.10
 pkgrel=1
 pkgdesc='SEH Technology UTN service/daemon, kernel module (DKMS) and clitool'
 url="https://www.seh-technology.com/"
@@ -11,7 +11,7 @@ depends=('dkms' 'linux-headers')
 makedepends=('patch')
 _verwatch=("${url}services/downloads/download-deviceserver/utnserver-pro.html" 'SEH UTN Manager Version \([0-9\.]*\) for DEB based Linux 64-bit.*' 't')
 source=("${url}fileadmin/user/downloads/deviceserver/tools/sehutnmanager-deb_linux_64bit-$pkgver.zip")
-sha256sums=('69e3c6f95cd547b13e6583f06b033574d2a8fdbb087ef90be51af4b9fa4244b6')
+sha256sums=('a38adf7a63acac2346c8258a018c9a5913946e75292c49e19b3019614437d3d6')
 backup=("etc/xdg/SEH Computertechnik GmbH/SEH UTN Manager.conf" "etc/xdg/SEH Computertechnik GmbH/SEH UTN Service.conf")
 
 prepare() {
