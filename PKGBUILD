@@ -11,7 +11,7 @@ depends=(python-dask python-numba python-pandas python-param python-pyarrow pyth
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-hypothesis python-geopandas python-scipy) # python-shapely python-hilbertcurve
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('77efffa351741b960ce5f3b73c28e0cb71767b5b33cec944254e062c75d9ea9c22d148e4d99acf89a263b95f062158260023d63413dd0f7e1b2b36f49562f7ba')
+sha512sums=('c7b8932c5ac0a9e1ac7380d71d2c3805a043db551cacdb56feb11e153d7074f6fea16f4ff8055d8d1c4889d3308d630033072f8dfd7ffdaf00d7d4e99151536e')
 
 build() {
   cd ${_base}-${pkgver}
