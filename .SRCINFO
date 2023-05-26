@@ -1,6 +1,6 @@
 pkgbase = python-datauri
 	pkgdesc = A li'l class for data URI manipulation in Python
-	pkgver = 1.2.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/fcurella/python-datauri
 	arch = any
@@ -9,11 +9,11 @@ pkgbase = python-datauri
 	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-poetry-core
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
 	options = !strip
-	source = python-datauri-1.2.1.tar.gz::https://github.com/fcurella/python-datauri/archive/refs/tags/v1.2.1.tar.gz
-	sha256sums = b9bf580af915c6a66370a3217b50b82bd231f0424429736f12f2a42467cee9d1
+	source = python-datauri-2.0.0.tar.gz::https://github.com/fcurella/python-datauri/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 93f6151eadb3b6a7a8347936681d5938d2d4b4aee7c89f71b7d485b21c72f3d4
 
 pkgname = python-datauri
