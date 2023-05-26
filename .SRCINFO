@@ -1,6 +1,6 @@
 pkgbase = thumbor
 	pkgdesc = open-source photo thumbnail service
-	pkgver = 7.1.0
+	pkgver = 7.4.7
 	pkgrel = 1
 	url = https://github.com/thumbor/thumbor
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = thumbor
 	depends = python-colorama
 	depends = python-pycurl
 	depends = python-opencv
-	depends = python-exiv2
 	depends = python-cairosvg
 	depends = python-tornado
 	depends = gifsicle
@@ -23,9 +22,9 @@ pkgbase = thumbor
 	depends = python-derpconf
 	depends = python-socketfromfd
 	backup = etc/thumbor.conf
-	source = https://github.com/thumbor/thumbor/archive/7.1.0.tar.gz
+	source = https://github.com/thumbor/thumbor/archive/7.4.7.tar.gz
 	source = thumbor.service
-	b2sums = ecb0ad405af4f93e8c4e8bb1d270d7c2fe8a16b1408785e1b032de6bf26206e61fc4a74b4f7338c1070aaf6aa0ecd9779ee6cba9513846bec69b1e78e114b738
+	b2sums = 215aaa7922d7a2a54d8aa1891195b20fb4954b12992156ce7667edd8e01eabde8360daa6ba64510c6a765a48745780c6931fe6463cd90841287c986e5d5b500f
 	b2sums = c0fe21516f245132ac9bb1a833601eabc8348f8c420c76d49ffe7cb25e00712fcbc0fe7c579604616f5008507ec9f7582936596e54e8a311acf949fb031cd5ca
 
 pkgname = thumbor
