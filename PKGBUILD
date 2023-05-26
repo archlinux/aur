@@ -22,7 +22,9 @@ pkgver() {
 }
 
 build() {
-	cmake -B build -DCMAKE_INSTALL_PREFIX=/usr -S ${_gitname%-git}
+	cmake -B build -S ${_gitname%-git} \
+		-D CMAKE_INSTALL_PREFIX=/usr \
+		-D ENABLE_EXAMPLES=ON
 	cmake --build build
 }
 
