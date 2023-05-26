@@ -10,9 +10,9 @@
 
 pkgname=mono-tools
 pkgver=4.2
-pkgrel=2
-pkgdesc="collection of testing and development tools for use with mono (including monodoc browser)"
-arch=(x86_64)
+pkgrel=3
+pkgdesc="Collection of testing and development tools for use with mono"
+arch=('any')
 license=('GPL')
 url="https://www.mono-project.com/"
 depends=('gtk-sharp-2')
@@ -20,12 +20,15 @@ makedepends=('git' 'zip')
 install=$pkgname.install
 options=('!makeflags')
 source=($pkgname-$pkgver.tar.gz::https://github.com/mono/mono-tools/archive/$pkgver.tar.gz
+        drop-docbrowser-gendarme.patch
 	monodoc.xml)
 sha256sums=('104f7a7e98202c44cd4f025ab8a922bd193e83ce874a48e50ffb401128ca73a8'
+            'f937cce8c59f50cb16f16103511af7ab45e13581becf172c4d16b370080c532a'
             '80de1af405556addbb481d9ac123e5f94b08ad7869c90fb469d71eb08c941480')
 
 prepare() {
   cd $pkgname-$pkgver
+  patch -Np1 -i ../drop-docbrowser-gendarme.patch
   mv configure.in configure.ac
 
   sed -e 's/-warnaserror+//' -i gendarme/options.make # Fix build with newer mono
