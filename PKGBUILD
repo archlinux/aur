@@ -18,7 +18,7 @@ source=(${pkgname}::git+https://github.com/vgmstream/vgmstream.git
 sha256sums=('SKIP'
             'a991dff4a9e0772ede0881d81cdc7ac559148c2194885cbdd534fe4af43779da'
             'c94d4d34f5a2caa1574b1a94869202cacd959b55f643a8bafe0660008acad9c3'
-            'fc87f18898268f5ff5329b0146bae4ecb1c8835fbb3ea326b4013fa38f0f56f8')
+            '927d61ab752c2bc10a15185a52a0a004cf7149a90a3b195034f4956b5af8d124')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -109,7 +109,7 @@ package() {
 check() {
   cd "$srcdir/$pkgname"
   make -f Makefile.autotools install DESTDIR="$srcdir/test"
-  echo '#include <vgmstream/vgmstream.h>' | gcc -E - -I "$srcdir/test/usr/include" -o /dev/null
+  printf '#include <vgmstream/%s.h>\n' vgmstream api | gcc -E - -I "$srcdir/test/usr/include" -o /dev/null
 }
 
 # vim:set sw=2 et:
