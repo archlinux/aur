@@ -58,26 +58,26 @@ prepare() {
   patch --directory=USD --forward --strip=1 --input="${srcdir}/pyside6.patch"
   patch --directory=USD --forward --strip=1 --input="${srcdir}/materialx.patch"
   #TBB
-#   mkdir -p "${srcdir}"/tbb2019
-#   patch --directory=oneTBB-${_tbbmajorver}_U${_tbbpkgminorver} --forward --strip=1 --input="${srcdir}/tbbgcc13.patch"
-#   cd oneTBB-${_tbbmajorver}_U${_tbbpkgminorver}
-#   make
-#   install -Dm755 build/linux_*/*.so* -t "${srcdir}"/tbb2019/usr/lib
-#   install -d "${srcdir}"/tbb2019/usr/include
-#   cp -a include/tbb "${srcdir}"/tbb2019/usr/include
-#   cmake \
-#     -DINSTALL_DIR="${srcdir}"/tbb2019/usr/lib/cmake/TBB \
-#     -DSYSTEM_NAME=Linux \
-#     -DTBB_VERSION_FILE="${srcdir}"/tbb2019/usr/include/tbb/tbb_stddef.h \
-#     -P cmake/tbb_config_installer.cmake
-#
-#   #BOOST
-#   cd ${srcdir}/boost_1_78_0
-#
-#   ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=python3
-#   ./b2 install \
-#   \
-#   --prefix="$srcdir"/boost
+  mkdir -p "${srcdir}"/tbb2019
+  patch --directory=oneTBB-${_tbbmajorver}_U${_tbbpkgminorver} --forward --strip=1 --input="${srcdir}/tbbgcc13.patch"
+  cd oneTBB-${_tbbmajorver}_U${_tbbpkgminorver}
+  make
+  install -Dm755 build/linux_*/*.so* -t "${srcdir}"/tbb2019/usr/lib
+  install -d "${srcdir}"/tbb2019/usr/include
+  cp -a include/tbb "${srcdir}"/tbb2019/usr/include
+  cmake \
+    -DINSTALL_DIR="${srcdir}"/tbb2019/usr/lib/cmake/TBB \
+    -DSYSTEM_NAME=Linux \
+    -DTBB_VERSION_FILE="${srcdir}"/tbb2019/usr/include/tbb/tbb_stddef.h \
+    -P cmake/tbb_config_installer.cmake
+
+  #BOOST
+  cd ${srcdir}/boost_1_78_0
+
+  ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=python3
+  ./b2 install \
+  \
+  --prefix="$srcdir"/boost
 }
 
 build() {
