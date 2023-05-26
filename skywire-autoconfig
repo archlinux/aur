@@ -24,11 +24,6 @@ if [[ $(ps -eo pid,comm,cgroup | grep skywire) == *"system.slice"* ]]; then
 WSYSTEMD=1
 fi
 #root portion of the configuration
-if [[ $DMSGPTYTERM -ne "1" ]] && [[ $WSYSTEMD -eq "1" ]]; then
-	#halt any running instance
-	systemctl is-active --quiet skywire-visor && systemctl disable --now skywire-visor 2> /dev/null
-	systemctl is-active --quiet skywire-hypervisor && systemctl disable --now skywire-hypervisor 2> /dev/null
-fi
 systemctl is-active --quiet skywire-autoconfig && systemctl disable skywire-autoconfig 2> /dev/null
 
 #make the logging of this script colorful
@@ -92,10 +87,8 @@ ${_blue}https://t.me/skywire${_nc}"
 }
 #generate config as root
 _config_gen() {
-  # remove any existing symlink
-  [[ -f /opt/skywire/skywire-visor.json ]] && rm /opt/skywire/skywire-visor.json
   #create by default the local hypervisor config if no config exists ; and retain any hypervisor config which exists
-  [[ (! -f /opt/skywire/skywire.json) || ($(cat /opt/skywire/skywire.json | grep -Po '"hypervisor":') != "") ]] &&	_is_hypervisor="-i"
+  [[ (! -f /opt/skywire/skywire.json) || ($(grep -Po '"hypervisor":' /opt/skywire/skywire.json) != "") ]] &&	_is_hypervisor="-i"
   #check for argument - remote pk or 0
   # 0 as argument drops any remote hypervisors which were set in the configuration
   # & triggers the creation of the local hyperisor configuration
@@ -150,10 +143,6 @@ fi
 if [[ ( ${DMSGHTTP} -eq "1") ]]; then
   _dmsghttp="--dmsghttp "
 fi
-#only use public rpc flag with env PUBLICRPC=1
-if [[ ( ${PUBLICRPC} -eq "1") ]]; then
-  _public_rpc="--publicrpc "
-fi
 #use public flag with env VISORISPUBLIC=1
 if [[ ( ${VISORISPUBLIC} -eq "1") ]]; then
   _is_public_visor="--public "
@@ -185,13 +174,13 @@ fi
 #attempt to import config if none exists - i.e. import skybian config or restore config
 if [[ ! -f /opt/skywire/skywire.json ]]; then
 	if [[ -f /etc/skywire-config.json ]]; then
-  		_warnmsg1 "Importing configuration from /etc/skywire-config.json to /opt/skywire/skywire.json"
+  		_msg3 "Importing configuration from /etc/skywire-config.json to /opt/skywire/skywire.json"
   		cp -b  /etc/skywire-config.json /opt/skywire/skywire.json
 	fi
 fi
 if [[ ! -f /opt/skywire/local/reward.txt ]]; then
 	if [[ -f /etc/reward.txt ]]; then
-  		_warnmsg1 "Importing reward address from /etc/reward.txt to /opt/skywire/local/reward.txt"
+  		_msg3 "Importing reward address from /etc/reward.txt to /opt/skywire/local/reward.txt"
   		cp -b  /etc/reward.txt /opt/skywire/local/reward.txt
 	fi
 fi
