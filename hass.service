@@ -11,10 +11,10 @@ Group=hass
 LogsDirectory=hass
 StateDirectory=hass hass-installation
 CacheDirectory=hass
-Environment=CARGO_HOME=%C/hass/cargo
-Environment=PYTHON_EGG_CACHE=%C/hass/python-eggs
-Environment=VIRTUAL_ENV=%S/hass-installation
 Environment=XDG_CACHE_HOME=%C/hass
+Environment=CARGO_HOME=${XDG_CACHE_HOME}/cargo
+Environment=PYTHON_EGG_CACHE=${XDG_CACHE_HOME}/python-eggs
+Environment=VIRTUAL_ENV=%S/hass-installation
 WorkingDirectory=~
 
 EnvironmentFile=-/etc/hass.env

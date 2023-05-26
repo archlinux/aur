@@ -8,8 +8,9 @@ Group=hass
 LogsDirectory=hass
 StateDirectory=hass hass-installation
 CacheDirectory=hass
-Environment=CARGO_HOME=%C/hass/cargo
-Environment=PYTHON_EGG_CACHE=%C/hass/python-eggs
+Environment=XDG_CACHE_HOME=%C/hass
+Environment=CARGO_HOME=${XDG_CACHE_HOME}/cargo
+Environment=PYTHON_EGG_CACHE=${XDG_CACHE_HOME}/python-eggs
 Environment=VIRTUAL_ENV=%S/hass-installation
 WorkingDirectory=~
 
@@ -19,15 +20,26 @@ Type=oneshot
 # install or upgrade the python venv, we want
 ExecStart=python -m venv --system-site-packages --upgrade "${VIRTUAL_ENV}"
 
-# upgrade home assistant and all its necessary libs
+# install/upgrade home assistant and all its necessary libs
 ExecStart=%S/hass-installation/bin/pip install --no-warn-script-location --upgrade homeassistant
+# delete old site packages from old versions of python
 ExecStart=sh -c '\
+		baseVenvLib=$(%S/hass-installation/bin/python -c "import os.path as path; import site; print(path.dirname(path.dirname(site.getsitepackages()[0])))"); \
+		curSitePackagesRel=$(%S/hass-installation/bin/python -c "import os.path as path; import site; print(path.basename(path.dirname(path.relpath(site.getsitepackages()[0],\'${VIRTUAL_ENV}/lib\'))))"); \
+		echo "keeping ${curSitePackagesRel} out of "${baseVenvLib}"; \
 		find \
-				$(%S/hass-installation/bin/python -c "import os.path as path; import site; print(path.dirname(path.dirname(site.getsitepackages()[0])))") -mindepth 1 -type d \
-				-path $(%S/hass-installation/bin/python -c "import os.path as path; import site; print(path.basename(path.dirname(path.relpath(site.getsitepackages()[0],'${VIRTUAL_ENV}/lib'))))") -prune \
+				"${baseVenvLib}" -mindepth 1 -type d \
+				-path "${curSitePackagesRel}" -prune \
 				-print0 \
 		| xargs --no-run-if-empty -0 rm --verbose --recursive'
-
+# remove pinned dependencies
+ExecStart=sh -c '\
+		sitePackages=$(%S/hass-installation/bin/python -c "import os.path as path; import site; print(site.getsitepackages()[0])"); \
+		find \
+				"${sitePackages}/homeassistant" \
+					-name "package_constraints.txt" \
+				-o	-name "manifest.json" \
+				-exec sed -i "s/==/>=/g" {} \;'
 
 LockPersonality=true
 RestrictRealtime=true
