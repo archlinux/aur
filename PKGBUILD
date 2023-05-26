@@ -1,6 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="mattermost-desktop-appimage"
-pkgver=5.3.1
+pkgver=5.4.0rc.1
+_subver=rc.1
 pkgrel=1
 pkgdesc="Mattermost Desktop application for Linux(AppImage Version)"
 arch=('x86_64')
@@ -10,8 +11,8 @@ options=(!strip)
 conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'glibc' 'hicolor-icon-theme')
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}-linux-x86_64.AppImage")
-sha256sums=('5b17868182cdff41f9cf04a1dbd982a867ac2c323183a64172883e00659f2a2e')
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver%${_subver}}-${_subver}/${pkgname%-appimage}-${pkgver%${_subver}}-${_subver}-linux-x86_64.AppImage")
+sha256sums=('4ee4470c96e8ef3392e60d26dcb6a3ca138d4dc5b92cd800efa7cbe42923b9e5')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
