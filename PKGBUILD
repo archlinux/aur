@@ -1,20 +1,22 @@
 # Maintainer: Jeremy Cantrell <jmcantrell at gmail dot com>
 
 pkgname=pathbomb
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Deploy files to known locations using predefined methods"
 arch=('any')
 url="https://git.sr.ht/~jmcantrell/$pkgname"
-license=('GPL3')
+license=('MIT')
 optdepends=(
+    'rsync: copy method'
     'stow: symlink method'
+    'gettext: template method'
     'age: decrypt method'
 )
 makedepends=('scdoc')
 checkdepends=('parallel' 'diffutils')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('728186d7008f8233df10430465dea7d98280b17084faa2525f669e238a1c1ba0')
+sha256sums=('c2c8fcf84cbb5f9815d127c4efd9344088bf3d733fcf1db89ec72c7473b1b6e6')
 
 check() {
     cd "$srcdir/$pkgname-refs/tags/v$pkgver"
