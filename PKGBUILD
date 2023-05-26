@@ -5,7 +5,7 @@
 
 pkgname=tikzit-git
 epoch=3
-pkgver=2.1.6
+pkgver=2.1.6.r38.gb308232
 pkgrel=1
 pkgdesc="Creation and modification of TeX diagrams written using the pgf/TikZ macro library - rewrite in QT and C++"
 arch=('i686' 'x86_64')
@@ -17,7 +17,6 @@ provides=('tikzit')
 conflicts=('tikzit')
 source=('git+https://github.com/tikzit/tikzit.git')
 md5sums=('SKIP')
-#options=('!makeflags')
 
 pkgver() {
   cd ${pkgname%-git}
@@ -29,7 +28,7 @@ build() {
   qmake PREFIX=/usr \
     QMAKE_CFLAGS="${CFLAGS}" \
     QMAKE_CXXFLAGS="${CXXFLAGS}" tikzit.pro  
-  make -j1 
+  make
 }
 
 package() {
