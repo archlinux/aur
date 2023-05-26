@@ -1,0 +1,33 @@
+pkgbase = emacs-gtk3-native-comp-git-stable
+	pkgdesc = GNU Emacs. Development master branch.
+	pkgver = 30.0.50.162808
+	pkgrel = 1
+	url = http://www.gnu.org/software/emacs/
+	install = emacs-git.install
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = mold
+	makedepends = mold
+	makedepends = xorgproto
+	makedepends = libxi
+	depends = gnutls
+	depends = libxml2
+	depends = jansson
+	depends = harfbuzz
+	depends = libgccjit
+	depends = gtk3
+	depends = libjpeg-turbo
+	depends = giflib
+	depends = alsa-lib
+	depends = cairo
+	depends = webkit2gtk
+	depends = gpm
+	provides = emacs
+	conflicts = emacs
+	replaces = emacs
+	options = !strip
+	source = emacs-git::git+https://github.com/emacs-mirror/emacs.git#commit=e6b4784a37fb6bfecfa5ee5d84b60fc79c1fc2db
+	b2sums = SKIP
+
+pkgname = emacs-gtk3-native-comp-git-stable
