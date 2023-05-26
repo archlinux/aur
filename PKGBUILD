@@ -1,5 +1,6 @@
 # Maintainer: Andrew Koidan <deathangel908@gmail.com>
 pkgname=cf-terraforming
+pkgbase=cf-terraforming
 pkgver=0.12.0
 pkgrel=1
 pkgdesc="Cloudflare Terraforming"
