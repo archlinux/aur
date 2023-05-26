@@ -2,7 +2,7 @@
 # Maintainer: Eric Anderson <ejona86@gmail.com>
 
 pkgname=printrun
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 epoch=1
 _projectname='Printrun'
@@ -21,7 +21,7 @@ optdepends=(
   'python-psutil: to increase process priority when printing')
 makedepends=('cython' 'python-setuptools')
 source=("https://github.com/kliment/${_projectname}/archive/${_gittag}.tar.gz")
-sha256sums=('cc6dc70749d6df54cf3231530037ed457708a6138957336fafb0818eb07cbc97')
+sha256sums=('883d83f1b110d9248f30ea29f5a198f4261a2c1fc05d5b0e7fcbe4f06412ded2')
 
 build() {
   cd "${srcdir}/${_projectname}-${_gittag}"
