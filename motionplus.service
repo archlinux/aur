@@ -1,0 +1,39 @@
+[Unit]
+Description=Motion daemon
+After=local-fs.target network.target
+
+[Service]
+User=motion
+ExecStart=/usr/bin/motion -n
+DynamicUser=true
+Type=simple
+RuntimeDirectory=motion
+LogsDirectory=motion
+StateDirectory=motion
+ReadWritePaths=/etc/motion/
+AmbientCapabilities=
+CapabilityBoundingSet=
+LockPersonality=true
+NoNewPrivileges=True
+PrivateDevices=true
+PrivateTmp=true
+PrivateUsers=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectProc=invisible
+ProtectSystem=strict
+RestrictAddressFamilies=AF_INET AF_INET6 AF_NETLINK AF_UNIX
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+
+[Install]
+WantedBy=multi-user.target
