@@ -1,0 +1,16 @@
+pkgbase = gpt-anywhere-appimage
+	pkgdesc = Use GPT anywhere with just one shortcut.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = http://jinay.dev/gpt-anywhere/
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = gpt-anywhere
+	options = !strip
+	source = gpt-anywhere-0.0.1.AppImage::https://github.com/JinayJain/gpt-anywhere/releases/download/app-v0.0.1/gpt-anywhere_0.0.1_amd64.AppImage
+	sha256sums = 5463b605eb886fa48cb6e504bbcc4ed31e661ac777810bd16cbdd5951279f0a8
+
+pkgname = gpt-anywhere-appimage
