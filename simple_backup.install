@@ -3,6 +3,3 @@ post_install() {
    echo "Copy it to ~/config/simple_backup/simple_backup.conf and modify it as needed"
 }
 
-post_upgrade() {
-   post_install
-}
