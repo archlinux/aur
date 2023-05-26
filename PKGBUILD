@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=turtlegit-git
 _app_id="de.philippun1.${pkgname%-git}"
-pkgver=0.1.r26.g1be6036
+pkgver=0.2.r10.ge8db89c
 pkgrel=1
 pkgdesc="A gtk4 + libadwaita frontend for pygit2 with nautilus plugin support."
 arch=('any')
@@ -38,7 +38,6 @@ package() {
   cd "$srcdir/${pkgname%-git}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm755 "${pkgname%-git}_cli" -t "$pkgdir/usr/bin/"
   install -Dm644 "data/icons/hicolor/scalable/apps/${_app_id}.svg" -t \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
   install -Dm644 "data/${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
