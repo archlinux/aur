@@ -1,5 +1,5 @@
 pkgname=harrison-32c-plugins-bin
-pkgver=22.03.18
+pkgver=20230526
 pkgrel=1
 pkgdesc="Harrison Consoles 32C Console VST Plugins"
 url="https://harrisonconsoles.com/32c-plugins/"

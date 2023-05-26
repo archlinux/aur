@@ -1,6 +1,6 @@
 pkgbase = harrison-32c-plugins-bin
 	pkgdesc = Harrison Consoles 32C Console VST Plugins
-	pkgver = 22.03.18
+	pkgver = 20230526
 	pkgrel = 1
 	url = https://harrisonconsoles.com/32c-plugins/
 	arch = x86_64
