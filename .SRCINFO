@@ -1,7 +1,7 @@
 pkgbase = openrgb
 	pkgdesc = Open source RGB lighting control that doesn't depend on manufacturer software.
 	pkgver = 0.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/CalcProgrammer1/OpenRGB
 	arch = x86_64
 	license = GPL2
@@ -10,7 +10,7 @@ pkgbase = openrgb
 	depends = qt5-base
 	depends = libusb
 	depends = hidapi
-	depends = mbedtls
+	depends = mbedtls2
 	optdepends = i2c-tools: Motherboard & RAM access
 	options = !lto
 	source = https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_0.8/OpenRGB-release_0.8.tar.gz
