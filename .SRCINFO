@@ -1,0 +1,16 @@
+pkgbase = kubenav-appimage
+	pkgdesc = The navigator for your Kubernetes clusters right in your pocket.
+	pkgver = 4.2.1
+	pkgrel = 1
+	url = https://kubenav.io/
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	options = !strip
+	source = kubenav-4.2.1.AppImage::https://github.com/kubenav/kubenav/releases/download/v4.2.1/kubenav-x86_64.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/kubenav/kubenav/main/LICENSE
+	sha256sums = 7b688a2df033ad3005ebd2d8a3df90c66e47b670a4738e3442de367342f80641
+	sha256sums = 5c11576cf31183a022b35080ac4d6c999d0f844758ce6fdf8491aa1476d852a7
+
+pkgname = kubenav-appimage
