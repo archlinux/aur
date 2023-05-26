@@ -1,13 +1,13 @@
 pkgbase = dbt-snowflake
 	pkgdesc = All of the code enabling dbt to work with Snowflake
-	pkgver = 1.3.0
-	pkgrel = 3
+	pkgver = 1.5.1
+	pkgrel = 1
 	url = https://github.com/dbt-labs/dbt-snowflake
 	arch = any
 	license = Apache
 	depends = python
 	provides = dbt
-	source = https://github.com/dbt-labs/dbt-snowflake/archive/refs/tags/v1.3.0.tar.gz
-	sha256sums = 8f6e5a7e10c6d783cea073c92760118b0fac5fb1af92cd008a016fae8938a3c1
+	source = https://github.com/dbt-labs/dbt-snowflake/archive/refs/tags/v1.5.1.tar.gz
+	sha256sums = 4bf925212138ea3b302627204dcc6b3263e54f03582e46b79fc89d787e900060
 
 pkgname = dbt-snowflake
