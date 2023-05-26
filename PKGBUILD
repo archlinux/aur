@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=uctags-git
-pkgver=r10227.39a017244
+pkgver=r10331.23bacc177
 pkgrel=1
 pkgdesc='Universal ctags (patched to allow installing alongside original ctags)'
 arch=('x86_64')
