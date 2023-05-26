@@ -1,15 +1,15 @@
 pkgbase = mkdocstrings
 	pkgdesc = Automatic documentation from sources, for MkDocs
-	pkgver = 0.21.2
+	pkgver = 0.22.0
 	pkgrel = 1
 	url = https://mkdocstrings.github.io
 	arch = any
 	license = ISC
-	makedepends = python-pdm-pep517
+	makedepends = python-pdm-backend
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/m/mkdocstrings/mkdocstrings-0.21.2.tar.gz
-	sha256sums = 304e56a2e90595708a38a13a278e538a67ad82052dd5c8b71f77a604a4f3d911
+	source = https://files.pythonhosted.org/packages/source/m/mkdocstrings/mkdocstrings-0.22.0.tar.gz
+	sha256sums = 82a33b94150ebb3d4b5c73bab4598c3e21468c79ec072eff6931c8f3bfc38256
 
 pkgname = mkdocstrings
 	depends = python>=3.7

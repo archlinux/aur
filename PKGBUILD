@@ -3,13 +3,13 @@
 pkgbase=mkdocstrings
 pkgname=("${pkgbase}")
 #"${pkgbase}-doc")
-pkgver=0.21.2
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="Automatic documentation from sources, for MkDocs"
 url="https://mkdocstrings.github.io"
 license=('ISC')
 arch=("any")
-makedepends=('python-pdm-pep517'
+makedepends=('python-pdm-backend'
              'python-build'
              'python-installer')
 #checkdepends=('python-pytest'
@@ -20,16 +20,17 @@ makedepends=('python-pdm-pep517'
 #              'mkdocs-coverage'
 #              'mkdocs-gen-files'
 #              'mkdocs-literate-nav'
-#              'python-mkdocs-section-index'
-#              'mkdocstrings-python')   # complete, but with circular dep
+##              'python-mkdocs-section-index'
+#              'mkdocstrings-python')   # complete, but with circular dep. missing git-committers
 #source=("https://github.com/mkdocstrings/mkdocstrings/archive/refs/tags/${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${pkgbase:0:1}/${pkgbase}/${pkgbase}-${pkgver}.tar.gz")
 #        "${pkgver}-mkdocs.yml::https://github.com/mkdocstrings/mkdocstrings/raw/${pkgver}/mkdocs.yml"
 #        "${pkgver}-CONTRIBUTING.md::https://github.com/mkdocstrings/mkdocstrings/raw/${pkgver}/CONTRIBUTING.md"
 #        "${pkgver}-CHANGELOG.md::https://github.com/mkdocstrings/mkdocstrings/raw/${pkgver}/CHANGELOG.md"
-#        "${pkgver}-gen_redirects.py::https://github.com/mkdocstrings/mkdocstrings/raw/${pkgver}/scripts/gen_redirects.py"
+#        "${pkgver}-main.html::https://github.com/mkdocstrings/mkdocstrings/raw/${pkgver}/docs/.overrides/main.html"
+##        "${pkgver}-gen_redirects.py::https://github.com/mkdocstrings/mkdocstrings/raw/${pkgver}/scripts/gen_redirects.py"
 #        "${pkgver}-gen_ref_nav.py::https://github.com/mkdocstrings/mkdocstrings/raw/${pkgver}/scripts/gen_ref_nav.py")
-sha256sums=('304e56a2e90595708a38a13a278e538a67ad82052dd5c8b71f77a604a4f3d911')
+sha256sums=('82a33b94150ebb3d4b5c73bab4598c3e21468c79ec072eff6931c8f3bfc38256')
 
 #prepare() {
 #    cd "${pkgbase}-${pkgver}"
@@ -40,7 +41,8 @@ sha256sums=('304e56a2e90595708a38a13a278e538a67ad82052dd5c8b71f77a604a4f3d911')
 #    mkdir -p scripts
 #    ln -rs {${srcdir}/${pkgver}-,scripts/}gen_ref_nav.py
 #    ln -rs {${srcdir}/${pkgver}-,scripts/}gen_redirects.py
-#    mkdir -p docs
+#    mkdir -p docs/.overrides
+#    ln -rs {${srcdir}/${pkgver}-,docs/.overrides/}main.html
 ##   sed -i "/optional/i version = \"${pkgver}\"" pyproject.toml
 #}
 
