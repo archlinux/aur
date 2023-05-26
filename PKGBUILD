@@ -13,8 +13,12 @@ pkgdesc="Chromium Embedded Framework minimal release needed by OBS Studio releas
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/cef/tree/5060-shared-textures"
 license=("BSD")
-depends=("nss" "alsa-lib" "pango" "libxrandr" "libxcomposite"
-         "at-spi2-core" "libxkbcommon" "libcups" "mesa")
+depends=(
+  "alsa-lib" "at-spi2-core" "dbus" "expat" "gcc-libs" "glib2"
+  "glibc" "libcups" "libdrm" "libx11" "libxcb" "libxcomposite"
+  "libxdamage" "libxext" "libxfixes" "libxkbcommon" "libxrandr" "mesa"
+  "nspr" "nss" "wayland"
+)
 makedepends=("cmake")
 provides=("cef-minimal-obs=$pkgver")
 conflicts=("cef-minimal-obs")
@@ -28,7 +32,7 @@ sha256sums_aarch64=("68d915c9ba2639cba762a54cd3430fce2527aa6355d831d3cfcb6157664
 prepare() {
   cd "${srcdir}/cef_binary_${_cefbranch}_linux_${CARCH}"
 
-  # Fix folder permissions
+  # Fix directories permissions
   chmod 755 Release
   chmod 755 Resources
   chmod 755 Resources/locales
@@ -60,7 +64,7 @@ build() {
   cd "${srcdir}/cef_binary_${_cefbranch}_linux_${CARCH}"
 
   cmake \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_BUILD_TYPE=None \
     -DPROJECT_ARCH=$CARCH .
 
   make libcef_dll_wrapper
