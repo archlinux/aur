@@ -1,0 +1,24 @@
+From 60637ae7d8daf6d70f7316cb44cd1d76b50be67a Mon Sep 17 00:00:00 2001
+From: Jan Cholasta <jan@cholasta.net>
+Date: Sat, 27 May 2023 10:18:29 +0200
+Subject: [PATCH] Fix compilation
+
+---
+ src/sound/oalsound.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/sound/oalsound.cpp b/src/sound/oalsound.cpp
+index 53c471a31..5231cb5c7 100644
+--- a/src/sound/oalsound.cpp
++++ b/src/sound/oalsound.cpp
+@@ -42,6 +42,7 @@
+ 
+ #include <memory>
+ #include <chrono>
++#include <functional>
+ 
+ #include "except.h"
+ #include "doomstat.h"
+-- 
+2.40.1
+

@@ -1,8 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
-_name=zdoom
-pkgname=${_name}-git
-pkgver=2.9pre+2175+g4f21ff275
+pkgname=zdoom-git
+pkgver=2.9pre+2176+gd44976175
 pkgrel=1
 pkgdesc='Advanced Doom source port (git version)'
 arch=('i686' 'x86_64')
@@ -40,44 +39,48 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'timidity++: Timidity MIDI device'
             'urbanbrawl-wad: Urban Brawl: Action Doom 2 game data'
             'xorg-xmessage: crash dialog (other)')
-provides=("${_name}")
-conflicts=("${_name}")
-source=("${_name}::git+https://github.com/rheit/${_name}.git"
-        "${_name}.desktop")
+provides=('zdoom')
+conflicts=('zdoom')
+source=('zdoom::git+https://github.com/rheit/zdoom.git'
+        'zdoom.desktop'
+        '0001-Fix-file-paths.patch'
+        '0002-Fix-compilation.patch')
 sha256sums=('SKIP'
-            'e8932a559baf30ecbfc062546ca014c6dfb70f76d1570549654209d39157e350')
+            'e8932a559baf30ecbfc062546ca014c6dfb70f76d1570549654209d39157e350'
+            '02f3da08b3c08be89eeb149fb2be45087ef4a86f5b634e9dac8075c864acc962'
+            '09a27450988d259a82b5fa056e1c58c89f57eab287d873af65e39c6d30789a5d')
 
 pkgver() {
-    cd $_name
-
+    cd zdoom
     git describe --tags | sed -r 's/-/+/g'
 }
 
-build() {
-    cd $_name
+prepare() {
+    cd zdoom
+    patch -i "$srcdir"/0001-Fix-file-paths.patch -p 1
+    patch -i "$srcdir"/0002-Fix-compilation.patch -p 1
+}
 
-    cmake -DCMAKE_BUILD_TYPE=Release \
-          -DNO_FMOD=ON \
-          -DCMAKE_C_FLAGS="$CFLAGS -DSHARE_DIR=\\\"/usr/share/$_name\\\"" \
-          -DCMAKE_CXX_FLAGS="$CXXFLAGS -DSHARE_DIR=\\\"/usr/share/$_name\\\"" \
-          -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -Wl,-z,noexecstack" \
-          -DCMAKE_INSTALL_PREFIX=/usr \
-          -DINSTALL_PATH=bin \
-          -DINSTALL_PK3_PATH=share/$_name \
+build() {
+    cd zdoom
+    mkdir -p build
+    cmake -B build \
+          -D CMAKE_BUILD_TYPE=Release \
+          -D NO_FMOD=ON \
+          -D CMAKE_CXX_FLAGS="$CXXFLAGS -ffile-prefix-map=\"$PWD\"=. -DSHARE_DIR=\\\"/usr/share/zdoom\\\"" \
+          -D CMAKE_EXE_LINKER_FLAGS="$LDFLAGS -Wl,-z,noexecstack" \
+          -D CMAKE_INSTALL_PREFIX=/usr \
+          -D INSTALL_PATH=bin \
+          -D INSTALL_PK3_PATH=share/zdoom \
           .
-    make
+    make -C build
 }
 
 package() {
-    cd $_name
-
-    make install DESTDIR="$pkgdir"
-
-    desktop-file-install --dir="$pkgdir"/usr/share/applications \
-                         "$srcdir"/${_name}.desktop
-    install -D -m644 src/posix/zdoom.xpm \
-            "$pkgdir"/usr/share/icons/hicolor/48x48/apps/${_name}.xpm
-
+    cd zdoom
+    make -C build install DESTDIR="$pkgdir"
     install -d "$pkgdir"/usr/share/licenses
-    ln -s /usr/share/doc/$_name/licenses "$pkgdir"/usr/share/licenses/$pkgname
+    mv "$pkgdir"/usr/share/doc/zdoom/licenses "$pkgdir"/usr/share/licenses/zdoom
+    desktop-file-install "$srcdir"/zdoom.desktop --dir="$pkgdir"/usr/share/applications
+    install src/posix/zdoom.xpm -D -m 644 "$pkgdir"/usr/share/icons/hicolor/48x48/apps/zdoom.xpm
 }

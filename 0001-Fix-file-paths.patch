@@ -1,0 +1,39 @@
+From e844cd8046f31ea3f6e08e511c5485f46fc14ae8 Mon Sep 17 00:00:00 2001
+From: Jan Cholasta <jan@cholasta.net>
+Date: Sat, 27 May 2023 10:01:55 +0200
+Subject: [PATCH] Fix file paths
+
+---
+ src/gameconfigfile.cpp                    | 2 --
+ src/sound/music_fluidsynth_mididevice.cpp | 2 +-
+ 2 files changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/src/gameconfigfile.cpp b/src/gameconfigfile.cpp
+index e6a0f9935..ed7b5cbcd 100644
+--- a/src/gameconfigfile.cpp
++++ b/src/gameconfigfile.cpp
+@@ -129,8 +129,6 @@ FGameConfigFile::FGameConfigFile ()
+ 		// Arch Linux likes them in /usr/share/doom
+ 		// Debian likes them in /usr/share/games/doom
+ 		// I assume other distributions don't do anything radically different
+-		SetValueForKey ("Path", "/usr/local/share/doom", true);
+-		SetValueForKey ("Path", "/usr/local/share/games/doom", true);
+ 		SetValueForKey ("Path", "/usr/share/doom", true);
+ 		SetValueForKey ("Path", "/usr/share/games/doom", true);
+ #endif
+diff --git a/src/sound/music_fluidsynth_mididevice.cpp b/src/sound/music_fluidsynth_mididevice.cpp
+index bbd6536bc..4ba6412fe 100644
+--- a/src/sound/music_fluidsynth_mididevice.cpp
++++ b/src/sound/music_fluidsynth_mididevice.cpp
+@@ -311,7 +311,7 @@ FluidSynthMIDIDevice::FluidSynthMIDIDevice(const char *args)
+ 	{
+ #ifdef __unix__
+ 		// This is the standard location on Ubuntu.
+-		if (0 == LoadPatchSets("/usr/share/sounds/sf2/FluidR3_GS.sf2:/usr/share/sounds/sf2/FluidR3_GM.sf2"))
++		if (0 == LoadPatchSets("/usr/share/soundfonts/FluidR3_GS.sf2:/usr/share/soundfonts/FluidR3_GM.sf2"))
+ 		{
+ #endif
+ #ifdef _WIN32
+-- 
+2.40.1
+
