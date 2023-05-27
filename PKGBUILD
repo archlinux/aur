@@ -5,24 +5,22 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.13.beta1.r57.g0eea95f7d
+pkgver=0.5.13.r11.gc5ce4e926
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
 url='https://lutris.net/'
 license=('GPL3')
-depends=('cabextract' 'curl' 'glib2' 'gtk3' 'mesa-utils' 'p7zip' 'psmisc'
+depends=('cabextract' 'curl' 'glib2' 'gnome-desktop' 'gtk3' 'mesa-utils' 'p7zip' 'psmisc'
          'python-cairo' 'python-certifi' 'python-dbus' 'python-distro' 'python-gobject'
-         'python-lxml' 'python-pillow' 'python-requests' 'python-yaml' 'unzip'
-         'webkit2gtk-4.1' 'xdg-utils' 'xorg-xrandr')
+         'python-lxml' 'python-moddb' 'python-pillow' 'python-requests' 'python-yaml' 'unzip'
+         'vulkan-tools' 'webkit2gtk-4.1' 'xdg-desktop-portal' 'xdg-utils' 'xorg-xrandr')
 makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
-#checkdepends=('appstream-glib' 'libcanberra' 'pciutils' 'python-nose2'
-#              'xorg-server-xvfb' 'xterm')
+#checkdepends+=('libcanberra' 'pciutils' 'python-nose2' 'xorg-server-xvfb' 'xterm')
 optdepends=(
   'gamemode: Allows games to request a temporary set of optimisations'
   'gamescope: Draw the game window isolated from your desktop'
-  'gnome-desktop: Get display and resolution using GnomeDesktop'
   'gvfs: GVFS backend'
   'innoextract: Extract Inno Setup installers'
   'lib32-gamemode: Allows games to request a temporary set of optimisations'
@@ -34,7 +32,6 @@ optdepends=(
   'linux-steam-integration: start Steam with LSI'
   "mangohud: Display the games' FPS + other information"
   'python-evdev: Controller support'
-  'python-moddb: Handle ModDB downloads in installers'
   'python-pefile: Extract icons from Windows executables'
   'python-protobuf: BattleNet integration'
   'python-pypresence: Discord Rich Presence integration'
