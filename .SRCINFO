@@ -36,6 +36,6 @@ pkgname = linux-xanmod-manjusaka
 	provides = KSMBD-MODULE
 	provides = NTFS3-MODULE
 
-pkgname = linux-xanmod-headers
+pkgname = linux-xanmod-manjusaka-headers
 	pkgdesc = Headers and scripts for building modules for the Linux Xanmod - Current Stable (CURRENT) kernel with custom config
 	depends = pahole
