@@ -1,7 +1,7 @@
 # Maintainer: SelfRef <arch@selfref.dev>
 pkgname=xfce-winxp-tc-git
 pkgver=r242.484ec47
-pkgrel=1
+pkgrel=2
 pkgdesc="Windows XP Total Conversion for XFCE"
 arch=('x86_64')
 url="https://github.com/rozniak/xfce-winxp-tc"
@@ -10,8 +10,10 @@ depends=('xfce4-panel')
 makedepends=('git' 'cmake' 'xorg-xcursorgen' 'ruby-sass' 'xfce4-panel')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/rozniak/xfce-winxp-tc.git')
-md5sums=('SKIP')
+source=('git+https://github.com/rozniak/xfce-winxp-tc.git'
+		'components.build')
+md5sums=('SKIP'
+		 '52dee916cabb7dafb573974688b6272f')
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
