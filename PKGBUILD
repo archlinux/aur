@@ -1,7 +1,7 @@
 # Maintainer: mekb https://github.com/mekb-turtle
 # shellcheck disable=SC2034
 pkgname=foto
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Simple image viewer written in C'
 arch=('any')
