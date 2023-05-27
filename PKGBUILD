@@ -64,8 +64,8 @@ _use_O3=${_use_O3-y}
 # Use LLVM Type ( "full" or "thin" )
 _use_llvm_type=${_use_llvm_type-'full'}
 
-# cpufreq gov (available:performance,ondemand,conservative,userspace,schedutil,powersave)
-_cpufreq=${_cpufreq-'performance'}
+# cpufreq gov (available: performance, ondemand, conservative, userspace, schedutil, powersave)
+_cpufreq=${_cpufreq-'schedutil'}
 
 # LRU setting
 _use_lru=${_use_lru-y}
@@ -102,7 +102,7 @@ fi
 
 pkgbase=linux-xanmod-tt-uksm-cjktty
 _major=6.3
-pkgver=${_major}.0
+pkgver=${_major}.4
 _branch=6.x
 xanmod=1
 pkgrel=${xanmod}
@@ -145,10 +145,10 @@ done
 
 sha256sums=('ba3491f5ed6bd270a370c440434e3d69085fcdd528922fa01e73d7657db73b1e'
             'SKIP'
-            '6d42828005f682f4a422f9baf7d1c312963511ed7476a684fdf5e6b9b85fbf8d'
+            'eccd582b2045c3b1993df58be9cbed2c67b5a4171a878b9b9928eb1af7fd8a2e'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
             '427b16aeece1b62667ab34d45e43e4f476f5f4875daf8553597c95e2bfa22ef1'
-            'ad0a0597ac206f977047d47974a0c9614f4e8aae95573f9958bd9773f68cdabc')
+            'eb7d7f0b0c7bca67140cc02109f022f06637b8fed1229d4f37a2d7af5bd38dde')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
