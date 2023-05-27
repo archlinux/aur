@@ -22,6 +22,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 
@@ -30,6 +31,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
