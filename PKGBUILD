@@ -45,10 +45,8 @@ prepare() {
   # Disable building of rpm
   patch --strip=1 gui/tasks/distribution.js < ../no-rpm.diff
 
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  echo "Removing old Rust build artifacts"
-  cargo clean
-
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 
   pushd wireguard/libwg
@@ -66,6 +64,8 @@ prepare() {
 
 build() {
   cd "$srcdir/mullvadvpn-app"
+  export CARGO_HOME="$srcdir/cargo-home"
+  export RUSTUP_TOOLCHAIN=stable
   local RUSTC_VERSION=$(rustc --version)
   local PRODUCT_VERSION=$(cargo run -q --bin mullvad-version)
 
