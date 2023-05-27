@@ -1,7 +1,7 @@
 # Maintainer: Andrew O'Neill <andrew at haunted dot sh>
 
 pkgname=musikcube
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='A terminal-based cross-platform music player, audio engine, metadata indexer, and server'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('faad2' 'libogg' 'libvorbis' 'flac' 'libmicrohttpd' 'lame' 'ncurses' 'l
 makedepends=('asio' 'cmake' 'patchelf')
 optdepends=('libopenmpt: OpenMPT support')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('b857980c214f86f17cc288eda4562b51683cd42a843a4a4d8d8e60169cf87345')
+sha256sums=('94fe7e2dba60137bbfee25c037850ac064744cd8c050cc76360580b2b6790632')
 
 build() {
   cd "${pkgname}-${pkgver}"
