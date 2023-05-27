@@ -1,11 +1,11 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=neo_f3kdb
 pkgbase="foosynth-plugin-${_plug}-git"
 pkgname=("avisynth-plugin-${_plug}-git"
          "vapoursynth-plugin-${_plug}-git"
          )
-pkgver=7.0.ga72cf3d
+pkgver=9.0.g56bfb1b
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth/Avisynth: ${_plug} (Dual interface for Vapoursynth/Avisynth) (GIT version)"
 arch=('x86_64')
@@ -31,6 +31,8 @@ prepare() {
 }
 
 build() {
+ export CFLAGS="${CFLAGS/-march=x86-64 -mtune=generic/-march=native}"
+
   cd "${_plug}/build"
   cmake -S .. -B . \
     -DCMAKE_BUILD_TYPE=Release \

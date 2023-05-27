@@ -1,6 +1,6 @@
 pkgbase = foosynth-plugin-neo_f3kdb-git
 	pkgdesc = Plugin for Vapoursynth/Avisynth: neo_f3kdb (Dual interface for Vapoursynth/Avisynth) (GIT version)
-	pkgver = 7.0.ga72cf3d
+	pkgver = 9.0.g56bfb1b
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=176553
 	arch = x86_64
