@@ -1,6 +1,6 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@gmail.com>
 pkgname=dektec-drivers-dkms
-pkgver=2022.12.0
+pkgver=2022.12.2
 pkgrel=1
 pkgdesc="Linux DKMS for Dektec device drivers"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=()
 provides=('dektec-drivers-dkms')
 conflicts=('dektec-drivers-dkms' 'dektec-dkms')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tsduck/dektec-dkms/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('65d4db05b5b0af39a4580e4bbe5957120c8d3bc93781762b1e40bd75978b4fbb')
+sha256sums=('75ec6248f75c93f221471b3e5edbd4a7dca436df84910805f7dcba29e24af28f')
 
 prepare() {
 	cd "${srcdir}/dektec-dkms-${pkgver}"
