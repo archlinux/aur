@@ -2,7 +2,7 @@
 # Contributor: sh4nks <sh4nks7@gmail.com
 
 pkgname=lightdm-pantheon-greeter-git
-pkgver=5.0.4.r38.fd23540
+pkgver=6.1.1.r72.fb7833ef
 pkgrel=1
 pkgdesc='Pantheon greeter for LightDM'
 arch=(x86_64)
@@ -35,8 +35,7 @@ pkgver() {
 }
 
 build() {
-  arch-meson lightdm-pantheon-greeter build \
-    -D ubuntu-patched-gsd=false
+  arch-meson lightdm-pantheon-greeter build
   ninja -C build
 }
 
