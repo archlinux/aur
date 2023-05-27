@@ -31,6 +31,7 @@ pkgver() {
 
 build() {
 	cd websurfx
+    git checkout stable
 	cargo build -r
 }
 
