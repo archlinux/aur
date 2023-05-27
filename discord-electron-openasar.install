@@ -1,0 +1,18 @@
+post_upgrade() {
+	# return if old package version is greater than or equal to 0.0.27+809-2...
+	(( $(vercmp $2 '0.0.27+809-2') >= 0 )) && return
+
+	cat <<EOF
+==> You can now add or uncomment additional Electron flags in
+	'~/.config/discord-flags.conf' (if XDG_CONFIG_HOME is not set)
+
+EOF
+}
+
+post_install() {
+	cat <<EOF
+==> In case of performance problems consider adding or uncommenting Electron
+	flags in '~/.config/discord-flags.conf' (if XDG_CONFIG_HOME is not set)
+
+EOF
+}
