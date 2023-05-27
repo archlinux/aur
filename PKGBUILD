@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Lyashuk <lyashuk.voxx at gmail dot com>
 pkgname=doom2df-editor-qt4
 pkgver=0.667
-pkgrel=2
+pkgrel=3
 pkgdesc="Official map editor for Doom 2D: Forever, qt4 version."
 arch=(x86_64 i686)
 url="https://doom2d.org/"
@@ -22,7 +22,7 @@ md5sums=(
   'SKIP'
   '6e002827b10502fb00feab7d64a021f1'
   '1ad21e89200ff2bdcae68935b43f53fd'
-  '52d00efd565ea0f92eb872d8ec39c23f'
+  '8dfb08b8e31386b612156db8e61a0fde'
 )
 options=(
   !strip
@@ -37,18 +37,18 @@ prepare(){
 
   # Check directories bin and tmp and remove them for normal rebuilding
   if [ -d "$BIN" ]; then
-		rm -r bin
+    		rm -r bin
   else
-	echo "Here we go"
+    	echo "Here we go"
 	fi;
 
 
   if [ -d "$TMP" ]; then
-		rm -r tmp
+    		rm -r tmp
   else
-	echo "Here we go"
+    	echo "Here we go"
 	fi;
-
+	
   # Make these directories
   mkdir bin
   mkdir tmp
@@ -59,13 +59,13 @@ build() {
 
   # Before building the editor, make lang files
   cd "${srcdir}/d2df-editor/"
-	mkdir -p data/lang
-		# EN
-		msguniq lang/editor.en_US.po | msgfmt -o lang/editor.en_US.mo -
-			mv lang/editor.en_US.mo ../editor.en_US.mo
-		# RU
-		msguniq $PWD/lang/editor.ru_RU.po | msgfmt -o lang/editor.ru_RU.mo -
-			mv lang/editor.ru_RU.mo ../editor.ru_RU.mo
+  	mkdir -p data/lang
+  		# EN
+  		msguniq lang/editor.en_US.po | msgfmt -o lang/editor.en_US.mo -
+  			mv lang/editor.en_US.mo ../editor.en_US.mo
+  		# RU
+  		msguniq $PWD/lang/editor.ru_RU.po | msgfmt -o lang/editor.ru_RU.mo -
+  			mv lang/editor.ru_RU.mo ../editor.ru_RU.mo
 
   # Export environment variable before building
   export D2DF_BUILD_HASH="$(git rev-parse HEAD)"
@@ -75,7 +75,7 @@ build() {
   
   cd ../../bin
   cp editor ../../
-
+  
 }
 
 
