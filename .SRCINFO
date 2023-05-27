@@ -1,6 +1,6 @@
 pkgbase = aliyunpan-cli
 	pkgdesc = Aliyunpan CLI
-	pkgver = 3.0.8
+	pkgver = 3.0.9
 	pkgrel = 1
 	url = https://github.com/wxy1343/aliyunpan
 	arch = any
@@ -19,11 +19,11 @@ pkgbase = aliyunpan-cli
 	depends = python-treelib
 	depends = aria2p
 	provides = aliyunpan
-	source = aliyunpan-3.0.8.tar.gz::https://github.com/wxy1343/aliyunpan/archive/refs/tags/v3.0.8.tar.gz
+	source = aliyunpan-3.0.9.tar.gz::https://github.com/wxy1343/aliyunpan/archive/v3.0.9.tar.gz
 	source = dlnap-master.tar::https://github.com/cherezov/dlnap/archive/master.tar.gz
 	source = 0001-upgrade-requirements.patch
-	sha256sums = 2fd8a2cc60fe73b05399886829d60bd9613da17ecee4beb8f1c63616e033ff61
+	sha256sums = bcf6aefbf2990dd1f81a24b9307363b2198d5540b22c6099d4a56ff25010cba4
 	sha256sums = SKIP
-	sha256sums = 861a40ead90266234e2ecca520ea837e3118f994431053f390f7b81bf45b0fb9
+	sha256sums = 130eae5955b74cdc9984c1bc69982480d0b38fdbe719de068a7a12dcc4c8b3d3
 
 pkgname = aliyunpan-cli
