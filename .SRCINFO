@@ -1,7 +1,7 @@
 pkgbase = zdoom
 	pkgdesc = Advanced Doom source port
 	pkgver = 2.8.1
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.zdoom.org/
 	arch = i686
 	arch = x86_64
@@ -43,9 +43,11 @@ pkgbase = zdoom
 	noextract = zdoom-2.8.1-src.7z
 	source = http://zdoom.org/files/zdoom/2.8/zdoom-2.8.1-src.7z
 	source = zdoom.desktop
-	source = 0001-Improve-Mac-GCC-errors-fix-to-work-only-for-GCC.patch
+	source = 0001-Fix-file-paths.patch
+	source = 0002-Improve-Mac-GCC-errors-fix-to-work-only-for-GCC.patch
 	sha256sums = 782179d4667d2e56e26e21d7a0872523f8e4262ed176072fef00d0043376a310
 	sha256sums = e8932a559baf30ecbfc062546ca014c6dfb70f76d1570549654209d39157e350
+	sha256sums = 2e9edd1f776a1e706f21e35b6f066fcd086dece2e9e4e0832ab9714658ff6b6b
 	sha256sums = 3de616393fa2eea8540c59c983a4394b29a0a0220095297a3f47e4f721b8d9fb
 	makedepends_i686 = nasm
 

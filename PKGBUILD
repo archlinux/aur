@@ -1,10 +1,9 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 # Contributor: Andrew Rabert <arabert@nullsum.net>
 
-_name=zdoom
-pkgname=${_name}
+pkgname=zdoom
 pkgver=2.8.1
-pkgrel=5
+pkgrel=6
 pkgdesc='Advanced Doom source port'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
@@ -40,54 +39,48 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'timidity++: Timidity MIDI device'
             'urbanbrawl-wad: Urban Brawl: Action Doom 2 game data'
             'xorg-xmessage: crash dialog (other)')
-source=("http://zdoom.org/files/${_name}/${pkgver%.${pkgver#*.*.}}/${_name}-${pkgver}-src.7z"
-        "${_name}.desktop"
-        '0001-Improve-Mac-GCC-errors-fix-to-work-only-for-GCC.patch')
+source=("http://zdoom.org/files/zdoom/${pkgver%.${pkgver#*.*.}}/zdoom-${pkgver}-src.7z"
+        'zdoom.desktop'
+        '0001-Fix-file-paths.patch'
+        '0002-Improve-Mac-GCC-errors-fix-to-work-only-for-GCC.patch')
 noextract=("${source[0]##*/}")
 sha256sums=('782179d4667d2e56e26e21d7a0872523f8e4262ed176072fef00d0043376a310'
             'e8932a559baf30ecbfc062546ca014c6dfb70f76d1570549654209d39157e350'
+            '2e9edd1f776a1e706f21e35b6f066fcd086dece2e9e4e0832ab9714658ff6b6b'
             '3de616393fa2eea8540c59c983a4394b29a0a0220095297a3f47e4f721b8d9fb')
 
 prepare() {
-    7z x -o${_name} -y "${source[0]##*/}" >/dev/null
-
-    cd $_name
-
-    patch -p 1 -i "$srcdir"/0001-Improve-Mac-GCC-errors-fix-to-work-only-for-GCC.patch
+    7z x -ozdoom -y "${source[0]##*/}" >/dev/null
+    cd zdoom
+    patch -i "$srcdir"/0001-Fix-file-paths.patch -p 1
+    patch -i "$srcdir"/0002-Improve-Mac-GCC-errors-fix-to-work-only-for-GCC.patch -p 1
 }
 
 build() {
-    cd $_name
-
-    cmake -DCMAKE_BUILD_TYPE=Release \
-          -DNO_FMOD=ON \
-          -DGME_INCLUDE_DIR='/usr/include/gme' \
-          -DFORCE_INTERNAL_GME=OFF \
-          -DCMAKE_C_FLAGS="$CFLAGS -DSHARE_DIR=\\\"/usr/share/${_name}\\\"" \
-          -DCMAKE_CXX_FLAGS="$CXXFLAGS -DSHARE_DIR=\\\"/usr/share/${_name}\\\"" \
-          -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -Wl,-z,noexecstack" \
+    cd zdoom
+    mkdir -p build
+    cmake -B build \
+          -D CMAKE_BUILD_TYPE=Release \
+          -D NO_FMOD=ON \
+          -D GME_INCLUDE_DIR=/usr/include/gme \
+          -D FORCE_INTERNAL_GME=OFF \
+          -D CMAKE_CXX_FLAGS="$CXXFLAGS -ffile-prefix-map=\"$PWD\"=. -DSHARE_DIR=\\\"/usr/share/zdoom\\\"" \
+          -D CMAKE_EXE_LINKER_FLAGS="$LDFLAGS -Wl,-z,noexecstack" \
           .
-    make
-
+    make -C build
     sed -n '/\*\*-/,/\*\*-/p' src/version.h >bsd.txt
-
-    convert 'src/win32/icon1.ico[2]' ${_name}.xpm
+    convert 'src/win32/icon1.ico[2]' zdoom.xpm
 }
 
 package() {
-    cd $_name
-
-    install -D $_name "$pkgdir"/usr/bin/$_name
-    install -D -m644 ${_name}.pk3 "$pkgdir"/usr/share/$_name/${_name}.pk3
-
-    desktop-file-install --dir="$pkgdir"/usr/share/applications \
-                         "$srcdir"/${_name}.desktop
-    install -D -m644 ${_name}.xpm \
-            "$pkgdir"/usr/share/icons/hicolor/48x48/apps/${_name}.xpm
-
-    install -d "$pkgdir"/usr/share/licenses/$pkgname
-    install -m644 bsd.txt "$pkgdir"/usr/share/licenses/$pkgname/bsd.txt
-    install -m644 docs/BUILDLIC.TXT "$pkgdir"/usr/share/licenses/$pkgname/buildlic.txt
-    install -m644 docs/doomlic.txt "$pkgdir"/usr/share/licenses/$pkgname/doomlic.txt
-    install -m644 dumb/licence.txt "$pkgdir"/usr/share/licenses/$pkgname/dumb.txt
+    cd zdoom
+    install build/zdoom -D -t "$pkgdir"/usr/bin
+    install build/zdoom.pk3 -D -m 644 -t "$pkgdir"/usr/share/zdoom
+    install -d "$pkgdir"/usr/share/licenses/zdoom
+    install bsd.txt -m 644 "$pkgdir"/usr/share/licenses/zdoom/bsd.txt
+    install docs/BUILDLIC.TXT -m 644 "$pkgdir"/usr/share/licenses/zdoom/buildlic.txt
+    install docs/doomlic.txt -m 644 "$pkgdir"/usr/share/licenses/zdoom/doomlic.txt
+    install dumb/licence.txt -m 644 "$pkgdir"/usr/share/licenses/zdoom/dumb.txt
+    desktop-file-install "$srcdir"/zdoom.desktop --dir="$pkgdir"/usr/share/applications
+    install zdoom.xpm -D -m 644 "$pkgdir"/usr/share/icons/hicolor/48x48/apps/zdoom.xpm
 }
