@@ -1,41 +1,32 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
-
-pkgname=python-eigency
-_pkg="${pkgname#python-}"
-pkgver=2.0.0
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
+_base=eigency
+pkgname=python-${_base}
+pkgver=3.4.0.0
 pkgrel=1
-pkgdesc='Cython interface to Eigen library'
-arch=('x86_64')
-url="https://github.com/wouterboomsma/eigency"
-license=('MIT')
-depends=('eigen' 'python-numpy' 'python-setuptools')
-makedepends=(
-	'cython'
-	'python-build'
-	'python-installer'
-	'python-oldest-supported-numpy'
-	'python-setuptools-scm'
-	'python-wheel')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz"
-        'use-system-eigen.diff::https://patch-diff.githubusercontent.com/raw/wouterboomsma/eigency/pull/59.diff')
-sha256sums=('a2b5e20631f7775490e8f1d648abbcd4686596b07344af0a3f62d42ec1309286'
-            '8f8a7654d762b56a6fd4720c33c6a8d8a7e48778f1bff1e28ced61f734ab962f')
+pkgdesc="Cython interface between the numpy arrays and the Matrix/Array classes of the Eigen C++ library"
+arch=(x86_64)
+url="https://github.com/wouterboomsma/${_base}"
+license=(MIT)
+depends=(eigen python-numpy)
+makedepends=(python-build python-installer python-setuptools-scm python-wheel cython) # python-oldest-supported-numpy
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
+sha512sums=('7b1ea92674f29c9bbfa88c8e5a36157d70031f5af615b23a826ff5576d0217a1fa6c2175fb5d71a0bd99a1ab6c417b63029c1fa808bb80eeeab46bc8b96b424e')
 
 prepare() {
-	cd "$_pkg-$pkgver"
-	rm -rf "$_pkg/eigen"
-	patch -p1 < "$srcdir/use-system-eigen.diff"
+  # https://github.com/wouterboomsma/eigency/pull/59
+  sed -i 's/#include <Eigen\/Core>/#include <eigen3\/Eigen\/Core>/' ${_base}-${pkgver}/eigency/eigency_cpp.h
+  sed -i 's/#include <Eigen\/Core>/#include <eigen3\/Eigen\/Core>/' ${_base}-${pkgver}/eigency/eigency.h
 }
 
 build() {
-	cd "$_pkg-$pkgver"
-	EIGEN_INC=/usr/include/eigen3/ python -m build --wheel --no-isolation
+  cd ${_base}-${pkgver}
+  export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
+  python setup.py build_ext --inplace
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
-	cd "$_pkg-$pkgver"
-	python -m installer --destdir="$pkgdir/" dist/*.whl
-	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -sv "$_site/$_pkg-$pkgver.dist-info/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
 }
