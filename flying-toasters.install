@@ -1,0 +1,30 @@
+post_install() {
+	     echo " To add the screensaver (assuming you haven't already done this), you must do the following: "
+	     echo "   1. Add the path to the flying-toasters executable to the programs section in /usr/share/X11/app-defaults/XScreenSaver. It should look something like this after you edit it (remember to add a backslash after the last entry's \"\\n\" before adding this new entry for Flying-toasters:"
+	     echo "                                                                                     "
+  	     echo "     programs:                                                                     \\"
+  	     echo "                                     maze -root                                  \\n\\"
+	     echo "     - GL:                           superquadrics -root                         \\n\\"
+	     echo "     ..."
+	     echo "     - GL:                           sphereeversion -root                        \\n\\"
+	     echo "                                     /usr/local/bin/flying-toasters              \\n\\"
+	     echo "                                                                                     "
+	     echo "   2. Launch xscreensaver-settings and select "Flying-toasters" as your screensaver. It has no settings."
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	     echo " To remove the screensaver (assuming you haven't already done this), you must do the following: "
+	     echo "   1. Remove the path to the flying-toasters executable to the programs section in /usr/share/X11/app-defaults/XScreenSaver. It should look something like this after you edit it:"
+	     echo "                                                                                     "
+  	     echo "     programs:                                                                     \\"
+  	     echo "                                     maze -root                                  \\n\\"
+	     echo "     - GL:                           superquadrics -root                         \\n\\"
+	     echo "     ..."
+	     echo "     - GL:                           sphereeversion -root                        \\n\\"
+	     echo "                                                                                     "
+	     echo "   2. Restart xscreensaver and xscreensaver-settings"
+}

@@ -1,0 +1,18 @@
+pkgbase = xscreensaver-flying-toasters-git
+	pkgdesc = Classic After Dark screensaver recreation for XScreensaver.
+	pkgver = 1.2.0.r0.g1c1e4e6
+	pkgrel = 1
+	url = https://github.com/torunar/flying-toasters-xscreensaver
+	install = flying-toasters.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = xscreensaver
+	depends = libxpm
+	depends = libx11
+	depends = glibc
+	depends = xscreensaver-settings
+	source = git+https://github.com/torunar/flying-toasters-xscreensaver.git
+	sha256sums = SKIP
+
+pkgname = xscreensaver-flying-toasters-git
