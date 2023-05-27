@@ -22,11 +22,13 @@ pkgver() {
 
 prepare() {
   cd obfuscate
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   arch-meson obfuscate build
   meson compile -C build
