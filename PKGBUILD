@@ -1,10 +1,11 @@
 # Maintainer: Yidaozhan Ya <yidaozhan_ya@outlook.com>
+# Maintainer: sukanka
 
 _pkgname=linuxqq
 _base_pkgver=3.1.1_11223
-_update_pkgver=3.1.2_12912
+_update_pkgver=3.1.2_13107
 _base_pkgver_hash=2355235c
-_update_pkgver_hash=5f0d6d75
+_update_pkgver_hash=c893f6be
 
 pkgname=linuxqq-nt-bwrap
 pkgver="${_update_pkgver}"
@@ -27,11 +28,11 @@ source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_base_pkgver_hash}/linux
                 "https://qqpatch.gtimg.cn/hotUpdate_new/release/linux-arm64/${pkgver//_/-}/${_update_pkgver_hash}/${pkgver//_/-}.zip.zip" )  # 热更新补丁
 source=('start.sh' 'config.json' 'xdg-open.sh')
 sha256sums_x86_64=('4c1810ef357e8ee077292808217bafc67626be79ccff5ff05341248a8a48aaf6'  # 底包
-                   '0449dd2c169f401b6a4489bafde51e9206388e690b34dd6c15273e232b61f67f')  # 热更新补丁
+                   '7a1d235b714864b0b62e39f10adbd4bd3b890017168a39e9c97a346931901b35')  # 热更新补丁
 sha256sums_aarch64=('d5b6bf200ffe5ffb3b8d4b48861dceb011d4ecc3e0806ac04ac04fc7c7ae041b'   # 底包
-                    '78a78fb466c0f0a63068f6de233b994ebcfb74d58b3fa793c264af48228754e3')  # 热更新补丁
-sha256sums=('0fed32df5f53574d8c602a56ae126459dc0ece444434eb3e94d09eea0595df5f'  # start.sh
-            '72c4a432acc4c06490e9a9a5fe8b6e3f4e3f62edc94878161aebe84fa81655cd'  # config.json
+                    '7a1d235b714864b0b62e39f10adbd4bd3b890017168a39e9c97a346931901b35')  # 热更新补丁
+sha256sums=('4553d9480502a75448e7f0dd0811068269a3a7781dd0d341644b0a8f822472e5'  # start.sh
+            '182e3cc60e9c7f4643043c398f42b7d021bce4e79490e043de195056aa851481'  # config.json
             '78a573867355fb4c3e728d0c8ac0746d47fa7d64f90ee2b62ee9f0ccae095edb')  # xdg-open.sh
 
 package() {
