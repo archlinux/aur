@@ -69,7 +69,7 @@ if [ -z ${_makenconfig} ]; then
   _makenconfig=n
 fi
 
-if [ -z ${processes+x} ]; then
+if [ -z ${_processes+x} ]; then
   _processes=1
 fi
 
