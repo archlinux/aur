@@ -7,9 +7,9 @@
 pkgname=modelio-bin
 
 # Version
-_pkgvermajor=4
-_pkgverminor=1
-_pkgverpatch=0
+_pkgvermajor=5
+_pkgverminor=3
+_pkgverpatch=1
 pkgver="${_pkgvermajor}.${_pkgverminor}.${_pkgverpatch}"
 pkgrel=0
 
@@ -21,8 +21,8 @@ license=('GPL3')
 #groups=()
 
 # Dependencies
-depends=('glib2' 'java-runtime' 'libx11' 'libxtst' 'webkit2gtk' 'swt')
-optdepends=('atk' 'gtk2' 'cairo')
+depends=('glib2' 'glibc' 'webkit2gtk' 'at-spi2-core' 'gtk3')
+optdepends=('gtk2' 'webkitgtk2')
 #makedepends=()
 #checkdepends=()
 
@@ -38,20 +38,20 @@ optdepends=('atk' 'gtk2' 'cairo')
 
 # Sources
 source=("modelio.desktop" "modelio.patch")
-source_x86_64=("modelio-${pkgver}-x86_64.deb::https://sourceforge.net/projects/modeliouml/files/${pkgver}/modelio-open-source_${pkgver}_amd64.deb/download")
+source_x86_64=("modelio-${pkgver}-x86_64.deb::https://github.com/ModelioOpenSource/Modelio/releases/download/v${pkgver}/modelio-open-source-${pkgver}-amd64.deb")
 #noextract=()
 #validpgpkeys=()
-sha256sums=('91c3b13be981f6391c1234eb12b8302600447915efc572be56f30b40346f6882'
+sha256sums=('ea0233daf57b51b05f0a0322217ebbab02b41864dd56ea31bd057a506e1f8249'
             'bc87a815e0af78ece34ccbc878b88b17b9b00557a98c113cefc9b4111462dbbb')
-sha256sums_x86_64=('20c35e1b289dc5b77115951a1b6513c1c1d40ae828a8c4fb422ff521c8505beb')
+sha256sums_x86_64=('6edc838b5075fd444e6aab55a73b31ddb6dda3af47121f5cd4478c65812742d1')
 
 #pkgver() {
 #}
 
 prepare() {
     ar p modelio-${pkgver}-${CARCH}.deb data.tar.xz | tar xJ
-    cd "${srcdir}/usr/lib/modelio-open-source${_pkgvermajor}.${_pkgverminor}"
-    patch --input=${srcdir}/modelio.patch modelio.sh
+#    cd "${srcdir}/usr/lib/modelio-open-source${_pkgvermajor}.${_pkgverminor}"
+#    patch --input=${srcdir}/modelio.patch modelio.sh
 }
 
 #build() {
