@@ -44,6 +44,5 @@ package() {
 	cd "$pkgname-v$pkgver/build"
 	echo "installing to /usr/bin/$pkgdir"
 	install -Dm 755 kbdmod.bin "$pkgdir/usr/bin/kbdmod"
-
 }
 sha256sums=('dc2982387de7d698ac1575bf08a866ece2c9a1d153dd630b9750f806fefe6c0b')
