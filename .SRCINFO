@@ -1,6 +1,6 @@
 pkgbase = denaro-git
 	pkgdesc = A personal finance manager
-	pkgver = 2023.4.0.r50.g08d65ef
+	pkgver = 2023.5.0.r6.g4cc5678c
 	pkgrel = 1
 	url = https://github.com/NickvisionApps/denaro
 	arch = aarch64
@@ -11,7 +11,6 @@ pkgbase = denaro-git
 	makedepends = blueprint-compiler
 	makedepends = dotnet-sdk>=7
 	makedepends = git
-	makedepends = just
 	depends = dotnet-runtime>=7
 	depends = libadwaita
 	provides = denaro
