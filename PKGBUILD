@@ -20,12 +20,14 @@ sha256sums=('997a85aa60c4cc46eb5f42b7e46cf2d60ba8b39a24d4574f604bf7d78da8fd96'
 
 prepare() {
   cd "$pkgbase-$pkgver"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   cd "$pkgbase-$pkgver"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   make prefix=/usr
 }
