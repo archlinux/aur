@@ -1,30 +1,29 @@
-# Contributor: Dave Reisner <d@falconindy.com>
-# Maintainer: aksr <aksr at t-com dot me>
-pkgname=inotail-git
+# Maintainer: éclairevoyant
+# Contributor: aksr <aksr at t-com dot me>
+# Contributor: Dave Reisner <d at falconindy dot com>
+
+_pkgname=inotail
+pkgname="$_pkgname-git"
 pkgver=r270.a449425
 pkgrel=1
-pkgdesc="An inotify based implementation of tail."
-arch=('i686' 'x86_64')
-url="http://distanz.ch/inotail"
-license=('GPL')
-makedepends=('git')
-provides=('inotail')
-conflicts=('inotail')
-source=("$pkgname::git+https://gitorious.org/inotail/inotail.git")
-md5sums=('SKIP')
+pkgdesc="inotify-based implementation of tail"
+arch=(i686 x86_64)
+url="https://distanz.ch/$_pkgname"
+license=(GPL2)
+depends=(glibc)
+makedepends=(git)
+source=("git://git.distanz.ch/$_pkgname.git")
+b2sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd $_pkgname
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-  make
+	make -C $_pkgname
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  make prefix="$pkgdir/usr" install
+	make -C $_pkgname prefix="$pkgdir/usr" install
 }
-

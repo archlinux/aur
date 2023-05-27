@@ -1,16 +1,14 @@
 pkgbase = inotail-git
-	pkgdesc = An inotify based implementation of tail.
+	pkgdesc = inotify-based implementation of tail
 	pkgver = r270.a449425
 	pkgrel = 1
-	url = http://distanz.ch/inotail
+	url = https://distanz.ch/inotail
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL2
 	makedepends = git
-	provides = inotail
-	conflicts = inotail
-	source = inotail-git::git+https://gitorious.org/inotail/inotail.git
-	md5sums = SKIP
+	depends = glibc
+	source = git://git.distanz.ch/inotail.git
+	b2sums = SKIP
 
 pkgname = inotail-git
-
