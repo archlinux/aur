@@ -1,28 +1,47 @@
-# Maintainer: Pieter Joost van de Sande <pj@born2code.net>
+# Maintainer: éclairevoyant
+
 pkgname=owncast
-pkgver=0.0.12
+pkgver=0.0.13
 pkgrel=1
-pkgdesc='Take control over your live stream video by running it yourself. Streaming + chat out of the box.'
-url='https://github.com/owncast/owncast'
-arch=('any')
-license=('MIT')
-makedepends=('git' 'go')
-depends=()
-source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('9a6742f08a0f83168733e3536241cbe5d26b520834712f5ca7e766720f8bb031')
+pkgdesc='Self-hosted live video streaming (chat included)'
+url="https://github.com/owncast/$pkgname"
+arch=(x86_64)
+license=(MIT)
+depends=(glibc)
+makedepends=(git go)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+b2sums=('b88f67d26fa438320debe01de2651df1625314ec5a89dde4b9d64c40296481f35fdda2e93bb268e93a0be8a5645a5a4243da1f9894c78b64054b302392779319')
+options=(emptydirs)
+install=$pkgname.install
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o ${pkgname} -ldflags "-extldflags ${LDFLAGS} -s -w -X main.version=${pkgver}"
+	cd $pkgname-$pkgver
+	go build \
+		-trimpath \
+		-buildmode=pie \
+		-mod=readonly \
+		-modcacherw \
+		-ldflags "-s -w -X main.version=$pkgver -linkmode external -extldflags \"${LDFLAGS}\"" \
+		.
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd $pkgname-$pkgver
+	install -vDm755 $pkgname -t "$pkgdir/usr/bin/"
+	install -vDm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -vdm755 "$pkgdir/var/www/$pkgname/"
+	install -vDm644 /dev/stdin "$pkgdir/usr/lib/systemd/system/$pkgname.service" <<eof
+[Unit]
+Description=Owncast Service
+
+[Service]
+Type=simple
+WorkingDirectory=/var/www/$pkgname/
+ExecStart=/usr/bin/$pkgname
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+eof
 }
-# vim: ft=sh ts=2 sw=2 et
