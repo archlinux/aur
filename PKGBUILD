@@ -9,7 +9,7 @@
 # Contributor: Steven Nance <steven@devtrw.com>
 
 pkgname=vagrant
-pkgver=2.3.4
+pkgver=2.3.6
 pkgrel=1
 pkgdesc="Build and distribute virtualized development environments"
 arch=('x86_64')
@@ -22,8 +22,8 @@ makedepends=('git' 'go')
 conflicts=('vagrant-substrate')
 replaces=('vagrant-substrate')
 source=($pkgname-$pkgver.tar.gz::https://github.com/hashicorp/$pkgname/archive/v$pkgver.tar.gz
-        "git+https://github.com/hashicorp/vagrant-installers.git#commit=4770b51")
-sha256sums=('43eb1461c6dcfd23a0c386570e6c2a876e06d2388bbc0f1f0c9c99e393aa2f0f'
+        "git+https://github.com/hashicorp/vagrant-installers.git#commit=a5f6e03")
+sha256sums=('3f9780b32d979e7cf4565a56fa6dc40b3c9b1b73e4cae9931b1d4a706d0d4d9e'
             'SKIP')
 
 prepare() {
@@ -31,7 +31,7 @@ prepare() {
   local _gemdir="$(gem env gemdir)"
 
   # Allow Vagrant to see the system gems as these have been de-vendored from the ruby package
-  sed -i "s_\"gems\", vagrantVersion)_\"gems\", vagrantVersion, \":$_gemdir\")_g" substrate/launcher/main.go
+  sed -i "s_embeddedDir, \"gems\")_embeddedDir, \"gems:$_gemdir\")_g" substrate/launcher/main.go
 }
 
 build() {
@@ -65,7 +65,7 @@ package() {
   echo "{ \"vagrant_version\": \"$pkgver\" }" > "$EMBEDDED_DIR"/manifest.json
 
   gem install $pkgname-$pkgver.gem \
-    --no-document --no-user-install --install-dir "$EMBEDDED_DIR"/gems/$pkgver
+    --no-document --no-user-install --install-dir "$EMBEDDED_DIR"/gems
 
   install -Dm755 "$INSTALLERS_DIR"/launcher/vagrant \
     "$pkgdir"/opt/$pkgname/bin/$pkgname
