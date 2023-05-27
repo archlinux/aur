@@ -1,6 +1,6 @@
 pkgbase = ghw-git
 	pkgdesc = Golang hardware discovery/inspection library
-	pkgver = 0.10.0.r10.g227643e
+	pkgver = 0.10.0.r34.g36ff37e
 	pkgrel = 1
 	url = https://github.com/jaypipes/ghw.git
 	arch = x86_64
