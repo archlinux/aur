@@ -1,45 +1,45 @@
-# Maintainer: aksr <aksr at t-com dot me>
-pkgname=hira-git
+# Maintainer: éclairevoyant
+# Contributor: aksr <aksr at t-com dot me>
+
+_pkgname=hira
+pkgname="$_pkgname-git"
 pkgver=r13.3eb60dc
-pkgrel=1
-epoch=
-pkgdesc="A command to transliterate ASCII to Hiragana."
-arch=('i686' 'x86_64')
-url="https://github.com/robpike/hira"
-license=('BSD')
-groups=()
-depends=('')
-makedepends=('git' 'go>=1.5')
-optdepends=()
-checkdepends=()
-provides=()
-conflicts=('hira')
-replaces=()
-backup=()
-options=()
-changelog=
-install=
-noextract=()
-_gourl=robpike.io/cmd/hira
+pkgrel=2
+pkgdesc="Command to transliterate ASCII to Hiragana"
+arch=(i686 x86_64)
+url="https://github.com/robpike/$_pkgname"
+license=(BSD)
+depends=(glibc)
+makedepends=(git go)
+source=("git+$url.git")
+b2sums=('SKIP')
 
 pkgver() {
-  GOPATH="$srcdir" go get -d ${_gourl}
-  cd "$srcdir/src/${_gourl}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd $_pkgname
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd $_pkgname
+	go mod init "${url#https://}"
+	go mod tidy
 }
 
 build() {
-  GOPATH="$srcdir" go get -fix -v ${_gourl}
-}
-
-check() {
-  GOPATH="$srcdir" go test -v -x ${_gourl}
+	cd $_pkgname
+	go build \
+		-trimpath \
+		-buildmode=pie \
+		-mod=readonly \
+		-modcacherw \
+		-ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+		.
 }
 
 package() {
-  cd "$srcdir"
-  install -Dm755 bin/hira "$pkgdir/usr/bin/hira"
-  install -Dm644 src/${_gourl}/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
-  install -Dm644 src/${_gourl}/README.md $pkgdir/usr/share/doc/$pkgname/README
+	cd $_pkgname
+	install -vDm755 $_pkgname -t "$pkgdir/usr/bin/"
+	install -vDm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
+	install -vDm644 README.md "$pkgdir/usr/share/doc/$pkgname/README"
 }
 
