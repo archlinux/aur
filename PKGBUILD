@@ -1,15 +1,15 @@
 # Maintainer: wiltsig <WTS012201@gmail.com>
 pkgname=tfi
 _pkgname=Text-From-Image
-pkgver=1.0.1
-pkgrel=1
+pkgver=1.0.3
+pkgrel=2 # increment for bug fixes
 pkgdesc="Text From Image allows user to extract and modify text from images"
 
 makedepends=("git")
 arch=('x86_64')
 url="https://github.com/WTS012201/Text-From-Image.git"
 license=('GPL-3.0')
-depends=('tesseract-data-eng' 'hdf5' 'highway' 'leptonica' 'libaec' 'libjxl' 'libmfx' 'pugixml' 'tesseract' 'vtk' 'acl' 'brotli' 'bzip2' 'curl' 'dbus' 'e2fsprogs' 'expat' 'gcc-libs' 'glib2' 'glibc' 'gmp' 'gnutls' 'icu' 'keyutils' 'krb5' 'libarchive' 'libcap' 'libelf' 'libffi' 'libgcrypt' 'libgpg-error' 'libidn2' 'libnghttp2' 'libp11-kit' 'libpsl' 'libssh2' 'libtasn1' 'libunistring' 'libusb' 'libxml2' 'lz4' 'nettle' 'openssl' 'pcre2' 'systemd-libs' 'util-linux-libs' 'xz' 'zlib' 'zstd' 'aom' 'blas' 'cairo' 'cblas' 'dav1d' 'double-conversion' 'ffmpeg' 'fmt' 'fontconfig' 'freetype2' 'fribidi' 'gdk-pixbuf2' 'giflib' 'glew' 'graphite' 'gsm' 'gst-plugins-base-libs' 'gstreamer' 'harfbuzz' 'imath' 'jsoncpp' 'lame' 'lapack' 'libbluray' 'libdatrie' 'libdc1394' 'libdrm' 'libglvnd' 'libjpeg-turbo' 'libmodplug' 'libogg' 'libopenmpt' 'libpng' 'libraw1394' 'librsvg' 'libsoxr' 'libssh' 'libthai' 'libtheora' 'libtiff' 'libunwind' 'libva' 'libvdpau' 'libvorbis' 'libvpx' 'libwebp' 'libx11' 'libxau' 'libxcb' 'libxcursor' 'libxdmcp' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrender' 'md4c' 'mpg123' 'onetbb' 'opencore-amr' 'opencv' 'openexr' 'openjpeg2' 'opus' 'orc' 'pango' 'pixman' 'protobuf' 'qt5-base' 'rav1e' 'speex' 'srt' 'svt-av1' 'x264' 'x265' 'xvidcore')
+depends=('tesseract-data-eng' 'hdf5' 'highway' 'leptonica' 'libaec' 'libjxl' 'libmfx' 'pugixml' 'tesseract' 'vtk' 'acl' 'brotli' 'bzip2' 'curl' 'dbus' 'e2fsprogs' 'expat' 'gmp' 'gnutls' 'icu' 'keyutils' 'krb5' 'libarchive' 'libcap' 'libelf' 'libffi' 'libgcrypt' 'libgpg-error' 'libidn2' 'libnghttp2' 'libp11-kit' 'libpsl' 'libssh2' 'libtasn1' 'libunistring' 'libusb' 'libxml2' 'lz4' 'nettle' 'openssl' 'pcre2' 'systemd-libs' 'util-linux-libs' 'xz' 'zlib' 'zstd' 'aom' 'blas' 'cairo' 'cblas' 'dav1d' 'double-conversion' 'ffmpeg' 'fmt' 'fontconfig' 'freetype2' 'fribidi' 'gdk-pixbuf2' 'giflib' 'glew' 'graphite' 'gsm' 'gst-plugins-base-libs' 'gstreamer' 'harfbuzz' 'imath' 'jsoncpp' 'lame' 'lapack' 'libbluray' 'libdatrie' 'libdc1394' 'libdrm' 'libglvnd' 'libjpeg-turbo' 'libmodplug' 'libogg' 'libopenmpt' 'libpng' 'libraw1394' 'librsvg' 'libsoxr' 'libssh' 'libthai' 'libtheora' 'libtiff' 'libunwind' 'libva' 'libvdpau' 'libvorbis' 'libvpx' 'libwebp' 'libx11' 'libxau' 'libxcb' 'libxcursor' 'libxdmcp' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrender' 'md4c' 'mpg123' 'onetbb' 'opencore-amr' 'opencv' 'openexr' 'openjpeg2' 'opus' 'orc' 'pango' 'pixman' 'protobuf' 'qt5-base' 'rav1e' 'speex' 'srt' 'svt-av1' 'x264' 'x265' 'xvidcore')
 md5sums=('SKIP')
 source=("git+$url")
 
