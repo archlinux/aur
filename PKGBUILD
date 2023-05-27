@@ -4,7 +4,7 @@
 
 pkgname=kbdmod
 pkgver=2.0.0
-pkgrel=25
+pkgrel=26
 epoch=
 pkgdesc="modify your keyboard functionality with multi functions per key"
 arch=('any')
@@ -45,4 +45,4 @@ package() {
 	echo "installing to /usr/bin/$pkgdir"
 	install -Dm 755 kbdmod.bin "$pkgdir/usr/bin/kbdmod"
 }
-sha256sums=('f62ffa3daf9f7234c8d0e93d5c99478539cbf16b79582c4edc4d9e715626490e')
+sha256sums=('a36436887c778f6911d2749183c64b000a8d92b3e7ba2b4d172f4c8eac459b2a')
