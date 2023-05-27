@@ -1,6 +1,6 @@
 # Maintainer: Adam Thiede <me@adamthiede.com>
 pkgname=hkdm
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Lighter-weight hotkey daemon"
 url="https://gitlab.com/postmarketOS/hkdm"
@@ -25,6 +25,6 @@ package() {
 }
 
 sha512sums=(
-"9521eb2a3daaddec4dda6ffdf8af1c4d9dbd31966db3e86e09476e7ff158836870747a8ccef234be3edb12a3014d0dc5863b4219f839aabf5ee68737b76fcf44"
+"0fe114cbda7d0b031a2f300de95d753c0d248560257fdc01e76bd3d3498ff87347e8779885851cf3369868921d2576048f8d51de2edf2726154a3465cba090a9"
 "6e2f6f377e73e2618c14858707ed29cde1ff22614531b33bf3aa825ad7d41c64d69ef8da8db4327813969d9b076d6706df89b6a10c4dace0f29ae6c7f0f456ca"
 )
