@@ -1,0 +1,24 @@
+pkgbase = hexcore-link
+	pkgdesc = Hexcore Link for Anne Pro and Anne Pro 2
+	pkgver = 2.0.23
+	pkgrel = 1
+	url = https://www.hexcore.xyz/hexcore-link
+	install = hexcore-link.install
+	arch = x86_64
+	license = custom
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = libappindicator-gtk3
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = libxkbcommon-x11
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://s5.hexcore.xyz/releases/software/hexcore-link/linux/tar/HexcoreLink_2.0.23_x64.tar.gz
+	source_x86_64 = deb_extra_files_hexcore.tar.gz
+	sha256sums_x86_64 = 9b9b0207798fb38c2e8fa6620e090d6429f1551ba4526253362d6502d0c30328
+	sha256sums_x86_64 = 94e4942cc7408feb419e76aa2867e50bdf2bedefd734eb367286b5a7844d2c46
+
+pkgname = hexcore-link

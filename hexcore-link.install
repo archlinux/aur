@@ -1,0 +1,26 @@
+post_install() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+	# Link to the binary
+	ln -sf '/opt/hexcore-link/hexcore-link' '/usr/bin/hexcore-link'
+	update-desktop-database -q
+
+	chmod +x /opt/hexcore-link/linux-after-install.sh
+	/opt/hexcore-link/linux-after-install.sh
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+	# Delete the link to the binary
+	rm -f '/usr/bin/obinskit'
+	update-desktop-database -q
+
+	# Delete udev rule and reload
+	rm -f '/etc/udev/rules.d/obinskit-kdb.rules'
+	udevadm control --reload-rule
+}
