@@ -7,6 +7,7 @@ pkgbase = quikc-git
 	license = MIT
 	makedepends = cargo
 	makedepends = git
+	depends = python
 	source = quikc::git+https://github.com/Ramenu/quikc.git
 	b2sums = SKIP
 

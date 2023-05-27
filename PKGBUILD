@@ -8,6 +8,7 @@ url="https://github.com/Ramenu/$_pkgname"
 pkgdesc='A minimalistic, safety-focused build system for C/C++'
 arch=('x86_64')
 makedepends=('cargo' 'git')
+depends=('python')
 license=('MIT')
 source=("$_pkgname::git+$url.git")
 b2sums=('SKIP')
