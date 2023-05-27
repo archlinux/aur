@@ -1,0 +1,17 @@
+pkgbase = onchange-git
+	pkgdesc = Tool to run commands on file change
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Atreyagaurav/onchange
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = onchange
+	conflicts = onchange
+	source = git+https://github.com/Atreyagaurav/onchange.git
+	md5sums = SKIP
+
+pkgname = onchange-git
