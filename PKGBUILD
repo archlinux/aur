@@ -22,6 +22,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 
@@ -31,6 +32,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   arch-meson . build
   meson compile -C build
@@ -40,6 +42,7 @@ check() {
   cd "$srcdir/$pkgname"
 
   # test failed_ssh_connection
+#  export CARGO_HOME="$srcdir/cargo-home"
 #  export RUSTUP_TOOLCHAIN=stable
 #  export LANG=C.UTF-8
 #  export NO_AT_BRIDGE=1
