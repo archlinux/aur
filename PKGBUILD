@@ -1,3 +1,4 @@
+# Maintainer:
 # Contributor: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: David Mougey <imapiekindaguy at gmail dot com>
 
@@ -7,36 +8,50 @@ _localepurge=
 
 _pkgname=sigil
 pkgname="$_pkgname-git"
-pkgver=1.9.20.r46.ga2898308c
+pkgver=1.9.30.r34.g61f091c9e
 pkgrel=1
 pkgdesc='multi-platform EPUB2/EPUB3 ebook editor'
 arch=('x86_64')
 url="https://github.com/Sigil-Ebook/Sigil"
 license=('GPL3')
 depends=(
+  'hicolor-icon-theme'
   'hunspell'
-  'qt5-webengine'
+  'pcre2'
+  'minizip'
+  'python-chardet'
+  'python-certifi'
+  'python-css-parser'
+  'python-dulwich'
+  'python-html5lib'
+  'python-lxml'
+  'qt6-webengine'
+  'qt6-5compat'
 )
 makedepends=(
   'cmake'
   'git'
   'python'
-  'qt5-tools'
+  'qt6-tools'
 )
 optdepends=(
+  'hunspell-en_US: for English dictionary support'
   'hyphen-en: for English hyphenation support in plugins'
   'pageedit: external editor to replace BookView'
   'python-chardet: recommended for plugins'
   'python-cssselect: recommended for plugins'
   'python-pillow: recommended for plugins'
-  'python-pyqt5-webengine: recommended for plugins'
-  'python-pyqt5: recommended for plugins'
+  'python-pyqt6-webengine: recommended for plugins'
+  'python-pyqt6: recommended for plugins'
   'python-regex: recommended for plugins'
   'tk: recommended for plugins'
 )
 
 provides=("$_pkgname")
 conflicts=(${provides[@]})
+
+options=(!debug)
+
 source=(
   "$_pkgname"::"git+$url"
   'default_nav_css.patch'
@@ -55,6 +70,7 @@ prepare() {
   cd "$srcdir/$_pkgname"
 
   for p in "$srcdir"/*.patch ; do
+    echo "Applying patch: $p"
     patch -Np1 -i "$p"
   done
 
@@ -73,35 +89,28 @@ pkgver() {
 }
 
 build() {
-  mkdir -p "$srcdir/$_pkgname/build"
-  cd "$srcdir/$_pkgname/build"
-
   cmake -G "Unix Makefiles" \
+    -B build \
+    -S "$_pkgname" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DCMAKE_INSTALL_LIBDIR='lib' \
+    -DMATHJAX3_DIR='/usr/share/mathjax' \
+    -DUSE_QT6=1 \
     -DUSE_SYSTEM_LIBS=1 \
     -DSYSTEM_LIBS_REQUIRED=1 \
     -DINSTALL_BUNDLED_DICTS=0 \
     -DINSTALL_HICOLOR_ICONS=1 \
     -DDISABLE_UPDATE_CHECK=1 \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_C_FLAGS:STRING="$CFLAGS" \
     -DCMAKE_CXX_FLAGS:STRING="$CXXFLAGS" \
-    -DCMAKE_SKIP_RPATH=ON ..
-  make
+    -DCMAKE_SKIP_RPATH=ON
+
+  cmake --build build
 }
 
 package() {
-  depends+=(
-    'python-cchardet'
-    'python-certifi'
-    'python-css-parser'
-    'python-dulwich'
-    'python-html5lib'
-    'python-lxml'
-  )
-
-  cd "$srcdir/$_pkgname/build"
-  make install DESTDIR="$pkgdir"
+  DESTDIR="$pkgdir" cmake --install build
 
   # Compile python bytecode
   python -m compileall "$pkgdir/usr/share/sigil/"{plugin_launchers/python/,python3lib}
