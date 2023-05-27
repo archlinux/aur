@@ -1,7 +1,7 @@
 # Maintainer: replydev <commoncargo@tutanota.com>
 
 pkgname=kryptor-bin
-pkgver=4.0.1
+pkgver=4.1.0
 pkgrel=1
 pkgdesc='A simple, modern, and secure encryption and signing tool that aims to be a better version of age and Minisign.'
 arch=('x86_64' 'aarch64')
@@ -9,8 +9,8 @@ url='https://www.kryptor.co.uk/'
 license=('GPL3')
 source_x86_64=("https://github.com/samuel-lucas6/Kryptor/releases/download/v$pkgver/kryptor-linux-x64.zip")
 source_aarch64=("https://github.com/samuel-lucas6/Kryptor/releases/download/v$pkgver/kryptor-linux-arm64.zip")
-sha512sums_x86_64=('d517a7e38220eb0a8a2937768ca85b660c10224b0ddc64a509f8e3b81f9db04162de6f2316ee38acce6839f9ad140f53013100f7a76bc25b79ae310d0c75e3f3')
-sha512sums_aarch64=('549b44059e4074a4f7bba27a7b94fe74e2785f87c59fd9cbbe4feedd0ecc88478323960499e0a862ddcb5e82a1d9fa324101b06024cb5259d71c3bd9c6a6d408')
+sha512sums_x86_64=('56ec83613e9a12e0a94cff8a7baebc7b4f6adfa1f9fbb286b3d240135fe11c048b60c1edc2e7875791291c75d85b9c54178fcc303da55893c199b931f13d4a77')
+sha512sums_aarch64=('d9938d2d64023633496e294280397e4f2132d2c8dcf39dc89844d59a079b8a397c56c8372e8a561a48cd244a75f5401820acd92ad58990b27b3d508fe2cc6399')
 conflicts=('kryptor')
 provides=('kryptor')
 # Important to disable binary strip, otherwise the artifact would be corrupted
