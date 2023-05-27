@@ -8,7 +8,7 @@ pkgname=car
 pkgver=2023.03
 major=$(echo $pkgver | cut -d. -f1)
 minor=$(echo $pkgver | cut -d. -f2)
-pkgrel=1
+pkgrel=2
 url="http://car.rene-grothmann.de/"
 pkgdesc="Compass and Ruler is a dynamic geometry program"
 arch=('any')
@@ -19,7 +19,7 @@ source=("https://sourceforge.net/projects/zirkel/files/Version%20${major}-${mino
 	"${pkgname}.sh")
 md5sums=('b1f41add39f6464f88892a0bda0898d2'
          '94fdcd79f877188507c68434c2a80e67'
-         '2539542867d5f23e823b7a7704f17443')
+         'fbed86abe156c2091ea42ef989204bb3')
 
 package() {
         cd "${srcdir}/car"
