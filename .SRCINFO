@@ -1,14 +1,16 @@
 pkgbase = python-pacparser
 	pkgdesc = Python 3.x pacparser module
-	pkgver = 1.4.0
-	pkgrel = 2
+	pkgver = 1.4.2
+	pkgrel = 1
 	url = https://github.com/manugarg/pacparser
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = LGPL
+	makedepends = git
 	depends = python>=3.7
 	options = !makeflags
-	source = https://github.com/manugarg/pacparser/releases/download/v1.4.0/pacparser-v1.4.0.tar.gz
-	sha256sums = 2e66c5fe635cd5dcb9bccca4aced925eca712632b81bada3b63682159c0f910e
+	source = git+https://github.com/manugarg/pacparser.git#tag=0bf0636de624996fe202b51eec8a58abd774269e
+	sha256sums = SKIP
 
 pkgname = python-pacparser
