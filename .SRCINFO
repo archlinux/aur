@@ -1,0 +1,17 @@
+pkgbase = periodiccalendar-jdk
+	pkgdesc = Periodic Calendar for tracking women cycle (supports JDK 20)
+	pkgver = 3.4.2
+	pkgrel = 1
+	url = http://linuxorg.sf.net/
+	arch = any
+	license = GPL3
+	depends = java-runtime
+	conflicts = periodiccalendar
+	source = https://github.com/allencch/periodiccalendar/releases/download/v3.4.2/periodiccalendar-3.4.2.jar
+	source = periodiccalendar.desktop
+	source = periodiccalendar.png
+	md5sums = de23955e8abbc996b6f660029b0c2364
+	md5sums = 5b8490188ad00deea39cef729359d39d
+	md5sums = c26856c7a8a0045e8aa36f063563f67f
+
+pkgname = periodiccalendar-jdk
