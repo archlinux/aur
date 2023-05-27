@@ -7,9 +7,7 @@ pkgbase = plasma5-wallpapers-blurredwallpaper
 	license = GPL
 	makedepends = git
 	depends = plasma-workspace
-	provides = plasma5-applets-window-title
-	conflicts = plasma5-applets-window-title
 	source = https://github.com/bouteillerAlan/blurredwallpaper/archive/refs/tags/v2.1.tar.gz
 	sha256sums = 450af7435b27860104da07d40ce1dd69cf47213f43b8b44e738eefc747385076
 
-pkgname = blurredwallpaper
+pkgname = plasma5-wallpapers-blurredwallpaper
