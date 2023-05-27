@@ -9,7 +9,7 @@ pkgbase = gradle7
 	makedepends = asciidoc
 	makedepends = xmlto
 	makedepends = groovy
-	makedepends = java-environment=11
+	makedepends = jdk11-openjdk
 	depends = java-environment
 	depends = bash
 	depends = which

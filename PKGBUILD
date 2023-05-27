@@ -10,7 +10,7 @@ url='https://gradle.org/'
 arch=('any')
 license=('Apache')
 depends=('java-environment' 'bash' 'which' 'coreutils' 'findutils' 'sed')
-makedepends=('git' 'asciidoc' 'xmlto' 'groovy' 'java-environment=11')
+makedepends=('git' 'asciidoc' 'xmlto' 'groovy' 'jdk11-openjdk')
 source=("https://services.gradle.org/distributions/${_pkgbase}-${pkgver}-src.zip"
         "https://services.gradle.org/distributions/${_pkgbase}-${pkgver}-all.zip"
         ${pkgbase})
@@ -22,6 +22,7 @@ sha512sums=('6b3a86db2a9f590030773e059b2ab0840bc2334e99ddb23d2f85c7d6f0f17bce9d9
             '99a07d5fe6ea3d0ba96834cd332504481e83a5e2888d4e54ba879d9d130f94f03c248eb63f1149c4abd8f02f9b33b6743b4f7fb4d6f90b9ec740bee6cebbcc6f')
 
 _srcdir="${_pkgbase}-${pkgver}"
+_java_home='/usr/lib/jvm/java-11-openjdk'
 
 prepare() {
   cd "${_srcdir}"
@@ -40,12 +41,15 @@ prepare() {
 build() {
   cd "${_srcdir}"
   # requires java language level 6, which >=13 has dropped
-  export PATH="/usr/lib/jvm/java-11-openjdk/bin:${PATH}"
+  export PATH="$_java_home/bin:$PATH"
+  export JAVA_HOME="$_java_home"
   ./gradlew installAll \
     -Porg.gradle.java.installations.auto-download=false \
     -PfinalRelease=true \
     -Pgradle_installPath="$(pwd)/dist" \
-    --no-configuration-cache
+    --no-configuration-cache \
+    -Dorg.gradle.daemon=false \
+    --parallel
 }
 
 package_gradle7() {
