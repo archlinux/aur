@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=('pop-launcher' 'pop-shell-plugin-system76-power')
 pkgbase=pop-launcher
 pkgver=1.2.1
@@ -14,6 +14,7 @@ sha256sums=('00f6386851a770d988eab58b367a592a7df3b69c17c99f9daea2bd40a1f69d5a')
 
 prepare() {
   cd "launcher-$pkgver"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   just vendor
 
@@ -22,6 +23,7 @@ prepare() {
 
 build() {
   cd "launcher-$pkgver"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   just vendor=1
 }
