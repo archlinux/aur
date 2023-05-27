@@ -1,0 +1,15 @@
+pkgbase = opuscomment
+	pkgdesc = Ogg Opus tag and output gain editor
+	pkgver = 1.5.12
+	pkgrel = 1
+	url = https://github.com/hcmiya/opuscomment
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libogg
+	source = opuscomment-1.5.12.tar.gz::https://github.com/hcmiya/opuscomment/archive/refs/tags/v1.5.12.tar.gz
+	source = 000-link-fix.patch
+	sha256sums = 83a6d7b7d4b1d098181ae60a75dac3ed32a24be731540114a2c00680c1c8ab7e
+	sha256sums = SKIP
+
+pkgname = opuscomment

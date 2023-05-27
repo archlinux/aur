@@ -1,0 +1,13 @@
+diff --git a/src/Makefile b/src/Makefile
+index 2f88542..0d1b3b8 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -19,7 +19,7 @@ CC=c99
+ all: opuscomment ;
+ 
+ opuscomment: $(OBJS)
+-	$(CC) -o opuscomment $(DEFAULT_MACROS) $(CFLAGS) $(LDFLAGS) $(LIBS) $(OBJS)
++	$(CC)  $(CFLAGS) $(DEFAULT_MACROS) $(LDFLAGS) $(OBJS)  $(LIBS) -o opuscomment
+ 
+ .SUFFIXES:
+ .SUFFIXES: .c .o
