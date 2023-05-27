@@ -1,13 +1,4 @@
-dr_libs/
-libaiff/
-sfzt_auwrapper/
-simde/
-stb_vorbis/
-vst3_base/
-vst3_pluginterfaces/
-vst3_public_sdk/
-vstgui/
-/pkg
-/src
-/sfizz*
-*.tar*
+*
+!PKGBUILD
+!.gitignore
+!.SRCINFO

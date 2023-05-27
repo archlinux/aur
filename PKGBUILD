@@ -2,56 +2,58 @@
 # Maintainer: redtide <redtid3@gmail.com>
 # Contributor: Jean Pierre Cimalando <jp-dev@inbox.ru>
 
-# TODO:
-# - adjust common dependencies, to avoid unneeded ones
-# - project license and doc files destinations (now only in lib package)
-# - tell users on a pinned comment how to configure yay/whatever to skip tests?
+# Based on official PKGBUILD by dvzrv at
+# https://github.com/archlinux/svntogit-community/blob/packages/sfizz/trunk/PKGBUILD
 
 _pkgname=sfizz
+_gitname=$_pkgname-ui
 pkgbase=$_pkgname-git
-pkgname=($_pkgname{,-{clients,lib,lv2,pd,vst3}}-git)
-pkgver=1.2.1.r2.g6cd063da
+pkgname=(
+  sfizz-git
+  sfizz-{lib,lv2,standalone,vst3}-git
+  pd-sfizz-git
+)
+pkgver=r24.23212b8
 pkgrel=1
 pkgdesc="SFZ based sampler (git version)"
 url="https://sfz.tools/sfizz"
 arch=(x86_64)
-license=(
-  custom:BSD-2-Clause
-  custom:ISC
-)
+license=(BSD)
 makedepends=(
+  abseil-cpp
+  cairo
   cmake
   cxxopts
-  freetype2
+  gcc-libs
   ghc-filesystem
   git
+  glibc
   jack
+  freetype2
+  libx11
+  libxkbcommon
+  libxkbcommon-x11
   lv2
-  lv2-host
-  pd
-# simde
-# vst3sdk
+  pango
+  pugixml
+  simde
+  vst3sdk
+  xcb-util
+  xcb-util-cursor
   xcb-util-keysyms
 )
-checkdepends=(lv2lint catch2)
+checkdepends=(
+  lv2lint
+  catch2
+)
 source=(
-  $_pkgname::git+https://github.com/sfztools/sfizz#branch=develop
-  git+https://github.com/steinbergmedia/vst3_base
-  git+https://github.com/steinbergmedia/vst3_pluginterfaces
-  git+https://github.com/steinbergmedia/vst3_public_sdk
-  git+https://github.com/sfztools/vstgui
-  git+https://github.com/simd-everywhere/simde
+  $_gitname::git+https://github.com/sfztools/sfizz-ui#branch=develop
+  library::git+https://github.com/sfztools/sfizz
   git+https://github.com/mackron/dr_libs
   git+https://github.com/sfztools/stb_vorbis
   git+https://github.com/sfztools/libaiff
-  git+https://github.com/sfztools/sfzt_auwrapper
 )
 sha512sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -60,32 +62,7 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
         'SKIP')
-
-_common_depends=(
-  abseil-cpp
-  gcc-libs
-  glibc
-)
-
-_lv2_vst_vst3_depends=(
-  cairo
-  fontconfig
-  libx11
-  libxkbcommon
-  libxkbcommon-x11
-  pango
-  pugixml
-  ttf-roboto
-  xcb-util
-  xcb-util-cursor
-  zenity
-)
 
 _pick() {
   local p="$1" f d; shift
@@ -98,7 +75,7 @@ _pick() {
 }
 
 pkgver() {
-  cd $_pkgname
+  cd $_gitname
   ( set -o pipefail
     git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -106,54 +83,45 @@ pkgver() {
 }
 
 prepare() {
-  cd $_pkgname
   git submodule init
-  # Temporary
-  git config submodule.plugins.vst.external.VST_SDK.VST3_SDK.base ../base
-  git config submodule.plugins.vst.external.VST_SDK.VST3_SDK.pluginterfaces ../pluginterfaces
-  git config submodule.plugins.vst.external.VST_SDK.VST3_SDK.public.sdk ../public.sdk
-  git config submodule.plugins.editor.external.vstgui4 ../vstgui4
-  git config submodule.external.simde.url ../simde
-
+  git config submodule.library.url ../library
   git config submodule.external.st_audiofile.thirdparty.dr_libs.url ../dr_libs
-  git config submodule.external.st_audiofile.thirdparty.stb_vorbis.url ../stb_vorbis
   git config submodule.external.st_audiofile.thirdparty.libaiff.url ../libaiff
-  git config submodule.plugins.vst.external.sfzt_auwrapper.url ../sfzt_auwrapper
+  git config submodule.external.st_audiofile.thirdparty.stb_vorbis.url ../stb_vorbis
   git submodule update
 
+  rm -rf $_gitname/library
+  ln -svf $(pwd)/library $_gitname/
+
+  pushd ./library/external/st_audiofile/thirdparty
+  for module in dr_libs libaiff stb_vorbis; do
+    rm -rf $module
+    ln -svf "$srcdir/$module" $module
+  done
+  popd
+
   # symlink tests data to top-level location so that tests can get to them (we build out of tree)
-  ln -svf "$srcdir"/$_pkgname/tests "$srcdir"/tests
+  ln -svf ./library/tests .
 }
 
 build() {
   local cmake_options=(
+    -B build
     -D CMAKE_INSTALL_PREFIX=/usr
     -D CMAKE_BUILD_TYPE=None
-# Enabled by default, here for reference
-#   -D SFIZZ_JACK=ON
-#   -D SFIZZ_LV2=ON
-#   -D SFIZZ_LV2_UI=ON
-#   -D SFIZZ_VST=ON
-    -D SFIZZ_PUREDATA=ON
+    -D CMAKE_CXX_STANDARD=17
+    -D PLUGIN_PUREDATA=ON
     -D SFIZZ_TESTS=ON
-    -D SFIZZ_USE_SYSTEM_CATCH=ON
     -D SFIZZ_USE_SYSTEM_ABSEIL=ON
+    -D SFIZZ_USE_SYSTEM_CATCH=ON
     -D SFIZZ_USE_SYSTEM_CXXOPTS=ON
     -D SFIZZ_USE_SYSTEM_GHC_FS=ON
     -D SFIZZ_USE_SYSTEM_LV2=ON
     -D SFIZZ_USE_SYSTEM_PUGIXML=ON
-# Wait for working simde 0.7.4+
-#   -D SFIZZ_USE_SYSTEM_SIMDE=ON
-#
-# Keep this bundled as well for a while, will not hurt anyone :)
-#   -D SFIZZ_USE_SYSTEM_VST3SDK=ON
-#
-# Same c++ standard version as for abseil-cpp:
-# https://github.com/archlinux/svntogit-community/blob/packages/abseil-cpp/trunk/PKGBUILD#L28
-    -D CMAKE_CXX_STANDARD=17
+    -D SFIZZ_USE_SYSTEM_SIMDE=ON
+    -D SFIZZ_USE_SYSTEM_VST3SDK=ON
+    -S $_gitname
     -W no-dev
-    -B build
-    -S $_pkgname
   )
   cmake "${cmake_options[@]}"
   cmake --build build --verbose
@@ -166,90 +134,146 @@ check() {
 
 package_sfizz-git() {
   depends=(
-    $_pkgname-{clients,lib,lv2,pd,vst3}-git=$pkgver
+    $_pkgname-{lib,lv2,standalone,vst3}-git
+    pd-$_pkgname-git
   )
-  provides=($_pkgname lib$_pkgname.so)
+  provides=($_pkgname)
   conflicts=($_pkgname)
 
   DESTDIR="$pkgdir" cmake --install build
 
   (
     cd "$pkgdir"
-    # have find-libdeps resolve dependencies properly:
-    # https://gitlab.archlinux.org/archlinux/devtools/-/issues/102
-    find usr/lib -type f \( -iname "*.clap" -or -iname "*.so" \) -exec chmod +x {} \;
-    _pick $_pkgname-clients-git usr/bin/
-    _pick $_pkgname-clients-git usr/share/man/
-    _pick $_pkgname-lv2-git     usr/lib/lv2/
-    _pick $_pkgname-pd-git      usr/lib/pd/
-    _pick $_pkgname-vst3-git    usr/lib/vst3/
-    _pick $_pkgname-lib-git     usr/include/
-    _pick $_pkgname-lib-git     usr/lib/
+
+    _pick $_pkgname-lib-git usr/include
+    _pick $_pkgname-lib-git usr/lib/lib$_pkgname.so*
+    _pick $_pkgname-lib-git usr/lib/pkgconfig/$_pkgname.pc
+
+    _pick $_pkgname-lv2-git usr/lib/lv2
+
+    _pick $_pkgname-standalone-git usr/bin
+    _pick $_pkgname-standalone-git usr/share/man/man1
+
+    _pick $_pkgname-vst3-git usr/lib/vst3
+
+    _pick pd-$_pkgname-git usr/lib/pd
   )
+}
+
+package_pd-sfizz-git() {
+  pkgdesc+=" - pd external"
+  groups=(
+    pd-externals
+    pro-audio
+  )
+  depends=(
+    abseil-cpp
+    gcc-libs
+    glibc
+    pd
+    pugixml
+  )
+
+  mv -v $pkgname/* "$pkgdir"
+  install -vDm 644 $_gitname/LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
+  install -vDm 644 $_gitname/{AUTHORS,CONTRIBUTING,GOVERNANCE,README}.md -t "$pkgdir/usr/share/doc/$_pkgname/"
 }
 
 package_sfizz-lib-git() {
-  pkgdesc+=' - Engine library'
-  groups=(pro-audio)
+  pkgdesc+=" - library"
   depends=(
-    "${_common_depends[@]}"
+    abseil-cpp
+    gcc-libs
+    glibc
     pugixml
   )
-  mv -v $_pkgname-lib-git/* "$pkgdir"
-  install -vDm 644 "$srcdir/$_pkgname"/LICENSE \
-    -t "$pkgdir/usr/share/licenses/$_pkgname/"
-  install -vDm 644 "$srcdir/$_pkgname"/{AUTHORS,CONTRIBUTING,GOVERNANCE,README}.md \
-    -t "$pkgdir/usr/share/doc/$_pkgname/"
-}
+  provides=(lib$_pkgname.so)
 
-package_sfizz-clients-git() {
-  pkgdesc+=' - JACK and render clients'
-  groups=(pro-audio)
-  depends=(
-    "${_common_depends[@]}"
-    jack
-    $_pkgname-lib-git=$pkgver
-  )
-  mv -v $_pkgname-clients-git/* "$pkgdir"
+  mv -v $pkgname/* "$pkgdir"
+  install -vDm 644 $_gitname/LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
+  install -vDm 644 $_gitname/{AUTHORS,CONTRIBUTING,GOVERNANCE,README}.md -t "$pkgdir/usr/share/doc/$_pkgname/"
 }
 
 package_sfizz-lv2-git() {
   pkgdesc+=" - LV2 plugin"
-  groups=(pro-audio lv2-plugins)
-  depends=(
-    "${_common_depends[@]}"
-    "${_lv2_vst_vst3_depends[@]}"
-    lv2-host
-    $_pkgname-lib-git=$pkgver
+  groups=(
+    lv2-plugins
+    pro-audio
   )
-  mv -v $_pkgname-lv2-git/* "$pkgdir"
-  # Devendor ttf-roboto
-  ln -svf /usr/share/fonts/TTF/Roboto-Regular.ttf \
-    "$pkgdir/usr/lib/lv2/$_pkgname.lv2/Contents/Resources/Fonts/"
+  depends=(
+    abseil-cpp
+    cairo
+    fontconfig
+    gcc-libs
+    glib2
+    glibc
+    libxcb
+    libxkbcommon
+    libxkbcommon-x11
+    lv2-host
+    pango
+    pugixml
+    ttf-roboto
+    xcb-util
+    xcb-util-cursor
+    zenity
+  )
+
+  mv -v $pkgname/* "$pkgdir"
+  # devendor ttf-roboto
+  ln -svf /usr/share/fonts/TTF/Roboto-Regular.ttf "$pkgdir/usr/lib/lv2/$_pkgname.lv2/Contents/Resources/Fonts/"
+  install -vDm 644 $_gitname/LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
+  install -vDm 644 $_gitname/{AUTHORS,CONTRIBUTING,GOVERNANCE,README}.md -t "$pkgdir/usr/share/doc/$_pkgname/"
 }
 
-package_sfizz-pd-git() {
-  pkgdesc+=" - Pure Data plugin"
-  groups=(pro-audio)
-  depends=(
-    "${_common_depends[@]}"
-    pd
-    $_pkgname-lib-git=$pkgver
+package_sfizz-standalone-git() {
+  pkgdesc+=" - standalone"
+  groups=(
+    pro-audio
   )
-  mv -v $_pkgname-pd-git/* "$pkgdir"
+  depends=(
+    abseil-cpp
+    gcc-libs
+    glibc
+    pugixml
+  )
+  optdepends=(
+    'jack: for sfizz_jack'
+  )
+
+  mv -v $pkgname/* "$pkgdir"
+  install -vDm 644 $_gitname/LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
+  install -vDm 644 $_gitname/{AUTHORS,CONTRIBUTING,GOVERNANCE,README}.md -t "$pkgdir/usr/share/doc/$_pkgname/"
 }
 
 package_sfizz-vst3-git() {
   pkgdesc+=" - VST3 plugin"
-  groups=(pro-audio vst3-plugins)
-  depends=(
-    "${_common_depends[@]}"
-    "${_lv2_vst_vst3_depends[@]}"
-    vst3-host
-    $_pkgname-lib-git=$pkgver
+  groups=(
+    pro-audio
+    vst3-plugins
   )
-  mv -v $_pkgname-vst3-git/* "$pkgdir"
-  # Devendor ttf-roboto
-  ln -svf /usr/share/fonts/TTF/Roboto-Regular.ttf \
-    "$pkgdir/usr/lib/vst3/$_pkgname.vst3/Contents/Resources/Fonts/"
+  depends=(
+    abseil-cpp
+    cairo
+    fontconfig
+    gcc-libs
+    glib2
+    glibc
+    libxcb
+    libxkbcommon
+    libxkbcommon-x11
+    pango
+    pugixml
+    ttf-roboto
+    vst3-host
+    xcb-util
+    xcb-util-cursor
+    zenity
+  )
+
+  mv -v $pkgname/* "$pkgdir"
+  # devendor ttf-roboto
+  ln -svf /usr/share/fonts/TTF/Roboto-Regular.ttf "$pkgdir/usr/lib/vst3/$_pkgname.vst3/Contents/Resources/Fonts/"
+  install -vDm 644 $_gitname/LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
+  install -vDm 644 $_gitname/{AUTHORS,CONTRIBUTING,GOVERNANCE,README}.md -t "$pkgdir/usr/share/doc/$_pkgname/"
 }
