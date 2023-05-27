@@ -1,7 +1,7 @@
 pkgbase = periodiccalendar-jdk
 	pkgdesc = Periodic Calendar for tracking women cycle (supports JDK 20)
 	pkgver = 3.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://linuxorg.sf.net/
 	arch = any
 	license = GPL3
