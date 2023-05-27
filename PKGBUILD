@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=video-trimmer
 pkgver=0.8.1
 pkgrel=1
@@ -14,11 +14,13 @@ sha256sums=('c6fb54d8315b0933584eba379f7d32cc24e0f9abb99341aedcfd81fdc7477380')
 
 prepare() {
   cd "$pkgname-v$pkgver"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   arch-meson "$pkgname-v$pkgver" build
   meson compile -C build
