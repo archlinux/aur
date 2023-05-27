@@ -11,9 +11,9 @@ pkgname=(
  dotnet-targeting-pack-6.0
  aspnet-targeting-pack-6.0
 )
-pkgver=6.0.14.sdk114
+pkgver=6.0.16.sdk116
 pkgrel=1
-_bootstrapver=6.0.112
+_bootstrapver=6.0.115
 arch=(x86_64)
 url=https://www.microsoft.com/net/core
 license=(MIT)
@@ -41,7 +41,7 @@ options=(
   !lto
   staticlibs
 )
-_tag=346c0065dd9540261ec07e938b808833446d2a9e
+_tag=b605cc131fcdef9956ddefe092069c57938a98db
 source=(
   dotnet-installer::git+https://github.com/dotnet/installer.git#tag=${_tag}
   https://dotnetcli.azureedge.net/source-built-artifacts/assets/Private.SourceBuilt.Artifacts.${_bootstrapver}.tar.gz
@@ -51,7 +51,7 @@ source=(
 )
 noextract=(Private.SourceBuilt.Artifacts.${_bootstrapver}.tar.gz)
 b2sums=('SKIP'
-        '4a84b6e513c7b77323eab23b062b0cb948cc49eaff999e8b5a73535ca49c62e39139fe995a91db2aca3946d16c2ef13f5e473aa62cc68655d69d95ea11d83688'
+        '489a16c137421ffd7d42987c1bbf1ac9bc4f4b4ea842b845672530e1fec3ac4de375d0936125fe7c4f4ff3fe4c8e57b1b1fdc860a16181b70a4ad4997eb9d2b6'
         '4a64e3ee550e296bdde894f9202c6f372934cc29154f47d302599b4c368825a96a7b786faa6109a24a1101ff130fd9e4d0ccba094ec91e7f2ca645725bf71b34'
         'b9472b3967c9d7549ee2bbf0180d919748b40b1f9a65b1c3789be40f62ed17a9d37c2020409f7835570620108bd5ec43e728966d075d66bf0b7261cdd36a60c3'
         '95b083b842da6049a084ca015b7ddc099550aa818fc382d556cca832fee52265be568d20a2c50e70819aef6cf879e7a368f7dd3b5966356643b2efdd756e73f4')
@@ -133,7 +133,7 @@ package_dotnet-runtime-6.0() {
     gcc-libs
     glibc
     icu
-    libgssapi_krb5.so
+    krb5
     libunwind
     zlib
     openssl
