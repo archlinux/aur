@@ -1,7 +1,7 @@
 pkgbase = doom2df-editor-qt4
 	pkgdesc = Official map editor for Doom 2D: Forever, qt4 version.
 	pkgver = 0.667
-	pkgrel = 1
+	pkgrel = 2
 	url = https://doom2d.org/
 	arch = x86_64
 	arch = i686
