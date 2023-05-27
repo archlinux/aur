@@ -1,7 +1,7 @@
 pkgbase = hydrus
 	pkgdesc = Danbooru-like image tagging and searching system for the desktop
 	pkgver = 529
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hydrusnetwork.github.io/hydrus/
 	arch = any
 	license = custom
@@ -27,7 +27,7 @@ pkgbase = hydrus
 	depends = python-typing_extensions
 	depends = python-service-identity
 	depends = qt6-multimedia
-	depends = pyside6
+	depends = python-pyqt6
 	depends = hydrus-docs>=529
 	optdepends = ffmpeg: show duration and other information on video thumbnails
 	optdepends = miniupnpc: automatic port forwarding
@@ -49,7 +49,7 @@ pkgbase = hydrus
 	source = hydrus.desktop
 	sha256sums = SKIP
 	sha256sums = c332728ca119b1ed4e9a4f40de79087fa90f8754535718b506954d375541f9f0
-	sha256sums = 39d3404b75320be6a9e33dc256f4fc313c65fe11458e96bd5af6268c2f78eaf0
+	sha256sums = b1854ecac184385f0aa48fcefd426223fac3eeec0f1180ba58b6a58b03257d68
 	sha256sums = 5956d418d29fe19f54263acf47adce7c6d134d19ec65e2810d4517ce83529480
 	sha256sums = 9b8c2603a8040ae80152ff9a718ad3e8803fdc3029a939e3c0e932ea35ded923
 
