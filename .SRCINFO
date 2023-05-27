@@ -1,0 +1,13 @@
+pkgbase = lazymc
+	pkgdesc = Put your Minecraft server to rest when idle.
+	pkgver = 0.2.10
+	pkgrel = 1
+	url = https://github.com/timvisee/lazymc
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = gcc-libs
+	source = lazymc-0.2.10.tar.gz::https://github.com/timvisee/lazymc/archive/refs/tags/v0.2.10.tar.gz
+	sha256sums = 367bec1b6de6802f481fd9986c4fcc8851db37396db3306d29ec7d8185ec3c85
+
+pkgname = lazymc
