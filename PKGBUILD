@@ -20,11 +20,13 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/Geopard"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   arch-meson Geopard build
   meson compile -C build
