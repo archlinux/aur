@@ -4,13 +4,11 @@ pkgbase=mounriver-studio-toolchain-bin
 pkgname=($pkgbase mounriver-studio-toolchain-openocd-bin mounriver-studio-toolchain-riscv-bin)
 pkgver=1.70
 _pkgver=${pkgver/.}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='http://www.mounriver.com/'
 license=('GPL2' 'GPL3' 'custom')
 provides=('MRS-Toolchain')
-conflicts=()
-depends=()
 makedepends=('tar')
 optdepends=('ch34x-dkms-git: CH341SER driver with fixed bug'
             'i2c-ch341-dkms: CH341 USB-I2C adapter driver'
@@ -43,7 +41,8 @@ package_mounriver-studio-toolchain-openocd-bin() {
              'libusb'
              'hidapi'
              'libusb-compat'
-             'libudev.so')
+             'libudev.so'
+             'libjaylink.so')
 
     pkgdesc="MRS Toolchain OpenOCD supports erasure, programming, verification and debugging of the chip."
 

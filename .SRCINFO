@@ -1,6 +1,6 @@
 pkgbase = mounriver-studio-toolchain-bin
 	pkgver = 1.70
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mounriver.com/
 	arch = x86_64
 	license = GPL2
@@ -33,6 +33,7 @@ pkgname = mounriver-studio-toolchain-openocd-bin
 	depends = hidapi
 	depends = libusb-compat
 	depends = libudev.so
+	depends = libjaylink.so
 
 pkgname = mounriver-studio-toolchain-riscv-bin
 	pkgdesc = MRS Toolchain Support for RISC-V assembly and GNU C compilation, link operation.
