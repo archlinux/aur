@@ -4,7 +4,7 @@
 # Maintainer: SanskritFritz (gmail)
 
 pkgname=d2x-rebirth
-pkgver=20220823
+pkgver=20220929
 pkgrel=1
 pkgdesc="An enhanced engine to play with Descent2 data."
 arch=('x86_64')
@@ -16,7 +16,7 @@ install="$pkgname.install"
 source=("https://www.dxx-rebirth.com/download/dxx/rebirth/dxx-rebirth_$pkgver-src.tar.xz"
         "https://www.dxx-rebirth.com/download/dxx/res/d2xr-sc55-music.dxa")
 noextract=("d2xr-sc55-music.dxa")
-md5sums=('204fa5d8bf3395414da9763a01973e7f'
+md5sums=('0b941ed14b6a796fb8771fab20b128ae'
          'b5bd2bea4cf904d54bddad36222aa92f')
 
 build() {
