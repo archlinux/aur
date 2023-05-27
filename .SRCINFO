@@ -1,6 +1,6 @@
 pkgbase = senpai-cli
 	pkgdesc = BashSenpai is a terminal assistant powered by ChatGPT.
-	pkgver = 0.78b
+	pkgver = 0.79b
 	pkgrel = 1
 	url = https://github.com/BashSenpai
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = senpai-cli
 	depends = python-requests
 	depends = python-toml
 	provides = senpai
-	source = https://github.com/BashSenpai/cli/archive/refs/tags/v0.78b.tar.gz
-	sha256sums = f9dbc80578c6c9b5e58b7139f709b8f2cc6f1c8eaf01b3f98a5a82a146bea9e4
+	source = https://github.com/BashSenpai/cli/archive/refs/tags/v0.79b.tar.gz
+	sha256sums = e156271bff8ff1a93a6a615bf14cf8b67e6d1850781f7c43cb0deb11ae2b0239
 
 pkgname = senpai-cli

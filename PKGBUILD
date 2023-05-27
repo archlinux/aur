@@ -2,7 +2,7 @@
 pkgname=senpai-cli
 _appname=senpai
 _reponame=cli
-pkgver=0.78b
+pkgver=0.79b
 pkgrel=1
 pkgdesc='BashSenpai is a terminal assistant powered by ChatGPT.'
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('python-setuptools')
 optdepends=()
 provides=('senpai')
 source=("https://github.com/BashSenpai/${_reponame}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f9dbc80578c6c9b5e58b7139f709b8f2cc6f1c8eaf01b3f98a5a82a146bea9e4')
+sha256sums=('e156271bff8ff1a93a6a615bf14cf8b67e6d1850781f7c43cb0deb11ae2b0239')
 
 build() {
     cd "${_reponame}-${pkgver}"
