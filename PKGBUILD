@@ -2,12 +2,13 @@
 
 pkgname=json-schema-validator
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="JSON schema validator for JSON for Modern C++"
 arch=(any)
 url="https://github.com/pboettch/json-schema-validator"
 license=(MIT)
-makedepends=(cmake git nlohmann-json)
+depends=(nlohmann-json)
+makedepends=(cmake git)
 source=(
   https://github.com/pboettch/json-schema-validator/archive/refs/tags/${pkgver}.zip
 )
