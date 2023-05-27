@@ -14,21 +14,21 @@ source=("git+https://github.com/pop-os/system76-firmware.git#commit=${_commit}")
 sha256sums=('SKIP')
 #validpgpkeys=('D3FB3AF9711C1CD12639C9F587F211AF2BE4C2FE') # Jeremy Soller (https://soller.dev) <jackpot51@gmail.com>
 
-# 1.0.52 tag was updated, but is 4 commits ahead
-
-#pkgver() {
-#  cd "$srcdir/$pkgbase"
-#  git describe --tags | sed 's/-/+/g'
-#}
+pkgver() {
+  cd "$srcdir/$pkgbase"
+  git describe --tags | sed 's/-/+/g'
+}
 
 prepare() {
   cd "$srcdir/$pkgbase"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   cd "$srcdir/$pkgbase"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   make
 }
