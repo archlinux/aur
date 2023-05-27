@@ -1,6 +1,6 @@
 pkgbase = r-anvil
 	pkgdesc = Bioconductor on the AnVIL compute environment
-	pkgver = 1.12.1
+	pkgver = 1.12.3
 	pkgrel = 1
 	url = https://bioconductor.org/packages/AnVIL
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = r-anvil
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/AnVIL_1.12.1.tar.gz
-	sha256sums = 53e7dbaeefb5232936974ed4dec61dc6805179ff72c08da23fc145616ed4253e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/AnVIL_1.12.3.tar.gz
+	sha256sums = 30ae9f3d9ecb83afc26be36aeb01dac0c962b727dfb9c12d9a9a19c8d803a137
 
 pkgname = r-anvil
