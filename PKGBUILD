@@ -31,7 +31,6 @@ pkgver() {
 
 build() {
 	cd websurfx
-    git checkout rolling
 	cargo build -r
 }
 
