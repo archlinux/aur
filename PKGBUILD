@@ -230,7 +230,7 @@ prepare() {
 
 build() {
   cd linux-${_major}
-  make ${_compiler_flags} -j${_processes} all
+  make ${_compiler_flags} "-j${_processes}" all
 }
 
 _package() {
