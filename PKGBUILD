@@ -14,12 +14,14 @@ sha256sums=('6c76ed6f5a846388454766c6022f9a17a04448d6b132098a2cf3aabbbd7c137f')
 
 prepare() {
   cd "$pkgname-$pkgver"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=nightly
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   cd "$pkgname-$pkgver"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=nightly
   export GOPATH="$srcdir/gopath"
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -35,6 +37,7 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=nightly
   just clippy
 }
