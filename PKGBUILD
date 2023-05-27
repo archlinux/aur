@@ -6,7 +6,7 @@
 # will be on config.extra file.
 
 pkgbase=linux-git
-pkgver=v6.3.2.r0.5729a900a07b.patched.stable.linux
+pkgver=v6.4.rc3.r291.4e893b5aa4ac
 pkgrel=1
 pkgdesc="Linus Torvalds' Mainline Linux"
 url="https://www.kernel.org"

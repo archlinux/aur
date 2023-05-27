@@ -2,8 +2,10 @@ README="$(cat << EOF
 
 ===============================================================================
 
-These are the instructions to customize the next linux-git package compilation
-in case using the current Linux mainline is not desired:
+This package can be customized to use other than vanilla mainline if it's
+locally compiled by the user.
+These are the instructions to apply the customization to the next linux-git
+package compilation:
 
 * How to customize the git remote / branch:
   Please consult and edit the file /etc/linux-git/remote

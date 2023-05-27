@@ -1,6 +1,6 @@
 pkgbase = linux-git
 	pkgdesc = Linus Torvalds' Mainline Linux
-	pkgver = v6.4.rc2.r0.f1fcbaa18b28
+	pkgver = v6.4.rc3.r291.4e893b5aa4ac
 	pkgrel = 1
 	url = https://www.kernel.org
 	arch = x86_64
