@@ -1,0 +1,25 @@
+pkgbase = sensible-utils-unified
+	pkgdesc = Utilities for sensible alternative selection
+	pkgver = 0.0.17
+	pkgrel = 3
+	url = http://packages.debian.org/source/sid/sensible-utils
+	arch = any
+	license = GPL
+	checkdepends = ed
+	makedepends = po4a
+	depends = bash
+	provides = sensible-utils
+	provides = sensible-pager
+	provides = sensible-editor
+	provides = sensible-browser
+	provides = sensible-utils-data
+	conflicts = sensible-utils
+	conflicts = sensible-pager
+	conflicts = sensible-editor
+	conflicts = sensible-browser
+	conflicts = sensible-utils-data
+	replaces = sensible-utils
+	source = http://ftp.debian.org/debian/pool/main/s/sensible-utils/sensible-utils_0.0.17+nmu1.tar.xz
+	sha256sums = a4ead62e0dc8f965453221dcb09c964abc4f1bedad24f527d33c443a1570cb31
+
+pkgname = sensible-utils
