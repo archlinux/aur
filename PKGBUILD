@@ -3,7 +3,7 @@
 _srcname=shadowsocks-libev
 pkgname=${_srcname}-static
 pkgver=3.3.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Statically-compiled shadowsocks-libev, intended to replace community/shadowsocks-libev"
 arch=('x86_64')
 url='https://github.com/shadowsocks/shadowsocks-libev'
