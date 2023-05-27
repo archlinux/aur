@@ -1,13 +1,13 @@
 # Maintainer: Vladislav Nepogodin <nepogodin.vlad@gmail.com>
 
 pkgname=contour-git
-pkgver=0.3.12.r3689.cdc5d1ee
+pkgver=0.3.12.r3703.7963c6d7
 pkgrel=1
 pkgdesc="Modern C++ Terminal Emulator"
 arch=(x86_64 aarch64)
 url="https://github.com/contour-terminal/contour"
 license=('Apache-2.0')
-depends=('harfbuzz' 'fontconfig' 'yaml-cpp' 'qt6-base' 'qt6-multimedia' 'qt6-5compat')
+depends=('harfbuzz' 'fontconfig' 'yaml-cpp' 'qt6-base' 'qt6-multimedia' 'qt6-5compat' 'libutempter')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja' 'libxml2'
              'python' 'catch2' 'range-v3' 'fmt' 'microsoft-gsl')
 source=("${pkgname}::git+https://github.com/contour-terminal/contour.git")

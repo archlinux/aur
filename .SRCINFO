@@ -1,6 +1,6 @@
 pkgbase = contour-git
 	pkgdesc = Modern C++ Terminal Emulator
-	pkgver = 0.3.12.r3689.cdc5d1ee
+	pkgver = 0.3.12.r3703.7963c6d7
 	pkgrel = 1
 	url = https://github.com/contour-terminal/contour
 	arch = x86_64
@@ -22,6 +22,7 @@ pkgbase = contour-git
 	depends = qt6-base
 	depends = qt6-multimedia
 	depends = qt6-5compat
+	depends = libutempter
 	provides = contour
 	conflicts = contour
 	options = !strip
