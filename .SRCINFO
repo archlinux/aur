@@ -1,0 +1,17 @@
+pkgbase = upterm-git
+	pkgdesc = Secure terminal sharing
+	pkgver = 0.10.0.r14.g9f907d4
+	pkgrel = 1
+	url = https://upterm.dev/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = upterm=0.10.0.r14.g9f907d4
+	conflicts = upterm
+	source = git+https://github.com/owenthereal/upterm.git
+	sha256sums = SKIP
+
+pkgname = upterm-git
