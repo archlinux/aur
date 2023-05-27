@@ -1,5 +1,5 @@
 pkgbase = hexcore-link
-	pkgdesc = Hexcore Link for Anne Pro and Anne Pro 2
+	pkgdesc = Hexcore Link for ANNE PRO 2D and other keyboards with firmware versions higher than 3.0
 	pkgver = 2.0.23
 	pkgrel = 1
 	url = https://www.hexcore.xyz/hexcore-link
