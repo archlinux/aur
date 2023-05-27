@@ -2,20 +2,20 @@
 # Contributor: Carlo Sala <carlosalag@protonmail.com>
 
 pkgname=surfshark-gui-bin
-pkgver=1.3.0
-pkgrel=1616
+pkgver=1.4.0
+pkgrel=1733
 pkgdesc="Surfshark VPN client. Keep your online activity and personal information secure. Put your privacy-conscious mind at rest and enjoy unrestricted internet."
 url="https://surfshark.com"
 arch=('x86_64')
 license=('custom:surfshark')
-depends=('alsa-lib' 'at-spi2-core' 'cairo' 'curl' 'dbus' 'expat' 'libnma' 'gjs' 'glib2' 'gtk3' 'iptables' 'kwalletmanager' 'libcups' 'libdrm' 'libnotify' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'libxtst' 'mesa' 'networkmanager>=1.20.0' 'networkmanager-openvpn' 'nspr' 'nss' 'pango' 'wayland' 'wireguard-tools' 'zip')
-optdepends=('noto-fonts-emoji' 'libappindicator-gtk3' 'libsecret' 'polkit')
+depends=('curl' 'dbus' 'gjs' 'gtk3' 'iptables' 'libnma' 'libnotify' 'libxtst' 'networkmanager' 'networkmanager-openvpn' 'nss' 'polkit' 'zip')
+optdepends=('libappindicator-gtk3' 'gnome-keyring' 'kwallet' 'noto-fonts-emoji')
 provides=('surfsharkvpngui')
 conflicts=('surfshark-vpn-gui' 'surfshark-wireguard' 'surfshark-wireguard-git' 'surfshark-vpn' 'surfshark-client')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source=("https://ocean.surfshark.com/debian/pool/main/s/surfshark/surfshark_1.3.0-1616_amd64.deb")
-sha512sums=('71300b87b67e5beea9b0b5f5f0321be79d3ef94166e43bfcd7ca29e1fb92476fe404ecf2f6fcea645c4de26a6ec4fc252bb7843955893c6aaff228330e57a7ee')
+source=("https://ocean.surfshark.com/debian/pool/main/s/surfshark/surfshark_1.4.0-1733_amd64.deb")
+sha512sums=('f9396114852ca0b57681c5f9809ae0b6285180c21d4e52a1195e350b221a89373248cc884a2228e17a4c3c0ce7eb07b55554873cebfabc302dc8e062984ffe97')
 
 package(){
 
