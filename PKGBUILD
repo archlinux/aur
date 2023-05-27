@@ -81,6 +81,7 @@ prepare() {
     git -c protocol.file.allow=always submodule update "${submodule#*::}"
   done
 
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   for submodule in "${_submodules[@]}"; do
     pushd "${submodule#*::}"
@@ -101,6 +102,7 @@ prepare() {
 
 build() {
   cd "$srcdir/cosmic-epoch"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   # note, consider rust build time optimisations: 
   # https://matklad.github.io/2021/09/04/fast-rust-builds.html, 
@@ -116,8 +118,9 @@ check() {
   appstream-util validate-relax --nonet cosmic-sysext/usr/share/metainfo/*.metainfo.xml || :
   desktop-file-validate cosmic-sysext/usr/share/applications/*.desktop || :
 
+#  export CARGO_HOME="$srcdir/cargo-home"
 #  export RUSTUP_TOOLCHAIN=stable
-#  for p in cosmic-applibrary cosmic-bg cosmic-settings do;
+#  for p in cosmic-applibrary cosmic-settings do;
 #    pushd ${p}
 #    nice just test
 #    popd
