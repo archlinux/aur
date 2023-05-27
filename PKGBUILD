@@ -1,11 +1,12 @@
-# Maintainer: Drew DeVault <sir@cmpwn.com>
-# Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
-pkgname=sway-git
+# Maintainer: Ali Furkan Yıldız <alifurkanyildiz@gmail.com>
+# sway-git Maintainer: Drew DeVault <sir@cmpwn.com>
+# sway-git Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
+pkgname=sway-afy-git
 _pkgname=sway
-pkgver=r6984.e40eb338
+pkgver=r7134.48d6eda3_2.c8afbcc
 pkgrel=1
 license=("MIT")
-pkgdesc="Tiling Wayland compositor and replacement for the i3 window manager"
+pkgdesc="sway-git, with added patches, including an env command"
 makedepends=(
 	"git"
 	"meson"
@@ -39,9 +40,11 @@ optdepends=(
 backup=(etc/sway/config)
 arch=("i686" "x86_64")
 url="https://swaywm.org"
-source=("${pkgname%-*}::git+https://github.com/swaywm/sway.git"
+source=("${_pkgname}::git+https://github.com/swaywm/sway.git"
+	"${_pkgname}-patches::git+https://gitlab.com/alifurkany/sway-patches"
 	50-systemd-user.conf)
 sha512sums=('SKIP'
+            'SKIP'
             'c2b7d808f4231f318e03789015624fd4cf32b81434b15406570b4e144c0defc54e216d881447e6fd9fc18d7da608cccb61c32e0e1fab2f1fe2750acf812d3137')
 provides=("sway")
 conflicts=("sway")
@@ -50,7 +53,22 @@ install=sway.install
 
 pkgver() {
 	cd "$_pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	rev_list_sway="$(git rev-list --count HEAD)"
+	rev_parse_sway="$(git rev-parse --short HEAD)"
+	cd ..
+	cd "$_pkgname-patches"
+	rev_list_patches="$(git rev-list --count HEAD)"
+	rev_parse_patches="$(git rev-parse --short HEAD)"
+	printf "r%s.%s_%s.%s" "$rev_list_sway" "$rev_parse_sway" "$rev_list_patches" "$rev_parse_patches"
+}
+
+prepare() {
+	cd "$_pkgname"
+	git reset --hard
+	git clean -fd
+	for patch in ../"$_pkgname"-patches/*.patch; do
+		patch --forward --strip=1 --input="$patch"
+	done
 }
 
 build() {
@@ -74,6 +92,6 @@ package() {
 }
 
 post_upgrade() {
-	echo "Make sure to upgrade wlroots-git and sway-git together."
+	echo "Make sure to upgrade wlroots-git and sway-afy-git together."
 	echo "Upgrading one but not the other is unsupported."
 }
