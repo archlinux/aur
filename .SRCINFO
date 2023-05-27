@@ -1,16 +1,16 @@
 pkgbase = car
 	pkgdesc = Compass and Ruler is a dynamic geometry program
-	pkgver = 2022.07.06
-	pkgrel = 12
+	pkgver = 2023.03
+	pkgrel = 1
 	url = http://car.rene-grothmann.de/
 	arch = any
 	license = GPL
 	depends = java-runtime
 	depends = xdg-utils
-	source = http://car.rene-grothmann.de/download/car.zip
+	source = https://sourceforge.net/projects/zirkel/files/Version%202023-03/car_2023-03.zip/download
 	source = car.desktop
 	source = car.sh
-	md5sums = c5ada9d88bfc790cd1270367de75a15e
+	md5sums = b1f41add39f6464f88892a0bda0898d2
 	md5sums = 94fdcd79f877188507c68434c2a80e67
 	md5sums = 2539542867d5f23e823b7a7704f17443
 

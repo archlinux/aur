@@ -5,17 +5,19 @@
 # Maintainer: Michael Kogan <michael.kogan at gmx.net>
 
 pkgname=car
-pkgver=2022.07.06
-pkgrel=12
+pkgver=2023.03
+major=$(echo $pkgver | cut -d. -f1)
+minor=$(echo $pkgver | cut -d. -f2)
+pkgrel=1
 url="http://car.rene-grothmann.de/"
 pkgdesc="Compass and Ruler is a dynamic geometry program"
 arch=('any')
 license=('GPL')
 depends=('java-runtime' 'xdg-utils')
-source=("http://car.rene-grothmann.de/download/car.zip"
+source=("https://sourceforge.net/projects/zirkel/files/Version%20${major}-${minor}/car_${major}-${minor}.zip/download"
         "${pkgname}.desktop"
 	"${pkgname}.sh")
-md5sums=('c5ada9d88bfc790cd1270367de75a15e'
+md5sums=('b1f41add39f6464f88892a0bda0898d2'
          '94fdcd79f877188507c68434c2a80e67'
          '2539542867d5f23e823b7a7704f17443')
 
@@ -31,4 +33,4 @@ package() {
 	  "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	install -d "$pkgdir"/usr/share/doc/${pkgname}/
 	cp -r "${srcdir}"/car/doc_en/* "$pkgdir"/usr/share/doc/${pkgname}/
-} 
+}
