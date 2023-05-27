@@ -1,4 +1,6 @@
-#Submiter: Hector Mtz-Seara (hseara#at#gmail#com)
+# Maintainer: Hector Mtz-Seara (hseara#at#gmail#com)
+# Maintainer: Vedran Miletic <vedran AT miletic DOT net>
+
 pkgname=python-mdanalysis
 pkgver=2.0.0
 pkgrel=1
@@ -10,9 +12,8 @@ depends=('python-numpy' 'cython' 'python-mmtf' 'python-gsd' 'python-tqdm' 'pytho
 optdepends=('python-biopython: to use all MDAnalysis functions'
             'python-matplotlib: to use all MDAnalysis functions'
             'python-joblib: to use all MDAnalysis functions'
-	    'python-netcdf4: to operate on AMBER binary trajectories'
+            'python-netcdf4: to operate on AMBER binary trajectories'
             'python-networkx: for analysis of lipid leaflets via MDAnalysis.analysis.leaflet')
-
 
 source=(https://github.com/MDAnalysis/mdanalysis/archive/release-$pkgver.tar.gz)
 sha256sums=('4dc4efbdca86f5d4ec67448059aafa19b242ab65f756a94f2864e3c59fd43fde')
