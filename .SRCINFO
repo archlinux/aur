@@ -1,11 +1,11 @@
 pkgbase = chatty-git
 	pkgdesc = Twitch Chat Client for Desktop
-	pkgver = 0.21.b1.r0.g4189a3d0
+	pkgver = 0.24.1.r0.ge17ed1d3
 	pkgrel = 1
 	url = https://chatty.github.io/
 	arch = any
 	license = GPL3
-	makedepends = gradle
+	makedepends = gradle7
 	depends = java-environment
 	depends = sh
 	optdepends = streamlink: for watching streams in a custom video player.

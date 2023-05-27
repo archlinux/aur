@@ -2,7 +2,7 @@
 
 pkgname=chatty-git
 _pkgname=${pkgname%-git}
-pkgver=0.21.b1.r0.g4189a3d0
+pkgver=0.24.1.r0.ge17ed1d3
 pkgrel=1
 pkgdesc='Twitch Chat Client for Desktop'
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('java-environment' 'sh')
 optdepends=('streamlink: for watching streams in a custom video player.'
             'livestreamer: for watching streams in a custom video player.')
-makedepends=('gradle')
+makedepends=('gradle7')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("${pkgname}::git+https://github.com/chatty/chatty"
@@ -38,8 +38,8 @@ prepare() {
 build() {
     cd "${srcdir}/${pkgname}"
 
-    gradle --quiet build
-    gradle --quiet release
+    gradle7 --quiet build
+    gradle7 --quiet release
 }
 
 package(){
