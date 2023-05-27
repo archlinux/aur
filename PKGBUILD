@@ -9,20 +9,24 @@ url="http://www.mdanalysis.org/"
 license=("GPL")
 arch=('x86_64')
 depends=('python-numpy' 'cython' 'python-mmtf' 'python-gsd' 'python-tqdm' 'python-griddataformats' 'python-scipy' 'python-biopython' 'python-fasteners' 'python-packaging')
+makedepends=("python-build" "python-installer" "python-wheel")
 optdepends=('python-matplotlib: to use all MDAnalysis functions'
             'python-joblib: to use all MDAnalysis functions'
             'python-netcdf4: to operate on AMBER binary trajectories'
             'python-networkx: for analysis of lipid leaflets via MDAnalysis.analysis.leaflet')
 
-source=(https://github.com/MDAnalysis/mdanalysis/archive/refs/tags/package-$pkgver.tar.gz)
-sha256sums=('492c094a13bd739f641b395e4152e6c7362298ea73c35ff3faaa2aa017cf92f7')
+source=(https://github.com/MDAnalysis/mdanalysis/archive/refs/tags/package-$pkgver.tar.gz
+        0001-Allow-using-newer-numpy.patch)
+sha256sums=('492c094a13bd739f641b395e4152e6c7362298ea73c35ff3faaa2aa017cf92f7'
+            '2703eb79d45d072876c3df50a9dd214664013e39ddc7d5c32ca066602e126d2d')
 
 build() {
   cd $srcdir/mdanalysis-package-$pkgver/package
-  python setup.py build
+  patch -p1 -i $srcdir/0001-Allow-using-newer-numpy.patch
+  python -m build --wheel --no-isolation
 }
 
 package(){
   cd $srcdir/mdanalysis-package-$pkgver/package
-  python setup.py install --root=$pkgdir --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
