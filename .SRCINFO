@@ -1,0 +1,21 @@
+pkgbase = pacup-arch-git
+	pkgdesc = Simplify Pacman, Flatpak Snap, and AUR package updating.
+	pkgver = r76.cccbe90
+	pkgrel = 1
+	url = https://github.com/7ritn/pacup-arch
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = pacman
+	depends = bash
+	optdepends = flatpak: For updating flatpak packages
+	optdepends = snap: For updating snap packages
+	optdepends = yay: For updating AUR packages
+	optdepends = pacaur: For updating AUR packages
+	optdepends = pikaur: For updating AUR packages
+	optdepends = aura: For updating AUR packages
+	optdepends = paru: For updating AUR packages
+	source = pacup-arch::git+https://github.com/7ritn/pacup-arch.git
+	sha256sums = SKIP
+
+pkgname = pacup-arch-git
