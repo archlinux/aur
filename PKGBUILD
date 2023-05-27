@@ -21,12 +21,14 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${pkgname%-git}"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   cd "$srcdir/${pkgname%-git}"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
@@ -34,6 +36,7 @@ build() {
 
 check() {
   cd "$srcdir/${pkgname%-git}"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen --all-features
 }
