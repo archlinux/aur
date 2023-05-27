@@ -1,7 +1,7 @@
 pkgbase = powerdevil-ddcutil
 	pkgdesc = Power management for KDE plasma with DDC/CI enabled
 	pkgver = 5.27.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
 	groups = plasma
@@ -11,6 +11,7 @@ pkgbase = powerdevil-ddcutil
 	makedepends = bluez-qt
 	makedepends = networkmanager-qt
 	depends = plasma-workspace
+	depends = ddcutil
 	optdepends = kinfocenter: for the Energy Information KCM
 	optdepends = power-profiles-daemon: power profiles support
 	optdepends = networkmanager-qt: wireless power saving actions
