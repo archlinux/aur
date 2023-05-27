@@ -1,7 +1,7 @@
 # Maintainer: Jan Dvorak <(firstname).(lastname) @ dvorak-sw.com>
 pkgname=nconvert-bin
 _pkgname=nconvert
-pkgver=7.98
+pkgver=7.136
 pkgrel=1
 epoch=
 pkgdesc="Command line batch image processor and converter from XnSoft."
