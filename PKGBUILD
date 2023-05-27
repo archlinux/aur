@@ -11,7 +11,7 @@ provides=('altair')
 
 source_x86_64=("${pkgname}-${pkgver}.AppImage::https://github.com/imolorhe/altair/releases/download/v${pkgver}/altair_${pkgver}_${arch}_linux.AppImage"
                altair)
-sha256sums_x86_64=('cc697f1e86c3963d099b821ffd74a84fb28f71d14b3b6cb555b1b8fd6a1594af'
+sha256sums_x86_64=('b832233654fdddf295d03b6926e6b9f6151c1c5f747c376f354b75fcf0358086'
                    'a3760d34334143f48d278f5cb17fd450da04048c7d3966e46bb44d35e9d171c7')
 
 prepare() {
