@@ -20,12 +20,14 @@ sha256sums=('78111d370cb05e6e5bdd4d7130e35f6c717d9b4ace78240587346de7d2d03233'
 
 prepare() {
   cd "$pkgname-$pkgver"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   cd "$pkgname-$pkgver"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
@@ -33,6 +35,7 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen --all-features
 
