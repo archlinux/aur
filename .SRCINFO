@@ -1,14 +1,14 @@
 pkgbase = m8c
 	pkgdesc = A UI for the M8 and M8 Headless portable music DAWs
-	pkgver = 1.4.1
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/laamaa/m8c
 	arch = x86_64
 	license = MIT
 	depends = sdl2
 	depends = libserialport
-	source = m8c-1.4.1.tar.gz::https://github.com/laamaa/m8c/archive/refs/tags/v1.4.1.tar.gz
-	md5sums = b128dd14ea3628151c14b064817a9e2f
-	sha256sums = 9e5c101938d2979996c01c43f9c519ebcb4da191fdeb35d210d22ba41401c861
+	source = m8c-1.5.1.tar.gz::https://github.com/laamaa/m8c/archive/refs/tags/v1.5.1.tar.gz
+	md5sums = e3ac1a637559462ce9fe51cc9561541f
+	sha256sums = 34149943e8864a9f1d7242fc0a51b6f326462844be239687ec22518629fc7099
 
 pkgname = m8c
