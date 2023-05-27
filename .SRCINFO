@@ -1,4 +1,4 @@
-pkgbase = linux-xanmod
+pkgbase = linux-xanmod-manjusaka
 	pkgdesc = Linux Xanmod - Current Stable (CURRENT)
 	pkgver = 6.3.4
 	pkgrel = 1
