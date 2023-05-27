@@ -1,30 +1,34 @@
 # Maintainer: Martin Reboredo <yakoyoku@gmail.com>
 
 pkgname=libmongocrypt
-pkgver=1.7.2
+pkgver=1.8.1
 pkgrel=1
 pkgdesc='C library for client side and queryable encryption in MongoDB'
 arch=('x86_64')
-url='https://docs.mongodb.com/mongodb-shell/'
+url='https://github.com/mongodb/libmongocrypt'
 license=('Apache' 'BSD')
+provides=(
+  libkms_message.so
+  libmongocrypt.so
+)
 depends=(libbson)
 makedepends=(cmake)
 source=(
   https://github.com/mongodb/$pkgname/archive/refs/tags/$pkgver.tar.gz
   shared-libbson.patch
 )
-sha256sums=('451d991747a34a06eb0534cb6ec5d486a05c1bd607e66ca5597da170e569cde9'
-            '7d07b7f86d7c868e17d1c954d11aadd67e4c1f18455d029ee4afd0e0d132f841')
+sha256sums=('068a677d3716ac89d730223c1758f041d840eb3363f0521b9969a02bb3a0f977'
+            '11dc755ae4560c51f8fad642bb04c8693835e2f2170ab74b18816a04c42c4d55')
 
 prepare() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd "$srcdir"/$pkgbase-$pkgver
 
-  # patch -Np1 -i ../shared-libbson.patch
-  sed -i 's/\(libbson_for_\)static/\1shared/' CMakeLists.txt
+  patch -Np1 -i ../shared-libbson.patch
+  # sed -i 's/\(libbson_for_\)static/\1shared/' CMakeLists.txt
 }
 
 build() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd "$srcdir"/$pkgbase-$pkgver
 
   cmake -B build \
     -DCMAKE_BUILD_TYPE=Release \
@@ -40,10 +44,9 @@ build() {
 }
 
 package() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd "$srcdir"/$pkgbase-$pkgver
 
   DESTDIR="$pkgdir" cmake --install build
-  ln -s libmongocrypt.so "$pkgdir"/usr/lib/mongosh_crypt_v1.so
 
-  install -Dm0644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
