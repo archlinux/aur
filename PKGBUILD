@@ -1,8 +1,8 @@
 # Maintainer: dqpb <dqpb@mailbox.org>
 
 pkgname=gmetronome
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.2.2
+pkgrel=1
 pkgdesc="A tempo measurement tool for composers and musicians"
 arch=('i686' 'x86_64')
 url="https://gitlab.gnome.org/dqpb/gmetronome"
@@ -15,17 +15,10 @@ depends=(
 
 source=(
     "https://gitlab.gnome.org/dqpb/gmetronome/-/releases/$pkgver/downloads/$pkgname-$pkgver.tar.bz2"
-    "test_destdir.patch"
 )
 sha256sums=(
-    'e882d1f766fc79d743d5139dd3d642a7d6a27184199e76ac4643fb6086a8abe5'
-    'daeb924769b791e9c79be7bbccc70403baaf00663d23d4d557dee42e94a37d5d'
+    '4e4786ac1cca626c7251668aad8680bc5627544a0ccd77d6a99e98992d192bc9'
 )
-
-prepare() {
-    cd "$pkgname-$pkgver"
-    patch --forward --strip=1 --input="${srcdir}/test_destdir.patch"
-}
 
 build() {
     cd "$pkgname-$pkgver"
