@@ -1,0 +1,18 @@
+pkgbase = xfce-winxp-tc-git
+	pkgver = r242.484ec47
+	pkgrel = 1
+	url = https://github.com/rozniak/xfce-winxp-tc
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = xorg-xcursorgen
+	makedepends = ruby-sass
+	makedepends = xfce4-panel
+	depends = xfce4-panel
+	provides = xfce-winxp-tc
+	conflicts = xfce-winxp-tc
+	source = git+https://github.com/rozniak/xfce-winxp-tc.git
+	md5sums = SKIP
+
+pkgname = xfce-winxp-tc-git
