@@ -2,7 +2,7 @@
 
 pkgname=json-schema-validator
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="JSON schema validator for JSON for Modern C++"
 arch=(any)
 url="https://github.com/pboettch/json-schema-validator"
