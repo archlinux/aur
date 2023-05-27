@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('pacman' 'bash')
 makedepends=('git')
 optdepends=('flatpak: For updating flatpak packages'
-            'snap: For updating snap packages'
+            'snapd: For updating snap packages'
             'yay: For updating AUR packages'
             'pacaur: For updating AUR packages'
             'pikaur: For updating AUR packages'
