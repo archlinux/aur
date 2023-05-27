@@ -42,7 +42,7 @@ check() {
 package() {
 	echo -e "${RED}this package has to be installed as root${NC}"
 	cd "$pkgname-v$pkgver/build"
-	echo "installing to /usr/bin/$pkgdir"
+	echo "installing to $pkgdir/usr/bin/kbdmod"
 	install -Dm 755 kbdmod.bin "$pkgdir/usr/bin/kbdmod"
 }
 sha256sums=('a36436887c778f6911d2749183c64b000a8d92b3e7ba2b4d172f4c8eac459b2a')
