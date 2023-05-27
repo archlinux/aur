@@ -2,9 +2,9 @@
 
 pkgname=stm32flash
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source flash program for the STM32 ARM processors using the ST serial bootloader over UART or I2C'
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://sourceforge.net/projects/stm32flash/'
 license=('GPL2')
 makedepends=()
