@@ -4,7 +4,7 @@ post_upgrade() {
 
 	cat <<EOF
 ==> You can now add or uncomment additional Electron flags in
-	'~/.config/discord-flags.conf' (if XDG_CONFIG_HOME is not set)
+    '~/.config/discord-flags.conf' (if XDG_CONFIG_HOME is not set)
 
 EOF
 }
@@ -12,7 +12,7 @@ EOF
 post_install() {
 	cat <<EOF
 ==> In case of performance problems consider adding or uncommenting Electron
-	flags in '~/.config/discord-flags.conf' (if XDG_CONFIG_HOME is not set)
+    flags in '~/.config/discord-flags.conf' (if XDG_CONFIG_HOME is not set)
 
 EOF
 }
