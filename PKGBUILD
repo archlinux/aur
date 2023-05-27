@@ -3,8 +3,8 @@
 # Maintainer: replydev <commoncargo@tutanota.com>
 
 pkgname=kryptor
-pkgver=4.0.1
-pkgrel=2
+pkgver=4.1.0
+pkgrel=1
 _srcpath="Kryptor-$pkgver/src"
 pkgdesc='A simple, modern, and secure encryption and signing tool that aims to be a better version of age and Minisign.'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ url='https://www.kryptor.co.uk/'
 license=('GPL3')
 depends=('dotnet-sdk-6.0')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/samuel-lucas6/Kryptor/archive/v$pkgver.tar.gz")
-sha512sums=('b3391c10991f4d5f917c0aad9ddb225621fa038d5b2282c34c57602b71c0df6dccf56b28b0cf793178a0399c145dc5efd9e27645038f087549e9a489a53922de')
+sha512sums=('95a2a74499bd2e3d0729bc2b78aa68e8d1c12a7ead3acf57a626d646c9a4de474f06a09912a773c7ff4849cb5039513a26d7daeb0bdc874ea19104a6f27b6521')
 conflics=('kryptor-bin')
 provides=('kryptor-bin')
 # Important to disable binary strip, otherwise the artifact would be corrupted
