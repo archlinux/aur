@@ -15,17 +15,15 @@ makedepends=('po4a')
 checkdepends=('ed')
 
 provides=(
-  sensible-utils
   sensible-pager
   sensible-editor
   sensible-browser
   sensible-utils-data
 )
 conflicts=(${provides[@]})
-replaces=(sensible-utils)
 
 source=(
-  http://ftp.debian.org/debian/pool/main/s/$_pkgname/${_pkgname}_${pkgver}${_debianextra}.tar.xz
+  "http://ftp.debian.org/debian/pool/main/s/$_pkgname/${_pkgname}_${pkgver}${_debianextra}.tar.xz"
 )
 sha256sums=(
   'a4ead62e0dc8f965453221dcb09c964abc4f1bedad24f527d33c443a1570cb31'
@@ -39,13 +37,13 @@ build() {
 }
 
 check() {
-  cd ${_pkgname}-${pkgver}${_debianextra}
+  cd "${_pkgname}-${pkgver}${_debianextra}"
   export -n EDITOR VISUAL
   make -k check
 }
 
 package() {
-  cd ${_pkgname}-${pkgver}${_debianextra}
+  cd "${_pkgname}-${pkgver}${_debianextra}"
   export -n EDITOR VISUAL
   make DESTDIR="$pkgdir/" install
   shopt -s globstar
