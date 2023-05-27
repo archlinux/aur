@@ -3,7 +3,7 @@
 
 pkgname=lceda-pro-bin
 _pkgname=${pkgname%-bin}
-pkgver=2.0.28
+pkgver=2.0.30
 pkgrel=1
 pkgdesc="免费、专业、强大的国产PCB设计工具"
 arch=('x86_64' 'aarch64' 'loong64')
@@ -23,9 +23,9 @@ source_aarch64=("${_pkgname}-aarch64-${pkgver}.zip::https://image.lceda.cn/files
 source_loong64=("${_pkgname}-loong64-${pkgver}.zip::https://image.lceda.cn/files/lceda-pro-linux-loong64-${pkgver}.zip")
 sha256sums=('e1c6b9641b73a56d5bffe42d8db2107af8f2c51aa5cd11c79aa998321a5e0190'
             'f8c3c7f65443801b8a70e40de7cdceade5dcd75974945695dd5a1bfb1f862e1a')
-sha256sums_x86_64=('537df63944484c2d70ecca3f19da1a0ba484dd2e3f3d0dd37df8e986db3d9a1a')
-sha256sums_aarch64=('aea2d6c7a8fcbe1b9a5280583f33f7f7c8000e515de86fa9efee81228d6b3573')
-sha256sums_loong64=('71e334f80571b085afcd90647d4f8dbfcc62b94ec14f17f3ec3e5be342576bb5')
+sha256sums_x86_64=('1e6eaeb47aa334513ab0c7d5105c49b736ae0862bf1da3e0d940dfaee88dc102')
+sha256sums_aarch64=('4e9a21e675e0eca0b9231766b3da9f45b573a816ef5492fad057cc9dae61efc7')
+sha256sums_loong64=('c7610760faecb97e5ded06d416b4352e9de9c6615b78ceb23cf43011f0c51d91')
 
 package() {
     export LC_CTYPE="zh_CN.UTF-8"
