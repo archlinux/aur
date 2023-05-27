@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Lyashuk <lyashuk.voxx at gmail dot com>
 pkgname=doom2df-editor-qt5
 pkgver=0.667
-pkgrel=1
+pkgrel=2
 pkgdesc="Official map editor for Doom 2D: Forever, qt5 version."
 arch=(x86_64 i686)
 url="https://doom2d.org/"
