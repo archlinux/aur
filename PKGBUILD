@@ -2,8 +2,8 @@
 
 pkgname=iqtree
 _pkgname=iqtree2
-pkgver=2.1.2
-pkgrel=7
+pkgver=2.2.2.5
+pkgrel=1
 pkgdesc="Efficient phylogenomic software by maximum likelihood; multicore version (OMP). https://doi.org/10.1093/molbev/msaa015"
 arch=(x86_64)
 url="https://github.com/iqtree/iqtree2"
