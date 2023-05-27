@@ -75,7 +75,7 @@ fi
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-pkgbase=linux-xanmod
+pkgbase=linux-xanmod-manjusaka
 _major=6.3
 pkgver=${_major}.4
 _branch=6.x
