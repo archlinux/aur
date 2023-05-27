@@ -1,9 +1,10 @@
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Maintainer: a821
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Evan Teitelman <teitelmanevan at gmail dot com>
 # Contributor: fxbru <frxbru[at]gmail>
 
 pkgname=sqlmap-git
-pkgver=1.4.8.r17.gdf5fabbbb
+pkgver=1.7.5.r5.g48c967c01
 pkgrel=1
 pkgdesc='Automatic SQL injection and database takeover tool'
 url='http://sqlmap.org'
@@ -14,7 +15,7 @@ makedepends=('git')
 provides=('sqlmap')
 conflicts=('sqlmap')
 backup=('etc/sqlmap.conf')
-source=(${pkgname}::git://github.com/sqlmapproject/sqlmap.git)
+source=(${pkgname}::git+https://github.com/sqlmapproject/sqlmap.git)
 sha512sums=('SKIP')
 
 pkgver() {
@@ -44,12 +45,12 @@ package() {
   cat > "${pkgdir}/usr/bin/sqlmap" << EOF
 #!/bin/sh
 cd /opt/${pkgname}
-python sqlmap.py "\$@"
+exec python sqlmap.py "\$@"
 EOF
   cat > "${pkgdir}/usr/bin/sqlmapapi" << EOF
 #!/bin/sh
 cd /opt/${pkgname}
-python sqlmapapi.py "\$@"
+exec python sqlmapapi.py "\$@"
 EOF
 
   chmod 755 "${pkgdir}/usr/bin/sqlmap"

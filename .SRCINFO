@@ -1,6 +1,6 @@
 pkgbase = sqlmap-git
 	pkgdesc = Automatic SQL injection and database takeover tool
-	pkgver = 1.4.8.r17.gdf5fabbbb
+	pkgver = 1.7.5.r5.g48c967c01
 	pkgrel = 1
 	url = http://sqlmap.org
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = sqlmap-git
 	provides = sqlmap
 	conflicts = sqlmap
 	backup = etc/sqlmap.conf
-	source = sqlmap-git::git://github.com/sqlmapproject/sqlmap.git
+	source = sqlmap-git::git+https://github.com/sqlmapproject/sqlmap.git
 	sha512sums = SKIP
 
 pkgname = sqlmap-git
-
