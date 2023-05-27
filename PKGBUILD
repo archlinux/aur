@@ -42,7 +42,7 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'xorg-xmessage: crash dialog (other)')
 provides=("${_name}")
 conflicts=("${_name}")
-source=("${_name}::git://github.com/rheit/${_name}.git"
+source=("${_name}::git+https://github.com/rheit/${_name}.git"
         "${_name}.desktop")
 sha256sums=('SKIP'
             'e8932a559baf30ecbfc062546ca014c6dfb70f76d1570549654209d39157e350')
