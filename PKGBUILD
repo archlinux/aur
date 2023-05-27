@@ -4,12 +4,12 @@
 # Contributor: Bo Davidson <bo.davidson@go.tarleton.edu>
 pkgname=openrgb-bin
 pkgver=0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source RGB lighting control that doesn't depend on manufacturer software. Precompiled binary"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/CalcProgrammer1/OpenRGB"
 license=('GPL2')
-depends=('qt5-base' 'libusb' 'hidapi' 'mbedtls')
+depends=('qt5-base' 'libusb' 'hidapi' 'mbedtls' 'mbedtls2')
 optdepends=('i2c-tools: Motherboard & RAM access' 'openrazer-driver-dkms: OpenRazer support')
 conflicts=('openrgb')
 provides=('openrgb')
