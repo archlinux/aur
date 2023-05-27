@@ -1,6 +1,6 @@
 pkgbase = aliyunpan-cli-bin
 	pkgdesc = Aliyunpan CLI
-	pkgver = 3.0.6
+	pkgver = 3.0.9
 	pkgrel = 1
 	url = https://github.com/wxy1343/aliyunpan
 	arch = any
@@ -10,11 +10,11 @@ pkgbase = aliyunpan-cli-bin
 	provides = aliyunpan-cli
 	conflicts = aliyunpan
 	conflicts = aliyunpan-cli
-	source = aliyunpan-3.0.6.tar.gz::https://github.com/wxy1343/aliyunpan/archive/refs/tags/v3.0.6.tar.gz
+	source = aliyunpan-3.0.9.tar.gz::https://github.com/wxy1343/aliyunpan/archive/refs/tags/v3.0.9.tar.gz
 	source = dlnap-master.tar::https://github.com/cherezov/dlnap/archive/master.tar.gz
 	source = 0001-upgrade-requirements.patch
-	sha256sums = b5452250bcb1c2134b996ceb2f832b3924ea6254c05bbee5c128ae6d413c4554
+	sha256sums = bcf6aefbf2990dd1f81a24b9307363b2198d5540b22c6099d4a56ff25010cba4
 	sha256sums = SKIP
-	sha256sums = 716c9542077062d32c59e27f44ddbdb232b9e3774124647d7c67dbcd150f6fd7
+	sha256sums = 130eae5955b74cdc9984c1bc69982480d0b38fdbe719de068a7a12dcc4c8b3d3
 
 pkgname = aliyunpan-cli-bin
