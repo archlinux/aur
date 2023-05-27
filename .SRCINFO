@@ -1,7 +1,7 @@
 pkgbase = doom2df-editor-qt5
 	pkgdesc = Official map editor for Doom 2D: Forever, qt5 version.
 	pkgver = 0.667
-	pkgrel = 2
+	pkgrel = 3
 	url = https://doom2d.org/
 	arch = x86_64
 	arch = i686
@@ -34,6 +34,6 @@ pkgbase = doom2df-editor-qt5
 	md5sums = SKIP
 	md5sums = 6e002827b10502fb00feab7d64a021f1
 	md5sums = 1ad21e89200ff2bdcae68935b43f53fd
-	md5sums = 52d00efd565ea0f92eb872d8ec39c23f
+	md5sums = 8dfb08b8e31386b612156db8e61a0fde
 
 pkgname = doom2df-editor-qt5
