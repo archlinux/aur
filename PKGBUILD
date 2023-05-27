@@ -20,6 +20,7 @@ prepare() {
   sed -i "s/\"version\": \"1.0.5\"/\"version\": \"1.0.6\"/g" package.json
 
   cd src-tauri
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 
@@ -31,6 +32,7 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
   export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   yarn build
   yarn tauri build
