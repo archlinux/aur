@@ -9,7 +9,7 @@ _tbbpkgminorver=6
 
 pkgname=usd
 pkgver=23.05
-pkgrel=3
+pkgrel=4
 pkgdesc='3D VFX pipeline interchange file format'
 arch=(x86_64)
 url='https://openusd.org'
@@ -22,7 +22,8 @@ depends=(glew
          openexr
          opensubdiv
          pyside6
-         python-opengl)
+         python-opengl
+         qt5-base)
 makedepends=(cmake
              doxygen
              git
