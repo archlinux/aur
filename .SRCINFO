@@ -1,0 +1,27 @@
+pkgbase = com.xmly.deepin
+	pkgdesc = Ximalaya Client on Deepin Wine
+	pkgver = 1.6.0deepin0
+	pkgrel = 1
+	url = https://www.ximalaya.com/
+	arch = x86_64
+	license = custom
+	depends = deepin-wine5
+	depends = lib32-glibc
+	depends = lib32-udis86-git
+	depends = hicolor-icon-theme
+	depends = glib2
+	depends = at-spi2-core
+	depends = libx11
+	depends = fontconfig
+	depends = xdg-utils
+	depends = gdk-pixbuf2
+	depends = pango
+	depends = gtk2
+	depends = glibc
+	depends = bash
+	depends = cairo
+	depends = freetype2
+	source = https://com-store-packages.uniontech.com/appstore/pool/appstore/c/com.xmly.deepin/com.xmly.deepin_1.6.0deepin0_i386.deb
+	sha256sums = a58ea9151c0d4436560bf71015d6bfffc0eb5eee44d594ed56bae127e968f33e
+
+pkgname = com.xmly.deepin
