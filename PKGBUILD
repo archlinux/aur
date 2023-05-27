@@ -13,7 +13,15 @@ checkdepends=('appstream-glib')
 source=("https://gitlab.gnome.org/World/AudioSharing/-/archive/$pkgver/AudioSharing-$pkgver.tar.gz")
 sha256sums=('ed16b967e4480ebaf5114f432e8312693e48ef4059dead88fa403fb18b2d51cc')
 
+prepare() {
+  cd "AudioSharing-$pkgver"
+  export CARGO_HOME="$srcdir/cargo-home"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   arch-meson "AudioSharing-$pkgver" build
   meson compile -C build
