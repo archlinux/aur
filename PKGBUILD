@@ -1,32 +1,31 @@
-# Author: rr- <rr-@sakuya.pl>
-# Maintainer: rr- <rr-@sakuya.pl>
-pkgname=shot-git
-pkgver=2.1
+# Maintainer: éclairevoyant
+# Contributor: rr- <rr- at sakuya dot pl>
+
+_pkgname=shot
+pkgname="$_pkgname-git"
+pkgver=2.1.r16.316b33d
 pkgrel=1
-pkgdesc='A minimal screenshot tool aiming to provide good control over screenshot region.'
-arch=('any')
+pkgdesc='Minimal screenshot tool aiming to provide good control over screenshot region'
+arch=(x86_64)
 url='https://github.com/rr-/shot'
-license=('MIT')
-depends=('libxrandr')
-makedepends=('cmake' 'git')
-source=("$pkgname::git://github.com/rr-/shot.git")
-sha256sums=('SKIP')
+license=(MIT)
+depends=(libpng libxrandr)
+makedepends=(cmake git)
+source=("$pkgname::git+$url.git")
+b2sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
-    git describe --tags --abbrev=0
+	git -C $pkgname describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$pkgname"
-    mkdir -p build
-    cd build
-    cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_RELEASE_TYPE=Release
-    make
+	cmake -B build -S $pkgname \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_RELEASE_TYPE=Release
+	make -C build
 }
 
 package() {
-    cd "$pkgname"
-    cd build
-    make DESTDIR="$pkgdir" install
+	make -C build DESTDIR="$pkgdir" install
+	install -Dm644 $pkgname/LICENSE.md "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }

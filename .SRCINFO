@@ -1,15 +1,15 @@
 pkgbase = shot-git
-	pkgdesc = A minimal screenshot tool aiming to provide good control over screenshot region.
-	pkgver = 2.1
+	pkgdesc = Minimal screenshot tool aiming to provide good control over screenshot region
+	pkgver = 2.1.r16.316b33d
 	pkgrel = 1
 	url = https://github.com/rr-/shot
-	arch = any
+	arch = x86_64
 	license = MIT
-	depends = libxrandr
 	makedepends = cmake
 	makedepends = git
-	source = shot-git::git://github.com/rr-/shot.git
-	sha256sums = SKIP
+	depends = libpng
+	depends = libxrandr
+	source = shot-git::git+https://github.com/rr-/shot.git
+	b2sums = SKIP
 
 pkgname = shot-git
-
