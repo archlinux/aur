@@ -3,8 +3,8 @@
 # Repository: https://gitlab.com/calvinreu/kbdmod
 
 pkgname=kbdmod
-pkgver=2.0.0
-pkgrel=26
+pkgver=2.0.1
+pkgrel=27
 epoch=
 pkgdesc="modify your keyboard functionality with multi functions per key"
 arch=('any')
@@ -43,5 +43,9 @@ package() {
 	echo -e "${RED}this package has to be installed as root${NOCOLOR}\nuse pacman -U to install the package"
 	cd "$pkgname-v$pkgver/build"
 	install -Dm 755 kbdmod.bin "$pkgdir/usr/bin/kbdmod"
+	install -Dm 644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm 644 ../README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm 644 ../doc "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm 644 ../examples "$pkgdir/usr/share/example/$pkgname/"
 }
-sha256sums=('a36436887c778f6911d2749183c64b000a8d92b3e7ba2b4d172f4c8eac459b2a')
+sha256sums=('17414263fe91cc42e27ae5faab518eafcd969e22c846b1687ab917353e2c2e4a')
