@@ -1,7 +1,7 @@
 # Maintainer: Aaron Fischer <mail@aaron-fischer.net>
 
 pkgname=dataexplorer
-pkgver=3.7.7
+pkgver=3.7.8
 pkgrel=3
 pkgdesc="Graphical tool to analyze data, gathered from various hardware devices."
 url="http://savannah.nongnu.org/projects/dataexplorer"
@@ -32,8 +32,8 @@ noextract=("dataexplorer-$pkgver-src.tar.gz.sig"
            "40-ProfilicTechnology.rules.sig"
            "40-SiliconLabs.rules"
            "40-SiliconLabs.rules.sig")
-sha512sums=("7cbaddaddf6d1925e6a40b482e07479a04fba923f5102194075bb32b9366e0f04c899dd0a1b91fd3365f3138e6f1b83663378756603c4e4db485d832b252ceb9"
-            "bd6eacee07943f0aa8daaba0010a05514db5a04d7d6acd3733f837ccb9641fa884b747739c7de02460bceed925974618966f8eadbf3ed4fdfbaa77773abfe80a"
+sha512sums=("7655bb549dab46b4a6a59dd33c1541c2d44ca331a324a5c9f562d4efde570e4da03df000d19f637df11f072880f1a3420c22a85d505500f08f1138b48e439edf"
+            "deea685de0f58642ec3edcb6c0a5b3227ae352ff9792c4d1b4a516700afaeacc09414b3f428863736107c015f5cb0eb6056efb996dae3f0d27b504316e056f10"
             "adc0d042c68970d21c3e44faa29015e6d916a14587ea73c2273e7b15351d161d4d54ccc94293a67e53d63d97a70e0dbee6a2b5af30e6e1f8df6f12cb27516036"
             "e23a8c063991012e55e81a1331340a1003c177b128fa175840a340f9da1782161d22c655563168bf8381b7fa1271567ad7ad1514d8fa5f06d1540561a06a452c"
             "8bb9d77e86e47a5a42bfdf661ea35a4543b3a22336ae4f718657e12089091cf1d6664fd1090e194da4c56f34c5febef960f50692246a1109ded19921854b9e5f"
