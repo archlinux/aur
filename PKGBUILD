@@ -2,8 +2,8 @@
 
 pkgname=vt-cli-git
 _pkgname=${pkgname%-git}
-pkgver=0.10.2.r2.g031203c
-pkgrel=2
+pkgver=0.13.0.r3.g97023b3
+pkgrel=1
 pkgdesc='VirusTotal Command Line Interface'
 arch=('i686' 'x86_64')
 url=https://virustotal.github.io/vt-cli/
