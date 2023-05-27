@@ -1,3 +1,5 @@
+# Maintainer: Pony pony@just-a-pony.net
+
 pkgname=realitlscanner
 _pkgname=RealiTLScanner
 pkgver=0.1.2
