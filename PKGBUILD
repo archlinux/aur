@@ -1,5 +1,5 @@
 # Maintainer: Adrià Cabello <adro.cc79 at protonmail dot com>
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Co-Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Started by https://github.com/qumaciel at https://github.com/PixarAnimationStudios/USD/issues/2000
 
 # WARNING This USD build is not intended for building Blender.
@@ -9,7 +9,7 @@ _tbbpkgminorver=6
 
 pkgname=usd
 pkgver=23.05
-pkgrel=4
+pkgrel=5
 pkgdesc='3D VFX pipeline interchange file format'
 arch=(x86_64)
 url='https://openusd.org'
@@ -47,16 +47,19 @@ source=("git+$_url.git#tag=v$pkgver"
         "tbbgcc13.patch"
         "pyside6.patch"
         "materialx.patch"
+        "memset.patch"
         )
 sha512sums=('SKIP'
             '6bcc014ec90cd62293811ac436eab03c7f7c7e3e03109efcab1c42cfed48d8bf83073d03ab381e5e63ee8c905f1792a7fdab272ec7e585df14102bad714ffc15'
             '6ab652c77dddc5a69cfc3f09974ba66f1413d699e49734c7ed31c629f5368230e0adaf95f599eafbf9316660d67b0b011b52ac1552d814564cbb2967bd927fdd'
             'e9d4d37b6243b32dc4dbf1ab8b5b1c6a2ceb87a81b7ac711afd95244131ac5305e2369b93581c4670ca15f8cdc42482a8cd373e22779322d52e66e2a5ecdf08b'
             'ba35f847b023139dcc3b38ec9308d52c7358967f22c38d481a0a9d9fee1ced674b56850bc9f7e07c350a144c1e575ec1f77a1a0b970dc4ceddcae904d6bc403f'
-            '167e9bb2bced935cd9513b4ecd40c9e73ada0c794f1e5f11dc3e2844bedc07ac082aa8fb88e50c86dc2c80854ed95ddc22472f6fdc978765398079164d1c15c5')
+            '167e9bb2bced935cd9513b4ecd40c9e73ada0c794f1e5f11dc3e2844bedc07ac082aa8fb88e50c86dc2c80854ed95ddc22472f6fdc978765398079164d1c15c5'
+            'SKIP')
 
 prepare() {
   patch --directory=USD --forward --strip=1 --input="${srcdir}/pyside6.patch"
+  patch --directory=USD --forward --strip=1 --input="${srcdir}/memset.patch"
   patch --directory=USD --forward --strip=1 --input="${srcdir}/materialx.patch"
   #TBB
   mkdir -p "${srcdir}"/tbb2019

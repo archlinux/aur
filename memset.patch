@@ -1,0 +1,13 @@
+diff --git a/pxr/usd/sdf/path.h b/pxr/usd/sdf/path.h
+index a0986d26d..3fafa5ae3 100644
+--- a/pxr/usd/sdf/path.h
++++ b/pxr/usd/sdf/path.h
+@@ -308,7 +308,7 @@ public:
+     SdfPath() noexcept {
+         // This generates a single instruction instead of 2 on gcc 6.3.  Seems
+         // to be fixed on gcc 7+ and newer clangs.  Remove when we're there!
+-        memset(this, 0, sizeof(*this));
++        *this = SdfPath();
+     }
+ 
+     /// Creates a path from the given string.
