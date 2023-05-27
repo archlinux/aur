@@ -2,7 +2,7 @@
 
 _pkgname=blahaj
 pkgname=$_pkgname-bin
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Gay sharks at your local terminal - lolcat-like CLI tool"
 provides=('blahaj')
@@ -12,7 +12,7 @@ arch=('x86_64')
 license=('BSD-2-Clause')
 
 source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x86_64-static.zip")
-sha256sums=("b544e13db79d40ed31c98c9b26c7ddc21535a908016f23aa3d78d39d9b3a1057")
+sha256sums=('acc5b053846a0c85c4a4e55ad367596e4fecfac52663f3711df114ab0680eb1c')
 
 package() {
     chmod +x blahaj
