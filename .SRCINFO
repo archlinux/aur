@@ -1,0 +1,14 @@
+pkgbase = json-schema-validator
+	pkgdesc = JSON schema validator for JSON for Modern C++
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/pboettch/json-schema-validator
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = nlohmann-json
+	source = https://github.com/pboettch/json-schema-validator/archive/refs/tags/2.2.0.zip
+	sha512sums = 0a078c7a43d6651ed7e0fc444087695ed99b02fd3460a526d79634960425a6f7f59d8103f8132f6d16d129cff8def09289277f2575a3e82d90408a1118c2637c
+
+pkgname = json-schema-validator
