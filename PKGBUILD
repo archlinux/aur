@@ -1,7 +1,7 @@
 # Maintainer: Nick Haghiri (n s dot hag hiri at G mail dot com)
 pkgname=obinskit
 pkgver=1.2.11
-pkgrel=1
+pkgrel=2
 pkgdesc="ObinsKit for Anne Pro and Anne Pro 2"
 arch=('x86_64')
 url="http://en.obins.net/obinskit"
@@ -10,7 +10,7 @@ depends=('desktop-file-utils' 'hicolor-icon-theme' 'libappindicator-gtk3' 'libno
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 
-DLAGENTS='https::/usr/bin/wget --referer https://www.hexcore.xyz/obinskit -N %u'
+DLAGENTS='https::/usr/bin/curl -qgC - -e https://www.hexcore.xyz/obinskit -o %o %u'
 
 source_x86_64=("https://s3.hexcore.xyz/occ/linux/tar/ObinsKit_${pkgver}_x64.tar.gz"
 "deb_extra_files_obins.tar.gz")
