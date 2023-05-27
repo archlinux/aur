@@ -1,11 +1,15 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 pkgname=kicost
 _pkgname=KiCost
-pkgver=1.1.15
+pkgver=1.1.17
 pkgrel=1
 pkgdesc="KiCAD script to convert BOM xml into spreadsheet"
 url="https://github.com/xesscorp/KiCost/"
-makedepends=('python-setuptools')
+makedepends=('python-build'
+             'python-installer'
+             'python-setuptools'
+             'python-wheel'
+            )
 depends=('python'
          'python-beautifulsoup4'
          'python-lxml'
@@ -22,7 +26,7 @@ arch=('any')
 # Pypi source is missing requirements.txt and setup.py fails :-/
 #source=("https://pypi.python.org/packages/source/k/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/xesscorp/KiCost/archive/v$pkgver.tar.gz")
-sha512sums=('da1c2bb8563d257116a6d094e01af48dd4fb5453d5eee3f8087481c302b3f7086631b9d5fafbeef9a8471bee6a08928e1c5a64b6e7d5323553977cf8961e656d')
+sha512sums=('2af1e62554d09ba31b68607a9425b37db85ecc92500775bb889debe318c7767cdc0b7b145ee58958b2fc747fc5b2265383f2184434708705bc0f414b8b80fb74')
 
 prepare() {
     cd "$srcdir/$_pkgname-$pkgver"
@@ -30,12 +34,13 @@ prepare() {
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$srcdir/$_pkgname-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
+
     rm -rf ${pkgdir}/usr/lib/python*/site-packages/tests
 }
 
