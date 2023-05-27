@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutantota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=paleta
 pkgver=0.3.1
 pkgrel=1
@@ -21,11 +21,13 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   arch-meson "$pkgname" build
   meson compile -C build
