@@ -2,8 +2,8 @@
 _base=trame-simput
 pkgname=python-${_base}
 pkgdesc="Simput implementation for trame"
-pkgver=2.3.1
-pkgrel=3
+pkgver=2.3.2
+pkgrel=1
 arch=(any)
 url="https://github.com/Kitware/${_base}"
 license=(Apache)
@@ -11,7 +11,7 @@ depends=(python-trame-client python-yaml)
 makedepends=(python-build python-installer python-setuptools python-wheel nodejs-lts-fermium npm)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('57be1b36a45ae1dc3c679e347a3258a4b2a1ab647108b4ab3d5c35e9841314455055a7030dc32a1ce191ac7c82ecca5d7a134f9071872bfee1a8e97e38746d21')
+sha512sums=('225f9cd2698ba5e53f37f9429d96eb222b2e926f94e1ddd86363c739cc298614205544449feceac990c8178e32c38373ad409912ea074580296351ee7d571b56')
 
 build() {
   cd ${srcdir}/${_base}-${pkgver}/vue-components
