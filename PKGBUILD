@@ -1,6 +1,6 @@
 # Maintainer: yupoi <me at eWJscG9pQG91dGxvb2suY3BtCg== >
 pkgname=clash-for-windows-chinese-git
-pkgver=0.20.23
+pkgver=0.20.24
 pkgrel=1
 pkgdesc="A Windows/macOS/Linux GUI based on Clash and Electron（Chinese version.）."
 arch=("x86_64")
@@ -29,8 +29,8 @@ source=(
     "clash-for-windows-chinese.desktop"
     "cfw"
 )
-sha256sums=('6704315735adb0199b3c621ed4d3124880c2edaf415371a79f36590ea5047ba7'
-            '0b0ed3eb1d192a0c8fb12b4f069128fcf414ee44ddfa612b4cccc135ab292517'
+sha256sums=('5c79eff633c2361a2b6d33c9db2bf008d44a822bba09da462d07c8d05e3b6ad7'
+            '6a9eee322e8d3e656d0685a9d0ba1ef69a8d0a49167e9548bd08478c208298ad'
             '0d48a2ea1ee05ad4579b6e6996889548fa8a61a5ff6c85a32f7622cddfcb5782'
             '66e0d326e375ad0fbf88325c34e0dd82e676b9214f4838979dab3d9d11c4fecb'
             '2451fc0eff3f48c48e4eb818d1e1ce62182737db19b95541cb13ec81183550c7')
