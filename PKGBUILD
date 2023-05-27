@@ -14,18 +14,21 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/SeaDve/Mousai/archive/refs/
 sha256sums=('fb36c00e89bb577a6b603d6f9a89e8f931de9bbce42dc24271dfd22160d746cc')
 
 prepare() {
-  cd Mousai-$pkgver
+  cd "Mousai-$pkgver"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
-  arch-meson Mousai-$pkgver build
+  arch-meson "Mousai-$pkgver" build
   meson compile -C build
 }
 
 check() {
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   meson test -C build --print-errorlogs || :
 }
