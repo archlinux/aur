@@ -2,7 +2,7 @@
 
 pkgname=dislocker
 pkgver=0.7.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Read/write BitLocker-encrypted volumes"
 arch=('i686' 'x86_64')
 url="https://github.com/Aorimn/dislocker"
@@ -24,7 +24,10 @@ build() {
         -Dlibdir=/usr/lib \
         -DC_INCLUDE_PATH="$C_INCLUDE_PATH:/usr/include/ruby-3.0.0/" \
         -D WARN_FLAGS:STRING="-Wall -Wextra" \
-        .
+
+  # Fix mbedtls3 incompatibility
+  sed -i 's|mbedtls/config.h|mbedtls/mbedtls_config.h|;s|mbedtls_sha256_ret|mbedtls_sha256|' include/dislocker/ssl_bindings.h
+
   make
 }
 
