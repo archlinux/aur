@@ -13,7 +13,7 @@ makedepends=('cargo' 'cargo-c')
 conflicts=('libdovi.so')
 provides=('libdovi.so')
 source=("https://github.com/quietvoid/dovi_tool/archive/refs/tags/${_pkgtag}.tar.gz")
-sha256sums=(SKIP)
+sha256sums=('3c74f8f6afdb7d4be97210df201a28a48676b2ebe10c20961176e81e2fd98c36')
 _rootdir="dovi_tool-${_pkgtag}"
 
 prepare() {

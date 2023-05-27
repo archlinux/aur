@@ -12,6 +12,6 @@ pkgbase = libdovi
 	provides = libdovi.so
 	conflicts = libdovi.so
 	source = https://github.com/quietvoid/dovi_tool/archive/refs/tags/libdovi-3.1.2.tar.gz
-	sha256sums = SKIP
+	sha256sums = 3c74f8f6afdb7d4be97210df201a28a48676b2ebe10c20961176e81e2fd98c36
 
 pkgname = libdovi
