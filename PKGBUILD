@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=('universal-android-debloater' 'universal-android-debloater-opengl')
 pkgbase=universal-android-debloater
 pkgver=0.5.1
@@ -17,15 +17,17 @@ sha256sums=('372418918913cd068fe3caabefce4f9a378e9705e86afee6eb112d71518633f1'
 
 prepare() {
   cd "$pkgbase-$pkgver"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=nightly
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   cd "$pkgbase-$pkgver"
-  export RUSTFLAGS="-C link-arg=-fuse-ld=lld"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=nightly
   export CARGO_TARGET_DIR=target
+  export RUSTFLAGS="-C link-arg=-fuse-ld=lld"
 
   # OpenGL
   cargo build --release --no-default-features --features glow,no-self-update
