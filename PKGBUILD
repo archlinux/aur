@@ -1,36 +1,30 @@
-# Maintainer: Manuel Palenzuela <sadshinobi@protonmail.com>
+# Maintainer: éclairevoyant
+# Contributor: Manuel Palenzuela <sadshinobi at protonmail dot com>
 
-author=thytom
-pkgname=dwmbar-git
-_gitname=dwmbar
-pkgver=0.r74.
+_pkgname=dwmbar
+pkgname="$_pkgname-git"
+pkgver=0.r201.f112628
 pkgrel=1
-pkgdesc='Simple and modular status bar for dwm.'
-url='https://github.com/thytom/dwmbar.git'
-arch=('any')
-license=('GPL')
-optdepends=('dwm')
-makedepends=('git')
-provides=('dwmbar')
-
-source=("git://github.com/$author/$_gitname.git")
-
-md5sums=('SKIP')
-sha1sums=('SKIP')
-sha256sums=('SKIP')
+pkgdesc='Simple and modular status bar for dwm'
+# some of the modules are x86_64 ELFs
+arch=(x86_64)
+url="https://github.com/thytom/$_pkgname"
+license=(GPL3)
+depends=(bash)
+makedepends=(git)
+optdepends=(dwm)
+source=("git+$url.git")
+b2sums=('SKIP')
 
 pkgver() {
-    cd "$_gitname"
-    printf '0.r%s.%s' \
-        "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd $_pkgname
+	printf '0.r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-  # Install the program.
-  mkdir -p "$pkgdir/usr/share/$_gitname/modules"
-  install -Dm755 dwmbar "$pkgdir/usr/bin/$_gitname"
-  cp -a --no-preserve=ownership {config,bar.sh,modules} "$pkgdir/usr/share/$_gitname"
-  chmod +x "$pkgdir/usr/bin/$_gitname"
-# chmod -R 777 "$pkgdir/usr/share/$_gitname"
+	cd $_pkgname
+	install -vDm755 $_pkgname -t "$pkgdir/usr/bin/"
+
+	install -vdm755 "$pkgdir/usr/share/$_pkgname/"
+	cp -a --no-preserve=ownership {config,bar.sh,modules} "$pkgdir/usr/share/$_gitname"
 }
