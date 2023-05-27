@@ -45,7 +45,7 @@ package() {
 	install -Dm 755 kbdmod.bin "$pkgdir/usr/bin/kbdmod"
 	install -Dm 644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm 644 ../README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-	install -Dm 644 ../doc "$pkgdir/usr/share/doc/$pkgname/"
-	install -Dm 644 ../examples "$pkgdir/usr/share/example/$pkgname/"
+	install -Dm 644 ../doc/* "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm 644 ../examples/laptop.yaml "$pkgdir/usr/share/examples/$pkgname/laptop.yaml"
 }
 sha256sums=('4ed3bf91517070b866c4c42077568d18fcc83cf697e562afb745886eb577e38d')
