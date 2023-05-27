@@ -1,32 +1,43 @@
-# Maintainer: Chromaryu <knight.ryu12@gmail.com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Chromaryu <knight.ryu12@gmail.com>
+
 pkgname=libxmp-git
-pkgver=libxmp.4.4.1.r3.gf573488
-pkgrel=1
+pkgver=4.5.0.r758.g2e008819
+pkgrel=2
 pkgdesc="Library that supports over 90 module formats (Amiga, Atari, ..)"
-arch=('i686' 'x86_64')
-url="http://xmp.sourceforge.net/"
-license=('GPL')
-depends=('glibc')
-optdepends=('pulseaudio')
-makedepends=('git')
-conflicts=('libxmp')
-provides=('libxmp')
-source=("$pkgname"::"git+https://github.com/cmatsuoka/libxmp.git")
-md5sums=('SKIP')
+arch=(x86_64 aarch64)
+url="https://xmp.sourceforge.net/"
+license=(LGPL2.1)
+depends=(glibc)
+makedepends=(git)
+conflicts=(libxmp)
+provides=(libxmp)
+options=(!emptydirs)
+source=("git+https://github.com/cmatsuoka/libxmp.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd libxmp
+  git describe --long --tags | sed 's/^libxmp-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd libxmp
+  autoconf
 }
 
 build() {
-	cd "$srcdir/$pkgname"
-	autoconf
-	./configure --prefix=/usr
-	make
+  cd libxmp
+  ./configure --prefix=/usr
+  make
+}
+
+check() {
+  cd libxmp
+  make -k check
 }
 
 package() {
-	cd "$srcdir/$pkgname"
-	make DESTDIR="$pkgdir" install
+  cd libxmp
+  make DESTDIR="${pkgdir}" install
 }
