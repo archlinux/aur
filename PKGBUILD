@@ -1,14 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=orchis-theme-git
-pkgver=2023.03.18.r7.gec38a73
+pkgver=2023.05.27.r0.g11df755
 pkgrel=1
 pkgdesc="A Material Design theme for GNOME/GTK based desktop environments."
 arch=('any')
 url="https://www.pling.com/p/1357889"
 license=('GPL3')
-depends=('gtk3' 'gnome-themes-extra')
 makedepends=('git' 'sassc')
-optdepends=('gtk-engine-murrine: GTK2 theme support'
+optdepends=('gnome-themes-extra: GTK2 theme support'
+            'gtk-engine-murrine: GTK2 theme support'
             'kvantum-theme-orchis: Matching Kvantum theme'
             'tela-circle-icon-theme: Recommended icon theme')
 provides=("${pkgname%-git}")
