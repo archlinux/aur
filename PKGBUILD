@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: ftsell <aur@finn-thorben.me>
 pkgname=pop-shell-shortcuts-git
 pkgver=r30.52cc83f
@@ -22,12 +22,14 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/shell-shortcuts"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   cd "$srcdir/shell-shortcuts"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   make prefix=/usr
 }
