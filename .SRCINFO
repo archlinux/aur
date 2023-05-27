@@ -1,23 +1,25 @@
 pkgbase = moonray
 	pkgdesc = DreamWorks’ production MCRT renderer
-	pkgver = 1.0.0.0
+	pkgver = 1.1.0.0
 	pkgrel = 0
 	url = https://openmoonray.org
 	arch = x86_64
 	license = Apache2
 	makedepends = boost
 	makedepends = cmake
+	makedepends = cppunit
 	makedepends = cuda
 	makedepends = libmicrohttpd
 	makedepends = openimageio
 	makedepends = openssl
 	makedepends = git
-	makedepends = qt6-base
+	makedepends = qt5-base
+	makedepends = qt5-script
 	depends = curl
 	depends = lua53
 	depends = python
 	optdepends = usd: hydra plugins and USD geometry objects
-	source = openmoonray::git+https://github.com/dreamworksanimation/openmoonray#tag=v1.0.0.0
+	source = openmoonray::git+https://github.com/dreamworksanimation/openmoonray#tag=v1.1.0.0
 	source = CMakePresets.json
 	source = openmoonray+arras+arras4_core::git+https://github.com/dreamworksanimation/arras4_core.git#commit=2157c5103156f652b0966f23e32b97597b7ff16f
 	source = openmoonray+arras+arras_render::git+https://github.com/dreamworksanimation/arras_render.git#commit=729c4039a72e2dacb810c17fd529eaa0308435f6
@@ -38,7 +40,7 @@ pkgbase = moonray
 	source = openmoonray+moonray+render_profile_viewer::git+https://github.com/dreamworksanimation/render_profile_viewer.git#commit=44bb5d66aa5295cc1176823d04a12cc4cd009e76
 	source = openmoonray+moonray+scene_rdl2::git+https://github.com/dreamworksanimation/scene_rdl2.git#commit=fb0c969026b1e5a3c16cc75ee3ec9ff7df85ad98
 	sha256sums = SKIP
-	sha256sums = ae7c3cec15014ecf94bea90087d42b511d3bf906c9030c713ce01868562c8a4c
+	sha256sums = afbd3e037a742920c5a49f3bbc70d9f488e6aaad6249db47f750e2a976d0e9b3
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

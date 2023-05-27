@@ -1,9 +1,10 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: adro79 <adro79@users.noreply.github.com>
 
 pkgbase=moonray
 pkgname=($pkgbase moonray-gui)
 _pkgname=openmoonray
-pkgver=1.0.0.0
+pkgver=1.1.0.0
 pkgrel=0
 pkgdesc='DreamWorks’ production MCRT renderer'
 arch=(x86_64)
@@ -15,12 +16,14 @@ depends=(curl
          python)
 makedepends=(boost
              cmake
+             cppunit
              cuda
              libmicrohttpd
              openimageio
              openssl
              git
-             qt6-base)
+             qt5-base
+             qt5-script)
 optdepends=('usd: hydra plugins and USD geometry objects')
 source=("$_pkgname::git+$_url/$_pkgname#tag=v$pkgver"
         CMakePresets.json
