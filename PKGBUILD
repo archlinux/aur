@@ -3,7 +3,7 @@
 base_pkgname=periodiccalendar
 pkgname=${base_pkgname}-jdk
 pkgver=3.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Periodic Calendar for tracking women cycle (supports JDK 20)"
 arch=('any')
 url="http://linuxorg.sf.net/"
@@ -27,5 +27,5 @@ package() {
   install -d "${pkgdir}"/usr/bin
   echo "#!/bin/bash" > "${pkgdir}"/usr/bin/$base_pkgname
   echo "java -jar /usr/share/java/$pkgname/$base_pkgname.jar" >> "${pkgdir}"/usr/bin/$base_pkgname
-  chmod 755 "${pkgdir}"/usr/bin/$pkgname
+  chmod 755 "${pkgdir}"/usr/bin/$base_pkgname
 }
