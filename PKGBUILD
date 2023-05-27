@@ -2,7 +2,7 @@
 
 pkgbase=obs-vkcapture
 pkgname=("$pkgbase" "lib32-$pkgbase")
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 url="https://github.com/nowrep/$pkgbase"
 license=('GPL2')
@@ -10,7 +10,7 @@ arch=('x86_64')
 depends=('vulkan-icd-loader' 'libgl' 'libegl' 'obs-studio>=27')
 makedepends=('gcc' 'cmake' 'vulkan-headers' 'lib32-gcc-libs' 'lib32-vulkan-icd-loader' 'lib32-libgl')
 source=("https://github.com/nowrep/$pkgbase/archive/v$pkgver/$pkgbase-$pkgver.tar.gz")
-sha512sums=('ada2f6b2c453dade28a37abac0728096c84aa1522215588d97113eeb047d7af57b56b302016735ec342b7f5841dadf2cad554794647b7f82f9e01cc62e52603d')
+sha512sums=('d4d234eff53ff9d0e53e6478b378fce8376b22dc4088c1366e194eeb826db5f24f5c3ce26925423e29f4979ef2b0c081ed69d208a8af27810636a2c9538e98e7')
 
 build() {
 	cmake -B build -S "$pkgbase-$pkgver" \
@@ -42,7 +42,7 @@ package_obs-vkcapture() {
 
 package_lib32-obs-vkcapture() {
 	pkgdesc='OBS Linux Vulkan/OpenGL game capture (32-bit)'
-	depends=('lib32-vulkan-icd-loader' 'lib32-libgl')
+	depends=('lib32-vulkan-icd-loader' 'lib32-libgl' 'lib32-libegl')
 
 	DESTDIR="$pkgdir" cmake --install build32
 	rm -r "$pkgdir/usr/bin"
