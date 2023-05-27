@@ -26,7 +26,7 @@ makedepends=(
   'python'
 )
 provides=('libgit2.so')
-source=("$url/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
+source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('fd73df91710f19b0d6c3765c37c7f529233196da91cf4d58028a8d3840244f11df44abafabd74a8ed1cbe4826d1afd6ff9f01316d183ace0924c65e7cf0eb8d5')
 b2sums=('103af9ea9ed1310b1066a48859bbefc162647d787519bb3df83d7ea1957cda5934537271970d3d180f91daa6edc3bbc05387d6293812f0d849dda966419d29ba')
 
