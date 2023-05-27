@@ -7,10 +7,11 @@ flags_file="${XDG_CONFIG_HOME:-$HOME/.config}/@PKGNAME@-flags.conf"
 declare -a flags
 
 if [[ -f "${flags_file}" ]]; then
+	sed -i "s|--ignore-gpu-blacklist|--ignore-gpu-blocklist|" "${flags_file}"
 	mapfile -t < "${flags_file}"
 else
 	cat > "${flags_file}" <<EOF
-#--ignore-gpu-blacklist
+#--ignore-gpu-blocklist
 #--enable-gpu-rasterization
 #--enable-zero-copy
 EOF
