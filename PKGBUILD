@@ -1,7 +1,7 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Philip Goto <philip.goto@gmail.com>
 pkgname=shortwave-git
-pkgver=3.2.0.r0.g6fb4acd
+pkgver=3.2.0.r25.gd22eaa8
 pkgrel=1
 pkgdesc="Find and listen to internet radio stations"
 arch=('x86_64' 'aarch64')
@@ -23,11 +23,13 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/Shortwave"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   arch-meson Shortwave build
   meson compile -C build
