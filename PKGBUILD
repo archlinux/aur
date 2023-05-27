@@ -4,7 +4,7 @@
 
 pkgname=codelldb
 _pkgname="$pkgname"
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="A native debugger extension for VSCode based on LLDB. Also known as vscode-lldb (NOT lldb-vscode)"
 arch=(x86_64 arm7h aarch64)
@@ -15,7 +15,7 @@ depends=(lldb)
 makedepends=(cmake cargo npm python libc++)
 options=(!debug strip) #Debug package is broken
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e3a9e17f93a298e693a43509264358506f6a0572ece05482f73374068981ea84')
+sha256sums=('a8793068d0aaeec27c4169cf9bbc5e06ef6201640ef0c7905a76a7bf5adb4083')
 
 build() {
   export RUSTUP_TOOLCHAIN=stable
