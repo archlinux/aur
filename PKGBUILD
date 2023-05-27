@@ -3,13 +3,13 @@
 pkgname=project-black-pearl-git
 _realname=project-black-pearl
 pkgver=r348.cc2818f
-pkgrel=1
+pkgrel=2
 pkgdesc='Free and open-source tool for managing game sources using community-made modules.'
 arch=('x86_64')
 url='https://github.com/ProjectBlackPearl/project_black_pearl'
 license=('BSD')
-depends=('libayatana-appindicator' 'webkit2gtk-4.1' 'gtk3')
-makedepends=('git' 'yarn' 'cargo-tauri' 'rust' 'webkit2gtk')
+depends=('libayatana-appindicator' 'webkit2gtk-4.1' 'gtk3' 'openssl-1.1')
+makedepends=('git' 'yarn')
 provides=('project-black-pearl')
 conflicts=('project-black-pearl')
 source=(git+https://github.com/ProjectBlackPearl/project_black_pearl)
