@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=gomplate-git
-pkgver=4.0.0.pre.0.r34.g185a45a0
+pkgver=4.0.0.pre.0.r65.g4ae7c12b
 pkgrel=1
 pkgdesc='A flexible commandline tool for template rendering.'
 arch=(i686 x86_64)
