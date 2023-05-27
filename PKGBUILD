@@ -14,12 +14,14 @@ sha256sums=('b310c2a26412ff4fa2215a2826a297d51f8133f26e8c1da574b0642b4e76bf87')
 
 prepare() {
   cd "Protonup-rs-$pkgver"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   cd "Protonup-rs-$pkgver"
+  export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --release --all-features
