@@ -1,6 +1,6 @@
 pkgbase = tube-converter
 	pkgdesc = An easy-to-use video downloader
-	pkgver = 2023.4.2
+	pkgver = 2023.5.0
 	pkgrel = 1
 	url = https://github.com/NickvisionApps/tubeconverter
 	arch = aarch64
@@ -11,7 +11,6 @@ pkgbase = tube-converter
 	makedepends = blueprint-compiler
 	makedepends = dotnet-sdk>=7
 	makedepends = git
-	makedepends = just
 	depends = aria2
 	depends = dotnet-runtime>=7
 	depends = ffmpeg
@@ -22,7 +21,7 @@ pkgbase = tube-converter
 	depends = python-pyxattr
 	depends = python-websockets
 	depends = yt-dlp
-	source = git+https://github.com/NickvisionApps/tubeconverter#tag=2023.4.2
+	source = git+https://github.com/NickvisionApps/tubeconverter#tag=2023.5.0
 	b2sums = SKIP
 
 pkgname = tube-converter
