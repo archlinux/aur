@@ -4,7 +4,7 @@
 _pkgname=ArmCord
 pkgname=armcord-bin
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Discord client for lower end and ARM devices."
 arch=('x86_64' 'aarch64')
 provides=('armcord')
@@ -23,10 +23,10 @@ source_aarch64=(
     "armcord.png"
 )
 sha256sums_x86_64=('ca8b48162ec02ce7db3702a705fd68b64db46ef71965753dea1933ea788a2e38'
-                   'abda3b8b8f9a46c8a3dd5f24c0e3bddffbf1bf55109864ff218ab79dc500ed05'
+                   '815f0c12cc6c8df07a16e7b8769fd3cc6e80032574e2431d4c5a9487d76065a0'
                    '173d6ed02a16e9f02f5d4c4b34fe3a46ef29c46ff4ecbbad98747052fb5f954e')
 sha256sums_aarch64=('9d2a8f34f663d2d811216934032d923eeb0150ca4eee0b3f2017c2925a3b521e'
-                    'abda3b8b8f9a46c8a3dd5f24c0e3bddffbf1bf55109864ff218ab79dc500ed05'
+                    '815f0c12cc6c8df07a16e7b8769fd3cc6e80032574e2431d4c5a9487d76065a0'
                     '173d6ed02a16e9f02f5d4c4b34fe3a46ef29c46ff4ecbbad98747052fb5f954e')
 
 package() {
