@@ -1,19 +1,15 @@
-# Maintainer: willemw <willemw12@gmail.com>
-# Contributor: gnomeye <gnomeye at gmail dot com>
+# Maintainer: Jonathan Neidel <aur@jneidel.com>
+# Previous Maintainer: willemw <willemw12@gmail.com>
+# Previous Contributor: gnomeye <gnomeye at gmail dot com>
 
 _srcname=ts
 pkgname=task-spooler
 pkgver=1.0.2
-pkgrel=2
-#pkgdesc="Personal job scheduler"
+pkgrel=3
 pkgdesc="Queue up tasks from the shell for batch execution"
 arch=('x86_64')
-#url="https://tracker.debian.org/pkg/task-spooler/"
-#url="https://vicerveza.homeunix.net/~viric/soft/ts/"
 url="https://viric.name/soft/ts/"
-license=('GPL')
-#source=(https://ftp.debian.org/debian/pool/main/t/$pkgname/${pkgname}_$pkgver+dfsg1.orig.tar.xz)
-#source=(https://vicerveza.homeunix.net/~viric/soft/$_srcname/$_srcname-$pkgver.tar.gz)
+license=('GPLv2')
 source=(https://viric.name/soft/$_srcname/$_srcname-$pkgver.tar.gz)
 sha256sums=('f73452aed80e2f9a7764883e9353aa7f40e65d3c199ad1f3be60fd58b58eafec')
 
