@@ -1,0 +1,27 @@
+pkgbase = openscq30
+	pkgdesc = Cross platform application for controlling settings of Soundcore Q30 headphones
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/Oppzippy/OpenSCQ30
+	arch = x86_64
+	arch = arm64
+	arch = ia32
+	arch = armv7l
+	license = GPL3
+	makedepends = pkgconf
+	makedepends = cargo-make
+	makedepends = rust
+	source = https://github.com/Oppzippy//archive/refs/tags/v1.2.0.tar.gz
+	md5sums = 8f6349ca44c229fe90616bc8033946db
+	sha512sums = 0be6738383e2a5880653795c3d5c5dbb0ea00d7c3bec5eead4ae382be002a4eb47cacd8c439ee91f6e85b0b500f45ed30b55a1eecb85d2af408ae4892da16974
+	b2sums = 40ac7035ed52ef8e62c5cf5a9cd354733b456a25b78929ff093fbba167591d13b3e1d3034550cba55651d520d0e82e74acf963b01ab2d6626fdfe952f63eaf14
+
+pkgname = openscq30-cli
+	pkgdesc = Cross platform application for controlling settings of Soundcore Q30 headphones - CLI application
+	depends = libdbus-1.so
+
+pkgname = openscq30-gui
+	pkgdesc = Cross platform application for controlling settings of Soundcore Q30 headphones - GTK4 GUI application
+	depends = libdbus-1.so
+	depends = libgtk-4.so
+	depends = libadwaita-1.so

@@ -1,0 +1,6 @@
+# Source archives and packages
+*.tar.*
+*.tar
+# Directories made by makepkg
+pkg/
+src/
