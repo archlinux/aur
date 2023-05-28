@@ -79,7 +79,7 @@ pkgbase=linux-xanmod-manjusaka
 _major=6.3
 pkgver=${_major}.4
 _branch=6.x
-xanmod=1
+xanmod=6
 _revision=
 pkgrel=${xanmod}
 pkgdesc='Linux Xanmod - Current Stable (CURRENT)'
@@ -130,7 +130,7 @@ prepare() {
 
   msg2 "Setting version..."
   echo "-$pkgrel" > localversion.10-pkgrel
-  echo "${pkgbase#linux-xanmod-manjusaka}" > localversion.20-pkgname
+  echo "${pkgbase#linux-xanmod}" > localversion.20-pkgname
 
   # Archlinux patches
   local src
