@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Legion Keyboard RGB Control
+Name[en_US]=Legion Keyboard RGB Control
+GenericName=
+GenericName[en_US]=
+Comment=
+Comment[en_US]=
+Icon=legion-kb-rgb
+Exec=/usr/bin/legion-kb-rgb
+Terminal=false
+TerminalOptions=
+Type=Application
+Categories=Utility

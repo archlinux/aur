@@ -5,6 +5,9 @@ post_install() {
 In case you have to execute with sudo to make it detect your keyboard,
 please execute: sudo udevadm control --reload-rules && sudo udevadm trigger
 EOF
+
+  gtk-update-icon-cache -f /usr/share/icons/hicolor
+  update-desktop-database -q
 }
 
 post_upgrade() {
