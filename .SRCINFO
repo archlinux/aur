@@ -1,6 +1,6 @@
 pkgbase = python-pytest-variables
 	pkgdesc = pytest plugin for providing variables to tests/fixtures
-	pkgver = 2.0.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/pytest-dev/pytest-variables
 	arch = any
@@ -10,12 +10,12 @@ pkgbase = python-pytest-variables
 	checkdepends = python-toml
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-poetry-core
+	makedepends = python-hatch-vcs
 	depends = python-pytest
 	optdepends = python-hjson: for json support
 	optdepends = python-yaml: for YAML support
 	optdepends = python-toml: for TOML support
-	source = pytest-variables-2.0.0.tar.gz::https://github.com/pytest-dev/pytest-variables/archive/v2.0.0.tar.gz
-	sha512sums = 3f092df8ddeda4a554e9d7e677218e5fca196775a009320f4f0de9f740bb6f6dfe5bb014b1c418c91d7870f402328e68bdee8701417da2ab375673de07135b40
+	source = pytest-variables-3.0.0.tar.gz::https://github.com/pytest-dev/pytest-variables/archive/3.0.0.tar.gz
+	sha512sums = cb105efa1fc7319c1f4ebc6e22fac656239af173d63d0af168ba8f975ec8408658216af62ee983a91076a1b4c845fdea6557994f8af5462cc5d77f196dd3b8d2
 
 pkgname = python-pytest-variables

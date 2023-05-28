@@ -2,22 +2,23 @@
 _base=pytest-variables
 pkgname=python-${_base}
 pkgdesc="pytest plugin for providing variables to tests/fixtures"
-pkgver=2.0.0
+pkgver=3.0.0
 pkgrel=1
 arch=(any)
 url="https://github.com/pytest-dev/${_base}"
 license=(MPL2)
 depends=(python-pytest)
-makedepends=(python-build python-installer python-poetry-core)
+makedepends=(python-build python-installer python-hatch-vcs)
 checkdepends=(python-hjson python-yaml python-toml)
 optdepends=('python-hjson: for json support'
   'python-yaml: for YAML support'
   'python-toml: for TOML support')
-source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('3f092df8ddeda4a554e9d7e677218e5fca196775a009320f4f0de9f740bb6f6dfe5bb014b1c418c91d7870f402328e68bdee8701417da2ab375673de07135b40')
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
+sha512sums=('cb105efa1fc7319c1f4ebc6e22fac656239af173d63d0af168ba8f975ec8408658216af62ee983a91076a1b4c845fdea6557994f8af5462cc5d77f196dd3b8d2')
 
 build() {
   cd ${_base}-${pkgver}
+  export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
