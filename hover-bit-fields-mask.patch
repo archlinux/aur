@@ -1,0 +1,44 @@
+diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
+index 0b8abeca6aa0..e45b4dfc44e8 100644
+--- a/clang-tools-extra/clangd/Hover.cpp
++++ b/clang-tools-extra/clangd/Hover.cpp
+@@ -1011,9 +1011,15 @@ void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
+     if (Record && !Record->isInvalidDecl() && !Record->isDependentType()) {
+       const ASTRecordLayout &Layout = Ctx.getASTRecordLayout(Record);
+       HI.Offset = Layout.getFieldOffset(FD->getFieldIndex());
+-      if (FD->isBitField())
++      if (FD->isBitField()) {
+         HI.Size = FD->getBitWidthValue(Ctx);
+-      else if (auto Size = Ctx.getTypeSizeInCharsIfKnown(FD->getType()))
++        if (auto Size = Ctx.getTypeSizeInCharsIfKnown(FD->getType())) {
++          const auto SizeInBytes = Size->getQuantity();
++          const auto TypeOffset = *HI.Offset - (*HI.Offset % (SizeInBytes * 8));
++          HI.Mask = (~(std::numeric_limits<uint64_t>::max() << *HI.Size))
++                    << (*HI.Offset - TypeOffset);
++        }
++      } else if (auto Size = Ctx.getTypeSizeInCharsIfKnown(FD->getType()))
+         HI.Size = FD->isZeroSize(Ctx) ? 0 : Size->getQuantity() * 8;
+       if (HI.Size) {
+         unsigned EndOfField = *HI.Offset + *HI.Size;
+@@ -1491,6 +1497,8 @@ markup::Document HoverInfo::present() const {
+           llvm::formatv(" (+{0} padding)", FormatSize(*Padding)).str());
+     }
+   }
++  if (Mask)
++    Output.addParagraph().appendText(llvm::formatv("Mask: {0:x}", *Mask).str());
+ 
+   if (CalleeArgInfo) {
+     assert(CallPassType);
+diff --git a/clang-tools-extra/clangd/Hover.h b/clang-tools-extra/clangd/Hover.h
+index 6a6110091291..11fa383241d1 100644
+--- a/clang-tools-extra/clangd/Hover.h
++++ b/clang-tools-extra/clangd/Hover.h
+@@ -97,6 +97,8 @@ struct HoverInfo {
+   std::optional<uint64_t> Offset;
+   /// Contains the padding following a field within the enclosing class.
+   std::optional<uint64_t> Padding;
++  /// Bitfield mask for current type
++  std::optional<uint64_t> Mask;
+   // Set when symbol is inside function call. Contains information extracted
+   // from the callee definition about the argument this is passed as.
+   std::optional<Param> CalleeArgInfo;

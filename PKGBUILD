@@ -49,6 +49,11 @@
 # CLANGD_HOVERBITFIELDS:
 #   'n' - do not apply this patch
 #   'y' - apply this patch
+#
+# Show mask for bit fields (require CLANGD_HOVERBITFIELDS)
+# CLANGD_HOVERBITFIELDSMASK:
+#   'n' - do not apply this patch
+#   'y' - apply this patch
 
 
 : ${CLANGD_DEFAULT_PATCH_STATE:=n}
@@ -61,9 +66,10 @@
 : ${CLANGD_INLAYHINTSPADS:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_HOVERINHEX:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_HOVERBITFIELDS:=$CLANGD_DEFAULT_PATCH_STATE}
+: ${CLANGD_HOVERBITFIELDSMASK:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt
-pkgver=17.r12560.g330a232ae761
+pkgver=17.r12756.gbdc2771911cb
 pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
@@ -82,7 +88,8 @@ source=('git+https://github.com/llvm/llvm-project.git'
         'inlay-hints-paddings.patch'
         'hover-hex-formats.patch'
         'hover-hex-formats-bits-patch.patch'
-        'hover-bit-fields.patch')
+        'hover-bit-fields.patch'
+        'hover-bit-fields-mask.patch')
 sha256sums=('SKIP'
             '843bf80065da5929276e070a5e66cd2a8391090bba2ac2f9c48be0a9bb35d315'  # hover-doxygen-noast
             'b00ed1cef0ee45f7db596d268bb1e0af6da986590830ee33c7da7596a3c32fc0'  # hover-doxygen
@@ -93,7 +100,8 @@ sha256sums=('SKIP'
             '2db1f319f850858ecebdcda1c1600d6dd523f171c5b019740298d43607d5fa00'  # inlay-hints-paddings
             '346483b0d5823fba409785c2df471ca8a659112d630ee66e53b1a3e36e46e981'  # hover-hex-formats
             'ec5e9ff589c658b7ea82a9aa1e9cdc1296446a918cfda9cb870442a93e14454a'  # hover-hex-formats-bits-patch
-            'd1ecb75928639823e0fa2d6ffb39992ef40c7b95f71fd7def4a2353fedd7ff69') # hover-bit-fields
+            'd1ecb75928639823e0fa2d6ffb39992ef40c7b95f71fd7def4a2353fedd7ff69'  # hover-bit-fields
+            'a02dbc05ab1ca824b5487aa4df360be403f28c90564eddb3a974c81761f1e8ff') # hover-bit-fields-mask
 
 pkgver() {
     cd llvm-project
@@ -118,6 +126,9 @@ prepare() {
     fi
     if [ "$CLANGD_HOVERBITFIELDS" != "n" ]; then
         patch -p1 -i ${srcdir}/hover-bit-fields.patch
+        if [ "$CLANGD_HOVERBITFIELDSMASK" != "n" ]; then
+            patch -p1 -i ${srcdir}/hover-bit-fields-mask.patch
+        fi
     fi
     if [ "$CLANGD_HOVERINHEX" != "n" ]; then
         if [ "$CLANGD_HOVERBITFIELDS" != "n" ]; then
