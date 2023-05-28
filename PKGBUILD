@@ -1,6 +1,6 @@
 # Maintainer: acuteenvy
 pkgname=tlrc
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A tldr client written in Rust"
 arch=('x86_64')
@@ -10,7 +10,7 @@ makedepends=('cargo')
 provides=('tldr')
 conflicts=('tldr')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('2525ee13182dafda1f8caef079089ac7805e3aead8268c0bfb15e1cd0e6560ece78fa6898685540aa5b636427d8be7a73320a01b42f0d15108b71f49184ecaa4')
+b2sums=('521dd581b7e375cbab6b20ab6c4d9a4d11620717a801f121f957b6f7305a1385493b209dd7d8e5d7be10d9f86285107442b64352272b51be9ae9dbf5ea85a396')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -28,5 +28,8 @@ package() {
     cd "$pkgname-$pkgver"
     install -Dm755 "target/release/tldr" -t "$pkgdir/usr/bin"
     install -Dm644 tldr.1 -t "$pkgdir/usr/share/man/man1"
+    install -Dm644 completions/tldr.bash "$pkgdir/usr/share/bash-completion/completions/tldr"
+    install -Dm644 completions/_tldr -t "$pkgdir/usr/share/zsh/site-functions"
+    install -Dm644 completions/tldr.fish -t "$pkgdir/usr/share/fish/vendor_completions.d"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
