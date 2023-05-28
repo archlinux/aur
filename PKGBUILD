@@ -4,10 +4,10 @@
 
 pkgname=pi-hole-server
 _pkgname=pi-hole
-pkgver=5.16.2
+pkgver=5.17
 pkgrel=1
 _wwwpkgname=AdminLTE
-_wwwpkgver=5.19
+_wwwpkgver=5.20
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
 arch=('any')
 license=('EUPL-1.2')
@@ -42,10 +42,10 @@ source=($pkgname-core-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/arc
 	    piholeDebug.sh
 )
 
-sha256sums=('5b925fc6c9a8cf0c04d6690801645c172f00daffbd769206794de9d00744e8e2'
-            '6252324c7973dcd3a58b2a08dbfabf36630382b01921f7d729af3d92e39af81c'
-            'e4e0748c4ebe6cf05fae0852da3bcb52e1e62d5b77a4084abdc607514120f93a'
-            '7559851b4a5942a9815b8c7f6406160214c4a4cd46e74c17a4ee08151a7891e8'
+sha256sums=('5695604f8b147bf005a1ce8770e9371ba82f9de23f99f522dcf621ae36529a7a'
+            'a0df83795e8593e6e2a90c996843324fd61df6592832508e2e42bf8670d8aad6'
+            'c04a046133727c96b3b5847067e1317cd46e37179221dccfc9a4cbf8bcd7e65a'
+            '6ab3f28af6f3dc7027be0f15c8a60a29bd6624a12565ea96f02f9df4b30b7dd4'
             '96c1fb8b15e1d0e99c18dc768f5dc3d4991184fb2631af84c5e2111028bc5287'
             '3a3baa92a635d602824f184d901e947a0e14650c950e89325dda6f7d71b39db9'
             'f5906ed845e030ee18baeb8767295e1a76848a10ffd6fe60d34501ae45e2b6a8'
