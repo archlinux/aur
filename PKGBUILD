@@ -1,7 +1,7 @@
 # Maintainer: Paul Irofti <paul@irofti.net>
 _name=wntr
 pkgname="python-$_name"
-pkgver=0.3.1
+pkgver=1.0.0
 pkgrel=1
 
 pkgdesc="Water Network Tool for Resilience"
