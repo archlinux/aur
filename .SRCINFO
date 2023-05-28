@@ -1,7 +1,7 @@
 pkgbase = python-undervolt
 	pkgdesc = Undervolt Intel CPUs under Linux
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/georgewhewell/undervolt
 	arch = any
 	license = GPL

@@ -1,11 +1,12 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Andrea Orru <andrea at orru dot io>
 # Contributor: Andrew Rabert <ar at nullsum dot net>
 
 pkgname=python-undervolt
 _pkg="${pkgname#python-}"
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Undervolt Intel CPUs under Linux"
 arch=('any')
 url="https://github.com/georgewhewell/undervolt"
