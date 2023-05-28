@@ -10,14 +10,14 @@ pkgname=(
 
 # Follow handbrakes most current stable branch 1.6.x
 # https://github.com/HandBrake/HandBrake/commits/1.6.x
-readonly _commit=3b0c49d946ce6e50be1592af72ddf28c33d6c8d4
+readonly _commit=754fa8260b47ce1d9051d135c38dd593f4665783
 
 pkgver() {
   git -C HandBrake/ gc --auto --prune=now
   git -C HandBrake/ describe ${_commit} | sed -e 's/^v//g' -e 's/-/.r/' -e 's/-/./'
 }
 
-pkgver=1.6.1.r41.g3b0c49d94
+pkgver=1.6.1.r46.g754fa8260
 pkgrel=1
 arch=('x86_64')
 url="https://handbrake.fr/"
@@ -71,7 +71,7 @@ makedepends=(
   'lld'
   'llvm'
   # AMD VCE encoding on Linux requires Vulkan
-  # sudo downgrade vulkan-headers=1:1.3.235
+  # sudo downgrade --ignore never vulkan-headers=1:1.3.235
   'vulkan-headers=1:1.3.235'
   "${_commondeps[@]}"
   "${_guideps[@]}"
@@ -81,6 +81,8 @@ source=("HandBrake::git+https://github.com/HandBrake/HandBrake.git#tag=${_commit
 sha256sums=('SKIP')
 
 prepare() {
+  # contrib: update SVT-AV1 to version 1.5.
+  #git -C HandBrake/ cherry-pick 968992f
   :
 }
 
