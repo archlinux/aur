@@ -1,7 +1,7 @@
 pkgbase = python-spams
 	pkgdesc = Python interface for SPArse Modeling Software (SPAMS)
-	pkgver = 2.6.2.5
-	pkgrel = 2
+	pkgver = 2.6.5.4
+	pkgrel = 1
 	url = http://spams-devel.gforge.inria.fr/
 	arch = any
 	license = GPLv3
@@ -11,8 +11,7 @@ pkgbase = python-spams
 	depends = python-pillow
 	depends = python-scipy
 	depends = python-six
-	source = https://files.pythonhosted.org/packages/source/s/spams/spams-2.6.2.5.tar.gz
-	sha256sums = 25d5f226885a35f1690a8b2dea2eb3283835592965dd170baaecaf1593973a74
+	source = https://files.pythonhosted.org/packages/source/s/spams/spams-2.6.5.4.tar.gz
+	sha256sums = 4c15b01268b15d20dca1e29b04d08268775ad7aae5883891454de110b571c9a7
 
 pkgname = python-spams
-

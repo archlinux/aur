@@ -1,8 +1,8 @@
 # Maintainer: Paul Irofti <paul@irofti.net>
 _name=spams
 pkgname="python-$_name"
-pkgver=2.6.2.5
-pkgrel=2
+pkgver=2.6.5.4
+pkgrel=1
 pkgdesc="Python interface for SPArse Modeling Software (SPAMS)"
 
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python' 'cython' 'python-pillow' 'python-scipy' 'python-six')
 makedepends=('python-setuptools')
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('25d5f226885a35f1690a8b2dea2eb3283835592965dd170baaecaf1593973a74')
+sha256sums=('4c15b01268b15d20dca1e29b04d08268775ad7aae5883891454de110b571c9a7')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
