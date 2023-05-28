@@ -1,6 +1,6 @@
 # Maintainer: Abdullah Al Muaz <abdullahalmuaz15@gmail.com>
 pkgname=botflix-git
-pkgver=r149.f865b94
+pkgver=r152.346f31c
 pkgrel=1
 pkgdesc="🎥 Stream your favorite movie from the terminal!"
 arch=('any')
@@ -31,8 +31,11 @@ prepare() {
 }
 
 build() {
-        cd "$srcdir/${pkgname%-git}"
-        yay -S --noconfirm --needed webtorrent-cli
+        if ! yay -Qi webtorrent-cli &> /dev/null && ! npm list -g webtorrent-cli &> /dev/null; then
+                echo "Installing webtorrent-cli"
+                yay -S --noconfirm --needed webtorrent-cli
+        fi
+        
         
 }
 

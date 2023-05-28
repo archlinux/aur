@@ -1,6 +1,6 @@
 pkgbase = botflix-git
 	pkgdesc = 🎥 Stream your favorite movie from the terminal!
-	pkgver = r149.f865b94
+	pkgver = r152.346f31c
 	pkgrel = 1
 	url = https://github.com/kaboussi/Botflix
 	arch = any
