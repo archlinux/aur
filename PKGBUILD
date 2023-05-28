@@ -1,6 +1,6 @@
 pkgname='sweep-rs-git'
 pkgdesc='Sweep is a tool for interactive search through a list of entries.'
-provides='sweep-rs'
+provides=('sweep-rs')
 url='https://github.com/aslpavel/sweep-rs'
 arch=('x86_64')
 pkgrel=1
