@@ -1,18 +1,16 @@
 pkgbase = yacreader-bin
-	pkgdesc = Comic reader for cross-platform reading and managing your digital comic collection.
+	pkgdesc = Comic reader for cross-platform reading and managing your digital comic collection, binary version.
 	pkgver = 9.12.0
-	pkgrel = 1
-	url = https://github.com/YACReader/yacreader
+	pkgrel = 2
+	url = https://www.yacreader.com/
 	arch = x86_64
-	license = GPLv3
+	license = GPL3
 	depends = poppler-qt5
 	depends = libunarr
+	depends = qt5-multimedia
 	provides = yacreader
 	conflicts = yacreader
-	conflicts = yacreader-git
-	conflicts = yacreader-poppler
-	conflicts = yacreader-poppler-git
-	source = https://download.opensuse.org/repositories/home:/selmf/Debian_Unstable/amd64/yacreader_9.12.0-1_amd64.deb
-	sha256sums = 7c0521624986caa19d1164599d47c36085ded17ae5021a85a42cc4aa36f91a3a
+	source_x86_64 = https://download.opensuse.org/repositories/home:/selmf/Debian_Unstable/amd64/yacreader_9.12.0-1_amd64.deb
+	sha256sums_x86_64 = 7c0521624986caa19d1164599d47c36085ded17ae5021a85a42cc4aa36f91a3a
 
 pkgname = yacreader-bin
