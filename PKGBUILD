@@ -2,9 +2,9 @@
 
 pkgname=ntpsec
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Security-hardened Network Time Protocol implementation"
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://www.ntpsec.org/"
 license=('custom')
 depends=('avahi' 'libbsd' 'python' 'openssl')
