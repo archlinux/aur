@@ -1,14 +1,14 @@
 # Maintainer: Dmitry Lyashuk <lyashuk.voxx at gmail dot com>
 pkgname=doom2df-editor-qt5
 pkgver=0.667
-pkgrel=3
+pkgrel=4
 pkgdesc="Official map editor for Doom 2D: Forever, qt5 version."
 arch=(x86_64 i686)
 url="https://doom2d.org/"
 license=('GPL3')
 group=(doom2df-full)
 depends=(doom2df-res qt5-base qt5-imageformats qt5-networkauth qt5-x11extras libjpeg-turbo libpng gdk-pixbuf2 libxcb libx11 libgl)
-makedepends=(git fpc lazarus lazarus-gtk2 qt5pas)
+makedepends=(git fpc lazarus lazarus-qt5 qt5pas)
 optdepends=('doom2df-bin: for testing/playing')
 provides=(doom2df-editor)
 conflicts=(doom2df-editor-gtk2 doom2df-editor-qt4)
@@ -48,7 +48,7 @@ prepare(){
   else
     	echo "Here we go"
 	fi;
-	
+
   # Make these directories
   mkdir bin
   mkdir tmp
@@ -59,13 +59,10 @@ build() {
 
   # Before building the editor, make lang files
   cd "${srcdir}/d2df-editor/"
-  	mkdir -p data/lang
-  		# EN
-  		msguniq lang/editor.en_US.po | msgfmt -o lang/editor.en_US.mo -
-  			mv lang/editor.en_US.mo ../editor.en_US.mo
-  		# RU
-  		msguniq $PWD/lang/editor.ru_RU.po | msgfmt -o lang/editor.ru_RU.mo -
-  			mv lang/editor.ru_RU.mo ../editor.ru_RU.mo
+      for lang in "lang/"*".po"; do
+            msguniq "$lang" | msgfmt -o "${lang/.po/.mo}" -
+      done
+  mv -f "lang/"*".mo" "${srcdir}"
 
   # Export environment variable before building
   export D2DF_BUILD_HASH="$(git rev-parse HEAD)"

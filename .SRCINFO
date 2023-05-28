@@ -1,7 +1,7 @@
 pkgbase = doom2df-editor-qt5
 	pkgdesc = Official map editor for Doom 2D: Forever, qt5 version.
 	pkgver = 0.667
-	pkgrel = 3
+	pkgrel = 4
 	url = https://doom2d.org/
 	arch = x86_64
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = doom2df-editor-qt5
 	makedepends = git
 	makedepends = fpc
 	makedepends = lazarus
-	makedepends = lazarus-gtk2
+	makedepends = lazarus-qt5
 	makedepends = qt5pas
 	depends = doom2df-res
 	depends = qt5-base
