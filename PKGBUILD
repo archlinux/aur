@@ -3,7 +3,7 @@
 pkgname=mautrix-discord-bin
 provides=('mautrix-discord')
 pkgver=0.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A Matrix-Discord puppeting bridge"
 arch=('x86_64' 'armv7h' 'aarch64')
 license=('AGPL')
@@ -11,9 +11,9 @@ makedepends=(go libolm)
 depends=('libolm')
 optdepends=('ffmpeg: If you want to send gifs from Matrix')
 url="https://github.com/mautrix/discord"
-source_x86_64=("${url}/releases/download/v${pkgver}/mautrix-discord-amd64")
-source_armv7h=("${url}/releases/download/v${pkgver}/mautrix-discord-arm")
-source_aarch64=("${url}/releases/download/v${pkgver}/mautrix-discord-arm64")
+source_x86_64=("$pkgname-$pkgver"::"${url}/releases/download/v${pkgver}/mautrix-discord-amd64")
+source_armv7h=("$pkgname-$pkgver"::"${url}/releases/download/v${pkgver}/mautrix-discord-arm")
+source_aarch64=("$pkgname-$pkgver"::"${url}/releases/download/v${pkgver}/mautrix-discord-arm64")
 source=(
 	"${url}/archive/refs/tags/v${pkgver}.zip" 
         sysusers-mautrix-discord.conf
@@ -36,14 +36,7 @@ prepare() {
 }
 
 package() {
-  if [[ "$CARCH" == "x86_64" ]]; then
-    _architecture="amd64"
-  elif [[ "$CARCH" == "armv7h" ]]; then
-    _architecture="arm"
-  else 
-    _architecture="arm64"
-  fi
-  install -Dm755 "$srcdir/${pkgname/-bin}-${_architecture}" "$pkgdir/usr/bin/${pkgname/-bin}"
+  install -Dm755 "$srcdir/${pkgname}-${pkgver}" "$pkgdir/usr/bin/${pkgname/-bin}"
 
   install -Dm644 "$srcdir/sysusers-mautrix-discord.conf" "$pkgdir/usr/lib/sysusers.d/mautrix-discord.conf"
   install -Dm644 "$srcdir/mautrix-discord.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/mautrix-discord.conf"

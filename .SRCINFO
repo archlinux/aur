@@ -1,7 +1,7 @@
 pkgbase = mautrix-discord-bin
 	pkgdesc = A Matrix-Discord puppeting bridge
 	pkgver = 0.4.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/mautrix/discord
 	arch = x86_64
 	arch = armv7h
@@ -23,11 +23,11 @@ pkgbase = mautrix-discord-bin
 	sha256sums = 8735c5d4e8453b6b1bb741cb32bb962eee11f5d85f1332413ac15580fae0de90
 	sha256sums = 6961b6dd27fe246a1dddca95b90d038a26becc471c905658c2195070958cb1c3
 	sha256sums = 56e221937d57e932a3ae7c540aa3090c34437d8d47d93f364737289b0706030b
-	source_x86_64 = https://github.com/mautrix/discord/releases/download/v0.4.0/mautrix-discord-amd64
+	source_x86_64 = mautrix-discord-bin-0.4.0::https://github.com/mautrix/discord/releases/download/v0.4.0/mautrix-discord-amd64
 	sha256sums_x86_64 = 1734f2efe9c4c0f40f3a0d39d59895db316cff71d8b55ab2fbb4e71218e3caff
-	source_armv7h = https://github.com/mautrix/discord/releases/download/v0.4.0/mautrix-discord-arm
+	source_armv7h = mautrix-discord-bin-0.4.0::https://github.com/mautrix/discord/releases/download/v0.4.0/mautrix-discord-arm
 	sha256sums_armv7h = 6f9e42bb6212dbb2d0cebc129ce5c3a5621502c3071cbb5633b15bd1df9727ee
-	source_aarch64 = https://github.com/mautrix/discord/releases/download/v0.4.0/mautrix-discord-arm64
+	source_aarch64 = mautrix-discord-bin-0.4.0::https://github.com/mautrix/discord/releases/download/v0.4.0/mautrix-discord-arm64
 	sha256sums_aarch64 = 25dc5ffd718b957a774d7a8ef8f0dbadb03cc9d1b449850af59210c3610335fe
 
 pkgname = mautrix-discord-bin
