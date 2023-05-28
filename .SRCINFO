@@ -1,0 +1,14 @@
+pkgbase = python-metadata_filter
+	pkgdesc = Partial Python port of web-scrobbler/metadata-filter
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/YodaEmbedding/metadata_filter
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/m/metadata_filter/metadata_filter-0.1.0.tar.gz
+	sha256sums = e0984b9a7b700869dd0831f9b75ce350b32ac988ab4151ae183e6ee77439ada8
+
+pkgname = python-metadata_filter
