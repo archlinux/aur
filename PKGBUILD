@@ -12,8 +12,8 @@
 
 pkgname=gnome-control-center-x11-scaling
 _pkgname=gnome-control-center
-pkgver=44.1
-pkgrel=2
+pkgver=44.2
+pkgrel=1
 pkgdesc="GNOME's main interface to configure various aspects of the desktop with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
 license=(GPL3)
@@ -73,13 +73,13 @@ optdepends=(
 groups=(gnome)
 conflicts=($_pkgname)
 provides=($_pkgname)
-_commit=da661203820d5766ff10fd7f64d2117470c70a2a  # tags/44.1^0
+_commit=b95dda6b021cd60ea078b76f986a89c7bdc89893  # tags/44.2^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_commit"
   "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
   "display-Allow-fractional-scaling-to-be-enabled.patch::https://salsa.debian.org/gnome-team/gnome-control-center/-/raw/7da15e2567e77e1a589dc3135de2b4af119ecdde/debian/patches/ubuntu/display-Allow-fractional-scaling-to-be-enabled.patch"
   "display-Support-UI-scaled-logical-monitor-mode.patch::https://salsa.debian.org/gnome-team/gnome-control-center/-/raw/40a04c330a95e178463371bf8570d8e6258dd906/debian/patches/ubuntu/display-Support-UI-scaled-logical-monitor-mode.patch"
-  "https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/8cafecb50c62f56dbe0a6cffb947b81aacbd4c41/pixmaps-dir.diff"
+  "pixmaps-dir.diff::https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/8cafecb50c62f56dbe0a6cffb947b81aacbd4c41/pixmaps-dir.diff"
 )
 sha256sums=('SKIP'
             'SKIP'
