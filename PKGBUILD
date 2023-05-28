@@ -1,5 +1,5 @@
 pkgname=kalc
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="a complex numbers, graphing, cli calculator"
 arch=('x86_64' 'aarch64')
