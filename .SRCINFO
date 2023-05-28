@@ -1,8 +1,8 @@
 pkgbase = python-dmidecode
 	pkgdesc = Python module to access DMI data
 	pkgver = 3.12.3
-	pkgrel = 1
-	url = https://git.fedorahosted.org/cgit/python-dmidecode.git
+	pkgrel = 2
+	url = https://github.com/nima/python-dmidecode
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -15,6 +15,6 @@ pkgbase = python-dmidecode
 	source = https://github.com/nima/python-dmidecode/archive/v3.12.3.tar.gz
 	source = makefile.patch
 	sha256sums = 44d45d7d8344290c259c989d3af3f614c7837cbd85052d486adfa46a1c777164
-	sha256sums = 5d1a97117e586cb36932518e69393cd6b99671a471145ad28bb39e790f59e31b
+	sha256sums = 46413b661e5394b65a4be50bd46102aaa4214e3d6e993613f53e58e98e2f602c
 
 pkgname = python-dmidecode
