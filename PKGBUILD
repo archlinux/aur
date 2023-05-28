@@ -2,7 +2,7 @@
 _pkgname=3270-fonts
 _gitname=3270font
 pkgname=$_pkgname
-pkgver=853.fd00815
+pkgver=956.9aec667
 pkgrel=1
 pkgdesc="A font for the nostalgic from a 3270 series terminal."
 arch=('any')
