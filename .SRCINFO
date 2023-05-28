@@ -1,6 +1,6 @@
 pkgbase = folder-color-nautilus-git
 	pkgdesc = Folder color switcher for nautilus with gnome icon- numix, vibrancy or humanity skin.
-	pkgver = r11.e76d1d9
+	pkgver = r41.b525345
 	pkgrel = 1
 	url = http://foldercolor.tuxfamily.org/
 	arch = any
@@ -19,4 +19,3 @@ pkgbase = folder-color-nautilus-git
 	sha256sums = SKIP
 
 pkgname = folder-color-nautilus-git
-
