@@ -21,7 +21,7 @@ optdepends=('vc: C++ Vectorization library'
   'bash-completion: for completion when using bash'
   'parmetis: Parallel Graph Partitioning and Fill-reducing Matrix Ordering'
   'scotch: Software package and libraries for graph, mesh and hypergraph partitioning, static mapping, and sparse matrix block ordering'
-  'tbb: High level abstract threading library'
+  'onetbb: High level abstract threading library'
   'man-db: manual pages for dune'
   'python-matplotlib: for Matplotlib rendering'
   'python-mayavi: for 3D plotting')
