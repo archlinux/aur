@@ -18,7 +18,7 @@ pkgbase = musicbee
 	source = https://www.un4seen.com/files/z/2/bass_aac24.zip
 	sha256sums = 706a8bb4c1b453af0619a28705bc461011f77828aaaecbb67e1f48552addbed9
 	sha256sums = 054502f6dacceeeff10b7ac7511a514307a1e3f187c19f73b5913965c459dc6e
-	sha256sums = SKIP
+	sha256sums = f96144607119a44a2b07965b05e9fd0253b8e06ec4ac5eac394f6cb7e0bbbe83
 	sha256sums = 782ec4f3758fc715d29ceab332103266df4000dd413a477901dccb8c9bac2090
 
 pkgname = musicbee

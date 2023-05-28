@@ -19,7 +19,7 @@ source=("https://files1.majorgeeks.com/10afebdbffcd4742c81a3cb0f6ce4092156b4375/
         "https://www.un4seen.com/files/z/2/bass_aac24.zip") #M4A/AAC Support
 sha256sums=('706a8bb4c1b453af0619a28705bc461011f77828aaaecbb67e1f48552addbed9'
             '054502f6dacceeeff10b7ac7511a514307a1e3f187c19f73b5913965c459dc6e'
-            'SKIP'
+            'f96144607119a44a2b07965b05e9fd0253b8e06ec4ac5eac394f6cb7e0bbbe83'
             '782ec4f3758fc715d29ceab332103266df4000dd413a477901dccb8c9bac2090')
 
 package() {
