@@ -2,13 +2,17 @@
 
 pkgname=python-cyclonedx-lib
 _gitpkgname=cyclonedx-python-lib
-pkgver=3.1.5
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='Library for producing CycloneDX SBOM (Software Bill of Materials) files'
 arch=('any')
 url='https://github.com/CycloneDX/cyclonedx-python-lib'
 license=('Apache')
-depends=('python-packageurl' 'python-sortedcontainers')
+depends=(
+  'python-packageurl'
+  'python-py-serializable'
+  'python-sortedcontainers'
+)
 checkdepends=(
   'python-ddt'
   'python-jsonschema'
@@ -17,11 +21,17 @@ checkdepends=(
   'python-toml'
   'xmldiff'
 )
-makedepends=('git' 'python-installer' 'python-poetry')
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-poetry'
+  'python-wheel'
+)
 conflicts=('python-cyclonedx-lib-git')
 options=('!strip')
 source=("${_gitpkgname}-${pkgver}.tar.gz::https://github.com/CycloneDX/cyclonedx-python-lib/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('05cd76b10f65891938c570468e9952d79e25d1329b31495556770c2e130b4a4ee9937435d85e55054e1c0fc8b1618b79a1deecc02486f58bcdea99d052369623')
+sha512sums=('6b8f2ba6b538d1e3a7c9b842c27adb2f49929705c798a6528c7915ec1fe023e7be6ba8b48c78906ea163825a1678cb50f6099a4c8955db6976a1bb2338be3be9')
 
 prepare() {
   cd "${srcdir}/${_gitpkgname}-${pkgver}"
@@ -37,7 +47,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_gitpkgname}-${pkgver}"
-  poetry build --format wheel
+  python -m build --wheel --no-isolation
 }
 
 check() {
