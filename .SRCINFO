@@ -1,7 +1,7 @@
 pkgbase = doom2df-editor-gtk2
 	pkgdesc = Official map editor for Doom 2D: Forever, gtk2 version.
 	pkgver = 0.667
-	pkgrel = 3
+	pkgrel = 4
 	url = https://doom2d.org/
 	arch = x86_64
 	arch = i686
