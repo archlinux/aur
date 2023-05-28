@@ -1,43 +1,32 @@
 # Maintainer: flippantwalrus <aur at hexoasm dot net>
 
 pkgname=nabud-git
-pkgver=v1.3.1
+pkgver=1.3.1.r1.g223ec92
 pkgrel=1
-epoch=
 pkgdesc="A server for the NABU PC"
-arch=('x86_64')
+arch=(x86_64)
 url="https://github.com/thorpej/nabud"
-license=('BSD')
-groups=()
-depends=()
-makedepends=('git')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("${pkgname}::git+${url}.git#tag=${pkgver}")
-noextract=()
-md5sums=("SKIP")
-validpgpkeys=()
+license=(BSD)
+depends=(glibc openssl readline)
+makedepends=(git)
+provides=(nabud)
+conflicts=(nabud)
+source=("git+${url}.git")
+sha256sums=("SKIP")
 
-#prepare() {
-#}
+pkgver() {
+	cd "${srcdir}/nabud"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
-	cd "${srcdir}/${pkgname}"
-	./configure --prefix="${pkgdir}"
+	cd "${srcdir}/nabud"
+	./configure --prefix=/usr
 	make
 }
 
-#check() {
-#}
-
 package() {
-	cd "${srcdir}/${pkgname}"
-	make install
+	cd "${srcdir}/nabud"
+    make DESTDIR="${pkgdir}" install
+    install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
