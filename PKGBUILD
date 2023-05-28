@@ -2,8 +2,8 @@
 # Contributor: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname=python-lru-dict
-pkgver=1.1.8
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='A fast and memory efficient LRU cache for Python'
 arch=(x86_64)
 url=https://github.com/amitdev/lru-dict
@@ -13,7 +13,7 @@ makedepends=(
   git
   python-setuptools
 )
-_tag=8bdcd75a11f629aff4b15ec0ae0faaf165a44fb1
+_tag=b5ec33e5bb338dd815d2ec8fc6819626ef667821
 source=(git+https://github.com/amitdev/lru-dict.git#tag=${_tag})
 b2sums=(SKIP)
 
