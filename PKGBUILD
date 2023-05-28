@@ -36,7 +36,12 @@ package() {
 	cd "${srcdir}/${_pkgbase}"
 
 	python -m installer --destdir="$pkgdir" dist/*.whl
-	install -D -m 644 -t "$pkgdir"/usr/lib/i3bard/cmdlets cmdlets/*.py
+
+	find cmdlets \
+		-type f \
+		-name '*.py' \
+		-exec install -D --mode=644 {} "${pkgdir}"/usr/lib/i3bard/{} \;
+
 	install -D -m 644 i3bard.service "$pkgdir"/usr/lib/systemd/user/i3bard.service
 	install -D -m 644 i3bard.socket "$pkgdir"/usr/lib/systemd/user/i3bard.socket
 }
