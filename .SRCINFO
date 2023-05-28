@@ -1,0 +1,14 @@
+pkgbase = swayrandr
+	pkgdesc = xrandr and lxrandr clone for Sway tiling wayland compositor.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://codeberg.org/snaums/swayrandr
+	arch = any
+	license = GPL-3
+	makedepends = go
+	makedepends = git
+	depends = sway
+	source = swayrandr::git+https://codeberg.org/snaums/swayrandr.git
+	sha256sums = SKIP
+
+pkgname = swayrandr
