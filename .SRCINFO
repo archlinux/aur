@@ -1,6 +1,6 @@
 pkgbase = nestopia
 	pkgdesc = An NES emulator featuring cycle exact emulation, a ridiculous number of mappers, and lots of custom sound chips.
-	pkgver = 1.51.0
+	pkgver = 1.52.0
 	pkgrel = 1
 	url = http://0ldsk00l.ca/nestopia/
 	install = nestopia.install
@@ -12,7 +12,7 @@ pkgbase = nestopia
 	depends = fltk
 	depends = zlib
 	depends = libarchive
-	source = nestopia-1.51.0.tar.gz::https://github.com/0ldsk00l/nestopia/archive/1.51.0.tar.gz
-	sha256sums = 9dd3253629a05f68fb730e5bc59148cd5498cea359eff2cbf4202d1e1329bce9
+	source = nestopia-1.52.0.tar.gz::https://github.com/0ldsk00l/nestopia/archive/1.52.0.tar.gz
+	sha256sums = eae1d2f536ae8585edb8d723caf905f4ae65349edee4ffbee45f9f52b5e3b06c
 
 pkgname = nestopia
