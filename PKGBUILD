@@ -1,22 +1,22 @@
 # Maintainer: BrainDamage
 pkgname=mautrix-telegram
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="A Matrix-Telegram hybrid puppeting/relaybot bridge."
 url="https://github.com/tulir/mautrix-telegram"
 depends=('python' 'python-asyncpg' 'python-ruamel-yaml'
 	'python-magic' 'python-commonmark' 'python-aiohttp' 'python-yarl'
-	'python-mautrix>=0.19' 'python-mautrix<0.20'
-	'python-tulir-telethon=1.28.0a3'
+	'python-mautrix>=0.19.14' 'python-mautrix<0.20'
+	'python-tulir-telethon=1.28.0a9'
 	'python-mako')
 makedepends=('python-setuptools' 'python-pytest-runner')
-optdepends=('python-cryptg: faster encryption'
+optdepends=('ffmpeg: high quality thumbnails'
+	'python-cryptg: faster encryption'
 	'python-cchardet: faster encoding detection'
 	'python-brotli: faster compression'
 	'python-aiodns: asyncronous dns requests'
 	'python-pillow: webp conversion and qr code login'
 	'python-qrcode: qr code login'
-	'python-moviepy: high quality thumbnails'
 	'python-phonenumbers: formatted numbers'
 	'python-prometheus_client: metrics upload'
 	'python-olm: end-to-bridge encryption support'
@@ -26,7 +26,7 @@ optdepends=('python-cryptg: faster encryption'
 license=('AGPLv3')
 arch=('any')
 source=("${pkgname}-${pkgver}::${url}/archive/v${pkgver}.tar.gz" "${pkgname}.service" "${pkgname}.sysusers" "${pkgname}.tmpfiles")
-sha256sums=('e0848c5042f6cdf3609c31e940503a1e9b3e6510ff327393dfca3b894c4b9caa'
+sha256sums=('95a2a73f942bc4a932ef2b7029333e272a23b0e9ec0d5bccb5531e8004370f10'
             '7293f642e143655595088baacf0a4a3a19f869e48762f4985d1ccea039ba284b'
             '83dc721df0451c199d23ea74b60a065d92f98e9026dd779aca30d25195b88cf9'
             '2f5c45f6b0a9d1ae5237a91bdcb527609d262bc27cb7fa1dc736b4103ee230e5')
