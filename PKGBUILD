@@ -30,8 +30,8 @@ prepare() {
   sed -i '15 a install(FILES gridfunctiontest.hh DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/dune/functions/gridfunctions/test)' ${pkgname}-${pkgver}/dune/functions/gridfunctions/test/CMakeLists.txt
   sed -i '7 a BUILD_ON_INSTALL' ${pkgname}-${pkgver}/doc/manual/CMakeLists.txt
   sed -i '3 a BUILD_ON_INSTALL' ${pkgname}-${pkgver}/doc/manual/CMakeLists.txt
-  sed -i '/dune_python_add_test(NAME pypoisson/,+3 s/^/#/' ${pkgname}-${pkgver}/dune/python/test/CMakeLists.txt
-  python -m venv --system-site-packages build-cmake/dune-env
+  # sed -i '/dune_python_add_test(NAME pypoisson/,+3 s/^/#/' ${pkgname}-${pkgver}/dune/python/test/CMakeLists.txt
+  # python -m venv --system-site-packages build-cmake/dune-env
 }
 
 build() {
@@ -52,20 +52,21 @@ build() {
     -DCMAKE_DISABLE_FIND_PACKAGE_LATEX=FALSE \
     -DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=FALSE \
     -DENABLE_HEADERCHECK=ON \
-    -DDUNE_ENABLE_PYTHONBINDINGS=ON \
-    -DDUNE_PYTHON_INSTALL_LOCATION='none' \
-    -DDUNE_PYTHON_WHEELHOUSE="dist"
+    -DDUNE_ENABLE_PYTHONBINDINGS=OFF
+
+  # -DDUNE_PYTHON_INSTALL_LOCATION='none' \
+  # -DDUNE_PYTHON_WHEELHOUSE="dist"
 
   cmake --build build-cmake --target all
-  cd build-cmake/python
-  python setup.py build
+  # cd build-cmake/python
+  # python setup.py build
 }
 
 package() {
   XDG_CACHE_HOME="${PWD}" DESTDIR="${pkgdir}" cmake --build build-cmake --target install
   install -Dm 644 ${pkgname}-${pkgver}/COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
   find "${pkgdir}" -type d -empty -delete
-  cd build-cmake/python
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
-  rm -r "${pkgdir}"/tmp
+  # cd build-cmake/python
+  # PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  # rm -r "${pkgdir}"/tmp
 }
