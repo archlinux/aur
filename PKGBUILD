@@ -1,7 +1,7 @@
 # Maintainer: Paul Irofti <paul@irofti.net>
 _name=openml
 pkgname="python-$_name"
-pkgver=0.12.2
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="python interface for OpenML"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-liac-arff' 'python-xmltodict' 'python-requests'
   'python-numpy' 'python-minio' 'python-pyarrow')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('cefb4792ca12ee87ab3acc5e5afb4e9d205c398621e2424f2f5de1564cfee849')
+sha256sums=('38ce7c32c28293cb1446d22e96e95e0352f7c62a5d88fe58ffdcad0e8c7a945b')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
