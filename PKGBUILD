@@ -8,7 +8,7 @@ _localepurge=
 
 _pkgname=sigil
 pkgname="$_pkgname-git"
-pkgver=1.9.30.r34.g61f091c9e
+pkgver=1.9.30.r36.g13c212079
 pkgrel=1
 pkgdesc='multi-platform EPUB2/EPUB3 ebook editor'
 arch=('x86_64')
@@ -17,16 +17,18 @@ license=('GPL3')
 depends=(
   'hicolor-icon-theme'
   'hunspell'
-  'pcre2'
+  'mathjax'
   'minizip'
-  'python-chardet'
+  'pcre2'
+  'python-cchardet'
   'python-certifi'
+  'python-chardet'
   'python-css-parser'
   'python-dulwich'
   'python-html5lib'
   'python-lxml'
-  'qt6-webengine'
   'qt6-5compat'
+  'qt6-webengine'
 )
 makedepends=(
   'cmake'
@@ -38,7 +40,6 @@ optdepends=(
   'hunspell-en_US: for English dictionary support'
   'hyphen-en: for English hyphenation support in plugins'
   'pageedit: external editor to replace BookView'
-  'python-chardet: recommended for plugins'
   'python-cssselect: recommended for plugins'
   'python-pillow: recommended for plugins'
   'python-pyqt6-webengine: recommended for plugins'
@@ -69,9 +70,9 @@ sha256sums=(
 prepare() {
   cd "$srcdir/$_pkgname"
 
-  for p in "$srcdir"/*.patch ; do
-    echo "Applying patch: $p"
-    patch -Np1 -i "$p"
+  for patch in "$srcdir"/*.patch ; do
+    echo "Applying patch: $patch"
+    patch -Np1 -i "$patch"
   done
 
   if [[ "${_localepurge}" != "" ]]; then
