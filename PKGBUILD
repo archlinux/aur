@@ -4,8 +4,8 @@
 pkgbase=python-altair
 _pyname=altair
 pkgname=('python-altair')
-pkgver=5.0.0
-pkgrel=3
+pkgver=5.0.1
+pkgrel=1
 pkgdesc="Declarative statistical visualization library for Python"
 arch=('any')
 url="https://altair-viz.github.io/"
@@ -13,18 +13,11 @@ license=('BSD3')
 depends=(python-jinja python-jsonschema python-numpy python-pandas python-toolz)
 makedepends=(python-build python-installer python-wheel python-hatchling)
 optdepends=('python-selenium: png and svg export support')
-source=("${_pyname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz"
-        0001_pyproject.patch)
-sha256sums=('394c3d8be96f9cc90e15a0eee3634cc5b6f19e470fd2045759892623bd9a3fb2'
-            '9c67444c235e8f0b1a3aaabfa0787afda9f2b0470a361c112efc202c8432831b')
+source=("${_pyname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz")
+sha256sums=('087d7033cb2d6c228493a053e12613058a5d47faf6a36aea3ff60305fd8b4cb0')
 
 
-prepare() {
-  cd ${_pyname}-${pkgver}
-  patch -Np1 -i "${srcdir}"/0001_pyproject.patch
-}
-
-build () {
+build() {
   cd "${_pyname}-${pkgver}"
   python -m build --wheel --no-isolation
 }
