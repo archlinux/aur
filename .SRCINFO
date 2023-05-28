@@ -1,6 +1,6 @@
 pkgbase = dhewm3-git
 	pkgdesc = Doom 3 source port
-	pkgver = 1.5.2.r1.gcc0f49f
+	pkgver = 1.5.2.r31.gb6365e9
 	pkgrel = 1
 	epoch = 1
 	url = https://dhewm3.org/
@@ -16,17 +16,23 @@ pkgbase = dhewm3-git
 	makedepends = git
 	makedepends = libbacktrace
 	makedepends = openal
+	depends = gcc-libs
+	depends = glibc
 	depends = hicolor-icon-theme
 	depends = sdl2
+	depends = zlib
 	optdepends = doom3-data: for game data
-	provides = dhewm3
+	provides = dhewm3=1.5.2.r31.gb6365e9
 	conflicts = dhewm3
 	source = dhewm3::git+https://github.com/dhewm/dhewm3.git
 	b2sums = SKIP
 
 pkgname = dhewm3-git
+	depends = gcc-libs
+	depends = glibc
 	depends = hicolor-icon-theme
 	depends = sdl2
+	depends = zlib
 	depends = libbacktrace.so
 	depends = libcurl.so
 	depends = libopenal.so

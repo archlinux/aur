@@ -2,17 +2,17 @@
 # Contributor: Mike Swanson <mikeonthecomputer@gmail.com>
 _pkgname=dhewm3
 pkgname=$_pkgname-git
-pkgver=1.5.2.r1.gcc0f49f
+pkgver=1.5.2.r31.gb6365e9
 pkgrel=1
 epoch=1
 pkgdesc="Doom 3 source port"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://dhewm3.org/"
 license=('GPL3')
-depends=('hicolor-icon-theme' 'sdl2')
+depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'sdl2' 'zlib')
 makedepends=('cmake' 'curl' 'git' 'libbacktrace' 'openal')
 optdepends=('doom3-data: for game data')
-provides=("$_pkgname")
+provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+https://github.com/dhewm/dhewm3.git")
 b2sums=('SKIP')
