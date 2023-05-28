@@ -1,0 +1,10 @@
+pkgbase = sweep-rs-git
+	pkgver = r306.392555d
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = sweep-rs::git+https://github.com/aslpavel/sweep-rs
+	sha1sums = SKIP
+
+pkgname = sweep-rs-git
