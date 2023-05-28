@@ -1,0 +1,21 @@
+pkgbase = python-sdmetrics
+	pkgdesc = Metrics for Synthetic Data Generation Projects
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/sdv-dev/SDMetrics
+	arch = x86_64
+	license = custom
+	checkdepends = python-pytest
+	checkdepends = python-pomegranate
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pytest-runner
+	makedepends = python-wheel
+	depends = python-scikit-learn
+	depends = python-copulas
+	depends = python-tqdm
+	depends = python-plotly
+	source = SDMetrics-0.10.0.tar.gz::https://github.com/sdv-dev/SDMetrics/archive/v0.10.0.tar.gz
+	sha512sums = c29a2e7b8a9c7485e9b9e5ea2e8491830065cdf22ca69d47bf4554c043810826daa3bea8dd389a01f31f6976c5bb4e11ba6af8fdd1225e4d75aff710654434bd
+
+pkgname = python-sdmetrics
