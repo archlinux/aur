@@ -1,8 +1,8 @@
-# Maintainer: 3ED_0 <krzysztofas at protonmail>
+# Maintainer: anagram3k <luis.henriques at gmail>
 # Contributor: coldBug <coldBug at e.mail dot de>
 
 pkgname=folder-color-nautilus-git
-pkgver=r11.e76d1d9
+pkgver=r41.b525345
 pkgrel=1
 pkgdesc="Folder color switcher for nautilus with gnome icon- numix, vibrancy or humanity skin."
 arch=(any)
@@ -28,8 +28,11 @@ pkgver() {
 }
 
 prepare() {
-	cd "$pkgname/install_scripts"
-	./nautilus.sh
+	cd "$pkgname"
+
+    sed -i 's/folder_i18n/folder-color/' ./po/POTFILES.in
+    sed -i 's/folder_path/nautilus-extension/' ./po/POTFILES.in
+    sed -i 's/folder_i18n/folder-color/' ./nautilus-extension/folder-color.py
 }
 
 package() {
