@@ -5,7 +5,7 @@
 
 _pkgbase=i3bard
 pkgname=i3bard-git
-pkgver=r51.6ac6be0
+pkgver=r54.a7109db
 pkgrel=1
 pkgdesc='async i3bar status_command generator that can synchronize multiple instances'
 arch=('any')
