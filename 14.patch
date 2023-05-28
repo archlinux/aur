@@ -1,0 +1,22 @@
+From ef051f473654052112b647df987eb263e38faf47 Mon Sep 17 00:00:00 2001
+From: Alex Myczko <alex@aiei.ch>
+Date: Sat, 19 Mar 2022 19:42:44 +0100
+Subject: [PATCH] header file missing
+
+error: aggregate 'QPainterPath path' has incomplete type and cannot be defined
+---
+ src/ui/SoundPreview.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/ui/SoundPreview.cpp b/src/ui/SoundPreview.cpp
+index b4bc24a..0a52273 100644
+--- a/src/ui/SoundPreview.cpp
++++ b/src/ui/SoundPreview.cpp
+@@ -3,6 +3,7 @@
+ #include "Sound.h"
+ 
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QtConcurrent>
+ 
+ static const QColor WAVE_BORDER_COLOR = Qt::white;

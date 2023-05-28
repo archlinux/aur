@@ -1,0 +1,26 @@
+From e103efb509e3e993f4e9bdb2d3de4ed923123b68 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Matthias=20Mail=C3=A4nder?= <matthias@mailaender.name>
+Date: Sun, 28 May 2023 15:53:00 +0200
+Subject: [PATCH] Use system catch2.
+
+---
+ CMakeLists.txt | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 272f2cd..2d4672a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -35,7 +35,11 @@ set(CMAKE_AUTOUIC ON)
+ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH ON)
+ 
+ # Source dirs
+-add_subdirectory(3rdparty/catch2)
++if (USE_SYSTEM_CATCH2)
++   find_package(Catch2 REQUIRED)
++else()
++    add_subdirectory(3rdparty/catch2)
++endif()
+ add_subdirectory(src)
+ if (BUILD_TESTING)
+     enable_testing() # must come *before* adding tests directory
