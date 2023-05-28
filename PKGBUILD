@@ -4,7 +4,7 @@ pkgname=mautrix-whatsapp-bin
 provides=('mautrix-whatsapp')
 conflicts=('mautrix-whatsapp')
 pkgver=0.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A Matrix-Whatsapp puppeting bridge (binary release)"
 arch=('x86_64' 'armv7h' 'aarch64')
 license=('AGPL')
@@ -12,9 +12,9 @@ makedepends=()
 depends=()
 optdepends=('ffmpeg: If you want to send gifs from Matrix')
 url="https://github.com/mautrix/whatsapp"
-source_x86_64=("${url}/releases/download/v${pkgver}/mautrix-whatsapp-amd64")
-source_armv7h=("${url}/releases/download/v${pkgver}/mautrix-whatsapp-arm")
-source_aarch64=("${url}/releases/download/v${pkgver}/mautrix-whatsapp-arm64")
+source_x86_64=("$pkgname-$pkgver::${url}/releases/download/v${pkgver}/mautrix-whatsapp-amd64")
+source_armv7h=("$pkgname-$pkgver::${url}/releases/download/v${pkgver}/mautrix-whatsapp-arm")
+source_aarch64=("$pkgname-$pkgver::${url}/releases/download/v${pkgver}/mautrix-whatsapp-arm64")
 source=("${url}/archive/refs/tags/v${pkgver}.zip"
         sysusers-mautrix-whatsapp.conf
         mautrix-whatsapp.tmpfiles
@@ -36,14 +36,7 @@ prepare() {
 }
 
 package() {
-  if [[ "$CARCH" == "x86_64" ]]; then
-    _architecture="amd64"
-  elif [[ "$CARCH" == "armv7h" ]]; then
-    _architecture="arm"
-  else 
-    _architecture="arm64"
-  fi
-  install -Dm755 "$srcdir/${pkgname/-bin}-$_architecture" "$pkgdir/usr/bin/${pkgname/-bin}"
+  install -Dm755 "$srcdir/$pkgname-$pkgver" "$pkgdir/usr/bin/${pkgname/-bin}"
 
   install -Dm644 "$srcdir/sysusers-mautrix-whatsapp.conf" "$pkgdir/usr/lib/sysusers.d/mautrix-whatsapp.conf"
   install -Dm644 "$srcdir/mautrix-whatsapp.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/mautrix-whatsapp.conf"

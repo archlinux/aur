@@ -1,7 +1,7 @@
 pkgbase = mautrix-whatsapp-bin
 	pkgdesc = A Matrix-Whatsapp puppeting bridge (binary release)
 	pkgver = 0.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mautrix/whatsapp
 	arch = x86_64
 	arch = armv7h
@@ -21,11 +21,11 @@ pkgbase = mautrix-whatsapp-bin
 	sha256sums = 1d7d01d5a09256382a3f8c246048078d7d4934c3f8ac418fcf2d94648e162ab6
 	sha256sums = 6e967838a00518c4ad2109ca395b2f14fc03ed6474af977445979ce7a53872b8
 	sha256sums = dbee2761eda8bdea97e980e8e2ba92130cc80c17f29f7da8566a18182a6a3334
-	source_x86_64 = https://github.com/mautrix/whatsapp/releases/download/v0.8.5/mautrix-whatsapp-amd64
+	source_x86_64 = mautrix-whatsapp-bin-0.8.5::https://github.com/mautrix/whatsapp/releases/download/v0.8.5/mautrix-whatsapp-amd64
 	sha256sums_x86_64 = 2989419b6c8ce870189359a44a1642a22e6cc87d6344123622fa2d59d073a339
-	source_armv7h = https://github.com/mautrix/whatsapp/releases/download/v0.8.5/mautrix-whatsapp-arm
+	source_armv7h = mautrix-whatsapp-bin-0.8.5::https://github.com/mautrix/whatsapp/releases/download/v0.8.5/mautrix-whatsapp-arm
 	sha256sums_armv7h = 6f664454fccabe023c6d7eb8ad85ed80ba7c5691605e16977cfc67ffed1a252a
-	source_aarch64 = https://github.com/mautrix/whatsapp/releases/download/v0.8.5/mautrix-whatsapp-arm64
+	source_aarch64 = mautrix-whatsapp-bin-0.8.5::https://github.com/mautrix/whatsapp/releases/download/v0.8.5/mautrix-whatsapp-arm64
 	sha256sums_aarch64 = e9c34620f5748bac34f4d15d9e9088ecf8676288edc9460bf6245688eafd6367
 
 pkgname = mautrix-whatsapp-bin
