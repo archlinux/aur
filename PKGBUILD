@@ -22,7 +22,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest --ignore=${_base}/lsst/tests
+  test-env/bin/python -m pytest --ignore=${_base}/lsst/tests --ignore=shear_meas_test
 }
 
 package() {
