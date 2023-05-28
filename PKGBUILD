@@ -2,22 +2,31 @@
 
 pkgname=python-dmidecode
 pkgver=3.12.3
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
-url="https://git.fedorahosted.org/cgit/python-dmidecode.git"
+url="https://github.com/nima/python-dmidecode"
 pkgdesc="Python module to access DMI data"
 license=('GPL2')
 depends=('python' 'dmidecode' 'libxml2' 'python-lxml')
 makedepends=('python' 'libxml2')
-source=("https://github.com/nima/python-dmidecode/archive/v$pkgver.tar.gz")
+source=("${url}/archive/v$pkgver.tar.gz"
+       makefile.patch)
+
+prepare() {
+  cd $srcdir/$pkgbase-${pkgver}
+  patch -Np1 -i ../makefile.patch
+}
+
+build() {
+  cd $srcdir/$pkgbase-${pkgver}
+  export CFLAGS+=" -std=gnu89"
+  make build
+}
 
 package() {
   cd $srcdir/$pkgbase-${pkgver}
-  sed -i 's/python2/python3/g' Makefile unit-tests/Makefile
-  export CFLAGS+=" -std=gnu89"
-  make build
   python src/setup.py install --root=$pkgdir
-
 }
 
-sha256sums=('44d45d7d8344290c259c989d3af3f614c7837cbd85052d486adfa46a1c777164')
+sha256sums=('44d45d7d8344290c259c989d3af3f614c7837cbd85052d486adfa46a1c777164'
+            '46413b661e5394b65a4be50bd46102aaa4214e3d6e993613f53e58e98e2f602c')

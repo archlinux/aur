@@ -13,6 +13,8 @@ pkgbase = python-dmidecode
 	depends = libxml2
 	depends = python-lxml
 	source = https://github.com/nima/python-dmidecode/archive/v3.12.3.tar.gz
+	source = makefile.patch
 	sha256sums = 44d45d7d8344290c259c989d3af3f614c7837cbd85052d486adfa46a1c777164
+	sha256sums = 5d1a97117e586cb36932518e69393cd6b99671a471145ad28bb39e790f59e31b
 
 pkgname = python-dmidecode

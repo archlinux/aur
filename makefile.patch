@@ -1,0 +1,18 @@
+diff '--color=auto' -Naur a/Makefile b/Makefile
+--- a/Makefile	2023-05-28 11:54:23.329023318 +0200
++++ b/Makefile	2023-05-28 12:44:49.660643732 +0200
+@@ -41,10 +41,11 @@
+ PY_BIN  := python3
+ VERSION := $(shell cd src;$(PY_BIN) -c "from setup_common import *; print(get_version());")
+ PACKAGE := python-dmidecode
+-PY_VER  := $(shell $(PY_BIN) -c 'import sys; print("%d.%d"%sys.version_info[0:2])')
++PY_VER  := $(shell $(PY_BIN) -c 'import sys; print("%d%d"%sys.version_info[0:2])')
++PYTH_VER  := $(shell $(PY_BIN) -c 'import sys; print("%d.%d"%sys.version_info[0:2])')
+ PY_MV   := $(shell echo $(PY_VER) | cut -b 1)
+-PY      := python$(PY_VER)
+-SO_PATH := build/lib.linux-$(shell uname -m)-$(PY_VER)
++PY      := python$(PYTH_VER)
++SO_PATH := build/lib.linux-$(shell uname -m)-cpython-$(PY_VER)
+ ifeq ($(PY_MV),2)
+ 	SO  := $(SO_PATH)/dmidecodemod.so
+ else
