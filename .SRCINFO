@@ -1,7 +1,7 @@
 pkgbase = python-ipydatawidgets
 	pkgdesc = A set of widgets to help facilitate reuse of large datasets across widgets
 	pkgver = 4.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vidartf/ipydatawidgets
 	arch = x86_64
 	license = custom:BSD-3-clause
@@ -9,7 +9,7 @@ pkgbase = python-ipydatawidgets
 	checkdepends = python-nbval
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-jupyter_packaging
+	makedepends = python-jupyter-packaging
 	makedepends = python-wheel
 	makedepends = npm
 	makedepends = yarn
