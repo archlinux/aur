@@ -1,0 +1,33 @@
+--- /usr/bin/pyside_tool.py	2023-05-26 15:32:35.000000000 +0000
++++ pyside_tool.py	2023-05-28 00:48:55.000000000 +0000
+@@ -39,7 +39,11 @@
+ def qt_tool_wrapper(qt_tool, args, libexec=False):
+     # Taking care of pyside6-uic, pyside6-rcc, and pyside6-designer
+     # listed as an entrypoint in setup.py
+-    pyside_dir = Path(ref_mod.__file__).resolve().parent
++    if libexec:
++        pyside_dir = Path('/usr/lib/qt6')
++        libexec = False
++    else:
++        pyside_dir = Path('/usr/lib/qt6/bin')
+     if libexec and sys.platform != "win32":
+         exe = pyside_dir / 'Qt' / 'libexec' / qt_tool
+     else:
+@@ -58,7 +62,7 @@
+ 
+ def pyside_script_wrapper(script_name):
+     """Launch a script shipped with PySide."""
+-    script = Path(__file__).resolve().parent / script_name
++    script = Path('/usr/bin') / script_name
+     command = [sys.executable, os.fspath(script)] + sys.argv[1:]
+     sys.exit(subprocess.call(command))
+ 
+@@ -171,7 +175,7 @@
+ 
+ 
+ def genpyi():
+-    pyside_dir = Path(__file__).resolve().parents[1]
++    pyside_dir = Path(sysconfig.get_path('platlib')) / 'PySide6'
+     support = pyside_dir / "support"
+     cmd = support / "generate_pyi.py"
+     command = [sys.executable, os.fspath(cmd)] + sys.argv[1:]
