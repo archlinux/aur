@@ -1,7 +1,7 @@
 pkgbase = opm-common
 	pkgdesc = Common components for OPM, in particular build system (cmake)
 	pkgver = 2023.04
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/OPM/opm-common
 	arch = x86_64
 	license = GPL3
