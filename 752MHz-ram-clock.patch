@@ -1,0 +1,32 @@
+diff --git a/drivers/clk/rockchip/clk_rk3399.c b/drivers/clk/rockchip/clk_rk3399.c
+index eaeac45..659ea8b 100644
+--- a/drivers/clk/rockchip/clk_rk3399.c
++++ b/drivers/clk/rockchip/clk_rk3399.c
+@@ -874,6 +874,14 @@ static ulong rk3399_ddr_set_clk(struct rockchip_cru *cru,
+ 		dpll_cfg = (struct pll_div)
+ 		{.refdiv = 2, .fbdiv = 111, .postdiv1 = 2, .postdiv2 = 1};
+ 		break;
++	case 702 * MHz:
++		dpll_cfg = (struct pll_div)
++		{.refdiv = 2, .fbdiv = 117, .postdiv1 = 2, .postdiv2 = 1};
++		break;
++	case 752 * MHz:
++		dpll_cfg = (struct pll_div)
++		{.refdiv = 1, .fbdiv = 94,  .postdiv1 = 3, .postdiv2 = 1};
++		break;
+ 	case 800 * MHz:
+ 		dpll_cfg = (struct pll_div)
+ 		{.refdiv = 1, .fbdiv = 100, .postdiv1 = 3, .postdiv2 = 1};
+diff --git a/drivers/ram/rockchip/sdram-rk3399-lpddr4-800.inc b/drivers/ram/rockchip/sdram-rk3399-lpddr4-800.inc
+index 7d11b4c..b59a11c 100644
+--- a/drivers/ram/rockchip/sdram-rk3399-lpddr4-800.inc
++++ b/drivers/ram/rockchip/sdram-rk3399-lpddr4-800.inc
+@@ -74,7 +74,7 @@
+ 		}
+ 	},
+ 	{
+-		.ddr_freq = 800 * MHz,
++		.ddr_freq = 752 * MHz,
+ 		.dramtype = LPDDR4,
+ 		.num_channels = 2,
+ 		.stride = 13,

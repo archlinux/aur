@@ -1,0 +1,25 @@
+flash_uboot() {
+  echo "A new U-Boot version needs to be flashed onto /dev/mmcblk2."
+  echo "If you need to flash to a different device (for example /dev/mmcblk1), press 'n' and modify the commands printed."
+  echo "Do you want to do this now? [y|N]"
+  read -r shouldwe
+  if [[ $shouldwe =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    dd if=/usr/share/uboot/idbloader.img of=/dev/mmcblk2 seek=64 conv=notrunc
+    dd if=/usr/share/uboot/u-boot.itb of=/dev/mmcblk2 seek=16384 conv=notrunc
+  else
+    echo "You can do this later by running:"
+    echo "# dd if=/usr/share/uboot/idbloader.img of=/dev/mmcblk2 seek=64 conv=notrunc"
+    echo "# dd if=/usr/share/uboot/u-boot.itb of=/dev/mmcblk2 seek=16384 conv=notrunc"
+  fi
+}
+
+## arg 1:  the new package version
+post_install() {
+  flash_uboot
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  flash_uboot
+}
