@@ -1,0 +1,6 @@
+/*
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
+!/0001-Add-missing-rebinding-trait-to-TaggedAllocator.patch
+!/translations-location.patch

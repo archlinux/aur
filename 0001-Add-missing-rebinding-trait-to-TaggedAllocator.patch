@@ -1,0 +1,34 @@
+From 88bffeef89aa1c691cd57f82a94669923a449e89 Mon Sep 17 00:00:00 2001
+From: Christopher Wellons <wellons@nullprogram.com>
+Date: Wed, 26 Apr 2023 17:23:32 -0400
+Subject: [PATCH] Add missing rebinding trait to TaggedAllocator
+
+GCC 13 checks for this trait, and Cppcheck cannot be compiled without
+it. See: https://gcc.gnu.org/gcc-13/porting_to.html#alloc-rebind
+---
+ lib/smallvector.h | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/lib/smallvector.h b/lib/smallvector.h
+index 42c45a173..a3c127a95 100644
+--- a/lib/smallvector.h
++++ b/lib/smallvector.h
+@@ -41,6 +41,15 @@ struct TaggedAllocator : std::allocator<T>
+     TaggedAllocator(Ts&&... ts)
+         : std::allocator<T>(std::forward<Ts>(ts)...)
+     {}
++
++    template<class U>
++    TaggedAllocator(const TaggedAllocator<U, N>);
++
++    template<class U>
++    struct rebind
++    {
++        using other = TaggedAllocator<U, N>;
++    };
+ };
+ 
+ template<typename T, std::size_t N = DefaultSmallVectorSize>
+-- 
+2.40.1
+
