@@ -1,7 +1,7 @@
 pkgbase = python-fenics-dolfinx
 	pkgdesc = Next generation FEniCS problem solving environment (python interface)
 	pkgver = 0.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/FEniCS/dolfinx
 	arch = x86_64
 	license = LGPL3
