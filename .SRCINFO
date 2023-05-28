@@ -1,0 +1,24 @@
+pkgbase = python-metadetect
+	pkgdesc = Combining detection and metacalibration
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/esheldon/metadetect
+	arch = any
+	license = GPL
+	checkdepends = python-pytest
+	checkdepends = python-tqdm
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-galsim
+	depends = python-fitsio
+	depends = python-esutil
+	depends = python-sep
+	depends = python-ngmix
+	depends = python-meds
+	depends = python-sxdes
+	source = metadetect-0.12.0.tar.gz::https://github.com/esheldon/metadetect/archive/0.12.0.tar.gz
+	sha512sums = a9449442cf3efb1f6cbc8873c65573971d54d421b4a96fcd4766ecc7fcd7f436829ff725f3197d5535f1916947008d0e708b85d7efa0bbefc37465ecfdeb1328
+
+pkgname = python-metadetect
