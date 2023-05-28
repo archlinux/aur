@@ -2,20 +2,21 @@
 # Contributor: Gaël Donval <gdonval+aur at google mail>
 _base=pytest-selenium
 pkgname=python-${_base}
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="pytest plugin for Selenium"
 arch=(any)
 url="https://github.com/pytest-dev/${_base}"
 license=(MPL2)
 depends=(python-pytest-base-url python-pytest-html python-pytest-variables python-selenium python-tenacity)
-makedepends=(python-build python-installer python-poetry-core)
+makedepends=(python-build python-installer python-hatch-vcs)
 checkdepends=(python-pytest-localserver python-pytest-xdist python-pytest-mock python-py chromedriver) # geckodriver
-source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('9984109b5fecfced94485ec3b69e6ac57214b1a4c19c58c536743b81cee231d05f7be5257ba2055162b31d641e63814fe9e6f05821e531cb4c53c8495eb0b462')
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
+sha512sums=('6347a365261596ee88c733e8acb06c9a94efc9f1c391ac153977a030623a0d741c6d08fc1f348c2b5466d3f875a52ebca32deec2421ed3ea53b81d6896ef36c9')
 
 build() {
   cd ${_base}-${pkgver}
+  export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
@@ -29,10 +30,5 @@ check() {
 package() {
   cd ${_base}-${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
-
-  # Symlink license file
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  install -d ${pkgdir}/usr/share/licenses/${pkgname}
-  ln -s "${site_packages}/${_base}-${pkgver}.dist-info/LICENSE" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
