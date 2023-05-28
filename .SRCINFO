@@ -1,7 +1,7 @@
 pkgbase = dune-mmesh
 	pkgdesc = MMesh is a grid implementation based on CGAL triangulations
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dune-project.org/modules/dune-mmesh
 	arch = x86_64
 	license = GPL3
