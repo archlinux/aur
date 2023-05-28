@@ -4,7 +4,7 @@
 
 pkgname=gsasl-ntlm
 _pkgname=gsasl
-pkgver=2.0.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Simple Authentication and Security Layer framework and a few common SASL mechanisms - NTLM support"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('gnutls' 'libidn' 'krb5' 'libgcrypt' 'libntlm')
 provides=('gsasl')
 conflicts=('gsasl')
 source=(https://ftp.gnu.org/gnu/gsasl/${_pkgname}-${pkgver}.tar.gz)
-sha512sums=('b7c4e3dfdaa50eaba38f3c0914dedb4bc689d1226fcf162e5bfb3942fa6ce1e96405715a747adca78150709f34830f699e9f995f04ce586cd3d0c14b275910e6')
+sha512sums=('0ae318a8616fe675e9718a3f04f33731034f9a7ba03d83ccb1a72954ded54ced35dc7c7e173fdcb6fa0f0813f8891c6cbcedf8bf70b37d00b8ec512eb9f07f5f')
 
 build() {
   cd ${_pkgname}-${pkgver}
