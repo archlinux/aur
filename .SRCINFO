@@ -1,0 +1,17 @@
+pkgbase = vimcat
+	pkgdesc = A `cat` that uses vim's syntax highlighting
+	pkgver = 1.1.1
+	pkgrel = 1
+	arch = any
+	license = BSD
+	makedepends = make
+	makedepends = rgb.txt
+	depends = vim
+	depends = bash
+	source = vimcat-1.1.1-1.tar.gz::https://github.com/ctrlcctrlv/vimcat/archive/refs/tags/v1.1.1.tar.gz
+	source = vimcat-1.1.1-1.tar.gz.sig::https://github.com/ctrlcctrlv/vimcat/releases/download/v1.1.1/vimcat-1.1.1-1.tar.gz.sig
+	validpgpkeys = 98F28F767470129FBE3B054CE2154DD1A1C77B8B
+	sha256sums = bf194d0b8293e941fe331de2033612321aa5ffb2bae34072f352d9bb8c868441
+	sha256sums = SKIP
+
+pkgname = vimcat
