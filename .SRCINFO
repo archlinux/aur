@@ -1,0 +1,17 @@
+pkgbase = python-scrobblez
+	pkgdesc = Customizable last.fm scrobbler via MPRIS 2
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/YodaEmbedding/scrobblez
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-metadata_filter
+	depends = python-mpris2
+	depends = python-pylast
+	depends = python-pyxdg
+	source = https://files.pythonhosted.org/packages/1e/91/b72873b29c8ae23113239b2f6201626c19d578b632bc11be683ac10ac7c0/scrobblez-0.1.1.tar.gz
+	sha256sums = 681e3a48036a49bde92f5d63ed6b4b7085ed64241c58834ae08c6bb6169bd87d
+
+pkgname = python-scrobblez
