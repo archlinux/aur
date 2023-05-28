@@ -1,7 +1,7 @@
 # Maintainer: Paul Irofti <paul@irofti.net>
 _pkgname=grpcio-testing
 pkgname='python-grpcio-testing'
-pkgver=1.36.1
+pkgver=1.54.2
 pkgrel=1
 pkgdesc="Testing utilities for gRPC Python"
 arch=('any')
@@ -10,7 +10,7 @@ license=('Apache' )
 depends=('python' 'python-grpcio' 'python-protobuf')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/g/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('6b81751325ad8b3f794182f004adbb28f8d5d7a71ba6c3486c284b178c0d2249')
+sha256sums=('a8230e8d27deede1885b2a264cb88bacbaedfc67a498b76530ed959cf8a1808d')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
