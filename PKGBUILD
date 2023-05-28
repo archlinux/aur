@@ -2,7 +2,7 @@
 
 pkgname=python-fitsio
 _pkgname=fitsio
-pkgver=1.1.8
+pkgver=1.1.9
 pkgrel=1
 epoch=
 pkgdesc="A python package for FITS input/output wrapping cfitsio"
@@ -22,7 +22,7 @@ options=()
 install=
 changelog=
 source=(https://github.com/esheldon/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz)
-sha1sums=('3f2479f04f05bdfdfacd46307438110d64d4c049')
+sha1sums=('d8a6de6cf73990c8ec187018fab57b874929e3d3')
 noextract=()
 
 
