@@ -1,7 +1,7 @@
 # Maintainer: Giovanni Harting <539@idlegandalf.com>
 
 pkgname=wljoywake
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc='Wayland idle inhibit on joystick input'
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(GPL2)
 depends=(wayland)
 makedepends=(meson wayland-protocols)
 source=("https://github.com/nowrep/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('795a426fc4041ad87fe51cbf6286f951cb4b0731292f9c34e9ed4eaed5adf2fe037638e86cc191797e604e798db467fafe1ea11eab8655d3dce2436fbd39b377')
+b2sums=('3086de8b5e2d25dea9fc01e88297d4f4e67c14bd4b914e721cf3435197e6893a171d89acc8e4a90457b3100b968a8dc11f992d49bda2f17375a3049d39999529')
 
 build() {
   arch-meson wljoywake-$pkgver build
