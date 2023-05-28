@@ -1,4 +1,5 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-pip-api
 pkgver=0.0.30
