@@ -3,7 +3,7 @@
 
 _pkgname=gns3-server
 pkgname=$_pkgname-git
-pkgver=v2.2.33.1.r4.g3634cc83
+pkgver=v2.2.39.r24.g25c03b78
 pkgrel=1
 pkgdesc='GNS3 network simulator, Server package'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ license=('GPL3')
 groups=('gns3')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-makedepends=('git' 'python-setuptools')
+makedepends=('git')
 depends=(
     'busybox'
     'python-aiofiles'
@@ -21,12 +21,14 @@ depends=(
     'python-async_generator'
     'python-async-timeout'
     'python-distro'
+    'python-importlib_resources'
     'python-jinja'
     'python-jsonschema'
     'python-prompt_toolkit'
     'python-psutil'
     'python-py-cpuinfo'
     'python-sentry_sdk'
+    'python-setuptools'
     'python-yarl'
 )
 optdepends=(
@@ -39,9 +41,11 @@ optdepends=(
 )
 install="$_pkgname.install"
 source=("$_pkgname::git+https://github.com/GNS3/$_pkgname.git"
-        "$_pkgname@.service")
+        "$_pkgname@.service"
+        requirements.txt)
 sha256sums=('SKIP'
-            'b43f0ead963a06e613d3303d2c66372b57f46c750b3d6df20eb99c11078de65f')
+            'b43f0ead963a06e613d3303d2c66372b57f46c750b3d6df20eb99c11078de65f'
+            'e4ef269501f66d0897c0625e609929d436eef6c7c0d14c5ea68ed616d9ab24be')
 
 pkgver() {
     cd "$_pkgname"
@@ -51,15 +55,7 @@ pkgver() {
 prepare() {
     cd "$_pkgname"
     # Arch usually has the latest versions. Patch requirements to allow them.
-    sed -i \
-        -e 's|^aiohttp==3\.7\.4.*|aiohttp>=3.7.4|' \
-        -e 's|^aiofiles==0\.7\.0$|aiofiles>=0.7.0|' \
-        -e 's|^Jinja2==3\.0\.1$|Jinja2>=3.0.1|' \
-        -e 's|^sentry-sdk==1\.1\.0$|sentry-sdk>=1.1.0|' \
-        -e 's|^psutil==5\.8\.0$|psutil>=5.8.0|' \
-        -e 's|^distro==1\.5\.0$|distro>=1.5.0|' \
-        -e 's|^py-cpuinfo==8\.0\.0$|py-cpuinfo>=8.0.0|' \
-        requirements.txt
+    cp "$srcdir"/requirements.txt .
 }
 
 build() {
