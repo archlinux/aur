@@ -1,0 +1,19 @@
+pkgbase = python-apricot-select
+	pkgdesc = A package for submodular selection of representative sets for machine learning models
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/jmschrei/apricot-select
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-scipy
+	depends = python-numba
+	depends = python-tqdm
+	depends = python-scikit-learn
+	source = https://pypi.org/packages/source/a/apricot-select/apricot-select-0.6.1.tar.gz
+	sha512sums = cc445cda704059d0666140f1882e49264e524719f4eb0f9807ba97d34be85864ecf919691175282e3fce3411ed5e1ba4ffee9ab6356e5ca7adc812c1fc117dc3
+
+pkgname = python-apricot-select
