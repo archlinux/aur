@@ -5,14 +5,13 @@
 pkgname=simple_backup
 pkgdesc='Simple backup script that uses rsync to copy files'
 pkgver=3.2.5
-pkgrel=2
+pkgrel=3
 epoch=1
 url="https://github.com/Fuxino/${pkgname}"
 install=simple_backup.install
 arch=('any')
 license=('GPL3')
-makedepends=('git'
-             'python-setuptools'
+makedepends=('python-setuptools'
              'python-build'
              'python-installer'
              'python-wheel')
