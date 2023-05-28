@@ -8,9 +8,9 @@ User=minisatip
 Group=minisatip
 Type=simple
 AmbientCapabilities=CAP_NET_BIND_SERVICE
-RuntimeDirectory=libmcli
 EnvironmentFile=-/etc/conf.d/minisatip
 ExecStart=/usr/bin/minisatip -f -R /usr/share/minisatip/html $SERVER_ARGS
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target

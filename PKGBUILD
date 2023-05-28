@@ -3,21 +3,21 @@
 
 pkgname='minisatip'
 pkgdesc='SAT>IP server, tested with DVB-S, DVB-S2, DVB-T, DVB-T2, DVB-C, DVB-C2, ATSC and ISDB-T cards'
-pkgver=1.2.72
+pkgver=1.2.79
 pkgrel=1
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://minisatip.org'
 license=('GPL2')
 conflicts=('minisatip-git')
-depends=('libdvbcsa' 'openssl' 'libmcli')
+depends=('libdvbcsa' 'openssl' 'libnetceiver')
 optdepends=('oscam: channels descrambling')
 backup=('etc/conf.d/minisatip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/catalinii/minisatip/archive/v${pkgver}.tar.gz"
         'minisatip.service'
         'minisatip.sysuser'
         'minisatip.conf')
-sha256sums=('bde087b3cafd8b631f71ec70f15677b5ecaa758450b4e82e29c5cb2c6b12169c'
-            '36631c2467b3486cf5f4d2fd3f9374959ac0aa89b0e6443a3883aa62440d682a'
+sha256sums=('30ff724e364ef8a2afb4f0332c4fe8a4f07101039536c7114e2666a8cf8e5fd1'
+            '57f0ea656c4a2bcf6199e2c4c4048ddcdbdb84d1d73849ee0657c4301b6bc255'
             '7f4e7fde7ded632f88b30b7cd0481c78309f8191b40369ae323cbb7240fdc199'
             'f7a28ad30d30c68ef54ba65cc562ce0d9a131f0ee2be20071cd93159f196946f')
 
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  ./configure --with-mcli=/usr/include/libmcli
+  ./configure --with-mcli=/usr/include/libnetceiver
   make MINOR=${pkgver##*.}
 }
 
