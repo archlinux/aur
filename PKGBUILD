@@ -3,9 +3,9 @@
 
 pkgname=katago-avx2
 _pkgname=KataGo
-pkgver=1.12.4
-pkgrel=3
-pkgdesc='AlphaZero-like open source Go bot, built for AVX2'
+pkgver=1.13.2
+pkgrel=1
+pkgdesc='Strong open-source self-play-trained Go engine'
 url='https://github.com/lightvector/KataGo'
 provides=('katago')
 arch=('x86_64')
