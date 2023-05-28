@@ -3,12 +3,12 @@ _extname=dbus
 _pkgname=php-$_extname
 pkgname=$_pkgname-git
 pkgver=r90.b147624
-pkgrel=1
+pkgrel=2
 pkgdesc="Extension for interaction with DBUS busses"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/derickr/pecl-dbus"
 license=('PHP')
-depends=('php')
+depends=('glibc' 'php')
 makedepends=('dbus' 'git' 'libxml2')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
