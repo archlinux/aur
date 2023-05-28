@@ -1,0 +1,30 @@
+--- src/js_norm/js_identifier_ctx.h	2023-05-07 00:46:24.000000000 +0530
++++ src/js_norm/js_identifier_ctx.h	2023-05-07 20:19:04.069501050 +0530
+@@ -25,6 +25,7 @@
+ #include <unordered_map>
+ #include <unordered_set>
+ #include <vector>
++#include <cstdint>
+ 
+ namespace jsn
+ {
+--- src/packet_io/sfdaq_config.h	2023-05-24 09:05:32.765835939 +0530
++++ src/packet_io/sfdaq_config.h	2023-05-24 09:06:10.796162609 +0530
+@@ -23,6 +23,7 @@
+ 
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ using DaqVar = std::pair<std::string, std::string>;
+ using DaqVarList = std::vector<DaqVar>;
+--- src/service_inspectors/wizard/magic.h.amm	2023-05-24 09:16:41.121404348 +0530
++++ src/service_inspectors/wizard/magic.h	2023-05-24 09:17:13.008321620 +0530
+@@ -23,6 +23,7 @@
+ #include <cassert>
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ class MagicBook;
+ 

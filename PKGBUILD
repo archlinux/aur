@@ -10,7 +10,7 @@
 pkgname=snort
 _pkgname=snort3
 _openappid=26425
-pkgver=3.1.58.0
+pkgver=3.1.62.0
 pkgrel=1
 pkgdesc='A lightweight network IDS /IPS with OpenAppID support.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64' 'arm')
@@ -30,11 +30,17 @@ backup=('etc/snort/snort.lua'
 install='snort.install'
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/snort3/snort3/archive/refs/tags/${pkgver}.tar.gz"
   "snort-openappid-${_openappid}.tar.gz::https://snort.org/downloads/openappid/${_openappid}"
+  'cstdint.patch'
   'local.lua'
   'snort.logrotate'
   'snort.sysusers'
   'snort.tmpfiles'
   'snort.service')
+
+prepare() {
+  cd "${_pkgname}-${pkgver}"
+  patch -p0 < "${srcdir}"/cstdint.patch
+}
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -65,8 +71,9 @@ package() {
 
 }
 
-sha256sums=('c2b37899db42e2db9a05089abbe0ba48633c6c48496d2c64565500b4f9061d78'
+sha256sums=('1f18936da65d52702f75e5b9ffe2cfbc9c9373201801ad275f6e636451f7e06f'
             '8513877ce2264bb22119d911c2cf11f73735c866e2ca0d061c35eef6740d51f9'
+            '502fbfe78bbacc8d6d3384b70b8e6f0343c537532360cee755d7be8f30eab39c'
             '2e60695f90e7cb3f1faad5aa90b3ad351f2175268fb31d6fa9601f11fca22d1c'
             'a8a7684a676da5cd55c2b5ab012dac3d14c5a6c62f6e37c4913ba1dbe506088e'
             'ae3245c5de527fb487c459f2f4a9c78803ae6341e9c81b9a404277679cdee051'
