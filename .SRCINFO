@@ -1,7 +1,7 @@
 pkgbase = noto-fonts-main
 	pkgdesc = Google Noto for Latin, Greek, Cyrillic scripts.
 	pkgver = 20230524
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = https://fonts.google.com/noto
 	arch = any
@@ -10,6 +10,6 @@ pkgbase = noto-fonts-main
 	conflicts = noto-fonts
 	conflicts = noto-fonts-extra
 	source = https://www.markusweimar.de/public/noto-fonts-main-20230524.tar.zst
-	sha256sums = 9c8fbeca0b0c774a1db02099c7b7c0a99749bab3de41e657d88993dfbc425069
+	sha256sums = b618391d9ce0b1fd4f2d3d953229fff991a67b48b74651711332688c6f8e12c2
 
 pkgname = noto-fonts-main
