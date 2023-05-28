@@ -2,7 +2,7 @@
 
 pkgname=python-numpy-quaternion
 pkgver=2022.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Add built-in support for quaternions to NumPy"
 url="https://quaternion.readthedocs.io/"
 arch=('x86_64')
@@ -12,8 +12,7 @@ optdepends=(
   "python-numba: speedup of numerical functions"
 )
 makedepends=(
-  'python-build' 'python-installer' 'python-setuptools'
-  'python-wheel' 'python-oldest-supported-numpy'
+  'python-build' 'python-installer' 'python-setuptools' 'python-wheel'
 )
 checkdepends=('python-pytest' 'python-pytest-cov')
 
@@ -24,6 +23,11 @@ source=(
 sha256sums=(
   'ca37256f544a7e587ab08c1841a30e34aa7b85c7c9663527c61d77fbcad9dda7'
 )
+
+prepare() {
+    cd "$_pypi-$pkgver"
+    sed -i -e 's/, "oldest-supported-numpy"//' pyproject.toml
+}
 
 build() {
     cd "$_pypi-$pkgver"
