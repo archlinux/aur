@@ -1,0 +1,21 @@
+From fbda175be3b93458ec06c9a1db507b2855e4caa1 Mon Sep 17 00:00:00 2001
+From: Seymur Bagirov <megadestroyer230@gmail.com>
+Date: Sat, 8 Apr 2023 13:24:52 +0400
+Subject: [PATCH] add cstdio to fix build on openSUSE TW
+
+---
+ src/backend_scene/third_party/vk_mem_alloc.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/backend_scene/third_party/vk_mem_alloc.h b/src/backend_scene/third_party/vk_mem_alloc.h
+index 0d01d517..6a8f3e31 100644
+--- a/src/backend_scene/third_party/vk_mem_alloc.h
++++ b/src/backend_scene/third_party/vk_mem_alloc.h
+@@ -2559,6 +2559,7 @@ remove them if not needed.
+     #include <cassert> // for assert
+     #include <algorithm> // for min, max
+     #include <mutex>
++    #include <cstdio>
+ #else
+     #include VMA_CONFIGURATION_USER_INCLUDES_H
+ #endif

@@ -1,7 +1,7 @@
 pkgbase = plasma5-wallpapers-wallpaper-engine
 	pkgdesc = A KDE wallpaper plugin integrating wallpaper engine
 	pkgver = 0.5.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/catsout/wallpaper-engine-kde-plugin
 	arch = x86_64
 	license = GPL2
@@ -18,7 +18,9 @@ pkgbase = plasma5-wallpapers-wallpaper-engine
 	optdepends = mpv: alternative video backend
 	source = https://github.com/catsout/wallpaper-engine-kde-plugin/archive/v0.5.4/wallpaper-engine-kde-plugin-0.5.4.tar.gz
 	source = https://github.com/KhronosGroup/glslang/archive/11.11.0/glslang-11.11.0.tar.gz
+	source = fbda175.patch
 	sha256sums = 83354734f7ea36e7077206506dd05f0e6877eb51294b820fdbdc398255c6f803
 	sha256sums = 26c216c3062512c018cbdd752224b8dad703b7e5bb90bf338ba2dbb5d4f11438
+	sha256sums = 1a7e937ab126b4d42ac750b6ab997e604963aeed7c8177888cc37a71fafda07e
 
 pkgname = plasma5-wallpapers-wallpaper-engine
