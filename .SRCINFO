@@ -1,7 +1,7 @@
 pkgbase = python-ninja
 	pkgdesc = Ninja is a small build system with a focus on speed
 	pkgver = 1.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scikit-build/ninja-python-distributions
 	arch = any
 	license = Apache
