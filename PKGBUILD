@@ -1,9 +1,10 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
+# Maintainer: Christian Heusel <gromit@archlinux.org>
 # Contributor: Dhananjay Balan <mail@dbalan.in>
 
 pkgname=minio-client
-pkgver=2023.04.12
-_timever=T02:21:51Z
+pkgver=2023.05.26
+_timever=T23:31:54Z
 _pkgver="${pkgver//./-}${_timever//:/-}"
 pkgrel=1
 pkgdesc='Replacement for ls, cp, mkdir, diff and rsync commands for filesystems and object storage'
