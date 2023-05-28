@@ -1,7 +1,7 @@
 # Maintainer: Kubescape Maintainers <cncf hyphen kubescape hyphen maintainers at lists dot cncf dot io>
 
 pkgname=kubescape
-pkgver=2.3.3
+pkgver=2.3.4
 _git2gover=33.0.9
 _libgit2ver=1.3.0
 pkgrel=0
@@ -16,7 +16,7 @@ conflicts=('kubescape-bin')
 source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
   "https://github.com/libgit2/git2go/archive/v${_git2gover}/git2go-${_git2gover}.tar.gz"
   "https://github.com/libgit2/libgit2/archive/v${_libgit2ver}/libgit2-${_libgit2ver}.tar.gz")
-sha512sums=('95d1a5a5385861d1065e458e8cb692a1e39478ef498ad6b2d6754ad50f8d8158ced59d949a01ff27900994c68371a2853e8525b74db06a0d929f61d0b9ba7bdb'
+sha512sums=('f0eda969e7c7cd000f8916f2e472ba32966998e9e89eb980806bcebe356a15c197c9d6d5ff6624000e46a68bfaa9e008e0095be073087afb63f409bfbfe4c329'
   '07d13cfd11396d2c36bc69ef4177e4962596bf92da3604f035a85940f98ae0d3614718b88fc0631c4c7007841a51deebd7da8c570c1c637d9fb5905995837519'
   '842a648a67ff23ba9e6bf14b706ba9081164866e14000ebf3858442b7046925f05e1dbf00a7d740dc4bf32280e260730e23a9492e817094aa90736ae335ee76e')
 prepare() {
