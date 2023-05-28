@@ -30,9 +30,9 @@ pkgver() {
 prepare() {
 	cd "$pkgname"
 
-    sed -i 's/folder_i18n/folder-color/' ./po/POTFILES.in
-    sed -i 's/folder_path/nautilus-extension/' ./po/POTFILES.in
-    sed -i 's/folder_i18n/folder-color/' ./nautilus-extension/folder-color.py
+	sed -i 's/folder_i18n/folder-color/' ./po/POTFILES.in
+	sed -i 's/folder_path/nautilus-extension/' ./po/POTFILES.in
+	sed -i 's/folder_i18n/folder-color/' ./nautilus-extension/folder-color.py
 }
 
 package() {
