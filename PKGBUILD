@@ -3,7 +3,7 @@
 pkgname=fluent-kde-theme-git
 _themeName=Fluent
 _gitname="$_themeName-kde"
-pkgver=r91.d7576a7
+pkgver=r94.83d5cc2
 pkgrel=1
 pkgdesc="Fluent design theme for kde plasma"
 arch=('any')
@@ -25,6 +25,8 @@ package() {
    mkdir -p "${pkgdir}/usr/share/color-schemes"
    mkdir -p "${pkgdir}/usr/share/plasma/desktoptheme"
    mkdir -p "${pkgdir}/usr/share/plasma/look-and-feel"
+   mkdir -p "${pkgdir}/usr/share/plasma/layout-templates"
+   mkdir -p "${pkgdir}/usr/share/plasma/plasmoids"
    mkdir -p "${pkgdir}/usr/share/Kvantum"
    mkdir -p "${pkgdir}/usr/share/sddm/themes"
    mkdir -p "${pkgdir}/usr/share/wallpapers"
@@ -36,11 +38,15 @@ package() {
    # color scheme
    cp -r "${srcdir}/${_gitname}/color-schemes"/* "${pkgdir}/usr/share/color-schemes"
    # desktop theme
-   cp -r "${srcdir}/${_gitname}/plasma/desktoptheme"/${_themeName}* "${pkgdir}/usr/share/plasma/desktoptheme"
+   cp -r "${srcdir}/${_gitname}/plasma/desktoptheme"/* "${pkgdir}/usr/share/plasma/desktoptheme"
    # look and feel
    cp -r "${srcdir}/${_gitname}/plasma/look-and-feel"/* "${pkgdir}/usr/share/plasma/look-and-feel"
+   # layout-templates
+   cp -r "${srcdir}/${_gitname}/plasma/layout-templates"/* "${pkgdir}/usr/share/plasma/layout-templates"
+   # plasmoids
+   cp -r "${srcdir}/${_gitname}/plasma/plasmoids"/* "${pkgdir}/usr/share/plasma/plasmoids"
    # wallpaper
-   cp -r "${srcdir}/${_gitname}/wallpaper/${_themeName}" "${pkgdir}/usr/share/wallpapers"
+   cp -r "${srcdir}/${_gitname}/wallpaper"/* "${pkgdir}/usr/share/wallpapers/"
    # sddm
    cp -r "${srcdir}/${_gitname}/sddm/${_themeName}" "${pkgdir}/usr/share/sddm/themes"
 } 
