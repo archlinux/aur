@@ -1,0 +1,24 @@
+pkgbase = power-menu-bin
+	pkgdesc = A power menu for window managers
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/abhiyandhakal/power-menu.git
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = webkit2gtk
+	depends = base-devel
+	depends = curl
+	depends = wget
+	depends = openssl
+	depends = appmenu-gtk-module
+	depends = gtk3
+	depends = libappindicator-gtk3
+	depends = librsvg
+	depends = libvips
+	optdepends = xorg-server
+	provides = power-menu
+	source = https://github.com/abhiyandhakal/power-menu/releases/download/v0.1.1/power-menu
+	md5sums = SKIP
+
+pkgname = power-menu-bin
