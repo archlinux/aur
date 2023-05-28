@@ -5,7 +5,7 @@ _pkgver_major=3
 _pkgver_minor=5
 _pkgver_build=8447
 pkgver=${_pkgver_major}.${_pkgver_minor}.${_pkgver_build}
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced, feature-rich freeware audio player (uses Wine)"
 arch=(i686 x86_64)
 url=https://getmusicbee.com
@@ -18,7 +18,7 @@ source=("https://files1.majorgeeks.com/10afebdbffcd4742c81a3cb0f6ce4092156b4375/
         "https://www.un4seen.com/files/z/2/bass_aac24.zip") #M4A/AAC Support
 sha256sums=('706a8bb4c1b453af0619a28705bc461011f77828aaaecbb67e1f48552addbed9'
             '054502f6dacceeeff10b7ac7511a514307a1e3f187c19f73b5913965c459dc6e'
-            'a67ceda7cf40f394b039e43c814c0013adb6b8a84395cddd21228426463e1cf0'
+            'SKIP'
             '782ec4f3758fc715d29ceab332103266df4000dd413a477901dccb8c9bac2090')
 
 package() {
