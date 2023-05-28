@@ -1,7 +1,7 @@
 # Maintainer: robertfoster; keshavnrj
 
 pkgname=orion-desktop
-pkgver=1.0.4
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A powerful, lightweight, fast BitTorrent client, with beautiful user experience and fastest video and audio streaming capabilities"
 arch=('x86_64')
@@ -14,9 +14,9 @@ depends=(
   'mpv'
 )
 makedepends=('squashfs-tools' 'jq')
-sha256sums=('af88ff0c1f929b852d64bb0d1c35fa644190b150d356e1a51bad6252c28bf7ec'
+sha256sums=( SKIP
             '25f7ceaaec37eb9c287abeb839ba2036738eb363079e321c2bd410fa48301dd6'
-            '71420954985d07f63c8195d5e6ff12c55ac366d99fd3024846bbdc8463af2579'
+            'b6ab9a851b0ce68e22dadc9c93cd004d40633042da5fc3dd1c40b1414a8f9e32'
             '4991a25e728da947d59c31d9a790f2edaf04ae073bd267ea2ffcf519fe12f274')
 
 DLAGENTS+=("snap::${BASH_SOURCE[0]%/*}/snap-dlagent.sh %u %o")
