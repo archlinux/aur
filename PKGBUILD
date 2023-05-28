@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=10.0.rc1.r2.g4140517848
+pkgver=10.1.beta1.r0.g3202f6515c
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -59,14 +59,12 @@ source=(git+https://github.com/sagemath/sage#branch=develop
         sagemath-optional-packages.patch
         latte-count.patch
         test-optional.patch
-        sagemath-linbox-1.7.patch
         sagemath-bliss-0.77.patch
         sagemath-tdlib-0.9.patch)
 sha256sums=('SKIP'
             '8a5b935d2fd8815489713db6497e9d44aefd61e8553e8cd4acc2cb1adf625ccc'
-            'bd188af45ce31579b82407adee8e9bf6033a996f7ea6e328fabca526f31c08ba'
-            '4484bd38b273e7fcc3d54bcd38e1ed3cdade12f3e9dc79235b011ef69e17c10c'
-            'fbc87b62c73d20aa12fced28f5d68dc2b3ec7cc9123be424226321195bf2b3b4'
+            '5cd2f88965d7ebab9dfab6f5c2040d363a4a5ae41230219cc7070b907381da5a'
+            'dab5b12d85ddc023f7aff9d886cff8c4bbde903034aeb47aba21caa46352a91d'
             '1a578528bab7be3970954fdfa033afa69fe753da1bab3f41693b0e05e3c849cd'
             '56a83abecf2ff5a500442adc7a50abbb70006037dd39c39dcdb04b3ca9fb51e2')
 
@@ -79,8 +77,6 @@ prepare(){
   cd sage
 
 # Upstream patches
-# Fix build with linbox 1.7 https://trac.sagemath.org/ticket/32959
-  patch -p1 -i ../sagemath-linbox-1.7.patch
 # Fix build with bliss 0.77 https://trac.sagemath.org/ticket/33010
   patch -p1 -i ../sagemath-bliss-0.77.patch
 

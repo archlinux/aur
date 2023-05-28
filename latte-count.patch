@@ -2,7 +2,7 @@ diff --git a/src/sage/features/latte.py b/src/sage/features/latte.py
 index 63d227fd35..040a5cf1f9 100644
 --- a/src/sage/features/latte.py
 +++ b/src/sage/features/latte.py
-@@ -21,7 +21,7 @@ from . import Executable, Feature, FeatureTestResult
+@@ -34,7 +34,7 @@ from . import Executable, Feature, FeatureTestResult
              sage: isinstance(Latte_count(), Latte_count)
              True
          """
