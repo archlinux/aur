@@ -1,28 +1,36 @@
 #!/bin/bash
 
 PROGRAM_NAME="musicbee"
-
 DIR="$HOME/.$PROGRAM_NAME"
 PREFIX="$DIR/wine"
 
-export export WINEARCH=win32 WINEPREFIX="$PREFIX"
+export WINEARCH=win32
+export WINEPREFIX="$PREFIX"
 
-if [ ! -d "$HOME"/.$PROGRAM_NAME ] ; then
-  mkdir -p "$HOME"/.$PROGRAM_NAME/wine || exit 1
-
-  winetricks -q dotnet48 xmllite gdiplus
-
-  cp -r /usr/share/$PROGRAM_NAME/Configuration.xml "$HOME"/.$PROGRAM_NAME || exit 1
-
-  mkdir -p "$HOME"/.$PROGRAM_NAME/BBplugin "$HOME"/.$PROGRAM_NAME/Codec "$HOME"/.$PROGRAM_NAME/Equaliser "$HOME"/.$PROGRAM_NAME/Localisation "$HOME"/.$PROGRAM_NAME/Plugins "$HOME"/.$PROGRAM_NAME/Skins "$HOME"/.$PROGRAM_NAME/Tooltips
-
-
-  ln -s /usr/share/$PROGRAM_NAME/* "$HOME"/.$PROGRAM_NAME/
-
-  ln -s $PREFIX/drive_c/users/$USER/AppData/Roaming/MusicBee/ $PREFIX/MS_Config
-
-  #echo "WINEPREFIX=$PREFIX winecfg" >| winecfg.sh
-  #chmod +x $PREFIX/winecfg.sh
+# Check if running under Wayland
+if [[ $(pacman -Qs wine-wl-git) && $XDG_SESSION_TYPE == "wayland" ]]; then
+  echo "Wayland support is ENABLED"
+  export DISPLAY=:0
+  export WAYLAND_DISPLAY=wayland-0
+else
+  echo "Wayland support is DISABLED"
 fi
 
-wine "$HOME"/.$PROGRAM_NAME/$PROGRAM_NAME.exe "$@"
+if [[ ! -d "$DIR" ]]; then
+  mkdir -p "$DIR/wine" || exit 1
+
+  winetricks -q dotnet48 xmllite gdiplus || exit 1
+
+  cp -r "/usr/share/$PROGRAM_NAME/Configuration.xml" "$DIR" || exit 1
+
+  directories=("BBplugin" "Codec" "Equaliser" "Localisation" "Plugins" "Skins" "Tooltips")
+  for directory in "${directories[@]}"; do
+    mkdir -p "$DIR/$directory" || exit 1
+  done
+
+  ln -s "/usr/share/$PROGRAM_NAME/"* "$DIR/"
+
+  ln -s "$PREFIX/drive_c/users/$USER/AppData/Roaming/MusicBee/" "$PREFIX/MS_Config"
+fi
+
+wine "$DIR/$PROGRAM_NAME.exe" "$@"
