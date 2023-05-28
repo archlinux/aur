@@ -1,7 +1,7 @@
 pkgbase = discord-rpc-git
 	pkgdesc = Discord Rich Presence library
 	pkgver = 3.4.0.r10.g963aa9f
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/discord/discord-rpc
 	arch = aarch64
 	arch = armv7h
@@ -14,6 +14,7 @@ pkgbase = discord-rpc-git
 	makedepends = git
 	makedepends = rapidjson>=1.1
 	depends = gcc-libs
+	depends = glibc
 	provides = discord-rpc=3.4.0.r10.g963aa9f
 	provides = libdiscord-rpc.so
 	conflicts = discord-rpc

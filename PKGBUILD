@@ -2,12 +2,12 @@
 _pkgname=discord-rpc
 pkgname=$_pkgname-git
 pkgver=3.4.0.r10.g963aa9f
-pkgrel=4
+pkgrel=5
 pkgdesc="Discord Rich Presence library"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/discord/discord-rpc"
 license=('MIT')
-depends=('gcc-libs')
+depends=('gcc-libs' 'glibc')
 makedepends=('cmake' 'git' 'rapidjson>=1.1')
 provides=("$_pkgname=$pkgver" 'libdiscord-rpc.so')
 conflicts=("$_pkgname")
