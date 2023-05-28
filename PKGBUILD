@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Lyashuk <lyashuk.voxx at gmail dot com>
 pkgname=doom2df-editor-qt5
 pkgver=0.667
-pkgrel=4
+pkgrel=5
 pkgdesc="Official map editor for Doom 2D: Forever, qt5 version."
 arch=(x86_64 i686)
 url="https://doom2d.org/"
@@ -57,12 +57,9 @@ prepare(){
 
 build() {
 
-  # Before building the editor, make lang files
+  # Before building the editor, copy lang files
   cd "${srcdir}/d2df-editor/"
-      for lang in "lang/"*".po"; do
-            msguniq "$lang" | msgfmt -o "${lang/.po/.mo}" -
-      done
-  mv -f "lang/"*".mo" "${srcdir}"
+  	cp "lang/"*".lng" "${srcdir}"
 
   # Export environment variable before building
   export D2DF_BUILD_HASH="$(git rev-parse HEAD)"
@@ -82,6 +79,5 @@ package() {
   install -Dm755 Doom2DF_E "${pkgdir}"/usr/bin/Doom2DF_E
   install -Dm644 doom2df-editor.desktop "${pkgdir}"/usr/share/applications/doom2df-editor.desktop
   install -Dm644 doom2df-editor.png "${pkgdir}"/usr/share/pixmaps/doom2df-editor.png
-  install -Dm644 editor.en_US.mo "${pkgdir}"/usr/share/doom2df/data/lang/editor.en_US.mo
-  install -Dm644 editor.ru_RU.mo "${pkgdir}"/usr/share/doom2df/data/lang/editor.ru_RU.mo
+  install -Dm644 editor.ru_RU.lng "${pkgdir}"/usr/share/doom2df/data/lang/editor.ru_RU.lng
 }
