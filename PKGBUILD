@@ -1,20 +1,21 @@
 # Maintainer: Ben Westover <kwestover.kw@gmail.com>
 
 pkgname=reportbug
-pkgver=11.6.0
+pkgver=12.0.0
 pkgrel=1
 pkgdesc="A tool designed to make the reporting of bugs in Debian and derived distributions relatively painless"
 arch=('any')
 url="https://salsa.debian.org/reportbug-team/reportbug"
 license=('custom')
-depends=('python' 'python-debian' 'python-debianbts' 'python-apt' 'apt' 'sensible-utils')
+depends=('python' 'python-debian' 'python-debianbts' 'python-apt' 'apt')
 makedepends=('python-setuptools')
+optdepends=('sensible-utils: default editor')
 conflicts=('python-reportbug')
 provides=('python-reportbug')
 source=("https://salsa.debian.org/$pkgname-team/$pkgname/-/archive/$pkgver/$pkgname-${pkgver}.tar.gz"
         "LICENSE" # Extracted from debian/copyright in the source tree
         )
-sha256sums=('9025a013962dc558527d57c5578e400df960c19e2c209746714633085f8e8424'
+sha256sums=('99da655d6e1b0419fd78d4059c6e53eae0dc73127137d0e4b906861eeea50e48'
             '604ec308937cc86922cd5c64baaf0e63ccbc87b8d8d3a6c1c5b0f2e47182b273')
 
 build() {

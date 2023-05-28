@@ -1,6 +1,6 @@
 pkgbase = reportbug
 	pkgdesc = A tool designed to make the reporting of bugs in Debian and derived distributions relatively painless
-	pkgver = 11.6.0
+	pkgver = 12.0.0
 	pkgrel = 1
 	url = https://salsa.debian.org/reportbug-team/reportbug
 	arch = any
@@ -11,12 +11,12 @@ pkgbase = reportbug
 	depends = python-debianbts
 	depends = python-apt
 	depends = apt
-	depends = sensible-utils
+	optdepends = sensible-utils: default editor
 	provides = python-reportbug
 	conflicts = python-reportbug
-	source = https://salsa.debian.org/reportbug-team/reportbug/-/archive/11.6.0/reportbug-11.6.0.tar.gz
+	source = https://salsa.debian.org/reportbug-team/reportbug/-/archive/12.0.0/reportbug-12.0.0.tar.gz
 	source = LICENSE
-	sha256sums = 9025a013962dc558527d57c5578e400df960c19e2c209746714633085f8e8424
+	sha256sums = 99da655d6e1b0419fd78d4059c6e53eae0dc73127137d0e4b906861eeea50e48
 	sha256sums = 604ec308937cc86922cd5c64baaf0e63ccbc87b8d8d3a6c1c5b0f2e47182b273
 
 pkgname = reportbug
