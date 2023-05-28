@@ -4,14 +4,14 @@
 # Contributor: Dmitry N. Shilov <stormblast@land.ru>
 
 pkgname=luminancehdr-git
-pkgver=2.5.1.r245.g7dc448a6
+pkgver=2.6.0.r298.gf5042b48
 pkgrel=1
 pkgdesc='Open source graphical user interface application that aims to provide a workflow for HDR imaging'
 arch=('x86_64')
 url='http://qtpfsgui.sourceforge.net/'
 license=('GPL')
 depends=('exiv2' 'fftw' 'gsl' 'lcms2' 'libraw' 'openexr' 'qt5-webengine' 'qt5-svg'
-         'qt5-webkit' 'ccfits' 'desktop-file-utils' 'hicolor-icon-theme' 'boost-libs')
+         'ccfits' 'desktop-file-utils' 'hicolor-icon-theme' 'boost-libs')
 makedepends=('git' 'cmake' 'boost' 'eigen' 'gtest' 'qt5-tools' 'patch')
 optdepends=('hugin: align image stack functionality')
 provides=('luminancehdr')

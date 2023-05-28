@@ -20,7 +20,6 @@ pkgbase = luminancehdr-git
 	depends = openexr
 	depends = qt5-webengine
 	depends = qt5-svg
-	depends = qt5-webkit
 	depends = ccfits
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
