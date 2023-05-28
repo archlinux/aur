@@ -3,12 +3,12 @@
 
 _pkgname=SerialTest
 pkgname=serialtest-git
-pkgver=0.3.r0.gf92197e
+pkgver=0.3.1.r3.g272d7d5
 pkgrel=1
 pkgdesc="A cross-platform test tool for serial port, Bluetooth, TCP and UDP."
 arch=('any')
 url="https://github.com/wh201906/SerialTest"
-license=('LGPL-3.0-only')
+license=('GPL-3.0-only')
 provides=(${_pkgname})
 conflicts=(${pkgname%-git})
 #replaces=(${pkgname})
@@ -45,7 +45,7 @@ package() {
 
     install -Dm0644 "${srcdir}/${_pkgname}/pack/aur/io.github.wh201906.serialtest.desktop" "${pkgdir}/usr/share/applications/io.github.wh201906.serialtest.desktop"
 
-    install -Dm0644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm0644 ${srcdir}/${_pkgname}/LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm644 "$srcdir/${_pkgname}/src/icon/icon.png" "$pkgdir/usr/share/pixmaps/${pkgname}.png"
 #    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/${_pkgname}/pkg/20-usb-serial.rules" "${pkgdir}/etc/udev/rules.d/20-usb-serial.rules"
 }
