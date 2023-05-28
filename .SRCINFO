@@ -1,6 +1,6 @@
 pkgbase = lightspark
 	pkgdesc = An open source flash player implementation
-	pkgver = 0.8.6.1
+	pkgver = 0.8.7
 	pkgrel = 1
 	url = https://github.com/lightspark/lightspark
 	arch = x86_64
@@ -25,11 +25,10 @@ pkgbase = lightspark
 	depends = pango
 	depends = rtmpdump
 	depends = sdl2
-	depends = sdl2_mixer
 	depends = xz
 	depends = zlib
 	conflicts = pepper-flash
-	source = lightspark-0.8.6.1-1.tar.gz::https://github.com/lightspark/lightspark/archive/0.8.6.1.tar.gz
-	sha512sums = ea54b3d66acfcb12aac271669d550f6aa1709db59d4bcc005479b7be394a4ca30473a993a780c632228eeaad2977d97cdbcadff5cf8abbbf07503f9d56192f31
+	source = lightspark-0.8.7-1.tar.gz::https://github.com/lightspark/lightspark/archive/0.8.7.tar.gz
+	sha512sums = a0207629238054d669710fcb4d6b1904624d4ed8fb19cf822447e55107d6c3596f6e9fb425c14968365a1c8224b7c3a899008428fd69c9714a03a74230e64f2f
 
 pkgname = lightspark
