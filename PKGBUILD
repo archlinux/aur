@@ -6,7 +6,7 @@ pkgname=simple_backup-git
 _pkgname=simple_backup
 pkgdesc='Simple backup script that uses rsync to copy files'
 pkgver=3.2.5.r0.g7684bc4
-pkgrel=1
+pkgrel=2
 url="https://github.com/Fuxino/${_pkgname}"
 install=simple_backup.install
 arch=('any')
@@ -22,6 +22,7 @@ depends=('python'
 optdepends=('python-systemd: use systemd log'
             'python-dbus: for desktop notifications')
 conflicts=('simple_backup')
+provides=('simple_backup')
 source=(git+${url}.git?signed#branch=master)
 validpgpkeys=('7E12BC1FF3B6EDB2CD8053EB981A2B2A3BBF5514')
 sha256sums=('SKIP')
