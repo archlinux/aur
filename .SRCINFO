@@ -1,12 +1,13 @@
 pkgbase = python-sphinx-lint
 	pkgdesc = Check for stylistic and formal issues in .rst and .py files included in the documentation.
 	pkgver = 0.6.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sphinx-contrib/sphinx-lint
 	arch = any
 	license = PSF
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
 	depends = python-regex
