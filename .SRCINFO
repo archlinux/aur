@@ -1,22 +1,21 @@
 pkgbase = python-pomegranate
-	pkgdesc = Pomegranate is a graphical models library for Python, implemented in Cython for speed.
-	pkgver = 0.6.1
+	pkgdesc = A PyTorch implementation of probabilistic models
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = http://pypi.python.org/pypi/pomegranate/
-	arch = i686
+	url = https://github.com/jmschrei/pomegranate
 	arch = x86_64
 	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-nose
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	depends = python
-	depends = cython
+	makedepends = python-wheel
+	depends = python-scikit-learn
+	depends = python-pytorch
+	depends = python-apricot-select
 	depends = python-networkx
-	depends = python-joblib
-	depends = python-numpy
-	depends = python-scipy
-	source = https://pypi.python.org/packages/e4/e1/376a1f6eaa41172f120663dccf4d974db2db5c79216340a1bd009c5e7285/pomegranate-0.6.1.tar.gz
-	source = LICENSE
-	sha256sums = 3a7f004daed0e00e4b4f75000311d55503a9cb4fb06bea2a8262ce1f68245ece
-	sha256sums = 8c335bd762f024a24b8faf505d269a12916c7ff607e8fec2c40470bdec4a58fa
+	source = pomegranate-1.0.0.tar.gz::https://github.com/jmschrei/pomegranate/archive/v1.0.0.tar.gz
+	sha512sums = b40a1804e03b0d858a2f9bfe4da6cf2dae4cb7fd9130464e7560ebfe60ea6371a21d5332ce3428371f044cbdd44da4d80f482771a043e177913a9b318a8242d5
 
 pkgname = python-pomegranate
-
