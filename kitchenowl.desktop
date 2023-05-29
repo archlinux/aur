@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=KitchenOwl
+GenericName=Grocery list and recipe manager
+Comment=KitchenOwl is a smart grocery list and recipe manager
+Exec=/usr/bin/kitchenowl
+Icon=kitchenowl
+Type=Application
+Categories=Utility
