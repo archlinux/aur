@@ -1,7 +1,7 @@
 # Maintainer: Rene Hollander <mail@renehollander.at>
 
 pkgname=python-pylibzfs
-pkgver=22.02.3
+pkgver=22.12.2
 pkgrel=1
 pkgdesc="Python libzfs bindings."
 arch=("x86_64")
@@ -12,7 +12,7 @@ makedepends=("python-setuptools" "cython")
 depends=("zfs-utils" "python")
 
 source=("https://github.com/truenas/py-libzfs/archive/refs/tags/TS-${pkgver}.tar.gz")
-sha512sums=("8ab05e780529d0956963488b6de0a766e605bcfb99b829a842d14b81e4bd6862c1b57bfd927824341006b299da10f6188b48d7a99460bfa21ac617d752f58a40")
+sha512sums=("568100986cec58e0e79d3024fb7d8b6a864e6f67d0f51bd63e16c2c0097d0868e4e7bbf5c63c2541158dec672bebb8285cf2ac3933054216c491b03f39041048")
 
 build() {
     cd "${srcdir}/py-libzfs-TS-${pkgver}"
