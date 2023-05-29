@@ -2,7 +2,7 @@
 # Inspired from the PKGBUILD for vscodium.
 
 pkgname=vscodium-insiders
-pkgver=1.78.0.23095
+pkgver=1.79.0.23149
 pkgrel=1
 pkgdesc="Binary releases of Code Insiders without branding/telemetry/licensing (git build from latest release)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -49,7 +49,7 @@ source=(
 )
 sha256sums=('9d17eb0074bcd7b75ffd8c56718254c96108c01f857570f951d1e9a109269405'
             'ca34047d62b5b433c2039151b9d55674a8aacdd1af57041d54387b76e44cd442'
-            'f4bab104d0fd13742f778c67d78186073469222bc53352be71cfad1edea5637f')
+            'ca28208fea0aacad40f451fb10a12a35770a09f41444fbd215f440e817108ef1')
 
 ###############################################################################
 
@@ -82,11 +82,21 @@ install_node() {
     nvm use
     
     # Check if the correct version of node is being used
-    if [[ "$(node --version)" != "$(cat .nvmrc)" ]]
+    nvmrc_version="$(cat .nvmrc)"
+    if [[ "$nvmrc_version" != "v"* ]]
     then
-    	echo "Using the wrong version of NodeJS! Expected ["$(cat .nvmrc)"] but using ["$(node --version)"]."
+        # Add the v prefix, because it seems to be missing in .nvmrc
+        echo "Configured .nvmrc version is [$nvmrc_version], adding the v prefix before checking if it matches with the node command."
+        nvmrc_version="v$nvmrc_version"
+    fi
+
+    # Now check if the version matches exactly, or at least starts with the same prefix
+    if [[ "$(node --version)" != "$nvmrc_version"* ]]
+    then
+    	echo "Using the wrong version of NodeJS! Expected ["$nvmrc_version"] but using ["$(node --version)"]."
     	exit 1
     fi
+    echo "Installed version of node ["$(node --version)"] matches required version ["$nvmrc_version"], continuing."
 }
 
 build() {
