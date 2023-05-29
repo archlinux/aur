@@ -1,0 +1,17 @@
+pkgbase = hpy
+	pkgdesc = A better C API for Python
+	pkgver = 0.9.0rc2
+	pkgrel = 1
+	url = https://github.com/hpyproject/hpy
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm>=6.0
+	makedepends = python-wheel>=0.34.2
+	depends = python>=3.8
+	depends = python-setuptools>=64.0
+	source = https://files.pythonhosted.org/packages/source/h/hpy/hpy-0.9.0rc2.tar.gz
+	b2sums = 5145a60d664cbdf75e7cc5a326f677e3d19de10c28b91cc45d3d47a8ab6552e756fb37ca923330259cbfae912c6a6e4d37e9328c689fdecf2d5b04966125b859
+
+pkgname = hpy
