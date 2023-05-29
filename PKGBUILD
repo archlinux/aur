@@ -1,7 +1,7 @@
 # Maintainer: Rene Hollander <mail@renehollander.at>
 
 pkgname=prometheus-zfsprom-exporter
-pkgver=1.0.4
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Prometheus exporter for (some) ZFS statistics via zpool iostatus and zfs get space."
 arch=("any")
@@ -12,7 +12,7 @@ depends=("python" "python-prometheus_client" "python-pylibzfs")
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/matusnovak/prometheus-zfs/archive/refs/tags/v${pkgver}.tar.gz"
         prometheus-zfsprom-exporter.service)
-sha512sums=('be29acfe2288af70708fedcc38f5158e3e5fcc46c8f798873833f93dfabd06b86b36fc7014f684bbf7853aa069e362370f1e64afbc0e29e4668583dce27152f7'
+sha512sums=('e7985f550501137f72c48769cbbc450f3ae12b557076eff4a71ee02ad2655411e517ec70cf559ada0ae7abaf5bbdd520f01842c6198541368ef377d35f3c117d'
             'SKIP')
 
 package() {
