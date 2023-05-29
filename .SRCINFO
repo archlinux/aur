@@ -6,6 +6,7 @@ pkgbase = chowbyod-bin
 	arch = x86_64
 	groups = vst3-plugins
 	groups = lv2-plugins
+	groups = clap-plugins
 	groups = pro-audio
 	license = GPL3
 	depends = libglvnd
