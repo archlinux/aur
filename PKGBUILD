@@ -3,8 +3,8 @@
 
 pkgname=ts
 pkgver=1.0.2
-pkgrel=2
-pkgdesc="A Unix batch system where the tasks spooled run one after the other"
+pkgrel=3
+pkgdesc="Task spooler is a Unix batch system where the tasks spooled run one after the other"
 arch=('i686' 'x86_64')
 url="https://viric.name/soft/ts/"
 license=('GPL2')
