@@ -5,6 +5,7 @@ pkgbase = hatt-bin
 	url = https://github.com/FrenchGithubUser/Hatt
 	arch = x86_64
 	license = GPL
+	depends = webkit2gtk
 	provides = hatt
 	conflicts = hatt
 	source = https://raw.githubusercontent.com/FrenchGithubUser/Hatt/main/frontend/public/images/hatt-logo.png
