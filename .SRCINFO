@@ -1,0 +1,17 @@
+pkgbase = xkeropi-git
+	pkgdesc = X68000 emulator
+	pkgver = r271.d7f7053
+	pkgrel = 1
+	url = https://gitlab.com/nekodevteam/xkeropi
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = imake
+	depends = gtk2
+	depends = sdl12-compat
+	provides = xkeropi
+	conflicts = xkeropi
+	source = git+https://gitlab.com/nekodevteam/xkeropi.git
+	sha256sums = SKIP
+
+pkgname = xkeropi-git
