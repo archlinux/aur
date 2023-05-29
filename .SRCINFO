@@ -1,6 +1,6 @@
 pkgbase = teams-for-linux-appimage
 	pkgdesc = Unofficial Microsoft Teams for Linux client
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/IsmaelMartinez/teams-for-linux
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = teams-for-linux-appimage
 	depends = glibc
 	conflicts = teams-for-linux
 	options = !strip
-	source = teams-for-linux-1.1.0.AppImage::https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v1.1.0/teams-for-linux-1.1.0.AppImage
-	sha256sums = 4b92ffb550d91a609a70b49d69c894b2fded977b0f282bf44c0445898b4107be
+	source = teams-for-linux-1.1.1.AppImage::https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v1.1.1/teams-for-linux-1.1.1.AppImage
+	sha256sums = 8a3b337dae8b956492ca181efeb1f456c3f166c9f428c733c09d16479ddccd9a
 
 pkgname = teams-for-linux-appimage
