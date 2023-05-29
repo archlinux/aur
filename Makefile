@@ -4,7 +4,7 @@ DOCKER_CMD = docker run --rm -v $(shell pwd):/home/build/src:Z
 IMG = protonutils-build
 
 container:
-	docker build . -t protonutils-build
+	docker build . -t $(IMG)
 
 build: container
 	$(DOCKER_CMD) $(IMG)
