@@ -4,13 +4,14 @@
 
 pkgname=pdftxt
 pkgver=0.7
-pkgrel=3
-pkgdesc="A simple wrapper around mupdf library to extract text from pdf files."
+pkgrel=4
+pkgdesc="Simple wrapper around libmupdf to extract text from PDF files"
 arch=(i686 x86_64)
 url="https://litcave.rudi.ir"
 license=(BSD)
-depends=(mupdf libmupdf sh)
-makedepends=(mold)
+depends=(freetype2 glibc gumbo-parser harfbuzz jbig2dec libjpeg-turbo openjpeg2 zlib)
+makedepends=(libmupdf mold)
+optdepends=('sh: mupdfgrep')
 install=$pkgname.install
 source=("$url/$pkgname-$pkgver.tar.gz"
         mupdfgrep
@@ -25,7 +26,7 @@ prepare() {
 
 build() {
 	export LDFLAGS+=" -lopenjp2 -lgumbo -lharfbuzz -lfreetype -lz -ljpeg -ljbig2dec"
-	# does not link correctly with as-needed and ld
+	# use mold, because ld does not link correctly with --as-needed
 	mold -run make -C $pkgname-$pkgver
 }
 
