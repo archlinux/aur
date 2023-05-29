@@ -1,17 +1,20 @@
 pkgbase = jdnbtexplorer
-	pkgdesc = A Editor for Minecraft NBT files
-	pkgver = 1.2
+	pkgdesc = An Editor for Minecraft NBT files
+	pkgver = 2.0
 	pkgrel = 1
-	url = https://gitlab.com/JakobDev/jdNBTExplorer
+	url = https://codeberg.org/JakobDev/jdNBTExplorer
 	arch = any
 	license = GPL3
-	makedepends = gendesk
+	makedepends = qt5-tools
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = python-pyqt6
-	depends = python-jdtranslationhelper
 	depends = python-nbt
 	depends = python-setuptools
-	source = jdnbtexplorer-1.2.tar.gz::https://gitlab.com/JakobDev/jdNBTExplorer/-/archive/1.2/jdNBTExplorer-1.2.tar.gz
-	sha256sums = 93ca67a4e3a102628b9e808c05f075acd2004dec1d6acb9784721dcd35a71a2e
+	source = jdnbtexplorer-2.0.tar.gz::https://codeberg.org/JakobDev/jdNBTExplorer/archive/2.0.tar.gz
+	sha256sums = 5a615548edc3c07449903b157c54b8e655804e0d5ae06deebf2586d75809ae0f
 
 pkgname = jdnbtexplorer
