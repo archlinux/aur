@@ -3,11 +3,11 @@
 # Contributor: Giovanni Harting <539@idlegandalf.com>
 
 pkgname=cryptpad
-pkgver=5.2.1
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="Realtime collaborative visual editor with zero knowlege server"
 arch=('any')
-url="https://github.com/xwiki-labs/cryptpad"
+url="https://github.com/$pkgname/$pkgname"
 license=(AGPL3)
 depends=(nodejs)
 makedepends=(bower npm git)
@@ -18,10 +18,10 @@ backup=(etc/webapps/"$pkgname"/config.js
         etc/nginx/sites-available/"$pkgname".conf)
 options=(!strip) # There are no ELF files, no need to strip anything.
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
-        "cryptpad.service"
-        "cryptpad.sysusers"
-        "cryptpad.tmpfiles")
-sha256sums=('945abe5bae0da25a4e2ef8e02730aaa5bb5e5a0b8bfd7a23a09ec38422d7c47f'
+        "$pkgname.service"
+        "$pkgname.sysusers"
+        "$pkgname.tmpfiles")
+sha256sums=('470e75203e7080d19482bacf6216c50ec13070fc7d0ff2e4fc855f57668fb919'
             '792da71f113aa15177a654e08a31dabd9be864ceb42f64d55cc46d18875c475b'
             '999a271d64b75c7c447fdb21486b27463c04679677e57ea9551a3b0429c618f6'
             '986c1a67e5a00b9a766798933f1774995736a0ed345427509bdc522ad71d7e93')
@@ -73,7 +73,7 @@ package() {
     ln -s /var/lib/"$pkgname"/{blob,block,data{,store}} "$pkgdir/usr/share/webapps/$pkgname"
 
     # systemd
-    install -Dm 644 "${srcdir}"/cryptpad.sysusers "${pkgdir}"/usr/lib/sysusers.d/cryptpad.conf
-    install -Dm 644 "${srcdir}"/cryptpad.service "${pkgdir}"/usr/lib/systemd/system/cryptpad.service
-    install -Dm 644 "${srcdir}"/cryptpad.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/cryptpad.conf
+    install -Dm 644 "$srcdir/$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+    install -Dm 644 "$srcdir/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+    install -Dm 644 "$srcdir/$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 }
