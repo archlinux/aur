@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-paperwm-redux-git
 _pkgname=PaperWM
-pkgver=r2109.d31a579
+pkgver=r2120.35e9d00
 pkgrel=1
 pkgdesc="Fork of PaperWM (a gnome scrolling window manager) focused on supporting the latest Gnome release(s) and continually implementing fixes and new features quickly."
 arch=('any')
@@ -21,5 +21,5 @@ pkgver() {
 package() {
   cd "$srcdir/$_pkgname"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  find -type f -exec install -Dm644 {} $pkgdir/usr/share/gnome-shell/extensions/paperwm@paperwm-redux.github.com/{} \;
+  find -type f -not -path '*.git*' -exec install -Dm644 {} $pkgdir/usr/share/gnome-shell/extensions/paperwm@paperwm-redux.github.com/{} \;
 }
