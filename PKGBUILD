@@ -2,7 +2,7 @@
 # Contributor (from 1.0.2): Viliam Ganz <viliam.ganz@gmail.com>
 
 pkgname=offsetexplorer2
-pkgver=2.3
+pkgver=2.3.2
 pkgrel=1
 epoch=
 pkgdesc="The Ultimate UI Tool for Kafka"
@@ -23,7 +23,7 @@ install=
 changelog=
 source=("https://www.kafkatool.com/download2/offsetexplorer.sh")
 noextract=("offsetexplorer.sh")
-md5sums=('c08f741a02bc6cc9328528d278ac23b7')
+md5sums=('4ef4f31042fd375fd412be8b54adaf43')
 validpgpkeys=()
 
 package() {

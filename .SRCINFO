@@ -1,6 +1,6 @@
 pkgbase = offsetexplorer2
 	pkgdesc = The Ultimate UI Tool for Kafka
-	pkgver = 2.3
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = http://www.kafkatool.com
 	arch = x86_64
@@ -10,6 +10,6 @@ pkgbase = offsetexplorer2
 	depends = java-runtime
 	noextract = offsetexplorer.sh
 	source = https://www.kafkatool.com/download2/offsetexplorer.sh
-	md5sums = c08f741a02bc6cc9328528d278ac23b7
+	md5sums = 4ef4f31042fd375fd412be8b54adaf43
 
 pkgname = offsetexplorer2
