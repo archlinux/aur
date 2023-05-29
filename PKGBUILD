@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="niconizer-bin"
-pkgver=2.0.98
+pkgver=2.0.99
 pkgrel=1
 pkgdesc="A desktop application that displays plain text, images, and any other HTML content on the screen."
 arch=("x86_64")
@@ -12,7 +12,7 @@ conflicts=("${pkgname%-bin}")
 options=(!strip)
 source=("${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64.zip"
     "${pkgname%-bin}.png::https://raw.githubusercontent.com/matzkoh/niconizer/master/icon/icon_512x512.png")
-sha256sums=('c607b69e97d9d5a3d74d05f733ccd5353c61545ac275e8ba722375f4d82233b8'
+sha256sums=('6f9a4891235daba7043efc34a096f9e5af7d6119a2372cc9bb0deebc596c80a0'
             '7c820610080a8d47f26c555d498ae391c89f2848de93cde005f1fd438e1e0236')
 package() {
    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
