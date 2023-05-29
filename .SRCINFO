@@ -1,0 +1,17 @@
+pkgbase = amethyst-player-git
+	pkgdesc = Audio Player
+	pkgver = master
+	pkgrel = 1
+	url = https://github.com/Geoxor/amethyst
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = gcc-multilib
+	makedepends = git
+	makedepends = gendesk
+	makedepends = yarn
+	makedepends = libxcrypt-compat
+	source = git+https://github.com/Geoxor/amethyst/
+	md5sums = SKIP
+
+pkgname = amethyst-player-git
