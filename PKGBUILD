@@ -2,7 +2,7 @@
 # Contributor: Karol Babioch <karol at babioch dot de>
 
 pkgname=getssl-git
-pkgver=latest.r19.e4154c4
+pkgver=latest.r7.a3a26cb
 pkgrel=1
 pkgdesc='Obtain SSL certificates from the letsencrypt.org ACME server. Suitable for automating the process on remote servers.'
 arch=('any')
