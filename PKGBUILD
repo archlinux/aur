@@ -9,7 +9,7 @@ _tbbpkgminorver=6
 
 pkgname=usd
 pkgver=23.05
-pkgrel=5
+pkgrel=6
 pkgdesc='3D VFX pipeline interchange file format'
 arch=(x86_64)
 url='https://openusd.org'
@@ -59,7 +59,6 @@ sha512sums=('SKIP'
 
 prepare() {
   patch --directory=USD --forward --strip=1 --input="${srcdir}/pyside6.patch"
-  patch --directory=USD --forward --strip=1 --input="${srcdir}/memset.patch"
   patch --directory=USD --forward --strip=1 --input="${srcdir}/materialx.patch"
   #TBB
   mkdir -p "${srcdir}"/tbb2019
