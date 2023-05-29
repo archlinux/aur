@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=picolibc
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="A C library designed for embedded 32 and 64 bit systems"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 makedepends=('glibc' 'meson')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/picolibc/picolibc/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('acf51183c09ed21ffe5f9a175b1eeb61f634496f4d1dd0c8ab4e0d29cc1bf0c4')
+sha256sums=('cc468e411bae79ad382efc5951c460ea3802a8a2549aa3c169a1d22d52488e3e')
 
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = picolibc
 	pkgdesc = A C library designed for embedded 32 and 64 bit systems
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://keithp.com/picolibc/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = picolibc
 	makedepends = glibc
 	makedepends = meson
 	options = staticlibs
-	source = picolibc-1.8.1-src.tar.gz::https://github.com/picolibc/picolibc/archive/refs/tags/1.8.1.tar.gz
-	sha256sums = acf51183c09ed21ffe5f9a175b1eeb61f634496f4d1dd0c8ab4e0d29cc1bf0c4
+	source = picolibc-1.8.2-src.tar.gz::https://github.com/picolibc/picolibc/archive/refs/tags/1.8.2.tar.gz
+	sha256sums = cc468e411bae79ad382efc5951c460ea3802a8a2549aa3c169a1d22d52488e3e
 
 pkgname = picolibc
