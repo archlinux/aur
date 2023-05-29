@@ -12,7 +12,7 @@
 
 _pkgname=qgis
 pkgname="$_pkgname"-ltr
-pkgver=3.28.5
+pkgver=3.28.7
 pkgrel=1
 pkgdesc='Geographic Information System (GIS); Long Term Release'
 arch=(x86_64)
@@ -23,16 +23,17 @@ depends=(ocl-icd proj geos gdal expat spatialindex qwt libzip sqlite3 protobuf
          qt5-base qt5-svg qt5-serialport qt5-location qt5-3d qt5-declarative
          qscintilla-qt5 qtkeychain-qt5 qca-qt5 gsl python-pyqt5 python-qscintilla-qt5
          hdf5 netcdf libxml2) # laz-perf
-makedepends=(cmake ninja opencl-clhpp fcgi qt5-tools sip pyqt-builder)
+makedepends=(gcc12 cmake ninja opencl-clhpp fcgi qt5-tools sip pyqt-builder)
 optdepends=('fcgi: Map server'
             'gpsbabel: GPS Tools plugin')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("https://download.qgis.org/downloads/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('9570dc580808ea61ba6fc4aac4f5078769bce228e66c54dba786130569e6aef1')
+sha256sums=('6798c941745f233112d2e93cb531d9a5fc750812d1a6facaa6d0457cf32bf4fa')
 # curl https://download.qgis.org/downloads/qgis-latest-ltr.tar.bz2.sha256
 
 build() {
+  export CC=gcc-12 CXX=g++-12
   cmake -G Ninja -B build -S "$_pkgname-$pkgver" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DWITH_3D=TRUE \
@@ -60,6 +61,7 @@ build() {
 }
 
 package() {
+  export CC=gcc-12 CXX=g++-12
   DESTDIR="$pkgdir" cmake --install build
   install -Dm644 $_pkgname-$pkgver/rpm/sources/qgis-mime.xml "$pkgdir/usr/share/mime/packages/qgis.xml"
 }

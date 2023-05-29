@@ -1,10 +1,11 @@
 pkgbase = qgis-ltr
 	pkgdesc = Geographic Information System (GIS); Long Term Release
-	pkgver = 3.28.5
+	pkgver = 3.28.7
 	pkgrel = 1
 	url = https://qgis.org/
 	arch = x86_64
 	license = GPL
+	makedepends = gcc12
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = opencl-clhpp
@@ -45,9 +46,9 @@ pkgbase = qgis-ltr
 	depends = libxml2
 	optdepends = fcgi: Map server
 	optdepends = gpsbabel: GPS Tools plugin
-	provides = qgis=3.28.5
+	provides = qgis=3.28.7
 	conflicts = qgis
-	source = https://download.qgis.org/downloads/qgis-3.28.5.tar.bz2
-	sha256sums = 9570dc580808ea61ba6fc4aac4f5078769bce228e66c54dba786130569e6aef1
+	source = https://download.qgis.org/downloads/qgis-3.28.7.tar.bz2
+	sha256sums = 6798c941745f233112d2e93cb531d9a5fc750812d1a6facaa6d0457cf32bf4fa
 
 pkgname = qgis-ltr
