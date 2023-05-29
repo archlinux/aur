@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-zen
-pkgver=6.3.4.zen1
+pkgver=6.3.4.zen2
 pkgrel=1
 pkgdesc='Linux ZEN'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -24,7 +24,6 @@ makedepends=(
   imagemagick
   python-sphinx
   texlive-latexextra
-  xmlto
 )
 options=('!strip')
 _srcname=zen-kernel
@@ -39,7 +38,7 @@ validpgpkeys=(
   C5ADB4F3FEBBCE27A3E54D7D9AE4078033F8024D  # Steven Barrett <steven@liquorix.net>
 )
 b2sums=('SKIP'
-        '75439c079a7ff77737cf3a0202f59fdeadc60d6acd8709709a96c29a7a0bcb531eb82ebd63583cc10a9b7cc20e0e1f3ae4d19e6abd8ae632872a6e50c9207b62')
+        '5259dca3c830d8b9957b603d64ca80823e26ddee67900ced57ea432226bcced78c2eadfb502a2acb5fe8cef8389061051e1bdfa2ef7e5a4885a48046ee1d3f49')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase

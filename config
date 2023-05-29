@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 6.3.3-zen1 Kernel Configuration
+# Linux/x86 6.3.4-zen2 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 13.1.1 20230429"
 CONFIG_CC_IS_GCC=y
@@ -10718,6 +10718,7 @@ CONFIG_CRYPTO_OFB=m
 CONFIG_CRYPTO_PCBC=m
 CONFIG_CRYPTO_XCTR=m
 CONFIG_CRYPTO_XTS=m
+CONFIG_CRYPTO_XTS_AES_SYNC=m
 CONFIG_CRYPTO_NHPOLY1305=m
 # end of Length-preserving ciphers and modes
 
