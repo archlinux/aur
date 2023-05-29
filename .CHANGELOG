@@ -1,6 +1,29 @@
 Version history
 ===============
 
+0.10.10
+-------
+
+2023-05-27
+
+Fix #452: The search for the next unsolved level works again for when
+the next unsolved level is not the next level. Before, from 0.10.6 through
+0.10.9, the end-of-singleplayer screen showed only the next level.
+
+Fix tooltips: When you hovered over a platformer or builder, the tooltip would
+always instruct you to queue, even if you had, e.g., miner selected in the
+skillbar. Now, the tooltip to queue appears only for the same selected skill.
+
+Tweaker lines have white text when you hover over the corresponding lix.
+
+When you erase an assignment via the tweaker, the tweaker will also erase
+all assignments to the same lix in the same or a future physics update.
+
+Add Kingshadow's Rescue Reduction, a new multiplayer map for 3 through 8
+players that combines Rescue Rangers Double Team with Downward Reduction.
+
+
+
 0.10.9
 ------
 
