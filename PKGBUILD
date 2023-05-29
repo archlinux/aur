@@ -69,7 +69,7 @@
 : ${CLANGD_HOVERBITFIELDSMASK:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt
-pkgver=17.r12799.gf2a866170c49
+pkgver=17.r12800.gab05d9134d18
 pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
@@ -81,6 +81,7 @@ options=('staticlibs' '!lto') # Getting thousands of test failures with LTO
 source=('git+https://github.com/llvm/llvm-project.git'
         'hover-doxygen-noast.patch'
         'hover-doxygen.patch'
+        'doxygen-more-fields.patch'
         'hover-resolve-forward-params.patch'
         'lsp-codelens.patch'
         'postfix-completion.patch'
@@ -93,6 +94,7 @@ source=('git+https://github.com/llvm/llvm-project.git'
 sha256sums=('SKIP'
             '843bf80065da5929276e070a5e66cd2a8391090bba2ac2f9c48be0a9bb35d315'  # hover-doxygen-noast
             'b00ed1cef0ee45f7db596d268bb1e0af6da986590830ee33c7da7596a3c32fc0'  # hover-doxygen
+            '8e9aa2930380bbdcf4ae48ba309c558db9ccdbbb90f92d247a58ac9c758c87aa'  # doxygen-more-fields
             '9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7'  # hover-resolve-forward-params
             '9bb8d1d27e3b5a184af71a5aad310da3971e77279f65d7bf804d619ce907280a'  # lsp-codelens
             'b4833ec1cb598ca679de397207e085eebac5a0cb48fff71c441a7272d3767683'  # postfix-completion
@@ -120,6 +122,7 @@ prepare() {
         else
             patch -p1 -i ${srcdir}/hover-doxygen.patch
         fi
+        patch -p1 -i ${srcdir}/doxygen-more-fields.patch
     fi
     if [ "$CLANGD_RESOLVEFWDPARAMS" != "n" ]; then
         patch -p1 -i ${srcdir}/hover-resolve-forward-params.patch

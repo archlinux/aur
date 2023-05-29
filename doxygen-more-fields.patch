@@ -1,0 +1,130 @@
+diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
+index fbfec61b2372..ef47c2517d00 100644
+--- a/clang-tools-extra/clangd/Hover.cpp
++++ b/clang-tools-extra/clangd/Hover.cpp
+@@ -1573,6 +1573,39 @@ markup::Document HoverInfo::present() const {
+       parseDocumentation(Note, L.addItem());
+   }
+ 
++  if (!Documentation.Exceptions.empty()) {
++    Output.addRuler();
++    Output.addParagraph()
++        .appendText("Exception")
++        .appendText(Documentation.Exceptions.size() > 1 ? "s" : "")
++        .appendText(": ");
++    markup::BulletList &L = Output.addBulletList();
++    for (const auto &Exception : Documentation.Exceptions)
++      parseDocumentation(Exception, L.addItem());
++  }
++
++  if (!Documentation.Bugs.empty()) {
++    Output.addRuler();
++    Output.addParagraph()
++        .appendText("Bug")
++        .appendText(Documentation.Bugs.size() > 1 ? "s" : "")
++        .appendText(": ");
++    markup::BulletList &L = Output.addBulletList();
++    for (const auto &Bug : Documentation.Bugs)
++      parseDocumentation(Bug, L.addItem());
++  }
++
++  if (!Documentation.Todos.empty()) {
++    Output.addRuler();
++    Output.addParagraph()
++        .appendText("Todo")
++        .appendText(Documentation.Todos.size() > 1 ? "s" : "")
++        .appendText(": ");
++    markup::BulletList &L = Output.addBulletList();
++    for (const auto &Todo : Documentation.Todos)
++      parseDocumentation(Todo, L.addItem());
++  }
++
+   if (!Definition.empty()) {
+     Output.addRuler();
+     std::string Buffer;
+diff --git a/clang-tools-extra/clangd/SymbolDocumentation.cpp b/clang-tools-extra/clangd/SymbolDocumentation.cpp
+index f99c9dddd4ec..42c24b10933d 100644
+--- a/clang-tools-extra/clangd/SymbolDocumentation.cpp
++++ b/clang-tools-extra/clangd/SymbolDocumentation.cpp
+@@ -111,6 +111,15 @@ public:
+     } else if (CommandName == "warning") {
+       BlockCommentToString(Output.Warnings.emplace_back(), Ctx)
+           .visit(B->getParagraph());
++    } else if (CommandName == "exception") {
++      BlockCommentToString(Output.Exceptions.emplace_back(), Ctx)
++          .visit(B->getParagraph());
++    } else if (CommandName == "todo") {
++      BlockCommentToString(Output.Todos.emplace_back(), Ctx)
++          .visit(B->getParagraph());
++    } else if (CommandName == "bug") {
++      BlockCommentToString(Output.Bugs.emplace_back(), Ctx)
++          .visit(B->getParagraph());
+     } else if (CommandName == "note") {
+       BlockCommentToString(Output.Notes.emplace_back(), Ctx)
+           .visit(B->getParagraph());
+@@ -153,6 +162,9 @@ SymbolDocumentationOwned parseDoxygenComment(const RawComment &RC,
+ 
+   ensureUTF8(Doc.Notes);
+   ensureUTF8(Doc.Warnings);
++  ensureUTF8(Doc.Exceptions);
++  ensureUTF8(Doc.Todos);
++  ensureUTF8(Doc.Bugs);
+ 
+   for (auto &Param : Doc.Parameters) {
+     ensureUTF8(Param.Name);
+@@ -185,6 +197,21 @@ SymbolDocumentation<StrOut> convert(const SymbolDocumentation<StrIn> &In) {
+     Doc.Warnings.emplace_back(Warning);
+   }
+ 
++  Doc.Exceptions.reserve(In.Exceptions.size());
++  for (const auto &Exception : In.Exceptions) {
++    Doc.Exceptions.emplace_back(Exception);
++  }
++
++  Doc.Todos.reserve(In.Todos.size());
++  for (const auto &Todo : In.Todos) {
++    Doc.Todos.emplace_back(Todo);
++  }
++
++  Doc.Bugs.reserve(In.Bugs.size());
++  for (const auto &Bug : In.Bugs) {
++    Doc.Bugs.emplace_back(Bug);
++  }
++
+   Doc.Parameters.reserve(In.Parameters.size());
+   for (const auto &ParamDoc : In.Parameters) {
+     Doc.Parameters.emplace_back(ParameterDocumentation<StrOut>{
+diff --git a/clang-tools-extra/clangd/SymbolDocumentation.h b/clang-tools-extra/clangd/SymbolDocumentation.h
+index 77bd90927802..ffa5e9d89bb3 100644
+--- a/clang-tools-extra/clangd/SymbolDocumentation.h
++++ b/clang-tools-extra/clangd/SymbolDocumentation.h
+@@ -72,6 +72,12 @@ public:
+   llvm::SmallVector<String, 1> Notes;
+   /// Paragraph(s) of the "warning" command(s)
+   llvm::SmallVector<String, 1> Warnings;
++  /// Paragraph(s) of the "exception" command(s)
++  llvm::SmallVector<String, 1> Exceptions;
++  /// Paragraph(s) of the "todo" command(s)
++  llvm::SmallVector<String, 1> Todos;
++  /// Paragraph(s) of the "bug" command(s)
++  llvm::SmallVector<String, 1> Bugs;
+ 
+   /// Parsed paragaph(s) of the "param" comamnd(s)
+   llvm::SmallVector<ParameterDocumentation<String>> Parameters;
+diff --git a/clang-tools-extra/clangd/unittests/SymbolDocumentationMatchers.h b/clang-tools-extra/clangd/unittests/SymbolDocumentationMatchers.h
+index 12c955c458cc..12a247ecf3ce 100644
+--- a/clang-tools-extra/clangd/unittests/SymbolDocumentationMatchers.h
++++ b/clang-tools-extra/clangd/unittests/SymbolDocumentationMatchers.h
+@@ -37,6 +37,12 @@ matchesDoc(const SymbolDocumentation<S> &Expected) {
+             ElementsAreArray(Expected.Notes)),
+       Field("Warnings", &SymbolDocumentation<S>::Warnings,
+             ElementsAreArray(Expected.Warnings)),
++      Field("Exceptions", &SymbolDocumentation<S>::Exceptions,
++            ElementsAreArray(Expected.Exceptions)),
++      Field("TODO", &SymbolDocumentation<S>::Todos,
++            ElementsAreArray(Expected.Todos)),
++      Field("Bugs", &SymbolDocumentation<S>::Bugs,
++            ElementsAreArray(Expected.Bugs)),
+       Field("Parameters", &SymbolDocumentation<S>::Parameters,
+             ElementsAreArray(ParamMatchers)),
+       Field("Description", &SymbolDocumentation<S>::Description,
