@@ -1,14 +1,15 @@
 # Maintainer: 3Jl0y_PYCCKUi <3jl0y_pycckui at riseup dot net>
 
 pkgname=ntfysh
-pkgver=2.2.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Send push notifications to your phone or desktop using PUT/POST "
 arch=("x86_64")
 url="https://ntfy.sh"
 license=('GPL2')
-makedepends=('go' 'git')
+makedepends=('go' 'git' 'npm' 'nodejs')
 conflicts=(ntfysh-bin ntfy)
+backup=('etc/ntfy/server.yml' 'etc/ntfy/client.yml')
 source=("$pkgname::git+https://github.com/binwiederhier/ntfy.git#tag=v$pkgver"
 	"ntfy.sysusers"
         )
@@ -18,14 +19,33 @@ b2sums=('SKIP'
 build() {
 	cd "${pkgname}"
 
-	# cli-deps-static-sites target
-	mkdir -p server/docs server/site
-	touch server/docs/index.html server/site/app.html
+    mkdir "$srcdir/fakehome"
+    HOME="$srcdir/fakehome"
+
+    # web-deps target
+    (
+        set -e
+        cd web
+        npm install
+
+        # web-build target
+        npm run build
+        mv build/index.html build/app.html
+        rm -rf ../server/site
+        mv build ../server/site
+        rm ../server/site/config.js
+    )
+
+	# # cli-deps-static-sites target
+	# mkdir -p server/docs server/site
+	# touch server/docs/index.html server/site/app.html
 
 	# cli-linux-server target
 	mkdir -p dist/ntfy_linux_server server/docs
 
-	export GOPATH="${srcdir}/go"
+	touch server/docs/index.html
+
+	export GOPATH="$HOME/go"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
