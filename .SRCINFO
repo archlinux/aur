@@ -46,7 +46,7 @@ pkgbase = xivlauncher-rb
 	depends = jxrlib
 	optdepends = steam
 	options = !strip
-	source = XIVLauncher.Core::git+https://github.com/rankynbass/XIVLauncher.Core.git#branch=RB-patched
+	source = XIVLauncher.Core::git+https://github.com/Marcanicus/XIVLauncher.Core.git#branch=RB-patched
 	source = XIVLauncher.desktop
 	sha512sums = SKIP
 	sha512sums = b9a4beedda1dd1d83ce9eab84b9d2e74d1b5f51fbf4ce5900f864fb882450c486301701b959916e7459dcce65a4911355e08ed53494ec8046c0c1d638e9035e8
