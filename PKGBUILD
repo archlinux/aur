@@ -3,11 +3,11 @@
 
 pkgname=python-yalafi
 pkgver=1.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Yet another LaTeX filter"
 url="https://github.com/torik42/YaLafi"
 depends=('python' 'languagetool')
-makedepends=('python-build' 'python-installer')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 license=('GPL3')
 arch=('any')
 source=(
