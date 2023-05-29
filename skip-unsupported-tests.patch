@@ -1,0 +1,86 @@
+From 88d7fdf5b01b5ffad359f8b49fb26c0e94252f61 Mon Sep 17 00:00:00 2001
+From: Claudia <claui@users.noreply.github.com>
+Date: Mon, 29 May 2023 18:56:17 +0200
+Subject: [PATCH 1/2] Skip test which is irrelevant for Arch Linux
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The `test_installed_distributions_legacy_version` test covers a feature
+called *legacy version* that requires a version of setuptools older than
+66.
+
+Newer versions of setuptools no longer support legacy versions [1],
+which defeats the purpose of the feature and makes this test entirely
+obsolete for Arch Linux.
+
+Two upcoming upstream fixes ([2], [3]) aren’t going to help because they
+rely on installing an older setuptools on the fly, which is pointless
+for Arch Linux as well.
+
+[1]: https://github.com/pypa/setuptools/issues/2497
+
+[2]: https://github.com/di/pip-api/pull/178
+
+[3]: https://github.com/di/pip-api/pull/180
+---
+ tests/test_installed_distributions.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/tests/test_installed_distributions.py b/tests/test_installed_distributions.py
+index e52f859..74a2c2c 100644
+--- a/tests/test_installed_distributions.py
++++ b/tests/test_installed_distributions.py
+@@ -59,6 +59,9 @@ def test_installed_distributions_editable(pip, some_editable_distribution):
+         assert distribution.editable
+ 
+ 
++@pytest.mark.skip(
++    reason="setuptools v66+ no longer supports legacy versions"
++)
+ def test_installed_distributions_legacy_version(pip, data):
+     distributions = pip_api.installed_distributions()
+ 
+-- 
+2.40.1
+
+
+From 02336c7f0d494dce9d7ab44cc5f5757431e76628 Mon Sep 17 00:00:00 2001
+From: Claudia <claui@users.noreply.github.com>
+Date: Mon, 29 May 2023 19:21:16 +0200
+Subject: [PATCH 2/2] Mark failing test (also irrelevant for Arch Linux)
+
+Similar to `test_installed_distributions_legacy_version`, part of the
+`test_parse_requirements_PEP508` test covers an feature that no longer
+exists.
+
+Mark the affected instance as `xfail` to work around that.
+---
+ tests/test_parse_requirements.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test_parse_requirements.py b/tests/test_parse_requirements.py
+index fc4484d..c0384a9 100644
+--- a/tests/test_parse_requirements.py
++++ b/tests/test_parse_requirements.py
+@@ -74,13 +74,16 @@ PEP508_PIP_EXAMPLE_WHEEL_FILE = "file://tmp/pip-1.3.1-py2.py3-none-any.whl"
+             "pip@ " + PEP508_PIP_EXAMPLE_URL,  # Note extra space after @
+             "",
+         ),
+-        (
++        pytest.param(
+             # Version and URL can't be combined so this all gets parsed as a legacy version
+             "pip==1.3.1@{url}\n".format(url=PEP508_PIP_EXAMPLE_URL),
+             {"pip"},
+             None,
+             "pip==1.3.1@" + PEP508_PIP_EXAMPLE_URL,  # Note no extra space after @
+             "==1.3.1@" + PEP508_PIP_EXAMPLE_URL,
++            marks=pytest.mark.xfail(
++                reason="setuptools v66+ no longer supports legacy versions"
++            ),
+         ),
+         (
+             # VCS markers at the beginning of a URL get stripped away
+-- 
+2.40.1
+
