@@ -14,18 +14,20 @@ makedepends=(libmupdf mold)
 optdepends=('sh: mupdfgrep')
 install=$pkgname.install
 source=("$url/$pkgname-$pkgver.tar.gz"
+        pdftxt-fix-flags.patch
         mupdfgrep
         $pkgname.LICENSE)
 b2sums=('c5b1fcc39211ab99e56b6eea6dca3fdbde5c6e40f98ba2c7376d1a763f112da622e65751810d31a0fcf5e6136d8106cda3b44b9b1075fe57a064ec54f00c07a2'
+        'b25bf3f202b417b64410d7fa6650410eb5ab56402d8c380d99a8e6caf01151b029396b0e19a846523924fcb9d27a988711de529ad80a9c45e76dcb838f28fb94'
         '528ebbe0da721b941762d4064fef5224a3017962b518f9d29742529b76ce3048b6564a473227bbc017dd5c48fc1a7d0b388e9122dfd6e7fa2fc1511280112e9f'
         'd90aaff927755ed9d945cace1b6beeac21a63cd6792fb874144eeea29a7fa040b66fe89d39b250fab817eab3c05d6ca0492cf1765494a4749a32ef48549deefd')
 
 prepare() {
-	sed -i 's/-lmupdfthird/-lmupdf-third/;/FLAGS =/ s/=/+=/' $pkgname-$pkgver/Makefile
+	cd $pkgname-$pkgver
+	patch -Np1 -i ../pdftxt-fix-flags.patch
 }
 
 build() {
-	export LDFLAGS+=" -lopenjp2 -lgumbo -lharfbuzz -lfreetype -lz -ljpeg -ljbig2dec"
 	# use mold, because ld does not link correctly with --as-needed
 	mold -run make -C $pkgname-$pkgver
 }
