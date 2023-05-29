@@ -2,7 +2,7 @@
 # Contributor: FabioLolix
 
 pkgname=aaaaxy
-pkgver=1.3.538
+pkgver=1.4.2
 pkgrel=1
 pkgdesc='A nonlinear puzzle platformer taking place in impossible spaces'
 arch=('x86_64')
@@ -14,10 +14,10 @@ depends=('alsa-lib' 'hicolor-icon-theme' 'libglvnd' 'libx11')
 # external linker is used with --as-needed in Arch's default LDFLAGS, these will
 # not actually be linked to by the final binary. This is why these are in
 # makedepends but not depends.
-makedepends=('go' 'libxcursor' 'libxinerama' 'libxi' 'libxrandr' 'make')
+makedepends=('go' 'libxcursor' 'libxinerama' 'libxi' 'libxrandr' 'make' 'zip')
 source=("aaaaxy-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${url}/releases/download/v${pkgver}/sdl-gamecontrollerdb-for-aaaaxy-v${pkgver}.zip")
-sha256sums=('d654965c89d54d32421a1465496ee84bee06a986bf049c149c7f1a85c173b6df'
+sha256sums=('f90c7569397064bf262883944d64d28556a0545ea7902482f5d5def426b2c4cc'
             '42c3c2bb0bdefa18f012cb5209b63d7c274f5afac935000106cfceba2ba069cf')
 
 prepare() {
@@ -28,6 +28,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
+  export ADVZIP=:  # Exists only in AUR, so disable for now.
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   export AAAAXY_BUILD_USE_VERSION_FILE=true
   make BUILDTYPE=release
