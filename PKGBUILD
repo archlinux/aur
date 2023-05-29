@@ -14,8 +14,8 @@
 #   `keyserver-options auto-key-retrieve` to your `~/.gnupg/gpg.conf`
 
 pkgname=cassandra
-pkgver=4.1.1
-pkgrel=2
+pkgver=4.1.2
+pkgrel=1
 pkgdesc='Apache Cassandra NoSQL database'
 arch=('any')
 url='http://cassandra.apache.org/'
@@ -36,8 +36,8 @@ source=(https://www.apache.org/dist/${pkgname}/${pkgver}/apache-${pkgname}-${pkg
     'cassandra.service'
     'cassandra-tmpfile.conf'
     'cassandra-user.conf')
-validpgpkeys=('7464AAD9068241C50BA6A26232F35CB2F546D93E')
-sha256sums=('7ce3103a76b8af76ffd8488d6bf484e1f175119617f3205ae0526c71d816c6f7'
+validpgpkeys=('A4C465FEA0C552561A392A61E91335D77E3E87CB')
+sha256sums=('856b2401ee4c5c147ad46a1b4297a03fdd36b48799107e710274645750027700'
     'SKIP'
     'bbb5dcc19cac4e19c506210da901280c3063a6a241480bf12bc874e6a5c02657'
     'abc9d54399c84eacf5922811b5480846ea1c88a73c5d214ea1db3d20c7c0422a'
