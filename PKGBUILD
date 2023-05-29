@@ -1,7 +1,7 @@
 # Maintainer: Jonas Malaco <jonas@protocubo.io>
 pkgname=cargo-show-asm
 _binname=cargo-asm
-pkgver=0.2.17
+pkgver=0.2.18
 pkgrel=1
 pkgdesc='Cargo subcommand to display ASM, LLVM-IR and MIR for Rust source code'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -15,7 +15,7 @@ depends=(
 provides=($_binname)
 conflicts=($_binname)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('c736edfedbb785a8712084847407921f07485ed22ce7b1f07f02db8e07447731')
+sha256sums=('6f9974a4278f227216e7e3f5410bb6ee8802e2f776368449b53dccdc7c8f3774')
 
 prepare() {
     cd "$pkgname-$pkgver"
