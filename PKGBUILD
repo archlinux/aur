@@ -9,6 +9,7 @@ url=https://github.com/eneshecan/${pkgname%-git}
 license=(GPL3)
 depends=('gtkmm3' 'webkit2gtk' 'libayatana-appindicator' 'libcanberra' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-libav')
 makedepends=('cmake' 'git')
+optdepends=('hunspell-en_us: spell-checking')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 source=(git+$url)

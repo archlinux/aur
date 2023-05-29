@@ -18,6 +18,7 @@ pkgbase = whatsapp-for-linux-git
 	depends = gst-plugins-good
 	depends = gst-plugins-bad
 	depends = gst-libav
+	optdepends = hunspell-en_us: spell-checking
 	provides = whatsapp-for-linux
 	conflicts = whatsapp-for-linux
 	source = git+https://github.com/eneshecan/whatsapp-for-linux
