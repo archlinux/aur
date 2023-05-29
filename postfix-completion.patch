@@ -116,7 +116,7 @@ index a2d523cd3e92..c50a41a7c7ba 100644
    unsigned Priority;
  
 diff --git a/clang/lib/Sema/SemaCodeComplete.cpp b/clang/lib/Sema/SemaCodeComplete.cpp
-index 22d8b5eb44e8..5dc2628b1791 100644
+index 22d8b5eb44e8..c349495b63ee 100644
 --- a/clang/lib/Sema/SemaCodeComplete.cpp
 +++ b/clang/lib/Sema/SemaCodeComplete.cpp
 @@ -20,6 +20,7 @@
@@ -744,7 +744,7 @@ index 22d8b5eb44e8..5dc2628b1791 100644
 +        }
 +        B.AddTextChunk(ExprCode);
 +        auto BaseType = Base->getType();
-+        if (!VarType &&
++        if (!VarType && !BaseType->isBooleanType() &&
 +            (BaseType->isPointerType() || BaseType->isFloatingType() ||
 +             BaseType->isScalarType())) {
 +          B.AddChunk(CodeCompletionString::CK_HorizontalSpace);
