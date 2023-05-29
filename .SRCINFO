@@ -1,17 +1,19 @@
 pkgbase = ruby-jaro_winkler
-	pkgdesc = Ruby & C implementation of Jaro-Winkler distance algorithm which supports UTF-8 string
-	pkgver = 1.5.4
-	pkgrel = 2
+	pkgdesc = Ruby & C implementation of Jaro-Winkler distance algorithm
+	pkgver = 1.5.6
+	pkgrel = 1
 	url = https://github.com/tonytonyjan/jaro_winkler
 	arch = i686
 	arch = x86_64
 	license = MIT
+	checkdepends = ruby-rake
+	checkdepends = ruby-rake-compiler
+	checkdepends = ruby-minitest
 	makedepends = rubygems
 	makedepends = ruby-rdoc
 	depends = ruby
 	options = !emptydirs
-	source = https://github.com/tonytonyjan/jaro_winkler/archive/v1.5.4/jaro_winkler-1.5.4.tar.gz
-	sha256sums = 290b0765be8f35eabcebc5623006683803831d99d6c3b6aef0c73571e9af965b
+	source = https://github.com/tonytonyjan/jaro_winkler/archive/v1.5.6/jaro_winkler-1.5.6.tar.gz
+	sha256sums = b27eb01c660e965898239f069e13634b83793d88569b2ddc22d3dbe97a3277d3
 
 pkgname = ruby-jaro_winkler
-
