@@ -1,11 +1,20 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.10.0] - 2023-05-28
+### Added
+- update formatter to ignore heredocs embedded in COPY instructions ([rcjsuen/dockerfile-utils#111](https://github.com/rcjsuen/dockerfile-utils/issues/111))
+- ignore empty continuation lines in heredocs embedded in COPY instructions ([rcjsuen/dockerfile-utils#112](https://github.com/rcjsuen/dockerfile-utils/issues/112))
+
+### Fixed
+- ignore UTF-8 BOM when validating the Dockerfile ([rcjsuen/dockerfile-utils#113](https://github.com/rcjsuen/dockerfile-utils/issues/113))
+- ignore quotes in comments if it's within an embedded argument ([rcjsuen/dockerfile-language-service#110](https://github.com/rcjsuen/dockerfile-language-service/issues/110))
+
 ## [0.9.0] - 2022-05-04
 ### Added
 - textDocument/publishDiagnostics
   - add support for validating the `--link` flag in ADD instructions ([rcjsuen/dockerfile-utils#109](https://github.com/rcjsuen/dockerfile-utils/issues/109))
-  - add support for validating the `--link` flag in COPY instructions ([rcjsuen/dockerfile-language-service#103](https://github.com/rcjsuen/dockerfile-language-service/issues/103)
+  - add support for validating the `--link` flag in COPY instructions ([rcjsuen/dockerfile-language-service#103](https://github.com/rcjsuen/dockerfile-language-service/issues/103))
 
 ### Fixed
 - textDocument/semanticTokens/full
@@ -590,8 +599,8 @@ All notable changes to this project will be documented in this file.
   - HEALTHCHECK CMD flags ([#69](https://github.com/rcjsuen/dockerfile-language-server-nodejs/issues/69), [#101](https://github.com/rcjsuen/dockerfile-language-server-nodejs/issues/101))
   - suggest $ variables ([#93](https://github.com/rcjsuen/dockerfile-language-server-nodejs/issues/93))
     - ARG and ENV variables
-    - default Docker ARG variables 
-    - add '$' as a trigger character 
+    - default Docker ARG variables
+    - add '$' as a trigger character
 - textDocument/hover
   - HEALTHCHECK CMD flags ([#82](https://github.com/rcjsuen/dockerfile-language-server-nodejs/issues/82), [#104](https://github.com/rcjsuen/dockerfile-language-server-nodejs/issues/104))
 - textDocument/publishDiagnostics
@@ -677,7 +686,8 @@ All notable changes to this project will be documented in this file.
 - textDocument/formatting
 - textDocument/rangeFormatting
 
-[Unreleased]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.9.0...HEAD
+[Unreleased]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.10.0...HEAD
+[0.10.0]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.9.0...v0.10.0
 [0.9.0]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.8.0...v0.9.0
 [0.8.0]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.7.3...v0.8.0
 [0.7.3]: https://github.com/rcjsuen/dockerfile-utils/compare/v0.7.2...v0.7.3

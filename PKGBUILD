@@ -1,9 +1,10 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Callum Parsey <callum@neoninteger.au>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Yufan You <ouuansteve at gmail>
 
 _npmname=dockerfile-language-server-nodejs
 pkgname=dockerfile-language-server
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Language server for Dockerfiles'
 arch=('any')
@@ -14,7 +15,7 @@ makedepends=('npm')
 replaces=('dockerfile-language-server-bin' 'nodejs-dockerfile-language-server-nodejs')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
-sha256sums=('88a6085ca049ebdf383f3644ee699e982379e3767918bf14baedd0ef90c1e18f')
+sha256sums=('ba385057f9f3f12411ecba68d9a4b87c8b235bb3900fa453ac6729e8eeefe0e4')
 noextract=("$pkgname-$pkgver.tgz")
 
 PURGE_TARGETS=('CHANGELOG.md')
