@@ -1,0 +1,16 @@
+pkgbase = check-link-consistency-git
+	pkgdesc = Checks linked files like revdep-rebuild with additional features for Arch Linux
+	pkgver = r29.6a0e048
+	pkgrel = 1
+	url = https://github.com/dimgel/check-link-consistency
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = libarchive
+	depends = libelf
+	provides = check-link-consistency
+	conflicts = check-link-consistency
+	source = check-link-consistency::git+https://github.com/dimgel/check-link-consistency.git
+	b2sums = SKIP
+
+pkgname = check-link-consistency-git
