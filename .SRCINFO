@@ -14,6 +14,7 @@ pkgbase = uboot-rockpro64-foss
 	makedepends = swig
 	makedepends = dtc
 	makedepends = python-pyelftools
+	optdepends = mtd-utils
 	provides = uboot
 	conflicts = uboot
 	options = !buildflags
