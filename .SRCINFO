@@ -6,6 +6,6 @@ pkgbase = keyoxidizer
 	arch = x86_64
 	license = APACHE
 	source = https://github.com/shombando/keyoxidizer/releases/download/v.0.2.4/keyoxidizer.sh
-	b2sums = SKIP
+	b2sums = 05e1bb26c5d81702519a244ae971cb07dbfce4c6f75b14940185a998b7ef9942c8ed1493045836a1a80a1950ead00c0f0f5f724852678156c050ebfe4e628075
 
 pkgname = keyoxidizer
