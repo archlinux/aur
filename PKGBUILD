@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="blockbench-appimage"
-pkgver=4.7.2
+pkgver=4.7.4
 pkgrel=1
 pkgdesc="A low poly 3D model editor"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('zlib' 'glibc' 'hicolor-icon-theme')
 options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Blockbench_${pkgver}.AppImage")
-sha256sums=('b14d957bef664db3b06916e9aa0c4bc9dacc05b12f47d9c32df6a6de04075be7')
+sha256sums=('626469f43f8d2dc4592bbf5b39aa114c8cae980ea3f359163f46ae4834a505cb')
     
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
