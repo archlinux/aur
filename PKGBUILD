@@ -2,7 +2,7 @@
 
 pkgname=landeseternelles
 pkgver=1.9.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Landes Eternelles is a french role playing game (mmorpg), forked from Eternal Lands."
 arch=('i686' 'x86_64')
 url="https://www.landes-eternelles.com"
@@ -35,7 +35,7 @@ package() {
     find $pkgdir/usr/share/$pkgname/ -type d -exec chmod 0755 {} \;
 }
 
-sha256sums=('7b775dc1fac9568291f8bebae8d78e56c609a38fbdb639bc648f4eea6187a8c8'
+sha256sums=('61f8a3155fc32057517e6783174ca42cf3060a38470dba7ed35a4598237d6b93'
             '1357259d4232d8533d3acdf22c63a9b650472f0ca2cf9841eb03ebd6a514e3f7'
             'f42bb2fdd8b981ca2ed5552110831e349852439b3ea0ead13f7fa328f3a30b72'
             '8c4450e426a6d290e32b30d5dfe345689ae80d871088300a5a047567d05fe4a5'
