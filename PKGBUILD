@@ -1,11 +1,11 @@
 # Maintainer: Gabriel Jensen <gabrielbjensen@icloud.com>
 pkgname=agbsum-git
-pkgver=7
+pkgver=11
 pkgrel=1
 pkgdesc="GBA ROM header checksum patcher."
 arch=("any")
 url="https://mandelbrot.dk/agbsum"
-makedepends=("cmake" "git")
+makedepends=("git")
 provides=("agbsum")
 conflicts=("agbsum")
 source=("git+https://mandelbrot.dk/agbsum")
@@ -17,12 +17,10 @@ pkgver() {
 }
 build() {
 	cd "${srcdir}/agbsum"
-	cmake -B"build" -DCMAKE_BUILD_TYPE="Release"
-	cmake --build "build"
+	make -j$(($(nproc)+0x1))
 }
 package() {
 	cd "${srcdir}/agbsum"
-	mkdir -pm755 "${pkgdir}/usr/bin"
-	install -m755 "build/agbsum/agbsum" "${pkgdir}/usr/bin"
+	make install BINDIR="${pkgdir}/usr/bin"
 }
 
