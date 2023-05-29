@@ -1,0 +1,18 @@
+pkgbase = chowmultitool-bin
+	pkgdesc = Multi-Tool Audio Plugin
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://chowdsp.com/
+	arch = x86_64
+	groups = vst3-plugins
+	groups = lv2-plugins
+	groups = clap-plugins
+	groups = pro-audio
+	license = GPL3
+	depends = libglvnd
+	depends = freetype2
+	depends = alsa-lib
+	source = https://github.com/Chowdhury-DSP/ChowMultiTool/releases/download/v1.0.0/ChowMultiTool-Linux-x64-1.0.0.deb
+	sha256sums = e9d604ba8c5c43d5761b9c73eb0530ac133225591cee8e3c22c58406b33dcd30
+
+pkgname = chowmultitool-bin
