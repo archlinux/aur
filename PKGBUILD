@@ -1,6 +1,6 @@
 # Maintainer: LeSnake04 <dev.lesnake@posteo.de>
 pkgname=antares-sql-appimage
-pkgver=0.7.9
+pkgver=0.7.10
 pkgrel=1
 pkgdesc="A modern, fast and productivity driven SQL client with a focus in UX."
 arch=("x86_64")
@@ -13,7 +13,7 @@ conflit=("${pkgname%-appimage}")
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Antares-${pkgver}-linux_x86_64.AppImage"
     "LICENSE::https://raw.githubusercontent.com/antares-sql/antares/master/LICENSE")
-sha256sums=('4964d20b45d88b03567ed4f74cc500abc77240e356895ae186e76c787b27e77f'
+sha256sums=('40bcb6ba234f2559abd321337e536b6628772d93e04596ac0a81ab493a0e8322'
             '7b960bb0bed7d2228b6a8a879558c97906cc041ab14ab1d1089959902f386613')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
