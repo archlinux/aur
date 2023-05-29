@@ -1,0 +1,11 @@
+pkgbase = gnome-shell-extension-compact-top-bar
+	pkgdesc = Compact and transparent top bar for GNOME
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/metehan-arslan/gnome-compact-top-bar
+	arch = any
+	license = MIT
+	source = gnome-shell-extension-compact-top-bar::git+https://github.com/metehan-arslan/gnome-compact-top-bar.git
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-compact-top-bar
