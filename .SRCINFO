@@ -1,0 +1,16 @@
+pkgbase = no-fwl-appimage
+	pkgdesc = NoFWL Desktop Application
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://nofwl.com/
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = no-fwl
+	options = !strip
+	source = no-fwl-0.1.0.tar.gz::https://github.com/lencx/nofwl/releases/download/v0.1.0/NoFWL_0.1.0_linux_x86_64.AppImage.tar.gz
+	sha256sums = 642d04feaf2753d534c6483acbbc232d8ac5015fe6c3b486cc287c10877fd886
+
+pkgname = no-fwl-appimage
