@@ -1,0 +1,27 @@
+pkgbase = python-synthtiger
+	pkgdesc = Synthetic text image generator for OCR model
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/clovaai/synthtiger
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-arabic-reshaper
+	depends = python-blend-modes
+	depends = python-fonttools
+	depends = python-imgaug
+	depends = python-numpy
+	depends = python-opencv
+	depends = python-pillow
+	depends = python-pygame
+	depends = python-bidi
+	depends = python-pytweening
+	depends = python-yaml
+	depends = python-regex
+	depends = python-scipy
+	source = https://files.pythonhosted.org/packages/source/s/synthtiger/synthtiger-1.2.1.tar.gz
+	sha256sums = 8e0d225b32d4748f9aaf39aff4dc7c93081a6cea5214b0b90b463dd074240950
+
+pkgname = python-synthtiger
