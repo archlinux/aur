@@ -1,13 +1,13 @@
 pkgbase = ttf-iosevka-term-curly
 	pkgdesc = Typeface family designed for coding, terminal use and technical documents.
-	pkgver = 23.0.0
+	pkgver = 24.1.0
 	pkgrel = 1
 	url = https://typeof.net/Iosevka/
 	arch = any
 	license = OFL
-	source = https://github.com/be5invis/Iosevka/releases/download/v23.0.0/ttf-iosevka-term-curly-23.0.0.zip
-	source = ttf-iosevka-term-curly-23.0.0-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v23.0.0/LICENSE.md
-	sha256sums = 29ddea95c06f5b8ae8e3a51deee2ff51caa308fe2e6cbc841da2ef5ee13acf74
+	source = https://github.com/be5invis/Iosevka/releases/download/v24.1.0/ttf-iosevka-term-curly-24.1.0.zip
+	source = ttf-iosevka-term-curly-24.1.0-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v24.1.0/LICENSE.md
+	sha256sums = 33d315df047c6e28bf04395fa9a7e8b0b2d8c4573da5dad901c89b03f3fa8c71
 	sha256sums = 7484961b97b41985d54c21700e53f7142a7007d72401acbd32c0b9c6a5a0b558
 
 pkgname = ttf-iosevka-term-curly
