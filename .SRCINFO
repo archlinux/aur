@@ -1,6 +1,6 @@
 pkgbase = x-minecraft-launcher-appimage
 	pkgdesc = An Open Source Minecraft Launcher with Modern UX. Provide a Disk Efficient way to manage all your Mods!
-	pkgver = 0.35.6
+	pkgver = 0.35.7
 	pkgrel = 1
 	url = https://xmcl.app/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = x-minecraft-launcher-appimage
 	depends = glibc
 	conflicts = x-minecraft-launcher
 	options = !strip
-	source = x-minecraft-launcher-0.35.6.AppImage::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.35.6/xmcl-0.35.6-x86_64.AppImage
+	source = x-minecraft-launcher-0.35.7.AppImage::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.35.7/xmcl-0.35.7-x86_64.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/AppOutlet/AppOutlet/main/LICENSE
-	sha256sums = 3b9531eeb7f729f0c0f7acbdadadc78f5c136c4dc62ba88412ec72fb0dc1d4ab
+	sha256sums = 50a85b25b89cbb39719f0b5b91078992b695c61aad1f7ba7e6a7d99dd28f34eb
 	sha256sums = c24c91646674659de06c8dad229b589608a69be9403433b4b5efe856db4cecb8
 
 pkgname = x-minecraft-launcher-appimage

@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="x-minecraft-launcher-appimage"
 _appname=xmcl
-pkgver=0.35.6
+pkgver=0.35.7
 pkgrel=1
 pkgdesc="An Open Source Minecraft Launcher with Modern UX. Provide a Disk Efficient way to manage all your Mods!"
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}-x86_64.AppImage"
     "LICENSE::https://raw.githubusercontent.com/AppOutlet/AppOutlet/main/LICENSE")
-sha256sums=('3b9531eeb7f729f0c0f7acbdadadc78f5c136c4dc62ba88412ec72fb0dc1d4ab'
+sha256sums=('50a85b25b89cbb39719f0b5b91078992b695c61aad1f7ba7e6a7d99dd28f34eb'
             'c24c91646674659de06c8dad229b589608a69be9403433b4b5efe856db4cecb8')
 
 prepare() {
