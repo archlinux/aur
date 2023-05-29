@@ -1,16 +1,17 @@
 pkgbase = cpycppyy
 	pkgdesc = Cling-based Python-C++ bindings for CPython
 	pkgver = 1.12.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cppyy.readthedocs.io/en/latest/index.html
 	arch = any
 	license = LBNL BSD
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = cppyy-cling
 	depends = cppyy-backend
-	depends = python-wheel
-	source = https://files.pythonhosted.org/packages/7f/7b/bda6c9f3b72051114db4d9eedb70075548103baadfd86c487ac925dc4d5d/CPyCppyy-1.12.13.tar.gz
+	source = https://files.pythonhosted.org/packages/source/C/CPyCppyy/CPyCppyy-1.12.13.tar.gz
 	sha256sums = f8c8c05b1eb8f0ccaed07b5069efabecff791bbe5e1b5be86767d32974e833d4
 
 pkgname = cpycppyy
