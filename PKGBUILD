@@ -5,7 +5,7 @@ pkgrel=1
 epoch=
 pkgdesc="一个用flutter制作的第三方B站客户端."
 arch=('x86_64')
-url="https://github.com/Riceneeder/electronic-wechat"
+url="https://github.com/lucinhu/bili_you"
 license=('MIT')
 groups=()
 depends=('gtk3')
@@ -15,7 +15,6 @@ optdepends=()
 provides=(bili-you-bin)
 conflicts=(bili-you-bin)
 replaces=()
-#install=${pkgname}.install
 source=(
 	bili-you.AppImage::'https://github.com/lucinhu/bili_you/releases/latest/download/BiliYou-linux-x86_64.AppImage'
 )
