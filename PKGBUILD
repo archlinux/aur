@@ -1,5 +1,5 @@
 pkgname=wsjtz
-pkgver=2.5.4
+pkgver=2.6.1
 pkgrel=1.33
 pkgdesc="Fork of WSJT-X with automation features"
 arch=('i686' 'x86_64' 'aarch64')
@@ -9,7 +9,8 @@ makedepends=(cmake asciidoc asciidoctor boost git)
 depends=(hamlib qt5-base qt5-multimedia qt5-serialport qt5-tools libusb libusb-compat gcc-fortran libpulse libpng fftw)
 provides=(wsjtx)
 conflicts=(wsjtx)
-source=(https://netcologne.dl.sourceforge.net/project/wsjt-z/Source/wsjtz-$pkgver-$pkgrel.zip)
+# This version (2.6.1) has wrong filename
+source=(https://netcologne.dl.sourceforge.net/project/wsjt-z/Source/wsjtz-2.5.4-$pkgrel.zip)
 sha512sums=('SKIP')
 
 build() {
