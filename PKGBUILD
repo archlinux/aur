@@ -19,6 +19,7 @@ python-sounddevice
 python-soundfile
 python-numpy
 )
+optdepends=(hamlib flrig)
 provides=(not1mm)
 conflicts=(not1mm)
 source=($pkgname::"git+$url.git")
