@@ -2,7 +2,7 @@
 
 pkgname=roon-cli
 pkgver=2.0.8r5
-pkgrel=1
+pkgrel=2
 pkgdesc='Command line control of the Roon audio system over a local network'
 arch=(any)
 url='https://gitlab.com/doctorfree/RoonCommandLine'
@@ -36,5 +36,6 @@ package() {
     install -m 755 roon "${pkgdir}/usr/bin/"
     install -Dm0644 -t "${pkgdir}/usr/share/licenses/$pkgname/" "RoonCommandLine-v${pkgver}/LICENSE"
 
+    chown -R $USER "${pkgdir}/usr/local/Roon"
     chmod +x "${pkgdir}/usr/bin/roon"
 }

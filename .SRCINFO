@@ -1,7 +1,7 @@
 pkgbase = roon-cli
 	pkgdesc = Command line control of the Roon audio system over a local network
 	pkgver = 2.0.8r5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/doctorfree/RoonCommandLine
 	install = roon-cli.install
 	arch = any
