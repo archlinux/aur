@@ -7,7 +7,7 @@
 _pkgbin=ledger-live-desktop
 pkgname=ledger-live
 pkgdesc="Ledger Live - Desktop"
-pkgver=2.58.0
+pkgver=2.60.0
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
@@ -17,7 +17,7 @@ makedepends=('node-gyp' 'fnm' 'pnpm')
 _extdir=ledger-live--ledgerhq-live-desktop-${pkgver}
 source=("${_pkgbin}-${pkgver}.tar.gz::${url}/archive/refs/tags/@ledgerhq/live-desktop@${pkgver}.tar.gz"
         "${_pkgbin}.sh")
-sha512sums=('e397eee65aea4f21e544d33af5a4e9acf810c198998cda949ed65ea360b81a8fff4218ddec0ff8d6681b3f69df75c447165b8f46ba030ae7f7a575e1646d8aa4'
+sha512sums=('12f7e16d993f39e9b4e61887767641899f4ca40fafe0d08cfed4d1258f57d81783197c01bf8eb7c04fa900b9608cfd2cd4179538bd241c9dae6ad8ff44b2ebd9'
             '15f6703121d1f2df2dab494efd645ef27830b5cff41184483c75a21545d79b183ababb47bebc8571c7f77e562497efc2453c3e41b59e40ad03be2baacf20148e')
 
 _fnm_use() {
