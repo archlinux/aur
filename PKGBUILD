@@ -5,7 +5,7 @@
 
 pkgname=tuba
 pkgver=0.3.2
-pkgrel=0.1
+pkgrel=0.2
 pkgdesc='Browse the Fediverse'
 arch=(
   aarch64 #ALARM
@@ -33,7 +33,9 @@ optdepends=(
   'webp-pixbuf-loader: calckey support (webp)'
 )
 _commit=5414d3b42aa9d5a01ac5c002010292144be920ea # tags/0.3.2^0
-source=("git+https://github.com/GeopJr/Tuba.git#commit=$_commit")
+# curl -sS https://github.com/GeopJr.gpg | gpg --import -
+validpgpkeys=('04A92A61E5CE5342F40E48DCFE5185F095BFC8C9') #Evangelos Paterakis <evan@geopjr.dev>
+source=("git+https://github.com/GeopJr/Tuba.git#commit=${_commit}?signed")
 sha256sums=('SKIP')
 
 pkgver() {
