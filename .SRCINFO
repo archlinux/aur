@@ -1,20 +1,11 @@
 pkgbase = ttf-tannenberg
-	pkgdesc = Old WW2 era font used for creating historical documents and artwork
-	pkgver = 1.0.0
-	pkgrel = 1
-	url = http://www.1001fonts.com/tannenberg-font.html
-	install = ttf-tannenberg.install
+	pkgdesc = Tannenberg is a Fraktur-family blackletter typeface, developed in Germany between 1933 and 1935 digitized by Dieter Steffmann.
+	pkgver = 1.002
+	pkgrel = 2.0
+	url = https://github.com/speters33w/tannenberg-font
 	arch = any
-	license = SIL Open Font License v1.1
-	depends = fontconfig
-	depends = xorg-fonts-encodings
-	depends = xorg-mkfontdir
-	depends = xorg-mkfontscale
-	source = https://github.com/Blackbyte-Inc/ttf-tannenberg/raw/master/tannenberg.bold.ttf
-	source = https://github.com/Blackbyte-Inc/ttf-tannenberg/raw/master/tannenberg.contour.ttf
-	source = https://github.com/Blackbyte-Inc/ttf-tannenberg/raw/master/tannenberg.shadow.ttf
-	sha256sums = c4b1a086515ef1b94453523c6133eedeabbd809113dbdddd5e72aae8b99b36cc
-	sha256sums = 020118f0a1f5965a76c7fd5939652b4dd436d495392a59734a58edabe8d2907f
-	sha256sums = ace761c42abe229bf8e0f8234cf17bedbe6f317ec499bcdfd9fd217e0bf78227
+	license = custom:1001Fonts Free For Commercial Use License (FFC)
+	source = https://github.com/speters33w/tannenberg-font/raw/main/tannenberg-font.tar.gz
+	sha256sums = e5261b8ccac3aa18a1f8715f329708164a45816913e86c0da8f8e69aa1fe8a5d
 
 pkgname = ttf-tannenberg
