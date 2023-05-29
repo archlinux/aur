@@ -4,7 +4,7 @@
 
 pkgname=gnome-shell-extension-desktop-icons-ng
 _pkgname=desktop-icons-ng
-pkgver=47.0.2
+pkgver=47.0.3
 pkgrel=1
 pkgdesc="A fork from the official desktop icons project, with several enhancements like Drag'n'Drop."
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('gnome-shell>=3.38')
 makedepends=('meson' 'glib2')
 source=("${url}/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('1c66fd62ed7254c028b6a15f5fcf0f02c9536d1aeca9f4dedf39f0a1c65738f1')
+sha256sums=('0e21a476e2ff5ed8ce49e18952bd858b9cd6d10a735761d5a3f2988a8ff60f0a')
 
 build() {
 	arch-meson "${_pkgname}-${pkgver}" build
