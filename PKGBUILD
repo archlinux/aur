@@ -1,6 +1,6 @@
 _pkgname=rsync
 pkgname="$_pkgname-reflink-git"
-pkgver=3.2.7.r16.g90df93e4
+pkgver=3.2.7.r31.g6f3c5ecc
 pkgrel=1
 pkgdesc='A fast and versatile file copying tool for remote and local files - with reflink support (git)'
 arch=('i686' 'x86_64')
@@ -41,7 +41,7 @@ sha256sums=(
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --exclude '*pre*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -57,6 +57,7 @@ build() {
   ./configure \
     --prefix=/usr \
     --disable-debug \
+    --with-rrsync \
     --with-included-popt=no \
     --with-included-zlib=no
   make

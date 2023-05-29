@@ -1,6 +1,6 @@
 pkgbase = rsync-reflink-git
 	pkgdesc = A fast and versatile file copying tool for remote and local files - with reflink support (git)
-	pkgver = 3.2.7.r16.g90df93e4
+	pkgver = 3.2.7.r31.g6f3c5ecc
 	pkgrel = 1
 	url = https://github.com/WayneD/rsync/issues/153
 	arch = i686
