@@ -2,7 +2,7 @@
 # Contributor: Bachitter Chahal <bachitterch@pm.me>
 
 pkgname=pscale-cli
-pkgver=0.142.0
+pkgver=0.145.0
 pkgrel=1
 pkgdesc='PlanetScale CLI client'
 arch=(x86_64)
@@ -13,7 +13,7 @@ makedepends=(go staticcheck)
 provides=(pscale)
 conflicts=(pscale)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/planetscale/cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('63c181bfa56a1348ee1772b6f0471ba41d8f1e81a49b2b28305f849d2b1c1a88')
+sha256sums=('8b135bf5ff2701dff0a862a40699050804019e5838d83bbfa44dd958a9daad04')
 
 build() {
   cd "cli-${pkgver}/cmd/pscale"
@@ -33,5 +33,5 @@ check() {
 
 package() {
   cd "cli-${pkgver}/cmd/pscale"
-  install -Dm755 pscale -t ${pkgdir}/usr/bin/pscale
+  install -Dm755 pscale -t ${pkgdir}/usr/bin/
 }
