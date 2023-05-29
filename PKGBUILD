@@ -6,11 +6,11 @@
 
 _pkgbin=ledger-live-desktop
 _pkgname=ledger-live
-pkgname=${_pkgname}-bin
+pkgname="${_pkgname}-bin"
 pkgdesc='Ledger Live - Desktop'
 license=('MIT')
 url='https://www.ledger.com/ledger-live'
-pkgver=2.58.0
+pkgver=2.60.0
 pkgrel=1
 arch=('x86_64')
 depends=('ledger-udev')
@@ -20,7 +20,7 @@ conflicts=("${_pkgname}")
 _appimg="ledger-live-desktop-${pkgver}-linux-${arch[0]}.AppImage"
 source=("${_appimg}::https://download.live.ledger.com/${_appimg}"
         "LICENSE::https://raw.githubusercontent.com/LedgerHQ/ledger-live/%40ledgerhq/live-desktop%40${pkgver}/apps/ledger-live-desktop/LICENSE")
-sha512sums=('a862938ca400cf02603157086ef0457bbd68a06ed15e42306a50b4498470cd0e4924c00cac2ed7901b3f309f1f838f7113551bf4e07b7f1a4e09fa3b9b997f43'
+sha512sums=('948de41d1c329cd2db0e57dc6beb47ae56a49fd11ae6932d3572bca6dd553be204ca628824abdfe65ea673c928f2a52e1c892d486c2b35702392ce8ae198b874'
             '915edd51fe7732af57f5a4ca8f4c61c4f435de6357e34ed0733cac8d950d80b3a9e513deac0a3672a07f38ff871a57032a221b3aa27edae8e42cc00586fe3318')
 
 prepare() {
