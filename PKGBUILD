@@ -1,18 +1,29 @@
+# Maintainer:
 # Contributor: Sebastian Lau <lauseb644@gmail.com>
 
 pkgname='python-omr'
 _module='omr'
 pkgdesc="Extract answer choices from scanned jpg bubble forms"
 pkgver='0.0.73'
-pkgrel=2
-_url='http://github.com/GregoryCMiller/omr'
+pkgrel=3
+# http://github.com/GregoryCMiller/omr
 url='https://pypi.org/project/omr'
 arch=('any')
-license=('Custom')
+license=('unknown')
+
 depends=(
+  'python-numpy'
+  'python-openpyxl'
+  'python-pillow'
   'python-setuptools'
+  'python-yaml'
 )
-makedepends=()
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-wheel'
+)
+
 source=(
   "https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz"
 )
@@ -27,24 +38,10 @@ prepare() {
 
 build() {
   cd "$srcdir/$_module-$pkgver"
-  python setup.py build
+  python -m build --no-isolation --wheel
 }
 
 package() {
-  depends+=(
-    'python-atomicwrites'
-    'python-importlib-metadata'
-    'python-opencv'
-    'python-openpyxl'
-    'python-pillow'
-    'python-py'
-    'python-pyparsing'
-    'python-pytest'
-    'python-six'
-    'python-wcwidth'
-    'python-yaml'
-  )
-
   cd "$srcdir/$_module-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
