@@ -1,42 +1,72 @@
 pkgbase = obs-studio-rc
 	pkgdesc = Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration
-	pkgver = 29.1.1
-	pkgrel = 2
+	pkgver = 29.1.2
+	pkgrel = 1
 	epoch = 6
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
-	makedepends = cmake
-	makedepends = git
-	makedepends = libfdk-aac
-	makedepends = swig
-	makedepends = luajit
-	makedepends = sndio
-	makedepends = python>=3.11
 	makedepends = asio
-	makedepends = nlohmann-json
-	makedepends = websocketpp
+	makedepends = cmake
+	makedepends = jack
+	makedepends = git
 	makedepends = libajantv2
+	makedepends = libfdk-aac
+	makedepends = luajit
+	makedepends = nlohmann-json
+	makedepends = python>=3.11
+	makedepends = sndio
+	makedepends = swig
+	makedepends = systemd-libs
+	makedepends = v4l-utils
+	makedepends = websocketpp
 	makedepends = cef-minimal-obs=103.0.0_5060_shared_textures_143.2591+g4204d54+chromium_103.0.5060.134_1
-	depends = jack
-	depends = gtk-update-icon-cache
-	depends = x264
-	depends = rnnoise
-	depends = pciutils
-	depends = qt6-svg
-	depends = mbedtls>=3.4
-	depends = qt6-wayland
-	depends = libxcomposite
-	depends = pipewire
-	depends = xdg-desktop-portal
-	depends = libxss
-	depends = libxrandr
-	depends = nss
-	depends = at-spi2-core
+	depends = alsa-lib
+	depends = curl
 	depends = ffmpeg-obs>=6
-	depends = vlc-luajit
+	depends = fontconfig
+	depends = freetype2
 	depends = ftl-sdk
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = jansson
+	depends = libglvnd
+	depends = libpipewire
+	depends = libpulse
+	depends = librist
+	depends = libva
+	depends = libx11
+	depends = libxcb
+	depends = libxcomposite
+	depends = libxkbcommon
+	depends = mbedtls>=3.4
+	depends = pciutils
+	depends = qt6-base
+	depends = qt6-svg
+	depends = qt6-wayland
+	depends = rnnoise
+	depends = speexdsp
+	depends = srt
+	depends = util-linux-libs
+	depends = vlc-luajit
+	depends = wayland
+	depends = x264
+	depends = zlib
+	depends = at-spi2-core
+	depends = dbus
+	depends = expat
+	depends = libcups
+	depends = libdrm
+	depends = libxdamage
+	depends = libxext
+	depends = libxfixes
+	depends = libxrandr
+	depends = mesa
+	depends = nspr
+	depends = nss
+	optdepends = jack: JACK support
 	optdepends = libfdk-aac: FDK AAC codec support
 	optdepends = intel-media-driver: Hardware encoding (>= Broadwell)
 	optdepends = libva-intel-driver: Hardware encoding (<= Haswell)
@@ -45,10 +75,11 @@ pkgbase = obs-studio-rc
 	optdepends = luajit: Lua scripting
 	optdepends = python>=3.11: Python scripting
 	optdepends = sndio: Sndio input client
-	optdepends = v4l2loopback-dkms: Virtual camera output
-	optdepends = libajantv2: AJA NTV 2 support
+	optdepends = v4l-utils: V4L2 support
+	optdepends = systemd-libs: V4L2 support
+	optdepends = v4l2loopback-dkms: V4L2 virtual camera output
 	optdepends = decklink: Blackmagic Design DeckLink support
-	provides = obs-studio=29.1.1
+	provides = obs-studio=29.1.2
 	provides = obs-vst
 	provides = obs-websocket
 	provides = obs-browser
@@ -59,7 +90,7 @@ pkgbase = obs-studio-rc
 	conflicts = obs-linuxbrowser
 	conflicts = libva-vdpau-driver
 	options = debug
-	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=29.1.1
+	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=29.1.2
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
 	source = obs-websocket::git+https://github.com/obsproject/obs-websocket.git
 	source = qr::git+https://github.com/nayuki/QR-Code-generator.git
