@@ -3,7 +3,7 @@
 
 _crate="youtube-tui"
 pkgname="youtube-tui"
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc='An aesthetically pleasing YouTube TUI written in Rust'
 url='https://siriusmart.github.io/youtube-tui'
@@ -15,8 +15,8 @@ optdepends=('mpv: Default video player'
             'konsole: Default terminal emulator'
             'yt-dlp: Default YouTube downloader')
 
-source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/youtube-tui/0.7.1/download")
-sha512sums=('837cc422eb4ab1a213d55028291a99a0d30f6e0c4c0c5523337772712079bfac323aff7e81bd734c3c8d1371a47e30ccd08612b6f9dbcd2aef82853c5a40e1b6')
+source=("$_crate-$pkgver.tar.gz::https://crates.io/api/v1/crates/youtube-tui/0.7.2/download")
+sha512sums=('bb3bb97674c4b4a870e04c251ecee6d14c24c28ab3cec3d4cc7a506fc1fee3bdef2d234d39115ae78deeff7c5bfe650b601efc2dad4d5f8c336e4d1707551ff9')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
