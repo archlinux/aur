@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Zhou <pn3535 at icloud dot com>
 pkgname=bili-you-bin
 pkgver=1.1.3+13
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="一个用flutter制作的第三方B站客户端."
 arch=('x86_64')
@@ -43,8 +43,8 @@ Terminal=false
 Type=Application''' >"${pkgdir}"/usr/share/applications/bili_you.desktop
 	cp -r "${srcdir}"/squashfs-root/opt "${pkgdir}"/
 	convert "${pkgdir}"/opt/data/flutter_assets/assets/icon/bili.png -resize 512x512 "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/bili.png
-	ln -s "${pkgdir}"/opt/bili_you "${pkgdir}"/usr/bin/bili_you
-	chmod 755 "${pkgdir}" -R
+	ln -s /opt/bili_you "${pkgdir}"/usr/bin/bili_you
+	chmod 755 "${pkgdir}"/ -R
 }
 
 function info() {
