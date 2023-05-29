@@ -1,44 +1,46 @@
 # Maintainer: Moon Sungjoon <sumoon at seoulsaram dot com>
 
 pkgname=hunspell-ko
-pkgver=0.7.92
-pkgrel=5
+_pkgname=hunspell-dict-ko
+pkgver=0.7.93
+pkgrel=1
 pkgdesc="Korean hunspell dictionary"
 arch=('any')
 url='https://github.com/spellcheck-ko/hunspell-dict-ko'
-license=('GPL3')
-makedepends=('qt5-webengine')
+license=('GPL3' 'custom')
+makedepends=('hunspell' 'ispell' 'qt6-webengine' 'python' 'python-yaml')
 optdepends=('hunspell: the spell checking libraries and apps')
-source=(https://github.com/spellcheck-ko/hunspell-dict-ko/releases/download/${pkgver}/ko-aff-dic-${pkgver}.zip)
-sha512sums=('300e574c7221841801f0d4b114abaa3b15196b69cb25f98ed784c820d125bd60e6fe6ca6cc76dca07de9382e957acd4bc337fa87b84f809b13f703ebe47baa45')
+source=($_pkgname-$pkgver.tar.gz::"https://github.com/spellcheck-ko/hunspell-dict-ko/archive/refs/tags/$pkgver.tar.gz")
+sha512sums=('a3f74ad224a74356d1a91ebdb88241fbd99958039f52a9a71390a6bd5d0ea2c5867113f25ea1f50224a5dd4362e03cf96159794d3d35e2b3e554ab945aabcff9')
+
+build() {
+  cd "$srcdir/$_pkgname-$pkgver"
+  make build
+}
 
 package() {
-	cd "$srcdir/ko-aff-dic-$pkgver" 
+  cd "$srcdir/$_pkgname-$pkgver"
 
-	# Remove easter egg for convert to qt webengine dictionary (very long word)
-	# It's temp, because this line is ugly
-	sed -i '14265d' ko.dic
+  install -dm755 "$pkgdir"/usr/share/hunspell
+  install -m644 ko.dic "$pkgdir"/usr/share/hunspell/ko_KR.dic
+  install -m644 ko.aff "$pkgdir"/usr/share/hunspell/ko_KR.aff
 
-	install -dm755 "$pkgdir"/usr/share/hunspell
-	install -m644 ko.dic "$pkgdir"/usr/share/hunspell/ko_KR.dic
-	install -m644 ko.aff "$pkgdir"/usr/share/hunspell/ko_KR.aff
+  # the symlinks
+  install -dm755 "${pkgdir}"/usr/share/myspell/dicts
+  pushd "$pkgdir"/usr/share/myspell/dicts
+    for file in "$pkgdir"/usr/share/hunspell/*; do
+      ln -sv /usr/share/hunspell/$(basename $file) .
+    done
+  popd
 
-	# myspell symlinks
-	install -dm755 "${pkgdir}"/usr/share/myspell/dicts
-	pushd "$pkgdir"/usr/share/myspell/dicts
-		for dict in "${pkgdir}"/usr/share/hunspell/*; do
-			ln -sv /usr/share/hunspell/$(basename $dict) .
-		done
-	popd
+  # Install webengine dictionaries
+  install -d "$pkgdir"/usr/share/qt{,6}/qtwebengine_dictionaries/
+  for _file in "$pkgdir"/usr/share/hunspell/*.dic; do
+  _filename=$(basename $_file)
+    /usr/lib/qt6/qwebengine_convert_dict $_file "$pkgdir"/usr/share/qt6/qtwebengine_dictionaries/${_filename/\.dic/\.bdic}
+  ln -rs "$pkgdir"/usr/share/qt6/qtwebengine_dictionaries/${_filename/\.dic/\.bdic} "$pkgdir"/usr/share/qt/qtwebengine_dictionaries/
+  done
 
-	# Install webengine dictionaries
-	install -d "$pkgdir"/usr/share/qt/qtwebengine_dictionaries/
-	for _file in "$pkgdir"/usr/share/hunspell/*.dic; do
-		_filename="$(basename "$_file")"
-		qwebengine_convert_dict "$_file" "$pkgdir"/usr/share/qt/qtwebengine_dictionaries/${_filename/\.dic/\.bdic}
-	done
-	
-	# licenses
-	install -Dm644 LICENSE.md $pkgdir/usr/share/licenses/$pkgname/LICENSE
-	#install -Dm644 LICENSE.GPL-3 $pkgdir/usr/share/licenses/$pkgname/LICENSE.GPL-3
+  # licenses
+  install -Dm644 LICENSE.md $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
