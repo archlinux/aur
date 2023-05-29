@@ -1,7 +1,7 @@
 pkgbase = astor
 	pkgdesc = A graphical Tango control system administration tool
 	pkgver = 7.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/tango-controls/Astor
 	arch = any
 	license = GPL3
