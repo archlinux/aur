@@ -32,7 +32,7 @@ makedepends=('dotnet-sdk>=6' 'git')
 optdepends=('steam')
 options=('!strip')
 source=(
-    "XIVLauncher.Core::git+https://github.com/rankynbass/XIVLauncher.Core.git#branch=RB-patched"
+    "XIVLauncher.Core::git+https://github.com/Marcanicus/XIVLauncher.Core.git#branch=RB-patched"
     "XIVLauncher.desktop"
 )
 sha512sums=(
