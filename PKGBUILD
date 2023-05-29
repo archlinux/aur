@@ -1,9 +1,9 @@
-# https://github.com/archlinux/svntogit-packages/tree/packages/rsync
+# Maintainer:
 
 _pkgname=rsync
 pkgname="$_pkgname-reflink"
 pkgver=3.2.7
-pkgrel=3
+pkgrel=4
 pkgdesc='A fast and versatile file copying tool for remote and local files - with reflink support'
 arch=('x86_64')
 url='https://rsync.samba.org/'
@@ -76,6 +76,7 @@ build() {
   ./configure \
     --prefix=/usr \
     --disable-debug \
+    --with-rrsync \
     --with-included-popt=no \
     --with-included-zlib=no
   make

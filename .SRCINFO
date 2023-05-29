@@ -1,7 +1,7 @@
 pkgbase = rsync-reflink
 	pkgdesc = A fast and versatile file copying tool for remote and local files - with reflink support
 	pkgver = 3.2.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://rsync.samba.org/
 	arch = x86_64
 	license = GPL3
