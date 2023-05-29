@@ -9,7 +9,6 @@ pkgbase = reboot-arch-btw
 	makedepends = rust
 	makedepends = cargo
 	depends = dbus
-	depends = xorg-xdpyinfo
 	depends = pacman>6
 	replaces = kernel-updated
 	source = https://github.com/rnestler/reboot-arch-btw/archive/v0.5.4.tar.gz
