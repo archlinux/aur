@@ -1,6 +1,6 @@
 pkgbase = pacroller-dev-git
 	pkgdesc = Unattended upgrade for archlinux
-	pkgver = 0.1.5.2.gb6bff0b
+	pkgver = 0.1.7.13.g5792891
 	pkgrel = 1
 	url = https://github.com/isjerryxiao/pacroller
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = pacroller-dev-git
 	conflicts = pacroller
 	backup = etc/pacroller/config.json
 	backup = etc/pacroller/smtp.json
+	backup = etc/pacroller/telegram.json
 	backup = etc/pacroller/known_output_override.py
 	source = pacroller::git+https://github.com/isjerryxiao/pacroller.git#branch=dev
 	md5sums = SKIP

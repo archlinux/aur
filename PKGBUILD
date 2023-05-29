@@ -1,7 +1,7 @@
 # Maintainer: Jerry <isjerryxiao at outlook dot com>
 _srcname=pacroller
 pkgname=pacroller-dev-git
-pkgver=0.1.5.2.gb6bff0b
+pkgver=0.1.7.13.g5792891
 pkgrel=1
 pkgdesc="Unattended upgrade for archlinux"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'git')
 optdepends=('needrestart')
 provides=("pacroller")
 conflicts=("pacroller")
-backup=('etc/pacroller/config.json' 'etc/pacroller/smtp.json' 'etc/pacroller/known_output_override.py')
+backup=('etc/pacroller/config.json' 'etc/pacroller/smtp.json' 'etc/pacroller/telegram.json' 'etc/pacroller/known_output_override.py')
 source=("$_srcname::git+https://github.com/isjerryxiao/pacroller.git#branch=dev")
 md5sums=('SKIP')
 
@@ -26,6 +26,7 @@ package() {
     python setup.py install --root="$pkgdir/" --optimize=1
     install -Dm644 "src/$_srcname/config.json" "$pkgdir/etc/pacroller/config.json"
     install -Dm600 "src/$_srcname/smtp.json" "$pkgdir/etc/pacroller/smtp.json"
+    install -Dm600 "src/$_srcname/telegram.json" "$pkgdir/etc/pacroller/telegram.json"
     install -Dm644 "src/$_srcname/known_output_override.py" -t "$pkgdir/etc/pacroller"
     mkdir -p "$pkgdir/var/lib/pacroller"
     install -Dm644 "pacroller.service" "${pkgdir}/usr/lib/systemd/system/pacroller.service"
