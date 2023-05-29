@@ -1,0 +1,16 @@
+pkgbase = electron-utils-appimage
+	pkgdesc = Electron Utils for every day usage as a dev.
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://github.com/SamTV12345/DevRustPilot
+	arch = x86_64
+	license = unknown
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = electron-utils
+	options = !strip
+	source = electron-utils-3.3.0.AppImage::https://github.com/SamTV12345/DevRustPilot/releases/download/v3.3.0/electron-utils_0.0.0_amd64.AppImage
+	sha256sums = 914fa2c05725657e9494c7e278afa7d437aa1b4c0da7fae0acbdf47a3ae880f6
+
+pkgname = electron-utils-appimage
