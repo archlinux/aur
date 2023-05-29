@@ -11,6 +11,19 @@ flash_uboot() {
     echo "# dd if=/usr/share/uboot/idbloader.img of=/dev/mmcblk2 seek=64 conv=notrunc"
     echo "# dd if=/usr/share/uboot/u-boot.itb of=/dev/mmcblk2 seek=16384 conv=notrunc"
   fi
+
+  echo "You can also install U-Boot to SPI flash."
+  echo "Be sure you know how to recover from a corrupted SPI flash in the event that something goes wrong."
+  echo "See details here: https://github.com/sigmaris/u-boot/wiki/Flashing-U-Boot-to-SPI"
+  echo "Note that 'mtd-utils' needs to be installed for this to work."
+  echo "Do you want to install U-Boot to SPI flash now? [y|N]"
+  read -r shouldwe
+  if [[ $shouldwe =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    flashcp --verbose /usr/share/uboot/spi_combined.img /dev/mtd0
+  else
+    echo "You can do this later by running:"
+    echo "# flashcp --verbose /usr/share/uboot/spi_combined.img /dev/mtd0"
+  fi
 }
 
 ## arg 1:  the new package version

@@ -27,6 +27,7 @@ license=('GPL')
 backup=('boot/boot.txt' 'boot/boot.scr')
 # python-pyelftools required for u-boot 2023.04
 makedepends=('bc' 'git' 'arm-none-eabi-gcc' 'arm-none-eabi-newlib' 'python-setuptools' 'swig' 'dtc' 'python-pyelftools')
+optdepends=('mtd-utils')
 provides=('uboot')
 conflicts=('uboot')
 options=(!buildflags
@@ -92,8 +93,20 @@ package() {
   mkdir -p "${pkgdir}/boot"
   mkdir -p "${pkgdir}/usr/share/uboot"
 
+  # Copy over the u-boot files needed for installing to EMMC or micro SD card.
   cp u-boot.itb idbloader.img "${pkgdir}/usr/share/uboot"
 
+  # Copy over the u-boot files needed for SPI installation
+  cp tpl/u-boot-tpl.bin spl/u-boot-spl.bin "${pkgdir}/usr/share/uboot"
+
+  # Build the u-boot image needed for SPI installation (spi_combined.img).
+  tools/mkimage -n rk3399 -T rkspi -d tpl/u-boot-tpl.bin:spl/u-boot-spl.bin "${pkgdir}/usr/share/uboot/idbloader-spi.img"
+  dd if="${pkgdir}/usr/share/uboot/idbloader-spi.img" of=spi_combined.img seek=0
+  dd if="${pkgdir}/usr/share/uboot/u-boot.itb" of=spi_combined.img seek=768
+  # Move the SPI image to its final destination.
+  mv spi_combined.img "${pkgdir}/usr/share/uboot/spi_combined.img"
+
+  # Build the default u-boot boot script.
   tools/mkimage -A arm -O linux -T script -C none -n "U-Boot boot script" -d ../boot.txt "${pkgdir}/boot/boot.scr"
   cp ../{boot.txt,mkscr} "${pkgdir}"/boot
 }
