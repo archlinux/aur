@@ -5,9 +5,9 @@ pkgbase = webcatalog-bin
 	url = https://webcatalog.io/webcatalog/
 	arch = x86_64
 	options = !strip
-	source = https://cdn-2.webcatalog.io/webcatalog/WebCatalog-47.1.0.AppImage
+	source = https://cdn-2.webcatalog.io/webcatalog/WebCatalog-47.4.0.AppImage
 	source = webcatalog.patch
-	sha256sums = 5393e0aa06935c9634246492a23deebd20bd46070e5155a247ac9861a1839336
+	sha256sums = 2559b2334cf756090c505384864fee8e1e28144c1c6fc53e76819b68120b02ed
 	sha256sums = 8e13556f9eab7880fbc586d625147e7602d8d99cf0f23a6a130e0eb821a9a7fd
 
 pkgname = webcatalog-bin
