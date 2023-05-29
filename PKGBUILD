@@ -1,37 +1,35 @@
-# Maintainer: rpkak <rpkak@users.noreply.github.com>
-pkgname='vulkan-memory-allocator'
+# Maintainer: Alexandre Bouvier <contact@amb.tf>
+# Contributor: rpkak <rpkak@users.noreply.github.com>
+pkgname=vulkan-memory-allocator
 pkgver=3.0.1
-pkgrel=1
-epoch=
-pkgdesc="Easy to integrate Vulkan memory allocation library."
-arch=('x86_64')
+pkgrel=2
+pkgdesc="Easy to integrate Vulkan memory allocation library"
+arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://gpuopen.com/vulkan-memory-allocator/"
 license=('MIT')
-groups=()
-depends=('vulkan-headers')
-makedepends=('cmake' 'libvulkan.so')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("$pkgname-$pkgver.tar.gz::https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2a84762b2d10bf540b9dc1802a198aca8ad1f3d795a4ae144212c595696a360c')
-validpgpkeys=()
+groups=('vulkan-devel')
+depends=('gcc-libs' 'glibc' 'libvulkan.so' 'vulkan-headers')
+makedepends=('cmake' 'git')
+source=("$pkgname::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git#tag=v$pkgver")
+b2sums=('SKIP')
+
+prepare() {
+	cd $pkgname
+	git -c core.autocrlf=true cherry-pick -n -X renormalize 29d492b60c84ca784ea0943efc7d2e6e0f3bdaac
+}
 
 build() {
-    cmake -B build -S "VulkanMemoryAllocator-$pkgver" \
-        -DCMAKE_BUILD_TYPE='Release' \
-        -DCMAKE_INSTALL_PREFIX='/usr' \
-        -Wno-dev
-    cmake --build build
+	cmake -S $pkgname -B build \
+		-DBUILD_SHARED_LIBS=ON \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-Wno-dev
+	cmake --build build
 }
 
 package() {
-    DESTDIR="$pkgdir" cmake --install build
-    install -Dm644 "VulkanMemoryAllocator-$pkgver/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	# shellcheck disable=SC2154
+	DESTDIR="$pkgdir" cmake --install build
+	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname $pkgname/LICENSE.txt
 }

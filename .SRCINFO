@@ -1,14 +1,23 @@
 pkgbase = vulkan-memory-allocator
-	pkgdesc = Easy to integrate Vulkan memory allocation library.
+	pkgdesc = Easy to integrate Vulkan memory allocation library
 	pkgver = 3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gpuopen.com/vulkan-memory-allocator/
+	arch = aarch64
+	arch = armv7h
+	arch = i486
+	arch = i686
+	arch = pentium4
 	arch = x86_64
+	groups = vulkan-devel
 	license = MIT
 	makedepends = cmake
-	makedepends = libvulkan.so
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = libvulkan.so
 	depends = vulkan-headers
-	source = vulkan-memory-allocator-3.0.1.tar.gz::https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator/archive/refs/tags/v3.0.1.tar.gz
-	sha256sums = 2a84762b2d10bf540b9dc1802a198aca8ad1f3d795a4ae144212c595696a360c
+	source = vulkan-memory-allocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git#tag=v3.0.1
+	b2sums = SKIP
 
 pkgname = vulkan-memory-allocator
