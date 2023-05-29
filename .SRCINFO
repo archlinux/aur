@@ -1,20 +1,20 @@
 pkgbase = rye-git
-	pkgdesc = an experimental alternative to poetry/pip/pipenv/venv/virtualenv/pdm/hatch/…
-	pkgver = r52.4103bf3
+	pkgdesc = An experimental package management solution for Python
+	pkgver = 0.4.0.r1.gc1ea066
 	pkgrel = 1
-	url = https://github.com/mitsuhiko/rye
-	arch = any
+	url = https://rye-up.com/
+	arch = i686
+	arch = x86_64
 	license = MIT
-	makedepends = cargo
 	makedepends = git
-	depends = zlib
-	depends = openssl
-	depends = glibc
+	makedepends = rust
 	depends = gcc-libs
+	depends = bzip2
 	depends = libxcrypt-compat
-	provides = rye
+	depends = openssl
+	depends = zlib
+	provides = rye=0.4.0.r1.gc1ea066
 	conflicts = rye
-	conflicts = rye-bin
 	source = git+https://github.com/mitsuhiko/rye.git
 	sha256sums = SKIP
 

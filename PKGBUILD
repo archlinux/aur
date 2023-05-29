@@ -1,63 +1,55 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: asukaminato <asukaminato@nyan.eu.org>
 
-# Maintainer: Your Name <youremail@domain.com>
 pkgname=rye-git
-pkgver=r52.4103bf3
+pkgver=0.4.0.r1.gc1ea066
 pkgrel=1
-epoch=
-pkgdesc="an experimental alternative to poetry/pip/pipenv/venv/virtualenv/pdm/hatch/…"
-arch=(any)
-url="https://github.com/mitsuhiko/rye"
+pkgdesc="An experimental package management solution for Python"
+arch=('i686' 'x86_64')
+url="https://rye-up.com/"
 license=('MIT')
-groups=()
-depends=(zlib openssl glibc gcc-libs
-         libxcrypt-compat # https://github.com/mitsuhiko/rye/issues/15
-)
-makedepends=(cargo git)
-checkdepends=()
-optdepends=()
-provides=(rye)
-conflicts=(rye rye-bin)
-replaces=()
-backup=()
-options=()
-install=
-changelog=
+depends=('gcc-libs' 'bzip2' 'libxcrypt-compat' 'openssl' 'zlib')
+makedepends=('git' 'rust')
+provides=("rye=$pkgver")
+conflicts=('rye')
 source=("git+https://github.com/mitsuhiko/rye.git")
-noextract=()
 sha256sums=('SKIP')
-validpgpkeys=()
+
+
+prepare() {
+  cd "rye"
+
+  if [ ! -f "Cargo.lock" ]; then
+    cargo update
+  fi
+  cargo fetch
+}
 
 pkgver() {
   cd "rye"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-}
 
-prepare() {
-    cd rye
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
-
-build() {
-    cd rye
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
-}
-
 
 check() {
-    cd rye
-    export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
+  cd "rye"
+
+  #cargo test \
+  #  --frozen
 }
 
 package() {
-    cd rye
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/rye"
-    install -Dm644 LICENSE* -t $pkgdir/usr/share/licenses/$pkgname/
+  cd "rye"
+
+  cargo install \
+    --locked \
+    --no-track \
+    --root "$pkgdir/usr" \
+    --path "rye"
+
+  install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/rye"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/rye"
 }
