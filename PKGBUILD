@@ -38,5 +38,5 @@ package() {
 
     # Ensure auth.json
     # https://github.com/houtianze/bypy/issues/606
-    [ -f "${pkgdir}/usr/lib/python3.10/site-packages/bypy/res/auth.json" ] || install -Dm644 bypy/res/auth.json "${pkgdir}/usr/lib/python3.10/site-packages/bypy/res/auth.json"
+    [ -f "${pkgdir}/usr/lib/python3.11/site-packages/bypy/res/auth.json" ] || install -Dm644 bypy/res/auth.json "${pkgdir}/usr/lib/python3.11/site-packages/bypy/res/auth.json"
 }
