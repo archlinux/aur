@@ -2,7 +2,7 @@
 # Reference: PKGBUILD(5)
 
 pkgname=osc-tui-git
-pkgver=r442.e78d7e7
+pkgver=r470.9fabb53
 pkgrel=1
 pkgdesc='Outscale Text User Interface'
 
@@ -11,7 +11,7 @@ url='https://github.com/outscale-dev/osc-tui'
 license=(BSD)
 
 makedepends=('python-setuptools')
-depends=(osc-sdk-python python-pyperclip autopep8)
+depends=(osc-sdk-python python-pyperclip autopep8 python-diagrams python-apache-libcloud)
 
 pkgver() {
   cd "${srcdir}/osc-tui"
@@ -27,12 +27,18 @@ build() {
 	cd npyscreen # we use our own fork of npyscreen (oscscreen), not compatible with upstream on
 	python  ./setup.py build
 	cd ..
+	cd osc-diagram
+	python  ./setup.py build
+	cd ..
 	python ./setup.py build
 }
 
 package() {
 	cd "${srcdir}/osc-tui"
 	cd npyscreen # we use our own fork of npyscreen (oscscreen), not compatible with upstream on
+	python  ./setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	cd ..
+	cd osc-diagram
 	python  ./setup.py install --root="$pkgdir" --optimize=1 --skip-build
 	cd ..
 	python  ./setup.py install --root="$pkgdir" --optimize=1 --skip-build
