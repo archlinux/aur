@@ -2,11 +2,11 @@
 
 pkgname=f3-git
 _pkgname=f3
-pkgver=7.1.r13.gfead723
+pkgver=8.0.r38.g964ae86
 pkgrel=1
 pkgdesc="F3 - Fight Flash Fraud"
 arch=('x86_64')
-url="http://oss.digirati.com.br/f3/"
+url="https://github.com/AltraMayor/f3"
 license=('GPL3')
 depends=('systemd-libs' 'parted')
 makedepends=('git')

@@ -1,8 +1,8 @@
 pkgbase = f3-git
 	pkgdesc = F3 - Fight Flash Fraud
-	pkgver = 7.1.r13.gfead723
+	pkgver = 8.0.r38.g964ae86
 	pkgrel = 1
-	url = http://oss.digirati.com.br/f3/
+	url = https://github.com/AltraMayor/f3
 	arch = x86_64
 	license = GPL3
 	makedepends = git
@@ -14,4 +14,3 @@ pkgbase = f3-git
 	sha512sums = SKIP
 
 pkgname = f3-git
-
