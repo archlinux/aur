@@ -1,6 +1,6 @@
 pkgbase = thonkbar-git
 	pkgdesc = minimalist block based lemonbar wrapper
-	pkgver = r43.09139d5
+	pkgver = r46.29a2364
 	pkgrel = 1
 	url = https://github.com/JoseFilipeFerreira/thonkbar
 	arch = any
