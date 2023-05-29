@@ -11,9 +11,9 @@ pkgbase = astor
 	depends = sh
 	source = https://gitlab.com/tango-controls/Astor/-/archive/7.5.3/Astor-7.5.3.tar.gz
 	source = launcher
-	source = plugin.patch
+	source = pom.patch
 	sha256sums = d575c5be3212a458ff06ce5a9bb8fefc1ef09d13531992a5f4f3827c4f89aff4
 	sha256sums = 25cc409561647519ad0bb2ffc00abb9cd923626f978f49c03b1f72b1fcd47d0b
-	sha256sums = 5dff2f81654c0f036af0db2deb28b8d2333af57c3122831ed23dbd643dc47b99
+	sha256sums = adceed8e9e90b87e2c9b90e29b9fb254b96746658d642d959facdb50f5531999
 
 pkgname = astor
