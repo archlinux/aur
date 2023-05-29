@@ -20,10 +20,9 @@ source=(
   "src/rk3588_bl31.elf::$_binsite/$_bincommit/bin/rk35/rk3588_bl31_v1.28.elf"
   'rockchip-write-dtbos'
   '95-boot.hook'
-  '040-limit_mode_to_config_max.patch'
   'extlinux.conf'
 )
-sha256sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
+sha256sums=(SKIP SKIP SKIP SKIP SKIP SKIP)
 install=${pkgname}.install
 backup=('boot/extlinux/extlinux.conf')
 
@@ -36,7 +35,6 @@ pkgver() {
 
 build() {
   cd "${srcdir}/u-boot"
-  patch -p1 -N -r - < "${srcdir}/040-limit_mode_to_config_max.patch"
   sed -i '1c#!/usr/bin/env python3' arch/arm/mach-rockchip/decode_bl31.py
   #for rkdev in rock-5b; do
   for rkdev_conf in configs/*-rk3588_defconfig; do
@@ -46,8 +44,6 @@ build() {
     cp -vf ./configs/$rkdev-rk3588_defconfig configs/rk3588_my_defconfig
     cat <<EOT | tee -a configs/rk3588_my_defconfig
 CONFIG_DISABLE_CONSOLE=n
-CONFIG_VIDEO_ROCKCHIP_MAX_XRES=1920
-CONFIG_VIDEO_ROCKCHIP_MAX_YRES=1080
 ##CONFIG_SYS_CONSOLE_ENV_OVERWRITE=y
 ##CONFIG_PREBOOT="usb start;setenv stdin usbkbd"
 ##CONFIG_DM_KEYBOARD=y
@@ -61,9 +57,6 @@ EOT
     ARCH=aarch64 make rk3588_my_defconfig
     export KCFLAGS='-Wno-error=address'
     ARCH=aarch64 make BL31="${srcdir}/rk3588_bl31.elf" spl/u-boot-spl.bin u-boot.dtb u-boot.itb
-
-ls ..
-    
     tools/mkimage -n rk3588 -T rksd -d ../rk3588_ddr.bin:spl/u-boot-spl.bin idbloader.img
     _out="u-boot-with-spl-rk3588-$rkdev.bin"
     dd if=idbloader.img of=$_out
