@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="znote-appimage"
-pkgver=2.3.3
+pkgver=2.3.4
 pkgrel=1
 pkgdesc="A Beautiful markdown editor inspired by Jupyter."
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}.AppImage"
     "LICENSE.html::${url}/cgu.html")
-sha256sums=('3e1d607ab44ce1da570b279bb280a5ae9f17b60b52583bb6f6de4860cba49dee'
+sha256sums=('0539da87e1fcdec26f1af179ee78b5c27da9638a8e9cb8d55fae9c30e039c4a3'
             'd2a438038502a65cda1f2586eeb5a1e677a4608ad31d22c72acbc88bf0dd160a')
      
 prepare() {
