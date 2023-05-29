@@ -1,15 +1,21 @@
 pkgbase = lagrange-appimage
 	pkgdesc = A Beautiful Gemini Client
 	pkgver = 1.16.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gmi.skyjake.fi/lagrange/
 	arch = x86_64
+	arch = aarch64
+	arch = armv7h
 	license = BSD
 	depends = zlib
 	depends = glibc
 	conflicts = lagrange
 	options = !strip
-	source = lagrange-1.16.1.AppImage::https://github.com/skyjake/lagrange/releases/download/v1.16.1/Lagrange-1.16.1-x86_64.AppImage
-	sha256sums = 8fdace09814903681c00c9bcfc3562b10af7672c809f75e2b3cb0aa3e2f4c5cf
+	source_x86_64 = lagrange-1.16.1-x86_64.AppImage::https://github.com/skyjake/lagrange/releases/download/v1.16.1/Lagrange-1.16.1-x86_64.AppImage
+	sha256sums_x86_64 = 8fdace09814903681c00c9bcfc3562b10af7672c809f75e2b3cb0aa3e2f4c5cf
+	source_aarch64 = lagrange-1.16.1-aarch64.AppImage::https://github.com/skyjake/lagrange/releases/download/v1.16.1/Lagrange-1.16.1-armhf.AppImage
+	sha256sums_aarch64 = 429919ae94547fb4a1e33bfc7fa771962ddd456ee24667a59aed2289419cd774
+	source_armv7h = lagrange-1.16.1-armv7h.AppImage::https://github.com/skyjake/lagrange/releases/download/v1.16.1/Lagrange-1.16.1-armhf.AppImage
+	sha256sums_armv7h = 429919ae94547fb4a1e33bfc7fa771962ddd456ee24667a59aed2289419cd774
 
 pkgname = lagrange-appimage
