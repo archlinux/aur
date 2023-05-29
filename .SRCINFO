@@ -1,0 +1,19 @@
+pkgbase = rio
+	pkgdesc = A hardware-accelerated GPU terminal emulator powered by WebGPU
+	pkgver = 0.0.5_rc4
+	pkgrel = 3
+	url = https://github.com/raphamorim/rio
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = desktop-file-utils
+	depends = gcc-libs
+	depends = fontconfig
+	depends = freetype2
+	source = rio-0.0.5-rc4.tar.gz::https://github.com/raphamorim/rio/archive/refs/tags/v0.0.5-rc4.tar.gz
+	source = rio.desktop
+	b2sums = 1e15a589d8dbb708f2cfa57d1272030bbf05d3c9953f80f8acb83b26a2c23117cdcd9cc3a1f50c03153e647d6b91e8baa44e923193e4ea9adeee94a6b1c16e2a
+	b2sums = 4725c1ab72b7cdcc055912e97827fd2705d48ee6f084d469f0fbbff4ce65f25ab715e4f208cb7058961e4001c273c9f444065b3aa64a85a638c25b84a2688d50
+
+pkgname = rio
