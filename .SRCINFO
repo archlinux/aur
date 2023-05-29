@@ -1,16 +1,16 @@
 pkgbase = libajantv2
 	pkgdesc = AJA NTV2 Open Source Static Libs and Headers for building applications that only wish to statically link against
 	pkgver = 16.2_bugfix5
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/aja-video/ntv2
-	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = cmake
 	makedepends = git
 	options = !lto
+	options = staticlibs
 	options = debug
 	source = ntv2::git+https://github.com/aja-video/ntv2.git#commit=0acbac70a0b5e6509cca78cfbf69974c73c10db9
 	sha256sums = SKIP
