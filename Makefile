@@ -1,4 +1,4 @@
-obj-m += rpi-poe-fan.o
+obj-m += vcio.o
 KERNEL=/usr/lib/modules/${KERNELRELEASE}/build
 all:
 	make -C ${KERNEL} M=$(PWD) modules

@@ -1,20 +1,18 @@
-pkgbase = rpi-poe-fan-dkms-git
-	pkgdesc = Hwmon driver for Raspberry Pi PoE(+)HAT fan
-	pkgver = 3.b422a76
+pkgbase = vcio-dkms-git
+	pkgdesc = Character device driver for VC4 mailbox
+	pkgver = 6.324f7e52
 	pkgrel = 1
-	url = https://github.com/raspberrypi/linux/blob/b422a76/drivers/hwmon/rpi-poe-fan.c
+	url = https://github.com/raspberrypi/linux/blob/324f7e52/drivers/char/broadcom/vcio.c
 	arch = any
 	license = GPL
 	depends = dkms
-	provides = rpi-poe-fan=3.b422a76-1
-	conflicts = rpi-poe-fan
-	source = https://raw.githubusercontent.com/raspberrypi/linux/b422a76/drivers/hwmon/rpi-poe-fan.c
-	source = https://raw.githubusercontent.com/raspberrypi/linux/b422a76/include/soc/bcm2835/raspberrypi-firmware.h
+	provides = vcio=6.324f7e52-1
+	conflicts = vcio
+	source = https://github.com/raspberrypi/linux/blob/324f7e52/drivers/char/broadcom/vcio.c
 	source = dkms.conf
 	source = Makefile
-	b2sums = 92a4e558f527f155deb17af88ea3cfd03aad8dcac9f6ca7100d49d39627c98f9aeefef721583768719b00a130dc11c2494d6d2453bea419582bb3c7ebe3f0b1d
-	b2sums = 5d4034b09087ee9f0d9e8408a08b0df9b63524a2cd32710f1ded05bbfbfcc5c7aede0eb11847c041811384d74c338a86b907b8965284f094593d6e42369120f5
-	b2sums = a70240cc2424ecade86a37acc57f2d7b55a9cf6fbf65fb1f0033e297bb4c5ebb9fc87da0b65b982f518f5a7437dd3717ca9c9a9d584144c14ca3063e068fd4de
-	b2sums = cb19c21e9bbb2995198c54d3478a09cfc1893daa6a33404611664979b0bd09729a3576542f693cb71dad005363fa330cb8d5e91c6b81292c4598aee54ae49b34
+	sha256sums = 06c58eb27872de4ff581cc77dec34b307d5de098fa81e0237e6309062ec46aea
+	sha256sums = d0d0fde95be8b1e9ad37de3a6a08e048729f5503545140357f31d3c3289613ac
+	sha256sums = f0ecf0592234f1a4df517a6917334537df18ffe9803b52e88ab1a79bc475deaf
 
-pkgname = rpi-poe-fan-dkms-git
+pkgname = vcio-dkms-git
