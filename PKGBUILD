@@ -1,11 +1,11 @@
 # Maintainer: Marcanicus <marcanicus@proton.me>
 pkgname=xivlauncher-rb
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 epoch=1
 pkgdesc="Custom launcher for Final Fantasy XIV Online with RB Patches!"
 arch=('x86_64')
-url='https://github.com/rankynbass/XIVLauncher.Core'
+url='https://github.com/Marcanicus/XIVLauncher.Core'
 license=('GPL')
 depends=(
     'aria2'
