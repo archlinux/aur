@@ -79,6 +79,7 @@ build() {
 	./builds/fluent_bit.sh "$_destdir"
 	./builds/systemd.sh "$_destdir"
 	./builds/ops_agent_diagnostics.sh "$_destdir"
+	./builds/agent_wrapper.sh "$_destdir"
 
 	git apply "${srcdir}/0001-build-sh.patch"
 	BUILD_DISTRO=arch CODE_VERSION="${pkgver}" DESTDIR="$_destdir" \
