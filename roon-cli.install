@@ -1,0 +1,13 @@
+post_install () {
+    chown -R $USER "/usr/local/Roon"
+
+    echo "  To discover your Roon Core connection details, execute:
+    '/usr/local/Roon/bin/get_core_ip'
+    then follow the instructions for authorization.
+    Next, update 'RoonCoreIP' & 'RoonCorePort' inside '/usr/local/Roon/etc/roon_api.ini'."
+    
+}
+
+post_upgrade() {
+    chown -R $USER "/usr/local/Roon"
+}

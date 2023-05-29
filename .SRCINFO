@@ -1,0 +1,15 @@
+pkgbase = roon-cli
+	pkgdesc = Command line control of the Roon audio system over a local network
+	pkgver = 2.0.8r5
+	pkgrel = 1
+	url = https://gitlab.com/doctorfree/RoonCommandLine
+	install = roon-cli.install
+	arch = any
+	license = APACHE
+	depends = python-roonapi
+	source = https://gitlab.com/doctorfree/RoonCommandLine/-/archive/v2.0.8r5/RoonCommandLine-v2.0.8r5.tar.gz
+	source = roon
+	sha512sums = 7d91311f8be66415c1af4a31d64aed218500403b9272e1b5feafd59b51560a5d670cb4706069b3642aeead7fecf31eaa21e12db0b9124bf3488ec433b0f6e99d
+	sha512sums = b158754f3cbba37413e44bb5de54f5480e8e698b52699221963af8310db5e5ddf1fc0cf4360426d315aa4bb4f68458a10158c8410f4d8f911cdb40e12a2f935c
+
+pkgname = roon-cli
