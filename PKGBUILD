@@ -31,7 +31,7 @@ build() {
 check() {
 	cd ${srcdir}/scipy-${pkgver}
 	python3 setup.py config_fc install --prefix=/usr --root=${srcdir}/test --optimize=1
-	export PYTHONPATH=${srcdir}/test/usr/lib/python3.10/site-packages
+	export PYTHONPATH=${srcdir}/test/usr/lib/python3.11/site-packages
 	cd ${srcdir}
 	python -c "from scipy import test; test('full')"
 }
