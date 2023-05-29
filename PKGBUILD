@@ -2,7 +2,7 @@
 # Maintainer: javsanpar <javsanpar@riseup.net>
 pkgname=abaddon-git
 _pkgname=abaddon
-pkgver=0.1.10.r7.g8e9fb27
+pkgver=0.1.10.r109.g3fbc71e
 pkgrel=1
 pkgdesc='An alternative Discord client made with C++/gtkmm'
 url='https://github.com/uowuo/abaddon'
@@ -11,7 +11,7 @@ source=("git+https://github.com/uowuo/abaddon"
 arch=('x86_64')
 license=('GPL3')
 makedepends=('git' 'cmake' 'nlohmann-json')
-depends=('gtkmm3' 'libhandy')
+depends=('gtkmm3' 'libhandy' 'spdlog' 'opus' 'libsodium')
 conflicts=('abaddon')
 provides=('abaddon')
 sha256sums=('SKIP'
