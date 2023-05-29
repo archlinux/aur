@@ -23,4 +23,5 @@ build() {
 package() {
 	cd "$_gitname"
 	sudo cp webserv /usr/bin/
+	sudo cp man/webserv.8.gz /usr/share/man/man8/
 }
