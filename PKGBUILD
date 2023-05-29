@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=Copulas
 pkgname=python-${_base,,}
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Create tabular synthetic data using copulas-based modeling"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(python-matplotlib python-pandas python-scipy)
 makedepends=(python-build python-installer python-pytest-runner python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('1b4f432a100ecaf28897996d344e37970f6d7a2dcb9244e4be2c00dc0b5bf32d36208bf0a9daebc776f60d4999b591cd792f5a1e76ef602faace22b7aea9def1')
+sha512sums=('c1abdd45c001d1a4cc2a8fe6c73e6cb84dbfb79c5e8e7601edfa25b1c913f0bb937cc7cbe46f3dbe75aa046f74e248359aa5223a049dad202633180920117b3e')
 
 build() {
   cd ${_base}-${pkgver}
@@ -22,7 +22,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest -k 'not gaussian_kde'
+  test-env/bin/python -m pytest
 }
 
 package() {
