@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=succulent
 pkgname=python-${_base}
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Collect POST requests easily"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(python-pandas python-yaml python-flask)
 makedepends=(python-build python-installer python-poetry-core python-wheel)
 checkdepends=(python-pytest python-mock)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('2e5c7684d809486405ab6c3ece1a54fa184130c07c607e842635f503b9cfeb04f0d343e75d932b7769f0b487560a49c633c19ad5eea9f88822cd20309ebc4ab6')
+sha512sums=('e89055f3a0dde6202fa176eb41d8c11390dc29ee5d3641681098d276177518705b228b6234fecebb39dba2e7cd609c488500e60845c1ac9329b11423122797d0')
 
 build() {
   cd ${_base}-${pkgver}
