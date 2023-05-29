@@ -3,7 +3,7 @@
 
 pkgname=oversteer
 pkgver=0.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Graphical application to configure Logitech Wheels'
 arch=(any)
 url=https://github.com/berarma/oversteer
@@ -19,7 +19,7 @@ depends=(
   python-matplotlib
   python-pyudev
   python-scipy
-  python-xdg
+  python-pyxdg
 )
 makedepends=(meson)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/berarma/${pkgname}/archive/${pkgver}.tar.gz)
