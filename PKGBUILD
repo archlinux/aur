@@ -7,7 +7,7 @@ url="https://github.com/bgkillas/kalc"
 license=('GPL3')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bgkillas/kalc/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e')
+sha512sums=('e267c28301b3df591743a29af63314348411abd5edf68489eaa2df390b01c399496453df4a3bbf1c2383c9deabf55dbec8d23c6ed6915939136ede1bbe7219ed')
 build(){
   cd "$srcdir/$pkgname-$pkgver"
   export RUSTFLAGS="-C strip=symbols -C codegen-units=1 -C opt-level=3 -C embed-bitcode=y -C lto=y"
