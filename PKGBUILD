@@ -2,8 +2,8 @@
 
 pkgname=fdroidcl
 _name="${pkgname}"
-pkgver=0.5.0
-pkgrel=3
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="F-Droid desktop client"
 url="https://github.com/mvdan/${_name}"
 license=('BSD')
@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 depends=('android-tools')
 makedepends=('git' 'go')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha1sums=('5a623e52c5531a200a324087ef9e68cfdce21b02')
+sha1sums=('611bc3e49ee6054a9b0f551fa65cbca1935f9834')
 
 build() {
 	cd "${srcdir}/${_name}-${pkgver}"
