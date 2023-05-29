@@ -1,7 +1,4 @@
 post_install () {
-    chown -R $USER "/usr/local/Roon/"
-    chmod +x "/usr/bin/roon"
-
     echo "  To discover your Roon Core connection details, execute:
     '/usr/local/Roon/bin/get_core_ip'
     then follow the instructions for authorization.
@@ -10,7 +7,7 @@ post_install () {
 }
 
 post_upgrade() {
-    chown -R $USER "/usr/local/Roon/"
+    chown -R $USER /usr/local/Roon/
 }
 
 post_remove() {
