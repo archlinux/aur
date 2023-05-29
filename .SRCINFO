@@ -1,7 +1,7 @@
 pkgbase = craftos-pc-accelerated-bin
 	pkgdesc = Advanced ComputerCraft emulator written in C++ (AppImage binary)
 	pkgver = 2.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.craftos-pc.cc/
 	arch = x86_64
 	license = MIT
@@ -11,6 +11,8 @@ pkgbase = craftos-pc-accelerated-bin
 	noextract = CraftOS-PC.x86_64.AppImage
 	options = !strip
 	source = craftos2-2.7.4-luajit.tar.gz::https://github.com/MCJack123/craftos2/archive/v2.7.4-luajit.tar.gz
-	source = CraftOS-PC_2.7.4-luajit.AppImage::https://github.com/MCJack123/craftos2/releases/download/v2.7.4-luajit/CraftOS-PC.x86_64.AppImage	sha256sums = 781574657b0cceff83e4d4869a54d0d035c7c3b3bd15f75099e393dddee06813
+	source = CraftOS-PC_2.7.4-luajit.AppImage::https://github.com/MCJack123/craftos2/releases/download/v2.7.4-luajit/CraftOS-PC.x86_64.AppImage
+	sha256sums = 781574657b0cceff83e4d4869a54d0d035c7c3b3bd15f75099e393dddee06813
+	sha256sums = 6805705aab438e136a3c49d3fc3da691662b3e23dcd3dd4bc0c9a0bedf0a085e
 
 pkgname = craftos-pc-accelerated-bin
