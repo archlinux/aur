@@ -1,11 +1,11 @@
 pkgbase = languagetool-rust
 	pkgdesc = LanguageTool API in Rust
-	pkgver = 2.1.0
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/jeertmans/languagetool-rust
 	arch = any
 	makedepends = rust
-	source = languagetool-rust-2.1.0.tar.gz::https://static.crates.io/crates/languagetool-rust/languagetool-rust-2.1.0.crate
-	md5sums = 68aa6df9abf3ced28fdf1ae2da67b342
+	source = languagetool-rust-2.1.2.tar.gz::https://static.crates.io/crates/languagetool-rust/languagetool-rust-2.1.2.crate
+	md5sums = 9c7ed71dcff25cf31baf7f9b89604ca0
 
 pkgname = languagetool-rust
