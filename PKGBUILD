@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="mogan-bin"
-pkgver=1.2.0alpha5
-_subver=alpha5
+pkgver=1.2.0alpha6
+_subver=alpha6
 pkgrel=1
 pkgdesc="A structured wysiwyg scientific text editor"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('qt5-svg' 'qt5-base' 'glibc' 'gcc-libs' 'gawk' 'hicolor-icon-theme' 'sq
 makedepends=('gendesk')
 options=(!strip)
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver%${_subver}}-${_subver}/${pkgname%-bin}-v${pkgver%${_subver}}-${_subver}-ubuntu22.04.deb")
-sha256sums=('426053f33444568fc231ca6f4e990078d20e3dbe394a2a2a32a888ea883a624b')
+sha256sums=('9d2bb13079f342f599d8793f7b1ceee187c0b93d6c558a06e50a0e246c2a5236')
  
 package() {
     bsdtar -xf data.tar.zst -C "${pkgdir}"
