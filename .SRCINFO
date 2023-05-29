@@ -1,0 +1,24 @@
+pkgbase = python-roonapi
+	pkgdesc = Roon API wrapper written in Python (aka pyRoon)
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/pavoni/pyroon
+	arch = any
+	license = APACHE
+	makedepends = python-poetry
+	makedepends = mypy
+	makedepends = python-black
+	makedepends = python-pytest
+	makedepends = python-pylint
+	makedepends = flake8
+	makedepends = python-pydocstyle
+	makedepends = python-flake8-docstrings
+	makedepends = python-flake8-quotes
+	depends = python-websocket-client
+	depends = python-six
+	depends = python-requests
+	depends = python-ifaddr
+	source = pyroon-0.1.4::https://github.com/pavoni/pyroon/archive/refs/tags/0.1.4.tar.gz
+	sha512sums = 66dbdf7d8e6e1eddac3ee63f5107a5d57768122d48565ca26a842b824eda2bc016cd4486e750d5da7134f3d19dbeca21d9b64c3a25e11494f39e95c25357aa19
+
+pkgname = python-roonapi
