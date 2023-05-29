@@ -2,7 +2,7 @@
 
 pkgname=dislocker
 pkgver=0.7.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Read/write BitLocker-encrypted volumes"
 arch=('i686' 'x86_64')
 url="https://github.com/Aorimn/dislocker"
@@ -26,7 +26,8 @@ build() {
         -D WARN_FLAGS:STRING="-Wall -Wextra" \
 
   # Fix mbedtls3 incompatibility
-  sed -i 's|mbedtls/config.h|mbedtls/mbedtls_config.h|;s|mbedtls_sha256_ret|mbedtls_sha256|' include/dislocker/ssl_bindings.h
+  mbedtlsver=$(LANG=C pacman -Qi mbedtls | awk '/^Version/ { print $3 }' | cut -d'.' -f 1)
+  [ ${mbedtlsver} -ge 3 ] && sed -i 's|mbedtls/config.h|mbedtls/mbedtls_config.h|;s|mbedtls_sha256_ret|mbedtls_sha256|' include/dislocker/ssl_bindings.h
 
   make
 }
