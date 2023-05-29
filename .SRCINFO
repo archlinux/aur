@@ -1,0 +1,13 @@
+pkgbase = asteroidsyncservice-git
+	pkgdesc = A synchronization daemon for AsteroidOS watches
+	pkgver = r108.ba7eecf
+	pkgrel = 1
+	url = https://github.com/AsteroidOS/asteroidsyncservice
+	arch = any
+	license = GPL3
+	makedepends = cmake
+	makedepends = qt6-connectivity
+	source = git+https://github.com/AsteroidOS/asteroidsyncservice
+	sha256sums = SKIP
+
+pkgname = asteroidsyncservice-git
