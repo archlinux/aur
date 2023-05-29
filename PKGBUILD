@@ -2,13 +2,13 @@
 
 pkgname=flightcore
 pkgver=1.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Northstar installer, updater, and mod-manager"
 arch=('x86_64')
 url="https://github.com/R2NorthstarTools/FlightCore"
 license=('MIT')
-depends=('git' 'gtk3' 'webkit2gtk-4.1' 'libappindicator-gtk3' 'librsvg')
-makedepends=('cargo' 'npm')
+depends=('webkit2gtk' 'webkit2gtk-4.1' 'libappindicator-gtk3')
+makedepends=('cargo' 'git' 'npm')
 optdepends=('sccache: compiler caching for faster compiling')
 _desktop=flightcore.desktop
 source=("git+$url.git")
