@@ -1,14 +1,14 @@
 # Maintainer: Kimiblock Zhou <pn3535 at icloud dot com>
 pkgname=bili-you-bin
 pkgver=1.1.3+13
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="一个用flutter制作的第三方B站客户端."
 arch=('x86_64')
 url="https://github.com/lucinhu/bili_you"
 license=('apache')
 groups=()
-depends=('gtk3')
+depends=('gtk3' 'mpv')
 makedepends=('fuse' 'imagemagick')
 checkdepends=()
 optdepends=()
@@ -16,7 +16,7 @@ provides=(bili-you-bin)
 conflicts=(bili-you-bin)
 replaces=()
 source=(
-	bili-you.AppImage::'https://github.com/lucinhu/bili_you/releases/latest/download/BiliYou-linux-x86_64.AppImage'
+	bili-you-${pkgver}.AppImage::'https://github.com/lucinhu/bili_you/releases/latest/download/BiliYou-linux-x86_64.AppImage'
 )
 noextract=()
 md5sums=(
@@ -29,8 +29,8 @@ function package() {
 	mkdir -p "${pkgdir}"/usr/bin
 	info 'Extracting AppImage...'
 	cd ${srcdir}
-	chmod +x "${srcdir}"/bili-you.AppImage
-	"${srcdir}"/bili-you.AppImage --appimage-extract
+	chmod +x "${srcdir}"/bili-you-${pkgver}.AppImage
+	"${srcdir}"/bili-you-${pkgver}.AppImage --appimage-extract
 	echo '''[Desktop Entry]
 Categories=AudioVideo;
 Comment[zh_CN]=一个用flutter制作的第三方B站客户端
