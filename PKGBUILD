@@ -1,9 +1,9 @@
-# Maintainer: Jeremy Gust	<jeremy AT plasticsoup DOT net>
+# Maintainer: Jeremy Gust <jeremy AT plasticsoup DOT net>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 
 pkgname=maestral
-pkgver=1.7.2
+pkgver=1.7.3
 pkgrel=1
 pkgdesc='Open-source Dropbox client'
 arch=('any')
@@ -32,18 +32,18 @@ optdepends=(
 makedepends=(
 	'python-build'
 	'python-installer'
-	'python-m2r2'
 	'python-wheel'
 	'python-sphinx'
 	'python-sphinx-autoapi'
 	'python-sphinx_rtd_theme'
+	'python-sphinx_mdinclude'
 	'python-sphinxext-opengraph'
 	)
 checkdepends=('python-pytest')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'maestral@.service')
-sha256sums=('2b9c5bfc08b34c0f835855972dc2983a5fdf1dbcae9035cc5a92c036546ebff5'
+sha256sums=('5461759a0648981e11b308b093f70306e886ad954de57afb596673cded3f5f0a'
             'f20ab8c6e59271d76d9298bab604eaa139ec1993a49e6a571846b55482461fa3')
 
 build() {
