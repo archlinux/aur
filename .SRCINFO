@@ -5,7 +5,6 @@ pkgbase = agbsum-git
 	url = https://mandelbrot.dk/agbsum
 	arch = any
 	license = AGPL3
-	makedepends = cmake
 	makedepends = git
 	provides = agbsum
 	conflicts = agbsum
