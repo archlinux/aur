@@ -2,10 +2,21 @@
 # Contributor: Torge Matthies <openglfreak at googlemail dot com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
+check_psabi() {
+  awk 'BEGIN {
+      while (!/flags/) if (getline < "/proc/cpuinfo" != 1) exit 1
+      if (/lm/&&/cmov/&&/cx8/&&/fpu/&&/fxsr/&&/mmx/&&/syscall/&&/sse2/) level = 1
+      if (level == 1 && /cx16/&&/lahf/&&/popcnt/&&/sse4_1/&&/sse4_2/&&/ssse3/) level = 2
+      if (level == 2 && /avx/&&/avx2/&&/bmi1/&&/bmi2/&&/f16c/&&/fma/&&/abm/&&/movbe/&&/xsave/) level = 3
+      if (level == 3 && /avx512f/&&/avx512bw/&&/avx512cd/&&/avx512dq/&&/avx512vl/) level = 4
+      if (level > 0) { print "x64v" level }
+  }' 2>/dev/null||echo "x64v1"
+}
+
 pkgname='linux-xanmod-bin'
 pkgver='6.3.4'
 pkgrel="1"
-psabi='x64v1'
+psabi="$(check_psabi)"
 pkgdesc='The Linux kernel, modules and headers with Xanmod patches - Prebuilt version'
 url="http://www.xanmod.org/"
 arch=('x86_64')
@@ -15,7 +26,7 @@ depends=('coreutils' 'kmod' 'initramfs' 'pahole')
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-headers-bin")
 optdepends=('crda: to set the correct wireless channels of your country'
             'linux-firmware: firmware images needed for some devices')
-makedepends=('curl')
+makedepends=('curl' 'gawk' 'grep' 'libarchive' 'xz')
 provides=('VIRTUALBOX-GUEST-MODULES'
           'WIREGUARD-MODULE'
           'KSMBD-MODULE'
@@ -30,8 +41,7 @@ validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('ed2e3002e34af0bc52f1f98d30c6896a92b782655c5ae597c7cda18341835077'
-            'e76387274a71e50cef49fe438ddd97acb5e1542bc1f7de5d2f7f62a8d0a670b4')
+sha256sums=('SKIP' 'SKIP')
 _file_image="${_url_image##*/}"
 _file_headers="${_url_headers##*/}"
 prepare() {
