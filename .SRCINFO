@@ -1,7 +1,7 @@
 pkgbase = ttf-tannenberg
 	pkgdesc = Tannenberg is a Fraktur-family blackletter typeface, developed in Germany between 1933 and 1935 digitized by Dieter Steffmann.
 	pkgver = 1.002
-	pkgrel = 2.0
+	pkgrel = 2
 	url = https://github.com/speters33w/tannenberg-font
 	arch = any
 	license = custom:1001Fonts Free For Commercial Use License (FFC)
