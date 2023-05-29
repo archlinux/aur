@@ -1,13 +1,13 @@
 pkgbase = hunt
 	pkgdesc = Highly-opinionated simplified Find command made with Rust
-	pkgver = 1.7.6
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/LyonSyonII/hunt-rs
 	arch = i686
 	arch = x86_64
 	license = custom:MIT
 	makedepends = cargo
-	source = hunt-1.7.6.tar.gz::https://static.crates.io/crates/hunt/hunt-1.7.6.crate
-	sha256sums = 0afdd5b32db2b21a81688e2d5b40ebcf8c76b9549e83325975534cd3074c44eb
+	source = hunt-2.0.0.tar.gz::https://static.crates.io/crates/hunt/hunt-2.0.0.crate
+	sha256sums = afdca63cdbe4272aea9929a88d9a010ca7a6af6ff6135791a946bfb440fa5dae
 
 pkgname = hunt

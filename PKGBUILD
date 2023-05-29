@@ -1,5 +1,5 @@
 pkgname=hunt
-pkgver=1.7.6
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Highly-opinionated simplified Find command made with Rust"
 arch=("i686" "x86_64")
@@ -7,7 +7,7 @@ url="https://github.com/LyonSyonII/hunt-rs"
 license=("custom:MIT")
 makedepends=("cargo")
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('0afdd5b32db2b21a81688e2d5b40ebcf8c76b9549e83325975534cd3074c44eb')
+sha256sums=('afdca63cdbe4272aea9929a88d9a010ca7a6af6ff6135791a946bfb440fa5dae')
 
 prepare() {
 	cd "$pkgname-$pkgver"
