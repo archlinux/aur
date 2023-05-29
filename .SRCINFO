@@ -1,0 +1,22 @@
+pkgbase = python-sportydatagen
+	pkgdesc = Sports activity generator module
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://gitlab.com/firefly-cpp/sportydatagen
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-mock
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
+	depends = python-niapy
+	depends = python-sport-activities-features
+	depends = python-sdv
+	depends = python-kaleido-bin
+	depends = python-seaborn
+	source = https://gitlab.com/firefly-cpp/sportydatagen/-/archive/0.2.2/sportydatagen-0.2.2.tar.gz
+	sha512sums = 8ae9801bbcec2cab63b1e8600f28c0da74008cedbb38b98ba8d59b636265b0f93ab13514ffd778cd15abec71731e1aa9fd30aa88f5be3e513c8c4059a691291d
+
+pkgname = python-sportydatagen
