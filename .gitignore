@@ -3,3 +3,4 @@ instructions.txt
 /pkg/
 /src/
 *.tar.*
+*.whl
