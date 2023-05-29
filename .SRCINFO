@@ -1,0 +1,16 @@
+pkgbase = berserk
+	pkgdesc = UCI compliant chess engine written in C
+	pkgver = 11.1
+	pkgrel = 1
+	url = https://www.chessengeria.eu/berserk
+	arch = x86_64
+	license = GPL3
+	checkdepends = expect
+	depends = glibc
+	options = !strip
+	source = berserk-11.1.tar.gz::https://github.com/jhonnold/berserk/archive/refs/tags/11.1.tar.gz
+	source = https://github.com/jhonnold/berserk/releases/download/11.1/berserk-e3f526b26f50.nn
+	sha512sums = 3388c191a761536eb583affdd70efdaca21d3d938e418a62a58e4308120984b0b7e38965dfe0751a9148bd0de17e1a0f19bba39782ebd351b92701cb53af636b
+	sha512sums = bfea7794d9954207a15e6eb05e85a0548e9f60ece596904b3f21f1337e109a583d6f53e676095fcc7ea9d3a11fd8d28179eb5d17b7a19cdf5de69e709bc86cb1
+
+pkgname = berserk
