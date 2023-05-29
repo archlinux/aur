@@ -1,19 +1,20 @@
+# Maintainer:
 # Contributor: Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
 
-_pkgname=python-thefuzz
-pkgname=$_pkgname-git
+_gitname="thefuzz"
+_pkgname="python-$_gitname"
+pkgname="$_pkgname-git"
 pkgver=0.19.0.r29.g04deff5
 pkgrel=1
 pkgdesc='Fuzzy string matching in Python'
 arch=(any)
-_url="https://pypi.python.org/pypi/thefuzz"
+# https://pypi.python.org/pypi/thefuzz
 url="https://github.com/seatgeek/thefuzz"
 license=('GPL2')
+
 depends=(
   'python-levenshtein'
 )
-provides=(${_pkgname})
-conflicts=(${provides[@]})
 makedepends=(
   'git'
   'python-build'
@@ -26,28 +27,37 @@ checkdepends=(
   'python-pycodestyle'
   'python-pytest'
 )
-source=("$_pkgname"::"git+$url")
+
+provides=(
+  "$_pkgname"
+  python-fuzzywuzzy
+)
+conflicts=(${provides[@]})
+
+source=("$_gitname"::"git+$url")
 sha256sums=(SKIP)
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_gitname"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_gitname"
   python -m build --no-isolation --wheel
 }
 
 check() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_gitname"
   pytest
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-  python -m installer \
-    --compile-bytecode 1 \
-    --destdir "$pkgdir" \
-    dist/*.whl
+  cd "$srcdir/$_gitname"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  _pyver=$(python --version | sed -E 's@^Python\ ([0-9]+\.[0-9]+)(\.[0-9]+)?$@\1@')
+
+  # provide fuzzywuzzy for backward compatibility
+  ln -sf "$_gitname" "$pkgdir/usr/lib/python$_pyver/site-packages/fuzzywuzzy"
 }

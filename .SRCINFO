@@ -15,8 +15,10 @@ pkgbase = python-thefuzz-git
 	makedepends = python-wheel
 	depends = python-levenshtein
 	provides = python-thefuzz
+	provides = python-fuzzywuzzy
 	conflicts = python-thefuzz
-	source = python-thefuzz::git+https://github.com/seatgeek/thefuzz
+	conflicts = python-fuzzywuzzy
+	source = thefuzz::git+https://github.com/seatgeek/thefuzz
 	sha256sums = SKIP
 
 pkgname = python-thefuzz-git
