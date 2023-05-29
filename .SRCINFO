@@ -1,0 +1,15 @@
+pkgbase = python-blend-modes
+	pkgdesc = Image processing blend modes
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/flrs/blend_modes
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-numpy
+	source = https://files.pythonhosted.org/packages/source/b/blend-modes/blend_modes-2.1.0.tar.gz
+	sha256sums = 0a3145e4792e005764b9663f5ce899d30f7c24f4bcff00428907d03dbe068f37
+
+pkgname = python-blend-modes
