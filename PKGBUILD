@@ -3,10 +3,10 @@ pkgname='dust-mail-client-git'
 
 arch=('x86_64')
 
-pkgver=0.2.4.r47.gb69e147
+pkgver=r34.b3d6e37
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 pkgrel=1
 epoch=1
@@ -18,11 +18,11 @@ pkgdesc='A simple and fast mail client (Git version)'
 conflicts=('dust-mail-client')
 provides=('dust-mail-client')
 
-url='https://github.com/Guusvanmeerveld/Dust-Mail'
+url='https://github.com/Dust-Mail/desktop'
 
 license=('MIT')
 
-source=("$pkgname::git+https://github.com/Guusvanmeerveld/Dust-Mail.git")
+source=("$pkgname::git+https://github.com/Dust-Mail/desktop.git")
 
 md5sums=('SKIP')
 sha256sums=('SKIP')
@@ -42,7 +42,7 @@ prepare() {
   _ensure_local_nvm
   nvm install 16
 
-  cd "$srcdir/$pkgname/apps/web/src-tauri"
+  cd "$srcdir/$pkgname/src-tauri"
 
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 
@@ -56,11 +56,9 @@ build() {
 
   pnpm install --frozen-lockfile --offline
 
-  cd "apps/web"
-
   unset SOURCE_DATE_EPOCH
 
-  export RUSTUP_TOOLCHAIN=1.61
+  export RUSTUP_TOOLCHAIN=1.65
 
   export VITE_UNSTABLE=true
 
@@ -70,5 +68,5 @@ build() {
 package() {
   install -Dm644 "$srcdir/$pkgname/dust-mail.desktop" "$pkgdir/usr/share/applications/dust-mail-client.desktop"
   install -Dm644 "$srcdir/$pkgname/icons/logo-512x512.png" "$pkgdir/usr/share/dust-mail.png"
-  install -Dm755 "$srcdir/$pkgname/target/release/dust-mail" "$pkgdir/usr/bin/dust-mail"
+  install -Dm755 "$srcdir/$pkgname/src-tauri/target/release/dust-mail" "$pkgdir/usr/bin/dust-mail"
 }
