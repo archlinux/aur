@@ -1,0 +1,17 @@
+pkgbase = mkdocs-git-committers-plugin-2
+	pkgdesc = An MkDocs plugin to create a list of contributors on the page
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/ojacques/mkdocs-git-committers-plugin-2
+	arch = any
+	license = MIT
+	checkdepends = python-nose
+	makedepends = python-setuptools-scm
+	source = https://files.pythonhosted.org/packages/source/m/mkdocs-git-committers-plugin-2/mkdocs-git-committers-plugin-2-1.1.2.tar.gz
+	md5sums = 6c5c92917d94d2e3147d4bf1b38781fe
+
+pkgname = mkdocs-git-committers-plugin-2
+	depends = mkdocs>=1.0.3,
+	depends = python-gitpython
+	depends = python-requests
+	depends = python-beautifulsoup4
