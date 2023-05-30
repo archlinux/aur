@@ -2,7 +2,7 @@
 
 pkgname=rider
 pkgver='2023.1.2'
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='A cross-platform .NET IDE by JetBrains.'
 arch=('x86_64' 'aarch64')
