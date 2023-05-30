@@ -1,11 +1,11 @@
---- appSettings.json	2023-05-26 12:31:31.556131185 +0200
-+++ appSettingsUpdated.json	2023-05-26 12:31:54.333277054 +0200
+--- appSettings.json	2023-05-14 11:39:22.000000000 +0200
++++ appSettingsUpdated.json	2023-05-30 20:02:17.369628880 +0200
 @@ -17,7 +17,7 @@
-       "UseDeferredRendering": null
-     },
-     "Updates": {
--      "Disable": false
-+      "Disable": true
-     },
-     "Steam": {
-       "UseLegacyLaunchMethod": false,
+     "UseDeferredRendering": null
+   },
+   "Updates": {
+-    "Disable": false
++    "Disable": true
+   },
+   "Steam": {
+     "UseLegacyLaunchMethod": false,
