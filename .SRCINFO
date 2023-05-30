@@ -1,0 +1,11 @@
+pkgbase = shopify-ejson2env-bin
+	pkgdesc = Shopify's ejson2env is a tool to simplify storing secrets that should be accessible in the shell environment in your git repo.
+	pkgver = 2.0.5
+	pkgrel = 2
+	url = https://github.com/Shopify/ejson2env/
+	arch = x86_64
+	license = MIT
+	source = ejson2env_2.0.5_linux_amd64.tar.gz::https://github.com/Shopify/ejson2env/releases/download/v2.0.5/ejson2env_2.0.5_linux_amd64.tar.gz
+	sha256sums = 777f28023c5dd7bbb22827cb851d3c43c1f3fe0c2677f7d90521bea13596f971
+
+pkgname = shopify-ejson2env-bin
