@@ -1,6 +1,6 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux-lts
-_pkgver=6.1.29
+_pkgver=6.1.30
 _pkgrel=1
 pkgbase="${_pkgname}-versioned-bin"
 KERNNAME="${_pkgver}-${_pkgrel}-lts"
@@ -42,9 +42,9 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('3d676b8beae80f32b35e124ac24c50cb5ceb52a72a04ca38214c0c0411501467'
-            'd60c05e0612738064f1223c5804b5da43c354a77e65943efba13bebfc1eb94c7'
-            '328d054760b74149df3ecf0f7dd3238d08e998fd2babe9ec4c8c56f7bf4a3de2')
+sha256sums=('6b5555ca0c693f945468b8ce93171d0211cdd2832056608271e4a592542c0e71'
+            '2d362222d36e030e4823927938cab7b184f38ab04e671129976fb548b38530e7'
+            '0dd9ceabf74a757197388d10f44fd17b00fddfbc614f10dc764b2e27269e0a02')
 
 package_linux-lts-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -62,7 +62,7 @@ package_linux-lts-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux6.1.29-1-lts-bin() {
+package_linux6.1.30-1-lts-bin() {
   pkgdesc="The LTS Linux kernel and modules, version ${KERNNAME}"
   depends=(coreutils
            initramfs
@@ -79,7 +79,7 @@ package_linux6.1.29-1-lts-bin() {
   sed -ic "s/${_pkgname}/${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
 }
 
-package_linux6.1.29-1-lts-headers-bin() {
+package_linux6.1.30-1-lts-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the LTS Linux kernel ${KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -88,7 +88,7 @@ package_linux6.1.29-1-lts-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux6.1.29-1-lts-docs-bin() {
+package_linux6.1.30-1-lts-docs-bin() {
   pkgdesc="Documentation for the LTS Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
