@@ -1,6 +1,6 @@
 pkgbase = curl-http3
 	pkgdesc = An URL retrieval utility and library - compiled with HTTP/3 support - binary is called curl3
-	pkgver = 8.1.1
+	pkgver = 8.1.2
 	pkgrel = 1
 	url = https://curl.haxx.se
 	arch = x86_64
@@ -25,12 +25,12 @@ pkgbase = curl-http3
 	depends = zlib
 	depends = zstd
 	depends = libzstd.so
-	source = https://curl.haxx.se/download/curl-8.1.1.tar.gz
-	source = https://curl.haxx.se/download/curl-8.1.1.tar.gz.asc
+	source = https://curl.haxx.se/download/curl-8.1.2.tar.gz
+	source = https://curl.haxx.se/download/curl-8.1.2.tar.gz.asc
 	source = git+https://github.com/cloudflare/quiche.git#tag=0.17.1
 	source = git+https://github.com/google/boringssl.git
 	validpgpkeys = 27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2
-	sha512sums = 95aeaca94ec78284102d1f5f8d0e24d7a084f2431356a08e7f6baf79c13c56040f2600571877d74e45b53b9f61ef493d201ed85808233c24b4dcbf45cdb6e762
+	sha512sums = 41f4edb9c75870b713a2ecdaae2f8888651f2db3e689b991e70f1ee4e0da86d861eba1a9d24374e7b99deb0fdb218b9fbbd6cd624363d940a27d82b90c0e5c1b
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
