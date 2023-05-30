@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=countrycode
-_pkgver=1.4.0
+_pkgver=1.5.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Convert Country Names and Country Codes'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   r-utf8
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('99dfe7652c1e631b9e0f8fac0b0163e7a3fdde8476498555d553e0d1c5fdccc4')
+sha256sums=('fc775dfd5dc33a0774f106933e1f22c00ae617acaea1c3a0dc6dde1b6a43ac0c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

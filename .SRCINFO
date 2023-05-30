@@ -1,6 +1,6 @@
 pkgbase = r-countrycode
 	pkgdesc = Convert Country Names and Country Codes
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=countrycode
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = r-countrycode
 	optdepends = r-testthat
 	optdepends = r-tibble
 	optdepends = r-utf8
-	source = https://cran.r-project.org/src/contrib/countrycode_1.4.0.tar.gz
-	sha256sums = 99dfe7652c1e631b9e0f8fac0b0163e7a3fdde8476498555d553e0d1c5fdccc4
+	source = https://cran.r-project.org/src/contrib/countrycode_1.5.0.tar.gz
+	sha256sums = fc775dfd5dc33a0774f106933e1f22c00ae617acaea1c3a0dc6dde1b6a43ac0c
 
 pkgname = r-countrycode
