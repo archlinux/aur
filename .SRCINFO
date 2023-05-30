@@ -1,0 +1,14 @@
+pkgbase = rewise
+	pkgdesc = Extract files from Wise installers without executing them.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://notabug.org/CYBERDEViL/REWise
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	makedepends = gcc
+	makedepends = gzip
+	source = rewise-0.1.0.tar.gz::https://notabug.org/CYBERDEViL/REWise/archive/v0.1.0.tar.gz
+	sha512sums = 6625dd8c0c49cc444ed50caacf65a5e8974963c70fd29372e57006113218b49b45b029bd28fc17f7e6b92b5bbb7795ce13b4b1e0bf589de425f30dcb69886b0d
+
+pkgname = rewise
