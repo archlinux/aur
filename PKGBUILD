@@ -5,7 +5,7 @@ pkgname="ocaml-$_projectname"
 pkgver='0.0.2'
 pkgrel='2'
 pkgdesc="Compatibility library for OCaml's Uchar module"
-arch=('x86_64' 'i486' 'i686' 'pentium4' 'armv7h' 'aarch64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml/$_projectname"
 license=('custom:LGPL2.1 with linking exception')
 depends=('ocaml>=3.12.0')
