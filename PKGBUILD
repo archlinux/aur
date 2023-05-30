@@ -16,8 +16,4 @@ sha512sums_loongarch64=('841735ef2be1d5f63cbee08e17e3f6e6dcc26810134ac6a76005930
 package() {
 	cd "${srcdir}"
 	bsdtar -xf ${srcdir}/data.tar.xz -C ${pkgdir}/
-
-	for _size in 16 24 32 48 64 128 256; do
-		install -Dm644 "${pkgdir}/usr/lib/lbrowser/product_logo_${_size}.png" "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/${_pkgname}.png"
-	done
 }
