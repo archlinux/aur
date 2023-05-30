@@ -11,8 +11,9 @@ url="https://www.tddft.org/programs/${pkgname}"
 license=('MPL2')
 depends=(python-numpy)
 makedepends=(gcc-fortran cmake)
-source=(${url}/down.php?file=${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('46d31c7994988fd436c2ff20400ab8afbb10e01b7e5ab24773400f0ea31af517f93c56b571effe1ae2e511302e7c36f54592e43669f8fdc389cb075957a629aa')
+#source=(${url}/down.php?file=${pkgver}/${pkgname}-${pkgver}.tar.gz)
+source=(https://gitlab.com/${pkgname}/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
+sha512sums=('bf8e3d4af4f2d007a832d58d1908e0ae7a449c4e3afc2f04fcfa6cafbf943cc262eac84980f17b663e135617bcf311c6ac879954b32a4abdcddc07d9a12f27de')
 options=(staticlibs)
 
 build() {
