@@ -2,11 +2,11 @@
 # Contributor: Łukasz Mariański <lmarianski at protonmail dot com>
 
 _pkgname=vscodium
-_electron=electron19
-# _nodejs="16.14"
+_electron=electron
+ _nodejs="16.17.1"
 
 pkgname=${_pkgname}-electron
-pkgver=1.77.3.23102
+pkgver=1.78.2.23132
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing. - System-wide Electron edition"
 arch=('x86_64' 'aarch64' 'armv7h')
