@@ -2,7 +2,7 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=megapixels
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc='GTK4 camera application that knows how to deal with the media request api'
 arch=('x86_64' 'aarch64')

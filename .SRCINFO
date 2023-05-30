@@ -1,6 +1,6 @@
 pkgbase = megapixels
 	pkgdesc = GTK4 camera application that knows how to deal with the media request api
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://gitlab.com/postmarketOS/megapixels
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = megapixels
 	depends = gtk4
 	depends = zbar
 	depends = feedbackd
-	source = https://gitlab.com/postmarketOS/megapixels/-/archive/1.6.0/megapixels-1.6.0.tar.gz
+	source = https://gitlab.com/postmarketOS/megapixels/-/archive/1.6.1/megapixels-1.6.1.tar.gz
 	b2sums = adca9fcad9e6d7b4181a0aac8aa8c1a7b00978ce22d79a589e161fb8736e850d5e431263885a56a4407f5ee58f6cdb915aa6bbfb8c5fc13ee13567d3bbea2bbd
 
 pkgname = megapixels
