@@ -1,6 +1,6 @@
 pkgbase = gotp
 	pkgdesc = A command line interface to manage and generate Time-based One Time Password (TOTP)
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://git.sr.ht/~shulhan/gotp
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gotp
 	makedepends = go
 	makedepends = git
 	makedepends = asciidoctor
-	source = gotp-0.3.0.tar.gz::https://git.sr.ht/~shulhan/gotp/archive/v0.3.0.tar.gz
-	sha256sums = b37f38e15e74d3e82b5727a9077b060b1eb48b295f47aaa1453c0d30fc1406f9
+	source = gotp-0.3.1.tar.gz::https://git.sr.ht/~shulhan/gotp/archive/v0.3.1.tar.gz
+	sha256sums = 9f23c40bee1f79320f4f8bf38e344fa107ca3be3e7feac7e59398658896b7770
 
 pkgname = gotp
