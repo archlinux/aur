@@ -9,7 +9,7 @@ url='https://zeroxoneafour.github.io/polonium/'
 license=('MIT')
 
 depends=('kwin')
-makedepends=('npm' 'typescript')
+makedepends=('git' 'npm' 'typescript')
 
 source=("$pkgname::git+https://github.com/zeroxoneafour/polonium#commit=0680f0f36dbf8492457ca6df69b58f1ab1d789a8")
 sha1sums=('SKIP')

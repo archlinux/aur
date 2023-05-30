@@ -5,6 +5,7 @@ pkgbase = kwin-polonium
 	url = https://zeroxoneafour.github.io/polonium/
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = npm
 	makedepends = typescript
 	depends = kwin
