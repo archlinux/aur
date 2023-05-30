@@ -2,7 +2,7 @@
 #Contributer: NN777 <NN777@NN777.com>
 
 pkgname=('kingstvis')
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="Kingst Virtual Instruments - Logic Analyzer"
 provides=("kingstvis")
@@ -17,7 +17,7 @@ logo-2.png
 logo-3.png
 logo-4.png
 )
-md5sums=('1aa82fc8454d239cf424bdbea2862fa4'
+md5sums=('126359f07bf824cefa3f4df6b7801cf0'
 SKIP
 SKIP
 SKIP
