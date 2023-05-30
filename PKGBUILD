@@ -19,7 +19,7 @@ pkgname=(
   pipewire-full-ffmpeg-git
   pipewire-full-roc-git
 )
-pkgver=0.3.66.r13.g0b69f37a
+pkgver=0.3.71.r53.g3626b1e9
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -31,6 +31,7 @@ makedepends=(
   glib2 webrtc-audio-processing libusb bluez-libs
   sbc libldac libfreeaptx libfdk-aac opus
   lilv libx11 libxfixes libcanberra libcamera
+  libffado
   liblc3
   avahi openssl
   gst-plugins-base-libs
@@ -103,6 +104,7 @@ package_pipewire-full-git() {
     libfreeaptx.so libfdk-aac.so libopus.so
     liblilv-0.so
     libcamera-base.so libcamera.so
+    libffado.so
     liblc3.so
     libmysofa
   )
