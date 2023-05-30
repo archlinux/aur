@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=pts-tiny-7z-sfx
-pkgver=9.22_pts6
-pkgrel=1
+pkgver=9.22_pts7
+pkgrel=0
 epoch=
 pkgdesc="pts-tiny-7z-sfx is a tiny 7-Zip (.7z archive) extractor and self-extractor(SFX) written in standard C. It's Unix-only, actively tested on Linux."
 arch=('any')
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("${pkgname}-${pkgver/_/-}.tar.gz::${url}/archive/refs/tags/v${pkgver/_/+}.tar.gz")
 noextract=()
-sha256sums=('32867aca5b8095567834734c0406acb6309667c6765a9636c886516363e153a5')
+sha256sums=('9bc7be2f54e0ef789825ac520e3d4a5c53cd208e4c362a915ef4644cb928e9f1')
 #validpgpkeys=()
 
 build(){
