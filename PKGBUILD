@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=assertive.code
-_pkgver=0.0-3
+_pkgver=0.0-4
 pkgname=r-${_pkgname,,}
-pkgver=0.0.3
-pkgrel=4
+pkgver=0.0.4
+pkgrel=1
 pkgdesc='Assertions to Check Properties of Code'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -19,7 +19,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ef80e8d1d683d776a7618e78ddccffca7f72ab4a0fcead90c670bb8f8cb90be2')
+sha256sums=('2f820474ed20e06f65b284962c87cd1e85220a11cc7fcde09716f0eee5821387')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
