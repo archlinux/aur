@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-openssl-1.1
 	pkgdesc = The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (mingw-w64)
-	pkgver = 1.1.1.s
+	pkgver = 1.1.1.u
 	pkgrel = 1
 	url = https://www.openssl.org
 	arch = any
@@ -14,12 +14,12 @@ pkgbase = mingw-w64-openssl-1.1
 	options = staticlibs
 	options = !buildflags
 	options = !lto
-	source = https://www.openssl.org/source/openssl-1.1.1s.tar.gz
-	source = https://www.openssl.org/source/openssl-1.1.1s.tar.gz.asc
+	source = https://www.openssl.org/source/openssl-1.1.1u.tar.gz
+	source = https://www.openssl.org/source/openssl-1.1.1u.tar.gz.asc
 	validpgpkeys = 8657ABB260F056B1E5190839D9C4D26D0E604491
 	validpgpkeys = 7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C
 	validpgpkeys = A21FAB74B0088AA361152586B8EF1A6BA9DA2D5C
-	sha256sums = c5ac01e760ee6ff0dab61d6b2bbd30146724d063eb322180c6f18a6f74e4b6aa
+	sha256sums = e2f8d84b523eecd06c7be7626830370300fbcc15386bf5142d72758f6963ebc6
 	sha256sums = SKIP
 
 pkgname = mingw-w64-openssl-1.1
