@@ -1,14 +1,14 @@
 pkgbase = goshs-bin
 	pkgdesc = A SimpleHTTPServer written in Go, enhanced with features and with a nice design
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hesec.de/tags/goshs/
 	arch = x86_64
 	arch = i386
 	arch = arm64
 	license = MIT
 	conflicts = goshs
-	source = goshs-0.3.2.tar.gz::https://github.com/patrickhener/goshs/releases/download/v0.3.2/goshs_linux_amd64.tar.gz
-	sha256sums = 756e98f80d4d2c6794da44473bcf441c2175f35d310a20329640e17e7ad674a5
+	source = goshs-0.3.2.tar.gz::https://github.com/patrickhener/goshs/releases/download/v0.3.2/goshs_linux_x86_64.tar.gz
+	sha256sums = 993e0650dff6c0d6e5eef2cfa34ca63be7479112493fb325c3abc5ba12401492
 
 pkgname = goshs-bin
