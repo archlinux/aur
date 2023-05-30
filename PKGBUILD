@@ -2,8 +2,8 @@
 
 pkgname=opensnitch-ebpf-module-git
 _pkgname=opensnitch
-pkgver=1.6.0rc5.r75.89dc6ab
-pkgrel=1
+pkgver=1.6.0rc5.r76.102b65e
+pkgrel=2
 pkgdesc="eBPF process monitor module for opensnitch"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/evilsocket/opensnitch"
@@ -14,8 +14,10 @@ makedepends=('git' 'clang' 'llvm' 'libelf'
 depends=('opensnitch')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/evilsocket/opensnitch.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/evilsocket/opensnitch.git'
+        '0001-Build-with-Archlinux.patch')
+sha256sums=('SKIP'
+            '446c029de1cbd39308575e346511d80ee160d2dea575d64fddc7835fc3040460')
 options=('!strip') # we're stripping with llvm-strip
 
 pkgver() {
@@ -26,7 +28,7 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_pkgname}/ebpf_prog"
 
-  patch Makefile < "${srcdir}/../0001-Build-with-Archlinux.patch"
+  patch Makefile < "${srcdir}/0001-Build-with-Archlinux.patch"
 }
 
 build() {
