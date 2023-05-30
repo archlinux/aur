@@ -1,5 +1,5 @@
 pkgbase = writeas-cli
-	pkgdesc = Write.as command line interface
+	pkgdesc = Write.as / WriteFreely command line interface
 	pkgver = 2.0.0
 	pkgrel = 4
 	url = https://write.as/apps/cli
@@ -11,4 +11,3 @@ pkgbase = writeas-cli
 	sha256sums = e70e47e3ed28f26ca2ffb12723ddbdaffdea9a6a8db5a1e8a34272c1ef8511aa
 
 pkgname = writeas-cli
-
