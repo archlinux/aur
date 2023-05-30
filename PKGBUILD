@@ -1,11 +1,11 @@
 # Maintainer: shulhan <ms@kilabit.info>
 
 pkgname=google-cloud-ops-agent-git
-pkgver=2.25.1.r18.g4f5c90bc5
+pkgver=2.33.0.r8.g93b07bdd5
 pkgrel=1
 
 pkgdesc="Ops Agents that are part of the Google Cloud Operations product suite (specifically Cloud Logging and Cloud Monitoring)"
-arch=(x86_64)
+arch=('x86_64' 'aarch64')
 url='https://github.com/GoogleCloudPlatform/ops-agent'
 license=('Apache License 2.0')
 groups=()
