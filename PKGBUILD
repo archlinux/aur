@@ -14,7 +14,7 @@ url="https://slippi.gg/"
 license=('GPL2')
 depends=(
 	'alsa-lib' 'bluez-libs' 'enet' 'hidapi' 'libevdev' 'libgl' 'libpng'
-	'libpulse' 'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls' 'pugixml' 'qt5-base'
+	'libpulse' 'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls2' 'pugixml' 'qt5-base'
 	'sfml' 'zlib' 'webkit2gtk'
 	'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libcurl.so'
 	'libminiupnpc.so' 'libswscale.so' 'libudev.so' 'libusb-1.0.so'
