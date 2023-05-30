@@ -3,7 +3,7 @@
 pkgname=bavarder
 _pkgname=Bavarder
 pkgver=0.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Chit-Chat with AI"
 arch=('any')
 url="https://bavarder.codeberg.page"
@@ -13,7 +13,7 @@ depends=('libadwaita' 'python-gobject' 'python-lxml' 'python-openai' 'python-hgc
 makedepends=('blueprint-compiler' 'meson')
 checkdepends=('appstream-glib')
 source=(https://codeberg.org/Bavarder/Bavarder/archive/${pkgver//_/-}.tar.gz)
-b2sums=('6feb5212bf052fdb8f87525df4277ba990b6a536df45412bebf6ef8e0251662e837e4d5b87c8e898e2644664744982e2cdbe16ed1f980ffb5027b5dda3af6d8c')
+b2sums=('af568bab0efb730406e01d8057db6256828ec61345f4a18eaef0e0bfc1fcf8e6f8dde8ad835d77cb2bdc1e2c009ca14652f28a23ec2af0dcc7863cabfb194ab9')
 
 build() {
   arch-meson "$pkgname" build
