@@ -6,23 +6,30 @@
 _projectname='lwt'
 pkgname="ocaml-$_projectname"
 pkgver='5.6.1'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='A library for cooperative threads in OCaml'
 # If you're running on aarch64, you have to add it to the arch array of the cppo, ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocsigen/$_projectname"
 license=('MIT')
-depends=('libev' 'dune>=1.8.0' 'ocaml>=4.08.0' 'ocaml-luv' 'ocaml-ocplib-endian' 'ocaml-ppxlib>=0.16.0' 'ocaml-react>=1.0.0')
+depends=('libev' 'dune>=1.8.0' 'ocaml>=4.08.0' 'ocaml-domainslib>=0.5.0' 'ocaml-luv' 'ocaml-ocplib-endian' 'ocaml-ppxlib>=0.16.0' 'ocaml-react>=1.0.0')
 makedepends=('cppo>=1.1.0')
 checkdepends=('ocaml-ppx_let')
 options=('!strip')
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('698875bd3bfcd5baa47eb48e412f442d289f9972421321541860ebe110b9af1949c3fbc253768495726ec547fe4ba25483cd97ff39bc668496fba95b2ed9edd8')
+source=(
+	"$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz"
+	"$pkgname-$pkgver-$pkgrel-domainslib-compatibility.diff::$url/commit/69bd080c843d457eb6543ab9e8a4c88da11f7939.diff"
+)
+sha512sums=('698875bd3bfcd5baa47eb48e412f442d289f9972421321541860ebe110b9af1949c3fbc253768495726ec547fe4ba25483cd97ff39bc668496fba95b2ed9edd8'
+            '3416dafee3913c71ec90fa3b966b2afb936188ba4cddc7590c36561336c72a0e997536f67651fe33ae1b7c7b5e05a82341fec1d60b9e089e426b6d95f66febc2')
 
 _sourcedirectory="$_projectname-$pkgver"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
+
+	# Fix domainslib 0.5.0 compatibility
+	patch --forward -p1 < "../$pkgname-$pkgver-$pkgrel-domainslib-compatibility.diff"
 
 	# This test breaks for some people but not for others,
 	# see comments from oriba, crave and pha-qu on the AUR page
