@@ -1,7 +1,7 @@
 # Maintainer: Isabel <isabel@isabelroses.com>
 pkgname=catppuccinifier-gui-git
 _pkgname=catppuccinifier-gui
-pkgver=r39.4c52782
+pkgver=r58.6253fbe
 pkgrel=1
 pkgdesc="An application to catppuccinifiy your images."
 arch=('x86_64')
@@ -9,8 +9,8 @@ url="https://github.com/lighttigerXIV/catppuccinifier"
 license=()
 provides=('catppuccinifier-gui')
 conflicts=('catppuccinifier-gui')
-depends=('imagemagick' 'libadwaita')
-makedepends=('git' 'cargo' 'npm' 'node' 'cmake' 'webkit2gtk' 'base-devel' 'curl' 'wget' 'openssl' 'appmenu-gtk-module' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libvips')
+depends=('npm' 'cmake' 'imagemagick' 'libadwaita' 'webkit2gtk' 'base-devel' 'curl' 'wget' 'openssl' 'appmenu-gtk-module' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libvips')
+makedepends=('git' 'cargo')
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
@@ -23,7 +23,9 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
 	cd "$pkgname/src/source-code/catppuccinifier-gui"
 	npm ci
-	npm run tauri build
+	npm run build
+	cd "src-tauri"
+	cargo build --release
 }
 
 package() {
