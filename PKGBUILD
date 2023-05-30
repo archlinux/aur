@@ -1,8 +1,9 @@
-# Maintainer: dreieck (https://aur.archlinux.org/account/dreieck)
+# Maintainer:
+# Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
 
-_pkgname=python-tiktoken
-pkgname="${_pkgname}-git"
-pkgver=0.3.2+1.r18.20230317.82facf9
+_pkgname="python-tiktoken"
+pkgname="$_pkgname-git"
+pkgver=0.4.0.r0.g095924e
 pkgrel=1
 pkgdesc="A fast BPE tokeniser for use with OpenAI's models."
 arch=(
@@ -13,87 +14,73 @@ arch=(
 )
 url="https://github.com/openai/tiktoken"
 license=('MIT')
+
 depends=(
-  'python>=3.8'
-  'python-blobfile>=2'
-  'python-regex>=2022.1.18'
-  'python-requests>=2.26.0'
+  'python'
+  'python-regex'
+  'python-requests'
+
+  # AUR
+  'python-blobfile'
 )
 makedepends=(
   'git'
   'python-build'
   'python-installer'
-  'python-setuptools>=62.4'
-  'python-setuptools-rust>=1.5.2'
+  'python-setuptools'
+  'python-setuptools-rust'
   'python-wheel'
 )
 checkdepends=(
   'python-pytest'
 )
+
 provides=(
-  "${_pkgname}=${pkgver}"
+  "$_pkgname"
 )
 conflicts=(
-  "${_pkgname}"
+  ${provides[@]}
 )
-replaces=()
+
 source=(
-  "${_pkgname}::git+${url}.git"
+  "$_pkgname"::"git+$url"
 )
 sha256sums=(
   'SKIP'
 )
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-
-  _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' | tr '-' '+')"
-  _rev="$(git rev-list --count HEAD)"
-  _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
-  _hash="$(git rev-parse --short HEAD)"
-
-  if [ -z "${_ver}" ]; then
-    error "Could not determine version."
-    return 1
-  else
-    printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
-  fi
+  cd "$srcdir/$_pkgname"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "${srcdir}/${_pkgname}"
-  export CARGO_HOME="${srcdir}/cargo"export CARGO_HOME="${srcdir}/cargo"
+  cd "$srcdir/$_pkgname"
 
-  git log > "${srcdir}/git.log"
-
-  python ./setup.py build_rust # This will download stuff, therefore we have it in `prepare()`.
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
-  export CARGO_HOME="${srcdir}/cargo"
+  cd "$srcdir/$_pkgname"
 
   python -m build --wheel --no-isolation
 }
 
 # check() {
-#   cd "${srcdir}/${_pkgname}"
-#   export CARGO_HOME="${srcdir}/cargo"
-# 
+#   cd "$srcdir/$_pkgname"
 #   python -m pytest
 # }
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  export CARGO_HOME="${srcdir}/cargo"
 
-  export PYTHONHASHSEED=0
-  python -m installer --destdir="${pkgdir}" dist/*.whl
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -D -v -m644 LICENSE                       "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm0644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
+
   for _docfile in CHANGELOG.md README.md; do
-    install -D -v -m644 "${_docfile}"               "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
+    install -vDm0644 "$_docfile" -t "$pkgdir/usr/share/doc/$_pkgname"
   done
-  install -D -v -m644 "${srcdir}/git.log"           "${pkgdir}/usr/share/doc/${_pkgname}/git.log"
-  ln -svf "/usr/share/licenses/${pkgname}/LICENSE"  "${pkgdir}/usr/share/doc/${_pkgname}/LICENSE"
+
+  ln -svf "/usr/share/licenses/$pkgname/LICENSE" "$pkgdir/usr/share/doc/$_pkgname/LICENSE"
 }
