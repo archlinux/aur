@@ -4,10 +4,6 @@ pkgbase = ocaml-luv
 	pkgrel = 3
 	url = https://github.com/aantron/luv
 	arch = x86_64
-	arch = i486
-	arch = i686
-	arch = pentium4
-	arch = armv7h
 	arch = aarch64
 	license = MIT
 	makedepends = dune>=2.0.0

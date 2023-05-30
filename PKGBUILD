@@ -4,7 +4,7 @@ pkgname="ocaml-$_projectname"
 pkgver='0.5.12'
 pkgrel='3'
 pkgdesc='Cross-platform asynchronous I/O and system calls'
-arch=('x86_64' 'i486' 'i686' 'pentium4' 'armv7h' 'aarch64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/aantron/$_projectname"
 license=('MIT')
 depends=('libuv' 'ocaml>=4.03.0' 'ocaml-compiler-libs' 'ocaml-ctypes>=0.14.0' 'ocaml-stdlib-shims')
