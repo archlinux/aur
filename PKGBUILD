@@ -4,29 +4,29 @@
 # Contributor: Sebastian Stenzel <sebastian.stenzel@gmail.com>
 
 pkgname=cryptomator
-pkgver=1.7.5
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Multiplatform transparent client-side encryption of your files in the cloud."
 arch=('any')
 url="https://cryptomator.org/"
 license=('GPL3')
 depends=('fuse3' 'alsa-lib' 'hicolor-icon-theme' 'libxtst' 'libnet' 'libxrender')
-makedepends=('java-environment>=19' 'java-environment<20' 'java-openjfx>=19' 'java-openjfx<20' 'maven')
+makedepends=('java-environment>=20' 'java-environment<21' 'java-openjfx>=20' 'java-openjfx<21' 'maven')
 optdepends=('keepassxc-cryptomator: Use KeePassXC to store vault passwords' 'ttf-hanazono: Install this font when using Japanese system language')
 source=("cryptomator-${pkgver}.tar.gz::https://github.com/cryptomator/cryptomator/archive/refs/tags/${pkgver}.tar.gz"
         "cryptomator-${pkgver}.tar.gz.asc::https://github.com/cryptomator/cryptomator/releases/download/${pkgver}/cryptomator-${pkgver}.tar.gz.asc")
-sha256sums=('9ac98e4b8212978b6bf7fb379c89ee7e45c37588ad7fa2e0741f703cb537d940'
+sha256sums=('4857f146e18169ed9d161e4df316df79641cfa7c43bb78840d860f11c17761e8'
             'SKIP')
 options=('!strip')
 
 validpgpkeys=('58117AFA1F85B3EEC154677D615D449FE6E6A235')
 
 prepare() {
-  if ! archlinux-java status | grep default | grep -E "19" ; then
-      echo "You don't have a Java 19 JDK selected as your Java environment but the following installed on your system:"
+  if ! archlinux-java status | grep default | grep -E "20" ; then
+      echo "You don't have a Java 20 JDK selected as your Java environment but the following installed on your system:"
       echo "`archlinux-java status | sed '1,${/^Available Java environments/d}' | sed 's/^/     /'`"
-      echo "Select a Java 19 JDK using \"sudo archlinux-java set [name from the list above]\""
-      echo "If you switched to a JDK 19, please re-run the installation."
+      echo "Select a Java 20 JDK using \"sudo archlinux-java set [name from the list above]\""
+      echo "If you switched to a JDK 20, please re-run the installation."
       return 1
   fi
 
