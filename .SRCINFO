@@ -1,9 +1,9 @@
 pkgbase = notesnook
 	pkgdesc = Take private notes, capture ideas, make lists & sync them anywhere
-	pkgver = 2.4.11
+	pkgver = 2.5.0
 	pkgrel = 1
-	url = https://notesnook.com/
-	arch = x86_64
+	url = https://github.com/streetwriters/notesnook
+	arch = any
 	license = GPLv3
 	makedepends = nvm
 	makedepends = git
