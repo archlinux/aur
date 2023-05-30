@@ -1,6 +1,6 @@
 pkgbase = linux-rockchip-rk3588-bin
 	pkgver = 5.10.110
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/armbian/build
 	arch = aarch64
 	license = GPL2

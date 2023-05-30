@@ -8,7 +8,7 @@ pkgname=("$pkgbase" "$pkgbase-headers")
 pkgver=5.10.110
 _armbver=23.02.2
 _kernver="$pkgver-$_target"
-pkgrel=5
+pkgrel=6
 arch=('aarch64')
 _desc="AArch64 multi-platform $_target"
 url="https://github.com/armbian/build"
@@ -70,6 +70,7 @@ _package() {
 
   # install boot image
   install -Dm644 "boot/vmlinuz-$_kernver" "$pkgdir/usr/lib/modules/$_kernver/vmlinuz"
+  install -Dm644 "boot/vmlinuz-$_kernver" "$pkgdir/boot/vmlinuz-linux-rockchip-rk3588"
 
   # used by mkinitcpio to name the kernel
   echo "$_pkgbase" | install -Dm644 /dev/stdin "$pkgdir/usr/lib/modules/$_kernver/pkgbase"
