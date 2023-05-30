@@ -1,4 +1,5 @@
-# Maintainer: Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
+# Maintainer:
+# Contributor: Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
 
 _pkgname=python-ssdeep
 pkgname=$_pkgname-git
@@ -14,12 +15,21 @@ depends=(
 )
 makedepends=(
   'git'
+  'python-build'
+  'python-installer'
   'python-pip'
   'python-setuptools'
+  'python-setuptools-scm'
+  'python-wheel'
 )
-checkdepends=('python-pytest')
-provides=(${_pkgname})
+checkdepends=(
+  'python-pytest'
+  'python-pytest-runner'
+  'unzip'
+)
+provides=("$_pkgname")
 conflicts=(${provides[@]})
+
 source=("$_pkgname"::"git+$url")
 md5sums=('SKIP')
 
@@ -30,15 +40,16 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  python setup.py build
+  python -m build --no-isolation --wheel
 }
 
 check() {
   cd "$srcdir/$_pkgname"
-  python setup.py test
+  unzip dist/*.whl
+  pytest
 }
 
 package() {
   cd "$srcdir/$_pkgname"
-  python setup.py install --root=${pkgdir} --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
