@@ -1,0 +1,6 @@
+SUBSYSTEM!="usb|usb_device|plugdev", GOTO="mvbf3_rules_end"
+ACTION!="add", GOTO="mvbf3_rules_end"
+
+ATTRS{idVendor}=="164c", ATTRS{idProduct}=="5531", MODE="0664", GROUP="plugdev"
+
+LABEL="mvbf3_rules_end"

@@ -1,0 +1,42 @@
+pre_install() {
+    echo
+    echo "-----------------------------------------------------------------------------------"
+    echo "${bold}BY INSTALLING THIS SOFTWARE YOU HAVE AGREED TO THE EULA(END USER LICENSE AGREEMENT)${reset}"
+    echo "-----------------------------------------------------------------------------------"
+    echo
+}
+
+pre_upgrade() {
+    pre_install $1
+}
+
+post_install() {
+    echo There are a few things that might need to be tweaked to get a reliably working setup:
+    echo 
+    echo '1. Consider increasing your network buffers to allow capturing high bandwidth cameras. A sample file is included and can be symlinked:'
+    echo '  ln -s /usr/share/mvimpact-acquire/62-buffers-performance.conf /etc/sysctl.d/62-buffers-performance.conf'
+    echo 
+    echo '2. To be able to use U3V devices, copy or symling 52-u3v.rules and 52-mvbf3.rules from /usr/share/mvimpact-acquire/ to /etc/udev/rules.d'
+    echo '  ln -s /usr/share/mvimpact-acquire/52-u3v.rules /etc/sysctl.d/52-u3v.rules'
+    echo '  ln -s /usr/share/mvimpact-acquire/52-mvbf3.rules /etc/sysctl.d/52-mvbf3.rules'
+    echo 
+    echo '3.a Increase the usb buffer size by activating the following service:'
+    echo '  systemctl enable resize-usbfs-buffersize.service'
+    echo '  systemctl start resize-usbfs-buffersize.service'
+    echo 
+    echo '3.b alternatively add usbcore.usbfs_memory_mb=<buffer size in MB> to you kernel cmdline (256MB is a good start)'
+    echo
+    # not relevant as pcie kernel module is not build
+    # echo 'To be able to use mvBlueNAOS devices, copy 51-udev-pcie.rules from '$DEF_DIRECTORY'/Scripts/ to /etc/udev/rules.d'
+    # echo 'and make_device.sh and device_namer.sh to /usr/local/bin/.'
+    echo '4. If non-root users are required to access the device, they need to be added to the plugdev group:'
+    echo '  usermod -a -G plugdev username'
+}
+
+post_upgrade() {
+    post_install $1
+    echo reload udev rules
+    udevadm control --reload
+    # echo 'source exports'
+    # source /etc/profile.d/$GENICAM_EXPORT_FILE
+}

@@ -1,0 +1,6 @@
+SUBSYSTEM!="usb|usb_device|plugdev", GOTO="u3v_rules_end"
+ACTION!="add", GOTO="u3v_rules_end"
+
+ATTRS{bDeviceClass}=="ef", ATTRS{bDeviceSubClass}=="02", ATTRS{bDeviceProtocol}=="01", ENV{ID_USB_INTERFACES}=="*:ef0500:*", MODE="0664", GROUP="plugdev"
+
+LABEL="u3v_rules_end"

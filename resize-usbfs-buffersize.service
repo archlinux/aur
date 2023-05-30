@@ -1,0 +1,15 @@
+[Unit]
+Description=MAXTRIX VISION - USB buffer size modification service
+
+Wants=network.target
+After=syslog.target network-online.target
+
+[Service]
+Type=simple
+ExecStart=/opt/mvIMPACT_Acquire/Scripts/resize_usbfs_buffersize.sh
+Restart=on-failure
+RestartSec=10
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
