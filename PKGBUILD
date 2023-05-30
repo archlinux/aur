@@ -3,7 +3,7 @@
 # Contributor: James Spencer <james.s.spencer@gmail.com>
 # Contributor: Anton Kudelin <kudelin at protonmail dot com>
 pkgname=libxc
-pkgver=6.1.0
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="A library of exchange-correlation functionals for density-functional theory"
 arch=('i686' 'x86_64' 'aarch64')
@@ -13,7 +13,7 @@ depends=(python-numpy)
 makedepends=(gcc-fortran cmake)
 #source=(${url}/down.php?file=${pkgver}/${pkgname}-${pkgver}.tar.gz)
 source=(https://gitlab.com/${pkgname}/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('bf8e3d4af4f2d007a832d58d1908e0ae7a449c4e3afc2f04fcfa6cafbf943cc262eac84980f17b663e135617bcf311c6ac879954b32a4abdcddc07d9a12f27de')
+sha512sums=('924eccabf75972e066f7550967516eccca3d02ec672027de02fcb86e0cdb5b8e30a03424f8c1531ce3c5ed98ab7c310005e3163a6670c0a9524c51129556b525')
 options=(staticlibs)
 
 build() {
