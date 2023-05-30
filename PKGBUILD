@@ -1,14 +1,29 @@
 # Maintainer:
 
-_reduce_size="false"
+# packaging options
+_reduce_size="false" # remove unneeded files
+_autoupdate="true"
+
+# update version
+if [ x"$_autoupdate" == "xtrue" ] ; then
+  _get() {
+    curl https://api.github.com/repos/PCSX2/pcsx2/tags -s \
+      | awk -F '"' '/"'"$1"'":/{print $4}' \
+      | head -1 | sed 's/^v//'
+  }
+  _pkgver=$(_get name)
+else
+  _pkgver=1.7.4545
+fi
+_appimage="pcsx2-v$_pkgver-linux-AppImage-64bit-Qt.AppImage"
 
 _pkgname='pcsx2'
 pkgname="$_pkgname-bin"
-pkgver=1.7.4534
+pkgver=1.7.4545
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
-#url='https://www.pcsx2.net'
+# https://www.pcsx2.net
 url='https://github.com/PCSX2/pcsx2'
 license=(
   'GPL3'
@@ -17,9 +32,7 @@ license=(
 options=(!strip !debug)
 
 depends=()
-makedepends=(
-  'jq'
-)
+makedepends=()
 
 provides=(
   'pcsx2'
@@ -29,15 +42,15 @@ provides=(
 conflicts=(${provides[@]})
 
 source=(
+  "$url/releases/download/v$_pkgver/$_appimage"
   'rm_libs'
 )
 sha256sums=(
   'SKIP'
+  'SKIP'
 )
 
 pkgver() {
-  local _pkgver=$(curl --silent "https://api.github.com/repos/PCSX2/pcsx2/tags" | jq -r 'first | .name' | sed 's/^v//')
-
   if [ "$_reduce_size" == "true" ] ; then
     printf "%s.%s" \
       "$_pkgver" \
@@ -49,21 +62,6 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir"
-
-  _appimage="pcsx2-v${pkgver%.[a-z]*}-linux-AppImage-64bit-Qt.AppImage"
-
-  # find or download latest appimage
-  if [ -f "$_appimage" ] ; then
-    : # already exists, nothing to do
-  elif [ -f "../$_appimage" ] ; then
-    ln -sf "../$_appimage" ./
-  else
-    # note: download in build because prepare runs before pkgver
-    curl -L -o "$_appimage" \
-      "$url/releases/download/v${pkgver%.[a-z]*}/$_appimage"
-  fi
-
   # extract appimage
   chmod +x "$_appimage"
   "./$_appimage" --appimage-extract
@@ -73,8 +71,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir"
-
   install -Dm755 "$srcdir/squashfs-root/AppRun" "$pkgdir/usr/bin/pcsx2-qt"
 
   install -Dm644 -t "$pkgdir/usr/share/applications" "$srcdir/squashfs-root/PCSX2.desktop"
