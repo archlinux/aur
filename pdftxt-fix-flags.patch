@@ -2,7 +2,8 @@
 +++ b/Makefile	2023-05-29 16:21:19.496966792 -0400
 @@ -1,12 +1,12 @@
  PREFIX = .
- CC = cc
+-CC = cc
++CC ?= cc
 -CFLAGS = -Wall -O2 -I$(PREFIX)/include
 -LDFLAGS = -L$(PREFIX)/lib
 +CFLAGS += -Wall -O2 -I$(PREFIX)/include
