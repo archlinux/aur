@@ -4,8 +4,8 @@
 # Contributor: M. Jarvis
 _base=Coord
 pkgname=python-${_base,,}
-pkgver=1.2.3
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="Python module for handling angle and celestial coordinates"
 arch=('x86_64')
 url="https://github.com/LSSTDESC/${_base}"
@@ -14,7 +14,7 @@ depends=(libffi python-cffi python-future python-numpy)
 makedepends=(python-build python-installer python-setuptools python-wheel python-sphinx)
 checkdepends=(python-pytest python-astropy)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('6e1168254864529edfb8090b38926c482a50b19bcc2a6268e6a92d8dd4881bcd6999dc0f2b8a067fd0ce8b8217673844ac23cfa8feec3652ceeb8235dac19ee9')
+sha512sums=('f728779de9a2de6e2bf75c0c0147b8754cc8c9271f919f4c9bb37ce158f21c587f0f42ca8ee2ea1b32ef108e5f9bb5f31750142c5c50f379d9604391a3e92e08')
 
 build() {
   cd ${_base}-${pkgver}
