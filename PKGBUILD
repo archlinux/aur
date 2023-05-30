@@ -3,30 +3,31 @@
 
 pkgname=python-pg8000
 # https://github.com/tlocke/pg8000#release-notes
-pkgver=1.29.5
+pkgver=1.29.6
 pkgrel=1
+# curl $(curl https://api.github.com/repos/tlocke/pg8000/git/ref/tags/$pkgver | jq -r .object.url) | jq -r .object.sha
+_commit=fb98c407ebd8261485dc80d37a41daeb27764017
 pkgdesc="Pure-Python PostgreSQL database driver, DB-API compatible"
 arch=(any)
 url='https://github.com/tlocke/pg8000'
 license=(BSD)
-makedepends=(python-setuptools python-build python-installer python-versioningit python-wheel)
+makedepends=(git python-setuptools python-build python-installer python-versioningit python-wheel)
 checkdepends=(python-pytest python-pytest-mock python-pytest-benchmark
               python-pytz postgresql)
 depends=(python python-scramp python-dateutil)
-source=("https://files.pythonhosted.org/packages/source/p/pg8000/pg8000-$pkgver.tar.gz"{,.asc})
-sha256sums=('8e3e0c3b98f08c0d0111a276b0d4e65e56e59700452c568101348d6f6fba4375'
-            'SKIP')
+source=("git+https://github.com/tlocke/pg8000.git?signed#commit=$_commit")
+sha256sums=('SKIP')
 validpgpkeys=(
   'D5681B7EC7292511C4CC1450892B00AB699851E8'  # Tony Locke <tlocke@tlocke.org.uk>, proven by https://keybase.io/tlocke
 )
 
 build() {
-  cd pg8000-$pkgver
+  cd pg8000
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd pg8000-$pkgver
+  cd pg8000
 
   export PGDATA="$srcdir/postgres-testdata"
   export PGHOST=127.0.0.1
@@ -68,7 +69,7 @@ EOF
 }
 
 package() {
-  cd pg8000-$pkgver
+  cd pg8000
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
