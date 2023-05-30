@@ -9,7 +9,7 @@
 pkgbase=wireshark-oqs
 _pkgbase=wireshark
 pkgname=('wireshark-oqs-cli' 'wireshark-oqs-qt')
-pkgver=4.0.5
+pkgver=4.0.6
 pkgrel=1
 pkgdesc='Network traffic and protocol analyzer/sniffer with support for PQK algorithms'
 url='https://www.wireshark.org/'
@@ -25,9 +25,11 @@ options=('!emptydirs')
 source=(https://www.wireshark.org/download/src/${_pkgbase}-${pkgver}.tar.xz
         wireshark.sysusers
         https://raw.githubusercontent.com/open-quantum-safe/openssl/OQS-OpenSSL_1_1_1-stable/qsc.h)
-b2sums=('932c017eaef6d0758a70bba3beb018e7512c41f9355c0948d744899aa79e5259cbbde6522ed216835781acd8f27d2a2b786aec0fadf33735a5b3cd324ab1a5d1'
-        '3cebcc993f51eaf0e09673c77e0436598593ef5eff306d880415ccc8eecb32fee93c9a6986f1a7bb0835ab7f9732369d7c5a07e6c053d6293e73a1ea84c58a5c'
-        'e10db6fe81f3f8ea69ea0d19d0aee77180a20d7f406ec7cdc3c040677f378a3f0ebd3edba1fd63d4993d1dbeb866a99ac74e481cfa80caf76ef80afea7b59b5b')
+b2sums=(
+  '5c4f3b6e16541afbeb9241d2c66c75da97df3164cbc841f1d5d5ba57fa102d85c8d22275180ce2e4fb72ed73c9fb8e64be1c9b4f337803d85146564bee43ce52'
+  '3cebcc993f51eaf0e09673c77e0436598593ef5eff306d880415ccc8eecb32fee93c9a6986f1a7bb0835ab7f9732369d7c5a07e6c053d6293e73a1ea84c58a5c'
+  '1cf2132ada0b20a589e0d533afe8cb7d5ae2e23e3453dd1c6938564db1fbb8900dd6fb15f5bbeec9a45404eb05faf0e2c1aaaf2a042e73fdd2cbcc5a6e48ebb5'
+)
 
 prepare() {
   cd ${_pkgbase}-${pkgver}
