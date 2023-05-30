@@ -1,0 +1,15 @@
+pkgbase = theseus-gui-git
+	pkgdesc = An open source cross-platform alternative to AirDrop
+	pkgver = r135.9ea548c
+	pkgrel = 1
+	url = https://github.com/modrinth/theseus
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo-tauri
+	makedepends = yarn
+	provides = theseus-gui
+	conflicts = theseus-gui
+	source = git+https://github.com/modrinth/theseus
+	sha256sums = SKIP
+
+pkgname = theseus-gui-git
