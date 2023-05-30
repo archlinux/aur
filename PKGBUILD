@@ -2,7 +2,7 @@
 
 pkgname=localsend-git
 _pkgname=localsend
-pkgver=v1.9.1.r5.gb34835c
+pkgver=v1.9.1.r26.g4e1792c
 pkgrel=1
 pkgdesc='An open source cross-platform alternative to AirDrop '
 url=https://github.com/localsend/localsend
