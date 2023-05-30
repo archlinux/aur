@@ -1,5 +1,5 @@
 pkgbase = theseus-gui-git
-	pkgdesc = An open source cross-platform alternative to AirDrop
+	pkgdesc = Official Modrinth launcher. Open-source, built by the community, for the community.
 	pkgver = r135.9ea548c
 	pkgrel = 1
 	url = https://github.com/modrinth/theseus
