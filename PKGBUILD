@@ -26,7 +26,7 @@ build() {
 
   git submodule update --init --recursive
 
-  meson setup build
+  meson setup build -Dtarget=system --prefix=/usr
 }
 
 package() {
