@@ -1,12 +1,11 @@
 pkgbase = dutree
 	pkgdesc = A tool to analyze file system usage written in Rust
 	pkgver = 0.2.18
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nachoparker/dutree
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
-	depends = gcc-libs
 	source = dutree-0.2.18.tar.gz::https://github.com/nachoparker/dutree/archive/v0.2.18.tar.gz
 	sha256sums = 55c30e57cc339dd16141510af33245cc3b82f588f22419fc034f02b36ebecba0
 
