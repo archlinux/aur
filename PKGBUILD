@@ -2,7 +2,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="dooble-bin"
 pkgver=2023.05.31
-pkgrel=1
+pkgrel=2
 pkgdesc="Web browser based on QtWebEngine"
 arch=(x86_64)
 url="https://textbrowser.github.io/dooble/"
@@ -15,10 +15,12 @@ depends=('libxshmfence' 'xcb-util-image' 'libxi' 'xcb-util-cursor' 'libxdamage' 
 conflicts=("${pkgname%-bin}")
 options=(!strip)
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/${pkgver}/Dooble-${pkgver}_amd64.deb"
-    "LICENSE::${_githuburl}/raw/master/LICENSE")
+    "LICENSE::https://raw.githubusercontent.com/textbrowser/dooble/master/LICENSE")
 sha256sums=('43c849dbef96a50685fedcdab8179b74bff0035233c13488af094220d50234f2'
-            'cbf629abfdc78b888d87ceae0847a9129e5b0e1baa8da4a1cec53324f38defb7')
+            'c60bf2d6a8bfdf7c7418bba91c6767cbb4b48dccae36dd5d9ffdb48f756815dd')
 package() {
     bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}"
     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    find "${pkgdir}/opt/${pkgname%-bin}" -type d -exec chmod 755 {} \;
+    find "${pkgdir}/opt/${pkgname%-bin}" -name "*.*" -exec chmod 644 {} \;
 }
