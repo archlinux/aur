@@ -6,7 +6,7 @@ _mainpkgname="$_projectname-emu"
 _noguipkgname="$_projectname-emu-nogui"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git")
-pkgver='5.0.r19452.g4dc4b28db4'
+pkgver='5.0.r19461.g356792cc20'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -29,7 +29,6 @@ source=(
 	"$pkgname-rcheevos::git+https://github.com/RetroAchievements/rcheevos.git"
 	"$pkgname-vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
 	"$pkgname-zlibng::git+https://github.com/zlib-ng/zlib-ng.git"
-	"$pkgname-mbedtls2.diff::https://github.com/$_mainpkgname/$_projectname/pull/11847.diff"
 	'minizip-ng.diff'
 )
 sha512sums=('SKIP'
@@ -38,7 +37,6 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '062513965a9a037d3e755c4fe071a0454d3f71738d7659698ce7287019cb986e30dbdc29a43910117d284fa058426c937896e896c3007961a7daeb2a2422a9aa'
             'b469597fe9b4e9be6ae9ab0330fe5e3d6b944a73505775ff75f9895ae4843768f3815d4b5b8e227d6d2e87c3f4882d6d7262f9df85be0aaddf46730a7afa16dd')
 
 _sourcedirectory="$pkgname"
@@ -47,9 +45,6 @@ prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 	if [ -d 'build/' ]; then rm -rf 'build/'; fi
 	mkdir 'build/'
-
-	# Fix mbedtls dependency to use mbedtls2
-	patch --forward -p1 < "$srcdir/$pkgname-mbedtls2.diff"
 
 	# Fix minizip-ng name for Arch
 	patch --forward -p1 < "$srcdir/minizip-ng.diff"
