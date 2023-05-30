@@ -9,11 +9,11 @@ arch=('any')
 url="https://imaginer.codeberg.page"
 license=('GPL3')
 depends=('libadwaita' 'python-gobject' 'python-lxml' 'python-openai' 'python-pillow'
-         'python-requests')
+         'python-requests' 'webkitgtk-6.0')
 makedepends=('blueprint-compiler' 'meson')
 checkdepends=('appstream-glib')
 source=(https://codeberg.org/Imaginer/Imaginer/archive/v${pkgver//_/-}.tar.gz)
-b2sums=('b81a709585bdba2f48d01698021e184aa872ac13c104e20af5533030368556ce8c5a383c23a3db828a95f9a8da4f2a52faf81b782581480971e8598c14396f87')
+b2sums=('a4dad078a9629cdff07ca5450c80d46b4eca1460b25a13b1380f3c0c91ac689746cf05754453ecd54b9dbf49dafe71b07ff30001cfabe13243d99d632ec374e2')
 
 build() {
   arch-meson "$pkgname" build
