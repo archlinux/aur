@@ -1,0 +1,16 @@
+pkgbase = vintagestory-servermgr
+	pkgdesc = systemd unit and script for managing a Vintage Story server
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Tiger-Tom/vintagestory-servermgr
+	install = vintagestory-servermgr.install
+	arch = any
+	license = MIT
+	depends = vintagestory-server
+	backup = var/vintagestory/server-data/
+	source = https://github.com/Tiger-Tom/vintagestory-servermgr/archive/refs/tags/v1.0.0.zip
+	source = vintagestory-servermgr.install
+	md5sums = c94a765b7097a0d2404a201696179b0d
+	md5sums = 76ea3b5557596621c28ca3eb0dba1c0b
+
+pkgname = vintagestory-servermgr

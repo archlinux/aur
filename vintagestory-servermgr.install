@@ -1,0 +1,7 @@
+post_upgrade() {
+    systemctl daemon-reload
+}
+
+post_remove() {
+    systemctl stop vintagestory-server.service
+}
