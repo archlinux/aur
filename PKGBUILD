@@ -4,22 +4,21 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=rio
-_pkgver=0.0.5-rc4
+_pkgver=0.0.5
 pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc="A hardware-accelerated GPU terminal emulator powered by WebGPU"
 arch=('x86_64' 'aarch64')
 url="https://github.com/raphamorim/${pkgname}"
 license=('MIT')
-depends=('gcc-libs' 'fontconfig' 'freetype2')
-makedepends=('cargo' 'desktop-file-utils')
+# https://raphamorim.io/rio/install/#arch-linux
+depends=('gcc-libs' 'fontconfig' 'freetype2' 'libxcb' 'libxkbcommon' 'python')
+makedepends=('cargo' 'cmake' 'desktop-file-utils')
 optdepends=()
-source=(
-    "${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz"
-    'rio.desktop')
-b2sums=(
-    '1e15a589d8dbb708f2cfa57d1272030bbf05d3c9953f80f8acb83b26a2c23117cdcd9cc3a1f50c03153e647d6b91e8baa44e923193e4ea9adeee94a6b1c16e2a'
-    '4725c1ab72b7cdcc055912e97827fd2705d48ee6f084d469f0fbbff4ce65f25ab715e4f208cb7058961e4001c273c9f444065b3aa64a85a638c25b84a2688d50')
+source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz"
+        'rio.desktop')
+b2sums=('cdbfbc0925e0ac64d170c8b9f0797ae9cca20acfac62b737c0bbf8f96fb69c7cd8b49eb5f0385e67ea8eb8c5aa04f160e37bfa772da62984005d78351bc19f7c'
+        '4725c1ab72b7cdcc055912e97827fd2705d48ee6f084d469f0fbbff4ce65f25ab715e4f208cb7058961e4001c273c9f444065b3aa64a85a638c25b84a2688d50')
 backup=()
 
 prepare() {
