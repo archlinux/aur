@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scico
-_pkgver=1.3.1
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Colour Palettes Based on the Scientific Colour-Maps'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('af7098ecc04f0948610447c2f77f61d45fd92dcb79edbe246e25def6a1fb4cb8')
+sha256sums=('669ea379b5a860cac1eade28965e11dd409eca27b86ef4f3245aee9475c59afd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
