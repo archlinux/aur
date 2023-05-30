@@ -1,7 +1,7 @@
 # Maintainer: FichteFoll <fichtefoll2@googlemail.com>
 
 pkgname=open-riichi-git
-pkgver=0.2.0.3.r44.g9a483f3
+pkgver=0.2.1.1.r1.gcf3f6e5
 pkgrel=1
 pkgdesc='An open source riichi (Japanese) mahjong client'
 arch=('x86_64')
@@ -18,7 +18,6 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd OpenRiichi
-
   git describe --tags --long | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
@@ -27,13 +26,12 @@ prepare() {
   # https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git_Submodules
   git submodule init
   git config submodule.Engine.url "${srcdir}/Engine"
-  git submodule update
-
-  arch-meson build
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
   cd OpenRiichi
+  arch-meson build
   ninja -C build
 }
 
