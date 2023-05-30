@@ -72,7 +72,7 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
 pkgver=6.3.4
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
@@ -104,6 +104,8 @@ source=(
   "ck-hrtimer-$_commit.tar.gz::https://github.com/graysky2/linux-patches/archive/$_commit.tar.gz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-drm-amd-display-Have-Payload-Properly-Created-After-.patch
+  0003-xfs-fix-livelock-in-delayed-allocation-at-ENOSPC.patch
+  0004-x86-topology-Fix-erroneous-smp_num_siblings-on-Intel.patch
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
@@ -114,8 +116,10 @@ sha256sums=('d8627528ed6b3ae607d00b1ef5a46e0e7051ae40b285fd4e82f4ff0bb72b68e8'
             '21b9a9e542f853cdc695648d6ab6219bd2e881a4954277f241e104723c373d42'
             'f1d586e111932890ad5e0df15d092fb9b3f87bae4ea17812aae9b0ec98fe2db0'
             'f781da5ba492d8912c7d4cddac02f21c1799532182e23374c80c19ff0c617373'
-            'c90ccb8accf7fa59f79318b749f0243c96ed9c1e35461f0dae50772f87a467a3'
-            '5e0f9ee19cb3ef6b811e1563690852b03bbc73c35113ab765a53597cf2030883')
+            '927ea3b7f4fc525a50352464e9623ca9d99044344f30a80b91eb8adf6deb21d2'
+            '4b4f53c1a75375707cbea83b2d55aecb89ae4e2f7810a899cd615902bbfc9023'
+            '764b58e754a3ea29d75e811afb796c38588a7977457a75c6eb762a94754560ee'
+            '719c90170133b35fb70fbfe0e9606ad8856f16b2081c7dafb35d7b0ebcff0aad')
 _make() {
   test -s version
   make KERNELRELEASE="$(<version)" "$@"

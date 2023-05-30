@@ -1,7 +1,7 @@
-From 2fd9916a465e3b62452ac4346def013c3d8698a4 Mon Sep 17 00:00:00 2001
+From dac3ac92917b844098989bbb1adde630fb54d675 Mon Sep 17 00:00:00 2001
 From: Fangzhi Zuo <jerry.zuo@amd.com>
 Date: Wed, 17 May 2023 19:37:13 +0800
-Subject: [PATCH 2/3] drm/amd/display: Have Payload Properly Created After
+Subject: [PATCH 2/5] drm/amd/display: Have Payload Properly Created After
  Resume
 
 At drm suspend sequence, MST dc_sink is removed. When commit cached
