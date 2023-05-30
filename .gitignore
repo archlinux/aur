@@ -12,7 +12,7 @@
 *.rpm
 *.sig
 *.log
-COPYING
+COPYING*
 LICENSE
 /src
 /pkg
