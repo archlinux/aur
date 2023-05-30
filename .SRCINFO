@@ -1,6 +1,6 @@
 pkgbase = spacemesh-appimage
 	pkgdesc = Spacemesh App (Smesher + Wallet)
-	pkgver = 0.3.5
+	pkgver = 0.3.6
 	pkgrel = 1
 	url = https://spacemesh.io/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = spacemesh-appimage
 	depends = hicolor-icon-theme
 	conflicts = spacemesh
 	options = !strip
-	source = spacemesh-0.3.5.AppImage::https://storage.googleapis.com/smapp/v0.3.5/Spacemesh-0.3.5.AppImage
-	sha256sums = 07979d84ed6f4d210e4942d875f008e105b47c7e8562ae6e9576821f98f006c9
+	source = spacemesh-0.3.6.AppImage::https://storage.googleapis.com/smapp/v0.3.6/Spacemesh-0.3.6.AppImage
+	sha256sums = 78a3f3c88ed7e5f2a63a9e8562519b827bc9bf7e49138f455364192ea5fccdb6
 
 pkgname = spacemesh-appimage
