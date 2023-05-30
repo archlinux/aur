@@ -5,8 +5,8 @@ pkgname="ocaml-$_projectname"
 pkgver='1.0.3'
 pkgrel='2'
 pkgdesc='Non-blocking streaming Unicode codec for OCaml'
-# If you're running on i486, pentium4, armv7h or aarch64, you have to add it to the arch array of the ocaml-cmdliner AUR dependency
-arch=('x86_64' 'i486' 'i686' 'pentium4' 'armv7h' 'aarch64')
+# If you're running on aarch64, you have to add it to the arch array of the ocaml-cmdliner AUR dependency
+arch=('x86_64' 'aarch64')
 url="https://erratique.ch/software/$_projectname"
 license=('ISC')
 depends=('ocaml>=4.03.0' 'ocaml-cmdliner')
