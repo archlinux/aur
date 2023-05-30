@@ -1,7 +1,7 @@
 #Maintainer: Simon Eriksson <simon.eriksson.1187+aur AT gmail.com>
 
 pkgname=('libdragon-unstable-git' 'libdragon-tools-unstable-git')
-pkgver=r1598.b8badbb4
+pkgver=r1920.9e6017f2
 pkgrel=1
 url="http://www.dragonminded.com/n64dev/libdragon"
 arch=('x86_64')
@@ -39,9 +39,6 @@ package_libdragon-unstable-git(){
 
   mkdir -p "${pkgdir}/usr/mips64-elf/"{include,lib} "${pkgdir}/usr/include"
   make INSTALLDIR="${pkgdir}/usr" install
-
-  # strip it manually
-  find "${pkgdir}/usr/mips64-elf/lib" -type f -exec /usr/bin/mips64-elf-strip --strip-unneeded {} \; 2>/dev/null || true
 
   #install license
   install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

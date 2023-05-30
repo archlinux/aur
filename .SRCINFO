@@ -1,5 +1,5 @@
 pkgbase = libdragon-unstable-git
-	pkgver = r1598.b8badbb4
+	pkgver = r1920.9e6017f2
 	pkgrel = 1
 	url = http://www.dragonminded.com/n64dev/libdragon
 	arch = x86_64
