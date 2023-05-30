@@ -1,0 +1,13 @@
+pkgbase = theseus-cli-git
+	pkgdesc = Official Modrinth CLI launcher. Open-source, built by the community, for the community.
+	pkgver = r135.9ea548c
+	pkgrel = 1
+	url = https://github.com/modrinth/theseus
+	arch = x86_64
+	license = GPL3
+	provides = theseus-cli
+	conflicts = theseus-cli
+	source = git+https://github.com/modrinth/theseus
+	sha256sums = SKIP
+
+pkgname = theseus-cli-git
