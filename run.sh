@@ -8,7 +8,7 @@
 #               Vufa <countstarlight@gmail.com>
      
 BOTTLENAME="Deepin-CBox"
-APPVER="1.0.0deepin9"
+APPVER="5.1.3.1"
 WINEPREFIX="${HOME}/.deepinwine/${BOTTLENAME}"
 EXEC_PATH="c:/Program Files/CNTV/CBox/bin/CBox.exe"
 EXEC_FILE="${WINEPREFIX}/drive_c/Program Files/CNTV/CBox/bin/CBox.exe"

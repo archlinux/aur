@@ -2,7 +2,7 @@
 pkgname=deepin-wine-cntv-cbox
 _pkgname=com.cctv.deepin
 _officalname=CBox
-pkgver=5.1.2.1
+pkgver=5.1.3.1
 _deepinver=1.0.0deepin9
 pkgrel=2
 pkgdesc="CGTN CBox on Deepin Wine 6"
@@ -19,10 +19,10 @@ source=("${_pkgname}-${_deepinver}.deb::https://com-store-packages.uniontech.com
     "run.sh"
     "LICENSE.html::https://app.cctv.com/index.shtml#page6")
 sha256sums=('6e6ca3250a3a82dd46b29df450f508eff74f22cebcead9890677210b0610a4bd'
-            '2a359eab5b71caf7f214fc84e1763a8ba04f22b81fe072ffed7a6f6864dbe982'
+            '2904bf840638f93e1b62d91eb28d3d67405721ada41da8e4620ee8d9819471ee'
             '935c1e022bb2c524b50dce1c5d4e0a3985e80d1eaf59d7073d2ae425c07fb162'
-            'd57402d461e4d6625833f15dc25b5d1e190f7c1d632eba78df3a80ead295cd12'
-            '17dbaf8452e428d3270e2f6f7978d87e316c3134605cc16a19782558282dcf25')
+            '4f06309662aff34683acd80c066dba83d91b1eb690abf41171d3d0038e673f89'
+            '2ffb70a616caf15b84f8672f03d209cf1bce1f3f80d16846e4b54d2e6c14da4a')
 prepare() {
     bsdtar -xf data.tar.xz -C "${srcdir}"
     mv "${srcdir}/opt/apps/${_pkgname}" "${srcdir}/opt/apps/${pkgname}"
