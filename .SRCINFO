@@ -1,0 +1,19 @@
+pkgbase = nectar
+	pkgdesc = Command-line Honeyfeed Reader
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Fuwn/nectar
+	arch = any
+	license = GPL-3.0-only
+	makedepends = ruby
+	makedepends = rubygems
+	makedepends = git
+	depends = gum
+	depends = curl
+	depends = pup
+	depends = pandoc
+	depends = glow
+	source = git+https://github.com/Fuwn/nectar.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = nectar
