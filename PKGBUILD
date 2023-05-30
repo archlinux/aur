@@ -1,10 +1,11 @@
-# Maintainer: Victoria Mitchell <victoria@quietmisdreavus.net>
-pkgname=git-htmldocs
-pkgver=2.40.1
-pkgrel=1
-pkgdesc="HTML documentation files for Git"
+# Maintainer: jmcb <joelsgp@protonmail.com>
+# Contributor: Victoria Mitchell <victoria@quietmisdreavus.net>
+pkgname='git-htmldocs'
+pkgver='2.40.1'
+pkgrel=2
+pkgdesc='HTML documentation files for Git'
 arch=('any')
-url="https://git-scm.com/"
+url='https://git-scm.com/'
 license=('GPL2')
 groups=()
 depends=('git')
@@ -17,7 +18,8 @@ sha256sums=('8c08b31087566e719f6a7d16bb102255a8b9b970aefba6e306d6340eefe368ee'
 validpgpkeys=('96E07AF25771955980DAD10020D04E5A713660A7') # Junio C Hamano
 
 package() {
-    install -Dm644 -t "$pkgdir/usr/share/doc/git-doc" *.html
-    install -Dm644 -t "$pkgdir/usr/share/doc/git-doc/howto" howto/*.html
-    install -Dm644 -t "$pkgdir/usr/share/doc/git-doc/technical" technical/*.html
+    _dest="${pkgdir}/usr/share/doc/git-doc"
+    install -Dm644 -t "${_dest}/" *.html
+    install -Dm644 -t "${_dest}/howto" howto/*.html
+    install -Dm644 -t "${_dest}/technical" technical/*.html
 }

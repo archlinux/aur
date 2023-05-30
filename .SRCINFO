@@ -1,7 +1,7 @@
 pkgbase = git-htmldocs
 	pkgdesc = HTML documentation files for Git
 	pkgver = 2.40.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git-scm.com/
 	arch = any
 	license = GPL2
