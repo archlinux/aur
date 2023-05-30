@@ -1,0 +1,66 @@
+--- a/example/config.yaml
++++ b/example/config.yaml
+@@ -97,7 +97,7 @@ trusted-proxies:
+ # String. Database type.
+ # Options: ["postgres","sqlite"]
+ # Default: "postgres"
+-db-type: "postgres"
++db-type: "sqlite"
+ 
+ # String. Database address or parameters.
+ #
+@@ -112,7 +112,7 @@ db-type: "postgres"
+ #
+ # Examples: ["localhost","my.db.host","127.0.0.1","192.111.39.110",":memory:", "sqlite.db"]
+ # Default: ""
+-db-address: ""
++db-address: "/var/lib/gotosocial/sqlite.db"
+ 
+ # Int. Port for database connection.
+ # Examples: [5432, 1234, 6969]
+@@ -158,12 +158,12 @@ db-tls-ca-cert: ""
+ # String. Directory from which gotosocial will attempt to load html templates (.tmpl files).
+ # Examples: ["/some/absolute/path/", "./relative/path/", "../../some/weird/path/"]
+ # Default: "./web/template/"
+-web-template-base-dir: "./web/template/"
++web-template-base-dir: "/etc/gotosocial/template"
+ 
+ # String. Directory from which gotosocial will attempt to serve static web assets (images, scripts).
+ # Examples: ["/some/absolute/path/", "./relative/path/", "../../some/weird/path/"]
+ # Default: "./web/assets/"
+-web-asset-base-dir: "./web/assets/"
++web-asset-base-dir: "/usr/share/gotosocial"
+ 
+ ###########################
+ ##### INSTANCE CONFIG #####
+@@ -261,7 +261,7 @@ storage-backend: "local"
+ # Only required when running with the local storage backend.
+ # Examples: ["/home/gotosocial/storage", "/opt/gotosocial/datastorage"]
+ # Default: "/gotosocial/storage"
+-storage-local-base-path: "/gotosocial/storage"
++storage-local-base-path: "/var/lib/gotosocial/storage"
+ 
+ # String. API endpoint of the S3 compatible service.
+ # Only required when running with the s3 storage backend.
+@@ -357,7 +357,7 @@ letsencrypt-port: 80
+ # In any case, make sure GoToSocial has permissions to write to / read from this directory.
+ # Examples: ["/home/gotosocial/storage/certs", "/acmecerts"]
+ # Default: "/gotosocial/storage/certs"
+-letsencrypt-cert-dir: "/gotosocial/storage/certs"
++letsencrypt-cert-dir: "/var/lib/gotosocial/storage/certs"
+ 
+ # String. Email address to use when registering LetsEncrypt certs.
+ # Most likely, this will be the email address of the instance administrator.
+--- a/example/gotosocial.service
++++ b/example/gotosocial.service
+@@ -14,8 +14,8 @@ Type=exec
+ Restart=on-failure
+ 
+ # change if your path to the GoToSocial binary is different
+-ExecStart=/gotosocial/gotosocial --config-path config.yaml server start
+-WorkingDirectory=/gotosocial
++ExecStart=/usr/bin/gotosocial --config-path /etc/gotosocial/config.yaml server start
++WorkingDirectory=/var/lib/gotosocial
+ 
+ StandardOutput=append:/var/log/gotosocial/gotosocial.log
+ StandardError=inherit
