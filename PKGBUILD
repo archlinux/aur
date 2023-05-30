@@ -1,4 +1,5 @@
-# Maintainer: Mohammad Mostafa Farzan <m2_farzan@yahoo.com>
+# Maintainer: Willem Mulder <14mRh4X0r+pkgbuild@gmail.com>
+# Contributor: Mohammad Mostafa Farzan <m2_farzan@yahoo.com>
 # Contributor: mjbogusz <mjbogusz+github@gmail.com>
 # Contributor: yuanyuyuan <az6980522@gmail.com>
 # Contributor: Rémy B. (github.com/KirrimK)
@@ -9,26 +10,25 @@
 # Acknowledgment: This work is hugely based on `ros2-arch-deps` AUR
 # package, maintained by T. Borgert.
 
-pkgname=ros2-humble
+pkgname=ros2-iron
 pkgver=2023.03.08
 pkgrel=1
 pkgdesc="A set of software libraries and tools for building robot applications"
-url="https://docs.ros.org/en/humble/"
+url="https://docs.ros.org/en/iron/"
 arch=('any')
 license=('Apache')
 depends=(
     'ros2-arch-deps'
-    'python-pyqt5-sip4'
-    'assimp'
-    'gmock'
 )
 source=(
-    "ros2::git+https://github.com/ros2/ros2#tag=release-humble-20230308"
+    "ros2::git+https://github.com/ros2/ros2#tag=release-iron-20230523"
+    repos.patch
+    rviz-ogre-featuresummary-rename.patch
 )
-sha256sums=(
-    'SKIP'
-)
-install=ros2-humble.install
+sha256sums=('SKIP'
+            'f9939a1088ee3cee77b557609ba41afdc5060030b72216bc4a00c2cc407c851f'
+            '1161ebc8d86a77a8880132db35cfeeacbe08451c4e48105c352135bf014c3fc4')
+install=ros2-iron.install
 
 prepare() {
     # Check locale according to
@@ -40,9 +40,13 @@ prepare() {
         exit 1
     fi
 
+    patch -p1 -d $srcdir/ros2 < repos.patch
+
     # Clone the repos
     mkdir -p $srcdir/ros2/src
     vcs import $srcdir/ros2/src < $srcdir/ros2/ros2.repos
+
+    patch -p1 -d $srcdir/ros2/src/ros2/rviz < rviz-ogre-featuresummary-rename.patch
 }
 
 build() {
@@ -64,6 +68,6 @@ build() {
 }
 
 package() {
-    mkdir -p $pkgdir/opt/ros/humble
-    cp -r $srcdir/install/* $pkgdir/opt/ros/humble/
+    mkdir -p $pkgdir/opt/ros/iron
+    cp -r $srcdir/install/* $pkgdir/opt/ros/iron/
 }

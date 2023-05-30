@@ -1,0 +1,40 @@
+diff --git a/ros2.repos b/ros2.repos
+index 46fb617..b0aa949 100644
+--- a/ros2.repos
++++ b/ros2.repos
+@@ -34,7 +34,7 @@ repositories:
+   eProsima/Fast-DDS:
+     type: git
+     url: https://github.com/eProsima/Fast-DDS.git
+-    version: 2.10.1
++    version: add29f42591fe3d785df727aea128f250040834f
+   eProsima/foonathan_memory_vendor:
+     type: git
+     url: https://github.com/eProsima/foonathan_memory_vendor.git
+@@ -82,7 +82,7 @@ repositories:
+   ros-tooling/libstatistics_collector:
+     type: git
+     url: https://github.com/ros-tooling/libstatistics_collector.git
+-    version: 1.5.1
++    version: 1.6.1
+   ros-visualization/interactive_markers:
+     type: git
+     url: https://github.com/ros-visualization/interactive_markers.git
+@@ -274,7 +274,7 @@ repositories:
+   ros2/rclcpp:
+     type: git
+     url: https://github.com/ros2/rclcpp.git
+-    version: 21.0.1
++    version: 21.1.1
+   ros2/rclpy:
+     type: git
+     url: https://github.com/ros2/rclpy.git
+@@ -282,7 +282,7 @@ repositories:
+   ros2/rcpputils:
+     type: git
+     url: https://github.com/ros2/rcpputils.git
+-    version: 2.6.1
++    version: 2.7.1
+   ros2/rcutils:
+     type: git
+     url: https://github.com/ros2/rcutils.git
