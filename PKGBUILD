@@ -1,4 +1,5 @@
-# Maintainer: Hauke Wesselmann <hauke@h-dawg.de>
+# Maintainer: Andreas Kurth <archlinux@akurth.net>
+# Contributor: Hauke Wesselmann <hauke@h-dawg.de>
 # Contributor: Dmitry <dmitry@ykkz.de>
 
 pkgname=ttf-exo-2
