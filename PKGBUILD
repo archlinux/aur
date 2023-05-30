@@ -3,7 +3,7 @@
 # Contributor: condy <condy0919[at]gmail[dot]com>
 
 pkgname=psysh
-pkgver=0.11.17
+pkgver=0.11.18
 pkgrel=1
 pkgdesc="A runtime developer console, interactive debugger and REPL for PHP."
 url="https://psysh.org/"
@@ -13,15 +13,15 @@ depends=('php>=7.0.8')
 install=.install
 source=(
 	"https://github.com/bobthecow/psysh/releases/download/v${pkgver}/psysh-v${pkgver}.tar.gz"
-	"LICENSE::https://raw.githubusercontent.com/bobthecow/psysh/v${pkgver}/LICENSE"
+	"LICENSE_v${pkgver}::https://raw.githubusercontent.com/bobthecow/psysh/v${pkgver}/LICENSE"
 )
 sha256sums=(
-	'190857e2f2f4e7dced0dbe1ea9c635af78dd412f20424690efff8d311e231f63'
+	'ae8a27241a4c5ce02c6bf2323e7de44755521c7fe450916e514ea6c9523b63e0'
 	'SKIP'
 )
 
 package() {
 	cd "${srcdir}"
 	install -Dm755 psysh "${pkgdir}/usr/bin/psysh"
-	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "LICENSE_v${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
