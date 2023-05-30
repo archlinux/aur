@@ -2,8 +2,8 @@
 
 pkgname=avvie
 _reponame=Avvie
-pkgver=2.2
-_commit=e7d53574a93862856ec058693343be85522ccefb
+pkgver=2.3
+_commit=deb6e7730f375a26343b77a11c1ca3b698b87ae8
 pkgrel=1
 pkgdesc="A utility for quickly cropping images"
 arch=(x86_64)
