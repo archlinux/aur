@@ -3,7 +3,7 @@
 
 pkgname=mpeg-pcc-tmc13-git
 pkgver=14.0.r0.gc3c9798
-pkgrel=2
+pkgrel=1
 pkgdesc="Geometry based point cloud compression (G-PCC) test model"
 arch=("x86_64")
 url="https://github.com/MPEGGroup/mpeg-pcc-tmc13.git"
@@ -30,7 +30,7 @@ build() {
 
 package() {
   cd "$pkgname" || exit 1
-  install -Dm755 "build/tmc13/tmc13" "$pkgdir/usr/bin/tmc13"
+  install -Dm755 "build/tmc3/tmc3" "$pkgdir/usr/bin/tmc3"
   install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/mpeg-pcc-tmc13/COPYING"
   mkdir -p "$pkgdir/usr/share/doc/mpeg-pcc-tmc13/"
   install -Dm644 \

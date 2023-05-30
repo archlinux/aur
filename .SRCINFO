@@ -1,7 +1,7 @@
 pkgbase = mpeg-pcc-tmc13-git
 	pkgdesc = Geometry based point cloud compression (G-PCC) test model
 	pkgver = 14.0.r0.gc3c9798
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/MPEGGroup/mpeg-pcc-tmc13.git
 	arch = x86_64
 	license = BSD
