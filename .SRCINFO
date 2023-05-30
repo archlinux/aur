@@ -14,7 +14,7 @@ pkgbase = python-tokenizers
 	depends = python
 	provides = python-tokenizers
 	conflicts = python-tokenizers
-	source = python-tokenizers::git+https://github.com/huggingface/tokenizers#tag=v0.13.3
+	source = tokenizers::git+https://github.com/huggingface/tokenizers#tag=v0.13.3
 	sha256sums = SKIP
 
 pkgname = python-tokenizers

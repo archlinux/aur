@@ -1,6 +1,8 @@
+# Maintainer:
 # Contributor: Filip Graliński <filipg@amu.edu.pl>
 
-_pkgname=python-tokenizers
+_gitname="tokenizers"
+_pkgname="python-$_gitname"
 pkgname="$_pkgname"
 pkgver=0.13.3
 pkgrel=1
@@ -21,21 +23,31 @@ makedepends=(
 provides=("$_pkgname")
 conflicts=(${provides[@]})
 source=(
-  "$_pkgname"::"git+$url#tag=v$pkgver"
+  "$_gitname"::"git+$url#tag=v$pkgver"
 )
 sha256sums=(
   'SKIP'
 )
 
+prepare() {
+  export RUSTUP_TOOLCHAIN=stable
+
+  _cargo_toml_paths=(
+    bindings/python
+  )
+
+  for i in ${_cargo_toml_paths[@]} ; do
+    cd "$srcdir/$_gitname/$i"
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
+  done
+}
+
 build() {
-  cd "$srcdir/$_pkgname/bindings/python"
+  cd "$srcdir/$_gitname/bindings/python"
   python -m build --no-isolation --wheel
 }
 
 package() {
-  cd "$srcdir/$_pkgname/bindings/python"
-  python -m installer \
-    --compile-bytecode 1 \
-    --destdir "$pkgdir" \
-    dist/*.whl
+  cd "$srcdir/$_gitname/bindings/python"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
