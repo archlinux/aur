@@ -10,7 +10,7 @@ url="https://github.com/SecureAuthCorp/impacket"
 license=("Apache")
 provides=('impacket')
 depends=('python' 'python-future' 'python-six' 'python-pyasn1' 'python-pycryptodome' 'python-pycryptodomex' 'python-pyopenssl' 'python-ldap3' 'python-flask' 'python-pcapy')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 source=("git+https://github.com/SecureAuthCorp/impacket.git")
 sha256sums=('SKIP')
 

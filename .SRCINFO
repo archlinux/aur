@@ -6,6 +6,7 @@ pkgbase = python-impacket-git
 	arch = any
 	license = Apache
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python
 	depends = python-future
 	depends = python-six
