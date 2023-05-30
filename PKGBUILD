@@ -2,8 +2,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=ots
-pkgver=9.0.0
-pkgrel=2
+pkgver=9.1.0
+pkgrel=1
 pkgdesc='OpenType fonts sanitiser. Supports TTF, WOFF, WOFF2 and other formats'
 arch=(x86_64 i686)
 url=https://github.com/khaledhosny/ots
@@ -15,7 +15,7 @@ makedepends=(meson
              ninja)
 checkdepends=(gtest)
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('5982233f167266c6fa4d89bdd3aaddfaf7aad2f19053bc63abf901847d4403fa')
+sha256sums=('e52efca9b6af41121deb71d867c6440b2d89b4cf189a9004f62a3989514acc22')
 
 build() {
 	cd "$pkgname-$pkgver"
