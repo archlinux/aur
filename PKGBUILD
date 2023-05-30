@@ -1,8 +1,8 @@
 # Maintainer: coldbug <coldBug@e.mail.de>
 _pkgbase=impacket
 pkgname=python-impacket-git
-pkgver=impacket_0_9_20.r90.g13cfc72a
-pkgrel=2
+pkgver=impacket_0_10_0.r129.g8b3f9eff
+pkgrel=1
 pkgdesc="Collection of classes for working with network protocols"
 arch=('any')
 conflicts=('impacket')

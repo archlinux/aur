@@ -1,7 +1,7 @@
 pkgbase = python-impacket-git
 	pkgdesc = Collection of classes for working with network protocols
-	pkgver = impacket_0_9_20.r90.g13cfc72a
-	pkgrel = 2
+	pkgver = impacket_0_10_0.r129.g8b3f9eff
+	pkgrel = 1
 	url = https://github.com/SecureAuthCorp/impacket
 	arch = any
 	license = Apache
@@ -22,4 +22,3 @@ pkgbase = python-impacket-git
 	sha256sums = SKIP
 
 pkgname = python-impacket-git
-
