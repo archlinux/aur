@@ -1,0 +1,15 @@
+pkgbase = whatsapp-for-linux-appimage
+	pkgdesc = An unofficial WhatsApp desktop application for Linux.
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = https://github.com/eneshecan/whatsapp-for-linux
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = glibc
+	options = !strip
+	source = whatsapp-for-linux-1.6.3.AppImage::https://github.com/eneshecan/whatsapp-for-linux/releases/download/v1.6.3/whatsapp-for-linux-1.6.3-x86_64.AppImage
+	sha256sums = 05b2a60b4b9e8526f745d467cdac2d2b1db43c16f34f56a8e057aa6f0eda6f7d
+
+pkgname = whatsapp-for-linux-appimage
