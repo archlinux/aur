@@ -6,7 +6,7 @@ pkgdesc="Chinese translation for tmux man pages"
 arch=(any)
 url=https://github.com/Freed-Wu/tmux-zh
 license=(GPL3)
-source=("$url/archive/$pkgname-$pkgver-Linux.deb")
+source=("$url/releases/download/$pkgver/$pkgname-$pkgver-Linux.deb")
 sha256sums=(SKIP)
 
 package() {

@@ -5,7 +5,7 @@ pkgbase = tmux-zh_cn
 	url = https://github.com/Freed-Wu/tmux-zh
 	arch = any
 	license = GPL3
-	source = https://github.com/Freed-Wu/tmux-zh/archive/tmux-zh_cn-3.3.0-Linux.deb
+	source = https://github.com/Freed-Wu/tmux-zh/releases/download/3.3.0/tmux-zh_cn-3.3.0-Linux.deb
 	sha256sums = SKIP
 
 pkgname = tmux-zh_cn
