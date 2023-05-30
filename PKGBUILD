@@ -1,7 +1,7 @@
 # Maintainer: 305a385 <lotsof@shitposting.expert>
 
 
-pkgname='ytfind'
+pkgname='ytfind-bin'
 pkgver='1.3'
 pkgrel=1
 pkgdesc="A program that searches invidious and gives you video titles and IDs"
