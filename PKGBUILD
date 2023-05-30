@@ -1,4 +1,4 @@
-# Maintainer: Isabel <isabelroseslive@gmail.com>
+# Maintainer: Isabel <isabel@isabelroses.com>
 pkgname=catppuccinifier-gui-git
 _pkgname=catppuccinifier-gui
 pkgver=r39.4c52782
@@ -10,7 +10,7 @@ license=()
 provides=('catppuccinifier-gui')
 conflicts=('catppuccinifier-gui')
 depends=('imagemagick' 'libadwaita')
-makedepends=('git' 'cargo')
+makedepends=('git' 'cargo' 'npm' 'node' 'cmake' 'webkit2gtk' 'base-devel' 'curl' 'wget' 'openssl' 'appmenu-gtk-module' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libvips')
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
@@ -22,12 +22,8 @@ pkgver() {
 build() {
 	export RUSTUP_TOOLCHAIN=stable
 	cd "$pkgname/src/source-code/catppuccinifier-gui"
-	cargo build --release
-}
-
-check(){
-  cd "$pkgname/src/source-code/catppuccinifier-gui"
-  cargo test --release
+	npm ci
+	npm run tauri build
 }
 
 package() {
@@ -35,7 +31,7 @@ package() {
 	#desktop file
 	desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "src/releases/linux/installation-files/Catppuccinifier.desktop"
 	#binary
-	install -Dm755 "src/source-code/catppuccinifier-gui/target/release/catppuccinifier-gui" "$pkgdir/usr/bin/catppuccinifier-gui"
+	install -Dm755 "src/source-code/catppuccinifier-gui/src-tauri/target/release/catppuccinifier-gui" "$pkgdir/usr/bin/catppuccinifier-gui"
 	#docs
 	install -Dm644 "README.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
 	#reqired files
