@@ -1,6 +1,6 @@
 # Maintainer: laserK300030003000 <echo 'Y29udGFjdEBrYXJzdGVucHVmYWhsLmRlCg==' | base64 -d>
 pkgname=mesaflash
-pkgver=3.4.2
+pkgver=3.4.6
 pkgrel=1
 epoch=
 pkgdesc="configuration and diagnostic tool for Mesa Electronics PCI(E)/ETH/EPP/USB/SPI boards"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/LinuxCNC/$pkgname/archive/refs/tags/release/$pkgver.tar.gz")
 noextract=()
-md5sums=('0b5d230bd901049fd9db500508329cd1')
+md5sums=('b409bca05c6ef89bebc28424078e56dd')
 validpgpkeys=()
 
 build() {
