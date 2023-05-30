@@ -1,0 +1,14 @@
+pkgbase = vintagestory-server
+	pkgdesc = An in-development indie sandbox game about innovation and exploration--server package
+	pkgver = 1.18.5
+	pkgrel = 1
+	url = https://www.vintagestory.at/
+	arch = x86
+	arch = x86_64
+	license = custom
+	depends = mono
+	optdepends = vintagestory-servermgr: manage the server, provides systemd unit to run server
+	source = https://cdn.vintagestory.at/gamefiles/stable/vs_server_1.18.5.tar.gz
+	md5sums = 2fc1d1f19f23fb8dbf19a690b64dd4af
+
+pkgname = vintagestory-server
