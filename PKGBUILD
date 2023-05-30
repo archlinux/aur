@@ -174,16 +174,6 @@ _build_zfs=${_build_zfs-}
 # Enable bcachefs
 _bcachefs=${_bcachefs-}
 
-# Enable LATENCY NICE
-# Latency nice is a approach to sets latency-nice as a per-task attribute
-# It can improve the latency of applications similar to sched_nice, but focused on the latency
-# You need to set the values per task
-# Ananicy-cpp has a implementation for this
-# You need to configure ananicy-cpp for this or use existing settings
-# Its default enabled at the "cachyos" scheduler option
-# _latency_nice=${_latency_nice-}
-# Disabled till rebased
-
 if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] && [ -n "$_use_lto_suffix" ]; then
     pkgsuffix=cachyos-${_cpusched}-lto
     pkgbase=linux-$pkgsuffix
@@ -193,7 +183,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.3
-_minor=4
+_minor=5
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -233,15 +223,8 @@ if [ -n "$_build_zfs" ]; then
     source+=("git+https://github.com/cachyos/zfs.git#commit=ac18dc77f3703940682aecb442f4e58aa2c14f1a")
 fi
 
-## Latency NICE Support
-if [ -n "$_latency_nice" ]; then
-    if [[ "$_cpusched" = "bore"  || "$_cpusched" = "cfs" || "$_cpusched" = "hardened" ]]; then
-         source+=("${_patchsource}/misc/0001-Add-latency-priority-for-CFS-class.patch")
-    fi
-fi
-
 case "$_cpusched" in
-    cachyos) # CachyOS Scheduler (EEVDF)
+    cachyos) # CachyOS Scheduler (EEVDF + BORE)
         source+=("${_patchsource}/sched/0001-EEVDF.patch"
                  "${_patchsource}/sched/0001-bore-eevdf.patch");;
     pds|bmq) # BMQ/PDS scheduler
@@ -249,7 +232,7 @@ case "$_cpusched" in
                  linux-cachyos-prjc.install);;
     tt) ## TT Scheduler
         source+=("${_patchsource}/sched/0001-tt-cachy.patch");;
-    bore) ## BORE Scheduler with latency_nice
+    bore) ## BORE Scheduler
         [ -n "$_tune_bore" ] && source+=("${_patchsource}/misc/0001-bore-tuning-sysctl.patch")
         source+=("${_patchsource}/sched/0001-bore-cachy.patch");;
     hardened) ## Hardened Patches with BORE Scheduler
@@ -308,7 +291,7 @@ prepare() {
 
     ### Select CPU optimization
     if [ -n "$_processor_opt" ]; then
-        MARCH=$(echo $_processor_opt|tr '[:lower:]' '[:upper:]'&&echo)
+        MARCH="${_processor_opt^^}"
         MARCH2=M${MARCH}
         scripts/config -k -d CONFIG_GENERIC_CPU
         scripts/config -k -e CONFIG_${MARCH2}
@@ -337,8 +320,7 @@ prepare() {
         *) _die "The value $_cpusched is invalid. Choose the correct one again.";;
     esac
 
-    local sched_name="$(echo $_cpusched|tr '[:lower:]' '[:upper:]')"
-    echo "Selecting ${sched_name} CPU scheduler..."
+    echo "Selecting ${_cpusched^^} CPU scheduler..."
 
     ### Enable KCFI
     if [ -n "$_use_kcfi" ]; then
@@ -469,6 +451,14 @@ prepare() {
             -e TCP_CONG_BBR2 \
             -e DEFAULT_BBR2 \
             --set-str DEFAULT_TCP_CONG bbr2
+
+        # BBR2 doesn't work properly with FQ_CODEL
+        echo "Disabling fq_codel by default..."
+        scripts/config -m NET_SCH_FQ_CODEL \
+            -e NET_SCH_FQ \
+            -d DEFAULT_FQ_CODEL \
+            -e DEFAULT_FQ \
+            --set-str DEFAULT_NET_SCH fq
     fi
 
     ### Select LRU config
@@ -835,7 +825,7 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('7e287378e007ce83092c2630d87d5e2b77e1615386a275013f04a190c6cab129e5ddc3abf8213ae521c8722d41cb8d203bb5cc5ae84d9bcd20aebbbc2db1d8a3'
-        'cf6c29902e46bcfefdb2bc61376be00fa4682b7a6c1383b3eaa53b7952aa34f13cc62bee45582bec208012866cd4c790979506076be310bb2c5849044fec2473'
+b2sums=('646a94591eae93db9301a11e5300579c8cce7d2a544727cb88efed86d05ba070a247498d9c83d7b7cdbead4e7d46537134c877813aa7f188dd36b403c58d0c11'
+        'aee22f3c48214c29b551540b63cbbdbb160588a4a31b8fd6881ecffbea01a339526091565749c9c7562dc1cae4f3a1c23567fc3f15de3c4fa1f9eaac65fa5731'
         '11d2003b7d71258c4ca71d71c6b388f00fe9a2ddddc0270e304148396dadfd787a6cac1363934f37d0bfb098c7f5851a02ecb770e9663ffe57ff60746d532bd0'
-        '8b73d1e2416e9019d66a84ae1e288a8d5f70a736b96a329752a4bb706ae4631be79f175a350007f9aa7ea734dc5d0331487779556fdf5f8c609003d32dc7e1df')
+        '0008b4bfc896a1212abae61dd2b0f1ce68220f48a064a97aa1988e8c46058f8c23c4db85f99cb9fb5ecf311b2aefe78a081cd064e6ac5d5830dab2449ba7a40b')
