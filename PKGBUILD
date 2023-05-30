@@ -1,4 +1,5 @@
 # Maintainer: FichteFoll <fichtefoll2@googlemail.om>
+# Contributor: Icaro Perseo <icaroperseo[at]protonmail[dot]com>
 
 pkgname=dashing
 pkgver=0.4.0
