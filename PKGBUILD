@@ -11,7 +11,7 @@
 # package, maintained by T. Borgert.
 
 pkgname=ros2-iron
-pkgver=2023.03.08
+pkgver=2023.05.23
 pkgrel=1
 pkgdesc="A set of software libraries and tools for building robot applications"
 url="https://docs.ros.org/en/iron/"
