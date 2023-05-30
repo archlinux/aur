@@ -7,7 +7,7 @@
 # See https://wiki.archlinux.org/index.php/Makepkg#Signature_checking
 # for more details # on package signing.
 pkgname=librepcb-appimage
-pkgver=0.1.6
+pkgver=0.1.7
 _pkgver=${pkgver/_/-}
 pkgrel=1
 pkgdesc="A free EDA software to develop printed circuit boards (binary AppImage version)"
@@ -25,7 +25,7 @@ source=(
   "https://download.librepcb.org/releases/${_pkgver}/${_appimage}.asc"
 )
 sha256sums=(
-  'ba3533c8d4cec018de706d45cbb5fbe544adaf90fc5285bcb8f71fee48a04734'
+  '5d926cd24a94257db7f7b6a5c3d5472cace3681fce264fd2af373729eace7eea'
   'SKIP'
 )
 validpgpkeys=('D6F9AF572228C5BCD6B538407EF3061F5C8D5E25')
