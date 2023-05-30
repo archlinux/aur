@@ -4,10 +4,6 @@ pkgbase = ocaml-wtf8
 	pkgrel = 9
 	url = https://github.com/flow/ocaml-wtf8
 	arch = x86_64
-	arch = i486
-	arch = i686
-	arch = pentium4
-	arch = armv7h
 	arch = aarch64
 	license = MIT
 	makedepends = dune>=1.0.0
