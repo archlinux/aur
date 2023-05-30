@@ -8,8 +8,8 @@
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=gnupg24
-pkgver=2.4.1
-pkgrel=2
+pkgver=2.4.2
+pkgrel=1
 pkgdesc='Complete and free implementation of the OpenPGP standard'
 arch=('x86_64')
 url='https://www.gnupg.org/'
@@ -42,10 +42,10 @@ source=(
   "https://gnupg.org/ftp/gcrypt/gnupg/gnupg-${pkgver}.tar.bz2"{,.sig}
   'avoid-beta-warning.patch'
 )
-sha256sums=('76b71e5aeb443bfd910ce9cbc8281b617c8341687afb67bae455877972b59de8'
+sha256sums=('97eb47df8ae5a3ff744f868005a090da5ab45cb48ee9836dbf5ee739a4e5cf49'
             'SKIP'
             '22fdf9490fad477f225e731c417867d9e7571ac654944e8be63a1fbaccd5c62d')
-b2sums=('6da4b1ed44f8110421ea465b50a08915231a26ee450c1b11326b9b777772b9ea304ea0c0881e967ca9c6054bc526445951176c50d9a2e24b038c04354c778e59'
+b2sums=('7a5aecca25d87f5f531576c8db1629908d97381bc75f69c228ebf7f06f2234ff847e631ad2b4ff35772e0905648b291e79816a4a274616fda5157bd6a88319a2'
         'SKIP'
         '7ea069e81e2d91a3154bcb62516b4b599f34596de277f95ad1ccaba73869c4f84f94f063b65026ba0bc8a72c0fd8e8e182b82346964f67ea78166b6399c923c5')
 validpgpkeys=(
