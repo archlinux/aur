@@ -2,7 +2,7 @@
 
 pkgname='python-wagtail'
 _name=${pkgname#python-}
-pkgver='5.0'
+pkgver='5.0.1'
 pkgrel=1
 pkgdesc="A Django content management system."
 url="https://wagtail.org/"
@@ -11,7 +11,7 @@ makedepends=()
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('cb283fb558a0c94be1685eec23f8bff653f1dfafde96fbf38376782c54502e5b')
+sha256sums=('22211230311120d27a0a035329ee78ee3a8e8d9781834266cbc84d24dcee7383')
 
 build() {
 	cd "${srcdir}/${_name}-${pkgver}"
