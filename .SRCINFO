@@ -1,6 +1,6 @@
 pkgbase = rbtools
 	pkgdesc = Client tools for Review Board
-	pkgver = 4.0
+	pkgver = 4.1
 	pkgrel = 1
 	url = https://www.reviewboard.org/
 	arch = any
@@ -15,7 +15,8 @@ pkgbase = rbtools
 	depends = python-texttable
 	depends = python-colorama
 	depends = pydiffx
-	source = https://files.pythonhosted.org/packages/source/R/RBTools/RBTools-4.0.tar.gz
-	sha256sums = 67556ba8ce2e9977c4a4a5e14c4785cbe9215be56d04f8167fd703a4ae0f266f
+	depends = python-certifi
+	source = https://files.pythonhosted.org/packages/source/R/RBTools/RBTools-4.1.tar.gz
+	sha256sums = 24efb20346b905c9be0464e747ee1bdee7967d1b94175697ea0c830d929475ff
 
 pkgname = rbtools
