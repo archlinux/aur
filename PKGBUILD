@@ -1,7 +1,7 @@
 # Maintainer: Ewout van Mansom <ewout@vanmansom.name>
 pkgname=smfc
-pkgver=2.3.1
-pkgrel=4
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="Supermicro Fan Control"
 arch=(any)
 install=smfc.install
@@ -14,7 +14,7 @@ source=(
   "${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
   'modules-load.conf'
 )
-sha256sums=('5578829cb2b329d9f920b9ba2a20b80c541e47dc418e1c81838ec672b32284e7'
+sha256sums=('38e817ff4d9a5bd8d91a3fe395a0ce1f8770f5b0681847b958031bed866b864f'
             '695a1124cf2922feb6a7d2892e664a1b4fcb11329ff635734dc1b95df1f9dc51')
 
 check() {
