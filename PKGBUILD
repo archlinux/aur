@@ -1,28 +1,27 @@
-# Maintainer: garionion <garionion ät entr0py.de>
+# Maintainer: The one with the braid <the-one@with-the-braid.cf>
 # thanks to nyanpasu64 for pointing out the wrong install path
 
 pkgname=fluffychat-git
 _name=fluffychat
-pkgver=v1.6.4.r33.g0c94ffcd
+pkgver=v1.11.2.r73.g6529ce0d
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('x86_64' 'aarch64')
 url="https://fluffychat.im/"
 license=('AGPL3')
-depends=('gtk3' 'jsoncpp' 'libsecret')
+depends=('gtk3' 'jsoncpp' 'libsecret' 'xdg-user-dirs' 'zenity' 'libolm')
 makedepends=('clang'
              'ninja'
              'flutter'
              'cmake'
              'git'
              'gtk3')
-optdepends=('libolm: E2E Encryption support')
 provides=("$_name")
 conflicts=("$_name")
 source=("git+https://gitlab.com/famedly/fluffychat.git")
 sha256sums=('SKIP')
 
-pkgver(){
+pkgver() {
     cd ${_name}
     git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
@@ -31,23 +30,22 @@ prepare() {
   flutter --no-version-check --suppress-analytics config --enable-linux-desktop
   cd ${_name}
   git submodule update --init --recursive
-  
-  flutter --no-version-check --suppress-analytics clean
-  flutter --no-version-check --suppress-analytics pub get
-}
 
-build() {
   # overriding CMake flags for aarch64 in order to ensure build
   # is not failing
   if [[ "$(uname -m)" == "aarch64" ]]; then
-    echo "Adjusting CMake flags for aarch64."
     export CXXFLAGS="${CXXFLAGS/-fstack-protector-strong/ }"
     export CXXFLAGS="${CXXFLAGS/-fstack-clash-protection/ }"
 
     export CFLAGS="${CFLAGS/-fstack-protector-strong/ }"
     export CFLAGS="${CFLAGS/-fstack-clash-protection/ }"
   fi
+  
+  flutter --no-version-check --suppress-analytics clean
+  flutter --no-version-check --suppress-analytics pub get
+}
 
+build() {
   cd ${_name}
   flutter --no-version-check --suppress-analytics build linux --release --verbose
 }
@@ -81,7 +79,7 @@ package() {
 Type=Application
 Version=${pkgver}
 Name=FluffyChat
-Comment=Matrix Client. Chat with your friends
+Comment=Open. Nonprofit. Cute. Easy to use (matrix) messenger. Secure and decentralized.
 Exec=${_name}
 Icon=${_name}
 Terminal=false

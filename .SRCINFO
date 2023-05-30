@@ -1,6 +1,6 @@
 pkgbase = fluffychat-git
 	pkgdesc = Chat with your friends
-	pkgver = v1.5.0.fdroid.2.r57.g58da4dca
+	pkgver = v1.11.2.r73.g6529ce0d
 	pkgrel = 1
 	url = https://fluffychat.im/
 	arch = x86_64
@@ -15,6 +15,9 @@ pkgbase = fluffychat-git
 	depends = gtk3
 	depends = jsoncpp
 	depends = libsecret
+	depends = xdg-user-dirs
+	depends = zenity
+	depends = libolm
 	provides = fluffychat
 	conflicts = fluffychat
 	source = git+https://gitlab.com/famedly/fluffychat.git
