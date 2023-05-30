@@ -1,5 +1,5 @@
-release.sh
-src/
-pkg/
-leftwm-git/
-*pkg.tar.zst
+/*
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
+!/readme.install
