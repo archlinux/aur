@@ -1,5 +1,5 @@
 pkgbase = xdman8-bin
-	pkgdesc = Powerfull download accelerator and video downloader (binary release)
+	pkgdesc = Open source download accelerator and video downloader (binary release)
 	pkgver = 8.0.26
 	pkgrel = 1
 	url = https://github.com/subhra74/xdm
