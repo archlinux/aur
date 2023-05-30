@@ -1,22 +1,24 @@
 # Maintainer: Nixuge
 
 pkgname=reddit-desktop-bin
-pkgver=1.0.123
+pkgver=1.0.168
 pkgrel=1
 pkgdesc='Reddit Desktop is a desktop client for reddit.'
 url=https://github.com/sgiurgiu/reddit_desktop
 arch=(x86_64)
 license=(GNU)
 depends=(mpv)
+conflicts=('reddit-desktop')
 provides=('reddit-desktop')
 source=("https://github.com/sgiurgiu/reddit_desktop/releases/download/${pkgver}/reddit_desktop-${pkgver}-debian.deb")
-sha256sums=('a9f572a7d6ecd1b5cfae369a27e61274eb9c6a994439c4ad843270f259dc4782')
+sha256sums=('0b8484f2321d21f3809e01c02528b81837bb592b33f20ca96b25c435bc771416')
 
 package() {
 	bsdtar -xf data.tar.gz -C "$pkgdir/"
 
 	# The executable really only wants libmpv.so.1 (instead of the libmpv.so.2 provided by MPV)
 	# so for now just symlinking it as it still works either way
+	# Note that this should be fixed asap
 
 	# ===== symlink to /usr/lib, dirties the path a bit but works when launching from the terminal
 	# (went with that one)
