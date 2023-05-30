@@ -2,7 +2,7 @@
 
 pkgname=handlr-regex-bin
 pkgver=0.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of handlr with regex support"
 arch=("x86_64")
 url="https://github.com/Anomalocaridid/handlr-regex"
@@ -24,10 +24,10 @@ b2sums=('1ab548c07e194c403ef7087d2f5e4cca2d03ff758a73489e6db5735bcc5a3cfa003fd1a
         'e1eccfbbf3bf9280aa0f6139414cb9375d497dd10aca1ae8ab8283390eea597d2204615c3d1823391af7e1febac23cfb23bfa4301f2ff976f8070c6e7c2b6d72')
 
 package() {
-	install -Dm 755 "handlr-${pkgver}" -t "${pkgdir}/usr/bin/handlr"
-	install -Dm 755 "handlr-${pkgver}.sh" -t "${pkgdir}/usr/share/bash-completion/completions/handlr"
-	install -Dm 755 "handlr-${pkgver}.fish" -t "${pkgdir}/usr/share/fish/vendor_completions.d/handlr.fish"
-	install -Dm 755 "_handlr-${pkgver}" -t "${pkgdir}/usr/share/zsh/site-functions/_handlr"
-	install -Dm 644 README-${pkgver}.md -t "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-	install -Dm 644 LICENSE-${pkgver} -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm 755 "handlr-${pkgver}" "${pkgdir}/usr/bin/handlr"
+	install -Dm 755 "handlr-${pkgver}.sh" "${pkgdir}/usr/share/bash-completion/completions/handlr"
+	install -Dm 755 "handlr-${pkgver}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/handlr.fish"
+	install -Dm 755 "_handlr-${pkgver}" "${pkgdir}/usr/share/zsh/site-functions/_handlr"
+	install -Dm 644 README-${pkgver}.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm 644 LICENSE-${pkgver} "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
