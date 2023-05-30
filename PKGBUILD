@@ -5,8 +5,8 @@
 ## https://github.com/web-flow.gpg
 
 pkgname=neovim-telescope-git
-pkgver=0.1.0.r0.gb79cd6c8
-pkgrel=2
+pkgver=0.1.0.r158.g6d3fbffe
+pkgrel=1
 pkgdesc="Extensible fuzzy finder for lists"
 arch=('any')
 url="https://github.com/nvim-telescope/telescope.nvim"
@@ -22,12 +22,13 @@ optdepends=(
 makedepends=('git')
 provides=("${pkgname%-git}=${pkgver%.r*}")
 conflicts=("${pkgname%-git}")
-source=("$pkgname::git+$url?signed")
+#source=("$pkgname::git+$url?signed")
+source=("$pkgname::git+$url")
 sha256sums=('SKIP')
-validpgpkeys=(
-	'5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23' ## GitHub
-	'9CA54B35171429C416D631D6092CC34920FFEB96' ## Simon Hauser
-)
+#validpgpkeys=(
+#	'5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23' ## GitHub
+#	'9CA54B35171429C416D631D6092CC34920FFEB96' ## Simon Hauser
+#)
 
 pkgver() {
 	git -C "$pkgname" describe --long --tags | sed 's/-/.r/;s/-/./'
