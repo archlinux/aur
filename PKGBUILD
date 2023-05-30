@@ -1,7 +1,7 @@
 # Maintainer: Buf <bot@buf.build>
 # Contributor: William Turner <willtur.will@gmail.com>
 pkgname=buf-bin
-pkgver=1.19.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc="A new way of working with Protocol Buffers."
 arch=('x86_64')
@@ -9,8 +9,8 @@ url="https://buf.build"
 license=('Apache')
 provides=('buf')
 conflicts=('buf')
-source=("https://github.com/bufbuild/buf/releases/download/v1.19.0/buf-Linux-x86_64.tar.gz")
-sha256sums=('ff35aa96b54037d492d30a21dce8d96d47693a761487f98551d750407c27c285')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/bufbuild/buf/releases/download/v$pkgver/buf-Linux-x86_64.tar.gz")
+sha256sums=('23ca3ba47e77de9b74cf6035d573a578baaa5124a28b64d8ca332f4d7ab65f26')
 
 package() {
   install -D -m755 "$srcdir/buf/bin/buf" "$pkgdir/usr/bin/buf"
