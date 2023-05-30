@@ -16,7 +16,7 @@ arch=('x86_64')
 url="https://vagrantup.com"
 license=('MIT')
 options=('!emptydirs')
-depends=('curl' 'libarchive' 'libssh2' 'libxml2' 'libxslt' 'rsync'
+depends=('curl' 'dnsmasq' 'libarchive' 'libssh2' 'libxml2' 'libxslt' 'rsync'
          'ruby' 'xz' 'perl')
 makedepends=('git' 'go')
 conflicts=('vagrant-substrate')
