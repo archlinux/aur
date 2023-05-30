@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com> 
 pkgname=deepin-wine-tencent-edu
-pkgver=4.5.1.2
+pkgver=4.6.1.1
 _pkgname=com.tencent.edu.deepin
 _deepinver=3.0.3.55deepin6
 _officalname=TXEDU
@@ -14,14 +14,14 @@ conflicts=()
 install="${pkgname}.install"
 source=(
     "${_pkgname}_${_deepinver}.deb::https://com-store-packages.uniontech.com/appstore/pool/appstore/c/${_pkgname}/${_pkgname}_${_deepinver}_i386.deb"
-    "${_officalname}-${pkgver}.exe::https://down.qq.com/txedupc/EduInstall_${pkgver}_10192.exe"
+    "${_officalname}-${pkgver}.exe::https://down.qq.com/txedupc/EduInstall_${pkgver}_10193.exe"
     "run.sh"
     "${pkgname}.install"
     "LICENSE.html::${url}/article/645"
 )
 sha256sums=('c61e98e1cff8eb5274c79499d807d08712f5092bff1e73c263849780c000da41'
-            '58f9f18a9b7c67b10e606e9ceca5af091b9b2cb8bd43c430ac778974b7898e15'
-            '0168cc0d65be20d140ecd2e44ebf13af661bad0ede1c66c6fce2a4f429a36338'
+            '8d111baa69311355aacfe6640d162a645165f6fe4ed8145861b50d963eac6889'
+            '4c4c79f3248f8829afb1db6a04ebb21e4c4f40f57a55be081c6ccc2f2b7b2245'
             '605dc1c32ea98be6d00312a7b98100b9b89cd43258d9b84a8572bc5739199e07'
             'e7c9efe5e722cfc9c66420d5d111202a28bbbdaa14832dfaa676e9da6e44c367')
  
