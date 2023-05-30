@@ -18,8 +18,8 @@ ${_pkgname}-bin.sh
 https://dist.ballerina.io/downloads/2201.5.0/ballerina-2201.5.0-swan-lake.zip
 )
 sha256sums=(
-'1a0f01f502e85b5c01cc18c28ea1d2de61edd64c9c251d94f0cbef3bac8e349e'
-'81b3b8645b563759edfd5041addd9672c110cd3e8b759d5914831aa037b25050'
+'7a65e1705dd8868524452b07a32d8eee2f8a94534ac263947b9e2cfd0edfdcb2'
+'1a0f04f502e85b5c01cc18c28ea1d2de61edd64c9c251d94f0cbef3bac8e349e'
 )
 
 prepare() {
