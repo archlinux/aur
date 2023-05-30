@@ -1,0 +1,11 @@
+pkgbase = shopify-ejson-bin
+	pkgdesc = Shopify's ejson is a utility for managing a collection of secrets in source control.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/Shopify/ejson/
+	arch = x86_64
+	license = MIT
+	source = ejson_1.4.0_linux_amd64.tar.gz::https://github.com/Shopify/ejson/releases/download/v1.4.0/ejson_1.4.0_linux_amd64.tar.gz
+	sha256sums = 0aef9295c79d280a954460e5057c24ce0a567faaef9fcdf18051b821e48d99a9
+
+pkgname = shopify-ejson-bin
