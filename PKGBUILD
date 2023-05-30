@@ -1,7 +1,7 @@
 # Maintainer: Fuwn <contact@fuwn.me>
 
 pkgname='nectar'
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Command-line Honeyfeed Reader'
 arch=('any')
