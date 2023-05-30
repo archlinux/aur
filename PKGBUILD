@@ -2,7 +2,7 @@
 
 pkgname=flightcore
 pkgver=1.16.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A Northstar installer, updater, and mod-manager"
 arch=('x86_64')
 url="https://github.com/R2NorthstarTools/FlightCore"
@@ -36,6 +36,9 @@ prepare() {
 
   # Switch tag version
   git checkout tags/v${pkgver}
+
+  # Prioritize IPv4 because some machines have a problem with IPv6
+  export NODE_OPTIONS=--dns-result-order=ipv4first
 
   # Install npm dependencies
   npm install
