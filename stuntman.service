@@ -4,8 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-User=nobody
-Group=nobody
+DynamicUser=yes
 ExecStart=/usr/bin/stunserver
 
 [Install]
