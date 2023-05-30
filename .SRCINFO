@@ -22,3 +22,9 @@ pkgbase = whisper-git
 	sha256sums = SKIP
 
 pkgname = whisper-git
+	depends = python-more-itertools
+	depends = python-numba
+	depends = python-pytorch
+	depends = python-tqdm
+	depends = python-tiktoken
+	depends = ffmpeg

@@ -46,6 +46,10 @@ build() {
 }
 
 package() {
+  depends+=(
+    'ffmpeg'
+  )
+
   cd "$srcdir/whisper"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
