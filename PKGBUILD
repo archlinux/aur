@@ -1,7 +1,7 @@
 # See https://wiki.archlinux.org/index.php/Java_package_guidelines
 pkgname=bundletool
 pkgdesc="A command-line tool for manipulating Android App Bundles"
-pkgver=1.14.1
+pkgver=1.15.1
 pkgrel=1
 arch=('any')
 url='https://github.com/google/bundletool'
@@ -12,7 +12,7 @@ source=(
   bundletool
 )
 noextract=("$jarname")
-sha256sums=('2f78f9c8d059db1c7ea4ac6ffb2527466af03838d150b70f4b77fe7deefca011'
+sha256sums=('aec9dc64fb25acc64eb668b45c0ec6a0ebba30db4a2e084b61b7af0a7380a0e1'
             '3e00767959cb7cb78b76856ae76b61f37b481ca77f28b50a27acdc4c1820891e')
 
 package () {
