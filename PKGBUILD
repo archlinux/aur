@@ -1,9 +1,10 @@
-# Maintainer: Sam Whited <sam@samwhited.com>
+# Maintainer: Laker Turner <la@laker.gay>
+# Contributor: Sam Whited <sam@samwhited.com>
 
 pkgname=writeas-cli
 pkgver=2.0.0
 pkgrel=4
-pkgdesc="Write.as command line interface"
+pkgdesc="Write.as / WriteFreely command line interface"
 arch=('x86_64')
 url='https://write.as/apps/cli'
 license=('GPL3')
