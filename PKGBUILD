@@ -1,6 +1,6 @@
 # Maintainer: Josh Meranda <joshmeranda@gmail.com>
 pkgname=wrash
-pkgver=0.1.5
+pkgver=0.2.0
 pkgrel=1
 depends=()
 pkgdesc="A minimalistic command wrapper shell"
@@ -8,29 +8,29 @@ arch=(x86_64)
 url="https://github.com/joshmeranda/wrash"
 license=('MIT')
 groups=()
-makedepends=("rust" "cargo")
+makedepends=("go")
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 replaces=()
 backup=()
 options=()
 install=
-source=("$pkgname-$pkgver::https://github.com/joshmeranda/wrash/archive/refs/tags/$pkgver.tar.gz")
+source=("$pkgname-$pkgver::https://github.com/joshmeranda/wrash/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
 md5sums=('SKIP')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    cargo build --release --locked
+    make build
 }
 
 check() {
     cd "$srcdir/$pkgname-$pkgver"
-    cargo test -q -- --test-threads 1 --include-ignored
+    make test
 }
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    install -Dm755 target/release/$pkgname "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 bin/$pkgname "$pkgdir/usr/bin/$pkgname"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
