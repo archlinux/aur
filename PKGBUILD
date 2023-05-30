@@ -10,7 +10,7 @@ source=('https://mediadl.musictribe.com/download/software/midas_M32/M32-Edit_LIN
         'm32-edit.desktop'
         'm32-edit.png')
 md5sums=('e31215da696271b6c47a8f2dee360402'
-         '64b3b57897765dea06e2116d15ed3700'
+         'fd31606debb8f83e7ad0cbf67f68f5e5'
          '027a21ff0e8bda95fe62e97488b1c6e4')
 
 package() {
