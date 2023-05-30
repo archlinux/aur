@@ -1,13 +1,13 @@
 pkgbase = g-ls
 	pkgdesc = a powerful ls in golang
-	pkgver = 0.5.5
+	pkgver = 0.5.6
 	pkgrel = 1
 	url = https://github.com/Equationzhao/g
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	backup = etc/g-ls/config.conf
-	source = g-0.5.5.tar.gz::https://github.com/Equationzhao/g/archive/refs/tags/v0.5.5.tar.gz
-	sha256sums = a7cd60ff99339426f4d081f18e2664d378dad6cda287bb719c1ad2905f6e442e
+	source = g-0.5.6.tar.gz::https://github.com/Equationzhao/g/archive/refs/tags/v0.5.6.tar.gz
+	sha256sums = 4e4bf107eb7dbc9747029ee72ec863f132d3aeb46e94254d7cc844b82eb15776
 
 pkgname = g-ls
