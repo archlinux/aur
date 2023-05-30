@@ -1,0 +1,17 @@
+pkgbase = ocaml-domainslib
+	pkgdesc = Nested-parallel programming library for OCaml
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/ocaml-multicore/domainslib
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	checkdepends = ocaml-mirage-clock
+	makedepends = dune>=3.0.0
+	depends = ocaml>=5.0.0
+	depends = ocaml-lockfree>=0.2.0
+	options = !strip
+	source = ocaml-domainslib-0.5.0-1.tar.gz::https://github.com/ocaml-multicore/domainslib/archive/v0.5.0.tar.gz
+	sha512sums = 6a94afe0f24c6a97d4ad33036ff5c682529d28cd8470e125523d91448d86fd33d28ad9ab3ab56398d98666442d09b4b0d1d7750365bbdfd384a50dd940e65a4a
+
+pkgname = ocaml-domainslib
