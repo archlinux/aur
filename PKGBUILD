@@ -2,7 +2,7 @@
 
 pkgname=klipper-estimator
 _pkgname=${pkgname/-/_}
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="A tool for estimating the time a print will take on a 3D printer running Klipper firmware"
 url="https://github.com/Annex-Engineering/klipper_estimator"
@@ -11,7 +11,7 @@ license=("custom:MIT")
 options=("!lto")
 makedepends=(cargo)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Annex-Engineering/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('84e4a77287447254e11db9f0f03384480740cc1924c45ed7cb3ad7191ca433fc7c3fc9e0f38baa73b6a3f4bf98573ade683ed146331c7411a85e114eae346f1d')
+sha512sums=('e652b6b2f54c8c18f87715bae708fb7b0177766dc37b7be51445a045f5c2b8c4506f59d4181e7e5f9810ebb388bb797913cc47c5dca43daa1d6c8088ab3bfb05')
 
 prepare() {
   cd "$_pkgname-$pkgver"
