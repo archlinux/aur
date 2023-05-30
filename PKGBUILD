@@ -8,7 +8,7 @@ pkgname="ocaml-$_projectname"
 pkgver='1.4.0'
 pkgrel='3'
 pkgdesc='An OCaml streaming codec to decode and encode the XML data format'
-arch=('x86_64' 'i486' 'i686' 'pentium4' 'armv7h' 'aarch64')
+arch=('x86_64' 'aarch64')
 url="https://erratique.ch/software/$_projectname"
 license=('ISC')
 depends=('ocaml>=4.05.0')
