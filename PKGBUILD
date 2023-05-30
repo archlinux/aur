@@ -1,6 +1,6 @@
 pkgname=sunshine
 pkgver=0.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A self-hosted GameStream host for Moonlight."
 arch=('x86_64' 'aarch64')
 url=https://app.lizardbyte.dev
@@ -25,6 +25,7 @@ prepare() {
     git rm -f third-party/ffmpeg-windows-x86_64
     git rm -f third-party/ffmpeg-macos-x86_64
     git rm -f third-party/ffmpeg-macos-aarch64
+    git rm -f third-party/ViGEmClient
 
     if [[ $CARCH == "x86_64" ]]; then
         git rm -f third-party/ffmpeg-linux-aarch64
