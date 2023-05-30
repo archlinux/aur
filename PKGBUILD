@@ -1,24 +1,24 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-google-speak
-pkgver=0.1
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Simple class to create speech files using Google Translate URL"
-arch=('any')
+arch=(any)
 url="https://github.com/marcus67/python_google_speak"
-license=('GPL3')
-depends=('python-requests' 'python-playsound' 'python-pygi')
-makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('bd9b8d4968cad94b3e614c8c09b703bbf27dd2377036f5994761f8c7ef5fb69d')
+license=(GPL3)
+depends=(python-requests python-playsound)
+makedepends=(python-build python-installer python-setuptools python-wheel)
+source=(https://pypi.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz)
+sha512sums=('a3a169e9d1817ee6c46c3baa6af26af6d77dd7b21840eac0068454eb3ebde960abe9fc6fc73a4e141bca45bb0c9f577b06d377ead791b0cc2abd1fc671dacbd2')
 
 build() {
-	cd "$pkgname-$pkgver"
-	python -m build --wheel --no-isolation
+  cd ${pkgname}-${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
-	export PYTHONHASHSEED=0
-	cd "$pkgname-$pkgver"
-	python -m installer --destdir="$pkgdir/" dist/*.whl
+  cd ${pkgname}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
