@@ -5,8 +5,8 @@
 
 pkgname=zsh-theme-powerlevel10k
 # Whenever pkgver is updated, _libgit2ver below must also be updated.
-pkgver=1.16.1
-_libgit2ver="tag-d6c37a38587c9af2a9e63449fc8bf951dca0e854"
+pkgver=1.18.0
+_libgit2ver="tag-0ad3d776aa86dd607dc86dcd7f77ad3ed7ebec61"
 pkgrel=1
 pkgdesc="Powerlevel10k is a theme for Zsh. It emphasizes speed, flexibility and out-of-the-box experience."
 arch=('x86_64')
@@ -23,12 +23,12 @@ optdepends=(
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/romkatv/powerlevel10k/archive/v${pkgver}.tar.gz"
   "libgit2-${_libgit2ver}.tar.gz::https://github.com/romkatv/libgit2/archive/${_libgit2ver}.tar.gz")
-sha512sums=('18c7201ac1c0d31beb166c29a5592316a439891fe26dcb3d0d4bea6fc3f02bdfe4430be59b5888a53075ea152f21d5a7bce6dcf343110596f90127f2268af36e'
-            '11fd09ce20191392947d171e9212a33a998c1f2c4bcb8ab7440a0dc88653ff1324a1529984a607d545ab8863738f4eb946134c46f44bd1c200c6d98c02657292')
+sha512sums=('b34cc419a7b0aea50cbd56b3d255da70d52deb6917550e4773102f6e42fa9d1fe9b310fa5f1109ba7a8ceb4e1368e9b0040155bdb71e1b2f5a2285246a9e0467'
+            'ffd637fc9e8ed440953f5fc39ca736785ff961f6391bff541dee3fe4e89b3d9eb44ef54767963eb63a14c314c7e53538e00e1ad7d83090d03eead40f160045a5')
 replaces=('zsh-theme-powerlevel9k')
 
 build() {
-  cd "${srcdir}/libgit2-${_libgit2ver}"
+  cd libgit2-${_libgit2ver}
   cmake \
    -DZERO_NSEC=ON \
    -DTHREADSAFE=ON \
@@ -53,7 +53,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/powerlevel10k-${pkgver}"
+  cd powerlevel10k-${pkgver}
   find . -type f -exec install -D '{}' "$pkgdir/usr/share/zsh-theme-powerlevel10k/{}" ';'
   # delete unnecessary files. See also: https://bugs.archlinux.org/task/66737
   rm -rf "${pkgdir}/usr/share/zsh-theme-powerlevel10k/gitstatus/obj"
