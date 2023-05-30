@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="bdash-appimage"
-pkgver=1.15.3
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="Simple SQL Client for lightweight data analysis."
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('zlib' 'hicolor-icon-theme' 'glibc')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Bdash-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/bdash-app/bdash/master/LICENSE")
-sha256sums=('6f2d774a00302a38e3d9d1d41e358fac00a4f9bba4361b329887c3906ac9bccc'
+sha256sums=('557b4bb9369b79effb9cad04d8d2837d4328962692a0c3b3dcde4b7be883fb9c'
             '44e997a14d296ed01f24a68d2071280936534e98f4613fa8b875c9922e6b22d8')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
