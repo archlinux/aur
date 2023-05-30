@@ -19,4 +19,4 @@ pkgbase = pcsx2-bin
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = pcsx2-latest-bin
+pkgname = pcsx2-bin
