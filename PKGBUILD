@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="grx-appimage"
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Fastest Web Gerber Renderer"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}.AppImage"
     "https://raw.githubusercontent.com/hpcreery/GRX/master/LICENSE")
-sha256sums=('8f137e5f37e3a14b9b549b711329bc3afc43fc3fa00a9462c5b3977756c382dd'
+sha256sums=('3a064e397d1b93b9c10c978f652e87e83340c17c24a6948f151c14f0130c93db'
             '6af73551667116d187b1a4e5dac0933f99a4c1151bd1a44c12249cd540a69444')
       
 prepare() {
