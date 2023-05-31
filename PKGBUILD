@@ -1,5 +1,5 @@
 pkgname=rymdport
-pkgver=3.3.2
+pkgver=3.3.6
 pkgrel=2
 pkgdesc='Cross-platform application for easy encrypted sharing of files, folders, and text between devices.'
 arch=('x86_64')
@@ -7,7 +7,7 @@ url="https://github.com/Jacalz/$pkgname"
 license=('GPLv3')
 makedepends=('go')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e4ebfbbf391aa873d8c968b4713316ba76a95f608b8f32d481fcb2f0ca5985ab')
+sha256sums=('fbeea914bd78c6d2cb64fabc4ade40ac9848bac811346c6aa5a1a07fcc70ad1d')
 
 build() {
   cd "$pkgname-$pkgver"
