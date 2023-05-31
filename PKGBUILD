@@ -1,62 +1,70 @@
+# Maintainer: a821
 # Contributor: louipc <base64:bG91aXBjQGdteC5jb20=>
 
-_pkgname=mutt
-pkgname="${_pkgname}-git"
-pkgver=6959.42e2d07a
+pkgname=mutt-git
+pkgver=2.2.10.r62.g5347d1c5
 pkgrel=1
+epoch=1
 pkgdesc="A small but very powerful text-based mail client"
 url="http://www.mutt.org/"
-arch=(i686 x86_64)
+arch=('i686' 'x86_64')
 license=('GPL')
-depends=('gdbm' 'gpgme' 'libidn' 'mime-types' 'ncurses' 'zlib')
-
-# Uncomment if enabling imap, pop, or smtp
-#depends+=('krb5' 'libsasl' 'openssl')
-
-makedepends=('git' 'gnupg' 'libxslt')
-conflicts=("${_pkgname}")
-provides=("${_pkgname}")
-replaces=("${_pkgname}-hg")
-
-source=("git+https://gitlab.com/muttmua/mutt.git")
-md5sums=(SKIP)
+depends=('gdbm'  'glibc'  'gpgme'  'krb5'  'libgpg-error'  'libidn2'  'libsasl'
+         'mime-types'  'ncurses'  'openssl'  'sqlite'  'zlib')
+makedepends=('docbook-xml'  'docbook-xsl'  'elinks'  'git'  'libxslt'  'lynx')
+optdepends=(
+  'perl: for smime_keys'
+  'python: for experimental mutt_oath2.py'
+  'smtp-forwarder: to send mail'
+)
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}")
+backup=("etc/mutt/Muttrc")
+source=("$pkgname::git+https://gitlab.com/muttmua/mutt.git")
+md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/${_pkgname}"
-    printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd $pkgname
+    git describe --long | sed 's/^mutt-\([0-9\-]\+\)-rel-/\1-r/;s/-/./g'
+}
+
+prepare() {
+    cd $pkgname
+    autoreconf -fiv
 }
 
 build() {
-    cd ${srcdir}/${_pkgname}
-
-    # Mutt should be used with external MTAs
-    # Uncomment relevant build parameters if you want to use the builtin MTA
-    # Remember to adjust dependencies.
-    ./prepare \
-        --prefix=/usr \
-        --sysconfdir=/etc \
-        --enable-debug \
-        --enable-hcache \
-        --enable-gpgme \
-        --enable-pgp \
-        --with-idn \
-        --with-regex \
-#       --enable-sidebar \
-#       --enable-imap \
-#       --enable-pop \
-#       --enable-smtp \
-#       --with-sasl \
-#       --with-ssl=/usr \
-#       --with-gss=/usr \
-
+    local _configure_options=(
+        --prefix=/usr
+        --sysconfdir=/etc/mutt
+        --enable-autocrypt
+        --enable-compressed
+        --enable-debug
+        --enable-gpgme
+        --enable-hcache
+        --enable-imap
+        --enable-pop
+        --enable-sidebar
+        --enable-smtp
+        --with-curses=/usr
+        --with-gss=/usr
+        --with-idn2
+        --with-sasl
+        --with-sqlite3
+        --with-ssl=/usr
+    )
+    cd $pkgname
+    ./configure "${_configure_options[@]}"
     make
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}"
-
-    make DESTDIR="${pkgdir}" install
-    rm -f "${pkgdir}/etc/mime.types"*
-    install -Dm644 contrib/gpg.rc "${pkgdir}/etc/Muttrc.gpg.dist"
+    make DESTDIR="${pkgdir}" install -C $pkgname
+    # Muttrc is backed up; a copy is not needed
+    rm -v "$pkgdir/etc/mutt/Muttrc.dist"
+    # mime types are provided by mailcap 
+    rm -v "$pkgdir/etc/mutt/mime.types"{,.dist}
+    ln -sv ../mime.types "$pkgdir/etc/mutt/mime.types"
 }
 
+# vim: set ts=4 sw=4 et:
