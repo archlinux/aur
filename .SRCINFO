@@ -1,6 +1,6 @@
 pkgbase = spectrum-git
 	pkgdesc = Console-based music player with equalizer written in C++.
-	pkgver = r272.fe75d04
+	pkgver = r273.6f0f905
 	pkgrel = 1
 	url = https://github.com/v1nns/spectrum
 	arch = any
