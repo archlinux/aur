@@ -1,3 +1,3 @@
 #!/bin/bash
 
-exec electron22 /usr/lib/android-messages-desktop/resources/app.asar "$@"
+exec electron21 /usr/lib/android-messages-desktop/resources/app.asar "$@"
