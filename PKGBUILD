@@ -3,19 +3,19 @@
 
 _gemname=image_size
 pkgname=ruby-${_gemname}
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="measure image size using pure Ruby"
 arch=(any)
 url=https://github.com/toy/image_size
 license=(RUBY GPL)
+options=(!emptydirs)
 depends=(ruby)
 checkdepends=(ruby-rspec ruby-webrick)
 makedepends=(rubygems ruby-rdoc)
-options=(!emptydirs)
 source=(${url}/archive/v$pkgver/$_gemname-$pkgver.tar.gz
         fix-gemspec-for-tarball.patch)
-sha256sums=('f8e750a353d869a3545069ddf882d1f503dc80bfd41d26fc9080521092f06230'
+sha256sums=('c3f249a7c4246e7bd6f615bcc964f015c57d0ad13ef850c661c5edd584136cdc'
             'a0a5d5f87a0993a3e24273a1a2ab948f6f5babbcfd53dbfda230d68af1859d03')
 
 prepare() {
@@ -25,26 +25,56 @@ prepare() {
 
 build() {
   cd ${_gemname}-${pkgver}
-  gem build ${_gemname}.gemspec
+  local _gemdir="$(gem env gemdir)"
+
+  gem build "${_gemname}.gemspec"
+
+  gem install \
+    --local \
+    --verbose \
+    --ignore-dependencies \
+    --no-user-install \
+    --install-dir "tmp_install/${_gemdir}" \
+    --bindir "tmp_install/usr/bin" \
+    "${_gemname}-${pkgver}.gem"
+
+  # remove unrepreducible files
+  rm --force --recursive --verbose \
+    "tmp_install/${_gemdir}/cache/" \
+    "tmp_install/${_gemdir}/gems/${_gemname}-${pkgver}/vendor/" \
+    "tmp_install/${_gemdir}/doc/${_gemname}-${pkgver}/ri/ext/"
+
+  find "tmp_install/${_gemdir}/gems/" \
+    -type f \
+    \( \
+      -iname "*.o" -o \
+      -iname "*.c" -o \
+      -iname "*.so" -o \
+      -iname "*.time" -o \
+      -iname "gem.build_complete" -o \
+      -iname "Makefile" \
+    \) \
+    -delete
+
+  find "tmp_install/${_gemdir}/extensions/" \
+    -type f \
+    \( \
+      -iname "mkmf.log" -o \
+      -iname "gem_make.out" \
+    \) \
+    -delete
 }
 
 check() {
   cd ${_gemname}-${pkgver}
-  rspec
+  local _gemdir="$(gem env gemdir)"
+  GEM_HOME="tmp_install/${_gemdir}" rspec
 }
 
 package() {
   cd ${_gemname}-${pkgver}
-  local _gemdir="$(gem env gemdir)"
 
-  gem install \
-    --ignore-dependencies \
-    --no-user-install \
-    -i "$pkgdir/$_gemdir" \
-    -n "$pkgdir/usr/bin" \
-    $_gemname-$pkgver.gem
-
-  rm -rf "$pkgdir/$_gemdir/cache"
+  cp --archive --verbose tmp_install/* "${pkgdir}"
 
   install -Dm0644 README.markdown "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm0644 CHANGELOG.markdown \
