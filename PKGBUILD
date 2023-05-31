@@ -2,7 +2,7 @@
 
 _pkgname=RSL
 pkgname=ros2-humble-rsl
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=2
 pkgdesc="ROS Support Library"
 url="https://index.ros.org/p/rsl/"
@@ -19,7 +19,7 @@ depends=(
     'ros2-humble-tcb-span'
 )
 source=("https://github.com/PickNikRobotics/RSL/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('222fa948ca07940c91d980e6a4268adf0343257eab18136ae0519c37cac21eb6')
+sha256sums=('8c74f9e5a74d8ca46c952dcdc132bd8dceab9c104494cb03ade551ed49842d4b')
 
 prepare() {
     source /opt/ros/humble/setup.bash
