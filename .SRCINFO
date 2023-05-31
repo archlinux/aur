@@ -1,7 +1,7 @@
 pkgbase = telegraph-git
 	pkgdesc = Write and decode morse (latest commit)
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fkinoshita/Telegraph
 	arch = any
 	license = GPL3

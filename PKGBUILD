@@ -4,7 +4,7 @@ _pkgname=telegraph
 pkgname=$_pkgname-git
 pkgdesc='Write and decode morse (latest commit)'
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/fkinoshita/Telegraph"
 license=('GPL3')
@@ -23,15 +23,15 @@ pkgver() {
 
 build() {
   arch-meson Telegraph build
-  ninja -C build
+  meson compile -C build
 }
 
 check() {
-  meson test -C build --print-errorlog
+  meson test -C build --print-errorlogs
 }
 
 package() {
   DESTDIR="$pkgdir" meson install -C build
-  install -Dm644 Telegraph/README.md -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm644 Telegraph/COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 Telegraph/README.md -t "$pkgdir/usr/share/doc/$_pkgname"
+  install -Dm644 Telegraph/COPYING -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
