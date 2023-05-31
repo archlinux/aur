@@ -19,7 +19,7 @@ sha256sums=('950f851eba08dac4d0b93ff62b3fb16ddacd4f8ebb98a2435f80bf05f2ea5a29'
             '087e5ed70b2fc512d814fbded9e873955b1da5b6bf1e31975174d704ad143156'
             'fc4d53dec520c80fe97dfda65b238c7d678e7ef26aaebffc5b43f924477ea4f4'
             'a902b49c67df16ba69c246b589b89598dff3edd5fe9965c107140e4e7e98110a'
-            'af7df16af22dd759495518e6d28484ff656458e505f04cf5aacfc6d7d3935d82')
+            'aa0ce16a6fc4c41e175557e6ce5f885244e8c48e4015bcbc5f04bb82f7442a9d')
 
 package() {
 	install -Dm644 'linux-modules-cleanup.conf' "${pkgdir}/usr/lib/tmpfiles.d/linux-modules-cleanup.conf"

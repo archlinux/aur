@@ -4,13 +4,14 @@ kver=$(uname -r)
 while read -r line; do
     # We only care about the running kernel
     if [[ "$line" == "usr/lib/modules/$kver/vmlinuz" ]];then
-        if mountpoint --nofollow --quiet ${line%vmlinuz};then
+        if mountpoint --nofollow --quiet /${line%vmlinuz};then
             # Mount point is already present
             # This means we already ran that hook during 'remove case'
             #
             # Remove the mount so we can reinstall the kernel
             # Most of the time udevd would block the umount, so suppress the first error message
-            umount ${line%vmlinuz} 2>/dev/null || umount --lazy ${line%vmlinuz}
+            umount /${line%vmlinuz} 2>/dev/null || umount --lazy /${line%vmlinuz}
+            rmdir /${line%vmlinuz}
         elif [[ -f "$line" && ! -d "/usr/lib/modules/running-kernel/" ]];then
             # Kernel install is present and we do not have a copy
             #
