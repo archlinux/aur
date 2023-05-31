@@ -1,0 +1,4 @@
+post_install() {
+	echo 'Default admin login is at localhost:8080/admin with user = admin and password = abc123.'
+	echo 'It is highly recommended to change this from the default.'
+}
