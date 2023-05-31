@@ -1,8 +1,8 @@
 pkgname=motionbox-bin
 _pkgname=motionbox-bin
-pkgver=1.8.0.0
-majver=1.8.0
-subver=0
+pkgver=1.8.1.0
+majver=1.8.1
+subver=1
 pkgrel=1
 pkgdesc="MotionBox is a Video Browser for Motion Freedom"
 arch=("x86_64")
@@ -17,9 +17,11 @@ source=(
     https://github.com/G-P-L/AUR/raw/master/MotionBox/MotionBox.png
 )
 sha256sums=(SKIP
-            'c531f06e8777a2f6327ead793b6dc16c2b4780fdb16be354f8e68ddbe32138e7'
+            'a467445d37f10dfec07fc2dbbb6d20b7fd75b215848861672839cd2760a67a21'
             '7b0f4fb92e7bc5d23fbef1a0bb9381a63fa979f28a36b2f0b4b4619b13039b72')
 
+options=(debug !strip)
+            
 package() {
     install -d "$pkgdir/opt/MotionBox"
     install -d "$pkgdir/usr/bin"
@@ -35,5 +37,5 @@ package() {
     install -Dm644 MotionBox.desktop "$pkgdir/usr/share/applications/MotionBox.desktop"
 
     # Link binary to /usr/bin/.
-    ln -s /opt/MotionBox/start.sh $pkgdir/usr/bin/motionbox
+    ln -s /opt/MotionBox/usr/bin/MotionBox $pkgdir/usr/bin/MotionBox
 }
