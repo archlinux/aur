@@ -1,7 +1,7 @@
 pkgbase = m32-edit
 	pkgdesc = M32-Edit for Midas M32 mixer
 	pkgver = 4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.musictribe.com/Categories/Midas/Mixers/Digital/M32/p/P0B3I/downloads
 	arch = x86_64
 	license = custom:proprietary

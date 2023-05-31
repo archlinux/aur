@@ -1,6 +1,6 @@
 pkgname=m32-edit
 pkgver=4.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="M32-Edit for Midas M32 mixer"
 arch=('x86_64')
