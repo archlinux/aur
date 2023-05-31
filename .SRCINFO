@@ -5,8 +5,8 @@ pkgbase = go-dispatch-proxy-git
 	url = https://github.com/extremecoders-re/go-dispatch-proxy
 	arch = i686
 	arch = x86_64
-	license = GPL
-	makedepends = go
+	license = MIT
+	depends = go
 	source = git+https://github.com/extremecoders-re/go-dispatch-proxy.git
 	sha256sums = SKIP
 
