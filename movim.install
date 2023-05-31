@@ -1,31 +1,6 @@
-pre_upgrade() {
-  if [ -d /usr/share/webapps/movim ] && [ ! -L /usr/share/webapps/movim/cache ]; then
-    echo 'The "cache" and "users" folders in /usr/share/webapps/movim are'
-    echo 'being moved to /var/cache/webapps/movim.'
-
-    install -m755 -d /var/cache/webapps/movim
-    mv /usr/share/webapps/movim/{cache,users} /var/cache/webapps/movim/
-    chmod -R u+rwX,g+rwX,o-rwx /var/cache/webapps/movim
-  fi
-}
-
 post_install() {
-  echo 'Post-installation tutorial'
-  echo 'https://github.com/movim/movim/wiki/Install-Movim#2-database-configuration'
-  echo
-  echo 'You should also read'
-  echo 'https://github.com/movim/movim/wiki/Install-Movim#general-behaviour'
-  echo
-  echo 'To complete the setup, please install a database and configure a reverse proxy.'
-  echo 'Don’t forget to adapt /etc/webapps/movim/db.inc.php and /etc/default/movim'
-  echo 'to your server settings'
-  echo 'Once everything is setup, use `systemctl start movim` to start the daemon'
+    echo "Installation successful, please ensure to read the ArchWiki"
+    echo "page for the setup guide, see the link below:"
+    echo "https://wiki.archlinux.org/title/Movim"
 }
 
-post_upgrade() {
-  # XXX: Waiting for upstream to fix https://github.com/movim/movim/issues/509
-  ln -sf /var/cache/webapps/movim/cache /usr/share/webapps/movim
-  ln -sf /var/cache/webapps/movim/users /usr/share/webapps/movim
-
-  post_install $1
-}
