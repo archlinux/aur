@@ -1,7 +1,7 @@
 pkgbase = zenmap
 	pkgdesc = Graphical Nmap frontend and results viewer
 	pkgver = 7.94
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nmap.org/
 	arch = any
 	license = GPL2

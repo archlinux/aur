@@ -1,4 +1,5 @@
-# Maintainer: Felix Bühler <account at buehler dot rocks>
+# Maintainer: Matthew Sexton <matthew@asylumtech.com>
+# Contributor: Felix Bühler <account at buehler dot rocks>
 # Contirbutor: Nils Czernia <nils[at]czserver.de>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Angel Velasquez <angvp@archlinux.org>
@@ -7,7 +8,7 @@
 pkgname=zenmap
 _pkgname=nmap
 pkgver=7.94
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical Nmap frontend and results viewer"
 url="https://nmap.org/"
 arch=("any")
