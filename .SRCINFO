@@ -1,0 +1,13 @@
+pkgbase = plymouth-theme-suzanne-wireframe
+	pkgdesc = Plymouth Theme with wireframe Suzanne from Blender
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/shantih19/PlymouthTheme-Suzanne-Wireframe
+	install = plymouth-theme-suzanne-wireframe.install
+	arch = any
+	license = GPL
+	depends = plymouth
+	source = https://github.com/shantih19/PlymouthTheme-Suzanne-Wireframe/archive/refs/tags/plymouth-theme-suzanne-wireframe-1.0.tar.gz
+	sha256sums = 1fc8bfcf4d44d33cf0d81af43bf92bbaf54e1be966b43b7b72e1eeb8e9782c4f
+
+pkgname = plymouth-theme-suzanne-wireframe
