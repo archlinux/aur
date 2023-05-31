@@ -1,6 +1,6 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=thingy
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Utility application used to make collections and quickly access recent and favorite documents."
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('libgsf' 'python-gobject' 'python-setproctitle' 'xapp')
 optdepends=('libreoffice' 'xreader')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('2ee04fd64cb9db68c4c574a78bf7839a6a65752f564fe5977ab99f70ebe4b397')
+sha256sums=('87341430d4316fdcc00548c661e6b387c4a566b6752cf885d6e99bc1c209af58')
 
 prepare() {
   cd "$pkgname-$pkgver"
