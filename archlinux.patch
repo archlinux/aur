@@ -11,20 +11,4 @@ index 4e5c0d34..09afecd2 100644
      }
      isEmpty(BINDIR) {
          BINDIR = bin
-diff --git a/YUViewLib/src/common/typedef.h b/YUViewLib/src/common/typedef.h
-index cf267b8f..05d41fb3 100644
---- a/YUViewLib/src/common/typedef.h
-+++ b/YUViewLib/src/common/typedef.h
-@@ -212,12 +212,7 @@ private:
- #define YUVIEW_VERSION "Unknown"
- #endif
- 
--#ifndef YUVIEW_HASH
- #define VERSION_CHECK 0
--#define YUVIEW_HASH 0
--#else
--#define VERSION_CHECK 1
--#endif
- 
- #define MAX_RECENT_FILES 10
  
