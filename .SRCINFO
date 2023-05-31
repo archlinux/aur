@@ -1,6 +1,6 @@
 pkgbase = lib32-mangohud-git
 	pkgdesc = A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more (32 bit library).
-	pkgver = 0.6.8.r145.g020e848
+	pkgver = 0.6.9.1.r68.g0ae2e42
 	pkgrel = 1
 	url = https://github.com/flightlessmango/MangoHud
 	arch = x86_64

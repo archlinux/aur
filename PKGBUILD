@@ -1,7 +1,7 @@
 # Maintainer: Darvin Delgado <dnmodder at gmail dot com>
 
 pkgname=lib32-mangohud-git
-pkgver=0.6.8.r145.g020e848
+pkgver=0.6.9.1.r68.g0ae2e42
 pkgrel=1
 pkgdesc="A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more (32 bit library)."
 url='https://github.com/flightlessmango/MangoHud'
@@ -42,4 +42,5 @@ package() {
 
     install -Dm664 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     rm -rf "$pkgdir/usr/share/vulkan"
+    rm -rf "$pkgdir/usr/bin"
 }
