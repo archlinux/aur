@@ -1,14 +1,20 @@
 pkgbase = dnsproxy
-	pkgdesc = A simple DNS proxy server, runing on multiple platform
-	pkgver = git+f03234a
+	pkgdesc = Simple DNS proxy with DoH, DoT, DoQ and DNSCrypt support
+	pkgver = 0.49.1
 	pkgrel = 1
-	url = https://github.com/vietor/dnsproxy
-	arch = any
-	license = GPL
+	url = https://github.com/AdguardTeam/dnsproxy
+	arch = x86_64
+	license = Apache
+	makedepends = go
 	makedepends = git
-	makedepends = make
-	source = git+https://github.com/vietor/dnsproxy.git
-	md5sums = SKIP
+	conflicts = dnsproxy-bin
+	conflicts = dnsproxy-adguard
+	backup = etc/dnsproxy/dnsproxy.yaml
+	source = dnsproxy.service
+	source = dnsproxy.yaml
+	source = https://github.com/AdguardTeam/dnsproxy/archive/v0.49.1.tar.gz
+	sha256sums = 565eea9808589ecafa81f2229ac1f85b39028e26d488a9a7c0b51afc43d7f42b
+	sha256sums = 72937969cc68182672e945fb26a6e350772a421463a4593c113d2f89af0b922c
+	sha256sums = c587a7e88660c879f738df1ffcbf0402928a0c04ec0f148e385017f176e8ba14
 
 pkgname = dnsproxy
-
