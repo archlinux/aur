@@ -8,7 +8,7 @@ _cefbranch="5060"
 _chromiumver="103.0.${_cefbranch}.134"
 _rebuild="1" # The tarball sometime can get rebuild by OBS Project
 pkgver="${_version}+g${_commit}+chromium_${_chromiumver}_${_rebuild}"
-pkgrel=5
+pkgrel=6
 pkgdesc="Chromium Embedded Framework minimal release needed by OBS Studio release in /opt/cef-obs"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/cef/tree/5060-shared-textures"
@@ -64,7 +64,7 @@ build() {
   cd "${srcdir}/cef_binary_${_cefbranch}_linux_${CARCH}"
 
   cmake \
-    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_BUILD_TYPE=Release \
     -DPROJECT_ARCH=$CARCH .
 
   make libcef_dll_wrapper
