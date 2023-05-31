@@ -1,6 +1,6 @@
 # Maintainer: Alad Wenter <https://github.com/AladW>
 pkgname=aurum-git
-pkgver=0.1.r0.g9eabd0e
+pkgver=0.2.r14.ge084aaa
 pkgrel=1
 pkgdesc='high-level wrapper for aurutils with extra features'
 url='https://github.com/AladW/aurum'
