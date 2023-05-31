@@ -3,8 +3,8 @@
 # Repository: https://gitlab.com/calvinreu/kbdmod
 
 pkgname=kbdmod
-pkgver=2.0.2
-pkgrel=28
+pkgver=2.1.0
+pkgrel=29
 epoch=
 pkgdesc="modify your keyboard functionality with multi functions per key"
 arch=('any')
@@ -41,11 +41,40 @@ check() {
 
 package() {
 	echo -e "${RED}this package has to be installed as root${NOCOLOR}\nuse pacman -U to install the package"
-	cd "$pkgname-v$pkgver/build"
-	install -Dm 755 kbdmod.bin "$pkgdir/usr/bin/kbdmod"
-	install -Dm 644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm 644 ../README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-	install -Dm 644 ../doc/* "$pkgdir/usr/share/doc/$pkgname/"
-	install -Dm 644 ../examples/laptop.yaml "$pkgdir/usr/share/examples/$pkgname/laptop.yaml"
+	cd "$pkgname-v$pkgver"
+	
+	install -Dm 755 build/kbdmod.bin $pkgdir/kbdmod
+	echo "kbdmod installed to $pkgdir/kbdmod"
+
+
+	install -Dm 600 templates/mouse_props.yaml "$pkgdir/etc/interception/properties/mouse.yaml"
+
+	install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/kbdmod/LICENSE"
+	echo "LICENSE installed to /usr/share/licenses/kbdmod/LICENSE"
+
+	install -Dm 644 README.md "$pkdir/usr/share/doc/kbdmod/README.md"
+	echo "README.md installed to /usr/share/doc/kbdmod/README.md"
+
+	install -Dm 644 doc/* "$pkgdir/usr/share/doc/kbdmod/"
+	echo "doc installed to /usr/share/doc/kbdmod/"
+
+	install -Dm 644 examples/laptop.yaml "$pkgdir/usr/share/doc/kbdmod/examples/laptop.yaml"
+	echo "laptop.yaml installed to /usr/share/doc/kbdmod/examples/laptop.yaml"
+
+#check if cowsay is installed
+if [ -x "$(command -v cowsay)" ]; then
+	cowsay "ya installed kbdmod successfully"
+else
+	echo '_________________________________
+<ya installed kbmod successfully> 
+---------------------------------
+        \   ^__^ 
+         \  (oo)\_______ 
+            (__)\       )\/\ 
+                ||----w | 
+                ||     ||'
+fi
+
+	
 }
-sha256sums=('4ed3bf91517070b866c4c42077568d18fcc83cf697e562afb745886eb577e38d')
+sha256sums=('b298480dfa0346cbde475a9adaa36355a701289c05644fe2a61c89dda3134b19')
