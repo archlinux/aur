@@ -6,8 +6,7 @@ _installpkgpath=quark-cloud-drive
 pkgver=2.5.31
 _sparkpkgname=cn.quarkclouddrive.spark
 _sparkver=2.5.1spark1
-pkgrel=1
-epoch=
+pkgrel=2
 pkgdesc="夸克网盘是夸克推出的一款云服务产品，可轻松进行照片、视频、文档、音频等文件的在线备份、同步和分享，并支持电脑/手机/iPad端等多个端。"
 arch=("x86_64")
 url="https://pan.quark.cn/"
@@ -17,16 +16,14 @@ optdepends=('wqy-microhei' 'wqy-zenhei')
 conflicts=()
 provides=("Quark")
 install="${pkgname}.install"
-source=(
-    "${_sparkpkgname}_${_sparkver}_amd64.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/network/${_sparkpkgname}/${_sparkpkgname}_${_sparkver}_amd64.deb"
+source=("${_sparkpkgname}_${_sparkver}_amd64.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/network/${_sparkpkgname}/${_sparkpkgname}_${_sparkver}_amd64.deb"
     "${_installpkgpath}-${pkgver}.exe::https://pdds.quark.cn/download/stfile/ddjemdljmdehdflfm/${_pkgdownloadname}-v${pkgver}-release-pckk%40other_ch-20230511181042.exe"
-    "LICENSE::https://broccoli.uc.cn/apps/quark_icloud_pay/routes/service_help?uc_param_str=dsdnfrpfbivesscpgimibtbmnijblauputogpintnwktprchmt&uc_biz_str=S%3Acustom|C%3Atitlebar_hover_2"
+    "LICENSE.html::https://terms.alicdn.com/legal-agreement/terms/suit_bu1_uc/suit_bu1_uc202002251416_20839.html"
     "${pkgname}.install"
-    "run.sh"
-    )
+    "run.sh")
 sha256sums=('a7426b5b1fac66aa464b62d81740d5c86067f6bd00d64d0dd9708f2b05b91b04'
             '2df021c009ed9bbfb44c3d7ba8cddbb1e7bfb2c8908b032ab5cc72cfc15e57ff'
-            '6945865faa45a3012d2dfeace67ef589d79e11988d23d7cbce6e55af469bfe3c'
+            'f16c57190147ec7c09cbcf0711956ab63b7af9f7e3713a23961a85e5859d1753'
             'd7f46cae43addb386fd3dddf469530b6942143c2a4ce00e1b92d7f256ed90b70'
             'ab9e0d1d1cbb7b6c5ee5379eeec12b956fff3b747989f4e5256b29cc6b449863')
    
@@ -55,6 +52,6 @@ package() {
     md5sum "${pkgdir}/opt/apps/${pkgname}/files/files.7z" | awk '{ print $1 }' > "${pkgdir}/opt/apps/${pkgname}/files/files.md5sum"
     install -Dm644 "${srcdir}/opt/apps/${pkgname}/entries/applications/${_sparkpkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 "${srcdir}/opt/apps/${pkgname}/entries/icons/hicolor/scalable/apps/${_sparkpkgname}.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.png"
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm755 "${srcdir}/run.sh" "${pkgdir}/opt/apps/${pkgname}/files/"
 }
