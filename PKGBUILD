@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://openquantumsafe.org/applications/tls.html#oqs-openssl-provider"
 license=('MIT')
 depends=(
-    'liboqs'
+    'liboqs<0.8.0'
     'openssl'
 )
 makedepends=('cmake')
