@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=buildcache-bin
-pkgver=0.28.3
+pkgver=0.28.4
 pkgrel=1
 pkgdesc="An advanced compiler accelerator"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('buildcache')
 source=("LICENSE::https://raw.githubusercontent.com/mbitsnbites/buildcache/master/LICENSE")
 source_x86_64=("https://github.com/mbitsnbites/buildcache/releases/download/v$pkgver/buildcache-linux.tar.gz")
 sha256sums=('SKIP')
-sha256sums_x86_64=('628b247a1ae5938c5e077da3f78cd24dc36250f6db7d56f6c21ee7d4be11d1de')
+sha256sums_x86_64=('c0e06b05c621a4da6e3a3403964bb19f4b595166a8218dc0fcd7ae16c1ee8267')
 
 
 package() {
