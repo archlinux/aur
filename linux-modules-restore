@@ -4,8 +4,18 @@ kver=$(uname -r)
 while read -r line; do
     # We only care about the running kernel
     if [[ "$line" == usr/lib/modules/$kver/vmlinuz && -d usr/lib/modules/running-kernel ]];then
-        mount --mkdir --bind --options ro /usr/lib/modules/{running-kernel,$kver}
+        mount --mkdir --bind --options ro /usr/lib/modules/{running-kernel,$kver} || continue
         # Mounting read-only since the only modification here should be unmounting
         # when rebooting or reinstalling the running kernel
+        mount_unit="usr-lib-modules-${kver//-/\\x2d}.mount"
+        install -Dm644 <(
+cat << EOF
+[Unit]
+After=$mount_unit
+Requires=$mount_unit
+EOF
+        ) /run/systemd/system/systemd-udevd.service.d/kernel-modules-hook-hardlinks.conf
+        systemctl daemon-reload
+        # Required for clean umount on shutdown
     fi
 done

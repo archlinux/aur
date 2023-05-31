@@ -9,7 +9,8 @@ while read -r line; do
             # This means we already ran that hook during 'remove case'
             #
             # Remove the mount so we can reinstall the kernel
-            umount ${line%vmlinuz}
+            # Fixme: systemd-udevd would likely block the umount
+            umount /${line%vmlinuz}
         elif [[ -f "$line" && ! -d "/usr/lib/modules/running-kernel/" ]];then
             # Kernel install is present and we do not have a copy
             #
