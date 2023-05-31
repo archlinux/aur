@@ -2,7 +2,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-beta-ffmpeg-codecs
-pkgver=113.0.5672.64
+pkgver=114.0.5735.9
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera-beta"
 arch=('x86_64')
@@ -10,12 +10,12 @@ url="https://ffmpeg.org/"
 license=('LGPL2.1')
 depends=('glibc')
 makedepends=(
-  'gn' 'ninja' 'python' 'gtk3' 'nss' 'libva'
+  'gn' 'ninja' 'python' 'gtk3' 'nss' 'libva' 'libevdev'
 )
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
 )
-sha512sums=('3df753f1fc0bb4253304e49880c06efbeae6ad3e9fcd3fb69b633097895e163b4fc4e6b6b19d8590670d38d217154d2c87d935213954b3bdbdd294e798a22381')
+sha512sums=('91dcac99f7e86070bf2c75488ce865dbde07fc4a959f4c9f2f92e1f8b6b45f245e2311f89ad5ecc438a8599877aef928e53560442f6fcfaab0683e0d759af5e1')
 
 #prepare() {
   #cd "$srcdir/chromium-$pkgver"
@@ -43,6 +43,7 @@ build() {
 
   # chromium clang
   python tools/clang/scripts/update.py
+  python tools/rust/update_rust.py
   export PATH="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin:$PATH"
 
   export CC="clang"
