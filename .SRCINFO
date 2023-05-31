@@ -1,6 +1,6 @@
 pkgbase = tadabor-bin
 	pkgdesc = An app that allows you to browse through the Quran and write your notes/reflections below the verses, everything will be saved in the application.
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = http://tadabor.surge.sh/
 	arch = x86_64
@@ -30,9 +30,9 @@ pkgbase = tadabor-bin
 	depends = cairo
 	conflicts = tadabor
 	options = !strip
-	source = tadabor-0.3.1.deb::https://github.com/EnlightenCode/tadabor-desktop/releases/download/v0.3.1/tadabor_0.3.1_amd64.deb
+	source = tadabor-0.3.2.deb::https://github.com/EnlightenCode/tadabor-desktop/releases/download/v0.3.2/tadabor_0.3.2_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/EnlightenCode/tadabor/master/LICENSE
-	sha256sums = c1a9cc70eeba3f51f514447cf5f74cf1fdb03725e3910cb1d91bd91decb3c642
+	sha256sums = 4f339c7fee7cf34fde58bcab6aceaa2083e42289782a858825e7a73fe834d18a
 	sha256sums = c55a4e23192e61a6c80cf58bfc7ae0b6f6598a0b27a0112558bd47d0d65f4d7c
 
 pkgname = tadabor-bin
