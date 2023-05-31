@@ -1,0 +1,12 @@
+pkgbase = sip-ping
+	pkgdesc = Send a SIP OPTIONS request to a server over ws/wss or udp/tcp/tls.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/lwahlmeier/sip-ping
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = sip-ping-2.0.0.tar.gz::https://github.com/lwahlmeier/sip-ping/archive/v2.0.0.tar.gz
+	sha256sums = f707e2d417480068faf032aba4d0b74b308d304b6d1990b1ecf32adc81ce45c1
+
+pkgname = sip-ping
