@@ -1,12 +1,12 @@
+# Maintainer: Galen Guyer <galen@galenguyer.com>
+# Contributor: Matthew Sexton <wsdmatty@gmail.com>
 # Contributor: American_Jesus <american.jesus.pt AT gmail DOT com>
-# Maintainer: Matthew Sexton <wsdmatty@gmail.com>
 pkgname=nano-syntax-highlighting-git
 pkgver=2022.11.02.r2.ga9c6844
 pkgrel=1
-pkgdesc="improved nano syntax highlighting files"
+pkgdesc="Improved nano syntax highlighting files"
 arch=('any')
 depends=('nano')
-makedepends=('git')
 url="https://github.com/galenguyer/nano-syntax-highlighting"
 license=('GPL3')
 install=nano-syntax-highlighting.install
@@ -18,7 +18,6 @@ md5sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname%-git}"
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-
 }
 
 build() {
@@ -28,11 +27,8 @@ build() {
 
 package() {
 	mkdir -p "${pkgdir}/usr/share/${pkgname%-git}"
-	
+
 	find "${srcdir}"/"${pkgname%-git}"/ -name '*.nanorc' | xargs install -D -m644 -t "${pkgdir}/usr/share/${pkgname%-git}/"
-	
+
 	install -D -m644 "${srcdir}/nanorc.sample" "${pkgdir}/usr/share/${pkgname%-git}/nanorc.sample"
-
-} 
-
-
+}
