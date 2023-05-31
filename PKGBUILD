@@ -1,11 +1,11 @@
 # Maintainer: Martin Reboredo <yakoyoku@gmail.com>
 
 pkgname=heroic-gogdl
-_basever=0.7.1
-pkgver=0.7.1+r2
+_basever=0.7.2
+pkgver=0.7.2
 pkgrel=1
-_ver_commit=8bfb965090153c946c616bb0f82e3dc432e0d0e1
-_cur_commit=e3b4dae0c06474c8396ee2aaf3fde462e203b419
+_ver_commit=d7f29dfef5818e8b323d04761e18a9abb750f93e
+_cur_commit=d7f29dfef5818e8b323d04761e18a9abb750f93e
 pkgdesc="GOG Downloading module for Heroic Games Launcher"
 arch=('any')
 url="https://github.com/Heroic-Games-Launcher/heroic-gogdl"
