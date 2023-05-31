@@ -5,7 +5,7 @@
 # Contributor: Abuzer Rafey <arafey@vyvygen.org>
 
 pkgname="mkdocs-material"
-pkgver=9.1.14
+pkgver=9.1.15
 pkgrel=1
 pkgdesc="Material design theme for MkDocs"
 url="http://squidfunk.github.io/mkdocs-material/"
@@ -25,7 +25,7 @@ depends=("mkdocs"
          "python-requests")
 makedepends=("python-build" "python-installer" "python-wheel")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/squidfunk/mkdocs-material/archive/$pkgver.tar.gz")
-sha256sums=('f47586d5998dc2150e8bb5c6030126b17057e57f3ba54bf6b74387eb94223af9')
+sha256sums=('1190ff3e9a2098f211a27d17eea4ccc9ea9519d14f0f36fa3c748bc509a911a4')
 options=("!strip")
 
 build(){
