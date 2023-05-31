@@ -145,7 +145,7 @@ package() {
     "${pkgdir}"/usr/share/applications/PCSX2.desktop
     install -Dm644 pcsx2/pcsx2/Resources/AppIcon64.png \
     "${pkgdir}"/usr/share/icons/hicolor/64x64/apps/PCSX2.png
-    install -Dm644 -t "${pkgdir}"/opt/"${pkgname%-git}"/resources/patches.zip
+    install -Dm644 -t "${pkgdir}"/opt/"${pkgname%-git}"/resources/ patches.zip
 }
 
 b2sums=('SKIP'
