@@ -51,10 +51,10 @@ diff -upr chromium-113.0.5672.63.orig/third_party/tflite/src/tensorflow/lite/ker
  
  #include "third_party/fft2d/fft.h"
  
-diff -upr chromium-113.0.5672.63.orig/third_party/vulkan-deps/vulkan-validation-layers/src/layers/vk_mem_alloc.h chromium-113.0.5672.63/third_party/vulkan-deps/vulkan-validation-layers/src/layers/vk_mem_alloc.h
---- chromium-113.0.5672.63.orig/third_party/vulkan-deps/vulkan-validation-layers/src/layers/vk_mem_alloc.h 2023-04-26 21:47:38.323831800 +0000
-+++ chromium-113.0.5672.63/third_party/vulkan-deps/vulkan-validation-layers/src/layers/vk_mem_alloc.h      2023-05-09 00:14:09.757555808 +0000
-@@ -2579,6 +2579,7 @@ VMA_CALL_PRE void VMA_CALL_POST vmaFreeStatsString(
+diff -upr chromium-113.0.5672.63.orig/third_party/vulkan-deps/vulkan-validation-layers/src/layers/external/vma/vk_mem_alloc.h chromium-113.0.5672.63/third_party/vulkan-deps/vulkan-validation-layers/src/layers/external/vma/vk_mem_alloc.h
+--- chromium-113.0.5672.63.orig/third_party/vulkan-deps/vulkan-validation-layers/src/layers/external/vma/vk_mem_alloc.h	2023-04-26 21:47:38.323831800 +0000
++++ chromium-113.0.5672.63/third_party/vulkan-deps/vulkan-validation-layers/src/layers/external/vma/vk_mem_alloc.h	2023-05-09 00:14:09.757555808 +0000
+@@ -2579,6 +2579,7 @@ VMA_CALL_PRE void VMA_CALL_POST vmaFreeS
  #undef VMA_IMPLEMENTATION
  
  #include <cstdint>

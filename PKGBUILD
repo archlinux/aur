@@ -1,12 +1,12 @@
 # Maintainer: Bruno Pagani <archange@archlinux.org>
 
 # Remember to handle https://bugs.archlinux.org/task/74324 on major upgrades
-_use_suffix=1
-pkgver=24.4.0
-_commit=e8c05bccd1ca7038ff8c9e8d140e30a2ec6e005d
-_chromiumver=112.0.5615.204
+_use_suffix=0
+pkgver=25.0.0
+_commit=6a5bd8dc289a00ca2d2f77e4af328f794d8b1a8d
+_chromiumver=114.0.5735.90
 # shellcheck disable=SC2034
-pkgrel=0
+pkgrel=1
 
 _major_ver=${pkgver%%.*}
 if [[ ${_use_suffix} != 0 ]]; then
@@ -53,24 +53,9 @@ source=("git+https://github.com/electron/electron.git#commit=${_commit}"
         'jinja-python-3.10.patch'
         'use-system-libraries-in-node.patch'
         'std-vector-non-const.patch'
-        'sql-relax-constraints-on-VirtualCursor-layout.patch'
-        'swiftshader-add-cstdint-for-uint64_t.patch'
-        'dawn-iwyu-add-cstdint-for-uint8_t.patch'
-        'iwyu-add-stdint.h-for-various-int-types-in-base.patch'
-        'iwyu-add-cstdint-for-uintptr_t-in-device.patch'
-        'iwyu-add-stdint.h-for-uint32_t-in-chrome_pdf.patch'
-        'iwyu-add-stdint.h-for-uint64_t-in-EncounteredSurface.patch'
-        'iwyu-add-stdint.h-for-integer-types-in-ui.patch'
-        'openscreen-iwyu-add-stdint.h.patch'
-        'pdfium-iwyu-add-stdint.h-for-uint32_t.patch'
-        'iwyu-add-stdint.h-for-uint32_t-in-cc.patch'
-        'add-missing-includes-causing-build-errors.patch'
-        'iwyu-add-stdint.h-for-int-types-in-gpu_feature_info.patch'
-        'iwyu-add-stdint.h-for-various-int-types-in-comp.patch'
-        'iwyu-add-stdint.h-for-various-integer-types-in-net.patch'
-        'iwyu-add-cstdint-for-int-types-in-s2cellid.patch'
+        'add-some-typename-s-that-are-required-in-C-17.patch'
+        'REVERT-disable-autoupgrading-debug-info.patch'
         'random-fixes-for-gcc13.patch'
-        'more-fixes-for-gcc13.patch'
        )
 # shellcheck disable=SC2034
 sha256sums=('SKIP'
@@ -81,24 +66,9 @@ sha256sums=('SKIP'
             '55dbe71dbc1f3ab60bf1fa79f7aea7ef1fe76436b1d7df48728a1f8227d2134e'
             'ff588a8a4fd2f79eb8a4f11cf1aa151298ffb895be566c57cc355d47f161f53f'
             '893bc04c7fceba2f0a7195ed48551d55f066bbc530ec934c89c55768e6f3949c'
-            'e66be069d932fe18811e789c57b96249b7250257ff91a3d82d15e2a7283891b7'
-            '208f2ebcef5c690207e6e798ffbf9e92214e9d35f415c2f6b93efebad831b7e2'
-            '94baaaa6fbec0af6ec2e967f0b7440b4261a927e853e212d84f0aeaf56ae53f0'
-            '0003e737072f4f1b22ff932221595e85dd9bf65720ccac36f840cccb8000e3e1'
-            'ffe499d63c9c1074cbc3995c188c89b748388dbb9dccf975ce28a434c723acf7'
-            '7af466e4b5985cc9f0b33df2f3cd2e458c7cbfd7190505d105aad4401c9d072b'
-            '727588a1b42f6cfe54acf4759a0c3ad3778590d5a5cefcdcb54b579ba16b09c8'
-            '0914be53b2205b34e4da96f5a94505ac2a01e3639ff433535a23be2d0d581fa7'
-            '8c9662bed23bfd66ae76d044541f316624386ca4b3baef57a47289feb3db58a9'
-            '890b6836cea4c31513166db720b210da20d20bcd97a713545268cceffd707af5'
-            'f6a0e149ef5195883c56a875ae366ed92d9960652f2657bfb65b5408badafc65'
-            '3255477d02d49ef86d47c727b9369f46dc787319bb648bf267a68f37e2041e50'
-            '94995b4e37671dcd27968bd5a2ebcf50e67bd22659a4bb4a5d0a4f81ff54f471'
-            '6b3c296de83c333678bc3d7cac939f33bbadae94c96299566ff2e31121c46256'
-            '5dfbfd073f78c887bbffca2b644116571cc9b1196867e44e8fc0cbb40afcf1bc'
-            'd97dc00f66fa5868584e4b6d5ef817911eab2dc8022a37c75a00d063f4dac483'
-            '3fb0636e9560760d99e7c9606b1c9b59eef9d91ed3419cc95b43302759f249be'
-            '9d1f69f668e12fc14b4ccbcf88cb5a3acf666df06dafa8834f037bd8110ca17f')
+            '621ed210d75d0e846192c1571bb30db988721224a41572c27769c0288d361c11'
+            '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
+            'ba4dd0a25a4fc3267ed19ccb39f28b28176ca3f97f53a4e9f5e9215280040ea0')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -112,7 +82,7 @@ declare -gA _system_libs=(
   [harfbuzz-ng]=harfbuzz
   [icu]=icu
   [jsoncpp]=jsoncpp
-  [libaom]=aom
+  #[libaom]=aom      # https://aomedia.googlesource.com/aom/+/706ee36dcc82
   #[libavif]=libavif # https://github.com/AOMediaCodec/libavif/commit/4d2776a3
   [libdrm]=
   [libjpeg]=libjpeg
@@ -140,6 +110,8 @@ prepare() {
   else
     sed -i "s|@ELECTRON_NAME@|Electron|" electron.desktop
   fi
+
+  sed --in-place "/'chromium_version':/{n;s/'[0-9.]\+',/'${_chromiumver}',/}" "${srcdir}/electron/DEPS"
 
 cat >.gclient <<EOF
 solutions = [
@@ -199,27 +171,14 @@ EOF
 
   echo "Applying local patches..."
 
-  # chromium upstream fixes
-  patch -Np1 -i "${srcdir}/sql-relax-constraints-on-VirtualCursor-layout.patch"
+  # Upstream fixes
+  patch -Np1 -i "${srcdir}/add-some-typename-s-that-are-required-in-C-17.patch"
+
+  # Revert addition of compiler flag that needs newer clang
+  patch -Rp1 -i "${srcdir}/REVERT-disable-autoupgrading-debug-info.patch"
 
   # GCC13 patches for chromium (https://github.com/archlinux/svntogit-packages/commit/470e5cbc7b58b4955664cdae386161d22c17d980)
-  patch -Np1 -i "${srcdir}/swiftshader-add-cstdint-for-uint64_t.patch" -d "third_party/swiftshader"
-  patch -Np1 -i "${srcdir}/dawn-iwyu-add-cstdint-for-uint8_t.patch" -d "third_party/dawn"
-  patch -Np1 -i "${srcdir}/iwyu-add-stdint.h-for-various-int-types-in-base.patch"
-  patch -Np1 -i "${srcdir}/iwyu-add-cstdint-for-uintptr_t-in-device.patch"
-  patch -Np1 -i "${srcdir}/iwyu-add-stdint.h-for-uint32_t-in-chrome_pdf.patch"
-  patch -Np1 -i "${srcdir}/iwyu-add-stdint.h-for-uint64_t-in-EncounteredSurface.patch"
-  patch -Np1 -i "${srcdir}/iwyu-add-stdint.h-for-integer-types-in-ui.patch"
-  patch -Np1 -i "${srcdir}/openscreen-iwyu-add-stdint.h.patch" -d "third_party/openscreen/src"
-  patch -Np1 -i "${srcdir}/pdfium-iwyu-add-stdint.h-for-uint32_t.patch" -d "third_party/pdfium"
-  patch -Np1 -i "${srcdir}/iwyu-add-stdint.h-for-uint32_t-in-cc.patch"
-  patch -Np1 -i "${srcdir}/add-missing-includes-causing-build-errors.patch"
-  patch -Np1 -i "${srcdir}/iwyu-add-stdint.h-for-int-types-in-gpu_feature_info.patch"
-  patch -Np1 -i "${srcdir}/iwyu-add-stdint.h-for-various-int-types-in-comp.patch"
-  patch -Np1 -i "${srcdir}/iwyu-add-stdint.h-for-various-integer-types-in-net.patch"
-  patch -Np1 -i "${srcdir}/iwyu-add-cstdint-for-int-types-in-s2cellid.patch"
   patch -Np1 -i "${srcdir}/random-fixes-for-gcc13.patch"
-  patch -Np1 -i "${srcdir}/more-fixes-for-gcc13.patch"
 
   # Electron specific fixes
   patch -Np1 -i "${srcdir}/jinja-python-3.10.patch" -d "third_party/electron_node/tools/inspector_protocol/jinja2"
