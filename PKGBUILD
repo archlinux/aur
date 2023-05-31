@@ -104,11 +104,11 @@ build() {
 
 package_libmega-git() {
   pkgdesc="MEGASync libs (GIT Version)"
-  conflicts=('libmega')
   provides=(
     "libmega=${pkgver}"
     'libmega.so'
     )
+  conflicts=('libmega')
   depends=(
     'gcc-libs'
     'glibc'
@@ -136,8 +136,8 @@ package_libmega-git() {
 
 package_fuse-megasync-git() {
   pkgdesc="MEGASync client based on FUSE (GIT Version)"
+  provides=("fuse-megasync=${pkgver}")
   conflicts=('fuse-megasync')
-  provides=('fuse-megasync')
   depends=(
     "libmega-git=${pkgver}" 'libmega.so'
     'fuse2'
@@ -152,8 +152,8 @@ package_fuse-megasync-git() {
 
 package_megasync-daemon-git() {
   pkgdesc="MEGASync daemon client. (GIT Version)"
+  provides=("megasync-daemon=${pkgver}")
   conflicts=('megasync-daemon')
-  provides=('megasync-daemon')
   depends=(
     "libmega-git=${pkgver}" 'libmega.so'
     'readline' 'libreadline.so'
@@ -175,9 +175,11 @@ package_megasync-daemon-git() {
 
 package_megasync-cli-git() {
   pkgdesc="MEGASync CLI client. (GIT Version)"
+  provides=("megasync-cli=${pkgver}")
   conflicts=('megasync-cli')
-  provides=('megasync-cli')
-  depends=('libmega-git')
+  depends=(
+    "libmega-git=${pkgver}" 'libmega.so'
+  )
 
   make -C build DESTDIR="${pkgdir}" install-binPROGRAMS
   rm -fr "${pkgdir}/usr/bin/megafuse"
@@ -188,8 +190,8 @@ package_megasync-cli-git() {
 
 package_python-megasync-git() {
   pkgdesc="Python Bindings for MEGASync. (GIT Version)"
+  provides=("python-megasync=${pkgver}")
   conflicts=('python-megasync')
-  provides=('python-megasync')
   depends=(
     "libmega-git=${pkgver}" 'libmega.so'
     'python'

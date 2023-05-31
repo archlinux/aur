@@ -75,15 +75,16 @@ pkgname = megasync-daemon-git
 	depends = libmega.so
 	depends = readline
 	depends = libreadline.so
-	provides = megasync-daemon
+	provides = megasync-daemon=4.19.0.73.g615a2eff3
 	conflicts = megasync-daemon
 	options = !emptydirs
 	backup = etc/conf.d/megasync.conf
 
 pkgname = megasync-cli-git
 	pkgdesc = MEGASync CLI client. (GIT Version)
-	depends = libmega-git
-	provides = megasync-cli
+	depends = libmega-git=4.19.0.73.g615a2eff3
+	depends = libmega.so
+	provides = megasync-cli=4.19.0.73.g615a2eff3
 	conflicts = megasync-cli
 
 pkgname = python-megasync-git
@@ -91,7 +92,7 @@ pkgname = python-megasync-git
 	depends = libmega-git=4.19.0.73.g615a2eff3
 	depends = libmega.so
 	depends = python
-	provides = python-megasync
+	provides = python-megasync=4.19.0.73.g615a2eff3
 	conflicts = python-megasync
 
 pkgname = fuse-megasync-git
@@ -99,5 +100,5 @@ pkgname = fuse-megasync-git
 	depends = libmega-git=4.19.0.73.g615a2eff3
 	depends = libmega.so
 	depends = fuse2
-	provides = fuse-megasync
+	provides = fuse-megasync=4.19.0.73.g615a2eff3
 	conflicts = fuse-megasync
