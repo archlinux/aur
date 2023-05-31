@@ -52,7 +52,7 @@ package() {
 	install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/kbdmod/LICENSE"
 	echo "LICENSE installed to /usr/share/licenses/kbdmod/LICENSE"
 
-	install -Dm 644 README.md "$pkdir/usr/share/doc/kbdmod/README.md"
+	install -Dm 644 README.md "$pkgdir/usr/share/doc/kbdmod/README.md"
 	echo "README.md installed to /usr/share/doc/kbdmod/README.md"
 
 	install -Dm 644 doc/* "$pkgdir/usr/share/doc/kbdmod/"
