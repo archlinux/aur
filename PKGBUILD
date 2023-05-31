@@ -2,7 +2,7 @@
 pkgname=python-chex
 _pkgname=${pkgname#python-}
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A library of utilities for helping to write reliable JAX code"
 arch=('any')
 url="https://github.com/deepmind/chex"
@@ -15,7 +15,7 @@ depends=('python-absl'
          'python-numpy'
          'python-toolz'
          'python-typing_extensions'
-         'python<3.11')
+         'python')
 makedepends=('python-build' 'python-installer' 'python-setuptools')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/deepmind/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('d9734b1cfddad95e77b110f32086ba1240e87e0eeffc93b5d2c2759bb1e1caf0')
