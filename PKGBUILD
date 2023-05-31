@@ -14,6 +14,7 @@ provides=('quarkus')
 sha256sums_x86_64=('528228677ba93c3d57ee60acfd3bee4153bd5d5c939c34a3e315763a21d458e8')
 
 package() {
-  cp -R "${srcdir}/quarkus-cli-$pkgver.Final/bin" "${pkgdir}/usr"
-  cp -R "${srcdir}/quarkus-cli-$pkgver.Final/lib" "${pkgdir}/usr"
+  install -Dm0755 "${srcdir}/quarkus-cli-$pkgver.Final/bin/quarkus" "${pkgdir}/usr/bin/quarkus"
+  install -Dm0644 "${srcdir}/quarkus-cli-$pkgver.Final/bin/quarkus.bat" "${pkgdir}/usr/bin/quarkus.bat"
+  install -Dm0644 "${srcdir}/quarkus-cli-$pkgver.Final/lib/quarkus-cli-$pkgver.Final-runner.jar" "${pkgdir}/usr/lib/quarkus-cli-$pkgver.Final-runner.jar"
 }
