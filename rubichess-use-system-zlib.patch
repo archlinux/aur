@@ -1,0 +1,22 @@
+diff --git a/src/Makefile b/src/Makefile
+index 76ea689..4bec466 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -135,8 +135,6 @@ endif
+ 
+ 
+ ZLIBDIR=zlib
+-CXXFLAGS += -Izlib
+-LDFLAGS += -Lzlib
+ zlib = yes
+ 
+ ifeq (,$(CPUFLAGS))
+@@ -322,7 +320,7 @@ $(ZLIBDIR)/libz.a:
+ 	@echo Compiling zlib...
+ 	@cd $(ZLIBDIR); $(MYCC) $(CFLAGS) $(ARCHFLAGS) -w -c *.c; $(AR) rcs libz.a *.o; cd ..
+ 
+-compile: $(ZLIBDIR)/libz.a
++compile:
+ 	@echo $(MESSAGE)
+ 	$(CXX) $(CXXFLAGS) $(EXTRACXXFLAGS) $(ARCHFLAGS) *.cpp $(LDFLAGS) $(PTHREADLIB) $(EXTRALDFLAGS) $(GITDEFINE) $(NETDEF) $(NETOBJ) -o $(EXE)
+ 

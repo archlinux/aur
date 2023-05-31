@@ -1,0 +1,22 @@
+pkgbase = rubichess
+	pkgdesc = Just another UCI compliant chess engine
+	pkgver = 20230410
+	pkgrel = 1
+	url = https://github.com/Matthies/RubiChess
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = clang
+	depends = glibc
+	depends = zlib
+	depends = gcc-libs
+	options = !strip
+	options = !buildflags
+	source = git+https://github.com/Matthies/RubiChess#tag=20230410
+	source = https://github.com/Matthies/NN/raw/main/nn-fdccaaabd3-20230314.nnue
+	source = rubichess-use-system-zlib.patch
+	sha512sums = SKIP
+	sha512sums = 062a88aeb0067a2053978905b70d2a3ef1352c7229acf0d40ee820fa45f82ba671e81a3895f8230d9f12c7cc44df1a1a0070d913fcf017c6739f05d41804883b
+	sha512sums = d7656de253146c0d522e5324884c32056f2922c32fdfebfe2f0268594a4c16a8d19f755678fa24a98200a53d872b95863d1fae5a781622b29450e10229fcb2f2
+
+pkgname = rubichess
