@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Name=Italian Draughts
+Comment=Italian Draughts: a strategy game for 2 players written in C++
+Exec=/usr/bin/italian-draughts %u
+Icon=italian-draughts
+Terminal=false
+Type=Application
