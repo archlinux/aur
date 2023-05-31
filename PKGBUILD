@@ -11,4 +11,5 @@ md5sums=('SKIP')
 package() {
 	mkdir -p "${pkgdir}/etc/xdg/aacs"
 	cp -v "${srcdir}/keydb.cfg" "${pkgdir}/etc/xdg/aacs/KEYDB.cfg"
+	chmod 644 "${pkgdir}/etc/xdg/aacs/KEYDB.cfg"
 }
