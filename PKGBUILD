@@ -4,7 +4,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.4453.r0.g41f62cf53
+pkgver=1.7.4546.r0.ged6dd6f6c
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -72,8 +72,6 @@ source=(
 )
 install=pcsx2-git.install
 
-options=(debug !strip)
-
 prepare() {
     cd pcsx2
     local submodule
@@ -136,8 +134,7 @@ build() {
     -DDISABLE_BUILD_DATE=ON
     ninja -C build -v
     
-    7z a -r cheats_ni.zip pcsx2_patches/cheats_ni/*
-    7z a -r cheats_ws.zip pcsx2_patches/cheats_ws/*
+    7z a -r patches.zip pcsx2_patches/patches/*
 }
 
 package() {
@@ -148,8 +145,7 @@ package() {
     "${pkgdir}"/usr/share/applications/PCSX2.desktop
     install -Dm644 pcsx2/pcsx2/Resources/AppIcon64.png \
     "${pkgdir}"/usr/share/icons/hicolor/64x64/apps/PCSX2.png
-    install -Dm644 -t "${pkgdir}"/opt/"${pkgname%-git}"/resources/ cheats_ni.zip
-    install -Dm644 -t "${pkgdir}"/opt/"${pkgname%-git}"/resources/ cheats_ws.zip
+    install -Dm644 -t "${pkgdir}"/opt/"${pkgname%-git}"/resources/ patches.zip
 }
 
 b2sums=('SKIP'

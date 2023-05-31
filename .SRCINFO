@@ -1,6 +1,6 @@
 pkgbase = pcsx2-git
 	pkgdesc = A Sony PlayStation 2 emulator
-	pkgver = 1.7.4453.r0.g41f62cf53
+	pkgver = 1.7.4546.r0.ged6dd6f6c
 	pkgrel = 1
 	url = https://www.pcsx2.net
 	install = pcsx2-git.install
@@ -37,8 +37,7 @@ pkgbase = pcsx2-git
 	optdepends = libpulse: Pulseaudio support
 	provides = pcsx2
 	conflicts = pcsx2
-	options = debug
-	options = !strip
+	options = !lto
 	source = git+https://github.com/PCSX2/pcsx2.git
 	source = git+https://github.com/PCSX2/pcsx2_patches.git
 	source = xz-pcsx2::git+https://github.com/PCSX2/xz.git
