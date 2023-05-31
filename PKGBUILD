@@ -2,7 +2,7 @@
 
 pkgname=rider
 pkgver='2023.1.2'
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='A cross-platform .NET IDE by JetBrains.'
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ _srcfile="JetBrains.Rider-${pkgver}.tar.gz"
 source=("https://download-cf.jetbrains.com/rider/${_srcfile}"
         'rider.desktop')
 sha256sums=('50eb2deb303162dc77c802c4402c2734bdae38a47ab534921e064a107dc284ae'
-            '6bb04056a20674c95dc5f103671bb8cd14910c6b7a4b80d9aa636e01d31ebdf1')
+            '3709aa3f918294ecc7d9ad483ee549f45a746248ec6397d297cfac023f999229')
 
 package() {
     cd "${srcdir}"
