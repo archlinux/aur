@@ -1,7 +1,7 @@
 pkgbase = dashing
 	pkgdesc = A Dash Generator Script for Any HTML
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/technosophos/dashing
 	arch = i686
 	arch = x86_64
@@ -11,4 +11,3 @@ pkgbase = dashing
 	sha256sums = 81b21acae83c144f10d9eea05a0b89f0dcdfa694c3760c2a25bd4eab72a2a3b9
 
 pkgname = dashing
-

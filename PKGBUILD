@@ -3,7 +3,7 @@
 
 pkgname=dashing
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Dash Generator Script for Any HTML"
 url="https://github.com/technosophos/dashing"
 license=('MIT')
@@ -18,9 +18,18 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}"
+
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+
   go build \
     -trimpath \
-    -ldflags "-extldflags $LDFLAGS -X main.version=${pkgver}" \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" -X main.version=${pkgver}" \
     -o dashing dashing.go
 }
 
