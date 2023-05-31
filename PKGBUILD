@@ -2,7 +2,7 @@
 
 pkgbase=purc-git
 pkgname=purc-git
-pkgver=0.9.10.r3.gf0471080e
+pkgver=0.9.12.r0.g25294297d
 pkgrel=1
 pkgdesc="The prime HVML interpreter for C/C++ Language."
 arch=(x86_64
@@ -75,6 +75,7 @@ build() {
 #     cmake -DCMAKE_BUILD_TYPE=Release \
     cmake -DCMAKE_BUILD_TYPE=None \
         -DPORT=Linux \
+        -DENABLE_CHINESE_NAMES=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_LIBEXECDIR=lib \
