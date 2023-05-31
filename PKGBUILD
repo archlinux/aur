@@ -11,15 +11,16 @@
 # Contributor: Tim Zebulla <amon at faumrahrer dot de>
 
 pkgname=weechat-git
-pkgver=3.8.r263.ge23100c09
+pkgver=3.8.r507.g310af25
 pkgrel=1
 pkgdesc='Fast, light and extensible IRC client (curses UI). Development version.'
 arch=(i686 x86_64 armv7h aarch64)
 url=https://weechat.org
 license=(GPL)
 depends=(gnutls curl libgcrypt)
-makedepends=(asciidoctor cmake aspell guile lua perl python ruby tcl git)
+makedepends=(asciidoctor cmake aspell enchant guile lua perl python ruby tcl git)
 optdepends=('aspell: spellchecker support'
+            'enchant: spellchecker support'
 	        'guile: support for guile scripts'
 	        'lua: support for lua scripts'
 	        'perl: support for perl scripts'
@@ -33,7 +34,7 @@ source=("git+https://github.com/${pkgname%-git}/${pkgname%-git}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-	git -C ${pkgname%-git} describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-rc/rc/g;s/-/./g'
+	git -C ${pkgname%-git} describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-rc/rc/g;s/-/./g'
 }
 
 # cmake does not correctly handle CPPFLAGS, so kludge it in anyway:
@@ -46,6 +47,7 @@ build() {
 		-DENABLE_MAN=ON \
 		-DENABLE_DOC=ON \
 		-DENABLE_DOC_INCOMPLETE=ON \
+		-DENABLE_ENCHANT=ON \
 		-DENABLE_JAVASCRIPT=OFF \
 		-DENABLE_PHP=OFF
 	make -C build
