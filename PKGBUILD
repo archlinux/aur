@@ -1,6 +1,6 @@
 # Maintainer: Szilveszter Székely <szekelyszilv at gmail dot com>
 pkgname=jutoh
-pkgver=2.97
+pkgver=3.16
 pkgrel=1
 pkgdesc="An ebook creation tool"
 arch=('x86_64')
@@ -12,10 +12,10 @@ optdepends=('libjpeg6: jpeg support'
             'java-runtime: epubcheck support')
 
 source=('jutoh.sh')
-source_x86_64=(http://www.jutoh.com/Jutoh-${pkgver}-ubuntu-x86_64.tar.gz)
+source_x86_64=(http://www.jutoh.com/Jutoh-${pkgver}-x86_64.tar.gz)
 
 sha512sums=('620b4f443129c87dab2a49669d466a2e78979a52a4068e61f2b8f2c318100d2c453261b80250fe78be144c11aa2a41f91a178fb70281ac138727c096e67727fd')
-sha512sums_x86_64=('796a133e7071cb377a9bdf63117d4ed3b71f5626bb89e7daf41e617b26fa9ca87ceca6c0c81cc9e034ba1e4956584d74fb8932f3aeb8acfb6f961c1f98039fed')
+sha512sums_x86_64=('9c622ad129d1cdb52f4da1b721d3f336bb90530b867900a1c769cc1390b55759ae8b39e4125315762f1c8453cc30bfe2e92672274baae5825ff5feca2ec55415')
 
 prepare() {
   mkdir ${srcdir}/jutoh-data
@@ -26,37 +26,37 @@ prepare() {
 package() {
   msg2 "Copying executable"
   install -Dm755 ${srcdir}/jutoh.sh ${pkgdir}/usr/bin/jutoh
-  install -Dm755 ${srcdir}/jutoh.sh ${pkgdir}/usr/bin/jutoh2
+  install -Dm755 ${srcdir}/jutoh.sh ${pkgdir}/usr/bin/jutoh3
 
   msg2 "Copying desktop file"
-  install -Dm644 ${srcdir}/jutoh-data/jutoh2.desktop \
-                 ${pkgdir}/usr/share/applications/jutoh2.desktop
-  install -Dm644 ${srcdir}/jutoh-data/x-jutoh2.desktop \
-                 ${pkgdir}/usr/share/mimelnk/application/x-jutoh2.desktop
+  install -Dm644 ${srcdir}/jutoh-data/jutoh3.desktop \
+                 ${pkgdir}/usr/share/applications/jutoh3.desktop
+  install -Dm644 ${srcdir}/jutoh-data/x-jutoh3.desktop \
+                 ${pkgdir}/usr/share/mimelnk/application/x-jutoh3.desktop
 
   msg2 "Copying icons"
-  for res in '16x16' '22x22' '32x32' '48x48' '128x128'; do
+  for res in '16x16' '24x24' '32x32' '48x48' '64x64' '128x128'; do
     install -Dm644 ${srcdir}/jutoh-data/appicons/jutoh${res}.png \
-                   ${pkgdir}/usr/share/icons/hicolor/${res}/apps/jutoh2.png
+                   ${pkgdir}/usr/share/icons/hicolor/${res}/apps/jutoh3.png
   done
-  for res in '16x16' '24x24' '32x32' '48x48' '128x128'; do
+  for res in '16x16' '24x24' '32x32' '48x48' '64x64' '128x128'; do
     install -Dm644 ${srcdir}/jutoh-data/appicons/jutoh_document${res}.png \
                    ${pkgdir}/usr/share/icons/hicolor/${res}/mimetypes/application-x-jutohproject.png
     install -Dm644 ${srcdir}/jutoh-data/appicons/jutoh_document_script${res}.png \
                    ${pkgdir}/usr/share/icons/hicolor/${res}/mimetypes/application-x-jutohscript.png
   done
   install -Dm644 ${srcdir}/jutoh-data/appicons/jutoh128x128.png \
-                 ${pkgdir}/usr/share/pixmaps/jutoh2.png
+                 ${pkgdir}/usr/share/pixmaps/jutoh3.png
 
   msg2 "Copying mimetypes"
-  install -Dm644 ${srcdir}/jutoh-data/jutoh2.mime \
-                 ${pkgdir}/usr/share/mime-info/jutoh2.mime
-  install -Dm644 ${srcdir}/jutoh-data/jutoh2.keys \
-                 ${pkgdir}/usr/share/mime-info/jutoh2.keys
-  install -Dm644 ${srcdir}/jutoh-data/jutoh2.xml \
-                 ${pkgdir}/usr/share/mime/packages/jutoh2.xml
-  install -Dm644 ${srcdir}/jutoh-data/jutoh2.applications \
-                 ${pkgdir}/usr/share/application-registry/jutoh2.applications
+  install -Dm644 ${srcdir}/jutoh-data/jutoh3.mime \
+                 ${pkgdir}/usr/share/mime-info/jutoh3.mime
+  install -Dm644 ${srcdir}/jutoh-data/jutoh3.keys \
+                 ${pkgdir}/usr/share/mime-info/jutoh3.keys
+  install -Dm644 ${srcdir}/jutoh-data/jutoh3.xml \
+                 ${pkgdir}/usr/share/mime/packages/jutoh3.xml
+  install -Dm644 ${srcdir}/jutoh-data/jutoh3.applications \
+                 ${pkgdir}/usr/share/application-registry/jutoh3.applications
 
   msg2 "Copying licence"
   install -Dm644 ${srcdir}/jutoh-data/license.txt \
@@ -67,5 +67,5 @@ package() {
   cp -R ${srcdir}/jutoh-data/. $pkgdir/usr/share/jutoh
 
   msg2 "Cleaning up files"
-  rm -r ${pkgdir}/usr/share/jutoh/{jutoh2.{applications,desktop,keys,mime,xml},license.txt,x-jutoh2.desktop,appicons}
+  rm -r ${pkgdir}/usr/share/jutoh/{jutoh3.{applications,desktop,keys,mime,xml},license.txt,x-jutoh3.desktop,appicons}
 }

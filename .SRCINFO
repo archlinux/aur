@@ -1,6 +1,6 @@
 pkgbase = jutoh
 	pkgdesc = An ebook creation tool
-	pkgver = 2.97
+	pkgver = 3.16
 	pkgrel = 1
 	url = http://www.jutoh.com
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = jutoh
 	optdepends = java-runtime: epubcheck support
 	source = jutoh.sh
 	sha512sums = 620b4f443129c87dab2a49669d466a2e78979a52a4068e61f2b8f2c318100d2c453261b80250fe78be144c11aa2a41f91a178fb70281ac138727c096e67727fd
-	source_x86_64 = http://www.jutoh.com/Jutoh-2.97-ubuntu-x86_64.tar.gz
-	sha512sums_x86_64 = 796a133e7071cb377a9bdf63117d4ed3b71f5626bb89e7daf41e617b26fa9ca87ceca6c0c81cc9e034ba1e4956584d74fb8932f3aeb8acfb6f961c1f98039fed
+	source_x86_64 = http://www.jutoh.com/Jutoh-3.16-x86_64.tar.gz
+	sha512sums_x86_64 = 9c622ad129d1cdb52f4da1b721d3f336bb90530b867900a1c769cc1390b55759ae8b39e4125315762f1c8453cc30bfe2e92672274baae5825ff5feca2ec55415
 
 pkgname = jutoh
