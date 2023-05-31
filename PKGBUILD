@@ -1,7 +1,7 @@
 # Maintainer: éclairevoyant
 
 pkgname=owncast
-pkgver=0.0.13
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='Self-hosted live video streaming (chat included)'
 url="https://github.com/owncast/$pkgname"
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(glibc)
 makedepends=(git go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('b88f67d26fa438320debe01de2651df1625314ec5a89dde4b9d64c40296481f35fdda2e93bb268e93a0be8a5645a5a4243da1f9894c78b64054b302392779319')
+b2sums=('13608a7f4b93fffa83d1709be1f4b6a4a96ea2024dbde91f56c61b9578544130a085e6b13a3ea6476beb6d76c6bb42bd9532a9e47c85350e468fc3ef76da0e11')
 options=(emptydirs)
 install=$pkgname.install
 
