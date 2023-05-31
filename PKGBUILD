@@ -57,7 +57,7 @@ EOF
 build(){
 	cd ${srcdir}/aliyunpan
 	yarn
-	yarn run build --linux dir
+	yarn run build:electron --linux dir
 }
 
 package(){
