@@ -1,0 +1,18 @@
+pkgbase = git-igitt-bin
+	pkgdesc = Interactive Git terminal application to browse and visualize Git history graphs in a comprehensible way, following different branching models.
+	pkgver = 0.1.18
+	pkgrel = 1
+	url = https://github.com/mlange-42/git-igitt
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	depends = gcc-libs
+	provides = git-igitt
+	conflicts = git-igitt
+	source = https://github.com/mlange-42/git-igitt/releases/download/0.1.18/git-igitt-0.1.18-linux-amd64.tar.gz
+	source = https://raw.githubusercontent.com/mlange-42/git-igitt/0.1.18/LICENSE
+	sha256sums = cabc31029ceae9fc10b8579a6d3b51fa3355d3cbb0f0ce80ab3d46e709a51481
+	sha256sums = ac572723009f6bfd4ae3fc2df3bc7bf86a705793ce5dee704502ef80619faff4
+
+pkgname = git-igitt-bin

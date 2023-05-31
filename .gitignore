@@ -1,0 +1,8 @@
+# downloaded sources
+/*.tar.gz
+/LICENSE
+
+# build files
+/pkg
+/src
+/*.tar.zst
