@@ -1,11 +1,11 @@
 pkgbase = tmux-zh_tw
 	pkgdesc = Chinese translation for tmux man pages
-	pkgver = 3.3.0
+	pkgver = 3.3a
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/tmux-zh
 	arch = any
 	license = GPL3
-	source = https://github.com/Freed-Wu/tmux-zh/releases/download/3.3.0/tmux-zh_tw-3.3.0-Linux.deb
-	sha256sums = 827b305d5d4d4964e6daea40a3780498e719c60185ef882b542a0796b3d1eafa
+	source = https://github.com/Freed-Wu/tmux-zh/releases/download/3.3a/tmux-zh_tw-3.3a-Linux.deb
+	sha256sums = 88cb641ee43f7c6f14bd9f135670c933778740ed2adf4a09d8e1fc0bd6d22834
 
 pkgname = tmux-zh_tw
