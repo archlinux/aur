@@ -1,0 +1,21 @@
+pkgbase = saber
+	pkgdesc = A cross-platform libre notes app written in Flutter
+	pkgver = 0.12.9
+	pkgrel = 1
+	url = https://github.com/adil192/saber
+	arch = x86_64
+	license = GPL3
+	makedepends = flutter
+	makedepends = clang
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = xz
+	makedepends = rustup
+	depends = gtk3
+	source = https://github.com/adil192/saber/archive/refs/tags/v0.12.9.tar.gz
+	source = 0001-Modify-.desktop-for-Arch-Linux.patch
+	sha256sums = 3f1fbde854b30d9f60ab3a7ccf863662586f165fb6273dc0f2cfe9d13528b52f
+	sha256sums = 93e6e067fefad597117d7f6889df204082898b79dcd29853eaa5c879ab35b2df
+
+pkgname = saber
