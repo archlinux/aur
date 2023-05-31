@@ -1,7 +1,7 @@
 pkgbase = prusa-slicer-git
 	pkgdesc = G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)
 	pkgver = 2.6.0.alpha6.r1.g996a72a27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/prusa3d/PrusaSlicer
 	arch = i686
 	arch = x86_64
@@ -19,8 +19,6 @@ pkgbase = prusa-slicer-git
 	depends = intel-tbb
 	conflicts = prusa-slicer
 	source = git+https://github.com/prusa3d/PrusaSlicer
-	source = 0001-Fix-format-string.patch
 	sha256sums = SKIP
-	sha256sums = b78fa23a5bccf0a1064f20786bfaede97f0691b6ebb882a698bedc0b3421ec72
 
 pkgname = prusa-slicer-git
