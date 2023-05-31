@@ -1,4 +1,5 @@
 # Maintainer: Cyra Westmere <cyra@slowest.network>
+# Contributor: random-nick <random-nick@email.com>
 # Based on the official firefox package by:
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
@@ -68,7 +69,7 @@ sha256sums=(
 
 prepare () {
   mkdir -p mozbuild
-  cd waterfox-$_archiveversion
+  cd Waterfox-$_archiveversion
 
   cat >../mozconfig <<EOT
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
@@ -107,7 +108,7 @@ EOT
 }
 
 build () {
-  cd waterfox-$_archiveversion
+  cd Waterfox-$_archiveversion
 
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
@@ -165,7 +166,7 @@ fi
 }
 
 package () {
-  cd waterfox-$_archiveversion
+  cd Waterfox-$_archiveversion
   DESTDIR="$pkgdir" ./mach install
 
   local vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
