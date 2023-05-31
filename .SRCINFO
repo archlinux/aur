@@ -1,7 +1,7 @@
 pkgbase = bavarder
 	pkgdesc = Chit-Chat with AI
 	pkgver = 0.2.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://bavarder.codeberg.page
 	arch = any
 	license = GPL3

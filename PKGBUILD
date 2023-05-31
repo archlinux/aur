@@ -1,9 +1,10 @@
-# Maintainer: 0xMRTT <0xMRTT@proton.me>
+# Maintainer: Matthew Sexton <matthew@asylumtech.com>
+# Contributor: 0xMRTT <0xMRTT@proton.me>
 
 pkgname=bavarder
 _pkgname=Bavarder
 pkgver=0.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Chit-Chat with AI"
 arch=('any')
 url="https://bavarder.codeberg.page"
