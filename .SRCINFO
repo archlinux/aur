@@ -6,6 +6,6 @@ pkgbase = tmux-zh_cn
 	arch = any
 	license = GPL3
 	source = https://github.com/Freed-Wu/tmux-zh/releases/download/3.3a/tmux-zh_cn-3.3a-Linux.deb
-	sha256sums = 529765012a46c3baba3fbddf243d20bf7af41fbf085d6280ca26c3e0475a5e53
+	sha256sums = 3e0daf02e5c88a2ecd63feb6e403425c7a5d1af88433f7fc4705ace6d318de4a
 
 pkgname = tmux-zh_cn
