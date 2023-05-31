@@ -23,7 +23,10 @@ makedepends=(
   'git'
 )
 provides=('dolphin-megasync')
-conflicts=('dolphin-megasync')
+conflicts=(
+  'dolphin-megasync'
+  'dolphin-megasync-bin'
+)
 source=(
   'git+https://github.com/meganz/MEGAsync.git'
   'kf5.patch'

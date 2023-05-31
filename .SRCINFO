@@ -18,6 +18,7 @@ pkgbase = dolphin-megasync-git
 	depends = hicolor-icon-theme
 	provides = dolphin-megasync
 	conflicts = dolphin-megasync
+	conflicts = dolphin-megasync-bin
 	options = !lto
 	source = git+https://github.com/meganz/MEGAsync.git
 	source = kf5.patch
