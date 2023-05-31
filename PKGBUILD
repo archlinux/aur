@@ -1,7 +1,7 @@
 # Maintainer: Simon Brand <simon.brand@postadigitale.de>
 
 pkgname=multi-tpm2-totp
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Attest the trustworthiness of a device against a human using multiple time-based one-time passwords.'
 arch=(any)
@@ -10,8 +10,8 @@ license=(MIT)
 depends=(tpm2-totp)
 checkdepends=(shellcheck)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/brandsimon/multi-tpm2-totp/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('4b73f57f450576bb8d49e59fa59c5c510f7dba3ad9cc632d68f1b972b22f07974330b68609442ae64b053fa4565e699e526cfa156c2fdbf718faa3b4f6fcc500')
-b2sums=('c249862ef31f4e9702914e0b4ea850df4848fd5a0a56e19d0ac46e75fd4243d0ddc14bc15568ad4d9c6f80625db11df3f03a49bb45f40bb5bbad4b17bb45f988')
+sha512sums=('d9e610d543a215323d2275d967892b259a50ace196edc5313f95b8e213b7f8e0be6bf5a9403f2313e7ba8e99d0991b48bf882ebfc2904470e2543f37bf1c7640')
+b2sums=('eaeddfb1ea7ed13e3b47939381de8bc718b733fe4076ccc5fedf2b2a166e115cd411b59f7393ef6ef691f448c2448e301ddbae8aaf574ad6a6f6886e1b3710b5')
 
 check() {
   cd "${pkgname}-${pkgver}"
