@@ -4,9 +4,10 @@
 _arch=x64v1
 _pkgbase=linux-xanmod-lts
 _major=6.1
-_minor=30
+_minor=31
 _branch=6.x
 _xanmodrel=1
+_xanmodrev=
 pkgrel=1
 
 pkgbase=${_pkgbase}-linux-bin-${_arch}
@@ -21,7 +22,7 @@ makedepends=('jq' 'curl')
 
 # Resolve URL of sources from GiHub provider
 # cache the response of the API to reduce the number of calls made to GitHub; not authenticated calls are limited to 60 per hour
-_json_data=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${_xanmodrel})
+_json_data=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${_xanmodrel}${_xanmodrev})
 _url_image=$(echo "${_json_data}" | jq --arg PKGVER "${pkgver}" --arg PKGREL "${_xanmodrel}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | startswith("linux-image-" + $PKGVER + "-" + $ARCH + "-xanmod" + $PKGREL) and endswith(".deb")).browser_download_url')
 _url_headers=$(echo "${_json_data}" | jq --arg PKGVER "${pkgver}" --arg PKGREL "${_xanmodrel}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | startswith("linux-headers-" + $PKGVER + "-" + $ARCH + "-xanmod" + $PKGREL) and endswith(".deb")).browser_download_url')
 source=("${_url_image}" "${_url_headers}")
@@ -42,8 +43,8 @@ validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('d94583b8e96ba4bf3f8266c8c20c195a701286941840b8fc540dcdb2547de1f2'
-            '9c82a7218203063176081dcc1e2a70b06e51072c06c22f46978ae078ae7b2a83')
+sha256sums=('8d8822f74db7a7920487c6150a818750124210d107b49895568d1745660f67c5'
+            'ab822a43e78979ab2f9bfb63d916a76cb272f91bc40a3b7bf1c41526fe1f3ea9')
 
 _package() {
   pkgdesc="The Linux kernel and modules with Xanmod patches - Current Stable (MAIN) - Prebuilt version - ${_arch}"
@@ -75,7 +76,7 @@ _package() {
   echo "${pkgbase}" | install -Dm644 /dev/stdin "${modulesdir}/pkgbase"
   echo "${kernver}" | install -Dm644 /dev/stdin "${modulesdir}/kernelbase"
 
-  echo "${kernver}" > "${pkgdir}/boot/${pkgbase}.kver"
+  echo "${kernver}${_xanmodrev}" | install -Dm644 /dev/stdin "${pkgdir}/boot/${pkgbase}.kver"
 
   local _extramodules="extramodules-${kernver}"
   ln -s "../${_extramodules}" "${modulesdir}/extramodules"
