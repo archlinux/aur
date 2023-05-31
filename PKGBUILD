@@ -10,8 +10,8 @@
 
 pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux util-linux-libs-selinux)
-_pkgmajor=2.38
-_realver=${_pkgmajor}.1
+_pkgmajor=2.39
+_realver=${_pkgmajor}
 pkgver=${_realver/-/}
 pkgrel=4
 pkgdesc='SELinux aware miscellaneous system utilities for Linux'
@@ -28,13 +28,17 @@ license=('GPL2')
 options=('strip')
 validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284')  # Karel Zak
 source=("https://www.kernel.org/pub/linux/utils/util-linux/v${_pkgmajor}/${pkgbase/-selinux}-${_realver}.tar."{xz,sign}
+        '0001-libmount-don-t-call-hooks-after-mount-type-helper.patch'
+        '0002-libmount-check-for-availability-of-mount-setattr.patch'
         pam-{login,common,runuser,su}
         'util-linux.sysusers'
         '60-rfkill.rules'
         'rfkill-unblock_.service'
         'rfkill-block_.service')
-sha256sums=('60492a19b44e6cf9a3ddff68325b333b8b52b6c59ce3ebd6a0ecaa4c5117e84f'
+sha256sums=('32b30a336cda903182ed61feb3e9b908b762a5e66fe14e43efb88d37162075cb'
             'SKIP'
+            'e7c6a0375ca1bd4606f7a42882f20b8e3ce7c7107c790694e55699376377c0e1'
+            '6266b8733450af97bcf0f31fa9b21bad171b53b7b49a2954812c39ea70552cb5'
             '99cd77f21ee44a0c5e57b0f3670f711a00496f198fc5704d7e44f5d817c81a0f'
             '57e057758944f4557762c6def939410c04ca5803cbdd2bfa2153ce47ffe7a4af'
             '48d6fba767631e3dd3620cf02a71a74c5d65a525d4c4ce4b5a0b7d9f41ebfea1'
@@ -43,6 +47,13 @@ sha256sums=('60492a19b44e6cf9a3ddff68325b333b8b52b6c59ce3ebd6a0ecaa4c5117e84f'
             '7423aaaa09fee7f47baa83df9ea6fef525ff9aec395c8cbd9fe848ceb2643f37'
             '8ccec10a22523f6b9d55e0d6cbf91905a39881446710aa083e935e8073323376'
             'a22e0a037e702170c7d88460cc9c9c2ab1d3e5c54a6985cd4a164ea7beff1b36')
+
+prepare() {
+  cd "${pkgbase/-selinux}-${_realver}"
+
+  patch -Np1 < ../0001-libmount-don-t-call-hooks-after-mount-type-helper.patch
+  patch -Np1 < ../0002-libmount-check-for-availability-of-mount-setattr.patch
+}
 
 build() {
   cd "${pkgbase/-selinux}-${_realver}"
@@ -139,6 +150,7 @@ package_util-linux-libs-selinux() {
   depends=('libselinux')
   conflicts=("${pkgname/-selinux}" 'libutil-linux-selinux')
   replaces=('libutil-linux-selinux')
+  optdepends=('python: python bindings to libmount')
 
   _python_stdlib="$(python -c 'import sysconfig; print(sysconfig.get_paths()["stdlib"])')"
 
