@@ -1,0 +1,20 @@
+pkgbase = alire-git
+	pkgdesc = Ada Alire (alr): A library manager for the Ada Programming Language (git top of tree version).
+	pkgver = v1.2.0.r125.g9cac98b
+	pkgrel = 2
+	url = https://alire.ada.dev/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gprbuild
+	makedepends = python
+	makedepends = python-pip
+	depends = gnatcoll-core
+	depends = unzip
+	provides = alire
+	conflicts = alire
+	source = alire-git::git+https://github.com/alire-project/alire.git
+	md5sums = SKIP
+
+pkgname = alire-git
