@@ -2,8 +2,8 @@
 # Previous Maintainer: Kasei Wang <kasei@kasei.im>
 
 pkgname=quiche
-pkgver=0.17.1
-pkgrel=4
+pkgver=0.17.2
+pkgrel=1
 pkgdesc='an implementation of the QUIC transport protocol and HTTP/2 as specified by the IETF'
 arch=('x86_64')
 url='https://github.com/cloudflare/quiche'
@@ -11,7 +11,7 @@ license=('custom:BSD')
 depends=('gcc-libs')
 makedepends=('cmake' 'rust')
 source=("https://github.com/cloudflare/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('3c427415525da565f726df95021235cdc1c6460aa7d89d1aa3e154cb621d45b4')
+sha256sums=('8d0dac6090e5dc0b232811e110925c18a14d90a337c6e08c33104103455920b0')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491')
 
 build() {
