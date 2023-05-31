@@ -1,12 +1,12 @@
 pkgname=gitlab-cli
-pkgver=1.29.4
+pkgver=1.30.0
 pkgrel=1
 pkgdesc="Perform GitLab actions on the CLI"
 arch=('x86_64')
 url="https://gitlab.com/gitlab-org/cli/"
 license=('MIT')
-source=("https://gitlab.com/gitlab-org/cli/-/releases/v1.29.4/downloads/glab_1.29.4_Linux_x86_64.tar.gz")
-sha512sums=('14bbe0789be9b2231491d8cf57f8025d69eed99402d98f2b1cdfed8837231f567fd4cf8918670dfc3527fc3325bfae73f71e6ff424d7cbff4a3fe5172dfe3f35')
+source=("https://gitlab.com/gitlab-org/cli/-/releases/v${pkgver}/downloads/glab_${pkgver}_Linux_x86_64.tar.gz")
+sha512sums=('82f41e087c73f881fc397e8a6aae10f61403eb3058e9c60f871119080ff422d83b536e3a9ae79b23f30f310fd234704bf27835bf2b883481eb34cc978eb5ebba')
 
 build() {
 	# create completion scripts
