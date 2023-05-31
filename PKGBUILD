@@ -3,7 +3,7 @@
 
 _plug=edgefixer
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=2.0.gd4a1dce
+pkgver=2.2.g562e06d
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -25,21 +25,11 @@ pkgver() {
 prepare() {
   cd "${_plug}"
 
-  # use system vapoursynth headers
-  rm -fr EdgeFixer/VapourSynth.h
-  rm -fr EdgeFixer/VSHelper.h
-
-  pwd
-
-  sed -e 's|"VapourSynth.h"|<VapourSynth.h>|g' \
-      -e 's|"VSHelper.h"|<VSHelper.h>|g' \
-      -i EdgeFixer/vsplugin.c
-
   echo "all:
-	  gcc -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -o vsplugin.o EdgeFixer/vsplugin.c
-	  gcc -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -o edgefixer.o EdgeFixer/edgefixer.c
+	  gcc -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I./EdgeFixer $(pkg-config --cflags vapoursynth) -o vsplugin.o EdgeFixer/vsplugin.c
+	  gcc -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I./EdgeFixer $(pkg-config --cflags vapoursynth) -o edgefixer.o EdgeFixer/edgefixer.c
 
-	  gcc -shared -fPIC ${LDFLAGS} -o libvs${_plug}.so vsplugin.o edgefixer.o"> Makefile
+	  gcc -shared -fPIC ${LDFLAGS} -o lib${_plug}.so vsplugin.o edgefixer.o"> Makefile
 }
 
 build() {
@@ -47,7 +37,7 @@ build() {
 }
 
 package(){
-  install -Dm755 "${_plug}/libvs${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/libvs${_plug}.so"
+  install -Dm755 "${_plug}/lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/libvs${_plug}.so"
 
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
