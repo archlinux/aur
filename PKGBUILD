@@ -1,7 +1,12 @@
 # Maintainer: Bruno Pagani <archange@archlinux.org>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Pascal Ernster <archlinux@hardfalcon.net>
+
+# https://releases.electronjs.org/
+# https://github.com/stha09/chromium-patches/releases
 
 # Remember to handle https://bugs.archlinux.org/task/74324 on major upgrades
-_use_suffix=0
+_use_suffix=1
 pkgver=25.0.0
 _commit=6a5bd8dc289a00ca2d2f77e4af328f794d8b1a8d
 _chromiumver=114.0.5735.90
@@ -23,7 +28,7 @@ url='https://electronjs.org/'
 # shellcheck disable=SC2034
 license=('MIT' 'custom')
 # shellcheck disable=SC2034
-depends=('c-ares' 'gtk3' 'libevent' 'nss' 'libffi')
+depends=('c-ares' 'gtk3' 'libevent' 'nss' 'libffi' 'wayland')
 # shellcheck disable=SC2034
 makedepends=('clang' 'git' 'gn' 'gperf' 'harfbuzz-icu' 'http-parser'
              'qt5-base' 'java-runtime-headless' 'libnotify' 'lld' 'llvm'
@@ -45,8 +50,9 @@ fi
 # shellcheck disable=SC2034
 options=('!lto') # Electron adds its own flags for ThinLTO
 # shellcheck disable=SC2034
-source=("git+https://github.com/electron/electron.git#commit=${_commit}"
+source=("git+https://github.com/electron/electron.git#commit=$_commit"
         'git+https://chromium.googlesource.com/chromium/tools/depot_tools.git#branch=main'
+        "chromium::git+https://chromium.googlesource.com/chromium/src.git#tag=$_chromiumver"
         "electron-launcher.sh"
         "electron.desktop"
         'default_app-icon.patch'
@@ -59,6 +65,7 @@ source=("git+https://github.com/electron/electron.git#commit=${_commit}"
        )
 # shellcheck disable=SC2034
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             '77817939c9833f8dda74a8c75620c15747170551ffa6f14f7c5b4071599e8831'
             '4484200d90b76830b69eea3a471c103999a3ce86bb2c29e6c14c945bf4102bae'
@@ -82,7 +89,7 @@ declare -gA _system_libs=(
   [harfbuzz-ng]=harfbuzz
   [icu]=icu
   [jsoncpp]=jsoncpp
-  #[libaom]=aom      # https://aomedia.googlesource.com/aom/+/706ee36dcc82
+  [libaom]=aom
   #[libavif]=libavif # https://github.com/AOMediaCodec/libavif/commit/4d2776a3
   [libdrm]=
   [libjpeg]=libjpeg
@@ -131,8 +138,8 @@ EOF
   export PATH+=":$PWD/depot_tools" DEPOT_TOOLS_UPDATE=0
   export VPYTHON_BYPASS='manually managed python not supported by chrome operations'
 
-  echo "Fetching chromium..."
-  git clone -b ${_chromiumver} --depth=2 https://chromium.googlesource.com/chromium/src
+  echo "Linking chromium from sources..."
+  ln -s chromium src
 
   depot_tools/gclient.py sync -D \
       --nohooks \
@@ -269,6 +276,8 @@ build() {
     use_gnome_keyring = false
     use_sysroot = false
     use_system_libffi = true
+    use_system_libwayland = true
+    use_system_wayland_scanner = true
     icu_use_data_file = false
     is_component_ffmpeg = false
   '
