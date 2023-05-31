@@ -9,7 +9,6 @@ source=('http://fvonline-db.bplaced.net/export/keydb_eng.zip')
 md5sums=('SKIP')
 
 package() {
-	mkdir -p "${pkgdir}/etc/xdg/aacs"
-	cp -v "${srcdir}/keydb.cfg" "${pkgdir}/etc/xdg/aacs/KEYDB.cfg"
-	chmod 644 "${pkgdir}/etc/xdg/aacs/KEYDB.cfg"
+	install -d "${pkgdir}/etc/xdg/aacs" || return 1
+	install -Dm644 "${srcdir}/keydb.cfg" "${pkgdir}/etc/xdg/aacs/KEYDB.cfg" || return 1
 }
