@@ -3,23 +3,27 @@
 
 pkgname=volnoti
 pkgver=0.1
-pkgrel=7
-pkgdesc="Lightweight volume notification"
-url="https://www.github.com/davidbrazdil/volnoti"
-arch=('x86_64')
-license=('GPL3')
-depends=('dbus-glib' 'gdk-pixbuf2' 'gtk2' 'librsvg')
-source=(https://github.com/downloads/davidbrazdil/volnoti/$pkgname-$pkgver.tar.gz)
-md5sums=('f1e7a3730528b8808228415990d398f9')
+pkgrel=8
+pkgdesc='Lightweight volume notification'
+url=https://github.com/davidbrazdil/volnoti
+arch=(x86_64)
+license=(GPL3)
+depends=(dbus-glib gdk-pixbuf2 gtk2 librsvg)
+makedepends=(git python3)
+source=("$pkgname::git+$url.git#commit=958415b")
+sha256sums=('SKIP')
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgname
+
+  #./prepare.sh
+  autoreconf --force --install
+  autoupdate --force
+
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
-  make DESTDIR="$pkgdir" install
+  make -C $pkgname DESTDIR="$pkgdir" install
 }
-
