@@ -1,0 +1,10 @@
+--- squashfs-root/PrusaSlicer.desktop
++++ squashfs-root/PrusaSlicer.desktop
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Name=PrusaSlicer
+-Exec=prusa-slicer %F
++Exec=/usr/bin/prusa-slicer %F
+ Icon=PrusaSlicer
+ Terminal=false
+ Type=Application

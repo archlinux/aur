@@ -1,0 +1,12 @@
+--- squashfs-root/PrusaSlicer.desktop
++++ squashfs-root/PrusaGcodeViewer.desktop
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+-Name=PrusaSlicer
+-Exec=prusa-slicer %F
+-Icon=PrusaSlicer
++Name=Prusa GCode Viewer
++Exec=/usr/bin/prusa-slicer --gcodeviewer %F
++Icon=PrusaSlicer-gcodeviewer
+ Terminal=false
+ Type=Application
