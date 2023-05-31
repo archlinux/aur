@@ -1,7 +1,6 @@
 # Maintainer: Christian Schendel (doppelhelix@gmail.com)
-
 pkgname=mediaelch-git
-pkgver=2.8.14.r18.g2114c02e
+pkgver=2.10.0.r59.g39c83fa0
 pkgrel=1
 pkgdesc='MediaElch is a MediaManager for Kodi'
 url='https://github.com/Komet/MediaElch'
@@ -11,17 +10,17 @@ license=('LGPL3')
 depends=('glibc'
          'gcc-libs'
          'libmediainfo'
-         'qt5-declarative'
-         'qt5-multimedia'
-         'qt5-script'
-         'qt5-svg'
-         'quazip')
+         'qt6-declarative'
+         'qt6-multimedia'
+         'qt6-svg'
+         'quazip-qt6')
 makedepends=('cmake'
              'ninja'
-             'qt5-tools')
-             
+             'qt6-tools')
+
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+
 source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
 
@@ -40,12 +39,14 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname%-git}"
   cmake -B build \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=None \
-    -DDISABLE_UPDATER=ON \
-    -DUSE_EXTERN_QUAZIP=ON \
-    -Wno-dev \
-    -G Ninja
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=None \
+        -DDISABLE_UPDATER=ON \
+        -DUSE_EXTERN_QUAZIP=ON \
+        -DMEDIAELCH_FORCE_QT5=OFF \
+        -DMEDIAELCH_FORCE_QT6=ON \
+        -Wno-dev \
+        -G Ninja
   ninja -C build
 }
 
