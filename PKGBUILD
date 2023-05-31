@@ -1,10 +1,8 @@
 # Maintainer: Twann <tw4nn at disroot.org>
 
 pkgname=tblock-gui
-pkgver=1.3.2.rc.1
-pkgrel=2
-_bin_ver=1.3.2
-_build_type=rc.1
+pkgver=1.3.2
+pkgrel=1
 provides=("$pkgname")
 pkgdesc="Official graphical user interface for the TBlock content blocker"
 url="https://tblock.codeberg.page"
@@ -27,10 +25,10 @@ depends=(
 	"polkit"
 )
 source=(
-        "${pkgname}-${pkgver}.tar.gz::https://codeberg.org/tblock/tblock-gui/archive/${_bin_ver}-${_build_type}.tar.gz"
+        "${pkgname}-${pkgver}.tar.gz::https://codeberg.org/tblock/tblock-gui/archive/${pkgver}.tar.gz"
 )
 sha512sums=(
-	"4dd22e6f39d49fe4e80881b4fb25ec269081e652133a0c3e34c293901b15bb7a9dbc0ba124a4b5df58480b8fa483f71b8078831399aab38679e0adfa5f1ef947"
+	"b4c7ab550fe06865103bea8c546c20b11c227ff0da4c33268a4265a2920e060a03260d9aab0064670727845b1c054bb74adfb9ac11ef7c592c5ec190355d8294"
 )
 
 build()
