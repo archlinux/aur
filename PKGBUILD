@@ -1,14 +1,15 @@
-# Maintainer: Y7n05h <Y7n05h(aT)protonmail--d0t--com>
+# Maintainer: ScreamsInJank <email pending, sorry :(>
 
 _name='aw-watcher-window-wayland'
 pkgname="$_name-git"
-pkgver=r27.1cd0555
+pkgver=r33.6108ad3
 pkgrel=1
 pkgdesc="window and afk watcher for wayland"
 arch=('x86_64')
 url="https://github.com/ActivityWatch/$_name"
 license=('MPL2')
 depends=(
+    activitywatch-bin
     aw-client
     gcc-libs
 )
@@ -23,7 +24,6 @@ conflicts=(
     ${_name}
     aw-watcher-window
     aw-watcher-afk
-    activitywatch-bin
 )
 
 source=("${_name}::git+$url")
