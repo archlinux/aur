@@ -1,6 +1,6 @@
 pkgbase = nvhpc
 	pkgdesc = NVIDIA HPC SDK
-	pkgver = 23.3
+	pkgver = 23.5
 	pkgrel = 1
 	url = https://gitlab.com/badwaik/archlinux/aur/nvhpc
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = nvhpc
 	conflicts = pgi-compilers
 	replaces = pgi-compilers
 	options = !strip
-	source = https://developer.download.nvidia.com/hpc-sdk/23.3/nvhpc_2023_233_Linux_x86_64_cuda_12.0.tar.gz
+	source = https://developer.download.nvidia.com/hpc-sdk/23.5/nvhpc_2023_235_Linux_x86_64_cuda_12.1.tar.gz
 	source = nvhpc.sh
-	sha256sums = 65c97207e7ac2d5f163bc50cb017a2c9519a7c9b2b3d12146d3dd433655963f2
-	sha256sums = 19e5c4b25dc1c5a41123a3e84b18db0668d33f08f1dd8cf0d6ab1ace346f535b
+	sha256sums = 3196309b38df6f0a27e18b80f6a40e23cab8195cad43fc6bbd569af7d8ca5742
+	sha256sums = a510be2beb445ece060b230296524ec3068393a043867a7a26958b35367b13d5
 
 pkgname = nvhpc
