@@ -2,7 +2,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core
-pkgver=24.1
+pkgver=25.0
 pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -21,7 +21,7 @@ source=(https://bitcoincore.org/bin/bitcoin-core-$pkgver/bitcoin-$pkgver.tar.gz
         bitcoin-core-01-userdel.hook
         bitcoin-core-02-chown.hook
         bitcoin-core-02-rm-rf.hook)
-sha256sums=('8a0a3db3b2d9cc024e897113f70a3a65d8de831c129eb6d1e26ffa65e7bfaf4e'
+sha256sums=('5df67cf42ca3b9a0c38cdafec5bbb517da5b58d251f32c8d2a47511f9be1ebc2'
             'b1908344281498d39bfa40c3b9725f9c95bf22602cd46e6120a1f17bad9dae35'
             '7bf4bdad419c1ee30b88c7e4190707c5ff250da8b23d68d5adf14043f8e2ac73'
             '7429a9db1da6bc2eed1ae87f61ab9faecaa3d5d6113422f99a146cc1d8e4b5fd'
@@ -107,8 +107,10 @@ package() {
 
   msg2 'Installing bash completion...'
   for _compl in bitcoin-cli bitcoin-tx bitcoind; do
-    install -Dm 644 "contrib/${_compl}.bash-completion" \
+    install -Dm 644 "contrib/completions/bash/${_compl}.bash-completion" \
       "$pkgdir/usr/share/bash-completion/completions/$_compl"
+    install -Dm 644 "contrib/completions/fish/${_compl}.fish" \
+      -t "$pkgdir/usr/share/fish/vendor_completions.d/"
   done
 
   # XXX: pacman hook on Remove event not firing
