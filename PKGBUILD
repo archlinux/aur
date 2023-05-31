@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=bob
-pkgver=2.3.2
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="A version manager for neovim"
 arch=('x86_64')
@@ -10,12 +10,15 @@ url="https://github.com/MordechaiHadad/bob"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('de9a4156f51a2fc8d9bc89f31a01d09644e5f43b224e01ce2a96ebc24611387e')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+        "$pkgname-$pkgver-cargo-lock.patch::$url/commit/3a69b2616b31cf19f010593fc35e6e101fa83da7.patch")
+sha256sums=('b4e27ef4d4d785b0604b195ebed41427faae8956761bcf81a1336921821aab07'
+            '60257af7e31e71754ca620a9e88ddae9cddae93f5635c54fae68cfde244cdeea')
 options=('!lto')
 
 prepare() {
   cd "$pkgname-$pkgver"
+  patch -Np1 -i "../$pkgname-$pkgver-cargo-lock.patch"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
   mkdir completions
 }
