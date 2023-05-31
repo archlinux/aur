@@ -2,18 +2,17 @@
 # Contributor: 0xMRTT <0xMRTT@proton.me>
 
 pkgname=bavarder
-_pkgname=Bavarder
 pkgver=0.2.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Chit-Chat with AI"
 arch=('any')
 url="https://bavarder.codeberg.page"
 license=('GPL3')
 depends=('libadwaita' 'python-gobject' 'python-lxml' 'python-openai' 'python-hgchat' 'python-gtts' 'python-baichat-py' 'python-googlebardpy'
-         'python-requests')
+         'python-requests' 'webkitgtk-6.0')
 makedepends=('blueprint-compiler' 'meson')
 checkdepends=('appstream-glib')
-source=(https://codeberg.org/Bavarder/Bavarder/archive/${pkgver//_/-}.tar.gz)
+source=(${pkgname}-${pkgver}.tar.gz::https://codeberg.org/Bavarder/Bavarder/archive/${pkgver//_/-}.tar.gz)
 b2sums=('af568bab0efb730406e01d8057db6256828ec61345f4a18eaef0e0bfc1fcf8e6f8dde8ad835d77cb2bdc1e2c009ca14652f28a23ec2af0dcc7863cabfb194ab9')
 
 build() {
