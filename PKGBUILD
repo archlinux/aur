@@ -37,10 +37,6 @@ _url_image=("$(echo "$_url_info"|grep -o "https:.*/download/${pkgver}-xanmod1/li
 _url_headers=("$(echo "$_url_info"|grep -o "https:.*/download/${pkgver}-xanmod1/linux-headers.*deb"|grep "$psabi")")
 source=("${_url_image}" "${_url_headers}")
 noextract=("${_url_image}" "${_url_headers}")
-validpgpkeys=(
-    'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
-    '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
-)
 sha256sums=('SKIP' 'SKIP')
 _file_image="${_url_image##*/}"
 _file_headers="${_url_headers##*/}"
