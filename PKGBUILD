@@ -2,15 +2,16 @@
 
 pkgname=swgemu
 pkgver=0.23
-pkgrel=6
+pkgrel=7
 pkgdesc="Launcher for Star Wars Galaxies Emulator"
 arch=(any)
 license=('GPL')
 url="http://www.swgemu.com"
-_srcurl=https://review.swgemu.com/p/Launchpad.git
+_srcurl=https://review.swgemu.com/Launchpad.git
 _dlurl=http://launchpad2.net/SWGEmuLaunchpad_ubuntu_x86_64.tar.gz
 depends=('qt5-base'
          'qt5-webkit')
+makedepends=('git')
 source=(launchpad launchpad.desktop launchpad.install
 		icon.png removeicon.patch ${_dlurl} Launchpad::git+${_srcurl})
 validpgpkeys=(120206848BD3375043BF1B253209FA22E33FF70C)
@@ -31,12 +32,10 @@ prepare() {
 build() {
 	cd "$srcdir/Launchpad"
 	qmake-qt5 SWGEmuLaunchpad.pro
-	make
+	make ${MAKEFLAGS}
 }
 
 package() {
-    echo "package"
-
     install -D -m755 "${srcdir}/launchpad" "${pkgdir}/usr/bin/swgemu"
     install -D -m644 "${srcdir}/ubuntu64/KSWGProfCalc.dat" "${pkgdir}/opt/SWGEMU/Launchpad/KSWGProfCalc.dat"
     install -D -m644 "${srcdir}/ubuntu64/KSWGProfCalcEditor.exe" "${pkgdir}/opt/SWGEMU/Launchpad/KSWGProfCalcEditor.exe"

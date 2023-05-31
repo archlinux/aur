@@ -6,6 +6,7 @@ pkgbase = swgemu
 	install = launchpad.install
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = qt5-base
 	depends = qt5-webkit
 	source = launchpad
@@ -14,7 +15,7 @@ pkgbase = swgemu
 	source = icon.png
 	source = removeicon.patch
 	source = http://launchpad2.net/SWGEmuLaunchpad_ubuntu_x86_64.tar.gz
-	source = Launchpad::git+https://review.swgemu.com/p/Launchpad.git
+	source = Launchpad::git+https://review.swgemu.com/Launchpad.git
 	validpgpkeys = 120206848BD3375043BF1B253209FA22E33FF70C
 	sha256sums = b25d19e4b20d41e640f4adef0d8cb54e7fdd713bb36b9c7adc0a9d8b03bd8bd9
 	sha256sums = 1f46fe25911879b3ead1349f0f66b85adaa4974542db6a1e268d4343278f2ce4
@@ -25,4 +26,3 @@ pkgbase = swgemu
 	sha256sums = SKIP
 
 pkgname = swgemu
-
