@@ -2,7 +2,7 @@
 
 pkgname=keyring-cli-bin
 pkgdesc="A very basic cli keyring tool to use accross various OS."
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/vbouchaud/keyring"
@@ -11,10 +11,10 @@ conflicts=('keyring-cli')
 provides=('keyring-cli')
 
 sha256sums_x86_64=(
-    caa1ea5a9a19cae2b718f13a25a84cee2a0af50760382590d009f0dbb961bcc7
+    b8d5e9483f41b2044b27d30c2b423b925fb31088a4b1c70e99b1cf2ee2128364
 )
 sha256sums_aarch64=(
-    c74f58e3dfb751412857e444a6a5e40dd78529ab379874be9dea52500d95a52f
+    ed812d242c1fba74d526b903344fb8310904800c0e97ecd1d7fd46e1f5d62924
 )
 
 source_x86_64=(
