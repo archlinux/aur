@@ -4,7 +4,7 @@
 # Submitter: BxS <bxsbxs at gmail dot com>
 
 pkgname=microchip-mplabx-bin
-pkgver=6.05
+pkgver=6.10
 pkgrel=1
 pkgdesc="IDE for Microchip PIC and dsPIC development"
 arch=(x86_64)
@@ -12,7 +12,6 @@ url='http://www.microchip.com/mplabx'
 license=(custom)
 depends=(gtk2 alsa-lib libxslt libxtst jre8-openjdk java8-openjfx)
 makedepends=(fakechroot desktop-file-utils)
-makedepends_x86_64=(lib32-fakechroot lib32-fakeroot)
 optdepends=('microchip-mplabxc8-bin: C compiler for PIC10 PIC12 PIC16 PIC18 MCUs'
             'microchip-mplabxc16-bin: C compiler for PIC24 MCUs and dsPIC DSCs'
             'microchip-mplabxc32-bin: C Compiler for PIC32 MCUs'
@@ -32,7 +31,7 @@ source=("https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductD
         "LICENSE"
         "mplabx-override.conf")
 
-md5sums=('6fc81f0ff499a61de4880e20eb3c8247'
+md5sums=('60258a0701f249faa33254f680ffdd82'
          'a34a85b2600a26f1c558bcd14c2444bd'
          'a476a71af625380a2fd52f82fb5d5492')
 
