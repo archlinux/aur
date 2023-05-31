@@ -3,7 +3,7 @@
 
 pkgname=bypy-git
 _pkgname=bypy
-pkgver=1.7.12.r1.gd7ffb48
+pkgver=1.8.2.r1.gc61eb58
 epoch=1
 pkgrel=1
 pkgdesc="Python client for Baidu Cloud Storage (百度网盘)"
