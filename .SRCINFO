@@ -8,7 +8,12 @@ pkgbase = opera-proxy-git
 	license = MIT
 	makedepends = git
 	depends = go
+	depends = proxychains-ng
 	source = git+https://github.com/Snawoot/opera-proxy.git
+	source = topera
+	source = proxychains.opera-proxy.conf
 	sha512sums = SKIP
+	sha512sums = a1a3f35210fac1d6e80084a8877800e83e8e70e98a54ae509cd60a9018556ee360ed2b90ad60dc7f8c10aff67746afbe31bf3d3ce6549f1bb1c540607fe283df
+	sha512sums = 719562c938d287656e09bc026dc366c7c3bc41801e729b3496251da86debfa28bb9b6ae0512a5db650ef3dbbc56dedd618874bce3f18ca112a08785ec357a1e2
 
 pkgname = opera-proxy-git

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+kill=false
+
+if ! pidof opera-proxy; then
+   opera-proxy 1> /dev/null &
+   kill=true
+fi
+
+proxychains -f /etc/proxychains.opera-proxy.conf $@
+
+if $kill ; then
+   killall opera-proxy
+fi
+
