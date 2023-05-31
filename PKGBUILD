@@ -1,4 +1,5 @@
-# Maintainer: 0xMRTT <0xMRTT@proton.me>
+# Maintainer: Matthew Sexton <matthew@asylumtech.com>
+# Contributor: 0xMRTT <0xMRTT@proton.me>
 
 pkgname=imaginer
 _pkgname=Imaginer
