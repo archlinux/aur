@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=whisper.cpp
-pkgver=1.4.0
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Port of OpenAI's Whisper model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
@@ -18,7 +18,6 @@ build() {
   cmake -B ./build \
     -S . \
     -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
-    -DWHISPER_SUPPORT_SDL2=ON \
     -DCMAKE_BUILD_TYPE=Release
 
   cmake --build ./build
@@ -39,4 +38,4 @@ package() {
     -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
-sha256sums=('b2e34e65777033584fa6769a366cdb0228bc5c7da81e58a5e8dc0ce94d0fb54e')
+sha256sums=('1b988dcc77fca55f188dbc4e472f971a80854c1d44309cf3eaab9d5677f175e1')
