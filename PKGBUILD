@@ -1,6 +1,6 @@
 # Maintainer: Szilveszter Székely <szekelyszilv at gmail dot com>
 pkgname=jutoh
-pkgver=2.95
+pkgver=2.97
 pkgrel=1
 pkgdesc="An ebook creation tool"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=('jutoh.sh')
 source_x86_64=(http://www.jutoh.com/Jutoh-${pkgver}-ubuntu-x86_64.tar.gz)
 
 sha512sums=('620b4f443129c87dab2a49669d466a2e78979a52a4068e61f2b8f2c318100d2c453261b80250fe78be144c11aa2a41f91a178fb70281ac138727c096e67727fd')
-sha512sums_x86_64=('73780eb828e0f0c60cf1ebf11290de3ea102b6c2ab53a8da608312eea7a49245c8bc64012d7ab5671dd61d7bf560ee1d122aee5247cf3b05771284090bbb9a1b')
+sha512sums_x86_64=('796a133e7071cb377a9bdf63117d4ed3b71f5626bb89e7daf41e617b26fa9ca87ceca6c0c81cc9e034ba1e4956584d74fb8932f3aeb8acfb6f961c1f98039fed')
 
 prepare() {
   mkdir ${srcdir}/jutoh-data
