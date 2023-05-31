@@ -1,0 +1,22 @@
+pkgbase = hex-a-hop-git
+	pkgdesc = A puzzle game based on hexagonal tiles
+	pkgver = r99.f0ba80d
+	pkgrel = 1
+	url = http://hexahop.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = sdl
+	depends = sdl_mixer
+	depends = sdl_ttf
+	depends = sdl_pango
+	conflicts = hex-a-hop
+	source = hex-a-hop::git+https://git.code.sf.net/p/hexahop/code
+	source = hex-a-hop.desktop
+	source = hex-a-hop.png
+	sha256sums = SKIP
+	sha256sums = 029513f5caf7ea6fbf3f851afdf04248902a9695a854d428cc082c657db6f952
+	sha256sums = 28bef43a4ab6947fd2ece7d4dda44fe0ce4d8d69ec18fb4896bdacfc24b8b5dc
+
+pkgname = hex-a-hop-git
