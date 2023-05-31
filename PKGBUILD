@@ -1,5 +1,5 @@
 pkgbase=linux-lts-huawei-amd-audio
-pkgver=6.1.27
+pkgver=6.1.29
 pkgrel=1
 pkgdesc='LTS Linux with patch for huawei amd devices from https://github.com/codepayne/pop-os-linux'
 url="https://www.kernel.org/"
@@ -23,7 +23,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('c2b74b96dd3d0cc9f300914ef7c4eef76d5fac9de6047961f49e69447ce9f905'
+sha256sums=('1e736cc9bd6036379a1d915e518abd4c2c94ad0fd1ea0da961c3489308b8fcfb'
             'SKIP'
             '3e197fb47c203a1410f79f85dabc177d2290c642826414e7f7698e54afd4ef48'
             '1bd8388fcb6ed4eec46450c65eb7a0889a8c541f164a39e3064633981a7a4a3d'
