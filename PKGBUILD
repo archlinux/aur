@@ -2,7 +2,7 @@
 pkgbase=python-ccdproc
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Affiliated package for the AstroPy package for basic data reductions of CCD images"
 arch=('any')
@@ -19,15 +19,15 @@ makedepends=('python-setuptools-scm'
 #            'python-astroscrappy'
 #            'python-reproject'
              'graphviz')
-checkdepends=('python-pytest-astropy-header'
-              'python-pytest-doctestplus'
+checkdepends=('python-pytest-doctestplus'
+#             'python-pytest-astropy-header'
               'python-astroscrappy'
               'python-scikit-image'
               'python-reproject'
               'python-memory-profiler') # psutil required by memory-profiler
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'fix-underline-length.patch')
-md5sums=('aecb5216aa0f1c923effc1cadbef76ce'
+md5sums=('eb5af074fbae4f29813eceedcfb76aec'
          '714badd0bef757818fda5babe233d235')
 
 prepare() {
@@ -41,8 +41,7 @@ build() {
     python -m build --wheel --no-isolation
 
     msg "Building Docs"
-    cd ${srcdir}/${_pyname}-${pkgver}/docs
-    PYTHONPATH="../build/lib" make html
+    PYTHONPATH="../build/lib" make -C docs html
 }
 
 check() {
@@ -52,7 +51,7 @@ check() {
 }
 
 package_python-ccdproc() {
-    depends=('python>=3.7' 'python-scipy' 'python-astropy>=4.3' 'python-scikit-image' 'python-astroscrappy>=1.0.8' 'python-reproject>=0.7')
+    depends=('python>=3.8' 'python-scipy' 'python-astropy>=5.0.1' 'python-scikit-image' 'python-astroscrappy>=1.0.8' 'python-reproject>=0.7')
     optdepends=('python-ccdproc-doc: Documentation for CCDPROC')
     cd ${srcdir}/${_pyname}-${pkgver}
 
