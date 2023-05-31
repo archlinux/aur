@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ecency-surfer-appimage
-pkgver=3.0.31
+pkgver=3.0.32
 pkgrel=1
 pkgdesc="Immutable, decentralized, uncensored, rewarding communities built, owned and operated by its users"
 arch=('x86_64')
@@ -13,12 +13,12 @@ depends=('zlib' 'glibc' 'hicolor-icon-theme')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/${pkgver}/Ecency-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/ecency/ecency-vision/development/LICENSE")
-sha256sums=('e92bcad3245c51024652429a6f7759fbcc874f243cb03409c0c0d93400cf0f66'
+sha256sums=('c9ca4609154f05e4d94dd19b03a5967cbb37391f79bd4fe2ec640e1bb0687786'
             '4f2d94ac09ba20ec3861cf9fbb2b52ee17592b64b6fb812f04d7b71417da494d')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's|AppRun|/opt/appimages/ecency.AppImage --no-sandbox %U|g' -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
+    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage --no-sandbox %U|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
       
 package() {

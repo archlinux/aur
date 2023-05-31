@@ -1,6 +1,6 @@
 pkgbase = ecency-surfer-appimage
 	pkgdesc = Immutable, decentralized, uncensored, rewarding communities built, owned and operated by its users
-	pkgver = 3.0.31
+	pkgver = 3.0.32
 	pkgrel = 1
 	url = https://ecency.com/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = ecency-surfer-appimage
 	depends = glibc
 	depends = hicolor-icon-theme
 	options = !strip
-	source = ecency-surfer-3.0.31.AppImage::https://github.com/ecency/ecency-vision/releases/download/3.0.31/Ecency-3.0.31.AppImage
+	source = ecency-surfer-3.0.32.AppImage::https://github.com/ecency/ecency-vision/releases/download/3.0.32/Ecency-3.0.32.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/ecency/ecency-vision/development/LICENSE
-	sha256sums = e92bcad3245c51024652429a6f7759fbcc874f243cb03409c0c0d93400cf0f66
+	sha256sums = c9ca4609154f05e4d94dd19b03a5967cbb37391f79bd4fe2ec640e1bb0687786
 	sha256sums = 4f2d94ac09ba20ec3861cf9fbb2b52ee17592b64b6fb812f04d7b71417da494d
 
 pkgname = ecency-surfer-appimage
