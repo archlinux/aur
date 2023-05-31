@@ -93,7 +93,7 @@ ac_add_options --with-system-nss
 # Branding
 ac_add_options --with-app-name=waterfox
 ac_add_options --with-app-basename=Waterfox
-ac_add_options --with-branding=browser/branding/waterfox
+ac_add_options --with-branding=waterfox/browser/branding
 ac_add_options --with-distribution-id=org.archlinux
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
@@ -197,7 +197,7 @@ app.distributor.channel=$pkgname
 EOT
 
   local i theme=waterfox
-  for i in 16 32 48 64 128; do
+  for i in 16 22 24 32 48 64 128 256; do
     install -Dvm644 browser/branding/$theme/default$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
   done
