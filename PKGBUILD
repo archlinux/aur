@@ -1,4 +1,5 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: judd <jvinet@zeroflux.org>
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 # SELinux Contributor: Timothée Ravier <tim@siosm.fr>
@@ -9,7 +10,7 @@
 
 pkgname=pam-selinux
 pkgver=1.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc="SELinux aware PAM (Pluggable Authentication Modules) library"
 arch=('x86_64' 'aarch64')
 license=('GPL2')
@@ -22,7 +23,7 @@ provides=('libpam.so' 'libpamc.so' 'libpam_misc.so'
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 backup=(etc/security/{access.conf,faillock.conf,group.conf,limits.conf,namespace.conf,namespace.init,pwhistory.conf,pam_env.conf,time.conf} etc/environment)
 groups=('selinux')
-source=(https://github.com/linux-pam/linux-pam/releases/download/v$pkgver/Linux-PAM-$pkgver.tar.xz{,.asc}
+source=(https://github.com/linux-pam/linux-pam/releases/download/v$pkgver/Linux-PAM-$pkgver{,-docs}.tar.xz{,.asc}
         ${pkgname/-selinux}.tmpfiles)
 validpgpkeys=(
         '8C6BFD92EE0F42EDF91A6A736D1A7F052E5924BB' # Thorsten Kukuk
@@ -30,6 +31,8 @@ validpgpkeys=(
 )
 
 sha256sums=('7ac4b50feee004a9fa88f1dfd2d2fa738a82896763050cd773b3c54b0a818283'
+            'SKIP'
+            'fe7493aa0a281f8cfe81814768329f953098d0fd8073da1dc0bd64494d022d4d'
             'SKIP'
             '5631f224e90c4f0459361c2a5b250112e3a91ba849754bb6f67d69d683a2e5ac')
 
