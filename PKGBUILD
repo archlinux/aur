@@ -3,7 +3,7 @@
 # Contributor: TDY <tdy@gmx.com>
 pkgname=git-cola
 pkgver=4.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The highly caffeinated Git GUI"
 arch=('any')
 url="https://git-cola.github.io"
@@ -17,12 +17,10 @@ checkdepends=('appstream-glib' 'desktop-file-utils')
 optdepends=('python-pygments: syntax highlighting'
             'python-send2trash: enables "Send to Trash" functionality.'
             'tcl: to use the built-in ssh-askpass handler')
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"{,.asc}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/git-cola/git-cola/archive/v$pkgver.tar.gz"
         '0001-Unvendorize-polib.py.patch')
-sha256sums=('187fa9003d74a8fb3d110207b37c6bbe44043dafda06ce111e1922d0f0f06213'
-            'SKIP'
+sha256sums=('400fed3bac785f7d6c513b19d6a795953367029510ac5dc8b4320864d75cbbac'
             '00db8356a4bc6f1d9dade64ab04b6f8bada2df22b246e21551ce925de9f95625')
-validpgpkeys=('FA41BF59C1B48E8C5F3DA61C8CE26BF4A9F606B0') # David Aguilar <davvid@gmail.com>
 
 prepare() {
   cd "$pkgname-$pkgver"
