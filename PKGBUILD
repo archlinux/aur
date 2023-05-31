@@ -1,48 +1,76 @@
-# Maintainer: <random-nick at email dot com>
+# Maintainer: Cyra Westmere <cyra@slowest.network>
 # Based on the official firefox package by:
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=waterfox
-pkgver=G3.2.4
+pkgver=G5.1.7
 pkgrel=1
-pkgdesc="Fork of Mozilla Firefox featuring some legacy extensions, removed telemetry and no Pocket integration. This is the Current branch."
+pkgdesc="Fork of Mozilla Firefox featuring some privacy, usability, and speed enhancements."
 arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://www.waterfox.net/"
-depends=(gtk3 gtk2 libxt mime-types dbus-glib nss ttf-font)
-makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
-             xorg-server-xvfb autoconf2.13 rust clang llvm lld jack
-             python nodejs python2-psutil cbindgen nasm libpulse)
-optdepends=('libnotify: Notification integration'
-	    'libpulse: Audio support via Pulseaudio'
-	    'jack: Audio support via JACK'
-	    'ffmpeg: Multimedia playback'
-            'speech-dispatcher: Text-to-Speech'
-            'hunspell-en_US: Spell checking, American English')
+depends=(
+  gtk3
+  gtk2
+  libxt
+  mime-types
+  dbus-glib
+  nss
+  ttf-font
+)
+makedepends=(
+  cbindgen
+  clang
+  diffutils
+  dump_syms
+  imake
+  inetutils
+  jack
+  lld
+  llvm
+  mercurial
+  mesa
+  nasm
+  nodejs
+  python
+  rust
+  unzip
+  wasi-compiler-rt
+  wasi-libc
+  wasi-libc++
+  wasi-libc++abi
+  xorg-server-xvfb
+  yasm
+  zip
+)
+
+optdepends=(
+  'hunspell-en_US: Spell checking, American English'
+  'libnotify: Notification integration'
+  'networkmanager: Location detection via available WiFi networks'
+  'pulseaudio: Audio support'
+  'speech-dispatcher: Text-to-Speech'
+  'xdg-desktop-portal: Screensharing with Wayland'
+)
+
 options=(!emptydirs !makeflags !strip)
-_archivename=G3.2.4 # patch releases don't follow the same format so we can't use $pkgver
-source=(Waterfox-$_archivename.tar.gz::https://github.com/MrAlex94/Waterfox/archive/$_archivename.tar.gz
-        $pkgname.desktop
-        0001-Use-remoting-name-for-GDK-application-names.patch
-	make_packed_simd_compile_with_Rust_1.54.patch)
-sha256sums=('baa3760a7f0a7bd72daf77d657338568b86e7fa8ce1230459d127675e7a37631'
-            '3c8a3e73ffcb4670ca25fc7087b9c5d93ebbef2f3be8a33cf81ae424c3f27fa3'
-            '1dba448eb1605c9dc73c22861a5394b50055909399f056baee4887b29af1b51e'
-            '67a374de4188e9a19b1aa72b7705b7e6f574fd68098e458a64aa19debea64992')
-#_disable_pgo=y # uncomment this to disable building the profiled browser and using PGO
+_archiveversion=G5.1.7
+source=(
+  $_archiveversion.tar.gz::https://github.com/WaterfoxCo/Waterfox/archive/refs/tags/$_archiveversion.tar.gz
+  $pkgname.desktop
+)
+sha256sums=(
+  '2f46c035e87d5fe565ec7009154bf9b356e7dd569377cf1662ba875b6679988c'
+  '3c8a3e73ffcb4670ca25fc7087b9c5d93ebbef2f3be8a33cf81ae424c3f27fa3'
+)
 
-prepare() {
+prepare () {
   mkdir -p mozbuild
-  cd Waterfox-$_archivename
+  cd waterfox-$_archiveversion
 
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
-  patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
-
-  patch -Np1 -i ../make_packed_simd_compile_with_Rust_1.54.patch
-
-  cat >../mozconfig <<END
+  cat >../mozconfig <<EOT
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
 ac_add_options --enable-application=browser
@@ -54,12 +82,8 @@ ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
 ac_add_options --enable-linker=lld
 ac_add_options --disable-elf-hack
-export CC='clang --target=x86_64-unknown-linux-gnu'
-export CXX='clang++ --target=x86_64-unknown-linux-gnu'
-export AR=llvm-ar
-export NM=llvm-nm
-export RANLIB=llvm-ranlib
-export LLVM_PROFDATA=llvm-profdata
+ac_add_options --disable-bootstrap
+ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 
 # System libraries
 ac_add_options --with-system-nspr
@@ -69,6 +93,9 @@ ac_add_options --with-system-nss
 ac_add_options --with-app-name=waterfox
 ac_add_options --with-app-basename=Waterfox
 ac_add_options --with-branding=browser/branding/waterfox
+ac_add_options --with-distribution-id=org.archlinux
+ac_add_options --with-unsigned-addon-scopes=app,system
+ac_add_options --allow-addon-sideload
 
 # Features
 ac_add_options --enable-alsa
@@ -76,11 +103,11 @@ ac_add_options --enable-jack
 ac_add_options --enable-crashreporter
 ac_add_options --disable-updater
 ac_add_options --disable-tests
-END
+EOT
 }
 
-build() {
-  cd Waterfox-$_archivename
+build () {
+  cd waterfox-$_archiveversion
 
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
@@ -97,64 +124,52 @@ build() {
   # suppress warnings
   CFLAGS+=" -w"
   CXXFLAGS+=" -w"
-
+#_disable_pgo=y # uncomment this to disable building the profiled browser and using PGO
   if [[ -z $_disable_pgo ]]; then
-	# Do 3-tier PGO
-	echo "Building instrumented browser..."
-	cat >.mozconfig ../mozconfig - <<END
+ # Do 3-tier PGO
+  echo "Building instrumented browser..."
+  cat >.mozconfig ../mozconfig - <<EOT
 ac_add_options --enable-profile-generate=cross
-END
-	./mach build
-	./mach package
+EOT
+  ./mach build
 
-	echo "Profiling instrumented browser..."
-	LLVM_PROFDATA=llvm-profdata \
-				 JARLOG_FILE="$PWD/jarlog" \
-				 xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
-				 ./mach python build/pgo/profileserver.py
-	echo "Merging profile data..."
-	for i in *.profraw; do
-          stat -c "Raw profile data file $i found (%s bytes)" $i
-	done
-	llvm-profdata merge -o merged.profdata *.profraw
+  echo "Profiling instrumented browser..."
+  ./mach package
+  LLVM_PROFDATA=llvm-profdata \
+    JARLOG_FILE="$PWD/jarlog" \
+    xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
+    ./mach python build/pgo/profileserver.py
 
-	if [[ ! -s merged.profdata ]]; then
-      echo "No profile data produced."
-      return 1
-	fi
-        stat -c "Profile data found (%s bytes)" merged.profdata
+  stat -c "Profile data found (%s bytes)" merged.profdata
+  test -s merged.profdata
 
-	if [[ ! -s jarlog ]]; then
-      echo "No jarlog produced."
-      return 1
-	fi
-        stat -c "Profile jarlog found (%s bytes)" jarlog
+  stat -c "Jar log found (%s bytes)" jarlog
+  test -s jarlog
 
-	echo "Removing instrumented browser..."
-	./mach clobber
+  echo "Removing instrumented browser..."
+  ./mach clobber
 
-	echo "Building optimized browser..."
-	cat >.mozconfig ../mozconfig - <<END
+  echo "Building optimized browser..."
+  cat >.mozconfig ../mozconfig - <<EOT
 ac_add_options --enable-lto=cross
 ac_add_options --enable-profile-use=cross
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
-END
-  else
-	echo "Building browser without PGO..."
-	cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-lto=cross
-END
-  fi
+EOT
+else
   ./mach build
+
+  echo "Building symbol archive..."
+  ./mach buildsymbols
+fi
 }
 
-package() {
-  cd Waterfox-$_archivename
+package () {
+  cd waterfox-$_archiveversion
   DESTDIR="$pkgdir" ./mach install
 
   local vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
-  install -Dvm644 /dev/stdin "$vendorjs" <<END
+  install -Dvm644 /dev/stdin "$vendorjs" <<EOT
 // Use LANG environment variable to choose locale
 pref("intl.locale.requested", "");
 
@@ -166,10 +181,10 @@ pref("browser.shell.checkDefaultBrowser", false);
 
 // Don't disable extensions in the application directory
 pref("extensions.autoDisableScopes", 11);
-END
+EOT
 
   local distini="$pkgdir/usr/lib/$pkgname/distribution/distribution.ini"
-  install -Dvm644 /dev/stdin "$distini" <<END
+  install -Dvm644 /dev/stdin "$distini" <<EOT
 [Global]
 id=archlinux
 version=1.0
@@ -178,7 +193,7 @@ about=Waterfox for Arch Linux
 [Preferences]
 app.distributor=archlinux
 app.distributor.channel=$pkgname
-END
+EOT
 
   local i theme=waterfox
   for i in 16 32 48 64 128; do
@@ -196,10 +211,10 @@ END
     "$pkgdir/usr/share/applications/$pkgname.desktop"
 
   # Install a wrapper to avoid confusion about binary path
-  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<END
-#!/bin/sh
+  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<EOT
+#!/usr/bin/env sh
 exec /usr/lib/$pkgname/waterfox "\$@"
-END
+EOT
 
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
