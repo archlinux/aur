@@ -10,17 +10,23 @@ url='https://github.com/305a385/ytfind/'
 license=('AGPL3')
 depends=('curl')
 makedepends=('git')
-binname=('GNU-Linux-x86_64')
-source=("https://github.com/305a385/$pkgname/releases/download/v$pkgver/$binname"
-	"https://github.com/305a385/$pkgname/releases/download/v$pkgver/${pkgname}.1")
-sha256sums=('5425960f70d58abd00832a0c1bd5b258b2b17a90b518af260597e4efe3ee2657'
-	'SKIP')
-noextract=('ytfind')
-package() {
-	mkdir -p "${pkgdir}/usr/bin"
-	mkdir -p "${pkgdir}/usr/local/man/man1"
+source=("https://github.com/305a385/$pkgname/archive/refs/tags/v$pkgver.zip")
+sha256sums=('4670dab98390ade9f1565757f6572fa08aca93cffc44e792bcff57f2fa41ce42')
 
-	install -m 755 ${srcdir}/${binname} ${pkgdir}/usr/bin/${pkgname}
-	install -g 0 -o 0 -m 0644 ${srcdir}/${pkgname}.1 ${pkgdir}/usr/local/man/man1/
-	gzip ${pkgdir}/usr/local/man/man1/${pkgname}.1
+build(){
+	cd "$pkgname-$pkgver";
+	make build
+}
+
+package() {
+	
+	
+
+
+	mkdir -p "${pkgdir}/usr/bin"
+	mkdir -p "${pkgdir}/usr/man/man1"
+
+	install -m 755 ${srcdir}/$pkgname-$pkgver/${pkgname} ${pkgdir}/usr/bin/${pkgname}
+	install -g 0 -o 0 -m 0644 ${srcdir}/$pkgname-$pkgver/manpages/${pkgname}.1 ${pkgdir}/usr/man/man1/
+	gzip ${pkgdir}/usr/man/man1/${pkgname}.1
 }

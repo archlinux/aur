@@ -7,10 +7,7 @@ pkgbase = ytfind
 	license = AGPL3
 	makedepends = git
 	depends = curl
-	noextract = ytfind
-	source = https://github.com/305a385/ytfind/releases/download/v1.3/GNU-Linux-x86_64
-	source = https://github.com/305a385/ytfind/releases/download/v1.3/ytfind.1
-	sha256sums = 5425960f70d58abd00832a0c1bd5b258b2b17a90b518af260597e4efe3ee2657
-	sha256sums = SKIP
+	source = https://github.com/305a385/ytfind/archive/refs/tags/v1.3.zip
+	sha256sums = 4670dab98390ade9f1565757f6572fa08aca93cffc44e792bcff57f2fa41ce42
 
 pkgname = ytfind
