@@ -134,7 +134,8 @@ build() {
     -DDISABLE_BUILD_DATE=ON
     ninja -C build -v
     
-    7z a -r patches.zip pcsx2_patches/patches/*
+    cd pcsx2_patches
+    7z a -r ../patches.zip patches/.
 }
 
 package() {
