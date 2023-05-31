@@ -3,7 +3,7 @@
 pkgname=keyring-cli
 _pkgname=keyring
 pkgdesc="A very basic cli keyring tool to use accross various OS."
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="https://github.com/vbouchaud/keyring"
@@ -17,7 +17,7 @@ source=(
 )
 
 sha256sums=(
-    "9578cd0566f0b5e75c9ed274931df3063ff4a5903a3d5e898eacdb82fc23a249"
+    "6ff9af7f95b3d583e1bb247b9b1fed25b7e68548301764dce6fc4e9a16418ef7"
 )
 
 build() {
