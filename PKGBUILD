@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.3.4.arch1
+pkgver=6.3.5.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -54,7 +54,7 @@ source=(
   0001-HID-asus-Add-support-for-ASUS-ROG-Z13-keyboard.patch
   0002-HID-asus-add-keycodes-for-0x6a-0x4b-and-0xc7.patch
   0003-HID-asus-reformat-the-hotkey-mapping-block.patch
-  0004-ALSA-hda-realtek-Add-quirk-for-2nd-ASUS-GU603.patch
+#  0004-ALSA-hda-realtek-Add-quirk-for-2nd-ASUS-GU603.patch
   0005-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
   0006-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
   0007-platform-x86-asus-wmi-add-support-for-ASUS-screenpad.patch
@@ -89,7 +89,6 @@ sha256sums=('SKIP'
             '14f695b481e1afc4ac8c79ef48f0613267c86d1862f3293d889f6f68e1b84188'
             '93b7ad2dd6b172d487d5e37847027f5854cae0c7291bc643d890045692903bab'
             '04167065497211326a3a6f83519111e2f81273c848143d300e7e3e91062c061b'
-            'f0bdd2287d6b1b04d440de2ccf7c523202a9846852fc6b92241b494e5220a86e'
             '185ccdbfa7d4a0a3c55412082d87c5965221a73442f076d396f1e8cc0aabece1'
             'e20f3d11077c9abe8cc41c61378abd6b3fbd5059497a01baa881a810f1c91eb0'
             '22ae0fb68016064ce32d5a32235d463b6e65eff2af83fe70be976cf39b1a9623'
