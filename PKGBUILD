@@ -12,7 +12,6 @@ groups=(hpproliant)
 license=("CUSTOM")
 
 source=("https://downloads.hpe.com/pub/softlib2/software1/pubsw-linux/p1545251609/v171063/RPMS/$arch/$pkgname-${pkgver//_/-}.$arch.rpm")
-#source=("https://downloads.linux.hpe.com/SDR/repo/ilorest/current/$pkgname-${pkgver//_/-}.x86_64.rpm")
 sha256sums=('49df41e85b18da45360014c5ea59c459649624be6ae7bc47cbcca75b4276887a')
 
 package() {
