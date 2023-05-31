@@ -32,4 +32,5 @@ build() {
 package() {
 	cd tubeconverter
 	dotnet cake --target=Install --destdir="$pkgdir"
+	ln -sv org.nickvision.tubeconverter "$pkgdir"/usr/bin/tubeconverter
 }
