@@ -3,8 +3,8 @@
 # Maintainer: sukanka < su975853527 [at] gmail dot com >
 pkgname=aliyunpan-odomu-git
 url="https://github.com/odomu/aliyunpan"
-pkgrel=4
-pkgver=r32.cc78aea
+pkgrel=1
+pkgver=r170.ef60c2b
 pkgdesc="阿里云盘小白羊版，odomu's fork"
 arch=("any")
 license=("None")
