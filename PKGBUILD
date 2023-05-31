@@ -10,7 +10,7 @@ url="https://github.com/garrettj403/${_base}"
 license=(MIT)
 depends=(python-matplotlib)
 makedepends=(python-setuptools python-build python-installer python-wheel)
-source=(${_base}.tar.gz::${url}/archive/${pkgver}.tar.gz)
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
 sha512sums=('6424b71a2c20d5d7c123f2c4658d98b4c29ec27898f2bbff3f71d238b07d614e9731169639a4ad020d2487a2824eddcefb41bb588ee7c57f57e9fad569681e25')
 conflicts=(python-${_base,,}-git)
 

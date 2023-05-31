@@ -11,7 +11,7 @@ pkgbase = python-scienceplots
 	makedepends = python-wheel
 	depends = python-matplotlib
 	conflicts = python-scienceplots-git
-	source = SciencePlots.tar.gz::https://github.com/garrettj403/SciencePlots/archive/2.1.0.tar.gz
+	source = SciencePlots-2.1.0.tar.gz::https://github.com/garrettj403/SciencePlots/archive/2.1.0.tar.gz
 	sha512sums = 6424b71a2c20d5d7c123f2c4658d98b4c29ec27898f2bbff3f71d238b07d614e9731169639a4ad020d2487a2824eddcefb41bb588ee7c57f57e9fad569681e25
 
 pkgname = python-scienceplots
