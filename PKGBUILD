@@ -3,10 +3,10 @@
 _pkgname=hex-a-hop
 pkgname=${_pkgname}-git
 pkgver=r99.f0ba80d
-pkgrel=1
+pkgrel=2
 pkgdesc="A puzzle game based on hexagonal tiles"
 arch=('i686' 'x86_64')
-url="http://hexahop.sourceforge.net"
+url="https://hexahop.sourceforge.net"
 license=('GPL2')
 depends=('sdl' 'sdl_mixer' 'sdl_ttf' 'sdl_pango')
 makedepends=('git')

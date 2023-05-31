@@ -1,8 +1,8 @@
 pkgbase = hex-a-hop-git
 	pkgdesc = A puzzle game based on hexagonal tiles
 	pkgver = r99.f0ba80d
-	pkgrel = 1
-	url = http://hexahop.sourceforge.net
+	pkgrel = 2
+	url = https://hexahop.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = GPL2
