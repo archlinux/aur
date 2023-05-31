@@ -1,0 +1,54 @@
+#!/bin/bash
+
+XDG_DATA_HOME="${XDG_DATA_HOME-${HOME}/.local/share}"
+HELPER_DATA_DIRECTORY="${HELPER_DATA_DIRECTORY-${XDG_DATA_HOME}/usbhelper}"
+export WINEDEBUG="${WINEDEBUG--all}"
+export WINEPREFIX="${WINEPREFIX-${XDG_DATA_HOME}/wineprefixes/usbhelper}"
+export WINEARCH="win32"
+
+if [ ! -d "${WINEPREFIX}" ]; then
+  echo 'Setting up the Wine prefix...'
+  winetricks -q --force 'dotnet48'
+  echo 'Completed setting up the Wine prefix.'
+fi
+
+if [ ! -d "${HELPER_DATA_DIRECTORY}" ]; then
+  echo 'Installing USBHelper...'
+  mkdir -p "${HELPER_DATA_DIRECTORY}"
+  wget "https://github.com/FailedShack/USBHelperLauncher/releases/download/0.18-debug/USBHelperLauncher-0.18-Debug.zip" -O /tmp/usbhelperlauncher.zip
+  wget "https://archive.org/download/WiiUUSBHelper/Wii%20U%20USB%20Helper%200.6.1.653.zip" -O /tmp/usbhelper.zip
+  unzip /tmp/usbhelper.zip -d ${HELPER_DATA_DIRECTORY}
+  unzip /tmp/usbhelperlauncher.zip -d ${HELPER_DATA_DIRECTORY}
+  cd ${HELPER_DATA_DIRECTORY}
+  wine USBHelperLauncher.exe
+  wineserver -w
+  echo 'Completed installing USBHelper.'
+  exit
+fi
+
+case "$1" in
+  'kill')
+    wineserver -k "$2"
+    ;;
+  'winetricks')
+    shift 1
+    winetricks "$@"
+    ;;
+  'wine')
+    shift 1
+    wine "$@"
+    ;;
+  '-h'|'--help'|'help')
+    echo 'Usage:'
+    printf '%s [command]\t\t\tRun USBHelper (with optional command)\n' "$(basename "$0")"
+    printf '%s kill [n]\t\t\tKill USBHelper (optinally with signal n)\n' "$(basename "$0")"
+    printf '%s wine [command]\t\tExecute Wine command on the Wine prefix (winecfg, regedit, ...)\n' "$(basename "$0")"
+    printf '%s winetricks [command]\t\tExecute Winetricks command on the Wine prefix\n' "$(basename "$0")"
+    printf '%s {-h --help help}\t\tDisplay this help\n' "$(basename "$0")"
+    ;;
+  *)
+    cd ${HELPER_DATA_DIRECTORY}
+    wine USBHelperLauncher.exe "$@"
+    wineserver -w
+    ;;
+esac

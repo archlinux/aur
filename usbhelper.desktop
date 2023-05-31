@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Wii U USB Helper
+Comment=Wii U USB Helper
+Exec=usbhelper
+Terminal=false
+Type=application
+Icon=usbhelper
+Categories=Game
