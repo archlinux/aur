@@ -7,7 +7,7 @@ arch=(any)
 url=https://github.com/Freed-Wu/tmux-zh
 license=(GPL3)
 source=("$url/releases/download/$pkgver/$pkgname-$pkgver-Linux.deb")
-sha256sums=('88cb641ee43f7c6f14bd9f135670c933778740ed2adf4a09d8e1fc0bd6d22834')
+sha256sums=('168958c6dac2a4db2f5235300561994e11507151d120ef41ea50228bfcb36baa')
 
 package() {
 	tar vxaf data.tar.xz -C $pkgdir
