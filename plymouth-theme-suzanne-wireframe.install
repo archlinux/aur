@@ -1,12 +1,17 @@
 post_install() {
 	cat << _EOF
-
-	==> To select the theme, run as root:
-	==> plymouth-set-default-theme -R SuzanneWireframe
-
+	==> Installing theme!
 _EOF
+	plymouth-set-default-theme -R SuzanneWireframe
 }
 
 post_upgrade() {
 	post_install $1
+}
+
+post_remove() {
+	cat << _EOF
+	==> Resetting to default theme
+_EOF
+	plymouth-set-default-theme -R bgrt
 }

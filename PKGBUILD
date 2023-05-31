@@ -2,7 +2,7 @@
 
 pkgname=plymouth-theme-suzanne-wireframe
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Plymouth Theme with wireframe Suzanne from Blender"
 arch=('any')
 url="https://github.com/shantih19/PlymouthTheme-Suzanne-Wireframe"
