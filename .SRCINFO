@@ -31,9 +31,11 @@ pkgbase = megasync-git
 	depends = libxcb
 	depends = libzen
 	depends = zlib
-	provides = megasync
-	conflicts = megasync
+	provides = megasync=4.9.3.0.7.gc422ca213
 	conflicts = megatools
+	conflicts = megatools-bin
+	conflicts = megasync
+	conflicts = megasync-bin
 	options = debug
 	source = git+https://github.com/meganz/MEGAsync.git
 	source = git+https://github.com/meganz/sdk.git

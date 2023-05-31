@@ -9,11 +9,13 @@ pkgdesc="MEGASync Desktop App. (GIT Version)"
 arch=('x86_64')
 url='https://mega.co.nz/#sync'
 license=('custom:MEGA')
+provides=("megasync=${pkgver}")
 conflicts=(
-  'megasync'
   'megatools'
+  'megatools-bin'
+  'megasync'
+  'megasync-bin'
 )
-provides=('megasync')
 depends=(
   'gcc-libs'
   'glibc'
