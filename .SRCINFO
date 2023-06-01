@@ -10,7 +10,6 @@ pkgbase = notesnook
 	makedepends = yarn
 	depends = electron21
 	depends = libappindicator-gtk3
-	depends = libindicator-gtk3
 	depends = libnotify
 	depends = libxss
 	depends = libxtst

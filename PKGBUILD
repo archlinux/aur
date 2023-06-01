@@ -16,7 +16,7 @@ license=('GPLv3')
 options=(!strip)
 provides=(${pkgname})
 conflicts=(${pkgname})
-depends=("electron$_electronversion" 'libappindicator-gtk3' 'libindicator-gtk3' 'libnotify' 'libxss' 'libxtst')
+depends=("electron$_electronversion" 'libappindicator-gtk3' 'libnotify' 'libxss' 'libxtst')
 makedepends=('nvm' 'git' 'yarn')
 source=("notesnook::git+$url.git"
         "${pkgname}.desktop")
