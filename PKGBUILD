@@ -1,7 +1,7 @@
 # Maintainer: Marc Vidal <mvidaldp@gmail.com>
 
 pkgname=liblsl
-pkgver=1.16.1
+pkgver=1.16.2
 _pkgver="v${pkgver}"
 pkgrel=1
 pkgdesc='C++ lsl library for multi-modal time-synched data transmission over the local network (stable release)'
