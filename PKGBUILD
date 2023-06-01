@@ -14,5 +14,6 @@ md5sums=("a693835e2a2cdf35ac6e1bd78852e21c")
 
 package()
 {
-    mv ${srcdir}/${pkgname}-${pkgver}/usr ${pkgdir}/
+    cd "$pkgname-$pkgver"
+    install -d "$pkgdir/usr"
 }

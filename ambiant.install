@@ -1,5 +1,20 @@
+pre_install()
+{
+    rm -fr /usr/share/icons/Ambiant
+    rm -fr /usr/share/themes/Ambiant
+}
+
 pre_upgrade()
 {
-	rm -fr /usr/share/icons/Ambiant
-    rm -fr /usr/share/themes/Ambiant
+    pre_install
+}
+
+post_install()
+{
+    gtk-update-icon-cache /usr/share/icons/Ambiant
+}
+
+post_upgrade()
+{
+    post_install
 }
