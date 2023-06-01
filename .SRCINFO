@@ -1,9 +1,10 @@
 pkgbase = cnrdrvcups-lb-bin
 	pkgdesc = CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS ImageRUNNER Laser Shot i-SENSYS ImagePRESS ADVANCE printers and copiers
-	pkgver = 5.60.10
+	pkgver = 5.70.13
 	pkgrel = 1
 	url = https://www.canon-europe.com/support/products/imagerunner/imagerunner-1730i.aspx
 	arch = x86_64
+	arch = aarch64
 	license = GPL2
 	license = MIT
 	license = custom
@@ -12,10 +13,11 @@ pkgbase = cnrdrvcups-lb-bin
 	makedepends = gtk3
 	depends = gcc-libs
 	depends = libxml2
-	optdepends = libjpeg6-turbo: improves printing results for color imageRUNNER/i-SENSYS LBP devices
-	optdepends = libjbig-shared: port of debian/fedora specific jbigkit funtionality that can prevent cpu hangs on some models
+	optdepends = libjpeg6-turbo: solves cpu hang on some color imageRUNNER/i-SENSYS LBP devices
+	optdepends = libjbig-shared: port of debian/fedora specific jbigkit functionality that can prevent cpu hangs on some models
+	optdepends = ghostscript: necessary for printing on some devices
 	optdepends = gtk3: for cnsetuputil2
-	provides = cnrdrvcups-lb=5.60
+	provides = cnrdrvcups-lb=5.70
 	conflicts = cndrvcups-lb
 	conflicts = cndrvcups-common-lb
 	conflicts = cndrvcups-lb-bin
@@ -23,9 +25,9 @@ pkgbase = cnrdrvcups-lb-bin
 	options = !emptydirs
 	options = !strip
 	options = !libtool
-	source = http://gdlp01.c-wss.com/gds/8/0100007658/31/linux-UFRII-drv-v560-m17n-10.tar.gz
-	md5sums = 64fac0badfb21fd40d67160dce7bd03a
-	sha256sums = dffba18aeecc07c71329a388b18a473db30cad225fa34a6c3526501eb4353681
-	sha512sums = dd26e79ab473d932f4814a2210803ddb0d6f54754191d3d42fefb7d40940f87aed89dc89f71772d406381c59cd6ec79ebc8f0ac0a4b5c8b0641ebd973c1d8623
+	source = http://gdlp01.c-wss.com/gds/8/0100007658/34/linux-UFRII-drv-v570-m17n-13.tar.gz
+	md5sums = 7ac8db8dbe6ea19058bce0b2275e185f
+	sha256sums = 753a7bb324a109890cedd3455d04663caff40548a82c07477ef8f2b1a20707fd
+	sha512sums = 57197570456675dc80c7a40f1c99fcdb00f9af2ce9742c2e23ad6ef74cc748cdad825679897b4ebedbf24189f60267952871422d862f8cbd1be77ea6da44183f
 
 pkgname = cnrdrvcups-lb-bin

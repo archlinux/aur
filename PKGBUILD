@@ -23,19 +23,22 @@ pkgname="${pkgbase}"
 #_pkgver='5.40';  _dl='8/0100007658/25';_suffix='08'
 #_pkgver='5.50';  _dl='8/0100007658/29';_suffix1='m17n';_suffix2='07'
 #_pkgver='5.60';  _dl='8/0100007658/30';_suffix1='m17n';_suffix2='08'
-_pkgver='5.60';  _dl='8/0100007658/31';_suffix1='m17n';_suffix2='10'
+#_pkgver='5.60';  _dl='8/0100007658/31';_suffix1='m17n';_suffix2='10'
+#_pkgver='5.70';  _dl='8/0100007658/33';_suffix1='m17n';_suffix2='11'
+_pkgver='5.70';  _dl='8/0100007658/34';_suffix1='m17n';_suffix2='13'
 pkgver="${_pkgver}.${_suffix2}"
 pkgrel='1'
 pkgdesc='CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS ImageRUNNER Laser Shot i-SENSYS ImagePRESS ADVANCE printers and copiers'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 # Direct links to the download reference go bad on the next version. We want something that will persist for a while.
 url='https://www.canon-europe.com/support/products/imagerunner/imagerunner-1730i.aspx'
 license=('GPL2' 'MIT' 'custom')
 # parts of the code are GPL or MIT licensed, some parts have a custom license
 depends=('gcc-libs' 'libxml2')
 optdepends=(
-  'libjpeg6-turbo: improves printing results for color imageRUNNER/i-SENSYS LBP devices'
-  'libjbig-shared: port of debian/fedora specific jbigkit funtionality that can prevent cpu hangs on some models'
+  'libjpeg6-turbo: solves cpu hang on some color imageRUNNER/i-SENSYS LBP devices'
+  'libjbig-shared: port of debian/fedora specific jbigkit functionality that can prevent cpu hangs on some models'
+  'ghostscript: necessary for printing on some devices'
   'gtk3: for cnsetuputil2'
 )
 makedepends=('jbigkit' 'gzip' 'gtk3')
@@ -46,24 +49,24 @@ options=('!emptydirs' '!strip' '!libtool')
 source=(
   "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-${_suffix1}-${_suffix2}.tar.gz"
 )
-md5sums=('64fac0badfb21fd40d67160dce7bd03a')
-sha256sums=('dffba18aeecc07c71329a388b18a473db30cad225fa34a6c3526501eb4353681')
-sha512sums=('dd26e79ab473d932f4814a2210803ddb0d6f54754191d3d42fefb7d40940f87aed89dc89f71772d406381c59cd6ec79ebc8f0ac0a4b5c8b0641ebd973c1d8623')
+md5sums=('7ac8db8dbe6ea19058bce0b2275e185f')
+sha256sums=('753a7bb324a109890cedd3455d04663caff40548a82c07477ef8f2b1a20707fd')
+sha512sums=('57197570456675dc80c7a40f1c99fcdb00f9af2ce9742c2e23ad6ef74cc748cdad825679897b4ebedbf24189f60267952871422d862f8cbd1be77ea6da44183f')
 
 build() {
   set -u
   shopt -s nullglob
 
   #declare -A _archd=([i686]='32-bit_Driver' [x86_64]='64-bit_Driver')
-  declare -A _archd=([i686]='x86' [x86_64]='x64')
+  declare -A _archd=([i686]='x86' [x86_64]='x64' [aarch64]='ARM64')
   if [ "${_opt_RPM}" -ne 0 ]; then
-    declare -A _archf=([i686]='i386' [x86_64]='x86_64')
+    declare -A _archf=([i686]='i386' [x86_64]='x86_64' [aarch64]='aarch64')
     local _p1='-'
     local _p2='.'
     local _archrpme='rpm'
     local _archrpmf='RPM'
   else
-    declare -A _archf=([i686]='i386' [x86_64]='amd64')
+    declare -A _archf=([i686]='i386' [x86_64]='amd64' [aarch64]='arm64')
     local _p1='_'
     local _p2='_'
     local _archrpme='deb'
