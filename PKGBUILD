@@ -5,10 +5,8 @@
 # https://releases.electronjs.org/
 # https://github.com/stha09/chromium-patches/releases
 
-# Remember to handle https://bugs.archlinux.org/task/74324 on major upgrades
 _use_suffix=1
-pkgver=24.4.0
-_commit=e8c05bccd1ca7038ff8c9e8d140e30a2ec6e005d
+pkgver=24.4.1
 _chromiumver=112.0.5615.204
 # shellcheck disable=SC2034
 pkgrel=1
@@ -50,7 +48,7 @@ fi
 # shellcheck disable=SC2034
 options=('!lto') # Electron adds its own flags for ThinLTO
 # shellcheck disable=SC2034
-source=("git+https://github.com/electron/electron.git#commit=$_commit"
+source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         'git+https://chromium.googlesource.com/chromium/tools/depot_tools.git#branch=main'
         "chromium::git+https://chromium.googlesource.com/chromium/src.git#tag=$_chromiumver"
         "electron-launcher.sh"
@@ -152,7 +150,7 @@ cat >.gclient <<EOF
 solutions = [
   {
     "name": "src/electron",
-    "url": "file://${srcdir}/electron@${_commit}",
+    "url": "file://${srcdir}/electron@v$pkgver",
     "deps_file": "DEPS",
     "managed": False,
     "custom_deps": {
