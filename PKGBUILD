@@ -1,13 +1,13 @@
 # Maintainer: arraen
 pkgname="synergy3-bin"
-pkgver="v3.0.70.34"
+pkgver="v3.0.72.1"
 pkgrel="1"
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="https://symless.com/synergy"
 license=('unknown')
 arch=("x86_64")
-source_x86_64=("https://rc.symless.com/synergy3/$pkgver-beta/synergy-linux_x64-libssl3-$pkgver-beta.deb")
-sha256sums_x86_64=("766fecc5a17b4f4c125558a55609171aecbddbef4f2a7350aede59476b73b1bd")
+source_x86_64=("https://rc.symless.com/synergy3/$pkgver-rc1/synergy-linux_x64-libssl3-$pkgver-rc1.deb")
+sha256sums_x86_64=("72f22d6876185d094cc2f8d94312e6af8e62a97665015943906c2a3e807e9e51")
 
 conflicts=('synergy1-bin' 'synergy-git' 'synergy-1.6' 'synergy2-bin')
 depends=('openssl')
