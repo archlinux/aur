@@ -1,7 +1,7 @@
 # vim:ts=2:sw=2:expandtab
 # Maintainer: peelz <peelz.dev+arch@gmail.com>
 
-_commit='c45bd41d5a350317f9507ace7bed4c635cfe319c'
+_commit="c45bd41d5a350317f9507ace7bed4c635cfe319c"
 pkgname=xmousepasteblock
 pkgver=1.2
 pkgrel=1
@@ -18,8 +18,8 @@ source=(
   xmousepasteblock.service
 )
 sha256sums=(
-  'SKIP'
-  '6c2124ae92594d84ee58531c93820957356bd7f92236cd85fa8d6de6b554ede5'
+  "SKIP"
+  "6c2124ae92594d84ee58531c93820957356bd7f92236cd85fa8d6de6b554ede5"
 )
 
 build() {
