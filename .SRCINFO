@@ -1,7 +1,7 @@
 pkgbase = tomatoshell
 	pkgdesc = Pomodoro timer in the shell
-	pkgver = r21.ed04b1c
-	pkgrel = 1
+	pkgver = r31.c8e8ae9
+	pkgrel = 2
 	url = https://github.com/lytixDev/tomatoshell
 	arch = x86_64
 	license = GPL2
