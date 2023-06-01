@@ -1,12 +1,12 @@
-# Maintainer:  tx00100xt <tx00100xt@yandex.ru>
-# Contributer: tx00100xt <tx00100xt@yandex.ru>
+# Maintainer:  Alexander <tx00100xt@yandex.ru>
+# Contributer: Alexander <tx00100xt@yandex.ru>
 
 pkgname=serioussam-st8vipe
-pkginstdir=serioussam
+pkginstdir=serioussamse
 st8vipe=SamTSE-ST8VIPE.tar.xz
 pkgver=1.7.1
 _srcname="SE1-TSE-ST8VIPE-$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc="Serious Sam Classic ST8VIPE native Linux."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SE1-TSE-ST8VIPE"
@@ -71,15 +71,22 @@ build(){
 
 package(){
   # Making sure directories exist.
+  install -d $pkgdir/usr/lib/{serioussamse,serioussamse/Mods,serioussamse/Mods/ST8VIPE}
+  install -d $pkgdir/usr/share/{serioussamse,serioussamse/Mods}
+
+  install -D -m0755 $srcdir/$_srcname/SamTSE/Mods/ST8VIPE/Bin/libGameMP.so $pkgdir/usr/lib/serioussamse/Mods/ST8VIPE
+  install -D -m0755 $srcdir/$_srcname/SamTSE/Mods/ST8VIPE/Bin/libEntitiesMP.so  $pkgdir/usr/lib/serioussamse/Mods/ST8VIPE
+
+  rm -fr "$srcdir/$_srcname/SamTSE/Mods/ST8VIPE/Bin"
+
+  # Making sure directories exist.
   install -d $pkgdir/usr/share/licenses
 
   # Install license.
   install -D -m 644 $srcdir/$_srcname/LICENSE \
        $pkgdir/usr/share/licenses/$pkgname/LICENSE
   rm -f  "$srcdir/$_srcname/LICENSE" || return 1
-  rm -f  "$srcdir/$_srcname/.gitattributes" || return 1
-  rm -f  "$srcdir/$_srcname/.gitignore" || return 1
 
   # Install data.
-  mv "$srcdir/$_srcname" "$pkgdir/usr/share/$pkginstdir"
+  mv "$srcdir/$_srcname/SamTSE/Mods" "$pkgdir/usr/share/$pkginstdir/"
 }
