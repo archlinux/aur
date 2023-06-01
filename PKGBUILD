@@ -7,17 +7,23 @@ pkgdesc="PyTorch/TorchScript/FX compiler for NVIDIA GPUs using TensorRT"
 arch=('x86_64')
 url='https://github.com/pytorch/TensorRT'
 license=('BSD')
-depends=('python-pytorch-opt-cuda'
-         'python-tensorrt'
-         'python-torchvision-cuda'
-         'python-graphviz'
-         'python-pydot'
-         )
-makedepends=('git'
-             'cmake'
-             'ninja'
-             'python-pip'
-             )
+depends=(
+  'python-pytorch-opt-cuda'
+  'python-tensorrt'
+  'python-torchvision-cuda'
+  'python-graphviz'
+  'python-pydot'
+)
+makedepends=(
+  'git'
+  'cmake'
+  'ninja'
+  'cuda'
+  'python-build'
+  'python-wheel'
+  'python-installer'
+  'python-setuptools'
+)
 source=("git+https://github.com/pytorch/TensorRT.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 options=('debug')
@@ -32,7 +38,8 @@ prepare() {
 }
 
 build() {
-
+  export CC=/opt/cuda/bin/gcc
+  export CXX=/opt/cuda/bin/g++
   export CXXFLAGS+=" -std=c++14"
   export PATH="${srcdir}/path:${PATH}"
 
@@ -40,7 +47,8 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_SKIP_RPATH=ON \
-    -DCMAKE_SKIP_INSTALL_RPATH=ON
+    -DCMAKE_SKIP_INSTALL_RPATH=ON \
+    -DCUDA_HOST_COMPILER=/opt/cuda/bin/g++
 
   cmake --build build
 
@@ -53,7 +61,7 @@ package() {
   DESTDIR="${pkgdir}" cmake --install build
 
   cd TensorRT/py
-  pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
+  python -m installer --destdir="${pkgdir}" dist/*.whl
   _site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
   (mkdir -p "${pkgdir}${_site_packages}/torch_tensorrt/lib"; ln -s /usr/lib/libtorchtrt.so "${pkgdir}${_site_packages}/torch_tensorrt/lib/libtorchtrt.so")
 
