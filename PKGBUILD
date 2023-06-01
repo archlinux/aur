@@ -1,4 +1,3 @@
-# Maintainer: Paul Spruce <paul.spruce@gmail.com>
 _pkgname=Arjun
 pkgname=arjun
 pkgver=2.1.4
