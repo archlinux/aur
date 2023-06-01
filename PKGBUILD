@@ -1,12 +1,12 @@
-# Maintainer:  tx00100xt <tx00100xt@yandex.ru>
-# Contributer: tx00100xt <tx00100xt@yandex.ru>
+# Maintainer:  Alexander <tx00100xt@yandex.ru>
+# Contributer: Alexander <tx00100xt@yandex.ru>
 
 pkgname=serioussam-hno
-pkginstdir=serioussam
+pkginstdir=serioussamse
 hno=HeroNumberOne.tar.xz
 pkgver=1.0.1
 _srcname="SE1-TSE-HNO-$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc="Serious Sam Classic HNO native Linux."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SE1-TSE-HNO"
@@ -58,6 +58,7 @@ build(){
   ./build-linux"$_bits"-tse.sh
 
   mv "$srcdir/$_srcname/Sources/cmake-build/Debug/libGameMP.so" "$srcdir/$_srcname/SamTSE/Mods/HNO/Bin" || return 1
+  cp -f "$srcdir/$_srcname/Sources/cmake-build/Debug/libEntitiesMP.so"  "$srcdir/$_srcname/SamTSE/Mods/HNO/Bin/libEntitiesExtMP.so" || return 1
   mv "$srcdir/$_srcname/Sources/cmake-build/Debug/libEntitiesMP.so"  "$srcdir/$_srcname/SamTSE/Mods/HNO/Bin" || return 1
 
   # Removing Serious Sam Odd World tmp stuff.
@@ -71,15 +72,23 @@ build(){
 
 package(){
   # Making sure directories exist.
+  install -d $pkgdir/usr/lib/{serioussamse,serioussamse/Mods,serioussamse/Mods/HNO}
+  install -d $pkgdir/usr/share/{serioussamse,serioussamse/Mods}
+
+  install -D -m0755 $srcdir/$_srcname/SamTSE/Mods/HNO/Bin/libGameMP.so $pkgdir/usr/lib/serioussamse/Mods/HNO
+  install -D -m0755 $srcdir/$_srcname/SamTSE/Mods/HNO/Bin/libEntitiesMP.so  $pkgdir/usr/lib/serioussamse/Mods/HNO
+  install -D -m0755 $srcdir/$_srcname/SamTSE/Mods/HNO/Bin/libEntitiesExtMP.so  $pkgdir/usr/lib/serioussamse/Mods/HNO
+
+  rm -fr "$srcdir/$_srcname/SamTSE/Mods/HNO/Bin"
+
+  # Making sure directories exist.
   install -d $pkgdir/usr/share/licenses
 
   # Install license.
   install -D -m 644 $srcdir/$_srcname/LICENSE \
        $pkgdir/usr/share/licenses/$pkgname/LICENSE
   rm -f  "$srcdir/$_srcname/LICENSE" || return 1
-  rm -f  "$srcdir/$_srcname/.gitattributes" || return 1
-  rm -f  "$srcdir/$_srcname/.gitignore" || return 1
 
   # Install data.
-  mv "$srcdir/$_srcname" "$pkgdir/usr/share/$pkginstdir"
+  mv "$srcdir/$_srcname/SamTSE/Mods" "$pkgdir/usr/share/$pkginstdir/"
 }
