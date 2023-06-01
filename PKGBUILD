@@ -10,7 +10,6 @@ url="https://github.com/precice/${_base}"
 license=(LGPL3)
 depends=(python-pyprecice)
 makedepends=(python-setuptools python-wheel python-build python-installer)
-checkdepends=(openssh)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('c043d037a554dfa425e07ebd6504759e10c002c6b546769ba00cde8a916ba73f79c7980bf501642de34bf0ab5f9e43cb53957ea31bde70fcb7f410bd60d91f82')
 

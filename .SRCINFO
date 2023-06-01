@@ -5,7 +5,6 @@ pkgbase = python-micro-manager-precice
 	url = https://github.com/precice/micro-manager
 	arch = x86_64
 	license = LGPL3
-	checkdepends = openssh
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = python-build
