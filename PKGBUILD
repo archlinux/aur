@@ -4,11 +4,11 @@
 # Commit hashes for the latest release in the v & vc repositories
 # Using the direct downloads for the commits greatly reduces the time needed to
 # pull down the sources, as the vlang repository is >100MB.
-_v_commit_sha=d1f57ead713c8e5254d8cef22991e6409dc1f06b
-_vc_commit_sha=1f7f0244f352d41122bb306446d98ae3de4e6b02
+_v_commit_sha=046dd5481cd4e9f66a3412d51a3e78c3192dd983
+_vc_commit_sha=4dfde7ce12b6e96b4f1f4303ebd184342037e1cd
 
 pkgname=vlang
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc='Simple, fast, safe, compiled language for developing maintainable software'
 arch=('x86_64' 'aarch64')
@@ -22,10 +22,10 @@ makedepends=('git')
 conflicts=('v')
 source=("v-${pkgver}.zip::https://github.com/vlang/v/archive/${_v_commit_sha}.zip"
         "vc-${pkgver}.zip::https://github.com/vlang/vc/archive/${_vc_commit_sha}.zip")
-sha256sums=('6886469efe21463276d682e658f415ea1167a9efb41bf2a8fd6577abb753f2e4'
-            '91b6b4b576659f222e8aa3569124e95e17feb5c0b436ecc0f30db04ff24f6e39')
-sha512sums=('81481854928f31c2cfc3c49acaa9b579712bbfa66cf2a31c5a2df2af47511b9fb62576844cdf1bcf1512b8cea58d4d637ad44110d2a73a0b55b6f41efa984b25'
-            '8eab18f5d01a417c0cdbfd995fdd570ca92fd2ce245eda08762de0021487fff1c6084c91fcc7fcdfd37aa618d2f71c0222df6f434b014fe3b71d284795762b0b')
+sha256sums=('cfabb1417e211c2ed62bfaa2d4fa1767973e69dcd5ed86e574d3c406e18154fa'
+            'fc5556f40dfeff5d9eca2123e9c9bf6bebe32c545a06ce03b90a50b67ab86aa7')
+sha512sums=('d47c009340d4d2a563788d64f2718edcb0f2c8adb223bbf75ea31b1c96f277e3d34b148ba1e3ce65bed50977756f4a608d9e3dce106c05762892f141a21df48b'
+            '940b279e3bdd3038ab61830465540ce03cca18804cadf551344fa7e8a07261190bf54e6558bae04026fa68843eecbcf476c386dcda456d5098173545a2579177')
 
 prepare() {
     # In case the previous directory still exists
