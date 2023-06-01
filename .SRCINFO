@@ -1,7 +1,7 @@
 pkgbase = virt-v2v
 	pkgdesc = Convert a guest image to use with KVM
 	pkgver = 2.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://libguestfs.org/virt-v2v.1.html
 	install = virt-v2v.install
 	arch = x86_64
