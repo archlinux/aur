@@ -1,9 +1,9 @@
 # Maintainer: Marc Vidal <mvidaldp@gmail.com>
 
 pkgname=labrecorder
-pkgver=1.16.3
+pkgver=1.16.4
 _pkgver="v${pkgver}"
-pkgrel=2
+pkgrel=1
 pkgdesc='Default LSL (LabStreamingLayer) recording program (stable release). It allows to record all streams on the lab network (or a subset) into a single file, with time synchronization between streams.'
 arch=('any')
 url='https://github.com/sccn/liblsl/'
