@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fishpi-bin
-pkgver=1.3.2
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="摸鱼派新版客户端"
 arch=('x86_64')
@@ -14,9 +14,9 @@ options=(!strip)
 source=("${pkgname%-bin}-${pkgver}.tar.gz::${_githuburl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-linux.tar.gz"
     "${pkgname%-bin}.png::https://raw.githubusercontent.com/imlinhanchao/fishpi-desktop/master/build/icons/256x256.png"
     "LICENSE.html::${url}/privacy")
-sha256sums=('5c010e73af3991917ec8f0ee7b8025171ef1636e4d8cbc58b4b90b9c9351cdaf'
-            'f787ad13f4b9a416cb40a8562ddd0868a42e24c0f70f52c34ee87f7435dcbba0'
-            '2dc66d4484d4f15e017ae68954fca5e8a23aadbfc4413b5f7f636bc67a728742')
+sha256sums=('87dad81ad2f57bb136254df8c52e06613e24d296ce3aa39b722b6271dd6c44f5'
+            'c8d477f31fadf5c61c54afbc28ddf06af73dfa062b53ce70c47e1092eb05bc94'
+            '99b4d784f44816c64bb6a3706c14ae51b0b2f6b4dd724f865049b3733617840c')
  
 package() {
    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
