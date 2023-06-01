@@ -2,25 +2,26 @@
 # Contributor: Anton Kudelin <kudelin at protonmail dot com>
 # Contributor: George Eleftheriou <eleftg>
 # Contributor: Xwang <xwaang1976@gmail.com>
-
 _base=SU2
 pkgname=${_base,,}
 pkgver=7.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An Open-Source Suite for Multiphysics Simulation and Design"
 url="https://${pkgname}code.github.io"
 license=(LGPL2.1)
 depends=(python-numpy python-mpi4py intel-oneapi-mkl)
 makedepends=(swig git)
 arch=(x86_64)
-source=("${_base}-${pkgver}::git+https://github.com/${pkgname}code/${_base}.git#tag=v${pkgver}"
-  "${pkgname}.sh")
+source=(${_base}-${pkgver}::git+https://github.com/${pkgname}code/${_base}.git#tag=v${pkgver}
+  ${pkgname}.sh)
 sha512sums=('SKIP'
   '1c753dc503cc56f86f784071a18ae71dd6fbf64a6d7948275f65cfb1187a68dbff9c01729ffdde86147fb2b8ff25cb5aaa934ffda7d3aa1563313a033d650993')
 
 prepare() {
   cd ${_base}-${pkgver}
-  git submodule init && git submodule update
+  git submodule init
+  git -c protocol.file.allow=always submodule update
+  sed -i '/#pragma once/a #include <cstdint>' SU2_CFD/include/output/filewriter/CParaviewXMLFileWriter.hpp
 }
 
 build() {
