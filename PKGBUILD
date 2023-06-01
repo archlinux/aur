@@ -12,7 +12,7 @@ pkgname=openfoam-com
 pkgver=v2212
 _distname=OpenFOAM
 _dist=$_distname-$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="The open source CFD toolbox (www.openfoam.com)"
 arch=('i686' 'x86_64')
 url="http://www.openfoam.com"
@@ -20,9 +20,9 @@ license=('GPL3')
 install="${pkgname}.install"
 depends=('gcc' 'cgal' 'fftw' 'boost' 'openmpi' 'paraview' 'utf8cpp' 'scotch' 'parmetis')
 
-source=('https://sourceforge.net/projects/openfoam/files/v2212/OpenFOAM-v2212.tgz')
+source=('https://sourceforge.net/projects/openfoam/files/v2212/OpenFOAM-v2212.tgz' 'https://develop.openfoam.com/Development/openfoam/-/commit/70451e680cd0987c8220a0276bba4ce6bba58e9e.patch')
 
-md5sums=('889c9a2169c0b6911050de149a5b459b')
+md5sums=('889c9a2169c0b6911050de149a5b459b' '686c135b63e923de449763cf5f1ea6e9')
 
 prepare() {
   if [ -n "$WM_PROJECT_DIR" ]
@@ -93,6 +93,10 @@ build() {
 
   set -e  # Turn errexit back on
   cd "$projectDir" || exit
+
+  # patch to compile with gcc-v13
+  # check this for next upgrade!
+  patch -p1 < ../../70451e680cd0987c8220a0276bba4ce6bba58e9e.patch
 
   # Dummy application for testing
   #./applications/test/00-dummy/Allwmake
