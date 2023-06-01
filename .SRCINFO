@@ -1,6 +1,6 @@
 pkgbase = texstudio-git
 	pkgdesc = Integrated writing environment for creating LaTeX documents
-	pkgver = 4.2.2.r88.g8582ee24b
+	pkgver = 4.6.0alpha1.r20.g7fee3f4b7
 	pkgrel = 1
 	url = https://github.com/texstudio-org/texstudio
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = texstudio-git
 	makedepends = qt6-tools
 	makedepends = imagemagick
 	makedepends = librsvg
+	makedepends = ninja
+	makedepends = cmake
 	depends = poppler-qt6
 	depends = qt6-svg
 	depends = libxkbcommon-x11
