@@ -2,8 +2,8 @@
 
 _pkgname=flightcore
 pkgname=$_pkgname-bin
-pkgver=1.16.1
-pkgrel=4
+pkgver=1.17.0
+pkgrel=1
 pkgdesc="A Northstar installer, updater, and mod-manager (binary release)"
 arch=('x86_64')
 url="https://github.com/R2NorthstarTools/FlightCore"
@@ -13,14 +13,13 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 _appimage=flight-core_${pkgver}_amd64.AppImage
 _desktop=flightcore.desktop
-_commit=c178623d47d99184d4c561589c501bdb3d6db15c
-_url2=https://raw.githubusercontent.com/R2NorthstarTools/FlightCore/main
+_url2=https://raw.githubusercontent.com/R2NorthstarTools/FlightCore/v$pkgver
 source=("$url/releases/download/v$pkgver/flight-core_${pkgver}_amd64.AppImage"
         "$_url2/LICENSE"
         "$_url2/README.md"
         "$_url2/docs/DEVELOPMENT.md"
         "$_url2/docs/FAQ.md")
-sha256sums=('3d91c6fecaf98a1d9edfcd4f9cd35db2abc9562d0cc33ee72122c3bced3f24a7'
+sha256sums=('8d39d46740db3300bf2844b1d90c9de1d9459c80988170981e16709535720ae5'
             'SKIP'
             'SKIP'
             'SKIP'
