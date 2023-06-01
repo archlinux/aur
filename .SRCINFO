@@ -1,0 +1,14 @@
+pkgbase = openseachest
+	pkgdesc = Seagate utilities useful for performing various operations on SATA, SAS, NVMe, and USB storage devices.
+	pkgver = 23.03.1
+	pkgrel = 1
+	url = https://github.com/Seagate/openSeaChest
+	arch = x86_64
+	arch = aarch64
+	license = MPL
+	makedepends = meson
+	makedepends = ninja
+	source = openseachest-23.03.1.tar.xz::https://github.com/Seagate/openSeaChest/releases/download/v23.03.1/SourceCode_With_Submodules.tar.xz
+	b2sums = 63a03a56068fd02bb37e9f3dfadfb70611aa245cdd85f47a492625685ff7ef34416e998b4a046898570ff29ccd46fb3a1e408ac04b76988b4b9834d33f57cb10
+
+pkgname = openseachest
