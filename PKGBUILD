@@ -2,7 +2,7 @@
 
 pkgbase=purc
 pkgname=purc
-pkgver=0.9.10
+pkgver=0.9.12
 pkgrel=0
 pkgdesc="The prime HVML interpreter for C Language."
 arch=(x86_64
@@ -60,7 +60,7 @@ optdepends=('python-numpy: Scientific tools for Python'
             'webkit2gtk: Web content engine for GTK'
             'xguipro: xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit.')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/ver-${pkgver}.tar.gz")
-sha256sums=('4bcadb7c9949a38dbe7c5f8ddc9c5d881524ba32403adff4a9cd27fe8ff4564b')
+sha256sums=('fce8def622432e0c0b9f882676769518b396acea2bcd5aad4bc1f6500a02f658')
 options=('!strip')
 
 build() {
@@ -70,7 +70,7 @@ build() {
 #     cmake -DCMAKE_BUILD_TYPE=Release \
     cmake -DCMAKE_BUILD_TYPE=None \
         -DPORT=Linux \
-        -DENABLE_API_TESTS=OFF \
+        -DENABLE_CHINESE_NAMES=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_LIBEXECDIR=lib \
@@ -79,12 +79,6 @@ build() {
 
     ninja -C build
 }
-
-# check() {
-#     cd "${srcdir}/PurC-ver-${pkgver}/build"
-# #     ctest --test-dir build --output-on-failure
-#     bash run_all_tests.sh
-# }
 
 package() {
     DESTDIR="${pkgdir}" ninja -C "${srcdir}"/PurC-ver-${pkgver}/build install
