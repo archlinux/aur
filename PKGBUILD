@@ -2,7 +2,7 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=rgdal
-_cranver=1.6-6
+_cranver=1.6-7
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(GPL2 GPL3)
 depends=('r>=3.5.0' 'r-sp>=1.1.0' proj gdal)
 optdepends=(r-knitr r-dbi r-rsqlite r-maptools r-mapview r-rmarkdown r-curl r-rgeos)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha512sums=('13f29e3deac8cb00bdbc4dda3de9c5d31ed8bad6712f2b4e4fd5315516153812e074af171cf111b95cbc032fbe883d571003861e5c8afae203060ee6b4f06dd9')
+sha512sums=('a609bed99fae074d500035e2e461a9a70a11374276669523dae3a9afd23cde99c0e5742d2ac527b66d60a12b48b1ee1ae5922a5ca595f33b8ffe934e8933ffb0')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
