@@ -2,6 +2,7 @@
 # Contributor: Bet4 (https://aur.archlinux.org/account/bet4it)
 
 pkgname=libipt-git
+epoch=1
 pkgver=2.0+164.r903.20230324.7a863ba
 pkgrel=1
 pkgdesc='An Intel(R) Processor Trace decoder library'

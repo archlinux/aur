@@ -2,6 +2,7 @@ pkgbase = libipt-git
 	pkgdesc = An Intel(R) Processor Trace decoder library
 	pkgver = 2.0+164.r903.20230324.7a863ba
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/intel/libipt
 	arch = i686
 	arch = x86_64
