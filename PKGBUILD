@@ -1,20 +1,35 @@
 # Maintainer: Carlos Mogas da Silva <r3pek@r3pek.org>
 
+_pkgname=matrix-synapse-rest-password-provider
 pkgname=matrix-synapse-rest-auth
-pkgver=0.1.2
-pkgrel=1
+pkgver=v0.1.4.r25.g53fbc12
+pkgrel=2
 pkgdesc='REST endpoint Authentication module for synapse'
 arch=('any')
-url='https://github.com/kamax-io/matrix-synapse-rest-auth'
+url='https://github.com/anishihara/matrix-synapse-rest-password-provider'
 license=('AGPL3')
-depends=('python2' 'python2-twisted' 'matrix-synapse')
-source=("https://github.com/kamax-io/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('ee54649b1eec2c0f72930fa3d0a3b5769971c8cbc2bbd0f8476a88ea46570193')
+depends=('python' 'python-twisted' 'matrix-synapse')
+makedepends=('git')
+
+source=("${_pkgname}"::"git+https://github.com/anishihara/matrix-synapse-rest-password-provider.git"
+        'Update-set_profile_displayname-to-use-UserID-type.patch')
+sha256sums=('SKIP'
+            '5fb2cfbf8ae32c7ca2d17d01f67a3492b70a7631f865c657ceb4b4ecac7d5285')
+
+pkgver() {
+    cd "${_pkgname}"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "${_pkgname}"
+    patch -Np1 < '../Update-set_profile_displayname-to-use-UserID-type.patch'
+}
 
 package() {
-    cd "${pkgname}-${pkgver}"
+    cd "${_pkgname}"
 
-    PYTHON_LOCATION=$(python2 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
+    PYTHON_LOCATION=$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
 
     # File
     install -dm 755 "${pkgdir}"/${PYTHON_LOCATION}

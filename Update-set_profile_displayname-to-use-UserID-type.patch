@@ -1,0 +1,33 @@
+--- a/rest_auth_provider.py	2023-06-01 08:43:23.196158358 +0200
++++ b/rest_auth_provider.py	2023-06-01 08:44:11.764498766 +0200
+@@ -26,6 +26,7 @@
+ 
+ import synapse
+ from synapse import module_api
++from synapse.types import UserID
+ 
+ import logging
+ import requests
+@@ -112,10 +113,12 @@
+         if not auth["success"]:
+             logger.info("User not authenticated")
+             return None
+-        return auth       
++        return auth
+ 
+     async def initialize_matrix_user(self, user_id, auth):
++        types_user_id = UserID.from_string(user_id)
+         localpart = user_id.split(":", 1)[0][1:]
++        domain = user_id.split(":", 1)[1][1:]
+         logger.info("User %s authenticated", user_id)
+ 
+         registration = False
+@@ -142,7 +145,7 @@
+             if "display_name" in profile and ((registration and self.config.setNameOnRegister) or (self.config.setNameOnLogin)):
+                 display_name = profile["display_name"]
+                 logger.info("Setting display name to '%s' based on profile data", display_name)
+-                await store.set_profile_displayname(localpart, display_name)
++                await store.set_profile_displayname(types_user_id, display_name)
+             else:
+                 logger.info("Display name was not set because it was not given or policy restricted it")
+ 
