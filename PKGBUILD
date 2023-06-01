@@ -28,16 +28,16 @@ prepare () {
   mv -f "$srcdir/mvsfunc_h/mvsfunc.py" "$srcdir/mvsfunc_h/mvsfunc_h.py"
   sed -i "s|mvsfunc|mvsfunc_h|" "$srcdir/mvsfunc_h/__init__.py"
 
-  for func in $(find . -name "*.py" -execdir basename {} .py ';'); do
-    mv -f "$func.py" "${func}_h.py"
-    sed -i "/import/ s|\<$func\>|${func}_h|g" *.py
+  for plug in $(find . -name "*.py" -execdir basename {} .py ';'); do
+    mv -f "$plug.py" "${plug}_h.py"
+    sed -i "s|\<$plug\>|${plug}_h|g" *.py
   done
 
-  sed -i "/import/ s|\<mvsfunc\>|mvsfunc_h|g" *.py
+  sed -i "s|\<mvsfunc\>|mvsfunc_h|g" *.py
 }
 
 package() {
-  cd $_gitname
+  cd "$_gitname"
 
   install -Dm644 *.py -t ${pkgdir}${_site_packages}
   python -m compileall -q -f -d ${_site_packages} ${pkgdir}${_site_packages}/*.py
