@@ -1,34 +1,26 @@
 # Maintainer: Lucas Saliés Brum <sistematico at gmail dot com>
+# Contributor: Ethan Reece <aur at ethanreece dot com>
 # Contributor: Loopsmark <loopsmark at merkur dot pm>
 # Contributor: Winston Astrachan <winston dot astrachan at gmail dot com>
 # Contributor: Henry Pham <huy at tableplus dot com>
 
 pkgname=tableplus
-pkgver=0.1.212
+pkgver=0.1.216
 pkgrel=1
 pkgdesc='Modern, native, and friendly GUI tool for relational databases (Alpha)'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://tableplus.com/'
 license=('custom')
 depends=('gtksourceview3' 'libgee' 'gnome-keyring')
-source=('LICENSE'
-    "tableplus_${pkgver}_${pkgrel}_amd64.deb::https://deb.tableplus.com/debian/22/pool/main/t/tableplus/tableplus_${pkgver}_amd64.deb"
-    'http://archive.ubuntu.com/ubuntu/pool/main/o/openldap/libldap-2.5-0_2.5.13+dfsg-1ubuntu1_amd64.deb'
-    'http://archive.ubuntu.com/ubuntu/pool/main/c/cyrus-sasl2/libsasl2-2_2.1.28+dfsg-6ubuntu2_amd64.deb'
-    'https://archive.archlinux.org/packages/g/glib2/glib2-2.68.4-1-x86_64.pkg.tar.zst'
-    'tableplus.desktop')
-noextract=('libldap-2.5-0_2.5.13+dfsg-1ubuntu1_amd64.deb' 'libsasl2-2_2.1.28+dfsg-6ubuntu2_amd64.deb')
-sha256sums=('76f924b1ebad5309ccf0dd7f3fe3d1b57ff3088b208a603900b0e240fdb5debb'
-            '91ad024e0df243664b9d9cb217d015fed0fa691881cb43f258138ad8ed16f672'
-            '574db9cb32afe6e49f2661beab8b0ad79aed7ce3d7566d7e82c24dd4d0adcef8'
-            '78f563e42a1a044d107a27b0db94b7f23b8d601b6bcb1f95bcd9c7380d5379a0'
-            'e8e759bd9abb58c93067e199088077f3d6fa2c608ebc6f571cb9dd814812bcea'
-            '83620b08e325418947f0007ecca7b981a988bfdac3f466db165f9262d1c0e5f4')
+source=('LICENSE' 'tableplus.desktop')
+source_x86_64=("tableplus_${pkgver}_${pkgrel}_amd64.deb::https://deb.tableplus.com/debian/22/pool/main/t/tableplus/tableplus_${pkgver}_amd64.deb")
+source_aarch64=("tableplus_${pkgver}_${pkgrel}_arm64.deb::https://deb.tableplus.com/debian/22-arm/pool/main/t/tableplus/tableplus_${pkgver}_arm64.deb")
+sha256sums=('76f924b1ebad5309ccf0dd7f3fe3d1b57ff3088b208a603900b0e240fdb5debb' '83620b08e325418947f0007ecca7b981a988bfdac3f466db165f9262d1c0e5f4')
+sha256sums_x86_64=('bf4fe8a67d0bfa01ddfdf9335906207ef41bed0ba441cc07d981e940056d169e')
+sha256sums_aarch64=('42b3a974ae2c5dbceb8ddf1893d47d2811300f1c80e0faa8fc87aac524052bfe')
 
 prepare() {
     tar -xf "${srcdir}/data.tar.zst"
-    ar p libldap-2.5-0_2.5.13+dfsg-1ubuntu1_amd64.deb data.tar.zst | tar x --zst
-    ar p libsasl2-2_2.1.28+dfsg-6ubuntu2_amd64.deb data.tar.zst | tar x --zst
 }
 
 package() {
@@ -37,11 +29,7 @@ package() {
     install -m755 $srcdir/opt/tableplus/tableplus -t $pkgdir/opt/tableplus/
     install -Dm644 $srcdir/opt/tableplus/tableplus.desktop -t $pkgdir/usr/share/applications/
     install -Dm644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
-    install -Dm755 $srcdir/usr/lib/x86_64-linux-gnu/{liblber-2.5.so.0,libldap-2.5.so.0,libsasl2.so.2} -t $pkgdir/opt/tableplus/lib/
-    install -Dm755 $srcdir/usr/lib/libgio-2.0.so.0.6800.4 -t $pkgdir/opt/tableplus/lib/
-
     cp -r $srcdir/opt/tableplus/resource $pkgdir/opt/tableplus/
-
-    echo -e '#!/bin/sh\n/usr/bin/env LD_LIBRARY_PATH=/opt/tableplus/lib /opt/tableplus/tableplus "$@"' >$pkgdir/usr/local/bin/tableplus
+    echo -e '#!/bin/sh\n/opt/tableplus/tableplus "$@"' >$pkgdir/usr/local/bin/tableplus
     chmod 755 $pkgdir/usr/local/bin/tableplus
 }
