@@ -10,8 +10,8 @@ url='https://github.com/305a385/ytfind/'
 license=('AGPL3')
 depends=('curl')
 makedepends=('json-c')
-source=("https://github.com/305a385/$pkgname/archive/refs/tags/v$pkgver.zip")
-sha256sums=('4670dab98390ade9f1565757f6572fa08aca93cffc44e792bcff57f2fa41ce42')
+source=("https://github.com/305a385/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('b00049ba360e5d24652b911c0b7e8ce9be255b799ead0e2274e116f8140af600')
 
 build(){
 	cd "$pkgname-$pkgver";
@@ -19,9 +19,6 @@ build(){
 }
 
 package() {
-	
-	
-
 
 	mkdir -p "${pkgdir}/usr/bin"
 	mkdir -p "${pkgdir}/usr/share/man/man1"
