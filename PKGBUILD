@@ -5,8 +5,8 @@
 pkgname=simple_backup-git
 _pkgname=simple_backup
 pkgdesc='Simple backup script that uses rsync to copy files'
-pkgver=3.2.5.r0.g7684bc4
-pkgrel=2
+pkgver=3.2.7.r0.g525f381
+pkgrel=1
 url="https://github.com/Fuxino/${_pkgname}"
 install=simple_backup.install
 arch=('any')
@@ -29,24 +29,25 @@ sha256sums=('SKIP')
 
 pkgver() 
 {  
-   cd ${_pkgname}
-   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd ${_pkgname}
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare()
 {
-   git -C ${srcdir}/${_pkgname} clean -dfx
+    git -C ${srcdir}/${_pkgname} clean -dfx
 }
 
 build()
 {
-   cd ${srcdir}/${_pkgname}
-   python -m build --wheel --no-isolation
+    cd ${srcdir}/${_pkgname}
+    python -m build --wheel --no-isolation
 }
 
 package()
 {
-   cd ${srcdir}/${_pkgname}
-   python -m installer --destdir=${pkgdir} dist/*.whl
-   install -Dm644 ${srcdir}/${_pkgname}/${_pkgname}.conf ${pkgdir}/etc/${_pkgname}/${_pkgname}.conf
+    cd ${srcdir}/${_pkgname}
+    python -m installer --destdir=${pkgdir} dist/*.whl
+    install -Dm644 ${_pkgname}.conf ${pkgdir}/etc/${_pkgname}/${_pkgname}.conf
+    install -Dm644 man/${_pkgname}.1 ${pkgdir}/usr/share/man/man1/${_pkgname}.1
 }
