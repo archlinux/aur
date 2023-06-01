@@ -1,13 +1,13 @@
 pkgbase = kalc
 	pkgdesc = a complex numbers, graphing, cli calculator
-	pkgver = 0.5.4
+	pkgver = 0.5.5
 	pkgrel = 1
 	url = https://github.com/bgkillas/kalc
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
 	makedepends = rust
-	source = kalc-0.5.4.tar.gz::https://github.com/bgkillas/kalc/archive/refs/tags/v0.5.4.tar.gz
-	sha512sums = cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e
+	source = kalc-0.5.5.tar.gz::https://github.com/bgkillas/kalc/archive/refs/tags/v0.5.5.tar.gz
+	sha512sums = 6a033dc7e08d586883e0543a6ce09b27a39db3fbcd5ac70a4af2167875041e82720c2e0962ba54004bbbac9b8bf24c233520263a5e07b4df46d98b447f5e48c9
 
 pkgname = kalc
