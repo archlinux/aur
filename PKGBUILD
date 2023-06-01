@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=tasker-permissions-git
 pkgver=0.2.0.r1.gce60661
 pkgrel=2
